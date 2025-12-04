@@ -16,6 +16,10 @@ var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} #
 
 var character_order = []
 
+var travel_groups_ref = {
+#	group_name = {priority = 1}
+}
+
 
 func _get_key(char1, char2):
 	var pair = [char1, char2]
@@ -447,6 +451,8 @@ func fix_serialization():
 	for task in active_tasks.duplicate():
 		if task.product == 'rest':
 			active_tasks.erase(task)
+	for val in travel_groups_ref.values():
+		val.priority = int(val.priority)
 
 
 

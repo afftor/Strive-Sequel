@@ -22,14 +22,15 @@ var area_zoom_data = {
 	empire = {position = Vector2(1000, 100), zoom = 1.2},
 }
 
+#in most cases char_groups and travel_groups_ref are hadled automatically in build_from_locations()
 var char_groups = {
-#	loc_name = {group_name = []}
+#	group_name = {chars = [], priority = 1}
 }
-var selected_groups = {#in fact, while groups from different location can't be selected at the same
-	#time, there is no need in dict with loc_name, but I'll leave it as is for consistency
+var char_groups_by_loc = {
 #	loc_name = []
 }
-var group_to_rename = {old_name = null, loc_id = null}
+var selected_groups = []
+var group_to_rename
 var group_move_chars = []
 
 
@@ -608,6 +609,8 @@ func build_from_locations():
 			areas[loc_data.area] = [loc_data]
 	#update list
 	input_handler.ClearContainer($FromLocList/LocScroll/LocCatList, ['LocCat'])
+	char_groups.clear()
+	char_groups_by_loc.clear()
 	var sorted_keys = areas.keys()
 	if travel_data != null:
 		areas.travel_data = [travel_data]
@@ -624,23 +627,35 @@ func build_from_locations():
 #			category.get_node('Button').connect('mouse_entered', self, 'build_info', [loc_data.id])
 #			category.get_node('Button').connect('mouse_exited', self, 'build_info')
 			make_panel_for_location(category.get_node('Button'), loc_data)
-			char_groups[loc_data.id] = {}
-			var groups = char_groups[loc_data.id]
+			var loc_char_groups = {}
+			char_groups_by_loc[loc_data.id] = []
 			for ch_id in loc_data.heroes:
 				var person = characters_pool.get_char_by_id(ch_id)
 				var group_name = person.get_loc_group()
-				if !groups.has(group_name):
-					groups[group_name] = []
-				groups[group_name].append(ch_id)
-			for group_name in groups:
+				if !loc_char_groups.has(group_name):
+					loc_char_groups[group_name] = []
+				loc_char_groups[group_name].append(ch_id)
+			for group_name in loc_char_groups.keys():
+				var true_name = group_name
+				if char_groups.has(group_name):#bad sit, means there is a double
+					true_name = make_new_group_name()
+					loc_char_groups[true_name] = loc_char_groups[group_name]
+					loc_char_groups.erase(group_name)
+					for ch_id in loc_char_groups[true_name]:
+						var person = characters_pool.get_char_by_id(ch_id)
+						person.set_loc_group(true_name)
+				append_char_group(true_name, loc_char_groups[true_name])
+				char_groups_by_loc[loc_data.id].append(true_name)
+			var sorted_groups = sort_groups(loc_char_groups.keys())
+			for group_name in sorted_groups:
 				var group_cont = input_handler.DuplicateContainerTemplate(category.get_node('offset/LocGroupList'), 'LocGroup')
 				group_cont.set_meta('location', loc_data.id)
 				group_cont.set_meta('group', group_name)
 				group_cont.get_node('Button').connect('pressed', self, 'group_press', [group_name, loc_data.id])
-				group_cont.get_node('Button/rename').connect("pressed", self, "rename_group", [group_name, loc_data.id])
+				group_cont.get_node('Button/menu').connect("pressed", self, "open_group_menu", [group_name, loc_data.id])
 				group_cont.visible = true
 				make_panel_for_group(group_cont.get_node('Button'), group_name)
-				for ch_id in groups[group_name]:
+				for ch_id in loc_char_groups[group_name]:
 					var loc_button = input_handler.DuplicateContainerTemplate(group_cont.get_node('offset/LocList'), 'Button')
 					loc_button.set_meta('location', loc_data.id)
 					loc_button.set_meta('character', ch_id)
@@ -651,6 +666,7 @@ func build_from_locations():
 	#				loc_button.connect('mouse_exited', self, 'build_info')
 					loc_button.visible = true
 					make_panel_for_character(loc_button, ch_id)
+	update_groups_ref()
 
 
 
@@ -788,52 +804,61 @@ func char_loc_press(ch_id, loc_id):
 	else:
 		selected_chars.erase(ch_id)
 		var person = characters_pool.get_char_by_id(ch_id)
-		try_erase_selected_group(person.get_loc_group(), loc_id)
+		try_erase_selected_group(person.get_loc_group())
 		try_switch_selected_loc(null)
 #	build_info()
 	update_confirm()
 	update_location_chars()
 
+func char_loc_press_virt(ch_btn_ref):
+	if ch_btn_ref.get_ref().pressed:
+		return
+	var node = ch_btn_ref.get_ref()
+	char_loc_press(node.get_meta('character'), node.get_meta('location'))
+
 func group_press(group_name, loc_id):
 	try_switch_selected_loc(loc_id)
-	var appended = try_append_selected_group(group_name, loc_id)
+	var appended = try_append_selected_group(group_name)
 	if appended:
-		for ch_id in char_groups[loc_id][group_name]:
+		for ch_id in char_groups[group_name].chars:
 			if !selected_chars.has(ch_id):
 				selected_chars.append(ch_id)
 	else:
-		try_erase_selected_group(group_name, loc_id)
-		for ch_id in char_groups[loc_id][group_name]:
+		try_erase_selected_group(group_name)
+		for ch_id in char_groups[group_name].chars:
 			selected_chars.erase(ch_id)
 	try_switch_selected_loc(null)
 	update_confirm()
 	update_location_chars()
+
+func group_press_virt(group_ref):
+	if group_ref.get_ref().get_node('Button').pressed:
+		return
+	var node = group_ref.get_ref()
+	group_press(node.get_meta('group'), node.get_meta('location'))
 
 func try_switch_selected_loc(loc_id):
 	if selected_chars.empty() and selected_groups.empty():
 		selected_loc = loc_id
 		match_state()
 
-func try_append_selected_group(group_name, loc_id):
-	if !selected_groups.has(loc_id):
-		selected_groups[loc_id] = []
-	if !selected_groups[loc_id].has(group_name):
-		selected_groups[loc_id].append(group_name)
+func try_append_selected_group(group_name):
+	if !selected_groups.has(group_name):
+		selected_groups.append(group_name)
 		return true
 	return false
 
-func try_erase_selected_group(group_name, loc_id):
-	if !selected_groups.has(loc_id) or !selected_groups[loc_id].has(group_name):
+func try_erase_selected_group(group_name):
+	if !selected_groups.has(group_name):
 		return false
-	selected_groups[loc_id].erase(group_name)
-	if selected_groups[loc_id].empty():
-		selected_groups.erase(loc_id)
+	selected_groups.erase(group_name)
 	return true
 
 func update_location_chars():
+	var mass_select = []
 	for loc in $FromLocList/LocScroll/LocCatList.get_children():
 #		for loc in cat.get_node('offset/LocList').get_children():
-		if !loc.has_meta('location'):
+		if loc.is_queued_for_deletion() or !loc.has_meta('location'):
 			continue
 		var cloc = loc.get_meta('location')
 		var show_chars = true
@@ -847,13 +872,18 @@ func update_location_chars():
 				continue
 			group.visible = show_chars
 			var loc_id = group.get_meta('location')
-			group.get_node('Button').pressed = (
-					selected_groups.has(loc_id)
-					and selected_groups[loc_id].has(group.get_meta('group')))
+			var group_btn = group.get_node('Button')
+			group_btn.pressed = selected_groups.has(group.get_meta('group'))
 			if group.get_meta('location') == 'travel':
-				group.get_node('Button').disabled = true
+				group_btn.disabled = true
 			else:
-				group.get_node('Button').disabled = (selected_loc != null and loc_id != selected_loc)
+				group_btn.disabled = (selected_loc != null and loc_id != selected_loc)
+			if show_chars and !group_btn.pressed and !group_btn.disabled:
+				mass_select.append({
+					btn_node = group_btn,
+					act_func = 'group_press_virt',
+					act_args = [weakref(group)]
+				})
 			for ch in group.get_node('offset/LocList').get_children():
 				if !ch.has_meta('character'):
 					continue
@@ -865,9 +895,16 @@ func update_location_chars():
 					ch.disabled = true
 				elif selected_loc != null and ch.get_meta('location') != selected_loc:
 					ch.disabled = true
+				if show_chars and !ch.pressed and !ch.disabled:
+					mass_select.append({
+						btn_node = ch,
+						act_func = 'char_loc_press_virt',
+						act_args = [weakref(ch)]
+					})
 #				ch.get_node('group').disabled = ch.disabled
 #				if !person.is_controllable(): 
 #					ch.disabled = true
+	input_handler.start_mass_select(self, mass_select)
 
 
 func location_press(location, mode):
@@ -1019,8 +1056,7 @@ func add_sel_char_to_group(group_name):
 	change_group_for_chars(group_name)
 
 func rename_group(group_name, loc_id):
-	group_to_rename.old_name = group_name
-	group_to_rename.loc_id = loc_id
+	group_to_rename = group_name
 	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT)
 	node.open(self, 'set_new_group_name', group_name, '', 'check_group_new_name')
 
@@ -1033,33 +1069,37 @@ func check_group_new_name(new_name):
 
 func set_new_group_name(new_name):
 	new_name = new_name.strip_edges()
-	if group_to_rename.old_name == null:
+	if group_to_rename == null:
 		push_error("set_new_group_name: no group_to_rename was set!")
 		return
-	for ch_id in char_groups[group_to_rename.loc_id][group_to_rename.old_name]:
+	for ch_id in char_groups[group_to_rename].chars:
 		var person = characters_pool.get_char_by_id(ch_id)
 		person.set_loc_group(new_name)
-	group_to_rename.old_name = null
-	group_to_rename.loc_id = null
+	var groups_ref = ResourceScripts.game_party.travel_groups_ref
+	groups_ref[new_name] = groups_ref[group_to_rename]
+	group_to_rename = null
 	reset_from()
 
-func make_new_group_one(ch_id):
+func prepare_new_group_one(ch_id):
 	group_move_chars = [ch_id]
 	ask_group_name()
 
-func make_new_group_sel():
+func prepare_new_group_sel():
 	if selected_chars.empty():
-		push_error("make_new_group_selected: at least 1 char should be selected!")
+		push_error("prepare_new_group_sel: at least 1 char should be selected!")
 		return
 	group_move_chars = selected_chars
 	ask_group_name()
 
 func ask_group_name():
 	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT)
-	node.open(self, 'change_group_for_chars', make_new_group_name(), '', 'check_group_new_name')
+	node.open(self, 'make_new_group', make_new_group_name(), '', 'check_group_new_name')
+
+func make_new_group(new_group):
+	new_group = new_group.strip_edges()
+	change_group_for_chars(new_group)
 
 func change_group_for_chars(new_group):
-	new_group = new_group.strip_edges()#needed only for ask_group_name()
 	for ch_id in group_move_chars:
 		var person = characters_pool.get_char_by_id(ch_id)
 		person.set_loc_group(new_group)
@@ -1067,10 +1107,7 @@ func change_group_for_chars(new_group):
 	reset_from()
 
 func has_group(group_name):
-	for loc_id in char_groups:
-		if char_groups[loc_id].has(group_name):
-			return true
-	return false
+	return char_groups.has(group_name)
 
 func make_new_group_name():
 	var i = 1
@@ -1081,17 +1118,80 @@ func make_new_group_name():
 		i += 1
 	return "Error name"
 
+func append_char_group(group_name, char_list):
+	char_groups[group_name] = {chars = char_list, priority = 10}
+	var groups_ref = ResourceScripts.game_party.travel_groups_ref
+	if groups_ref.has(group_name):
+		char_groups[group_name].priority = groups_ref[group_name].priority
+
+func update_groups_ref():
+	var groups_ref = ResourceScripts.game_party.travel_groups_ref
+	for group_name in char_groups:
+		if !groups_ref.has(group_name):
+			groups_ref[group_name] = {}
+		groups_ref[group_name].priority = char_groups[group_name].priority
+	for group_name in groups_ref.keys():
+		if !char_groups.has(group_name):
+			groups_ref.erase(group_name)
+
+func update_single_group_ref(group_name):
+	var groups_ref = ResourceScripts.game_party.travel_groups_ref
+	if !groups_ref.has(group_name):
+		groups_ref[group_name] = {}
+	groups_ref[group_name].priority = char_groups[group_name].priority
+
+func sort_groups(old_list):#REDO: not quite optimized
+	var new_list = []
+	var priority_dict = {}
+	for group_name in old_list:
+		var prior = char_groups[group_name].priority
+		if !priority_dict.has(prior):
+			priority_dict[prior] = []
+		priority_dict[prior].append(group_name)
+	var keys = priority_dict.keys()
+	keys.sort()
+	for i in keys:
+		new_list.append_array(priority_dict[i])
+	for i in range(0, new_list.size()):
+		char_groups[new_list[i]].priority = i
+		update_single_group_ref(new_list[i])
+		#updating travel_groups_ref here is not necessary, while there is update_groups_ref() at
+		#the end of build_from_locations()
+	return new_list
+
+func move_group_prior_up(group_name, loc_id):
+	if char_groups[group_name].priority == 0:
+		return
+	char_groups[group_name].priority -= 1
+	update_single_group_ref(group_name)
+	for rgp in char_groups_by_loc[loc_id]:
+		if rgp != group_name and char_groups[rgp].priority == char_groups[group_name].priority:
+			char_groups[rgp].priority += 1
+			update_single_group_ref(rgp)
+			break
+	reset_from()
+
+func move_group_prior_down(group_name, loc_id):
+	char_groups[group_name].priority += 1
+	update_single_group_ref(group_name)
+	for rgp in char_groups_by_loc[loc_id]:
+		if rgp != group_name and char_groups[rgp].priority == char_groups[group_name].priority:
+			char_groups[rgp].priority -= 1
+			update_single_group_ref(rgp)
+			break
+	reset_from()
+
 func open_char_menu(ch_id, loc_id):
 	var actions = [
 		{
 			"label": tr("TRAVEL_ADD_GROUP"),
-			"callback": funcref(self, "make_new_group_one"),
+			"callback": funcref(self, "prepare_new_group_one"),
 			"args": [ch_id]
 		}
 	]
 	var person = characters_pool.get_char_by_id(ch_id)
 	var cur_group = person.get_loc_group()
-	for group_name in char_groups[loc_id]:
+	for group_name in char_groups_by_loc[loc_id]:
 		if group_name == cur_group:
 			continue
 		actions.append({
@@ -1106,14 +1206,35 @@ func open_char_menu(ch_id, loc_id):
 			},
 			{
 				"label": tr("TRAVEL_ADD_GROUP"),
-				"callback": funcref(self, "make_new_group_sel")
+				"callback": funcref(self, "prepare_new_group_sel")
 			}
 		])
-		for group_name in char_groups[selected_loc]:
+		for group_name in char_groups_by_loc[selected_loc]:
 			actions.append({
 				"label": tr("TRAVEL_MOVE_TO") % group_name,
 				"callback": funcref(self, "add_sel_char_to_group"),
 				"args": [group_name]
 			})
-	$FromLocList/ContextMenu.open_with_actions(person, actions, get_viewport().get_mouse_position())
+	$FromLocList/ContextMenu.open_with_actions(person.get_short_name(), actions, get_viewport().get_mouse_position())
+
+func open_group_menu(group_name, loc_id):
+	var actions = [
+		{
+			"label": tr("TRAVEL_RENAME"),
+			"callback": funcref(self, "rename_group"),
+			"args": [group_name, loc_id]
+		}
+	]
+	if char_groups[group_name].priority > 0:
+		actions.append({
+			"label": tr("TRAVEL_MOVE_UP"),
+			"callback": funcref(self, "move_group_prior_up"),
+			"args": [group_name, loc_id]
+		})
+	actions.append({
+		"label": tr("TRAVEL_MOVE_DOWN"),
+		"callback": funcref(self, "move_group_prior_down"),
+		"args": [group_name, loc_id]
+	})
+	$FromLocList/ContextMenu.open_with_actions(group_name, actions, get_viewport().get_mouse_position())
 
