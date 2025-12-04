@@ -229,7 +229,7 @@ func _show_character_context_menu(button):
 			"args": [person]
 		}
 	]
-	CharacterContextMenu.open_with_actions(person, actions, get_viewport().get_mouse_position())
+	CharacterContextMenu.open_with_actions(person.get_short_name(), actions, get_viewport().get_mouse_position())
 
 
 func _context_open_person(person):
