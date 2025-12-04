@@ -6,13 +6,14 @@ func _ready():
 	connect("id_pressed", self, "_on_id_pressed")
 
 
-func open_with_actions(person, actions, global_position):
+func open_with_actions(title, actions, global_position):
 	if actions == null:
 		return
 	hide()
 	clear()
 	_actions.clear()
-	add_separator(person.get_short_name())
+	if title != null:
+		add_separator(title)
 	for action in actions:
 		if typeof(action) != TYPE_DICTIONARY:
 			continue

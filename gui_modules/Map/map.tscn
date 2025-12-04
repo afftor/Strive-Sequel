@@ -482,7 +482,7 @@ custom_fonts/font = ExtResource( 9 )
 text = "Location name"
 valign = 1
 
-[node name="rename" type="TextureButton" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocGroupList/LocGroup/Button"]
+[node name="menu" type="TextureButton" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocGroupList/LocGroup/Button"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -499,7 +499,7 @@ texture_disabled = ExtResource( 31 )
 expand = true
 stretch_mode = 4
 
-[node name="icon" type="TextureRect" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocGroupList/LocGroup/Button/rename"]
+[node name="icon" type="TextureRect" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocGroupList/LocGroup/Button/menu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 29 )
