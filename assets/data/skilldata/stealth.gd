@@ -137,6 +137,56 @@ var skills = {
 		value = 0.75,
 		random_factor_p = 0.1,
 	},
+	trap = {#enemy debuff: after using skill stun target for 2 turns and remove debuff. Requires trap
+		code = 'trap',
+		descript = '',
+		icon = "res://assets/images/iconsskills/Trap.png",
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['debuff'],
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_t_trap'})], 
+		cost = {mp = 1},
+		charges = 0,
+		combatcooldown = 2,
+		cooldown = 0,
+		catalysts = {trap = 1},
+		critchance = 0,
+		target = 'enemy',
+		target_number = 'line',
+		target_range = 'melee',
+		damage_type = 'weapon',
+		sfx = [{code = 'trap_cast', target = 'target', period = 'predamage'}],
+		sound = [],
+		value = [['0']],
+		damagestat = 'no_stat'
+	},
+	bolt_trap = {
+		code = 'bolt_trap',
+		descript = '',
+		icon = "res://assets/images/iconsskills/skill_bolt_trap.png",
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['debuff'],
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_t_bolttrap', push_value = true})], 
+		cost = {mp = 4},
+		charges = 0,
+		combatcooldown = 1,
+		cooldown = 0,
+		catalysts = {trap = 1},
+		critchance = 0,
+		target = 'enemy',
+		target_number = 'line',
+		target_range = 'melee',
+		damage_type = 'weapon',
+		sfx = [{code = 'trap_cast', target = 'target', period = 'predamage'}],
+		sound = [],
+		value = [['caster.atk', '*1.1']],
+		damagestat = 'no_stat'
+	},
 }
 var effects = {
 	e_t_hide2 = {
@@ -146,6 +196,68 @@ var effects = {
 		stack = 'hide',
 		tags = ['buff', 'hide'],
 		buffs = ['b_hide'],
+	},
+	e_t_trap = {
+		type = 'temp_s',
+		target = 'target',
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH, variables.TR_SKILL_FINISH],
+		stack = 'trap_debuff',
+		buffs = ['b_trap'],
+		sub_effects = ['e_tr_trap']
+	},
+	e_tr_trap = {
+		type = 'trigger',
+		target = 'target',
+		trigger = [variables.TR_CAST],
+		req_skill = false,
+		conditions = [{type = 'random', value = 0.5}],
+		atomic = [],
+		buffs = [],
+		sub_effects = ['e_trap', {
+			type = 'oneshot',
+			target = 'owner',
+			atomic = [{type = 'sfx', value = 'trap'}]
+		}]
+	},
+	e_trap = { #shoud be actual stun
+		type = 'temp_s',
+		target = 'owner',
+		stack = 'stun',
+		tick_event = variables.TR_TURN_F,
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 2,
+		tags = ['stun', 'disable'],
+		buffs = ['b_stun'],
+	},
+	
+	e_t_bolttrap = {
+		type = 'temp_s',
+		target = 'target',
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH, variables.TR_SKILL_FINISH],
+		atomic = [],
+		args = {damage = {obj = 'skill', func = 'get', arg = 'process_value'},},
+		stack = 'bolttrap_debuff',
+		buffs = ['b_bolttrap'],
+		sub_effects = ['e_tr_bolttrap']
+	},
+	e_tr_bolttrap = {
+		type = 'trigger',
+		target = 'target',
+		trigger = [variables.TR_CAST],
+		req_skill = false,
+		conditions = [{type = 'random', value = 0.5}],
+		args = {damage = {obj = 'parent', func = 'arg', arg = 'damage'}},
+		atomic = [],
+		buffs = [],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'owner',
+			args = {
+				value = {obj = 'parent', func = 'arg', arg = 'damage'},
+				src = {obj = 'self', func = 'src', src = 'normal'},
+				},
+			atomic = [{type = 'sfx', value = 'bolt_trap'}, 'a_damage_simple']
+		}],
 	},
 }
 var atomic_effects = {}

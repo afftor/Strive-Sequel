@@ -644,7 +644,7 @@ margin_top = 33.0
 margin_right = 1169.0
 margin_bottom = 184.0
 custom_constants/vseparation = 20
-custom_constants/hseparation = 48
+custom_constants/hseparation = 16
 columns = 4
 
 [node name="Button" type="TextureButton" parent="Actions/GridContainer"]
