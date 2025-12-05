@@ -1,4 +1,4 @@
-[gd_scene load_steps=222 format=2]
+[gd_scene load_steps=218 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=2]
@@ -123,7 +123,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_30.tres" type="DynamicFont" id=121]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_36.tres" type="DynamicFont" id=122]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_30.tres" type="DynamicFont" id=123]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_disabled.png" type="Texture" id=124]
+[ext_resource path="res://gui_modules/CharacterInfo/SexTraitsPanel.gd" type="Script" id=124]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSiblingsModule.gd" type="Script" id=125]
 [ext_resource path="res://gui_modules/CharacterInfo/RelativesPanel.gd" type="Script" id=126]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=127]
@@ -157,7 +157,6 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/icons_40x40/group.png" type="Texture" id=155]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_traits_hover.png" type="Texture" id=156]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/bg.png" type="Texture" id=157]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu.png" type="Texture" id=158]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset_training_pressed.png" type="Texture" id=159]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_pressed.png" type="Texture" id=160]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/cirlcle.png" type="Texture" id=161]
@@ -165,7 +164,6 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_hover.png" type="Texture" id=163]
 [ext_resource path="res://assets/images/gui/spirit.png" type="Texture" id=164]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_default.png" type="Texture" id=165]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu_pressed.png" type="Texture" id=166]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu_hover.png" type="Texture" id=167]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassAchieved/panel_class.png" type="Texture" id=168]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/icon_serious.png" type="Texture" id=169]
@@ -258,12 +256,8 @@ texture = ExtResource( 132 )
 region_rect = Rect2( 0, 0, 130, 40 )
 
 [sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 156 )
-region_rect = Rect2( 0, 0, 100, 100 )
-margin_left = 31.0
-margin_right = 27.0
-margin_top = 29.0
-margin_bottom = 30.0
+texture = ExtResource( 72 )
+region_rect = Rect2( 0, 0, 970, 920 )
 
 [sub_resource type="StyleBoxTexture" id=31]
 texture = ExtResource( 145 )
@@ -297,30 +291,9 @@ margin_right = 13.2964
 margin_top = 11.7839
 margin_bottom = 9.9723
 
-[sub_resource type="StyleBoxTexture" id=6]
-texture = ExtResource( 166 )
-region_rect = Rect2( 0, 0, 116, 54 )
-margin_left = 13.2964
-margin_right = 13.2964
-margin_top = 11.7839
-margin_bottom = 9.9723
-
-[sub_resource type="StyleBoxTexture" id=7]
-texture = ExtResource( 124 )
-region_rect = Rect2( 0, 0, 230, 40 )
-margin_left = 2.0
-margin_right = 2.0
-margin_top = 2.0
-margin_bottom = 2.2453
-modulate_color = Color( 0.196078, 0.196078, 0.196078, 1 )
-
 [sub_resource type="StyleBoxTexture" id=8]
-texture = ExtResource( 158 )
-region_rect = Rect2( 0, 0, 116, 54 )
-margin_left = 13.2964
-margin_right = 13.2964
-margin_top = 11.7839
-margin_bottom = 9.9723
+texture = ExtResource( 69 )
+region_rect = Rect2( 0, 0, 1920, 1080 )
 
 [sub_resource type="DynamicFont" id=35]
 size = 22
@@ -1681,8 +1654,6 @@ margin_right = 464.0
 margin_bottom = 130.0
 rect_min_size = Vector2( 0, 130 )
 custom_styles/hover = SubResource( 34 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/disabled = SubResource( 7 )
 custom_styles/normal = SubResource( 8 )
 toggle_mode = true
 
@@ -1742,8 +1713,6 @@ margin_right = 464.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 0, 150 )
 custom_styles/hover = SubResource( 34 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/disabled = SubResource( 7 )
 custom_styles/normal = SubResource( 8 )
 toggle_mode = true
 
@@ -1953,6 +1922,7 @@ margin_top = 50.0
 margin_right = 276.0
 margin_bottom = 651.0
 custom_styles/panel = SubResource( 42 )
+script = ExtResource( 124 )
 
 [node name="Label" type="Label" parent="SlaveInfoModule/SexTraitsPanel"]
 light_mask = 0
