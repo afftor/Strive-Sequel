@@ -114,7 +114,7 @@ func update(person = null, from_dialogue = false):
 			newbutton.get_node("Label").text = tr("SEXSKILL"+i.to_upper())
 			newbutton.get_node("ProgressBar").value = s_skills[ii]
 			newbutton.get_node("ProgressBar/Label").text = str(floor(s_skills[ii])) + '/100'
-			globals.connecttexttooltip(newbutton,  person.translate(tr("SEXSKILL"+i.to_upper()+"DESCRIPT")) + "\nCurrent level:" + str(floor(s_skills[ii])))
+			globals.connecttexttooltip(newbutton,  person.translate(tr("SEXSKILL"+i.to_upper()+"DESCRIPT")))
 	
 		rebuild_traits()
 	

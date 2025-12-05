@@ -84,11 +84,25 @@ func update():
 			+ "\n" + person.get_fame_bonus_desc()
 			)
 		
+		$Panel/maininfo/personality/label.text = tr("PERSONALITYNAME" + person.get_stat("personality").to_upper())
+		$Panel/maininfo/personality/icon.texture = personality_icons[person.get_stat('personality')]
+		
+		globals.connecttexttooltip($Panel/maininfo/personality, tr('INFOPERSONALITY'))
+		
 		$Description/RichTextLabel.bbcode_text = person.make_description()
 		
 		update_traitlist()
 		$VBoxContainer/panel3.visible = (person.is_master() and person.check_trait('succubus'))
 		open_upgrade_tab(1)
+
+var personality_icons = {
+	bold = load("res://assets/Textures_v2/MANSION/personality_bold.png"),
+	kind = load("res://assets/Textures_v2/MANSION/personality_kind.png"),
+	shy = load("res://assets/Textures_v2/MANSION/personality_shy.png"),
+	serious = load("res://assets/Textures_v2/MANSION/personality_serious.png"),
+	neutral = load("res://assets/Textures_v2/MANSION/personality_neutral.png"),
+	
+}
 
 
 func update_traitlist():

@@ -1,5 +1,4 @@
-
-[gd_scene load_steps=208 format=2]
+[gd_scene load_steps=222 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=2]
@@ -131,8 +130,8 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/ButtonTextOnly.tres" type="Theme" id=128]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big.png" type="Texture" id=129]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_mp.png" type="Texture" id=130]
-[ext_resource path="res://assets/Textures_v2/Universal/Panels/frame_skill_hover.png" type="Texture" id=131]
-[ext_resource path="res://assets/Textures_v2/Universal/Panels/frame_skill_active.png" type="Texture" id=132]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mods_pressed.png" type="Texture" id=131]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mods.png" type="Texture" id=132]
 [ext_resource path="res://gui_modules/CharacterInfo/TrUpgradesList.gd" type="Script" id=133]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/back_panel_hero_info.png" type="Texture" id=134]
 [ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=135]
@@ -175,8 +174,15 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/icon_kind.png" type="Texture" id=172]
 [ext_resource path="res://assets/Textures_v2/MANSION/crown.png" type="Texture" id=173]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/icon_shy_chary.png" type="Texture" id=174]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mods_hover.png" type="Texture" id=175]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/panel_trainings.png" type="Texture" id=176]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/frame_skill_hover.png" type="Texture" id=177]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/frame_skill_active.png" type="Texture" id=178]
+[ext_resource path="res://assets/Textures_v2/TraitRemovePanel/panel_traits_manage.png" type="Texture" id=179]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonred.png" type="Texture" id=180]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/bd_rhombus.png" type="Texture" id=181]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonred_hover.png" type="Texture" id=182]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonred_pressed.png" type="Texture" id=183]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesBig.tres" type="DynamicFont" id=188]
 [ext_resource path="res://assets/Fonts_v2/Noto_Serif/NotoSerif-Italic.ttf" type="DynamicFontData" id=189]
 
@@ -187,6 +193,18 @@ margin_left = 7.56804
 margin_right = 7.56804
 margin_top = 10.8903
 margin_bottom = 7.14759
+
+[sub_resource type="StyleBoxTexture" id=43]
+texture = ExtResource( 182 )
+region_rect = Rect2( 0, 0, 194, 58 )
+
+[sub_resource type="StyleBoxTexture" id=44]
+texture = ExtResource( 183 )
+region_rect = Rect2( 0, 0, 194, 58 )
+
+[sub_resource type="StyleBoxTexture" id=45]
+texture = ExtResource( 180 )
+region_rect = Rect2( 0, 0, 194, 58 )
 
 [sub_resource type="StyleBoxTexture" id=15]
 texture = ExtResource( 112 )
@@ -226,6 +244,18 @@ margin_left = 7.8837
 margin_right = 8.75967
 margin_top = 9.23195
 margin_bottom = 8.64576
+
+[sub_resource type="StyleBoxTexture" id=39]
+texture = ExtResource( 175 )
+region_rect = Rect2( 0, 0, 130, 40 )
+
+[sub_resource type="StyleBoxTexture" id=40]
+texture = ExtResource( 131 )
+region_rect = Rect2( 0, 0, 130, 40 )
+
+[sub_resource type="StyleBoxTexture" id=41]
+texture = ExtResource( 132 )
+region_rect = Rect2( 0, 0, 130, 40 )
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 156 )
@@ -301,6 +331,10 @@ font_data = ExtResource( 38 )
 size = 15
 use_filter = true
 font_data = ExtResource( 39 )
+
+[sub_resource type="StyleBoxTexture" id=42]
+texture = ExtResource( 179 )
+region_rect = Rect2( 0, 0, 690, 800 )
 
 [sub_resource type="DynamicFont" id=20]
 size = 36
@@ -553,7 +587,7 @@ light_mask = 0
 margin_left = 1.0
 margin_top = -41.0
 margin_right = 283.0
-margin_bottom = 248.0
+margin_bottom = 284.0
 custom_styles/panel = SubResource( 13 )
 
 [node name="loyaltylabel" type="Label" parent="SlaveInfoModule/Panel" groups=["hide_master", "hide_stranger"]]
@@ -570,10 +604,10 @@ __meta__ = {
 }
 
 [node name="maininfo" type="VBoxContainer" parent="SlaveInfoModule/Panel"]
-margin_top = 29.0
+margin_top = 22.0
 margin_right = 268.0
-margin_bottom = 262.0
-custom_constants/separation = 18
+margin_bottom = 302.0
+custom_constants/separation = 15
 
 [node name="type" type="Control" parent="SlaveInfoModule/Panel/maininfo"]
 margin_right = 268.0
@@ -602,9 +636,9 @@ valign = 1
 clip_text = true
 
 [node name="Race" type="Control" parent="SlaveInfoModule/Panel/maininfo"]
-margin_top = 62.0
+margin_top = 59.0
 margin_right = 268.0
-margin_bottom = 106.0
+margin_bottom = 103.0
 rect_min_size = Vector2( 0, 44 )
 
 [node name="label" type="Label" parent="SlaveInfoModule/Panel/maininfo/Race"]
@@ -631,9 +665,9 @@ texture = ExtResource( 114 )
 expand = true
 
 [node name="fame" type="Control" parent="SlaveInfoModule/Panel/maininfo"]
-margin_top = 124.0
+margin_top = 118.0
 margin_right = 268.0
-margin_bottom = 168.0
+margin_bottom = 162.0
 rect_min_size = Vector2( 0, 44 )
 
 [node name="icon" type="TextureRect" parent="SlaveInfoModule/Panel/maininfo/fame"]
@@ -659,10 +693,38 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="price" type="Control" parent="SlaveInfoModule/Panel/maininfo" groups=["hide_master"]]
-margin_top = 186.0
+[node name="personality" type="Control" parent="SlaveInfoModule/Panel/maininfo"]
+margin_top = 177.0
 margin_right = 268.0
-margin_bottom = 230.0
+margin_bottom = 221.0
+rect_min_size = Vector2( 0, 44 )
+
+[node name="label" type="Label" parent="SlaveInfoModule/Panel/maininfo/personality"]
+light_mask = 0
+margin_left = 74.0
+margin_right = 271.0
+margin_bottom = 42.0
+mouse_filter = 1
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 11 )
+text = "Type"
+align = 1
+valign = 1
+clip_text = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="icon" type="TextureRect" parent="SlaveInfoModule/Panel/maininfo/personality"]
+margin_left = 14.869
+margin_right = 58.8691
+margin_bottom = 44.001
+texture = ExtResource( 20 )
+
+[node name="price" type="Control" parent="SlaveInfoModule/Panel/maininfo" groups=["hide_master"]]
+margin_top = 236.0
+margin_right = 268.0
+margin_bottom = 280.0
 rect_min_size = Vector2( 0, 44 )
 
 [node name="label" type="Label" parent="SlaveInfoModule/Panel/maininfo/price"]
@@ -690,8 +752,11 @@ texture = ExtResource( 20 )
 [node name="DescriptionButton" type="Button" parent="SlaveInfoModule"]
 margin_left = 971.0
 margin_top = -41.0
-margin_right = 1668.0
+margin_right = 1672.0
 margin_bottom = 3.0
+custom_styles/hover = SubResource( 43 )
+custom_styles/pressed = SubResource( 44 )
+custom_styles/normal = SubResource( 45 )
 text = "Description"
 
 [node name="Description" type="Panel" parent="SlaveInfoModule"]
@@ -814,7 +879,7 @@ margin_bottom = 574.0
 custom_styles/panel = SubResource( 16 )
 
 [node name="Panel3" type="Panel" parent="SlaveInfoModule"]
-margin_top = 248.0
+margin_top = 284.0
 margin_right = 283.0
 margin_bottom = 718.0
 custom_styles/panel = SubResource( 14 )
@@ -841,6 +906,9 @@ margin_left = 11.0
 margin_top = 667.0
 margin_right = 274.0
 margin_bottom = 705.0
+custom_styles/hover = SubResource( 39 )
+custom_styles/pressed = SubResource( 40 )
+custom_styles/normal = SubResource( 41 )
 toggle_mode = true
 text = "Sex Traits"
 
@@ -994,17 +1062,16 @@ anchor_bottom = 1.0
 margin_left = 2.0
 margin_top = 154.0
 margin_right = -20.0
-margin_bottom = -218.0
+margin_bottom = -154.0
 size_flags_vertical = 3
 theme = ExtResource( 15 )
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="GridContainer" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training/ScrollContainer"]
-margin_right = 200.0
-margin_bottom = 40.0
 columns = 3
 
 [node name="Button" type="TextureButton" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training/ScrollContainer/VBoxContainer"]
+visible = false
 margin_right = 200.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 200, 40 )
@@ -1038,10 +1105,10 @@ clip_text = true
 [node name="HBoxContainer2" type="HBoxContainer" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = -194.0
-margin_right = 690.0
-margin_bottom = -94.0
+margin_left = 13.0
+margin_top = -76.0
+margin_right = 898.0
+margin_bottom = 24.0
 rect_scale = Vector2( 0.7, 0.7 )
 custom_constants/separation = 20
 
@@ -1080,8 +1147,8 @@ margin_top = 13.0
 margin_right = 125.0
 margin_bottom = 133.0
 texture_normal = ExtResource( 147 )
-texture_pressed = ExtResource( 132 )
-texture_hover = ExtResource( 131 )
+texture_pressed = ExtResource( 178 )
+texture_hover = ExtResource( 177 )
 expand = true
 stretch_mode = 5
 
@@ -1172,10 +1239,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -130.0
-margin_top = -66.0
-margin_right = 120.0
-margin_bottom = -8.0
+margin_left = -144.0
+margin_top = -138.0
+margin_right = 106.0
+margin_bottom = -80.0
 texture_normal = ExtResource( 154 )
 texture_pressed = ExtResource( 159 )
 texture_hover = ExtResource( 171 )
@@ -1214,9 +1281,9 @@ texture = ExtResource( 164 )
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 16.0
-margin_top = -108.0
+margin_top = -131.0
 margin_right = 65.0
-margin_bottom = -66.0
+margin_bottom = -89.0
 texture = ExtResource( 173 )
 expand = true
 stretch_mode = 6
@@ -1226,9 +1293,9 @@ light_mask = 0
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 87.0
-margin_top = -107.0
+margin_top = -130.0
 margin_right = 142.0
-margin_bottom = -72.0
+margin_bottom = -95.0
 custom_fonts/font = ExtResource( 10 )
 text = "100"
 valign = 1
@@ -1237,10 +1304,10 @@ clip_text = true
 [node name="resistance" type="Control" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 166.0
-margin_top = -116.0
-margin_right = 319.0
-margin_bottom = -63.0
+margin_left = 478.0
+margin_top = -136.0
+margin_right = 631.0
+margin_bottom = -83.0
 mouse_filter = 1
 
 [node name="resistance" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training/resistance"]
@@ -1273,18 +1340,20 @@ anchor_bottom = 1.0
 margin_left = 10.0
 margin_top = 110.0
 margin_right = 690.0
-margin_bottom = 210.0
-custom_constants/separation = 20
+margin_bottom = 190.0
+custom_constants/separation = 8
 
 [node name="Button" type="TextureButton" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training_servant/HBoxContainer2"]
 visible = false
-margin_right = 101.0
-margin_bottom = 100.0
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
 toggle_mode = true
 texture_normal = ExtResource( 153 )
 texture_pressed = ExtResource( 156 )
 texture_hover = ExtResource( 156 )
 texture_disabled = ExtResource( 153 )
+expand = true
 
 [node name="icon" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training_servant/HBoxContainer2/Button"]
 show_behind_parent = true
@@ -1461,7 +1530,6 @@ margin_bottom = 45.0
 custom_fonts/font = ExtResource( 14 )
 
 [node name="finished" type="Control" parent="SlaveInfoModule/UpgradesPanel/UpgradesList"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -1498,7 +1566,7 @@ margin_right = -149.0
 margin_bottom = -228.0
 
 [node name="result_frame" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finished/VBoxContainer"]
-margin_right = 600.0
+margin_right = 464.0
 margin_bottom = 106.0
 texture = ExtResource( 138 )
 
@@ -1523,7 +1591,7 @@ clip_text = true
 
 [node name="select_text" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finished/VBoxContainer"]
 margin_top = 110.0
-margin_right = 600.0
+margin_right = 464.0
 margin_bottom = 163.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 122 )
@@ -1532,7 +1600,7 @@ clip_text = true
 
 [node name="list" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finished/VBoxContainer"]
 margin_top = 167.0
-margin_right = 600.0
+margin_right = 464.0
 margin_bottom = 220.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 122 )
@@ -1541,15 +1609,17 @@ clip_text = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finished/VBoxContainer"]
 margin_top = 224.0
-margin_right = 600.0
+margin_right = 464.0
 margin_bottom = 224.0
-custom_constants/separation = 20
+custom_constants/separation = 8
 
 [node name="Button" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finished/VBoxContainer/HBoxContainer2"]
 visible = false
-margin_right = 101.0
-margin_bottom = 100.0
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
 texture = ExtResource( 156 )
+expand = true
 
 [node name="icon" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finished/VBoxContainer/HBoxContainer2/Button"]
 show_behind_parent = true
@@ -1574,10 +1644,10 @@ clip_text = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -21.0
-margin_top = -59.0
-margin_right = 22.0
-margin_bottom = 17.0
+margin_left = -11.0
+margin_top = -64.0
+margin_right = 13.0
+margin_bottom = 6.0
 custom_styles/panel = SubResource( 33 )
 
 [node name="header" type="RichTextLabel" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish"]
@@ -1601,15 +1671,15 @@ margin_bottom = -190.0
 theme = ExtResource( 15 )
 
 [node name="rewards" type="VBoxContainer" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish/ScrollContainer"]
-margin_right = 464.0
+margin_right = 445.0
 size_flags_horizontal = 3
 custom_constants/separation = 5
 
 [node name="button" type="Button" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish/ScrollContainer/rewards"]
 visible = false
-margin_right = 600.0
-margin_bottom = 150.0
-rect_min_size = Vector2( 0, 150 )
+margin_right = 464.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 0, 130 )
 custom_styles/hover = SubResource( 34 )
 custom_styles/pressed = SubResource( 6 )
 custom_styles/disabled = SubResource( 7 )
@@ -1668,7 +1738,7 @@ Confirm"
 
 [node name="button2" type="Button" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish/ScrollContainer/rewards"]
 visible = false
-margin_right = 600.0
+margin_right = 464.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 0, 150 )
 custom_styles/hover = SubResource( 34 )
@@ -1702,9 +1772,9 @@ mouse_filter = 2
 [node name="confirm" type="TextureButton" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 123.408
+margin_left = 91.408
 margin_top = -116.663
-margin_right = 373.408
+margin_right = 341.408
 margin_bottom = -58.663
 texture_normal = ExtResource( 154 )
 texture_pressed = ExtResource( 159 )
@@ -1731,9 +1801,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -367.592
+margin_left = -335.592
 margin_top = -116.663
-margin_right = -117.592
+margin_right = -85.592
 margin_bottom = -58.663
 texture_normal = ExtResource( 154 )
 texture_pressed = ExtResource( 159 )
@@ -1765,8 +1835,8 @@ align = 2
 [node name="SexSkillsContainer" type="ScrollContainer" parent="SlaveInfoModule"]
 light_mask = 0
 margin_left = 9.0
-margin_top = 341.0
-margin_right = 275.0
+margin_top = 367.0
+margin_right = 272.0
 margin_bottom = 652.0
 theme = ExtResource( 40 )
 scroll_horizontal_enabled = false
@@ -1775,30 +1845,36 @@ scroll_horizontal_enabled = false
 light_mask = 0
 custom_constants/separation = 7
 
-[node name="Button" type="TextureRect" parent="SlaveInfoModule/SexSkillsContainer/VBoxContainer"]
+[node name="Button" type="HBoxContainer" parent="SlaveInfoModule/SexSkillsContainer/VBoxContainer"]
 visible = false
 light_mask = 0
+margin_right = 257.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 
 [node name="Label" type="Label" parent="SlaveInfoModule/SexSkillsContainer/VBoxContainer/Button"]
 light_mask = 0
-margin_left = 3.4998
-margin_top = 5.88629
-margin_right = 166.5
-margin_bottom = 40.8863
+margin_top = 8.0
+margin_right = 125.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 125, 0 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_as_outline = 1
 custom_fonts/font = SubResource( 35 )
 text = "Penetration"
+align = 1
+clip_text = true
 
 [node name="ProgressBar" type="TextureProgress" parent="SlaveInfoModule/SexSkillsContainer/VBoxContainer/Button"]
 light_mask = 0
-margin_left = 137.0
-margin_top = 16.0
-margin_right = 265.0
-margin_bottom = 36.0
+margin_left = 129.0
+margin_top = 15.0
+margin_right = 257.0
+margin_bottom = 35.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+size_flags_stretch_ratio = 2.19
 texture_over = ExtResource( 41 )
 texture_progress = ExtResource( 42 )
 
@@ -1816,10 +1892,10 @@ text = "1/100"
 align = 1
 
 [node name="SexSkillsLabel" type="Label" parent="SlaveInfoModule"]
-margin_left = 8.0
-margin_top = 258.0
-margin_right = 271.0
-margin_bottom = 290.0
+margin_left = 8.49832
+margin_top = 292.708
+margin_right = 271.498
+margin_bottom = 324.708
 text = "Sex Skills"
 align = 1
 
@@ -1851,10 +1927,10 @@ rect_min_size = Vector2( 200, 35 )
 text = "Bald"
 
 [node name="ConsentLabel" type="Label" parent="SlaveInfoModule"]
-margin_left = 16.5676
-margin_top = 293.4
-margin_right = 273.568
-margin_bottom = 325.4
+margin_left = 12.8218
+margin_top = 324.861
+margin_right = 269.822
+margin_bottom = 356.861
 mouse_filter = 1
 custom_colors/font_color = Color( 0.929412, 0.156863, 0.862745, 1 )
 text = "SIBLINGMODULECONSENT"
@@ -1873,9 +1949,10 @@ align = 1
 visible = false
 light_mask = 0
 margin_left = 10.0
-margin_top = 196.0
+margin_top = 50.0
 margin_right = 276.0
 margin_bottom = 651.0
+custom_styles/panel = SubResource( 42 )
 
 [node name="Label" type="Label" parent="SlaveInfoModule/SexTraitsPanel"]
 light_mask = 0
@@ -1892,17 +1969,14 @@ clip_text = true
 [node name="ScrollContainer" type="ScrollContainer" parent="SlaveInfoModule/SexTraitsPanel"]
 light_mask = 0
 margin_left = 12.0
-margin_top = 52.0
-margin_right = 242.0
-margin_bottom = 406.0
+margin_top = 76.0
+margin_right = 256.0
+margin_bottom = 551.0
 theme = ExtResource( 15 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SlaveInfoModule/SexTraitsPanel/ScrollContainer"]
 light_mask = 0
-margin_right = 230.0
+margin_right = 244.0
 size_flags_horizontal = 3
 custom_constants/separation = 5
 
@@ -1910,7 +1984,7 @@ custom_constants/separation = 5
 visible = false
 light_mask = 0
 margin_right = 230.0
-margin_bottom = 55.0
+margin_bottom = 53.0
 theme = ExtResource( 127 )
 disabled = true
 toggle_mode = true
@@ -1932,7 +2006,8 @@ light_mask = 0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -35.0
+margin_top = -42.4916
+margin_bottom = -7.49158
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 10 )
 text = "SIBLINGMODULETRAITCAPACITY"

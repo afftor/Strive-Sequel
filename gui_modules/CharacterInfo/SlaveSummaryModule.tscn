@@ -1,5 +1,6 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=42 format=2]
 
+[ext_resource path="res://assets/Themes_v2/MANSION/Sex_Buttons_Font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/images/portraits/cali_collar_prt.png" type="Texture" id=2]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_exp_pressed.png" type="Texture" id=3]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big.png" type="Texture" id=4]
@@ -36,27 +37,10 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Buttons/arrow_charswap_pressed.png" type="Texture" id=38]
 [ext_resource path="res://assets/images/iconsraces/human.png" type="Texture" id=42]
 [ext_resource path="res://assets/images/iconsages/T.png" type="Texture" id=43]
-[ext_resource path="res://MainFont.tres" type="DynamicFont" id=44]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_pressed.png" type="Texture" id=45]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city.png" type="Texture" id=46]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_hover.png" type="Texture" id=47]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_disabled.png" type="Texture" id=48]
-
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 47 )
-region_rect = Rect2( 0, 0, 272, 58 )
-
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 45 )
-region_rect = Rect2( 0, 0, 272, 58 )
-
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 48 )
-region_rect = Rect2( 0, 0, 272, 58 )
-
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 46 )
-region_rect = Rect2( 0, 0, 272, 58 )
 
 [node name="SlaveSummaryModule" type="Panel"]
 light_mask = 0
@@ -663,17 +647,25 @@ custom_constants/vseparation = 20
 custom_constants/hseparation = 48
 columns = 4
 
-[node name="Button" type="Button" parent="Actions/GridContainer"]
+[node name="Button" type="TextureButton" parent="Actions/GridContainer"]
 visible = false
-margin_right = 250.0
+margin_right = 272.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 250, 60 )
-custom_fonts/font = ExtResource( 44 )
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/disabled = SubResource( 4 )
-custom_styles/normal = SubResource( 3 )
-text = "Chat"
+texture_normal = ExtResource( 46 )
+texture_pressed = ExtResource( 45 )
+texture_hover = ExtResource( 47 )
+texture_disabled = ExtResource( 48 )
+
+[node name="Label" type="Label" parent="Actions/GridContainer/Button"]
+margin_left = 25.0
+margin_top = 13.0
+margin_right = 246.0
+margin_bottom = 47.0
+custom_fonts/font = ExtResource( 1 )
+text = "Text Button"
+align = 1
+clip_text = true
 
 [node name="professions" type="GridContainer" parent="."]
 visible = false
@@ -789,9 +781,6 @@ margin_left = 851.32
 margin_top = 6.0
 margin_right = 851.32
 margin_bottom = 131.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Left" type="TextureButton" parent="ChangeSlaveButtons"]
 margin_left = -624.0

@@ -4,24 +4,29 @@ extends Control
 onready var CharMainModule = get_parent()
 
 var selected_person
-var actions = ['chat','date','leveling','relations','customization','inventory','occupation','expel']
+var actions = ['leveling','relations','customization','expel','inventory','occupation','date','chat']
 
 var chat_button
 var date_button
 var expel_button
+var leveling_button
+var relations_button
+var customization_button
+var inventory_button
+var occupation_button
+
 
 func _ready():
 	
 	for i in actions:
 		var newbutton = input_handler.DuplicateContainerTemplate($Actions/GridContainer)
-		newbutton.text = i
+		newbutton.get_node("Label").text = tr('BTN' + i.to_upper())
+		if i in ['inventory','occupation','date','chat']:
+			newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet.png")
+			newbutton.texture_pressed = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_pressed.png")
+			newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_hover.png")
 		newbutton.connect('pressed',self,i)
-		if i == 'chat':
-			chat_button = newbutton
-		if i == 'date':
-			date_button = newbutton
-		if i == 'expel':
-			expel_button = newbutton
+		self[i+'_button'] = newbutton
 	#$Actions/GridContainer/Buttonleveling.connect("pressed", self, 'open_skills')
 	var base_stats_container = $VBoxContainer2/TextureRect2
 	for i in $base_stats.get_children():
@@ -134,11 +139,11 @@ func change_slave(param):
 		change_slave(param)
 
 func update_buttons():
-	chat_button.visible = unique_dict.has(selected_person.get_stat('unique'))
-	date_button.visible = !selected_person.is_master()
-	date_button.disabled = ResourceScripts.game_globals.weekly_dates_left <= 0
-	date_button.text = "Date (%d/%d)" % [ResourceScripts.game_globals.weekly_dates_left, ResourceScripts.game_globals.weekly_dates_max]
-	expel_button.visible = !selected_person.is_master()
+	chat_button.disabled = !unique_dict.has(selected_person.get_stat('unique'))
+	date_button.disabled = selected_person.is_master()
+	date_button.disabled = !(ResourceScripts.game_globals.weekly_dates_left <= 0)
+	date_button.get_node("Label").text = tr("BTNDATE") + " (%d/%d)" % [ResourceScripts.game_globals.weekly_dates_left, ResourceScripts.game_globals.weekly_dates_max]
+	expel_button.disabled = selected_person.is_master()
 
 func update():
 	update_buttons()

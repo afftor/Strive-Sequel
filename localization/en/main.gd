@@ -294,6 +294,14 @@ using       button.""",
 	LMMCRAFT = "Craft",
 	LMMJOURNAL = "Journal",
 	LMMWORK = "Work",
+	BTNLEVELING = "Leveling",
+	BTNDATE = "Date",
+	BTNCHAT = "Chat",
+	BTNRELATIONS = "Relations",
+	BTNCUSTOMIZATION = "Customization",
+	BTNINVENTORY = "Inventory",
+	BTNOCCUPATION = "Occupation",
+	BTNEXPEL = "Expel",
 	MSLMNAME = "Character List",
 	MSLMSex = "Sex",
 	MSLMNNAME = "Name ",
@@ -2370,13 +2378,21 @@ Consent represents character's general acceptance of various sexual actions, but
 	INFOSEX_TRAITS = "Sex Traits provide additional effects during sexual interaction. They can be learned, activated and deactivated. Maximum number of activatable traits is based on Sex Factor.",
 	INFORULES_CONDS = "Conditions and rules can be toggled on character, affecting some of their stats and behavior.",
 	INFOPERSONALITY = """Character's personality will affect their banter and provide access to certain traits and bonuses.
-	Neutral: No bonuses
-	Bold: Incoming negative effects last 1 fewer turn, +5% Productivity
-	Kind: Outcoming positive buffs last 1 additional turn, +10% Service
-	Serious: Combat Ability cooldowns reduced by 1 turn (Can't be lower than 1 turn)
+[center]Neutral[/center]
+No bonuses
+[center]Bold[/center]
+Incoming negative effects last 1 fewer turn
++5% Productivity
+[center]Kind[/center]
+Outcoming positive buffs last 1 additional turn
++10% Service
+[center]Serious[/center]
+Combat Ability cooldowns reduced by 1 turn (Can't be lower than 1 turn)
 Task Crit Chance +3%
-	Shy: Spell Mana cost reduced by 15%
-+15% Loyalty Gain, -10% Subordinate weekly tax
+[center]Shy[/center]
+Spell Mana cost reduced by 15%
++15% Loyalty Gain
+-10% Subordinate weekly tax
 	""",
 	INFOPERSONALITYBOLD = """Bold
 Incoming negative effects last 1 fewer turn
@@ -18767,7 +18783,7 @@ Offspring will inherit only this parent's stats.""",
 	ENCHSPELL_MASTERY = "Spell Mastery",
 	ENCHSPELL_MASTERYDESCRIPT = "Increases Spell Damage and Healing effects by 5%+5%*level. Does not stack.",
 	ENCHPENETRATOR = "Penetrator",
-	ENCHPENETRATORDESCRIPT = "Increases Armor Penetration by 5%+5%*level and Speed by 3*Level.",
+	ENCHPENETRATORDESCRIPT = "Increases Armor Penetration by 5+5*level and Speed by 3*Level.",
 	ENCHSTUN_IMMUNE = "Stun Immunity",
 	ENCHSTUN_IMMUNEDESCRIPT = "Wearer can't be stunned.",
 	ENCHTHORNS = "Thorns",
