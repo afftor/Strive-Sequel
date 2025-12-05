@@ -1209,7 +1209,17 @@ func open_char_menu(ch_id, loc_id):
 				"callback": funcref(self, "prepare_new_group_sel")
 			}
 		])
+		var groups_of_selected_chars = {}
+		for ch_id in selected_chars:
+			for group_name in char_groups:
+				if char_groups[group_name].chars.has(ch_id):
+					groups_of_selected_chars[group_name] = true
+		var blocked_group
+		if groups_of_selected_chars.keys().size() == 1:
+			blocked_group = groups_of_selected_chars.keys()[0]
 		for group_name in char_groups_by_loc[selected_loc]:
+			if blocked_group and blocked_group == group_name:
+				continue
 			actions.append({
 				"label": tr("TRAVEL_MOVE_TO") % group_name,
 				"callback": funcref(self, "add_sel_char_to_group"),
