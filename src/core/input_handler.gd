@@ -223,6 +223,8 @@ var progress_data = {
 
 var mass_select_client
 var mass_select# = [{btn_node, act_node, act_func, act_args}]
+var mass_cur_selected
+var mass_first_selected
 
 func set_previous_scene(scene):
 	PreviousScene = scene
@@ -532,14 +534,37 @@ func _input(event):
 #	elif str(event.as_text().replace("Kp ",'')) in str(range(1,9)) \
 #		&& get_tree().get_root().get_node_or_null("dialogue") && get_tree().get_root().get_node("dialogue").is_visible():
 #		get_tree().get_root().get_node("dialogue").select_option(int(event.as_text()))
-	if (event is InputEventMouseMotion) and mass_select_client != null:
+	if mass_select_client != null:
 		if mass_select_client.get_ref() == null or !mass_select_client.get_ref().is_visible_in_tree():
 			stop_mass_select()
-		elif Input.is_action_pressed("LMB"):
+		elif event is InputEventMouseButton:
+			if event.is_action_pressed("LMB"):
+				for act in mass_select:
+					var btn_node = act.btn_node.get_ref()
+					if btn_node.is_visible_in_tree() and btn_node.get_global_rect().has_point(event.position):
+						mass_cur_selected = act
+						mass_first_selected = act
+						break
+			elif event.is_action_released("LMB"):
+				mass_cur_selected = null
+				mass_first_selected = null
+		elif (event is InputEventMouseMotion) and Input.is_action_pressed("LMB"):
+			var new_selected
 			for act in mass_select:
-				if act.btn_node.get_ref().get_global_rect().has_point(event.position):
-					act.act_node.get_ref().callv(act.act_func, act.act_args)
+				var btn_node = act.btn_node.get_ref()
+				if btn_node.is_visible_in_tree() and btn_node.get_global_rect().has_point(event.position):
+					new_selected = act
+					if (!mass_cur_selected
+							or mass_cur_selected.btn_node.get_ref() != new_selected.btn_node.get_ref()
+						):
+						new_selected.act_node.get_ref().callv(new_selected.act_func, new_selected.act_args)
 					break
+			mass_cur_selected = new_selected
+			if mass_first_selected:
+				if (!new_selected
+						or mass_first_selected.btn_node.get_ref() != new_selected.btn_node.get_ref()):
+					mass_first_selected.act_node.get_ref().callv(mass_first_selected.act_func, mass_first_selected.act_args)
+					mass_first_selected = null
 
 
 # func _input(event):
@@ -1944,11 +1969,14 @@ func if_has_translation(key):
 
 
 #mass select module
+#mind, that mass select will correctly work only with release-activated buttons
 func start_mass_select(client, actions):
 	if actions.empty():
 		return
 	mass_select_client = weakref(client)
 	mass_select = actions
+	mass_cur_selected = null
+	mass_first_selected = null
 	for act in mass_select:
 		act.btn_node = weakref(act.btn_node)
 		if act.has('act_node'):
@@ -1961,4 +1989,6 @@ func start_mass_select(client, actions):
 func stop_mass_select():
 	mass_select_client = null
 	mass_select = null
+	mass_cur_selected = null
+	mass_first_selected = null
 
