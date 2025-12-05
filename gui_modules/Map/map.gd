@@ -615,6 +615,7 @@ func build_from_locations():
 	if travel_data != null:
 		areas.travel_data = [travel_data]
 		sorted_keys.append('travel_data')
+	var mass_select = []
 	for area in sorted_keys:
 		#no need to clear container
 		for loc_data in areas[area]:
@@ -655,6 +656,11 @@ func build_from_locations():
 				group_cont.get_node('Button/menu').connect("pressed", self, "open_group_menu", [group_name, loc_data.id])
 				group_cont.visible = true
 				make_panel_for_group(group_cont.get_node('Button'), group_name)
+#				mass_select.append({
+#					btn_node = group_cont.get_node('Button'),
+#					act_func = 'group_press_virt',
+#					act_args = [weakref(group_cont)]
+#				})
 				for ch_id in loc_char_groups[group_name]:
 					var loc_button = input_handler.DuplicateContainerTemplate(group_cont.get_node('offset/LocList'), 'Button')
 					loc_button.set_meta('location', loc_data.id)
@@ -666,7 +672,13 @@ func build_from_locations():
 	#				loc_button.connect('mouse_exited', self, 'build_info')
 					loc_button.visible = true
 					make_panel_for_character(loc_button, ch_id)
+					mass_select.append({
+						btn_node = loc_button,
+						act_func = 'char_loc_press_virt',
+						act_args = [weakref(loc_button)]
+					})
 	update_groups_ref()
+	input_handler.start_mass_select(self, mass_select)
 
 
 
@@ -811,7 +823,7 @@ func char_loc_press(ch_id, loc_id):
 	update_location_chars()
 
 func char_loc_press_virt(ch_btn_ref):
-	if ch_btn_ref.get_ref().pressed:
+	if ch_btn_ref.get_ref().disabled:
 		return
 	var node = ch_btn_ref.get_ref()
 	char_loc_press(node.get_meta('character'), node.get_meta('location'))
@@ -832,7 +844,7 @@ func group_press(group_name, loc_id):
 	update_location_chars()
 
 func group_press_virt(group_ref):
-	if group_ref.get_ref().get_node('Button').pressed:
+	if group_ref.get_ref().get_node('Button').disabled:
 		return
 	var node = group_ref.get_ref()
 	group_press(node.get_meta('group'), node.get_meta('location'))
@@ -855,7 +867,6 @@ func try_erase_selected_group(group_name):
 	return true
 
 func update_location_chars():
-	var mass_select = []
 	for loc in $FromLocList/LocScroll/LocCatList.get_children():
 #		for loc in cat.get_node('offset/LocList').get_children():
 		if loc.is_queued_for_deletion() or !loc.has_meta('location'):
@@ -878,12 +889,6 @@ func update_location_chars():
 				group_btn.disabled = true
 			else:
 				group_btn.disabled = (selected_loc != null and loc_id != selected_loc)
-			if show_chars and !group_btn.pressed and !group_btn.disabled:
-				mass_select.append({
-					btn_node = group_btn,
-					act_func = 'group_press_virt',
-					act_args = [weakref(group)]
-				})
 			for ch in group.get_node('offset/LocList').get_children():
 				if !ch.has_meta('character'):
 					continue
@@ -895,16 +900,9 @@ func update_location_chars():
 					ch.disabled = true
 				elif selected_loc != null and ch.get_meta('location') != selected_loc:
 					ch.disabled = true
-				if show_chars and !ch.pressed and !ch.disabled:
-					mass_select.append({
-						btn_node = ch,
-						act_func = 'char_loc_press_virt',
-						act_args = [weakref(ch)]
-					})
 #				ch.get_node('group').disabled = ch.disabled
 #				if !person.is_controllable(): 
 #					ch.disabled = true
-	input_handler.start_mass_select(self, mass_select)
 
 
 func location_press(location, mode):
@@ -1209,7 +1207,17 @@ func open_char_menu(ch_id, loc_id):
 				"callback": funcref(self, "prepare_new_group_sel")
 			}
 		])
+		var groups_of_selected_chars = {}
+		for ch_id in selected_chars:
+			for group_name in char_groups:
+				if char_groups[group_name].chars.has(ch_id):
+					groups_of_selected_chars[group_name] = true
+		var blocked_group
+		if groups_of_selected_chars.keys().size() == 1:
+			blocked_group = groups_of_selected_chars.keys()[0]
 		for group_name in char_groups_by_loc[selected_loc]:
+			if blocked_group and blocked_group == group_name:
+				continue
 			actions.append({
 				"label": tr("TRAVEL_MOVE_TO") % group_name,
 				"callback": funcref(self, "add_sel_char_to_group"),
