@@ -15,6 +15,13 @@ func _ready():
 	screen.connect('pressed', self, 'toggle_drop_list', [false])
 
 func open_travel():
+	var map = gui_controller.mansion.get_node("map")
+	if gui_controller.current_screen == gui_controller.mansion:
+		map.set_return_context(null, null, null)
+	else:
+		map.set_return_context(gui_controller.current_screen, self, input_handler.selected_location)
+		gui_controller.mansion.show()
+		gui_controller.mansion.raise()
 	#gui_controller.current_screen == gui_controller.mansion
 	gui_controller.mansion.mansion_state = "travels"
 
