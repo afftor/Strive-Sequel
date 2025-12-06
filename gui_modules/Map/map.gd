@@ -183,6 +183,10 @@ var lands_count = {}
 var locs_order = ['capital', 'settlement', 'quest_location', 'dungeon', 'encounter']
 var locs_count = {}
 
+var return_screen = null
+var return_nav_module = null
+var return_location = null
+
 
 func _input(event):
 	if !visible:
@@ -253,19 +257,37 @@ func clear_dungeon_confirm():
 	build_info()
 
 
+func set_return_context(screen, nav_module, location):
+	return_screen = screen
+	return_nav_module = nav_module
+	return_location = location
+
+
 func close():
 #	get_parent().set_process_input(true)
 #	set_process_input(true)
 	if !visible: return
-	gui_controller.current_screen = gui_controller.mansion
+	var nav_to_restore = return_nav_module
+	var location_to_restore = return_location if return_location != null else input_handler.selected_location
+	var screen_to_restore = return_screen
+	return_nav_module = null
+	return_location = null
+	return_screen = null
+	gui_controller.current_screen = gui_controller.mansion if screen_to_restore == null else screen_to_restore
 	if gui_controller.clock != null:
 		gui_controller.clock.visible = true
 #		gui_controller.clock.restoreoldspeed()
-	input_handler.node_children_visible(get_parent(), null, true)
+	if screen_to_restore == null:
+		input_handler.node_children_visible(get_parent(), null, true)
 	get_parent().mansion_state = 'default'
 #	get_parent().match_state()
 	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
 	hide()
+	if screen_to_restore != null:
+		get_parent().hide()
+		if nav_to_restore != null:
+			nav_to_restore.select_location(location_to_restore)
+		return
 #	if get_parent().mansion_state == 'travels':
 #		get_parent().mansion_state = 'default'
 #
