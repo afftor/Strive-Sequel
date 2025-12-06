@@ -1654,7 +1654,6 @@ margin_bottom = -190.0
 theme = ExtResource( 15 )
 
 [node name="rewards" type="VBoxContainer" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish/ScrollContainer"]
-margin_right = 445.0
 size_flags_horizontal = 3
 custom_constants/separation = 5
 

@@ -10,6 +10,14 @@ func _ready():
 	$VBoxContainer/SexButton.connect("pressed", self, "open_sex")
 	#$VBoxContainer/SexButton.connect("pressed", self, "_button_clicked", ["sex", $VBoxContainer/SexButton])
 	$VBoxContainer/Journal.connect("toggled", self, "open_journal")
+	$VBoxContainer/options.connect("pressed", self, "open_menu")
+
+func open_menu():
+	gui_controller.game_menu = input_handler.get_spec_node(input_handler.NODE_GAMEMENU)
+	gui_controller.game_menu.show()
+	gui_controller.previous_screen = gui_controller.current_screen
+	gui_controller.current_screen = gui_controller.game_menu
+	gui_controller.update_modules()
 
 func _button_clicked(state, button):
 	if button.is_pressed():

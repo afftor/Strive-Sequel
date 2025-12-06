@@ -1,18 +1,26 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionLeftMenuModule.gd" type="Script" id=2]
-[ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Icons/icon_inventory_small.png" type="Texture" id=3]
-[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_sex_small.png" type="Texture" id=4]
+[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Medium.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/Textures_v2/MANSION/icon_gears_small.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Icons/icon_upgrades_small.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Buttons/buttonicon_pressed.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Icons/icon_craft_small.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Buttons/buttonicon.png" type="Texture" id=8]
-[ext_resource path="res://assets/Textures_v2/MANSION/Journal/icon_journal_small.png" type="Texture" id=9]
+[ext_resource path="res://assets/Textures_v2/MANSION/icon_journal_small.png" type="Texture" id=9]
 [ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Buttons/buttonicon_hover.png" type="Texture" id=10]
 [ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Icons/icon_travel_small.png" type="Texture" id=11]
 [ext_resource path="res://assets/Textures_v2/MANSION/panel_menu.png" type="Texture" id=12]
-[ext_resource path="res://assets/Textures_v2/MANSION/icon_job_small.png" type="Texture" id=13]
+[ext_resource path="res://assets/Textures_v2/MANSION/icon_job2_small.png" type="Texture" id=13]
+[ext_resource path="res://assets/Textures_v2/MANSION/icon_sexbad_small.png" type="Texture" id=14]
+[ext_resource path="res://assets/Textures_v2/MANSION/icon_inventory2_small.png" type="Texture" id=15]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+use_filter = true
+extra_spacing_top = -6
+font_data = ExtResource( 3 )
 
 [node name="MansionBottomLeftModule" type="TextureRect"]
 margin_right = 290.0
@@ -41,11 +49,13 @@ texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 10 )
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/WorkButton"]
-margin_left = 7.37041
-margin_top = 7.18747
-margin_right = 51.3705
-margin_bottom = 51.1875
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 52.0
+margin_bottom = 54.0
 texture = ExtResource( 13 )
+expand = true
+stretch_mode = 6
 
 [node name="Label" type="Label" parent="VBoxContainer/WorkButton"]
 margin_left = 58.0
@@ -57,8 +67,10 @@ custom_fonts/font = ExtResource( 1 )
 text = "LMMWORK"
 align = 1
 valign = 1
+clip_text = true
 
 [node name="TravelsButton" type="TextureButton" parent="VBoxContainer"]
+visible = false
 margin_top = 62.0
 margin_right = 274.0
 margin_bottom = 120.0
@@ -73,9 +85,6 @@ margin_top = 7.18747
 margin_right = 51.3705
 margin_bottom = 51.1875
 texture = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="VBoxContainer/TravelsButton"]
 margin_left = 58.0
@@ -87,14 +96,15 @@ custom_fonts/font = ExtResource( 1 )
 text = "LMMTRAVEL"
 align = 1
 valign = 1
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="UpgradesButton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 124.0
+margin_top = 62.0
 margin_right = 274.0
-margin_bottom = 182.0
+margin_bottom = 120.0
 toggle_mode = true
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 6 )
@@ -109,22 +119,23 @@ texture = ExtResource( 5 )
 
 [node name="Label2" type="Label" parent="VBoxContainer/UpgradesButton"]
 margin_left = 58.0
-margin_top = -3.0
+margin_top = 3.0
 margin_right = 271.0
 margin_bottom = 56.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
 text = "LMMUPGRADES"
 align = 1
 valign = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SexButton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 186.0
+margin_top = 124.0
 margin_right = 274.0
-margin_bottom = 244.0
+margin_bottom = 182.0
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 10 )
@@ -134,10 +145,9 @@ margin_left = 7.00399
 margin_top = 7.30937
 margin_right = 51.004
 margin_bottom = 51.3094
-texture = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 6
 
 [node name="Label3" type="Label" parent="VBoxContainer/SexButton"]
 margin_left = 58.0
@@ -149,14 +159,15 @@ custom_fonts/font = ExtResource( 1 )
 text = "LMMDATE"
 align = 1
 valign = 1
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="InventoryButton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 248.0
+margin_top = 186.0
 margin_right = 274.0
-margin_bottom = 306.0
+margin_bottom = 244.0
 rect_min_size = Vector2( 0, 58 )
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 6 )
@@ -167,7 +178,9 @@ margin_left = 7.37041
 margin_top = 7.00071
 margin_right = 51.3704
 margin_bottom = 51.0007
-texture = ExtResource( 3 )
+texture = ExtResource( 15 )
+expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -182,14 +195,15 @@ custom_fonts/font = ExtResource( 1 )
 text = "LMMINVENTORY"
 align = 1
 valign = 1
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CraftButton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 310.0
+margin_top = 248.0
 margin_right = 274.0
-margin_bottom = 368.0
+margin_bottom = 306.0
 rect_min_size = Vector2( 0, 58 )
 toggle_mode = true
 texture_normal = ExtResource( 8 )
@@ -216,14 +230,15 @@ custom_fonts/font = ExtResource( 1 )
 text = "LMMCRAFT"
 align = 1
 valign = 1
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Journal" type="TextureButton" parent="VBoxContainer"]
-margin_top = 372.0
+margin_top = 310.0
 margin_right = 274.0
-margin_bottom = 430.0
+margin_bottom = 368.0
 rect_min_size = Vector2( 0, 58 )
 toggle_mode = true
 texture_normal = ExtResource( 8 )
@@ -236,9 +251,8 @@ margin_top = 7.58948
 margin_right = 50.8807
 margin_bottom = 51.5895
 texture = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+expand = true
+stretch_mode = 6
 
 [node name="Label5" type="Label" parent="VBoxContainer/Journal"]
 margin_left = 58.0
@@ -250,6 +264,40 @@ custom_fonts/font = ExtResource( 1 )
 text = "LMMJOURNAL"
 align = 1
 valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="options" type="TextureButton" parent="VBoxContainer"]
+margin_top = 372.0
+margin_right = 274.0
+margin_bottom = 430.0
+rect_min_size = Vector2( 0, 58 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 10 )
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/options"]
+margin_left = 6.88074
+margin_top = 7.58948
+margin_right = 50.8807
+margin_bottom = 51.5895
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="Label5" type="Label" parent="VBoxContainer/options"]
+margin_left = 58.0
+margin_top = -3.74915
+margin_right = 271.0
+margin_bottom = 55.2509
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "LMMOPTIONS"
+align = 1
+valign = 1
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

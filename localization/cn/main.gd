@@ -292,6 +292,7 @@ var TranslationDict = {
 	LMMINVENTORY = "库存",
 	LMMCRAFT = "工艺",
 	LMMJOURNAL = "日志",
+	LMMOPTIONS = """Menu""", # MISSING TRANSLATION
 	LMMWORK = """Work""", # MISSING TRANSLATION
 	#MansionSlaveListModule
 	MSLMNAME = "Character List",

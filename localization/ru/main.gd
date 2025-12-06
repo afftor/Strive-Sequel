@@ -300,6 +300,7 @@ var TranslationDict = {
 	LMMINVENTORY = """Инвентарь""",
 	LMMCRAFT = """Крафт""",
 	LMMJOURNAL = """Журнал""",
+	LMMOPTIONS = """Menu""", # MISSING TRANSLATION
 	LMMWORK = """Работа""",
 	BTNLEVELING = """Leveling""", # MISSING TRANSLATION
 	BTNDATE = """Date""", # MISSING TRANSLATION
