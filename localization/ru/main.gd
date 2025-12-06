@@ -1790,6 +1790,11 @@ Does not take turn to activate.""", # MISSING TRANSLATION
 	DATETOOLTIP = """Свидания, оставшиеся на этой неделе. Увеличивается с фактором обаяния мастера и сбрасывается в начале недели.""",
 	SEXTOOLTIP = """Сексуальные взаимодействия, оставшиеся на этой неделе. Увеличивается с Сексуальным фактором Мастера и сбрасывается в начале недели.""",
 	DATETOOLTIPSHORT = """С персонажем можно пойти на свидание сегодня""",
+	NODATEMASTER = """Dating must be initiated from non-master character""", # MISSING TRANSLATION
+	NODATEUNIQUE = """[name] won't agree for a dating at this point in time.""", # MISSING TRANSLATION
+	NODATERELATION = """[name] lacks a necessary training to agree for the date.""", # MISSING TRANSLATION
+	NODATETODAY = """[name] has already attended to a date with you today.""", # MISSING TRANSLATION
+	NODATEWEEK = """You have no dates left this week""", # MISSING TRANSLATION
 	SEXTOOLTIPSHORT = """Персонаж может быть назначен на сексуальное взаимодействие сегодня""",
 	TRAINTOOLTIP = """Персонаж может быть обучен сегодня""",	
 	TOOLTIPLOYALTYOBEDIENCE = """Очки верности набираются каждый ход на основе фактора приручения. С их помощью вы можете разблокировать новые действия и пассивные способности.

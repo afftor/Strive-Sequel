@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=2]
@@ -11,14 +11,17 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/button_reputationshop.png" type="Texture" id=9]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/button_reputationshop_pressed.png" type="Texture" id=10]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/button_reputationshop_hover.png" type="Texture" id=11]
-[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_location.png" type="Texture" id=12]
-[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_location_hover.png" type="Texture" id=13]
-[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_location_pressed.png" type="Texture" id=14]
+[ext_resource path="res://assets/Textures_v2/home_normal.png" type="Texture" id=12]
+[ext_resource path="res://assets/Textures_v2/map_normal.png" type="Texture" id=13]
+[ext_resource path="res://assets/Textures_v2/home_hover.png" type="Texture" id=14]
 [ext_resource path="res://assets/Themes_v2/travel_new/SelectorPanel.tres" type="StyleBox" id=15]
 [ext_resource path="res://gui_modules/Universal/Scripts/NavigationModule.gd" type="Script" id=16]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=17]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_32_outline.tres" type="DynamicFont" id=18]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/city_icon_feame_mask.png" type="BitMap" id=19]
+[ext_resource path="res://assets/Textures_v2/map_hover.png" type="Texture" id=20]
+[ext_resource path="res://assets/Textures_v2/home_pressed.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/map_pressed.png" type="Texture" id=22]
 
 [node name="NavigationModule" type="Panel"]
 anchor_right = 1.0
@@ -43,7 +46,7 @@ __meta__ = {
 [node name="NavigationContainer" type="ScrollContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 100.0
+margin_left = 106.0
 margin_top = -2.0
 margin_bottom = 1.0
 theme = ExtResource( 5 )
@@ -90,15 +93,14 @@ align = 2
 valign = 1
 
 [node name="drop_list" type="TextureButton" parent="."]
-margin_left = 24.0
-margin_top = 22.0
-margin_right = 84.0
-margin_bottom = 82.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 103.0
+margin_bottom = 52.0
 hint_tooltip = "LOCATIONLIST"
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 14 )
-texture_hover = ExtResource( 13 )
-expand = true
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 21 )
+texture_hover = ExtResource( 12 )
 stretch_mode = 5
 
 [node name="screen" type="Button" parent="drop_list"]
@@ -111,10 +113,10 @@ margin_bottom = 1058.0
 
 [node name="Panel" type="Panel" parent="drop_list"]
 visible = false
-margin_left = 2.0
-margin_top = 77.0
-margin_right = 476.0
-margin_bottom = 787.0
+margin_left = -2.0
+margin_top = 97.0
+margin_right = 472.0
+margin_bottom = 807.0
 custom_styles/panel = ExtResource( 15 )
 
 [node name="NavigationContainer" type="ScrollContainer" parent="drop_list/Panel"]
@@ -158,3 +160,14 @@ margin_bottom = 58.0
 custom_fonts/font = ExtResource( 1 )
 text = "Mansion - 8/8"
 valign = 1
+
+[node name="travelbutton" type="TextureButton" parent="."]
+margin_left = 2.0
+margin_top = 52.0
+margin_right = 103.0
+margin_bottom = 102.0
+hint_tooltip = "LOCATIONLIST"
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 13 )
+stretch_mode = 5

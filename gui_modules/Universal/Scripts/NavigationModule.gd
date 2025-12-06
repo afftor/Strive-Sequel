@@ -11,8 +11,12 @@ func _ready():
 	globals.connect("hour_tick", self, "update_buttons")
 	globals.connect("hour_tick", self, "build_accessible_locations")
 	$drop_list.connect('pressed', self, 'toggle_drop_list', [true])
+	$travelbutton.connect('pressed', self, 'open_travel')
 	screen.connect('pressed', self, 'toggle_drop_list', [false])
 
+func open_travel():
+	#gui_controller.current_screen == gui_controller.mansion
+	gui_controller.mansion.mansion_state = "travels"
 
 func update_buttons():
 	nav = gui_controller.nav_panel.get_node("NavigationContainer/AreaSelection")

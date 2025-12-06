@@ -15,6 +15,8 @@ Master trait Communicative now gives +3 persuasion check, +2 leadership mastery 
 Updated some old cg scene arts
 Master trait Progenecy now gives for all offspring 50% chance for each Factor to be increased by 1
 Easy training option moved to advanced settings
+Void Barrage now shoots 4 times (down from 5), for 85% MATK (up from 80%) and costs 6 MP (down from 7)
+Bolt trap now deals 110% ATK damage (down from 150%) but is unlocked at Stealth Mastery 1
 Characters freed with Writ of Exemption will retain some of the trained traits
 Fixed Wind Blade attacking same target every time
 Fixed multiple places missing item color quality background

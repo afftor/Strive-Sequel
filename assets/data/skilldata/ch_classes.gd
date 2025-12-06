@@ -572,8 +572,8 @@ var skills = {
 		reqs = [],
 		targetreqs = [],
 		effects = [], 
-		cost = {mp = 7},
-		repeat = 5,
+		cost = {mp = 6},
+		repeat = 4,
 		keep_target = variables.TARGET_KEEPFIRST,
 		next_target = variables.NT_ANY, #possibly non-implemented nt_weapon
 		charges = 0,
@@ -588,7 +588,7 @@ var skills = {
 		#with caster or target and only with gfx_animsprite!
 		sfx = [{code = 'void_barrage', target = 'target', period = 'predamage', duration = 0.2, no_repeat_delays = true}],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 0.8,
+		value = 0.85,
 	},
 	
 	dark_bonus = {

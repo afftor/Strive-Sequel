@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/skill_rally.png-10a7c5eb482a0bf9a06fec0f1c8a7b1d.stex"
+path="res://.import/home_hover.png-29ef21c3fc72d9f78440f8c88e64bfb1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/iconsskills/skill_rally.png"
-dest_files=[ "res://.import/skill_rally.png-10a7c5eb482a0bf9a06fec0f1c8a7b1d.stex" ]
+source_file="res://assets/Textures_v2/home_hover.png"
+dest_files=[ "res://.import/home_hover.png-29ef21c3fc72d9f78440f8c88e64bfb1.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

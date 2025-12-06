@@ -138,10 +138,40 @@ func change_slave(param):
 	if selected_person.get_work() == 'learning':
 		change_slave(param)
 
+func check_date_button():
+	var value = true
+	var descript = ''
+	if selected_person.is_master():
+		value = false
+		descript = 'NODATEMASTER'
+	elif selected_person.has_status("no_date"):
+		value = false
+		descript = "NODATEUNIQUE"
+	elif !selected_person.has_status("relation"):
+		value = false
+		descript = "NODATERELATION"
+	elif selected_person.tags.has("no_date_day") && !ResourceScripts.game_globals.unlimited_date_sex:
+		value = false
+		descript = "NODATETODAY"
+	elif ResourceScripts.game_globals.weekly_dates_left <= 0:
+		value = false
+		descript = "NODATEWEEK"
+	
+	
+	return [value, descript]
+
+
+
 func update_buttons():
 	chat_button.disabled = !unique_dict.has(selected_person.get_stat('unique'))
-	date_button.disabled = selected_person.is_master()
-	date_button.disabled = !(ResourceScripts.game_globals.weekly_dates_left <= 0)
+	
+	var date_button_data = check_date_button()
+	date_button.disabled = !date_button_data[0]
+	globals.connecttexttooltip(date_button, selected_person.translate(tr(date_button_data[1])))
+	if date_button.disabled == false:
+		globals.disconnect_text_tooltip(date_button)
+	
+	
 	date_button.get_node("Label").text = tr("BTNDATE") + " (%d/%d)" % [ResourceScripts.game_globals.weekly_dates_left, ResourceScripts.game_globals.weekly_dates_max]
 	expel_button.disabled = selected_person.is_master()
 
