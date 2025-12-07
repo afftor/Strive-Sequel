@@ -868,7 +868,8 @@ var statdata = {
 		tags = ['integer'],
 		direct = false,
 		innate_bonuses = {mincap = 0},
-		custom_order = ['add_part', 'mul', 'add']
+		custom_order = ['add_part', 'mul', 'add'],
+		show_info = {category = 'non_combat'}
 	},
 	mp_reg = {
 		code = 'mp_reg',
@@ -880,7 +881,8 @@ var statdata = {
 		tags = ['integer', 'custom_bonuses'],
 		direct = false,
 		innate_bonuses = {mincap = 0},
-		custom_order = ['add2','add_part', 'mul', 'add', 'mul2']
+		custom_order = ['add2','add_part', 'mul', 'add', 'mul2'],
+		show_info = {category = 'non_combat'}
 	},
 #	hpmax_add_part = {
 #		code = 'hpmax_add_part',
@@ -1205,6 +1207,7 @@ var statdata = {
 		type = 'misc',
 		tags = ['integer'],
 		direct = false,
+		show_info = {category = 'non_combat'}
 	},
 	consent = {
 		code = 'consent',
