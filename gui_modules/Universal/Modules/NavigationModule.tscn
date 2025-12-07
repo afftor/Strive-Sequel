@@ -98,6 +98,7 @@ margin_top = 2.0
 margin_right = 103.0
 margin_bottom = 52.0
 hint_tooltip = "LOCATIONLIST"
+toggle_mode = true
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 21 )
 texture_hover = ExtResource( 12 )

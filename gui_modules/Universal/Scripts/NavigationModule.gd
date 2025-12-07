@@ -303,5 +303,8 @@ func return_to_mansion(with_state = "default"):
 
 
 func toggle_drop_list(val):
+	if val and drop_panel.visible:
+		val = false
 	screen.visible = val
 	drop_panel.visible = val
+	$drop_list.pressed = val
