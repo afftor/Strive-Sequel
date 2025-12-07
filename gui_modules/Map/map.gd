@@ -277,8 +277,8 @@ func close():
 	if gui_controller.clock != null:
 		gui_controller.clock.visible = true
 #		gui_controller.clock.restoreoldspeed()
-	if screen_to_restore == null:
-		input_handler.node_children_visible(get_parent(), null, true)
+#	if screen_to_restore == null:
+	input_handler.node_children_visible(get_parent(), null, true)
 	get_parent().mansion_state = 'default'
 #	get_parent().match_state()
 	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
