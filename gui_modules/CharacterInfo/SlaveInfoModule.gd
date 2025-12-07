@@ -8,7 +8,8 @@ var universal_skills = ['oral','anal','petting']
 onready var traitlist = $TraitContainer/HBoxContainer
 onready var upgrades = $UpgradesPanel
 onready var sextraits = $SexTraitsPanel
-var curr_tab = 0
+onready var trainings_selector = $tr_selector
+var curr_tab = 'default'
 
 
 func _ready():
@@ -17,8 +18,8 @@ func _ready():
 	$Description/RichTextLabel.connect("meta_hover_ended", self, "text_url_hover_hide")
 	$HairChange/screen.connect("pressed", self, "close_hairstyle")
 	$DescriptionButton.connect("pressed", self, 'toggle_description')
-	for i in range(1, 4):
-		get_node('VBoxContainer/panel%d' % i).connect('pressed', self, 'open_upgrade_tab', [i])
+	for nd in trainings_selector.get_children():
+		nd.connect('pressed', self, 'open_upgrade_tab', [nd.name])
 	get_node('panel4').connect('toggled', self, 'toggle_sex_traits')
 	
 	upgrades.get_node("ScrollContainer2/UpgradesList2").root = get_parent()
@@ -92,8 +93,8 @@ func update():
 		$Description/RichTextLabel.bbcode_text = person.make_description()
 		
 		update_traitlist()
-		$VBoxContainer/panel3.visible = (person.is_master() and person.check_trait('succubus'))
-		open_upgrade_tab(1)
+		update_trainings_selector()
+		open_upgrade_tab()
 
 var personality_icons = {
 	bold = load("res://assets/Textures_v2/MANSION/personality_bold.png"),
@@ -107,6 +108,13 @@ var personality_icons = {
 
 func update_traitlist():
 	globals.build_traitlist_for_char(person, traitlist)
+
+
+func update_trainings_selector():
+	trainings_selector.get_node("master_upg").visible = person.is_master()
+	trainings_selector.get_node("succubus").visible = person.check_trait('succubus')
+	trainings_selector.get_node("trainings").visible = !person.is_master()
+	trainings_selector.get_node("minor_upg").visible = true
 
 
 # func make_location_description():
@@ -155,31 +163,24 @@ func text_url_hover_hide(meta = null):
 			texttooltip.hide()
 
 
-func open_upgrade_tab(id):
+func open_upgrade_tab(id = null):
 	if person == null:
 		return
 	if curr_tab == id:
 		return
+	if id == null:
+		if person.is_master():
+			id = 'master_upg'
+		elif person.check_trait('succubus'):
+			id = 'succubus'
+		else:
+			id = 'trainings'
 	curr_tab = id
-	for i in range(1, 4):
-		get_node('VBoxContainer/panel%d' % i).pressed = (i == curr_tab)
+	for i in trainings_selector.get_children():
+		i.pressed = (i.name == curr_tab)
 	for nd in upgrades.get_children():
 		nd.visible = false
-	match curr_tab:
-		1:
-			if person.is_master():
-				open_master_upg()
-			elif person.check_trait('succubus'):
-				open_succubus()
-			else:
-				open_trainings()
-		2:
-			if person.is_master() and person.check_trait('succubus'):
-				open_succubus()
-			else:
-				open_minor_upg()
-		3:
-			open_minor_upg()
+	call('open_' + curr_tab)
 
 
 func open_master_upg():
