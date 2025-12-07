@@ -236,6 +236,7 @@ func match_state():
 		"default":
 			reset_vars()
 			SlaveListModule.show()
+			SlaveListModule.mode = 'default'
 			$MansionSlaveListModule.set_size(Vector2(1100, 780))
 			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 600))
 			# SlaveListModule.get_node("Background").set_size(Vector2(1100, 845))

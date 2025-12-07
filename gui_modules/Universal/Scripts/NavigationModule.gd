@@ -23,7 +23,7 @@ func open_travel():
 		gui_controller.mansion.show()
 		gui_controller.mansion.raise()
 	#gui_controller.current_screen == gui_controller.mansion
-	gui_controller.mansion.mansion_state = "travels"
+	gui_controller.mansion.show_map()
 
 func update_buttons():
 	nav = gui_controller.nav_panel.get_node("NavigationContainer/AreaSelection")
@@ -303,5 +303,8 @@ func return_to_mansion(with_state = "default"):
 
 
 func toggle_drop_list(val):
+	if val and drop_panel.visible:
+		val = false
 	screen.visible = val
 	drop_panel.visible = val
+	$drop_list.pressed = val
