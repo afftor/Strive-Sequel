@@ -545,7 +545,10 @@ func _input(event):
 				emit_signal("mass_select_in_act")
 				for act in mass_select:
 					var btn_node = act.btn_node.get_ref()
-					if btn_node.is_visible_in_tree() and btn_node.get_global_rect().has_point(event.position):
+					if (btn_node != null
+							and btn_node.is_visible_in_tree()
+							and btn_node.get_global_rect().has_point(event.position)
+						):
 						mass_cur_selected = act
 						mass_first_selected = act
 						break
@@ -557,7 +560,10 @@ func _input(event):
 			var new_selected
 			for act in mass_select:
 				var btn_node = act.btn_node.get_ref()
-				if btn_node.is_visible_in_tree() and btn_node.get_global_rect().has_point(event.position):
+				if (btn_node != null
+						and btn_node.is_visible_in_tree()
+						and btn_node.get_global_rect().has_point(event.position)
+					):
 					new_selected = act
 					break
 			if mass_first_selected:
@@ -1980,7 +1986,7 @@ func start_mass_select(client, actions):
 	if actions.empty():
 		return
 	mass_select_client = weakref(client)
-	mass_select = actions
+	mass_select = actions.duplicate(true)
 	mass_cur_selected = null
 	mass_first_selected = null
 	for act in mass_select:
