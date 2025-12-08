@@ -1465,7 +1465,7 @@ func get_value_node(node):
 
 func meowingcondition(character):
 	var allow = false
-	if input_handler.globalsettings.meowing == true && character.checkreqs([{code = 'one_of_races', value = ['BeastkinCat','HalfkinCat']}]) && character.has_profession('master') == false:
+	if input_handler.globalsettings.meowing == true && character.checkreqs([{code = 'one_of_races', value = ['BeastkinCat','HalfkinCat']}]) && character.has_profession('master') == false && !character.get_stat('unique') == 'Amelia':
 		allow = true
 	return allow
 

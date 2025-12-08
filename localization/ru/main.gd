@@ -68,6 +68,7 @@ var TranslationDict = {
 	OPTCLOSE = """Закрыть""",
 	TUTORIALS = """Туториалы""",
 	LOCATIONLIST = "Локации",
+	BUTTONTRAVEL = """Travel Map""", # MISSING TRANSLATION
 	OPTGAMEPLAYFURRIES = """Фурри""",
 	OPTGAMEPLAYFURRMULT = """Множественные соски на фурри""",
 	OPTGAMEPLAYFUTA = """Фута с яйцами""",
@@ -6454,6 +6455,7 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	ARMORENC = """Инкрустация""",
 	WEAPONENC = """Инкрустация""",
 	WEAPONELEMENTBASE = """Элемент""",
+	WEAPONELEMENENCHANT = """Damage Element: """, # MISSING TRANSLATION
 
 	ITEMLATEX_SUIT = """Латексный костюм""",
 	ITEMLATEX_SUITDESCRIPT = """Облегающая одежда, подчеркивающая изгибы тела""",

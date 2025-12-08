@@ -166,6 +166,7 @@ margin_bottom = -12.0
 visible = false
 
 [node name="MenuButton" type="Button" parent="."]
+visible = false
 margin_left = 1785.0
 margin_top = 15.0
 margin_right = 1901.0
@@ -192,12 +193,13 @@ margin_right = 1390.0
 margin_bottom = 940.0
 
 [node name="NavigationModule" parent="." instance=ExtResource( 7 )]
+margin_right = -14.0
 
 [node name="TutorialButton" type="TextureButton" parent="."]
-margin_left = 1716.95
-margin_top = 65.0
-margin_right = 1767.95
-margin_bottom = 117.0
+margin_left = 1849.89
+margin_top = 61.1109
+margin_right = 1900.89
+margin_bottom = 113.111
 hint_tooltip = "TUTORIALS"
 theme = ExtResource( 3 )
 texture_normal = ExtResource( 23 )

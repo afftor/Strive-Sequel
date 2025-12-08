@@ -1,4 +1,4 @@
-[gd_scene load_steps=231 format=2]
+[gd_scene load_steps=232 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=2]
@@ -157,7 +157,7 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/icons_40x40/group.png" type="Texture" id=155]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_traits_hover.png" type="Texture" id=156]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/bg.png" type="Texture" id=157]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/minor_normal.png" type="Texture" id=158]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu.png" type="Texture" id=158]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset_training_pressed.png" type="Texture" id=159]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_pressed.png" type="Texture" id=160]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/cirlcle.png" type="Texture" id=161]
@@ -196,6 +196,7 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/minor_hover.png" type="Texture" id=194]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/master_tr_pressed.png" type="Texture" id=195]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/master_tr_hover.png" type="Texture" id=196]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/minor_normal.png" type="Texture" id=197]
 
 [sub_resource type="StyleBoxTexture" id=13]
 texture = ExtResource( 111 )
@@ -269,8 +270,12 @@ texture = ExtResource( 132 )
 region_rect = Rect2( 0, 0, 130, 40 )
 
 [sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 72 )
-region_rect = Rect2( 0, 0, 970, 920 )
+texture = ExtResource( 156 )
+region_rect = Rect2( 0, 0, 100, 100 )
+margin_left = 31.0
+margin_right = 27.0
+margin_top = 29.0
+margin_bottom = 30.0
 
 [sub_resource type="StyleBoxTexture" id=31]
 texture = ExtResource( 145 )
@@ -305,8 +310,12 @@ margin_top = 11.7839
 margin_bottom = 9.9723
 
 [sub_resource type="StyleBoxTexture" id=8]
-texture = ExtResource( 69 )
-region_rect = Rect2( 0, 0, 1920, 1080 )
+texture = ExtResource( 158 )
+region_rect = Rect2( 0, 0, 116, 54 )
+margin_left = 13.2964
+margin_right = 13.2964
+margin_top = 11.7839
+margin_bottom = 9.9723
 
 [sub_resource type="DynamicFont" id=35]
 size = 22
@@ -2055,7 +2064,7 @@ margin_right = 40.0
 margin_bottom = 172.0
 rect_min_size = Vector2( 40, 40 )
 toggle_mode = true
-texture_normal = ExtResource( 158 )
+texture_normal = ExtResource( 197 )
 texture_pressed = ExtResource( 190 )
 texture_hover = ExtResource( 194 )
 texture_focused = ExtResource( 194 )

@@ -578,10 +578,10 @@ func build_desc_for_bonusstats(bonusstats, mul = 1):
 		if i  in ['enchant_capacity', 'enchant_capacity_mod']: 
 			continue
 		if i == 'weapon_element':
-			text += tr("WEAPONELEMENTBASE") + bonusstats[i] + "\n"
+			text += tr("WEAPONELEMENTBASE") + tr("DAMAGETYPE" + bonusstats[i].to_upper()) + "\n"
 			continue
 		if i == 'weapon_element_ench':
-			text += tr("WEAPONELEMENENCHANT") + bonusstats[i] + "\n"
+			text += tr("WEAPONELEMENENCHANT") + tr("DAMAGETYPE" + bonusstats[i].to_upper()) + "\n"
 			continue
 		if bonusstats[i] is bool or bonusstats[i] is Array or bonusstats[i] != 0:
 			var bonus
@@ -673,10 +673,10 @@ func build_oneline_desc_for_bonusstats(bonusstats, mul = 1):
 		if i  in ['enchant_capacity', 'enchant_capacity_mod']: 
 			continue
 		if i == 'weapon_element':
-			text += tr("WEAPONELEMENTBASE") + bonusstats[i] + ", "
+			text += tr("WEAPONELEMENTBASE") + tr("DAMAGETYPE" + bonusstats[i].to_upper()) + ", "
 			continue
 		if i == 'weapon_element_ench':
-			text += tr("WEAPONELEMENENCHANT") + bonusstats[i] + ", "
+			text += tr("WEAPONELEMENENCHANT") + tr("DAMAGETYPE" + bonusstats[i].to_upper()) + ", "
 			continue
 		if bonusstats[i] is bool or bonusstats[i] is Array or bonusstats[i] != 0:
 			var bonus
