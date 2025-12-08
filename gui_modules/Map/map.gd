@@ -835,6 +835,14 @@ func char_loc_press(ch_id, loc_id):
 	if !selected_chars.has(ch_id):
 		try_switch_selected_loc(loc_id)
 		selected_chars.push_back(ch_id)
+		var group_name = characters_pool.get_char_by_id(ch_id).get_loc_group()
+		var all_selected = true
+		for ch_id_i in char_groups[group_name].chars:
+			if !selected_chars.has(ch_id_i):
+				all_selected = false
+				break
+		if all_selected:
+			try_append_selected_group(group_name)
 	else:
 		selected_chars.erase(ch_id)
 		var person = characters_pool.get_char_by_id(ch_id)
