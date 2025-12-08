@@ -224,6 +224,8 @@ var mass_select_client
 var mass_select# = [{btn_node, act_node, act_func, act_args}]
 var mass_cur_selected
 var mass_first_selected
+signal mass_select_in_act
+signal mass_select_end_act
 
 func set_previous_scene(scene):
 	PreviousScene = scene
@@ -533,37 +535,48 @@ func _input(event):
 #	elif str(event.as_text().replace("Kp ",'')) in str(range(1,9)) \
 #		&& get_tree().get_root().get_node_or_null("dialogue") && get_tree().get_root().get_node("dialogue").is_visible():
 #		get_tree().get_root().get_node("dialogue").select_option(int(event.as_text()))
+	
+	#mass select module
 	if mass_select_client != null:
 		if mass_select_client.get_ref() == null or !mass_select_client.get_ref().is_visible_in_tree():
 			stop_mass_select()
 		elif event is InputEventMouseButton:
 			if event.is_action_pressed("LMB"):
+				emit_signal("mass_select_in_act")
 				for act in mass_select:
 					var btn_node = act.btn_node.get_ref()
-					if btn_node.is_visible_in_tree() and btn_node.get_global_rect().has_point(event.position):
+					if (btn_node != null
+							and btn_node.is_visible_in_tree()
+							and btn_node.get_global_rect().has_point(event.position)
+						):
 						mass_cur_selected = act
 						mass_first_selected = act
 						break
 			elif event.is_action_released("LMB"):
 				mass_cur_selected = null
 				mass_first_selected = null
+				emit_signal("mass_select_end_act")
 		elif (event is InputEventMouseMotion) and Input.is_action_pressed("LMB"):
 			var new_selected
 			for act in mass_select:
 				var btn_node = act.btn_node.get_ref()
-				if btn_node.is_visible_in_tree() and btn_node.get_global_rect().has_point(event.position):
+				if (btn_node != null
+						and btn_node.is_visible_in_tree()
+						and btn_node.get_global_rect().has_point(event.position)
+					):
 					new_selected = act
-					if (!mass_cur_selected
-							or mass_cur_selected.btn_node.get_ref() != new_selected.btn_node.get_ref()
-						):
-						new_selected.act_node.get_ref().callv(new_selected.act_func, new_selected.act_args)
 					break
-			mass_cur_selected = new_selected
 			if mass_first_selected:
 				if (!new_selected
 						or mass_first_selected.btn_node.get_ref() != new_selected.btn_node.get_ref()):
 					mass_first_selected.act_node.get_ref().callv(mass_first_selected.act_func, mass_first_selected.act_args)
 					mass_first_selected = null
+			if (new_selected
+					and (!mass_cur_selected
+					or mass_cur_selected.btn_node.get_ref() != new_selected.btn_node.get_ref())
+				):
+				new_selected.act_node.get_ref().callv(new_selected.act_func, new_selected.act_args)
+			mass_cur_selected = new_selected
 
 
 # func _input(event):
@@ -1973,7 +1986,7 @@ func start_mass_select(client, actions):
 	if actions.empty():
 		return
 	mass_select_client = weakref(client)
-	mass_select = actions
+	mass_select = actions.duplicate(true)
 	mass_cur_selected = null
 	mass_first_selected = null
 	for act in mass_select:

@@ -32,6 +32,7 @@ var char_groups_by_loc = {
 var selected_groups = []
 var group_to_rename
 var group_move_chars = []
+var mass_select_press_effect = false
 
 
 func _unhandled_input(event):
@@ -225,6 +226,7 @@ func _ready():#2add button connections
 	$zoom/plus.connect("pressed", self, 'zoom_change_step', [ 1])
 	$InfoPanel/Forget.connect("pressed", self, "forget_location")
 #	match_state()
+	input_handler.connect("mass_select_in_act", self, "off_mass_select_effect")
 
 
 func forget_location():
@@ -678,11 +680,6 @@ func build_from_locations():
 				group_cont.get_node('Button/menu').connect("pressed", self, "open_group_menu", [group_name, loc_data.id])
 				group_cont.visible = true
 				make_panel_for_group(group_cont.get_node('Button'), group_name)
-#				mass_select.append({
-#					btn_node = group_cont.get_node('Button'),
-#					act_func = 'group_press_virt',
-#					act_args = [weakref(group_cont)]
-#				})
 				for ch_id in loc_char_groups[group_name]:
 					var loc_button = input_handler.DuplicateContainerTemplate(group_cont.get_node('offset/LocList'), 'Button')
 					loc_button.set_meta('location', loc_data.id)
@@ -696,7 +693,7 @@ func build_from_locations():
 					make_panel_for_character(loc_button, ch_id)
 					mass_select.append({
 						btn_node = loc_button,
-						act_func = 'char_loc_press_virt',
+						act_func = 'char_loc_press_mass',
 						act_args = [weakref(loc_button)]
 					})
 	update_groups_ref()
@@ -832,23 +829,42 @@ func unselect_area():
 
 
 func char_loc_press(ch_id, loc_id):
+	var selected
 	if !selected_chars.has(ch_id):
 		try_switch_selected_loc(loc_id)
 		selected_chars.push_back(ch_id)
+		selected = true
+		var group_name = characters_pool.get_char_by_id(ch_id).get_loc_group()
+		var all_selected = true
+		for ch_id_i in char_groups[group_name].chars:
+			if !selected_chars.has(ch_id_i):
+				all_selected = false
+				break
+		if all_selected:
+			try_append_selected_group(group_name)
 	else:
 		selected_chars.erase(ch_id)
+		selected = false
 		var person = characters_pool.get_char_by_id(ch_id)
 		try_erase_selected_group(person.get_loc_group())
 		try_switch_selected_loc(null)
 #	build_info()
 	update_confirm()
 	update_location_chars()
+	return selected
 
-func char_loc_press_virt(ch_btn_ref):
-	if ch_btn_ref.get_ref().disabled:
+func char_loc_press_mass(ch_btn_ref):
+	var ch_btn = ch_btn_ref.get_ref()
+	if (ch_btn.disabled
+			or (mass_select_press_effect != null and ch_btn.pressed == mass_select_press_effect)
+		):
 		return
-	var node = ch_btn_ref.get_ref()
-	char_loc_press(node.get_meta('character'), node.get_meta('location'))
+	var selected = char_loc_press(ch_btn.get_meta('character'), ch_btn.get_meta('location'))
+	if mass_select_press_effect == null:
+		mass_select_press_effect = selected
+
+func off_mass_select_effect():
+	mass_select_press_effect = null
 
 func group_press(group_name, loc_id):
 	try_switch_selected_loc(loc_id)
@@ -865,11 +881,6 @@ func group_press(group_name, loc_id):
 	update_confirm()
 	update_location_chars()
 
-func group_press_virt(group_ref):
-	if group_ref.get_ref().get_node('Button').disabled:
-		return
-	var node = group_ref.get_ref()
-	group_press(node.get_meta('group'), node.get_meta('location'))
 
 func try_switch_selected_loc(loc_id):
 	if selected_chars.empty() and selected_groups.empty():
