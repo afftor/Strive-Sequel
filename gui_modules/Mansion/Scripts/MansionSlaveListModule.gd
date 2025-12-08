@@ -32,6 +32,10 @@ const JOB_SERVICE_MODS = ['mod_pros', 'mod_service']
 const JOB_GATHER_MODS = ['mod_collect', 'mod_hunt', 'mod_fish', 'mod_farm']
 const JOB_CRAFT_MODS = ['mod_build', 'mod_cook', 'mod_tailor', 'mod_smith', 'mod_alchemy']
 
+var mass_rule_list = []
+var mass_service_list = []
+var mass_select_press_effect = false
+
 func _apply_task_color(job_label, task_data):
 	if typeof(task_data) != TYPE_DICTIONARY:
 		return
@@ -71,7 +75,10 @@ func _ready():
 		globals.connecttexttooltip(header.get_node('brothel_' + rl), tr('BROTHEL%sDESCRIPT' % rl.to_upper()))
 	for rl in ['meat', 'fish', 'grain', 'vegetables', 'bread', 'meatsoup', 'curry', 'friedfish', 'fishcakes']:
 		globals.connecttexttooltip(header.get_node('food_' + rl), tr('MATERIAL%sDESCRIPT' % rl.to_upper()))
+	input_handler.connect("mass_select_in_act", self, "off_mass_select_effect")
 
+func off_mass_select_effect():
+	mass_select_press_effect = null
 
 func OpenJobModule(person = null):
 	input_handler.ActivateTutorial('TUTORIALLIST4')
@@ -120,6 +127,8 @@ func rebuild():
 
 	$food_consumption.text = str(ResourceScripts.game_party.get_food_consumption()) + "/" + tr("MSLMDAY")
 	input_handler.ClearContainer(SlaveContainer)
+	mass_rule_list.clear()
+	mass_service_list.clear()
 	for i in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[i]
 		var newbutton = input_handler.DuplicateContainerTemplate(SlaveContainer)
@@ -135,9 +144,21 @@ func rebuild():
 		newbutton.get_node("SpellIcon").connect("pressed", self, 'OpenSpells', [person])
 		
 		for rl in ['lock', 'ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'nudity', 'personality_lock', 'relationship', 'masturbation']:
-			newbutton.get_node('rule_' + rl).connect('pressed', self, 'toggle_rules', [newbutton, rl])
+			var true_btn = newbutton.get_node('rule_' + rl)
+			true_btn.connect('pressed', self, 'toggle_rules', [newbutton, rl])
+			mass_rule_list.append({
+				btn_node = true_btn,
+				act_func = 'toggle_rules_mass',
+				act_args = [weakref(newbutton), rl]
+			})
 		for rl in  ['waitress', 'hostess', 'dancer', 'stripper', 'males', 'females', 'futa', 'petting', 'oral', 'anal', 'pussy', 'group', 'sextoy']:
-			newbutton.get_node('rule_' + rl).connect('pressed', self, 'toggle_service', [newbutton, rl])
+			var true_btn = newbutton.get_node('rule_' + rl)
+			true_btn.connect('pressed', self, 'toggle_service', [newbutton, rl])
+			mass_service_list.append({
+				btn_node = true_btn,
+				act_func = 'toggle_service_mass',
+				act_args = [weakref(newbutton), rl]
+			})
 		for f_id in ['meat', 'fish', 'grain', 'vegetables', 'bread', 'meatsoup', 'curry', 'friedfish', 'fishcakes']:
 			newbutton.get_node('ff_' + f_id).connect('pressed', self, 'press_food', [newbutton, f_id])
 		
@@ -439,6 +460,12 @@ func update():
 	update_description()
 	update_header()
 	match_mode()
+	if mode == 'rules':
+		input_handler.start_mass_select(self, mass_rule_list)
+	elif mode == 'brothel':
+		input_handler.start_mass_select(self, mass_service_list)
+	else:
+		input_handler.stop_mass_select()
 
 
 func update_button(newbutton, t_mode = mode):
@@ -640,6 +667,17 @@ func toggle_rules(newbutton, code):
 	person.set_work_rule(code, nvalue)
 	update_button(newbutton)
 
+func toggle_rules_mass(newbutton_ref, code):
+	var newbutton = newbutton_ref.get_ref()
+	var true_btn = newbutton.get_node('rule_' + code)
+	if (true_btn.disabled
+			or (mass_select_press_effect != null and true_btn.pressed == mass_select_press_effect)
+		):
+		return
+	toggle_rules(newbutton, code)
+	if mass_select_press_effect == null:
+		mass_select_press_effect = true_btn.pressed
+
 
 func toggle_service(newbutton, code):
 	var person = newbutton.get_meta('slave')
@@ -647,6 +685,17 @@ func toggle_service(newbutton, code):
 	var nvalue = !cvalue
 	person.set_brothel_rule(code, nvalue)
 	update_button(newbutton)
+
+func toggle_service_mass(newbutton_ref, code):
+	var newbutton = newbutton_ref.get_ref()
+	var true_btn = newbutton.get_node('rule_' + code)
+	if (true_btn.disabled
+			or (mass_select_press_effect != null and true_btn.pressed == mass_select_press_effect)
+		):
+		return
+	toggle_service(newbutton, code)
+	if mass_select_press_effect == null:
+		mass_select_press_effect = true_btn.pressed
 
 
 func press_food(newbutton, code):
