@@ -2022,7 +2022,6 @@ toggle_mode = true
 texture_normal = ExtResource( 187 )
 texture_pressed = ExtResource( 195 )
 texture_hover = ExtResource( 196 )
-texture_focused = ExtResource( 196 )
 expand = true
 
 [node name="succubus" type="TextureButton" parent="SlaveInfoModule/tr_selector"]
@@ -2034,7 +2033,6 @@ toggle_mode = true
 texture_normal = ExtResource( 184 )
 texture_pressed = ExtResource( 185 )
 texture_hover = ExtResource( 192 )
-texture_focused = ExtResource( 192 )
 expand = true
 
 [node name="trainings" type="TextureButton" parent="SlaveInfoModule/tr_selector"]
@@ -2046,7 +2044,6 @@ toggle_mode = true
 texture_normal = ExtResource( 193 )
 texture_pressed = ExtResource( 186 )
 texture_hover = ExtResource( 191 )
-texture_focused = ExtResource( 191 )
 expand = true
 
 [node name="minor_upg" type="TextureButton" parent="SlaveInfoModule/tr_selector"]
@@ -2058,7 +2055,6 @@ toggle_mode = true
 texture_normal = ExtResource( 158 )
 texture_pressed = ExtResource( 190 )
 texture_hover = ExtResource( 194 )
-texture_focused = ExtResource( 194 )
 expand = true
 
 [node name="SlaveClassesModule" type="Panel" parent="."]
