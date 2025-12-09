@@ -127,7 +127,7 @@ func update_characters():
 				if person.has_status('no_craft'): newbutton.disabled = true
 			if selected_job.code == "building":
 				if person.has_status('no_upgrade'): newbutton.disabled = true
-		if !(selected_resource in [null, 'rest', 'gold', 'smith','alchemy','tailor','cooking', 'building']):
+		if !(selected_resource in [null, 'rest', 'brothel', 'gold', 'smith','alchemy','tailor','cooking', 'building']):
 			if person.has_status('no_collect'): newbutton.disabled = true
 		if newbutton.disabled == true && selected_job != null:
 			newbutton.get_node('Name').set("custom_colors/font_color", variables.hexcolordict['red'])
@@ -141,7 +141,7 @@ func update_characters():
 		newbutton.get_node("stats").hint_tooltip = "HP: " + str(round(person.hp)) + "/" + str(round(person.get_stat('hpmax'))) + "\nMP: " + str(round(person.mp)) + "/" + str(round(person.get_stat('mpmax')))
 		#speed update
 		if selected_job != null and selected_resource != null:
-			if selected_resource == "rest":
+			if selected_resource in ["rest", 'brothel']:
 				newbutton.get_node("Speed").text = ""
 			elif selected_resource in ['special', 'recruiting']:
 				newbutton.get_node("Speed").text = ""
@@ -154,6 +154,7 @@ func update_characters():
 				newbutton.get_node("Speed").text = str(stepify(number * 4, 0.1))
 		#status update
 		update_status(newbutton, person)
+
 
 func update_status(newbutton, person):
 	var gatherable = Items.materiallist.has(person.get_work())
@@ -172,6 +173,7 @@ func update_status(newbutton, person):
 				newbutton.get_node("Status").texture = Items.materiallist[work.production_item].icon
 		else:
 			newbutton.get_node("Status").texture = Items.materiallist[person.get_work()].icon
+
 
 func character_selected(button, person):
 	if mode_farm:
@@ -278,6 +280,7 @@ func close_job_pannel():
 	get_parent().mansion_state_set("default")
 
 var restbutton
+var servicebutton
 func update_resources():
 	input_handler.ClearContainer($Resourses/GridContainer)
 #	if selected_location != 'aliron':
@@ -294,12 +297,20 @@ func update_resources():
 	restbutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
 	if selected_job != null:
 		if selected_job.has("code"):
-			if selected_job.code == "rest" or selected_job.code == "brothel":
+			if selected_job.code == "rest":
 				restbutton.pressed = true
-	restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/service.png")
+	restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/rest_icon.png")
 	restbutton.connect("pressed", self, "select_resource", [{code = "rest"}, "rest", restbutton])
-
-	globals.connecttexttooltip(restbutton, tr('TASKRESTSERVICE'))
+	globals.connecttexttooltip(restbutton, tr('TASKREST'))
+	
+	servicebutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
+	if selected_job != null:
+		if selected_job.has("code"):
+			if selected_job.code == "brothel":
+				servicebutton.pressed = true
+	servicebutton.get_node("TextureRect").texture = load("res://assets/images/gui/service.png")
+	servicebutton.connect("pressed", self, "select_resource", [{code = "brothel"}, "brothel", servicebutton])
+	globals.connecttexttooltip(servicebutton, tr('TASKRESTSERVICE'))
 	
 	var person_location = selected_location
 	var location = ResourceScripts.world_gen.get_location_from_code(person_location)
@@ -530,6 +541,8 @@ func select_resource(job, resource, newbutton):
 	$Modlabel.hide()
 	$WorkunitLabel.text = ""
 	if job.code == "rest":
+		$DescriptionLabel.bbcode_text = tr("TASKRESTINFO")
+	elif job.code == "brothel":
 		$DescriptionLabel.bbcode_text = tr("TASKRESTDESCRIPT")
 	elif job.has("descript"):
 		var text = job.descript
@@ -642,10 +655,9 @@ func focus_on_person_task(person):
 			select_resource({code = "rest"}, "rest", restbutton)
 		return
 	if work_code == 'brothel':
-		if restbutton != null:
-			select_resource({code = "rest"}, "rest", restbutton)
+		if servicebutton != null:
+			select_resource({code = "brothel"}, "brothel", servicebutton)
 			show_brothel_options()
-			restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
 			return
 	var work_product = person.xp_module.workproduct
 	var job_data = null
@@ -687,26 +699,22 @@ var stat_icons = {
 
 func select_job(button, person):
 	self.person = person
-	if selected_job.code == person.get_work() && selected_job.code != 'brothel':
+	if selected_job.code == "rest":
 		set_rest(button, person)
-		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
+#		show_brothel_options()
 		return
-	if selected_job.has('production_item') and selected_job.production_item == person.get_work():
-		set_rest(button, person)
-		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
-		return
-	if selected_job.code == "rest" and person.get_work() != "brothel":
-		set_rest(button, person)
-		show_brothel_options()
-		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
-		return
-	if selected_job.code == "rest" and person.get_work() == "brothel":
+	if selected_job.code == "brothel":
 		person.assign_to_task('brothel', 'brothel')
 		show_brothel_options()
-		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
 		update_status(button, person)
 		update_resources()
 		show_faces()
+		return
+	if selected_job.code == person.get_work():
+		set_rest(button, person)
+		return
+	if selected_job.has('production_item') and selected_job.production_item == person.get_work():
+		set_rest(button, person)
 		return
 	if selected_job.code == 'special':
 		person.assign_to_special_task(stored_spec_job)
@@ -795,18 +803,18 @@ func show_brothel_options():
 	
 	var location = ResourceScripts.world_gen.get_location_from_code(person.get_location())
 	
-	for i in ['rest']:
-		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
-		newbutton.text = tr("TASKREST")
-		var text = person.translate(tr("TASKRESTINFO"))
-		if location.type != 'capital':
-			newbutton.disabled = true
-			text += '\n' + tr('NOSERVICECAPITAL')
-		globals.connecttexttooltip(newbutton, text)
-		newbutton.pressed = person.get_work() == ''
-		if newbutton.pressed:
-			switch_rest(newbutton)
-		newbutton.connect('pressed', self, 'switch_rest', [newbutton])
+#	for i in ['rest']:
+#		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
+#		newbutton.text = tr("TASKREST")
+#		var text = person.translate(tr("TASKRESTINFO"))
+#		if location.type != 'capital':
+#			newbutton.disabled = true
+#			text += '\n' + tr('NOSERVICECAPITAL')
+#		globals.connecttexttooltip(newbutton, text)
+#		newbutton.pressed = person.get_work() == ''
+#		if newbutton.pressed:
+#			switch_rest(newbutton)
+#		newbutton.connect('pressed', self, 'switch_rest', [newbutton])
 	
 	for i in brothel_rules.non_sex:
 		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
@@ -905,20 +913,20 @@ func switch_brothel_option(button, option):
 	person.set_brothel_rule(option, button.pressed)
 	update_brothel_text()
 
-func switch_rest(button):
-	if button.pressed:
-		set_rest(null, person)
-		update_brothel_text()
-		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
-#		for nd in get_tree().get_nodes_in_group('sex_option'):
-#			nd.disabled = true
-	else:
-		person.assign_to_task('brothel', 'brothel')
-		update_characters()
-		show_faces()
-		show_brothel_options()
-		update_resources()
-		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
+#func switch_rest(button):
+#	if button.pressed:
+#		set_rest(null, person)
+#		update_brothel_text()
+#		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
+##		for nd in get_tree().get_nodes_in_group('sex_option'):
+##			nd.disabled = true
+#	else:
+#		person.assign_to_task('brothel', 'brothel')
+#		update_characters()
+#		show_faces()
+#		show_brothel_options()
+#		update_resources()
+#		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
 
 func set_rest(button, person):
 	person.remove_from_task()
