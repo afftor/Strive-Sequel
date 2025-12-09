@@ -27,6 +27,9 @@ func _ready():
 	upgrades.get_node("UpgradesList").root = get_parent()
 	upgrades.get_node("SuccubUpgradesList").root = get_parent()
 	
+	globals.connecttexttooltip($Panel/maininfo/food/fooddisliked, "[center]"+ tr("STATFOOD_HATE") + "[/center]\n"+tr("STATFOOD_HATEDESCRIPT"))
+	globals.connecttexttooltip($Panel/maininfo/food/foodliked,"[center]"+ tr("STATFOOD_LOVE") + "[/center]\n"+tr("STATFOOD_LOVEDESCRIPT"))
+	
 	update()
 
 
@@ -89,7 +92,13 @@ func update():
 		$Panel/maininfo/personality/icon.texture = personality_icons[person.get_stat('personality')]
 		
 		globals.connecttexttooltip($Panel/maininfo/personality, tr('INFOPERSONALITY'))
-		
+		$Panel/maininfo/food/foodlikedicon.texture = load(images.icons[person.food.food_love])
+		globals.connecttexttooltip($Panel/maininfo/food/foodlikedicon, tr("FOODTYPE" + person.food.food_love.to_upper()))
+		input_handler.ClearContainer($Panel/maininfo/food/fooddislikedicons)
+		for i in person.food.food_hate:
+			var newicon = input_handler.DuplicateContainerTemplate($Panel/maininfo/food/fooddislikedicons)
+			newicon.texture = load(images.icons[i])
+			globals.connecttexttooltip(newicon, tr("FOODTYPE" + i.to_upper()))
 		$Description/RichTextLabel.bbcode_text = person.make_description()
 		
 		update_traitlist()

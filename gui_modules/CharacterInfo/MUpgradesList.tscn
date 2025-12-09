@@ -87,10 +87,10 @@ valign = 1
 [node name="Tooltip" type="TextureRect" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -226.0
-margin_top = 17.0
-margin_right = -176.0
-margin_bottom = 64.0
+margin_left = 58.9956
+margin_top = 6.40536
+margin_right = 108.996
+margin_bottom = 53.4054
 texture = ExtResource( 8 )
 expand = true
 stretch_mode = 6

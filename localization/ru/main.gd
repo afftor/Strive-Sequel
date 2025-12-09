@@ -527,6 +527,7 @@ var TranslationDict = {
 	TASKS = """Поручения""",
 	LABELDISLOCATION = """Пункт отбытия""",
 	LABELDESTINATION = """Пункт назначения""",
+	LABELSEXSKILLS = """Sex Skills""", # MISSING TRANSLATION
 	STARTINGADJ = """Начало""",
 	FOODTYPEMEAT = """Мясо""",
 	FOODTYPEFISH = """Рыба""",

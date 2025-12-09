@@ -514,6 +514,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TASKS = "Tasks",
 	LABELDISLOCATION = "Dislocation",
 	LABELDESTINATION = "Destination",
+	LABELSEXSKILLS = "Sex Skills",
 	STARTINGADJ = "Starting",
 	FOODTYPEMEAT = "Meat",
 	FOODTYPEFISH = "Fish",

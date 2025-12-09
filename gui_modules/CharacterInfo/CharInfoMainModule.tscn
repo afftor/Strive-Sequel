@@ -1,4 +1,4 @@
-[gd_scene load_steps=232 format=2]
+[gd_scene load_steps=235 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=2]
@@ -197,6 +197,9 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/master_tr_pressed.png" type="Texture" id=195]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/master_tr_hover.png" type="Texture" id=196]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/minor_normal.png" type="Texture" id=197]
+[ext_resource path="res://assets/images/gui/gui icons/icon_meat.png" type="Texture" id=198]
+[ext_resource path="res://assets/images/gui/gui icons/icon_lfood.png" type="Texture" id=199]
+[ext_resource path="res://assets/images/gui/gui icons/icon_dlfood.png" type="Texture" id=200]
 
 [sub_resource type="StyleBoxTexture" id=13]
 texture = ExtResource( 111 )
@@ -582,7 +585,7 @@ light_mask = 0
 margin_left = 1.0
 margin_top = -41.0
 margin_right = 283.0
-margin_bottom = 284.0
+margin_bottom = 327.0
 custom_styles/panel = SubResource( 13 )
 
 [node name="loyaltylabel" type="Label" parent="SlaveInfoModule/Panel" groups=["hide_master", "hide_stranger"]]
@@ -744,6 +747,51 @@ margin_right = 60.8691
 margin_bottom = 44.001
 texture = ExtResource( 20 )
 
+[node name="food" type="Control" parent="SlaveInfoModule/Panel/maininfo" groups=["hide_master"]]
+margin_top = 295.0
+margin_right = 268.0
+margin_bottom = 339.0
+rect_min_size = Vector2( 0, 44 )
+
+[node name="foodliked" type="TextureRect" parent="SlaveInfoModule/Panel/maininfo/food"]
+margin_left = 22.0
+margin_top = 5.0
+margin_right = 65.0
+margin_bottom = 34.0
+texture = ExtResource( 199 )
+expand = true
+stretch_mode = 6
+
+[node name="foodlikedicon" type="TextureRect" parent="SlaveInfoModule/Panel/maininfo/food"]
+margin_left = 89.0
+margin_top = 5.0
+margin_right = 120.0
+margin_bottom = 35.0
+texture = ExtResource( 198 )
+
+[node name="fooddisliked" type="TextureRect" parent="SlaveInfoModule/Panel/maininfo/food"]
+margin_left = 142.695
+margin_top = 5.3371
+margin_right = 186.695
+margin_bottom = 34.3371
+texture = ExtResource( 200 )
+expand = true
+stretch_mode = 6
+
+[node name="fooddislikedicons" type="HBoxContainer" parent="SlaveInfoModule/Panel/maininfo/food"]
+margin_left = 198.0
+margin_top = 5.0
+margin_right = 262.0
+margin_bottom = 35.0
+alignment = 1
+
+[node name="Button" type="TextureRect" parent="SlaveInfoModule/Panel/maininfo/food/fooddislikedicons"]
+visible = false
+margin_left = 16.0
+margin_right = 47.0
+margin_bottom = 30.0
+texture = ExtResource( 198 )
+
 [node name="DescriptionButton" type="Button" parent="SlaveInfoModule"]
 margin_left = 971.0
 margin_top = -41.0
@@ -874,7 +922,7 @@ margin_bottom = 574.0
 custom_styles/panel = SubResource( 16 )
 
 [node name="Panel3" type="Panel" parent="SlaveInfoModule"]
-margin_top = 284.0
+margin_top = 327.0
 margin_right = 283.0
 margin_bottom = 718.0
 custom_styles/panel = SubResource( 14 )
@@ -1826,7 +1874,7 @@ align = 2
 [node name="SexSkillsContainer" type="ScrollContainer" parent="SlaveInfoModule"]
 light_mask = 0
 margin_left = 9.0
-margin_top = 367.0
+margin_top = 410.0
 margin_right = 272.0
 margin_bottom = 652.0
 theme = ExtResource( 40 )
@@ -1834,10 +1882,11 @@ scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SlaveInfoModule/SexSkillsContainer"]
 light_mask = 0
-custom_constants/separation = 7
+margin_right = 257.0
+margin_bottom = 50.0
+custom_constants/separation = 0
 
 [node name="Button" type="HBoxContainer" parent="SlaveInfoModule/SexSkillsContainer/VBoxContainer"]
-visible = false
 light_mask = 0
 margin_right = 257.0
 margin_bottom = 50.0
@@ -1883,11 +1932,11 @@ text = "1/100"
 align = 1
 
 [node name="SexSkillsLabel" type="Label" parent="SlaveInfoModule"]
-margin_left = 8.49832
-margin_top = 292.708
-margin_right = 271.498
-margin_bottom = 324.708
-text = "Sex Skills"
+margin_left = 8.50073
+margin_top = 340.402
+margin_right = 271.5
+margin_bottom = 372.402
+text = "LABELSEXSKILLS"
 align = 1
 
 [node name="HairChange" type="Control" parent="SlaveInfoModule"]
@@ -1919,9 +1968,9 @@ text = "Bald"
 
 [node name="ConsentLabel" type="Label" parent="SlaveInfoModule"]
 margin_left = 12.8218
-margin_top = 324.861
+margin_top = 372.905
 margin_right = 269.822
-margin_bottom = 356.861
+margin_bottom = 404.905
 mouse_filter = 1
 custom_colors/font_color = Color( 0.929412, 0.156863, 0.862745, 1 )
 text = "SIBLINGMODULECONSENT"
