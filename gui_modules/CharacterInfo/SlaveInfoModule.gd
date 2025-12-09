@@ -130,7 +130,7 @@ func text_url_click(meta):
 				panel.text = tr(i.name)
 				panel.connect('pressed', self, 'confirm_hairstyle', [i.code])
 			$HairChange/screen.set_global_position(Vector2(0, 0))
-			$HairChange/hair_style.set_global_position(get_viewport().get_mouse_position())
+			$HairChange/hair_style.set_global_position(get_viewport().get_mouse_position() - Vector2($HairChange/hair_style.rect_size.x, 0))
 			
 
 
