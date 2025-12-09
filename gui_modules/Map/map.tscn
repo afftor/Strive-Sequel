@@ -468,8 +468,8 @@ grow_horizontal = 0
 rect_min_size = Vector2( 0, 50 )
 toggle_mode = true
 texture_normal = ExtResource( 21 )
-texture_pressed = ExtResource( 25 )
-texture_hover = ExtResource( 2 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 25 )
 expand = true
 
 [node name="Label" type="Label" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocGroupList/LocGroup/Button"]

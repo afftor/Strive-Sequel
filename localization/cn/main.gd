@@ -508,6 +508,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 
 	LABELDISLOCATION = "错位",
 	LABELDESTINATION = "目的地",
+	LABELSEXSKILLS = """Sex Skills""", # MISSING TRANSLATION
 	#Materials
 	STARTINGADJ = "开始",
 

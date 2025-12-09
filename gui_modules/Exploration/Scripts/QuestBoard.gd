@@ -89,7 +89,7 @@ func accept_quest():
 	for i in selectedquest.requirements:
 		if i.code in ['complete_dungeon', 'complete_location']:
 			break
-	input_handler.interactive_message('quest_accept', '', {})
+	#input_handler.interactive_message('quest_accept', '', {})
 	var args = {}
 	args["label"] = tr("QUESTTASKACQ")
 	args["info"] = selectedquest.name
