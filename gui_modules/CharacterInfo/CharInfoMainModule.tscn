@@ -754,18 +754,18 @@ margin_bottom = 339.0
 rect_min_size = Vector2( 0, 44 )
 
 [node name="foodliked" type="TextureRect" parent="SlaveInfoModule/Panel/maininfo/food"]
-margin_left = 22.0
+margin_left = 19.0
 margin_top = 5.0
-margin_right = 65.0
+margin_right = 62.0
 margin_bottom = 34.0
 texture = ExtResource( 199 )
 expand = true
 stretch_mode = 6
 
 [node name="foodlikedicon" type="TextureRect" parent="SlaveInfoModule/Panel/maininfo/food"]
-margin_left = 89.0
+margin_left = 86.0
 margin_top = 5.0
-margin_right = 120.0
+margin_right = 117.0
 margin_bottom = 35.0
 texture = ExtResource( 198 )
 
@@ -988,10 +988,16 @@ margin_right = 956.0
 margin_bottom = 558.0
 theme = ExtResource( 15 )
 scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="UpgradesList3" parent="SlaveInfoModule/UpgradesPanel/MinorUpgradesCont" instance=ExtResource( 141 )]
 margin_bottom = 800.0
 rect_min_size = Vector2( 500, 800 )
+__meta__ = {
+"_edit_lock_": true
+}
 list_type = 1
 
 [node name="SuccubUpgradesList" parent="SlaveInfoModule/UpgradesPanel" instance=ExtResource( 142 )]
@@ -1002,6 +1008,7 @@ margin_right = 957.0
 margin_bottom = 557.0
 
 [node name="UpgradesList" type="Control" parent="SlaveInfoModule/UpgradesPanel"]
+visible = false
 margin_left = 294.0
 margin_top = 25.0
 margin_right = 958.0
