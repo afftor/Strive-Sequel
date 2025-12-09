@@ -146,7 +146,7 @@ func rebuild():
 		for rl in ['lock', 'ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'nudity', 'personality_lock', 'relationship', 'masturbation']:
 			var true_btn = newbutton.get_node('rule_' + rl)
 			true_btn.connect('pressed', self, 'toggle_rules', [newbutton, rl])
-			globals.connecttexttooltip(newbutton.get_node('rule_' + rl), person.translate(tr('WORKRULE%sDESCRIPT' % rl.to_upper())))
+			globals.connecttexttooltip(newbutton.get_node('rule_' + rl), "[center]"+tr("WORKRULE"+rl.to_upper()) + "[/center]\n" + person.translate(tr('WORKRULE%sDESCRIPT' % rl.to_upper())))
 			mass_rule_list.append({
 				btn_node = true_btn,
 				act_func = 'toggle_rules_mass',
@@ -155,7 +155,7 @@ func rebuild():
 		for rl in  ['waitress', 'hostess', 'dancer', 'stripper', 'males', 'females', 'futa', 'petting', 'oral', 'anal', 'pussy', 'group', 'sextoy']:
 			var true_btn = newbutton.get_node('rule_' + rl)
 			true_btn.connect('pressed', self, 'toggle_service', [newbutton, rl])
-			globals.connecttexttooltip(newbutton.get_node('rule_' + rl), person.translate(tr('BROTHEL%sDESCRIPT' % rl.to_upper())))
+			globals.connecttexttooltip(newbutton.get_node('rule_' + rl), "[center]" + tr("BROTHEL"+rl.to_upper()) + "[/center]\n" + person.translate(tr('BROTHEL%sDESCRIPT' % rl.to_upper())))
 			mass_service_list.append({
 				btn_node = true_btn,
 				act_func = 'toggle_service_mass',

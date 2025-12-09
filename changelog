@@ -1,4 +1,4 @@
-0.13.2b
+0.13.3
 Redesigned character info and some parts of character list
 Added damage types to combat log
 Added color border to turn order to indicate player/enemy characters
@@ -9,10 +9,10 @@ Renamed Nobody fame level to Stranger
 Revamped shop menu
 Removed confimation message when accepting quests
 Weapons now have minimum mastery requirements necessary to equip them
-Invested mastery points are now capped at 10 per mastery
+Invested mastery points are now capped at 8 per mastery
 Trap skills moved from Marksmanship Mastery to Stealth Mastery
 Fire Arrows and Poison Arrows added to Marksmanship Mastery instead
-Master trait Communicative now gives +3 persuasion check, +2 leadership mastery and +2 weekly dates instead of +1 social skill charges.
+Master talent Communicative now gives +3 persuasion check, +2 leadership mastery and +2 weekly dates instead of +1 social skill charges.
 Updated some old cg scene arts
 Master trait Progenecy now gives for all offspring 50% chance for each Factor to be increased by 1
 Easy training option moved to advanced settings
@@ -20,6 +20,7 @@ Void Barrage now shoots 4 times (down from 5), for 85% MATK (up from 80%) and co
 Bolt trap now deals 110% ATK damage (down from 150%) but is unlocked at Stealth Mastery 1
 Characters freed with Writ of Exemption will retain some of the trained traits
 Amelia after recruitment won't adopt catlike speech pattern
+Amelia is now set as friends with Cali
 Fixed Wind Blade attacking same target every time
 Fixed multiple places missing item color quality background
 Fixed beverages not being sacrificable at the altars

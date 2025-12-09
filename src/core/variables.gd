@@ -603,7 +603,7 @@ var breakdown_info = {
 const base_stat_upg_price = 100
 const stat_upg_unique_bonus = 0.2
 
-const mastery_train_limit = 10
+const mastery_train_limit = 8
 
 var race_stat_upg_bonuses = {
 	common = 0.0,

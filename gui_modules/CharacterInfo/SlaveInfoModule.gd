@@ -30,6 +30,11 @@ func _ready():
 	globals.connecttexttooltip($Panel/maininfo/food/fooddisliked, "[center]"+ tr("STATFOOD_HATE") + "[/center]\n"+tr("STATFOOD_HATEDESCRIPT"))
 	globals.connecttexttooltip($Panel/maininfo/food/foodliked,"[center]"+ tr("STATFOOD_LOVE") + "[/center]\n"+tr("STATFOOD_LOVEDESCRIPT"))
 	
+	globals.connecttexttooltip($tr_selector/master_upg, tr("SIBLINGMODULETRAININGSMASTER"))
+	globals.connecttexttooltip($tr_selector/succubus, tr("SIBLINGMODULESUCCUBUS"))
+	globals.connecttexttooltip($tr_selector/trainings, tr("SIBLINGMODULETRAININGS"))
+	globals.connecttexttooltip($tr_selector/minor_upg, tr("SIBLINGMODULEMINORTRAINING"))
+	
 	update()
 
 

@@ -629,7 +629,7 @@ custom_styles/panel = ExtResource( 34 )
 [node name="Actions" type="Panel" parent="."]
 light_mask = 0
 margin_top = 842.0
-margin_right = 1188.0
+margin_right = 1190.0
 margin_bottom = 1051.0
 custom_styles/panel = ExtResource( 34 )
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=247 format=2]
+[gd_scene load_steps=248 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=2]
@@ -402,6 +402,10 @@ region_rect = Rect2( 0, 0, 1920, 1080 )
 [sub_resource type="DynamicFont" id=19]
 size = 24
 font_data = ExtResource( 7 )
+
+[sub_resource type="StyleBoxTexture" id=46]
+texture = ExtResource( 134 )
+region_rect = Rect2( 0, 0, 306, 198 )
 
 [node name="CharInfoMainModule" type="Panel" groups=["pauseprocess"]]
 light_mask = 0
@@ -1368,10 +1372,10 @@ anchor_bottom = 1.0
 expand = true
 
 [node name="ThrallsTooltip" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/SuccubUpgradesList/thralls"]
-margin_left = 695.0
-margin_top = 7.0
-margin_right = 745.0
-margin_bottom = 54.0
+margin_left = 14.7633
+margin_top = 5.58582
+margin_right = 64.7633
+margin_bottom = 52.5858
 texture = ExtResource( 135 )
 expand = true
 stretch_mode = 6
@@ -1460,6 +1464,7 @@ expand = true
 stretch_mode = 6
 
 [node name="UpgradesList" type="Control" parent="SlaveInfoModule/UpgradesPanel"]
+visible = false
 margin_left = 294.0
 margin_top = 25.0
 margin_right = 958.0
@@ -2526,15 +2531,15 @@ expand = true
 stretch_mode = 6
 
 [node name="tr_selector" type="HBoxContainer" parent="SlaveInfoModule"]
-margin_left = 304.0
-margin_top = -24.0
-margin_right = 476.0
-margin_bottom = 16.0
+margin_left = 295.0
+margin_top = -26.0
+margin_right = 507.0
+margin_bottom = 24.0
 
 [node name="master_upg" type="TextureButton" parent="SlaveInfoModule/tr_selector"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
 toggle_mode = true
 texture_normal = ExtResource( 187 )
 texture_pressed = ExtResource( 195 )
@@ -2542,10 +2547,10 @@ texture_hover = ExtResource( 196 )
 expand = true
 
 [node name="succubus" type="TextureButton" parent="SlaveInfoModule/tr_selector"]
-margin_left = 44.0
-margin_right = 84.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
+margin_left = 54.0
+margin_right = 104.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
 toggle_mode = true
 texture_normal = ExtResource( 184 )
 texture_pressed = ExtResource( 185 )
@@ -2553,10 +2558,10 @@ texture_hover = ExtResource( 192 )
 expand = true
 
 [node name="trainings" type="TextureButton" parent="SlaveInfoModule/tr_selector"]
-margin_left = 88.0
-margin_right = 128.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
+margin_left = 108.0
+margin_right = 158.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
 toggle_mode = true
 texture_normal = ExtResource( 193 )
 texture_pressed = ExtResource( 186 )
@@ -2564,10 +2569,10 @@ texture_hover = ExtResource( 191 )
 expand = true
 
 [node name="minor_upg" type="TextureButton" parent="SlaveInfoModule/tr_selector"]
-margin_left = 132.0
-margin_right = 172.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
+margin_left = 162.0
+margin_right = 212.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
 toggle_mode = true
 texture_normal = ExtResource( 197 )
 texture_pressed = ExtResource( 190 )
@@ -4572,6 +4577,19 @@ texture = ExtResource( 134 )
 expand = true
 script = ExtResource( 125 )
 
+[node name="TextureRect" type="TextureRect" parent="SlaveSiblingsModule"]
+margin_left = 994.0
+margin_top = -4.0
+margin_right = 1824.0
+margin_bottom = 45.0
+rect_rotation = 89.9999
+rect_scale = Vector2( 0.913895, 1.10898 )
+texture = ExtResource( 76 )
+stretch_mode = 6
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="RelativesPanel" type="VBoxContainer" parent="SlaveSiblingsModule"]
 margin_left = 288.0
 margin_top = 46.0
@@ -4592,12 +4610,12 @@ clip_text = true
 [node name="Relatives" type="HBoxContainer" parent="SlaveSiblingsModule/RelativesPanel"]
 margin_top = 57.0
 margin_right = 658.0
-margin_bottom = 370.0
+margin_bottom = 342.0
 size_flags_vertical = 3
 
 [node name="Parents" type="VBoxContainer" parent="SlaveSiblingsModule/RelativesPanel/Relatives"]
 margin_right = 216.0
-margin_bottom = 313.0
+margin_bottom = 285.0
 size_flags_horizontal = 3
 
 [node name="Head" type="Label" parent="SlaveSiblingsModule/RelativesPanel/Relatives/Parents"]
@@ -4639,7 +4657,7 @@ __meta__ = {
 [node name="ScrollContainer" type="ScrollContainer" parent="SlaveSiblingsModule/RelativesPanel/Relatives"]
 margin_left = 220.0
 margin_right = 437.0
-margin_bottom = 313.0
+margin_bottom = 285.0
 size_flags_horizontal = 3
 scroll_horizontal_enabled = false
 
@@ -4687,7 +4705,7 @@ __meta__ = {
 [node name="ScrollContainer2" type="ScrollContainer" parent="SlaveSiblingsModule/RelativesPanel/Relatives"]
 margin_left = 441.0
 margin_right = 658.0
-margin_bottom = 313.0
+margin_bottom = 285.0
 size_flags_horizontal = 3
 scroll_horizontal_enabled = false
 
@@ -4732,8 +4750,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label2" type="Label" parent="SlaveSiblingsModule/RelativesPanel"]
+margin_top = 346.0
+margin_right = 658.0
+margin_bottom = 399.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 122 )
+text = "SIBLINGMODULERELATIONS"
+align = 1
+clip_text = true
+
 [node name="Relations" type="RichTextLabel" parent="SlaveSiblingsModule/RelativesPanel"]
-margin_top = 374.0
+margin_top = 403.0
 margin_right = 658.0
 margin_bottom = 688.0
 size_flags_vertical = 3
@@ -4838,15 +4866,17 @@ margin_top = 676.0
 margin_right = 255.0
 margin_bottom = 736.0
 rect_min_size = Vector2( 250, 60 )
+theme = ExtResource( 58 )
 custom_fonts/font = ExtResource( 1 )
 text = "Stats"
 
 [node name="StatsPanel" parent="SlaveSiblingsModule" instance=ExtResource( 144 )]
-visible = false
 margin_left = 3.0
 margin_top = 7.0
 margin_right = 1377.0
 margin_bottom = 819.0
+theme = null
+custom_styles/panel = SubResource( 46 )
 
 [node name="Button" type="Button" parent="."]
 visible = false

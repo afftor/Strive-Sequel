@@ -299,7 +299,7 @@ func update_resources():
 		if selected_job.has("code"):
 			if selected_job.code == "rest":
 				restbutton.pressed = true
-	restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/rest_icon.png")
+	restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_bedlimit.png")
 	restbutton.connect("pressed", self, "select_resource", [{code = "rest"}, "rest", restbutton])
 	globals.connecttexttooltip(restbutton, tr('TASKREST'))
 	
