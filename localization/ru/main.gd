@@ -1006,8 +1006,8 @@ var TranslationDict = {
 	
 	TOOLTIPSKILLPOINTS = """Очки навыков зарабатываются в боях и используются для приобретения новых боевых навыков.""",
 	TOOLTIPSUCCUBUS = """[Succubus] получает силы от очарования других. Каждый очарованный влюбляется в [succubus]а и заставляет [him] расти в силе.""",
-	TOOLTIPMINORTRAINING = """##FIX!!##[Succubus] gains powers from {color=green|Enthralling} others. Each Thrall falls in love with [succubus] and makes [him] grow in strength. Unlock points are earned by enthralling more characters.""", # MISSING TRANSLATION
-	TOOLTIPMASTERTRAINING = """##FIX!!##[Succubus] gains powers from {color=green|Enthralling} others. Each Thrall falls in love with [succubus] and makes [him] grow in strength. Unlock points are earned by enthralling more characters.""", # MISSING TRANSLATION
+	TOOLTIPMINORTRAINING = """Minor Trainings are purchased with gold. It will take time to complete training. {color=yellow|Growth Factor} defines number of maximum Minor Trainings. {color=yellow|Wits Factor} will make allow completion faster.""", # MISSING TRANSLATION
+	TOOLTIPMASTERTRAINING = """Master Talents can be purchased with exclusive Master Points which are awarded with main story progression.""", # MISSING TRANSLATION
 	
 
 	SAVENAME = """Сохранение""",
