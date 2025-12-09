@@ -65,10 +65,10 @@ func _ready():
 	globals.connecttexttooltip($SexIcon, tr("SEXTOOLTIP"))
 	for nd in modes.get_children():
 		nd.connect('pressed', self, 'set_mode', [nd.name])
-	for rl in ['lock', 'ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'nudity', 'personality_lock', 'relationship', 'masturbation']:
-		globals.connecttexttooltip(header.get_node('rule_' + rl), tr('WORKRULE%sDESCRIPT' % rl.to_upper()))
-	for rl in ['waitress', 'hostess', 'dancer', 'stripper', 'males', 'females', 'futa', 'petting', 'oral', 'anal', 'pussy', 'group', 'sextoy']:
-		globals.connecttexttooltip(header.get_node('brothel_' + rl), tr('BROTHEL%sDESCRIPT' % rl.to_upper()))
+#	for rl in ['lock', 'ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'nudity', 'personality_lock', 'relationship', 'masturbation']:
+#		globals.connecttexttooltip(header.get_node('rule_' + rl), tr('WORKRULE%sDESCRIPT' % rl.to_upper()))
+#	for rl in ['waitress', 'hostess', 'dancer', 'stripper', 'males', 'females', 'futa', 'petting', 'oral', 'anal', 'pussy', 'group', 'sextoy']:
+#		globals.connecttexttooltip(header.get_node('brothel_' + rl), tr('BROTHEL%sDESCRIPT' % rl.to_upper()))
 	for rl in ['meat', 'fish', 'grain', 'vegetables', 'bread', 'meatsoup', 'curry', 'friedfish', 'fishcakes']:
 		globals.connecttexttooltip(header.get_node('food_' + rl), tr('MATERIAL%sDESCRIPT' % rl.to_upper()))
 
@@ -136,8 +136,10 @@ func rebuild():
 		
 		for rl in ['lock', 'ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'nudity', 'personality_lock', 'relationship', 'masturbation']:
 			newbutton.get_node('rule_' + rl).connect('pressed', self, 'toggle_rules', [newbutton, rl])
+			globals.connecttexttooltip(newbutton.get_node('rule_' + rl), person.translate(tr('WORKRULE%sDESCRIPT' % rl.to_upper())))
 		for rl in  ['waitress', 'hostess', 'dancer', 'stripper', 'males', 'females', 'futa', 'petting', 'oral', 'anal', 'pussy', 'group', 'sextoy']:
 			newbutton.get_node('rule_' + rl).connect('pressed', self, 'toggle_service', [newbutton, rl])
+			globals.connecttexttooltip(newbutton.get_node('rule_' + rl), person.translate(tr('BROTHEL%sDESCRIPT' % rl.to_upper())))
 		for f_id in ['meat', 'fish', 'grain', 'vegetables', 'bread', 'meatsoup', 'curry', 'friedfish', 'fishcakes']:
 			newbutton.get_node('ff_' + f_id).connect('pressed', self, 'press_food', [newbutton, f_id])
 		
