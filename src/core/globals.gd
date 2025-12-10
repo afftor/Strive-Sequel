@@ -3170,6 +3170,8 @@ func get_tr_src(src, src_val):
 			return [tr("ITEM_LABEL"), item.name]
 		'masteries_points':
 			return ["", tr("STATMASTERY_POINT_%s" % src_val.to_upper())]
+		'upgrade':
+			return ["", tr("UPGRADERESTING")]
 		_:
 			print("get_tr_src() can't decipher %s %s" % [src, src_val])
 			return [src, src_val]
