@@ -178,10 +178,11 @@ func text_url_hover_hide(meta = null):
 
 
 func open_upgrade_tab(id = null):
+	var _update = true
 	if person == null:
 		return
 	if curr_tab == id:
-		return
+		_update = false
 	if id == null:
 		if person.is_master():
 			id = 'master_upg'
@@ -192,9 +193,10 @@ func open_upgrade_tab(id = null):
 	curr_tab = id
 	for i in trainings_selector.get_children():
 		i.pressed = (i.name == curr_tab)
-	for nd in upgrades.get_children():
-		nd.visible = false
-	call('open_' + curr_tab)
+	if _update:
+		for nd in upgrades.get_children():
+			nd.visible = false
+		call('open_' + curr_tab)
 
 
 func open_master_upg():
