@@ -45,26 +45,35 @@ func _process(delta):
 			finish_animation(node)
 
 func can_add_data(data):
-	if animations_queue[data.time][data.node].empty(): return false
+	if animations_queue[data.time][data.node].empty(): 
+		return false
 	var l_anim = animations_queue[data.time][data.node].back()
 	for tdata in l_anim:
 		if tdata.slot == data.slot: return false
 	return true
 
 func add_new_data(data):
+	var recall = false
 	if !animations_queue.has(data.time): 
 		animations_queue[data.time] = {}
 	if !animations_queue[data.time].has(data.node): 
 		animations_queue[data.time][data.node] = []
+		if is_busy:
+			#bad architecture, need to move all of this additions to proper interface later
+			recall = true
 	if can_add_data(data): 
 		animations_queue[data.time][data.node].back().append(data)
 	elif data.slot != 'buffs' or animations_queue[data.time][data.node].empty():
 		animations_queue[data.time][data.node].push_back([])
 		animations_queue[data.time][data.node].back().append(data)
+	if recall:
+		start_animation(data.node)
 
 func check_start():
-	if is_busy: return
-	if animations_queue.empty(): return
+	if is_busy: 
+		return
+	if animations_queue.empty(): 
+		return
 	is_busy = true
 	advance_timer()
 
