@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.13.3 experimental'
+const gameversion = '0.13.3'
 
 #time
 signal hour_tick
@@ -1854,7 +1854,7 @@ func reset_roll_data():
 
 
 func get_rolled_diff(): #excluding event bonus
-	var t_diff
+	var t_diff = 0
 	match char_roll_data.diff:
 		'easy':
 			t_diff = 2

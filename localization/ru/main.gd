@@ -174,6 +174,7 @@ var TranslationDict = {
 	SIBLINGMODULESUCCUBUS = """Тренировка суккуба""",
 	SIBLINGMODULETRAININGSSERVANTS = """Тренировка слуги""",
 	SIBLINGMODULETRAININGSMASTER = """Тренировка мастера""",
+	SIBLINGMODULEMINORTRAINING = """Proficiencies""", # MISSING TRANSLATION
 	SIBLINGMODULEFOODCONSUMPTION = """Суточное потребление""",
 	SIBLINGMODULEMAIN = """Главный""",
 	SIBLINGMODULESEX = """Секс""",
@@ -191,6 +192,7 @@ var TranslationDict = {
 	SIBLINGMODULETHRALLLIST = """Приспешники""",
 	FAILALREADYSUCCUBUS = "Нельзя использовать разврвщающую эссенцию на приспешниках или суккубах",
 	MINORTRAINMAXREACHED = "Достигнут максимум дополнительных тренировок",
+	MINORTRAIN_TRAIT_AQUIRED = """trait %s aquired""", # MISSING TRANSLATION
 	SYSMESSAGEATLEAST1CHAR = """Выберите хотя бы 1 персонажа для боя.""",
 	OPERANTATLEAST = """Минимум""",
 	OPERANTATMOST = """Максимум""",
@@ -2193,8 +2195,10 @@ Does not take turn to activate.""", # MISSING TRANSLATION
 	STATHPFACTORDESCRIPT = """Определяет бонусы к здоровью, получаемые большинством способов. Высокий коэффициент здоровья может значительно повысить выживаемость.""",
 	STATHP_REG_MOD = """Фактор исцеления""",
 	STATHP_REG = "Регенерация здоровья",
+	STATHP_REGDESCRIPT = """Increases passive health regeneration each turn""", # MISSING TRANSLATION
 	STATMP_REG_ADD = """Регенерация маны""",
 	STATMP_REG = "Регенерация маны",
+	STATMP_REGDESCRIPT = """Increases passive mana regeneration each turn""", # MISSING TRANSLATION
 
 	STATHPMAXMOD = """Макс. здоровье""",
 
@@ -2614,6 +2618,7 @@ Does not take turn to activate.""", # MISSING TRANSLATION
 	STATTASK_EFFICIENCY_TOOL = """Бонус эффективности выполнения поручений""",
 	STATTASK_CRIT_CHANCE = """Шанс крита при выполнении поручений""",
 	STATMAGIC_FIND = """Магический поиск""",
+	STATMAGIC_FINDDESCRIPT = """Improves quality of items found""", # MISSING TRANSLATION
 
 
 
@@ -3997,6 +4002,7 @@ Requires: Базовый рабский труд""",
 	UPGRADEFARM_SLOTS = """Слоты для фермы""",
 	UPGRADEFARM_SLOTSDESCRIPT = """Предоставляет дополнительные места для производства на ферме""",
 	UPGRADELIST_UNLOCK = "Разблокировать это за {color=green|%s} %s?",
+	UPGRADELIST_UNLOCK_MINOR = """Unlock this for {color=green|%s} %s? It will take %s turns.""", # MISSING TRANSLATION
 	UPGRADELIST_UNLOCK_MP = "Очки Мастера",
 	UPGRADELIST_UNLOCK_GOLD = "Золото",
 	
@@ -5066,6 +5072,7 @@ Requires: Базовый рабский труд""",
 
 	ENEMYDEMONESS = """Демонесса""",
 	ENEMYGREG = """Грег""",
+	ENEMYGREG_ACT4 = """Greg, the Renegade""", # MISSING TRANSLATION
 	ENEMYAIRE = """Эйра""",
 	ENEMYKURDAN = """Курдан""",
 	

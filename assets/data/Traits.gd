@@ -2442,7 +2442,7 @@ var succubus_trainings = {
 		mode = 'skill',
 		skill = 'swap_form',
 		trait = null,
-		position = [1, 0],
+		position = [0.7, 0],
 		icon = load("res://assets/images/iconstraits/change_form.png"),
 	},
 	succubus_magic = {
@@ -2451,7 +2451,7 @@ var succubus_trainings = {
 		mode = 'trait',
 		skill = null,
 		trait = 'succubus_magic',
-		position = [1, 1],
+		position = [0.7, 1],
 		icon = load("res://assets/images/iconstraits/l_sorcery.png"),
 	},
 	succubus_combat = {
@@ -2460,7 +2460,7 @@ var succubus_trainings = {
 		mode = 'trait',
 		skill = null,
 		trait = 'succubus_combat',
-		position = [1, 2],
+		position = [0.7, 2],
 		icon = load("res://assets/images/iconstraits/l_sword.png"),
 	},
 }
