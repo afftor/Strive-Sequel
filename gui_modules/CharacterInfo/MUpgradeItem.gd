@@ -69,6 +69,14 @@ func setup_upgrade(upgrade_id):
 		$bg.modulate = color_dict.lock3
 		set_inactive()
 		tooltip_text += "\n"+tr("MINORTRAINMAXREACHED")
+	elif list.is_list_minor() and person.is_in_minor_training():
+		disabled = true
+		set_inactive()
+		if person.get_minor_training_in_progress() == upgrade_id:
+			$bg.modulate = color_dict.avail
+			$cost.text = str(person.get_minor_training_time_left()) + tr('MSLMTURN')
+		else:
+			$bg.modulate = color_dict.lock3
 	else:
 		$bg.modulate = color_dict.avail
 		set_normal()

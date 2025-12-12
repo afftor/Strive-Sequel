@@ -9,7 +9,7 @@ onready var traitlist = $TraitContainer/HBoxContainer
 onready var upgrades = $UpgradesPanel
 onready var sextraits = $SexTraitsPanel
 onready var trainings_selector = $tr_selector
-var curr_tab = 'default'
+var curr_tab
 
 
 func _ready():
@@ -54,7 +54,7 @@ func set_color(value):
 func update():
 	if person != input_handler.interacted_character:
 		person = input_handler.interacted_character
-		curr_tab = 0
+		curr_tab = null
 	sextraits.hide()
 	$panel4.pressed = false
 	sextraits.build_sex_traits()
@@ -181,16 +181,20 @@ func open_upgrade_tab(id = null):
 	var _update = true
 	if person == null:
 		return
-	if curr_tab == id:
-		_update = false
-	if id == null:
-		if person.is_master():
-			id = 'master_upg'
-		elif person.check_trait('succubus'):
-			id = 'succubus'
-		else:
-			id = 'trainings'
-	curr_tab = id
+	if curr_tab != null:
+		if id != null:
+			if curr_tab == id:
+				_update = false
+			curr_tab = id
+	else:
+		if id == null:
+			if person.is_master():
+				id = 'master_upg'
+			elif person.check_trait('succubus'):
+				id = 'succubus'
+			else:
+				id = 'trainings'
+		curr_tab = id
 	for i in trainings_selector.get_children():
 		i.pressed = (i.name == curr_tab)
 	if _update:

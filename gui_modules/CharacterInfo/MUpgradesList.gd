@@ -66,11 +66,13 @@ func learn_upgrade(id):
 	selected_id = id
 	var data = Traitdata.traits[id]
 	var currency
+	var text
 	if is_list_mastery():
 		currency = tr('UPGRADELIST_UNLOCK_MP')
+		text = tr("UPGRADELIST_UNLOCK") % [data.l_cost, currency]
 	elif is_list_minor():
 		currency = tr('UPGRADELIST_UNLOCK_GOLD')
-	var text = tr("UPGRADELIST_UNLOCK") % [data.l_cost, currency]
+		text = tr("UPGRADELIST_UNLOCK_MINOR") % [data.l_cost, currency, str(person.get_minor_training_time())]
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'learn_upgrade_confirmed', text])
 
 
@@ -82,14 +84,15 @@ func learn_upgrade_confirmed():
 	args["person"] = person
 	if is_list_mastery():
 		ResourceScripts.game_progress.master_points -= data.l_cost
+		person.add_trait(selected_id)
+		input_handler.play_animation("trait_aquired", args)
 	elif is_list_minor():
 		ResourceScripts.game_res.money -= data.l_cost
+		person.start_minor_training(selected_id)
 #	person.add_stat('loyalty_traits_unlocked', 1)
-	person.add_trait(selected_id)
 	selected_id = ""
 	update_upgrades_tree()
 	root.update()
-	input_handler.play_animation("trait_aquired", args)
 
 func is_list_minor():
 	return list_type == list_types.minor

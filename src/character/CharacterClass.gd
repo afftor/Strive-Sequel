@@ -1867,6 +1867,8 @@ func tick():
 		return
 	
 	xp_module.work_tick()
+	
+	minor_training_tick()
 
 
 func rest_tick():
@@ -2599,6 +2601,9 @@ func get_fame_bonus_desc():
 	return ResourceScripts.descriptions.get_fame_tier_bonus(get_stat("fame"))
 
 #Minor training. Maybe should be withdrawn to separate module
+var minor_training_timer = 0#in turns
+var cur_minor_training
+
 func get_minor_training_max():
 	return 3 + floor(get_stat('growth_factor') * 0.5)
 
@@ -2608,3 +2613,44 @@ func get_minor_training_count():
 func reset_minor_training():
 	for minor_tr in get_traits_by_tag('minor_training'):
 		remove_trait(minor_tr)
+
+func get_minor_training_time():
+	return 22 - 2 * get_stat('wits_factor')
+
+func is_in_minor_training():
+	return cur_minor_training != null
+
+func get_minor_training_in_progress():
+	return cur_minor_training
+
+func get_minor_training_time_left():
+	return minor_training_timer
+
+func start_minor_training(minor_tr):
+	cur_minor_training = minor_tr
+	minor_training_timer = get_minor_training_time()
+
+func finish_minor_training():
+	if cur_minor_training == null:
+		return
+	add_trait(cur_minor_training)
+	var data = Traitdata.traits[cur_minor_training]
+	var args = {
+		current_trait = cur_minor_training,
+		person = self
+	}
+	input_handler.play_animation("trait_aquired", args)
+	var trait_data = Traitdata.traits[cur_minor_training]
+	globals.text_log_add('char', "%s: %s" % [
+		get_short_name(),
+		tr("MINORTRAIN_TRAIT_AQUIRED") % tr(trait_data.name)
+	])
+	
+	cur_minor_training = null
+
+func minor_training_tick():
+	if cur_minor_training == null:
+		return
+	minor_training_timer -= 1
+	if minor_training_timer <= 0:
+		finish_minor_training()
