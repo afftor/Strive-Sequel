@@ -1862,6 +1862,11 @@ func get_rolled_diff(): #excluding event bonus
 			t_diff = 4
 		'hard':
 			t_diff = 6
+		'infinite':
+			if char_roll_data.lvl <= 10:
+				t_diff = char_roll_data.lvl * 0.5
+			else:
+				t_diff = 3 + char_roll_data.lvl * 0.2
 	t_diff += char_roll_data.lvl
 	if char_roll_data.rare: t_diff += 1
 	if char_roll_data.uniq: t_diff += 2 
