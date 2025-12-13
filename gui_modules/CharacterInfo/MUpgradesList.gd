@@ -31,9 +31,9 @@ func set_person(new_person):
 	if is_list_minor():
 		minor_training_count = person.get_minor_training_count()
 		minor_training_max = person.get_minor_training_max()
-		globals.connecttexttooltip($Tooltip, person.translate(tr(("TOOLTIPMINORTRAINING"))))
-	else:
-		globals.connecttexttooltip($Tooltip, person.translate(tr(("TOOLTIPMASTERTRAINING"))))
+#		globals.connecttexttooltip($Tooltip, person.translate(tr(("TOOLTIPMINORTRAINING"))))
+#	else:
+#		globals.connecttexttooltip($Tooltip, person.translate(tr(("TOOLTIPMASTERTRAINING"))))
 
 func update_upgrades_tree():
 	if is_list_mastery():

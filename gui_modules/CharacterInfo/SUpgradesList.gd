@@ -44,7 +44,7 @@ func update():
 	build_trainings()
 	build_spells()
 	build_thralls_tooltip()
-	basic_tooltip()
+#	basic_tooltip()
 
 
 func build_info(): 
@@ -234,6 +234,6 @@ func build_thralls_tooltip():
 		else:
 			text +=  str(i) + ': '+text2 + '\n'
 	globals.connecttexttooltip($thralls/ThrallsTooltip, text.trim_suffix('\n'))
-
-func basic_tooltip():
-	globals.connecttexttooltip($SuccubusTrainingTooltip, person.translate(tr(("TOOLTIPSUCCUBUS"))))
+#
+#func basic_tooltip():
+#	globals.connecttexttooltip($SuccubusTrainingTooltip, person.translate(tr(("TOOLTIPSUCCUBUS"))))
