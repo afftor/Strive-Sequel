@@ -251,6 +251,30 @@ func change_mastery_category(cat):
 	build_mastery_cat()
 
 
+func get_mastery_pools(masdata):
+	match masdata.type:
+		'combat':
+			return ['combat', 'universal']
+		'spell':
+			return ['magic', 'universal']
+	return ['universal']
+
+
+func get_invested_mastery_points(mas, pools):
+	var invested_points = 0
+	for pool in pools:
+		invested_points += person.dyn_stats.masteries[mas][pool].size()
+	return invested_points
+
+
+func get_total_mastery_points(pools):
+	var total_points = 0
+	for pool in pools:
+		total_points += person.get_stat('mastery_point_' + pool)
+		total_points += person.dyn_stats.get_used_mastery_points(pool)
+	return total_points
+
+
 func build_mastery_cat():
 	input_handler.ClearContainer($MasteryPanel/Categories2, ['button'])
 	var tmp = null
@@ -271,6 +295,10 @@ func build_mastery_cat():
 			button.get_node('icon/Label').text = str(lv)
 			globals.connecttexttooltip(button, masdata.name)
 			#add mastery tooltip
+			var mastery_points_pools = get_mastery_pools(masdata)
+			var invested_points = get_invested_mastery_points(mas, mastery_points_pools)
+			var total_points = get_total_mastery_points(mastery_points_pools)
+			text += "[center]Points: %d/%d[/center]\n\n" % [invested_points, total_points]
 			text += "[center]"+tr("MASTERY"+mas.to_upper()) + '[/center]\nBonus per point:\n'
 #			text += tr(masdata.descript) + '\n'
 			text += globals.build_desc_for_bonusstats(masdata.passive) + '\n'
