@@ -4790,8 +4790,8 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_huge/Tits_armor_mesh2', texture = "res://Character_generator/images/101_armory_set_cloth3_female/tits_cloth_big.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_armor_mesh2', texture = "res://Character_generator/images/101_armory_set_cloth3_female/tits_cloth_large.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_normal/Tits_armor_mesh2', texture = "res://Character_generator/images/101_armory_set_cloth3_female/tits_cloth_normal.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_small/Tits_armor_mesh2', texture = null},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_small/Tits_armor_mesh2', texture = "res://Character_generator/images/101_armory_set_cloth3_female/tits_cloth3_small.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', texture = "res://Character_generator/images/101_armory_set_cloth3_female/tits_cloth3_small.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex', texture = "res://Character_generator/images/101_armory_set_cloth3_female/Pregnancy_cloth_small.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy2/pregnancy_armor_tex2', texture = "res://Character_generator/images/101_armory_set_cloth3_female/Pregnancy_cloth_big.png"},
 			
