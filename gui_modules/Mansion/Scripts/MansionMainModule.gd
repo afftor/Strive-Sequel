@@ -71,7 +71,6 @@ var always_show = [
 	"MansionSlaveListModule",
 	"MansionLogModule",
 	"NavigationModule",
-	"MenuButton",
 	"map_test"
 ]
 
@@ -120,7 +119,6 @@ func _ready():
 	gui_controller.clock = input_handler.get_spec_node(input_handler.NODE_CLOCK)
 	gui_controller.clock.show()
 	gui_controller.clock.update_labels()
-	$MenuButton.connect("pressed", self, "show_menu")
 	$TutorialButton.connect('pressed', self, 'show_tutorial')
 #	$tutorialpanel/Button.connect('pressed',$tutorialpanel,'hide')
 	slave_list_manager()
@@ -237,8 +235,8 @@ func match_state():
 			reset_vars()
 			SlaveListModule.show()
 			SlaveListModule.mode = 'default'
-			$MansionSlaveListModule.set_size(Vector2(1100, 780))
-			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 600))
+			$MansionSlaveListModule.set_size(Vector2(1100, 805))
+			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 640))
 			# SlaveListModule.get_node("Background").set_size(Vector2(1100, 845))
 			$MansionSkillsModule.show()
 			if mansion_state != mansion_prev_state && mansion_prev_state != "skill":
@@ -249,9 +247,9 @@ func match_state():
 				
 		"skill":
 			$MansionSlaveListModule.show()
-			$MansionSlaveListModule.set_size(Vector2(1100, 780))
+			$MansionSlaveListModule.set_size(Vector2(1100, 805))
 			# SlaveListModule.get_node("Background").set_size(Vector2(1100, 845))
-			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 600))
+			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 640))
 			$MansionSlaveListModule.rebuild()
 			if mansion_state != mansion_prev_state:
 				ResourceScripts.core_animations.UnfadeAnimation($MansionSkillsModule, 0.3)

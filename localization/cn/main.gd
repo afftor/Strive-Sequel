@@ -4101,6 +4101,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 
 	ENEMYDEMONESS = "女恶魔",
 	ENEMYGREG = "格雷格",
+	ENEMYGREG_ACT4 = """Greg, the Renegade""", # MISSING TRANSLATION
 	ENEMYAIRE = "艾尔",
 	ENEMYKURDAN = "库尔丹",
 	
