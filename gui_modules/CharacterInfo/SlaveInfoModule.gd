@@ -34,6 +34,8 @@ func _ready():
 	globals.connecttexttooltip($tr_selector/succubus, tr("SIBLINGMODULESUCCUBUS"))
 	globals.connecttexttooltip($tr_selector/trainings, tr("SIBLINGMODULETRAININGS"))
 	globals.connecttexttooltip($tr_selector/minor_upg, tr("SIBLINGMODULEMINORTRAINING"))
+	globals.connecttexttooltip($UpgradesPanel/Tooltip_master, tr("TOOLTIPMASTERTRAINING"))
+	globals.connecttexttooltip($UpgradesPanel/Tooltip_minor, tr("TOOLTIPMINORTRAINING"))
 	
 	update()
 
@@ -211,6 +213,7 @@ func open_upgrade_tab(id = null):
 
 
 func open_master_upg():
+	upgrades.get_node("Tooltip_master").visible = true
 	upgrades.get_node("Label").visible = true
 	upgrades.get_node("Label").text = tr("MASTER_POINTS") + ": " + str(ResourceScripts.game_progress.master_points)
 	upgrades.get_node("ScrollContainer2").visible = true
@@ -219,6 +222,7 @@ func open_master_upg():
 
 
 func open_minor_upg():
+	upgrades.get_node("Tooltip_minor").visible = true
 	upgrades.get_node("Label").visible = true
 	upgrades.get_node("MinorUpgradesCont/UpgradesList3").set_person(person)
 	upgrades.get_node("MinorUpgradesCont").visible = true
@@ -243,6 +247,8 @@ func open_trainings():
 
 
 func open_succubus():
+	upgrades.get_node("Tooltip_succubus").visible = true
+	globals.connecttexttooltip($UpgradesPanel/Tooltip_succubus, person.translate(tr("TOOLTIPSUCCUBUS")))
 	upgrades.get_node("SuccubUpgradesList").set_person(person)
 	upgrades.get_node("SuccubUpgradesList").visible = true
 	get_node("Label2").text = tr('SIBLINGMODULESUCCUBUS')

@@ -1,4 +1,4 @@
-[gd_scene load_steps=248 format=2]
+[gd_scene load_steps=247 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=2]
@@ -156,7 +156,6 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/icons_40x40/group.png" type="Texture" id=155]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_traits_hover.png" type="Texture" id=156]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/bg.png" type="Texture" id=157]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu.png" type="Texture" id=158]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset_training_pressed.png" type="Texture" id=159]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_pressed.png" type="Texture" id=160]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/cirlcle.png" type="Texture" id=161]
@@ -285,12 +284,8 @@ texture = ExtResource( 132 )
 region_rect = Rect2( 0, 0, 130, 40 )
 
 [sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 156 )
-region_rect = Rect2( 0, 0, 100, 100 )
-margin_left = 31.0
-margin_right = 27.0
-margin_top = 29.0
-margin_bottom = 30.0
+texture = ExtResource( 72 )
+region_rect = Rect2( 0, 0, 970, 920 )
 
 [sub_resource type="StyleBoxTexture" id=31]
 texture = ExtResource( 145 )
@@ -325,12 +320,8 @@ margin_top = 11.7839
 margin_bottom = 9.9723
 
 [sub_resource type="StyleBoxTexture" id=8]
-texture = ExtResource( 158 )
-region_rect = Rect2( 0, 0, 116, 54 )
-margin_left = 13.2964
-margin_right = 13.2964
-margin_top = 11.7839
-margin_bottom = 9.9723
+texture = ExtResource( 69 )
+region_rect = Rect2( 0, 0, 1920, 1080 )
 
 [sub_resource type="DynamicFont" id=35]
 size = 22
@@ -1002,7 +993,6 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="ScrollContainer2" type="ScrollContainer" parent="SlaveInfoModule/UpgradesPanel"]
-visible = false
 margin_left = 295.0
 margin_top = 24.0
 margin_right = 961.0
@@ -1082,17 +1072,6 @@ custom_fonts/font = ExtResource( 57 )
 text = "100"
 align = 1
 valign = 1
-
-[node name="Tooltip" type="TextureButton" parent="SlaveInfoModule/UpgradesPanel/ScrollContainer2/UpgradesList2"]
-margin_left = 578.056
-margin_top = 2.6268
-margin_right = 642.056
-margin_bottom = 66.627
-texture_normal = ExtResource( 213 )
-texture_hover = ExtResource( 135 )
-__meta__ = {
-"_editor_description_": ""
-}
 
 [node name="MinorUpgradesCont" type="ScrollContainer" parent="SlaveInfoModule/UpgradesPanel"]
 visible = false
@@ -1176,17 +1155,6 @@ custom_fonts/font = ExtResource( 57 )
 text = "100"
 align = 1
 valign = 1
-
-[node name="Tooltip" type="TextureButton" parent="SlaveInfoModule/UpgradesPanel/MinorUpgradesCont/UpgradesList3"]
-margin_left = 578.056
-margin_top = 2.6268
-margin_right = 642.056
-margin_bottom = 66.627
-texture_normal = ExtResource( 213 )
-texture_hover = ExtResource( 135 )
-__meta__ = {
-"_editor_description_": ""
-}
 
 [node name="SuccubUpgradesList" type="Control" parent="SlaveInfoModule/UpgradesPanel"]
 margin_left = 289.0
@@ -1451,17 +1419,6 @@ margin_right = 61.0
 margin_bottom = 94.0
 texture = ExtResource( 211 )
 expand = true
-
-[node name="SuccubusTrainingTooltip" type="TextureButton" parent="SlaveInfoModule/UpgradesPanel/SuccubUpgradesList"]
-margin_left = 602.056
-margin_top = -61.3732
-margin_right = 666.056
-margin_bottom = 2.627
-texture_normal = ExtResource( 213 )
-texture_hover = ExtResource( 135 )
-__meta__ = {
-"_editor_description_": ""
-}
 
 [node name="UpgradesList" type="Control" parent="SlaveInfoModule/UpgradesPanel"]
 visible = false
@@ -2337,6 +2294,39 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 121 )
 text = "100"
 align = 1
+
+[node name="Tooltip_master" type="TextureButton" parent="SlaveInfoModule/UpgradesPanel"]
+margin_left = 873.056
+margin_top = -36.0
+margin_right = 937.056
+margin_bottom = 28.0002
+texture_normal = ExtResource( 213 )
+texture_hover = ExtResource( 135 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Tooltip_minor" type="TextureButton" parent="SlaveInfoModule/UpgradesPanel"]
+margin_left = 873.0
+margin_top = -36.0
+margin_right = 937.0
+margin_bottom = 28.0002
+texture_normal = ExtResource( 213 )
+texture_hover = ExtResource( 135 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Tooltip_succubus" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 831.0
+margin_top = -37.0
+margin_right = 899.0
+margin_bottom = 28.0
+texture = ExtResource( 135 )
+expand = true
+stretch_mode = 6
 
 [node name="SexSkillsContainer" type="ScrollContainer" parent="SlaveInfoModule"]
 light_mask = 0
@@ -4877,7 +4867,6 @@ margin_left = 3.0
 margin_top = 7.0
 margin_right = 1377.0
 margin_bottom = 819.0
-theme = null
 custom_styles/panel = SubResource( 46 )
 
 [node name="Button" type="Button" parent="."]
