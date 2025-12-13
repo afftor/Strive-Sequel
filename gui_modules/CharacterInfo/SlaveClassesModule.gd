@@ -267,13 +267,15 @@ func get_invested_mastery_points(mas, pools):
 	return invested_points
 
 
-func get_total_mastery_points(pools):
-	var total_points = 0
-	for pool in pools:
-		total_points += person.get_stat('mastery_point_' + pool)
-		total_points += person.dyn_stats.get_used_mastery_points(pool)
-	return total_points
 
+
+func get_bonus_mastery_points(mas, invested_points):
+	var mastery_level = int(person.get_stat('mastery_' + mas))
+	return max(mastery_level - invested_points, 0)
+
+
+func get_total_mastery_points(mas, invested_points):
+	return invested_points + get_bonus_mastery_points(mas, invested_points)
 
 func build_mastery_cat():
 	input_handler.ClearContainer($MasteryPanel/Categories2, ['button'])
@@ -294,18 +296,23 @@ func build_mastery_cat():
 			button.get_node('icon').texture = images.get_icon(masdata.icon)
 			button.get_node('icon/Label').text = str(lv)
 			globals.connecttexttooltip(button, masdata.name)
+			text += "[center]"+tr("MASTERY"+mas.to_upper()) + "[/center]\n"+tr("LVLBONUSPERPOINT")+":\n"
+			text += globals.build_desc_for_bonusstats(masdata.passive) + '\n'
+			if lv > 0:
+				text += "[center]"+tr("LVLCURRENT")+":[/center]\n"
+				text += globals.build_desc_for_bonusstats(masdata.passive, lv) + '\n'
 			#add mastery tooltip
 			var mastery_points_pools = get_mastery_pools(masdata)
 			var invested_points = get_invested_mastery_points(mas, mastery_points_pools)
-			var total_points = get_total_mastery_points(mastery_points_pools)
-			text += "[center]Points: %d/%d[/center]\n\n" % [invested_points, total_points]
-			text += "[center]"+tr("MASTERY"+mas.to_upper()) + '[/center]\nBonus per point:\n'
-#			text += tr(masdata.descript) + '\n'
-			text += globals.build_desc_for_bonusstats(masdata.passive) + '\n'
-			if lv > 0:
-				text += "[center]Current:[/center]\n"
-				text += globals.build_desc_for_bonusstats(masdata.passive, lv) + '\n'
-#			text += tr('CURRENTLVL') + str(lv)
+			var total_points = get_total_mastery_points(mas, invested_points)
+			text += ("[center]"
+				+
+				tr("LVLTOTALPOINTS") + ": {color=yellow|%d}; " % [total_points]
+				+
+				tr("LVLINVESTED") + ": %d/%d" % [invested_points, variables.mastery_train_limit]
+				+
+				"[/center]\n\n"
+				)
 			globals.connecttexttooltip(button, text)
 		else:
 			if mas == selected_mastery:

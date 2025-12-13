@@ -1749,10 +1749,10 @@ valign = 1
 clip_text = true
 
 [node name="Tooltip" type="TextureButton" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training"]
-margin_left = 594.056
-margin_top = 0.626801
-margin_right = 658.056
-margin_bottom = 64.627
+margin_left = 577.578
+margin_top = -58.3123
+margin_right = 641.578
+margin_bottom = 5.68791
 texture_normal = ExtResource( 213 )
 texture_hover = ExtResource( 135 )
 __meta__ = {

@@ -289,7 +289,7 @@ func show_info(quest):
 	if quest.state == 'taken':
 		time_str = "%s %s." % [quest.time_limit, tr("QUESTDAYSLEFT")]
 	else:
-		time_str = "%s%s." % [quest.time_limit, tr("QBDAY")]#QBDAY has his own space
+		time_str = "%s %s." % [quest.time_limit, tr("QBDAY")]
 	time_label.text = time_str
 	
 	var faction_icon = $RightPanel/CenterContainer/fact_bg/fact

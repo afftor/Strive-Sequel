@@ -225,7 +225,7 @@ scroll_horizontal_enabled = false
 [node name="VBoxContainer2" type="GridContainer" parent="ScrollContainer"]
 margin_right = 1038.0
 size_flags_horizontal = 3
-custom_constants/hseparation = 20
+custom_constants/hseparation = 0
 columns = 4
 
 [node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer2"]

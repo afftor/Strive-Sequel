@@ -2605,7 +2605,7 @@ var minor_training_timer = 0#in turns
 var cur_minor_training
 
 func get_minor_training_max():
-	return 3 + floor(get_stat('growth_factor') * 0.5)
+	return variables.minor_trainings_base + floor(get_stat('growth_factor') * variables.minor_trainings_per_growth)
 
 func get_minor_training_count():
 	return get_traits_by_tag('minor_training').size()
@@ -2615,7 +2615,7 @@ func reset_minor_training():
 		remove_trait(minor_tr)
 
 func get_minor_training_time():
-	return 22 - 2 * get_stat('wits_factor')
+	return variables.minor_trainings_time_base - variables.minor_trainings_time_per_wits * get_stat('wits_factor')
 
 func is_in_minor_training():
 	return cur_minor_training != null

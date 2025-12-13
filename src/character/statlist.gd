@@ -316,7 +316,7 @@ var template_dynamic = {
 	lustmax = 0,
 	
 	#breakdown
-	breakdown_time = 2,
+	breakdown_time = 1,
 	breakdown_chance_mod = 1,
 	breakdown_disabled = []
 }

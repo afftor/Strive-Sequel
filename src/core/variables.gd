@@ -698,3 +698,9 @@ var damage_shake = [#order matters! Low max_damage first. No max_damage means in
 
 var category_order = ['high','med','low','disable']
 var categorycolors = {high = "green", med = 'yellow', low = 'red', disable = 'gray'}
+
+var minor_trainings_base = 3
+var minor_trainings_per_growth = 0.5
+
+var minor_trainings_time_base = 16
+var minor_trainings_time_per_wits = 2 #reduction
