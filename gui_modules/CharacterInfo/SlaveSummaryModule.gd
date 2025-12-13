@@ -2,6 +2,7 @@ extends Control
 
 
 onready var CharMainModule = get_parent()
+onready var name_button = $Name/name
 
 var selected_person
 var actions = ['leveling','relations','customization','expel','inventory','occupation','date','chat']
@@ -47,6 +48,7 @@ func _ready():
 		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
 	$ChangeSlaveButtons/Left.connect("pressed", self, "change_slave", ["prev"])
 	$ChangeSlaveButtons/Right.connect("pressed", self, "change_slave", ["next"])
+	name_button.connect("pressed", self, "open_character_select_menu")
 #	$GridContainer/DetailsButton.connect("pressed", self, "open_details")
 #	$GridContainer/SkillsButton.connect("pressed", self, "open_skills")
 #	$GridContainer/SiblingsButton.connect("pressed", self, "open_siblings")
@@ -137,6 +139,19 @@ func change_slave(param):
 	update_buttons()
 	if selected_person.get_work() == 'learning':
 		change_slave(param)
+
+func open_character_select_menu():
+	input_handler.ShowSlaveSelectPanel(self, "select_slave_from_menu")
+
+func select_slave_from_menu(person):
+	if person == null:
+		return
+	selected_person = person
+	input_handler.interacted_character = selected_person
+	CharMainModule.match_state()
+	CharMainModule.ClassesModule.get_node("ClassPanel").hide()
+	CharMainModule.DetailsModule.custom_description_open()
+	update_buttons()
 
 func check_date_button():
 	var value = true
