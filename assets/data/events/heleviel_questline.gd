@@ -2467,7 +2467,8 @@ var data = {
 				reqs = [
 
 				],
-				dialogue_argument = 1
+				dialogue_argument = 1,
+				change_dialogue_type = 2
 			}
 		],
 		character = "heleviel"
@@ -2589,7 +2590,10 @@ var data = {
 				reqs = [
 
 				],
-				dialogue_argument = 1
+				dialogue_argument = 1,
+				bonus_effects = [
+					{code = 'complete_quest', value = 'marriage_quest_main'}, 
+					{code = 'complete_wedding'} ]
 			}
 		]
 	}
