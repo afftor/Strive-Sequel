@@ -408,7 +408,7 @@ using       button.""",
 	MINDRESIST = "Mind",
 	DAMAGETYPENORMAL = "Normal",
 	DAMAGETYPEFIRE = "Fire",
-	DAMAGETYPEEARTH= "Earth",
+	DAMAGETYPEEARTH = "Earth",
 	DAMAGETYPEAIR = "Air",
 	DAMAGETYPEWATER = "Water",
 	DAMAGETYPELIGHT = "Light",
@@ -1492,10 +1492,18 @@ Silenced: Can't use Spell type abilities.""",
 	SKILLDARK_FLAMEDESCRIPT = "Converts all Burn effects on enemies into Dark Flame effects. They deal true damage, can't be extinguished by Water damage and last for 4 turns.",
 	SKILLFIREARROWS_APPLY = "Fire Arrows",
 	SKILLFIREARROWS_REMOVE = "Fire Arrows remove",
-	SKILLFIREARROWS_APPLYDESCRIPT = "Set weapon damage element to Fire. Weapon attacks and skills have 20% chance to apply Burn. Drain 1 mana per attack.\nMust have Bow weapon type equipped.\n\nDoes not take turn to activate. \nOnly one Arrow type spell can be active.",
+	SKILLFIREARROWS_APPLYDESCRIPT = """Set weapon damage element to Fire. Weapon attacks and skills have 20% chance to apply Burn. Drain 1 mana per attack.
+Must have Bow weapon type equipped.
+
+Does not take turn to activate. 
+Only one Arrow type spell can be active.""",
 	SKILLPOISONARROWS_APPLY = "Poison Arrows",
 	SKILLPOISONARROWS_REMOVE = "Poison Arrows remove",
-	SKILLPOISONARROWS_APPLYDESCRIPT = "Weapon attacks and skills have 65% chance to apply Poison for 3 turns. Drain 1 mana per attack. At Marksmanship Mastery 4+ also applies Shred with 25% chance.\nMust have Bow weapon type equipped.\n\nDoes not take turn to activate. \nOnly one Arrow type spell can be active.",
+	SKILLPOISONARROWS_APPLYDESCRIPT = """Weapon attacks and skills have 65% chance to apply Poison for 3 turns. Drain 1 mana per attack. At Marksmanship Mastery 4+ also applies Shred with 25% chance.
+Must have Bow weapon type equipped.
+
+Does not take turn to activate. 
+Only one Arrow type spell can be active.""",
 	TRAITVIGORDESCRIPT = "Increases Health Regeneration by 30%.",
 	TRAITMEDITATIONDESCRIPT = "Increases Mana Regeneration by 30%.",
 	MASTERYBLOCKSRC = "Blocked by %s: %s",
@@ -1752,7 +1760,6 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""",
 	DATETOOLTIP = "Dates left this week. Increases with Master's Charm Factor and resets at the start of a week.",
 	SEXTOOLTIP = "Select characters for participating in sexual interaction. The limit of characters is defined by bedroom upgrade. Every week interaction number will reset.",
 	DATETOOLTIPSHORT = "Character can be dated today",
-	
 	NODATEMASTER = "Dating must be initiated from non-master character",
 	NODATEUNIQUE = "[name] won't agree for a dating at this point in time.",
 	NODATERELATION = "[name] lacks a necessary training to agree for the date.",
@@ -1789,9 +1796,15 @@ Service is a global modifier for this assignment.""",
 	BROTHELWARNING = "Sex services won't work if you don't select at least 1 allowed customer.",
 	CAPTURETOOLTIP = "These characters have been found by your team and can be recruited into your mansion or sold for quick cash as if you were selling them manually. If location has been forgotten, all characters are sold automatically.",
 	CAPTURESELLTOOLTIP = "Quicksell this character for %d gold. This is equal to selling character to market, but won't let you buyback them. ",
-	CAPTUREADDTOOLTIP = "Attempt to add this character to roster.\n\nYou won't be able to finish turn if your total number of characters is bigger than available number of rooms. ",
-	CAPTUREENSLAVETOOLTIP = "Add this character to roster as a slave instantly.\n\nYou won't be able to finish turn if your total number of characters is bigger than available number of rooms. ",
-	CAPTURERECRUITTOOLTIP = "Attempt to recruit this character.\n\nYou won't be able to finish turn if your total number of characters is bigger than available number of rooms.",
+	CAPTUREADDTOOLTIP = """Attempt to add this character to roster.
+
+You won't be able to finish turn if your total number of characters is bigger than available number of rooms. """,
+	CAPTUREENSLAVETOOLTIP = """Add this character to roster as a slave instantly.
+
+You won't be able to finish turn if your total number of characters is bigger than available number of rooms. """,
+	CAPTURERECRUITTOOLTIP = """Attempt to recruit this character.
+
+You won't be able to finish turn if your total number of characters is bigger than available number of rooms.""",
 	CAPTUREDISMISSTOOLTIP = "Dismiss this character.",
 	SERVICEBOOSTTOOLTIP = "You can assign additional item consumption here which will boost service production. These items can be produced at Farm. ",
 	FARMTOOLTIP = "You can assign character to farm to produce additional materials which can be used to boost service production or be sold.",
@@ -2425,7 +2438,8 @@ Spell Mana cost reduced by 15%
 +15% Loyalty Gain, -10% Subordinate weekly tax""",
 	INFOSLAVE_CLASS = "Character type will define its options and behavior. Slaves can be forced into sexual services without consent and have higher tolerance for lack of consent in sex. Subordinates become loyal faster but can't be sold or given away.",
 	INFOCONSENT = "Consent defines what sexual related actions character will be willing to perform. Consent can be increased by pushing character into new practices by dating and sex options. Consent will affect prostitution related jobs.",
-	INFOCONSENTMASTER = "Consent defines what sexual related actions character will be willing to perform. Consent can be increased by pushing character into new practices by dating and sex options.\n{color=green|[Master] has no Consent requirements for any actions.}",
+	INFOCONSENTMASTER = """Consent defines what sexual related actions character will be willing to perform. Consent can be increased by pushing character into new practices by dating and sex options.
+{color=green|[Master] has no Consent requirements for any actions.}""",
 	INFOTRAINING = "Slave type characters will be trained by selected person in various actions. Every slave has different {color=aqua|Dispositions} towards different kind of actions. Properly selected actions will award more Loyalty and drain less spirit, but most actions have additional effects.",
 	INFOTRAININGSUBORDINATE = "Subordinate type characters will accomodate loyalty points with time. ",
 	INFORESISTANCE = "Character's Resistance will reduce efficiency of training. Resistance weakens with time and resets on performing training.",
@@ -3234,18 +3248,18 @@ Increased Damage and Hitrate""",
 Increased Evasion, Hitrate and MDEF""",
 	TRAITEFFECTRARETOUGH = """Rare: Tough
 Increased Health, DEF and MDEF""",
-	TRAITMONSTER_MASTERY_WARFARE_DESCRIPT = """Has enemy variation of warfare mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_PROTECTION_DESCRIPT = """Has enemy variation of protection mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_STEALTH_DESCRIPT = """Has enemy variation of stealth mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_MARKSMANSHIP_DESCRIPT = """Has enemy variation of marsmanship mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_LEADERSHIP_DESCRIPT = """Has enemy variation of ledership mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_FIRE_DESCRIPT = """Has enemy variation of fire mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_WATER_DESCRIPT = """Has enemy variation of water mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_AIR_DESCRIPT = """Has enemy variation of air mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_EARTH_DESCRIPT = """Has enemy variation of earth mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_LIGHT_DESCRIPT = """Has enemy variation of light mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_DARK_DESCRIPT = """Has enemy variation of dark mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_MIND_DESCRIPT = """Has enemy variation of mind mastery with the same skills and greater bonuses.""",
+	TRAITMONSTER_MASTERY_WARFARE_DESCRIPT = "Has enemy variation of warfare mastery with the same skills and greater bonuses.",
+	TRAITMONSTER_MASTERY_PROTECTION_DESCRIPT = "Has enemy variation of protection mastery with the same skills and greater bonuses.",
+	TRAITMONSTER_MASTERY_STEALTH_DESCRIPT = "Has enemy variation of stealth mastery with the same skills and greater bonuses.",
+	TRAITMONSTER_MASTERY_MARKSMANSHIP_DESCRIPT = "Has enemy variation of marsmanship mastery with the same skills and greater bonuses.",
+	TRAITMONSTER_MASTERY_LEADERSHIP_DESCRIPT = "Has enemy variation of ledership mastery with the same skills and greater bonuses.",
+	TRAITMONSTER_MASTERY_FIRE_DESCRIPT = "Has enemy variation of fire mastery with the same skills and greater bonuses.",
+	TRAITMONSTER_MASTERY_WATER_DESCRIPT = "Has enemy variation of water mastery with the same skills and greater bonuses.",
+	TRAITMONSTER_MASTERY_AIR_DESCRIPT = "Has enemy variation of air mastery with the same skills and greater bonuses.",
+	TRAITMONSTER_MASTERY_EARTH_DESCRIPT = "Has enemy variation of earth mastery with the same skills and greater bonuses.",
+	TRAITMONSTER_MASTERY_LIGHT_DESCRIPT = "Has enemy variation of light mastery with the same skills and greater bonuses.",
+	TRAITMONSTER_MASTERY_DARK_DESCRIPT = "Has enemy variation of dark mastery with the same skills and greater bonuses.",
+	TRAITMONSTER_MASTERY_MIND_DESCRIPT = "Has enemy variation of mind mastery with the same skills and greater bonuses.",
 	TRAITEFFECTHARDWORK = "Hard Work: +50%% Productivity",
 	TRAITEFFECTPHYSBUF = "Elixir of Ogre's Strength: +80 Physics",
 	TRAITEFFECTWITSBUF = "Elixir of Expanded Mind: +80 Wits",
@@ -3439,15 +3453,20 @@ Next attack deals 125%% damage. Air attacks deal 200%% and Fire attacks deal 50%
 	BUFFDESCRIPTSHOCK = """Shocked
 All damage received is increased by 15%%, additional shock has a chance to stun.""",
 	BUFFDESCRIPTENSNARE = "Ensnared: Evasion is reduced by 75",
-	
-	LOGEFFECTIMMUNE = "\n%s is immune to %s.",
-	LOGEFFECTRESIST = "\n%s resists %s.",
-	LOGEFFECTAPPLY = "\n%s is affected by %s.",
-	LOGEFFECTTOGGLEON = "\n%s on %s is active",
-	LOGEFFECTTOGGLEOFF = "\n%s on %s is off",
-	LOGEFFECTTOGGLEOFFON = "\n%s on %s is updated",
-	LOGEFFECTRENEW = "\n%s is updated on %s",
-#	LOGEFFECTRESIST = "",
+	LOGEFFECTIMMUNE = """
+%s is immune to %s.""",
+	LOGEFFECTRESIST = """
+%s resists %s.""",
+	LOGEFFECTAPPLY = """
+%s is affected by %s.""",
+	LOGEFFECTTOGGLEON = """
+%s on %s is active""",
+	LOGEFFECTTOGGLEOFF = """
+%s on %s is off""",
+	LOGEFFECTTOGGLEOFFON = """
+%s on %s is updated""",
+	LOGEFFECTRENEW = """
+%s is updated on %s""",
 	EFFECTNAME_LUMINANCE = "luminance",
 	EFFECTNAME_DEFENDED = "protection",
 	EFFECTNAME_WARDED = "ward",
@@ -3529,8 +3548,6 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	EFFECTNAME_WARD_D = "curse ward",
 	EFFECTNAME_WATERSHIELD = "water shield",
 	EFFECTNAME_CLARITY = "clarity",
-
-	
 	RESETTRAINREQ = "Reset training to step 0 and restore Spirit. Requires Oblivion potion.",
 	RESETTRAINING = "All training progress will be discarded. Are you sure?",
 	BUFFDESCRIPTDEFENDER = "Defender: Will shield allies from attacks unless stunned.",
@@ -4949,7 +4966,8 @@ At the bottom left you can select items, unlock new classes and configure additi
 	WORKRULERATIONDESCRIPT = "Increases Food Consumption by 3. Boosts Productivity by 15%.",
 	WORKRULESHIFTS = "Longer Shifts",
 	WORKRULESHIFTSDESCRIPT = """Character overperforms at their finest capability at the cost of future improvements. 
-Boosts Productivity by 25%. \n{color=yellow|Character won't gain Experience or Work Stats (Physical, etc) while working.} """,
+Boosts Productivity by 25%. 
+{color=yellow|Character won't gain Experience or Work Stats (Physical, etc) while working.} """,
 	WORKRULECONSTRAIN = "Coerced Labor",
 	WORKRULECONSTRAINDESCRIPT = "Character is forced to work at their best via strict regulations. Boosts productivity by 15%. Passive Loyalty gain disabled.",
 	WORKRULELUXURY = "Private Room",
@@ -10911,7 +10929,7 @@ You take Cali aside and explain to her that this is her duty for now.
 
 In the end she accepted that she had to deal with the consequences of her own actions.""",
 	CALI_WILLIAM_13 = "As you sign the papers, Cali somewhat reluctantly leaves with William for the agreed term.",
-	 CALI_WILLIAM_EVENING_1 = """The first evening at William's place unfolds. Cali lies on the massive king-sized bed, a stark, small figure against the silk sheets. The black and white maid uniform feels foreign and stiff on her body; the skirt is too short and the apron barely hides the small expanse of her chest. Soft but surprisingly strong bracers circle her wrists and ankles, pulling her limbs taut toward the headboard. Her gray hair is disheveled and her knees are bent and spread, the skirt hem the only thing obscuring her underwear.
+	CALI_WILLIAM_EVENING_1 = """The first evening at William's place unfolds. Cali lies on the massive king-sized bed, a stark, small figure against the silk sheets. The black and white maid uniform feels foreign and stiff on her body; the skirt is too short and the apron barely hides the small expanse of her chest. Soft but surprisingly strong bracers circle her wrists and ankles, pulling her limbs taut toward the headboard. Her gray hair is disheveled and her knees are bent and spread, the skirt hem the only thing obscuring her underwear.
 
 {color=aqua|William: — You don't feel too uncomfortable, do you? But given the luxury of your dinner, a bit of discomfort shouldn't be a big deal.}
 
@@ -16879,7 +16897,6 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	LIRA_LOST_QUEST_NAME = "Lost Lira",
 	LIRA_LOST_QUEST_SUMMARY = "Help Lira out of the grove",
 	LIRA_LOST_QUEST_CAPITAL = "Get to the elven capital",
-	
 	HELEVIEL_QUEST1_NAME = "Heleviel: New Perspective",
 	HELEVIEL_QUEST1_SUMMARY = "Help the former High Priestess adapt to life in Aliron by working at the bar.",
 	HELEVIEL_QUEST2_NAME = "Heleviel: Helping the weak",
@@ -16899,7 +16916,6 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	HELEVIEL_CITY_OPTION_4 = "Pay for ritual",
 	HELEVIEL_CITY_OPTION_5 = "Attend the ritual",
 	HELEVIEL_SLAVE_STAGE_6 = "Attend the ritual.",
-	
 	KURO_ERRAND_QUEST_NAME = "Kuro: Disappearance",
 	KURO_ERRAND_QUEST_SUMMARY = "Follow the mysterious trail",
 	KURO_ERRAND_QUEST_CHURCH = "Visit Ginny at her temple",
@@ -20176,7 +20192,7 @@ Yet your compliment has not gone entirely unnoticed, perhaps partly because the 
 {color=yellow|Official 1: — This bar has the best elf girls, you know. That white-haired one is especially cute when angry.}
 
 He gives a small pinch to Heleviel's butt once she turns away from the table, followed by an angry yelp.""",
-	HELEVIEL_QUEST_8 = """{color=yellow|Heleviel: — What are you doing, you foul man!..}",
+	HELEVIEL_QUEST_8 = """{color=yellow|Heleviel: — What are you doing, you foul man!..}\",
 
 However, as she notices you, she quickly stops herself.""",
 	HELEVIEL_QUEST_8_OPTION_1 = "*Scold the official*",
@@ -20223,7 +20239,7 @@ You note with amusement how Heleviel holds herself in this situation. While not 
 	HELEVIEL_QUEST_13 = """The evening continues uneventfully with your patrons until it gets late enough for everyone to leave. As nobody else is around, you get a small comment from Heleviel before she leaves her shift, still bearing her tipsiness.
 
 {color=yellow|Heleviel: — I suppose it wasn't too bad after all. Your friends are disgusting for being such lechers toward elven women, though.}""",
-	HELEVIEL_SLAVE_CHURCH_INIT = """With time, Heleviel has grown more accustomed to life in slavery under you. Her bickering has mostly disappeared. Yesterday you received a help request from Aliron’s church, which seems like a good next step for Heleviel to work on in order to improve her cultural accommodation.""",
+	HELEVIEL_SLAVE_CHURCH_INIT = "With time, Heleviel has grown more accustomed to life in slavery under you. Her bickering has mostly disappeared. Yesterday you received a help request from Aliron’s church, which seems like a good next step for Heleviel to work on in order to improve her cultural accommodation.",
 	HELEVIEL_SLAVE_CHURCH_INTRO_TEXT = """You bring Heleviel to the church, finding Ginny in her usual workplace.
 
 {color=yellow|Heleviel: — Hmph, so this is Celena’s temple, and you must be her local priest. What a pitiful decoration. No wonder Celena is only a subservient goddess with measly followers compared to Freya.}
@@ -20512,5 +20528,5 @@ With a final, deep thrust, you drive into her one last time. Heleviel cries out,
 {color=yellow|— Aah!!.. So hot... Your seed is filling me!..}""",
 	HELEVIEL_WEDDING_6 = """Slowly, you withdraw, collapsing onto the bed beside her. Heleviel lies there, her body still humming with pleasure, her white hair a tangled mess around her head. She turns to face you, her green eyes soft, a mixture of satisfaction and lingering vulnerability in their depths. The dignified High Priestess is gone, replaced by a woman who has completely surrendered to you. She reaches out, her hand finding yours, her fingers lacing through yours in a silent gesture of connection. 
 
-{color=yellow|— This is so silly, but... What I feel the most right now, not being a former priestess or an elf. It's that I'm a woman. Your woman.}""",
+{color=yellow|— This is so silly, but... What I feel the most right now, not being a former priestess or an elf. It's that I'm a woman. Your woman.}"""
 }

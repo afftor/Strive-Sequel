@@ -2470,6 +2470,7 @@ func common_effects(effects):
 				ResourceScripts.game_progress.spouse = input_handler.active_character.id
 #				input_handler.active_character.unlock_class('spouse')
 			'complete_wedding':
+				print(1)
 				ResourceScripts.game_progress.marriage_completed = true
 				ResourceScripts.game_party.get_spouse().unlock_class('spouse')
 				ResourceScripts.game_party.get_spouse().set_slave_category('spouse')
