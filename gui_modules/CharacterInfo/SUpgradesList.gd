@@ -11,26 +11,6 @@ var tr_rewards = []
 var offset_x = 120
 var offset_y = 190
 
-func _ready():
-	pass
-#	$info/spells.connect('pressed', self, 'open_spells')
-#	gather_data()
-#	$no_trainer/TextureButton.connect("pressed", self, 'build_trainer_list')
-#	$training/trainer_frame.connect("pressed", self, 'build_trainer_list')
-#	$finished/reset_button.connect("pressed", self, 'reset_training')
-#	$training/complete_button.connect("pressed", self, 'build_finish')
-#	$finish/cancel.connect("pressed", self, 'hide_finish_dialogue')
-#	$finish/confirm.connect("pressed", self, 'confirm_finish_dialogue')
-#	globals.connecttexttooltip($training/Tooltip, tr("INFOTRAINING"))
-#	globals.connecttexttooltip($trainer_list/tooltip, tr("INFOSLAVETRAINER"))
-#	$training/spirit.max_value = 100
-#	globals.connecttexttooltip($training/TextureRect, tr("LOYALTYTOOLTIP")) 
-#	globals.connecttexttooltip($training/TextureRect2, tr("SPIRITTOOLTIP")) 
-#	globals.connecttexttooltip($training/spirit, tr("SPIRITTOOLTIP")) 
-#	globals.connecttexttooltip($training/trainer_frame, tr("CLICKTOCHANGE"))
-#	$finish/header.bbcode_text = tr("TRAINFINISHTEXT")
-#
-#	globals.connecttexttooltip($finished/reset_button, tr("RESETTRAINREQ"))
 
 
 func set_person(t_person):
@@ -49,17 +29,14 @@ func update():
 
 func build_info(): 
 	var container = $info/VBoxContainer
-	var list = ['lusttick', 'thralls_amount_max', null, 'thrall_points']
-	input_handler.ClearContainer(container, ['record', 'separator'])
+	var list = ['lusttick', 'thralls_amount_max','thrall_points']
+	input_handler.ClearContainer(container, ['record'])
 	for id in list:
-		if id == null:
-			var panel = input_handler.DuplicateContainerTemplate(container, 'separator')
-		else:
-			var stdata = statdata.statdata[id]
-			var panel = input_handler.DuplicateContainerTemplate(container, 'record')
-			var value = person.get_stat(id)
-			panel.get_node('stat').text = tr(stdata.name) + ":"
-			panel.get_node('value').text = str(value)
+		var stdata = statdata.statdata[id]
+		var panel = input_handler.DuplicateContainerTemplate(container, 'record')
+		var value = person.get_stat(id)
+		panel.get_node('stat').text = tr(stdata.name) + ":"
+		panel.get_node('value').text = str(value)
 	#add more info
 
 

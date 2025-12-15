@@ -53,6 +53,13 @@ func set_color(value):
 	return color
 
 
+var foodicons = {
+	meat = load("res://assets/images/gui/gui icons/icon_meat.png"),
+	fish = load("res://assets/images/gui/gui icons/icon_fish.png"),
+	vege = load("res://assets/images/gui/gui icons/icon_veg.png"),
+	grain = load("res://assets/images/gui/gui icons/icon_grain.png"),
+}
+
 func update():
 	if person != input_handler.interacted_character:
 		person = input_handler.interacted_character
@@ -99,12 +106,12 @@ func update():
 		$Panel/maininfo/personality/icon.texture = personality_icons[person.get_stat('personality')]
 		
 		globals.connecttexttooltip($Panel/maininfo/personality, tr('INFOPERSONALITY'))
-		$Panel/maininfo/food/foodlikedicon.texture = load(images.icons[person.food.food_love])
+		$Panel/maininfo/food/foodlikedicon.texture = foodicons[person.food.food_love]
 		globals.connecttexttooltip($Panel/maininfo/food/foodlikedicon, tr("FOODTYPE" + person.food.food_love.to_upper()))
 		input_handler.ClearContainer($Panel/maininfo/food/fooddislikedicons)
 		for i in person.food.food_hate:
 			var newicon = input_handler.DuplicateContainerTemplate($Panel/maininfo/food/fooddislikedicons)
-			newicon.texture = load(images.icons[i])
+			newicon.texture = foodicons[i]
 			globals.connecttexttooltip(newicon, tr("FOODTYPE" + i.to_upper()))
 		$Description/RichTextLabel.bbcode_text = person.make_description()
 		
