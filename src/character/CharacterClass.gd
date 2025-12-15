@@ -463,7 +463,10 @@ func generate_simple_fighter(tempname, setup_ai = true):
 			ai.set_simple_ai(data.ai)
 		else:
 			#need check for hard difficulty
-			fill_ai(data.ai)
+			if data.has('ai_hard') and ResourceScripts.game_globals.diff_hard_monsters: 
+				fill_ai(data.ai_hard)
+			else:
+				fill_ai(data.ai)
 		ai.set_obj(self)
 	if data.has('tags') and data.tags.has('boss'):
 		globals.char_roll_data.uniq = true
@@ -1308,7 +1311,11 @@ func reset_training():
 	training.reset_training()
 
 func clear_training():
-	training.clear_training()
+	if training.clear_training():
+		#check if need remove from unavaliable work
+		#char MAY still be worker after trainer remove
+		if !is_worker() and !(get_work() in ['', 'rest', 'disabled', 'travel']):
+			 remove_from_task()
 
 func can_be_trained():
 	return training.can_be_trained()
