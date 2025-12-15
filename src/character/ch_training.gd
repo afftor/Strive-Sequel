@@ -157,16 +157,19 @@ func is_servant():
 	return parent.get_ref().get_stat('slave_class') in ['servant', 'servant_notax', 'heir']
 
 func clear_training():
+	var res = false
 	if trainer != null:
 		var tchar = characters_pool.get_char_by_id(trainer)
 		tchar.get_trainees().erase(parent.get_ref().id)
 		trainer = null
-		parent.get_ref().remove_from_task()
+		res = true
+#		parent.get_ref().remove_from_task()
 	for id in trainees:
 		var tchar = characters_pool.get_char_by_id(id)
-		tchar.training.trainer = null
-		tchar.remove_from_task()
+#		tchar.training.trainer = null
+		tchar.clear_training()
 	trainees.clear()
+	return res
 
 
 func reset_training():
