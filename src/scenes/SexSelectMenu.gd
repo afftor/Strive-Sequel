@@ -49,7 +49,7 @@ func rebuild_list():
 	for i in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[i]
 		var is_selected = selected_characters.has(person)
-		if !is_selected and !_is_person_in_active_category(person):
+		if (!is_selected and !_is_person_in_active_category(person)) ||  person.is_on_quest():
 			continue
 		var workcontainer = $SelectedContainer/VBoxContainer if is_selected else $ScrollContainer/VBoxContainer
 		var newbutton = input_handler.DuplicateContainerTemplate(workcontainer)

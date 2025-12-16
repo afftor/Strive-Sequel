@@ -35,7 +35,7 @@ var traits = {
 		name = '',
 		descript = '',
 		visible = true,
-		icon = "res://assets/images/iconsskills/icon_eyes.png", #fix
+		icon = "res://assets/images/iconsskills/icon_eyes.png",
 		effects = [],
 		tags = [],
 		bonusstats = {mod_hunt = 0.25, physics = 15, chg_dexterity_max = 1, mastery_stealth = 1}
@@ -717,7 +717,7 @@ var traits = {
 		visible = true,
 		icon = "res://assets/images/iconstraits/scepter.png",
 		effects = [],
-		bonusstats = {matk_add_part = 0.15},
+		bonusstats = {matk_add_part = 0.10},
 		weight = 100,
 		conflicts = ['m_inept'],
 		disposition_change = {

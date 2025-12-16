@@ -2506,7 +2506,7 @@ Spell Mana cost reduced by 15%
 {color=green|Maxed Wits Factor increases experience gain.}""",
 	STATCHARM_FACTORDESCRIPT = """{color=yellow|Charm Factor} represents character's appeal potential. It increases [color=aqua]Charm[/color] growth. [Master]'s charm also increases gold and reputation rewards from repeatable quests and number of dates per week.
 
-{color=green|Maxed Charm Factor increases Service Productivity and grants additional Charm Check.}""",
+{color=green|Maxed Charm Factor increases Service Productivity and grants additional Persuasion Check.}""",
 	STATSEXUALS_FACTORDESCRIPT = """{color=yellow|Sex Factor} represents character's sex development potential. It speeds sexual skills' acquirement, makes Consent easier to progress and occasionally boosts sexual options in events. [Master]'s Sex factor also increases number of sex interactions per week.
 
 {color=green|Maxed Sex Factor provides Speed bonus}.""",
@@ -3178,36 +3178,44 @@ Requires: Sex:Advanced""",
 	TRAITTRAINING_OBEDIENCE = "Obedience",
 	TRAITTRAINING_OBEDIENCEDESCRIPT = "Make [name] give up on [his] autonomy, which will allow to freely sell or give [him] away.",
 	TRAITTRAINING_CALLMASTER = "Master Acknowledgement",
-	TRAITTRAINING_CALLMASTERDESCRIPT = """Demand [name] of [his] unwavering loyalty to you. 
-Allows to finish training and provide [him] with specilization. """,
+	TRAITTRAINING_CALLMASTERDESCRIPT = """Demand [name] of [his] unwavering loyalty to you.
+	 
+{color=yellow|Allows to finish training and provide [him] with specilization.}""",
 	TRAITTRAINING_RELATION = "Relationship",
 	TRAITTRAINING_RELATIONDESCRIPT = """Make move onto [name]'s personal life. After all, shouldn't [he] like you enough already?
-Unlocks Dating option and removes consent penalty in sex.""",
+	
+{color=yellow|Unlocks Dating option and removes consent penalty in sex.}""",
 	TRAITTRAINING_SEXSERVICE = "Sex Service",
 	TRAITTRAINING_SEXSERVICEDESCRIPT = """Since [name]'s body belong to you, it makes sense to make [him] use it for your prosperity.
-Unlocks sex service tasks and Nudity rule.
-Requires consent \"Curious\" or above.""",
+	
+{color=yellow|Unlocks sex service tasks and Nudity rule.
+Requires consent \"Curious\" or above.}""",
 	TRAITTRAINING_SEXSERVICE_ADV = "Advanced Sex Service",
 	TRAITTRAINING_SEXSERVICE_ADVDESCRIPT = """With all well and done, its a logical step to push [name] further into depravity.
-Unlocks advanced sex service options.
-Requires consent \"Willing\" or above.""",
+
+{color=yellow|Unlocks advanced sex service options.
+Requires consent \"Willing\" or above.}""",
 	TRAITTRAINING_S_COMBAT = "Combat",
 	TRAITTRAINING_S_COMBATDESCRIPT = """[name] will allow to be drafted into combat scenarios. Perhaps not everyone is willing to combat for you with no concerns.
-Unlocks sending [name] into combat.""",
+
+{color=yellow|Unlocks sending [name] into combat.}""",
 	TRAITTRAINING_S_WORKING = "Work",
 	TRAITTRAINING_S_WORKINGDESCRIPT = """[name] will eagerly work for you on generic occupations.
-Unlocks setting [name] for various labors.""",
+
+{color=yellow|Unlocks setting [name] for various labors.}""",
 	TRAITTRAINING_S_RELATION = "Relationship",
 	TRAITTRAINING_S_RELATIONDESCRIPT = """With some convincing [name] will find your company favorable even beyond simple labor. 
 Unlocks Dating and Sex options.""",
 	TRAITTRAINING_S_SEXSERVICE = "Sex Service",
 	TRAITTRAINING_S_SEXSERVICEDESCRIPT = """Not everyone is willing to get into selling their body for your benefit. But with some persuasion...
-Unlock sex service tasks. 
-Requires consent \"Curious\" or above.""",
+	
+{color=yellow|Unlock sex service tasks. 
+Requires consent \"Curious\" or above.}""",
 	TRAITTRAINING_S_SEXSERVICE_ADV = "Advanced Sex Service",
 	TRAITTRAINING_S_SEXSERVICE_ADVDESCRIPT = """If [name] is already willing to perform sex services for your profits, why stop there?..
-Unlock advanced sex service options. 
-Requires consent \"Willing\" or above.""",
+	
+{color=yellow|Unlock advanced sex service options. 
+Requires consent \"Willing\" or above.}""",
 	TRAITMASTER_HARLOTRY = "Harlotry",
 	TRAITMASTER_HARLOTRYDESCRIPT = "While in service you still receive Rest benefits.",
 	TRAITMASTER_PROGENECY = "Progenecy",
@@ -18456,6 +18464,7 @@ Hotkey: 3""",
 	DISLIKED_ACTIONS_LABEL = "Disliked actions",
 	NOSERVITUDE = "-Servitude",
 	COMBAT_ABILS_LABEL = "Combat Abilitites",
+	ONQUESTLABEL = "[name] is unavailable at this point of time.",
 	DATING_LIVING_ROOM = "Living Room",
 	DATING_BEDROOM = "Bedroom",
 	DATING_TORTURE_ROOM = "Torture Room",

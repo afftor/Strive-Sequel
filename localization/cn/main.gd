@@ -15442,6 +15442,7 @@ Hotkey: 3""",
 	DISLIKED_ACTIONS_LABEL = "Disliked actions",
 	NOSERVITUDE = """-Servitude""", # MISSING TRANSLATION
 	COMBAT_ABILS_LABEL = "Combat Abilitites",
+	ONQUESTLABEL = """[name] is unavailable at this point of time.""", # MISSING TRANSLATION
 	DATING_LIVING_ROOM = "Living Room",
 	DATING_BEDROOM = "Bedroom",
 	DATING_TORTURE_ROOM = "Torture Room",

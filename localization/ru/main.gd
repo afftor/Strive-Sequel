@@ -19595,6 +19595,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	DISLIKED_ACTIONS_LABEL = """Неприятные действия""",
 	NOSERVITUDE = """-Служба""",
 	COMBAT_ABILS_LABEL = """Боевые способности""",
+	ONQUESTLABEL = """[name] is unavailable at this point of time.""", # MISSING TRANSLATION
 	DATING_LIVING_ROOM = """Гостиная""",
 	DATING_BEDROOM = """Спальня""",
 	DATING_TORTURE_ROOM = """Комната пыток""",

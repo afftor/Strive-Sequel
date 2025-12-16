@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://assets/Themes_v2/MANSION/Sex_Buttons_Font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/images/portraits/cali_collar_prt.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/images/gui/gui icons/icon_wits.png" type="Texture" id=8]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_mp.png" type="Texture" id=9]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_lust.png" type="Texture" id=10]
+[ext_resource path="res://assets/fonts/RoundoShadow40.font" type="BitmapFont" id=11]
 [ext_resource path="res://assets/images/gui/gui icons/icon_physics.png" type="Texture" id=13]
 [ext_resource path="res://assets/images/gui/gui icons/icon_charm.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/gui/gui icons/icon_sex.png" type="Texture" id=15]
@@ -632,6 +633,14 @@ margin_top = 842.0
 margin_right = 1190.0
 margin_bottom = 1051.0
 custom_styles/panel = ExtResource( 34 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Actions"]
+margin_left = 80.0
+margin_top = 32.0
+margin_right = 1092.0
+margin_bottom = 181.0
+custom_fonts/normal_font = ExtResource( 11 )
+text = "[name] is unavailable at this point of time."
 
 [node name="Panel" type="Panel" parent="Actions"]
 show_behind_parent = true
