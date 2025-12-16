@@ -100,7 +100,10 @@ func fix_serialization():
 			var items_list = areas[item_s.k_area].quests.factions[item_s.k_faction][item_s.k_quest].rewards.items
 			if items_list[0] is String:
 				items_list.clear()
-			items_list.append(dict2inst(item_s.item))
+			var item_to_add = dict2inst(item_s.item)
+			if item_to_add.type == 'gear':
+				item_to_add.fix_gear()
+			items_list.append(item_to_add)
 	serial_quest_items = null
 	
 	var tmp = ResourceScripts.world_gen.get_location_from_code('quest_cali_bandits_location')
