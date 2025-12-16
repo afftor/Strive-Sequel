@@ -5304,8 +5304,9 @@ var material_tiers = {
 	rq_medium = {obsidian = 1, woodmagic = 1, woodiron = 1, leatherthick = 1, boneancient = 1,
 		clothmagic = 1, steel = 1, insect_chitin = 1, ogre_teeth = 1},
 	rq_hard = {woodancient = 1, leathermythic = 1, leatherdragon = 1, bonedragon = 1,
-		clothethereal = 1, mithril = 1, adamantine = 1, meteorite_iron = 1, ice_crystal = 1,
+		clothethereal = 1, mithril = 1, adamantine = 1, ice_crystal = 1,
 		fire_ruby = 1, lizard_skin = 1, crystalized_ether = 1, earth_shard = 1}
+	#'meteorite_iron = 1' was in rq_hard
 }
 
 func get_materials_by_grade(grade, item_id):
