@@ -359,12 +359,27 @@ text = "test"
 self_modulate = Color( 0, 0, 0, 0.823529 )
 show_behind_parent = true
 margin_left = -381.0
-margin_top = 27.0
+margin_top = 146.0
 margin_bottom = 850.0
+
+[node name="Label" type="Label" parent="Background"]
+margin_left = 31.3431
+margin_top = 15.4142
+margin_right = 352.343
+margin_bottom = 79.4142
+focus_mode = 2
+mouse_filter = 0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 13 )
+text = "JOURNALLABLE"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="ScrollContainer2" type="ScrollContainer" parent="."]
 margin_left = -356.0
-margin_top = 113.0
+margin_top = 228.0
 margin_right = -17.0
 margin_bottom = 784.0
 theme = ExtResource( 1 )

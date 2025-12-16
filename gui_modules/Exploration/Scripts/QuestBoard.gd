@@ -87,7 +87,8 @@ func build_reputation():
 		newbutton.get_node("TextureRect").texture = images.get_icon("guilds_" + i)
 
 func see_quest_info(quest):
-	var req_counter : int = 0
+	if slave_pressed_btn != null and is_instance_valid(slave_pressed_btn):
+		slave_pressed_btn.pressed = false
 	for i in quest_list.get_children():
 		if i.name == 'Button':
 			continue
@@ -172,6 +173,8 @@ func build_slave_quest_list(reset_state := true, update_no_quests := true):
 	return counter
 
 func _on_slave_quest_pressed(quest_id, btn):
+	for i in quest_list.get_children():
+		i.pressed = false
 	if slave_pressed_btn != null and is_instance_valid(slave_pressed_btn):
 		slave_pressed_btn.pressed = false
 	slave_pressed_btn = btn
