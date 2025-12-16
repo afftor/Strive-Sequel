@@ -529,7 +529,7 @@ var skills = {
 		target = 'ally',
 		target_number = 'all',
 		target_range = 'any',
-		damage_type = 'neutral',
+		damage_type = 'normal',
 		sfx = [{code = 'buff', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['caster.matk', '*0.4']],
