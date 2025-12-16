@@ -15,7 +15,7 @@ var slave_pressed_btn
 
 func _ready():
 	accept_button.connect("pressed", self, "accept_quest")
-	slave_quest_container.hide()
+	slave_quest_container.show()
 	ResourceScripts.slave_quests.connect("quests_regened", self, "build_slave_quest_list")
 
 	for i in $guildsortVScroll.get_children():
@@ -27,7 +27,7 @@ func _ready():
 func selectcategory(button):
 	quest_mode = "guild"
 	quest_container.show()
-	slave_quest_container.hide()
+	slave_quest_container.show()
 	category = button.name
 	for i in $guildsortVScroll.get_children():
 		i.pressed = (i == button)
@@ -46,10 +46,8 @@ func _show():
 
 func quest_board():
 	reset_board_state()
-	if quest_mode == "slave":
-		build_slave_quest_list()
-		return
-
+	quest_container.show()
+	slave_quest_container.show()
 	input_handler.ActivateTutorial("TUTORIALLIST5")
 	build_reputation()
 	quest_panel.hide()
@@ -57,6 +55,11 @@ func quest_board():
 #	gui_controller.win_btn_connections_handler(pressed, $QuestBoard, pressed_button)
 #	self.current_pressed_area_btn = pressed_button
 #	# $QuestBoard.visible = pressed
+	var guild_counter = build_standard_quests()
+	var slave_counter = build_slave_quest_list(false, false)
+	$NoQuests.visible = guild_counter == 0 and slave_counter == 0
+
+func build_standard_quests():
 	var counter = 0
 	input_handler.ClearContainer(quest_list)
 	for i in input_handler.active_area.quests.factions:
@@ -71,7 +74,7 @@ func quest_board():
 				newbutton.get_node("ButtonOverlay").connect("pressed", self, "see_quest_info", [k])
 				newbutton.set_meta("quest", k)
 				newbutton.get_node("ButtonOverlay").connect('pressed',self,'selectquest', [newbutton])
-	$NoQuests.visible = counter == 0
+	return counter
 
 func build_reputation():
 	input_handler.ClearContainer($QuestDetails/VBoxContainer)
@@ -89,6 +92,7 @@ func see_quest_info(quest):
 		if i.name == 'Button':
 			continue
 		i.pressed = i.get_meta('quest') == quest
+	quest_mode = "guild"
 	quest_panel.show_info(quest)
 	selectedquest = quest
 	input_handler.selectedquest = quest
@@ -128,14 +132,14 @@ func _on_Button_pressed():
 
 func open_slave_quests():
 	quest_mode = "slave"
-	quest_container.hide()
+	quest_container.show()
 	slave_quest_container.show()
 	for i in $guildsortVScroll.get_children():
 		i.pressed = false
 	reset_board_state()
 	build_slave_quest_list()
 
-func build_slave_quest_list():
+func build_slave_quest_list(reset_state := true, update_no_quests := true):
 	var slave_quests = ResourceScripts.slave_quests
 	var quest_pool = slave_quests.get_quest_pool()
 	if quest_pool.empty():
@@ -144,9 +148,11 @@ func build_slave_quest_list():
 		if quest_pool.empty():
 			quest_panel.hide_all()
 			accept_button.hide()
-			$NoQuests.visible = true
-			return
-	reset_board_state()
+			if update_no_quests:
+				$NoQuests.visible = true
+			return 0
+	if reset_state:
+		reset_board_state()
 	input_handler.ClearContainer(slave_quest_list)
 	slave_pressed_btn = null
 	slave_selected_quest_id = null
@@ -161,7 +167,9 @@ func build_slave_quest_list():
 		btn.text = tr(quest.name)
 		btn.connect("pressed", self, "_on_slave_quest_pressed", [quest_id, btn])
 		counter += 1
-	$NoQuests.visible = counter == 0
+	if update_no_quests:
+		$NoQuests.visible = counter == 0
+	return counter
 
 func _on_slave_quest_pressed(quest_id, btn):
 	if slave_pressed_btn != null and is_instance_valid(slave_pressed_btn):
