@@ -332,8 +332,7 @@ func update_guild_actions(guild):
 
 func hide_guild_panels():
 	for nd in [$FactionDetails, $DisassembleModule, $GuildShop, $SlaveMarket]:
-		if nd.is_visible():
-			fade(nd, 0.3)
+		nd.hide()
 
 
 func enter_guild(guild):
@@ -375,7 +374,7 @@ func unfade(window, time = 0.5):
 func fade(window, time = 0.5):
 	# window.set("modulate", Color(1, 1, 1, 1))
 	ResourceScripts.core_animations.FadeAnimation(window, time)
-	yield(get_tree().create_timer(time), "timeout")
+	yield(get_tree().create_timer(0.5), "timeout")
 	window.hide()
 	# window.set("modulate", Color(1, 1, 1, 0))
 
