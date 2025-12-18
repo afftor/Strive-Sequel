@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/zephyra_costume_7_body.png-5bb7f19554064bb5a482e8d6ff5fb50f.stex"
+path="res://.import/tailor.png-23e091c5c08642eeb3c02f1700e9d868.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/zephyra_costume_7_body.png"
-dest_files=[ "res://.import/zephyra_costume_7_body.png-5bb7f19554064bb5a482e8d6ff5fb50f.stex" ]
+source_file="res://assets/images/iconsclasses/tailor.png"
+dest_files=[ "res://.import/tailor.png-23e091c5c08642eeb3c02f1700e9d868.stex" ]
 
 [params]
 

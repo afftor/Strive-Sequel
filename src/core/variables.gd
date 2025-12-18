@@ -296,7 +296,7 @@ var difficulty_per_level_survival = 0.1 #% enemy stat increase
 var survival_cap_main = 4.0 # added base 1 to max + 300%
 var survival_cap_secondary = 2.5 # added base 1 to max + 150%
 
-var slave_class_list = ['slave', 'servant', 'heir', 'master']#incomplete? obsolete?
+var slave_class_list = ['slave', 'slave_trained', 'servant', 'heir', 'master']
 #sex chances
 
 var teen_age_weight = 1

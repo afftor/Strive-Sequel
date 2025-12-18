@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/zephyra_costume_7.png-b7e27977ec9d2d6d353767ac8a540504.stex"
+path="res://.import/zephyra_miko_body.png-b55d9c9df10dc472c22ff2b1c5ba5793.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/zephyra_costume_7.png"
-dest_files=[ "res://.import/zephyra_costume_7.png-b7e27977ec9d2d6d353767ac8a540504.stex" ]
+source_file="res://assets/images/sprites/zephyra_miko_body.png"
+dest_files=[ "res://.import/zephyra_miko_body.png-b55d9c9df10dc472c22ff2b1c5ba5793.stex" ]
 
 [params]
 

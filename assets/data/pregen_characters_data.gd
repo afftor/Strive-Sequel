@@ -1006,11 +1006,11 @@ var unique_sprites = {
 			face_path = "zephyra_wed",
 			unlock_reqs = []
 			},
-		costume_7 = {
+		miko = {
 			name = "Miko",
 			descript = "",
-			path = "zephyra_costume_7_body", 
-			face_path = "zephyra_costume_7",
+			path = "zephyra_miko_body", 
+			face_path = "zephyra_miko",
 			unlock_reqs = []
 			},
 	},

@@ -10942,7 +10942,7 @@ In the end she accepted that she had to deal with the consequences of her own ac
 {color=aqua|William: — You don't feel too uncomfortable, do you? But given the luxury of your dinner, a bit of discomfort shouldn't be a big deal.}
 
 {color=yellow|Cali: — Hmph, it's no big deal once I get my sword back. Just get on with it.}""",
-	CALI_WILLIAM_EVENING_2 = """A slow, predatory smile spreads across William’s lips at her defiant words. He moves to the side of the bed, his shadow falling over her smaller frame while his fingers run down the front of her starched blouse. He peels it open, letting the cool air of the room hit her skin. Cali's small, perky breasts are now completely bare, the nipples hardening from the chill and her anxiety.
+	CALI_WILLIAM_EVENING_2 = """A slow, predatory smile spreads across William's lips at her defiant words. He moves to the side of the bed, his shadow falling over her smaller frame while his fingers run down the front of her starched blouse. He peels it open, letting the cool air of the room hit her skin. Cali's small, perky breasts are now completely bare, the nipples hardening from the chill and her anxiety.
 
 {color=aqua|William: — Heh, I knew you are one pretty thing despite your temper.}
 
@@ -12076,7 +12076,7 @@ Finally by the end of the day she came to an orphanage.
 {color=aqua|Rudolph: — Now you will have a home and a [Master]. This is what you actually wanted, isn't it? I'm sure you'll have a lot of happy memories together. }
 
 Not sure how to reply, the girl still managed to thank her back.""",
-	CHRISTMAS_EVENT_10 = """{color=yellow|Rudolph: — Even though it might be hard, you should still try your best. }
+	CHRISTMAS_EVENT_10 = """{color=aqua|Rudolph: — Even though it might be hard, you should still try your best. }
 
 {color=yellow|Daisy: — Things could be against us, but we can adore these moments of peace and happiness.}
 
@@ -13528,7 +13528,7 @@ Norlan takes a moment to consider his next words. He throws a glance at Amelia, 
 {color=yellow|Amelia: — What a speechmaker you are, Norlan. I see you finally decided to make it personal. }
 
 {color=yellow|Norlan: — Enough, Amelia. We have given you plenty of time. Your last statement is finished. We will now proceed to voting. You don't have any more objections, do you, Mayor [name]?}""",
-	AMELIA_TRIAL_NORMAL_5 = """As you scan the hall, you notice several faces turned downward. Noraln's persuasion has taken hold, and resignation fills the space. Even those in favor of Amelia are starting to doubt her and consider taking Norlan's side. It seems whatever Amelia had strategized has faltered. All potential avenues for delay or Norlan's implication have been exhausted.
+	AMELIA_TRIAL_NORMAL_5 = """As you scan the hall, you notice several faces turned downward. Norlan's persuasion has taken hold, and resignation fills the space. Even those in favor of Amelia are starting to doubt her and consider taking Norlan's side. It seems whatever Amelia had strategized has faltered. All potential avenues for delay or Norlan's implication have been exhausted.
 
 But could there be another angle to consider? Norlan's swift willingness to relinquish the Guild Leader's position raises questions. Maybe Amelia's suspicions of Norlan were misplaced, and he wasn't the one orchestrating the plot against her? Or could there be another motive behind Norlan's actions?""",
 	AMELIA_TRIAL_NORMAL_5_OPTION_1 = "You're hiding something, Norlan. I will not let the council finish until I find out what it is.",
@@ -20248,14 +20248,14 @@ You note with amusement how Heleviel holds herself in this situation. While not 
 	HELEVIEL_QUEST_13 = """The evening continues uneventfully with your patrons until it gets late enough for everyone to leave. As nobody else is around, you get a small comment from Heleviel before she leaves her shift, still bearing her tipsiness.
 
 {color=yellow|Heleviel: — I suppose it wasn't too bad after all. Your friends are disgusting for being such lechers toward elven women, though.}""",
-	HELEVIEL_SLAVE_CHURCH_INIT = "With time, Heleviel has grown more accustomed to life in slavery under you. Her bickering has mostly disappeared. Yesterday you received a help request from Aliron’s church, which seems like a good next step for Heleviel to work on in order to improve her cultural accommodation.",
+	HELEVIEL_SLAVE_CHURCH_INIT = "With time, Heleviel has grown more accustomed to life in slavery under you. Her bickering has mostly disappeared. Yesterday you received a help request from Aliron's church, which seems like a good next step for Heleviel to work on in order to improve her cultural accommodation.",
 	HELEVIEL_SLAVE_CHURCH_INTRO_TEXT = """You bring Heleviel to the church, finding Ginny in her usual workplace.
 
-{color=yellow|Heleviel: — Hmph, so this is Celena’s temple, and you must be her local priest. What a pitiful decoration. No wonder Celena is only a subservient goddess with measly followers compared to Freya.}
+{color=yellow|Heleviel: — Hmph, so this is Celena's temple, and you must be her local priest. What a pitiful decoration. No wonder Celena is only a subservient goddess with measly followers compared to Freya.}
 
-{color=aqua|Ginny: — It’s true that Freya is more revered than Celena, but I’m her devoted follower in this town. Celena is a merciful goddess, and she wants to help those in need.}
+{color=aqua|Ginny: — It's true that Freya is more revered than Celena, but I'm her devoted follower in this town. Celena is a merciful goddess, and she wants to help those in need.}
 
-{color=yellow|Heleviel: — What difference does it make if her establishment is so insignificant? I swear Freya’s followers would never stoop so low.}
+{color=yellow|Heleviel: — What difference does it make if her establishment is so insignificant? I swear Freya's followers would never stoop so low.}
 
 {color=aqua|Ginny: — Perhaps, but my goal is to assist others, even those of different religions.}
 
