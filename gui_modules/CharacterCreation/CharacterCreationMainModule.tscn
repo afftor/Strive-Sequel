@@ -469,10 +469,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="class" type="TextureButton" parent="VBoxContainer"]
+[node name="sextrait" type="TextureButton" parent="VBoxContainer"]
 margin_top = 500.0
 margin_right = 433.0
 margin_bottom = 566.0
+rect_min_size = Vector2( 0, 50 )
+texture_normal = ExtResource( 49 )
+texture_pressed = ExtResource( 48 )
+texture_hover = ExtResource( 51 )
+texture_disabled = ExtResource( 50 )
+
+[node name="Label" type="Label" parent="VBoxContainer/sextrait"]
+margin_left = 64.0
+margin_top = 5.0
+margin_right = 427.0
+margin_bottom = 59.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Sex Trait"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="VBoxContainer/sextrait"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 59.0
+margin_bottom = 59.0
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="class" type="TextureButton" parent="VBoxContainer"]
+margin_top = 572.0
+margin_right = 433.0
+margin_bottom = 638.0
 rect_min_size = Vector2( 0, 50 )
 texture_normal = ExtResource( 49 )
 texture_pressed = ExtResource( 48 )
@@ -502,30 +535,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="sextrait" type="TextureButton" parent="VBoxContainer"]
-margin_top = 572.0
+[node name="personality" type="TextureButton" parent="VBoxContainer"]
+margin_top = 644.0
 margin_right = 433.0
-margin_bottom = 638.0
+margin_bottom = 710.0
 rect_min_size = Vector2( 0, 50 )
 texture_normal = ExtResource( 49 )
 texture_pressed = ExtResource( 48 )
 texture_hover = ExtResource( 51 )
 texture_disabled = ExtResource( 50 )
 
-[node name="Label" type="Label" parent="VBoxContainer/sextrait"]
+[node name="Label" type="Label" parent="VBoxContainer/personality"]
 margin_left = 64.0
 margin_top = 5.0
 margin_right = 427.0
 margin_bottom = 59.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Sex Trait"
+text = "Personality"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon" type="TextureRect" parent="VBoxContainer/sextrait"]
+[node name="icon" type="TextureRect" parent="VBoxContainer/personality"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 59.0
@@ -620,6 +653,8 @@ texture_hover = ExtResource( 27 )
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="PersonalityMenu" type="PopupMenu" parent="."]
 
 [node name="StatsModule" type="TextureRect" parent="."]
 visible = false

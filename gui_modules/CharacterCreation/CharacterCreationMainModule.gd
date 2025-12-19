@@ -165,8 +165,15 @@ onready var RaceSelection = $RaceSelectionModule
 onready var ClassSelection = $ClassSelectionModule
 onready var TraitSelection = $TraitSelection
 onready var ragdoll = $RagdollPanel/ragdoll
+onready var PersonalityMenu = $PersonalityMenu
 
 var possible_vals = {}
+var personality_icons = {
+	bold = preload("res://assets/Textures_v2/MANSION/personality_bold.png"),
+	kind = preload("res://assets/Textures_v2/MANSION/personality_kind.png"),
+	shy = preload("res://assets/Textures_v2/MANSION/personality_shy.png"),
+	serious = preload("res://assets/Textures_v2/MANSION/personality_serious.png"),
+}
 
 
 func _ready():
@@ -178,29 +185,32 @@ func _ready():
 	$SaveLoadCharPanel/LineEdit.connect("text_changed",self,'set_savefilename')
 	$SaveLoadCharPanel/SaveLoadButton.connect("pressed", self, "PressSaveLoadCharacter", [savefilename])
 	$SaveLoadCharPanel/SaveLoadCancel.connect("pressed", self, "hideSaveLoadPanel")
+	PersonalityMenu.connect("id_pressed", self, "_on_PersonalityMenu_id_pressed")
 	# input_handler.AddPanelOpenCloseAnimation($RaceSelection)
 	# input_handler.AddPanelOpenCloseAnimation($TraitSelection)
 	# input_handler.AddPanelOpenCloseAnimation($DietPanel)
 	# input_handler.AddPanelOpenCloseAnimation($ClassPanel)
 #	$TestButton.connect("pressed", self, "test")
-	
+
 	$VBoxContainer/race.connect("pressed", RaceSelection, "select_race")
 	$VBoxContainer/sextrait.connect('pressed', self, "open_sex_traits")
 	$VBoxContainer/trait.connect('pressed', self, "open_traits")
-	
+	$VBoxContainer/personality.connect('pressed', self, "open_personality_menu")
+
 	$modes/Stats.connect("pressed", self, 'build_stats')
 	$modes/Visuals.connect("pressed", self, 'build_visuals')
-	
+
 	$UpgradesPanel.visible = false
 	$VBoxContainer.visible = true
-	
+
 	$ConfirmButton.connect("pressed", self, 'confirm_character')
 	#$CancelButton.connect("pressed", self, "confirm_return")
 	globals.connecttexttooltip($VBoxContainer/sextrait, tr("TOOLTIPSEXTRAITS"))
-	
+	globals.connecttexttooltip($VBoxContainer/personality, tr("INFOPERSONALITY"))
+
 	for i in ['name','surname','nickname']:
 		$VBoxContainer.get_node(i).connect("text_changed", self, 'text_changed', [i])
-	
+
 	$VBoxContainer/class.connect("pressed", ClassSelection, "open_class_list")
 	$BackButton.connect("pressed", self, "Exit")
 	$BackButtonCheats.connect("pressed", self, "hide")
@@ -254,6 +264,9 @@ func apply_preserved_settings(): #on regenerating char
 			continue
 		if i == 'slave_class':
 			continue
+		elif i == 'personality':
+			person.set_stat(i, preservedsettings[i])
+			build_personality()
 		elif if_can_assign(i, preservedsettings[i]):
 			person.set_stat(i, preservedsettings[i])
 			build_node_for_stat(i)
@@ -297,8 +310,7 @@ func build_possible_val_for_stat(stat):
 		possible_vals.age = agearray.duplicate()
 		return
 	if stat == 'personality':
-		possible_vals.personality = variables.personality_array.duplicate()
-#		possible_vals.personality.erase('neutral')
+		possible_vals.personality = get_selectable_personalities()
 		return
 	if mode == 'freemode' and !critical_stats.has(stat) or free_stats.has(stat):
 		if GeneratorData.transforms.has(stat):
@@ -725,6 +737,7 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 	person = ResourceScripts.scriptdict.class_slave.new("char_creation")
 	person.set_stat('age', 'adult')
 	person.set_stat('race', 'Human')
+	person.set_stat('personality', 'neutral')
 	init_upgrades()
 	match mode:
 		'master':
@@ -777,6 +790,7 @@ func rebuild_slave():
 	var age = person.get_stat('age')
 	var t_person = ResourceScripts.scriptdict.class_slave.new("char_creation_rebuild")
 	t_person.create(race, sex, age)
+	t_person.set_stat('personality', 'neutral')
 	t_person.fill_boosters()
 	t_person.is_active = false
 	t_person.is_known_to_player = true
@@ -890,6 +904,10 @@ func check_confirm_possibility():
 	if mode != 'freemode':
 		if !check_food_filter():
 			input_handler.SystemMessage("You must select one liked and at least one hated food type.")
+			return false
+		
+		if get_personality_value() == null:
+			input_handler.SystemMessage("You must select a Personality.")
 			return false
 		
 		if !check_class_possibility():
@@ -1048,7 +1066,7 @@ func RebuildStatsContainer(): #onready scheme build, not values
 	input_handler.ClearContainer($VisualsModule/ScrollContainer/VBoxContainer/StatsContainer)
 	input_handler.ClearContainer($VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2)
 	for stat in params_to_save:
-		if stat in ["name", "surname", "nickname", "sex", "age", "race", "traits", "sex_traits", "professions", "food_filter"]:
+		if stat in ["name", "surname", "nickname", "sex", "age", "race", "traits", "sex_traits", "professions", "food_filter", "personality"]:
 			continue
 		if stat.ends_with('factor'):
 			var i = statdata.statdata[stat]
@@ -1060,7 +1078,9 @@ func RebuildStatsContainer(): #onready scheme build, not values
 			newnode.name = i.code
 			var text = i.descript
 			if i.code in ['physics_factor','wits_factor','charm_factor','sexuals_factor']:
-				text += '\n\n' + statdata.statdata[i.code.replace('_factor', '')].descript
+				text += '
+
+' + statdata.statdata[i.code.replace('_factor', '')].descript
 			globals.connecttexttooltip(newnode.get_node("icon"), text)
 		elif stat.find('color') != -1: #create selectable, not build it
 			var newnode = input_handler.DuplicateContainerTemplate($VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2)
@@ -1088,46 +1108,20 @@ func RebuildStatsContainer(): #onready scheme build, not values
 
 
 func FillStats():
-#	build_possible_vals()
+	#	build_possible_vals()
 	for stat in params_to_save:
-		if stat in ["race", "traits", "sex_traits", "professions", 'food_filter']:
+		if stat in ["race", "traits", "sex_traits", "professions", 'food_filter', 'personality']:
 			continue
 		if stat.find('color') != -1:
 			build_selectable_node(stat)
 		build_node_for_stat(stat)
-#	build_class()
+	#	build_class()
 	build_description()
 	build_race()
+	build_personality()
 	update_points()
 	build_upgrades()
-#	build_food_filter()
-
-
-
-func open_sex_traits():
-	hide_all_dialogues()
-	TraitSelection.build_sex()
-
-
-func open_traits():
-	hide_all_dialogues()
-	TraitSelection.build_trait()
-
-
-func select_sex_trait(trait_id):
-	preservedsettings["sex_traits"] = trait_id
-	$TraitSelection.hide()
-	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
-#	RebuildStatsContainer()
-	build_sex_trait()
-
-
-func select_trait(trait_id):
-	preservedsettings["traits"] = trait_id
-	$TraitSelection.hide()
-	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
-#	RebuildStatsContainer()
-	build_trait()
+	#	build_food_filter()
 
 
 func build_trait():
@@ -1220,6 +1214,19 @@ func build_class():
 	$VBoxContainer/class.disabled = (mode == 'freemode')
 
 
+func build_personality():
+	var personality_value = get_personality_value()
+	var label = "Personality"
+	var icon = null
+	if personality_value != null:
+		label = tr("PERSONALITYNAME" + personality_value.to_upper())
+		if personality_icons.has(personality_value):
+			icon = personality_icons[personality_value]
+	$VBoxContainer/personality/Label.text = label
+	$VBoxContainer/personality/icon.texture = icon
+	$VBoxContainer/personality.disabled = (mode == 'freemode')
+
+
 func build_description():
 	$VisualsModule/Desc.bbcode_text = ResourceScripts.descriptions.trim_tag(person.make_description(), 'url', 'hair')
 
@@ -1242,6 +1249,58 @@ func hide_all_dialogues():
 	RaceSelection.hide()
 	TraitSelection.hide()
 	ClassSelection.hide()
+	PersonalityMenu.hide()
+
+
+func open_personality_menu():
+	hide_all_dialogues()
+	PersonalityMenu.clear()
+	PersonalityMenu.hide_on_checkable_item_selection = false
+	var current = get_personality_value()
+	var personalities = get_selectable_personalities()
+	for i in range(personalities.size()):
+		var code = personalities[i]
+		var title = tr("PERSONALITYNAME" + code.to_upper())
+		PersonalityMenu.add_check_item(title)
+		PersonalityMenu.set_item_metadata(i, code)
+		PersonalityMenu.set_item_checked(i, code == current)
+		PersonalityMenu.set_item_tooltip(i, tr("INFOPERSONALITY" + code.to_upper()))
+	PersonalityMenu.rect_global_position = $VBoxContainer/personality.rect_global_position + Vector2(0, $VBoxContainer/personality.rect_size.y)
+	PersonalityMenu.popup()
+
+
+func _on_PersonalityMenu_id_pressed(id):
+	var code = PersonalityMenu.get_item_metadata(id)
+	if code == null:
+		return
+	person.set_stat('personality', code)
+	preservedsettings['personality'] = code
+	build_personality()
+	build_description()
+	rebuild_ragdoll('personality')
+
+
+func get_selectable_personalities():
+	var personalities = []
+	for code in variables.personality_array:
+		if code == 'neutral':
+			continue
+		personalities.push_back(code)
+	return personalities
+
+
+func is_valid_personality(code):
+	return code != null and code != '' and code != 'neutral' and get_selectable_personalities().has(code)
+
+
+func get_personality_value():
+	if preservedsettings.has('personality') and !is_valid_personality(preservedsettings.personality):
+		preservedsettings.erase('personality')
+	if preservedsettings.has('personality') and is_valid_personality(preservedsettings.personality):
+		return preservedsettings.personality
+	if mode == 'freemode' and is_valid_personality(person.get_stat('personality')):
+		return person.get_stat('personality')
+	return null
 
 var upgradecost = 0
 var upgradecostgold = 0
