@@ -817,8 +817,10 @@ func get_hairs_data():
 			res.hair_base_color_2 = 'blue_1'
 	if statlist.hair_length == 'bald':
 		res.hair_base_length = 'bald'
-		res.hair_assist = ''
-		res.hair_back = ''
+		res.hair_assist = 'no'
+		res.hair_back = 'no'
+		res.hair_assist_length = 'short'
+		res.hair_back_length = 'short'
 	else:
 		match statlist.hair_style:
 			'straight':
