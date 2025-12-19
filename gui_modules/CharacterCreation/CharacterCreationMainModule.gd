@@ -197,6 +197,7 @@ func _ready():
 	
 	$modes/Stats.connect("pressed", self, 'build_stats')
 	$modes/Visuals.connect("pressed", self, 'build_visuals')
+	$RagdollPanel/AppearanceReroll.connect("pressed", self, "reroll_appearance")
 	
 	$UpgradesPanel.visible = false
 	$VBoxContainer.visible = true
@@ -223,6 +224,35 @@ func reroll_name():
 	build_node_for_stat('name')
 	build_node_for_stat('surname')
 	build_description()
+
+
+func reroll_appearance():
+	build_possible_vals()
+	var updated_stats = []
+	for stat in params_to_save:
+		if stat in ["name", "surname", "nickname", "sex", "age", "race", "traits", "sex_traits", "professions", "food_filter", "personality", "slave_class"]:
+			continue
+		if stat.ends_with('_virgin'):
+			continue
+		if stat.ends_with('_factor'):
+			continue
+		if !possible_vals.has(stat):
+			continue
+		if possible_vals[stat].empty():
+			continue
+		var new_val = input_handler.random_from_array(possible_vals[stat])
+		person.set_stat(stat, new_val)
+		preservedsettings[stat] = new_val
+		updated_stats.append(stat)
+	if input_handler.globalsettings.generate_portraits:
+		person.make_random_portrait()
+	rebuild_ragdoll()
+	for stat in updated_stats:
+		if stat.find('color') != -1:
+			build_selectable_node(stat)
+		build_node_for_stat(stat)
+	build_description()
+	build_upgrades()
 
 
 func apply_default_personality():
