@@ -207,7 +207,7 @@ func _ready():
 	
 	for i in ['name','surname','nickname']:
 		$VBoxContainer.get_node(i).connect("text_changed", self, 'text_changed', [i])
-	$VBoxContainer/NameReroll.connect("pressed", self, "reroll_name")
+	$NameReroll.connect("pressed", self, "reroll_name")
 	
 	$VBoxContainer/class.connect("pressed", ClassSelection, "open_class_list")
 	$BackButton.connect("pressed", self, "Exit")
