@@ -159,7 +159,7 @@ var params_to_save = [ #memo mostly
 	'hair_facial_color'
 ]
 
-var tooltips_stat = ['personality','slave_class']
+var tooltips_stat = ['slave_class']
 
 onready var RaceSelection = $RaceSelectionModule
 onready var ClassSelection = $ClassSelectionModule
@@ -187,6 +187,7 @@ func _ready():
 	$VBoxContainer/race.connect("pressed", RaceSelection, "select_race")
 	$VBoxContainer/sextrait.connect('pressed', self, "open_sex_traits")
 	$VBoxContainer/trait.connect('pressed', self, "open_traits")
+	$VBoxContainer/personality.connect('pressed', self, "open_personality_selection")
 	
 	$modes/Stats.connect("pressed", self, 'build_stats')
 	$modes/Visuals.connect("pressed", self, 'build_visuals')
@@ -1050,6 +1051,8 @@ func RebuildStatsContainer(): #onready scheme build, not values
 	for stat in params_to_save:
 		if stat in ["name", "surname", "nickname", "sex", "age", "race", "traits", "sex_traits", "professions", "food_filter"]:
 			continue
+		if stat == 'personality':
+			continue
 		if stat.ends_with('factor'):
 			var i = statdata.statdata[stat]
 			var newnode = input_handler.DuplicateContainerTemplate($StatsModule/StatsContainer)
@@ -1087,10 +1090,13 @@ func RebuildStatsContainer(): #onready scheme build, not values
 			globals.connecttexttooltip(newnode.get_node('header/Tooltip'), tr("INFO" + stat.to_upper()))
 
 
+
 func FillStats():
 #	build_possible_vals()
 	for stat in params_to_save:
 		if stat in ["race", "traits", "sex_traits", "professions", 'food_filter']:
+			continue
+		if stat == 'personality':
 			continue
 		if stat.find('color') != -1:
 			build_selectable_node(stat)
@@ -1098,6 +1104,7 @@ func FillStats():
 #	build_class()
 	build_description()
 	build_race()
+	build_personality()
 	update_points()
 	build_upgrades()
 #	build_food_filter()
@@ -1114,6 +1121,11 @@ func open_traits():
 	TraitSelection.build_trait()
 
 
+func open_personality_selection():
+	hide_all_dialogues()
+	TraitSelection.build_personality()
+
+
 func select_sex_trait(trait_id):
 	preservedsettings["sex_traits"] = trait_id
 	$TraitSelection.hide()
@@ -1128,6 +1140,14 @@ func select_trait(trait_id):
 	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 #	RebuildStatsContainer()
 	build_trait()
+
+
+func select_personality(code):
+	preservedsettings['personality'] = code
+	person.set_stat('personality', code)
+	TraitSelection.hide()
+	build_personality()
+	build_description()
 
 
 func build_trait():
@@ -1165,6 +1185,15 @@ func build_sex_trait():
 	else:
 		$VBoxContainer/sextrait/Label.text = "Sex Trait"
 	$VBoxContainer/sextrait.disabled = (mode == 'freemode')
+
+
+func build_personality():
+	var personality = person.get_stat('personality')
+	if personality == null:
+		$VBoxContainer/personality/Label.text = "Personality"
+	else:
+		$VBoxContainer/personality/Label.text = tr("PERSONALITYNAME" + personality.to_upper())
+	$VBoxContainer/personality.disabled = (mode == 'freemode')
 
 
 func build_race():

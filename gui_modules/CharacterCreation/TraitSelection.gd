@@ -20,6 +20,18 @@ func build_sex():
 	show()
 
 
+func build_personality():
+	person = get_parent().person
+	input_handler.ClearContainer($ScrollContainer/VBoxContainer, ['Button'])
+	for code in variables.personality_array:
+		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		newbutton.text = tr("PERSONALITYNAME" + code.to_upper())
+		if person.get_stat('personality') == code:
+			newbutton.pressed = true
+		newbutton.connect('pressed', get_parent(), 'select_personality', [code])
+	show()
+
+
 func build_trait():
 	person = get_parent().person
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer, ['Button'])
