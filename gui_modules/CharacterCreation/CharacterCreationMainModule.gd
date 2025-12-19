@@ -207,12 +207,28 @@ func _ready():
 	
 	for i in ['name','surname','nickname']:
 		$VBoxContainer.get_node(i).connect("text_changed", self, 'text_changed', [i])
+	$VBoxContainer/NameReroll.connect("pressed", self, "reroll_name")
 	
 	$VBoxContainer/class.connect("pressed", ClassSelection, "open_class_list")
 	$BackButton.connect("pressed", self, "Exit")
 	$BackButtonCheats.connect("pressed", self, "hide")
 	if testmode:
 		open()
+
+
+func reroll_name():
+	person.get_random_name()
+	preservedsettings['name'] = person.get_stat('name')
+	preservedsettings['surname'] = person.get_stat('surname')
+	build_node_for_stat('name')
+	build_node_for_stat('surname')
+	build_description()
+
+
+func apply_default_personality():
+	preservedsettings.erase('personality')
+	person.set_stat('personality', 'neutral')
+	build_personality()
 
 
 func build_stats():
@@ -807,6 +823,7 @@ func rebuild_slave():
 	
 	person = t_person
 	
+	apply_default_personality()
 	build_possible_vals()
 	for stat in ["physics_factor", "magic_factor", "tame_factor", "authority_factor", "charm_factor", "wits_factor", "sexuals_factor"]:
 		person.set_stat(stat, 1)
