@@ -234,6 +234,17 @@ custom_fonts/font = ExtResource( 2 )
 placeholder_text = "Optional"
 placeholder_alpha = 0.5
 
+[node name="NameReroll" type="Button" parent="VBoxContainer"]
+margin_top = 255.0
+margin_right = 433.0
+margin_bottom = 295.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = ExtResource( 32 )
+custom_styles/pressed = ExtResource( 31 )
+custom_styles/normal = ExtResource( 34 )
+text = "Reroll Name"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 255.0
 margin_right = 433.0
