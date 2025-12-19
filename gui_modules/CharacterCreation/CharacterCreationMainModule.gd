@@ -167,6 +167,12 @@ onready var TraitSelection = $TraitSelection
 onready var ragdoll = $RagdollPanel/ragdoll
 
 var possible_vals = {}
+var personality_icons = {
+	bold = load("res://assets/Textures_v2/MANSION/personality_bold.png"),
+	kind = load("res://assets/Textures_v2/MANSION/personality_kind.png"),
+	shy = load("res://assets/Textures_v2/MANSION/personality_shy.png"),
+	serious = load("res://assets/Textures_v2/MANSION/personality_serious.png"),
+}
 
 
 func _ready():
@@ -188,6 +194,7 @@ func _ready():
 	$VBoxContainer/sextrait.connect('pressed', self, "open_sex_traits")
 	$VBoxContainer/trait.connect('pressed', self, "open_traits")
 	$VBoxContainer/personality.connect('pressed', self, "open_personality_selection")
+	globals.connecttexttooltip($VBoxContainer/personality, tr("INFOPERSONALITY"))
 	
 	$modes/Stats.connect("pressed", self, 'build_stats')
 	$modes/Visuals.connect("pressed", self, 'build_visuals')
@@ -270,6 +277,22 @@ func build_possible_vals():
 		build_possible_val_for_stat(stat)
 
 
+func get_personality_options():
+	var options = []
+	for code in variables.personality_array:
+		if code == 'neutral':
+			continue
+		options.push_back(code)
+	return options
+
+
+func has_selected_personality():
+	var personality = person.get_stat('personality')
+	if personality == null or personality == '' or personality == 'neutral':
+		return false
+	return get_personality_options().has(personality)
+
+
 func build_possible_val_for_stat(stat):
 	if person.is_unique():
 		possible_vals[stat] = []
@@ -298,8 +321,7 @@ func build_possible_val_for_stat(stat):
 		possible_vals.age = agearray.duplicate()
 		return
 	if stat == 'personality':
-		possible_vals.personality = variables.personality_array.duplicate()
-#		possible_vals.personality.erase('neutral')
+		possible_vals.personality = get_personality_options()
 		return
 	if mode == 'freemode' and !critical_stats.has(stat) or free_stats.has(stat):
 		if GeneratorData.transforms.has(stat):
@@ -896,6 +918,10 @@ func check_confirm_possibility():
 		if !check_class_possibility():
 			input_handler.SystemMessage("You must select a correct starting Class")
 			return false
+		
+		if !has_selected_personality():
+			input_handler.SystemMessage("You must select a Personality")
+			return false
 	
 	elif !check_upgrades():
 		return false
@@ -1148,6 +1174,7 @@ func select_personality(code):
 	TraitSelection.hide()
 	build_personality()
 	build_description()
+	update_points()
 
 
 func build_trait():
@@ -1189,10 +1216,16 @@ func build_sex_trait():
 
 func build_personality():
 	var personality = person.get_stat('personality')
-	if personality == null:
-		$VBoxContainer/personality/Label.text = "Personality"
-	else:
+	var has_selection = personality != null and personality != '' and personality != 'neutral'
+	if has_selection:
 		$VBoxContainer/personality/Label.text = tr("PERSONALITYNAME" + personality.to_upper())
+		if personality_icons.has(personality):
+			$VBoxContainer/personality/icon.texture = personality_icons[personality]
+		else:
+			$VBoxContainer/personality/icon.texture = null
+	else:
+		$VBoxContainer/personality/Label.text = "Personality"
+		$VBoxContainer/personality/icon.texture = null
 	$VBoxContainer/personality.disabled = (mode == 'freemode')
 
 
