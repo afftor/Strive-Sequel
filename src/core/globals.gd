@@ -2686,10 +2686,8 @@ func valuecheck(dict):
 			return ResourceScripts.game_res.if_has_money(dict['value'])
 		"has_loan_money":
 			return ResourceScripts.game_res.if_has_money(get_loan_sum(dict.stage - 1))
-#		"has_property":
-#			return if_has_property(dict['prop'], dict['value'])
-		"has_hero":
-			return ResourceScripts.game_party.if_has_hero(dict['name']) == dict.check
+		"unique_avialable":
+			return ResourceScripts.game_party.if_unique_available(dict['name']) == dict.check
 		"has_material":
 			return ResourceScripts.game_res.if_has_material(dict['material'], dict.operant, dict['value'])
 		"date":
@@ -2715,13 +2713,6 @@ func valuecheck(dict):
 			return input_handler.operate(dict.operant, counter, dict.value)
 		"quest_completed":
 			return ResourceScripts.game_progress.completed_quests.has(dict.name) == dict.check
-		"party_level":
-			return ResourceScripts.game_party.if_party_level(dict.operant, dict.value)
-		"hero_level":
-			if ResourceScripts.game_party.if_has_hero(dict.name) == false:
-				return false
-			else:
-				return ResourceScripts.game_party.if_hero_level(dict.name, dict.operant, dict.value)
 		"has_items":
 			return ResourceScripts.game_res.if_has_items(dict.name, dict.operant, dict.value)
 		"has_free_items":

@@ -796,7 +796,7 @@ func test_mode():
 				{code = 'make_story_character', value = 'Cali'},
 				{code = 'make_story_character', value = 'Aire'},
 				{code = 'make_story_character', value = 'Jean'},
-				{code = 'make_story_character', value = 'Zephyra'},
+				#{code = 'make_story_character', value = 'Zephyra'},
 				{code = 'make_story_character', value = 'Amelia'},
 				{code = 'make_story_character', value = 'Kuro'},
 				{code = 'make_story_character', value = 'Lilia'},
@@ -892,7 +892,7 @@ func test_mode():
 #				{code = 'open_loot'}
 #			]
 #		)
-		ResourceScripts.game_party.add_relationship_value(ResourceScripts.game_party.get_unique_slave("cali").id,ResourceScripts.game_party.get_unique_slave("zephyra").id, 100)
+		#ResourceScripts.game_party.add_relationship_value(ResourceScripts.game_party.get_unique_slave("cali").id,ResourceScripts.game_party.get_unique_slave("zephyra").id, 100)
 		character.mp = 10
 		character.add_trait('talented')
 		var tmp = {}
@@ -944,7 +944,7 @@ func test_mode():
 
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
 		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
-		#input_handler.interactive_message('heleviel_quest_7', '', {})
+		input_handler.interactive_message('act3_intro', '', {})
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		

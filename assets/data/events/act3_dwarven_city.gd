@@ -6,7 +6,7 @@ var data = {
 				image = "letter",
 				reqs = [
 					{
-						type = "has_hero",
+						type = "unique_avialable",
 						name = "zephyra",
 						check = false
 					}
@@ -45,7 +45,7 @@ var data = {
 				character = "zephyra",
 				reqs = [
 					{
-						type = "has_hero",
+						type = "unique_avialable",
 						name = "zephyra",
 						check = true
 					}
