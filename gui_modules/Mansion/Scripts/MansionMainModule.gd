@@ -944,7 +944,7 @@ func test_mode():
 
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
 		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
-		input_handler.interactive_message('act3_intro', '', {})
+		#input_handler.interactive_message('act3_intro', '', {})
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		

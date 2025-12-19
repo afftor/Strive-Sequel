@@ -599,22 +599,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AppearanceReroll" type="TextureButton" parent="."]
+margin_left = 1207.0
+margin_top = 94.0
+margin_right = 1260.0
+margin_bottom = 147.0
+hint_tooltip = "Reroll Appearance"
+texture_normal = ExtResource( 84 )
+texture_pressed = ExtResource( 85 )
+texture_hover = ExtResource( 86 )
+
 [node name="RagdollPanel" type="TextureRect" parent="."]
 margin_left = 1280.0
 margin_top = 140.0
 margin_right = 1830.0
 margin_bottom = 883.0
 texture = ExtResource( 52 )
-
-[node name="AppearanceReroll" type="TextureButton" parent="RagdollPanel"]
-margin_left = 480.0
-margin_top = 10.0
-margin_right = 533.0
-margin_bottom = 63.0
-hint_tooltip = "Reroll Appearance"
-texture_normal = ExtResource( 84 )
-texture_pressed = ExtResource( 85 )
-texture_hover = ExtResource( 86 )
 
 [node name="ragdoll" parent="RagdollPanel" instance=ExtResource( 38 )]
 position = Vector2( 296.377, 390.764 )

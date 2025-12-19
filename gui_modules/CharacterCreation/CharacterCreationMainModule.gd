@@ -197,7 +197,7 @@ func _ready():
 	
 	$modes/Stats.connect("pressed", self, 'build_stats')
 	$modes/Visuals.connect("pressed", self, 'build_visuals')
-	$RagdollPanel/AppearanceReroll.connect("pressed", self, "reroll_appearance")
+	$AppearanceReroll.connect("pressed", self, "reroll_appearance")
 	
 	$UpgradesPanel.visible = false
 	$VBoxContainer.visible = true
