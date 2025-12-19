@@ -4,6 +4,13 @@ func _ready():
 	$Cancel.connect("pressed",self,"hide")
 
 var person
+func get_personality_options():
+	var options = []
+	for code in variables.personality_array:
+		if code == 'neutral':
+			continue
+		options.push_back(code)
+	return options
 
 func build_sex():
 	person = get_parent().person
@@ -23,12 +30,13 @@ func build_sex():
 func build_personality():
 	person = get_parent().person
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer, ['Button'])
-	for code in variables.personality_array:
+	for code in get_personality_options():
 		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newbutton.text = tr("PERSONALITYNAME" + code.to_upper())
 		if person.get_stat('personality') == code:
 			newbutton.pressed = true
 		newbutton.connect('pressed', get_parent(), 'select_personality', [code])
+		globals.connecttexttooltip(newbutton, tr("INFOPERSONALITY" + code.to_upper()))
 	show()
 
 
