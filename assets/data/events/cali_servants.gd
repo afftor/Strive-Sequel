@@ -458,6 +458,7 @@ var data = {
 		custom_background = "amelia_cali_2",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		unlocked_gallery_seq = "amelia_cali",
 		tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
 		text = [
 			{text = "CALI_AMELIA_4_1", reqs = []},

@@ -3386,6 +3386,18 @@ Requires: Базовый рабский труд""",
 Увеличение уклонения, точности и MЗАЩ""",
 	TRAITEFFECTRARETOUGH = """Особый: Жесткий
 Увеличение здоровья, ЗАЩ и МЗАЩ""",
+	TRAITMONSTER_MASTERY_WARFAREDESCRIPT = """Warfare Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_PROTECTIONDESCRIPT = """Protection Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_STEALTHDESCRIPT = """Stealth Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_MARKSMANSHIPDESCRIPT = """Marksmanship Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_LEADERSHIPDESCRIPT = """Leadershp Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_FIREDESCRIPT = """Fire Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_WATERDESCRIPT = """Water Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_AIRDESCRIPT = """Air Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_EARTHDESCRIPT = """Earth Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_LIGHTDESCRIPT = """Light Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_DARKDESCRIPT = """Dark Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_MINDDESCRIPT = """Mind Mastery""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_WARFARE_DESCRIPT = """Has enemy variation of warfare mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_PROTECTION_DESCRIPT = """Has enemy variation of protection mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_STEALTH_DESCRIPT = """Has enemy variation of stealth mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
@@ -20055,6 +20067,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	CALI_TOUCHING_1_SS = """Первая сцена с Кали во время ее побочного задания""",
 	CALI_BJ_HAPPY_1_SS = """Вторая сцена с Кали во время ее побочного задания""",
 	CALI_RIDING_1_SS = """Завершить побочный квест Кали""",
+	CALI_AMELIA_SS = """Reject Cali's approaches""", # MISSING TRANSLATION
 	HALLOWEEN_SCENE_SS = """Хэллоуиннское событие с Кали и Анастасией""",
 	CHRISTMAS_SCENE_SS = """Рождественское событие с Дейзи""",
 	HELEVIEL_MANSION_SS = """Завербовать Хелевиэль""",
