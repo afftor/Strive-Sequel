@@ -148,7 +148,7 @@ func set_btn_pressed(value):
 
 #newgame
 var settingarray = ['futa','furry']#,'turn_based_time_flow']
-var settingarray2 = ['skip_prologue','diff_gf_only_upg','diff_permadeath', 'diff_bonus_taskmod', 'diff_bonus_loot', 'diff_stop_loan', 'diff_small_loan', 'diff_solo', 'diff_free_upgrade', 'diff_free_gather','easytrain'] 
+var settingarray2 = ['skip_prologue','diff_gf_only_upg','diff_permadeath', 'diff_bonus_taskmod', 'diff_bonus_loot', 'diff_stop_loan', 'diff_small_loan', 'diff_solo', 'diff_hard_monsters', 'diff_free_upgrade', 'diff_free_gather','easytrain'] 
 var settingarray3 = ['diff_money','diff_materials'] #'diff_free_chars'
 
 func newgame(pressed, pressed_button):

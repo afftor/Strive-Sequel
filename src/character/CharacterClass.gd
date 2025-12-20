@@ -75,7 +75,6 @@ func reset_rebuild():
 		displaynode.rebuildbuffs()
 
 
-
 func reset_rebuild_delay():
 	dyn_stats.reset_rebuild_delay()
 
@@ -311,7 +310,10 @@ func change_personality_stats(stat, init_value, flag = false):
 	return statlist.change_personality_stats(stat, init_value, flag)
 
 func get_weapon_range():
-	return equipment.get_weapon_range()
+	if combatgroup == 'ally':
+		return equipment.get_weapon_range()
+	else:
+		return ai.get_weapon_range()
 
 func get_weapon_animation():
 	return equipment.get_weapon_animation()
@@ -468,6 +470,8 @@ func generate_simple_fighter(tempname, setup_ai = true):
 			else:
 				fill_ai(data.ai)
 		ai.set_obj(self)
+		if data.ai_position.has('ranged'):
+			ai.ai_position = 'any'
 	if data.has('tags') and data.tags.has('boss'):
 		globals.char_roll_data.uniq = true
 
@@ -1012,10 +1016,14 @@ func can_evade():
 	return res
 
 func can_use_skill(skill):
-	if is_players_character and !check_cost(skill.cost): return false
-	if skill.type == 'auto': return false
-	if is_players_character and skill.has('reqs') and !checkreqs(skill.reqs): return false
-	if skills.combat_cooldowns.has(skill.code): return false
+	if is_players_character and !check_cost(skill.cost): 
+		return false
+	if skill.type == 'auto': 
+		return false
+	if is_players_character and skill.has('reqs') and !checkreqs(skill.reqs): 
+		return false
+	if skills.combat_cooldowns.has(skill.code): 
+		return false
 	if has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('default'):
 		 return false
 	if has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('default'):

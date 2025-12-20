@@ -70,11 +70,13 @@ func RebuildSkillBook():
 	input_handler.ClearContainer($ScrollContainer/GridContainer)
 	for i in activecharacter.get_combat_skills():
 		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/GridContainer)
-		var skill = Skilldata.get_template(i, activecharacter)
+		var skill = Skilldata.get_template_combat(i, activecharacter)
 		newbutton.dragdata = {skill = i}
 		newbutton.target_node = self
 		newbutton.set_meta('skill', skill)
 		newbutton.get_node("Icon").texture = skill.icon
+		if skill.tags.has('aura_active'):
+			newbutton.get_node("Icon").material = load("res://assets/book_shader.tres")
 		newbutton.connect("mouse_entered", self, "update_skillinfo", [skill])
 		#newbutton.connect("mouse_exited", self, "clear_skillinfo")
 	
@@ -87,8 +89,10 @@ func RebuildSkillBook():
 		newbutton.target_node = self
 		newbutton.dragdata = {position = i}
 		if src.has(i):
-			var skill = Skilldata.get_template(activecharacter.skills.combat_skill_panel[i], activecharacter)
+			var skill = Skilldata.get_template_combat(activecharacter.skills.combat_skill_panel[i], activecharacter)
 			newbutton.get_node("Icon").texture = skill.icon
+			if skill.tags.has('aura_active'):
+				newbutton.get_node("Icon").material = load("res://assets/book_shader.tres")
 			newbutton.set_meta('skill', skill)
 			newbutton.connect("mouse_entered", self, "update_skillinfo", [skill])
 			#newbutton.connect("mouse_exited", self, "clear_skillinfo")

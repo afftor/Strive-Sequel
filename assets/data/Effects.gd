@@ -719,7 +719,7 @@ var effect_table = {
 	},
 	e_s_ensnare = {
 		type = 'temp_s',
-		tags = ['affliction', 'ensnare'],
+		tags = ['affliction', 'ensnared'],
 		target = 'target',
 		stack = 'ensnare',
 		tick_event = [variables.TR_TURN_F],

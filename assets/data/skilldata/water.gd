@@ -38,7 +38,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/wateredge.png",
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['damage', 'debuf', 'water'],
+		tags = ['damage', 'debuf', 'water', 'ads'],
 #		new_syntax = true,
 		reqs = [],
 		targetreqs = [],
@@ -90,6 +90,10 @@ var skills = {
 				set = {target_number = 'all'},
 				add = {descript = '_2'}
 			},
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {targetreqs = [{code = 'has_status', status = 'shield', check = false}],} #to prevent overuse of long-duration buffs
+			}
 		]
 	},
 	frost_prison = {
@@ -98,7 +102,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/meditate.png",
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['damage', 'debuf', 'water', 'kill_animation_ice'],
+		tags = ['damage', 'debuf', 'water', 'kill_animation_ice', 'ads'],
 #		new_syntax = true,
 		reqs = [],
 		targetreqs = [],
@@ -140,6 +144,17 @@ var skills = {
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],
+		variations = [
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {targetreqs = [
+					{code = 'has_status', status = 'fear', check = true},
+					{orflag = true, code = 'has_status', status = 'blind', check = true},
+					{orflag = true, code = 'has_status', status = 'sleep', check = true},
+					{orflag = true, code = 'has_status', status = 'charm', check = true},
+				],}  
+			}
+		]
 	},
 	blizzard = {
 		code = 'blizzard',
@@ -174,7 +189,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/skill_hailstorm.png",
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['damage', 'debuf', 'water', 'aoe','kill_animation_ice'],
+		tags = ['damage', 'debuf', 'water', 'aoe','kill_animation_ice', 'ads'],
 		reqs = [],
 		targetreqs = [],
 		effects = [

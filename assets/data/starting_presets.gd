@@ -26,6 +26,7 @@ var preset_data = {
 			diff_small_loan = true,
 			diff_solo = false,
 			diff_free_upgrade = true,
+			diff_hard_monsters = false,
 			
 			diff_money = 'easy',
 			diff_materials = 'easy'
@@ -55,6 +56,7 @@ var preset_data = {
 			diff_small_loan = false,
 			diff_solo = false,
 			diff_free_upgrade = true,
+			diff_hard_monsters = false,
 			
 			diff_money = 'normal',
 			diff_materials = 'normal'
@@ -84,6 +86,7 @@ var preset_data = {
 			diff_small_loan = false,
 			diff_solo = false,
 			diff_free_upgrade = false,
+			diff_hard_monsters = true,
 			
 			diff_money = 'hard',
 			diff_materials = 'hard'

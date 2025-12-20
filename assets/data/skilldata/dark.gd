@@ -56,6 +56,12 @@ var skills = {
 		random_factor_p = 0.1,
 		sfx = [{code = 'black_tendrils', target = 'target_group', period = 'windup'}], 
 		sounddata = {initiate = null, strike = 'spell_break', hit = null},
+		variations = [
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {combatcooldown = 2} #to prevent spaming
+			}
+		]
 	},
 	malediction = {
 		code = 'malediction',
@@ -79,6 +85,12 @@ var skills = {
 		sfx = [{code = 'malediction', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'spell_explosion', hit = null},
 		value = 0.6,
+		variations = [
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {targetreqs = [{code = 'has_status', status = 'cursed', check = false}],} #to prevent overuse of low-damage long-duration ads
+			}
+		]
 	},
 	devour_magic = {
 		code = 'devour_magic',
@@ -103,6 +115,12 @@ var skills = {
 		sounddata = {initiate = null, strike = 'spell2', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],
+		variations = [
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {targetreqs = [{code = 'has_status', status = 'silence', check = false}],} #to prevent overuse of low-damage long-duration ads
+			}
+		]
 	},
 	veil = {
 		code = 'veil',
@@ -112,8 +130,8 @@ var skills = {
 		ability_type = 'spell',
 		tags = ['support', 'buff'],
 		reqs = [],
-		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_veil', duration = 5, push_value = true})], 
+		targetreqs = [{code = 'has_status', status = 'veil', check = false}],
+		effects = [Effectdata.rebuild_template({effect = 'e_s_veil', duration = 5, push_value = true})],
 		cost = {mp = 6},
 		charges = 0,
 		combatcooldown = 0,
@@ -134,7 +152,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/skill_void.png",
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['damage', 'aoe', 'debuff', 'ads', 'dark'],
+		tags = ['damage', 'aoe', 'debuff', 'ads', 'dark', 'ultimate'],
 		reqs = [],
 		targetreqs = [],
 		effects = ['e_s_void'], 
@@ -176,7 +194,7 @@ var effects = {
 		tick_event = variables.TR_TURN_S,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
-		tags = ['buff'],
+		tags = ['buff', 'veil'],
 		args = {value = {obj = 'skill', func = 'get', arg = 'process_value'}},
 		statchanges = {mdef = ['arg', 'value'], resist_light = 30, resist_dark = 30},
 		buffs = [
