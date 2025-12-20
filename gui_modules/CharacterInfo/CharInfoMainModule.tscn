@@ -4587,7 +4587,6 @@ align = 1
 valign = 1
 
 [node name="SlaveSiblingsModule" type="TextureRect" parent="."]
-visible = false
 light_mask = 0
 margin_left = 239.0
 margin_top = 105.0

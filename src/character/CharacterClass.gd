@@ -463,7 +463,7 @@ func generate_simple_fighter(tempname, setup_ai = true):
 			ai.set_simple_ai(data.ai)
 		else:
 			#need check for hard difficulty
-			if data.has('ai_hard') and ResourceScripts.game_globals.diff_hard_monsters: 
+			if data.has('ai_hard'): #and ResourceScripts.game_globals.diff_hard_monsters: 
 				fill_ai(data.ai_hard)
 			else:
 				fill_ai(data.ai)

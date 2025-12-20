@@ -332,7 +332,7 @@ var buffs = {
 		t_name = 'curseatk_src',
 	},
 	b_fireshield = {
-		icon = "res://assets/images/iconsskills/Sedate.png",
+		icon = "res://assets/images/iconsskills/shield_fire.png",
 		description = "BUFFDESCRIPTFIRESHIELD",
 		t_name = 'fireshield',
 		combat_only = true
