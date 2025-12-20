@@ -103,7 +103,7 @@ func writ_of_exemption_use(): #possibly rework
 	input_handler.scene_characters = [person]
 	if gui_controller.inventory.visible:
 		gui_controller.close_scene(gui_controller.inventory)
-	if gui_controller.slavepanel.visible:
+	if gui_controller.slavepanel != null && gui_controller.slavepanel.visible:
 		gui_controller.close_scene(gui_controller.slavepanel)
 #	if character.get_stat('loyalty') == 100:
 #		acceptance_chance = 100
@@ -113,9 +113,9 @@ func writ_of_exemption_use(): #possibly rework
 	if acceptance_chance >= randf()*acceptance_req:
 		input_handler.interactive_message_follow("writ_of_exemption_success",'char_translate',{ch = character})
 		character.set_slave_category('servant')
-		if character.is_worker():
+		if character.check_trait("training_obedience"):
 			character.add_trait('training_s_working')
-		if character.is_combatant():
+		if character.check_trait("training_obedience"):
 			character.add_trait('training_s_combat')
 		if character.has_status('relation'):
 			character.add_trait('training_s_relation')

@@ -296,7 +296,7 @@ var difficulty_per_level_survival = 0.1 #% enemy stat increase
 var survival_cap_main = 4.0 # added base 1 to max + 300%
 var survival_cap_secondary = 2.5 # added base 1 to max + 150%
 
-var slave_class_list = ['slave', 'servant', 'heir', 'master']#incomplete? obsolete?
+var slave_class_list = ['slave', 'slave_trained', 'servant', 'heir', 'master']
 #sex chances
 
 var teen_age_weight = 1
@@ -698,3 +698,9 @@ var damage_shake = [#order matters! Low max_damage first. No max_damage means in
 
 var category_order = ['high','med','low','disable']
 var categorycolors = {high = "green", med = 'yellow', low = 'red', disable = 'gray'}
+
+var minor_trainings_base = 3
+var minor_trainings_per_growth = 0.5
+
+var minor_trainings_time_base = 16
+var minor_trainings_time_per_wits = 2 #reduction

@@ -118,6 +118,9 @@ func update():
 		update_traitlist()
 		update_trainings_selector()
 		open_upgrade_tab()
+		
+		for i in [$UpgradesPanel, $tr_selector, $Label2]:
+			i.visible = !person.is_on_quest()
 
 var personality_icons = {
 	bold = load("res://assets/Textures_v2/MANSION/personality_bold.png"),

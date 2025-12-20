@@ -64,11 +64,6 @@ func setup_upgrade(upgrade_id):
 		if list.is_list_mastery(): tooltip_code = "NOTENOUGHMASTERPOINTS"
 		elif list.is_list_minor(): tooltip_code = "NOTENOUGHGOLD"
 		tooltip_text += "\n"+tr(tooltip_code)
-	elif list.is_list_minor() and list.minor_training_count >= list.minor_training_max:
-		disabled = true
-		$bg.modulate = color_dict.lock3
-		set_inactive()
-		tooltip_text += "\n"+tr("MINORTRAINMAXREACHED")
 	elif list.is_list_minor() and person.is_in_minor_training():
 		disabled = true
 		set_inactive()
@@ -77,6 +72,11 @@ func setup_upgrade(upgrade_id):
 			$cost.text = str(person.get_minor_training_time_left()) + tr('MSLMTURN')
 		else:
 			$bg.modulate = color_dict.lock3
+	elif list.is_list_minor() and list.minor_training_count >= list.minor_training_max:
+		disabled = true
+		$bg.modulate = color_dict.lock3
+		set_inactive()
+		tooltip_text += "\n"+tr("MINORTRAINMAXREACHED")
 	else:
 		$bg.modulate = color_dict.avail
 		set_normal()

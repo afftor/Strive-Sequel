@@ -30,10 +30,10 @@ anchor_bottom = 1.0
 
 [node name="StatsPanel" type="Panel" parent="."]
 self_modulate = Color( 1, 1, 1, 0.564706 )
-margin_left = 414.0
-margin_top = 87.0
-margin_right = 793.0
-margin_bottom = 791.0
+margin_left = 833.0
+margin_top = 94.0
+margin_right = 1212.0
+margin_bottom = 798.0
 custom_styles/panel = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -120,9 +120,9 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 829.0
+margin_left = 421.0
 margin_top = 87.0
-margin_right = 1227.0
+margin_right = 819.0
 margin_bottom = 122.0
 theme = ExtResource( 13 )
 text = "Upgrades"
@@ -210,9 +210,9 @@ margin_bottom = 614.0
 theme = ExtResource( 3 )
 
 [node name="UpgradeList" type="Control" parent="."]
-margin_left = 836.0
+margin_left = 428.0
 margin_top = 152.0
-margin_right = 1217.0
+margin_right = 809.0
 margin_bottom = 766.0
 theme = ExtResource( 3 )
 
@@ -222,9 +222,6 @@ margin_top = -1.0
 margin_right = 325.0
 margin_bottom = 614.0
 scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="upgrades" type="VBoxContainer" parent="UpgradeList/ScrollContainer"]
 margin_right = 300.0

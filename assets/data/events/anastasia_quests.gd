@@ -190,7 +190,8 @@ var data = {
 				text = "LIORA_1_1",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 0
 			},
 			{
 				text = "LIORA_1_2",

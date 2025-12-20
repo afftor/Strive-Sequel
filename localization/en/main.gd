@@ -164,6 +164,17 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	EXPLOREUPGRADES = "Upgrades",
 	EXPLORESERVICE = "Service",
 	EXPLOREGUILDSHOP = "Guild Shop",
+	STATSTRADING_IMPROVED_STATUS = "Improved Status",
+	STATSTRADING_STAT_NAME = "Stat Name",
+	STATSTRADING_CURRENT_VALUE = "Current Value",
+	STATSTRADING_PRICE = "Price",
+	STATSTRADING_UPGRADE = "Upgrade",
+	STATSTRADING_TESTING = "Testing",
+	STATSTRADING_CHOOSE_RECEIVER = "Choose Receiver",
+	STATSTRADING_CHOOSE_DONOR = "Choose Donor",
+	STATSTRADING_NOTHING_TO_UPGRADE = "Nothing to Upgrade",
+	STATSTRADING_CHARACTER_NAME = "Character Name",
+	STATSTRADING_FACTOR_UPGRADES = "Factor Upgrades",
 	SIBLINGMODULESKILLSKILLS = "Sex Skills",
 	SIBLINGMODULECONSENT = "Consent: ",
 	SIBLINGMODULERULES = "Rules and Conditions",
@@ -291,7 +302,7 @@ using       button.""",
 	TUTORIALLIST9 = "training",
 	TUTORIALLIST10 = "breakdown",
 	LMMTRAVEL = "Travels",
-	LMMUPGRADES = "Mansion\nUpgrades",
+	LMMUPGRADES = "Mansion",
 	LMMDATE = "Sex",
 	LMMINVENTORY = "Inventory",
 	LMMCRAFT = "Craft",
@@ -316,6 +327,10 @@ using       button.""",
 	MSLMLOC = "Location",
 	MSLMTYPE = "Type",
 	MSLMINV = "Gear",
+	LVLBONUSPERPOINT = "Bonus per point",
+	LVLCURRENT = "Current",
+	LVLTOTALPOINTS = "Total Points",
+	LVLINVESTED = "Invested",
 	TRAINERSAVAILABLE = "Available Trainers",
 	MSLMRELOC = "Relocating",
 	MSLMRE = "in",
@@ -404,7 +419,7 @@ using       button.""",
 	MINDRESIST = "Mind",
 	DAMAGETYPENORMAL = "Normal",
 	DAMAGETYPEFIRE = "Fire",
-	DAMAGETYPEEARTH= "Earth",
+	DAMAGETYPEEARTH = "Earth",
 	DAMAGETYPEAIR = "Air",
 	DAMAGETYPEWATER = "Water",
 	DAMAGETYPELIGHT = "Light",
@@ -414,15 +429,15 @@ using       button.""",
 	DAMAGETYPESPELL = "Magic",
 	DAMAGETYPEITEM = "Item",
 	ALLRESIST = "all",
-	HEALTHP = "Health: ",
+	HEALTHP = "Health:",
 	MANAP = "Mana:",
-	JOURNALLABLE = "Current Requests",
+	JOURNALLABLE = "Slave Requests",
 	JOURNALMAIN = "Main",
 	JOURNALMINOR = "Minor",
 	QBALL = "All",
 	QBREQ = "Requirements",
 	QBREW = "Rewards",
-	QBDAY = " days",
+	QBDAY = "days",
 	QBLIM = "Limit:",
 	QBACCEPT = "Accept",
 	MONEYTOOLTIP = "Money in Possession",
@@ -434,9 +449,9 @@ using       button.""",
 	PAUSEMENUEXIT = "Exit",
 	UPGRADEUPGR = "Upgrades",
 	UPGRADEINFO = "Upgrade info",
-	UPGRADESHED = "Upgrade Schedule",
-	UPGRADECHAR = "Characters",
-	UPGRADECRAFT = "Crafting",
+	UPGRADESHED = "Schedule",
+	UPGRADECHAR = "Workers",
+	UPGRADECRAFT = "Main",
 	UPGRADERES = "Resources",
 	OPTIONSWITCHLANGUAGE = "Change Language",
 	TIPLABEL = "Tip",
@@ -1488,10 +1503,18 @@ Silenced: Can't use Spell type abilities.""",
 	SKILLDARK_FLAMEDESCRIPT = "Converts all Burn effects on enemies into Dark Flame effects. They deal true damage, can't be extinguished by Water damage and last for 4 turns.",
 	SKILLFIREARROWS_APPLY = "Fire Arrows",
 	SKILLFIREARROWS_REMOVE = "Fire Arrows remove",
-	SKILLFIREARROWS_APPLYDESCRIPT = "Set weapon damage element to Fire. Weapon attacks and skills have 20% chance to apply Burn. Drain 1 mana per attack.\nMust have Bow weapon type equipped.\n\nDoes not take turn to activate. \nOnly one Arrow type spell can be active.",
+	SKILLFIREARROWS_APPLYDESCRIPT = """Set weapon damage element to Fire. Weapon attacks and skills have 20% chance to apply Burn. Drain 1 mana per attack.
+Must have Bow weapon type equipped.
+
+Does not take turn to activate. 
+Only one Arrow type spell can be active.""",
 	SKILLPOISONARROWS_APPLY = "Poison Arrows",
 	SKILLPOISONARROWS_REMOVE = "Poison Arrows remove",
-	SKILLPOISONARROWS_APPLYDESCRIPT = "Weapon attacks and skills have 65% chance to apply Poison for 3 turns. Drain 1 mana per attack. At Marksmanship Mastery 4+ also applies Shred with 25% chance.\nMust have Bow weapon type equipped.\n\nDoes not take turn to activate. \nOnly one Arrow type spell can be active.",
+	SKILLPOISONARROWS_APPLYDESCRIPT = """Weapon attacks and skills have 65% chance to apply Poison for 3 turns. Drain 1 mana per attack. At Marksmanship Mastery 4+ also applies Shred with 25% chance.
+Must have Bow weapon type equipped.
+
+Does not take turn to activate. 
+Only one Arrow type spell can be active.""",
 	TRAITVIGORDESCRIPT = "Increases Health Regeneration by 30%.",
 	TRAITMEDITATIONDESCRIPT = "Increases Mana Regeneration by 30%.",
 	MASTERYBLOCKSRC = "Blocked by %s: %s",
@@ -1748,7 +1771,6 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""",
 	DATETOOLTIP = "Dates left this week. Increases with Master's Charm Factor and resets at the start of a week.",
 	SEXTOOLTIP = "Select characters for participating in sexual interaction. The limit of characters is defined by bedroom upgrade. Every week interaction number will reset.",
 	DATETOOLTIPSHORT = "Character can be dated today",
-	
 	NODATEMASTER = "Dating must be initiated from non-master character",
 	NODATEUNIQUE = "[name] won't agree for a dating at this point in time.",
 	NODATERELATION = "[name] lacks a necessary training to agree for the date.",
@@ -1785,9 +1807,15 @@ Service is a global modifier for this assignment.""",
 	BROTHELWARNING = "Sex services won't work if you don't select at least 1 allowed customer.",
 	CAPTURETOOLTIP = "These characters have been found by your team and can be recruited into your mansion or sold for quick cash as if you were selling them manually. If location has been forgotten, all characters are sold automatically.",
 	CAPTURESELLTOOLTIP = "Quicksell this character for %d gold. This is equal to selling character to market, but won't let you buyback them. ",
-	CAPTUREADDTOOLTIP = "Attempt to add this character to roster.\n\nYou won't be able to finish turn if your total number of characters is bigger than available number of rooms. ",
-	CAPTUREENSLAVETOOLTIP = "Add this character to roster as a slave instantly.\n\nYou won't be able to finish turn if your total number of characters is bigger than available number of rooms. ",
-	CAPTURERECRUITTOOLTIP = "Attempt to recruit this character.\n\nYou won't be able to finish turn if your total number of characters is bigger than available number of rooms.",
+	CAPTUREADDTOOLTIP = """Attempt to add this character to roster.
+
+You won't be able to finish turn if your total number of characters is bigger than available number of rooms. """,
+	CAPTUREENSLAVETOOLTIP = """Add this character to roster as a slave instantly.
+
+You won't be able to finish turn if your total number of characters is bigger than available number of rooms. """,
+	CAPTURERECRUITTOOLTIP = """Attempt to recruit this character.
+
+You won't be able to finish turn if your total number of characters is bigger than available number of rooms.""",
 	CAPTUREDISMISSTOOLTIP = "Dismiss this character.",
 	SERVICEBOOSTTOOLTIP = "You can assign additional item consumption here which will boost service production. These items can be produced at Farm. ",
 	FARMTOOLTIP = "You can assign character to farm to produce additional materials which can be used to boost service production or be sold.",
@@ -2421,7 +2449,8 @@ Spell Mana cost reduced by 15%
 +15% Loyalty Gain, -10% Subordinate weekly tax""",
 	INFOSLAVE_CLASS = "Character type will define its options and behavior. Slaves can be forced into sexual services without consent and have higher tolerance for lack of consent in sex. Subordinates become loyal faster but can't be sold or given away.",
 	INFOCONSENT = "Consent defines what sexual related actions character will be willing to perform. Consent can be increased by pushing character into new practices by dating and sex options. Consent will affect prostitution related jobs.",
-	INFOCONSENTMASTER = "Consent defines what sexual related actions character will be willing to perform. Consent can be increased by pushing character into new practices by dating and sex options.\n{color=green|[Master] has no Consent requirements for any actions.}",
+	INFOCONSENTMASTER = """Consent defines what sexual related actions character will be willing to perform. Consent can be increased by pushing character into new practices by dating and sex options.
+{color=green|[Master] has no Consent requirements for any actions.}""",
 	INFOTRAINING = "Slave type characters will be trained by selected person in various actions. Every slave has different {color=aqua|Dispositions} towards different kind of actions. Properly selected actions will award more Loyalty and drain less spirit, but most actions have additional effects.",
 	INFOTRAININGSUBORDINATE = "Subordinate type characters will accomodate loyalty points with time. ",
 	INFORESISTANCE = "Character's Resistance will reduce efficiency of training. Resistance weakens with time and resets on performing training.",
@@ -2488,7 +2517,7 @@ Spell Mana cost reduced by 15%
 {color=green|Maxed Wits Factor increases experience gain.}""",
 	STATCHARM_FACTORDESCRIPT = """{color=yellow|Charm Factor} represents character's appeal potential. It increases [color=aqua]Charm[/color] growth. [Master]'s charm also increases gold and reputation rewards from repeatable quests and number of dates per week.
 
-{color=green|Maxed Charm Factor increases Service Productivity and grants additional Charm Check.}""",
+{color=green|Maxed Charm Factor increases Service Productivity and grants additional Persuasion Check.}""",
 	STATSEXUALS_FACTORDESCRIPT = """{color=yellow|Sex Factor} represents character's sex development potential. It speeds sexual skills' acquirement, makes Consent easier to progress and occasionally boosts sexual options in events. [Master]'s Sex factor also increases number of sex interactions per week.
 
 {color=green|Maxed Sex Factor provides Speed bonus}.""",
@@ -2910,7 +2939,7 @@ Skill attacks possess Dark element.""",
 	TRAITTEMPLAR_TRAITDESCRIPT = "After using a Taunt or Provoke recover some health and gain increased MDEF for 3 turns.",
 	TRAITNINJADESCRIPT = "Gain evasion based on your MDEF. Minimal chance for evading hit is reduced to 5%.",
 	TRAITWITCHDESCRIPT = "Your critical hits with spells apply random debuff. Healing spells have chance to apply healing over time.",
-	TRAITWARLOCKDESCRIPT = "Single target spells gain 25% increased critical chance and deal 75% bonus critical damage.",
+	TRAITWARLOCKDESCRIPT = "Single target spells gain 15% increased Critical Chance.",
 	TRAITTRUE_SUCCUBUSDESCRIPT = "When taking hit in combat generate some Lust.",
 	TRAITBASIC_COMBAT = "Basic Combat",
 	TRAITADVANCED_COMBAT = "Advanced Combat",
@@ -3003,7 +3032,7 @@ Physical and Sexual training actions are 25% more impactful.""",
 	TRAITNIMBLEDESCRIPT = "Speed is increased by 10.",
 	TRAITQUICKDESCRIPT = "Collection modifier +20%.",
 	TRAITHANDYDESCRIPT = "Craft modifier +20%.",
-	TRAITDEADLYDESCRIPT = "Crit Chance +9%.",
+	TRAITDEADLYDESCRIPT = "Crit Chance +6%.",
 	TRAITLIVELYDESCRIPT = "+3 Health Regen",
 	TRAITMVORTEXDESCRIPT = "+1 Mana Regen",
 	TRAITGIFTEDDESCRIPT = "Maximum Mana +50%.",
@@ -3160,36 +3189,45 @@ Requires: Sex:Advanced""",
 	TRAITTRAINING_OBEDIENCE = "Obedience",
 	TRAITTRAINING_OBEDIENCEDESCRIPT = "Make [name] give up on [his] autonomy, which will allow to freely sell or give [him] away.",
 	TRAITTRAINING_CALLMASTER = "Master Acknowledgement",
-	TRAITTRAINING_CALLMASTERDESCRIPT = """Demand [name] of [his] unwavering loyalty to you. 
-Allows to finish training and provide [him] with specilization. """,
+	TRAITTRAINING_CALLMASTERDESCRIPT = """Demand [name] of [his] unwavering loyalty to you.
+	 
+{color=yellow|Allows to finish training and provide [him] with specilization.}""",
 	TRAITTRAINING_RELATION = "Relationship",
 	TRAITTRAINING_RELATIONDESCRIPT = """Make move onto [name]'s personal life. After all, shouldn't [he] like you enough already?
-Unlocks Dating option and removes consent penalty in sex.""",
+	
+{color=yellow|Unlocks Dating option and removes consent penalty in sex.}""",
 	TRAITTRAINING_SEXSERVICE = "Sex Service",
 	TRAITTRAINING_SEXSERVICEDESCRIPT = """Since [name]'s body belong to you, it makes sense to make [him] use it for your prosperity.
-Unlocks sex service tasks and Nudity rule.
-Requires consent \"Curious\" or above.""",
+	
+{color=yellow|Unlocks sex service tasks and Nudity rule.
+Requires consent \"Curious\" or above.}""",
 	TRAITTRAINING_SEXSERVICE_ADV = "Advanced Sex Service",
 	TRAITTRAINING_SEXSERVICE_ADVDESCRIPT = """With all well and done, its a logical step to push [name] further into depravity.
-Unlocks advanced sex service options.
-Requires consent \"Willing\" or above.""",
+
+{color=yellow|Unlocks advanced sex service options.
+Requires consent \"Willing\" or above.}""",
 	TRAITTRAINING_S_COMBAT = "Combat",
 	TRAITTRAINING_S_COMBATDESCRIPT = """[name] will allow to be drafted into combat scenarios. Perhaps not everyone is willing to combat for you with no concerns.
-Unlocks sending [name] into combat.""",
+
+{color=yellow|Unlocks sending [name] into combat.}""",
 	TRAITTRAINING_S_WORKING = "Work",
 	TRAITTRAINING_S_WORKINGDESCRIPT = """[name] will eagerly work for you on generic occupations.
-Unlocks setting [name] for various labors.""",
+
+{color=yellow|Unlocks setting [name] for various labors.}""",
 	TRAITTRAINING_S_RELATION = "Relationship",
 	TRAITTRAINING_S_RELATIONDESCRIPT = """With some convincing [name] will find your company favorable even beyond simple labor. 
-Unlocks Dating and Sex options.""",
+	
+{color=yellow|Unlocks Dating and Sex options.}""",
 	TRAITTRAINING_S_SEXSERVICE = "Sex Service",
 	TRAITTRAINING_S_SEXSERVICEDESCRIPT = """Not everyone is willing to get into selling their body for your benefit. But with some persuasion...
-Unlock sex service tasks. 
-Requires consent \"Curious\" or above.""",
+	
+{color=yellow|Unlock sex service tasks. 
+Requires consent \"Curious\" or above.}""",
 	TRAITTRAINING_S_SEXSERVICE_ADV = "Advanced Sex Service",
 	TRAITTRAINING_S_SEXSERVICE_ADVDESCRIPT = """If [name] is already willing to perform sex services for your profits, why stop there?..
-Unlock advanced sex service options. 
-Requires consent \"Willing\" or above.""",
+	
+{color=yellow|Unlock advanced sex service options. 
+Requires consent \"Willing\" or above.}""",
 	TRAITMASTER_HARLOTRY = "Harlotry",
 	TRAITMASTER_HARLOTRYDESCRIPT = "While in service you still receive Rest benefits.",
 	TRAITMASTER_PROGENECY = "Progenecy",
@@ -3199,7 +3237,7 @@ Requires consent \"Willing\" or above.""",
 	TRAITMASTER_RESILENCE = "Resilience",
 	TRAITMASTER_RESILENCEDESCRIPT = " ",
 	TRAITMASTER_FORTUNE = "Fortune",
-	TRAITMASTER_FORTUNEDESCRIPT = "Critical chance is increased by 25%. Slightly increases Magic Find.",
+	TRAITMASTER_FORTUNEDESCRIPT = "Critical chance is increased by 10%. Slightly increases Magic Find.",
 	TRAITMASTER_INT = "Intelligence",
 	TRAITMASTER_INTDESCRIPT = " ",
 	TRAITMASTER_FORTITUDE = "Fortitude",
@@ -3230,59 +3268,59 @@ Increased Damage and Hitrate""",
 Increased Evasion, Hitrate and MDEF""",
 	TRAITEFFECTRARETOUGH = """Rare: Tough
 Increased Health, DEF and MDEF""",
-	TRAITMONSTER_MASTERY_WARFAREDESCRIPT = """Has enemy variation of warfare mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_PROTECTIONDESCRIPT = """Has enemy variation of protection mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_STEALTHDESCRIPT = """Has enemy variation of stealth mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_MARKSMANSHIPDESCRIPT = """Has enemy variation of marsmanship mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_LEADERSHIPDESCRIPT = """Has enemy variation of ledership mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_FIREDESCRIPT = """Has enemy variation of fire mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_WATERDESCRIPT = """Has enemy variation of water mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_AIRDESCRIPT = """Has enemy variation of air mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_EARTHDESCRIPT = """Has enemy variation of earth mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_LIGHTDESCRIPT = """Has enemy variation of light mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_DARKDESCRIPT = """Has enemy variation of dark mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_MINDDESCRIPT = """Has enemy variation of mind mastery with the same skills and greater bonuses.""",
+	TRAITMONSTER_MASTERY_WARFAREDESCRIPT = "Warfare Mastery",
+	TRAITMONSTER_MASTERY_PROTECTIONDESCRIPT = "Protection Mastery",
+	TRAITMONSTER_MASTERY_STEALTHDESCRIPT = "Stealth Mastery",
+	TRAITMONSTER_MASTERY_MARKSMANSHIPDESCRIPT = "Marksmanship Mastery",
+	TRAITMONSTER_MASTERY_LEADERSHIPDESCRIPT = "Leadershp Mastery",
+	TRAITMONSTER_MASTERY_FIREDESCRIPT = "Fire Mastery",
+	TRAITMONSTER_MASTERY_WATERDESCRIPT = "Water Mastery",
+	TRAITMONSTER_MASTERY_AIRDESCRIPT = "Air Mastery",
+	TRAITMONSTER_MASTERY_EARTHDESCRIPT = "Earth Mastery",
+	TRAITMONSTER_MASTERY_LIGHTDESCRIPT = "Light Mastery",
+	TRAITMONSTER_MASTERY_DARKDESCRIPT = "Dark Mastery",
+	TRAITMONSTER_MASTERY_MINDDESCRIPT = "Mind Mastery",
 	TRAITEFFECTHARDWORK = "Hard Work: +50%% Productivity",
 	TRAITEFFECTPHYSBUF = "Elixir of Ogre's Strength: +80 Physics",
 	TRAITEFFECTWITSBUF = "Elixir of Expanded Mind: +80 Wits",
 	TRAITEFFECTALCOHOL = "Wasted: -1 Loyalty Gain, +1 Spirit Gain, -15%% Productivity",
 	TRAITEFFECTFAVFOOD = "Favorite Food: +5%% Productivity, +5%% Experience Gain",
-	TRAITEFFECTHATEDFOOD = "Hated Food: -10%% Productivity.",
-	TRAITEFFECTSTARVE = "Starvation: -50%% Productivity, -50%% Damage.",
-	TRAITEFFECTGRAVEINJ = "Grave Injury: -25%% Productivity, -50 Sexuals. Can't participate in Combat.",
-	TRAITEFFECTDISCIPLINE = "Discipline: +50%% Labor and craft efficiencies.",
+	TRAITEFFECTHATEDFOOD = "Hated Food: -10%% Productivity",
+	TRAITEFFECTSTARVE = "Starvation: -50%% Productivity, -50%% Damage",
+	TRAITEFFECTGRAVEINJ = "Grave Injury: -25%% Productivity, -50 Sexuals. Can't participate in Combat",
+	TRAITEFFECTDISCIPLINE = "Discipline: +50%% Labor and craft efficiencies",
 	TRAITEFFECTSEDUCE = "Seduce: -7 Obedience drain",
-	TRAITEFFECTGREATSEDUCE = "Great Seduce: Prevents escapes; -9 Obedience drain, +50%% Lust growth.",
-	TRAITEFFECTALLURE = "Allure: -5 Obedience drain, +1 Loyalty Gain.",
+	TRAITEFFECTGREATSEDUCE = "Great Seduce: Prevents escapes; -9 Obedience drain, +50%% Lust growth",
+	TRAITEFFECTALLURE = "Allure: -5 Obedience drain, +1 Loyalty Gain",
 	TRAITEFFECTSEDATED = "Sedated: -10 Obedience drain",
-	TRAITEFFECTFEAR = "Fear: -6 Obedience drain, -1 Loyalty Gain.",
+	TRAITEFFECTFEAR = "Fear: -6 Obedience drain, -1 Loyalty Gain",
 	TRAITEFFECTMINDCONTROLLED = "Mind Controlled",
-	TRAITEFFECTINSPIRED = "Inspired: +20%% damage, DEF and MDEF.",
-	TRAITEFFECTCOMMANDED = "Commanded: +50%% ATK and MATK.",
-	TRAITEFFECTSERVING = "Serving: +1 Loyalty Gain.",
-	TRAITEFFECTREFINE = "Weapon refined: +30%% ATK.",
-	TRAITEFFECTACID = "Acid: -25 DEF.",
+	TRAITEFFECTINSPIRED = "Inspired: +20%% damage, DEF and MDEF",
+	TRAITEFFECTCOMMANDED = "Commanded: +50%% ATK and MATK",
+	TRAITEFFECTSERVING = "Serving: +1 Loyalty Gain",
+	TRAITEFFECTREFINE = "Weapon refined: +30%% ATK",
+	TRAITEFFECTACID = "Acid: -25 DEF",
 	TRAITEFFECTATTRACTED = "Attracted: -30%% Damage",
-	TRAITEFFECTPROTECTION = "Protection: +25 DEF.",
+	TRAITEFFECTPROTECTION = "Protection: +25 DEF",
 	TRAITEFFECTISPROTECTED = "Is protected",
-	TRAITEFFECTDRAGONSMIGHT = "Dragon's Might: +25%% Damage and DEF.",
+	TRAITEFFECTDRAGONSMIGHT = "Dragon's Might: +25%% Damage and DEF",
 	TRAITEFFECTBARRIER = "Damage-absorbing shield, blocks 100 damage (%d remains)",
-	TRAITEFFECTBLIZZARD = "Blizzard: -20 Speed.",
-	TRAITEFFECTBLESSED = "Blessed: +25%% ATK.",
-	TRAITEFFECTMENTALBLESS = "Mentally Blessed: +25%% MATK.",
-	TRAITEFFECTFLY = "Flying: +65 Evasion.",
-	TRAITEFFECTSHATTERED = "Shattered: -25 MDEF.",
-	TRAITEFFECTFIREBURST = "Fire Burst: -20 Hit Rate.",
-	TRAITEFFECTSWIPE = "Swipe: -20 DEF.",
-	TRAITEFFECTARROWRAIN = "Arrow Rain: -20 MDEF.",
-	TRAITEFFECTSSTRIKE = "-20 ATK and MATK.",
-	TRAITEFFECTENDURE = "Endure: +20 All resists.",
-	TRAITEFFECTBARD1 = "Hymn: +20 Hit Rate, Evasion and Speed.",
+	TRAITEFFECTBLIZZARD = "Blizzard: -20 Speed",
+	TRAITEFFECTBLESSED = "Blessed: +25%% ATK",
+	TRAITEFFECTMENTALBLESS = "Mentally Blessed: +25%% MATK",
+	TRAITEFFECTFLY = "Flying: +65 Evasion",
+	TRAITEFFECTSHATTERED = "Shattered: -25 MDEF",
+	TRAITEFFECTFIREBURST = "Fire Burst: -20 Hit Rate",
+	TRAITEFFECTSWIPE = "Swipe: -20 DEF",
+	TRAITEFFECTARROWRAIN = "Arrow Rain: -20 MDEF",
+	TRAITEFFECTSSTRIKE = "-20 ATK and MATK",
+	TRAITEFFECTENDURE = "Endure: +20 All resists",
+	TRAITEFFECTBARD1 = "Hymn: +20 Hit Rate, Evasion and Speed",
 	TRAITEFFECTBARD2 = "Soothe: +15 DEF and MDEF, dispels 1 negative effect every turn",
-	TRAITEFFECTBARD3 = "Warmarch: +20%% ATK and MATK.",
-	TRAITEFFECTELEMENTALWEAK = "Elemental Weakness: -40 Fire, Earth, Water and Air Resistances.",
-	TRAITEFFECTELEMENTALPROTECT = "Elemental Protection: +40 Fire, Earth, Water and Air Resistances.",
-	TRAITEFFECTCAMO = "Camouflage: +20 Evasion.",
+	TRAITEFFECTBARD3 = "Warmarch: +20%% ATK and MATK",
+	TRAITEFFECTELEMENTALWEAK = "Elemental Weakness: -40 Fire, Earth, Water and Air Resistances",
+	TRAITEFFECTELEMENTALPROTECT = "Elemental Protection: +40 Fire, Earth, Water and Air Resistances",
+	TRAITEFFECTCAMO = "Camouflage: +20 Evasion",
 	TRAITEFFECTHMARK = "Leader's Mark: Receives 15%% more damage",
 	TRAITEFFECTDEVOUR = "Spirit devoured",
 	TRAITEFFECTSPIRIT1 = "Spirit - Hare: +30 Speed, +25 Evasion",
@@ -3435,15 +3473,20 @@ Next attack deals 125%% damage. Air attacks deal 200%% and Fire attacks deal 50%
 	BUFFDESCRIPTSHOCK = """Shocked
 All damage received is increased by 15%%, additional shock has a chance to stun.""",
 	BUFFDESCRIPTENSNARE = "Ensnared: Evasion is reduced by 75",
-	
-	LOGEFFECTIMMUNE = "\n%s is immune to %s.",
-	LOGEFFECTRESIST = "\n%s resists %s.",
-	LOGEFFECTAPPLY = "\n%s is affected by %s.",
-	LOGEFFECTTOGGLEON = "\n%s on %s is active",
-	LOGEFFECTTOGGLEOFF = "\n%s on %s is off",
-	LOGEFFECTTOGGLEOFFON = "\n%s on %s is updated",
-	LOGEFFECTRENEW = "\n%s is updated on %s",
-#	LOGEFFECTRESIST = "",
+	LOGEFFECTIMMUNE = """
+%s is immune to %s.""",
+	LOGEFFECTRESIST = """
+%s resists %s.""",
+	LOGEFFECTAPPLY = """
+%s is affected by %s.""",
+	LOGEFFECTTOGGLEON = """
+%s on %s is active""",
+	LOGEFFECTTOGGLEOFF = """
+%s on %s is off""",
+	LOGEFFECTTOGGLEOFFON = """
+%s on %s is updated""",
+	LOGEFFECTRENEW = """
+%s is updated on %s""",
 	EFFECTNAME_LUMINANCE = "luminance",
 	EFFECTNAME_DEFENDED = "protection",
 	EFFECTNAME_WARDED = "ward",
@@ -3525,8 +3568,6 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	EFFECTNAME_WARD_D = "curse ward",
 	EFFECTNAME_WATERSHIELD = "water shield",
 	EFFECTNAME_CLARITY = "clarity",
-
-	
 	RESETTRAINREQ = "Reset training to step 0 and restore Spirit. Requires Oblivion potion.",
 	RESETTRAINING = "All training progress will be discarded. Are you sure?",
 	BUFFDESCRIPTDEFENDER = "Defender: Will shield allies from attacks unless stunned.",
@@ -4945,7 +4986,8 @@ At the bottom left you can select items, unlock new classes and configure additi
 	WORKRULERATIONDESCRIPT = "Increases Food Consumption by 3. Boosts Productivity by 15%.",
 	WORKRULESHIFTS = "Longer Shifts",
 	WORKRULESHIFTSDESCRIPT = """Character overperforms at their finest capability at the cost of future improvements. 
-Boosts Productivity by 25%. \n{color=yellow|Character won't gain Experience or Work Stats (Physical, etc) while working.} """,
+Boosts Productivity by 25%. 
+{color=yellow|Character won't gain Experience or Work Stats (Physical, etc) while working.} """,
 	WORKRULECONSTRAIN = "Coerced Labor",
 	WORKRULECONSTRAINDESCRIPT = "Character is forced to work at their best via strict regulations. Boosts productivity by 15%. Passive Loyalty gain disabled.",
 	WORKRULELUXURY = "Private Room",
@@ -10907,12 +10949,12 @@ You take Cali aside and explain to her that this is her duty for now.
 
 In the end she accepted that she had to deal with the consequences of her own actions.""",
 	CALI_WILLIAM_13 = "As you sign the papers, Cali somewhat reluctantly leaves with William for the agreed term.",
-	 CALI_WILLIAM_EVENING_1 = """The first evening at William's place unfolds. Cali lies on the massive king-sized bed, a stark, small figure against the silk sheets. The black and white maid uniform feels foreign and stiff on her body; the skirt is too short and the apron barely hides the small expanse of her chest. Soft but surprisingly strong bracers circle her wrists and ankles, pulling her limbs taut toward the headboard. Her gray hair is disheveled and her knees are bent and spread, the skirt hem the only thing obscuring her underwear.
+	CALI_WILLIAM_EVENING_1 = """The first evening at William's place unfolds. Cali lies on the massive king-sized bed, a stark, small figure against the silk sheets. The black and white maid uniform feels foreign and stiff on her body; the skirt is too short and the apron barely hides the small expanse of her chest. Soft but surprisingly strong bracers circle her wrists and ankles, pulling her limbs taut toward the headboard. Her gray hair is disheveled and her knees are bent and spread, the skirt hem the only thing obscuring her underwear.
 
 {color=aqua|William: — You don't feel too uncomfortable, do you? But given the luxury of your dinner, a bit of discomfort shouldn't be a big deal.}
 
 {color=yellow|Cali: — Hmph, it's no big deal once I get my sword back. Just get on with it.}""",
-	CALI_WILLIAM_EVENING_2 = """A slow, predatory smile spreads across William’s lips at her defiant words. He moves to the side of the bed, his shadow falling over her smaller frame while his fingers run down the front of her starched blouse. He peels it open, letting the cool air of the room hit her skin. Cali's small, perky breasts are now completely bare, the nipples hardening from the chill and her anxiety.
+	CALI_WILLIAM_EVENING_2 = """A slow, predatory smile spreads across William's lips at her defiant words. He moves to the side of the bed, his shadow falling over her smaller frame while his fingers run down the front of her starched blouse. He peels it open, letting the cool air of the room hit her skin. Cali's small, perky breasts are now completely bare, the nipples hardening from the chill and her anxiety.
 
 {color=aqua|William: — Heh, I knew you are one pretty thing despite your temper.}
 
@@ -12046,7 +12088,7 @@ Finally by the end of the day she came to an orphanage.
 {color=aqua|Rudolph: — Now you will have a home and a [Master]. This is what you actually wanted, isn't it? I'm sure you'll have a lot of happy memories together. }
 
 Not sure how to reply, the girl still managed to thank her back.""",
-	CHRISTMAS_EVENT_10 = """{color=yellow|Rudolph: — Even though it might be hard, you should still try your best. }
+	CHRISTMAS_EVENT_10 = """{color=aqua|Rudolph: — Even though it might be hard, you should still try your best. }
 
 {color=yellow|Daisy: — Things could be against us, but we can adore these moments of peace and happiness.}
 
@@ -13498,7 +13540,7 @@ Norlan takes a moment to consider his next words. He throws a glance at Amelia, 
 {color=yellow|Amelia: — What a speechmaker you are, Norlan. I see you finally decided to make it personal. }
 
 {color=yellow|Norlan: — Enough, Amelia. We have given you plenty of time. Your last statement is finished. We will now proceed to voting. You don't have any more objections, do you, Mayor [name]?}""",
-	AMELIA_TRIAL_NORMAL_5 = """As you scan the hall, you notice several faces turned downward. Noraln's persuasion has taken hold, and resignation fills the space. Even those in favor of Amelia are starting to doubt her and consider taking Norlan's side. It seems whatever Amelia had strategized has faltered. All potential avenues for delay or Norlan's implication have been exhausted.
+	AMELIA_TRIAL_NORMAL_5 = """As you scan the hall, you notice several faces turned downward. Norlan's persuasion has taken hold, and resignation fills the space. Even those in favor of Amelia are starting to doubt her and consider taking Norlan's side. It seems whatever Amelia had strategized has faltered. All potential avenues for delay or Norlan's implication have been exhausted.
 
 But could there be another angle to consider? Norlan's swift willingness to relinquish the Guild Leader's position raises questions. Maybe Amelia's suspicions of Norlan were misplaced, and he wasn't the one orchestrating the plot against her? Or could there be another motive behind Norlan's actions?""",
 	AMELIA_TRIAL_NORMAL_5_OPTION_1 = "You're hiding something, Norlan. I will not let the council finish until I find out what it is.",
@@ -16875,7 +16917,6 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	LIRA_LOST_QUEST_NAME = "Lost Lira",
 	LIRA_LOST_QUEST_SUMMARY = "Help Lira out of the grove",
 	LIRA_LOST_QUEST_CAPITAL = "Get to the elven capital",
-	
 	HELEVIEL_QUEST1_NAME = "Heleviel: New Perspective",
 	HELEVIEL_QUEST1_SUMMARY = "Help the former High Priestess adapt to life in Aliron by working at the bar.",
 	HELEVIEL_QUEST2_NAME = "Heleviel: Helping the weak",
@@ -16895,7 +16936,6 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	HELEVIEL_CITY_OPTION_4 = "Pay for ritual",
 	HELEVIEL_CITY_OPTION_5 = "Attend the ritual",
 	HELEVIEL_SLAVE_STAGE_6 = "Attend the ritual.",
-	
 	KURO_ERRAND_QUEST_NAME = "Kuro: Disappearance",
 	KURO_ERRAND_QUEST_SUMMARY = "Follow the mysterious trail",
 	KURO_ERRAND_QUEST_CHURCH = "Visit Ginny at her temple",
@@ -18436,6 +18476,7 @@ Hotkey: 3""",
 	DISLIKED_ACTIONS_LABEL = "Disliked actions",
 	NOSERVITUDE = "-Servitude",
 	COMBAT_ABILS_LABEL = "Combat Abilitites",
+	ONQUESTLABEL = "[name] is unavailable at this point of time.",
 	DATING_LIVING_ROOM = "Living Room",
 	DATING_BEDROOM = "Bedroom",
 	DATING_TORTURE_ROOM = "Torture Room",
@@ -18883,6 +18924,7 @@ Offspring will inherit only this parent's stats.""",
 	CALI_TOUCHING_1_SS = "First scene with Cali during her sidequest",
 	CALI_BJ_HAPPY_1_SS = "Second scene with Cali during her sidequest",
 	CALI_RIDING_1_SS = "Complete Cali's sidequest",
+	CALI_AMELIA_SS = "Reject Cali's approaches",
 	HALLOWEEN_SCENE_SS = "Halloween event with Cali and Anastasia",
 	CHRISTMAS_SCENE_SS = "Christmas event with Daisy",
 	HELEVIEL_MANSION_SS = "Recruit Heleviel",
@@ -20172,7 +20214,7 @@ Yet your compliment has not gone entirely unnoticed, perhaps partly because the 
 {color=yellow|Official 1: — This bar has the best elf girls, you know. That white-haired one is especially cute when angry.}
 
 He gives a small pinch to Heleviel's butt once she turns away from the table, followed by an angry yelp.""",
-	HELEVIEL_QUEST_8 = """{color=yellow|Heleviel: — What are you doing, you foul man!..}",
+	HELEVIEL_QUEST_8 = """{color=yellow|Heleviel: — What are you doing, you foul man!..}\",
 
 However, as she notices you, she quickly stops herself.""",
 	HELEVIEL_QUEST_8_OPTION_1 = "*Scold the official*",
@@ -20219,14 +20261,14 @@ You note with amusement how Heleviel holds herself in this situation. While not 
 	HELEVIEL_QUEST_13 = """The evening continues uneventfully with your patrons until it gets late enough for everyone to leave. As nobody else is around, you get a small comment from Heleviel before she leaves her shift, still bearing her tipsiness.
 
 {color=yellow|Heleviel: — I suppose it wasn't too bad after all. Your friends are disgusting for being such lechers toward elven women, though.}""",
-	HELEVIEL_SLAVE_CHURCH_INIT = """With time, Heleviel has grown more accustomed to life in slavery under you. Her bickering has mostly disappeared. Yesterday you received a help request from Aliron’s church, which seems like a good next step for Heleviel to work on in order to improve her cultural accommodation.""",
+	HELEVIEL_SLAVE_CHURCH_INIT = "With time, Heleviel has grown more accustomed to life in slavery under you. Her bickering has mostly disappeared. Yesterday you received a help request from Aliron's church, which seems like a good next step for Heleviel to work on in order to improve her cultural accommodation.",
 	HELEVIEL_SLAVE_CHURCH_INTRO_TEXT = """You bring Heleviel to the church, finding Ginny in her usual workplace.
 
-{color=yellow|Heleviel: — Hmph, so this is Celena’s temple, and you must be her local priest. What a pitiful decoration. No wonder Celena is only a subservient goddess with measly followers compared to Freya.}
+{color=yellow|Heleviel: — Hmph, so this is Celena's temple, and you must be her local priest. What a pitiful decoration. No wonder Celena is only a subservient goddess with measly followers compared to Freya.}
 
-{color=aqua|Ginny: — It’s true that Freya is more revered than Celena, but I’m her devoted follower in this town. Celena is a merciful goddess, and she wants to help those in need.}
+{color=aqua|Ginny: — It's true that Freya is more revered than Celena, but I'm her devoted follower in this town. Celena is a merciful goddess, and she wants to help those in need.}
 
-{color=yellow|Heleviel: — What difference does it make if her establishment is so insignificant? I swear Freya’s followers would never stoop so low.}
+{color=yellow|Heleviel: — What difference does it make if her establishment is so insignificant? I swear Freya's followers would never stoop so low.}
 
 {color=aqua|Ginny: — Perhaps, but my goal is to assist others, even those of different religions.}
 
@@ -20508,5 +20550,5 @@ With a final, deep thrust, you drive into her one last time. Heleviel cries out,
 {color=yellow|— Aah!!.. So hot... Your seed is filling me!..}""",
 	HELEVIEL_WEDDING_6 = """Slowly, you withdraw, collapsing onto the bed beside her. Heleviel lies there, her body still humming with pleasure, her white hair a tangled mess around her head. She turns to face you, her green eyes soft, a mixture of satisfaction and lingering vulnerability in their depths. The dignified High Priestess is gone, replaced by a woman who has completely surrendered to you. She reaches out, her hand finding yours, her fingers lacing through yours in a silent gesture of connection. 
 
-{color=yellow|— This is so silly, but... What I feel the most right now, not being a former priestess or an elf. It's that I'm a woman. Your woman.}""",
+{color=yellow|— This is so silly, but... What I feel the most right now, not being a former priestess or an elf. It's that I'm a woman. Your woman.}"""
 }

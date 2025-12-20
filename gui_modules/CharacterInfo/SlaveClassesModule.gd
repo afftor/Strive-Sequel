@@ -251,6 +251,32 @@ func change_mastery_category(cat):
 	build_mastery_cat()
 
 
+func get_mastery_pools(masdata):
+	match masdata.type:
+		'combat':
+			return ['combat', 'universal']
+		'spell':
+			return ['magic', 'universal']
+	return ['universal']
+
+
+func get_invested_mastery_points(mas, pools):
+	var invested_points = 0
+	for pool in pools:
+		invested_points += person.dyn_stats.masteries[mas][pool].size()
+	return invested_points
+
+
+
+
+func get_bonus_mastery_points(mas, invested_points):
+	var mastery_level = int(person.get_stat('mastery_' + mas))
+	return max(mastery_level - invested_points, 0)
+
+
+func get_total_mastery_points(mas, invested_points):
+	return invested_points + get_bonus_mastery_points(mas, invested_points)
+
 func build_mastery_cat():
 	input_handler.ClearContainer($MasteryPanel/Categories2, ['button'])
 	var tmp = null
@@ -270,14 +296,23 @@ func build_mastery_cat():
 			button.get_node('icon').texture = images.get_icon(masdata.icon)
 			button.get_node('icon/Label').text = str(lv)
 			globals.connecttexttooltip(button, masdata.name)
-			#add mastery tooltip
-			text += "[center]"+tr("MASTERY"+mas.to_upper()) + '[/center]\nBonus per point:\n'
-#			text += tr(masdata.descript) + '\n'
+			text += "[center]"+tr("MASTERY"+mas.to_upper()) + "[/center]\n"+tr("LVLBONUSPERPOINT")+":\n"
 			text += globals.build_desc_for_bonusstats(masdata.passive) + '\n'
 			if lv > 0:
-				text += "[center]Current:[/center]\n"
+				text += "[center]"+tr("LVLCURRENT")+":[/center]\n"
 				text += globals.build_desc_for_bonusstats(masdata.passive, lv) + '\n'
-#			text += tr('CURRENTLVL') + str(lv)
+			#add mastery tooltip
+			var mastery_points_pools = get_mastery_pools(masdata)
+			var invested_points = get_invested_mastery_points(mas, mastery_points_pools)
+			var total_points = get_total_mastery_points(mas, invested_points)
+			text += ("[center]"
+				+
+				tr("LVLTOTALPOINTS") + ": {color=yellow|%d}; " % [total_points]
+				+
+				tr("LVLINVESTED") + ": %d/%d" % [invested_points, variables.mastery_train_limit]
+				+
+				"[/center]\n\n"
+				)
 			globals.connecttexttooltip(button, text)
 		else:
 			if mas == selected_mastery:

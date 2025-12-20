@@ -35,24 +35,36 @@ func get_damage_mod(skill):
 	#stub. needs filling
 	if skill.type == 'social': 
 		return 1
-	var res = parent.get_ref().get_stat('damage_mod_all')
-	if skill.target_range == 'melee': 
-		res *= parent.get_ref().get_stat('damage_mod_melee')
-	if skill.target_range == 'weapon' and parent.get_ref().get_weapon_range() == 'melee': 
-		res *= parent.get_ref().get_stat('damage_mod_melee')
-	if skill.target_range == 'any': 
-		res *= parent.get_ref().get_stat('damage_mod_ranged')
-	if skill.target_range == 'weapon' and parent.get_ref().get_weapon_range() == 'any':
-		 res *= parent.get_ref().get_stat('damage_mod_ranged')
-	if skill.ability_type == 'skill': 
-		res *= parent.get_ref().get_stat('damage_mod_skill')
-	if skill.ability_type == 'spell': 
-		res *= parent.get_ref().get_stat('damage_mod_spell')
-	if skill.tags.has('aoe'): 
-		res *= parent.get_ref().get_stat('damage_mod_aoe')
-	if skill.tags.has('heal') and skill.ability_type != 'item': 
-		res *= parent.get_ref().get_stat('damage_mod_heal')
 	
+	var res = 1
+	
+	if skill.tags.has("heal"):
+		res = parent.get_ref().get_stat('damage_mod_heal')
+	else:
+		res = parent.get_ref().get_stat('damage_mod_all')
+		#print(res, ' damage mod all')
+		if skill.target_range == 'melee': 
+			res += parent.get_ref().get_stat('damage_mod_melee') - 1
+			#print(res, ' damage mod melee')
+		if skill.target_range == 'weapon' and parent.get_ref().get_weapon_range() == 'melee':
+			res += parent.get_ref().get_stat('damage_mod_melee') - 1
+			#print(res, ' damage mod malee(weapon)')
+		if skill.target_range == 'any': 
+			res += parent.get_ref().get_stat('damage_mod_ranged') - 1
+			#print(res, ' damage mod ranged')
+		if skill.target_range == 'weapon' and parent.get_ref().get_weapon_range() == 'any':
+			res += parent.get_ref().get_stat('damage_mod_ranged') - 1
+			#print(res, ' damage mod ranged(weapon)')
+		if skill.ability_type == 'skill': 
+			res += parent.get_ref().get_stat('damage_mod_skill') - 1
+			#print(res, ' damage mod skill')
+		if skill.ability_type == 'spell': 
+			res += parent.get_ref().get_stat('damage_mod_spell') - 1
+			#print(res, ' damage mod spell')
+		if skill.tags.has('aoe'): 
+			res += parent.get_ref().get_stat('damage_mod_aoe') - 1
+			#print(res, ' damage mod aoe')
+	#print(res, "end mod")
 	return res
 
 
@@ -70,6 +82,8 @@ func get_manacost_for_skill(skill):
 func get_value_damage_mod(skill_val):
 	#stub. needs filling
 	var res = parent.get_ref().get_stat('damage_mod_' + skill_val.damage_type)
+	
+	print("damage elem mod " + str(res))
 	return res
 
 

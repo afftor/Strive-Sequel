@@ -11,7 +11,7 @@
 margin_left = 645.0
 margin_top = 39.0
 margin_right = 1392.0
-margin_bottom = 969.0
+margin_bottom = 1038.0
 custom_styles/panel = ExtResource( 4 )
 script = ExtResource( 6 )
 
@@ -28,7 +28,7 @@ align = 1
 margin_left = 73.0
 margin_top = 45.0
 margin_right = 688.0
-margin_bottom = 829.0
+margin_bottom = 900.0
 theme = ExtResource( 5 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]

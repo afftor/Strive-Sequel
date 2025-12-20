@@ -497,7 +497,7 @@ func fix_stat_data(stat, data):
 				data.bonuses.add = []
 			data.bonuses.add.push_back({value = min(get_stat('growth_factor') - 1, get_prof_number()) * 4, src_type = 'factor', src_value = 'growth', timestamp = 0})
 			if has_status('ninja'):
-				data.bonuses.add.push_back({value = get_stat('mdef'), src_type = 'class', src_value = 'ninja', timestamp = 0})
+				data.bonuses.add.push_back({value = get_stat('mdef')/4, src_type = 'class', src_value = 'ninja', timestamp = 0})
 		'atk', 'matk':
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []

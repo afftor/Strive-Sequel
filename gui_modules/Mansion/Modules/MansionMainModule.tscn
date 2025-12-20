@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -14,10 +14,8 @@
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Left_Menu.tres" type="Theme" id=12]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionJournalModule.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/button_charinfo_sqr.png" type="Texture" id=14]
-[ext_resource path="res://gui_modules/Mansion/Modules/MansionUpgradesModule.tscn" type="PackedScene" id=15]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionCraftModule.tscn" type="PackedScene" id=16]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionTaskInfoModule.tscn" type="PackedScene" id=17]
-[ext_resource path="res://gui_modules/Mansion/Modules/MansionSexSelectionModule.tscn" type="PackedScene" id=18]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/button_charinfo_sqr_pressed.png" type="Texture" id=19]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/button_charinfo_sqr_hover.png" type="Texture" id=20]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionCraftSmallModule.tscn" type="PackedScene" id=21]
@@ -133,13 +131,6 @@ margin_top = 948.0
 margin_right = 319.84
 margin_bottom = 937.32
 
-[node name="MansionUpgradesModule" parent="." instance=ExtResource( 15 )]
-visible = false
-margin_left = 320.0
-margin_top = 680.0
-margin_right = 1420.0
-margin_bottom = 1065.0
-
 [node name="MansionTaskInfoModule" parent="." instance=ExtResource( 17 )]
 visible = false
 margin_left = 15.0
@@ -153,13 +144,6 @@ margin_left = 320.0
 margin_top = 745.0
 margin_right = 1420.0
 margin_bottom = 1063.0
-
-[node name="MansionSexSelectionModule" parent="." instance=ExtResource( 18 )]
-visible = false
-margin_left = 320.0
-margin_top = 948.0
-margin_right = -500.0
-margin_bottom = -12.0
 
 [node name="upgrades" parent="." instance=ExtResource( 35 )]
 visible = false

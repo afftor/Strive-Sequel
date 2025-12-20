@@ -112,13 +112,13 @@ var data = {
 				negative = "repeat_next_day"
 			},
 			{
-				type = "has_hero",
+				type = "unique_avialable",
 				name = "zephyra",
 				check = true,
 				negative = "repeat_next_day"
 			},
 			{
-				type = "has_hero",
+				type = "unique_avialable",
 				name = "kuro",
 				check = true,
 				negative = "repeat_next_day"

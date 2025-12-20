@@ -220,7 +220,7 @@ var skills = {
 		effects = ['e_t_disintegrate', 'e_t_disintegrate_2'], 
 		cost = {mp = 12},
 		charges = 0,
-		combatcooldown = 0,
+		combatcooldown = 3,
 		cooldown = 0,
 		catalysts = {},
 		target = 'enemy',

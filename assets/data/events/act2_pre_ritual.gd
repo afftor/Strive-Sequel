@@ -7,7 +7,7 @@ var data = {
 		],
 		reqs = [
 			{
-				type = "has_hero",
+				type = "unique_avialable",
 				name = "zephyra",
 				check = false
 			}
@@ -378,7 +378,7 @@ var data = {
 		],
 		reqs = [
 			{
-				type = "has_hero",
+				type = "unique_avialable",
 				name = "zephyra",
 				check = true
 			}

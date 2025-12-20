@@ -1,14 +1,16 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://assets/Themes_v2/MANSION/Sex_Buttons_Font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/images/portraits/cali_collar_prt.png" type="Texture" id=2]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_exp_pressed.png" type="Texture" id=3]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big.png" type="Texture" id=4]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=5]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_hp.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_exp.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/gui/gui icons/icon_wits.png" type="Texture" id=8]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_mp.png" type="Texture" id=9]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_lust.png" type="Texture" id=10]
+[ext_resource path="res://assets/fonts/RoundoShadow40.font" type="BitmapFont" id=11]
 [ext_resource path="res://assets/images/gui/gui icons/icon_physics.png" type="Texture" id=13]
 [ext_resource path="res://assets/images/gui/gui icons/icon_charm.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/gui/gui icons/icon_sex.png" type="Texture" id=15]
@@ -25,7 +27,6 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=26]
 [ext_resource path="res://assets/images/gui/gui icons/magic_factor.png" type="Texture" id=27]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Buttons/buttonskill_prof.png" type="Texture" id=28]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/decorative_name.png" type="Texture" id=29]
 [ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_empty.png" type="Texture" id=30]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesBig.tres" type="DynamicFont" id=31]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSummaryModule.gd" type="Script" id=32]
@@ -633,6 +634,14 @@ margin_right = 1190.0
 margin_bottom = 1051.0
 custom_styles/panel = ExtResource( 34 )
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Actions"]
+margin_left = 80.0
+margin_top = 32.0
+margin_right = 1092.0
+margin_bottom = 181.0
+custom_fonts/normal_font = ExtResource( 11 )
+text = "[name] is unavailable at this point of time."
+
 [node name="Panel" type="Panel" parent="Actions"]
 show_behind_parent = true
 margin_right = 1188.0
@@ -726,55 +735,23 @@ __meta__ = {
 
 [node name="Name" type="HBoxContainer" parent="."]
 light_mask = 0
-margin_left = 557.0
+margin_left = 286.0
 margin_top = 6.0
-margin_right = 844.0
+margin_right = 1122.0
 margin_bottom = 77.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_constants/separation = 15
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="TextureRect" type="TextureRect" parent="Name"]
-visible = false
-light_mask = 0
-margin_left = 44.0
-margin_right = 108.0
-margin_bottom = 116.0
-texture = ExtResource( 29 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="name" type="Label" parent="Name"]
-light_mask = 0
-margin_left = 84.0
-margin_top = 4.0
-margin_right = 203.0
-margin_bottom = 66.0
-grow_horizontal = 0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+[node name="name" type="Button" parent="Name"]
+margin_right = 836.0
+margin_bottom = 72.0
+size_flags_horizontal = 3
+theme = ExtResource( 5 )
+custom_colors/font_color = Color( 1, 0.901961, 0.427451, 1 )
 custom_fonts/font = ExtResource( 31 )
 text = "Name"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect2" type="TextureRect" parent="Name"]
-visible = false
-light_mask = 0
-margin_left = 178.0
-margin_right = 242.0
-margin_bottom = 116.0
-texture = ExtResource( 29 )
-flip_h = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ChangeSlaveButtons" type="Control" parent="."]
 margin_left = 851.32

@@ -1258,7 +1258,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		custom_background = "kuro_book_0_0",
+		custom_background = "kuro_book_0_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		dialogue_type = 2,
@@ -1277,7 +1277,7 @@ var data = {
 
 				],
 				previous_dialogue_option = 1
-			},
+			}
 		],
 		options = [
 			{
@@ -1315,23 +1315,29 @@ var data = {
 						value = "kuro_tome_quest"
 					},
 					{
-						code = 'add_timed_event',
+						code = "add_timed_event",
 						value = "kuro_church_start",
 						args = [
 							{
-								type = 'add_to_date',
-								date = [14,15],
+								type = "add_to_date",
+								date = [
+									14,
+									15
+								],
 								hour = 1
 							}
 						]
 					},
 					{
-						code = 'add_timed_event',
+						code = "add_timed_event",
 						value = "kuro_zeph_start",
 						args = [
 							{
-								type = 'add_to_date',
-								date = [7,8],
+								type = "add_to_date",
+								date = [
+									7,
+									8
+								],
 								hour = 1
 							}
 						]
@@ -1347,17 +1353,10 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		custom_background = "kuro_book_0_0",
+		custom_background = "kuro_book_0_1",
 		save_scene_to_gallery = true,
 		unlocked_gallery_seq = "kuro_tome",
-		text = [
-			{
-				text = "KURO_TOME_SEX2",
-				reqs = [
-
-				]
-			},
-		],
+		text = "KURO_TOME_SEX2",
 		options = [
 			{
 				code = "kuro_tome_sex3",
@@ -1377,17 +1376,10 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		custom_background = "kuro_book_0_1",
+		custom_background = "kuro_book_0_2",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		text = [
-			{
-				text = "KURO_TOME_SEX3",
-				reqs = [
-
-				]
-			}
-		],
+		text = "KURO_TOME_SEX3",
 		options = [
 			{
 				code = "kuro_tome_sex4",
@@ -1500,14 +1492,7 @@ var data = {
 		custom_background = "kuro_book_0_5",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		text = [
-			{
-				text = "KURO_TOME_SEX7",
-				reqs = [
-
-				]
-			}
-		],
+		text = "KURO_TOME_SEX7",
 		options = [
 			{
 				code = "close",
@@ -1523,26 +1508,50 @@ var data = {
 						value = "kuro_tome_quest"
 					},
 					{
-						code = 'add_timed_event',
+						code = "add_timed_event",
 						value = "kuro_church_start",
 						args = [
 							{
-								type = 'add_to_date',
-								date = [14,15],
+								type = "add_to_date",
+								date = [
+									14,
+									15
+								],
 								hour = 1
 							}
 						]
 					},
 					{
-						code = 'add_timed_event',
+						code = "add_timed_event",
 						value = "kuro_zeph_start",
 						args = [
 							{
-								type = 'add_to_date',
-								date = [7,8],
+								type = "add_to_date",
+								date = [
+									7,
+									8
+								],
 								hour = 1
 							}
 						]
+					}
+				]
+			}
+		],
+		common_effects = [
+			{
+				code = "unique_character_changes",
+				value = "kuro",
+				args = [
+					{
+						code = "take_virginity",
+						type = "vaginal",
+						partner = "master"
+					},
+					{
+						code = "tag",
+						operant = "remove",
+						value = "no_sex"
 					}
 				]
 			}
@@ -1578,7 +1587,7 @@ var data = {
 
 				],
 				previous_dialogue_option = 2
-			},
+			}
 		],
 		options = [
 			{
@@ -1633,9 +1642,9 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 					{
-						type = 'dialogue_seen',
+						type = "dialogue_seen",
 						check = false,
-						value = 'KURO_AFTER_REPLY_BOOK'
+						value = "KURO_AFTER_REPLY_BOOK"
 					}
 				]
 			}
@@ -1668,5 +1677,5 @@ var data = {
 				]
 			}
 		]
-	},
+	}
 }

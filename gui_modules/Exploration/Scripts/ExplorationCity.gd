@@ -47,7 +47,6 @@ func _ready():
 	$SlaveMarket/PurchaseButton.connect("pressed", self, "show_full_info")
 	$SlaveMarket/HireMode.connect("pressed", self, "change_mode", ["hire"])
 	$SlaveMarket/SellMode.connect("pressed", self, "change_mode", ["sell"])
-	$SlaveMarket/HBoxContainer/EnslaveButton.connect("pressed", self, "enslave_select")
 	$SlaveMarket/HBoxContainer/UpgradeButton.connect("pressed", self, "show_upgrade_window")
 	$SlaveMarket/HBoxContainer/UpgradeButton2.connect("pressed", self, "show_bodyupgrade_window")
 	$BuyLocation/LocationInfo/PurchaseLocation.connect("pressed", self, "purchase_location")
@@ -71,20 +70,6 @@ func test():
 	for win in gui_controller.windows_opened:
 		print(win.name)
 
-
-func enslave_select():
-	var character = person_to_hire
-	character.reset_mastery()
-	character.set_slave_category("slave")
-	input_handler.active_character = character
-	var changes = [{code = 'money_change', operant = '-', value = variables.enslavement_price}]
-	globals.common_effects(changes)
-	globals.text_log_add('char',character.translate("[name] has been demoted to Slave."))
-#	globals.character_stat_change(character, {code = 'loyalty', operant = '-', value = 50})
-	input_handler.scene_characters.append(character)
-	input_handler.interactive_message('enslave', '', {})
-	input_handler.update_slave_list()
-	sell_slave()
 
 
 func open_journal():
@@ -779,7 +764,6 @@ func sell_slave():
 func show_slave_info(person):
 	$SlaveMarket/HBoxContainer/UpgradeButton2.visible = true #add correct condition here
 	person_to_hire = person
-	$SlaveMarket/HBoxContainer/EnslaveButton.visible = !(person.get_stat("slave_class") in  ["slave", 'slave_trained']) && market_mode != "guild_slaves" && person.get_stat("unique") == null # && (!person.has_profession('master'))
 	for button in SlaveMarketList.get_children():
 		if button.name == "Button":
 			continue

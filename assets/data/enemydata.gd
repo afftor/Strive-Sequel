@@ -3036,7 +3036,7 @@ func get_and_consume_item(itemcode):
 
 func celena_item(code):
 	var dict = {text = tr('ALTAR_ITEM_1'), image = '', options = [], tags = ['active_character_translate']}
-	var item = get_and_consume_item(code)
+	var item = get_and_consume_item(code.code)
 #	var selected_code = selection
 #	var source = 'material'
 #	if typeof(selection) == TYPE_DICTIONARY:
@@ -3106,7 +3106,7 @@ func celena_destroy(person):
 
 func freya_item(code):
 	var dict = {text = tr('ALTAR_ITEM_1'), image = '', options = [], tags = ['active_character_translate']}
-	var item = get_and_consume_item(code)
+	var item = get_and_consume_item(code.code)
 	
 	if item.type in ['wood']:
 		
@@ -3196,7 +3196,7 @@ func hybris_destroy(person):
 
 func erebus_item(code):
 	var dict = {text = tr('ALTAR_ITEM_1'), image = '', options = [], tags = ['active_character_translate']}
-	var item = get_and_consume_item(code)
+	var item = get_and_consume_item(code.code)
 	if shrine_item_dict.erebus.has(item.code):
 		dict.text += tr('ALTAR_ITEM_GOOD')
 		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [[shrine_item_dict.erebus[item.code],3]]}]

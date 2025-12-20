@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionLeftMenuModule.gd" type="Script" id=2]
-[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Medium.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_gears_small.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Icons/icon_upgrades_small.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Buttons/buttonicon_pressed.png" type="Texture" id=6]
@@ -15,12 +14,6 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_job2_small.png" type="Texture" id=13]
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_sexbad_small.png" type="Texture" id=14]
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_inventory2_small.png" type="Texture" id=15]
-
-[sub_resource type="DynamicFont" id=1]
-size = 20
-use_filter = true
-extra_spacing_top = -6
-font_data = ExtResource( 3 )
 
 [node name="MansionBottomLeftModule" type="TextureRect"]
 margin_right = 290.0
@@ -118,19 +111,16 @@ margin_bottom = 51.0593
 texture = ExtResource( 5 )
 
 [node name="Label2" type="Label" parent="VBoxContainer/UpgradesButton"]
-margin_left = 58.0
+margin_left = 65.0
 margin_top = 3.0
-margin_right = 271.0
-margin_bottom = 56.0
+margin_right = 259.0
+margin_bottom = 51.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "LMMUPGRADES"
 align = 1
 valign = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+clip_text = true
 
 [node name="SexButton" type="TextureButton" parent="VBoxContainer"]
 margin_top = 124.0
@@ -187,9 +177,9 @@ __meta__ = {
 }
 
 [node name="Label4" type="Label" parent="VBoxContainer/InventoryButton"]
-margin_left = 58.0
+margin_left = 66.0
 margin_top = -3.0
-margin_right = 271.0
+margin_right = 265.0
 margin_bottom = 56.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 1 )
@@ -256,10 +246,10 @@ expand = true
 stretch_mode = 6
 
 [node name="Label5" type="Label" parent="VBoxContainer/Journal"]
-margin_left = 58.0
-margin_top = -3.74915
-margin_right = 271.0
-margin_bottom = 55.2509
+margin_left = 66.0
+margin_top = -4.0
+margin_right = 264.0
+margin_bottom = 55.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "LMMJOURNAL"

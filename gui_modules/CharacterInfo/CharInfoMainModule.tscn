@@ -1,4 +1,4 @@
-[gd_scene load_steps=247 format=2]
+[gd_scene load_steps=251 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=2]
@@ -145,6 +145,7 @@
 [ext_resource path="res://assets/images/portraits/cali_prt.png" type="Texture" id=143]
 [ext_resource path="res://gui_modules/CharacterInfo/StatsPanel.tscn" type="PackedScene" id=144]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_tratis_pressed.png" type="Texture" id=145]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu_pressed.png" type="Texture" id=146]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/frame_trainer.png" type="Texture" id=147]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assign trainer/button_Assign_trainer_hover.png" type="Texture" id=148]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assign trainer/button_Assign_trainer_pressed.png" type="Texture" id=149]
@@ -156,6 +157,7 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/icons_40x40/group.png" type="Texture" id=155]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_traits_hover.png" type="Texture" id=156]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/bg.png" type="Texture" id=157]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu.png" type="Texture" id=158]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset_training_pressed.png" type="Texture" id=159]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_pressed.png" type="Texture" id=160]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/cirlcle.png" type="Texture" id=161]
@@ -284,8 +286,12 @@ texture = ExtResource( 132 )
 region_rect = Rect2( 0, 0, 130, 40 )
 
 [sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 72 )
-region_rect = Rect2( 0, 0, 970, 920 )
+texture = ExtResource( 156 )
+region_rect = Rect2( 0, 0, 100, 100 )
+margin_left = 31.0
+margin_right = 27.0
+margin_top = 29.0
+margin_bottom = 30.0
 
 [sub_resource type="StyleBoxTexture" id=31]
 texture = ExtResource( 145 )
@@ -312,6 +318,14 @@ margin_top = 24.1174
 margin_bottom = 17.1883
 
 [sub_resource type="StyleBoxTexture" id=34]
+texture = ExtResource( 146 )
+region_rect = Rect2( 0, 0, 116, 54 )
+margin_left = 13.2964
+margin_right = 13.2964
+margin_top = 11.7839
+margin_bottom = 9.9723
+
+[sub_resource type="StyleBoxTexture" id=47]
 texture = ExtResource( 167 )
 region_rect = Rect2( 0, 0, 116, 54 )
 margin_left = 13.2964
@@ -320,8 +334,20 @@ margin_top = 11.7839
 margin_bottom = 9.9723
 
 [sub_resource type="StyleBoxTexture" id=8]
-texture = ExtResource( 69 )
-region_rect = Rect2( 0, 0, 1920, 1080 )
+texture = ExtResource( 158 )
+region_rect = Rect2( 0, 0, 116, 54 )
+margin_left = 13.2964
+margin_right = 13.2964
+margin_top = 11.7839
+margin_bottom = 9.9723
+
+[sub_resource type="StyleBoxTexture" id=48]
+texture = ExtResource( 146 )
+region_rect = Rect2( 0, 0, 116, 54 )
+margin_left = 13.2964
+margin_right = 13.2964
+margin_top = 11.7839
+margin_bottom = 9.9723
 
 [sub_resource type="DynamicFont" id=35]
 size = 22
@@ -426,49 +452,6 @@ mouse_filter = 2
 custom_styles/panel = ExtResource( 29 )
 script = ExtResource( 32 )
 
-[node name="buffscontainer" type="VBoxContainer" parent="SlaveBodyModule"]
-modulate = Color( 1, 1, 1, 0.823529 )
-self_modulate = Color( 1, 1, 1, 0.823529 )
-light_mask = 0
-margin_left = 628.0
-margin_top = 28.0
-margin_right = 703.0
-margin_bottom = 922.0
-custom_constants/separation = 5
-
-[node name="Button" type="TextureRect" parent="SlaveBodyModule/buffscontainer"]
-visible = false
-show_behind_parent = true
-margin_right = 75.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 75, 75 )
-texture = ExtResource( 18 )
-expand = true
-stretch_mode = 1
-
-[node name="Label" type="Label" parent="SlaveBodyModule/buffscontainer/Button"]
-margin_left = 33.5601
-margin_top = 46.947
-margin_right = 82.56
-margin_bottom = 75.947
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 13 )
-text = "5"
-align = 1
-
-[node name="TextureRect" type="TextureRect" parent="SlaveBodyModule/buffscontainer/Button"]
-show_behind_parent = true
-margin_left = -2.0
-margin_top = -2.0
-margin_right = 75.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 77, 77 )
-texture = ExtResource( 30 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Body" type="TextureRect" parent="SlaveBodyModule"]
 light_mask = 4
 margin_left = -158.852
@@ -572,6 +555,49 @@ margin_bottom = 73.0
 texture = ExtResource( 36 )
 expand = true
 stretch_mode = 6
+
+[node name="buffscontainer" type="VBoxContainer" parent="SlaveBodyModule"]
+modulate = Color( 1, 1, 1, 0.823529 )
+self_modulate = Color( 1, 1, 1, 0.823529 )
+light_mask = 0
+margin_left = 628.0
+margin_top = 28.0
+margin_right = 703.0
+margin_bottom = 922.0
+custom_constants/separation = 5
+
+[node name="Button" type="TextureRect" parent="SlaveBodyModule/buffscontainer"]
+visible = false
+show_behind_parent = true
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 18 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="SlaveBodyModule/buffscontainer/Button"]
+margin_left = 33.5601
+margin_top = 46.947
+margin_right = 82.56
+margin_bottom = 75.947
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 13 )
+text = "5"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="SlaveBodyModule/buffscontainer/Button"]
+show_behind_parent = true
+margin_left = -2.0
+margin_top = -2.0
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 77, 77 )
+texture = ExtResource( 30 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="SlaveInfoModule" type="Control" parent="."]
 light_mask = 0
@@ -1421,7 +1447,6 @@ texture = ExtResource( 211 )
 expand = true
 
 [node name="UpgradesList" type="Control" parent="SlaveInfoModule/UpgradesPanel"]
-visible = false
 margin_left = 294.0
 margin_top = 25.0
 margin_right = 958.0
@@ -1724,10 +1749,10 @@ valign = 1
 clip_text = true
 
 [node name="Tooltip" type="TextureButton" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training"]
-margin_left = 594.056
-margin_top = 0.626801
-margin_right = 658.056
-margin_bottom = 64.627
+margin_left = 577.578
+margin_top = -58.3123
+margin_right = 641.578
+margin_bottom = 5.68791
 texture_normal = ExtResource( 213 )
 texture_hover = ExtResource( 135 )
 __meta__ = {
@@ -2120,10 +2145,10 @@ custom_styles/panel = SubResource( 33 )
 
 [node name="header" type="RichTextLabel" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish"]
 light_mask = 0
-margin_left = 35.0
+margin_left = 175.0
 margin_top = 13.0
-margin_right = 813.0
-margin_bottom = 91.0
+margin_right = 672.0
+margin_bottom = 116.0
 custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
 bbcode_text = "TRAINFINISHTEXT"
@@ -2132,32 +2157,34 @@ text = "TRAINFINISHTEXT"
 [node name="ScrollContainer" type="ScrollContainer" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 127.0
+margin_left = 72.0
 margin_top = 112.0
-margin_right = -116.0
-margin_bottom = -190.0
+margin_right = -72.0
+margin_bottom = -107.0
 theme = ExtResource( 15 )
 
 [node name="rewards" type="VBoxContainer" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish/ScrollContainer"]
+margin_right = 544.0
 size_flags_horizontal = 3
 custom_constants/separation = 5
 
 [node name="button" type="Button" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish/ScrollContainer/rewards"]
 visible = false
-margin_right = 464.0
+margin_right = 544.0
 margin_bottom = 130.0
 rect_min_size = Vector2( 0, 130 )
 custom_styles/hover = SubResource( 34 )
+custom_styles/pressed = SubResource( 47 )
 custom_styles/normal = SubResource( 8 )
 toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish/ScrollContainer/rewards/button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 14.4387
-margin_top = 19.1581
-margin_right = -469.561
-margin_bottom = -16.8419
+margin_left = 14.0
+margin_top = 19.0
+margin_right = -430.0
+margin_bottom = -17.0
 mouse_filter = 2
 texture = ExtResource( 170 )
 expand = true
@@ -2167,10 +2194,10 @@ stretch_mode = 6
 light_mask = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 163.0
+margin_left = 118.0
 margin_top = 10.0
-margin_right = -43.0
-margin_bottom = -105.0
+margin_right = -18.0
+margin_bottom = -87.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 10 )
 text = "Confirm"
@@ -2182,7 +2209,7 @@ clip_text = true
 light_mask = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 155.0
+margin_left = 121.0
 margin_top = 49.0
 margin_right = -18.0
 margin_bottom = -9.0
@@ -2203,10 +2230,12 @@ Confirm"
 
 [node name="button2" type="Button" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish/ScrollContainer/rewards"]
 visible = false
-margin_right = 464.0
-margin_bottom = 150.0
+margin_top = 135.0
+margin_right = 445.0
+margin_bottom = 285.0
 rect_min_size = Vector2( 0, 150 )
-custom_styles/hover = SubResource( 34 )
+custom_styles/hover = SubResource( 48 )
+custom_styles/pressed = SubResource( 34 )
 custom_styles/normal = SubResource( 8 )
 toggle_mode = true
 
@@ -2228,7 +2257,7 @@ clip_text = true
 [node name="RichTextLabel" type="RichTextLabel" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish/ScrollContainer/rewards/button2"]
 margin_left = 20.0
 margin_top = 56.0
-margin_right = 573.0
+margin_right = 422.0
 margin_bottom = 123.0
 mouse_filter = 2
 
@@ -2236,9 +2265,9 @@ mouse_filter = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 91.408
-margin_top = -116.663
+margin_top = -84.663
 margin_right = 341.408
-margin_bottom = -58.663
+margin_bottom = -26.663
 texture_normal = ExtResource( 154 )
 texture_pressed = ExtResource( 159 )
 texture_hover = ExtResource( 171 )
@@ -2265,9 +2294,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -335.592
-margin_top = -116.663
+margin_top = -84.663
 margin_right = -85.592
-margin_bottom = -58.663
+margin_bottom = -26.663
 texture_normal = ExtResource( 154 )
 texture_pressed = ExtResource( 159 )
 texture_hover = ExtResource( 171 )
@@ -2317,16 +2346,16 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Tooltip_succubus" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = 831.0
-margin_top = -37.0
-margin_right = 899.0
-margin_bottom = 28.0
-texture = ExtResource( 135 )
-expand = true
-stretch_mode = 6
+[node name="Tooltip_succubus" type="TextureButton" parent="SlaveInfoModule/UpgradesPanel"]
+margin_left = 873.0
+margin_top = -36.0
+margin_right = 937.0
+margin_bottom = 28.0002
+texture_normal = ExtResource( 213 )
+texture_hover = ExtResource( 135 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="SexSkillsContainer" type="ScrollContainer" parent="SlaveInfoModule"]
 light_mask = 0

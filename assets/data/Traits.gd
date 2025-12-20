@@ -35,7 +35,7 @@ var traits = {
 		name = '',
 		descript = '',
 		visible = true,
-		icon = "res://assets/images/iconsskills/icon_eyes.png", #fix
+		icon = "res://assets/images/iconsskills/icon_eyes.png",
 		effects = [],
 		tags = [],
 		bonusstats = {mod_hunt = 0.25, physics = 15, chg_dexterity_max = 1, mastery_stealth = 1}
@@ -588,7 +588,7 @@ var traits = {
 		visible = true,
 		icon = "res://assets/images/iconstraits/wound.png",
 		effects = [],
-		bonusstats = {critchance = 9},
+		bonusstats = {critchance = 6},
 		weight = 100,
 		disposition_change = {
 			physical = [['weak', 50],['kink', 50]]
@@ -717,7 +717,7 @@ var traits = {
 		visible = true,
 		icon = "res://assets/images/iconstraits/scepter.png",
 		effects = [],
-		bonusstats = {matk_add_part = 0.15},
+		bonusstats = {matk_add_part = 0.10},
 		weight = 100,
 		conflicts = ['m_inept'],
 		disposition_change = {
@@ -1111,7 +1111,7 @@ var traits = {
 		visible = false,
 		icon = "res://assets/images/iconstraits/l_fortune.png",
 		effects = [],
-		bonusstats = {critchance = 25, magic_find = 1},
+		bonusstats = {critchance = 10, magic_find = 1},
 		reqs = [],
 		l_cost = 1,
 		tree_position = {tab = 3, x = 6, y = 2.5},
