@@ -194,6 +194,7 @@ func _ready():
 	$VBoxContainer/trait.connect('pressed', self, "open_traits")
 	$VBoxContainer/personality.connect('pressed', self, "open_personality_selection")
 	globals.connecttexttooltip($VBoxContainer/personality, tr("INFOPERSONALITY"))
+	$RaceReroll.connect("pressed", self, "reroll_race")
 	
 	$modes/Stats.connect("pressed", self, 'build_stats')
 	$modes/Visuals.connect("pressed", self, 'build_visuals')
@@ -224,6 +225,25 @@ func reroll_name():
 	build_node_for_stat('name')
 	build_node_for_stat('surname')
 	build_description()
+
+
+func reroll_race():
+	if mode == 'freemode':
+		return
+	var available_races = races.racelist.keys()
+	if available_races.empty():
+		return
+	var current_race = person.get_stat('race')
+	var new_race = input_handler.random_from_array(available_races)
+	if available_races.size() > 1:
+		while new_race == current_race:
+			new_race = input_handler.random_from_array(available_races)
+	if current_race != new_race:
+		person.set_stat('race', new_race)
+		preservedsettings["race"] = new_race
+		preservedsettings.erase('surname')
+		rebuild_slave()
+	build_race()
 
 
 func reroll_appearance():
@@ -1295,6 +1315,7 @@ func build_race():
 	else:
 		$VBoxContainer/race/icon.texture = rdata.icon
 	$VBoxContainer/race.disabled = (mode == 'freemode')
+	$RaceReroll.disabled = (mode == 'freemode')
 
 
 func check_class_possibility():
