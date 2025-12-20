@@ -5,6 +5,7 @@ var selected_race = ""
 func _ready():
 	$ConfirmButton.connect("pressed", self, "select_character_race")
 	$CancelButton.connect("pressed", self, "cancel_race_selection")
+	$RandomButton.connect("pressed", self, "roll_random_race")
 
 
 func select_race():
@@ -23,6 +24,20 @@ func select_race():
 		# newbutton.connect("mouse_entered", self, 'show_race_info',[i.code])
 		newbutton.connect("pressed", self, "show_race_info", [id])
 	show_race_info(person.get_stat("race"))
+
+
+func roll_random_race():
+	var available_races = []
+	for button in $RaceSelection/ScrollContainer/VBoxContainer.get_children():
+		if button.name == "Button":
+			continue
+		if !button.visible:
+			continue
+		available_races.append(button.get_meta('race'))
+	if available_races.empty():
+		return
+	selected_race = input_handler.random_from_array(available_races)
+	show_race_info(selected_race)
 
 
 func select_character_race():

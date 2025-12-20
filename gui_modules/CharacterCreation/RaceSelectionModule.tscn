@@ -129,3 +129,20 @@ text = "Cancel"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="RandomButton" type="Button" parent="."]
+margin_left = 130.0
+margin_top = 750.0
+margin_right = 325.0
+margin_bottom = 818.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 8 )
+custom_styles/normal = ExtResource( 11 )
+text = "Random Race"
+__meta__ = {
+"_edit_use_anchors_": false
+}
