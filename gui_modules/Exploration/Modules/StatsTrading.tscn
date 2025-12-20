@@ -21,7 +21,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist_pressed.png" type="Texture" id=19]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_disabled.png" type="Texture" id=20]
 [ext_resource path="res://assets/Textures_v2/icon_question_small_alt.png" type="Texture" id=21]
-[ext_resource path="res://assets/Textures_v2/JOB_MODULE/icon_question_small.png" type="Texture" id=22]
+[ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=22]
 
 [node name="CharactersPanel" type="TextureRect"]
 self_modulate = Color( 1, 1, 1, 0.54902 )

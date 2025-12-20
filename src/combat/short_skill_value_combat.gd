@@ -69,7 +69,7 @@ func resolve_value(check_m):
 	if !parent.get_tags().has('no_caster_bonuses'):
 		dmgmod = parent.caster.get_damage_mod(parent.template)
 		if !parent.get_tags().has('heal'):
-			dmgmod += parent.caster.get_value_damage_mod(self)
+			dmgmod += parent.caster.get_value_damage_mod(self) - 1
 	var endvalue
 	var atk
 	var stat
@@ -86,7 +86,7 @@ func resolve_value(check_m):
 	var t1 = input_handler.calculate_number_from_string_array(template.value1, parent.caster, parent.target)
 	var t2 = input_handler.calculate_number_from_string_array(template.value2, parent.caster, parent.target)
 	var t3 = input_handler.calculate_number_from_string_array(template.value3, parent.caster, parent.target)
-	
+#
 #	print("atk " + str(atk))
 #
 #	print("t1 " + str(t1))
@@ -96,7 +96,7 @@ func resolve_value(check_m):
 #	print("dmgmod " + str(dmgmod))
 	endvalue = (t1 * atk + t2) * (1 + stat/250.0) + t3
 	
-#	print("endvalue " + str(endvalue))
+	#print("endvalue " + str(endvalue))
 	#modify melee atk from backrow and apply dmgmod
 	if !template.nomod:
 		var rangetype = parent.target_range
@@ -104,7 +104,7 @@ func resolve_value(check_m):
 		if rangetype == 'melee' && input_handler.combat_node.FindFighterRow(parent.caster) == 'backrow' && check_m:
 			endvalue /= 2
 		endvalue *= dmgmod
-#	print("endvalue2 " + str(endvalue))
+	#print("endvalue2 " + str(endvalue))
 	value = endvalue
 
 func apply_random():

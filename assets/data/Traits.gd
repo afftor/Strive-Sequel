@@ -588,7 +588,7 @@ var traits = {
 		visible = true,
 		icon = "res://assets/images/iconstraits/wound.png",
 		effects = [],
-		bonusstats = {critchance = 9},
+		bonusstats = {critchance = 6},
 		weight = 100,
 		disposition_change = {
 			physical = [['weak', 50],['kink', 50]]
@@ -1111,7 +1111,7 @@ var traits = {
 		visible = false,
 		icon = "res://assets/images/iconstraits/l_fortune.png",
 		effects = [],
-		bonusstats = {critchance = 25, magic_find = 1},
+		bonusstats = {critchance = 10, magic_find = 1},
 		reqs = [],
 		l_cost = 1,
 		tree_position = {tab = 3, x = 6, y = 2.5},

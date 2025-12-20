@@ -872,8 +872,7 @@ var effects = {
 				type = 'oneshot',
 				target = 'skill',
 				atomic = [
-					{type = 'stat_add', stat = 'critchance', value = 25},
-					{type = 'stat_add', stat = 'critmod', value = 0.75},
+					{type = 'stat_add', stat = 'critchance', value = 15},
 					],
 			}
 		]

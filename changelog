@@ -1,6 +1,8 @@
 Improved quest notice board
 Added reroll option to character creation for name and appearance
 Revamped the way damage modificators are calculated to be addictive instead of multiplicative
+Nerfed critical rates across various effects and classes
+Nerfed Ninja's evasion bonus
 Fixed writ of exemption missing some of the traits
 Fixed characters on quests being selectable for sex interactions
 Fixed unavailable characters still being presented on some quests
