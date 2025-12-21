@@ -7,7 +7,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/heavyshot.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['damage'],
+		tags = ['damage', 'damage_spot'],
 		reqs = [{code = 'gear_equiped', param = 'geartype', value = 'bow', check = true}],
 		targetreqs = [],
 		effects = [], 
@@ -36,7 +36,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/skill_ensnare.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['damage','ads'],
+		tags = ['damage','ads', 'aoe'],
 		reqs = [{code = 'gear_equiped', param = 'geartype', value = 'bow', check = true}],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_ensnare', duration = 1})],
@@ -60,7 +60,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/arrowshower.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['damage', 'aoe'],
+		tags = ['damage', 'aoe', 'ultimate'],
 		reqs = [{code = 'gear_equiped', param = 'geartype', value = 'bow', check = true}],
 		targetreqs = [],
 		effects = [], 
@@ -79,6 +79,12 @@ var skills = {
 		random_factor_p = 0.1,
 		sfx = [{code = 'arrowhail', target = 'target_group', period = 'windup'}], 
 		sounddata = {initiate = null, strike = 'bow', hit = null},
+		variations = [
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {combatcooldown = 4} #to prevent spaming
+			}
+		]
 	},
 	firearrows_apply = { #fix
 		code = 'firearrows_apply',
@@ -86,7 +92,7 @@ var skills = {
 		icon = load("res://assets/images/iconsskills/fire_arrows.png"),
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['buff', 'instant'],
+		tags = ['buff', 'instant', 'selfbuf'],
 		reqs = [
 			{code = 'gear_equiped', param = 'geartype', value = 'bow', check = true}
 		],
@@ -110,8 +116,17 @@ var skills = {
 				reqs = [{code = 'has_status', status = 'firearrows', check = true}],
 				set = {
 					name = tr('SKILLFIREARROWS_REMOVE'),
-					icon = load("res://assets/images/iconsskills/fire_arrows_off.png")
+#					icon = load("res://assets/images/iconsskills/fire_arrows_off.png")
 				}, 
+				append = {tags = 'aura_active'}
+			},
+			{
+				reqs = [
+					{code = 'has_status', status = 'firearrows', check = true},
+					{orflag = true, code = 'has_status', status = 'poisonarrows', check = true},
+					{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'},
+					],
+				set = {targetreqs = [{code = 'false'}],} #disable after first use
 			}
 		]
 	},
@@ -121,7 +136,7 @@ var skills = {
 		icon = load("res://assets/images/iconsskills/skill_dip_poison.png"),
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['buff', 'instant'],
+		tags = ['buff', 'instant', 'selfbuf'],
 		reqs = [
 			{code = 'gear_equiped', param = 'geartype', value = 'bow', check = true}
 		],
@@ -145,7 +160,17 @@ var skills = {
 				reqs = [{code = 'has_status', status = 'poisonarrows', check = true}],
 				set = {
 					name = tr('SKILLPOISONARROWS_REMOVE'),
-					icon = load("res://assets/images/iconsskills/fire_arrows_off.png")}, #2add proper icon change
+#					icon = load("res://assets/images/iconsskills/fire_arrows_off.png") #2add proper icon change
+					}, 
+				append = {tags = 'aura_active'}
+			},
+			{
+				reqs = [
+					{code = 'has_status', status = 'firearrows', check = true},
+					{orflag = true, code = 'has_status', status = 'poisonarrows', check = true},
+					{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'},
+					],
+				set = {targetreqs = [{code = 'false'}],} #disable after first use
 			}
 		]
 	},

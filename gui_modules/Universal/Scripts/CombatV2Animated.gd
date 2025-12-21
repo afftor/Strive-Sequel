@@ -719,19 +719,20 @@ func UpdateSkillTargets(caster, skill, glow_skip = false):
 	if targetgroups == 'ally' or targetgroups == 'all':
 		var t_targets = get_allied_targets(fighter)
 		if rangetype == 'dead':
-			t_targets.clear()
-			for t in playergroup.values():
-				var tchar = characters_pool.get_char_by_id(t)
-				if tchar.defeated:
-					t_targets.push_back(tchar)
-			pass
+			t_targets = get_allied_targets(fighter, true)
 		for t in t_targets:
-			if rangetype == 'not_caster' and t.id == caster.id: continue
-			if skill.has('targetreqs') and !t.checkreqs(skill.targetreqs): continue
+			if rangetype == 'not_caster' and t.id == caster.id:
+				continue
+			if skill.has('targetreqs') and !t.checkreqs(skill.targetreqs):
+				continue
 			allowedtargets.ally.push_back(t.position)
 	if targetgroups == 'self':
-		allowedtargets.ally.append(int(fighter.position))
-
+		if skill.has('targetreqs'):
+			if fighter.checkreqs(skill.targetreqs):
+				allowedtargets.ally.append(int(fighter.position))
+		else:
+			allowedtargets.ally.append(int(fighter.position))
+	
 	if glow_skip: return
 
 	Highlight(currentactor,'selected')
@@ -1062,17 +1063,17 @@ func get_proper_target_for_autoskill():
 	else: return null
 
 
-func get_allied_targets(fighter):
+func get_allied_targets(fighter, dead = false):
 	var res = []
 	if fighter.position in range(1, 7):
 		for p in playergroup.values():
 			var tchar = characters_pool.get_char_by_id(p)
-			if !tchar.defeated:
+			if tchar.defeated == dead:
 				res.push_back(tchar)
 	else:
 		for p in enemygroup.values():
 			var tchar = characters_pool.get_char_by_id(p)
-			if !tchar.defeated:
+			if tchar.defeated == dead:
 				res.push_back(tchar)
 	return res
 
@@ -1367,8 +1368,10 @@ func RebuildSkillPanel():
 	for i in range(1,21):
 		var newbutton = input_handler.DuplicateContainerTemplate($SkillPanel)
 		if src.has(i):
-			var skill = Skilldata.get_template(activecharacter.skills.combat_skill_panel[i], activecharacter)
+			var skill = Skilldata.get_template_combat(activecharacter.skills.combat_skill_panel[i], activecharacter)
 			newbutton.get_node("Icon").texture = skill.icon
+			if skill.tags.has('aura_active'):
+				newbutton.get_node("Icon").material = load("res://assets/book_shader.tres")
 			if skill.cost.has('mp'):
 				newbutton.get_node("manacost").text = str(int(skill.cost.mp))
 				newbutton.get_node("manacost").visible = true

@@ -33,6 +33,16 @@ var skills = {
 			0:[{code = 'stat', stat = 'racegroup', value = 'undead', operant = 'neq'}],
 			1:[{code = 'stat', stat = 'racegroup', value = 'undead', operant = 'eq'}],
 			},
+		variations = [
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {targetreqs = [
+					{code = 'stat', stat = 'combatgroup', operant = 'eq', value = 'ally'},
+					{code = 'stat', stat = 'racegroup', operant = 'eq', value = 'undead'},
+					{orflag = true, code = 'stat', stat = 'combatgroup', operant = 'eq', value = 'enemy'},
+				],}  
+			}
+		]
 	},
 	blessing = {
 		code = 'blessing',
@@ -57,6 +67,17 @@ var skills = {
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],
+		variations = [
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {targetreqs = [
+					{code = 'has_status', status = 'fear', check = true},
+					{orflag = true, code = 'has_status', status = 'blind', check = true},
+					{orflag = true, code = 'has_status', status = 'ensnared', check = true},
+					{orflag = true, code = 'has_status', status = 'cursed', check = true},
+				],}  
+			}
+		]
 	},
 	resurrect = {
 		code = 'resurrect',
@@ -88,7 +109,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/icon_elemental_protection.png",
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['buff'],
+		tags = ['buff', 'support'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_elprotect', duration = 3})], 
@@ -104,7 +125,13 @@ var skills = {
 		sfx = [{code = 'elemental_protection', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['0']],
-		damagestat = 'no_stat'
+		damagestat = 'no_stat',
+		variations = [
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {targetreqs = [{code = 'has_status', status = 'shield', check = false}],} #to prevent overuse of long-duration buffs
+			}
+		]
 	},
 	pacify = {
 		code = 'pacify',
@@ -112,7 +139,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/Serve2.png",
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['damage', 'ads', 'light'],
+		tags = ['damage', 'ads', 'light', 'damage_spot'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'disarm', duration = 2})], 
@@ -159,7 +186,7 @@ var skills = {
 		icon ="res://assets/images/iconsskills/light_spell_aoe.png" ,
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['damage', 'aoe', 'light'],
+		tags = ['damage', 'aoe', 'light', 'ads'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_shatter', duration = 3})], 
@@ -178,6 +205,12 @@ var skills = {
 		random_factor_p = 0.1,
 		sfx = [{code = 'radiance', target = 'target_group', period = 'windup'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
+		variations = [
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {combatcooldown = 3} #to prevent spaming
+			}
+		]
 	},
 	mass_resurrect = {
 		code = 'mass_resurrect',
@@ -185,7 +218,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/icon_reincarnation.png",
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['heal', 'noreduce', 'noevade','support', 'aoe', 'no_caster_bonuses'],
+		tags = ['heal', 'noreduce', 'noevade','support', 'no_caster_bonuses', 'resurrect'],
 #		new_syntax = true,
 		reqs = [],
 		targetreqs = [],
@@ -203,7 +236,13 @@ var skills = {
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['target.hpmax','*0.80']],
 		damagestat = ['-damage_hp'],
-		follow_up = 'mass_resurrect_1' 
+		follow_up = 'mass_resurrect_1',
+		variations = [
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {targetreqs = [{code = 'false'}],} #needs complete rework for ai, currently disabled - used targetreqs for reqs are ignored by ai
+			}
+		]
 	},
 	mass_resurrect_1 = {
 		code = 'mass_resurrect_1',
@@ -270,7 +309,7 @@ var effects = {
 		tick_event = variables.TR_TURN_F,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
-		tags = ['buff'],
+		tags = ['buff', 'shield'],
 		statchanges = {resist_fire = 20, resist_earth = 35, resist_water = 20, resist_air = 20},
 		buffs = [
 			{
