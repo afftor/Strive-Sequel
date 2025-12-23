@@ -96,11 +96,11 @@ var skills = {
 		damage_type = 'weapon',
 		sfx = [{code = 'assassinate', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 2.0,
+		value = 1.75,
 		variations = [
 			{
 				reqs = [{code = 'has_status', status = 'hide', check = true}],
-				set = {value = 3.5},
+				set = {value = 2.75},
 				append = {tags = 'ultimate'}
 #				add = {descript = '_1'}
 			}

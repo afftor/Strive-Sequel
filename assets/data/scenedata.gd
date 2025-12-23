@@ -1048,6 +1048,7 @@ var scenedict = {
 		text = tr('SCENEDAISY_MEET_TEXT'),
 		tags = ['linked_event'],#linked_event means that all options will trigger other events by name instead of generic options like 'close' or 'inspect'
 		image = 'daisystart',
+		music = "daisy_theme",
 		opp_characters = [{type = 'pregen', value = 'Daisy'}],
 		options = [
 		{code = 'daisy_purchase', text = tr("SCENEDAISY_MEET_OPTION1"), reqs = [], type = 'next_dialogue'},

@@ -24,8 +24,9 @@ var data = {
 				code = "dialogue_counter",
 				name = "daisy_sympathy",
 				op = 0
-			}
+			},
 		],
+		music = "daisy_theme",
 		options = [
 			{
 				code = "close",

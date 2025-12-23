@@ -1,16 +1,23 @@
 extends Node
 
 var music = {
+	opening = load("res://assets/sounds/music/MainTheme.ogg"),
+	
 	mansion1 = load("res://assets/sounds/music/mansion1.ogg"),
 	mansion2 = load("res://assets/sounds/music/mansion2.ogg"),
 	mansion3 = load("res://assets/sounds/music/mansion3.ogg"),
 	mansion4 = load("res://assets/sounds/music/mansion4.ogg"),
 
-	battle1 = load("res://assets/sounds/music/battle1.ogg"),
-	battle2 = load("res://assets/sounds/music/battle2.ogg"),
-	battle3 = load("res://assets/sounds/music/battle3.ogg"),
+#	battle1 = load("res://assets/sounds/music/battle1.ogg"),
+#	battle2 = load("res://assets/sounds/music/battle2.ogg"),
+#	battle3 = load("res://assets/sounds/music/battle3.ogg"),
+	battle1 = load("res://assets/sounds/music/battle dance.ogg"),
+	battle2 = load("res://assets/sounds/music/oriental.ogg"),
+	battle3 = load("res://assets/sounds/music/saltation.ogg"),
 
-
+	
+	daisy_theme = load("res://assets/sounds/music/Daisy Theme.ogg"),
+	
 	combattheme = load("res://assets/sounds/music/battle1.ogg"),
 
 	dungeon = load("res://assets/sounds/music/dungeon.ogg"),
@@ -22,7 +29,7 @@ var music = {
 	frostford = load("res://assets/sounds/music/frostford.ogg"),
 	empire_capital = load("res://assets/sounds/music/capital_ost.ogg"),
 
-	intro = load("res://assets/sounds/music/ending.ogg"),
+	#intro = load("res://assets/sounds/music/ending.ogg"),
 	intimate = load("res://assets/sounds/music/intimate.ogg"),
 	
 	dwarf_cap = load("res://assets/sounds/music/dwarf_capital.ogg"),

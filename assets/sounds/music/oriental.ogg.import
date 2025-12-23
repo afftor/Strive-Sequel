@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/oriental.ogg-943b899b0eceb87eb5cb4be29291f09c.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/oriental.ogg"
+dest_files=[ "res://.import/oriental.ogg-943b899b0eceb87eb5cb4be29291f09c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

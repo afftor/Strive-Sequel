@@ -83,7 +83,7 @@ func get_value_damage_mod(skill_val):
 	#stub. needs filling
 	var res = parent.get_ref().get_stat('damage_mod_' + skill_val.damage_type)
 	
-	print("damage elem mod " + str(res))
+	#print("damage elem mod " + str(res))
 	return res
 
 

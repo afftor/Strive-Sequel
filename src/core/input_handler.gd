@@ -295,32 +295,7 @@ func store_progress():
 	text = JSON.print(progress_data)
 	file.store_string(text)
 	file.close()
-#	var text
-#	var parse_result
-#	var data
-#	var file = File.new()
-#	if file.file_exists(variables.userfolder + 'progress_data'):
-#		file.open(variables.userfolder + 'progress_data', file.READ)
-#		text = file.get_as_text()
-#		parse_result = JSON.parse(text)
-#		data = parse_result.result
-#	else:
-#		data = progress_data
-#	file.close()
-#	match field:
-#		"story_scenes":
-#			append_not_duplicate(data.story_scenes, value.get_load_path()) #Passed "value" should be the type of StreamTexture
-#		"ero_scenes":
-#			append_not_duplicate(data.ero_scenes, value.get_load_path())
-#		'character':
-#			append_not_duplicate(data.characters, value)
-#		_: #Default
-#			append_not_duplicate(data[field], value)
-#	file = File.new()
-#	file.open(variables.userfolder + 'progress_data', file.WRITE)
-#	text = JSON.print(data)
-#	file.store_string(text)
-#	file.close()
+
 
 
 func _notification(what):
@@ -512,31 +487,7 @@ func _input(event):
 				if gui_controller.clock != null and gui_controller.clock.is_visible_in_tree():
 					if str(int(event.as_text())) in str(range(1,4)) && !event.is_pressed():
 						gui_controller.clock.hotkey_pressed(int(num))
-#						if input_handler.globalsettings.turn_based_time_flow == false:
-#							gui_controller.clock.changespeed(gui_controller.clock.timebuttons[int(num)-1])
-#						else:
-#							gui_controller.clock.timeflowhotkey(int(num))
-	
-	#there was an error in a code below
-	#while during fix it was fully rewritten to reflect some functional change, i choose to keep a fixed old version as a comment
-	#as an example of correct construction of complex negations
-	#if you remember about exitence of similar constructions in a code out there - check if there are the same error  
-	
-#	if (gui_controller.current_screen == gui_controller.mansion || gui_controller.current_screen == gui_controller.exploration) \
-#		&& str(event.as_text().replace("Kp ",'')) in str(range(1,9)) \
-#		&& gui_controller.windows_opened.size() == 0 \
-#		&& text_field_input == false \
-#		&& !(get_tree().get_root().get_node_or_null("dialogue") && get_tree().get_root().get_node("dialogue").is_visible()):
-#		if str(int(event.as_text())) in str(range(1,4)) && !event.is_pressed():
-#			if input_handler.globalsettings.turn_based_time_flow == false:
-#				gui_controller.clock.changespeed(gui_controller.clock.timebuttons[int(event.as_text())-1])
-#			else:
-#				gui_controller.clock.timeflowhotkey(int(event.as_text()))
-#	elif str(event.as_text().replace("Kp ",'')) in str(range(1,9)) \
-#		&& get_tree().get_root().get_node_or_null("dialogue") && get_tree().get_root().get_node("dialogue").is_visible():
-#		get_tree().get_root().get_node("dialogue").select_option(int(event.as_text()))
-	
-	#mass select module
+
 	if mass_select_client != null:
 		if mass_select_client.get_ref() == null or !mass_select_client.get_ref().is_visible_in_tree():
 			stop_mass_select()
@@ -578,39 +529,6 @@ func _input(event):
 				new_selected.act_node.get_ref().callv(new_selected.act_func, new_selected.act_args)
 			mass_cur_selected = new_selected
 
-
-# func _input(event):
-# 	if event.is_echo() == true && !event.is_action_type():
-# 		return
-# 	#print(var2str(event))
-# 	if (event.is_action("ESC") || event.is_action_released("RMB")):
-# 		var ignore_rightclick = false
-# 		for i in get_tree().get_nodes_in_group("ignore_rightclicks"):
-# 			if i.visible == true:
-# 				ignore_rightclick = true
-# 				continue
-# 		if ignore_rightclick == false:
-# 			if CloseableWindowsArray.size() != 0:
-# 				CloseTopWindow()
-# 			else:
-# 				if CurrentScene.name == 'mansion' && event.is_action("ESC"):
-# 					CurrentScene.get_node("MenuPanel").open()
-# 	if event.is_action_released("F9"):
-# 		OS.window_fullscreen = !OS.window_fullscreen
-# 		input_handler.globalsettings.fullscreen = OS.window_fullscreen
-# 		if input_handler.globalsettings.fullscreen == false:
-# 			OS.window_position = Vector2(0,0)
-# 	if CurrentScreen == 'mansion' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)) && CloseableWindowsArray.size() == 0 && text_field_input == false:
-# 		if str(int(event.as_text())) in str(range(1,4)) && !event.is_pressed():
-# 			if input_handler.globalsettings.turn_based_time_flow == false:
-# 				CurrentScene.changespeed(CurrentScene.timebuttons[int(event.as_text())-1])
-# 			else:
-# 				CurrentScene.timeflowhotkey(int(event.as_text()))
-# 	elif CurrentScreen == 'scene' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)):
-# 		get_tree().get_root().get_node("dialogue").select_option(int(event.as_text()))
-# 	if event.is_action_pressed('full_screen'):
-# 		OS.window_fullscreen = !OS.window_fullscreen
-# 		input_handler.globalsettings.fullscren = OS.window_fullscreen
 
 
 func _process(delta):
@@ -1141,14 +1059,6 @@ func interactive_dialogue_start(code, stage): #not safe
 	scene.dialogue_next(code, stage)
 
 
-# func ActivateTutorial(code): #disabled until rework
-# 	return
-# 	if ResourceScripts.game_progress.show_tutorial == true && ResourceScripts.game_progress.active_tutorials.has(code) == false && ResourceScripts.game_progress.seen_tutorials.has(code) == false:
-# 		ResourceScripts.game_progress.active_tutorials.append(code)
-# 		get_spec_node(self.NODE_TUTORIAL).rebuild()
-# 		#get_tutorial_node().rebuild()
-
-
 func ActivateTutorial(code):
 	if ResourceScripts.game_progress.active_tutorials.has(code) == false && ResourceScripts.game_progress.seen_tutorials.has(code) == false:
 		ResourceScripts.game_progress.active_tutorials.append(code)
@@ -1212,8 +1122,7 @@ func update_slave_list():
 
 func rebuild_slave_list():
 	slave_list_node.rebuild()
-#	if gui_controller.inventory.visible:
-#		gui_controller.inventory.SlaveList.update()
+
 
 func rebuild_skill_list():
 	skill_list_node.build_skill_panel()
@@ -1308,13 +1217,10 @@ func finish_combat():
 
 
 func finish_quest_dungeon(args):
-#	interactive_message('finish_quest_dungeon', 'quest_finish_event', {locationname = active_location.name})
 	autocomplete_quest(args.id)
-#	globals.unquest_location(active_location.id)
 
 
 func finish_quest_location(args):
-#	interactive_message('finish_quest_location', 'quest_finish_event', {locationname = active_location.name})
 	autocomplete_quest(args.id)
 	exploration_node.clear_dungeon_confirm()
 
@@ -1335,15 +1241,6 @@ func start_scene(scene):
 	interactive_message(scene.code, 'event_selection', scene.args)
 
 func combat_defeat():
-#	for i in active_location.group:
-#		if ResourceScripts.game_party.characters.has(active_location.group[i]) && ResourceScripts.game_party.characters[active_location.group[i]].hp <= 0:
-#			ResourceScripts.game_party.characters[active_location.group[i]].hp = 1
-#			ResourceScripts.game_party.characters[active_location.group[i]].defeated = false
-#			ResourceScripts.game_party.characters[active_location.group[i]].is_active = true
-#			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury)
-#			ResourceScripts.game_party.characters[active_location.group[i]].apply_effect(effects_pool.add_effect(eff))
-			#i totally disagree with the same code placed here and in combat.victory() (and in old exploration too)
-			#add permadeath check here
 	emit_signal("CombatEnded", combat_node.encountercode, false)
 	if encounter_lose_script != null and !encounter_lose_script.empty():
 		globals.common_effects(encounter_lose_script)
@@ -1353,11 +1250,6 @@ func combat_defeat():
 		gui_controller.exploration_dungeon.build_location_group()
 		gui_controller.exploration_dungeon.deny_combat()
 		gui_controller.exploration_dungeon.update_map()
-#	if combat_explore and combat_advance:
-#		exploration_node.advance()
-#	combat_explore = false
-#	if exploration_node != null && active_location.has('progress'):
-#		exploration_node.open_location_actions()
 
 func character_boss_defeat():
 	var character_race = []
@@ -1396,10 +1288,6 @@ func loadimage(path, type = ""):
 	#custom path loader
 	return load_image_from_path(path)
 
-#	if ResourcePreloader.new().has_resource(statlist.icon_image) == false:
-#		return globals.loadimage(statlist.icon_image)
-#	else:
-#		return load(statlist.icon_image)
 
 func load_image_from_path(path:String):
 	if !(path.is_abs_path() or path.is_rel_path()): return null

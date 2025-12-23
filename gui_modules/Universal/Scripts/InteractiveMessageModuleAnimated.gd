@@ -14,6 +14,7 @@ var type_trans_time = type_trans_time_default
 var next_dialogue_type = 1
 var dialogue_window_type = 1
 var is_just_started = true
+var saved_music = ""
 
 onready var bg_T1 = $BackgroundT1
 onready var bg_T2 = $BackgroundT2
@@ -61,6 +62,12 @@ func open(scene):
 		next_dialogue_type = preset_type
 		cur_text_label.bbcode_text = ''
 		previous_text = ''
+		if scene.has("music"):
+			saved_music = input_handler.explore_sound
+			input_handler.SetMusic(scene.music)
+	
+	if is_just_started == false && scene.has("music"):
+		input_handler.SetMusic(scene.music)
 	
 	get_tree().get_root().set_disable_input(true)
 	if scene.has("save_scene_to_gallery") && scene.save_scene_to_gallery:
@@ -68,6 +75,7 @@ func open(scene):
 	
 	if scene.has("dialogue_type"):
 		next_dialogue_type = scene.dialogue_type
+	
 	
 	var new_text_label
 	var new_background
@@ -682,6 +690,10 @@ func close(args = {}):
 	if args.finish_scene: input_handler.emit_signal("EventFinished")
 	input_handler.event_finished()
 	is_just_started = true
+	
+	if saved_music != "":
+		input_handler.SetMusic(saved_music)
+		saved_music = ""
 	select_blocking_nodes.clear()
 
 

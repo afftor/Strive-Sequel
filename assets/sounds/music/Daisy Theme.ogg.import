@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Daisy Theme.ogg-fe163560f28cb9663e9e662e9e273ec4.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/Daisy Theme.ogg"
+dest_files=[ "res://.import/Daisy Theme.ogg-fe163560f28cb9663e9e662e9e273ec4.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -37,7 +37,7 @@ func _ready():
 	if input_handler.globalsettings.warnseen == true:
 		$DemoPanel.hide()
 		$WarnScreen.hide()
-		input_handler.SetMusic("intro")
+		input_handler.SetMusic("opening")
 	# input_handler.AddPanelOpenCloseAnimation($NewGamePanel)
 	input_handler.AddPanelOpenCloseAnimation($Changelogpanel)
 	globals.connecttexttooltip($NewGamePanel/tip, tr('NEWGAMESETTINGINFO'))

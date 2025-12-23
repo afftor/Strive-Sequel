@@ -126,7 +126,7 @@ var skills = {
 		damage_type = 'weapon',
 		sfx = [{code = 'execution', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 2.75,
+		value = 2.25,
 	},
 	execution_1 = {
 		code = 'execution_1',
