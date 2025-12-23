@@ -435,7 +435,7 @@ var skills = {
 		target_number = 'line',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'warmarch', target = 'target_line', period = 'windup'}], 
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
