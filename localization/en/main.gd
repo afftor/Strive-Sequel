@@ -47,6 +47,8 @@ var TranslationDict = {
 						Scene art: Allanheil
 						Background art: Laynesis, OMA (Olga Morozova)
 						Icon art: Persich
+						
+						Sound&Audio: Maverik (AI assisted)
 
 						Writing: ralphomayo
 						Writing: plumpjack
@@ -5001,7 +5003,7 @@ Boosts Productivity by 25%.
 	WORKRULERELATIONSHIP = "Allow Romance",
 	WORKRULERELATIONSHIPDESCRIPT = "[name] will be allowed to establish romantic relationship with other characters besides [master].",
 	WORKRULEMASTURBATION = "Forbid Masturbation",
-	WORKRULEMASTURBATIONDESCRIPT = "[name] will not be allowed to relieve [him]self, leading to increased stress but higher libido. Obedience Drain +2, Lust Growth +15%.",
+	WORKRULEMASTURBATIONDESCRIPT = "[name] will not be allowed to relieve [him]self, leading to increased stress but higher libido. Loyalty Gain +2; Productivity -10%",
 	WORKRULELOCK = "Lock Character",
 	WORKRULELOCKDESCRIPT = "Locks character from showing [him] in the list of tasks and activites which permanently remove or sell [him].",
 	SERVICEENSLAVE = "Enslave",
@@ -8603,7 +8605,7 @@ Daisy looks away, but you notice how her mood notably darkens.""",
 	DAISY_LOST_APPROACH_OPTION_1_1 = "You have something of mine and I'm going to take it back.",
 	DAISY_LOST_APPROACH_OPTION_1_2 = "Where's Daisy? What have you done to her?",
 	DAISY_LOST_APPROACH_OPTION_1_3 = "Give my slave back right now.",
-	DAISY_LOST_APPROACH_REPLY_1 = """{color=yellow|Ramont: —Don't be so rash. Daisy is fine, but please listen to me. A few weeks ago I saw her attending Servants' classes by herself. She acted so gracious, so timid and dedicated. I couldn't help it, I fell in love.}
+	DAISY_LOST_APPROACH_REPLY_1 = """{color=yellow|Ramont: — Don't be so rash. Daisy is fine, but please listen to me. A few weeks ago I saw her attending Servants' classes by herself. She acted so gracious, so timid and dedicated. I couldn't help it, I fell in love.}
 	
 {color=yellow|Ramont: — I sent you that message about wanting her for experiments, but it was a lie to cover my true feelings. Regardless, you refused to give her away despite my willingness to pay. I couldn't hold back and now I've expressed my feelings to her and treat her with care.}""",
 	DAISY_LOST_APPROACH_REPLY_2 = """{color=yellow|Ramont: — I know she still technically belongs to you, but I offer you a bet. I want to give her a chance to decide if she wants to be with me or with you, and if she chooses you out of her free will, I will give up on her. But if she chooses me, she will stay with me and I will treat her like no other.}
@@ -10825,7 +10827,7 @@ With the help of a farmer you mark location on your map and finally move on. It'
 
 {color=aqua|Group Leader: — What have you cunts come here for? What do you need from me?}
 
-{color=aqua|Cali: — Remember me?}
+{color=yellow|Cali: — Remember me?}
 
 {color=aqua|Group Leader: — Why would I remember some half-beast bitch?}""",
 	CALI_BANDITS_4 = """Cali angrily kicks the bound bandit in the stomach eliciting a groan.
@@ -11436,7 +11438,7 @@ Lilia almost shrieks as you feel her clamp down your shaft now, her eyes hazing 
 After a few minutes you notice the small female is asleep, lying there as she would still occasionally shudder. Noting that keeping her warm might be in her best interest, you lay her down next to you as you decide to let her sleep with you tonight.""",
 	CALI_ACT1_1 = """You visit your captive, Cali. As you stand in silence, the girl looks up at you with a tired rage behind her eyes.
 
-{color=yellow|— W-what do you want now.!? Haven't you done enough?! Let me go!}
+{color=yellow|— W-what do you want now!? Haven't you done enough?! Let me go!}
 
 Staring her down, you take a good look at her. Slender and bruised, her body isn't suited for labor, but she has to earn her keep.
 
@@ -16149,14 +16151,14 @@ For a moment you thought Kuro would present you her hand for a handshake but she
 	KURO_LIB_OPT_ACCESS = "I'd like to have a library access for a friend...",
 	KURO_LIB_START = """Before you can finish your question Myr interrupts you.
 
-{color=yellow|Myr: — No. We aren't letting anyone into our libraries, especially filthy shedding animals.}
+{color=aqua|Myr: — No. We aren't letting anyone into our libraries, especially filthy shedding animals.}
 
 Despite the degrading remark Kuro remains unflinching.""",
 	KURO_LIB_OPT_AGREE = "Can't we reach some agreement?",
 	KURO_LIB_OPT_RACIST = "You shall not make racist remarks towards my people",
 	KURO_LIB_OPT_VOUCH = "I can vouch she's well trained",
-	KURO_LIB_REPLY_AGREE = "{color=yellow|Myr: — I don't believe so, I don't favor sharing my collection, especially with outsiders.}",
-	KURO_LIB_REPLY_RACIST = "{color=yellow|Myr: — why, I think I shall. Thanks to my status I can do exactly that.}",
+	KURO_LIB_REPLY_AGREE = "{color=aqua|Myr: — I don't believe so, I don't favor sharing my collection, especially with outsiders.}",
+	KURO_LIB_REPLY_RACIST = "{color=aqua|Myr: — why, I think I shall. Thanks to my status I can do exactly that.}",
 	KURO_LIB_REPLY_VOUCH = """Kuro gives you a short annoying look.
 
 {color=yellow|Kuro: — Very funny.}""",
@@ -16166,22 +16168,22 @@ Despite the degrading remark Kuro remains unflinching.""",
 
 Myr stops and closely inspect Kuro for the next few seconds, who remains completely calm.
 
-{color=yellow|Myr: — Firstly, many things have changed since those days. Secondly, you better not repeat that name outside of this room. }
+{color=aqua|Myr: — Firstly, many things have changed since those days. Secondly, you better not repeat that name outside of this room. }
 
 The dark elf takes another pause before continuing with resistance in her voice.
 
-{color=yellow|Myr: — Very well. You gotta pay for the access though since you are not a member of the guild. Five hundred gold should not make a problem for our crafty mayor I presume.}""",
+{color=aqua|Myr: — Very well. You gotta pay for the access though since you are not a member of the guild. Five hundred gold should not make a problem for our crafty mayor I presume.}""",
 	KURO_LIB_OPT_GOTMONEY = "I've got the money",
 	KURO_LIB_OPT_LATER = "I'll return later",
 	KURO_LIB_OPT_BROUGHTMONEY = "I've brought the money for Kuro...",
-	KURO_LIB_ACCESS = """{color=yellow|Myr: — Alright. You aren't allowed to take more than one book at a time and you'll have to return it in 30 days in flawless condition or...}
+	KURO_LIB_ACCESS = """{color=aqua|Myr: — Alright. You aren't allowed to take more than one book at a time and you'll have to return it in 30 days in flawless condition or...}
 
 {color=yellow|Kuro: — Let's save a bit of time for each other, I need Chronicles of Al'Hazred. I believe you have one.}
 
-{color=yellow|Myr: — That one is out of question. I'm not allowing ancient tomes like that to anyone I don't personally know.}""",
+{color=aqua|Myr: — That one is out of question. I'm not allowing ancient tomes like that to anyone I don't personally know.}""",
 	KURO_LIB_ACCESS2 = """{color=yellow|Kuro: — *Sigh* How do I earn your trust in this case?}
 
-{color=yellow|Myr: — I don't want to trust you in the first place. Well, since you've paid for the access, I can consider lending it to you. Bring me a bottle of Gilded Grasp whiskey. That is, if you manage to find one. From my knowledge, its export has long stopped from the dwarven lands.}""",
+{color=aqua|Myr: — I don't want to trust you in the first place. Well, since you've paid for the access, I can consider lending it to you. Bring me a bottle of Gilded Grasp whiskey. That is, if you manage to find one. From my knowledge, its export has long stopped from the dwarven lands.}""",
 	KURO_LIB_ACCESS3 = """As you leave Myr's office, Kuro turns to you in her usual collected manner.
 
 {color=yellow|Kuro: — Well, you better not waste any time then.}""",
@@ -20497,15 +20499,15 @@ Despite her protests you easily notice how her words lack true indignation. More
 	HELEVIEL_BAR_SEX_2_OPTOPN_2 = "*Take her roughly*",
 	HELEVIEL_BAR_SEX_3 = """Your lips meet hers in the dimly lit backroom of the bar. Heleviel's white hair cascades over her shoulders, a stark contrast to the dim look of the room. The faint scent of ale and her unique elven fragrance fills the air as you deepen the kiss, tasting the sweetness on her tongue. Her green eyes flutter closed, long lashes brushing against her cheeks. Her curvaceous figure strains against the tight waitress uniform, the fabric stretched taut across her ample chest. You break the kiss, your hand on her shoulder, and gently guide her to turn around.
 
-{color=yellow|— C-curses, was this your plan all along? Ah, I don't care anymore, you cunning scoundrel...
+{color=yellow|— C-curses, was this your plan all along? Ah, I don't care anymore, you cunning scoundrel...}
 
 Heleviel complies, her movements slightly unsteady from the alcohol. Her palms press flat against the rough surface of the table as she bends forward, the position unfamiliar and awkward for the former High Priestess. The skirt of her uniform rides up, revealing the smooth pale skin of her thighs. You step behind her, one hand tracing the curve of her spine before settling on her hip. With your other hand, you lift the skirt higher, bunching it at her waist. She tenses slightly as you pull her panties down, exposing her glistening pussy.""",
 	HELEVIEL_BAR_SEX_4 = """You position yourself behind her, your hard dick pressing against her entrance. Heleviel gasps as you begin to push in, the penetration slow but steady. Her tight pussy stretches to accommodate you, her body unused to such intrusion. You grip her hips, pulling her back against you as you thrust deeper. Her moans are muffled against the table surface, her fingers digging into the wood. Each thrust sends waves of pleasure through her body, her large breasts swaying with the rhythm. The table creaks beneath her as you pick up the pace, your dick sliding in and out of her slick heat with increasing intensity.
 
-{color=yellow|— M-m-mh... What's this... Humiliation... Why does it feels good...""",
+{color=yellow|— M-m-mh... What's this... Humiliation... Why does it feels good...}""",
 	HELEVIEL_BAR_SEX_5 = """Heleviel's green eyes are half-lidded with pleasure and surprise as you continue to take her from behind. Her dignified facade crumbles with each powerful thrust, replaced by raw, unbridled desire. You lean over her, your breath hot against her ear as you reach around to cup her heavy breasts through the thin fabric of her uniform. Her nipples harden beneath your touch, her back arching instinctively. The room fills with the sound of skin slapping against skin and her increasingly loud moans.
 
-{color=yellow|— D-don't stop now... If you stop... I can't....
+{color=yellow|— D-don't stop now... If you stop... I can't....}
 
 You drive into her harder, faster, your dick hitting that sensitive spot deep inside her that makes her cry out. Heleviel's controlled demeanor shatters completely, her moans growing louder, more desperate, echoing in the small backroom. Her green eyes, usually so serious and composed, are now clouded with a haze of lustful pleasure. You can feel her body beginning to tense beneath you, the muscles in her thighs and back tightening as she pushes back against you, meeting your rhythm with an instinctual need.""",
 	HELEVIEL_BAR_SEX_6 = "The table scrapes across the floor as you give one final, deep thrust. A guttural cry escapes Heleviel's lips as her orgasm crashes through her. Her pussy clenches around your dick in rhythmic pulses, milking you as she trembles uncontrollably. Her vision blurs, a raw, carnal release that strips away every last piece of her dignified persona. The force of her climax triggers your own, and you bury yourself deep inside her, your dick pulsing as you fill her with your warmth.",

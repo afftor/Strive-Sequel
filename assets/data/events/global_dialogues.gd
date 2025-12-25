@@ -700,6 +700,7 @@ var data = {
 	servants_introduction = {
 		image = null,
 		character = "amelia",
+		music = "amelia_theme", 
 		tags = [
 			"dialogue_scene",
 			"master_translate"

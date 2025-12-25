@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Erdyna theme.ogg-9670238099feb77bd6f943eb7dad4b66.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/Erdyna theme.ogg"
+dest_files=[ "res://.import/Erdyna theme.ogg-9670238099feb77bd6f943eb7dad4b66.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

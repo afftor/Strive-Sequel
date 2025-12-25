@@ -1974,35 +1974,35 @@ var dialogue_inits = {
 		},
 		{
 			code = 'default',
-			name = tr("DIALOGUEMEETLEADER"), #or not
+			name = tr("DIALOGUEMEETLEADER"), 
 			reqs = [{type = "active_quest_stage", value = "amelia_main_quest", stage = "stage0"}],
 			target = 'amelia_main_guild_1',
 			target_option = 1,
 		},
 		{
 			code = 'default',
-			name = tr("DIALOGUEMEETLEADER"), #or not
+			name = tr("DIALOGUEMEETLEADER"), 
 			reqs = [{type = "any_quest_stage", value = "amelia_main_quest", stages = ["stage1","stage2","stage3","stage4","stage5","stage6","stage7"]}],
 			target = 'amelia_main_interlude',
 			target_option = 1,
 		},
 		{
 			code = 'default',
-			name = tr("DIALOGUEMEETLEADER"), #or not
+			name = tr("DIALOGUEMEETLEADER"), 
 			reqs = [{type = "active_quest_stage", value = "amelia_main_quest", stage = "stage8"}],
 			target = 'amelia_interlude2_1',
 			target_option = 1,
 		},
 		{
 			code = 'default',
-			name = tr("DIALOGUEMEETLEADER"), #or not
+			name = tr("DIALOGUEMEETLEADER"), 
 			reqs = [{type = "active_quest_stage", value = "amelia_main_quest", stage = "stage9"}],
 			target = 'amelia_interlude4',
 			target_option = 1,
 		},
 		{
 			code = 'default',
-			name = tr("DIALOGUEMEETLEADER"), #or not
+			name = tr("DIALOGUEMEETLEADER"), 
 			reqs = [{type = "active_quest_stage", value = "amelia_main_quest", stage = "stage10"}],
 			target = 'amelia_interlude3_1',
 			target_option = 1,

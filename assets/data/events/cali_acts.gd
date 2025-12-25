@@ -1,6 +1,7 @@
 extends Reference
 var data = {
 	cali_act1_1 = {
+		music = "intimate_dark",
 		image = null, tags = ['dialogue_scene'],
 		reqs = [], character = "cali", 
 		text = [{text = "CALI_ACT1_1", reqs = []}],
@@ -79,7 +80,7 @@ var data = {
 	},
 	
 	cali_act2_1 = {
-		image = null, tags = ['dialogue_scene'],
+		image = null, music = "intimate_dark", tags = ['dialogue_scene'],
 		reqs = [], character = "cali", 
 		text = [{text = "CALI_ACT2_1", reqs = []}],
 		options = [ {
@@ -257,7 +258,7 @@ var data = {
 	},
 	
 	cali_act2_simple_collar_1 = { 
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = null, music = "intimate_dark", tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = "cali",
 		text = [{text = "CALI_ACT2_SIMPLE_COLLAR_1", reqs = []}],
 		common_effects = [{code = 'unique_character_changes', value = 'cali', args = [
@@ -324,7 +325,7 @@ var data = {
 	},
 	
 	cali_act2_exquisite_collar_1_1 = { 
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = null, music = "intimate_dark",  tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = "cali",
 		text = [{text = "CALI_ACT2_EXQUISITE_COLLAR_1_1", reqs = []}],
 		options = [ {
@@ -369,7 +370,7 @@ var data = {
 	},
 	
 	cali_act3_magic_1 = { 
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = null, music = "cali_theme",  tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT3_MAGIC_1", reqs = []}],
 		options = [ {
@@ -418,7 +419,7 @@ var data = {
 	},
 	
 	cali_act3_jean_1 = { 
-		image = null, tags = ['dialogue_scene'],
+		image = null,music = "jean_theme",  tags = ['dialogue_scene'],
 		reqs = [], character = "jean",
 		text = [{text = "CALI_ACT3_JEAN_1", reqs = []}],
 		options = [ {
@@ -523,7 +524,7 @@ var data = {
 	},
 	
 	cali_act3_blow_1 = {
-		image = null, tags = ['dialogue_scene'],
+		image = null, music = "intimate_dark", tags = ['dialogue_scene'],
 		reqs = [], character = "cali",
 		text = [{text = "CALI_ACT3_BLOW_1", reqs = []}],
 		options = [ {
@@ -729,7 +730,7 @@ var data = {
 	},
 	
 	cali_act4_mast_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = null, music = "intimate",  tags = ['dialogue_scene', 'master_translate'],
 		reqs = [{type = 'unique_character_checks', name = 'cali', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'}], 
 		text = [{text = "CALI_ACT4_MAST_1", reqs = [], }], 
 		options = [ {
@@ -869,7 +870,7 @@ var data = {
 	},
 	
 	cali_act5_pet_3 = { 
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = null, music = "intimate_dark", tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT5_PET_3", reqs = [], }], 
 		options = [ {
@@ -995,7 +996,7 @@ var data = {
 	},
 	
 	cali_act6_naked_1 = { 
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = null, music = "intimate_dark", tags = ['dialogue_scene', 'master_translate'],
 		unlocked_gallery_seq = "cali_act6_naked",
 		save_scene_to_gallery = true,
 		reqs = [], unique_character = "cali",

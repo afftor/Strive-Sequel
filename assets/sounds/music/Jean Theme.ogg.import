@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Jean Theme.ogg-bd7e61d0e51992ff690de8e2b54f1316.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/Jean Theme.ogg"
+dest_files=[ "res://.import/Jean Theme.ogg-bd7e61d0e51992ff690de8e2b54f1316.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

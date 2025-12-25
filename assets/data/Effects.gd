@@ -266,7 +266,7 @@ var effect_table = {
 	work_rule_masturbation = {
 		type = 'simple',
 		conditions = [{code = 'workrule', check = true, value = 'masturbation'}],
-		statchanges = {lusttick_add_part = 0.15},
+		statchanges = {training_loyalty = 2, productivity = -0.1},
 	},
 	
 	e_tr_copy_25 = { 

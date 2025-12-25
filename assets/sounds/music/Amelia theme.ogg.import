@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Amelia theme.ogg-24346c6ae4e584773ac36cbe60bc9327.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/Amelia theme.ogg"
+dest_files=[ "res://.import/Amelia theme.ogg-24346c6ae4e584773ac36cbe60bc9327.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

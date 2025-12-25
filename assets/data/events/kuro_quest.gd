@@ -4,6 +4,7 @@ var data = {
 		reqs = [
 
 		],
+		music = "kuro_theme", 
 		tags = [
 			"dialogue_scene"
 		],
@@ -195,6 +196,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'kuro_theme',
 		tags = [
 			"dialogue_scene"
 		],
@@ -257,6 +259,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'kuro_theme',
 		tags = [
 			"dialogue_scene"
 		],
@@ -337,6 +340,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'kuro_theme',
 		tags = [
 			"dialogue_scene"
 		],
@@ -596,6 +600,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'kuro_theme',
 		tags = [
 			"dialogue_scene"
 		],
@@ -980,6 +985,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'kuro_theme',
 		common_effects = [
 			{
 				code = "remove_quest_location",
@@ -1096,6 +1102,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'kuro_theme',
 		tags = [
 			"dialogue_scene"
 		],
@@ -1255,6 +1262,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'intimate_dark',
 		tags = [
 			"dialogue_scene"
 		],
@@ -1561,6 +1569,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'kuro_theme',
 		tags = [
 			"dialogue_scene"
 		],

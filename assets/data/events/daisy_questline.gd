@@ -191,6 +191,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
+		music = "daisy_theme",
 		reqs = [
 			{
 				type = "unique_character_checks",
@@ -706,6 +707,7 @@ var data = {
 			"blackscreen_transition_common",
 			"master_translate"
 		],
+		music = "daisy_theme",
 		scene_type = "unlocked_gallery_seq",
 		unlocked_gallery_seq = "daisy_dress_acquired_normal",
 		save_scene_to_gallery = true,
@@ -973,6 +975,7 @@ var data = {
 	},
 	daisy_dress_acquired_normal_4_1 = {
 		image = null,
+		music = "intimate",
 		custom_background = "daisy_bj1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
@@ -1097,6 +1100,7 @@ var data = {
 	},
 	daisy_dress_acquired_lewd_1 = {
 		image = null,
+		music = 'daisy_theme',
 		tags = [
 			"dialogue_scene",
 			"blackscreen_transition_common",
@@ -1303,6 +1307,7 @@ var data = {
 		custom_background = "daisy_bj5",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		music = "intimate_dark",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1737,6 +1742,7 @@ var data = {
 		reqs = [
 
 		],
+		music = "intimate_dark",
 		custom_background = "daisy_training1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
@@ -1978,6 +1984,7 @@ var data = {
 		]
 	},
 	training_complete_serve_1 = {
+		music = "daisy_intimate",
 		image = null,
 		tags = [
 			"dialogue_scene",
@@ -2108,6 +2115,7 @@ var data = {
 	},
 	training_complete_sex_1 = {
 		image = null,
+		music = "daisy_theme",
 		tags = [
 			"dialogue_scene",
 			"blackscreen_transition_common",
@@ -2388,6 +2396,7 @@ var data = {
 	},
 	training_complete_fucktoy_1 = {
 		image = null,
+		music = "daisy_theme",
 		tags = [
 			"dialogue_scene",
 			"blackscreen_transition_common",
@@ -2504,6 +2513,7 @@ var data = {
 	},
 	training_complete_fucktoy_2 = {
 		image = null,
+		music = "intimate_dark",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -3288,6 +3298,7 @@ var data = {
 						check = true
 					}
 				],
+				music = "daisy_theme",
 				tags = [
 					"dialogue_scene",
 					"master_translate"
@@ -3333,6 +3344,7 @@ var data = {
 						check = true
 					}
 				],
+				music = "daisy_theme",
 				tags = [
 					"dialogue_scene",
 					"master_translate"
@@ -3913,6 +3925,7 @@ var data = {
 	},
 	daisy_lost_10 = {
 		image = null,
+		music = "daisy_theme",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -4295,6 +4308,7 @@ var data = {
 		]
 	},
 	daisy_consensual_1 = {
+		music = "daisy_theme",
 		image = null,
 		tags = [
 			"dialogue_scene",
@@ -4330,6 +4344,7 @@ var data = {
 	},
 	daisy_consensual_2 = {
 		image = null,
+		music = "intimate",
 		tags = [
 			"dialogue_scene",
 			"master_translate"

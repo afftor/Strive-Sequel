@@ -10,7 +10,7 @@ var data = {
 		} ],
 	},
 	cali_heirloom_2 = {
-		image = null, tags = ['dialogue_scene'], 
+		image = null, music = "cali_theme", tags = ['dialogue_scene'], 
 		reqs = [],
 		character = "cali",
 		text = [ {text = "CALI_HEIRLOOM_2", reqs = []} ], 
@@ -134,7 +134,7 @@ var data = {
 		 ],
 	},
 	cali_farmer_1 = {
-		image = null, tags = ['dialogue_scene'], 
+		image = null, music = "cali_theme", tags = ['dialogue_scene'], 
 		reqs = [],
 		character = "cali",
 		text = [ {text = "CALI_FARMER_1", reqs = []} ], 
@@ -227,7 +227,7 @@ var data = {
 	
 	
 	cali_bandits_1 = {
-		image = null, tags = ['dialogue_scene'], 
+		image = null, music = "cali_theme", tags = ['dialogue_scene'], 
 		reqs = [],
 		character = "cali",
 		text = [ {text = "CALI_BANDITS_1", reqs = []},],
@@ -257,7 +257,7 @@ var data = {
 		} ],
 	},
 	cali_bandits_3 = {
-		image = 'cali_bandit_win', tags = ['dialogue_scene'], 
+		image = 'cali_bandit_win', music = "cali_theme", tags = ['dialogue_scene'], 
 		reqs = [],
 		text = [ {text = "CALI_BANDITS_3", reqs = []} ], 
 		options = [ {
@@ -353,7 +353,7 @@ var data = {
 				} ],
 			},
 			{
-				image = 'cali_meeting',
+				image = 'cali_meeting', music = "cali_theme",
 				tags = ['dialogue_scene'], 
 				reqs = [],
 				text = [ {text = "CALI_WILLIAM_1", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage5_1'}]}],
@@ -570,7 +570,7 @@ var data = {
 	},
 	
 	cali_william_evening_1 = {
-		image = null,
+		image = null, music = "intimate_dark",
 		dialogue_type = 2,
 		scene_type = "unlocked_gallery_seq",
 		unlocked_gallery_seq = "cali_william_evening",
@@ -653,7 +653,7 @@ var data = {
 		} ],
 	},
 	cali_grat_1 = {
-		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], 
+		image = null,  music = "cali_theme", tags = ['dialogue_scene', 'blackscreen_transition_common'], 
 		reqs = [],
 		character = "cali",
 		text = [ {text = "CALI_GRAT_1", reqs = []} ], 
@@ -772,7 +772,7 @@ var data = {
 	},
 	
 	cali_sword_return_1 = {
-		image = null, tags = ['dialogue_scene'], 
+		image = null, music = "cali_theme", tags = ['dialogue_scene'], 
 		reqs = [],
 		character = "cali",
 		text = [ {text = "CALI_SWORD_RETURN_1", reqs = []} ], 
@@ -850,7 +850,7 @@ var data = {
 	},
 	
 	cali_hector_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		image = null, music = "cali_theme", tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [],
 		character = "cali",
 		text = [ {text = "CALI_HECTOR_1", reqs = []} ], 
@@ -933,6 +933,7 @@ var data = {
 	
 	cali_finale_1 = {
 		image = null, tags = ['dialogue_scene'], 
+		music = "tragic",
 		reqs = [],
 		character = "cali",
 		text = [ {text = "CALI_FINALE_1", reqs = []} ], 
@@ -1024,7 +1025,7 @@ var data = {
 		} ],
 	},
 	cali_grat_sex_1 = {
-		image = null,
+		image = null, music = "intimate",
 		custom_background = "cali_riding_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
@@ -1077,7 +1078,7 @@ var data = {
 		],
 	},
 	cali_grat_sex_alter_1 = {
-		image = null,
+		image = null, music = "intimate",
 		custom_background = "cali_riding_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,

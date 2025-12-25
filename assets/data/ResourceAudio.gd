@@ -17,6 +17,18 @@ var music = {
 
 	
 	daisy_theme = load("res://assets/sounds/music/Daisy Theme.ogg"),
+	cali_theme = load("res://assets/sounds/music/Cali Theme.ogg"),
+	zephyra_theme = load("res://assets/sounds/music/Zephyra Theme.ogg"),
+	kuro_theme = load("res://assets/sounds/music/Kuro Theme.ogg"),
+	rouge_theme = load("res://assets/sounds/music/Rouge Theme.ogg"),
+	lilia_theme = load("res://assets/sounds/music/Lilia Theme.ogg"),
+	lilith_theme = load("res://assets/sounds/music/Lilith Theme.ogg"),
+	erdyna_theme = load("res://assets/sounds/music/Erdyna theme.ogg"),
+	hara_theme = load("res://assets/sounds/music/Hara Theme.ogg"),
+	jean_theme = load("res://assets/sounds/music/Jean Theme.ogg"),
+	amelia_theme = load("res://assets/sounds/music/Amelia theme.ogg"),
+	mae_theme = load("res://assets/sounds/music/Mae Theme.ogg"),
+	
 	
 	combattheme = load("res://assets/sounds/music/battle1.ogg"),
 
@@ -30,7 +42,12 @@ var music = {
 	empire_capital = load("res://assets/sounds/music/capital_ost.ogg"),
 
 	#intro = load("res://assets/sounds/music/ending.ogg"),
-	intimate = load("res://assets/sounds/music/intimate.ogg"),
+	intimate = load("res://assets/sounds/music/closeness.ogg"),
+	intimate_dark = load("res://assets/sounds/music/dark temptation.ogg"),
+	
+	tragic = load("res://assets/sounds/music/opening.ogg"), #placeholder
+	lira_theme = load("res://assets/sounds/music/opening.ogg"), #placeholder
+	heleviel_theme = load("res://assets/sounds/music/opening.ogg"), #placeholder
 	
 	dwarf_cap = load("res://assets/sounds/music/dwarf_capital.ogg"),
 	tower = load("res://assets/sounds/music/tower_of_dreams.ogg"),

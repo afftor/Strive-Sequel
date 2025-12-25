@@ -222,7 +222,7 @@ var data = {
 	},
 	
 	goblin_quest_hara_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = null, music = "hara_theme", tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = "hara", 
 		text = [{text = "GOBLIN_QUEST_HARA_1", reqs = []}],
 		options = [ {
@@ -245,6 +245,7 @@ var data = {
 	
 	goblin_quest_sex_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
+		music = "intimate_dark", 
 		reqs = [],
 		text = [{text = "GOBLIN_QUEST_SEX_1", reqs = []}],
 		scene_type = "ero_scene",

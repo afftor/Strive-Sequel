@@ -9,6 +9,7 @@ var data = {
 			"master_translate"
 		],
 		character = "heleviel",
+		music = "heleviel_theme", 
 		text = "HELEVIEL_QUEST_1",
 		options = [
 			{
@@ -110,6 +111,7 @@ var data = {
 		character = "heleviel"
 	},
 	heleviel_quest_3 = {
+		music = "heleviel_theme", 
 		reqs = [
 			{
 				type = "unique_character_checks",
@@ -234,6 +236,7 @@ var data = {
 	},
 	heleviel_quest_6 = {
 		image = null,
+		music = "heleviel_theme", 
 		reqs = [
 
 		],
@@ -539,6 +542,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
+		music = "heleviel_theme", 
 		reqs = [
 
 		],
@@ -944,6 +948,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
+		music = "heleviel_theme", 
 		reqs = [
 
 		],
@@ -1295,6 +1300,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
+		music = "heleviel_theme", 
 		reqs = [
 
 		],
@@ -1664,6 +1670,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
+		music = "heleviel_theme", 
 		reqs = [
 
 		],
@@ -2089,6 +2096,7 @@ var data = {
 		reqs = [
 
 		],
+		music = "intimate", 
 		unlocked_gallery_seq = "heleviel_bar_sex",
 		save_scene_to_gallery = true,
 		tags = [
@@ -2297,6 +2305,7 @@ var data = {
 		reqs = [
 
 		],
+		music = "heleviel_theme", 
 		save_scene_to_gallery = true,
 		tags = [
 			"dialogue_scene",
@@ -2329,6 +2338,7 @@ var data = {
 	},
 	heleviel_forest_sex_1 = {
 		unlocked_gallery_seq = "heleviel_forest_sex",
+		music = "intimate", 
 		reqs = [
 
 		],
@@ -2452,6 +2462,7 @@ var data = {
 		reqs = [
 
 		],
+		music = "intimate", 
 		unlocked_gallery_seq = "heleviel_wedding",
 		save_scene_to_gallery = true,
 		tags = [

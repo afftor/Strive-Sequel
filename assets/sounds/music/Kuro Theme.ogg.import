@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Kuro Theme.ogg-0c1fce10ff88fda142964c0f19a10a01.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/Kuro Theme.ogg"
+dest_files=[ "res://.import/Kuro Theme.ogg-0c1fce10ff88fda142964c0f19a10a01.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

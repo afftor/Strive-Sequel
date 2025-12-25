@@ -64,6 +64,7 @@ var data = {
 	amelia_bonus = {
 		image = null,
 		tags = ["dialogue_scene", 'master_translate'],
+		music = "amelia_theme", 
 		reqs = [],
 		character = "amelia",
 		text = [{text = "AMELIA_BONUS", reqs = [], bonus_effects = []},],

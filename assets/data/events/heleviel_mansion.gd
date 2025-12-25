@@ -5,6 +5,7 @@ var data = {
 
 		],
 		unlocked_gallery_seq = "heleviel_mansion",
+		music = "heleviel_theme", 
 		save_scene_to_gallery = true,
 		tags = [
 			"dialogue_scene",
@@ -123,6 +124,7 @@ var data = {
 	},
 	heleviel_mansion_5 = {
 		image = null,
+		music = "intimate_dark", 
 		reqs = [
 
 		],

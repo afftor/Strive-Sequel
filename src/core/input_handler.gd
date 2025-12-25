@@ -631,7 +631,8 @@ func SetMusicRandom(category):
 
 func SetMusic(name, store = false, delay = 0):
 	if !audio.music.has(name):
-		 return
+		print("can't find track: " + name)
+		return
 	yield(get_tree().create_timer(delay), 'timeout')
 	musicraising = true
 	var musicnode = get_spec_node(self.NODE_MUSIC) #GetMusicNode()
