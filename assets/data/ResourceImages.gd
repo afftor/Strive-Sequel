@@ -89,6 +89,10 @@ var backgrounds = {
 	act3_art = "res://assets/images/fullscreen scenes/splash_act3.png",
 	elven_temple_scene = "res://assets/images/fullscreen scenes/Scene_Elven_Temple.png",
 	
+	christmas25 = "res://assets/images/fullscreen scenes/seasonal/Christmass 2025.png",
+	christmas25_1 = "res://assets/images/fullscreen scenes/seasonal/Christmass 2025_1.png",
+	
+	
 	tower = "res://assets/images/backgrounds/tower.png",
 
 	#custom dialogue backgrounds
@@ -748,6 +752,8 @@ var sprites = {
 	heleviel_wed_body = load("res://assets/images/sprites/heleviel_wed_body.png"),
 	heleviel_waitress = load("res://assets/images/sprites/heleviel_waitress.png"),
 	heleviel_waitress_body = load("res://assets/images/sprites/heleviel_waitress_body.png"),
+	heleviel_christmas = load("res://assets/images/sprites/heleviel_snowset.png"),
+	heleviel_christmas_body = load("res://assets/images/sprites/heleviel_snowset_body.png"),
 	lira_nude = load("res://assets/images/sprites/Lira_nude.png"),
 	lira_nude_body = load("res://assets/images/sprites/Lira_nude_body.png"),
 	lira_wed = load("res://assets/images/sprites/Lira_wed.png"),
@@ -828,6 +834,8 @@ var portraits = {
 	heleviel = "res://assets/images/portraits/heleviel_prt.png",
 	heleviel_nude = "res://assets/images/portraits/heleviel_nude_prt.png",
 	heleviel_wed = "res://assets/images/portraits/heleviel_wed_prt.png",
+	heleviel_waitress = "res://assets/images/portraits/heleviel_wwaitress_prt.png",
+	heleviel_christmas = "res://assets/images/portraits/heleviel_prt/heleviel_snowset_prt_bold.png",
 	lira = "res://assets/images/portraits/lira_prt.png",
 	lira_nude = "res://assets/images/portraits/lira_nude_prt.png",
 	lira_wed = "res://assets/images/portraits/lira_wed_prt.png",

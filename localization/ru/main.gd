@@ -21749,6 +21749,31 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	HELEVIEL_WEDDING_6 = """Медленно ты выходишь из нее, падая на кровать рядом с ней. Хелевиль лежит там, ее тело все еще дрожит от удовольствия, ее белые волосы — растрепанный беспорядок вокруг ее головы. Она поворачивается к тебе лицом, ее зеленые глаза мягки, смесь удовлетворения и сохраняющейся уязвимости в их глубине. Достойная Верховная Жрица ушла, замененная женщиной, которая полностью тебе покорилась. Она протягивает руку, ее рука находит твою, ее пальцы переплетаются с твоими в безмолвном жесте связи.
 
 {color=yellow|Хелевиэль: — Это так глупо, но... Что я чувствую больше всего прямо сейчас, так это то, что я не бывшая жрица или эльфийка. А то, что я женщина. Твоя женщина.}""",
+	HELEVIEL_SNOWSET_WORKERS_OPTION = """Ask about the winter outfit.""", # MISSING TRANSLATION
+	HELEVIEL_SNOWSET_EVENT_1 = """As you walk through the guild, suddenly Heleviel, who you took with you, spots something that catches her eye: a bright set of clothes sitting in a corner, seemingly abandoned. It draws her in, and she approaches it with fascination as she lifts it up.""", # MISSING TRANSLATION
+	HELEVIEL_SNOWSET_EVENT_2 = """You seem to be interested in it.
+
+{color=yellow|Heleviel: — N-no-... I mean, yes, I am interested in this. Even someone of my status can appreciate such fine craftsmanship. I want it. After all, I don't have that many spare clothes now. Maybe you should consider getting it for me.}""", # MISSING TRANSLATION
+	HELEVIEL_SNOWSET_EVENT_3 = """Slightly taken aback by her sudden display of assertiveness, you can't help but get curious. You call Sigmund over with the suit.
+
+{color=aqua|Sigmund: — Aye, ya can have dat.}
+
+{color=yellow|Heleviel: — This will cost us, I assume.}
+
+Sigmund strokes his beard, observing the elven woman and the skimpy suit for a few moments, until he finally speaks up.
+
+{color=aqua|Sigmund: — How about a favor 'stead? Ya seem to be eager to wear it. We can think of something.}
+
+Heleviel raises a brow, but it's too late to back out.""", # MISSING TRANSLATION
+	HELEVIEL_SNOWSET_EVENT_4 = """After a few minutes, Heleviel comes out of the dressing room wearing the clothes. They certainly appear more skimpy than what you'd expect her to wear willingly. However, her face is rather content as she looks herself over in the mirror.
+
+{color=yellow|Heleviel: — Just about the right size, as I predicted.}""", # MISSING TRANSLATION
+	HELEVIEL_SNOWSET_OPTION_1 = """I didn't take you for someone who would want to wear something like this.""", # MISSING TRANSLATION
+	HELEVIEL_SNOWSET_OPTION_2 = """So what's the deal for you getting it for free?""", # MISSING TRANSLATION
+	HELEVIEL_SNOWSET_EVENT_5A = """{color=yellow|Heleviel: — Oh, that... It just resembles a suit worn by one powerful sorceress that I knew a long time ago. It makes me feel a bit like her now, although naturally there's no magic in it. I guess I always thought it's entertaining to appear as someone else.}""", # MISSING TRANSLATION
+	HELEVIEL_SNOWSET_EVENT_5B = """Heleviel closes her eyes in meditation, before composing herself to deliver a clear, steady speech.
+
+{color=yellow|Heleviel: — This is a boon. A custom of goodwill. And I want to thank you, not only for the gift, but for the hands and hearts behind it that chose to make it here. Your work and benevolence deserve my sincerest blessing, which I deliver to you. You have my gratitude, and more than anyone, [name], who is the reason that I'm here. Merry Christmas!}""", # MISSING TRANSLATION
 }
 
 

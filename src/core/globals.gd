@@ -2775,6 +2775,16 @@ func valuecheck(dict):
 			return ResourceScripts.game_progress.selected_dialogues.has(dict.value) == dict.check
 		'event_seen':
 			return ResourceScripts.game_progress.seen_events.has(dict.value) == dict.check
+		
+		"real_date_range":
+			var current_date = OS.get_date().day + OS.get_date().month * 30
+			if OS.get_date().month == 1:
+				current_date = OS.get_date().day + 13 * 30
+			var start_date = dict.start[0] + dict.start[1] * 30
+			var end_date = dict.end[0] + dict.end[1] * 30
+			return current_date >= start_date and current_date <= end_date
+		
+		
 		'active_quest_stage':
 			if ResourceScripts.game_progress.get_active_quest(dict.value) == null || dict.has('stage') == false:
 				if dict.has('state') && dict.state == false:

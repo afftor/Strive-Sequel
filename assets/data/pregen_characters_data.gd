@@ -1144,6 +1144,13 @@ var unique_sprites = {
 			face_path = "heleviel_waitress",
 			unlock_reqs = [{type = 'event_seen', check = true, value = 'heleviel_quest_13'}]
 			},
+		christmass = {
+			name = "Christmass",
+			descript = "",
+			path = "heleviel_christmas_body", 
+			face_path = "heleviel_christmas",
+			unlock_reqs = [{type = "event_seen", check = true, value = "heleviel_snowset_start"}]
+			},
 		wed = {
 			name = "Wed",
 			descript = "",

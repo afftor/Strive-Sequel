@@ -2113,6 +2113,23 @@ var dialogue_inits = {
 			target_option = 1,
 		},
 	],
+	heleviel_christmas = [
+		{
+			code = 'default',
+			name = tr("HELEVIEL_SNOWSET_WORKERS_OPTION"),
+			reqs = [
+					{
+						type = "real_date_range",
+						start = [15, 12],
+						end = [15, 13]
+					},
+					{type = 'unique_avialable', name = 'heleviel', check = true},
+					{type = "event_seen", check = false, value = "heleviel_snowset_start"}
+					],
+			target = 'heleviel_snowset_start',
+			target_option = 1,
+		},
+	],
 	mages_init = [
 		{
 			code = 'default',

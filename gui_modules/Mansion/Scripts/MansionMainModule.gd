@@ -794,7 +794,7 @@ func test_mode():
 					]
 				},
 				{code = 'make_story_character', value = 'Cali'},
-				{code = 'make_story_character', value = 'Aire'},
+				{code = 'make_story_character', value = 'Heleviel'},
 				{code = 'make_story_character', value = 'Jean'},
 				#{code = 'make_story_character', value = 'Zephyra'},
 				{code = 'make_story_character', value = 'Amelia'},
@@ -944,7 +944,7 @@ func test_mode():
 
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
 		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
-		#input_handler.interactive_message('daisy_dress_acquired_normal_1', '', {})
+		#input_handler.interactive_message('heleviel_snowset_start', '', {})
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		

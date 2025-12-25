@@ -2781,7 +2781,7 @@ Loyalty: +25, Maxes Obedience.""",
 Wits: -10; EXP Gain: -10%; Sell price is greatly lowered.""",
 	THRALLS6DESCRIPT = "Has 6 Thralls",
 	THRALLS5DESCRIPT = "Has 5 Thralls",
-	THRALLS4DESCRIPT = "Has 4 Tthralls",
+	THRALLS4DESCRIPT = "Has 4 Thralls",
 	THRALLS3DESCRIPT = "Has 3 Thralls",
 	THRALLS2DESCRIPT = "Has 2 Thralls",
 	THRALLS1DESCRIPT = "Has 1 Thrall",
@@ -19538,24 +19538,24 @@ Spent and satisfied, you carefully withdraw from her tight passage, admiring how
 	AMELIA_INFINITE_1_OPTION_1 = "Amelia? What's with that look",
 	AMELIA_INFINITE_1_OPTION_2 = "Didn't expect to see you here.",
 	AMELIA_INFINITE_1_OPTION_3 = "Where's Alise?",
-	AMELIA_INFINITE_2_1 = """- Amelia, huh? That's my name, right? I'm not quite the Amelia you know, though.
+	AMELIA_INFINITE_2_1 = """— Amelia, huh? That's my name, right? I'm not quite the Amelia you know, though.
 
 She tilts her head, her grin sharp and teasing, tail flicking as if daring you to ask more.""",
-	AMELIA_INFINITE_2_2 = """- Ha, me neither! If I'd known you'd show up, I might've worn something a little flashier.
+	AMELIA_INFINITE_2_2 = """— Ha, me neither! If I'd known you'd show up, I might've worn something a little flashier.
 
 She twirls a lock of hair, her form blurring slightly at the edges, like a figure caught in a dream""",
-	AMELIA_INFINITE_2_3 = """- Oh, come on, we're not playing that game today. I heard Alise is off at the guild, but why chase her when I'm right here?
+	AMELIA_INFINITE_2_3 = """— Oh, come on, we're not playing that game today. I heard Alise is off at the guild, but why chase her when I'm right here?
 
 She leans closer, her voice laced with playful mockery. Despite your best attempts, the conversation doesn't make sense.""",
-	AMELIA_INFINITE_2 = "- Anyway, I've got a question for you, [name]. Do you think dreams are real?",
+	AMELIA_INFINITE_2 = "— Anyway, I've got a question for you, [name]. Do you think dreams are real?",
 	AMELIA_INFINITE_2_OPTION_1 = "Of course not, they're just our mind's chaotic hallucinations",
 	AMELIA_INFINITE_2_OPTION_2 = "They must be real, there's a reason we can see them.",
 	AMELIA_INFINITE_2_OPTION_3 = "No way I can tell.",
-	AMELIA_INFINITE_3_1 = """- Oh, really? So sure about that? Just because someone said so, you believe it? I didn't take you for the gullible type.
+	AMELIA_INFINITE_3_1 = """— Oh, really? So sure about that? Just because someone said so, you believe it? I didn't take you for the gullible type.
 
 Her laughter spills out, sharp and teasing, as she leans back, her form faintly wavering.""",
-	AMELIA_INFINITE_3_2 = "- What, you actually think that? You sound like a total lunatic!",
-	AMELIA_INFINITE_3_3 = """- No opinion? Really? How do you even get by without a take on something so basic?
+	AMELIA_INFINITE_3_2 = "— What, you actually think that? You sound like a total lunatic!",
+	AMELIA_INFINITE_3_3 = """— No opinion? Really? How do you even get by without a take on something so basic?
 
 She rolls her eyes, her body briefly flickering like a candle flame before snapping back into focus.""",
 	AMELIA_INFINITE_3 = """Amelia's mocking laughter echoes through the tower, light and taunting, as she glides closer—far too close. Her hands rest on your shoulders, her face inches from yours, her grin wide and unnervingly playful.
@@ -19565,11 +19565,11 @@ She rolls her eyes, her body briefly flickering like a candle flame before snapp
 	AMELIA_INFINITE_3_OPTION_2 = "*Push away*",
 	AMELIA_INFINITE_4_1 = "You lean toward her, heart pounding, but just as your lips nearly meet, she dissolves into a wisp of smoke, leaving only her signature laugh echoing in the air.",
 	AMELIA_INFINITE_4_2 = "You try to ease out of her grasp, but before you can fully pull away, she vanishes into thin air, her form unraveling like a fading dream, followed by that familiar, mocking laugh.",
-	AMELIA_INFINITE_4 = """- All of this? Not real, you dummy.
+	AMELIA_INFINITE_4 = """— All of this? Not real, you dummy.
 
 Her taunting words fade into energetic giggles, swallowed by the tower's eerie silence.""",
 	AMELIA_BONUS_OPTION = "Have you ever dyed your hair pink?",
-	AMELIA_BONUS = """- Pink hair? Now that's a random question! I don't think it'd suit me, but if you think I'd pull it off, I might consider it... for you.
+	AMELIA_BONUS = """— Pink hair? Now that's a random question! I don't think it'd suit me, but if you think I'd pull it off, I might consider it... for you.
 
 She winks, her tail swishing as she makes an eye-catching move.""",
 	ELF_CAPITAL_DRUIDS_LOUNGE = "Druids' lounge",
@@ -19968,17 +19968,17 @@ You note her lizard-like traits, the subtle pride in her voice hinting at a life
 	KURO3_DIALOGUE_3_OPTION_5 = "Thanks for the information.",
 	KURO3_DIALOGUE_4_1 = """Kuro flashes a smug smile before answering.
 
-- What makes you think I know that? There must be something special about you, isn't there? Shouldn't you know what makes you special? *Chuckle*""",
-	KURO3_DIALOGUE_4_2 = "- That's not true. I haven't told a single lie here yet..",
+— What makes you think I know that? There must be something special about you, isn't there? Shouldn't you know what makes you special? *Chuckle*""",
+	KURO3_DIALOGUE_4_2 = "— That's not true. I haven't told a single lie here yet..",
 	KURO3_DIALOGUE_4_OPTION_1 = "You're obviously lying. Why don't you just say it?",
 	KURO3_DIALOGUE_4_OPTION_2 = "Withholding that information is what lets you enjoy having some control over me?",
 	KURO3_DIALOGUE_4_OPTION_3 = "Forget it...",
 	KURO3_DIALOGUE_5 = """Kuro's grin widens, her eyes flashing with particular joy.
 
-- This mental sharpness of yours is exactly what makes it all truly... fun.
+— This mental sharpness of yours is exactly what makes it all truly... fun.
 
 Before you can respond, Kuro retreats in her usual style, fading into the shadows.""",
-	KURO3_DIALOGUE_6 = """- Then why don't you just stick to doing what you feel like doing? You won't waste my time or yours. And given that you've been successful so far, I don't think you need me telling you what to do.
+	KURO3_DIALOGUE_6 = """— Then why don't you just stick to doing what you feel like doing? You won't waste my time or yours. And given that you've been successful so far, I don't think you need me telling you what to do.
 
 Despite your rude response, Kuro takes no offense. She quickly retreats in her usual style, fading into the shadows.""",
 	KURO3_INIT_1_1 = """Today Kuro has approached you.
@@ -20182,7 +20182,7 @@ You leave Kuro seemingly stuck in place as you contemplate your newly acquired p
 	KURO3_DIALOGUE2_2_1 = """Kuro pauses, searching for the right words.
 
 {color=yellow|— It was probably an ancient, forgotten deity, or rather, what's left of one. Good thing she was on our side, wasn't it?}""",
-	KURO3_DIALOGUE2_2_2 = """- What, are you hoping some powerful deity will solve all your problems? I thought you were too old for such naive expectations.
+	KURO3_DIALOGUE2_2_2 = """{color=yellow|— What, are you hoping some powerful deity will solve all your problems? I thought you were too old for such naive expectations.}
 
 Kuro smirks at you in her usual way.
 
@@ -20403,7 +20403,7 @@ The anxiety in her voice makes it clear she is distressed by losing the connecti
 	HELEVIEL_SLAVE_RITUAL_ERLEN_TEXT = """You find Erlen not far from the main temple. As you explain your situation, his face brims with poorly disguised disapproval.
 
 {color=yellow|— You say she wants an audience with Lira? Normally, I would never allow it, but if you of all people ask for this... Tell me, what are you actually aiming to achieve?}""",
-	HELEVIEL_SLAVE_RITUAL_ERLEN_OPTION_1 = "I'm genuinely want to lift her mood",
+	HELEVIEL_SLAVE_RITUAL_ERLEN_OPTION_1 = "I genuinely want to cheer her up",
 	HELEVIEL_SLAVE_RITUAL_ERLEN_OPTION_2 = "This may be helpful to us, she was a high priestess for a long time after all",
 	HELEVIEL_SLAVE_RITUAL_ERLEN_REPLY_1 = "{color=yellow|— I don't like it. You're too soft. But I'm not going to stop you. You'll find Lira at the temple—she'll probably be glad to help.}",
 	HELEVIEL_SLAVE_RITUAL_ERLEN_REPLY_2 = "{color=yellow|— I see. Pragmatic as ever, it seems. Fine, I'm not going to stop you. You'll find Lira at the temple—she'll probably be glad to help.}",
@@ -20552,5 +20552,34 @@ With a final, deep thrust, you drive into her one last time. Heleviel cries out,
 {color=yellow|— Aah!!.. So hot... Your seed is filling me!..}""",
 	HELEVIEL_WEDDING_6 = """Slowly, you withdraw, collapsing onto the bed beside her. Heleviel lies there, her body still humming with pleasure, her white hair a tangled mess around her head. She turns to face you, her green eyes soft, a mixture of satisfaction and lingering vulnerability in their depths. The dignified High Priestess is gone, replaced by a woman who has completely surrendered to you. She reaches out, her hand finding yours, her fingers lacing through yours in a silent gesture of connection. 
 
-{color=yellow|— This is so silly, but... What I feel the most right now, not being a former priestess or an elf. It's that I'm a woman. Your woman.}"""
+{color=yellow|— This is so silly, but... What I feel the most right now, not being a former priestess or an elf. It's that I'm a woman. Your woman.}""",
+
+	HELEVIEL_SNOWSET_WORKERS_OPTION = "Check shelves",
+	HELEVIEL_SNOWSET_EVENT_1 = """As you walk through the guild, suddenly Heleviel, who you took with you, spots something that catches her eye: a bright set of clothes sitting in a corner, seemingly abandoned. It draws her in, and she approaches it with fascination as she lifts it up.""",
+	HELEVIEL_SNOWSET_EVENT_2 = """You seem to be interested in it.
+
+{color=yellow|Heleviel: — N-no-... I mean, yes, I am interested in this. Even someone of my status can appreciate such fine craftsmanship. I want it. After all, I don't have that many spare clothes now. Maybe you should consider getting it for me.}""",
+	HELEVIEL_SNOWSET_EVENT_3 = """Slightly taken aback by her sudden display of assertiveness, you can't help but get curious. You call Sigmund over with the suit.
+
+{color=aqua|Sigmund: — Aye, ya can have dat.}
+
+{color=yellow|Heleviel: — This will cost us, I assume.}
+
+Sigmund strokes his beard, observing the elven woman and the skimpy suit for a few moments, until he finally speaks up.
+
+{color=aqua|Sigmund: — How about a favor 'stead? Ya seem to be eager to wear it. We can think of something.}
+
+Heleviel raises a brow, but it's too late to back out.""",
+	HELEVIEL_SNOWSET_EVENT_4 = """After a few minutes, Heleviel comes out of the dressing room wearing the clothes. They certainly appear more skimpy than what you'd expect her to wear willingly. However, her face is rather content as she looks herself over in the mirror.
+
+{color=yellow|Heleviel: — Just about the right size, as I predicted.}""",
+	HELEVIEL_SNOWSET_OPTION_1 = "I didn't take you for someone who would want to wear something like this.",
+	HELEVIEL_SNOWSET_OPTION_2 = "So what's the deal for you getting it for free?",
+	HELEVIEL_SNOWSET_EVENT_5A = """{color=yellow|Heleviel: — Oh, that... It just resembles a suit worn by one powerful sorceress that I knew a long time ago. It makes me feel a bit like her now, although naturally there's no magic in it. I guess I always thought it's entertaining to appear as someone else.}""",
+	HELEVIEL_SNOWSET_EVENT_5B = """Heleviel closes her eyes in meditation, before composing herself to deliver a clear, steady speech.
+
+{color=yellow|Heleviel: — This is a boon. A custom of goodwill. And I want to thank you, not only for the gift, but for the hands and hearts behind it that chose to make it here. Your work and benevolence deserve my sincerest blessing, which I deliver to you. You have my gratitude, and more than anyone, [name], who is the reason that I'm here. Merry Christmas!}""",
+
+
+
 }

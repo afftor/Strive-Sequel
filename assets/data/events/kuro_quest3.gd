@@ -1500,7 +1500,7 @@ var data = {
 		options = [
 			{
 				code = "kuro_dialogue_start",
-				text = "DIALOGUEBACK",
+				text = "DIALOGUECONTINUE",
 				dialogue_argument = 1,
 				type = "next_dialogue",
 				reqs = [
