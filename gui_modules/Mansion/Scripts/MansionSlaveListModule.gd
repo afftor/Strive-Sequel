@@ -146,7 +146,8 @@ func rebuild():
 		for rl in ['lock', 'ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'nudity', 'personality_lock', 'relationship', 'masturbation']:
 			var true_btn = newbutton.get_node('rule_' + rl)
 			true_btn.connect('pressed', self, 'toggle_rules', [newbutton, rl])
-			globals.connecttexttooltip(newbutton.get_node('rule_' + rl), "[center]"+tr("WORKRULE"+rl.to_upper()) + "[/center]\n" + person.translate(tr('WORKRULE%sDESCRIPT' % rl.to_upper())))
+			if rl != 'luxury':
+				globals.connecttexttooltip(newbutton.get_node('rule_' + rl), "[center]"+tr("WORKRULE"+rl.to_upper()) + "[/center]\n" + person.translate(tr('WORKRULE%sDESCRIPT' % rl.to_upper())))
 			mass_rule_list.append({
 				btn_node = true_btn,
 				act_func = 'toggle_rules_mass',
@@ -619,6 +620,10 @@ func update_button(newbutton, t_mode = mode):
 		newbutton.get_node('rule_' + rl).pressed = person.check_work_rule(rl)
 #	newbutton.get_node('rule_luxury').visible = !person.is_master()
 	newbutton.get_node('rule_luxury').disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) and !person.check_work_rule("luxury") or person.is_master()
+	var text = "[center]"+tr("WORKRULELUXURY") + "[/center]\n" + person.translate(tr('WORKRULELUXURYDESCRIPT'))
+	text += "\n"
+	text += "Rooms used %d/%d" % [luxury_rooms_taken, ResourceScripts.game_res.upgrades.luxury_rooms + 1]
+	globals.connecttexttooltip(newbutton.get_node('rule_luxury'), text)
 	newbutton.get_node('rule_relationship').disabled = person.is_master()
 	newbutton.get_node('rule_nudity').disabled = !person.has_status('sexservice')
 	newbutton.get_node('rule_contraceptive').disabled = person.check_trait('undead')
@@ -667,7 +672,8 @@ func toggle_rules(newbutton, code):
 	var cvalue = person.check_work_rule(code)
 	var nvalue = !cvalue
 	person.set_work_rule(code, nvalue)
-	update_button(newbutton)
+	update()
+#	update_button(newbutton)
 
 func toggle_rules_mass(newbutton_ref, code):
 	var newbutton = newbutton_ref.get_ref()
