@@ -317,6 +317,27 @@ var traits = {
 		effects = ['e_tr_bishop', 'e_tr_bishop2'],
 		bonusstats = {}
 	},
+	caster = {
+		code = 'caster',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		show_in_parent_stats = true,
+		effects = ['e_tr_caster_mana'],
+		bonusstats = {}
+	},
+	spellsword = {
+		code = 'spellsword',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		show_in_parent_stats = true,
+		effects = ['e_fa_aura_spellsword'],
+		tags = ['combat_casting'],
+		bonusstats = {}
+	},
 	paladin = {
 		code = 'paladin',
 		name = '',

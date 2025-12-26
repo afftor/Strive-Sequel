@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/gui/universal/skill_frame.png" type="Texture" id=2]
@@ -51,6 +51,7 @@
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/cross2_hover.png" type="Texture" id=49]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/cross2.png" type="Texture" id=50]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/cross2_pressed.png" type="Texture" id=51]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/arrow_navigator.png" type="Texture" id=52]
 
 [node name="SkillBook" type="TextureRect"]
 margin_left = 207.31
@@ -600,3 +601,37 @@ margin_bottom = 73.0
 texture_normal = ExtResource( 50 )
 texture_pressed = ExtResource( 51 )
 texture_hover = ExtResource( 49 )
+
+[node name="SkillPanelRowSwitch" type="VBoxContainer" parent="."]
+margin_left = 1081.69
+margin_top = 631.936
+margin_right = 1141.69
+margin_bottom = 801.936
+custom_constants/separation = 8
+
+[node name="Up" type="TextureButton" parent="SkillPanelRowSwitch"]
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture_normal = ExtResource( 52 )
+texture_pressed = ExtResource( 52 )
+texture_hover = ExtResource( 52 )
+expand = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SkillPanelRowSwitch"]
+margin_top = 68.0
+margin_right = 60.0
+margin_bottom = 82.0
+
+[node name="Down" type="TextureButton" parent="SkillPanelRowSwitch"]
+margin_top = 90.0
+margin_right = 60.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 60, 60 )
+texture_normal = ExtResource( 52 )
+texture_pressed = ExtResource( 52 )
+texture_hover = ExtResource( 52 )
+expand = true
+stretch_mode = 5
+flip_h = true

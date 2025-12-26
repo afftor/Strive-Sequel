@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/Universal/Modules/CharStatsPanel.tscn" type="PackedScene" id=2]
@@ -74,6 +74,7 @@
 [ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/Skills_book_icon_active.png" type="Texture" id=72]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/Skills_book_icon.png" type="Texture" id=73]
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=74]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/arrow_navigator.png" type="Texture" id=75]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -966,6 +967,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 19.0
+margin_top = 9.0
+margin_right = 1909.0
+margin_bottom = 1059.0
+mouse_filter = 2
+texture = ExtResource( 15 )
+stretch_mode = 6
+
 [node name="SkillPanel" type="GridContainer" parent="." groups=["hide_stranger", "hide_traveler"]]
 margin_left = 544.0
 margin_top = 870.0
@@ -975,9 +985,6 @@ rect_min_size = Vector2( 0, 96 )
 custom_constants/vseparation = 10
 custom_constants/hseparation = 15
 columns = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Button" type="TextureButton" parent="SkillPanel"]
 visible = false
@@ -1042,14 +1049,73 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "1"
 
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 19.0
-margin_top = 9.0
-margin_right = 1909.0
-margin_bottom = 1059.0
-mouse_filter = 2
-texture = ExtResource( 15 )
+[node name="popup" type="VBoxContainer" parent="SkillPanel/Button"]
+visible = false
+margin_top = -47.0
+margin_right = 74.0
+grow_vertical = 0
+
+[node name="Button" type="TextureButton" parent="SkillPanel/Button/popup"]
+visible = false
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+toggle_mode = true
+texture_normal = ExtResource( 69 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 32 )
+texture_disabled = ExtResource( 29 )
+expand = true
 stretch_mode = 6
+
+[node name="Icon" type="TextureRect" parent="SkillPanel/Button/popup/Button"]
+show_behind_parent = true
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+mouse_filter = 2
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 6
+
+[node name="charge" type="Label" parent="SkillPanel/Button/popup/Button"]
+visible = false
+margin_left = 31.0
+margin_top = 2.0
+margin_right = 71.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 8 )
+text = "1"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cooldown" type="Label" parent="SkillPanel/Button/popup/Button"]
+visible = false
+margin_left = 31.0
+margin_top = 45.0
+margin_right = 71.0003
+margin_bottom = 77.0
+custom_colors/font_color = Color( 0.968627, 0.0588235, 0.196078, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "1"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="manacost" type="Label" parent="SkillPanel/Button/popup/Button"]
+visible = false
+margin_left = 7.0
+margin_top = 45.0
+margin_right = 47.0
+margin_bottom = 77.0
+custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "1"
 
 [node name="Menu" type="TextureRect" parent="."]
 margin_left = 31.0
@@ -1573,3 +1639,37 @@ text = "Wood"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SkillPanelRowSwitch" type="VBoxContainer" parent="."]
+margin_left = 1513.0
+margin_top = 857.0
+margin_right = 1573.0
+margin_bottom = 1027.0
+custom_constants/separation = 8
+
+[node name="Up" type="TextureButton" parent="SkillPanelRowSwitch"]
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture_normal = ExtResource( 75 )
+texture_pressed = ExtResource( 75 )
+texture_hover = ExtResource( 75 )
+expand = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SkillPanelRowSwitch"]
+margin_top = 68.0
+margin_right = 60.0
+margin_bottom = 97.0
+
+[node name="Down" type="TextureButton" parent="SkillPanelRowSwitch"]
+margin_top = 105.0
+margin_right = 60.0
+margin_bottom = 165.0
+rect_min_size = Vector2( 60, 60 )
+texture_normal = ExtResource( 75 )
+texture_pressed = ExtResource( 75 )
+texture_hover = ExtResource( 75 )
+expand = true
+stretch_mode = 5
+flip_h = true

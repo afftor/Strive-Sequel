@@ -1541,7 +1541,23 @@ var Skilllist = {
 
 
 var global_variations = [
-	
+	{
+		template_reqs = [{attribute = 'target_number', operant = 'in', value = ['single', 'line']}],
+#		reqs = [],
+		reqs = [{code = 'has_status', status = 'combat_casting', check = true}],
+		set = {target_range = 'melee'},
+	},
+#	{ #removed due to no way to check skill handler mode in advance
+#		template_reqs = [
+#			{attribute = 'tags', operant = 'has', value = 'damage'},
+#			{attribute = 'target_number', operant = 'eq', value = 'single'},
+#			{attribute = 'ability_type', operant = 'eq', value = 'spell'},
+#			{attribute = 'follow_up', operant = 'eq', value = null},
+#		],
+#		reqs = [],
+#		reqs = [{code = 'has_status', status = 'combat_casting', check = true}],
+#		set = {follow_up = 'attack'},
+#	},
 ]
 
 
@@ -2144,7 +2160,10 @@ func get_template(id, caster):
 		var check = true
 		#check template reqs, simple syntax
 		for rec in line.template_reqs:
-			check = check and input_handler.operate(rec.operant, tres[rec.attribute], rec.value)
+			var attr = null
+			if tres.has(rec.attribute):
+				attr = tres[rec.attribute]
+			check = check and input_handler.operate(rec.operant, attr, rec.value)
 		#apply value
 		if check:
 			if !tres.has('variations'):
@@ -2204,7 +2223,10 @@ func get_template_combat(id, caster):
 		var check = true
 		#check template reqs, simple syntax
 		for rec in line.template_reqs:
-			check = check and input_handler.operate(rec.operant, tres[rec.attribute], rec.value)
+			var attr = null
+			if tres.has(rec.attribute):
+				attr = tres[rec.attribute]
+			check = check and input_handler.operate(rec.operant, attr, rec.value)
 		#apply value
 		if check:
 			if !tres.has('variations'):

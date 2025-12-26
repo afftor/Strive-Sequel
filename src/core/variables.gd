@@ -70,7 +70,7 @@ var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mp', 'lust']
 var resists_list = ['normal','fire','earth','air','water','light','dark','mind'] 
 var fighter_stats_list = ['hpmax','mpmax','atk','matk','armor','mdef','hitrate','evasion','armorpenetration','speed', 'critchance','critmod']
 
-var skill_args_checking_list_1 = ['target_range', 'target_number', 'ability_type', 'damage_type', 'tags']
+var skill_args_checking_list_1 = ['target_range', 'target_number', 'ability_type', 'damage_type', 'tags', 'mode', 'follow_up']
 var skill_args_checking_list_2 = ['damage_type']
 var skill_args_checking_list_3 = ['chance', 'evade', 'critchance', 'armor_p', 'hit_res', 'damage_type']
 
@@ -704,3 +704,7 @@ var minor_trainings_per_growth = 0.5
 
 var minor_trainings_time_base = 16
 var minor_trainings_time_per_wits = 2 #reduction
+
+
+var combat_panel_row_size = 20
+var combat_panel_rows = 6
