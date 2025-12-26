@@ -255,7 +255,7 @@ var effects = {
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
 			description = "DEMONFORMDESCRIPT",
-			tags = ['show_in_traits']
+			tags = ['show_in_traits', 'mansion_only']
 		}
 		],
 		sub_effects = [],
@@ -273,7 +273,7 @@ var effects = {
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
 			description = "HUMANFORMDESCRIPT",
-			tags = ['show_in_traits']
+			tags = ['show_in_traits', 'mansion_only']
 		}
 		],
 		sub_effects = [],
@@ -307,6 +307,7 @@ var effects = {
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
 			description = "MAGATTUNEMENTDESCRIPT",
+			tags = ['mansion_only']
 		}
 		],
 		sub_effects = [],
@@ -323,6 +324,7 @@ var effects = {
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
 			description = "COMBATATTUNEMENTDESCRIPT",
+			tags = ['mansion_only']
 		}
 		],
 		sub_effects = [],
