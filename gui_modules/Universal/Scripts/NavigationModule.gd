@@ -108,6 +108,7 @@ func build_accessible_locations(args = null):
 #			newbutton.text = tr("INFINITEDUNGEONNAME")
 			globals.connecttexttooltip(newbutton, tr("INFINITEDUNGEONNAME"))
 			newbutton2.get_node('Label').text = tr("INFINITEDUNGEONNAME")
+			newbutton.get_node('amount').text = "" #temp solution
 			newbutton.get_node('icon').texture = images.get_icon('tower')
 			newbutton2.get_node('icon').texture = images.get_icon('tower')
 			newbutton.connect("pressed", self, "open_infinite")
