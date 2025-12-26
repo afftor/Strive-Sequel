@@ -69,15 +69,15 @@ func get_damage_mod(skill):
 		if skill.target_range == 'weapon' and parent.get_ref().get_weapon_range() == 'melee':
 			res += parent.get_ref().get_stat('damage_mod_melee') - 1
 			#print(res, ' damage mod malee(weapon)')
-		if skill.target_range == 'any': 
-			res += parent.get_ref().get_stat('damage_mod_ranged') - 1
-			#print(res, ' damage mod ranged')
-		if skill.target_range == 'weapon' and parent.get_ref().get_weapon_range() == 'any':
-			res += parent.get_ref().get_stat('damage_mod_ranged') - 1
-			#print(res, ' damage mod ranged(weapon)')
 		if skill.ability_type == 'skill': 
 			res += parent.get_ref().get_stat('damage_mod_skill') - 1
 			#print(res, ' damage mod skill')
+			if skill.target_range == 'any': 
+				res += parent.get_ref().get_stat('damage_mod_ranged') - 1
+				#print(res, ' damage mod ranged')
+			if skill.target_range == 'weapon' and parent.get_ref().get_weapon_range() == 'any':
+				res += parent.get_ref().get_stat('damage_mod_ranged') - 1
+				#print(res, ' damage mod ranged(weapon)')
 		if skill.ability_type == 'spell': 
 			res += parent.get_ref().get_stat('damage_mod_spell') - 1
 			#print(res, ' damage mod spell')
