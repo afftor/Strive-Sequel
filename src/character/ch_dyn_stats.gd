@@ -488,10 +488,16 @@ func fix_stat_data(stat, data):
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []
 			data.bonuses.add.push_back({value = min(get_stat('growth_factor') - 1, get_prof_number()) * 5, src_type = 'factor', src_value = 'growth', timestamp = 0})
-		'speed', 'hitrate':
+		'speed':
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []
 			data.bonuses.add.push_back({value = min(get_stat('growth_factor') - 1, get_prof_number()) * 4, src_type = 'factor', src_value = 'growth', timestamp = 0})
+		'hitrate':
+			if !data.bonuses.has('add'):
+				data.bonuses.add = []
+			data.bonuses.add.push_back({value = min(get_stat('growth_factor') - 1, get_prof_number()) * 4, src_type = 'factor', src_value = 'growth', timestamp = 0})
+			if has_status('arcane_blade'):
+				data.bonuses.add.push_back({value = get_stat('matk') * 0.35, src_type = 'class', src_value = 'arcane_blade', timestamp = 0})
 		'evasion':
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []

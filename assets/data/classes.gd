@@ -537,12 +537,54 @@ var professions = {
 		tags = [],
 		categories = ['combat','magic'],
 		showupreqs = [{code = "class_unlocked", class = 'caster', operant = 'eq', check = true}],
-		reqs = [{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 4},{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 2},{code = 'has_any_profession', value = ['apprentice', 'scholar']}],
+		reqs = [
+			{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 4},
+			{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 2},
+			{code = 'has_any_profession', value = ['apprentice', 'scholar']}
+			],
 		statchanges = {mpmax = 15, mastery_point_magic = 3},
-		traits = [],
+		traits = ['caster'],
 		skills = [],
 		combatskills = [],
-		conflict_classes = [],
+		conflict_classes = ['spellsword'],
+	},
+	spellsword = {
+		code = 'spellsword',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/Caster.png"), #fix
+		tags = [],
+		categories = ['combat','magic'],
+		showupreqs = [{code = "class_unlocked", class = 'spellsword', operant = 'eq', check = true}],#fix
+		reqs = [ #fix
+#			{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 4},
+#			{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 2},
+			{code = 'has_profession', value = 'scholar', check = true}
+			],
+		statchanges = {}, #fix
+		traits = ['spellsword'],
+		skills = [],
+		combatskills = ['spellsword_aura', 'aura_firearr', 'aura_impale', 'aura_lightning', 'aura_darkness'], #temp
+		conflict_classes = ['caster'],
+	},
+	arcane_blade = {
+		code = 'arcane_blade',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/Caster.png"), #fix
+		tags = ['arcane_blade'],
+		categories = ['combat','magic'],
+		showupreqs = [{code = "class_unlocked", class = 'arcane_blade', operant = 'eq', check = true}],#fix
+		reqs = [ #fix
+#			{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 4},
+#			{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 2},
+			{code = 'has_profession', value = 'spellsword', check = true}
+			],
+		statchanges = {}, #fix
+		traits = [],
+		skills = [],
+		combatskills = [], #temp
+		conflict_classes = ['arcaneblade_aura', 'aura_dmg_air', 'aura_dmg_dark', 'aura_dmg_earth', 'aura_dmg_fire', 'aura_dmg_light', 'aura_dmg_water'],
 	},
 	dominator = {
 		code = 'dominator',
@@ -812,7 +854,7 @@ var professions = {
 		statchanges = {wits_bonus = 10, mdef = 5, chg_wisdom_max = 1, mastery_point_magic = 3},
 		traits = [],
 		skills = [],
-		combatskills = [],
+		combatskills = ['arcane_mastery'],
 		conflict_classes = [],
 	},
 	battlesmith = {

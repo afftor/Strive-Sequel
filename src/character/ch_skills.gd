@@ -11,6 +11,7 @@ var combat_cooldowns = {}
 var daily_cooldowns = {}
 var social_skill_panel = {}
 var combat_skill_panel = {}
+var combat_skill_panel_row = 1
 var active_panel = variables.PANEL_SOC
 var skills_received_today = []
 
@@ -18,6 +19,25 @@ var items_used_global = {}
 var items_used_today = {}
 
 var prepared_act = []
+
+func get_combat_panel_max_slots():
+	return variables.combat_panel_row_size * variables.combat_panel_rows
+
+func clamp_combat_panel_row():
+	if combat_skill_panel_row < 1:
+		combat_skill_panel_row += variables.combat_panel_rows
+	if combat_skill_panel_row > variables.combat_panel_rows:
+		combat_skill_panel_row -= variables.combat_panel_rows
+	return combat_skill_panel_row
+
+func change_combat_panel_row(delta):
+	combat_skill_panel_row += delta
+	return clamp_combat_panel_row()
+
+func get_combat_panel_row_offset():
+	clamp_combat_panel_row()
+	return (combat_skill_panel_row - 1) * variables.combat_panel_row_size
+
 
 func setup_skills(data):
 	#attention! counterintuitive naming is for a keeping compartibility with simple fighters templating, where 'skills' are for combat skills
@@ -98,8 +118,12 @@ func get_learned_skills(cat):
 
 
 func fix_skillpanels(list_soc_add, list_combat_add, list_soc_remove, list_combat_remove):
+	var max_combat_slots = get_combat_panel_max_slots()
+	clamp_combat_panel_row()
 	for pos in combat_skill_panel.keys().duplicate():
 		if combat_skill_panel[pos] in list_combat_remove:
+			combat_skill_panel.erase(pos)
+		elif pos > max_combat_slots:
 			combat_skill_panel.erase(pos)
 	for pos in social_skill_panel.keys().duplicate():
 		if social_skill_panel[pos] in list_soc_remove:
@@ -111,7 +135,7 @@ func fix_skillpanels(list_soc_add, list_combat_add, list_soc_remove, list_combat
 			continue
 		while combat_skill_panel.has(pos):
 			pos += 1
-		if pos > 21:
+		if pos > max_combat_slots:
 			break
 		combat_skill_panel[pos] = skill
 	pos = 1
@@ -555,14 +579,19 @@ func act_prepared():
 func repair_skill_panels():
 	var ssp = social_skill_panel.duplicate()
 	social_skill_panel.clear()
+	
 	for i in ssp:
 		if Skilldata.Skilllist.has(ssp[i]):
 			social_skill_panel[int(i)] = ssp[i]
 	ssp = combat_skill_panel.duplicate()
+	var max_combat_slots = get_combat_panel_max_slots()
 	combat_skill_panel.clear()
 	for i in ssp:
+		if i > max_combat_slots:
+			continue
 		if Skilldata.Skilllist.has(ssp[i]):
 			combat_skill_panel[int(i)] = ssp[i]
+	clamp_combat_panel_row()
 	var cleararray = []
 	for i in [social_skills, combat_skills]:
 		for k in i:

@@ -328,6 +328,10 @@ var buffs = {
 }
 
 var stacks = {
+	firearrows = {
+		type = 'stack_t',
+		stack = 1
+	},#toggle
 	trap_debuff = {}, #st 1
 	bolttrap_debuff = {}, #st 1
 }
