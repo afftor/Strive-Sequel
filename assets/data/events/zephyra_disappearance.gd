@@ -1,7 +1,7 @@
 extends Reference
 var data = {
 	zephyra_painting_1 = {
-		image = 'zephyra_painting', tags = ['dialogue_scene'],
+		image = 'zephyra_painting',music = "zephyra_theme", tags = ['dialogue_scene'],
 		reqs = [{type = 'unique_character_checks', name = 'zephyra', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'}, {type = 'dialogue_seen', check = false, value = 'ZEPHYRA_PAINTING_1'}],
 		text = [{text = "ZEPHYRA_PAINTING_1", reqs = []}],
 		options = [ {
@@ -81,7 +81,7 @@ var data = {
 	
 	zephyra_disappearance_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
-		reqs = [],
+		reqs = [], music = "tragic",
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_2", reqs = []}],
 #		common_effects = [{code = 'background_noise', value = 'stop'}],
 		options = [ {
@@ -455,7 +455,7 @@ var data = {
 	},
 	
 	zephyra_disappearance_ketch_2 = {
-		image = 'ketch_trade', tags = ['dialogue_scene'], 
+		image = 'ketch_trade', music = "zephyra_theme", tags = ['dialogue_scene'], 
 		reqs = [], 
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_KETCH_2", reqs = []},
 		],
@@ -506,6 +506,7 @@ var data = {
 	zephyra_disappearance_ketch_4 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [], character = "zephyra",
+		music = "zephyra_theme",
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_KETCH_4", reqs = []},
 		],
 		options = [ {
@@ -575,6 +576,7 @@ var data = {
 	zephyra_disappearance_sex_1 = { # comply
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [], 
+		music = "intimate",
 		custom_background = "zephyra_back_1", 
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
@@ -616,7 +618,7 @@ var data = {
 		}, { 
 			code = 'zephyra_disappearance_sex_4', text = "ZEPHYRA_DISAPPEARANCE_SEX_3_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
 			bonus_effects = [{code = "decision", value = "ZephTailGrabbed"},
-				{code = 'add_timed_event', value = "kuro_zeph_tailjob", args = [{type = 'add_to_date', date = [7,8], hour = 1}]}]
+				{code = 'add_timed_event', value = "kuro_zeph_tailjob", args = [{type = 'add_to_date', date = [3,4], hour = 1}]}]
 		}, ]
 	},
 	
@@ -716,6 +718,7 @@ var data = {
 	zephyra_disappearance_guards_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
+		music = "intimate_dark",
 		custom_background = "zephyra_facefuck_1", 
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
@@ -826,6 +829,7 @@ var data = {
 	zephyra_brush_3 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
+		music = "kuro_theme",
 		text = [{text = "ZEPHYRA_BRUSH_3", reqs = []},
 		],
 		options = [ {
@@ -905,7 +909,7 @@ var data = {
 	},
 	
 	zephyra_brush_8 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = null, music = "zephyra_theme", tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = 'zephyra',
 		text = [{text = "ZEPHYRA_BRUSH_8", reqs = []},
 		],
@@ -915,7 +919,7 @@ var data = {
 	},
 	
 	zephyra_brush_9 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = null, music = "tragic", tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = 'zephyra',
 		text = [{text = "ZEPHYRA_BRUSH_9", reqs = []},
 		],

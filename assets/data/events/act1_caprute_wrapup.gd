@@ -39,7 +39,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan',
 		text = [{text = "PRE_ANASTASIA_EXECUTION_4", reqs = [], }],
 		common_effects = [{code = 'add_timed_event', value = "duncans_declaration_start", 
-		args = [{type = 'add_to_date', date = [7,7], hour = 1}]}], 
+		args = [{type = 'add_to_date', date = [3,3], hour = 1}]}], 
 		options = [ {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3, type = 'next_dialogue', bonus_effects = [{code = 'complete_quest', value = 'princess_search'}, {code = "update_guild"},
 			{code = 'remove_quest_location', value = 'quest_final_operation_location'}]

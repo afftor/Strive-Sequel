@@ -19,7 +19,7 @@ var data = {
 	},
 	
 	lilia_startring_1 = {
-		image = null, tags = ['dialogue_scene'],
+		image = null, music = "lilia_theme",tags = ['dialogue_scene'],
 		reqs = [], character = "lilia", 
 		text = [{text = "LILIA_STARTING_1", reqs = []}],
 		common_effects = [{code = 'progress_quest', value = 'lilia_meet_quest', stage = 'stage2'},{code = 'update_location'}],
@@ -58,6 +58,7 @@ var data = {
 		variations = [ {
 			image = null, tags = ['dialogue_scene', 'master_translate'],
 			reqs = [{type = 'decision', value = 'seduced_lilia', check = true}], character = "lilia", 
+			music = "intimate",
 			text = [{text = "LILIA_SEX_SCENE_0", reqs = []}],
 			options = [ {
 				code = 'lilia_sex_scene_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
@@ -66,6 +67,7 @@ var data = {
 		}, { 
 			image = null, tags = ['dialogue_scene'],
 			reqs = [{type = 'decision', value = 'seduced_lilia', check = false}], character = "lilia", 
+			music = "intimate",
 			text = [{text = "LILIA_SEDUCTION_1", reqs = []},],
 			options = [ {
 				code = 'lilia_sex_scene_1', text = "LILIA_SEDUCTION_1_OPTION_1", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 4}]}], dialogue_argument = 10, type = 'next_dialogue',
@@ -219,7 +221,7 @@ var data = {
 	},
 	
 	sick_lilia_1 = { 
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = null, music = 'tragic', tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = "myr", 
 		text = [{text = "SICK_LILIA_1", reqs = []}],
 		options = [ {
@@ -453,7 +455,7 @@ var data = {
 	},
 	
 	lilia_mansion_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		image = null, music = "lilia_theme", tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
 		reqs = [], 
 		text = [{text = "LILIA_MANSION_1", reqs = [], bonus_effects = [{code = 'affect_unique_character', name = 'lilia', type = 'set_availability', value = true},] },
 			{text = "", reqs = [{type = 'decision', value = 'potion_tame', check = true}], bonus_effects = [{code = 'affect_unique_character', name = 'lilia', type = 'stat', stat = 'tame_factor', value = 1}]},
@@ -512,7 +514,7 @@ var data = {
 			bonus_effects = [
 				{code = 'complete_quest', value = 'sick_lilia_quest'},
 				{code = 'update_mansion'},
-				{code = 'add_timed_event', value = "lilia_finale_1", args = [{type = 'add_to_date', date = [7, 7], hour = 1}]}
+				{code = 'add_timed_event', value = "lilia_finale_1", args = [{type = 'add_to_date', date = [5, 5], hour = 1}]}
 			]
 		}, ]
 	},

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Archmage.png-1ff1b3de291e1ac40e5ada6a05121350.stex"
+path="res://.import/Archmage_old.png-e223e631f6b4ff47fcb6f698b97baa16.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/iconsclasses/Archmage.png"
-dest_files=[ "res://.import/Archmage.png-1ff1b3de291e1ac40e5ada6a05121350.stex" ]
+source_file="res://assets/images/iconsclasses/Archmage_old.png"
+dest_files=[ "res://.import/Archmage_old.png-e223e631f6b4ff47fcb6f698b97baa16.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

@@ -3090,6 +3090,9 @@ Only one Arrow type spell can be active.""", # MISSING TRANSLATION
 	TRAITBASIC_SPELLSDESCRIPT = """Позволяет изучать базовые боевые заклинания и использовать посохи""",
 	TRAITADVANCED_SPELLSDESCRIPT = """Позволяет изучать продвинутые боевые заклинания и использовать посохи""",	
 	TRAITHUNTER_DAMAGEDESCRIPT = """Урон против зверей: +15%""",
+	TRAITSPELLSWORDDESCRIPT = """All single target and row (3 targets) abilities (skills and spells) can only be cast in melee range and has melee range penalty for back rows/being cast from back rows (half damage). 
+Single target magic spells have 100% chance to be followed up with a basic melee attack.""", # MISSING TRANSLATION
+	TRAITCASTERDESCRIPT = """Recover 10% of maximum mana after combat""", # MISSING TRANSLATION
 	TRAITBISHOPDESCRIPT = """Урон от светлой магии: +25%
 {color=brown|Освящение}: Способности Света, направленные на одиночную цель заставляют цель получать больше урона Светом и Тьмой.""",
 	TRAITDRUIDDESCRIPT = """Урон от заклинаний земли: +20%""",
@@ -5116,6 +5119,8 @@ Requires: Базовый рабский труд""",
 	ENEMYKURDAN = """Курдан""",
 	
 	ENEMYLEON = """Леон""",
+	ENEMYLILITH_BOSS_1 = """Ashmedai""", # MISSING TRANSLATION
+	ENEMYLILITH_BOSS_2 = """Ashmedai""", # MISSING TRANSLATION
 	ENEMYWHITE_STAG = """Белый олень""",
 	ENEMYWHITE_STAG_HUMAN = """Таинственная личность""",
 	ENEMYELF_SPECTER = """Эльф-наблюдатель""",
@@ -8768,6 +8773,8 @@ AFTER_ELECTION_PRINCESS_MINDBREAK_7 = """Вы чувствуете, как де�
 	ITEMXARI_AMULETDESCRIPT = """Личная работа Ксари, подаренная вам за вашу помощь. Он сияет от силы своего создателя.""",
 	ITEMAMELIA_DRESS = """Платье служанки Амелии""",
 	ITEMAMELIA_DRESSDESCRIPT = """Старое платье, принадлежащее одному из лидеров Слуг. Его исключительная искусная работа не имеет никаких признаков износа.""",
+	ITEMAMENIXX_HEADGEAR = """Void Cape""", # MISSING TRANSLATION
+	ITEMAMENIXX_HEADGEARDESCRIPT = """An ethereal cape greatly improving waerer's magic resistance by redirecting the hostile magic into the other dimension.""", # MISSING TRANSLATION
 	
 	SCENEWIP = """Извините! Эта сцена находится в стадии разработки.""",
 

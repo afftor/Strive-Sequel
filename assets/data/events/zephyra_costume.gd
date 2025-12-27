@@ -2,7 +2,7 @@ extends Reference
 var data = {
 	zephyra_costume_1 = { 
 		variations = [ {
-			image = null, tags = ['dialogue_scene','master_translate'],
+			image = null, music = "zephyra_theme", tags = ['dialogue_scene','master_translate'],
 			reqs = [{type = "location_has_specific_slaves", check = true, value = 1, location = 'elf_capital', reqs = [{code = 'unique', value = 'zephyra'}]}],
 			 character = 'zephyra',
 			text = [ {text = "ZEPHYRA_COSTUME_2", reqs = []} ],
@@ -14,7 +14,7 @@ var data = {
 				code = 'zephyra_costume_3_3', reqs = [], text = tr("ZEPHYRA_COSTUME_2_OPTION_3"), type = 'next_dialogue', dialogue_argument = 3
 			},]
 		}, {
-			image = null, tags = ['dialogue_scene','master_translate'], 
+			image = null, music = "zephyra_theme",tags = ['dialogue_scene','master_translate'], 
 			reqs = [], 
 			text = [ {text = "ZEPHYRA_COSTUME_1_1", reqs = [{type = 'dialogue_seen', check = false, value = 'ZEPHYRA_COSTUME_1_1'}]},
 			{text = "ZEPHYRA_COSTUME_1_2", reqs = [{type = 'dialogue_seen', check = true, value = 'ZEPHYRA_COSTUME_1_1'}]} ],

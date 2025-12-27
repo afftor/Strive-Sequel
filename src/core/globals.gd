@@ -1068,7 +1068,7 @@ func ImportGame(filename):
 			},
 			{code = 'progress_quest', value = 'main_quest_loan', stage = 'stage0'},
 			{code = 'progress_quest', value = 'guilds_introduction', stage = 'start'},
-			{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 1}]}
+			{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [3,5], hour = 1}]}
 			])
 	
 

@@ -2565,6 +2565,9 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	TRAITADVANCED_SPELLSDESCRIPT = "Allows to learn advanced combat spells and staves\n允许学习使用高级战斗法术和法杖",
 	
 	TRAITHUNTER_DAMAGEDESCRIPT = "Damage vs Beasts: +15%\n对野兽的伤害：+15%",
+	TRAITSPELLSWORDDESCRIPT = """All single target and row (3 targets) abilities (skills and spells) can only be cast in melee range and has melee range penalty for back rows/being cast from back rows (half damage). 
+Single target magic spells have 100% chance to be followed up with a basic melee attack.""", # MISSING TRANSLATION
+	TRAITCASTERDESCRIPT = """Recover 10% of maximum mana after combat""", # MISSING TRANSLATION
 	TRAITBISHOPDESCRIPT = "Light Magic damage: +40%\n光魔法伤害：+40%",
 	TRAITDRUIDDESCRIPT = "Earth Spell damage: +20%\n地法术伤害：+20%",
 	TRAITBERSERKERDESCRIPT = "Fire and Earth Physical damage: +20%\n火和地物理伤害：+20%",
@@ -4129,6 +4132,8 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	ENEMYKURDAN = "库尔丹",
 	
 	ENEMYLEON = "莱昂",
+	ENEMYLILITH_BOSS_1 = """Ashmedai""", # MISSING TRANSLATION
+	ENEMYLILITH_BOSS_2 = """Ashmedai""", # MISSING TRANSLATION
 	ENEMYWHITE_STAG = "白色牡鹿",
 	ENEMYWHITE_STAG_HUMAN = "神秘人",
 	ENEMYELF_SPECTER = "精灵幽魂",

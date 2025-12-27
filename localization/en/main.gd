@@ -2249,7 +2249,7 @@ You won't be able to finish turn if your total number of characters is bigger th
 	STATTRAINEE_AMOUNT = "Training Slots",
 	STATTRAINING_LOYALTY = "Loyalty from Training",
 	STATTRAINING_SPIRIT = "Spirit from Training",
-	STATRESISTANCE_RED = "Resistance drop speed",
+	STATRESISTANCE_RED = "Resistance Drop Speed",
 	STATTRAINER_LOYALTY_BONUS = "Loyalty for trainee",
 	STATTRAINING_LOYALTYDESCRIPT = "Loyalty bonus gained by this character from Training",
 	STATTRAINING_SPIRITDESCRIPT = "Adjustment for Spirit decline during Training",
@@ -2957,7 +2957,7 @@ Training has higher chance of success.""",
 	TRAITCHEFDESCRIPT = "Cooking is 100% faster.",
 	TRAITATTENDANTDESCRIPT = "Once per combat turn [name] can use an item without using a turn.",
 	TRAITALCHEMISTDESCRIPT = "Healing items are 25% more effective in combat.",
-	TRAITMASTER_ALCHEMISTT = "Master alchemist",
+	TRAITMASTER_ALCHEMISTT = "Master Alchemist",
 	TRAITMASTER_ALCHEMISTDESCRIPT = "Crafted alchemy items are at least normal quality.",
 	TRAITMASTER_SMITH = "Master smith",
 	TRAITMASTER_SMITHDESCRIPT = "Crafted items are at least normal quality.",
@@ -2992,7 +2992,8 @@ Skill attacks possess Dark element.""",
 	TRAITBASIC_SPELLSDESCRIPT = "Allows to learn basic combat spells and staves",
 	TRAITADVANCED_SPELLSDESCRIPT = "Allows to learn advanced combat spells and staves",
 	TRAITHUNTER_DAMAGEDESCRIPT = "Damage vs Beasts: +15%",
-	TRAITSPELLSWORDDESCRIPT = """All single target and row (3 targets) abilities (skills and spells) can only be cast in melee range and has melee range penalty for back rows/being cast from back rows (half damage). 
+	TRAITSPELLSWORDDESCRIPT = """All offensive skills and spells are cast and considered as {color=yellow|Melee Range}. 
+	
 Single target magic spells have 100% chance to be followed up with a basic melee attack.""",
 	TRAITCASTERDESCRIPT = "Recover 10% of maximum mana after combat",
 	TRAITBISHOPDESCRIPT = """Light Magic damage: +25%
@@ -3760,6 +3761,10 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	PROFMONKDESCRIPT = "Religious fighters who utilize their spiritual training to deal with the enemies.",
 	PROFBISHOP = "Bishop",
 	PROFBISHOPDESCRIPT = "Only selected few manage to reach this rank. Highest members of the church capable of unleashing divine powers.",
+	PROFSPELLSWORD = "Spellsword",
+	PROFSPELLSWORDDESCRIPT = "By mixing magic and martial arts especially gifted individuals are capable of fighting with both at the same time.",
+	PROFARCANEBLADE = "Arcane Blade",
+	PROFARCANEBLADDESCRIPT = "Further honing their magic skills, Spellswords become capable not only flinging spells in the midst of fight but even imbuing their weapon in elements.",
 	PROFSPOUSE = "Husband",
 	PROFSPOUSEALT = "Wife",
 	PROFSPOUSEDESCRIPT = "An officially engaged spouse of Mansion's [Master]. Can train 2 more persons.",
@@ -4869,6 +4874,8 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYAIRE = "Aire",
 	ENEMYKURDAN = "Kurdan",
 	ENEMYLEON = "Leon",
+	ENEMYLILITH_BOSS_1 = "Ashmedai",
+	ENEMYLILITH_BOSS_2 = "Ashmedai",
 	ENEMYWHITE_STAG = "White Stag",
 	ENEMYWHITE_STAG_HUMAN = "Mysterious Person",
 	ENEMYELF_SPECTER = "Elf Specter",
@@ -5046,7 +5053,7 @@ Boosts Productivity by 25%.
 	WORKRULERELATIONSHIP = "Allow Romance",
 	WORKRULERELATIONSHIPDESCRIPT = "[name] will be allowed to establish romantic relationship with other characters besides [master].",
 	WORKRULEMASTURBATION = "Forbid Masturbation",
-	WORKRULEMASTURBATIONDESCRIPT = "[name] will not be allowed to relieve [him]self, leading to increased stress but higher libido. Loyalty Gain +2; Productivity -10%",
+	WORKRULEMASTURBATIONDESCRIPT = "[name] will not be allowed to relieve [him]self, leading to increased stress but higher libido. Resistance Drop Speed: +20%; Productivity: -10%",
 	WORKRULELOCK = "Lock Character",
 	WORKRULELOCKDESCRIPT = "Locks character from showing [him] in the list of tasks and activites which permanently remove or sell [him].",
 	SERVICEENSLAVE = "Enslave",
@@ -8193,6 +8200,8 @@ You push Anastasia to the floor and she spreads her legs wide for you. You mount
 	ITEMXARI_AMULETDESCRIPT = "Personal work of Xari gifted to you for your help. It shines with imbued power of its maker.",
 	ITEMAMELIA_DRESS = "Amelia's servant Dress",
 	ITEMAMELIA_DRESSDESCRIPT = "Old dress beloning to one of Servant's leaders. Its exceptional craftsmanwork does not show any sign of weariness.",
+	ITEMAMENIXX_HEADGEAR = "Void Cape",
+	ITEMAMENIXX_HEADGEARDESCRIPT = "An ethereal cape greatly improving waerer's magic resistance by redirecting the hostile magic into the other dimension.",
 	SCENEWIP = "Sorry! This scene is currently WIP. ",
 	AMELIASCENEOPTION = "I wonder if you could repay me for my work...",
 	UNIQUE_CLASS = "Can't be learned normally",
@@ -20189,7 +20198,9 @@ You steady her for a minute as her eyes remain unfocused and her body processes 
 	KURO3_GOOD_3_1 = "{color=yellow|Kuro: — It's... I can't say for certain yet, but I hope to learn more about everything I can.}",
 	KURO3_GOOD_3_2 = "{color=yellow|Kuro: — Heh, very funny. You really think a foul ancient being like her would care about some gold coins?}",
 	KURO3_GOOD_3_3 = "{color=yellow|Kuro: — Please, [name], you're making me blush, and it's really not suitable for someone who's just done what I did. Let's save it for later.}",
-	KURO3_GOOD_3 = """{color=yellow|Kuro: — One thing's for sure: Nixx is no more, and it will both help us against the cult and stop me from worrying.}
+	KURO3_GOOD_3 = """
+	
+{color=yellow|Kuro: — One thing's for sure: Nixx is no more, and it will both help us against the cult and stop me from worrying.}
 
 Kuro finally steadies herself, releasing your hand, and you leave the place.""",
 	KURO3_BAD_1 = """You snatch the Cage from Kuro's powerless hands with ease, feeling the power within. As you glance at the puzzled Kuro, you focus on the ancient sealed powers, feeling them surge from the device into you. Kuro raises her head, speechless in disbelief, too weak to fight or perhaps too confused to react.

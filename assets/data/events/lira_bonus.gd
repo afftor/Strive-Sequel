@@ -10,6 +10,7 @@ var data = {
 						check = true
 					}
 				],
+				music = "lira_theme",
 				common_effects = [
 					{
 						code = 'clear_subroom'
@@ -46,6 +47,7 @@ var data = {
 						check = false
 					}
 				],
+				music = "lira_theme",
 				common_effects = [
 					{
 						code = 'clear_subroom'

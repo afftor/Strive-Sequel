@@ -292,7 +292,7 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [
 					{code = 'progress_quest', value = 'cali_taming_quest', stage = 'stage5'},
-					{code = 'add_timed_event', value = "cali_act3_magic_1", args = [{type = 'add_to_date', date = [5,5], hour = 1}]},
+					{code = 'add_timed_event', value = "cali_act3_magic_1", args = [{type = 'add_to_date', date = [4,4], hour = 1}]},
 					{code = "decision", value = "cali_normal_collar"},
 					{code = 'unique_character_changes',
 					value = 'cali',
@@ -312,7 +312,7 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [
 					{code = 'progress_quest', value = 'cali_taming_quest', stage = 'stage5'},
-					{code = 'add_timed_event', value = "cali_act3_magic_1", args = [{type = 'add_to_date', date = [5,5], hour = 1}]},
+					{code = 'add_timed_event', value = "cali_act3_magic_1", args = [{type = 'add_to_date', date = [4,4], hour = 1}]},
 					{code = "decision", value = "cali_normal_collar"},
 					{code = 'unique_character_changes',
 					value = 'cali',
@@ -357,7 +357,7 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [
 					{code = 'progress_quest', value = 'cali_taming_quest', stage = 'stage5'},
-					{code = 'add_timed_event', value = "cali_act3_magic_1", args = [{type = 'add_to_date', date = [5,5], hour = 1}]},
+					{code = 'add_timed_event', value = "cali_act3_magic_1", args = [{type = 'add_to_date', date = [4,4], hour = 1}]},
 					{code = "decision", value = "cali_exquisite_collar"},
 					{code = 'unique_character_changes',
 					value = 'cali',
@@ -396,7 +396,7 @@ var data = {
 		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT3_MAGIC_2_3", reqs = []}],
 		common_effects = [
-			{code = 'add_timed_event', value = "cali_act3_magic_1", args = [{type = 'add_to_date', date = [7,7], hour = 1}]},
+			{code = 'add_timed_event', value = "cali_act3_magic_1", args = [{type = 'add_to_date', date = [4,4], hour = 1}]},
 			{code = 'affect_unique_character', name = 'cali', type = 'set_availability', value = false},
 			{code = 'add_timed_event', value = {name = 'cali', type = 'set_availability', value = true},
 			args = [{type = 'action_to_date', date = [1,1], hour = 1, action = "affect_unique_character"}]}
@@ -635,7 +635,7 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
 			bonus_effects = [{code = 'progress_quest', value = 'cali_taming_quest', stage = 'stage11'},
-				{code = 'add_timed_event', value = "cali_act4_merchant_start", args = [{type = 'add_to_date', date = [5,5], hour = 1}]},
+				{code = 'add_timed_event', value = "cali_act4_merchant_start", args = [{type = 'add_to_date', date = [3,3], hour = 1}]},
 			{code = 'decision', value = 'cali_dating_unlocked'}
 			]
 		}, ]
@@ -784,7 +784,7 @@ var data = {
 		text = [{text = "CALI_ACT4_MAST_4_LEAVE", reqs = [], }], 
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'add_timed_event', value = "cali_act5_pet_start", args = [{type = 'add_to_date', date = [5,5], hour = 1}]}]
+			bonus_effects = [{code = 'add_timed_event', value = "cali_act5_pet_start", args = [{type = 'add_to_date', date = [3,3], hour = 1}]}]
 		}, ],
 	},
 	
@@ -821,7 +821,7 @@ var data = {
 		custom_background = "cali_fuck_2",
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'add_timed_event', value = "cali_act5_pet_start", args = [{type = 'add_to_date', date = [5,5], hour = 1}]}]
+			bonus_effects = [{code = 'add_timed_event', value = "cali_act5_pet_start", args = [{type = 'add_to_date', date = [3,3], hour = 1}]}]
 		}, ]
 	},
 	

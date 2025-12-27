@@ -552,33 +552,33 @@ var professions = {
 		code = 'spellsword',
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsclasses/Caster.png"), #fix
+		icon = load("res://assets/images/iconsclasses/spellsword.png"),
 		tags = [],
 		categories = ['combat','magic'],
 		showupreqs = [{code = "class_unlocked", class = 'spellsword', operant = 'eq', check = true}],#fix
 		reqs = [ #fix
 #			{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 4},
 #			{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 2},
-			{code = 'has_profession', value = 'scholar', check = true}
+			{code = 'has_profession', profession = 'scholar', check = true}
 			],
 		statchanges = {}, #fix
 		traits = ['spellsword'],
 		skills = [],
-		combatskills = ['spellsword_aura', 'aura_firearr', 'aura_impale', 'aura_lightning', 'aura_darkness'], #temp
+		combatskills = ['spellsword_aura'], #temp
 		conflict_classes = ['caster'],
 	},
 	arcane_blade = {
 		code = 'arcane_blade',
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsclasses/Caster.png"), #fix
+		icon = load("res://assets/images/iconsclasses/arcane_blade.png"),
 		tags = ['arcane_blade'],
 		categories = ['combat','magic'],
 		showupreqs = [{code = "class_unlocked", class = 'arcane_blade', operant = 'eq', check = true}],#fix
 		reqs = [ #fix
 #			{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 4},
 #			{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 2},
-			{code = 'has_profession', value = 'spellsword', check = true}
+			{code = 'has_profession', profession = 'spellsword', check = true}
 			],
 		statchanges = {}, #fix
 		traits = [],

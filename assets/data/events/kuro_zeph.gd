@@ -4,6 +4,7 @@ var data = {
 		reqs = [
 
 		],
+		music = "zephyra_theme",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -184,6 +185,7 @@ var data = {
 		reqs = [
 
 		],
+		music = "intimate_funny",
 		tags = [
 			"dialogue_scene",
 			"master_translate"

@@ -332,7 +332,7 @@ var data = {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [
 				{code = 'complete_quest', value = 'amelia_herbs_quest'},
-				{code = 'add_timed_event', value = "amelia_intro", args = [{type = 'add_to_date', date = [10,14], hour = 1}]}
+				{code = 'add_timed_event', value = "amelia_intro", args = [{type = 'add_to_date', date = [6,8], hour = 1}]}
 				]
 		}, ],
 	},
@@ -466,7 +466,7 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'complete_quest', value = 'amelia_herbs_quest'},
-			{code = 'add_timed_event', value = "amelia_intro", args = [{type = 'add_to_date', date = [10,14], hour = 1}]}]
+			{code = 'add_timed_event', value = "amelia_intro", args = [{type = 'add_to_date', date = [6,8], hour = 1}]}]
 		}, ],
 	},
 	

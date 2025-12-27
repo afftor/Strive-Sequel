@@ -44,6 +44,8 @@ var music = {
 	#intro = load("res://assets/sounds/music/ending.ogg"),
 	intimate = load("res://assets/sounds/music/closeness.ogg"),
 	intimate_dark = load("res://assets/sounds/music/dark temptation.ogg"),
+	intimate_funny = load("res://assets/sounds/music/dark temptation.ogg"),
+	
 	
 	tragic = load("res://assets/sounds/music/opening.ogg"), #placeholder
 	lira_theme = load("res://assets/sounds/music/opening.ogg"), #placeholder

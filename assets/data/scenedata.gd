@@ -1171,7 +1171,7 @@ var scenedict = {
 		tags = [],
 		image = 'daisyevent',
 		common_effects = [#common_effects are treated in state by applying simple changes to game state and characters.
-		{code = 'add_timed_event', value = "daisy_confess_event", args = [{type = 'add_to_date', date = [7,10], hour = 3}]},
+		{code = 'add_timed_event', value = "daisy_confess_event", args = [{type = 'add_to_date', date = [3,4], hour = 3}]},
 		{code = 'unique_character_changes', value = 'daisy', args = [ #unique_character_changes takes an unique character and apply specific values to their values with exceptions of traits and tags which treated separately
 			{code = 'tame_factor', value = 1, operant = "+"},
 			]},

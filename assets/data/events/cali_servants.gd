@@ -31,7 +31,7 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 			bonus_effects = [
 				{code = 'complete_quest', value = 'cali_fighters_quest'},
-				{code = 'add_timed_event', value = "cali_sidequest_7", args = [{type = 'add_to_date', date = [7,7], hour = 1}]},
+				{code = 'add_timed_event', value = "cali_sidequest_7", args = [{type = 'add_to_date', date = [4,4], hour = 1}]},
 			 ]
 		},],
 	}, 
@@ -174,7 +174,7 @@ var data = {
 					{code = 'charm_factor', operant = '+', value = 1},
 				]},
 				{code = 'add_timed_event', value = "cali_sex_5", args = [{type = 'add_to_date', date = [2,2], hour = 2}]},
-				{code = 'add_timed_event', value = "cali_heirloom_1", args = [{type = 'add_to_date', date = [5,5], hour = 2}]},
+				{code = 'add_timed_event', value = "cali_heirloom_1", args = [{type = 'add_to_date', date = [4,4], hour = 2}]},
 				{code = 'complete_quest', value = 'cali_servants_quest'},# or advance
 			 ]
 		},],

@@ -1,7 +1,7 @@
 extends Reference
 var data = {
 	daisy_wedding_1 = {
-		image = null, tags = ['dialogue_scene'],
+		image = null, music = "daisy_theme", tags = ['dialogue_scene'],
 		reqs = [], character = "daisy_wed", 
 		text = [{text = "DAISY_WEDDING_1", reqs = []}],
 		options = [ {
@@ -32,6 +32,7 @@ var data = {
 	
 	daisy_wedding_3 = {
 		custom_background = "daisy_wedding1", 
+		music = "intimate",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		unlocked_gallery_seq = "daisy_wedding",
@@ -77,7 +78,7 @@ var data = {
 	
 	
 	amelia_wedding_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = null, music = "daisy_theme", tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = "amelia", 
 		text = [{text = "AMELIA_WEDDING_1", reqs = []}],
 		options = [ {
@@ -108,6 +109,7 @@ var data = {
 	amelia_wedding_3 = {
 		custom_background = "amelia_wedding1", 
 		scene_type = "ero_scene",
+		music = "intimate",
 		save_scene_to_gallery = true,
 		unlocked_gallery_seq = "amelia_wedding",
 		image = null, tags = ['dialogue_scene'], reqs = [], 
@@ -167,7 +169,8 @@ var data = {
 	cali_wedding_1 = {
 		variations = [ { # GOOD ROUTE
 			reqs = [{type = 'decision', value = 'cali_raped', check = false}], 
-			image = null, tags = ['dialogue_scene'],
+			image = null,
+			music = "cali_theme", tags = ['dialogue_scene'],
 			character = "cali", 
 			text = [{text = "CALI_WEDDING_GOOD_1", reqs = []}],
 			options = [ {
@@ -177,6 +180,7 @@ var data = {
 			}, ]
 		}, { # BAD ROUTE
 			reqs = [], 
+			music = "cali_theme",
 			image = null, tags = ['dialogue_scene'],
 			character = "cali", 
 			text = [{text = "CALI_WEDDING_BAD_1", reqs = []}],
@@ -211,6 +215,7 @@ var data = {
 	cali_wedding_3 = {
 		custom_background = "cali_wedding1", 
 		scene_type = "ero_scene",
+		music = "intimate",
 		save_scene_to_gallery = true,
 		unlocked_gallery_seq = "cali_wedding",
 		image = null, tags = ['dialogue_scene'], reqs = [], 
@@ -256,6 +261,7 @@ var data = {
 	lilia_wedding_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = "lilia", 
+		music = "intimate",
 		text = [{text = "LILIA_WEDDING_1", reqs = []}],
 		options = [ {
 			code = 'lilia_wedding_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
@@ -333,6 +339,7 @@ var data = {
 	lilith_wedding_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = "lilith", 
+		music = "intimate",
 		text = [{text = "LILITH_WEDDING_1", reqs = []}],
 		options = [ {
 			code = 'lilith_wedding_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
@@ -399,6 +406,7 @@ var data = {
 	kuro_wedding_1 = {
 		custom_background = "kuro_wedding_1",
 		scene_type = "ero_scene",
+		music = "intimate",
 		save_scene_to_gallery = true,
 		unlocked_gallery_seq = "kuro_wedding_pussy",
 		dialogue_type = 2,
@@ -477,6 +485,7 @@ var data = {
 	anastasia_wedding_1 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		scene_type = "ero_scene",
+		music = "intimate",
 		custom_background = "ana_wed_1",
 		save_scene_to_gallery = true,
 		unlocked_gallery_seq = "ana_wed",
@@ -554,6 +563,7 @@ var data = {
 	zephyra_wedding_1 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		scene_type = "ero_scene",
+		music = "intimate",
 		custom_background = "zephyra_wed_1",
 		save_scene_to_gallery = true,
 		unlocked_gallery_seq = "zephyra_wed",
