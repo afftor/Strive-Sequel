@@ -4139,6 +4139,10 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Chin_tex', texture = "res://Character_generator/images/01_heads/head_chin_kobold2.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Chin_tex', texture = "res://Character_generator/images/01_heads/head_chin_kobold2.png"},
 		],
+		kobold_2 = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Chin_tex', texture = "res://Character_generator/images/01_heads/head_chin_curve_kobold.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Chin_tex', texture = "res://Character_generator/images/01_heads/head_chin_curve_kobold.png"},
+		],
 		small = [
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Chin_tex', texture = "res://Character_generator/images/01_heads/head_chin_small.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Chin_tex', texture = "res://Character_generator/images/01_heads/head_chin_small.png"},
@@ -4209,8 +4213,8 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Nose_tex', texture = "res://Character_generator/images/03_noses/nose_dwarf.png"},
 		],
 		kobold = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Nose_tex', texture = "res://Character_generator/images/03_noses/nose_kobold.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Nose_tex', texture = "res://Character_generator/images/03_noses/nose_kobold.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Nose_tex', texture = "res://Character_generator/images/03_noses/nose_kobold_2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Nose_tex', texture = "res://Character_generator/images/03_noses/nose_kobold_2.png"},
 		],
 		small = [
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Nose_tex', texture = "res://Character_generator/images/03_noses/nose_small.png"},
