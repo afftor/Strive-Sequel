@@ -28,7 +28,10 @@ func open(character, category, triggernode, triggerfunction):
 		newbutton.get_node('icon').texture = i.icon
 		newbutton.get_node("Label").text = i.name
 		newbutton.connect("pressed", self, "select", [i.code])
-		globals.connectskilltooltip(newbutton, i.code, person)
+		if i.has('container'):
+			globals.connecttexttooltip(newbutton, tr(i.descript))
+		else:
+			globals.connectskilltooltip(newbutton, i.code, person)
 	rect_size.y = min(50 + skillarray.size() * 50+45, 500)
 	popup()
 	self.rect_position = get_global_mouse_position()

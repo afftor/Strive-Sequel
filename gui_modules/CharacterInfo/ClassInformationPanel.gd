@@ -68,6 +68,9 @@ func open(classcode, person):
 		newnode.texture = skill.icon
 		if skill.icon == null:
 			newnode.texture = load("res://assets/images/gui/panels/noimage.png")
-		globals.connectskilltooltip(newnode, skill.code, person)
+		if skill.has('container'):
+			globals.connecttexttooltip(newnode, tr(skill.descript))
+		else:
+			globals.connectskilltooltip(newnode, skill.code, person)
 	$CombatLabel.visible = tempclass.combatskills.size() > 0
 	# show()
