@@ -587,7 +587,7 @@ func repair_skill_panels():
 	var max_combat_slots = get_combat_panel_max_slots()
 	combat_skill_panel.clear()
 	for i in ssp:
-		if i > max_combat_slots:
+		if int(i) > max_combat_slots:
 			continue
 		if Skilldata.Skilllist.has(ssp[i]):
 			combat_skill_panel[int(i)] = ssp[i]
