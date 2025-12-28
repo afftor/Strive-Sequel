@@ -41,3 +41,14 @@ func process_tick(ev):
 func get_active_effects():
 	if effects.size() <= template.stack: #effectively always
 		return effects.duplicate()
+
+
+func get_duration():
+	if effects.empty(): 
+		return null
+	var res = {}
+	res.count = 0
+	res.event = effects_pool.get_effect_by_id(effects.keys()[0]).get_duration().event
+	for eff in effects:
+		res.count += effects_pool.get_effect_by_id(eff).get_duration().count
+	return res
