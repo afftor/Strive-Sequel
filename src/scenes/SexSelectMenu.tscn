@@ -240,12 +240,3 @@ margin_bottom = 102.516
 text = "Participants: 0/0"
 align = 1
 valign = 1
-
-[node name="MaxParticipantsLabel" type="Label" parent="."]
-margin_left = 758.036
-margin_top = 101.516
-margin_right = 1025.04
-margin_bottom = 134.516
-text = "Bedroom limit: 0"
-align = 1
-valign = 1
