@@ -1552,6 +1552,15 @@ var traits = {
 		effects = [],
 		tags = ['master_smith']
 	},
+	master_tailor = {#removes bad craft
+		code = 'master_tailor',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+		tags = ['master_tailor']
+	},
 	master_alchemist = {#removes bad craft
 		code = 'master_alchemist',
 		name = '',

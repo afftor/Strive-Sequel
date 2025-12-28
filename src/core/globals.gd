@@ -240,8 +240,10 @@ func CreateGearItemCraft(item, parts, person, newname = null):
 	var diffdata = {boost = 0, prof = false, no_enchant = true}
 	if Items.recipes.has(item):
 		match Items.recipes[item].worktype:
-			'smith', 'tailor':
+			'smith':
 				diffdata.prof = person.has_status('master_smith')
+			'tailor':
+				diffdata.prof = person.has_status('master_tailor')
 			'alchemy':
 				diffdata.prof = person.has_status('master_alchemist')
 		diffdata.boost += person.get_task_diff()
