@@ -438,6 +438,7 @@ var bodypartsdata = {
 		default = {code = "default", name = 'style1', chardescript = '', bodychanges = []},
 		curve = {code = "curve", name = 'style2', chardescript = '', bodychanges = []},
 		kobold = {code = "kobold", name = 'kobold', chardescript = '', bodychanges = []},
+		kobold_2 = {code = "kobold_2", name = 'kobold', chardescript = '', bodychanges = []},
 		small = {code = "small", name = 'style3', chardescript = '', bodychanges = []},
 		skinny = {code = "skinny", name = 'style4', chardescript = '', bodychanges = []},
 		male = {code = "male", name = 'style5', chardescript = '', bodychanges = []},

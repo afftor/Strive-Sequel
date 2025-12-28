@@ -143,7 +143,10 @@ func build_spells():
 			panel.get_node('icon').texture = load(s_data.icon)
 		else:
 			panel.get_node('icon').texture = s_data.icon
-		globals.connectskilltooltip(panel, id, person)
+		if s_data.has('container'):
+			globals.connecttexttooltip(panel, tr(s_data.descript))
+		else:
+			globals.connectskilltooltip(panel, id, person)
 		if s_data.cost.has('mp'):
 			panel.get_node('value').text = str(s_data.cost.mp)
 		else:

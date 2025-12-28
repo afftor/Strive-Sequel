@@ -317,6 +317,7 @@ var racelist = {
 			horns = ['short'],
 			body_shape = ['shortstack'],
 			nose = ['kobold'],
+			chin = ['kobold', 'kobold_2'],
 			body_color_skin = ['green1', 'green3', 'green4', 'green5'],
 			skin_coverage = ['kobold'],
 			beard = ['no'],
