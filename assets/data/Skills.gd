@@ -2213,6 +2213,8 @@ func get_template(id, caster):
 	tres.descript = tr(tres.descript)
 	if tres.cost.has('mp'):
 		tres.cost.mp = caster.get_manacost_for_skill(tres)
+	if tres.has('reqs') and !caster.checkreqs(tres.reqs):
+		tres.descript += '\n\n' + caster.decipher_reqs(tres.reqs, true)
 	return tres
 
 
@@ -2265,6 +2267,8 @@ func get_template_combat(id, caster):
 	tres.descript = tr(tres.descript)
 	if tres.cost.has('mp'):
 		tres.cost.mp = caster.get_manacost_for_skill(tres)
+	if tres.has('reqs') and !caster.checkreqs(tres.reqs):
+		tres.descript += '\n\n' + caster.decipher_reqs(tres.reqs, true)
 	return tres
 
 
