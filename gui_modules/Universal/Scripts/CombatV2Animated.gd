@@ -1379,6 +1379,7 @@ func setup_skill_button(newbutton, skill_id):
 		for id in skill.container:
 			var nbutton = input_handler.DuplicateContainerTemplate(newbutton.get_node('popup'))
 			setup_skill_button(nbutton, id)
+			nbutton.set_meta('display_only', true)
 		globals.connecttexttooltip(newbutton, tr(skill.descript))
 		return
 	if skill.cost.has('mp'):
