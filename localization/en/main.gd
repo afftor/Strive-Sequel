@@ -1518,11 +1518,13 @@ Must have Bow weapon type equipped.
 Does not take turn to activate. 
 Only one Arrow type spell can be active.""",
 	SKILLSPELLSWORD_AURA = "Spell Tracing",
-	SKILLSPELLSWORD_AURADESCRIPT = """Select a spell from list to add to single-target skills its free copy. 
+	SKILLSPELLSWORD_AURADESCRIPT = """[center]Spell Tracing[/center]
+Select a spell from list to add to single-target skills its free copy. 
 
 Does not take turn to activate. """,
 	SKILLARCANEBLADE_AURA = "Elemental Weapon",
-	SKILLARCANEBLADE_AURADESCRIPT = """Change weapon element to one you have mastery with.
+	SKILLARCANEBLADE_AURADESCRIPT = """[center]Elemental Weapon[/center]
+Change weapon element to one you have mastery with.
 
 Does not take turn to activate. """,
 	SKILLARCANE_MASTERY = "Arcane Mastery",
@@ -1536,7 +1538,7 @@ Does not take turn to activate. """,
 	SKILLAURA_LIGHTNING = "Spell Tracing: Lightning",
 	SKILLAURA_LIGHTNING_REMOVE = "Turn off Spell Tracing",
 	SKILLAURA_LIGHTNINGDESCRIPT = """Single target skills have 75% chance to follow up with a Lightning for free.""",
-	SKILLAURA_DARKNESS = "Spell Tracing:",
+	SKILLAURA_DARKNESS = "Spell Tracing: Darkness",
 	SKILLAURA_DARKNESS_REMOVE = "Turn off Spell Tracing",
 	SKILLAURA_DARKNESSDESCRIPT = """Single target skills have 75% chance to follow up with a Darkness for free.""",
 	SKILLAURA_DMGAIR = "Elemental Weapon: Air",
