@@ -678,16 +678,16 @@ func get_short_race():
 	return race.capitalize()
 
 func equip(item, item_prev_id = null):
-	set_stat('portrait_update', true)
 	equipment.equip(item, item_prev_id)
+	set_stat('portrait_update', true)
 
 func unequip(item, hard = true):
-	set_stat('portrait_update', true)
 	equipment.unequip(item, hard)
+	set_stat('portrait_update', true)
 
 func unequip_all(hard = true):
-	set_stat('portrait_update', true)
 	equipment.clear_equip(hard)
+	set_stat('portrait_update', true)
 
 
 func upgrade_mastery(school, force_universal = false):
