@@ -1519,12 +1519,12 @@ Does not take turn to activate.
 Only one Arrow type spell can be active.""",
 	SKILLSPELLSWORD_AURA = "Spell Tracing",
 	SKILLSPELLSWORD_AURADESCRIPT = """[center]Spell Tracing[/center]
-Select a spell from list to add to single-target skills its free copy. 
+Magic flows through your body into the weapon, allowing to follow up your physical single target attacks with a basic spell of your choice. Requires the spell being learnt. Drains 1 mana per attack. 
 
 Does not take turn to activate. """,
 	SKILLARCANEBLADE_AURA = "Elemental Weapon",
 	SKILLARCANEBLADE_AURADESCRIPT = """[center]Elemental Weapon[/center]
-Change weapon element to one you have mastery with.
+Change weapon element to one you have at least level 2 Mastery in. Takes 5 mana per activation.
 
 Does not take turn to activate. """,
 	SKILLARCANE_MASTERY = "Arcane Mastery",
@@ -3656,6 +3656,8 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	PROFHUNTERDESCRIPT = "Hunters specialize in tracking and killing game.",
 	PROFSMITH = "Blacksmith",
 	PROFSMITHDESCRIPT = "Smiths are master craftsmen, able to work with all sorts of materials.",
+	PROFTAILOR = "Tailor",
+	PROFTAILORDESCRIPT = "Tailors specialize in production of cloth and leather armor as well as everyday garments.",
 	PROFCHEF = "Chef",
 	PROFCHEFDESCRIPT = "A skilled cook is always a valuable addition to any household.",
 	PROFATTENDANT = "Attendant",
