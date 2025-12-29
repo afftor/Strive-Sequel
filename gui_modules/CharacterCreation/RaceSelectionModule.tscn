@@ -131,6 +131,7 @@ __meta__ = {
 }
 
 [node name="RandomButton" type="Button" parent="."]
+visible = false
 margin_left = 130.0
 margin_top = 750.0
 margin_right = 325.0

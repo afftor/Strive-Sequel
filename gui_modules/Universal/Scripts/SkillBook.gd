@@ -128,8 +128,8 @@ func set_skill_to_pos(skill, pos):
 	for ps in src:
 		if src[ps] == skill:
 			oldpos.push_back(ps)
-	for ps in oldpos:
-		src.erase(ps)
+#	for ps in oldpos:
+#		src.erase(ps)
 	src[pos] = skill
 	RebuildSkillBook()
 
