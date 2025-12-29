@@ -576,7 +576,7 @@ var professions = {
 #			{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 2},
 			{code = 'has_profession', profession = 'scholar', check = true}
 			],
-		statchanges = {hpmax = 10, physics_bonus = 10, evasion = 5, mastery_point_physics = 1, mastery_point_magic = 1}, #fix
+		statchanges = {hpmax = 10, physics_bonus = 10, evasion = 5, mastery_point_combat = 1, mastery_point_magic = 1}, #fix
 		traits = ['spellsword'],
 		skills = [],
 		combatskills = ['spellsword_aura'], #temp
@@ -595,7 +595,7 @@ var professions = {
 #			{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 2},
 			{code = 'has_profession', profession = 'spellsword', check = true}
 			],
-		statchanges = {hpmax = 15, mdef = 10, def = 5, mastery_point_physics = 1, mastery_point_magic = 1},
+		statchanges = {hpmax = 15, mdef = 10, def = 5, mastery_point_combat = 1, mastery_point_magic = 1},
 		traits = [],
 		skills = [],
 		combatskills = ['arcaneblade_aura'], #temp
