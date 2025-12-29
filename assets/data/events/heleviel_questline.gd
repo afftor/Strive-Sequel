@@ -43,24 +43,12 @@ var data = {
 		text = [
 			{
 				text = "HELEVIEL_QUEST_2_1",
-				reqs = [
-					{
-						code = "race",
-						race = "Elf",
-						check = false
-					}
-				],
+				reqs = [{type = 'master_check', value = [{code = "race", race = "Elf", check = false}]}],
 				previous_dialogue_option = 1
 			},
 			{
 				text = "HELEVIEL_QUEST_2_1a",
-				reqs = [
-					{
-						code = "race",
-						race = "Elf",
-						check = true
-					}
-				],
+				reqs = [{type = 'master_check', value = [{code = "race", race = "Elf", check = true}]}],
 				previous_dialogue_option = 1
 			},
 			{

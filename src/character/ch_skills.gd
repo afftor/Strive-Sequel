@@ -118,6 +118,7 @@ func get_learned_skills(cat):
 
 
 func fix_skillpanels(list_soc_add, list_combat_add, list_soc_remove, list_combat_remove):
+	combat_skill_panel_row = int(combat_skill_panel_row)
 	var max_combat_slots = get_combat_panel_max_slots()
 	clamp_combat_panel_row()
 	for pos in combat_skill_panel.keys().duplicate():
