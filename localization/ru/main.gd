@@ -3876,6 +3876,10 @@ Requires: Базовый рабский труд""",
 	PROFMONKDESCRIPT = """Религиозные бойцы, использующие свою духовную подготовку для борьбы с врагами.""",
 	PROFBISHOP = """Епископ""",
 	PROFBISHOPDESCRIPT = """Только избранным удается достичь этого ранга. Высшие члены церкви, способные высвобождать божественные силы.""",
+	PROFSPELLSWORD = """Spellsword""", # MISSING TRANSLATION
+	PROFSPELLSWORDDESCRIPT = """By mixing magic and martial arts especially gifted individuals are capable of fighting with both at the same time.""", # MISSING TRANSLATION
+	PROFARCANEBLADE = """Arcane Blade""", # MISSING TRANSLATION
+	PROFARCANEBLADDESCRIPT = """Further honing their magic skills, Spellswords become capable not only flinging spells in the midst of fight but even imbuing their weapon in elements.""", # MISSING TRANSLATION
 	PROFSPOUSE = """Муж""",
 	PROFSPOUSEALT = """Жена""",
 	PROFSPOUSEDESCRIPT = """Официально обрученная супруг [Master]а поместья. Утечка Повиновения равна 0. Прирост верности +3.""",

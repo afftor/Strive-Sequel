@@ -14,6 +14,7 @@ var music = {
 	battle1 = load("res://assets/sounds/music/battle dance.ogg"),
 	battle2 = load("res://assets/sounds/music/oriental.ogg"),
 	battle3 = load("res://assets/sounds/music/saltation.ogg"),
+	battle4 = load("res://assets/sounds/music/take what you can.ogg"),
 
 	
 	daisy_theme = load("res://assets/sounds/music/Daisy Theme.ogg"),
@@ -44,17 +45,19 @@ var music = {
 	#intro = load("res://assets/sounds/music/ending.ogg"),
 	intimate = load("res://assets/sounds/music/closeness.ogg"),
 	intimate_dark = load("res://assets/sounds/music/dark temptation.ogg"),
-	intimate_funny = load("res://assets/sounds/music/dark temptation.ogg"),
+	intimate_funny = load("res://assets/sounds/music/intimate_mischevious.ogg"),
 	
 	
-	tragic = load("res://assets/sounds/music/opening.ogg"), #placeholder
-	lira_theme = load("res://assets/sounds/music/opening.ogg"), #placeholder
-	heleviel_theme = load("res://assets/sounds/music/opening.ogg"), #placeholder
+	tragic = load("res://assets/sounds/music/Tragic.ogg"), 
+	lira_theme = load("res://assets/sounds/music/Lira theme.ogg"), 
+	heleviel_theme = load("res://assets/sounds/music/Heleviel Theme.ogg"),
 	
 	dwarf_cap = load("res://assets/sounds/music/dwarf_capital.ogg"),
 	tower = load("res://assets/sounds/music/tower_of_dreams.ogg"),
 	beastkin_village = load("res://assets/sounds/music/tribal_village.ogg"),
-
+	
+	arena_combat = load("res://assets/sounds/music/Arena Combat Theme.ogg"),
+	threat = load("res://assets/sounds/music/Threat.ogg"),
 
 }
 

@@ -166,7 +166,7 @@ var professions = {
 		categories = ['labor'],
 		showupreqs = [{code = "class_unlocked", class = 'smith', operant = 'eq', check = true}],
 		reqs = [{code = 'stat', stat = 'physics', operant = 'gte', value = 25}],
-		statchanges = {physics_bonus = 10, hpmax = 15, mod_smith = 1.0, mod_tailor = 0.5, mod_build = 0.5, chg_strength_max = 1},
+		statchanges = {physics_bonus = 10, hpmax = 15, mod_smith = 1.0, mod_build = 0.5, chg_strength_max = 1},
 		traits = ['master_smith'],#'smith'],
 		skills = [],
 		combatskills = ['weapon_refine'],
@@ -179,9 +179,9 @@ var professions = {
 		icon = load("res://assets/images/iconsclasses/tailor.png"),
 		tags = [],
 		categories = ['labor'],
-		showupreqs = [{code = "class_unlocked", class = 'tailor', operant = 'eq', check = true}],
+		showupreqs = [],
 		reqs = [{code = 'stat', stat = 'wits', operant = 'gte', value = 25}],
-		statchanges = {wits_bonus = 10, hpmax = 10, mod_tailor = 1.0, mod_smith = 0.5, mod_build = 0.5, chg_dexterity_max = 1},
+		statchanges = {wits_bonus = 10, hpmax = 10, mod_tailor = 1.0, chg_dexterity_max = 1},
 		traits = ['master_tailor'],
 		skills = [],
 		combatskills = [],
@@ -557,7 +557,7 @@ var professions = {
 			{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 2},
 			{code = 'has_any_profession', value = ['apprentice', 'scholar']}
 			],
-		statchanges = {mpmax = 15, mastery_point_magic = 3},
+		statchanges = {mp_reg_add_part = 2, mpmax = 15, mastery_point_magic = 3},
 		traits = ['caster'],
 		skills = [],
 		combatskills = [],
@@ -570,13 +570,13 @@ var professions = {
 		icon = load("res://assets/images/iconsclasses/spellsword.png"),
 		tags = [],
 		categories = ['combat','magic'],
-		showupreqs = [{code = "class_unlocked", class = 'spellsword', operant = 'eq', check = true}],#fix
+		showupreqs = [],#fix
 		reqs = [ #fix
 #			{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 4},
 #			{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 2},
 			{code = 'has_profession', profession = 'scholar', check = true}
 			],
-		statchanges = {}, #fix
+		statchanges = {hpmax = 10, physics_bonus = 10, evasion = 5, mastery_point_physics = 1, mastery_point_magic = 1}, #fix
 		traits = ['spellsword'],
 		skills = [],
 		combatskills = ['spellsword_aura'], #temp
@@ -589,17 +589,17 @@ var professions = {
 		icon = load("res://assets/images/iconsclasses/arcane_blade.png"),
 		tags = ['arcane_blade'],
 		categories = ['combat','magic'],
-		showupreqs = [{code = "class_unlocked", class = 'arcane_blade', operant = 'eq', check = true}],#fix
+		showupreqs = [],#fix
 		reqs = [ #fix
 #			{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 4},
 #			{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 2},
 			{code = 'has_profession', profession = 'spellsword', check = true}
 			],
-		statchanges = {}, #fix
+		statchanges = {hpmax = 15, mdef = 10, def = 5, mastery_point_physics = 1, mastery_point_magic = 1},
 		traits = [],
 		skills = [],
-		combatskills = [], #temp
-		conflict_classes = ['arcaneblade_aura', 'aura_dmg_air', 'aura_dmg_dark', 'aura_dmg_earth', 'aura_dmg_fire', 'aura_dmg_light', 'aura_dmg_water'],
+		combatskills = ['arcaneblade_aura'], #temp
+		conflict_classes = [],
 	},
 	dominator = {
 		code = 'dominator',
@@ -639,7 +639,7 @@ var professions = {
 		tags = [],
 		categories = ['combat','magic'],
 		showupreqs = [],
-		reqs = [{code = 'stat', stat = 'physics', operant = 'gte', value = 50},{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 4},{code = 'has_profession', profession = 'caster', check = true}],
+		reqs = [{code = 'stat', stat = 'physics', operant = 'gte', value = 50},{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 4},{code = 'has_any_profession', value = ['apprentice', 'scholar']}],
 		statchanges = {hpmax = 20, mastery_point_magic = 2},
 		traits = ['bloodmage'],
 		skills = [],
@@ -865,7 +865,7 @@ var professions = {
 		tags = [],
 		categories = ['combat','magic'],
 		showupreqs = [{code = "class_unlocked", class = 'archmage', operant = 'eq', check = true}],
-		reqs = [{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 5},{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 4},{code = 'has_profession', profession = 'apprentice', check = true},{code = 'has_profession', profession = 'scholar', check = true}],
+		reqs = [{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 5},{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 4},{code = 'has_profession', profession = 'caster', check = true}],
 		statchanges = {wits_bonus = 10, mdef = 5, chg_wisdom_max = 1, mastery_point_magic = 3},
 		traits = [],
 		skills = [],
@@ -941,7 +941,7 @@ var professions = {
 		tags = [],
 		categories = ['combat','magic'],
 		showupreqs = [],
-		reqs = [{code = 'has_profession', profession = 'priest', check = true},{code = 'stat', stat = 'wits', operant = 'gte', value = 80}],
+		reqs = [{code = 'has_profession', profession = 'priest', check = true},{code = 'has_profession', profession = 'caster', check = true},{code = 'stat', stat = 'wits', operant = 'gte', value = 80}],
 		statchanges = {wits_bonus = 10, mpmax = 20, chg_wisdom_max = 1, mastery_light = 1, mastery_point_magic = 1, damage_mod_heal = 0.25},
 		traits = ['bishop'],
 		skills = [],

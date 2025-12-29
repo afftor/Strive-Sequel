@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/take what you can.ogg-cf50b2017378c4293c3b712583a022a4.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/take what you can.ogg"
+dest_files=[ "res://.import/take what you can.ogg-cf50b2017378c4293c3b712583a022a4.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -2,6 +2,7 @@ extends Reference
 var data = {
 	ritual_start = {
 		image = null,
+		music = "intimate_dark",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -373,6 +374,7 @@ var data = {
 			"master_translate",
 			"blackscreen_transition_common"
 		],
+		music = "mae_theme",
 		reqs = [
 
 		],
@@ -1514,6 +1516,7 @@ var data = {
 	},
 	leon_fight_1 = {
 		image = "leon",
+		music = "threat",
 		tags = [
 			"dialogue_scene",
 			"master_translate"

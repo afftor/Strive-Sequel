@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/intimate_mischevious.ogg-363a5c603cb6746536c20e94b01727f3.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/intimate_mischevious.ogg"
+dest_files=[ "res://.import/intimate_mischevious.ogg-363a5c603cb6746536c20e94b01727f3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

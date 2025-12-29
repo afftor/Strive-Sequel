@@ -301,6 +301,7 @@ var data = {
 	zephyra_disappearance_boy_4 = {
 		image = 'interiour_hut_boy', tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [],
+		music = "threat",
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_BOY_4", reqs = []},
 		],
 		options = [ {
@@ -455,7 +456,7 @@ var data = {
 	},
 	
 	zephyra_disappearance_ketch_2 = {
-		image = 'ketch_trade', music = "zephyra_theme", tags = ['dialogue_scene'], 
+		image = 'ketch_trade', music = "threat", tags = ['dialogue_scene'], 
 		reqs = [], 
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_KETCH_2", reqs = []},
 		],

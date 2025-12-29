@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Arena Combat Theme.ogg-4195527435a1e5d1f004cb178745d55e.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/Arena Combat Theme.ogg"
+dest_files=[ "res://.import/Arena Combat Theme.ogg-4195527435a1e5d1f004cb178745d55e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

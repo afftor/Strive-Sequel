@@ -205,7 +205,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	playergroup.clear()
 	turnorder.clear()
 	if music == 'combattheme':
-		var temparray = ['battle1','battle2','battle3']
+		var temparray = ['battle1','battle2','battle3','battle4']
 		music = temparray[randi()%temparray.size()]
 	input_handler.SetMusic(music)
 	fightover = false

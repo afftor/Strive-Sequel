@@ -35,6 +35,8 @@ func show_slave_info():
 		person = hovered_person
 	else:
 		person = input_handler.interacted_character
+#	if person.get_stat("unique") == "lilith":
+#		print(1)
 	if person != null:
 #		$Panel.visible = !person.has_profession('master')
 		$Panel.visible = false

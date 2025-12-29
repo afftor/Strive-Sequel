@@ -2,7 +2,10 @@ Added Christmas Heleviel outfit (obtained at workers guild)
 Improved quest notice board
 Added multiple new songs through the game and story
 Added reroll option to character creation for name and appearance
+Added new crafter class: Tailor
+Added new combat classes: Spellsword, Arcane Blade.
 Revamped the way damage modificators are calculated to be addictive instead of multiplicative
+Improved enemy damage resistance 
 Nerfed critical rates across various effects and classes
 Nerfed Ninja's evasion bonus
 Reduced the number of waiting days for most quests and events to progress

@@ -134,6 +134,7 @@ var data = {
 
 	intermission_2_intro_1 = {
 		image = null,
+		music = 'tragic',
 		character = "anastasia",
 		character2 = 'greg',
 		tags = ["dialogue_scene", "master_translate","blackscreen_transition_slow"],

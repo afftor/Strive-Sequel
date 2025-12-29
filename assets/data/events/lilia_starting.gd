@@ -58,7 +58,7 @@ var data = {
 		variations = [ {
 			image = null, tags = ['dialogue_scene', 'master_translate'],
 			reqs = [{type = 'decision', value = 'seduced_lilia', check = true}], character = "lilia", 
-			music = "intimate",
+			music = "intimate_funny",
 			text = [{text = "LILIA_SEX_SCENE_0", reqs = []}],
 			options = [ {
 				code = 'lilia_sex_scene_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
@@ -67,7 +67,7 @@ var data = {
 		}, { 
 			image = null, tags = ['dialogue_scene'],
 			reqs = [{type = 'decision', value = 'seduced_lilia', check = false}], character = "lilia", 
-			music = "intimate",
+			music = "intimate_funny",
 			text = [{text = "LILIA_SEDUCTION_1", reqs = []},],
 			options = [ {
 				code = 'lilia_sex_scene_1', text = "LILIA_SEDUCTION_1_OPTION_1", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 4}]}], dialogue_argument = 10, type = 'next_dialogue',
@@ -481,6 +481,7 @@ var data = {
 	lilia_mansion_3 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
+		music = "intimate_funny",
 		text = [{text = "LILIA_MANSION_3", reqs = []}],
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,

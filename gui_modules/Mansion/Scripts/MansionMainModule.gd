@@ -438,7 +438,7 @@ func slave_list_manager():
 			else:
 				skill_source = active_person
 			SkillModule.build_skill_panel()
-			SlaveListModule.rebuild()
+			SlaveListModule.update_buttons()
 			SlaveModule.show_slave_info()
 		'skill':
 			if active_person.is_on_quest():

@@ -81,6 +81,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'dungeon',
 		tags = [
 			"dialogue_scene"
 		],
@@ -367,6 +368,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'dungeon',
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -705,6 +707,7 @@ var data = {
 						]
 					}
 				],
+				music = 'tragic',
 				tags = [
 					"dialogue_scene"
 				],
@@ -1164,6 +1167,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
+		music = 'jean_theme',
 		text = [
 			{
 				text = "DTAVERN_JEAN_AFIGHT",
@@ -1424,6 +1428,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'jean_theme',
 		character = "jean",
 		tags = [
 			"dialogue_scene"
@@ -1496,6 +1501,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'jean_theme',
 		character = "jean",
 		tags = [
 			"dialogue_scene"
@@ -1907,6 +1913,7 @@ var data = {
 
 		],
 		character = "jean",
+		music = 'jean_theme',
 		tags = [
 			"dialogue_scene"
 		],
@@ -2255,6 +2262,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'threat',
 		character = "jean",
 		tags = [
 			"dialogue_scene"
@@ -2358,6 +2366,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'threat',
 		character = "jean",
 		tags = [
 			"dialogue_scene"
@@ -2393,6 +2402,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'threat',
 		character = "jean",
 		tags = [
 			"dialogue_scene"
@@ -2459,6 +2469,7 @@ var data = {
 		character = "jean"
 	},
 	jean_dungeon_guard = {
+		music = 'dungeon',
 		reqs = [
 
 		],

@@ -49,6 +49,7 @@ var data = {
 	# KOBOLD part
 	looking_for_princess_3 = {
 		image = "kobold", tags = ['dialogue_scene'],
+		music = "dungeon",
 		common_effects = [{code = 'decision', value = 'MetKobold'}],
 		text = [{text = "LOOKING_FOR_PRINCESS_6", reqs = []}],
 		options = [ {
@@ -253,7 +254,7 @@ var data = {
 	},
 
 	looking_for_princess_elven_1 = {
-		image = null, tags = ['dialogue_scene'], reqs = [],
+		image = null, music = "heleviel_theme",tags = ['dialogue_scene'], reqs = [],
 		text = [{text = "LOOKING_FOR_PRINCESS_22", reqs = [{type = 'decision', value = 'interrogation_success', check = true}]},
 		{text = "LOOKING_FOR_PRINCESS_23", reqs = [{type = 'decision', value = 'interrogation_success', check = false}]}],
 		options = [ {
@@ -444,7 +445,7 @@ var data = {
 	},
 
 	looking_for_princess_elven_15 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'zephyra', character2 = 'heleviel',
+		image = null, music = 'zephyra_theme', tags = ['dialogue_scene'], reqs = [], character = 'zephyra', character2 = 'heleviel',
 		text = [{text = "LOOKING_FOR_PRINCESS_45", reqs = []}],
 		options = [ {
 			code = 'looking_for_princess_elven_16', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'

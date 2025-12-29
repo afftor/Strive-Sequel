@@ -262,7 +262,7 @@ var data = {
 	},
 
 	after_mines_convoy_8 = {
-		image = null, tags = ['dialogue_scene','blackscreen_transition_common'], character = "duncan", character2 = "anastasia",
+		image = null, music = 'threat', tags = ['dialogue_scene','blackscreen_transition_common'], character = "duncan", character2 = "anastasia",
 		text = [{text = "AFTER_MINES_CONVOY_15", reqs = []}],
 		options = [ {
 			code = 'after_mines_convoy_9', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'

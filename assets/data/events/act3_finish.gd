@@ -4,6 +4,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'dungeon',
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -134,6 +135,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'threat',
 		tags = [
 			"dialogue_scene"
 		],
@@ -426,6 +428,7 @@ var data = {
 				tags = [
 					"dialogue_scene"
 				],
+				music = 'threat',
 				character = "kuro",
 				character2 = "demon_female",
 				text = [
@@ -518,6 +521,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'threat',
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -688,6 +692,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
+		music = 'tragic',
 		character = "kuro",
 		text = [
 			{
@@ -746,6 +751,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
+		music = 'tragic',
 		character = "kuro",
 		character2 = "zephyra",
 		text = [
@@ -965,6 +971,7 @@ var data = {
 						value = "DWARF_AFTERMATCH_KING_NOKURO"
 					}
 				],
+				music = 'dwarf_cap',
 				tags = [
 					"dialogue_scene"
 				],
@@ -1017,6 +1024,7 @@ var data = {
 						check = false
 					}
 				],
+				music = 'dwarf_cap',
 				tags = [
 					"dialogue_scene"
 				],
@@ -1216,6 +1224,7 @@ var data = {
 						check = true
 					}
 				],
+				music = 'dwarf_cap',
 				tags = [
 					"dialogue_scene",
 					"master_translate"
@@ -1996,6 +2005,7 @@ var data = {
 						check = true
 					}
 				],
+				music = 'jean_theme',
 				tags = [
 					"dialogue_scene",
 					"master_translate"
@@ -2045,6 +2055,7 @@ var data = {
 						check = true
 					}
 				],
+				music = 'jean_theme',
 				tags = [
 					"dialogue_scene"
 				],
@@ -2253,6 +2264,7 @@ var data = {
 			"dialogue_scene"
 		],
 		character = "hara",
+		music = 'hara_theme',
 		text = [
 			{
 				text = "HARA_RECRUIT_START",
@@ -2391,6 +2403,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'kuro_theme',
 		tags = [
 			"dialogue_scene"
 		],

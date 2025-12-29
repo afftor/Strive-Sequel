@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Tragic.ogg-4cd4bcaa851903c66fe08ca4dea21a79.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/Tragic.ogg"
+dest_files=[ "res://.import/Tragic.ogg-4cd4bcaa851903c66fe08ca4dea21a79.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

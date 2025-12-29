@@ -3045,6 +3045,10 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	PROFMONKDESCRIPT = "Religious fighters who utilize their spiritual training to deal with the enemies.\n利用他们的精神训练来对付敌人的宗教战士",
 	PROFBISHOP = "Bishop 主教",
 	PROFBISHOPDESCRIPT = "Only selected few manage to reach this rank. Highest members of the church capable of unleashing divine powers.\n只有少数人能够达到这个级别。教会中能够释放神圣力量的最高成员",
+	PROFSPELLSWORD = """Spellsword""", # MISSING TRANSLATION
+	PROFSPELLSWORDDESCRIPT = """By mixing magic and martial arts especially gifted individuals are capable of fighting with both at the same time.""", # MISSING TRANSLATION
+	PROFARCANEBLADE = """Arcane Blade""", # MISSING TRANSLATION
+	PROFARCANEBLADDESCRIPT = """Further honing their magic skills, Spellswords become capable not only flinging spells in the midst of fight but even imbuing their weapon in elements.""", # MISSING TRANSLATION
 	PROFSPOUSE = "Husband",
 	PROFSPOUSEALT = "Wife",
 	PROFSPOUSEDESCRIPT = "An officially engaged spouse of Mansion's [Master]. Obedience Drain is 0. Loyalty Gain +3.",

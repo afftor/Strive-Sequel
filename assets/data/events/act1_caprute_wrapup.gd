@@ -276,7 +276,7 @@ var data = {
 	},
 	
 	mindcontrol_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'xari',
+		image = null, music = 'intimate_dark', tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'xari',
 		text = [{text = "MIND_CONTROL_11", reqs = []}],
 		options = [ {
 			code = 'mindcontrol_2', text = "MIND_CONTROL_12", reqs = [], dialogue_argument = 1,
@@ -354,7 +354,7 @@ var data = {
 	
 	#Close guild window before so that Aliron is on the screen
 	anastasia_execution_start = {
-		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'amelia',
+		image = null,  music = 'intimate_dark', tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'amelia',
 		scene_type = "unlocked_gallery_seq",
 		unlocked_gallery_seq = "anastasia_execution",
 		save_scene_to_gallery = true,

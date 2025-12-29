@@ -11,7 +11,7 @@ var data = {
 	},
 	
 	betrayal_confirmed_rebels_1_win = {
-		image = null, tags = ['dialogue_scene'], character = "duncan",
+		image = null, music = 'threat', tags = ['dialogue_scene'], character = "duncan",
 		common_effects = [{code = 'background_noise', value = 'start', sound = 'battle_noise'}],
 		text = [{text = "BETRAYAL_CONFIRMED_1", reqs = []}],
 		options = [ {
@@ -45,7 +45,7 @@ var data = {
 	},
 	
 	betrayal_confirmed_rebels_2_win = {
-		image = null, tags = ['dialogue_scene'], character = "myr",
+		image = null, music = 'threat', tags = ['dialogue_scene'], character = "myr",
 		text = [{text = "BETRAYAL_CONFIRMED_5", reqs = []}],
 		common_effects = [{code = 'background_noise', value = 'start', sound = 'battle_noise'}],
 		options = [ {
@@ -203,7 +203,7 @@ var data = {
 	
 	# duncan and myr part
 	divine_symbol_6 = {
-		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "myr",
+		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "myr", music = 'threat',
 		text = [{text = "DIVINE_SYMBOL_7", reqs = []}],
 		options = [ {
 			code = 'divine_symbol_7', text = "DIVINE_SYMBOL_OPTION_8", type = 'next_dialogue',
@@ -327,7 +327,7 @@ var data = {
 	},
 	
 	wrong_building_rebels_win = {
-		image = 'dome', tags = ['dialogue_scene'],
+		image = 'dome', music = 'threat', tags = ['dialogue_scene'],
 		text = [{text = "DIVINE_SYMBOL_17", reqs = []}],
 		options = [ {
 			code = 'divine_symbol_13', text = "DIVINE_SYMBOL_OPTION_11", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -389,7 +389,7 @@ var data = {
 	},
 	
 	two_guards_win = {
-		image = 'dome', tags = ['dialogue_scene'],
+		image = 'dome', music = 'threat', tags = ['dialogue_scene'],
 		text = [{text = "DIVINE_SYMBOL_22", reqs = []}],
 		options = [ {
 			code = 'divine_symbol_18', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -397,7 +397,7 @@ var data = {
 	},
 	
 	divine_symbol_18 = {
-		image = null, tags = ['dialogue_scene'], character = "zephyra",
+		image = null, music = 'zephyra_theme', tags = ['dialogue_scene'], character = "zephyra",
 		text = [{text = "DIVINE_SYMBOL_23", reqs = []}],
 		options = [ {
 			code = 'divine_symbol_19', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -550,7 +550,7 @@ var data = {
 	},
 	
 	divine_symbol_31 = {
-		image = 'battlefield', tags = ['dialogue_scene', 'blackscreen_transition_common'], 
+		image = 'battlefield', music = 'threat', tags = ['dialogue_scene', 'blackscreen_transition_common'], 
 		text = [ {text = "DIVINE_SYMBOL_44", reqs = []}],
 		options = [ {
 			code = 'divine_symbol_32', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
