@@ -570,13 +570,13 @@ var professions = {
 		icon = load("res://assets/images/iconsclasses/spellsword.png"),
 		tags = [],
 		categories = ['combat','magic'],
-		showupreqs = [],#fix
-		reqs = [ #fix
+		showupreqs = [],
+		reqs = [
 #			{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 4},
 #			{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 2},
 			{code = 'has_profession', profession = 'scholar', check = true}
 			],
-		statchanges = {hpmax = 10, physics_bonus = 10, evasion = 5, mastery_point_physics = 1, mastery_point_magic = 1}, #fix
+		statchanges = {hpmax = 10, physics_bonus = 10, evasion = 5, mastery_point_combat = 1, mastery_point_magic = 1, mastery_point_universal = 1}, 
 		traits = ['spellsword'],
 		skills = [],
 		combatskills = ['spellsword_aura'], #temp
@@ -589,13 +589,13 @@ var professions = {
 		icon = load("res://assets/images/iconsclasses/arcane_blade.png"),
 		tags = ['arcane_blade'],
 		categories = ['combat','magic'],
-		showupreqs = [],#fix
+		showupreqs = [],
 		reqs = [ #fix
 #			{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 4},
 #			{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 2},
 			{code = 'has_profession', profession = 'spellsword', check = true}
 			],
-		statchanges = {hpmax = 15, mdef = 10, def = 5, mastery_point_physics = 1, mastery_point_magic = 1},
+		statchanges = {hpmax = 15, mdef = 10, armor = 5, mastery_point_combat = 1, mastery_point_magic = 1, mastery_point_universal = 1},
 		traits = [],
 		skills = [],
 		combatskills = ['arcaneblade_aura'], #temp
