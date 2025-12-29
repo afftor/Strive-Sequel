@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/gui/universal/skill_frame.png" type="Texture" id=2]
@@ -52,6 +52,7 @@
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/cross2.png" type="Texture" id=50]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/cross2_pressed.png" type="Texture" id=51]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/arrow_navigator.png" type="Texture" id=52]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle2.tres" type="DynamicFont" id=53]
 
 [node name="SkillBook" type="TextureRect"]
 margin_left = 207.31
@@ -286,7 +287,7 @@ light_mask = 0
 margin_left = 105.0
 margin_top = 125.0
 margin_right = 1065.0
-margin_bottom = 394.0
+margin_bottom = 474.0
 rect_pivot_offset = Vector2( 412.214, 134.5 )
 mouse_filter = 1
 theme = ExtResource( 1 )
@@ -349,16 +350,13 @@ __meta__ = {
 [node name="ScrollContainer2" type="ScrollContainer" parent="."]
 light_mask = 0
 margin_left = 105.0
-margin_top = 485.0
+margin_top = 579.0
 margin_right = 1065.0
-margin_bottom = 754.0
+margin_bottom = 770.0
 rect_pivot_offset = Vector2( 412.214, 134.5 )
 mouse_filter = 2
 theme = ExtResource( 1 )
 scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer2"]
 light_mask = 0
@@ -397,9 +395,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 0.207843, 0.172549, 0.172549, 0.603922 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="name" type="Label" parent="ScrollContainer2/GridContainer/Button"]
 light_mask = 0
@@ -422,32 +417,29 @@ __meta__ = {
 margin_left = 80.0
 margin_top = 100.0
 margin_right = 1100.0
-margin_bottom = 426.0
+margin_bottom = 507.0
 mouse_filter = 2
 texture = ExtResource( 28 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+expand = true
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 margin_left = 80.0
-margin_top = 460.0
+margin_top = 550.0
 margin_right = 1100.0
-margin_bottom = 786.0
+margin_bottom = 785.0
 mouse_filter = 2
 texture = ExtResource( 29 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+expand = true
 
 [node name="Label" type="Label" parent="."]
-margin_left = 544.502
-margin_top = 430.939
-margin_right = 636.502
-margin_bottom = 465.939
+margin_left = 356.188
+margin_top = 512.027
+margin_right = 806.188
+margin_bottom = 547.027
 custom_colors/font_color = Color( 0.239216, 0.211765, 0.211765, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "SKILL_BAR_LABEL"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -458,9 +450,6 @@ margin_top = 221.0
 margin_right = 1406.0
 margin_bottom = 631.0
 texture = ExtResource( 24 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="bg" type="TextureRect" parent="SkillInfo"]
 margin_right = 296.0
@@ -589,9 +578,6 @@ custom_fonts/font = ExtResource( 45 )
 text = "QBACCEPT"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CloseButton" type="TextureButton" parent="."]
 margin_left = 1444.0
@@ -602,11 +588,11 @@ texture_normal = ExtResource( 50 )
 texture_pressed = ExtResource( 51 )
 texture_hover = ExtResource( 49 )
 
-[node name="SkillPanelRowSwitch" type="VBoxContainer" parent="."]
-margin_left = 1081.69
-margin_top = 631.936
-margin_right = 1141.69
-margin_bottom = 801.936
+[node name="SkillPanelRowSwitch" type="HBoxContainer" parent="."]
+margin_left = 98.009
+margin_top = 494.851
+margin_right = 251.009
+margin_bottom = 554.851
 custom_constants/separation = 8
 
 [node name="Up" type="TextureButton" parent="SkillPanelRowSwitch"]
@@ -620,14 +606,19 @@ expand = true
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="SkillPanelRowSwitch"]
-margin_top = 68.0
-margin_right = 60.0
-margin_bottom = 82.0
+margin_left = 68.0
+margin_top = 8.0
+margin_right = 85.0
+margin_bottom = 52.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 53 )
+text = "1"
+align = 1
 
 [node name="Down" type="TextureButton" parent="SkillPanelRowSwitch"]
-margin_top = 90.0
-margin_right = 60.0
-margin_bottom = 150.0
+margin_left = 93.0
+margin_right = 153.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 60, 60 )
 texture_normal = ExtResource( 52 )
 texture_pressed = ExtResource( 52 )

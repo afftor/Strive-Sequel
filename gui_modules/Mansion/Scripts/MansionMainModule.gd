@@ -126,6 +126,7 @@ func _ready():
 	input_handler.SetMusicRandom("mansion")
 	$TestButton.connect('pressed',self,'test')
 	SlaveListModule.update_dislocations()
+	SlaveListModule.rebuild()
 #	SlaveListModule.build_locations_list()
 	if !ResourceScripts.game_progress.intro_tutorial_seen:
 		$TutorialIntro.show()
