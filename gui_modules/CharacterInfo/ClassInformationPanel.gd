@@ -26,6 +26,7 @@ func open(classcode, person):
 		text += '\n' 
 	text += ResourceScripts.descriptions.get_class_traits_no_icons(person, tempclass)
 	text = input_handler.text_cut_excessive_lines(text)
+	text = globals.TextEncoder(text)
 	$bonus.bbcode_text = text
 	for i in tempclass.traits:
 		var trdata = Traitdata.traits[i]
@@ -35,6 +36,8 @@ func open(classcode, person):
 		newicon.texture = trdata.icon
 #		newicon.texture = load(trdata.icon)
 	for i in tempclass.statchanges:
+		if !statdata.statdata.has(i):
+			continue #for non-default bonuses can't be displayed properly
 		var stdata = statdata.statdata[i]
 		if !stdata.tags.has('show_in_header'):
 			continue
