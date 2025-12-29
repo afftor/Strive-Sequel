@@ -811,7 +811,10 @@ var skills = {
 		variations = [
 			{
 				reqs = [{code = 'has_status', status = 'arcaneblade_air', check = true}],
-				set = {name = tr('SKILLAURA_DMGAIR_REMOVE')}, 
+				set = {
+					name = tr('SKILLAURA_DMGAIR_REMOVE'),
+					cost = {}
+					}, 
 				append = {tags = 'aura_active'}
 			},
 		]
@@ -844,7 +847,10 @@ var skills = {
 		variations = [
 			{
 				reqs = [{code = 'has_status', status = 'arcaneblade_dark', check = true}],
-				set = {name = tr('SKILLAURA_DMGDARK_REMOVE')}, 
+				set = {
+					name = tr('SKILLAURA_DMGDARK_REMOVE'),
+					cost = {}
+					}, 
 				append = {tags = 'aura_active'}
 			},
 		]
@@ -877,7 +883,10 @@ var skills = {
 		variations = [
 			{
 				reqs = [{code = 'has_status', status = 'arcaneblade_earth', check = true}],
-				set = {name = tr('SKILLAURA_DMGEARTH_REMOVE')}, 
+				set = {
+					name = tr('SKILLAURA_DMGEARTH_REMOVE'),
+					cost = {}
+					}, 
 				append = {tags = 'aura_active'}
 			},
 		]
@@ -910,7 +919,10 @@ var skills = {
 		variations = [
 			{
 				reqs = [{code = 'has_status', status = 'arcaneblade_fire', check = true}],
-				set = {name = tr('SKILLAURA_DMGFIRE_REMOVE')}, 
+				set = {
+					name = tr('SKILLAURA_DMGFIRE_REMOVE'),
+					cost = {}
+					}, 
 				append = {tags = 'aura_active'}
 			},
 		]
@@ -943,7 +955,10 @@ var skills = {
 		variations = [
 			{
 				reqs = [{code = 'has_status', status = 'arcaneblade_light', check = true}],
-				set = {name = tr('SKILLAURA_DMGLIGHT_REMOVE')}, 
+				set = {
+					name = tr('SKILLAURA_DMGLIGHT_REMOVE'),
+					cost = {}
+					}, 
 				append = {tags = 'aura_active'}
 			},
 		]
@@ -976,7 +991,10 @@ var skills = {
 		variations = [
 			{
 				reqs = [{code = 'has_status', status = 'arcaneblade_water', check = true}],
-				set = {name = tr('SKILLAURA_DMGWATER_REMOVE')}, 
+				set = {
+					name = tr('SKILLAURA_DMGWATER_REMOVE'),
+					cost = {}
+					}, 
 				append = {tags = 'aura_active'}
 			},
 		]
@@ -1779,10 +1797,17 @@ var effects = {
 	},
 	
 	e_fa_aura_firearr = {
-		type = 'trigger',
-		target = 'caster',
-		trigger = [variables.TR_HIT],
+		type = 'temp_s',
 		stack = 'spellsword_aura',
+		rem_event = [variables.TR_DEATH],
+		target = 'caster',
+		tags = ['spellsword_aura','spellsword_firearr'],
+		sub_effects = ['spellsword_aura_passive', 'e_tr_aura_firearr', 'aura_cost_2'],
+		buffs = [],
+	},
+	e_tr_aura_firearr = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
 		conditions = [
 			{type = 'skill', value = ['tags', 'has', 'damage']},
 			{type = 'skill', value = ['target_number', 'eq', 'single']},
@@ -1800,13 +1825,20 @@ var effects = {
 			}
 		],
 		buffs = [],
-		tags = ['spellsword_aura','spellsword_firearr']
+		tags = []
 	},
 	e_fa_aura_impale = {
-		type = 'trigger',
-		target = 'caster',
-		trigger = [variables.TR_HIT],
+		type = 'temp_s',
 		stack = 'spellsword_aura',
+		rem_event = [variables.TR_DEATH],
+		target = 'caster',
+		tags = ['spellsword_aura','spellsword_impale'],
+		sub_effects = ['spellsword_aura_passive', 'e_tr_aura_impale', 'aura_cost_2'],
+		buffs = [],
+	},
+	e_tr_aura_impale = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
 		conditions = [
 			{type = 'skill', value = ['tags', 'has', 'damage']},
 			{type = 'skill', value = ['target_number', 'eq', 'single']},
@@ -1824,13 +1856,20 @@ var effects = {
 			}
 		],
 		buffs = [],
-		tags = ['spellsword_aura','spellsword_impale']
+		tags = []
 	},
 	e_fa_aura_lightning = {
-		type = 'trigger',
-		target = 'caster',
-		trigger = [variables.TR_HIT],
+		type = 'temp_s',
 		stack = 'spellsword_aura',
+		rem_event = [variables.TR_DEATH],
+		target = 'caster',
+		tags = ['spellsword_aura','spellsword_lightning'],
+		sub_effects = ['spellsword_aura_passive', 'e_tr_aura_lightning', 'aura_cost_2'],
+		buffs = [],
+	},
+	e_tr_aura_lightning = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
 		conditions = [
 			{type = 'skill', value = ['tags', 'has', 'damage']},
 			{type = 'skill', value = ['target_number', 'eq', 'single']},
@@ -1848,13 +1887,20 @@ var effects = {
 			}
 		],
 		buffs = [],
-		tags = ['spellsword_aura','spellsword_lightning']
+		tags = []
 	},
 	e_fa_aura_darkness = {
-		type = 'trigger',
-		target = 'caster',
-		trigger = [variables.TR_HIT],
+		type = 'temp_s',
 		stack = 'spellsword_aura',
+		rem_event = [variables.TR_DEATH],
+		target = 'caster',
+		tags = ['spellsword_aura','spellsword_darkness'],
+		sub_effects = ['spellsword_aura_passive', 'e_tr_aura_darkness', 'aura_cost_2'],
+		buffs = [],
+	},
+	e_tr_aura_darkness = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
 		conditions = [
 			{type = 'skill', value = ['tags', 'has', 'damage']},
 			{type = 'skill', value = ['target_number', 'eq', 'single']},
@@ -1872,7 +1918,34 @@ var effects = {
 			}
 		],
 		buffs = [],
-		tags = ['spellsword_aura','spellsword_darkness']
+		tags = []
+	},
+	aura_cost_2 = { #similar to aura_cost but for different src, for sake of flexibility
+		type = 'trigger',
+		trigger = [variables.TR_TURN_S, variables.TR_COMBAT_F],
+		req_skill = false,
+		conditions = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				atomic = [{type = 'stat_add', stat = 'mp', value = -1},],
+			},
+		]
+	},
+	spellsword_aura_passive = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_F, variables.TR_COMBAT_F],
+		req_skill = false,
+		conditions = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				conditions = [{code = 'stat', stat = 'mp', operant = 'lte', value = 0}],
+				atomic = [{type = 'remove_effect', value = 'spellsword_aura'},], #no matter which one
+			}
+		]
 	},
 	e_aura_air = {
 		target = 'caster',

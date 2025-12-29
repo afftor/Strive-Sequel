@@ -1785,13 +1785,21 @@ func decipher_single(ch):
 				continue
 		'race_is_beast':
 			if i.check == true:
-				text2 += tr("REQRACEISBEAST")+''
+				text2 += tr("REQRACEISBEAST") + ''
 			else:
 				continue
 		'gear_equiped': #to fix non-default param
-			text2 += tr("REQMUSTHAVEGEAR")+' ' + Items.itemlist[i.value].name + "."
+			if i.check:
+				text2 += tr("REQMUSTHAVEGEAR") + ' '
+			else:
+				text2 += tr("REQMUSTHAVEGEAR_FALSE") + ' '
+			if i.has('param'):
+				if i.param == 'geartype':
+					text2 += tr("REQMUSTHAVEGEARTYPE") + ' ' + tr("REQMUSTHAVEGEARTYPE_" + i.value.to_upper()) + "."
+			else:
+				text2 += Items.itemlist[i.value].name + "."
 		'global_profession_limit':
-			text2 += tr("REQPROFLIMIT")+' ' + str(i.value) + " " + classesdata.professions[i.profession].name + " "+tr("REQPROFLIMIT2")+"."
+			text2 += tr("REQPROFLIMIT")+' ' + str(i.value) + " " + classesdata.professions[i.profession].name + " " + tr("REQPROFLIMIT2") + "."
 		'one_of_races':
 			text2 += tr("REQONEOFRACES")+": "
 			for k in i.value:

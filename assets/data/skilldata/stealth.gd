@@ -9,8 +9,6 @@ var skills = {
 		ability_type = 'skill',
 		tags = ['buff','support', 'selfbuf'],
 		reqs = [
-			{code = 'gear_equiped', param = 'geartype', value = 'medium', check = false},
-			{orflag = true, code = 'has_status', status = 'assassin_hide', check = true},
 			{code = 'gear_equiped', param = 'geartype', value = 'heavy', check = false},
 			],
 		targetreqs = [],
@@ -27,7 +25,13 @@ var skills = {
 		sfx = [{code = 'hide', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = null, hit = null},
 		value = ['0'],
-		damagestat = 'no_stat'
+		damagestat = 'no_stat',
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'assassin_hide', check = false}],
+				append = {reqs = {code = 'gear_equiped', param = 'geartype', value = 'medium', check = false } }
+			},
+		]
 	},
 	dip_poison = {
 		code = 'dip_poison',
