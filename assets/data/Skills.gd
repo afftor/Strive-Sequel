@@ -1542,7 +1542,11 @@ var Skilllist = {
 
 var global_variations = [
 	{
-		template_reqs = [{attribute = 'target_number', operant = 'in', value = ['single', 'line']}],
+		template_reqs = [
+			{attribute = 'target_number', operant = 'in', value = ['single', 'line']},
+			{attribute = 'ability_type', operant = 'neq', value = 'item'},
+			{attribute = 'target', operant = 'eq', value = 'enemy'},
+			],
 #		reqs = [],
 		reqs = [{code = 'has_status', status = 'combat_casting', check = true}],
 		set = {target_range = 'melee'},

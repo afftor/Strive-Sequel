@@ -108,6 +108,7 @@ func open_city(city = null):
 		input_handler.SetMusic(selected_area.capital_background_music, true)
 	if selected_area.has("capital_dynamic_background"):
 		get_node("VideoPlayer").open(selected_area.capital_dynamic_background)
+	get_node("back").texture = images.get_background(selected_area.capital_background + '_1')
 	previous_guild = ''
 	rebuild_area_buttons()
 #	var guilds = []
