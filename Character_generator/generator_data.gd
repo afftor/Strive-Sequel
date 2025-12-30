@@ -50,6 +50,7 @@ var texture_sets = {
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Face_tex', texture = "res://Character_generator/images/02_faces/face_m4.png"},
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Nose_tex', texture = "res://Character_generator/images/03_noses/nose_default.png"},
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Ears_humanoid_tex', texture = "res://Character_generator/images/03_ears/ears_human.png" },
+		{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Face/Lips_tex', attr = 'position', value = Vector2(500, -8)},
 	],
 	beastkin_male = [
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_tex', texture = "res://Character_generator/images/15_beastkin_body_nude_male/HandR1_beastkin_m.png"},
@@ -70,6 +71,7 @@ var texture_sets = {
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/Tits/Tits_mesh', texture = null},
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Face_tex', texture = "res://Character_generator/images/17_beastkin_faces/beastkin_face_m4.png"},
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Head_tex', texture = "res://Character_generator/images/16_beastkin_heads_new/beastkin_skull.png"},
+		{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Face/Lips_tex', attr = 'position', value = Vector2(505, -8)},
 	],
 	default_female = [
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_tex', texture = "res://Character_generator/images/00_body_nude/HandR1.png"},
@@ -106,6 +108,7 @@ var texture_sets = {
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_normal/Nipples_mesh', texture = "res://Character_generator/images/00_body_nude/tits_nipples_normal.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_small/Tits_mesh', texture = "res://Character_generator/images/00_body_nude/tits_small.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_small/Nipples_mesh', texture = "res://Character_generator/images/00_body_nude/tits_nipples_small.png"},
+		{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Face/Lips_tex', attr = 'position', value = Vector2(500, -8)},
 	],
 	beastkin_female = [
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_tex', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_HandR1.png"},
@@ -139,6 +142,7 @@ var texture_sets = {
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_small/Tits_mesh', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_tits_small.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_small/Nipples_mesh', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_tits_nipples_small.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Head_tex', texture = "res://Character_generator/images/16_beastkin_heads_new/beastkin_skull.png"},
+		{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Face/Lips_tex', attr = 'position', value = Vector2(505, -8)},
 	],
 }
 
