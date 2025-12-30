@@ -283,16 +283,6 @@ var restbutton
 var servicebutton
 func update_resources():
 	input_handler.ClearContainer($Resourses/GridContainer)
-#	if selected_location != 'aliron':
-#		var restbutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
-#		if selected_job != null:
-#			if selected_job.has("code"):
-#				if selected_job.code == "rest":
-#					restbutton.pressed = true
-#		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/rest_icon.png")
-#		restbutton.connect("pressed", self, "select_resource", [{code = "rest"}, "rest", restbutton])
-#
-#		globals.connecttexttooltip(restbutton, "Rest")
 	
 	restbutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
 	if selected_job != null:
@@ -338,7 +328,7 @@ func update_resources():
 				newbutton.get_node("Label").set("custom_colors/font_color", Color(0.9,0.48,0.48, 1))
 			
 			newbutton.connect("pressed", self, "select_resource", [jobdata, "recruiting", newbutton])
-
+			
 			globals.connecttexttooltip(newbutton, jobdata.descript)
 	
 	for task in ResourceScripts.game_party.active_tasks:
@@ -363,14 +353,6 @@ func update_resources():
 			
 	
 	person = get_parent().active_person
-#	var luxury_rooms_taken = 0
-#	for p in ResourceScripts.game_party.characters.values():
-#		if p.xp_module.work_rules["luxury"]:
-#			luxury_rooms_taken += 1
-	#$work_rules/luxury.text = "Luxury Rooms: " + str(luxury_rooms_taken) + "/" + str(ResourceScripts.game_res.upgrades.luxury_rooms + 1)
-	#$work_rules/luxury.disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) && person != null && !person.xp_module.work_rules["luxury"]
-	#$work_rules/luxury.visible = person != ResourceScripts.game_party.get_master()
-
 	var gatherable_resources = []
 	
 	var location_type
@@ -381,10 +363,13 @@ func update_resources():
 		location_type = location.type
 		if location_type == "dungeon":
 #			if location.completed == true:
-			gatherable_resources = ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources
+			gatherable_resources = location.gather_limit_resources
+			servicebutton.visible = false
+		elif location_type == 'encounter':
+			servicebutton.visible = false
 		else:
-			if ResourceScripts.world_gen.get_location_from_code(person_location).has("gather_resources"):
-				gatherable_resources = ResourceScripts.world_gen.get_location_from_code(person_location).gather_resources
+			if location.has("gather_resources"):
+				gatherable_resources = location.gather_resources
 	else:
 		#for this moment no area has gatherable_resources, including plains (for aliron that is)
 		#but I'll keep condition just in case
