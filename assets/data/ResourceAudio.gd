@@ -1,63 +1,68 @@
 extends Node
 
+func get_music(id):
+	if music[id] is String:
+		music[id] = load(music[id])
+	return music[id]
+
 var music = {
-	opening = load("res://assets/sounds/music/MainTheme.ogg"),
+	opening = "res://assets/sounds/music/MainTheme.ogg",
 	
-	mansion1 = load("res://assets/sounds/music/mansion1.ogg"),
-	mansion2 = load("res://assets/sounds/music/mansion2.ogg"),
-	mansion3 = load("res://assets/sounds/music/mansion3.ogg"),
-	mansion4 = load("res://assets/sounds/music/mansion4.ogg"),
+	mansion1 = "res://assets/sounds/music/mansion1.ogg",
+	mansion2 = "res://assets/sounds/music/mansion2.ogg",
+	mansion3 = "res://assets/sounds/music/mansion3.ogg",
+	mansion4 = "res://assets/sounds/music/mansion4.ogg",
 
 #	battle1 = load("res://assets/sounds/music/battle1.ogg"),
 #	battle2 = load("res://assets/sounds/music/battle2.ogg"),
 #	battle3 = load("res://assets/sounds/music/battle3.ogg"),
-	battle1 = load("res://assets/sounds/music/battle dance.ogg"),
-	battle2 = load("res://assets/sounds/music/oriental.ogg"),
-	battle3 = load("res://assets/sounds/music/saltation.ogg"),
-	battle4 = load("res://assets/sounds/music/take what you can.ogg"),
+	battle1 = "res://assets/sounds/music/battle dance.ogg",
+	battle2 = "res://assets/sounds/music/oriental.ogg",
+	battle3 = "res://assets/sounds/music/saltation.ogg",
+	battle4 = "res://assets/sounds/music/take what you can.ogg",
 
 	
-	daisy_theme = load("res://assets/sounds/music/Daisy Theme.ogg"),
-	cali_theme = load("res://assets/sounds/music/Cali Theme.ogg"),
-	zephyra_theme = load("res://assets/sounds/music/Zephyra Theme.ogg"),
-	kuro_theme = load("res://assets/sounds/music/Kuro Theme.ogg"),
-	rouge_theme = load("res://assets/sounds/music/Rouge Theme.ogg"),
-	lilia_theme = load("res://assets/sounds/music/Lilia Theme.ogg"),
-	lilith_theme = load("res://assets/sounds/music/Lilith Theme.ogg"),
-	erdyna_theme = load("res://assets/sounds/music/Erdyna theme.ogg"),
-	hara_theme = load("res://assets/sounds/music/Hara Theme.ogg"),
-	jean_theme = load("res://assets/sounds/music/Jean Theme.ogg"),
-	amelia_theme = load("res://assets/sounds/music/Amelia theme.ogg"),
-	mae_theme = load("res://assets/sounds/music/Mae Theme.ogg"),
+	daisy_theme = "res://assets/sounds/music/Daisy Theme.ogg",
+	cali_theme = "res://assets/sounds/music/Cali Theme.ogg",
+	zephyra_theme = "res://assets/sounds/music/Zephyra Theme.ogg",
+	kuro_theme = "res://assets/sounds/music/Kuro Theme.ogg",
+	rouge_theme = "res://assets/sounds/music/Rouge Theme.ogg",
+	lilia_theme = "res://assets/sounds/music/Lilia Theme.ogg",
+	lilith_theme = "res://assets/sounds/music/Lilith Theme.ogg",
+	erdyna_theme = "res://assets/sounds/music/Erdyna theme.ogg",
+	hara_theme = "res://assets/sounds/music/Hara Theme.ogg",
+	jean_theme = "res://assets/sounds/music/Jean Theme.ogg",
+	amelia_theme = "res://assets/sounds/music/Amelia theme.ogg",
+	mae_theme = "res://assets/sounds/music/Mae Theme.ogg",
 	
 	
-	combattheme = load("res://assets/sounds/music/battle1.ogg"),
+	combattheme = "res://assets/sounds/music/battle1.ogg",
 
-	dungeon = load("res://assets/sounds/music/dungeon.ogg"),
-	ending = load("res://assets/sounds/music/ending.ogg"),
-	exploration = load("res://assets/sounds/music/exploration.ogg"),
+	dungeon = "res://assets/sounds/music/dungeon.ogg",
+	ending = "res://assets/sounds/music/ending.ogg",
+	exploration = "res://assets/sounds/music/exploration.ogg",
 
-	wimborn = load("res://assets/sounds/music/wimborn.ogg"),
-	gorn = load("res://assets/sounds/music/gorn.ogg"),
-	frostford = load("res://assets/sounds/music/frostford.ogg"),
-	empire_capital = load("res://assets/sounds/music/capital_ost.ogg"),
+	wimborn = "res://assets/sounds/music/wimborn.ogg",
+	gorn = "res://assets/sounds/music/gorn.ogg",
+	frostford = "res://assets/sounds/music/frostford.ogg",
+	empire_capital = "res://assets/sounds/music/capital_ost.ogg",
 
 	#intro = load("res://assets/sounds/music/ending.ogg"),
-	intimate = load("res://assets/sounds/music/closeness.ogg"),
-	intimate_dark = load("res://assets/sounds/music/dark temptation.ogg"),
-	intimate_funny = load("res://assets/sounds/music/intimate_mischevious.ogg"),
+	intimate = "res://assets/sounds/music/closeness.ogg",
+	intimate_dark = "res://assets/sounds/music/dark temptation.ogg",
+	intimate_funny = "res://assets/sounds/music/intimate_mischevious.ogg",
 	
 	
-	tragic = load("res://assets/sounds/music/Tragic.ogg"), 
-	lira_theme = load("res://assets/sounds/music/Lira theme.ogg"), 
-	heleviel_theme = load("res://assets/sounds/music/Heleviel Theme.ogg"),
+	tragic = "res://assets/sounds/music/Tragic.ogg", 
+	lira_theme = "res://assets/sounds/music/Lira theme.ogg", 
+	heleviel_theme = "res://assets/sounds/music/Heleviel Theme.ogg",
 	
-	dwarf_cap = load("res://assets/sounds/music/dwarf_capital.ogg"),
-	tower = load("res://assets/sounds/music/tower_of_dreams.ogg"),
-	beastkin_village = load("res://assets/sounds/music/tribal_village.ogg"),
+	dwarf_cap = "res://assets/sounds/music/dwarf_capital.ogg",
+	tower = "res://assets/sounds/music/tower_of_dreams.ogg",
+	beastkin_village = "res://assets/sounds/music/tribal_village.ogg",
 	
-	arena_combat = load("res://assets/sounds/music/Arena Combat Theme.ogg"),
-	threat = load("res://assets/sounds/music/Threat.ogg"),
+	arena_combat = "res://assets/sounds/music/Arena Combat Theme.ogg",
+	threat = "res://assets/sounds/music/Threat.ogg",
 
 }
 

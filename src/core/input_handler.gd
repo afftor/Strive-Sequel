@@ -626,7 +626,7 @@ func StopTweenRepeat(node):
 #Music
 func SetMusicRandom(category):
 	var track = audio.music_categories[category]
-	track = track[randi()%track.size()]
+	track = random_from_array(track)
 	SetMusic(track)
 
 func SetMusic(name, store = false, delay = 0):
@@ -636,9 +636,10 @@ func SetMusic(name, store = false, delay = 0):
 	yield(get_tree().create_timer(delay), 'timeout')
 	musicraising = true
 	var musicnode = get_spec_node(self.NODE_MUSIC) #GetMusicNode()
-	if musicnode.stream == audio.music[name]:
+	var tmp = audio.get_music(name)
+	if  musicnode.stream != null and musicnode.stream.resource_path == tmp.resource_path:
 		return
-	musicnode.stream = audio.music[name]
+	musicnode.stream = tmp
 	if store:
 		explore_sound = name
 	musicnode.play(0)
