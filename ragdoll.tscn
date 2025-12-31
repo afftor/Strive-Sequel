@@ -5911,7 +5911,7 @@ position = Vector2( 590, -9.00214 )
 rotation = -1.5708
 texture = ExtResource( 39 )
 
-[node name="Chin_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["fur_mask", "skin_main"]]
+[node name="Chin_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["fur_mask", "human", "skin_main"]]
 light_mask = 4
 material = SubResource( 106 )
 position = Vector2( 590, -9.00214 )
@@ -5968,10 +5968,10 @@ position = Vector2( 494.474, -6.8439 )
 rotation = -1.5708
 texture = ExtResource( 23 )
 
-[node name="Lips_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head/Face"]
+[node name="Lips_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head/Face" groups=["human", "non_kobold"]]
 light_mask = 4
 material = SubResource( 12 )
-position = Vector2( 499.474, -7.78754 )
+position = Vector2( 505, -8 )
 rotation = -1.5708
 texture = ExtResource( 64 )
 
@@ -5988,6 +5988,7 @@ position = Vector2( 499.474, -5.8439 )
 rotation = -1.5708
 
 [node name="Head_races_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["dragon", "hair_additional", "nonhuman"]]
+visible = false
 light_mask = 4
 material = SubResource( 204 )
 position = Vector2( 590, -9.00214 )
@@ -6956,7 +6957,7 @@ position = Vector2( 590, -9.00214 )
 rotation = -1.5708
 texture = ExtResource( 39 )
 
-[node name="Chin_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head" groups=["fur_mask", "skin_main"]]
+[node name="Chin_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head" groups=["fur_mask", "human", "skin_main"]]
 light_mask = 4
 material = SubResource( 145 )
 position = Vector2( 590, -9.00214 )
@@ -7013,7 +7014,7 @@ position = Vector2( 494.474, -6.8439 )
 rotation = -1.5708
 texture = ExtResource( 23 )
 
-[node name="Lips_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head/Face"]
+[node name="Lips_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head/Face" groups=["human", "non_kobold"]]
 light_mask = 4
 material = SubResource( 201 )
 position = Vector2( 499.474, -7.8439 )
