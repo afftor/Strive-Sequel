@@ -95,13 +95,13 @@ func build_farm():
 func update_characters():
 	input_handler.ClearContainer($CharacterList/GridContainer)
 	for i in ResourceScripts.game_party.character_order: 
-		var person = ResourceScripts.game_party.characters[i]
-		if person.get_location() != ResourceScripts.world_gen.get_location_from_code(selected_location).id or person.is_on_quest():
+		var ch = ResourceScripts.game_party.characters[i]
+		if ch.get_location() != ResourceScripts.world_gen.get_location_from_code(selected_location).id or ch.is_on_quest():
 			continue
 		
 		var newbutton = input_handler.DuplicateContainerTemplate($CharacterList/GridContainer)
-		newbutton.get_node("Name").text = person.get_stat("name")
-		newbutton.get_node("Icon").texture = person.get_icon_small()
+		newbutton.get_node("Name").text = ch.get_stat("name")
+		newbutton.get_node("Icon").texture = ch.get_icon_small()
 		newbutton.disabled = false
 		if (selected_job == null or selected_resource == null) and !mode_farm:
 			newbutton.disabled = true 
@@ -109,36 +109,36 @@ func update_characters():
 		if (selected_slot == null) and mode_farm:
 			newbutton.disabled = true 
 			globals.connecttexttooltip(newbutton, tr("SELECT_SLOT_FIRST_LABEL"))
-		if !person.is_worker() and !mode_farm:
+		if !ch.is_worker() and !mode_farm:
 			newbutton.disabled = true
-			globals.connecttexttooltip(newbutton, person.translate("[name]" + " " + tr("LACKS_BASIC_SERV_LABEL"))) #change translation
+			globals.connecttexttooltip(newbutton, ch.translate("[name]" + " " + tr("LACKS_BASIC_SERV_LABEL"))) #change translation
 		if selected_job != null and selected_job.has("code"):
 			if selected_job.code == "prostitution":
-				if person.has_status('no_sex'):
+				if ch.has_status('no_sex'):
 					newbutton.disabled = true
-					globals.connecttexttooltip(newbutton, person.translate("[name] " + " " + tr("REFUSE_TO_WHORE_LABEL")))
-				if person.has_status('no_whoring'):
+					globals.connecttexttooltip(newbutton, ch.translate("[name] " + " " + tr("REFUSE_TO_WHORE_LABEL")))
+				if ch.has_status('no_whoring'):
 					newbutton.disabled = true
-					globals.connecttexttooltip(newbutton, person.translate("[name] " + " " + tr("REFUSE_THIS_TASK_LABEL")))
-				if !person.has_status('sexservice'):  #or mb advanced
+					globals.connecttexttooltip(newbutton, ch.translate("[name] " + " " + tr("REFUSE_THIS_TASK_LABEL")))
+				if !ch.has_status('sexservice'):  #or mb advanced
 					newbutton.disabled = true
-					globals.connecttexttooltip(newbutton, person.translate("[name] " + " " + tr("LACKS_PROSTITUTUION_LABEL")))
+					globals.connecttexttooltip(newbutton, ch.translate("[name] " + " " + tr("LACKS_PROSTITUTUION_LABEL")))
 			if selected_job.code in ['smith','alchemy','tailor','cooking']:
-				if person.has_status('no_craft'): newbutton.disabled = true
+				if ch.has_status('no_craft'): newbutton.disabled = true
 			if selected_job.code == "building":
-				if person.has_status('no_upgrade'): newbutton.disabled = true
+				if ch.has_status('no_upgrade'): newbutton.disabled = true
 		if !(selected_resource in [null, 'rest', 'brothel', 'gold', 'smith','alchemy','tailor','cooking', 'building']):
-			if person.has_status('no_collect'): newbutton.disabled = true
+			if ch.has_status('no_collect'): newbutton.disabled = true
 		if newbutton.disabled == true && selected_job != null:
 			newbutton.get_node('Name').set("custom_colors/font_color", variables.hexcolordict['red'])
-		newbutton.set_meta('slave', person)
-		newbutton.connect('pressed', self, 'character_selected', [newbutton, person])
-		newbutton.connect('mouse_entered', self, 'character_hovered', [newbutton, person])
-		newbutton.get_node("stats/hp").max_value = person.get_stat('hpmax')
-		newbutton.get_node("stats/hp").value = person.hp
-		newbutton.get_node("stats/mp").max_value = person.get_stat('mpmax')
-		newbutton.get_node("stats/mp").value = person.mp
-		newbutton.get_node("stats").hint_tooltip = "HP: " + str(round(person.hp)) + "/" + str(round(person.get_stat('hpmax'))) + "\nMP: " + str(round(person.mp)) + "/" + str(round(person.get_stat('mpmax')))
+		newbutton.set_meta('slave', ch)
+		newbutton.connect('pressed', self, 'character_selected', [newbutton, ch])
+		newbutton.connect('mouse_entered', self, 'character_hovered', [newbutton, ch])
+		newbutton.get_node("stats/hp").max_value = ch.get_stat('hpmax')
+		newbutton.get_node("stats/hp").value = ch.hp
+		newbutton.get_node("stats/mp").max_value = ch.get_stat('mpmax')
+		newbutton.get_node("stats/mp").value = ch.mp
+		newbutton.get_node("stats").hint_tooltip = "HP: " + str(round(ch.hp)) + "/" + str(round(ch.get_stat('hpmax'))) + "\nMP: " + str(round(ch.mp)) + "/" + str(round(ch.get_stat('mpmax')))
 		#speed update
 		if selected_job != null and selected_resource != null:
 			if selected_resource in ["rest", 'brothel']:
@@ -148,39 +148,39 @@ func update_characters():
 			else:
 				var number = ""
 				if selected_job.has("production_code"):
-					number = person.get_progress_task(selected_job.code, selected_job.production_code)/selected_job.progress_per_item
+					number = ch.get_progress_task(selected_job.code, selected_job.production_code)/selected_job.progress_per_item
 				else:
-					number = person.xp_module.get_progress_resource(selected_job.code)/selected_job.progress_per_item
+					number = ch.xp_module.get_progress_resource(selected_job.code)/selected_job.progress_per_item
 				newbutton.get_node("Speed").text = str(stepify(number * 4, 0.1))
 		#status update
-		update_status(newbutton, person)
+		update_status(newbutton, ch)
 
 
-func update_status(newbutton, person):
-	var gatherable = Items.materiallist.has(person.get_work())
-	if person.get_work() == '' or !person.is_avaliable():
-		if !person.is_on_quest():
+func update_status(newbutton, ch):
+	var gatherable = Items.materiallist.has(ch.get_work())
+	if ch.get_work() == '' or !ch.is_avaliable():
+		if !ch.is_on_quest():
 			newbutton.get_node("Status").texture = load("res://assets/images/gui/gui icons/icon_bedlimit.png")
-	elif person.get_work() == 'special':
-		var task = person.find_worktask()
+	elif ch.get_work() == 'special':
+		var task = ch.find_worktask()
 		newbutton.get_node("Status").texture = load(task.icon)
 	else:
 		if !gatherable:
-			var work = tasks.tasklist[person.get_work()]
+			var work = tasks.tasklist[ch.get_work()]
 			if work.has("production_icon"):
 				newbutton.get_node("Status").texture = work.production_icon
 			elif work.has("production_item"):
 				newbutton.get_node("Status").texture = Items.materiallist[work.production_item].icon
 		else:
-			newbutton.get_node("Status").texture = Items.materiallist[person.get_work()].icon
+			newbutton.get_node("Status").texture = Items.materiallist[ch.get_work()].icon
 
 
-func character_selected(button, person):
+func character_selected(button, ch):
 	if mode_farm:
-		select_farm_char(person.id)
+		select_farm_char(ch.id)
 		return
-	get_parent().active_person = person
-	select_job(button, person)
+	get_parent().active_person = ch
+	select_job(button, ch)
 	
 
 func update_buttons():
@@ -228,8 +228,8 @@ func build_accessible_locations():
 	var location_array = ["aliron"]
 	var travelers = []
 	for i in ResourceScripts.game_party.character_order:
-		var person = ResourceScripts.game_party.characters[i]
-		var person_location = person.get_location()
+		var ch = ResourceScripts.game_party.characters[i]
+		var person_location = ch.get_location()
 		if person_location == "mansion":
 			person_location = "aliron"
 		if (!location_array.has(person_location)):
@@ -621,10 +621,10 @@ func show_faces():
 	for i in max_workers_count:
 			input_handler.DuplicateContainerTemplate($GridContainer2)
 
-func focus_on_person_task(person):
-	if person == null:
+func focus_on_person_task(ch):
+	if ch == null:
 		return
-	self.person = person
+	person = ch
 	var target_location = person.get_location()
 	if target_location == "mansion":
 		target_location = "aliron"

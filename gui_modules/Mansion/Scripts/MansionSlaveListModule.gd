@@ -84,8 +84,10 @@ func OpenJobModule(person = null):
 	input_handler.ActivateTutorial('TUTORIALLIST4')
 	if person != null:
 		get_parent().get_node("MansionJobModule2").selected_location = person.get_location()
+		get_parent().active_person = person
 	get_parent().remove_hovered_person()
 	get_parent().mansion_state_set("occupation")
+	get_parent().get_node("MansionJobModule2").focus_on_person_task(person)
 
 
 func OpenInventory(person = null):
