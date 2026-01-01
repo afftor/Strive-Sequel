@@ -493,6 +493,12 @@ func select_actor():
 		#to test, maybe this is wrong decision
 		calculateorder()
 		newturn()
+	
+	if !ActionQueue.is_empty():
+		if !ActionQueue.is_active:
+			ActionQueue.invoke()
+		yield(ActionQueue, 'queue_empty')
+	
 	currentactor = turnorder[0].pos
 	turnorder.remove(0)
 	update_queue_asynch()
