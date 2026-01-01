@@ -497,13 +497,13 @@ func select_resource(job, resource, newbutton):
 			work_tools = statdata.worktoolnames[job.tool_type]
 		$ToolLabel.text = work_tools
 		## Work tools checking
-		if person.equipment.gear.tool != null:
-			var worktool
-			var item = ResourceScripts.game_res.items[person.equipment.gear.tool]
-			if job.has("worktool"):
-				worktool = "worktool"
-			if job.has("tool_type"):
-				worktool = "tool_type"
+#		if person.equipment.gear.tool != null:
+#			var worktool
+#			var item = ResourceScripts.game_res.items[person.equipment.gear.tool]
+#			if job.has("worktool"):
+#				worktool = "worktool"
+#			if job.has("tool_type"):
+#				worktool = "tool_type"
 	for button in $Resourses/GridContainer.get_children():
 		if !button.has_meta("work"): 
 			continue
