@@ -441,24 +441,24 @@ var traits = {
 		effects = ['e_tr_warlock'],
 		tags = []
 	},
-	necromancer = {
-		code = 'necromancer',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = [],
-		tags = ['summon_skeletons']
-	},
-	ranger = {
-		code = 'ranger',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = [],
-		tags = ['summon_dog']
-	},
+#	necromancer = {
+#		code = 'necromancer',
+#		name = '',
+#		descript = '',
+#		visible = false,
+#		icon = null,
+#		effects = [],
+#		tags = ['summon_skeletons']
+#	},
+#	ranger = {
+#		code = 'ranger',
+#		name = '',
+#		descript = '',
+#		visible = false,
+#		icon = null,
+#		effects = [],
+#		tags = ['summon_dog']
+#	},
 	succubus = {#+100% exp from prostitution
 		code = 'succubus',
 		name = '',

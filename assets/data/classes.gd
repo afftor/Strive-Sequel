@@ -686,10 +686,12 @@ var professions = {
 		showupreqs = [],
 		reqs = [{code = 'has_any_profession', value = ['caster', 'priest']},{code = 'stat', stat = 'wits', operant = 'gte', value = 75},{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 4}],
 		statchanges = {mpmax = 15, wits_bonus = 10, resist_dark = 25, damage_mod_dark = 0.2, chg_wisdom_max = 1, mastery_dark = 1, mastery_point_magic = 1},
-		traits = ['necromancer'],
+		traits = [],#'necromancer'],
 		skills = ['make_undead'],
+		exploreskills = ['necro_aura'],
 		combatskills = [],
 		conflict_classes = ['bishop'],
+		persistent_effects = ['e_summon_skeletons']
 	},
 	archer = {
 		code = 'archer',
@@ -837,10 +839,12 @@ var professions = {
 		showupreqs = [],
 		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 3},{code = 'has_profession', profession = 'archer', check = true}],
 		statchanges = {hpmax = 10, chg_dexterity_max = 1, mastery_marksmanship = 2, mastery_point_combat = 2},
-		traits = ['ranger'],
+		traits = [],#'ranger'],
 		skills = [],
+		exploreskills = ['ranger_aura'],
 		combatskills = [],
 		conflict_classes = [],
+		persistent_effects = ['e_summon_dog']
 	},
 	bard = {
 		code = 'bard',

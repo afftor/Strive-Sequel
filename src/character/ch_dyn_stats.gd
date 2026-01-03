@@ -202,6 +202,10 @@ func process_prof_data(id, timestamp, process_skills = true):
 		for id in profdata.combatskills:
 			if !c_skills_real.has(id):
 				c_skills_real.push_back(id)
+		if profdata.has('exploreskills'):
+			for id in profdata.exploreskills:
+				if !e_skills_real.has(id):
+					e_skills_real.push_back(id)
 
 
 func process_trait_data(id, timestamp):
