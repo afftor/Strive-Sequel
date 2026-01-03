@@ -2582,7 +2582,7 @@ Spell Mana cost reduced by 15%
 	CHARM_FACTORBONUSDESCRIPT = "Charm Factor: Social Skills Efficiency: +20%%",
 	SEXUALS_FACTORBONUSDESCRIPT = "Sex Factor: Speed: +10",
 	MAGIC_FACTORBONUSDESCRIPT = "Magic Factor: MATK: +10%%",
-	TAME_FACTORBONUSDESCRIPT = "Tame Factor: Loyalty Gain: +25%%",
+	TAME_FACTORBONUSDESCRIPT = "Tame Factor: Spirit damage from trainings is halved",
 	TIMID_FACTORBONUSDESCRIPT = "Authority Factor: Damage taken: -15%%",
 	STATFOOD_LOVE = "Loved Food",
 	STATFOOD_HATE = "Hated Food",
