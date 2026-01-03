@@ -1025,6 +1025,74 @@ var skills = {
 		value = [['0']],
 		damagestat = 'no_stat',
 	},
+	ranger_aura = { #fix
+		code = 'ranger_aura',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/arcane_blade.png"),
+		type = 'exploration', 
+		ability_type = 'skill',
+		tags = ['exploration'],
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_summon_dog', trigger = variables.TR_EXPLORE_POSTDAMAGE})], 
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sound = [],
+		value = [['0']],
+		damagestat = 'no_stat',
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'summon_dog', check = true}],
+				set = {
+					name = tr('SKILLRANGER_AURA_REMOVE'),
+					cost = {}
+					}, 
+				append = {tags = 'aura_active'}
+			},
+		]
+	},
+	necro_aura = { #fix
+		code = 'necro_aura',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/arcane_blade.png"),
+		type = 'exploration', 
+		ability_type = 'skill',
+		tags = ['exploration'],
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_summon_skeletons', trigger = variables.TR_EXPLORE_POSTDAMAGE})], 
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sound = [],
+		value = [['0']],
+		damagestat = 'no_stat',
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'summon_skeletons', check = true}],
+				set = {
+					name = tr('SKILLNECRO_AURA_REMOVE'),
+					cost = {}
+					}, 
+				append = {tags = 'aura_active'}
+			},
+		]
+	},
 }
 var effects = {
 	#trait-based
@@ -2015,6 +2083,20 @@ var effects = {
 		buffs = ['b_free_use'],#or fix
 		sub_effects = ['e_instant'],
 	},
+	e_summon_dog = {
+		target = 'caster',
+		type = 'base',
+		stack = 'ranger_aura',
+		tags = ['summon_dog', 'class_ranger'],
+		buffs = []
+	},
+	e_summon_skeletons = {
+		target = 'caster',
+		type = 'base',
+		stack = 'necro_aura',
+		tags = ['summon_skeletons'],
+		buffs = []
+	},
 }
 var atomic_effects = {}
 var buffs = {
@@ -2093,6 +2175,14 @@ var stacks = {
 		stack = 1
 	},#toggle
 	arcaneblade_aura = {
+		type = 'stack_t',
+		stack = 1
+	},#toggle
+	ranger_aura = {
+		type = 'stack_t',
+		stack = 1
+	},#toggle
+	necro_aura = {
 		type = 'stack_t',
 		stack = 1
 	},#toggle

@@ -81,7 +81,10 @@ var effect_table = {
 		type = 'base',
 		stack = 'max_stats',
 		descript = '',
-		conditions = [{code = 'stat', stat = 'authority_factor', operant = 'gte', value = 6}],
+		conditions = [
+			{code = 'stat', stat = 'authority_factor', operant = 'gte', value = 6},
+			{code = 'is_master', check = false}
+			],
 		statchanges = {damage_reduction = 15},
 		buffs = [
 			{
@@ -109,7 +112,10 @@ var effect_table = {
 		type = 'base',
 		stack = 'max_stats',
 		descript = '',
-		conditions = [{code = 'stat', stat = 'tame_factor', operant = 'gte', value = 6}],
+		conditions = [
+			{code = 'stat', stat = 'tame_factor', operant = 'gte', value = 6},
+			{code = 'is_master', check = false}
+			],
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Authority.png",
