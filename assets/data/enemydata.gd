@@ -1572,7 +1572,7 @@ var enemies = {
 		traits = [],
 		tags = ['beast'],
 #		ai = [['basic', 50],['aoe', 50]],
-		
+		ai = [['basic', 50], ['damage_spot', 50], ['ads', 50], ['support', 50], ['aoe', 50], ['instant', 10], ['taunt', 50]],
 		ai_position = ['melee'],
 		xpreward = 15,
 		allowed_mastery = ['warfare','protection','leadership','stealth'],
