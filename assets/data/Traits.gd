@@ -465,7 +465,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['human_form', 'demon_form', 'succubus_thralls_0', 'succubus_thralls_1', 'succubus_thralls_2', 'succubus_thralls_3', 'succubus_thralls_4', 'succubus_thralls_5', 'succubus_thralls_6', ],
+		effects = ['human_form', 'demon_form', 'human_form_default', 'demon_form_default', 'succubus_thralls_0', 'succubus_thralls_1', 'succubus_thralls_2', 'succubus_thralls_3', 'succubus_thralls_4', 'succubus_thralls_5', 'succubus_thralls_6', ],
 	}, #hardcoded
 	succubus_magic = {
 		code = 'succubus_magic',

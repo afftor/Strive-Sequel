@@ -246,8 +246,27 @@ var effects = {
 		type = 'simple',
 		descript = '',
 		conditions = [
-			{code = 'stat', stat = 'alt_form', value = true, operant = 'eq'},
+			{code = 'stat', stat = 'alt_form', value = false, operant = 'eq'},
 			{code = 'stat', stat = 'race', value = 'Demon', operant = 'neq'},
+			],
+		tags = ['demon_form'],
+		statchanges = {wits_bonus = 10, physics_bonus = 10, damage_mod_all = 0.15},
+		buffs = [ 
+			{
+			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
+			description = "DEMONFORMDESCRIPT",
+			tags = ['show_in_traits', 'mansion_only']
+		}
+		],
+		sub_effects = [],
+	},
+	demon_form_default = {
+		type = 'simple',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'alt_form', value = true, operant = 'eq'},
+			{code = 'stat', stat = 'race', value = 'Demon', operant = 'eq'},
+			{code = 'has_skill', check = true, value = 'swap_form'}
 			],
 		tags = ['demon_form'],
 		statchanges = {wits_bonus = 10, physics_bonus = 10, damage_mod_all = 0.15},
@@ -266,6 +285,25 @@ var effects = {
 		conditions = [
 			{code = 'stat', stat = 'alt_form', value = true, operant = 'eq'},
 			{code = 'stat', stat = 'race', value = 'Demon', operant = 'eq'},
+			],
+		tags = ['human_form'],
+		statchanges = {charm_bonus = 20, productivity = 0.25},
+		buffs = [ 
+			{
+			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
+			description = "HUMANFORMDESCRIPT",
+			tags = ['show_in_traits', 'mansion_only']
+		}
+		],
+		sub_effects = [],
+	},
+	human_form_default = {
+		type = 'simple',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'alt_form', value = false, operant = 'eq'},
+			{code = 'stat', stat = 'race', value = 'Demon', operant = 'neq'},
+			{code = 'has_skill', check = true, value = 'swap_form'}
 			],
 		tags = ['human_form'],
 		statchanges = {charm_bonus = 20, productivity = 0.25},
