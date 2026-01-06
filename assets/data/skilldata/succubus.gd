@@ -246,7 +246,7 @@ var effects = {
 		type = 'simple',
 		descript = '',
 		conditions = [
-			{code = 'stat', stat = 'alt_form', value = false, operant = 'eq'},
+			{code = 'stat', stat = 'alt_form', value = true, operant = 'eq'},
 			{code = 'stat', stat = 'race', value = 'Demon', operant = 'neq'},
 			],
 		tags = ['demon_form'],
@@ -264,9 +264,9 @@ var effects = {
 		type = 'simple',
 		descript = '',
 		conditions = [
-			{code = 'stat', stat = 'alt_form', value = true, operant = 'eq'},
+			{code = 'stat', stat = 'alt_form', value = false, operant = 'eq'},
 			{code = 'stat', stat = 'race', value = 'Demon', operant = 'eq'},
-			{code = 'has_skill', check = true, value = 'swap_form'}
+			{code = 'has_skill', check = true, value = 'swap_form', learned = true}
 			],
 		tags = ['demon_form'],
 		statchanges = {wits_bonus = 10, physics_bonus = 10, damage_mod_all = 0.15},
@@ -303,7 +303,7 @@ var effects = {
 		conditions = [
 			{code = 'stat', stat = 'alt_form', value = false, operant = 'eq'},
 			{code = 'stat', stat = 'race', value = 'Demon', operant = 'neq'},
-			{code = 'has_skill', check = true, value = 'swap_form'}
+			{code = 'has_skill', check = true, value = 'swap_form', learned = true}
 			],
 		tags = ['human_form'],
 		statchanges = {charm_bonus = 20, productivity = 0.25},
