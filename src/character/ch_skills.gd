@@ -115,6 +115,8 @@ func get_learned_skills(cat):
 			return combat_skills.duplicate()
 		'explore':
 			return explore_skills.duplicate()
+		'all':
+			return social_skills.duplicate() + combat_skills.duplicate() + explore_skills.duplicate()
 
 
 func fix_skillpanels(list_soc_add, list_combat_add, list_soc_remove, list_combat_remove):

@@ -1609,6 +1609,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 				if has_profession(k):
 					check = true
 		'has_skill':
+			if i.has('learned') and i.learned:
+				return skills.get_learned_skills('all').has(i.value) == i.check
 			return dyn_stats.has_skill(i.value) == i.check
 		'race_is_beast':
 			check = races.racelist[get_stat('race')].tags.has('beast') == i.check
