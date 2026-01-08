@@ -1319,11 +1319,12 @@ func reset_training():
 	training.reset_training()
 
 func clear_training():
-	if training.clear_training():
-		#check if need remove from unavaliable work
-		#char MAY still be worker after trainer remove
-		if !is_worker() and !(get_work() in ['', 'rest', 'disabled', 'travel']):
-			 remove_from_task()
+	training.clear_training()
+#	if training.clear_training():
+#		#check if need remove from unavaliable work
+#		#char MAY still be worker after trainer remove
+#		if !is_worker() and !(get_work() in ['', 'rest', 'disabled', 'travel']):
+#			 remove_from_task()
 
 func can_be_trained():
 	return training.can_be_trained()

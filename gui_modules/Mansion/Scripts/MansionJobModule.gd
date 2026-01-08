@@ -110,7 +110,8 @@ func update_characters():
 			newbutton.disabled = true 
 			globals.connecttexttooltip(newbutton, tr("SELECT_SLOT_FIRST_LABEL"))
 		if !ch.is_worker() and !mode_farm:
-			newbutton.disabled = true
+			if !(selected_job != null and selected_job.has("code") and selected_job.code == person.get_work()):
+				newbutton.disabled = true
 			globals.connecttexttooltip(newbutton, ch.translate("[name]" + " " + tr("LACKS_BASIC_SERV_LABEL"))) #change translation
 		if selected_job != null and selected_job.has("code"):
 			if selected_job.code == "prostitution":
@@ -124,11 +125,14 @@ func update_characters():
 					newbutton.disabled = true
 					globals.connecttexttooltip(newbutton, ch.translate("[name] " + " " + tr("LACKS_PROSTITUTUION_LABEL")))
 			if selected_job.code in ['smith','alchemy','tailor','cooking']:
-				if ch.has_status('no_craft'): newbutton.disabled = true
+				if ch.has_status('no_craft'): 
+					newbutton.disabled = true
 			if selected_job.code == "building":
-				if ch.has_status('no_upgrade'): newbutton.disabled = true
+				if ch.has_status('no_upgrade'): 
+					newbutton.disabled = true
 		if !(selected_resource in [null, 'rest', 'brothel', 'gold', 'smith','alchemy','tailor','cooking', 'building']):
-			if ch.has_status('no_collect'): newbutton.disabled = true
+			if ch.has_status('no_collect'): 
+				newbutton.disabled = true
 		if newbutton.disabled == true && selected_job != null:
 			newbutton.get_node('Name').set("custom_colors/font_color", variables.hexcolordict['red'])
 		newbutton.set_meta('slave', ch)
@@ -161,6 +165,8 @@ func update_status(newbutton, ch):
 	if ch.get_work() == '' or !ch.is_avaliable():
 		if !ch.is_on_quest():
 			newbutton.get_node("Status").texture = load("res://assets/images/gui/gui icons/icon_bedlimit.png")
+		if !ch.is_worker():
+			newbutton.disabled = true
 	elif ch.get_work() == 'special':
 		var task = ch.find_worktask()
 		newbutton.get_node("Status").texture = load(task.icon)
