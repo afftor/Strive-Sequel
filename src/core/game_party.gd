@@ -314,6 +314,8 @@ func change_relationship_status(char1, char2, new_status, forced = false):
 	
 	data.status = new_status
 	
+	if babies.has(char1) or babies.has(char2):
+		return
 	if new_status in ['friends', 'rivals'] and f:
 		var ch1 = characters[char1]
 		var ch2 = characters[char2]
