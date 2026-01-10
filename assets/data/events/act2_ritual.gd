@@ -1315,6 +1315,20 @@ var data = {
 								action = "decision"
 							}
 						]
+					},
+					{
+						code = "add_timed_event",
+						value = "mae_initiate_start",
+						args = [
+							{
+								type = "add_to_date",
+								date = [
+									3,
+									3
+								],
+								hour = 1
+							}
+						]
 					}
 				]
 			}

@@ -2646,7 +2646,18 @@ var quests = {
 #			stage1 = {code = 'stage1', name = "ZEPHYRA_DISAPPEARANCE_QUEST_NAME", descript = "ZEPHYRA_DISAPPEARANCE_QUEST_STAGE_1"}, # search for Zephyra
 		},
 	},
-	
+	mae_city_quest = {
+		code = "mae_city_quest",
+		summary = "MAE_CITY_QUEST_SUMMARY",
+		stages = {
+			stage0 = {code = "stage0", name = "MAE_CITY_QUEST_NAME", descript = "MAE_CITY_QUEST_STAGE_0"},
+			stage1 = {code = "stage1", name = "MAE_CITY_QUEST_NAME", descript = "MAE_CITY_QUEST_STAGE_1"},
+			stage2 = {code = "stage2", name = "MAE_CITY_QUEST_NAME", descript = "MAE_CITY_QUEST_STAGE_2"},
+			stage25 = {code = "stage25", name = "MAE_CITY_QUEST_NAME", descript = "MAE_CITY_QUEST_STAGE_25"},
+			stage3 = {code = "stage3", name = "MAE_CITY_QUEST_NAME", descript = "MAE_CITY_QUEST_STAGE_3"},
+			stage4 = {code = "stage4", name = "MAE_CITY_QUEST_NAME", descript = "MAE_CITY_QUEST_STAGE_4"},
+		},
+	},
 	amelia_main_quest = {
 		code = 'amelia_main_quest',
 		summary = "AMELIA_MAIN_QUEST_SUMMARY",
