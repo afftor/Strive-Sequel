@@ -440,6 +440,23 @@ var data = {
 		}, ],
 	},
 	
+	mae_dialogue_start = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], unique_character = 'mae',
+		text = [
+			{text = "MAE_EXTRA_GREET", reqs = [], previous_dialogue_option = 0},
+		], 
+		options = [ 
+			{
+				code = 'mae_potion_ready', 
+				text = "MAE_POTION_READY_OPTION", 
+				reqs = [{type = "active_quest_stage", value = "mae_city_quest", stage = "stage25"}], 
+				dialogue_argument = 1, 
+				remove_after_first_use = true
+			}, 
+			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1} 
+		],
+	},
+	
 	aire_dialogue_start = {
 		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [], character = 'aire',
 		text = [

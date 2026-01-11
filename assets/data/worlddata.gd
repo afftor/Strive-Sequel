@@ -936,6 +936,27 @@ var fixed_location_options = { #override serialized data
 			], 
 			args = [{code = 'start_event', data = 'liora_return', args = []}]
 		},
+		{
+			text = tr("MAE_MARKET_OPTION"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'mae_city_quest', stage = 'stage0'}
+			], 
+			args = [{code = 'start_event', data = 'mae_market_start', args = []}]
+		},
+		{
+			text = tr("MAE_SHELIA_OPTION"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'mae_city_quest', stage = 'stage1'}
+			], 
+			args = [{code = 'start_event', data = 'mae_friend_visit_1', args = []}]
+		},
+		{
+			text = tr("MAE_POTION_OPTION"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'mae_city_quest', stage = 'stage3'}
+			], 
+			args = [{code = 'start_event', data = 'mae_friend_visit_2_start', args = []}]
+		},
 	],
 	elf_capital = [
 		{

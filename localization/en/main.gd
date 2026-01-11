@@ -8255,6 +8255,7 @@ You push Anastasia to the floor and she spreads her legs wide for you. You mount
 	KURDAN_EXTRA_REPLY2 = "{color=yellow|— I've been studying magic since I was a juvenile. My father was an experienced practitioner, so I guess it runs in the family. Some see it as a tool, just a means to an end, but I'm a lot more curious about the underlying mechanics of how it operates and what role it has in the world. I still have much to learn, though.}",
 	KURDAN_EXTRA_OPTION3 = "About orcs...",
 	KURDAN_EXTRA_REPLY3 = "{color=yellow|— Those who united my homelands decided to outlaw the practice of magic altogether. They are in a difficult position today after being ruled for so long with an iron fist by the cult of Thoth. Now the cult is persecuted, and we... they have replaced magic with technology as the foundation of their power. I think it's unavoidable that you will encounter them some day.}",
+	MAE_EXTRA_GREET = "{color=yellow|— Greetings, [name]. Do you have some questions for me?}",
 	AMELIA_BONUS_QUESTION = "{color=yellow|— [name], I have a question for you and please answer honestly. Who would you find more attractive between me and the princess? She seems only slightly younger than me and I can't deny her beauty, that alone must make her quite appealing.}",
 	AMELIA_BONUS_QUESTION_OPTION1 = "Princess.",
 	AMELIA_BONUS_QUESTION_OPTION2 = "Amelia.",
@@ -9559,7 +9560,7 @@ After pondering for some time she turns to you with her request.
 
 Your attempt to track meets with little success. As you decide to return back and report on your findings, you hear a rustle from one of the nearby bushes. As you move closer, a small weasel quickly runs away from it. As you give a sigh and prepare to walk away, you notice that the small animal hasn't disappeared from sight as you would normally expect it to.
 
-Somehow, it carefully looks at you without moving, as if requiring your attention. [color=lime]You must follow it.[/color] Without any good reason to follow it, you still decide to do it.""",
+Somehow, it carefully looks at you without moving, as if requiring your attention. [color=gray_text_dialogue]You must follow it.[/color] Without any good reason to follow it, you still decide to do it.""",
 	PRE_RITUAL_2_1 = "As you follow the weasel through the forest, soon it brings you to its goal: a small human camp. A couple of cages and furniture make clear that it belongs to slavers. As you are scouting the camp, you realize that your guide has swiftly disappeared, but that doesn't bother you anymore, as in one of the cages you observe a familiar silhouette which likely belongs to the girl you are looking for.",
 	PRE_RITUAL_2_2 = """A couple of patrolling slavers went by your hiding spot.
 
@@ -20649,7 +20650,209 @@ Heleviel raises a brow, but it's too late to back out.""",
 	HELEVIEL_SNOWSET_EVENT_5B = """Heleviel closes her eyes in meditation, before composing herself to deliver a clear, steady speech.
 
 {color=yellow|Heleviel: — This is a boon. A custom of goodwill. And I want to thank you, not only for the gift, but for the hands and hearts behind it that chose to make it here. Your work and benevolence deserve my sincerest blessing, which I deliver to you. You have my gratitude, and more than anyone, [name], who is the reason that I'm here. Merry Christmas!}""",
+	
+	MAE_QUEST_INITIATE_START = """After a few days of living at your place, Mae, a beastkin shaman who joined you after the obscene ritual, finally approaches you. She rubs her legs together, looking down before she finally speaks up.
 
+{color=yellow|Mae: — H-hi, how's your day?}""",
+	MAE_QUEST_INITIATE_OPTION_1 = "It's nice",
+	MAE_QUEST_INITIATE_OPTION_2 = "Is there something you want to ask?",
+	MAE_QUEST_INITIATE_REPLY_1 = """{color=yellow|Mae: — R-really? That's good to hear.}
 
+Judging by Mae's tone, she still isn't quite used to the luxury of a city mansion after all that happened.""",
+	MAE_QUEST_INITIATE_REPLY_2 = "{color=yellow|Mae: — Y-yeah, sorry, I was not sure how to start...}",
+	MAE_QUEST_INITIATE_FAVOR = "{color=yellow|Mae: — Anyway, there's a favor I want to ask. Well, you see, I... can't get used to the food around here after living in the forests... It... doesn't quite taste right to me.}",
+	MAE_QUEST_INITIATE_FAVOR_OPTION_1 = "I remember you eating rather happily with others",
+	MAE_QUEST_INITIATE_FAVOR_OPTION_2 = "So what do you want?",
+	MAE_QUEST_INITIATE_FAVOR_RETURN = """Mae's face blushes slightly and she starts stammering, speaking faster.
 
+{color=yellow|Mae: — Y-yeah, I did, I couldn't show my distaste, could I?}""",
+	MAE_QUEST_INITIATE_REQUEST = "{color=yellow|Mae: — I wanted to go to the local market, it's just... I'm not used to buying stuff over here. Oh, and I could also get some rare herbs for my rituals while I'm at it.}",
+	MAE_QUEST_INITIATE_REQUEST_OPTION_1 = "Alright, I can show you around",
+	MAE_QUEST_INITIATE_REQUEST_OPTION_2 = "Maybe once I have time",
+	MAE_QUEST_INITIATE_CLOSE = "{color=yellow|Mae: — Thank you, I hope it won't take you too long...}",
+
+	MAE_MARKET_START = """You lead Mae to the market, slowly guiding her through various stalls as she observes her surroundings with wide eyes.
+
+{color=yellow|Mae: — Wow, it's only been a couple of years since I visited last time, but things have changed so much...}""",
+	MAE_MARKET_FRUIT_INTRO = """As you guide Mae between the stalls, a bright splash of color catches her eye. She stops short, ears perking up.
+
+{color=yellow|Mae: — Oh... that fruit...}
+
+On a velvet cloth sits a pile of glossy, amber-skinned fruits, each one perfectly round and faintly warm as if it was just picked.
+
+{color=gray_text_dialogue|Fruit Vendor: — Sunplums! Fresh shipment, rare this season! Price is firm.}
+
+Mae takes one look at the sign and immediately pulls her hand back.
+
+{color=yellow|Mae: — I-it's... pricey. Back in the woods we just... found them rarely like this.}
+
+She stares a moment longer, swallowing, then looks at you with a hesitant, embarrassed smile.""",
+	MAE_MARKET_FRUIT_OPTION_BUY = "*Buy it for her* (250 gold)",
+	MAE_MARKET_FRUIT_OPTION_STEAL = "*Steal it while the vendor isn't looking*",
+	MAE_MARKET_FRUIT_OPTION_MOVE = "We better move on",
+	MAE_MARKET_FRUIT_BUY = """You reach for your coin pouch without making a big deal out of it.
+
+{color=gray_text_dialogue|Fruit Vendor: — Good choice. Mind the juice, it stains.}
+
+The vendor wraps it in thin paper and passes it over. Mae accepts it with both hands like it's a gift.""",
+	MAE_MARKET_FRUIT_STEAL = """You scan the vendor's posture, the flow of people, the way the stall's edge creates a blind spot. The vendor turns to argue with another customer about weights and measures.
+
+But your hand is already between the cloth and the fruit. In one smooth motion, you slip a sunplum into a sleeve pouch.""",
+	MAE_MARKET_FRUIT_AFTER = """{color=yellow|Mae: — R-really? For me?.. Thank you...}
+
+She takes a careful bite. Her eyes widen, and her tail gives a tiny, involuntary swish.
+
+For the first time since arriving in the city, she looks genuinely at ease.""",
+	MAE_MARKET_FRUIT_MOVE_ON = """Mae flinches at her own lingering stare, then forces a polite nod.
+
+{color=yellow|Mae: — Y-yeah... you're right. I got carried away.}
+
+She takes one last look, then quickly steps after you, as if afraid she might change her mind.""",
+	MAE_MARKET_SHELIA_INTRO = """As you make your way through the market, a couple of beastkin suddenly approach you. A female one looks surprised as she takes a closer look at Mae.
+
+{color=aqua|Stranger Beastkin: — Oh, Mae, is that you?}
+
+{color=yellow|Mae: — H-hi, Shelia, it's been a while.}
+
+{color=aqua|Shelia: — What an outfit, so you really went to live in the woods?}
+
+{color=yellow|Mae: — Well, that's a long story...}""",
+	MAE_MARKET_SHELIA_TALK = """{color=aqua|Shelia: — No way, you're a tribal shaman now? And you live at a mayor's place too. Are you like one of his close partners? Haha.}
+
+{color=yellow|Mae: — T-that's not like that...}""",
+	MAE_MARKET_SHELIA_REL_OPTION_1 = "Our relationship is strictly professional",
+	MAE_MARKET_SHELIA_REL_OPTION_2 = "You aren't exactly wrong...",
+	MAE_MARKET_SHELIA_REQUEST = """{color=aqua|Shelia: — Yeah, yeah, I get it, someone with knowledge from the far woods can be very valuable...}
+
+The girl pauses for a bit as if recalling something.
+
+{color=aqua|Shelia: — Oh, about that, I just remembered. My younger cousin has been acting weird and being sick for about a week already. Local apothecaries couldn't give us anything. I feel like it might be something... unusual. Maybe you could take a look?}
+
+{color=yellow|Mae: — I suppose, it can't hurt to try. Savra taught me about many different conditions.}""",
+	MAE_MARKET_SHELIA_WAIT = """{color=aqua|Shelia: — That's great! I'll be waiting for you at my place then.}
+
+The beastkin explained their home location and went on with their errands.
+
+{color=yellow|Mae: — Hope you don't mind me trying to help them?}""",
+	MAE_MARKET_SHELIA_RESPONSE_OPTION_1 = "It's worth it to keep helping your friends",
+	MAE_MARKET_SHELIA_RESPONSE_OPTION_2 = "I think this can help your training",
+	MAE_MARKET_SHELIA_RESPONSE_1 = "{color=yellow|Mae: — Y-yeah, I wonder what they really think of me now that I'm back being like this...}",
+	MAE_MARKET_SHELIA_RESPONSE_2 = "{color=yellow|Mae: — You think so? I guess it would be nice to be more useful to you.}",
+
+	MAE_FRIEND_VISIT_1 = """You visit a small dormitory. Mae approaches the young beastkin boy lying in bed, weak and feeble. When she finishes her inspection, she turns to you.
+
+{color=yellow|Mae: — It seems he is possessed by a nasty spirit. It's unusual, spirits are weak outside their natural habitat and don't like densely populated cities... I think I can take care of it with a ritual, but I don't have the necessary brew for it. W-would you help me out with this, [name]?}""",
+	MAE_FRIEND_VISIT_1_OPTION_1 = "Well, it would be weird to stop at this point",
+	MAE_FRIEND_VISIT_1_OPTION_2 = "I don't really have much free time, I'll consider it",
+	MAE_FRIEND_VISIT_1_AFTER = """Mae nods, quickly returning her gaze to the boy. She seems genuinely concerned for his well-being.
+
+{color=yellow|Mae: — Thank you. I'll make sure to remember everything correctly for it.}
+
+As you leave, she gives you a recipe for the potion she wants you to make. It doesn't seem difficult, but it will take a bit of time.""",
+	MAE_POTION_READY = "{color=yellow|Mae: — You've done it? Thank you. Now we can go back to Shelia's house.}",
+
+	MAE_FRIEND_VISIT_2_START = """As Mae reaches the child's bed, she prepares the potion by pouring it into a cup. She slowly makes him drink it before taking out a wood-carved talisman she has been preparing over the last few days.
+
+{color=yellow|Mae: — C-can you leave us alone for a bit? I need to concentrate, and it would help if no one was watching.}""",
+	MAE_FRIEND_VISIT_2_WAIT = """You and Shelia leave Mae alone, closing the door behind her.
+
+{color=aqua|Shelia: — She looks like she actually knows what she's doing, doesn't she?..}
+
+After a couple minutes, when Shelia serves you some water, you are both startled by a sudden yelp and a crash.""",
+	MAE_FRIEND_VISIT_2_CRASH = """After taking a few moments to force the door, you finally make it inside to find the bed with the boy still in place. A few pieces of furniture and clothes are scattered across the floor, and the window is wide open with one side damaged.
+
+The boy breathes heavily but seems more active than before, slowly coming to his senses. However, Mae is nowhere to be seen.
+
+The broken window catches the attention of the guards outside, and after a short time you are approached by them for questioning.
+
+{color=gray_text_dialogue|Guard: — Your mayorship? We heard loud noises and something barged through the window.}
+
+Despite your best efforts, you are unable to follow after Mae wherever she was taken, and the guards seem to have no idea either.
+
+At least to your and Shelia's relief, her ritual actually worked, and by the end of the day the boy was on his feet. Still, you need to find Mae.""",
+	MAE_FRIEND_VISIT_2_OPTION_WISDOM = "[Wisdom Challenge] Observe the patterns of the tracks left by Mae",
+	MAE_FRIEND_VISIT_2_OPTION_CLOSE = "Close",
+	MAE_FRIEND_VISIT_2_TRACK_SUCCESS = "You spend additional time studying the mess Mae made and asking witnesses what they saw. This helps you narrow down the possible direction she moved in and will greatly help with the search.",
+
+	MAE_SEARCH_COMPLETE_START = """A whole day has been spent trying to find Mae. Many strangers reported seeing her roaming through town and causing chaos, noting that she looked drugged or delusional, but she never stayed around for long, as if trying to escape others' eyes.
+
+Finally you've managed to find her not far from your mansion, in an isolated dead end, sitting against the wall. Her eyes are wide and watering as she sees you.
+
+{color=yellow|Mae: — [name], n-no... I... Ah!.. I screwed up big, the s-spirit got me...}
+
+Her body visibly shakes as she looks exhausted from suppressing the entity fighting her.""",
+	MAE_SEARCH_COMPLETE_OPTION_1 = "What does it do exactly?",
+	MAE_SEARCH_COMPLETE_OPTION_2 = "How can I help you?",
+	MAE_SEARCH_COMPLETE_VOICE_1 = """{color=yellow|Mae: — I-it can't take me, but... it wants to...}
+
+{color=red|Voice: — If you didn't come after me you foul beastkin! I'll spill your dirty secrets that pester your mind now.}
+
+{color=yellow|Mae: — N-no, please... don't listen!}""",
+	MAE_SEARCH_COMPLETE_VOICE_2 = """{color=red|Voice: — Your poor and useless being only good for this suffering, no money, no home, so pathetic!}
+
+Mae closes her eyes and covers her face with her paws in shame as you are the sole observer of her humiliation.
+
+{color=yellow|Mae: — T-that's nothing I can help with!}
+
+{color=red|Voice: — And also fat! Just look at how obese you are! That's what you were trying to hide, that you eat too much! And just changing your diet would change anything!}""",
+	MAE_SEARCH_COMPLETE_VOICE_3 = """Under the stress of the situation and your scrutinizing gaze, Mae's voice finally grows more irritated, her body tensing.
+
+{color=yellow|Mae: — E-enough... shut up! This is all a lie, you are just a parasite, feeding... on suffering...}
+
+The spirit completely ignores her pleas. It seems to act purely on instinct, with no sentience beyond putting Mae down with its taunts.
+
+{color=red|Voice: — That orgy is still on your dirty mind you slut, the way everyone was looking at your flabby body. They were looking at your gigantic tits and fat ass!}""",
+	MAE_SEARCH_COMPLETE_VOICE_4A = "{color=red|Voice: — And you can't stop thinking how your pussy was ravished by this man every...}",
+	MAE_SEARCH_COMPLETE_VOICE_4B = "{color=red|Voice: — And you can't stop thinking how lewd it was being surrounded by cocks...}",
+	MAE_SEARCH_COMPLETE_VOICE_4C = """A loud cry erupts from Mae as her body is enveloped in blue light. After only a moment the voice is gone, and she falls to the ground, panting heavily. Her eyes are full of tears.""",
+	MAE_SEARCH_COMPLETE_OPTION_HELP = "*Help her get up*",
+	MAE_SEARCH_COMPLETE_OPTION_STAND = "*Let her do it by herself*",
+	MAE_SEARCH_COMPLETE_HELP = "You gently pick Mae up and put her on her feet. She doesn't say anything as you take her back to the mansion, but you can clearly feel her ache to forget everything that happened.",
+	MAE_SEARCH_COMPLETE_STAND = "You let Mae take a breath until she's able to stand by herself. You lead her back into the mansion as she says nothing, but you can clearly feel her ache to forget everything that happened.",
+	MAE_SEARCH_COMPLETE_HOME = """Finally at home, Mae has calmed down and speaks slowly, holding her hands together.
+
+{color=yellow|Mae: — Aah, it was all because of me... I forgot to close the window curtains before the ritual, so it broke free... I'm so sorry about this...}""",
+	MAE_SEARCH_COMPLETE_HOME_OPTION_1 = "No matter, I'm glad you are safe",
+	MAE_SEARCH_COMPLETE_HOME_OPTION_2 = "It's alright, it was your first time after all",
+	MAE_SEARCH_COMPLETE_HOME_OPTION_3 = "Your mistake did cost me a lot of time",
+	MAE_SEARCH_COMPLETE_RESPONSE_1 = """Mae visibly blushes and looks away at your words.
+
+{color=yellow|Mae: — R-really? Thank you, I'm glad you say that, but... going through something so embarrassing... I need a rest.}""",
+	MAE_SEARCH_COMPLETE_RESPONSE_2 = "{color=yellow|Mae: — T-Thank you. This is one lesson I'll never forget... I need a rest.}",
+	MAE_SEARCH_COMPLETE_RESPONSE_3 = """Mae seems disappointed by your harsh words, visibly lowering her head.
+
+{color=yellow|Mae: — I'm sorry... this is really an awful rookie mistake of me.}""",
+	MAE_SEARCH_COMPLETE_CONCERN = """Before going to her room, she suddenly gives you a vulnerable look.
+
+{color=yellow|Mae: — ...About the things that it said...}
+
+Judging by her blush, it wasn't so much about her insecurity and more about the lewd stuff she went through with you.""",
+	MAE_SEARCH_COMPLETE_FINAL_OPTION_1 = "I couldn't really hear what it said... (lie)",
+	MAE_SEARCH_COMPLETE_FINAL_OPTION_2 = "Yeah, it was a bit embarrassing, but we all have moments like this",
+	MAE_SEARCH_COMPLETE_FINAL_OPTION_3 = "If you enjoyed it, you shouldn't shy away from it. You have a lot of potential in you.",
+	MAE_SEARCH_COMPLETE_FINAL_1 = """{color=yellow|Mae: — I-I see... that's good then...}
+
+It doesn't seem like Mae buys your lie, but it comforts her that you choose to pretend nothing happened.""",
+	MAE_SEARCH_COMPLETE_FINAL_2 = "{color=yellow|Mae: — Thank you... uhm, I hope we can forget about this happening soon.}",
+	MAE_SEARCH_COMPLETE_FINAL_3 = "{color=yellow|Mae: — Y-you really think so? Potential in things like this... feels inappropriate to me. But if you are saying so, maybe it's more normal than I thought... Thank you, [name], I feel a little better now I guess.}",
+	
+	MAE_CITY_QUEST_NAME = "Mae's Request",
+	MAE_CITY_QUEST_SUMMARY = "Mae asks for help adjusting to the city, leading to a market outing, a ritual request, and a sudden crisis.",
+	MAE_CITY_QUEST_STAGE_0 = "Take Mae to the market in Aliron.",
+	MAE_CITY_QUEST_STAGE_1 = "Visit Shelia's home with Mae.",
+	MAE_CITY_QUEST_STAGE_2 = "Craft the ritual potion Mae requested.",
+	MAE_CITY_QUEST_STAGE_25 = "Tell Mae about potion.",
+	MAE_CITY_QUEST_STAGE_3 = "Return to Shelia's home with Mae.",
+	MAE_CITY_QUEST_STAGE_4 = "Search for Mae in Aliron.",
+	
+	MAE_MARKET_OPTION = "Food Market",
+	MAE_SHELIA_OPTION = "Shelia's home",
+	MAE_POTION_OPTION = "Shelia's home",
+	
+	MAE_POTION_READY_OPTION = "Your potion is finally crafted.",
+	
+	MAE_POTION_TASK_NAME = "Brew Mae's Ritual Potion",
+	MAE_POTION_TASK_DESC = "Prepare the ritual brew Mae needs for the exorcism.",
+	MAE_SEARCH_TASK_NAME = "Search for Mae",
+	MAE_SEARCH_TASK_DESC = "Scour Aliron for any sign of Mae's whereabouts.",
 }

@@ -2425,6 +2425,8 @@ func take_virginity(type, partner, breakable = false):
 			try_breakdown('brk_lose_virginity')
 		if get_stat('metrics_partners').has(partner) == false && partner.begins_with("hid"):
 			statlist.update_stat('metrics_partners', partner, 'append')
+		if !ResourceScripts.game_party.relativesdata.has(partner):
+			ResourceScripts.game_party.createrelativesdata(characters_pool.get_char_by_id(partner))
 
 
 func add_partner(partner):

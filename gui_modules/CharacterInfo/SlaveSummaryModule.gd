@@ -329,7 +329,12 @@ var unique_dict = { #shows available talk characters. Scenes go in order from hi
 			{code = 'daisy_dialogue_start', reqs = []}
 		]
 	},
-	
+	mae = {
+		code = 'mae', 
+		scenes = [
+			{code = 'mae_dialogue_start', reqs = []}
+		]
+	},
 	
 	aire = {
 		code = 'aire', 
