@@ -857,7 +857,6 @@ hint_tooltip = "TOOLTIPFOODCONSUMPTION"
 texture = ExtResource( 14 )
 
 [node name="population" type="Label" parent="."]
-visible = false
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0

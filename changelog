@@ -1,16 +1,28 @@
+0.13.4b
+Summons are now toggleable
+Succubus now receive passive form benefits before transformation
+Fixed combat log bug with salamander
+Fixed console errors related to gear equipping 
+0.13.4a
+Oblivion potion now refunds 90% of experience
+Fixed missing population icon
+Fixed some issues with job menu
 0.13.4
 Added Christmas Heleviel outfit (obtained at workers guild)
 Improved quest notice board
 Added multiple new songs through the game and story
 Added reroll option to character creation for name and appearance
 Added new crafter class: Tailor
-Added new combat classes: Spellsword, Arcane Blade.
+Added new combat classes: Spellsword, Arcane Blade
 Revamped the way damage modificators are calculated to be addictive instead of multiplicative
-Improved enemy damage resistance 
+Updated furry and kobold faces for paperdoll
+Improved enemy damage resistance
+Revamped paperdoll faces for furries and kobolds 
 Nerfed critical rates across various effects and classes
 Nerfed Ninja's evasion bonus
 Reduced the number of waiting days for most quests and events to progress
 Forbid Masturbation rule now provides +2 Loyalty Gain and -10% productivity
+Presumably fixed city screen flickering for some GPUs 
 Fixed writ of exemption missing some of the traits
 Fixed characters on quests being selectable for sex interactions
 Fixed unavailable characters still being presented on some quests

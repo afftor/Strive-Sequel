@@ -37,7 +37,7 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
+				]
 			},
 			{
 				code = "close",
@@ -46,9 +46,10 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
+				]
 			}
-		]
+		],
+		image = "elf_druid"
 	},
 	meteor_lounge_brief = {
 		reqs = [
@@ -57,14 +58,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		text = [
-			{
-				text = "METEOR_LOUNGE_BRIEF",
-				reqs = [
-
-				]
-			},
-		],
+		text = "METEOR_LOUNGE_BRIEF",
 		options = [
 			{
 				code = "meteor_lounge_response",
@@ -73,7 +67,7 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
+				]
 			},
 			{
 				code = "meteor_lounge_response",
@@ -82,9 +76,10 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
+				]
 			}
-		]
+		],
+		image = "elf_druid"
 	},
 	meteor_lounge_response = {
 		reqs = [
@@ -93,14 +88,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		text = [
-			{
-				text = "METEOR_LOUNGE_RESPONSE",
-				reqs = [
-
-				]
-			},
-		],
+		text = "METEOR_LOUNGE_RESPONSE",
 		options = [
 			{
 				code = "close",
@@ -125,7 +113,8 @@ var data = {
 					}
 				]
 			}
-		]
+		],
+		image = "elf_druid"
 	},
 	meteor_ogres_start = {
 		reqs = [
@@ -134,14 +123,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		text = [
-			{
-				text = "METEOR_OGRES_START",
-				reqs = [
-
-				]
-			},
-		],
+		text = "METEOR_OGRES_START",
 		options = [
 			{
 				code = "meteor_ogres_camp",
@@ -162,14 +144,7 @@ var data = {
 			"dialogue_scene",
 			"blackscreen_transition_common"
 		],
-		text = [
-			{
-				text = "METEOR_OGRES_CAMP",
-				reqs = [
-
-				]
-			},
-		],
+		text = "METEOR_OGRES_CAMP",
 		options = [
 			{
 				code = "meteor_ogres_fight",
@@ -191,7 +166,8 @@ var data = {
 				select_person = true,
 				challenge = "persuasion"
 			}
-		]
+		],
+		image = "ogres"
 	},
 	meteor_ogres_fight = {
 		reqs = [
@@ -200,14 +176,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		text = [
-			{
-				text = "METEOR_OGRES_FIGHT",
-				reqs = [
-
-				]
-			},
-		],
+		text = "METEOR_OGRES_FIGHT",
 		options = [
 			{
 				code = "quest_fight",
@@ -219,7 +188,8 @@ var data = {
 
 				]
 			}
-		]
+		],
+		image = "ogres"
 	},
 	meteor_ogres_win = {
 		reqs = [
@@ -241,7 +211,7 @@ var data = {
 				reqs = [
 
 				]
-			},
+			}
 		],
 		options = [
 			{
@@ -269,14 +239,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		text = [
-			{
-				text = "METEOR_LOUNGE_RETURN",
-				reqs = [
-
-				]
-			}
-		],
+		text = "METEOR_LOUNGE_RETURN",
 		options = [
 			{
 				code = "meteor_lounge_return2",
@@ -287,7 +250,8 @@ var data = {
 
 				]
 			}
-		]
+		],
+		image = "elf_druid"
 	},
 	meteor_lounge_return2 = {
 		reqs = [
@@ -296,14 +260,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		text = [
-			{
-				text = "METEOR_LOUNGE_RETURN2",
-				reqs = [
-
-				]
-			}
-		],
+		text = "METEOR_LOUNGE_RETURN2",
 		options = [
 			{
 				code = "close",
@@ -329,10 +286,11 @@ var data = {
 					{
 						code = "remove_quest_location",
 						value = "quest_star_crater"
-					},
+					}
 				]
 			}
-		]
+		],
+		image = "elf_druid"
 	},
 	meteor_sigmund_start = {
 		reqs = [
@@ -368,7 +326,7 @@ var data = {
 				reqs = [
 
 				]
-			},
+			}
 		]
 	},
 	meteor_sigmund_gold = {
@@ -410,7 +368,7 @@ var data = {
 						code = "decision",
 						value = "BoughtSigmundsPass"
 					}
-				],
+				]
 			},
 			{
 				code = "meteor_sigmund_access",
@@ -440,7 +398,7 @@ var data = {
 						stage = "get_inside"
 					}
 				]
-			},
+			}
 		]
 	},
 	meteor_sigmund_access = {
@@ -471,7 +429,7 @@ var data = {
 				reqs = [
 
 				]
-			},
+			}
 		],
 		options = [
 			{
@@ -492,7 +450,7 @@ var data = {
 						value = "meteorite_quest",
 						stage = "search_durim"
 					}
-				],
+				]
 			},
 			{
 				code = "close",
@@ -517,8 +475,8 @@ var data = {
 						loc = "dwarf_capital",
 						event = "enter_city_t_0"
 					}
-				],
-			},
+				]
+			}
 		]
 	},
 	meteor_enter_city2 = {
@@ -545,9 +503,9 @@ var data = {
 				reqs = [
 
 				],
-				dialogue_argument = 9,
-			},
-		],
+				dialogue_argument = 9
+			}
+		]
 	},
 	meteor_durim_start = {
 		reqs = [
@@ -556,14 +514,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		text = [
-			{
-				text = "METEOR_DURIM_START",
-				reqs = [
-
-				]
-			}
-		],
+		text = "METEOR_DURIM_START",
 		options = [
 			{
 				code = "meteor_durim_start2",
@@ -572,9 +523,9 @@ var data = {
 				reqs = [
 
 				],
-				dialogue_argument = 9,
-			},
-		],
+				dialogue_argument = 9
+			}
+		]
 	},
 	meteor_durim_start2 = {
 		reqs = [
@@ -583,14 +534,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		text = [
-			{
-				text = "METEOR_DURIM_START2",
-				reqs = [
-
-				]
-			}
-		],
+		text = "METEOR_DURIM_START2",
 		options = [
 			{
 				code = "quest_fight",
@@ -600,7 +544,7 @@ var data = {
 				reqs = [
 
 				],
-				dialogue_argument = 9,
+				dialogue_argument = 9
 			},
 			{
 				code = "meteor_durim_ingot",
@@ -609,9 +553,10 @@ var data = {
 				reqs = [
 
 				],
-				dialogue_argument = 1,
-			},
+				dialogue_argument = 1
+			}
 		],
+		image = "dwarf_alchemist"
 	},
 	meteor_durim_ingot = {
 		reqs = [
@@ -622,9 +567,9 @@ var data = {
 		],
 		common_effects = [
 			{
-				code = 'material_change',
-				operant = '+',
-				material = 'meteorite_iron',
+				code = "material_change",
+				operant = "+",
+				material = "meteorite_iron",
 				value = 16
 			},
 			{
@@ -660,7 +605,6 @@ var data = {
 				],
 				previous_dialogue_option = 2
 			}
-			
 		],
 		options = [
 			{
@@ -679,7 +623,7 @@ var data = {
 						check = false
 					}
 				],
-				dialogue_argument = 9,
+				dialogue_argument = 9
 			},
 			{
 				code = "close",
@@ -708,8 +652,9 @@ var data = {
 						code = "update_city"
 					}
 				]
-			},
+			}
 		],
+		image = "dwarf_alchemist"
 	},
 	meteor_durim_hara = {
 		reqs = [
@@ -745,12 +690,7 @@ var data = {
 						code = "update_city"
 					}
 				]
-			},
-		],
-	},
-	
-	
-	
-	
+			}
+		]
+	}
 }
-

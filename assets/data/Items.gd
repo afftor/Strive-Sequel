@@ -1786,7 +1786,7 @@ var itemlist = {
 		weaponrange = 'melee',
 		slots = ['rhand','lhand'],
 		price = 1000,
-		icon = load("res://assets/images/iconsitems/cali_heirloom.png"),
+		icon = load("res://assets/images/iconsitems/cali_heirloom_new.png"),
 		tier = 'medium',
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],

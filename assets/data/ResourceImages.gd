@@ -572,6 +572,9 @@ var scenes = {
 	heleviel_halfkin = "res://assets/images/scenes/heleviel_halfkin.png",
 	heleviel_town = "res://assets/images/scenes/heleviel_town.png",
 	
+	ogres = "res://assets/images/scenes/ogres.png",
+	elf_druid = "res://assets/images/scenes/elven druid.png",
+	dwarf_alchemist = "res://assets/images/scenes/dwarf_alchemist.png",
 	
 	hire = load("res://assets/images/scenes/hire.png"),
 	

@@ -52,6 +52,7 @@ var TranslationDict = {
 						Текст: plumpjack
 						Текст: S[Mutt]
 
+						Аудио: Maverik (AI assisted)
 						Вычитка: Dorant, ralphomayo, Khuja, Lipach
 						Также спасибо: negtize724
 
@@ -163,17 +164,17 @@ var TranslationDict = {
 	EXPLOREUPGRADES = """Улучшения""",
 	EXPLORESERVICE = """Сервис""",
 	EXPLOREGUILDSHOP = """Магазин гильдии""",
-	STATSTRADING_IMPROVED_STATUS = """Improved Status""", # MISSING TRANSLATION
-	STATSTRADING_STAT_NAME = """Stat Name""", # MISSING TRANSLATION
-	STATSTRADING_CURRENT_VALUE = """Current Value""", # MISSING TRANSLATION
-	STATSTRADING_PRICE = """Price""", # MISSING TRANSLATION
-	STATSTRADING_UPGRADE = """Upgrade""", # MISSING TRANSLATION
-	STATSTRADING_TESTING = """Testing""", # MISSING TRANSLATION
-	STATSTRADING_CHOOSE_RECEIVER = """Choose Receiver""", # MISSING TRANSLATION
-	STATSTRADING_CHOOSE_DONOR = """Choose Donor""", # MISSING TRANSLATION
-	STATSTRADING_NOTHING_TO_UPGRADE = """Nothing to Upgrade""", # MISSING TRANSLATION
-	STATSTRADING_CHARACTER_NAME = """Character Name""", # MISSING TRANSLATION
-	STATSTRADING_FACTOR_UPGRADES = """Factor Upgrades""", # MISSING TRANSLATION
+	STATSTRADING_IMPROVED_STATUS = "Улучшенный статус",
+	STATSTRADING_STAT_NAME = "Название характеристики",
+	STATSTRADING_CURRENT_VALUE = "Текущее значение",
+	STATSTRADING_PRICE = "Цена",
+	STATSTRADING_UPGRADE = "Улучшить",
+	STATSTRADING_TESTING = "Тестирование",
+	STATSTRADING_CHOOSE_RECEIVER = "Выбрать получателя",
+	STATSTRADING_CHOOSE_DONOR = "Выбрать донора",
+	STATSTRADING_NOTHING_TO_UPGRADE = "Нечего улучшать",
+	STATSTRADING_CHARACTER_NAME = "Имя персонажа",
+	STATSTRADING_FACTOR_UPGRADES = "Улучшения факторов",
 	EXPLORESLAVEQUESTS = """Дома""",
 	SIBLINGMODULESKILLSKILLS = """Секс-навыки""",
 	SIBLINGMODULECONSENT = """Согласие:""",
@@ -364,13 +365,13 @@ var TranslationDict = {
 	REQHASANYCLASS = """Нужен любой класс""",
 	REQRACE = """Раса""",
 	REQRACEISBEAST = """Только для зверорас""",
-	REQMUSTHAVEGEAR = """Должен владеть""",
-	REQMUSTHAVEGEAR_FALSE = """Must not have""", # MISSING TRANSLATION
-	REQMUSTHAVEGEARTYPE = """gear of type:""", # MISSING TRANSLATION
-	REQMUSTHAVEGEARTYPE_SPEAR = """polearm""", # MISSING TRANSLATION
-	REQMUSTHAVEGEARTYPE_BOW = """ranged weapon""", # MISSING TRANSLATION
-	REQMUSTHAVEGEARTYPE_MEDIUM = """medium armor""", # MISSING TRANSLATION
-	REQMUSTHAVEGEARTYPE_HEAVY = """heavy armor""", # MISSING TRANSLATION
+	REQMUSTHAVEGEAR = "Должен иметь",
+	REQMUSTHAVEGEAR_FALSE = "Не должен иметь",
+	REQMUSTHAVEGEARTYPE = "экипировку типа:",
+	REQMUSTHAVEGEARTYPE_SPEAR = "древковое оружие",
+	REQMUSTHAVEGEARTYPE_BOW = "стрелковое оружие",
+	REQMUSTHAVEGEARTYPE_MEDIUM = "средние доспехи",
+	REQMUSTHAVEGEARTYPE_HEAVY = "тяжёлые доспехи",
 	REQPROFLIMIT = """Только""",
 	REQPROFLIMIT2 = """разрешено""",
 	REQONEOFRACES = """Только для""",
@@ -435,7 +436,7 @@ var TranslationDict = {
 	MINDRESIST = """разум""",
 	DAMAGETYPENORMAL = "Обычный",
 	DAMAGETYPEFIRE = "Огонь",
-	DAMAGETYPEEARTH= "Земля",
+	DAMAGETYPEEARTH = "Земля",
 	DAMAGETYPEAIR = "Воздух",
 	DAMAGETYPEWATER = "Вода",
 	DAMAGETYPELIGHT = "Свет",
@@ -448,7 +449,7 @@ var TranslationDict = {
 	HEALTHP = """Здоровье: """,
 	MANAP = """Мана:""",
 	#mansionjournal 
-	JOURNALLABLE = """Активные запросы""",
+	JOURNALLABLE = """Запросы рабов""",
 	JOURNALMAIN = """Сюжет""",
 	JOURNALMINOR = """Побочные""",
 	QBALL = """Все""",
@@ -464,11 +465,11 @@ var TranslationDict = {
 	PAUSEMENUOPT = """Опции""",
 	PAUSEMENUGALLERY = """Галерея""",
 	PAUSEMENUEXIT = """Выход""",
-	UPGRADEUPGR = """Улучшения особняка""",
+	UPGRADEUPGR = """Улучшения""",
 	UPGRADEINFO = """Информация об улучшениях""",
-	UPGRADESHED = """Расписание улучшений""",
-	UPGRADECHAR = """Персонажи""",
-	UPGRADECRAFT = """Крафт""",
+	UPGRADESHED = """Расписание""",
+	UPGRADECHAR = """Рабочие""",
+	UPGRADECRAFT = """Главная""",
 	UPGRADERES = """Ресурсы""",
 	OPTIONSWITCHLANGUAGE = """Изменить язык""",
 	TIPLABEL = """Советы""",
@@ -1403,7 +1404,7 @@ Hotkey: 3""",
 	SKILLSTRIKE_THROUGH = """Сквозной удар""",
 	SKILLSTRIKE_THROUGHDESCRIPT = """Нанести удар по целевому ряду на 110 % ATK.""",
 	SKILLEXECUTION = """Устранение""",
-	SKILLEXECUTIONDESCRIPT = """Нанести 275% ATK цели. Если она погибнет, наложить на всех врагов эффект страха на 1 ход.
+	SKILLEXECUTIONDESCRIPT = """Нанести 225% ATK цели. Если она погибнет, наложить на всех врагов эффект страха на 1 ход.
 Страх: урон снижается на 25%.""",
 	SKILLDISARM_ENEMY = """Обезвреживание""",
 	SKILLDISARM_ENEMYDESCRIPT = """Поразить врага на 130% от ATK и наложить 'Обезвреживание' на 3 хода.
@@ -1552,21 +1553,61 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	SKILLABYSS_GAZEDESCRIPT = """Наносит 125% от MATK в виде  урона {color=yellow|Разуму} урона всем врагам. Оглушает на 2 хода""",
 	SKILLDARK_FLAME = """Темное пламя""",
 	SKILLDARK_FLAMEDESCRIPT = """Преобразует все эффекты горения на врагах в эффекты темного пламени. Они наносят истинный урон, не могут быть погашены уроном от воды и действуют в течение 4 ходов.""",
-	SKILLFIREARROWS_APPLY = """Fire Arrows""", # MISSING TRANSLATION
-	SKILLFIREARROWS_REMOVE = """Fire Arrows remove""", # MISSING TRANSLATION
-	SKILLFIREARROWS_APPLYDESCRIPT = """Set weapon damage element to Fire. Weapon attacks and skills have 20% chance to apply Burn. Drain 1 mana per attack.
-Must have Bow weapon type equipped.
+	SKILLFIREARROWS_APPLY = "Огненные стрелы",
+	SKILLFIREARROWS_REMOVE = "Убрать Огненные стрелы",
+	SKILLFIREARROWS_APPLYDESCRIPT = """Задаёт оружию стихию Огня. Атаки оружием и навыки имеют 20% шанс наложить Ожог. Тратит 1 ману за атаку.
+Должен быть экипирован тип оружия: Лук.
+Для активации не требуется ход.
+Может быть активно только одно заклинание типа 'Стрелы'.""",
+	SKILLPOISONARROWS_APPLY = "Отравленные стрелы",
+	SKILLPOISONARROWS_REMOVE = "Убрать Отравленные стрелы",
+	SKILLPOISONARROWS_APPLYDESCRIPT = """Атаки оружием и навыки имеют 65% шанс наложить Отравление на 3 хода. Тратит 1 ману за атаку. При Мастерстве Стрельбы 4+ также с шансом 25% накладывает Пробивание.
+Должен быть экипирован тип оружия: Лук.
 
-Does not take turn to activate. 
-Only one Arrow type spell can be active.""", # MISSING TRANSLATION
-	SKILLPOISONARROWS_APPLY = """Poison Arrows""", # MISSING TRANSLATION
-	SKILLPOISONARROWS_REMOVE = """Poison Arrows remove""", # MISSING TRANSLATION
-	SKILLPOISONARROWS_APPLYDESCRIPT = """Weapon attacks and skills have 65% chance to apply Poison for 3 turns. Drain 1 mana per attack. At Marksmanship Mastery 4+ also applies Shred with 25% chance.
-Must have Bow weapon type equipped.
+Для активации не требуется ход.
+Может быть активно только одно заклинание типа 'Стрелы'.""",
+	SKILLSPELLSWORD_AURA = "Магический след",
+	SKILLSPELLSWORD_AURADESCRIPT = """[center]Магический след[/center]
+Магия течёт через ваше тело в оружие, позволяя дополнять ваши физические одиночные атаки базовым заклинанием по вашему выбору. Требует изучения соответствующего заклинания. Тратит 1 ману за атаку.
 
-Does not take turn to activate. 
-Only one Arrow type spell can be active.""", # MISSING TRANSLATION
-	
+Для активации не требуется ход.""",
+	SKILLARCANEBLADE_AURA = "Стихийное оружие",
+	SKILLARCANEBLADE_AURADESCRIPT = """[center]Стихийное оружие[/center]
+Изменяет стихию оружия на ту, в которой у вас есть как минимум 2-й уровень Мастерства. Тратит 5 маны за активацию.
+
+Для активации не требуется ход.""",
+	SKILLARCANE_MASTERY = "Мастерство тайных искусств",
+	SKILLARCANE_MASTERYDESCRIPT = """При активации следующее применённое заклинание становится мгновенным.""",
+	SKILLAURA_FIREARR = "Магический след: Огненная стрела",
+	SKILLAURA_FIREARR_REMOVE = "Выключить Магический след",
+	SKILLAURA_FIREARRDESCRIPT = """Одиночные целевые навыки с вероятностью 75% бесплатно дополняются Огненной стрелой.""",
+	SKILLAURA_IMPALE = "Магический след: Пронзание",
+	SKILLAURA_IMPALE_REMOVE = "Выключить Магический след",
+	SKILLAURA_IMPALEDESCRIPT = """Одиночные целевые навыки с вероятностью 75% бесплатно дополняются Пронзанием.""",
+	SKILLAURA_LIGHTNING = "Магический след: Молния",
+	SKILLAURA_LIGHTNING_REMOVE = "Выключить Магический след",
+	SKILLAURA_LIGHTNINGDESCRIPT = """Одиночные целевые навыки с вероятностью 75% бесплатно дополняются Молнией.""",
+	SKILLAURA_DARKNESS = "Магический след: Тьма",
+	SKILLAURA_DARKNESS_REMOVE = "Выключить Магический след",
+	SKILLAURA_DARKNESSDESCRIPT = """Одиночные целевые навыки с вероятностью 75% бесплатно дополняются Тьмой.""",
+	SKILLAURA_DMGAIR = "Стихийное оружие: Воздух",
+	SKILLAURA_DMGAIR_REMOVE = "Выключить Стихийное оружие",
+	SKILLAURA_DMGAIRDESCRIPT = """Изменяет стихию оружия на воздух.""",
+	SKILLAURA_DMGEARTH = "Стихийное оружие: Земля",
+	SKILLAURA_DMGEARTH_REMOVE = "Выключить Стихийное оружие",
+	SKILLAURA_DMGEARTHDESCRIPT = """Изменяет стихию оружия на землю.""",
+	SKILLAURA_DMGFIRE = "Стихийное оружие: Огонь",
+	SKILLAURA_DMGFIRE_REMOVE = "Выключить Стихийное оружие",
+	SKILLAURA_DMGFIREDESCRIPT = """Изменяет стихию оружия на огонь.""",
+	SKILLAURA_DMGLIGHT = "Стихийное оружие: Свет",
+	SKILLAURA_DMGLIGHT_REMOVE = "Выключить Стихийное оружие",
+	SKILLAURA_DMGLIGHTDESCRIPT = """Изменяет стихию оружия на свет.""",
+	SKILLAURA_DMGDARK = "Стихийное оружие: Тьма",
+	SKILLAURA_DMGDARK_REMOVE = "Выключить Стихийное оружие",
+	SKILLAURA_DMGDARKDESCRIPT = """Изменяет стихию оружия на тьму.""",
+	SKILLAURA_DMGWATER = "Стихийное оружие: Вода",
+	SKILLAURA_DMGWATER_REMOVE = "Выключить Стихийное оружие",
+	SKILLAURA_DMGWATERDESCRIPT = """Изменяет стихию оружия на воду.""",
 	TRAITVIGORDESCRIPT = """Увеличивает регенерацию здоровья на 30%.""",
 	TRAITMEDITATIONDESCRIPT = """Увеличивает регенерацию маны на 30%.""",
 	MASTERYBLOCKSRC = """Заблокировано %s: %s""",
@@ -1870,9 +1911,12 @@ Only one Arrow type spell can be active.""", # MISSING TRANSLATION
 	
 	CAPTURETOOLTIP = """Эти персонажи были найдены вашей группой и могут быть завербованы в ваш поместье или проданы за быстрые деньги, как если бы вы продавали их вручную. Если местоположение было забыто, все персонажи продаются автоматически.""",
 	CAPTURESELLTOOLTIP = """Продать этого персонажа за %d золота. Это равносильно продаже персонажа на рынке, но не позволит вам его выкупить.""",
-	CAPTUREADDTOOLTIP = "Попытка добавить этого персонажа в группу.\n\nВы не сможете завершить ход, если общее количество персонажей превысит доступное количество комнат. ",
-	CAPTUREENSLAVETOOLTIP = "Добавить этого персонажа в группу в качестве раба.\n\nВы не сможете завершить ход, если общее количество персонажей превысит доступное количество комнат. ",
-	CAPTURERECRUITTOOLTIP = """Попытаться завербовать этого персонажа.\n\nВы не сможете завершить ход, если общее количество персонажей больше доступного количества комнат.""",
+	CAPTUREADDTOOLTIP = """Попытка добавить этого персонажа в группу.
+Вы не сможете завершить ход, если общее количество персонажей превысит доступное количество комнат. """,
+	CAPTUREENSLAVETOOLTIP = """Добавить этого персонажа в группу в качестве раба.
+Вы не сможете завершить ход, если общее количество персонажей превысит доступное количество комнат. """,
+	CAPTURERECRUITTOOLTIP = """Попытаться завербовать этого персонажа.
+Вы не сможете завершить ход, если общее количество персонажей больше доступного количества комнат.""",
 	CAPTUREDISMISSTOOLTIP = """Отпустить этого персонажа.""",
 	
 	SERVICEBOOSTTOOLTIP = """Здесь вы можете назначить дополнительное потребление предметов, которое увеличит производство от услуг. Эти предметы могут быть произведены на Ферме.""",
@@ -2426,7 +2470,6 @@ Only one Arrow type spell can be active.""", # MISSING TRANSLATION
 	STATRESIST_BLINDDESCRIPT = "Сопротивление эффекту ослепления",
 	STATRESIST_BURNDESCRIPT = "Сопротивление эффекту горения",
 	STATRESIST_CONFUSEDESCRIPT = "Сопротивление эффекту замешательства",
-	STATRESIST_CURSEDDESCRIPT = """Resistance to Curse effect""", # MISSING TRANSLATION
 	STATRESIST_CURSEDESCRIPT = "Сопротивление эффекту проклятия",
 	STATRESIST_DISARMDESCRIPT = "Сопротивление эффекту обезоруживания",
 	STATRESIST_FEARDESCRIPT = "Сопротивление эффекту страха",
@@ -2557,7 +2600,8 @@ Only one Arrow type spell can be active.""", # MISSING TRANSLATION
 +15% прироста верности, -10% еженедельного налога на подчиненных""",
 	INFOSLAVE_CLASS = """Тип персонажа определяет его возможности и поведение. Рабы могут быть принуждены к сексуальным услугам без согласия и имеют более высокую терпимость к отсутствию согласия в сексе. Подчиненные быстрее становятся лояльными, но не могут быть проданы или отданы""",
 	INFOCONSENT = """Согласие определяет, какие действия, связанные с сексом, персонаж будет готов совершить. Согласие можно увеличить, подталкивая персонажа к новым практикам в виде свиданий и вариантов в сексе. Согласие влияет на работу, связанную с проституцией.""",
-	INFOCONSENTMASTER = """Согласие определяет, какие действия, связанные с сексом, персонаж будет готов совершить. Согласие можно увеличить, подталкивая персонажа к новым действиям с помощью свиданий и вариантов в сексе. {color=green|[Master] не имеет требований к Согласию для любых действий}.""",
+	INFOCONSENTMASTER = """Согласие определяет, какие действия, связанные с сексом, персонаж будет готов совершить. Согласие можно увеличить, подталкивая персонажа к новым действиям с помощью свиданий и вариантов в сексе.
+ {color=green|[Master] не имеет требований к Согласию для любых действий}.""",
 	INFOTRAINING = """Персонажи рабского типа будут обучены выбранным тренером различным действиям. Каждый раб имеет {color=aqua|Предпочтения} к тем или иным действиям. Правильно подобранные действия дают больше Верности и тратят меньше духа, но большинство действий имеют дополнительные эффекты.""",
 	INFOTRAININGSUBORDINATE = "Персонажи с типом подчиненных со временем будут получать очки верности.",
 	INFORESISTANCE = "Сопротивление персонажа снижает эффективность тренировок. Сопротивление ослабевает со временем и сбрасывается при выполнении тренировки.",
@@ -2928,7 +2972,7 @@ Only one Arrow type spell can be active.""", # MISSING TRANSLATION
 	SKILLBARRIER = """Барьер""",
 	SKILLBARRIERDESCRIPT = """Создает магический щит, поглощающий 100 ед. урона. Щит действует 3 хода.""",
 	SKILLASSASSINATE = """Устранение""",
-	SKILLASSASSINATEDESCRIPT = """Наносит 200% от ATK. Если кастер скрыт, урон увеличивается до 350%.""",
+	SKILLASSASSINATEDESCRIPT = """Наносит 175% от ATK. Если кастер скрыт, урон увеличивается до 350%.""",
 	SKILLPROTECT = """Защита""",
 	SKILLPROTECTDESCRIPT = """Перенаправляет урон от союзника на 2 хода.""",
 	SKILLSHAREDTOY = """Общая игрушка""",
@@ -3085,7 +3129,7 @@ Only one Arrow type spell can be active.""", # MISSING TRANSLATION
 	TRAITDEATHKNIGHTDESCRIPT = """Добивание повышает верность.""",
 	TRAITNINJADESCRIPT = """Получает уклонение, основанное на МЗАЩ. Минимальный шанс уклониться от удара снижен до 5%""",
 	TRAITWITCHDESCRIPT = """Ваши критические удары заклинаниями накладывают случайный дебафф. Лечебные заклинания имеют шанс наложить исцеление с течением времени.""",
-	TRAITWARLOCKDESCRIPT = """Заклинания на одиночную цель получают увеличенный на 25% шанс критического попадания и наносят 75% бонусного критического урона.""",
+	TRAITWARLOCKDESCRIPT = """Заклинания на одиночную цель получают увеличенный на 15% шанс критического попадания и наносят 75% бонусного критического урона.""",
 	TRAITTRUE_SUCCUBUSDESCRIPT = """При получении урона в бою генерирует немного похоти""",
 	TRAITBASIC_COMBAT = """Базовый бой""",
 	TRAITADVANCED_COMBAT = """Продвинутый бой""",
@@ -3096,9 +3140,10 @@ Only one Arrow type spell can be active.""", # MISSING TRANSLATION
 	TRAITBASIC_SPELLSDESCRIPT = """Позволяет изучать базовые боевые заклинания и использовать посохи""",
 	TRAITADVANCED_SPELLSDESCRIPT = """Позволяет изучать продвинутые боевые заклинания и использовать посохи""",	
 	TRAITHUNTER_DAMAGEDESCRIPT = """Урон против зверей: +15%""",
-	TRAITSPELLSWORDDESCRIPT = """All single target and row (3 targets) abilities (skills and spells) can only be cast in melee range and has melee range penalty for back rows/being cast from back rows (half damage). 
-Single target magic spells have 100% chance to be followed up with a basic melee attack.""", # MISSING TRANSLATION
-	TRAITCASTERDESCRIPT = """Recover 10% of maximum mana after combat""", # MISSING TRANSLATION
+	TRAITSPELLSWORDDESCRIPT = """Все атакующие навыки и заклинания применяются и считаются как {color=yellow|Ближний бой}.
+
+Одиночные целевые магические заклинания со 100% шансом дополняются базовой атакой ближнего боя.""",
+	TRAITCASTERDESCRIPT = "Восстанавливает 10% от максимальной маны после боя",
 	TRAITBISHOPDESCRIPT = """Урон от светлой магии: +25%
 {color=brown|Освящение}: Способности Света, направленные на одиночную цель заставляют цель получать больше урона Светом и Тьмой.""",
 	TRAITDRUIDDESCRIPT = """Урон от заклинаний земли: +20%""",
@@ -3188,7 +3233,7 @@ Single target magic spells have 100% chance to be followed up with a basic melee
 	TRAITNIMBLEDESCRIPT = """Скорость увеличена на 10""",
 	TRAITQUICKDESCRIPT = """Модификатор сбора +20%""",
 	TRAITHANDYDESCRIPT = """Модификатор ремесла +20%.""",
-	TRAITDEADLYDESCRIPT = """Шанс крита +9%""",
+	TRAITDEADLYDESCRIPT = """Шанс крита +6%""",
 	TRAITLIVELYDESCRIPT = """+3 Регенерация здоровья""",
 	TRAITMVORTEXDESCRIPT = """+1 Регенерация маны""",
 	TRAITGIFTEDDESCRIPT = """Максимальное количество маны +50%""",
@@ -3352,35 +3397,35 @@ Requires: Базовый рабский труд""",
 	TRAITTRAINING_OBEDIENCEDESCRIPT = """Заставьте [name] отказаться от [his] автономии, что позволит свободно продать или подарить [him]""",
 	TRAITTRAINING_CALLMASTER = """Признание мастера""",
 	TRAITTRAINING_CALLMASTERDESCRIPT = """Требуйте от [name] [his] непоколебимой преданности вам. 
-Позволяет закончить обучение и предоставить [him] специализацию. """,
+{color=yellow|Позволяет закончить обучение и предоставить [him] специализацию.} """,
 	TRAITTRAINING_RELATION = """Отношения""",
 	TRAITTRAINING_RELATIONDESCRIPT = """Перейдите к личной жизни [name]. В конце концов, разве вы уже не должны [him] нравиться?
-Разблокирует опцию 'Знакомства' и снимает штраф за согласие в сексе.""",
+{color=yellow|Разблокирует опцию 'Знакомства' и снимает штраф за согласие в сексе.}""",
 	TRAITTRAINING_SEXSERVICE = """Секс-услуги""",
 	TRAITTRAINING_SEXSERVICEDESCRIPT = """Поскольку тело [name] принадлежит вам, имеет смысл заставить [him] использовать его для вашего процветания.
-Разблокирует задания секс-услуг и правило 'Нагота'
-Требуется согласие \"Любопытный\" или выше.""",
+{color=yellow|Разблокирует задания секс-услуг и правило 'Нагота'
+Требуется согласие \"Любопытный\" или выше.}""",
 	TRAITTRAINING_SEXSERVICE_ADV = """Продвинутый секс-сервис""",
-	TRAITTRAINING_SEXSERVICE_ADVDESCRIPT = """Когда все сделано, это логичный шаг, чтобы подтолкнуть [name] дальше в разврат.
-Открывает расширенные возможности секс-услуг.
-Требуется согласие \"Желающий\" или выше.""",
+	TRAITTRAINING_SEXSERVICE_ADVDESCRIPT = """Когда все продвигается по плану, будет логично подтолкнуть [name] дальше в разврат.
+{color=yellow|Открывает расширенные возможности секс-услуг.
+Требуется согласие \"Желающий\" или выше.}""",
 	TRAITTRAINING_S_COMBAT = """Боевой""",
 	TRAITTRAINING_S_COMBATDESCRIPT = """[name] позволит быть призванным в боевые действия. Возможно, не все готовы сражаться за вас без всяких опасений.
-Разблокирует отправку [name] в бой.""",
+{color=yellow|Разблокирует отправку [name] в бой.}""",
 	TRAITTRAINING_S_WORKING = """Работа""",
 	TRAITTRAINING_S_WORKINGDESCRIPT = """[name] будет охотно работать на вас, выполняя общие задания.
-Разблокирует установку [name] для выполнения различных работ.""",
+{color=yellow|Разблокирует установку [name] для выполнения различных работ.}""",
 	TRAITTRAINING_S_RELATION = """Отношения""",
 	TRAITTRAINING_S_RELATIONDESCRIPT = """При определенном убеждении [name] найдет вашу компанию выгодной даже помимо простого труда. 
-Разблокирует опции 'Знакомства' и 'Секс'.""",
+{color=yellow|Разблокирует опции 'Знакомства' и 'Секс'.}""",
 	TRAITTRAINING_S_SEXSERVICE = """Секс-услуги""",
 	TRAITTRAINING_S_SEXSERVICEDESCRIPT = """Не все готовы продавать свое тело ради вашей выгоды. Но если их немного убедить...
-Разблокирует задания по оказанию секс-услуг.
-Требуется согласие \"Любопытный\" или выше. """,
+{color=yellow|Разблокирует задания по оказанию секс-услуг.
+Требуется согласие \"Любопытный\" или выше.}""",
 	TRAITTRAINING_S_SEXSERVICE_ADV = """Продвинутый секс-сервис""",
 	TRAITTRAINING_S_SEXSERVICE_ADVDESCRIPT = """Если [name] уже в состоянии оказывать секс-услуги ради вашей прибыли, зачем останавливаться на достигнутом?...
-Разблокируйте расширенные возможности секс-услуг.
-Требуется согласие \"Желающий\" или выше.""",
+{color=yellow|Разблокируйте расширенные возможности секс-услуг.
+Требуется согласие \"Желающий\" или выше.}""",
 	TRAITMASTER_HARLOTRY = """Блудница""",
 	TRAITMASTER_HARLOTRYDESCRIPT = """Занимаясь сервисом, вы продолжаете получать преимущества Отдыха.""",
 	TRAITMASTER_PROGENECY = """Родословная""",
@@ -3390,7 +3435,7 @@ Requires: Базовый рабский труд""",
 	TRAITMASTER_RESILENCE = """Устойчивость""",
 	TRAITMASTER_RESILENCEDESCRIPT = """ """,
 	TRAITMASTER_FORTUNE = """Удача""",
-	TRAITMASTER_FORTUNEDESCRIPT = """Шанс критического удара увеличен на 25%. Слегка увеличивает магический поиск""",
+	TRAITMASTER_FORTUNEDESCRIPT = """Шанс критического удара увеличен на 10%. Слегка увеличивает магический поиск""",
 	TRAITMASTER_INT = """Интеллект""",
 	TRAITMASTER_INTDESCRIPT = """ """,
 	TRAITMASTER_FORTITUDE = """Стойкость""",
@@ -3421,39 +3466,27 @@ Requires: Базовый рабский труд""",
 Увеличение уклонения, точности и MЗАЩ""",
 	TRAITEFFECTRARETOUGH = """Особый: Жесткий
 Увеличение здоровья, ЗАЩ и МЗАЩ""",
-	TRAITMONSTER_MASTERY_WARFAREDESCRIPT = """Warfare Mastery""", # MISSING TRANSLATION
-	TRAITMONSTER_MASTERY_PROTECTIONDESCRIPT = """Protection Mastery""", # MISSING TRANSLATION
-	TRAITMONSTER_MASTERY_STEALTHDESCRIPT = """Stealth Mastery""", # MISSING TRANSLATION
-	TRAITMONSTER_MASTERY_MARKSMANSHIPDESCRIPT = """Marksmanship Mastery""", # MISSING TRANSLATION
-	TRAITMONSTER_MASTERY_LEADERSHIPDESCRIPT = """Leadershp Mastery""", # MISSING TRANSLATION
-	TRAITMONSTER_MASTERY_FIREDESCRIPT = """Fire Mastery""", # MISSING TRANSLATION
-	TRAITMONSTER_MASTERY_WATERDESCRIPT = """Water Mastery""", # MISSING TRANSLATION
-	TRAITMONSTER_MASTERY_AIRDESCRIPT = """Air Mastery""", # MISSING TRANSLATION
-	TRAITMONSTER_MASTERY_EARTHDESCRIPT = """Earth Mastery""", # MISSING TRANSLATION
-	TRAITMONSTER_MASTERY_LIGHTDESCRIPT = """Light Mastery""", # MISSING TRANSLATION
-	TRAITMONSTER_MASTERY_DARKDESCRIPT = """Dark Mastery""", # MISSING TRANSLATION
-	TRAITMONSTER_MASTERY_MINDDESCRIPT = """Mind Mastery""", # MISSING TRANSLATION
-	TRAITMONSTER_MASTERY_WARFARE_DESCRIPT = """Имеет вражескую версию мастерства войны с теми же навыками и усиленными бонусами.""",
-	TRAITMONSTER_MASTERY_PROTECTION_DESCRIPT = """Имеет вражескую версию мастерства защиты с теми же навыками и усиленными бонусами.""",
-	TRAITMONSTER_MASTERY_STEALTH_DESCRIPT = """Имеет вражескую версию мастерства скрытности с теми же навыками и усиленными бонусами.""",
-	TRAITMONSTER_MASTERY_MARKSMANSHIP_DESCRIPT = """Имеет вражескую версию мастерства стрельбы с теми же навыками и усиленными бонусами.""",
-	TRAITMONSTER_MASTERY_LEADERSHIP_DESCRIPT = """Имеет вражескую версию мастерства лидерства с теми же навыками и усиленными бонусами.""",
-	TRAITMONSTER_MASTERY_FIRE_DESCRIPT = """Имеет вражескую версию мастерства огня с теми же навыками и усиленными бонусами.""",
-	TRAITMONSTER_MASTERY_WATER_DESCRIPT = """Имеет вражескую версию мастерства воды с теми же навыками и усиленными бонусами.""",
-	TRAITMONSTER_MASTERY_AIR_DESCRIPT = """Имеет вражескую версию мастерства воздуха с теми же навыками и усиленными бонусами.""",
-	TRAITMONSTER_MASTERY_EARTH_DESCRIPT = """Имеет вражескую версию мастерства земли с теми же навыками и усиленными бонусами.""",
-	TRAITMONSTER_MASTERY_LIGHT_DESCRIPT = """Имеет вражескую версию мастерства света с теми же навыками и усиленными бонусами.""",
-	TRAITMONSTER_MASTERY_DARK_DESCRIPT = """Имеет вражескую версию мастерства тьмы с теми же навыками и усиленными бонусами.""",
-	TRAITMONSTER_MASTERY_MIND_DESCRIPT = """Имеет вражескую версию мастерства разума с теми же навыками и усиленными бонусами.""",
+	TRAITMONSTER_MASTERY_WARFAREDESCRIPT = "Мастерство военного дела",
+	TRAITMONSTER_MASTERY_PROTECTIONDESCRIPT = "Мастерство защиты",
+	TRAITMONSTER_MASTERY_STEALTHDESCRIPT = "Мастерство скрытности",
+	TRAITMONSTER_MASTERY_MARKSMANSHIPDESCRIPT = "Мастерство стрельбы",
+	TRAITMONSTER_MASTERY_LEADERSHIPDESCRIPT = "Мастерство лидерства",
+	TRAITMONSTER_MASTERY_FIREDESCRIPT = "Мастерство огня",
+	TRAITMONSTER_MASTERY_WATERDESCRIPT = "Мастерство воды",
+	TRAITMONSTER_MASTERY_AIRDESCRIPT = "Мастерство воздуха",
+	TRAITMONSTER_MASTERY_EARTHDESCRIPT = "Мастерство земли",
+	TRAITMONSTER_MASTERY_LIGHTDESCRIPT = "Мастерство света",
+	TRAITMONSTER_MASTERY_DARKDESCRIPT = "Мастерство тьмы",
+	TRAITMONSTER_MASTERY_MINDDESCRIPT = "Мастерство разума",
 	TRAITEFFECTHARDWORK = """Усердие: +50%% производительности""",
 	TRAITEFFECTPHYSBUF = """Эликсир силы огра: +80 физ. возм.""",
 	TRAITEFFECTWITSBUF = """Эликсир расширения разума: +80 мудрости""",
 	TRAITEFFECTALCOHOL = "Похмелье: -1 к росту Верности, +1 к росту Духа, -15%% к продуктивности",
 	TRAITEFFECTFAVFOOD = """Любимая еда: -1 утечка повиновения, +0.5 прироста верности""", 
-	TRAITEFFECTHATEDFOOD = """Ненавистная еда: -10%% производительности""",
-	TRAITEFFECTSTARVE = """Голодание: -50%% производительности, -50%% урона.""",
-	TRAITEFFECTGRAVEINJ = """Тяжелое ранение: -25%% Производительность, -50%% Сексуальность. Не может участвовать в бою.""",
-	TRAITEFFECTDISCIPLINE = """Дисциплина: +50%% эффективности труда и ремесла.""",
+	TRAITEFFECTHATEDFOOD = """Ненавистная еда: -10%% производительности.""",
+	TRAITEFFECTSTARVE = """Голодание: -50%% производительности, -50%% урона""",
+	TRAITEFFECTGRAVEINJ = """Тяжелое ранение: -25%% Производительность, -50%% Сексуальность. Не может участвовать в бою""",
+	TRAITEFFECTDISCIPLINE = """Дисциплина: +50%% эффективности труда и ремесла""",
 	TRAITEFFECTSEDUCE = """Соблазнение: -7 утечка повиновения""",
 	TRAITEFFECTGREATSEDUCE = """Великое соблазнение: Предотвращает побеги; -9 утечка повиновения, +50%% роста похоти""",
 	TRAITEFFECTALLURE = """Отвлечение: -5 утечка повиновения, +1 прироста верности.""",
@@ -3640,13 +3673,20 @@ Requires: Базовый рабский труд""",
 Весь получаемый урон увеличивается на 15%%, дополнительный шок имеет шанс оглушить.""",
 	BUFFDESCRIPTENSNARE = """Захват: Уворот уменьшен на 75""",
 	
-	LOGEFFECTIMMUNE = "\n%s невосприимчив(а) к %s.",
-	LOGEFFECTRESIST = "\n%s сопротивляется %s.",
-	LOGEFFECTAPPLY = "\n%s находится под эффектом %s.",
-	LOGEFFECTTOGGLEON = "\n%s на %s активен",
-	LOGEFFECTTOGGLEOFF = "\n%s на %s отключён",
-	LOGEFFECTTOGGLEOFFON = "\n%s на %s обновлён",
-	LOGEFFECTRENEW = "\n%s обновлён на %s",
+	LOGEFFECTIMMUNE = """
+%s невосприимчив(а) к %s.""",
+	LOGEFFECTRESIST = """
+%s сопротивляется %s.""",
+	LOGEFFECTAPPLY = """
+%s находится под эффектом %s.""",
+	LOGEFFECTTOGGLEON = """
+%s на %s активен""",
+	LOGEFFECTTOGGLEOFF = """
+%s на %s отключён""",
+	LOGEFFECTTOGGLEOFFON = """
+%s на %s обновлён""",
+	LOGEFFECTRENEW = """
+%s обновлён на %s""",
 #	LOGEFFECTRESIST = "",
 	EFFECTNAME_LUMINANCE = "сияние",
 	EFFECTNAME_DEFENDED = "защита",
@@ -3771,8 +3811,8 @@ Requires: Базовый рабский труд""",
 	PROFHUNTERDESCRIPT = """Охотники специализируются на выслеживании и убийстве дичи.""",
 	PROFSMITH = """Кузнец""",
 	PROFSMITHDESCRIPT = """Кузнецы - мастера, умеющие работать со всеми видами материалов.""",
-	PROFTAILOR = """Tailor""", # MISSING TRANSLATION
-	PROFTAILORDESCRIPT = """Tailors specialize in production of cloth and leather armor as well as everyday garments.""", # MISSING TRANSLATION
+	PROFTAILOR = "Портной",
+	PROFTAILORDESCRIPT = "Портные специализируются на производстве ткани и доспехов из кожи, а также повседневной одежды.",
 	PROFCHEF = """Повар""",
 	PROFCHEFDESCRIPT = """Умелый повар - всегда ценное дополнение к любому дому.""",
 	PROFATTENDANT = """Аттендант""",
@@ -3865,11 +3905,7 @@ Requires: Базовый рабский труд""",
 	PROFALIOS_CHAMPION = """Чемпион Алиоса""",
 	PROFALIOS_CHAMPIONDESCRIPT = """Одинокая девушка с загадочными способностями и прошлым. Ясно одно - ее божественная принадлежность реальна.""",
 	PROFNIXX_CHAMPION = """Чемпион Никс""",
-	PROFSATORI = """Satori""", # MISSING TRANSLATION
-	PROFASURA = """Asura""", # MISSING TRANSLATION
 	PROFNIXX_CHAMPIONDESCRIPT = """Эти ужасающие силы исходят из неизвестного источника, который могут познать лишь немногие мудрецы мира.""",
-	PROFSATORIDESCRIPT = """Only the one who has reached lowest point will be able to perceive the reality to its fullest.""", # MISSING TRANSLATION
-	PROFASURADESCRIPT = """Lust for power and control can get you to very strange places, but the cost will never feel fair.""", # MISSING TRANSLATION
 	PROFRENOWN_ROYALTY = """Королевская власть""",
 	PROFRENOWN_ROYALTYDESCRIPT = """Королевская кровь сама по себе является благом, тем более, когда ее признают другие.""",
 	PROFBROKEN_ROYALTY = """Сломанная королевская власть""",
@@ -3884,10 +3920,6 @@ Requires: Базовый рабский труд""",
 	PROFMONKDESCRIPT = """Религиозные бойцы, использующие свою духовную подготовку для борьбы с врагами.""",
 	PROFBISHOP = """Епископ""",
 	PROFBISHOPDESCRIPT = """Только избранным удается достичь этого ранга. Высшие члены церкви, способные высвобождать божественные силы.""",
-	PROFSPELLSWORD = """Spellsword""", # MISSING TRANSLATION
-	PROFSPELLSWORDDESCRIPT = """By mixing magic and martial arts especially gifted individuals are capable of fighting with both at the same time.""", # MISSING TRANSLATION
-	PROFARCANEBLADE = """Arcane Blade""", # MISSING TRANSLATION
-	PROFARCANEBLADDESCRIPT = """Further honing their magic skills, Spellswords become capable not only flinging spells in the midst of fight but even imbuing their weapon in elements.""", # MISSING TRANSLATION
 	PROFSPOUSE = """Муж""",
 	PROFSPOUSEALT = """Жена""",
 	PROFSPOUSEDESCRIPT = """Официально обрученная супруг [Master]а поместья. Утечка Повиновения равна 0. Прирост верности +3.""",
@@ -4614,16 +4646,15 @@ Requires: Базовый рабский труд""",
 	SQ_MAGE_DESC = "[factionname] ищет мага для управления могущественными чарами.",
 	SQ_ASSASSIN_T2_NAME1 = "Ассассин",
 	SQ_ASSASSIN_T2_DESC = "[factionname] требуется мастер-ассасин для секретных заданий.",
-	SHOWSTAT_CAT_COMBAT = """Combat""", # MISSING TRANSLATION
-	SHOWSTAT_CAT_NON_COMBAT = """Noncombat""", # MISSING TRANSLATION
-	SHOWSTAT_FINAL = """Final""", # MISSING TRANSLATION
-	STATREQ_IS_SLAVE_TYPE = """Must be""", # MISSING TRANSLATION
-	STATREQ_IS_NOT_SLAVE_TYPE = """Must not be""", # MISSING TRANSLATION
-	STATREQ_IS_FREE = """Must be free of quests and at mansion""", # MISSING TRANSLATION
-	STATREQ_IS_NOT_FREE = """Must be on quest or out of mansion""", # MISSING TRANSLATION
-	STATREQ_TRAINING_OBEDIENCE = """Obedience must be trained""", # MISSING TRANSLATION
-	STATREQ_WORKRULE_LOCK = """Must not be engaged in work""", # MISSING TRANSLATION
-
+	SHOWSTAT_CAT_COMBAT = "Бой",
+	SHOWSTAT_CAT_NON_COMBAT = "Вне боя",
+	SHOWSTAT_FINAL = "Итог",
+	STATREQ_IS_SLAVE_TYPE = "Должен быть",
+	STATREQ_IS_NOT_SLAVE_TYPE = "Не должен быть",
+	STATREQ_IS_FREE = "Должен быть свободен от заданий и находиться в особняке",
+	STATREQ_IS_NOT_FREE = "Должен быть на задании или вне особняка",
+	STATREQ_TRAINING_OBEDIENCE = "Послушание должно тренироваться",
+	STATREQ_WORKRULE_LOCK = "Персонаж заблокирован",
 
 	DIALOGUECLOSE = """*Закрыть*""",
 	DIALOGUECONFIRM = """*Подтвердить*""",
@@ -4936,9 +4967,6 @@ Requires: Базовый рабский труд""",
 	
 	DIALOGUETUTNOTHING = """Без обучения (бесплатно)""",
 	DIALOGUETUTSLAVE = """*Обучить как раба* (500 золотых)""",
-	DIALOGUETUTSLAVE1 = """Slave Training: Workforce (500 Gold)""", # MISSING TRANSLATION
-	DIALOGUETUTSLAVE2 = """Slave Training: Warrior (500 Gold)""", # MISSING TRANSLATION
-	DIALOGUETUTSLAVE3 = """Slave Training: Service (500 Gold)""", # MISSING TRANSLATION
 	DIALOGUETUTACADEMY = """*Академическое обучение* (1.500 золотых)""",
 	DIALOGUETUTHEIR = """*Обучение наследника* (5.000 золотых)""",
 	
@@ -5131,8 +5159,8 @@ Requires: Базовый рабский труд""",
 	ENEMYKURDAN = """Курдан""",
 	
 	ENEMYLEON = """Леон""",
-	ENEMYLILITH_BOSS_1 = """Ashmedai""", # MISSING TRANSLATION
-	ENEMYLILITH_BOSS_2 = """Ashmedai""", # MISSING TRANSLATION
+	ENEMYLILITH_BOSS_1 = "Ашмедай",
+	ENEMYLILITH_BOSS_2 = "Ашмедай",
 	ENEMYWHITE_STAG = """Белый олень""",
 	ENEMYWHITE_STAG_HUMAN = """Таинственная личность""",
 	ENEMYELF_SPECTER = """Эльф-наблюдатель""",
@@ -5322,7 +5350,8 @@ Requires: Базовый рабский труд""",
 	WORKRULERATIONDESCRIPT = """Увеличивает потребление пищи на 3. Повышает производительность на 15%.""",
 	WORKRULESHIFTS = """Упорная работа""",
 	WORKRULESHIFTSDESCRIPT = """Персонаж работает на пределе своих возможностей ценой будущих улучшений. 
-Повышает производительность на 25%. \n{color=yellow|Персонаж не получает опыт или рабочие характеристики(физические и т.д.) во время работы.}""",
+Повышает производительность на 25%. 
+{color=yellow|Персонаж не получает опыт или рабочие характеристики(физические и т.д.) во время работы.}""",
 	WORKRULECONSTRAIN = """Принуд. труд""",
 	WORKRULECONSTRAINDESCRIPT = """Персонаж вынужден работать на пределе своих возможностей с помощью строгих правил. Повышает производительность на 15%. Рост Верности отключен""",
 	WORKRULELUXURY = """Личная комната""",
@@ -5340,7 +5369,7 @@ Requires: Базовый рабский труд""",
 	WORKRULERELATIONSHIPDESCRIPT = """[name] будет позволено завязать романтические отношения с другими персонажами, кроме [master].""",
 
 	WORKRULEMASTURBATION = """Запретить мастурбацию""",
-	WORKRULEMASTURBATIONDESCRIPT = """[name] не будет иметь возможности развлечь себя, что приведет к повышенному стрессу, но увеличит либидо. Утечка повиновения +2, рост похоти +15%""",
+	WORKRULEMASTURBATIONDESCRIPT = """[name] не будет иметь возможности развлечь себя, что приведет к повышенному стрессу, но увеличит либидо. Рост сопротвления: +20%; Продуктивность: -10%""",
 
 	WORKRULELOCK = """Блок персонажа""",
 	WORKRULELOCKDESCRIPT = """Блокирует персонажа от отображения [him] в списке заданий и действий, которые навсегда удаляют или продают [him].""",
@@ -6599,7 +6628,7 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	STATDAMAGE_MOD_DARK = """Урон тьмой""",
 	STATDAMAGE_MOD_MIND = """Урон разуму""",
 	STATDAMAGE_MOD_MELEE = """Урон в ближнем бою""",
-	STATDAMAGE_MOD_RANGED = "Урон в дальнем бою",
+	STATDAMAGE_MOD_RANGED = "Урон навыков в дальнем бою",
 	STATDAMAGE_MOD_ALL = "Весь урон",
 	STATDAMAGE_MOD_AOE = "Урон по области",
 	STATDAMAGE_MOD_NORMAL = "Обычный урон",
@@ -6614,7 +6643,7 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	STATDAMAGE_MOD_DARKDESCRIPT = "Изменяет тёмный урон",
 	STATDAMAGE_MOD_MINDDESCRIPT = "Изменяет ментальный урон",
 	STATDAMAGE_MOD_MELEEDESCRIPT = "Изменяет урон в ближнем бою",
-	STATDAMAGE_MOD_RANGEDDESCRIPT = "Изменяет урон в дальнем бою",
+	STATDAMAGE_MOD_RANGEDDESCRIPT = "Изменяет урон навыков в дальнем бою",
 	STATDAMAGE_MOD_ALLDESCRIPT = "Изменяет весь урон",
 	STATDAMAGE_MOD_AOEDESCRIPT = "Изменяет урон по области",
 	STATDAMAGE_MOD_NORMALDESCRIPT = "Изменяет обычный урон",
@@ -6667,13 +6696,6 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	ARENA_TIMER = "Следующий соперник",
 	ARENA_FEE = "Чтобы попасть на арену, у вас должно быть 1000 золотых.",
 	ARENA_TOOLTIP = "Это арена.",
-	TRAVEL_HAS_GROUP = """Group with such name already exists!""", # MISSING TRANSLATION
-	TRAVEL_ADD_GROUP = """New group""", # MISSING TRANSLATION
-	TRAVEL_ALL_SELECTED = """all selected""", # MISSING TRANSLATION
-	TRAVEL_MOVE_TO = """Move to %s""", # MISSING TRANSLATION
-	TRAVEL_RENAME = """Rename""", # MISSING TRANSLATION
-	TRAVEL_MOVE_UP = """Move up""", # MISSING TRANSLATION
-	TRAVEL_MOVE_DOWN = """Move down""", # MISSING TRANSLATION
 
 	SKILLPOISON_BITE = """Ядовитый укус""",
 	SKILLPOISON_BITE_S = """Ядовитый укус""",
@@ -8785,8 +8807,10 @@ AFTER_ELECTION_PRINCESS_MINDBREAK_7 = """Вы чувствуете, как де�
 	ITEMXARI_AMULETDESCRIPT = """Личная работа Ксари, подаренная вам за вашу помощь. Он сияет от силы своего создателя.""",
 	ITEMAMELIA_DRESS = """Платье служанки Амелии""",
 	ITEMAMELIA_DRESSDESCRIPT = """Старое платье, принадлежащее одному из лидеров Слуг. Его исключительная искусная работа не имеет никаких признаков износа.""",
-	ITEMAMENIXX_HEADGEAR = """Void Cape""", # MISSING TRANSLATION
-	ITEMAMENIXX_HEADGEARDESCRIPT = """An ethereal cape greatly improving waerer's magic resistance by redirecting the hostile magic into the other dimension.""", # MISSING TRANSLATION
+	ITEMAMENIXX_HEADGEAR = "Плащ Пустоты",
+	ITEMAMENIXX_HEADGEARDESCRIPT = "Эфирный плащ, значительно повышающий магическую сопротивляемость владельца, перенаправляя враждебную магию в другое измерение.",
+
+
 	
 	SCENEWIP = """Извините! Эта сцена находится в стадии разработки.""",
 
@@ -11536,7 +11560,7 @@ Cali:Обаяние +10}""",
 
 {color=aqua|Главарь: - Зачем вы, ублюдки, пришли сюда? Что вам от меня нужно?}
 
-{color=aqua|Кали: - Помнишь меня?}
+{color=yellow|Кали: - Помнишь меня?}
 
 {color=aqua|Главарь: - С чего бы мне помнить какую-то зверосучку?}""",
 	CALI_BANDITS_4 = """Кали со злостью пинает связанного бандита в живот, вызывая стон.
@@ -12828,7 +12852,7 @@ CHRISTMAS_EVENT_2 = """{color=aqua|Рудольф: - Эй, ты действит
 {color=aqua|Рудольф: - Теперь у тебя будет дом и [Master]. Это то, чего ты на самом деле хотела, не так ли? Я уверен, что у вас будет много счастливых воспоминаний вместе. }
 
 Не зная, что ответить, девушка все же смогла поблагодарить ее в ответ.""",
-	CHRISTMAS_EVENT_10 = """Рудольф: - Даже если это может быть трудно, вы все равно должны стараться изо всех сил. 
+	CHRISTMAS_EVENT_10 = """{color=aqua|Рудольф: - Даже если это может быть трудно, вы все равно должны стараться изо всех сил.} 
 
 {color=yellow|Дейзи: - Все может быть против нас, но мы можем обожать эти моменты мира и счастья}.
 
@@ -19513,7 +19537,6 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	SOCIAL_SKILLS = """Социальные навыки""",
 	COMBAT_SKILLS = """Боевые навыки""",
 	PERSONAL_STAT = """Личная статистика""",
-	PERSONAL_METRICS = """Metrics""", # MISSING TRANSLATION
 	REMOVE_BUTTON = """Освободить""",
 	TALK_BUTTON = """Поговорить""",
 	BODY_UPGRADE_TOOLTIP = """Здесь вы можете визуально изменить персонажа за определенную цену""",
@@ -19653,7 +19676,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	DISLIKED_ACTIONS_LABEL = """Неприятные действия""",
 	NOSERVITUDE = """-Служба""",
 	COMBAT_ABILS_LABEL = """Боевые способности""",
-	ONQUESTLABEL = """[name] is unavailable at this point of time.""", # MISSING TRANSLATION
+	ONQUESTLABEL = "[name] недоступен в данный момент.",
 	DATING_LIVING_ROOM = """Гостиная""",
 	DATING_BEDROOM = """Спальня""",
 	DATING_TORTURE_ROOM = """Комната пыток""",
@@ -20113,7 +20136,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	CALI_TOUCHING_1_SS = """Первая сцена с Кали во время ее побочного задания""",
 	CALI_BJ_HAPPY_1_SS = """Вторая сцена с Кали во время ее побочного задания""",
 	CALI_RIDING_1_SS = """Завершить побочный квест Кали""",
-	CALI_AMELIA_SS = """Reject Cali's approaches""", # MISSING TRANSLATION
+	CALI_AMELIA_SS = "Отвергнуть ухаживания Кали",
 	HALLOWEEN_SCENE_SS = """Хэллоуиннское событие с Кали и Анастасией""",
 	CHRISTMAS_SCENE_SS = """Рождественское событие с Дейзи""",
 	HELEVIEL_MANSION_SS = """Завербовать Хелевиэль""",
@@ -21714,15 +21737,15 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	HELEVIEL_BAR_SEX_2_OPTOPN_2 = "*Взять ее грубо*",
 	HELEVIEL_BAR_SEX_3 = """Твои губы встречаются с ее в тускло освещенной задней комнате бара. Белые волосы Хелевиэль ниспадают на ее плечи, резко контрастируя с тусклым видом комнаты. Легкий запах эля и ее уникальный эльфийский аромат наполняют воздух, пока ты углубляешь поцелуй, ощущая сладость на ее языке. Ее зеленые глаза закрываются, длинные ресницы касаются ее щек. Ее фигура с пышными формами напрягается против тугого униформы официантки, ткань натянута туго поперек ее обширной груди. Ты прерываешь поцелуй, твоя рука на ее плече, и нежно направляешь ее развернуться.
 
-{color=yellow|— П-проклятье, это был твой план с самого начала? Ах, мне уже все равно, ты хитрый негодяй...
+{color=yellow|— П-проклятье, это был твой план с самого начала? Ах, мне уже все равно, ты хитрый негодяй...}
 
 Хелевиэль подчиняется, ее движения слегка неустойчивы от алкоголя. Ее ладони прижимаются к шероховатой поверхности стола, пока она наклоняется вперед, позиция незнакомая и неловкая для бывшей Верховной Жрицы. Юбка ее униформы задирается, обнажая гладкую бледную кожу ее бедер. Ты делаешь шаг позади нее, одна рука очерчивает изгиб ее позвоночника, прежде чем остановиться на ее бедре. Другой рукой ты поднимаешь юбку выше, собирая ее у ее талии. Она слегка напрягается, когда ты стаскиваешь ее трусики вниз, обнажая ее влажную киску.""",
 	HELEVIEL_BAR_SEX_4 = """Ты располагаешься позади нее, твой твердый член прижимается к ее входу. Хелевиэль ахает, когда ты начинаешь входить, проникновение медленное, но устойчивое. Ее тугая киска растягивается, чтобы вместить тебя, ее тело не привыкло к такому вторжению. Ты хватаешь ее за бедра, притягивая ее назад к себе, пока ты входишь глубже. Ее стоны приглушены о поверхность стола, ее пальцы впиваются в дерево. Каждый толчок посылает волны удовольствия по ее телу, ее большие груди покачиваются в ритм. Стол скрипит под ней, пока ты набираешь темп, твой член скользит внутрь и наружу ее скользкой теплоты с нарастающей интенсивностью.
 
-{color=yellow|Хелевиэль: — М-м-мх... Что это... Унижение... Почему это чувствуется так хорошо...""",
+{color=yellow|Хелевиэль: — М-м-мх... Что это... Унижение... Почему это чувствуется так хорошо...}""",
 	HELEVIEL_BAR_SEX_5 = """Зеленые глаза Хелевиель полуприкрыты от удовольствия и удивления, пока ты продолжаешь овладевать ею сзади. Ее фасад достоинства рушится с каждым мощным толчком, сменяясь диким, необузданным желанием. Ты наклоняешься над ней, твое дыхание горячо у ее уха, пока ты протягиваешь руку, чтобы сжать ее тяжелую грудь сквозь тонкую ткань ее униформы. Ее соски твердеют под твоим прикосновением, ее спина инстинктивно выгибается. Комната наполняется звуком шлепка кожи о кожу и ее все более громкими стонами.
 
-{color=yellow|Хелевиэль: — Н-не останавливайся... Если ты остановишься... Я не смогу...
+{color=yellow|Хелевиэль: — Н-не останавливайся... Если ты остановишься... Я не смогу...}
 
 Ты входишь в нее сильнее, быстрее, твой член достигает той чувствительной точки глубоко внутри нее, от которой она вскрикивает. Контролируемое поведение Хелевиель полностью разбивается, ее стоны становятся громче, отчаяннее, разносясь в маленькой задней комнате. Ее зеленые глаза, обычно такие серьезные и собранные, теперь затуманены дымкой сладострастного удовольствия. Ты чувствуешь, как ее тело начинает напрягаться под тобой, мышцы на ее бедрах и спине сжимаются, пока она отталкивается обратно на тебя, встречая твой ритм инстинктивной потребностью.""",
 	HELEVIEL_BAR_SEX_6 = "Стол скребет по полу, когда ты делаешь один финальный, глубокий толчок. Гортанный крик вырывается из губ Хелевиель, когда ее оргазм пронзает ее. Ее киска сжимается вокруг твоего члена ритмичными пульсациями, доя тебя, пока она безудержно дрожит. Ее зрение затуманивается, raw, плотское освобождение, которое сдирает прочь каждый последний кусок ее достойной персоны. Сила ее кульминации запускает твою собственную, и ты погружаешься глубоко внутрь нее, твой член пульсирует, пока ты наполняешь ее своим теплом.",
@@ -21768,31 +21791,36 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	HELEVIEL_WEDDING_6 = """Медленно ты выходишь из нее, падая на кровать рядом с ней. Хелевиль лежит там, ее тело все еще дрожит от удовольствия, ее белые волосы — растрепанный беспорядок вокруг ее головы. Она поворачивается к тебе лицом, ее зеленые глаза мягки, смесь удовлетворения и сохраняющейся уязвимости в их глубине. Достойная Верховная Жрица ушла, замененная женщиной, которая полностью тебе покорилась. Она протягивает руку, ее рука находит твою, ее пальцы переплетаются с твоими в безмолвном жесте связи.
 
 {color=yellow|Хелевиэль: — Это так глупо, но... Что я чувствую больше всего прямо сейчас, так это то, что я не бывшая жрица или эльфийка. А то, что я женщина. Твоя женщина.}""",
-	HELEVIEL_SNOWSET_WORKERS_OPTION = """Ask about the winter outfit.""", # MISSING TRANSLATION
-	HELEVIEL_SNOWSET_EVENT_1 = """As you walk through the guild, suddenly Heleviel, who you took with you, spots something that catches her eye: a bright set of clothes sitting in a corner, seemingly abandoned. It draws her in, and she approaches it with fascination as she lifts it up.""", # MISSING TRANSLATION
-	HELEVIEL_SNOWSET_EVENT_2 = """You seem to be interested in it.
 
-{color=yellow|Heleviel: — N-no-... I mean, yes, I am interested in this. Even someone of my status can appreciate such fine craftsmanship. I want it. After all, I don't have that many spare clothes now. Maybe you should consider getting it for me.}""", # MISSING TRANSLATION
-	HELEVIEL_SNOWSET_EVENT_3 = """Slightly taken aback by her sudden display of assertiveness, you can't help but get curious. You call Sigmund over with the suit.
+	HELEVIEL_SNOWSET_WORKERS_OPTION = "Проверить полки",
+	HELEVIEL_SNOWSET_EVENT_1 = """Пока вы идёте по гильдии, Хелевиэль, которую вы взяли с собой, вдруг замечает что-то, привлёкшее её внимание: яркий комплект одежды, лежащий в углу, казалось бы, забытый. Он притягивает её, и она с восхищением приближается к нему, поднимая его.""",
+	HELEVIEL_SNOWSET_EVENT_2 = """Кажется, ты заинтересована.
 
-{color=aqua|Sigmund: — Aye, ya can have dat.}
+{color=yellow|Хелевиэль: — Н-нет... В смысле, да, я заинтересована. Даже особа моего статуса может оценить столь прекрасное мастерство. Я хочу это. В конце концов, у меня не так много запасной одежды сейчас. Возможно, вам стоит подумать о том, чтобы достать это для меня.}""",
+	HELEVIEL_SNOWSET_EVENT_3 = """Слегка ошеломлённый её внезапной напористостью, вы не можете не заинтересоваться. Вы подзываете Зигмунда с этим костюмом.
 
-{color=yellow|Heleviel: — This will cost us, I assume.}
+{color=aqua|Зигмунд: — Ага, можешь забрать.}
 
-Sigmund strokes his beard, observing the elven woman and the skimpy suit for a few moments, until he finally speaks up.
+{color=yellow|Хелевиэль: — Это будет нам стоить, полагаю.}
 
-{color=aqua|Sigmund: — How about a favor 'stead? Ya seem to be eager to wear it. We can think of something.}
+Зигмунд поглаживает бороду, несколько мгновений наблюдая за эльфийкой и вызывающим нарядом, прежде чем наконец заговорить.
 
-Heleviel raises a brow, but it's too late to back out.""", # MISSING TRANSLATION
-	HELEVIEL_SNOWSET_EVENT_4 = """After a few minutes, Heleviel comes out of the dressing room wearing the clothes. They certainly appear more skimpy than what you'd expect her to wear willingly. However, her face is rather content as she looks herself over in the mirror.
+{color=aqua|Зигмунд: — Как насчёт одолжения взамен? Ты, кажется, горишь желанием его надеть. Мы можем кой-чего придумать.}
 
-{color=yellow|Heleviel: — Just about the right size, as I predicted.}""", # MISSING TRANSLATION
-	HELEVIEL_SNOWSET_OPTION_1 = """I didn't take you for someone who would want to wear something like this.""", # MISSING TRANSLATION
-	HELEVIEL_SNOWSET_OPTION_2 = """So what's the deal for you getting it for free?""", # MISSING TRANSLATION
-	HELEVIEL_SNOWSET_EVENT_5A = """{color=yellow|Heleviel: — Oh, that... It just resembles a suit worn by one powerful sorceress that I knew a long time ago. It makes me feel a bit like her now, although naturally there's no magic in it. I guess I always thought it's entertaining to appear as someone else.}""", # MISSING TRANSLATION
-	HELEVIEL_SNOWSET_EVENT_5B = """Heleviel closes her eyes in meditation, before composing herself to deliver a clear, steady speech.
+Хелевиэль приподнимает бровь, но отступать уже поздно.""",
+	HELEVIEL_SNOWSET_EVENT_4 = """Спустя несколько минут Хелевиэль выходит из примерочной в этой одежде. Она определённо выглядит более откровенной, чем то, что вы ожидали бы от неё надеть добровольно. Однако её лицо довольно довольно, пока она разглядывает себя в зеркале.
 
-{color=yellow|Heleviel: — This is a boon. A custom of goodwill. And I want to thank you, not only for the gift, but for the hands and hearts behind it that chose to make it here. Your work and benevolence deserve my sincerest blessing, which I deliver to you. You have my gratitude, and more than anyone, [name], who is the reason that I'm here. Merry Christmas!}""", # MISSING TRANSLATION
+{color=yellow|Хелевиэль: — Как раз подходящий размер, как я и предполагала.}""",
+	HELEVIEL_SNOWSET_OPTION_1 = "Не думал, что ты из тех, кто стал бы носить что-то подобное.",
+	HELEVIEL_SNOWSET_OPTION_2 = "Так в чём же сделка, чтобы ты получила это бесплатно?",
+	HELEVIEL_SNOWSET_EVENT_5A = """{color=yellow|Хелевиэль: — О, это... Он просто напоминает костюм, который носила одна могущественная волшебница, которую я знала давным-давно. Сейчас он заставляет меня чувствовать себя немного похожей на неё, хотя, конечно, в нём нет магии. Думаю, я всегда считала, что это забавно — выглядеть как кто-то другой.}""",
+	HELEVIEL_SNOWSET_EVENT_5B = """Хелевиэль закрывает глаза в медитации, прежде чем собраться и произнести чёткую, уверенную речь.
+
+{color=yellow|Хелевиэль: — Это дар. Обычай доброй воли. И я хочу поблагодарить вас, не только за подарок, но и за руки и сердца, которые решили создать его здесь. Ваш труд и благожелательность заслуживают моего искреннего благословения, которое я вам дарую. Я благодарна вам, и больше, чем кто-либо, [name] — причина того, что я здесь. С Рождеством!}""",
+
+
+
+
 }
 
 
