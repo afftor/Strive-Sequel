@@ -1835,8 +1835,8 @@ func victory():
 	$Rewards/gold/Label.text = str("+") + str(rewardsdict.gold)
 	if !only_show_mat_reward:
 		ResourceScripts.game_res.money += rewardsdict.gold
-	$Rewards.show()
 	$Rewards.modulate.a = 0
+	$Rewards.show()
 	$Rewards/AnimationPlayer.play("Victory")
 	$Rewards.modulate.a = 1
 	yield(get_tree().create_timer(1.5), "timeout")
