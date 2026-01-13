@@ -1273,7 +1273,10 @@ var stacks = {
 	blind = {}, #stack 1
 	fear = {}, #stack 1
 	shock = {}, #stack 1
-	stun = {}, #stack 1
+	stun = {
+		type = 'stack_a',
+		stack = 1,
+	}, #stack 1
 	charm = {}, #stack 1
 	wet = {}, #stack 1
 	freeze = {}, #stack 1
