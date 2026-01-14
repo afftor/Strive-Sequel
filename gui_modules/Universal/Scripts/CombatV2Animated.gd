@@ -78,6 +78,7 @@ onready var battlefield_target_groups = {
 
 var no_material_reward = false
 var external_reward
+var external_rewardchars
 var only_show_mat_reward = false
 
 var dummy = {
@@ -85,6 +86,7 @@ var dummy = {
 }
 
 signal skill_use_finshed
+signal rewards_anim_finished
 
 
 func _ready():
@@ -114,6 +116,11 @@ func _ready():
 	$SkillBook.connect("closing", self, "RebuildSkillPanel")
 	$SkillPanelRowSwitch/Up.connect("pressed", self, "change_skill_panel_row", [-1])
 	$SkillPanelRowSwitch/Down.connect("pressed", self, "change_skill_panel_row", [1])
+	input_handler.register_btn_source('combat_close', self, 'tut_get_CloseButton')
+	input_handler.register_btn_source('combat_rewards_signal', self, null, null, null, null, null, 'rewards_anim_finished')
+
+func tut_get_CloseButton():
+	return $Rewards/CloseButton
 
 func on_skillbook_click():
 	$SkillBook.activecharacter = activecharacter
@@ -183,6 +190,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	no_material_reward = false
 	only_show_mat_reward = false
 	external_reward = null
+	external_rewardchars = null
 	hide()
 	
 	$ItemPanel/debugvictory.visible = debug
@@ -1774,7 +1782,11 @@ func victory():
 		gained_exp = int(gained_exp)
 		newbutton.get_node("amount").text = str(gained_exp)
 	
-	var rewardchars = globals.roll_characters()
+	var rewardchars
+	if external_rewardchars != null:
+		rewardchars = external_rewardchars
+	else:
+		rewardchars = globals.roll_characters()
 	for id in rewardchars:
 		var tchar = characters_pool.get_char_by_id(id)
 		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
@@ -1848,6 +1860,7 @@ func victory():
 	globals.show_buttons($Rewards/ScrollContainer2/HBoxContainer)
 	get_tree().get_root().set_disable_input(false)
 	$Rewards/CloseButton.grab_click_focus()
+	emit_signal('rewards_anim_finished')
 
 
 func defeat(runaway = false): #runaway is a temporary variable until run() method not fully implemented
@@ -1887,6 +1900,9 @@ func set_only_show_reward():
 
 func set_external_reward(new_reward):
 	external_reward = new_reward
+
+func set_external_reward_chars(new_reward):
+	external_rewardchars = new_reward
 
 func get_target_node(pos, type):
 	return battlefield_target_groups[pos][type]
