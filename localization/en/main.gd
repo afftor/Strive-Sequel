@@ -3253,17 +3253,17 @@ Requires: Sex:Advanced""",
 	TRAITTRAINING_RELATION = "Relationship",
 	TRAITTRAINING_RELATIONDESCRIPT = """Make move onto [name]'s personal life. After all, shouldn't [he] like you enough already?
 	
-{color=yellow|Unlocks Dating option and removes consent penalty in sex.}""",
+{color=yellow|Unlocks Dating option and removes Consent penalty in sex.}""",
 	TRAITTRAINING_SEXSERVICE = "Sex Service",
 	TRAITTRAINING_SEXSERVICEDESCRIPT = """Since [name]'s body belong to you, it makes sense to make [him] use it for your prosperity.
 	
 {color=yellow|Unlocks sex service tasks and Nudity rule.
-Requires consent \"Curious\" or above.}""",
+Requires Consent \"Curious\" or above.}""",
 	TRAITTRAINING_SEXSERVICE_ADV = "Advanced Sex Service",
 	TRAITTRAINING_SEXSERVICE_ADVDESCRIPT = """With all well and done, its a logical step to push [name] further into depravity.
 
 {color=yellow|Unlocks advanced sex service options.
-Requires consent \"Willing\" or above.}""",
+Requires Consent \"Willing\" or above.}""",
 	TRAITTRAINING_S_COMBAT = "Combat",
 	TRAITTRAINING_S_COMBATDESCRIPT = """[name] will allow to be drafted into combat scenarios. Perhaps not everyone is willing to combat for you with no concerns.
 
@@ -3280,12 +3280,12 @@ Requires consent \"Willing\" or above.}""",
 	TRAITTRAINING_S_SEXSERVICEDESCRIPT = """Not everyone is willing to get into selling their body for your benefit. But with some persuasion...
 	
 {color=yellow|Unlock sex service tasks. 
-Requires consent \"Curious\" or above.}""",
+Requires Consent \"Curious\" or above.}""",
 	TRAITTRAINING_S_SEXSERVICE_ADV = "Advanced Sex Service",
 	TRAITTRAINING_S_SEXSERVICE_ADVDESCRIPT = """If [name] is already willing to perform sex services for your profits, why stop there?..
 	
 {color=yellow|Unlock advanced sex service options. 
-Requires consent \"Willing\" or above.}""",
+Requires Consent \"Willing\" or above.}""",
 	TRAITMASTER_HARLOTRY = "Harlotry",
 	TRAITMASTER_HARLOTRYDESCRIPT = "While in service you still receive Rest benefits.",
 	TRAITMASTER_PROGENECY = "Progenecy",
@@ -4291,30 +4291,30 @@ Sex skills are increased when performing related action and their growth is depe
 	SEXTRAITDISLIKE_GROUP = "Dislike Group Sex",
 	SEXTRAITDISLIKE_BDSM = "Dislike Harsh Sex",
 	SEXTRAITDISLIKE_TAIL = "Dislike Perverted Actions",
-	SEXTRAITDISLIKE_PETTINGDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
-	SEXTRAITDISLIKE_FINGERINGDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
-	SEXTRAITDISLIKE_TITSDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
-	SEXTRAITDISLIKE_ORALDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
-	SEXTRAITDISLIKE_MISSIONARYDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
-	SEXTRAITDISLIKE_DOGGYDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
-	SEXTRAITDISLIKE_SITTINGDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
-	SEXTRAITDISLIKE_RIDINGDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
-	SEXTRAITDISLIKE_GROUPDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
-	SEXTRAITDISLIKE_BDSMDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
-	SEXTRAITDISLIKE_TAILDESCRIPT = "[name] expresses dislike for certain lewd actions. [His] consent and the effect of received actions are lowered for [him]. ",
-	SEXTRAITBISEXUALDESCRIPT = "[name] does not mind having sex with people of [his] gender. Removes consent penalty from same-sex partners. Allows romance with residents of same sex.",
-	SEXTRAITMONOGAMOUSDESCRIPT = "[name] only is interested in relationship with a single partner. Boosts consent and effects of the actions from [his] selected person. Prevents [name] from accepting more than one romantic partner.",
-	SEXTRAITFAMILY_FIRSTDESCRIPT = "[name] does not mind engaging into relationship with [his] relatives. Removes consent penalty from sexual interactions with relatives. Allows [name] to accept relatives as romantic partners.",
-	SEXTRAITOPEN_MINDEDDESCRIPT = "[name] is rather accepting of [his] partners, having no issues with them having different body structures. Removes consent penalty from different body shape partners.",
-	SEXTRAITDEVIANTDESCRIPT = "[name] has some deviant tastes, having no problem from engaging in lewd actions with animals and even undead. Removes consent penalty from animal and undead partners.",
-	SEXTRAITGROUPDESCRIPT = "[name] accepts having multiple partners at once as a natural thing. Removes consent penalty from group actions.",
-	SEXTRAITSHAMELESSDESCRIPT = "[name] does not mind being observed by others while having sex. Removes consent penalty from being observed. Makes intimate actions during dating acceptable outside of bedroom. ",
-	SEXTRAITANALDESCRIPT = "[name] does not experience prejudice or disgust from anal sex. Removes consent penalty from anal actions.",
+	SEXTRAITDISLIKE_PETTINGDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] Consent and the effect of received actions are lowered for [him]. ",
+	SEXTRAITDISLIKE_FINGERINGDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] Consent and the effect of received actions are lowered for [him]. ",
+	SEXTRAITDISLIKE_TITSDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] Consent and the effect of received actions are lowered for [him]. ",
+	SEXTRAITDISLIKE_ORALDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] Consent and the effect of received actions are lowered for [him]. ",
+	SEXTRAITDISLIKE_MISSIONARYDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] Consent and the effect of received actions are lowered for [him]. ",
+	SEXTRAITDISLIKE_DOGGYDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] Consent and the effect of received actions are lowered for [him]. ",
+	SEXTRAITDISLIKE_SITTINGDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] Consent and the effect of received actions are lowered for [him]. ",
+	SEXTRAITDISLIKE_RIDINGDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] Consent and the effect of received actions are lowered for [him]. ",
+	SEXTRAITDISLIKE_GROUPDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] Consent and the effect of received actions are lowered for [him]. ",
+	SEXTRAITDISLIKE_BDSMDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] Consent and the effect of received actions are lowered for [him]. ",
+	SEXTRAITDISLIKE_TAILDESCRIPT = "[name] expresses dislike for certain lewd actions. [His] Consent and the effect of received actions are lowered for [him]. ",
+	SEXTRAITBISEXUALDESCRIPT = "[name] does not mind having sex with people of [his] gender. Removes Consent penalty from same-sex partners. Allows romance with residents of same sex.",
+	SEXTRAITMONOGAMOUSDESCRIPT = "[name] only is interested in relationship with a single partner. Boosts Consent and effects of the actions from [his] selected person. Prevents [name] from accepting more than one romantic partner.",
+	SEXTRAITFAMILY_FIRSTDESCRIPT = "[name] does not mind engaging into relationship with [his] relatives. Removes Consent penalty from sexual interactions with relatives. Allows [name] to accept relatives as romantic partners.",
+	SEXTRAITOPEN_MINDEDDESCRIPT = "[name] is rather accepting of [his] partners, having no issues with them having different body structures. Removes Consent penalty from different body shape partners.",
+	SEXTRAITDEVIANTDESCRIPT = "[name] has some deviant tastes, having no problem from engaging in lewd actions with animals and even undead. Removes Consent penalty from animal and undead partners.",
+	SEXTRAITGROUPDESCRIPT = "[name] accepts having multiple partners at once as a natural thing. Removes Consent penalty from group actions.",
+	SEXTRAITSHAMELESSDESCRIPT = "[name] does not mind being observed by others while having sex. Removes Consent penalty from being observed. Makes intimate actions during dating acceptable outside of bedroom. ",
+	SEXTRAITANALDESCRIPT = "[name] does not experience prejudice or disgust from anal sex. Removes Consent penalty from anal actions.",
 	SEXTRAITBREASTSDESCRIPT = "[name] experience additional pleasure from actions involving breasts. Breast related actions: +50% Lust and Arousal.",
 	SEXTRAITMASOCHISTDESCRIPT = "[name] experience unusual pleasure from being punished. Arousal from receiving punishments is increased by 50%. ",
 	SEXTRAITSADISTDESCRIPT = "[name] experience unusual pleasure from punishing others. Arousal from giving punishments is increased by 50%. ",
 	SEXTRAITSUBMISSIVEDESCRIPT = "[name] finds pleasure and comfort in being forced into things by others. Submissive positions arousal is increased by 20% ",
-	SEXTRAITDOORMATDESCRIPT = "[name] is very poor when dealing with sexual advances. Actions without [his] consent have only 50% chance to cost Tolerance.",
+	SEXTRAITDOORMATDESCRIPT = "[name] is very poor when dealing with sexual advances. Actions without [his] Consent have only 50% chance to cost Tolerance.",
 	SEXTRAITDOMINANTDESCRIPT = "[name] enjoys being in a leading role. Dominating positions arousal is increased by 20%.",
 	SEXTRAITNYMPHOMANIADESCRIPT = "[name] is perpetually horny, always ready for sex, even if it is not in [his] interest... Starts in Horny state.",
 	SEXTRAITHYPERSENSITIVEDESCRIPT = "[name]'s body is unreasonably sensitive. Can orgasm from any physical action. ",

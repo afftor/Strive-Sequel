@@ -7542,6 +7542,7 @@ ANASTASIA_DECLARATION_4MC = """当阿纳斯塔西娅大声朗读演讲的其余�
 	KURDAN_EXTRA_REPLY2 = "— 我从小就开始学习魔法。我父亲是一位经验丰富的练习者，所以我想它在家族里流传。有些人把它视为一种工具，只是达到目的的一种手段，但我更好奇它是如何运作的，以及它在世界上扮演什么角色。不过，我还有很多东西要学。",
 	KURDAN_EXTRA_OPTION3 = "关于半兽人",
 	KURDAN_EXTRA_REPLY3 = "— 那些团结我的祖国的人决定完全禁止魔法的实践。在被透特邪教铁腕统治了这么长时间后，他们今天处境艰难。现在邪教受到迫害，而我们……他们已经用技术取代了魔法，将其作为他们力量的基础。我认为总有一天你会不可避免地遇到他们。",
+	MAE_EXTRA_GREET = """{color=yellow|— Greetings, [name]. Do you have some questions for me?}""", # MISSING TRANSLATION
 
 	AMELIA_BONUS_QUESTION = "— [name], 我有一个问题要问你，请诚实回答。你觉得我和公主谁更有吸引力？她似乎只比我小一点，我不能否认她的美丽，仅凭这一点，她就很有吸引力。",
 	AMELIA_BONUS_QUESTION_OPTION1 = "公主",

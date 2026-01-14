@@ -210,7 +210,6 @@ func FindNextImagesInPlayer():
 	
 	var progress : Array = input_handler.progress_data.ero_scenes
 	var newimagename = content[currentCount + 1]
-	
 	if !progress.has(content[currentCount + 1]):
 		$FullScreenImage.texture = load("res://assets/Textures_v2/back_charinfo.png")
 		Collection = newimagename

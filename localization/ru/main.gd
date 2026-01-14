@@ -1608,6 +1608,12 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	SKILLAURA_DMGWATER = "Стихийное оружие: Вода",
 	SKILLAURA_DMGWATER_REMOVE = "Выключить Стихийное оружие",
 	SKILLAURA_DMGWATERDESCRIPT = """Изменяет стихию оружия на воду.""",
+	SKILLRANGER_AURA = """Animal Companion""", # MISSING TRANSLATION
+	SKILLRANGER_AURA_REMOVE = """Turn off Animal Companion""", # MISSING TRANSLATION
+	SKILLRANGER_AURADESCRIPT = """Passive Summon: Trained Dog""", # MISSING TRANSLATION
+	SKILLNECRO_AURA = """Mastery of the Dead""", # MISSING TRANSLATION
+	SKILLNECRO_AURA_REMOVE = """Turn off Mastery of the Dead""", # MISSING TRANSLATION
+	SKILLNECRO_AURADESCRIPT = """Passive Summon: Skeletons. Number skeletons is defined by Magic Factor.""", # MISSING TRANSLATION
 	TRAITVIGORDESCRIPT = """Увеличивает регенерацию здоровья на 30%.""",
 	TRAITMEDITATIONDESCRIPT = """Увеличивает регенерацию маны на 30%.""",
 	MASTERYBLOCKSRC = """Заблокировано %s: %s""",
@@ -2470,6 +2476,7 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	STATRESIST_BLINDDESCRIPT = "Сопротивление эффекту ослепления",
 	STATRESIST_BURNDESCRIPT = "Сопротивление эффекту горения",
 	STATRESIST_CONFUSEDESCRIPT = "Сопротивление эффекту замешательства",
+	STATRESIST_CURSEDDESCRIPT = """Resistance to Curse effect""", # MISSING TRANSLATION
 	STATRESIST_CURSEDESCRIPT = "Сопротивление эффекту проклятия",
 	STATRESIST_DISARMDESCRIPT = "Сопротивление эффекту обезоруживания",
 	STATRESIST_FEARDESCRIPT = "Сопротивление эффекту страха",
@@ -3905,7 +3912,11 @@ Requires: Базовый рабский труд""",
 	PROFALIOS_CHAMPION = """Чемпион Алиоса""",
 	PROFALIOS_CHAMPIONDESCRIPT = """Одинокая девушка с загадочными способностями и прошлым. Ясно одно - ее божественная принадлежность реальна.""",
 	PROFNIXX_CHAMPION = """Чемпион Никс""",
+	PROFSATORI = """Satori""", # MISSING TRANSLATION
+	PROFASURA = """Asura""", # MISSING TRANSLATION
 	PROFNIXX_CHAMPIONDESCRIPT = """Эти ужасающие силы исходят из неизвестного источника, который могут познать лишь немногие мудрецы мира.""",
+	PROFSATORIDESCRIPT = """Only the one who has reached lowest point will be able to perceive the reality to its fullest.""", # MISSING TRANSLATION
+	PROFASURADESCRIPT = """Lust for power and control can get you to very strange places, but the cost will never feel fair.""", # MISSING TRANSLATION
 	PROFRENOWN_ROYALTY = """Королевская власть""",
 	PROFRENOWN_ROYALTYDESCRIPT = """Королевская кровь сама по себе является благом, тем более, когда ее признают другие.""",
 	PROFBROKEN_ROYALTY = """Сломанная королевская власть""",
@@ -3920,6 +3931,10 @@ Requires: Базовый рабский труд""",
 	PROFMONKDESCRIPT = """Религиозные бойцы, использующие свою духовную подготовку для борьбы с врагами.""",
 	PROFBISHOP = """Епископ""",
 	PROFBISHOPDESCRIPT = """Только избранным удается достичь этого ранга. Высшие члены церкви, способные высвобождать божественные силы.""",
+	PROFSPELLSWORD = """Spellsword""", # MISSING TRANSLATION
+	PROFSPELLSWORDDESCRIPT = """By mixing magic and martial arts especially gifted individuals are capable of fighting with both at the same time.""", # MISSING TRANSLATION
+	PROFARCANE_BLADE = """Arcane Blade""", # MISSING TRANSLATION
+	PROFARCANE_BLADEDESCRIPT = """Further honing their magic skills, Spellswords become capable not only flinging spells in the midst of fight but even imbuing their weapon in elements.""", # MISSING TRANSLATION
 	PROFSPOUSE = """Муж""",
 	PROFSPOUSEALT = """Жена""",
 	PROFSPOUSEDESCRIPT = """Официально обрученная супруг [Master]а поместья. Утечка Повиновения равна 0. Прирост верности +3.""",
@@ -4967,6 +4982,9 @@ Requires: Базовый рабский труд""",
 	
 	DIALOGUETUTNOTHING = """Без обучения (бесплатно)""",
 	DIALOGUETUTSLAVE = """*Обучить как раба* (500 золотых)""",
+	DIALOGUETUTSLAVE1 = """Slave Training: Workforce (500 Gold)""", # MISSING TRANSLATION
+	DIALOGUETUTSLAVE2 = """Slave Training: Warrior (500 Gold)""", # MISSING TRANSLATION
+	DIALOGUETUTSLAVE3 = """Slave Training: Service (500 Gold)""", # MISSING TRANSLATION
 	DIALOGUETUTACADEMY = """*Академическое обучение* (1.500 золотых)""",
 	DIALOGUETUTHEIR = """*Обучение наследника* (5.000 золотых)""",
 	
@@ -6696,6 +6714,13 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	ARENA_TIMER = "Следующий соперник",
 	ARENA_FEE = "Чтобы попасть на арену, у вас должно быть 1000 золотых.",
 	ARENA_TOOLTIP = "Это арена.",
+	TRAVEL_HAS_GROUP = """Group with such name already exists!""", # MISSING TRANSLATION
+	TRAVEL_ADD_GROUP = """New group""", # MISSING TRANSLATION
+	TRAVEL_ALL_SELECTED = """all selected""", # MISSING TRANSLATION
+	TRAVEL_MOVE_TO = """Move to %s""", # MISSING TRANSLATION
+	TRAVEL_RENAME = """Rename""", # MISSING TRANSLATION
+	TRAVEL_MOVE_UP = """Move up""", # MISSING TRANSLATION
+	TRAVEL_MOVE_DOWN = """Move down""", # MISSING TRANSLATION
 
 	SKILLPOISON_BITE = """Ядовитый укус""",
 	SKILLPOISON_BITE_S = """Ядовитый укус""",
@@ -8856,6 +8881,7 @@ AFTER_ELECTION_PRINCESS_MINDBREAK_7 = """Вы чувствуете, как де�
 	KURDAN_EXTRA_REPLY2 = """- Я изучал магию с раннего детства. Мой отец был опытным практиком, так что, думаю, это передается по наследству. Некоторые видят в ней инструмент, просто средство достижения цели, но мне гораздо интереснее узнать, как она действует и какую роль играет в мире. Хотя мне еще многому предстоит научиться.""",
 	KURDAN_EXTRA_OPTION3 = """Об орках.""",
 	KURDAN_EXTRA_REPLY3 = """- Те, кто объединил мои родные земли, решили полностью запретить магию. Сегодня они находятся в трудном положении после того, как культ Тота так долго управлялся железным кулаком. Теперь культ преследуется, а мы... они заменили магию на технологию как основу своей власти. Я думаю, неизбежно, что когда-нибудь вы столкнетесь с ними""",
+	MAE_EXTRA_GREET = """{color=yellow|— Greetings, [name]. Do you have some questions for me?}""", # MISSING TRANSLATION
 
 	AMELIA_BONUS_QUESTION = """- [name], у меня к тебе вопрос, и, пожалуйста, ответь честно. Кто бы вам показался более привлекательным между мной и принцессой? Она кажется лишь немного моложе меня, и я не могу отрицать ее красоту, что само по себе должно делать ее весьма привлекательной.""",
 	AMELIA_BONUS_QUESTION_OPTION1 = """Принцесса.""",
@@ -19537,6 +19563,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	SOCIAL_SKILLS = """Социальные навыки""",
 	COMBAT_SKILLS = """Боевые навыки""",
 	PERSONAL_STAT = """Личная статистика""",
+	PERSONAL_METRICS = """Metrics""", # MISSING TRANSLATION
 	REMOVE_BUTTON = """Освободить""",
 	TALK_BUTTON = """Поговорить""",
 	BODY_UPGRADE_TOOLTIP = """Здесь вы можете визуально изменить персонажа за определенную цену""",
@@ -21817,6 +21844,202 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	HELEVIEL_SNOWSET_EVENT_5B = """Хелевиэль закрывает глаза в медитации, прежде чем собраться и произнести чёткую, уверенную речь.
 
 {color=yellow|Хелевиэль: — Это дар. Обычай доброй воли. И я хочу поблагодарить вас, не только за подарок, но и за руки и сердца, которые решили создать его здесь. Ваш труд и благожелательность заслуживают моего искреннего благословения, которое я вам дарую. Я благодарна вам, и больше, чем кто-либо, [name] — причина того, что я здесь. С Рождеством!}""",
+	MAE_QUEST_INITIATE_START = """After a few days of living at your place, Mae, a beastkin shaman who joined you after the obscene ritual, finally approaches you. She rubs her legs together, looking down before she finally speaks up.
+
+{color=yellow|Mae: — H-hi, how's your day?}""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_OPTION_1 = """It's nice""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_OPTION_2 = """Is there something you want to ask?""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_REPLY_1 = """{color=yellow|Mae: — R-really? That's good to hear.}
+
+Judging by Mae's tone, she still isn't quite used to the luxury of a city mansion after all that happened.""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_REPLY_2 = """{color=yellow|Mae: — Y-yeah, sorry, I was not sure how to start...}""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_FAVOR = """{color=yellow|Mae: — Anyway, there's a favor I want to ask. Well, you see, I... can't get used to the food around here after living in the forests... It... doesn't quite taste right to me.}""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_FAVOR_OPTION_1 = """I remember you eating rather happily with others""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_FAVOR_OPTION_2 = """So what do you want?""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_FAVOR_RETURN = """Mae's face blushes slightly and she starts stammering, speaking faster.
+
+{color=yellow|Mae: — Y-yeah, I did, I couldn't show my distaste, could I?}""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_REQUEST = """{color=yellow|Mae: — I wanted to go to the local market, it's just... I'm not used to buying stuff over here. Oh, and I could also get some rare herbs for my rituals while I'm at it.}""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_REQUEST_OPTION_1 = """Alright, I can show you around""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_REQUEST_OPTION_2 = """Maybe once I have time""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_CLOSE = """{color=yellow|Mae: — Thank you, I hope it won't take you too long...}""", # MISSING TRANSLATION
+	MAE_MARKET_START = """You lead Mae to the market, slowly guiding her through various stalls as she observes her surroundings with wide eyes.
+
+{color=yellow|Mae: — Wow, it's only been a couple of years since I visited last time, but things have changed so much...}""", # MISSING TRANSLATION
+	MAE_MARKET_FRUIT_INTRO = """As you guide Mae between the stalls, a bright splash of color catches her eye. She stops short, ears perking up.
+
+{color=yellow|Mae: — Oh... that fruit...}
+
+On a velvet cloth sits a pile of glossy, amber-skinned fruits, each one perfectly round and faintly warm as if it was just picked.
+
+{color=gray_text_dialogue|Fruit Vendor: — Sunplums! Fresh shipment, rare this season! Price is firm.}
+
+Mae takes one look at the sign and immediately pulls her hand back.
+
+{color=yellow|Mae: — I-it's... pricey. Back in the woods we just... found them rarely like this.}
+
+She stares a moment longer, swallowing, then looks at you with a hesitant, embarrassed smile.""", # MISSING TRANSLATION
+	MAE_MARKET_FRUIT_OPTION_BUY = """*Buy it for her* (250 gold)""", # MISSING TRANSLATION
+	MAE_MARKET_FRUIT_OPTION_STEAL = """*Steal it while the vendor isn't looking*""", # MISSING TRANSLATION
+	MAE_MARKET_FRUIT_OPTION_MOVE = """We better move on""", # MISSING TRANSLATION
+	MAE_MARKET_FRUIT_BUY = """You reach for your coin pouch without making a big deal out of it.
+
+{color=gray_text_dialogue|Fruit Vendor: — Good choice. Mind the juice, it stains.}
+
+The vendor wraps it in thin paper and passes it over. Mae accepts it with both hands like it's a gift.""", # MISSING TRANSLATION
+	MAE_MARKET_FRUIT_STEAL = """You scan the vendor's posture, the flow of people, the way the stall's edge creates a blind spot. The vendor turns to argue with another customer about weights and measures.
+
+But your hand is already between the cloth and the fruit. In one smooth motion, you slip a sunplum into a sleeve pouch.""", # MISSING TRANSLATION
+	MAE_MARKET_FRUIT_AFTER = """{color=yellow|Mae: — R-really? For me?.. Thank you...}
+
+She takes a careful bite. Her eyes widen, and her tail gives a tiny, involuntary swish.
+
+For the first time since arriving in the city, she looks genuinely at ease.""", # MISSING TRANSLATION
+	MAE_MARKET_FRUIT_MOVE_ON = """Mae flinches at her own lingering stare, then forces a polite nod.
+
+{color=yellow|Mae: — Y-yeah... you're right. I got carried away.}
+
+She takes one last look, then quickly steps after you, as if afraid she might change her mind.""", # MISSING TRANSLATION
+	MAE_MARKET_SHELIA_INTRO = """As you make your way through the market, a couple of beastkin suddenly approach you. A female one looks surprised as she takes a closer look at Mae.
+
+{color=aqua|Stranger Beastkin: — Oh, Mae, is that you?}
+
+{color=yellow|Mae: — H-hi, Shelia, it's been a while.}
+
+{color=aqua|Shelia: — What an outfit, so you really went to live in the woods?}
+
+{color=yellow|Mae: — Well, that's a long story...}""", # MISSING TRANSLATION
+	MAE_MARKET_SHELIA_TALK = """{color=aqua|Shelia: — No way, you're a tribal shaman now? And you live at a mayor's place too. Are you like one of his close partners? Haha.}
+
+{color=yellow|Mae: — T-that's not like that...}""", # MISSING TRANSLATION
+	MAE_MARKET_SHELIA_REL_OPTION_1 = """Our relationship is strictly professional""", # MISSING TRANSLATION
+	MAE_MARKET_SHELIA_REL_OPTION_2 = """You aren't exactly wrong...""", # MISSING TRANSLATION
+	MAE_MARKET_SHELIA_REQUEST = """{color=aqua|Shelia: — Yeah, yeah, I get it, someone with knowledge from the far woods can be very valuable...}
+
+The girl pauses for a bit as if recalling something.
+
+{color=aqua|Shelia: — Oh, about that, I just remembered. My younger cousin has been acting weird and being sick for about a week already. Local apothecaries couldn't give us anything. I feel like it might be something... unusual. Maybe you could take a look?}
+
+{color=yellow|Mae: — I suppose, it can't hurt to try. Savra taught me about many different conditions.}""", # MISSING TRANSLATION
+	MAE_MARKET_SHELIA_WAIT = """{color=aqua|Shelia: — That's great! I'll be waiting for you at my place then.}
+
+The beastkin explained their home location and went on with their errands.
+
+{color=yellow|Mae: — Hope you don't mind me trying to help them?}""", # MISSING TRANSLATION
+	MAE_MARKET_SHELIA_RESPONSE_OPTION_1 = """It's worth it to keep helping your friends""", # MISSING TRANSLATION
+	MAE_MARKET_SHELIA_RESPONSE_OPTION_2 = """I think this can help your training""", # MISSING TRANSLATION
+	MAE_MARKET_SHELIA_RESPONSE_1 = """{color=yellow|Mae: — Y-yeah, I wonder what they really think of me now that I'm back being like this...}""", # MISSING TRANSLATION
+	MAE_MARKET_SHELIA_RESPONSE_2 = """{color=yellow|Mae: — You think so? I guess it would be nice to be more useful to you.}""", # MISSING TRANSLATION
+	MAE_FRIEND_VISIT_1 = """You visit a small dormitory. Mae approaches the young beastkin boy lying in bed, weak and feeble. When she finishes her inspection, she turns to you.
+
+{color=yellow|Mae: — It seems he is possessed by a nasty spirit. It's unusual, spirits are weak outside their natural habitat and don't like densely populated cities... I think I can take care of it with a ritual, but I don't have the necessary brew for it. W-would you help me out with this, [name]?}""", # MISSING TRANSLATION
+	MAE_FRIEND_VISIT_1_OPTION_1 = """Well, it would be weird to stop at this point""", # MISSING TRANSLATION
+	MAE_FRIEND_VISIT_1_OPTION_2 = """I don't really have much free time, I'll consider it""", # MISSING TRANSLATION
+	MAE_FRIEND_VISIT_1_AFTER = """Mae nods, quickly returning her gaze to the boy. She seems genuinely concerned for his well-being.
+
+{color=yellow|Mae: — Thank you. I'll make sure to remember everything correctly for it.}
+
+As you leave, she gives you a recipe for the potion she wants you to make. It doesn't seem difficult, but it will take a bit of time.""", # MISSING TRANSLATION
+	MAE_POTION_READY = """{color=yellow|Mae: — You've done it? Thank you. Now we can go back to Shelia's house.}""", # MISSING TRANSLATION
+	MAE_FRIEND_VISIT_2_START = """As Mae reaches the child's bed, she prepares the potion by pouring it into a cup. She slowly makes him drink it before taking out a wood-carved talisman she has been preparing over the last few days.
+
+{color=yellow|Mae: — C-can you leave us alone for a bit? I need to concentrate, and it would help if no one was watching.}""", # MISSING TRANSLATION
+	MAE_FRIEND_VISIT_2_WAIT = """You and Shelia leave Mae alone, closing the door behind her.
+
+{color=aqua|Shelia: — She looks like she actually knows what she's doing, doesn't she?..}
+
+After a couple minutes, when Shelia serves you some water, you are both startled by a sudden yelp and a crash.""", # MISSING TRANSLATION
+	MAE_FRIEND_VISIT_2_CRASH = """After taking a few moments to force the door, you finally make it inside to find the bed with the boy still in place. A few pieces of furniture and clothes are scattered across the floor, and the window is wide open with one side damaged.
+
+The boy breathes heavily but seems more active than before, slowly coming to his senses. However, Mae is nowhere to be seen.
+
+The broken window catches the attention of the guards outside, and after a short time you are approached by them for questioning.
+
+{color=gray_text_dialogue|Guard: — Your mayorship? We heard loud noises and something barged through the window.}
+
+Despite your best efforts, you are unable to follow after Mae wherever she was taken, and the guards seem to have no idea either.
+
+At least to your and Shelia's relief, her ritual actually worked, and by the end of the day the boy was on his feet. Still, you need to find Mae.""", # MISSING TRANSLATION
+	MAE_FRIEND_VISIT_2_OPTION_WISDOM = """[Wisdom Challenge] Observe the patterns of the tracks left by Mae""", # MISSING TRANSLATION
+	MAE_FRIEND_VISIT_2_OPTION_CLOSE = """Close""", # MISSING TRANSLATION
+	MAE_FRIEND_VISIT_2_TRACK_SUCCESS = """You spend additional time studying the mess Mae made and asking witnesses what they saw. This helps you narrow down the possible direction she moved in and will greatly help with the search.""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_START = """A whole day has been spent trying to find Mae. Many strangers reported seeing her roaming through town and causing chaos, noting that she looked drugged or delusional, but she never stayed around for long, as if trying to escape others' eyes.
+
+Finally you've managed to find her not far from your mansion, in an isolated dead end, sitting against the wall. Her eyes are wide and watering as she sees you.
+
+{color=yellow|Mae: — [name], n-no... I... Ah!.. I screwed up big, the s-spirit got me...}
+
+Her body visibly shakes as she looks exhausted from suppressing the entity fighting her.""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_OPTION_1 = """What does it do exactly?""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_OPTION_2 = """How can I help you?""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_VOICE_1 = """{color=yellow|Mae: — I-it can't take me, but... it wants to...}
+
+{color=red|Voice: — If you didn't come after me you foul beastkin! I'll spill your dirty secrets that pester your mind now.}
+
+{color=yellow|Mae: — N-no, please... don't listen!}""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_VOICE_2 = """{color=red|Voice: — Your poor and useless being only good for this suffering, no money, no home, so pathetic!}
+
+Mae closes her eyes and covers her face with her paws in shame as you are the sole observer of her humiliation.
+
+{color=yellow|Mae: — T-that's nothing I can help with!}
+
+{color=red|Voice: — And also fat! Just look at how obese you are! That's what you were trying to hide, that you eat too much! And just changing your diet would change anything!}""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_VOICE_3 = """Under the stress of the situation and your scrutinizing gaze, Mae's voice finally grows more irritated, her body tensing.
+
+{color=yellow|Mae: — E-enough... shut up! This is all a lie, you are just a parasite, feeding... on suffering...}
+
+The spirit completely ignores her pleas. It seems to act purely on instinct, with no sentience beyond putting Mae down with its taunts.
+
+{color=red|Voice: — That orgy is still on your dirty mind you slut, the way everyone was looking at your flabby body. They were looking at your gigantic tits and fat ass!}""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_VOICE_4A = """{color=red|Voice: — And you can't stop thinking how your pussy was ravished by this man every...}""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_VOICE_4B = """{color=red|Voice: — And you can't stop thinking how lewd it was being surrounded by cocks...}""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_VOICE_4C = """A loud cry erupts from Mae as her body is enveloped in blue light. After only a moment the voice is gone, and she falls to the ground, panting heavily. Her eyes are full of tears.""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_OPTION_HELP = """*Help her get up*""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_OPTION_STAND = """*Let her do it by herself*""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_HELP = """You gently pick Mae up and put her on her feet. She doesn't say anything as you take her back to the mansion, but you can clearly feel her ache to forget everything that happened.""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_STAND = """You let Mae take a breath until she's able to stand by herself. You lead her back into the mansion as she says nothing, but you can clearly feel her ache to forget everything that happened.""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_HOME = """Finally at home, Mae has calmed down and speaks slowly, holding her hands together.
+
+{color=yellow|Mae: — Aah, it was all because of me... I forgot to close the window curtains before the ritual, so it broke free... I'm so sorry about this...}""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_HOME_OPTION_1 = """No matter, I'm glad you are safe""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_HOME_OPTION_2 = """It's alright, it was your first time after all""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_HOME_OPTION_3 = """Your mistake did cost me a lot of time""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_RESPONSE_1 = """Mae visibly blushes and looks away at your words.
+
+{color=yellow|Mae: — R-really? Thank you, I'm glad you say that, but... going through something so embarrassing... I need a rest.}""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_RESPONSE_2 = """{color=yellow|Mae: — T-Thank you. This is one lesson I'll never forget... I need a rest.}""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_RESPONSE_3 = """Mae seems disappointed by your harsh words, visibly lowering her head.
+
+{color=yellow|Mae: — I'm sorry... this is really an awful rookie mistake of me.}""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_CONCERN = """Before going to her room, she suddenly gives you a vulnerable look.
+
+{color=yellow|Mae: — ...About the things that it said...}
+
+Judging by her blush, it wasn't so much about her insecurity and more about the lewd stuff she went through with you.""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_FINAL_OPTION_1 = """I couldn't really hear what it said... (lie)""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_FINAL_OPTION_2 = """Yeah, it was a bit embarrassing, but we all have moments like this""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_FINAL_OPTION_3 = """If you enjoyed it, you shouldn't shy away from it. You have a lot of potential in you.""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_FINAL_1 = """{color=yellow|Mae: — I-I see... that's good then...}
+
+It doesn't seem like Mae buys your lie, but it comforts her that you choose to pretend nothing happened.""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_FINAL_2 = """{color=yellow|Mae: — Thank you... uhm, I hope we can forget about this happening soon.}""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_FINAL_3 = """{color=yellow|Mae: — Y-you really think so? Potential in things like this... feels inappropriate to me. But if you are saying so, maybe it's more normal than I thought... Thank you, [name], I feel a little better now I guess.}""", # MISSING TRANSLATION
+	MAE_CITY_QUEST_NAME = """Mae's Request""", # MISSING TRANSLATION
+	MAE_CITY_QUEST_SUMMARY = """Mae asks for help adjusting to the city, leading to a market outing, a ritual request, and a sudden crisis.""", # MISSING TRANSLATION
+	MAE_CITY_QUEST_STAGE_0 = """Take Mae to the market in Aliron.""", # MISSING TRANSLATION
+	MAE_CITY_QUEST_STAGE_1 = """Visit Shelia's home with Mae.""", # MISSING TRANSLATION
+	MAE_CITY_QUEST_STAGE_2 = """Craft the ritual potion Mae requested.""", # MISSING TRANSLATION
+	MAE_CITY_QUEST_STAGE_25 = """Tell Mae about potion.""", # MISSING TRANSLATION
+	MAE_CITY_QUEST_STAGE_3 = """Return to Shelia's home with Mae.""", # MISSING TRANSLATION
+	MAE_CITY_QUEST_STAGE_4 = """Search for Mae in Aliron.""", # MISSING TRANSLATION
+	MAE_MARKET_OPTION = """Food Market""", # MISSING TRANSLATION
+	MAE_SHELIA_OPTION = """Shelia's home""", # MISSING TRANSLATION
+	MAE_POTION_OPTION = """Shelia's home""", # MISSING TRANSLATION
+	MAE_POTION_READY_OPTION = """Your potion is finally crafted.""", # MISSING TRANSLATION
+	MAE_POTION_TASK_NAME = """Brew Mae's Ritual Potion""", # MISSING TRANSLATION
+	MAE_POTION_TASK_DESC = """Prepare the ritual brew Mae needs for the exorcism.""", # MISSING TRANSLATION
+	MAE_SEARCH_TASK_NAME = """Search for Mae""", # MISSING TRANSLATION
+	MAE_SEARCH_TASK_DESC = """Scour Aliron for any sign of Mae's whereabouts.""", # MISSING TRANSLATION
 
 
 

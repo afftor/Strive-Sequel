@@ -572,7 +572,7 @@ var data = {
 	cali_william_evening_1 = {
 		image = null, music = "intimate_dark",
 		dialogue_type = 2,
-		scene_type = "unlocked_gallery_seq",
+		scene_type = "ero_scene",
 		unlocked_gallery_seq = "cali_william_evening",
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
@@ -585,6 +585,8 @@ var data = {
 	cali_william_evening_2 = {
 		image = null,
 		tags = ['dialogue_scene', 'master_translate'],
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		custom_background = "cali_william_evening_2",
 		text = [ {text = "CALI_WILLIAM_EVENING_2", reqs = []} ],
 		options = [ {
@@ -594,6 +596,8 @@ var data = {
 	cali_william_evening_3 = {
 		image = null,
 		tags = ['dialogue_scene', 'master_translate'],
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		custom_background = "cali_william_evening_3",
 		text = [ {text = "CALI_WILLIAM_EVENING_3", reqs = []} ],
 		options = [ {
@@ -603,6 +607,8 @@ var data = {
 	cali_william_evening_4 = {
 		image = null,
 		tags = ['dialogue_scene', 'master_translate'],
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		custom_background = "cali_william_evening_4",
 		text = [ {text = "CALI_WILLIAM_EVENING_4", reqs = []} ],
 		options = [ {
@@ -612,6 +618,8 @@ var data = {
 	cali_william_evening_5 = {
 		image = null,
 		tags = ['dialogue_scene', 'master_translate'],
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		custom_background = "cali_william_evening_5",
 		text = [ {text = "CALI_WILLIAM_EVENING_5", reqs = []} ],
 		options = [ {
