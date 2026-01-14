@@ -4,6 +4,7 @@ var predeterminatedgroups = {
 }
 
 var encounters = {
+	tutorial_skirmish = {unittype = 'randomgroup', unitcode = 'wolves_easy2', bg = 'default', bgm = 'default', win_effects = [], lose_effects = []},
 	wolves_skirmish = {unittype = 'randomgroup', unitcode = 'wolves_easy1', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'skirmish_complete', args = []}], lose_effects = []},
 	rebels_skirmish = {unittype = 'randomgroup', unitcode = 'rebels_small', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'skirmish_complete', args = []}], lose_effects = []},
 	slavers_small = {unittype = 'randomgroup', unitcode = 'slavers_small', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'event_person_acquired', args = []}], lose_effects = []},

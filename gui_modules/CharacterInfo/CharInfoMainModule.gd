@@ -21,7 +21,10 @@ func _ready():
 	#$RemoveButton.connect('pressed',self,'remove',[])
 	input_handler.connect('PortraitUpdate', self, 'update')
 	input_handler.connect('SpellUsed', self, 'update')
+	input_handler.register_btn_source('char_close_button', self, 'tut_get_close_button')
 
+func tut_get_close_button():
+	return $CloseButton
 
 
 func remove():

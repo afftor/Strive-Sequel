@@ -47,6 +47,14 @@ func setup_upgrade(upgrade_id):
 		disabled = true
 		$bg.modulate = color_dict.unlocked
 		$cost.visible = false
+	elif list.is_list_minor() and person.is_in_minor_training():
+		disabled = true
+		set_inactive()
+		if person.get_minor_training_in_progress() == upgrade_id:
+			$bg.modulate = color_dict.avail
+			$cost.text = str(person.get_minor_training_time_left()) + tr('MSLMTURN')
+		else:
+			$bg.modulate = color_dict.lock3
 	elif upgrade_data.has('reqs') and !person.checkreqs(upgrade_data.reqs):
 		disabled = true
 		$bg.modulate = color_dict.lock2
@@ -64,14 +72,6 @@ func setup_upgrade(upgrade_id):
 		if list.is_list_mastery(): tooltip_code = "NOTENOUGHMASTERPOINTS"
 		elif list.is_list_minor(): tooltip_code = "NOTENOUGHGOLD"
 		tooltip_text += "\n"+tr(tooltip_code)
-	elif list.is_list_minor() and person.is_in_minor_training():
-		disabled = true
-		set_inactive()
-		if person.get_minor_training_in_progress() == upgrade_id:
-			$bg.modulate = color_dict.avail
-			$cost.text = str(person.get_minor_training_time_left()) + tr('MSLMTURN')
-		else:
-			$bg.modulate = color_dict.lock3
 	elif list.is_list_minor() and list.minor_training_count >= list.minor_training_max:
 		disabled = true
 		$bg.modulate = color_dict.lock3

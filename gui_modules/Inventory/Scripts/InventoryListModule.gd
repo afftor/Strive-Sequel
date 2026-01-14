@@ -17,6 +17,13 @@ func _ready():
 	$switchstyle.connect('pressed',self, 'switch_container')
 	if input_handler.globalsettings.grid_inventory == false:
 		switch_container()
+	input_handler.register_btn_source('inv_exp_scroll', self, 'tut_get_exp_scroll')
+
+func tut_get_exp_scroll():
+	for item in itemcontainer.get_children():
+		var info = item.get_meta("item", "")
+		if !(info is String) and info.code == 'exp_scroll':
+			return item
 
 func switch_container():
 	if itemcontainer == itemcontainergrid:

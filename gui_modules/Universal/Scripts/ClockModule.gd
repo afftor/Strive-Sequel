@@ -26,6 +26,10 @@ func _ready():
 	globals.connect("update_clock", self, 'update_labels')
 #	$TimeNode/Date.text = "D: " + str(ResourceScripts.game_globals.date)
 #	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
+	input_handler.register_btn_source('finish_turn', self, 'tut_get_finish_turn')
+
+func tut_get_finish_turn():
+	return $TimeNode/HBoxContainer/finish_turn
 
 func hotkey_pressed(number):
 	if input_handler.combat_node != null:

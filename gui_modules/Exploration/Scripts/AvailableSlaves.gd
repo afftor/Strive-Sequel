@@ -6,6 +6,10 @@ func _ready():
 	globals.connecttexttooltip($Hint, tr("CAPTURETOOLTIP"))
 	update()
 
+func tut_register_first_recruit():
+	input_handler.register_btn_source('first_recruit', self, 'tut_get_first_take_btn')
+func tut_get_first_take_btn():
+	return $ScrollContainer/VBoxContainer.get_children()[0].get_node('TakeButton')
 
 func update():
 	if get_parent().get_parent().active_location != null:

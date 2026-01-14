@@ -344,6 +344,16 @@ var questdata = {
 		rewards = 'rq_workers_threat_easy',
 		time_limit = [8,12],
 	},
+	tutorial_threat_easy = {
+		code = 'tutorial_threat_easy',
+		name = tr("WORKERS_THREAT_NAME"),
+		descript = tr("WORKERS_THREAT_DESC"),
+		randomconditions = [{code = 'complete_location', type = ['tutorial_threat_wolves'], difficulty = 'easy', no_autocomplete = true}],
+		unlockreqs = [],
+		reputation = [150,200],
+		rewards = 'rq_workers_threat_easy',
+		time_limit = [8,12],
+	},
 	workers_threat_medium = {
 		code = 'workers_threat_medium',
 		name = tr("WORKERS_THREAT_NAME"),

@@ -16,6 +16,18 @@ func _ready():
 	$Main.connect("pressed", self, "change_type", ["main"])
 	$Minor.connect("pressed", self, "change_type", ["minor"])
 
+func tut_register_minor():
+	input_handler.register_btn_source('journal_minor', self, 'tut_get_minor_btn')
+func tut_register_first_quest():
+	input_handler.register_btn_source('journal_first_quest', self, 'tut_get_first_quest')
+func tut_register_complete():
+	input_handler.register_btn_source('journal_complete', self, 'tut_get_CompleteButton')
+func tut_get_minor_btn():
+	return $Minor
+func tut_get_first_quest():
+	return $ScrollContainer/VBoxContainer.get_children()[0]
+func tut_get_CompleteButton():
+	return $CompleteButton
 
 func change_type(newtype):
 	for i in $ScrollContainer/VBoxContainer.get_children():
@@ -194,6 +206,12 @@ func CompleteReqs():
 	selectedquest.state = 'complete'
 	ResourceScripts.slave_quests.check_faction_rating(selectedquest)
 	globals.text_log_add("quest", tr("QUESTCOMPLETEMESSAGE")+": " + tr(selectedquest.name))
+	#NOTE, that only quest of "complete_location" with flag "no_autocomplet" should use this code
+	#of "unquest_location" and "remove_location". If vice versa, it is an error
+	for i in selectedquest.requirements:
+		if i.code == "complete_location":
+			globals.unquest_location(i.location)
+			globals.remove_location(i.location)
 	Reward()
 
 var char_reqs

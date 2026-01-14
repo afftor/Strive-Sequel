@@ -76,6 +76,54 @@ func _ready():
 	for rl in ['meat', 'fish', 'grain', 'vegetables', 'bread', 'meatsoup', 'curry', 'friedfish', 'fishcakes']:
 		globals.connecttexttooltip(header.get_node('food_' + rl), tr('MATERIAL%sDESCRIPT' % rl.to_upper()))
 	input_handler.connect("mass_select_in_act", self, "off_mass_select_effect")
+	input_handler.register_btn_source("slave_2_line", self, "tut_get_slave_line", null, null, self, 'tut_get_slave_line_rect')
+	input_handler.register_btn_source("daisy_line", self, "tut_get_daisy_line", null, null, self, 'tut_get_daisy_line_rect')
+	input_handler.register_btn_source("ff_meat", self, "tut_get_ff_meat")
+	input_handler.register_btn_source("ff_vegetables", self, "tut_get_ff_vegetables")
+	input_handler.register_btn_source("daisy_waitress", self, "tut_get_daisy_waitress")
+	input_handler.register_btn_source("food_mode", self, "tut_get_food_mode")
+	input_handler.register_btn_source("default_mode", self, "tut_get_default_mode")
+	input_handler.register_btn_source("service_mode", self, "tut_get_service_mode")
+
+func tut_get_slave_line():
+	for line in SlaveContainer.get_children():
+		if line.get_meta('slave').get_stat('slave_class') == 'servant':
+			return line
+func tut_get_slave_line_rect():
+	var check_rect
+	for line in SlaveContainer.get_children():
+		if line.get_meta('slave').get_stat('slave_class') == 'servant':
+			check_rect = line.get_global_rect()
+			break
+	check_rect.size.x = 300
+	return check_rect
+func tut_get_daisy_line():
+	for line in SlaveContainer.get_children():
+		if line.get_meta('slave').get_stat('unique') == 'daisy':
+			return line
+func tut_get_daisy_line_rect():
+	var check_rect
+	for line in SlaveContainer.get_children():
+		if line.get_meta('slave').get_stat('unique') == 'daisy':
+			check_rect = line.get_global_rect()
+			break
+	check_rect.size.x = 300
+	return check_rect
+
+func tut_get_ff_meat():
+	return SlaveContainer.get_children()[0].get_node("ff_meat")
+func tut_get_ff_vegetables():
+	return SlaveContainer.get_children()[0].get_node("ff_vegetables")
+func tut_get_daisy_waitress():
+	var line = tut_get_daisy_line()
+	return line.get_node("rule_waitress")
+
+func tut_get_food_mode():
+	return modes.get_node("food")
+func tut_get_default_mode():
+	return modes.get_node("default")
+func tut_get_service_mode():
+	return modes.get_node("brothel")
 
 func off_mass_select_effect():
 	mass_select_press_effect = null

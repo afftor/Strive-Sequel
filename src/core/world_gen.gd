@@ -727,7 +727,7 @@ func make_quest_location(code):
 
 func make_repeatable_quest_location(quest,area,req):
 	var locationdata = {}
-	locationdata.id = "L" + str(ResourceScripts.game_world.locationcounter)
+	locationdata.id = "L" + str(ResourceScripts.game_world.locationcounter)#is it valid?
 	ResourceScripts.game_world.locationcounter += 1
 	locationdata = make_location(req.type, area)
 	req.locationname = locationdata.name
@@ -739,7 +739,11 @@ func make_repeatable_quest_location(quest,area,req):
 			for i in locationdata.events:
 				locationdata.scriptedevents.append(i.duplicate(true))
 			locationdata.events.clear()
-			locationdata.scriptedevents.append({trigger = 'finish_combat', event = 'finish_quest_location', reqs = [], args = {id = quest.id, source = quest.source, area = quest.area}})
+			if req.has("no_autocomplete"):
+				locationdata.scriptedevents.append({trigger = 'finish_combat', event = 'mark_quest_location_completed', reqs = [], args = {id = quest.id}})
+			else:
+				locationdata.scriptedevents.append({trigger = 'finish_combat', event = 'finish_quest_location', reqs = [], args = {id = quest.id, source = quest.source, area = quest.area}})
+			
 		#match i.code:
 			#'eventlocationquest':
 #				var data = event_locations_data[i.type].duplicate(true)

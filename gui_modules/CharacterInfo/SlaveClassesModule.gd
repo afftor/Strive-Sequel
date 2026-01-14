@@ -52,6 +52,31 @@ func _ready():
 		newlabel.show()
 		newvalue.show()
 	
+	input_handler.register_btn_source('class_fighter', self, 'tut_get_class_fighter')
+	input_handler.register_btn_source('class_unlock', self, 'tut_get_unlock')
+	input_handler.register_btn_source('mastery_leadership', self, 'tut_get_leadership')
+	input_handler.register_btn_source('mastery_add_point', self, 'tut_get_AddPoint')
+	input_handler.register_btn_source('mastery_add_point2', self, 'tut_get_AddPoint2')
+	input_handler.register_btn_source('mastery_add_point_highlight', self, null, null, null, self, "tut_get_AddPoint_highlight")
+
+func tut_get_class_fighter():
+	for btn in $ScrollContainer/GridContainer.get_children():
+		if btn.get_meta('class_code', '') == 'fighter':
+			return btn
+func tut_get_unlock():
+	return $ClassPanel/Unlock
+func tut_get_leadership():
+	for btn in $MasteryPanel/Categories2.get_children():
+		if btn.get_meta('mastery', '') == 'leadership':
+			return btn
+func tut_get_AddPoint():
+	return $MasteryPanel/AddPoint
+func tut_get_AddPoint_highlight():
+	var res_rect = tut_get_AddPoint().get_global_rect()
+	res_rect.end = tut_get_AddPoint2().get_global_rect().end
+	return res_rect
+func tut_get_AddPoint2():
+	return $MasteryPanel/AddPoint2
 
 func SkillBookButtonPress():
 	$SkillBook.activecharacter = person

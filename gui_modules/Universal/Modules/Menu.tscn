@@ -136,13 +136,10 @@ stretch_mode = 6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 804.0
-margin_top = 229.0
-margin_right = 1149.0
-margin_bottom = 1005.0
+margin_top = 202.0
+margin_right = 1456.0
+margin_bottom = 1076.0
 custom_constants/separation = 8
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="continuebutton" type="Button" parent="VBoxContainer"]
 margin_left = 6.0
@@ -179,11 +176,31 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="tutorialbutton" type="Button" parent="VBoxContainer"]
+margin_left = 12.0
+margin_top = 196.0
+margin_right = 639.0
+margin_bottom = 286.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
+custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+toggle_mode = true
+text = "MENUTUTORIAL"
+__meta__ = {
+"_editor_description_": ""
+}
+
 [node name="loadbutton" type="Button" parent="VBoxContainer"]
 margin_left = 102.0
-margin_top = 196.0
+margin_top = 294.0
 margin_right = 550.0
-margin_bottom = 286.0
+margin_bottom = 384.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
@@ -201,9 +218,9 @@ __meta__ = {
 
 [node name="optionsbutton" type="Button" parent="VBoxContainer"]
 margin_left = 43.0
-margin_top = 294.0
+margin_top = 392.0
 margin_right = 608.0
-margin_bottom = 384.0
+margin_bottom = 482.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
@@ -221,9 +238,9 @@ __meta__ = {
 
 [node name="creditsbutton" type="Button" parent="VBoxContainer"]
 margin_left = 48.0
-margin_top = 392.0
+margin_top = 490.0
 margin_right = 603.0
-margin_bottom = 482.0
+margin_bottom = 580.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
@@ -241,9 +258,9 @@ __meta__ = {
 
 [node name="modsbutton" type="Button" parent="VBoxContainer"]
 margin_left = 98.0
-margin_top = 490.0
+margin_top = 588.0
 margin_right = 554.0
-margin_bottom = 580.0
+margin_bottom = 678.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
@@ -261,9 +278,9 @@ __meta__ = {
 
 [node name="gallery" type="Button" parent="VBoxContainer"]
 margin_left = 33.0
-margin_top = 588.0
+margin_top = 686.0
 margin_right = 619.0
-margin_bottom = 678.0
+margin_bottom = 776.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
@@ -281,9 +298,9 @@ __meta__ = {
 
 [node name="quitbutton" type="Button" parent="VBoxContainer"]
 margin_left = 115.0
-margin_top = 686.0
+margin_top = 784.0
 margin_right = 537.0
-margin_bottom = 776.0
+margin_bottom = 874.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )

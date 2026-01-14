@@ -198,6 +198,8 @@ var return_location = null
 func _input(event):
 	if !visible:
 		return
+	if input_handler.hard_tutorial_active:#TEMPORAL!!! Fix _input order bug for hard-tutorial!
+		return
 	if (event.is_action_pressed("ESC") || event.is_action_released("RMB")):
 		if to_loc != null:
 			reset_to()
@@ -233,7 +235,49 @@ func _ready():#2add button connections
 	$InfoPanel/Forget.connect("pressed", self, "forget_location")
 #	match_state()
 	input_handler.connect("mass_select_in_act", self, "off_mass_select_effect")
+	input_handler.register_btn_source('travel_master', self, 'tut_get_master', null, null, self, 'tut_get_master_rect')
+	input_handler.register_btn_source('travel_servant', self, 'tut_get_servant', null, null, self, 'tut_get_servant_rect')
+	input_handler.register_btn_source('travel_send', self, 'tut_get_send')
+	input_handler.register_btn_source('travel_to_loc', self, 'tut_get_location')
+	input_handler.register_btn_source('travel_confirm', self, 'tut_get_send_confirm')
+	input_handler.register_btn_source('travel_back', self, 'tut_get_back_btn')
 
+func tut_get_master():
+	return tut_get_chara(ResourceScripts.game_party.get_unique_slave('tutorial_master'))
+func tut_get_master_rect():
+	var btn = tut_get_master()
+	var rect = btn.get_global_rect()
+	rect.end.x = btn.get_node('group').rect_global_position.x
+	return rect
+func tut_get_servant():
+	return tut_get_chara(ResourceScripts.game_party.get_unique_slave('tutorial_servant'))
+func tut_get_servant_rect():
+	var btn = tut_get_servant()
+	var rect = btn.get_global_rect()
+	rect.end.x = btn.get_node('group').rect_global_position.x
+	return rect
+func tut_get_chara(character):
+	for loc_cat in $FromLocList/LocScroll/LocCatList.get_children():
+		for loc_group in loc_cat.get_node('offset/LocGroupList').get_children():
+			for btn in loc_group.get_node('offset/LocList').get_children():
+				if btn.get_meta('character', "") == character.id:
+					return btn
+func tut_get_send():
+	return $FromLocList/Sendbutton
+func tut_get_location():
+	var loc_id
+	for id in ResourceScripts.game_world.areas['plains'].questlocations:
+		if ResourceScripts.game_world.areas['plains'].questlocations[id].code == 'tutorial_threat_wolves':
+			loc_id = id
+			break
+	for loc_cat in $ToLocList/LocScroll/LocCatList.get_children():
+		for btn in loc_cat.get_node('offset/LocList').get_children():
+			if btn.get_meta('location', "") == loc_id:
+				return btn
+func tut_get_send_confirm():
+	return $InfoPanel/Sendbutton
+func tut_get_back_btn():
+	return $Back
 
 func forget_location():
 	input_handler.get_spec_node(

@@ -13,6 +13,10 @@ var silently_hide_codes = ['is_at_location', 'in_combat_party']
 
 func _ready():
 	hide_pretenders_btn.connect("pressed", self, "on_hide_pretenders_press")
+	input_handler.register_btn_source('slave_select', self, 'tut_get_slave_btn')
+
+func tut_get_slave_btn():
+	return slave_btn_cont.get_children()[0]
 
 func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = null):
 	target_func = targetfunc

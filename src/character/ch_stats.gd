@@ -1172,7 +1172,7 @@ func process_chardata(chardata, unique = false):
 	if unique:
 		 statlist.unique = chardata.code
 	for i in chardata:
-		if !(i in ['code', 'slave_class', 'tags','sex_traits', 'sex_skills', 'personality', 'training_disposition', 'blocked_training_traits', 'traits', 'food_like', 'food_hate', 'classes', 'skills']):
+		if !(i in ['code', 'slave_class', 'tags','sex_traits', 'sex_skills', 'personality', 'training_disposition', 'blocked_training_traits', 'traits', 'food_like', 'food_hate', 'classes', 'skills', 'mastery']):
 			var st_data = statdata.statdata[i]
 			if st_data.direct:
 				update_stat(i, chardata[i], 'set')

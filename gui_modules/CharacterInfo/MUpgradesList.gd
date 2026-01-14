@@ -25,6 +25,13 @@ var minor_training_max = 0
 
 func _ready():
 	gather_data()
+	if is_list_minor():
+		input_handler.register_btn_source('etiquette', self, 'tut_get_etiquette')
+
+func tut_get_etiquette():
+	for traning in get_children():
+		if traning.get_meta("code") == "etiquette":
+			return traning
 
 func set_person(new_person):
 	person = new_person

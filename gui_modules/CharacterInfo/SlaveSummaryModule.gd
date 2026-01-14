@@ -54,6 +54,10 @@ func _ready():
 #	$GridContainer/SiblingsButton.connect("pressed", self, "open_siblings")
 #	$GridContainer/GearButton.connect("pressed", self, "open_gear")
 	$VBoxContainer2/TextureRect2/Exp.connect("pressed", self, "open_skills")
+	input_handler.register_btn_source('leveling_button', self, 'tut_get_leveling_button')
+
+func tut_get_leveling_button():
+	return leveling_button
 
 func leveling():
 	open_skills()

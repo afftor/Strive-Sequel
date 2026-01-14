@@ -9,12 +9,12 @@ func _ready():
 	gui_controller.add_close_button($saveloadpanel)
 	gui_controller.add_close_button($Options)
 	gui_controller.add_close_button($Credits)
-	var buttonlist = ['continueb','newgame','loadwindow','options', 'credits', 'mods']
+	var buttonlist = ['continueb','newgame', 'tutorial', 'loadwindow','options', 'credits', 'mods']
 	$version.text = "ver. " + globals.gameversion
 	input_handler.CurrentScene = self
 	#input_handler.StopMusic()
 	check_last_save()
-	for i in range(0,6):
+	for i in range(0,7):
 		$VBoxContainer.get_child(i).connect("toggled",self,buttonlist[i], [$VBoxContainer.get_child(i)])
 		#input_handler.ConnectSound($VBoxContainer.get_child(i), 'button_click', 'button_up')
 	$VBoxContainer/quitbutton.connect("pressed", self, "quit")
@@ -266,6 +266,23 @@ func start_game_confirm():
 	gui_controller.windows_opened.clear()
 	self.queue_free()
 
+func tutorial(pressed, pressed_button):
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'tutorial_confirm', tr('STARTTUTORIAL')])
+
+func tutorial_confirm():
+	ResourceScripts.game_world.make_world()
+	ResourceScripts.game_globals.original_version = globals.gameversion
+	ResourceScripts.game_progress.intro_tutorial_seen = true
+	get_node("/root").remove_child(self)
+	input_handler.ChangeScene('mansion')
+	yield(globals, 'scene_changed')
+	
+	input_handler.activate_hard_tutorial()
+	input_handler.hard_tutorial.prepare_general_tut()
+	input_handler.hard_tutorial.start_tutorial('general')
+	
+	gui_controller.windows_opened.clear()
+	self.queue_free()
 
 func session_setting(arg):
 	input_handler.globalsettings[arg] = !input_handler.globalsettings[arg]

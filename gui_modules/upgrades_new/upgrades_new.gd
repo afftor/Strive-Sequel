@@ -30,7 +30,13 @@ func _ready():
 	$description/Confirm.connect("pressed", self, "add_upgrade_to_queue", [])
 	globals.connecttexttooltip($description/workunits, tr("TOOLTIPPROGRESSREQUIRED"))
 	globals.connecttexttooltip($TaxLabel, tr("TOOLTIPTAX"))
+	input_handler.register_btn_source('upgrade_confirm', self, 'tut_get_confirm')
+	input_handler.register_btn_source('upgrade_close_button', self, 'tut_get_closebutton')
 
+func tut_get_confirm():
+	return $description/Confirm
+func tut_get_closebutton():
+	return closebutton
 
 func show():
 	gui_controller.clock.visible = false

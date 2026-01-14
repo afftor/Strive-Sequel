@@ -1426,6 +1426,13 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'wolves_skirmish_start', args = []}]
 		}
 	],
+	tutorial_threat_wolves = [
+		{
+			text = tr("BASIC_THREAT_WOLVES1"),
+			reqs = [],
+			args = [{code = 'start_event', data = 'tutorial_wolves_start', args = []}]
+		}
+	],
 	basic_threat_rebels = [
 		{
 			text = tr("BASIC_THREAT_REBELS1"), 

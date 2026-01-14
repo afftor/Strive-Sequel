@@ -17,7 +17,10 @@ func _ready():
 		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
 	globals.connect("hour_tick", self, "show_slave_info")
 	input_handler.connect("EventFinished", self, "show_slave_info")
+	input_handler.register_btn_source("char_info", self, "tut_get_info_btn")
 
+func tut_get_info_btn():
+	return $CharacterInfoButton
 
 func open_char_class_info():
 	if gui_controller.slavepanel == null:

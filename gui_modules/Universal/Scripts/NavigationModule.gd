@@ -14,6 +14,32 @@ func _ready():
 	$travelbutton.connect('pressed', self, 'open_travel')
 	screen.connect('pressed', self, 'toggle_drop_list', [false])
 
+func tut_register_aliron_btn():
+	input_handler.register_btn_source('aliron_btn', self, 'tut_get_aliron')
+func tut_register_mansion_btn():
+	input_handler.register_btn_source('mansion_btn', self, 'tut_get_mansion')
+func tut_register_travel_btn():
+	input_handler.register_btn_source('travel_btn', self, 'tut_get_travelbutton')
+func tut_register_wolves_btn():
+	input_handler.register_btn_source('quest_loc_nav_btn', self, 'tut_get_threat_wolves')
+func tut_get_aliron():
+	for btn in $NavigationContainer/AreaSelection.get_children():
+		if btn.get_meta("data", "") == 'aliron':
+			return btn
+func tut_get_mansion():
+	return $NavigationContainer/AreaSelection.get_children()[0]
+func tut_get_travelbutton():
+	return $travelbutton
+func tut_get_threat_wolves():
+	var loc_id
+	for id in ResourceScripts.game_world.areas['plains'].questlocations:
+		if ResourceScripts.game_world.areas['plains'].questlocations[id].code == 'tutorial_threat_wolves':
+			loc_id = id
+			break
+	for btn in $NavigationContainer/AreaSelection.get_children():
+		if btn.get_meta("data", "") == loc_id:
+			return btn
+
 func open_travel():
 	var map = gui_controller.mansion.get_node("map")
 	if gui_controller.current_screen == gui_controller.mansion:
