@@ -448,7 +448,8 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [
 				{code = 'progress_quest', value = 'cali_taming_quest', stage = 'stage7'},
-				{code = 'remove_quest_location', value = 'quest_dungeon_cali_grove'},
+				{code = "set_completed_active_location"}
+#				{code = 'remove_quest_location', value = 'quest_dungeon_cali_grove'},
 			]
 		},  ]
 	},
@@ -518,7 +519,8 @@ var data = {
 			bonus_effects = [{code = 'progress_quest', value = 'cali_taming_quest', stage = 'stage9'},
 			{code = 'money_change', operant = '-', value = 500},
 			{code = "update_guild"},
-			{code = 'remove_quest_location', value = 'quest_dungeon_cali_grove'},
+			{code = "set_completed_active_location"},
+#			{code = 'remove_quest_location', value = 'quest_dungeon_cali_grove'},
 			{code = 'add_timed_event', args = [{type = 'action_to_date', date = [2,2], hour = 1, action = 'quest'}], value = {quest = 'cali_taming_quest', stage = 'stage10'}}]
 		}, ]
 	},

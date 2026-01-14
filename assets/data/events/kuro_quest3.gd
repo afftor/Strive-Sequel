@@ -1288,9 +1288,12 @@ var data = {
 						value = "kuro_quest_3"
 					},
 					{
-						code = "remove_quest_location",
-						value = "quest_dungeon_kuro3"
+						code = "set_completed_active_location"
 					}
+#					{
+#						code = "remove_quest_location",
+#						value = "quest_dungeon_kuro3"
+#					}
 				]
 			}
 		]
@@ -1397,9 +1400,12 @@ var data = {
 						value = "kuro_quest_3"
 					},
 					{
-						code = "remove_quest_location",
-						value = "quest_dungeon_kuro3"
+						code = "set_completed_active_location"
 					}
+#					{
+#						code = "remove_quest_location",
+#						value = "quest_dungeon_kuro3"
+#					}
 				]
 			}
 		],
@@ -1451,9 +1457,12 @@ var data = {
 						value = "kuro_quest_3"
 					},
 					{
-						code = "remove_quest_location",
-						value = "quest_dungeon_kuro3"
+						code = "set_completed_active_location"
 					}
+#					{
+#						code = "remove_quest_location",
+#						value = "quest_dungeon_kuro3"
+#					}
 				]
 			}
 		],
@@ -1498,9 +1507,12 @@ var data = {
 						value = "kuro_quest_3"
 					},
 					{
-						code = "remove_quest_location",
-						value = "quest_dungeon_kuro3"
+						code = "set_completed_active_location"
 					}
+#					{
+#						code = "remove_quest_location",
+#						value = "quest_dungeon_kuro3"
+#					}
 				]
 			}
 		]
