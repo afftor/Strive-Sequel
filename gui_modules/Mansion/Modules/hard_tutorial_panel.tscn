@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -8,6 +8,10 @@
 [ext_resource path="res://assets/images/buttons/main screen/speednorm2.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=7]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Panel_Square.tres" type="StyleBox" id=8]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_pressed.png" type="Texture" id=9]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_hover.png" type="Texture" id=10]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor.png" type="Texture" id=11]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/ConfirmWindowTheme.tres" type="Theme" id=12]
 
 [sub_resource type="StyleBoxFlat" id=1]
 draw_center = false
@@ -123,3 +127,76 @@ texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 4 )
 expand = true
 stretch_mode = 4
+
+[node name="abort_panel" type="Popup" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -262.0
+margin_top = -119.5
+margin_right = 262.0
+margin_bottom = 119.5
+theme = ExtResource( 12 )
+popup_exclusive = true
+
+[node name="RichTextLabel" type="Label" parent="abort_panel"]
+margin_left = 53.0
+margin_top = 34.9474
+margin_right = 477.0
+margin_bottom = 138.947
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "ABORTTUTORIAL"
+align = 1
+
+[node name="TextureRect" type="Panel" parent="abort_panel/RichTextLabel"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -53.0
+margin_top = -35.0
+margin_right = 47.0
+margin_bottom = 100.0
+
+[node name="ButtonL" type="TextureButton" parent="abort_panel/RichTextLabel/TextureRect"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 26.0
+margin_top = -74.9474
+margin_right = 236.0
+margin_bottom = -16.9474
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="abort_panel/RichTextLabel/TextureRect/ButtonL"]
+margin_left = 12.0
+margin_right = 202.0
+margin_bottom = 58.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "YES"
+align = 1
+valign = 1
+
+[node name="ButtonR" type="TextureButton" parent="abort_panel/RichTextLabel/TextureRect"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -233.0
+margin_top = -74.9474
+margin_right = -23.0
+margin_bottom = -16.9474
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="abort_panel/RichTextLabel/TextureRect/ButtonR"]
+margin_left = 10.0
+margin_right = 201.0
+margin_bottom = 58.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "NO"
+align = 1
+valign = 1

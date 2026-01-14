@@ -198,6 +198,8 @@ var return_location = null
 func _input(event):
 	if !visible:
 		return
+	if input_handler.hard_tutorial_active:#TEMPORAL!!! Fix _input order bug for hard-tutorial!
+		return
 	if (event.is_action_pressed("ESC") || event.is_action_released("RMB")):
 		if to_loc != null:
 			reset_to()

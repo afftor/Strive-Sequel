@@ -385,9 +385,9 @@ func gather_skills_effects():
 func _input(event):
 	if hard_tutorial_active:
 		var pass_event = false
-		if event.is_action_pressed("ESC") and !hard_tutorial.in_abort:
-			hard_tutorial.abort_tutorial()
 		if !hard_tutorial.active_btns.empty():
+			if event.is_action_pressed("ESC") and !hard_tutorial.is_in_abort():
+				hard_tutorial.abort_tutorial()
 			pass_event = event is InputEventMouseMotion
 			if event.is_action_released("LMB") or event.is_action_pressed("LMB"):
 				for btn_name in hard_tutorial.active_btns:

@@ -5,16 +5,28 @@ onready var curtain1 = $highlight/highlight1
 onready var curtain2 = $highlight/highlight2
 onready var curtain3 = $highlight/highlight3
 onready var curtain4 = $highlight/highlight4
+onready var abort_yes_btn = $abort_panel/RichTextLabel/TextureRect/ButtonL
+onready var abort_no_btn = $abort_panel/RichTextLabel/TextureRect/ButtonR
 var additinal_borders = []
 
 func _ready():
 	input_handler.register_btn_source("tut_panel_next", self, "get_next_btn")
 	input_handler.register_btn_source("tut_full_screen", self, "get_full_screen")
+	input_handler.register_btn_source("abort_yes", self, "get_abort_yes")
+	input_handler.register_btn_source("abort_no", self, "get_abort_no")
 
 func get_next_btn():
 	return next_btn
 func get_full_screen():
 	return self
+func get_abort_yes():
+	return abort_yes_btn
+func get_abort_no():
+	return abort_no_btn
+
+func connect_btns(parent):
+	abort_yes_btn.connect("pressed", parent, "abort_tutorial_confirm")
+	abort_no_btn.connect("pressed", parent, "withdraw_abort")
 
 func show_tut(txt, pos):
 	$panel/Label.bbcode_text = txt
@@ -85,3 +97,12 @@ func next_btn_on():
 func next_btn_off():
 	next_btn.hide()
 
+func ask_abort():
+	raise()
+	$abort_panel.popup()
+
+func hide_abort():
+	$abort_panel.hide()
+
+func is_in_abort():
+	return $abort_panel.visible

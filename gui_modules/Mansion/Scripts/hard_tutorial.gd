@@ -3,7 +3,7 @@ extends Reference
 var active_btns = {
 #	name = btn
 }
-var in_abort = false
+var temp_active_btns
 
 #var btns = {
 #	#name = {source, get_btn_func, rect_obj, rect_func, act_obj, act_func}
@@ -223,8 +223,7 @@ var tutorials = {
 			buttons = ['char_close_button'],
 			text = 'Take quest for "Trouble Solving"',
 			panel_pos = Vector2(733,150)
-		},
-		{
+		},{
 			buttons = ['aliron_btn'],
 			text = 'Take quest for "Trouble Solving"',
 			panel_pos = Vector2(733,150)
@@ -375,24 +374,17 @@ var tutorials = {
 		},
 	]
 }
-var on_exit_step = {
-	buttons = ['alert_panel_yes', 'alert_panel_no'],
-	dont_listen = ['alert_panel_yes', 'alert_panel_no'],
-	no_highlight = true
-}
 var cur_tut
 var cur_step = -1
-var cur_step_dict
+var cur_dont_listen
+var temp_cur_dont_listen
 var multiple_listeners = false
 var tut_panel
 
 func _init():
 	tut_panel = input_handler.get_spec_node(input_handler.NODE_HARD_TUTORIAL_PANEL)
 	tut_panel.hide()
-
-#func _notification(what):
-#	if what == NOTIFICATION_PREDELETE:
-#		print("freed!")
+	tut_panel.connect_btns(self)
 
 func get_btns():
 	return input_handler.hard_tutorial_btns
@@ -423,14 +415,14 @@ func has_custom_activation(btn_name):
 func custom_pressed(btn_name):
 #	if !has_custom_activation(btn_name):#done externally
 #		return
-	if cur_step_dict.has('dont_listen') and (btn_name in cur_step_dict.dont_listen):
+	if cur_dont_listen != null and (btn_name in cur_dont_listen):
 		return
 	var btns = get_btns()
 	btns[btn_name].act_obj.get_ref().call(btns[btn_name].act_func)
 	btn_truly_pressed()
 
 func try_connect_pressed(btn_name):
-	if cur_step_dict.has('dont_listen') and (btn_name in cur_step_dict.dont_listen):
+	if cur_dont_listen != null and (btn_name in cur_dont_listen):
 		return
 #	if has_custom_activation(btn_name):#done externallys
 #		return
@@ -462,7 +454,7 @@ func stop_tut():
 func next_tut_step():
 	if multiple_listeners:
 		multiple_listeners = false
-		for sig_btn_name in cur_step_dict.listen:#can't have 'multiple_listeners' and no 'listen'
+		for sig_btn_name in tutorials[cur_tut][cur_step].listen:#can't have 'multiple_listeners' and no 'listen'
 			var btn = get_btns()[sig_btn_name]
 			var confirm_signal = 'pressed'
 			if btn.has('conf_signal'):
@@ -474,10 +466,7 @@ func next_tut_step():
 	if tutorials[cur_tut].size() <= cur_step:
 		stop_tut()
 		return
-	set_tut_step(tutorials[cur_tut][cur_step])
-	
-func set_tut_step(step_info):
-	cur_step_dict = step_info
+	var step_info = tutorials[cur_tut][cur_step]
 	active_btns.clear()
 	if step_info.has('delay'):
 		yield(input_handler.get_tree().create_timer(step_info.delay), "timeout")
@@ -508,6 +497,10 @@ func set_tut_step(step_info):
 			if btn.has('conf_signal'):
 				confirm_signal = btn.conf_signal
 			btn.source.get_ref().connect(confirm_signal, self, "btn_truly_pressed", [], CONNECT_ONESHOT)
+	if step_info.has('dont_listen'):
+		cur_dont_listen = step_info.dont_listen
+	else:
+		cur_dont_listen = null
 	if step_info.has("ban_mass_select"):
 		input_handler.stop_mass_select()
 	if step_info.has("tut_func"):
@@ -521,19 +514,28 @@ func add_combat_reward_char():
 	input_handler.combat_node.set_external_reward_chars([newslave.id])
 
 func abort_tutorial():
-	input_handler.get_spec_node(input_handler.NODE_YESORNOPANEL, [self, 'abort_tutorial_confirm', 'withdraw_abort', tr('ABORTTUTORIAL')])
-	tut_panel.highlight_off()
-	in_abort = true
-	set_tut_step(on_exit_step)
+	tut_panel.ask_abort()
+	temp_active_btns = active_btns.duplicate()
+	temp_cur_dont_listen = cur_dont_listen
+	active_btns.clear()
+	activate_btn('abort_yes')
+	activate_btn('abort_no')
+	cur_dont_listen = ['abort_yes', 'abort_no']
 
 func abort_tutorial_confirm():
-	in_abort = false
+	tut_panel.hide_abort()
 	stop_tut()
 
 func withdraw_abort():
-#	yield(input_handler.get_tree(), 'idle_frame')
-	set_tut_step(tutorials[cur_tut][cur_step])
-	in_abort = false
+	tut_panel.hide_abort()
+	active_btns = temp_active_btns
+	cur_dont_listen = temp_cur_dont_listen
+	temp_active_btns = null
+	temp_cur_dont_listen = null
+
+func is_in_abort():
+	return tut_panel.is_in_abort()
+
 
 func prepare_general_tut():
 	globals.common_effects([{code = 'make_story_character', value = 'tutorial_master'}])
