@@ -418,9 +418,12 @@ var data = {
 						value = "ana_soldier_left"
 					},
 					{
-						code = "remove_quest_location",
-						value = "quest_ashen_ridge"
+						code = "set_completed_active_location"
 					}
+#					{
+#						code = "remove_quest_location",
+#						value = "quest_ashen_ridge"
+#					}
 				]
 			}
 		]
@@ -557,9 +560,12 @@ var data = {
 						stage = "stage5"
 					},
 					{
-						code = "remove_quest_location",
-						value = "quest_ashen_ridge"
+						code = "set_completed_active_location"
 					}
+#					{
+#						code = "remove_quest_location",
+#						value = "quest_ashen_ridge"
+#					}
 				]
 			}
 		]
@@ -1767,9 +1773,12 @@ var data = {
 						stage = "stage13"
 					},
 					{
-						code = "remove_quest_location",
-						value = "quest_dungeon_ana_fort"
+						code = "set_completed_active_location"
 					}
+#					{
+#						code = "remove_quest_location",
+#						value = "quest_dungeon_ana_fort"
+#					}
 				]
 			}
 		]

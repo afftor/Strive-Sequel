@@ -41,8 +41,12 @@ var data = {
 		common_effects = [{code = 'add_timed_event', value = "duncans_declaration_start", 
 		args = [{type = 'add_to_date', date = [3,3], hour = 1}]}], 
 		options = [ {
-			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3, type = 'next_dialogue', bonus_effects = [{code = 'complete_quest', value = 'princess_search'}, {code = "update_guild"},
-			{code = 'remove_quest_location', value = 'quest_final_operation_location'}]
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3, type = 'next_dialogue', bonus_effects = [
+				{code = 'complete_quest', value = 'princess_search'},
+				{code = "update_guild"},
+				{code = "set_completed_active_location"}
+#				{code = 'remove_quest_location', value = 'quest_final_operation_location'}
+			]
 		} ],
 	},
 	
@@ -63,8 +67,12 @@ var data = {
 		common_effects = [{code = 'add_timed_event', value = "guilds_meeting_start", 
 		args = [{type = 'add_to_date', date = [1,1], hour = 1}]}], 
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 3, type = 'next_dialogue', bonus_effects = [{code = 'complete_quest', value = 'princess_search'}, {code = "update_guild"},
-			{code = 'remove_quest_location', value = 'quest_final_operation_location'}]
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 3, type = 'next_dialogue', bonus_effects = [
+				{code = 'complete_quest', value = 'princess_search'}, 
+				{code = "update_guild"},
+				{code = "set_completed_active_location"}
+#				{code = 'remove_quest_location', value = 'quest_final_operation_location'}
+				]
 		} ],
 	},
 	

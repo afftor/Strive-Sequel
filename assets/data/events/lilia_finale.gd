@@ -109,9 +109,12 @@ var data = {
 						stage = "stage3"
 					},
 					{
-						code = "remove_quest_location",
-						value = "quest_lilia_ancient_jungle_location"
+						code = "set_completed_active_location"
 					}
+#					{
+#						code = "remove_quest_location",
+#						value = "quest_lilia_ancient_jungle_location"
+#					}
 				]
 			}
 		]
@@ -929,9 +932,12 @@ var data = {
 #						stage = "stage6"
 					},
 					{
-						code = "remove_quest_location",
-						value = "quest_lilia_dungeon_grove"
+						code = "set_completed_active_location"
 					}
+#					{
+#						code = "remove_quest_location",
+#						value = "quest_lilia_dungeon_grove"
+#					}
 				]
 			}
 		]
@@ -1023,9 +1029,12 @@ var data = {
 						stage = "stage7"
 					},
 					{
-						code = "remove_quest_location",
-						value = "quest_lilia_dungeon_grove"
+						code = "set_completed_active_location"
 					}
+#					{
+#						code = "remove_quest_location",
+#						value = "quest_lilia_dungeon_grove"
+#					}
 				]
 			}
 		]

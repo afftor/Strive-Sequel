@@ -989,12 +989,15 @@ var data = {
 		],
 		common_effects = [
 			{
-				code = "return_to_mansion"
+				code = "set_completed_active_location"
 			},
 			{
-				code = "remove_quest_location",
-				value = "quest_cult_parentbase"
+				code = "return_to_mansion"
 			},
+#			{
+#				code = "remove_quest_location",
+#				value = "quest_cult_parentbase"
+#			},
 			{
 				code = 'affect_unique_character',
 				name = 'kuro',
@@ -1261,12 +1264,15 @@ var data = {
 		],
 		common_effects = [
 			{
-				code = "return_to_mansion"
+				code = "set_completed_active_location"
 			},
 			{
-				code = "remove_quest_location",
-				value = "quest_cult_parentbase"
+				code = "return_to_mansion"
 			},
+#			{
+#				code = "remove_quest_location",
+#				value = "quest_cult_parentbase"
+#			},
 			{
 				code = 'affect_unique_character',
 				name = 'kuro',
