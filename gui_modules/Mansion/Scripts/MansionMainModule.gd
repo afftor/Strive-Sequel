@@ -130,6 +130,11 @@ func _ready():
 	if !ResourceScripts.game_progress.intro_tutorial_seen:
 		$TutorialIntro.show()
 	set_active_person(ResourceScripts.game_party.get_master())
+	$NavigationModule.tut_register_aliron_btn()
+	Journal.tut_register_minor()
+	Journal.tut_register_first_quest()
+	Journal.tut_register_complete()
+
 
 
 

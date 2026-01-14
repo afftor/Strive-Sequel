@@ -50,6 +50,50 @@ func _ready():
 	input_handler.connect("clear_cashed", self, 'clear_cashed')
 	# gui_controller.win_btn_connections_handler(true, $AreaShop, closebutton)
 #	$LocationGui/ce.connect("pressed", input_handler, "interactive_message", ['celena_shrine_find', '', {}])
+	input_handler.register_btn_source('location_master', self, 'tut_get_master')
+	input_handler.register_btn_source('location_servent', self, 'tut_get_servent')
+	input_handler.register_btn_source('location_front_pos1', self, 'tut_get_front1', null, null, null, null, 'dropped')
+	input_handler.register_btn_source('location_front_pos2', self, 'tut_get_front2', null, null, null, null, 'dropped')
+	input_handler.register_btn_source('location_front_pos3', self, 'tut_get_front3', null, null, null, null, 'dropped')
+	input_handler.register_btn_source('location_front_highlight', self, null, null, null, self, "tut_get_front_highlight")
+	input_handler.register_btn_source('location_back_pos1', self, 'tut_get_back1', null, null, null, null, 'dropped')
+	input_handler.register_btn_source('location_back_pos2', self, 'tut_get_back2', null, null, null, null, 'dropped')
+	input_handler.register_btn_source('location_back_pos3', self, 'tut_get_back3', null, null, null, null, 'dropped')
+	input_handler.register_btn_source('location_back_highlight', self, null, null, null, self, "tut_get_back_highlight")
+	input_handler.register_btn_source('location_proceed', self, 'tut_get_first_info_btn')
+	$LocationGui/AvailableSlaves.tut_register_first_recruit()
+	$LocationGui/NavigationModule.tut_register_mansion_btn()
+
+func tut_get_master():
+	for btn in $LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer.get_children():
+		if btn.get('dragdata') != null and btn.dragdata.is_master():
+			return btn
+func tut_get_servent():
+	for btn in $LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer.get_children():
+		if btn.get('dragdata') != null and btn.dragdata.get_stat('slave_class') == 'servant':
+			return btn
+func tut_get_front1():
+	return get_node(positiondict[1])
+func tut_get_front2():
+	return get_node(positiondict[2])
+func tut_get_front3():
+	return get_node(positiondict[3])
+func tut_get_front_highlight():
+	var rect = tut_get_front1().get_global_rect()
+	rect.end = tut_get_front3().get_global_rect().end
+	return rect
+func tut_get_back1():
+	return get_node(positiondict[4])
+func tut_get_back2():
+	return get_node(positiondict[5])
+func tut_get_back3():
+	return get_node(positiondict[6])
+func tut_get_back_highlight():
+	var rect = tut_get_back1().get_global_rect()
+	rect.end = tut_get_back3().get_global_rect().end
+	return rect
+func tut_get_first_info_btn():
+	return $LocationGui/DungeonInfo/ScrollContainer/VBoxContainer.get_children()[0]
 
 
 func clear_cashed():

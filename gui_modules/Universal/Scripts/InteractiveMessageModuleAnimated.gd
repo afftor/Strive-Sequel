@@ -36,7 +36,13 @@ func _ready():
 	cur_text_label = text_label_T1
 	cur_opt_cont = opt_cont_T1
 	#$BackgroundT2/UnhideButton.connect('pressed', self, 'hide_dialogue', ['unhide'])
-	
+	input_handler.register_btn_source('event_opt_1', self, 'tut_get_first_opt')
+	input_handler.register_btn_source('event_opt_2', self, 'tut_get_second_opt')
+
+func tut_get_first_opt():
+	return opt_cont_T1.get_children()[0]
+func tut_get_second_opt():
+	return opt_cont_T1.get_children()[1]
 
 #should be used only at dialogue_window_type==2
 func hide_dialogue(action = "hide"):

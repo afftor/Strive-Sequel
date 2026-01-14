@@ -18,6 +18,13 @@ func _ready() -> void:
 #warning-ignore:return_value_discarded
 	right_btn.connect('pressed', self, 'OnRightButton')
 	bg_panel.connect('resized', self, 'OnBgResized')
+	input_handler.register_btn_source("alert_panel_yes", self, "get_left_btn")
+	input_handler.register_btn_source("alert_panel_no", self, "get_right_btn")
+
+func get_left_btn():
+	return left_btn
+func get_right_btn():
+	return right_btn
 
 func ShowConfirmCancel(TargetNode : Object, \
 					   ConfirmFunction : String, Text : String) -> void:

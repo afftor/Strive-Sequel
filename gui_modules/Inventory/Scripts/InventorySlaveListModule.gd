@@ -2,6 +2,14 @@ extends Panel
 
 var selectedhero
 
+func _ready():
+	input_handler.register_btn_source('inv_master_line', self, 'tut_get_master')
+
+func tut_get_master():
+	var master_name = ResourceScripts.game_party.get_master().get_full_name()
+	for line in $ScrollContainer/VBoxContainer.get_children():
+		if line.get_node("Label").text == master_name:
+			return line
 
 func update():
 	selectedhero = input_handler.interacted_character

@@ -22,6 +22,23 @@ func _ready():
 	$Frame_farm/char_panel/Choose.connect("pressed", self, 'set_to_farm')
 	
 	globals.connecttexttooltip($BrothelRules/boosters/boosterstip, tr("SERVICEBOOSTTOOLTIP"))
+	input_handler.register_btn_source('building_work', self, 'tut_get_building')
+	input_handler.register_btn_source('service_work', self, 'tut_get_servicebutton')
+	input_handler.register_btn_source('daisy_work', self, 'tut_get_daisy_work')
+	input_handler.register_btn_source('close_work', self, 'tut_get_CloseButton')
+
+func tut_get_building():
+	for work in $Resourses/GridContainer.get_children():
+		if work.get_meta('work', {code = ''}).code == 'building':
+			return work
+func tut_get_servicebutton():
+	return servicebutton
+func tut_get_daisy_work():
+	for line in $CharacterList/GridContainer.get_children():
+		if line.get_meta('slave').get_stat('unique') == 'daisy':
+			return line
+func tut_get_CloseButton():
+	return $CloseButton
 
 #func raise_clock():
 #	gui_controller.clock.raise()

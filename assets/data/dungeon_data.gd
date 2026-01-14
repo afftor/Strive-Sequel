@@ -2134,6 +2134,23 @@ var dungeons = {
 		tags = ['quest'],
 	},
 
+	tutorial_threat_wolves = {
+		code = 'tutorial_threat_wolves',
+		type = 'encounter',
+		name = tr("BASIC_THREAT_WOLVES_TEXT"),
+		classname = '',
+		descript = tr("BASIC_THREAT_WOLVES_DESC"),
+		difficulty = 'easy',
+		background = 'cave_1',
+		custom_background = 'combat_cave',
+		enemyarray =  [],
+		eventarray = [],
+		levels = [1,1],
+		resources = '',
+		stages_per_level = [1,1],
+		events = [],
+		tags = [],
+	},
 	basic_threat_wolves = {
 		code = 'basic_threat_wolves',
 		type = 'encounter',

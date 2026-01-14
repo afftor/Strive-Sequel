@@ -18,8 +18,16 @@ func _ready():
 	
 	$slave_quests.connect("pressed", self, "open_slave_quests")
 #	quest_board()
+	input_handler.register_btn_source('quest_btn', self, 'tut_get_quest')
+	input_handler.register_btn_source('quest_accept', self, 'tut_get_AcceptQuest')
 
 
+func tut_get_quest():
+	for btn in $ScrollContainer/VBoxContainer2.get_children():
+		if btn.get_meta("quest", {code = ""}).code == 'tutorial_threat_easy':
+			return btn.get_node("ButtonOverlay")
+func tut_get_AcceptQuest():
+	return $QuestDetails/AcceptQuest
 
 
 func selectcategory(button):

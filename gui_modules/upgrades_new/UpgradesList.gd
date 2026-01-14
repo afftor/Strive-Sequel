@@ -12,6 +12,12 @@ var unit_size = 50
 
 func _ready():
 	gather_data()
+	input_handler.register_btn_source('forge', self, 'tut_get_forge')
+
+func tut_get_forge():
+	for upgrade in get_children():
+		if upgrade.get_meta("code") == "forge":
+			return upgrade
 
 func update_upgrades_tree(tab_n):
 	input_handler.ClearContainer(self)

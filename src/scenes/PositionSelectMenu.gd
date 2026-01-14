@@ -25,6 +25,10 @@ func _ready():
 	
 	for i in positiondict:
 		get_node(positiondict[i]).connect('pressed', self, 'selectfighter', [i])
+	input_handler.register_btn_source('pos_select_confirm', self, 'tut_get_ConfirmButton')
+
+func tut_get_ConfirmButton():
+	return $ConfirmButton
 
 func open():#for default use
 	open_defined(input_handler.active_location.group)

@@ -38,7 +38,11 @@ func _ready():
 	globals.connecttexttooltip($UpgradesPanel/Tooltip_minor, tr("TOOLTIPMINORTRAINING"))
 	
 	update()
+	input_handler.register_btn_source("minor_upg", self, "tut_get_minor_upg")
 
+
+func tut_get_minor_upg():
+	return trainings_selector.get_node("minor_upg")
 
 func toggle_description():
 	$Description.visible = !$Description.visible

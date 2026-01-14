@@ -11,6 +11,19 @@ func _ready():
 	#$VBoxContainer/SexButton.connect("pressed", self, "_button_clicked", ["sex", $VBoxContainer/SexButton])
 	$VBoxContainer/Journal.connect("toggled", self, "open_journal")
 	$VBoxContainer/options.connect("pressed", self, "open_menu")
+	input_handler.register_btn_source('upgrades_button', self, 'tut_get_UpgradesButton')
+	input_handler.register_btn_source('work_button', self, 'tut_get_WorkButton')
+	input_handler.register_btn_source('inventory_button', self, 'tut_get_InventoryButton')
+	input_handler.register_btn_source('journal_button', self, 'tut_get_Journal')
+
+func tut_get_UpgradesButton():
+	return $VBoxContainer/UpgradesButton
+func tut_get_WorkButton():
+	return $VBoxContainer/WorkButton
+func tut_get_InventoryButton():
+	return $VBoxContainer/InventoryButton
+func tut_get_Journal():
+	return $VBoxContainer/Journal
 
 func open_menu():
 	gui_controller.game_menu = input_handler.get_spec_node(input_handler.NODE_GAMEMENU)

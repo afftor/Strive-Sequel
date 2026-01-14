@@ -33,6 +33,10 @@ func _ready():
 	$InventoryListModule.buildinventory()
 	$GridContainer/CharInfoButton.connect("pressed", self, "open_char_info")
 	$GridContainer/MansionButton.connect("pressed", self, "return_to_mansion")
+	input_handler.register_btn_source('inv_close_button', self, 'tut_get_close_button')
+
+func tut_get_close_button():
+	return $CloseButton
 
 
 func open_char_info():

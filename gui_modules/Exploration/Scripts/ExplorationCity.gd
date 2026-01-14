@@ -58,7 +58,14 @@ func _ready():
 	gui_controller.windows_opened.clear()
 	#input_handler.connect("update_itemlist", $AreaShop, 'update_sell_list')
 	input_handler.connect("clear_cashed", self, 'clear_cashed')
+	input_handler.register_btn_source('quest_board', self, 'tut_get_quest_board')
+	nav.tut_register_travel_btn()
+	nav.tut_register_wolves_btn()
 
+func tut_get_quest_board():
+	for btn in AreaActions.get_children():
+		if btn.get_node("Label").text == tr(city_options['quest_board']):
+			return btn
 
 func clear_cashed():
 	active_location = null

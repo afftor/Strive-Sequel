@@ -868,7 +868,7 @@ func get_racial_features(race):
 
 func process_chardata(chardata):
 	for i in chardata:
-		if !(i in ['code', 'slave_class', 'tags','sex_traits', 'sex_skills', 'personality', 'training_disposition', 'blocked_training_traits','traits', 'food_like', 'food_hate', 'classes', 'skills']):
+		if !(i in ['code', 'slave_class', 'tags','sex_traits', 'sex_skills', 'personality', 'training_disposition', 'blocked_training_traits','traits', 'food_like', 'food_hate', 'classes', 'skills', 'mastery']):
 			var st_data = statdata.statdata[i]
 			if !st_data.direct:
 				set_default_value(i, chardata[i])
@@ -878,6 +878,10 @@ func process_chardata(chardata):
 	if chardata.has("traits"):
 		for i in chardata.traits:
 			add_trait(i)
+	if chardata.has("mastery"):
+		for school in chardata.mastery:
+			for i in range(chardata.mastery[school]):
+				upgrade_mastery(school, true)
 
 #masteries
 func reset_mastery():
