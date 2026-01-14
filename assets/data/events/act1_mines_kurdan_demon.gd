@@ -2,7 +2,7 @@ extends Reference
 var data = {
 	pre_final_boss_start = {
 		variations = [ {
-			reqs = [{type = 'decision', value = 'KurdanFollowing', check = true}],
+			reqs = [{type = 'decision', value = 'KurdanFollowing', music = 'intimate_dark', check = true}],
 			image = null, tags = ['dialogue_scene'], character = "demon_female",
 			text = [ {text = "PRE_FINAL_BOSS_START", reqs = [], previous_dialogue_option = 0},
 			{text = "PRE_FINAL_BOSS_1", reqs = [], previous_dialogue_option = 1},
@@ -19,7 +19,7 @@ var data = {
 			} ]
 		},
 			{
-			reqs = [{type = 'decision', value = 'KurdanFollowing', check = false}],
+			reqs = [{type = 'decision', music = 'intimate_dark', value = 'KurdanFollowing', check = false}],
 			image = null, tags = ['dialogue_scene'], character = "demon_female",
 			text = [ {text = "PRE_FINAL_BOSS_START", reqs = [], previous_dialogue_option = 0},
 			{text = "PRE_FINAL_BOSS_1", reqs = [], previous_dialogue_option = 1},

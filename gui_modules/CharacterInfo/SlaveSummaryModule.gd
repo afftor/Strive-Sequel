@@ -182,6 +182,14 @@ func check_date_button():
 
 
 func update_buttons():
+	for i in $Actions/GridContainer.get_children():
+		if i.name != 'Button':
+			i.visible = !selected_person.is_on_quest()
+	$Actions/RichTextLabel.bbcode_text = selected_person.translate(tr("ONQUESTLABEL"))
+	$Actions/RichTextLabel.visible = selected_person.is_on_quest()
+	
+	
+	
 	chat_button.disabled = !unique_dict.has(selected_person.get_stat('unique'))
 	
 	var date_button_data = check_date_button()
@@ -325,7 +333,12 @@ var unique_dict = { #shows available talk characters. Scenes go in order from hi
 			{code = 'daisy_dialogue_start', reqs = []}
 		]
 	},
-	
+	mae = {
+		code = 'mae', 
+		scenes = [
+			{code = 'mae_dialogue_start', reqs = []}
+		]
+	},
 	
 	aire = {
 		code = 'aire', 

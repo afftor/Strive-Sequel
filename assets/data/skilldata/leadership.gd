@@ -32,8 +32,8 @@ var skills = {
 		icon = "res://assets/images/iconsskills/Inspire.png",
 		type = 'combat',
 		ability_type = 'spell',
-		tags = ['buff'],
-		reqs = [],
+		tags = ['buff', 'support'],
+		reqs = [{code = 'has_status', status = 'inspire', check = false}], #or targetreqs, for this is mostly useless after first use
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_t_inspire'})], 
 		cost = {mp = 3},
@@ -56,7 +56,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/Command.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['debuff', 'damage'],
+		tags = ['debuff', 'damage', 'ads'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_hmark', duration = 3})], 
@@ -106,7 +106,7 @@ var effects = {
 		stack = 'inspire',
 		tick_event = variables.TR_TURN_F,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		tags = ['buff'],
+		tags = ['buff', 'inspire'],
 		statchanges = {damage_mod_all = 0.2, armor_add_part = 0.2, mdef_add_part = 0.2},
 		buffs = [
 			{

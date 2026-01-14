@@ -13095,7 +13095,7 @@ Norlan se toma un momento para considerar sus próximas palabras. Lanza una mira
 Amelia: — Qué gran orador eres, Norlan. Veo que finalmente decidiste hacerlo personal.
 
 Norlan: — Basta, Amelia. Te hemos dado mucho tiempo. Tu última declaración está terminada. Ahora procederemos a la votación. No tienes más objeciones, ¿verdad, alcaldesa [name]?""",
-	AMELIA_TRIAL_NORMAL_5 = """Mientras examinas el pasillo, notas que varias caras miran hacia abajo. La persuasión de Noraln ha tenido éxito y la resignación llena el espacio. Incluso aquellos que están a favor de Amelia están empezando a dudar de ella y están considerando ponerse del lado de Norlan. Parece que lo que Amelia había planeado ha fallado. Todas las posibles vías para retrasar o implicar a Norlan se han agotado.
+	AMELIA_TRIAL_NORMAL_5 = """Mientras examinas el pasillo, notas que varias caras miran hacia abajo. La persuasión de Norlan ha tenido éxito y la resignación llena el espacio. Incluso aquellos que están a favor de Amelia están empezando a dudar de ella y están considerando ponerse del lado de Norlan. Parece que lo que Amelia había planeado ha fallado. Todas las posibles vías para retrasar o implicar a Norlan se han agotado.
 
 Pero, ¿podría haber otro ángulo a considerar? La rápida disposición de Norlan a renunciar al puesto de líder del gremio plantea preguntas. ¿Quizás las sospechas de Amelia sobre Norlan estaban fuera de lugar y él no era el que estaba orquestando el complot contra ella? ¿O podría haber otro motivo detrás de las acciones de Norlan?""",
 	AMELIA_TRIAL_NORMAL_5_OPTION_1 = "Estás ocultando algo, Norlan. No dejaré que el consejo termine hasta que descubra de qué se trata.",

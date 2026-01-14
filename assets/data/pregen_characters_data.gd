@@ -1161,11 +1161,11 @@ var unique_sprites = {
 			face_path = "zephyra_wed",
 			unlock_reqs = []
 			},
-		costume_7 = {
+		miko = {
 			name = "Miko",
 			descript = "",
-			path = "zephyra_costume_7_body", 
-			face_path = "zephyra_costume_7",
+			path = "zephyra_miko_body", 
+			face_path = "zephyra_miko",
 			unlock_reqs = []
 			},
 	},
@@ -1297,7 +1297,14 @@ var unique_sprites = {
 			descript = "",
 			path = "heleviel_waitress_body", 
 			face_path = "heleviel_waitress",
-			unlock_reqs = [{type = 'event_seen', check = true, value = 'heleviel_quest_13'}]
+			unlock_reqs = [{type = 'quest_completed', check = true, name = 'heleviel_quest1'}]
+			},
+		christmass = {
+			name = "Christmass",
+			descript = "",
+			path = "heleviel_christmas_body", 
+			face_path = "heleviel_christmas",
+			unlock_reqs = [{type = "event_seen", check = true, value = "heleviel_snowset_start"}]
 			},
 		wed = {
 			name = "Wed",

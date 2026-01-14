@@ -817,8 +817,10 @@ func get_hairs_data():
 			res.hair_base_color_2 = 'blue_1'
 	if statlist.hair_length == 'bald':
 		res.hair_base_length = 'bald'
-		res.hair_assist = ''
-		res.hair_back = ''
+		res.hair_assist = 'no'
+		res.hair_back = 'no'
+		res.hair_assist_length = 'short'
+		res.hair_back_length = 'short'
 	else:
 		match statlist.hair_style:
 			'straight':
@@ -1131,10 +1133,11 @@ func get_sex_features():
 
 
 func set_virginity_data():
-	for i in ['vaginal_virgin', 'anal_virgin', 'mouth_virgin','penis_virgin']:
-		if statlist[i+'_lost'] == 'master':
-			statlist[i+'_lost'] = ResourceScripts.game_party.get_master().id
-			metrics.metrics_partners.append(ResourceScripts.game_party.get_master().id)
+	for i in ['vaginal', 'anal', 'mouth','penis']:
+		if statlist[i+'_virgin_lost'] == 'master':
+			parent.get_ref().take_virginity(i, ResourceScripts.game_party.get_master().id)
+#			statlist[i+'_lost'] = ResourceScripts.game_party.get_master().id
+#			metrics.metrics_partners.append(ResourceScripts.game_party.get_master().id)
 
 
 func add_random_sex_skill():

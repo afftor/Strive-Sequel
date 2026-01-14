@@ -109,9 +109,12 @@ var data = {
 						stage = "stage3"
 					},
 					{
-						code = "remove_quest_location",
-						value = "quest_lilia_ancient_jungle_location"
+						code = "set_completed_active_location"
 					}
+#					{
+#						code = "remove_quest_location",
+#						value = "quest_lilia_ancient_jungle_location"
+#					}
 				]
 			}
 		]
@@ -156,6 +159,7 @@ var data = {
 			"master_translate",
 			"blackscreen_transition_common"
 		],
+		music = "lilia_theme",
 		reqs = [
 
 		],
@@ -313,7 +317,7 @@ var data = {
 								type = "add_to_date",
 								date = [
 									2,
-									4
+									3
 								],
 								hour = 1
 							}
@@ -384,6 +388,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
+		music = "lilia_theme",
 		reqs = [
 
 		],
@@ -549,6 +554,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
+		music = "lilia_theme",
 		reqs = [
 
 		],
@@ -807,6 +813,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
+		music = "lilith_theme",
 		reqs = [
 
 		],
@@ -925,15 +932,19 @@ var data = {
 #						stage = "stage6"
 					},
 					{
-						code = "remove_quest_location",
-						value = "quest_lilia_dungeon_grove"
+						code = "set_completed_active_location"
 					}
+#					{
+#						code = "remove_quest_location",
+#						value = "quest_lilia_dungeon_grove"
+#					}
 				]
 			}
 		]
 	},
 	lilith_good_route_1 = {
 		image = null,
+		music = "lilia_theme",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1018,9 +1029,12 @@ var data = {
 						stage = "stage7"
 					},
 					{
-						code = "remove_quest_location",
-						value = "quest_lilia_dungeon_grove"
+						code = "set_completed_active_location"
 					}
+#					{
+#						code = "remove_quest_location",
+#						value = "quest_lilia_dungeon_grove"
+#					}
 				]
 			}
 		]
@@ -1153,6 +1167,7 @@ var data = {
 	},
 	lilith_good_route_village = {
 		image = null,
+		music = "intimate_dark",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1791,6 +1806,7 @@ var data = {
 	},
 	lilith_set_fairies_free = {
 		image = null,
+		music = "lilia_theme",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1921,6 +1937,7 @@ var data = {
 	},
 	lilith_bad_route_1 = {
 		image = null,
+		music = "lilith_theme",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2093,6 +2110,7 @@ var data = {
 		]
 	},
 	lilith_bad_route_village = {
+		music = "lilia_theme",
 		image = null,
 		tags = [
 			"dialogue_scene",
@@ -2156,6 +2174,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
+		music = "intimate_dark",
 		reqs = [
 
 		],
@@ -2662,6 +2681,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
+		music = "lilia_theme",
 		reqs = [
 
 		],
@@ -2990,6 +3010,7 @@ var data = {
 	lilia_transform_1 = {
 		custom_background = "lilia_transform_1",
 		scene_type = "ero_scene",
+		music = "intimate_dark",
 		save_scene_to_gallery = true,
 		image = null,
 		tags = [
@@ -3264,6 +3285,7 @@ var data = {
 	lilith_blow_1 = {
 		custom_background = "lilith_blow_1",
 		scene_type = "ero_scene",
+		music = "intimate_funny",
 		save_scene_to_gallery = true,
 		unlocked_gallery_seq = "lilith_blow",
 		image = null,
@@ -3427,6 +3449,7 @@ var data = {
 	lilith_ride_1 = {
 		custom_background = "lilith_ride_1",
 		scene_type = "ero_scene",
+		music = "intimate_funny",
 		save_scene_to_gallery = true,
 		unlocked_gallery_seq = "lilith_ride",
 		image = null,

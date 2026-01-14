@@ -183,7 +183,7 @@ func build_posttrain():
 			panel.get_node('icon').texture = load(trdata.icon)
 		else:
 			panel.get_node('icon').texture = trdata.icon
-		globals.connecttexttooltip(panel, person.translate(tr(trdata.descript)))
+		globals.connecttexttooltip(panel, "[center]" +tr(trdata.name) + "[/center]\n" +  person.translate(tr(trdata.descript)))
 	
 	var tmp = person.get_traits_by_tag('training_final')
 	if !tmp.empty():
@@ -196,7 +196,7 @@ func build_posttrain():
 		else:
 			$finished/VBoxContainer/result_frame/icon.texture = trdata.icon
 		$finished/VBoxContainer/result_frame/header_text.text = tr(trdata.name)
-		globals.connecttexttooltip($finished/VBoxContainer/result_frame, tr(trdata.descript))
+		globals.connecttexttooltip($finished/VBoxContainer/result_frame,"[center]" + tr(trdata.name) + "[/center]\n" + tr(trdata.descript))
 	else:
 		$finished/VBoxContainer/result_frame.visible = false
 		$finished/VBoxContainer/select_text.visible = false
@@ -250,8 +250,7 @@ func build_training_servant():
 	else:
 		resistance_text = tr('TRAININGLABELRESISTANCE') % resistance_value
 	$training_servant/resistance/label.text = resistance_text
-	globals.connecttexttooltip($training_servant/resistance, tr("TRAINSERVTOOLTIPRESISTANCE") % [
-		person.get_short_name(), resistance_reduction])
+	globals.connecttexttooltip($training_servant/resistance, tr("TRAINSERVTOOLTIPRESISTANCE") % [person.get_short_name(), resistance_reduction])
 	
 	var loyalty_label = $training_servant/loyalty/label
 	var loyalty_value = person.get_stat('loyalty')
@@ -273,7 +272,7 @@ func build_training_servant():
 			panel.get_node('icon').texture = load(trdata.icon)
 		else:
 			panel.get_node('icon').texture = trdata.icon
-		globals.connecttexttooltip(panel, person.translate(tr(trdata.descript)))
+		globals.connecttexttooltip(panel, "[center]" + tr(trdata.name) + "[/center]\n"+ person.translate(tr(trdata.descript)))
 		if person.check_trait(tr):
 			panel.pressed = true
 		else:
@@ -395,7 +394,7 @@ func build_training_traits():
 			panel.get_node('icon').texture = load(trdata.icon)
 		else:
 			panel.get_node('icon').texture = trdata.icon
-		globals.connecttexttooltip(panel, person.translate(tr(trdata.descript)) +  person.training.build_stored_req_desc(tr))
+		globals.connecttexttooltip(panel, person.translate("[center]" + tr(trdata.name) + "[/center]\n" + tr(trdata.descript) +  person.training.build_stored_req_desc(tr)))
 		panel.get_node('Label').text = str(person.get_training_cost())
 		if person.check_trait(tr):
 			panel.pressed = true

@@ -1049,6 +1049,7 @@ var scenedict = {
 		text = tr('SCENEDAISY_MEET_TEXT'),
 		tags = ['linked_event'],#linked_event means that all options will trigger other events by name instead of generic options like 'close' or 'inspect'
 		image = 'daisystart',
+		music = "daisy_theme",
 		opp_characters = [{type = 'pregen', value = 'Daisy'}],
 		options = [
 		{code = 'daisy_purchase', text = tr("SCENEDAISY_MEET_OPTION1"), reqs = [], type = 'next_dialogue'},
@@ -1171,7 +1172,7 @@ var scenedict = {
 		tags = [],
 		image = 'daisyevent',
 		common_effects = [#common_effects are treated in state by applying simple changes to game state and characters.
-		{code = 'add_timed_event', value = "daisy_confess_event", args = [{type = 'add_to_date', date = [7,10], hour = 3}]},
+		{code = 'add_timed_event', value = "daisy_confess_event", args = [{type = 'add_to_date', date = [3,4], hour = 3}]},
 		{code = 'unique_character_changes', value = 'daisy', args = [ #unique_character_changes takes an unique character and apply specific values to their values with exceptions of traits and tags which treated separately
 			{code = 'tame_factor', value = 1, operant = "+"},
 			]},
@@ -1974,35 +1975,35 @@ var dialogue_inits = {
 		},
 		{
 			code = 'default',
-			name = tr("DIALOGUEMEETLEADER"), #or not
+			name = tr("DIALOGUEMEETLEADER"), 
 			reqs = [{type = "active_quest_stage", value = "amelia_main_quest", stage = "stage0"}],
 			target = 'amelia_main_guild_1',
 			target_option = 1,
 		},
 		{
 			code = 'default',
-			name = tr("DIALOGUEMEETLEADER"), #or not
+			name = tr("DIALOGUEMEETLEADER"), 
 			reqs = [{type = "any_quest_stage", value = "amelia_main_quest", stages = ["stage1","stage2","stage3","stage4","stage5","stage6","stage7"]}],
 			target = 'amelia_main_interlude',
 			target_option = 1,
 		},
 		{
 			code = 'default',
-			name = tr("DIALOGUEMEETLEADER"), #or not
+			name = tr("DIALOGUEMEETLEADER"), 
 			reqs = [{type = "active_quest_stage", value = "amelia_main_quest", stage = "stage8"}],
 			target = 'amelia_interlude2_1',
 			target_option = 1,
 		},
 		{
 			code = 'default',
-			name = tr("DIALOGUEMEETLEADER"), #or not
+			name = tr("DIALOGUEMEETLEADER"), 
 			reqs = [{type = "active_quest_stage", value = "amelia_main_quest", stage = "stage9"}],
 			target = 'amelia_interlude4',
 			target_option = 1,
 		},
 		{
 			code = 'default',
-			name = tr("DIALOGUEMEETLEADER"), #or not
+			name = tr("DIALOGUEMEETLEADER"), 
 			reqs = [{type = "active_quest_stage", value = "amelia_main_quest", stage = "stage10"}],
 			target = 'amelia_interlude3_1',
 			target_option = 1,
@@ -2110,6 +2111,23 @@ var dialogue_inits = {
 			name = tr("LIMNROV_OPTION_GUILD"),
 			reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage3'}],
 			target = 'cali_act2_limnrov',
+			target_option = 1,
+		},
+	],
+	heleviel_christmas = [
+		{
+			code = 'default',
+			name = tr("HELEVIEL_SNOWSET_WORKERS_OPTION"),
+			reqs = [
+					{
+						type = "real_date_range",
+						start = [15, 12],
+						end = [15, 13]
+					},
+					{type = 'unique_avialable', name = 'heleviel', check = true},
+					{type = "event_seen", check = false, value = "heleviel_snowset_start"}
+					],
+			target = 'heleviel_snowset_start',
 			target_option = 1,
 		},
 	],
@@ -2629,7 +2647,18 @@ var quests = {
 #			stage1 = {code = 'stage1', name = "ZEPHYRA_DISAPPEARANCE_QUEST_NAME", descript = "ZEPHYRA_DISAPPEARANCE_QUEST_STAGE_1"}, # search for Zephyra
 		},
 	},
-	
+	mae_city_quest = {
+		code = "mae_city_quest",
+		summary = "MAE_CITY_QUEST_SUMMARY",
+		stages = {
+			stage0 = {code = "stage0", name = "MAE_CITY_QUEST_NAME", descript = "MAE_CITY_QUEST_STAGE_0"},
+			stage1 = {code = "stage1", name = "MAE_CITY_QUEST_NAME", descript = "MAE_CITY_QUEST_STAGE_1"},
+			stage2 = {code = "stage2", name = "MAE_CITY_QUEST_NAME", descript = "MAE_CITY_QUEST_STAGE_2"},
+			stage25 = {code = "stage25", name = "MAE_CITY_QUEST_NAME", descript = "MAE_CITY_QUEST_STAGE_25"},
+			stage3 = {code = "stage3", name = "MAE_CITY_QUEST_NAME", descript = "MAE_CITY_QUEST_STAGE_3"},
+			stage4 = {code = "stage4", name = "MAE_CITY_QUEST_NAME", descript = "MAE_CITY_QUEST_STAGE_4"},
+		},
+	},
 	amelia_main_quest = {
 		code = 'amelia_main_quest',
 		summary = "AMELIA_MAIN_QUEST_SUMMARY",

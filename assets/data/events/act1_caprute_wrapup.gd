@@ -39,10 +39,14 @@ var data = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan',
 		text = [{text = "PRE_ANASTASIA_EXECUTION_4", reqs = [], }],
 		common_effects = [{code = 'add_timed_event', value = "duncans_declaration_start", 
-		args = [{type = 'add_to_date', date = [7,7], hour = 1}]}], 
+		args = [{type = 'add_to_date', date = [3,3], hour = 1}]}], 
 		options = [ {
-			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3, type = 'next_dialogue', bonus_effects = [{code = 'complete_quest', value = 'princess_search'}, {code = "update_guild"},
-			{code = 'remove_quest_location', value = 'quest_final_operation_location'}]
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3, type = 'next_dialogue', bonus_effects = [
+				{code = 'complete_quest', value = 'princess_search'},
+				{code = "update_guild"},
+				{code = "set_completed_active_location"}
+#				{code = 'remove_quest_location', value = 'quest_final_operation_location'}
+			]
 		} ],
 	},
 	
@@ -63,8 +67,12 @@ var data = {
 		common_effects = [{code = 'add_timed_event', value = "guilds_meeting_start", 
 		args = [{type = 'add_to_date', date = [1,1], hour = 1}]}], 
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 3, type = 'next_dialogue', bonus_effects = [{code = 'complete_quest', value = 'princess_search'}, {code = "update_guild"},
-			{code = 'remove_quest_location', value = 'quest_final_operation_location'}]
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 3, type = 'next_dialogue', bonus_effects = [
+				{code = 'complete_quest', value = 'princess_search'}, 
+				{code = "update_guild"},
+				{code = "set_completed_active_location"}
+#				{code = 'remove_quest_location', value = 'quest_final_operation_location'}
+				]
 		} ],
 	},
 	
@@ -276,7 +284,7 @@ var data = {
 	},
 	
 	mindcontrol_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'xari',
+		image = null, music = 'intimate_dark', tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'xari',
 		text = [{text = "MIND_CONTROL_11", reqs = []}],
 		options = [ {
 			code = 'mindcontrol_2', text = "MIND_CONTROL_12", reqs = [], dialogue_argument = 1,
@@ -354,7 +362,7 @@ var data = {
 	
 	#Close guild window before so that Aliron is on the screen
 	anastasia_execution_start = {
-		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'amelia',
+		image = null,  music = 'intimate_dark', tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'amelia',
 		scene_type = "unlocked_gallery_seq",
 		unlocked_gallery_seq = "anastasia_execution",
 		save_scene_to_gallery = true,

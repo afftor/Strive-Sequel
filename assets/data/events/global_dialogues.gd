@@ -682,6 +682,7 @@ var data = {
 				dialogue_argument = 2,
 				type = "next_dialogue"
 			},
+			
 			{
 				code = "workers_leader_close",
 				text = "WORKERSINTRODUCTION1REPLY4",
@@ -700,6 +701,7 @@ var data = {
 	servants_introduction = {
 		image = null,
 		character = "amelia",
+		music = "amelia_theme", 
 		tags = [
 			"dialogue_scene",
 			"master_translate"

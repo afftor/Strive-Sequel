@@ -75,7 +75,6 @@ func reset_rebuild():
 		displaynode.rebuildbuffs()
 
 
-
 func reset_rebuild_delay():
 	dyn_stats.reset_rebuild_delay()
 
@@ -311,7 +310,10 @@ func change_personality_stats(stat, init_value, flag = false):
 	return statlist.change_personality_stats(stat, init_value, flag)
 
 func get_weapon_range():
-	return equipment.get_weapon_range()
+	if combatgroup == 'ally':
+		return equipment.get_weapon_range()
+	else:
+		return ai.get_weapon_range()
 
 func get_weapon_animation():
 	return equipment.get_weapon_animation()
@@ -463,8 +465,13 @@ func generate_simple_fighter(tempname, setup_ai = true):
 			ai.set_simple_ai(data.ai)
 		else:
 			#need check for hard difficulty
-			fill_ai(data.ai)
+			if data.has('ai_hard'): #and ResourceScripts.game_globals.diff_hard_monsters: 
+				fill_ai(data.ai_hard)
+			else:
+				fill_ai(data.ai)
 		ai.set_obj(self)
+		if data.ai_position.has('ranged'):
+			ai.ai_position = 'any'
 	if data.has('tags') and data.tags.has('boss'):
 		globals.char_roll_data.uniq = true
 
@@ -671,16 +678,16 @@ func get_short_race():
 	return race.capitalize()
 
 func equip(item, item_prev_id = null):
-	set_stat('portrait_update', true)
 	equipment.equip(item, item_prev_id)
+	set_stat('portrait_update', true)
 
 func unequip(item, hard = true):
-	set_stat('portrait_update', true)
 	equipment.unequip(item, hard)
+	set_stat('portrait_update', true)
 
 func unequip_all(hard = true):
-	set_stat('portrait_update', true)
 	equipment.clear_equip(hard)
+	set_stat('portrait_update', true)
 
 
 func upgrade_mastery(school, force_universal = false):
@@ -1009,10 +1016,14 @@ func can_evade():
 	return res
 
 func can_use_skill(skill):
-	if is_players_character and !check_cost(skill.cost): return false
-	if skill.type == 'auto': return false
-	if is_players_character and skill.has('reqs') and !checkreqs(skill.reqs): return false
-	if skills.combat_cooldowns.has(skill.code): return false
+	if is_players_character and !check_cost(skill.cost): 
+		return false
+	if skill.type == 'auto': 
+		return false
+	if is_players_character and skill.has('reqs') and !checkreqs(skill.reqs): 
+		return false
+	if skills.combat_cooldowns.has(skill.code): 
+		return false
 	if has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('default'):
 		 return false
 	if has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('default'):
@@ -1309,6 +1320,11 @@ func reset_training():
 
 func clear_training():
 	training.clear_training()
+#	if training.clear_training():
+#		#check if need remove from unavaliable work
+#		#char MAY still be worker after trainer remove
+#		if !is_worker() and !(get_work() in ['', 'rest', 'disabled', 'travel']):
+#			 remove_from_task()
 
 func can_be_trained():
 	return training.can_be_trained()
@@ -1594,6 +1610,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 				if has_profession(k):
 					check = true
 		'has_skill':
+			if i.has('learned') and i.learned:
+				return skills.get_learned_skills('all').has(i.value) == i.check
 			return dyn_stats.has_skill(i.value) == i.check
 		'race_is_beast':
 			check = races.racelist[get_stat('race')].tags.has('beast') == i.check
@@ -1770,13 +1788,21 @@ func decipher_single(ch):
 				continue
 		'race_is_beast':
 			if i.check == true:
-				text2 += tr("REQRACEISBEAST")+''
+				text2 += tr("REQRACEISBEAST") + ''
 			else:
 				continue
 		'gear_equiped': #to fix non-default param
-			text2 += tr("REQMUSTHAVEGEAR")+' ' + Items.itemlist[i.value].name + "."
+			if i.check:
+				text2 += tr("REQMUSTHAVEGEAR") + ' '
+			else:
+				text2 += tr("REQMUSTHAVEGEAR_FALSE") + ' '
+			if i.has('param'):
+				if i.param == 'geartype':
+					text2 += tr("REQMUSTHAVEGEARTYPE") + ' ' + tr("REQMUSTHAVEGEARTYPE_" + i.value.to_upper()) + "."
+			else:
+				text2 += Items.itemlist[i.value].name + "."
 		'global_profession_limit':
-			text2 += tr("REQPROFLIMIT")+' ' + str(i.value) + " " + classesdata.professions[i.profession].name + " "+tr("REQPROFLIMIT2")+"."
+			text2 += tr("REQPROFLIMIT")+' ' + str(i.value) + " " + classesdata.professions[i.profession].name + " " + tr("REQPROFLIMIT2") + "."
 		'one_of_races':
 			text2 += tr("REQONEOFRACES")+": "
 			for k in i.value:
@@ -2399,6 +2425,8 @@ func take_virginity(type, partner, breakable = false):
 			try_breakdown('brk_lose_virginity')
 		if get_stat('metrics_partners').has(partner) == false && partner.begins_with("hid"):
 			statlist.update_stat('metrics_partners', partner, 'append')
+		if !ResourceScripts.game_party.relativesdata.has(partner):
+			ResourceScripts.game_party.createrelativesdata(characters_pool.get_char_by_id(partner))
 
 
 func add_partner(partner):

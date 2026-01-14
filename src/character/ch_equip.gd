@@ -89,6 +89,7 @@ func equip(item, item_prev_id = null):
 		gear[i] = item.id
 	item.owner = parent.get_ref().id
 	item.timestamp = parent.get_ref().get_timestamp()
+	parent.get_ref().reset_rebuild()
 
 
 
@@ -120,6 +121,7 @@ func unequip(item, hard = true):
 	#removing bonuses
 	if item.curse!= null and hard:
 		item.destroy()
+	parent.get_ref().reset_rebuild()
 
 
 

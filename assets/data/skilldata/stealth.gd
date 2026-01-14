@@ -7,10 +7,8 @@ var skills = {
 		icon = "res://assets/images/iconsskills/icon_eyes.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['buff','support'],
+		tags = ['buff','support', 'selfbuf'],
 		reqs = [
-			{code = 'gear_equiped', param = 'geartype', value = 'medium', check = false},
-			{orflag = true, code = 'has_status', status = 'assassin_hide', check = true},
 			{code = 'gear_equiped', param = 'geartype', value = 'heavy', check = false},
 			],
 		targetreqs = [],
@@ -27,7 +25,13 @@ var skills = {
 		sfx = [{code = 'hide', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = null, hit = null},
 		value = ['0'],
-		damagestat = 'no_stat'
+		damagestat = 'no_stat',
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'assassin_hide', check = false}],
+				append = {reqs = {code = 'gear_equiped', param = 'geartype', value = 'medium', check = false } }
+			},
+		]
 	},
 	dip_poison = {
 		code = 'dip_poison',
@@ -35,7 +39,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/skill_dip_poison.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['damage','ads'],
+		tags = ['damage','ads', 'damage_spot'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'poison', duration = 4})],
@@ -58,7 +62,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/skill_backkick.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['damage', 'debuff', 'ads'],
+		tags = ['damage', 'debuff', 'ads', 'damage_spot'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'silence', duration = 4})], 
@@ -81,7 +85,7 @@ var skills = {
 		icon = 'res://assets/images/iconsskills/assassinate.png',
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['damage'],
+		tags = ['damage', 'damage_spot'],
 		reqs = [],
 		targetreqs = [],
 		effects = [], 
@@ -96,11 +100,12 @@ var skills = {
 		damage_type = 'weapon',
 		sfx = [{code = 'assassinate', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 2.0,
+		value = 1.75,
 		variations = [
 			{
 				reqs = [{code = 'has_status', status = 'hide', check = true}],
-				set = {value = 3.5},
+				set = {value = 2.75},
+				append = {tags = 'ultimate'}
 #				add = {descript = '_1'}
 			}
 		]
@@ -111,7 +116,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/windblade.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['damage'],
+		tags = ['damage', 'damage_spot'],
 		reqs = [],
 		targetreqs = [],
 		effects = [], 
@@ -143,7 +148,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/Trap.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['debuff'],
+		tags = ['debuff', 'trap'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_t_trap'})], 
@@ -168,7 +173,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/skill_bolt_trap.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['debuff'],
+		tags = ['debuff', 'trap'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_t_bolttrap', push_value = true})], 

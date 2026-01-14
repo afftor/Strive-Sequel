@@ -5,6 +5,7 @@ var data = {
 			{ # no help
 				image = null,
 				character = "duncan",
+				music = 'threat',
 				tags = ['dialogue_scene', 'master_translate'],
 				text = "INITIATE_HIDEOUT_ATTACK_1",
 				reqs = [{type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_1'}, {type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_2'}, {type = 'decision', value = 'MagesHelpDuncan', check = false}],
@@ -126,6 +127,7 @@ var data = {
 			# (if Aire Alive)
 			reqs = [{type = 'decision', value = 'aire_is_dead', check = false}],
 			image = null,
+			music = 'threat',
 			character = "greg", character2 = "anastasia",
 			tags = ['dialogue_scene', 'master_translate'],
 			text = [
@@ -144,6 +146,7 @@ var data = {
 			# (if Aire Is Dead)
 			reqs = [{type = 'decision', value = 'aire_is_dead', check = true}],
 			image = null,
+			music = 'threat',
 			character = "greg", character2 = "anastasia",
 			tags = ['dialogue_scene', 'master_translate'],
 			text = [

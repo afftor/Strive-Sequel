@@ -47,7 +47,6 @@ func _ready():
 	$SlaveMarket/PurchaseButton.connect("pressed", self, "show_full_info")
 	$SlaveMarket/HireMode.connect("pressed", self, "change_mode", ["hire"])
 	$SlaveMarket/SellMode.connect("pressed", self, "change_mode", ["sell"])
-	$SlaveMarket/HBoxContainer/EnslaveButton.connect("pressed", self, "enslave_select")
 	$SlaveMarket/HBoxContainer/UpgradeButton.connect("pressed", self, "show_upgrade_window")
 	$SlaveMarket/HBoxContainer/UpgradeButton2.connect("pressed", self, "show_bodyupgrade_window")
 	$BuyLocation/LocationInfo/PurchaseLocation.connect("pressed", self, "purchase_location")
@@ -78,20 +77,6 @@ func test():
 	for win in gui_controller.windows_opened:
 		print(win.name)
 
-
-func enslave_select():
-	var character = person_to_hire
-	character.reset_mastery()
-	character.set_slave_category("slave")
-	input_handler.active_character = character
-	var changes = [{code = 'money_change', operant = '-', value = variables.enslavement_price}]
-	globals.common_effects(changes)
-	globals.text_log_add('char',character.translate("[name] has been demoted to Slave."))
-#	globals.character_stat_change(character, {code = 'loyalty', operant = '-', value = 50})
-	input_handler.scene_characters.append(character)
-	input_handler.interactive_message('enslave', '', {})
-	input_handler.update_slave_list()
-	sell_slave()
 
 
 func open_journal():
@@ -130,7 +115,25 @@ func open_city(city = null):
 		input_handler.SetMusic(selected_area.capital_background_music, true)
 	if selected_area.has("capital_dynamic_background"):
 		get_node("VideoPlayer").open(selected_area.capital_dynamic_background)
+	get_node("back").texture = images.get_background(selected_area.capital_background + '_1')
 	previous_guild = ''
+	rebuild_area_buttons()
+#	var guilds = []
+#	var area_actions = []
+#	for i in selected_area.factions.values():
+#		if !globals.checkreqs(i.conditions): continue
+#		if i.code in ["slavemarket", "exotic_slave_trader","beastkin_slave_trader", "aliron_church", "elvish_slave_trader"]:
+#			area_actions.append(i)
+#		else:
+#			guilds.append(i)
+#	build_guilds_panel(guilds)
+#	build_area_menu(area_actions)
+	if $GuildBG.is_visible():
+		ResourceScripts.core_animations.FadeAnimation($GuildBG, 0.3)
+		yield(get_tree().create_timer(0.3), "timeout")
+		$GuildBG.hide()
+
+func rebuild_area_buttons():
 	var guilds = []
 	var area_actions = []
 	for i in selected_area.factions.values():
@@ -141,10 +144,6 @@ func open_city(city = null):
 			guilds.append(i)
 	build_guilds_panel(guilds)
 	build_area_menu(area_actions)
-	if $GuildBG.is_visible():
-		ResourceScripts.core_animations.FadeAnimation($GuildBG, 0.3)
-		yield(get_tree().create_timer(0.3), "timeout")
-		$GuildBG.hide()
 
 
 func build_guilds_panel(guilds):
@@ -234,7 +233,7 @@ func build_area_menu(area_actions):
 			newbutton.get_node("Label").set("custom_fonts/font", font)
 			newbutton.connect("pressed", globals, 'common_effects', [i.args])
 			newbutton.connect("pressed", self, 'reset_active_location')
-			newbutton.connect("pressed", self, "open_city", [selected_location])
+			newbutton.connect("pressed", self, "rebuild_area_buttons")
 			# newbutton.modulate = Color(0.5, 0.8, 0.5)
 			newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet.png")
 			newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_hover.png")
@@ -786,7 +785,6 @@ func sell_slave():
 func show_slave_info(person):
 	$SlaveMarket/HBoxContainer/UpgradeButton2.visible = true #add correct condition here
 	person_to_hire = person
-	$SlaveMarket/HBoxContainer/EnslaveButton.visible = !(person.get_stat("slave_class") in  ["slave", 'slave_trained']) && market_mode != "guild_slaves" && person.get_stat("unique") == null # && (!person.has_profession('master'))
 	for button in SlaveMarketList.get_children():
 		if button.name == "Button":
 			continue

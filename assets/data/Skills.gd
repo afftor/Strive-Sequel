@@ -1540,6 +1540,30 @@ var Skilllist = {
 }
 
 
+var global_variations = [
+	{
+		template_reqs = [
+			{attribute = 'target_number', operant = 'in', value = ['single', 'line']},
+			{attribute = 'ability_type', operant = 'neq', value = 'item'},
+			{attribute = 'target', operant = 'eq', value = 'enemy'},
+			],
+#		reqs = [],
+		reqs = [{code = 'has_status', status = 'combat_casting', check = true}],
+		set = {target_range = 'melee'},
+	},
+#	{ #removed due to no way to check skill handler mode in advance
+#		template_reqs = [
+#			{attribute = 'tags', operant = 'has', value = 'damage'},
+#			{attribute = 'target_number', operant = 'eq', value = 'single'},
+#			{attribute = 'ability_type', operant = 'eq', value = 'spell'},
+#			{attribute = 'follow_up', operant = 'eq', value = null},
+#		],
+#		reqs = [],
+#		reqs = [{code = 'has_status', status = 'combat_casting', check = true}],
+#		set = {follow_up = 'attack'},
+#	},
+]
+
 
 var training_actions = {
 	praise = {
@@ -2135,6 +2159,20 @@ var masteries = {
 
 func get_template(id, caster):
 	var tres = Skilllist[id].duplicate(true)
+	#process global variations
+	for line in global_variations:
+		var check = true
+		#check template reqs, simple syntax
+		for rec in line.template_reqs:
+			var attr = null
+			if tres.has(rec.attribute):
+				attr = tres[rec.attribute]
+			check = check and input_handler.operate(rec.operant, attr, rec.value)
+		#apply value
+		if check:
+			if !tres.has('variations'):
+				tres.variations = []
+			tres.variations.push_back(line)
 	#process variations
 	if tres.has('variations'):
 		for line in tres.variations:
@@ -2145,6 +2183,12 @@ func get_template(id, caster):
 				if line.has('add'):
 					for arg in line.add:
 						tres[arg] = tres[arg] + line.add[arg]
+				if line.has('append'):
+					for arg in line.append:
+						tres[arg].push_back(line.append[arg])
+				if line.has('remove'):
+					for arg in line.remove:
+						tres[arg].remove(line.remove[arg])
 				if line.has('set'):
 					for arg in line.set:
 						tres[arg] = line.set[arg]
@@ -2173,21 +2217,43 @@ func get_template(id, caster):
 	tres.descript = tr(tres.descript)
 	if tres.cost.has('mp'):
 		tres.cost.mp = caster.get_manacost_for_skill(tres)
+	if tres.has('reqs') and !caster.checkreqs(tres.reqs):
+		tres.descript += '\n\n' + caster.decipher_reqs(tres.reqs, true)
 	return tres
 
 
 func get_template_combat(id, caster):
 	var tres = Skilllist[id].duplicate(true)
+	#process global variations
+	for line in global_variations:
+		var check = true
+		#check template reqs, simple syntax
+		for rec in line.template_reqs:
+			var attr = null
+			if tres.has(rec.attribute):
+				attr = tres[rec.attribute]
+			check = check and input_handler.operate(rec.operant, attr, rec.value)
+		#apply value
+		if check:
+			if !tres.has('variations'):
+				tres.variations = []
+			tres.variations.push_back(line)
 	#process variations
 	if tres.has('variations'):
 		for line in tres.variations:
 			if caster.checkreqs(line.reqs):
 				if line.has('replace'): #total replacement
-					tres = get_template(line.replace, caster)
+					tres = get_template_combat(line.replace, caster)
 					break
 				if line.has('add'):
 					for arg in line.add:
 						tres[arg] = tres[arg] + line.add[arg]
+				if line.has('append'):
+					for arg in line.append:
+						tres[arg].push_back(line.append[arg])
+				if line.has('remove'):
+					for arg in line.remove:
+						tres[arg].remove(line.remove[arg])
 				if line.has('set'):
 					for arg in line.set:
 						tres[arg] = line.set[arg]
@@ -2205,6 +2271,8 @@ func get_template_combat(id, caster):
 	tres.descript = tr(tres.descript)
 	if tres.cost.has('mp'):
 		tres.cost.mp = caster.get_manacost_for_skill(tres)
+	if tres.has('reqs') and !caster.checkreqs(tres.reqs):
+		tres.descript += '\n\n' + caster.decipher_reqs(tres.reqs, true)
 	return tres
 
 

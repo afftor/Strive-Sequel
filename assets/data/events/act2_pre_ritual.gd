@@ -7,7 +7,7 @@ var data = {
 		],
 		reqs = [
 			{
-				type = "has_hero",
+				type = "unique_avialable",
 				name = "zephyra",
 				check = false
 			}
@@ -84,6 +84,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
+		music = "zephyra_theme",
 		reqs = [
 
 		],
@@ -372,13 +373,14 @@ var data = {
 	},
 	zephyra_sword_1 = {
 		image = null,
+		music = "zephyra_theme",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
 		],
 		reqs = [
 			{
-				type = "has_hero",
+				type = "unique_avialable",
 				name = "zephyra",
 				check = true
 			}
@@ -967,6 +969,7 @@ var data = {
 			"master_translate",
 			"blackscreen_transition_common"
 		],
+		music = "heleviel_theme",
 		reqs = [
 
 		],
@@ -1107,6 +1110,7 @@ var data = {
 	},
 	priestess_sword_talk_4 = {
 		image = null,
+		music = "frostford",
 		tags = [
 			"dialogue_scene",
 			"master_translate",
@@ -1653,6 +1657,7 @@ var data = {
 	},
 	mae_meeting_1 = {
 		image = null,
+		music = "mae_theme",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2233,6 +2238,7 @@ var data = {
 	},
 	pre_ritual_1 = {
 		image = null,
+		music = "dungeon",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2670,6 +2676,7 @@ var data = {
 	},
 	pre_ritual_6 = {
 		image = null,
+		music = "mae_theme",
 		tags = [
 			"dialogue_scene",
 			"master_translate",
@@ -2838,6 +2845,7 @@ var data = {
 	},
 	pre_ritual_blow_1 = {
 		image = null,
+		music = "intimate",
 		tags = [
 			"dialogue_scene",
 			"master_translate",

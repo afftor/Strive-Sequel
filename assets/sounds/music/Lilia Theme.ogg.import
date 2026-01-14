@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Lilia Theme.ogg-7dfddb55e48d5e093cfd25845347a2c8.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/Lilia Theme.ogg"
+dest_files=[ "res://.import/Lilia Theme.ogg-7dfddb55e48d5e093cfd25845347a2c8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

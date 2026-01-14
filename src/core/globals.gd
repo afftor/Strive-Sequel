@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.13.3a'
+const gameversion = '0.13.4b'
 
 #time
 signal hour_tick
@@ -240,8 +240,10 @@ func CreateGearItemCraft(item, parts, person, newname = null):
 	var diffdata = {boost = 0, prof = false, no_enchant = true}
 	if Items.recipes.has(item):
 		match Items.recipes[item].worktype:
-			'smith', 'tailor':
+			'smith':
 				diffdata.prof = person.has_status('master_smith')
+			'tailor':
+				diffdata.prof = person.has_status('master_tailor')
 			'alchemy':
 				diffdata.prof = person.has_status('master_alchemist')
 		diffdata.boost += person.get_task_diff()
@@ -1068,7 +1070,7 @@ func ImportGame(filename):
 			},
 			{code = 'progress_quest', value = 'main_quest_loan', stage = 'stage0'},
 			{code = 'progress_quest', value = 'guilds_introduction', stage = 'start'},
-			{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 1}]}
+			{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [3,5], hour = 1}]}
 			])
 	
 
@@ -2470,6 +2472,7 @@ func common_effects(effects):
 				ResourceScripts.game_progress.spouse = input_handler.active_character.id
 #				input_handler.active_character.unlock_class('spouse')
 			'complete_wedding':
+				print(1)
 				ResourceScripts.game_progress.marriage_completed = true
 				ResourceScripts.game_party.get_spouse().unlock_class('spouse')
 				ResourceScripts.game_party.get_spouse().set_slave_category('spouse')
@@ -2685,10 +2688,8 @@ func valuecheck(dict):
 			return ResourceScripts.game_res.if_has_money(dict['value'])
 		"has_loan_money":
 			return ResourceScripts.game_res.if_has_money(get_loan_sum(dict.stage - 1))
-#		"has_property":
-#			return if_has_property(dict['prop'], dict['value'])
-		"has_hero":
-			return ResourceScripts.game_party.if_has_hero(dict['name']) == dict.check
+		"unique_avialable":
+			return ResourceScripts.game_party.if_unique_available(dict['name']) == dict.check
 		"has_material":
 			return ResourceScripts.game_res.if_has_material(dict['material'], dict.operant, dict['value'])
 		"date":
@@ -2714,13 +2715,6 @@ func valuecheck(dict):
 			return input_handler.operate(dict.operant, counter, dict.value)
 		"quest_completed":
 			return ResourceScripts.game_progress.completed_quests.has(dict.name) == dict.check
-		"party_level":
-			return ResourceScripts.game_party.if_party_level(dict.operant, dict.value)
-		"hero_level":
-			if ResourceScripts.game_party.if_has_hero(dict.name) == false:
-				return false
-			else:
-				return ResourceScripts.game_party.if_hero_level(dict.name, dict.operant, dict.value)
 		"has_items":
 			return ResourceScripts.game_res.if_has_items(dict.name, dict.operant, dict.value)
 		"has_free_items":
@@ -2783,6 +2777,16 @@ func valuecheck(dict):
 			return ResourceScripts.game_progress.selected_dialogues.has(dict.value) == dict.check
 		'event_seen':
 			return ResourceScripts.game_progress.seen_events.has(dict.value) == dict.check
+		
+		"real_date_range":
+			var current_date = OS.get_date().day + OS.get_date().month * 30
+			if OS.get_date().month == 1:
+				current_date = OS.get_date().day + 13 * 30
+			var start_date = dict.start[0] + dict.start[1] * 30
+			var end_date = dict.end[0] + dict.end[1] * 30
+			return current_date >= start_date and current_date <= end_date
+		
+		
 		'active_quest_stage':
 			if ResourceScripts.game_progress.get_active_quest(dict.value) == null || dict.has('stage') == false:
 				if dict.has('state') && dict.state == false:

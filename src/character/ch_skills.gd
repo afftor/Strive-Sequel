@@ -11,6 +11,7 @@ var combat_cooldowns = {}
 var daily_cooldowns = {}
 var social_skill_panel = {}
 var combat_skill_panel = {}
+var combat_skill_panel_row = 1
 var active_panel = variables.PANEL_SOC
 var skills_received_today = []
 
@@ -18,6 +19,25 @@ var items_used_global = {}
 var items_used_today = {}
 
 var prepared_act = []
+
+func get_combat_panel_max_slots():
+	return variables.combat_panel_row_size * variables.combat_panel_rows
+
+func clamp_combat_panel_row():
+	if combat_skill_panel_row < 1:
+		combat_skill_panel_row += variables.combat_panel_rows
+	if combat_skill_panel_row > variables.combat_panel_rows:
+		combat_skill_panel_row -= variables.combat_panel_rows
+	return combat_skill_panel_row
+
+func change_combat_panel_row(delta):
+	combat_skill_panel_row += delta
+	return clamp_combat_panel_row()
+
+func get_combat_panel_row_offset():
+	clamp_combat_panel_row()
+	return (combat_skill_panel_row - 1) * variables.combat_panel_row_size
+
 
 func setup_skills(data):
 	#attention! counterintuitive naming is for a keeping compartibility with simple fighters templating, where 'skills' are for combat skills
@@ -35,24 +55,36 @@ func get_damage_mod(skill):
 	#stub. needs filling
 	if skill.type == 'social': 
 		return 1
-	var res = parent.get_ref().get_stat('damage_mod_all')
-	if skill.target_range == 'melee': 
-		res *= parent.get_ref().get_stat('damage_mod_melee')
-	if skill.target_range == 'weapon' and parent.get_ref().get_weapon_range() == 'melee': 
-		res *= parent.get_ref().get_stat('damage_mod_melee')
-	if skill.target_range == 'any': 
-		res *= parent.get_ref().get_stat('damage_mod_ranged')
-	if skill.target_range == 'weapon' and parent.get_ref().get_weapon_range() == 'any':
-		 res *= parent.get_ref().get_stat('damage_mod_ranged')
-	if skill.ability_type == 'skill': 
-		res *= parent.get_ref().get_stat('damage_mod_skill')
-	if skill.ability_type == 'spell': 
-		res *= parent.get_ref().get_stat('damage_mod_spell')
-	if skill.tags.has('aoe'): 
-		res *= parent.get_ref().get_stat('damage_mod_aoe')
-	if skill.tags.has('heal') and skill.ability_type != 'item': 
-		res *= parent.get_ref().get_stat('damage_mod_heal')
 	
+	var res = 1
+	
+	if skill.tags.has("heal"):
+		res = parent.get_ref().get_stat('damage_mod_heal')
+	else:
+		res = parent.get_ref().get_stat('damage_mod_all')
+		#print(res, ' damage mod all')
+		if skill.target_range == 'melee': 
+			res += parent.get_ref().get_stat('damage_mod_melee') - 1
+			#print(res, ' damage mod melee')
+		if skill.target_range == 'weapon' and parent.get_ref().get_weapon_range() == 'melee':
+			res += parent.get_ref().get_stat('damage_mod_melee') - 1
+			#print(res, ' damage mod malee(weapon)')
+		if skill.ability_type == 'skill': 
+			res += parent.get_ref().get_stat('damage_mod_skill') - 1
+			#print(res, ' damage mod skill')
+			if skill.target_range == 'any': 
+				res += parent.get_ref().get_stat('damage_mod_ranged') - 1
+				#print(res, ' damage mod ranged')
+			if skill.target_range == 'weapon' and parent.get_ref().get_weapon_range() == 'any':
+				res += parent.get_ref().get_stat('damage_mod_ranged') - 1
+				#print(res, ' damage mod ranged(weapon)')
+		if skill.ability_type == 'spell': 
+			res += parent.get_ref().get_stat('damage_mod_spell') - 1
+			#print(res, ' damage mod spell')
+		if skill.tags.has('aoe'): 
+			res += parent.get_ref().get_stat('damage_mod_aoe') - 1
+			#print(res, ' damage mod aoe')
+	#print(res, "end mod")
 	return res
 
 
@@ -70,6 +102,8 @@ func get_manacost_for_skill(skill):
 func get_value_damage_mod(skill_val):
 	#stub. needs filling
 	var res = parent.get_ref().get_stat('damage_mod_' + skill_val.damage_type)
+	
+	#print("damage elem mod " + str(res))
 	return res
 
 
@@ -81,11 +115,18 @@ func get_learned_skills(cat):
 			return combat_skills.duplicate()
 		'explore':
 			return explore_skills.duplicate()
+		'all':
+			return social_skills.duplicate() + combat_skills.duplicate() + explore_skills.duplicate()
 
 
 func fix_skillpanels(list_soc_add, list_combat_add, list_soc_remove, list_combat_remove):
+	combat_skill_panel_row = int(combat_skill_panel_row)
+	var max_combat_slots = get_combat_panel_max_slots()
+	clamp_combat_panel_row()
 	for pos in combat_skill_panel.keys().duplicate():
 		if combat_skill_panel[pos] in list_combat_remove:
+			combat_skill_panel.erase(pos)
+		elif pos > max_combat_slots:
 			combat_skill_panel.erase(pos)
 	for pos in social_skill_panel.keys().duplicate():
 		if social_skill_panel[pos] in list_soc_remove:
@@ -97,7 +138,7 @@ func fix_skillpanels(list_soc_add, list_combat_add, list_soc_remove, list_combat
 			continue
 		while combat_skill_panel.has(pos):
 			pos += 1
-		if pos > 21:
+		if pos > max_combat_slots:
 			break
 		combat_skill_panel[pos] = skill
 	pos = 1
@@ -541,14 +582,19 @@ func act_prepared():
 func repair_skill_panels():
 	var ssp = social_skill_panel.duplicate()
 	social_skill_panel.clear()
+	
 	for i in ssp:
 		if Skilldata.Skilllist.has(ssp[i]):
 			social_skill_panel[int(i)] = ssp[i]
 	ssp = combat_skill_panel.duplicate()
+	var max_combat_slots = get_combat_panel_max_slots()
 	combat_skill_panel.clear()
 	for i in ssp:
+		if int(i) > max_combat_slots:
+			continue
 		if Skilldata.Skilllist.has(ssp[i]):
 			combat_skill_panel[int(i)] = ssp[i]
+	clamp_combat_panel_row()
 	var cleararray = []
 	for i in [social_skills, combat_skills]:
 		for k in i:

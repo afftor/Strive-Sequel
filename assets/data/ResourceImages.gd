@@ -7,10 +7,15 @@ var backgrounds = {
 	dungeon = "res://assets/images/backgrounds/dungeon.png",
 	garden = "res://assets/images/backgrounds/garden.png",
 	aliron = "res://assets/images/backgrounds/Aliron.png",
+	aliron_1 = "res://assets/images/backgrounds/Aliron_1.png",
 	elf_capital = "res://assets/images/backgrounds/elf_capital.png",
+	elf_capital_1 = "res://assets/images/backgrounds/elf_capital.png",
 	beastkin_capital = "res://assets/images/backgrounds/beastkin_capital.png",
+	beastkin_capital_1 = "res://assets/images/backgrounds/beastkin_capital.png",
 	dwarfs_city = "res://assets/images/backgrounds/dwarf_city.png",
+	dwarfs_city_1 = "res://assets/images/backgrounds/dwarf_city.png",
 	empire = "res://assets/images/backgrounds/empire.png",
+	empire_1 = "res://assets/images/backgrounds/empire.png",
 	arena = "res://assets/images/backgrounds/arena.png",
 	
 	forest1_menu = "res://assets/images/backgroundmenu/forest1.jpg",
@@ -88,6 +93,10 @@ var backgrounds = {
 	act2_art = "res://assets/images/fullscreen scenes/splash_pure_act2.png",
 	act3_art = "res://assets/images/fullscreen scenes/splash_act3.png",
 	elven_temple_scene = "res://assets/images/fullscreen scenes/Scene_Elven_Temple.png",
+	
+	christmas25 = "res://assets/images/fullscreen scenes/seasonal/Christmass 2025.png",
+	christmas25_1 = "res://assets/images/fullscreen scenes/seasonal/Christmass 2025_1.png",
+	
 	
 	tower = "res://assets/images/backgrounds/tower.png",
 
@@ -563,6 +572,9 @@ var scenes = {
 	heleviel_halfkin = "res://assets/images/scenes/heleviel_halfkin.png",
 	heleviel_town = "res://assets/images/scenes/heleviel_town.png",
 	
+	ogres = "res://assets/images/scenes/ogres.png",
+	elf_druid = "res://assets/images/scenes/elven druid.png",
+	dwarf_alchemist = "res://assets/images/scenes/dwarf_alchemist.png",
 	
 	hire = load("res://assets/images/scenes/hire.png"),
 	
@@ -722,8 +734,8 @@ var sprites = {
 	kuro_wed_body = load("res://assets/images/sprites/Kuro_wed_body.png"),
 	zephyra_wed = load("res://assets/images/sprites/zephyra_wed.png"),
 	zephyra_wed_body = load("res://assets/images/sprites/zephyra_wed_body.png"),
-	zephyra_costume_7 = load("res://assets/images/sprites/zephyra_costume_7.png"),
-	zephyra_costume_7_body = load("res://assets/images/sprites/zephyra_costume_7_body.png"),
+	zephyra_miko = load("res://assets/images/sprites/zephyra_miko.png"),
+	zephyra_miko_body = load("res://assets/images/sprites/zephyra_miko_body.png"),
 	mae_nude = load("res://assets/images/sprites/mae_nude.png"),
 	mae_nude_body = load("res://assets/images/sprites/mae_nude_body.png"),
 	lilia_nude = load("res://assets/images/sprites/lilia_nude.png"),
@@ -748,6 +760,8 @@ var sprites = {
 	heleviel_wed_body = load("res://assets/images/sprites/heleviel_wed_body.png"),
 	heleviel_waitress = load("res://assets/images/sprites/heleviel_waitress.png"),
 	heleviel_waitress_body = load("res://assets/images/sprites/heleviel_waitress_body.png"),
+	heleviel_christmas = load("res://assets/images/sprites/heleviel_snowset.png"),
+	heleviel_christmas_body = load("res://assets/images/sprites/heleviel_snowset_body.png"),
 	lira_nude = load("res://assets/images/sprites/Lira_nude.png"),
 	lira_nude_body = load("res://assets/images/sprites/Lira_nude_body.png"),
 	lira_wed = load("res://assets/images/sprites/Lira_wed.png"),
@@ -828,6 +842,8 @@ var portraits = {
 	heleviel = "res://assets/images/portraits/heleviel_prt.png",
 	heleviel_nude = "res://assets/images/portraits/heleviel_nude_prt.png",
 	heleviel_wed = "res://assets/images/portraits/heleviel_wed_prt.png",
+	heleviel_waitress = "res://assets/images/portraits/heleviel_wwaitress_prt.png",
+	heleviel_christmas = "res://assets/images/portraits/heleviel_prt/heleviel_snowset_prt_bold.png",
 	lira = "res://assets/images/portraits/lira_prt.png",
 	lira_nude = "res://assets/images/portraits/lira_nude_prt.png",
 	lira_wed = "res://assets/images/portraits/lira_wed_prt.png",

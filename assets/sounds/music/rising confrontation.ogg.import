@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/rising confrontation.ogg-9826bc40223e5b21247cb28dfeefeb14.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/rising confrontation.ogg"
+dest_files=[ "res://.import/rising confrontation.ogg-9826bc40223e5b21247cb28dfeefeb14.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

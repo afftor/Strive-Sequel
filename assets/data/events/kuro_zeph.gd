@@ -4,6 +4,7 @@ var data = {
 		reqs = [
 
 		],
+		music = "zephyra_theme",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -112,13 +113,13 @@ var data = {
 				negative = "repeat_next_day"
 			},
 			{
-				type = "has_hero",
+				type = "unique_avialable",
 				name = "zephyra",
 				check = true,
 				negative = "repeat_next_day"
 			},
 			{
-				type = "has_hero",
+				type = "unique_avialable",
 				name = "kuro",
 				check = true,
 				negative = "repeat_next_day"
@@ -184,6 +185,7 @@ var data = {
 		reqs = [
 
 		],
+		music = "intimate_funny",
 		tags = [
 			"dialogue_scene",
 			"master_translate"

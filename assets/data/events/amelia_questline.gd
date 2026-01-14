@@ -1,7 +1,7 @@
 extends Reference
 var data = {
 	amelia_silk_start = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'amelia',
+		image = null, music = "amelia_theme", tags = ['dialogue_scene'], reqs = [], character = 'amelia',
 		text = [{text = "AMELIA_SILK_STARTUP", reqs = [], }],
 		options = [ {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
@@ -10,7 +10,7 @@ var data = {
 	},
 	
 	amelia_silk_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'amelia',
+		image = null, music = "amelia_theme", tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'amelia',
 		scene_type = "unlocked_gallery_seq",
 		unlocked_gallery_seq = "amelia_titjob",
 		save_scene_to_gallery = true,
@@ -68,6 +68,7 @@ var data = {
 	# amelia scene 1
 	amelia_silk_6 = {
 		custom_background = "amelia_titjob1",
+		music = "intimate_dark", 
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		image = null, tags = ['dialogue_scene'], reqs = [], 
@@ -137,7 +138,7 @@ var data = {
 	},
 	
 	amelia_herbs_1_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'amelia',
+		image = null, music = "amelia_theme",  tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'amelia',
 		text = [{text = "AMELIA_HERBS_REPLY_START", reqs = [], }],
 		options = [ {
 			code = 'amelia_herbs_1_2', text = "AMELIA_HERBS_OPTION_1_1", reqs = [], dialogue_argument = 1, 
@@ -210,7 +211,7 @@ var data = {
 	},
 	
 	amelia_herbs_elf_2_1 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'lira',
+		image = null,  music = "lira_theme", tags = ['dialogue_scene'], reqs = [], character = 'lira',
 		text = [{text = "AMELIA_HERBS_ELF_REPLY_2_1", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
@@ -289,7 +290,7 @@ var data = {
 	},
 	
 	amelia_herbs_elf_quest2_2 = {
-		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'heleviel',
+		image = null,  music = "heleviel_theme", tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'heleviel',
 		text = [{text = "AMELIA_HERBS_ELFQUEST2_START_2", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
@@ -299,7 +300,7 @@ var data = {
 	
 	amelia_herbs_end_1 = {
 		variations = [ {
-				reqs = [{type = 'has_material', material = 'herbs', operant = 'gte', value = 1}],
+				reqs = [{type = 'has_material', material = 'herbs', operant = 'gte', value = 1}], music = "amelia_theme", 
 				image = null, tags = ['dialogue_scene'], character = "amelia",
 				text = [{text = "AMELIA_HERBS_END_REPLY_START", reqs = []}],
 				common_effects = [{code = 'material_change', operant = '-', material = 'herbs', value = 1},
@@ -314,7 +315,7 @@ var data = {
 					},],
 			}, {
 				reqs = [{type = 'has_material', material = 'herbs', operant = 'lt', value = 1}],
-				image = null, tags = ['dialogue_scene'], character = "amelia",
+				image = null, music = "amelia_theme", tags = ['dialogue_scene'], character = "amelia",
 				text = [{text = "AMELIA_HERBS_END_REPLY_START_FAIL", reqs = []}],
 				options = [ {
 					code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
@@ -331,7 +332,7 @@ var data = {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [
 				{code = 'complete_quest', value = 'amelia_herbs_quest'},
-				{code = 'add_timed_event', value = "amelia_intro", args = [{type = 'add_to_date', date = [10,14], hour = 1}]}
+				{code = 'add_timed_event', value = "amelia_intro", args = [{type = 'add_to_date', date = [6,8], hour = 1}]}
 				]
 		}, ],
 	},
@@ -405,6 +406,7 @@ var data = {
 	
 	amelia_bondage_4 = { 
 		custom_background = "amelia_bondage1",
+		music = "intimate_dark", 
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
@@ -464,7 +466,7 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'complete_quest', value = 'amelia_herbs_quest'},
-			{code = 'add_timed_event', value = "amelia_intro", args = [{type = 'add_to_date', date = [10,14], hour = 1}]}]
+			{code = 'add_timed_event', value = "amelia_intro", args = [{type = 'add_to_date', date = [6,8], hour = 1}]}]
 		}, ],
 	},
 	

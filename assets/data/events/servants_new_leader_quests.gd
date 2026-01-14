@@ -51,8 +51,8 @@ var data = {
 							{
 								type = "add_to_date",
 								date = [
-									7,
-									7
+									5,
+									5
 								],
 								hour = 2
 							}
@@ -89,8 +89,8 @@ var data = {
 							{
 								type = "add_to_date",
 								date = [
-									7,
-									7
+									5,
+									5
 								],
 								hour = 2
 							}
@@ -141,8 +141,8 @@ var data = {
 							{
 								type = "add_to_date",
 								date = [
-									7,
-									7
+									5,
+									5
 								],
 								hour = 2
 							}
@@ -597,6 +597,7 @@ var data = {
 	},
 	cali_servants_new_leader_1 = {
 		image = null,
+		music = "cali_theme",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -852,6 +853,7 @@ var data = {
 		reqs = [
 
 		],
+		music = "cali_theme",
 		character = "cali",
 		character2 = "amelia",
 		text = [

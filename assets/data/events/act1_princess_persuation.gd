@@ -21,6 +21,7 @@ var data = {
 	princess_persuation_init = {
 		custom_background = "jail",
 		image = null,
+		music = "intimate_dark",
 		character = "anastasia",
 		tags = ['dialogue_scene'],
 		text = [

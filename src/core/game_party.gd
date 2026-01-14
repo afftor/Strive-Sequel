@@ -314,6 +314,8 @@ func change_relationship_status(char1, char2, new_status, forced = false):
 	
 	data.status = new_status
 	
+	if babies.has(char1) or babies.has(char2):
+		return
 	if new_status in ['friends', 'rivals'] and f:
 		var ch1 = characters[char1]
 		var ch2 = characters[char2]
@@ -601,9 +603,13 @@ func get_character_by_pos(pos):
 	return characters[combatparty[pos]]
 
 #checks
-func if_has_hero(name):
+func if_unique_available(name):
 	for h in characters.values():
-		if h.get_stat('unique') == name: return true
+		if h.get_stat('unique') == name:
+			if h.is_on_quest():
+				return false
+			else:
+				return true
 	return false
 
 func if_master_is_beast(boolean):
@@ -618,18 +624,6 @@ func if_master_has_stat(name, operant, value):
 		return false
 	return input_handler.operate(operant, character.get(name), value)
 
-func if_party_level(operant,value):
-	var counter = 0
-	for i in combatparty.values():
-		if i != null:
-			counter += characters[i].get_stat('level')
-	return input_handler.operate(operant, counter, value)
-
-func if_hero_level(name, operant, value):
-	var hero
-	for h in characters.values():
-		if h.get_stat("name") == name: hero = h
-	return input_handler.operate(operant, hero.get_stat("level"), value)
 
 func check_profession_limit(name, value):
 	var counter = 0

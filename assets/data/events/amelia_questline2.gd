@@ -1281,6 +1281,7 @@ var data = {
 	},
 	amelia_prison_1 = {
 		image = "amelia_dungeon",
+		music = "amelia_theme",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1727,6 +1728,7 @@ var data = {
 	},
 	amelia_trial_1 = {
 		image = "letter",
+		music = "amelia_theme", 
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1924,6 +1926,7 @@ var data = {
 	},
 	amelia_trial_6 = {
 		character = "amelia",
+		music = "amelia_theme", 
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -4183,6 +4186,7 @@ var data = {
 	},
 	amelia_sex_1 = {
 		custom_background = "amelia_sex1",
+		 music = "intimate", 
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		unlocked_gallery_seq = "amelia_sex",

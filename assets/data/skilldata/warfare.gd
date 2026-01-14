@@ -46,6 +46,12 @@ var skills = {
 		sfx = [{code = 'sunder', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.85,
+		variations = [
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {targetreqs = [{code = 'has_status', status = 'shred', check = false}],} #to prevent overuse of long-duration buffs
+			}
+		]
 	},
 	cleave = {
 		code = 'cleave',
@@ -105,7 +111,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/skill_execute.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['damage','ads'],
+		tags = ['damage','ads','damage_spot','ultimate'],
 		reqs = [],
 		targetreqs = [],
 		effects = ['e_kill_execute'], 
@@ -120,7 +126,7 @@ var skills = {
 		damage_type = 'weapon',
 		sfx = [{code = 'execution', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 2.75,
+		value = 2.25,
 	},
 	execution_1 = {
 		code = 'execution_1',

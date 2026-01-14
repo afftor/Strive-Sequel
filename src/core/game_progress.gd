@@ -177,6 +177,8 @@ func fix_serialization():
 		globals.common_effects([{code = 'add_timed_event', value = "zephyra_painting_1", args = [{type = 'add_to_date', date = [2,5], hour = 1}]}])
 	if !seen_events.has("kuro3_init_1") && !timed_event_exists("kuro3_init_1") && completed_quests.has('kuro_errand_quest'):
 		globals.common_effects([{code = 'add_timed_event', value = "kuro3_init_1", args = [{type = 'add_to_date', date = [4,4], hour = 1}]}])
+	if !seen_events.has("mae_initiate_start") && !timed_event_exists("mae_initiate_start") && seen_events.has("after_ritual_good_2_1_2"):
+		globals.common_effects([{code = 'add_timed_event', value = "mae_initiate_start", args = [{type = 'add_to_date', date = [3,3], hour = 1}]}])
 	if !seen_events.has("heleviel_quest_1") and ResourceScripts.game_party.get_unique_slave('heleviel') != null:
 		globals.common_effects([{code = 'plan_mansion_event', value = "heleviel_quest_1"}])
 	#2add amelia questline here. idk how cause herbs quest can be failed - so need correct condition

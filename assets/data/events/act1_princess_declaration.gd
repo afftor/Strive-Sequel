@@ -2,6 +2,7 @@ extends Reference
 var data = {
 	princess_declaration_1 = {
 		image = null,
+		music = 'tragic',
 		character = "anastasia",
 		tags = [
 			"dialogue_scene",
@@ -234,8 +235,8 @@ var data = {
 							{
 								type = "add_to_date",
 								date = [
-									5,
-									5
+									3,
+									3
 								],
 								hour = 1
 							}
@@ -453,6 +454,7 @@ var data = {
 						check = true
 					}
 				],
+				music = "intimate",
 				image = null,
 				character = "anastasia",
 				tags = [
@@ -560,6 +562,7 @@ var data = {
 					}
 				],
 				image = null,
+				music = "intimate_dark",
 				character = "anastasia",
 				tags = [
 					"dialogue_scene",
@@ -1394,6 +1397,7 @@ var data = {
 	},
 	princess_sex_bad_1 = {
 		image = null,
+		music = "intimate_dark",
 		tags = [
 			"dialogue_scene",
 			"master_translate"

@@ -81,7 +81,10 @@ var effect_table = {
 		type = 'base',
 		stack = 'max_stats',
 		descript = '',
-		conditions = [{code = 'stat', stat = 'authority_factor', operant = 'gte', value = 6}],
+		conditions = [
+			{code = 'stat', stat = 'authority_factor', operant = 'gte', value = 6},
+			{code = 'is_master', check = false}
+			],
 		statchanges = {damage_reduction = 15},
 		buffs = [
 			{
@@ -109,7 +112,10 @@ var effect_table = {
 		type = 'base',
 		stack = 'max_stats',
 		descript = '',
-		conditions = [{code = 'stat', stat = 'tame_factor', operant = 'gte', value = 6}],
+		conditions = [
+			{code = 'stat', stat = 'tame_factor', operant = 'gte', value = 6},
+			{code = 'is_master', check = false}
+			],
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Authority.png",
@@ -266,7 +272,7 @@ var effect_table = {
 	work_rule_masturbation = {
 		type = 'simple',
 		conditions = [{code = 'workrule', check = true, value = 'masturbation'}],
-		statchanges = {lusttick_add_part = 0.15},
+		statchanges = {resistance_red = 0.2, productivity = -0.1},
 	},
 	
 	e_tr_copy_25 = { 
@@ -719,7 +725,7 @@ var effect_table = {
 	},
 	e_s_ensnare = {
 		type = 'temp_s',
-		tags = ['affliction', 'ensnare'],
+		tags = ['affliction', 'ensnared'],
 		target = 'target',
 		stack = 'ensnare',
 		tick_event = [variables.TR_TURN_F],
@@ -1267,7 +1273,10 @@ var stacks = {
 	blind = {}, #stack 1
 	fear = {}, #stack 1
 	shock = {}, #stack 1
-	stun = {}, #stack 1
+	stun = {
+		type = 'stack_a',
+		stack = 1,
+	}, #stack 1
 	charm = {}, #stack 1
 	wet = {}, #stack 1
 	freeze = {}, #stack 1

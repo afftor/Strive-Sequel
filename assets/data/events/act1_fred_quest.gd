@@ -372,6 +372,7 @@ var data = {
 
 	intermission_greg_demon1 = {
 		image = null,
+		music = 'intimate_dark',
 		character = "greg",
 		character2 = "demon_female",
 		tags = ["dialogue_scene", "master_translate","blackscreen_transition_slow"],

@@ -4,6 +4,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
+		music = 'dungeon',
 		character = "dwarf_king",
 		common_effects = [
 			{
@@ -191,6 +192,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
+		music = 'hara_theme',
 		character = "hara",
 		reqs = [
 
@@ -595,6 +597,7 @@ var data = {
 			"master_translate"
 		],
 		character = "heleviel",
+		music = 'heleviel_theme',
 		reqs = [
 
 		],
@@ -723,6 +726,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
+		music = 'dungeon',
 		reqs = [
 
 		],
@@ -1183,6 +1187,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
+		music = "frostford",
 		reqs = [
 
 		],
@@ -1337,6 +1342,7 @@ var data = {
 			"dialogue_scene",
 			"blackscreen_transition_common"
 		],
+		music = 'rouge_theme',
 		reqs = [
 
 		],
@@ -1467,6 +1473,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
+		music = 'rouge_theme',
 		reqs = [
 
 		],
@@ -1624,6 +1631,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
+		music = 'rouge_theme',
 		reqs = [
 
 		],
@@ -1814,6 +1822,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
+		music = 'kuro_theme',
 		reqs = [
 
 		],
@@ -1915,6 +1924,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
+		music = 'kuro_theme',
 		reqs = [
 
 		],

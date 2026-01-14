@@ -3,6 +3,7 @@ var data = {
 	
 	lira_mansion_1 = {
 		image = null,
+		music = "lira_theme",
 		unlocked_gallery_seq = "lira_mansion",
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene', 'master_translate'],
@@ -91,6 +92,7 @@ var data = {
 		image = null,
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
+		music = "intimate_dark",
 		custom_background = "lira_sex_1",
 		scene_type = "ero_scene",
 		text = [

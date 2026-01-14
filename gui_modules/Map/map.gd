@@ -136,6 +136,8 @@ func set_focus_area():
 #	$map.global_position = data.position
 	
 	for area in $map.get_children():
+		if area.is_in_group('highlight_ignore'):
+			continue
 		if area.name == selected_area:
 			area.highlight(area.HighlightColor)
 		else:
@@ -145,6 +147,8 @@ func set_focus_area():
 func set_focus_location(loc):
 	loc_locked = true
 	for area in $map.get_children():
+		if area.is_in_group('highlight_ignore'):
+			continue
 		if area.name == loc or area.name == selected_area:
 			area.highlight(area.HighlightColor)
 		else:
@@ -158,6 +162,8 @@ func unselect_location():
 		unselect_area()
 		return
 	for area in $map.get_children():
+		if area.is_in_group('highlight_ignore'):
+			continue
 		if area.name == selected_area:
 			area.highlight(area.HighlightColor)
 		else:

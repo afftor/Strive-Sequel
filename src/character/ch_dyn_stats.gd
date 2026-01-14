@@ -202,6 +202,10 @@ func process_prof_data(id, timestamp, process_skills = true):
 		for id in profdata.combatskills:
 			if !c_skills_real.has(id):
 				c_skills_real.push_back(id)
+		if profdata.has('exploreskills'):
+			for id in profdata.exploreskills:
+				if !e_skills_real.has(id):
+					e_skills_real.push_back(id)
 
 
 func process_trait_data(id, timestamp):
@@ -488,16 +492,22 @@ func fix_stat_data(stat, data):
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []
 			data.bonuses.add.push_back({value = min(get_stat('growth_factor') - 1, get_prof_number()) * 5, src_type = 'factor', src_value = 'growth', timestamp = 0})
-		'speed', 'hitrate':
+		'speed':
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []
 			data.bonuses.add.push_back({value = min(get_stat('growth_factor') - 1, get_prof_number()) * 4, src_type = 'factor', src_value = 'growth', timestamp = 0})
+		'hitrate':
+			if !data.bonuses.has('add'):
+				data.bonuses.add = []
+			data.bonuses.add.push_back({value = min(get_stat('growth_factor') - 1, get_prof_number()) * 4, src_type = 'factor', src_value = 'growth', timestamp = 0})
+			if has_status('arcane_blade'):
+				data.bonuses.add.push_back({value = get_stat('matk') * 0.35, src_type = 'class', src_value = 'arcane_blade', timestamp = 0})
 		'evasion':
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []
 			data.bonuses.add.push_back({value = min(get_stat('growth_factor') - 1, get_prof_number()) * 4, src_type = 'factor', src_value = 'growth', timestamp = 0})
 			if has_status('ninja'):
-				data.bonuses.add.push_back({value = get_stat('mdef'), src_type = 'class', src_value = 'ninja', timestamp = 0})
+				data.bonuses.add.push_back({value = get_stat('mdef')/4, src_type = 'class', src_value = 'ninja', timestamp = 0})
 		'atk', 'matk':
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []

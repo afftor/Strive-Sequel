@@ -399,7 +399,10 @@ func change_mastery(mas):
 			skill_icon.get_node('icon').texture = sdata.icon
 			skill_icon.get_node('icon').material.set_shader_param('mask', images.get_icon('frame_skill_mask'))
 			skill_icon.set_meta('display_only', true)
-			globals.connectskilltooltip(skill_icon, s_id, person)
+			if sdata.has('container'):
+				globals.connecttexttooltip(skill_icon, tr(sdata.descript))
+			else:
+				globals.connectskilltooltip(skill_icon, s_id, person)
 #			if f:
 #				text += tr('SKILLLEARN') + tr(sdata.name) + '\n'
 		for s_id in lvdata.explore_skills:

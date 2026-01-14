@@ -39,37 +39,44 @@ func build_skill_panel():
 			if !person.check_cost(skill.cost):
 				newbutton.disabled = true
 				newbutton.get_node("icon").material = load("res://assets/sfx/bw_shader.tres")
-			var charges = skill.charges
-			var used_charges = 0
-			if person.skills.social_skills_charges.has(skill.code):
-				used_charges = person.skills.social_skills_charges[skill.code]
-			text = str(charges - used_charges) + "/" + str(charges)
-
-			if (person.checkreqs(skill.reqs) == false) or (person.has_status('no_social_skills') and person.skills.active_panel == variables.PANEL_SOC) or person.get_work() == 'disabled':
+			if person.skills.active_panel == variables.PANEL_COM: 
 				newbutton.disabled = true
-				newbutton.get_node("icon").material = load("res://assets/sfx/bw_shader.tres")
-			newbutton.get_node("charges").text = text
-			newbutton.get_node("charges").show()
-			if charges - used_charges <= 0:
-				newbutton.disabled = true
-				if person.skills.social_cooldowns.has(skill.code):
-					newbutton.get_node('cooldown').visible = true
-					newbutton.get_node('cooldown').text = str(person.skills.social_cooldowns[skill.code])
-				if person.skills.daily_cooldowns.has(skill.code):
-					newbutton.get_node('cooldown').visible = true
-					newbutton.get_node('cooldown').text = str(person.skills.daily_cooldowns[skill.code])
-			if person.skills.active_panel == variables.PANEL_COM: newbutton.disabled = true
+				newbutton.texture_disabled = load("res://assets/images/gui/universal/skill_frame.png")
+				newbutton.get_node("charges").hide()
+				if skill.has('container'):
+					globals.connecttexttooltip(newbutton, tr(skill.descript))
+				else:
+					globals.connectskilltooltip(newbutton, skill.code, person)
+			else:
+				globals.connectskilltooltip(newbutton, skill.code, person)
+				var charges = skill.charges
+				var used_charges = 0
+				if person.skills.social_skills_charges.has(skill.code):
+					used_charges = person.skills.social_skills_charges[skill.code]
+				text = str(charges - used_charges) + "/" + str(charges)
+				newbutton.get_node("charges").text = text
+				newbutton.get_node("charges").show()
+				if charges - used_charges <= 0:
+					newbutton.disabled = true
+					if person.skills.social_cooldowns.has(skill.code):
+						newbutton.get_node('cooldown').visible = true
+						newbutton.get_node('cooldown').text = str(person.skills.social_cooldowns[skill.code])
+					if person.skills.daily_cooldowns.has(skill.code):
+						newbutton.get_node('cooldown').visible = true
+						newbutton.get_node('cooldown').text = str(person.skills.daily_cooldowns[skill.code])
+				if (person.checkreqs(skill.reqs) == false) or person.has_status('no_social_skills') or person.get_work() == 'disabled':
+					newbutton.disabled = true
+					newbutton.get_node("icon").material = load("res://assets/sfx/bw_shader.tres")
+			
 			newbutton.set_meta('skill', skill.code)
 			newbutton.connect("pressed",self,"select_skill_target", [skill.code])
-			globals.connectskilltooltip(newbutton, skill.code, person)
+			
 		else:
 			newbutton.connect('pressed',self,'select_skill_for_position', [i])
 
 		newbutton.set_script(load("res://src/scenes/RightClickReactButton.gd"))
 		newbutton.connect('signal_RMB_release',self,'select_skill_for_position', [i])
-		if person.skills.active_panel == variables.PANEL_COM:
-			newbutton.texture_disabled = load("res://assets/images/gui/universal/skill_frame.png")
-			newbutton.get_node("charges").hide()
+
 
 func tut_get_first_skill_btn():
 	return $SkillPanel.get_children()[0]

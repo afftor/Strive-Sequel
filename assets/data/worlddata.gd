@@ -297,7 +297,7 @@ var factiondata = {
 			},
 		],
 		events = [
-			'workers_init', 'workers_limnrov'
+			'workers_init', 'workers_limnrov', 'heleviel_christmas',
 			],
 		quests_easy = ["workers_craft_tools_easy",'workers_task_easy','workers_slave_easy'],
 		quests_medium = ['workers_resources_medium','workers_food_medium','workers_craft_tools_medium','workers_task_medium','workers_slave_medium'],
@@ -935,6 +935,27 @@ var fixed_location_options = { #override serialized data
 				{type = 'active_quest_stage', value = 'anastasia_quest', stage = 'stage5'}
 			], 
 			args = [{code = 'start_event', data = 'liora_return', args = []}]
+		},
+		{
+			text = tr("MAE_MARKET_OPTION"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'mae_city_quest', stage = 'stage0'}
+			], 
+			args = [{code = 'start_event', data = 'mae_market_start', args = []}]
+		},
+		{
+			text = tr("MAE_SHELIA_OPTION"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'mae_city_quest', stage = 'stage1'}
+			], 
+			args = [{code = 'start_event', data = 'mae_friend_visit_1', args = []}]
+		},
+		{
+			text = tr("MAE_POTION_OPTION"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'mae_city_quest', stage = 'stage3'}
+			], 
+			args = [{code = 'start_event', data = 'mae_friend_visit_2_start', args = []}]
 		},
 	],
 	elf_capital = [

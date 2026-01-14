@@ -655,6 +655,8 @@ func build_spell_panel():
 					$LocationGui/ItemUsePanel/SpellContainer/VBoxContainer
 				)
 				newnode.get_node('Icon').texture = skill.icon
+				if skill.tags.has('aura_active'):
+					newnode.get_node("Icon").material = load("res://assets/book_shader.tres")
 				newnode.get_node("name").text = skill.name
 				newnode.get_node("castername").text = person.get_short_name()
 				var text = skill.descript
@@ -684,7 +686,11 @@ func build_spell_panel():
 						if ResourceScripts.game_res.materials[k] < skill.catalysts[k]:
 							disabled = true
 				globals.connecttexttooltip(newnode, text)
-				newnode.dragdata = {skill = skill, caster = person}
+				if skill.target == 'self':
+					newnode.set_script(null)
+					newnode.connect('pressed', self, 'use_e_combat_skill', [person, person, skill])
+				else:
+					newnode.dragdata = {skill = skill, caster = person}
 				if !person.check_cost(skill.cost):
 					disabled = true
 				if person.has_status('no_obed_gain'):

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/dark temptation.ogg-a01acf7bbbc56b09f4ec9ed3a2cd9851.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/dark temptation.ogg"
+dest_files=[ "res://.import/dark temptation.ogg-a01acf7bbbc56b09f4ec9ed3a2cd9851.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

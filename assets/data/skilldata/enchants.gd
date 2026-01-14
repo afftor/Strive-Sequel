@@ -57,7 +57,7 @@ var effects = {
 					type = 'oneshot',
 					target = 'caster',
 					args = {
-						damage = {obj = 'skill', func = 'get', arg = 'process_value'},
+						value = {obj = 'skill', func = 'get', arg = 'process_value'},
 						src = {obj = 'self', func = 'src', src = 'true'},
 						mod = {obj = 'self', func = 'src', src = 0.1},
 					},
@@ -83,7 +83,7 @@ var effects = {
 					type = 'oneshot',
 					target = 'caster',
 					args = {
-						damage = {obj = 'skill', func = 'get', arg = 'process_value'},
+						value = {obj = 'skill', func = 'get', arg = 'process_value'},
 						src = {obj = 'self', func = 'src', src = 'true'},
 						mod = {obj = 'self', func = 'src', src = 0.15},
 					},
@@ -109,7 +109,7 @@ var effects = {
 					type = 'oneshot',
 					target = 'caster',
 					args = {
-						damage = {obj = 'skill', func = 'get', arg = 'process_value'},
+						value = {obj = 'skill', func = 'get', arg = 'process_value'},
 						src = {obj = 'self', func = 'src', src = 'true'},
 						mod = {obj = 'self', func = 'src', src = 0.2},
 					},
@@ -135,7 +135,7 @@ var effects = {
 					type = 'oneshot',
 					target = 'caster',
 					args = {
-						damage = {obj = 'skill', func = 'get', arg = 'process_value'},
+						value = {obj = 'skill', func = 'get', arg = 'process_value'},
 						src = {obj = 'self', func = 'src', src = 'true'},
 						mod = {obj = 'self', func = 'src', src = 0.25},
 					},

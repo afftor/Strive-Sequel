@@ -145,6 +145,7 @@ var data = {
 	
 	emp_ceremony_1 = {
 		reqs = [],
+		music = 'empire_capital',
 		image = null,
 		tags = ["dialogue_scene", 'blackscreen_transition_common'],
 		text = [{text = "EMP_CEREMONY_1",reqs = []}],
@@ -223,6 +224,7 @@ var data = {
 					{type = "location_has_specific_slaves", check = true, value = 1, location = 'empire_capital', reqs = [{code = 'unique', value = 'zephyra'}]},
 					{type = "location_has_specific_slaves", check = true, value = 1, location = 'empire_capital', reqs = [{code = 'unique', value = 'kuro'}]},
 					],
+				music = "rouge_theme",
 				image = null,
 				character = 'rouge',
 				tags = ["dialogue_scene", 'master_translate', 'blackscreen_transition_common'],
@@ -237,6 +239,7 @@ var data = {
 			{
 				reqs = [],
 				image = null,
+				music = "rouge_theme",
 				character = 'rouge',
 				tags = ["dialogue_scene", 'master_translate', 'blackscreen_transition_common'],
 				text = [
@@ -387,6 +390,7 @@ var data = {
 		reqs = [],
 		image = null,
 		character = 'rouge',
+		music = "rouge_theme",
 		tags = ["dialogue_scene", 'master_translate'],
 		text = [{text = "EMP_ARENA_6",reqs = []}],
 		options = [
@@ -424,6 +428,7 @@ var data = {
 		reqs = [],
 		image = null,
 		character = 'rouge',
+		music = "rouge_theme",
 		tags = ["dialogue_scene", 'master_translate'],
 		text = [{text = "EMP_ARENA_9",reqs = []}],
 		options = [
@@ -499,6 +504,7 @@ var data = {
 		reqs = [],
 		image = null,
 		character = 'erdyna',
+		music = "erdyna_theme",
 		tags = ["dialogue_scene", 'master_tarnslate'],
 		text = [{text = "EMP_ERDYNA_INTRO_3", reqs = []}],
 		options = [
@@ -538,6 +544,7 @@ var data = {
 	emp_erdyna_intro_6 = { #after duel route
 		reqs = [],
 		image = null,
+		music = "erdyna_theme",
 		character = 'erdyna',
 		tags = ["dialogue_scene", 'master_tarnslate'],
 		text = [
@@ -552,6 +559,7 @@ var data = {
 	emp_erdyna_intro_5 = {
 		reqs = [],
 		image = null,
+		music = "erdyna_theme",
 		character = 'erdyna',
 		tags = ["dialogue_scene", 'master_tarnslate'],
 		text = [

@@ -4,6 +4,7 @@ var data = {
 		reqs = [
 
 		],
+		music = "kuro_theme",
 		tags = [
 			"dialogue_scene"
 		],
@@ -308,6 +309,7 @@ var data = {
 		reqs = [
 
 		],
+		music = "kuro_theme",
 		tags = [
 			"dialogue_scene"
 		],
@@ -316,7 +318,7 @@ var data = {
 				text = "KURO3_INIT_1_1",
 				reqs = [
 
-				]
+				],
 			},
 			{
 				text = "KURO3_INIT_1_2",
@@ -335,7 +337,7 @@ var data = {
 		],
 		options = [
 			{
-				code = "kuro3_init_1",
+				code = "kuro3_init_1_1",
 				text = "KURO3_INIT_1_OPTION_1",
 				dialogue_argument = 2,
 				type = "next_dialogue",
@@ -344,7 +346,62 @@ var data = {
 				]
 			},
 			{
-				code = "kuro3_init_1",
+				code = "kuro3_init_1_1",
+				text = "KURO3_INIT_1_OPTION_2",
+				dialogue_argument = 3,
+				type = "next_dialogue",
+				reqs = [
+
+				]
+			},
+			{
+				code = "kuro3_init_2",
+				text = "KURO3_INIT_1_OPTION_3",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = [
+
+				]
+			}
+		],
+		character = "kuro"
+	},
+	kuro3_init_1_1 = {
+		reqs = [
+
+		],
+		music = "kuro_theme",
+		tags = [
+			"dialogue_scene"
+		],
+		text = [
+			{
+				text = "KURO3_INIT_1_2",
+				reqs = [
+
+				],
+				previous_dialogue_option = 2
+			},
+			{
+				text = "KURO3_INIT_1_3",
+				reqs = [
+
+				],
+				previous_dialogue_option = 3
+			}
+		],
+		options = [
+			{
+				code = "kuro3_init_1_1",
+				text = "KURO3_INIT_1_OPTION_1",
+				dialogue_argument = 2,
+				type = "next_dialogue",
+				reqs = [
+
+				]
+			},
+			{
+				code = "kuro3_init_1_1",
 				text = "KURO3_INIT_1_OPTION_2",
 				dialogue_argument = 3,
 				type = "next_dialogue",
@@ -424,6 +481,7 @@ var data = {
 		reqs = [
 
 		],
+		music = "kuro_theme",
 		tags = [
 			"dialogue_scene"
 		],
@@ -787,6 +845,7 @@ var data = {
 		reqs = [
 
 		],
+		music = "kuro_theme",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1070,6 +1129,7 @@ var data = {
 		reqs = [
 
 		],
+		music = "kuro_theme",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1228,9 +1288,12 @@ var data = {
 						value = "kuro_quest_3"
 					},
 					{
-						code = "remove_quest_location",
-						value = "quest_dungeon_kuro3"
+						code = "set_completed_active_location"
 					}
+#					{
+#						code = "remove_quest_location",
+#						value = "quest_dungeon_kuro3"
+#					}
 				]
 			}
 		]
@@ -1261,6 +1324,7 @@ var data = {
 		reqs = [
 
 		],
+		music = "tragic",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1336,9 +1400,12 @@ var data = {
 						value = "kuro_quest_3"
 					},
 					{
-						code = "remove_quest_location",
-						value = "quest_dungeon_kuro3"
+						code = "set_completed_active_location"
 					}
+#					{
+#						code = "remove_quest_location",
+#						value = "quest_dungeon_kuro3"
+#					}
 				]
 			}
 		],
@@ -1390,9 +1457,12 @@ var data = {
 						value = "kuro_quest_3"
 					},
 					{
-						code = "remove_quest_location",
-						value = "quest_dungeon_kuro3"
+						code = "set_completed_active_location"
 					}
+#					{
+#						code = "remove_quest_location",
+#						value = "quest_dungeon_kuro3"
+#					}
 				]
 			}
 		],
@@ -1437,9 +1507,12 @@ var data = {
 						value = "kuro_quest_3"
 					},
 					{
-						code = "remove_quest_location",
-						value = "quest_dungeon_kuro3"
+						code = "set_completed_active_location"
 					}
+#					{
+#						code = "remove_quest_location",
+#						value = "quest_dungeon_kuro3"
+#					}
 				]
 			}
 		]
@@ -1500,7 +1573,7 @@ var data = {
 		options = [
 			{
 				code = "kuro_dialogue_start",
-				text = "DIALOGUEBACK",
+				text = "DIALOGUECONTINUE",
 				dialogue_argument = 1,
 				type = "next_dialogue",
 				reqs = [

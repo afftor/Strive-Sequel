@@ -4,6 +4,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'dungeon',
 		tags = [
 			"dialogue_scene"
 		],
@@ -644,6 +645,7 @@ var data = {
 		reqs = [
 
 		],
+		music = "kuro_theme",
 		tags = [
 			"dialogue_scene"
 		],
@@ -766,6 +768,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'dungeon',
 		tags = [
 			"dialogue_scene"
 		],
@@ -1146,6 +1149,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'threat',
 		common_effects = [
 			{
 				code = "play_sound",
@@ -1309,6 +1313,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'dungeon',
 		tags = [
 			"dialogue_scene"
 		],
@@ -1819,6 +1824,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'dungeon',
 		tags = [
 			"dialogue_scene"
 		],
@@ -2221,6 +2227,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'hara_theme',
 		tags = [
 			"dialogue_scene"
 		],
@@ -2482,6 +2489,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'kuro_theme',
 		tags = [
 			"dialogue_scene"
 		],

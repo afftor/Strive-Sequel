@@ -36,6 +36,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
+		music = "threat",
 		reqs = [
 
 		],
@@ -223,6 +224,7 @@ var data = {
 			"dialogue_scene",
 			"blackscreen_transition_common"
 		],
+		music = "threat",
 		reqs = [
 
 		],
@@ -840,6 +842,7 @@ var data = {
 			"dialogue_scene",
 			"whitescreen_transition_common"
 		],
+		music = "threat",
 		reqs = [
 
 		],
@@ -997,6 +1000,7 @@ var data = {
 	},
 	priestess_talk_start = {
 		image = null,
+		music = "heleviel_theme",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1872,6 +1876,7 @@ var data = {
 	},
 	after_temple_priestess_1 = {
 		image = null,
+		music = "heleviel_theme",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2139,6 +2144,7 @@ var data = {
 	},
 	after_temple_priestess_5_1_3 = {
 		custom_background = "heleviel1",
+		music = 'intimate',
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		image = null,
@@ -2357,8 +2363,8 @@ var data = {
 							{
 								type = "add_to_date",
 								date = [
-									14,
-									14
+									5,
+									6
 								],
 								hour = 1
 							}
@@ -2525,6 +2531,7 @@ var data = {
 	},
 	lira_encounter_1 = {
 		image = null,
+		music = "lira_theme",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2941,6 +2948,7 @@ var data = {
 	},
 	erlen_lira_2 = {
 		image = null,
+		music = "dungeon",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -3440,6 +3448,7 @@ var data = {
 	},
 	erlen_leon_1 = {
 		image = null,
+		music = "threat",
 		tags = [
 			"dialogue_scene",
 			"master_translate",
@@ -3581,6 +3590,7 @@ var data = {
 	},
 	ceremony_1 = {
 		image = null,
+		music = "threat",
 		tags = [
 			"dialogue_scene",
 			"master_translate",
@@ -3657,6 +3667,7 @@ var data = {
 	},
 	ceremony_3 = {
 		image = null,
+		music = "stop",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -3719,6 +3730,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
+		music = "heleviel_theme",
 		reqs = [
 
 		],
@@ -3943,7 +3955,7 @@ var data = {
 								type = "add_to_date",
 								date = [
 									2,
-									5
+									4
 								],
 								hour = 1
 							}
@@ -3977,8 +3989,8 @@ var data = {
 							{
 								type = "add_to_date",
 								date = [
-									7,
-									8
+									4,
+									5
 								],
 								hour = 1
 							}
@@ -4025,8 +4037,8 @@ var data = {
 							{
 								type = "add_to_date",
 								date = [
-									7,
-									8
+									4,
+									5
 								],
 								hour = 1
 							}
@@ -4056,6 +4068,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
+		music = "lira_theme",
 		reqs = [
 
 		],
@@ -4260,7 +4273,7 @@ var data = {
 								type = "add_to_date",
 								date = [
 									2,
-									5
+									4
 								],
 								hour = 1
 							}
@@ -4294,8 +4307,8 @@ var data = {
 							{
 								type = "add_to_date",
 								date = [
-									7,
-									8
+									4,
+									5
 								],
 								hour = 1
 							}
@@ -4322,6 +4335,7 @@ var data = {
 	},
 	demon_priestess_1 = {
 		image = null,
+		music = 'intimate_dark',
 		tags = [
 			"dialogue_scene",
 			"blackscreen_transition_common"

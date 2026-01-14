@@ -156,6 +156,7 @@ var data = {
 		reqs = [
 
 		],
+		music = "kuro_theme",
 		tags = [
 			"dialogue_scene"
 		],
@@ -286,6 +287,7 @@ var data = {
 						check = true
 					}
 				],
+				music = "kuro_theme",
 				tags = [
 					"dialogue_scene"
 				],
@@ -342,6 +344,7 @@ var data = {
 						check = false
 					}
 				],
+				music = "kuro_theme",
 				tags = [
 					"dialogue_scene"
 				],
@@ -552,6 +555,7 @@ var data = {
 		reqs = [
 
 		],
+		music = "kuro_theme",
 		common_effects = [
 			{
 				code = "remove_quest_location",
@@ -673,6 +677,7 @@ var data = {
 		reqs = [
 
 		],
+		music = "intimate_dark",
 		tags = [
 			"dialogue_scene"
 		],
@@ -977,18 +982,22 @@ var data = {
 		reqs = [
 
 		],
+		music = "kuro_theme",
 		tags = [
 			"dialogue_scene",
 			"blackscreen_transition_common"
 		],
 		common_effects = [
 			{
-				code = "return_to_mansion"
+				code = "set_completed_active_location"
 			},
 			{
-				code = "remove_quest_location",
-				value = "quest_cult_parentbase"
+				code = "return_to_mansion"
 			},
+#			{
+#				code = "remove_quest_location",
+#				value = "quest_cult_parentbase"
+#			},
 			{
 				code = 'affect_unique_character',
 				name = 'kuro',
@@ -1039,7 +1048,7 @@ var data = {
 						value = "kuro_errand_quest"
 					},
 					{
-						code = 'add_timed_event', value = "kuro3_init_1", args = [{type = 'add_to_date', date = [4, 4], hour = 1}]
+						code = 'add_timed_event', value = "kuro3_init_1", args = [{type = 'add_to_date', date = [3,3], hour = 1}]
 					}
 				]
 			},
@@ -1237,7 +1246,7 @@ var data = {
 						value = "kuro_errand_quest"
 					},
 					{
-						code = 'add_timed_event', value = "kuro3_init_1", args = [{type = 'add_to_date', date = [4, 4], hour = 1}]
+						code = 'add_timed_event', value = "kuro3_init_1", args = [{type = 'add_to_date', date = [3, 3], hour = 1}]
 					}
 				]
 			}
@@ -1248,18 +1257,22 @@ var data = {
 		reqs = [
 
 		],
+		music = "kuro_theme",
 		tags = [
 			"dialogue_scene",
 			"blackscreen_transition_common"
 		],
 		common_effects = [
 			{
-				code = "return_to_mansion"
+				code = "set_completed_active_location"
 			},
 			{
-				code = "remove_quest_location",
-				value = "quest_cult_parentbase"
+				code = "return_to_mansion"
 			},
+#			{
+#				code = "remove_quest_location",
+#				value = "quest_cult_parentbase"
+#			},
 			{
 				code = 'affect_unique_character',
 				name = 'kuro',
@@ -1418,7 +1431,7 @@ var data = {
 						value = "kuro_errand_quest"
 					},
 					{
-						code = 'add_timed_event', value = "kuro3_init_1", args = [{type = 'add_to_date', date = [4, 4], hour = 1}]
+						code = 'add_timed_event', value = "kuro3_init_1", args = [{type = 'add_to_date', date = [3, 3], hour = 1}]
 					}
 				]
 			}

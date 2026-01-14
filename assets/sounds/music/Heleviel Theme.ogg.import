@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Heleviel Theme.ogg-39b3ff8342339b70f274188230beef6b.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/Heleviel Theme.ogg"
+dest_files=[ "res://.import/Heleviel Theme.ogg-39b3ff8342339b70f274188230beef6b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

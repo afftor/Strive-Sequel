@@ -7,7 +7,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/windblade.png",
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['damage', 'air'],
+		tags = ['damage', 'air', 'damage_spread'],
 		reqs = [],
 		targetreqs = [],
 		effects = [], 
@@ -136,6 +136,10 @@ var skills = {
 				set = {target_number = 'all'},
 				add = {descript = '_2'}
 			},
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {targetreqs = [{code = 'has_status', status = 'shield', check = false}],} #to prevent overuse of long-duration buffs
+			}
 		]
 	},
 	tempest = {
@@ -159,7 +163,13 @@ var skills = {
 		damage_type = 'air',
 		sfx = [{code = 'tempest', target = 'target_group', period = 'windup'}], 
 		sounddata = {initiate = null, strike = 'spell_lightning', hit = null},
-		value = 1.2
+		value = 1.2,
+		variations = [
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {combatcooldown = 5} #to prevent spaming
+			}
+		]
 	},
 	eyeofthestorm = {
 		code = 'eyeofthestorm',
@@ -169,7 +179,7 @@ var skills = {
 		ability_type = 'spell',
 		tags = ['support', 'buff', 'instant'],
 		reqs = [],
-		targetreqs = [],
+		targetreqs = [{code = 'has_status', status = 'eyeofthestorm', check = false}],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_eye', duration = 6, push_value = true})], 
 		cost = {mp = 15},
 		charges = 0,
@@ -210,7 +220,7 @@ var effects = {
 		tick_event = variables.TR_TURN_F,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
-		tags = ['buff'],
+		tags = ['buff', 'shield'],
 		statchanges = {resist_earth = 40, resist_ranged = 0.1},
 		buffs = [
 			{
@@ -226,7 +236,7 @@ var effects = {
 		tick_event = variables.TR_TURN_F,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
-		tags = ['buff'],
+		tags = ['buff', 'eyeofthestorm'],
 		args = {damage = {obj = 'process_value', func = 'eq'}},
 		sub_effects = ['e_tr_eye'],
 		atomic = [],

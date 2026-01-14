@@ -9,13 +9,11 @@ onready var descedit = $MarginContainer/VBoxContainer/HBoxContainer/desc_panel/V
 
 var condtypes = [
 		'has_money',
-		'has_hero',
+		'unique_avialable',
 		'has_material',
 		'date',
 		'hour',
 		'has_upgrade',
-		'party_level',
-		'hero_level',
 		'active_character_checks',
 		'master_is_beast',
 		'unique_character_at_mansion',
@@ -24,13 +22,11 @@ var condtypes = [
 		'group_size',]
 var types_desc = [
 		'has_money',
-		'has_hero',
+		'unique_avialable',
 		'has_material',
 		'date',
 		'hour',
 		'has_upgrade',
-		'party_level',
-		'hero_level',
 		'active_character_checks',
 		'master_is_beast',
 		'unique_character_at_mansion',
@@ -77,7 +73,7 @@ func _init():
 			type = editor_core.PANEL_OPTION,
 			stat = 'name',
 			container = 0,
-			groups = ['hero_level', 'unique_character_at_mansion', 'has_hero'],
+			groups = ['unique_character_at_mansion', 'unique_avialable'],
 			rlist = worlddata.pregen_characters.keys() + worlddata.easter_egg_characters.keys(),
 			dlist = editor_core.get_list(worlddata.pregen_characters, 'name', 'code') + editor_core.get_list(worlddata.easter_egg_characters, 'name', 'code'),
 		},

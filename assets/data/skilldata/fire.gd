@@ -62,6 +62,16 @@ var skills = {
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],
+		variations = [
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {targetreqs = [
+					{code = 'has_status', status = 'wet', check = true},
+					{code = 'has_status', status = 'stun', check = true, orflag = true},
+					{code = 'has_status', status = 'fear', check = true, orflag = true},
+				],}  #to prevent useless buffing
+			}
+		]
 	},
 	fire_shield = {
 		code = 'fire_shield',
@@ -99,6 +109,10 @@ var skills = {
 				set = {target_number = 'all'},
 				add = {descript = '_2'}
 			},
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {targetreqs = [{code = 'has_status', status = 'shield', check = false}],} #to prevent overuse of long-duration buffs
+			}
 		]
 	},
 	magma_blast = {
@@ -107,7 +121,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/skill_magma blast.png",
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['damage','ads','fire'],
+		tags = ['damage','ads','fire', 'damage_spot'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_shatter', duration = 5})], 
@@ -122,7 +136,13 @@ var skills = {
 		damage_type = 'fire',
 		sfx = [{code = 'magma_blast', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'absolute'},
-		value = 1.5
+		value = 1.5,
+		variations = [
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {combatcooldown = 3} #to prevent spaming, due to high priority and zero cost for AI, looking for shatterable target is ineffective 
+			}
+		]
 	},
 	inferno = {
 		code = 'inferno',
@@ -130,7 +150,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/FireBomb.png",
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['damage','ads','fire', 'aoe'],
+		tags = ['damage','ads','fire', 'aoe', 'ultimate'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'burn', duration = 2})], 
@@ -154,7 +174,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/firebolt.png", 
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['damage','ads','fire'],
+		tags = ['damage','ads','fire', 'damage_spot'],
 		reqs = [
 			{code = 'stat', stat = 'mastery_fire', value = 4, operant = 'gte'},
 			{code = 'stat', stat = 'mastery_earth', value = 5, operant = 'gte'},
@@ -181,7 +201,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/dark flame.png",
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['ads','aoe', 'fire'],
+		tags = ['ads', 'fire'],
 		reqs = [
 			{code = 'stat', stat = 'mastery_fire', value = 5, operant = 'gte'},
 			{code = 'stat', stat = 'mastery_dark', value = 3, operant = 'gte'},

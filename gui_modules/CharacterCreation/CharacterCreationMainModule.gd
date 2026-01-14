@@ -106,21 +106,9 @@ var params_to_save = [ #memo mostly
 #	"legs",
 	"body_lower",
 	"body_shape",
-	"penis_size",
-	"penis_type",
-	"balls_size",
-	"tits_size",
-	"ass_size",
-	"multiple_tits",
-	"multiple_tits_developed",
-	"penis_virgin",
-	"vaginal_virgin",
-	"anal_virgin",
-	"mouth_virgin",
 	"food_filter",
 	"physics_factor",
 	"wits_factor",
-#	"growth_factor", idk why
 	"charm_factor",
 	"sexuals_factor",
 	"magic_factor",
@@ -156,10 +144,21 @@ var params_to_save = [ #memo mostly
 	'hair_base_color_1',
 	'hair_base_color_2',
 	'beard',
-	'hair_facial_color'
+	'hair_facial_color',
+	"penis_size",
+	"penis_type",
+	"balls_size",
+	"tits_size",
+	"ass_size",
+	"multiple_tits",
+	"multiple_tits_developed",
+	"penis_virgin",
+	"vaginal_virgin",
+	"anal_virgin",
+	"mouth_virgin",
 ]
 
-var tooltips_stat = ['personality','slave_class']
+var tooltips_stat = ['slave_class']
 
 onready var RaceSelection = $RaceSelectionModule
 onready var ClassSelection = $ClassSelectionModule
@@ -167,6 +166,12 @@ onready var TraitSelection = $TraitSelection
 onready var ragdoll = $RagdollPanel/ragdoll
 
 var possible_vals = {}
+var personality_icons = {
+	bold = load("res://assets/Textures_v2/MANSION/personality_bold.png"),
+	kind = load("res://assets/Textures_v2/MANSION/personality_kind.png"),
+	shy = load("res://assets/Textures_v2/MANSION/personality_shy.png"),
+	serious = load("res://assets/Textures_v2/MANSION/personality_serious.png"),
+}
 
 
 func _ready():
@@ -187,9 +192,13 @@ func _ready():
 	$VBoxContainer/race.connect("pressed", RaceSelection, "select_race")
 	$VBoxContainer/sextrait.connect('pressed', self, "open_sex_traits")
 	$VBoxContainer/trait.connect('pressed', self, "open_traits")
+	$VBoxContainer/personality.connect('pressed', self, "open_personality_selection")
+	globals.connecttexttooltip($VBoxContainer/personality, tr("INFOPERSONALITY"))
+	$RaceReroll.connect("pressed", self, "reroll_race")
 	
 	$modes/Stats.connect("pressed", self, 'build_stats')
 	$modes/Visuals.connect("pressed", self, 'build_visuals')
+	$AppearanceReroll.connect("pressed", self, "reroll_appearance")
 	
 	$UpgradesPanel.visible = false
 	$VBoxContainer.visible = true
@@ -200,12 +209,76 @@ func _ready():
 	
 	for i in ['name','surname','nickname']:
 		$VBoxContainer.get_node(i).connect("text_changed", self, 'text_changed', [i])
+	$NameReroll.connect("pressed", self, "reroll_name")
 	
 	$VBoxContainer/class.connect("pressed", ClassSelection, "open_class_list")
 	$BackButton.connect("pressed", self, "Exit")
 	$BackButtonCheats.connect("pressed", self, "hide")
 	if testmode:
 		open()
+
+
+func reroll_name():
+	person.get_random_name()
+	preservedsettings['name'] = person.get_stat('name')
+	preservedsettings['surname'] = person.get_stat('surname')
+	build_node_for_stat('name')
+	build_node_for_stat('surname')
+	build_description()
+
+
+func reroll_race():
+	if mode == 'freemode':
+		return
+	var available_races = races.racelist.keys()
+	if available_races.empty():
+		return
+	var current_race = person.get_stat('race')
+	var new_race = input_handler.random_from_array(available_races)
+	if available_races.size() > 1:
+		while new_race == current_race:
+			new_race = input_handler.random_from_array(available_races)
+	if current_race != new_race:
+		person.set_stat('race', new_race)
+		preservedsettings["race"] = new_race
+		preservedsettings.erase('surname')
+		rebuild_slave()
+	build_race()
+
+
+func reroll_appearance():
+	build_possible_vals()
+	var updated_stats = []
+	for stat in params_to_save:
+		if stat in ["name", "surname", "nickname", "sex", "age", "race", "traits", "sex_traits", "professions", "food_filter", "personality", "slave_class"]:
+			continue
+		if stat.ends_with('_virgin'):
+			continue
+		if stat.ends_with('_factor'):
+			continue
+		if !possible_vals.has(stat):
+			continue
+		if possible_vals[stat].empty():
+			continue
+		var new_val = input_handler.random_from_array(possible_vals[stat])
+		person.set_stat(stat, new_val)
+		preservedsettings[stat] = new_val
+		updated_stats.append(stat)
+	if input_handler.globalsettings.generate_portraits:
+		person.make_random_portrait()
+	rebuild_ragdoll()
+	for stat in updated_stats:
+		if stat.find('color') != -1:
+			build_selectable_node(stat)
+		build_node_for_stat(stat)
+	build_description()
+	build_upgrades()
+
+
+func apply_default_personality():
+	preservedsettings.erase('personality')
+	person.set_stat('personality', 'neutral')
+	build_personality()
 
 
 func build_stats():
@@ -269,6 +342,22 @@ func build_possible_vals():
 		build_possible_val_for_stat(stat)
 
 
+func get_personality_options():
+	var options = []
+	for code in variables.personality_array:
+		if code == 'neutral':
+			continue
+		options.push_back(code)
+	return options
+
+
+func has_selected_personality():
+	var personality = person.get_stat('personality')
+	if personality == null or personality == '' or personality == 'neutral':
+		return false
+	return get_personality_options().has(personality)
+
+
 func build_possible_val_for_stat(stat):
 	if person.is_unique():
 		possible_vals[stat] = []
@@ -297,8 +386,7 @@ func build_possible_val_for_stat(stat):
 		possible_vals.age = agearray.duplicate()
 		return
 	if stat == 'personality':
-		possible_vals.personality = variables.personality_array.duplicate()
-#		possible_vals.personality.erase('neutral')
+		possible_vals.personality = get_personality_options()
 		return
 	if mode == 'freemode' and !critical_stats.has(stat) or free_stats.has(stat):
 		if GeneratorData.transforms.has(stat):
@@ -785,6 +873,7 @@ func rebuild_slave():
 	
 	person = t_person
 	
+	apply_default_personality()
 	build_possible_vals()
 	for stat in ["physics_factor", "magic_factor", "tame_factor", "authority_factor", "charm_factor", "wits_factor", "sexuals_factor"]:
 		person.set_stat(stat, 1)
@@ -894,6 +983,10 @@ func check_confirm_possibility():
 		
 		if !check_class_possibility():
 			input_handler.SystemMessage("You must select a correct starting Class")
+			return false
+		
+		if !has_selected_personality():
+			input_handler.SystemMessage("You must select a Personality")
 			return false
 	
 	elif !check_upgrades():
@@ -1050,6 +1143,8 @@ func RebuildStatsContainer(): #onready scheme build, not values
 	for stat in params_to_save:
 		if stat in ["name", "surname", "nickname", "sex", "age", "race", "traits", "sex_traits", "professions", "food_filter"]:
 			continue
+		if stat == 'personality':
+			continue
 		if stat.ends_with('factor'):
 			var i = statdata.statdata[stat]
 			var newnode = input_handler.DuplicateContainerTemplate($StatsModule/StatsContainer)
@@ -1087,10 +1182,13 @@ func RebuildStatsContainer(): #onready scheme build, not values
 			globals.connecttexttooltip(newnode.get_node('header/Tooltip'), tr("INFO" + stat.to_upper()))
 
 
+
 func FillStats():
 #	build_possible_vals()
 	for stat in params_to_save:
 		if stat in ["race", "traits", "sex_traits", "professions", 'food_filter']:
+			continue
+		if stat == 'personality':
 			continue
 		if stat.find('color') != -1:
 			build_selectable_node(stat)
@@ -1098,6 +1196,7 @@ func FillStats():
 #	build_class()
 	build_description()
 	build_race()
+	build_personality()
 	update_points()
 	build_upgrades()
 #	build_food_filter()
@@ -1114,6 +1213,11 @@ func open_traits():
 	TraitSelection.build_trait()
 
 
+func open_personality_selection():
+	hide_all_dialogues()
+	TraitSelection.build_personality()
+
+
 func select_sex_trait(trait_id):
 	preservedsettings["sex_traits"] = trait_id
 	$TraitSelection.hide()
@@ -1128,6 +1232,15 @@ func select_trait(trait_id):
 	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 #	RebuildStatsContainer()
 	build_trait()
+
+
+func select_personality(code):
+	preservedsettings['personality'] = code
+	person.set_stat('personality', code)
+	TraitSelection.hide()
+	build_personality()
+	build_description()
+	update_points()
 
 
 func build_trait():
@@ -1167,6 +1280,21 @@ func build_sex_trait():
 	$VBoxContainer/sextrait.disabled = (mode == 'freemode')
 
 
+func build_personality():
+	var personality = person.get_stat('personality')
+	var has_selection = personality != null and personality != '' and personality != 'neutral'
+	if has_selection:
+		$VBoxContainer/personality/Label.text = tr("PERSONALITYNAME" + personality.to_upper())
+		if personality_icons.has(personality):
+			$VBoxContainer/personality/icon.texture = personality_icons[personality]
+		else:
+			$VBoxContainer/personality/icon.texture = null
+	else:
+		$VBoxContainer/personality/Label.text = "Personality"
+		$VBoxContainer/personality/icon.texture = null
+	$VBoxContainer/personality.disabled = (mode == 'freemode')
+
+
 func build_race():
 #	if preservedsettings.has("race") && preservedsettings.race != null:
 #		var rdata = races.racelist[preservedsettings.race]
@@ -1187,6 +1315,7 @@ func build_race():
 	else:
 		$VBoxContainer/race/icon.texture = rdata.icon
 	$VBoxContainer/race.disabled = (mode == 'freemode')
+	$RaceReroll.disabled = (mode == 'freemode')
 
 
 func check_class_possibility():

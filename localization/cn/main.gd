@@ -179,6 +179,17 @@ var TranslationDict = {
 	EXPLOREUPGRADES = "升级",
 	EXPLORESERVICE = "接待",
 	EXPLOREGUILDSHOP = "公会商店",
+	STATSTRADING_IMPROVED_STATUS = """Improved Status""", # MISSING TRANSLATION
+	STATSTRADING_STAT_NAME = """Stat Name""", # MISSING TRANSLATION
+	STATSTRADING_CURRENT_VALUE = """Current Value""", # MISSING TRANSLATION
+	STATSTRADING_PRICE = """Price""", # MISSING TRANSLATION
+	STATSTRADING_UPGRADE = """Upgrade""", # MISSING TRANSLATION
+	STATSTRADING_TESTING = """Testing""", # MISSING TRANSLATION
+	STATSTRADING_CHOOSE_RECEIVER = """Choose Receiver""", # MISSING TRANSLATION
+	STATSTRADING_CHOOSE_DONOR = """Choose Donor""", # MISSING TRANSLATION
+	STATSTRADING_NOTHING_TO_UPGRADE = """Nothing to Upgrade""", # MISSING TRANSLATION
+	STATSTRADING_CHARACTER_NAME = """Character Name""", # MISSING TRANSLATION
+	STATSTRADING_FACTOR_UPGRADES = """Factor Upgrades""", # MISSING TRANSLATION
 	EXPLORESLAVEQUESTS = """Houses""", # MISSING TRANSLATION
 	
 	SIBLINGMODULESKILLSKILLS = "性技能",
@@ -334,6 +345,12 @@ var TranslationDict = {
 	REQRACE = "比赛",
 	REQRACEISBEAST = "仅适用于最佳比赛",
 	REQMUSTHAVEGEAR = "必须有",
+	REQMUSTHAVEGEAR_FALSE = """Must not have""", # MISSING TRANSLATION
+	REQMUSTHAVEGEARTYPE = """gear of type:""", # MISSING TRANSLATION
+	REQMUSTHAVEGEARTYPE_SPEAR = """polearm""", # MISSING TRANSLATION
+	REQMUSTHAVEGEARTYPE_BOW = """ranged weapon""", # MISSING TRANSLATION
+	REQMUSTHAVEGEARTYPE_MEDIUM = """medium armor""", # MISSING TRANSLATION
+	REQMUSTHAVEGEARTYPE_HEAVY = """heavy armor""", # MISSING TRANSLATION
 	REQPROFLIMIT = "只有",
 	REQPROFLIMIT2 = "允许",
 	REQONEOFRACES = "仅供",
@@ -2554,6 +2571,9 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	TRAITADVANCED_SPELLSDESCRIPT = "Allows to learn advanced combat spells and staves\n允许学习使用高级战斗法术和法杖",
 	
 	TRAITHUNTER_DAMAGEDESCRIPT = "Damage vs Beasts: +15%\n对野兽的伤害：+15%",
+	TRAITSPELLSWORDDESCRIPT = """All single target and row (3 targets) abilities (skills and spells) can only be cast in melee range and has melee range penalty for back rows/being cast from back rows (half damage). 
+Single target magic spells have 100% chance to be followed up with a basic melee attack.""", # MISSING TRANSLATION
+	TRAITCASTERDESCRIPT = """Recover 10% of maximum mana after combat""", # MISSING TRANSLATION
 	TRAITBISHOPDESCRIPT = "Light Magic damage: +40%\n光魔法伤害：+40%",
 	TRAITDRUIDDESCRIPT = "Earth Spell damage: +20%\n地法术伤害：+20%",
 	TRAITBERSERKERDESCRIPT = "Fire and Earth Physical damage: +20%\n火和地物理伤害：+20%",
@@ -2738,6 +2758,18 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	TRAITEFFECTRAREDEADLY = "Rare: Deadly\nIncreased Damage and Hitrate",
 	TRAITEFFECTRAREPRECISE = "Rare: Precise\nIncreased Evasion, Hitrate and MDEF",
 	TRAITEFFECTRARETOUGH = "Rare: Tough\nIncreased Health, DEF and MDEF",
+	TRAITMONSTER_MASTERY_WARFAREDESCRIPT = """Warfare Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_PROTECTIONDESCRIPT = """Protection Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_STEALTHDESCRIPT = """Stealth Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_MARKSMANSHIPDESCRIPT = """Marksmanship Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_LEADERSHIPDESCRIPT = """Leadershp Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_FIREDESCRIPT = """Fire Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_WATERDESCRIPT = """Water Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_AIRDESCRIPT = """Air Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_EARTHDESCRIPT = """Earth Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_LIGHTDESCRIPT = """Light Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_DARKDESCRIPT = """Dark Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_MINDDESCRIPT = """Mind Mastery""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_WARFARE_DESCRIPT = """Has enemy variation of warfare mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_PROTECTION_DESCRIPT = """Has enemy variation of protection mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_STEALTH_DESCRIPT = """Has enemy variation of stealth mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
@@ -2912,6 +2944,8 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	PROFHUNTERDESCRIPT = "Hunters specialize in tracking and killing game.\n猎人专门从事追踪和杀戮游戏",
 	PROFSMITH = "Blacksmith 铁匠",
 	PROFSMITHDESCRIPT = "Smiths are master craftsmen, able to work with all sorts of materials.\n铁匠是能工巧匠，能够使用各种材料",
+	PROFTAILOR = """Tailor""", # MISSING TRANSLATION
+	PROFTAILORDESCRIPT = """Tailors specialize in production of cloth and leather armor as well as everyday garments.""", # MISSING TRANSLATION
 	PROFCHEF = "Chef 厨师",
 	PROFCHEFDESCRIPT = "A skilled cook is always a valuable addition to any household.\n一个熟练的厨师总是任何家庭的宝贵补充",
 	PROFATTENDANT = "Attendant 侍从",
@@ -3019,6 +3053,10 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	PROFMONKDESCRIPT = "Religious fighters who utilize their spiritual training to deal with the enemies.\n利用他们的精神训练来对付敌人的宗教战士",
 	PROFBISHOP = "Bishop 主教",
 	PROFBISHOPDESCRIPT = "Only selected few manage to reach this rank. Highest members of the church capable of unleashing divine powers.\n只有少数人能够达到这个级别。教会中能够释放神圣力量的最高成员",
+	PROFSPELLSWORD = """Spellsword""", # MISSING TRANSLATION
+	PROFSPELLSWORDDESCRIPT = """By mixing magic and martial arts especially gifted individuals are capable of fighting with both at the same time.""", # MISSING TRANSLATION
+	PROFARCANEBLADE = """Arcane Blade""", # MISSING TRANSLATION
+	PROFARCANEBLADDESCRIPT = """Further honing their magic skills, Spellswords become capable not only flinging spells in the midst of fight but even imbuing their weapon in elements.""", # MISSING TRANSLATION
 	PROFSPOUSE = "Husband",
 	PROFSPOUSEALT = "Wife",
 	PROFSPOUSEDESCRIPT = "An officially engaged spouse of Mansion's [Master]. Obedience Drain is 0. Loyalty Gain +3.",
@@ -4106,6 +4144,8 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	ENEMYKURDAN = "库尔丹",
 	
 	ENEMYLEON = "莱昂",
+	ENEMYLILITH_BOSS_1 = """Ashmedai""", # MISSING TRANSLATION
+	ENEMYLILITH_BOSS_2 = """Ashmedai""", # MISSING TRANSLATION
 	ENEMYWHITE_STAG = "白色牡鹿",
 	ENEMYWHITE_STAG_HUMAN = "神秘人",
 	ENEMYELF_SPECTER = "精灵幽魂",
@@ -15442,6 +15482,7 @@ Hotkey: 3""",
 	DISLIKED_ACTIONS_LABEL = "Disliked actions",
 	NOSERVITUDE = """-Servitude""", # MISSING TRANSLATION
 	COMBAT_ABILS_LABEL = "Combat Abilitites",
+	ONQUESTLABEL = """[name] is unavailable at this point of time.""", # MISSING TRANSLATION
 	DATING_LIVING_ROOM = "Living Room",
 	DATING_BEDROOM = "Bedroom",
 	DATING_TORTURE_ROOM = "Torture Room",

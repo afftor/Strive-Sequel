@@ -149,6 +149,11 @@ margin_bottom = 1080.0
 theme = ExtResource( 1 )
 script = ExtResource( 7 )
 
+[node name="back" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand = true
+
 [node name="VideoPlayer" parent="." instance=ExtResource( 96 )]
 autoplay = false
 
@@ -291,9 +296,6 @@ show_behind_parent = true
 margin_right = 517.0
 margin_bottom = 796.0
 custom_styles/panel = SubResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HireBG2" type="Panel" parent="SlaveMarket"]
 self_modulate = Color( 0, 0, 0, 0.705882 )
@@ -963,59 +965,40 @@ align = 1
 valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SlaveMarket"]
-margin_left = 63.0
+margin_left = 40.0
 margin_top = 720.0
-margin_right = 466.0
+margin_right = 704.0
 margin_bottom = 778.0
 custom_constants/separation = 15
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EnslaveButton" type="TextureButton" parent="SlaveMarket/HBoxContainer"]
-margin_right = 194.0
-margin_bottom = 58.0
-theme = ExtResource( 31 )
-texture_normal = ExtResource( 41 )
-texture_pressed = ExtResource( 39 )
-texture_hover = ExtResource( 36 )
-
-[node name="Label" type="Label" parent="SlaveMarket/HBoxContainer/EnslaveButton"]
-margin_top = -2.0
-margin_right = 194.0
-margin_bottom = 56.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 120 )
-text = "DIALOGUERECRUITFORCEATTEMPT"
-align = 1
-valign = 1
 
 [node name="UpgradeButton" type="TextureButton" parent="SlaveMarket/HBoxContainer"]
-margin_left = 209.0
-margin_right = 403.0
+margin_right = 220.0
 margin_bottom = 58.0
+rect_min_size = Vector2( 220, 58 )
 theme = ExtResource( 31 )
 texture_normal = ExtResource( 41 )
 texture_pressed = ExtResource( 39 )
 texture_hover = ExtResource( 36 )
+expand = true
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Label" type="Label" parent="SlaveMarket/HBoxContainer/UpgradeButton"]
+margin_left = 4.0
 margin_top = -2.0
-margin_right = 194.0
+margin_right = 212.0
 margin_bottom = 56.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 120 )
 text = "UPGRADE_LABEL"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+clip_text = true
 
 [node name="UpgradeButton2" type="TextureButton" parent="SlaveMarket/HBoxContainer"]
-margin_left = 418.0
-margin_right = 612.0
+margin_left = 235.0
+margin_right = 429.0
 margin_bottom = 58.0
 theme = ExtResource( 31 )
 texture_normal = ExtResource( 41 )

@@ -2,6 +2,7 @@ extends Reference
 var data = {
 	zephyra_quest_1 = {
 		image = null,
+		music = "zephyra_theme", 
 		tags = [
 			"dialogue_scene"
 		],
@@ -995,6 +996,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
+		music = "intimate_funny", 
 		reqs = [
 			{
 				type = "has_upgrade",
@@ -1221,7 +1223,7 @@ var data = {
 								type = "add_to_date",
 								date = [
 									2,
-									5
+									3
 								],
 								hour = 1
 							}
@@ -1264,8 +1266,8 @@ var data = {
 							{
 								type = "add_to_date",
 								date = [
-									5,
-									10
+									3,
+									5
 								],
 								hour = 2
 							}
@@ -1277,6 +1279,7 @@ var data = {
 	},
 	zephyra_lilia_1 = {
 		image = null,
+		music = "lilia_theme", 
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1536,6 +1539,7 @@ var data = {
 			"master_translate",
 			"blackscreen_transition_common"
 		],
+		music = "intimate", 
 		unlocked_gallery_seq = "zephyra_lilia",
 		save_scene_to_gallery = true,
 		reqs = [

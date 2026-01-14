@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://gui_modules/upgrades_new/upgrades_new.gd" type="Script" id=1]
 [ext_resource path="res://assets/Themes_v2/BasePanelFlat.tres" type="StyleBox" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonmagenta.png" type="Texture" id=6]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_30.tres" type="DynamicFont" id=7]
 [ext_resource path="res://dragarraytemplate.gd" type="Script" id=8]
+[ext_resource path="res://assets/Textures_v2/Gallery/buttongallery_pressed.png" type="Texture" id=9]
 [ext_resource path="res://assets/Textures_v2/Upgrades/panel_activeupgrades.png" type="Texture" id=10]
 [ext_resource path="res://assets/Textures_v2/Upgrades/bar_upgrades_big.png" type="Texture" id=11]
 [ext_resource path="res://assets/Themes_v2/BasePanelFlatBlue.tres" type="StyleBox" id=12]
@@ -27,12 +28,14 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_craft_enough.png" type="Texture" id=26]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_26.tres" type="DynamicFont" id=27]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_32.tres" type="DynamicFont" id=28]
+[ext_resource path="res://assets/Textures_v2/Gallery/buttongallery_hover.png" type="Texture" id=29]
 [ext_resource path="res://gui_modules/upgrades_new/UpgradesList.tscn" type="PackedScene" id=30]
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_upgrade_64.png" type="Texture" id=31]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonred.png" type="Texture" id=32]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonred_pressed.png" type="Texture" id=33]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonred_hover.png" type="Texture" id=34]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_30.tres" type="DynamicFont" id=35]
+[ext_resource path="res://assets/Textures_v2/Gallery/buttongallery.png" type="Texture" id=36]
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_gather.png" type="Texture" id=37]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_disabled.png" type="Texture" id=38]
 
@@ -61,13 +64,14 @@ custom_fonts/font = ExtResource( 4 )
 text = "UPGRADEUPGR"
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 1398.0
+margin_left = 1184.0
 margin_top = 50.0
-margin_right = 1635.0
+margin_right = 1846.0
 margin_bottom = 101.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "UPGRADEINFO"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -91,17 +95,15 @@ texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Modes/Mode1"]
-margin_left = 46.0
+margin_left = 17.0
 margin_top = 9.0
-margin_right = 225.0
+margin_right = 258.0
 margin_bottom = 49.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 7 )
 text = "UPGRADEUPGR"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+clip_text = true
 
 [node name="Mode2" type="TextureButton" parent="Modes"]
 margin_left = 342.0
@@ -119,6 +121,8 @@ margin_bottom = 48.0561
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 7 )
 text = "UPGRADESHED"
+align = 1
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -132,68 +136,73 @@ texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Modes/Mode3"]
-margin_left = 68.0
+margin_left = 17.0
 margin_top = 9.0
-margin_right = 203.0
+margin_right = 260.0
 margin_bottom = 49.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 7 )
 text = "UPGRADECHAR"
+align = 1
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Modes2" type="HBoxContainer" parent="."]
-margin_left = 113.0
-margin_top = 266.289
-margin_right = 1069.0
-margin_bottom = 324.289
+margin_left = 109.263
+margin_top = 268.095
+margin_right = 1065.26
+margin_bottom = 326.095
 custom_constants/separation = 70
-__meta__ = {
-"_edit_use_anchors_": false
-}
+alignment = 1
 
 [node name="Tab1" type="TextureButton" parent="Modes2"]
-margin_right = 272.0
+margin_left = 171.0
+margin_right = 443.0
 margin_bottom = 58.0
+rect_min_size = Vector2( 272, 58 )
 toggle_mode = true
-pressed = true
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 6 )
+texture_normal = ExtResource( 36 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 29 )
+expand = true
 
 [node name="Label" type="Label" parent="Modes2/Tab1"]
-margin_left = 46.0
+margin_left = 10.0
 margin_top = 9.0
-margin_right = 225.0
+margin_right = 263.0
 margin_bottom = 49.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 7 )
 text = "UPGRADECRAFT"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+clip_text = true
 
 [node name="Tab2" type="TextureButton" parent="Modes2"]
-margin_left = 342.0
-margin_right = 614.0
+margin_left = 513.0
+margin_right = 785.0
 margin_bottom = 58.0
+rect_min_size = Vector2( 272, 58 )
 toggle_mode = true
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 6 )
+texture_normal = ExtResource( 36 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 29 )
+expand = true
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Label" type="Label" parent="Modes2/Tab2"]
-margin_left = 19.8419
-margin_top = 8.05614
-margin_right = 252.842
-margin_bottom = 48.0561
+margin_left = 10.0
+margin_top = 8.0
+margin_right = 261.0
+margin_bottom = 48.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 7 )
 text = "UPGRADERES"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+clip_text = true
 
 [node name="QueueList" type="Panel" parent="."]
 visible = false
@@ -426,10 +435,14 @@ margin_bottom = 1044.0
 theme = ExtResource( 14 )
 scroll_horizontal_enabled = false
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_lock_": true
 }
 
 [node name="UpgradesList" parent="ScrollContainer" instance=ExtResource( 30 )]
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
 
 [node name="description" type="Control" parent="."]
 margin_right = 40.0

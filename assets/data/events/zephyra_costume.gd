@@ -2,7 +2,7 @@ extends Reference
 var data = {
 	zephyra_costume_1 = { 
 		variations = [ {
-			image = null, tags = ['dialogue_scene','master_translate'],
+			image = null, music = "zephyra_theme", tags = ['dialogue_scene','master_translate'],
 			reqs = [{type = "location_has_specific_slaves", check = true, value = 1, location = 'elf_capital', reqs = [{code = 'unique', value = 'zephyra'}]}],
 			 character = 'zephyra',
 			text = [ {text = "ZEPHYRA_COSTUME_2", reqs = []} ],
@@ -14,7 +14,7 @@ var data = {
 				code = 'zephyra_costume_3_3', reqs = [], text = tr("ZEPHYRA_COSTUME_2_OPTION_3"), type = 'next_dialogue', dialogue_argument = 3
 			},]
 		}, {
-			image = null, tags = ['dialogue_scene','master_translate'], 
+			image = null, music = "zephyra_theme",tags = ['dialogue_scene','master_translate'], 
 			reqs = [], 
 			text = [ {text = "ZEPHYRA_COSTUME_1_1", reqs = [{type = 'dialogue_seen', check = false, value = 'ZEPHYRA_COSTUME_1_1'}]},
 			{text = "ZEPHYRA_COSTUME_1_2", reqs = [{type = 'dialogue_seen', check = true, value = 'ZEPHYRA_COSTUME_1_1'}]} ],
@@ -122,9 +122,9 @@ var data = {
 		options = [ {
 			code = 'zephyra_costume_10', reqs = [], text = tr("ZEPHYRA_COSTUME_9_OPTION_1"), type = 'next_dialogue', dialogue_argument = 1, bonus_effects = [
 			{code = 'unique_character_changes', value = 'zephyra', args = [
-			{code = 'unique_variation', operant = '=', value = "costume_7"},
-			{code = 'body_image', operant = '=', value = "zephyra_costume_7_body"},
-			{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/zephyra_7_prt.png"}]},
+			{code = 'unique_variation', operant = '=', value = "miko"},
+			{code = 'body_image', operant = '=', value = "zephyra_miko_body"},
+			{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/zephyra_miko_prt.png"}]},
 			{code = 'update_prts'},],
 		}, {
 			code = 'zephyra_costume_10', reqs = [], text = tr("ZEPHYRA_COSTUME_9_OPTION_2"), type = 'next_dialogue', dialogue_argument = 2

@@ -51,6 +51,7 @@ custom_colors/font_color_fg = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
 
 [node name="Visuals" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 43.0
@@ -328,7 +329,6 @@ margin_bottom = 145.0
 ticks_on_borders = true
 
 [node name="Gameplay2" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 45.0
@@ -344,7 +344,7 @@ scroll_horizontal_enabled = false
 
 [node name="Box" type="VBoxContainer" parent="TabContainer/Gameplay2/Scroll"]
 margin_right = 429.0
-margin_bottom = 304.0
+margin_bottom = 348.0
 
 [node name="diff_gf_only_upg" type="CheckBox" parent="TabContainer/Gameplay2/Scroll/Box"]
 margin_right = 429.0
@@ -435,10 +435,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="easytrain" type="CheckBox" parent="TabContainer/Gameplay2/Scroll/Box"]
-margin_top = 220.0
+[node name="diff_hard_monsters" type="CheckBox" parent="TabContainer/Gameplay2/Scroll/Box"]
+margin_top = 264.0
 margin_right = 429.0
-margin_bottom = 260.0
+margin_bottom = 304.0
+rect_pivot_offset = Vector2( -462.269, -82 )
+theme = ExtResource( 3 )
+custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "NEWGAMESETTINGHARD_MONSTERS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="easytrain" type="CheckBox" parent="TabContainer/Gameplay2/Scroll/Box"]
+margin_top = 308.0
+margin_right = 429.0
+margin_bottom = 348.0
 rect_pivot_offset = Vector2( -462.269, -82 )
 theme = ExtResource( 3 )
 custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )

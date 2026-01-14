@@ -48,6 +48,8 @@ var TranslationDict = {
 						Scene art: Allanheil
 						Background art: Laynesis, OMA (Olga Morozova)
 						Icon art: Persich
+						
+						Sound&Audio: Maverik (AI assisted)
 
 						Writing: ralphomayo
 						Writing: plumpjack
@@ -165,6 +167,17 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	EXPLOREUPGRADES = "Upgrades",
 	EXPLORESERVICE = "Service",
 	EXPLOREGUILDSHOP = "Guild Shop",
+	STATSTRADING_IMPROVED_STATUS = "Improved Status",
+	STATSTRADING_STAT_NAME = "Stat Name",
+	STATSTRADING_CURRENT_VALUE = "Current Value",
+	STATSTRADING_PRICE = "Price",
+	STATSTRADING_UPGRADE = "Upgrade",
+	STATSTRADING_TESTING = "Testing",
+	STATSTRADING_CHOOSE_RECEIVER = "Choose Receiver",
+	STATSTRADING_CHOOSE_DONOR = "Choose Donor",
+	STATSTRADING_NOTHING_TO_UPGRADE = "Nothing to Upgrade",
+	STATSTRADING_CHARACTER_NAME = "Character Name",
+	STATSTRADING_FACTOR_UPGRADES = "Factor Upgrades",
 	SIBLINGMODULESKILLSKILLS = "Sex Skills",
 	SIBLINGMODULECONSENT = "Consent: ",
 	SIBLINGMODULERULES = "Rules and Conditions",
@@ -344,6 +357,12 @@ using       button.""",
 	REQRACE = "Race",
 	REQRACEISBEAST = "Only for Bestial races",
 	REQMUSTHAVEGEAR = "Must have",
+	REQMUSTHAVEGEAR_FALSE = "Must not have",
+	REQMUSTHAVEGEARTYPE = "gear of type:",
+	REQMUSTHAVEGEARTYPE_SPEAR = "polearm",
+	REQMUSTHAVEGEARTYPE_BOW = "ranged weapon",
+	REQMUSTHAVEGEARTYPE_MEDIUM = "medium armor",
+	REQMUSTHAVEGEARTYPE_HEAVY = "heavy armor",
 	REQPROFLIMIT = "Only",
 	REQPROFLIMIT2 = "allowed",
 	REQONEOFRACES = "Only for",
@@ -409,7 +428,7 @@ using       button.""",
 	MINDRESIST = "Mind",
 	DAMAGETYPENORMAL = "Normal",
 	DAMAGETYPEFIRE = "Fire",
-	DAMAGETYPEEARTH= "Earth",
+	DAMAGETYPEEARTH = "Earth",
 	DAMAGETYPEAIR = "Air",
 	DAMAGETYPEWATER = "Water",
 	DAMAGETYPELIGHT = "Light",
@@ -421,7 +440,7 @@ using       button.""",
 	ALLRESIST = "all",
 	HEALTHP = "Health:",
 	MANAP = "Mana:",
-	JOURNALLABLE = "Current Requests",
+	JOURNALLABLE = "Slave Requests",
 	JOURNALMAIN = "Main",
 	JOURNALMINOR = "Minor",
 	QBALL = "All",
@@ -437,11 +456,11 @@ using       button.""",
 	PAUSEMENUOPT = "Options",
 	PAUSEMENUGALLERY = "Gallery",
 	PAUSEMENUEXIT = "Exit",
-	UPGRADEUPGR = "Mansion Upgrades",
+	UPGRADEUPGR = "Upgrades",
 	UPGRADEINFO = "Upgrade info",
-	UPGRADESHED = "Upgrade Schedule",
-	UPGRADECHAR = "Characters",
-	UPGRADECRAFT = "Crafting",
+	UPGRADESHED = "Schedule",
+	UPGRADECHAR = "Workers",
+	UPGRADECRAFT = "Main",
 	UPGRADERES = "Resources",
 	OPTIONSWITCHLANGUAGE = "Change Language",
 	TIPLABEL = "Tip",
@@ -967,7 +986,7 @@ Reduced by enemy's evasion""",
 	TOOLTIPEVASION = "Reduces enemy hit chance by this value",
 	TOOLTIPSPEED = "Improves your odds to act before other characters",
 	TOOLTIPRESISTS = "Reduces elemental damage by relative resist",
-	TOOLTIPSTAMINA = "Tolerance is depleted when performing action the character does not agree on. When fully depleted such actions will drain Obedience. Also when fully depleted the character won't be able to improve their Consent. Tolerance is replenished with Orgasms, but this is affected by diminishing returns.",
+	TOOLTIPSTAMINA = "Tolerance is depleted when performing action the character does not agree on. When fully depleted such actions will put a strain on characters and they won't be able to improve their Consent. Tolerance is replenished with Orgasms, but this is affected by diminishing returns.",
 	TOOLTIPSTAMINADUNGEON = "Exploration Stamina is depleted every time you take an exploration action. Every turn your group will generate a certain amount of it.",
 	TOOLTIPFOODCONSUMPTION = "Daily Food Consumption",
 	TOOLTIPPOPULATION = "Population",
@@ -1328,7 +1347,7 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	SKILLSTRIKE_THROUGH = "Strike Through",
 	SKILLSTRIKE_THROUGHDESCRIPT = "Strike target row for 110% of ATK.",
 	SKILLEXECUTION = "Execution",
-	SKILLEXECUTIONDESCRIPT = """Strike target for 275% of ATK. If it dies, apply Fear to all enemies for 1 turn. 
+	SKILLEXECUTIONDESCRIPT = """Strike target for 225% of ATK. If it dies, apply Fear to all enemies for 1 turn. 
 
 Fear: Damage is reduced by 25%.""",
 	SKILLDISARM_ENEMY = "Disarm",
@@ -1493,10 +1512,66 @@ Silenced: Can't use Spell type abilities.""",
 	SKILLDARK_FLAMEDESCRIPT = "Converts all Burn effects on enemies into Dark Flame effects. They deal true damage, can't be extinguished by Water damage and last for 4 turns.",
 	SKILLFIREARROWS_APPLY = "Fire Arrows",
 	SKILLFIREARROWS_REMOVE = "Fire Arrows remove",
-	SKILLFIREARROWS_APPLYDESCRIPT = "Set weapon damage element to Fire. Weapon attacks and skills have 20% chance to apply Burn. Drain 1 mana per attack.\nMust have Bow weapon type equipped.\n\nDoes not take turn to activate. \nOnly one Arrow type spell can be active.",
+	SKILLFIREARROWS_APPLYDESCRIPT = """Set weapon damage element to Fire. Weapon attacks and skills have 20% chance to apply Burn. Drain 1 mana per attack.
+Must have Bow weapon type equipped.
+
+Does not take turn to activate. 
+Only one Arrow type spell can be active.""",
 	SKILLPOISONARROWS_APPLY = "Poison Arrows",
 	SKILLPOISONARROWS_REMOVE = "Poison Arrows remove",
-	SKILLPOISONARROWS_APPLYDESCRIPT = "Weapon attacks and skills have 65% chance to apply Poison for 3 turns. Drain 1 mana per attack. At Marksmanship Mastery 4+ also applies Shred with 25% chance.\nMust have Bow weapon type equipped.\n\nDoes not take turn to activate. \nOnly one Arrow type spell can be active.",
+	SKILLPOISONARROWS_APPLYDESCRIPT = """Weapon attacks and skills have 65% chance to apply Poison for 3 turns. Drain 1 mana per attack. At Marksmanship Mastery 4+ also applies Shred with 25% chance.
+Must have Bow weapon type equipped.
+
+Does not take turn to activate. 
+Only one Arrow type spell can be active.""",
+	SKILLSPELLSWORD_AURA = "Spell Tracing",
+	SKILLSPELLSWORD_AURADESCRIPT = """[center]Spell Tracing[/center]
+Magic flows through your body into the weapon, allowing to follow up your physical single target attacks with a basic spell of your choice. Requires the spell being learnt. Drains 1 mana per attack. 
+
+Does not take turn to activate. """,
+	SKILLARCANEBLADE_AURA = "Elemental Weapon",
+	SKILLARCANEBLADE_AURADESCRIPT = """[center]Elemental Weapon[/center]
+Change weapon element to one you have at least level 2 Mastery in. Takes 5 mana per activation.
+
+Does not take turn to activate. """,
+	SKILLARCANE_MASTERY = "Arcane Mastery",
+	SKILLARCANE_MASTERYDESCRIPT = "When activated, next spell cast becomes instant.",
+	SKILLAURA_FIREARR = "Spell Tracing: Fire Arrow",
+	SKILLAURA_FIREARR_REMOVE = "Turn off Spell Tracing",
+	SKILLAURA_FIREARRDESCRIPT = "Single target skills have 75% chance to follow up with a Fire Arrow for free.",
+	SKILLAURA_IMPALE = "Spell Tracing: Impale",
+	SKILLAURA_IMPALE_REMOVE = "Turn off Spell Tracing",
+	SKILLAURA_IMPALEDESCRIPT = "Single target skills have 75% chance to follow up with a Impale for free.",
+	SKILLAURA_LIGHTNING = "Spell Tracing: Lightning",
+	SKILLAURA_LIGHTNING_REMOVE = "Turn off Spell Tracing",
+	SKILLAURA_LIGHTNINGDESCRIPT = "Single target skills have 75% chance to follow up with a Lightning for free.",
+	SKILLAURA_DARKNESS = "Spell Tracing: Darkness",
+	SKILLAURA_DARKNESS_REMOVE = "Turn off Spell Tracing",
+	SKILLAURA_DARKNESSDESCRIPT = "Single target skills have 75% chance to follow up with a Darkness for free.",
+	SKILLAURA_DMGAIR = "Elemental Weapon: Air",
+	SKILLAURA_DMGAIR_REMOVE = "Turn off Elemental Weapon",
+	SKILLAURA_DMGAIRDESCRIPT = "Change weapon element to air",
+	SKILLAURA_DMGEARTH = "Elemental Weapon: Earth",
+	SKILLAURA_DMGEARTH_REMOVE = "Turn off Elemental Weapon",
+	SKILLAURA_DMGEARTHDESCRIPT = "Change weapon element to earth",
+	SKILLAURA_DMGFIRE = "Elemental Weapon: Fire",
+	SKILLAURA_DMGFIRE_REMOVE = "Turn off Elemental Weapon",
+	SKILLAURA_DMGFIREDESCRIPT = "Change weapon element to fire",
+	SKILLAURA_DMGLIGHT = "Elemental Weapon: Light",
+	SKILLAURA_DMGLIGHT_REMOVE = "Turn off Elemental Weapon",
+	SKILLAURA_DMGLIGHTDESCRIPT = "Change weapon element to light",
+	SKILLAURA_DMGDARK = "Elemental Weapon: Dark",
+	SKILLAURA_DMGDARK_REMOVE = "Turn off Elemental Weapon",
+	SKILLAURA_DMGDARKDESCRIPT = "Change weapon element to dark",
+	SKILLAURA_DMGWATER = "Elemental Weapon: water",
+	SKILLAURA_DMGWATER_REMOVE = "Turn off Elemental Weapon",
+	SKILLAURA_DMGWATERDESCRIPT = "Change weapon element to water",
+	SKILLRANGER_AURA = "Animal Companion",
+	SKILLRANGER_AURA_REMOVE = "Turn off Animal Companion",
+	SKILLRANGER_AURADESCRIPT = "Passive Summon: Trained Dog",
+	SKILLNECRO_AURA = "Mastery of the Dead",
+	SKILLNECRO_AURA_REMOVE = "Turn off Mastery of the Dead",
+	SKILLNECRO_AURADESCRIPT = "Passive Summon: Skeletons. Number skeletons is defined by Magic Factor.",
 	TRAITVIGORDESCRIPT = "Increases Health Regeneration by 30%.",
 	TRAITMEDITATIONDESCRIPT = "Increases Mana Regeneration by 30%.",
 	MASTERYBLOCKSRC = "Blocked by %s: %s",
@@ -1753,7 +1828,6 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""",
 	DATETOOLTIP = "Dates left this week. Increases with Master's Charm Factor and resets at the start of a week.",
 	SEXTOOLTIP = "Select characters for participating in sexual interaction. The limit of characters is defined by bedroom upgrade. Every week interaction number will reset.",
 	DATETOOLTIPSHORT = "Character can be dated today",
-	
 	NODATEMASTER = "Dating must be initiated from non-master character",
 	NODATEUNIQUE = "[name] won't agree for a dating at this point in time.",
 	NODATERELATION = "[name] lacks a necessary training to agree for the date.",
@@ -1790,9 +1864,15 @@ Service is a global modifier for this assignment.""",
 	BROTHELWARNING = "Sex services won't work if you don't select at least 1 allowed customer.",
 	CAPTURETOOLTIP = "These characters have been found by your team and can be recruited into your mansion or sold for quick cash as if you were selling them manually. If location has been forgotten, all characters are sold automatically.",
 	CAPTURESELLTOOLTIP = "Quicksell this character for %d gold. This is equal to selling character to market, but won't let you buyback them. ",
-	CAPTUREADDTOOLTIP = "Attempt to add this character to roster.\n\nYou won't be able to finish turn if your total number of characters is bigger than available number of rooms. ",
-	CAPTUREENSLAVETOOLTIP = "Add this character to roster as a slave instantly.\n\nYou won't be able to finish turn if your total number of characters is bigger than available number of rooms. ",
-	CAPTURERECRUITTOOLTIP = "Attempt to recruit this character.\n\nYou won't be able to finish turn if your total number of characters is bigger than available number of rooms.",
+	CAPTUREADDTOOLTIP = """Attempt to add this character to roster.
+
+You won't be able to finish turn if your total number of characters is bigger than available number of rooms. """,
+	CAPTUREENSLAVETOOLTIP = """Add this character to roster as a slave instantly.
+
+You won't be able to finish turn if your total number of characters is bigger than available number of rooms. """,
+	CAPTURERECRUITTOOLTIP = """Attempt to recruit this character.
+
+You won't be able to finish turn if your total number of characters is bigger than available number of rooms.""",
 	CAPTUREDISMISSTOOLTIP = "Dismiss this character.",
 	SERVICEBOOSTTOOLTIP = "You can assign additional item consumption here which will boost service production. These items can be produced at Farm. ",
 	FARMTOOLTIP = "You can assign character to farm to produce additional materials which can be used to boost service production or be sold.",
@@ -2184,7 +2264,7 @@ Service is a global modifier for this assignment.""",
 	STATTRAINEE_AMOUNT = "Training Slots",
 	STATTRAINING_LOYALTY = "Loyalty from Training",
 	STATTRAINING_SPIRIT = "Spirit from Training",
-	STATRESISTANCE_RED = "Resistance drop speed",
+	STATRESISTANCE_RED = "Resistance Drop Speed",
 	STATTRAINER_LOYALTY_BONUS = "Loyalty for trainee",
 	STATTRAINING_LOYALTYDESCRIPT = "Loyalty bonus gained by this character from Training",
 	STATTRAINING_SPIRITDESCRIPT = "Adjustment for Spirit decline during Training",
@@ -2426,7 +2506,8 @@ Spell Mana cost reduced by 15%
 +15% Loyalty Gain, -10% Subordinate weekly tax""",
 	INFOSLAVE_CLASS = "Character type will define its options and behavior. Slaves can be forced into sexual services without consent and have higher tolerance for lack of consent in sex. Subordinates become loyal faster but can't be sold or given away.",
 	INFOCONSENT = "Consent defines what sexual related actions character will be willing to perform. Consent can be increased by pushing character into new practices by dating and sex options. Consent will affect prostitution related jobs.",
-	INFOCONSENTMASTER = "Consent defines what sexual related actions character will be willing to perform. Consent can be increased by pushing character into new practices by dating and sex options.\n{color=green|[Master] has no Consent requirements for any actions.}",
+	INFOCONSENTMASTER = """Consent defines what sexual related actions character will be willing to perform. Consent can be increased by pushing character into new practices by dating and sex options.
+{color=green|[Master] has no Consent requirements for any actions.}""",
 	INFOTRAINING = "Slave type characters will be trained by selected person in various actions. Every slave has different {color=aqua|Dispositions} towards different kind of actions. Properly selected actions will award more Loyalty and drain less spirit, but most actions have additional effects.",
 	INFOTRAININGSUBORDINATE = "Subordinate type characters will accomodate loyalty points with time. ",
 	INFORESISTANCE = "Character's Resistance will reduce efficiency of training. Resistance weakens with time and resets on performing training.",
@@ -2493,7 +2574,7 @@ Spell Mana cost reduced by 15%
 {color=green|Maxed Wits Factor increases experience gain.}""",
 	STATCHARM_FACTORDESCRIPT = """{color=yellow|Charm Factor} represents character's appeal potential. It increases [color=aqua]Charm[/color] growth. [Master]'s charm also increases gold and reputation rewards from repeatable quests and number of dates per week.
 
-{color=green|Maxed Charm Factor increases Service Productivity and grants additional Charm Check.}""",
+{color=green|Maxed Charm Factor increases Service Productivity and grants additional Persuasion Check.}""",
 	STATSEXUALS_FACTORDESCRIPT = """{color=yellow|Sex Factor} represents character's sex development potential. It speeds sexual skills' acquirement, makes Consent easier to progress and occasionally boosts sexual options in events. [Master]'s Sex factor also increases number of sex interactions per week.
 
 {color=green|Maxed Sex Factor provides Speed bonus}.""",
@@ -2502,7 +2583,7 @@ Spell Mana cost reduced by 15%
 	CHARM_FACTORBONUSDESCRIPT = "Charm Factor: Social Skills Efficiency: +20%%",
 	SEXUALS_FACTORBONUSDESCRIPT = "Sex Factor: Speed: +10",
 	MAGIC_FACTORBONUSDESCRIPT = "Magic Factor: MATK: +10%%",
-	TAME_FACTORBONUSDESCRIPT = "Tame Factor: Loyalty Gain: +25%%",
+	TAME_FACTORBONUSDESCRIPT = "Tame Factor: Spirit damage from trainings is halved",
 	TIMID_FACTORBONUSDESCRIPT = "Authority Factor: Damage taken: -15%%",
 	STATFOOD_LOVE = "Loved Food",
 	STATFOOD_HATE = "Hated Food",
@@ -2755,7 +2836,7 @@ Loyalty: +25, Maxes Obedience.""",
 Wits: -10; EXP Gain: -10%; Sell price is greatly lowered.""",
 	THRALLS6DESCRIPT = "Has 6 Thralls",
 	THRALLS5DESCRIPT = "Has 5 Thralls",
-	THRALLS4DESCRIPT = "Has 4 Tthralls",
+	THRALLS4DESCRIPT = "Has 4 Thralls",
 	THRALLS3DESCRIPT = "Has 3 Thralls",
 	THRALLS2DESCRIPT = "Has 2 Thralls",
 	THRALLS1DESCRIPT = "Has 1 Thrall",
@@ -2773,7 +2854,7 @@ Loyalty: +25, Maxes Obedience.""",
 	SKILLBARRIER = "Barrier",
 	SKILLBARRIERDESCRIPT = "Provides a magical shield that absorbs 100 damage. Shield lasts for 3 turns.",
 	SKILLASSASSINATE = "Assassinate",
-	SKILLASSASSINATEDESCRIPT = "Strike target for 200% of ATK. If user is Hidden, damage is increased to 350% of ATK.",
+	SKILLASSASSINATEDESCRIPT = "Strike target for 175% of ATK. If user is Hidden, damage is increased to 275% of ATK.",
 	SKILLPROTECT = "Protect",
 	SKILLPROTECTDESCRIPT = "Takes damage instead of ally for 2 turns.",
 	SKILLSHAREDTOY = "Shared Toy",
@@ -2891,7 +2972,7 @@ Training has higher chance of success.""",
 	TRAITCHEFDESCRIPT = "Cooking is 100% faster.",
 	TRAITATTENDANTDESCRIPT = "Once per combat turn [name] can use an item without using a turn.",
 	TRAITALCHEMISTDESCRIPT = "Healing items are 25% more effective in combat.",
-	TRAITMASTER_ALCHEMISTT = "Master alchemist",
+	TRAITMASTER_ALCHEMISTT = "Master Alchemist",
 	TRAITMASTER_ALCHEMISTDESCRIPT = "Crafted alchemy items are at least normal quality.",
 	TRAITMASTER_SMITH = "Master smith",
 	TRAITMASTER_SMITHDESCRIPT = "Crafted items are at least normal quality.",
@@ -2915,7 +2996,7 @@ Skill attacks possess Dark element.""",
 	TRAITTEMPLAR_TRAITDESCRIPT = "After using a Taunt or Provoke recover some health and gain increased MDEF for 3 turns.",
 	TRAITNINJADESCRIPT = "Gain evasion based on your MDEF. Minimal chance for evading hit is reduced to 5%.",
 	TRAITWITCHDESCRIPT = "Your critical hits with spells apply random debuff. Healing spells have chance to apply healing over time.",
-	TRAITWARLOCKDESCRIPT = "Single target spells gain 25% increased critical chance and deal 75% bonus critical damage.",
+	TRAITWARLOCKDESCRIPT = "Single target spells gain 15% increased Critical Chance.",
 	TRAITTRUE_SUCCUBUSDESCRIPT = "When taking hit in combat generate some Lust.",
 	TRAITBASIC_COMBAT = "Basic Combat",
 	TRAITADVANCED_COMBAT = "Advanced Combat",
@@ -2926,6 +3007,10 @@ Skill attacks possess Dark element.""",
 	TRAITBASIC_SPELLSDESCRIPT = "Allows to learn basic combat spells and staves",
 	TRAITADVANCED_SPELLSDESCRIPT = "Allows to learn advanced combat spells and staves",
 	TRAITHUNTER_DAMAGEDESCRIPT = "Damage vs Beasts: +15%",
+	TRAITSPELLSWORDDESCRIPT = """All offensive skills and spells are cast and considered as {color=yellow|Melee Range}. 
+	
+Single target magic spells have 100% chance to be followed up with a basic melee attack.""",
+	TRAITCASTERDESCRIPT = "Recover 10% of maximum mana after combat",
 	TRAITBISHOPDESCRIPT = """Light Magic damage: +25%
 {color=brown|Luminance}: Single target Light abilities make target receive more Light and Dark damage.""",
 	TRAITDRUIDDESCRIPT = "Earth Spell damage: +20%",
@@ -2934,8 +3019,6 @@ Skill attacks possess Dark element.""",
 	TRAITPALADINDESCRIPT = "{color=brown|Smite}: Deal 25% more damage and take 15% less damage from Undead and Demon type enemies.",
 	TRAITASSASSINDESCRIPT = "{color=brown|Stealth Mastery}: Hiding can be activated in Medium Armor.",
 	TRAITBLOODMAGEDESCRIPT = "{color=brown|Blood Mastery}: Dealing damage to bleeding targets recovers HP and MP and increases MATK until end of fight.",
-	TRAITNECROMANCERDESCRIPT = "{color=brown|Mastery of the Dead}: Passive Summon: Skeletons. Number skeletons is defined by Magic Factor.",
-	TRAITRANGERDESCRIPT = "{color=brown|Animal Companion}: Passive Summon: Trained Dog",
 	TRAITALIOSDESCRIPT = "{color=brown|Unbound}: When only character is alive in party: gain +50 evasion, +20 speed until end of battle.",
 	TRAITMIXX_CHAMPIONDESCRIPT = "{color=brown|Seething Blackness}: Dark Element attacks ignore all DEF/MDEF and have +30 hit rating.",
 	TRAITSADISTDESCRIPT = """{color=brown|Open Vein}: Melee physical attacks have 25% chance to cause Bleeding for 2 turns.
@@ -3008,7 +3091,7 @@ Physical and Sexual training actions are 25% more impactful.""",
 	TRAITNIMBLEDESCRIPT = "Speed is increased by 10.",
 	TRAITQUICKDESCRIPT = "Collection modifier +20%.",
 	TRAITHANDYDESCRIPT = "Craft modifier +20%.",
-	TRAITDEADLYDESCRIPT = "Crit Chance +9%.",
+	TRAITDEADLYDESCRIPT = "Crit Chance +6%.",
 	TRAITLIVELYDESCRIPT = "+3 Health Regen",
 	TRAITMVORTEXDESCRIPT = "+1 Mana Regen",
 	TRAITGIFTEDDESCRIPT = "Maximum Mana +50%.",
@@ -3165,36 +3248,45 @@ Requires: Sex:Advanced""",
 	TRAITTRAINING_OBEDIENCE = "Obedience",
 	TRAITTRAINING_OBEDIENCEDESCRIPT = "Make [name] give up on [his] autonomy, which will allow to freely sell or give [him] away.",
 	TRAITTRAINING_CALLMASTER = "Master Acknowledgement",
-	TRAITTRAINING_CALLMASTERDESCRIPT = """Demand [name] of [his] unwavering loyalty to you. 
-Allows to finish training and provide [him] with specilization. """,
+	TRAITTRAINING_CALLMASTERDESCRIPT = """Demand [name] of [his] unwavering loyalty to you.
+	 
+{color=yellow|Allows to finish training and provide [him] with specilization.}""",
 	TRAITTRAINING_RELATION = "Relationship",
 	TRAITTRAINING_RELATIONDESCRIPT = """Make move onto [name]'s personal life. After all, shouldn't [he] like you enough already?
-Unlocks Dating option and removes consent penalty in sex.""",
+	
+{color=yellow|Unlocks Dating option and removes consent penalty in sex.}""",
 	TRAITTRAINING_SEXSERVICE = "Sex Service",
 	TRAITTRAINING_SEXSERVICEDESCRIPT = """Since [name]'s body belong to you, it makes sense to make [him] use it for your prosperity.
-Unlocks sex service tasks and Nudity rule.
-Requires consent \"Curious\" or above.""",
+	
+{color=yellow|Unlocks sex service tasks and Nudity rule.
+Requires consent \"Curious\" or above.}""",
 	TRAITTRAINING_SEXSERVICE_ADV = "Advanced Sex Service",
 	TRAITTRAINING_SEXSERVICE_ADVDESCRIPT = """With all well and done, its a logical step to push [name] further into depravity.
-Unlocks advanced sex service options.
-Requires consent \"Willing\" or above.""",
+
+{color=yellow|Unlocks advanced sex service options.
+Requires consent \"Willing\" or above.}""",
 	TRAITTRAINING_S_COMBAT = "Combat",
 	TRAITTRAINING_S_COMBATDESCRIPT = """[name] will allow to be drafted into combat scenarios. Perhaps not everyone is willing to combat for you with no concerns.
-Unlocks sending [name] into combat.""",
+
+{color=yellow|Unlocks sending [name] into combat.}""",
 	TRAITTRAINING_S_WORKING = "Work",
 	TRAITTRAINING_S_WORKINGDESCRIPT = """[name] will eagerly work for you on generic occupations.
-Unlocks setting [name] for various labors.""",
+
+{color=yellow|Unlocks setting [name] for various labors.}""",
 	TRAITTRAINING_S_RELATION = "Relationship",
 	TRAITTRAINING_S_RELATIONDESCRIPT = """With some convincing [name] will find your company favorable even beyond simple labor. 
-Unlocks Dating and Sex options.""",
+	
+{color=yellow|Unlocks Dating and Sex options.}""",
 	TRAITTRAINING_S_SEXSERVICE = "Sex Service",
 	TRAITTRAINING_S_SEXSERVICEDESCRIPT = """Not everyone is willing to get into selling their body for your benefit. But with some persuasion...
-Unlock sex service tasks. 
-Requires consent \"Curious\" or above.""",
+	
+{color=yellow|Unlock sex service tasks. 
+Requires consent \"Curious\" or above.}""",
 	TRAITTRAINING_S_SEXSERVICE_ADV = "Advanced Sex Service",
 	TRAITTRAINING_S_SEXSERVICE_ADVDESCRIPT = """If [name] is already willing to perform sex services for your profits, why stop there?..
-Unlock advanced sex service options. 
-Requires consent \"Willing\" or above.""",
+	
+{color=yellow|Unlock advanced sex service options. 
+Requires consent \"Willing\" or above.}""",
 	TRAITMASTER_HARLOTRY = "Harlotry",
 	TRAITMASTER_HARLOTRYDESCRIPT = "While in service you still receive Rest benefits.",
 	TRAITMASTER_PROGENECY = "Progenecy",
@@ -3204,7 +3296,7 @@ Requires consent \"Willing\" or above.""",
 	TRAITMASTER_RESILENCE = "Resilience",
 	TRAITMASTER_RESILENCEDESCRIPT = " ",
 	TRAITMASTER_FORTUNE = "Fortune",
-	TRAITMASTER_FORTUNEDESCRIPT = "Critical chance is increased by 25%. Slightly increases Magic Find.",
+	TRAITMASTER_FORTUNEDESCRIPT = "Critical chance is increased by 10%. Slightly increases Magic Find.",
 	TRAITMASTER_INT = "Intelligence",
 	TRAITMASTER_INTDESCRIPT = " ",
 	TRAITMASTER_FORTITUDE = "Fortitude",
@@ -3235,59 +3327,59 @@ Increased Damage and Hitrate""",
 Increased Evasion, Hitrate and MDEF""",
 	TRAITEFFECTRARETOUGH = """Rare: Tough
 Increased Health, DEF and MDEF""",
-	TRAITMONSTER_MASTERY_WARFARE_DESCRIPT = """Has enemy variation of warfare mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_PROTECTION_DESCRIPT = """Has enemy variation of protection mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_STEALTH_DESCRIPT = """Has enemy variation of stealth mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_MARKSMANSHIP_DESCRIPT = """Has enemy variation of marsmanship mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_LEADERSHIP_DESCRIPT = """Has enemy variation of ledership mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_FIRE_DESCRIPT = """Has enemy variation of fire mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_WATER_DESCRIPT = """Has enemy variation of water mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_AIR_DESCRIPT = """Has enemy variation of air mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_EARTH_DESCRIPT = """Has enemy variation of earth mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_LIGHT_DESCRIPT = """Has enemy variation of light mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_DARK_DESCRIPT = """Has enemy variation of dark mastery with the same skills and greater bonuses.""",
-	TRAITMONSTER_MASTERY_MIND_DESCRIPT = """Has enemy variation of mind mastery with the same skills and greater bonuses.""",
+	TRAITMONSTER_MASTERY_WARFAREDESCRIPT = "Warfare Mastery",
+	TRAITMONSTER_MASTERY_PROTECTIONDESCRIPT = "Protection Mastery",
+	TRAITMONSTER_MASTERY_STEALTHDESCRIPT = "Stealth Mastery",
+	TRAITMONSTER_MASTERY_MARKSMANSHIPDESCRIPT = "Marksmanship Mastery",
+	TRAITMONSTER_MASTERY_LEADERSHIPDESCRIPT = "Leadershp Mastery",
+	TRAITMONSTER_MASTERY_FIREDESCRIPT = "Fire Mastery",
+	TRAITMONSTER_MASTERY_WATERDESCRIPT = "Water Mastery",
+	TRAITMONSTER_MASTERY_AIRDESCRIPT = "Air Mastery",
+	TRAITMONSTER_MASTERY_EARTHDESCRIPT = "Earth Mastery",
+	TRAITMONSTER_MASTERY_LIGHTDESCRIPT = "Light Mastery",
+	TRAITMONSTER_MASTERY_DARKDESCRIPT = "Dark Mastery",
+	TRAITMONSTER_MASTERY_MINDDESCRIPT = "Mind Mastery",
 	TRAITEFFECTHARDWORK = "Hard Work: +50%% Productivity",
 	TRAITEFFECTPHYSBUF = "Elixir of Ogre's Strength: +80 Physics",
 	TRAITEFFECTWITSBUF = "Elixir of Expanded Mind: +80 Wits",
 	TRAITEFFECTALCOHOL = "Wasted: -1 Loyalty Gain, +1 Spirit Gain, -15%% Productivity",
 	TRAITEFFECTFAVFOOD = "Favorite Food: +5%% Productivity, +5%% Experience Gain",
-	TRAITEFFECTHATEDFOOD = "Hated Food: -10%% Productivity.",
-	TRAITEFFECTSTARVE = "Starvation: -50%% Productivity, -50%% Damage.",
-	TRAITEFFECTGRAVEINJ = "Grave Injury: -25%% Productivity, -50 Sexuals. Can't participate in Combat.",
-	TRAITEFFECTDISCIPLINE = "Discipline: +50%% Labor and craft efficiencies.",
+	TRAITEFFECTHATEDFOOD = "Hated Food: -10%% Productivity",
+	TRAITEFFECTSTARVE = "Starvation: -50%% Productivity, -50%% Damage",
+	TRAITEFFECTGRAVEINJ = "Grave Injury: -25%% Productivity, -50 Sexuals. Can't participate in Combat",
+	TRAITEFFECTDISCIPLINE = "Discipline: +50%% Labor and craft efficiencies",
 	TRAITEFFECTSEDUCE = "Seduce: -7 Obedience drain",
-	TRAITEFFECTGREATSEDUCE = "Great Seduce: Prevents escapes; -9 Obedience drain, +50%% Lust growth.",
-	TRAITEFFECTALLURE = "Allure: -5 Obedience drain, +1 Loyalty Gain.",
+	TRAITEFFECTGREATSEDUCE = "Great Seduce: Prevents escapes; -9 Obedience drain, +50%% Lust growth",
+	TRAITEFFECTALLURE = "Allure: -5 Obedience drain, +1 Loyalty Gain",
 	TRAITEFFECTSEDATED = "Sedated: -10 Obedience drain",
-	TRAITEFFECTFEAR = "Fear: -6 Obedience drain, -1 Loyalty Gain.",
+	TRAITEFFECTFEAR = "Fear: -6 Obedience drain, -1 Loyalty Gain",
 	TRAITEFFECTMINDCONTROLLED = "Mind Controlled",
-	TRAITEFFECTINSPIRED = "Inspired: +20%% damage, DEF and MDEF.",
-	TRAITEFFECTCOMMANDED = "Commanded: +50%% ATK and MATK.",
-	TRAITEFFECTSERVING = "Serving: +1 Loyalty Gain.",
-	TRAITEFFECTREFINE = "Weapon refined: +30%% ATK.",
-	TRAITEFFECTACID = "Acid: -25 DEF.",
+	TRAITEFFECTINSPIRED = "Inspired: +20%% damage, DEF and MDEF",
+	TRAITEFFECTCOMMANDED = "Commanded: +50%% ATK and MATK",
+	TRAITEFFECTSERVING = "Serving: +1 Loyalty Gain",
+	TRAITEFFECTREFINE = "Weapon refined: +30%% ATK",
+	TRAITEFFECTACID = "Acid: -25 DEF",
 	TRAITEFFECTATTRACTED = "Attracted: -30%% Damage",
-	TRAITEFFECTPROTECTION = "Protection: +25 DEF.",
+	TRAITEFFECTPROTECTION = "Protection: +25 DEF",
 	TRAITEFFECTISPROTECTED = "Is protected",
-	TRAITEFFECTDRAGONSMIGHT = "Dragon's Might: +25%% Damage and DEF.",
+	TRAITEFFECTDRAGONSMIGHT = "Dragon's Might: +25%% Damage and DEF",
 	TRAITEFFECTBARRIER = "Damage-absorbing shield, blocks 100 damage (%d remains)",
-	TRAITEFFECTBLIZZARD = "Blizzard: -20 Speed.",
-	TRAITEFFECTBLESSED = "Blessed: +25%% ATK.",
-	TRAITEFFECTMENTALBLESS = "Mentally Blessed: +25%% MATK.",
-	TRAITEFFECTFLY = "Flying: +65 Evasion.",
-	TRAITEFFECTSHATTERED = "Shattered: -25 MDEF.",
-	TRAITEFFECTFIREBURST = "Fire Burst: -20 Hit Rate.",
-	TRAITEFFECTSWIPE = "Swipe: -20 DEF.",
-	TRAITEFFECTARROWRAIN = "Arrow Rain: -20 MDEF.",
-	TRAITEFFECTSSTRIKE = "-20 ATK and MATK.",
-	TRAITEFFECTENDURE = "Endure: +20 All resists.",
-	TRAITEFFECTBARD1 = "Hymn: +20 Hit Rate, Evasion and Speed.",
+	TRAITEFFECTBLIZZARD = "Blizzard: -20 Speed",
+	TRAITEFFECTBLESSED = "Blessed: +25%% ATK",
+	TRAITEFFECTMENTALBLESS = "Mentally Blessed: +25%% MATK",
+	TRAITEFFECTFLY = "Flying: +65 Evasion",
+	TRAITEFFECTSHATTERED = "Shattered: -25 MDEF",
+	TRAITEFFECTFIREBURST = "Fire Burst: -20 Hit Rate",
+	TRAITEFFECTSWIPE = "Swipe: -20 DEF",
+	TRAITEFFECTARROWRAIN = "Arrow Rain: -20 MDEF",
+	TRAITEFFECTSSTRIKE = "-20 ATK and MATK",
+	TRAITEFFECTENDURE = "Endure: +20 All resists",
+	TRAITEFFECTBARD1 = "Hymn: +20 Hit Rate, Evasion and Speed",
 	TRAITEFFECTBARD2 = "Soothe: +15 DEF and MDEF, dispels 1 negative effect every turn",
-	TRAITEFFECTBARD3 = "Warmarch: +20%% ATK and MATK.",
-	TRAITEFFECTELEMENTALWEAK = "Elemental Weakness: -40 Fire, Earth, Water and Air Resistances.",
-	TRAITEFFECTELEMENTALPROTECT = "Elemental Protection: +40 Fire, Earth, Water and Air Resistances.",
-	TRAITEFFECTCAMO = "Camouflage: +20 Evasion.",
+	TRAITEFFECTBARD3 = "Warmarch: +20%% ATK and MATK",
+	TRAITEFFECTELEMENTALWEAK = "Elemental Weakness: -40 Fire, Earth, Water and Air Resistances",
+	TRAITEFFECTELEMENTALPROTECT = "Elemental Protection: +40 Fire, Earth, Water and Air Resistances",
+	TRAITEFFECTCAMO = "Camouflage: +20 Evasion",
 	TRAITEFFECTHMARK = "Leader's Mark: Receives 15%% more damage",
 	TRAITEFFECTDEVOUR = "Spirit devoured",
 	TRAITEFFECTSPIRIT1 = "Spirit - Hare: +30 Speed, +25 Evasion",
@@ -3440,15 +3532,20 @@ Next attack deals 125%% damage. Air attacks deal 200%% and Fire attacks deal 50%
 	BUFFDESCRIPTSHOCK = """Shocked
 All damage received is increased by 15%%, additional shock has a chance to stun.""",
 	BUFFDESCRIPTENSNARE = "Ensnared: Evasion is reduced by 75",
-	
-	LOGEFFECTIMMUNE = "\n%s is immune to %s.",
-	LOGEFFECTRESIST = "\n%s resists %s.",
-	LOGEFFECTAPPLY = "\n%s is affected by %s.",
-	LOGEFFECTTOGGLEON = "\n%s on %s is active",
-	LOGEFFECTTOGGLEOFF = "\n%s on %s is off",
-	LOGEFFECTTOGGLEOFFON = "\n%s on %s is updated",
-	LOGEFFECTRENEW = "\n%s is updated on %s",
-#	LOGEFFECTRESIST = "",
+	LOGEFFECTIMMUNE = """
+%s is immune to %s.""",
+	LOGEFFECTRESIST = """
+%s resists %s.""",
+	LOGEFFECTAPPLY = """
+%s is affected by %s.""",
+	LOGEFFECTTOGGLEON = """
+%s on %s is active""",
+	LOGEFFECTTOGGLEOFF = """
+%s on %s is off""",
+	LOGEFFECTTOGGLEOFFON = """
+%s on %s is updated""",
+	LOGEFFECTRENEW = """
+%s is updated on %s""",
 	EFFECTNAME_LUMINANCE = "luminance",
 	EFFECTNAME_DEFENDED = "protection",
 	EFFECTNAME_WARDED = "ward",
@@ -3530,8 +3627,6 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	EFFECTNAME_WARD_D = "curse ward",
 	EFFECTNAME_WATERSHIELD = "water shield",
 	EFFECTNAME_CLARITY = "clarity",
-
-	
 	RESETTRAINREQ = "Reset training to step 0 and restore Spirit. Requires Oblivion potion.",
 	RESETTRAINING = "All training progress will be discarded. Are you sure?",
 	BUFFDESCRIPTDEFENDER = "Defender: Will shield allies from attacks unless stunned.",
@@ -3572,6 +3667,8 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	PROFHUNTERDESCRIPT = "Hunters specialize in tracking and killing game.",
 	PROFSMITH = "Blacksmith",
 	PROFSMITHDESCRIPT = "Smiths are master craftsmen, able to work with all sorts of materials.",
+	PROFTAILOR = "Tailor",
+	PROFTAILORDESCRIPT = "Tailors specialize in production of cloth and leather armor as well as everyday garments.",
 	PROFCHEF = "Chef",
 	PROFCHEFDESCRIPT = "A skilled cook is always a valuable addition to any household.",
 	PROFATTENDANT = "Attendant",
@@ -3622,7 +3719,7 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	PROFBERSERKER = "Berserker",
 	PROFBERSERKERDESCRIPT = "The fiercest orcs can become Berserkers and boost their combat prowess.",
 	PROFDRUID = "Druid",
-	PROFDRUIDDESCRIPT = "Druids specialize in nature's magic, allowing them to heal and neutralize enemies.",
+	PROFDRUIDDESCRIPT = "Druids embrace and study the nature's magic, allowing them to heal and neutralize enemies.",
 	PROFVALKYRIE = "Valkyrie",
 	PROFVALKYRIEDESCRIPT = "Female winged warriors excelling in swift and deadly combat.",
 	PROFSOULEATER = "Soul Eater",
@@ -3679,6 +3776,10 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	PROFMONKDESCRIPT = "Religious fighters who utilize their spiritual training to deal with the enemies.",
 	PROFBISHOP = "Bishop",
 	PROFBISHOPDESCRIPT = "Only selected few manage to reach this rank. Highest members of the church capable of unleashing divine powers.",
+	PROFSPELLSWORD = "Spellsword",
+	PROFSPELLSWORDDESCRIPT = "By mixing magic and martial arts especially gifted individuals are capable of fighting with both at the same time.",
+	PROFARCANE_BLADE = "Arcane Blade",
+	PROFARCANE_BLADEDESCRIPT = "Further honing their magic skills, Spellswords become capable not only flinging spells in the midst of fight but even imbuing their weapon in elements.",
 	PROFSPOUSE = "Husband",
 	PROFSPOUSEALT = "Wife",
 	PROFSPOUSEDESCRIPT = "An officially engaged spouse of Mansion's [Master]. Can train 2 more persons.",
@@ -3687,7 +3788,7 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	PROFASHMEDAI_CHAMPION = "Ashmedai Champion",
 	PROFASHMEDAI_CHAMPIONDESCRIPT = "The new chosen to carry out depraved acts in its name. WIP",
 	PROFDEATHKNIGHT = "Death Knight",
-	PROFDEATHKNIGHTDESCRIPT = "Sworn to their nature or master, undead warriors are able to grow stronger the more they slaughter.",
+	PROFDEATHKNIGHTDESCRIPT = "Sworn to their nature or master, cursed warriors are able to grow stronger the more they slaughter.",
 	PROFWARLOCK = "Warlock",
 	PROFWARLOCKDESCRIPT = "The most fearsome sorcerors specializing in combat magic are able to incinerate their foes on sight.",
 	PROFWITCH = "Witch",
@@ -4336,7 +4437,7 @@ Sex skills are increased when performing related action and their growth is depe
 	STATREQ_IS_FREE = "Must be free of quests and at mansion",
 	STATREQ_IS_NOT_FREE = "Must be on quest or out of mansion",
 	STATREQ_TRAINING_OBEDIENCE = "Obedience must be trained",
-	STATREQ_WORKRULE_LOCK = "Must not be engaged in work",
+	STATREQ_WORKRULE_LOCK = "Character is Locked",
 	DIALOGUECLOSE = "Close",
 	DIALOGUECONFIRM = "Confirm",
 	DIALOGUECONTINUE = "Continue",
@@ -4788,6 +4889,8 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYAIRE = "Aire",
 	ENEMYKURDAN = "Kurdan",
 	ENEMYLEON = "Leon",
+	ENEMYLILITH_BOSS_1 = "Ashmedai",
+	ENEMYLILITH_BOSS_2 = "Ashmedai",
 	ENEMYWHITE_STAG = "White Stag",
 	ENEMYWHITE_STAG_HUMAN = "Mysterious Person",
 	ENEMYELF_SPECTER = "Elf Specter",
@@ -4950,7 +5053,8 @@ At the bottom left you can select items, unlock new classes and configure additi
 	WORKRULERATIONDESCRIPT = "Increases Food Consumption by 3. Boosts Productivity by 15%.",
 	WORKRULESHIFTS = "Longer Shifts",
 	WORKRULESHIFTSDESCRIPT = """Character overperforms at their finest capability at the cost of future improvements. 
-Boosts Productivity by 25%. \n{color=yellow|Character won't gain Experience or Work Stats (Physical, etc) while working.} """,
+Boosts Productivity by 25%. 
+{color=yellow|Character won't gain Experience or Work Stats (Physical, etc) while working.} """,
 	WORKRULECONSTRAIN = "Coerced Labor",
 	WORKRULECONSTRAINDESCRIPT = "Character is forced to work at their best via strict regulations. Boosts productivity by 15%. Passive Loyalty gain disabled.",
 	WORKRULELUXURY = "Private Room",
@@ -4964,7 +5068,7 @@ Boosts Productivity by 25%. \n{color=yellow|Character won't gain Experience or W
 	WORKRULERELATIONSHIP = "Allow Romance",
 	WORKRULERELATIONSHIPDESCRIPT = "[name] will be allowed to establish romantic relationship with other characters besides [master].",
 	WORKRULEMASTURBATION = "Forbid Masturbation",
-	WORKRULEMASTURBATIONDESCRIPT = "[name] will not be allowed to relieve [him]self, leading to increased stress but higher libido. Obedience Drain +2, Lust Growth +15%.",
+	WORKRULEMASTURBATIONDESCRIPT = "[name] will not be allowed to relieve [him]self, leading to increased stress but higher libido. Resistance Drop Speed: +20%; Productivity: -10%",
 	WORKRULELOCK = "Lock Character",
 	WORKRULELOCKDESCRIPT = "Locks character from showing [him] in the list of tasks and activites which permanently remove or sell [him].",
 	SERVICEENSLAVE = "Enslave",
@@ -6052,7 +6156,7 @@ The princess notices Aire tensing up in response to the question.
 	STATDAMAGE_MOD_DARK = "Dark Damage",
 	STATDAMAGE_MOD_MIND = "Mind Damage",
 	STATDAMAGE_MOD_MELEE = "Melee Damage",
-	STATDAMAGE_MOD_RANGED = "Ranged Damage",
+	STATDAMAGE_MOD_RANGED = "Ranged Skill Damage",
 	STATDAMAGE_MOD_ALL = "All Damage",
 	STATDAMAGE_MOD_AOE = "Area Damage",
 	STATDAMAGE_MOD_NORMAL = "Normal Damage",
@@ -6067,7 +6171,7 @@ The princess notices Aire tensing up in response to the question.
 	STATDAMAGE_MOD_DARKDESCRIPT = "Modifies Dark Damage",
 	STATDAMAGE_MOD_MINDDESCRIPT = "Modifies Mind Damage",
 	STATDAMAGE_MOD_MELEEDESCRIPT = "Modifies Melee Damage",
-	STATDAMAGE_MOD_RANGEDDESCRIPT = "Modifies Ranged Damage",
+	STATDAMAGE_MOD_RANGEDDESCRIPT = "Modifies Ranged Skill Damage",
 	STATDAMAGE_MOD_ALLDESCRIPT = "Modifies All Damage",
 	STATDAMAGE_MOD_AOEDESCRIPT = "Modifies Area Damage",
 	STATDAMAGE_MOD_NORMALDESCRIPT = "Modifies Normal Damage",
@@ -8113,6 +8217,8 @@ You push Anastasia to the floor and she spreads her legs wide for you. You mount
 	ITEMXARI_AMULETDESCRIPT = "Personal work of Xari gifted to you for your help. It shines with imbued power of its maker.",
 	ITEMAMELIA_DRESS = "Amelia's servant Dress",
 	ITEMAMELIA_DRESSDESCRIPT = "Old dress beloning to one of Servant's leaders. Its exceptional craftsmanwork does not show any sign of weariness.",
+	ITEMAMENIXX_HEADGEAR = "Void Cape",
+	ITEMAMENIXX_HEADGEARDESCRIPT = "An ethereal cape greatly improving waerer's magic resistance by redirecting the hostile magic into the other dimension.",
 	SCENEWIP = "Sorry! This scene is currently WIP. ",
 	AMELIASCENEOPTION = "I wonder if you could repay me for my work...",
 	UNIQUE_CLASS = "Can't be learned normally",
@@ -8150,6 +8256,7 @@ You push Anastasia to the floor and she spreads her legs wide for you. You mount
 	KURDAN_EXTRA_REPLY2 = "{color=yellow|— I've been studying magic since I was a juvenile. My father was an experienced practitioner, so I guess it runs in the family. Some see it as a tool, just a means to an end, but I'm a lot more curious about the underlying mechanics of how it operates and what role it has in the world. I still have much to learn, though.}",
 	KURDAN_EXTRA_OPTION3 = "About orcs...",
 	KURDAN_EXTRA_REPLY3 = "{color=yellow|— Those who united my homelands decided to outlaw the practice of magic altogether. They are in a difficult position today after being ruled for so long with an iron fist by the cult of Thoth. Now the cult is persecuted, and we... they have replaced magic with technology as the foundation of their power. I think it's unavoidable that you will encounter them some day.}",
+	MAE_EXTRA_GREET = "{color=yellow|— Greetings, [name]. Do you have some questions for me?}",
 	AMELIA_BONUS_QUESTION = "{color=yellow|— [name], I have a question for you and please answer honestly. Who would you find more attractive between me and the princess? She seems only slightly younger than me and I can't deny her beauty, that alone must make her quite appealing.}",
 	AMELIA_BONUS_QUESTION_OPTION1 = "Princess.",
 	AMELIA_BONUS_QUESTION_OPTION2 = "Amelia.",
@@ -8568,7 +8675,7 @@ Daisy looks away, but you notice how her mood notably darkens.""",
 	DAISY_LOST_APPROACH_OPTION_1_1 = "You have something of mine and I'm going to take it back.",
 	DAISY_LOST_APPROACH_OPTION_1_2 = "Where's Daisy? What have you done to her?",
 	DAISY_LOST_APPROACH_OPTION_1_3 = "Give my slave back right now.",
-	DAISY_LOST_APPROACH_REPLY_1 = """{color=yellow|Ramont: —Don't be so rash. Daisy is fine, but please listen to me. A few weeks ago I saw her attending Servants' classes by herself. She acted so gracious, so timid and dedicated. I couldn't help it, I fell in love.}
+	DAISY_LOST_APPROACH_REPLY_1 = """{color=yellow|Ramont: — Don't be so rash. Daisy is fine, but please listen to me. A few weeks ago I saw her attending Servants' classes by herself. She acted so gracious, so timid and dedicated. I couldn't help it, I fell in love.}
 	
 {color=yellow|Ramont: — I sent you that message about wanting her for experiments, but it was a lie to cover my true feelings. Regardless, you refused to give her away despite my willingness to pay. I couldn't hold back and now I've expressed my feelings to her and treat her with care.}""",
 	DAISY_LOST_APPROACH_REPLY_2 = """{color=yellow|Ramont: — I know she still technically belongs to you, but I offer you a bet. I want to give her a chance to decide if she wants to be with me or with you, and if she chooses you out of her free will, I will give up on her. But if she chooses me, she will stay with me and I will treat her like no other.}
@@ -9454,7 +9561,7 @@ After pondering for some time she turns to you with her request.
 
 Your attempt to track meets with little success. As you decide to return back and report on your findings, you hear a rustle from one of the nearby bushes. As you move closer, a small weasel quickly runs away from it. As you give a sigh and prepare to walk away, you notice that the small animal hasn't disappeared from sight as you would normally expect it to.
 
-Somehow, it carefully looks at you without moving, as if requiring your attention. [color=lime]You must follow it.[/color] Without any good reason to follow it, you still decide to do it.""",
+Somehow, it carefully looks at you without moving, as if requiring your attention. [color=gray_text_dialogue]You must follow it.[/color] Without any good reason to follow it, you still decide to do it.""",
 	PRE_RITUAL_2_1 = "As you follow the weasel through the forest, soon it brings you to its goal: a small human camp. A couple of cages and furniture make clear that it belongs to slavers. As you are scouting the camp, you realize that your guide has swiftly disappeared, but that doesn't bother you anymore, as in one of the cages you observe a familiar silhouette which likely belongs to the girl you are looking for.",
 	PRE_RITUAL_2_2 = """A couple of patrolling slavers went by your hiding spot.
 
@@ -10790,7 +10897,7 @@ With the help of a farmer you mark location on your map and finally move on. It'
 
 {color=aqua|Group Leader: — What have you cunts come here for? What do you need from me?}
 
-{color=aqua|Cali: — Remember me?}
+{color=yellow|Cali: — Remember me?}
 
 {color=aqua|Group Leader: — Why would I remember some half-beast bitch?}""",
 	CALI_BANDITS_4 = """Cali angrily kicks the bound bandit in the stomach eliciting a groan.
@@ -10914,12 +11021,12 @@ You take Cali aside and explain to her that this is her duty for now.
 
 In the end she accepted that she had to deal with the consequences of her own actions.""",
 	CALI_WILLIAM_13 = "As you sign the papers, Cali somewhat reluctantly leaves with William for the agreed term.",
-	 CALI_WILLIAM_EVENING_1 = """The first evening at William's place unfolds. Cali lies on the massive king-sized bed, a stark, small figure against the silk sheets. The black and white maid uniform feels foreign and stiff on her body; the skirt is too short and the apron barely hides the small expanse of her chest. Soft but surprisingly strong bracers circle her wrists and ankles, pulling her limbs taut toward the headboard. Her gray hair is disheveled and her knees are bent and spread, the skirt hem the only thing obscuring her underwear.
+	CALI_WILLIAM_EVENING_1 = """The first evening at William's place unfolds. Cali lies on the massive king-sized bed, a stark, small figure against the silk sheets. The black and white maid uniform feels foreign and stiff on her body; the skirt is too short and the apron barely hides the small expanse of her chest. Soft but surprisingly strong bracers circle her wrists and ankles, pulling her limbs taut toward the headboard. Her gray hair is disheveled and her knees are bent and spread, the skirt hem the only thing obscuring her underwear.
 
 {color=aqua|William: — You don't feel too uncomfortable, do you? But given the luxury of your dinner, a bit of discomfort shouldn't be a big deal.}
 
 {color=yellow|Cali: — Hmph, it's no big deal once I get my sword back. Just get on with it.}""",
-	CALI_WILLIAM_EVENING_2 = """A slow, predatory smile spreads across William’s lips at her defiant words. He moves to the side of the bed, his shadow falling over her smaller frame while his fingers run down the front of her starched blouse. He peels it open, letting the cool air of the room hit her skin. Cali's small, perky breasts are now completely bare, the nipples hardening from the chill and her anxiety.
+	CALI_WILLIAM_EVENING_2 = """A slow, predatory smile spreads across William's lips at her defiant words. He moves to the side of the bed, his shadow falling over her smaller frame while his fingers run down the front of her starched blouse. He peels it open, letting the cool air of the room hit her skin. Cali's small, perky breasts are now completely bare, the nipples hardening from the chill and her anxiety.
 
 {color=aqua|William: — Heh, I knew you are one pretty thing despite your temper.}
 
@@ -11401,7 +11508,7 @@ Lilia almost shrieks as you feel her clamp down your shaft now, her eyes hazing 
 After a few minutes you notice the small female is asleep, lying there as she would still occasionally shudder. Noting that keeping her warm might be in her best interest, you lay her down next to you as you decide to let her sleep with you tonight.""",
 	CALI_ACT1_1 = """You visit your captive, Cali. As you stand in silence, the girl looks up at you with a tired rage behind her eyes.
 
-{color=yellow|— W-what do you want now.!? Haven't you done enough?! Let me go!}
+{color=yellow|— W-what do you want now!? Haven't you done enough?! Let me go!}
 
 Staring her down, you take a good look at her. Slender and bruised, her body isn't suited for labor, but she has to earn her keep.
 
@@ -12053,7 +12160,7 @@ Finally by the end of the day she came to an orphanage.
 {color=aqua|Rudolph: — Now you will have a home and a [Master]. This is what you actually wanted, isn't it? I'm sure you'll have a lot of happy memories together. }
 
 Not sure how to reply, the girl still managed to thank her back.""",
-	CHRISTMAS_EVENT_10 = """{color=yellow|Rudolph: — Even though it might be hard, you should still try your best. }
+	CHRISTMAS_EVENT_10 = """{color=aqua|Rudolph: — Even though it might be hard, you should still try your best. }
 
 {color=yellow|Daisy: — Things could be against us, but we can adore these moments of peace and happiness.}
 
@@ -13505,7 +13612,7 @@ Norlan takes a moment to consider his next words. He throws a glance at Amelia, 
 {color=yellow|Amelia: — What a speechmaker you are, Norlan. I see you finally decided to make it personal. }
 
 {color=yellow|Norlan: — Enough, Amelia. We have given you plenty of time. Your last statement is finished. We will now proceed to voting. You don't have any more objections, do you, Mayor [name]?}""",
-	AMELIA_TRIAL_NORMAL_5 = """As you scan the hall, you notice several faces turned downward. Noraln's persuasion has taken hold, and resignation fills the space. Even those in favor of Amelia are starting to doubt her and consider taking Norlan's side. It seems whatever Amelia had strategized has faltered. All potential avenues for delay or Norlan's implication have been exhausted.
+	AMELIA_TRIAL_NORMAL_5 = """As you scan the hall, you notice several faces turned downward. Norlan's persuasion has taken hold, and resignation fills the space. Even those in favor of Amelia are starting to doubt her and consider taking Norlan's side. It seems whatever Amelia had strategized has faltered. All potential avenues for delay or Norlan's implication have been exhausted.
 
 But could there be another angle to consider? Norlan's swift willingness to relinquish the Guild Leader's position raises questions. Maybe Amelia's suspicions of Norlan were misplaced, and he wasn't the one orchestrating the plot against her? Or could there be another motive behind Norlan's actions?""",
 	AMELIA_TRIAL_NORMAL_5_OPTION_1 = "You're hiding something, Norlan. I will not let the council finish until I find out what it is.",
@@ -16114,14 +16221,14 @@ For a moment you thought Kuro would present you her hand for a handshake but she
 	KURO_LIB_OPT_ACCESS = "I'd like to have a library access for a friend...",
 	KURO_LIB_START = """Before you can finish your question Myr interrupts you.
 
-{color=yellow|Myr: — No. We aren't letting anyone into our libraries, especially filthy shedding animals.}
+{color=aqua|Myr: — No. We aren't letting anyone into our libraries, especially filthy shedding animals.}
 
 Despite the degrading remark Kuro remains unflinching.""",
 	KURO_LIB_OPT_AGREE = "Can't we reach some agreement?",
 	KURO_LIB_OPT_RACIST = "You shall not make racist remarks towards my people",
 	KURO_LIB_OPT_VOUCH = "I can vouch she's well trained",
-	KURO_LIB_REPLY_AGREE = "{color=yellow|Myr: — I don't believe so, I don't favor sharing my collection, especially with outsiders.}",
-	KURO_LIB_REPLY_RACIST = "{color=yellow|Myr: — why, I think I shall. Thanks to my status I can do exactly that.}",
+	KURO_LIB_REPLY_AGREE = "{color=aqua|Myr: — I don't believe so, I don't favor sharing my collection, especially with outsiders.}",
+	KURO_LIB_REPLY_RACIST = "{color=aqua|Myr: — why, I think I shall. Thanks to my status I can do exactly that.}",
 	KURO_LIB_REPLY_VOUCH = """Kuro gives you a short annoying look.
 
 {color=yellow|Kuro: — Very funny.}""",
@@ -16131,22 +16238,22 @@ Despite the degrading remark Kuro remains unflinching.""",
 
 Myr stops and closely inspect Kuro for the next few seconds, who remains completely calm.
 
-{color=yellow|Myr: — Firstly, many things have changed since those days. Secondly, you better not repeat that name outside of this room. }
+{color=aqua|Myr: — Firstly, many things have changed since those days. Secondly, you better not repeat that name outside of this room. }
 
 The dark elf takes another pause before continuing with resistance in her voice.
 
-{color=yellow|Myr: — Very well. You gotta pay for the access though since you are not a member of the guild. Five hundred gold should not make a problem for our crafty mayor I presume.}""",
+{color=aqua|Myr: — Very well. You gotta pay for the access though since you are not a member of the guild. Five hundred gold should not make a problem for our crafty mayor I presume.}""",
 	KURO_LIB_OPT_GOTMONEY = "I've got the money",
 	KURO_LIB_OPT_LATER = "I'll return later",
 	KURO_LIB_OPT_BROUGHTMONEY = "I've brought the money for Kuro...",
-	KURO_LIB_ACCESS = """{color=yellow|Myr: — Alright. You aren't allowed to take more than one book at a time and you'll have to return it in 30 days in flawless condition or...}
+	KURO_LIB_ACCESS = """{color=aqua|Myr: — Alright. You aren't allowed to take more than one book at a time and you'll have to return it in 30 days in flawless condition or...}
 
 {color=yellow|Kuro: — Let's save a bit of time for each other, I need Chronicles of Al'Hazred. I believe you have one.}
 
-{color=yellow|Myr: — That one is out of question. I'm not allowing ancient tomes like that to anyone I don't personally know.}""",
+{color=aqua|Myr: — That one is out of question. I'm not allowing ancient tomes like that to anyone I don't personally know.}""",
 	KURO_LIB_ACCESS2 = """{color=yellow|Kuro: — *Sigh* How do I earn your trust in this case?}
 
-{color=yellow|Myr: — I don't want to trust you in the first place. Well, since you've paid for the access, I can consider lending it to you. Bring me a bottle of Gilded Grasp whiskey. That is, if you manage to find one. From my knowledge, its export has long stopped from the dwarven lands.}""",
+{color=aqua|Myr: — I don't want to trust you in the first place. Well, since you've paid for the access, I can consider lending it to you. Bring me a bottle of Gilded Grasp whiskey. That is, if you manage to find one. From my knowledge, its export has long stopped from the dwarven lands.}""",
 	KURO_LIB_ACCESS3 = """As you leave Myr's office, Kuro turns to you in her usual collected manner.
 
 {color=yellow|Kuro: — Well, you better not waste any time then.}""",
@@ -16882,7 +16989,6 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	LIRA_LOST_QUEST_NAME = "Lost Lira",
 	LIRA_LOST_QUEST_SUMMARY = "Help Lira out of the grove",
 	LIRA_LOST_QUEST_CAPITAL = "Get to the elven capital",
-	
 	HELEVIEL_QUEST1_NAME = "Heleviel: New Perspective",
 	HELEVIEL_QUEST1_SUMMARY = "Help the former High Priestess adapt to life in Aliron by working at the bar.",
 	HELEVIEL_QUEST2_NAME = "Heleviel: Helping the weak",
@@ -16902,7 +17008,6 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	HELEVIEL_CITY_OPTION_4 = "Pay for ritual",
 	HELEVIEL_CITY_OPTION_5 = "Attend the ritual",
 	HELEVIEL_SLAVE_STAGE_6 = "Attend the ritual.",
-	
 	KURO_ERRAND_QUEST_NAME = "Kuro: Disappearance",
 	KURO_ERRAND_QUEST_SUMMARY = "Follow the mysterious trail",
 	KURO_ERRAND_QUEST_CHURCH = "Visit Ginny at her temple",
@@ -18443,6 +18548,7 @@ Hotkey: 3""",
 	DISLIKED_ACTIONS_LABEL = "Disliked actions",
 	NOSERVITUDE = "-Servitude",
 	COMBAT_ABILS_LABEL = "Combat Abilitites",
+	ONQUESTLABEL = "[name] is unavailable at this point of time.",
 	DATING_LIVING_ROOM = "Living Room",
 	DATING_BEDROOM = "Bedroom",
 	DATING_TORTURE_ROOM = "Torture Room",
@@ -18890,6 +18996,7 @@ Offspring will inherit only this parent's stats.""",
 	CALI_TOUCHING_1_SS = "First scene with Cali during her sidequest",
 	CALI_BJ_HAPPY_1_SS = "Second scene with Cali during her sidequest",
 	CALI_RIDING_1_SS = "Complete Cali's sidequest",
+	CALI_AMELIA_SS = "Reject Cali's approaches",
 	HALLOWEEN_SCENE_SS = "Halloween event with Cali and Anastasia",
 	CHRISTMAS_SCENE_SS = "Christmas event with Daisy",
 	HELEVIEL_MANSION_SS = "Recruit Heleviel",
@@ -19501,24 +19608,24 @@ Spent and satisfied, you carefully withdraw from her tight passage, admiring how
 	AMELIA_INFINITE_1_OPTION_1 = "Amelia? What's with that look",
 	AMELIA_INFINITE_1_OPTION_2 = "Didn't expect to see you here.",
 	AMELIA_INFINITE_1_OPTION_3 = "Where's Alise?",
-	AMELIA_INFINITE_2_1 = """- Amelia, huh? That's my name, right? I'm not quite the Amelia you know, though.
+	AMELIA_INFINITE_2_1 = """— Amelia, huh? That's my name, right? I'm not quite the Amelia you know, though.
 
 She tilts her head, her grin sharp and teasing, tail flicking as if daring you to ask more.""",
-	AMELIA_INFINITE_2_2 = """- Ha, me neither! If I'd known you'd show up, I might've worn something a little flashier.
+	AMELIA_INFINITE_2_2 = """— Ha, me neither! If I'd known you'd show up, I might've worn something a little flashier.
 
 She twirls a lock of hair, her form blurring slightly at the edges, like a figure caught in a dream""",
-	AMELIA_INFINITE_2_3 = """- Oh, come on, we're not playing that game today. I heard Alise is off at the guild, but why chase her when I'm right here?
+	AMELIA_INFINITE_2_3 = """— Oh, come on, we're not playing that game today. I heard Alise is off at the guild, but why chase her when I'm right here?
 
 She leans closer, her voice laced with playful mockery. Despite your best attempts, the conversation doesn't make sense.""",
-	AMELIA_INFINITE_2 = "- Anyway, I've got a question for you, [name]. Do you think dreams are real?",
+	AMELIA_INFINITE_2 = "— Anyway, I've got a question for you, [name]. Do you think dreams are real?",
 	AMELIA_INFINITE_2_OPTION_1 = "Of course not, they're just our mind's chaotic hallucinations",
 	AMELIA_INFINITE_2_OPTION_2 = "They must be real, there's a reason we can see them.",
 	AMELIA_INFINITE_2_OPTION_3 = "No way I can tell.",
-	AMELIA_INFINITE_3_1 = """- Oh, really? So sure about that? Just because someone said so, you believe it? I didn't take you for the gullible type.
+	AMELIA_INFINITE_3_1 = """— Oh, really? So sure about that? Just because someone said so, you believe it? I didn't take you for the gullible type.
 
 Her laughter spills out, sharp and teasing, as she leans back, her form faintly wavering.""",
-	AMELIA_INFINITE_3_2 = "- What, you actually think that? You sound like a total lunatic!",
-	AMELIA_INFINITE_3_3 = """- No opinion? Really? How do you even get by without a take on something so basic?
+	AMELIA_INFINITE_3_2 = "— What, you actually think that? You sound like a total lunatic!",
+	AMELIA_INFINITE_3_3 = """— No opinion? Really? How do you even get by without a take on something so basic?
 
 She rolls her eyes, her body briefly flickering like a candle flame before snapping back into focus.""",
 	AMELIA_INFINITE_3 = """Amelia's mocking laughter echoes through the tower, light and taunting, as she glides closer—far too close. Her hands rest on your shoulders, her face inches from yours, her grin wide and unnervingly playful.
@@ -19528,11 +19635,11 @@ She rolls her eyes, her body briefly flickering like a candle flame before snapp
 	AMELIA_INFINITE_3_OPTION_2 = "*Push away*",
 	AMELIA_INFINITE_4_1 = "You lean toward her, heart pounding, but just as your lips nearly meet, she dissolves into a wisp of smoke, leaving only her signature laugh echoing in the air.",
 	AMELIA_INFINITE_4_2 = "You try to ease out of her grasp, but before you can fully pull away, she vanishes into thin air, her form unraveling like a fading dream, followed by that familiar, mocking laugh.",
-	AMELIA_INFINITE_4 = """- All of this? Not real, you dummy.
+	AMELIA_INFINITE_4 = """— All of this? Not real, you dummy.
 
 Her taunting words fade into energetic giggles, swallowed by the tower's eerie silence.""",
 	AMELIA_BONUS_OPTION = "Have you ever dyed your hair pink?",
-	AMELIA_BONUS = """- Pink hair? Now that's a random question! I don't think it'd suit me, but if you think I'd pull it off, I might consider it... for you.
+	AMELIA_BONUS = """— Pink hair? Now that's a random question! I don't think it'd suit me, but if you think I'd pull it off, I might consider it... for you.
 
 She winks, her tail swishing as she makes an eye-catching move.""",
 	ELF_CAPITAL_DRUIDS_LOUNGE = "Druids' lounge",
@@ -19931,17 +20038,17 @@ You note her lizard-like traits, the subtle pride in her voice hinting at a life
 	KURO3_DIALOGUE_3_OPTION_5 = "Thanks for the information.",
 	KURO3_DIALOGUE_4_1 = """Kuro flashes a smug smile before answering.
 
-- What makes you think I know that? There must be something special about you, isn't there? Shouldn't you know what makes you special? *Chuckle*""",
-	KURO3_DIALOGUE_4_2 = "- That's not true. I haven't told a single lie here yet..",
+— What makes you think I know that? There must be something special about you, isn't there? Shouldn't you know what makes you special? *Chuckle*""",
+	KURO3_DIALOGUE_4_2 = "— That's not true. I haven't told a single lie here yet..",
 	KURO3_DIALOGUE_4_OPTION_1 = "You're obviously lying. Why don't you just say it?",
 	KURO3_DIALOGUE_4_OPTION_2 = "Withholding that information is what lets you enjoy having some control over me?",
 	KURO3_DIALOGUE_4_OPTION_3 = "Forget it...",
 	KURO3_DIALOGUE_5 = """Kuro's grin widens, her eyes flashing with particular joy.
 
-- This mental sharpness of yours is exactly what makes it all truly... fun.
+— This mental sharpness of yours is exactly what makes it all truly... fun.
 
 Before you can respond, Kuro retreats in her usual style, fading into the shadows.""",
-	KURO3_DIALOGUE_6 = """- Then why don't you just stick to doing what you feel like doing? You won't waste my time or yours. And given that you've been successful so far, I don't think you need me telling you what to do.
+	KURO3_DIALOGUE_6 = """— Then why don't you just stick to doing what you feel like doing? You won't waste my time or yours. And given that you've been successful so far, I don't think you need me telling you what to do.
 
 Despite your rude response, Kuro takes no offense. She quickly retreats in her usual style, fading into the shadows.""",
 	KURO3_INIT_1_1 = """Today Kuro has approached you.
@@ -20109,7 +20216,9 @@ You steady her for a minute as her eyes remain unfocused and her body processes 
 	KURO3_GOOD_3_1 = "{color=yellow|Kuro: — It's... I can't say for certain yet, but I hope to learn more about everything I can.}",
 	KURO3_GOOD_3_2 = "{color=yellow|Kuro: — Heh, very funny. You really think a foul ancient being like her would care about some gold coins?}",
 	KURO3_GOOD_3_3 = "{color=yellow|Kuro: — Please, [name], you're making me blush, and it's really not suitable for someone who's just done what I did. Let's save it for later.}",
-	KURO3_GOOD_3 = """{color=yellow|Kuro: — One thing's for sure: Nixx is no more, and it will both help us against the cult and stop me from worrying.}
+	KURO3_GOOD_3 = """
+	
+{color=yellow|Kuro: — One thing's for sure: Nixx is no more, and it will both help us against the cult and stop me from worrying.}
 
 Kuro finally steadies herself, releasing your hand, and you leave the place.""",
 	KURO3_BAD_1 = """You snatch the Cage from Kuro's powerless hands with ease, feeling the power within. As you glance at the puzzled Kuro, you focus on the ancient sealed powers, feeling them surge from the device into you. Kuro raises her head, speechless in disbelief, too weak to fight or perhaps too confused to react.
@@ -20145,7 +20254,7 @@ You leave Kuro seemingly stuck in place as you contemplate your newly acquired p
 	KURO3_DIALOGUE2_2_1 = """Kuro pauses, searching for the right words.
 
 {color=yellow|— It was probably an ancient, forgotten deity, or rather, what's left of one. Good thing she was on our side, wasn't it?}""",
-	KURO3_DIALOGUE2_2_2 = """- What, are you hoping some powerful deity will solve all your problems? I thought you were too old for such naive expectations.
+	KURO3_DIALOGUE2_2_2 = """{color=yellow|— What, are you hoping some powerful deity will solve all your problems? I thought you were too old for such naive expectations.}
 
 Kuro smirks at you in her usual way.
 
@@ -20179,7 +20288,7 @@ Yet your compliment has not gone entirely unnoticed, perhaps partly because the 
 {color=yellow|Official 1: — This bar has the best elf girls, you know. That white-haired one is especially cute when angry.}
 
 He gives a small pinch to Heleviel's butt once she turns away from the table, followed by an angry yelp.""",
-	HELEVIEL_QUEST_8 = """{color=yellow|Heleviel: — What are you doing, you foul man!..}",
+	HELEVIEL_QUEST_8 = """{color=yellow|Heleviel: — What are you doing, you foul man!..}\",
 
 However, as she notices you, she quickly stops herself.""",
 	HELEVIEL_QUEST_8_OPTION_1 = "*Scold the official*",
@@ -20226,14 +20335,14 @@ You note with amusement how Heleviel holds herself in this situation. While not 
 	HELEVIEL_QUEST_13 = """The evening continues uneventfully with your patrons until it gets late enough for everyone to leave. As nobody else is around, you get a small comment from Heleviel before she leaves her shift, still bearing her tipsiness.
 
 {color=yellow|Heleviel: — I suppose it wasn't too bad after all. Your friends are disgusting for being such lechers toward elven women, though.}""",
-	HELEVIEL_SLAVE_CHURCH_INIT = """With time, Heleviel has grown more accustomed to life in slavery under you. Her bickering has mostly disappeared. Yesterday you received a help request from Aliron’s church, which seems like a good next step for Heleviel to work on in order to improve her cultural accommodation.""",
+	HELEVIEL_SLAVE_CHURCH_INIT = "With time, Heleviel has grown more accustomed to life in slavery under you. Her bickering has mostly disappeared. Yesterday you received a help request from Aliron's church, which seems like a good next step for Heleviel to work on in order to improve her cultural accommodation.",
 	HELEVIEL_SLAVE_CHURCH_INTRO_TEXT = """You bring Heleviel to the church, finding Ginny in her usual workplace.
 
-{color=yellow|Heleviel: — Hmph, so this is Celena’s temple, and you must be her local priest. What a pitiful decoration. No wonder Celena is only a subservient goddess with measly followers compared to Freya.}
+{color=yellow|Heleviel: — Hmph, so this is Celena's temple, and you must be her local priest. What a pitiful decoration. No wonder Celena is only a subservient goddess with measly followers compared to Freya.}
 
-{color=aqua|Ginny: — It’s true that Freya is more revered than Celena, but I’m her devoted follower in this town. Celena is a merciful goddess, and she wants to help those in need.}
+{color=aqua|Ginny: — It's true that Freya is more revered than Celena, but I'm her devoted follower in this town. Celena is a merciful goddess, and she wants to help those in need.}
 
-{color=yellow|Heleviel: — What difference does it make if her establishment is so insignificant? I swear Freya’s followers would never stoop so low.}
+{color=yellow|Heleviel: — What difference does it make if her establishment is so insignificant? I swear Freya's followers would never stoop so low.}
 
 {color=aqua|Ginny: — Perhaps, but my goal is to assist others, even those of different religions.}
 
@@ -20366,7 +20475,7 @@ The anxiety in her voice makes it clear she is distressed by losing the connecti
 	HELEVIEL_SLAVE_RITUAL_ERLEN_TEXT = """You find Erlen not far from the main temple. As you explain your situation, his face brims with poorly disguised disapproval.
 
 {color=yellow|— You say she wants an audience with Lira? Normally, I would never allow it, but if you of all people ask for this... Tell me, what are you actually aiming to achieve?}""",
-	HELEVIEL_SLAVE_RITUAL_ERLEN_OPTION_1 = "I'm genuinely want to lift her mood",
+	HELEVIEL_SLAVE_RITUAL_ERLEN_OPTION_1 = "I genuinely want to cheer her up",
 	HELEVIEL_SLAVE_RITUAL_ERLEN_OPTION_2 = "This may be helpful to us, she was a high priestess for a long time after all",
 	HELEVIEL_SLAVE_RITUAL_ERLEN_REPLY_1 = "{color=yellow|— I don't like it. You're too soft. But I'm not going to stop you. You'll find Lira at the temple—she'll probably be glad to help.}",
 	HELEVIEL_SLAVE_RITUAL_ERLEN_REPLY_2 = "{color=yellow|— I see. Pragmatic as ever, it seems. Fine, I'm not going to stop you. You'll find Lira at the temple—she'll probably be glad to help.}",
@@ -20462,15 +20571,15 @@ Despite her protests you easily notice how her words lack true indignation. More
 	HELEVIEL_BAR_SEX_2_OPTOPN_2 = "*Take her roughly*",
 	HELEVIEL_BAR_SEX_3 = """Your lips meet hers in the dimly lit backroom of the bar. Heleviel's white hair cascades over her shoulders, a stark contrast to the dim look of the room. The faint scent of ale and her unique elven fragrance fills the air as you deepen the kiss, tasting the sweetness on her tongue. Her green eyes flutter closed, long lashes brushing against her cheeks. Her curvaceous figure strains against the tight waitress uniform, the fabric stretched taut across her ample chest. You break the kiss, your hand on her shoulder, and gently guide her to turn around.
 
-{color=yellow|— C-curses, was this your plan all along? Ah, I don't care anymore, you cunning scoundrel...
+{color=yellow|— C-curses, was this your plan all along? Ah, I don't care anymore, you cunning scoundrel...}
 
 Heleviel complies, her movements slightly unsteady from the alcohol. Her palms press flat against the rough surface of the table as she bends forward, the position unfamiliar and awkward for the former High Priestess. The skirt of her uniform rides up, revealing the smooth pale skin of her thighs. You step behind her, one hand tracing the curve of her spine before settling on her hip. With your other hand, you lift the skirt higher, bunching it at her waist. She tenses slightly as you pull her panties down, exposing her glistening pussy.""",
 	HELEVIEL_BAR_SEX_4 = """You position yourself behind her, your hard dick pressing against her entrance. Heleviel gasps as you begin to push in, the penetration slow but steady. Her tight pussy stretches to accommodate you, her body unused to such intrusion. You grip her hips, pulling her back against you as you thrust deeper. Her moans are muffled against the table surface, her fingers digging into the wood. Each thrust sends waves of pleasure through her body, her large breasts swaying with the rhythm. The table creaks beneath her as you pick up the pace, your dick sliding in and out of her slick heat with increasing intensity.
 
-{color=yellow|— M-m-mh... What's this... Humiliation... Why does it feels good...""",
+{color=yellow|— M-m-mh... What's this... Humiliation... Why does it feels good...}""",
 	HELEVIEL_BAR_SEX_5 = """Heleviel's green eyes are half-lidded with pleasure and surprise as you continue to take her from behind. Her dignified facade crumbles with each powerful thrust, replaced by raw, unbridled desire. You lean over her, your breath hot against her ear as you reach around to cup her heavy breasts through the thin fabric of her uniform. Her nipples harden beneath your touch, her back arching instinctively. The room fills with the sound of skin slapping against skin and her increasingly loud moans.
 
-{color=yellow|— D-don't stop now... If you stop... I can't....
+{color=yellow|— D-don't stop now... If you stop... I can't....}
 
 You drive into her harder, faster, your dick hitting that sensitive spot deep inside her that makes her cry out. Heleviel's controlled demeanor shatters completely, her moans growing louder, more desperate, echoing in the small backroom. Her green eyes, usually so serious and composed, are now clouded with a haze of lustful pleasure. You can feel her body beginning to tense beneath you, the muscles in her thighs and back tightening as she pushes back against you, meeting your rhythm with an instinctual need.""",
 	HELEVIEL_BAR_SEX_6 = "The table scrapes across the floor as you give one final, deep thrust. A guttural cry escapes Heleviel's lips as her orgasm crashes through her. Her pussy clenches around your dick in rhythmic pulses, milking you as she trembles uncontrollably. Her vision blurs, a raw, carnal release that strips away every last piece of her dignified persona. The force of her climax triggers your own, and you bury yourself deep inside her, your dick pulsing as you fill her with your warmth.",
@@ -20516,4 +20625,234 @@ With a final, deep thrust, you drive into her one last time. Heleviel cries out,
 	HELEVIEL_WEDDING_6 = """Slowly, you withdraw, collapsing onto the bed beside her. Heleviel lies there, her body still humming with pleasure, her white hair a tangled mess around her head. She turns to face you, her green eyes soft, a mixture of satisfaction and lingering vulnerability in their depths. The dignified High Priestess is gone, replaced by a woman who has completely surrendered to you. She reaches out, her hand finding yours, her fingers lacing through yours in a silent gesture of connection. 
 
 {color=yellow|— This is so silly, but... What I feel the most right now, not being a former priestess or an elf. It's that I'm a woman. Your woman.}""",
+	HELEVIEL_SNOWSET_WORKERS_OPTION = "Check shelves",
+	HELEVIEL_SNOWSET_EVENT_1 = "As you walk through the guild, suddenly Heleviel, who you took with you, spots something that catches her eye: a bright set of clothes sitting in a corner, seemingly abandoned. It draws her in, and she approaches it with fascination as she lifts it up.",
+	HELEVIEL_SNOWSET_EVENT_2 = """You seem to be interested in it.
+
+{color=yellow|Heleviel: — N-no-... I mean, yes, I am interested in this. Even someone of my status can appreciate such fine craftsmanship. I want it. After all, I don't have that many spare clothes now. Maybe you should consider getting it for me.}""",
+	HELEVIEL_SNOWSET_EVENT_3 = """Slightly taken aback by her sudden display of assertiveness, you can't help but get curious. You call Sigmund over with the suit.
+
+{color=aqua|Sigmund: — Aye, ya can have dat.}
+
+{color=yellow|Heleviel: — This will cost us, I assume.}
+
+Sigmund strokes his beard, observing the elven woman and the skimpy suit for a few moments, until he finally speaks up.
+
+{color=aqua|Sigmund: — How about a favor 'stead? Ya seem to be eager to wear it. We can think of something.}
+
+Heleviel raises a brow, but it's too late to back out.""",
+	HELEVIEL_SNOWSET_EVENT_4 = """After a few minutes, Heleviel comes out of the dressing room wearing the clothes. They certainly appear more skimpy than what you'd expect her to wear willingly. However, her face is rather content as she looks herself over in the mirror.
+
+{color=yellow|Heleviel: — Just about the right size, as I predicted.}""",
+	HELEVIEL_SNOWSET_OPTION_1 = "I didn't take you for someone who would want to wear something like this.",
+	HELEVIEL_SNOWSET_OPTION_2 = "So what's the deal for you getting it for free?",
+	HELEVIEL_SNOWSET_EVENT_5A = "{color=yellow|Heleviel: — Oh, that... It just resembles a suit worn by one powerful sorceress that I knew a long time ago. It makes me feel a bit like her now, although naturally there's no magic in it. I guess I always thought it's entertaining to appear as someone else.}",
+	HELEVIEL_SNOWSET_EVENT_5B = """Heleviel closes her eyes in meditation, before composing herself to deliver a clear, steady speech.
+
+{color=yellow|Heleviel: — This is a boon. A custom of goodwill. And I want to thank you, not only for the gift, but for the hands and hearts behind it that chose to make it here. Your work and benevolence deserve my sincerest blessing, which I deliver to you. You have my gratitude, and more than anyone, [name], who is the reason that I'm here. Merry Christmas!}""",
+	
+	MAE_QUEST_INITIATE_START = """After a few days of living at your place, Mae, a beastkin shaman who joined you after the obscene ritual, finally approaches you. She rubs her legs together, looking down before she finally speaks up.
+
+{color=yellow|Mae: — H-hi, how's your day?}""",
+	MAE_QUEST_INITIATE_OPTION_1 = "It's nice",
+	MAE_QUEST_INITIATE_OPTION_2 = "Is there something you want to ask?",
+	MAE_QUEST_INITIATE_REPLY_1 = """{color=yellow|Mae: — R-really? That's good to hear.}
+
+Judging by Mae's tone, she still isn't quite used to the luxury of a city mansion after all that happened.""",
+	MAE_QUEST_INITIATE_REPLY_2 = "{color=yellow|Mae: — Y-yeah, sorry, I was not sure how to start...}",
+	MAE_QUEST_INITIATE_FAVOR = "{color=yellow|Mae: — Anyway, there's a favor I want to ask. Well, you see, I... can't get used to the food around here after living in the forests... It... doesn't quite taste right to me.}",
+	MAE_QUEST_INITIATE_FAVOR_OPTION_1 = "I remember you eating rather happily with others",
+	MAE_QUEST_INITIATE_FAVOR_OPTION_2 = "So what do you want?",
+	MAE_QUEST_INITIATE_FAVOR_RETURN = """Mae's face blushes slightly and she starts stammering, speaking faster.
+
+{color=yellow|Mae: — Y-yeah, I did, I couldn't show my distaste, could I?}""",
+	MAE_QUEST_INITIATE_REQUEST = "{color=yellow|Mae: — I wanted to go to the local market, it's just... I'm not used to buying stuff over here. Oh, and I could also get some rare herbs for my rituals while I'm at it.}",
+	MAE_QUEST_INITIATE_REQUEST_OPTION_1 = "Alright, I can show you around",
+	MAE_QUEST_INITIATE_REQUEST_OPTION_2 = "Maybe once I have time",
+	MAE_QUEST_INITIATE_CLOSE = "{color=yellow|Mae: — Thank you, I hope it won't take you too long...}",
+
+	MAE_MARKET_START = """You lead Mae to the market, slowly guiding her through various stalls as she observes her surroundings with wide eyes.
+
+{color=yellow|Mae: — Wow, it's only been a couple of years since I visited last time, but things have changed so much...}""",
+	MAE_MARKET_FRUIT_INTRO = """As you guide Mae between the stalls, a bright splash of color catches her eye. She stops short, ears perking up.
+
+{color=yellow|Mae: — Oh... that fruit...}
+
+On a velvet cloth sits a pile of glossy, amber-skinned fruits, each one perfectly round and faintly warm as if it was just picked.
+
+{color=gray_text_dialogue|Fruit Vendor: — Sunplums! Fresh shipment, rare this season! Price is firm.}
+
+Mae takes one look at the sign and immediately pulls her hand back.
+
+{color=yellow|Mae: — I-it's... pricey. Back in the woods we just... found them rarely like this.}
+
+She stares a moment longer, swallowing, then looks at you with a hesitant, embarrassed smile.""",
+	MAE_MARKET_FRUIT_OPTION_BUY = "*Buy it for her* (250 gold)",
+	MAE_MARKET_FRUIT_OPTION_STEAL = "*Steal it while the vendor isn't looking*",
+	MAE_MARKET_FRUIT_OPTION_MOVE = "We better move on",
+	MAE_MARKET_FRUIT_BUY = """You reach for your coin pouch without making a big deal out of it.
+
+{color=gray_text_dialogue|Fruit Vendor: — Good choice. Mind the juice, it stains.}
+
+The vendor wraps it in thin paper and passes it over. Mae accepts it with both hands like it's a gift.""",
+	MAE_MARKET_FRUIT_STEAL = """You scan the vendor's posture, the flow of people, the way the stall's edge creates a blind spot. The vendor turns to argue with another customer about weights and measures.
+
+But your hand is already between the cloth and the fruit. In one smooth motion, you slip a sunplum into a sleeve pouch.""",
+	MAE_MARKET_FRUIT_AFTER = """{color=yellow|Mae: — R-really? For me?.. Thank you...}
+
+She takes a careful bite. Her eyes widen, and her tail gives a tiny, involuntary swish.
+
+For the first time since arriving in the city, she looks genuinely at ease.""",
+	MAE_MARKET_FRUIT_MOVE_ON = """Mae flinches at her own lingering stare, then forces a polite nod.
+
+{color=yellow|Mae: — Y-yeah... you're right. I got carried away.}
+
+She takes one last look, then quickly steps after you, as if afraid she might change her mind.""",
+	MAE_MARKET_SHELIA_INTRO = """As you make your way through the market, a couple of beastkin suddenly approach you. A female one looks surprised as she takes a closer look at Mae.
+
+{color=aqua|Stranger Beastkin: — Oh, Mae, is that you?}
+
+{color=yellow|Mae: — H-hi, Shelia, it's been a while.}
+
+{color=aqua|Shelia: — What an outfit, so you really went to live in the woods?}
+
+{color=yellow|Mae: — Well, that's a long story...}""",
+	MAE_MARKET_SHELIA_TALK = """{color=aqua|Shelia: — No way, you're a tribal shaman now? And you live at a mayor's place too. Are you like one of his close partners? Haha.}
+
+{color=yellow|Mae: — T-that's not like that...}""",
+	MAE_MARKET_SHELIA_REL_OPTION_1 = "Our relationship is strictly professional",
+	MAE_MARKET_SHELIA_REL_OPTION_2 = "You aren't exactly wrong...",
+	MAE_MARKET_SHELIA_REQUEST = """{color=aqua|Shelia: — Yeah, yeah, I get it, someone with knowledge from the far woods can be very valuable...}
+
+The girl pauses for a bit as if recalling something.
+
+{color=aqua|Shelia: — Oh, about that, I just remembered. My younger cousin has been acting weird and being sick for about a week already. Local apothecaries couldn't give us anything. I feel like it might be something... unusual. Maybe you could take a look?}
+
+{color=yellow|Mae: — I suppose, it can't hurt to try. Savra taught me about many different conditions.}""",
+	MAE_MARKET_SHELIA_WAIT = """{color=aqua|Shelia: — That's great! I'll be waiting for you at my place then.}
+
+The beastkin explained their home location and went on with their errands.
+
+{color=yellow|Mae: — Hope you don't mind me trying to help them?}""",
+	MAE_MARKET_SHELIA_RESPONSE_OPTION_1 = "It's worth it to keep helping your friends",
+	MAE_MARKET_SHELIA_RESPONSE_OPTION_2 = "I think this can help your training",
+	MAE_MARKET_SHELIA_RESPONSE_1 = "{color=yellow|Mae: — Y-yeah, I wonder what they really think of me now that I'm back being like this...}",
+	MAE_MARKET_SHELIA_RESPONSE_2 = "{color=yellow|Mae: — You think so? I guess it would be nice to be more useful to you.}",
+
+	MAE_FRIEND_VISIT_1 = """You visit a small dormitory. Mae approaches the young beastkin boy lying in bed, weak and feeble. When she finishes her inspection, she turns to you.
+
+{color=yellow|Mae: — It seems he is possessed by a nasty spirit. It's unusual, spirits are weak outside their natural habitat and don't like densely populated cities... I think I can take care of it with a ritual, but I don't have the necessary brew for it. W-would you help me out with this, [name]?}""",
+	MAE_FRIEND_VISIT_1_OPTION_1 = "Well, it would be weird to stop at this point",
+	MAE_FRIEND_VISIT_1_OPTION_2 = "I don't really have much free time, I'll consider it",
+	MAE_FRIEND_VISIT_1_AFTER = """Mae nods, quickly returning her gaze to the boy. She seems genuinely concerned for his well-being.
+
+{color=yellow|Mae: — Thank you. I'll make sure to remember everything correctly for it.}
+
+As you leave, she gives you a recipe for the potion she wants you to make. It doesn't seem difficult, but it will take a bit of time.""",
+	MAE_POTION_READY = "{color=yellow|Mae: — You've done it? Thank you. Now we can go back to Shelia's house.}",
+
+	MAE_FRIEND_VISIT_2_START = """As Mae reaches the child's bed, she prepares the potion by pouring it into a cup. She slowly makes him drink it before taking out a wood-carved talisman she has been preparing over the last few days.
+
+{color=yellow|Mae: — C-can you leave us alone for a bit? I need to concentrate, and it would help if no one was watching.}""",
+	MAE_FRIEND_VISIT_2_WAIT = """You and Shelia leave Mae alone, closing the door behind her.
+
+{color=aqua|Shelia: — She looks like she actually knows what she's doing, doesn't she?..}
+
+After a couple minutes, when Shelia serves you some water, you are both startled by a sudden yelp and a crash.""",
+	MAE_FRIEND_VISIT_2_CRASH = """After taking a few moments to force the door, you finally make it inside to find the bed with the boy still in place. A few pieces of furniture and clothes are scattered across the floor, and the window is wide open with one side damaged.
+
+The boy breathes heavily but seems more active than before, slowly coming to his senses. However, Mae is nowhere to be seen.
+
+The broken window catches the attention of the guards outside, and after a short time you are approached by them for questioning.
+
+{color=gray_text_dialogue|Guard: — Your mayorship? We heard loud noises and something barged through the window.}
+
+Despite your best efforts, you are unable to follow after Mae wherever she was taken, and the guards seem to have no idea either.
+
+At least to your and Shelia's relief, her ritual actually worked, and by the end of the day the boy was on his feet. Still, you need to find Mae.""",
+	MAE_FRIEND_VISIT_2_OPTION_WISDOM = "[Wisdom Challenge] Observe the patterns of the tracks left by Mae",
+	MAE_FRIEND_VISIT_2_OPTION_CLOSE = "Close",
+	MAE_FRIEND_VISIT_2_TRACK_SUCCESS = "You spend additional time studying the mess Mae made and asking witnesses what they saw. This helps you narrow down the possible direction she moved in and will greatly help with the search.",
+
+	MAE_SEARCH_COMPLETE_START = """A whole day has been spent trying to find Mae. Many strangers reported seeing her roaming through town and causing chaos, noting that she looked drugged or delusional, but she never stayed around for long, as if trying to escape others' eyes.
+
+Finally you've managed to find her not far from your mansion, in an isolated dead end, sitting against the wall. Her eyes are wide and watering as she sees you.
+
+{color=yellow|Mae: — [name], n-no... I... Ah!.. I screwed up big, the s-spirit got me...}
+
+Her body visibly shakes as she looks exhausted from suppressing the entity fighting her.""",
+	MAE_SEARCH_COMPLETE_OPTION_1 = "What does it do exactly?",
+	MAE_SEARCH_COMPLETE_OPTION_2 = "How can I help you?",
+	MAE_SEARCH_COMPLETE_VOICE_1 = """{color=yellow|Mae: — I-it can't take me, but... it wants to...}
+
+{color=red|Voice: — If you didn't come after me you foul beastkin! I'll spill your dirty secrets that pester your mind now.}
+
+{color=yellow|Mae: — N-no, please... don't listen!}""",
+	MAE_SEARCH_COMPLETE_VOICE_2 = """{color=red|Voice: — Your poor and useless being only good for this suffering, no money, no home, so pathetic!}
+
+Mae closes her eyes and covers her face with her paws in shame as you are the sole observer of her humiliation.
+
+{color=yellow|Mae: — T-that's nothing I can help with!}
+
+{color=red|Voice: — And also fat! Just look at how obese you are! That's what you were trying to hide, that you eat too much! And just changing your diet would change anything!}""",
+	MAE_SEARCH_COMPLETE_VOICE_3 = """Under the stress of the situation and your scrutinizing gaze, Mae's voice finally grows more irritated, her body tensing.
+
+{color=yellow|Mae: — E-enough... shut up! This is all a lie, you are just a parasite, feeding... on suffering...}
+
+The spirit completely ignores her pleas. It seems to act purely on instinct, with no sentience beyond putting Mae down with its taunts.
+
+{color=red|Voice: — That orgy is still on your dirty mind you slut, the way everyone was looking at your flabby body. They were looking at your gigantic tits and fat ass!}""",
+	MAE_SEARCH_COMPLETE_VOICE_4A = "{color=red|Voice: — And you can't stop thinking how your pussy was ravished by this man every...}",
+	MAE_SEARCH_COMPLETE_VOICE_4B = "{color=red|Voice: — And you can't stop thinking how lewd it was being surrounded by cocks...}",
+	MAE_SEARCH_COMPLETE_VOICE_4C = """A loud cry erupts from Mae as her body is enveloped in blue light. After only a moment the voice is gone, and she falls to the ground, panting heavily. Her eyes are full of tears.""",
+	MAE_SEARCH_COMPLETE_OPTION_HELP = "*Help her get up*",
+	MAE_SEARCH_COMPLETE_OPTION_STAND = "*Let her do it by herself*",
+	MAE_SEARCH_COMPLETE_HELP = "You gently pick Mae up and put her on her feet. She doesn't say anything as you take her back to the mansion, but you can clearly feel her ache to forget everything that happened.",
+	MAE_SEARCH_COMPLETE_STAND = "You let Mae take a breath until she's able to stand by herself. You lead her back into the mansion as she says nothing, but you can clearly feel her ache to forget everything that happened.",
+	MAE_SEARCH_COMPLETE_HOME = """Finally at home, Mae has calmed down and speaks slowly, holding her hands together.
+
+{color=yellow|Mae: — Aah, it was all because of me... I forgot to close the window curtains before the ritual, so it broke free... I'm so sorry about this...}""",
+	MAE_SEARCH_COMPLETE_HOME_OPTION_1 = "No matter, I'm glad you are safe",
+	MAE_SEARCH_COMPLETE_HOME_OPTION_2 = "It's alright, it was your first time after all",
+	MAE_SEARCH_COMPLETE_HOME_OPTION_3 = "Your mistake did cost me a lot of time",
+	MAE_SEARCH_COMPLETE_RESPONSE_1 = """Mae visibly blushes and looks away at your words.
+
+{color=yellow|Mae: — R-really? Thank you, I'm glad you say that, but... going through something so embarrassing... I need a rest.}""",
+	MAE_SEARCH_COMPLETE_RESPONSE_2 = "{color=yellow|Mae: — T-Thank you. This is one lesson I'll never forget... I need a rest.}",
+	MAE_SEARCH_COMPLETE_RESPONSE_3 = """Mae seems disappointed by your harsh words, visibly lowering her head.
+
+{color=yellow|Mae: — I'm sorry... this is really an awful rookie mistake of me.}""",
+	MAE_SEARCH_COMPLETE_CONCERN = """Before going to her room, she suddenly gives you a vulnerable look.
+
+{color=yellow|Mae: — ...About the things that it said...}
+
+Judging by her blush, it wasn't so much about her insecurity and more about the lewd stuff she went through with you.""",
+	MAE_SEARCH_COMPLETE_FINAL_OPTION_1 = "I couldn't really hear what it said... (lie)",
+	MAE_SEARCH_COMPLETE_FINAL_OPTION_2 = "Yeah, it was a bit embarrassing, but we all have moments like this",
+	MAE_SEARCH_COMPLETE_FINAL_OPTION_3 = "If you enjoyed it, you shouldn't shy away from it. You have a lot of potential in you.",
+	MAE_SEARCH_COMPLETE_FINAL_1 = """{color=yellow|Mae: — I-I see... that's good then...}
+
+It doesn't seem like Mae buys your lie, but it comforts her that you choose to pretend nothing happened.""",
+	MAE_SEARCH_COMPLETE_FINAL_2 = "{color=yellow|Mae: — Thank you... uhm, I hope we can forget about this happening soon.}",
+	MAE_SEARCH_COMPLETE_FINAL_3 = "{color=yellow|Mae: — Y-you really think so? Potential in things like this... feels inappropriate to me. But if you are saying so, maybe it's more normal than I thought... Thank you, [name], I feel a little better now I guess.}",
+	
+	MAE_CITY_QUEST_NAME = "Mae's Request",
+	MAE_CITY_QUEST_SUMMARY = "Mae asks for help adjusting to the city, leading to a market outing, a ritual request, and a sudden crisis.",
+	MAE_CITY_QUEST_STAGE_0 = "Take Mae to the market in Aliron.",
+	MAE_CITY_QUEST_STAGE_1 = "Visit Shelia's home with Mae.",
+	MAE_CITY_QUEST_STAGE_2 = "Craft the ritual potion Mae requested.",
+	MAE_CITY_QUEST_STAGE_25 = "Tell Mae about potion.",
+	MAE_CITY_QUEST_STAGE_3 = "Return to Shelia's home with Mae.",
+	MAE_CITY_QUEST_STAGE_4 = "Search for Mae in Aliron.",
+	
+	MAE_MARKET_OPTION = "Food Market",
+	MAE_SHELIA_OPTION = "Shelia's home",
+	MAE_POTION_OPTION = "Shelia's home",
+	
+	MAE_POTION_READY_OPTION = "Your potion is finally crafted.",
+	
+	MAE_POTION_TASK_NAME = "Brew Mae's Ritual Potion",
+	MAE_POTION_TASK_DESC = "Prepare the ritual brew Mae needs for the exorcism.",
+	MAE_SEARCH_TASK_NAME = "Search for Mae",
+	MAE_SEARCH_TASK_DESC = "Scour Aliron for any sign of Mae's whereabouts.",
 }

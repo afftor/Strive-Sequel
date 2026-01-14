@@ -17,6 +17,8 @@ func _ready():
 	globals.connecttexttooltip($Categories/aoe, tr("SKILLS_CAT_AOE_DESC"))
 	globals.connecttexttooltip($Categories/heal, tr("SKILLS_CAT_HEAL_DESC"))
 	$ScrollContainer.target_node = self
+	$SkillPanelRowSwitch/Up.connect("pressed", self, "change_panel_row", [-1])
+	$SkillPanelRowSwitch/Down.connect("pressed", self, "change_panel_row", [1])
 
 
 func toggle():
@@ -36,6 +38,7 @@ func open_skillbook():
 	gui_controller.windows_opened.push_back(self)
 	clear_skillinfo()
 	RebuildSkillBook()
+	update_row_display()
 
 
 func category_pressed(button):
@@ -54,6 +57,7 @@ func category_pressed(button):
 			if button.name in ["skill", "spell"]:
 				ch.visible = skill.ability_type == button.name
 
+
 func update_filter():
 	var button
 	for bt in $Categories.get_children():
@@ -67,33 +71,43 @@ func update_filter():
 				ch.visible = true
 
 func RebuildSkillBook():
+	if activecharacter == null:
+		update_row_display()
+		return
 	input_handler.ClearContainer($ScrollContainer/GridContainer)
 	for i in activecharacter.get_combat_skills():
 		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/GridContainer)
-		var skill = Skilldata.get_template(i, activecharacter)
+		var skill = Skilldata.get_template_combat(i, activecharacter)
 		newbutton.dragdata = {skill = i}
 		newbutton.target_node = self
 		newbutton.set_meta('skill', skill)
 		newbutton.get_node("Icon").texture = skill.icon
+		if skill.tags.has('aura_active'):
+			newbutton.get_node("Icon").material = load("res://assets/book_shader.tres")
 		newbutton.connect("mouse_entered", self, "update_skillinfo", [skill])
 		#newbutton.connect("mouse_exited", self, "clear_skillinfo")
 	
-	if activecharacter == null: return
 	input_handler.ClearContainer($ScrollContainer2/GridContainer)
 
 	var src = activecharacter.skills.combat_skill_panel
-	for i in range(1,21):
+	var row_offset = activecharacter.skills.get_combat_panel_row_offset()
+	var row_size = variables.combat_panel_row_size
+	for i in range(1, row_size + 1):
+		var pos = row_offset + i
 		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer2/GridContainer)
 		newbutton.target_node = self
-		newbutton.dragdata = {position = i}
-		if src.has(i):
-			var skill = Skilldata.get_template(activecharacter.skills.combat_skill_panel[i], activecharacter)
+		newbutton.dragdata = {position = pos}
+		if src.has(pos):
+			var skill = Skilldata.get_template_combat(src[pos], activecharacter)
 			newbutton.get_node("Icon").texture = skill.icon
+			if skill.tags.has('aura_active'):
+				newbutton.get_node("Icon").material = load("res://assets/book_shader.tres")
 			newbutton.set_meta('skill', skill)
 			newbutton.connect("mouse_entered", self, "update_skillinfo", [skill])
 			#newbutton.connect("mouse_exited", self, "clear_skillinfo")
 		else:
 			newbutton.draggable = false
+	update_row_display()
 	update_filter()
 
 #func update_combat_skill_panel(skill):
@@ -107,17 +121,23 @@ func RebuildSkillBook():
 
 func set_skill_to_pos(skill, pos):
 	var src = activecharacter.skills.combat_skill_panel
+	var max_slots = activecharacter.skills.get_combat_panel_max_slots()
+	if pos < 1 or pos > max_slots:
+		return
 	var oldpos = []
 	for ps in src:
 		if src[ps] == skill:
 			oldpos.push_back(ps)
-	for ps in oldpos:
-		src.erase(ps)
+#	for ps in oldpos:
+#		src.erase(ps)
 	src[pos] = skill
 	RebuildSkillBook()
 
 func swap_positions(pos1, pos2):
 	var src = activecharacter.skills.combat_skill_panel
+	var max_slots = activecharacter.skills.get_combat_panel_max_slots()
+	if pos1 < 1 or pos2 < 1 or pos1 > max_slots or pos2 > max_slots:
+		return
 	if !src.has(pos1):
 		src[pos1] = src[pos2]
 		src.erase(pos2)
@@ -136,6 +156,22 @@ func remove_skill_from_pos(pos):
 	RebuildSkillBook()
 
 
+func change_panel_row(delta):
+	if activecharacter == null:
+		return
+	activecharacter.skills.change_combat_panel_row(delta)
+	update_row_display()
+	RebuildSkillBook()
+
+func update_row_display():
+	if activecharacter == null:
+		$SkillPanelRowSwitch/Label.text = "--/--"
+		return
+	var current = activecharacter.skills.clamp_combat_panel_row()
+	$SkillPanelRowSwitch/Label.text = str(current) + "/" + str(variables.combat_panel_rows)
+
+
+
 func update_skillinfo(skill):
 	$SkillInfo/frame.visible = true
 	$SkillInfo/CooldownIcon.visible = true
@@ -143,11 +179,15 @@ func update_skillinfo(skill):
 	$SkillInfo/frame/icon.texture = skill.icon
 	$SkillInfo/name.text = tr("SKILL" + skill.code.to_upper())
 	$SkillInfo/desc.bbcode_text = globals.TextEncoder(tr("SKILL" + skill.code.to_upper() + "DESCRIPT"))
-	if skill.cost.has("mp"):
-		$SkillInfo/Cost.text = str(int(skill.cost.mp))
+	if skill.has('container'):
+		$SkillInfo/Cost.visible = false
 	else:
-		$SkillInfo/Cost.text = "0"
-	$SkillInfo/Cooldown.text = str(skill.cooldown)
+		$SkillInfo/Cost.visible = true
+		if skill.cost.has("mp"):
+			$SkillInfo/Cost.text = str(int(skill.cost.mp))
+		else:
+			$SkillInfo/Cost.text = "0"
+		$SkillInfo/Cooldown.text = str(skill.cooldown)
 
 func clear_skillinfo():
 	$SkillInfo/frame.visible = false
@@ -158,6 +198,7 @@ func clear_skillinfo():
 	$SkillInfo/name.text = ""
 	$SkillInfo/Cost.text = ""
 	$SkillInfo/Cooldown.text = ""
+	$SkillInfo/Cost.visible = true
 
 func hide():
 #	get_parent().RebuildSkillPanel()

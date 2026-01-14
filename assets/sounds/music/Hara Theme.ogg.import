@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Hara Theme.ogg-329a9bb3ee966c5f6a2d44fbd48a82f8.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/Hara Theme.ogg"
+dest_files=[ "res://.import/Hara Theme.ogg-329a9bb3ee966c5f6a2d44fbd48a82f8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -215,6 +215,7 @@ var data = {
 	princess_search_dungeon_1 = {
 		custom_background = "jail",
 		image = null,
+		music = "intimate_dark",
 		character = 'amelia_shade',
 		tags = ['dialogue_scene'],
 		text = [{text = "SEARCH_DUNGEON_1", reqs = []}],
@@ -841,6 +842,7 @@ var data = {
 
 	aire_amelia1 = {
 		image = null,
+		music = "intimate_dark",
 		scene_type = "unlocked_gallery_seq",
 		unlocked_gallery_seq = "aire_amelia1",
 		save_scene_to_gallery = true,

@@ -1,6 +1,7 @@
 extends Reference
 var data = {
 	cali_act1_1 = {
+		music = "intimate_dark",
 		image = null, tags = ['dialogue_scene'],
 		reqs = [], character = "cali", 
 		text = [{text = "CALI_ACT1_1", reqs = []}],
@@ -79,7 +80,7 @@ var data = {
 	},
 	
 	cali_act2_1 = {
-		image = null, tags = ['dialogue_scene'],
+		image = null, music = "intimate_dark", tags = ['dialogue_scene'],
 		reqs = [], character = "cali", 
 		text = [{text = "CALI_ACT2_1", reqs = []}],
 		options = [ {
@@ -257,7 +258,7 @@ var data = {
 	},
 	
 	cali_act2_simple_collar_1 = { 
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = null, music = "intimate_dark", tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = "cali",
 		text = [{text = "CALI_ACT2_SIMPLE_COLLAR_1", reqs = []}],
 		common_effects = [{code = 'unique_character_changes', value = 'cali', args = [
@@ -291,7 +292,7 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [
 					{code = 'progress_quest', value = 'cali_taming_quest', stage = 'stage5'},
-					{code = 'add_timed_event', value = "cali_act3_magic_1", args = [{type = 'add_to_date', date = [5,5], hour = 1}]},
+					{code = 'add_timed_event', value = "cali_act3_magic_1", args = [{type = 'add_to_date', date = [4,4], hour = 1}]},
 					{code = "decision", value = "cali_normal_collar"},
 					{code = 'unique_character_changes',
 					value = 'cali',
@@ -311,7 +312,7 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [
 					{code = 'progress_quest', value = 'cali_taming_quest', stage = 'stage5'},
-					{code = 'add_timed_event', value = "cali_act3_magic_1", args = [{type = 'add_to_date', date = [5,5], hour = 1}]},
+					{code = 'add_timed_event', value = "cali_act3_magic_1", args = [{type = 'add_to_date', date = [4,4], hour = 1}]},
 					{code = "decision", value = "cali_normal_collar"},
 					{code = 'unique_character_changes',
 					value = 'cali',
@@ -324,7 +325,7 @@ var data = {
 	},
 	
 	cali_act2_exquisite_collar_1_1 = { 
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = null, music = "intimate_dark",  tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = "cali",
 		text = [{text = "CALI_ACT2_EXQUISITE_COLLAR_1_1", reqs = []}],
 		options = [ {
@@ -356,7 +357,7 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [
 					{code = 'progress_quest', value = 'cali_taming_quest', stage = 'stage5'},
-					{code = 'add_timed_event', value = "cali_act3_magic_1", args = [{type = 'add_to_date', date = [5,5], hour = 1}]},
+					{code = 'add_timed_event', value = "cali_act3_magic_1", args = [{type = 'add_to_date', date = [4,4], hour = 1}]},
 					{code = "decision", value = "cali_exquisite_collar"},
 					{code = 'unique_character_changes',
 					value = 'cali',
@@ -369,7 +370,7 @@ var data = {
 	},
 	
 	cali_act3_magic_1 = { 
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = null, music = "cali_theme",  tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT3_MAGIC_1", reqs = []}],
 		options = [ {
@@ -395,7 +396,7 @@ var data = {
 		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT3_MAGIC_2_3", reqs = []}],
 		common_effects = [
-			{code = 'add_timed_event', value = "cali_act3_magic_1", args = [{type = 'add_to_date', date = [7,7], hour = 1}]},
+			{code = 'add_timed_event', value = "cali_act3_magic_1", args = [{type = 'add_to_date', date = [4,4], hour = 1}]},
 			{code = 'affect_unique_character', name = 'cali', type = 'set_availability', value = false},
 			{code = 'add_timed_event', value = {name = 'cali', type = 'set_availability', value = true},
 			args = [{type = 'action_to_date', date = [1,1], hour = 1, action = "affect_unique_character"}]}
@@ -418,7 +419,7 @@ var data = {
 	},
 	
 	cali_act3_jean_1 = { 
-		image = null, tags = ['dialogue_scene'],
+		image = null,music = "jean_theme",  tags = ['dialogue_scene'],
 		reqs = [], character = "jean",
 		text = [{text = "CALI_ACT3_JEAN_1", reqs = []}],
 		options = [ {
@@ -447,7 +448,8 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [
 				{code = 'progress_quest', value = 'cali_taming_quest', stage = 'stage7'},
-				{code = 'remove_quest_location', value = 'quest_dungeon_cali_grove'},
+				{code = "set_completed_active_location"}
+#				{code = 'remove_quest_location', value = 'quest_dungeon_cali_grove'},
 			]
 		},  ]
 	},
@@ -517,13 +519,14 @@ var data = {
 			bonus_effects = [{code = 'progress_quest', value = 'cali_taming_quest', stage = 'stage9'},
 			{code = 'money_change', operant = '-', value = 500},
 			{code = "update_guild"},
-			{code = 'remove_quest_location', value = 'quest_dungeon_cali_grove'},
+			{code = "set_completed_active_location"},
+#			{code = 'remove_quest_location', value = 'quest_dungeon_cali_grove'},
 			{code = 'add_timed_event', args = [{type = 'action_to_date', date = [2,2], hour = 1, action = 'quest'}], value = {quest = 'cali_taming_quest', stage = 'stage10'}}]
 		}, ]
 	},
 	
 	cali_act3_blow_1 = {
-		image = null, tags = ['dialogue_scene'],
+		image = null, music = "intimate_dark", tags = ['dialogue_scene'],
 		reqs = [], character = "cali",
 		text = [{text = "CALI_ACT3_BLOW_1", reqs = []}],
 		options = [ {
@@ -634,7 +637,7 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
 			bonus_effects = [{code = 'progress_quest', value = 'cali_taming_quest', stage = 'stage11'},
-				{code = 'add_timed_event', value = "cali_act4_merchant_start", args = [{type = 'add_to_date', date = [5,5], hour = 1}]},
+				{code = 'add_timed_event', value = "cali_act4_merchant_start", args = [{type = 'add_to_date', date = [3,3], hour = 1}]},
 			{code = 'decision', value = 'cali_dating_unlocked'}
 			]
 		}, ]
@@ -729,7 +732,7 @@ var data = {
 	},
 	
 	cali_act4_mast_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = null, music = "intimate",  tags = ['dialogue_scene', 'master_translate'],
 		reqs = [{type = 'unique_character_checks', name = 'cali', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'}], 
 		text = [{text = "CALI_ACT4_MAST_1", reqs = [], }], 
 		options = [ {
@@ -783,7 +786,7 @@ var data = {
 		text = [{text = "CALI_ACT4_MAST_4_LEAVE", reqs = [], }], 
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'add_timed_event', value = "cali_act5_pet_start", args = [{type = 'add_to_date', date = [5,5], hour = 1}]}]
+			bonus_effects = [{code = 'add_timed_event', value = "cali_act5_pet_start", args = [{type = 'add_to_date', date = [3,3], hour = 1}]}]
 		}, ],
 	},
 	
@@ -820,7 +823,7 @@ var data = {
 		custom_background = "cali_fuck_2",
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'add_timed_event', value = "cali_act5_pet_start", args = [{type = 'add_to_date', date = [5,5], hour = 1}]}]
+			bonus_effects = [{code = 'add_timed_event', value = "cali_act5_pet_start", args = [{type = 'add_to_date', date = [3,3], hour = 1}]}]
 		}, ]
 	},
 	
@@ -869,7 +872,7 @@ var data = {
 	},
 	
 	cali_act5_pet_3 = { 
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = null, music = "intimate_dark", tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT5_PET_3", reqs = [], }], 
 		options = [ {
@@ -995,7 +998,7 @@ var data = {
 	},
 	
 	cali_act6_naked_1 = { 
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = null, music = "intimate_dark", tags = ['dialogue_scene', 'master_translate'],
 		unlocked_gallery_seq = "cali_act6_naked",
 		save_scene_to_gallery = true,
 		reqs = [], unique_character = "cali",

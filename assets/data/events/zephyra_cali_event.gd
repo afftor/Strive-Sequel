@@ -1,7 +1,8 @@
 extends Reference
 var data = {
 	ZCEvent_1 = {
-		image = null, tags = ['dialogue_scene','master_translate'],
+		image = null, 
+		music = "zephyra_theme", tags = ['dialogue_scene','master_translate'],
 		character = 'cali',
 		character2 = 'zephyra',
 		reqs = [{type = 'unique_character_at_mansion', name = 'zephyra', check = true, negative = 'repeat_next_day'},
@@ -92,6 +93,7 @@ var data = {
 	
 	ZCEvent_9 = { # CG1
 		image = null, tags = ['dialogue_scene','master_translate', 'blackscreen_transition_common'],
+		music = "intimate_funny",
 		reqs = [],
 		text = [{text = "ZCEVENT_9", reqs = []}],
 		scene_type = "ero_scene",

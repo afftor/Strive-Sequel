@@ -103,7 +103,7 @@ func writ_of_exemption_use(): #possibly rework
 	input_handler.scene_characters = [person]
 	if gui_controller.inventory.visible:
 		gui_controller.close_scene(gui_controller.inventory)
-	if gui_controller.slavepanel.visible:
+	if gui_controller.slavepanel != null && gui_controller.slavepanel.visible:
 		gui_controller.close_scene(gui_controller.slavepanel)
 #	if character.get_stat('loyalty') == 100:
 #		acceptance_chance = 100
@@ -113,9 +113,9 @@ func writ_of_exemption_use(): #possibly rework
 	if acceptance_chance >= randf()*acceptance_req:
 		input_handler.interactive_message_follow("writ_of_exemption_success",'char_translate',{ch = character})
 		character.set_slave_category('servant')
-		if character.is_worker():
+		if character.check_trait("training_obedience"):
 			character.add_trait('training_s_working')
-		if character.is_combatant():
+		if character.check_trait("training_obedience"):
 			character.add_trait('training_s_combat')
 		if character.has_status('relation'):
 			character.add_trait('training_s_relation')
@@ -127,6 +127,27 @@ func writ_of_exemption_use(): #possibly rework
 	input_handler.rebuild_slave_list()
 
 func oblivionpot(character):
+	var refundable_classes = []
+	for prof in character.get_professions():
+		if prof in ['master', 'spouse']:
+			continue
+		if !classesdata.professions.has(prof):
+			continue
+		if classesdata.professions[prof].tags.has('permanent'):
+			continue
+		refundable_classes.append(prof)
+	var refund_exp = 0
+	var current_class_count = character.get_prof_number()
+	for idx in range(refundable_classes.size()):
+		var class_count = max(0, current_class_count - 1 - idx)
+		var exp_reqs = variables.hard_level_reqs
+		if class_count >= exp_reqs.size():
+			refund_exp += exp_reqs[exp_reqs.size() - 1]
+		else:
+			refund_exp += exp_reqs[class_count]
+	if refund_exp > 0:
+		refund_exp = floor(refund_exp * 0.9)
+		character.add_stat('base_exp', refund_exp)
 	character.reset_mastery()
 	character.reset_minor_training()
 	character.remove_all_classes()

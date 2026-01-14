@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/closeness.ogg-ec9a1b17431df81097b7922560ce49e6.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/closeness.ogg"
+dest_files=[ "res://.import/closeness.ogg-ec9a1b17431df81097b7922560ce49e6.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

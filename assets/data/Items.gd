@@ -252,7 +252,7 @@ var partmaterials = {
 	ArmorEnc = {
 		stone = {evasion = -5},
 		obsidian = {mdef = 8, resist_dark = 10},
-		ice_crystal = {critchance = 10, critmod = 0.2, resist_water = 20},
+		ice_crystal = {critchance = 3.5, critmod = 0.07, resist_water = 20},
 		crystalized_ether = {evasion = 30, hitrate = 20, resist_air = 20},
 		earth_shard = {hpmax = 20, mpmax = 20, resist_earth = 20},
 		fire_ruby = {damage_mod_melee = 0.15, resist_fire = 20},
@@ -260,7 +260,7 @@ var partmaterials = {
 	WeaponEnc = {
 		stone = {hitrate = -5, weapon_element = 'earth'},
 		obsidian = {matk = 5, damage_mod_dark = 0.2},
-		ice_crystal = {critchance = 10, critmod = 0.2, damage_mod_water = 0.2},
+		ice_crystal = {critchance = 3.5, critmod = 0.07, damage_mod_water = 0.2},
 		crystalized_ether = {speed = 15, hitrate = 20, damage_mod_air = 0.2},
 		earth_shard = {hpmax = 15, armor = 10, damage_mod_earth = 0.2},
 		fire_ruby = {armorpenetration = 25, damage_mod_fire = 0.2},
@@ -1786,7 +1786,7 @@ var itemlist = {
 		weaponrange = 'melee',
 		slots = ['rhand','lhand'],
 		price = 1000,
-		icon = load("res://assets/images/iconsitems/cali_heirloom.png"),
+		icon = load("res://assets/images/iconsitems/cali_heirloom_new.png"),
 		tier = 'medium',
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],
@@ -1811,7 +1811,7 @@ var itemlist = {
 			{code = 'stat', stat = 'mastery_warfare', value = 5, operant = 'gte'}],
 		effects = [],
 		tags = ['no_random','enchantable', 'upgradable'],
-		basestats = {atk = 50, hitrate = 50, critmod = 0.33, damage_mod_light = 0.5, enchant_capacity = 500},
+		basestats = {atk = 50, hitrate = 50, critmod = 0.20, damage_mod_light = 0.5, enchant_capacity = 500},
 	},
 	holy_spear = {
 		code = 'holy_spear',
@@ -2466,7 +2466,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/battleaxeadv.png"),
 		tier = 'medium',
 		price = 0,
-		basestats = {atk = 16, speed = -8, critmod = 0.25, enchant_capacity = 310},
+		basestats = {atk = 16, speed = -8, critmod = 0.15, enchant_capacity = 310},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -6062,31 +6062,31 @@ var fixed_quality_stats = {
 	holy_sword = {
 		"" : {},
 		epic = {
-			bonusstats = {atk = 60, hitrate = 45, critmod = 0.33, damage_mod_light = 0.3, enchant_capacity = 450},
+			bonusstats = {atk = 65, hitrate = 55, critmod = 0.20, damage_mod_light = 0.3, enchant_capacity = 450},
 			},
 		legendary = {
-			bonusstats = {atk = 70, hitrate = 60, critmod = 0.33, damage_mod_light = 0.5, enchant_capacity = 550},
+			bonusstats = {atk = 75, hitrate = 65, critmod = 0.25, damage_mod_light = 0.5, enchant_capacity = 550},
 		}
 	},
 	holy_spear = { 
 		"" : {},
 		epic = {
-			bonusstats = {atk = 50, hitrate = 30, damage_mod_air = 0.20, armor = 15, enchant_capacity = 400},
+			bonusstats = {atk = 55, hitrate = 30, damage_mod_air = 0.20, armor = 15, enchant_capacity = 400},
 			},
 		legendary = {
-			bonusstats = {atk = 60, hitrate = 40, damage_mod_air = 0.20, armor = 25, enchant_capacity = 550},
+			bonusstats = {atk = 65, hitrate = 40, damage_mod_air = 0.20, armor = 25, enchant_capacity = 550},
 		}
 	},
 	aire_bow = { 
 		"" : {},
 		good = {
-			bonusstats = {atk = 40, critchance = 8, hitrate = 25, mod_hunt = 0.3, enchant_capacity = 250},
+			bonusstats = {atk = 45, critchance = 8, hitrate = 25, mod_hunt = 0.3, enchant_capacity = 250},
 			},
 		epic = {
-			bonusstats = {atk = 45, critchance = 10, hitrate = 25, mod_hunt = 0.3, enchant_capacity = 350},
+			bonusstats = {atk = 50, critchance = 10, hitrate = 25, mod_hunt = 0.3, enchant_capacity = 350},
 			},
 		legendary = {
-			bonusstats = {atk = 55, critchance = 12, hitrate = 25, mod_hunt = 0.3, enchant_capacity = 400},
+			bonusstats = {atk = 60, critchance = 15, hitrate = 30, mod_hunt = 0.3, enchant_capacity = 400},
 		}
 	},
 	garb_of_forest = {

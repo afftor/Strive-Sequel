@@ -69,9 +69,9 @@ func resolve_value(check_m):
 	var parent = get_parent()
 	var dmgmod = 1
 	if !parent.tags.has('no_caster_bonuses'):
-		dmgmod *= parent.caster.get_damage_mod(parent.template)
+		dmgmod = parent.caster.get_damage_mod(parent.template)
 		if !parent.tags.has('heal'):
-			dmgmod *= parent.caster.get_value_damage_mod(self)
+			dmgmod += parent.caster.get_value_damage_mod(self) - 1
 	var endvalue
 	var atk
 	var stat
@@ -114,6 +114,15 @@ func apply_random():
 	value += val_add
 	value *= val_mul
 
+
+func calculate_reduction(value):
+	if value < 100:
+		return value/200.0
+	if value > 250:
+		return 0.9
+	return -320.0/27.0 + value * (13.0/18.0 - value * (1.0/1125.0 + value / 675000.0))
+
+
 func calculate_dmg():
 	var parent = get_parent()
 	apply_random()
@@ -123,20 +132,34 @@ func calculate_dmg():
 	
 #	if parent.ability_type == 'skill':
 	#current formulae add ap to spell damage cap
-	cap += parent.armor_p * 0.5
+#	cap += parent.armor_p * 0.5
 	var reduction = 0
-	if parent.ability_type == 'skill':
-#		reduction = max(0, parent.target.get_stat('armor') - parent.armor_p)
-		reduction = parent.target.get_stat('armor')
-		if reduction <= 2 * parent.armor_p:
-			reduction *= 0.25
+#	if parent.ability_type == 'skill':
+##		reduction = max(0, parent.target.get_stat('armor') - parent.armor_p)
+#		reduction = parent.target.get_stat('armor')
+#		if reduction <= 2 * parent.armor_p:
+#			reduction *= 0.25
+#		else:
+#			reduction -= 1.25 * parent.armor_p
+#		reduction = max(0, reduction)
+#	elif parent.ability_type == 'spell':
+#		reduction = max(0, parent.target.get_stat('mdef'))
+#	if !template.nodef and !template.nomod and !parent.tags.has('nodef'):
+#		value -= reduction
+	if parent.target.is_players_character:
+		if parent.ability_type == 'skill':
+			reduction = max(0, parent.target.get_stat('armor') - parent.armor_p)
 		else:
-			reduction -= 1.25 * parent.armor_p
-		reduction = max(0, reduction)
-	elif parent.ability_type == 'spell':
-		reduction = max(0, parent.target.get_stat('mdef'))
-	if !template.nodef and !template.nomod and !parent.tags.has('nodef'):
-		value -= reduction
+			reduction = max(0, parent.target.get_stat('mdef'))
+		if !template.nodef and !template.nomod and !parent.tags.has('nodef'):
+			value -= reduction
+	else:
+		if parent.ability_type == 'skill':
+			reduction = calculate_reduction(parent.target.get_stat('armor') * (1.0 - parent.armor_p))
+		else:
+			reduction = calculate_reduction(parent.target.get_stat('mdef'))
+		if !template.nodef and !template.nomod and !parent.tags.has('nodef'):
+			value *= (1.0 - reduction)
 	
 	value = max(value, cap)
 	#reduction

@@ -529,7 +529,7 @@ var skills = {
 		target = 'ally',
 		target_number = 'all',
 		target_range = 'any',
-		damage_type = 'neutral',
+		damage_type = 'normal',
 		sfx = [{code = 'buff', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['caster.matk', '*0.4']],
@@ -615,6 +615,483 @@ var skills = {
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1,
 		not_final = true
+	},
+	
+	
+	spellsword_aura = { #fix
+		code = 'spellsword_aura',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/spellsword.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		new_syntax = true,
+		container = ['aura_firearr', 'aura_impale', 'aura_lightning', 'aura_darkness'],
+		tags = [],
+		cost = {},
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'spellsword_aura', check = true}],
+				append = {tags = 'aura_active'}
+			},
+		]
+	},
+	aura_firearr = { #fix
+		code = 'aura_firearr',
+		descript = '',
+		icon = load("res://assets/images/iconsskills/firebolt.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['buff', 'instant', 'selfbuf'],
+		reqs = [
+			{code = 'stat', stat = 'mastery_fire', value = 1, operant = 'gte'}
+		],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_fa_aura_firearr'})], 
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sound = [],
+		value = [['0']],
+		damagestat = 'no_stat',
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'spellsword_firearr', check = true}],
+				set = {name = tr('SKILLAURA_FIREARR_REMOVE')}, 
+				append = {tags = 'aura_active'}
+			},
+		]
+	},
+	aura_impale = { #fix
+		code = 'aura_impale',
+		descript = '',
+		icon = load("res://assets/images/iconsskills/icon_earth.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['buff', 'instant', 'selfbuf'],
+		reqs = [
+			{code = 'stat', stat = 'mastery_earth', value = 2, operant = 'gte'}
+		],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_fa_aura_impale'})], 
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sound = [],
+		value = [['0']],
+		damagestat = 'no_stat',
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'spellsword_impale', check = true}],
+				set = {name = tr('SKILLAURA_IMPALE_REMOVE')}, 
+				append = {tags = 'aura_active'}
+			},
+		]
+	},
+	aura_lightning = { #fix
+		code = 'aura_lightning',
+		descript = '',
+		icon = load("res://assets/images/iconsskills/icon_lightning.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['buff', 'instant', 'selfbuf'],
+		reqs = [
+			{code = 'stat', stat = 'mastery_air', value = 2, operant = 'gte'}
+		],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_fa_aura_lightning'})], 
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sound = [],
+		value = [['0']],
+		damagestat = 'no_stat',
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'spellsword_lightning', check = true}],
+				set = {name = tr('SKILLAURA_LIGHTNING_REMOVE')}, 
+				append = {tags = 'aura_active'}
+			},
+		]
+	},
+	aura_darkness = { #fix
+		code = 'aura_darkness',
+		descript = '',
+		icon = load("res://assets/images/iconsskills/icon_dark.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['buff', 'instant', 'selfbuf'],
+		reqs = [
+			{code = 'stat', stat = 'mastery_dark', value = 1, operant = 'gte'}
+		],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_fa_aura_darkness'})], 
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sound = [],
+		value = [['0']],
+		damagestat = 'no_stat',
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'spellsword_darkness', check = true}],
+				set = {name = tr('SKILLAURA_DARKNESS_REMOVE')}, 
+				append = {tags = 'aura_active'}
+			},
+		]
+	},
+	
+	arcaneblade_aura = { #fix
+		code = 'arcaneblade_aura',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/arcane_blade.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		new_syntax = true,
+		container = ['aura_dmg_air', 'aura_dmg_dark', 'aura_dmg_earth', 'aura_dmg_fire', 'aura_dmg_light', 'aura_dmg_water'],
+		tags = [],
+		cost = {},
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'arcaneblade_aura', check = true}],
+				append = {tags = 'aura_active'}
+			},
+		]
+	},
+	aura_dmg_air = { #fix
+		code = 'aura_dmg_air',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/arcane_blade.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['buff', 'instant', 'selfbuf'],
+		reqs = [
+			{code = 'stat', stat = 'mastery_air', value = 2, operant = 'gte'}
+		],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_aura_air'})], 
+		cost = {mp = 5},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sound = [],
+		value = [['0']],
+		damagestat = 'no_stat',
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'arcaneblade_air', check = true}],
+				set = {
+					name = tr('SKILLAURA_DMGAIR_REMOVE'),
+					cost = {}
+					}, 
+				append = {tags = 'aura_active'}
+			},
+		]
+	},
+	aura_dmg_dark = { #fix
+		code = 'aura_dmg_dark',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/arcane_blade.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['buff', 'instant', 'selfbuf'],
+		reqs = [
+			{code = 'stat', stat = 'mastery_dark', value = 2, operant = 'gte'}
+		],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_aura_dark'})], 
+		cost = {mp = 5},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sound = [],
+		value = [['0']],
+		damagestat = 'no_stat',
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'arcaneblade_dark', check = true}],
+				set = {
+					name = tr('SKILLAURA_DMGDARK_REMOVE'),
+					cost = {}
+					}, 
+				append = {tags = 'aura_active'}
+			},
+		]
+	},
+	aura_dmg_earth = { #fix
+		code = 'aura_dmg_earth',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/arcane_blade.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['buff', 'instant', 'selfbuf'],
+		reqs = [
+			{code = 'stat', stat = 'mastery_earth', value = 2, operant = 'gte'}
+		],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_aura_earth'})], 
+		cost = {mp = 5},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sound = [],
+		value = [['0']],
+		damagestat = 'no_stat',
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'arcaneblade_earth', check = true}],
+				set = {
+					name = tr('SKILLAURA_DMGEARTH_REMOVE'),
+					cost = {}
+					}, 
+				append = {tags = 'aura_active'}
+			},
+		]
+	},
+	aura_dmg_fire = { #fix
+		code = 'aura_dmg_fire',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/arcane_blade.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['buff', 'instant', 'selfbuf'],
+		reqs = [
+			{code = 'stat', stat = 'mastery_fire', value = 2, operant = 'gte'}
+		],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_aura_fire'})], 
+		cost = {mp = 5},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sound = [],
+		value = [['0']],
+		damagestat = 'no_stat',
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'arcaneblade_fire', check = true}],
+				set = {
+					name = tr('SKILLAURA_DMGFIRE_REMOVE'),
+					cost = {}
+					}, 
+				append = {tags = 'aura_active'}
+			},
+		]
+	},
+	aura_dmg_light = { #fix
+		code = 'aura_dmg_light',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/arcane_blade.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['buff', 'instant', 'selfbuf'],
+		reqs = [
+			{code = 'stat', stat = 'mastery_light', value = 2, operant = 'gte'}
+		],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_aura_light'})], 
+		cost = {mp = 5},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sound = [],
+		value = [['0']],
+		damagestat = 'no_stat',
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'arcaneblade_light', check = true}],
+				set = {
+					name = tr('SKILLAURA_DMGLIGHT_REMOVE'),
+					cost = {}
+					}, 
+				append = {tags = 'aura_active'}
+			},
+		]
+	},
+	aura_dmg_water = { #fix
+		code = 'aura_dmg_water',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/arcane_blade.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['buff', 'instant', 'selfbuf'],
+		reqs = [
+			{code = 'stat', stat = 'mastery_water', value = 2, operant = 'gte'}
+		],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_aura_water'})], 
+		cost = {mp = 5},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sound = [],
+		value = [['0']],
+		damagestat = 'no_stat',
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'arcaneblade_water', check = true}],
+				set = {
+					name = tr('SKILLAURA_DMGWATER_REMOVE'),
+					cost = {}
+					}, 
+				append = {tags = 'aura_active'}
+			},
+		]
+	},
+	arcane_mastery = { 
+		code = 'arcane_mastery',
+		descript = '',
+		icon = load("res://assets/images/iconsskills/icon_teleportation.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['buff', 'instant', 'selfbuf'],
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'arcane_mastery'})], 
+		cost = {mp = 10},
+		charges = 3,
+		combatcooldown = 1,
+		cooldown = 1,
+		catalysts = {},
+		target = 'self',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sound = [],
+		value = [['0']],
+		damagestat = 'no_stat',
+	},
+	ranger_aura = { #fix
+		code = 'ranger_aura',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/arcane_blade.png"),
+		type = 'exploration', 
+		ability_type = 'skill',
+		tags = ['exploration'],
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_summon_dog', trigger = variables.TR_EXPLORE_POSTDAMAGE})], 
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sound = [],
+		value = [['0']],
+		damagestat = 'no_stat',
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'summon_dog', check = true}],
+				set = {
+					name = tr('SKILLRANGER_AURA_REMOVE'),
+					cost = {}
+					}, 
+				append = {tags = 'aura_active'}
+			},
+		]
+	},
+	necro_aura = { #fix
+		code = 'necro_aura',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/arcane_blade.png"),
+		type = 'exploration', 
+		ability_type = 'skill',
+		tags = ['exploration'],
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_summon_skeletons', trigger = variables.TR_EXPLORE_POSTDAMAGE})], 
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sound = [],
+		value = [['0']],
+		damagestat = 'no_stat',
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'summon_skeletons', check = true}],
+				set = {
+					name = tr('SKILLNECRO_AURA_REMOVE'),
+					cost = {}
+					}, 
+				append = {tags = 'aura_active'}
+			},
+		]
 	},
 }
 var effects = {
@@ -872,8 +1349,7 @@ var effects = {
 				type = 'oneshot',
 				target = 'skill',
 				atomic = [
-					{type = 'stat_add', stat = 'critchance', value = 25},
-					{type = 'stat_add', stat = 'critmod', value = 0.75},
+					{type = 'stat_add', stat = 'critchance', value = 15},
 					],
 			}
 		]
@@ -932,6 +1408,42 @@ var effects = {
 					],
 			},
 		]
+	},
+	e_tr_caster_mana = {
+		type = 'trigger',
+		trigger = [variables.TR_COMBAT_F],
+		req_skill = false,
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				args = {value = {obj = 'owner', func = 'stat', stat = 'mpmax'}},
+				atomic = [
+					{type = 'mana', value = [['parent_args', 'value'], '*', 0.1]},
+					],
+			},
+		]
+	},
+	e_fa_aura_spellsword = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
+#		stack = 'spellsword_aura', 
+		conditions = [
+			{type = 'skill', value = ['tags', 'has', 'damage']},
+			{type = 'skill', value = ['target_number', 'eq', 'single']},
+			{type = 'skill', value = ['ability_type', 'eq', 'spell']},
+			{type = 'skill', value = ['follow_up', 'eq', null]},
+			{type = 'skill', value = ['mode', 'eq', variables.SKILL_BASE]},
+			],
+		req_skill = true,
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				atomic = [{type = 'stat_set', stat = 'follow_up', value = 'attack'}]
+			}
+		],
+		buffs = []
 	},
 	#skill-based
 	e_t_command = {
@@ -1353,6 +1865,238 @@ var effects = {
 			description = "TRAITDARKWEAPON",
 		}]
 	},
+	
+	e_fa_aura_firearr = {
+		type = 'temp_s',
+		stack = 'spellsword_aura',
+		rem_event = [variables.TR_DEATH],
+		target = 'caster',
+		tags = ['spellsword_aura','spellsword_firearr'],
+		sub_effects = ['spellsword_aura_passive', 'e_tr_aura_firearr', 'aura_cost_2'],
+		buffs = [],
+	},
+	e_tr_aura_firearr = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
+		conditions = [
+			{type = 'skill', value = ['tags', 'has', 'damage']},
+			{type = 'skill', value = ['target_number', 'eq', 'single']},
+			{type = 'skill', value = ['ability_type', 'eq', 'skill']},
+			{type = 'skill', value = ['follow_up', 'eq', null]},
+			{type = 'skill', value = ['mode', 'eq', variables.SKILL_BASE]},
+			{type = 'random', value = 0.75},
+			],
+		req_skill = true,
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				atomic = [{type = 'stat_set', stat = 'follow_up', value = 'firearr'}]
+			}
+		],
+		buffs = [],
+		tags = []
+	},
+	e_fa_aura_impale = {
+		type = 'temp_s',
+		stack = 'spellsword_aura',
+		rem_event = [variables.TR_DEATH],
+		target = 'caster',
+		tags = ['spellsword_aura','spellsword_impale'],
+		sub_effects = ['spellsword_aura_passive', 'e_tr_aura_impale', 'aura_cost_2'],
+		buffs = [],
+	},
+	e_tr_aura_impale = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
+		conditions = [
+			{type = 'skill', value = ['tags', 'has', 'damage']},
+			{type = 'skill', value = ['target_number', 'eq', 'single']},
+			{type = 'skill', value = ['ability_type', 'eq', 'skill']},
+			{type = 'skill', value = ['follow_up', 'eq', null]},
+			{type = 'skill', value = ['mode', 'eq', variables.SKILL_BASE]},
+			{type = 'random', value = 0.75},
+			],
+		req_skill = true,
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				atomic = [{type = 'stat_set', stat = 'follow_up', value = 'impale'}]
+			}
+		],
+		buffs = [],
+		tags = []
+	},
+	e_fa_aura_lightning = {
+		type = 'temp_s',
+		stack = 'spellsword_aura',
+		rem_event = [variables.TR_DEATH],
+		target = 'caster',
+		tags = ['spellsword_aura','spellsword_lightning'],
+		sub_effects = ['spellsword_aura_passive', 'e_tr_aura_lightning', 'aura_cost_2'],
+		buffs = [],
+	},
+	e_tr_aura_lightning = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
+		conditions = [
+			{type = 'skill', value = ['tags', 'has', 'damage']},
+			{type = 'skill', value = ['target_number', 'eq', 'single']},
+			{type = 'skill', value = ['ability_type', 'eq', 'skill']},
+			{type = 'skill', value = ['follow_up', 'eq', null]},
+			{type = 'skill', value = ['mode', 'eq', variables.SKILL_BASE]},
+			{type = 'random', value = 0.75},
+			],
+		req_skill = true,
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				atomic = [{type = 'stat_set', stat = 'follow_up', value = 'lightning'}]
+			}
+		],
+		buffs = [],
+		tags = []
+	},
+	e_fa_aura_darkness = {
+		type = 'temp_s',
+		stack = 'spellsword_aura',
+		rem_event = [variables.TR_DEATH],
+		target = 'caster',
+		tags = ['spellsword_aura','spellsword_darkness'],
+		sub_effects = ['spellsword_aura_passive', 'e_tr_aura_darkness', 'aura_cost_2'],
+		buffs = [],
+	},
+	e_tr_aura_darkness = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
+		conditions = [
+			{type = 'skill', value = ['tags', 'has', 'damage']},
+			{type = 'skill', value = ['target_number', 'eq', 'single']},
+			{type = 'skill', value = ['ability_type', 'eq', 'skill']},
+			{type = 'skill', value = ['follow_up', 'eq', null]},
+			{type = 'skill', value = ['mode', 'eq', variables.SKILL_BASE]},
+			{type = 'random', value = 0.75},
+			],
+		req_skill = true,
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				atomic = [{type = 'stat_set', stat = 'follow_up', value = 'darkness'}]
+			}
+		],
+		buffs = [],
+		tags = []
+	},
+	aura_cost_2 = { #similar to aura_cost but for different src, for sake of flexibility
+		type = 'trigger',
+		trigger = [variables.TR_TURN_S, variables.TR_COMBAT_F],
+		req_skill = false,
+		conditions = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				atomic = [{type = 'stat_add', stat = 'mp', value = -1},],
+			},
+		]
+	},
+	spellsword_aura_passive = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_F, variables.TR_COMBAT_F],
+		req_skill = false,
+		conditions = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				conditions = [{code = 'stat', stat = 'mp', operant = 'lte', value = 0}],
+				atomic = [{type = 'remove_effect', value = 'spellsword_aura'},], #no matter which one
+			}
+		]
+	},
+	e_aura_air = {
+		target = 'caster',
+		type = 'base',
+		stack = 'arcaneblade_aura',
+		tags = ['arcaneblade_aura', 'arcaneblade_air'],
+		statchanges = {damagetype = 'air'},
+		buffs = []
+	},
+	e_aura_dark = {
+		target = 'caster',
+		type = 'base',
+		stack = 'arcaneblade_aura',
+		tags = ['arcaneblade_aura', 'arcaneblade_dark'],
+		statchanges = {damagetype = 'dark'},
+		buffs = []
+	},
+	e_aura_earth = {
+		target = 'caster',
+		type = 'base',
+		stack = 'arcaneblade_aura',
+		tags = ['arcaneblade_aura', 'arcaneblade_earth'],
+		statchanges = {damagetype = 'earth'},
+		buffs = []
+	},
+	e_aura_fire = {
+		target = 'caster',
+		type = 'base',
+		stack = 'arcaneblade_aura',
+		tags = ['arcaneblade_aura', 'arcaneblade_fire'],
+		statchanges = {damagetype = 'fire'},
+		buffs = []
+	},
+	e_aura_light = {
+		target = 'caster',
+		type = 'base',
+		stack = 'arcaneblade_aura',
+		tags = ['arcaneblade_aura', 'arcaneblade_light'],
+		statchanges = {damagetype = 'light'},
+		buffs = []
+	},
+	e_aura_water = {
+		target = 'caster',
+		type = 'base',
+		stack = 'arcaneblade_aura',
+		tags = ['arcaneblade_aura', 'arcaneblade_water'],
+		statchanges = {damagetype = 'water'},
+		buffs = []
+	},
+	arcane_mastery = {
+		type = 'temp_s',
+		target = 'caster',
+		stack = 'arcane_mastery',
+		tick_event = [],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH, variables.TR_CAST],
+		tags = ['positive', 'buff', 'arcane_mastery'],
+		sub_effects = ['e_tr_archmage']
+	},
+	e_tr_archmage = { 
+		type = 'trigger',
+		trigger = [variables.TR_CAST],
+		req_skill = true,
+		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'spell']}],
+		atomic = [],
+		buffs = ['b_free_use'],#or fix
+		sub_effects = ['e_instant'],
+	},
+	e_summon_dog = {
+		target = 'caster',
+		type = 'base',
+		stack = 'ranger_aura',
+		tags = ['summon_dog', 'class_ranger'],
+		buffs = []
+	},
+	e_summon_skeletons = {
+		target = 'caster',
+		type = 'base',
+		stack = 'necro_aura',
+		tags = ['summon_skeletons'],
+		buffs = []
+	},
 }
 var atomic_effects = {}
 var buffs = {
@@ -1416,6 +2160,7 @@ var stacks = {
 	bard = {},#st 1
 	reflection = {},#st 1
 	protective_shell = {},#st 1
+	arcane_mastery = {},#st 1
 	deathknight = {
 		type = 'stack_c',
 		stack = 5,
@@ -1425,7 +2170,19 @@ var stacks = {
 		type = 'stack_t',
 		stack = 1
 	},#toggle
-	firearrows = {
+	spellsword_aura = {
+		type = 'stack_t',
+		stack = 1
+	},#toggle
+	arcaneblade_aura = {
+		type = 'stack_t',
+		stack = 1
+	},#toggle
+	ranger_aura = {
+		type = 'stack_t',
+		stack = 1
+	},#toggle
+	necro_aura = {
 		type = 'stack_t',
 		stack = 1
 	},#toggle

@@ -64,12 +64,13 @@ var data = {
 	amelia_bonus = {
 		image = null,
 		tags = ["dialogue_scene", 'master_translate'],
+		music = "amelia_theme", 
 		reqs = [],
 		character = "amelia",
 		text = [{text = "AMELIA_BONUS", reqs = [], bonus_effects = []},],
 		options = [
-			{code = "servants_introduction", text = "DIALOGUEBACK", reqs = [], dialogue_argument = 1, type = "next_dialogue", previous_dialogue_option = 10},
-			{code = "amelia_dialogue_start", text = "DIALOGUEBACK", reqs = [], dialogue_argument = 1, type = "next_dialogue", previous_dialogue_option = 11},
+			{code = "servants_introduction", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue", previous_dialogue_option = 10},
+			{code = "amelia_dialogue_start", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue", previous_dialogue_option = 11},
 		]
 	},
 }

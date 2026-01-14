@@ -70,7 +70,7 @@ var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mp', 'lust']
 var resists_list = ['normal','fire','earth','air','water','light','dark','mind'] 
 var fighter_stats_list = ['hpmax','mpmax','atk','matk','armor','mdef','hitrate','evasion','armorpenetration','speed', 'critchance','critmod']
 
-var skill_args_checking_list_1 = ['target_range', 'target_number', 'ability_type', 'damage_type', 'tags']
+var skill_args_checking_list_1 = ['target_range', 'target_number', 'ability_type', 'damage_type', 'tags', 'mode', 'follow_up']
 var skill_args_checking_list_2 = ['damage_type']
 var skill_args_checking_list_3 = ['chance', 'evade', 'critchance', 'armor_p', 'hit_res', 'damage_type']
 
@@ -296,7 +296,7 @@ var difficulty_per_level_survival = 0.1 #% enemy stat increase
 var survival_cap_main = 4.0 # added base 1 to max + 300%
 var survival_cap_secondary = 2.5 # added base 1 to max + 150%
 
-var slave_class_list = ['slave', 'servant', 'heir', 'master']#incomplete? obsolete?
+var slave_class_list = ['slave', 'slave_trained', 'servant', 'heir', 'master']
 #sex chances
 
 var teen_age_weight = 1
@@ -704,3 +704,7 @@ var minor_trainings_per_growth = 0.5
 
 var minor_trainings_time_base = 16
 var minor_trainings_time_per_wits = 2 #reduction
+
+
+var combat_panel_row_size = 20
+var combat_panel_rows = 6

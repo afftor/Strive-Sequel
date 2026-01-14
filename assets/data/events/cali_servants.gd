@@ -2,6 +2,7 @@ extends Reference
 var data = {
 	cali_sidequest_4 = {
 		image = null, tags = ['dialogue_scene'], 
+		music = "cali_theme",
 		reqs = [],
 		character = "cali",
 		text = [ {text = "CALI_SIDEQUEST_4", reqs = []} ], 
@@ -30,13 +31,13 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 			bonus_effects = [
 				{code = 'complete_quest', value = 'cali_fighters_quest'},
-				{code = 'add_timed_event', value = "cali_sidequest_7", args = [{type = 'add_to_date', date = [7,7], hour = 1}]},
+				{code = 'add_timed_event', value = "cali_sidequest_7", args = [{type = 'add_to_date', date = [4,4], hour = 1}]},
 			 ]
 		},],
 	}, 
 	
 	cali_sidequest_7 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		image = null, music = "cali_theme", tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [],
 		character = "cali",
 		text = [ {text = "CALI_SIDEQUEST_7", reqs = []} ], 
@@ -77,7 +78,7 @@ var data = {
 	}, 
 	
 	cali_servants_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		image = null, music = "cali_theme", tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [],
 		character = "cali",
 		text = [ {text = "CALI_SERVANTS_1", reqs = []} ], 
@@ -173,7 +174,7 @@ var data = {
 					{code = 'charm_factor', operant = '+', value = 1},
 				]},
 				{code = 'add_timed_event', value = "cali_sex_5", args = [{type = 'add_to_date', date = [2,2], hour = 2}]},
-				{code = 'add_timed_event', value = "cali_heirloom_1", args = [{type = 'add_to_date', date = [5,5], hour = 2}]},
+				{code = 'add_timed_event', value = "cali_heirloom_1", args = [{type = 'add_to_date', date = [4,4], hour = 2}]},
 				{code = 'complete_quest', value = 'cali_servants_quest'},# or advance
 			 ]
 		},],
@@ -181,6 +182,7 @@ var data = {
 	
 	cali_sex_5 = {
 		image = null,
+		music = "cali_theme",
 		scene_type = "unlocked_gallery_seq",
 		unlocked_gallery_seq = "cali_bj_happy",
 		save_scene_to_gallery = true,
@@ -275,6 +277,7 @@ var data = {
 
 	cali_sex_9 = {
 		image = null,
+		music = "intimate",
 		custom_background = "cali_bj_happy_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
@@ -362,6 +365,7 @@ var data = {
 
 	cali_amelia_1 = {
 		image = null,
+		music = "cali_theme",
 		character = "cali",
 		character2 = 'amelia',
 		reqs = [{type = "decision", value = "cali_sex", check = false}],
@@ -455,9 +459,11 @@ var data = {
 	},
 	cali_amelia_4_1 = {
 		image = null,
+		music = "intimate",
 		custom_background = "amelia_cali_2",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		unlocked_gallery_seq = "amelia_cali",
 		tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
 		text = [
 			{text = "CALI_AMELIA_4_1", reqs = []},

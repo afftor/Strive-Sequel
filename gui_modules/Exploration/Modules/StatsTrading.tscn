@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=1]
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=2]
@@ -20,7 +20,8 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist_hover.png" type="Texture" id=18]
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist_pressed.png" type="Texture" id=19]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_disabled.png" type="Texture" id=20]
-[ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/icon_question_small_alt.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=22]
 
 [node name="CharactersPanel" type="TextureRect"]
 self_modulate = Color( 1, 1, 1, 0.54902 )
@@ -40,9 +41,9 @@ __meta__ = {
 
 [node name="StatsPanel" type="Panel" parent="."]
 self_modulate = Color( 1, 1, 1, 0.564706 )
-margin_left = 414.0
+margin_left = 830.0
 margin_top = 87.0
-margin_right = 793.0
+margin_right = 1209.0
 margin_bottom = 791.0
 custom_styles/panel = ExtResource( 11 )
 __meta__ = {
@@ -54,7 +55,7 @@ margin_top = -1.7818
 margin_right = 379.0
 margin_bottom = 33.2182
 theme = ExtResource( 13 )
-text = "Improved Status"
+text = "STATSTRADING_IMPROVED_STATUS"
 align = 1
 valign = 1
 __meta__ = {
@@ -67,7 +68,7 @@ margin_right = 406.0
 margin_bottom = 521.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 5 )
-text = "Stat Name"
+text = "STATSTRADING_STAT_NAME"
 align = 1
 valign = 1
 
@@ -77,7 +78,7 @@ margin_right = 403.0
 margin_bottom = 566.0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 5 )
-text = "Current Value"
+text = "STATSTRADING_CURRENT_VALUE"
 align = 1
 valign = 1
 __meta__ = {
@@ -90,7 +91,7 @@ margin_left = 862.57
 margin_top = 225.0
 margin_right = 921.57
 margin_bottom = 249.0
-text = "Price"
+text = "STATSTRADING_PRICE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -110,7 +111,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 custom_fonts/font = ExtResource( 5 )
-text = "Upgrade"
+text = "STATSTRADING_UPGRADE"
 
 [node name="Testing" type="Label" parent="StatsPanel"]
 visible = false
@@ -118,7 +119,7 @@ margin_left = 280.0
 margin_top = 552.0
 margin_right = 365.0
 margin_bottom = 576.0
-text = "Testing"
+text = "STATSTRADING_TESTING"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -149,7 +150,7 @@ expand = true
 margin_right = 300.0
 margin_bottom = 51.0
 custom_fonts/font = ExtResource( 5 )
-text = "Stat Name"
+text = "STATSTRADING_STAT_NAME"
 align = 1
 valign = 1
 __meta__ = {
@@ -230,7 +231,7 @@ margin_top = 87.0
 margin_right = 407.0
 margin_bottom = 111.0
 theme = ExtResource( 13 )
-text = "Choose Receiver"
+text = "STATSTRADING_CHOOSE_RECEIVER"
 align = 1
 valign = 1
 __meta__ = {
@@ -238,12 +239,12 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 829.0
-margin_top = 87.0
-margin_right = 1227.0
-margin_bottom = 122.0
+margin_left = 413.597
+margin_top = 85.3182
+margin_right = 811.597
+margin_bottom = 120.318
 theme = ExtResource( 13 )
-text = "Choose Donor"
+text = "STATSTRADING_CHOOSE_DONOR"
 align = 1
 valign = 1
 __meta__ = {
@@ -256,7 +257,7 @@ margin_left = 492.863
 margin_top = 127.0
 margin_right = 715.863
 margin_bottom = 151.0
-text = "Nothing to Upgrade"
+text = "STATSTRADING_NOTHING_TO_UPGRADE"
 
 [node name="CharList" type="Control" parent="."]
 margin_left = 19.0
@@ -267,9 +268,9 @@ theme = ExtResource( 3 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CharList"]
 margin_left = 25.0
-margin_top = -1.0
+margin_top = -21.0
 margin_right = 325.0
-margin_bottom = 614.0
+margin_bottom = 630.0
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -298,7 +299,7 @@ margin_right = 336.0
 margin_bottom = 45.0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 5 )
-text = "Character Name"
+text = "STATSTRADING_CHARACTER_NAME"
 align = 1
 valign = 1
 __meta__ = {
@@ -325,24 +326,21 @@ margin_bottom = 614.0
 theme = ExtResource( 3 )
 
 [node name="CharList2" type="Control" parent="."]
-margin_left = 836.0
-margin_top = 152.0
-margin_right = 1217.0
-margin_bottom = 766.0
+margin_left = 428.0
+margin_top = 133.0
+margin_right = 809.0
+margin_bottom = 784.0
 theme = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CharList2"]
-margin_left = 25.0
+margin_left = 14.0
 margin_top = -1.0
-margin_right = 325.0
+margin_right = 314.0
 margin_bottom = 614.0
 scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CharactersVBox" type="VBoxContainer" parent="CharList2/ScrollContainer"]
 margin_right = 300.0
@@ -367,7 +365,7 @@ margin_right = 336.0
 margin_bottom = 45.0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 5 )
-text = "Character Name"
+text = "STATSTRADING_CHARACTER_NAME"
 align = 1
 valign = 1
 
@@ -390,9 +388,23 @@ margin_right = 12.0
 margin_bottom = 614.0
 theme = ExtResource( 3 )
 
-[node name="Hint" type="TextureRect" parent="."]
+[node name="Hint" type="TextureButton" parent="."]
 margin_left = 1146.1
 margin_top = 12.6992
 margin_right = 1210.1
 margin_bottom = 76.6992
-texture = ExtResource( 21 )
+texture_normal = ExtResource( 21 )
+texture_hover = ExtResource( 22 )
+
+[node name="StatInfo2" type="Label" parent="."]
+margin_left = 429.0
+margin_top = 26.2182
+margin_right = 808.0
+margin_bottom = 61.2182
+theme = ExtResource( 13 )
+text = "STATSTRADING_FACTOR_UPGRADES"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

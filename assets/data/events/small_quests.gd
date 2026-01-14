@@ -650,6 +650,7 @@ var data = {
 	},
 	cali_intro_1 = {
 		image = null,
+		music = "cali_theme",
 		tags = [
 			"dialogue_scene"
 		],
@@ -945,6 +946,7 @@ var data = {
 	},
 	got_cali_1_1 = {
 		image = null,
+		music = "cali_theme",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1079,6 +1081,7 @@ var data = {
 	force_cali_1 = {
 		custom_background = "force_cali1",
 		scene_type = "ero_scene",
+		music = "intimate_dark",
 		unlocked_gallery_seq = "force_cali",
 		save_scene_to_gallery = true,
 		image = null,
@@ -1690,6 +1693,7 @@ var data = {
 	},
 	amelia_bonus_question = {
 		image = null,
+		music = "amelia_theme",
 		tags = [
 			"dialogue_scene",
 			"master_translate"

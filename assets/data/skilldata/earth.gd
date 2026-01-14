@@ -29,6 +29,10 @@ var skills = {
 				reqs = [{code = 'stat', stat = 'mastery_earth', value = 3, operant = 'gte'}],
 				set = {effects = ['e_s_earthshield_1']},
 				add = {descript = '_1'}
+			},
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {targetreqs = [{code = 'has_status', status = 'shield', check = false}],} #to prevent overuse of long-duration buffs
 			}
 		]
 	},
@@ -56,7 +60,13 @@ var skills = {
 		damage_type = 'earth', 
 		sfx = [{code = 'acid_bomb', target = 'target', period = 'predamage'}], #fix
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 0.85
+		value = 0.85,
+		variations = [
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {targetreqs = [{code = 'has_status', status = 'bleed', check = false}],} #to prevent overuse of low-damage long-duration ads, prefer bleed to impale cause of hp impact
+			}
+		]
 	},
 	acidbomb = {
 		code = 'acidbomb',
@@ -64,7 +74,7 @@ var skills = {
 		icon = load("res://assets/images/iconsskills/AcidBomb.png"),
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['damage','ads', 'earth'],
+		tags = ['damage','ads', 'earth', 'damage_spot'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_shred', duration = 3})], 
@@ -79,7 +89,13 @@ var skills = {
 		damage_type = 'earth', 
 		sfx = [{code = 'acid_bomb', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 2.5
+		value = 2.5,
+		variations = [
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {combatcooldown = 3} #to prevent spaming, due to high priority and zero cost for AI, looking for shredable target is ineffective 
+			}
+		]
 	},
 	overgrowth = {
 		code = 'overgrowth',
@@ -102,7 +118,13 @@ var skills = {
 		damage_type = 'earth',
 		sfx = [{code = 'overgrowth', target = 'target_group', period = 'windup'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 0.5
+		value = 0.5,
+		variations = [
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {combatcooldown = 2} #to prevent spaming, due to high priority and zero cost for AI, looking for ensnarable target is ineffective 
+			}
+		]
 	},
 	earthquake = {
 		code = 'earthquake',
@@ -110,7 +132,7 @@ var skills = {
 		icon = load("res://assets/images/iconsskills/icon_earthquake.png"),
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['aoe', 'damage', 'earth'],
+		tags = ['aoe', 'damage', 'earth', 'ultimate'],
 #		new_syntax = true,
 		reqs = [],
 		targetreqs = [],
@@ -127,7 +149,13 @@ var skills = {
 		sfx = [{code = 'earthquake', target = 'target_group', period = 'windup'}], 
 		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
 		value = 0.4,
-		follow_up = 'eq_setup'
+		follow_up = 'eq_setup',
+		variations = [
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {combatcooldown = 5} #to prevent spaming 
+			}
+		]
 	},
 	eq_setup = {
 		code = 'eq_setup',
@@ -185,7 +213,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/skill_disintegrate.png",
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['damage', 'debuf', 'earth'],
+		tags = ['damage', 'debuf', 'earth', 'damage_spot'],
 #		new_syntax = true,
 		reqs = [],
 		targetreqs = [],
@@ -207,6 +235,12 @@ var skills = {
 			0:[{code = 'stat', stat = 'racegroup', value = 'golem', operant = 'neq'}, {code = 'stat', stat = 'racegroup', value = 'mech', operant = 'neq'}],
 			1:[{code = 'stat', stat = 'racegroup', value = ['golem', 'mech'], operant = 'in'}],
 			},
+		variations = [
+			{
+				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
+				set = {combatcooldown = 3} #to prevent spaming 
+			}
+		]
 	},
 }
 var effects = {
@@ -243,7 +277,7 @@ var effects = {
 		tick_event = variables.TR_TURN_S,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 5,
-		tags = ['buff'],
+		tags = ['buff', 'shield'],
 		args = {value = {obj = 'skill', func = 'get', arg = 'process_value'}},
 		statchanges = {armor = [['arg', 'value'], '*', 0.5],},
 		buffs = [
@@ -260,7 +294,7 @@ var effects = {
 		tick_event = variables.TR_TURN_S,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 5,
-		tags = ['buff'],
+		tags = ['buff', 'shield'],
 		args = {value = {obj = 'skill', func = 'get', arg = 'process_value'}},
 		statchanges = {
 			armor = [['arg', 'value'], '*', 0.5],

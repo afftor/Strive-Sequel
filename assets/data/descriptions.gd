@@ -438,6 +438,7 @@ var bodypartsdata = {
 		default = {code = "default", name = 'style1', chardescript = '', bodychanges = []},
 		curve = {code = "curve", name = 'style2', chardescript = '', bodychanges = []},
 		kobold = {code = "kobold", name = 'kobold', chardescript = '', bodychanges = []},
+		kobold_2 = {code = "kobold_2", name = 'kobold', chardescript = '', bodychanges = []},
 		small = {code = "small", name = 'style3', chardescript = '', bodychanges = []},
 		skinny = {code = "skinny", name = 'style4', chardescript = '', bodychanges = []},
 		male = {code = "male", name = 'style5', chardescript = '', bodychanges = []},
@@ -701,47 +702,50 @@ func get_class_reqs(newperson, classdata, colorcode = true):
 
 func get_class_bonuses(newperson, classdata): #maybe there should be used the same generation of stat changes description as in loyalty traits and items 
 	var text = ''
-	for i in classdata.statchanges:
-		var data = statdata.statdata[i]
-		var value = classdata.statchanges[i]
-		if value is bool:
-			text += tr(data.name + '_' + str(value).to_upper()) + "\n" 
-			continue #temp stub
-		if value is Array:
-			text += tr(data.name) + ": "
-			for st in value:
-				match data.array_type:
-					'mastery':
-						text += "%s, " % tr(Skilldata.masteries[st].name)
-			text = text.trim_suffix(', ')
-			text += "\n"
-			continue#temp stub
-		if data.percent: 
-			value *= 100
-		text += data.name + ": "
-		if value  > 0:
-			text += "+"
-		text += str(value)
-		if data.percent:
-			text += "%"
-		text += "\n"
+	text += globals.build_desc_for_bonusstats(classdata.statchanges)
+#	for i in classdata.statchanges:
+#		var data = statdata.statdata[i]
+#		var value = classdata.statchanges[i]
+#		if value is bool:
+#			text += tr(data.name + '_' + str(value).to_upper()) + "\n" 
+#			continue #temp stub
+#		if value is Array:
+#			text += tr(data.name) + ": "
+#			for st in value:
+#				match data.array_type:
+#					'mastery':
+#						text += "%s, " % tr(Skilldata.masteries[st].name)
+#			text = text.trim_suffix(', ')
+#			text += "\n"
+#			continue#temp stub
+#		if data.percent: 
+#			value *= 100
+#		text += data.name + ": "
+#		if value  > 0:
+#			text += "+"
+#		text += str(value)
+#		if data.percent:
+#			text += "%"
+#		text += "\n"
 	for i in classdata.traits:
 		var trait = Traitdata.traits[i]
 		if trait.has('show_in_parent_stats') and trait.show_in_parent_stats:
 			text += globals.TextEncoder(trait.descript) + "\n"
-			if !trait.has('bonusstats'): continue
-			for j in trait.bonusstats:
-				var data = statdata.statdata[j]
-				var value = trait.bonusstats[j]
-				if data.percent: 
-					value *= 100
-				text += data.name + ": "
-				if value  > 0:
-					text += "+"
-				text += str(value)
-				if data.percent:
-					text += "%"
-				text += "\n"
+			if trait.has('bonusstats'):
+				text += globals.build_desc_for_bonusstats(trait.bonusstats)
+#			if !trait.has('bonusstats'): continue
+#			for j in trait.bonusstats:
+#				var data = statdata.statdata[j]
+#				var value = trait.bonusstats[j]
+#				if data.percent: 
+#					value *= 100
+#				text += data.name + ": "
+#				if value  > 0:
+#					text += "+"
+#				text += str(value)
+#				if data.percent:
+#					text += "%"
+#				text += "\n"
 	#if there will be new tags, that would need description, refactor this code: make it a system
 	if classdata.has('tags') and classdata.tags.has('stable_fame'):
 		text += tr('TAGSTABLE_FAME') + "\n"
@@ -752,49 +756,52 @@ func get_class_bonuses(newperson, classdata): #maybe there should be used the sa
 
 func get_class_bonuses_short(newperson, classdata): #maybe there should be used the same generation of stat changes description as in loyalty traits and items 
 	var text = ''
-	for i in classdata.statchanges:
-		var data = statdata.statdata[i]
-		var value = classdata.statchanges[i]
-		if data.tags.has('show_in_header'):
-			continue
-		if value is bool:
-			text += tr(data.name + '_' + str(value).to_upper()) + "\n" 
-			continue #temp stub
-		if value is Array:
-			text += tr(data.name) + ": "
-			for st in value:
-				match data.array_type:
-					'mastery':
-						text += "%s, " % tr(Skilldata.masteries[st].name)
-			text = text.trim_suffix(', ')
-			text += "\n"
-			continue#temp stub
-		if data.percent: 
-			value *= 100
-		text += data.name + ": "
-		if value  > 0:
-			text += "+"
-		text += str(value)
-		if data.percent:
-			text += "%"
-		text += "\n"
+	text += globals.build_desc_for_bonusstats(classdata.statchanges)
+#	for i in classdata.statchanges:
+#		var data = statdata.statdata[i]
+#		var value = classdata.statchanges[i]
+#		if data.tags.has('show_in_header'):
+#			continue
+#		if value is bool:
+#			text += tr(data.name + '_' + str(value).to_upper()) + "\n" 
+#			continue #temp stub
+#		if value is Array:
+#			text += tr(data.name) + ": "
+#			for st in value:
+#				match data.array_type:
+#					'mastery':
+#						text += "%s, " % tr(Skilldata.masteries[st].name)
+#			text = text.trim_suffix(', ')
+#			text += "\n"
+#			continue#temp stub
+#		if data.percent: 
+#			value *= 100
+#		text += data.name + ": "
+#		if value  > 0:
+#			text += "+"
+#		text += str(value)
+#		if data.percent:
+#			text += "%"
+#		text += "\n"
 	for i in classdata.traits:
 		var trait = Traitdata.traits[i]
 		if trait.has('show_in_parent_stats') and trait.show_in_parent_stats:
 			text += globals.TextEncoder(trait.descript) + "\n"
-			if !trait.has('bonusstats'): continue
-			for j in trait.bonusstats:
-				var data = statdata.statdata[j]
-				var value = trait.bonusstats[j]
-				if data.percent: 
-					value *= 100
-				text += data.name + ": "
-				if value  > 0:
-					text += "+"
-				text += str(value)
-				if data.percent:
-					text += "%"
-				text += "\n" 
+			if trait.has('bonusstats'): 
+				text += globals.build_desc_for_bonusstats(trait.bonusstats)
+#			if !trait.has('bonusstats'): continue
+#			for j in trait.bonusstats:
+#				var data = statdata.statdata[j]
+#				var value = trait.bonusstats[j]
+#				if data.percent: 
+#					value *= 100
+#				text += data.name + ": "
+#				if value  > 0:
+#					text += "+"
+#				text += str(value)
+#				if data.percent:
+#					text += "%"
+#				text += "\n" 
 	if newperson != null:
 		text = newperson.translate(text)
 	return text

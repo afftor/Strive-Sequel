@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Threat.ogg-73dd9a4bdf7b0ba46af7dfc37c689fb3.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/Threat.ogg"
+dest_files=[ "res://.import/Threat.ogg-73dd9a4bdf7b0ba46af7dfc37c689fb3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -857,7 +857,6 @@ hint_tooltip = "TOOLTIPFOODCONSUMPTION"
 texture = ExtResource( 14 )
 
 [node name="population" type="Label" parent="."]
-visible = false
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -927,6 +926,7 @@ margin_bottom = 32.0
 texture = ExtResource( 19 )
 
 [node name="BedroomIcon" type="TextureRect" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -938,6 +938,7 @@ margin_bottom = -10.944
 texture = ExtResource( 31 )
 
 [node name="DateIcon" type="TextureRect" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -949,6 +950,7 @@ margin_bottom = -10.944
 texture = ExtResource( 32 )
 
 [node name="SexIcon" type="TextureRect" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -961,6 +963,7 @@ hint_tooltip = "Date limit. Renews once a week."
 texture = ExtResource( 30 )
 
 [node name="BedroomLimit" type="Label" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -979,6 +982,7 @@ __meta__ = {
 }
 
 [node name="DateLimit" type="Label" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -994,6 +998,7 @@ align = 1
 valign = 1
 
 [node name="SexLimit" type="Label" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5

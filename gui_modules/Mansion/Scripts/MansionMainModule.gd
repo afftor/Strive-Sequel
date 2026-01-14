@@ -126,6 +126,7 @@ func _ready():
 	input_handler.SetMusicRandom("mansion")
 	$TestButton.connect('pressed',self,'test')
 	SlaveListModule.update_dislocations()
+	SlaveListModule.rebuild()
 #	SlaveListModule.build_locations_list()
 	if !ResourceScripts.game_progress.intro_tutorial_seen:
 		$TutorialIntro.show()
@@ -443,7 +444,7 @@ func slave_list_manager():
 			else:
 				skill_source = active_person
 			SkillModule.build_skill_panel()
-			SlaveListModule.rebuild()
+			SlaveListModule.update_buttons()
 			SlaveModule.show_slave_info()
 		'skill':
 			if active_person.is_on_quest():
@@ -600,7 +601,7 @@ func test_mode():
 		character.set_stat('eye_color','green')
 		character.unlock_class("master")
 		character.unlock_class("worker")
-		character.unlock_class("apprentice")
+		character.unlock_class("spellsword")
 #		character.unlock_class("assassin")
 		character.unlock_class("knight")
 		character.set_stat('height', 'average')
@@ -799,9 +800,9 @@ func test_mode():
 					]
 				},
 				{code = 'make_story_character', value = 'Cali'},
-				{code = 'make_story_character', value = 'Aire'},
+				{code = 'make_story_character', value = 'Heleviel'},
 				{code = 'make_story_character', value = 'Jean'},
-				{code = 'make_story_character', value = 'Zephyra'},
+				#{code = 'make_story_character', value = 'Zephyra'},
 				{code = 'make_story_character', value = 'Amelia'},
 				{code = 'make_story_character', value = 'Kuro'},
 				{code = 'make_story_character', value = 'Lilia'},
@@ -897,7 +898,7 @@ func test_mode():
 #				{code = 'open_loot'}
 #			]
 #		)
-		ResourceScripts.game_party.add_relationship_value(ResourceScripts.game_party.get_unique_slave("cali").id,ResourceScripts.game_party.get_unique_slave("zephyra").id, 100)
+		#ResourceScripts.game_party.add_relationship_value(ResourceScripts.game_party.get_unique_slave("cali").id,ResourceScripts.game_party.get_unique_slave("zephyra").id, 100)
 		character.mp = 10
 		character.add_trait('talented')
 		var tmp = {}
@@ -949,7 +950,7 @@ func test_mode():
 
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
 		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
-		#input_handler.interactive_message('heleviel_quest_7', '', {})
+		#input_handler.interactive_message('heleviel_snowset_start', '', {})
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		

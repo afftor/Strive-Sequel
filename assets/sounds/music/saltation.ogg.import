@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/saltation.ogg-7a7e6b592808db18d5201a52830760b7.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/saltation.ogg"
+dest_files=[ "res://.import/saltation.ogg-7a7e6b592808db18d5201a52830760b7.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
