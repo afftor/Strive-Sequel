@@ -1,0 +1,229 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=1]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/ConfirmWindowTheme.tres" type="Theme" id=2]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_hover.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_pressed.png" type="Texture" id=5]
+[ext_resource path="res://gui_modules/Universal/Scripts/hard_tutorial_list.gd" type="Script" id=6]
+
+[node name="TutorialList" type="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.5
+margin_top = -250.5
+margin_right = 200.5
+margin_bottom = 250.5
+theme = ExtResource( 2 )
+script = ExtResource( 6 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -141.5
+margin_top = 72.0
+margin_right = 141.5
+margin_bottom = 316.0
+
+[node name="training" type="TextureButton" parent="VBoxContainer"]
+margin_right = 283.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 0, 58 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 3 )
+expand = true
+
+[node name="Label" type="Label" parent="VBoxContainer/training"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "TUTORIALNAME1"
+align = 1
+valign = 1
+
+[node name="work" type="TextureButton" parent="VBoxContainer"]
+margin_top = 62.0
+margin_right = 283.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 58 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 3 )
+expand = true
+
+[node name="Label" type="Label" parent="VBoxContainer/work"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "TUTORIALNAME2"
+align = 1
+valign = 1
+
+[node name="leveling" type="TextureButton" parent="VBoxContainer"]
+margin_top = 124.0
+margin_right = 283.0
+margin_bottom = 182.0
+rect_min_size = Vector2( 0, 58 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 3 )
+expand = true
+
+[node name="Label" type="Label" parent="VBoxContainer/leveling"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "TUTORIALNAME3"
+align = 1
+valign = 1
+
+[node name="quest_and_combat" type="TextureButton" parent="VBoxContainer"]
+margin_top = 186.0
+margin_right = 283.0
+margin_bottom = 244.0
+rect_min_size = Vector2( 0, 58 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 3 )
+expand = true
+
+[node name="Label" type="Label" parent="VBoxContainer/quest_and_combat"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "TUTORIALNAME4"
+align = 1
+valign = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -141.5
+margin_top = -160.0
+margin_right = 141.5
+margin_bottom = -31.0
+alignment = 2
+
+[node name="abort" type="TextureButton" parent="VBoxContainer2"]
+visible = false
+margin_top = 9.0
+margin_right = 283.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 0, 58 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 3 )
+expand = true
+
+[node name="Label" type="Label" parent="VBoxContainer2/abort"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "ABORTTUTORIAL"
+align = 1
+valign = 1
+
+[node name="back" type="TextureButton" parent="VBoxContainer2"]
+margin_top = 71.0
+margin_right = 283.0
+margin_bottom = 129.0
+rect_min_size = Vector2( 0, 58 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 3 )
+expand = true
+
+[node name="Label" type="Label" parent="VBoxContainer2/back"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "BACK"
+align = 1
+valign = 1
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+margin_left = 25.0
+margin_top = 10.0
+margin_right = -22.0
+margin_bottom = 90.0
+text = "CHOOSETUTORIAL"
+align = 1
+
+[node name="ask_panel" type="Popup" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -262.0
+margin_top = -119.5
+margin_right = 262.0
+margin_bottom = 119.5
+theme = ExtResource( 2 )
+popup_exclusive = true
+
+[node name="RichTextLabel" type="Label" parent="ask_panel"]
+margin_left = 53.0
+margin_top = 34.9474
+margin_right = 477.0
+margin_bottom = 138.947
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "ABORTTUTORIALQ"
+align = 1
+
+[node name="TextureRect" type="Panel" parent="ask_panel/RichTextLabel"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -53.0
+margin_top = -35.0
+margin_right = 47.0
+margin_bottom = 100.0
+
+[node name="ButtonL" type="TextureButton" parent="ask_panel/RichTextLabel/TextureRect"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 26.0
+margin_top = -74.9474
+margin_right = 236.0
+margin_bottom = -16.9474
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="ask_panel/RichTextLabel/TextureRect/ButtonL"]
+margin_left = 12.0
+margin_right = 202.0
+margin_bottom = 58.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "YES"
+align = 1
+valign = 1
+
+[node name="ButtonR" type="TextureButton" parent="ask_panel/RichTextLabel/TextureRect"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -233.0
+margin_top = -74.9474
+margin_right = -23.0
+margin_bottom = -16.9474
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="ask_panel/RichTextLabel/TextureRect/ButtonR"]
+margin_left = 10.0
+margin_right = 201.0
+margin_bottom = 58.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "NO"
+align = 1
+valign = 1

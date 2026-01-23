@@ -9,12 +9,13 @@ func _ready():
 	gui_controller.add_close_button($saveloadpanel)
 	gui_controller.add_close_button($Options)
 	gui_controller.add_close_button($Credits)
-	var buttonlist = ['continueb','newgame', 'tutorial', 'loadwindow','options', 'credits', 'mods']
+	gui_controller.add_close_button($NewOrTutorial)
+	var buttonlist = ['continueb','newgame', 'loadwindow','options', 'credits', 'mods']
 	$version.text = "ver. " + globals.gameversion
 	input_handler.CurrentScene = self
 	#input_handler.StopMusic()
 	check_last_save()
-	for i in range(0,7):
+	for i in range(0,6):
 		$VBoxContainer.get_child(i).connect("toggled",self,buttonlist[i], [$VBoxContainer.get_child(i)])
 		#input_handler.ConnectSound($VBoxContainer.get_child(i), 'button_click', 'button_up')
 	$VBoxContainer/quitbutton.connect("pressed", self, "quit")
@@ -43,6 +44,8 @@ func _ready():
 	globals.connecttexttooltip($NewGamePanel/tip, tr('NEWGAMESETTINGINFO'))
 	$ChangelogButton.connect("pressed", $Changelogpanel, 'show')
 	$NewGamePanel/StartButton.connect("pressed", self, 'start_game')
+	$NewOrTutorial/ButtonL.connect("pressed", self, 'close_new_or_tutorial', [1])
+	$NewOrTutorial/ButtonR.connect("pressed", self, 'close_new_or_tutorial', [2])
 	
 	cycle_backgrounds()
 
@@ -152,12 +155,32 @@ var settingarray2 = ['skip_prologue','diff_gf_only_upg','diff_permadeath', 'diff
 var settingarray3 = ['diff_money','diff_materials'] #'diff_free_chars'
 
 func newgame(pressed, pressed_button):
-	gui_controller.win_btn_connections_handler(pressed, $NewGamePanel, pressed_button)
+	gui_controller.win_btn_connections_handler(pressed, $NewOrTutorial, pressed_button)
 	self.current_pressed_btn = pressed_button
-	$NewGamePanel.visible = pressed
-	open_newgame()
+	$NewOrTutorial.visible = pressed
+	if pressed:
+		var prompt = $NewOrTutorial/tutorial_prompt
+		prompt.visible = !input_handler.globalsettings.tutorial_prompt_seen
+		if prompt.visible:
+			var close = $NewOrTutorial/tutorial_prompt/close
+			if !close.is_connected("pressed", self, "close_tutorial_prompt"):
+				close.connect("pressed", self, "close_tutorial_prompt", [], CONNECT_ONESHOT)
+
+func close_tutorial_prompt():
+	input_handler.globalsettings.tutorial_prompt_seen = true
+	$NewOrTutorial/tutorial_prompt.hide()
+
+func close_new_or_tutorial(result):
+	$NewOrTutorial/CloseButton.emit_signal("pressed")
+	if result == 1:#ButtonL
+		open_newgame()
+	elif result == 2:#ButtonR
+		tutorial()
 
 func open_newgame():
+	gui_controller.windows_opened.append($NewGamePanel)
+	$NewGamePanel.show()
+	
 	$NewGamePanel/PresetContainer.visible = true
 	$NewGamePanel/RichTextLabel.visible = true
 	$NewGamePanel/SettingsLabel.visible = false
@@ -266,23 +289,9 @@ func start_game_confirm():
 	gui_controller.windows_opened.clear()
 	self.queue_free()
 
-func tutorial(pressed, pressed_button):
-	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'tutorial_confirm', tr('STARTTUTORIAL')])
-
-func tutorial_confirm():
-	ResourceScripts.game_world.make_world()
-	ResourceScripts.game_globals.original_version = globals.gameversion
-	ResourceScripts.game_progress.intro_tutorial_seen = true
-	get_node("/root").remove_child(self)
-	input_handler.ChangeScene('mansion')
-	yield(globals, 'scene_changed')
-	
-	input_handler.activate_hard_tutorial()
-	input_handler.hard_tutorial.prepare_general_tut()
-	input_handler.hard_tutorial.start_tutorial('general')
-	
-	gui_controller.windows_opened.clear()
-	self.queue_free()
+func tutorial():
+	input_handler.get_spec_node(input_handler.NODE_HARD_TUTORIAL_LIST).show()
+#	gui_controller.windows_opened.append($TutorialList)
 
 func session_setting(arg):
 	input_handler.globalsettings[arg] = !input_handler.globalsettings[arg]

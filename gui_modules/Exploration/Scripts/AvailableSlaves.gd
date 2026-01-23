@@ -8,8 +8,18 @@ func _ready():
 
 func tut_register_first_recruit():
 	input_handler.register_btn_source('first_recruit', self, 'tut_get_first_take_btn')
+func tut_register_first_char():
+	input_handler.register_btn_source('first_recruit_char', self, 'tut_get_first_char', self, 'tut_get_first_char_rect')
 func tut_get_first_take_btn():
 	return $ScrollContainer/VBoxContainer.get_children()[0].get_node('TakeButton')
+func tut_get_first_char():
+	return $ScrollContainer/VBoxContainer.get_children()[0]
+func tut_get_first_char_rect():
+	var first_char = $ScrollContainer/VBoxContainer.get_children()[0]
+	var rect = first_char.get_global_rect()
+	rect.end.x = first_char.get_node('EnslaveButton').get_global_position().x
+	return rect
+
 
 func update():
 	if get_parent().get_parent().active_location != null:

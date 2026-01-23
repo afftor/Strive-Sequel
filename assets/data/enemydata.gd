@@ -4,7 +4,7 @@ var predeterminatedgroups = {
 }
 
 var encounters = {
-	tutorial_skirmish = {unittype = 'randomgroup', unitcode = 'wolves_easy2', bg = 'default', bgm = 'default', win_effects = [], lose_effects = []},
+	tutorial_skirmish = {unittype = 'randomgroup', unitcode = 'wolves_tut', bg = 'default', bgm = 'default', win_effects = [], lose_effects = []},
 	wolves_skirmish = {unittype = 'randomgroup', unitcode = 'wolves_easy1', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'skirmish_complete', args = []}], lose_effects = []},
 	rebels_skirmish = {unittype = 'randomgroup', unitcode = 'rebels_small', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'skirmish_complete', args = []}], lose_effects = []},
 	slavers_small = {unittype = 'randomgroup', unitcode = 'slavers_small', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'event_person_acquired', args = []}], lose_effects = []},
@@ -135,6 +135,7 @@ var enemygroups = {
 
 	wolves_easy1 = {reqs = [], units = {wolf = [4,6]}, challenges = [['event_enemy_strength_scare', 1],['event_enemy_dexterity_sneak',0.8]], challenge_chance = 0.4},
 	wolves_easy2 = {reqs = [], units = {wolf = [3,5]}, challenges = [['event_enemy_strength_scare', 1],['event_enemy_dexterity_sneak',0.8]], challenge_chance = 0.4},
+	wolves_tut = {reqs = [], units = {wolf = [2,2]}, challenges = []},
 	grove_1 = {reqs = [], units = {willowisp = [2,3]}, challenges = [['event_enemy_dexterity_sneak',1]], challenge_chance = 0.2},
 	grove_2 = {reqs = [], units = {willowisp = [1,2], spider = [1,2]}, challenges = [['event_enemy_dexterity_sneak',1],['event_enemy_strength_scare', 1]], challenge_chance = 0.2},
 

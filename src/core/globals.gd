@@ -895,6 +895,8 @@ func QuickSave():
 	SaveGame('QuickSave')
 
 func autosave(overwrite = false):
+	if input_handler.hard_tutorial_active:
+		return
 	if input_handler.globalsettings.autosave_number <= 0:
 		return
 	if !overwrite:
@@ -1107,7 +1109,7 @@ func fastif(value, result1, result2):
 	else:
 		return result2
 
-func return_to_main_menu():
+func preexit_clear_up():
 	if input_handler.CurrentScene != null:
 		input_handler.CurrentScene.queue_free()
 	
@@ -1122,12 +1124,16 @@ func return_to_main_menu():
 	gui_controller.exploration_city = null
 	gui_controller.exploration_dungeon = null
 	
-	input_handler.ChangeScene('menu')
+	#input_handler.ChangeScene('menu') was here in return_to_main_menu()
 	if gui_controller.dialogue != null:
 		gui_controller.dialogue.hide()
 	ResourceScripts.revert_gamestate()
 	gui_controller.revert_scenes_data()
 #	ResourceScripts.recreate_singletons()
+
+func return_to_main_menu():
+	preexit_clear_up()
+	input_handler.ChangeScene('menu')
 
 
 func getrelativename(person, person2):
