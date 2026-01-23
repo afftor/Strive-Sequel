@@ -235,8 +235,9 @@ func _ready():#2add button connections
 	$InfoPanel/Forget.connect("pressed", self, "forget_location")
 #	match_state()
 	input_handler.connect("mass_select_in_act", self, "off_mass_select_effect")
-	input_handler.register_btn_source('travel_master', self, 'tut_get_master', null, null, self, 'tut_get_master_rect')
-	input_handler.register_btn_source('travel_servant', self, 'tut_get_servant', null, null, self, 'tut_get_servant_rect')
+	input_handler.register_btn_source('travel_master', self, 'tut_get_master')
+	input_handler.register_btn_source('travel_servant', self, 'tut_get_servant')
+	input_handler.register_btn_source('travel_chars_highlight', self, null, self, 'tut_get_chars_highlight')
 	input_handler.register_btn_source('travel_send', self, 'tut_get_send')
 	input_handler.register_btn_source('travel_to_loc', self, 'tut_get_location')
 	input_handler.register_btn_source('travel_confirm', self, 'tut_get_send_confirm')
@@ -244,18 +245,15 @@ func _ready():#2add button connections
 
 func tut_get_master():
 	return tut_get_chara(ResourceScripts.game_party.get_unique_slave('tutorial_master'))
-func tut_get_master_rect():
+func tut_get_chars_highlight():
 	var btn = tut_get_master()
 	var rect = btn.get_global_rect()
 	rect.end.x = btn.get_node('group').rect_global_position.x
+	var btn2 = tut_get_servant()
+	rect.end.y = tut_get_servant().get_global_rect().end.y
 	return rect
 func tut_get_servant():
 	return tut_get_chara(ResourceScripts.game_party.get_unique_slave('tutorial_servant'))
-func tut_get_servant_rect():
-	var btn = tut_get_servant()
-	var rect = btn.get_global_rect()
-	rect.end.x = btn.get_node('group').rect_global_position.x
-	return rect
 func tut_get_chara(character):
 	for loc_cat in $FromLocList/LocScroll/LocCatList.get_children():
 		for loc_group in loc_cat.get_node('offset/LocGroupList').get_children():

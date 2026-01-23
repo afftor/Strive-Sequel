@@ -957,7 +957,7 @@ var pregen_characters = {
 		food_hate = ['grain'],
 		sex_skills = {petting = 0, penetration = 0, oral = 0, anal = 0},
 		classes = ['scholar'],
-		mastery = {water = 1},
+		mastery = {water = 1, fire = 1},
 		skin_coverage = "",
 		eyeshape = "face1",
 		eye_tex = "eyes5",

@@ -87,6 +87,8 @@ var dummy = {
 
 signal skill_use_finshed
 signal rewards_anim_finished
+signal combat_finished
+signal turn_started
 
 
 func _ready():
@@ -117,10 +119,39 @@ func _ready():
 	$SkillPanelRowSwitch/Up.connect("pressed", self, "change_skill_panel_row", [-1])
 	$SkillPanelRowSwitch/Down.connect("pressed", self, "change_skill_panel_row", [1])
 	input_handler.register_btn_source('combat_close', self, 'tut_get_CloseButton')
-	input_handler.register_btn_source('combat_rewards_signal', self, null, null, null, null, null, 'rewards_anim_finished')
+	input_handler.register_btn_source('combat_rewards_signal', self, null, null, null, 'rewards_anim_finished')
+	input_handler.register_btn_source('combat_turn_signal', self, null, null, null, 'turn_started')
+	input_handler.register_btn_source('combat_finished_signal', self, null, null, null, 'combat_finished')
+	input_handler.register_btn_source('combat_skill_1', self, 'tut_get_skill_bleed')
+	input_handler.register_btn_source('combat_skill_2', self, 'tut_get_skill_shield')
+	input_handler.register_btn_source('combat_enemy', self, 'tut_get_enemy')
+	input_handler.register_btn_source('combat_ally', self, 'tut_get_master')
 
 func tut_get_CloseButton():
 	return $Rewards/CloseButton
+func tut_get_skill_bleed():
+	return tut_get_skill('draw_blood')
+func tut_get_skill_shield():
+	return tut_get_skill('earth_shield')
+func tut_get_skill(code):
+	var res
+	for btn in $SkillPanel.get_children():
+		if btn.get_meta('skill', '') == code:
+			res = btn
+	if res == null:
+		print("no skill for %s. Ignor this if debuging" % code)
+		res = $SkillPanel.get_children()[0]
+	return res
+func tut_get_enemy():
+	for i in range(7, 13):
+		if battlefieldpositions[i].has_node('Character'):
+			return battlefieldpositions[i].get_node('Character')
+func tut_get_master():
+	for i in range(1, 4):
+		if battlefieldpositions[i].has_node('Character'):
+			var chara = battlefieldpositions[i].get_node('Character')
+			if chara.fighter.is_master():
+				return chara
 
 func on_skillbook_click():
 	$SkillBook.activecharacter = activecharacter
@@ -517,6 +548,7 @@ func select_actor():
 func current_turn(char_changed = true):
 	if checkwinlose() == true:
 		return
+	emit_signal('turn_started')
 	if currentactor <= 0:
 		env_turn(char_changed)
 	elif currentactor < 7:
@@ -1706,6 +1738,7 @@ var victory_seq_run = false
 func victory():
 	if victory_seq_run:
 		return
+	emit_signal("combat_finished")
 	victory_seq_run = true
 	get_tree().get_root().set_disable_input(true)
 	
@@ -1864,6 +1897,7 @@ func victory():
 
 
 func defeat(runaway = false): #runaway is a temporary variable until run() method not fully implemented
+	emit_signal("combat_finished")
 	for p in range(1, 7):
 		if battlefield[p] == null:
 			continue
@@ -1912,3 +1946,6 @@ func hide_popup_skill():
 	if popup_opened != null:
 		popup_opened.visible = false
 		popup_opened = null
+
+func get_current_actor():#for external use
+	return get_char_by_pos(currentactor)

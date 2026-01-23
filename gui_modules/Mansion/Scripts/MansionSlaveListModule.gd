@@ -76,8 +76,8 @@ func _ready():
 	for rl in ['meat', 'fish', 'grain', 'vegetables', 'bread', 'meatsoup', 'curry', 'friedfish', 'fishcakes']:
 		globals.connecttexttooltip(header.get_node('food_' + rl), tr('MATERIAL%sDESCRIPT' % rl.to_upper()))
 	input_handler.connect("mass_select_in_act", self, "off_mass_select_effect")
-	input_handler.register_btn_source("slave_2_line", self, "tut_get_slave_line", null, null, self, 'tut_get_slave_line_rect')
-	input_handler.register_btn_source("daisy_line", self, "tut_get_daisy_line", null, null, self, 'tut_get_daisy_line_rect')
+	input_handler.register_btn_source("slave_2_line", self, "tut_get_slave_line", self, 'tut_get_slave_line_rect')
+	input_handler.register_btn_source("daisy_line", self, "tut_get_daisy_line", self, 'tut_get_daisy_line_rect')
 	input_handler.register_btn_source("ff_meat", self, "tut_get_ff_meat")
 	input_handler.register_btn_source("ff_vegetables", self, "tut_get_ff_vegetables")
 	input_handler.register_btn_source("daisy_waitress", self, "tut_get_daisy_waitress")

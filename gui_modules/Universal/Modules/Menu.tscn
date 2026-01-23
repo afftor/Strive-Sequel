@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=2]
@@ -42,7 +42,12 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/triangles_selection_left.png" type="Texture" id=40]
 [ext_resource path="res://assets/images/buttons/mainmenu/button_discord2.png" type="Texture" id=41]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/button_choose_basic.png" type="Texture" id=42]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/ConfirmWindowTheme.tres" type="Theme" id=43]
+[ext_resource path="res://assets/images/gui/universal/arrowleft.png" type="Texture" id=44]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/tick.png" type="Texture" id=45]
 [ext_resource path="res://assets/images/buttons/mainmenu/button_discord.png" type="Texture" id=46]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/tick_hover.png" type="Texture" id=47]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/tick_chosen.png" type="Texture" id=48]
 [ext_resource path="res://assets/Themes_v2/MAIN_MENU/Menu_StartGame_panel.tres" type="StyleBox" id=54]
 [ext_resource path="res://assets/images/buttons/mainmenu/button_patreon.png" type="Texture" id=55]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24.tres" type="DynamicFont" id=56]
@@ -135,9 +140,9 @@ margin_bottom = 1079.49
 stretch_mode = 6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 804.0
+margin_left = 634.0
 margin_top = 202.0
-margin_right = 1456.0
+margin_right = 1286.0
 margin_bottom = 1076.0
 custom_constants/separation = 8
 
@@ -176,31 +181,11 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="tutorialbutton" type="Button" parent="VBoxContainer"]
-margin_left = 12.0
-margin_top = 196.0
-margin_right = 639.0
-margin_bottom = 286.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
-custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
-custom_fonts/font = SubResource( 5 )
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
-toggle_mode = true
-text = "MENUTUTORIAL"
-__meta__ = {
-"_editor_description_": ""
-}
-
 [node name="loadbutton" type="Button" parent="VBoxContainer"]
 margin_left = 102.0
-margin_top = 294.0
+margin_top = 196.0
 margin_right = 550.0
-margin_bottom = 384.0
+margin_bottom = 286.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
@@ -218,9 +203,9 @@ __meta__ = {
 
 [node name="optionsbutton" type="Button" parent="VBoxContainer"]
 margin_left = 43.0
-margin_top = 392.0
+margin_top = 294.0
 margin_right = 608.0
-margin_bottom = 482.0
+margin_bottom = 384.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
@@ -238,9 +223,9 @@ __meta__ = {
 
 [node name="creditsbutton" type="Button" parent="VBoxContainer"]
 margin_left = 48.0
-margin_top = 490.0
+margin_top = 392.0
 margin_right = 603.0
-margin_bottom = 580.0
+margin_bottom = 482.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
@@ -258,9 +243,9 @@ __meta__ = {
 
 [node name="modsbutton" type="Button" parent="VBoxContainer"]
 margin_left = 98.0
-margin_top = 588.0
+margin_top = 490.0
 margin_right = 554.0
-margin_bottom = 678.0
+margin_bottom = 580.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
@@ -278,9 +263,9 @@ __meta__ = {
 
 [node name="gallery" type="Button" parent="VBoxContainer"]
 margin_left = 33.0
-margin_top = 686.0
+margin_top = 588.0
 margin_right = 619.0
-margin_bottom = 776.0
+margin_bottom = 678.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
@@ -298,9 +283,9 @@ __meta__ = {
 
 [node name="quitbutton" type="Button" parent="VBoxContainer"]
 margin_left = 115.0
-margin_top = 784.0
+margin_top = 686.0
 margin_right = 537.0
-margin_bottom = 874.0
+margin_bottom = 776.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
@@ -761,6 +746,110 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="NewOrTutorial" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 675.0
+margin_top = 381.0
+margin_right = 1257.0
+margin_bottom = 505.0
+theme = ExtResource( 43 )
+
+[node name="ButtonL" type="TextureButton" parent="NewOrTutorial"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 26.0
+margin_top = -74.9474
+margin_right = 236.0
+margin_bottom = -16.9474
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="NewOrTutorial/ButtonL"]
+margin_left = 12.0
+margin_right = 202.0
+margin_bottom = 58.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "MENUNEWGAME"
+align = 1
+valign = 1
+
+[node name="ButtonR" type="TextureButton" parent="NewOrTutorial"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -233.0
+margin_top = -74.9474
+margin_right = -23.0
+margin_bottom = -16.9474
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="NewOrTutorial/ButtonR"]
+margin_left = 10.0
+margin_right = 201.0
+margin_bottom = 58.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "MENUTUTORIAL"
+align = 1
+valign = 1
+
+[node name="tutorial_prompt" type="Panel" parent="NewOrTutorial"]
+visible = false
+margin_left = 121.0
+margin_top = -156.0
+margin_right = 539.0
+margin_bottom = 34.0
+
+[node name="Label" type="Label" parent="NewOrTutorial/tutorial_prompt"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 36.0
+margin_top = 23.0
+margin_right = -44.0
+margin_bottom = -55.0
+text = "PROMPTTUTORIAL"
+align = 1
+valign = 1
+
+[node name="close" type="TextureButton" parent="NewOrTutorial/tutorial_prompt"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -407.0
+margin_top = -52.0
+margin_right = -267.0
+margin_bottom = -5.0
+texture_normal = ExtResource( 45 )
+texture_pressed = ExtResource( 48 )
+texture_hover = ExtResource( 47 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="NewOrTutorial/tutorial_prompt/close"]
+margin_left = 46.0
+margin_top = 2.0
+margin_right = 258.0
+margin_bottom = 41.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "TUTORIALNOTSHOW"
+
+[node name="TextureRect" type="TextureRect" parent="NewOrTutorial/tutorial_prompt"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -115.0
+margin_top = 26.0
+margin_right = -75.0
+margin_bottom = 102.0
+rect_rotation = -90.0
+texture = ExtResource( 44 )
 
 [node name="ChangelogButton" type="Button" parent="."]
 margin_left = 6.0

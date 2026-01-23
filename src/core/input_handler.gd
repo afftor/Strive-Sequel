@@ -137,6 +137,7 @@ enum {
 	NODE_TRAIREM_PANEL,
 	NODE_ARENA,
 	NODE_HARD_TUTORIAL_PANEL,
+	NODE_HARD_TUTORIAL_LIST,
 	#Animations
 	ANIM_TASK_AQUARED,
 	ANIM_BATTLE_START,
@@ -205,7 +206,9 @@ var globalsettings = {
 	
 	generate_portraits = true,
 	
-	stop_log_alert = false
+	stop_log_alert = false,
+	
+	tutorial_prompt_seen = false
 
 } setget settings_save
 
@@ -231,7 +234,7 @@ signal mass_select_end_act
 var hard_tutorial_active = false
 var hard_tutorial
 var hard_tutorial_btns = {
-	#name = {source, get_btn_func, act_obj, act_func}
+	#name = {source, get_btn_func, rect_obj, rect_func}
 }
 
 func set_previous_scene(scene):
@@ -386,19 +389,17 @@ func _input(event):
 	if hard_tutorial_active:
 		var pass_event = false
 		if !hard_tutorial.active_btns.empty():
-			if event.is_action_pressed("ESC") and !hard_tutorial.is_in_abort():
-				hard_tutorial.abort_tutorial()
+			if event.is_action_pressed("ESC") and !hard_tutorial.is_in_menu():
+				hard_tutorial.tutorial_menu()
 			pass_event = event is InputEventMouseMotion
 			if event.is_action_released("LMB") or event.is_action_pressed("LMB"):
+				var action
+				if event.is_pressed(): action = "pressed"
+				else: action = "released"
 				for btn_name in hard_tutorial.active_btns:
 					hard_tutorial.validate_btn(btn_name)
 					if hard_tutorial.get_true_rect(btn_name).has_point(event.position):
-						if hard_tutorial.has_custom_activation(btn_name):
-							if event.is_action_released("LMB"):
-								hard_tutorial.custom_pressed(btn_name)
-						else:
-							pass_event = true
-							hard_tutorial.try_connect_pressed(btn_name)
+						pass_event = pass_event or hard_tutorial.is_action_pass(btn_name, action)
 		if !pass_event:
 			get_tree().set_input_as_handled()
 			return
@@ -1927,6 +1928,8 @@ func stop_mass_select():
 
 
 func activate_hard_tutorial():
+	if hard_tutorial_active:
+		return
 	hard_tutorial_active = true
 	hard_tutorial = ResourceScripts.scriptdict.hard_tutorial.new()
 
@@ -1934,22 +1937,21 @@ func deactivate_hard_tutorial():
 	hard_tutorial_active = false
 	hard_tutorial = null
 
-func register_btn_source(btn_name, source, get_btn_func, act_obj = null, act_func = null, rect_obj = null, rect_func = null, conf_signal = null):
-	if (hard_tutorial_btns.has(btn_name)
-			and hard_tutorial_btns[btn_name].source.get_ref()
-			and is_instance_valid(hard_tutorial_btns[btn_name].source.get_ref())):
+func register_btn_source(btn_name, source, get_btn_func, rect_obj = null, rect_func = null, conf_signal = null):
+	if is_btn_exists(btn_name):
 		push_error("register_btn_source: tutorial btn %s already exists!" % btn_name)
 		return
 	hard_tutorial_btns[btn_name] = {
 		source = weakref(source),
 		get_btn_func = get_btn_func
 	}
-	if act_obj != null:
-		hard_tutorial_btns[btn_name].act_obj = weakref(act_obj)
-		hard_tutorial_btns[btn_name].act_func = act_func
 	if rect_obj != null:
 		hard_tutorial_btns[btn_name].rect_obj = weakref(rect_obj)
 		hard_tutorial_btns[btn_name].rect_func = rect_func
 	if conf_signal != null:
 		hard_tutorial_btns[btn_name].conf_signal = conf_signal
 
+func is_btn_exists(btn_name):
+	return (hard_tutorial_btns.has(btn_name)
+			and hard_tutorial_btns[btn_name].source.get_ref()
+			and is_instance_valid(hard_tutorial_btns[btn_name].source.get_ref()))
