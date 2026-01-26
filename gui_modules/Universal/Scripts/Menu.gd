@@ -158,24 +158,20 @@ func newgame(pressed, pressed_button):
 	gui_controller.win_btn_connections_handler(pressed, $NewOrTutorial, pressed_button)
 	self.current_pressed_btn = pressed_button
 	$NewOrTutorial.visible = pressed
-	if pressed:
-		var prompt = $NewOrTutorial/tutorial_prompt
-		prompt.visible = !input_handler.globalsettings.tutorial_prompt_seen
-		if prompt.visible:
-			var close = $NewOrTutorial/tutorial_prompt/close
-			if !close.is_connected("pressed", self, "close_tutorial_prompt"):
-				close.connect("pressed", self, "close_tutorial_prompt", [], CONNECT_ONESHOT)
-
-func close_tutorial_prompt():
-	input_handler.globalsettings.tutorial_prompt_seen = true
-	$NewOrTutorial/tutorial_prompt.hide()
 
 func close_new_or_tutorial(result):
 	$NewOrTutorial/CloseButton.emit_signal("pressed")
 	if result == 1:#ButtonL
-		open_newgame()
+		try_open_newgame()
 	elif result == 2:#ButtonR
 		tutorial()
+
+func try_open_newgame():
+	if input_handler.globalsettings.tutorial_prompt_seen:
+		open_newgame()
+		return
+	input_handler.globalsettings.tutorial_prompt_seen = true
+	input_handler.get_spec_node(input_handler.NODE_YESORNOPANEL, [self, 'tutorial_confirm', 'open_newgame', tr('PROMPTTUTORIAL')])
 
 func open_newgame():
 	gui_controller.windows_opened.append($NewGamePanel)
@@ -290,8 +286,12 @@ func start_game_confirm():
 	self.queue_free()
 
 func tutorial():
-	input_handler.get_spec_node(input_handler.NODE_HARD_TUTORIAL_LIST).show()
-#	gui_controller.windows_opened.append($TutorialList)
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'tutorial_confirm', tr('STARTTUTORIAL')])
+#	input_handler.get_spec_node(input_handler.NODE_HARD_TUTORIAL_LIST).show()
+
+func tutorial_confirm():
+	input_handler.activate_hard_tutorial()
+	input_handler.hard_tutorial.prepare_tutorial('training')
 
 func session_setting(arg):
 	input_handler.globalsettings[arg] = !input_handler.globalsettings[arg]
