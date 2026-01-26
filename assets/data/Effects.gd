@@ -1230,6 +1230,26 @@ var effect_table = {
 		type = 'simple',
 		tags = ['no_fame'],
 	},
+	
+	e_boar_autoheal = rebuild_autocast({skill = 'boar_heal', trigger = [variables.TR_TURN_S]}),
+	e_satyr_mpreg = { 
+		type = 'trigger',
+		trigger = [variables.TR_CAST],
+		conditions = [
+			{type = 'skill', value = ['ability_type', 'eq', 'spell']},
+			{type = 'skill', value = ['tags', 'has', 'targets_ally']},
+			],
+		req_skill = true,
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				args = {amount = {obj = 'self', func = 'amount', amount = 4}},
+				atomic = [{type = 'sfx', value = 'mind_shatter'}, 'a_manasiphon'] #fix sfx
+			}
+		],
+		buffs = []
+	},
 };
 
 var atomic = {
@@ -1246,6 +1266,7 @@ var atomic = {
 #	a_bleed_new = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', ['parent_args', 1], '*', ['parent_args', 2],]},
 	a_sanctuary_heal = {type = 'heal', value = ['parent_args', 'value']},
 	a_res = {type = 'resurrect', value = ['parent_args', 'mod']},
+	a_manasiphon = {type = 'mana', value = ['parent_args', 'amount']},
 };
 
 

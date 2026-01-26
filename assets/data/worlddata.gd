@@ -1020,6 +1020,24 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'after_temple_priestess_3', args = []}]
 		},
 		{
+			text = tr("MAE_LORIEN_OPTION"),
+			reqs = [
+				{type = "decision", value = "mae_druid_lorien_unlocked", check = true},
+				{type = "decision", value = "mae_druid_offer_pending", check = true},
+				{type = "unique_available", name = "mae", check = true}
+			],
+			args = [{code = "start_event", data = "mae_druid_lorien_reinitiate", args = []}]
+		},
+		{
+			text = tr("MAE_LORIEN_OPTION"),
+			reqs = [
+				{type = "decision", value = "mae_druid_lorien_unlocked", check = true},
+				{type = "decision", value = "mae_druid_offer_pending", check = false},
+				{type = "unique_available", name = "mae", check = true}
+			],
+			args = [{code = "start_event", data = "mae_druid_lorien_intro", args = []}]
+		},
+		{
 			text =  tr("ELF_CAPITAL9"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage2', state = true}, 
@@ -1274,6 +1292,16 @@ var fixed_location_options = { #override serialized data
 			text = tr("HELEVIEL_CITY_OPTION_2"), 
 			reqs = [{type = 'active_quest_stage', value = 'heleviel_quest2', stage = 'stage4'}], 
 			args = [{code = 'start_event', data = 'heleviel_slave_beastkin_intro', args = []}]
+		},
+		{
+			text = tr("MAE_SPIRIT_FOLLOW_OPTION"),
+			reqs = [{type = "active_quest_stage", value = "mae_spirit_quest", stage = "stage0"}],
+			args = [{code = "start_event", data = "mae_spirit_follow_start", args = []}]
+		},
+		{
+			text = tr("MAE_SPIRIT_VISIT_SAVRA_OPTION"),
+			reqs = [{type = "active_quest_stage", value = "mae_spirit_quest", stage = "stage4"}],
+			args = [{code = "start_event", data = "mae_spirit_visit_savra", args = []}]
 		},
 	],
 	
@@ -1530,6 +1558,28 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'pre_ritual_1', args = []}]
 		},
 		
+	],
+	quest_mae_spirit_ritual = [
+		{
+			text = tr("MAE_SPIRIT_RITUAL_OPTION"),
+			reqs = [{type = "active_quest_stage", value = "mae_spirit_quest", stage = "stage1"}],
+			args = [{code = "start_event", data = "mae_spirit_ritual_start", args = []}]
+		},
+		{
+			text = tr("MAE_SPIRIT_RITUAL_OPTION"),
+			reqs = [
+				{type = "active_quest_stage", value = "mae_spirit_quest", stage = "stage1_hide"},
+				{type = "has_material", material = "ancestral_hide", operant = "gte", value = 1}
+			],
+			args = [{code = "start_event", data = "mae_spirit_hide_return", args = []}]
+		},
+	],
+	quest_mae_northern_tribe = [
+		{
+			text = tr("MAE_NORTHERN_TRIBE_OPTION"),
+			reqs = [{type = "active_quest_stage", value = "mae_spirit_quest", stage = "stage5"}],
+			args = [{code = "start_event", data = "mae_spirit_northern_arrival", args = []}]
+		},
 	],
 	quest_leon_forest = [
 		{

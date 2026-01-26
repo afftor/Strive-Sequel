@@ -2124,7 +2124,7 @@ var dialogue_inits = {
 						start = [15, 12],
 						end = [15, 13]
 					},
-					{type = 'unique_avialable', name = 'heleviel', check = true},
+					{type = 'unique_available', name = 'heleviel', check = true},
 					{type = "event_seen", check = false, value = "heleviel_snowset_start"}
 					],
 			target = 'heleviel_snowset_start',
@@ -2657,6 +2657,18 @@ var quests = {
 			stage25 = {code = "stage25", name = "MAE_CITY_QUEST_NAME", descript = "MAE_CITY_QUEST_STAGE_25"},
 			stage3 = {code = "stage3", name = "MAE_CITY_QUEST_NAME", descript = "MAE_CITY_QUEST_STAGE_3"},
 			stage4 = {code = "stage4", name = "MAE_CITY_QUEST_NAME", descript = "MAE_CITY_QUEST_STAGE_4"},
+		},
+	},
+	mae_spirit_quest = {
+		code = "mae_spirit_quest",
+		summary = "MAE_SPIRIT_QUEST_SUMMARY",
+		stages = {
+			stage0 = {code = "stage0", name = "MAE_SPIRIT_QUEST_NAME", descript = "MAE_SPIRIT_QUEST_STAGE_0"},
+			stage1 = {code = "stage1", name = "MAE_SPIRIT_QUEST_NAME", descript = "MAE_SPIRIT_QUEST_STAGE_1"},
+			stage1_hide = {code = "stage1_hide", name = "MAE_SPIRIT_QUEST_NAME", descript = "MAE_SPIRIT_QUEST_STAGE_1_HIDE"},
+			stage2 = {code = "stage2", name = "MAE_SPIRIT_QUEST_NAME", descript = "MAE_SPIRIT_QUEST_STAGE_2"},
+			stage4 = {code = "stage4", name = "MAE_SPIRIT_QUEST_NAME", descript = "MAE_SPIRIT_QUEST_STAGE_4"},
+			stage5 = {code = "stage5", name = "MAE_SPIRIT_QUEST_NAME", descript = "MAE_SPIRIT_QUEST_STAGE_5"},
 		},
 	},
 	amelia_main_quest = {

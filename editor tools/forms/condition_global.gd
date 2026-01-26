@@ -9,7 +9,7 @@ onready var descedit = $MarginContainer/VBoxContainer/HBoxContainer/desc_panel/V
 
 var condtypes = [
 		'has_money',
-		'unique_avialable',
+		'unique_available',
 		'has_material',
 		'date',
 		'hour',
@@ -22,7 +22,7 @@ var condtypes = [
 		'group_size',]
 var types_desc = [
 		'has_money',
-		'unique_avialable',
+		'unique_available',
 		'has_material',
 		'date',
 		'hour',
@@ -73,7 +73,7 @@ func _init():
 			type = editor_core.PANEL_OPTION,
 			stat = 'name',
 			container = 0,
-			groups = ['unique_character_at_mansion', 'unique_avialable'],
+			groups = ['unique_character_at_mansion', 'unique_available'],
 			rlist = worlddata.pregen_characters.keys() + worlddata.easter_egg_characters.keys(),
 			dlist = editor_core.get_list(worlddata.pregen_characters, 'name', 'code') + editor_core.get_list(worlddata.easter_egg_characters, 'name', 'code'),
 		},

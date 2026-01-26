@@ -382,6 +382,16 @@ var materiallist = {
 		tier = '',
 		tags = ['no_random'],
 	},
+	ancestral_hide = {
+		code = 'ancestral_hide',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_leathermythic.png"),
+		price = 1,
+		type = 'quest',
+		tier = '',
+		tags = ['no_random'],
+	},
 	
 #	beer = {
 #		code = 'beer',
@@ -3823,6 +3833,23 @@ var itemlist = {
 		tags = [],
 		basestats = {matk = 10},
 	},
+	ornate_leather_headdress = {
+		code = 'ornate_leather_headdress',
+		name = "",
+		descript = "",
+		type = 'gear',
+		itemtype = 'armor',
+		geartype = 'costume',
+		crafttype = 'basic',
+		slots = ['head'],
+		price = 750,
+		icon = load("res://assets/images/iconsgear/item_circlet.png"),
+		tier = 'medium',
+		reqs = [],
+		effects = [],
+		tags = ['no_random'],
+		basestats = {mp_reg_add = 2.5, matk = 10, mdef = 5},
+	},
 	crown = {
 		code = 'crown',
 		name = "",
@@ -4069,6 +4096,22 @@ var recipes = {
 		resultitem = 'vesperine_cage',
 		workunits = 0.15,
 		worktype = 'smith',
+		unique = true
+	},
+	ancestral_hide = {
+		code = 'ancestral_hide',
+		materials = {leathermythic = 10},
+		items = {},
+		unlockreqs = [
+			{type = 'decision', value = 'mae_spirit_hide_unlocked', check = true},
+			{type = 'has_material', operant = 'lt', value = 1, material = 'ancestral_hide'}
+		],
+		crafttype = 'basic',
+		resultamount = 1,
+		resultitemtype = 'material',
+		resultitem = 'ancestral_hide',
+		workunits = 0.2,
+		worktype = 'tailor',
 		unique = true
 	},
 	#resources

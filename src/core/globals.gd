@@ -2694,7 +2694,7 @@ func valuecheck(dict):
 			return ResourceScripts.game_res.if_has_money(dict['value'])
 		"has_loan_money":
 			return ResourceScripts.game_res.if_has_money(get_loan_sum(dict.stage - 1))
-		"unique_avialable":
+		"unique_available":
 			return ResourceScripts.game_party.if_unique_available(dict['name']) == dict.check
 		"has_material":
 			return ResourceScripts.game_res.if_has_material(dict['material'], dict.operant, dict['value'])

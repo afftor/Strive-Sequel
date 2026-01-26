@@ -527,7 +527,17 @@ var data = {
 		options = [
 			{code = "mae_search_complete_final", text = "MAE_SEARCH_COMPLETE_FINAL_OPTION_1", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
 			{code = "mae_search_complete_final", text = "MAE_SEARCH_COMPLETE_FINAL_OPTION_2", reqs = [], dialogue_argument = 2, type = "next_dialogue"},
-			{code = "mae_search_complete_final", text = "MAE_SEARCH_COMPLETE_FINAL_OPTION_3", reqs = [], dialogue_argument = 3, type = "next_dialogue"},
+			{
+				code = "mae_search_complete_final", 
+				text = "MAE_SEARCH_COMPLETE_FINAL_OPTION_3", 
+				reqs = [], 
+				dialogue_argument = 3, 
+				type = "next_dialogue",
+				bonus_effecs = [
+					{code = "dialogue_counter", name = "mae_perverted_actions", op = "+"},
+					{code = 'decision', value = 'MaeEndorse'}
+				]
+			},
 		]
 	},
 	mae_search_complete_final = {
@@ -548,7 +558,9 @@ var data = {
 				dialogue_argument = 1,
 				type = "next_dialogue",
 				bonus_effects = [
-					{code = "complete_quest", value = "mae_city_quest"}
+					{code = "complete_quest", value = "mae_city_quest"},
+					{code = "add_timed_event", value = "mae_druid_event_start", args = [{type = "add_to_date", date = [2, 2], hour = 2}]},
+					{code = "add_timed_event", value = "mae_spirit_quest_initiate", args = [{type = "add_to_date", date = [4, 4], hour = 1}]}
 				]
 			}
 		]

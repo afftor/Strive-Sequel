@@ -183,11 +183,11 @@ var data = {
 		options = [ 
 			{code = 'marriage_final_anastasia_1', text = "DIALOGUECONTINUE", reqs = [
 				{type = 'spouse_check', value = {code = 'stat', stat = 'unique', operant = 'eq', value = 'anastasia'}},
-				{type = 'unique_avialable', name = 'aire', check = true}
+				{type = 'unique_available', name = 'aire', check = true}
 				], dialogue_argument = 1, type = 'next_dialogue'}, #anastasia spouse, have aire
 			{code = 'marriage_final_2', text = "DIALOGUECONTINUE", reqs = [
 				{type = 'spouse_check', value = {code = 'stat', stat = 'unique', operant = 'eq', value = 'anastasia'}},
-				{type = 'unique_avialable', name = 'aire', check = false}
+				{type = 'unique_available', name = 'aire', check = false}
 				], dialogue_argument = 1, type = 'next_dialogue'}, #anastasia spouse, no aire
 			{code = 'marriage_final_2', text = "DIALOGUECONTINUE", reqs = [{type = 'spouse_check', value = {code = 'stat', stat = 'unique', operant = 'neq', value = 'anastasia'}}], dialogue_argument = 1, type = 'next_dialogue'}, #default
 		],

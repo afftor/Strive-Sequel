@@ -367,7 +367,6 @@ var effects = {
 	},
 }
 var atomic_effects = {
-	a_manasiphon = {type = 'mana', value = ['parent_args', 'amount']},
 }
 var buffs = {}
 
