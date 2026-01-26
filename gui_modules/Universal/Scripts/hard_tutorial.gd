@@ -10,338 +10,309 @@ var temp_active_btns
 #}
 var prepare_tutorial_funcs = {
 	training = ['prepare_general_tut'],
-	work = ['prepare_general_tut'],#'prepare_work_tut'
+	work = ['prepare_general_tut', 'prepare_work_tut'],
 	leveling = ['prepare_general_tut'],
 	quest_and_combat = ['prepare_general_tut', 'prepare_combat_tut']
 }
 
-#		{
-#			buttons = ['char_close_button'],
-#			text = "Start forge upgrade",
-#			panel_pos = Vector2(733,150)
-#		}
-#		{
-#			buttons = ['close_work'],
-#			text = "Have player open inventory and use experience scroll",
-#			panel_pos = Vector2(733,150)
-#		}
+var tutorial_sequence = [
+	'training', 'work_intermedia', 'work',
+	'leveling_intermedia', 'leveling',
+	'quest_and_combat_intermedia', 'quest_and_combat']
 
 var tutorials = {
 	training = [
 		{
 			buttons = [],
-			text = "Welcome text",
+			text = "TUTORIAL_TRAINING1",
 			panel_pos = Vector2(733,456)
 		},
 		#1
 		{
 			buttons = ['first_skill_btn'],
-			text = "Use master's mentor skill on subordinate",
+			text = "TUTORIAL_TRAINING2",
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['slave_2_line'],
-			text = "Use master's mentor skill on subordinate",
+			text = "TUTORIAL_TRAINING3",
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['event_opt_1'],
-			text = "Use master's mentor skill on subordinate",
+			text = "TUTORIAL_TRAINING4",
 			panel_pos = Vector2(50,850),
 			delay = 1.0
 		},
 		#2
 		{
 			buttons = ['food_mode'],
-			text = "Player set extra rations for characters",
+			text = "TUTORIAL_TRAINING5",
 			panel_pos = Vector2(733,50)
 		},{
 			buttons = ['ff_meat'],
-			text = "Player set extra rations for characters",
+			text = "TUTORIAL_TRAINING6",
 			panel_pos = Vector2(733,50)
 		},{
 			buttons = ['ff_vegetables'],
-			text = "Player set extra rations for characters",
+			text = "TUTORIAL_TRAINING7",
 			panel_pos = Vector2(733,50)
 		},
 		#3
 		{
 			buttons = ['default_mode'],
-			text = "Assign master as Daisy's trainer",
+			text = "TUTORIAL_TRAINING8",
 			panel_pos = Vector2(733,50)
 		},{
 			buttons = ['daisy_line'],
-			text = "Assign master as Daisy's trainer",
+			text = "TUTORIAL_TRAINING9",
 			panel_pos = Vector2(733,50)
 		},{
 			buttons = ['char_info'],
-			text = "Assign master as Daisy's trainer",
+			text = "TUTORIAL_TRAINING10",
 			panel_pos = Vector2(733,50)
 		},{
 			buttons = ['trainer_btn'],
-			text = "Assign master as Daisy's trainer",
+			text = "TUTORIAL_TRAINING11",
 			panel_pos = Vector2(733,50)
 		},{
 			buttons = ['trainer_select_btn'],
-			text = "Assign master as Daisy's trainer",
+			text = "TUTORIAL_TRAINING12",
 			panel_pos = Vector2(733,50)
 		},{
 			buttons = ['praise_btn'],
-			text = "Choose praise as training",
+			text = "TUTORIAL_TRAINING13",
 			panel_pos = Vector2(733,50)
 		},{
 			buttons = ['event_opt_1'],
-			text = "Choose praise as training",
+			text = "TUTORIAL_TRAINING14",
 			panel_pos = Vector2(50,850),
 			delay = 1.0
 		},{
 			buttons = ['obedience_btn'],
-			text = "Unlock obedience training",
+			text = "TUTORIAL_TRAINING15",
 			panel_pos = Vector2(733,50)
 		},{
 			buttons = ['alert_panel_yes'],
-			text = "Unlock obedience training",
+			text = "TUTORIAL_TRAINING16",
 			panel_pos = Vector2(733,50)
 		},{
 			buttons = ['minor_upg'],
-			text = "Assign minor training for etiquette",
+			text = "TUTORIAL_TRAINING17",
 			panel_pos = Vector2(733,50),
 			delay = 3.0
 		},{
 			buttons = ['etiquette'],
-			text = "Assign minor training for etiquette",
+			text = "TUTORIAL_TRAINING18",
 			panel_pos = Vector2(733,50)
 		},{
 			buttons = ['alert_panel_yes'],
-			text = "Unlock obedience training",
+			text = "TUTORIAL_TRAINING19",
 			panel_pos = Vector2(733,50)
-		},{
-			buttons = [],
-			text = "End of tutorial",
-			panel_pos = Vector2(733,456)
+		}
+	],
+	work_intermedia = [
+		{
+			buttons = ['char_close_button'],
+			text = "TUTORIAL_WORK0",
+			panel_pos = Vector2(733,150)
 		}
 	],
 	work = [
 		{
-			buttons = [],
-			text = "Welcome text",
-			panel_pos = Vector2(733,456)
-		},{
-			buttons = ['daisy_line'],
-			text = "Assign master as Daisy's trainer",
-			panel_pos = Vector2(733,50)
-		},{
-			buttons = ['char_info'],
-			text = "Assign master as Daisy's trainer",
-			panel_pos = Vector2(733,50)
-		},{
-			buttons = ['trainer_btn'],
-			text = "Assign master as Daisy's trainer",
-			panel_pos = Vector2(733,50)
-		},{
-			buttons = ['trainer_select_btn'],
-			text = "Assign master as Daisy's trainer",
-			panel_pos = Vector2(733,50)
-		},{
-			buttons = ['char_close_button'],
-			text = "Start forge upgrade",
-			panel_pos = Vector2(733,150)
-		},{
 			buttons = ['upgrades_button'],
-			text = "Start forge upgrade",
+			text = "TUTORIAL_WORK1",
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['forge'],
-			text = "Start forge upgrade",
+			text = "TUTORIAL_WORK2",
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['upgrade_confirm'],
-			text = "Start forge upgrade",
+			text = "TUTORIAL_WORK3",
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['upgrade_close_button'],
-			text = "Set Daisy to work on upgrading",
+			text = "TUTORIAL_WORK4",
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['work_button'],
-			text = "Set Daisy to work on upgrading",
+			text = "TUTORIAL_WORK5",
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['building_work'],
-			text = "Set Daisy to work on upgrading",
+			text = "TUTORIAL_WORK6",
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['daisy_work'],
-			text = "Set Daisy to work on upgrading",
+			text = "TUTORIAL_WORK7",
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['close_work'],
-			text = "Make player skip turn",
+			text = "TUTORIAL_WORK8",
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['finish_turn'],
-			text = "Make player skip turn",
+			text = "TUTORIAL_WORK9",
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['service_mode'],
-			text = "Assign Daisy to waitress work in character list",
+			text = "TUTORIAL_WORK10",
 			panel_pos = Vector2(733,50)
 		},{
 			buttons = ['daisy_waitress'],
-			text = "Assign Daisy to waitress work in character list",
+			text = "TUTORIAL_WORK11",
 			ban_mass_select = true,
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['work_button'],
-			text = "Set Daisy to work at service",
+			text = "TUTORIAL_WORK12",
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['service_work'],
-			text = "Set Daisy to work at service",
+			text = "TUTORIAL_WORK13",
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['daisy_work'],
-			text = "Set Daisy to work at service",
+			text = "TUTORIAL_WORK14",
 			panel_pos = Vector2(733,150)
-		},{
-			buttons = [],
-			text = "End of tutorial",
-			panel_pos = Vector2(733,456)
+		}
+	],
+	leveling_intermedia = [
+		{
+			buttons = ['close_work'],
+			text = "TUTORIAL_LEVELING0",
+			panel_pos = Vector2(733,150)
 		}
 	],
 	leveling = [
 		#4
 		{
-			buttons = [],
-			text = "Welcome text",
-			panel_pos = Vector2(733,456)
-		},{
 			buttons = ['inventory_button'],
-			text = "Have player open inventory and use experience scroll",
+			text = "TUTORIAL_LEVELING1",
 			panel_pos = Vector2(733,150)
-#		},{
-#			buttons = ['inv_master_line'],
-#			text = "Have player open inventory and use experience scroll",
-#			panel_pos = Vector2(733,50)
+		},{
+			buttons = ['inv_master_line'],
+			text = "TUTORIAL_LEVELING2",
+			panel_pos = Vector2(733,50)
 		},{
 			buttons = ['inv_exp_scroll'],
-			text = "Have player open inventory and use experience scroll",
+			text = "TUTORIAL_LEVELING3",
 			panel_pos = Vector2(733,50)
 		},{
 			buttons = ['event_opt_1'],
-			text = "Have master learn fighter class",
+			text = "TUTORIAL_LEVELING4",
 			panel_pos = Vector2(50,850),
 			delay = 1.0
 		},{
 			buttons = ['inv_close_button'],
-			text = "Have master learn fighter class",
+			text = "TUTORIAL_LEVELING5",
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['char_info'],
-			text = "Have master learn fighter class",
+			text = "TUTORIAL_LEVELING6",
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['leveling_button'],
-			text = "Have master learn fighter class",
+			text = "TUTORIAL_LEVELING7",
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['class_fighter'],
-			text = "Have master learn fighter class",
+			text = "TUTORIAL_LEVELING8",
 			panel_pos = Vector2(733,50)
 		},{
 			buttons = ['class_unlock'],
-			text = "Have master learn fighter class",
+			text = "TUTORIAL_LEVELING9",
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['leveling_button'],
-			text = "Have master assign point into leadership",
+			text = "TUTORIAL_LEVELING10",
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['mastery_leadership'],
-			text = "Have master assign point into leadership",
+			text = "TUTORIAL_LEVELING11",
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['mastery_add_point', 'mastery_add_point2'],
 			highlight = ['mastery_add_point_highlight'],
-			text = "Have master assign point into leadership",
+			text = "TUTORIAL_LEVELING12",
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['alert_panel_yes'],
-			text = "Have master assign point into leadership",
+			text = "TUTORIAL_LEVELING13",
 			panel_pos = Vector2(733,150)
-		},{
-			buttons = [],
-			text = "End of tutorial",
-			panel_pos = Vector2(733,456)
+		}
+	],
+	quest_and_combat_intermedia = [
+		{
+			buttons = ['char_close_button'],
+			text = 'TUTORIAL_COMBAT0',
+			panel_pos = Vector2(733,150)
 		}
 	],
 	quest_and_combat = [
 		#5
 		{
-			buttons = [],
-			text = "Welcome text",
-			panel_pos = Vector2(733,456)
-		},{
 			buttons = ['aliron_btn'],
-			text = 'Take quest for "Trouble Solving"',
+			text = 'TUTORIAL_COMBAT1',
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['quest_board'],
-			text = 'Take quest for "Trouble Solving"',
+			text = 'TUTORIAL_COMBAT2',
 			panel_pos = Vector2(733,150),
 			delay = 0.5
 		},{
 			buttons = ['quest_btn'],
-			text = 'Take quest for "Trouble Solving"',
+			text = 'TUTORIAL_COMBAT3',
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['quest_accept'],
-			text = 'Take quest for "Trouble Solving"',
+			text = 'TUTORIAL_COMBAT4',
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['travel_btn'],
-			text = 'Send 2 characters to travel "Threat - Wild wolves"',
+			text = 'TUTORIAL_COMBAT5',
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['travel_master', 'travel_servant'],
 			highlight = ['travel_chars_highlight'],
 			condition_func = "check_travel_select",
 			ban_mass_select = true,
-			text = 'Send 2 characters to travel "Threat - Wild wolves"',
+			text = 'TUTORIAL_COMBAT6',
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['travel_send'],
 			ban_mass_select = true,
-			text = 'Send 2 characters to travel "Threat - Wild wolves"',
+			text = 'TUTORIAL_COMBAT7',
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['travel_to_loc'],
 			ban_mass_select = true,
-			text = 'Send 2 characters to travel "Threat - Wild wolves"',
+			text = 'TUTORIAL_COMBAT8',
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['travel_confirm'],
 			ban_mass_select = true,
-			text = 'Send 2 characters to travel "Threat - Wild wolves"',
+			text = 'TUTORIAL_COMBAT9',
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['travel_back'],
 			ban_mass_select = true,
-			text = 'Send 2 characters to travel "Threat - Wild wolves"',
+			text = 'TUTORIAL_COMBAT10',
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['finish_turn'],
-			text = 'Send 2 characters to travel "Threat - Wild wolves"',
+			text = 'TUTORIAL_COMBAT11',
 			panel_pos = Vector2(733,150),
 			delay = 0.5
 		},{
 			buttons = ['quest_loc_nav_btn'],
-			text = 'Assign characters to party, master for melee, second character for ranged',
+			text = 'TUTORIAL_COMBAT12',
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['location_master', 'location_front_pos1', 'location_front_pos2', 'location_front_pos3'],
 			dont_listen = ['location_master'],
 			block_event = {location_master = ['released']},
 			highlight = ['location_master', 'location_front_highlight'],
-			text = 'Assign characters to party, master for melee, second character for ranged',
+			text = 'TUTORIAL_COMBAT13',
 			panel_pos = Vector2(733,150),
 			delay = 1.0
 		},{
@@ -349,20 +320,20 @@ var tutorials = {
 			dont_listen = ['location_servent'],
 			block_event = {location_servent = ['released']},
 			highlight = ['location_servent', 'location_back_highlight'],
-			text = 'Assign characters to party, master for melee, second character for ranged',
+			text = 'TUTORIAL_COMBAT14',
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['location_proceed'],
-			text = 'Assign characters to party, master for melee, second character for ranged',
+			text = 'TUTORIAL_COMBAT15',
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['event_opt_1'],
-			text = 'Assign characters to party, master for melee, second character for ranged',
+			text = 'TUTORIAL_COMBAT16',
 			panel_pos = Vector2(50,850),
 			delay = 1.0
 		},{
 			buttons = ['pos_select_confirm'],
-			text = 'Assign characters to party, master for melee, second character for ranged',
+			text = 'TUTORIAL_COMBAT17',
 			panel_pos = Vector2(733,50)
 		},{
 			buttons = ['tut_full_screen'],
@@ -370,16 +341,16 @@ var tutorials = {
 			listen = ['combat_turn_signal'],
 			no_highlight = true,
 			condition_func = "check_turn_master",
-			text = 'Complete encounter',
+			text = 'TUTORIAL_COMBAT18',
 			panel_pos = Vector2(100,50)
 		},{
 			buttons = ['combat_skill_1'],
-			text = 'Use skill',
+			text = 'TUTORIAL_COMBAT19',
 			panel_pos = Vector2(733,50),
 			delay = 0.5
 		},{
 			buttons = ['combat_enemy'],
-			text = 'Use skill',
+			text = 'TUTORIAL_COMBAT20',
 			panel_pos = Vector2(733,50)
 		},{
 			buttons = ['tut_full_screen'],
@@ -387,23 +358,23 @@ var tutorials = {
 			listen = ['combat_turn_signal'],
 			no_highlight = true,
 			condition_func = "check_turn_servent",
-			text = 'Complete encounter',
+			text = 'TUTORIAL_COMBAT21',
 			panel_pos = Vector2(100,50)
 		},{
 			buttons = ['combat_skill_2'],
-			text = 'Use skill',
+			text = 'TUTORIAL_COMBAT22',
 			panel_pos = Vector2(733,50),
 			delay = 0.5
 		},{
 			buttons = ['combat_ally'],
-			text = 'Use skill',
+			text = 'TUTORIAL_COMBAT23',
 			panel_pos = Vector2(733,50)
 		},{
 			buttons = ['tut_full_screen'],
 			dont_listen = ['tut_full_screen'],
 			listen = ['combat_finished_signal'],
 			no_highlight = true,
-			text = 'Complete encounter',
+			text = 'TUTORIAL_COMBAT24',
 			panel_pos = Vector2(100,50)
 		},{
 			buttons = ['tut_full_screen'],
@@ -411,70 +382,70 @@ var tutorials = {
 			listen = ['combat_rewards_signal'],
 			no_highlight = true,
 			tut_func = "add_combat_reward_char",
-			text = 'Complete encounter',
+			text = 'TUTORIAL_COMBAT25',
 			panel_pos = Vector2(100,50)
 		},{
 			buttons = ['combat_close'],
-			text = 'Complete encounter',
+			text = 'TUTORIAL_COMBAT26',
 			panel_pos = Vector2(733,50),
 			delay = 1.0
 		},{
 			buttons = ['first_recruit_char'],
-			text = 'Inspect the character',
+			text = 'TUTORIAL_COMBAT27',
 			panel_pos = Vector2(733,50),
 			delay = 0.5
 		},{
 			buttons = ['slave_info_close_button'],
-			text = 'Recruit the character',
+			text = 'TUTORIAL_COMBAT28',
 			panel_pos = Vector2(733,50),
 			delay = 2.0
 		},{
 			buttons = ['first_recruit'],
-			text = 'Recruit the character',
+			text = 'TUTORIAL_COMBAT29',
 			panel_pos = Vector2(733,50)
 		},{
 			buttons = ['event_opt_1'],
-			text = 'Recruit the character',
+			text = 'TUTORIAL_COMBAT30',
 			panel_pos = Vector2(50,850),
 			delay = 1.5
 		},{
 			buttons = ['slave_select'],
-			text = 'Recruit the character',
+			text = 'TUTORIAL_COMBAT31',
 			panel_pos = Vector2(50,850)
 		},{
 			buttons = ['event_opt_2'],
-			text = 'Recruit the character',
+			text = 'TUTORIAL_COMBAT32',
 			panel_pos = Vector2(50,850),
 			delay = 1.7
 		},{
 			buttons = ['event_opt_1'],
-			text = 'Recruit the character',
+			text = 'TUTORIAL_COMBAT33',
 			panel_pos = Vector2(50,850),
 			delay = 1.0
 		},{
 			buttons = ['mansion_btn'],
-			text = 'Turn in quest',
+			text = 'TUTORIAL_COMBAT34',
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['journal_button'],
-			text = 'Turn in quest',
+			text = 'TUTORIAL_COMBAT35',
 			panel_pos = Vector2(733,150),
 			delay = 1.0
 		},{
 			buttons = ['journal_minor'],
-			text = 'Turn in quest',
+			text = 'TUTORIAL_COMBAT36',
 			panel_pos = Vector2(733,50)
 		},{
 			buttons = ['journal_first_quest'],
-			text = 'Turn in quest',
+			text = 'TUTORIAL_COMBAT37',
 			panel_pos = Vector2(733,50)
 		},{
 			buttons = ['journal_complete'],
-			text = 'Turn in quest',
+			text = 'TUTORIAL_COMBAT38',
 			panel_pos = Vector2(733,50)
 		},{
 			buttons = [],
-			text = "End of tutorial",
+			text = "TUTORIAL_COMBAT39",
 			panel_pos = Vector2(733,456)
 		},
 	]
@@ -565,8 +536,12 @@ func stop_tut():
 func next_tut_step():
 	cur_step += 1
 	if tutorials[cur_tut].size() <= cur_step:
-		stop_tut()
-		tutorial_menu()
+		for i in range(tutorial_sequence.size()-1):
+			if tutorial_sequence[i] == cur_tut:
+#				stop_tut()
+				start_tutorial(tutorial_sequence[i+1])
+				return
+		abort_tutorial()
 		return
 	var step_info = tutorials[cur_tut][cur_step]
 	active_btns.clear()
@@ -699,10 +674,10 @@ func prepare_combat_tut():
 	character.unlock_class("fighter")
 	character.upgrade_mastery('leadership', true)
 
-#func prepare_work_tut():
-#	var master_ch = ResourceScripts.game_party.get_unique_slave('tutorial_master')
-#	var character = ResourceScripts.game_party.get_unique_slave('daisy')
-#	master_ch.add_trainee(character.id)
+func prepare_work_tut():
+	var master_ch = ResourceScripts.game_party.get_unique_slave('tutorial_master')
+	var character = ResourceScripts.game_party.get_unique_slave('daisy')
+	master_ch.add_trainee(character.id)
 	
 
 #---------------------
