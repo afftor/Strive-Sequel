@@ -209,6 +209,28 @@ var backgrounds = {
 	mae_scene9 = "res://assets/images/fullscreen scenes/MaeCG009.png",
 	mae_scene10 = "res://assets/images/fullscreen scenes/MaeCG010.png",
 	
+	mae_northern_1 = "res://assets/images/fullscreen scenes/mae gr 1.png",
+	mae_northern_2 = "res://assets/images/fullscreen scenes/mae gr 2.png",
+	mae_northern_3 = "res://assets/images/fullscreen scenes/mae gr 3.png",
+	mae_northern_4 = "res://assets/images/fullscreen scenes/mae gr 4.png",
+	mae_northern_5 = "res://assets/images/fullscreen scenes/mae gr 5.png",
+	
+	mae_ritual_1 = "res://assets/images/fullscreen scenes/MaeCG011.png",
+	mae_ritual_2 = "res://assets/images/fullscreen scenes/MaeCG012.png",
+	mae_ritual_3 = "res://assets/images/fullscreen scenes/MaeCG013.png",
+	mae_ritual_4 = "res://assets/images/fullscreen scenes/MaeCG013_1.png",
+	mae_ritual_5 = "res://assets/images/fullscreen scenes/MaeCG014.png",
+	mae_ritual_6 = "res://assets/images/fullscreen scenes/MaeCG015.png",
+	mae_ritual_7 = "res://assets/images/fullscreen scenes/MaeCG016.png",
+	
+	mae_wedding_1 = "res://assets/images/fullscreen scenes/mae_wed0.png",
+	mae_wedding_2 = "res://assets/images/fullscreen scenes/mae_wed1.png",
+	mae_wedding_3 = "res://assets/images/fullscreen scenes/mae_wed2.png",
+	mae_wedding_4 = "res://assets/images/fullscreen scenes/mae_wed3.png",
+	mae_wedding_5 = "res://assets/images/fullscreen scenes/mae_wed4.png",
+	mae_wedding_6 = "res://assets/images/fullscreen scenes/mae_wed5.png",
+	mae_wedding_7 = "res://assets/images/fullscreen scenes/mae_wed6.png",
+	
 	heleviel1 = "res://assets/images/fullscreen scenes/HelevielCG001.png",
 	heleviel2 = "res://assets/images/fullscreen scenes/HelevielCG002.png",
 	heleviel3 = "res://assets/images/fullscreen scenes/HelevielCG003.png",

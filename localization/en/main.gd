@@ -19036,6 +19036,10 @@ Offspring will inherit only this parent's stats.""",
 	HELEVIEL_BAR_SS = "Take an opportunity over Heleviel during her work hours",
 	HELEVIEL_FOREST_SS = "Commit a public indecency with a reformed elven priestess.",
 	HELEVIEL_WEDDING_SS = "Become a new life for former elven high priestess.",
+	MAE_BEHIND_SS = " .", #2fix
+	MAE_RITUAL_SS = " .", #2fix
+	MAE_NORTHERN_SS = " .", #2fix
+	MAE_WEDDING_SS = " .", #2fix
 	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_1 = """You explain to Alise that one of your slaves needs a change of clothes.
 
 {color=yellow|— Why, yes, proper servants' attire is one of our specialties. You know, the right clothes make a big difference even for less ideal bodies, naturally we have tailors who can adjust for any required body type. But what are you looking for, anyway?}""",
@@ -20855,4 +20859,480 @@ It doesn't seem like Mae buys your lie, but it comforts her that you choose to p
 	MAE_POTION_TASK_DESC = "Prepare the ritual brew Mae needs for the exorcism.",
 	MAE_SEARCH_TASK_NAME = "Search for Mae",
 	MAE_SEARCH_TASK_DESC = "Scour Aliron for any sign of Mae's whereabouts.",
+	
+	MAE_DRUID_EVENT_START = """Mae finds you in the afternoon, seemingly excited about something.
+
+{color=yellow|Mae: — H-hey, [name]... I was browsing through your library, and I found a note saying you know a druid from the elven forest. I was wondering... could you take me to them?}""",
+	MAE_DRUID_EVENT_OPTION_1 = "Why do you want to go there?",
+	MAE_DRUID_EVENT_OPTION_2 = "What's with the sudden interest?",
+	MAE_DRUID_EVENT_FOLLOWUP = "{color=yellow|Mae: — I heard about druids from Savra. They are connected to nature too, but they learn and study it instead of simply reaching out to it. I wonder if I could learn something from them.}",
+	MAE_DRUID_EVENT_FOLLOWUP_OPTION_1 = "I'll see what I can do.",
+	MAE_DRUID_EVENT_FOLLOWUP_OPTION_2 = "Fine... if I can find the time.",
+	
+	MAE_DRUID_LORIEN_INTRO = """You take Mae to Lorien, who meets you cautiously at his observatory. As you introduce Mae, she bows respectfully.
+
+{color=yellow|Mae: — Hello, Sir Lorien... I know this is inappropriate, but I truly want to learn more about your ways of nature and magic.}""", 
+	MAE_DRUID_LORIEN_TIME = """Some time passes as Mae spends time with Lorien, sharing their passion for studying nature.
+
+{color=aqua|Lorien: — I must admit, you have the affinity to earn the privilege of becoming a druid...}""",
+	MAE_DRUID_LORIEN_OFFER_HIGH = """{color=aqua|Lorien: — However, I'm afraid this is strictly against the rules...}
+
+He glances around carefully, as if checking that no one is watching.
+
+{color=aqua|Lorien: — You know, [name], with some coin, I could train Mae without anyone noticing.}
+
+Mae looks at you with hopeful, pleading eyes.
+
+*Lorien asks for 2,000 gold, and Mae will spend 5 days training to gain the Druid class.*""",
+	MAE_DRUID_LORIEN_OFFER_LOW = """{color=aqua|Lorien: — After Heleviel was removed from power, our rules were relaxed. I think I can secure a place in the funding to enroll her as my trainee. However, I still need some gold to cover the costs.}
+
+*Lorien asks for 500 gold, and Mae will spend 5 days training to gain the Druid class.*""",
+	MAE_DRUID_LORIEN_OFFER_OPTION_1 = "This is a rather large investment, Mae...",
+	MAE_DRUID_LORIEN_OFFER_OPTION_PAY_HIGH = "Fine, I'll pay (2,000 gold)",
+	MAE_DRUID_LORIEN_OFFER_OPTION_PAY_LOW = "Fine, I'll pay (500 gold)",
+	MAE_DRUID_LORIEN_OFFER_OPTION_THINK = "I'll think about it.",
+	MAE_DRUID_LORIEN_INVESTMENT = "{color=yellow|Mae: — I-I understand... but... I might never get another chance like this again. I swear, I'll do anything you want afterward.}",
+	MAE_DRUID_LORIEN_PAID = "Mae's face brightens as she thanks you profusely. You leave her in Lorien's custody for the time being.",
+	MAE_DRUID_LORIEN_REINITIATE = "You meet Lorien again. His offer still stands.",
+	MAE_DRUID_LORIEN_OFFER_OPTION_PAY_HIGH_SHORT = "Fine, I'll pay (2,000 gold)",
+	MAE_DRUID_LORIEN_OFFER_OPTION_PAY_LOW_SHORT = "Fine, I'll pay (500 gold)",
+	
+	MAE_DRUID_RETURN = """After a few days, Mae finally returns to the mansion from her training. She seems genuinely happy to see you again.
+
+{color=yellow|Mae: — [name]! Thank you so much. I learned so many new things...}""",
+	MAE_DRUID_RETURN_OPTION_1 = "I think you can thank me better than that...",
+	MAE_DRUID_RETURN_OPTION_2 = "I've been missing you too.",
+	MAE_DRUID_RETURN_OPTION_3 = "Then it's better for you to get to work.",
+#	MAE_DRUID_RETURN_SEX = "You draw Mae close, and the quiet gratitude between you turns into a heated embrace.",
+	MAE_DRUID_RETURN_AFFECTION = "Mae smiles at you. The air around her feels more mature now.",
+	MAE_DRUID_RETURN_WORK = "Mae nods quietly and leaves for her room, slightly disappointed.",
+	
+	MAE_SPIRIT_QUEST_INITIATE = """Mae approaches you in the morning, asking for a favor.
+
+{color=yellow|Mae: — Good morning, [name]. It's time for me to revisit our village. I need to complete my next ritual of spiritual connection, so... if you don't mind taking me there, I was hoping for your company.}""",
+	MAE_SPIRIT_QUEST_INITIATE_OPTION_1 = "Sure, I'm glad to help.",
+	MAE_SPIRIT_QUEST_INITIATE_OPTION_2 = "You must be missing everyone from that night?",
+	MAE_SPIRIT_QUEST_INITIATE_OPTION_3 = "Maybe if I have time.",
+	MAE_SPIRIT_QUEST_INITIATE_RESPONSE_1 = "{color=yellow|Mae: — Thank you. I'm ready whenever you are, so just say when.}",
+	MAE_SPIRIT_QUEST_INITIATE_RESPONSE_2 = "{color=yellow|Mae: — W-what are you saying? It's not like that. I'm still embarrassed about it. Please don't bring it up when we're there. I feel like I'll die of shame.}",
+	MAE_SPIRIT_QUEST_INITIATE_RESPONSE_3 = "{color=yellow|Mae: — I see. I'll be waiting then. It's not urgent, but it has to be done eventually.}",
+	
+	MAE_SPIRIT_FOLLOW_START = """As Mae cautiously walks into familiar surroundings, you notice there are slightly fewer people around than usual. You see Savra returning from the forest. She invites you into the hut, ready to hear Mae's story.""",
+	MAE_SPIRIT_FOLLOW_SAVRA = """{color=aqua|Savra: — So, how was it, going back to city life after living with us?}
+
+{color=yellow|Mae: — A bit awkward, but nothing too bad, I suppose.}""",
+	
+	MAE_SPIRIT_FOLLOW_SAVRA_2 = """
+{color=yellow|Mae: — Well I was wondering if it is time for me to do a spirit-binding ritual.}
+
+{color=aqua|Savra: — Of course. That's what you're here for, isn't it? You're a smart girl, remembering all the things I keep forgetting.}
+
+{color=aqua|Savra: — You must go into the woods, to the special ground I showed you during our winter tour. Wait until midnight, when the moon is up.}
+
+Mae nods eagerly. She carefully notes Savra's instructions before leaving.""",
+	MAE_SPIRIT_FOLLOW_MIDNIGHT = """{color=yellow|Mae: — To tell the truth, I'm a bit nervous... can you come with me? Even though I know the woods, I would hate to run into a wild animal.}""",
+	MAE_SPIRIT_FOLLOW_OPTION_1 = "I was afraid you wouldn't ask.",
+	MAE_SPIRIT_FOLLOW_OPTION_2 = "I can't exactly leave someone useless like you alone, I suppose.",
+	MAE_SPIRIT_FOLLOW_OPTION_3 = "This is really turning into a pain in the ass...",
+	MAE_SPIRIT_FOLLOW_RESPONSE_1 = "Mae perks up at your answer, and her worries seem to fade.",
+	MAE_SPIRIT_FOLLOW_RESPONSE_2 = """Mae smiles awkwardly.
+
+{color=yellow|Mae: — T-thanks... sorry. I hope I'll become more useful in the future.}""",
+	MAE_SPIRIT_FOLLOW_RESPONSE_3 = "Mae looks away and rubs her hands in frustration without saying anything.",
+	
+	MAE_SPIRIT_RITUAL_START = """As Mae begins preparing the ritual, the night air thickens until mist fills most of your vision.
+
+A familiar figure appears, as if woven from the fog itself.""",
+	MAE_SPIRIT_RITUAL_STAG_INTRO = """{color=green|White Stag: — You... the new shaman came to make a deal with one of the guardian spirits?}
+
+The White Stag studies Mae closely. She shivers under its gaze.
+
+{color=green|White Stag: — This won't do. You are weak. Your spirit is not sufficient to become a shaman. Tell Savra I oppose it.}
+
+Mae's face goes pale, but she steadies herself as the White Stag turns to leave.""",
+	MAE_SPIRIT_RITUAL_STAG_CHALLENGE = """{color=yellow|Mae: — W-wait. I'm not weak. I studied a lot to become a shaman. You can't just reject me like that.}
+
+{color=green|White Stag: — You cannot study nature, child. You can only become one with it, and I don't see that in you.}
+
+Mae looks even more worried now, glancing at you as you watch in silence.""",
+	MAE_SPIRIT_RITUAL_OPTION_PROGRESS = "She has been making big progress with her sensuality.",
+	MAE_SPIRIT_RITUAL_OPTION_PERSUADE = "[Persuasion challenge]She might be weak in spirit, but her body is exceptionally healthy, and that must count for something.",
+	MAE_SPIRIT_RITUAL_OPTION_BARGAIN = "Surely there's something we can do for you to change your mind.",
+	MAE_SPIRIT_RITUAL_STAG_ACCEPT = """The White Stag takes another long look at Mae, and its expression shifts.
+
+{color=green|White Stag: — Fine. There is some truth in that. Your body's vitality can compensate for your lack of competence, at least in the eyes of some.}""",
+	MAE_SPIRIT_RITUAL_STAG_HIDE = """The White Stag pauses, considering your offer.
+
+{color=green|White Stag: — Very well. There may be a spirit or two still willing to bond with you. Bring me an Ancestral Hide. That way, we will know you are serious.}
+
+The White Stag disappears into the mist, leaving you alone together.""",
+	
+	MAE_SPIRIT_RITUAL_STAG_HIDE_2 = """{color=yellow|Mae: — Ancestral Hide, huh... it can be made with rare leather and a simple magical rite. I hope it doesn't bother you too much.}""",
+	MAE_SPIRIT_HIDE_RETURN = """Mae summons the White Stag again and hands over the item you crafted.
+
+{color=green|White Stag: — So you have returned. You kept your part of the deal, so I will keep mine. In truth, while your mind is far from ideal, your body is a worthy offer for a contract.}""",
+#	MAE_SPIRIT_HIDE_REMINDER = "You still need to craft the Ancestral Hide before Mae can continue the ritual.",
+	MAE_SPIRIT_WHITE_STAG_CONTINUATION_1 = """{color=green|White Stag: — I have a guardian spirit that expressed willingness to bond with you. Hearthtusk has a reputation as a strong, loyal companion you can rely on.}
+	{color=green|White Stag: — And there is another who showed interest. Velhorn, a rowdy satyr spirit who wishes to be your associate.}""",
+	MAE_SPIRIT_WHITE_STAG_CONTINUATION_2 = "{color=green|White Stag: — And... surprisingly, you have also caught the interest of Noctara, a wise owl spirit.}",
+	MAE_SPIRIT_WHITE_STAG_CONTINUATION_3 = "Mae makes a decision in her mind, but still addresses you quietly, unsure of her own voice.",
+	MAE_SPIRIT_WHITE_STAG_MAE_OWL = "{color=yellow|Mae: — Do you think an owl spirit would suit me?..}",
+	MAE_SPIRIT_WHITE_STAG_MAE_SAFE = "{color=yellow|Mae: — I think Hearthtusk would suit me... it's not much of a choice, but it feels safe.}",
+	MAE_SPIRIT_WHITE_STAG_MAE_SATYR = "{color=yellow|Mae: — That satyr spirit sounds... intriguing, don't you think?}",
+	MAE_SPIRIT_CHOICE_SUPPORT = "It's your choice. I'll support you.",
+	MAE_SPIRIT_CHOICE_HEARTH = "Hearthtusk sounds like the safe option.",
+	MAE_SPIRIT_CHOICE_VELHORN = "You should pick Velhorn. That sounds more fun.",
+	MAE_SPIRIT_CHOICE_NOCTARA = "Yes. A wise guardian spirit seems right for you.",
+	MAE_SPIRIT_CHOICE_RESULT = """Mae nods and tells the White Stag her choice.
+
+{color=green|White Stag: — So be it. Finish the ritual, and it will be done.}
+
+The White Stag vanishes into the mist the same way it arrived.""",
+	MAE_SPIRIT_AFTER_CHOICE = """{color=yellow|Mae: — It's almost done, but I need a place with stronger power... I know some ancient ruins nearby that feel like the right spot.}
+
+{color=yellow|Mae: — I just hope it's not too dangerous for us.}""",
+	MAE_SPIRIT_AFTER_CHOICE_OPTION_1 = "You should brace yourself for danger. You're not just an apprentice anymore.",
+	MAE_SPIRIT_AFTER_CHOICE_OPTION_2 = "It won't be as dangerous with me there.",
+	MAE_SPIRIT_AFTER_CHOICE_OPTION_3 = "You seemed more nervous in front of a cock.",
+	MAE_SPIRIT_AFTER_CHOICE_RESPONSE_1 = "{color=yellow|Mae: — You're right. I can do it... well, with your help at least.}",
+	MAE_SPIRIT_AFTER_CHOICE_RESPONSE_2 = "{color=yellow|Mae: — Thank you, [name]. I'm glad you're on my side.}",
+	MAE_SPIRIT_AFTER_CHOICE_RESPONSE_3 = "{color=yellow|Mae: — H-hey, don't say that. I'm being serious.}",
+	MAE_SPIRIT_AFTER_CHOICE_LEAVE = "You leave with Mae, preparing to finish the task.",
+	MAE_ANCIENT_JUNGLE_START = """You find a small, half-ruined altar in a secluded, overgrown room. Mae nods approvingly.
+
+{color=yellow|Mae: — Yes. I can feel it. The magic is especially strong here. This must have been used as a ritual chamber in the past.}""",
+	MAE_ANCIENT_JUNGLE_RITUAL_CHOICE = """As Mae prepares, settling into a meditation pose, you grow bored and study the walls by torchlight. A few reliefs, seemingly undamaged by time, catch your eye. They suggest the rituals held here were far more perverse in nature.
+
+Mae notices your interest and raises her voice.
+
+{color=yellow|Mae: — [name]? Is there something on the wall?}""",
+	MAE_ANCIENT_JUNGLE_RITUAL_OPTION_1 = "Maybe you should do a slightly different ritual...",
+	MAE_ANCIENT_JUNGLE_RITUAL_OPTION_2 = "No, it's nothing.",
+	MAE_ANCIENT_JUNGLE_RITUAL_LEWD = """Mae steps closer, scanning the lewd images.
+
+{color=yellow|Mae: — O-oh my... it seems this place was used for a different kind of ritual. Something like this would surely make it more potent...}
+
+Hesitant at first, she quickly gives in to the idea of attempting something different from what she originally planned.
+
+{color=yellow|Mae: — You won't tell anyone what I'm going to do here?}""",
+	MAE_ANCIENT_JUNGLE_RITUAL_LEWD_OPTION_1 = "Saying you got horny and did something naughty? Don't worry about it.",
+	MAE_ANCIENT_JUNGLE_RITUAL_LEWD_OPTION_2 = "This might be the least weird thing that happens to you so far.",
+	MAE_ANCIENT_JUNGLE_RITUAL_LEWD_RESPONSE_1 = "{color=yellow|Mae: — Sigh... I really have become weird, getting excited about something like this, haven't I...}",
+	MAE_ANCIENT_JUNGLE_RITUAL_LEWD_RESPONSE_2 = """Mae pouts at you.
+
+{color=yellow|Mae: — Come on. It's your fault, with all the things that have happened to me since I met you...}""",
+	MAE_ANCIENT_JUNGLE_RITUAL_SCENE = "Mae slowly removes her clothes and positions herself on the altar. Her legs spread wide as she begins the ritual.",
+	MAE_ANCIENT_JUNGLE_RITUAL_FINISH = "As the ritual ends, a dim light surrounds Mae.",
+	MAE_ANCIENT_JUNGLE_RITUAL_HEARTHTUSK = """A warm, steady presence settles around Mae, like a heartbeat beneath the earth. Strength answers her call, quiet and loyal, promising endurance and protection on the paths ahead.
+
+{color=green|Hearthtusk: — Your roots will run deep, and your steps will not break. I will stand with you when the ground itself resists.}
+
+{color=yellow|Mae: — I feel it... steady and warm. I will not falter. I promise.}""",
+	MAE_ANCIENT_JUNGLE_RITUAL_VELHORN = """Soft laughter echoes through the ruins as wild energy coils around her spirit. Passion and impulse bind together, urging Mae to live boldly and learn through experience rather than restraint.
+
+{color=green|Velhorn: — Live loudly, feel deeply, and do not deny what stirs within you. Through passion, your spirit will grow strong.}
+
+{color=yellow|Mae: — My heart is racing... but it feels right. I won't be afraid of myself anymore.}""",
+	MAE_ANCIENT_JUNGLE_RITUAL_NOCTARA = """The light dims as calm wisdom descends, feathered and patient. Insight takes root in silence, offering clarity, foresight, and watchful guidance through shadowed nights.
+
+{color=green|Noctara: — In silence, truth reveals its wings. I grant you sight beyond fear and patience beyond doubt.}
+
+{color=yellow|Mae: — It's so calm now... I will listen, and I will learn.}""",
+	
+	MAE_SPIRIT_VISIT_SAVRA = """Mae and you return to the village as dawn slips between the trees. Savra listens in silence while Mae recounts the ritual, her voice steady despite everything she endured. When Mae finishes, Savra closes her eyes for a long moment, then nods.
+
+{color=aqua|Savra: — You have done well. Binding a guardian spirit is no small feat, especially for one walking your path. You are no longer just my apprentice.}
+
+Mae straightens slightly at the words.
+
+{color=aqua|Savra: — But there is one final task I must ask of you. To the north, beyond the old pine ridges, there is another forest tribe. Their shaman sent word. Something troubles their land, and they asked for help. This will be your trial as a shaman who walks beyond her home.}
+
+Mae turns to you, searching your face before speaking.
+
+{color=yellow|Mae: — I... I want to do this. But I won't lie. It scares me a little.}""",
+	MAE_SPIRIT_VISIT_SAVRA_OPTION_1 = "Of course we'll help them. This is important for you.",
+	MAE_SPIRIT_VISIT_SAVRA_OPTION_2 = "We can go, but I don't like being sent into unknown trouble.",
+	MAE_SPIRIT_VISIT_SAVRA_RESPONSE = """Mae's ears perk up, and she nods eagerly.
+
+{color=yellow|Mae: — Thank you. With you by my side, I think I can handle whatever awaits us there.}""",
+	
+	MAE_NORTHERN_TRIBE_START = """You arrive at the northern forest tribe by late afternoon. The settlement looks familiar in many ways, wooden huts woven with vines and charms, stone totems half-covered in moss. Still, the air feels different, heavier somehow.
+
+As you walk the main path, Mae slows her pace. Several young male beastkin linger nearby, pretending to keep busy, but their eyes keep drifting toward her. When Mae glances back, they quickly look away, ears flicking nervously.
+
+Mae shifts uncomfortably, lowering her voice.
+
+{color=yellow|Mae: — A-are they all staring at me...?}""",
+	MAE_NORTHERN_TRIBE_DIRECTIONS = """Eventually, one of the villagers approaches. After a brief exchange, he gives you directions to the local shaman's hut. He hesitates, then speaks again.
+
+{color=aqua|Villager: — Our shaman hasn't been well lately. He's been resting for days.}
+
+Mae nods politely, concern flashing across her face.
+
+{color=yellow|Mae: — Now I see why we had to come here.}""",
+	MAE_NORTHERN_TRIBE_SHAMAN = """Inside the shaman's hut, the air is warm and heavy with the scent of herbs. An elderly lion beastkin sits near the fire, his mane faded with age, but his posture still firm. When he looks up, you immediately notice the resemblance.
+
+{color=yellow|Mae: — He looks like Leon.}
+
+{color=red|Shaman: — Hah. You're not wrong. I'm Rakar, his older brother. The one who stayed behind to grow old with spirits instead of blades. Thank Rundas you came.}""",
+	MAE_NORTHERN_TRIBE_REQUEST = """Rakar gestures for you to sit, his tone calm, almost casual despite the situation.
+
+{color=red|Rakar: — I won't waste your time. I've been ill lately. Nothing dramatic, but enough that I can't safely perform rituals. Because of that, the coming-of-age rites for our young males have been delayed.}
+
+Mae's expression tightens with concern.
+
+{color=yellow|Mae: — Those rituals are important for them...}""",
+	MAE_NORTHERN_TRIBE_REQUEST_2 = """{color=red|Rakar: — Exactly. Spirits can grow impatient, and so can young men. They want to become proper warriors and hunters. That is why I asked for help. Savra spoke highly of you, Mae. I also see you recently bound a guardian spirit.}
+
+{color=yellow|Mae: — I did... but I'm still learning.}""",
+	MAE_NORTHERN_TRIBE_REQUEST_3 = """{color=red|Rakar: — I want you to lead the coming-of-age festival in my place. The customs must be fulfilled, and I would rather trust a careful outsider than rush it myself in this state.}
+
+Mae exhales slowly, glancing at you, then nods.
+
+{color=yellow|Mae: — I understand. I can't deny a request from a shaman of your status.}""",
+	MAE_NORTHERN_TRIBE_REQUEST_OPTION_1 = "So what is this festival supposed to be?",
+	MAE_NORTHERN_TRIBE_REQUEST_OPTION_2 = "Don't rush into promises.",
+	MAE_NORTHERN_TRIBE_OFFER = """Rakar clears his throat, leaning back with a tired, honest sigh.
+
+{color=red|Rakar: — The coming-of-age rite for our tribe is... communal. It is a ritual of vitality and unity. Mae would stand at the center, with the initiates and a companion.}
+
+{color=yellow|Mae: — C-communal...? You mean... like that?}
+
+{color=red|Rakar: — I believe you performed something similar not too long ago.}""",
+	MAE_NORTHERN_TRIBE_OFFER_2 = """Mae blushes, the memory flashing across her face.
+
+{color=red|Rakar: — But I can tell you may have adopted a different way of life among [race]. If you want, I will allow you to handle it differently.}""",
+	MAE_NORTHERN_TRIBE_OFFER_OPTION_1 = "[Sexual Factor]That ritual sounds fun, Mae. Let's do it. (one time)",
+	MAE_NORTHERN_TRIBE_OFFER_OPTION_2 = "We should pass on it.",
+	MAE_NORTHERN_TRIBE_OFFER_OPTION_3 = "Have we missed something?",
+	MAE_NORTHERN_RITUAL_ACCEPT = """{color=yellow|Mae: — W-well... I guess it's a custom.}
+
+{color=red|Rakar: — Very good. I knew I could count on new blood. Let me instruct you...}""",
+	MAE_NORTHERN_RITUAL_REFUSE = """{color=yellow|Mae: — No... s-sorry. I don't think I can do that.}
+
+Rakar looks disappointed, but Mae's nervousness keeps him from pushing.""",
+#	MAE_NORTHERN_RITUAL_SCENE = "The ritual begins, and Mae takes her place at the center of the gathering.",
+	MAE_NORTHERN_RITUAL_AFTER = """The next day, you and Mae visit Rakar one last time before leaving.
+
+{color=red|Rakar: — Ah, what a splendid coming-of-age ritual you provided. I'm sure they won't forget it.}
+
+{color=yellow|Mae: — Y-yeah... it wasn't too bad. I guess I'm getting used to this. Are you sure you'll recover with time?}
+
+{color=red|Rakar: — Of course. I still have years ahead of me. By the way, I have a small parting gift for you.}""",
+	MAE_NORTHERN_RITUAL_GIFT = """Rakar hands Mae an ornate leather headdress.
+
+{color=yellow|Rakar: — Good luck on your adventures, and don't forget your duties.}
+
+As you leave the hut, Mae turns to you.
+
+{color=yellow|Mae: — Thank you, [name]. Without you, I wouldn't have been able to do any of that. You really helped me grow as a person.}""",
+	MAE_NORTHERN_DECLINE = """Rakar looks very disappointed, perhaps more than someone as old and wise as he seems should be.
+
+{color=red|Rakar: — That's a shame... maybe you could give me just a quick glimpse of your luxurious chest, then? I was really hoping to be honored during the ceremony...}
+
+{color=yellow|Mae: — Huh...? What!?}
+
+{color=red|Rakar: — It's a joke. Don't worry. Do it however you want. I'll leave it to you.}""",
+	MAE_NORTHERN_DECLINE_2 = """As you leave the hut, Mae speaks quietly to you.
+
+{color=yellow|Mae: — I can do the ritual that was performed for me when I was accepted into the tribe. I think that will be enough.}""",
+	MAE_NORTHERN_DECLINE_FESTIVAL = """After preparing for the festival, it proceeds without issue. Mae holds herself steady and dignified, with almost no stuttering, as her status demands.""",
+	MAE_NORTHERN_DECLINE_GIFT = """The next day, you and Mae visit Rakar one last time before leaving.
+
+{color=red|Rakar: — You did a good job. Not quite what I hoped to see, but it served its purpose.}
+
+{color=yellow|Mae: — Thank you. Are you sure you'll recover with time?}
+
+{color=red|Rakar: — Of course. I still have years ahead of me. By the way, I have a small parting gift for you.}""",
+	MAE_NORTHERN_MISSED = """{color=yellow|Mae: — Hmm. Can you tell me more about your illness?}
+
+Mae listens as Rakar describes his symptoms, and as he goes on, her face brightens.
+
+{color=yellow|Mae: — Oh... I know what this is. Lorien taught me about it. You haven't been eating only cooked meat recently, have you?}
+
+{color=red|Rakar: — Well, it's been difficult for me to eat raw food at my age...}""",
+	MAE_NORTHERN_MISSED_AFTER = """After spending more time helping Rakar with herbs and dietary advice, his condition improves notably.
+
+In less than two days, Rakar is already looking better.
+
+{color=red|Rakar: — At this rate, I can hold the festival myself. My condition has improved thanks to your help. That was something you learned from the elves? Their way of uniting with nature is something to behold. Now, I have a small parting gift for you.}""",
+	MAE_SEX_BEHIND_1 = """You stand behind her, the warmth of her back pressing against your chest. The tribalistic bra she wore moments ago lies discarded on the wooden floor, along with her simple loincloth. Your arms wrap around her soft, chubby form, hands coming to rest on her heavy breasts. They fill your palms completely, the creamy fur surprisingly silky against your skin. Her nipples stiffen immediately at your touch, small points of hardness that you roll between your thumb and forefinger.
+
+She trembles, a shiver running through her entire body, but doesn't pull away. Instead, she arches slightly into your touch, her dreamy eyes half-closed, lips parted in silent pleasure. Your hands continue their exploration, kneading the soft flesh, feeling the weight of her tits as they sway gently with each movement.
+
+Your erect cock presses against her back. With one hand still caressing her breast, you slide the other down her plump stomach, over the slight curve of her belly, until you reach the juncture of her thighs. She's already wet, her arousal evident in the slickness that coats your fingers when you brush against her folds.
+
+{color=yellow|Mae: — Ah... I can't believe I get wet so easily from your hands...}""",
+	MAE_SEX_BEHIND_2 = """Guiding your cock between her thighs, you feel the heat of her even before you're fully positioned. Her thighs are soft yet firm, encasing you in a warm embrace. When you finally push through, the sensation is exquisite - the friction of her creamy fur against your skin, combined with the slickness from her pussy, creates a perfect combination.
+
+{color=yellow|Mae: — Hngh... This feels so weird...}
+
+You begin to move slowly at first, establishing a rhythm that has her gasping softly. Her breasts bounce with each thrust, and you reach around to pinch her nipples again, eliciting a choked sound of pleasure. Her wide thighs tremble with the effort of staying upright, and you can feel the muscles tensing and releasing in sync with your movements.""",
+	MAE_SEX_BEHIND_3 = """You withdraw slightly, repositioning yourself at her entrance. She tenses momentarily, her plump ass pushing back against you in anticipation. With a slow, steady push, you enter her, the tight pussy enveloping you inch by inch. She cries out softly as you fill her completely, leaning on you for support.
+
+Her pussy walls grip you tightly, and you savor the sensation before beginning to move. Each thrust impale her slightly deeper, her heavy tits swinging in rhythm with your movements. You reach around to cup them again, using them as leverage to pull her back onto you with every stroke.
+
+{color=yellow|Mae: — Ah, gods... doing it while standing in your office...}
+
+The room fills with the sounds of your bodies meeting, her soft gasps and whimpers, your heavy breathing. Her reddish eyes are glazed with pleasure. You can feel her approaching climax as her walls begin to flutter around you, her thighs trembling uncontrollably now.""",
+	MAE_SEX_BEHIND_4 = """{color=yellow|Mae: — Aaah, I'm about to... Nhhh!...}
+
+You quicken your pace, driving deeper into her, your fingers digging into the soft flesh of her breasts. She throws her head back against your shoulder, a choked cry escaping her lips as she finally comes undone. Her orgasm washes over her, her pussy contracting around you so tightly that it pushes you over the edge too. You bury yourself deep inside her as your release pulses through you, filling her with your semen.
+
+For a moment, you both remain still, connected in the aftermath of your shared pleasure. Then, slowly, you withdraw from her, watching as your seed trickles down the inside of her thigh. She turns to face you, her face flushed and her eyes heavy with satisfaction, a small smile playing on her lips.
+
+{color=yellow|Mae: — You made me do it again... I feel like I'm really getting used to it.}""",
+	MAE_SEX_RITUAL_1 = """{color=yellow|Mae: — Can't believe I'm going to do something like this...}
+
+Mae's bare feet slapped softly against the uneven flagstones as she approached the altar. With a soft grunt of effort, she hauled her chubby frame onto the cold stone. The shock of it against the heat of her skin made her shiver, her heavy tits swaying with the movement. She settled into a deep squat, knees wide apart, the plump flesh of her thighs quivering slightly. The position put her dripping cunt on full display, its pink folds already slick and puffy with anticipation. Her wide hips and the generous curve of her ass made the pose both difficult and shamelessly exposing.
+
+Her reddish eyes, half-lidded and hazy, drifted around the shadowy chamber. One hand slid down the soft swell of her belly. Padded fingers brushed through the thatch of hair above her slit before delving lower.""",
+	MAE_SEX_RITUAL_2 = """The sounds were wet, obscene in the quiet chamber. A slick, wet noise echoed off the stone walls as she worked her finger faster against her clit. Her hips began to rock, a slow, grinding rhythm against her own hand. Juice leaked from her cunt, trickling down the inside of her thigh, glistening on her brown fur. The scent of her arousal—musk, sweet and animalistic—rose to fill the small space, mingling with the ancient smell of the room.
+
+{color=yellow|Mae: — Ooh... I can feel it... The energy of this place... It's really getting to me...}
+
+Her breath came in ragged pants now, misting in the cool air. She abandoned the pretense of slowness, her fingers becoming a blur. Two of them plunged into her clenching pussy, curling upwards to find that spongy spot inside. She fucked herself with them, hard, her palm slapping against her splayed pussy lips with every thrust.
+
+The build-up was a coiling heat in her gut, a tightening of every muscle. Her squat widened, her feet planted firmly on the obsidian. Her cunt made a sloppy, sucking sound around her fingers as she pushed them in and out. Her back arched, thrusting her tits forward. A low, guttural moan was torn from her throat, the only sound of voice she allowed herself.""",
+	MAE_SEX_RITUAL_3 = """{color=yellow|Mae: — Aaah! I'm!... Cumming!!}
+
+A gush of fluid flooded her hand, her thighs, dripping onto the altar beneath her. Her whole body seized, muscles clamping down, a tremor running from her clenched toes up through her plump body to the tips of her ears. Her head fell back, her long brown hair brushing against the cold stone, another silent cry hanging on her lips.""",
+	MAE_SEX_RITUAL_4 = """{color=green|Velhorn: — Well now, why stop here little tanuki? You want to have a bit more fun for our little bonding session, don't you? }
+
+The pleasure was still ebbing, a warm, languid tide, when something beneath her came alive.Shadows detached themselves from the corners of the room, flowing like liquid across the floor. They were vines, thick as her wrist, covered in a dark, moss-like fuzz. They moved with an impossible, silent grace.
+
+{color=yellow|Mae: — W-wait... Wow, this is...}
+
+Her protest was only a minor habit, her body and mind have been quickly succumbing to pleasure desiring for more.""",
+	MAE_SEX_RITUAL_5 = """One snaked around her ankle, the texture rough and surprisingly warm against her fur. Before she could even twitch, another mirrored it on her other leg. They pulled, not hard, but with an unyielding strength, forcing her squat even wider, stretching her thighs until the muscles burned. She was trapped, her legs splayed obscenely, her pussy still dripping onto the altar.
+
+More vines slithered up her body. They coiled around her plush waist, the tips brushing against the underside of her heavy tits. Two of them, thinner and more flexible, wrapped around each of her wrists, pulling her arms behind her back and binding them at the small of her spine. She was immobilized, a living offering on the black stone, her chest heaving with panicked breaths that made her tits jiggle.""",
+	MAE_SEX_RITUAL_6 = """A vine, different from the others, rose up between her spread legs. It was thicker, and its tip was not pointed but bulbous, shaped almost like a fat, knotted mushroom head, glistening with a clear, viscous sap. It nudged against her still-sensitive clit, making her jolt. Then, without warning, it drove into her.
+
+{color=yellow|Mae: — Aaah!... So big...}
+
+Mae's back arched off the stone. It filled her completely, stretching her pussy to its limits. The rough, fuzzy texture scraped against her inner walls as it began to move, deep and hard. It penetrated her with a rhythmic precision, each thrust bringing a moan from her lungs. The bulbous head dragged against her sensitive spot with every pass, sending jolts of agonizing pleasure through her bound body.
+
+As her body adjusted, another vine, thinner but just as determined, probed at the tight ass. It circled the rim, smearing its slick sap around her hole. Mae tensed, a fresh wave of panic washing over her. It pushed, insistent and unyielding. The burn was sharp as her sphincter was forced open, yielding inch by inch to the invasive vine. It filled her ass, a strange, full pressure that mingled with the overwhelming sensation in her cunt.""",
+	MAE_SEX_RITUAL_7 = """The two vines found a rhythm. As one pulled back, the other pushed forward, a relentless assault that sawed through her. Her plump body was rocked between them, her tits bouncing with the force of their fucking. She lost herself in pleasure as her both holes were used. Her body betrayed her, responding to the rough treatment with a renewed wave of heat.
+
+{color=green|Velhorn: — Come on, she wants you to join, her mouth is still free.}
+
+You moved without a delay, your own cock hard and heavy in your grip. You approached her head, looming over her bound form. Her soft, pink lips were parted, panting around the silent moans. You grabbed a fistful of her long brown hair, tilting her head back. Her reddish eyes, wide and glazed, stared up at you.
+
+{color=yellow|Mae: — Ah, [name]... Fill me...}
+
+You pressed the head of your cock against her lips. She hesitated for a second, her body still rocking from the dual fucking she was receiving. Then, her lips parted willingly, allowing you to slide in. The wet heat of her mouth was a welcome sensation. You pushed deeper, groaning as you felt the head of your dick brush against the back of her throat. She gagged slightly, but didn't resist, her tongue swirling around your shaft.""",
+	MAE_SEX_RITUAL_8 = """You set the pace, fucking her face in counterpoint to the vines. As they thrust deep into her cunt and ass, you would pull back, leaving just the tip of your cock between her lips. Then, as they withdrew, you would slam forward, burying yourself to the hilt in her tight throat. 
+
+Her moans became muffled gurgles around your thick shaft. The vibrations of her sounds sent shivers of pleasure up your spine. You could feel her body tensing, her muscles tightening as another orgasm built. Her pussy clamped down hard on the vine fucking her, and her ass convulsed around the other. The pleasure was too much. Mae's body thrashed against her bonds as she came, a silent scream tearing from her throat. You watched, mesmerized, as your own release erupted, painting her face and tits with thick, white ropes of cum. The vines within her shuddered, flooding both her holes with their own hot, viscous sap.
+
+Finally the ritual was complete, the vines withdrawn and released her body into your arms.""",
+	MAE_SEX_TRIBE_1 = """The ritual starts with the beastkin gathering around. Mae is already free from her clothes, shaking slightly with anticipation. You lay on the ground, waiting for her move.
+
+She straddles your hips, her plump, furry thighs gripping your own. The creamy brown fur of her body is adorned with swirling purple tribal symbols. Her heavy tits rise and fall with each ragged breath, the erect nipples stiff and peeking through her fur. Her reddish eyes, usually so shy and downcast, are now dark with a lustful haze as she takes in the chaotic scene around her.
+
+{color=yellow|Mae: — I'm not too heavy, [master]? I am... really drenched, though.}
+
+You feel the wet heat of her pussy against your stomach, the slick juices matting the fur there. She shifts her weight, her hands braced on your chest, the muscles in her thick thighs flexing. Slowly, deliberately, she reaches between them and grabs your throbbing cock. The touch is electric, sending a jolt straight up your spine. She guides the head to her dripping entrance, her own slickness coating you instantly.
+
+Without hesitation, she sinks down. Her tight cunt stretches to accommodate your girth, the walls hot and velvety as they grip your shaft. A low groan escapes your lips as she takes you to the hilt, her plump ass resting on your pelvis. She starts to move, a slow, grinding rhythm that makes your head spin. The sight of her, this once-shy tanuki, riding you with abandon in the middle of this debauched ritual, is almost too much to bear.""",
+	MAE_SEX_TRIBE_2 = """Her hips rock back and forth, the movement becoming more frantic with every passing second. You can feel every twitch of her inner muscles as she clenches around you. Her heavy tits bounce with the force of her movements. She leans forward, her long brown hair brushing against your chest, and you get a clear view of the other beastkin men moving in closer. Their cocks are hard and ready, their eyes locked on the tanuki girl riding you.
+
+Mae seems to sense their presence. Reaching out with both hands, she wraps her fingers around the two nearest cocks. Her grip is firm, her hands slick with her own juices and your precum. She starts to stroke them in time with her grinding, her wrists twisting in a way that has both men groaning in pleasure. She starts recalling the previous time she was in same situation, however this time nothing alien clouds her mind.
+
+{color=yellow|Mae: — Aah, I'm really doing this...}""",
+	MAE_SEX_TRIBE_3 = """She leans back, changing the angle and driving your cock even deeper inside her. Her pace quickens, the wet slap of flesh on flesh filling the air. Her handjobs become more erratic, her fingers flying over the shafts, her thumbs swirling around the leaking tips. She takes the new cock into her mouth, her lips stretched wide around the canine-like cock. 
+
+The beastkin she's blowing grabs a handful of her long brown hair, forcing her head down further. Mae gags slightly but doesn't resist, her throat working as she takes him deeper. Her movements on your lap become more frenzied, her pussy clamping down on your cock like it has a mind of its own. The dual stimulation has her writhing, her body a conduit for the raw, animalistic pleasure of the moment.
+
+{color=yellow|Mae: — Mhh, I'm turning into a complete slut... Aaah... But it feels... so good...}""",
+	MAE_SEX_TRIBE_4 = """Just when you think she can't handle any more, another beastkin moves behind her. Without any preamble, he kneels and presses the thick head of his cock against her tight asshole. Mae tenses for a moment, her body going still, but then she relaxes, a muffled moan escaping around the cock in her mouth.
+
+The wolf-kin pushes in slowly, giving her time to adjust. You can feel the pressure against your own cock through the thin wall separating her holes. Once he's fully seated inside her, they begin to move in tandem, one pulling out as the other pushes in.
+
+{color=yellow|Mae: — AAAhh... All of my holes!... Together...}
+
+The rhythm is brutal, relentless. Mae is caught between you, her body a vessel for their collective lust. Her mind goes blank, consumed by the overwhelming sensations. Your cock in her cunt, another in her ass, a third stretching her lips, and two more in her hands. She's nothing but a series of holes to be used, a willing participant in this primal ritual.
+
+The pace becomes more frantic, more erratic. The wolf-kin behind her grabs her plump hips, his claws digging into her flesh as he drives into her with punishing force. Your own thrusts become more powerful, lifting her off the ground with each upward stroke.""",
+	MAE_SEX_TRIBE_5 = """You feel her start to tremble, her whole body shaking with the force of her impending orgasm. Her cunt spasms around your cock, the walls clamping down so tight it's almost painful. Her moans become high-pitched, desperate mewls around the dick in her mouth. 
+
+{color=yellow|Mae: — Aaaaaaah!!...}
+
+First is the man in her mouth. With a loud roar, he pulls back slightly and shoots thick ropes of cum across her face and into her open mouth. Almost simultaneously, the two cocks in her hands erupt, coating her heavy tits and soft stomach in hot, sticky fluid. 
+
+You grab her wide hips, slamming her down one last time as your own orgasm crashes over you. Your cock pulses, filling her with spurt after spurt of hot cum. The feeling triggers her own release.
+
+Mae throws her head back, an orgasmic cry on her lips as her body convulses. Her juices gush out, soaking your thighs and the ground beneath you. Her cunt milks your cock, drawing out every last drop of your seed. Yet, the festival is far from over...""",
+	MAE_WEDDING_1 = """The wedding celebration's echoes still linger in the night air beyond your chamber, but inside, the only sounds are the soft crackle of the hearth and the frantic beat of your own heart. Mae stands before you, her tribal wedding garments. A beaded bra that strains against her heavy breasts and a loincloth that does little to hide the generous curve of her ass, making her look both primal and achingly vulnerable.
+
+You reach out, your fingers tracing the line of her cheek. She flinches at the contact, a soft whimper escaping her lips, but she doesn't pull away. A sweet scent of anticipation hangs in the air between you. You move behind her.
+
+{color=yellow|Mae: — Please, do anything you want to me...}""",
+	MAE_WEDDING_2 = """Your hands slide down her shoulders, feeling the soft creamy fur give way to supple flesh. You unfasten her bra, and it falls away, revealing her heavy tits. They droop slightly from their weight, the nipples hard and dark in the firelight. You take their weight in your hands, feeling their warmth, their softness.
+
+Her body tenses for a moment, then relaxes into yours, the plumpness of her ass molding perfectly against your groin. Her wide thighs part slightly as you run your hands down her stomach, down to the coarse fabric of her loincloth. You pull it aside, exposing her to the firelight. Her pussy is already slick, glistening with wetness. The lips are thick and puffy, a darker shade than the surrounding fur.
+
+You grip her thighs, feeling their impressive girth in your hands. You lift her effortlessly, her body light despite its generous curves. Her legs wrap around your waist, her ankles locking behind your back. You position her, her back pressed against your chest, her thighs held wide and high in the crook of your arms. The angle exposes her completely, leaving her slick pussy open and waiting.
+
+{color=yellow|Mae: — Ah... this is slightly embarrassing...}""",
+	MAE_WEDDING_3 = """You enter her in one smooth, deep thrust. She gasps, her body tensing as your cock stretches her. You can feel every inch of her inner walls, every twitch and flutter of her muscles as they adjust to your size. You hold her there for a moment, buried to the hilt, letting her get used to the feeling of being so full.
+
+You pull out almost completely, leaving just the tip of your cock inside her, then slam back in, your hips meeting the flesh of her ass with a wet, meaty sound. Her tits bounce with each thrust, her head lolls back against your shoulder, her reddish eyes glazed over with pleasure. Her claws dig into your arms, not in pain, but in a desperate attempt to anchor herself as you piston into her.
+
+The scent of sex fills the room, musky and sweet. Her pussy is tighting around you, clenching and unclenching with each thrust. You can feel her body tensing, her breathing coming in short, sharp gasps. Her thighs tremble in your grip.
+
+You feel her orgasm build, a deep tremor that starts in her core and radiates outward. Her pussy spasms around your cock, her juices flooding you as she comes with a scream, her body arching back against yours. You continue to thrust through her orgasm, drawing out her pleasure until she's a limp, trembling mass in your arms. You cum in a moment, filling her orgasming pussy with your seed.
+
+{color=yellow|Mae: — Aaah!... It's so hot!..}""",
+	MAE_WEDDING_4 = """But you're not done. You pull out of her, your cock slick with her juices. Her ass is still raised, exposed and waiting. You position yourself at her other entrance. She tenses, her body bracing for what's to come accepting anything you demand.
+
+{color=yellow|Mae: — [name]... Even my butt? Please, be gentle...}
+
+You push in slowly, feeling the resistance of her sphincter as it stretches to accommodate you. Her body trembles, a mix of pain and pleasure, but she doesn't try to pull away. You're halfway in when you pause, letting her adjust, then you push in the rest of the way, burying yourself in her tight ass.
+
+Her hot ass grip milks your cock with every movement. You start to thrust, slowly at first, then faster, harder. The sounds she makes now are different, deeper, more primal. Her body rocks with each thrust, her tits slapping against her chest.""",
+	MAE_WEDDING_5 = """Her hands grip your arms tightly, her knuckles white. You can feel her body responding, her ass clenching around you, her hips pushing back to meet your thrusts. She's enjoying this as much as you are, the thought sending a fresh wave of arousal through you.
+
+Her body jerks, her legs kicking out, her hips bucking wildly as you continue to pound her ass. You feel her ass spasm as another orgasm rips through her, more intense than the last. You cum again, this time in her ass, your hips jerking as you empty yourself into her.
+
+You pull out slowly, watching as your cum leaks from her ass, down her thighs. She's a mess, but she's your mess. You lower her to the bed, her body limp with exhaustion and satisfaction.
+
+{color=yellow|Mae: — [name], I love you...}""",
+	
+	MAE_LORIEN_OPTION = "Meet Lorien with Mae",
+	MAE_SPIRIT_FOLLOW_OPTION = "Follow after Mae",
+	MAE_SPIRIT_VISIT_SAVRA_OPTION = "Visit Savra",
+	MAE_SPIRIT_RITUAL_OPTION = "Let Mae prepare for the spirit ritual",
+	MAE_SPIRIT_RITUAL_OPTION_REMINDER = "Return when you have the Ancestral Hide",
+	MAE_NORTHERN_TRIBE_OPTION = "Make it in",
+	
+	QUEST_MAE_SPIRIT_RITUAL_TEXT = "Ritual Grounds",
+	QUEST_MAE_SPIRIT_RITUAL_DESC = "A misty clearing where Mae can attempt her spirit-binding ritual.",
+	QUEST_MAE_ANCIENT_JUNGLE_TEXT = "Ancient Jungle Ruins",
+	QUEST_MAE_ANCIENT_JUNGLE_DESC = "Ancient ruins hidden in the jungle, steeped in ritual power.",
+	QUEST_MAE_NORTHERN_TRIBE_TEXT = "Northern Forest Tribe",
+	QUEST_MAE_NORTHERN_TRIBE_DESC = "A distant beastkin tribe waiting for Mae's guidance.",
+	
+	MAE_SPIRIT_QUEST_NAME = "Mae's Guardian Spirit",
+	MAE_SPIRIT_QUEST_SUMMARY = "Mae must complete a spirit-binding ritual and answer a call from another tribe.",
+	MAE_SPIRIT_QUEST_STAGE_0 = "Return to Mae's village for the spirit ritual.",
+	MAE_SPIRIT_QUEST_STAGE_1 = "Meet Mae at the ritual grounds.",
+	MAE_SPIRIT_QUEST_STAGE_1_HIDE = "Craft an Ancestral Hide and return to the ritual grounds.",
+	MAE_SPIRIT_QUEST_STAGE_2 = "Complete the ritual in the ancient jungle ruins.",
+	MAE_SPIRIT_QUEST_STAGE_4 = "Report back to Savra.",
+	MAE_SPIRIT_QUEST_STAGE_5 = "Travel to the northern forest tribe.",
+	
+	MATERIALANCESTRAL_HIDE = "Ancestral Hide",
+	MATERIALANCESTRAL_HIDEDESCRIPT = "A ceremonial hide prepared with rare mythic leather and a simple rite. It carries the weight of an old pact.",
+	
+	ITEMORNATE_LEATHER_HEADDRESS = "Ornate Leather Headdress",
+	ITEMORNATE_LEATHER_HEADDRESSDESCRIPT = "A ceremonial headdress gifted by a northern tribe. It hums faintly with old magic.",
+	TRAITSPIRIT_BOAR = "Guardian Spirit: Hearthtusk",
+	TRAITSPIRIT_BOARDESCRIPT = "Allies in the same column recover 10 HP at the end of the global turn.",
+	TRAITSPIRIT_SATYR = "Guardian Spirit: Velhorn",
+	TRAITSPIRIT_SATYRDESCRIPT = "Restore 4 mana after casting a spell on an ally or yourself.",
+	TRAITSPIRIT_OWL = "Guardian Spirit: Noctara",
+	TRAITSPIRIT_OWLDESCRIPT = " ",
 }

@@ -778,6 +778,31 @@ var Skilllist = {
 		value = ['0'],
 		damagestat = 'no_stat'
 	},
+	boar_heal = { #mae trait auto skill
+		code = 'boar_heal',
+		descript = '',
+		icon = load("res://assets/images/iconsskills/takeposition.png"),
+		type = 'auto', 
+		ability_type = 'skill',
+		tags = ['instant'],
+		reqs = [],
+		targetreqs = [],
+		effects = [], 
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'line',
+		target_range = 'any',
+		damage_type = 'weapon',
+		damage = 0,
+		sfx = [{code = 'heal', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = null, hit = null},
+		value = ['10'],
+		damagestat = ['-damage_hp']
+	},
 	lesser_heal = { #enemy version
 		code = 'lesser_heal',
 		descript = '',
@@ -1562,6 +1587,14 @@ var global_variations = [
 #		reqs = [{code = 'has_status', status = 'combat_casting', check = true}],
 #		set = {follow_up = 'attack'},
 #	},
+	{
+		template_reqs = [
+			{attribute = 'target', operant = 'in', value = ['self', 'ally']},
+			{attribute = 'type', operant = 'neq', value = 'auto'},
+			],
+		reqs = [],
+		append = {tags = 'targets_ally'},
+	},
 ]
 
 

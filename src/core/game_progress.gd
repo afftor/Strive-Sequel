@@ -181,6 +181,19 @@ func fix_serialization():
 		globals.common_effects([{code = 'add_timed_event', value = "mae_initiate_start", args = [{type = 'add_to_date', date = [3,3], hour = 1}]}])
 	if !seen_events.has("heleviel_quest_1") and ResourceScripts.game_party.get_unique_slave('heleviel') != null:
 		globals.common_effects([{code = 'plan_mansion_event', value = "heleviel_quest_1"}])
+	if !dialogue_local_counters.has('mae_perverted_actions') and seen_events.has('pre_ritual_7_3_3'):
+		dialogue_local_counters.mae_perverted_actions = 1
+		dialogue_local_counters.mae_sex_actions = 1
+		decisions.push_back('MaeBlow')
+		if seen_events.has('ritual_6_1_1'):
+			dialogue_local_counters.mae_perverted_actions += 1
+		if selected_dialogues.has('MAE_SEARCH_COMPLETE_FINAL_OPTION_3'):
+			dialogue_local_counters.mae_perverted_actions += 1
+	if !seen_events.has("mae_druid_event_start") && !timed_event_exists("mae_druid_event_start") && seen_events.has("mae_search_complete_final"):
+		globals.common_effects([
+			{code = "add_timed_event", value = "mae_druid_event_start", args = [{type = "add_to_date", date = [2, 2], hour = 2}]},
+			{code = "add_timed_event", value = "mae_spirit_quest_initiate", args = [{type = "add_to_date", date = [4, 4], hour = 1}]}
+		])
 	#2add amelia questline here. idk how cause herbs quest can be failed - so need correct condition
 	
 	#char_events

@@ -802,10 +802,11 @@ func test_mode():
 				{code = 'make_story_character', value = 'Cali'},
 				{code = 'make_story_character', value = 'Heleviel'},
 				{code = 'make_story_character', value = 'Jean'},
-				#{code = 'make_story_character', value = 'Zephyra'},
+				{code = 'make_story_character', value = 'Zephyra'},
 				{code = 'make_story_character', value = 'Amelia'},
 				{code = 'make_story_character', value = 'Kuro'},
 				{code = 'make_story_character', value = 'Lilia'},
+				{code = 'make_story_character', value = 'Mae'},
 				{code = 'affect_unique_character', name = 'lilia', type = 'turn_into_unique', value = 'Lilith'},
 			]
 		)
@@ -950,7 +951,7 @@ func test_mode():
 
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
 		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
-		input_handler.interactive_message('cali_william_evening_1', '', {})
+		input_handler.interactive_message('mae_spirit_quest_initiate', '', {})
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		

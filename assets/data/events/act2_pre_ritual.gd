@@ -7,7 +7,7 @@ var data = {
 		],
 		reqs = [
 			{
-				type = "unique_avialable",
+				type = "unique_available",
 				name = "zephyra",
 				check = false
 			}
@@ -380,7 +380,7 @@ var data = {
 		],
 		reqs = [
 			{
-				type = "unique_avialable",
+				type = "unique_available",
 				name = "zephyra",
 				check = true
 			}
@@ -2963,12 +2963,15 @@ var data = {
 			{
 				code = "pre_ritual_7_3_3",
 				text = "DIALOGUECONTINUE",
-				reqs = [
-
-				],
+				reqs = [],
 				dialogue_argument = 1,
 				type = "next_dialogue",
-				change_dialogue_type = 1
+				change_dialogue_type = 1,
+				bonus_effects = [
+					{code = "dialogue_counter", name = "mae_perverted_actions", op = "+"},
+					{code = "dialogue_counter", name = "mae_sex_actions", op = "+"},
+					{code = 'decision', value = 'MaeBlow'}
+				]
 			}
 		]
 	},

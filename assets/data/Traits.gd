@@ -40,6 +40,36 @@ var traits = {
 		tags = [],
 		bonusstats = {mod_hunt = 0.25, physics = 15, chg_dexterity_max = 1, mastery_stealth = 1}
 	},
+	spirit_boar = {
+		code = 'spirit_boar',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconstraits/boar_hoof.png",
+		effects = ['e_boar_autoheal'],
+		bonusstats = {physics_factor = 1, hpmax = 15, armor = 10},
+		tags = ['mansion_only']
+	},
+	spirit_satyr = {
+		code = 'spirit_satyr',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconstraits/satir_horn.png",
+		effects = ['e_satyr_mpreg'],
+		bonusstats = {sexuals_factor = 1, authority_factor = 1, matk = 3, mdef = 5},
+		tags = ['mansion_only']
+	},
+	spirit_owl = {
+		code = 'spirit_owl',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconstraits/owl_eye.png",
+		effects = [],
+		bonusstats = {wits_factor = 1, wits_bonus = 10, exp_gain_mod = 0.2},
+		tags = ['mansion_only']
+	},
 	#body upgrades
 	upgrade_thick_skin = {
 		name = '',

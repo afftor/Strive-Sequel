@@ -283,7 +283,8 @@ var data = {
 			{
 				code = "decision",
 				value = "letFuck"
-			}
+			},
+			{code = "dialogue_counter", name = "mae_perverted_actions", op = "+"}
 		],
 		text = [
 			{

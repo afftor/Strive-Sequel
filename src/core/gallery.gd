@@ -57,7 +57,11 @@ var scenes = {
 	zephyra_wed = ['zephyra_wedding_1', 'zephyra_wed_2', 'zephyra_wed_3', 'zephyra_wed_4'],
 	heleviel_bar_sex = ['heleviel_bar_sex_1', 'heleviel_bar_sex_2', 'heleviel_bar_sex_3', 'heleviel_bar_sex_4', 'heleviel_bar_sex_5', 'heleviel_bar_sex_6', 'heleviel_bar_sex_7', 'heleviel_bar_sex_8', ],
 	heleviel_forest_sex = ['heleviel_forest_sex_1', 'heleviel_forest_sex_2', 'heleviel_forest_sex_3', 'heleviel_forest_sex_4'],
-	heleviel_wedding = ['heleviel_wedding_1', 'heleviel_wedding_2', 'heleviel_wedding_3', 'heleviel_wedding_4', 'heleviel_wedding_5', 'heleviel_wedding_6', ]
+	heleviel_wedding = ['heleviel_wedding_1', 'heleviel_wedding_2', 'heleviel_wedding_3', 'heleviel_wedding_4', 'heleviel_wedding_5', 'heleviel_wedding_6', ],
+	mae_sex_behind = ['mae_sex_behind_1', 'mae_sex_behind_2', 'mae_sex_behind_3', 'mae_sex_behind_4'],
+	mae_sex_ritual = ['mae_ancient_jungle_ritual_1', 'mae_ancient_jungle_ritual_2', 'mae_ancient_jungle_ritual_3', ],
+	mae_spirit_northern_ritual = ['mae_spirit_northern_ritual_scene_1', 'mae_spirit_northern_ritual_scene_2', 'mae_spirit_northern_ritual_scene_3', 'mae_spirit_northern_ritual_scene_4', 'mae_spirit_northern_ritual_scene_5', ],
+	mae_wedding = ['mae_wedding_1', 'mae_wed_2', 'mae_wed_3', 'mae_wed_4', 'mae_wed_5',]
 }
 #was forced to add a id to scene lists for unlock purpose
 var scenes_order = [
@@ -70,7 +74,8 @@ var scenes_order = [
 	"zephyra_lilia", 'amelia_sex', 'zephyra_disappearance_sex', 'zephyra_disappearance_guards', 'daisy_wedding', 'cali_wedding', 'amelia_wedding', 'lilia_transform_t', 'lilia_transform_mc', 'lilith_blow', 'lilith_ride', 'lilia_wedding', 'lilith_wedding',
 	'kuro_tome', 'kuro_hideout', 'kuro_zeph_tailjob', 'kuro_wedding_pussy',
 	'ana_blow','ana_wed','zephyra_wed',
-	'heleviel_bar_sex', 'heleviel_forest_sex', 'heleviel_wedding'
+	'heleviel_bar_sex', 'heleviel_forest_sex', 'heleviel_wedding',
+	'mae_sex_behind', 'mae_sex_ritual', 'mae_spirit_northern_ritual', 'mae_wedding'
 	]
 var story_scenes = ['anastasia_event_alive', 'elven_temple_scene', 'act1_art', 'act2_art'] #maybe we should define this as 'scenes' unlocks and ero_scenes as 'backgrounds' unlocks - but for now there are no more and i can't add something like 'daisyevent' or 'aire_death'
 var ero_scenes = [
@@ -131,6 +136,10 @@ var ero_scenes = [
 'heleviel_bar_1' ,
 'heleviel_forest_1',
 'heleviel_wed_1' ,
+#'mae_scene8',
+'mae_ritual_1',
+'mae_northern_1',
+'mae_wedding_1',
 ] 
 #fill next 2 arrays manually, if needed certain list
 var mono_scenes
@@ -193,7 +202,11 @@ var ero_scenes_collection = {
 	'zephyra_wed_': ['zephyra_wed_1', 'zephyra_wed_2', 'zephyra_wed_3', 'zephyra_wed_4', 'zephyra_wed_5', 'zephyra_wed_6', 'zephyra_wed_7'],
 	'heleviel_bar_' : ['heleviel_bar_1', 'heleviel_bar_2', 'heleviel_bar_3','heleviel_bar_4'],
 	'heleviel_forest_' : ['heleviel_forest_1', 'heleviel_forest_2', 'heleviel_forest_3', 'heleviel_forest_4'],
-	'heleviel_wed_': ['heleviel_wed_1', 'heleviel_wed_2', 'heleviel_wed_3', 'heleviel_wed_4',]
+	'heleviel_wed_': ['heleviel_wed_1', 'heleviel_wed_2', 'heleviel_wed_3', 'heleviel_wed_4',],
+#	'mae_scene': ['mae_scene8','mae_scene9','mae_scene10'],
+	'mae_ritual_': ['mae_ritual_1', 'mae_ritual_2', 'mae_ritual_3', 'mae_ritual_4', 'mae_ritual_5', 'mae_ritual_6', 'mae_ritual_7', ],
+	'mae_northern_': ['mae_northern_1', 'mae_northern_2', 'mae_northern_3', 'mae_northern_4', 'mae_northern_5', ],
+	'mae_wedding_': ['mae_wedding_1', 'mae_wedding_2', 'mae_wedding_4', 'mae_wedding_5', 'mae_wedding_7']
 }
 #so these arrays are needed for storing order 
 
@@ -260,6 +273,10 @@ var scene_tooltips = {
 	heleviel_bar_1 = "HELEVIEL_BAR_SS",
 	heleviel_forest_1 = "HELEVIEL_FOREST_SS",
 	heleviel_wed_1 = "HELEVIEL_WEDDING_SS",
+	mae_scene8 = "MAE_BEHIND_SS",
+	mae_ritual_1 = "MAE_RITUAL_SS",
+	mae_northern_1 = "MAE_NORTHERN_SS",
+	mae_wedding_1 = "MAE_WEDDING_SS"
 }
 
 
