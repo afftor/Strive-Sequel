@@ -15,11 +15,30 @@ var hovered_location = null
 var loc_locked = false
 
 var area_zoom_data = {
-	null:{position = Vector2(920, 1190), zoom = 1.0},
-	plains = {position = Vector2(700, 1700), zoom = 1.5},
-	forests = {position = Vector2(1310, 1890), zoom = 1.5},
-	mountains = {position = Vector2(1000, 1000), zoom = 1.5},
-	empire = {position = Vector2(1000, 100), zoom = 1.2},
+	null:{
+		position = Vector2(920, 1090), 
+		zoom = 1.0
+	},
+	plains = {
+		position = Vector2(1050, 1250), 
+		zoom = 1.0
+#		zoom = 1.5
+	},
+	forests = {
+		position = Vector2(1810, 1390), 
+		zoom = 1.0
+#		zoom = 1.5
+	},
+	mountains = {
+		position = Vector2(1000, 850), 
+		zoom = 1.0
+#		zoom = 1.5
+	},
+	empire = {
+		position = Vector2(1520, 100), 
+		zoom = 1.0
+#		zoom = 1.2
+	},
 }
 
 #in most cases char_groups and travel_groups_ref are hadled automatically in build_from_locations()
@@ -37,10 +56,10 @@ var mass_select_press_effect = false
 
 func _unhandled_input(event):
 #func _input(event):
-	if event.is_action_pressed('MouseUp'):
-		set_map_zoom($map.scale.x + map_zoom_step)
-	if event.is_action_pressed('MouseDown'):
-		set_map_zoom($map.scale.x - map_zoom_step)
+#	if event.is_action_pressed('MouseUp'):
+#		set_map_zoom($map.scale.x + map_zoom_step)
+#	if event.is_action_pressed('MouseDown'):
+#		set_map_zoom($map.scale.x - map_zoom_step)
 	
 	if event.is_action_pressed("LMB") and !drag_mode:
 		click_position = get_global_mouse_position()
@@ -229,9 +248,9 @@ func _ready():#2add button connections
 	$InfoPanel/Sendbutton.connect('pressed', self, 'confirm_travel')
 	$zoom.min_value = map_zoom_min
 	$zoom.max_value = map_zoom_max
-	$zoom.connect("value_changed", self, 'zoom_change')
-	$zoom/minus.connect("pressed", self, 'zoom_change_step', [ -1])
-	$zoom/plus.connect("pressed", self, 'zoom_change_step', [ 1])
+#	$zoom.connect("value_changed", self, 'zoom_change')
+#	$zoom/minus.connect("pressed", self, 'zoom_change_step', [ -1])
+#	$zoom/plus.connect("pressed", self, 'zoom_change_step', [ 1])
 	$InfoPanel/Forget.connect("pressed", self, "forget_location")
 #	match_state()
 	input_handler.connect("mass_select_in_act", self, "off_mass_select_effect")

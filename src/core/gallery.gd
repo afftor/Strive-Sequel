@@ -126,7 +126,7 @@ var ero_scenes = [
 'lilith_ride_1',
 'lilia_wedding_1',
 'lilith_wedding_1',
-'kuro_book_0_0',
+#'kuro_book_0_0',
 'kuro_top_1',
 'kuro_zephyra_1',
 'kuro_wedding_1',
