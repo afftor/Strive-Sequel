@@ -12,6 +12,7 @@ var TranslationDict = {
 	#Menu
 	MENUCONTINUE = "Continue",
 	MENUNEWGAME = "New game",
+	MENUTUTORIAL = """Tutorial""", # MISSING TRANSLATION
 	MENULOAD = "Load",
 	MENUOPTIONS = "Options",
 	MENUCREDITS = "Credits",
@@ -4883,7 +4884,13 @@ You explain yourself being the new landowner to her.""", # MISSING TRANSLATION
 	REMOVEUPGRADEFROMQUEUEQUESTION = "从队列中删除此升级？",
 
 	STARTTHISGAME = "开始游戏?",
+	STARTTUTORIAL = """Start tutorial?""", # MISSING TRANSLATION
+	ABORTTUTORIAL = """Abort tutorial?""", # MISSING TRANSLATION
 	UPDATEFILE = "是否更新此文件？",
+	TUTORIALNAME1 = """Training""", # MISSING TRANSLATION
+	TUTORIALNAME2 = """Work""", # MISSING TRANSLATION
+	TUTORIALNAME3 = """Leveling""", # MISSING TRANSLATION
+	TUTORIALNAME4 = """Quests and combat""", # MISSING TRANSLATION
 
 	# after finishing election-princess-meeting sequence
 

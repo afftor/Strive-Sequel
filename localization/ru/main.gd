@@ -7,6 +7,7 @@ var TranslationDict = {
 	VARIABLESTIMEWORDNIGHT = """Ночь""",
 	MENUCONTINUE = """Продолжить""",
 	MENUNEWGAME = """Новая игра""",
+	MENUTUTORIAL = """Tutorial""", # MISSING TRANSLATION
 	MENULOAD = """Загрузка""",
 	MENUOPTIONS = """Опции""",
 	MENUCREDITS = """Авторы""",
@@ -6119,7 +6120,13 @@ LICHAIRETALK6_5 = """Борьба Эйры постепенно ослабева
 	REMOVEUPGRADEFROMQUEUEQUESTION = """Удалить это улучшение из очереди?""",
 
 	STARTTHISGAME = """Начать эту игру?""",
+	STARTTUTORIAL = """Start tutorial?""", # MISSING TRANSLATION
+	ABORTTUTORIAL = """Abort tutorial?""", # MISSING TRANSLATION
 	UPDATEFILE = """Обновить этот файл?""",
+	TUTORIALNAME1 = """Training""", # MISSING TRANSLATION
+	TUTORIALNAME2 = """Work""", # MISSING TRANSLATION
+	TUTORIALNAME3 = """Leveling""", # MISSING TRANSLATION
+	TUTORIALNAME4 = """Quests and combat""", # MISSING TRANSLATION
 
 	# after finishing election-princess-meeting sequence
 

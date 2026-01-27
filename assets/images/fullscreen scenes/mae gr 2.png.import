@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rouge.png-a20f61a22f631bb5ab127c492ea7f885.stex"
+path="res://.import/mae gr 2.png-06f8d9ceb175a7bcaf7209ae5c458a0d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/iconsclasses/rouge.png"
-dest_files=[ "res://.import/rouge.png-a20f61a22f631bb5ab127c492ea7f885.stex" ]
+source_file="res://assets/images/fullscreen scenes/mae gr 2.png"
+dest_files=[ "res://.import/mae gr 2.png-06f8d9ceb175a7bcaf7209ae5c458a0d.stex" ]
 
 [params]
 
@@ -21,13 +21,14 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

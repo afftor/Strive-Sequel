@@ -8,7 +8,7 @@ func _ready():
 
 func Accept():
 	hide()
-	input_handler.SetMusic("intro")
+	input_handler.SetMusic("opening")
 	input_handler.globalsettings.warnseen = true
 
 func Quit():
