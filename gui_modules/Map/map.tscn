@@ -62,23 +62,28 @@ position = Vector2( 923, 1191 )
 texture = ExtResource( 23 )
 
 [node name="Sprite" type="Sprite" parent="map" groups=["highlight_ignore"]]
-position = Vector2( 237, -849 )
+position = Vector2( 285, -805 )
+scale = Vector2( 0.66, 0.66 )
 texture = ExtResource( 37 )
 
 [node name="Sprite2" type="Sprite" parent="map" groups=["highlight_ignore"]]
-position = Vector2( -436, -618 )
+position = Vector2( -424, -617 )
+scale = Vector2( 0.66, 0.66 )
 texture = ExtResource( 35 )
 
 [node name="Sprite3" type="Sprite" parent="map" groups=["highlight_ignore"]]
-position = Vector2( 368, -326 )
+position = Vector2( 363, -363 )
+scale = Vector2( 0.66, 0.66 )
 texture = ExtResource( 36 )
 
 [node name="Sprite4" type="Sprite" parent="map" groups=["highlight_ignore"]]
-position = Vector2( -475, -1125 )
+position = Vector2( -454, -1121 )
+scale = Vector2( 0.66, 0.66 )
 texture = ExtResource( 38 )
 
 [node name="Sprite5" type="Sprite" parent="map" groups=["highlight_ignore"]]
-position = Vector2( -217, 252 )
+position = Vector2( -182, 276 )
+scale = Vector2( 0.66, 0.66 )
 texture = ExtResource( 48 )
 
 [node name="plains" type="Polygon2D" parent="map"]
@@ -145,6 +150,8 @@ polygon = PoolVector2Array( 795, -166, 780, -122, 773, -94, 750, -74, 760, -53, 
 [node name="aliron" type="Polygon2D" parent="map"]
 modulate = Color( 0.929412, 0.0745098, 0.0745098, 0.301961 )
 light_mask = 512
+position = Vector2( 130, -248 )
+scale = Vector2( 0.656029, 0.656029 )
 polygon = PoolVector2Array( 284, -755, 298, -764, 310, -773, 320, -786, 329, -798, 336, -814, 340, -831, 342, -848, 341, -865, 336, -883, 329, -899, 320, -913, 309, -926, 295, -937, 281, -945, 265, -950, 250, -952, 234, -953, 212, -951, 193, -945, 174, -934, 161, -924, 151, -910, 142, -895, 136, -879, 132, -860, 132, -840, 136, -819, 143, -802, 151, -788, 163, -775, 175, -764, 186, -757, 198, -752, 208, -748, 216, -745, 226, -744, 240, -744, 256, -745, 270, -749 )
 script = ExtResource( 40 )
 HighlightColor = Color( 0.929412, 0.0745098, 0.0745098, 0.301961 )
@@ -160,7 +167,8 @@ polygon = PoolVector2Array( 284, -755, 298, -764, 310, -773, 320, -786, 329, -79
 [node name="elf_capital" type="Polygon2D" parent="map"]
 modulate = Color( 0.929412, 0.0745098, 0.0745098, 0.301961 )
 light_mask = 512
-position = Vector2( -713, -277 )
+position = Vector2( -611, -563 )
+scale = Vector2( 0.658442, 0.658442 )
 polygon = PoolVector2Array( 284, -755, 298, -764, 310, -773, 320, -786, 329, -798, 336, -814, 340, -831, 342, -848, 341, -865, 336, -883, 329, -899, 320, -913, 309, -926, 295, -937, 281, -945, 265, -950, 250, -952, 234, -953, 212, -951, 193, -945, 174, -934, 161, -924, 151, -910, 142, -895, 136, -879, 132, -860, 132, -840, 136, -819, 143, -802, 151, -788, 163, -775, 175, -764, 186, -757, 198, -752, 208, -748, 216, -745, 226, -744, 240, -744, 256, -745, 270, -749 )
 script = ExtResource( 40 )
 HighlightColor = Color( 0.929412, 0.0745098, 0.0745098, 0.301961 )
@@ -176,7 +184,8 @@ polygon = PoolVector2Array( 284, -755, 298, -764, 310, -773, 320, -786, 329, -79
 [node name="beastkin_capital" type="Polygon2D" parent="map"]
 modulate = Color( 0.929412, 0.0745098, 0.0745098, 0.301961 )
 light_mask = 512
-position = Vector2( -672, 228 )
+position = Vector2( -586, -41 )
+scale = Vector2( 0.679426, 0.679426 )
 polygon = PoolVector2Array( 284, -755, 298, -764, 310, -773, 320, -786, 329, -798, 336, -814, 340, -831, 342, -848, 341, -865, 336, -883, 329, -899, 320, -913, 309, -926, 295, -937, 281, -945, 265, -950, 250, -952, 234, -953, 212, -951, 193, -945, 174, -934, 161, -924, 151, -910, 142, -895, 136, -879, 132, -860, 132, -840, 136, -819, 143, -802, 151, -788, 163, -775, 175, -764, 186, -757, 198, -752, 208, -748, 216, -745, 226, -744, 240, -744, 256, -745, 270, -749 )
 script = ExtResource( 40 )
 HighlightColor = Color( 0.929412, 0.0745098, 0.0745098, 0.301961 )
@@ -192,7 +201,8 @@ polygon = PoolVector2Array( 284, -755, 298, -764, 310, -773, 320, -786, 329, -79
 [node name="dwarf_capital" type="Polygon2D" parent="map"]
 modulate = Color( 0.929412, 0.0745098, 0.0745098, 0.301961 )
 light_mask = 512
-position = Vector2( 130, 521 )
+position = Vector2( 202.743, 212.409 )
+scale = Vector2( 0.67619, 0.67619 )
 polygon = PoolVector2Array( 284, -755, 298, -764, 310, -773, 320, -786, 329, -798, 336, -814, 340, -831, 342, -848, 341, -865, 336, -883, 329, -899, 320, -913, 309, -926, 295, -937, 281, -945, 265, -950, 250, -952, 234, -953, 212, -951, 193, -945, 174, -934, 161, -924, 151, -910, 142, -895, 136, -879, 132, -860, 132, -840, 136, -819, 143, -802, 151, -788, 163, -775, 175, -764, 186, -757, 198, -752, 208, -748, 216, -745, 226, -744, 240, -744, 256, -745, 270, -749 )
 script = ExtResource( 40 )
 HighlightColor = Color( 0.929412, 0.0745098, 0.0745098, 0.301961 )
@@ -206,12 +216,13 @@ position = Vector2( 0, 2 )
 polygon = PoolVector2Array( 284, -755, 298, -764, 310, -773, 320, -786, 329, -798, 336, -814, 340, -831, 342, -848, 341, -865, 336, -883, 329, -899, 320, -913, 309, -926, 295, -937, 281, -945, 265, -950, 250, -952, 234, -953, 212, -951, 193, -945, 174, -934, 161, -924, 151, -910, 142, -895, 136, -879, 132, -860, 132, -840, 136, -819, 143, -802, 151, -788, 163, -775, 175, -764, 186, -757, 198, -752, 208, -748, 216, -745, 226, -744, 240, -744, 256, -745, 270, -749 )
 
 [node name="empire_capital" type="Polygon2D" parent="map"]
-modulate = Color( 0.0745098, 0.929412, 0.466667, 0.364706 )
+modulate = Color( 0.929412, 0.215686, 0.0745098, 0.364706 )
 light_mask = 512
-position = Vector2( -455, 1101 )
+position = Vector2( -344.947, 860.612 )
+scale = Vector2( 0.688995, 0.688995 )
 polygon = PoolVector2Array( 284, -755, 298, -764, 310, -773, 320, -786, 329, -798, 336, -814, 340, -831, 342, -848, 341, -865, 336, -883, 329, -899, 320, -913, 309, -926, 295, -937, 281, -945, 265, -950, 250, -952, 234, -953, 212, -951, 193, -945, 174, -934, 161, -924, 151, -910, 142, -895, 136, -879, 132, -860, 132, -840, 136, -819, 143, -802, 151, -788, 163, -775, 175, -764, 186, -757, 198, -752, 208, -748, 216, -745, 226, -744, 240, -744, 256, -745, 270, -749 )
 script = ExtResource( 40 )
-HighlightColor = Color( 0.0745098, 0.929412, 0.466667, 0.364706 )
+HighlightColor = Color( 0.929412, 0.215686, 0.0745098, 0.364706 )
 
 [node name="Area2D" type="Area2D" parent="map/empire_capital"]
 light_mask = 0
@@ -803,6 +814,7 @@ align = 1
 valign = 1
 
 [node name="zoom" type="HSlider" parent="."]
+visible = false
 margin_left = 835.0
 margin_top = 51.0
 margin_right = 1167.0
