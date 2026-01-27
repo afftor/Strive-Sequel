@@ -808,7 +808,7 @@ var effect_table = {
 			{
 				type = 'oneshot',
 				target = 'owner',
-				conditions = [{type = 'random', value = 0.3}],
+				conditions = [{code = 'random', value = 30}],
 				atomic = [{type = 'remove_all_effects', value = 'wet'}],
 			},
 		]
