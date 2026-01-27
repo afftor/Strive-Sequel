@@ -2190,6 +2190,8 @@ func affect_char(template, manifest = false):
 			input_handler.slave_list_node.rebuild()
 		'turn_into_unique':
 			turn_into_unique(template.value)
+		'impregnate':
+			globals.impregnate(ResourceScripts.game_party.get_master(), self, true)
 		'reset_cooldowns':
 			skills.reset_cooldowns()
 		'dungeon_effect':

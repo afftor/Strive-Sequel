@@ -93,7 +93,7 @@ var data = {
 	},
 	
 	mae_market_start = {
-		image = null,
+		image = 'mae_market',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "MAE_MARKET_START",
@@ -108,7 +108,7 @@ var data = {
 		]
 	},
 	mae_market_fruit_intro = {
-		image = null,
+		image = 'mae_market',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "MAE_MARKET_FRUIT_INTRO",
@@ -143,7 +143,7 @@ var data = {
 		]
 	},
 	mae_market_fruit_buy = {
-		image = null,
+		image = 'mae_market',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "MAE_MARKET_FRUIT_BUY",
@@ -152,7 +152,7 @@ var data = {
 		]
 	},
 	mae_market_fruit_steal = {
-		image = null,
+		image = 'mae_market',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "MAE_MARKET_FRUIT_STEAL",
@@ -161,7 +161,7 @@ var data = {
 		]
 	},
 	mae_market_fruit_after = {
-		image = null,
+		image = 'mae_market',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "MAE_MARKET_FRUIT_AFTER",
@@ -170,7 +170,7 @@ var data = {
 		]
 	},
 	mae_market_fruit_move_on = {
-		image = null,
+		image = 'mae_market',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "MAE_MARKET_FRUIT_MOVE_ON",
@@ -179,7 +179,7 @@ var data = {
 		]
 	},
 	mae_market_shelia_intro = {
-		image = null,
+		image = 'mae_friend',
 		tags = ["dialogue_scene"],
 		text = "MAE_MARKET_SHELIA_INTRO",
 		options = [
@@ -187,7 +187,7 @@ var data = {
 		]
 	},
 	mae_market_shelia_talk = {
-		image = null,
+		image = 'mae_friend',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "MAE_MARKET_SHELIA_TALK",
@@ -197,7 +197,7 @@ var data = {
 		]
 	},
 	mae_market_shelia_request = {
-		image = null,
+		image = 'mae_friend',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "MAE_MARKET_SHELIA_REQUEST",
@@ -206,7 +206,7 @@ var data = {
 		]
 	},
 	mae_market_shelia_wait = {
-		image = null,
+		image = 'mae_friend',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "MAE_MARKET_SHELIA_WAIT",
@@ -228,7 +228,7 @@ var data = {
 		]
 	},
 	mae_market_shelia_response = {
-		image = null,
+		image = 'mae_friend',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		character = "mae",
@@ -315,7 +315,7 @@ var data = {
 		]
 	},
 	mae_friend_visit_2_start = {
-		image = null,
+		image = 'mae_ritual',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		character = "mae",
@@ -325,7 +325,7 @@ var data = {
 		]
 	},
 	mae_friend_visit_2_wait = {
-		image = null,
+		image = 'mae_ritual',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "MAE_FRIEND_VISIT_2_WAIT",
@@ -425,7 +425,7 @@ var data = {
 		]
 	},
 	mae_search_complete_start = {
-		image = null,
+		image = 'mae_debuff',
 		tags = ["dialogue_scene", "master_translate"],
 		reqs = [],
 		character = "mae",
@@ -444,7 +444,7 @@ var data = {
 		]
 	},
 	mae_search_complete_voice_1 = {
-		image = null,
+		image = 'mae_debuff',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		character = "mae",
@@ -454,7 +454,7 @@ var data = {
 		]
 	},
 	mae_search_complete_voice_2 = {
-		image = null,
+		image = 'mae_debuff',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		character = "mae",
@@ -464,7 +464,7 @@ var data = {
 		]
 	},
 	mae_search_complete_voice_3 = {
-		image = null,
+		image = 'mae_debuff',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		character = "mae",
@@ -474,7 +474,7 @@ var data = {
 		]
 	},
 	mae_search_complete_voice_4 = {
-		image = null,
+		image = 'mae_debuff',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		character = "mae",
@@ -489,7 +489,7 @@ var data = {
 		]
 	},
 	mae_search_complete_voice_5 = {
-		image = null,
+		image = 'mae_debuff',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		character = "mae",

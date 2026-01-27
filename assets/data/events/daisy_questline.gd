@@ -3718,7 +3718,7 @@ var data = {
 		]
 	},
 	daisy_lost_3 = {
-		image = null,
+		image = 'daisy_hostage',
 		tags = [
 			"dialogue_scene"
 		],
