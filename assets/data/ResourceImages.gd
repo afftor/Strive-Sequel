@@ -468,6 +468,7 @@ var scenes = {
 	daisyconfess = "res://assets/images/scenes/daisyconfession.png",
 	daisyevent = "res://assets/images/scenes/daisyevent.png",
 	daisystart = "res://assets/images/scenes/daisystart.png",
+	daisy_hostage = "res://assets/images/scenes/daisy_hostage.png",
 	dungeonclear = load("res://assets/images/scenes/dungeonclear.png"),
 	execution = load("res://assets/images/scenes/execution.png"),
 	exotic_slaver = load("res://assets/images/scenes/exotic_slaver.png"),
@@ -526,7 +527,13 @@ var scenes = {
 	deer = 'res://assets/images/scenes/deer.png',
 	leon = 'res://assets/images/scenes/leon.png',
 	ritual = 'res://assets/images/scenes/ritual.png',
+	
 	mae_camp = 'res://assets/images/scenes/mae_camp.png',
+	mae_market = "res://assets/images/scenes/mae_market.png",
+	mae_friend = "res://assets/images/scenes/mae_friend.png",
+	mae_ritual = "res://assets/images/scenes/mae_ritual.png",
+	mae_debuff = "res://assets/images/scenes/mae_debuff.png",
+	
 	wedding = "res://assets/images/scenes/marriage.png",
 	stone_sword = "res://assets/images/scenes/stone_sword.png",
 	stone_sword2 = "res://assets/images/scenes/stone_sword2.png",

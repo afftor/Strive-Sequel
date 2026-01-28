@@ -1277,31 +1277,58 @@ var data = {
 				]
 			}
 		],
-		common_effects = [
-			{
-				code = "make_story_character",
-				value = "Mae",
-				recruit_from_location = true
-			}
-		],
+		common_effects = [{code = "make_story_character", value = "Mae", recruit_from_location = true}],
 		options = [
 			{
 				code = "close",
 				text = "DIALOGUELEAVE",
-				reqs = [
-
-				],
+				reqs = [{type = "decision", value = "maePregnant", check = false}],
 				dialogue_argument = 1,
 				type = "next_dialogue",
 				bonus_effects = [
+					{code = "progress_quest", value = "sword_artifact_quest", stage = "stage8"},
+					{code = "update_city"},
 					{
-						code = "progress_quest",
-						value = "sword_artifact_quest",
-						stage = "stage8"
+						code = "add_timed_event",
+						value = "canVisitLeon",
+						args = [
+							{
+								type = "action_to_date",
+								date = [
+									1,
+									1
+								],
+								hour = 1,
+								action = "decision"
+							}
+						]
 					},
 					{
-						code = "update_city"
-					},
+						code = "add_timed_event",
+						value = "mae_initiate_start",
+						args = [
+							{
+								type = "add_to_date",
+								date = [
+									3,
+									3
+								],
+								hour = 1
+							}
+						]
+					}
+				]
+			},
+			{
+				code = "close",
+				text = "DIALOGUELEAVE",
+				reqs = [{type = "decision", value = "maePregnant", check = true}],
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = 'affect_unique_character', name = 'mae', type = 'impregnate'},
+					{code = "progress_quest", value = "sword_artifact_quest", stage = "stage8"},
+					{code = "update_city"},
 					{
 						code = "add_timed_event",
 						value = "canVisitLeon",

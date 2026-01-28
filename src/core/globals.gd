@@ -1226,8 +1226,8 @@ func impregnate_check(father,mother):
 	
 	return result
 
-func impregnate(father, mother):
-	if impregnate_check(father,mother).value == false:
+func impregnate(father, mother, skip_check = false):
+	if !skip_check and !impregnate_check(father,mother).value:
 		return
 	mother.add_stat('metrics_pregnancy',  1)
 	father.add_stat("metrics_impregnation", 1)
