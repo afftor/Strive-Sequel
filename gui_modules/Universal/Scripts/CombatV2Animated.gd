@@ -1067,6 +1067,7 @@ func use_skill(skill_code, caster, target, mode = variables.SKILL_BASE):
 		print('error - activating skill on non-empty queue')
 		return
 	$ItemPanel.hide()
+	hide_popup_skill()
 	$Menu/Items.pressed = false
 	if activeaction != skill_code:
 		activeaction = skill_code
