@@ -58,6 +58,8 @@ var pregen_characters = {
 			training_sexservice_adv = ["DaisyTrainingFinished"],
 			training_callmaster = ['DaisyQuestlineFinished'],
 		},
+		achievement = "char_daisy",
+		achi_bonus = "daisy_start",
 	},
 
 	Kurdan = {
@@ -99,6 +101,8 @@ var pregen_characters = {
 		traits = ['gifted','training_s_combat','training_s_working'],
 		tags = [],
 		sex_skills = {petting = 2, penetration = 15, oral = 4, anal = 0},
+		achievement = "char_kurdan",
+		achi_bonus = "kurdan_start",
 	},
 	Aire = {
 		code = 'aire',
@@ -153,6 +157,8 @@ var pregen_characters = {
 			positive = 'neutral',
 			magic = 'neutral',
 		},
+		achievement = "char_aire",
+		achi_bonus = "aire_start",
 	},
 	Anastasia = {
 		code = 'anastasia',
@@ -832,6 +838,8 @@ var pregen_characters = {
 			positive = 'neutral',
 			magic = 'resist',
 		},
+		achievement = "char_kuro",
+		achi_bonus = "kuro_start"
 	},
 	
 	Rouge = {

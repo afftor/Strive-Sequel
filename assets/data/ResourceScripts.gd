@@ -101,6 +101,7 @@ onready var node_data = {
 	input_handler.NODE_ARENA : {name = 'arena', mode = 'scene', scene = preload("res://gui_modules/arena/arena.tscn"), calls = 'open'},
 	input_handler.NODE_HARD_TUTORIAL_PANEL : {name = 'hard_tutorial_panel', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/hard_tutorial_panel.tscn")},
 	input_handler.NODE_HARD_TUTORIAL_LIST : {name = 'hard_tutorial_list', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/hard_tutorial_list.tscn")},
+	input_handler.NODE_ACHI_UNLOCK : {name = 'achi_unlock', mode = 'scene', scene = preload("res://gui_modules/achievements/unlock.tscn")},#calls = 'open'
 	#Animations
 	input_handler.ANIM_TASK_AQUARED : {name = 'ANIMTaskAquared', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_task_aquired.tscn") },
 	input_handler.ANIM_BATTLE_START : {name = 'ANIMBattleStart', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_battle_start.tscn") },

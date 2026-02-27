@@ -567,6 +567,7 @@ func turn_into_unique(code):
 	if data.has('training_disposition'):
 		process_disposition_data(data.training_disposition, true)
 	update_prt()
+	input_handler.achievements.try_add_char_achimnt(get_stat('unique'))
 	globals.emit_signal("slave_added")
 
 

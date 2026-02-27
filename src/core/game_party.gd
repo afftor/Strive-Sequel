@@ -493,11 +493,14 @@ func add_slave(person, child = false):
 #	character_order.push_back(person.id)
 	if person.is_unique():
 		ResourceScripts.game_world.easter_egg_characters_acquired.append(person.get_stat('unique'))
+		input_handler.achievements.try_add_char_achimnt(person.get_stat('unique'))
 	person.fill_masternoun()
 	person.set_stat('metrics_ownership', ResourceScripts.game_globals.get_date()[0])
 	globals.text_log_add("char","New character acquired: " + person.get_short_name() + ". ")
 	globals.emit_signal("slave_added")
 	gui_controller.nav_panel.build_accessible_locations()
+	for prof in person.get_professions():
+		input_handler.achievements.try_add_prof_achimnt(prof)
 
 
 func remove_slave(tempslave, permanent = false):

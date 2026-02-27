@@ -31,6 +31,7 @@ func _ready():
 	$CharButton.connect("pressed", self, "set_state", ["char"])
 	$CharButton.set_meta("type", "char")
 	$CloseButton.connect("pressed", self, "close_gallery")
+	$AchiButton.connect("pressed", self, "open_achievements")
 	set_state("story")
 	
 	$FullScreenImage.connect("gui_input", self, '_on_FullScreenImage_gui_input')
@@ -230,3 +231,6 @@ func reset_gallery_progress():
 	input_handler.progress_data.characters = []
 	input_handler.save_progress_data(input_handler.progress_data)
 	set_state("story")
+
+func open_achievements():
+	$achievements.show()

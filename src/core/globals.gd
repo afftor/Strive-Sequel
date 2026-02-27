@@ -2262,6 +2262,7 @@ func common_effects(effects):
 						input_handler.play_animation("quest_completed", args)
 						break
 				ResourceScripts.game_progress.completed_quests.append(i.value)
+				input_handler.achievements.try_add_quest_achimnt(i.value)
 			'complete_active_location':
 				complete_location(input_handler.active_location.id)
 #			'set_completed_quest_location':
@@ -2644,6 +2645,8 @@ func common_effects(effects):
 				ResourceScripts.game_party.check_masters_story_fame()
 			'set_faction_factor':
 				ResourceScripts.slave_quests.set_faction_factor(i.faction, i.value)
+			'achievement':
+				input_handler.achievements.try_add_achimnt(i.value)
 
 func after_wedding_event(character):
 	if character == null:

@@ -200,6 +200,10 @@ var data = {
 			},
 			{
 				code = "check_masters_story_fame",
+			},
+			{
+				code = "achievement",
+				value = "act1"
 			}
 		],
 		text = [
