@@ -10629,6 +10629,461 @@ You feel relieved it all turned out well. The girls went to rest soon after you 
 	TREAT_FOOD_LIKE1 = "Wow, how did you know this is my favorite?",
 	TREAT_FOOD_HATE1 = "Sorry, I can't stomach this.",
 	TREAT_FOOD_NEUTRAL1 = "Thank you, [master], I'll accept this.",
+
+	# =========================================================
+	# JEAN QUEST 2 — The Ruins
+	# =========================================================
+
+	# Scene 1: Jean's Room
+	JEAN_Q2_START = """Since you recovered that book Jean was so adamant about obtaining, she has been stuck in her room for days, barely setting foot outside. Curious and slightly worried about her well-being, you decide to pay her a visit.
+
+Her room greets you with quite a sight: loose notes cover both the table and the floor, layers of dust and grime coating the table. Despite hearing the door open, she doesn't even turn around.
+
+{color=yellow|Jean: — Thanks, just put the food somewhere on the floor… I'll get it later.}""",
+
+	JEAN_Q2_1 = """You promptly inform her that you are not, in fact, a servant. Hearing your voice, she finally turns around, startled.
+
+{color=yellow|Jean: — Oh! Sorry, I didn't expect it to be you.}
+
+She clears her throat, trying to regain her composure.
+
+{color=yellow|Jean: — Um… did you need something? Or to what do I owe the visit?}""",
+
+	JEAN_Q2_2 = """You explain that you were simply curious how her research is going. At first, she frowns slightly, then shrugs.
+
+{color=yellow|Jean: — It's going alright. Taking a bit longer than I expected.}""",
+	JEAN_Q2_2_OPTION_1 = "Seems like you are taking your time",
+
+	JEAN_Q2_3_OPTION_1 = "Your place is a mess",
+	JEAN_Q2_3_OPTION_2 = "Seems like you are taking your time",
+
+	JEAN_Q2_4_STUCK = """{color=yellow|Jean: — Fine, fine! I'm a bit stuck, alright? What does that have to do with you? This is just a personal project, it's not like I'm on some deadline!}""",
+	JEAN_Q2_4_OPTION_KIND = "It doesn't have to have anything to do with me. I just want to help a friend.",
+	JEAN_Q2_4_OPTION_BLUNT = "Well, you do live on my property, so I'd rather you be useful than rot in your room all day.",
+
+	JEAN_Q2_5_KIND = """Hearing that, Jean averts her gaze for a moment, her cheeks get slightly more pink as she is clearly unsure how to react to such a direct display of kindness.
+
+{color=yellow|Jean: — Well, um… alright. Noted, I guess… Thanks. Though I'm not sure what you can really do to help.}""",
+
+	JEAN_Q2_5_BLUNT = """Jean clicks her tongue, clearly not appreciating your comment, but unable to argue with it. She sighs and gestures toward the notes.
+
+{color=yellow|Jean: — As you can see, I've already done quite a bit of work. It's just that one crucial part of the text references ancient history and places I've never heard of.}""",
+
+	JEAN_Q2_6_PROBLEM = """{color=yellow|Jean: — It's not something I can't read or don't understand. The problem is that the text references ancient history and places I've never even heard of. So, I don't know where I should even begin looking for the clues.}
+
+{color=yellow|Jean: — After I got the book I thought it would be simple. That I would find the artifact, prove the theory, prove everyone wrong… Darn it.}""",
+
+	JEAN_Q2_7_OPTION_MYR = "How about asking Myr about it?",
+	JEAN_Q2_7_OPTION_CHURCH = "Maybe the church can help",
+
+	JEAN_Q2_MYR_REJECT = """{color=yellow|Jean: — Absolutely not. I'm not going to run to her every time I hit a wall. Besides… she'd just lecture me for an hour and then throw me out for wasting her time. Let's find another way.}""",
+
+	JEAN_Q2_CHURCH_AGREE = """{color=yellow|Jean: — Guess it can't be helped. Back when I was in the Academy I never asked for help, but it seems that I could really use some outside expertise. And the Church might have records that never made it into academic circulation.}""",
+
+	# Scene 2: Church
+	JEAN_Q2_CHURCH_ENTER = """Ginny approaches you with a warm smile, her gaze lingering on Jean with open curiosity.
+
+{color=yellow|Ginny: — Always glad to see you at our church, Mayor. Is there anything I can help you with?}
+
+You nod and let Jean explain the situation. Ginny listens closely as she describes the ruins and the kind of information she needs.
+
+{color=yellow|Ginny: — Ancient ruins in the western region of the Empire… Hmm, that area did house several temples, even before it officially became part of the Empire.}""",
+
+	JEAN_Q2_CHURCH_2 = """She gestures for you to follow and leads you into a quieter wing of the church.
+
+{color=yellow|Ginny: — As far as I remember, there were some stories about underlying power struggles at the time. Some temples were abandoned, and the records became fragmented.}
+
+{color=yellow|Jean: — Was there any mention of, say, a powerful artifact? Something described as a dark sphere, maybe? Anything like that?}
+
+Ginny thinks for a moment.""",
+
+	JEAN_Q2_CHURCH_3_ARTIFACT = """{color=yellow|Ginny: — Hmm… I can't say I remember that detail. But there were rumors of a demon being involved! Without any real evidence, though.}""",
+
+	JEAN_Q2_CHURCH_4_OPTION_1 = "Jean, does your research have something to do with demons? They are not someone to trifle with, you know.",
+	JEAN_Q2_CHURCH_4_OPTION_2 = "What was that demon doing there? I bet they were the source of all the trouble.",
+	JEAN_Q2_CHURCH_4_OPTION_3 = "No evidence? Then how do we know what to trust?",
+
+	JEAN_Q2_DEMON_WARN = """{color=yellow|Jean: — Of course not, that's the first time I've heard about them since Myr's classes!}
+
+She studies you with visible surprise.
+
+{color=yellow|Jean: — I didn't expect you to have actually met one. Seems even the rumors didn't cover all of your adventures.}""",
+
+	JEAN_Q2_DEMON_INFO = """{color=yellow|Ginny: — Your intuition is on point. Or are you speaking from experience? Anyway, you are correct. The rumors had it that it was the demon who swayed one of the bishops from God's way and made him turn on his brothers.}
+
+{color=yellow|Ginny: — I should warn you though, my recollection may not be perfect. It's been years since I read those records, and many of them contradict each other.}""",
+
+	JEAN_Q2_CROSSREF = """Ginny smiles faintly.
+
+{color=yellow|Ginny: — We cross-reference everything with reliable sources. Proper study, cataloging… it will take time and I can't do it alone, but if you're willing to help, we might find something together.}
+
+Jean hesitates, glances at you. You give her a small nod. After a moment, she exhales.
+
+{color=yellow|Jean: — Alright. When do we start?}
+
+Instead of answering, Ginny opens a heavy wooden door. Beyond it stretches the church library with rows of shelves packed with worn volumes, dust gathering along their edges.""",
+
+	JEAN_Q2_LIBRARY = """{color=yellow|Ginny: — Now, if you're willing.}
+
+Jean clearly hadn't expected something of this scale, but she steps inside without protest. You leave them to their work and return to the mansion. Later that evening she returns but informs that this is going to take more time than that…""",
+
+	# Scene 3: Research Done
+	JEAN_Q2_RESEARCH_DONE = """Over the next few days, Jean spends long hours in the library. Whenever you stop by, you find her seated at a long wooden table, surrounded by open books and comparing passages, copying symbols, muttering to herself.
+
+Finally, on the fourth evening, Jean returns with a faint smile and a single sheet of paper. The findings are condensed into one thing: an approximate location of the ruins you have been searching for.""",
+
+	# Scene 4: Ruins Approach
+	JEAN_Q2_RUINS_APPROACH = """The road deteriorates the closer you get to the marked location, turning from stone path into uneven dirt before vanishing entirely. Jean checks her notes constantly, stopping now and then to adjust your direction.
+
+The deeper you go, the more remnants of ancient structures begin to surface, half-swallowed by vegetation, barely recognizable beneath moss and roots. At last you reach a collapsed stone entrance. Jean compares the carvings with her notes and nods.""",
+
+	# Scene 5: Central Hall
+	JEAN_Q2_CENTRAL_HALL = """The first few rooms of the ruins turn out to be largely unremarkable, but everything changes the moment you enter the central hall.
+
+The former temple has been repurposed. Metal cages line the chamber, each holding a monster. The moment they spot you, the creatures begin to slam into the bars. The metal bends under the impact.
+
+Only one cage is different and you need but a single glance to immediately recognize the woman inside.
+
+{color=yellow|Jean: — Rynn?! How did she get here?!}
+
+Hearing the sound of Jean's voice, Rynn instantly looks up, hope flashing in her eyes.""",
+
+	JEAN_Q2_HALL_FIGURE = """Suddenly a movement at the far end of the hall draws your attention. A hooded figure emerges from a staircase descending deeper into the ruins. He freezes when he sees you.
+
+{color=aqua|Figure: — H-huh? Intruders? Again?! How did you even get here?! Curses!}
+
+{color=yellow|Rynn: — Be careful! He controls them!}
+
+The figure raises his wooden staff, laughter slipping from under the hood.
+
+{color=aqua|Figure: — Indeed I do! And since you, fools, come all the way here I'll let them play with you until you wish to get in the cage yourself!}
+
+The cages, all except the one with Rynn inside, burst open. Monsters surge forward, flooding the hall, driven into a frenzy. There's no avoiding the fight. You raise your weapon.""",
+
+	JEAN_Q2_AFTER_FIGHT = """With the last creature falling you turn to the hooded figure.
+
+{color=aqua|Figure: — No-no, this wasn't supposed to happen! How did you even…}
+
+Seeing you approach him, he shuts up, turns around and runs down the staircase, disappearing deeper into the ruins.
+
+You consider following him, but then your gaze returns to Rynn's cage. She's conscious, but clearly injured and out of fighting spirit, and she won't be any help in your pursuit.""",
+	JEAN_Q2_CHOICE_FREE_RYNN = "Free Rynn",
+	JEAN_Q2_CHOICE_PURSUE = "Pursue the hooded figure",
+
+	# Path A: Free Rynn first
+	JEAN_Q2_FREE_RYNN_1 = """You turn away from the staircase. Jean shoots you a look of relief, and together you force the cage open, helping the injured woman get out.
+
+{color=yellow|Rynn: — Thank you! When I heard your voices, I couldn't believe it at first, but gods, I'm so lucky you managed to find this place…!}
+
+She looks at the dead monsters around you.
+
+{color=yellow|Rynn: — … And that, apparently, you were ready to take on a small army of those things. I barely managed to kill half a dozen before I was overpowered and captured.}""",
+	JEAN_Q2_FREE_RYNN_OPTION_1 = "Coming here alone was reckless. There are easier ways to die if that's your goal.",
+	JEAN_Q2_FREE_RYNN_OPTION_2 = "I'm glad you are alive. Looks like we came just in time.",
+
+	JEAN_Q2_RYNN_REPRIMAND = """Rynn lowers her gaze at your reprimand.
+
+{color=yellow|Rynn: — Yeah, I know… I was in a rush and didn't really think this through. Again, thank you for saving me.}""",
+
+	JEAN_Q2_RYNN_GLAD = """Rynn gives a faint smile.
+
+{color=yellow|Rynn: — Yeah, me too! Even though it didn't look like they were going to kill me right away, I still probably would've ended up like one of those poor souls if it wasn't for you guys.}""",
+
+	JEAN_Q2_RYNN_HOW_FOUND = """Jean steps closer.
+
+{color=yellow|Jean: — How did you even find this place? I had to dig through hundreds of old historical records just to narrow down the approximate location of this temple!}""",
+
+	JEAN_Q2_RYNN_HOW_FOUND_2 = """A bit confused by the question, Rynn shrugs.
+
+{color=yellow|Rynn: — Well, I wasn't looking for any temple in particular, just for a place that could hide both these monsters and their creator.}""",
+
+	JEAN_Q2_RYNN_HOW_FOUND_3 = """{color=yellow|Rynn: — So, after we parted ways, I started asking local fighting guilds, traders and hunters about any notable areas with caves or ruins like this. One of the hunters told me about this place, so I decided to check it and, well…}
+
+{color=yellow|Rynn: — We all know how it ended. And what about you? How did you get here?}
+
+Jean explains how you found the location while you treat Rynn's wounds. Most of the cuts and bite marks don't seem life-threatening, but she still looks unwell.""",
+
+	JEAN_Q2_RYNN_CAMP_SETUP = """Once Jean finishes her story, you help Rynn to her feet and escort her outside. Near the entrance you quickly set up a makeshift camp where she can rest.
+
+{color=yellow|Rynn: — I'm sorry I can't be of any use to you right now… Just be careful in there, okay? We don't know what kind of creatures might be deeper inside.}
+
+You head back toward the ruins. The staircase leading deeper into the dungeon awaits.""",
+
+	JEAN_Q2_LAB_ESCAPED = """You enter the final chamber only to find it empty. In the far-left corner lies a collapsed tunnel. The hooded figure used the time it took you to get here to flee, and he brought the ceiling down behind him. There's no way to continue the pursuit.""",
+
+	JEAN_Q2_LAB_SEARCH = """Jean turns her attention to the room itself. This laboratory is far larger than anything you expected. Ritual circles overlap across the floor, cages line the walls, some empty, some stained with old blood. Tables are cluttered with notes, diagrams, and half-finished experiments.
+
+Jean flips through the papers quickly. You notice her expression shift and her eyes linger on certain pages longer than others. But when you ask what's wrong, she shakes her head.
+
+{color=yellow|Jean: — It's… nothing. Just… a lot of new information.}
+
+Her tone says otherwise.""",
+	JEAN_Q2_LAB_OPTION_LET = "Alright then, we will discuss it later",
+	JEAN_Q2_LAB_OPTION_PRESS = "You're hiding something. What is it, Jean?",
+
+	JEAN_Q2_LAB_REACT_LET = """You decide not to push her and instead focus on finishing business in this place. Jean nods and begins stuffing several notes into her bag.
+
+{color=yellow|Jean: — I'll study these later. I don't want to spend more time here than necessary.}""",
+
+	JEAN_Q2_LAB_REACT_PRESS = """Jean exhales sharply and lowers the papers.
+
+{color=yellow|Jean: — … Fine. The artifact that is crucial for my research… it's mentioned here. Not directly, but the descriptions match.}
+
+She hesitates before continuing.
+
+{color=yellow|Jean: — The problem is… even though its powers are supposed to serve a very different purpose, these notes strongly suggest it was used as a main catalyst for creating… those things.}
+
+She gestures toward the hallway where you fought the last wave of monsters and shakes her head.
+
+{color=yellow|Jean: — I never thought it could be used this way. Was it corrupted somehow? Damn it… this ruins everything! I wanted to prove this power could be used to preserve life… not create monsters!}
+
+She strikes the table with her fist, sparks flying on impact, leaving a scorched mark behind. After a moment, she straightens up and begins stuffing the notes into her bag.
+
+{color=yellow|Jean: — I'll study these later. I don't want to spend more time here than necessary.}""",
+
+	JEAN_Q2_LAB_BURN_OPTION_1 = "Then let's make sure it doesn't.",
+	JEAN_Q2_LAB_BURN_OPTION_2 = "Just don't burn us in the process.",
+
+	JEAN_Q2_BURN_LAB = """Jean nods, then puts both of her hands in front of her and closes her eyes. A swirling fire begins to form next to her palms, growing rapidly until the heat becomes intense enough to sting your skin. With visible relief, she hurls the spell into the lab. She then grabs your hand, and the two of you run as a fiery tornado tears through the chamber behind you.""",
+
+	# Path A: Return to Rynn at camp
+	JEAN_Q2_RYNN_CAMP_RETURN = """You return to the small camp where you last left Rynn. As you approach, she greets you, but her voice is noticeably weaker than before.
+
+{color=yellow|Rynn: — Glad you guys are okay. So… what happened down there?}
+
+Jean explains what you learned. Hearing that the culprit escaped, Rynn lowers her gaze.
+
+{color=yellow|Rynn: — Sorry… If you hadn't stopped to save me, maybe you would've caught him.}""",
+	JEAN_Q2_RYNN_CAMP_OPTION_1 = "Don't blame yourself. It was my choice and I still think it was the correct one.",
+	JEAN_Q2_RYNN_CAMP_OPTION_2 = "Maybe. But we can't change it now, so no point in dwelling on it.",
+
+	JEAN_Q2_RYNN_FEVER_1_1 = """She smiles faintly.
+
+Suddenly, she breaks into a coughing fit. Her breathing is shallow, her movements are sluggish, and she's sweating despite the air not being particularly warm.""",
+	JEAN_Q2_RYNN_FEVER_1_2 = """She sighs.
+
+{color=yellow|Rynn: — Yeah, I guess you are right…}
+
+Suddenly, she breaks into a coughing fit. Her breathing is shallow, her movements are sluggish, and she's sweating despite the air not being particularly warm.""",
+
+	JEAN_Q2_RYNN_FEVER_ASK_1 = "How do you feel?",
+	JEAN_Q2_RYNN_FEVER_ASK_2 = "Your fever must be acting up. You better rest.",
+
+	JEAN_Q2_RYNN_FEVER_2_1 = """{color=yellow|Rynn: — Not great… Guess being locked in a cold cage for two days didn't help. Or maybe…}""",
+	JEAN_Q2_RYNN_FEVER_2_2 = """{color=yellow|Rynn: — Yeah, you are probably right… Could it really be…?}""",
+
+	JEAN_Q2_RYNN_PUSH_TELL_1 = "Tell us anyway. It could be important.",
+	JEAN_Q2_RYNN_PUSH_TELL_2 = "You're hiding something. Don't you think we at least deserve some honesty?",
+
+	JEAN_Q2_RYNN_VOICE_PUSH_1 = """She hesitates, then shakes her head.
+
+{color=yellow|Rynn: — Never mind. Probably just a fever dream.}
+
+You and Jean exchange glances.
+
+{color=yellow|Rynn: — Yeah… alright. I just didn't want to sound crazy.}""",
+	JEAN_Q2_RYNN_VOICE_PUSH_2 = """She hesitates, then shakes her head.
+
+{color=yellow|Rynn: — Never mind. Probably just a fever dream.}
+
+You and Jean exchange glances.
+
+{color=yellow|Rynn: — I'm not hiding it because I don't trust you… I just don't know if it was real. But fine. I'll tell you.}""",
+
+	JEAN_Q2_RYNN_OVERHEARD = """{color=yellow|Rynn: — After I got knocked out… I remember hearing voices near my cage. Two people talking… something about life force. Transfers. Magical stuff.}
+
+She pauses to catch her breath.
+
+{color=yellow|Rynn: — While waiting for you, I started thinking maybe they did something to me… but I figured it was just a dream.}
+
+Jean's face drains of color. She pulls out her notes, flipping through them with trembling fingers. When she looks up, fear is clear on her face.""",
+
+	JEAN_Q2_CURSE_REVEAL = """{color=yellow|Jean: — I… don't think it was a dream. When she said "transfer," I remembered seeing that word over and over in the notes. So I looked deeper…}
+
+She glances at Rynn with pity. Rynn notices and looks anxiously between the two of you.
+
+{color=yellow|Rynn: — What? Do you know something?}
+
+Jean hesitates, unable to meet her eyes.
+
+{color=yellow|Jean: — If what you heard is real… then the curse has already been cast on you. The one that creates… them.}
+
+{color=yellow|Rynn: — Them? Who's them? Do you mean…?}
+
+Silence settles between the three of you as realization sinks in. Rynn's breath catches. Slowly, she looks down at her hands, as if expecting them to already be changing.
+
+{color=yellow|Rynn: — And… How long do I have?}""",
+
+	JEAN_Q2_CURSE_2_JEAN = """{color=yellow|Jean: — I don't know. The notes say it varies. Sometimes days… sometimes weeks. But never longer than a month.}""",
+
+	JEAN_Q2_CURSE_3_RYNN = """Rynn lowers her head, absorbing the news. When she speaks again, each word seems to take effort.
+
+{color=yellow|Rynn: — I mean… I lived a dangerous life. I never really expected to die of old age. But this… like this…?}""",
+
+	JEAN_Q2_CURSE_4_TIME = """{color=yellow|Jean: — We don't know yet. Maybe if we find the artifact… maybe the academy… I don't know…}
+
+While Jean trails off, practically muttering her thoughts aloud, Rynn begins to lean back and so you rush forward just in time to catch her.""",
+
+	JEAN_Q2_CURSE_5_RYNN = """She looks up at you, fear plain in her eyes.
+
+{color=yellow|Rynn: — I don't want to go like that. Is there… a way to stop it? Anything?}""",
+
+	JEAN_Q2_CURSE_6_HOPE = """The movement snaps Jean out of her stupor and she hurries to Rynn's side.
+
+{color=yellow|Rynn: — S-sorry… that was a lot to take in… I think I need to rest for a bit… But if there's any hope… maybe you can still help me…?}
+
+Rynn slips into unconsciousness.
+
+You and Jean exchange uncertain glances. She clenches her fists.
+
+{color=yellow|Jean: — How did it turn out like this?! All I wanted was to finish my research, not get dragged into some nightmare where I have to decide whether people live or die!}
+
+While she vents, you look at Rynn's unconscious body. There are people who might be able to help her, but there's no certainty any of them can.""",
+
+	JEAN_Q2_RYNN_SAVE_OPTION = "Let's try our best to save her. First, let's get her to the church.",
+	JEAN_Q2_RYNN_LEAVE_OPTION = "Sorry, Jean. I don't want to take any risks. We'd best just leave her.",
+
+	JEAN_Q2_SAVE_RYNN = """Jean forces herself to calm down. She turns to you, determination hardening her expression.
+
+{color=yellow|Jean: — Yeah. Let's do this. We'll have to carry her out of here.}
+
+The trip back is quiet. Rynn stirs occasionally but never wakes. As soon as you reach Aliron, you head straight for the church.""",
+
+	JEAN_Q2_LEAVE_RYNN = """Jean stares at you in disbelief.
+
+{color=yellow|Jean: — W-what? You're saying we just leave her here?! This is too cruel…}
+
+Tears fill her eyes as she helplessly looks back at Rynn's unconscious body while you walk away, leaving her alone in the wilderness.
+
+Once inside the mansion, Jean goes straight to her room and locks the door behind her. You think you can hear sobbing coming from that side.""",
+
+	JEAN_Q2_CHURCH_RYNN_ARRIVE = """Ginny steps forward to greet you as usual, but upon noticing your urgency immediately leads you to the lazaret.
+
+{color=yellow|Ginny: — Considering everything we know, I believe I understand how the curse works.}
+
+{color=yellow|Ginny: — It drains the victim's life force slowly. Once it runs too low… the body transforms and begins feeding on outside energy. That's how those monsters are created.}""",
+	JEAN_Q2_CHURCH_RYNN_OPTION_1 = "Can it be removed?",
+	JEAN_Q2_CHURCH_RYNN_OPTION_2 = "Can you at least delay it?",
+
+	JEAN_Q2_CHURCH_RYNN_2 = """{color=yellow|Ginny: — I can stabilize her, give her some more time, but I can't remove the curse itself.}
+
+{color=yellow|Jean: — We understand. Thank you for doing what you can. And we… we'll have to use the time we got and think of a way to deal with the curse.}
+
+You nod in agreement, thank Ginny once more, and leave Rynn in her care. Together with Jean, you return to the mansion.""",
+
+	# Path B: Pursue the figure first
+	JEAN_Q2_PURSUE_PAST_RYNN = """You turn away from the cage and rush toward the staircase, pulling Jean along with you.
+
+The hope in Rynn's eyes turns into confusion and then hurt as she sees you running past her. Summoning what strength she has left, she grabs the cold metal bars and shouts after you.
+
+{color=yellow|Rynn: — H-hey, where are you going? Don't just leave me here! Please…!}""",
+
+	JEAN_Q2_PURSUE_JEAN_DOUBTS = """Hearing her pleas, Jean glances back at the cage, then turns to you, surprise and doubt written all over her face.
+
+{color=yellow|Jean: — Wait, aren't we going to help her? That doesn't feel right!}
+
+You quickly explain your reasoning and promise that you'll come back for Rynn on your way back. Jean clearly doesn't like the answer, but after a brief hesitation she nods and follows you deeper into the dungeon.""",
+
+	JEAN_Q2_BOSS_FIGHT_INTRO = """Before reaching what looks like the final section, a group of monsters emerges from the shadows and blocks your path. There are fewer than before, but they move with disturbing coordination. Some have armor fused into their flesh, others move unnaturally in sync. At their center stands a larger creature reinforced with crude metal.
+
+Behind them stands the hooded figure, still clutching the artifact.
+
+{color=aqua|Figure: — You got lucky before! But now you'll witness the results of our latest experiment. And I won't go easy on you this time!}
+
+His hands shake as he gathers energy at the tip of his staff and fires a blazing projectile. Clearly aimed at you, the spell somehow misses and nearly hits Jean instead, who was half a room away. She manages to sidestep it just in time, though part of her hat catches fire. Muttering a curse, she tears it off and stomps it out.
+
+{color=yellow|Jean: — You bastard! You're gonna pay for that!}""",
+
+	JEAN_Q2_CAPTURE_FIGURE = """When the last monster is finished, you rush into the final chamber. The hooded figure is trying to open a hidden passage, but the mechanism is old and slow. You pin him to the ground before it fully opens.
+
+{color=aqua|Figure: — I surrender, I surrender! Please don't kill me! Mercy! I'm the victim myself!}
+
+Watching him tremble, you immediately doubt he was ever the mastermind. Jean plants her hands on her hips and stands above him.
+
+{color=yellow|Jean: — Oh, really? And you expect us to believe it? You were just trying to kill us while spouting nonsense about how you "won't go easy on us"! And now you're suddenly the victim?!}
+
+Terrified, the captive crawls closer to you.
+
+{color=aqua|Figure: — I was wrong! Very-very wrong! I didn't even mean it, I was just trying to scare you! I was really scared myself!}
+
+{color=yellow|Jean: — Oh yeah? Good! You were right to be scared! 'Cause you shouldn't have attacked us! And shouldn't have burned my favorite hat with your stupid, clumsy, second-rate spell!}
+
+She kicks the captive a couple of times, making him retreat behind you, then spits to the side and crosses her arms, leaving him for you to deal with.""",
+
+	JEAN_Q2_INTERROGATE_OPTION_1 = "Who even are you?",
+	JEAN_Q2_INTERROGATE_OPTION_2 = "Where's the real mastermind?",
+	JEAN_Q2_INTERROGATE_OPTION_3 = "Alright, tell us what's going on here.",
+
+	JEAN_Q2_INTERROGATE_WHO = """{color=aqua|Figure: — One day I was just minding my own business and stumbled upon these ruins. Got curious, looked inside, saw a couple of monsters and decided to back away… But then suddenly this guy in a robe showed up behind me. Said I knew too much and couldn't leave anymore.}
+
+{color=aqua|Figure: — Next thing I knew, I was stuck here, taking care of monsters. I don't even know his name, had to call him "Master" all the time!}
+
+{color=aqua|Figure: — And he looks… normal. Just an ordinary guy, really. Though he talks like some old grandpa despite looking barely older than me…}""",
+
+	JEAN_Q2_INTERROGATE_MASTERLOC = """{color=aqua|Figure: — I don't know! I swear! He comes and goes whenever he wants! Sometimes he disappears for days, sometimes longer!}
+
+{color=aqua|Figure: — I know he spends a lot of time in the capital though, he mentioned it more than once. But not just there… he travels all over the Empire.}
+
+{color=aqua|Figure: — I mean, he's the one who brought most of the captives here in the first place. I mean, except that last girl. She kinda walked into this place on her own…}""",
+
+	JEAN_Q2_INTERROGATE_FULL = """Whether from nerves or desperation, he spills everything without much prompting. He was captured by the real mastermind, branded with a tracking spell, and given a choice between joining the ranks of monsters or helping to take care of them.
+
+He served the real mastermind for the last couple of months, though according to him, he was little more than an errand boy. All of the experiments were conducted by the master himself and they were exactly what you've already pieced together: every monster in this place was once human, later transformed by some ancient looking artifact.
+
+Despite clearly being distraught by the revelation, Jean pulls out a note as soon as she hears about the artifact and shows it to him, asking if it matches the description. The captive eagerly nods.""",
+
+	JEAN_Q2_ARTIFACT_OPTION_LET = "Alright then, we will discuss it later",
+	JEAN_Q2_ARTIFACT_OPTION_PRESS = "You're hiding something. What is it, Jean?",
+
+	JEAN_Q2_ARTIFACT_LET = """You decide not to push her and instead focus on finishing business in this place. Jean begins stuffing several notes into her bag.
+
+{color=yellow|Jean: — I'll study these later. I don't want to spend more time here than necessary.}""",
+
+	JEAN_Q2_ARTIFACT_PRESS = """Jean exhales sharply and lowers the papers.
+
+{color=yellow|Jean: — … Fine. The artifact that is crucial for my research… it's the one he just mentioned. The descriptions match.}
+
+She shakes her head.
+
+{color=yellow|Jean: — I never thought it could be used this way. Was it corrupted somehow? Damn it… this ruins everything! I wanted to prove this power could be used to preserve life… not create monsters!}
+
+She strikes the table with her fist, sparks flying on impact, leaving a scorched mark behind. The captive shudders at the sound and tries to blend into the environment.
+
+After a moment, she straightens up and begins stuffing the notes into her bag.
+
+{color=yellow|Jean: — I'll study these later. I don't want to spend more time here than necessary.}""",
+
+	JEAN_Q2_CAPTIVE_OPTION_FREE = "It's your lucky day. Get the hell out of here.",
+	JEAN_Q2_CAPTIVE_OPTION_JAIL = "Forget about walking away. We're handing you over to the guards.",
+	JEAN_Q2_CAPTIVE_OPTION_KILL = "The intel you gave us isn't worth keeping you around.",
+
+	JEAN_Q2_CAPTIVE_FREE = """You cut his bonds. He thanks you repeatedly and runs off without looking back. Jean watches silently.
+
+{color=yellow|Jean: — Really? You think he deserves that freedom?}""",
+
+	JEAN_Q2_CAPTIVE_JAIL = """Hearing your decision, the captive sighs but doesn't argue. He lowers his head, accepting his fate.""",
+
+	JEAN_Q2_CAPTIVE_KILL = """The moment he realizes what you mean, the captive tries to run, but he doesn't make it far. Your blade finds his neck in a single swift motion. He collapses almost instantly.
+
+At the sound, Jean spins around. Her eyes widen in shock and fear.
+
+{color=yellow|Jean: — Did you just… why?! I thought we were taking him to jail! That's… that's too far, isn't it?!}
+
+Jean hesitates, staring at the lifeless body, then slowly nods.
+
+{color=yellow|Jean: — Alright…}""",
+
+	JEAN_Q2_RYNN_UNCONSCIOUS = """When you return to the cage chamber, you rush to free Rynn only to find her already unconscious, her body burning with fever.
+
+Worry flashes across Jean's face, but there's no time to stop and talk.
+
+You hoist Rynn onto your shoulder and hurry out of the ruins, soon breaking out into the open air.""",
+
+	JEAN_Q2_CAPTIVE_SPOKE_B = """Once outside, you do what you can with the limited supplies you have. Jean turns her attention to the notes from the lab, flipping through them rapidly.
+
+{color=yellow|Jean: — I… I think I understand what happened to her.}
+
+She describes what she found: descriptions of a curse that transfers life force, detailed in the same notes that mention the artifact. Every monster in this place was once human. The transformation process always begins this way.""",
 }
 
 
