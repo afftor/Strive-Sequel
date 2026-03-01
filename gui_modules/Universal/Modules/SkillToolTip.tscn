@@ -1,43 +1,90 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://gui_modules/Universal/Scripts/SkillToolTip.gd" type="Script" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Themes_v2/SimpleBgPanel.tres" type="StyleBox" id=3]
+[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/images/iconsskills/Lich-strike.png" type="Texture" id=5]
+[ext_resource path="res://assets/Themes_v2/CHAR_INFO/frame_charinfoskills.png" type="Texture" id=6]
 
-[node name="skilltooltip" type="Panel"]
-margin_left = 1027.0
-margin_top = 283.0
-margin_right = 1463.0
-margin_bottom = 550.0
-mouse_filter = 2
-custom_styles/panel = ExtResource( 3 )
+[sub_resource type="DynamicFont" id=1]
+size = 30
+use_filter = true
+font_data = ExtResource( 4 )
+
+[node name="skilltooltip" type="ScrollContainer"]
+margin_right = 463.0
+margin_bottom = 203.0
+grow_horizontal = 0
+size_flags_horizontal = 9
+size_flags_vertical = 9
+custom_styles/bg = ExtResource( 3 )
+scroll_horizontal_enabled = false
+scroll_vertical_enabled = false
 script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
 
-[node name="descript" type="RichTextLabel" parent="."]
-margin_left = 11.0
-margin_top = 11.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 459.0
+margin_bottom = 199.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer"]
+margin_right = 455.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 120 )
+
+[node name="name" type="Label" parent="VBoxContainer/TextureRect2"]
+margin_left = 110.0
+margin_top = 13.7999
 margin_right = 423.0
-margin_bottom = 202.0
+margin_bottom = 57.7999
+custom_colors/font_color = Color( 0.980392, 0.87451, 0.254902, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Draw Blood"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TextureRect2"]
+margin_left = 7.0
+margin_top = 9.0
+margin_right = 102.0
+margin_bottom = 104.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/TextureRect2"]
+margin_left = 5.24402
+margin_top = 7.49155
+margin_right = 105.244
+margin_bottom = 107.492
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="descript" type="RichTextLabel" parent="VBoxContainer"]
+margin_top = 124.0
+margin_right = 455.0
+margin_bottom = 158.0
 mouse_filter = 2
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "Skill Description"
-text = "Skill Description"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+fit_content_height = true
 
-[node name="cost" type="Label" parent="."]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 11.0
-margin_top = -55.0
-margin_right = 421.0
-margin_bottom = -23.0
+[node name="cost" type="Label" parent="VBoxContainer"]
+margin_top = 162.0
+margin_right = 455.0
+margin_bottom = 195.0
 grow_vertical = 0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "Cost"
 valign = 1
 autowrap = true

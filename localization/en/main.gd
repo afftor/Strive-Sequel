@@ -16625,7 +16625,7 @@ The inner walls of her pussy wrap around tightly, tugging at you inside for the 
 {color=yellow|— This is... too addictive...}""",
 	KURO_HIDEOUT_SEX6 = """You burst inside of Kuro as her pussy clamps down you, squirting her own fluids out in tandem with your own. A wave of her cum mixes with yours and creates a concoction of lust fills her tight hole. Kuro's machinations halt for a moment as ecstasy fills her mind, her body sinking into your heat as she leaves the two of you interlocked together for a moment, enjoying the hazy wave of pleasure. It takes her a moment to recuperate and pull away, but her familiar cold smile reassures you that her aloof personality hasn't gone anywhere during this detour...
 
-{color=yellow|— Fufu, it seems you have a really strong reason for me not to kill you after all. Come on, how long are you planning to lay down like that?}""",
+{color=yellow|— Hehe, it seems you have a really strong reason for me not to kill you after all. Come on, how long are you planning to lay down like that?}""",
 	KURO_HIDEOUT_SEX7 = """Visibly satisfied and content, Kuro lifts up from you and releases you from her binds as if nothing has happened.
 
 {color=yellow|Kuro: — Let's go. I wanna get into the bath before the night.}""",

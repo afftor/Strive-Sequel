@@ -8,8 +8,10 @@ func showup(node, skillcode, ch):
 
 
 func update():
-	var text = '[center]' + skill.name + '[/center]\n' + skill.descript
-	
+	var text = skill.name
+	$VBoxContainer/TextureRect2/name.text = text
+	text = skill.descript
+	$VBoxContainer/TextureRect2/TextureRect.texture = skill.icon
 	var charges = skill.charges
 	if charges > 0 and skill.cooldown > 0:
 		text += tr("\n\n" + tr("MAX_CHARGES") + ": {color=yellow|") + str(charges) + "}. " + tr("TOOLTIP_COOLDOWN") + ": " + str(skill.cooldown) + " " + tr("TOOLTIP_DAY_S")
@@ -19,7 +21,7 @@ func update():
 	if !parentnode.has_meta('display_only'):
 		text += "\n\n{color=yellow|"+tr("TOOLTIPRIGHTCLICKABILITY")+"}"
 	
-	$descript.bbcode_text = globals.TextEncoder(text)
+	$VBoxContainer/descript.bbcode_text = globals.TextEncoder(text)
 	
 	text = tr("USAGE_COST") + ": "
 	for st in skill.cost:
@@ -31,13 +33,13 @@ func update():
 	if text == tr("USAGE_COST") + ": ":
 		text += tr("TOOLTIP_NONE")
 	
-	$cost.text = text
+	$VBoxContainer/cost.text = text
 	
 	var pos = parentnode.get_global_rect()
 	pos = Vector2(pos.position.x, pos.end.y + 10)
 	set_global_position(pos)
 	
-	$descript.rect_size.y = 190
+	$VBoxContainer/descript.rect_size.y = 190
 	rect_size.y = 270
 	
 	yield(get_tree(), 'idle_frame')
@@ -46,8 +48,8 @@ func update():
 		emit_signal("update_completed")
 		return
 	
-	rect_size.y = max(270, $descript.get_v_scroll().get_max() + 55 + $cost.rect_size.y)
-	$descript.rect_size.y = rect_size.y - 80
+	rect_size.y = max(270, $VBoxContainer/descript.get_v_scroll().get_max() + 55 + $VBoxContainer/cost.rect_size.y)
+	$VBoxContainer/descript.rect_size.y = rect_size.y - 80
 	
 	var screen = get_viewport().get_visible_rect()
 	if get_rect().end.x >= screen.size.x:
