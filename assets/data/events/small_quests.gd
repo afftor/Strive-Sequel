@@ -151,11 +151,12 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [
-				{code = "update_guild"}
+				{code = "update_guild"},
+				{code = 'add_timed_event', value = 'jean_q2_start', args = [{type = 'add_to_date', date = [3,3], hour = 1}]},
 			]
 		}, ],
 	},
-	
+
 #	lilia_intro = {
 #		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
 #		text = [ {text = "LILIA_INTRO", reqs = []} ], character = 'lilia',

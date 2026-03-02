@@ -2066,5 +2066,16 @@ var quests = {
 			stage17 = {code = 'stage17', name = "CALI_TAMING_QUEST_NAME", descript = "CALI_TAMING_QUEST_STAGE_17"},  # talk to Сali tomorrow (kinda bad)
 		},
 	},
+
+	jean_ruins_quest = {
+		code = 'jean_ruins_quest',
+		summary = "JEAN_RUINS_QUEST_SUMMARY",
+		stages = {
+			stage1 = {code = 'stage1', name = "JEAN_RUINS_QUEST_NAME", descript = "JEAN_RUINS_QUEST_STAGE_1"}, # visit the church with Jean
+			stage2 = {code = 'stage2', name = "JEAN_RUINS_QUEST_NAME", descript = "JEAN_RUINS_QUEST_STAGE_2"}, # wait for Jean's library research to complete
+			stage3 = {code = 'stage3', name = "JEAN_RUINS_QUEST_NAME", descript = "JEAN_RUINS_QUEST_STAGE_3"}, # travel to the ruins
+			stage4 = {code = 'stage4', name = "JEAN_RUINS_QUEST_NAME", descript = "JEAN_RUINS_QUEST_STAGE_4"}, # make a decision about Rynn
+		},
+	},
 }
 

@@ -2486,6 +2486,63 @@ var dungeons = {
 		]
 	},
 #
+	quest_jean_ruins_church = {
+		code = 'quest_jean_ruins_church',
+		type = 'encounter',
+		name = "Aliron Church",
+		area = 'plains',
+		classname = '',
+		descript = '',
+		difficulty = 'easy',
+		background_pool = ['church_event'],
+		enemyarray = [],
+		eventarray = [],
+		levels = [1,1],
+		resources = [],
+		gatherable_resources = {number = [0,0], pool = {}},
+		gather_mod = [2.5,4],
+		stages_per_level = [1,1],
+		bgm = 'exploration',
+		purchase_price = 0,
+		affiliation = 'local',
+		events = [],
+		quest = true,
+		travel_time = [1,1],
+		scripteventdata = [],
+	},
+
+	quest_jean_ruins_location = {
+		code = 'quest_jean_ruins_location',
+		type = 'dungeon',
+		name = "Ancient Ruins",
+		area = 'plains',
+		classname = '',
+		descript = '',
+		difficulty = 'medium',
+		character_data = {
+			chance_mod = 1,
+			races = [['local', 3], ['common',5], ['uncommon',1]]
+		},
+		background_pool = ['cave_1'],
+		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
+		final_enemy = [],
+		eventarray = [],
+		levels = [1,1],
+		resources = [],
+		gatherable_resources = {number = [0,0], pool = {}},
+		gather_mod = [2.5,4],
+		stages_per_level = [5,7],
+		bgm = 'dungeon',
+		purchase_price = 0,
+		affiliation = 'local',
+		events = [],
+		quest = true,
+		travel_time = [1,1],
+		scripteventdata = [
+			{trigger = 'enter', event = 'custom_event', args = 'jean_q2_ruins_approach', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'JEAN_Q2_RUINS_APPROACH'}]},
+			{trigger = 'dungeon_complete', event = 'custom_event', args = 'jean_q2_central_hall', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'JEAN_Q2_CENTRAL_HALL'}]},
+		],
+	},
 }
 
 
@@ -3079,9 +3136,16 @@ var fixed_location_options = { #override serialized data
 	],
 	quest_troll_cave_location = [
 		{
-			text = 'Find troll', 
+			text = 'Find troll',
 			reqs = [{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage3', state = true}],
 			args = [{code = 'start_event', data = 'troll_clothes_1', args = []}]
+		},
+	],
+	quest_jean_ruins_church = [
+		{
+			text = 'Enter Church',
+			reqs = [{type = 'active_quest_stage', value = 'jean_ruins_quest', stage = 'stage1', state = true}],
+			args = [{code = 'start_event', data = 'jean_q2_church', args = []}]
 		},
 	],
 }

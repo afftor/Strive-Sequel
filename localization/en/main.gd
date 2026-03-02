@@ -11084,6 +11084,13 @@ You hoist Rynn onto your shoulder and hurry out of the ruins, soon breaking out 
 {color=yellow|Jean: — I… I think I understand what happened to her.}
 
 She describes what she found: descriptions of a curse that transfers life force, detailed in the same notes that mention the artifact. Every monster in this place was once human. The transformation process always begins this way.""",
+
+	JEAN_RUINS_QUEST_NAME = "Jean: The Ruins",
+	JEAN_RUINS_QUEST_SUMMARY = "Jean has found a reference to some ancient ruins outside of town that may hold answers about the mysterious artifact she has been studying.",
+	JEAN_RUINS_QUEST_STAGE_1 = "Visit the Aliron Church with Jean to research the ruins.",
+	JEAN_RUINS_QUEST_STAGE_2 = "Wait for Jean to complete her research at the church library.",
+	JEAN_RUINS_QUEST_STAGE_3 = "Travel to the ancient ruins with Jean.",
+	JEAN_RUINS_QUEST_STAGE_4 = "Escape the ruins and decide what to do about Rynn.",
 }
 
 
