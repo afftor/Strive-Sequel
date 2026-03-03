@@ -1281,7 +1281,8 @@ func finish_quest_dungeon(args):
 
 func finish_quest_location(args):
 	autocomplete_quest(args.id)
-	exploration_node.clear_dungeon_confirm()
+	#autocomplete_quest() can now remove location
+#	exploration_node.clear_dungeon_confirm()
 
 func mark_quest_location_completed(args):
 	var questdata = ResourceScripts.game_world.get_quest_by_id(args.id)
