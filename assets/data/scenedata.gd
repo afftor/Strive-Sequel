@@ -2755,6 +2755,13 @@ var quests = {
 			price = {code = 'price', name = 'JEAN_FREE_QUEST_NAME', descript = 'JEAN_FREE_QUEST_PRICE'},
 		},
 	},
+	jean_sylas_quest = {
+		code = 'jean_sylas_quest',
+		summary = "JEAN_SYLAS_QUEST_SUMMARY",
+		stages = {
+			start = {code = 'start', name = 'JEAN_SYLAS_QUEST_NAME', descript = 'JEAN_SYLAS_QUEST_STAGE_START'},
+		},
+	},
 	kuro_tome_quest = {
 		code = 'kuro_tome_quest',
 		summary = "KURO_TOME_QUEST_SUMMARY",

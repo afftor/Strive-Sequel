@@ -1,0 +1,933 @@
+=next day after completing Jean’s second quest
+The events that occurred in those ruins clearly left an impression on Jean. The next morning, you head upstairs to check on her and find her staring at the pile of notes on the table with a somewhat lost expression. 
+>How are you doing?
+>Should I come back later?
+(on either)
+Hearing your voice, she blinks in surprise, then exhales and turns to you.
+Jean: — Oh, sorry, I didn’t notice you there. I was just thinking about, well, this whole thing.
+She vaguely points towards the notes on the table.
+Jean: — I’ve been obsessed with this research for so long, always sure I was on the right path, but now… something has changed for me. Did I ever tell you how it started?
+>I’m all ears
+>Short version, if you don’t mind
+>I think you did, actually. That you’d heard the legend… 
+
+=1
+She taps the well-worn, bulging notebook.
+Jean: — This research of mine… it started years ago, back when I was still in the Academy. I heard a legend about an artifact that could give you the power to bring back the dead…
+A bitter smile crosses her face.
+Jean: — And I was bold enough to mention during Myr’s lecture that I believed it. That such a thing was possible through purely mortal magic. You can guess the reaction. The chuckle, the look. She said I didn’t understand the limits of magic, that people like me confuse ambition with ability.
+>Continue
+She folds her arms.
+Jean: — So, of course I decided to prove her wrong. Started chasing every rumor about that orb, every possible location — whether it was a private collection, some remote monastery…
+She gives you a small, fleeting smirk.
+Jean: — … or even a dwarven vault. Yet now, after I learned that it’s magic is very different from what I thought, that it is dangerous and its hurting people, my research… it’s no longer feels important.
+=2
+Jean: — Right, better not to waste time… Long story short, back in the Academy I heard a legend about an artifact that could supposedly bring back the dead. I was foolish enough to say during Myr’s lecture that I believed such a thing was possible through mortal magic alone… and, well, you can imagine how that went.
+She folds her arms briefly.
+Jean: — So I started chasing every rumor about that orb, trying to prove her wrong. But after what we saw in the ruins… after what it actually does to people… my research suddenly doesn’t feel that important anymore.
+=3
+Jean: — … and decided to find the artifact to study its rumored resurrection magic, yeah. That was indeed the beginning. But you know what really kept me motivated to actually carry on with the search for so long? Myr!
+She scoffs.
+Jean: — Or, to be more precise, our… rivalry? Beef? Whatever you wanna call it. I was just so eager to prove her wrong I was ready to go to the other side of the world for that! And now…
+She returns her gaze to the scattered notes.
+Jean: — …I no longer find it that important.
+(on either)
+>Continue
+Jean looks directly at you.
+Jean: — Instead, the only thing I have on my mind right now is stopping the mastermind behind all of this, so that no more people are turned into these monstrosities. So, will you help me?
+>You won’t be doing it alone
+>Only cause I would also expect favor in the future
+=1
+Jean visibly relaxes, her face lights up with smile.
+Jean: — Thank you. I’ll remember that.
+=2
+Jean blinks. Then straightens a little.
+Jean: — Fair enough. Help me finish this, and I’ll be in your debt.
+(on either)
+After a brief discussion, it becomes clear that the only place with fresh leads on the mastermind is the Empire's capital. But before you head there, Jean brings up a suggestion.
+Jean: — As much as I hate to admit it, we could use support from one of the guild leaders. Someone with actual reach and power. Which leaves us with two options.
+She starts counting on her fingers.
+>Continue
+Jean: — The first one is Dunсan. Rynn used to train in his guild before she left for the Empire. She might not be alone in that, so Dunkan could help us get some useful contacts. And the other option is…
+A grimace shows on Jean’s face.
+Jean: — … Myr. Plenty of knowledge, plenty of influence… and an ego to match all of that. 
+She glances at you sideways.
+>No need to look at me like that, I get it. Let’s visit Duncan
+>Between saving your pride and catching a maniac, only one choice is right. Myr it is
+=1
+Jean nods, visibly more at ease.
+Jean: — Good. Let's start with him. He's way less irritating than the alternative.
+=2
+Jean: — Fine. Let’s just try to deal with her as quickly as possible.
+>Close
+
+
+=I need some assistance with the one case… (fighter leader option)
+You explain the situation. Dunkan listens carefully, then gives a slow nod.
+Dunсan: — …Rynn, huh.Yeah, I remember her. Tough kid. Shame that happened to her. Curse on these curses, a warrior’s demise should come from iron, not some witchery.
+>Continue
+Dunсan: — Give me some time. I'll reach out to some of my former students and ask them to dig around.
+Jean: — Thank you.
+=2
+
+=I need some assistance with the one case… (mage leader option)
+
+You explain the situation. Myr listens in silence, finally responding in her usual condescending tone.
+
+Myr: — You certainly have a knack for finding trouble. Though it’s not surprising, considering your tendency to take into your care all sorts of rubb… troubled individuals.
+
+Her gaze shifts to Jean.
+
+Myr: — Looks like your fruitless search finally brought at least some results, though it's obviously very different from what you dreamed of.
+>Continue
+Jean: — Bet you're so-o-o happy right now.
+
+Myr: — “Happy”? Young lady, you severely overestimate my engagement in this one-sided rivalry. Neither your success nor failure affects my mood. Though I would be somewhat satisfied if you forgot your stubbornness and got back to studying.   
+
+Jean’s jaw tightens, but she holds her tongue. 
+
+Myr: — Alas, it doesn’t look like that's going to be the case. At least not before you deal with that “maniac’. Fine then, I shall spare you my assistance.
+>Continue
+Myr reaches into a drawer and produces a small, faintly glowing device with a red gem inside metal brackets. She drops it into your hands.
+Myr: — There you are.
+
+>Thank you, we appreciate your help
+>Am I supposed to know what it is and how to use it?
+
+=1
+
+Myr: — You’re welcome. Feel free to leave my office when you’re done processing our talk. Hopefully in like ten seconds.
+
+As you walk out of the Myr’s office, Jean asks to take a look at the device. After careful examination, she finally concludes.
+
+Jean: — So it is a jammer, huh. Never thought they could be used that way… But I guess that makes sense. Since monsters are controlled by magic and it blocks the magical signals they should also be affected… in theory. We’ll have to see for ourselves.
+
+=2
+
+Myr: — You may not, but she should. Or I would be even more disappointed than usual.
+
+Jean scoffs.
+
+Jean: — What’s there to know? I can see that it’s a jammer. You think we could try and cut that guy’s connection to his monsters?
+
+Myr: — I can see that you’ve retained at least some knowledge from your studies at the Academy. And yes, that is exactly what I expect to happen. Now, if you have no further questions, please leave my office. And if you do have questions I won’t be answering them anyway.
+
+=1(dunkan)/2(myr)
+
+>Continue
+
+(If Rynn is alive)
+After settling the matter with the guild, you and Jean head for the church to check on Rynn. Her condition remains stable, but Ginny reminds you that this won’t be the case forever and If you want to save her you should bring back the artifact. 
+(If Rynn was left behind)
+After settling the matter with the guild, you and Jean head back to the mansion, preparing for the journey.
+>Close
+=Meet with Jean for searches (empire capital option)
+The Empire's capital greets you with its usual indifference and crowded streets. After a brief discussion, you decide to split your efforts: you'll check the building you last entered, while Jean returns to the library to fish for more information.
+You diligently do your part and visit the abandoned house, yet see no signs of anyone visiting it since the last time you were here. Done with your part, you go back to the central square and wait for Jean. About an hour later, she finally shows up.
+>What took you so long?
+>Learned anything useful?
+=1
+Jean: — It takes time to persuade a person to talk, you know? Especially if it goes against the rules.
+=2
+Jean: — A bit. Mostly rumors and hearsay, but it's more than we knew before.
+(on either)
+She pulls out her notebook.
+Jean: — What matters, though, is that we at least know his name now. He's called Sylas. A former famous arena fighter who got injured and couldn't compete anymore. He vanished from the city for a while… then suddenly came back this year, looking younger than he should and loaded with gold.
+>Continue
+Jean: — And you know, apart from the obvious connection to the arena, that last part about the gold really got me thinking…
+Jean: — The kind of equipment we saw? Cages, metalwork, lab equipment… that doesn't appear out of thin air. Even if you have gold, you'd have to buy that from someone, and pretty regularly, considering the scale. So, what if we check that lead?
+She looks at you expectantly.
+>Let’s check the Arena first, it should be easier with Duncan’s connections.(if took Duncan help)
+>Let’s check the Arena first, he must have some ties there.(if took Myr help)
+>Let’s go with your lead. Merchants must know something.
+=Enter arena
+The Arena is as loud and restless as ever. Steel rings against steel somewhere in the distance, and the air carries that familiar mix of sweat, dust, and cheap bravado.
+As you approach the administrative section, you see a familiar figure observing the ongoing sparring matches. When you come closer, he finally notices you and furrows his eyebrows in displeasure.
+Melchor: — …You again.
+His eyes narrow, already suspicious.
+>Continue
+Jean: — Greetings. We're looking for information about a former fighter. Sylas.
+A brief flicker of recognition shows on his face before Melchor's expression hardens.
+Melchor: — That man is banned from the Arena. That's all you need to know.
+>Banned? For what reason?
+>We are not his friends.
+>Do you have a personal story with him?
+>He is dangerous. We need to find him before more people get hurt.
+=1
+Melchor gives a short, humorless snort.
+Melchor: — For plenty of reasons. Shame there was none with enough proof to make it official.
+Jean: — But if all the rumors about missing people are true…
+Melchor: — The court does not operate on rumors. Unfortunately.
+(return to root)
+=2
+Melchor: — Neither do I, nor would I recommend anyone be.
+(return to root)
+=3
+Melchor's eyes narrow a fraction, and his face turns into a grimace.
+Melchor: — The story isn't personal. I'd just call it… the story of a bad investment. I saw him struggling all those years back and sponsored his training before a championship. Not only did he lose, but he then ran away, never approaching me again. Tsk. Disappointment.
+(return to root)
+=4
+Melchor gives you a long look, then shrugs just a bit.
+Melchor: — Even if I wanted to get involved in this mess any further, I'd still have no idea what to tell you. I haven't met him personally, and he won't be coming back due to the ban. If you really want to, feel free to ask around.
+Jean: — Alright then, thanks. Guess we'll have to do just that.
+>Continue
+=(if you asked Myr)
+You roam the arena for some time, questioning both fighters and rare spectators alike. Eventually, one of them gives you a knowing look when the topic of Sylas comes up.
+Fighter: — Looking for Sylas, huh? A lot of people do, mostly the relatives of the missing… But we were told to shut up about it and not bring up the topic. Bad for business.
+>What if I make it worth your while? (500 gold)
+>How about a quick arm-wrestling match? If I lose, I pay, if you lose, you talk. (PHY ≥5 or –100 on a loss)
+=1
+He quickly glances to the sides, then nods and grabs the money, covering them with his training shield.
+=2
+Fighter: — Heh. Confident, aren’t you? …Alright, why not. Been a slow day anyway.
+He drops onto a nearby crate and slaps his elbow down on a scarred wooden table. The man rolls his shoulder once, then extends his hand. You extend yours.
+>Continue
+ (on win)
+For the first second, neither of you moves. Muscles tense. The table creaks faintly under the pressure. Then you push. The fighter’s smirk falters.
+The man grits his teeth, tries to recover, but it’s too late. With a sharp thud, his hand hits the table.
+Fighter: — H-huh? I lost? Damn, you got that sleeper build or something?
+(on lose)
+You push first, but the fighter doesn’t even flinch. His arm holds steady like a stone pillar.
+A second later, he grins and starts pushing back. Fast. Despite your best effort, your hand slams into the wood.
+Fighter: — Heh, nice. Come back if you wanna try again, I’d love more free money.
+=1/2(on win)
+Fighter: — …Fine, I'll talk. But you didn't hear it from me.
+=(if you asked Duncan)
+As soon as you step into the arena, one of the fighters approaches you, lowering his voice.
+Fighter: — Heard you're looking into Sylas. Duncan sent word you might come. I'll tell you what I know. No charge.
+(on either)
+The fighter scratches his jaw, thinking.
+>Continue
+Fighter: — I dunno anything about his past, but when this guy showed up, he was loaded with gold. Started sponsoring our top fighters, inviting them on trips and to galas… only for some of them to never come back.
+He jerks his head back toward Melchor's direction.
+Fighter: — Management noticed, of course, started watching him closely. And when too many coincidences piled up, they booted his ass from here. Indefinite ban.
+The fighter leans in slightly.
+>Continue
+Fighter: — But here's the part you didn't hear from the officials. Word going around is that it didn't stop the guy. He's still in the city. And recently he paid off the debts of one of the local brothels, basically became their patron overnight.
+Jean and you exchange a look.
+Fighter: — If you ask me? That smells really bad.
+He steps back.
+Fighter: — That's all I've got.
+>Continue
+You thank your informant and step away from the arena.
+Jean’s gaze meets yours.
+Jean: — I think we just found our next destination.
+>Close
+=Meet merchants (empire capital option)
+The wealthy trade district greets you with long rows of polished signs hanging above well-kept storefronts. Jean slows slightly, scanning the street.
+Jean: — If someone were supplying large cages and specialized equipment, it wouldn't be some back-alley blacksmith. This kind of work leaves a paper trail. Let's start.
+It takes some asking around, but eventually one name keeps coming up: a merchant known for handling custom ironwork orders. You approach the shop and let yourselves in.
+The shop smells faintly of oil and hot metal. Behind the counter stands a thickset merchant with careful eyes that immediately size you up.
+>Continue
+Merchant: — Good day to you, outsiders. Looking for something specific?
+Jean: — Information, actually. We're trying to track large cage shipments commissioned over the past months.
+The merchant's expression closes almost instantly.
+Merchant: — Then you're looking in the wrong place. I don't discuss my clients.
+>Continue
+Jean: — Even if those shipments were used for… illegal purposes?
+The merchant studies both of you more carefully now, his gaze more calculating.
+Merchant: — That sounds like the guards problem, not mine.
+A brief silence stretches. Then his eyes narrow slightly, as if reconsidering something.
+>Continue
+Merchant: — Although…
+He leans forward just a fraction.
+Merchant: — … perhaps we can help each other.
+Jean: — I'm listening.
+>Continue
+The merchant gestures vaguely toward the street.
+Merchant: — One of my regular carriage drivers was supposed to be back from a delivery, but he still hasn't shown up. Find him, make sure he's able to work again, and I might be more willing to check my records.
+>Where should we start?
+>Do you have enemies?
+>Deal.
+=1
+Merchant: — The eastern district. Where the road is shortest. And, unfortunately, that's also where the slums are.
+(return to root)
+=2
+Merchant: — Enemies? No. Competitors, rivals? Plenty. The sweeter the profit, the bitterer the grudges.
+(return to root)
+=3
+Merchant: — Good. I'll be waiting then.
+>Close
+(make task: search for the lost carriage)
+=on task complete
+You spend the next couple of hours combing through the eastern district’s mangled streets.
+Finally, you spot a slightly battered carriage pulled halfway into an alley. The merchant’s emblem is still clearly visible on the side panel.
+A pair of rough-looking thugs are in the middle of unloading the last crate.
+>Continue
+Jean leans slightly closer to you, lowering her voice.
+Jean: — That’s the mark. And unless this merchant recently hired the worst movers in the Empire… I’d say we found our problem.
+She studies the men for a moment, lips tightening with clear irritation.
+Jean: — Your call. But the longer we stand here, the more they take from the cart.
+>(If Erdyna present) *Let Erdyna deal with them*
+>Hey. Return the stolen goods and the driver, and I won’t report you to the guards.
+>I’m willing to pay you to put everything back where it belongs.
+>Hey, fuckers! You picked the wrong cart to rob!
+=1
+Erdyna walks out from your group, giving the bandits a smirking look. The nearest thug opens his mouth, but then freezes. The second one squints, then his eyes widen.
+Thug: — Oh shit.
+Erdyna: — Indeed it is. ‘Cause you boys just robbed someone I have dealings with.
+One of the thugs immediately straightens.
+Thug: — W-we didn’t know, we swear…
+>Continue
+Erdyna: — Oh, I believe you. Which is why you’re going to very carefully put everything back. And then disappear.
+The thugs move instantly. Crates are shoved back onto the carriage with frantic speed. Someone runs to drag out the tied-up driver. After the last crate is restored, the thugs scatter without another word.
+>Continue
+=2
+One of the thugs squints at you, then snorts.
+Thug: — Report to the guards? Pfft! Bo-o-oys, get them!
+Jean exhales through her nose.
+Jean: — …So much for the diplomatic approach.
+=3
+The thugs’ eyes immediately light up.
+Thug: — Oh? You’ve got coin? Then hand it over, moron! Bo-o-oys, get them!
+Jean’s rolls her eyes.
+Jean: — I hate it when they skip straight to the predictable part.
+=4 (fail intimidation)
+The thug cracks his knuckles slowly, grin spreading.
+Thug: — What the fuck did you just say? Bo-o-oys, get him!
+Jean sighs under her breath.
+Jean: — Well… you tried.
+=4 (success intimidation on PHY>5)
+Your voice cuts through the alley with enough force to make both thugs visibly flinch. They look at you, then bolt down the alley in a panic.
+Jean blinks once.
+Jean: — …Well. That was…
+Suddenly you hear footsteps. A lot of footsteps.
+>Continue
+The same two thugs come rushing back, this time with a much larger group behind them.
+Thug: — Yeah, these are the ones! Bo-o-oys, get them!
+Jean rolls her shoulders, already gathering sparks between her fingers.
+Jean: — Of course it couldn’t be that simple.
+=2/3/4
+A crowd of thugs jumps from the alleys and rush onto you.
+With the thugs dealt with, the rest is easy. You hand the surviving troublemakers over to the city guards, untie the shaken but grateful driver, and help reload the scattered cargo back onto the carriage.
+=carrier freed (pair with previous option or if helped by erdyna)
+The freed driver wastes no time taking the reins and drives you straight to the merchant's shop.
+>Continue
+(fade to black transition)
+The merchant looks far more cooperative when you return. After checking on the cargo and the driver, he invites you to the back room and pulls out a ledger.
+Merchant: — Large reinforced cages… yes, there were a few unusual bulk orders. All in one name: Sylas. Let me find the delivery routes.
+He flips a couple of pages.
+>Continue
+Merchant: — Shipments went to three places: a private house in the western district, some ruins three days to the north… Oh, and just a week ago to the brothel in the lower district.
+Jean: — Can you write us the last address?
+The merchant obliges, then bids you farewell.
+Outside, Jean's gaze meets yours.
+Jean: — I think we just found our next destination.
+>Close
+=Visit Brothel (empire capital option)
+You follow the directions and soon find yourself weaving deeper into the eastern district, where the streets grow narrower, dirtier, and noticeably quieter. Eventually, the crooked alley lead you to your destination.
+A three-story building rises ahead, still looking surprisingly lavish despite its age, which makes it feel distinctly out of place among the surrounding grime.
+The moment you step inside, warm, perfumed air rolls over you.
+>Continue
+A couple of scantily clad girls are lounging on one of the sofas. The moment they spot you, they immediately drift toward you with polished smiles on their faces.
+Girl1: — Welcome, welcome! First time here, handsome? Oh, are you a couple? Looking for some extra company?
+Girl2: — We have all kinds of pleasures. Just tell us what you're in the mood for.
+A slight blush appears on Jean's cheeks, but she manages to stay quiet.
+>Well, I wasn't planning on staying, but with smiles like yours…
+>First I was hoping to ask you a couple of questions…
+=1
+Jean jabs you with an elbow.
+Jean: — Ahem! Don't forget what we're here for!
+She steps forward.
+Jean: — Hey, we actually wanted to ask you a couple of questions. Is that alright?
+>Continue
+
+=1/2
+The girls exchange a quick glance, their smiles faltering, turning into barely helpful masks.
+Girl1: — Sorry, but we're not the academic type to answer questions.
+Girl2: — All we know is how to bring pleasure to our clients, so if you're not looking for that, we can't help you.
+Before you can push the topic further, the atmosphere in the room noticeably shifts. A tall woman in immaculate attire approaches you with measured, confident steps. The madam gives you and Jean a long, appraising look.
+Madam: — I don't believe I've seen you here before, dear guests. Care to tell me what exactly you're looking for tonight?
+>We are investigating several disappearances in the area.
+>We are just looking around. First time here.
+(on either)
+The madam listens without interrupting. When you finish, her smile does not change.
+Madam: — Unfortunately, if you're not here to enjoy the establishment, I'll have to politely ask you to leave.
+She gestures lightly toward the door, then follows you until you're both outside.
+>Continue
+Jean: — Well, that went pretty badly… Maybe next time we should come up with a better plan, or…
+Jean suddenly stops and lightly catches your sleeve.
+Jean: — …Wait.
+From the narrow alley beside the brothel comes the uneven sound of someone trying very hard not to cry.
+>Continue
+You turn the corner and spot a girl dressed the same way as the other two from the brothel. Her shoulders are shaking, makeup slightly smeared as tears run down her face.
+When she notices you approaching, she startles and tries to cover her face. Jean steps forward and softens her tone.
+Jean: — Hey, are you alright? What happened?
+Girl: — I… Sorry, I shouldn't talk about it…
+>It’s alright, we won’t tell anyone, you can trust us. We just want to help.
+>Is it about people disappearing lately?
+>Let Amelia calm the girl down (if Amelia present)
+=1
+The girl looks up at you through tears. After some hesitation, she speaks in a quiet whisper.
+=2
+Girl: — S-so you already know? I knew I wasn't crazy…
+(on either 1 or 2)
+Girl: — Something… something bad is going on here. I don't know why, but after that guy in all black showed up, people… people suddenly started disappearing… And one of them…
+She begins to sob again.
+>Continue
+Girl: — … one of them was my Daren. He was a regular at first, but then we fell for each other… He was a mage, and he promised that after finishing his studies he would get me out of here… and now he's gone…
+Some noise comes from inside the building. The girl startles and glances nervously toward the brothel entrance.
+Girl: — I… I really should go. Sorry…
+She walks away, trying to wipe the tears as she goes.
+=3 (if have Amelia on spot)
+
+Amelia approaches the crying girl, who seems to recognize her immediately.
+Girl: — A-Amelia? W-what are you doing here? I missed you so much… I shouldn't have left Aliron… I thought life in the Empire would be better… It's not…
+Amelia: — There, there, girl. It's gonna be alright. If you want to come back, I can ask the guild for you, okay? But first you need to tell us what happened.
+>Continue
+Girl: — I don't know the details… but something bad is going on here. After that guy in all black — Sylas or something — showed up and talked to the madam, the whole atmosphere got weird… and what's worse… people suddenly started disappearing. And one of them…
+She begins to sob again. Amelia puts a hand on the girl's head, comforting her.
+Girl: — … one of them was my Daren. He was a regular at first, but then we fell for each other… He was a mage, and he promised that after finishing his studies he would get me out of here… and now he's gone…
+>Continue
+Some noise comes from inside the building. The girl startles and glances nervously toward the brothel entrance, but Amelia's presence calms her enough not to run away.
+Girl: — I swear, he wouldn't just leave me! And I remember one time he actually stumbled onto that Sylas guy as he was leaving the madam's office at night… and Sylas looked at him strangely… and then Daren never showed up again… He must've done something to him, but I can't prove it…
+You leave Amelia to take care of the girl while you and Jean step aside to discuss the situation.
+(on either)
+
+>Continue
+Jean: — Well, that confirms our suspicions. Sylas does visit this place often, and the madam definitely has some business with him. If only we could somehow get to her office and check her documents…
+>I can pretend to be a client
+>You can pretend to be a new girl
+=I can pretend to be a client
+Jean: — Hmm, but wouldn't that be suspicious? Though I guess if you can stall her for even just half an hour, I should be able to sneak in and take a look.
+You discuss some details before fully settling on this plan.
+Jean: — Alright, time to start. Just keep her busy. I'll handle the rest.
+>Continue
+You once again step inside the brothel, immediately gaining the madam's attention.
+Madam: — Oh? I thought I made the rules of our establishment clear. Or did you change your mind and wish to use our services after all?
+>Exactly. Can you give me a run down of what you offer?
+>Yeah, since I'm already here, why not at least try? Anything you'd recommend?
+>The girl I came with already stormed off. So… I might as well use your services.
+(on either)
+The madam studies you for a brief moment, then her smile deepens slightly.
+Madam: — Oh, we've got a lot to offer… but I may have something special just for you.
+She gestures toward one of the velvet chairs nearby.
+>Continue
+Madam: — A premium magical dream experience. Discreet, safe… and quite immersive.
+From her pocket, she produces a sleek, faintly glowing device that looks like a thin circlet with a small polished crystal set at the front. Soft runes shimmer along its surface.
+Madam: — Think of it as… guided fantasy. You remain perfectly safe while enjoying whatever dream you desire. Does it peak your interest?
+>Tell me more about the device.
+>And how much does it cost?
+>On the other hand I’d rather not.
+>Fine. Let’s try it.
+
+=1
+Madam: — Oh, it's very simple to use. Just put the circlet on your head and lower the part with the crystal to cover your eyes. Then we can activate the runes, and the magic will do the rest. Most guests find the experience quite… memorable.
+(return to root)
+=2
+Madam: — No need to worry about that, our first customers always get a discount. A mere 100 gold, and you're in the land of dreams.
+(return to root)
+=3
+You shake your head, refusing the offer. But as the mission stands, instead you begin to ask questions about the girls who work here, their skills and expertise, and whether they can come down and introduce themselves.
+The madam obliges, indulging your whims, even ordering a couple of girls to come in only for you to reject them. Soon you've gone through the entire catalog and seen everything this place has to offer.
+>Continue
+The madam's patience is thinning visibly. Her smile is gone, replaced with tight‑lipped irritation. After half an hour, you apologize and step back into the hallway.
+The madam walks you out and slams the door behind you.
+>Continue
+=4
+You agree and pay the price. (-200g)
+The madam's smile widens slightly as she places the device into your hands and begins explaining how to use it.
+You repeat your questions about the runes two or three times, probably looking like a complete fool, but at least it buys Jean some time.
+>Continue
+Finally, satisfied, she gently adjusts the circlet on your head.
+Madam: — Just relax, dear guest… and enjoy.
+The crystal flares softly, and the room dissolves into darkness.
+[The Dream]
+=3/4
+>Continue
+After you finally leave the brothel, you find Jean waiting for you outside, a satisfied smirk playing on her lips.
+Jean: — Took you long enough.
+>How did it go?
+>Hope you found something.
+(on either)
+She dusts off her sleeve casually.
+Jean: — Luckily for us, they never really bothered with security. As soon as she focused on you, I slipped upstairs and went for the most expensive‑looking door. A couple of minor spells later, and I was free to explore her office.
+Jean: — I found the ledger almost immediately, and Sylas's name is all over the last few pages. He's playing a "patron" role — shows up every couple of days just to shower this place with more money.She dusts off her sleeve casually.
+>Must be the pay for her help in kidnappings.
+>When will he show up next time?
+=1
+Jean: — Exactly. Obviously, they wouldn't write that in a ledger, but we know that's the only thing he cares about.
+=2
+Jean: — There wasn't an exact date stated, obviously, but we can deduce from the information we have.
+(on either)
+Jean: — Judging by the gap between his previous visits, he comes here every couple of days. His last visit was two days ago, so he should be back either today or tomorrow. That's our chance to get him.
+>Prepare for ambush.
+=You can pretend to be a new girl
+Jean turns to you, her eyes wide.
+Jean: — H-huh?! What do you mean? Are you out of your mind?!
+>You just have to pretend for a bit, no one's actually going to ask you to join.
+>Did you never hear about undercover operations? Why are you making a big deal out of this?
+(on either)
+Jean: — Easy for you to say! You're not the one who has to pretend to be a whore! Besides, it's a stupid idea anyway. She knows my face and will realize everything right away!
+>Does the word "disguise" mean anything to you? 
+>I didn’t mean to go in like this. Obviously, you should change. 
+Jean: — Change? Into what? I didn't take any spare clothes with me! 
+
+>*Give Jean 500 gold* (greyed out option if not enough gold)
+>Just wait a minute here, I gotta get something... (close with an option to return)
+=Just wait a minute here, I gotta get something... (when returned)
+You walk back to the brothel with Jean that you previously suggested should change her clothes, she gives you a dubious look.
+>*Give Jean 500 gold* (greyed out option if not enough gold)
+>Just wait a minute here, I gotta get something... (close with an option to return)
+=*Give Jean 500 gold*
+Jean looks at the bag of coins you presented, confused. Then it clicks.
+Jean: — Wait, you want me not only to pretend to be a whore, but also dress like one?!
+You stay silent but it’s obvious she needs to look convincing for the job.
+Jean: — Unbelievable! That's the stupidest idea I've ever heard!
+>You got a better one? She knows my face even better than yours.
+>Do you want to catch this maniac or not?
+(on either)
+Jean stares at you with great frustration, but doesn't refute your arguments. After a moment, she puffs up her cheeks and turns away.
+Jean: — …Fine…
+You ask her to repeat what she said.
+Jean: — I said fine, okay?! I'll do it for the mission!
+>Continue
+(fade to black transition)
+She grabs the money and disappears into the crowd. You wait an hour, then another, and finally she shows up.
+>That looks great on you
+>You’ll blend in right away
+
+=1
+Jean blushes a bit.
+Jean: — Oh, quit it. You know I’m wearing it only because I have no other choice.
+=2
+Jean furrows her eyebrows.
+Jean: — Did you mean that as a compliment, but too dumb to understand why it isn’t or did you actually wanted to say I look like a whore right now?
+Jean: — Nevermind, it’s best you don’t answer it.
+(on either)
+Jean: — Alright, no point in postponing this any longer… Let's do it!
+She sighs, then puts on a fake smile and goes inside. You stealthily follow her from a distance.
+>Continue
+Just as you planned, she is intercepted by the madam right away, who questions her intention.
+Jean: — Hey-y-y, so, like, I kinda need money right now, and I saw your place, so I was wondering if you're, like, hiring or something?
+Madam: — Huh. That's… unexpected. Although now that I think about it, we could use another girl or two to cover all the shifts. Why don't we discuss your qualifications in detail…
+As soon as you hear them go into another room, you quickly slip upstairs and look around. Fortunately, the corridor is empty. Unfortunately, you don't know which door leads to the madam's office.
+>Pick the first door
+>Pick the second door
+>Pick the third door
+>Pick the most lavish looking door
+
+=1
+You pick the first door and quietly try to open it. The creaking of a bed and loud moans suddenly hit your ears. You quickly close the door.
+(return to root)
+=2
+You pick the second door and quietly try to open it. At first you don't hear anything, but then the sound of quiet snoring reaches you. You quickly close the door.
+(return to root)
+=3
+You pick the third door and quietly try to open it. Suddenly you hear a familiar voice.
+Girl: — W-who's there? Madam? I'll be right away!
+The girl you spoke to in the alley tries to leave and freezes upon seeing you. You lower your voice and quickly explain your mission. She checks the corridor, then quietly whispers.
+Girl: — Try the last door. But I don't want to get in trouble, so I didn't see you, okay?
+She promptly closes the door.
+(return to root)
+=4
+You pick the most lavish‑looking door and find that it is closed. After quickly dealing with the lock, you slip inside the office. The interior seems rather generic — a couple of cabinets, some paintings, and a massive wooden table with dozens of letters and documents scattered on it.
+>Check the paintings for a safe.
+>Check the cabinets.
+>Check the table.
+=1
+There is no stash behind any of them. Not even a small one.
+(return to root)
+=2
+The cabinets contain a surprising number of wine bottles. Mostly empty ones.
+(return to root)
+=3
+You quickly scan the letters, soon realizing that most of them are from angry creditors. This establishment was really in deep financial trouble. Luckily for them, Sylas and his gold came along. Luckily for you, the ledger with detailed records of every transaction and even the dates of his visits was also there, buried under the pile of letters.
+You quickly copy the relevant information into your notebook, then put the ledger back, sprinkling some letters on top, trying to make it look undisturbed. Then you retrace your steps and finally slip out of the brothel.
+>Continue
+After an hour or so, Jean finally emerges from the brothel, her face deep red.
+>Took you long enough
+>You look like you’ve learned a lot
+(on either)
+Jean: — Shut. Up. So many very personal questions… and so many things I didn't know — and wish I still didn't. This better be worth it! Did you find something?
+You tell her about your findings.
+Jean: — Okay, at least that wasn't for nothing. Judging by the gap between his previous visits, he comes here every couple of days. His last visit was two days ago, so he should be back either today or tomorrow. That's our chance to get him… but first, give me back my clothes! I want to change right now!
+>Prepare for an ambush.
+=1(pretending to be a client)/2(jean infiltration)
+You hide in one of the alleys and begin your wait. Hours go by, then, just past midnight, he finally appears.
+Covered in dark clothes, just as the girl described, Sylas confidently walks toward the brothel entrance — giving you the perfect opportunity to strike.
+>Attack him
+You nod to Jean and ready your weapon. She raises her arm and send a fire arrow directly at Sylas, yet all of a sudden he dodges it, as if knowing from where it would come. As you walk out of your hiding his face shows no hint of surprise.
+Sylas: — Ah, finally. I was wondering why you were taking so long.
+Jean: — You knew we were waiting for you?!
+Sylas: — Of course I did. First you barge into my house, then you destroy my lab, and now you show up here, trying to sniff out my whereabouts. Did you really think I wouldn't notice? Such foolishness.
+>If you knew we were waiting, coming here was your biggest mistake.
+>Less talk, more fight!
+=1
+Sylas: — Oh? And why is that? Or do you think I came unprepared?
+=2
+Sylas: — You're itching for a fight that much? Fine, so be it.
+(on either)
+He snaps his fingers, and suddenly a bunch of monsters rush from the sides. Another bunch comes from behind, rushing in from the brothel's cellar.
+[if the servant was killed in q2 - One of them has familiar features, and soon you realize it was his servant from the ruins that joined the fray.]
+[if the servant was let go in q2 - Behind monsters you notice a familiar figure of servant from the ruins, who skittishly hides in the back]
+Sylas: — Hope this setup satisfies your violent nature. But in the end, I'll personally put you to rest.
+(if Myr route in scene2 add)
+While your enemy gloats, you feel the magical device Myr gave you in your pocket and press the activation button. Suddenly, a wave of energy emanates from your location. The monsters it hits become confused and sluggish, their movements turn frantic, then aimless. The army of battle monsters turns into a crowd of barely functioning imbeciles.
+Sylas: — How did you… Agh, fine! I'll do it myself!
+(on either)
+>Fight (two different fights depending on myr’s visit)
+=Win fight
+The battle is chaotic, but in the end, you and Jean come out on top. Sylas is pale, exhausted, but still standing and more furious.
+Sylas: — Curses on you! But I will not fall here, not after everything I have accomplished!
+Sylas raises his hands, holding the dark sphere that pulses with sickly violet light.
+Sylas: — You have no idea what you've just interfered with! O Benefactor, I beseech you, grant me more of your power!
+>Continue
+The pulse intensifies as something inside the artifact answers. Dark fog materializes around Sylas, circling him like a snake.
+???: — More power? You're asking for more power after losing everything I gave you? Magic, might, money, minions… and you still got beaten like a street dog… just like all those years ago! It's time for me to find a new tool.
+Sylas: — W-what? How dare you?! I thought we were partners! You can't do this to me!
+He tries to grab the sphere, but it slips from his hands and flies into the air. The dark fog circles around it like a halo, then suddenly forms into a projectile that slams into your chest, sending you flying backward.
+>Continue
+Jean: — [Name], are you alr…
+Jean freezes mid-sentence as the dark fog begins circling her face and the sphere floats into her hands. Her body goes rigid. Her head drops… then lifts again, an unnaturally wide smile stretching across her face. Her eyes shift to a dark violet. Her mouth hangs open, but the sound that comes next is not hers.
+>Continue
+Jean: — Ah, that is much better! Comparing that old fool to this young mage is like trading a crippled donkey for a warhorse! With her power, I'll finally be free of that dusty piece of scrying glass!
+Jean: — Now if you'll excuse me… this body has places to be. Ta-ta, fools.
+Jean's body suddenly rises into the air and then flies into the night, leaving you alone with the collapsed Sylas… and the couple dozen guards who were summoned by the sounds of your fight and are now eager for an explanation.
+>Continue
+(fade to black transition)
+You return to Aliron with more questions than answers. The situation has clearly gotten our of hand. There’s only one person that can make sense of what just happened. Time to talk to Myr.
+>Close
+
+
+=There’s an issue with Jean…(Mage’s Guild - Meet Leader option)
+Myr: — Oh? I assumed that insolent girl was missing just because she didn't want to show herself to my eyes, but your tone suggests something went very wrong. Go on, tell me.
+You recount everything that transpired: the brothel, Sylas, the artifact, and the moment Jean fell under the creature's control.
+>Continue
+Myr: — Huh. That's… curious. I mean, terrible for her, of course, but as a phenomenon it's certainly worth studying…
+That's the first time Myr has shown that much interest in a while.
+
+Myr: — Ah, right. I assume you're not here for scientific discourse, but for advice. We’ll have to do some digging ourselves. The guild’s library is this way.
+
+>Is this the first time you invited someone there instead of begrudgingly allowing them in after they begged?
+>You think the guild archives hold the answers?
+
+=1
+
+Myr: — I only do this because I don’t want to deal with the aftermath of that entity getting out. And don’t try anything funny, I’ll be watching you.
+
+(return to root)
+
+=2
+
+Myr: — Answers, clues, something. Mages have to deal with a lot of stuff, so the library should have historical records on a wide variety of entities. You just need to search through it. 
+
+>Close
+
+[Add Task: Search the Mage’s guild library]
+
+=On task complete 
+
+After spending hours upon hours in that library, you finally collect all the mentions of people from the past who suddenly began behaving strangely, and also find an account of the ritual that originally bound that creature inside the sphere.
+
+Time to present them to Myr.
+
+=I found what we were looking for… (mage leader option)
+
+Myr scans them quickly, her eyes moving faster with each line.
+
+Myr: — …Yes. This fits.
+She sets the papers down.
+>Continue
+Myr: — We're dealing with a parasitic entity that feeds on its host's desires, then traps them inside a constructed illusion while using their body for its own benefit.
+She taps one particular passage.
+Myr: — According to these records, the creature cannot fully manifest on its own, which explains why it needed a host in the first place. And the things it said about magic and power… it must be gathering strength to reverse the original sealing ritual.
+Myr: — Since the ritual was done with one of the Champions of that time, it was of a high quality, so the only way to break it is to recreate it in reverse and in the same location. Which means it will have to return to the original ruins at some point.
+>So I just need to head back to those ruins?
+>Can Jean be saved?
+=1
+Myr: — Only if you want to get into a futile fight and get Jean dead.
+=1/2
+Myr: — To save Jean, we first need to incapacitate her without killing her, and then break the demon's illusion. The first part is relatively easy. She may be a strong mage, but she's not that strong.
+Myr: — Jean's biggest weakness is her pride and arrogance. And since the demon still has to share her body with her mind, he is bound to inherit some of her bad habits.
+Myr: — Just wait for her biggest attack and dodge it, then you’ll have an opening to get back at her. I’m sure you’ll manage. Now, when it comes to breaking the illusion, you must use your own will to aid her. Just link your consciousness with hers and help her see through the illusion.
+>Is it safe?
+>How do I do that?
+=1
+Myr: — For you? Yes. Worst‑case scenario, you simply lose the connection. For the person you're trying to wake, it might get unpleasant if the dissonance between illusion and reality is too painful to acknowledge, but it’s nothing that girl couldn’t take.
+(return to root)
+=2
+Myr: — There is a special artifact that can be created, but it requires some rare materials. I'm sure you'll manage to get them, though. Then just follow the instructions.
+She reaches for the parchment and begins sketching a small arcane diagram. When she's done, she hands you the schematic.
+Myr: — There. This should be your ticket to saving that arrogant brat. And be quick about it, we don’t know how much time it takes for that demon to reverse the ritual.
+
+=When Crafted the Mind-Link Artifact
+You finish crafting the artifact. Now you are prepared for the showdown with Jean and the demon inside her. 
+
+(make new non-combat location)
+
+>Close
+
+
+>Search for Jean (new location option)
+
+The ruins look the same, yet the atmosphere feels different this time. You step inside and walk unobstructed to the central chamber, where the cages used to be. Now they are piled against the walls, while in the center Jean is drawing intricate magical circles on the floor.
+
+Upon your arrival, she turns toward you. Her eyes still glow that unsettling violet. A distorted smile touches her lips.
+
+Jean: — You're persistent, I'll give you that. I did expect you'd come to try and get your girl back, but you came even earlier than I predicted.
+>Continue
+Jean: — Not that it really matters. I've learned all your tricks during your fight with that loser, Sylas. So I'll just squish you like a bug and carry on with my plan.
+
+Jean: — I'm so close to getting my freedom back. There's no way I'm letting some mortal stop me. Do you have any idea how long I've been preparing for this?
+
+>Long?
+>Very long?
+>I read the records, alright. You were sealed five hundred years ago. Doesn't even sound that long for a creature like you.
+
+=1/2
+
+Jean: — Five hundred years, dammit! Five hundred years sealed in a piece of glass! All just because one of those fucking zealots turned out to be oh so holy and raised an alarm after noticing my presence!
+
+=3
+
+Jean: — Fuck you! Five hundred years isn't long when you're having fun, not when you're stuck in one place! And all because one of those fucking zealots turned out to be oh so holy and raised an alarm after noticing my presence!
+
+=1/2/3
+
+Jean: — I was so bored and could do nothing about it! Well… almost nothing. Of course, I tirelessly worked on my plan to escape, but that's a given.
+
+The creature continues, clearly reveling in its own cunning, savoring each word like a well‑earned victory.
+>Continue
+Jean: — Even stuck in that glass, I shaped legends. I guided discoveries. I nudged the curious exactly where I needed them. I changed dozens of hosts just to grab a tiny bit more power for myself each time…
+
+Jean's lips curl slightly.
+
+Jean: — 'Cause strong hosts are very rare. Usually they can fulfill their desires themselves, leaving me no leverage… So you have no idea how happy I was when I saw that this girl, despite all her power, was consumed by her desires!
+
+Jean: — With her magical potential, I knew she was the final piece. Her power was enough to start the ritual already, all I need to do now is to get rid of you and carry on with it. And it’s time to start with that task!
+
+>Fight (jean with demon inside)
+
+The fierce fight makes you sweat quite a lot, but it still comes to an end with you as the last one standing. Jean finally collapses, weakened enough that even the demon can't force her body to move.
+
+You rush forward and press the mind‑linking artifact to her forehead. At that moment your world suddenly becomes a blur.
+
+>Continue
+
+(fade to black transition)
+
+You find yourself standing in the middle of the Mage's Guild. To the side, you see none other than Jean herself, talking to Myr. Both of them are smiling at each other.
+
+
+Myr: — I must say, the way you've worked around the limitations of the original formula truly deserves recognition.
+
+Jean: — Oh, it wasn't that big of a deal. I just used the new type of magical circle I created for energy storage. I also hoped to patent it along with the new formula and add it to the curriculum. Do you think the guild could help me with that?
+>Continue
+Myr: — Of course, my dear. I'll issue the orders right away. Naturally, they will both bear your name, to commemorate your achievement in history.
+
+Jean: — Ah, there's no need for that. I just wanted to do some good for the magical community.
+
+Myr: — No‑no, I insist! The world should know its geniuses…
+>I see you had your share of fun. But it's time to go back to reality, Jean
+>Jean, wake up. You know this is a dream. Do you really think Myr would ever praise you like that?
+=1
+
+Jean: — Oh, [name], you've decided to visit us? How nice of you! I missed you, you know? You should visit more often!
+
+Jean: — …But wait, what are you talking about? I don't understand. Reality? Also, you look pretty worn out, did you come here right after a battle? Hold on, are you injured? Do you need any help?
+
+She looks at you with deep concern in her eyes.
+
+=2
+
+Jean: — Oh, [name], how did you end up here? You should've told us you were coming. I'd have organized some snacks at the very least…
+
+Jean: — …And what are you saying? Why wouldn't Myr congratulate me when I deserved it? I mean, it's true that we started on the wrong note and didn't see eye to eye at first, but we reconciled after I presented my thesis… my thesis on… what?
+
+She begins to look more and more confused, unable to properly retrieve the nonexistent chain of events that would lead her to this moment.
+
+
+=1/2
+
+>Jean, listen to me. Remember. Your research, the old house, Rynn, the monastery ruins, the monsters, the Empire's capital, Sylas, our fight with him
+>This is all just an illusion, Jean. The demon trapped your mind here while using your body as a tool for his own gain
+
+(on either)
+
+Jean: — W-what? That's nonsense! We've dealt with that case ages ago! And after that I… it's been years… wait, why can't I remember what I was doing all that time? …Ah, why does my head suddenly hurt? …Could it really be? …All of that is just an illusion?…
+
+As she begins to regain her freedom, the illusory jail starts to crumble. Myr's figure distorts and disappears as the pieces of the stage are consumed by darkness.
+
+>Continue
+
+A moment later, you find yourself back in reality. Jean slowly opens her eyes, and they go wide as she realizes where she is.
+
+Jean: — S-so it really was just an illusion?! All of it?! Oh, my body hurt so much… Why?...
+
+You help Jean to her feet, and together you look at the dark fog that escaped from her body and now swirls over the magical circles, slowly forming some sort of creature. Its violet eyes look at you with clear disdain.
+
+>Continue
+
+Demon: — YOU! You stupid, nosy human with your stupid dirty tricks! I had this girl locked up in the sweetest dreams, the kind she'd never escape on her own! Yet you just had to ruin it for me, didn't you?!
+
+Demon: — Oh, but it's not over yet! I've siphoned enough energy from her to create this vessel, and I will finish what I've started! DIE!
+
+>Fight (demon form)
+
+Together with Jean, you manage to overpower the demon. Its fragile, temporary form begins to dissipate back into fog, which in turn gets sucked back into the floating glass sphere.
+
+Demon: — NO-O-O, NOT AGAIN, I WAS SO CLOSE… curse you souls… you mortal… bastards…
+
+The sphere slowly lowers itself before finally falling to the ground with a tiny clink.
+
+>Continue
+
+Jean gives it a cautious look.
+
+Jean: — Did we… actually win? It's not an illusion this time, right?
+
+She pinches herself and winces from the pain.
+
+Jean: — Ouch. Alright, so, what do we do with it now? After being controlled by that thing, I don't even want to touch it!
+>(If Rynn alive) We still need to get it to the Church to save Rynn
+>Guess it’s still can be your research topic
+>We should just destroy it on the spot
+
+=We still need to get it to the Church to save Rynn
+Jean: — Oh, right, that curse won't disappear on its own! Let me grab it, then. I hope we get back in time.
+>Close
+=2 (if Rynn dead)
+Jean: — I can't believe I'm the one who has to ask this, but isn't it way too dangerous? Although… I guess humanity might not get another opportunity to study a weakened demon of this sort… Fine, let me grab it and let’s go to the guild.
+>Close
+=2 (if Rynn alive)
+Jean: — I can't believe I'm the one who has to ask this, but isn't it way too dangerous? Although… I guess we might not get another opportunity to study a weakened demon of this sort… 
+Jean: — … But wait, what studies are you talking about? We need it to remove the curse from Rynn! You're not saying we should let her, are you?…
+>You're right, I almost forgot about it. Let’s go to the Church
+>It's up to you. But Rynn is just one person, and we have no guarantees it'll even work. The research, though, could benefit everyone
+
+=1(You right)
+
+Jean: — Yeah, let’s go.
+>Close
+
+=2(It’s up to you)
+Jean: — When you put it like that… She's just one person. We don't even know if the cure will work. But research… it could let us prevent something like this from happening again.
+Jean: — Yeah… I guess, this is a better way. I’m sorry, Rynn. But we can’t lose this opportunity. Let’s go to the guild.
+>Close 
+=3 (if Rynn dead)
+Jean: — Yeah, you're right. Time to put an end to this evil creature. Whoever sealed it last time probably didn't have enough strength to kill it, but now that it's weakened, I'm sure we'll manage. And even if we can't destroy it completely, at least it won't be able to set foot on this plane for a long time.
+Hearing your decision, the sphere tries to roll away on its own, but Jean easily catches it and places it between some rocks. Realizing it won't be able to escape, the demon tries to say something, but its voice is so quiet you hear nothing but a few faint squeaks.
+Jean focuses all her remaining magical energy into a blindingly bright fire arrow, then throws it directly at the glass sphere. It shatters with a loud crack, inhuman screams in an unknown tongue filling your ears as the dark fog dissipates into nothingness.
+
+Jean: — For everyone you’ve hurt on your journey. For Rynn.
+>Continue
+=3 (if Rynn alive)
+Jean: — Yeah, that was also my first thought, but don’t forget that we need it to remove the curse from Rynn. Let me grab it and then we should head back to Church. I hope we will get back in time.
+>Continue
+
+
+=Church event (if Rynn is alive, any "let's go to the Church" options)
+
+You rush to the Church and present the artifact to Ginny. Together you alert the Mage's guild and within days a small circle of senior guild mages is assembled around the artifact. They dissect the curse piece by piece and soon find a way to remove it from Rynn's body.
+
+After the ritual, the curse's energy reverses its flow and shatters the glass sphere on contact. With one final curse in an unknown tongue, the demon leaves this plane.
+
+The next day, Rynn opens her eyes. Weak, but alive and still human.
+
+Rynn: — …Where am I? What happened?
+
+You spend a whole hour recounting all the events that transpired.
+>Continue
+Jean: — …but in the end, with the help of the Church, we were able to lift the curse. You're safe now.
+
+Rynn: — That's… an incredible story! And you saved my life again! Thank you!
+
+She gives Jean a hug, and they talk more about the details of the adventure.
+>Continue
+Rynn: — By the way… when that demon possessed you, did you get a chance to talk to him? Did he say anything about my brother?
+
+Jean: — We didn't really talk, but as he was binding my will, I remember him mentioning that, unlike Sylas, he wouldn't let anyone escape his grasp… which means at least one person did escape before. Unfortunately, we don't know who it was or when that happened.
+
+Rynn: — So he really might still be out there somewhere… Well, I guess I'll just keep searching… when Ginny lets me leave, of course.
+
+You let her rest and return to your mansion. A week later, Rynn, fully healed, pays you a visit.
+>Continue
+She thanks you both for saving her life and says that if you ever call for help, she will answer. For now, though, she will continue to look for her brother.
+
+As you both watch her walk away, Jean turns to you.
+
+Jean: — Hey. I… never really said it properly, did I?
+
+She shifts awkwardly, uncomfortable with this moment of vulnerability.
+>Continue
+Jean: — This whole mess… it was my research, my obsession, my baggage. You didn't have to follow me into any of it.
+
+She finally looks at you.
+
+Jean: — But you did. You were there, every time. So… thanks. For not giving up on me.
+
+She punches your shoulder lightly.
+>Continue
+Jean: — And in the end, we actually did it. Caught the demon, saved Rynn, and even Myr looks at me with slightly less disdain. Not the worst outcome, eh?
+She looks away quickly, but not before you catch the glisten in her eyes.
+Jean: — Now come on. Let's go home. Huh, I didn't even notice how I started calling your mansion "home"… Guess it'll be harder now if you ever want to get rid of me, heh.
+>Close
+
+=(keep sphere route)
+You make your way back to Aliron and head to the Mage's Guild. The glass sphere survived the journey and is now carefully stored in Jean's bag.
+Myr meets you in the hallway. She looks at you first, then glances at Jean, her face betraying no surprise or any other emotion. Then her gaze shifts directly to Jean's bag.
+Myr: — …Well. I see you didn't come back empty‑handed.
+Jean carefully takes the artifact from her bag and holds it in her hands.
+>Continue
+Jean: — You could say that. The demon is beaten to exhaustion and currently resides inside, I doubt he'll pose any threat for quite some time. As such, I want to study it. Do you think the Academy would be interested in my research?
+For a brief moment, genuine amusement flashes across Myr's face.
+Myr: — You're asking if a bunch of old farts… of respectable mages would be interested in studying a weakened, contained parasitic demon and its magic? Pfft. Yes. Yes, they would.
+Myr takes the sphere, turning it slowly in her fingers. The glass hums faintly. She gives it back to Jean with an appraising look.
+>Continue
+Myr: — It seems your efforts were not entirely wasted after all… even if the result was rather… unconventional.
+Jean: — I'll take that as praise.
+Myr: — Take it as you like. I'll have a new permit issued for you, it should be ready in a couple of days. After that, you will once again be welcome in the halls of the Academy. This time as a senior researcher.
+>Continue
+For a moment, Jean just blinks.
+Jean: — …Seriously? Senior?
+Myr: — Try not to faint. It would be embarrassing.
+Jean quickly looks away, but the small, satisfied smile is impossible to miss. Myr concludes the meeting is over and walks away.
+>Continue
+Outside the guild, Jean lingers on the steps, unusually quiet.
+Jean: — …The cost Rynn had to pay for me to be in this position…
+She exhales slowly.
+Jean: — I won't waste this chance.
+>Continue
+She glances at you.
+Jean: — Hey. Just so you know… I really appreciate that you stayed with me through all this mess.
+She shifts awkwardly, uncomfortable with this moment of vulnerability.
+>Continue
+Jean: — You were there. Every time. So… thanks. For not giving up on me.
+She punches your shoulder lightly.
+Jean: — In the end, we made quite good partners, eh? Hopefully that won't be our last adventure.
+She looks away quickly, but not before you catch the glisten in her eyes.
+>Continue
+Jean: — Now come on. Let's go home. Huh, I didn't even notice how I started calling your mansion "home"… Guess it'll be harder now if you ever want to get rid of me, heh.
+>Close
+
+=(We should just destroy it on the spot option)
+
+After the journey is over, you return to the mansion and take some time to rest. In the evening, you notice Jean watching the sunset on the balcony and join her.
+
+Eventually, the sun hides behind the horizon, and Jean turns to you.
+
+Jean: — …Well.
+
+She exhales.
+>Continue
+Jean: — That was quite the adventure, wasn't it?
+
+Jean: — Not exactly what I was hoping for when this whole thing started. But in the end, at least one ancient horror is permanently off the list. Even if it came with great loss.
+
+She then turns to you.
+>Continue
+Jean: — You know, this whole thing showed me what it feels like to have someone watch your back.
+
+She shifts awkwardly, uncomfortable with this moment of vulnerability.
+
+Jean: — So… I just wanted to say thank you. For staying with me through all this mess. For not giving up on me.
+
+She punches your shoulder lightly.
+>Continue
+Jean: — In the end, we made quite good partners, eh? I just hope our next adventure is a lot brighter.
+She looks away quickly, but not before you catch the glisten in her eyes.
+Jean: — Now come on. Let's go home. Huh, I didn't even notice how I started calling your mansion "home"… Guess it'll be harder now if you ever want to get rid of me, heh.
+>Close
+
+
