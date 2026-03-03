@@ -737,6 +737,11 @@ func make_repeatable_quest_location(quest,area,req):
 				locationdata.scriptedevents.append(i.duplicate(true))
 			locationdata.events.clear()
 			if req.has("no_autocomplete"):
+				#mind that there is `complete_active_location_quests` common effect, which in other
+				#cases makes the same action as in `mark_quest_location_completed`, but should be added
+				#manually in encounter.
+				#I'm still keeping this for `no_autocomplete` case, because it's more consistent
+				#than manual common effect
 				locationdata.scriptedevents.append({trigger = 'finish_combat', event = 'mark_quest_location_completed', reqs = [], args = {id = quest.id}})
 			else:
 				locationdata.scriptedevents.append({trigger = 'finish_combat', event = 'finish_quest_location', reqs = [], args = {id = quest.id, source = quest.source, area = quest.area}})

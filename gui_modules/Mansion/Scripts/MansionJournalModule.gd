@@ -203,15 +203,9 @@ func CompleteReqs():
 		match i.code:
 			"random_material":
 				ResourceScripts.game_res.set_material(i.type, '-', i.value)
-	selectedquest.state = 'complete'
 	ResourceScripts.slave_quests.check_faction_rating(selectedquest)
 	globals.text_log_add("quest", tr("QUESTCOMPLETEMESSAGE")+": " + tr(selectedquest.name))
-	#NOTE, that only quest of "complete_location" with flag "no_autocomplet" should use this code
-	#of "unquest_location" and "remove_location". If vice versa, it is an error
-	for i in selectedquest.requirements:
-		if i.code == "complete_location":
-			globals.unquest_location(i.location)
-			globals.remove_location(i.location)
+	ResourceScripts.game_world.complete_quest(selectedquest, 'complete')
 	Reward()
 
 var char_reqs

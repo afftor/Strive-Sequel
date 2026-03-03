@@ -2333,9 +2333,10 @@ func common_effects(effects):
 			'complete_active_location_quests':
 				if input_handler.active_location.has('questid'):
 					var quest = ResourceScripts.game_world.get_quest_by_id(input_handler.active_location.questid)
-					for req in quest.requirements:
-						if req.code in ['complete_location','complete_dungeon'] && req.area == input_handler.active_area.code && req.location == input_handler.active_location.id:
-							req.completed = true
+					if quest != null:#can be forfited
+						for req in quest.requirements:
+							if req.code in ['complete_location','complete_dungeon'] && req.area == input_handler.active_area.code && req.location == input_handler.active_location.id:
+								req.completed = true
 			'affect_active_party':
 				for k in input_handler.get_active_party():
 					k.affect_char(i, true)

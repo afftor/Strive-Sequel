@@ -1291,6 +1291,8 @@ func mark_quest_location_completed(args):
 
 func autocomplete_quest(q_id):
 	var questdata = ResourceScripts.game_world.get_quest_by_id(q_id)
+	if questdata == null or questdata.state == 'failed':#was forfit
+		return
 	selectedquest = questdata
 	play_animation("repeatable_quest_completed")
 	PlaySound("questcomplete")
