@@ -13,6 +13,7 @@ use_filter = true
 font_data = ExtResource( 4 )
 
 [node name="skilltooltip" type="ScrollContainer"]
+visible = false
 margin_right = 463.0
 margin_bottom = 203.0
 grow_horizontal = 0
@@ -27,7 +28,7 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 4.0
+margin_left = 8.0
 margin_top = 4.0
 margin_right = 459.0
 margin_bottom = 199.0
@@ -36,7 +37,7 @@ grow_vertical = 0
 size_flags_horizontal = 3
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer"]
-margin_right = 455.0
+margin_right = 451.0
 margin_bottom = 120.0
 rect_min_size = Vector2( 0, 120 )
 
@@ -70,18 +71,19 @@ stretch_mode = 6
 
 [node name="descript" type="RichTextLabel" parent="VBoxContainer"]
 margin_top = 124.0
-margin_right = 455.0
+margin_right = 451.0
 margin_bottom = 158.0
 mouse_filter = 2
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "Skill Description"
+text = "Skill Description"
 fit_content_height = true
 
 [node name="cost" type="Label" parent="VBoxContainer"]
 margin_top = 162.0
-margin_right = 455.0
+margin_right = 451.0
 margin_bottom = 195.0
 grow_vertical = 0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )

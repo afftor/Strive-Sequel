@@ -1,4 +1,4 @@
-[gd_scene load_steps=251 format=2]
+[gd_scene load_steps=252 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=2]
@@ -213,6 +213,7 @@
 [ext_resource path="res://assets/images/gui/panels/hourglass.png" type="Texture" id=211]
 [ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_default.png" type="Texture" id=212]
 [ext_resource path="res://assets/Textures_v2/icon_question_small_alt.png" type="Texture" id=213]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttonsquare_pressed2.png" type="Texture" id=214]
 
 [sub_resource type="StyleBoxTexture" id=13]
 texture = ExtResource( 111 )
@@ -2899,9 +2900,6 @@ margin_top = 566.0
 margin_right = 668.0
 margin_bottom = 666.0
 scroll_vertical_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SlaveClassesModule/ClassPanel/SocialSkills"]
 light_mask = 0
@@ -3049,7 +3047,6 @@ scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SlaveClassesModule/MasteryPanel/mastery/ScrollContainer"]
 margin_right = 672.0
-margin_bottom = 4.0
 size_flags_horizontal = 3
 
 [node name="container" type="Control" parent="SlaveClassesModule/MasteryPanel/mastery/ScrollContainer/VBoxContainer"]
@@ -3202,7 +3199,6 @@ alignment = 1
 
 [node name="button" type="TextureButton" parent="SlaveClassesModule/MasteryPanel/Categories2"]
 visible = false
-self_modulate = Color( 1, 1, 1, 0.635294 )
 light_mask = 0
 margin_left = 258.0
 margin_right = 328.0
@@ -3210,7 +3206,7 @@ margin_bottom = 72.0
 rect_min_size = Vector2( 70, 70 )
 toggle_mode = true
 texture_normal = ExtResource( 75 )
-texture_pressed = ExtResource( 88 )
+texture_pressed = ExtResource( 214 )
 texture_hover = ExtResource( 87 )
 texture_disabled = ExtResource( 88 )
 expand = true
@@ -3219,9 +3215,10 @@ stretch_mode = 5
 [node name="icon" type="TextureRect" parent="SlaveClassesModule/MasteryPanel/Categories2/button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 2.0
-margin_top = 1.0
-margin_bottom = -1.0
+margin_left = 3.0
+margin_top = 4.0
+margin_right = -3.0
+margin_bottom = -4.0
 texture = ExtResource( 80 )
 expand = true
 stretch_mode = 6
@@ -3229,10 +3226,10 @@ stretch_mode = 6
 [node name="Label" type="Label" parent="SlaveClassesModule/MasteryPanel/Categories2/button/icon"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 24.1237
+margin_left = 28.1237
 margin_top = 37.0115
-margin_right = -2.87634
-margin_bottom = 2.01147
+margin_right = 1.12366
+margin_bottom = 8.01151
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 55 )

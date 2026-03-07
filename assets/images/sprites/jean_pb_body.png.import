@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/buttonsquare_hover.png-d4b19d33c3f2be5639494603bc172518.stex"
+path="res://.import/jean_pb_body.png-bdc7d8f454e056a29e5e2a5cec0362d0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttonsquare_hover.png"
-dest_files=[ "res://.import/buttonsquare_hover.png-d4b19d33c3f2be5639494603bc172518.stex" ]
+source_file="res://assets/images/sprites/jean_pb_body.png"
+dest_files=[ "res://.import/jean_pb_body.png-bdc7d8f454e056a29e5e2a5cec0362d0.stex" ]
 
 [params]
 
