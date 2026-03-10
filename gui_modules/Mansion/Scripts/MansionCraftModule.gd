@@ -699,6 +699,7 @@ func build_char_list():
 	input_handler.ClearContainer($CharList/VBoxContainer, ['Button'])
 	for ch in ResourceScripts.game_party.character_order:
 		var person = characters_pool.get_char_by_id(ch)
+		if !person.check_location(ResourceScripts.game_world.mansion_location, true): continue
 		var newbutton = input_handler.DuplicateContainerTemplate($CharList/VBoxContainer, 'Button')
 		newbutton.get_node("name").text = person.get_stat("name")
 		newbutton.get_node("Icon").texture = person.get_icon_small()

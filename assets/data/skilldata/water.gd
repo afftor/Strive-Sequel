@@ -333,7 +333,7 @@ var effects = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 4, #'arg',
 		tags = ['buff'],
-		statchanges = {matk_add_part = 0.25, resist_blind = 200, resist_sleep = 200, resist_charm  = 200},
+		statchanges = {matk_add_part = 0.25, resist_blind = 200, resist_sleep = 200},
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Mindread.png",

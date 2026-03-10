@@ -2164,6 +2164,7 @@ margin_bottom = -107.0
 theme = ExtResource( 15 )
 
 [node name="rewards" type="VBoxContainer" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish/ScrollContainer"]
+margin_right = 544.0
 size_flags_horizontal = 3
 custom_constants/separation = 5
 
@@ -3113,6 +3114,7 @@ expand = true
 stretch_mode = 6
 
 [node name="HSeparator" type="HSeparator" parent="SlaveClassesModule/MasteryPanel/mastery/ScrollContainer/VBoxContainer"]
+visible = false
 margin_right = 672.0
 margin_bottom = 4.0
 custom_styles/separator = SubResource( 10 )

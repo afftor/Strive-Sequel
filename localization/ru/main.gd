@@ -1664,6 +1664,7 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	STATMASTERY_POINT_COMBAT = """Очко боевого мастерства""",
 	STATMASTERY_POINT_UNIVERSAL = """Универсальное очко мастерства""",
 	STATDISABLED_MASTERIES = "Ограниченные мастерства",
+	WHOSHOULDCAST = """Who should cast?""", # MISSING TRANSLATION
 	ACTIONPRAISE = """Похвалить""",
 	ACTIONPRAISEDESCRIPT = """Проявить сочувствие и похвалить [name].""",
 	ACTIONREWARD = """Наградить""",
@@ -2191,6 +2192,7 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	STATMANACOST_MOD_AOE = "Трата маны на атаки по области",
 	STATMANACOST_MOD_TRUE = "",
 	STATMANACOST_MOD_HEAL = "Трата маны на лечение",
+	STATMANACOST = """Cost""", # MISSING TRANSLATION
 	#new
 	INNATE = "начальный",
 	STATPERSONALITYDESCRIPT= """Личность определяет манеру речи персонажа и не влияет на игровой процесс.""",
@@ -6117,6 +6119,7 @@ LICHAIRETALK6_5 = """Борьба Эйры постепенно ослабева
 	FORGETLOCATIONQUESTION = """Забыть это место? Все присутствующие персонажи будут отправлены обратно в поместье. Это действие нельзя отменить.""",
 
 	SENDCHARBACKQUESTION = """Отправить [name] обратно?""",
+	SENDCHARBACKTPQUESTION = """Cast teleport?""", # MISSING TRANSLATION
 	SENDCHARBACKTOMANSIONQUESTION = """Отправить [name] обратно в поместье?""",
 
 	RETURNALLCHARSTOMANSIONQUESTION = """Вернуть всех персонажей обратно в поместье?""",

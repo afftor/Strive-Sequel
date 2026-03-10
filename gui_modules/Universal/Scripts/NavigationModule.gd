@@ -212,6 +212,9 @@ func select_location(location):
 	toggle_drop_list(false)
 	input_handler.selected_location = location
 	input_handler.active_location = ResourceScripts.world_gen.get_location_from_code(location)
+	if input_handler.active_location == null:
+		return_to_mansion()
+		return
 	input_handler.active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[location].area] #only for postloading location change, cause this forces exploration node to be built before open_X call
 	if gui_controller.exploration == null:
 		gui_controller.exploration = input_handler.get_spec_node(input_handler.NODE_EXPLORATION, null, false, false)
