@@ -2033,6 +2033,11 @@ var data = {
 								code = "make_story_character",
 								value = "Jean",
 								recruit_from_location = true
+							},
+							{
+								code = "add_timed_event",
+								value = "jean_sidequest_start",
+								args = [{type = "add_to_date", date = [3,4], hour = 1}]
 							}
 						]
 					},
@@ -2083,6 +2088,11 @@ var data = {
 								value = "Jean",
 								recruit_from_location = true,
 								slave_category = "slave"
+							},
+							{
+								code = "add_timed_event",
+								value = "jean_sidequest_start",
+								args = [{type = "add_to_date", date = [3,4], hour = 1}]
 							}
 						]
 					},
@@ -2213,6 +2223,11 @@ var data = {
 				code = "make_story_character",
 				value = "Jean",
 				recruit_from_location = true
+			},
+			{
+				code = "add_timed_event",
+				value = "jean_sidequest_start",
+				args = [{type = "add_to_date", date = [3,4], hour = 1}]
 			}
 		],
 		character = "jean",

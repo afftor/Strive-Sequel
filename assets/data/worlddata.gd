@@ -1307,6 +1307,31 @@ var fixed_location_options = { #override serialized data
 	
 	empire_capital = [
 		{
+			text = tr("JEAN_SIDEQUEST_GL"),
+			reqs = [{type = 'active_quest_stage', value = 'jean_first_sidequest', stage = 'capital'}],
+			args = [{code = 'start_event', data = 'jean_sidequest_capital_start', args = []}]
+		},
+		{
+			text = tr("JEAN_SIDEQUEST_GL"),
+			reqs = [{type = 'active_quest_stage', value = 'jean_first_sidequest', stage = 'capital_1'}],
+			args = [{code = 'start_event', data = 'jean_sidequest_capital_guard', args = []}]
+		},
+		{
+			text = tr("JEAN_SIDEQUEST_MANSION_OPTION"),
+			reqs = [{type = 'active_quest_stage', value = 'jean_first_sidequest', stage = 'mansion'}],
+			args = [{code = 'start_event', data = 'jean_sidequest_mansion_start_1', args = []}]
+		},
+		{
+			text = tr("JEAN_SIDEQUEST_MANSION_OPTION"),
+			reqs = [{type = 'active_quest_stage', value = 'jean_first_sidequest', stage = 'mansion_1'}],
+			args = [{code = 'start_event', data = 'jean_sidequest_mansion_start_2', args = []}]
+		},
+		{
+			text = tr("JEAN_SIDEQUEST_GL"),
+			reqs = [{type = 'active_quest_stage', value = 'jean_first_sidequest', stage = 'return'}],
+			args = [{code = 'start_event', data = 'jean_sidequest_return_start', args = []}]
+		},
+		{
 			text = tr("EMPIRE_CAPITAL1"), 
 			reqs = [{type = 'active_quest_stage', value = 'act_4_capital', stage = 'ceremony', state = true}], 
 			args = [{code = 'start_event', data = 'emp_ceremony_1', args = []}]

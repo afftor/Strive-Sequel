@@ -2764,6 +2764,26 @@ var quests = {
 			price = {code = 'price', name = 'JEAN_FREE_QUEST_NAME', descript = 'JEAN_FREE_QUEST_PRICE'},
 		},
 	},
+	jean_first_sidequest = {
+		code = 'jean_first_sidequest',
+		summary = "JEAN_SIDEQUEST_SUMMARY",
+		stages = {
+			capital = {code = 'capital', name = 'JEAN_SIDEQUEST_NAME', descript = 'JEAN_SIDEQUEST_CAPITAL'},
+			capital_1 = {code = 'capital_1', name = 'JEAN_SIDEQUEST_NAME', descript = 'JEAN_SIDEQUEST_CAPITAL_1'},
+			mansion = {code = 'mansion', name = 'JEAN_SIDEQUEST_NAME', descript = 'JEAN_SIDEQUEST_MANSION'},
+			mansion_1 = {code = 'mansion_1', name = 'JEAN_SIDEQUEST_NAME', descript = 'JEAN_SIDEQUEST_MANSION_1'},
+			'return' : {code = 'return', name = 'JEAN_SIDEQUEST_NAME', descript = 'JEAN_SIDEQUEST_RETURN'},
+		},
+	},
+	jean_ruins_quest = {
+		code = 'jean_ruins_quest',
+		summary = "JEAN_RUINS_SUMMARY",
+		stages = {
+			stage1 = {code = 'stage1', name = 'JEAN_RUINS_NAME', descript = 'JEAN_RUINS_1'},
+			stage2 = {code = 'stage2', name = 'JEAN_RUINS_NAME', descript = 'JEAN_RUINS_2'},
+			stage3 = {code = 'stage3', name = 'JEAN_RUINS_NAME', descript = 'JEAN_RUINS_3'},
+		},
+	},
 	kuro_tome_quest = {
 		code = 'kuro_tome_quest',
 		summary = "KURO_TOME_QUEST_SUMMARY",

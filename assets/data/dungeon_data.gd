@@ -1627,6 +1627,75 @@ var dungeons = {
 			{trigger = 'dungeon_complete', args = 'mae_ancient_jungle_complete_start'}
 		]
 	},
+	
+	quest_jean_ruins = { #fix
+		code = 'quest_jean_ruins',
+		type = 'dungeon',
+		name = tr("QUEST_JEAN_RUINS_TEXT"),
+		classname = '',
+		descript = tr("QUEST_JEAN_RUINS_DESC"),
+		character_data = {
+			chance_mod = 1,
+			races = [['local', 3], ['common',5], ['uncommon',1]]
+		},
+		difficulty = 'easy',
+		background_pool = ['forest1', 'forest2', 'forest3'],
+		custom_background = 'combat_forest',
+		enemyarray = [['jungle_easy1', 1],['jungle_easy2', 1]],
+		final_enemy = [['jungle_boss1',1]], final_enemy_type = 'monster',
+		event_data = {
+			dungeon_find_chest_easy = {
+				limit = 0,
+				weight = 10,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['dungeon_find_chest_easy'],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
+			},
+			celena_shrine_find = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find','hybris_shrine_find'],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
+			}
+		},
+		
+		event_room_number = [2,2],
+		material_room_number = [2,2],
+		main_route_length = [5,5],
+		bonus_rooms = [2,2],
+		levels = [2,2],
+		base_room_stamina_cost = [3,5],
+		gatherable_resources = 'biome_ancient_jungles_res',
+		resources = 'local8',
+		gather_settings = 'base',
+		gather_mod = [2.5,4],
+		bgm = "exploration",
+		purchase_price = 0,
+		affiliation = 'local',
+		events = [],
+		tags = ['quest'],
+		area = 'forests',
+		travel_time = [1,1],
+		options = [],
+		scripteventdata = [
+			{trigger = 'enter', args = 'jean_q2_ruins_approach'},
+			{trigger = 'stage', event = 'custom_event', args = 'jean_q2_central_hall', stage = 'half'},
+			{trigger = 'dungeon_complete', args = 'jean_q2_lab_1'}
+		]
+	},
 #	quest_ritual_location = {
 #		code = 'quest_ritual_location',
 #		type = 'dungeon',

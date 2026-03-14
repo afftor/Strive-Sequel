@@ -832,8 +832,11 @@ func ItemSelect(targetscript, type, function, requirements = null):
 		for i in ResourceScripts.game_res.materials:
 			if ResourceScripts.game_res.materials[i] > 0:
 				array.append(i)
+	elif type == 'item':
+		for item in ResourceScripts.game_res.items.values():
+			if item.check_reqs(requirements):
+				array.append({type = 'item', code = item.itembase, amount = item.amount, item = item})
 	elif type == 'shrine_offering':
-		
 		for i in ResourceScripts.game_res.materials:
 			if ResourceScripts.game_res.materials[i] > 0:
 				array.append({type = 'material', code = i, amount = ResourceScripts.game_res.materials[i]})
@@ -873,7 +876,7 @@ func ItemSelect(targetscript, type, function, requirements = null):
 				newnode.get_node('name').text = Items.materiallist[i].name
 				newnode.get_node("Percent").text = str(ResourceScripts.game_res.materials[i])
 				connectmaterialtooltip(newnode, Items.materiallist[i])
-			'shrine_offering':
+			'shrine_offering', 'item':
 				match i.type:
 					'material':
 						newnode.get_node("icon").texture = Items.materiallist[i.code].icon
@@ -2901,6 +2904,8 @@ func valuecheck(dict):
 			for j in dict.or_list:
 				or_check = or_check or valuecheck(j)
 			return or_check
+		'has_item_with_tag':
+			return ResourceScripts.game_res.if_has_item_with_tag(dict.value)
 
 
 func apply_starting_preset():

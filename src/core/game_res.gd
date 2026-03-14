@@ -172,6 +172,13 @@ func if_has_items(name, operant, value):
 			counter += i.amount
 	return input_handler.operate(operant, counter, value)
 
+
+func if_has_item_with_tag(value):
+	for i in items.values():
+		if i.tags.has(value):
+			return true
+	return false
+
 func if_has_free_items(name, operant, value):
 	var counter = 0
 	for i in items.values():
