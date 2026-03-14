@@ -1269,12 +1269,19 @@ var unique_sprites = {
 			face_path = "jean_nude",
 			unlock_reqs = []
 			},
+		prostitute = {
+			name = "Prostitute",
+			descript = "",
+			path = "jean_pb_body", 
+			face_path = "jean_pb",
+			unlock_reqs = [{type = 'event_seen', check = true, value = 'ana_blow_1'}] #fix
+			},
 		wed = {
 			name = "Wed",
 			descript = "",
 			path = "jean_wed_body", 
 			face_path = "jean_wed", 
-			unlock_reqs = []
+			unlock_reqs = [] 
 			},
 	},
 	heleviel = {
