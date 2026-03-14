@@ -720,7 +720,7 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
 		tags = ['affliction', 'shock', 'negative'],
-		statchanges = {damage_reduction = -15},
+		statchanges = {damage_mod_all = -0.15},
 		buffs = ['b_shock'],
 	},
 	e_s_ensnare = {

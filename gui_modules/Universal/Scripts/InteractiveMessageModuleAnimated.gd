@@ -440,6 +440,19 @@ func shrine_option(option):
 		'item_selected':
 			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['item'].output, selected_item)
 
+
+func select_item_for_next_event(option):
+	var req_data = get_option_reqs_and_challenge(option)
+	var reqs = req_data.reqs
+	var code = option.code
+	stored_scene = code
+	stored_argument = 0
+	if option.has('dialogue_argument'):
+		stored_argument = option.dialogue_argument
+	
+	globals.ItemSelect(self, 'item', 'item_select', reqs)
+
+ 
 var selected_item
 
 func shrine_mat_select(item):
@@ -449,6 +462,17 @@ func shrine_mat_select(item):
 func shrine_item_select(item):
 	selected_item = item
 	shrine_option('item_selected')
+
+
+func item_select(item):
+	selected_item = item
+	globals.common_effects([{code = 'remove_item', operant = '-', name = item.code, number = 1}])
+	var data = scenedata.scenedict[stored_scene]
+	var event_type = 'story_event'
+	if scenedata.scenedict[stored_scene].has('default_event_type'):
+		event_type = scenedata.scenedict[stored_scene].default_event_type
+	previous_dialogue_option = stored_argument
+	input_handler.interactive_message_follow(stored_scene, event_type, {})
 
 
 func add_loot_options(scene):
@@ -516,6 +540,8 @@ func get_option_reqs_and_challenge(option):
 	var code = option.code
 	if option.has('person_reqs'):
 		reqs = option.person_reqs
+	if option.has('item_reqs'):
+		reqs = option.item_reqs
 	elif code.find('marriage')!= -1:
 		reqs = [
 			{code = 'stat', stat = 'agreed_to_marry', operant = 'eq', value = true}
@@ -1383,6 +1409,8 @@ func select_option(number):
 	
 	if option.has('select_person'):
 		select_person_for_next_event(option)
+	if option.has('select_item'):
+		select_item_for_next_event(option)
 	elif option.has('remove_person'):
 		remove_person(code)
 	elif option.has('remove_non_master'):
