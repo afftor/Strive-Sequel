@@ -998,6 +998,20 @@ var unique_marry_rules = {
 			agrees = true
 		},
 	},
+	mae = {
+		mae_agree = {
+			reqs = [{type = "quest_completed", name = "mae_spirit_quest", check = true}],
+			text = "MAE_PROPOSAL_FINISHED_TEXT",
+			description = "MAE_PROPOSAL_FINISHED_DESCRIPT",
+			agrees = true
+		},
+		mae_refuse = {
+			reqs = [{type = "quest_completed", name = "mae_spirit_quest", check = false}],
+			text = "MAE_PROPOSAL_UNFINISHED_TEXT",
+			description = "MAE_PROPOSAL_UNFINISHED_DESCRIPT",
+			agrees = false
+		},
+	},
 }
 
 func ask_to_marry(person, counter):

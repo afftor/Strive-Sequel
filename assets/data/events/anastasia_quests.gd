@@ -1913,6 +1913,7 @@ var data = {
 		scene_type = "ero_scene",
 		custom_background = "ana_blow_1",
 		save_scene_to_gallery = true,
+		unlocked_char_sprites = {anastasia = ["nighgown"]},
 		unlocked_gallery_seq = "ana_blow",
 		reqs = [
 

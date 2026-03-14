@@ -102,6 +102,8 @@ func finish_animation(node):
 		start_animation(node)
 
 func start_animation(node):
+	if !animations_queue[cur_timer].has(node):#temporal fix
+		return
 	var f_anim = animations_queue[cur_timer][node].front()
 	var delay = 0
 	for data in f_anim:

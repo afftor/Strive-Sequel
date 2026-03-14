@@ -696,29 +696,31 @@ func add_rolled_chars(tarr):
 var selectedperson
 func return_character(character):
 	selectedperson = character
-	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'return_character_confirm', character.translate(tr("SENDCHARBACKQUESTION"))])
+	var teleport_base = $teleport_base
+	teleport_base.set_loc_id(active_location.id)
+	teleport_base.set_confirm_func(self, "return_character_confirm")
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [teleport_base, 'teleport_check', character.translate(tr("SENDCHARBACKQUESTION"))])
 
 
-func return_character_confirm():
-	selectedperson.remove_from_task()
-	selectedperson.return_to_mansion()
-	active_location.teleporter = false
+func return_character_confirm(by_teleport = false):
+	selectedperson.return_to_mansion(by_teleport)
 	build_location_group()
 
 func return_all_to_mansion():
-	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'return_all_to_mansion_confirm', "Return all character back to Mansion?"])
+	var teleport_base = $teleport_base
+	teleport_base.set_loc_id(active_location.id)
+	teleport_base.set_confirm_func(self, "return_all_to_mansion_confirm")
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [teleport_base, 'teleport_check', "Return all character back to Mansion?"])
 
 
-func return_all_to_mansion_confirm():
+func return_all_to_mansion_confirm(by_teleport = false):
 	var presented_characters = []
 	for id in ResourceScripts.game_party.character_order:
 		var i = ResourceScripts.game_party.characters[id]
 		if i.check_location(active_location.id, true):
 			presented_characters.append(i)
 	for person in presented_characters:
-		person.remove_from_task()
-		person.return_to_mansion()
-	active_location.teleporter = false
+		person.return_to_mansion(by_teleport)
 	nav.return_to_mansion("default")
 
 
@@ -768,6 +770,8 @@ func build_spell_panel():
 		var person = ResourceScripts.game_party.characters[id]
 		if person.check_location(active_location.id, true):
 			for i in person.get_combat_skills() + person.get_explore_skills():
+				if i == "teleport":#hardcoded separately
+					continue
 				var skill = Skilldata.get_template(i, person)
 				if skill.tags.has('exploration') == false:
 					continue

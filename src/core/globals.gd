@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.13.4b'
+const gameversion = '0.14.0'
 
 #time
 signal hour_tick
@@ -898,6 +898,8 @@ func QuickSave():
 	SaveGame('QuickSave')
 
 func autosave(overwrite = false):
+	if input_handler.hard_tutorial_active:
+		return
 	if input_handler.globalsettings.autosave_number <= 0:
 		return
 	if !overwrite:
@@ -1110,7 +1112,7 @@ func fastif(value, result1, result2):
 	else:
 		return result2
 
-func return_to_main_menu():
+func preexit_clear_up():
 	if input_handler.CurrentScene != null:
 		input_handler.CurrentScene.queue_free()
 	
@@ -1125,12 +1127,16 @@ func return_to_main_menu():
 	gui_controller.exploration_city = null
 	gui_controller.exploration_dungeon = null
 	
-	input_handler.ChangeScene('menu')
+	#input_handler.ChangeScene('menu') was here in return_to_main_menu()
 	if gui_controller.dialogue != null:
 		gui_controller.dialogue.hide()
 	ResourceScripts.revert_gamestate()
 	gui_controller.revert_scenes_data()
 #	ResourceScripts.recreate_singletons()
+
+func return_to_main_menu():
+	preexit_clear_up()
+	input_handler.ChangeScene('menu')
 
 
 func getrelativename(person, person2):
@@ -1247,8 +1253,6 @@ func calculate_travel_time(location1, location2): #2remade to new mechanic
 			time += adata1.travel_time + adata2.travel_time
 	
 	time = max(1, time - variables.stable_boost_per_level * ResourceScripts.game_res.upgrades.stables)
-	if ldata1.teleporter:
-		time = 0
 	return {time = time}
 
 func check_recipe_resources(temprecipe):

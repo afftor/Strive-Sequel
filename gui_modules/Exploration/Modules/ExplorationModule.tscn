@@ -1,6 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://gui_modules/Exploration/Scripts/teleport_base.gd" type="Script" id=2]
+[ext_resource path="res://gui_modules/Universal/Modules/teleport_menu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://gui_modules/Exploration/Scripts/ExplorationModule.gd" type="Script" id=7]
 [ext_resource path="res://gui_modules/Exploration/Modules/LocationGui.tscn" type="PackedScene" id=98]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionJournalModule.tscn" type="PackedScene" id=100]
@@ -43,3 +45,19 @@ margin_top = 991.439
 margin_right = 1880.24
 margin_bottom = 1037.69
 text = "Test"
+
+[node name="teleport_base" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="teleport_menu" parent="teleport_base" instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -194.5
+margin_top = -131.5
+margin_right = 194.5
+margin_bottom = 131.5

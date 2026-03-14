@@ -34,6 +34,7 @@ func update(person = null):
 		if (
 			gui_controller.previous_screen != null
 			&& gui_controller.previous_screen == gui_controller.exploration
+			&& gui_controller.exploration.get('person_to_hire') != null
 		):
 			person = gui_controller.exploration.person_to_hire
 	# if person != null:

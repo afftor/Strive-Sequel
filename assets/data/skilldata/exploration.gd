@@ -155,7 +155,7 @@ var skills = {
 		tags = ['support', 'exploration'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'setup_teleport', trigger = variables.TR_EXPLORE_POSTDAMAGE})], 
+		effects = [], #effect now is hardcoded
 		cost = {mp = 15},
 		charges = 0,
 		combatcooldown = 0,
@@ -210,12 +210,7 @@ var effects = {
 		type = 'oneshot',
 		target = 'caster',
 		atomic = [{type = 'dungeon_effect', value = 'set_intimidate'}]
-	},
-	setup_teleport = {
-		type = 'oneshot',
-		target = 'caster',
-		atomic = [{type = 'location_effect', value = 'set_teleport'}]
-	},
+	}
 }
 var atomic_effects = {}
 var buffs = {

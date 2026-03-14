@@ -10,32 +10,33 @@ var drag_offset = Vector2(0.0, 0.0)
 var click_position
 
 var hovered_area = null
-var _hovered_area = null
 var hovered_location = null
-var loc_locked = false
+#_hovered_area and loc_locked are seems obsolete. Delete with time (12.02.26)
+#var _hovered_area = null
+#var loc_locked = false
 
 var area_zoom_data = {
 	null:{
-		position = Vector2(920, 1090), 
+		position = Vector2(920, 1090),
 		zoom = 1.0
 	},
 	plains = {
-		position = Vector2(1050, 1250), 
+		position = Vector2(640, 1352),
 		zoom = 1.0
 #		zoom = 1.5
 	},
 	forests = {
-		position = Vector2(1810, 1390), 
+		position = Vector2(1221, 1429),
 		zoom = 1.0
 #		zoom = 1.5
 	},
 	mountains = {
-		position = Vector2(1000, 850), 
+		position = Vector2(817, 825),
 		zoom = 1.0
 #		zoom = 1.5
 	},
 	empire = {
-		position = Vector2(1520, 100), 
+		position = Vector2(1026, 227),
 		zoom = 1.0
 #		zoom = 1.2
 	},
@@ -52,14 +53,24 @@ var selected_groups = []
 var group_to_rename
 var group_move_chars = []
 var mass_select_press_effect = false
+var can_teleport = false
 
+onready var info_btn_teleport = $InfoPanel/buttons/Teleport
+onready var info_btn_separator = $InfoPanel/buttons/separator
+onready var info_btn_send = $InfoPanel/buttons/Sendbutton
+onready var info_btn_forget = $InfoPanel/buttons/Forget
+onready var info_btns = $InfoPanel/buttons
+onready var info_teleport_menu = $InfoPanel/teleport_menu
 
-func _unhandled_input(event):
+func map_input(event):
 #func _input(event):
 #	if event.is_action_pressed('MouseUp'):
 #		set_map_zoom($map.scale.x + map_zoom_step)
 #	if event.is_action_pressed('MouseDown'):
 #		set_map_zoom($map.scale.x - map_zoom_step)
+	for area in $map.get_children():
+		if area.has_method('custom_input'):
+			area.custom_input(event)
 	
 	if event.is_action_pressed("LMB") and !drag_mode:
 		click_position = get_global_mouse_position()
@@ -68,14 +79,18 @@ func _unhandled_input(event):
 	if event.is_action_released("LMB") and drag_mode:
 		drag_mode = false
 		if (get_global_mouse_position() - click_position).length() < 5:
-			if selected_area != null and hovered_location != null:
+			if hovered_location != null:
 				map_location_press(hovered_location)
-			else:
+			elif hovered_area != null:
 				map_area_press(hovered_area)
 	if drag_mode:
 		set_map_position()
 	#2add part with selecting areas with click on map
 
+func map_all_mouse_exited():
+	for area in $map.get_children():
+		if area.has_method('set_mouse_in_me'):
+			area.set_mouse_in_me(false)
 
 func animate_map_moves(zoom, pos, time = 0.5):
 	var tween = input_handler.GetTweenNode(self)
@@ -149,14 +164,12 @@ func trim_map_pos(pos, scale = null):
 
 func set_focus_area():
 	var data = area_zoom_data[selected_area]
-	animate_map_moves(data.zoom, data.position)
+	animate_map_moves(data.zoom, trim_map_pos(data.position, data.zoom))
 #	$map.scale.x = data.zoom
 #	$map.scale.y = data.zoom
 #	$map.global_position = data.position
 	
 	for area in $map.get_children():
-		if area.is_in_group('highlight_ignore'):
-			continue
 		if area.name == selected_area:
 			area.highlight(area.HighlightColor)
 		else:
@@ -164,10 +177,8 @@ func set_focus_area():
 
 
 func set_focus_location(loc):
-	loc_locked = true
+#	loc_locked = true
 	for area in $map.get_children():
-		if area.is_in_group('highlight_ignore'):
-			continue
 		if area.name == loc or area.name == selected_area:
 			area.highlight(area.HighlightColor)
 		else:
@@ -175,24 +186,22 @@ func set_focus_location(loc):
 
 
 func unselect_location():
-	loc_locked = false
+#	loc_locked = false
 	hovered_location = null
 	if selected_area == null:
 		unselect_area()
 		return
 	for area in $map.get_children():
-		if area.is_in_group('highlight_ignore'):
-			continue
 		if area.name == selected_area:
 			area.highlight(area.HighlightColor)
 		else:
 			area.highlight(Color(0,0,0,0))
 
-
-func area_locked():
-	if hovered_area != null and hovered_area != _hovered_area:
-		return true
-	return false
+#seems obsolete. Delete with time (12.02.26)
+#func area_locked():
+#	if hovered_area != null and hovered_area != _hovered_area:
+#		return true
+#	return false
 
 
 #map gui
@@ -244,45 +253,45 @@ func _input(event):
 func _ready():#2add button connections
 	$Back.connect('pressed', self, 'close')
 	$mode.connect('pressed', self, 'from_loc_set')
-	$FromLocList/Sendbutton.connect('pressed', self, 'from_loc_set')
-	$InfoPanel/Sendbutton.connect('pressed', self, 'confirm_travel')
+#	$FromLocList/Sendbutton.connect('pressed', self, 'from_loc_set')
+	info_btn_send.connect('pressed', self, 'confirm_travel')
+	info_btn_teleport.connect('pressed', self, 'switch_teleport_menu')
 	$zoom.min_value = map_zoom_min
 	$zoom.max_value = map_zoom_max
 #	$zoom.connect("value_changed", self, 'zoom_change')
 #	$zoom/minus.connect("pressed", self, 'zoom_change_step', [ -1])
 #	$zoom/plus.connect("pressed", self, 'zoom_change_step', [ 1])
-	$InfoPanel/Forget.connect("pressed", self, "forget_location")
+	info_btn_forget.connect("pressed", self, "forget_location")
 #	match_state()
 	input_handler.connect("mass_select_in_act", self, "off_mass_select_effect")
-	input_handler.register_btn_source('travel_master', self, 'tut_get_master', null, null, self, 'tut_get_master_rect')
-	input_handler.register_btn_source('travel_servant', self, 'tut_get_servant', null, null, self, 'tut_get_servant_rect')
-	input_handler.register_btn_source('travel_send', self, 'tut_get_send')
+	input_handler.register_btn_source('travel_master', self, 'tut_get_master')
+	input_handler.register_btn_source('travel_servant', self, 'tut_get_servant')
+	input_handler.register_btn_source('travel_chars_highlight', self, null, self, 'tut_get_chars_highlight')
+#	input_handler.register_btn_source('travel_send', self, 'tut_get_send')
 	input_handler.register_btn_source('travel_to_loc', self, 'tut_get_location')
 	input_handler.register_btn_source('travel_confirm', self, 'tut_get_send_confirm')
 	input_handler.register_btn_source('travel_back', self, 'tut_get_back_btn')
+	$map_control.connect("mouse_exited", self, "map_all_mouse_exited")
 
 func tut_get_master():
 	return tut_get_chara(ResourceScripts.game_party.get_unique_slave('tutorial_master'))
-func tut_get_master_rect():
+func tut_get_chars_highlight():
 	var btn = tut_get_master()
 	var rect = btn.get_global_rect()
 	rect.end.x = btn.get_node('group').rect_global_position.x
+	var btn2 = tut_get_servant()
+	rect.end.y = tut_get_servant().get_global_rect().end.y
 	return rect
 func tut_get_servant():
 	return tut_get_chara(ResourceScripts.game_party.get_unique_slave('tutorial_servant'))
-func tut_get_servant_rect():
-	var btn = tut_get_servant()
-	var rect = btn.get_global_rect()
-	rect.end.x = btn.get_node('group').rect_global_position.x
-	return rect
 func tut_get_chara(character):
 	for loc_cat in $FromLocList/LocScroll/LocCatList.get_children():
 		for loc_group in loc_cat.get_node('offset/LocGroupList').get_children():
 			for btn in loc_group.get_node('offset/LocList').get_children():
 				if btn.get_meta('character', "") == character.id:
 					return btn
-func tut_get_send():
-	return $FromLocList/Sendbutton
+#func tut_get_send():
+#	return $FromLocList/Sendbutton
 func tut_get_location():
 	var loc_id
 	for id in ResourceScripts.game_world.areas['plains'].questlocations:
@@ -294,7 +303,7 @@ func tut_get_location():
 			if btn.get_meta('location', "") == loc_id:
 				return btn
 func tut_get_send_confirm():
-	return $InfoPanel/Sendbutton
+	return info_btn_send
 func tut_get_back_btn():
 	return $Back
 
@@ -389,7 +398,7 @@ func open():
 	build_from_locations()
 	update_location_chars()
 	build_to_locations()
-	selected_area = 'plains'
+#	selected_area = 'plains'
 	update_selected_area()
 	match_state()
 	build_info(null)
@@ -397,6 +406,9 @@ func open():
 	input_handler.node_children_visible(get_parent(), self, false)
 	ResourceScripts.core_animations.UnfadeAnimation(self, 0.2)
 	set_focus_area()
+	for area in $map.get_children():
+		if area.has_method('check_gray'):
+			area.check_gray()#strictly after build_locations_list()
 	input_handler.ActivateTutorial("TUTORIALLIST3")
 
 
@@ -414,7 +426,7 @@ func build_locations_list():
 		if !cdata.has(id): 
 			continue #should add here currently nonexisted marking location link to delete
 		
-		var temp = {id = id, area = tdata.area, type = cdata[id].type, heroes = [], quest = false, teleporter = cdata[id].teleporter}
+		var temp = {id = id, area = tdata.area, type = cdata[id].type, heroes = [], quest = false}
 		if temp.type == "capital":
 			if adata.has("capital_code"):
 				if globals.is_capital_closed(adata.capital_code):
@@ -514,9 +526,9 @@ func build_info(loc = null):
 	var adata = ResourceScripts.game_world.areas[tdata.area]
 	
 	var location_selected = get_location_data(loc)
-	$InfoPanel/Forget.visible = (!location.tags.has('quest') and location_selected.type in ['dungeon', 'encounter'])
+	info_btn_forget.visible = (!location.tags.has('quest') and location_selected.type in ['dungeon', 'encounter'])
 #	if to_loc != null:
-#		$InfoPanel/Forget.visible = false
+#		info_btn_forget.visible = false
 	
 	#build info
 	$InfoPanel/Label.text = tr(location.name)
@@ -623,13 +635,27 @@ func build_info(loc = null):
 	$InfoPanel/VBoxContainer/CharScroll.visible = f
 	$InfoPanel/VBoxContainer/Label2.visible = f
 	
+	info_teleport_menu.hide()
+	
 	$InfoPanel.visible = true
-	if from_loc != 'adv_mode' and to_loc != null and loc == to_loc:
-		$InfoPanel/Sendbutton.visible = true
+	var not_temporal_info = (to_loc != null and loc == to_loc)
+	info_btns.visible = not_temporal_info
+	if from_loc != 'adv_mode' and not_temporal_info and !selected_chars.empty() and from_loc != to_loc:
+		info_btn_send.visible = true
 		$InfoPanel/time.visible = true
 		$InfoPanel/time.text = "Travel time - %d t" % globals.calculate_travel_time(from_loc, to_loc).time
+		
+		can_teleport = false
+		for sort_loc in sorted_locations:
+			if sort_loc.id == selected_loc:
+				can_teleport = info_teleport_menu.make_list(sort_loc.heroes, self, "cast_teleport")
+				break
+		info_btn_teleport.visible = can_teleport
+		info_btn_separator.visible = !can_teleport
 	else:
-		$InfoPanel/Sendbutton.visible = false
+		info_btn_send.visible = false
+		info_btn_teleport.visible = false
+		info_btn_separator.visible = false
 		$InfoPanel/time.visible = false
 
 
@@ -645,8 +671,6 @@ func make_panel_for_location(panel, loc):
 			panel.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.yellow)
 		if  data.has('active') and data.active == false:
 			text += "(!)"
-		if data.has('teleporter') and data.teleporter:
-			text += "(T)"
 		set_loc_text(panel, text)
 #		panel.get_node("Label").text = text
 		if loc.has('captured'):
@@ -781,8 +805,8 @@ func build_to_locations():
 			continue
 #		if loc_data.captured:
 #			continue
-		if loc_data.id == from_loc:
-			continue
+#		if loc_data.id == from_loc:
+#			continue
 		if areas.has(loc_data.area):
 			areas[loc_data.area].push_back(loc_data)
 		else:
@@ -843,10 +867,13 @@ func update_selected_to_location():
 
 
 func update_confirm():
-	if selected_groups.empty() and selected_chars.empty():
-		$InfoPanel/Sendbutton.visible = false
-#	else:
-#		$InfoPanel/Sendbutton.visible = true
+	if !$InfoPanel.visible: return
+	if selected_chars.empty():#selected_groups.empty()
+		info_btn_send.visible = false
+		info_btn_teleport.visible = false
+		info_btn_separator.visible = false
+	elif !info_btn_send.visible:
+		build_info()
 
 
 func map_area_press(area):
@@ -861,24 +888,30 @@ func map_area_press(area):
 	if selected_area == null:
 		unselect_area()
 	
-	selected_loc = null
 	update_selected_area()
 	set_focus_area()
 	match_state()
-	build_info()
+#	build_info()
 
 
 func map_location_press(loc):
 	if !if_location_in_list(loc):
 		return
+	var locs_area
+	for zone in $map.get_children():
+		if zone.name == loc:
+			locs_area = zone.get_area()#should have get_area() func
+			break
+	if selected_area != locs_area:
+		map_area_press(locs_area)
 	if selected_area == null:
 		return
 	
-	var mode = 'from'
-	if from_loc != null:
-		mode = 'to'
+#	var mode = 'from'
+#	if from_loc != null:
+#		mode = 'to'
 	
-	location_press(loc, mode)
+	location_press(loc, 'to')
 
 
 func area_press(area, mode):
@@ -887,7 +920,7 @@ func area_press(area, mode):
 	else:
 		selected_area = area
 	
-	selected_loc = null
+#	selected_loc = null
 	update_selected_area()
 	set_focus_area()
 	match_state()
@@ -896,7 +929,7 @@ func area_press(area, mode):
 
 func unselect_area():
 	selected_area = null
-	hovered_area = _hovered_area
+#	hovered_area = _hovered_area
 	set_focus_area()
 
 
@@ -957,7 +990,11 @@ func group_press(group_name, loc_id):
 func try_switch_selected_loc(loc_id):
 	if selected_chars.empty() and selected_groups.empty():
 		selected_loc = loc_id
-		match_state()
+		if selected_loc == null:
+			reset_from()
+		else:
+			from_loc_set()
+			match_state()
 
 func try_append_selected_group(group_name):
 	if !selected_groups.has(group_name):
@@ -1011,28 +1048,28 @@ func update_location_chars():
 
 
 func location_press(location, mode):
-	match mode:
-		'from':
-			if selected_loc == location and selected_chars.empty():
-				selected_loc = null
-				unselect_location()
-			else:
-				selected_loc = location
-				set_focus_location(location)
-			build_info(selected_loc)
-			match_state()
-		'to':
-			if to_loc == location:
-				to_loc = null
-				unselect_location()
-				build_info()
-			else:
-				to_loc = location
-				set_focus_location(location)
-				build_info(to_loc)
-#			selected_chars.clear()
-			update_selected_to_location()
-			match_state()
+	#location_press()'s ability to set selected_loc seems obsolete. Delete with time (12.02.26)
+#	match mode:
+#		'from':
+#			if selected_loc == location and selected_chars.empty():
+#				selected_loc = null
+#				unselect_location()
+#			else:
+#				selected_loc = location
+#				set_focus_location(location)
+#			build_info(selected_loc)#should it be here?
+#			match_state()
+#		'to':
+	if to_loc == location:
+		to_loc = null
+		unselect_location()
+	else:
+		to_loc = location
+		set_focus_location(location)
+	build_info(to_loc)
+#	selected_chars.clear()
+	update_selected_to_location()
+	match_state()
 
 
 func match_state():
@@ -1041,15 +1078,16 @@ func match_state():
 		$ToLocList.visible = false
 		if selected_loc == null:
 #			$FromLocList/Sendbutton/Label.text = 'Adv.Mode'
-			$FromLocList/Sendbutton.visible = false
+#			$FromLocList/Sendbutton.visible = false
 			$mode/Label.text = 'Adv. Mode'
 			$mode.visible = true
 		else:
-			$FromLocList/Sendbutton.visible = true
+#			$FromLocList/Sendbutton.visible = true
 			$mode.visible = false
 #			$FromLocList/Sendbutton/Label.text = 'Send'
 #		$FromLocList/Sendbutton.visible = true
-		$InfoPanel/Sendbutton.visible = false
+		info_btn_send.visible = false
+		info_btn_teleport.visible = false
 	else:
 		$ToLocList.visible = true
 		if from_loc == 'adv_mode':
@@ -1058,7 +1096,7 @@ func match_state():
 			$mode.visible = true
 		else:
 			$FromLocList.visible = true
-			$FromLocList/Sendbutton.visible = false
+#			$FromLocList/Sendbutton.visible = false
 			$mode.visible = false
 
 
@@ -1070,29 +1108,33 @@ func from_loc_set():
 	if selected_loc == null:
 		selected_loc = 'adv_mode'
 		update_location_chars()
+	else:
+		for loc_data in sorted_locations:
+			if loc_data.id == selected_loc:
+				selected_area = loc_data.area
+				break
 	from_loc = selected_loc
-	loc_locked = false
-#	selected_area = null
-	set_focus_area()
+#	loc_locked = false
 	build_to_locations()
+	set_focus_area()
 	build_info()
 	match_state()
 
 
-func to_loc_set():#is in use?
-	if selected_loc == null: 
-		return
-	to_loc = selected_loc
-	loc_locked = false
-#	build_from_locations()
-	build_info()
-	match_state()
+#func to_loc_set():#is in use?
+#	if selected_loc == null: 
+#		return
+#	to_loc = selected_loc
+##	loc_locked = false
+##	build_from_locations()
+#	build_info()
+#	match_state()
 
 
 func reset_to():
 #	from_loc = null
 	to_loc = null
-	unselect_area()
+#	unselect_area()
 	unselect_location()
 	match_state()
 	build_to_locations()
@@ -1113,7 +1155,7 @@ func reset_from():
 	build_info(null)
 
 
-func confirm_travel():
+func confirm_travel(by_teleport = false):
 	if from_loc == to_loc:
 		return
 	var flocdata = ResourceScripts.world_gen.get_location_from_code(from_loc)
@@ -1121,12 +1163,11 @@ func confirm_travel():
 		var person = characters_pool.get_char_by_id(chid)
 		person.remove_from_task()
 		person.process_event(variables.TR_MOVE)
-		if ResourceScripts.game_globals.instant_travel == false and !flocdata.teleporter :
+		if ResourceScripts.game_globals.instant_travel == false and !by_teleport :
 			person.set_travel_to(from_loc, to_loc)
 		else:
 #			person.set_work('') #not needed after remove from task
 			person.instant_travel(to_loc)
-	flocdata.teleporter = false
 	input_handler.PlaySound("ding")
 	globals.emit_signal("slave_departed")
 	selected_chars.clear()
@@ -1351,3 +1392,14 @@ func open_group_menu(group_name, loc_id):
 	})
 	$FromLocList/ContextMenu.open_with_actions(group_name, actions, get_viewport().get_mouse_position())
 
+func switch_teleport_menu():
+	info_teleport_menu.visible = !info_teleport_menu.visible
+
+func cast_teleport(chid):
+	if from_loc == to_loc:
+		return
+	info_teleport_menu.hide()
+	var caster = characters_pool.get_char_by_id(chid)
+	var skill = Skilldata.get_template('teleport', caster)
+	caster.pay_cost(skill.cost)
+	confirm_travel(true)

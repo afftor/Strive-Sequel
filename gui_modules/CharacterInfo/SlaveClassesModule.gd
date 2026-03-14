@@ -57,7 +57,7 @@ func _ready():
 	input_handler.register_btn_source('mastery_leadership', self, 'tut_get_leadership')
 	input_handler.register_btn_source('mastery_add_point', self, 'tut_get_AddPoint')
 	input_handler.register_btn_source('mastery_add_point2', self, 'tut_get_AddPoint2')
-	input_handler.register_btn_source('mastery_add_point_highlight', self, null, null, null, self, "tut_get_AddPoint_highlight")
+	input_handler.register_btn_source('mastery_add_point_highlight', self, null, self, "tut_get_AddPoint_highlight")
 
 func tut_get_class_fighter():
 	for btn in $ScrollContainer/GridContainer.get_children():

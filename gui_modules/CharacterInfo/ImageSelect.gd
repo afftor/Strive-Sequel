@@ -52,8 +52,10 @@ func build_unique_sprites():
 	if unique == 'AnastasiaBroken': unique = 'anastasia'
 	if worlddata.pregen_character_sprites.has(unique) == false:
 		return
-	for i in worlddata.pregen_character_sprites[unique].values():
-		if globals.checkreqs(i.unlock_reqs) == false:
+	for sprite_id in worlddata.pregen_character_sprites[unique]:
+		var i = worlddata.pregen_character_sprites[unique][sprite_id]
+		if (!(i.has("unlocked") and i.unlocked)
+				and !input_handler.is_unique_sprite_unlocked(unique, sprite_id)):
 			continue
 		var newbutton = get_parent().get_node("ScrollContainer/GridContainer/Button").duplicate()
 		get_parent().get_node("ScrollContainer/GridContainer").add_child(newbutton)

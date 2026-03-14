@@ -287,6 +287,7 @@ var data = {
 	cali_act2_simple_collar_3 = {
 		image = null, tags = ['dialogue_scene'],
 		reqs = [], unique_character = "cali",
+		unlocked_char_sprites = {cali = ["collar"]},
 		text = [{text = "CALI_ACT2_SIMPLE_COLLAR_3", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -307,6 +308,7 @@ var data = {
 	cali_act2_simple_collar_2_2 = { 
 		image = null, tags = ['dialogue_scene'],
 		reqs = [], unique_character = "cali",
+		unlocked_char_sprites = {cali = ["collar"]},
 		text = [{text = "CALI_ACT2_SIMPLE_COLLAR_2_2", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -352,6 +354,7 @@ var data = {
 	cali_act2_exquisite_collar_2 = { 
 		image = null, tags = ['dialogue_scene'],
 		reqs = [], unique_character = "cali",
+		unlocked_char_sprites = {cali = ["collar"]},
 		text = [{text = "CALI_ACT2_EXQUISITE_COLLAR_2", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',

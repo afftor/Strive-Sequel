@@ -246,6 +246,7 @@ var data = {
 	heleviel_snowset_start = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		character = 'heleviel',
+		unlocked_char_sprites = {heleviel = ["christmass"]},
 		reqs = [],
 		text = [ {text = "HELEVIEL_SNOWSET_EVENT_1", reqs = []} ],
 		options = [ {

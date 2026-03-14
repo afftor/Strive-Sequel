@@ -5,6 +5,7 @@ var data = {
 		scene_type = "unlocked_gallery_seq",
 		unlocked_gallery_seq = "halloween_start",
 		save_scene_to_gallery = true,
+		unlocked_char_sprites = {cali = ["halloween"], anastasia = ["halloween"]},
 		character = 'zephyra',
 		reqs = [{type = 'decision', value = 'mayor_election_finished', check = true, negative = 'repeat_next_day'},
 		{type = 'unique_character_checks', name = 'anastasia', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'},

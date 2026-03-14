@@ -78,6 +78,8 @@ func open(scene):
 	get_tree().get_root().set_disable_input(true)
 	if scene.has("save_scene_to_gallery") && scene.save_scene_to_gallery:
 		save_scene_to_gallery(scene)
+	if scene.has("unlocked_char_sprites"):
+		input_handler.update_progress_data("unique_sprites", scene.unlocked_char_sprites)
 	
 	if scene.has("dialogue_type"):
 		next_dialogue_type = scene.dialogue_type

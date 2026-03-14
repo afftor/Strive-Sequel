@@ -822,9 +822,9 @@ func calculate_estimated_travel_time(t_time):
 func set_travel_time(value):
 	travel.set_travel_time(value)
 
-func return_to_mansion():
+func return_to_mansion(instant = false):
 	xp_module.remove_from_task()
-	travel.return_to_mansion()
+	travel.return_to_mansion(instant)
 	input_handler.slave_list_node.update_dislocations()
 	input_handler.slave_list_node.rebuild()
 
@@ -2204,8 +2204,6 @@ func affect_char(template, manifest = false):
 						gui_controller.exploration_dungeon.set_intimidate()
 		'location_effect':
 			match template.value:
-				'set_teleport':
-					ResourceScripts.game_world.setup_teleporter(get_location())
 				'gather_res':
 					ResourceScripts.game_world.gather_res(get_location(), get_stat('matk') * 10)
 				'pay_stamina':

@@ -833,6 +833,61 @@ var pregen_characters = {
 			magic = 'resist',
 		},
 	},
+	
+	Rouge = {
+		code = 'rouge',
+		name = tr('CHARNAMEROUGE'),
+		unique = 'rouge',
+		surname = '',
+		race = 'HalfkinFox',
+		sex = 'female',
+		age = 'adult',
+		slave_class = 'servant',
+		height = 'tall',
+		hair_color = 'red',
+		hair_length = 'waist',
+		hair_style = 'straight',
+		eye_color = 'yellow',
+		skin = 'fair',
+		physics_factor = 6,
+		wits_factor = 4,
+		charm_factor = 5,
+		sexuals_factor = 5,
+		magic_factor = 5,
+		growth_factor = 5,
+		tame_factor = 1,
+		authority_factor = 6,
+		food_consumption = 3,
+		icon_image = 'rouge',
+		body_image = "rouge_body",
+		physics = 73.0,
+		wits = 45.0,
+		charm = 62.0,
+		consent = 3,
+		vaginal_virgin = false,
+		anal_virgin = true,
+		mouth_virgin = false,
+		ass_size = 'big',
+		tits_size = 'big',
+		sex_traits = [],
+		tags = [],
+		personality_kind = -75,
+		personality_bold = 65,
+		food_like = 'meat',
+		food_hate = ['grain'],
+		classes = [],
+		traits = [],
+		sex_skills = {petting = 30, pussy = 45, oral = 12, anal = 0},
+		training_disposition = {
+			humiliation = 'resist',
+			physical = 'resist',
+			sexual = 'weak',
+			social = 'neutral',
+			positive = 'resist',
+			magic = 'weak',
+		},
+	},
+#tutorial
 	tutorial_master = {
 		code = 'tutorial_master',
 		name = 'Quentin',
@@ -957,7 +1012,7 @@ var pregen_characters = {
 		food_hate = ['grain'],
 		sex_skills = {petting = 0, penetration = 0, oral = 0, anal = 0},
 		classes = ['scholar'],
-		mastery = {water = 1},
+		mastery = {water = 1, fire = 1},
 		skin_coverage = "",
 		eyeshape = "face1",
 		eye_tex = "eyes5",
@@ -997,49 +1052,49 @@ var unique_sprites = {
 			descript = "",
 			path = "daisy_default_happy_body", 
 			face_path = "daisy",
-			unlock_reqs = []
+			unlocked = true
 			},
 		default_sad = {
 			name = "Default Sad",
 			descript = "",
 			path = "daisy_default_body", 
 			face_path = "daisy_sad",
-			unlock_reqs = []
+			unlocked = true
 			},
 		maid = {
 			name = "Maid",
 			descript = "",
 			path = "daisy_maid_body", 
 			face_path = "daisy_maid",
-			unlock_reqs = [{type = 'event_seen', value = 'daisy_dress_acquired_normal_1', check = true}]
+#			unlock_reqs = [{type = 'event_seen', value = 'daisy_dress_acquired_normal_1', check = true}]
 			},
 		maid_lewd = {
 			name = "Lewd Maid",
 			descript = "",
 			path = "daisy_maid_nude_body", 
 			face_path = "daisy_maid",
-			unlock_reqs = [{type = 'decision', value = 'DaisyDressLewd', check = true}]
+#			unlock_reqs = [{type = 'decision', value = 'DaisyDressLewd', check = true}]
 			},
 		christmas = {
 			name = "Christmas",
 			descript = "",
 			path = "daisy_christmas_body", 
 			face_path = "daisy_christmas",
-			unlock_reqs = []
+			unlocked = true
 			},
 		nude = {
 			name = "Nude",
 			descript = "",
 			path = "daisy_nude_body", 
 			face_path = "daisy_nude",
-			unlock_reqs = []
+			unlocked = true
 			},
 		wed = {
 			name = "Wed",
 			descript = "",
 			path = "daisy_wed_body", 
 			face_path = "daisy_wed",
-			unlock_reqs = []
+			unlocked = true
 			},
 	},
 	cali = {
@@ -1048,35 +1103,35 @@ var unique_sprites = {
 			descript = "",
 			path = "cali_body", 
 			face_path = "cali",
-			unlock_reqs = []
+			unlocked = true
 			},
 		halloween = {
 			name = "Halloween",
 			descript = "",
 			path = "cali_halloween_body", 
 			face_path = "cali_halloween",
-			unlock_reqs = [{type = 'event_seen', check = true, value = 'halloween_start'}]
+#			unlock_reqs = [{type = 'event_seen', check = true, value = 'halloween_start'}]
 			},
 		collar = {
 			name = "Collar",
 			descript = "",
 			path = "cali_collar_body", 
 			face_path = "cali_collar",
-			unlock_reqs = [{type = 'decision', value = 'cali_normal_collar', check = true}, {type = 'decision', value = 'cali_exquisite_collar', check = true, orflag = true}]
+#			unlock_reqs = [{type = 'decision', value = 'cali_normal_collar', check = true}, {type = 'decision', value = 'cali_exquisite_collar', check = true, orflag = true}]
 			},
 		nude = {
 			name = "Nude",
 			descript = "",
 			path = "cali_nude_body", 
 			face_path = "cali_nude", 
-			unlock_reqs = []
+			unlocked = true
 			},
 		wed = {
 			name = "Wed",
 			descript = "",
 			path = "cali_wed_body", 
 			face_path = "cali_wed", 
-			unlock_reqs = []
+			unlocked = true
 			},
 	},
 	aire = {
@@ -1085,14 +1140,14 @@ var unique_sprites = {
 			descript = "",
 			path = "aire_body", 
 			face_path = "aire",
-			unlock_reqs = []
+			unlocked = true
 			},
 		nude = {
 			name = "Nude",
 			descript = "",
 			path = "aire_nude_body", 
 			face_path = "aire_nude",
-			unlock_reqs = []
+			unlocked = true
 			},
 #		wed = {
 #			name = "Wed",
@@ -1108,35 +1163,35 @@ var unique_sprites = {
 			descript = "",
 			path = "anastasia_body", 
 			face_path = "anastasia",
-			unlock_reqs = []
+			unlocked = true
 			},
 		halloween = {
 			name = "Halloween",
 			descript = "",
 			path = "anastasia_halloween_body", 
 			face_path = "anastasia_halloween",
-			unlock_reqs = [{type = 'event_seen', check = true, value = 'halloween_start'}]
+#			unlock_reqs = [{type = 'event_seen', check = true, value = 'halloween_start'}]
 			},
 		nude = {
 			name = "Nude",
 			descript = "",
 			path = "anastasia_nude_body", 
 			face_path = "anastasia_nude",
-			unlock_reqs = []
+			unlocked = true
 			},
 		nighgown = {
 			name = "Nighgown",
 			descript = "",
 			path = "anastasia_night_body", 
 			face_path = "anastasia_night",
-			unlock_reqs = [{type = 'event_seen', check = true, value = 'ana_blow_1'}]
+#			unlock_reqs = [{type = 'event_seen', check = true, value = 'ana_blow_1'}]
 			},
 		wed = {
 			name = "Wed",
 			descript = "",
 			path = "anastasia_wed_body", 
 			face_path = "anastasia_wed",
-			unlock_reqs = []
+			unlocked = true
 			},
 	},
 	zephyra = {
@@ -1145,28 +1200,28 @@ var unique_sprites = {
 			descript = "",
 			path = "zephyra_body", 
 			face_path = "zephyra",
-			unlock_reqs = []
+			unlocked = true
 			},
 		nude = {
 			name = "Nude",
 			descript = "",
 			path = "zephyra_nude_body", 
 			face_path = "zephyra_nude",
-			unlock_reqs = []
+			unlocked = true
 			},
 		wed = {
 			name = "Wed",
 			descript = "",
 			path = "zephyra_wed_body", 
 			face_path = "zephyra_wed",
-			unlock_reqs = []
+			unlocked = true
 			},
 		miko = {
 			name = "Miko",
 			descript = "",
 			path = "zephyra_miko_body", 
 			face_path = "zephyra_miko",
-			unlock_reqs = []
+			unlocked = true
 			},
 	},
 	mae = {
@@ -1175,14 +1230,14 @@ var unique_sprites = {
 			descript = "",
 			path = "mae_body", 
 			face_path = "mae",
-			unlock_reqs = []
+			unlocked = true
 			},
 		nude = {
 			name = "Nude",
 			descript = "",
 			path = "mae_nude_body", 
 			face_path = "mae_nude",
-			unlock_reqs = []
+			unlocked = true
 			},
 	},
 	lilia = {
@@ -1191,21 +1246,21 @@ var unique_sprites = {
 			descript = "",
 			path = "lilia_body", 
 			face_path = "lilia",
-			unlock_reqs = []
+			unlocked = true
 			},
 		nude = {
 			name = "Nude",
 			descript = "",
 			path = "lilia_nude_body", 
 			face_path = "lilia_nude",
-			unlock_reqs = []
+			unlocked = true
 			},
 		wed = {
 			name = "Wed",
 			descript = "",
 			path = "lilia_wed_body", 
 			face_path = "lilia_nude",
-			unlock_reqs = []
+			unlocked = true
 			},
 	},
 	lilith = {
@@ -1214,21 +1269,21 @@ var unique_sprites = {
 			descript = "",
 			path = "lilith_body", 
 			face_path = "lilith",
-			unlock_reqs = []
+			unlocked = true
 			},
 		nude = {
 			name = "Nude",
 			descript = "",
 			path = "lilith_nude_body", 
 			face_path = "lilith_nude",
-			unlock_reqs = []
+			unlocked = true
 			},
 		wed = {
 			name = "Wed",
 			descript = "",
 			path = "lilith_wed_body", 
 			face_path = "lilith_wed",
-			unlock_reqs = []
+			unlocked = true
 			},
 	},
 	hara = {
@@ -1237,21 +1292,21 @@ var unique_sprites = {
 			descript = "",
 			path = "hara_body", 
 			face_path = "hara",
-			unlock_reqs = []
+			unlocked = true
 			},
 		nude = {
 			name = "Nude",
 			descript = "",
 			path = "hara_nude_body", 
 			face_path = "hara_nude",
-			unlock_reqs = []
+			unlocked = true
 			},
 		wed = {
 			name = "Wed",
 			descript = "",
 			path = "hara_wed_body", 
 			face_path = "hara_wed",
-			unlock_reqs = []
+			unlocked = true
 			},
 	},
 	jean = {
@@ -1260,14 +1315,14 @@ var unique_sprites = {
 			descript = "",
 			path = "jean_body", 
 			face_path = "jean",
-			unlock_reqs = []
+			unlocked = true
 			},
 		nude = {
 			name = "Nude",
 			descript = "",
 			path = "jean_nude_body", 
 			face_path = "jean_nude",
-			unlock_reqs = []
+			unlocked = true
 			},
 		prostitute = {
 			name = "Prostitute",
@@ -1281,7 +1336,7 @@ var unique_sprites = {
 			descript = "",
 			path = "jean_wed_body", 
 			face_path = "jean_wed", 
-			unlock_reqs = [] 
+			unlocked = true
 			},
 	},
 	heleviel = {
@@ -1290,35 +1345,35 @@ var unique_sprites = {
 			descript = "",
 			path = "heleviel_body", 
 			face_path = "heleviel",
-			unlock_reqs = []
+			unlocked = true
 			},
 		nude = {
 			name = "Nude",
 			descript = "",
 			path = "heleviel_nude_body", 
 			face_path = "heleviel_nude",
-			unlock_reqs = []
+			unlocked = true
 			},
 		waitress = {
 			name = "Waitress",
 			descript = "",
 			path = "heleviel_waitress_body", 
 			face_path = "heleviel_waitress",
-			unlock_reqs = [{type = 'quest_completed', check = true, name = 'heleviel_quest1'}]
+#			unlock_reqs = [{type = 'quest_completed', check = true, name = 'heleviel_quest1'}]
 			},
 		christmass = {
 			name = "Christmass",
 			descript = "",
 			path = "heleviel_christmas_body", 
 			face_path = "heleviel_christmas",
-			unlock_reqs = [{type = "event_seen", check = true, value = "heleviel_snowset_start"}]
+#			unlock_reqs = [{type = "event_seen", check = true, value = "heleviel_snowset_start"}]
 			},
 		wed = {
 			name = "Wed",
 			descript = "",
 			path = "heleviel_wed_body", 
 			face_path = "heleviel_wed",
-			unlock_reqs = []
+			unlocked = true
 			},
 	},
 	lira = {
@@ -1327,14 +1382,14 @@ var unique_sprites = {
 			descript = "",
 			path = "lira_body", 
 			face_path = "lira",
-			unlock_reqs = []
+			unlocked = true
 			},
 		nude = {
 			name = "Nude",
 			descript = "",
 			path = "lira_nude_body", 
 			face_path = "lira_nude", 
-			unlock_reqs = []
+			unlocked = true
 			},
 		wed = {
 			name = "Wed",
@@ -1342,7 +1397,7 @@ var unique_sprites = {
 			path = "lira_wed_body", 
 #			path = "", 
 			face_path = "lira_wed",
-			unlock_reqs = []
+			unlocked = true
 			},
 	},
 	amelia = {
@@ -1351,28 +1406,28 @@ var unique_sprites = {
 			descript = "",
 			path = "amelia_body", 
 			face_path = "amelia",
-			unlock_reqs = []
+			unlocked = true
 			},
 		nude = {
 			name = "Nude",
 			descript = "",
 			path = "amelia_nude_body", 
 			face_path = "amelia_nude", 
-			unlock_reqs = []
+			unlocked = true
 			},
 		wed = {
 			name = "Wed",
 			descript = "",
 			path = "amelia_wed_body", 
 			face_path = "amelia_wed",
-			unlock_reqs = []
+			unlocked = true
 			},
 		halloween = {
 			name = "Halloween",
 			descript = "",
 			path = "amelia_halloween_body", 
 			face_path = "amelia", #2add and fix
-			unlock_reqs = [{type = 'event_seen', check = true, value = 'amelia_infinite_4'}]
+#			unlock_reqs = [{type = 'event_seen', check = true, value = 'amelia_infinite_4'}]
 			},
 	},
 	kurdan = {
@@ -1381,7 +1436,7 @@ var unique_sprites = {
 			descript = "",
 			path = "kurdan_body", 
 			face_path = "kurdan",
-			unlock_reqs = []
+			unlocked = true
 			},
 	},
 	ketch = {
@@ -1390,7 +1445,7 @@ var unique_sprites = {
 			descript = "",
 			path = "ketch_body", 
 			face_path = "ketch",
-			unlock_reqs = []
+			unlocked = true
 			},
 	},
 	kuro = {
@@ -1399,21 +1454,21 @@ var unique_sprites = {
 			descript = "",
 			path = "kuro_body", 
 			face_path = "kuro",
-			unlock_reqs = []
+			unlocked = true
 			},
 		nude = {
 			name = "Nude",
 			descript = "",
 			path = "kuro_nude_body", 
 			face_path = "kuro_nude",
-			unlock_reqs = []
+			unlocked = true
 			},
 		wed = {
 			name = "Wed",
 			descript = "",
 			path = "kuro_wed_body",
 			face_path = "kuro_wed",
-			unlock_reqs = []
+			unlocked = true
 			},
 	},
 	

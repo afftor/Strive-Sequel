@@ -1,3 +1,11 @@
+0.14.0
+Added new tutorial scenario
+Added Mae's questline with 4 unique scenes
+Updated global map's art
+Literacy now required for magic tomes and scrolls of experience
+Fixed multiple combat issues
+Fixed dungeon deletion on quest completion in multiple cases
+Other minor gui and visual improvements
 0.13.4b
 Summons are now toggleable
 Succubus now receive passive form benefits before transformation

@@ -3,6 +3,7 @@ var data = {
 	mae_druid_event_start = {
 		image = null,
 		tags = ["dialogue_scene", "master_translate"],
+		music = 'mae_theme',
 		reqs = [
 			{type = "unique_available", name = "mae", check = true, negative = "repeat_next_day"},
 			{type = "class_unlocked", class = "druid", operant = "eq", check = true, negative = "repeat_next_day"},
@@ -29,6 +30,7 @@ var data = {
 	},
 	mae_druid_lorien_intro = {
 		image = "elf_druid",
+		music = 'mae_theme',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "MAE_DRUID_LORIEN_INTRO",
@@ -182,6 +184,7 @@ var data = {
 	},
 	mae_druid_return_1 = {
 		image = null,
+		music = 'mae_theme',
 		tags = ["dialogue_scene", "master_translate"],
 		reqs = [],
 		character = "mae",
@@ -215,6 +218,7 @@ var data = {
 		unlocked_gallery_seq = "mae_sex_behind",
 		custom_background = "mae_scene8",
 		scene_type = "ero_scene",
+		music = 'intimate_funny',
 		save_scene_to_gallery = true,
 		image = null,
 		tags = ["dialogue_scene"],

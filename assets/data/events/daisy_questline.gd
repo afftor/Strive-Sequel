@@ -710,6 +710,7 @@ var data = {
 		music = "daisy_theme",
 		scene_type = "unlocked_gallery_seq",
 		unlocked_gallery_seq = "daisy_dress_acquired_normal",
+		unlocked_char_sprites = {daisy = ["maid"]},
 		save_scene_to_gallery = true,
 		reqs = [
 
@@ -1101,6 +1102,7 @@ var data = {
 	daisy_dress_acquired_lewd_1 = {
 		image = null,
 		music = 'daisy_theme',
+		unlocked_char_sprites = {daisy = ["maid_lewd"]},
 		tags = [
 			"dialogue_scene",
 			"blackscreen_transition_common",

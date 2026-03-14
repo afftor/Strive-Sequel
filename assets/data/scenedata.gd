@@ -362,7 +362,7 @@ var scenedict = {
 		text = tr("DIALOGUEDUNGEONCHEST"),
 		tags = ['locked_chest'],
 		image = 'chest',
-		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5],['easy_chest_map', 2000]]}],
+		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5],['easy_chest_map', 0.2]]}],
 		options = [
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
 		]
@@ -1784,15 +1784,6 @@ var scenedict = {
 	},
 	dungeon_intimidate = {
 		text = tr("DUNGEON_INTIMIDATE"),
-		tags = [],
-		image = 'dungeon_magic_barrier',
-		bonus_effects = [],
-		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = []}
-		],
-	},
-	dungeon_teleporter = {
-		text = tr("DUNGEON_TELEPORTER"),
 		tags = [],
 		image = 'dungeon_magic_barrier',
 		bonus_effects = [],

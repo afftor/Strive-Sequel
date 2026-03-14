@@ -27,6 +27,10 @@ func _ready():
 		if i.name == "Exp":
 			continue
 		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
+	input_handler.register_btn_source('slave_info_close_button', self, 'tut_get_close_button')
+
+func tut_get_close_button():
+	return $CloseButton
 
 
 func update_purchase_btn():

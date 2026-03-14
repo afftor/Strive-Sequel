@@ -55,7 +55,6 @@ func make_area(code):
 			areadata.capital[areadata.capital_code].id = areadata.capital_code
 		else:
 			areadata.capital[areadata.capital_code] = {name = areadata.capital_name, area = areadata.code, type = 'capital', travel_time = 0, category = 'capital', id = areadata.capital_code, group = {}, tags = []}
-			areadata.capital[areadata.capital_code].teleporter = false
 		if areadata.has('preplanned_capital_events'):
 			for ev in areadata.preplanned_capital_events:
 				ResourceScripts.game_progress.plan_loc_event(areadata.capital_code, ev)
@@ -310,7 +309,6 @@ func make_quest_for_guild(guilddatatemplate, difficulty):
 func make_settlement(code, area):
 	var settlement = worlddata.locations[code].duplicate(true)
 	settlement.travel_time = globals.rng.randi_range(settlement.travel_time[0],settlement.travel_time[1])
-	settlement.teleporter = false
 	var text = ''
 	if worlddata.locationnames.has(settlement.code) && settlement.name == null:
 		text = worlddata.locationnames[settlement.code+"1"][randi() % worlddata.locationnames[settlement.code + "1"].size()] + worlddata.locationnames[settlement.code+"2"][randi() % worlddata.locationnames[settlement.code + "2"].size()]
@@ -351,7 +349,6 @@ func make_location(code, area):
 	var location = DungeonData.dungeons[code].duplicate(true)
 	location.stamina = 100
 	location.active = true
-	location.teleporter = false
 	location.intimidate = false
 	var text = tr(location.name)
 	if worlddata.locationnames.has(location.name+'_adjs'):

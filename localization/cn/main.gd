@@ -12,6 +12,7 @@ var TranslationDict = {
 	#Menu
 	MENUCONTINUE = "Continue",
 	MENUNEWGAME = "New game",
+	MENUTUTORIAL = """Tutorial""", # MISSING TRANSLATION
 	MENULOAD = "Load",
 	MENUOPTIONS = "Options",
 	MENUCREDITS = "Credits",
@@ -4874,6 +4875,7 @@ You explain yourself being the new landowner to her.""", # MISSING TRANSLATION
 	FORGETLOCATIONQUESTION = "忘记这个位置？所有出现的角色都会被送回大厦。这个动作无法撤消。",
 
 	SENDCHARBACKQUESTION = "让 [name] 返回?",
+	SENDCHARBACKTPQUESTION = """Cast teleport?""", # MISSING TRANSLATION
 	SENDCHARBACKTOMANSIONQUESTION = "让 [name] 返回豪宅?",
 
 	RETURNALLCHARSTOMANSIONQUESTION = "让所有角色返回大厦？",
@@ -4883,7 +4885,13 @@ You explain yourself being the new landowner to her.""", # MISSING TRANSLATION
 	REMOVEUPGRADEFROMQUEUEQUESTION = "从队列中删除此升级？",
 
 	STARTTHISGAME = "开始游戏?",
+	STARTTUTORIAL = """Start tutorial?""", # MISSING TRANSLATION
+	ABORTTUTORIAL = """Abort tutorial?""", # MISSING TRANSLATION
 	UPDATEFILE = "是否更新此文件？",
+	TUTORIALNAME1 = """Training""", # MISSING TRANSLATION
+	TUTORIALNAME2 = """Work""", # MISSING TRANSLATION
+	TUTORIALNAME3 = """Leveling""", # MISSING TRANSLATION
+	TUTORIALNAME4 = """Quests and combat""", # MISSING TRANSLATION
 
 	# after finishing election-princess-meeting sequence
 

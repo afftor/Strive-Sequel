@@ -244,7 +244,6 @@ func advance_hour():
 				if j.stamina > 100:
 					j.stamina = 100
 			j.intimidate = false
-			j.teleporter = false
 
 
 func quest_kill_receiver(enemycode):
@@ -491,12 +490,6 @@ func can_enter_room(room_id):
 		if t_data.status == 'scouted' and t_data.type in ['ladder_down', 'ladder_down_survival'] and can_enter_room(i):
 			return true
 	return false
-
-
-func setup_teleporter(loc_id):
-	globals.start_fixed_event('dungeon_teleporter')
-	var location = ResourceScripts.world_gen.get_location_from_code(loc_id)
-	location.teleporter = true
 
 
 func gather_res(loc_id, amount):

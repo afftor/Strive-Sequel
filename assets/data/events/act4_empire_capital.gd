@@ -187,7 +187,7 @@ var data = {
 		reqs = [],
 		image = null,
 		character = 'emperor',
-		tags = ["dialogue_scene", 'master_tarnslate'],
+		tags = ["dialogue_scene", 'master_translate'],
 		text = [
 			{text = "EMP_CEREMONY_5_0", reqs = [], previous_dialogue_option = 1},
 			{text = "EMP_CEREMONY_5_1", reqs = [], previous_dialogue_option = 2},
@@ -441,7 +441,7 @@ var data = {
 		reqs = [],
 		image = null,
 		character = 'rouge',
-		tags = ["dialogue_scene", 'master_tarnslate'],
+		tags = ["dialogue_scene", 'master_translate'],
 		text = [
 			{text = "EMP_ARENA_10_1", reqs = [], previous_dialogue_option = 1},
 			{text = "EMP_ARENA_10_2", reqs = [], previous_dialogue_option = 2},
@@ -505,7 +505,7 @@ var data = {
 		image = null,
 		character = 'erdyna',
 		music = "erdyna_theme",
-		tags = ["dialogue_scene", 'master_tarnslate'],
+		tags = ["dialogue_scene", 'master_translate'],
 		text = [{text = "EMP_ERDYNA_INTRO_3", reqs = []}],
 		options = [
 			{code = "emp_erdyna_intro_5", text = "EMP_ERDYNA_INTRO_3_OPTION_1", reqs = [], type = "next_dialogue", dialogue_argument = 1},
@@ -517,7 +517,7 @@ var data = {
 		reqs = [],
 		image = null,
 		character = 'erdyna',
-		tags = ["dialogue_scene", 'master_tarnslate'],
+		tags = ["dialogue_scene", 'master_translate'],
 		text = [{text = "EMP_ERDYNA_INTRO_4", reqs = []}],
 		options = [
 			{code = "emp_erdyna_intro_duel", text = "EMP_ERDYNA_INTRO_DUEL_OPTION", reqs = [], type = "next_dialogue", dialogue_argument = 1},
@@ -546,7 +546,7 @@ var data = {
 		image = null,
 		music = "erdyna_theme",
 		character = 'erdyna',
-		tags = ["dialogue_scene", 'master_tarnslate'],
+		tags = ["dialogue_scene", 'master_translate'],
 		text = [
 			{text = "EMP_ERDYNA_INTRO_6_1", reqs = [], previous_dialogue_option = 0},
 			{text = "EMP_ERDYNA_INTRO_6_2", reqs = [], previous_dialogue_option = 1},
@@ -561,7 +561,7 @@ var data = {
 		image = null,
 		music = "erdyna_theme",
 		character = 'erdyna',
-		tags = ["dialogue_scene", 'master_tarnslate'],
+		tags = ["dialogue_scene", 'master_translate'],
 		text = [
 			{text = "EMP_ERDYNA_INTRO_5_1", reqs = [], previous_dialogue_option = 1},
 			{text = "EMP_ERDYNA_INTRO_5_2", reqs = [], previous_dialogue_option = 2},
@@ -597,7 +597,7 @@ var data = {
 		reqs = [],
 		image = null,
 		character = 'erdyna',
-		tags = ["dialogue_scene", 'master_tarnslate'],
+		tags = ["dialogue_scene", 'master_translate'],
 		text = [
 			{text = "EMP_ERDYNA_INTRO_9_1", reqs = [], previous_dialogue_option = 1},
 			{text = "EMP_ERDYNA_INTRO_9_2", reqs = [], previous_dialogue_option = 2},
@@ -612,7 +612,7 @@ var data = {
 		reqs = [],
 		image = null,
 		character = 'erdyna',
-		tags = ["dialogue_scene", 'master_tarnslate'],
+		tags = ["dialogue_scene", 'master_translate'],
 		text = [
 			{text = "EMP_ERDYNA_INTRO_10_1", reqs = [], previous_dialogue_option = 1},
 			{text = "EMP_ERDYNA_INTRO_10_2", reqs = [], previous_dialogue_option = 2},
@@ -628,7 +628,7 @@ var data = {
 		reqs = [],
 		image = null,
 		character = 'erdyna',
-		tags = ["dialogue_scene", 'master_tarnslate'],
+		tags = ["dialogue_scene", 'master_translate'],
 		text = [{text = "EMP_ERDYNA_INTRO_11", reqs = []},],
 		options = [
 			{code = "emp_erdyna_intro_12", text = "EMP_ERDYNA_INTRO_11_OPTION_1", reqs = [], type = "next_dialogue"},

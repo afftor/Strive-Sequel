@@ -3,6 +3,7 @@ var data = {
 	mae_initiate_start = {
 		image = null,
 		tags = ["dialogue_scene"],
+		music = 'mae_theme',
 		reqs = [],
 		character = "mae",
 		text = "MAE_QUEST_INITIATE_START",
@@ -95,6 +96,7 @@ var data = {
 	mae_market_start = {
 		image = 'mae_market',
 		tags = ["dialogue_scene"],
+		music = 'mae_theme',
 		reqs = [],
 		text = "MAE_MARKET_START",
 		options = [
@@ -253,6 +255,7 @@ var data = {
 	
 	mae_friend_visit_1 = {
 		image = null,
+		music = 'mae_theme',
 		tags = ["dialogue_scene", "master_translate"],
 		reqs = [],
 		character = "mae",
@@ -316,6 +319,7 @@ var data = {
 	},
 	mae_friend_visit_2_start = {
 		image = 'mae_ritual',
+		music = 'mae_theme',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		character = "mae",
@@ -428,7 +432,7 @@ var data = {
 		image = 'mae_debuff',
 		tags = ["dialogue_scene", "master_translate"],
 		reqs = [],
-		character = "mae",
+		music = 'intimate_dark',
 		text = "MAE_SEARCH_COMPLETE_START",
 		common_effects = [
 			{
@@ -447,7 +451,6 @@ var data = {
 		image = 'mae_debuff',
 		tags = ["dialogue_scene"],
 		reqs = [],
-		character = "mae",
 		text = "MAE_SEARCH_COMPLETE_VOICE_1",
 		options = [
 			{code = "mae_search_complete_voice_2", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue"}
@@ -457,7 +460,6 @@ var data = {
 		image = 'mae_debuff',
 		tags = ["dialogue_scene"],
 		reqs = [],
-		character = "mae",
 		text = "MAE_SEARCH_COMPLETE_VOICE_2",
 		options = [
 			{code = "mae_search_complete_voice_3", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue"}
@@ -467,7 +469,6 @@ var data = {
 		image = 'mae_debuff',
 		tags = ["dialogue_scene"],
 		reqs = [],
-		character = "mae",
 		text = "MAE_SEARCH_COMPLETE_VOICE_3",
 		options = [
 			{code = "mae_search_complete_voice_4", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue"}
@@ -477,7 +478,7 @@ var data = {
 		image = 'mae_debuff',
 		tags = ["dialogue_scene"],
 		reqs = [],
-		character = "mae",
+		music = 'mae_theme',
 		text = [
 			{text = "MAE_SEARCH_COMPLETE_VOICE_4A", reqs = [{type = "decision", value = "letFuck", check = false}]},
 			{text = "MAE_SEARCH_COMPLETE_VOICE_4B", reqs = [{type = "decision", value = "letFuck", check = true}]},

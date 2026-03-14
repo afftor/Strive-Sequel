@@ -52,16 +52,17 @@ func _ready():
 #	$LocationGui/ce.connect("pressed", input_handler, "interactive_message", ['celena_shrine_find', '', {}])
 	input_handler.register_btn_source('location_master', self, 'tut_get_master')
 	input_handler.register_btn_source('location_servent', self, 'tut_get_servent')
-	input_handler.register_btn_source('location_front_pos1', self, 'tut_get_front1', null, null, null, null, 'dropped')
-	input_handler.register_btn_source('location_front_pos2', self, 'tut_get_front2', null, null, null, null, 'dropped')
-	input_handler.register_btn_source('location_front_pos3', self, 'tut_get_front3', null, null, null, null, 'dropped')
-	input_handler.register_btn_source('location_front_highlight', self, null, null, null, self, "tut_get_front_highlight")
-	input_handler.register_btn_source('location_back_pos1', self, 'tut_get_back1', null, null, null, null, 'dropped')
-	input_handler.register_btn_source('location_back_pos2', self, 'tut_get_back2', null, null, null, null, 'dropped')
-	input_handler.register_btn_source('location_back_pos3', self, 'tut_get_back3', null, null, null, null, 'dropped')
-	input_handler.register_btn_source('location_back_highlight', self, null, null, null, self, "tut_get_back_highlight")
+	input_handler.register_btn_source('location_front_pos1', self, 'tut_get_front1', null, null, 'dropped')
+	input_handler.register_btn_source('location_front_pos2', self, 'tut_get_front2', null, null, 'dropped')
+	input_handler.register_btn_source('location_front_pos3', self, 'tut_get_front3', null, null, 'dropped')
+	input_handler.register_btn_source('location_front_highlight', self, null, self, "tut_get_front_highlight")
+	input_handler.register_btn_source('location_back_pos1', self, 'tut_get_back1', null, null, 'dropped')
+	input_handler.register_btn_source('location_back_pos2', self, 'tut_get_back2', null, null, 'dropped')
+	input_handler.register_btn_source('location_back_pos3', self, 'tut_get_back3', null, null, 'dropped')
+	input_handler.register_btn_source('location_back_highlight', self, null, self, "tut_get_back_highlight")
 	input_handler.register_btn_source('location_proceed', self, 'tut_get_first_info_btn')
 	$LocationGui/AvailableSlaves.tut_register_first_recruit()
+	$LocationGui/AvailableSlaves.tut_register_first_char()
 	$LocationGui/NavigationModule.tut_register_mansion_btn()
 
 func tut_get_master():
@@ -575,29 +576,30 @@ func add_rolled_chars(tarr):
 var selectedperson
 func return_character(character):
 	selectedperson = character
-	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'return_character_confirm', character.translate(tr("SENDCHARBACKQUESTION"))])
+	var teleport_base = $teleport_base
+	teleport_base.set_loc_id(active_location.id)
+	teleport_base.set_confirm_func(self, "return_character_confirm")
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [teleport_base, 'teleport_check', character.translate(tr("SENDCHARBACKQUESTION"))])
 
-
-func return_character_confirm():
-	selectedperson.remove_from_task()
-	selectedperson.return_to_mansion()
-	active_location.teleporter = false
+func return_character_confirm(by_teleport = false):
+	selectedperson.return_to_mansion(by_teleport)
 	build_location_group()
 
 func return_all_to_mansion():
-	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'return_all_to_mansion_confirm', "Return all character back to Mansion?"])
+	var teleport_base = $teleport_base
+	teleport_base.set_loc_id(active_location.id)
+	teleport_base.set_confirm_func(self, "return_all_to_mansion_confirm")
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [teleport_base, 'teleport_check', "Return all character back to Mansion?"])
 
 
-func return_all_to_mansion_confirm():
+func return_all_to_mansion_confirm(by_teleport = false):
 	var presented_characters = []
 	for id in ResourceScripts.game_party.character_order:
 		var i = ResourceScripts.game_party.characters[id]
 		if i.check_location(active_location.id, true):
 			presented_characters.append(i)
 	for person in presented_characters:
-		person.remove_from_task()
-		person.return_to_mansion()
-	active_location.teleporter = false
+		person.return_to_mansion(by_teleport)
 	nav.return_to_mansion("default")
 
 
@@ -648,6 +650,8 @@ func build_spell_panel():
 		var person = ResourceScripts.game_party.characters[id]
 		if person.check_location(active_location.id, true):
 			for i in person.get_combat_skills() + person.get_explore_skills():
+				if i == "teleport":#hardcoded separately
+					continue
 				var skill = Skilldata.get_template(i, person)
 				if skill.tags.has('exploration') == false:
 					continue

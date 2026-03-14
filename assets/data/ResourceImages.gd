@@ -750,6 +750,7 @@ var sprites = {
 	erlen = load("res://assets/images/sprites/Erlen.png"),
 	lira_body = load("res://assets/images/sprites/lira_body.png"),
 	bandits = load("res://assets/images/sprites/bandits.png"),
+	rakar = load("res://assets/images/sprites/rakar.png"),
 	
 	cali_halloween = load("res://assets/images/sprites/cali_halloween.png"),
 	cali_halloween_body = load("res://assets/images/sprites/cali_halloween_body.png"),
@@ -1316,6 +1317,8 @@ var GFX_sprites = {
 	void_barrage = "res://assets/sfx/hit_animation/void_barrage.tscn",
 	wind_wall = "res://assets/sfx/hit_animation/wind_wall.tscn",
 	warmarch = "res://assets/sfx/hit_animation/warmarch.tscn",
+	aura_firearr = "res://assets/sfx/hit_animation/aura_firearr.tscn",
+	aura_arcaneblade = "res://assets/sfx/hit_animation/aura_arcaneblade.tscn",
 	}
 
 var GFX_particles = {

@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://gui_modules/Exploration/Modules/LocationGuiDungeon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gui_modules/Exploration/Scripts/teleport_base.gd" type="Script" id=3]
+[ext_resource path="res://gui_modules/Universal/Modules/teleport_menu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gui_modules/Exploration/Scripts/ExplorationDungeon.gd" type="Script" id=7]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionJournalModule.tscn" type="PackedScene" id=100]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/icon_journalcity.png" type="Texture" id=101]
@@ -33,3 +35,19 @@ margin_left = 530.0
 margin_top = 177.0
 margin_right = 1390.0
 margin_bottom = 977.0
+
+[node name="teleport_base" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="teleport_menu" parent="teleport_base" instance=ExtResource( 4 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -194.5
+margin_top = -131.5
+margin_right = 194.5
+margin_bottom = 131.5

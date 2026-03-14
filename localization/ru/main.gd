@@ -7,6 +7,7 @@ var TranslationDict = {
 	VARIABLESTIMEWORDNIGHT = """Ночь""",
 	MENUCONTINUE = """Продолжить""",
 	MENUNEWGAME = """Новая игра""",
+	MENUTUTORIAL = """Tutorial""", # MISSING TRANSLATION
 	MENULOAD = """Загрузка""",
 	MENUOPTIONS = """Опции""",
 	MENUCREDITS = """Авторы""",
@@ -270,6 +271,8 @@ var TranslationDict = {
 	NEWGAMESETTINGFREE_UPGRADE = """Бесплатные улучшения""",
 	NEWGAMESETTINGMATERIALS = """Стартовые материалы""",
 	NEWGAMESETTINGMONEY = """Стартовое золото""",
+	NEWGAMESETTINGHARD_MONSTERS = """Harder enemy combat AI""", # MISSING TRANSLATION
+	SETTINGHARD_MONSTERS_DESCRIPT = """Enemy combat AI will be more advanced""", # MISSING TRANSLATION
 	
 	SETTINGSKIP_PROLOGUE_DESCRIPT = """Начните историю с начала первого акта.""",
 	SETTINGGF_ONLY_UPG_DESCRIPT = """Улучшать можно только фактор роста на рынке""",
@@ -740,6 +743,8 @@ var TranslationDict = {
 	ITEMSLOTNECK = """Шея""",
 	ITEMSLOTTOOL = """Инструмент""",
 	ITEMREQNONUNIQUE = """Может применяться только к неуникальным рабам""",
+	ITEMREQSMASTERYLIT = """Masteries levels not matched, no Literacy proficiency or already know this skill""", # MISSING TRANSLATION
+	ITEMREQSLITERACY = """Proficiency in Literacy is required for reading""", # MISSING TRANSLATION
 	ITEMREQSMASTERY = """Уровни мастерства не совпадают или навык уже известен""",
 	ITEMLEATHER_COLLAR = """Кожаный ошейник""",
 	ITEMLEATHER_COLLARDESCRIPT = """Простой кожаный ошейник, обозначающий собственность.""",
@@ -1659,6 +1664,7 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	STATMASTERY_POINT_COMBAT = """Очко боевого мастерства""",
 	STATMASTERY_POINT_UNIVERSAL = """Универсальное очко мастерства""",
 	STATDISABLED_MASTERIES = "Ограниченные мастерства",
+	WHOSHOULDCAST = """Who should cast?""", # MISSING TRANSLATION
 	ACTIONPRAISE = """Похвалить""",
 	ACTIONPRAISEDESCRIPT = """Проявить сочувствие и похвалить [name].""",
 	ACTIONREWARD = """Наградить""",
@@ -2186,6 +2192,7 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	STATMANACOST_MOD_AOE = "Трата маны на атаки по области",
 	STATMANACOST_MOD_TRUE = "",
 	STATMANACOST_MOD_HEAL = "Трата маны на лечение",
+	STATMANACOST = """Cost""", # MISSING TRANSLATION
 	#new
 	INNATE = "начальный",
 	STATPERSONALITYDESCRIPT= """Личность определяет манеру речи персонажа и не влияет на игровой процесс.""",
@@ -3115,6 +3122,8 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	TRAITMASTER_ALCHEMISTDESCRIPT = "Созданные алхимические предметы имеют как минимум обычное качество.",
 	TRAITMASTER_SMITH = "Мастер-кузнец",
 	TRAITMASTER_SMITHDESCRIPT = "Созданные предметы имеют как минимум обычное качество.",
+	TRAITMASTER_TAILOR = """Master Tailor""", # MISSING TRANSLATION
+	TRAITMASTER_TAILORDESCRIPT = """Crafted Tailor items are at least Normal quality.""", # MISSING TRANSLATION
 	TRAITFARMERDESCRIPT = """Фермерство на 50% эффективнее.""",
 	TRAITBREEDERDESCRIPT = """Позволяет размножаться с любой расой.
 Дебаффы беременности слабее.
@@ -6110,6 +6119,7 @@ LICHAIRETALK6_5 = """Борьба Эйры постепенно ослабева
 	FORGETLOCATIONQUESTION = """Забыть это место? Все присутствующие персонажи будут отправлены обратно в поместье. Это действие нельзя отменить.""",
 
 	SENDCHARBACKQUESTION = """Отправить [name] обратно?""",
+	SENDCHARBACKTPQUESTION = """Cast teleport?""", # MISSING TRANSLATION
 	SENDCHARBACKTOMANSIONQUESTION = """Отправить [name] обратно в поместье?""",
 
 	RETURNALLCHARSTOMANSIONQUESTION = """Вернуть всех персонажей обратно в поместье?""",
@@ -6119,7 +6129,13 @@ LICHAIRETALK6_5 = """Борьба Эйры постепенно ослабева
 	REMOVEUPGRADEFROMQUEUEQUESTION = """Удалить это улучшение из очереди?""",
 
 	STARTTHISGAME = """Начать эту игру?""",
+	STARTTUTORIAL = """Start tutorial?""", # MISSING TRANSLATION
+	ABORTTUTORIAL = """Abort tutorial?""", # MISSING TRANSLATION
 	UPDATEFILE = """Обновить этот файл?""",
+	TUTORIALNAME1 = """Training""", # MISSING TRANSLATION
+	TUTORIALNAME2 = """Work""", # MISSING TRANSLATION
+	TUTORIALNAME3 = """Leveling""", # MISSING TRANSLATION
+	TUTORIALNAME4 = """Quests and combat""", # MISSING TRANSLATION
 
 	# after finishing election-princess-meeting sequence
 
@@ -18117,6 +18133,10 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	AMELIA_PROPOSAL_DESCRIPT = """Амелия смотрит на вас со сдержанным удовлетворением, которое выдается ее легким видимым дрожанием""",
 	KURO_QUEST_FINISHED_TEXT = """Это предложение, о котором ты можете серьезно пожалеть. Поэтому я заставлю тебя сдержать его. """,
 	KURO_QUEST_FINISHED_DESCRIPTION = """Куро смотрит на вас так, как вы всегда ее не видели. Ее выражение лица почти мечтательное...""",
+	MAE_PROPOSAL_FINISHED_TEXT = """M-me? Your wife?.. I never thought someone would choose me like that... If you truly want it, then I will stay by your side.""", # MISSING TRANSLATION
+	MAE_PROPOSAL_FINISHED_DESCRIPT = """Mae freezes for a moment. Her tail sways nervously before she lowers her gaze, smiling with quiet sincerity.""", # MISSING TRANSLATION
+	MAE_PROPOSAL_UNFINISHED_TEXT = """I-I'm sorry... I don't think I can accept something like this yet, it feels too early for me.""", # MISSING TRANSLATION
+	MAE_PROPOSAL_UNFINISHED_DESCRIPT = """Mae fidgets with her fingers, avoiding your eyes.""", # MISSING TRANSLATION
 
 	#ChatNode
 	
@@ -20203,6 +20223,10 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	HELEVIEL_BAR_SS = "Воспользоваться ситуацией с Хелевиэль во время её рабочих часов",
 	HELEVIEL_FOREST_SS = "Совершить непристойный поступок на публике с исправившейся эльфийской жрицей.",
 	HELEVIEL_WEDDING_SS = "Обрести новую жизнь для бывшей эльфийской верховной жрицы.",
+	MAE_BEHIND_SS = """ .""", # MISSING TRANSLATION
+	MAE_RITUAL_SS = """ .""", # MISSING TRANSLATION
+	MAE_NORTHERN_SS = """ .""", # MISSING TRANSLATION
+	MAE_WEDDING_SS = """ .""", # MISSING TRANSLATION
 	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_1 = """Вы объясняете Алиcе, что одному из ваших рабов нужна смена одежды.
 
 — Да, правильная одежда для слуг - одна из наших специализаций. Правильно подобранная одежда может многое изменить даже для не самых идеальных тел. Естественно, у нас есть портные, которые могут подогнать одежду под любой тип фигуры. Но что вы ищете?""",
