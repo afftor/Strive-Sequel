@@ -1534,6 +1534,31 @@ var buffs = {
 	},
 };
 
+var status_desc = {
+	bleed = "STATUSDESC_BLEED",
+	poison = "STATUSDESC_POISON",
+	burn = "STATUSDESC_BURN",
+	e_s_shred = "STATUSDESC_SHRED",
+	fear = "STATUSDESC_FEAR",
+	taunt = "STATUSDESC_TAUNT",
+	provoke = "STATUSDESC_PROVOKE",
+	disarm = "STATUSDESC_DISARM",
+	silence = "STATUSDESC_SILENCE",
+	e_s_silence = "STATUSDESC_SILENCE",
+	e_s_stonewall = "STATUSDESC_FORTIFIED",
+#	e_t_hide = "STATUSDESC_HIDE",#this is a trait. Need it?
+	e_t_hide2 = "STATUSDESC_HIDE",
+	e_s_ensnare = "STATUSDESC_ENSNARED",
+	e_s_hmark = "STATUSDESC_MARKED",
+	wet = "STATUSDESC_WET",
+	freeze = "STATUSDESC_FREEZE",
+	shock = "STATUSDESC_SHOCK",
+	blind = "STATUSDESC_BLIND",
+	cursed = "STATUSDESC_CURSED",
+	stun = "STATUSDESC_STUN",
+	e_s_stun = "STATUSDESC_STUN",
+}
+
 func rebuild_template(args):
 	var res = {
 		type = 'trigger',
@@ -1982,3 +2007,8 @@ func get_apply_message(person, eff): #for temp_global
 	var e_name = eff_val.name
 	
 	return tres % [person.get_short_name(), tr('EFFECTNAME_' + e_name.to_upper())]
+
+func get_status_desc(status):
+	if !status_desc.has(status):
+		return null
+	return status_desc[status]
