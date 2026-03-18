@@ -1557,6 +1557,7 @@ var status_desc = {
 	cursed = "STATUSDESC_CURSED",
 	stun = "STATUSDESC_STUN",
 	e_s_stun = "STATUSDESC_STUN",
+	e_s_shatter = "STATUSDESC_SHATTER",
 }
 
 func rebuild_template(args):

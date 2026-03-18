@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://gui_modules/Universal/Scripts/SkillToolTip.gd" type="Script" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -6,11 +6,17 @@
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/images/iconsskills/Lich-strike.png" type="Texture" id=5]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/frame_charinfoskills.png" type="Texture" id=6]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
 use_filter = true
 font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+use_filter = true
+font_data = ExtResource( 7 )
 
 [node name="skilltooltip" type="Control"]
 margin_right = 804.0
@@ -26,7 +32,7 @@ __meta__ = {
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_right = 463.0
-margin_bottom = 203.0
+margin_bottom = 242.0
 grow_horizontal = 0
 size_flags_horizontal = 9
 size_flags_vertical = 9
@@ -38,7 +44,7 @@ scroll_vertical_enabled = false
 margin_left = 8.0
 margin_top = 4.0
 margin_right = 459.0
-margin_bottom = 199.0
+margin_bottom = 238.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
@@ -97,6 +103,24 @@ custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 2 )
 valign = 1
 autowrap = true
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+margin_top = 199.0
+margin_right = 451.0
+margin_bottom = 203.0
+
+[node name="HoldShift" type="Label" parent="ScrollContainer/VBoxContainer"]
+margin_top = 207.0
+margin_right = 451.0
+margin_bottom = 234.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.678431, 0.678431, 0.678431, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Hold shift for details"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="descript" type="RichTextLabel" parent="."]
 margin_left = 483.0
