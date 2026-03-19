@@ -42,17 +42,11 @@ grow_vertical = 2
 rect_pivot_offset = Vector2( 110, 110 )
 mouse_filter = 2
 texture = SubResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TimeNode" type="TextureRect" parent="."]
 margin_right = 290.0
 margin_bottom = 222.0
 texture = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Time" type="Label" parent="TimeNode"]
 margin_left = 145.0
@@ -226,5 +220,11 @@ margin_left = 149.059
 margin_top = 56.0
 margin_right = 285.059
 margin_bottom = 155.0
+
+[node name="external_block" type="ToolButton" parent="TimeNode"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
 
 [node name="Tween" type="Tween" parent="."]

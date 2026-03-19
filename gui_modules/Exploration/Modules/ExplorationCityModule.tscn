@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=2]
+[gd_scene load_steps=93 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle3.tres" type="DynamicFont" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/guildsnavi_city_2_9patch.png" type="Texture" id=6]
 [ext_resource path="res://gui_modules/Exploration/Scripts/ExplorationCity.gd" type="Script" id=7]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=8]
+[ext_resource path="res://src/scenes/close_screen.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_disabled.png" type="Texture" id=11]
 [ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=12]
@@ -289,6 +290,12 @@ margin_top = 137.0
 margin_right = 1519.0
 margin_bottom = 937.0
 custom_styles/panel = ExtResource( 37 )
+
+[node name="close_screen" parent="SlaveMarket" instance=ExtResource( 9 )]
+margin_left = -560.0
+margin_top = -168.0
+margin_right = 1447.0
+margin_bottom = 995.0
 
 [node name="HireBG1" type="Panel" parent="SlaveMarket"]
 self_modulate = Color( 0, 0, 0, 0.705882 )
@@ -1026,6 +1033,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="close_screen" parent="FactionDetails" instance=ExtResource( 9 )]
+margin_left = -600.0
+margin_top = -184.0
+margin_right = 1407.0
+margin_bottom = 979.0
+
 [node name="FactionBG" type="Panel" parent="FactionDetails"]
 self_modulate = Color( 0, 0, 0, 0.705882 )
 show_behind_parent = true
@@ -1170,6 +1183,12 @@ margin_bottom = 1002.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="close_screen" parent="GuildShop" instance=ExtResource( 9 )]
+margin_left = -712.0
+margin_top = -112.0
+margin_right = 1295.0
+margin_bottom = 1051.0
 
 [node name="Background" type="TextureRect" parent="GuildShop"]
 margin_right = 610.0
@@ -1429,6 +1448,12 @@ margin_left = 610.0
 margin_top = 240.0
 margin_right = 1310.0
 margin_bottom = 840.0
+
+[node name="close_screen" parent="BuyLocation" instance=ExtResource( 9 )]
+margin_left = -656.0
+margin_top = -272.0
+margin_right = 1351.0
+margin_bottom = 891.0
 
 [node name="Background" type="TextureRect" parent="BuyLocation"]
 margin_right = 700.0
