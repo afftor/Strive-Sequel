@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/scenes/close_screen.gd" type="Script" id=1]
+
+[node name="close_screen" type="ToolButton"]
+margin_right = 2007.0
+margin_bottom = 1163.0
+script = ExtResource( 1 )

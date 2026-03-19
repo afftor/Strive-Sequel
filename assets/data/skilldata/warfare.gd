@@ -108,6 +108,7 @@ var skills = {
 	execution = {
 		code = 'execution',
 		descript = '',
+		eff_descript = ['STATUSDESC_FEAR'],
 		icon = "res://assets/images/iconsskills/skill_execute.png",
 		type = 'combat', 
 		ability_type = 'skill',

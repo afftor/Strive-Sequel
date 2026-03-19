@@ -2248,6 +2248,13 @@ func get_template(id, caster):
 	if tres.icon is String:
 		tres.icon = input_handler.loadimage(tres.icon, 'icons') #not get_icon or load for the sake of user: pathes
 	tres.descript = tr(tres.descript)
+	if tres.has("eff_descript"):
+		var tr_eff_descript = ""
+		for i in range(tres.eff_descript.size()):
+			if i > 0: tr_eff_descript += "\n\n"
+			tr_eff_descript += tr(tres.eff_descript[i])
+		tres.eff_descript = tr_eff_descript
+	
 	if tres.cost.has('mp'):
 		tres.cost.mp = caster.get_manacost_for_skill(tres)
 	if tres.has('reqs') and !caster.checkreqs(tres.reqs):

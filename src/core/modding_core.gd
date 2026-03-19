@@ -460,6 +460,20 @@ func process_gd_data_file(filepath: String, alias : String):
 			return
 	script.new().load_tables()
 
+func get_eff_desc_list(eff):
+	if eff is String:
+		var desc = Effectdata.get_status_desc(eff)
+		if desc: return [desc]
+		
+		if Effectdata.effect_table.has(eff):
+			return get_eff_desc_list(Effectdata.effect_table[eff])
+	elif eff is Dictionary and eff.has("sub_effects"):
+		var list = []
+		for sub_eff in eff.sub_effects:
+			list.append_array(get_eff_desc_list(sub_eff))
+		return list
+	return []
+
 func fix_main_data():
 	#add all portrait paths to images.portraits
 	images.add_portrait_paths()
@@ -482,6 +496,15 @@ func fix_main_data():
 		i.descript = key
 		if !input_handler.if_has_translation(key):
 			print(key)
+		if i.has('effects'):
+			var eff_desc_list = []
+			for eff in i.effects:
+				eff_desc_list.append_array(get_eff_desc_list(eff))
+			if !eff_desc_list.empty():
+				if !i.has("eff_descript"):
+					i.eff_descript = eff_desc_list
+				else:
+					i.eff_descript.append_array(eff_desc_list)
 		if i.has('dialogue_text'):
 			key = "DIALOGUE" +i.code.to_upper() + "TEXT"
 			i.dialogue_text = tr(key)

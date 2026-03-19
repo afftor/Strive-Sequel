@@ -149,6 +149,7 @@ var skills = {
 	skill_void = {
 		code = 'skill_void',
 		descript = '',
+		eff_descript = ['STATUSDESC_DISARM', 'STATUSDESC_SILENCE', 'STATUSDESC_BLIND'],
 		icon = "res://assets/images/iconsskills/skill_void.png",
 		type = 'combat', 
 		ability_type = 'spell',
