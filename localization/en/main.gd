@@ -21410,7 +21410,7 @@ You pull out slowly, watching as your cum leaks from her ass, down her thighs. S
 	TRAITSPIRIT_SATYR = "Guardian Spirit: Velhorn",
 	TRAITSPIRIT_SATYRDESCRIPT = "Sex Factor +1, Authority Factor +1, MATK +3, MDEF +5\nRestore 4 mana after casting a spell on an ally or yourself.",
 	TRAITSPIRIT_OWL = "Guardian Spirit: Noctara",
-	TRAITSPIRIT_OWLDESCRIPT = "Wits Factor +1, Wits bonus +10, XP bonus +20%"
+	TRAITSPIRIT_OWLDESCRIPT = "Wits Factor +1, Wits bonus +10, XP bonus +20%",
 	
 	JEAN_SIDEQUEST_START_1 = """A few days pass after Jean settles into your mansion. She keeps mostly to herself, spending long hours locked in her room or staring into space with an unreadable expression while performing her duties. Unlike some of the others, she does not openly seek your attention - or at least, that was the case up until this evening.
 
@@ -21549,7 +21549,7 @@ He shifts his gaze between Jean and you, clearly waiting for your answer.""",
 {color=aqua|Librarian: — Fine. I'll throw in a bit of coin as well. Just so this matter is resolved already. Now get out.}
 
 You nod and step back out into the bustling streets of the capital.""",
-	JEAN_SIDEQUEST_MANSION_START = """The capital's layout turns out to be quite chaotic, to say the least. Streets intersect at odd angles or fade into one another without signs or markers. After nearly an hour of walking, you are fairly sure you've found the correct street - only to realize that none of the buildings bear numbers.""",
+	JEAN_SIDEQUEST_MANSION_START_1 = """The capital's layout turns out to be quite chaotic, to say the least. Streets intersect at odd angles or fade into one another without signs or markers. After nearly an hour of walking, you are fairly sure you've found the correct street - only to realize that none of the buildings bear numbers.""",
 	JEAN_SIDEQUEST_MANSION_START_2 = """As you circle the area yet again, you notice a street beggar watching your struggle with thinly veiled amusement.
 
 {color=green|Beggar: — Heh, you lost something, or are you just like walking in circles?}
@@ -22212,7 +22212,7 @@ While she vents, you look at Rynn's unconscious body. There are people who might
 {color=aqua|Ginny: — It drains the victim's life force slowly. Once it runs too low... the body transforms and begins feeding on outside energy. That's how those monsters are created.}""",
 	JEAN_Q2_CHURCH_RYNN_OPTION_1 = "Can it be removed?",
 	JEAN_Q2_CHURCH_RYNN_OPTION_2 = "Can you at least delay it?",
-	JEAN_Q2_CHURCH_RYNN_2 = """{color=yellow|Ginny: — I can stabilize her, give her some more time, but I can't remove the curse itself.}
+	JEAN_Q2_CHURCH_RYNN_2 = """{color=aqua|Ginny: — I can stabilize her, give her some more time, but I can't remove the curse itself.}
 
 {color=yellow|Jean: — We understand. Thank you for doing what you can. And we... we'll have to use the time we got and think of a way to deal with the curse.}
 
@@ -22231,6 +22231,13 @@ Tears fill her eyes as she helplessly looks back at Rynn's unconscious body whil
 	JEAN_RUINS_3 = "Searh newly found location",
 	QUEST_JEAN_RUINS_TEXT = "Demonic ruins",
 	QUEST_JEAN_RUINS_DESC = "Ancient ruins keeping artifact Jean desires",
+	
+	JEANSYLASDUNCANOPTION = "I need some assistance with the one case...",
+	JEANSYLASMYROPTION = "I need some assistance with the one case...",
+	JEANSYLASMYROPTION2 = "There’s an issue with Jean...",
+	JEANSYLASMYROPTION3 = "I found what we were looking for...",
+	JEANCHURCHESEARCHTASKNAME = "*Search church archives*",
+	JEANCHURCHESEARCHTASKDESCRIPT = "Jean must find location of the ruins",
 	
 	JEAN_SYLAS_NEXT_DAY_START = "The events that occurred in those ruins clearly left an impression on Jean. The next morning, you head upstairs to check on her and find her staring at the pile of notes on the table with a somewhat lost expression.",
 	JEAN_SYLAS_NEXT_DAY_OPTION_CHECK = "How are you doing?",
@@ -22362,6 +22369,7 @@ The man grits his teeth, tries to recover, but it's too late. With a sharp thud,
 	JEAN_SYLAS_ARENA_MYR_ARM_LOSE = """You push first, but the fighter doesn't even flinch. His arm holds steady like a stone pillar.
 A second later, he grins and starts pushing back. Fast. Despite your best effort, your hand slams into the wood.
 {color=red|Fighter: — Heh, nice. Come back if you wanna try again, I'd love more free money.}""",
+	JEAN_SYLAS_ARENA_OPTION_MERCHANTS = "Ok, let's go to merchants.",
 	JEAN_SYLAS_ARENA_MYR_TALK = "{color=red|Fighter: — ...Fine, I'll talk. But you didn't hear it from me.}",
 	JEAN_SYLAS_ARENA_DUNCAN_INTRO = """As soon as you step into the arena, one of the fighters approaches you, lowering his voice.
 {color=red|Fighter: — Heard you're looking into Sylas. Duncan sent word you might come. I'll tell you what I know. No charge.}""",
@@ -22474,10 +22482,10 @@ Before you can push the topic further, the atmosphere in the room noticeably shi
 {color=red|Madam: — I don't believe I've seen you here before, dear guests. Care to tell me what exactly you're looking for tonight?}""",
 	JEAN_SYLAS_BROTHEL_MADAM_OPTION_DISAPPEAR = "We are investigating several disappearances in the area.",
 	JEAN_SYLAS_BROTHEL_MADAM_OPTION_LOOKING = "We are just looking around. First time here.",
-	JEAN_SYLAS_BROTHEL_MADAM_DISMISS = """The madam listens without interrupting. When you finish, her smile does not change.
+	JEAN_SYLAS_BROTHEL_MADAM_DISMISS_1 = """The madam listens without interrupting. When you finish, her smile does not change.
 {color=red|Madam: — Unfortunately, if you're not here to enjoy the establishment, I'll have to politely ask you to leave.}
-She gestures lightly toward the door, then follows you until you're both outside.
-{color=yellow|Jean: — Well, that went pretty badly... Maybe next time we should come up with a better plan, or...}
+She gestures lightly toward the door, then follows you until you're both outside.""",
+	JEAN_SYLAS_BROTHEL_MADAM_DISMISS_2 = """{color=yellow|Jean: — Well, that went pretty badly... Maybe next time we should come up with a better plan, or...}
 Jean suddenly stops and lightly catches your sleeve.
 {color=yellow|Jean: — ...Wait.}
 From the narrow alley beside the brothel comes the uneven sound of someone trying very hard not to cry.""",
@@ -22625,13 +22633,12 @@ Covered in dark clothes, just as the girl described, Sylas confidently walks tow
 	JEAN_SYLAS_SYLAS_OPTION_FIGHT = "Less talk, more fight!",
 	JEAN_SYLAS_SYLAS_REPLY_MISTAKE = "{color=aqua|Sylas: — Oh? And why is that? Or do you think I came unprepared?}",
 	JEAN_SYLAS_SYLAS_REPLY_FIGHT = "{color=aqua|Sylas: — You're itching for a fight that much? Fine, so be it.}",
-	JEAN_SYLAS_SYLAS_MONSTERS = """He snaps his fingers, and suddenly a bunch of monsters rush from the sides. Another bunch comes from behind, rushing in from the brothel's cellar.
-{color=aqua|Sylas: — Hope this setup satisfies your violent nature. But in the end, I'll personally put you to rest.}""",
+	JEAN_SYLAS_SYLAS_MONSTERS = """He snaps his fingers, and suddenly a bunch of monsters rush from the sides. Another bunch comes from behind, rushing in from the brothel's cellar.""",
+	JEAN_SYLAS_SYLAS_MONSTERS_2 = """{color=aqua|Sylas: — Hope this setup satisfies your violent nature. But in the end, I'll personally put you to rest.}""",
 	JEAN_SYLAS_SYLAS_SERVANT_KILLED = "One of them has familiar features, and soon you realize it was his servant from the ruins that joined the fray.",
 	JEAN_SYLAS_SYLAS_SERVANT_FREED = "Behind the monsters you notice a familiar figure of the servant from the ruins, who skittishly hides in the back.",
 	JEAN_SYLAS_SYLAS_DEVICE = """While your enemy gloats, you feel the magical device Myr gave you in your pocket and press the activation button. Suddenly, a wave of energy emanates from your location. The monsters it hits become confused and sluggish, their movements turn frantic, then aimless. The army of battle monsters turns into a crowd of barely functioning imbeciles.
 {color=aqua|Sylas: — How did you... Agh, fine! I'll do it myself!}""",
-	JEAN_SYLAS_OPTION_FIGHT_SYLAS = "Fight",
 	JEAN_SYLAS_SYLAS_WIN_1 = """The battle is chaotic, but in the end, you and Jean come out on top. Sylas is pale, exhausted, but still standing and more furious.
 {color=aqua|Sylas: — Curses on you! But I will not fall here, not after everything I have accomplished!}
 Sylas raises his hands, holding the dark sphere that pulses with sickly violet light.
@@ -22710,7 +22717,6 @@ Jean's lips curl slightly.
 {color=red|Jean: — 'Cause strong hosts are very rare. Usually they can fulfill their desires themselves, leaving me no leverage... So you have no idea how happy I was when I saw that this girl, despite all her power, was consumed by her desires!}
 
 {color=red|Jean: — With her magical potential, I knew she was the final piece. Her power was enough to start the ritual already, all I need to do now is to get rid of you and carry on with it. And it's time to start with that task!}""",
-	JEAN_SYLAS_OPTION_FIGHT_JEAN = "Fight",
 	JEAN_SYLAS_FIGHT_JEAN_RESULT = """The fierce fight makes you sweat quite a lot, but it still comes to an end with you as the last one standing. Jean finally collapses, weakened enough that even the demon can't force her body to move.
 
 You rush forward and press the mind‑linking artifact to her forehead. At that moment your world suddenly becomes a blur.""",
@@ -22874,6 +22880,34 @@ She looks away quickly, but not before you catch the glisten in her eyes.
 
 	JEAN_SYLAS_QUEST_NAME = "Jean: The Demon in the Sphere",
 	JEAN_SYLAS_QUEST_SUMMARY = "Jean needs help tracking down the mastermind behind the cursed artifact.",
-	JEAN_SYLAS_QUEST_STAGE_START = "Follow Jean's leads in the Empire's capital.",
-
+	JEAN_SYLAS_QUEST_STAGE_1 = "Visit chosen guild",
+	JEAN_SYLAS_QUEST_STAGE_2 = "Search for leads in Empire Capital",
+	JEAN_SYLAS_QUEST_STAGE_3 = "Visit Arena",
+	JEAN_SYLAS_QUEST_STAGE_4 = "Ask merchants",
+	JEAN_SYLAS_QUEST_STAGE_5 = "Seek for a lost cart",
+	JEAN_SYLAS_QUEST_STAGE_6 = "Investigete a laead to brothel",
+	JEAN_SYLAS_QUEST_STAGE_7 = "Bring Jean a money to get a change",
+	JEAN_SYLAS_QUEST_STAGE_8 = "Bring news to Myr",
+	JEAN_SYLAS_QUEST_STAGE_9 = "Search guild library",
+	JEAN_SYLAS_QUEST_STAGE_10 = "Discuss your findings with Myr",
+	JEAN_SYLAS_QUEST_STAGE_11 = "Craft a mind-linking artifact",
+	JEAN_SYLAS_QUEST_STAGE_12 = "Confront a demon-posessed Jean",
+	JEAN_SYLAS_QUEST_STAGE_13 = "Bring orb to church",
+	JEAN_SYLAS_QUEST_STAGE_14 = "Give away orb to research",
+	
+	JEAN_CAPITAL_OPTION_SEARCH = "Meet Jean",
+	JEAN_CAPITAL_OPTION_ARENA = "Investigate Arena",
+	JEAN_CAPITAL_OPTION_MERCHANTS = "Merchant Quarter",
+	JEAN_CAPITAL_OPTION_CART = "Seek lost cart",
+	JEAN_CAPITAL_OPTION_BROTHEL = "Visit brothel",
+	JEAN_CAPITAL_OPTION_BROTHEL_RETURN = "Return to Jean",
+	
+	QUEST_JEAN_DEMON_LOCATION_TEXT = "Empty demonic ruins",
+	QUEST_JEAN_DEMON_LOCATION_DESC = "Jean should be here",
+	JEAN_DEMON_OPTION = "Search for Jean",
+	
+	JEANMAGESSEARCHTASKNAME = "*Search archives of mages guild*",
+	JEANMAGESSEARCHTASKDESCRIPT = "You must find an information about demon",
+	MATERIALMINDLINK = "Mind-Link Artifact",
+	MATERIALMINDLINKDESCRIPT = "A complicated device for linking ones consciousness.",
 }

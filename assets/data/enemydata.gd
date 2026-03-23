@@ -88,6 +88,11 @@ var encounters = {
 	jean_tunnel = {unittype = 'randomgroup', unitcode = 'jean_tunnel', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_sidequest_underground_tunnel_3', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
 	jean_ruins_monsters_1 = {unittype = 'randomgroup', unitcode = 'jean_ruins_monsters_1', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_q2_after_fight', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
 	jean_ruins_boss_fight = {unittype = 'randomgroup', unitcode = 'jean_ruins_boss_fight', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_q2_capture_figure_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
+	jean_sylas_thugs = {unittype = 'randomgroup', unitcode = 'jean_sylas_thugs', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_sylas_carriage_after_fight', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
+	jean_sylas_1 = {unittype = 'randomgroup', unitcode = 'jean_sylas_1', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_sylas_sylas_win_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
+	jean_sylas_2 = {unittype = 'randomgroup', unitcode = 'jean_sylas_2', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_sylas_sylas_win_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
+	jean_demon_1 = {unittype = 'randomgroup', unitcode = 'jean_demon_1', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_sylas_fight_jean_result', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
+	jean_demon_2 = {unittype = 'randomgroup', unitcode = 'jean_demon_2', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_sylas_demon_fight_result', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
 }
 
 var enemygroups = {
@@ -228,6 +233,11 @@ var enemygroups = {
 	jean_tunnel = {reqs = [], units = {guardian_golem = [2,2]}},
 	jean_ruins_monsters_1 = {reqs = [], units = {guardian_golem = [2,2]}},
 	jean_ruins_boss_fight = {reqs = [], units = {guardian_golem = [2,2]}},
+	jean_sylas_thugs = {reqs = [], units = {bandit_melee = [5,5]}},
+	jean_sylas_1 = {reqs = [], units = {bandit_melee = [3,3]}},
+	jean_sylas_2 = {reqs = [], units = {bandit_melee = [5,5]}},
+	jean_demon_1 = {reqs = [], units = {guardian_golem = [2,2]}},
+	jean_demon_2 = {reqs = [], units = {guardian_golem = [2,2]}},
 	
 	mimic = {reqs = [], units = {mimic = [1,1]}},
 	

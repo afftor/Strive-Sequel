@@ -325,6 +325,16 @@ var data = {
 				dialogue_argument = 1
 			},
 			{
+				code = "jean_sylas_duncan_help_1",
+				text = "JEANSYLASDUNCANOPTION",
+				reqs = [
+					{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage1'},
+					{type = "decision", value = "JeanSylasHelpDuncan", check = true},
+					],
+				type = "next_dialogue",
+				dialogue_argument = 1
+			},
+			{
 				code = "fighters_leader_close",
 				text = "FIGHTERSINTRODUCTION2REPLY2",
 				reqs = [
@@ -1470,6 +1480,43 @@ var data = {
 				dialogue_argument = 1,
 				type = "next_dialogue"
 			},
+			{
+				code = "jean_sylas_myr_help_1",
+				text = "JEANSYLASMYROPTION",
+				reqs = [
+					{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage1'},
+					{type = "decision", value = "JeanSylasHelpMyr", check = true},
+					],
+				type = "next_dialogue",
+				dialogue_argument = 1
+			},
+			{
+				code = "jean_sylas_myr_issue_intro",
+				text = "JEANSYLASMYROPTION2",
+				reqs = [
+					{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage8'},
+					],
+				type = "next_dialogue",
+				dialogue_argument = 1
+			},
+			{
+				code = "jean_sylas_myr_records_intro_1",
+				text = "JEANSYLASMYROPTION3",
+				reqs = [
+					{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage10'},
+					],
+				type = "next_dialogue",
+				dialogue_argument = 1
+			},
+#			{
+#				code = "jean_sylas_keep_sphere_1",
+#				text = "JEANSYLASMYROPTION",
+#				reqs = [
+#					{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage14'},
+#					],
+#				type = "next_dialogue",
+#				dialogue_argument = 1
+#			},
 			{
 				code = "mages_leader_close",
 				text = "MAGESINTRODUCTION3REPLY3",

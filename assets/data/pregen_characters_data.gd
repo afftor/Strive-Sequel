@@ -1329,7 +1329,7 @@ var unique_sprites = {
 			descript = "",
 			path = "jean_pb_body", 
 			face_path = "jean_pb",
-			unlock_reqs = [{type = 'event_seen', check = true, value = 'ana_blow_1'}] #fix
+			unlock_reqs = [{type = 'quest_completed', check = true, name = 'jean_sylas_quest'}] 
 			},
 		wed = {
 			name = "Wed",

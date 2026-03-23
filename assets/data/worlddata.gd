@@ -88,6 +88,7 @@ var lands = {
 		code = 'empire',
 		name = tr("AREAEMPIRE"),
 		enabled = true,
+		races = [['Human', 25], ['halfbeast', 5], ['Elf', 3]], #fix
 		lead_race = 'Human',
 		secondary_races = [],
 		policies = [],
@@ -770,15 +771,33 @@ var fixed_location_options = { #override serialized data
 			reqs = [
 				{type = 'decision', value = 'ginny_visit', check = true}, 
 				{type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHFIRSTCOME'},
-				{type = 'active_quest_stage', value = 'pre_sword_artifact_quest', stage = 'stage1', state = false}
+				{type = 'active_quest_stage', value = 'pre_sword_artifact_quest', stage = 'stage1', state = false},
+				{type = 'active_quest_stage', value = 'jean_ruins_quest', stage = 'stage1', state = false},
+				{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage13', state = false},
 			], 
 			args = [{code = 'start_event', data = 'aliron_church_firstcome', args = []}]
+		},
+		{ #cause document's wording is 'trigger: enter church', not 'church option'
+			text = tr("ALIRON6"), 
+			reqs = [
+				{type = 'active_quest_stage', value = 'jean_ruins_quest', stage = 'stage1', state = true}
+			], 
+			args = [{code = 'start_event', data = 'jean_q2_church', args = []}]
+		},
+		{ #i think of this as the same as above 
+			text = tr("ALIRON6"), 
+			reqs = [
+				{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage13', state = true}
+			], 
+			args = [{code = 'start_event', data = 'jean_sylas_church_event_1', args = []}]
 		},
 		{
 			text = tr("ALIRON6"), 
 			reqs = [
 				{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHFIRSTCOME'},
-				{type = 'active_quest_stage', value = 'pre_sword_artifact_quest', stage = 'stage1', state = false}
+				{type = 'active_quest_stage', value = 'pre_sword_artifact_quest', stage = 'stage1', state = false},
+				{type = 'active_quest_stage', value = 'jean_ruins_quest', stage = 'stage1', state = false},
+				{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage13', state = false},
 			], 
 			args = [{code = 'start_event', data = 'aliron_church_enter', args = []}]
 		},
@@ -1332,6 +1351,36 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'jean_sidequest_return_start', args = []}]
 		},
 		{
+			text = tr("JEAN_CAPITAL_OPTION_SEARCH"),
+			reqs = [{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage2'}],
+			args = [{code = 'start_event', data = 'jean_sylas_capital_meet', args = []}]
+		},
+		{
+			text = tr("JEAN_CAPITAL_OPTION_ARENA"),
+			reqs = [{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage3'}],
+			args = [{code = 'start_event', data = 'jean_sylas_arena_intro', args = []}]
+		},
+		{
+			text = tr("JEAN_CAPITAL_OPTION_MERCHANTS"),
+			reqs = [{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage4'}],
+			args = [{code = 'start_event', data = 'jean_sylas_capital_meet', args = []}]
+		},
+		{
+			text = tr("JEAN_CAPITAL_OPTION_CART"),
+			reqs = [{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage5'}],
+			args = [{code = 'start_event', data = 'jean_sylas_carriage_search', args = []}]
+		},
+		{
+			text = tr("JEAN_CAPITAL_OPTION_BROTHEL"),
+			reqs = [{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage6'}],
+			args = [{code = 'start_event', data = 'jean_sylas_brothel_intro', args = []}]
+		},
+		{
+			text = tr("JEAN_CAPITAL_OPTION_BROTHEL_RETURN"),
+			reqs = [{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage7'}],
+			args = [{code = 'start_event', data = 'jean_sylas_girl_plan_return', args = []}]
+		},
+		{
 			text = tr("EMPIRE_CAPITAL1"), 
 			reqs = [{type = 'active_quest_stage', value = 'act_4_capital', stage = 'ceremony', state = true}], 
 			args = [{code = 'start_event', data = 'emp_ceremony_1', args = []}]
@@ -1604,6 +1653,13 @@ var fixed_location_options = { #override serialized data
 			text = tr("MAE_NORTHERN_TRIBE_OPTION"),
 			reqs = [{type = "active_quest_stage", value = "mae_spirit_quest", stage = "stage5"}],
 			args = [{code = "start_event", data = "mae_spirit_northern_arrival", args = []}]
+		},
+	],
+	quest_jean_demon_location = [
+		{
+			text = tr("MAE_NORTHERN_TRIBE_OPTION"),
+			reqs = [{type = "active_quest_stage", value = "jean_sylas_quest", stage = "stage12"}],
+			args = [{code = "start_event", data = "jean_sylas_search_jean_intro_1", args = []}]
 		},
 	],
 	quest_leon_forest = [
