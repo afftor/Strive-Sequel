@@ -2,6 +2,7 @@ extends Reference
 var data = {
 	jean_sidequest_start = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_START_1",
@@ -9,6 +10,7 @@ var data = {
 	},
 	jean_sidequest_start_2 = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_START_2",
@@ -16,6 +18,7 @@ var data = {
 	},
 	jean_sidequest_start_3 = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_START_3",
@@ -27,6 +30,7 @@ var data = {
 	},
 	jean_sidequest_response = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [
@@ -43,6 +47,7 @@ var data = {
 	},
 	jean_sidequest_question = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_QUESTION",
@@ -50,6 +55,7 @@ var data = {
 	},
 	jean_sidequest_accept = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [
@@ -70,6 +76,7 @@ var data = {
 	
 	jean_sidequest_capital_start = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_CAPITAL_START",
@@ -77,6 +84,7 @@ var data = {
 	},
 	jean_sidequest_capital_library = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_CAPITAL_LIBRARY",
@@ -84,6 +92,7 @@ var data = {
 	},
 	jean_sidequest_capital_guard = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [
@@ -114,6 +123,7 @@ var data = {
 	},
 	jean_sidequest_capital_refuse_1 = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_GUARD_REFUSE_1",
@@ -121,6 +131,7 @@ var data = {
 	},
 	jean_sidequest_capital_refuse_2 = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_GUARD_REFUSE_2",
@@ -128,6 +139,7 @@ var data = {
 	},
 	jean_sidequest_capital_refuse_3 = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_GUARD_REFUSE_3",
@@ -135,6 +147,7 @@ var data = {
 	},
 	jean_sidequest_capital_refuse_4 = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_GUARD_REFUSE_4",
@@ -142,6 +155,7 @@ var data = {
 	},
 	jean_sidequest_capital_entry = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [
@@ -152,6 +166,7 @@ var data = {
 	},
 	jean_sidequest_library_inside_1 = {
 		image = 'jean_librarian',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_LIBRARY_INSIDE_1",
@@ -159,6 +174,7 @@ var data = {
 	},
 	jean_sidequest_library_inside_2 = {
 		image = 'jean_librarian',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_LIBRARY_INSIDE_2",
@@ -166,6 +182,7 @@ var data = {
 	},
 	jean_sidequest_library_address_1 = {
 		image = 'jean_librarian',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_LIBRARY_ADDRESS_1",
@@ -173,6 +190,7 @@ var data = {
 	},
 	jean_sidequest_library_address_2 = {
 		image = 'jean_librarian',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_LIBRARY_ADDRESS_2",
@@ -190,6 +208,7 @@ var data = {
 	},
 	jean_sidequest_library_note = {
 		image = 'jean_librarian',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [
@@ -212,6 +231,7 @@ var data = {
 	},
 	jean_sidequest_mansion_start_1 = {
 		image = 'jean_beggar',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_MANSION_START_1",
@@ -219,6 +239,7 @@ var data = {
 	},
 	jean_sidequest_mansion_start_2 = {
 		image = 'jean_beggar',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [
@@ -279,6 +300,7 @@ var data = {
 	},
 	jean_sidequest_mansion_beggar = {
 		image = 'jean_beggar',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [
@@ -291,6 +313,7 @@ var data = {
 	},
 	jean_sidequest_mansion_lock = {
 		image = 'jean_mansion',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_MANSION_LOCK",
@@ -301,6 +324,7 @@ var data = {
 	},
 	jean_sidequest_mansion_front = {
 		image = 'jean_mansion',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_MANSION_FRONT",
@@ -317,6 +341,7 @@ var data = {
 	},
 	jean_sidequest_mansion_window = {
 		image = 'jean_mansion',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_MANSION_WINDOW",
@@ -333,6 +358,7 @@ var data = {
 	},
 	jean_sidequest_mansion_enter_1 = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_MANSION_ENTER_1",
@@ -340,6 +366,7 @@ var data = {
 	},
 	jean_sidequest_mansion_enter_2 = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_MANSION_ENTER_2",
@@ -362,6 +389,7 @@ var data = {
 	},
 	jean_sidequest_mansion_golems_start = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_MANSION_GOLEMS_1",
@@ -369,6 +397,7 @@ var data = {
 	},
 	jean_sidequest_mansion_golems_15 = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_MANSION_GOLEMS_15",
@@ -385,6 +414,7 @@ var data = {
 	},
 	jean_sidequest_mansion_golems_2 = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_MANSION_GOLEMS_2",
@@ -401,6 +431,7 @@ var data = {
 	},
 	jean_sidequest_mansion_window_noise = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_MANSION_WINDOW_NOISE_1", 
@@ -408,6 +439,7 @@ var data = {
 	},
 	jean_sidequest_mansion_window_noise_2 = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_MANSION_WINDOW_NOISE_2",
@@ -433,6 +465,7 @@ var data = {
 	},
 	jean_sidequest_mansion_wait_fight = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [{text = "JEAN_SIDEQUEST_MANSION_WAIT_FIGHT", reqs = []}],
@@ -449,6 +482,7 @@ var data = {
 	},
 	jean_sidequest_mansion_rynn_intro_1 = {
 		image = 'jean_rynn',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_RYNN_INTRO_1",
@@ -456,6 +490,7 @@ var data = {
 	},
 	jean_sidequest_mansion_rynn_intro_2 = {
 		image = 'jean_rynn',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_RYNN_INTRO_1",
@@ -463,6 +498,7 @@ var data = {
 	},
 	jean_sidequest_mansion_rynn_chat_1 = {
 		image = 'jean_rynn',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_RYNN_CHAT_1",
@@ -470,6 +506,7 @@ var data = {
 	},
 	jean_sidequest_mansion_rynn_chat_2 = {
 		image = 'jean_rynn',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [
@@ -481,6 +518,7 @@ var data = {
 	},
 	jean_sidequest_mansion_rynn_chat_3 = {
 		image = 'jean_rynn',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [
@@ -496,13 +534,15 @@ var data = {
 	},
 	jean_sidequest_mansion_rynn_brother = {
 		image = 'jean_rynn',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_RYNN_BROTHER_1",
-		options = [{code = "jean_sidequest_mansion_rynn_chat", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 3, type = "next_dialogue"}]
+		options = [{code = "jean_sidequest_mansion_rynn_chat_3", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 3, type = "next_dialogue"}]
 	},
 	jean_sidequest_mansion_rynn_join = {
 		image = 'jean_rynn',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_RYNN_JOIN",
@@ -510,6 +550,7 @@ var data = {
 	},
 	jean_sidequest_underground_start = {
 		image = 'jean_lab',
+		character = 'jean',
 		tags = ["dialogue_scene", "blackscreen_transition_common"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_UNDERGROUND_START", 
@@ -520,6 +561,7 @@ var data = {
 	},
 	jean_sidequest_underground_descend_1 = {
 		image = 'jean_lab',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [
@@ -530,6 +572,7 @@ var data = {
 	},
 	jean_sidequest_underground_descend_2 = {
 		image = 'jean_lab',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_UNDERGROUND_DESCEND_COMMON",
@@ -537,6 +580,7 @@ var data = {
 	},
 	jean_sidequest_underground_cages = {
 		image = 'jean_lab',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [{text = "JEAN_SIDEQUEST_UNDERGROUND_CAGES", reqs = []}],
@@ -544,6 +588,7 @@ var data = {
 	},
 	jean_sidequest_underground_circle_1 = {
 		image = 'jean_lab',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [{text = "JEAN_SIDEQUEST_UNDERGROUND_CIRCLE_1", reqs = []}],
@@ -551,6 +596,7 @@ var data = {
 	},
 	jean_sidequest_underground_circle_2 = {
 		image = 'jean_lab',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [{text = "JEAN_SIDEQUEST_UNDERGROUND_CIRCLE_2", reqs = []}],
@@ -561,6 +607,7 @@ var data = {
 	},
 	jean_sidequest_underground_react = {
 		image = 'jean_lab',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [
@@ -571,6 +618,7 @@ var data = {
 	},
 	jean_sidequest_underground_book_1 = {
 		image = 'jean_lab',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [{text = "JEAN_SIDEQUEST_UNDERGROUND_BOOK_1", reqs = []}],
@@ -578,6 +626,7 @@ var data = {
 	},
 	jean_sidequest_underground_book_2 = {
 		image = 'jean_lab',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [{text = "JEAN_SIDEQUEST_UNDERGROUND_BOOK_2", reqs = []}],
@@ -585,6 +634,7 @@ var data = {
 	},
 	jean_sidequest_underground_shelf = {
 		image = 'jean_lab',
+		character = 'jean',
 		tags = ["dialogue_scene",],
 		reqs = [],
 		text = [
@@ -644,6 +694,7 @@ var data = {
 	},
 	jean_sidequest_underground_shelf_jean = {
 		image = 'jean_lab',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_UNDERGROUND_SHELF_JEAN_1", 
@@ -651,6 +702,7 @@ var data = {
 	},
 	jean_sidequest_underground_shelf_success = {
 		image = 'jean_lab',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [
@@ -662,6 +714,7 @@ var data = {
 	},
 	jean_sidequest_underground_tunnel_choice = {
 		image = 'jean_lab',
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [{text = "JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_CHOICE", reqs = []}],
@@ -686,6 +739,7 @@ var data = {
 	},
 	jean_sidequest_underground_tunnel_1 = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_1", 
@@ -693,6 +747,7 @@ var data = {
 	},
 	jean_sidequest_underground_tunnel_2 = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_2", 
@@ -709,6 +764,7 @@ var data = {
 	},
 	jean_sidequest_underground_tunnel_3 = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_3", 
@@ -716,6 +772,7 @@ var data = {
 	},
 	jean_sidequest_underground_tunnel_4 = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_4", 
@@ -723,6 +780,7 @@ var data = {
 	},
 	jean_sidequest_underground_tunnel_5 = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_5", 
@@ -742,6 +800,7 @@ var data = {
 	},
 	jean_sidequest_underground_leave_1 = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [{text = "JEAN_SIDEQUEST_UNDERGROUND_LEAVE_1", reqs = []}],
@@ -749,6 +808,7 @@ var data = {
 	},
 	jean_sidequest_underground_leave_2 = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "JEAN_SIDEQUEST_UNDERGROUND_LEAVE_2", 
@@ -768,6 +828,7 @@ var data = {
 	},
 	jean_sidequest_return_start = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene", "master_translate"],
 		reqs = [],
 		text = [{text = "JEAN_SIDEQUEST_RETURN_START", reqs = []}],
@@ -775,6 +836,7 @@ var data = {
 	},
 	jean_sidequest_return_librarian = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene", "master_translate"],
 		reqs = [],
 		text = [{text = "JEAN_SIDEQUEST_RETURN_LIBRARIAN", reqs = []}],
@@ -782,6 +844,7 @@ var data = {
 	},
 	jean_sidequest_return_pass = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [
@@ -800,6 +863,7 @@ var data = {
 	},
 	jean_sidequest_return_end_1 = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [{text = "JEAN_SIDEQUEST_RETURN_END_1", reqs = []}],
@@ -807,6 +871,7 @@ var data = {
 	},
 	jean_sidequest_return_end_2 = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [{text = "JEAN_SIDEQUEST_RETURN_END_2", reqs = []}],
@@ -817,6 +882,7 @@ var data = {
 	},
 	jean_sidequest_return_thanks = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [{text = "JEAN_SIDEQUEST_RETURN_THANKS", reqs = []}],
@@ -829,6 +895,11 @@ var data = {
 				type = "next_dialogue",
 				bonus_effects = [
 					{code = "complete_quest", value = "jean_first_sidequest"},
+					{
+						code = "add_timed_event",
+						value = "jean_q2_start",
+						args = [{type = "add_to_date", date = [3,3], hour = 1}]
+					},
 					{code = "update_city"}
 				]
 			}
@@ -836,6 +907,7 @@ var data = {
 	},
 	jean_sidequest_return_question_1 = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [{text = "JEAN_SIDEQUEST_RETURN_QUESTION", reqs = []}],
@@ -846,6 +918,7 @@ var data = {
 	},
 	jean_sidequest_return_tease = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [{text = "JEAN_SIDEQUEST_RETURN_TEASE", reqs = []}],
@@ -856,6 +929,7 @@ var data = {
 	},
 	jean_sidequest_return_question_2 = {
 		image = null,
+		character = 'jean',
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [

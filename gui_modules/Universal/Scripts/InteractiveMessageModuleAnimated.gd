@@ -1409,7 +1409,7 @@ func select_option(number):
 	
 	if option.has('select_person'):
 		select_person_for_next_event(option)
-	if option.has('select_item'):
+	elif option.has('select_item'):
 		select_item_for_next_event(option)
 	elif option.has('remove_person'):
 		remove_person(code)

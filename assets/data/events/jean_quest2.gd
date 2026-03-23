@@ -149,7 +149,16 @@ var data = {
 				bonus_effects = [
 					{code = 'progress_quest', value = 'jean_ruins_quest', stage = 'stage2'},
 					{code = 'update_city'},
-#					{code = 'unique_character_changes', value = 'jean', args = [{code = 'assign_task', task = 'church_library_study'}]},
+					{
+						code = "add_special_task_for_location",
+						location = 'aliron',
+						amount = 4,
+						descript = "JEANCHURCHESEARCHTASKDESCRIPT",
+						name = "JEANCHURCHESEARCHTASKNAME",
+						max_workers = 1,
+						icon = 'res://assets/Textures_v2/MANSION/quest_task.png',
+						args = [{code = 'start_event', data = 'jean_q2_research_done', args = {}}]
+					}
 				],
 			}
 		],
@@ -167,7 +176,7 @@ var data = {
 				reqs = [], 
 				dialogue_argument = 1,
 				bonus_effects = [
-					{code = 'make_quest_location', value = 'quest_jean_ruins_location'},
+					{code = 'make_quest_location', value = 'quest_jean_ruins'},
 					{code = 'progress_quest', value = 'jean_ruins_quest', stage = 'stage3'}
 				],
 			}
@@ -331,8 +340,8 @@ var data = {
 			{text = "JEAN_Q2_INTERROGATE_MASTERLOC", reqs = [], previous_dialogue_option = 3},
 			],
 		options = [
-			{code = 'jean_q2_interrogate_who', text = "JEAN_Q2_INTERROGATE_OPTION_1", reqs = [], dialogue_argument = 2, type = 'next_dialogue', remove_after_first_use = true,}, 
-			{code = 'jean_q2_interrogate_master', text = "JEAN_Q2_INTERROGATE_OPTION_2", reqs = [], dialogue_argument = 3, type = 'next_dialogue',remove_after_first_use = true,}, 
+			{code = 'jean_q2_interrogate', text = "JEAN_Q2_INTERROGATE_OPTION_1", reqs = [], dialogue_argument = 2, type = 'next_dialogue', remove_after_first_use = true,}, 
+			{code = 'jean_q2_interrogate', text = "JEAN_Q2_INTERROGATE_OPTION_2", reqs = [], dialogue_argument = 3, type = 'next_dialogue',remove_after_first_use = true,}, 
 			{code = 'jean_q2_interrogate_full', text = "JEAN_Q2_INTERROGATE_OPTION_3", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	jean_q2_interrogate_full = {
@@ -383,14 +392,14 @@ var data = {
 			{text = "JEAN_Q2_LAB_REACT_PRESS_3", reqs = [], previous_dialogue_option = 2},
 			{text = "JEAN_Q2_LAB_REACT", reqs = []},
 		],
-		options = [{code = 'jean_q2_lab_react', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 2, type = 'next_dialogue',}],
+		options = [{code = 'jean_q2_burn_lab_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 2, type = 'next_dialogue',}],
 	},
 	jean_q2_burn_lab_1 = {
 		image = null, 
 		tags = ['dialogue_scene'], 
 		reqs = [], 
 		character = 'jean',
-		text = "JEAN_Q2_LAB_REACT_PRESS",
+		text = "JEAN_Q2_LAB_FINISH",
 		options = [
 			{code = 'jean_q2_burn_lab_2', text = "JEAN_Q2_LAB_BURN_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}, 
 			{code = 'jean_q2_burn_lab_2', text = "JEAN_Q2_LAB_BURN_OPTION_2", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}
@@ -710,6 +719,7 @@ var data = {
 			dialogue_argument = 1,
 			bonus_effects = [
 				{code = 'complete_quest', value = 'jean_ruins_quest'},
+				{code = 'remove_quest_location', value = 'quest_jean_ruins'},
 				{code = 'decision', value = 'rynn_cursed_at_church'},
 				{
 					code = "add_timed_event",
@@ -742,6 +752,7 @@ var data = {
 			dialogue_argument = 1,
 			bonus_effects = [
 				{code = 'complete_quest', value = 'jean_ruins_quest'},
+				{code = 'remove_quest_location', value = 'quest_jean_ruins'},
 				{
 					code = "add_timed_event",
 					value = "jean_sylas_next_day_start",
