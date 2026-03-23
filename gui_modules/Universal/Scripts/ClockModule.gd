@@ -2,6 +2,8 @@ extends Control
 
 onready var sky = $Sky
 onready var tw = $Tween
+onready var ext_block = $TimeNode/external_block
+var ext_blockers = []#{ref, act}
 
 var locked = false
 
@@ -24,6 +26,7 @@ func _ready():
 	update_gold_tooltip()
 	globals.connecttexttooltip($TimeNode/timetooltip, tr("TIME_TOOLTIP"))
 	globals.connect("update_clock", self, 'update_labels')
+	ext_block.connect("pressed", self, "on_ext_block_press")
 #	$TimeNode/Date.text = "D: " + str(ResourceScripts.game_globals.date)
 #	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
 	input_handler.register_btn_source('finish_turn', self, 'tut_get_finish_turn')
@@ -197,5 +200,50 @@ func update_labels():
 	update_food_tooltip()
 	update_gold_tooltip()
 #	rotate_sky()
+
+#VERY ugly patch. Thing is: clock is a separate module, that can raise above all
+#this mechanic allows to work with top windows in other modules
+func ext_block_start(obj, act):
+	reg_blocker(obj, act)
+	ext_block.show()
+
+func reg_blocker(new_obj, new_act):
+	cleanup_blockers()
+	for tab in ext_blockers:
+		if tab.ref.get_ref() == new_obj:
+			return
+	
+	ext_blockers.append({ref = weakref(new_obj), act = new_act})
+
+func cleanup_blockers():
+	for i in range(ext_blockers.size() - 1, -1, -1):
+		var obj = ext_blockers[i].ref.get_ref()
+		if obj == null or !is_instance_valid(obj) or !obj.is_visible_in_tree():
+			ext_blockers.remove(i)
+	try_ext_block_hide()
+
+func try_ext_block_hide():
+	if ext_blockers.empty():
+		ext_block.hide()
+
+func ext_block_stop(rem_obj):
+	if !ext_block.is_visible():
+		return
+	cleanup_blockers()
+	if ext_blockers.empty():
+		return
+	
+	for i in range(ext_blockers.size() - 1, -1, -1):
+		if ext_blockers[i].ref.get_ref() == rem_obj:
+			ext_blockers.remove(i)
+			break
+	try_ext_block_hide()
+
+func on_ext_block_press():
+	cleanup_blockers()
+	if !ext_blockers.empty():
+		get_tree().set_input_as_handled()
+		var blocker = ext_blockers.back()
+		blocker.ref.get_ref().call(blocker.act)
 
 

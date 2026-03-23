@@ -194,6 +194,8 @@ func fix_serialization():
 			{code = "add_timed_event", value = "mae_druid_event_start", args = [{type = "add_to_date", date = [2, 2], hour = 2}]},
 			{code = "add_timed_event", value = "mae_spirit_quest_initiate", args = [{type = "add_to_date", date = [4, 4], hour = 1}]}
 		])
+	if !seen_events.has("jean_sidequest_start") and ResourceScripts.game_party.get_unique_slave('jean') != null:
+		globals.common_effects([{code = 'plan_mansion_event', value = "jean_sidequest_start"}])
 	#2add amelia questline here. idk how cause herbs quest can be failed - so need correct condition
 	
 	#char_events

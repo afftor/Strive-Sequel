@@ -80,6 +80,14 @@ var encounters = {
 	erdyna_thugs_fight = {unittype = 'randomgroup', unitcode = 'erdyna_thugs', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'emp_erdyna_intro_3', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
 	erdyna_duel_fight = {unittype = 'randomgroup', unitcode = 'erdyna_boss', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'emp_erdyna_intro_6', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
 	nixx_group = {unittype = 'randomgroup', unitcode = 'nixx_boss', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'kuro3_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
+	
+	jean_golems_door = {unittype = 'randomgroup', unitcode = 'jean_golems_door', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_sidequest_mansion_golems_2', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
+	jean_golems_door_2 = {unittype = 'randomgroup', unitcode = 'jean_golems_door_2', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_sidequest_mansion_rynn_intro_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
+	jean_golems_window_1 = {unittype = 'randomgroup', unitcode = 'jean_golems_window_1', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_sidequest_mansion_rynn_intro_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
+	jean_golems_window_2 = {unittype = 'randomgroup', unitcode = 'jean_golems_window_2', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_sidequest_mansion_rynn_intro_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
+	jean_tunnel = {unittype = 'randomgroup', unitcode = 'jean_tunnel', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_sidequest_underground_tunnel_3', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
+	jean_ruins_monsters_1 = {unittype = 'randomgroup', unitcode = 'jean_ruins_monsters_1', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_q2_after_fight', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
+	jean_ruins_boss_fight = {unittype = 'randomgroup', unitcode = 'jean_ruins_boss_fight', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_q2_capture_figure_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
 }
 
 var enemygroups = {
@@ -211,7 +219,16 @@ var enemygroups = {
 
 
 	ramont_boss_fight = {reqs = [], units = {guardian_golem = [2,2], ramont_boss = [1,1], bandit_assassin = [1,1]}},
-
+	
+	#fix next ones
+	jean_golems_door = {reqs = [], units = {guardian_golem = [2,2]}},
+	jean_golems_door_2 = {reqs = [], units = {guardian_golem = [2,2]}},
+	jean_golems_window_1 = {reqs = [], units = {guardian_golem = [2,2]}},
+	jean_golems_window_2 = {reqs = [], units = {guardian_golem = [2,2]}},
+	jean_tunnel = {reqs = [], units = {guardian_golem = [2,2]}},
+	jean_ruins_monsters_1 = {reqs = [], units = {guardian_golem = [2,2]}},
+	jean_ruins_boss_fight = {reqs = [], units = {guardian_golem = [2,2]}},
+	
 	mimic = {reqs = [], units = {mimic = [1,1]}},
 	
 	cali_slavers = {reqs = [], units = {bandit_melee = [2,2], bandit_archer = [1,1], bandit_mage = [1,1]}},

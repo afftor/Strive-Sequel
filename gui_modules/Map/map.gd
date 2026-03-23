@@ -353,13 +353,16 @@ func close():
 	return_nav_module = null
 	return_location = null
 	return_screen = null
-	gui_controller.current_screen = gui_controller.mansion if screen_to_restore == null else screen_to_restore
-	if gui_controller.clock != null:
-		gui_controller.clock.visible = true
-#		gui_controller.clock.restoreoldspeed()
-#	if screen_to_restore == null:
-	input_handler.node_children_visible(get_parent(), null, true)
-	get_parent().mansion_state = 'default'
+	if screen_to_restore == null:
+		gui_controller.current_screen = gui_controller.mansion
+		input_handler.node_children_visible(get_parent(), null, true)
+		gui_controller.current_screen.mansion_state = 'default'
+		if gui_controller.clock != null:
+			gui_controller.clock.visible = true
+	else:
+		gui_controller.current_screen = screen_to_restore
+		input_handler.node_children_visible(get_parent(), null, true)
+	
 #	get_parent().match_state()
 	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
 	hide()

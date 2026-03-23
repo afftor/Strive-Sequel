@@ -1,7 +1,8 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=1]
 [ext_resource path="res://src/scenes/QuestPanelV2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/scenes/close_screen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/iconstraits/l_collar.png" type="Texture" id=4]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle2.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=6]
@@ -55,6 +56,12 @@ margin_right = 1868.0
 margin_bottom = 1040.0
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 16 )
+
+[node name="close_screen" parent="." instance=ExtResource( 3 )]
+margin_left = -448.0
+margin_top = -176.0
+margin_right = 1559.0
+margin_bottom = 987.0
 
 [node name="QuestBoardBG" type="Panel" parent="."]
 show_behind_parent = true

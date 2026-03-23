@@ -4875,6 +4875,7 @@ You explain yourself being the new landowner to her.""", # MISSING TRANSLATION
 	FORGETLOCATIONQUESTION = "忘记这个位置？所有出现的角色都会被送回大厦。这个动作无法撤消。",
 
 	SENDCHARBACKQUESTION = "让 [name] 返回?",
+	SENDCHARBACKTPQUESTION = """Cast teleport?""", # MISSING TRANSLATION
 	SENDCHARBACKTOMANSIONQUESTION = "让 [name] 返回豪宅?",
 
 	RETURNALLCHARSTOMANSIONQUESTION = "让所有角色返回大厦？",
