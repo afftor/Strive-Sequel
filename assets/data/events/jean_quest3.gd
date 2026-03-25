@@ -1453,9 +1453,7 @@ var data = {
 		]
 	},
 	jean_sylas_carriage_erdyna_1 = {
-		image = null,
-		character = "jean",
-		character2 = "erdyna",
+		character = "erdyna",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1476,9 +1474,7 @@ var data = {
 		]
 	},
 	jean_sylas_carriage_erdyna_2 = {
-		image = null,
-		character = "jean",
-		character2 = "erdyna",
+		character = "erdyna",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2953,7 +2949,6 @@ var data = {
 	},
 	jean_sylas_sylas_confront = {
 		image = "jean_sylas",
-		character = "jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2984,7 +2979,6 @@ var data = {
 	},
 	jean_sylas_sylas_reply = {
 		image = "jean_sylas",
-		character = "jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -3081,8 +3075,7 @@ var data = {
 		]
 	},
 	jean_sylas_sylas_win_1 = {
-		image = null,
-		character = "jean",
+		image = "jean_sylas",
 		tags = [
 			"dialogue_scene"
 		],
@@ -4219,7 +4212,6 @@ var data = {
 	},
 	jean_sylas_church_event_4 = {
 		image = "jean_rynn_farewell",
-		character = "jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -4241,7 +4233,6 @@ var data = {
 	},
 	jean_sylas_church_event_5 = {
 		image = "jean_rynn_farewell",
-		character = "jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -4263,7 +4254,6 @@ var data = {
 	},
 	jean_sylas_church_event_6 = {
 		image = "jean_rynn_farewell",
-		character = "jean",
 		tags = [
 			"dialogue_scene"
 		],
