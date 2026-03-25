@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/abuse.png-7dec62f1ade17b56168fefded8979515.stex"
+path="res://.import/Lira_grass1.png-f2f3b5a76fc17b9b0fab15e7ef06e3dd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/abuse.png"
-dest_files=[ "res://.import/abuse.png-7dec62f1ade17b56168fefded8979515.stex" ]
+source_file="res://assets/images/fullscreen scenes/Lira_grass1.png"
+dest_files=[ "res://.import/Lira_grass1.png-f2f3b5a76fc17b9b0fab15e7ef06e3dd.stex" ]
 
 [params]
 

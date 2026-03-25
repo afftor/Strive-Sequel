@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/abuse.png-7dec62f1ade17b56168fefded8979515.stex"
+path="res://.import/lira_tribal_prt.png-7ea7ba539701988fbbca5c8f90abda5e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/abuse.png"
-dest_files=[ "res://.import/abuse.png-7dec62f1ade17b56168fefded8979515.stex" ]
+source_file="res://assets/images/portraits/lira_tribal_prt.png"
+dest_files=[ "res://.import/lira_tribal_prt.png-7ea7ba539701988fbbca5c8f90abda5e.stex" ]
 
 [params]
 
