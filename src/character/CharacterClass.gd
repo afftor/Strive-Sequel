@@ -377,13 +377,13 @@ func predict_preg_time():
 func get_class_icon():
 	if get_stat('slave_class') in ['master', 'heir', 'spouse', 'servant', 'servant_notax']:
 		return images.get_icon(ResourceScripts.descriptions.bodypartsdata.slave_class[get_stat('slave_class')].icon)
-	elif has_status('training_success'):
-		var tmp = get_traits_by_tag('training_success')
-		var upgrade_data = Traitdata.traits[tmp[0]]
-		if upgrade_data.icon_small is String:
-			return load(upgrade_data.icon_small)
-		else:
-			return upgrade_data.icon_small
+#	elif has_status('training_success'):
+#		var tmp = get_traits_by_tag('training_success')
+#		var upgrade_data = Traitdata.traits[tmp[0]]
+#		if upgrade_data.icon_small is String:
+#			return load(upgrade_data.icon_small)
+#		else:
+#			return upgrade_data.icon_small
 	else:
 		return images.get_icon(ResourceScripts.descriptions.bodypartsdata.slave_class[get_stat('slave_class')].icon)
 #end to add
@@ -582,7 +582,7 @@ func create(temp_race, temp_gender, temp_age):
 	mp = get_stat('mpmax')
 	
 	food.create()
-	training.build_stored_reqs()
+#	training.build_stored_reqs()
 
 
 func get_racial_features(race):
@@ -1314,6 +1314,9 @@ func add_trainee(id):
 
 func add_training(id):
 	training.add_training(id)
+
+func add_training_post(id):
+	training.add_training_post(id)
 
 func reset_training():
 	training.reset_training()

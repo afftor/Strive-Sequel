@@ -246,6 +246,12 @@ func add_training(id):
 	parent.get_ref().add_trait(id)
 
 
+func add_training_post(id):
+	var data = Traitdata.traits[id]
+	spirit -= data.cost
+	parent.get_ref().add_trait(id)
+
+
 func finish_training(internal = false):
 	if internal:
 		enable = false
@@ -480,15 +486,15 @@ func apply_training(code):
 	
 	if spirit < 0:
 		spirit = 0
-	if spirit < variables.spirit_limits[0]:
-		if !parent.get_ref().check_trait('training_broken'):
-			effect_text += tr('TRAININGSTATUS1') + "\n"
-			parent.get_ref().remove_trait('training_damaged')
-			parent.get_ref().add_trait('training_broken')
-	elif spirit < variables.spirit_limits[1]:
-		if !parent.get_ref().check_trait('training_damaged'):
-			effect_text += tr('TRAININGSTATUS2') + "\n"
-			parent.get_ref().add_trait('training_damaged')
+#	if spirit < variables.spirit_limits[0]:
+#		if !parent.get_ref().check_trait('training_broken'):
+#			effect_text += tr('TRAININGSTATUS1') + "\n"
+#			parent.get_ref().remove_trait('training_damaged')
+#			parent.get_ref().add_trait('training_broken')
+#	elif spirit < variables.spirit_limits[1]:
+#		if !parent.get_ref().check_trait('training_damaged'):
+#			effect_text += tr('TRAININGSTATUS2') + "\n"
+#			parent.get_ref().add_trait('training_damaged')
 	#display
 	var dialogue_data = {text = '', tags = ['skill_report_event'], options = []}
 	var text = tr(data.scene_text)
@@ -524,7 +530,7 @@ func get_dispositions_text():
 			 text += "%s : unknown\n" % tr(ddata.name)
 	return text
 
-
+#not used
 func build_stored_reqs():
 	#do not clear stored reqs, only overwrite
 	for tr in Traitdata.traits:

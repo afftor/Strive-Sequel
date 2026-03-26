@@ -1,57 +1,57 @@
 [gd_scene load_steps=37 format=2]
 
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/icons_40x40/magic effect.png" type="Texture" id=1]
-[ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=2]
-[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_disabled.png" type="Texture" id=4]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=5]
-[ext_resource path="res://gui_modules/CharacterInfo/TrUpgradesList.gd" type="Script" id=6]
-[ext_resource path="res://assets/images/portraits/cali_prt.png" type="Texture" id=7]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_36.tres" type="DynamicFont" id=8]
-[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=9]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/frame_trainer.png" type="Texture" id=10]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_tratis_pressed.png" type="Texture" id=11]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/icon_question_small.png" type="Texture" id=12]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assign trainer/button_Assign_trainer_hover.png" type="Texture" id=13]
+[ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=3]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_36.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_mp.png" type="Texture" id=6]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18.tres" type="DynamicFont" id=7]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_disabled.png" type="Texture" id=8]
+[ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=9]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/frame_skill_hover.png" type="Texture" id=10]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/frame_skill_active.png" type="Texture" id=11]
+[ext_resource path="res://gui_modules/CharacterInfo/TrUpgradesList.gd" type="Script" id=12]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assign trainer/button_Assign_trainer_default.png" type="Texture" id=14]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assign trainer/button_Assign_trainer_pressed.png" type="Texture" id=15]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_traits_hover.png" type="Texture" id=16]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_traits_default.png" type="Texture" id=17]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18.tres" type="DynamicFont" id=18]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset_training_pressed.png" type="Texture" id=19]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset training_pressed.png" type="Texture" id=20]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset_training_hover.png" type="Texture" id=21]
-[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_mp.png" type="Texture" id=22]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button d/button_d_default.png" type="Texture" id=23]
-[ext_resource path="res://assets/Textures_v2/MANSION/crown.png" type="Texture" id=24]
-[ext_resource path="res://assets/images/gui/spirit.png" type="Texture" id=25]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_default.png" type="Texture" id=26]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_hover.png" type="Texture" id=27]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_pressed.png" type="Texture" id=28]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/icons_40x40/group.png" type="Texture" id=29]
-[ext_resource path="res://MainFont.tres" type="DynamicFont" id=30]
-[ext_resource path="res://assets/Textures_v2/Universal/Panels/frame_skill_hover.png" type="Texture" id=31]
-[ext_resource path="res://assets/Textures_v2/Universal/Panels/frame_skill_active.png" type="Texture" id=32]
-[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big.png" type="Texture" id=33]
-[ext_resource path="res://assets/images/gui/explore/Captured Characters/icons/icon_enslave.png" type="Texture" id=39]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assign trainer/button_Assign_trainer_hover.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset training_pressed.png" type="Texture" id=16]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_traits_hover.png" type="Texture" id=17]
+[ext_resource path="res://assets/Textures_v2/MANSION/crown.png" type="Texture" id=18]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/icons_40x40/group.png" type="Texture" id=19]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_tratis_pressed.png" type="Texture" id=20]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/frame_trainer.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button d/button_d_default.png" type="Texture" id=22]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_default.png" type="Texture" id=23]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset_training_hover.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/portraits/cali_prt.png" type="Texture" id=27]
+[ext_resource path="res://assets/images/gui/explore/Captured Characters/icons/icon_enslave.png" type="Texture" id=28]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/icons_40x40/magic effect.png" type="Texture" id=29]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_hover.png" type="Texture" id=30]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assign trainer/button_Assign_trainer_pressed.png" type="Texture" id=31]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_traits_default.png" type="Texture" id=32]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset_training_pressed.png" type="Texture" id=35]
+[ext_resource path="res://assets/images/gui/spirit.png" type="Texture" id=37]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_pressed.png" type="Texture" id=38]
+[ext_resource path="res://assets/Textures_v2/icon_question_small_alt.png" type="Texture" id=39]
 
 [sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 16 )
-region_rect = Rect2( 0, 0, 100, 100 )
-margin_left = 31.0
-margin_right = 27.0
-margin_top = 29.0
-margin_bottom = 30.0
-
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 11 )
-region_rect = Rect2( 0, 0, 100, 100 )
-margin_left = 31.0
-margin_right = 27.0
-margin_top = 29.0
-margin_bottom = 30.0
-
-[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 100, 100 )
+margin_left = 31.0
+margin_right = 27.0
+margin_top = 29.0
+margin_bottom = 30.0
+
+[sub_resource type="StyleBoxTexture" id=31]
+texture = ExtResource( 20 )
+region_rect = Rect2( 0, 0, 100, 100 )
+margin_left = 31.0
+margin_right = 27.0
+margin_top = 29.0
+margin_bottom = 30.0
+
+[sub_resource type="StyleBoxTexture" id=32]
+texture = ExtResource( 32 )
 region_rect = Rect2( 0, 0, 101, 100 )
 margin_left = 31.0
 margin_right = 27.0
@@ -59,9 +59,11 @@ margin_top = 29.0
 margin_bottom = 30.0
 
 [node name="UpgradesList" type="Control"]
-margin_right = 630.0
-margin_bottom = 640.0
-script = ExtResource( 6 )
+margin_left = 294.0
+margin_top = 25.0
+margin_right = 958.0
+margin_bottom = 564.0
+script = ExtResource( 12 )
 
 [node name="trainees" type="Control" parent="."]
 visible = false
@@ -74,7 +76,7 @@ margin_top = 5.0
 margin_right = 516.002
 margin_bottom = 62.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 4 )
 text = "Trainees:"
 clip_text = true
 
@@ -86,17 +88,18 @@ margin_top = 66.0
 margin_right = -13.0
 margin_bottom = -13.0
 size_flags_vertical = 3
-theme = ExtResource( 5 )
+theme = ExtResource( 3 )
 
 [node name="Container" type="VBoxContainer" parent="trainees/ScrollContainer"]
+margin_right = 500.0
+margin_bottom = 120.0
 
 [node name="Button" type="TextureRect" parent="trainees/ScrollContainer/Container"]
-visible = false
 margin_right = 500.0
 margin_bottom = 120.0
 rect_min_size = Vector2( 500, 120 )
 rect_pivot_offset = Vector2( -294, -94 )
-texture = ExtResource( 10 )
+texture = ExtResource( 21 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="trainees/ScrollContainer/Container/Button"]
@@ -115,7 +118,7 @@ margin_left = -367.0
 margin_top = -17.0
 margin_bottom = 18.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 2 )
 text = "Name"
 align = 1
 valign = 1
@@ -136,14 +139,14 @@ margin_top = 190.0
 margin_right = 256.0
 margin_bottom = 270.0
 texture_normal = ExtResource( 14 )
-texture_pressed = ExtResource( 15 )
-texture_hover = ExtResource( 13 )
+texture_pressed = ExtResource( 31 )
+texture_hover = ExtResource( 15 )
 
 [node name="Label2" type="Label" parent="no_trainer/TextureButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 4 )
 text = "Assign trainer"
 align = 1
 valign = 1
@@ -157,12 +160,12 @@ anchor_bottom = 1.0
 [node name="ScrollContainer" type="ScrollContainer" parent="training"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -8.0
+margin_left = 2.0
 margin_top = 154.0
-margin_right = -16.0
-margin_bottom = -218.0
+margin_right = -20.0
+margin_bottom = -154.0
 size_flags_vertical = 3
-theme = ExtResource( 5 )
+theme = ExtResource( 3 )
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="GridContainer" parent="training/ScrollContainer"]
@@ -170,30 +173,32 @@ columns = 3
 
 [node name="Button" type="TextureButton" parent="training/ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 270.0
-margin_bottom = 60.0
-texture_normal = ExtResource( 26 )
-texture_pressed = ExtResource( 28 )
-texture_hover = ExtResource( 27 )
-texture_disabled = ExtResource( 28 )
+margin_right = 200.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 200, 40 )
+texture_normal = ExtResource( 23 )
+texture_pressed = ExtResource( 38 )
+texture_hover = ExtResource( 30 )
+texture_disabled = ExtResource( 38 )
+expand = true
 
 [node name="icon" type="TextureRect" parent="training/ScrollContainer/VBoxContainer/Button"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 50.0
-margin_bottom = 50.0
+margin_left = 6.0
+margin_top = 8.0
+margin_right = 35.0
+margin_bottom = 35.0
 mouse_filter = 2
-texture = ExtResource( 29 )
+texture = ExtResource( 19 )
 expand = true
 
 [node name="name" type="Label" parent="training/ScrollContainer/VBoxContainer/Button"]
 light_mask = 0
-margin_left = 58.0
-margin_top = 12.0
-margin_right = 231.0
-margin_bottom = 47.0
+margin_left = 44.0
+margin_top = 4.0
+margin_right = 193.0
+margin_bottom = 39.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 2 )
 text = "Reset training"
 valign = 1
 clip_text = true
@@ -201,10 +206,11 @@ clip_text = true
 [node name="HBoxContainer2" type="HBoxContainer" parent="training"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = -213.0
-margin_right = 690.0
-margin_bottom = -113.0
+margin_left = 13.0
+margin_top = -76.0
+margin_right = 898.0
+margin_bottom = 24.0
+rect_scale = Vector2( 0.7, 0.7 )
 custom_constants/separation = 20
 
 [node name="Button" type="TextureButton" parent="training/HBoxContainer2"]
@@ -212,16 +218,16 @@ visible = false
 margin_right = 101.0
 margin_bottom = 100.0
 toggle_mode = true
-texture_normal = ExtResource( 17 )
-texture_pressed = ExtResource( 16 )
-texture_hover = ExtResource( 16 )
-texture_disabled = ExtResource( 17 )
+texture_normal = ExtResource( 32 )
+texture_pressed = ExtResource( 17 )
+texture_hover = ExtResource( 17 )
+texture_disabled = ExtResource( 32 )
 
 [node name="icon" type="TextureRect" parent="training/HBoxContainer2/Button"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 1 )
+texture = ExtResource( 29 )
 expand = true
 
 [node name="Label" type="Label" parent="training/HBoxContainer2/Button"]
@@ -231,7 +237,7 @@ margin_right = 96.2509
 margin_bottom = 95.7559
 custom_colors/font_color = Color( 1, 0.721569, 0.196078, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 30 )
+custom_fonts/font = ExtResource( 1 )
 text = "500"
 align = 1
 valign = 1
@@ -241,9 +247,9 @@ margin_left = 5.0
 margin_top = 13.0
 margin_right = 125.0
 margin_bottom = 133.0
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 32 )
-texture_hover = ExtResource( 31 )
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 10 )
 expand = true
 stretch_mode = 5
 
@@ -263,7 +269,7 @@ margin_left = -143.0
 margin_top = 18.0
 margin_right = -97.0
 margin_bottom = 64.0
-texture = ExtResource( 23 )
+texture = ExtResource( 22 )
 
 [node name="status" type="Label" parent="training/d_button"]
 anchor_right = 1.0
@@ -273,7 +279,7 @@ margin_top = -6.0
 margin_right = 1.0
 margin_bottom = -73.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 4 )
 text = "D"
 align = 1
 valign = 1
@@ -286,7 +292,7 @@ margin_top = 5.2111
 margin_right = 573.414
 margin_bottom = 40.2111
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 2 )
 text = "Reset training"
 valign = 1
 clip_text = true
@@ -299,9 +305,9 @@ margin_right = 477.0
 margin_bottom = 127.0
 rect_scale = Vector2( 1.25, 1.25 )
 value = 100.0
-texture_under = ExtResource( 33 )
-texture_over = ExtResource( 33 )
-texture_progress = ExtResource( 22 )
+texture_under = ExtResource( 5 )
+texture_over = ExtResource( 5 )
+texture_progress = ExtResource( 6 )
 texture_progress_offset = Vector2( 29, 3 )
 
 [node name="cd" type="Label" parent="training"]
@@ -310,7 +316,7 @@ margin_left = 180.0
 margin_top = 48.0
 margin_right = 474.0
 margin_bottom = 83.0
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 2 )
 text = "character loyalty: 100"
 valign = 1
 
@@ -324,7 +330,7 @@ margin_top = -120.0
 margin_right = 300.0
 margin_bottom = -85.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 2 )
 text = "Reset training"
 valign = 1
 clip_text = true
@@ -334,52 +340,52 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -130.0
-margin_top = -66.0
-margin_right = 120.0
-margin_bottom = -8.0
-texture_normal = ExtResource( 20 )
-texture_pressed = ExtResource( 19 )
-texture_hover = ExtResource( 21 )
-texture_disabled = ExtResource( 4 )
+margin_left = -144.0
+margin_top = -138.0
+margin_right = 106.0
+margin_bottom = -80.0
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 35 )
+texture_hover = ExtResource( 24 )
+texture_disabled = ExtResource( 8 )
 
 [node name="reset" type="Label" parent="training/complete_button"]
 light_mask = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 2 )
 text = "Finish training"
 align = 1
 valign = 1
 clip_text = true
 
-[node name="Tooltip" type="TextureRect" parent="training"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -32.409
-margin_top = -72.2341
-margin_right = 17.591
-margin_bottom = -25.2341
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 6
+[node name="Tooltip" type="TextureButton" parent="training"]
+margin_left = 577.578
+margin_top = -58.3123
+margin_right = 641.578
+margin_bottom = 5.68791
+texture_normal = ExtResource( 39 )
+texture_hover = ExtResource( 9 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="TextureRect2" type="TextureRect" parent="training"]
 margin_left = 152.827
 margin_top = 82.939
 margin_right = 193.827
 margin_bottom = 135.939
-texture = ExtResource( 25 )
+texture = ExtResource( 37 )
 
 [node name="TextureRect" type="TextureRect" parent="training"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 16.0
-margin_top = -108.0
+margin_top = -131.0
 margin_right = 65.0
-margin_bottom = -66.0
-texture = ExtResource( 24 )
+margin_bottom = -89.0
+texture = ExtResource( 18 )
 expand = true
 stretch_mode = 6
 
@@ -388,10 +394,10 @@ light_mask = 0
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 87.0
-margin_top = -107.0
+margin_top = -130.0
 margin_right = 142.0
-margin_bottom = -72.0
-custom_fonts/font = ExtResource( 9 )
+margin_bottom = -95.0
+custom_fonts/font = ExtResource( 2 )
 text = "100"
 valign = 1
 clip_text = true
@@ -399,10 +405,10 @@ clip_text = true
 [node name="resistance" type="Control" parent="training"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 166.0
-margin_top = -116.0
-margin_right = 319.0
-margin_bottom = -63.0
+margin_left = 478.0
+margin_top = -136.0
+margin_right = 631.0
+margin_bottom = -83.0
 mouse_filter = 1
 
 [node name="resistance" type="TextureRect" parent="training/resistance"]
@@ -410,7 +416,7 @@ margin_left = -0.172974
 margin_top = -0.060997
 margin_right = 40.827
 margin_bottom = 52.939
-texture = ExtResource( 39 )
+texture = ExtResource( 28 )
 expand = true
 stretch_mode = 6
 
@@ -421,7 +427,7 @@ margin_top = 8.0
 margin_right = 150.0
 margin_bottom = 43.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 2 )
 text = "100 - 10"
 valign = 1
 clip_text = true
@@ -435,24 +441,26 @@ anchor_bottom = 1.0
 margin_left = 10.0
 margin_top = 110.0
 margin_right = 690.0
-margin_bottom = 210.0
-custom_constants/separation = 20
+margin_bottom = 190.0
+custom_constants/separation = 8
 
 [node name="Button" type="TextureButton" parent="training_servant/HBoxContainer2"]
 visible = false
-margin_right = 101.0
-margin_bottom = 100.0
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
 toggle_mode = true
-texture_normal = ExtResource( 17 )
-texture_pressed = ExtResource( 16 )
-texture_hover = ExtResource( 16 )
-texture_disabled = ExtResource( 17 )
+texture_normal = ExtResource( 32 )
+texture_pressed = ExtResource( 17 )
+texture_hover = ExtResource( 17 )
+texture_disabled = ExtResource( 32 )
+expand = true
 
 [node name="icon" type="TextureRect" parent="training_servant/HBoxContainer2/Button"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 1 )
+texture = ExtResource( 29 )
 expand = true
 
 [node name="cost" type="Label" parent="training_servant"]
@@ -462,19 +470,20 @@ margin_top = 264.0
 margin_right = 296.0
 margin_bottom = 299.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 2 )
 text = "Reset training"
 valign = 1
 clip_text = true
 
 [node name="Tooltip" type="TextureRect" parent="training_servant"]
+visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -32.409
 margin_top = -73.2341
 margin_right = 17.591
 margin_bottom = -26.2341
-texture = ExtResource( 2 )
+texture = ExtResource( 9 )
 expand = true
 stretch_mode = 6
 
@@ -488,7 +497,7 @@ mouse_filter = 1
 [node name="loyalty" type="TextureRect" parent="training_servant/loyalty"]
 margin_right = 49.0
 margin_bottom = 42.0
-texture = ExtResource( 24 )
+texture = ExtResource( 18 )
 expand = true
 stretch_mode = 6
 
@@ -498,7 +507,7 @@ margin_left = 69.0
 margin_top = 1.0
 margin_right = 183.0
 margin_bottom = 36.0
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 2 )
 text = "100 + 0.25"
 valign = 1
 clip_text = true
@@ -515,7 +524,7 @@ margin_left = -0.172974
 margin_top = -0.060997
 margin_right = 40.827
 margin_bottom = 52.939
-texture = ExtResource( 39 )
+texture = ExtResource( 28 )
 expand = true
 stretch_mode = 6
 
@@ -526,7 +535,7 @@ margin_top = 8.0
 margin_right = 145.0
 margin_bottom = 43.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 2 )
 text = "100 - 10"
 valign = 1
 clip_text = true
@@ -536,14 +545,16 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="tooltip" type="TextureRect" parent="trainer_list"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -72.0
-margin_top = 8.0
-margin_right = -27.0
-margin_bottom = 54.0
-texture = ExtResource( 12 )
+[node name="tooltip" type="TextureButton" parent="trainer_list"]
+margin_left = 594.056
+margin_top = 1.6268
+margin_right = 658.056
+margin_bottom = 65.627
+texture_normal = ExtResource( 39 )
+texture_hover = ExtResource( 9 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Label2" type="Label" parent="trainer_list"]
 anchor_left = 0.5
@@ -553,7 +564,7 @@ margin_top = 2.0
 margin_right = 411.0
 margin_bottom = 59.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 4 )
 text = "TRAINERSAVAILABLE"
 align = 1
 clip_text = true
@@ -571,27 +582,27 @@ scroll_horizontal_enabled = false
 
 [node name="Button" type="Button" parent="trainer_list/Container2/Container"]
 visible = false
-margin_right = 700.0
+margin_right = 650.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 700, 100 )
+rect_min_size = Vector2( 650, 100 )
 rect_pivot_offset = Vector2( -294, -94 )
 custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/disabled = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
+custom_styles/pressed = SubResource( 31 )
+custom_styles/disabled = SubResource( 31 )
+custom_styles/normal = SubResource( 32 )
 
 [node name="icon" type="TextureRect" parent="trainer_list/Container2/Container/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -601.0
-texture = ExtResource( 7 )
+margin_right = -551.0
+texture = ExtResource( 27 )
 expand = true
 
 [node name="icon2" type="TextureRect" parent="trainer_list/Container2/Container/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -599.0
-texture = ExtResource( 17 )
+texture = ExtResource( 32 )
 
 [node name="name" type="Label" parent="trainer_list/Container2/Container/Button"]
 light_mask = 0
@@ -599,12 +610,12 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -595.0
+margin_left = -547.0
 margin_top = -48.0
-margin_right = -1.0
+margin_right = -5.0
 margin_bottom = -13.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 2 )
 text = "Name"
 align = 1
 valign = 1
@@ -616,11 +627,11 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -599.0
+margin_left = -547.0
 margin_top = -12.0
 margin_right = -12.0
 margin_bottom = 45.0
-custom_fonts/font = ExtResource( 18 )
+custom_fonts/font = ExtResource( 7 )
 
 [node name="finished" type="Control" parent="."]
 anchor_right = 1.0
@@ -631,20 +642,20 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -125.0
+margin_left = 65.0
 margin_top = -78.0
-margin_right = 125.0
+margin_right = 315.0
 margin_bottom = -20.0
-texture_normal = ExtResource( 20 )
-texture_pressed = ExtResource( 19 )
-texture_hover = ExtResource( 21 )
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 35 )
+texture_hover = ExtResource( 24 )
 
 [node name="reset" type="Label" parent="finished/reset_button"]
 light_mask = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 2 )
 text = "Reset training"
 align = 1
 valign = 1
@@ -654,21 +665,21 @@ clip_text = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 51.0
-margin_top = 51.0
+margin_top = 6.0
 margin_right = -149.0
-margin_bottom = -228.0
+margin_bottom = -215.0
 
 [node name="list" type="Label" parent="finished/VBoxContainer"]
-margin_right = 430.0
+margin_right = 464.0
 margin_bottom = 53.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 4 )
 text = "Trainees:"
 clip_text = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="finished/VBoxContainer"]
 margin_top = 57.0
-margin_right = 430.0
+margin_right = 464.0
 margin_bottom = 57.0
 custom_constants/separation = 20
 
@@ -676,45 +687,45 @@ custom_constants/separation = 20
 visible = false
 margin_right = 100.0
 margin_bottom = 100.0
-texture = ExtResource( 16 )
+texture = ExtResource( 17 )
 
 [node name="icon" type="TextureRect" parent="finished/VBoxContainer/HBoxContainer2/Button"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 1 )
+texture = ExtResource( 29 )
 expand = true
 
 [node name="select_text" type="Label" parent="finished/VBoxContainer"]
 margin_top = 61.0
-margin_right = 430.0
+margin_right = 464.0
 margin_bottom = 114.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 4 )
 text = "Select specialization:"
 clip_text = true
 
 [node name="HBoxContainer3" type="GridContainer" parent="finished/VBoxContainer"]
 margin_top = 118.0
-margin_right = 430.0
+margin_right = 464.0
 margin_bottom = 118.0
-columns = 4
+columns = 6
 
 [node name="Button" type="TextureButton" parent="finished/VBoxContainer/HBoxContainer3"]
 visible = false
 margin_right = 101.0
 margin_bottom = 100.0
 toggle_mode = true
-texture_normal = ExtResource( 17 )
-texture_pressed = ExtResource( 16 )
-texture_hover = ExtResource( 16 )
-texture_disabled = ExtResource( 17 )
+texture_normal = ExtResource( 32 )
+texture_pressed = ExtResource( 17 )
+texture_hover = ExtResource( 17 )
+texture_disabled = ExtResource( 32 )
 
 [node name="icon" type="TextureRect" parent="finished/VBoxContainer/HBoxContainer3/Button"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 1 )
+texture = ExtResource( 29 )
 expand = true
 
 [node name="Label" type="Label" parent="finished/VBoxContainer/HBoxContainer3/Button"]
@@ -724,7 +735,7 @@ margin_right = 96.2509
 margin_bottom = 95.7559
 custom_colors/font_color = Color( 1, 0.721569, 0.196078, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 30 )
+custom_fonts/font = ExtResource( 1 )
 text = "500"
 align = 1
 valign = 1
@@ -733,10 +744,10 @@ valign = 1
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 51.0
-margin_top = -228.0
-margin_right = 651.0
-margin_bottom = -175.0
+margin_top = -76.0
+margin_right = 385.0
+margin_bottom = -23.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 4 )
 text = "Trainees:"
 clip_text = true
