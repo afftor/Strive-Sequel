@@ -3282,6 +3282,29 @@ Only one attunement can be taken""",
 	TRAITSUCCUBUS_COMBAT = "Combat attunement",
 	TRAITSUCCUBUS_COMBATDESCRIPT = """HP Factor: +20%; HP Regen: +100%; Gain lust when taking damage.
 Only one attunement can be taken""",
+	
+	#fix
+	TRAITTRAINING_VALUE = "1",
+	TRAITTRAINING_VALUEDESCRIPT = "",
+	TRAITTRAINING_PRODUCTIVITY = "2",
+	TRAITTRAINING_PRODUCTIVITYDESCRIPT = "",
+	TRAITTRAINING_XP = "3",
+	TRAITTRAINING_XPDESCRIPT = "",
+	TRAITTRAINING_HP = "4",
+	TRAITTRAINING_HPDESCRIPT = "",
+	TRAITTRAINING_ATK = "5",
+	TRAITTRAINING_ATKDESCRIPT = "",
+	TRAITTRAINING_MATK = "6",
+	TRAITTRAINING_MATKDESCRIPT = "",
+	TRAITTRAINING_DEF = "7",
+	TRAITTRAINING_DEFDESCRIPT = "",
+	TRAITTRAINING_MDEF = "8",
+	TRAITTRAINING_MDEFDESCRIPT = "",
+	TRAITTRAINING_TRAINER = "9",
+	TRAITTRAINING_TRAINERDESCRIPT = "",
+	TRAITTRAINING_HEAL = "10",
+	TRAITTRAINING_HEALDESCRIPT = "",
+	
 	TRAITEFFECTVIRGIN = """[center]{color=yellow|Virginity}[/center]
 As [name] has a observable virginity, this makes [him] more desirable for certain individuals.
 {color=yellow|Sell price is increased by 25%%}""",
@@ -17885,7 +17908,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	TRAIN_KINK7 = "This felt good... Despite everything, my body didn't resist it at all.",
 	NOSPEC = "No Speciality",
 	NOSPECDESCRIPT = "Take no speciality and finish training.",
-	TRAINFINISHTEXT = "Finish training after taking Master Acknowledgement trait. To take speciality [color=yellow]Spirit[/color] must be above 50%.",
+	TRAINFINISHTEXT = "Finish training after taking Master Acknowledgement trait",
 	AREAPLAINS = "Plains",
 	AREAFORESTS = "Forests",
 	AREAMOUNTAINS = "Mountains",

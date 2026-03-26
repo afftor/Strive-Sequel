@@ -61,7 +61,7 @@ func fix_serialize():
 			continue
 		traits_stored.erase(tr)
 	for prof in professions.keys():
-		#commented code below fixed some error in profs data manipulation that caused loss of classes persistent effects. since this error was lond ago - there is little value in keeping this fix. and more to it - it causes errors with togglable auras (cause they are classes persistent effects) loading. 
+		#commented code below fixed some error in profs data manipulation that caused loss of classes persistent effects. since this error was long ago - there is little value in keeping this fix. and more to it - it causes errors with togglable auras (cause they are classes persistent effects) loading. 
 #		remove_all_temp_effects_tag('class_' + prof)
 		if classesdata.professions.has(prof): 
 			continue
