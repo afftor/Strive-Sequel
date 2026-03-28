@@ -195,13 +195,17 @@ func build_posttrain():
 		if person.check_trait(tr):
 			panel.pressed = true
 			panel.get_node('Label').visible = false
+			panel.disabled = true
+			panel.texture_disabled = load("res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_traits_hover.png")
 		else:
 			panel.pressed = false
 			if spirit < trdata.cost:
 				panel.disabled = true
+				panel.get_node('Label').set("custom_colors/font_color", Color(variables.hexcolordict.k_red))
 			else:
 				panel.set_meta('trait', tr)
 				panel.connect('toggled', self, 'press_trait_post', [tr])
+				panel.get_node('Label').set("custom_colors/font_color", Color(variables.hexcolordict.green))
 		globals.connecttexttooltip(panel, person.translate(trdata.descript))
 
 
