@@ -1012,6 +1012,20 @@ var unique_marry_rules = {
 			agrees = false
 		},
 	},
+	jean = {
+		jean_agree = {
+			reqs = [{type = "quest_completed", name = "jean_sylas_quest", check = true}],
+			text = "JEAN_PROPOSAL_FINISHED_TEXT",
+			description = "JEAN_PROPOSAL_FINISHED_DESCRIPT",
+			agrees = true
+		},
+		jean_refuse = {
+			reqs = [{type = "quest_completed", name = "jean_sylas_quest", check = false}],
+			text = "JEAN_PROPOSAL_UNFINISHED_TEXT",
+			description = "JEAN_PROPOSAL_UNFINISHED_DESCRIPT",
+			agrees = false
+		},
+	},
 }
 
 func ask_to_marry(person, counter):

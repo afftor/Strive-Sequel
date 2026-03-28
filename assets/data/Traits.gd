@@ -1339,14 +1339,13 @@ var traits = {
 		tags = ['sexservice', 'sexservice_adv', 'simple_icon', 'servant_training']
 	},
 	#training finished
-	#fix icons!
 	training_value = {
 		code = 'training_value',
 		visible = false,
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_worker.png", 
-		icon_small = "res://assets/images/iconstraits/l_worker_prt.png", 
+		icon_small = "res://assets/images/iconstraits/l_prestige.png", 
 		effects = [],
 		cost = 25,
 		bonusstats = {price_add_part = 0.25}, 
@@ -1358,7 +1357,7 @@ var traits = {
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_worker.png", 
-		icon_small = "res://assets/images/iconstraits/l_worker_prt.png", 
+		icon_small = "res://assets/images/iconstraits/work.png", 
 		effects = [],
 		cost = 30,
 		bonusstats = {productivity = 0.3}, 
@@ -1369,8 +1368,8 @@ var traits = {
 		visible = false,
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_worker.png", 
-		icon_small = "res://assets/images/iconstraits/l_worker_prt.png", 
+		icon = "res://assets/images/iconstraits/l_intelligence.png", 
+		icon_small = "res://assets/images/iconstraits/l_intelligence.png", 
 		effects = [],
 		cost = 30,
 		bonusstats = {exp_gain_mod = 0.2}, 

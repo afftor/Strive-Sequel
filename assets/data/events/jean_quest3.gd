@@ -3,6 +3,7 @@ var data = {
 	jean_sylas_next_day_start = {
 		image = null,
 		character = "jean",
+		music = 'jean_theme',
 		tags = [
 			"dialogue_scene"
 		],
@@ -545,6 +546,7 @@ var data = {
 	jean_sylas_capital_meet = {
 		image = null,
 		character = "jean",
+		music = 'jean_theme',
 		tags = [
 			"dialogue_scene"
 		],
@@ -705,6 +707,7 @@ var data = {
 		image = null,
 		character = "jean",
 		character2 = "chancellor",
+		music = 'jean_theme',
 		tags = [
 			"dialogue_scene"
 		],
@@ -861,6 +864,7 @@ var data = {
 
 		],
 		image = null,
+		music = 'jean_theme',
 		tags = [
 			"dialogue_scene",
 			"blackscreen_transition_common"
@@ -1151,6 +1155,7 @@ var data = {
 	jean_sylas_merchants_intro = {
 		image = "jean_trader",
 		character = "jean",
+		music = 'jean_theme',
 		tags = [
 			"dialogue_scene"
 		],
@@ -1339,6 +1344,7 @@ var data = {
 	},
 	jean_sylas_carriage_search = {
 		image = null,
+		music = 'jean_theme',
 		character = "jean",
 		tags = [
 			"dialogue_scene"
@@ -1454,6 +1460,7 @@ var data = {
 	},
 	jean_sylas_carriage_erdyna_1 = {
 		character = "erdyna",
+		music = 'erdyna_theme',
 		tags = [
 			"dialogue_scene"
 		],
@@ -1622,6 +1629,7 @@ var data = {
 	},
 	jean_sylas_carriage_after_fight = {
 		image = null,
+		music = 'jean_theme',
 		tags = [
 			"dialogue_scene"
 		],
@@ -1712,6 +1720,7 @@ var data = {
 	},
 	jean_sylas_brothel_intro = {
 		image = null,
+		music = 'jean_theme',
 		tags = [
 			"dialogue_scene"
 		],
@@ -2542,6 +2551,7 @@ var data = {
 	jean_sylas_girl_plan_return = {
 		image = null,
 		character = "jean",
+		music = 'jean_theme',
 		tags = [
 			"dialogue_scene"
 		],
@@ -2584,6 +2594,7 @@ var data = {
 	jean_sylas_girl_plan_gold = {
 		image = null,
 		character = "jean",
+		music = 'jean_theme',
 		tags = [
 			"dialogue_scene"
 		],
@@ -3142,6 +3153,7 @@ var data = {
 	},
 	jean_sylas_sylas_win_4 = {
 		image = null,
+		music = 'threat',
 		tags = [
 			"dialogue_scene"
 		],
@@ -3163,6 +3175,7 @@ var data = {
 	},
 	jean_sylas_return_aliron = {
 		image = null,
+		music = 'threat',
 		tags = [
 			"dialogue_scene",
 			"blackscreen_transition_common"
@@ -3349,6 +3362,7 @@ var data = {
 	},
 	jean_sylas_myr_records_intro_1 = {
 		image = null,
+		music = 'threat',
 		tags = [
 			"dialogue_scene"
 		],
@@ -3694,6 +3708,7 @@ var data = {
 	},
 	jean_sylas_dream_start = {
 		image = null,
+		music = 'jean_theme',
 		character = "jean",
 		character2 = "myr",
 		tags = [
@@ -3849,6 +3864,7 @@ var data = {
 	},
 	jean_sylas_demon_reveal = {
 		image = null,
+		music = 'threat',
 		tags = [
 			"dialogue_scene"
 		],
@@ -3871,6 +3887,7 @@ var data = {
 	},
 	jean_sylas_demon_fight_result = {
 		image = null,
+		music = 'jean_theme',
 		tags = [
 			"dialogue_scene"
 		],
@@ -3971,6 +3988,7 @@ var data = {
 	jean_sylas_sphere_church = {
 		image = null,
 		character = "jean",
+		music = 'jean_theme',
 		tags = [
 			"dialogue_scene"
 		],

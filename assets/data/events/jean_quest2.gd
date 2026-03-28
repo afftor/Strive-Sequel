@@ -5,6 +5,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
+		music = 'jean_theme',
 		reqs = [
 
 		],
@@ -215,6 +216,7 @@ var data = {
 		reqs = [
 
 		],
+		music = 'jean_theme',
 		character = "jean",
 		text = "JEAN_RUINS_SQ_5",
 		common_effects = [
@@ -498,6 +500,7 @@ var data = {
 	},
 	jean_q2_central_hall = {
 		image = "jean_rynn_prisoner",
+		music = 'threat',
 		tags = [
 			"dialogue_scene"
 		],
@@ -545,6 +548,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
+		music = 'threat',
 		reqs = [
 
 		],

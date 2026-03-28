@@ -6,6 +6,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
+		music = 'jean_theme',
 		reqs = [
 
 		],
@@ -229,6 +230,7 @@ var data = {
 	jean_sidequest_capital_start = {
 		image = null,
 		character = "jean",
+		music = 'jean_theme',
 		tags = [
 			"dialogue_scene"
 		],
@@ -629,6 +631,7 @@ var data = {
 	},
 	jean_sidequest_mansion_start_1 = {
 		image = "jean_beggar",
+		music = 'jean_theme',
 		tags = [
 			"dialogue_scene"
 		],
@@ -969,6 +972,7 @@ var data = {
 	jean_sidequest_mansion_golems_start = {
 		image = null,
 		character = "jean",
+		music = 'threat',
 		tags = [
 			"dialogue_scene"
 		],
@@ -1132,6 +1136,7 @@ var data = {
 	},
 	jean_sidequest_mansion_rynn_intro_1 = {
 		image = "jean_rynn",
+		music = 'jean_theme',
 		tags = [
 			"dialogue_scene"
 		],
@@ -1344,6 +1349,7 @@ var data = {
 	},
 	jean_sidequest_underground_start = {
 		image = "jean_lab",
+		music = 'intimate_dark',
 		tags = [
 			"dialogue_scene",
 			"blackscreen_transition_common"
@@ -2014,6 +2020,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
+		music = 'jean_theme',
 		reqs = [
 
 		],

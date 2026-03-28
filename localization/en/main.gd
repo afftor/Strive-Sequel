@@ -3283,7 +3283,8 @@ Only one attunement can be taken""",
 	TRAITSUCCUBUS_COMBATDESCRIPT = """HP Factor: +20%; HP Regen: +100%; Gain lust when taking damage.
 Only one attunement can be taken""",
 	
-	#fix
+	FINISHTRAINING = "Finish training? Leftover spirit will be used to purchase additional bonuses.",
+	
 	TRAITTRAINING_VALUE = "Trained spec",
 	TRAITTRAINING_VALUEDESCRIPT = "+25% Value",
 	TRAITTRAINING_PRODUCTIVITY = "Trained spec",
@@ -17257,6 +17258,10 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	MAE_PROPOSAL_FINISHED_DESCRIPT = "Mae freezes for a moment. Her tail sways nervously before she lowers her gaze, smiling with quiet sincerity.",
 	MAE_PROPOSAL_UNFINISHED_TEXT = "I-I'm sorry... I don't think I can accept something like this yet, it feels too early for me.",
 	MAE_PROPOSAL_UNFINISHED_DESCRIPT = "Mae fidgets with her fingers, avoiding your eyes.",
+	JEAN_PROPOSAL_FINISHED_TEXT = "M-marry? You can't be serious! This is all so... Yes, I agree!",
+	JEAN_PROPOSAL_FINISHED_DESCRIPT = "Jean's eyes are wide open, she take a few moments gasping and flustering red until finally she speaks up.",
+	JEAN_PROPOSAL_UNFINISHED_TEXT = "You've gotta be joking. I don't have time for jokes like this.",
+	JEAN_PROPOSAL_UNFINISHED_DESCRIPT = "Jean blushes slightly but quickly dismisses your approach while looking away.",
 	HIRE_LINE1 = "...Pleased to meet you, [Master].",
 	HIRE_LINE2 = "Please, take care of me, [Master].",
 	HIRE_LINE3 = "So you are my new [Master]! Pleased to meet you!",
@@ -17909,6 +17914,8 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	NOSPEC = "No Speciality",
 	NOSPECDESCRIPT = "Take no speciality and finish training.",
 	TRAINFINISHTEXT = "Finish training after taking Master Acknowledgement trait",
+	TRAININGBONUSES = "Bonuses:",
+	TRAININGTRAINEES = "Trainees:",
 	AREAPLAINS = "Plains",
 	AREAFORESTS = "Forests",
 	AREAMOUNTAINS = "Mountains",
@@ -21598,7 +21605,7 @@ Jean immediately reaches for her staff, though it doesn't seem like the danger i
 
 She doesn't get a chance to finish her sentence. Heavy, grinding footsteps echo behind you as the corridor is blocked by guardian golems, clearly activated by your intrusion.
 
-{color=yellow|Jean: — Oh fuck... this place was warded. Looks like we'll have to deal with these things somehow...}""",
+{color=yellow|Jean: — Oh crap... this place was warded. Looks like we'll have to deal with these things somehow...}""",
 	JEAN_SIDEQUEST_MANSION_GOLEMS_2 = """You land the final blow on the last golem, but before you can relax, more constructs begin to emerge from hidden compartments. You raise your weapons once again, but before the second fight fully unfolds, a voice comes from the other side.
 
 {color=aqua|Unfamiliar Voice: — Hey, stupid rocks! Over here!}
@@ -21818,13 +21825,6 @@ Realizing there's no way to win this argument, she storms out of the room.""",
 {color=yellow|Jean: — That... Um, yeah, sorry... I promise I'll explain to you everything later.}
 
 She then nods and promptly leaves the room.""",
-	JEAN_SIDEQUEST_NAME = "Jean: A Bookish Request",
-	JEAN_SIDEQUEST_SUMMARY = "Jean needs a rare tome from the Grand Library in the Empire Capital.",
-	JEAN_SIDEQUEST_CAPITAL = "Visit the Grand Library in the Empire Capital.",
-	JEAN_SIDEQUEST_CAPITAL_1 = "Find a way into the Grand Library.",
-	JEAN_SIDEQUEST_MANSION = "Search the book owner's mansion in the capital.",
-	JEAN_SIDEQUEST_MANSION_1 = "Convince the beggar to cooperate",
-	JEAN_SIDEQUEST_RETURN = "Return the book to the Grand Library.",
 	JEAN_SIDEQUEST_GL = "Grand Library",
 	JEAN_SIDEQUEST_MANSION_OPTION = "Search for the mansion",
 	JEAN_RUINS_SQ_1 = """Since you recovered that book Jean was so adamant about obtaining, she has been stuck in her room for days, barely setting foot outside. Curious and slightly worried about her well-being, you decide to pay her a visit.
@@ -22213,6 +22213,13 @@ You nod in agreement, thank Ginny once more, and leave Rynn in her care. Togethe
 
 Tears fill her eyes as she helplessly looks back at Rynn's unconscious body while you walk away, leaving her alone in the wilderness.""",
 	JEAN_Q2_LEAVE_RYNN_2 = "Once inside the mansion, Jean goes straight to her room and locks the door behind her. You think you can hear sobbing coming from that side.",
+	JEAN_SIDEQUEST_NAME = "Jean: A Bookish Request",
+	JEAN_SIDEQUEST_SUMMARY = "Jean needs a rare tome from the Grand Library in the Empire Capital.",
+	JEAN_SIDEQUEST_CAPITAL = "Visit the Grand Library in the Empire Capital.",
+	JEAN_SIDEQUEST_CAPITAL_1 = "Find a way into the Grand Library.",
+	JEAN_SIDEQUEST_MANSION = "Search the book owner's mansion in the capital.",
+	JEAN_SIDEQUEST_MANSION_1 = "Convince the beggar to cooperate",
+	JEAN_SIDEQUEST_RETURN = "Return the book to the Grand Library.",
 	JEAN_RUINS_SUMMARY = "Help Jean with her research",
 	JEAN_RUINS_NAME = "Jean: Ruins",
 	JEAN_RUINS_1 = "Get information from Ginny",
@@ -22220,6 +22227,22 @@ Tears fill her eyes as she helplessly looks back at Rynn's unconscious body whil
 	JEAN_RUINS_3 = "Searh newly found location",
 	QUEST_JEAN_RUINS_TEXT = "Demonic ruins",
 	QUEST_JEAN_RUINS_DESC = "Ancient ruins keeping artifact Jean desires",
+	JEAN_SYLAS_QUEST_NAME = "Jean: The Demon in the Sphere",
+	JEAN_SYLAS_QUEST_SUMMARY = "Jean needs help tracking down the mastermind behind the cursed artifact.",
+	JEAN_SYLAS_QUEST_STAGE_1 = "Visit chosen guild",
+	JEAN_SYLAS_QUEST_STAGE_2 = "Search for leads in Empire Capital",
+	JEAN_SYLAS_QUEST_STAGE_3 = "Visit Arena",
+	JEAN_SYLAS_QUEST_STAGE_4 = "Ask merchants",
+	JEAN_SYLAS_QUEST_STAGE_5 = "Seek for a lost cart",
+	JEAN_SYLAS_QUEST_STAGE_6 = "Investigete a lead to brothel",
+	JEAN_SYLAS_QUEST_STAGE_7 = "Bring Jean a money to get a change",
+	JEAN_SYLAS_QUEST_STAGE_8 = "Bring news to Myr",
+	JEAN_SYLAS_QUEST_STAGE_9 = "Search guild library",
+	JEAN_SYLAS_QUEST_STAGE_10 = "Discuss your findings with Myr",
+	JEAN_SYLAS_QUEST_STAGE_11 = "Craft a mind-linking artifact",
+	JEAN_SYLAS_QUEST_STAGE_12 = "Confront a demon-posessed Jean",
+	JEAN_SYLAS_QUEST_STAGE_13 = "Bring orb to church",
+	JEAN_SYLAS_QUEST_STAGE_14 = "Give away orb to research",
 	JEANSYLASDUNCANOPTION = "I need some assistance with the one case...",
 	JEANSYLASMYROPTION = "I need some assistance with the one case...",
 	JEANSYLASMYROPTION2 = "There’s an issue with Jean...",
@@ -22796,6 +22819,7 @@ Jean's body suddenly rises into the air and then flies into the night, leaving y
 	JEAN_SYLAS_RETURN_ALIRON = "You return to Aliron with more questions than answers. The situation has clearly gotten out of hand. There's only one person that can make sense of what just happened. Time to talk to Myr.",
 	JEAN_SYLAS_MYR_OPTION_2 = "There's an issue with Jean...",
 	JEAN_SYLAS_MYR_ISSUE_INTRO = """{color=aqua|Myr: — Oh? I assumed that insolent girl was missing just because she didn't want to show herself to my eyes, but your tone suggests something went very wrong. Go on, tell me.}
+	
 You recount everything that transpired: the brothel, Sylas, the artifact, and the moment Jean fell under the creature's control.""",
 	JEAN_SYLAS_MYR_ISSUE_LIBRARY = """{color=aqua|Myr: — Huh. That's... curious. I mean, terrible for her, of course, but as a phenomenon it's certainly worth studying...}
 	
@@ -23043,22 +23067,6 @@ She punches your shoulder lightly.""",
 She looks away quickly, but not before you catch the glisten in her eyes.
 
 {color=yellow|Jean: — Now come on. Let's go home. Huh, I didn't even notice how I started calling your mansion 'home'... Guess it'll be harder now if you ever want to get rid of me, heh.}""",
-	JEAN_SYLAS_QUEST_NAME = "Jean: The Demon in the Sphere",
-	JEAN_SYLAS_QUEST_SUMMARY = "Jean needs help tracking down the mastermind behind the cursed artifact.",
-	JEAN_SYLAS_QUEST_STAGE_1 = "Visit chosen guild",
-	JEAN_SYLAS_QUEST_STAGE_2 = "Search for leads in Empire Capital",
-	JEAN_SYLAS_QUEST_STAGE_3 = "Visit Arena",
-	JEAN_SYLAS_QUEST_STAGE_4 = "Ask merchants",
-	JEAN_SYLAS_QUEST_STAGE_5 = "Seek for a lost cart",
-	JEAN_SYLAS_QUEST_STAGE_6 = "Investigete a laead to brothel",
-	JEAN_SYLAS_QUEST_STAGE_7 = "Bring Jean a money to get a change",
-	JEAN_SYLAS_QUEST_STAGE_8 = "Bring news to Myr",
-	JEAN_SYLAS_QUEST_STAGE_9 = "Search guild library",
-	JEAN_SYLAS_QUEST_STAGE_10 = "Discuss your findings with Myr",
-	JEAN_SYLAS_QUEST_STAGE_11 = "Craft a mind-linking artifact",
-	JEAN_SYLAS_QUEST_STAGE_12 = "Confront a demon-posessed Jean",
-	JEAN_SYLAS_QUEST_STAGE_13 = "Bring orb to church",
-	JEAN_SYLAS_QUEST_STAGE_14 = "Give away orb to research",
 	JEAN_CAPITAL_OPTION_SEARCH = "Meet Jean",
 	JEAN_CAPITAL_OPTION_ARENA = "Investigate Arena",
 	JEAN_CAPITAL_OPTION_MERCHANTS = "Merchant Quarter",
