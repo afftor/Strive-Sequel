@@ -926,7 +926,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		type = 'misc',
-		tags = ['integer', 'custom_bonuses'],
+		tags = ['array', 'array_numeric', 'custom_bonuses'],
 		direct = false,
 		show_info = {category = 'combat'}
 	},
@@ -1856,7 +1856,7 @@ func check_compatibility_operant(stat, operant):
 		'set':
 			return true
 		'add', 'mul', 'add_part':
-			return statdata[stat].tags.has('integer') or statdata[stat].tags.has('numeric')
+			return statdata[stat].tags.has('integer') or statdata[stat].tags.has('numeric') or statdata[stat].tags.has('array_numeric')
 		'append', 'remove':
 			return statdata[stat].tags.has('array')
 		_:
