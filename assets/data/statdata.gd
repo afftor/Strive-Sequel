@@ -57,6 +57,14 @@ var statdata = {
 		type = 'mental_stat',
 		tags = ['numeric', 'integer']
 	},
+	spirit_1 = {
+		code = 'spirit_1',
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
+		tags = ['numeric', 'integer']
+	},
 	resistance = {
 		code = 'resistance',
 		name = '',

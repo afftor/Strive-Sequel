@@ -167,7 +167,8 @@ func build_posttrain():
 	$finished.visible = true
 	$finished/reset_button.disabled = (ResourceScripts.game_res.if_has_items('oblivion_potion', 'lt', 1))
 	var spirit = person.get_stat('spirit')
-	$finished/status.text = tr('STATSPIRIT') + ": " + str(spirit)
+	var spirit_1 = person.get_stat('spirit_1')
+	$finished/status.text = tr('STATSPIRIT') + ": " + str(spirit) + "/" + str(spirit_1)
 	var text = tr('TRAININGFINISHHEADER')
 	var list = person.get_traits_by_tag('training')
 	input_handler.ClearContainer($finished/VBoxContainer/HBoxContainer2, ['Button'])

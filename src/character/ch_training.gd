@@ -9,9 +9,10 @@ var dispositions = {}
 var dispositions_known = {}
 
 var spirit = 100
+var spirit_1 = 100
 var loyalty = 0
 var resistance = 100
-var stat_list = ['spirit', 'loyalty', 'resistance']
+var stat_list = ['spirit', 'spirit_1', 'loyalty', 'resistance']
 var training_metrics = {}
 
 var stored_reqs = {}
@@ -255,6 +256,7 @@ func add_training_post(id):
 func finish_training(internal = false):
 	if internal:
 		enable = false
+		spirit_1 = spirit
 		parent.get_ref().remove_trait('untrained')
 		if trainer != null:
 			var tchar = characters_pool.get_char_by_id(trainer)
@@ -264,6 +266,7 @@ func finish_training(internal = false):
 		if !parent.get_ref().has_status('callmaster'):
 			return
 		enable = false
+		spirit_1 = spirit
 		if trainer != null:
 			var tchar = characters_pool.get_char_by_id(trainer)
 			tchar.get_trainees().erase(parent.get_ref().id)
