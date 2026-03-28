@@ -202,7 +202,7 @@ func build_posttrain():
 			else:
 				panel.set_meta('trait', tr)
 				panel.connect('toggled', self, 'press_trait_post', [tr])
-		globals.connecttexttooltip(panel, tr(trdata.name) + "\n" + person.translate(trdata.descript))
+		globals.connecttexttooltip(panel, person.translate(trdata.descript))
 
 
 func reset_training():
@@ -431,7 +431,7 @@ func press_trait_post(value, tr_code):
 		var text = "Unlock this for {color=green|" + str(data.cost) + "} Spirit?"
 		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'learn_upgrade_post_confirmed', tr(text)])
 #		person.add_training(tr_code)
-	build_training_traits()
+	build_posttrain()
 
 
 func press_trait_servant(value, tr_code):

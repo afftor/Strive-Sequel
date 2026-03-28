@@ -709,7 +709,7 @@ clip_text = true
 margin_top = 118.0
 margin_right = 464.0
 margin_bottom = 118.0
-columns = 6
+columns = 5
 
 [node name="Button" type="TextureButton" parent="finished/VBoxContainer/HBoxContainer3"]
 visible = false
