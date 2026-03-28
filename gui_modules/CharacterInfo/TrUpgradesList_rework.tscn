@@ -674,7 +674,8 @@ margin_right = 464.0
 margin_bottom = 53.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "Trainees:"
+text = "TRAININGTRAINEES"
+align = 1
 clip_text = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="finished/VBoxContainer"]
@@ -702,7 +703,8 @@ margin_right = 464.0
 margin_bottom = 114.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "Select specialization:"
+text = "TRAININGBONUSES"
+align = 1
 clip_text = true
 
 [node name="HBoxContainer3" type="GridContainer" parent="finished/VBoxContainer"]

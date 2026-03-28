@@ -174,7 +174,9 @@ func close_scene(scene):
 		if current_screen != null:
 			update_modules()
 		return
-	if window_button_connections.has(scene) && window_button_connections[scene] != null:
+	if (window_button_connections.has(scene)
+			&& window_button_connections[scene] != null
+			&& is_instance_valid(window_button_connections[scene])):
 		window_button_connections[scene].pressed = false
 		return
 	if scene.has_method("_custom_gui_controller_close"):
