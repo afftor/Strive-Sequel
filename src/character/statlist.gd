@@ -251,7 +251,7 @@ var template_dynamic = {
 	armorpenetration = 0,
 	critchance = 5,
 	critmod = 1.5,
-	speed = 30,
+	speed = [30],
 	taunt = null,
 	productivity = 100.0,
 	#productivity mods

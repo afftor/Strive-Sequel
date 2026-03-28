@@ -583,12 +583,14 @@ func calculateorder():
 		var tchar = get_char_by_pos(pos)
 		if tchar.defeated == true:
 			continue
-		turnorder.append({speed = tchar.get_stat('speed') + randf() * 5, pos = pos})
+		for v in tchar.get_stat('speed'):
+			turnorder.append({speed = v + randf() * 5, pos = pos})
 	for pos in enemygroup:
 		var tchar = get_char_by_pos(pos)
 		if tchar.defeated == true:
 			continue
-		turnorder.append({speed = tchar.get_stat('speed') + randf() * 5, pos = pos})
+		for v in tchar.get_stat('speed'):
+			turnorder.append({speed = v + randf() * 5, pos = pos})
 	
 	turnorder.sort_custom(self, 'speedsort')
 #	update_queue_asynch()

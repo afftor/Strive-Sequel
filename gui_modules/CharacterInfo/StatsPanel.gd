@@ -68,13 +68,14 @@ func make_stats(person_input):
 		for stat in stats_to_show[category]:
 			var st_data = statdata.statdata[stat]
 			var value = person.get_stat(stat)
-			if value == 0 and st_data.show_info.has("hide_if_0"):
-				continue
-			if value == 1 and st_data.show_info.has("hide_if_1"):
-				continue
+			if !st_data.tags.has('array_numeric'):
+				if value == 0 and st_data.show_info.has("hide_if_0"):
+					continue
+				if value == 1 and st_data.show_info.has("hide_if_1"):
+					continue
 			
 			var new_button = input_handler.DuplicateContainerTemplate(container, 'Button')
-			new_button.text = "   %s: %s" % [st_data.name, value]
+			new_button.text = "   %s: %s" % [st_data.name, str(value)]
 			new_button.set_meta("stat_name", st_data.name)
 			new_button.connect("pressed", self, "select_stat", [stat, new_button])
 	

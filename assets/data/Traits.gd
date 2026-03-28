@@ -1341,7 +1341,7 @@ var traits = {
 	#training finished
 	training_value = {
 		code = 'training_value',
-		visible = false,
+		visible = true,
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_worker.png", 
@@ -1353,7 +1353,7 @@ var traits = {
 	},
 	training_productivity = {
 		code = 'training_productivity',
-		visible = false,
+		visible = true,
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_worker.png", 
@@ -1365,7 +1365,7 @@ var traits = {
 	},
 	training_xp = {
 		code = 'training_xp',
-		visible = false,
+		visible = true,
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_intelligence.png", 
@@ -1377,7 +1377,7 @@ var traits = {
 	},
 	training_hp = {
 		code = 'training_hp',
-		visible = false,
+		visible = true,
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_worker.png", 
@@ -1389,7 +1389,7 @@ var traits = {
 	},
 	training_atk = {
 		code = 'training_atk',
-		visible = false,
+		visible = true,
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_worker.png", 
@@ -1401,7 +1401,7 @@ var traits = {
 	},
 	training_matk = {
 		code = 'training_matk',
-		visible = false,
+		visible = true,
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_worker.png", 
@@ -1413,7 +1413,7 @@ var traits = {
 	},
 	training_def = {
 		code = 'training_def',
-		visible = false,
+		visible = true,
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_worker.png", 
@@ -1425,7 +1425,7 @@ var traits = {
 	},
 	training_mdef = {
 		code = 'training_mdef',
-		visible = false,
+		visible = true,
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_worker.png", 
@@ -1437,7 +1437,7 @@ var traits = {
 	},
 	training_trainer = {
 		code = 'training_trainer',
-		visible = false,
+		visible = true,
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_worker.png", 
@@ -1449,7 +1449,7 @@ var traits = {
 	},
 	training_heal = {
 		code = 'training_heal',
-		visible = false,
+		visible = true,
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_worker.png", 
