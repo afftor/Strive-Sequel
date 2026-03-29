@@ -312,6 +312,19 @@ var backgrounds = {
 	lira_sex_2 = "res://assets/images/fullscreen scenes/LiraCG002.png",
 	lira_sex_3 = "res://assets/images/fullscreen scenes/LiraCG003.png",
 	
+	jean_dream_1 = "res://assets/images/fullscreen scenes/JeanCG001.png",
+	jean_dream_2 = "res://assets/images/fullscreen scenes/JeanCG002.png",
+	jean_dream_3 = "res://assets/images/fullscreen scenes/JeanCG003.png",
+	jean_dream_4 = "res://assets/images/fullscreen scenes/JeanCG004.png",
+	
+	jean_wedding_1 = "res://assets/images/fullscreen scenes/jean_wed0.png",
+	jean_wedding_2 = "res://assets/images/fullscreen scenes/jean_wed1.png",
+	jean_wedding_3 = "res://assets/images/fullscreen scenes/jean_wed2.png",
+	jean_wedding_4 = "res://assets/images/fullscreen scenes/jean_wed3.png",
+	jean_wedding_5 = "res://assets/images/fullscreen scenes/jean_wed4.png",
+	jean_wedding_6 = "res://assets/images/fullscreen scenes/jean_wed5.png",
+	jean_wedding_7 = "res://assets/images/fullscreen scenes/jean_wed6.png",
+	
 	halloween_scene = "res://assets/images/fullscreen scenes/AnaCaliCG001.png",
 	christmas_scene = "res://assets/images/fullscreen scenes/DaisyCG021.png",
 	cali_zephyra_1 = "res://assets/images/fullscreen scenes/CaliZephyraCG001.png",
