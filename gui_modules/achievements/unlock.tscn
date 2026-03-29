@@ -1,0 +1,118 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://gui_modules/achievements/bonus_unit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gui_modules/achievements/achi_unit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gui_modules/achievements/unlock.gd" type="Script" id=4]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/panel_complete.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/wing.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 36
+use_filter = true
+font_data = ExtResource( 1 )
+
+[node name="unlock" type="Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -442.0
+margin_top = 35.0
+margin_right = -22.0
+margin_bottom = -32.0
+mouse_filter = 2
+script = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+alignment = 2
+
+[node name="achi_label" type="Label" parent="VBoxContainer"]
+visible = false
+margin_top = 966.0
+margin_right = 420.0
+margin_bottom = 1013.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "ACHIEVEMENT_ACQUIRED"
+align = 1
+valign = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/achi_label"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/achi_label"]
+margin_left = 420.0
+margin_right = 440.0
+margin_bottom = 45.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/achi_label"]
+margin_left = -20.0
+margin_bottom = 45.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+flip_h = true
+
+[node name="achi" parent="VBoxContainer" instance=ExtResource( 3 )]
+visible = false
+margin_top = 803.0
+margin_bottom = 906.0
+
+[node name="bonus_label" type="Label" parent="VBoxContainer"]
+visible = false
+margin_top = 966.0
+margin_right = 420.0
+margin_bottom = 1013.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "ACHIBONUS_ACQUIRED"
+align = 1
+valign = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/bonus_label"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/bonus_label"]
+margin_left = 420.0
+margin_right = 440.0
+margin_bottom = 45.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/bonus_label"]
+margin_left = -20.0
+margin_bottom = 45.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+flip_h = true
+
+[node name="bonus" parent="VBoxContainer" instance=ExtResource( 2 )]
+visible = false
+margin_top = 910.0
+margin_bottom = 1013.0
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true

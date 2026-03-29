@@ -138,6 +138,7 @@ enum {
 	NODE_ARENA,
 	NODE_HARD_TUTORIAL_PANEL,
 	NODE_HARD_TUTORIAL_LIST,
+	NODE_ACHI_UNLOCK,
 	#Animations
 	ANIM_TASK_AQUARED,
 	ANIM_BATTLE_START,
@@ -219,7 +220,9 @@ var progress_data = {
 	gallery_seq = [],
 	characters = [],#'amelia','duncan','sigmund','myr'
 	monochrome = [],
-	unique_sprites = {}#daisy = [], cali = []
+	unique_sprites = {},#daisy = [], cali = []
+	achievements = [],
+	achi_bonuses = []
 } setget save_progress_data
 
 #var combat_advance = false #if any result in combat cause advance
@@ -237,6 +240,8 @@ var hard_tutorial
 var hard_tutorial_btns = {
 	#name = {source, get_btn_func, rect_obj, rect_func}
 }
+
+var achievements
 
 func set_previous_scene(scene):
 	PreviousScene = scene
@@ -326,7 +331,6 @@ func store_progress():
 func is_unique_sprite_unlocked(chara, sprite):
 	return progress_data['unique_sprites'].has(chara) and progress_data['unique_sprites'][chara].has(sprite)
 
-
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
 		quit()
@@ -386,6 +390,8 @@ func _ready():
 	
 	connect("UpgradeUnlocked", self, "upgrade_unlocked")
 	connect("animation_finished", self, "animation_queue_start_force")
+	achievements = load("res://src/core/achievements.gd").new()
+	achievements.prepare_data()
 
 
 func gather_skills_effects():
@@ -1276,7 +1282,8 @@ func finish_quest_dungeon(args):
 
 func finish_quest_location(args):
 	autocomplete_quest(args.id)
-	exploration_node.clear_dungeon_confirm()
+	#autocomplete_quest() can now remove location
+#	exploration_node.clear_dungeon_confirm()
 
 func mark_quest_location_completed(args):
 	var questdata = ResourceScripts.game_world.get_quest_by_id(args.id)
@@ -1286,6 +1293,8 @@ func mark_quest_location_completed(args):
 
 func autocomplete_quest(q_id):
 	var questdata = ResourceScripts.game_world.get_quest_by_id(q_id)
+	if questdata == null or questdata.state == 'failed':#was forfit
+		return
 	selectedquest = questdata
 	play_animation("repeatable_quest_completed")
 	PlaySound("questcomplete")

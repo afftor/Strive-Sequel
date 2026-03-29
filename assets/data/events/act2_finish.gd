@@ -3752,6 +3752,10 @@ var data = {
 			{
 				code = "decision",
 				value = "act2_finish"
+			},
+			{
+				code = "achievement",
+				value = "act2"
 			}
 		]
 	},
@@ -4090,6 +4094,10 @@ var data = {
 			{
 				code = "decision",
 				value = "act2_finish"
+			},
+			{
+				code = "achievement",
+				value = "act2"
 			}
 		]
 	},

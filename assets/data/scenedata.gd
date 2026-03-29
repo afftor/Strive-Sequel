@@ -2866,6 +2866,7 @@ var quests = {
 			get_inside = {code = 'get_inside', name = 'METEORITE_QUEST_NAME', descript = 'METEORITE_QUEST_GET_INSIDE'},
 			search_durim = {code = 'search_durim', name = 'METEORITE_QUEST_NAME', descript = 'METEORITE_QUEST_SEARCH_DURIM'},
 		},
+		achievement = "quest_meteorite"
 	},
 	act_4_capital = {
 		code = 'act_4_capital',

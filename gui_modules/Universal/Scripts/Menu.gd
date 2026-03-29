@@ -3,6 +3,12 @@ extends Control
 
 var lastsave = null
 
+onready var newgame_bonuses_node = $NewGamePanel/bonuses
+onready var newgame_bonuses_cont = $NewGamePanel/bonuses/ScrollContainer/VBoxContainer
+var cur_bonus_points = 0
+var max_bonus_points = 0
+var newgame_bonuses = []
+
 func _ready():
 	get_tree().set_auto_accept_quit(false)
 	gui_controller.add_close_button($NewGamePanel)
@@ -199,6 +205,63 @@ func open_newgame():
 #	start_preset_update()
 #	$NewGamePanel/PresetContainer/VBoxContainer.get_child(0).emit_signal('pressed')
 #	ResourceScripts.game_globals.skip_prologue = $NewGamePanel/SkipP.pressed
+	
+	#new game +
+	var bonuses = input_handler.achievements.get_unlocked_bonuses()
+	newgame_bonuses.clear()
+	newgame_bonuses_node.visible = !bonuses.empty()
+	if !bonuses.empty():
+		cur_bonus_points = 0
+		max_bonus_points = input_handler.achievements.get_all_points()
+		update_bonus_points_text()
+		input_handler.ClearContainer(newgame_bonuses_cont, ["bonus"])
+		for bonus_name in bonuses:
+			var data = bonuses[bonus_name]
+			var new_btn = input_handler.DuplicateContainerTemplate(newgame_bonuses_cont, "bonus")
+			new_btn.get_node("name").text = tr(data.name)
+			new_btn.get_node("desc").text = tr(data.description)
+			new_btn.get_node("cost").text = String(data.cost)
+			new_btn.get_node("icon").texture = data.icon
+			new_btn.set_meta("cost", data.cost)
+			new_btn.set_meta("id", bonus_name)
+			new_btn.get_node("btn").connect("toggled", self, "bonus_toggled", [bonus_name])
+		update_bonus_btns()
+
+func bonus_toggled(pressed, bonus):
+	if pressed:
+		if newgame_bonuses.has(bonus):
+			push_error("bonus_toggled: newgame_bonuses already has %s" % bonus)
+		else:
+			newgame_bonuses.append(bonus)
+	else:
+		newgame_bonuses.erase(bonus)
+	#recalc points
+	cur_bonus_points = 0
+	for node in newgame_bonuses_cont.get_children():
+		var btn = node.get_node("btn")
+		if node.visible and btn.pressed:
+			cur_bonus_points += node.get_meta("cost")
+	update_bonus_points_text()
+	update_bonus_btns()
+
+func update_bonus_btns():
+	var points_left = max_bonus_points - cur_bonus_points
+	for node in newgame_bonuses_cont.get_children():
+		var btn = node.get_node("btn")
+		if node.visible and !btn.pressed:
+			node.set_disable(node.get_meta("cost") > points_left)
+			if !node.is_disabled():
+				var data = input_handler.achievements.get_bonus(node.get_meta("id"))
+				if data.has("restricted_by"):
+					for restricter in data.restricted_by:
+						if restricter in newgame_bonuses:
+							node.set_disable(true)
+							break
+			
+
+func update_bonus_points_text():
+	newgame_bonuses_node.get_node("points_cont/points").text = "%s/%s" % [
+		cur_bonus_points, max_bonus_points]
 
 func select_preset(val):
 	if val == 'custom':
@@ -281,6 +344,9 @@ func start_game_confirm():
 	ResourceScripts.game_globals.original_version = globals.gameversion
 	get_node("/root").remove_child(self)
 	input_handler.ChangeScene('mansion')
+	if !newgame_bonuses.empty():
+		yield(globals, 'scene_change_start')
+		input_handler.CurrentScene.newgame_bonuses = newgame_bonuses
 	yield(globals, 'scene_changed')
 	gui_controller.windows_opened.clear()
 	self.queue_free()

@@ -1020,6 +1020,8 @@ func scout_room(room_id, s_range, stay = false):
 func advance_survival(lv = null):
 	if lv == null:
 		lv = active_location.current_level + 1
+		if active_location.tags.has('infinite'):
+			input_handler.achievements.try_add_inf_dungeon_achimnt(active_location.current_level)
 	ResourceScripts.world_gen.set_level_infinite(active_location, lv)
 	input_handler.emit_signal("survival_advance")
 	yield(build_level(), 'completed')
@@ -1061,6 +1063,7 @@ func move_to_room(room_id = null):
 		build_location_description()
 		globals.start_fixed_event('event_dungeon_complete_loot_' + active_location.difficulty)
 		globals.check_events('complete_location')
+		input_handler.achievements.try_add_dungeon_achimnt(active_location.code)
 		#fame
 		var char_group = active_location.group.values()
 		for i in range(char_group.size()):

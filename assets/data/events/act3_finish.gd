@@ -1001,6 +1001,10 @@ var data = {
 						value = "act3_finish"
 					},
 					{
+						code = "achievement",
+						value = "act3"
+					},
+					{
 						code = "add_timed_event",
 						value = "emp_city_init",
 						args = [
@@ -1032,6 +1036,10 @@ var data = {
 					{
 						code = "decision",
 						value = "act3_finish"
+					},
+					{
+						code = "achievement",
+						value = "act3"
 					},
 					{
 						code = "add_timed_event",
@@ -1413,6 +1421,10 @@ var data = {
 					{
 						code = "decision",
 						value = "act3_finish"
+					},
+					{
+						code = "achievement",
+						value = "act3"
 					},
 					{
 						code = "add_timed_event",

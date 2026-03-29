@@ -835,6 +835,7 @@ func unlock_class(prof, satisfy_progress_reqs = false):
 	if parent.get_ref().is_in_game_party():
 		globals.text_log_add('char', "%s: acquired profession %s" %
 			[parent.get_ref().get_short_name(), prof.name])
+		input_handler.achievements.try_add_prof_achimnt(prof.code)
 
 
 func remove_class(prof_id):
@@ -923,7 +924,7 @@ func get_racial_features(race):
 
 func process_chardata(chardata):
 	for i in chardata:
-		if !(i in ['code', 'slave_class', 'tags','sex_traits', 'sex_skills', 'personality', 'training_disposition', 'blocked_training_traits','traits', 'food_like', 'food_hate', 'classes', 'skills', 'mastery']):
+		if !(i in ['code', 'slave_class', 'tags','sex_traits', 'sex_skills', 'personality', 'training_disposition', 'blocked_training_traits','traits', 'food_like', 'food_hate', 'classes', 'skills', 'mastery', 'achievement', 'achi_bonus', 'achi_wedding']):
 			var st_data = statdata.statdata[i]
 			if !st_data.direct:
 				set_default_value(i, chardata[i])

@@ -485,7 +485,8 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADETAILORBONUS3"),
 				taskprogress = 75,
 				cost = {woodiron = 50, mithril = 25, clothmagic = 25},
-				tax = 30
+				tax = 30,
+				achievement = "max_tailor"
 			}
 		}
 	},
@@ -518,6 +519,7 @@ var upgradelist = {
 				taskprogress = 75,
 				cost = {mithril = 50, stone = 200, obsidian = 10, woodiron = 100},
 				tax = 30,
+				achievement = "max_forge"
 			},
 		}
 	},
@@ -549,7 +551,8 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADEALCHEMYBONUS3"),
 				taskprogress = 75,
 				cost = {leathermythic = 20, woodancient = 10, boneancient = 30},
-				tax = 30
+				tax = 30,
+				achievement = "max_alchemy"
 			}
 		}
 	},

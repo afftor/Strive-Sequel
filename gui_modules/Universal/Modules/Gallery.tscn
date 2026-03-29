@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://assets/Textures_v2/Gallery/icon_page_default.png" type="Texture" id=21]
 [ext_resource path="res://assets/Textures_v2/Gallery/icon_page_hover.png" type="Texture" id=22]
 [ext_resource path="res://assets/Textures_v2/Gallery/icon_page_pressed.png" type="Texture" id=23]
+[ext_resource path="res://gui_modules/achievements/achievements_panel.tscn" type="PackedScene" id=24]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -164,6 +165,28 @@ margin_bottom = 50.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "GALLERYSCENES"
+align = 1
+valign = 1
+
+[node name="AchiButton" type="TextureButton" parent="."]
+margin_left = 80.0
+margin_top = 82.0
+margin_right = 319.0
+margin_bottom = 132.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="AchiButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "GALLERYACHI"
 align = 1
 valign = 1
 
@@ -330,5 +353,8 @@ stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="achievements" parent="." instance=ExtResource( 24 )]
+visible = false
 
 [connection signal="pressed" from="ResetProgress" to="." method="_on_ResetProgress_pressed"]

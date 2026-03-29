@@ -297,6 +297,8 @@ func CreateUsableItem(item, amount = 1):
 
 func AddItemToInventory(item, dont_duplicate = true):
 #	item.inventory = ResourceScripts.game_res.items
+	if item.get("itembase") != null:
+		input_handler.achievements.try_add_item_achimnt(item.itembase)
 	if dont_duplicate && item.stackable == false:
 		var duplicate = get_duplicate_id_if_exist(item)
 		if duplicate != null:
@@ -2265,6 +2267,7 @@ func common_effects(effects):
 						input_handler.play_animation("quest_completed", args)
 						break
 				ResourceScripts.game_progress.completed_quests.append(i.value)
+				input_handler.achievements.try_add_quest_achimnt(i.value)
 			'complete_active_location':
 				complete_location(input_handler.active_location.id)
 #			'set_completed_quest_location':
@@ -2335,9 +2338,10 @@ func common_effects(effects):
 			'complete_active_location_quests':
 				if input_handler.active_location.has('questid'):
 					var quest = ResourceScripts.game_world.get_quest_by_id(input_handler.active_location.questid)
-					for req in quest.requirements:
-						if req.code in ['complete_location','complete_dungeon'] && req.area == input_handler.active_area.code && req.location == input_handler.active_location.id:
-							req.completed = true
+					if quest != null:#can be forfited
+						for req in quest.requirements:
+							if req.code in ['complete_location','complete_dungeon'] && req.area == input_handler.active_area.code && req.location == input_handler.active_location.id:
+								req.completed = true
 			'affect_active_party':
 				for k in input_handler.get_active_party():
 					k.affect_char(i, true)
@@ -2484,6 +2488,7 @@ func common_effects(effects):
 				ResourceScripts.game_party.get_spouse().unlock_class('spouse')
 				ResourceScripts.game_party.get_spouse().set_slave_category('spouse')
 				ResourceScripts.game_party.get_spouse().set_stat('surname', ResourceScripts.game_party.get_master().get_stat('surname'))
+				input_handler.achievements.try_add_wed_achimnt(ResourceScripts.game_party.get_spouse().get_stat('unique'))
 			'after_wedding_event':
 				after_wedding_event(ResourceScripts.game_party.get_spouse().get_stat('unique'))
 			'hide_dialogue':
@@ -2647,6 +2652,8 @@ func common_effects(effects):
 				ResourceScripts.game_party.check_masters_story_fame()
 			'set_faction_factor':
 				ResourceScripts.slave_quests.set_faction_factor(i.faction, i.value)
+			'achievement':
+				input_handler.achievements.try_add_achimnt(i.value)
 
 func after_wedding_event(character):
 	if character == null:

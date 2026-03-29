@@ -11,7 +11,7 @@ onready var CharacterContextMenu = $CharacterContextMenu
 
 var populatedlocations = []
 var default_locations = ["show_all", "mansion"]
-var selected_location = "mansion"
+var selected_location = "aliron"
 var prev_selected_location = "show_all"
 var visible_persons = []
 
@@ -470,6 +470,7 @@ func show_location_characters(button = null):
 	if visible_persons.size() < 1 and selected_location != "show_all":
 		selected_location = "show_all"
 		show_location_characters()
+	update_location_buttons()
 
 
 func update_location_buttons():

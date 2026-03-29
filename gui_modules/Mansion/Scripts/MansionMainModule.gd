@@ -74,6 +74,7 @@ var always_show = [
 	"map_test"
 ]
 
+var newgame_bonuses
 
 func _ready():
 #	input_handler.CurrentScene = self
@@ -105,6 +106,9 @@ func _ready():
 		show()
 		input_handler.ActivateTutorial("TUTORIALLIST1")
 		globals.apply_starting_preset()
+		if newgame_bonuses != null:#can be set externally
+			input_handler.achievements.prepare_bonuses(newgame_bonuses)
+			newgame_bonuses = null
 		
 		ResourceScripts.game_globals.reset_limits()
 		SlaveListModule.rebuild()
