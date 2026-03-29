@@ -58,7 +58,6 @@ custom_fonts/font = SubResource( 5 )
 text = "name"
 
 [node name="points" type="Label" parent="."]
-visible = false
 margin_left = 383.0
 margin_top = 3.0
 margin_right = 409.0
