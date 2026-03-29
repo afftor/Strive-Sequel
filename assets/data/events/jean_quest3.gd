@@ -2318,7 +2318,7 @@ var data = {
 		text = "JEAN_SYLAS_CLIENT_ACCEPT_2",
 		options = [
 			{
-				code = "jean_sylas_client_after",
+				code = "jean_dream_1",
 				text = "DIALOGUECONTINUE",
 				reqs = [
 
@@ -4576,5 +4576,76 @@ var data = {
 				]
 			}
 		]
-	}
+	},
+	jean_dream_1 = {
+		image = null,
+		tags = ["dialogue_scene"],
+		unlocked_gallery_seq = "jean_dream",
+		save_scene_to_gallery = true,
+		reqs = [],
+		text = "JEAN_DREAM_1",
+		options = [
+			{code = "jean_dream_2", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue", change_dialogue_type = 2}
+		]
+	},
+	jean_dream_2 = {
+		image = null,
+		reqs = [],
+		tags = ["dialogue_scene",],
+		custom_background = "jean_dream_1",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = "JEAN_DREAM_1",
+		options = [
+			{code = "jean_dream_3", text = "DIALOGUECONTINUE", type = "next_dialogue", reqs = [], dialogue_argument = 1}
+		]
+	},
+	jean_dream_3 = {
+		image = null,
+		reqs = [],
+		tags = ["dialogue_scene",],
+		custom_background = "jean_dream_2",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = "JEAN_DREAM_3",
+		options = [
+			{code = "jean_dream_4", text = "DIALOGUECONTINUE", type = "next_dialogue", reqs = [], dialogue_argument = 1}
+		]
+	},
+	jean_dream_4 = {
+		image = null,
+		reqs = [],
+		tags = ["dialogue_scene",],
+		custom_background = "jean_dream_3",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = "JEAN_DREAM_4",
+		options = [
+			{code = "jean_dream_5", text = "DIALOGUECONTINUE", type = "next_dialogue", reqs = [], dialogue_argument = 1}
+		]
+	},
+	jean_dream_5 = {
+		image = null,
+		reqs = [],
+		tags = ["dialogue_scene",],
+		custom_background = "jean_dream_3",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = "JEAN_DREAM_5",
+		options = [
+			{code = "jean_dream_6", text = "DIALOGUECONTINUE", type = "next_dialogue", reqs = [], dialogue_argument = 1}
+		]
+	},
+	jean_dream_6 = {
+		image = null,
+		reqs = [],
+		tags = ["dialogue_scene",],
+		custom_background = "jean_dream_4",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = "JEAN_DREAM_6",
+		options = [
+			{code = "jean_sylas_client_after", text = "DIALOGUECONTINUE", type = "next_dialogue", reqs = [], dialogue_argument = 1, change_dialogue_type = 1}
+		]
+	},
 }
