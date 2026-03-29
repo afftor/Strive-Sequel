@@ -29,10 +29,6 @@ func try_add_achi_subs(lord_name):
 	achi_groups[lord_name] = {locked = [], unlocked = []}
 
 func show():
-	input_handler.ClearContainer(achi_cont, ["achi"])
-	input_handler.ClearContainer(bonus_cont, ["bonus"])
-	achi_groups.clear()
-	achi_lords.clear()
 	var dict = input_handler.achievements.get_unlocked_achimnts()
 	for achi_name in dict:
 		var achi = dict[achi_name]
@@ -62,6 +58,8 @@ func show():
 	
 	if !achi_lords.empty():
 		for node in achi_cont.get_children():
+#			if node.is_queued_for_deletion():
+#				continue
 			if achi_lords.has(node.get_achi_name()):
 				node.add_group()
 				node.connect("open_group", self, "open_group", [node])
@@ -76,6 +74,13 @@ func show():
 		new_panel.set_locked(dict[bonus_name])
 	
 	.show()
+
+func hide():
+	input_handler.ClearContainer(achi_cont, ["achi"])
+	input_handler.ClearContainer(bonus_cont, ["bonus"])
+	achi_groups.clear()
+	achi_lords.clear()
+	.hide()
 
 func open_group(group_name, parent):
 	input_handler.ClearContainer(group_cont, ["achi"])

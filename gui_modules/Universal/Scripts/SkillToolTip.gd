@@ -30,6 +30,20 @@ var tips = {
 		single = "TOOLTIP_NUMBER_SINGLE",
 		single_nontarget = "TOOLTIP_NUMBER_SINGLENON",
 		x_random = "TOOLTIP_NUMBER_RANDOM"
+	},
+	target_range = {
+		title = "TOOLTIP_RANGE",
+		weapon = "TOOLTIP_RANGE_WEAPON",
+		any = "TOOLTIP_RANGE_ANY",
+		melee = "TOOLTIP_RANGE_MELEE",
+		not_caster = "TOOLTIP_RANGE_NOT_CASTER",
+		dead = "TOOLTIP_RANGE_DEAD"
+	},
+	gear_equiped = {
+		spear = "TOOLTIP_GEAR_SPEAR",
+		bow = "TOOLTIP_GEAR_BOW",
+		heavy = "TOOLTIP_GEAR_HEAVY",
+		medium = "TOOLTIP_GEAR_MEDIUM",
 	}
 }
 
@@ -61,41 +75,42 @@ func update():
 		
 		if !parentnode.has_meta('display_only'):
 			text += "\n\n{color=yellow|"+tr("TOOLTIPRIGHTCLICKABILITY")+"}"
+		text += "\n"
 	elif mode == MODE_ADVANCED:
 		text = ""
-		for tip_type in ["ability_type", "target_number", "target"]:
+		for tip_type in ["ability_type", "target_number", "target", "target_range"]:
 			if !skill.has(tip_type):
 				continue
 			var tip_text = skill[tip_type]
 			if tips[tip_type].has(tip_text):
 				tip_text = tr(tips[tip_type][tip_text])
 			text += "%s: %s" % [tr(tips[tip_type].title), tip_text]
-			if tip_type != "target":
+			if tip_type != "target_range":
 				text += "\n"
-		if skill.charges > 0 and skill.cooldown > 0:
-			text += "\n%s: {color=yellow|%s}. %s: {color=yellow|%s} %s" % [
-				tr("MAX_CHARGES"), str(skill.charges),
-				tr("TOOLTIP_COOLDOWN"), str(skill.cooldown), tr("TOOLTIP_DAY_S")]
-		if skill.has('combatcooldown') && skill.combatcooldown > 0:
-			text += "\n" + tr("TOOLTIP_COOLDOWN") + ": {color=yellow|" + str(skill.combatcooldown) + "}"
+		if skill.has("reqs_text"):
+			text += "\n" + skill.reqs_text
+	
+	if skill.charges > 0 and skill.cooldown > 0:
+		text += "\n%s: {color=yellow|%s}. %s: {color=yellow|%s} %s" % [
+			tr("MAX_CHARGES"), str(skill.charges),
+			tr("TOOLTIP_COOLDOWN"), str(skill.cooldown), tr("TOOLTIP_DAY_S")]
+	if skill.has('combatcooldown') && skill.combatcooldown > 0:
+		text += "\n%s: {color=yellow|%s} %s" % [
+			tr("TOOLTIP_COOLDOWN"), str(skill.combatcooldown), tr("TOOLTIP_TURNS")]
+	
 	main_node.get_node('VBoxContainer/descript').bbcode_text = globals.TextEncoder(text)
 	
-	if mode == MODE_ADVANCED:
-		text = ""
-		for st in skill.cost:
-			text += "%s: %d. " % [statdata.statdata[st].name ,int(skill.cost[st])]
-		if skill.has('catalysts') && skill.catalysts.size() > 0:
-			for i in skill.catalysts:
-				text += Items.materiallist[i].name + " - " + str(skill.catalysts[i]) + ", "
-			text = text.substr(0, text.length() - 2) + ". "
-		if text.empty():
-			text += tr("TOOLTIP_NONE")
-		text = tr("USAGE_COST") + ": " + text
-		
-		main_node.get_node('VBoxContainer/cost').show()
-		main_node.get_node('VBoxContainer/cost').text = text
-	elif mode == MODE_DEFAULT:
-		main_node.get_node('VBoxContainer/cost').hide()
+	text = ""
+	for st in skill.cost:
+		text += "%s: %d. " % [statdata.statdata[st].name, int(skill.cost[st])]
+	if skill.has('catalysts') && skill.catalysts.size() > 0:
+		for i in skill.catalysts:
+			text += Items.materiallist[i].name + " - " + str(skill.catalysts[i]) + ", "
+		text = text.substr(0, text.length() - 2) + ". "
+	if text.empty():
+		text += tr("TOOLTIP_NONE")
+	text = tr("USAGE_COST") + ": " + text
+	main_node.get_node('VBoxContainer/cost').text = text
 	
 	
 	var pos = parentnode.get_global_rect()

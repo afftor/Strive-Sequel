@@ -2258,7 +2258,8 @@ func get_template(id, caster):
 	if tres.cost.has('mp'):
 		tres.cost.mp = caster.get_manacost_for_skill(tres)
 	if tres.has('reqs') and !caster.checkreqs(tres.reqs):
-		tres.descript += '\n\n' + caster.decipher_reqs(tres.reqs, true)
+		tres.reqs_text = caster.decipher_reqs(tres.reqs, true)
+		tres.descript += '\n\n' + tres.reqs_text
 	return tres
 
 
