@@ -9,9 +9,12 @@ func try_add_achimnt(achi_name):
 	if input_handler.progress_data['achievements'].has(achi_name):
 		return
 	input_handler.update_progress_data("achievements", achi_name)
+	var achi = data.achievements[achi_name]
+	if achi.has("points"):
+		input_handler.update_progress_data("achi_points", achi.points)
 	input_handler.get_spec_node(input_handler.NODE_ACHI_UNLOCK).add_achi(get_achimnt(achi_name))
 	
-	var achi = data.achievements[achi_name]
+	
 	if achi.has("sub_to"):
 		var subs = get_subs(achi.sub_to)
 		var unlock = true
@@ -116,13 +119,14 @@ func get_subs(achi_name):
 
 
 func get_all_points():
-	var points = 0
-	for achi in input_handler.progress_data['achievements']:
-		if !data.achievements.has(achi):#for obsolete or temporally removed achievements
-			continue
-		if data.achievements[achi].has("points"):
-			points += data.achievements[achi].points
-	return points
+	return input_handler.progress_data['achi_points']
+#	var points = 0
+#	for achi in input_handler.progress_data['achievements']:
+#		if !data.achievements.has(achi):#for obsolete or temporally removed achievements
+#			continue
+#		if data.achievements[achi].has("points"):
+#			points += data.achievements[achi].points
+#	return points
 
 func prepare_bonuses(list):
 	for bonus in list:
@@ -165,6 +169,13 @@ func get_locked_achimnts():
 			continue
 		res[achi_name] = get_achimnt(achi_name)
 	return res
+
+func reset():
+	input_handler.progress_data['achievements'] = []
+	input_handler.progress_data['achi_bonuses'] = []
+	input_handler.progress_data['achi_points'] = 0
+	input_handler.store_progress()
+	
 
 
 #bonus preparations

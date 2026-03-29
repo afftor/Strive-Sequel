@@ -208,13 +208,13 @@ func open_newgame():
 	
 	#new game +
 	var bonuses = input_handler.achievements.get_unlocked_bonuses()
+	max_bonus_points = input_handler.achievements.get_all_points()
 	newgame_bonuses.clear()
-	newgame_bonuses_node.visible = !bonuses.empty()
-	if !bonuses.empty():
+	newgame_bonuses_node.visible = !bonuses.empty() and max_bonus_points > 0
+	if newgame_bonuses_node.visible:
 		cur_bonus_points = 0
-		max_bonus_points = input_handler.achievements.get_all_points()
 		update_bonus_points_text()
-		input_handler.ClearContainer(newgame_bonuses_cont, ["bonus"])
+		input_handler.ClearContainer(newgame_bonuses_cont, ["bonus", "locked"])
 		for bonus_name in bonuses:
 			var data = bonuses[bonus_name]
 			var new_btn = input_handler.DuplicateContainerTemplate(newgame_bonuses_cont, "bonus")
@@ -225,6 +225,10 @@ func open_newgame():
 			new_btn.set_meta("cost", data.cost)
 			new_btn.set_meta("id", bonus_name)
 			new_btn.get_node("btn").connect("toggled", self, "bonus_toggled", [bonus_name])
+		var locked = input_handler.achievements.get_locked_bonuses()
+		for bonus_name in locked:
+			var new_btn = input_handler.DuplicateContainerTemplate(newgame_bonuses_cont, "locked")
+			new_btn.set_locked(locked[bonus_name])
 		update_bonus_btns()
 
 func bonus_toggled(pressed, bonus):
@@ -238,8 +242,7 @@ func bonus_toggled(pressed, bonus):
 	#recalc points
 	cur_bonus_points = 0
 	for node in newgame_bonuses_cont.get_children():
-		var btn = node.get_node("btn")
-		if node.visible and btn.pressed:
+		if node.visible and node.has_meta("id") and node.get_node("btn").pressed:
 			cur_bonus_points += node.get_meta("cost")
 	update_bonus_points_text()
 	update_bonus_btns()
@@ -247,8 +250,7 @@ func bonus_toggled(pressed, bonus):
 func update_bonus_btns():
 	var points_left = max_bonus_points - cur_bonus_points
 	for node in newgame_bonuses_cont.get_children():
-		var btn = node.get_node("btn")
-		if node.visible and !btn.pressed:
+		if node.visible and node.has_meta("id") and !node.get_node("btn").pressed:
 			node.set_disable(node.get_meta("cost") > points_left)
 			if !node.is_disabled():
 				var data = input_handler.achievements.get_bonus(node.get_meta("id"))

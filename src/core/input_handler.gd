@@ -222,7 +222,8 @@ var progress_data = {
 	monochrome = [],
 	unique_sprites = {},#daisy = [], cali = []
 	achievements = [],
-	achi_bonuses = []
+	achi_bonuses = [],
+	achi_points = 0
 } setget save_progress_data
 
 #var combat_advance = false #if any result in combat cause advance
@@ -281,7 +282,10 @@ func load_progress_data():
 #		parse_result = parse_json(text)
 		parse_result = JSON.parse(text).result
 		for key in parse_result:
-			progress_data[key] = parse_result[key]
+			var value = parse_result[key]
+			if progress_data[key] is int:
+				value = int(value)
+			progress_data[key] = value
 #		progress_data = parse_result.result
 	else:
 		save_progress_data(progress_data)
@@ -311,6 +315,8 @@ func update_progress_data(field, value):
 				has_new_sprites = true
 		if !has_new_sprites:
 			return
+	elif field == 'achi_points':
+		progress_data[field] += value
 	else:
 		if typeof(value) != TYPE_STRING:
 			return

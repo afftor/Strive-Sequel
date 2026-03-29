@@ -17,7 +17,8 @@ func set_opened(data):
 	$name.show()
 	if data.has("points"):
 		$points.text = "+%s" % data.points
-		$points.show()
+	else:
+		$points.hide()
 	$desc_panel/desc.text = tr_desc
 	$icon.texture = data.icon
 
@@ -27,6 +28,10 @@ func set_locked(data):
 	if !data.has("no_tr") or !data.no_tr:
 		tr_hint = tr(tr_hint)
 	$desc_panel/desc.text = tr_hint
+	if data.has("points"):
+		$points.text = "%s" % data.points
+	else:
+		$points.hide()
 #	$bg_opened.hide()
 #	$bg_closed.show()
 #	$name.hide()
