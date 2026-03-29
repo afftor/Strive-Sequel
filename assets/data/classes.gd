@@ -126,7 +126,6 @@ var professions = {
 		skills = [],
 		combatskills = [],
 		conflict_classes = [],
-		achievement = "class_worker",
 	},
 	foreman = {
 		code = 'foreman',
@@ -157,7 +156,6 @@ var professions = {
 		skills = [],
 		combatskills = [],
 		conflict_classes = [],
-		achievement = "class_hunter"
 	},
 	smith = {
 		code = 'smith',
@@ -203,7 +201,6 @@ var professions = {
 		skills = [],
 		combatskills = [],
 		conflict_classes = [],
-		achievement = "class_chef"
 	},
 	attendant = {
 		code = 'attendant',
@@ -295,7 +292,6 @@ var professions = {
 		skills = [],
 		combatskills = [],
 		conflict_classes = [],
-		achievement = "class_harlot"
 	},
 	geisha = {
 		code = 'geisha',
@@ -439,7 +435,6 @@ var professions = {
 		skills = [],#'allure','performance'],
 		combatskills = ['distract'],
 		conflict_classes = [],
-		achievement = "class_dancer"
 	},
 	maid = {
 		code = 'maid',
@@ -472,7 +467,6 @@ var professions = {
 		skills = [],
 		combatskills = [],
 		conflict_classes = [],
-		achievement = "class_fighter"
 	},
 	knight = {
 		code = 'knight',

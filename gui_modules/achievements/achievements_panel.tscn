@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/achievements/achievements_panel.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://src/scenes/CloseButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gui_modules/achievements/bonus_unit.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/Textures_v2/MAIN_MENU/Panels/panel_modsoptions.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassAchieved/panel_class.png" type="Texture" id=7]
+[ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_SEX_Skills.tres" type="Theme" id=9]
 
 [sub_resource type="DynamicFont" id=3]
 size = 36
@@ -69,14 +71,18 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "GALLERYACHITEXT"
 
-[node name="achi_cont" type="GridContainer" parent="."]
+[node name="achi_scroll" type="ScrollContainer" parent="."]
 margin_left = 96.0
 margin_top = 124.0
 margin_right = 936.0
 margin_bottom = 1035.0
+theme = ExtResource( 9 )
+scroll_horizontal_enabled = false
+
+[node name="achi_cont" type="GridContainer" parent="achi_scroll"]
 columns = 2
 
-[node name="achi" parent="achi_cont" instance=ExtResource( 3 )]
+[node name="achi" parent="achi_scroll/achi_cont" instance=ExtResource( 3 )]
 visible = false
 
 [node name="bonus_label" type="Label" parent="."]
@@ -99,14 +105,17 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "GALLERYACHIBONUSTEXT"
 
-[node name="bonus_cont" type="GridContainer" parent="."]
+[node name="bonus_scroll" type="ScrollContainer" parent="."]
 margin_left = 992.0
 margin_top = 114.0
 margin_right = 1838.0
 margin_bottom = 1041.0
+theme = ExtResource( 9 )
+
+[node name="bonus_cont" type="GridContainer" parent="bonus_scroll"]
 columns = 2
 
-[node name="bonus" parent="bonus_cont" instance=ExtResource( 5 )]
+[node name="bonus" parent="bonus_scroll/bonus_cont" instance=ExtResource( 5 )]
 visible = false
 
 [node name="CloseButton" parent="." instance=ExtResource( 4 )]
@@ -114,3 +123,34 @@ anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -30.0
 margin_right = 0.0
+
+[node name="group_close" type="TextureButton" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="group_bg" type="NinePatchRect" parent="group_close"]
+margin_left = 86.0
+margin_top = 231.0
+margin_right = 545.0
+margin_bottom = 361.0
+texture = ExtResource( 7 )
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+
+[node name="ScrollContainer" type="ScrollContainer" parent="group_close/group_bg"]
+margin_left = 18.0
+margin_top = 9.0
+margin_right = 439.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 111 )
+theme = ExtResource( 9 )
+scroll_horizontal_enabled = false
+scroll_vertical_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="group_close/group_bg/ScrollContainer"]
+
+[node name="achi" parent="group_close/group_bg/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
+visible = false

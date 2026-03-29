@@ -1832,6 +1832,7 @@ var itemlist = {
 		effects = [],
 		tags = ['no_random','enchantable', 'upgradable'],
 		basestats = {atk = 50, hitrate = 50, critmod = 0.20, damage_mod_light = 0.5, enchant_capacity = 500},
+		achievement = "item_holy_sword"
 	},
 	holy_spear = {
 		code = 'holy_spear',
@@ -1872,6 +1873,7 @@ var itemlist = {
 		slots = ['rhand','lhand'],
 		hitsound = 'arrow',
 		effects = [],
+		achievement = "item_aire_bow"
 	},
 	
 	zephyra_brush = {
@@ -1890,6 +1892,7 @@ var itemlist = {
 		effects = ['e_tr_copy_25'],
 		tags = ['no_random'],
 		basestats = {matk = 15, resist_mind = 40},
+		achievement = "item_zephyra_brush"
 	},
 	
 	cali_collar = {

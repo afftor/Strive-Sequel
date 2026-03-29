@@ -31,9 +31,9 @@ alignment = 2
 
 [node name="achi_label" type="Label" parent="VBoxContainer"]
 visible = false
-margin_top = 701.0
-margin_right = 444.0
-margin_bottom = 748.0
+margin_top = 966.0
+margin_right = 420.0
+margin_bottom = 1013.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "ACHIEVEMENT_ACQUIRED"
@@ -51,8 +51,8 @@ patch_margin_right = 12
 patch_margin_bottom = 12
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/achi_label"]
-margin_left = 444.0
-margin_right = 464.0
+margin_left = 420.0
+margin_right = 440.0
 margin_bottom = 45.0
 texture = ExtResource( 6 )
 expand = true
@@ -73,9 +73,9 @@ margin_bottom = 906.0
 
 [node name="bonus_label" type="Label" parent="VBoxContainer"]
 visible = false
-margin_top = 859.0
-margin_right = 444.0
-margin_bottom = 906.0
+margin_top = 966.0
+margin_right = 420.0
+margin_bottom = 1013.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "ACHIBONUS_ACQUIRED"
@@ -93,8 +93,8 @@ patch_margin_right = 12
 patch_margin_bottom = 12
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/bonus_label"]
-margin_left = 444.0
-margin_right = 464.0
+margin_left = 420.0
+margin_right = 440.0
 margin_bottom = 45.0
 texture = ExtResource( 6 )
 expand = true

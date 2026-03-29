@@ -58,8 +58,8 @@ var pregen_characters = {
 			training_sexservice_adv = ["DaisyTrainingFinished"],
 			training_callmaster = ['DaisyQuestlineFinished'],
 		},
-		achievement = "char_daisy",
 		achi_bonus = "daisy_start",
+		achi_wedding = "wedding_daisy"
 	},
 
 	Kurdan = {
@@ -101,8 +101,6 @@ var pregen_characters = {
 		traits = ['gifted','training_s_combat','training_s_working'],
 		tags = [],
 		sex_skills = {petting = 2, penetration = 15, oral = 4, anal = 0},
-		achievement = "char_kurdan",
-		achi_bonus = "kurdan_start",
 	},
 	Aire = {
 		code = 'aire',
@@ -157,7 +155,6 @@ var pregen_characters = {
 			positive = 'neutral',
 			magic = 'neutral',
 		},
-		achievement = "char_aire",
 		achi_bonus = "aire_start",
 	},
 	Anastasia = {
@@ -213,6 +210,8 @@ var pregen_characters = {
 			positive = 'weak',
 			magic = 'neutral',
 		},
+		achi_wedding = "wedding_anastasia",
+		achi_bonus = "anastasia_start",
 	},
 	AnastasiaBroken = {
 		code = 'anastasiaBroken',
@@ -321,6 +320,8 @@ var pregen_characters = {
 			positive = 'weak',
 			magic = 'resist',
 		},
+		achi_wedding = "wedding_zephyra",
+		achi_bonus = "zephyra_start",
 	},
 	Mae = {
 		code = 'mae',
@@ -369,6 +370,8 @@ var pregen_characters = {
 		classes = ['apprentice','shaman'],
 		traits = ['lively','whimp','training_s_working','training_s_relation','animal_handling'],
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
+		achi_wedding = "wedding_mae",
+		achi_bonus = "mae_start",
 	},
 	Lilia = {
 		code = 'lilia',
@@ -415,6 +418,8 @@ var pregen_characters = {
 		traits = ['mvortex','inept','training_s_combat','training_s_working','training_s_relation'],
 		classes = [],
 		sex_skills = {petting = 15, pussy = 4, oral = 5, anal = 0},
+		achi_wedding = "wedding_lilia",
+		achi_bonus = "lilia_start"
 	},
 	Lilith = {
 		code = 'lilith',
@@ -462,6 +467,8 @@ var pregen_characters = {
 		classes = ['ashmedai_champion'],
 		traits = ['mvortex','inept','training_s_combat','training_s_working','training_s_relation','training_s_sexservice','training_s_sexservice_adv'],
 		sex_skills = {petting = 27, pussy = 33, oral = 25, anal = 21, tail = 1},
+		achi_wedding = "wedding_lilith",
+		achi_bonus = "lilith_start"
 	},
 	Cali = {
 		code = 'cali',
@@ -521,7 +528,8 @@ var pregen_characters = {
 			training_callmaster = ['cali_training_unlocked'],
 			training_sexservice_adv = ['cali_training_unlocked'],
 		},
-		
+		achi_wedding = "wedding_cali",
+		achi_bonus = "cali_start",
 	},
 	Jean = {
 		code = 'jean',
@@ -567,6 +575,8 @@ var pregen_characters = {
 		classes = ['scholar','caster'],
 		traits = ['prodigy','rebel','training_s_combat','training_s_working','literacy','penmanship','history'],
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
+		achi_wedding = "wedding_jean",
+		achi_bonus = "jean_start"
 	},
 	Hara = {
 		code = 'hara',
@@ -613,6 +623,8 @@ var pregen_characters = {
 		classes = ['engineer'],
 		traits = ['training_s_combat','training_s_working','literacy'],
 		sex_skills = {petting = 0, pussy = 15, oral = 12, anal = 0},
+		achi_wedding = "wedding_hara",
+		achi_bonus = "hara_start"
 	},
 	
 	Heleviel = {
@@ -672,6 +684,8 @@ var pregen_characters = {
 		blocked_training_traits = {
 			training_s_combat = ['HelevielTrainingFinished'],
 		},
+		achi_wedding = "wedding_heleviel",
+		achi_bonus = "heleviel_start",
 	},
 	
 	Lira = {
@@ -729,6 +743,8 @@ var pregen_characters = {
 			positive = 'weak',
 			magic = 'weak',
 		},
+		achi_wedding = "wedding_lira",
+		achi_bonus = "lira_start",
 	},
 	Amelia = {
 		code = 'amelia',
@@ -785,6 +801,8 @@ var pregen_characters = {
 			positive = 'weak',
 			magic = 'neutral',
 		},
+		achi_wedding = "wedding_amelia",
+		achi_bonus = "amelia_start",
 	},
 	Kuro = {
 		code = 'kuro',
@@ -838,8 +856,8 @@ var pregen_characters = {
 			positive = 'neutral',
 			magic = 'resist',
 		},
-		achievement = "char_kuro",
-		achi_bonus = "kuro_start"
+		achi_bonus = "kuro_start",
+		achi_wedding = "wedding_kuro"
 	},
 	
 	Rouge = {
@@ -894,6 +912,8 @@ var pregen_characters = {
 			positive = 'resist',
 			magic = 'weak',
 		},
+		achi_wedding = "wedding_rouge",
+		achi_bonus = "rouge_start"
 	},
 #tutorial
 	tutorial_master = {

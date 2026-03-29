@@ -9,3 +9,6 @@ func on_btn_toggled(pressed):
 func set_disable(value):
 	$btn.disabled = value
 	$CheckBox.disabled = value
+
+func is_disabled():
+	return $btn.disabled

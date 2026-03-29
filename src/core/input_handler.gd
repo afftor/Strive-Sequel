@@ -391,6 +391,7 @@ func _ready():
 	connect("UpgradeUnlocked", self, "upgrade_unlocked")
 	connect("animation_finished", self, "animation_queue_start_force")
 	achievements = load("res://src/core/achievements.gd").new()
+	achievements.prepare_data()
 
 
 func gather_skills_effects():

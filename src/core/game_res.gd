@@ -188,7 +188,7 @@ func if_has_free_items(name, operant, value):
 
 
 func unlock_upgrade(upgrade, level):
-	upgrades[upgrade] = level
+	level_up_upgrade(upgrade, level)
 
 func if_has_upgrade(upgrade, level):
 	if !upgrades.has(upgrade): return false
@@ -253,10 +253,7 @@ func add_upgrade_to_queue(upgrade_id):
 		if !upgrade_progresses.has(upgrade_id):
 			upgrade_progresses[upgrade_id] = {level = upgrade_lv + 1, progress = 0}
 	else:
-		if upgrades.has(upgrade_id):
-			upgrades[upgrade_id] += 1
-		else:
-			upgrades[upgrade_id] = 1
+		level_up_upgrade(upgrade_id)
 
 
 func make_item(temprecipe, character):
@@ -379,10 +376,7 @@ func add_build_value(currenttask, value, character, tres = false):
 		var tdata = upgradedata.upgradelist[curupgrade]
 		if upgrade_progresses[curupgrade].progress >= tdata.levels[int(upgrade_progresses[curupgrade].level)].taskprogress:
 			var newval = upgrade_progresses[curupgrade].progress - tdata.levels[int(upgrade_progresses[curupgrade].level)].taskprogress
-			if upgrades.has(curupgrade):
-				upgrades[curupgrade] += 1
-			else:
-				upgrades[curupgrade] = 1
+			level_up_upgrade(curupgrade)
 			
 			if tdata.levels[int(upgrade_progresses[curupgrade].level)].has('tax'):
 				tax += tdata.levels[int(upgrade_progresses[curupgrade].level)].tax
@@ -398,3 +392,12 @@ func add_build_value(currenttask, value, character, tres = false):
 
 func get_farm_slots():
 	return variables.farm_produce_slots + variables.farm_produce_slots_per_upgrade*upgrades['farm_slots']
+
+func level_up_upgrade(upgrade_id, level = null):
+	if level != null:
+		upgrades[upgrade_id] = level
+	elif upgrades.has(upgrade_id):
+		upgrades[upgrade_id] += 1
+	else:
+		upgrades[upgrade_id] = 1
+	input_handler.achievements.try_add_upgrade_achimnt(upgrade_id)

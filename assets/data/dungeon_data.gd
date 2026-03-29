@@ -321,6 +321,7 @@ var dungeons = {
 		affiliation = 'local', #defines character races and events
 		events = [],
 		tags = [],
+		achievement = "dung_bandit_den"
 	},
 	
 	dungeon_bandit_fort = {
@@ -424,6 +425,7 @@ var dungeons = {
 		affiliation = 'local',
 		events = [],
 		tags = [],
+		achievement = "dung_bandit_fort"
 	},
 	dungeon_rebel_redoubt = {
 		code = 'dungeon_rebel_redoubt',
@@ -538,6 +540,7 @@ var dungeons = {
 		affiliation = 'local',
 		events = [],
 		tags = [],
+		achievement = "dung_rebel_redoubt"
 	},
 	
 	dungeon_undead_crypt = {
@@ -626,6 +629,7 @@ var dungeons = {
 		affiliation = 'local',
 		events = [],
 		tags = [],
+		achievement = "dung_undead_crypt"
 	},
 	
 	dungeon_goblin_cave = {
@@ -703,6 +707,7 @@ var dungeons = {
 		affiliation = 'local',
 		events = [],
 		tags = [],
+		achievement = "dung_goblin_cave"
 	},
 	
 	dungeon_grove = {
@@ -796,6 +801,7 @@ var dungeons = {
 		affiliation = 'local',
 		events = [],
 		tags = [],
+		achievement = "dung_grove"
 	},
 	
 	dungeon_spider_lair = {
@@ -870,6 +876,7 @@ var dungeons = {
 		affiliation = 'local',
 		events = [],
 		tags = [],
+		achievement = "dung_spider_lair"
 	},
 	
 	dungeon_rebel_camp = {
@@ -952,7 +959,8 @@ var dungeons = {
 		area = 'plains',
 		travel_time = [1,1],
 		scripteventdata = [
-		]
+		],
+		achievement = "dung_rebel_camp"
 	},
 	
 	dungeon_ancient_jungles = {
@@ -1065,6 +1073,7 @@ var dungeons = {
 		affiliation = 'local',
 		events = [],
 		tags = [],
+		achievement = "dung_ancient_jungles"
 	},
 	
 	dungeon_fire_depths = {
@@ -1165,6 +1174,7 @@ var dungeons = {
 		affiliation = 'local',
 		events = [],
 		tags = [],
+		achievement = "dung_fire_depths"
 	},
 	
 	dungeon_goblin_stronghold = {
@@ -1244,6 +1254,7 @@ var dungeons = {
 		affiliation = 'local',
 		events = [],
 		tags = [],
+		achievement = "dung_goblin_stronghold"
 	},
 	
 	quest_cali_bandits_location = {
@@ -3448,4 +3459,26 @@ var dungeons = {
 #			{trigger = 'dungeon_complete', event = 'custom_event', args = 'kuro3_dungeon_1', reqs = []}
 		]
 	},
+}
+var infinite_dungeon_achievements = {
+	5 : "dung_infinite_5",
+	10 : "dung_infinite_10",
+	15 : "dung_infinite_15",
+	20 : "dung_infinite_20",
+	25 : "dung_infinite_25",
+	30 : "dung_infinite_30",
+	35 : "dung_infinite_35",
+	40 : "dung_infinite_40",
+	45 : "dung_infinite_45",
+	50 : "dung_infinite_50",
+	55 : "dung_infinite_55",
+	60 : "dung_infinite_60",
+	65 : "dung_infinite_65",
+	70 : "dung_infinite_70",
+	75 : "dung_infinite_75",
+	80 : "dung_infinite_80",
+	85 : "dung_infinite_85",
+	90 : "dung_infinite_90",
+	95 : "dung_infinite_95",
+	100 : "dung_infinite_100"
 }

@@ -84,7 +84,7 @@ margin_bottom = -4.0
 mouse_filter = 2
 texture = ExtResource( 6 )
 expand = true
-stretch_mode = 5
+stretch_mode = 6
 
 [node name="frame" type="TextureRect" parent="."]
 anchor_bottom = 1.0

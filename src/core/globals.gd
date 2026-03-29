@@ -297,6 +297,8 @@ func CreateUsableItem(item, amount = 1):
 
 func AddItemToInventory(item, dont_duplicate = true):
 #	item.inventory = ResourceScripts.game_res.items
+	if item.get("itembase") != null:
+		input_handler.achievements.try_add_item_achimnt(item.itembase)
 	if dont_duplicate && item.stackable == false:
 		var duplicate = get_duplicate_id_if_exist(item)
 		if duplicate != null:
@@ -2486,6 +2488,7 @@ func common_effects(effects):
 				ResourceScripts.game_party.get_spouse().unlock_class('spouse')
 				ResourceScripts.game_party.get_spouse().set_slave_category('spouse')
 				ResourceScripts.game_party.get_spouse().set_stat('surname', ResourceScripts.game_party.get_master().get_stat('surname'))
+				input_handler.achievements.try_add_wed_achimnt(ResourceScripts.game_party.get_spouse().get_stat('unique'))
 			'after_wedding_event':
 				after_wedding_event(ResourceScripts.game_party.get_spouse().get_stat('unique'))
 			'hide_dialogue':

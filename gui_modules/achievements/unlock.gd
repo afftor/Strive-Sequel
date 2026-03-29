@@ -4,7 +4,7 @@ onready var cont = $VBoxContainer
 onready var achi_label = $VBoxContainer/achi_label
 onready var bonus_label = $VBoxContainer/bonus_label
 
-const TIME_ON_SCREEN = 6.0
+const TIME_ON_SCREEN = 10.0
 
 func _ready():
 	$timer.connect("timeout", self, "close")

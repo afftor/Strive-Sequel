@@ -223,7 +223,7 @@ func open_newgame():
 			new_btn.get_node("cost").text = String(data.cost)
 			new_btn.get_node("icon").texture = data.icon
 			new_btn.set_meta("cost", data.cost)
-#			new_btn.set_meta("id", bonus_name)
+			new_btn.set_meta("id", bonus_name)
 			new_btn.get_node("btn").connect("toggled", self, "bonus_toggled", [bonus_name])
 		update_bonus_btns()
 
@@ -250,6 +250,14 @@ func update_bonus_btns():
 		var btn = node.get_node("btn")
 		if node.visible and !btn.pressed:
 			node.set_disable(node.get_meta("cost") > points_left)
+			if !node.is_disabled():
+				var data = input_handler.achievements.get_bonus(node.get_meta("id"))
+				if data.has("restricted_by"):
+					for restricter in data.restricted_by:
+						if restricter in newgame_bonuses:
+							node.set_disable(true)
+							break
+			
 
 func update_bonus_points_text():
 	newgame_bonuses_node.get_node("points_cont/points").text = "%s/%s" % [

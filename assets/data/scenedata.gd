@@ -2234,7 +2234,6 @@ var quests = {
 		stage2 = {code = 'stage2', name = 'MAIN_QUEST_LOAN_NAME', descript = 'MAIN_QUEST_LOAN_STAGE2'},
 		stage3 = {code = 'stage3', name = 'MAIN_QUEST_LOAN_NAME', descript = 'MAIN_QUEST_LOAN_STAGE3'},
 		},
-		achievement = "quest_loan"
 	},
 
 	guilds_introduction = {
@@ -2490,7 +2489,6 @@ var quests = {
 			stage15 = {code = 'stage15', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_14"}, # go to white stag location
 			stage16 = {code = 'stage16', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_15"}, # return to erlen after you're done with temple quest
 		},
-		achievement = "quest_sword_art"
 	},
 	
 	temple_quest = {
@@ -2841,6 +2839,7 @@ var quests = {
 			get_inside = {code = 'get_inside', name = 'METEORITE_QUEST_NAME', descript = 'METEORITE_QUEST_GET_INSIDE'},
 			search_durim = {code = 'search_durim', name = 'METEORITE_QUEST_NAME', descript = 'METEORITE_QUEST_SEARCH_DURIM'},
 		},
+		achievement = "quest_meteorite"
 	},
 	act_4_capital = {
 		code = 'act_4_capital',
