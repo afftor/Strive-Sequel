@@ -392,6 +392,16 @@ var materiallist = {
 		tier = '',
 		tags = ['no_random'],
 	},
+	mindlink = { #fix
+		code = 'mindlink',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_leathermythic.png"),
+		price = 1,
+		type = 'quest',
+		tier = '',
+		tags = ['no_random'],
+	},
 	spirit_potion = { #fix
 		code = 'spirit_potion',
 		name = '',
@@ -4140,6 +4150,22 @@ var recipes = {
 		unlockreqs = [
 			{type = 'decision', value = 'mae_spirit_hide_unlocked', check = true},
 			{type = 'has_material', operant = 'lt', value = 1, material = 'ancestral_hide'}
+		],
+		crafttype = 'basic',
+		resultamount = 1,
+		resultitemtype = 'material',
+		resultitem = 'ancestral_hide',
+		workunits = 25,
+		worktype = 'tailor',
+		unique = true
+	},
+	mindlink = { #fix
+		code = 'mindlink',
+		materials = {leathermythic = 10},
+		items = {},
+		unlockreqs = [
+			{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage11'},
+			{type = 'has_material', operant = 'lt', value = 1, material = 'mindlink'}
 		],
 		crafttype = 'basic',
 		resultamount = 1,

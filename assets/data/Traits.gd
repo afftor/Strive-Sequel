@@ -1338,62 +1338,184 @@ var traits = {
 		bonusstats = {}, 
 		tags = ['sexservice', 'sexservice_adv', 'simple_icon', 'servant_training']
 	},
-	training_workforce = {
-		code = 'training_workforce',
+	#training finished
+	training_value = {
+		code = 'training_value',
+		visible = true,
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_worker.png", 
+		icon_small = "res://assets/images/iconstraits/l_prestige.png", 
+		effects = [],
+		cost = 25,
+		bonusstats = {price_add_part = 0.25}, 
+		tags = ['training_final', 'training_success', 'simple_icon']
+	},
+	training_productivity = {
+		code = 'training_productivity',
+		visible = true,
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_worker.png", 
+		icon_small = "res://assets/images/iconstraits/work.png", 
+		effects = [],
+		cost = 30,
+		bonusstats = {productivity = 0.3}, 
+		tags = ['training_final', 'training_success', 'simple_icon']
+	},
+	training_xp = {
+		code = 'training_xp',
+		visible = true,
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_intelligence.png", 
+		icon_small = "res://assets/images/iconstraits/l_intelligence.png", 
+		effects = [],
+		cost = 30,
+		bonusstats = {exp_gain_mod = 0.2}, 
+		tags = ['training_final', 'training_success', 'simple_icon']
+	},
+	training_hp = {
+		code = 'training_hp',
 		visible = true,
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_worker.png", 
 		icon_small = "res://assets/images/iconstraits/l_worker_prt.png", 
 		effects = [],
-		bonusstats = {productivity = 0.4}, 
-		custom_reqs = {humiliation = 3, random = 2},
+		cost = 20,
+		bonusstats = {hpmax_add = 25}, 
 		tags = ['training_final', 'training_success', 'simple_icon']
 	},
-	training_service = {
-		code = 'training_service',
+	training_atk = {
+		code = 'training_atk',
 		visible = true,
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_maidu.png",
-		icon_small = "res://assets/images/iconstraits/l_maidu_prt.png",
+		icon = "res://assets/images/iconstraits/l_worker.png", 
+		icon_small = "res://assets/images/iconstraits/l_worker_prt.png", 
 		effects = [],
-		bonusstats = {price_add_part = 0.5}, 
-		custom_reqs = {humiliation = 1, sexual = 1, social = 1, random = 2},
+		cost = 15,
+		bonusstats = {atk = 10}, 
 		tags = ['training_final', 'training_success', 'simple_icon']
 	},
-	training_warrior = {
-		code = 'training_warrior',
+	training_matk = {
+		code = 'training_matk',
 		visible = true,
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_warrior.png",
-		icon_small = "res://assets/images/iconstraits/l_warrior_prt.png", #2fix
+		icon = "res://assets/images/iconstraits/l_worker.png", 
+		icon_small = "res://assets/images/iconstraits/l_worker_prt.png", 
 		effects = [],
-		bonusstats = {damage_mod_all = 0.15, hpmax = 20}, 
-		custom_reqs = {positive = 1, physical = 2, random = 2},
+		cost = 20,
+		bonusstats = {matk = 10}, 
 		tags = ['training_final', 'training_success', 'simple_icon']
 	},
-	training_damaged = {
-		code = 'training_damaged',
-		visible = false,
+	training_def = {
+		code = 'training_def',
+		visible = true,
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix
+		icon = "res://assets/images/iconstraits/l_worker.png", 
+		icon_small = "res://assets/images/iconstraits/l_worker_prt.png", 
 		effects = [],
-		bonusstats = {price_add_part = -0.15, exp_gain_mod = -0.1}, 
-		tags = ['training_final', 'training_fail']
+		cost = 15,
+		bonusstats = {armor = 10}, 
+		tags = ['training_final', 'training_success', 'simple_icon']
 	},
-	training_broken = {
-		code = 'training_broken',
-		visible = false,
+	training_mdef = {
+		code = 'training_mdef',
+		visible = true,
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix
+		icon = "res://assets/images/iconstraits/l_worker.png", 
+		icon_small = "res://assets/images/iconstraits/l_worker_prt.png", 
 		effects = [],
-		bonusstats = {price_add_part = -0.25, exp_gain_mod = -0.2, chg_wisdom_max_set = 0, chg_persuasion_max_set = 0}, 
-		tags = ['training_final', 'training_fail']
+		cost = 15,
+		bonusstats = {mdef = 11}, 
+		tags = ['training_final', 'training_success', 'simple_icon']
 	},
+	training_trainer = {
+		code = 'training_trainer',
+		visible = true,
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_worker.png", 
+		icon_small = "res://assets/images/iconstraits/l_worker_prt.png", 
+		effects = [],
+		cost = 30,
+		bonusstats = {trainee_amount = 3}, 
+		tags = ['training_final', 'training_success', 'simple_icon', 'trainer']
+	},
+	training_heal = {
+		code = 'training_heal',
+		visible = true,
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_worker.png", 
+		icon_small = "res://assets/images/iconstraits/l_worker_prt.png", 
+		effects = [],
+		cost = 45,
+		bonusstats = {damage_mod_heal = 0.5}, 
+		tags = ['training_final', 'training_success', 'simple_icon']
+	},
+	#training_obsolete
+#	training_workforce = {
+#		code = 'training_workforce',
+#		visible = true,
+#		name = '',
+#		descript = '',
+#		icon = "res://assets/images/iconstraits/l_worker.png", 
+#		icon_small = "res://assets/images/iconstraits/l_worker_prt.png", 
+#		effects = [],
+#		bonusstats = {productivity = 0.4}, 
+#		custom_reqs = {humiliation = 3, random = 2},
+#		tags = ['training_final', 'training_success', 'simple_icon']
+#	},
+#	training_service = {
+#		code = 'training_service',
+#		visible = true,
+#		name = '',
+#		descript = '',
+#		icon = "res://assets/images/iconstraits/l_maidu.png",
+#		icon_small = "res://assets/images/iconstraits/l_maidu_prt.png",
+#		effects = [],
+#		bonusstats = {price_add_part = 0.5}, 
+#		custom_reqs = {humiliation = 1, sexual = 1, social = 1, random = 2},
+#		tags = ['training_final', 'training_success', 'simple_icon']
+#	},
+#	training_warrior = {
+#		code = 'training_warrior',
+#		visible = true,
+#		name = '',
+#		descript = '',
+#		icon = "res://assets/images/iconstraits/l_warrior.png",
+#		icon_small = "res://assets/images/iconstraits/l_warrior_prt.png", #2fix
+#		effects = [],
+#		bonusstats = {damage_mod_all = 0.15, hpmax = 20}, 
+#		custom_reqs = {positive = 1, physical = 2, random = 2},
+#		tags = ['training_final', 'training_success', 'simple_icon']
+#	},
+#	training_damaged = {
+#		code = 'training_damaged',
+#		visible = false,
+#		name = '',
+#		descript = '',
+#		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix
+#		effects = [],
+#		bonusstats = {price_add_part = -0.15, exp_gain_mod = -0.1}, 
+#		tags = ['training_final', 'training_fail']
+#	},
+#	training_broken = {
+#		code = 'training_broken',
+#		visible = false,
+#		name = '',
+#		descript = '',
+#		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix
+#		effects = [],
+#		bonusstats = {price_add_part = -0.25, exp_gain_mod = -0.2, chg_wisdom_max_set = 0, chg_persuasion_max_set = 0}, 
+#		tags = ['training_final', 'training_fail']
+#	},
 	
 	#monsters
 	absorb_atk_trait = {

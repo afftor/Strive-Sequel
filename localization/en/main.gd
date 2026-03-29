@@ -1194,7 +1194,7 @@ Hotkey: 3""",
 	SKILLWEAPON_REFINE = "Weapon Refine",
 	SKILLWEAPON_REFINEDESCRIPT = "Increases target's ATK by 30% until end of combat.",
 	SKILLACIDBOMB = "Acid Bomb",
-	SKILLACIDBOMBDESCRIPT = """Deals 250% of MATK as {color=yellow|Earth} damage and applies Shredded to target for 3 turns.""",
+	SKILLACIDBOMBDESCRIPT = "Deals 250% of MATK as {color=yellow|Earth} damage and applies Shredded to target for 3 turns.",
 	SKILLFIREBOMB = "Fire Bomb",
 	SKILLFIREBOMBDESCRIPT = "Throws Fire Bomb at a column, dealing 200% of MATK as {color=yellow|Fire} damage. Burns targets for 2 turns.",
 	SKILLDISTRACT = "Distract",
@@ -1230,7 +1230,7 @@ Hotkey: 3""",
 	SKILLWIND_ATK = "Wind Flurry",
 	SKILLWIND_ATKDESCRIPT = "Deals 80% of ATK as {color=yellow|Air} damage to one target and random enemy.",
 	SKILLWATER_EDGE = "Water Blade",
-	SKILLWATER_EDGEDESCRIPT = """Deals 100% of MATK as {color=yellow|Water} damage. Applies Wet status.""",
+	SKILLWATER_EDGEDESCRIPT = "Deals 100% of MATK as {color=yellow|Water} damage. Applies Wet status.",
 	SKILLHOLY_ATK = "Holy Attack",
 	SKILLHOLY_ATKDESCRIPT = "Deals 120% of ATK as {color=yellow|Light} damage. Has 20% chance to Confuse target.",
 	SKILLFIRE_CLEAVE = "Fire Cleave",
@@ -1255,9 +1255,9 @@ Hotkey: 3""",
 	SKILLSHADOWSTRIKE = "Shadow Strike",
 	SKILLSHADOWSTRIKEDESCRIPT = "Deals 130% of ATK as {color=yellow|Dark} damage to a target. Reduces target's ATK and MATK by 20 for 2 turns.",
 	SKILLFIREARR = "Fire Arrow",
-	SKILLFIREARRDESCRIPT = """Deals 100% of MATK as {color=yellow|Fire} damage. Has 20% chance to apply Burn for 2 turns. Chance increases at higher Fire Mastery level.""",
-	SKILLFIREARRDESCRIPT_1 = """Deals 100% of MATK as {color=yellow|Fire} damage. Has 60% chance to apply Burn for 2 turns. Chance increases at higher Fire Mastery level.""",
-	SKILLFIREARRDESCRIPT_2 = """Deals 100% of MATK as {color=yellow|Fire} damage. Has 100% chance to apply Burn for 2 turns.""",
+	SKILLFIREARRDESCRIPT = "Deals 100% of MATK as {color=yellow|Fire} damage. Has 20% chance to apply Burn for 2 turns. Chance increases at higher Fire Mastery level.",
+	SKILLFIREARRDESCRIPT_1 = "Deals 100% of MATK as {color=yellow|Fire} damage. Has 60% chance to apply Burn for 2 turns. Chance increases at higher Fire Mastery level.",
+	SKILLFIREARRDESCRIPT_2 = "Deals 100% of MATK as {color=yellow|Fire} damage. Has 100% chance to apply Burn for 2 turns.",
 	SKILLMINDBLAST = "Mind Blast",
 	SKILLMINDBLASTDESCRIPT = "Deals 120% of MATK as {color=yellow|Mind} damage.",
 	SKILLPSYCHICBLAST = "Psychic Blast",
@@ -1285,7 +1285,7 @@ Hotkey: 3""",
 	SKILLPURGE = "Purge",
 	SKILLPURGEDESCRIPT = "Removes all negative buffs from target.",
 	SKILLRIGHTEOUS_FIRE = "Righteous Fire",
-	SKILLRIGHTEOUS_FIREDESCRIPT = """Deals 75% of MATK as {color=yellow|Fire} damage. Silences target for 2 turns.""",
+	SKILLRIGHTEOUS_FIREDESCRIPT = "Deals 75% of MATK as {color=yellow|Fire} damage. Silences target for 2 turns.",
 	SKILLELEMENTAL_WEAKNESS = "Elemental Weakness",
 	SKILLELEMENTAL_WEAKNESSDESCRIPT = "Reduces target's Fire, Air, Earth and Water resists by 40 for 3 turns.",
 	SKILLELEMENTAL_PROTECTION = "Elemental Protection",
@@ -1334,7 +1334,7 @@ Hotkey: 3""",
 	SKILLVOID_BARRAGEDESCRIPT = "Deals 85% of MATK as {color=yellow|Dark} damage 4 times to random targets.",
 	SKILLVOIDSLAM = "Void Slam",
 	SKILLDRAW_BLOOD = "Draw Blood",
-	SKILLDRAW_BLOODDESCRIPT = """Strike target for 110% of ATK and cause it to Bleed for 2 turns.""",
+	SKILLDRAW_BLOODDESCRIPT = "Strike target for 110% of ATK and cause it to Bleed for 2 turns.",
 	SKILLSUNDER = "Sunder",
 	SKILLSUNDERDESCRIPT = "Strike target for 85% of ATK and reduce its DEF by 25% for 5 turns.",
 	SKILLCLEAVE = "Cleave",
@@ -1342,23 +1342,23 @@ Hotkey: 3""",
 	SKILLSTRIKE_THROUGH = "Strike Through",
 	SKILLSTRIKE_THROUGHDESCRIPT = "Strike target row for 110% of ATK.",
 	SKILLEXECUTION = "Execution",
-	SKILLEXECUTIONDESCRIPT = """Strike target for 225% of ATK. If it dies, apply Fear to all enemies for 1 turn.""",
+	SKILLEXECUTIONDESCRIPT = "Strike target for 225% of ATK. If it dies, apply Fear to all enemies for 1 turn.",
 	SKILLDISARM_ENEMY = "Disarm",
-	SKILLDISARM_ENEMYDESCRIPT = """Strike target for 130% of ATK and Disarm it for 3 turns.""",
+	SKILLDISARM_ENEMYDESCRIPT = "Strike target for 130% of ATK and Disarm it for 3 turns.",
 	SKILLPROVOCATION = "Provocation",
-	SKILLPROVOCATIONDESCRIPT = """Strike target for 70% of ATK and Provoke it for 2 turns.""",
+	SKILLPROVOCATIONDESCRIPT = "Strike target for 70% of ATK and Provoke it for 2 turns.",
 	SKILLSTONEWALL = "Stonewall",
-	SKILLSTONEWALLDESCRIPT = """Restore 15% of Maximum HP and apply Fortified for 5 turns.""",
+	SKILLSTONEWALLDESCRIPT = "Restore 15% of Maximum HP and apply Fortified for 5 turns.",
 	SKILLDIP_POISON = "Dip Poison",
-	SKILLDIP_POISONDESCRIPT = """Strike target for 100% of ATK and Poison it for 4 turns.""",
+	SKILLDIP_POISONDESCRIPT = "Strike target for 100% of ATK and Poison it for 4 turns.",
 	SKILLBACKKICK = "Back Kick",
-	SKILLBACKKICKDESCRIPT = """Strike target for 130% of ATK in melee and apply Silence for 4 turns.""",
+	SKILLBACKKICKDESCRIPT = "Strike target for 130% of ATK in melee and apply Silence for 4 turns.",
 	SKILLDEVASTATION = "Devastation",
 	SKILLDEVASTATIONDESCRIPT = "Strike target for 75% of ATK 6 times. If target dies, leftover strikes go to random targets.",
 	SKILLSTRAFE = "Strafe",
 	SKILLSTRAFEDESCRIPT = "Shoot target for 45% of ATK 3 times. If target dies, leftover shots go to random targets.",
 	SKILLENSNARE = "Ensnare",
-	SKILLENSNAREDESCRIPT = """Strike target column for 50% of ATK and Ensnare them.""",
+	SKILLENSNAREDESCRIPT = "Strike target column for 50% of ATK and Ensnare them.",
 	SKILLBOLT_TRAP = "Bolt Trap",
 	SKILLBOLT_TRAPDESCRIPT = "Set up a trap under enemy column. If they use a skill, they take damage as 110% of ATK.",
 	SKILLARROW_HAIL = "Arrow Hail",
@@ -1372,13 +1372,13 @@ Hotkey: 3""",
 	SKILLFIRE_SHIELDDESCRIPT_1 = "Target ally row receive 40 Water Resist for 5 turns. Increases number of targets with Fire Mastery.",
 	SKILLFIRE_SHIELDDESCRIPT_2 = "All allies receive 40 Water Resist for 5 turns.",
 	SKILLMAGMA_BLAST = "Magma Blast",
-	SKILLMAGMA_BLASTDESCRIPT = """Deals 150% of MATK as {color=yellow|Fire} damage and Shatter target for 5 turns.""",
+	SKILLMAGMA_BLASTDESCRIPT = "Deals 150% of MATK as {color=yellow|Fire} damage and Shatter target for 5 turns.",
 	SKILLWATER_SHIELD = "Water Shield",
 	SKILLWATER_SHIELDDESCRIPT = "Target ally receives 40 Fire Resist for 5 turns. Increases number of targets with Water Mastery.",
 	SKILLWATER_SHIELDDESCRIPT_1 = "Target ally row receive 40 Fire Resist for 5 turns. Increases number of targets with Water Mastery.",
 	SKILLWATER_SHIELDDESCRIPT_2 = "All allies receive 40 Fire Resist for 5 turns.",
 	SKILLFROST_PRISON = "Frost Prison",
-	SKILLFROST_PRISONDESCRIPT = """Deals 130% of MATK as {color=yellow|Water} damage. Has 50% chance to Freeze target for 1 turn.""",
+	SKILLFROST_PRISONDESCRIPT = "Deals 130% of MATK as {color=yellow|Water} damage. Has 50% chance to Freeze target for 1 turn.",
 	SKILLCLARITY = "Clarity",
 	SKILLCLARITYDESCRIPT = "Increase MATK by 25%, remove Blind, Sleep and Charm, gain immunity to them for 4 turns.",
 	SKILLBLIZZARD = "Blizzard",
@@ -1389,17 +1389,17 @@ Hotkey: 3""",
 	SKILLEARTH_SHIELDDESCRIPT = "Applies defensive crust to an ally for 5 turns, increasing their DEF based on caster's MATK. Also removes Shredded and Shattered statuses. Effect is upgraded with Earth Mastery.",
 	SKILLEARTH_SHIELDDESCRIPT_1 = "Applies defensive crust to an ally for 5 turns, increasing their DEF and MDEF based on caster's MATK. Also removes Shredded and Shattered statuses.",
 	SKILLACID_BOMB = "Acid Bomb",
-	SKILLACID_BOMBDESCRIPT = """Deals 250% of MATK as {color=yellow|Earth} damage and applies Shredded to target for 3 turns.""",
+	SKILLACID_BOMBDESCRIPT = "Deals 250% of MATK as {color=yellow|Earth} damage and applies Shredded to target for 3 turns.",
 	SKILLIMPALE = "Impale",
-	SKILLIMPALEDESCRIPT = """Deals 85% of MATK as {color=yellow|Earth} damage. Reduces incoming healing for 75% for 3 turns and has chance to apply Bleed.""",
+	SKILLIMPALEDESCRIPT = "Deals 85% of MATK as {color=yellow|Earth} damage. Reduces incoming healing for 75% for 3 turns and has chance to apply Bleed.",
 	SKILLOVERGROWTH = "Overgrowth",
-	SKILLOVERGROWTHDESCRIPT = """Deals 50% of MATK as {color=yellow|Earth} damage to all enemies and Ensnares them for 2 turns with 50% chance.""",
+	SKILLOVERGROWTHDESCRIPT = "Deals 50% of MATK as {color=yellow|Earth} damage to all enemies and Ensnares them for 2 turns with 50% chance.",
 	SKILLDISINTEGRATE = "Disintegrate",
 	SKILLDISINTEGRATEDESCRIPT = "Deals 165% of MATK as {color=yellow|Earth} damage to single target and Stun it for 3 turns. Deals 275% to golem and mech enemies instead. If target can't be stunned, applies Shredded instead.",
 	SKILLWIND_BLADE = "Wind Blade",
 	SKILLWIND_BLADEDESCRIPT = "Deals 60% of MATK as {color=yellow|Air} damage to one target and random enemy.",
 	SKILLLIGHTNING = "Lightning",
-	SKILLLIGHTNINGDESCRIPT = """Deals 125% of MATK as {color=yellow|Air} damage. Has 50% chance to apply Shock for 2 turns.""",
+	SKILLLIGHTNINGDESCRIPT = "Deals 125% of MATK as {color=yellow|Air} damage. Has 50% chance to apply Shock for 2 turns.",
 	SKILLHASTE = "Haste",
 	SKILLHASTEDESCRIPT = "Increases Speed of ally by 25 for 4 turns.",
 	SKILLCHAIN_LIGHTNING = "Chain Lightning",
@@ -1417,20 +1417,20 @@ Hotkey: 3""",
 	SKILLBLESSING = "Blessing",
 	SKILLBLESSINGDESCRIPT = "Removes Fear, Ensnared, Blind and Cursed. Increases Hit chance and Evasion by 35% for 6 turns.",
 	SKILLPACIFY = "Pacify",
-	SKILLPACIFYDESCRIPT = """Deals 130% of MATK as {color=yellow|Light} damage and apply Disarmed for 2 turns.""",
+	SKILLPACIFYDESCRIPT = "Deals 130% of MATK as {color=yellow|Light} damage and apply Disarmed for 2 turns.",
 	SKILLRADIANCE = "Radiance",
-	SKILLRADIANCEDESCRIPT = """Deals 80% of MATK as {color=yellow|Light} damage to all enemies and Shatter them for 3 turns.""",
+	SKILLRADIANCEDESCRIPT = "Deals 80% of MATK as {color=yellow|Light} damage to all enemies and Shatter them for 3 turns.",
 	SKILLE_RES = "Mass Resurrection",
 	SKILLE_RESDESCRIPT = "Resurrect every ally (except undead) with 80% of their Maximum HP.",
 	SKILLDARKNESS = "Darkness",
-	SKILLDARKNESSDESCRIPT = """Deals 75% of MATK as {color=yellow|Dark} damage and applies Blind for 1 turn. Duration improves with Dark Mastery.""",
-	SKILLDARKNESSDESCRIPT_1 = """Deals 75% of MATK as {color=yellow|Dark} damage and applies Blind for 2 turns.""",
+	SKILLDARKNESSDESCRIPT = "Deals 75% of MATK as {color=yellow|Dark} damage and applies Blind for 1 turn. Duration improves with Dark Mastery.",
+	SKILLDARKNESSDESCRIPT_1 = "Deals 75% of MATK as {color=yellow|Dark} damage and applies Blind for 2 turns.",
 	SKILLBLACK_TENDRILS = "Black Tendrils",
-	SKILLBLACK_TENDRILSDESCRIPT = """Deals 30% of MATK as {color=yellow|Dark} damage to all enemies and applies Ensnared for 1 turn.""",
+	SKILLBLACK_TENDRILSDESCRIPT = "Deals 30% of MATK as {color=yellow|Dark} damage to all enemies and applies Ensnared for 1 turn.",
 	SKILLMALEDICTION = "Malediction",
-	SKILLMALEDICTIONDESCRIPT = """Deals 60% of MATK as {color=yellow|Dark} damage and Curses target for 5 turns.""",
+	SKILLMALEDICTIONDESCRIPT = "Deals 60% of MATK as {color=yellow|Dark} damage and Curses target for 5 turns.",
 	SKILLDEVOUR_MAGIC = "Devour Magic",
-	SKILLDEVOUR_MAGICDESCRIPT = """Remove all positive buffs from a single enemy. Apply Silence for 3 turns.""",
+	SKILLDEVOUR_MAGICDESCRIPT = "Remove all positive buffs from a single enemy. Apply Silence for 3 turns.",
 	SKILLVEIL = "Shadow Veil",
 	SKILLVEILDESCRIPT = "Buff ally column for 5 turns: Light and Dark resists are increased by 30, MDEF is increased based on caster's MATK.",
 	SKILLSKILL_VOID = "Void",
@@ -3288,6 +3288,30 @@ Only one attunement can be taken""",
 	TRAITSUCCUBUS_COMBAT = "Combat attunement",
 	TRAITSUCCUBUS_COMBATDESCRIPT = """HP Factor: +20%; HP Regen: +100%; Gain lust when taking damage.
 Only one attunement can be taken""",
+	
+	FINISHTRAINING = "Finish training? Leftover spirit will be used to purchase additional bonuses.",
+	
+	TRAITTRAINING_VALUE = "Trained spec",
+	TRAITTRAINING_VALUEDESCRIPT = "+25% Value",
+	TRAITTRAINING_PRODUCTIVITY = "Trained spec",
+	TRAITTRAINING_PRODUCTIVITYDESCRIPT = "+30% Productivity",
+	TRAITTRAINING_XP = "Trained spec",
+	TRAITTRAINING_XPDESCRIPT = "+20% xp gain",
+	TRAITTRAINING_HP = "Trained spec",
+	TRAITTRAINING_HPDESCRIPT = "+25 health",
+	TRAITTRAINING_ATK = "Trained spec",
+	TRAITTRAINING_ATKDESCRIPT = "+10 atk",
+	TRAITTRAINING_MATK = "Trained spec",
+	TRAITTRAINING_MATKDESCRIPT = "+10 matk",
+	TRAITTRAINING_DEF = "Trained spec",
+	TRAITTRAINING_DEFDESCRIPT = "+10 def",
+	TRAITTRAINING_MDEF = "Trained spec",
+	TRAITTRAINING_MDEFDESCRIPT = "+15 mdef",
+	TRAITTRAINING_TRAINER = "Trained spec",
+	TRAITTRAINING_TRAINERDESCRIPT = "+3 trainer slots and trainer status",
+	TRAITTRAINING_HEAL = "Trained spec",
+	TRAITTRAINING_HEALDESCRIPT = "+50% healing efficiency",
+	
 	TRAITEFFECTVIRGIN = """[center]{color=yellow|Virginity}[/center]
 As [name] has a observable virginity, this makes [him] more desirable for certain individuals.
 {color=yellow|Sell price is increased by 25%%}""",
@@ -5959,7 +5983,6 @@ Proceed? (original save file will stay untouched, but won't work with the curren
 	TUTORIAL_COMBAT4 = "All quests provide item rewards and guild reputation. Reputation can be used to purchase special guild services. Trouble Solving requires traveling to a procedurally generated location.",
 	TUTORIAL_COMBAT5 = "Open the map menu to learn how to send characters to a new location.",
 	TUTORIAL_COMBAT6 = "Select two characters who will travel to complete the task.",
-#	TUTORIAL_COMBAT7 = "Click the Send button.",
 	TUTORIAL_COMBAT8 = "In the location list, find the special quest location you need to visit.",
 	TUTORIAL_COMBAT9 = "Click Send to begin traveling.",
 	TUTORIAL_COMBAT10 = "Once characters are on the route, you must advance time for them to arrive.",
@@ -7158,7 +7181,7 @@ You prepare yourself and your group for the upcoming fight. Duncan can be seen m
 
 {color=yellow|Aire: — Don't worry, we've planned your escape for such occasions... Once we defeat the intruders we will reunite and get you back.}
 
-{color=green|Greg: — You've heard her, Ana, now move.}
+{color=aqua|Greg: — You've heard her, Ana, now move.}
 
 {color=aqua|Anastasia: — ...}""",
 	GUILD_ATTACK_ON_HIDEOUT_4_1 = """{color=yellow|Aire: — It is done.}
@@ -7172,7 +7195,7 @@ You prepare yourself and your group for the upcoming fight. Duncan can be seen m
 
 {color=aqua|Greg: — We are under attack. The guilds have found us.}
 
-{color=green|Anastasia: — So soon!? What do we do?}
+{color=aqua|Anastasia: — So soon!? What do we do?}
 
 {color=aqua|Greg: — You will have to escape. Use the route your elf has prepared for you.}""",
 	GUILD_ATTACK_ON_HIDEOUT_4_3 = """{color=yellow|Anastasia: — Run away? No, I-I can't...}
@@ -17413,7 +17436,10 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	MAE_PROPOSAL_FINISHED_DESCRIPT = "Mae freezes for a moment. Her tail sways nervously before she lowers her gaze, smiling with quiet sincerity.",
 	MAE_PROPOSAL_UNFINISHED_TEXT = "I-I'm sorry... I don't think I can accept something like this yet, it feels too early for me.",
 	MAE_PROPOSAL_UNFINISHED_DESCRIPT = "Mae fidgets with her fingers, avoiding your eyes.",
-		
+	JEAN_PROPOSAL_FINISHED_TEXT = "M-marry? You can't be serious! This is all so... Yes, I agree!",
+	JEAN_PROPOSAL_FINISHED_DESCRIPT = "Jean's eyes are wide open, she take a few moments gasping and flustering red until finally she speaks up.",
+	JEAN_PROPOSAL_UNFINISHED_TEXT = "You've gotta be joking. I don't have time for jokes like this.",
+	JEAN_PROPOSAL_UNFINISHED_DESCRIPT = "Jean blushes slightly but quickly dismisses your approach while looking away.",
 	HIRE_LINE1 = "...Pleased to meet you, [Master].",
 	HIRE_LINE2 = "Please, take care of me, [Master].",
 	HIRE_LINE3 = "So you are my new [Master]! Pleased to meet you!",
@@ -18065,7 +18091,9 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	TRAIN_KINK7 = "This felt good... Despite everything, my body didn't resist it at all.",
 	NOSPEC = "No Speciality",
 	NOSPECDESCRIPT = "Take no speciality and finish training.",
-	TRAINFINISHTEXT = "Finish training after taking Master Acknowledgement trait. To take speciality [color=yellow]Spirit[/color] must be above 50%.",
+	TRAINFINISHTEXT = "Finish training after taking Master Acknowledgement trait",
+	TRAININGBONUSES = "Bonuses:",
+	TRAININGTRAINEES = "Trainees:",
 	AREAPLAINS = "Plains",
 	AREAFORESTS = "Forests",
 	AREAMOUNTAINS = "Mountains",
@@ -21569,12 +21597,13 @@ You pull out slowly, watching as your cum leaks from her ass, down her thighs. S
 	ITEMORNATE_LEATHER_HEADDRESS = "Ornate Leather Headdress",
 	ITEMORNATE_LEATHER_HEADDRESSDESCRIPT = "A ceremonial headdress gifted by a northern tribe. It hums faintly with old magic.",
 	TRAITSPIRIT_BOAR = "Guardian Spirit: Hearthtusk",
-	TRAITSPIRIT_BOARDESCRIPT = "Physics factor +1, HP max +15, DEF +10\nAllies in the same column recover 10 HP at the end of the global turn.",
+	TRAITSPIRIT_BOARDESCRIPT = """Physics factor +1, HP max +15, DEF +10
+Allies in the same column recover 10 HP at the end of the global turn.""",
 	TRAITSPIRIT_SATYR = "Guardian Spirit: Velhorn",
-	TRAITSPIRIT_SATYRDESCRIPT = "Sex Factor +1, Authority Factor +1, MATK +3, MDEF +5\nRestore 4 mana after casting a spell on an ally or yourself.",
+	TRAITSPIRIT_SATYRDESCRIPT = """Sex Factor +1, Authority Factor +1, MATK +3, MDEF +5
+Restore 4 mana after casting a spell on an ally or yourself.""",
 	TRAITSPIRIT_OWL = "Guardian Spirit: Noctara",
-	TRAITSPIRIT_OWLDESCRIPT = "Wits Factor +1, Wits bonus +10, XP bonus +20%"
-	
+	TRAITSPIRIT_OWLDESCRIPT = "Wits Factor +1, Wits bonus +10, XP bonus +20%",
 	JEAN_SIDEQUEST_START_1 = """A few days pass after Jean settles into your mansion. She keeps mostly to herself, spending long hours locked in her room or staring into space with an unreadable expression while performing her duties. Unlike some of the others, she does not openly seek your attention - or at least, that was the case up until this evening.
 
 Jean approaches you after midnight, when most of the mansion has already settled into silence. She pretends to be relaxed, but her posture is tense, shoulders slightly raised as if bracing for refusal.
@@ -21609,16 +21638,14 @@ She crosses her arms.
 She pauses briefly before adding, her tone dripping with sarcasm:
 
 {color=yellow|Jean: — Just a quick trip there and back. I wouldn't dream of taking more than necessary time from our renowned mayor.}""",
-	JEAN_SIDEQUEST_RESPONSE_COMMON = """Despite her barely hidden sarcasm, you sense that this request is important to her. The longer you hesitate, the more she shifts nervously, avoiding direct eye contact.""",
+	JEAN_SIDEQUEST_RESPONSE_COMMON = "Despite her barely hidden sarcasm, you sense that this request is important to her. The longer you hesitate, the more she shifts nervously, avoiding direct eye contact.",
 	JEAN_SIDEQUEST_DECISION_OPTION_1 = "Alright, we'll go right away.",
 	JEAN_SIDEQUEST_DECISION_OPTION_2 = "What kind of research is this? Are you sure Aliron has nothing on the subject?",
 	JEAN_SIDEQUEST_DECISION_OPTION_3 = "Fine. I'll deal with it when I have time.",
 	JEAN_SIDEQUEST_QUESTION = """From the look on her face, it's obvious that your questions were something she feared all along. Which makes her lack of preparation all the more amusing. Her eyes dart around as she clumsily tries to dismiss your question.
 
 {color=yellow|Jean: — Ugh, you're not a mage. You wouldn't even understand it...}""",
-
 	JEAN_SIDEQUEST_QUESTION_OPTION = "Maybe not, but I know a few. I can ask Myr. She'd understand, right?",
-
 	JEAN_SIDEQUEST_DECISION_QUESTION = """For a brief moment, genuine terror crosses Jean's face before she regains control.
 
 {color=yellow|Jean: — Are you really going to bother the Guild Leader over something so insignificant? Did you forget how easy it is to piss her off? She'd just throw you out of the room like she did before!}
@@ -21631,20 +21658,20 @@ She scoffs.
 {color=yellow|Jean: — Thank you. I appreciate it. I'll go get ready.}
 
 She leaves quickly, before you can comment.""",
-	JEAN_SIDEQUEST_CLOSE_2 = """Jean's expression turns sour for a brief moment - then she schools her face and turns away. As she leaves, the determination in her posture is unmistakable. You get the distinct feeling that if this matter isn't addressed soon, her patience will run out far quicker than you might expect.""",
+	JEAN_SIDEQUEST_CLOSE_2 = "Jean's expression turns sour for a brief moment - then she schools her face and turns away. As she leaves, the determination in her posture is unmistakable. You get the distinct feeling that if this matter isn't addressed soon, her patience will run out far quicker than you might expect.",
 	JEAN_SIDEQUEST_CAPITAL_START = """The Empire Capital greets you as it always does: noise, crowds, and a suffocating sense of arrogance. Merchants shout from every corner, guards eye you with suspicion, and robed scholars glide past, treating everyone beneath their station as invisible.
 
 Jean attempts to ask for directions to the library, but no one even slows their step. After several such attempts, she begrudgingly buys a map from a peddler who clearly makes a living off lost newcomers.""",
 	JEAN_SIDEQUEST_CAPITAL_LIBRARY = """{color=yellow|Jean: — Alright, looks like the library should be next to that giant tower... Let's go!}
 You let her lead, and soon you find yourselves before the massive doors of this treasury of knowledge. While you linger for a moment, admiring the elaborate decorations, Jean wastes no time and heads straight inside, only to be abruptly stopped by the guard.
 
-{color=green|Guard: — Entry is only allowed with a valid pass. Do you have one?}
+{color=aqua|Guard: — Entry is only allowed with a valid pass. Do you have one?}
 
 Jean sighs and admits she doesn't, then asks the guard how to obtain one. He begrudgingly explains that citizens may acquire a pass at the town hall, while non-citizens must have it issued by the library itself after submitting an official request. Hearing this, Jean's eyes light up with hope as she looks at the guard pleadingly.""",
 	JEAN_SIDEQUEST_CAPITAL_GUARD = """{color=yellow|Jean: — You said non-locals can get a pass directly from the library, right? So, um... could you just let us inside for a moment...}
 
 Her question is cut short by the guard's resounding denial. The hopeful spark in Jean's eyes fades. She makes several more attempts to persuade him, but he refuses to budge. Seeing that this is getting nowhere, you decide to intervene.""",
-	JEAN_SIDEQUEST_CAPITAL_GUARD_RETURN = """{color=green|Guard: — You again? I told you that I won't let you in without the pass.}""",
+	JEAN_SIDEQUEST_CAPITAL_GUARD_RETURN = "{color=aqua|Guard: — You again? I told you that I won't let you in without the pass.}",
 	JEAN_SIDEQUEST_GUARD_OPTION_1 = "Surely exceptions can be made... ( - 500 gold)",
 	JEAN_SIDEQUEST_GUARD_OPTION_2 = "Perhaps I should speak to the Melchor about this...",
 	JEAN_SIDEQUEST_GUARD_OPTION_3 = "I only promised to bring you to the capital. The rest is on you.",
@@ -21654,7 +21681,7 @@ Her question is cut short by the guard's resounding denial. The hopeful spark in
 Jean stands astonished for a moment, then squints at the guard, shaking her head in disapproval, before following you inside. As the doors close behind you and your footsteps echo through the hall, she glances at you with gratitude.""",
 	JEAN_SIDEQUEST_GUARD_ENTRY_MELCHOR = """The moment the guard hears that name, his arrogant demeanor evaporates.
 
-{color=green|Guard: — Wait! I think I can make an exception for guests of our city. There's no need to bother his wiseness over such a minor incident, yes?}
+{color=aqua|Guard: — Wait! I think I can make an exception for guests of our city. There's no need to bother his wiseness over such a minor incident, yes?}
 
 Jean stands frozen for a moment, clearly unsure what just happened, before hurrying after you. Nonetheless, as the doors close behind you and your footsteps echo through the hall, she glances at you with gratitude.""",
 	JEAN_SIDEQUEST_GUARD_REFUSE_1 = """Jean freezes. For a moment, she genuinely looks lost, her gaze drifts from the guard to the library doors, then drops to the ground beneath her feet. She presses her lips together, thinking, as an awkward silence settles in.
@@ -21664,7 +21691,7 @@ Then, suddenly, her cheeks flare red. She shifts her weight, straightens her pos
 
 She awkwardly leans in, immediately misjudging the distance, then straightens again, flustered.
 
-{color=green|Guard: — Keep your distance.}
+{color=aqua|Guard: — Keep your distance.}
 
 {color=yellow|Jean: — O-oh! Sorry, I just thought that maybe... well...}
 
@@ -21688,7 +21715,7 @@ She lunges forward, ready to make things much worse. You move fast, grabbing her
 It takes her a couple of minutes to cool down. Finally, she stomps her foot and demonstratively turns away, staring in the opposite direction of the guard.
 
 Seeing that this is going nowhere, you decide it's time to step in.""",
-	JEAN_SIDEQUEST_LIBRARY_INSIDE_1 = """Inside, the air smells of dust and old parchment. The ancient librarian barely acknowledges Jean, focusing instead on the papers scattered across his desk. After several minutes of searching through the records, he finally informs her that the only copy of the book has already been taken.""",
+	JEAN_SIDEQUEST_LIBRARY_INSIDE_1 = "Inside, the air smells of dust and old parchment. The ancient librarian barely acknowledges Jean, focusing instead on the papers scattered across his desk. After several minutes of searching through the records, he finally informs her that the only copy of the book has already been taken.",
 	JEAN_SIDEQUEST_LIBRARY_INSIDE_2 = """{color=yellow|Jean: — Then can you at least tell me the return date? I'll come back that very day.}
 
 The librarian hesitates. His gaze drifts over your gear, then Jean's. Apparently satisfied with what he sees, he nods and clears his throat.
@@ -21706,32 +21733,32 @@ The librarian hesitates. His gaze drifts over your gear, then Jean's. Apparently
 He shifts his gaze between Jean and you, clearly waiting for your answer.""",
 	JEAN_SIDEQUEST_LIBRARY_OPTION_1 = "We do. Just tell us where to go.",
 	JEAN_SIDEQUEST_LIBRARY_OPTION_2 = "You said the book has been missing for a long time, so it's not a simple task. How about a bit of extra compensation?",
-	JEAN_SIDEQUEST_LIBRARY_NOTE_1 = """Encouraged by your straightforward response, the librarian quickly scribbles down an address and hands you the note. You nod and step back out into the bustling streets of the capital.""",
+	JEAN_SIDEQUEST_LIBRARY_NOTE_1 = "Encouraged by your straightforward response, the librarian quickly scribbles down an address and hands you the note. You nod and step back out into the bustling streets of the capital.",
 	JEAN_SIDEQUEST_LIBRARY_NOTE_2 = """The librarian frowns, clearly displeased, but after a brief pause he exhales sharply.
 
 {color=aqua|Librarian: — Fine. I'll throw in a bit of coin as well. Just so this matter is resolved already. Now get out.}
 
 You nod and step back out into the bustling streets of the capital.""",
-	JEAN_SIDEQUEST_MANSION_START = """The capital's layout turns out to be quite chaotic, to say the least. Streets intersect at odd angles or fade into one another without signs or markers. After nearly an hour of walking, you are fairly sure you've found the correct street - only to realize that none of the buildings bear numbers.""",
+	JEAN_SIDEQUEST_MANSION_START_1 = "The capital's layout turns out to be quite chaotic, to say the least. Streets intersect at odd angles or fade into one another without signs or markers. After nearly an hour of walking, you are fairly sure you've found the correct street - only to realize that none of the buildings bear numbers.",
 	JEAN_SIDEQUEST_MANSION_START_2 = """As you circle the area yet again, you notice a street beggar watching your struggle with thinly veiled amusement.
 
-{color=green|Beggar: — Heh, you lost something, or are you just like walking in circles?}
+{color=aqua|Beggar: — Heh, you lost something, or are you just like walking in circles?}
 
 Ignoring his comment, Jean stays composed and shows him the note.
 
 {color=yellow|Jean: — Do you know which building this is?}
 
-{color=green|Beggar: — Maybe I do. What's in it for me?}""",
+{color=aqua|Beggar: — Maybe I do. What's in it for me?}""",
 	JEAN_SIDEQUEST_MANSION_BEGGAR_OPTION_1 = "How about some booze?",
 	JEAN_SIDEQUEST_MANSION_BEGGAR_OPTION_2 = "Will a bit of gold help you remember? (- 100 gold)",
 	JEAN_SIDEQUEST_MANSION_BEGGAR_OPTION_3 = "A beating if you don't answer the question, how about that? (PHY>3)",
 	JEAN_SIDEQUEST_MANSION_BEGGAR_PAY = "After receiving payment, the beggar points to the building you've been standing next to all along, then quickly scurries away.",
-	JEAN_SIDEQUEST_MANSION_BEGGAR_THREAT = """{color=green|Beggar: — Alright, alright, it's this one!}
+	JEAN_SIDEQUEST_MANSION_BEGGAR_THREAT = """{color=aqua|Beggar: — Alright, alright, it's this one!}
 
 He points right back at the building you were staying next to all this time, then quickly retreats, clearly taking your threats seriously.
 
 {color=yellow|Jean: — Well... at least we found the place. Let's go.}""",
-	JEAN_SIDEQUEST_MANSION_BEGGAR_FAIL = """{color=green|Beggar: — A beating? What for, huh? I'm just sitting here, minding my own damn business. If you don't wanna pay then you can look for your stupid building yourself!}""",
+	JEAN_SIDEQUEST_MANSION_BEGGAR_FAIL = "{color=aqua|Beggar: — A beating? What for, huh? I'm just sitting here, minding my own damn business. If you don't wanna pay then you can look for your stupid building yourself!}",
 	JEAN_SIDEQUEST_MANSION_LOCK = """Jean steps back, scanning the building. It shows no sign of life.
 
 {color=yellow|Jean: — Hey, you got any ideas? Should we wait, or maybe...?}
@@ -21742,11 +21769,11 @@ You take her hint and take a closer look at the lock. It looks sturdy but also f
 	JEAN_SIDEQUEST_MANSION_FRONT = """Jean hesitates for a moment, but then steps aside and lets you do your thing. You kneel by the door and get to work. The lock resists at first, but after a couple of minutes it finally gives way with a soft click.
 
 You glance around, making sure no one is watching. Luckily for you, the street is empty. You then step inside, while Jean follows closely behind.""",
-	JEAN_SIDEQUEST_MANSION_WINDOW = """You decide to walk around the house first, which soon proves to be the right decision. As you circle the building, you notice one of the side windows left slightly ajar, its latch broken. You boost yourself up and slip through the window, landing quietly inside the dusty interior. You then help Jean climb in after you.""",
+	JEAN_SIDEQUEST_MANSION_WINDOW = "You decide to walk around the house first, which soon proves to be the right decision. As you circle the building, you notice one of the side windows left slightly ajar, its latch broken. You boost yourself up and slip through the window, landing quietly inside the dusty interior. You then help Jean climb in after you.",
 	JEAN_SIDEQUEST_MANSION_ENTER_1 = """The moment you step inside, the air grows heavy with dust, mold, and a faint metallic tang. Jean moves a little farther inside and stops in front of a bookshelf.
 
 {color=yellow|Jean: — No, it doesn't seem like anyone has touched these books recently. No point wasting time here. This place feels creepy, so let's find what we came for and get out as soon as possible.}""",
-	JEAN_SIDEQUEST_MANSION_ENTER_2 = """You agree, and the two of you quietly move forward into a dark corridor, trying to guess which room would make the most sense to search first.""",
+	JEAN_SIDEQUEST_MANSION_ENTER_2 = "You agree, and the two of you quietly move forward into a dark corridor, trying to guess which room would make the most sense to search first.",
 	JEAN_SIDEQUEST_MANSION_GOLEMS_1 = """Deciding to simply check every room one by one, you move deeper inside. Suddenly, you feel a wave of magic, which, while subtle, is still unmistakably reacting to your presence.
 
 A low hum vibrates through the house, faint yet noticeable. Runes briefly flare along the walls, only to dim again moments later.
@@ -21756,10 +21783,10 @@ Jean immediately reaches for her staff, though it doesn't seem like the danger i
 
 She doesn't get a chance to finish her sentence. Heavy, grinding footsteps echo behind you as the corridor is blocked by guardian golems, clearly activated by your intrusion.
 
-{color=yellow|Jean: — Oh fuck... this place was warded. Looks like we'll have to deal with these things somehow...}""",
+{color=yellow|Jean: — Oh crap... this place was warded. Looks like we'll have to deal with these things somehow...}""",
 	JEAN_SIDEQUEST_MANSION_GOLEMS_2 = """You land the final blow on the last golem, but before you can relax, more constructs begin to emerge from hidden compartments. You raise your weapons once again, but before the second fight fully unfolds, a voice comes from the other side.
 
-{color=red|Unfamiliar Voice: — Hey, stupid rocks! Over here!}
+{color=aqua|Unfamiliar Voice: — Hey, stupid rocks! Over here!}
 
 As the golems turn to assess the new threat, you seize the opportunity and strike them from behind.""",
 	JEAN_SIDEQUEST_MANSION_WINDOW_NOISE_1 = """You move through the house slowly, dust muffling your footsteps. You manage to check only a couple of rooms when the sound of combat suddenly echoes from the other side of the mansion.
@@ -21779,46 +21806,46 @@ You briefly reconsider whether waiting was the right call as one of the golems s
 
 The unfamiliar woman bends forward, hands braced on her knees, breathing hard. A thin sheen of sweat glistens on her skin. After a few seconds, she straightens. Suddenly her eyes focus on Jean and her expression begins to soften.
 
-{color=red|Woman: — Jean? Is that you?}
+{color=aqua|Woman: — Jean? Is that you?}
 
 Surprised to hear her own name, Jean squints, trying to get a better look at the woman in front of her.""",
 	JEAN_SIDEQUEST_RYNN_INTRO_2 = """{color=yellow|Jean: — We've definitely met before... Rynn?}
 
 The woman nods and sheathes her sword.
 
-{color=red|Rynn: — Huh, who would've thought I'd meet an old acquaintance in a place like this! And what are you and your friend doing here?}""",
+{color=aqua|Rynn: — Huh, who would've thought I'd meet an old acquaintance in a place like this! And what are you and your friend doing here?}""",
 	JEAN_SIDEQUEST_RYNN_CHAT_1 = """After taking a minute to explain how you got here Rynn listens closely.
 
 {color=yellow|Jean: — ... and that's how we ended up in this shithole, looking for that one damn book.}
 
-{color=red|Rynn: — Well, there's no shortage of books in this place. You might actually find what you're looking for. My task is a bit harder...}
+{color=aqua|Rynn: — Well, there's no shortage of books in this place. You might actually find what you're looking for. My task is a bit harder...}
 
 You notice Rynn's expression darken.""",
-	JEAN_SIDEQUEST_RYNN_CHAT_2 = """{color=red|Rynn: — I'm looking for my brother, or at least any clues that could help me find him. He was last seen with the man who owned this place. After that... he vanished.}
+	JEAN_SIDEQUEST_RYNN_CHAT_2 = """{color=aqua|Rynn: — I'm looking for my brother, or at least any clues that could help me find him. He was last seen with the man who owned this place. After that... he vanished.}
 
-{color=red|Rynn: — Say, since we ended up here at the same time... what do you think about us joining forces? If there are more traps or guards left, dealing with them together would be easier.}""",
-	JEAN_SIDEQUEST_RYNN_HELPED = "{color=red|Rynn: — Besides, I still owe you thanks for helping me. So, if the opportunity arises, I would gladly return the favor.}",
-	JEAN_SIDEQUEST_RYNN_HELPED_YOU = "{color=red|Rynn: — You've already seen what I'm capable of, and all three of us would form quite a formidable party.}",
-	JEAN_SIDEQUEST_RYNN_CHAT_3 = """She looks at you with a glimmer of hope in her eyes, waiting for your response""",
+{color=aqua|Rynn: — Say, since we ended up here at the same time... what do you think about us joining forces? If there are more traps or guards left, dealing with them together would be easier.}""",
+	JEAN_SIDEQUEST_RYNN_HELPED = "{color=aqua|Rynn: — Besides, I still owe you thanks for helping me. So, if the opportunity arises, I would gladly return the favor.}",
+	JEAN_SIDEQUEST_RYNN_HELPED_YOU = "{color=aqua|Rynn: — You've already seen what I'm capable of, and all three of us would form quite a formidable party.}",
+	JEAN_SIDEQUEST_RYNN_CHAT_3 = "She looks at you with a glimmer of hope in her eyes, waiting for your response",
 	JEAN_SIDEQUEST_RYNN_OPTION_1 = "So how do you two know each other?",
 	JEAN_SIDEQUEST_RYNN_OPTION_2 = "Can you tell us more about the situation with your brother?",
 	JEAN_SIDEQUEST_RYNN_OPTION_3 = "Alright, sounds reasonable. Three pairs of eyes are better than two.",
 	JEAN_SIDEQUEST_RYNN_HISTORY = """{color=yellow|Jean: — We've met a couple of times during my time in the Mage Academy, when she and other recruits from the Fighters' Guild visited us to learn how to properly use artifacts.}
 
-{color=red|Rynn: — That's right, and since Jean was known for getting into arguments with the head of the academy and earning herself punishments, she was sent to deal with us muscleheads much more often than others.}
+{color=aqua|Rynn: — That's right, and since Jean was known for getting into arguments with the head of the academy and earning herself punishments, she was sent to deal with us muscleheads much more often than others.}
 
 {color=yellow|Jean: — Now, you didn't have to mention that! Though you're not wrong... Anyway.}""",
 	JEAN_SIDEQUEST_RYNN_BROTHER_1 = """Rynn sighs.
 
-{color=red|Rynn: — I wish I had more to tell. We came here, to the Empire's capital, looking for mercenary work. However, since the jobs didn't pay that much, he became an arena fighter instead. And a good one at that.}
+{color=aqua|Rynn: — I wish I had more to tell. We came here, to the Empire's capital, looking for mercenary work. However, since the jobs didn't pay that much, he became an arena fighter instead. And a good one at that.}
 
-{color=red|Rynn: — Recently, he caught the attention of some “wealthy sponsor,” as he called him. Said he was going to get a great deal, that we'd be swimming in gold... And then he disappeared.}""",
+{color=aqua|Rynn: — Recently, he caught the attention of some “wealthy sponsor,” as he called him. Said he was going to get a great deal, that we'd be swimming in gold... And then he disappeared.}""",
 	JEAN_SIDEQUEST_RYNN_BROTHER_2 = """She drops her gaze. A silence settles over the room for a moment before she continues.
 
-{color=red|Rynn: — I learned that the sponsor owns this mansion, so I came here looking for answers. Or at least some clues. I broke in through the window and searched for anything useful... And then I met you two. And offered an alliance. So... are you in?}""",
+{color=aqua|Rynn: — I learned that the sponsor owns this mansion, so I came here looking for answers. Or at least some clues. I broke in through the window and searched for anything useful... And then I met you two. And offered an alliance. So... are you in?}""",
 	JEAN_SIDEQUEST_RYNN_JOIN = """Rynn allows herself a small smile.
 
-{color=red|Rynn: — Good. Let's not waste time then.}""",
+{color=aqua|Rynn: — Good. Let's not waste time then.}""",
 	JEAN_SIDEQUEST_UNDERGROUND_START = """After searching the upper floors for some time, you move down to the ground level. There Jean notices a suspicious-looking book on one of the shelves. When she pulls it out, part of the wall shifts aside, revealing a narrow staircase descending into the cellar.
 
 {color=yellow|Jean: — I knew that book felt out of place! Must be some kind of hidden basement...}
@@ -21826,7 +21853,7 @@ You notice Rynn's expression darken.""",
 Jean looks at you with uncertainty in her eyes.""",
 	JEAN_SIDEQUEST_UNDERGROUND_OPTION_1 = "We've come this far. No point in turning back now. Let's go.",
 	JEAN_SIDEQUEST_UNDERGROUND_OPTION_2 = "Is our great mage afraid of a little darkness now?",
-	JEAN_SIDEQUEST_UNDERGROUND_DESCEND_1 = """You gather near the staircase and begin descending slowly into the darkness. Jean summons a small magical flame to light your way.""",
+	JEAN_SIDEQUEST_UNDERGROUND_DESCEND_1 = "You gather near the staircase and begin descending slowly into the darkness. Jean summons a small magical flame to light your way.",
 	JEAN_SIDEQUEST_UNDERGROUND_DESCEND_2 = """{color=yellow|Jean: — Huh? Who said I was afraid? It's just... we already agreed to work together, didn't we? Hmph.}
 
 She turns back toward the staircase, her steps a bit uncertain. Only after you and Rynn join her does she seem to relax.""",
@@ -21837,17 +21864,17 @@ The staircase soon opens into a wide chamber, dimly lit by residual magic clingi
 
 {color=yellow|Rynn: — Is it possible... that he kept my brother in one of these?}""",
 	JEAN_SIDEQUEST_UNDERGROUND_CAGES_OPTION = "Those marks look like they were left by some kind of creature, not just a regular human.",
-	JEAN_SIDEQUEST_UNDERGROUND_CIRCLE_1 = """{color=red|Rynn: — Perhaps you're right... But then where did he hide my brother...?}
+	JEAN_SIDEQUEST_UNDERGROUND_CIRCLE_1 = """{color=aqua|Rynn: — Perhaps you're right... But then where did he hide my brother...?}
 
 You don't have a clear answer to that question, so you decide to take a closer look at one of the magic circles on the floor.""",
 	JEAN_SIDEQUEST_UNDERGROUND_CIRCLE_2 = """You crouch near the circle, studying the markings. They seem different from the ones you're used to seeing, making you think they might be from a different era altogether. You point this out to Rynn.
 
-{color=red|Rynn: — I agree. They feel... wrong. Unfortunately, I'm not a mage, so I can't say much more than that.}
+{color=aqua|Rynn: — I agree. They feel... wrong. Unfortunately, I'm not a mage, so I can't say much more than that.}
 
 Hearing this, you realize that you do, in fact, have a mage with you. You turn and gesture for Jean to come closer, pointing at the circle. However, to your surprise, she seems completely uninterested in your finding, which you find pretty odd. She gives the markings a brief glance, then turns away, muttering that she doesn't recognize them either. Then quickly moves to the far side of the room and resumes rummaging through the owner's desk and papers.""",
 	JEAN_SIDEQUEST_UNDERGROUND_CIRCLE_OPTION_1 = "Looks like whatever magic this was isn't active anymore, so let's focus on our task.",
 	JEAN_SIDEQUEST_UNDERGROUND_CIRCLE_OPTION_2 = "Aren't you interested in unknown magic? That's not like you.",
-	JEAN_SIDEQUEST_UNDERGROUND_REACT_1 = """You shrug at Jean's antics and decide to move on with your mission. Quietly, you hope your observation remains true and that the magic stays dormant, at least until you're out of this place.""",
+	JEAN_SIDEQUEST_UNDERGROUND_REACT_1 = "You shrug at Jean's antics and decide to move on with your mission. Quietly, you hope your observation remains true and that the magic stays dormant, at least until you're out of this place.",
 	JEAN_SIDEQUEST_UNDERGROUND_REACT_2 = """You raise an eyebrow, questioning Jean's behavior. She shifts uncomfortably, clearly unhappy at being put on the spot.
 
 {color=yellow|Jean: — It might be difficult to believe, but even someone of my level can't know every spell that exists in the world. Besides, I didn't come here to analyze someone else's scribbles. I came for the book. And once I find it, I want to leave this creepy place as fast as possible.}
@@ -21861,16 +21888,16 @@ Jean is clearly motivated now, thoroughly scanning shelves and loose stacks of n
 She presses the book to her chest and closes her eyes for a moment, relief plain on her face.
 
 {color=yellow|Jean: — We are ready to leave now... I guess we should check on Rynn first.}""",
-	JEAN_SIDEQUEST_UNDERGROUND_SHELF = """You follow Jean into the second room. There, you find Rynn standing next to a heavy shelf, clearly trying to move it.""",
+	JEAN_SIDEQUEST_UNDERGROUND_SHELF = "You follow Jean into the second room. There, you find Rynn standing next to a heavy shelf, clearly trying to move it.",
 	JEAN_SIDEQUEST_UNDERGROUND_SHELF_OPTION_1 = "Help her move it",
 	JEAN_SIDEQUEST_UNDERGROUND_SHELF_OPTION_2 = "Look for a switch",
-	JEAN_SIDEQUEST_UNDERGROUND_SHELF_SUCCESS_1 = """You step up beside her and, together, push the heavy shelf aside. With a loud scrape, part of the mechanism breaks free, revealing a hidden tunnel that is clearly well-maintained and was used recently.""",
-	JEAN_SIDEQUEST_UNDERGROUND_SHELF_SUCCESS_2 = """One look at the shelf's placement tells you why it caught her attention. Having already encountered one such mechanism, it doesn't take long to find a hidden switch nearby. With a harsh grinding sound, the shelf slides aside, revealing a hidden tunnel that is clearly well-maintained and was used recently.""",
+	JEAN_SIDEQUEST_UNDERGROUND_SHELF_SUCCESS_1 = "You step up beside her and, together, push the heavy shelf aside. With a loud scrape, part of the mechanism breaks free, revealing a hidden tunnel that is clearly well-maintained and was used recently.",
+	JEAN_SIDEQUEST_UNDERGROUND_SHELF_SUCCESS_2 = "One look at the shelf's placement tells you why it caught her attention. Having already encountered one such mechanism, it doesn't take long to find a hidden switch nearby. With a harsh grinding sound, the shelf slides aside, revealing a hidden tunnel that is clearly well-maintained and was used recently.",
 	JEAN_SIDEQUEST_UNDERGROUND_SHELF_FAIL_1 = """You brace yourself and push against the shelf together with Rynn. The wood creaks, dust trickles down from above... Unfortunately, the shelf barely shifts an inch before settling back into place.
 
 Rynn exhales sharply and steps back.
 
-{color=red|Rynn: — Damn it... this thing's heavier than it looks. It seems brute force alone won't be enough.}""",
+{color=aqua|Rynn: — Damn it... this thing's heavier than it looks. It seems brute force alone won't be enough.}""",
 	JEAN_SIDEQUEST_UNDERGROUND_SHELF_FAIL_2 = """You carefully examine the shelf and the surrounding wall, running your fingers along seams and suspicious-looking carvings. There has to be some kind of mechanism around.
 	
 Alas, even after several minutes of searching, you come up empty-handed. Whatever opens this passage, it isn't obvious. Or you're simply missing something.""",
@@ -21886,16 +21913,16 @@ Jean straightens up, brushing dust from her sleeves.
 {color=yellow|Jean: — There you go.}
 
 Clearly satisfied with herself, she steps back.""",
-	JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_CHOICE = """{color=red|Rynn: — Phew, thanks! I knew I wasn't crazy! That thing looked far too suspicious. Hey, do you think...}
+	JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_CHOICE = """{color=aqua|Rynn: — Phew, thanks! I knew I wasn't crazy! That thing looked far too suspicious. Hey, do you think...}
 
 She turns around and only then notices the book Jean is still clutching to her chest.
 
-{color=red|Rynn: — Looks like you already found what you were looking for. I suppose you are leaving?}""",
+{color=aqua|Rynn: — Looks like you already found what you were looking for. I suppose you are leaving?}""",
 	JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_OPTION_1 = "We didn't come this far just to walk away. Let's see where it leads.",
 	JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_OPTION_2 = "We found what we came here for, so it's time for us to go.",
 	JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_1 = """At your response, a smile of relief breaks through Rynn's expression.
 
-{color=red|Rynn: — Thank you. Honestly, the thought of going in there alone gave me chills. So I very much appreciate the company.}
+{color=aqua|Rynn: — Thank you. Honestly, the thought of going in there alone gave me chills. So I very much appreciate the company.}
 
 She turns back toward the tunnel, determination replacing hesitation. You and Jean step up beside her, ready to follow.""",
 	JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_2 = """You step into the tunnel. It is narrow and damp, forcing you to move in single file.
@@ -21910,17 +21937,17 @@ Soon, the passage opens into a concealed exit beyond the city walls. Fresh air r
 You search the area, but time and the elements have erased any usable traces.
 
 Rynn sighs and looks back toward the city.""",
-	JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_4 = """{color=red|Rynn: — ... Well, at least now we know how my brother could've disappeared without anyone noticing. With that tunnel the owner of that place could freely leave the city, unseen by the guards.}""",
+	JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_4 = "{color=aqua|Rynn: — ... Well, at least now we know how my brother could've disappeared without anyone noticing. With that tunnel the owner of that place could freely leave the city, unseen by the guards.}",
 	JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_5 = """She turns to you and Jean.
 
-{color=red|Rynn: — Thank you for helping me. Jean, I wish our reunion was under better circumstances, but it was a pleasure nonetheless.}
+{color=aqua|Rynn: — Thank you for helping me. Jean, I wish our reunion was under better circumstances, but it was a pleasure nonetheless.}
 
 You say your goodbyes and part ways with Rynn, who soon disappears into the woods.
 
 After she's gone, you both glance back at the tunnel, then unanimously agree to take the longer but far less unsettling route back to the capital, passing through the city gates.""",
 	JEAN_SIDEQUEST_UNDERGROUND_LEAVE_1 = """You extend your hand, trying to end things on a neutral note. Rynn shakes it firmly.
 
-{color=red|Rynn: — I understand. I wish you safe travels.}""",
+{color=aqua|Rynn: — I understand. I wish you safe travels.}""",
 	JEAN_SIDEQUEST_UNDERGROUND_LEAVE_2 = """{color=yellow|Jean: — Same to you.}
 
 As you turn to leave, you notice Jean hesitates for a moment, looking back at Rynn. Then she manages to say her goodbyes and follows you up the stairs. Her expression is conflicted with relief and embarrassment.""",
@@ -21932,8 +21959,8 @@ He scans you from head to toe and then, with practiced professionalism, carefull
 	JEAN_SIDEQUEST_RETURN_LIBRARIAN = """{color=aqua|Librarian: — You're back sooner than expected. I take it your... errand was successful?}
 
 Jean places the tome on the counter with deliberate care, turning it so the seal is clearly visible. She hands the book over. The librarian opens it, skims through several pages, then closes it and sets it aside.""",
-	JEAN_SIDEQUEST_RETURN_PASS = """{color=aqua|Librarian: — Good. Then I may finally close that notice... And, of course, officially place the book in your care. For no longer than four weeks, naturally. And as promised...}""",
-	JEAN_SIDEQUEST_RETURN_PASS_NO_BARGAIN = """{color=aqua|Librarian: — Your library pass.}""",
+	JEAN_SIDEQUEST_RETURN_PASS = "{color=aqua|Librarian: — Good. Then I may finally close that notice... And, of course, officially place the book in your care. For no longer than four weeks, naturally. And as promised...}",
+	JEAN_SIDEQUEST_RETURN_PASS_NO_BARGAIN = "{color=aqua|Librarian: — Your library pass.}",
 	JEAN_SIDEQUEST_RETURN_PASS_BARGAIN = """{color=aqua|Librarian: — Your library pass... and a bit of extra gratitude to note.}
 
 He slides a small pouch across the counter. It disappears into your pocket moments later.""",
@@ -21953,7 +21980,7 @@ She shifts her weight slightly.
 {color=yellow|Jean: — Don't get any strange ideas. I could have done it myself, but still... I guess it was easier with you around. Yeah. That's all. So... thank you.}""",
 	JEAN_SIDEQUEST_RETURN_END_OPTION_1 = "You're welcome. If you ever need help, I'll be there.",
 	JEAN_SIDEQUEST_RETURN_END_OPTION_2 = "No problem. So... are you going to tell me what's so special about that book?",
-	JEAN_SIDEQUEST_RETURN_THANKS = """Jean looks down, avoiding your gaze, pretending to examine the worn spine of the book. After a moment, she gives you a brief nod and a quick, genuine smile. Without another word, she heads to her room.""",
+	JEAN_SIDEQUEST_RETURN_THANKS = "Jean looks down, avoiding your gaze, pretending to examine the worn spine of the book. After a moment, she gives you a brief nod and a quick, genuine smile. Without another word, she heads to her room.",
 	JEAN_SIDEQUEST_RETURN_QUESTION = """Jean furrows her brow and looks away.
 
 {color=yellow|Jean: — Um... like I said, it's for my magical research. I don't really want to explain.}""",
@@ -21976,17 +22003,8 @@ Realizing there's no way to win this argument, she storms out of the room.""",
 {color=yellow|Jean: — That... Um, yeah, sorry... I promise I'll explain to you everything later.}
 
 She then nods and promptly leaves the room.""",
-
-	JEAN_SIDEQUEST_NAME = "Jean: A Bookish Request",
-	JEAN_SIDEQUEST_SUMMARY = "Jean needs a rare tome from the Grand Library in the Empire Capital.",
-	JEAN_SIDEQUEST_CAPITAL = "Visit the Grand Library in the Empire Capital.",
-	JEAN_SIDEQUEST_CAPITAL_1 = "Find a way into the Grand Library.",
-	JEAN_SIDEQUEST_MANSION = "Search the book owner's mansion in the capital.",
-	JEAN_SIDEQUEST_MANSION_1 = "Convince the beggar to cooperate",
-	JEAN_SIDEQUEST_RETURN = "Return the book to the Grand Library.",
 	JEAN_SIDEQUEST_GL = "Grand Library",
 	JEAN_SIDEQUEST_MANSION_OPTION = "Search for the mansion",
-	
 	JEAN_RUINS_SQ_1 = """Since you recovered that book Jean was so adamant about obtaining, she has been stuck in her room for days, barely setting foot outside. Curious and slightly worried about her well-being, you decide to pay her a visit.
 
 Her room greets you with quite a sight: loose notes cover both the table and the floor, layers of dust and grime coating the table. Despite hearing the door open, she doesn't even turn around.
@@ -22004,24 +22022,23 @@ She clears her throat, trying to regain her composure.
 {color=yellow|Jean: — It's going alright. Taking a bit longer than I expected.}""",
 	JEAN_RUINS_SQ_21_OPTION_1 = "Your place is a mess.",
 	JEAN_RUINS_SQ_21_OPTION_2 = "Seems like you are taking your time",
-	JEAN_RUINS_SQ_22 = """{color=yellow|Jean:  — Fine, fine! I'm a bit stuck, alright? What does that have to do with you? This is just a personal project, it's not like I'm on some deadline!}""",
+	JEAN_RUINS_SQ_22 = "{color=yellow|Jean:  — Fine, fine! I'm a bit stuck, alright? What does that have to do with you? This is just a personal project, it's not like I'm on some deadline!}",
 	JEAN_RUINS_SQ_OPT_HELP = "It doesn't have to concern me. I just want to help a friend.",
 	JEAN_RUINS_SQ_OPT_USEFUL = "You live on my property. I'd rather you be useful than rot in your room.",
 	JEAN_RUINS_SQ_3_KIND = """Hearing that, Jean averts her gaze for a moment, her cheeks get slightly more pink as she is clearly unsure how to react to such a direct display of kindness.
 
 {color=yellow|— Well, um... alright. Noted, I guess... Thanks. Though I'm not sure what you can really do to help.}""",
-	JEAN_RUINS_SQ_4_KIND = """{color=yellow|Jean: — It's not something I can't read or don't understand. The problem is that the text references ancient history and places I've never even heard of. So, I don't know where I should even begin looking for the clues.}""",
+	JEAN_RUINS_SQ_4_KIND = "{color=yellow|Jean: — It's not something I can't read or don't understand. The problem is that the text references ancient history and places I've never even heard of. So, I don't know where I should even begin looking for the clues.}",
 	JEAN_RUINS_SQ_3_RUDE = """Jean clicks her tongue, clearly not appreciating your comment, but unable to argue with it. She sighs and gestures toward the notes.
 
 {color=yellow|Jean: — As you can see, I've already done quite a bit of work. It's just that one crucial part of the text references ancient history and places I've never heard of.}""",
-	JEAN_RUINS_SQ_4_RUDE = """{color=yellow|Jean: — So, I don't know where I should even begin looking for the clues. After I got the book I thought it would be simple. That I would find the artifact, prove the theory, prove everyone wrong... Darn it.}""",
+	JEAN_RUINS_SQ_4_RUDE = "{color=yellow|Jean: — So, I don't know where I should even begin looking for the clues. After I got the book I thought it would be simple. That I would find the artifact, prove the theory, prove everyone wrong... Darn it.}",
 	JEAN_RUINS_SQ_OPT_MYR = "How about asking Myr about it?",
 	JEAN_RUINS_SQ_OPT_CHURCH = "Maybe the church can help.",
 	JEAN_RUINS_SQ_4_MYR = """Jean visibly stiffens the moment you mention Myr.
 
 {color=yellow|Jean: — Absolutely not. I'm not going to run to her every time I hit a wall. Besides... she'd just lecture me for an hour and then throw me out for wasting her time. Let's find another way.}""",
-	JEAN_RUINS_SQ_5 = """{color=yellow|Jean: — Guess it can't be helped. Back when I was in the Academy I never asked for help, but it seems that I could really use some outside expertise. And the Church might have records that never made it into academic circulation.}""",
-	
+	JEAN_RUINS_SQ_5 = "{color=yellow|Jean: — Guess it can't be helped. Back when I was in the Academy I never asked for help, but it seems that I could really use some outside expertise. And the Church might have records that never made it into academic circulation.}",
 	JEAN_Q2_CHURCH_ENTER = """Ginny approaches you with a warm smile, her gaze lingering on Jean with open curiosity.
 
 {color=aqua|Ginny: — Always glad to see you at our church, Mayor. Is there anything I can help you with?}
@@ -22036,8 +22053,7 @@ You nod and let Jean explain the situation. Ginny listens closely as she describ
 {color=yellow|Jean: — Was there any mention of, say, a powerful artifact? Something described as a dark sphere, maybe? Anything like that?}
 
 Ginny thinks for a moment.""",
-	JEAN_Q2_CHURCH_3_ARTIFACT = """{color=aqua|Ginny: — Hmm... I can't say I remember that detail. But there were rumors of a demon being involved! Without any real evidence, though.}""",
-
+	JEAN_Q2_CHURCH_3_ARTIFACT = "{color=aqua|Ginny: — Hmm... I can't say I remember that detail. But there were rumors of a demon being involved! Without any real evidence, though.}",
 	JEAN_Q2_CHURCH_4_OPTION_1 = "Jean, does your research have something to do with demons? They are not someone to trifle with, you know.",
 	JEAN_Q2_CHURCH_4_OPTION_2 = "What was that demon doing there? I bet they were the source of all the trouble.",
 	JEAN_Q2_CHURCH_4_OPTION_3 = "No evidence? Then how do we know what to trust?",
@@ -22049,7 +22065,7 @@ She studies you with visible surprise.
 	JEAN_Q2_DEMON_INFO = """{color=aqua|Ginny: — Your intuition is on point. Or are you speaking from experience? Anyway, you are correct. The rumors had it that it was the demon who swayed one of the bishops from God's way and made him turn on his brothers.}
 
 {color=aqua|Ginny: — I should warn you though, my recollection may not be perfect. It's been years since I read those records, and many of them contradict each other.}""",
-	JEAN_Q2_CROSSREF_1 = """Ginny smiles faintly.""",
+	JEAN_Q2_CROSSREF_1 = "Ginny smiles faintly.",
 	JEAN_Q2_CROSSREF_2 = """{color=aqua|Ginny: — We cross-reference everything with reliable sources. Proper study, cataloging... it will take time and I can't do it alone, but if you're willing to help, we might find something together.}
 
 Jean hesitates, glances at you. You give her a small nod. After a moment, she exhales.
@@ -22063,7 +22079,6 @@ Jean clearly hadn't expected something of this scale, but she steps inside witho
 	JEAN_Q2_RESEARCH_DONE = """Over the next few days, Jean spends long hours in the library. Whenever you stop by, you find her seated at a long wooden table, surrounded by open books and comparing passages, copying symbols, muttering to herself.
 
 Finally, on the fourth evening, Jean returns with a faint smile and a single sheet of paper. The findings are condensed into one thing: an approximate location of the ruins you have been searching for.""",
-	
 	JEAN_Q2_RUINS_APPROACH = """The road deteriorates the closer you get to the marked location, turning from stone path into uneven dirt before vanishing entirely. Jean checks her notes constantly, stopping now and then to adjust your direction.
 
 The deeper you go, the more remnants of ancient structures begin to surface, half-swallowed by vegetation, barely recognizable beneath moss and roots. At last you reach a collapsed stone entrance. Jean compares the carvings with her notes and nods.""",
@@ -22078,18 +22093,18 @@ Only one cage is different and you need but a single glance to immediately recog
 Hearing the sound of Jean's voice, Rynn instantly looks up, hope flashing in her eyes.""",
 	JEAN_Q2_HALL_FIGURE = """Suddenly a movement at the far end of the hall draws your attention. A hooded figure emerges from a staircase descending deeper into the ruins. He freezes when he sees you.
 
-{color=green|Figure: — H-huh? Intruders? Again?! How did you even get here?! Curses!}
+{color=aqua|Figure: — H-huh? Intruders? Again?! How did you even get here?! Curses!}
 
-{color=red|Rynn: — Be careful! He controls them!}
+{color=aqua|Rynn: — Be careful! He controls them!}
 
 The figure raises his wooden staff, laughter slipping from under the hood.
 
-{color=green|Figure: — Indeed I do! And since you, fools, come all the way here I'll let them play with you until you wish to get in the cage yourself!}
+{color=aqua|Figure: — Indeed I do! And since you, fools, come all the way here I'll let them play with you until you wish to get in the cage yourself!}
 
 The cages, all except the one with Rynn inside, burst open. Monsters surge forward, flooding the hall, driven into a frenzy. There's no avoiding the fight. You raise your weapon.""",
 	JEAN_Q2_AFTER_FIGHT = """With the last creature falling you turn to the hooded figure.
 
-{color=green|Figure: — No-no, this wasn't supposed to happen! How did you even...}
+{color=aqua|Figure: — No-no, this wasn't supposed to happen! How did you even...}
 
 Seeing you approach him, he shuts up, turns around and runs down the staircase, disappearing deeper into the ruins.
 
@@ -22098,34 +22113,34 @@ You consider following him, but then your gaze returns to Rynn's cage. She's con
 	JEAN_Q2_CHOICE_PURSUE = "Pursue the hooded figure",
 	JEAN_Q2_FREE_RYNN_1 = """You turn away from the staircase. Jean shoots you a look of relief, and together you force the cage open, helping the injured woman get out.
 
-{color=red|Rynn: — Thank you! When I heard your voices, I couldn't believe it at first, but gods, I'm so lucky you managed to find this place...!}
+{color=aqua|Rynn: — Thank you! When I heard your voices, I couldn't believe it at first, but gods, I'm so lucky you managed to find this place...!}
 
 She looks at the dead monsters around you.
 
-{color=red|Rynn: — ... And that, apparently, you were ready to take on a small army of those things. I barely managed to kill half a dozen before I was overpowered and captured.}""",
+{color=aqua|Rynn: — ... And that, apparently, you were ready to take on a small army of those things. I barely managed to kill half a dozen before I was overpowered and captured.}""",
 	JEAN_Q2_FREE_RYNN_OPTION_1 = "Coming here alone was reckless. There are easier ways to die if that's your goal.",
 	JEAN_Q2_FREE_RYNN_OPTION_2 = "I'm glad you are alive. Looks like we came just in time.",
 	JEAN_Q2_RYNN_REPRIMAND = """Rynn lowers her gaze at your reprimand.
 
-{color=red|Rynn: — Yeah, I know... I was in a rush and didn't really think this through. Again, thank you for saving me.}""",
+{color=aqua|Rynn: — Yeah, I know... I was in a rush and didn't really think this through. Again, thank you for saving me.}""",
 	JEAN_Q2_RYNN_GLAD = """Rynn gives a faint smile.
 
-{color=red|Rynn: — Yeah, me too! Even though it didn't look like they were going to kill me right away, I still probably would've ended up like one of those poor souls if it wasn't for you guys.}""",
+{color=aqua|Rynn: — Yeah, me too! Even though it didn't look like they were going to kill me right away, I still probably would've ended up like one of those poor souls if it wasn't for you guys.}""",
 	JEAN_Q2_RYNN_HOW_FOUND = """Jean steps closer.
 
 {color=yellow|Jean: — How did you even find this place? I had to dig through hundreds of old historical records just to narrow down the approximate location of this temple!}
 
 A bit confused by the question, Rynn shrugs.
 
-{color=red|Rynn: — Well, I wasn't looking for any temple in particular, just for a place that could hide both these monsters and their creator.}""",
-	JEAN_Q2_RYNN_HOW_FOUND_3 = """{color=red|Rynn: — So, after we parted ways, I started asking local fighting guilds, traders and hunters about any notable areas with caves or ruins like this. One of the hunters told me about this place, so I decided to check it and, well...}
+{color=aqua|Rynn: — Well, I wasn't looking for any temple in particular, just for a place that could hide both these monsters and their creator.}""",
+	JEAN_Q2_RYNN_HOW_FOUND_3 = """{color=aqua|Rynn: — So, after we parted ways, I started asking local fighting guilds, traders and hunters about any notable areas with caves or ruins like this. One of the hunters told me about this place, so I decided to check it and, well...}
 
-{color=red|Rynn: — We all know how it ended. And what about you? How did you get here?}
+{color=aqua|Rynn: — We all know how it ended. And what about you? How did you get here?}
 
 Jean explains how you found the location while you treat Rynn's wounds. Most of the cuts and bite marks don't seem life-threatening, but she still looks unwell.""",
 	JEAN_Q2_RYNN_CAMP_SETUP = """Once Jean finishes her story, you help Rynn to her feet and escort her outside. Near the entrance you quickly set up a makeshift camp where she can rest.
 
-{color=red|Rynn: — I'm sorry I can't be of any use to you right now... Just be careful in there, okay? We don't know what kind of creatures might be deeper inside.}
+{color=aqua|Rynn: — I'm sorry I can't be of any use to you right now... Just be careful in there, okay? We don't know what kind of creatures might be deeper inside.}
 
 You head back toward the ruins. The staircase leading deeper into the dungeon awaits.""",
 	JEAN_Q2_PURSUE_PAST_RYNN = """You turn away from the cage and rush toward the staircase, pulling Jean along with you.
@@ -22138,33 +22153,29 @@ The hope in Rynn's eyes turns into confusion and then hurt as she sees you runni
 {color=yellow|Jean: — Wait, aren't we going to help her? That doesn't feel right!}
 
 You quickly explain your reasoning and promise that you'll come back for Rynn on your way back. Jean clearly doesn't like the answer, but after a brief hesitation she nods and follows you deeper into the dungeon.""",
-
-	JEAN_Q2_LAB_ESCAPED = """You enter the final chamber only to find it empty. In the far-left corner lies a collapsed tunnel. The hooded figure used the time it took you to get here to flee, and he brought the ceiling down behind him. There's no way to continue the pursuit.""",
+	JEAN_Q2_LAB_ESCAPED = "You enter the final chamber only to find it empty. In the far-left corner lies a collapsed tunnel. The hooded figure used the time it took you to get here to flee, and he brought the ceiling down behind him. There's no way to continue the pursuit.",
 	JEAN_Q2_LAB_SEARCH = """{color=yellow|Jean: — Looks like we won't be questioning him after all.}
 
 You turn your attention to the room itself. This laboratory is far larger than anything you expected. Ritual circles overlap across the floor, cages line the walls, some empty, some stained with old blood. Tables are cluttered with notes, diagrams, and half-finished experiments.
 
 Jean flips through the papers quickly. You notice her expression shift and her eyes linger on certain pages longer than others. But when you ask what's wrong, she shakes her head.""",
-	
 	JEAN_Q2_BOSS_FIGHT_INTRO_1 = """Before reaching what looks like the final section, a group of monsters emerges from the shadows and blocks your path. There are fewer than before, but they move with disturbing coordination. Some have armor fused into their flesh, others move unnaturally in sync. At their center stands a larger creature reinforced with crude metal.
 
 Behind them stands the hooded figure, still clutching the artifact.""",
-	JEAN_Q2_BOSS_FIGHT_INTRO_2 = """{color=green|Figure: — You got lucky before! But now you'll witness the results of our latest experiment. And I won't go easy on you this time!}
+	JEAN_Q2_BOSS_FIGHT_INTRO_2 = """{color=aqua|Figure: — You got lucky before! But now you'll witness the results of our latest experiment. And I won't go easy on you this time!}
 
 His hands shake as he gathers energy at the tip of his staff and fires a blazing projectile. Clearly aimed at you, the spell somehow misses and nearly hits Jean instead, who was half a room away. She manages to sidestep it just in time, though part of her hat catches fire. Muttering a curse, she tears it off and stomps it out.
 
 {color=yellow|Jean: — You bastard! You're gonna pay for that!}""",
-	JEAN_Q2_CAPTURE_FIGURE_1 = """When the last monster is finished, you rush into the final chamber. The hooded figure is trying to open a hidden passage, but the mechanism is old and slow. You pin him to the ground before it fully opens.""",
-
-	JEAN_Q2_CAPTURE_FIGURE_2 = """{color=green|Figure: — I surrender, I surrender! Please don't kill me! Mercy! I'm the victim myself!}
+	JEAN_Q2_CAPTURE_FIGURE_1 = "When the last monster is finished, you rush into the final chamber. The hooded figure is trying to open a hidden passage, but the mechanism is old and slow. You pin him to the ground before it fully opens.",
+	JEAN_Q2_CAPTURE_FIGURE_2 = """{color=aqua|Figure: — I surrender, I surrender! Please don't kill me! Mercy! I'm the victim myself!}
 
 Watching him tremble, you immediately doubt he was ever the mastermind. Jean plants her hands on her hips and stands above him.""",
-
-	JEAN_Q2_CAPTURE_FIGURE_3 = """{color=yellow|Jean: — Oh, really? And you expect us to believe it? You were just trying to kill us while spouting nonsense about how you "won't go easy on us"! And now you're suddenly the victim?!}
+	JEAN_Q2_CAPTURE_FIGURE_3 = """{color=yellow|Jean: — Oh, really? And you expect us to believe it? You were just trying to kill us while spouting nonsense about how you \"won't go easy on us\"! And now you're suddenly the victim?!}
 
 Terrified, the captive crawls closer to you.
 
-{color=green|Figure: — I was wrong! Very-very wrong! I didn't even mean it, I was just trying to scare you! I was really scared myself!}
+{color=aqua|Figure: — I was wrong! Very-very wrong! I didn't even mean it, I was just trying to scare you! I was really scared myself!}
 
 {color=yellow|Jean: — Oh yeah? Good! You were right to be scared! 'Cause you shouldn't have attacked us! And shouldn't have burned my favorite hat with your stupid, clumsy, second-rate spell!}
 
@@ -22172,17 +22183,16 @@ She kicks the captive a couple of times, making him retreat behind you, then spi
 	JEAN_Q2_INTERROGATE_OPTION_1 = "Who even are you?",
 	JEAN_Q2_INTERROGATE_OPTION_2 = "Where's the real mastermind?",
 	JEAN_Q2_INTERROGATE_OPTION_3 = "Alright, tell us what's going on here.",
+	JEAN_Q2_INTERROGATE_WHO = """{color=aqua|Figure: — One day I was just minding my own business and stumbled upon these ruins. Got curious, looked inside, saw a couple of monsters and decided to back away... But then suddenly this guy in a robe showed up behind me. Said I knew too much and couldn't leave anymore.}
 
-	JEAN_Q2_INTERROGATE_WHO = """{color=green|Figure: — One day I was just minding my own business and stumbled upon these ruins. Got curious, looked inside, saw a couple of monsters and decided to back away... But then suddenly this guy in a robe showed up behind me. Said I knew too much and couldn't leave anymore.}
+{color=aqua|Figure: — Next thing I knew, I was stuck here, taking care of monsters. I don't even know his name, had to call him \"Master\" all the time!}
 
-{color=green|Figure: — Next thing I knew, I was stuck here, taking care of monsters. I don't even know his name, had to call him "Master" all the time!}
+{color=aqua|Figure: — And he looks... normal. Just an ordinary guy, really. Though he talks like some old grandpa despite looking barely older than me...}""",
+	JEAN_Q2_INTERROGATE_MASTERLOC = """{color=aqua|Figure: — I don't know! I swear! He comes and goes whenever he wants! Sometimes he disappears for days, sometimes longer!}
 
-{color=green|Figure: — And he looks... normal. Just an ordinary guy, really. Though he talks like some old grandpa despite looking barely older than me...}""",
-	JEAN_Q2_INTERROGATE_MASTERLOC = """{color=green|Figure: — I don't know! I swear! He comes and goes whenever he wants! Sometimes he disappears for days, sometimes longer!}
+{color=aqua|Figure: — I know he spends a lot of time in the capital though, he mentioned it more than once. But not just there... he travels all over the Empire.}
 
-{color=green|Figure: — I know he spends a lot of time in the capital though, he mentioned it more than once. But not just there... he travels all over the Empire.}
-
-{color=green|Figure: — I mean, he's the one who brought most of the captives here in the first place. I mean, except that last girl. She kinda walked into this place on her own...}""",
+{color=aqua|Figure: — I mean, he's the one who brought most of the captives here in the first place. I mean, except that last girl. She kinda walked into this place on her own...}""",
 	JEAN_Q2_INTERROGATE_FULL_1 = """Whether from nerves or desperation, he spills everything without much prompting. He was captured by the real mastermind, branded with a tracking spell, and given a choice between joining the ranks of monsters or helping to take care of them.
 
 He served the real mastermind for the last couple of months, though according to him, he was little more than an errand boy. All of the experiments were conducted by the master himself and they were exactly what you've already pieced together: every monster in this place was once human, later transformed by some ancient looking artifact.""",
@@ -22194,7 +22204,7 @@ The captive eagerly nods. Jean's expression darkens, but when you ask her what's
 Her tone says otherwise.""",
 	JEAN_Q2_LAB_OPTION_LET = "Alright then, we will discuss it later",
 	JEAN_Q2_LAB_OPTION_PRESS = "You're hiding something. What is it, Jean?",
-	JEAN_Q2_LAB_REACT_LET = """You decide not to push her and instead focus on finishing business in this place. Jean nods and begins stuffing several notes into her bag.""",
+	JEAN_Q2_LAB_REACT_LET = "You decide not to push her and instead focus on finishing business in this place. Jean nods and begins stuffing several notes into her bag.",
 	JEAN_Q2_LAB_REACT_PRESS_1 = """Jean exhales sharply and lowers the papers.
 
 {color=yellow|Jean: — ... Fine. The artifact that is crucial for my research... it's mentioned here. Not directly, but the descriptions match.}
@@ -22206,122 +22216,119 @@ She gestures toward the hallway where you fought the last wave of monsters and s
 	JEAN_Q2_LAB_REACT_PRESS_3 = """{color=yellow|Jean: — I never thought it could be used this way. Was it corrupted somehow? Damn it... this ruins everything! I wanted to prove this power could be used to preserve life... not create monsters!}
 
 She strikes the table with her fist, sparks flying on impact, leaving a scorched mark behind. After a moment, she straightens up and begins stuffing the notes into her bag.""",
-	JEAN_Q2_LAB_REACT = """{color=yellow|Jean: — I'll study these later. I don't want to spend more time here than necessary.}""",
+	JEAN_Q2_LAB_REACT = "{color=yellow|Jean: — I'll study these later. I don't want to spend more time here than necessary.}",
 	JEAN_Q2_LAB_FINISH = """You wait for her to finish, then move toward the exit. Jean pauses in the doorway, staring back at the lab with open disgust.
 {color=yellow|Jean: — This place shouldn't exist.}
 
 The look she gives you makes it clear this isn't just a remark.""",
 	JEAN_Q2_LAB_BURN_OPTION_1 = "Then let's make sure it doesn't.",
 	JEAN_Q2_LAB_BURN_OPTION_2 = "Just don't burn us in the process.",
-
-	JEAN_Q2_BURN_LAB = """Jean nods, then puts both of her hands in front of her and closes her eyes. A swirling fire begins to form next to her palms, growing rapidly until the heat becomes intense enough to sting your skin. With visible relief, she hurls the spell into the lab. She then grabs your hand, and the two of you run as a fiery tornado tears through the chamber behind you.""",
+	JEAN_Q2_BURN_LAB = "Jean nods, then puts both of her hands in front of her and closes her eyes. A swirling fire begins to form next to her palms, growing rapidly until the heat becomes intense enough to sting your skin. With visible relief, she hurls the spell into the lab. She then grabs your hand, and the two of you run as a fiery tornado tears through the chamber behind you.",
 	JEAN_Q2_BURN_LAB_RYNN = """When you return to the cage chamber, you rush to free Rynn only to find her already unconscious, her body burning with fever.
 
 Worry flashes across Jean's face, but there's no time to stop and talk.
 
 You hoist Rynn onto your shoulder and hurry out of the ruins, soon breaking out into the open air.""",
-	
 	JEAN_Q2_RYNN_CAMP_RETURN = """You return to the small camp where you last left Rynn. As you approach, she greets you, but her voice is noticeably weaker than before.
 
-{color=red|Rynn: — Glad you guys are okay. So... what happened down there?}
+{color=aqua|Rynn: — Glad you guys are okay. So... what happened down there?}
 
 Jean explains what you learned. Hearing that the culprit escaped, Rynn lowers her gaze.
 
-{color=red|Rynn: — Sorry... If you hadn't stopped to save me, maybe you would've caught him.}""",
+{color=aqua|Rynn: — Sorry... If you hadn't stopped to save me, maybe you would've caught him.}""",
 	JEAN_Q2_RYNN_CAMP_OPTION_1 = "Don't blame yourself. It was my choice and I still think it was the correct one.",
 	JEAN_Q2_RYNN_CAMP_OPTION_2 = "Maybe. But we can't change it now, so no point in dwelling on it.",
-	JEAN_Q2_RYNN_FEVER_1_1 = """She smiles faintly.""",
+	JEAN_Q2_RYNN_FEVER_1_1 = "She smiles faintly.",
 	JEAN_Q2_RYNN_FEVER_1_2 = """She sighs.
 
-{color=red|Rynn: — Yeah, I guess you are right...}""",
-	JEAN_Q2_RYNN_FEVER_1 = """Suddenly, she breaks into a coughing fit. Her breathing is shallow, her movements are sluggish, and she's sweating despite the air not being particularly warm.""",
+{color=aqua|Rynn: — Yeah, I guess you are right...}""",
+	JEAN_Q2_RYNN_FEVER_1 = "Suddenly, she breaks into a coughing fit. Her breathing is shallow, her movements are sluggish, and she's sweating despite the air not being particularly warm.",
 	JEAN_Q2_RYNN_FEVER_ASK_1 = "How do you feel?",
 	JEAN_Q2_RYNN_FEVER_ASK_2 = "Your fever must be acting up. You better rest.",
-	JEAN_Q2_RYNN_FEVER_2_1 = """{color=red|Rynn: — Not great... Guess being locked in a cold cage for two days didn't help. Or maybe...}""",
-	JEAN_Q2_RYNN_FEVER_2_2 = """{color=red|Rynn: — Yeah, you are probably right... Could it really be...?}""",
+	JEAN_Q2_RYNN_FEVER_2_1 = "{color=aqua|Rynn: — Not great... Guess being locked in a cold cage for two days didn't help. Or maybe...}",
+	JEAN_Q2_RYNN_FEVER_2_2 = "{color=aqua|Rynn: — Yeah, you are probably right... Could it really be...?}",
 	JEAN_Q2_RYNN_FEVER_3 = """She hesitates, then shakes her head.
 
-{color=red|Rynn: — Never mind. Probably just a fever dream.}
+{color=aqua|Rynn: — Never mind. Probably just a fever dream.}
 
 You and Jean exchange glances.""",
 	JEAN_Q2_RYNN_PUSH_TELL_1 = "Tell us anyway. It could be important.",
 	JEAN_Q2_RYNN_PUSH_TELL_2 = "You're hiding something. Don't you think we at least deserve some honesty?",
 	JEAN_Q2_RYNN_VOICE_PUSH_1 = """Rynn exhales.
 
-{color=red|Rynn: — Yeah... alright. I just didn't want to sound crazy.}""",
+{color=aqua|Rynn: — Yeah... alright. I just didn't want to sound crazy.}""",
 	JEAN_Q2_RYNN_VOICE_PUSH_2 = """Rynn frowns slightly.
 
-{color=red|Rynn: — I'm not hiding it because I don't trust you... I just don't know if it was real. But fine. I'll tell you.}""",
-	JEAN_Q2_RYNN_OVERHEARD = """{color=red|Rynn: — After I got knocked out... I remember hearing voices near my cage. Two people talking... something about life force. Transfers. Magical stuff.}
+{color=aqua|Rynn: — I'm not hiding it because I don't trust you... I just don't know if it was real. But fine. I'll tell you.}""",
+	JEAN_Q2_RYNN_OVERHEARD = """{color=aqua|Rynn: — After I got knocked out... I remember hearing voices near my cage. Two people talking... something about life force. Transfers. Magical stuff.}
 
 She pauses to catch her breath.
 
-{color=red|Rynn: — While waiting for you, I started thinking maybe they did something to me... but I figured it was just a dream.}
+{color=aqua|Rynn: — While waiting for you, I started thinking maybe they did something to me... but I figured it was just a dream.}
 
 Jean's face drains of color. She pulls out her notes, flipping through them with trembling fingers. When she looks up, fear is clear on her face.""",
-	JEAN_Q2_CURSE_REVEAL_1 = """{color=yellow|Jean: — I... don't think it was a dream. When she said "transfer," I remembered seeing that word over and over in the notes. So I looked deeper...}
+	JEAN_Q2_CURSE_REVEAL_1 = """{color=yellow|Jean: — I... don't think it was a dream. When she said \"transfer,\" I remembered seeing that word over and over in the notes. So I looked deeper...}
 
 She glances at Rynn with pity. Rynn notices and looks anxiously between the two of you.
 
-{color=red|Rynn: — What? Do you know something?}
+{color=aqua|Rynn: — What? Do you know something?}
 
 Jean hesitates, unable to meet her eyes.""",
 	JEAN_Q2_CURSE_REVEAL_2 = """{color=yellow|Jean: — If what you heard is real... then the curse has already been cast on you. The one that creates... them.}
 
-{color=red|Rynn: — Them? Who's them? Do you mean...?}
+{color=aqua|Rynn: — Them? Who's them? Do you mean...?}
 
 Silence settles between the three of you as realization sinks in. Rynn's breath catches. Slowly, she looks down at her hands, as if expecting them to already be changing.
 
-{color=red|Rynn: — And... How long do I have?}""",
+{color=aqua|Rynn: — And... How long do I have?}""",
 	JEAN_Q2_CURSE_2 = """{color=yellow|Jean: — I don't know. The notes say it varies. Sometimes days... sometimes weeks. But never longer than a month.}
 
 Rynn lowers her head, absorbing the news. When she speaks again, each word seems to take effort.
 
-{color=red|Rynn: — I mean... I lived a dangerous life. I never really expected to die of old age. But this... like this...?}""",
+{color=aqua|Rynn: — I mean... I lived a dangerous life. I never really expected to die of old age. But this... like this...?}""",
 	JEAN_Q2_CURSE_3 = """She looks up at you, fear plain in her eyes.
 
-{color=red|Rynn: — I don't want to go like that. Is there... a way to stop it? Anything?}
+{color=aqua|Rynn: — I don't want to go like that. Is there... a way to stop it? Anything?}
 
 Jean shakes her head slowly.
 
 {color=yellow|Jean: — We don't know yet. Maybe if we find the artifact... maybe the academy... I don't know...}""",
 	JEAN_Q2_CURSE_4 = """While Jean trails off, practically muttering her thoughts aloud, Rynn begins to lean back and so you rush forward just in time to catch her. The movement snaps Jean out of her stupor and she hurries to Rynn's side.
 
-{color=red|Rynn: — S-sorry... that was a lot to take in... I think I need to rest for a bit... But if there's any hope... maybe you can still help me...?}
+{color=aqua|Rynn: — S-sorry... that was a lot to take in... I think I need to rest for a bit... But if there's any hope... maybe you can still help me...?}
 
 Rynn slips into unconsciousness.
 
 You and Jean exchange uncertain glances. She clenches her fists.""",
-
 	JEAN_Q2_CAPTIVE_OUTSIDE_1 = """Once outside, you stop and check on Rynn. She lies motionless on the cold ground, her body burning with fever. Her breathing is shallow, uneven. You and Jean do what you can with the limited supplies you have, but it's obvious she isn't going to wake up anytime soon.
 	
 Your captive watches the scene in silence, leaning against a rock with an unreadable expression.
 
 {color=yellow|Jean: — Don't just stand there like a statue! If you're not going to help, the least you can do is stay out of the way.}
 
-{color=green|Captive: — It won't change anything anyway, so why bother?}""",
+{color=aqua|Captive: — It won't change anything anyway, so why bother?}""",
 	JEAN_Q2_CAPTIVE_OUTSIDE_2 = """{color=yellow|Jean: — What do you mean by that? What did you do to her?}
 
-{color=green|Captive: — I didn't do anything! The boss did! He visited a couple of days ago, when she was already here, and so, you know... So better leave her before the curse turns her...}
+{color=aqua|Captive: — I didn't do anything! The boss did! He visited a couple of days ago, when she was already here, and so, you know... So better leave her before the curse turns her...}
 
 Jean blinks several times, her face draining of color as the words sink in. Then she suddenly grabs him by the collar and shakes him violently.""",
 	JEAN_Q2_CAPTIVE_OUTSIDE_3 = """{color=yellow|Jean: — What kind of curse is it?! Is there any way to stop it? Reverse it? How long does she have?! Tell me something, you useless piece of shit!}
 
-{color=green|Captive: — I don't kn—}
+{color=aqua|Captive: — I don't kn—}
 
 {color=yellow|Jean: — You were right there when it happened!}
 
-{color=green|Captive: — But I didn't understand a word he was saying! I was just nodding along! All I know is that some turned in days, some in weeks, and the longest was a month! That's all I know, I swear!}""",
+{color=aqua|Captive: — But I didn't understand a word he was saying! I was just nodding along! All I know is that some turned in days, some in weeks, and the longest was a month! That's all I know, I swear!}""",
 	JEAN_Q2_CAPTIVE_OUTSIDE_4 = """Jean releases him with a sharp shove.
 	
 {color=yellow|Jean: — Get out of my sight!}
 
-{color=green|Captive: — Hey, I'd be happy to get out of everyone's sight. You just need to untie me.}
+{color=aqua|Captive: — Hey, I'd be happy to get out of everyone's sight. You just need to untie me.}
 
 Jean looks back at him slowly.
 
 {color=yellow|Jean: — Huh? Are you seriously expecting us to just let you go?}""",
-	JEAN_Q2_CAPTIVE_OUTSIDE_5 = """{color=green|Captive: — Well... why not? I didn't do...}
+	JEAN_Q2_CAPTIVE_OUTSIDE_5 = """{color=aqua|Captive: — Well... why not? I didn't do...}
 	
 She cuts him off immediately.
 
@@ -22339,8 +22346,8 @@ After a few minutes, Jean finally turns away and sits down beside Rynn, her shou
 {color=yellow|Jean: — Really? You think he deserves that freedom?}""",
 	JEAN_Q2_CAPTIVE_FREE_OPTION_1 = "You said so yourself he wasn't the mastermind.",
 	JEAN_Q2_CAPTIVE_FREE_OPTION_2 = "I don't want to watch our backs for the rest of the journey.",
-	JEAN_Q2_CAPTIVE_FREE_2 = """Jean exhales but lets it go.""",
-	JEAN_Q2_CAPTIVE_JAIL = """Hearing your decision, the captive sighs but doesn't argue. He lowers his head, accepting his fate.""",
+	JEAN_Q2_CAPTIVE_FREE_2 = "Jean exhales but lets it go.",
+	JEAN_Q2_CAPTIVE_JAIL = "Hearing your decision, the captive sighs but doesn't argue. He lowers his head, accepting his fate.",
 	JEAN_Q2_CAPTIVE_KILL_1 = """The moment he realizes what you mean, the captive tries to run, but he doesn't make it far. Your blade finds his neck in a single swift motion. He collapses almost instantly.
 
 At the sound, Jean spins around. Her eyes widen in shock and fear.
@@ -22358,24 +22365,22 @@ She turns back to Rynn.""",
 She asks without turning around.
 
 With the captive's fate decided, only one other decision remains.""",
-	JEAN_Q2_CURSE_FINAL_0 = """Rynn, the stranger you've met only a few times, yet each time you stood on the same side, fighting the same enemies. Now she's cursed and could turn into one of those monsters without warning.""",
-
+	JEAN_Q2_CURSE_FINAL_0 = "Rynn, the stranger you've met only a few times, yet each time you stood on the same side, fighting the same enemies. Now she's cursed and could turn into one of those monsters without warning.",
 	JEAN_Q2_CURSE_FINAL = """{color=yellow|Jean: — How did it turn out like this?! All I wanted was to finish my research, not get dragged into some nightmare where I have to decide whether people live or die!}
 
 While she vents, you look at Rynn's unconscious body. There are people who might be able to help her, but there's no certainty any of them can.""",
 	JEAN_Q2_RYNN_SAVE_OPTION = "Let's try our best to save her. First, let's get her to the church.",
 	JEAN_Q2_RYNN_LEAVE_OPTION = "Sorry, Jean. I don't want to take any risks. We'd best just leave her.",
-
 	JEAN_Q2_SAVE_RYNN_1 = """Jean forces herself to calm down. She turns to you, determination hardening her expression.
 
 {color=yellow|Jean: — Yeah. Let's do this. We'll have to carry her out of here.}""",
-	JEAN_Q2_SAVE_RYNN_2 = """The trip back is quiet. Rynn stirs occasionally but never wakes. As soon as you reach Aliron, you head straight for the church. Ginny steps forward to greet you as usual, but upon noticing your urgency immediately leads you to the lazaret.""",
+	JEAN_Q2_SAVE_RYNN_2 = "The trip back is quiet. Rynn stirs occasionally but never wakes. As soon as you reach Aliron, you head straight for the church. Ginny steps forward to greet you as usual, but upon noticing your urgency immediately leads you to the lazaret.",
 	JEAN_Q2_CHURCH_RYNN_ARRIVE = """{color=aqua|Ginny: — Considering everything we know, I believe I understand how the curse works.}
 
 {color=aqua|Ginny: — It drains the victim's life force slowly. Once it runs too low... the body transforms and begins feeding on outside energy. That's how those monsters are created.}""",
 	JEAN_Q2_CHURCH_RYNN_OPTION_1 = "Can it be removed?",
 	JEAN_Q2_CHURCH_RYNN_OPTION_2 = "Can you at least delay it?",
-	JEAN_Q2_CHURCH_RYNN_2 = """{color=yellow|Ginny: — I can stabilize her, give her some more time, but I can't remove the curse itself.}
+	JEAN_Q2_CHURCH_RYNN_2 = """{color=aqua|Ginny: — I can stabilize her, give her some more time, but I can't remove the curse itself.}
 
 {color=yellow|Jean: — We understand. Thank you for doing what you can. And we... we'll have to use the time we got and think of a way to deal with the curse.}
 
@@ -22385,8 +22390,14 @@ You nod in agreement, thank Ginny once more, and leave Rynn in her care. Togethe
 {color=yellow|Jean: — W-what? You're saying we just leave her here?! This is too cruel...}
 
 Tears fill her eyes as she helplessly looks back at Rynn's unconscious body while you walk away, leaving her alone in the wilderness.""",
-	JEAN_Q2_LEAVE_RYNN_2 = """Once inside the mansion, Jean goes straight to her room and locks the door behind her. You think you can hear sobbing coming from that side.""",
-	
+	JEAN_Q2_LEAVE_RYNN_2 = "Once inside the mansion, Jean goes straight to her room and locks the door behind her. You think you can hear sobbing coming from that side.",
+	JEAN_SIDEQUEST_NAME = "Jean: A Bookish Request",
+	JEAN_SIDEQUEST_SUMMARY = "Jean needs a rare tome from the Grand Library in the Empire Capital.",
+	JEAN_SIDEQUEST_CAPITAL = "Visit the Grand Library in the Empire Capital.",
+	JEAN_SIDEQUEST_CAPITAL_1 = "Find a way into the Grand Library.",
+	JEAN_SIDEQUEST_MANSION = "Search the book owner's mansion in the capital.",
+	JEAN_SIDEQUEST_MANSION_1 = "Convince the beggar to cooperate",
+	JEAN_SIDEQUEST_RETURN = "Return the book to the Grand Library.",
 	JEAN_RUINS_SUMMARY = "Help Jean with her research",
 	JEAN_RUINS_NAME = "Jean: Ruins",
 	JEAN_RUINS_1 = "Get information from Ginny",
@@ -22394,56 +22405,100 @@ Tears fill her eyes as she helplessly looks back at Rynn's unconscious body whil
 	JEAN_RUINS_3 = "Searh newly found location",
 	QUEST_JEAN_RUINS_TEXT = "Demonic ruins",
 	QUEST_JEAN_RUINS_DESC = "Ancient ruins keeping artifact Jean desires",
-	
+	JEAN_SYLAS_QUEST_NAME = "Jean: The Demon in the Sphere",
+	JEAN_SYLAS_QUEST_SUMMARY = "Jean needs help tracking down the mastermind behind the cursed artifact.",
+	JEAN_SYLAS_QUEST_STAGE_1 = "Visit chosen guild",
+	JEAN_SYLAS_QUEST_STAGE_2 = "Search for leads in Empire Capital",
+	JEAN_SYLAS_QUEST_STAGE_3 = "Visit Arena",
+	JEAN_SYLAS_QUEST_STAGE_4 = "Ask merchants",
+	JEAN_SYLAS_QUEST_STAGE_5 = "Seek for a lost cart",
+	JEAN_SYLAS_QUEST_STAGE_6 = "Investigete a lead to brothel",
+	JEAN_SYLAS_QUEST_STAGE_7 = "Bring Jean a money to get a change",
+	JEAN_SYLAS_QUEST_STAGE_8 = "Bring news to Myr",
+	JEAN_SYLAS_QUEST_STAGE_9 = "Search guild library",
+	JEAN_SYLAS_QUEST_STAGE_10 = "Discuss your findings with Myr",
+	JEAN_SYLAS_QUEST_STAGE_11 = "Craft a mind-linking artifact",
+	JEAN_SYLAS_QUEST_STAGE_12 = "Confront a demon-posessed Jean",
+	JEAN_SYLAS_QUEST_STAGE_13 = "Bring orb to church",
+	JEAN_SYLAS_QUEST_STAGE_14 = "Give away orb to research",
+	JEANSYLASDUNCANOPTION = "I need some assistance with the one case...",
+	JEANSYLASMYROPTION = "I need some assistance with the one case...",
+	JEANSYLASMYROPTION2 = "There’s an issue with Jean...",
+	JEANSYLASMYROPTION3 = "I found what we were looking for...",
+	JEANCHURCHESEARCHTASKNAME = "*Search church archives*",
+	JEANCHURCHESEARCHTASKDESCRIPT = "Jean must find location of the ruins",
 	JEAN_SYLAS_NEXT_DAY_START = "The events that occurred in those ruins clearly left an impression on Jean. The next morning, you head upstairs to check on her and find her staring at the pile of notes on the table with a somewhat lost expression.",
 	JEAN_SYLAS_NEXT_DAY_OPTION_CHECK = "How are you doing?",
 	JEAN_SYLAS_NEXT_DAY_OPTION_LATER = "Should I come back later?",
 	JEAN_SYLAS_NEXT_DAY_FOLLOWUP = """Hearing your voice, she blinks in surprise, then exhales and turns to you.
 {color=yellow|Jean: — Oh, sorry, I didn't notice you there. I was just thinking about, well, this whole thing.}
+
 She vaguely points towards the notes on the table.
+
 {color=yellow|Jean: — I've been obsessed with this research for so long, always sure I was on the right path, but now... something has changed for me. Did I ever tell you how it started?}""",
 	JEAN_SYLAS_ORIGIN_OPTION_FULL = "I'm all ears",
 	JEAN_SYLAS_ORIGIN_OPTION_SHORT = "Short version, if you don't mind",
 	JEAN_SYLAS_ORIGIN_OPTION_REPEAT = "I think you did, actually. That you'd heard the legend...",
 	JEAN_SYLAS_ORIGIN_FULL_1 = """She taps the well-worn, bulging notebook.
 {color=yellow|Jean: — This research of mine... it started years ago, back when I was still in the Academy. I heard a legend about an artifact that could give you the power to bring back the dead...}
+
 A bitter smile crosses her face.
+
 {color=yellow|Jean: — And I was bold enough to mention during Myr's lecture that I believed it. That such a thing was possible through purely mortal magic. You can guess the reaction. The chuckle, the look. She said I didn't understand the limits of magic, that people like me confuse ambition with ability.}""",
 	JEAN_SYLAS_ORIGIN_FULL_2 = """She folds her arms.
 {color=yellow|Jean: — So, of course I decided to prove her wrong. Started chasing every rumor about that orb, every possible location — whether it was a private collection, some remote monastery...}
+
 She gives you a small, fleeting smirk.
+
 {color=yellow|Jean: — ...or even a dwarven vault. Yet now, after I learned that its magic is very different from what I thought, that it is dangerous and it's hurting people, my research... it no longer feels important.}""",
 	JEAN_SYLAS_ORIGIN_SHORT = """{color=yellow|Jean: — Right, better not to waste time... Long story short, back in the Academy I heard a legend about an artifact that could supposedly bring back the dead. I was foolish enough to say during Myr's lecture that I believed such a thing was possible through mortal magic alone... and, well, you can imagine how that went.}
+	
 She folds her arms briefly.
+
 {color=yellow|Jean: — So I started chasing every rumor about that orb, trying to prove her wrong. But after what we saw in the ruins... after what it actually does to people... my research suddenly doesn't feel that important anymore.}""",
 	JEAN_SYLAS_ORIGIN_REPEAT = """{color=yellow|Jean: — ...and decided to find the artifact to study its rumored resurrection magic, yeah. That was indeed the beginning. But you know what really kept me motivated to actually carry on with the search for so long? Myr!}
+	
 She scoffs.
+
 {color=yellow|Jean: — Or, to be more precise, our... rivalry? Beef? Whatever you wanna call it. I was just so eager to prove her wrong I was ready to go to the other side of the world for that! And now...}
+
 She returns her gaze to the scattered notes.
+
 {color=yellow|Jean: — ...I no longer find it that important.}""",
 	JEAN_SYLAS_HELP_PROMPT = """Jean looks directly at you.
+	
 {color=yellow|Jean: — Instead, the only thing I have on my mind right now is stopping the mastermind behind all of this, so that no more people are turned into these monstrosities. So, will you help me?}""",
 	JEAN_SYLAS_HELP_OPTION_WITH_YOU = "You won't be doing it alone",
 	JEAN_SYLAS_HELP_OPTION_FAVOR = "Only cause I would also expect favor in the future",
 	JEAN_SYLAS_HELP_RESPONSE_WITH_YOU = """Jean visibly relaxes, her face lights up with a smile.
+	
 {color=yellow|Jean: — Thank you. I'll remember that.}""",
 	JEAN_SYLAS_HELP_RESPONSE_FAVOR = """Jean blinks. Then straightens a little.
+	
 {color=yellow|Jean: — Fair enough. Help me finish this, and I'll be in your debt.}""",
 	JEAN_SYLAS_GUILD_SUGGESTION = """After a brief discussion, it becomes clear that the only place with fresh leads on the mastermind is the Empire's capital. But before you head there, Jean brings up a suggestion.
+	
 {color=yellow|Jean: — As much as I hate to admit it, we could use support from one of the guild leaders. Someone with actual reach and power. Which leaves us with two options.}
+
 She starts counting on her fingers.""",
 	JEAN_SYLAS_GUILD_OPTIONS_INTRO = """{color=yellow|Jean: — The first one is Duncan. Rynn used to train in his guild before she left for the Empire. She might not be alone in that, so Duncan could help us get some useful contacts. And the other option is...}
+	
 A grimace shows on Jean's face.
+
 {color=yellow|Jean: — ...Myr. Plenty of knowledge, plenty of influence... and an ego to match all of that.}
+
 She glances at you sideways.""",
 	JEAN_SYLAS_GUILD_OPTION_DUNCAN = "No need to look at me like that, I get it. Let's visit Duncan",
 	JEAN_SYLAS_GUILD_OPTION_MYR = "Between saving your pride and catching a maniac, only one choice is right. Myr it is",
 	JEAN_SYLAS_GUILD_CHOICE_DUNCAN = """Jean nods, visibly more at ease.
+	
 {color=yellow|Jean: — Good. Let's start with him. He's way less irritating than the alternative.}""",
 	JEAN_SYLAS_GUILD_CHOICE_MYR = "{color=yellow|Jean: — Fine. Let's just try to deal with her as quickly as possible.}",
 	JEAN_SYLAS_DUNCAN_HELP_1 = """You explain the situation. Duncan listens carefully, then gives a slow nod.
-{color=red|Duncan: — ...Rynn, huh. Yeah, I remember her. Tough kid. Shame that happened to her. Curse on these curses, a warrior's demise should come from iron, not some witchery.}""",
-	JEAN_SYLAS_DUNCAN_HELP_2 = """{color=red|Duncan: — Give me some time. I'll reach out to some of my former students and ask them to dig around.}
+	
+{color=aqua|Duncan: — ...Rynn, huh. Yeah, I remember her. Tough kid. Shame that happened to her. Curse on these curses, a warrior's demise should come from iron, not some witchery.}""",
+	JEAN_SYLAS_DUNCAN_HELP_2 = """{color=aqua|Duncan: — Give me some time. I'll reach out to some of my former students and ask them to dig around.}
+	
 {color=yellow|Jean: — Thank you.}""",
 	JEAN_SYLAS_MYR_HELP_1 = """You explain the situation. Myr listens in silence, finally responding in her usual condescending tone.
 
@@ -22460,6 +22515,7 @@ Jean's jaw tightens, but she holds her tongue.
 
 {color=yellow|Myr: — Alas, it doesn't look like that's going to be the case. At least not before you deal with that 'maniac'. Fine then, I shall spare you my assistance.}""",
 	JEAN_SYLAS_MYR_HELP_DEVICE = """Myr reaches into a drawer and produces a small, faintly glowing device with a red gem inside metal brackets. She drops it into your hands.
+	
 {color=aqua|Myr: — There you are.}""",
 	JEAN_SYLAS_MYR_HELP_OPTION_THANKS = "Thank you, we appreciate your help",
 	JEAN_SYLAS_MYR_HELP_OPTION_WHAT_IS_IT = "Am I supposed to know what it is and how to use it?",
@@ -22478,249 +22534,351 @@ Jean scoffs.
 	JEAN_SYLAS_AFTER_GUILD_RYNN_ALIVE = "After settling the matter with the guild, you and Jean head for the church to check on Rynn. Her condition remains stable, but Ginny reminds you that this won't be the case forever and if you want to save her you should bring back the artifact.",
 	JEAN_SYLAS_AFTER_GUILD_RYNN_LEFT = "After settling the matter with the guild, you and Jean head back to the mansion, preparing for the journey.",
 	JEAN_SYLAS_CAPITAL_MEET = """The Empire's capital greets you with its usual indifference and crowded streets. After a brief discussion, you decide to split your efforts: you'll check the building you last entered, while Jean returns to the library to fish for more information.
+	
 You diligently do your part and visit the abandoned house, yet see no signs of anyone visiting it since the last time you were here. Done with your part, you go back to the central square and wait for Jean. About an hour later, she finally shows up.""",
 	JEAN_SYLAS_CAPITAL_OPTION_DELAY = "What took you so long?",
 	JEAN_SYLAS_CAPITAL_OPTION_USEFUL = "Learned anything useful?",
 	JEAN_SYLAS_CAPITAL_REPLY_DELAY = "{color=yellow|Jean: — It takes time to persuade a person to talk, you know? Especially if it goes against the rules.}",
 	JEAN_SYLAS_CAPITAL_REPLY_USEFUL = "{color=yellow|Jean: — A bit. Mostly rumors and hearsay, but it's more than we knew before.}",
 	JEAN_SYLAS_CAPITAL_SYLAS_INFO = """She pulls out her notebook.
+	
 {color=yellow|Jean: — What matters, though, is that we at least know his name now. He's called Sylas. A former famous arena fighter who got injured and couldn't compete anymore. He vanished from the city for a while... then suddenly came back this year, looking younger than he should and loaded with gold.}""",
 	JEAN_SYLAS_CAPITAL_LEAD_SUGGESTION = """{color=yellow|Jean: — And you know, apart from the obvious connection to the arena, that last part about the gold really got me thinking...}
+	
 {color=yellow|Jean: — The kind of equipment we saw? Cages, metalwork, lab equipment... that doesn't appear out of thin air. Even if you have gold, you'd have to buy that from someone, and pretty regularly, considering the scale. So, what if we check that lead?}
+
 She looks at you expectantly.""",
 	JEAN_SYLAS_CAPITAL_OPTION_ARENA_DUNCAN = "Let's check the Arena first, it should be easier with Duncan's connections.",
 	JEAN_SYLAS_CAPITAL_OPTION_ARENA_MYR = "Let's check the Arena first, he must have some ties there.",
 	JEAN_SYLAS_CAPITAL_OPTION_MERCHANTS = "Let's go with your lead. Merchants must know something.",
 	JEAN_SYLAS_ARENA_INTRO = """The Arena is as loud and restless as ever. Steel rings against steel somewhere in the distance, and the air carries that familiar mix of sweat, dust, and cheap bravado.
+	
 As you approach the administrative section, you see a familiar figure observing the ongoing sparring matches. When you come closer, he finally notices you and furrows his eyebrows in displeasure.
-{color=green|Melchor: — ...You again.}
+
+{color=aqua|Melchor: — ...You again.}
+
 His eyes narrow, already suspicious.""",
 	JEAN_SYLAS_ARENA_MELCHOR_INTRO = """{color=yellow|Jean: — Greetings. We're looking for information about a former fighter. Sylas.}
+	
 A brief flicker of recognition shows on his face before Melchor's expression hardens.
-{color=green|Melchor: — That man is banned from the Arena. That's all you need to know.}""",
+
+{color=aqua|Melchor: — That man is banned from the Arena. That's all you need to know.}""",
 	JEAN_SYLAS_ARENA_OPTION_REASON = "Banned? For what reason?",
 	JEAN_SYLAS_ARENA_OPTION_NOT_FRIENDS = "We are not his friends.",
 	JEAN_SYLAS_ARENA_OPTION_PERSONAL = "Do you have a personal story with him?",
 	JEAN_SYLAS_ARENA_OPTION_DANGEROUS = "He is dangerous. We need to find him before more people get hurt.",
 	JEAN_SYLAS_ARENA_REPLY_REASON = """Melchor gives a short, humorless snort.
-{color=green|Melchor: — For plenty of reasons. Shame there was none with enough proof to make it official.}
+{color=aqua|Melchor: — For plenty of reasons. Shame there was none with enough proof to make it official.}
+
 {color=yellow|Jean: — But if all the rumors about missing people are true...}
-{color=green|Melchor: — The court does not operate on rumors. Unfortunately.}""",
-	JEAN_SYLAS_ARENA_REPLY_NOT_FRIENDS = "{color=green|Melchor: — Neither do I, nor would I recommend anyone be.}",
+
+{color=aqua|Melchor: — The court does not operate on rumors. Unfortunately.}""",
+	JEAN_SYLAS_ARENA_REPLY_NOT_FRIENDS = "{color=aqua|Melchor: — Neither do I, nor would I recommend anyone be.}",
 	JEAN_SYLAS_ARENA_REPLY_PERSONAL = """Melchor's eyes narrow a fraction, and his face turns into a grimace.
-{color=green|Melchor: — The story isn't personal. I'd just call it... the story of a bad investment. I saw him struggling all those years back and sponsored his training before a championship. Not only did he lose, but he then ran away, never approaching me again. Tsk. Disappointment.}""",
+	
+{color=aqua|Melchor: — The story isn't personal. I'd just call it... the story of a bad investment. I saw him struggling all those years back and sponsored his training before a championship. Not only did he lose, but he then ran away, never approaching me again. Tsk. Disappointment.}""",
 	JEAN_SYLAS_ARENA_REPLY_DANGEROUS = """Melchor gives you a long look, then shrugs just a bit.
-{color=green|Melchor: — Even if I wanted to get involved in this mess any further, I'd still have no idea what to tell you. I haven't met him personally, and he won't be coming back due to the ban. If you really want to, feel free to ask around.}
+	
+{color=aqua|Melchor: — Even if I wanted to get involved in this mess any further, I'd still have no idea what to tell you. I haven't met him personally, and he won't be coming back due to the ban. If you really want to, feel free to ask around.}
+
 {color=yellow|Jean: — Alright then, thanks. Guess we'll have to do just that.}""",
 	JEAN_SYLAS_ARENA_MYR_FIND = """You roam the arena for some time, questioning both fighters and rare spectators alike. Eventually, one of them gives you a knowing look when the topic of Sylas comes up.
-{color=red|Fighter: — Looking for Sylas, huh? A lot of people do, mostly the relatives of the missing... But we were told to shut up about it and not bring up the topic. Bad for business.}""",
+	
+{color=aqua|Fighter: — Looking for Sylas, huh? A lot of people do, mostly the relatives of the missing... But we were told to shut up about it and not bring up the topic. Bad for business.}""",
 	JEAN_SYLAS_ARENA_MYR_OPTION_BRIBE = "What if I make it worth your while? (500 gold)",
 	JEAN_SYLAS_ARENA_MYR_OPTION_ARM = "How about a quick arm-wrestling match? If I lose, I pay, if you lose, you talk.",
 	JEAN_SYLAS_ARENA_MYR_BRIBE = "He quickly glances to the sides, then nods and grabs the money, covering it with his training shield.",
-	JEAN_SYLAS_ARENA_MYR_ARM_START = """{color=red|Fighter: — Heh. Confident, aren't you? ...Alright, why not. Been a slow day anyway.}
+	JEAN_SYLAS_ARENA_MYR_ARM_START = """{color=aqua|Fighter: — Heh. Confident, aren't you? ...Alright, why not. Been a slow day anyway.}
+	
 He drops onto a nearby crate and slaps his elbow down on a scarred wooden table. The man rolls his shoulder once, then extends his hand. You extend yours.""",
 	JEAN_SYLAS_ARENA_MYR_ARM_WIN = """For the first second, neither of you moves. Muscles tense. The table creaks faintly under the pressure. Then you push. The fighter's smirk falters.
+	
 The man grits his teeth, tries to recover, but it's too late. With a sharp thud, his hand hits the table.
-{color=red|Fighter: — H-huh? I lost? Damn, you got that sleeper build or something?}""",
-	JEAN_SYLAS_ARENA_MYR_ARM_LOSE = """You push first, but the fighter doesn't even flinch. His arm holds steady like a stone pillar.
-A second later, he grins and starts pushing back. Fast. Despite your best effort, your hand slams into the wood.
-{color=red|Fighter: — Heh, nice. Come back if you wanna try again, I'd love more free money.}""",
-	JEAN_SYLAS_ARENA_MYR_TALK = "{color=red|Fighter: — ...Fine, I'll talk. But you didn't hear it from me.}",
-	JEAN_SYLAS_ARENA_DUNCAN_INTRO = """As soon as you step into the arena, one of the fighters approaches you, lowering his voice.
-{color=red|Fighter: — Heard you're looking into Sylas. Duncan sent word you might come. I'll tell you what I know. No charge.}""",
-	JEAN_SYLAS_ARENA_FIGHTER_THINK = "The fighter scratches his jaw, thinking.",
-	JEAN_SYLAS_ARENA_FIGHTER_INFO_1 = """{color=red|Fighter: — I dunno anything about his past, but when this guy showed up, he was loaded with gold. Started sponsoring our top fighters, inviting them on trips and to galas... only for some of them to never come back.}
-He jerks his head back toward Melchor's direction.
-{color=red|Fighter: — Management noticed, of course, started watching him closely. And when too many coincidences piled up, they booted his ass from here. Indefinite ban.}
-The fighter leans in slightly.""",
-	JEAN_SYLAS_ARENA_FIGHTER_INFO_2 = """{color=red|Fighter: — But here's the part you didn't hear from the officials. Word going around is that it didn't stop the guy. He's still in the city. And recently he paid off the debts of one of the local brothels, basically became their patron overnight.}
-Jean and you exchange a look.
-{color=red|Fighter: — If you ask me? That smells really bad.}
-He steps back.
-{color=red|Fighter: — That's all I've got.}""",
-	JEAN_SYLAS_ARENA_FIGHTER_END = """You thank your informant and step away from the arena.
-Jean's gaze meets yours.
-{color=yellow|Jean: — I think we just found our next destination.}""",
 
+{color=aqua|Fighter: — H-huh? I lost? Damn, you got that sleeper build or something?}""",
+	JEAN_SYLAS_ARENA_MYR_ARM_LOSE = """You push first, but the fighter doesn't even flinch. His arm holds steady like a stone pillar.
+	
+A second later, he grins and starts pushing back. Fast. Despite your best effort, your hand slams into the wood.
+
+{color=aqua|Fighter: — Heh, nice. Come back if you wanna try again, I'd love more free money.}""",
+	JEAN_SYLAS_ARENA_OPTION_MERCHANTS = "Ok, let's go to merchants.",
+	JEAN_SYLAS_ARENA_MYR_TALK = "{color=aqua|Fighter: — ...Fine, I'll talk. But you didn't hear it from me.}",
+	JEAN_SYLAS_ARENA_DUNCAN_INTRO = """As soon as you step into the arena, one of the fighters approaches you, lowering his voice.
+	
+{color=aqua|Fighter: — Heard you're looking into Sylas. Duncan sent word you might come. I'll tell you what I know. No charge.}""",
+	JEAN_SYLAS_ARENA_FIGHTER_THINK = "The fighter scratches his jaw, thinking.",
+	JEAN_SYLAS_ARENA_FIGHTER_INFO_1 = """{color=aqua|Fighter: — I dunno anything about his past, but when this guy showed up, he was loaded with gold. Started sponsoring our top fighters, inviting them on trips and to galas... only for some of them to never come back.}
+	
+He jerks his head back toward Melchor's direction.
+
+{color=aqua|Fighter: — Management noticed, of course, started watching him closely. And when too many coincidences piled up, they booted his ass from here. Indefinite ban.}
+
+The fighter leans in slightly.""",
+	JEAN_SYLAS_ARENA_FIGHTER_INFO_2 = """{color=aqua|Fighter: — But here's the part you didn't hear from the officials. Word going around is that it didn't stop the guy. He's still in the city. And recently he paid off the debts of one of the local brothels, basically became their patron overnight.}
+	
+Jean and you exchange a look.
+
+{color=aqua|Fighter: — If you ask me? That smells really bad.}
+
+He steps back.
+
+{color=aqua|Fighter: — That's all I've got.}""",
+	JEAN_SYLAS_ARENA_FIGHTER_END = """You thank your informant and step away from the arena.
+	
+Jean's gaze meets yours.
+
+{color=yellow|Jean: — I think we just found our next destination.}""",
 	JEAN_SYLAS_MERCHANTS_INTRO = """The wealthy trade district greets you with long rows of polished signs hanging above well-kept storefronts. Jean slows slightly, scanning the street.
+	
 {color=yellow|Jean: — If someone were supplying large cages and specialized equipment, it wouldn't be some back-alley blacksmith. This kind of work leaves a paper trail. Let's start.}
+
 It takes some asking around, but eventually one name keeps coming up: a merchant known for handling custom ironwork orders. You approach the shop and let yourselves in.
+
 The shop smells faintly of oil and hot metal. Behind the counter stands a thickset merchant with careful eyes that immediately size you up.""",
-	JEAN_SYLAS_MERCHANTS_TALK_1 = """{color=green|Merchant: — Good day to you, outsiders. Looking for something specific?}
+	JEAN_SYLAS_MERCHANTS_TALK_1 = """{color=aqua|Merchant: — Good day to you, outsiders. Looking for something specific?}
+	
 {color=yellow|Jean: — Information, actually. We're trying to track large cage shipments commissioned over the past months.}
+
 The merchant's expression closes almost instantly.
-{color=green|Merchant: — Then you're looking in the wrong place. I don't discuss my clients.}""",
+
+{color=aqua|Merchant: — Then you're looking in the wrong place. I don't discuss my clients.}""",
 	JEAN_SYLAS_MERCHANTS_TALK_2 = """{color=yellow|Jean: — Even if those shipments were used for... illegal purposes?}
+	
 The merchant studies both of you more carefully now, his gaze more calculating.
-{color=green|Merchant: — That sounds like the guards problem, not mine.}
+
+{color=aqua|Merchant: — That sounds like the guards problem, not mine.}
+
 A brief silence stretches. Then his eyes narrow slightly, as if reconsidering something.""",
-	JEAN_SYLAS_MERCHANTS_TALK_21 = """{color=green|Merchant: — Although...}
-He leans forward just a fraction.
-{color=green|Merchant: — ...perhaps we can help each other.}
+	JEAN_SYLAS_MERCHANTS_TALK_21 = """{color=aqua|Merchant: — Although...perhaps we can help each other.}
+
 {color=yellow|Jean: — I'm listening.}""",
 	JEAN_SYLAS_MERCHANTS_TALK_3 = """The merchant gestures vaguely toward the street.
-{color=green|Merchant: — One of my regular carriage drivers was supposed to be back from a delivery, but he still hasn't shown up. Find him, make sure he's able to work again, and I might be more willing to check my records.}""",
+	
+{color=aqua|Merchant: — One of my regular carriage drivers was supposed to be back from a delivery, but he still hasn't shown up. Find him, make sure he's able to work again, and I might be more willing to check my records.}""",
 	JEAN_SYLAS_MERCHANTS_OPTION_START = "Where should we start?",
 	JEAN_SYLAS_MERCHANTS_OPTION_ENEMIES = "Do you have enemies?",
 	JEAN_SYLAS_MERCHANTS_OPTION_DEAL = "Deal.",
-	JEAN_SYLAS_MERCHANTS_REPLY_START = "{color=green|Merchant: — The eastern district. Where the road is shortest. And, unfortunately, that's also where the slums are.}",
-	JEAN_SYLAS_MERCHANTS_REPLY_ENEMIES = "{color=green|Merchant: — Enemies? No. Competitors, rivals? Plenty. The sweeter the profit, the bitterer the grudges.}",
-	JEAN_SYLAS_MERCHANTS_REPLY_DEAL = "{color=green|Merchant: — Good. I'll be waiting then.}",
-
+	JEAN_SYLAS_MERCHANTS_REPLY_START = "{color=aqua|Merchant: — The eastern district. Where the road is shortest. And, unfortunately, that's also where the slums are.}",
+	JEAN_SYLAS_MERCHANTS_REPLY_ENEMIES = "{color=aqua|Merchant: — Enemies? No. Competitors, rivals? Plenty. The sweeter the profit, the bitterer the grudges.}",
+	JEAN_SYLAS_MERCHANTS_REPLY_DEAL = "{color=aqua|Merchant: — Good. I'll be waiting then.}",
 	JEAN_SYLAS_CARRIAGE_SEARCH = """You spend the next couple of hours combing through the eastern district's mangled streets.
+	
 Finally, you spot a slightly battered carriage pulled halfway into an alley. The merchant's emblem is still clearly visible on the side panel.
+
 A pair of rough-looking thugs are in the middle of unloading the last crate.""",
 	JEAN_SYLAS_CARRIAGE_APPROACH = """Jean leans slightly closer to you, lowering her voice.
+	
 {color=yellow|Jean: — That's the mark. And unless this merchant recently hired the worst movers in the Empire... I'd say we found our problem.}
+
 She studies the men for a moment, lips tightening with clear irritation.
+
 {color=yellow|Jean: — Your call. But the longer we stand here, the more they take from the cart.}""",
 	JEAN_SYLAS_CARRIAGE_OPTION_ERDYNA = "*Let Erdyna deal with them*",
 	JEAN_SYLAS_CARRIAGE_OPTION_DIPLOMACY = "Hey. Return the stolen goods and the driver, and I won't report you to the guards.",
 	JEAN_SYLAS_CARRIAGE_OPTION_PAY = "I'm willing to pay you to put everything back where it belongs.",
 	JEAN_SYLAS_CARRIAGE_OPTION_INTIMIDATE = "Hey, fuckers! You picked the wrong cart to rob!",
 	JEAN_SYLAS_CARRIAGE_ERDYNA_1 = """Erdyna walks out from your group, giving the bandits a smirking look. The nearest thug opens his mouth, but then freezes. The second one squints, then his eyes widen.
-{color=red|Thug: — Oh shit.}
-{color=green|Erdyna: — Indeed it is. 'Cause you boys just robbed someone I have dealings with.}
+	
+{color=aqua|Thug: — Oh shit.}
+
+{color=aqua|Erdyna: — Indeed it is. 'Cause you boys just robbed someone I have dealings with.}
+
 One of the thugs immediately straightens.
-{color=red|Thug: — W-we didn't know, we swear...}""",
-	JEAN_SYLAS_CARRIAGE_ERDYNA_2 = """{color=green|Erdyna: — Oh, I believe you. Which is why you're going to very carefully put everything back. And then disappear.}
+
+{color=aqua|Thug: — W-we didn't know, we swear...}""",
+	JEAN_SYLAS_CARRIAGE_ERDYNA_2 = """{color=aqua|Erdyna: — Oh, I believe you. Which is why you're going to very carefully put everything back. And then disappear.}
+	
 The thugs move instantly. Crates are shoved back onto the carriage with frantic speed. Someone runs to drag out the tied-up driver. After the last crate is restored, the thugs scatter without another word.""",
 	JEAN_SYLAS_CARRIAGE_DIPLOMACY = """One of the thugs squints at you, then snorts.
-{color=red|Thug: — Report to the guards? Pfft! Bo-o-oys, get them!}
-Jean exhales through her nose.
+	
+{color=aqua|Thug: — Report to the guards? Pfft! Bo-o-oys, get them!}
+
 {color=yellow|Jean: — ...So much for the diplomatic approach.}""",
-	JEAN_SYLAS_CARRIAGE_PAY = """The thugs' eyes immediately light up.
-{color=red|Thug: — Oh? You've got coin? Then hand it over, moron! Bo-o-oys, get them!}
+	JEAN_SYLAS_CARRIAGE_PAY = """{color=aqua|Thug: — Oh? You've got coin? Then hand it over, moron! Bo-o-oys, get them!}
+
 Jean rolls her eyes.
+
 {color=yellow|Jean: — I hate it when they skip straight to the predictable part.}""",
 	JEAN_SYLAS_CARRIAGE_INTIMIDATE_FAIL = """The thug cracks his knuckles slowly, grin spreading.
-{color=red|Thug: — What the fuck did you just say? Bo-o-oys, get him!}
+	
+{color=aqua|Thug: — What the fuck did you just say? Bo-o-oys, get him!}
+
 Jean sighs under her breath.
+
 {color=yellow|Jean: — Well... you tried.}""",
 	JEAN_SYLAS_CARRIAGE_INTIMIDATE_SUCCESS = """Your voice cuts through the alley with enough force to make both thugs visibly flinch. They look at you, then bolt down the alley in a panic.
-Jean blinks once.
+
 {color=yellow|Jean: — ...Well. That was...}""",
 	JEAN_SYLAS_CARRIAGE_INTIMIDATE_RETURN = """Suddenly you hear footsteps. A lot of footsteps.
+	
 The same two thugs come rushing back, this time with a much larger group behind them.
-{color=red|Thug: — Yeah, these are the ones! Bo-o-oys, get them!}
+
+{color=aqua|Thug: — Yeah, these are the ones! Bo-o-oys, get them!}
+
 Jean rolls her shoulders, already gathering sparks between her fingers.
+
 {color=yellow|Jean: — Of course it couldn't be that simple.}""",
 	JEAN_SYLAS_CARRIAGE_FIGHT_INTRO = "A crowd of thugs jumps from the alleys and rushes at you.",
-	JEAN_SYLAS_CARRIAGE_AFTER_FIGHT = """With the thugs dealt with, the rest is easy. You hand the surviving troublemakers over to the city guards, untie the shaken but grateful driver, and help reload the scattered cargo back onto the carriage.""",
-	JEAN_SYLAS_CARRIAGE_AFTER_FIGHT_DRIVER = """The freed driver wastes no time taking the reins and drives you straight to the merchant's shop.""",
+	JEAN_SYLAS_CARRIAGE_AFTER_FIGHT = "With the thugs dealt with, the rest is easy. You hand the surviving troublemakers over to the city guards, untie the shaken but grateful driver, and help reload the scattered cargo back onto the carriage.",
+	JEAN_SYLAS_CARRIAGE_AFTER_FIGHT_DRIVER = "The freed driver wastes no time taking the reins and drives you straight to the merchant's shop.",
 	JEAN_SYLAS_CARRIAGE_RETURN_MERCHANT = """The merchant looks far more cooperative when you return. After checking on the cargo and the driver, he invites you to the back room and pulls out a ledger.
-{color=green|Merchant: — Large reinforced cages... yes, there were a few unusual bulk orders. All in one name: Sylas. Let me find the delivery routes.}
-He flips a couple of pages.""",
-	JEAN_SYLAS_CARRIAGE_ROUTES = """{color=green|Merchant: — Shipments went to three places: a private house in the western district, some ruins three days to the north... Oh, and just a week ago to the brothel in the lower district.}
-{color=yellow|Jean: — Can you write us the last address?}
-The merchant obliges, then bids you farewell.
-Outside, Jean's gaze meets yours.
-{color=yellow|Jean: — I think we just found our next destination.}""",
+	
+{color=aqua|Merchant: — Large reinforced cages... yes, there were a few unusual bulk orders. All in one name: Sylas. Let me find the delivery routes.}
 
+He flips a couple of pages.""",
+	JEAN_SYLAS_CARRIAGE_ROUTES = """{color=aqua|Merchant: — Shipments went to three places: a private house in the western district, some ruins three days to the north... Oh, and just a week ago to the brothel in the lower district.}
+	
+{color=yellow|Jean: — Can you write us the last address?}
+
+The merchant obliges, then bids you farewell.
+
+Outside, Jean's gaze meets yours.
+
+{color=yellow|Jean: — I think we just found our next destination.}""",
 	JEAN_SYLAS_BROTHEL_INTRO = """You follow the directions and soon find yourself weaving deeper into the eastern district, where the streets grow narrower, dirtier, and noticeably quieter. Eventually, the crooked alley leads you to your destination.
+	
 A three-story building rises ahead, still looking surprisingly lavish despite its age, which makes it feel distinctly out of place among the surrounding grime.
 The moment you step inside, warm, perfumed air rolls over you.""",
 	JEAN_SYLAS_BROTHEL_GIRLS = """A couple of scantily clad girls are lounging on one of the sofas. The moment they spot you, they immediately drift toward you with polished smiles on their faces.
+	
 {color=aqua|Girl1: — Welcome, welcome! First time here, handsome? Oh, are you a couple? Looking for some extra company?}
+
 {color=pink|Girl2: — We have all kinds of pleasures. Just tell us what you're in the mood for.
+
 A slight blush appears on Jean's cheeks, but she manages to stay quiet.}""",
 	JEAN_SYLAS_BROTHEL_OPTION_FLIRT = "Well, I wasn't planning on staying, but with smiles like yours...",
 	JEAN_SYLAS_BROTHEL_OPTION_QUESTIONS = "First I was hoping to ask you a couple of questions...",
 	JEAN_SYLAS_BROTHEL_FLIRT_JEAN = """Jean jabs you with an elbow.
+	
 {color=yellow|Jean: — Ahem! Don't forget what we're here for!}
-She steps forward.
+
 {color=yellow|Jean: — Hey, we actually wanted to ask you a couple of questions. Is that alright?}""",
 	JEAN_SYLAS_BROTHEL_MADAM_INTRO = """The girls exchange a quick glance, their smiles faltering, turning into barely helpful masks.
+	
 {color=aqua|Girl1: — Sorry, but we're not the academic type to answer questions.}
+
 {color=pink|Girl2: — All we know is how to bring pleasure to our clients, so if you're not looking for that, we can't help you.}
+
 Before you can push the topic further, the atmosphere in the room noticeably shifts. A tall woman in immaculate attire approaches you with measured, confident steps. The madam gives you and Jean a long, appraising look.
-{color=red|Madam: — I don't believe I've seen you here before, dear guests. Care to tell me what exactly you're looking for tonight?}""",
+
+{color=aqua|Madam: — I don't believe I've seen you here before, dear guests. Care to tell me what exactly you're looking for tonight?}""",
 	JEAN_SYLAS_BROTHEL_MADAM_OPTION_DISAPPEAR = "We are investigating several disappearances in the area.",
 	JEAN_SYLAS_BROTHEL_MADAM_OPTION_LOOKING = "We are just looking around. First time here.",
-	JEAN_SYLAS_BROTHEL_MADAM_DISMISS = """The madam listens without interrupting. When you finish, her smile does not change.
-{color=red|Madam: — Unfortunately, if you're not here to enjoy the establishment, I'll have to politely ask you to leave.}
-She gestures lightly toward the door, then follows you until you're both outside.
-{color=yellow|Jean: — Well, that went pretty badly... Maybe next time we should come up with a better plan, or...}
+	JEAN_SYLAS_BROTHEL_MADAM_DISMISS_1 = """The madam listens without interrupting. When you finish, her smile does not change.
+	
+{color=aqua|Madam: — Unfortunately, if you're not here to enjoy the establishment, I'll have to politely ask you to leave.}
+
+She gestures lightly toward the door, then follows you until you're both outside.""",
+	JEAN_SYLAS_BROTHEL_MADAM_DISMISS_2 = """{color=yellow|Jean: — Well, that went pretty badly... Maybe next time we should come up with a better plan, or...}
+
 Jean suddenly stops and lightly catches your sleeve.
+
 {color=yellow|Jean: — ...Wait.}
+
 From the narrow alley beside the brothel comes the uneven sound of someone trying very hard not to cry.""",
 	JEAN_SYLAS_BROTHEL_CRYING = """You turn the corner and spot a girl dressed the same way as the other two from the brothel. Her shoulders are shaking, makeup slightly smeared as tears run down her face.
+	
 When she notices you approaching, she startles and tries to cover her face. Jean steps forward and softens her tone.
+
 {color=yellow|Jean: — Hey, are you alright? What happened?}
-{color=green|Girl: — I... Sorry, I shouldn't talk about it...}""",
+
+{color=aqua|Girl: — I... Sorry, I shouldn't talk about it...}""",
 	JEAN_SYLAS_BROTHEL_CRYING_OPTION_TRUST = "It's alright, we won't tell anyone, you can trust us. We just want to help.",
 	JEAN_SYLAS_BROTHEL_CRYING_OPTION_DISAPPEAR = "Is it about people disappearing lately?",
 	JEAN_SYLAS_BROTHEL_CRYING_OPTION_AMELIA = "Let Amelia calm the girl down",
 	JEAN_SYLAS_BROTHEL_GIRL_TRUST = "The girl looks up at you through tears. After some hesitation, she speaks in a quiet whisper.",
-	JEAN_SYLAS_BROTHEL_GIRL_KNOWS = "{color=green|Girl: — S-so you already know? I knew I wasn't crazy...}",
-	JEAN_SYLAS_BROTHEL_GIRL_BAD = """{color=green|Girl: — Something... something bad is going on here. I don't know why, but after that guy in all black showed up, people... people suddenly started disappearing... And one of them...}
+	JEAN_SYLAS_BROTHEL_GIRL_KNOWS = "{color=aqua|Girl: — S-so you already know? I knew I wasn't crazy...}",
+	JEAN_SYLAS_BROTHEL_GIRL_BAD = """{color=aqua|Girl: — Something... something bad is going on here. I don't know why, but after that guy in all black showed up, people... people suddenly started disappearing... And one of them...}
+	
 She begins to sob again.""",
-	JEAN_SYLAS_BROTHEL_GIRL_DAREN = """{color=green|Girl: — ...one of them was my Daren. He was a regular at first, but then we fell for each other... He was a mage, and he promised that after finishing his studies he would get me out of here... and now he's gone...}
+	JEAN_SYLAS_BROTHEL_GIRL_DAREN = """{color=aqua|Girl: — ...one of them was my Daren. He was a regular at first, but then we fell for each other... He was a mage, and he promised that after finishing his studies he would get me out of here... and now he's gone...}
+	
 Some noise comes from inside the building. The girl startles and glances nervously toward the brothel entrance.
-{color=green|Girl: — I... I really should go. Sorry...}
+
+{color=aqua|Girl: — I... I really should go. Sorry...}
+
 She walks away, trying to wipe the tears as she goes.""",
 	JEAN_SYLAS_BROTHEL_AMELIA_INTRO = """Amelia approaches the crying girl, who seems to recognize her immediately.
-{color=green|Girl: — A-Amelia? W-what are you doing here? I missed you so much... I shouldn't have left Aliron... I thought life in the Empire would be better... It's not...}
+	
+{color=aqua|Girl: — A-Amelia? W-what are you doing here? I missed you so much... I shouldn't have left Aliron... I thought life in the Empire would be better... It's not...}
+
 {color=aqua|Amelia: — There, there, girl. It's gonna be alright. If you want to come back, I can ask the guild for you, okay? But first you need to tell us what happened.}""",
-	JEAN_SYLAS_BROTHEL_AMELIA_DETAILS = """{color=green|Girl: — I don't know the details... but something bad is going on here. After that guy in all black — Sylas or something — showed up and talked to the madam, the whole atmosphere got weird... and what's worse... people suddenly started disappearing. And one of them...}
+	JEAN_SYLAS_BROTHEL_AMELIA_DETAILS = """{color=aqua|Girl: — I don't know the details... but something bad is going on here. After that guy in all black — Sylas or something — showed up and talked to the madam, the whole atmosphere got weird... and what's worse... people suddenly started disappearing. And one of them...}
+	
 She begins to sob again. Amelia puts a hand on the girl's head, comforting her.
-{color=green|Girl: — ...one of them was my Daren. He was a regular at first, but then we fell for each other... He was a mage, and he promised that after finishing his studies he would get me out of here... and now he's gone...}""",
+
+{color=aqua|Girl: — ...one of them was my Daren. He was a regular at first, but then we fell for each other... He was a mage, and he promised that after finishing his studies he would get me out of here... and now he's gone...}""",
 	JEAN_SYLAS_BROTHEL_AMELIA_DAREN = """Some noise comes from inside the building. The girl startles and glances nervously toward the brothel entrance, but Amelia's presence calms her enough not to run away.
-{color=green|Girl: — I swear, he wouldn't just leave me! And I remember one time he actually stumbled onto that Sylas guy as he was leaving the madam's office at night... and Sylas looked at him strangely... and then Daren never showed up again... He must've done something to him, but I can't prove it...}
+	
+{color=aqua|Girl: — I swear, he wouldn't just leave me! And I remember one time he actually stumbled onto that Sylas guy as he was leaving the madam's office at night... and Sylas looked at him strangely... and then Daren never showed up again... He must've done something to him, but I can't prove it...}
+
 You leave Amelia to take care of the girl while you and Jean step aside to discuss the situation.""",
 	JEAN_SYLAS_BROTHEL_PLAN_INTRO = "{color=yellow|Jean: — Well, that confirms our suspicions. Sylas does visit this place often, and the madam definitely has some business with him. If only we could somehow get to her office and check her documents...}",
 	JEAN_SYLAS_BROTHEL_PLAN_OPTION_CLIENT = "I can pretend to be a client",
 	JEAN_SYLAS_BROTHEL_PLAN_OPTION_GIRL = "You can pretend to be a new girl",
 	JEAN_SYLAS_CLIENT_PLAN = """{color=yellow|Jean: — Hmm, but wouldn't that be suspicious? Though I guess if you can stall her for even just half an hour, I should be able to sneak in and take a look.}
+	
 You discuss some details before fully settling on this plan.
+
 {color=yellow|Jean: — Alright, time to start. Just keep her busy. I'll handle the rest.}""",
 	JEAN_SYLAS_CLIENT_RETURN = """You once again step inside the brothel, immediately gaining the madam's attention.
-{color=red|Madam: — Oh? I thought I made the rules of our establishment clear. Or did you change your mind and wish to use our services after all?}""",
+	
+{color=aqua|Madam: — Oh? I thought I made the rules of our establishment clear. Or did you change your mind and wish to use our services after all?}""",
 	JEAN_SYLAS_CLIENT_OPTION_RUN_DOWN = "Exactly. Can you give me a run down of what you offer?",
 	JEAN_SYLAS_CLIENT_OPTION_RECOMMEND = "Yeah, since I'm already here, why not at least try? Anything you'd recommend?",
 	JEAN_SYLAS_CLIENT_OPTION_STORMED = "The girl I came with already stormed off. So... I might as well use your services.",
 	JEAN_SYLAS_CLIENT_OFFER = """The madam studies you for a brief moment, then her smile deepens slightly.
-{color=red|Madam: — Oh, we've got a lot to offer... but I may have something special just for you.}
+{color=aqua|Madam: — Oh, we've got a lot to offer... but I may have something special just for you.}
+
 She gestures toward one of the velvet chairs nearby.
-{color=red|Madam: — A premium magical dream experience. Discreet, safe... and quite immersive.}
+{color=aqua|Madam: — A premium magical dream experience. Discreet, safe... and quite immersive.}
+
 From her pocket, she produces a sleek, faintly glowing device that looks like a thin circlet with a small polished crystal set at the front. Soft runes shimmer along its surface.
-{color=red|Madam: — Think of it as... guided fantasy. You remain perfectly safe while enjoying whatever dream you desire. Does it pique your interest?}""",
+
+{color=aqua|Madam: — Think of it as... guided fantasy. You remain perfectly safe while enjoying whatever dream you desire. Does it pique your interest?}""",
 	JEAN_SYLAS_CLIENT_OPTION_TELL_MORE = "Tell me more about the device.",
 	JEAN_SYLAS_CLIENT_OPTION_COST = "And how much does it cost?",
 	JEAN_SYLAS_CLIENT_OPTION_DECLINE = "On the other hand I'd rather not.",
 	JEAN_SYLAS_CLIENT_OPTION_ACCEPT = "Fine. Let's try it.",
-	JEAN_SYLAS_CLIENT_TELL_MORE = "{color=red|Madam: — Oh, it's very simple to use. Just put the circlet on your head and lower the part with the crystal to cover your eyes. Then we can activate the runes, and the magic will do the rest. Most guests find the experience quite... memorable.}",
-	JEAN_SYLAS_CLIENT_COST = "{color=red|Madam: — No need to worry about that, our first customers always get a discount. A mere 100 gold, and you're in the land of dreams.}",
+	JEAN_SYLAS_CLIENT_TELL_MORE = "{color=aqua|Madam: — Oh, it's very simple to use. Just put the circlet on your head and lower the part with the crystal to cover your eyes. Then we can activate the runes, and the magic will do the rest. Most guests find the experience quite... memorable.}",
+	JEAN_SYLAS_CLIENT_COST = "{color=aqua|Madam: — No need to worry about that, our first customers always get a discount. A mere 100 gold, and you're in the land of dreams.}",
 	JEAN_SYLAS_CLIENT_DECLINE = """You shake your head, refusing the offer. But as the mission stands, instead you begin to ask questions about the girls who work here, their skills and expertise, and whether they can come down and introduce themselves.
+	
 The madam obliges, indulging your whims, even ordering a couple of girls to come in only for you to reject them. Soon you've gone through the entire catalog and seen everything this place has to offer.""",
 	JEAN_SYLAS_CLIENT_DECLINE_2 = """The madam's patience is thinning visibly. Her smile is gone, replaced with tight‑lipped irritation. After half an hour, you apologize and step back into the hallway.
+
 The madam walks you out and slams the door behind you.""",
 	JEAN_SYLAS_CLIENT_ACCEPT = """You agree and pay the price.
 The madam's smile widens slightly as she places the device into your hands and begins explaining how to use it.
+
 You repeat your questions about the runes two or three times, probably looking like a complete fool, but at least it buys Jean some time.""",
 	JEAN_SYLAS_CLIENT_ACCEPT_2 = """Finally, satisfied, she gently adjusts the circlet on your head.
-{color=red|Madam: — Just relax, dear guest... and enjoy.}
-The crystal flares softly, and the room dissolves into darkness.""",
 	
+{color=aqua|Madam: — Just relax, dear guest... and enjoy.}
+
+The crystal flares softly, and the room dissolves into darkness.""",
 	JEAN_SYLAS_CLIENT_AFTER = """After you finally leave the brothel, you find Jean waiting for you outside, a satisfied smirk playing on her lips.
+	
 {color=yellow|Jean: — Took you long enough.}""",
 	JEAN_SYLAS_CLIENT_AFTER_OPTION_HOW = "How did it go?",
 	JEAN_SYLAS_CLIENT_AFTER_OPTION_FOUND = "Hope you found something.",
 	JEAN_SYLAS_CLIENT_AFTER_INFO = """She dusts off her sleeve casually.
+	
 {color=yellow|Jean: — Luckily for us, they never really bothered with security. As soon as she focused on you, I slipped upstairs and went for the most expensive‑looking door. A couple of minor spells later, and I was free to explore her office.}
-{color=yellow|Jean: — I found the ledger almost immediately, and Sylas's name is all over the last few pages. He's playing a "patron" role — shows up every couple of days just to shower this place with more money.}""",
+
+{color=yellow|Jean: — I found the ledger almost immediately, and Sylas's name is all over the last few pages. He's playing a \"patron\" role — shows up every couple of days just to shower this place with more money.}""",
 	JEAN_SYLAS_CLIENT_AFTER_OPTION_PAY = "Must be the pay for her help in kidnappings.",
 	JEAN_SYLAS_CLIENT_AFTER_OPTION_WHEN = "When will he show up next time?",
 	JEAN_SYLAS_CLIENT_AFTER_PAY_REPLY = "{color=yellow|Jean: — Exactly. Obviously, they wouldn't write that in a ledger, but we know that's the only thing he cares about.}",
 	JEAN_SYLAS_CLIENT_AFTER_WHEN_REPLY = "{color=yellow|Jean: — There wasn't an exact date stated, obviously, but we can deduce from the information we have.}",
 	JEAN_SYLAS_CLIENT_AFTER_TIMING = "{color=yellow|Jean: — Judging by the gap between his previous visits, he comes here every couple of days. His last visit was two days ago, so he should be back either today or tomorrow. That's our chance to get him.}",
 	JEAN_SYLAS_OPTION_PREPARE_AMBUSH = "Prepare for an ambush.",
-
 	JEAN_SYLAS_GIRL_PLAN_SHOCK = """Jean turns to you, her eyes wide.
+
 {color=yellow|Jean: — H-huh?! What do you mean? Are you out of your mind?!}""",
 	JEAN_SYLAS_GIRL_PLAN_OPTION_PRETEND = "You just have to pretend for a bit, no one's actually going to ask you to join.",
 	JEAN_SYLAS_GIRL_PLAN_OPTION_UNDERCOVER = "Did you never hear about undercover operations? Why are you making a big deal out of this?",
-	JEAN_SYLAS_GIRL_PLAN_OBJECTION = """{color=yellow|Jean: — Easy for you to say! You're not the one who has to pretend to be a whore! Besides, it's a stupid idea anyway. She knows my face and will realize everything right away!}""",
+	JEAN_SYLAS_GIRL_PLAN_OBJECTION = "{color=yellow|Jean: — Easy for you to say! You're not the one who has to pretend to be a whore! Besides, it's a stupid idea anyway. She knows my face and will realize everything right away!}",
 	JEAN_SYLAS_GIRL_PLAN_OPTION_DISGUISE = "Does the word 'disguise' mean anything to you?",
 	JEAN_SYLAS_GIRL_PLAN_OPTION_CHANGE = "I didn't mean to go in like this. Obviously, you should change.",
 	JEAN_SYLAS_GIRL_PLAN_NO_CLOTHES = "{color=yellow|Jean: — Change? Into what? I didn't take any spare clothes with me!}",
@@ -22728,28 +22886,37 @@ The crystal flares softly, and the room dissolves into darkness.""",
 	JEAN_SYLAS_GIRL_PLAN_OPTION_WAIT = "Just wait a minute here, I gotta get something...",
 	JEAN_SYLAS_GIRL_PLAN_RETURN = "You walk back to the brothel with Jean that you previously suggested should change her clothes; she gives you a dubious look.",
 	JEAN_SYLAS_GIRL_PLAN_GOLD = """Jean looks at the bag of coins you presented, confused. Then it clicks.
+
 {color=yellow|Jean: — Wait, you want me not only to pretend to be a whore, but also dress like one?!}
+
 You stay silent but it's obvious she needs to look convincing for the job.
+
 {color=yellow|Jean: — Unbelievable! That's the stupidest idea I've ever heard!}""",
 	JEAN_SYLAS_GIRL_PLAN_OPTION_BETTER = "You got a better one? She knows my face even better than yours.",
 	JEAN_SYLAS_GIRL_PLAN_OPTION_CATCH = "Do you want to catch this maniac or not?",
 	JEAN_SYLAS_GIRL_PLAN_GOLD_REPLY = """Jean stares at you with great frustration, but doesn't refute your arguments. After a moment, she puffs up her cheeks and turns away.
-{color=yellow|Jean: — ...Fine...}
-You ask her to repeat what she said.
-{color=yellow|Jean: — I said fine, okay?! I'll do it for the mission!}""",
-	JEAN_SYLAS_GIRL_PLAN_DISGUISE = """She grabs the money and disappears into the crowd. You wait an hour, then another, and finally she shows up.""",
+	
+{color=yellow|Jean: — ...Fine... I'll do it for the mission!}""",
+	JEAN_SYLAS_GIRL_PLAN_DISGUISE = "She grabs the money and disappears into the crowd. You wait an hour, then another, and finally she shows up.",
 	JEAN_SYLAS_GIRL_PLAN_OPTION_COMPLIMENT = "That looks great on you",
 	JEAN_SYLAS_GIRL_PLAN_OPTION_BLEND = "You'll blend in right away",
 	JEAN_SYLAS_GIRL_PLAN_RESPONSE_COMPLIMENT = """Jean blushes a bit.
+	
 {color=yellow|Jean: — Oh, quit it. You know I'm wearing it only because I have no other choice.}""",
 	JEAN_SYLAS_GIRL_PLAN_RESPONSE_BLEND = """Jean furrows her eyebrows.
+	
 {color=yellow|Jean: — Did you mean that as a compliment, but too dumb to understand why it isn't or did you actually want to say I look like a whore right now?}
+
 {color=yellow|Jean: — Nevermind, it's best you don't answer it.}""",
 	JEAN_SYLAS_GIRL_PLAN_GO = """{color=yellow|Jean: — Alright, no point in postponing this any longer... Let's do it!}
+	
 She sighs, then puts on a fake smile and goes inside. You stealthily follow her from a distance.""",
 	JEAN_SYLAS_GIRL_PLAN_HALLWAY = """Just as you planned, she is intercepted by the madam right away, who questions her intention.
+
 {color=yellow|Jean: — Hey-y-y, so, like, I kinda need money right now, and I saw your place, so I was wondering if you're, like, hiring or something?}
-{color=red|Madam: — Huh. That's... unexpected. Although now that I think about it, we could use another girl or two to cover all the shifts. Why don't we discuss your qualifications in detail...}
+
+{color=aqua|Madam: — Huh. That's... unexpected. Although now that I think about it, we could use another girl or two to cover all the shifts. Why don't we discuss your qualifications in detail...}
+
 As soon as you hear them go into another room, you quickly slip upstairs and look around. Fortunately, the corridor is empty. Unfortunately, you don't know which door leads to the madam's office.""",
 	JEAN_SYLAS_GIRL_PLAN_OPTION_DOOR1 = "Pick the first door",
 	JEAN_SYLAS_GIRL_PLAN_OPTION_DOOR2 = "Pick the second door",
@@ -22758,62 +22925,82 @@ As soon as you hear them go into another room, you quickly slip upstairs and loo
 	JEAN_SYLAS_GIRL_PLAN_DOOR1 = "You pick the first door and quietly try to open it. The creaking of a bed and loud moans suddenly hit your ears. You quickly close the door.",
 	JEAN_SYLAS_GIRL_PLAN_DOOR2 = "You pick the second door and quietly try to open it. At first you don't hear anything, but then the sound of quiet snoring reaches you. You quickly close the door.",
 	JEAN_SYLAS_GIRL_PLAN_DOOR3 = """You pick the third door and quietly try to open it. Suddenly you hear a familiar voice.
-{color=green|Girl: — W-who's there? Madam? I'll be right away!}
+	
+{color=aqua|Girl: — W-who's there? Madam? I'll be right away!}
+
 The girl you spoke to in the alley tries to leave and freezes upon seeing you. You lower your voice and quickly explain your mission. She checks the corridor, then quietly whispers.
-{color=green|Girl: — Try the last door. But I don't want to get in trouble, so I didn't see you, okay?}
+
+{color=aqua|Girl: — Try the last door. But I don't want to get in trouble, so I didn't see you, okay?}
+
 She promptly closes the door.""",
-	JEAN_SYLAS_GIRL_PLAN_OFFICE = """You pick the most lavish‑looking door and find that it is closed. After quickly dealing with the lock, you slip inside the office. The interior seems rather generic — a couple of cabinets, some paintings, and a massive wooden table with dozens of letters and documents scattered on it.""",
+	JEAN_SYLAS_GIRL_PLAN_OFFICE = "You pick the most lavish‑looking door and find that it is closed. After quickly dealing with the lock, you slip inside the office. The interior seems rather generic — a couple of cabinets, some paintings, and a massive wooden table with dozens of letters and documents scattered on it.",
 	JEAN_SYLAS_GIRL_PLAN_OPTION_PAINTINGS = "Check the paintings for a safe.",
 	JEAN_SYLAS_GIRL_PLAN_OPTION_CABINETS = "Check the cabinets.",
 	JEAN_SYLAS_GIRL_PLAN_OPTION_TABLE = "Check the table.",
 	JEAN_SYLAS_GIRL_PLAN_PAINTINGS = "There is no stash behind any of them. Not even a small one.",
 	JEAN_SYLAS_GIRL_PLAN_CABINETS = "The cabinets contain a surprising number of wine bottles. Mostly empty ones.",
 	JEAN_SYLAS_GIRL_PLAN_TABLE = """You quickly scan the letters, soon realizing that most of them are from angry creditors. This establishment was really in deep financial trouble. Luckily for them, Sylas and his gold came along. Luckily for you, the ledger with detailed records of every transaction and even the dates of his visits was also there, buried under the pile of letters.
+
 You quickly copy the relevant information into your notebook, then put the ledger back, sprinkling some letters on top, trying to make it look undisturbed. Then you retrace your steps and finally slip out of the brothel.""",
-	JEAN_SYLAS_GIRL_PLAN_AFTER = """After an hour or so, Jean finally emerges from the brothel, her face deep red.""",
+	JEAN_SYLAS_GIRL_PLAN_AFTER = "After an hour or so, Jean finally emerges from the brothel, her face deep red.",
 	JEAN_SYLAS_GIRL_PLAN_AFTER_OPTION_SLOW = "Took you long enough",
 	JEAN_SYLAS_GIRL_PLAN_AFTER_OPTION_LEARNED = "You look like you've learned a lot",
 	JEAN_SYLAS_GIRL_PLAN_AFTER_RESPONSE = """{color=yellow|Jean: — Shut. Up. So many very personal questions... and so many things I didn't know — and wish I still didn't. This better be worth it! Did you find something?}
+	
 You tell her about your findings.
-{color=yellow|Jean: — Okay, at least that wasn't for nothing. Judging by the gap between his previous visits, he comes here every couple of days. His last visit was two days ago, so he should be back either today or tomorrow. That's our chance to get him... but first, give me back my clothes! I want to change right now!}""",
 
+{color=yellow|Jean: — Okay, at least that wasn't for nothing. Judging by the gap between his previous visits, he comes here every couple of days. His last visit was two days ago, so he should be back either today or tomorrow. That's our chance to get him... but first, give me back my clothes! I want to change right now!}""",
 	JEAN_SYLAS_AMBUSH_WAIT = """You hide in one of the alleys and begin your wait. Hours go by, then, just past midnight, he finally appears.
+	
 Covered in dark clothes, just as the girl described, Sylas confidently walks toward the brothel entrance — giving you the perfect opportunity to strike.""",
 	JEAN_SYLAS_AMBUSH_OPTION_ATTACK = "Attack him",
 	JEAN_SYLAS_SYLAS_CONFRONT = """You nod to Jean and ready your weapon. She raises her arm and sends a fire arrow directly at Sylas, yet all of a sudden he dodges it, as if knowing from where it would come. As you walk out of your hiding his face shows no hint of surprise.
+
 {color=aqua|Sylas: — Ah, finally. I was wondering why you were taking so long.}
+
 {color=yellow|Jean: — You knew we were waiting for you?!}
+
 {color=aqua|Sylas: — Of course I did. First you barge into my house, then you destroy my lab, and now you show up here, trying to sniff out my whereabouts. Did you really think I wouldn't notice? Such foolishness.}""",
 	JEAN_SYLAS_SYLAS_OPTION_MISTAKE = "If you knew we were waiting, coming here was your biggest mistake.",
 	JEAN_SYLAS_SYLAS_OPTION_FIGHT = "Less talk, more fight!",
 	JEAN_SYLAS_SYLAS_REPLY_MISTAKE = "{color=aqua|Sylas: — Oh? And why is that? Or do you think I came unprepared?}",
 	JEAN_SYLAS_SYLAS_REPLY_FIGHT = "{color=aqua|Sylas: — You're itching for a fight that much? Fine, so be it.}",
-	JEAN_SYLAS_SYLAS_MONSTERS = """He snaps his fingers, and suddenly a bunch of monsters rush from the sides. Another bunch comes from behind, rushing in from the brothel's cellar.
-{color=aqua|Sylas: — Hope this setup satisfies your violent nature. But in the end, I'll personally put you to rest.}""",
+	JEAN_SYLAS_SYLAS_MONSTERS = "He snaps his fingers, and suddenly a bunch of monsters rush from the sides. Another bunch comes from behind, rushing in from the brothel's cellar.",
+	JEAN_SYLAS_SYLAS_MONSTERS_2 = "{color=aqua|Sylas: — Hope this setup satisfies your violent nature. But in the end, I'll personally put you to rest.}",
 	JEAN_SYLAS_SYLAS_SERVANT_KILLED = "One of them has familiar features, and soon you realize it was his servant from the ruins that joined the fray.",
 	JEAN_SYLAS_SYLAS_SERVANT_FREED = "Behind the monsters you notice a familiar figure of the servant from the ruins, who skittishly hides in the back.",
 	JEAN_SYLAS_SYLAS_DEVICE = """While your enemy gloats, you feel the magical device Myr gave you in your pocket and press the activation button. Suddenly, a wave of energy emanates from your location. The monsters it hits become confused and sluggish, their movements turn frantic, then aimless. The army of battle monsters turns into a crowd of barely functioning imbeciles.
+
 {color=aqua|Sylas: — How did you... Agh, fine! I'll do it myself!}""",
-	JEAN_SYLAS_OPTION_FIGHT_SYLAS = "Fight",
 	JEAN_SYLAS_SYLAS_WIN_1 = """The battle is chaotic, but in the end, you and Jean come out on top. Sylas is pale, exhausted, but still standing and more furious.
+	
 {color=aqua|Sylas: — Curses on you! But I will not fall here, not after everything I have accomplished!}
+
 Sylas raises his hands, holding the dark sphere that pulses with sickly violet light.
+
 {color=aqua|Sylas: — You have no idea what you've just interfered with! O Benefactor, I beseech you, grant me more of your power!}""",
 	JEAN_SYLAS_SYLAS_WIN_2 = """The pulse intensifies as something inside the artifact answers. Dark fog materializes around Sylas, circling him like a snake.
-{color=red|???: — More power? You're asking for more power after losing everything I gave you? Magic, might, money, minions... and you still got beaten like a street dog... just like all those years ago! It's time for me to find a new tool.}
+
+{color=aqua|???: — More power? You're asking for more power after losing everything I gave you? Magic, might, money, minions... and you still got beaten like a street dog... just like all those years ago! It's time for me to find a new tool.}
+
 {color=aqua|Sylas: — W-what? How dare you?! I thought we were partners! You can't do this to me!}
+
 He tries to grab the sphere, but it slips from his hands and flies into the air. The dark fog circles around it like a halo, then suddenly forms into a projectile that slams into your chest, sending you flying backward.""",
 	JEAN_SYLAS_SYLAS_WIN_3 = """{color=yellow|Jean: — [name], are you alr...}
+	
 Jean freezes mid-sentence as the dark fog begins circling her face and the sphere floats into her hands. Her body goes rigid. Her head drops... then lifts again, an unnaturally wide smile stretching across her face. Her eyes shift to a dark violet. Her mouth hangs open, but the sound that comes next is not hers.""",
-	JEAN_SYLAS_SYLAS_WIN_4 = """{color=red|Jean: — Ah, that is much better! Comparing that old fool to this young mage is like trading a crippled donkey for a warhorse! With her power, I'll finally be free of that dusty piece of scrying glass!}
-{color=red|Jean: — Now if you'll excuse me... this body has places to be. Ta-ta, fools.}
+	JEAN_SYLAS_SYLAS_WIN_4 = """{color=aqua|Jean: — Ah, that is much better! Comparing that old fool to this young mage is like trading a crippled donkey for a warhorse! With her power, I'll finally be free of that dusty piece of scrying glass!}
+
+{color=aqua|Jean: — Now if you'll excuse me... this body has places to be. Ta-ta, fools.}
+
 Jean's body suddenly rises into the air and then flies into the night, leaving you alone with the collapsed Sylas... and the couple dozen guards who were summoned by the sounds of your fight and are now eager for an explanation.""",
 	JEAN_SYLAS_RETURN_ALIRON = "You return to Aliron with more questions than answers. The situation has clearly gotten out of hand. There's only one person that can make sense of what just happened. Time to talk to Myr.",
-	
 	JEAN_SYLAS_MYR_OPTION_2 = "There's an issue with Jean...",
 	JEAN_SYLAS_MYR_ISSUE_INTRO = """{color=aqua|Myr: — Oh? I assumed that insolent girl was missing just because she didn't want to show herself to my eyes, but your tone suggests something went very wrong. Go on, tell me.}
+	
 You recount everything that transpired: the brothel, Sylas, the artifact, and the moment Jean fell under the creature's control.""",
 	JEAN_SYLAS_MYR_ISSUE_LIBRARY = """{color=aqua|Myr: — Huh. That's... curious. I mean, terrible for her, of course, but as a phenomenon it's certainly worth studying...}
+	
 That's the first time Myr has shown that much interest in a while.
 
 {color=aqua|Myr: — Ah, right. I assume you're not here for scientific discourse, but for advice. We'll have to do some digging ourselves. The guild's library is this way.}""",
@@ -22821,59 +23008,61 @@ That's the first time Myr has shown that much interest in a while.
 	JEAN_SYLAS_MYR_ISSUE_OPTION_ARCHIVES = "You think the guild archives hold the answers?",
 	JEAN_SYLAS_MYR_ISSUE_SNARK = "{color=aqua|Myr: — I only do this because I don't want to deal with the aftermath of that entity getting out. And don't try anything funny, I'll be watching you.}",
 	JEAN_SYLAS_MYR_ISSUE_ARCHIVES = "{color=aqua|Myr: — Answers, clues, something. Mages have to deal with a lot of stuff, so the library should have historical records on a wide variety of entities. You just need to search through it.}",
-
 	JEAN_SYLAS_LIBRARY_COMPLETE = """After spending hours upon hours in that library, you finally collect all the mentions of people from the past who suddenly began behaving strangely, and also find an account of the ritual that originally bound that creature inside the sphere.
 
 Time to present them to Myr.""",
-	
 	JEAN_SYLAS_MYR_OPTION_3 = "I found what we were looking for...",
 	JEAN_SYLAS_MYR_RECORDS_INTRO_1 = """Myr scans them quickly, her eyes moving faster with each line.
 
 {color=aqua|Myr: — ...Yes. This fits.}
+
 She sets the papers down.""",
 	JEAN_SYLAS_MYR_RECORDS_INTRO_2 = """{color=aqua|Myr: — We're dealing with a parasitic entity that feeds on its host's desires, then traps them inside a constructed illusion while using their body for its own benefit.}
+	
 She taps one particular passage.
+
 {color=aqua|Myr: — According to these records, the creature cannot fully manifest on its own, which explains why it needed a host in the first place. And the things it said about magic and power... it must be gathering strength to reverse the original sealing ritual.}
+
 {color=aqua|Myr: — Since the ritual was done with one of the Champions of that time, it was of a high quality, so the only way to break it is to recreate it in reverse and in the same location. Which means it will have to return to the original ruins at some point.}""",
 	JEAN_SYLAS_MYR_RECORDS_OPTION_RUINS = "So I just need to head back to those ruins?",
 	JEAN_SYLAS_MYR_RECORDS_OPTION_SAVE = "Can Jean be saved?",
 	JEAN_SYLAS_MYR_RECORDS_RUINS = "{color=aqua|Myr: — Only if you want to get into a futile fight and get Jean dead.}",
 	JEAN_SYLAS_MYR_RECORDS_PLAN = """{color=aqua|Myr: — To save Jean, we first need to incapacitate her without killing her, and then break the demon's illusion. The first part is relatively easy. She may be a strong mage, but she's not that strong.}
+
 {color=aqua|Myr: — Jean's biggest weakness is her pride and arrogance. And since the demon still has to share her body with her mind, he is bound to inherit some of her bad habits.}
+
 {color=aqua|Myr: — Just wait for her biggest attack and dodge it, then you'll have an opening to get back at her. I'm sure you'll manage. Now, when it comes to breaking the illusion, you must use your own will to aid her. Just link your consciousness with hers and help her see through the illusion.}""",
 	JEAN_SYLAS_MYR_RECORDS_OPTION_SAFE = "Is it safe?",
 	JEAN_SYLAS_MYR_RECORDS_OPTION_HOW = "How do I do that?",
 	JEAN_SYLAS_MYR_RECORDS_SAFE = "{color=aqua|Myr: — For you? Yes. Worst‑case scenario, you simply lose the connection. For the person you're trying to wake, it might get unpleasant if the dissonance between illusion and reality is too painful to acknowledge, but it's nothing that girl couldn't take.}",
 	JEAN_SYLAS_MYR_RECORDS_ARTIFACT = """{color=aqua|Myr: — There is a special artifact that can be created, but it requires some rare materials. I'm sure you'll manage to get them, though. Then just follow the instructions.}
 She reaches for the parchment and begins sketching a small arcane diagram. When she's done, she hands you the schematic.
+
 {color=aqua|Myr: — There. This should be your ticket to saving that arrogant brat. And be quick about it, we don't know how much time it takes for that demon to reverse the ritual.}""",
-
 	JEAN_SYLAS_ARTIFACT_CRAFTED = "You finish crafting the artifact. Now you are prepared for the showdown with Jean and the demon inside her.",
-
 	JEAN_SYLAS_SEARCH_JEAN_INTRO_1 = """The ruins look the same, yet the atmosphere feels different this time. You step inside and walk unobstructed to the central chamber, where the cages used to be. Now they are piled against the walls, while in the center Jean is drawing intricate magical circles on the floor.
 
 Upon your arrival, she turns toward you. Her eyes still glow that unsettling violet. A distorted smile touches her lips.
 
-{color=red|Jean: — You're persistent, I'll give you that. I did expect you'd come to try and get your girl back, but you came even earlier than I predicted.}""",
-	JEAN_SYLAS_SEARCH_JEAN_INTRO_2 = """{color=red|Jean: — Not that it really matters. I've learned all your tricks during your fight with that loser, Sylas. So I'll just squish you like a bug and carry on with my plan.}
+{color=aqua|Jean: — You're persistent, I'll give you that. I did expect you'd come to try and get your girl back, but you came even earlier than I predicted.}""",
+	JEAN_SYLAS_SEARCH_JEAN_INTRO_2 = """{color=aqua|Jean: — Not that it really matters. I've learned all your tricks during your fight with that loser, Sylas. So I'll just squish you like a bug and carry on with my plan.}
 
-{color=red|Jean: — I'm so close to getting my freedom back. There's no way I'm letting some mortal stop me. Do you have any idea how long I've been preparing for this?}""",
+{color=aqua|Jean: — I'm so close to getting my freedom back. There's no way I'm letting some mortal stop me. Do you have any idea how long I've been preparing for this?}""",
 	JEAN_SYLAS_SEARCH_JEAN_OPTION_LONG = "Long?",
 	JEAN_SYLAS_SEARCH_JEAN_OPTION_VERY_LONG = "Very long?",
 	JEAN_SYLAS_SEARCH_JEAN_OPTION_RECORDS = "I read the records, alright. You were sealed five hundred years ago. Doesn't even sound that long for a creature like you.",
-	JEAN_SYLAS_DEMON_TIME_LONG = "{color=red|Jean: — Five hundred years, dammit! Five hundred years sealed in a piece of glass! All just because one of those fucking zealots turned out to be oh so holy and raised an alarm after noticing my presence!}",
-	JEAN_SYLAS_DEMON_TIME_RECORDS = "{color=red|Jean: — Fuck you! Five hundred years isn't long when you're having fun, not when you're stuck in one place! And all because one of those fucking zealots turned out to be oh so holy and raised an alarm after noticing my presence!}",
+	JEAN_SYLAS_DEMON_TIME_LONG = "{color=aqua|Jean: — Five hundred years, dammit! Five hundred years sealed in a piece of glass! All just because one of those fucking zealots turned out to be oh so holy and raised an alarm after noticing my presence!}",
+	JEAN_SYLAS_DEMON_TIME_RECORDS = "{color=aqua|Jean: — Fuck you! Five hundred years isn't long when you're having fun, not when you're stuck in one place! And all because one of those fucking zealots turned out to be oh so holy and raised an alarm after noticing my presence!}",
 	JEAN_SYLAS_DEMON_MONOLOGUE_1 = """{color=reed|Jean: — I was so bored and could do nothing about it! Well... almost nothing. Of course, I tirelessly worked on my plan to escape, but that's a given.}
 
 The creature continues, clearly reveling in its own cunning, savoring each word like a well‑earned victory.""",
-	JEAN_SYLAS_DEMON_MONOLOGUE_2 = """{color=red|Jean: — Even stuck in that glass, I shaped legends. I guided discoveries. I nudged the curious exactly where I needed them. I changed dozens of hosts just to grab a tiny bit more power for myself each time...}
+	JEAN_SYLAS_DEMON_MONOLOGUE_2 = """{color=aqua|Jean: — Even stuck in that glass, I shaped legends. I guided discoveries. I nudged the curious exactly where I needed them. I changed dozens of hosts just to grab a tiny bit more power for myself each time...}
 
 Jean's lips curl slightly.
 
-{color=red|Jean: — 'Cause strong hosts are very rare. Usually they can fulfill their desires themselves, leaving me no leverage... So you have no idea how happy I was when I saw that this girl, despite all her power, was consumed by her desires!}
+{color=aqua|Jean: — 'Cause strong hosts are very rare. Usually they can fulfill their desires themselves, leaving me no leverage... So you have no idea how happy I was when I saw that this girl, despite all her power, was consumed by her desires!}
 
-{color=red|Jean: — With her magical potential, I knew she was the final piece. Her power was enough to start the ritual already, all I need to do now is to get rid of you and carry on with it. And it's time to start with that task!}""",
-	JEAN_SYLAS_OPTION_FIGHT_JEAN = "Fight",
+{color=aqua|Jean: — With her magical potential, I knew she was the final piece. Her power was enough to start the ritual already, all I need to do now is to get rid of you and carry on with it. And it's time to start with that task!}""",
 	JEAN_SYLAS_FIGHT_JEAN_RESULT = """The fierce fight makes you sweat quite a lot, but it still comes to an end with you as the last one standing. Jean finally collapses, weakened enough that even the demon can't force her body to move.
 
 You rush forward and press the mind‑linking artifact to her forehead. At that moment your world suddenly becomes a blur.""",
@@ -22886,7 +23075,7 @@ You rush forward and press the mind‑linking artifact to her forehead. At that 
 
 {color=yellow|Jean: — Ah, there's no need for that. I just wanted to do some good for the magical community.}
 
-{color=aqua|Myr: — No‑no, I insist! The world should know its geniuses...}""",
+{color=aqua|Myr: — No-no, I insist! The world should know its geniuses...}""",
 	JEAN_SYLAS_DREAM_OPTION_FUN = "I see you had your share of fun. But it's time to go back to reality, Jean",
 	JEAN_SYLAS_DREAM_OPTION_WAKE = "Jean, wake up. You know this is a dream. Do you really think Myr would ever praise you like that?",
 	JEAN_SYLAS_DREAM_REPLY_FUN = """{color=yellow|Jean: — Oh, [name], you've decided to visit us? How nice of you! I missed you, you know? You should visit more often!}
@@ -22909,13 +23098,13 @@ As she begins to regain her freedom, the illusory jail starts to crumble. Myr's 
 {color=yellow|Jean: — S-so it really was just an illusion?! All of it?! Oh, my body hurt so much... Why?...}
 
 You help Jean to her feet, and together you look at the dark fog that escaped from her body and now swirls over the magical circles, slowly forming some sort of creature. Its violet eyes look at you with clear disdain.""",
-	JEAN_SYLAS_DEMON_REVEAL = """{color=red|Demon: — YOU! You stupid, nosy human with your stupid dirty tricks! I had this girl locked up in the sweetest dreams, the kind she'd never escape on her own! Yet you just had to ruin it for me, didn't you?!}
+	JEAN_SYLAS_DEMON_REVEAL = """{color=aqua|Demon: — YOU! You stupid, nosy human with your stupid dirty tricks! I had this girl locked up in the sweetest dreams, the kind she'd never escape on her own! Yet you just had to ruin it for me, didn't you?!}
 
-{color=red|Demon: — Oh, but it's not over yet! I've siphoned enough energy from her to create this vessel, and I will finish what I've started! DIE!}""",
+{color=aqua|Demon: — Oh, but it's not over yet! I've siphoned enough energy from her to create this vessel, and I will finish what I've started! DIE!}""",
 	JEAN_SYLAS_OPTION_FIGHT_DEMON = "Fight",
 	JEAN_SYLAS_DEMON_FIGHT_RESULT = """Together with Jean, you manage to overpower the demon. Its fragile, temporary form begins to dissipate back into fog, which in turn gets sucked back into the floating glass sphere.
 
-{color=red|Demon: — NO-O-O, NOT AGAIN, I WAS SO CLOSE... curse you souls... you mortal... bastards...}
+{color=aqua|Demon: — NO-O-O, NOT AGAIN, I WAS SO CLOSE... curse you souls... you mortal... bastards...}
 
 The sphere slowly lowers itself before finally falling to the ground with a tiny clink.""",
 	JEAN_SYLAS_SPHERE_CHOICE = """Jean gives it a cautious look.
@@ -22931,38 +23120,41 @@ She pinches herself and winces from the pain.
 	JEAN_SYLAS_SPHERE_CHURCH = "{color=yellow|Jean: — Oh, right, that curse won't disappear on its own! Let me grab it, then. I hope we get back in time.}",
 	JEAN_SYLAS_SPHERE_RESEARCH_DEAD = "{color=yellow|Jean: — I can't believe I'm the one who has to ask this, but isn't it way too dangerous? Although... I guess humanity might not get another opportunity to study a weakened demon of this sort... Fine, let me grab it and let's go to the guild.}",
 	JEAN_SYLAS_SPHERE_RESEARCH_ALIVE = """{color=yellow|Jean: — I can't believe I'm the one who has to ask this, but isn't it way too dangerous? Although... I guess we might not get another opportunity to study a weakened demon of this sort...}
+
 {color=yellow|Jean: — ...But wait, what studies are you talking about? We need it to remove the curse from Rynn! You're not saying we should let her, are you?...}""",
 	JEAN_SYLAS_SPHERE_OPTION_RIGHT = "You're right, I almost forgot about it. Let's go to the Church",
 	JEAN_SYLAS_SPHERE_OPTION_UP_TO_YOU = "It's up to you. But Rynn is just one person, and we have no guarantees it'll even work. The research, though, could benefit everyone",
 	JEAN_SYLAS_SPHERE_RIGHT = "{color=yellow|Jean: — Yeah, let's go.}",
 	JEAN_SYLAS_SPHERE_UP_TO_YOU = """{color=yellow|Jean: — When you put it like that... She's just one person. We don't even know if the cure will work. But research... it could let us prevent something like this from happening again.}
+
 {color=yellow|Jean: — Yeah... I guess, this is a better way. I'm sorry, Rynn. But we can't lose this opportunity. Let's go to the guild.}""",
 	JEAN_SYLAS_SPHERE_DESTROY_DEAD = """{color=yellow|Jean: — Yeah, you're right. Time to put an end to this evil creature. Whoever sealed it last time probably didn't have enough strength to kill it, but now that it's weakened, I'm sure we'll manage. And even if we can't destroy it completely, at least it won't be able to set foot on this plane for a long time.}
+
 Hearing your decision, the sphere tries to roll away on its own, but Jean easily catches it and places it between some rocks. Realizing it won't be able to escape, the demon tries to say something, but its voice is so quiet you hear nothing but a few faint squeaks.
+
 Jean focuses all her remaining magical energy into a blindingly bright fire arrow, then throws it directly at the glass sphere. It shatters with a loud crack, inhuman screams in an unknown tongue filling your ears as the dark fog dissipates into nothingness.
 
 {color=yellow|Jean: — For everyone you've hurt on your journey. For Rynn.}""",
 	JEAN_SYLAS_SPHERE_DESTROY_ALIVE = "{color=yellow|Jean: — Yeah, that was also my first thought, but don't forget that we need it to remove the curse from Rynn. Let me grab it and then we should head back to Church. I hope we will get back in time.}",
-
 	JEAN_SYLAS_CHURCH_EVENT_1 = """You rush to the Church and present the artifact to Ginny. Together you alert the Mage's guild and within days a small circle of senior guild mages is assembled around the artifact. They dissect the curse piece by piece and soon find a way to remove it from Rynn's body.
 
 After the ritual, the curse's energy reverses its flow and shatters the glass sphere on contact. With one final curse in an unknown tongue, the demon leaves this plane.
 
 The next day, Rynn opens her eyes. Weak, but alive and still human.
 
-{color=red|Rynn: — ...Where am I? What happened?}
+{color=aqua|Rynn: — ...Where am I? What happened?}
 
 You spend a whole hour recounting all the events that transpired.""",
 	JEAN_SYLAS_CHURCH_EVENT_2 = """{color=yellow|Jean: — ...but in the end, with the help of the Church, we were able to lift the curse. You're safe now.}
 
-{color=red|Rynn: — That's... an incredible story! And you saved my life again! Thank you!}
+{color=aqua|Rynn: — That's... an incredible story! And you saved my life again! Thank you!}
 
 She gives Jean a hug, and they talk more about the details of the adventure.""",
-	JEAN_SYLAS_CHURCH_EVENT_3 = """{color=red|Rynn: — By the way... when that demon possessed you, did you get a chance to talk to him? Did he say anything about my brother?}
+	JEAN_SYLAS_CHURCH_EVENT_3 = """{color=aqua|Rynn: — By the way... when that demon possessed you, did you get a chance to talk to him? Did he say anything about my brother?}
 
 {color=yellow|Jean: — We didn't really talk, but as he was binding my will, I remember him mentioning that, unlike Sylas, he wouldn't let anyone escape his grasp... which means at least one person did escape before. Unfortunately, we don't know who it was or when that happened.}
 
-{color=red|Rynn: — So he really might still be out there somewhere... Well, I guess I'll just keep searching... when Ginny lets me leave, of course.}
+{color=aqua|Rynn: — So he really might still be out there somewhere... Well, I guess I'll just keep searching... when Ginny lets me leave, of course.}
 
 You let her rest and return to your mansion. A week later, Rynn, fully healed, pays you a visit.""",
 	JEAN_SYLAS_CHURCH_EVENT_4 = """She thanks you both for saving her life and says that if you ever call for help, she will answer. For now, though, she will continue to look for her brother.
@@ -22980,38 +23172,55 @@ She finally looks at you.
 
 She punches your shoulder lightly.""",
 	JEAN_SYLAS_CHURCH_EVENT_6 = """{color=yellow|Jean: — And in the end, we actually did it. Caught the demon, saved Rynn, and even Myr looks at me with slightly less disdain. Not the worst outcome, eh?}
-She looks away quickly, but not before you catch the glisten in her eyes.
-{color=yellow|Jean: — Now come on. Let's go home. Huh, I didn't even notice how I started calling your mansion 'home'... Guess it'll be harder now if you ever want to get rid of me, heh.}""",
 
+She looks away quickly, but not before you catch the glisten in her eyes.
+
+{color=yellow|Jean: — Now come on. Let's go home. Huh, I didn't even notice how I started calling your mansion 'home'... Guess it'll be harder now if you ever want to get rid of me, heh.}""",
 	JEAN_SYLAS_KEEP_SPHERE_1 = """You make your way back to Aliron and head to the Mage's Guild. The glass sphere survived the journey and is now carefully stored in Jean's bag.
+
 Myr meets you in the hallway. She looks at you first, then glances at Jean, her face betraying no surprise or any other emotion. Then her gaze shifts directly to Jean's bag.
-{color=aqua|Myr: — ...Well. I see you didn't come back empty‑handed.}
+
+{color=aqua|Myr: — ...Well. I see you didn't come back empty-handed.}
+
 Jean carefully takes the artifact from her bag and holds it in her hands.""",
 	JEAN_SYLAS_KEEP_SPHERE_2 = """{color=yellow|Jean: — You could say that. The demon is beaten to exhaustion and currently resides inside, I doubt he'll pose any threat for quite some time. As such, I want to study it. Do you think the Academy would be interested in my research?}
+
 For a brief moment, genuine amusement flashes across Myr's face.
+
 {color=aqua|Myr: — You're asking if a bunch of old farts... of respectable mages would be interested in studying a weakened, contained parasitic demon and its magic? Pfft. Yes. Yes, they would.}
+
 Myr takes the sphere, turning it slowly in her fingers. The glass hums faintly. She gives it back to Jean with an appraising look.""",
 	JEAN_SYLAS_KEEP_SPHERE_3 = """{color=aqua|Myr: — It seems your efforts were not entirely wasted after all... even if the result was rather... unconventional.}
+
 {color=yellow|Jean: — I'll take that as praise.}
+
 {color=aqua|Myr: — Take it as you like. I'll have a new permit issued for you, it should be ready in a couple of days. After that, you will once again be welcome in the halls of the Academy. This time as a senior researcher.}""",
 	JEAN_SYLAS_KEEP_SPHERE_31 = """For a moment, Jean just blinks.
 
 {color=yellow|Jean: — ...Seriously? Senior?}
+
 {color=aqua|Myr: — Try not to faint. It would be embarrassing.}
+
 Jean quickly looks away, but the small, satisfied smile is impossible to miss. Myr concludes the meeting is over and walks away.""",
 	JEAN_SYLAS_KEEP_SPHERE_4 = """Outside the guild, Jean lingers on the steps, unusually quiet.
+
 {color=yellow|Jean: — ...The cost Rynn had to pay for me to be in this position...}
 She exhales slowly.
+
 {color=yellow|Jean: — I won't waste this chance.}""",
 	JEAN_SYLAS_KEEP_SPHERE_5 = """She glances at you.
+
 {color=yellow|Jean: — Hey. Just so you know... I really appreciate that you stayed with me through all this mess.}
+
 She shifts awkwardly, uncomfortable with this moment of vulnerability.""",
 	JEAN_SYLAS_KEEP_SPHERE_51 = """{color=yellow|Jean: — You were there. Every time. So... thanks. For not giving up on me.}
-She punches your shoulder lightly.
-{color=yellow|Jean: — In the end, we made quite good partners, eh? Hopefully that won't be our last adventure.}
-She looks away quickly, but not before you catch the glisten in her eyes.""",
-	JEAN_SYLAS_KEEP_SPHERE_52 = """{color=yellow|Jean: — Now come on. Let's go home. Huh, I didn't even notice how I started calling your mansion 'home'... Guess it'll be harder now if you ever want to get rid of me, heh.}""",
 
+She punches your shoulder lightly.
+
+{color=yellow|Jean: — In the end, we made quite good partners, eh? Hopefully that won't be our last adventure.}
+
+She looks away quickly, but not before you catch the glisten in her eyes.""",
+	JEAN_SYLAS_KEEP_SPHERE_52 = "{color=yellow|Jean: — Now come on. Let's go home. Huh, I didn't even notice how I started calling your mansion 'home'... Guess it'll be harder now if you ever want to get rid of me, heh.}",
 	JEAN_SYLAS_DESTROY_EPILOGUE_1 = """After the journey is over, you return to the mansion and take some time to rest. In the evening, you notice Jean watching the sunset on the balcony and join her.
 
 Eventually, the sun hides behind the horizon, and Jean turns to you.
@@ -23032,11 +23241,21 @@ She shifts awkwardly, uncomfortable with this moment of vulnerability.
 
 She punches your shoulder lightly.""",
 	JEAN_SYLAS_DESTROY_EPILOGUE_4 = """{color=yellow|Jean: — In the end, we made quite good partners, eh? I just hope our next adventure is a lot brighter.}
+
 She looks away quickly, but not before you catch the glisten in her eyes.
+
 {color=yellow|Jean: — Now come on. Let's go home. Huh, I didn't even notice how I started calling your mansion 'home'... Guess it'll be harder now if you ever want to get rid of me, heh.}""",
-
-	JEAN_SYLAS_QUEST_NAME = "Jean: The Demon in the Sphere",
-	JEAN_SYLAS_QUEST_SUMMARY = "Jean needs help tracking down the mastermind behind the cursed artifact.",
-	JEAN_SYLAS_QUEST_STAGE_START = "Follow Jean's leads in the Empire's capital.",
-
+	JEAN_CAPITAL_OPTION_SEARCH = "Meet Jean",
+	JEAN_CAPITAL_OPTION_ARENA = "Investigate Arena",
+	JEAN_CAPITAL_OPTION_MERCHANTS = "Merchant Quarter",
+	JEAN_CAPITAL_OPTION_CART = "Seek lost cart",
+	JEAN_CAPITAL_OPTION_BROTHEL = "Visit brothel",
+	JEAN_CAPITAL_OPTION_BROTHEL_RETURN = "Return to Jean",
+	QUEST_JEAN_DEMON_LOCATION_TEXT = "Empty demonic ruins",
+	QUEST_JEAN_DEMON_LOCATION_DESC = "Jean should be here",
+	JEAN_DEMON_OPTION = "Search for Jean",
+	JEANMAGESSEARCHTASKNAME = "*Search archives of mages guild*",
+	JEANMAGESSEARCHTASKDESCRIPT = "You must find an information about demon",
+	MATERIALMINDLINK = "Mind-Link Artifact",
+	MATERIALMINDLINKDESCRIPT = "A complicated device for linking ones consciousness."
 }

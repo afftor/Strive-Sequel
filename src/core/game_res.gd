@@ -200,6 +200,8 @@ func update_money(operant, value):
 			money += value
 			globals.text_log_add('money',"Gold get: " + str(value))
 		'-':
+			if money < value:
+				value = money
 			money -= value
 			globals.text_log_add('money',"Gold used: " + str(value))
 		'=':

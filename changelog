@@ -1,3 +1,13 @@
+0.14.1
+Added achievements/new game+ options
+Added Jean's questline
+Redone skill tooltips, added detailed tooltip on shift holding
+Redone slave training bonuses
+Added an option to use teleport spell on global map
+Improved some scene and monochrome arts
+Added an option to click outside of the window to close some GUI windows
+Fixed some issues with Mae's questline
+Fixed an issue where enemy could be hiding and untargetable
 0.14.0
 Added new tutorial scenario
 Added Mae's questline with 4 unique scenes

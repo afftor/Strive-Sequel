@@ -13,9 +13,7 @@ func _ready():
 	$no_trainer/TextureButton.connect("pressed", self, 'build_trainer_list')
 	$training/trainer_frame.connect("pressed", self, 'build_trainer_list')
 	$finished/reset_button.connect("pressed", self, 'reset_training')
-	$training/complete_button.connect("pressed", self, 'build_finish')
-	$finish/cancel.connect("pressed", self, 'hide_finish_dialogue')
-	$finish/confirm.connect("pressed", self, 'confirm_finish_dialogue')
+	$training/complete_button.connect("pressed", self, 'finish_training')
 	globals.connecttexttooltip($training/Tooltip, tr("INFOTRAINING"))
 	globals.connecttexttooltip($trainer_list/tooltip, tr("INFOSLAVETRAINER"))
 	$training/spirit.max_value = 100
@@ -23,7 +21,6 @@ func _ready():
 	globals.connecttexttooltip($training/TextureRect2, tr("SPIRITTOOLTIP")) 
 	globals.connecttexttooltip($training/spirit, tr("SPIRITTOOLTIP")) 
 	globals.connecttexttooltip($training/trainer_frame, tr("CLICKTOCHANGE"))
-	$finish/header.bbcode_text = tr("TRAINFINISHTEXT")
 	
 	globals.connecttexttooltip($finished/reset_button, tr("RESETTRAINREQ"))
 	input_handler.register_btn_source("trainer_btn", self, "tut_get_no_trainer_btn")
@@ -170,6 +167,8 @@ func build_posttrain():
 	$finished.visible = true
 	$finished/reset_button.disabled = (ResourceScripts.game_res.if_has_items('oblivion_potion', 'lt', 1))
 	var spirit = person.get_stat('spirit')
+	var spirit_1 = person.get_stat('spirit_1')
+	$finished/status.text = tr('STATSPIRIT') + ": " + str(spirit) + "/" + str(spirit_1)
 	var text = tr('TRAININGFINISHHEADER')
 	var list = person.get_traits_by_tag('training')
 	input_handler.ClearContainer($finished/VBoxContainer/HBoxContainer2, ['Button'])
@@ -185,45 +184,41 @@ func build_posttrain():
 			panel.get_node('icon').texture = trdata.icon
 		globals.connecttexttooltip(panel, "[center]" +tr(trdata.name) + "[/center]\n" +  person.translate(tr(trdata.descript)))
 	
-	var tmp = person.get_traits_by_tag('training_final')
-	if !tmp.empty():
-		var trdata = Traitdata.traits[tmp[0]]
-		$finished/VBoxContainer/result_frame.visible = true
-		$finished/VBoxContainer/select_text.visible = false
-		#$finished/VBoxContainer/rewards.visible = false
+	input_handler.ClearContainer($finished/VBoxContainer/HBoxContainer3, ['Button'])
+	for tr in tr_rewards:
+		var trdata = Traitdata.traits[tr]
+		var panel = input_handler.DuplicateContainerTemplate($finished/VBoxContainer/HBoxContainer3, 'Button')
+		panel.get_node('Label').text = str(trdata.cost)
 		if trdata.icon is String:
-			$finished/VBoxContainer/result_frame/icon.texture = load(trdata.icon)
+			panel.get_node('icon').texture = load(trdata.icon)
 		else:
-			$finished/VBoxContainer/result_frame/icon.texture = trdata.icon
-		$finished/VBoxContainer/result_frame/header_text.text = tr(trdata.name)
-		globals.connecttexttooltip($finished/VBoxContainer/result_frame,"[center]" + tr(trdata.name) + "[/center]\n" + tr(trdata.descript))
-	else:
-		$finished/VBoxContainer/result_frame.visible = false
-		$finished/VBoxContainer/select_text.visible = false
-	
-	if spirit < variables.spirit_limits[0]:
-		$finished/status.text = tr('TRAININGSTATUS1')
-	elif spirit < variables.spirit_limits[1]:
-		$finished/status.text = tr('TRAININGSTATUS2')
-	elif spirit < variables.spirit_limits[2]:
-		$finished/status.text = tr('TRAININGSTATUS3')
-	else:
-		$finished/status.text = tr('TRAININGSTATUS4')
+			panel.get_node('icon').texture = trdata.icon
+		if person.check_trait(tr):
+			panel.pressed = true
+			panel.get_node('Label').visible = false
+			panel.disabled = true
+			panel.texture_disabled = load("res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_traits_hover.png")
+		else:
+			panel.pressed = false
+			if spirit < trdata.cost:
+				panel.disabled = true
+				panel.get_node('Label').set("custom_colors/font_color", Color(variables.hexcolordict.k_red))
+			else:
+				panel.set_meta('trait', tr)
+				panel.connect('toggled', self, 'press_trait_post', [tr])
+				panel.get_node('Label').set("custom_colors/font_color", Color(variables.hexcolordict.green))
+		globals.connecttexttooltip(panel, person.translate(trdata.descript))
 
 
 func reset_training():
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'reset_training_confirm', tr("RESETTRAINING")])
+
 
 func reset_training_confirm():
 	ResourceScripts.game_res.remove_item('oblivion_potion', 1)
 	person.reset_training()
 	person.try_breakdown('brk_training_reset')
 	match_state()
-
-
-func select_final_trait(tr_code):
-	person.add_trait(tr_code)
-	build_posttrain()
 
 
 func build_training():
@@ -233,6 +228,7 @@ func build_training():
 	build_training_header()
 	build_training_list()
 	build_training_traits()
+	update_confirm_finish()
 
 
 func build_training_servant():
@@ -433,6 +429,16 @@ func press_trait(value, tr_code):
 	build_training_traits()
 
 
+func press_trait_post(value, tr_code):
+	if !person.check_trait(tr_code):
+		selected_id = tr_code
+		var data = Traitdata.traits[tr_code]
+		var text = "Unlock this for {color=green|" + str(data.cost) + "} Spirit?"
+		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'learn_upgrade_post_confirmed', tr(text)])
+#		person.add_training(tr_code)
+	build_posttrain()
+
+
 func press_trait_servant(value, tr_code):
 	if !person.check_trait(tr_code):
 		selected_id = tr_code
@@ -466,74 +472,21 @@ func learn_upgrade_confirmed():
 	input_handler.play_animation("trait_aquired", args)
 
 
-var selected_reward = null
-func hide_finish_dialogue():
-	$finish.visible = false
-
-
-func confirm_finish_dialogue():
-	$finish.visible = false
-	if selected_reward != null and selected_reward != "":
-		person.add_trait(selected_reward)
-	finish_training_confirm()
-
-
-func update_reward():
-	for nd in $finish/ScrollContainer/rewards.get_children():
-		if !nd.has_meta('trait'):
-			continue
-		nd.pressed = (selected_reward == nd.get_meta('trait'))
-
-
-func select_reward(val):
-	if selected_reward == val:
-		selected_reward = null
-	else:
-		selected_reward = val
-	update_reward()
-	update_confirm_finish()
+func learn_upgrade_post_confirmed():
+	if selected_id == "": 
+		return
+	var data = Traitdata.traits[selected_id]
+	var args = {}
+	args["current_trait"] = selected_id
+	args["person"] = person
+	person.add_training_post(selected_id)
+	selected_id = ""
+	root.update()
+	input_handler.play_animation("trait_aquired", args)
 
 
 func update_confirm_finish():
-	$finish/confirm.disabled = false
+	$training/complete_button.disabled = false
 	if !person.has_status('callmaster'):
-		$finish/confirm.disabled = true
-	if selected_reward == null:
-		$finish/confirm.disabled = true
+		$training/complete_button.disabled = true
 
-
-
-func build_finish():
-	$finish.visible = true
-	selected_reward = null
-	input_handler.ClearContainer($finish/ScrollContainer/rewards, ['button', 'button2'])
-	for tr in tr_rewards:
-		var trdata = Traitdata.traits[tr]
-		var panel = input_handler.DuplicateContainerTemplate($finish/ScrollContainer/rewards, 'button')
-		panel.get_node('name').text = tr(trdata.name)
-		if trdata.icon is String:
-			panel.get_node('icon').texture = load(trdata.icon)
-		else:
-			panel.get_node('icon').texture = trdata.icon
-		#reqs
-		var text = ""
-		if person.get_stat('spirit') < variables.spirit_limits[1]:
-			panel.disabled = true
-		#text += "Spirit - %d[/color]" % variables.spirit_limits[1]
-		text += person.training.build_stored_req_desc(tr)
-		if !person.training.check_stored_reqs(tr):
-			panel.disabled = true
-		text = text.trim_suffix('\n')
-		panel.get_node('reqs').bbcode_text = text
-		
-		panel.set_meta('trait', tr)
-		panel.connect('pressed', self, 'select_reward', [tr])
-		globals.connecttexttooltip(panel, tr(trdata.name) + "\n" + tr(trdata.descript))
-	var panel = input_handler.DuplicateContainerTemplate($finish/ScrollContainer/rewards, 'button2')
-	panel.get_node('name').text = tr('NOSPEC')
-	panel.get_node("RichTextLabel").bbcode_text = tr("NOSPECDESCRIPT")
-	panel.set_meta('trait', "")
-	panel.connect('pressed', self, 'select_reward', [""])
-	
-	update_reward()
-	update_confirm_finish()

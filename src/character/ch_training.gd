@@ -9,9 +9,10 @@ var dispositions = {}
 var dispositions_known = {}
 
 var spirit = 100
+var spirit_1 = 100
 var loyalty = 0
 var resistance = 100
-var stat_list = ['spirit', 'loyalty', 'resistance']
+var stat_list = ['spirit', 'spirit_1', 'loyalty', 'resistance']
 var training_metrics = {}
 
 var stored_reqs = {}
@@ -246,9 +247,16 @@ func add_training(id):
 	parent.get_ref().add_trait(id)
 
 
+func add_training_post(id):
+	var data = Traitdata.traits[id]
+	spirit -= data.cost
+	parent.get_ref().add_trait(id)
+
+
 func finish_training(internal = false):
 	if internal:
 		enable = false
+		spirit_1 = spirit
 		parent.get_ref().remove_trait('untrained')
 		if trainer != null:
 			var tchar = characters_pool.get_char_by_id(trainer)
@@ -258,6 +266,7 @@ func finish_training(internal = false):
 		if !parent.get_ref().has_status('callmaster'):
 			return
 		enable = false
+		spirit_1 = spirit
 		if trainer != null:
 			var tchar = characters_pool.get_char_by_id(trainer)
 			tchar.get_trainees().erase(parent.get_ref().id)
@@ -480,15 +489,15 @@ func apply_training(code):
 	
 	if spirit < 0:
 		spirit = 0
-	if spirit < variables.spirit_limits[0]:
-		if !parent.get_ref().check_trait('training_broken'):
-			effect_text += tr('TRAININGSTATUS1') + "\n"
-			parent.get_ref().remove_trait('training_damaged')
-			parent.get_ref().add_trait('training_broken')
-	elif spirit < variables.spirit_limits[1]:
-		if !parent.get_ref().check_trait('training_damaged'):
-			effect_text += tr('TRAININGSTATUS2') + "\n"
-			parent.get_ref().add_trait('training_damaged')
+#	if spirit < variables.spirit_limits[0]:
+#		if !parent.get_ref().check_trait('training_broken'):
+#			effect_text += tr('TRAININGSTATUS1') + "\n"
+#			parent.get_ref().remove_trait('training_damaged')
+#			parent.get_ref().add_trait('training_broken')
+#	elif spirit < variables.spirit_limits[1]:
+#		if !parent.get_ref().check_trait('training_damaged'):
+#			effect_text += tr('TRAININGSTATUS2') + "\n"
+#			parent.get_ref().add_trait('training_damaged')
 	#display
 	var dialogue_data = {text = '', tags = ['skill_report_event'], options = []}
 	var text = tr(data.scene_text)
@@ -524,7 +533,7 @@ func get_dispositions_text():
 			 text += "%s : unknown\n" % tr(ddata.name)
 	return text
 
-
+#not used
 func build_stored_reqs():
 	#do not clear stored reqs, only overwrite
 	for tr in Traitdata.traits:

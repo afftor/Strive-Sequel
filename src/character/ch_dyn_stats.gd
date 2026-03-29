@@ -56,12 +56,14 @@ func deserialize(savedict):
 
 func fix_serialize():
 	.fix_serialize()
+	if !(statlist.spped is Array):
+		statlist.spped = [statlist.spped]
 	for tr in traits_stored.duplicate():
 		if Traitdata.traits.has(tr): 
 			continue
 		traits_stored.erase(tr)
 	for prof in professions.keys():
-		#commented code below fixed some error in profs data manipulation that caused loss of classes persistent effects. since this error was lond ago - there is little value in keeping this fix. and more to it - it causes errors with togglable auras (cause they are classes persistent effects) loading. 
+		#commented code below fixed some error in profs data manipulation that caused loss of classes persistent effects. since this error was long ago - there is little value in keeping this fix. and more to it - it causes errors with togglable auras (cause they are classes persistent effects) loading. 
 #		remove_all_temp_effects_tag('class_' + prof)
 		if classesdata.professions.has(prof): 
 			continue
@@ -384,37 +386,61 @@ func get_stat_data(stat, stop = variables.DYN_STATS_FULL): #full value
 					if res.bonuses.has(op):
 						for rec in res.bonuses[op]:
 							aggregate_bonus += rec.value
-						res.result += aggregate_bonus
+						if res.result is Array:
+							for i in range(res.result.size()):
+								res.result[i] += aggregate_bonus
+						else:
+							res.result += aggregate_bonus
 				'add_part':
 					var aggregate_bonus = 1
 					if res.bonuses.has(op):
 						for rec in res.bonuses[op]:
 							aggregate_bonus += rec.value 
-						res.result *= aggregate_bonus
+						if res.result is Array:
+							for i in range(res.result.size()):
+								res.result[i] *= aggregate_bonus
+						else:
+							res.result *= aggregate_bonus
 				'mul':
 					var aggregate_bonus = 1
 					if res.bonuses.has(op):
 						for rec in res.bonuses[op]:
 							aggregate_bonus *= rec.value
-						res.result *= aggregate_bonus
+						if res.result is Array:
+							for i in range(res.result.size()):
+								res.result[i] *= aggregate_bonus
+						else:
+							res.result *= aggregate_bonus
 				'add2':
 					var aggregate_bonus = 0
 					if res.bonuses.has(op):
 						for rec in res.bonuses[op]:
 							aggregate_bonus += rec.value
-						res.result += aggregate_bonus
+						if res.result is Array:
+							for i in range(res.result.size()):
+								res.result[i] += aggregate_bonus
+						else:
+							res.result += aggregate_bonus
 				'add_part2':
 					var aggregate_bonus = 1
 					if res.bonuses.has(op):
 						for rec in res.bonuses[op]:
 							aggregate_bonus += rec.value 
-						res.result *= aggregate_bonus
+						if res.result is Array:
+							for i in range(res.result.size()):
+								res.result[i] *= aggregate_bonus
+						else:
+							res.result *= aggregate_bonus
 				'mul2':
 					var aggregate_bonus = 1
 					if res.bonuses.has(op):
 						for rec in res.bonuses[op]:
 							aggregate_bonus *= rec.value
-						res.result *= aggregate_bonus
+						if res.result is Array:
+							for i in range(res.result.size()):
+								res.result[i] *= aggregate_bonus
+						else:
+							res.result *= aggregate_bonus
 				'set':
 					if res.bonuses.has(op):
 						var last_t = -1
@@ -443,7 +469,11 @@ func get_stat_data(stat, stop = variables.DYN_STATS_FULL): #full value
 									aggregate_bonus = rec.value
 							else:
 								aggregate_bonus = rec.value
-						res.result = min(res.result, aggregate_bonus)
+						if res.result is Array:
+							for i in range(res.result.size()):
+								res.result[i] = min(res.result[i], aggregate_bonus)
+						else:
+							res.result = min(res.result, aggregate_bonus)
 				'mincap':
 					if res.bonuses.has(op):
 						var aggregate_bonus = null
@@ -453,7 +483,11 @@ func get_stat_data(stat, stop = variables.DYN_STATS_FULL): #full value
 									aggregate_bonus = rec.value
 							else:
 								aggregate_bonus = rec.value
-						res.result = max(res.result, aggregate_bonus)
+						if res.result is Array:
+							for i in range(res.result.size()):
+								res.result[i] = max(res.result[i], aggregate_bonus)
+						else:
+							res.result = max(res.result, aggregate_bonus)
 	
 	if st_data.tags.has('integer'):
 		res.result = int(res.result)
@@ -578,6 +612,8 @@ func set_default_value(stat, value):
 				'damage_mods':
 					container = damage_mods
 		if container.has(stat):
+			if !(value is Array) and data.tags.has('array_numeric'):
+				value = [value]
 			if value is Array:
 				container[stat] = value.duplicate()
 			else:
