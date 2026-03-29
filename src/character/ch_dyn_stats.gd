@@ -56,8 +56,8 @@ func deserialize(savedict):
 
 func fix_serialize():
 	.fix_serialize()
-	if !(statlist.spped is Array):
-		statlist.spped = [statlist.spped]
+	if !(statlist.speed is Array):
+		statlist.speed = [statlist.speed]
 	for tr in traits_stored.duplicate():
 		if Traitdata.traits.has(tr): 
 			continue
