@@ -19784,6 +19784,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	TOOLTIP_COOLDOWN = """Перезарядка""",
 	TOOLTIP_MANACOST = """Цена в мане""",
 	TOOLTIP_DAY_S = """День(и)""",
+	TOOLTIP_TURNS = """turn(s).""", # MISSING TRANSLATION
 	TOOLTIP_TYPE = """Type""", # MISSING TRANSLATION
 	TOOLTIP_TYPE_ITEM = """Item""", # MISSING TRANSLATION
 	TOOLTIP_TYPE_SKILL = """Skill""", # MISSING TRANSLATION
