@@ -35,7 +35,7 @@ func open(character = ResourceScripts.scriptdict.class_slave.new("temp_char_stat
 			var tval = []
 			for val in character.get_stat(i):
 				tval.push_back(floor(val))
-			$"base_stats".get_node(i).text = str(tval)
+			$"base stats".get_node(i).text = str(tval)
 	
 	for i in $resists.get_children():
 		if !statdata.statdata.has('resist_' + i.name):

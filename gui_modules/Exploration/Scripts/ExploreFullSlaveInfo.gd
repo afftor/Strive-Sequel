@@ -49,6 +49,8 @@ func hire_sell():
 
 
 func show_summary(person = selected_char):
+	if !is_visible_in_tree():
+		return
 	selected_char = person
 	if !from_dialogue:
 		$PurchaseButton.visible = true

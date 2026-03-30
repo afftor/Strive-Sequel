@@ -681,13 +681,15 @@ clip_text = true
 margin_top = 57.0
 margin_right = 464.0
 margin_bottom = 57.0
-custom_constants/separation = 20
+custom_constants/separation = 5
 
 [node name="Button" type="TextureRect" parent="finished/VBoxContainer/HBoxContainer2"]
 visible = false
-margin_right = 100.0
-margin_bottom = 100.0
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
 texture = ExtResource( 17 )
+expand = true
 
 [node name="icon" type="TextureRect" parent="finished/VBoxContainer/HBoxContainer2/Button"]
 show_behind_parent = true

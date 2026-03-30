@@ -149,7 +149,7 @@ func get_stat(statname, nobonus = false, desc_ready = false):
 		return calculate_price()
 	if statname.begins_with('food_') and statname != 'food_consumption':
 		return food.get(statname)
-	if statname in training.stat_list:
+	if statname in variables.training_stat_list:
 		return training.get(statname)
 	if statname == 'pregnancy_status':
 		if has_status('heavy_pregnant'):
@@ -269,7 +269,7 @@ func add_stat(statname, value, force_store = false): #only oneshots
 			xp_module.base_exp += value
 	elif statname == 'base_exp_direct':
 		xp_module.base_exp += value
-	elif statname in training.stat_list:
+	elif statname in variables.training_stat_list:
 		training.add_stat(statname, value)
 	else: 
 		if statname.ends_with('_direct'):
@@ -2429,7 +2429,7 @@ func take_virginity(type, partner, breakable = false):
 			try_breakdown('brk_lose_virginity')
 		if get_stat('metrics_partners').has(partner) == false && partner.begins_with("hid"):
 			statlist.update_stat('metrics_partners', partner, 'append')
-		if !ResourceScripts.game_party.relativesdata.has(partner):
+		if !ResourceScripts.game_party.relativesdata.has(partner) && partner.begins_with("hid"):
 			ResourceScripts.game_party.createrelativesdata(characters_pool.get_char_by_id(partner))
 
 
