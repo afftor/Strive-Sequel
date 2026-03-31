@@ -35,6 +35,8 @@ func remove():
 var universal_skills = ['oral','anal','petting']
 
 func update():
+	if !is_visible_in_tree():
+		return
 	active_person = input_handler.interacted_character
 	if active_person == null:
 		return

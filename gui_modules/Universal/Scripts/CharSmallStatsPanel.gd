@@ -27,7 +27,7 @@ func open(character = ResourceScripts.scriptdict.class_slave.new("temp_char_stat
 		$VBoxContainer.get_node(i).text = str(floor(character.get_stat(i))) + "/" + str(floor(character.get_stat(i+"max")))
 	
 	for i in variables.fighter_stats_list:
-		if !i in ['hpmax', 'mpmax','critmod','speed']:
+		if !i in ['hpmax', 'mpmax','critmod', 'speed']:
 			$"base stats".get_node(i).text = str(floor(character.get_stat(i)))
 		elif i == 'critmod':
 			$"base stats".get_node(i).text = str(floor(character.get_stat(i)*100))

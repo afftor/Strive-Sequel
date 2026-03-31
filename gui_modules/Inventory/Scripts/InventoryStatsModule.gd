@@ -31,7 +31,7 @@ func open_base_stats():
 	var character = input_handler.interacted_character
 	
 	for i in variables.fighter_stats_list:
-		if !i in ['hpmax', 'mpmax','critmod','speed']:
+		if !i in ['hpmax', 'mpmax','critmod', 'speed']:
 			$base_stats.get_node(i).text = str(floor(character.get_stat(i)))
 		elif i == 'critmod':
 			$base_stats.get_node(i).text = str(floor(character.get_stat(i)*100))
@@ -39,7 +39,8 @@ func open_base_stats():
 			var tval = []
 			for val in character.get_stat(i):
 				tval.push_back(floor(val))
-			$"base_stats".get_node(i).text = str(tval)
+			$base_stats.get_node(i).text = str(tval)
+	
 
 
 func open_resists():

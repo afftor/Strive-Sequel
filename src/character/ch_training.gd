@@ -12,7 +12,6 @@ var spirit = 100
 var spirit_1 = 100
 var loyalty = 0
 var resistance = 100
-var stat_list = ['spirit', 'spirit_1', 'loyalty', 'resistance']
 var training_metrics = {}
 
 var stored_reqs = {}

@@ -76,7 +76,7 @@ func update(person = null, from_dialogue = false):
 				i.set("custom_colors/font_color", variables.hexcolordict.white)
 	
 		for i in variables.fighter_stats_list:
-			if !i in ['hpmax', 'mpmax','critmod','speed']:
+			if !i in ['hpmax', 'mpmax','critmod', 'speed']:
 				$"BaseStatsPanel/base_stats".get_node(i).text = str(floor(person.get_stat(i)))
 			elif i == 'critmod':
 				$"BaseStatsPanel/base_stats".get_node(i).text = str(floor(person.get_stat(i)*100))

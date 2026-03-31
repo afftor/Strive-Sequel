@@ -562,6 +562,8 @@ var disposition_results = {
 	weak = {fail = 15, resist = 0, success = 75, crit_success = 10},
 	kink = {fail = 0, resist = 10, success = 45, crit_success = 45},
 }
+
+var training_stat_list = ['spirit', 'spirit_1', 'loyalty', 'resistance']
 var training_results_base = {
 	fail = {loyalty = [4, 5], spirit = [-10, -5]}, 
 	resist = {loyalty = 0, spirit = 0}, 

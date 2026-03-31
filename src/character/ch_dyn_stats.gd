@@ -51,7 +51,7 @@ func deserialize(savedict):
 			damage_mods[stat] = savedict.damage_mods[stat]
 	
 	gather_innate_bonuses()
-	generate_data(variables.DYN_STATS_FULL, true)
+#	generate_data(variables.DYN_STATS_FULL, true)
 
 
 func fix_serialize():
@@ -73,6 +73,7 @@ func fix_serialize():
 #					add_stored_effect(eff)
 		else:
 			professions.erase(prof)
+	generate_data(variables.DYN_STATS_FULL, true)
 
 
 #dyn_bonuses
