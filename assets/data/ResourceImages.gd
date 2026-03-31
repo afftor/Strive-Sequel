@@ -521,6 +521,7 @@ var scenes = {
 	chest_mimic = load("res://assets/images/scenes/chest_mimic.png"),
 	battlefield = load("res://assets/images/scenes/battlefield.png"),
 	city_guards = "res://assets/images/scenes/city_guards.png",
+	empire_gates = "res://assets/images/scenes/empire_gate.png",
 	dome = "res://assets/images/scenes/dome.png",
 	fred = "res://assets/images/scenes/fred.png",
 	fred_mercs = "res://assets/images/scenes/fred_mercs.png",

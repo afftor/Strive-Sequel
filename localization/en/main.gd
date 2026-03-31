@@ -27,6 +27,8 @@ var TranslationDict = {
 	GALLERYRESETTEXT = "Are you sure you want to reset ALL gallery progress?",
 	GALLERYACHI = "Achievements",
 	GALLERYACHITEXT = "Gives NG+ points",
+	GALLERYACHIBONUS = "NG+ bonuses",
+	GALLERYACHIBONUSTEXT = "Can be acquired at new game start, using NG+ points",
 	MODLOAD = "Loaded mods",
 	MODLOAD1 = "these mods will be applied to game and available in editor at next game start.",
 	MODLIST = "List of mods available to load",
@@ -3286,9 +3288,7 @@ Only one attunement can be taken""",
 	TRAITSUCCUBUS_COMBAT = "Combat attunement",
 	TRAITSUCCUBUS_COMBATDESCRIPT = """HP Factor: +20%; HP Regen: +100%; Gain lust when taking damage.
 Only one attunement can be taken""",
-	
 	FINISHTRAINING = "Finish training? Leftover spirit will be used to purchase additional bonuses.",
-	
 	TRAITTRAINING_VALUE = "Trained spec",
 	TRAITTRAINING_VALUEDESCRIPT = "+25% Value",
 	TRAITTRAINING_PRODUCTIVITY = "Trained spec",
@@ -3309,7 +3309,6 @@ Only one attunement can be taken""",
 	TRAITTRAINING_TRAINERDESCRIPT = "+3 trainer slots and trainer status",
 	TRAITTRAINING_HEAL = "Trained spec",
 	TRAITTRAINING_HEALDESCRIPT = "+50% healing efficiency",
-	
 	TRAITEFFECTVIRGIN = """[center]{color=yellow|Virginity}[/center]
 As [name] has a observable virginity, this makes [him] more desirable for certain individuals.
 {color=yellow|Sell price is increased by 25%%}""",
@@ -4902,12 +4901,6 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYKURO = "Kuro",
 	ENEMYERDYNA = "Erdyna",
 	ENEMYNIXX = "Nixx",
-	ENEMYMUTANT = "Mutant",
-	ENEMYMUTANT2 = "Deformed",
-	ENEMYSYLAS = "Sylas",
-	ENEMYSYLAS_WEAK = "Weakened Sylas",
-	ENEMYJEAN_EVIL = "Jean",
-	ENEMYJEAN_DEMON = "Demon",
 	FOODFILTERHIGH = "High",
 	FOODFILTERMED = "Med",
 	FOODFILTERLOW = "Low",
@@ -5215,7 +5208,6 @@ Time Flow""",
 	ACHIEVEMENT_METEORITE_NAME = "Meteorite quest",
 	ACHIEVEMENT_METEORITE_DESC = "Meteorite quest completed",
 	ACHIEVEMENT_METEORITE_HINT = "Complete meteorite quest",
-	ACHIEVEMENT_RESET_ASK = "Are you sure you want to reset ALL achievements progress?",
 	ACHIGROUP_WEDDING_NAME = "Marry",
 	ACHIGROUP_WEDDING_DESC = "Marry each unique character",
 	ACHIGROUP_DUNGEONS_NAME = "Dungeons",
@@ -18687,12 +18679,11 @@ Hotkey: 3""",
 	MAX_CHARGES = "Max Charges",
 	TOOLTIP_COOLDOWN = "Cooldown",
 	TOOLTIP_MANACOST = "Manacost",
-	TOOLTIP_DAY_S = "day(s).",
-	TOOLTIP_TURNS = "turn(s).",
+	TOOLTIP_DAY_S = "Day(s).",
 	TOOLTIP_TYPE = "Type",
 	TOOLTIP_TYPE_ITEM = "Item",
-	TOOLTIP_TYPE_SKILL = "Skill\n(scaled by ATK and Physics, disabled by Disarm)",
-	TOOLTIP_TYPE_SPELL = "Spell\n(scaled by MATK and Wits, disabled by Silence)",
+	TOOLTIP_TYPE_SKILL = "Skill",
+	TOOLTIP_TYPE_SPELL = "Spell",
 	TOOLTIP_TARGET = "Target type",
 	TOOLTIP_TARGET_ALL = "Any",
 	TOOLTIP_TARGET_ALLY = "Allies",
@@ -18708,12 +18699,6 @@ Hotkey: 3""",
 	TOOLTIP_NUMBER_SINGLE = "Single",
 	TOOLTIP_NUMBER_SINGLENON = "Single no target",
 	TOOLTIP_NUMBER_RANDOM = "Random",
-	TOOLTIP_RANGE = "Range",
-	TOOLTIP_RANGE_WEAPON = "As per weapon",
-	TOOLTIP_RANGE_ANY = "Everyone",
-	TOOLTIP_RANGE_MELEE = "Melee",
-	TOOLTIP_RANGE_NOT_CASTER = "Everyone but caster",
-	TOOLTIP_RANGE_DEAD = "Only dead",
 	SKILL_SWITCH_TOOLTIP = "Social/Combat Skills",
 	SLAVE_LOYALTY = "Loyalty",
 	RACE_BONUSES = "Race bonuses",
@@ -19346,8 +19331,6 @@ Offspring will inherit only this parent's stats.""",
 	MAE_RITUAL_SS = "Make Mae perform a spirit binding ritual in a special way.",
 	MAE_NORTHERN_SS = "Complete Mae's adoption for frivolous sexual acts.",
 	MAE_WEDDING_SS = "Become Mae's husband.",
-	JEAN_WEDDING_SS = "Become Jean's husband.",
-	JEAN_DREAM_SS = "See Jean in a dream.",
 	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_1 = """You explain to Alise that one of your slaves needs a change of clothes.
 
 {color=yellow|— Why, yes, proper servants' attire is one of our specialties. You know, the right clothes make a big difference even for less ideal bodies, naturally we have tailors who can adjust for any required body type. But what are you looking for, anyway?}""",
@@ -23271,53 +23254,5 @@ She looks away quickly, but not before you catch the glisten in her eyes.
 	JEANMAGESSEARCHTASKNAME = "*Search archives of mages guild*",
 	JEANMAGESSEARCHTASKDESCRIPT = "You must find an information about demon",
 	MATERIALMINDLINK = "Mind-Link Artifact",
-	MATERIALMINDLINKDESCRIPT = "A complicated device for linking ones consciousness.",
-	
-	JEAN_DREAM_1 = """As you wake up in an unusual space you try to focus. The question arises in your mind, of what kind of scene you want to experience, however the only which comes to your mind is your recent companion. The lusty thought quickly overwhelms your mind as the surrounding space changes.""",
-	JEAN_DREAM_2 = """In the next moment you see Jean in flesh hanging in front of you, being caught in the middle of a dungeon in some ludicrous trap. Her skirt bunched around her waist, leaving her lower body bare and vulnerable. The rope pulling her head back forces her neck into an elegant, agonizing arch. Her red eyes, burning with a volatile mix of fury and lust, are fixed on you. Her breasts, freed from her bodice, sway slightly with her shallow, rapid breaths, the peaks hard and flushed.
-
-{color=yellow| — You are a real pervert, you know!}
-
-You walk a slow circle around her suspended form. The sight of her straining against the ropes, the sheen of sweat on her skin, the way her body is displayed for your pleasure, sends a fresh wave of desire through you. You stop behind her. You run a single finger down her spine, from the nape of her neck to the cleft of her ass. A shudder wracks her body, a visible tremor that runs through her limbs and makes the ropes creak.""",
-	JEAN_DREAM_3 = """Your hands land on her ass, the flesh firm and cool beneath your palms. You squeeze, watching the skin turn white under the pressure before flooding back with color. Her breath catches. You raise one hand and bring it down in a sharp smack. The sound echoes in the room, followed by her sharp intake of breath. A red imprint of your hand blossoms on her pale skin. You do it again, on the other cheek. And again. A rhythm of blows that turns her skin a rosy pink, the heat radiating from her onto your palms.
-
-You stop, your fingers trailing over the heated skin, feeling the slight tremor that still runs through her. Her legs, encased in the black leather boots, are spread just enough for you to see the glistening wetness on her inner thighs. You reach between them from behind, your fingers sliding easily between her swollen folds. She's soaked. Her body betrays her anger, her hips rocking back against your hand, seeking more friction. You thrust two fingers inside her, curling them to find that sensitive spot deep within.""",
-	JEAN_DREAM_4 = """{color=yellow| — Enough of your games, once I get out...}
-
-You rub the head against her dripping entrance, coating yourself in her slickness. You watch her body tense in anticipation.
-
-With one smooth, powerful thrust, you bury yourself inside her. The force of it pushes her forward, the ropes biting into her wrists. Her back arches further, a broken cry tearing from her throat. You don't give her time to adjust. You set a brutal pace from the start, pulling out almost completely before slamming back in, your hips smacking against her reddened ass with each thrust. The frame groans with the force of your movements, the ropes straining.""",
-	JEAN_DREAM_5 = """{color=yellow| — Aah... You are the worst!}
-
-You reach around her body, one hand cupping a bouncing breast, the other finding her clit. You roll the pebbled nipple between your fingers, pinching it just hard enough to make her gasp. Your other hand works at her clit, rubbing it in fast, merciless circles. The dual stimulation is too much. Her body convulses, her pussy clamping down on your cock like a vise as she comes with a silent scream, her head thrown back, her body a bow of taut, quivering flesh.
-
-You continue to thrust into her spasming pussy, chasing your own release. The sight of her, bound and helpless in the throes of pleasure, her skin flushed and gleaming with sweat, pushes you over the edge. You drive deep one last time, your cock pulsing as you empty yourself into her. You stay there for a moment, your bodies joined, her breathing ragged, her limbs slack in their bonds""",
-	JEAN_DREAM_6 = """You step back, watching as your seed trickles down her inner thigh, a stark, white line against her flushed skin. She hangs limp in her bonds, her body spent, her anger momentarily forgotten, replaced by a dazed, sated bliss. In the next moment the world around you breaks, you come back to your senses at the brothel.""",
-	
-	JEAN_WED_1 = """You lay her gently on the king-sized bed, the mattress yielding beneath her slight weight. The white silk of the wedding dress pools around her, a stark, lovely contrast to her pink skin. You work the delicate laces of her bodice, parting the fabric until the swell of her breasts is exposed to the cool air. Her long, golden hair fans out across the white sheets. You leave her dress on but for the undone front, her body turned on its side, one leg drawn up, the curve of her hip a perfect line beneath the rumpled silk. Her red eyes watching you tensely.
-
-{color=yellow| — H-hey, are you going to stare just like that?} 
-
-Your fingers trace the line of her lifted thigh, from the smooth back of her knee up to the silken curve where it meets her hip. The warmth of her skin seeps into your touch. You hook a finger into the narrow band of her underwear, the last remaining barrier, and pull it down. The fabric whispers against her skin as you peel it away, revealing the outline of the pussy between her legs, glistening faintly in the dim lamplight. You watch the muscles in her thighs tense as her legs fall further open, a subtle, unwilling invitation. Her chest rises and falls a little faster as her nipples harden from the arousal.""",
-	JEAN_WED_2 = """You take your weight on one arm beside her, leaning over her body. Your free hand moves to her chest, cupping the soft mound of her breast. Her breath hitches. You brush your thumb over the hardened peak, feeling it pucker further against your skin. You lower your head, your breath ghosting over the sensitive flesh before your lips close around it. You suckle gently, then a little harder, your tongue swirling around the nub. Her back arches slightly, a gasp torn from her throat though she tries to swallow it. Your other hand slides down her stomach, until your fingers find her pussy.
-
-{color=yellow| — Aah! Not so sudden, you brute...}
-
-You part her folds, feeling the slippery wetness that coats your fingertips. Despite her protests, she's certainly looking forward to more. You circle the small, hidden bud of her clit, watching her face as you do. Her brow furrows, her lips parting, a flush spreading from her cheeks down her neck. Her hips give a small, involuntary twitch, pressing up against your hand. You dip a finger inside her, then a second, her walls clenching around the intrusion.""",
-	JEAN_WED_3 = """You draw back, positioning yourself between her legs. Your cock, heavy and rigid, rests for a moment against the slick entrance to her body. Then you push forward. The head of your cock breaches her pussy. You pause, letting her adjust, watching the way her body stretches around you. A shudder runs through her.
-
-{color=yellow| — Aah... So full...}
-
-Then you push deeper. A slow, relentless slide into her heat. Her inner walls yield, clinging to every inch of you as you bury yourself to the hilt. Her hands clutch at the bed sheets, her knuckles white. You stay there for a moment, fully sheathed, feeling the deep, clenching rhythm of her pulse around your shaft.""",
-	JEAN_WED_4 = """You begin to move. A slow withdrawal, almost pulling out completely, before thrusting back in, hard. The impact jars her body, a small cry escaping her lips. Her breasts, still exposed from her gown, jiggle with the force of your movements. Her golden hair is a tangled mess on the pillow, strands clinging to her damp cheeks. You set a steady, demanding pace, each withdrawal long and deliberate, each thrust deep and forceful. The sound of your bodies meeting is a rhythmic slap in the quiet room, punctuated by her gasps and your own groans.
-
-Your gaze falls to where your bodies join, watching your cock disappear into her stretched pussy, glistening with her arousal. You pull out almost completely, revealing the flushed, swollen folds, only to bury yourself inside her again with a grunt of satisfaction. Her hips begin to lift to meet your thrusts, a hesitant, answering rhythm that betrays her body's growing desire.""",
-	JEAN_WED_5 = """Your pace quickens, your control fraying. You lean down, your body blanketing hers, your mouth finding the pulse point on her neck. You nip and suck at the sensitive skin, marking her as yours. Her legs wrap around your waist, pulling you deeper. This new angle allows you to drive into her even harder, your cock hitting a spot deep inside that makes her cry out, a raw, unrestrained sound of pleasure.
-
-{color=yellow| — I'm... so close...}
-
-You can feel your climax building, a tightening in your groin. You can feel hers too, in the way her pussy begins to spasm around you. You reach between your bodies, your fingers finding her clit, rubbing it in tight, fast circles as you continue to pound into her. That's all it takes. Her body bows, her inner muscles clamping down on your cock as she shatters. A long, drawn-out moan escapes her.""",
-	JEAN_WED_6 = """You follow her over the edge a few strokes later, burying yourself deep inside her as your release hits. A groan rips from your throat as you pulse, filling her with your seed. You collapse against her, your breath coming in ragged gasps, your bodies slick with sweat. For a long moment, you lie there, your heart hammering against your ribs, her body still trembling beneath yours.
-
-{color=yellow| — AAah... This felt too good... Hey, you aren't planning to just stop here?}""",
+	MATERIALMINDLINKDESCRIPT = "A complicated device for linking ones consciousness."
 }
