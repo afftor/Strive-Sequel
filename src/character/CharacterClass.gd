@@ -1041,6 +1041,14 @@ func is_combatant():
 	else:
 		return training.get_trainer() != null or enthrall.get_thrall_master() != null
 
+
+func get_noncombatant_report():
+	if get_stat('slave_class') != 'slave':
+		return translate(tr('NO_FIGHT_LOW_OBED'))
+	else:
+		return translate(tr('NO_FIGHT_LOW_OBED2'))
+
+
 func is_worker():
 	if get_stat('slave_class') != 'slave':
 		return has_status('worker')

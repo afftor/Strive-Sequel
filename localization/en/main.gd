@@ -6462,7 +6462,7 @@ The princess notices Aire tensing up in response to the question.
 	ENEMYALCHEMIST = "Alchemist",
 	ENEMYBATTLE_TROLL = "Battle Troll",
 	NO_FIGHT_LOW_OBED = "[name] refuses to participate in a fight. (Combatant must be unlocked)",
-	NO_FIGHT_LOW_OBED2 = "[name] refuses to participate in a fight (low obedience).",
+	NO_FIGHT_LOW_OBED2 = "[name] refuses to participate in a fight. (Trainer or thrall master required)",
 	CHAR_NO_COMBAT = "[name] has sustained a grave injury and is unable to participate in fights.",
 	PARTY_LIMIT = "Party limit reached.",
 	PARTY_FIXED = "Party is fixed! You can only switch positions.",

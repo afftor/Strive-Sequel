@@ -209,7 +209,7 @@ func slave_position_selected(pos, character):
 		input_handler.SystemMessage(character.translate(tr("CHAR_NO_COMBAT")))
 		return
 	elif !character.is_combatant():
-		input_handler.SystemMessage(character.translate(tr("NO_FIGHT_LOW_OBED")))
+		input_handler.SystemMessage(character.get_noncombatant_report())
 		return
 	var ch_id = character.id
 	if active_location.group.has(str_pos):

@@ -75,7 +75,10 @@ func make_stats(person_input):
 					continue
 			
 			var new_button = input_handler.DuplicateContainerTemplate(container, 'Button')
-			new_button.text = "   %s: %s" % [st_data.name, str(value)]
+			if !st_data.tags.has('array_numeric'):
+				new_button.text = "   %s: %s" % [st_data.name, str(value)]
+			else:
+				new_button.text = "   %s: %s" % [st_data.name, str(value[0])]
 			new_button.set_meta("stat_name", st_data.name)
 			new_button.connect("pressed", self, "select_stat", [stat, new_button])
 	

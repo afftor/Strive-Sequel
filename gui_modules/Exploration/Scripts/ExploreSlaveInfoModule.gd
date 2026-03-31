@@ -81,10 +81,7 @@ func update(person = null, from_dialogue = false):
 			elif i == 'critmod':
 				$"BaseStatsPanel/base_stats".get_node(i).text = str(floor(person.get_stat(i)*100))
 			elif i == 'speed':
-				var tval = []
-				for val in person.get_stat(i):
-					tval.push_back(floor(val))
-				$"BaseStatsPanel/base_stats".get_node(i).text = str(tval)
+				$"BaseStatsPanel/base_stats".get_node(i).text = str(floor(person.get_stat(i)[0]))
 	
 	
 		for i in $"BaseStatsPanel/base_stats".get_children():
