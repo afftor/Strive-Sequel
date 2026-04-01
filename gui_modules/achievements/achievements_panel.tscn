@@ -98,9 +98,41 @@ custom_fonts/font = SubResource( 4 )
 text = "00"
 align = 2
 
+[node name="tab_cont" type="HBoxContainer" parent="."]
+margin_left = 100.0
+margin_top = 112.0
+margin_right = 1828.0
+margin_bottom = 177.0
+alignment = 1
+
+[node name="tab" type="TextureButton" parent="tab_cont"]
+margin_left = 739.0
+margin_right = 989.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 250, 0 )
+theme = ExtResource( 5 )
+toggle_mode = true
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 10 )
+expand = true
+
+[node name="Label" type="Label" parent="tab_cont/tab"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -2.0
+margin_right = 4.0
+margin_bottom = -2.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "ACHI_BTN_GROUP_MAIN"
+align = 1
+valign = 1
+clip_text = true
+
 [node name="achi_scroll" type="ScrollContainer" parent="."]
 margin_left = 96.0
-margin_top = 124.0
+margin_top = 181.0
 margin_right = 1832.0
 margin_bottom = 963.0
 theme = ExtResource( 9 )
@@ -161,12 +193,12 @@ text = "GALLERYRESETBUTTON"
 align = 1
 clip_text = true
 
-[node name="group_close" type="TextureButton" parent="."]
+[node name="sub_close" type="TextureButton" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="group_bg" type="NinePatchRect" parent="group_close"]
+[node name="bg" type="NinePatchRect" parent="sub_close"]
 margin_left = 86.0
 margin_top = 231.0
 margin_right = 545.0
@@ -177,7 +209,7 @@ patch_margin_top = 15
 patch_margin_right = 15
 patch_margin_bottom = 15
 
-[node name="ScrollContainer" type="ScrollContainer" parent="group_close/group_bg"]
+[node name="ScrollContainer" type="ScrollContainer" parent="sub_close/bg"]
 margin_left = 18.0
 margin_top = 9.0
 margin_right = 439.0
@@ -187,10 +219,10 @@ theme = ExtResource( 9 )
 scroll_horizontal_enabled = false
 scroll_vertical_enabled = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="group_close/group_bg/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="sub_close/bg/ScrollContainer"]
 margin_right = 421.0
 size_flags_horizontal = 3
 
-[node name="achi" parent="group_close/group_bg/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
+[node name="achi" parent="sub_close/bg/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
 visible = false
 margin_right = 421.0
