@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/recolor shader.shader" type="Shader" id=1]
 [ext_resource path="res://assets/RecolorShaderMasks.tres" type="Material" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://assets/images/iconsgear/ArmorBasicCloth.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/sprites/Erlen.png" type="Texture" id=5]
 [ext_resource path="res://assets/book_shader.tres" type="Material" id=6]
+[ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_default.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gui/combat/cloud.png" type="Texture" id=8]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -117,6 +119,68 @@ shader_param/part3color = Color( 0.427451, 0.290196, 0.290196, 1 )
 shader_param/dist = 0.1
 shader_param/lmod = 0.6
 
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+
+uniform float outline_width = 2.0;
+uniform vec4 outline_color : hint_color;
+uniform float opacity = 1.0;
+uniform float speed = 0.1;
+
+const vec2 dir1 = vec2(0.3, 1.0);
+const vec2 dir2 = vec2(-0.3, 1.0);
+const vec2 dir3 = vec2(-0.1, -0.8);
+
+const float PI = 3.14;
+
+uniform sampler2D tex;
+
+vec2 force_loop(vec2 arg){
+	vec2 res = arg * 2.0;
+	if (res.x > 1.0) 
+		res.x = 2.0 - res.x;
+	if (res.y > 1.0) 
+		res.y = 2.0 - res.y;
+	return res;
+}
+
+
+void fragment() {
+	vec4 col = texture(TEXTURE, UV);
+	vec2 ps = TEXTURE_PIXEL_SIZE;
+	vec4 shadow = vec4(0.0);
+	for (float k = 0.1; k <= 1.0; k += 0.1) {
+		shadow += texture(TEXTURE, UV + vec2(-outline_width, 0.0) * ps * k);
+		shadow += texture(TEXTURE, UV + vec2(0.0, -outline_width) * ps * k);
+		shadow += texture(TEXTURE, UV + vec2(0.0, outline_width) * ps * k);
+		shadow += texture(TEXTURE, UV + vec2(outline_width, 0.0) * ps * k);
+	}
+	shadow /= 40.0;
+	
+	vec2 pos1 = UV + TIME * speed * dir1;
+	pos1 = force_loop(pos1 - floor(pos1));
+	vec4 col1 = texture(tex, pos1);
+	vec2 pos2 = UV + TIME * speed * dir2;
+	pos2 = force_loop(pos2 - floor(pos2));
+	vec4 col2 = texture(tex, pos2);
+	vec2 pos3 = UV + TIME * speed * dir3;
+	pos3 = force_loop(pos3 - floor(pos3));
+	vec4 col3 = texture(tex, pos3);
+	
+	shadow = vec4(sqrt(col1.r) * outline_color.r, sqrt(col2.g) * outline_color.g, sqrt(col3.b) * outline_color.b, sqrt(shadow.a) * opacity);
+	//col.a = min(col.a, sqrt(sqrt(1.0 - opacity)));
+	COLOR = mix(shadow, col, col.a);
+	//COLOR = mix(col, outline_color, (maxa - mina)*opacity);
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
+shader_param/outline_width = 30.0
+shader_param/outline_color = Color( 0.92549, 0.952941, 0.0509804, 1 )
+shader_param/opacity = 0.7
+shader_param/speed = 0.05
+shader_param/tex = ExtResource( 8 )
+
 [node name="Panel" type="Panel"]
 margin_right = 782.0
 margin_bottom = 443.0
@@ -151,6 +215,22 @@ margin_left = 236.0
 margin_top = 250.0
 margin_right = 440.0
 margin_bottom = 431.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="flame_test" type="TextureRect" parent="."]
+material = SubResource( 5 )
+margin_left = 6.0
+margin_top = 256.0
+margin_right = 210.0
+margin_bottom = 437.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="flame_test" type="TextureRect" parent="flame_test"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource( 4 )
 expand = true
 
