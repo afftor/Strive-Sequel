@@ -40,6 +40,7 @@ var skills = {
 		charges = 0,
 		combatcooldown = 0,
 		cooldown = 0,
+		critchance = 0,
 		catalysts = {},
 		target = 'self',
 		target_number = 'nontarget_group',
