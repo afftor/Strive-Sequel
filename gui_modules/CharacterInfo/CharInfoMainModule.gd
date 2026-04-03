@@ -42,6 +42,7 @@ func update():
 		return
 	active_person.update_prt()
 	SummaryModule.show_summary()
+	SummaryModule.update_buttons()
 	SlaveInfo.update()
 	BodyModule.update()
 	ClassesModule.update()
