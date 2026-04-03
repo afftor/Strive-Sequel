@@ -180,15 +180,12 @@ func check_date_button():
 	return [value, descript]
 
 
-
 func update_buttons():
 	for i in $Actions/GridContainer.get_children():
 		if i.name != 'Button':
 			i.visible = !selected_person.is_on_quest()
 	$Actions/RichTextLabel.bbcode_text = selected_person.translate(tr("ONQUESTLABEL"))
 	$Actions/RichTextLabel.visible = selected_person.is_on_quest()
-	
-	
 	
 	chat_button.disabled = !unique_dict.has(selected_person.get_stat('unique'))
 	
@@ -198,9 +195,9 @@ func update_buttons():
 	if date_button.disabled == false:
 		globals.disconnect_text_tooltip(date_button)
 	
-	
 	date_button.get_node("Label").text = tr("BTNDATE") + " (%d/%d)" % [ResourceScripts.game_globals.weekly_dates_left, ResourceScripts.game_globals.weekly_dates_max]
 	expel_button.disabled = selected_person.is_master()
+
 
 func update():
 	update_buttons()

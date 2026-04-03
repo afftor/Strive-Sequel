@@ -550,10 +550,10 @@ var data = {
 			}
 		],
 		common_effects = [
-			{
-				code = "complete_quest",
-				value = "election_global_quest"
-			},
+			{code = "complete_quest", value = "election_global_quest"},
+			{code = "complete_quest", value = "workers_election_quest"},
+			{code = "complete_quest", value = "mages_election_quest"},
+			{code = "complete_quest", value = "fighters_election_quest"},
 			{
 				code = "election_finish"
 			},
