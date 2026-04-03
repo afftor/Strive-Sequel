@@ -1,0 +1,287 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/ConfirmWindowTheme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/images/gui/explore/Captured Characters/frame_hero.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_gold_square.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/iconsclasses/Fighter.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/universal/skill_frame.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_loadaccept.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/masteries_icons/combat.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_ellipse.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/iconsskills/wateredge.png" type="Texture" id=9]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 500, 180 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=2]
+content_margin_left = 3.0
+content_margin_right = 3.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 294, 49 )
+margin_left = 2.2531
+margin_right = 2.00275
+
+[sub_resource type="StyleBoxTexture" id=3]
+content_margin_left = 3.0
+content_margin_right = 3.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 294, 49 )
+margin_top = 3.0
+margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=4]
+content_margin_left = 3.0
+content_margin_right = 3.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 294, 49 )
+margin_top = 3.0
+margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=5]
+content_margin_left = 3.0
+content_margin_right = 3.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 294, 49 )
+margin_left = 2.2531
+margin_right = 2.46228
+margin_top = 2.14639
+margin_bottom = 2.39234
+
+[node name="Control" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1524.0
+margin_bottom = -896.0
+theme = ExtResource( 1 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 386.0
+margin_bottom = 444.0
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer"]
+margin_right = 376.0
+margin_bottom = 90.0
+texture = ExtResource( 3 )
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TextureRect2"]
+margin_left = 147.0
+margin_top = 4.0
+margin_right = 229.0
+margin_bottom = 86.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_top = 94.0
+margin_right = 376.0
+margin_bottom = 127.0
+text = "Class Name"
+align = 1
+
+[node name="StatContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 131.0
+margin_right = 376.0
+margin_bottom = 164.0
+custom_constants/separation = 1
+
+[node name="Panel" type="PanelContainer" parent="VBoxContainer/StatContainer"]
+margin_right = 376.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 120, 30 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/StatContainer/Panel"]
+margin_left = 3.0
+margin_right = 373.0
+margin_bottom = 33.0
+alignment = 2
+
+[node name="statname" type="Label" parent="VBoxContainer/StatContainer/Panel/HBoxContainer"]
+margin_right = 330.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Maximum Health"
+
+[node name="value" type="Label" parent="VBoxContainer/StatContainer/Panel/HBoxContainer"]
+margin_left = 334.0
+margin_right = 370.0
+margin_bottom = 33.0
+text = "+50"
+
+[node name="MasteryContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 168.0
+margin_right = 376.0
+margin_bottom = 224.0
+custom_constants/separation = 1
+
+[node name="Panel" type="PanelContainer" parent="VBoxContainer/MasteryContainer"]
+margin_right = 376.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 120, 30 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 3 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MasteryContainer/Panel"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 373.0
+margin_bottom = 53.0
+alignment = 2
+
+[node name="statname" type="Label" parent="VBoxContainer/MasteryContainer/Panel/HBoxContainer"]
+margin_right = 316.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Combat Mastery Points: "
+valign = 1
+
+[node name="value2" type="TextureRect" parent="VBoxContainer/MasteryContainer/Panel/HBoxContainer"]
+margin_left = 320.0
+margin_right = 370.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MasteryContainer/Panel/HBoxContainer/value2"]
+margin_left = -1.47192
+margin_top = -1.47192
+margin_right = 50.5281
+margin_bottom = 50.5281
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+
+[node name="SkillContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 228.0
+margin_right = 376.0
+margin_bottom = 284.0
+custom_constants/separation = 1
+
+[node name="Panel" type="PanelContainer" parent="VBoxContainer/SkillContainer"]
+margin_right = 376.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 120, 30 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 4 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/SkillContainer/Panel"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 373.0
+margin_bottom = 53.0
+alignment = 2
+
+[node name="value" type="TextureRect" parent="VBoxContainer/SkillContainer/Panel/HBoxContainer"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/SkillContainer/Panel/HBoxContainer/value"]
+margin_left = -1.47192
+margin_top = -1.47192
+margin_right = 50.5281
+margin_bottom = 50.5281
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="statname" type="Label" parent="VBoxContainer/SkillContainer/Panel/HBoxContainer"]
+margin_left = 54.0
+margin_right = 370.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Skill: Water Edge"
+align = 1
+valign = 1
+
+[node name="TraitContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 288.0
+margin_right = 376.0
+margin_bottom = 321.0
+custom_constants/separation = 1
+
+[node name="Panel" type="PanelContainer" parent="VBoxContainer/TraitContainer"]
+margin_right = 376.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 120, 30 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TraitContainer/Panel"]
+margin_left = 3.0
+margin_right = 373.0
+margin_bottom = 33.0
+alignment = 2
+
+[node name="statname" type="Label" parent="VBoxContainer/TraitContainer/Panel/HBoxContainer"]
+margin_right = 370.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_colors/font_color = Color( 1, 0.835294, 0.376471, 1 )
+text = "Trait"
+align = 1
+
+[node name="RequirementsContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 325.0
+margin_right = 376.0
+margin_bottom = 358.0
+custom_constants/separation = 1
+
+[node name="Panel" type="PanelContainer" parent="VBoxContainer/RequirementsContainer"]
+margin_right = 376.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 120, 30 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/RequirementsContainer/Panel"]
+margin_left = 3.0
+margin_right = 373.0
+margin_bottom = 33.0
+alignment = 2
+
+[node name="statname" type="Label" parent="VBoxContainer/RequirementsContainer/Panel/HBoxContainer"]
+margin_right = 370.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_colors/font_color = Color( 1, 0.376471, 0.427451, 1 )
+text = "Requirement: "
+
+[node name="BonusText" type="PanelContainer" parent="VBoxContainer"]
+margin_top = 362.0
+margin_right = 376.0
+margin_bottom = 434.539
+rect_min_size = Vector2( 120, 30 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 5 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/BonusText"]
+margin_left = 3.0
+margin_top = 2.14639
+margin_right = 373.0
+margin_bottom = 70.1464
+text = "
+"
+fit_content_height = true
+scroll_active = false
