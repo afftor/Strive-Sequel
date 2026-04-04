@@ -93,27 +93,8 @@ func _init():
 	set_process(false)
 
 
-func show_tooltip(node, text):
-	$Tooltip.show()
-	$Tooltip/RichTextLabel.rect_size.y = 10
-	$Tooltip/RichTextLabel.bbcode_text = globals.TextEncoder(text)
-	
-	if $Tooltip/RichTextLabel.bbcode_text.length() < 30:
-		$Tooltip/RichTextLabel.rect_size.x = Text_x/2
-		$Tooltip.rect_size.x = Panel_x/2
-		$Tooltip/RichTextLabel.bbcode_text = '[center]'+$RichTextLabel.bbcode_text+'[/center]'
-	else:
-		$Tooltip/RichTextLabel.rect_size.x = Text_x
-		$Tooltip.rect_size.x = Panel_x
-	yield(get_tree(), 'idle_frame')
-	# if !weakref(node).get_ref():
-	# 	return
-	$Tooltip.rect_size.y = $Tooltip/RichTextLabel.get_v_scroll().get_max() + 100
-	$Tooltip/RichTextLabel.rect_size.y = $Tooltip.rect_size.y - 100
-
-
 func close_tooltip():
-	$Tooltip.hide()
+	globals.closeclasstooltip()
 
 func open(tempperson, tempmode = 'normal'):
 	#if !gui_controller.windows_opened.has(self):
@@ -163,7 +144,7 @@ func update():
 		newbutton.get_node('name').text = name
 		newbutton.connect('pressed',self,"open_class", [i.code])
 		newbutton.set_meta('class_code', i.code)
-		newbutton.connect('mouse_entered', self, 'show_tooltip', [newbutton, ResourceScripts.descriptions.get_class_details(person, i, true, true)])
+		globals.connectclasstooltip(newbutton, person, i)
 		newbutton.connect('mouse_exited', self, 'close_tooltip')
 		# globals.connecttexttooltip(newbutton, ResourceScripts.descriptions.get_class_details(person, i, true, true))
 	
@@ -526,5 +507,4 @@ func add_mastery_1():
 # 	yield(get_tree().create_timer(0.5), 'timeout')
 # 	anim_scene.queue_free()
 # 	input_handler.SetMusic("mansion1")
-
 

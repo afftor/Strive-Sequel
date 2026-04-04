@@ -224,9 +224,6 @@ margin_right = 250.0
 margin_bottom = 234.0
 texture = ExtResource( 3 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="color_shift_detector" type="TextureRect" parent="."]
 material = SubResource( 3 )

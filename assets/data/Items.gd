@@ -392,21 +392,21 @@ var materiallist = {
 		tier = '',
 		tags = ['no_random'],
 	},
-	mindlink = { #fix
+	mindlink = { 
 		code = 'mindlink',
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_leathermythic.png"),
+		icon = load("res://assets/images/iconsgear/mindlink.png"),
 		price = 1,
 		type = 'quest',
 		tier = '',
 		tags = ['no_random'],
 	},
-	spirit_potion = { #fix
+	spirit_potion = { 
 		code = 'spirit_potion',
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_leathermythic.png"),
+		icon = load("res://assets/images/iconsitems/regressionpot.png"),
 		price = 1,
 		type = 'quest',
 		tier = '',
@@ -4127,9 +4127,9 @@ var recipes = {
 		worktype = 'smith',
 		unique = true
 	},
-	spirit_potion = { #fix
+	spirit_potion = { 
 		code = 'spirit_potion',
-		materials = {leathermythic = 10},
+		materials = {salvia = 10},
 		items = {},
 		unlockreqs = [
 			{type = "active_quest_stage", value = "mae_city_quest", stage = "stage2"},
@@ -4161,7 +4161,7 @@ var recipes = {
 	},
 	mindlink = { #fix
 		code = 'mindlink',
-		materials = {leathermythic = 10},
+		materials = {mithril = 5},
 		items = {},
 		unlockreqs = [
 			{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage11'},
