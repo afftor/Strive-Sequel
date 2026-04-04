@@ -424,9 +424,9 @@ uniform sampler2D tex_main;
 uniform sampler2D tex_main_2;
 uniform sampler2D tex_mask_1;
 uniform sampler2D tex_mask_2;
-uniform sampler2D tex_mask_3;
+//uniform sampler2D tex_mask_3;
 uniform sampler2D tex_mask_4;
-uniform sampler2D tex_mask_5;
+//uniform sampler2D tex_mask_5;
 uniform sampler2D tex_mask_6;
 
 
@@ -478,9 +478,7 @@ shader_param/tex_main = SubResource( 7 )
 shader_param/tex_main_2 = SubResource( 16 )
 shader_param/tex_mask_1 = SubResource( 9 )
 shader_param/tex_mask_2 = SubResource( 11 )
-shader_param/tex_mask_3 = SubResource( 19 )
 shader_param/tex_mask_4 = SubResource( 21 )
-shader_param/tex_mask_5 = SubResource( 23 )
 shader_param/tex_mask_6 = SubResource( 25 )
 
 [node name="Panel" type="Panel"]
