@@ -619,7 +619,7 @@ var scenedict = {
 		reqs = [],
 			text = 'DIALOGUEEVENTGOBLINBRINGTOLEADERSUCCESS',
 			common_effects = [],
-			tags = ['active_character_translate','scene_character_translate'],
+			tags = [],
 			image = 'goblin_encounter',
 			options = [
 				{code = 'leave', reqs = [], text = tr("DIALOGUECLOSE")}

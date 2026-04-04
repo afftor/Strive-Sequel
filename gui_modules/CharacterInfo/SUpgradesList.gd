@@ -76,7 +76,8 @@ func build_trainings():
 				unlocked = person.get_social_skills().has(u_data.skill)
 				var s_data = Skilldata.Skilllist[u_data.skill]
 				panel.get_node('name').text = tr(s_data.name)
-				globals.connecttexttooltip(panel, "[center]" + tr(s_data.name) + "[/center]\n" + tr(s_data.descript))
+#				globals.connecttexttooltip(panel, "[center]" + tr(s_data.name) + "[/center]\n" + tr(s_data.descript))
+				globals.connectskilltooltip(panel, u_data.skill, person)
 				if s_data.icon is String:
 					panel.get_node('icon').texture = load(s_data.icon)
 				else:
