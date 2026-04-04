@@ -93,21 +93,24 @@ func get_bonus(bonus_name):
 	return res
 
 func get_group(group_name):
-	#duplicate() here is practically redundant,
-	#but I'm keeping it for security reasons
-	var res = data.achi_groups[group_name].duplicate()
-	res.icon = load(res.icon)
-	res.id = group_name
-#	res.max_points = 0
-	res.points = 0
-	for achi_name in data.achievements:
-		var achi = data.achievements[achi_name]
-		if !achi.has("group") or achi.group != group_name:
-			continue
-#		res.max_points += achi.points
-		if achi_name in input_handler.progress_data['achievements']:
-			res.points += achi.points
-	return res
+	#only things are needed for now
+	return {
+		name = data.achi_groups[group_name].name,
+		id = group_name
+	}
+#	var res = data.achi_groups[group_name].duplicate()
+#	res.icon = load(res.icon)
+#	res.id = group_name
+##	res.max_points = 0
+#	res.points = 0
+#	for achi_name in data.achievements:
+#		var achi = data.achievements[achi_name]
+#		if !achi.has("group") or achi.group != group_name:
+#			continue
+##		res.max_points += achi.points
+#		if achi_name in input_handler.progress_data['achievements']:
+#			res.points += achi.points
+#	return res
 
 func get_subs(achi_name):
 	var list = []
