@@ -411,6 +411,20 @@ func closegallerytooltip():
 	gallerytooltip.set_process(false)
 	gallerytooltip.hide()
 
+func connectclasstooltip(node, person, classdata):
+	if node.is_connected("mouse_entered",self,'showclasstooltip'):
+		node.disconnect("mouse_entered",self,'showclasstooltip')
+	node.connect("mouse_entered",self,'showclasstooltip', [node, person, classdata])
+
+func showclasstooltip(node, person, classdata):
+	var classtooltip = input_handler.get_spec_node(input_handler.NODE_CLASSTOOLTIP)
+	classtooltip.showup(node, person, classdata)
+
+func closeclasstooltip():
+	var classtooltip = input_handler.get_spec_node(input_handler.NODE_CLASSTOOLTIP)
+	classtooltip.set_process(false)
+	classtooltip.hide()
+
 #func disconnectitemtooltip(node, item):
 #	if node.is_connected("mouse_entered",item,'tooltip'):
 #		node.disconnect("mouse_entered",item,'tooltip')

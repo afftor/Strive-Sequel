@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/ConfirmWindowTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/gui/explore/Captured Characters/frame_hero.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/Textures_v2/CLASS_INFO/masteries_icons/combat.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_ellipse.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/iconsskills/wateredge.png" type="Texture" id=9]
+[ext_resource path="res://gui_modules/classtooltip.gd" type="Script" id=10]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 6 )
@@ -59,12 +60,13 @@ margin_right = -1524.0
 margin_bottom = -896.0
 theme = ExtResource( 1 )
 custom_styles/panel = SubResource( 1 )
+script = ExtResource( 10 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 386.0
-margin_bottom = 444.0
+margin_bottom = 410.0
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer"]
 margin_right = 376.0
@@ -271,7 +273,7 @@ text = "Requirement: "
 [node name="BonusText" type="PanelContainer" parent="VBoxContainer"]
 margin_top = 362.0
 margin_right = 376.0
-margin_bottom = 434.539
+margin_bottom = 400.539
 rect_min_size = Vector2( 120, 30 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 5 )
@@ -280,8 +282,7 @@ custom_styles/panel = SubResource( 5 )
 margin_left = 3.0
 margin_top = 2.14639
 margin_right = 373.0
-margin_bottom = 70.1464
-text = "
-"
+margin_bottom = 36.1464
+bbcode_enabled = true
 fit_content_height = true
 scroll_active = false
