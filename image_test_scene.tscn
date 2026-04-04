@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://assets/recolor shader.shader" type="Shader" id=1]
 [ext_resource path="res://assets/RecolorShaderMasks.tres" type="Material" id=2]
@@ -547,6 +547,92 @@ shader_param/tex_mask_2 = SubResource( 11 )
 shader_param/tex_mask_4 = SubResource( 21 )
 shader_param/tex_mask_6 = SubResource( 25 )
 
+[sub_resource type="Shader" id=31]
+code = "shader_type canvas_item;
+
+uniform vec4 outline_color1 : hint_color;
+uniform vec4 outline_color2 : hint_color;
+uniform vec4 outline_color3 : hint_color;
+uniform float opacity = 1.0;
+uniform float speed = 0.1;
+uniform float speed_2 = 0.1;
+uniform float speed_3 = 0.1;
+
+const vec2 dir1 = vec2(0.3, 1.0);
+const vec2 dir2 = vec2(-0.3, 1.0);
+const vec2 dir3 = vec2(-0.1, -0.8);
+
+const float PI = 3.14;
+const float EPS = 1.0/512.0;
+
+uniform sampler2D tex_main;
+uniform sampler2D tex_main_2;
+uniform sampler2D tex_mask_1;
+uniform sampler2D tex_mask_2;
+uniform sampler2D tex_mask_3;
+uniform sampler2D tex_mask_4;
+uniform sampler2D tex_mask_5;
+uniform sampler2D tex_mask_6;
+
+
+vec3 border(vec3 val) {
+	vec3 res = (val - 0.55);
+	res = res * 5.0;
+	return clamp(res, 0.001, 1.0);
+}
+
+
+void fragment() {
+	vec4 col = texture(TEXTURE, UV);
+	vec2 ps = TEXTURE_PIXEL_SIZE;
+	vec3 shadow = vec3(1.0);
+	float time_mod = TIME * speed;
+	float time_mod_2 = TIME * speed_2;
+	float time_mod_3 = TIME * speed_3;
+	
+	vec2 pos1 = UV + time_mod * dir1;
+	vec4 col1 = 1.0 - sqrt(sqrt(sqrt(abs(texture(tex_main, pos1) - texture(tex_main_2, pos1)))));
+	vec2 pos2 = UV + time_mod * dir2;
+	vec4 col2 = 1.0 - sqrt(sqrt(sqrt(abs(texture(tex_main, pos2) - texture(tex_main_2, pos2)))));
+	vec2 pos3 = UV + time_mod * dir3;
+	vec4 col3 = 1.0 - sqrt(sqrt(sqrt(abs(texture(tex_main, pos3) - texture(tex_main_2, pos3)))));
+	
+	vec2 pos1_1 = (UV - vec2(0.5)) * 0.7 * mat2(vec2(cos(time_mod_2), sin(time_mod_2)), vec2(-sin(time_mod_2), cos(time_mod_2))) + vec2(0.5);
+	vec2 pos1_2 = (UV - vec2(0.5)) * 0.7 * mat2(vec2(cos(time_mod_2), -sin(time_mod_2)), vec2(sin(time_mod_2), cos(time_mod_2))) + vec2(0.5);
+	float mod1 = sqrt(sqrt(sin(time_mod_3) + 1.1));
+	float mod2 = sqrt(sqrt(-sin(time_mod_3) + 1.1));
+	shadow.x = max(texture(tex_mask_1, pos1_1).x * mod1, texture(tex_mask_2, pos1_2).x * mod2);
+	shadow.y = max(texture(tex_mask_3, pos1_1).x * mod1, texture(tex_mask_4, pos1_2).x * mod2);
+	shadow.z = max(texture(tex_mask_4, pos1_1).x * mod1, texture(tex_mask_6, pos1_2).x * mod2);
+	shadow = border(shadow);
+	shadow = shadow * vec3(col1.r, col2.r, col3.r);
+	float m = shadow.x + shadow.y + shadow.z;
+	
+//	vec4 shadow1 = vec4(outline_color1.rgb, shadow.x);
+	vec4 shadow1 = vec4((outline_color1.rgb * shadow.x + outline_color2.rgb * shadow.y + outline_color3.rgb * shadow.z) / m, 1.0 - (1.0 - shadow.x) * (1.0 - shadow.y) * (1.0 - shadow.z));
+	shadow1.a *= opacity;
+
+	COLOR = mix(shadow1, col, col.a);
+}"
+
+[sub_resource type="ShaderMaterial" id=32]
+shader = SubResource( 31 )
+shader_param/outline_color1 = Color( 0.968627, 1, 0, 1 )
+shader_param/outline_color2 = Color( 0.8, 0.772549, 0, 1 )
+shader_param/outline_color3 = Color( 0.784314, 0.788235, 0.654902, 1 )
+shader_param/opacity = 0.9
+shader_param/speed = 0.1
+shader_param/speed_2 = 0.2
+shader_param/speed_3 = 0.4
+shader_param/tex_main = SubResource( 7 )
+shader_param/tex_main_2 = SubResource( 16 )
+shader_param/tex_mask_1 = SubResource( 9 )
+shader_param/tex_mask_2 = SubResource( 11 )
+shader_param/tex_mask_3 = SubResource( 19 )
+shader_param/tex_mask_4 = SubResource( 21 )
+shader_param/tex_mask_5 = SubResource( 23 )
+shader_param/tex_mask_6 = SubResource( 25 )
+
 [node name="Panel" type="Panel"]
 margin_right = 1012.0
 margin_bottom = 883.0
@@ -554,7 +640,7 @@ margin_bottom = 883.0
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.196078, 0.196078, 0.203922, 1 )
+color = Color( 0.215686, 0.203922, 0.25098, 1 )
 
 [node name="main_artefact_detector" type="TextureRect" parent="."]
 material = SubResource( 2 )
@@ -696,3 +782,19 @@ modulate = Color( 1, 1, 1, 0.462745 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 1, 0, 0, 1 )
+
+[node name="flame_test7" type="TextureRect" parent="."]
+material = SubResource( 32 )
+margin_left = 526.0
+margin_top = 601.0
+margin_right = 730.0
+margin_bottom = 782.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="flame_test" type="TextureRect" parent="flame_test7"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
