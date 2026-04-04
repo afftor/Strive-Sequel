@@ -4451,25 +4451,25 @@ Sex skills are increased when performing related action and their growth is depe
 	DIALOGUEKEEPBABY = "Keep baby",
 	DIALOGUEINSPECTBABY = "Inspect future baby",
 	DIALOGUEREMOVEBABY = "Leave it at an orphanage",
-	DIALOGUERECRUIT = "You stand before [name], who was captured and now awaits for [his] destiny. You can try to persuade [him] to join you willingly or simply enslave [him].",
+	DIALOGUERECRUIT = "You stand before [scncharname], who was captured and now awaits for [scncharhis] destiny. You can try to persuade [scncharhim] to join you willingly or simply enslave [scncharhim].",
 	DIALOGUERECRUITCHOOSEPERSON = "Choose Negotiator",
-	DIALOGUERECRUITENSLAVE = "You decide to not endorse into any negotiations and simply make [him] your slave against [his] will.",
-	DIALOGUERECRUITGOOD = "Your entrusted servant successfully managed to persuade [name] into serving you.",
-	DIALOGUERECRUITGOODSEDUCE = "Your entrusted servant successfully seduced [name], who agreed to serve you.",
+	DIALOGUERECRUITENSLAVE = "You decide to not endorse into any negotiations and simply make [scncharhim] your slave against [scncharhis] will.",
+	DIALOGUERECRUITGOOD = "Your entrusted servant successfully managed to persuade [scncharname] into serving you.",
+	DIALOGUERECRUITGOODSEDUCE = "Your entrusted servant successfully seduced [scncharname], who agreed to serve you.",
 	DIALOGUERECRUITGOODSLAVE = "Make Slave",
 	DIALOGUERECRUITGOODSERVANT = "Make Subordinate",
 	DIALOGUERECRUITFORCEATTEMPT = "Enslave",
 	DIALOGUERECRUITATTEMPT = "Attempt to Recruit",
 	DIALOGUERECRUITSUCCUBUS = "Seduce (Succubus), 30 Mana",
 	DIALOGUERECRUITSUCCUBUSNOMANA = "Seduce (Succubus), 30 Mana (Not enough mana)",
-	DIALOGUERECRUITBAD = "Your entrusted servant failed to persuade [name] into serving you... With no other option you enslave [him] resisting.",
-	DIALOGUEMEET = "Your servants have found a potential recruitee, [name], who seems to be interested in joining your household. ",
-	DIALOGUEMEETBAD = "You've failed to persuade [name] and [he] bids you a farewell.",
-	DIALOGUEMEETGOOD = "After a discussion [name] agrees to become your follower. ",
-	DIALOGUEMEETGOODSEDUCE = "Being charmed by a lustful intentions, [name] agrees to become your follower. ",
+	DIALOGUERECRUITBAD = "Your entrusted servant failed to persuade [scncharname] into serving you... With no other option you enslave [scncharhim] resisting.",
+	DIALOGUEMEET = "Your servants have found a potential recruitee, [scncharname], who seems to be interested in joining your household. ",
+	DIALOGUEMEETBAD = "You've failed to persuade [scncharname] and [scncharhe] bids you a farewell.",
+	DIALOGUEMEETGOOD = "After a discussion [scncharname] agrees to become your follower. ",
+	DIALOGUEMEETGOODSEDUCE = "Being charmed by a lustful intentions, [scncharname] agrees to become your follower. ",
 	DIALOGUEMEETGOODDEFAULT = "Add to roster as Subordinate",
 	DIALOGUEMEETGOODHIRELING = "",
-	DIALOGUERANDOMBOSSDEFEAT = "The defeated [name] lies before you. Recruiting [him] does not seem very realistic, so you will have to enslave [him]...",
+	DIALOGUERANDOMBOSSDEFEAT = "The defeated [scncharname] lies before you. Recruiting [scncharhim] does not seem very realistic, so you will have to enslave [scncharhim]...",
 	DIALOGUERECRUITBOSSOPTION = "Take into custody",
 	DIALOGUEEXECUTEOPTION = "Execute",
 	DIALOGUEDUNGEONQUESTCOMPLETE = "You have completed your mission on clearing [dungeonname]. Claim your reward at Mansion Quest Panel. ",
@@ -4506,7 +4506,7 @@ Sex skills are increased when performing related action and their growth is depe
 	DIALOGUELEAVE = "Leave",
 	DIALOGUELEAVERECRUITOPTION = "Cancel (abandons recruit)",
 	DIALOGUEEVENTNOTHING = "After searching around you weren't able to find anything of interest...",
-	DIALOGUEEVENTGOODRECRUIT = "After scouting through [locationname], you've heard the rumors of a person, willing to join you. After a couple of moments you find [name], [age] [raceadj], who seems willing to leave this place. ",
+	DIALOGUEEVENTGOODRECRUIT = "After scouting through [locationname], you've heard the rumors of a person, willing to join you. After a couple of moments you find [scncharname], [scncharage] [scncharraceadj], who seems willing to leave this place. ",
 	DIALOGUEEVENTGOODLOOT = "After searching surroundings, you find a small locked cache. ",
 	DIALOGUECHESTOPEN = "Open",
 	DIALOGUETAKELOOT = "Take",
@@ -4556,12 +4556,12 @@ After about an hour of erotic moans and pleads [name] manages to free [him]self 
 	DIALOGUESHRINEFREYA = "You find an unusual wooden structure: a beautiful female figure. What especially stands out, is it seems it wasn't carved but rather has grown into such shape. You can feel a faint power around it. ",
 	DIALOGUESHRINEHYBRIS = "You find an eerie shrine resembling something made by savages. Despite its repulsive appearence, you still feel a faint power around it. ",
 	DIALOGUESLAVERPURCHASE = "Purchase",
-	DIALOGUEEVENTGOODSLAVERS = """You come across a group of slavers returning from the elven lands. With them you spot a captured [age] [male] [race] to be sold later at the local market.
+	DIALOGUEEVENTGOODSLAVERS = """You come across a group of slavers returning from the elven lands. With them you spot a captured [scncharage] [scncharmale] [scncharrace] to be sold later at the local market.
 
-They are ready to part with [him] for a reasonable price of [price] gold.
+They are ready to part with [scncharhim] for a reasonable price of [scncharprice] gold.
 
-The [race] gives you a desperate look. """,
-	DIALOGUEEVENTGOODSLAVERSACQUIRED = "Now you're left alone with the [race_short] [boy]. Still uncertain about [his] future, [he] pleads for your mercy. ",
+The [scncharrace] gives you a desperate look. """,
+	DIALOGUEEVENTGOODSLAVERSACQUIRED = "Now you're left alone with the [scncharrace_short] [scncharboy]. Still uncertain about [scncharhis] future, [scncharhe] pleads for your mercy. ",
 	DIALOGUESLAVERSPURCHASE = "Purchase",
 	DIALOGUEREQUESTSLAVE = "Lie to convince the merchants to forfeit the slave to you",
 	DIALOGUEEVENTSLAVERSNEGOTIATESUCCESS = """[center]{color=green|Success!}[/center]
@@ -4570,7 +4570,7 @@ The [race] gives you a desperate look. """,
 [name] wasn't able to trick theslavers into leaving the slave to you. They leave in a hurry.""",
 	DIALOGUEKEEPSLAVEPERSON = "Keep as slave",
 	DIALOGUESETFREEPERSON = "Set free",
-	DIALOGUEEVENTPERSONFREE = "You've set [name] free. [He] expresses [his] gratitude and wishes to repay you one day. ",
+	DIALOGUEEVENTPERSONFREE = "You've set [scncharname] free. [scncharHe] expresses [scncharhis] gratitude and wishes to repay you one day. ",
 	DIALOGUEEVENTEXOTICTRADER = "You find an exotic slave trader with a large group of guards. Exotic race slaves are rare and expensive, so you should consider yourself lucky. After greetings he presents you his belongings.",
 	DIALOGUEALIRONEXOTICTRADER = """This morning you've received a message that today Avermik came to town. An mysterious slave trader which deals with rare and exotic races. They seem to recurringly visit Aliron and might provide a reliable way to seize on an unusual slave.
 
@@ -4638,7 +4638,7 @@ If you got the coin for it...""",
 	DIALOGUECRYPTBONES = "You find a pile of perfectly preserved bones. ",
 	DIALOGUEEVENTDUNGEONPRISONER = "You come across a jail room holding a bound [race] [male], likely held by the bandits for ransom or mockery. At your approach [he] tells you [his] name is [name] and begs you for help.",
 	DIALOGUETAKESLAVE = "[Strength Challenge] Capture and enslave",
-	DIALOGUEEVENTDUNGEONPRISONERSENSLAVE = "You release [name] from [his] cell, only to turn [him] into your slave. Your team continues on. ",
+	DIALOGUEEVENTDUNGEONPRISONERSENSLAVE = "You release [scncharname] from [scncharhis] cell, only to turn [scncharhim] into your slave. Your team continues on. ",
 	DIALOGUEEVENTDUNGEONPRISONERFREE1 = "You release and unbind [name], much to [his] relief. As [he] thanks you, [he] shows you a small cache of resources near [his] cell as thanks for [his] rescue. After explaining to [him] how to get out, you are ready to continue on your way.",
 	DIALOGUEEVENTDUNGEONPRISONERFREE2 = "You release and unbind [name], much to [his] relief. As [he] thanks you, [he] shows you a secret item [he] has hidden in [his] cell as thanks for [his] rescue. After explaining to [him] how to get out, you are ready to continue on your way.",
 	DIALOGUEEVENTDUNGEONRESOURCE = "There are resources in this room. You can add [color=yellow]{amount} pieces of {resource}[/color] for harvesting or spend [color=yellow]{stamina_cost} stamina[/color] to get half of that amount instantly.",
@@ -4655,7 +4655,7 @@ Surprised by the fact [he] knows common speech and is civilized unlike others yo
 	DIALOGUEEVENTGOBLINRECRUITSUCCESS = """[center]{color=green|Success!}[/center]
 {color=yellow|— Eh?.. You want me to work for you? Well, I can't refuse someone big and strong like you, can I? I mean, I'll gladly take your offer! This place is a big ass dump after all.}
 
-After [name] received instructions, [he] quickly disappeared in the way of your mansion.""",
+After [scncharname] received instructions, [scncharhe] quickly disappeared in the way of your mansion.""",
 	DIALOGUEEVENTGOBLINRECRUITFAILURE = """[center]{color=red|Failure!}[/center]
 {color=yellow|— Eh?.. I... don't think this is a good idea, we don't take betrayals nicely, ya know. Now, if you excuse me...}
 
@@ -4668,7 +4668,7 @@ According to your agreement, the goblin retells you the layout of the dungeon wh
 {color=yellow|— This... This is unreasonable ya know, I'm not out of my mind yet. If you are so willing to die, don't drag me in. }
 
 As [he] was talking [he] moved to the position and darted from the room before you could react. """,
-	DIALOGUEEVENTGOBLINCAPTUREREPLY = """You figure that civilized goblin can be a useful tool or net some profit on the market. Without giving [him] a second chance, you seize [him].
+	DIALOGUEEVENTGOBLINCAPTUREREPLY = """You figure that civilized goblin can be a useful tool or net some profit on the market. Without giving [scncharhim] a second chance, you seize [scncharhim].
 
 {color=yellow|— Hey, what the {^fuck:hell} are you {^doing:thinking}?! Let me go!.. You bastards!}""",
 	DIALOGUEEVENTGOBLINKILLREPLY = "You can't risk any suspicious goblin leave, let alone warn others. Before [he] can react, your group strike [him] down. Unfortunately, there's nothing else of interest here.",
@@ -4697,11 +4697,11 @@ Unfortunately, [name] wasn't able to convince the fairy to join you. Perhaps [he
 [His] magic recovers some wounds of your group and [he] happily leaves after receiving your thanks.
 
 All party recovers 35% HP.""",
-	DIALOGUEEVENTFAIRYCAPTUREREPLY = """Before [he] can react, your group quickly pins [him] down.
+	DIALOGUEEVENTFAIRYCAPTUREREPLY = """Before [scncharhe] can react, your group quickly pins [scncharhim] down.
 
 {color=yellow|— Hey, wha-. Stop! What are you doing!? Let me go!!}
 
-As the [boy] is made your slave, [he] can be a very useful addition to your roost or net a good sum from the collectors.""",
+As the [scncharboy] is made your slave, [scncharhe] can be a very useful addition to your roost or net a good sum from the collectors.""",
 	DIALOGUEVENTFAIRYLEAVEREPLY = "After chatting for a bit you part your ways with fairy. ",
 	DIALOGUETUTELAGETEXT = """You decided to keep the newborn child, however you have to decide on its future education which might improve or correct their potential. In either way growing up will take 2 weeks.
 
@@ -4738,7 +4738,7 @@ As the [boy] is made your slave, [he] can be a very useful addition to your roos
 	CHARFREELOVERSALLOW = "*Allow*",
 	CHARLOVERSFORBID = "*Forbid*",
 	CHARFREELOVERSFORBID = "*Forbid*",
-	DIALOGUEEVENTGOODREBELSBEAST = "You come across a small group of rebels, who have caught a [race] [male] that likely strayed from their homelands. Given the rebels' attitude towards [him] it's easy to see they are up to no good...",
+	DIALOGUEEVENTGOODREBELSBEAST = "You come across a small group of rebels, who have caught a [scncharrace] [scncharmale] that likely strayed from their homelands. Given the rebels' attitude towards [scncharhim] it's easy to see they are up to no good...",
 	DIALOGUEEVENTREBELSBEASTINTIMIDATESUCCES = """[center]{color=green|Success!}[/center]
 [name] has successfully intimidated a group of rebels into fleeing, leaving their victim behind.""",
 	DIALOGUEEVENTREBELSBEASTINTIMIDATEFAILURE = """[center]{color=red|Failure!}[/center]
