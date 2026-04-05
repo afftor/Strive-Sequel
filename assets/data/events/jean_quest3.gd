@@ -784,7 +784,7 @@ var data = {
 				remove_after_first_use = true
 			},
 			{
-				code = "jean_sylas_arena_repljean_sylas_arena_melchory_not_friends",
+				code = "jean_sylas_arena_melchor",
 				text = "JEAN_SYLAS_ARENA_OPTION_NOT_FRIENDS",
 				reqs = [
 
