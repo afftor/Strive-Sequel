@@ -1363,7 +1363,7 @@ var fixed_location_options = { #override serialized data
 		{
 			text = tr("JEAN_CAPITAL_OPTION_MERCHANTS"),
 			reqs = [{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage4'}],
-			args = [{code = 'start_event', data = 'jean_sylas_capital_meet', args = []}]
+			args = [{code = 'start_event', data = 'jean_sylas_merchants_intro', args = []}]
 		},
 		{
 			text = tr("JEAN_CAPITAL_OPTION_CART"),
