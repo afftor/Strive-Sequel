@@ -374,6 +374,12 @@ func set_icon(node):
 		node.texture_normal = icon_texture
 	else:
 		node.texture = icon_texture
+	var par = node.get_parent()
+	par.material = null
+	if curse != null:
+		par.material = load("res://assets/sfx/item_glow_cursed.tres")
+	elif !enchants.empty():
+		par.material = load("res://assets/sfx/item_glow_enchanted.tres")
 	node.material = null
 	if parts.size() > 0:
 		var shader = load("res://assets/ItemShader.tres").duplicate()

@@ -612,8 +612,9 @@ func checkcreatingitem(item):
 	$MaterialSetupPanel/Label.text = baseitem.name
 	globals.TextEncoder(text, $MaterialSetupPanel/EndItemDescript)
 	#globals.connecttooltip($NumberSelect/EndItem, text)
-	$MaterialSetupPanel/EndItemFrame/EndItem.set_texture(baseitem.icon)
-	input_handler.itemshadeimage($MaterialSetupPanel/EndItemFrame/EndItem, enditem)
+	enditem.set_icon($MaterialSetupPanel/EndItemFrame/EndItem)
+#	$MaterialSetupPanel/EndItemFrame/EndItem.set_texture(baseitem.icon)
+#	input_handler.itemshadeimage($MaterialSetupPanel/EndItemFrame/EndItem, enditem)
 
 
 func multipart_item_text(item):

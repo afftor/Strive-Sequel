@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_36.tres" type="DynamicFont" id=2]
@@ -20,9 +20,10 @@
 [ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_hover.png" type="Texture" id=18]
 [ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_default.png" type="Texture" id=19]
 [ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_prassed.png" type="Texture" id=20]
-[ext_resource path="res://assets/Textures_v2/craft/enchant/panel_item.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/craft/panel_item_ench.png" type="Texture" id=21]
 [ext_resource path="res://assets/Textures_v2/craft/panel_enchant_big.png" type="Texture" id=22]
 [ext_resource path="res://assets/images/iconsitems/quality_bg/blue.png" type="Texture" id=23]
+[ext_resource path="res://assets/Textures_v2/MANSION/panel_resourses.png" type="Texture" id=24]
 [ext_resource path="res://assets/Textures_v2/craft/background_panel_enchant.png" type="Texture" id=27]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=28]
 [ext_resource path="res://assets/Textures_v2/craft/buttons/button_apply.png" type="Texture" id=29]
@@ -255,10 +256,18 @@ valign = 1
 margin_left = 365.0
 margin_top = 28.0
 margin_right = 705.0
-margin_bottom = 634.0
+margin_bottom = 335.0
+texture = ExtResource( 24 )
+expand = true
+
+[node name="TextureRect2" type="TextureRect" parent="EnchantPanel/Weapon1"]
+show_behind_parent = true
+margin_right = 340.0
+margin_bottom = 606.0
 texture = ExtResource( 21 )
 
 [node name="TextureRect" type="TextureRect" parent="EnchantPanel/Weapon1"]
+show_behind_parent = true
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 333.0
@@ -268,6 +277,7 @@ expand = true
 stretch_mode = 1
 
 [node name="icon" type="TextureRect" parent="EnchantPanel/Weapon1"]
+show_behind_parent = true
 margin_left = 9.0
 margin_top = 11.0
 margin_right = 329.0
@@ -343,13 +353,21 @@ expand = true
 stretch_mode = 6
 
 [node name="Weapon2" type="TextureRect" parent="EnchantPanel"]
-margin_left = 820.577
+margin_left = 821.0
 margin_top = 28.0
-margin_right = 1160.58
-margin_bottom = 634.0
+margin_right = 1161.0
+margin_bottom = 336.0
+texture = ExtResource( 24 )
+expand = true
+
+[node name="TextureRect2" type="TextureRect" parent="EnchantPanel/Weapon2"]
+show_behind_parent = true
+margin_right = 340.0
+margin_bottom = 606.0
 texture = ExtResource( 21 )
 
 [node name="TextureRect" type="TextureRect" parent="EnchantPanel/Weapon2"]
+show_behind_parent = true
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 333.0
@@ -359,6 +377,7 @@ expand = true
 stretch_mode = 1
 
 [node name="icon" type="TextureRect" parent="EnchantPanel/Weapon2"]
+show_behind_parent = true
 margin_left = 9.0
 margin_top = 11.0
 margin_right = 329.0

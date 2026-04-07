@@ -155,11 +155,13 @@ func show_resources_info():
 					# newtask.get_node("icon/Label").show()
 					# newtask.get_node("Task").text = str(ResourceScripts.game_res.materials[ResourceScripts.game_res.craftinglists[task_name][0].code])
 				
-				elif recipe.crafttype == 'modular':
-					input_handler.itemshadeimage(newtask.get_node("Task/TaskIcon"), item)
-				
 				else:
-					newtask.get_node("Task/TaskIcon").texture = Items.itemlist[recipe.resultitem].icon
+					item.set_icon(newtask.get_node("Task/TaskIcon"))
+#				elif recipe.crafttype == 'modular':
+#					input_handler.itemshadeimage(newtask.get_node("Task/TaskIcon"), item)
+#
+#				else:
+#					newtask.get_node("Task/TaskIcon").texture = Items.itemlist[recipe.resultitem].icon
 			newtask.get_node("Task").text = task_name.capitalize()
 		elif task.product in ['recruiting']:
 			var progress = 0
