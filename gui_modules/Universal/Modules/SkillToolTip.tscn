@@ -122,11 +122,49 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="descript" type="RichTextLabel" parent="."]
-margin_left = 483.0
+[node name="Panel" type="Panel" parent="."]
+show_behind_parent = true
+margin_left = 463.0
+margin_right = 792.0
+margin_bottom = 100.0
+custom_styles/panel = ExtResource( 3 )
+
+[node name="cont" type="VBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
 margin_top = 20.0
-margin_right = 772.0
-margin_bottom = 54.0
+margin_right = -20.0
+margin_bottom = -20.0
+rect_min_size = Vector2( 0, 60 )
+
+[node name="entry" type="HBoxContainer" parent="Panel/cont"]
+visible = false
+margin_right = 289.0
+margin_bottom = 60.0
+
+[node name="icon" type="TextureRect" parent="Panel/cont/entry"]
+margin_top = 7.0
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+size_flags_vertical = 0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="frame" type="TextureRect" parent="Panel/cont/entry/icon"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="descript" type="RichTextLabel" parent="Panel/cont/entry"]
+margin_left = 64.0
+margin_right = 286.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 222, 0 )
 rect_clip_content = false
 mouse_filter = 2
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -135,13 +173,3 @@ bbcode_enabled = true
 bbcode_text = "Skill Description"
 text = "Skill Description"
 fit_content_height = true
-
-[node name="Panel" type="Panel" parent="descript"]
-show_behind_parent = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
-custom_styles/panel = ExtResource( 3 )

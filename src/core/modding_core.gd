@@ -462,7 +462,7 @@ func process_gd_data_file(filepath: String, alias : String):
 
 func get_eff_desc_list(eff):
 	if eff is String:
-		var desc = Effectdata.get_status_desc(eff)
+		var desc = Effectdata.get_status_desc_id(eff)
 		if desc: return [desc]
 		
 		if Effectdata.effect_table.has(eff):

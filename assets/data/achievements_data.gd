@@ -653,8 +653,16 @@ var bonuses = {
 		preparation = "prep_rooms",
 		cost = 5
 	},
+	literate = {
+		name = "ACHIBONUS_LITERATE",
+		description = "ACHIBONUS_LITERATE_DESC",
+		hint = "",
+		icon = "res://assets/images/minor_training/literacy.png",
+		preparation = "prep_literate",
+		cost = 5
+	},
 }
-var always_ulocked_bonuses = ["exp_scrolls", "talent_points", "craftsman", "rooms"]
+var always_ulocked_bonuses = ["exp_scrolls", "talent_points", "craftsman", "rooms", "literate"]
 
 func prepare_data():
 	#infinite_levels group
