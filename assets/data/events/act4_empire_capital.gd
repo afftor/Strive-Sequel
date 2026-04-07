@@ -1215,7 +1215,7 @@ var data = {
 		image = null,
 		character = "rouge",
 		tags = [
-			"dialogue_scene"
+			"dialogue_scene", 'master_translate'
 		],
 		text = "EMP_ARENA_11",
 		options = [

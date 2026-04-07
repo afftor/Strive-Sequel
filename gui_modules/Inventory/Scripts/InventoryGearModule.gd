@@ -152,6 +152,7 @@ func build_gear_panel():
 			$InventorySlots.get_node(i + "/icon2").visible = selectedhero.equipment.gear[i] == null
 			if selectedhero.equipment.gear[i] == null:
 				$InventorySlots.get_node(i + "/icon").texture = null
+				$InventorySlots.get_node(i).material = null
 			else:
 				var item = ResourceScripts.game_res.items[selectedhero.equipment.gear[i]]
 				item.set_icon($InventorySlots.get_node(i + "/icon"))

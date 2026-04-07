@@ -377,8 +377,9 @@ func checkcreatingitem(item):
 	
 	globals.TextEncoder(text, $NumberSelect/MaterialSetupPanel/EndItemDescript)
 	#globals.connecttooltip($NumberSelect/EndItem, text)
-	$NumberSelect/MaterialSetupPanel/EndItem.set_texture(baseitem.icon)
-	input_handler.itemshadeimage($NumberSelect/MaterialSetupPanel/EndItem, enditem)
+	enditem.set_icon($NumberSelect/MaterialSetupPanel/EndItem)
+#	$NumberSelect/MaterialSetupPanel/EndItem.set_texture(baseitem.icon)
+#	input_handler.itemshadeimage($NumberSelect/MaterialSetupPanel/EndItem, enditem)
 
 
 func CreateItem():

@@ -3260,7 +3260,7 @@ var data = {
 		],
 		options = [
 			{
-				code = "jean_sylas_myr_issue_snark",
+				code = "jean_sylas_myr_issue_library",
 				text = "JEAN_SYLAS_MYR_ISSUE_OPTION_SNARK",
 				reqs = [
 

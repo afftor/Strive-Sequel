@@ -256,12 +256,14 @@ func gear_tooltip(data, item = null):
 	var text = item.tooltiptext_light()
 	$ItemTooltipV2/Cost/Label.text = str(data.price)
 	$ItemTooltipV2/Cost.visible = item.price != 0
-
-	if item.get('partcolororder') != null:
-		input_handler.itemshadeimage(iconnode, item)
-		# text += "\n\n[color=yellow]Hold shift for details[/color]"
-	else:
-		iconnode.texture = input_handler.loadimage(item.icon, 'icons')
+	
+	
+	item.set_icon(iconnode)
+#	if item.get('partcolororder') != null:
+#		input_handler.itemshadeimage(iconnode, item)
+#		# text += "\n\n[color=yellow]Hold shift for details[/color]"
+#	else:
+#		iconnode.texture = input_handler.loadimage(item.icon, 'icons')
 
 	textnode.bbcode_text = item.description
 	textnode2.bbcode_text = text
@@ -353,11 +355,11 @@ func geartemplete_tooltip(data):
 	for i in item.effects:
 		text += Effectdata.effect_table[i].descript + "\n"
 
-	iconnode.texture = item.icon
+#	iconnode.texture = item.icon
+	item.set_icon(iconnode)
 	$Cost/Label.text = str(data.price)
 	if item.get('partcolororder') != null:
-		input_handler.itemshadeimage(iconnode, item)
-
+#		input_handler.itemshadeimage(iconnode, item)
 		text += "\n\n{color=yellow|" + tr("INFOHOLDSHIFT") + "}"
 	textnode.bbcode_text = globals.TextEncoder(text)
 
