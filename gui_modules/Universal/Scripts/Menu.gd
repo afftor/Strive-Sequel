@@ -3,15 +3,17 @@ extends Control
 
 var lastsave = null
 
-onready var newgame_bonuses_node = $NewGamePanel/bonuses
-onready var newgame_bonuses_cont = $NewGamePanel/bonuses/ScrollContainer/VBoxContainer
+onready var newgame_cont = $NewGameCont
+onready var newgame_node = $NewGameCont/NewGamePanel
+onready var newgame_bonuses_node = $NewGameCont/bonuses
+onready var newgame_bonuses_cont = $NewGameCont/bonuses/ScrollContainer/VBoxContainer
 var cur_bonus_points = 0
 var max_bonus_points = 0
 var newgame_bonuses = []
 
 func _ready():
 	get_tree().set_auto_accept_quit(false)
-	gui_controller.add_close_button($NewGamePanel)
+	newgame_node.get_node("CloseButton").connect("pressed", gui_controller, 'close_scene', [newgame_cont])
 	gui_controller.add_close_button($saveloadpanel)
 	gui_controller.add_close_button($Options)
 	gui_controller.add_close_button($Credits)
@@ -26,7 +28,7 @@ func _ready():
 		#input_handler.ConnectSound($VBoxContainer.get_child(i), 'button_click', 'button_up')
 	$VBoxContainer/quitbutton.connect("pressed", self, "quit")
 	$VBoxContainer/gallery.connect("pressed", self, "gallery")
-	$NewGamePanel/BackButton.connect("pressed", self, "open_newgame")
+	newgame_node.get_node("BackButton").connect("pressed", self, "open_newgame")
 	#$char_sprite.texture = images.sprites[images.sprites.keys()[randi() %images.sprites.keys().size()]]
 	#$char_sprite.texture = images.sprites[input_handler.progress_data.characters[randi()%input_handler.progress_data.characters.size()]]
 	$DemoPanel/Button.connect("pressed", self, "CloseDemoWarn")
@@ -45,13 +47,14 @@ func _ready():
 		$DemoPanel.hide()
 		$WarnScreen.hide()
 		input_handler.SetMusic("opening")
-	# input_handler.AddPanelOpenCloseAnimation($NewGamePanel)
+	# input_handler.AddPanelOpenCloseAnimation(newgame_cont)
 	input_handler.AddPanelOpenCloseAnimation($Changelogpanel)
-	globals.connecttexttooltip($NewGamePanel/tip, tr('NEWGAMESETTINGINFO'))
+	globals.connecttexttooltip(newgame_node.get_node("tip"), tr('NEWGAMESETTINGINFO'))
 	$ChangelogButton.connect("pressed", $Changelogpanel, 'show')
-	$NewGamePanel/StartButton.connect("pressed", self, 'start_game')
+	newgame_node.get_node("StartButton").connect("pressed", self, 'start_game')
 	$NewOrTutorial/ButtonL.connect("pressed", self, 'close_new_or_tutorial', [1])
 	$NewOrTutorial/ButtonR.connect("pressed", self, 'close_new_or_tutorial', [2])
+	newgame_node.get_node("NGPButton").connect("pressed", self, 'switch_ng_bonuses')
 	
 	cycle_backgrounds()
 
@@ -180,38 +183,39 @@ func try_open_newgame():
 	input_handler.get_spec_node(input_handler.NODE_YESORNOPANEL, [self, 'tutorial_confirm', 'open_newgame', tr('PROMPTTUTORIAL')])
 
 func open_newgame():
-	gui_controller.windows_opened.append($NewGamePanel)
-	$NewGamePanel.show()
+	gui_controller.windows_opened.append(newgame_cont)
+	newgame_cont.show()
 	
-	$NewGamePanel/PresetContainer.visible = true
-	$NewGamePanel/RichTextLabel.visible = true
-	$NewGamePanel/SettingsLabel.visible = false
-	$NewGamePanel/ScrollContainer.visible = false
-	$NewGamePanel/Settings3.visible = false
-	$NewGamePanel/BackButton.visible = false
+	newgame_node.get_node("PresetContainer").visible = true
+	newgame_node.get_node("RichTextLabel").visible = true
+	newgame_node.get_node("SettingsLabel").visible = false
+	newgame_node.get_node("ScrollContainer").visible = false
+	newgame_node.get_node("Settings3").visible = false
+	newgame_node.get_node("BackButton").visible = false
 	
-	input_handler.ClearContainerForced($NewGamePanel/PresetContainer/VBoxContainer)
+	input_handler.ClearContainerForced(newgame_node.get_node("PresetContainer/VBoxContainer"))
 	for id in starting_presets.preset_data:
-		var newbutton = input_handler.DuplicateContainerTemplate($NewGamePanel/PresetContainer/VBoxContainer)
+		var newbutton = input_handler.DuplicateContainerTemplate(newgame_node.get_node("PresetContainer/VBoxContainer"))
 		newbutton.text = tr(starting_presets.preset_data[id].name)
 		newbutton.connect('pressed', self, 'select_preset', [id])
 		newbutton.name = id
-	var newbutton = input_handler.DuplicateContainerTemplate($NewGamePanel/PresetContainer/VBoxContainer)
+	var newbutton = input_handler.DuplicateContainerTemplate(newgame_node.get_node("PresetContainer/VBoxContainer"))
 	newbutton.text = tr('PRESETDATADEBUGCUSTOMNAME')
 	newbutton.connect('pressed', self, 'select_preset', ['custom'])
 	newbutton.name = 'custom'
 	
 	select_preset('easy')
 #	start_preset_update()
-#	$NewGamePanel/PresetContainer/VBoxContainer.get_child(0).emit_signal('pressed')
-#	ResourceScripts.game_globals.skip_prologue = $NewGamePanel/SkipP.pressed
+#	newgame_node.get_node("PresetContainer/VBoxContainer").get_child(0).emit_signal('pressed')
+#	ResourceScripts.game_globals.skip_prologue = newgame_node.get_node("SkipP").pressed
 	
 	#new game +
 	var bonuses = input_handler.achievements.get_unlocked_bonuses()
 	max_bonus_points = input_handler.achievements.get_all_points()
 	newgame_bonuses.clear()
-	newgame_bonuses_node.visible = !bonuses.empty() and max_bonus_points > 0
-	if newgame_bonuses_node.visible:
+	var NGPButton = newgame_node.get_node("NGPButton")
+	NGPButton.visible = !bonuses.empty() and max_bonus_points > 0
+	if NGPButton.visible:
 		cur_bonus_points = 0
 		update_bonus_points_text()
 		input_handler.ClearContainer(newgame_bonuses_cont, ["bonus", "locked"])
@@ -230,6 +234,12 @@ func open_newgame():
 			var new_btn = input_handler.DuplicateContainerTemplate(newgame_bonuses_cont, "locked")
 			new_btn.set_locked(locked[bonus_name])
 		update_bonus_btns()
+	else:
+		newgame_bonuses_node.hide()
+	NGPButton.pressed = newgame_bonuses_node.visible
+
+func switch_ng_bonuses():
+	newgame_bonuses_node.visible = !newgame_bonuses_node.visible
 
 func bonus_toggled(pressed, bonus):
 	if pressed:
@@ -267,20 +277,20 @@ func update_bonus_points_text():
 
 func select_preset(val):
 	if val == 'custom':
-		$NewGamePanel/PresetContainer.visible = false
-		$NewGamePanel/RichTextLabel.visible = false
-		$NewGamePanel/SettingsLabel.visible = true
-		$NewGamePanel/ScrollContainer.visible = true
-		$NewGamePanel/Settings3.visible = true
-		$NewGamePanel/BackButton.visible = true
+		newgame_node.get_node("PresetContainer").visible = false
+		newgame_node.get_node("RichTextLabel").visible = false
+		newgame_node.get_node("SettingsLabel").visible = true
+		newgame_node.get_node("ScrollContainer").visible = true
+		newgame_node.get_node("Settings3").visible = true
+		newgame_node.get_node("BackButton").visible = true
 		return
 	
-	for nd in $NewGamePanel/PresetContainer/VBoxContainer.get_children():
+	for nd in newgame_node.get_node("PresetContainer/VBoxContainer").get_children():
 		nd.pressed = (nd.name == val)
 	
 	var data = starting_presets.preset_data[val]
 	
-	$NewGamePanel/RichTextLabel.bbcode_text = tr(data.descript)
+	newgame_node.get_node("RichTextLabel").bbcode_text = tr(data.descript)
 	for arg in data.args:
 		ResourceScripts.game_globals.set(arg, data.args[arg])
 	
@@ -288,29 +298,29 @@ func select_preset(val):
 
 
 func start_preset_update():
-	input_handler.ClearContainer($NewGamePanel/Settings)
+	input_handler.ClearContainer(newgame_node.get_node("Settings"))
 	for i in settingarray:
-		var newbutton = input_handler.DuplicateContainerTemplate($NewGamePanel/Settings)
+		var newbutton = input_handler.DuplicateContainerTemplate(newgame_node.get_node("Settings"))
 		newbutton.get_node("Label").text = tr("NEWGAMESETTING"+i.to_upper())
 		newbutton.pressed = input_handler.globalsettings[i]
 		globals.connecttexttooltip(newbutton, tr("SETTING"+i.to_upper() + '_DESCRIPT'))
 #		globals.connecttexttooltip(newbutton.get_node("Label"), tr("SETTING"+i.to_upper() + '_DESCRIPT'))
 		newbutton.connect('pressed', self, 'session_setting', [i])
-	input_handler.ClearContainer($NewGamePanel/ScrollContainer/Settings2)
+	input_handler.ClearContainer(newgame_node.get_node("ScrollContainer/Settings2"))
 	for i in settingarray2:
-		var newbutton = input_handler.DuplicateContainerTemplate($NewGamePanel/ScrollContainer/Settings2)
+		var newbutton = input_handler.DuplicateContainerTemplate(newgame_node.get_node("ScrollContainer/Settings2"))
 		newbutton.get_node("Label").text = tr("NEWGAMESETTING"+i.trim_prefix('diff_').to_upper())
 		newbutton.pressed = ResourceScripts.game_globals.get(i)
 		globals.connecttexttooltip(newbutton, tr("SETTING"+i.trim_prefix('diff_').to_upper() + '_DESCRIPT'))
 #		globals.connecttexttooltip(newbutton.get_node("Label"), tr("SETTING"+i.trim_prefix('diff_').to_upper() + '_DESCRIPT'))
 		newbutton.connect('pressed', self, 'gameplay_setting', [i])
-	input_handler.ClearContainer($NewGamePanel/Settings3, ['label', 'button'])
+	input_handler.ClearContainer(newgame_node.get_node("Settings3"), ['label', 'button'])
 	for i in settingarray3:
-		var newbutton = input_handler.DuplicateContainerTemplate($NewGamePanel/Settings3, 'label')
+		var newbutton = input_handler.DuplicateContainerTemplate(newgame_node.get_node("Settings3"), 'label')
 		newbutton.text = tr("NEWGAMESETTING" + i.trim_prefix('diff_').to_upper())
 		globals.connecttexttooltip(newbutton, tr("SETTING"+i.trim_prefix('diff_').to_upper() + '_DESCRIPT'))
 		
-		newbutton = input_handler.DuplicateContainerTemplate($NewGamePanel/Settings3, 'button')
+		newbutton = input_handler.DuplicateContainerTemplate(newgame_node.get_node("Settings3"), 'button')
 		newbutton.get_node('Label').text = tr(('diff_' + ResourceScripts.game_globals.get(i)).to_upper())
 		newbutton.get_node('LArr').connect('pressed', self, 'change_preset_value', [i, -1] )
 		newbutton.get_node('RArr').connect('pressed', self, 'change_preset_value', [i, 1] )
@@ -319,10 +329,10 @@ func start_preset_update():
 	if ResourceScripts.game_globals.skip_prologue:
 		data_materials = starting_presets.advanced_preset.materials
 	if data_materials.size() > 0:
-		input_handler.ClearContainer($NewGamePanel/Materials)
+		input_handler.ClearContainer(newgame_node.get_node("Materials"))
 		for i in data_materials:
 			var item = Items.materiallist[i]
-			var newbutton = input_handler.DuplicateContainerTemplate($NewGamePanel/Materials)
+			var newbutton = input_handler.DuplicateContainerTemplate(newgame_node.get_node("Materials"))
 			newbutton.get_node("TextureRect").texture = Items.materiallist[i].icon
 			newbutton.get_node("Label").text = str(data_materials[i])
 			globals.connectmaterialtooltip(newbutton, item)
@@ -330,7 +340,7 @@ func start_preset_update():
 	var data_gold = starting_presets.preset_data[ResourceScripts.game_globals.diff_money].gold
 	if ResourceScripts.game_globals.skip_prologue:
 		data_gold = starting_presets.advanced_preset.gold
-	$NewGamePanel/Gold/Label.text = str(data_gold)
+	newgame_node.get_node("Gold/Label").text = str(data_gold)
 
 
 
