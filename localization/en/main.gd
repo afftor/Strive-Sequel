@@ -5277,6 +5277,8 @@ Time Flow""",
 	ACHIBONUS_CRAFTSMAN_DESC = "Start with forge, tailor and alchemy level 1 upgrades",
 	ACHIBONUS_ROOMS = "Boarding house",
 	ACHIBONUS_ROOMS_DESC = "Start with room level 1 upgrade",
+	ACHIBONUS_LITERATE = "Literate",
+	ACHIBONUS_LITERATE_DESC = "Start with Literacy trait",
 	INTRODIALOGUE = """Twelve years have passed since monarchy was overthrown in Aliron Kingdom. Free of the previous reign, its capital Aliron has become a center of society and cultural life, giving even the lowest a chance to become a person of power and influence assuming they are capable...
 
 You are one of the people who managed to get there just in time to secure an estate recently freed from old ownership. The only issue is that its sale price is beyond your capability. With no other option to start a new life, you've taken a gigantic loan to achieve your goal. You've become an owner of a small piece of land with a dilapidated mansion on it.""",

@@ -121,6 +121,10 @@ func get_subs(achi_name):
 	return list
 
 
+func has_achimnt(achi_name):
+	return input_handler.progress_data['achievements'].has(achi_name)
+
+
 func get_all_points():
 	return input_handler.progress_data['achi_points']
 #	var points = 0
@@ -240,4 +244,8 @@ func prep_craftsman():
 
 func prep_rooms():
 	ResourceScripts.game_res.level_up_upgrade("rooms", 1)
+
+func prep_literate():
+	var character = ResourceScripts.game_party.get_master()
+	character.add_trait('literacy')
 

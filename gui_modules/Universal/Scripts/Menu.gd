@@ -214,7 +214,9 @@ func open_newgame():
 	max_bonus_points = input_handler.achievements.get_all_points()
 	newgame_bonuses.clear()
 	var NGPButton = newgame_node.get_node("NGPButton")
-	NGPButton.visible = !bonuses.empty() and max_bonus_points > 0
+	NGPButton.visible = (!bonuses.empty()
+		and max_bonus_points > 0
+		and input_handler.achievements.has_achimnt("act1"))
 	if NGPButton.visible:
 		cur_bonus_points = 0
 		update_bonus_points_text()
