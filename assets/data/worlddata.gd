@@ -736,7 +736,7 @@ var fixed_location_options = { #override serialized data
 		{
 			text = tr("ALIRON1"), 
 			reqs = [
-				{code = 'value_check', type = 'event_seen', check = false, value = 'daisy_meet'},
+				{type = 'event_seen', check = false, value = 'daisy_meet'},
 				{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start', state = false}, 
 				{type = "date", operant = 'gte', value = 3}
 			], 
@@ -745,7 +745,7 @@ var fixed_location_options = { #override serialized data
 		{
 			text = tr("ALIRON2"), 
 			reqs = [
-				{code = 'value_check', type = 'event_seen', check = false, value = 'reim_encounter'},
+				{type = 'event_seen', check = false, value = 'reim_encounter'},
 				{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage1'}
 			], 
 			args = [{code = 'start_event', data = 'reim_encounter', args = []}]
@@ -753,7 +753,7 @@ var fixed_location_options = { #override serialized data
 		{
 			text = tr("ALIRON3"), 
 			reqs = [
-				{code = 'value_check', type = 'event_seen', check = false, value = 'fred_intro'},
+				{type = 'event_seen', check = false, value = 'fred_intro'},
 				{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage2'}
 			], 
 			args = [{code = 'start_event', data = 'fred_intro', args = []}]
@@ -761,7 +761,7 @@ var fixed_location_options = { #override serialized data
 		{
 			text = tr("ALIRON4"), 
 			reqs = [
-				{code = 'value_check', type = 'event_seen', check = false, value = 'fred_bribe_take'},
+				{type = 'event_seen', check = false, value = 'fred_bribe_take'},
 				{type = 'decision', value = 'fred_bribe_taken', check = true}
 			], 
 			args = [{code = 'start_event', data = 'fred_bribe_take', args = []}]
@@ -1566,7 +1566,7 @@ var fixed_location_options = { #override serialized data
 	quest_cali_cave_location = [
 		{
 			text = tr("QUEST_CALI_CAVE_LOCATION1"), 
-			reqs = [{code = 'value_check', type = 'event_seen', check = false, value = 'got_cali_1_1'}],
+			reqs = [{type = 'event_seen', check = false, value = 'got_cali_1_1'}],
 			args = [{code = 'start_event', data = 'cali_intro_1', args = []}]
 		},
 	],
@@ -1592,9 +1592,9 @@ var fixed_location_options = { #override serialized data
 			text = tr("QUEST_FINAL_OPERATION_LOCATION1"), 
 			reqs = [ 
 				{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},
-				{code = 'value_check', type = 'decision', value = 'BlockSearch', check = false},
-				{code = 'value_check', type = 'decision', value = 'AllowSearch', check = true}, 
-				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LOOKING_FOR_PRINCESS_6'},
+				{type = 'decision', value = 'BlockSearch', check = false},
+				{type = 'decision', value = 'AllowSearch', check = true}, 
+				{type = 'dialogue_seen', check = false, value = 'LOOKING_FOR_PRINCESS_6'},
 				{type = 'has_material', material = 'princess_bracelet', operant = 'lt', value = 1}
 			],
 			args = [{code = 'start_event', data = 'looking_for_princess_3', args = []}]
@@ -1603,9 +1603,9 @@ var fixed_location_options = { #override serialized data
 			text = tr("QUEST_FINAL_OPERATION_LOCATION2"), 
 			reqs = [ 
 				{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},
-				{code = 'value_check', type = 'decision', value = 'BlockSearch', check = false}, 
-				{code = 'value_check', type = 'decision', value = 'AllowSearch', check = true}, 
-				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'LOOKING_FOR_PRINCESS_6'},
+				{type = 'decision', value = 'BlockSearch', check = false}, 
+				{type = 'decision', value = 'AllowSearch', check = true}, 
+				{type = 'dialogue_seen', check = true, value = 'LOOKING_FOR_PRINCESS_6'},
 				{type = 'has_material', material = 'princess_bracelet', operant = 'lt', value = 1}
 			],
 			args = [{code = 'start_event', data = 'looking_for_princess_5', args = []}]
@@ -1621,14 +1621,14 @@ var fixed_location_options = { #override serialized data
 	quest_gryphon_cave_location = [
 		{
 			text = tr("QUEST_GRYPHON_CAVE_LOCATION1"), 
-			reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_CAVE_START'}],
+			reqs = [{type = 'dialogue_seen', check = false, value = 'GRYPHON_CAVE_START'}],
 			args = [{code = 'start_event', data = 'gryphon_cave_start', args = []}]
 		},
 	],
 	quest_ritual_location = [
 		{
 			text = tr("QUEST_MAE_SEARCH"), 
-			reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'PRE_RITUAL_2_1'}],
+			reqs = [{type = 'dialogue_seen', check = false, value = 'PRE_RITUAL_2_1'}],
 			args = [{code = 'start_event', data = 'pre_ritual_1', args = []}]
 		},
 		
@@ -1688,16 +1688,16 @@ var fixed_location_options = { #override serialized data
 			text = tr("QUEST_TEMPLE_LOCATION1"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'temple_quest', stage = 'stage1', state = true},
-				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'TEMPLE_2_2', },
-				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'TEMPLE_2_1'}],
+				{type = 'dialogue_seen', check = false, value = 'TEMPLE_2_2', },
+				{type = 'dialogue_seen', check = false, value = 'TEMPLE_2_1'}],
 			args = [{code = 'start_event', data = 'temple_start', args = []}]
 		},
 		{
 			text = tr("QUEST_TEMPLE_LOCATION2"), 
 			reqs = [
 				
-				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'TEMPLE_2_2', },
-				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'TEMPLE_2_1', orflag = true},
+				{type = 'dialogue_seen', check = true, value = 'TEMPLE_2_2', },
+				{type = 'dialogue_seen', check = true, value = 'TEMPLE_2_1', orflag = true},
 				{type = 'active_quest_stage', value = 'temple_quest', stage = 'stage1', state = true},],
 			args = [{code = 'start_event', data = 'temple_6', args = []}]
 		},

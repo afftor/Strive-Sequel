@@ -2816,8 +2816,8 @@ var dungeons = {
 		area = 'mountains',
 		travel_time = [1,1],
 		scripteventdata = [
-			{trigger = 'enter', args = 'old_temple_start', reqs = [{code = 'active_quest_stage', value = 'dking_hara_quest', stage = 'temple'}]},
-			{trigger = 'dungeon_complete', args = 'old_temple_finish', reqs = [{code = 'active_quest_stage', value = 'dking_hara_quest', stage = 'temple'}]}]
+			{trigger = 'enter', args = 'old_temple_start', reqs = [{type = 'active_quest_stage', value = 'dking_hara_quest', stage = 'temple'}]},
+			{trigger = 'dungeon_complete', args = 'old_temple_finish', reqs = [{type = 'active_quest_stage', value = 'dking_hara_quest', stage = 'temple'}]}]
 	},
 	quest_molten_grounds = {
 		code = 'quest_molten_grounds',
@@ -2856,7 +2856,7 @@ var dungeons = {
 		area = 'mountains',
 		travel_time = [1,1],
 		scripteventdata = [
-			{trigger = 'dungeon_complete', args = 'capacitor_molten_start', reqs = [{code = 'active_quest_stage', value = 'hara_scales_quest', stage = 'get_cap'}]}]
+			{trigger = 'dungeon_complete', args = 'capacitor_molten_start', reqs = [{type = 'active_quest_stage', value = 'hara_scales_quest', stage = 'get_cap'}]}]
 	},
 	quest_whisky_crash = {
 		code = 'quest_whisky_crash',
@@ -3030,7 +3030,7 @@ var dungeons = {
 		area = 'forests',
 		travel_time = [1,1],
 		scripteventdata = [
-		{trigger = 'dungeon_complete', event = 'custom_event', args = 'lilia_finale_3', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LILIA_FINALE_WORKERS_2'}]}]
+		{trigger = 'dungeon_complete', event = 'custom_event', args = 'lilia_finale_3', reqs = [{type = 'dialogue_seen', check = false, value = 'LILIA_FINALE_WORKERS_2'}]}]
 	},
 	quest_lilia_dungeon_grove = {
 		code = 'quest_lilia_dungeon_grove',
@@ -3135,7 +3135,7 @@ var dungeons = {
 		area = 'forests',
 		travel_time = [1,1],
 		scripteventdata = [
-		{trigger = 'dungeon_complete', event = 'custom_event', args = 'lilith_finish_new_dungeon', reqs = [{code = 'active_quest_stage', value = 'lilith_patron_quest', stage = 'stage15'}]}]
+		{trigger = 'dungeon_complete', event = 'custom_event', args = 'lilith_finish_new_dungeon', reqs = [{type = 'active_quest_stage', value = 'lilith_patron_quest', stage = 'stage15'}]}]
 	},
 	quest_ashen_ridge = {
 		code = 'quest_ashen_ridge',
@@ -3240,7 +3240,7 @@ var dungeons = {
 		area = 'plains',
 		travel_time = [1,1],
 		scripteventdata = [
-			{trigger = 'enter', event = 'custom_event', args = 'ashen_ridge_1', reqs = [{code = 'active_quest_stage', value = 'anastasia_quest', stage = 'stage3'}]},
+			{trigger = 'enter', event = 'custom_event', args = 'ashen_ridge_1', reqs = [{type = 'active_quest_stage', value = 'anastasia_quest', stage = 'stage3'}]},
 			{trigger = 'dungeon_complete', event = 'custom_event', args = 'ashen_ridge_3', reqs = []}
 		]
 	},
@@ -3347,7 +3347,7 @@ var dungeons = {
 		area = 'plains',
 		travel_time = [1,1],
 		scripteventdata = [
-			{trigger = 'enter', event = 'custom_event', args = 'ana_fort_1', reqs = [{code = 'active_quest_stage', value = 'anastasia_quest_2', stage = 'stage10'}]},
+			{trigger = 'enter', event = 'custom_event', args = 'ana_fort_1', reqs = [{type = 'active_quest_stage', value = 'anastasia_quest_2', stage = 'stage10'}]},
 			{trigger = 'dungeon_complete', event = 'custom_event', args = 'ana_fort_3', reqs = []}
 		]
 	},
