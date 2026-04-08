@@ -731,23 +731,25 @@ func count_action_consent(action, giver, taker):
 #		taker_text += "{color=green|Horny}\n"
 	
 	if givers.size() > 0 && takers.size() > 0 && !giver.person.is_master() && !taker.person.is_master():
-		var relationship = ResourceScripts.game_party._get_data(giver.id, taker.id).status
-		match relationship:
-			'rivals':
-				giver_consent -= 1
-				taker_consent -= 1
-				giver_text += "{color=red|Is a Rival}\n"
-				taker_text += "{color=red|Is a Rival}\n"
-			'freelovers':
-				giver_consent += 1
-				taker_consent += 1
-				giver_text += "{color=green|Is a Paramour}\n"
-				taker_text += "{color=green|Is a Paramour}\n"
-			'lovers':
-				giver_consent += 2
-				taker_consent += 2
-				giver_text += "{color=green|Is a Lover}\n"
-				taker_text += "{color=green|Is a Lover}\n"
+		var reldata = ResourceScripts.game_party._get_data(giver.id, taker.id)
+		if reldata != null:
+			var relationship = reldata.status
+			match relationship:
+				'rivals':
+					giver_consent -= 1
+					taker_consent -= 1
+					giver_text += "{color=red|Is a Rival}\n"
+					taker_text += "{color=red|Is a Rival}\n"
+				'freelovers':
+					giver_consent += 1
+					taker_consent += 1
+					giver_text += "{color=green|Is a Paramour}\n"
+					taker_text += "{color=green|Is a Paramour}\n"
+				'lovers':
+					giver_consent += 2
+					taker_consent += 2
+					giver_text += "{color=green|Is a Lover}\n"
+					taker_text += "{color=green|Is a Lover}\n"
 		
 		var relatives = ResourceScripts.game_party.checkifrelatives(giver.id, taker.id)
 		if relatives == true:
