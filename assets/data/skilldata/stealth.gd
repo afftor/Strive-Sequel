@@ -7,13 +7,13 @@ var skills = {
 		icon = "res://assets/images/iconsskills/icon_eyes.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['buff','support', 'selfbuf'],
+		tags = ['buff','support', 'selfbuf', 'stealth_casting', 'instant'],
 		reqs = [
 			{code = 'gear_equiped', param = 'geartype', value = 'heavy', check = false},
 			],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_t_hide2'})], 
-		cost = {},
+		effects = [Effectdata.rebuild_template({effect = 'e_t_hide2', duration = 3})], 
+		cost = {mp = 4},
 		charges = 0,
 		combatcooldown = 0,
 		cooldown = 0,
@@ -39,7 +39,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/skill_dip_poison.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['damage','ads', 'damage_spot'],
+		tags = ['damage','ads', 'damage_spot', 'stealth_casting'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'poison', duration = 4})],
@@ -62,7 +62,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/skill_backkick.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['damage', 'debuff', 'ads', 'damage_spot'],
+		tags = ['damage', 'debuff', 'ads', 'damage_spot', 'stealth_casting'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'silence', duration = 4})], 
@@ -85,7 +85,7 @@ var skills = {
 		icon = 'res://assets/images/iconsskills/assassinate.png',
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['damage', 'damage_spot'],
+		tags = ['damage', 'damage_spot', 'stealth_casting'],
 		reqs = [],
 		targetreqs = [],
 		effects = [], 
@@ -116,7 +116,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/windblade.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['damage', 'damage_spot'],
+		tags = ['damage', 'damage_spot', 'stealth_casting'],
 		reqs = [],
 		targetreqs = [],
 		effects = [], 
@@ -148,7 +148,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/Trap.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['debuff', 'trap'],
+		tags = ['debuff', 'trap', 'stealth_casting'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_t_trap'})], 
@@ -173,7 +173,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/skill_bolt_trap.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['debuff', 'trap'],
+		tags = ['debuff', 'trap', 'stealth_casting'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_t_bolttrap', push_value = true})], 
@@ -197,10 +197,70 @@ var effects = {
 	e_t_hide2 = {
 		type = 'temp_s',
 		target = 'target',
+		tick_event = variables.TR_TURN_GET,
 		rem_event = [variables.TR_HIT, variables.TR_COMBAT_F, variables.TR_DMG],
 		stack = 'hide',
 		tags = ['buff', 'hide'],
 		buffs = ['b_hide'],
+		statchanges = {armorpenetration = 20}, 
+		sub_effects = [
+			{
+				type = 'trigger',
+				conditions = [{type = 'skill', value = ['tags', 'hasno', 'stealth_casting'] }],
+				trigger = [variables.TR_CAST],
+				req_skill = true,
+				args = {
+					skill = {obj = 'skill', func = 'eq'},
+					caster = {obj = 'caster', func = 'eq'},
+					target = {obj = 'target', func = 'eq'},
+				},
+				sub_effects = [
+					{type = 'oneshot', target = 'self', execute = 'remove_parent'}
+				],
+			},
+			{
+				type = 'trigger',
+				conditions = [
+					{type = 'skill', value = ['tags', 'hasno', 'aoe'] },
+					{type = 'skill', value = ['tags', 'has', 'damage'] },
+					],
+				trigger = [variables.TR_HIT],
+				req_skill = true,
+				args = {
+					skill = {obj = 'skill', func = 'eq'},
+					caster = {obj = 'caster', func = 'eq'},
+					target = {obj = 'target', func = 'eq'},
+				},
+				sub_effects = [
+					{
+						type = 'oneshot',
+						target = 'skill',
+						atomic = [],
+					}
+				],
+			},
+			{
+				type = 'trigger',
+				conditions = [
+					{type = 'skill', value = ['tags', 'has', 'aoe'] },
+					{type = 'skill', value = ['tags', 'has', 'damage'] },
+					],
+				trigger = [variables.TR_HIT],
+				req_skill = true,
+				args = {
+					skill = {obj = 'skill', func = 'eq'},
+					caster = {obj = 'caster', func = 'eq'},
+					target = {obj = 'target', func = 'eq'},
+				},
+				sub_effects = [
+					{
+						type = 'oneshot',
+						target = 'skill',
+						atomic = [],
+					}
+				],
+			},
+		],
 	},
 	e_t_trap = {
 		type = 'temp_s',

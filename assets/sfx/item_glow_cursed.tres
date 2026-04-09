@@ -1,0 +1,152 @@
+[gd_resource type="ShaderMaterial" load_steps=18 format=2]
+
+[sub_resource type="Shader" id=17]
+code = "shader_type canvas_item;
+
+uniform float outline_width = 2.0;
+uniform vec4 outline_color : hint_color;
+uniform float opacity = 1.0;
+uniform float speed = 0.1;
+uniform float speed_2 = 0.1;
+uniform float speed_3 = 0.1;
+
+const vec2 dir1 = vec2(0.3, 1.0);
+const vec2 dir2 = vec2(-0.3, 1.0);
+const vec2 dir3 = vec2(-0.1, -0.8);
+
+const float PI = 3.14;
+const float EPS = 1.0/512.0;
+
+uniform sampler2D tex_main;
+uniform sampler2D tex_main_2;
+uniform sampler2D tex_mask_1;
+uniform sampler2D tex_mask_2;
+uniform sampler2D tex_mask_3;
+uniform sampler2D tex_mask_4;
+uniform sampler2D tex_mask_5;
+uniform sampler2D tex_mask_6;
+
+
+vec3 border(vec3 val) {
+	vec3 res = (val + 1.0) / 3.0 - 0.5;
+	res = res * 10.0;
+	return clamp(res, 0.0, 1.0);
+}
+
+
+void fragment() {
+	vec4 col = texture(TEXTURE, UV);
+	vec2 ps = TEXTURE_PIXEL_SIZE;
+	vec3 shadow = vec3(1.0);
+	float time_mod = TIME * speed;
+	float time_mod_2 = TIME * speed_2;
+	float time_mod_3 = TIME * speed_3;
+	
+	vec2 pos1 = UV + time_mod * dir1;
+	vec4 col1 = 1.0 - sqrt(abs(texture(tex_main, pos1) - texture(tex_main_2, pos1)));
+	vec2 pos2 = UV + time_mod * dir2;
+	vec4 col2 = 1.0 - sqrt(abs(texture(tex_main, pos2) - texture(tex_main_2, pos2)));
+	vec2 pos3 = UV + time_mod * dir3;
+	vec4 col3 = 1.0 - sqrt(abs(texture(tex_main, pos3) - texture(tex_main_2, pos3)));
+	
+	vec2 pos1_1 = (UV - vec2(0.5)) * 0.7 * mat2(vec2(cos(time_mod_2), sin(time_mod_2)), vec2(-sin(time_mod_2), cos(time_mod_2))) + vec2(0.5);
+	vec2 pos1_2 = (UV - vec2(0.5)) * 0.7 * mat2(vec2(cos(time_mod_2), -sin(time_mod_2)), vec2(sin(time_mod_2), cos(time_mod_2))) + vec2(0.5);
+	shadow.x = texture(tex_mask_1, pos1_1).x * abs(sin(time_mod_3)) + texture(tex_mask_2, pos1_2).x * abs(cos(time_mod_3));
+	shadow.y = texture(tex_mask_3, pos1_1).x * abs(sin(time_mod_3)) + texture(tex_mask_4, pos1_2).x * abs(cos(time_mod_3));
+	shadow.z = texture(tex_mask_5, pos1_1).x * abs(sin(time_mod_3)) + texture(tex_mask_6, pos1_2).x * abs(cos(time_mod_3));
+	shadow = border(shadow);
+	shadow = shadow * outline_color.rgb;
+
+	vec4 shadow1 = vec4(vec3(col1.r, col2.r, col3.r) * shadow, 1.0 - (1.0 - shadow.x) * (1.0 - shadow.y) * (1.0 - shadow.z));
+	shadow1.a *= opacity;
+
+	COLOR = mix(shadow1, col, col.a);
+}"
+
+[sub_resource type="OpenSimplexNoise" id=6]
+octaves = 4
+period = 100.0
+
+[sub_resource type="NoiseTexture" id=7]
+seamless = true
+noise = SubResource( 6 )
+
+[sub_resource type="OpenSimplexNoise" id=15]
+seed = 50
+octaves = 5
+period = 100.0
+
+[sub_resource type="NoiseTexture" id=16]
+seamless = true
+noise = SubResource( 15 )
+
+[sub_resource type="OpenSimplexNoise" id=14]
+seed = 15
+octaves = 2
+period = 100.0
+persistence = 0.8
+lacunarity = 2.5
+
+[sub_resource type="NoiseTexture" id=9]
+seamless = true
+noise = SubResource( 14 )
+
+[sub_resource type="OpenSimplexNoise" id=10]
+seed = 100
+
+[sub_resource type="NoiseTexture" id=11]
+seamless = true
+noise = SubResource( 10 )
+
+[sub_resource type="OpenSimplexNoise" id=18]
+seed = 25
+octaves = 2
+period = 100.0
+persistence = 0.8
+lacunarity = 2.5
+
+[sub_resource type="NoiseTexture" id=19]
+seamless = true
+noise = SubResource( 18 )
+
+[sub_resource type="OpenSimplexNoise" id=20]
+seed = 150
+
+[sub_resource type="NoiseTexture" id=21]
+seamless = true
+noise = SubResource( 20 )
+
+[sub_resource type="OpenSimplexNoise" id=22]
+seed = 5
+octaves = 2
+period = 100.0
+persistence = 0.8
+lacunarity = 2.5
+
+[sub_resource type="NoiseTexture" id=23]
+seamless = true
+noise = SubResource( 22 )
+
+[sub_resource type="OpenSimplexNoise" id=24]
+seed = 120
+
+[sub_resource type="NoiseTexture" id=25]
+seamless = true
+noise = SubResource( 24 )
+
+[resource]
+shader = SubResource( 17 )
+shader_param/outline_width = 30.0
+shader_param/outline_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 0.5
+shader_param/speed = 0.1
+shader_param/speed_2 = 0.5
+shader_param/speed_3 = 0.2
+shader_param/tex_main = SubResource( 7 )
+shader_param/tex_main_2 = SubResource( 16 )
+shader_param/tex_mask_1 = SubResource( 9 )
+shader_param/tex_mask_2 = SubResource( 11 )
+shader_param/tex_mask_3 = SubResource( 19 )
+shader_param/tex_mask_4 = SubResource( 21 )
+shader_param/tex_mask_5 = SubResource( 23 )
+shader_param/tex_mask_6 = SubResource( 25 )

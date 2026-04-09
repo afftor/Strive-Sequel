@@ -400,14 +400,6 @@ var traits = {
 		icon = null,
 		effects = ['valkyrie_spear_bonus'],
 	},
-	autohide = {
-		code = 'autohide',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = ['e_tr_hide'],
-	},
 	assassin = {
 		code = 'assassin',
 		name = '',
