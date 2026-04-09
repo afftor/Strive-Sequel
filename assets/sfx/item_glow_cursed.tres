@@ -3,7 +3,6 @@
 [sub_resource type="Shader" id=17]
 code = "shader_type canvas_item;
 
-uniform float outline_width = 2.0;
 uniform vec4 outline_color : hint_color;
 uniform float opacity = 1.0;
 uniform float speed = 0.1;
@@ -136,7 +135,6 @@ noise = SubResource( 24 )
 
 [resource]
 shader = SubResource( 17 )
-shader_param/outline_width = 30.0
 shader_param/outline_color = Color( 1, 0, 0, 1 )
 shader_param/opacity = 0.5
 shader_param/speed = 0.1
