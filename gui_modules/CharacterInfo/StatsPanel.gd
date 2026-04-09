@@ -166,6 +166,7 @@ var sources = {
 	guild_trainer = tr("METRICS_SOURCE_GUILD_TRAINER") ,
 	william = tr("METRICS_SOURCE_WILLIAM"),
 	unknown = tr("METRICS_SOURCE_UNKNOWN"),
+	master = tr("METRICS_SOURCE_YOU"),
 }
 
 

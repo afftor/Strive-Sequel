@@ -178,6 +178,12 @@ func get_equiped_items():
 	for id in gear.values():
 		if id == null:
 			continue
+		if !ResourceScripts.game_res.items.has(id):
+			print("Warning - an item is missing where it shouldn't, clearing item slot...")
+			for i in gear.keys():
+				if gear[i] == id:
+					gear[i] = null
+			continue
 		var item = ResourceScripts.game_res.items[id]
 		if !res.has(item):
 			res.push_back(item)

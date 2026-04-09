@@ -1,4 +1,4 @@
-[gd_scene load_steps=214 format=2]
+[gd_scene load_steps=208 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=2]
@@ -18,15 +18,13 @@
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Slave_Info.tres" type="Theme" id=16]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveInfoModule.gd" type="Script" id=17]
 [ext_resource path="res://assets/images/traits/bowextradamage.png" type="Texture" id=18]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/traitpanel/scrollbar_traits_detail_hover.png" type="Texture" id=19]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HScrollBar.tres" type="Theme" id=19]
 [ext_resource path="res://assets/Textures_v2/ClockModule/icon_money_timer.png" type="Texture" id=20]
 [ext_resource path="res://assets/Textures_v2/CITY/Icons/icon_reputationshop_reputation.png" type="Texture" id=21]
 [ext_resource path="res://assets/images/iconstraits/grey.png" type="Texture" id=22]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/traitpanel/scrollbar_traits_detail.png" type="Texture" id=23]
 [ext_resource path="res://assets/images/iconstraits/heart.png" type="Texture" id=24]
 [ext_resource path="res://assets/images/iconstraits/cross.png" type="Texture" id=25]
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_master.png" type="Texture" id=26]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/traitpanel/scrollbar_traits.png" type="Texture" id=27]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/traitpanel/button_traits_universal.png" type="Texture" id=28]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/SlaveBodyModule_panel.tres" type="StyleBox" id=29]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=30]
@@ -208,29 +206,6 @@ region_rect = Rect2( 0, 0, 194, 58 )
 [sub_resource type="StyleBoxTexture" id=15]
 texture = ExtResource( 112 )
 region_rect = Rect2( 0, 0, 296, 410 )
-
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 23 )
-region_rect = Rect2( 0, 0, 64, 16 )
-
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 19 )
-region_rect = Rect2( 0, 0, 64, 16 )
-
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 27 )
-region_rect = Rect2( 0, 0, 940, 26 )
-
-[sub_resource type="Theme" id=5]
-HScrollBar/icons/decrement = null
-HScrollBar/icons/decrement_highlight = null
-HScrollBar/icons/increment = null
-HScrollBar/icons/increment_highlight = null
-HScrollBar/styles/grabber = SubResource( 2 )
-HScrollBar/styles/grabber_highlight = SubResource( 3 )
-HScrollBar/styles/grabber_pressed = SubResource( 3 )
-HScrollBar/styles/scroll = SubResource( 4 )
-HScrollBar/styles/scroll_focus = null
 
 [sub_resource type="StyleBoxTexture" id=16]
 texture = ExtResource( 76 )
@@ -775,15 +750,18 @@ text = "Lorem Ipsum
 anchor_top = 0.889
 anchor_right = 1.102
 anchor_bottom = 1.0
-margin_left = 296.0
-margin_top = -7.18805
-margin_right = 0.177979
-margin_bottom = 3.0
-theme = SubResource( 5 )
+margin_left = 284.0
+margin_top = -18.188
+margin_right = 9.17798
+margin_bottom = -8.0
+theme = ExtResource( 19 )
 scroll_vertical_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SlaveInfoModule/TraitContainer"]
+margin_right = 674.0
+size_flags_horizontal = 3
 custom_constants/separation = 5
+alignment = 1
 
 [node name="Button" type="TextureButton" parent="SlaveInfoModule/TraitContainer/HBoxContainer"]
 visible = false
@@ -1507,9 +1485,9 @@ clip_text = true
 
 [node name="TraitsLabel" type="Label" parent="SlaveInfoModule"]
 margin_left = 288.0
-margin_top = 575.0
+margin_top = 568.0
 margin_right = 944.0
-margin_bottom = 607.0
+margin_bottom = 600.0
 text = "Traits"
 align = 1
 
