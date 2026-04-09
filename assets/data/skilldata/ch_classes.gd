@@ -1229,19 +1229,19 @@ var effects = {
 		statchanges = {speed = 10},
 	},
 	
-	e_tr_hide = {
-		type = 'trigger',
-		trigger = [variables.TR_COMBAT_S],
-		conditions = [{type = 'owner', value = [
-			{code = 'gear_equiped', param = 'geartype', value = 'medium', check = false},
-			{orflag = true, code = 'has_status', status = 'assassin_hide', check = true},
-			{code = 'gear_equiped', param = 'geartype', value = 'heavy', check = false},
-		]}],
-		atomic = [],
-		buffs = [],
-		req_skill = false,
-		sub_effects = ['e_t_hide']
-	},
+#	e_tr_hide = {
+#		type = 'trigger',
+#		trigger = [variables.TR_COMBAT_S],
+#		conditions = [{type = 'owner', value = [
+#			{code = 'gear_equiped', param = 'geartype', value = 'medium', check = false},
+#			{orflag = true, code = 'has_status', status = 'assassin_hide', check = true},
+#			{code = 'gear_equiped', param = 'geartype', value = 'heavy', check = false},
+#		]}],
+#		atomic = [],
+#		buffs = [],
+#		req_skill = false,
+#		sub_effects = ['e_t_hide']
+#	},
 	
 	e_tr_deathknight = {
 		type = 'trigger',

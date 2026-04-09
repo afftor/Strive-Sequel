@@ -733,7 +733,7 @@ var professions = {
 		showupreqs = [],
 		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 3}],
 		statchanges = {critchance = 3, speed = 5, evasion = 10, chg_dexterity_max = 1, mastery_point_combat = 2, mastery_stealth = 1},
-		traits = ['medium_armor', 'autohide'],
+		traits = ['medium_armor'],
 		skills = [],
 		combatskills = [],
 		conflict_classes = [],

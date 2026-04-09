@@ -822,17 +822,21 @@ func CheckMeleeRange(group, hide_ignore = false): #Check if group front row is s
 	match group:
 		'enemy':
 			for pos in range(7,10):
-				if battlefield[pos] == null:continue
+				if battlefield[pos] == null:
+					continue
 				var tchar = get_char_by_pos(pos)
-				if tchar.defeated == true: continue
-				if tchar.has_status('hide') and !hide_ignore: continue
+				if tchar.defeated == true: 
+					continue
+#				if tchar.has_status('hide') and !hide_ignore: continue
 				counter += 1
 		'ally':
 			for pos in range(1,4):
-				if battlefield[pos] == null:continue
+				if battlefield[pos] == null:
+					continue
 				var tchar = get_char_by_pos(pos)
-				if tchar.defeated == true: continue
-				if tchar.has_status('hide') and !hide_ignore: continue
+				if tchar.defeated == true: 
+					continue
+#				if tchar.has_status('hide') and !hide_ignore: continue
 				counter += 1
 	if counter > 0: rval = true
 	return rval
@@ -1142,8 +1146,8 @@ func get_enemy_targets_all(fighter, ignore_immune = false):
 			var tchar = characters_pool.get_char_by_id(p)
 			if tchar.defeated: 
 				continue
-			if tchar.has_status('hide') and !ignore_immune: 
-				continue
+#			if tchar.has_status('hide') and !ignore_immune: 
+#				continue
 			if tchar.has_status('warded') and !ignore_immune: 
 				continue
 			res.push_back(tchar)
@@ -1152,8 +1156,8 @@ func get_enemy_targets_all(fighter, ignore_immune = false):
 			var tchar = characters_pool.get_char_by_id(p)
 			if tchar.defeated: 
 				continue
-			if tchar.has_status('hide') and !ignore_immune: 
-				continue
+#			if tchar.has_status('hide') and !ignore_immune: 
+#				continue
 			if tchar.has_status('warded') and !ignore_immune: 
 				continue
 			res.push_back(tchar)
@@ -1165,9 +1169,10 @@ func get_enemy_targets_melee(fighter, ignore_immune = false):
 	if fighter.position in range(1, 7):
 		for p in enemygroup.values():
 			var tchar = characters_pool.get_char_by_id(p)
-			if tchar.defeated: continue
-			if tchar.has_status('hide') and !ignore_immune: 
+			if tchar.defeated: 
 				continue
+#			if tchar.has_status('hide') and !ignore_immune: 
+#				continue
 			if CheckMeleeRange('enemy', ignore_immune) and tchar.position > 9: 
 				continue
 			if tchar.has_status('warded') and !ignore_immune: 
@@ -1178,11 +1183,12 @@ func get_enemy_targets_melee(fighter, ignore_immune = false):
 			var tchar = characters_pool.get_char_by_id(p)
 			if tchar.defeated: 
 				continue
-			if tchar.has_status('hide') and !ignore_immune: 
-				continue
+#			if tchar.has_status('hide') and !ignore_immune: 
+#				continue
 			if CheckMeleeRange('ally', ignore_immune) and tchar.position > 3: 
 				continue
-			if tchar.has_status('warded') and !ignore_immune: continue
+			if tchar.has_status('warded') and !ignore_immune: 
+				continue
 			res.push_back(tchar)
 	return res
 
