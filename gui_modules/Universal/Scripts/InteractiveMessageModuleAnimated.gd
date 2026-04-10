@@ -26,6 +26,8 @@ onready var opt_cont_T2 = $BackgroundT2/ScrollContainer/VBoxContainer
 var cur_opt_cont
 var select_blocking_nodes = []
 
+var dialogue_type_exceptions = ["church_event"]
+
 func _ready():
 	$BackgroundT2/BackgroundT2/HideButton.connect("pressed", self, "hide_dialogue")
 	$ShowPanel/ShowButton.connect("pressed", self, "hide_dialogue", ["show"])
@@ -52,7 +54,8 @@ func hide_dialogue(action = "hide"):
 
 func determine_dialogue_type(scene):
 	next_dialogue_type = 1
-	if scene.has("custom_background"):
+	if (scene.has("custom_background")
+			and !dialogue_type_exceptions.has(scene.custom_background)):
 		next_dialogue_type = 2
 	if scene.has("dialogue_type"):
 		next_dialogue_type = scene.dialogue_type
