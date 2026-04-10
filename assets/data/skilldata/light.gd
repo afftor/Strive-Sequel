@@ -189,7 +189,10 @@ var skills = {
 		tags = ['damage', 'aoe', 'light', 'ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_shatter', duration = 3})], 
+		effects = [
+			Effectdata.rebuild_template({effect = 'e_s_shatter', duration = 3}),
+			Effectdata.rebuild_template({trigger = variables.TR_PREHIT, effect = Effectdata.rebuild_remove_effect('hide')})
+		], 
 		cost = {mp = 9},
 		charges = 0,
 		combatcooldown = 2,

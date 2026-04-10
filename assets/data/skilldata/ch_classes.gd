@@ -1169,6 +1169,35 @@ var effects = {
 	e_tr_paladin_3 = Effectdata.rebuild_defvalue_template({target_race = 'undead', tag = 'damage',  value = 0.85}),
 	e_tr_paladin_4 = Effectdata.rebuild_defvalue_template({target_race = 'demon', tag = 'damage',  value = 0.85}),
 	
+	e_tr_rogue = {
+		type = 'trigger',
+		conditions = [],
+		trigger = [variables.TR_KILL],
+		req_skill = true,
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				args = {
+					hp = {obj = 'owner', func = 'stat', stat = 'hpmax'},
+					mp = {obj = 'owner', func = 'stat', stat = 'mpmax'}},
+				atomic = [
+					{type = 'heal', value = [['parent_args', 'hp'], '*', 0.2]},
+					{type = 'mana', value = [['parent_args', 'mp'], '*', 0.2]},
+					],
+			},
+		],
+		buffs = []
+	},
+	e_s_rogue = {
+		type = 'simple',
+		descript = '',
+		conditions = [{code = 'stat',  stat = 'combat_position', value = 3, operant = 'lte'}], #player only check
+		statchanges = {critchance = 10, damage_mod_all = 0.35},
+		buffs = [],
+		sub_effects = [],
+	},
+	
 	e_tr_bloodmage = {
 		type = 'trigger',
 		conditions = [

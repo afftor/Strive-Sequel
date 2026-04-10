@@ -584,7 +584,15 @@ var effect_table = {
 			mod_2 = {obj = 'target', func = 'stat', stat = 'burn_damage'},
 			src = {obj = 'self', func = 'src', src = 'fire'}
 		},
-		sub_effects = ['e_dot_new'],
+		sub_effects = [
+			'e_dot_new',
+			{
+				type = 'oneshot',
+				target = 'owner',
+				conditions = [],
+				atomic = [{type = 'remove_all_effects', value = 'hide'}],
+			},
+		],
 	},
 	e_s_poison_new = {
 		type = 'temp_s',
@@ -733,6 +741,14 @@ var effect_table = {
 		duration = 'arg',
 		statchanges = {evasion = -75},
 		buffs = ['b_ensnare'],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				conditions = [],
+				atomic = [{type = 'remove_all_effects', value = 'hide'}],
+			},
+		],
 	},
 	e_s_cursed = {
 		type = 'temp_s',
@@ -768,6 +784,14 @@ var effect_table = {
 		stack = 'stun',
 		tags = ['debuff', 'stun', 'disable', 'negative'],
 		buffs = ['b_stun'],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				conditions = [],
+				atomic = [{type = 'remove_all_effects', value = 'hide'}],
+			},
+		],
 	},
 	e_s_charm = {#parent duration
 		type = 'temp_s',
@@ -822,7 +846,15 @@ var effect_table = {
 		stack = 'freeze',
 		tags = ['debuff', 'freeze', 'disable', 'negative'],
 		buffs = ['b_freeze'],
-		sub_effects = ['e_t_freeze']
+		sub_effects = [
+			'e_t_freeze',
+			{
+				type = 'oneshot',
+				target = 'owner',
+				conditions = [],
+				atomic = [{type = 'remove_all_effects', value = 'hide'}],
+			},
+		]
 	},
 	e_t_freeze = {
 		type = 'trigger',
@@ -1229,6 +1261,22 @@ var effect_table = {
 	e_no_fame = {
 		type = 'simple',
 		tags = ['no_fame'],
+	},
+	
+	e_tr_metabolism = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_GET],
+		req_skill = false,
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				args = {value = {obj = 'owner', func = 'stat', stat = 'hp_reg'}},
+				atomic = [
+					{type = 'heal', value = ['parent_args', 'value']},
+					],
+			},
+		]
 	},
 	
 	e_boar_autoheal = rebuild_autocast({skill = 'boar_heal', trigger = [variables.TR_TURN_S]}),
