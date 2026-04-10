@@ -167,6 +167,16 @@ var traits = {
 		visible = false,
 		tags = ['body_upgrade', 'breeder']
 	},
+	upgrade_metabolism = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		effects = ['e_tr_metabolism'], 
+		bonusstats = {}, 
+		reqs = [],  
+		visible = false,
+		tags = ['body_upgrade']
+	},
 	
 	#racial
 	racial_oviposition = {
@@ -325,6 +335,7 @@ var traits = {
 		icon = null,
 		show_in_parent_stats = true,
 		effects = ['e_tr_sniper'],
+		tags = ['sniper_hide'],
 		bonusstats = {}
 	},
 	alios = {
@@ -383,6 +394,14 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = ['e_tr_bloodmage'],
+	},
+	rogue = {
+		code = 'rogue',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_rogue', 'e_s_rogue'],
 	},
 	sadist = {
 		code = 'sadist',
@@ -1942,6 +1961,15 @@ var body_upgrades = {
 		cost = 40,
 		goldcost = 10000,
 		traits = ['upgrade_breeder']
+	},
+	upgrade_metabolism = { #2fix parameters
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		reqs = [],
+		cost = 40,
+		goldcost = 10000,
+		traits = ['upgrade_metabolism']
 	},
 }
 

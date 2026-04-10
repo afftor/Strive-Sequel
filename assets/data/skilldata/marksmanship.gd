@@ -29,6 +29,12 @@ var skills = {
 		sounddata = {initiate = null, strike = 'bow', hit = null},
 		value = 0.45,
 		random_factor_p = 0.1,
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'sniper_hide', check = true}],
+				append = {tags = 'stealth_casting'},
+			}
+		]
 	},
 	ensnare = {
 		code = 'ensnare',
@@ -52,6 +58,12 @@ var skills = {
 		sfx = [{code = 'ensnare', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'bow', hit = null},
 		value = 0.5,
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'sniper_hide', check = true}],
+				append = {tags = 'stealth_casting'},
+			}
+		]
 	},
 	
 	arrow_hail = {
@@ -83,6 +95,10 @@ var skills = {
 			{
 				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
 				set = {combatcooldown = 4} #to prevent spaming
+			},
+			{
+				reqs = [{code = 'has_status', status = 'sniper_hide', check = true}],
+				append = {tags = 'stealth_casting'},
 			}
 		]
 	},
@@ -127,6 +143,10 @@ var skills = {
 					{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'},
 					],
 				set = {targetreqs = [{code = 'false'}],} #disable after first use
+			},
+			{
+				reqs = [{code = 'has_status', status = 'sniper_hide', check = true}],
+				append = {tags = 'stealth_casting'},
 			}
 		]
 	},
@@ -171,6 +191,10 @@ var skills = {
 					{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'},
 					],
 				set = {targetreqs = [{code = 'false'}],} #disable after first use
+			},
+			{
+				reqs = [{code = 'has_status', status = 'sniper_hide', check = true}],
+				append = {tags = 'stealth_casting'},
 			}
 		]
 	},

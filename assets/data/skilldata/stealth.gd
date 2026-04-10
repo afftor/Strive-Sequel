@@ -26,12 +26,6 @@ var skills = {
 		sounddata = {initiate = null, strike = null, hit = null},
 		value = ['0'],
 		damagestat = 'no_stat',
-		variations = [
-			{
-				reqs = [{code = 'has_status', status = 'assassin_hide', check = false}],
-				append = {reqs = {code = 'gear_equiped', param = 'geartype', value = 'medium', check = false } }
-			},
-		]
 	},
 	dip_poison = {
 		code = 'dip_poison',
@@ -198,7 +192,7 @@ var effects = {
 		type = 'temp_s',
 		target = 'target',
 		tick_event = variables.TR_TURN_GET,
-		rem_event = [variables.TR_HIT, variables.TR_COMBAT_F, variables.TR_DMG],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		stack = 'hide',
 		tags = ['buff', 'hide'],
 		buffs = ['b_hide'],
@@ -224,7 +218,7 @@ var effects = {
 					{type = 'skill', value = ['tags', 'hasno', 'aoe'] },
 					{type = 'skill', value = ['tags', 'has', 'damage'] },
 					],
-				trigger = [variables.TR_HIT],
+				trigger = [variables.TR_PREDEF],
 				req_skill = true,
 				args = {
 					skill = {obj = 'skill', func = 'eq'},
@@ -235,7 +229,7 @@ var effects = {
 					{
 						type = 'oneshot',
 						target = 'skill',
-						atomic = [],
+						atomic = [{type = 'stat_add', stat = 'chance', value = -50}],
 					}
 				],
 			},
@@ -245,7 +239,7 @@ var effects = {
 					{type = 'skill', value = ['tags', 'has', 'aoe'] },
 					{type = 'skill', value = ['tags', 'has', 'damage'] },
 					],
-				trigger = [variables.TR_HIT],
+				trigger = [variables.TR_PREDEF],
 				req_skill = true,
 				args = {
 					skill = {obj = 'skill', func = 'eq'},
@@ -256,7 +250,7 @@ var effects = {
 					{
 						type = 'oneshot',
 						target = 'skill',
-						atomic = [],
+						atomic = [{type = 'stat_add', stat = 'chance', value = -20}],
 					}
 				],
 			},

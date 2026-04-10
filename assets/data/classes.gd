@@ -732,8 +732,8 @@ var professions = {
 		categories = ['combat'],
 		showupreqs = [],
 		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 3}],
-		statchanges = {critchance = 3, speed = 5, evasion = 10, chg_dexterity_max = 1, mastery_point_combat = 2, mastery_stealth = 1},
-		traits = ['medium_armor'],
+		statchanges = {critchance = 3, speed = 5, evasion = 10, chg_dexterity_max = 1, mastery_point_combat = 2, mastery_stealth = 1, atk = 10, matk = 10, hpmax = 40}, #not sure if should keep old bonuses
+		traits = ['medium_armor', 'rogue'],
 		skills = [],
 		combatskills = [],
 		conflict_classes = [],

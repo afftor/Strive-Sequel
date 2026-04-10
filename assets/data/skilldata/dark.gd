@@ -131,7 +131,10 @@ var skills = {
 		tags = ['support', 'buff'],
 		reqs = [],
 		targetreqs = [{code = 'has_status', status = 'veil', check = false}],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_veil', duration = 5, push_value = true})],
+		effects = [
+			Effectdata.rebuild_template({effect = 'e_s_veil', duration = 5, push_value = true}),
+			Effectdata.rebuild_template({effect = 'e_t_hide2', duration = 5})
+			],
 		cost = {mp = 6},
 		charges = 0,
 		combatcooldown = 0,

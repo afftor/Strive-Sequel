@@ -114,7 +114,7 @@ func get_stat_value_data(statname):
 func get_stat(statname, nobonus = false, desc_ready = false):
 	if desc_ready:
 		reset_stat_compo_dict()
-	if statname in ['hp', 'mp', 'shield', 'combatgroup', 'id']:
+	if statname in ['hp', 'mp', 'shield', 'combatgroup', 'id', 'combat_position']:
 		return get(statname)
 	if statname in ['physics','wits','charm','sexuals']:
 		if nobonus:

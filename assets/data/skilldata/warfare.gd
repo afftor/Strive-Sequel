@@ -23,6 +23,12 @@ var skills = {
 		sfx = [{code = 'draw_blood', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'fleshhit', hit = null},
 		value = 1.1,
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'assassin_hide', check = true}],
+				append = {tags = 'stealth_casting'},
+			}
+		]
 	},
 	sunder = {
 		code = 'sunder',
@@ -50,6 +56,10 @@ var skills = {
 			{
 				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
 				set = {targetreqs = [{code = 'has_status', status = 'shred', check = false}],} #to prevent overuse of long-duration buffs
+			},
+			{
+				reqs = [{code = 'has_status', status = 'assassin_hide', check = true}],
+				append = {tags = 'stealth_casting'},
 			}
 		]
 	},
@@ -78,6 +88,12 @@ var skills = {
 		random_factor_p = 0.1,
 		sfx = [{code = 'cleave', target = 'target_line', period = 'windup'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
+#		variations = [
+#			{
+#				reqs = [{code = 'has_status', status = 'assassin_hide', check = true}],
+#				append = {tags = 'stealth_casting'},
+#			}
+#		]
 	},
 	strike_through = {
 		code = 'strike_through',
@@ -104,6 +120,12 @@ var skills = {
 		random_factor_p = 0.1,
 		sfx = [{code = 'strike_through', target = 'target_row', period = 'windup'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
+#		variations = [
+#			{
+#				reqs = [{code = 'has_status', status = 'assassin_hide', check = true}],
+#				append = {tags = 'stealth_casting'},
+#			}
+#		]
 	},
 	execution = {
 		code = 'execution',
@@ -179,7 +201,13 @@ var skills = {
 		damage_type = 'light',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 1.0
+		value = 1.0,
+#		variations = [
+#			{
+#				reqs = [{code = 'has_status', status = 'assassin_hide', check = true}],
+#				append = {tags = 'stealth_casting'},
+#			}
+#		]
 	},
 }
 var effects = {

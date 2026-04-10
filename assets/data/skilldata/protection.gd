@@ -29,7 +29,13 @@ var skills = {
 		],
 		sound = [],
 		value = [['0']],
-		damagestat = 'no_stat'
+		damagestat = 'no_stat',
+#		variations = [
+#			{
+#				reqs = [{code = 'has_status', status = 'assassin_hide', check = true}],
+#				append = {tags = 'stealth_casting'},
+#			}
+#		]
 	},
 	disarm_enemy = {
 		code = 'disarm_enemy',
@@ -52,7 +58,13 @@ var skills = {
 		damage_type = 'weapon',
 		sfx = [{code = 'disarm', target = 'target', period = 'predamage'}],#? 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 1.3
+		value = 1.3,
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'assassin_hide', check = true}],
+				append = {tags = 'stealth_casting'},
+			}
+		]
 	},
 	provocation = {
 		code = 'provocation',
@@ -77,6 +89,12 @@ var skills = {
 		sfx = [{code = 'provocation', target = 'target', period = 'predamage'}], 
 		sound = [],
 		value = 0.7,
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'assassin_hide', check = true}],
+				append = {tags = 'stealth_casting'},
+			}
+		]
 	},
 	stonewall = {
 		code = 'stonewall',
@@ -101,6 +119,12 @@ var skills = {
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['caster.hpmax', '*0.15']],
 		damagestat = ['-damage_hp'],
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'assassin_hide', check = true}],
+				append = {tags = 'stealth_casting'},
+			}
+		]
 	},
 	last_stand = {
 		code = 'last_stand',
@@ -124,7 +148,13 @@ var skills = {
 		sfx = [{code = 'last_stand', target = 'target', period = 'predamage'}], 
 		sound = [],
 		value = [['0']],
-		damagestat = 'no_stat'
+		damagestat = 'no_stat',
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'assassin_hide', check = true}],
+				append = {tags = 'stealth_casting'},
+			}
+		]
 	},
 }
 var effects = {}
