@@ -395,13 +395,13 @@ var traits = {
 		icon = null,
 		effects = ['e_tr_bloodmage'],
 	},
-	rogue = {
-		code = 'rogue',
+	rouge = {
+		code = 'rouge',
 		name = '',
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_tr_rogue', 'e_s_rogue'],
+		effects = ['e_tr_rouge', 'e_s_rouge'],
 	},
 	sadist = {
 		code = 'sadist',

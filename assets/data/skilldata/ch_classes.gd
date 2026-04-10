@@ -1169,7 +1169,7 @@ var effects = {
 	e_tr_paladin_3 = Effectdata.rebuild_defvalue_template({target_race = 'undead', tag = 'damage',  value = 0.85}),
 	e_tr_paladin_4 = Effectdata.rebuild_defvalue_template({target_race = 'demon', tag = 'damage',  value = 0.85}),
 	
-	e_tr_rogue = {
+	e_tr_rouge = {
 		type = 'trigger',
 		conditions = [],
 		trigger = [variables.TR_KILL],
@@ -1189,7 +1189,7 @@ var effects = {
 		],
 		buffs = []
 	},
-	e_s_rogue = {
+	e_s_rouge = {
 		type = 'simple',
 		descript = '',
 		conditions = [{code = 'stat',  stat = 'combat_position', value = 3, operant = 'lte'}], #player only check
