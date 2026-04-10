@@ -732,8 +732,8 @@ var professions = {
 		categories = ['combat'],
 		showupreqs = [],
 		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 3}],
-		statchanges = {critchance = 3, speed = 5, evasion = 10, chg_dexterity_max = 1, mastery_point_combat = 2, mastery_stealth = 1, atk = 10, matk = 10, hpmax = 40}, #not sure if should keep old bonuses
-		traits = ['medium_armor', 'rogue'],
+		statchanges = {critchance = 3, speed = 5, evasion = 10, chg_dexterity_max = 1, mastery_point_combat = 2, mastery_stealth = 1}, 
+		traits = ['medium_armor'],
 		skills = [],
 		combatskills = [],
 		conflict_classes = [],
@@ -1045,6 +1045,22 @@ var professions = {
 		traits = [],
 		skills = [],
 		combatskills = ['euphoria_apply'],
+		conflict_classes = [],
+	},
+	
+	rouge = {
+		code = 'rouge',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/rogue.png"), #fix
+		tags = [],
+		categories = ['combat'],
+		showupreqs = [{code = 'disabled', check = true}],
+		reqs = [{code = 'cant_spawn_naturally'}],
+		statchanges = {atk = 10, matk = 10, hpmax = 40}, 
+		traits = ['rouge'],
+		skills = [],
+		combatskills = [],
 		conflict_classes = [],
 	},
 	

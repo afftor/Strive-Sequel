@@ -150,6 +150,12 @@ var skills = {
 		sfx = [{code = 'execution', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 2.25,
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'assassin_hide', check = true}],
+				append = {tags = 'stealth_casting'},
+			}
+		]
 	},
 	execution_1 = {
 		code = 'execution_1',
@@ -174,7 +180,13 @@ var skills = {
 		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
 		value = [['0']],
 		damagestat = ['no_stat'],
-		not_final = true
+		not_final = true,
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'assassin_hide', check = true}],
+				append = {tags = 'stealth_casting'},
+			}
+		]
 	},
 	holy_lance = { #ex valkyrie
 		code = 'holy_lance',
