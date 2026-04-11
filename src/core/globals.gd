@@ -411,10 +411,10 @@ func closegallerytooltip():
 	gallerytooltip.set_process(false)
 	gallerytooltip.hide()
 
-func connectclasstooltip(node, person, classdata):
+func connectclasstooltip(node, person, classid):
 	if node.is_connected("mouse_entered",self,'showclasstooltip'):
 		node.disconnect("mouse_entered",self,'showclasstooltip')
-	node.connect("mouse_entered",self,'showclasstooltip', [node, person, classdata])
+	node.connect("mouse_entered",self,'showclasstooltip', [node, person, classid])
 
 func showclasstooltip(node, person, classdata):
 	var classtooltip = input_handler.get_spec_node(input_handler.NODE_CLASSTOOLTIP)

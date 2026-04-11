@@ -144,7 +144,7 @@ func update():
 		newbutton.get_node('name').text = name
 		newbutton.connect('pressed',self,"open_class", [i.code])
 		newbutton.set_meta('class_code', i.code)
-		globals.connectclasstooltip(newbutton, person, i)
+		globals.connectclasstooltip(newbutton, person, i.code)
 		newbutton.connect('mouse_exited', self, 'close_tooltip')
 		# globals.connecttexttooltip(newbutton, ResourceScripts.descriptions.get_class_details(person, i, true, true))
 	

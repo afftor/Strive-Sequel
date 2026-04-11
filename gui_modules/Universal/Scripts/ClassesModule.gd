@@ -53,7 +53,7 @@ func show_classes():
 		newbutton.get_node('name').text = name
 		newbutton.connect('pressed',self,"add_class", [i.code])
 		newbutton.set_meta('class_code', i.code)
-		globals.connectclasstooltip(newbutton, person, i)
+		globals.connectclasstooltip(newbutton, person, i.code)
 
 
 func sort_classes(first,second):
