@@ -3173,7 +3173,10 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	TRAITBERSERKERDESCRIPT = """{color=brown|Ярость}: Убив врага, получите дополнительный ход (один раз за бой).""",
 	TRAITSNIPERDESCRIPT = """Физический урон по одиночной цели: +25%""",
 	TRAITPALADINDESCRIPT = """{color=brown|Кара}: Наносите на 25% больше урона и получайте на 15% меньше урона от врагов типа нежити и демонов.""",
+	TRAITROUGEDESCRIPT = """Aditional bonuses if in front row.""", # MISSING TRANSLATION
+	TRAITROGUEDESCRIPT = """Aditional bonuses if in front row.""", # MISSING TRANSLATION
 	TRAITASSASSINDESCRIPT = """{color=brown|Мастерство скрытности}: Скрытность может быть активирована в средней броне.""",
+	TRAITASNIPERDESCRIPT = """Can use Ranged skills without leaving Shadow.""", # MISSING TRANSLATION
 	TRAITBLOODMAGEDESCRIPT = """{color=brown|Мастерство крови}: Нанесение урона кровоточащим целям восстанавливает HP и MP и увеличивает MATK до конца боя.""",
 	TRAITNECROMANCERDESCRIPT = """{color=brown|Мастерство смерти}: Пассивный Призыв: Скелеты. Количество скелетов определяется фактором магии.""",
 	TRAITRANGERDESCRIPT = """{color=brown|Компаньон-зверь}: Пассивный Призыв: Тренированный пес""",
@@ -3797,6 +3800,8 @@ Requires: Базовый рабский труд""",
 	EFFECTNAME_VAMPIRISM = "вампиризм",
 	EFFECTNAME_ENCH_COMMANDER = "",
 	EFFECTNAME_WARLOCK = "",
+	EFFECTNAME_E_S_ROUGE = """At frontline""", # MISSING TRANSLATION
+	EFFECTNAME_E_S_ROGUE = """Frontline rogue""", # MISSING TRANSLATION
 	EFFECTNAME_MANASIPHON = "",
 	EFFECTNAME_BLOODBOIL = "кипящая кровь",
 	EFFECTNAME_FIRESHIELD = "огненный щит",
@@ -20314,6 +20319,9 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	BODYUPGRADEDESCRIPT_UPGRADE_BREEDER = """Позволяет спариваться с любой расой.
 Дебаффы беременности слабее.
 Потомство унаследует характеристики только этого родителя.""",
+	BODYUPGRADENAME_UPGRADE_METABOLISM = """Extreme Metabolism""", # MISSING TRANSLATION
+	BODYUPGRADEDESCRIPT_UPGRADE_METABOLISM = """+10 Food Consumption
+In combat restore the amount of health equal to your health regeneration at the start of every round.""", # MISSING TRANSLATION
 	QUALITYPOOR = """Плохое""",
 	QUALITYAVERAGE = """Среднее""",
 	QUALITYGOOD = """Хорошее""",

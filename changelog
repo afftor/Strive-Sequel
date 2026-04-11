@@ -1,6 +1,8 @@
 0.14.1d
 Multiple quest fixes
+Added some fixes to scene behavior which should prevent certain errors from occuring
 Added an extra measure to clear out bugged items from characters
+Revamped Hide
 0.14.1c
 Flame sphere can no longer crit
 Fixed some quest issues
