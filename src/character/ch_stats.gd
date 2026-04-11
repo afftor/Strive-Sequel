@@ -1527,7 +1527,9 @@ func get_pronoun_value(pronoun):
 					return 'futanari'
 		"boy": return globals.fastif(statlist.sex == 'male', 'boy', 'girl')
 		"himself": return globals.fastif(statlist.sex == 'male', tr('PRONOUNHIMSELFL'), tr("PRONOUNHIMSELFLF"))
-		"mastername": return ResourceScripts.game_party.get_master().get_short_name()
+		"mastername": 
+			if ResourceScripts.game_party.get_master() != null: return ResourceScripts.game_party.get_master().get_short_name()
+			else: return ""
 
 func translate(text, number = -1):
 	for pronoun in variables.text_pronouns:
