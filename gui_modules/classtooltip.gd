@@ -6,7 +6,7 @@ var person = null
 var classdata = null
 
 onready var _main = $VBoxContainer
-onready var _icon = $VBoxContainer/TextureRect2/ClassIcon
+onready var _icon = $VBoxContainer/HBoxContainer/TextureRect2/ClassIcon
 onready var _name = $VBoxContainer/Label
 onready var _stat_container = $VBoxContainer/StatContainer
 onready var _mastery_container = $VBoxContainer/MasteryContainer
@@ -26,20 +26,26 @@ func showup(node, new_person, class_id):
 
 func update():
 	_rebuild()
+	_bonus_panel.visible = false
 	yield(get_tree(), "idle_frame")
 	if !weakref(parentnode).get_ref():
 		emit_signal("update_completed")
 		return
-	rect_size = _main.rect_size + Vector2(20, 20)
+	rect_size.y = _main.rect_size.y + 20
 	var parent_rect = input_handler.get_real_global_rect(parentnode, true)
 	var screen = get_viewport().get_visible_rect()
-	rect_global_position = Vector2(parent_rect.position.x, parent_rect.end.y + 10)
-	if rect_global_position.x + rect_size.x > screen.size.x:
-		rect_global_position.x = max(0, screen.size.x - rect_size.x)
-	if rect_global_position.y + rect_size.y > screen.size.y:
-		rect_global_position.y = parent_rect.position.y - rect_size.y - 10
-	if rect_global_position.y < 0:
-		rect_global_position.y = 0
+	var pos = Vector2(parent_rect.position.x, parent_rect.end.y + 10)
+	set_global_position(pos)
+	if get_rect().end.x >= screen.size.x:
+		rect_global_position.x -= get_rect().end.x - screen.size.x
+	if get_rect().end.y >= screen.size.y:
+		rect_global_position.y = parentnode.get_global_rect().position.y - (get_rect().size.y+10)
+#	if rect_global_position.x + rect_size.x > screen.size.x:
+#		rect_global_position.x = max(0, screen.size.x - rect_size.x)
+#	if rect_global_position.y + rect_size.y > screen.size.y:
+#		rect_global_position.y = parent_rect.position.y - rect_size.y - 10
+#	if rect_global_position.y < 0:
+#		rect_global_position.y = 0
 	emit_signal("update_completed")
 
 

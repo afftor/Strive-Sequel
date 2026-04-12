@@ -66,18 +66,24 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = 400.0
 margin_bottom = 237.0
+size_flags_vertical = 0
 
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 390.0
+margin_bottom = 90.0
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+margin_left = 150.0
+margin_right = 240.0
 margin_bottom = 90.0
 texture = ExtResource( 3 )
 stretch_mode = 6
 
-[node name="ClassIcon" type="TextureRect" parent="VBoxContainer/TextureRect2"]
-margin_left = 154.0
-margin_top = 4.0
-margin_right = 236.0
-margin_bottom = 86.0
+[node name="ClassIcon" type="TextureRect" parent="VBoxContainer/HBoxContainer/TextureRect2"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
@@ -181,6 +187,7 @@ expand = true
 stretch_mode = 6
 
 [node name="icon" type="TextureRect" parent="VBoxContainer/SkillContainer/Panel/HBoxContainer/frame"]
+show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 expand = true
