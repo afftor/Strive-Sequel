@@ -1583,29 +1583,98 @@ var buffs = {
 };
 
 var status_desc = {
-	bleed = "STATUSDESC_BLEED",
-	poison = "STATUSDESC_POISON",
-	burn = "STATUSDESC_BURN",
-	e_s_shred = "STATUSDESC_SHRED",
-	fear = "STATUSDESC_FEAR",
-	taunt = "STATUSDESC_TAUNT",
-	provoke = "STATUSDESC_PROVOKE",
-	disarm = "STATUSDESC_DISARM",
-	silence = "STATUSDESC_SILENCE",
-	e_s_silence = "STATUSDESC_SILENCE",
-	e_s_stonewall = "STATUSDESC_FORTIFIED",
+	bleed = {
+		text = "STATUSDESC_BLEED",
+		icon = "res://assets/images/iconsskills/icon_blood_explosion.png"
+	},
+	poison = {
+		text = "STATUSDESC_POISON",
+		icon = "res://assets/images/iconsskills/skill_dip_poison.png"
+	},
+	burn = {
+		text = "STATUSDESC_BURN",
+		icon = "res://assets/images/iconsskills/firebolt.png",
+	},
+	shred = {
+		text = "STATUSDESC_SHRED",
+		icon = "res://assets/images/iconsskills/Acid-spit.png",
+	},
+	fear = {
+		text = "STATUSDESC_FEAR",
+		icon = "res://assets/images/iconsskills/Fear.png",
+	},
+	taunt = {
+		text = "STATUSDESC_TAUNT",
+		icon = "res://assets/images/traits/hitrate.png",
+	},
+	provoke = {
+		text = "STATUSDESC_PROVOKE",
+		icon = "res://assets/images/iconsskills/taunt.png"
+	},
+	disarm = {
+		text = "STATUSDESC_DISARM",
+		icon = "res://assets/images/iconsskills/Shackle.png",
+	},
+	silence = {
+		text = "STATUSDESC_SILENCE",
+		icon = "res://assets/images/iconsskills/Seduce.png",
+	},
+	stonewall = {
+		text = "STATUSDESC_FORTIFIED",
+		icon = "res://assets/images/iconsskills/icon_endure.png",
+	},
 #	e_t_hide = "STATUSDESC_HIDE",#this is a trait. Need it?
-	e_t_hide2 = "STATUSDESC_HIDE",
-	e_s_ensnare = "STATUSDESC_ENSNARED",
-	e_s_hmark = "STATUSDESC_MARKED",
-	wet = "STATUSDESC_WET",
-	freeze = "STATUSDESC_FREEZE",
-	shock = "STATUSDESC_SHOCK",
-	blind = "STATUSDESC_BLIND",
-	cursed = "STATUSDESC_CURSED",
-	stun = "STATUSDESC_STUN",
-	e_s_stun = "STATUSDESC_STUN",
-	e_s_shatter = "STATUSDESC_SHATTER",
+	hide = {
+		text = "STATUSDESC_HIDE",
+		icon = "res://assets/images/iconsskills/icon_eyes.png",
+	},
+	ensnare = {
+		text = "STATUSDESC_ENSNARED",
+		icon = "res://assets/images/iconsskills/skill_ensnare.png",
+	},
+	marked = {
+		text = "STATUSDESC_MARKED",
+		icon = "res://assets/images/iconsskills/Command.png"
+	},
+	wet = {
+		text = "STATUSDESC_WET",
+		icon = "res://assets/images/iconsskills/Barrier.png",
+	},
+	freeze = {
+		text = "STATUSDESC_FREEZE",
+		icon = "res://assets/images/iconsskills/Barrier.png",
+	},
+	shock = {
+		text = "STATUSDESC_SHOCK",
+		icon = "res://assets/images/iconsskills/Innervate.png",
+	},
+	blind = {
+		text = "STATUSDESC_BLIND",
+		icon = "res://assets/images/iconsskills/Sedate.png"
+	},
+	cursed = {
+		text = "STATUSDESC_CURSED",
+		icon = "res://assets/images/iconsskills/icon_elementa_weakness.png"
+	},
+	stun = {
+		text = "STATUSDESC_STUN",
+		icon = "res://assets/images/traits/experience.png"
+	},
+	shatter = {
+		text = "STATUSDESC_SHATTER",
+		icon = "res://assets/images/iconsskills/icon_elemental_protection.png"
+	}
+}
+
+var status_desc_match = {
+	e_s_shred = "shred",
+	e_s_silence = "silence",
+	e_s_stonewall = "stonewall",
+	e_t_hide2 = "hide",
+	e_s_ensnare = "ensnare",
+	e_s_hmark = "marked",
+	e_s_stun = "stun",
+	e_s_shatter = "shatter",
 }
 
 func rebuild_template(args):
@@ -2057,7 +2126,15 @@ func get_apply_message(person, eff): #for temp_global
 	
 	return tres % [person.get_short_name(), tr('EFFECTNAME_' + e_name.to_upper())]
 
-func get_status_desc(status):
-	if !status_desc.has(status):
-		return null
-	return status_desc[status]
+func get_status_desc_id(status):
+	if status_desc_match.has(status):
+		return status_desc_match[status]
+	if status_desc.has(status):
+		return status
+	return null
+
+func ready_status_desc(status):
+	return {
+		text = tr(status_desc[status].text),
+		icon = load(status_desc[status].icon)#should here be input_handler.loadimage()?
+	}

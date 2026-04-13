@@ -252,6 +252,7 @@ var TranslationDict = {
 	NEWGAMESETTING = "设置",
 	NEWGAMESKIPPROL = "Skip prologue",
 	NEWGAMESTART = "开始游戏",
+	NGP_BTN = """NG+""", # MISSING TRANSLATION
 	SPELLCAST_LABEL = """Cast Spell""", # MISSING TRANSLATION
 	BACKTOPRESETS = """Back""", # MISSING TRANSLATION
 	PRESETDATADEBUGCUSTOMNAME = """custom""", # MISSING TRANSLATION
@@ -14091,6 +14092,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	METRICS_SOURCE_BROTHEL_CUSTOMER = "妓院的顾客",
 	METRICS_SOURCE_GUILD_TRAINER = "行会训练师，在性玩具训练中",
 	METRICS_SOURCE_WILLIAM = "威廉，阿利隆的著名收藏家",
+	METRICS_SOURCE_YOU = """You, [his] master""", # MISSING TRANSLATION
 	METRICS_WIN_NAME = """%d/%d Battles Won""", # MISSING TRANSLATION
 	METRICS_SERVICEPERFORMED_NAME = """Performed service task for %d/%d turns""", # MISSING TRANSLATION
 	METRICS_SOCSKILLUSED_NAME = """Social skills used %d/%d """, # MISSING TRANSLATION

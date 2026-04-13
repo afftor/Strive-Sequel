@@ -1965,10 +1965,10 @@ var body_upgrades = {
 	upgrade_metabolism = { #2fix parameters
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		icon = "res://assets/images/iconstraits/l_progenecy.png",
 		reqs = [],
-		cost = 40,
-		goldcost = 10000,
+		cost = 20,
+		goldcost = 1500,
 		traits = ['upgrade_metabolism']
 	},
 }

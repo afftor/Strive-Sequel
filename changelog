@@ -1,3 +1,11 @@
+0.14.1d
+Multiple quest fixes
+Added some fixes to scene behavior which should prevent certain errors from occuring
+Added an extra measure to clear out bugged items from characters
+Revamped Hide mechanic
+Added visual effect for enchanted items
+Added new body upgrade - Extreme Metabolism: +10 food consumption, regenerate health in combat
+Some adjustments to achievment system and rewards
 0.14.1c
 Flame sphere can no longer crit
 Fixed some quest issues

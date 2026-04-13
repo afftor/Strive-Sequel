@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_mp.png" type="Texture" id=6]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18.tres" type="DynamicFont" id=7]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset_training_disable.png" type="Texture" id=8]
 [ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=9]
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/frame_skill_hover.png" type="Texture" id=10]
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/frame_skill_active.png" type="Texture" id=11]
@@ -346,7 +347,7 @@ margin_bottom = -80.0
 texture_normal = ExtResource( 16 )
 texture_pressed = ExtResource( 35 )
 texture_hover = ExtResource( 24 )
-texture_disabled = ExtResource( 35 )
+texture_disabled = ExtResource( 8 )
 
 [node name="reset" type="Label" parent="training/complete_button"]
 light_mask = 0
@@ -648,6 +649,7 @@ margin_bottom = -20.0
 texture_normal = ExtResource( 16 )
 texture_pressed = ExtResource( 35 )
 texture_hover = ExtResource( 24 )
+texture_disabled = ExtResource( 8 )
 
 [node name="reset" type="Label" parent="finished/reset_button"]
 light_mask = 0

@@ -1,7 +1,9 @@
 extends tooltip_main
 
 var skill
-onready var sec_node = $descript
+onready var sec_node = $Panel
+onready var sec_cont = $Panel/cont
+onready var sec_cont_margins = sec_cont.margin_top * 2
 onready var main_node = $ScrollContainer
 enum {MODE_ADVANCED, MODE_DEFAULT}
 var mode = MODE_DEFAULT
@@ -66,7 +68,11 @@ func update():
 	main_node.get_node('VBoxContainer/TextureRect2/name').text = text
 	main_node.get_node('VBoxContainer/TextureRect2/TextureRect').texture = skill.icon
 	if skill.has("eff_descript") and mode == MODE_DEFAULT:
-		sec_node.bbcode_text = globals.TextEncoder(skill.eff_descript)
+		input_handler.ClearContainer(sec_cont, ["entry"])
+		for eff_desc in skill.eff_descript:
+			var new_desc = input_handler.DuplicateContainerTemplate(sec_cont, "entry")
+			new_desc.get_node("icon").texture = eff_desc.icon
+			new_desc.get_node("descript").bbcode_text = globals.TextEncoder(eff_desc.text)
 		sec_node.show()
 	else:
 		sec_node.hide()
@@ -115,10 +121,14 @@ func update():
 	
 	var pos = parentnode.get_global_rect()
 	pos = Vector2(pos.position.x, pos.end.y + 10)
-	main_node.set_global_position(pos)
+	set_global_position(pos)
 	
 	main_node.get_node('VBoxContainer/descript').rect_size.y = 190
 	main_node.rect_size.y = 270
+	
+	#ugly patch to force node to shrink, when there is less text
+#	main_node.rect_size.y = main_node.rect_min_size.y
+	sec_cont.rect_size.y = sec_cont.rect_min_size.y
 	
 	yield(get_tree(), 'idle_frame')
 	
@@ -129,23 +139,39 @@ func update():
 	main_node.rect_size.y = max(270, main_node.get_node('VBoxContainer/descript').get_v_scroll().get_max() + 55 + main_node.get_node('VBoxContainer/cost').rect_size.y)
 	main_node.get_node('VBoxContainer/descript').rect_size.y = main_node.rect_size.y - 80
 	
-	#ugly patch to force node to shrink, when there is less text
-	main_node.rect_size.y = main_node.rect_min_size.y
-	sec_node.rect_size.y = sec_node.rect_min_size.y
 	var screen = get_viewport().get_visible_rect()
-	if main_node.get_rect().end.x >= screen.size.x:
-		main_node.rect_global_position.x -= main_node.get_rect().end.x - screen.size.x
-	if main_node.get_rect().end.y >= screen.size.y:
-		main_node.rect_global_position.y = parentnode.get_global_rect().position.y - (main_node.get_rect().size.y+10)
-	if sec_node.visible:
-		var margin = abs(sec_node.get_node("Panel").rect_position.x)
-		sec_node.rect_position.x = main_node.get_rect().end.x + margin
-		sec_node.rect_position.y = main_node.rect_position.y + margin
-		if sec_node.get_rect().end.x >= screen.size.x:
-			sec_node.rect_position.x = main_node.rect_position.x - (sec_node.rect_size.x + margin)
-		if sec_node.get_rect().end.y >= screen.size.y:
-			main_node.rect_global_position.y = parentnode.get_global_rect().position.y - (sec_node.get_rect().size.y+10)
+	if main_node.get_global_rect().end.x >= screen.size.x:
+		rect_global_position.x = screen.size.x - main_node.rect_size.x
+	if main_node.get_global_rect().end.y >= screen.size.y:#move to top
+		rect_global_position.y = parentnode.rect_global_position.y - (main_node.rect_size.y+10)
 	
+	var force_sec_node_left = false
+	if rect_global_position.y < 0:#move to side
+		var do_move = false
+		var sec_node_size_x = 0
+		if sec_node.visible:
+			sec_node_size_x = sec_node.rect_size.x
+		var estimated_pos_x = parentnode.get_global_rect().end.x + 10#right
+		if estimated_pos_x + main_node.rect_size.x + sec_node_size_x < screen.size.x:
+			do_move = true
+		else:
+			estimated_pos_x = parentnode.rect_global_position.x - main_node.rect_size.x - 10#left
+			if estimated_pos_x - sec_node_size_x > 0:
+				do_move = true
+				force_sec_node_left = true
+		if do_move:
+			rect_global_position.x = estimated_pos_x
+			rect_global_position.y = parentnode.rect_global_position.y
+			#up to here possibility of not fitting per y is very low
+		#if there is no do_move, leave it as is. Probability is low
+	
+	if sec_node.visible:
+		sec_node.rect_size.y = sec_cont.rect_size.y + sec_cont_margins
+		sec_node.rect_position.x = main_node.rect_size.x
+		if force_sec_node_left or sec_node.get_global_rect().end.x >= screen.size.x:
+			sec_node.rect_position.x = -sec_node.rect_size.x
+		if sec_node.get_global_rect().end.y >= screen.size.y:#this should not take place often
+			rect_global_position.y = screen.size.y - sec_node.rect_size.y
 	
 	emit_signal("update_completed")
 

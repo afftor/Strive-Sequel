@@ -14,6 +14,7 @@ func _ready():
 	$CloseButton.connect("pressed", self, "hide")
 	$CloseButton2.connect("pressed", self, "hide")
 	$sub_close.connect("pressed", $sub_close, "hide")
+	sub_cont.get_node("close").connect("pressed", $sub_close, "hide")
 	$Reset.connect("pressed", self, "ask_reset")
 	tab_main.connect("pressed", self, "on_tab_pressed", [tab_main])
 	tab_main.set_meta("id", "main")
@@ -99,7 +100,7 @@ func on_tab_pressed(tab):
 
 
 func open_subs(group_name, parent):
-	input_handler.ClearContainer(sub_cont, ["achi"])
+	input_handler.ClearContainer(sub_cont, ["achi", "close"])
 	sub_scroller.scroll_vertical_enabled = false
 	for achi in achi_subs[group_name].unlocked:
 		var new_panel = input_handler.DuplicateContainerTemplate(sub_cont, "achi")
@@ -107,6 +108,7 @@ func open_subs(group_name, parent):
 	for achi in achi_subs[group_name].locked:
 		var new_panel = input_handler.DuplicateContainerTemplate(sub_cont, "achi")
 		new_panel.set_locked(achi)
+	sub_cont.get_node("close").raise()
 	sub_node.rect_global_position.x = parent.rect_global_position.x - 10
 	sub_node.rect_global_position.y = parent.rect_global_position.y + parent.rect_size.y + 4
 	

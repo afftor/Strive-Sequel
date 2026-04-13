@@ -78,7 +78,7 @@ var newgame_bonuses
 
 func _ready():
 #	input_handler.CurrentScene = self
-	if test_mode:
+	if test_mode && OS.has_feature('editor'):
 		modding_core.handle_test_mode()
 		test_mode()
 		mansion_state_set("default")

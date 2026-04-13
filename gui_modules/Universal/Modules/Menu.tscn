@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=2]
+[gd_scene load_steps=88 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=2]
@@ -65,6 +65,7 @@
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_SEX_Skills.tres" type="Theme" id=63]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/tick_disabled.png" type="Texture" id=64]
 [ext_resource path="res://gui_modules/achievements/bonus_unit.tscn" type="PackedScene" id=65]
+[ext_resource path="res://src/scenes/CloseButton.tscn" type="PackedScene" id=66]
 
 [sub_resource type="DynamicFont" id=5]
 size = 64
@@ -448,9 +449,6 @@ custom_colors/font_color = Color( 0.980392, 0.960784, 0.772549, 1 )
 custom_fonts/font = SubResource( 6 )
 text = "Strive: Conquest"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Options" parent="." instance=ExtResource( 18 )]
 visible = false
@@ -522,15 +520,22 @@ margin_top = 140.276
 margin_right = 1601.81
 margin_bottom = 943.276
 
-[node name="NewGamePanel" type="Panel" parent="."]
+[node name="NewGameCont" type="HBoxContainer" parent="."]
 visible = false
-margin_left = 605.0
-margin_top = 143.903
-margin_right = 1315.0
-margin_bottom = 917.903
+margin_left = 30.0
+margin_top = 143.0
+margin_right = 1893.0
+margin_bottom = 913.0
+alignment = 1
+
+[node name="NewGamePanel" type="Panel" parent="NewGameCont"]
+margin_left = 576.0
+margin_right = 1286.0
+margin_bottom = 770.0
+rect_min_size = Vector2( 710, 0 )
 custom_styles/panel = ExtResource( 54 )
 
-[node name="NewGameLabel" type="Label" parent="NewGamePanel"]
+[node name="NewGameLabel" type="Label" parent="NewGameCont/NewGamePanel"]
 margin_right = 709.0
 margin_bottom = 85.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -542,7 +547,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SettingsLabel" type="Label" parent="NewGamePanel"]
+[node name="SettingsLabel" type="Label" parent="NewGameCont/NewGamePanel"]
 margin_left = 6.0
 margin_top = 187.0
 margin_right = 294.0
@@ -553,7 +558,7 @@ text = "NEWGAMESETTING"
 align = 1
 valign = 1
 
-[node name="PresetContainer" type="ScrollContainer" parent="NewGamePanel"]
+[node name="PresetContainer" type="ScrollContainer" parent="NewGameCont/NewGamePanel"]
 margin_left = 40.0
 margin_top = 111.0
 margin_right = 266.0
@@ -563,11 +568,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NewGamePanel/PresetContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="NewGameCont/NewGamePanel/PresetContainer"]
 margin_right = 226.0
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="NewGamePanel/PresetContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="NewGameCont/NewGamePanel/PresetContainer/VBoxContainer"]
 visible = false
 margin_right = 226.0
 margin_bottom = 55.0
@@ -575,19 +580,19 @@ rect_min_size = Vector2( 0, 40 )
 theme = ExtResource( 1 )
 toggle_mode = true
 
-[node name="Settings" type="VBoxContainer" parent="NewGamePanel"]
+[node name="Settings" type="VBoxContainer" parent="NewGameCont/NewGamePanel"]
 margin_left = 24.0
 margin_top = 545.0
 margin_right = 280.0
 margin_bottom = 721.0
 theme = ExtResource( 12 )
 
-[node name="Button" type="CheckBox" parent="NewGamePanel/Settings"]
+[node name="Button" type="CheckBox" parent="NewGameCont/NewGamePanel/Settings"]
 visible = false
 margin_right = 256.0
 margin_bottom = 48.0
 
-[node name="Label" type="Label" parent="NewGamePanel/Settings/Button"]
+[node name="Label" type="Label" parent="NewGameCont/NewGamePanel/Settings/Button"]
 margin_left = 72.0
 margin_top = 9.0
 margin_right = 264.0
@@ -595,7 +600,7 @@ margin_bottom = 41.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 7 )
 
-[node name="ScrollContainer" type="ScrollContainer" parent="NewGamePanel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="NewGameCont/NewGamePanel"]
 margin_left = 328.0
 margin_top = 115.0
 margin_right = 672.0
@@ -604,17 +609,17 @@ size_flags_vertical = 3
 theme = ExtResource( 3 )
 scroll_horizontal_enabled = false
 
-[node name="Settings2" type="VBoxContainer" parent="NewGamePanel/ScrollContainer"]
+[node name="Settings2" type="VBoxContainer" parent="NewGameCont/NewGamePanel/ScrollContainer"]
 margin_right = 344.0
 size_flags_horizontal = 3
 theme = ExtResource( 12 )
 
-[node name="Button" type="CheckBox" parent="NewGamePanel/ScrollContainer/Settings2"]
+[node name="Button" type="CheckBox" parent="NewGameCont/NewGamePanel/ScrollContainer/Settings2"]
 visible = false
 margin_right = 344.0
 margin_bottom = 48.0
 
-[node name="Label" type="Label" parent="NewGamePanel/ScrollContainer/Settings2/Button"]
+[node name="Label" type="Label" parent="NewGameCont/NewGamePanel/ScrollContainer/Settings2/Button"]
 margin_left = 72.0
 margin_top = 9.0
 margin_right = 264.0
@@ -622,7 +627,7 @@ margin_bottom = 41.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 7 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="NewGamePanel"]
+[node name="RichTextLabel" type="RichTextLabel" parent="NewGameCont/NewGamePanel"]
 margin_left = 328.0
 margin_top = 115.0
 margin_right = 672.0
@@ -631,14 +636,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = ExtResource( 33 )
 
-[node name="Settings3" type="VBoxContainer" parent="NewGamePanel"]
+[node name="Settings3" type="VBoxContainer" parent="NewGameCont/NewGamePanel"]
 margin_left = 24.0
 margin_top = 251.0
 margin_right = 280.0
 margin_bottom = 460.0
 theme = ExtResource( 12 )
 
-[node name="label" type="Label" parent="NewGamePanel/Settings3"]
+[node name="label" type="Label" parent="NewGameCont/NewGamePanel/Settings3"]
 visible = false
 margin_right = 256.0
 margin_bottom = 35.0
@@ -648,7 +653,7 @@ text = "NEWGAMESETTING"
 align = 1
 valign = 1
 
-[node name="button" type="TextureButton" parent="NewGamePanel/Settings3"]
+[node name="button" type="TextureButton" parent="NewGameCont/NewGamePanel/Settings3"]
 visible = false
 margin_right = 256.0
 margin_bottom = 50.0
@@ -661,7 +666,7 @@ texture_disabled = ExtResource( 42 )
 texture_focused = ExtResource( 42 )
 expand = true
 
-[node name="LArr" type="TextureButton" parent="NewGamePanel/Settings3/button"]
+[node name="LArr" type="TextureButton" parent="NewGameCont/NewGamePanel/Settings3/button"]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 1.0
@@ -675,7 +680,7 @@ texture_hover = ExtResource( 36 )
 expand = true
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="NewGamePanel/Settings3/button"]
+[node name="Label" type="Label" parent="NewGameCont/NewGamePanel/Settings3/button"]
 margin_left = 24.0
 margin_top = 8.0
 margin_right = 206.0
@@ -686,7 +691,7 @@ custom_fonts/font = ExtResource( 28 )
 text = "sex"
 align = 1
 
-[node name="RArr" type="TextureButton" parent="NewGamePanel/Settings3/button"]
+[node name="RArr" type="TextureButton" parent="NewGameCont/NewGamePanel/Settings3/button"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -699,7 +704,7 @@ texture_normal = ExtResource( 37 )
 texture_pressed = ExtResource( 39 )
 texture_hover = ExtResource( 35 )
 
-[node name="tip" type="TextureRect" parent="NewGamePanel"]
+[node name="tip" type="TextureRect" parent="NewGameCont/NewGamePanel"]
 visible = false
 margin_left = 751.0
 margin_top = 85.0
@@ -712,7 +717,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="NewGamePanel"]
+[node name="Label" type="Label" parent="NewGameCont/NewGamePanel"]
 visible = false
 margin_left = 736.036
 margin_top = 42.9593
@@ -722,7 +727,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "Settings"
 
-[node name="StartButton" type="Button" parent="NewGamePanel"]
+[node name="StartButton" type="Button" parent="NewGameCont/NewGamePanel"]
 margin_left = 397.21
 margin_top = 672.097
 margin_right = 598.21
@@ -736,7 +741,7 @@ custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = SubResource( 10 )
 text = "NEWGAMESTART"
 
-[node name="BackButton" type="Button" parent="NewGamePanel"]
+[node name="BackButton" type="Button" parent="NewGameCont/NewGamePanel"]
 margin_left = 49.0
 margin_top = 106.097
 margin_right = 250.0
@@ -750,7 +755,7 @@ custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = SubResource( 10 )
 text = "BACKTOPRESETS"
 
-[node name="Gold" type="TextureRect" parent="NewGamePanel"]
+[node name="Gold" type="TextureRect" parent="NewGameCont/NewGamePanel"]
 margin_left = 407.71
 margin_top = 608.097
 margin_right = 463.71
@@ -759,7 +764,7 @@ texture = ExtResource( 11 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="NewGamePanel/Gold"]
+[node name="Label" type="Label" parent="NewGameCont/NewGamePanel/Gold"]
 margin_left = 51.0
 margin_top = 16.0
 margin_right = 176.0
@@ -769,7 +774,7 @@ custom_fonts/font = SubResource( 7 )
 align = 1
 valign = 1
 
-[node name="Materials" type="HBoxContainer" parent="NewGamePanel"]
+[node name="Materials" type="HBoxContainer" parent="NewGameCont/NewGamePanel"]
 margin_left = 310.0
 margin_top = 528.0
 margin_right = 698.0
@@ -779,7 +784,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="TextureButton" parent="NewGamePanel/Materials"]
+[node name="Button" type="TextureButton" parent="NewGameCont/NewGamePanel/Materials"]
 visible = false
 margin_left = 154.0
 margin_right = 234.0
@@ -790,7 +795,7 @@ texture_hover = ExtResource( 16 )
 expand = true
 stretch_mode = 5
 
-[node name="TextureRect" type="TextureRect" parent="NewGamePanel/Materials/Button"]
+[node name="TextureRect" type="TextureRect" parent="NewGameCont/NewGamePanel/Materials/Button"]
 margin_left = 2.0
 margin_top = 3.0
 margin_right = 76.0
@@ -802,7 +807,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="NewGamePanel/Materials/Button"]
+[node name="Label" type="Label" parent="NewGameCont/NewGamePanel/Materials/Button"]
 margin_left = 2.0
 margin_top = 43.0
 margin_right = 77.0
@@ -815,15 +820,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bonuses" type="TextureRect" parent="NewGamePanel"]
+[node name="CloseButton" parent="NewGameCont/NewGamePanel" instance=ExtResource( 66 )]
+margin_left = 680.0
+margin_right = 710.0
+
+[node name="NGPButton" type="Button" parent="NewGameCont/NewGamePanel"]
+margin_left = 613.0
+margin_top = 672.0
+margin_right = 686.0
+margin_bottom = 735.0
+theme = ExtResource( 13 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/normal = SubResource( 10 )
+toggle_mode = true
+text = "NGP_BTN"
+clip_text = true
+
+[node name="bonuses" type="TextureRect" parent="NewGameCont"]
 visible = false
-margin_left = 717.0
-margin_right = 1256.0
-margin_bottom = 773.0
+margin_left = 1019.0
+margin_right = 1558.0
+margin_bottom = 770.0
+rect_min_size = Vector2( 539, 0 )
 texture = ExtResource( 19 )
 expand = true
 
-[node name="title" type="Label" parent="NewGamePanel/bonuses"]
+[node name="title" type="Label" parent="NewGameCont/bonuses"]
 margin_left = 9.0
 margin_right = 529.0
 margin_bottom = 85.0
@@ -833,14 +859,14 @@ text = "NEWGAMEPLUSNAME"
 align = 1
 valign = 1
 
-[node name="points_cont" type="HBoxContainer" parent="NewGamePanel/bonuses"]
+[node name="points_cont" type="HBoxContainer" parent="NewGameCont/bonuses"]
 margin_left = 16.0
 margin_top = 89.0
 margin_right = 522.0
 margin_bottom = 129.0
 custom_constants/separation = 15
 
-[node name="points_name" type="Label" parent="NewGamePanel/bonuses/points_cont"]
+[node name="points_name" type="Label" parent="NewGameCont/bonuses/points_cont"]
 margin_top = 2.0
 margin_right = 274.0
 margin_bottom = 37.0
@@ -850,7 +876,7 @@ text = "NEWGAMEPLUS_POINTS"
 align = 1
 valign = 1
 
-[node name="points" type="Label" parent="NewGamePanel/bonuses/points_cont"]
+[node name="points" type="Label" parent="NewGameCont/bonuses/points_cont"]
 margin_left = 289.0
 margin_top = 2.0
 margin_right = 350.0
@@ -861,18 +887,18 @@ text = "00/00"
 align = 1
 valign = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="NewGamePanel/bonuses"]
+[node name="ScrollContainer" type="ScrollContainer" parent="NewGameCont/bonuses"]
 margin_left = 19.0
 margin_top = 136.0
 margin_right = 530.0
 margin_bottom = 752.0
 theme = ExtResource( 63 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NewGamePanel/bonuses/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="NewGameCont/bonuses/ScrollContainer"]
 margin_right = 511.0
 size_flags_horizontal = 3
 
-[node name="bonus" type="Control" parent="NewGamePanel/bonuses/ScrollContainer/VBoxContainer"]
+[node name="bonus" type="Control" parent="NewGameCont/bonuses/ScrollContainer/VBoxContainer"]
 visible = false
 margin_right = 500.0
 margin_bottom = 103.0
@@ -880,7 +906,7 @@ rect_min_size = Vector2( 500, 103 )
 size_flags_horizontal = 0
 script = ExtResource( 57 )
 
-[node name="name" type="Label" parent="NewGamePanel/bonuses/ScrollContainer/VBoxContainer/bonus"]
+[node name="name" type="Label" parent="NewGameCont/bonuses/ScrollContainer/VBoxContainer/bonus"]
 margin_left = 103.0
 margin_right = 415.0
 margin_bottom = 35.0
@@ -888,7 +914,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "name"
 
-[node name="cost" type="Label" parent="NewGamePanel/bonuses/ScrollContainer/VBoxContainer/bonus"]
+[node name="cost" type="Label" parent="NewGameCont/bonuses/ScrollContainer/VBoxContainer/bonus"]
 margin_left = 432.0
 margin_right = 458.0
 margin_bottom = 35.0
@@ -897,7 +923,7 @@ custom_fonts/font = SubResource( 7 )
 text = "00"
 align = 2
 
-[node name="desc" type="Label" parent="NewGamePanel/bonuses/ScrollContainer/VBoxContainer/bonus"]
+[node name="desc" type="Label" parent="NewGameCont/bonuses/ScrollContainer/VBoxContainer/bonus"]
 margin_left = 104.0
 margin_top = 31.0
 margin_right = 490.0
@@ -907,7 +933,7 @@ custom_fonts/font = SubResource( 11 )
 text = "description"
 autowrap = true
 
-[node name="icon" type="TextureRect" parent="NewGamePanel/bonuses/ScrollContainer/VBoxContainer/bonus"]
+[node name="icon" type="TextureRect" parent="NewGameCont/bonuses/ScrollContainer/VBoxContainer/bonus"]
 anchor_bottom = 1.0
 margin_left = 4.0
 margin_top = 4.0
@@ -917,7 +943,7 @@ texture = ExtResource( 62 )
 expand = true
 stretch_mode = 6
 
-[node name="frame" type="TextureRect" parent="NewGamePanel/bonuses/ScrollContainer/VBoxContainer/bonus"]
+[node name="frame" type="TextureRect" parent="NewGameCont/bonuses/ScrollContainer/VBoxContainer/bonus"]
 anchor_bottom = 1.0
 margin_left = 4.0
 margin_top = 4.0
@@ -927,7 +953,7 @@ texture = ExtResource( 52 )
 expand = true
 stretch_mode = 5
 
-[node name="CheckBox" type="CheckBox" parent="NewGamePanel/bonuses/ScrollContainer/VBoxContainer/bonus"]
+[node name="CheckBox" type="CheckBox" parent="NewGameCont/bonuses/ScrollContainer/VBoxContainer/bonus"]
 margin_left = 461.0
 margin_top = 7.0
 margin_right = 491.0
@@ -943,7 +969,7 @@ custom_styles/hover_pressed = SubResource( 15 )
 custom_styles/normal = SubResource( 16 )
 expand_icon = true
 
-[node name="frame_full" type="NinePatchRect" parent="NewGamePanel/bonuses/ScrollContainer/VBoxContainer/bonus"]
+[node name="frame_full" type="NinePatchRect" parent="NewGameCont/bonuses/ScrollContainer/VBoxContainer/bonus"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 53 )
@@ -952,7 +978,7 @@ patch_margin_top = 12
 patch_margin_right = 12
 patch_margin_bottom = 12
 
-[node name="btn" type="Button" parent="NewGamePanel/bonuses/ScrollContainer/VBoxContainer/bonus"]
+[node name="btn" type="Button" parent="NewGameCont/bonuses/ScrollContainer/VBoxContainer/bonus"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -964,7 +990,7 @@ custom_styles/normal = SubResource( 19 )
 toggle_mode = true
 enabled_focus_mode = 0
 
-[node name="locked" parent="NewGamePanel/bonuses/ScrollContainer/VBoxContainer" instance=ExtResource( 65 )]
+[node name="locked" parent="NewGameCont/bonuses/ScrollContainer/VBoxContainer" instance=ExtResource( 65 )]
 visible = false
 
 [node name="NewOrTutorial" type="Panel" parent="."]

@@ -26,6 +26,8 @@ onready var opt_cont_T2 = $BackgroundT2/ScrollContainer/VBoxContainer
 var cur_opt_cont
 var select_blocking_nodes = []
 
+var dialogue_type_exceptions = ["church_event"]
+
 func _ready():
 	$BackgroundT2/BackgroundT2/HideButton.connect("pressed", self, "hide_dialogue")
 	$ShowPanel/ShowButton.connect("pressed", self, "hide_dialogue", ["show"])
@@ -50,6 +52,14 @@ func hide_dialogue(action = "hide"):
 	$BackgroundT2.visible = action != "hide"
 	$ShowPanel.visible = action == "hide"
 
+func determine_dialogue_type(scene):
+	next_dialogue_type = 1
+	if (scene.has("custom_background")
+			and !dialogue_type_exceptions.has(scene.custom_background)):
+		next_dialogue_type = 2
+	if scene.has("dialogue_type"):
+		next_dialogue_type = scene.dialogue_type
+
 func open(scene):
 	if gui_controller.dialogue == null:
 		gui_controller.dialogue = self
@@ -61,11 +71,8 @@ func open(scene):
 	input_handler.PlaySound("speech")
 	if is_just_started:
 		hide()
-		var preset_type = 1
-		if scene.has("dialogue_type"):
-			preset_type = scene.dialogue_type
-		preset_dialogue_type(preset_type)
-		next_dialogue_type = preset_type
+		determine_dialogue_type(scene)
+		preset_dialogue_type(next_dialogue_type)
 		cur_text_label.bbcode_text = ''
 		previous_text = ''
 		if scene.has("music"):
@@ -81,8 +88,8 @@ func open(scene):
 	if scene.has("unlocked_char_sprites"):
 		input_handler.update_progress_data("unique_sprites", scene.unlocked_char_sprites)
 	
-	if scene.has("dialogue_type"):
-		next_dialogue_type = scene.dialogue_type
+	if !is_just_started:
+		determine_dialogue_type(scene)
 	
 	
 	var new_text_label
@@ -694,6 +701,7 @@ func close(args = {}):
 	ch1 = null
 	ch2 = null
 	previous_dialogue_option = 0
+	is_just_started = true
 	if dialogue_window_type == 2:
 #		previous_text = ""
 		dialogue_window_type = 1
@@ -723,7 +731,7 @@ func close(args = {}):
 	input_handler.CurrentScreen = previousscene
 	if args.finish_scene: input_handler.emit_signal("EventFinished")
 	input_handler.event_finished()
-	is_just_started = true
+	
 	
 	if saved_music != "":
 		input_handler.SetMusic(saved_music)
@@ -1389,7 +1397,9 @@ func select_option(number):
 			})
 	
 	if option.has("change_dialogue_type"):
-		next_dialogue_type = option.change_dialogue_type
+		#not in use anymore, keeping it as legecy for now
+		#next_dialogue_type = option.change_dialogue_type
+		
 		#MIND! that all close_speed mechanics needed for normal work of blackscreen transition.
 		#Since last refactor transitions works correctly without close_speed, so it's useless now.
 		#I am leaving this mechanics just in case, if standalone editor would use it or for some
