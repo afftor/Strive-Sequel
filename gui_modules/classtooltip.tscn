@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/ConfirmWindowTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/gui/explore/Captured Characters/frame_hero.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_loadaccept.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/CLASS_INFO/masteries_icons/combat.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_ellipse.png" type="Texture" id=8]
+[ext_resource path="res://assets/Fonts_v2/Noto_Serif/NotoSerif-Italic.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://gui_modules/classtooltip.gd" type="Script" id=10]
 
 [sub_resource type="StyleBoxTexture" id=1]
@@ -18,7 +19,7 @@ margin_right = 10.0
 margin_top = 10.0
 margin_bottom = 10.0
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=47]
 content_margin_left = 3.0
 content_margin_right = 3.0
 texture = ExtResource( 2 )
@@ -28,7 +29,7 @@ margin_right = 2.46228
 margin_top = 2.14639
 margin_bottom = 2.39234
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=48]
 content_margin_left = 3.0
 content_margin_right = 3.0
 texture = ExtResource( 2 )
@@ -36,7 +37,7 @@ region_rect = Rect2( 0, 0, 294, 49 )
 margin_top = 3.0
 margin_bottom = 3.0
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=49]
 content_margin_left = 3.0
 content_margin_right = 3.0
 texture = ExtResource( 2 )
@@ -44,13 +45,9 @@ region_rect = Rect2( 0, 0, 294, 49 )
 margin_top = 3.0
 margin_bottom = 3.0
 
-[sub_resource type="StyleBoxTexture" id=2]
-content_margin_left = 3.0
-content_margin_right = 3.0
-texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 294, 49 )
-margin_left = 2.2531
-margin_right = 2.00275
+[sub_resource type="DynamicFont" id=30]
+size = 22
+font_data = ExtResource( 9 )
 
 [node name="Control" type="PanelContainer"]
 anchor_right = 1.0
@@ -65,7 +62,7 @@ script = ExtResource( 10 )
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 400.0
-margin_bottom = 237.0
+margin_bottom = 311.0
 size_flags_vertical = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
@@ -99,7 +96,7 @@ align = 1
 margin_top = 131.0
 margin_right = 390.0
 margin_bottom = 169.539
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 47 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/StatContainer"]
 margin_left = 3.0
@@ -123,7 +120,7 @@ margin_right = 376.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 120, 30 )
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 48 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MasteryContainer/Panel"]
 margin_left = 3.0
@@ -169,7 +166,7 @@ margin_right = 376.0
 margin_bottom = 56.0
 rect_min_size = Vector2( 120, 30 )
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 49 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/SkillContainer/Panel"]
 margin_left = 3.0
@@ -203,66 +200,53 @@ text = "Skill: Water Edge"
 align = 1
 valign = 1
 
-[node name="TraitContainer" type="VBoxContainer" parent="VBoxContainer"]
+[node name="TraitsContainer" type="PanelContainer" parent="VBoxContainer"]
 margin_top = 181.0
 margin_right = 390.0
-margin_bottom = 181.0
-custom_constants/separation = 1
+margin_bottom = 219.539
+custom_styles/panel = SubResource( 47 )
 
-[node name="Panel" type="PanelContainer" parent="VBoxContainer/TraitContainer"]
-visible = false
-margin_right = 376.0
-margin_bottom = 33.0
-rect_min_size = Vector2( 120, 30 )
-size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
-
-[node name="statname" type="Label" parent="VBoxContainer/TraitContainer/Panel"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/TraitsContainer"]
 margin_left = 3.0
-margin_right = 373.0
-margin_bottom = 33.0
-size_flags_horizontal = 3
-size_flags_vertical = 0
-custom_colors/font_color = Color( 1, 0.835294, 0.376471, 1 )
-text = "Trait"
-align = 1
+margin_top = 2.14639
+margin_right = 387.0
+margin_bottom = 36.1464
+bbcode_enabled = true
+fit_content_height = true
+scroll_active = false
+deselect_on_focus_loss_enabled = false
 
-[node name="RequirementsContainer" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 185.0
+[node name="ReqsContainer" type="PanelContainer" parent="VBoxContainer"]
+margin_top = 223.0
 margin_right = 390.0
-margin_bottom = 185.0
-custom_constants/separation = 1
+margin_bottom = 261.539
+custom_styles/panel = SubResource( 47 )
 
-[node name="Panel" type="PanelContainer" parent="VBoxContainer/RequirementsContainer"]
-visible = false
-margin_right = 376.0
-margin_bottom = 33.0
-rect_min_size = Vector2( 120, 30 )
-size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
-
-[node name="statname" type="Label" parent="VBoxContainer/RequirementsContainer/Panel"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ReqsContainer"]
 margin_left = 3.0
-margin_right = 373.0
-margin_bottom = 33.0
-size_flags_horizontal = 3
-size_flags_vertical = 0
-custom_colors/font_color = Color( 1, 0.376471, 0.427451, 1 )
-text = "Requirement: "
+margin_top = 2.14639
+margin_right = 387.0
+margin_bottom = 36.1464
+bbcode_enabled = true
+fit_content_height = true
+scroll_active = false
+deselect_on_focus_loss_enabled = false
 
 [node name="BonusText" type="PanelContainer" parent="VBoxContainer"]
-margin_top = 189.0
+margin_top = 265.0
 margin_right = 390.0
-margin_bottom = 227.539
+margin_bottom = 301.539
 rect_min_size = Vector2( 120, 30 )
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 47 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/BonusText"]
 margin_left = 3.0
 margin_top = 2.14639
 margin_right = 387.0
-margin_bottom = 36.1464
+margin_bottom = 34.1464
+custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/normal_font = SubResource( 30 )
 bbcode_enabled = true
 fit_content_height = true
 scroll_active = false

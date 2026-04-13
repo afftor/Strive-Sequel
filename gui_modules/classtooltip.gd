@@ -11,8 +11,8 @@ onready var _name = $VBoxContainer/Label
 onready var _stat_container = $VBoxContainer/StatContainer
 onready var _mastery_container = $VBoxContainer/MasteryContainer
 onready var _skill_container = $VBoxContainer/SkillContainer
-onready var _trait_container = $VBoxContainer/TraitContainer
-onready var _requirements_container = $VBoxContainer/RequirementsContainer
+onready var _trait_container = $VBoxContainer/TraitsContainer
+onready var _requirements_container = $VBoxContainer/ReqsContainer
 onready var _bonus_panel = $VBoxContainer/BonusText
 onready var _bonus_text = $VBoxContainer/BonusText/RichTextLabel
 
@@ -22,6 +22,12 @@ func showup(node, new_person, class_id):
 		return
 	person = new_person
 	classdata = classesdata.professions[class_id]
+
+
+func _open_panel(new_person, class_id):
+	person = new_person
+	classdata = classesdata.professions[class_id]
+	_rebuild()
 
 
 func update():
@@ -61,13 +67,10 @@ func _rebuild():
 
 
 func _fill_stat_container():
-	var tmp = {}
-	for stat in classdata.statchanges:
-		if stat.begins_with("mastery_"):
-			continue
-		tmp[stat] = classdata.statchanges[stat]
+	var tmp = ""
+	tmp = ResourceScripts.descriptions.get_class_bonuses(person, classdata)
 	_stat_container.visible = !tmp.empty()
-	_stat_container.get_node("RichTextLabel").bbcode_text = globals.TextEncoder(globals.build_desc_for_bonusstats(tmp))
+	_stat_container.get_node("RichTextLabel").bbcode_text = globals.TextEncoder(tmp)
 
 
 func _fill_mastery_container():
@@ -138,33 +141,20 @@ func _fill_skill_container():
 	_skill_container.visible = has_rows
 
 
+
+
 func _fill_trait_container():
-	input_handler.ClearContainer(_trait_container, ['Panel'])
-	var has_rows = false
-	for trait_id in classdata.traits:
-		var trait = Traitdata.traits[trait_id]
-		var panel = input_handler.DuplicateContainerTemplate(_trait_container, 'Panel')
-		panel.get_node("statname").text = tr(trait.name)
-		globals.connecttexttooltip(panel, _build_trait_tooltip(trait))
-		has_rows = true
-	_trait_container.visible = has_rows
+	var tmp = ""
+	tmp = ResourceScripts.descriptions.get_class_traits(person, classdata)
+	_trait_container.visible = !tmp.empty()
+	_trait_container.get_node("RichTextLabel").bbcode_text = globals.TextEncoder(tmp)
 
 
 func _fill_requirements_container():
-	input_handler.ClearContainer(_requirements_container, ['Panel'])
-	var req_text = ResourceScripts.descriptions.get_class_reqs(person, classdata, false)
-	if req_text == "":
-		_requirements_container.visible = false
-		return
-	var lines = req_text.split("\n", false)
-	var has_rows = false
-	for line in lines:
-		if line.strip_edges() == "":
-			continue
-		var row = input_handler.DuplicateContainerTemplate(_requirements_container, 'Panel')
-		row.get_node("statname").text = line
-		has_rows = true
-	_requirements_container.visible = has_rows
+	var tmp = ""
+	tmp = ResourceScripts.descriptions.get_class_reqs(person, classdata)
+	_requirements_container.visible = !tmp.empty()
+	_requirements_container.get_node("RichTextLabel").bbcode_text = globals.TextEncoder(tmp)
 
 
 func _fill_bonus_text():
