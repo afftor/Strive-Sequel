@@ -156,7 +156,10 @@ func show_resources_info():
 					# newtask.get_node("Task").text = str(ResourceScripts.game_res.materials[ResourceScripts.game_res.craftinglists[task_name][0].code])
 				
 				else:
-					item.set_icon(newtask.get_node("Task/TaskIcon"))
+#					item.set_icon(newtask.get_node("Task/TaskIcon"))
+					newtask.get_node("Task/TaskIcon").texture = item.icon
+					if recipe.crafttype == 'modular':
+						newtask.get_node("Task/TaskIcon").material = load("res://assets/ItemShader.tres").duplicate()
 #				elif recipe.crafttype == 'modular':
 #					input_handler.itemshadeimage(newtask.get_node("Task/TaskIcon"), item)
 #
