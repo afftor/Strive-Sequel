@@ -67,24 +67,25 @@ func show_slave_info():
 			var name = ResourceScripts.descriptions.get_class_name(prof, person)
 			newnode.get_node("Label").text = name
 			newnode.get_node("ProfIcon").texture = prof.icon
-			newnode.connect('signal_RMB_release', gui_controller, 'show_class_info', [prof.code, person])
-			var temptext = "[center]"+ResourceScripts.descriptions.get_class_name(prof,person) + "[/center]\n"+ResourceScripts.descriptions.get_class_bonuses(person, prof) + ResourceScripts.descriptions.get_class_traits(person, prof)
-			var social_skills = ''
-			var combat_skills = ''
-			if classesdata.professions[i].has("skills") && !classesdata.professions[i].skills.empty():
-				temptext += "\n" + tr("SOCIAL_SKILLS") + " - "
-				for skill in classesdata.professions[i].skills:
-					social_skills += Skilldata.Skilllist[skill].name + ", "
-				social_skills = social_skills.substr(0, social_skills.length() - 2)
-			temptext += social_skills
-			if classesdata.professions[i].has("combatskills") && !classesdata.professions[i].combatskills.empty():
-				temptext += "\n" + tr("COMBAT_SKILLS") + " - "
-				for skill in classesdata.professions[i].combatskills:
-					combat_skills += Skilldata.Skilllist[skill].name + ", "
-				combat_skills = combat_skills.trim_suffix(', ')
-			temptext += combat_skills
-			temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
-			globals.connecttexttooltip(newnode, temptext)
+#			newnode.connect('signal_RMB_release', gui_controller, 'show_class_info', [prof.code, person])
+#			var temptext = "[center]"+ResourceScripts.descriptions.get_class_name(prof,person) + "[/center]\n"+ResourceScripts.descriptions.get_class_bonuses(person, prof) + ResourceScripts.descriptions.get_class_traits(person, prof)
+#			var social_skills = ''
+#			var combat_skills = ''
+#			if classesdata.professions[i].has("skills") && !classesdata.professions[i].skills.empty():
+#				temptext += "\n" + tr("SOCIAL_SKILLS") + " - "
+#				for skill in classesdata.professions[i].skills:
+#					social_skills += Skilldata.Skilllist[skill].name + ", "
+#				social_skills = social_skills.substr(0, social_skills.length() - 2)
+#			temptext += social_skills
+#			if classesdata.professions[i].has("combatskills") && !classesdata.professions[i].combatskills.empty():
+#				temptext += "\n" + tr("COMBAT_SKILLS") + " - "
+#				for skill in classesdata.professions[i].combatskills:
+#					combat_skills += Skilldata.Skilllist[skill].name + ", "
+#				combat_skills = combat_skills.trim_suffix(', ')
+#			temptext += combat_skills
+#			temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
+#			globals.connecttexttooltip(newnode, temptext)
+			globals.connectclasstooltip(newnode, person, i)
 		globals.build_attrs_for_char(self, person)
 		if person.is_master() or person.is_unique():
 			$RichTextLabel.set("custom_colors/default_color", variables.hexcolordict.unique)

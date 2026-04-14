@@ -87,15 +87,16 @@ func update(person = null):
 		newnode.get_node("Label").text = name
 		# newnode.get_node("TextureRect").rect_size = Vector2(86,86)
 		newnode.get_node("TextureRect").texture = prof.icon
-		newnode.connect(
-			'signal_RMB_release', gui_controller, 'show_class_info', [prof.code, person]
-		)
-		var temptext = (
-			"[center]"
-			+ ResourceScripts.descriptions.get_class_name(prof, person)
-			+ "[/center]\n"
-			+ ResourceScripts.descriptions.get_class_bonuses(person, prof)
-			+ ResourceScripts.descriptions.get_class_traits(person, prof)
-		)
-		temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
-		globals.connecttexttooltip(newnode, temptext)
+#		newnode.connect(
+#			'signal_RMB_release', gui_controller, 'show_class_info', [prof.code, person]
+#		)
+		globals.connectclasstooltip(newnode, person, i)
+#		var temptext = (
+#			"[center]"
+#			+ ResourceScripts.descriptions.get_class_name(prof, person)
+#			+ "[/center]\n"
+#			+ ResourceScripts.descriptions.get_class_bonuses(person, prof)
+#			+ ResourceScripts.descriptions.get_class_traits(person, prof)
+#		)
+#		temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
+#		globals.connecttexttooltip(newnode, temptext)

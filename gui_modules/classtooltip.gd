@@ -45,7 +45,17 @@ func update():
 	if get_rect().end.x >= screen.size.x:
 		rect_global_position.x -= get_rect().end.x - screen.size.x
 	if get_rect().end.y >= screen.size.y:
-		rect_global_position.y = parentnode.get_global_rect().position.y - (get_rect().size.y+10)
+		rect_global_position.y = parent_rect.position.y - (get_rect().size.y+10)
+	if get_rect().end.y >= screen.size.y or get_rect().position.y < 0:
+		#move to left or right from node
+		pos.y = (screen.size.y - get_rect().size.y) / 2
+		var offset_l = parent_rect.position.x
+		var offset_r = screen.size.x - parent_rect.end.x
+		if offset_l > offset_r:
+			pos.x = parent_rect.position.x - 10 - get_rect().size.x
+		else:
+			pos.x = parent_rect.end.x + 10
+		set_global_position(pos)
 #	if rect_global_position.x + rect_size.x > screen.size.x:
 #		rect_global_position.x = max(0, screen.size.x - rect_size.x)
 #	if rect_global_position.y + rect_size.y > screen.size.y:

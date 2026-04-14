@@ -1,4 +1,4 @@
-[gd_scene load_steps=208 format=2]
+[gd_scene load_steps=214 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=2]
@@ -794,7 +794,6 @@ theme = ExtResource( 19 )
 scroll_vertical_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SlaveInfoModule/TraitContainer"]
-margin_right = 674.0
 size_flags_horizontal = 3
 custom_constants/separation = 5
 alignment = 1
