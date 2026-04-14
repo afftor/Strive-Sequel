@@ -443,26 +443,27 @@ func faction_guild_shop(pressed, pressed_button, guild):
 		newbutton.connect("pressed", self, "buy_item", [cls, guild.reputation_shop.classes[cls], 1, "class"])
 		newbutton.connect("pressed", self, "guild_shop_item_selected", [newbutton])
 		var person = ResourceScripts.game_party.get_master()
-		var prof = classesdata.professions[cls]
-		var name = ResourceScripts.descriptions.get_class_name(prof, person)
-		newbutton.connect('signal_RMB_release', gui_controller, 'show_class_info', [prof.code, person])
-		var temptext = "[center]"+ResourceScripts.descriptions.get_class_name(prof,person) + "[/center]\n"+ResourceScripts.descriptions.get_class_bonuses(person, prof) + ResourceScripts.descriptions.get_class_traits(person, prof)
-		var social_skills = ''
-		var combat_skills = ''
-		if classesdata.professions[cls].has("skills") && !classesdata.professions[cls].skills.empty():
-			temptext += "\n" + tr("SOCIAL_SKILLS") + " - "
-			for skill in classesdata.professions[cls].skills:
-				social_skills += Skilldata.Skilllist[skill].name + ", "
-			social_skills = social_skills.substr(0, social_skills.length() - 2)
-		temptext += social_skills
-		if classesdata.professions[cls].has("combatskills") && !classesdata.professions[cls].combatskills.empty():
-			temptext += "\n" + tr("COMBAT_SKILLS") + " - "
-			for skill in classesdata.professions[cls].combatskills:
-				combat_skills += Skilldata.Skilllist[skill].name + ", "
-			combat_skills = combat_skills.trim_suffix(', ')
-		temptext += combat_skills
-		temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
-		globals.connecttexttooltip(newbutton, temptext, true)
+#		var prof = classesdata.professions[cls]
+#		var name = ResourceScripts.descriptions.get_class_name(prof, person)
+#		newbutton.connect('signal_RMB_release', gui_controller, 'show_class_info', [prof.code, person])
+#		var temptext = "[center]"+ResourceScripts.descriptions.get_class_name(prof,person) + "[/center]\n"+ResourceScripts.descriptions.get_class_bonuses(person, prof) + ResourceScripts.descriptions.get_class_traits(person, prof)
+#		var social_skills = ''
+#		var combat_skills = ''
+#		if classesdata.professions[cls].has("skills") && !classesdata.professions[cls].skills.empty():
+#			temptext += "\n" + tr("SOCIAL_SKILLS") + " - "
+#			for skill in classesdata.professions[cls].skills:
+#				social_skills += Skilldata.Skilllist[skill].name + ", "
+#			social_skills = social_skills.substr(0, social_skills.length() - 2)
+#		temptext += social_skills
+#		if classesdata.professions[cls].has("combatskills") && !classesdata.professions[cls].combatskills.empty():
+#			temptext += "\n" + tr("COMBAT_SKILLS") + " - "
+#			for skill in classesdata.professions[cls].combatskills:
+#				combat_skills += Skilldata.Skilllist[skill].name + ", "
+#			combat_skills = combat_skills.trim_suffix(', ')
+#		temptext += combat_skills
+#		temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
+#		globals.connecttexttooltip(newbutton, temptext, true)
+		globals.connectclasstooltip(newbutton, person, cls)
 	$GuildShop/FactionPoints.text = "x " + str(active_faction.reputation)
 	$GuildShop/GuildName.text = str(active_faction.name)
 	if pressed && !$GuildShop.is_visible():
@@ -810,18 +811,19 @@ func show_slave_info(person):
 		var name = ResourceScripts.descriptions.get_class_name(prof, person)
 		newnode.get_node("Label").text = name
 		newnode.get_node("ProfIcon").texture = prof.icon
-		newnode.connect(
-			'signal_RMB_release', gui_controller, 'show_class_info', [prof.code, person]
-		)
-		var temptext = (
-			"[center]"
-			+ ResourceScripts.descriptions.get_class_name(prof, person)
-			+ "[/center]\n"
-			+ ResourceScripts.descriptions.get_class_bonuses(person, prof)
-			+ ResourceScripts.descriptions.get_class_traits(person, prof)
-		)
-		temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
-		globals.connecttexttooltip(newnode, temptext)
+#		newnode.connect(
+#			'signal_RMB_release', gui_controller, 'show_class_info', [prof.code, person]
+#		)
+#		var temptext = (
+#			"[center]"
+#			+ ResourceScripts.descriptions.get_class_name(prof, person)
+#			+ "[/center]\n"
+#			+ ResourceScripts.descriptions.get_class_bonuses(person, prof)
+#			+ ResourceScripts.descriptions.get_class_traits(person, prof)
+#		)
+#		temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
+#		globals.connecttexttooltip(newnode, temptext)
+		globals.connectclasstooltip(newnode, person, i)
 	$SlaveMarket/Portrait.texture = person.get_icon()
 	globals.build_attrs_for_char($SlaveMarket, person)
 	$SlaveMarket/RichTextLabel.bbcode_text = text

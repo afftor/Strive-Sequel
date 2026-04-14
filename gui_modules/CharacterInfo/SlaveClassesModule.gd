@@ -209,7 +209,7 @@ func open_class(classcode):
 		class_locked = !person.checkreqs(tempclass.reqs, true)
 	else:
 		class_locked = false
-	var text = ResourceScripts.descriptions.get_class_details(person, tempclass)
+	var text #= ResourceScripts.descriptions.get_class_details(person, tempclass)
 	current_class = classcode
 	$ClassPanel._open_panel(person, classcode)
 	if person.has_profession(tempclass.code):
