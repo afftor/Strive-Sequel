@@ -1,3 +1,6 @@
+0.14.1e
+Fixed some tooltip and GUI issues introduced by item shader
+Updated chinese localization
 0.14.1d
 Multiple quest fixes
 Added some fixes to scene behavior which should prevent certain errors from occuring
