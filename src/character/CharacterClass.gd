@@ -193,6 +193,11 @@ func get_stat(statname, nobonus = false, desc_ready = false):
 				if !GeneratorData.transforms[statname].has(res):
 					res = null
 				return res
+			'armor_head':
+				var res = equipment.get_gear_type('head')
+				if !GeneratorData.transforms[statname].has(res):
+					res = null
+				return res
 	var st_data = statdata.statdata[statname]
 	if st_data.direct:
 		return statlist.get_stat(statname)

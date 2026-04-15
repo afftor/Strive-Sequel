@@ -5431,6 +5431,17 @@ var transforms = {
 		],
 	},
 	
+	armor_head = {
+		mask = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Head_armor_tex', texture = "res://Character_generator/images/25_head_masks/facemask2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Head_armor_tex', texture = "res://Character_generator/images/25_head_masks/facemask2.png"},
+		],
+		foxmask = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Head_armor_tex', texture = "res://Character_generator/images/25_head_masks/facemask1.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Head_armor_tex', texture = "res://Character_generator/images/25_head_masks/facemask1.png"},
+		],
+	},
+	
 	armor_color = {
 		default = [ #cloth
 			{type = 'item_recolor_group', group = 'cloth', part = 'part1color', color = Color('989898')},

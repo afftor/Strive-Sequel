@@ -16,7 +16,7 @@ var _offset
 
 var character
 var test_template = {
-	sex = 'female', 
+	sex = 'male', 
 	race = 'Kobold', 
 	horns = 'short', 
 	ears = 'bunny_standing', 
@@ -66,6 +66,7 @@ var test_template = {
 #	armor_lower = 'servant',
 	armor_collar = 'leather_collar',
 	armor_weapon = 'battleaxeadv',
+	armor_head = null,
 	armor_color_base = 'default',
 	armor_color_lower = 'default',
 	armor_color_collar = 'default_leather',
@@ -214,7 +215,7 @@ func rebuild_cloth(value):
 				continue
 			apply_transform(transform)
 	if value:
-		for stat in ['armor_base', 'armor_lower', 'armor_collar', 'armor_weapon']:
+		for stat in ['armor_base', 'armor_lower', 'armor_collar', 'armor_weapon', 'armor_head']:
 			if !GeneratorData.transforms.has(stat):
 				continue
 			var st_val = _get_stat(stat)
