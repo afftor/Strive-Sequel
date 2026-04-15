@@ -2856,6 +2856,20 @@ var quests = {
 			stage13 = {code = 'stage13', name = 'ANASTASIA_QUEST2_NAME', descript = 'ANASTASIA_QUEST_STAGE13'}, #return to dunkan
 		},
 	},
+	rouge_quest = {
+		code = 'rouge_quest',
+		summary = "ROUGE_QUEST_SUMMARY",
+		stages = {
+			mansion = {code = 'mansion', name = 'ROUGE_QUEST_NAME', descript = 'ROUGE_QUEST_STAGE_MANSION'},
+			furniture = {code = 'furniture', name = 'ROUGE_QUEST_NAME', descript = 'ROUGE_QUEST_STAGE_FURNITURE'},
+			letter = {code = 'letter', name = 'ROUGE_QUEST_NAME', descript = 'ROUGE_QUEST_STAGE_LETTER'},
+			melchor = {code = 'melchor', name = 'ROUGE_QUEST_NAME', descript = 'ROUGE_QUEST_STAGE_MELCHOR'},
+			warehouse = {code = 'warehouse', name = 'ROUGE_QUEST_NAME', descript = 'ROUGE_QUEST_STAGE_WAREHOUSE'},
+			raid = {code = 'raid', name = 'ROUGE_QUEST_NAME', descript = 'ROUGE_QUEST_STAGE_RAID'},
+			reward = {code = 'reward', name = 'ROUGE_QUEST_NAME', descript = 'ROUGE_QUEST_STAGE_REWARD'},
+			rouge = {code = 'rouge', name = 'ROUGE_QUEST_NAME', descript = 'ROUGE_QUEST_STAGE_ROUGE'},
+		},
+	},
 	meteorite_quest = {
 		code = 'meteorite_quest',
 		summary = "METEORITE_QUEST_SUMMARY",
