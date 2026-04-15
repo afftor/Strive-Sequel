@@ -45,6 +45,8 @@ var skills = {
 		tags = ['damage','ads', 'earth'],
 		reqs = [],
 		targetreqs = [],
+		keep_target = variables.TARGET_KEEP, #for using with spellsword
+		next_target = variables.NT_MELEE,
 		effects = [
 			Effectdata.rebuild_template({effect = 'bleed', duration = 1, chance = 0.5}),
 			Effectdata.rebuild_template({effect = 'e_impale', duration = 3}),
