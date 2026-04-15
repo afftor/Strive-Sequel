@@ -10,6 +10,8 @@ var skills = {
 		tags = ['damage','ads','dark'],
 		reqs = [],
 		targetreqs = [],
+		keep_target = variables.TARGET_KEEP, #for using with spellsword
+		next_target = variables.NT_MELEE,
 		effects = [Effectdata.rebuild_template({effect = 'blind', duration = 1})], 
 		cost = {mp = 3},
 		charges = 0,
