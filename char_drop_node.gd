@@ -25,12 +25,12 @@ func drop_data(position, data):
 			else:
 				target_node.call(target_function, data)
 			emit_signal("dropped")
-	elif data is Item:
-		if character != null:
-			target_node.use_item_on_character(character, data)
-			emit_signal("dropped")
-	elif data is Dictionary:
-		if character != null:
-			target_node.use_e_combat_skill(data.caster, character, data.skill)
-			#target_node.use_skill_explore(data.character, data.skill)
-			emit_signal("dropped")
+#	elif data is Item:
+#		if character != null:
+#			target_node.use_item_on_character(character, data)
+#			emit_signal("dropped")
+#	elif data is Dictionary:
+#		if character != null:
+#			target_node.use_e_combat_skill(data.caster, character, data.skill)
+#			#target_node.use_skill_explore(data.character, data.skill)
+#			emit_signal("dropped")

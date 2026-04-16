@@ -3,9 +3,12 @@ extends Control
 #var active_area
 var active_location
 onready var nav = $LocationGui/NavigationModule
-
+onready var cast_panel = $LocationGui/cast_panel
+onready var use_state_panel = $LocationGui/use_state_panel
+onready var return_all_btn = $LocationGui/PresentedSlavesPanel/ReturnAll
 
 var selected_location
+var use_state
 
 
 var positiondict = {
@@ -21,23 +24,29 @@ var positiondict = {
 func _ready():
 	# ResourceScripts.game_world.make_world()
 	for i in positiondict:
-		get_node(positiondict[i]).metadata = i
-		get_node(positiondict[i]).target_node = self
-		get_node(positiondict[i]).target_function = 'slave_position_selected'
+		var pos_node = get_node(positiondict[i])
+		pos_node.metadata = i
+		pos_node.target_node = self
+		pos_node.target_function = 'slave_position_selected'
+		pos_node.connect("pressed", self, "on_use_state_pressed", [pos_node])
+		pos_node.connect("pressed", self, "open_cast_panel", [pos_node])
 
 	$LocationGui.target_node = self
 	$LocationGui.target_function = 'slave_position_deselect'
 	$LocationGui/PresentedSlavesPanel/ScrollContainer.target_node = self
 	$LocationGui/PresentedSlavesPanel/ScrollContainer.target_function = 'slave_position_deselect'
-	$LocationGui/ItemUsePanel/ItemsButton.connect("pressed", self, "switch_panel", ["items"])
-	$LocationGui/ItemUsePanel/SpellsButton.connect("pressed", self, "switch_panel", ["spells"])
+#	$LocationGui/ItemUsePanel/ItemsButton.connect("pressed", self, "switch_panel", ["items"])
+#	$LocationGui/ItemUsePanel/SpellsButton.connect("pressed", self, "switch_panel", ["spells"])
 	$LocationGui/ItemUsePanel/ItemsButton.pressed = true
 	$LocationGui/Resources/SelectWorkers.connect("pressed", self, "select_workers")
 	$LocationGui/Resources/Forget.connect("pressed", self, "forget_location")
-	$LocationGui/PresentedSlavesPanel/ReturnAll.connect("pressed", self, "return_all_to_mansion")
+	return_all_btn.connect("pressed", self, "return_all_to_mansion")
 	$TestButton.connect("pressed", self, "test")
 	$TestButton.visible = gui_controller.mansion.test_mode
 	$JournalButton.connect("pressed", self, "open_journal")
+	cast_panel.connect("set_entity_use", self, "start_use_state")
+	use_state_panel.set_explorer(self)
+	
 	gui_controller.win_btn_connections_handler(true, $MansionJournalModule, $JournalButton)
 	gui_controller.windows_opened.clear()
 	globals.connect("hour_tick", self, "build_location_group")
@@ -549,7 +558,10 @@ func build_location_group():
 			else:
 				newbutton.get_node('icon').texture = images.get_icon('class_slave')
 		newbutton.get_node("Label").text = i.get_short_name()
-		newbutton.connect("pressed", self, "return_character", [i])
+#		newbutton.connect("pressed", self, "return_character", [i])
+		#return_all_btn is always visible here, but I'm still using this for unification reasons
+		newbutton.connect("pressed", self, "open_cast_panel", [newbutton, return_all_btn.visible])
+		newbutton.connect("pressed", self, "on_use_state_pressed", [newbutton])
 		if active_location.group.values().has(i.id):
 			newbutton.get_node("icon").modulate = Color(0.3, 0.3, 0.3)
 		globals.connectslavetooltip(newbutton, i)
@@ -558,8 +570,8 @@ func build_location_group():
 		&& is_visible()):#$LocationGui.is_visible()
 		nav.return_to_mansion()
 		return
-	build_item_panel()
-	build_spell_panel()
+#	build_item_panel()
+#	build_spell_panel()
 
 
 func add_rolled_chars(tarr):
@@ -604,112 +616,112 @@ func return_all_to_mansion_confirm(by_teleport = false):
 
 
 
-func build_item_panel():
-	input_handler.ClearContainer($LocationGui/ItemUsePanel/ScrollContainer/VBoxContainer)
-	var tutorial_items = false
-	for i in ResourceScripts.game_res.items.values():
-		if Items.itemlist[i.itembase].has('explor_effect') == false:
-			continue
-		var newnode = input_handler.DuplicateContainerTemplate(
-			$LocationGui/ItemUsePanel/ScrollContainer/VBoxContainer
-		)
-		i.set_icon(newnode.get_node("Icon"))
-		#newnode.get_node("Label").text = i.name
-		newnode.get_node("amount").text = str(i.amount)
-		newnode.get_node("Name").text = tr("ITEM" + str(i.code).to_upper())
-		newnode.dragdata = i
-		globals.connectitemtooltip_v2(newnode, i)
-		tutorial_items = true
-	# if tutorial_items == true:
-	# 	if !ResourceScripts.game_progress.active_tutorials.has("exploration_items"):
-	# 		input_handler.ActivateTutorial("exploration_items")
-	switch_panel(panelmode)
-
-
-var panelmode = 'items'
-
-
-func switch_panel(mode):
-	panelmode = mode
-	match mode:
-		'items':
-			$LocationGui/ItemUsePanel/ScrollContainer.show()
-			$LocationGui/ItemUsePanel/SpellContainer.hide()
-			$LocationGui/ItemUsePanel/SpellsButton.pressed = false
-			$LocationGui/ItemUsePanel/ItemsButton.pressed = true
-		'spells':
-			$LocationGui/ItemUsePanel/ScrollContainer.hide()
-			$LocationGui/ItemUsePanel/SpellContainer.show()
-			$LocationGui/ItemUsePanel/SpellsButton.pressed = true
-			$LocationGui/ItemUsePanel/ItemsButton.pressed = false
-
-
-func build_spell_panel():
-	input_handler.ClearContainer($LocationGui/ItemUsePanel/SpellContainer/VBoxContainer)
-	for id in ResourceScripts.game_party.character_order:
-		var person = ResourceScripts.game_party.characters[id]
-		if person.check_location(active_location.id, true):
-			for i in person.get_combat_skills() + person.get_explore_skills():
-				if i == "teleport":#hardcoded separately
-					continue
-				var skill = Skilldata.get_template(i, person)
-				if skill.tags.has('exploration') == false:
-					continue
-				var newnode = input_handler.DuplicateContainerTemplate(
-					$LocationGui/ItemUsePanel/SpellContainer/VBoxContainer
-				)
-				newnode.get_node('Icon').texture = skill.icon
-				if skill.tags.has('aura_active'):
-					newnode.get_node("Icon").material = load("res://assets/book_shader.tres")
-				newnode.get_node("name").text = skill.name
-				newnode.get_node("castername").text = person.get_short_name()
-				var text = skill.descript
-				var disabled = false
-				for st in skill.cost:
-					text += (
-						"\n\n"
-						+ statdata.statdata[st].name
-						+ " cost: "
-						+ str(skill.cost[st])
-						+ " ("
-						+ str(floor(person.get_stat(st)))
-						+ ")"
-					)
-				if !skill.catalysts.empty() and !person.has_status('ignore_catalysts_for_%s' % i):
-					text += '\n\nRequired Catalysts: '
-					for k in skill.catalysts:
-						text += (
-							"\n"
-							+ Items.materiallist[k].name
-							+ ": "
-							+ str(skill.catalysts[k])
-							+ " ("
-							+ str(ResourceScripts.game_res.materials[k])
-							+ ")"
-						)
-						if ResourceScripts.game_res.materials[k] < skill.catalysts[k]:
-							disabled = true
-				globals.connecttexttooltip(newnode, text)
-				if skill.target == 'self':
-					newnode.set_script(null)
-					newnode.connect('pressed', self, 'use_e_combat_skill', [person, person, skill])
-				else:
-					newnode.dragdata = {skill = skill, caster = person}
-				if !person.check_cost(skill.cost):
-					disabled = true
-				if person.has_status('no_obed_gain'):
-					disabled = true
-				if skill.charges > 0:
-					var leftcharges = skill.charges
-					if person.skills.combat_skill_charges.has(skill.code):
-						leftcharges -= person.skills.combat_skill_charges[skill.code]
-#						newbutton.get_node("charge").visible = true
-#						newbutton.get_node("charge").text = str(leftcharges)+"/"+str(skill.charges)
-					if leftcharges <= 0:
-						disabled = true
-				if disabled == true:
-					newnode.get_node("name").set("custom_colors/font_color", Color(1, 0.5, 0.5))
-					newnode.script = null
+#func build_item_panel():
+#	input_handler.ClearContainer($LocationGui/ItemUsePanel/ScrollContainer/VBoxContainer)
+#	var tutorial_items = false
+#	for i in ResourceScripts.game_res.items.values():
+#		if Items.itemlist[i.itembase].has('explor_effect') == false:
+#			continue
+#		var newnode = input_handler.DuplicateContainerTemplate(
+#			$LocationGui/ItemUsePanel/ScrollContainer/VBoxContainer
+#		)
+#		i.set_icon(newnode.get_node("Icon"))
+#		#newnode.get_node("Label").text = i.name
+#		newnode.get_node("amount").text = str(i.amount)
+#		newnode.get_node("Name").text = tr("ITEM" + str(i.code).to_upper())
+#		newnode.dragdata = i
+#		globals.connectitemtooltip_v2(newnode, i)
+#		tutorial_items = true
+#	# if tutorial_items == true:
+#	# 	if !ResourceScripts.game_progress.active_tutorials.has("exploration_items"):
+#	# 		input_handler.ActivateTutorial("exploration_items")
+#	switch_panel(panelmode)
+#
+#
+#var panelmode = 'items'
+#
+#
+#func switch_panel(mode):
+#	panelmode = mode
+#	match mode:
+#		'items':
+#			$LocationGui/ItemUsePanel/ScrollContainer.show()
+#			$LocationGui/ItemUsePanel/SpellContainer.hide()
+#			$LocationGui/ItemUsePanel/SpellsButton.pressed = false
+#			$LocationGui/ItemUsePanel/ItemsButton.pressed = true
+#		'spells':
+#			$LocationGui/ItemUsePanel/ScrollContainer.hide()
+#			$LocationGui/ItemUsePanel/SpellContainer.show()
+#			$LocationGui/ItemUsePanel/SpellsButton.pressed = true
+#			$LocationGui/ItemUsePanel/ItemsButton.pressed = false
+#
+#
+#func build_spell_panel():
+#	input_handler.ClearContainer($LocationGui/ItemUsePanel/SpellContainer/VBoxContainer)
+#	for id in ResourceScripts.game_party.character_order:
+#		var person = ResourceScripts.game_party.characters[id]
+#		if person.check_location(active_location.id, true):
+#			for i in person.get_combat_skills() + person.get_explore_skills():
+#				if i == "teleport":#hardcoded separately
+#					continue
+#				var skill = Skilldata.get_template(i, person)
+#				if skill.tags.has('exploration') == false:
+#					continue
+#				var newnode = input_handler.DuplicateContainerTemplate(
+#					$LocationGui/ItemUsePanel/SpellContainer/VBoxContainer
+#				)
+#				newnode.get_node('Icon').texture = skill.icon
+#				if skill.tags.has('aura_active'):
+#					newnode.get_node("Icon").material = load("res://assets/book_shader.tres")
+#				newnode.get_node("name").text = skill.name
+#				newnode.get_node("castername").text = person.get_short_name()
+#				var text = skill.descript
+#				var disabled = false
+#				for st in skill.cost:
+#					text += (
+#						"\n\n"
+#						+ statdata.statdata[st].name
+#						+ " cost: "
+#						+ str(skill.cost[st])
+#						+ " ("
+#						+ str(floor(person.get_stat(st)))
+#						+ ")"
+#					)
+#				if !skill.catalysts.empty() and !person.has_status('ignore_catalysts_for_%s' % i):
+#					text += '\n\nRequired Catalysts: '
+#					for k in skill.catalysts:
+#						text += (
+#							"\n"
+#							+ Items.materiallist[k].name
+#							+ ": "
+#							+ str(skill.catalysts[k])
+#							+ " ("
+#							+ str(ResourceScripts.game_res.materials[k])
+#							+ ")"
+#						)
+#						if ResourceScripts.game_res.materials[k] < skill.catalysts[k]:
+#							disabled = true
+#				globals.connecttexttooltip(newnode, text)
+#				if skill.target == 'self':
+#					newnode.set_script(null)
+#					newnode.connect('pressed', self, 'use_e_combat_skill', [person, person, skill])
+#				else:
+#					newnode.dragdata = {skill = skill, caster = person}
+#				if !person.check_cost(skill.cost):
+#					disabled = true
+#				if person.has_status('no_obed_gain'):
+#					disabled = true
+#				if skill.charges > 0:
+#					var leftcharges = skill.charges
+#					if person.skills.combat_skill_charges.has(skill.code):
+#						leftcharges -= person.skills.combat_skill_charges[skill.code]
+##						newbutton.get_node("charge").visible = true
+##						newbutton.get_node("charge").text = str(leftcharges)+"/"+str(skill.charges)
+#					if leftcharges <= 0:
+#						disabled = true
+#				if disabled == true:
+#					newnode.get_node("name").set("custom_colors/font_color", Color(1, 0.5, 0.5))
+#					newnode.script = null
 
 
 func open_location_actions():
@@ -807,3 +819,63 @@ func select_workers():
 func reset_active_location(arg = null):
 	if input_handler.active_location.id != selected_location:
 		input_handler.active_location = ResourceScripts.world_gen.get_location_from_code(selected_location)
+
+
+func open_cast_panel(port_node, with_return = false):
+	if is_in_use_state(): return
+	var person = port_node.get("dragdata")
+	if !person:
+		person = port_node.get("character")
+	if !person: return
+	
+	var bottom = with_return#move to arg if needed
+	if !bottom:
+		cast_panel.rect_global_position = Vector2(
+			port_node.get_global_rect().end.x,
+			port_node.rect_global_position.y)
+	else:
+		cast_panel.rect_global_position = Vector2(
+			port_node.rect_global_position.x,
+			port_node.get_global_rect().end.y)
+	cast_panel.build_for_person(person.id, with_return)
+	cast_panel.show()
+
+func start_use_state(type, caster, entity):
+	if type == cast_panel.ENTITY_RETURN:
+		return_character(caster)
+		return
+	elif type == cast_panel.ENTITY_ITEM:
+		use_item_on_character(caster, entity)
+		return
+	#type == cast_panel.ENTITY_SKILL:
+	if entity.target == 'self':
+		use_e_combat_skill(caster, caster, entity)
+		return
+	
+	use_state = {
+		caster = caster,
+		skill = entity
+	}
+	use_state_panel.get_node("Button/Icon").texture = entity.icon
+	use_state_panel.get_node("Button/name").text = entity.name
+	use_state_panel.show()
+
+func try_stop_use_state():
+	if !is_in_use_state(): return
+	use_state = null
+	use_state_panel.hide()
+
+func is_in_use_state():
+	return (use_state != null)
+
+func on_use_state_pressed(btn):
+	if use_state == null:
+		return
+	var person = btn.get("dragdata")
+	if !person:
+		person = btn.get("character")
+	if !person:
+		return
+	
+	use_e_combat_skill(use_state.caster, person, use_state.skill)
+	try_stop_use_state()#not really necessary, as use_state_panel should do it itself

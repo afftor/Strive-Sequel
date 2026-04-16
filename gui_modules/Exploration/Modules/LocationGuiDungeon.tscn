@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://gui_modules/Universal/Modules/NavigationModule.tscn" type="PackedScene" id=2]
@@ -34,6 +34,8 @@
 [ext_resource path="res://assets/Textures_v2/BATTLE/Icons/icon_sword.png" type="Texture" id=32]
 [ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/panel_dungeon_portraitsmall.png" type="Texture" id=33]
 [ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/panel_dungeon_char_hover.png" type="Texture" id=34]
+[ext_resource path="res://gui_modules/Exploration/Modules/CastPanel.tscn" type="PackedScene" id=35]
+[ext_resource path="res://gui_modules/Exploration/Modules/use_state_panel.tscn" type="PackedScene" id=36]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=39]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainExtraSmallBold.tres" type="DynamicFont" id=40]
 [ext_resource path="res://gui_modules/Exploration/Modules/AvailableSlaves.tscn" type="PackedScene" id=41]
@@ -452,9 +454,6 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="mp" type="TextureProgress" parent="Positions/HBoxContainer/frontrow/1/Image/TextureRect"]
 margin_left = -4.0
@@ -805,14 +804,12 @@ text = "RETURN_ALL_MANSION_LABEL"
 clip_text = true
 
 [node name="ItemUsePanel" type="Panel" parent="."]
+visible = false
 margin_left = 328.001
 margin_top = 420.0
 margin_right = 628.001
 margin_bottom = 1060.0
 custom_styles/panel = ExtResource( 21 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ItemUsePanel"]
 margin_left = 26.0
@@ -820,9 +817,6 @@ margin_top = 109.0
 margin_right = 292.0
 margin_bottom = 618.0
 scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ItemUsePanel/ScrollContainer"]
 margin_right = 266.0
@@ -1413,3 +1407,8 @@ margin_bottom = 41.0
 rect_min_size = Vector2( 41, 41 )
 custom_fonts/font = ExtResource( 31 )
 text = "1"
+
+[node name="cast_panel" parent="." instance=ExtResource( 35 )]
+visible = false
+
+[node name="use_state_panel" parent="." instance=ExtResource( 36 )]
