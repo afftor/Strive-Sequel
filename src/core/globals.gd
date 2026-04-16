@@ -1931,6 +1931,11 @@ func roll_characters():
 	var racedata = []
 	if areadata.has('races'):
 		racedata = areadata.races.duplicate()
+	elif worlddata.lands[areadata.code].has('races'):
+		areadata.races = worlddata.lands[areadata.code].races
+		racedata = areadata.races.duplicate()
+	else:
+		print("ERROR - no racedata for %s" % areadata.code)
 	if locdata.has('character_data'):
 		locdata = locdata.character_data
 		if locdata.has('chance_mod'):
@@ -1946,7 +1951,10 @@ func roll_characters():
 		if racedata is Array and !racedata.empty():
 			t_race = input_handler.weightedrandom(racedata)
 		if t_race == 'local':
-			t_race = input_handler.weightedrandom(areadata.races)
+			if areadata.has('races'):
+				t_race = input_handler.weightedrandom(areadata.races)
+			else:
+				print("ERROR - no racedata for %s" % areadata.code)
 		var newslave = ResourceScripts.scriptdict.class_slave.new("random_combat")
 		newslave.generate_random_character_from_data(t_race, null, t_diff)
 		newslave.is_active = true
