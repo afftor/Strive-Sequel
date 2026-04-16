@@ -1402,4 +1402,5 @@ func cast_teleport(chid):
 	var caster = characters_pool.get_char_by_id(chid)
 	var skill = Skilldata.get_template('teleport', caster)
 	caster.pay_cost(skill.cost)
+	caster.spend_combat_charge(skill.code, skill.cooldown)
 	confirm_travel(true)

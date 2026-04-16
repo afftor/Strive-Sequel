@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://gui_modules/Universal/Modules/NavigationModule.tscn" type="PackedScene" id=2]
@@ -34,6 +34,8 @@
 [ext_resource path="res://assets/Textures_v2/BATTLE/Icons/icon_sword.png" type="Texture" id=32]
 [ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/panel_dungeon_portraitsmall.png" type="Texture" id=33]
 [ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/panel_dungeon_char_hover.png" type="Texture" id=34]
+[ext_resource path="res://gui_modules/Exploration/Modules/CastPanel.tscn" type="PackedScene" id=35]
+[ext_resource path="res://gui_modules/Exploration/Modules/use_state_panel.tscn" type="PackedScene" id=36]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=39]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainExtraSmallBold.tres" type="DynamicFont" id=40]
 [ext_resource path="res://gui_modules/Exploration/Modules/AvailableSlaves.tscn" type="PackedScene" id=41]
@@ -859,6 +861,7 @@ text = "RETURN_ALL_MANSION_LABEL"
 clip_text = true
 
 [node name="ItemUsePanel" type="Panel" parent="."]
+visible = false
 margin_left = 328.001
 margin_top = 420.0
 margin_right = 628.001
@@ -1163,3 +1166,8 @@ margin_left = 1103.0
 margin_top = 128.0
 margin_right = 1471.0
 margin_bottom = 802.0
+
+[node name="cast_panel" parent="." instance=ExtResource( 35 )]
+visible = false
+
+[node name="use_state_panel" parent="." instance=ExtResource( 36 )]

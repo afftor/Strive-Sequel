@@ -9,9 +9,14 @@ func make_list(chars, cast_obj, cast_func) -> bool:
 		if person.valuecheck({code = 'has_skill', value = 'teleport', check = true}):
 			can_teleport = true
 			var skill = Skilldata.get_template('teleport', person)
+			var leftcharges = skill.charges
+			if person.skills.combat_skill_charges.has(skill.code):
+				leftcharges -= person.skills.combat_skill_charges[skill.code]
 			var new_button = input_handler.DuplicateContainerTemplate(teleport_list)
 			new_button.get_node('Icon').texture = person.get_icon()
-			new_button.get_node('Label').text = person.get_short_name()
+			new_button.get_node('Label').text = "%s (%s/%s)" % [
+				person.get_short_name(),
+				leftcharges, skill.charges]
 			new_button.get_node('mp').max_value = person.get_stat('mpmax')
 			new_button.get_node('mp').value = person.mp
 			new_button.get_node('mp/Labelmp').text = "%s: %s(%s)" % [
@@ -19,7 +24,7 @@ func make_list(chars, cast_obj, cast_func) -> bool:
 				skill.cost.mp,
 				round(person.mp)]
 			
-			if !person.check_cost(skill.cost):
+			if !person.check_cost(skill.cost) or leftcharges <= 0:
 				new_button.disabled = true
 				new_button.get_node('disabled').show()
 			new_button.connect("pressed", cast_obj, cast_func, [chid])
