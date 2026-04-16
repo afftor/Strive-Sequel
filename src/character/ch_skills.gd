@@ -603,3 +603,11 @@ func repair_skill_panels():
 	for i in cleararray:
 		for k in [social_skills, combat_skills]:
 			k.erase(i)
+
+#TODO: move all such uses to this func!
+func spend_combat_charge(skill_id, skill_cooldown):
+	if combat_skill_charges.has(skill_id):
+		combat_skill_charges[skill_id] += 1
+	else:
+		combat_skill_charges[skill_id] = 1
+	daily_cooldowns[skill_id] = skill_cooldown

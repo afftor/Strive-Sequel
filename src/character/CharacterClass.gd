@@ -776,6 +776,8 @@ func unlearn_e_skill(skill):
 func rebuild_skills():
 	dyn_stats.rebuild_skills()
 
+func spend_combat_charge(skill_id, skill_cooldown):
+	skills.spend_combat_charge(skill_id, skill_cooldown)
 
 func cooldown_tick():
 	skills.cooldown_tick()
