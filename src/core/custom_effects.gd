@@ -147,10 +147,11 @@ func oblivionpot(character):
 			refund_exp += exp_reqs[class_count]
 	if refund_exp > 0:
 		refund_exp = floor(refund_exp * 0.9)
-		character.add_stat('base_exp', refund_exp)
+		character.add_stat('base_exp_direct', refund_exp)
 	character.reset_mastery()
 	character.reset_minor_training()
 	character.remove_all_classes()
+	character.process_event(variables.TR_OBLIVION)
 	input_handler.active_character = character
 	input_handler.interactive_message("oblivion_potion_use")
 	character.try_breakdown('brk_oblivion')
