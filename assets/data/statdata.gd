@@ -18,6 +18,13 @@ var statdata = {
 		type = 'misc',
 		tags = ['numeric', 'integer']
 	},
+	money = { 
+		code = 'money',
+		name = 'LSPGOLD',
+		descript = 'GOLDPRICE',
+		baseicon = 'food_love',
+		tags = ['numeric'],
+	},
 	price = { 
 		code = 'price',
 		name = '',

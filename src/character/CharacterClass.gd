@@ -2364,7 +2364,7 @@ func get_manacost_for_skill(skill):
 func pay_cost(cost):
 	for st in cost:
 		if st == 'money':
-			 ResourceScripts.game_party.money -= cost.money
+			 ResourceScripts.game_res.money -= cost.money
 		elif st == 'mp':
 			mp -= int(cost.mp)
 			if displaynode != null:
@@ -2375,10 +2375,12 @@ func pay_cost(cost):
 
 func check_cost(cost):
 	for st in cost:
-		if st == 'money' and ResourceScripts.game_party.money < cost[st]:
-			return false
-		elif st == 'mp' and mp < int(cost[st]): 
-			return false
+		if st == 'money':
+			if ResourceScripts.game_res.money < cost[st]:
+				return false
+		elif st == 'mp': 
+			if mp < int(cost[st]): 
+				return false
 		elif get_stat(st) < cost[st]: 
 			return false
 	return true
