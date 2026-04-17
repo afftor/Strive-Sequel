@@ -1226,7 +1226,7 @@ var traits = {
 		icon = "res://assets/images/iconsskills/Serve2.png",
 		effects = [],
 		bonusstats = {productivity = -0.5, damage_mod_all = -0.3}, 
-		tags = ['training', 'simple_icon']
+		tags = ['training', 'simple_icon', 'mansion_only']
 	},
 	training_broke_in = {
 		code = 'training_broke_in',
@@ -1359,7 +1359,7 @@ var traits = {
 		effects = [],
 		cost = 25,
 		bonusstats = {price_add_part = 0.25}, 
-		tags = ['training_final', 'training_success', 'simple_icon']
+		tags = ['training_final', 'training_success', 'simple_icon', 'mansion_only']
 	},
 	training_productivity = {
 		code = 'training_productivity',
@@ -1370,7 +1370,7 @@ var traits = {
 		effects = [],
 		cost = 30,
 		bonusstats = {productivity = 0.3}, 
-		tags = ['training_final', 'training_success', 'simple_icon']
+		tags = ['training_final', 'training_success', 'simple_icon', 'mansion_only']
 	},
 	training_xp = {
 		code = 'training_xp',
@@ -1381,7 +1381,7 @@ var traits = {
 		effects = [],
 		cost = 30,
 		bonusstats = {exp_gain_mod = 0.2}, 
-		tags = ['training_final', 'training_success', 'simple_icon']
+		tags = ['training_final', 'training_success', 'simple_icon', 'mansion_only']
 	},
 	training_hp = {
 		code = 'training_hp',
@@ -1392,7 +1392,7 @@ var traits = {
 		effects = [],
 		cost = 20,
 		bonusstats = {hpmax_add = 25}, 
-		tags = ['training_final', 'training_success', 'simple_icon']
+		tags = ['training_final', 'training_success', 'simple_icon', 'mansion_only']
 	},
 	training_atk = {
 		code = 'training_atk',
@@ -1403,7 +1403,7 @@ var traits = {
 		effects = [],
 		cost = 15,
 		bonusstats = {atk = 10}, 
-		tags = ['training_final', 'training_success', 'simple_icon']
+		tags = ['training_final', 'training_success', 'simple_icon', 'mansion_only']
 	},
 	training_matk = {
 		code = 'training_matk',
@@ -1414,7 +1414,7 @@ var traits = {
 		effects = [],
 		cost = 20,
 		bonusstats = {matk = 10}, 
-		tags = ['training_final', 'training_success', 'simple_icon']
+		tags = ['training_final', 'training_success', 'simple_icon', 'mansion_only']
 	},
 	training_def = {
 		code = 'training_def',
@@ -1425,7 +1425,7 @@ var traits = {
 		effects = [],
 		cost = 15,
 		bonusstats = {armor = 10}, 
-		tags = ['training_final', 'training_success', 'simple_icon']
+		tags = ['training_final', 'training_success', 'simple_icon', 'mansion_only']
 	},
 	training_mdef = {
 		code = 'training_mdef',
@@ -1436,7 +1436,7 @@ var traits = {
 		effects = [],
 		cost = 15,
 		bonusstats = {mdef = 11}, 
-		tags = ['training_final', 'training_success', 'simple_icon']
+		tags = ['training_final', 'training_success', 'simple_icon', 'mansion_only']
 	},
 	training_trainer = {
 		code = 'training_trainer',
@@ -1447,7 +1447,7 @@ var traits = {
 		effects = [],
 		cost = 30,
 		bonusstats = {trainee_amount = 3}, 
-		tags = ['training_final', 'training_success', 'simple_icon', 'trainer']
+		tags = ['training_final', 'training_success', 'simple_icon', 'trainer', 'mansion_only']
 	},
 	training_heal = {
 		code = 'training_heal',
