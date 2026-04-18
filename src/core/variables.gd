@@ -35,6 +35,7 @@ var timeforinteraction = 20
 var relationship_base = {
 	default = 50,
 	acquintances = 50,
+	acquaintances = 50,
 	friends = 60,
 	lovers = 85,
 	freelovers = 85,
