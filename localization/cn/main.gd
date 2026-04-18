@@ -172,6 +172,7 @@ var TranslationDict = {
 	EXPLOREUPGRADES = "升级",
 	EXPLORESERVICE = "接待",
 	EXPLOREGUILDSHOP = "公会商店",
+	EXPLOREUSE = """Use""", # MISSING TRANSLATION
 	STATSTRADING_IMPROVED_STATUS = "提升后的属性",
 	STATSTRADING_STAT_NAME = "属性名称",
 	STATSTRADING_CURRENT_VALUE = "当前数值",
@@ -4515,6 +4516,36 @@ SQ_AZURE_LEAD = "奥维尔·塔米斯魔导师",
 	LOG_MANA = """魔法 %d.""",
 	LOG_COMBAT_MANA = """
 %s 恢复 %d 法力.""",
+	LOG_COMBAT_DEFEATED = """
+%s has been defeated.
+""", # MISSING TRANSLATION
+	LOG_COMBAT_EVADE_DAMAGE = """%s evades the damage.""", # MISSING TRANSLATION
+	LOG_COMBAT_CRITICAL = """[color=yellow]Critical!![/color] """, # MISSING TRANSLATION
+	LOG_COMBAT_USE_SKILL = """
+%s uses %s. """, # MISSING TRANSLATION
+	LOG_COMBAT_USE_ITEM = """
+%s uses %s. """, # MISSING TRANSLATION
+	LOG_COMBAT_AUTO_SKILL = """
+%s! """, # MISSING TRANSLATION
+	LOG_COMBAT_COPY_SKILL = """
+%s copied %s. """, # MISSING TRANSLATION
+	LOG_COMBAT_DRAIN_HEALTH = """%s drained %d health from %s and gained %d health.""", # MISSING TRANSLATION
+	LOG_COMBAT_HIT_DAMAGE = """%s is hit for %d damage (%s, %s). """, # MISSING TRANSLATION
+	LOG_COMBAT_HIT_DAMAGE_SIMPLE = """%s is hit for %d damage. """, # MISSING TRANSLATION
+	LOG_COMBAT_HEAL_HEALTH = """%s is healed for %d health.""", # MISSING TRANSLATION
+	LOG_COMBAT_RESTORE_MANA = """%s restored %d mana.""", # MISSING TRANSLATION
+	LOG_COMBAT_DRAIN_MANA = """%s drained %d mana from %s and gained %d mana.""", # MISSING TRANSLATION
+	LOG_COMBAT_LOSE_MANA = """%s lost %d mana.""", # MISSING TRANSLATION
+	LOG_COMBAT_RESTORE_STAT = """%s restored %d %s.""", # MISSING TRANSLATION
+	LOG_COMBAT_DRAIN_STAT = """%s drained %d %s from %s.""", # MISSING TRANSLATION
+	LOG_COMBAT_LOSE_STAT = """%s loses %d %s.""", # MISSING TRANSLATION
+	LOG_COMBAT_SET_STAT = """%s's %s is now %d.""", # MISSING TRANSLATION
+	RELATIONSHIPACQUAINTANCES = """Acquaintances""", # MISSING TRANSLATION
+	RELATIONSHIPFRIENDS = """Friends""", # MISSING TRANSLATION
+	RELATIONSHIPLOVERS = """Lovers""", # MISSING TRANSLATION
+	RELATIONSHIPFREELOVERS = """Paramours""", # MISSING TRANSLATION
+	RELATIONSHIPRIVALS = """Rivals""", # MISSING TRANSLATION
+	LOG_RELATIONSHIP_STATUS = """%s and %s have become %s""", # MISSING TRANSLATION
 	LOG_ADD_PART = "将 %s 的部件添加至 %s",
 	LOG_SET = "%s 设为 %s",
 	DIALOGUECHARINSPECT = "检视",
@@ -18601,6 +18632,7 @@ DUNGEONNOUN1 = "隧道 Tunnels",
 	CHAR_LABEL = """角色""",
 	QUESTS_LABEL = """任务""",
 	RETURN_ALL_MANSION_LABEL = "全部返回豪宅",
+	RETURN_MANSION_LABEL = """Recall""", # MISSING TRANSLATION
 	TRAVELERS_LABEL = "旅行者",
 	BATTLE_GROUP_LABEL = "战斗小队",
  ITEMS_LABEL = "项目 Items",
@@ -19021,6 +19053,7 @@ In combat restore the amount of health equal to your health regeneration at the 
 	MAE_SCENE3_SS = """仪式期间的梅剧情场景""",
 	HELEVIEL1_SS = "赫勒维尔对女性主角的奖励",
 	LILIA_SEX_1_3_SS = "完成莉莉娅的第一个任务",
+	LILIA_SEX_2_1_SS = """Complete Lilia's quest""", # MISSING TRANSLATION
 	CALI_TOUCHING_1_SS = """卡莉支线中的第一场景.""",
 	CALI_BJ_HAPPY_1_SS = """卡莉支线中的第二场景.""",
 	CALI_RIDING_1_SS = """完成卡莉支线.""",

@@ -319,7 +319,7 @@ func change_relationship_status(char1, char2, new_status, forced = false):
 	if new_status in ['friends', 'rivals'] and f:
 		var ch1 = characters[char1]
 		var ch2 = characters[char2]
-		var log_text = "%s and %s have become %s" % [ch1.get_short_name(), ch2.get_short_name(), new_status]
+		var log_text = tr("LOG_RELATIONSHIP_STATUS") % [ch1.get_short_name(), ch2.get_short_name(), tr("RELATIONSHIP" + new_status.to_upper()).to_lower()]
 		globals.text_log_add('char', log_text)
 #		globals.manifest(log_text, ch1)
 

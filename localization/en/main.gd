@@ -3548,9 +3548,9 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	LOGEFFECTTOGGLEOFF = """
 %s on %s is off""",
 	LOGEFFECTTOGGLEOFFON = """
-%s on %s is updated""",
+%s is reapplied on %s""",
 	LOGEFFECTRENEW = """
-%s is updated on %s""",
+%s is reapplied on %s""",
 	EFFECTNAME_LUMINANCE = "luminance",
 	EFFECTNAME_DEFENDED = "protection",
 	EFFECTNAME_WARDED = "ward",
@@ -4504,6 +4504,37 @@ Sex skills are increased when performing related action and their growth is depe
 	LOG_MANA = "mana %d.",
 	LOG_COMBAT_MANA = """
 %s get %d mp.""",
+	LOG_COMBAT_DEFEATED = """
+%s has been defeated.
+""",
+	LOG_COMBAT_EVADE_DAMAGE = "%s evades the damage.",
+	LOG_COMBAT_CRITICAL = "[color=yellow]Critical!![/color] ",
+	LOG_COMBAT_USE_SKILL = """
+%s uses %s. """,
+	LOG_COMBAT_USE_ITEM = """
+%s uses %s. """,
+	LOG_COMBAT_AUTO_SKILL = """
+%s! """,
+	LOG_COMBAT_COPY_SKILL = """
+%s copied %s. """,
+	LOG_COMBAT_DRAIN_HEALTH = "%s drained %d health from %s and gained %d health.",
+	LOG_COMBAT_HIT_DAMAGE = "%s is hit for %d damage (%s, %s). ",
+	LOG_COMBAT_HIT_DAMAGE_SIMPLE = "%s is hit for %d damage. ",
+	LOG_COMBAT_HEAL_HEALTH = "%s is healed for %d health.",
+	LOG_COMBAT_RESTORE_MANA = "%s restored %d mana.",
+	LOG_COMBAT_DRAIN_MANA = "%s drained %d mana from %s and gained %d mana.",
+	LOG_COMBAT_LOSE_MANA = "%s lost %d mana.",
+	LOG_COMBAT_RESTORE_STAT = "%s restored %d %s.",
+	LOG_COMBAT_DRAIN_STAT = "%s drained %d %s from %s.",
+	LOG_COMBAT_LOSE_STAT = "%s loses %d %s.",
+	LOG_COMBAT_SET_STAT = "%s's %s is now %d.",
+	RELATIONSHIPACQUAINTANCES = "Acquaintances",
+	RELATIONSHIPACQUINTANCES = "Acquaintances",
+	RELATIONSHIPFRIENDS = "Friends",
+	RELATIONSHIPLOVERS = "Lovers",
+	RELATIONSHIPFREELOVERS = "Paramours",
+	RELATIONSHIPRIVALS = "Rivals",
+	LOG_RELATIONSHIP_STATUS = "%s and %s have become %s",
 	LOG_ADD_PART = "add part of %s to %s",
 	LOG_SET = "%s is %s",
 	DIALOGUECHARINSPECT = "Inspect",

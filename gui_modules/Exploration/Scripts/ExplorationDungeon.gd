@@ -425,7 +425,7 @@ func use_e_combat_skill(caster, target, skill):
 func execute_skill(s_skill2):  #to update to exploration version
 	var text = ''
 	if s_skill2.hit_res == variables.RES_CRIT:
-		text += "[color=yellow]Critical!![/color] "
+		text += tr("LOG_COMBAT_CRITICAL")
 		#s_skill2.target.displaynode.process_critical()
 	for i in s_skill2.value:
 		if !i.check_conditions(): continue
@@ -438,30 +438,27 @@ func execute_skill(s_skill2):  #to update to exploration version
 			elif i.is_drain > 0.0:
 				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
 				var rval2 = s_skill2.caster.heal(rval * i.is_drain)
-				text += (
-					"%s drained %d health from %s and gained %d health."
-					% [
-						s_skill2.caster.get_short_name(),
-						rval,
-						s_skill2.target.get_short_name(),
-						rval2
-					]
-				)
+				text += tr("LOG_COMBAT_DRAIN_HEALTH") % [
+					s_skill2.caster.get_short_name(),
+					rval,
+					s_skill2.target.get_short_name(),
+					rval2
+				]
 			elif s_skill2.tags.has('no_log') &&  i.is_drain <= 0.0:
 				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
 			else:
 				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
-				text += "%s is hit for %d damage. " % [s_skill2.target.get_short_name(), rval]  #, s_skill2.value[i]]
+				text += tr("LOG_COMBAT_HIT_DAMAGE_SIMPLE") % [s_skill2.target.get_short_name(), rval]  #, s_skill2.value[i]]
 		elif i.damagestat == 'damage_hp' and i.dmgf == 1:  #heal, heal no log
 			if s_skill2.tags.has('no_log'):
 				var rval = s_skill2.target.heal(i.value)
 			else:
 				var rval = s_skill2.target.heal(i.value)
-				text += "%s is healed for %d health." % [s_skill2.target.get_short_name(), rval]
+				text += tr("LOG_COMBAT_HEAL_HEALTH") % [s_skill2.target.get_short_name(), rval]
 		elif i.damagestat == 'restore_mana' and i.dmgf == 0:  #heal, heal no log
 			if ! s_skill2.tags.has('no log'):
 				var rval = s_skill2.target.mana_update(i.value)
-				text += "%s restored %d mana." % [s_skill2.target.get_short_name(), rval]
+				text += tr("LOG_COMBAT_RESTORE_MANA") % [s_skill2.target.get_short_name(), rval]
 			else:
 				s_skill2.target.mana_update(i.value)
 		elif i.damagestat == 'restore_mana' and i.dmgf == 1:  #drain, damage, damage no log, drain no log
@@ -469,57 +466,42 @@ func execute_skill(s_skill2):  #to update to exploration version
 			if i.is_drain > 0.0:
 				var rval2 = s_skill2.caster.mana_update(rval * i.is_drain)
 				if ! s_skill2.tags.has('no log'):
-					text += (
-						"%s drained %d mana from %s and gained %d mana."
-						% [s_skill2.caster.get_short_name(), rval, s_skill2.target.name, rval2]
-					)
+					text += tr("LOG_COMBAT_DRAIN_MANA") % [s_skill2.caster.get_short_name(), rval, s_skill2.target.name, rval2]
 			if ! s_skill2.tags.has('no log'):
-				text += "%s lost %d mana." % [s_skill2.target.get_short_name(), rval]
+				text += tr("LOG_COMBAT_LOSE_MANA") % [s_skill2.target.get_short_name(), rval]
 		else:
 			var mod = i.dmgf
 			var stat = i.damagestat
 			if mod == 0:
 				var rval = s_skill2.target.stat_update(stat, i.value)
 				if ! s_skill2.tags.has('no log'):
-					text += (
-						"%s restored %d %s."
-						% [s_skill2.target.get_short_name(), rval, tr(stat)]
-					)
+					text += tr("LOG_COMBAT_RESTORE_STAT") % [s_skill2.target.get_short_name(), rval, tr(stat)]
 			elif mod == 1:
 				var rval = s_skill2.target.stat_update(stat, -i.value)
 				if i.is_drain > 0.0:
 					var rval2 = s_skill2.caster.stat_update(stat, -rval * i.is_drain)
 					if ! s_skill2.tags.has('no log'):
-						text += (
-							"%s drained %d %s from %s."
-							% [
-								s_skill2.caster.get_short_name(),
-								i.value,
-								tr(stat),
-								s_skill2.target.get_short_name()
-							]
-						)
+						text += tr("LOG_COMBAT_DRAIN_STAT") % [
+							s_skill2.caster.get_short_name(),
+							i.value,
+							tr(stat),
+							s_skill2.target.get_short_name()
+						]
 				elif ! s_skill2.tags.has('no log'):
-					text += "%s loses %d %s." % [s_skill2.target.get_short_name(), -rval, tr(stat)]
+					text += tr("LOG_COMBAT_LOSE_STAT") % [s_skill2.target.get_short_name(), -rval, tr(stat)]
 			elif mod == 2:
 				var rval = s_skill2.target.stat_update(stat, i.value, true)
 				if i.is_drain > 0.0:  # use this on your own risk
 					var rval2 = s_skill2.caster.stat_update(stat, -rval * i.is_drain)
 					if ! s_skill2.tags.has('no log'):
-						text += (
-							"%s drained %d %s from %s."
-							% [
-								s_skill2.caster.get_short_name(),
-								i.value,
-								tr(stat),
-								s_skill2.target.get_short_name()
-							]
-						)
+						text += tr("LOG_COMBAT_DRAIN_STAT") % [
+							s_skill2.caster.get_short_name(),
+							i.value,
+							tr(stat),
+							s_skill2.target.get_short_name()
+						]
 				elif ! s_skill2.tags.has('no log'):
-					text += (
-						"%s's %s is now %d."
-						% [s_skill2.target.get_short_name(), tr(stat), i.value]
-					)
+					text += tr("LOG_COMBAT_SET_STAT") % [s_skill2.target.get_short_name(), tr(stat), i.value]
 			else:
 				print('error in damagestat %s' % i.damagestat)  #obsolete in new format
 

@@ -457,7 +457,7 @@ func checkdeaths():
 			tchar.defeated = true
 			tchar.hp = 0
 			input_handler.emit_signal('fighter_changed')
-			combatlogadd("\n" + tchar.get_short_name() + " has been defeated.\n")
+			combatlogadd(tr("LOG_COMBAT_DEFEATED") % tchar.get_short_name())
 			for j in range(turnorder.size()):
 				if turnorder[j].pos == i:
 					turnorder.remove(j)
