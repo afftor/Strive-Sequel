@@ -1041,7 +1041,28 @@ func slavedescription(member):
 
 var nakedspritesdict = [] #globals.gallery.nakedsprites
 
+func get_unique_nude_body_image(person):
+	if person == null || !person.has_status('sexservice'):
+		return null
+	var unique = person.get_stat('unique')
+	if unique == null:
+		return null
+	if unique == 'AnastasiaBroken':
+		unique = 'anastasia'
+	if !worlddata.pregen_character_sprites.has(unique):
+		return null
+	var sprite_data = worlddata.pregen_character_sprites[unique]
+	if !sprite_data.has('nude') || !sprite_data.nude.has('path'):
+		return null
+	return images.get_sprite(sprite_data.nude.path)
+
 func showbody(i):
+	var nude_image = get_unique_nude_body_image(i.person)
+	if nude_image != null:
+		$Panel/bodyimage.texture = nude_image
+		$Panel/bodyimage.visible = true
+		$Panel/ragdoll.visible = false
+		return
 	var stored_image = i.person.get_stored_body_image()
 	if stored_image != null:
 		$Panel/bodyimage.texture = stored_image

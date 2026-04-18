@@ -1,3 +1,15 @@
+0.14.1f
+Unique characters will use naked sprites in sex interaction if nudity rule can be toggled for them (sex service task)
+Some minor text fixes to sex interaction minigame, also moved all of its text into translation file (can be localized now)
+Some minor text fixes for combat log, also moved all of its text into translation file (can be localized now)
+Teleportation spell now has 2 charges per day
+GUI for casting spells in exploration has been slightly reworked
+Spellsword effect will now trigger on random target if original target dies from first hit
+Masks now display visually on paper dolls 
+Fixed wrong icons showing in combat
+Fixed Lilia's scene not being added to gallery correctly
+Fixed oblivion potion giving more experience than it should with xp bonus
+Fixed gold cost for skills not working correctly
 0.14.1e
 Fixed some tooltip and GUI issues introduced by item shader
 Updated chinese localization

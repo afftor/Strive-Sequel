@@ -5504,7 +5504,7 @@ Boosts Productivity by 25%.
 	WORKRULECONTRACEPTIVE = "Contraceptive",
 	WORKRULECONTRACEPTIVEDESCRIPT = "Prevents pregnancy and impregnation for selected character.",
 	WORKRULENUDITY = "Nudity",
-	WORKRULENUDITYDESCRIPT = "Forces [name] to stay naked while at mansion (if has corresponding sprite). This effect is cosmetic.",
+	WORKRULENUDITYDESCRIPT = "Forces [name] to stay naked while at mansion (if has corresponding sprite). This effect is cosmetic. Requires Sex Service training.",
 	WORKRULEPERSONALITY_LOCK = "Lock Personality",
 	WORKRULEPERSONALITY_LOCKDESCRIPT = "[name] will no longer have [his] personality affected by social actions.",
 	WORKRULERELATIONSHIP = "Allow Romance",
