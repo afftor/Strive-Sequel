@@ -17,10 +17,10 @@ const consent_giver = 0
 const consent_taker = 1
 
 func getname(state = null):
-	return "Order Grovelling"
+	return tr("SEXACTION_ORDER_GROVELLING")
 
 func getongoingname(givers, takers):
-	return "[name2] grovel[s/2] as [name1] ordered."
+	return tr("SEXACTION_GROVELING_ONGOING_1")
 
 func getongoingdescription(givers, takers):
 	return ""

@@ -17,10 +17,10 @@ const consent_giver = 0
 const consent_taker = 0
 
 func getname(state = null):
-	return "Subdue"
+	return tr("SEXACTION_SUBDUE")
 
 func getongoingname(givers, takers):
-	return "[name1] [is1] holding down [name2]."
+	return tr("SEXACTION_SUBDUE_ONGOING_1")
 
 func getongoingdescription(givers, takers):
 	return ""

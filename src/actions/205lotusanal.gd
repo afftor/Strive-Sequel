@@ -37,14 +37,14 @@ func requirements():
 
 func getname(state = null):
 	if givers.size() == 0 || takers.size() == 0:
-		return "Lotus Anal"
+		return tr("SEXACTION_LOTUS_ANAL")
 	elif givers[0].strapon == true && givers[0].person.get_stat('penis_size') != '':
-		return "Lotus Pegging"
+		return tr("SEXACTION_LOTUS_PEGGING")
 	else:
-		return "Lotus Anal"
+		return tr("SEXACTION_LOTUS_ANAL")
 
 func getongoingname(givers, takers):
-	return "[name1] fuck[s/1] [names2] ass[/es2] in the lotus position."
+	return tr("SEXACTION_LOTUSANAL_ONGOING_1")
 
 func givereffect(member):
 	var effects = {sens = 200, horny = 20}
@@ -78,7 +78,7 @@ start_2_sexa = {
 		orifice = ["shift"],
 	},
 	lines = [
-		", {^enjoying:relishing in} the closeness of [partners2] [body2]. ",
+		"SEXACTION_LOTUSANAL_ACT_1",
 	]},
 	
 },
@@ -90,7 +90,7 @@ main_3_sex = {
 	},
 	lines = [
 		". ",
-		" from below. ",
+		"SEXACTION_LOTUSANAL_ACT_3",
 	]},
 	
 },
@@ -101,7 +101,7 @@ react_3_sexa = {
 	conditions = {
 	},
 	lines = [
-		" as [his3] [body3] entwine.",
+		"SEXACTION_LOTUSANAL_ACT_4",
 	]},
 	
 },

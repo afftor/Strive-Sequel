@@ -31,10 +31,10 @@ func requirements():
 	return valid
 
 func getname(state = null):
-	return "On Top"
+	return tr("SEXACTION_ON_TOP")
 
 func getongoingname(givers, takers):
-	return "[name1] has [name2] riding on top of [him1]."
+	return tr("SEXACTION_ONTOP_ONGOING_1")
 
 func givereffect(member):
 	var effects = {sens = 220, horny = 25}
@@ -67,7 +67,7 @@ start_2_sexv = {
 		orifice = ["shift"],
 	},
 	lines = [
-		", {^enjoying:finding glee in} putting [partner2] in such an embarassing position. ",
+		"SEXACTION_ONTOP_ACT_1",
 	]},
 	
 },
@@ -79,7 +79,7 @@ main_3_sex = {
 	},
 	lines = [
 		". ",
-		" from below. ",
+		"SEXACTION_ONTOP_ACT_3",
 	]},
 	
 },
@@ -90,7 +90,7 @@ react_3_sexv = {
 	conditions = {
 	},
 	lines = [
-		" as [name2] ride[s/1] on [him1].",
+		"SEXACTION_ONTOP_ACT_4",
 	]},
 
 },

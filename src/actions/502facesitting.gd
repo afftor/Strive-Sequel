@@ -17,10 +17,10 @@ const consent_giver = 2
 const consent_taker = 3
 
 func getname(state = null):
-	return "Face sitting"
+	return tr("SEXACTION_FACE_SITTING")
 
 func getongoingname(givers, takers):
-	return "[name1] sit[s/1] on [names2] face[/s2]."
+	return tr("SEXACTION_FACESITTING_ONGOING_1")
 
 func getongoingdescription(givers, takers):
 	return ""

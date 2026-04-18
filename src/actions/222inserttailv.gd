@@ -18,15 +18,15 @@ const consent_giver = 4
 const consent_taker = 5
 
 func getname(state = null):
-	return "Insert Tail Pussy"
+	return tr("SEXACTION_INSERT_TAIL_PUSSY")
 
 func getongoingname(givers, takers):
-	return "[name1] fuck[s/1] [name2]'s pussy with [his1] tail."
+	return tr("SEXACTION_INSERTTAILV_ONGOING_1")
 
 func getongoingdescription(givers, takers):
 	var temparray = []
-	temparray += ["[name1] thrust[s/1] [his1] tail in and out of [names2] [pussy2]."]
-	return temparray[randi()%temparray.size()]
+	temparray += ["SEXACTION_INSERTTAILV_ONGOING_DESC_1"]
+	return tr(temparray[randi()%temparray.size()])
 
 func requirements():
 	var valid = true

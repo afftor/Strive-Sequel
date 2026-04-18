@@ -17,10 +17,10 @@ const consent_giver = 0
 const consent_taker = 3
 
 func getname(state = null):
-	return "Order Lick feet"
+	return tr("SEXACTION_ORDER_LICK_FEET")
 
 func getongoingname(givers, takers):
-	return "[name2] lick[s/2] [names1] feet as ordered."
+	return tr("SEXACTION_LICKFEET_ONGOING_1")
 
 func getongoingdescription(givers, takers):
 	return ""

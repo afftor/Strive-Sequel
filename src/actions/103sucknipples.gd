@@ -20,20 +20,20 @@ const consent_giver = 0
 const consent_taker = 2
 
 func getname(state = null):
-	return "Nipple Sucking"
+	return tr("SEXACTION_NIPPLE_SUCKING")
 
 func getongoingname(givers, takers):
-	return "[name1] suck[s/1] on [names2] nipples."
+	return tr("SEXACTION_SUCKNIPPLES_ONGOING_1")
 
 func getongoingdescription(givers, takers):
 	var text = ''
 	var temparray = []
-	temparray += ["[name1] continue[s/1] {^licking:teasing} and {^kissing:sucking on} [names2] nipples"]
+	temparray += ["SEXACTION_SUCKNIPPLES_ONGOING_DESC_1"]
 	text += temparray[randi()%temparray.size()]
 	temparray.clear()
-	temparray += [", rolling them around with [his1] tongue[/s1]."]
-	temparray += [", {^lightly:gently} {^nibbling at:stimulating} them with [his1] teeth."]
-	temparray += [", {^greedily slurping at them:nursing} like [a /1]bab[y/ies1]."]
+	temparray += ["SEXACTION_SUCKNIPPLES_ONGOING_DESC_2"]
+	temparray += ["SEXACTION_SUCKNIPPLES_ONGOING_DESC_3"]
+	temparray += ["SEXACTION_SUCKNIPPLES_ONGOING_DESC_4"]
 	temparray += ["."]
 	text += temparray[randi()%temparray.size()]
 	return text

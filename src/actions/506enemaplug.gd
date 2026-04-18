@@ -17,10 +17,10 @@ const consent_giver = 0
 const consent_taker = 5
 
 func getname(state = null):
-	return "Enema + Plug"
+	return tr("SEXACTION_ENEMA_PLUG")
 
 func getongoingname(givers, takers):
-	return "[name1] injects enema liquid into [names2] anus then plug it."
+	return tr("SEXACTION_ENEMAPLUG_ONGOING_1")
 
 func getongoingdescription(givers, takers):
 	return ""

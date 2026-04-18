@@ -18,13 +18,13 @@ const consent_giver = 3
 const consent_taker = 3
 
 func getname(state = null):
-	return "Frottage"
+	return tr("SEXACTION_FROTTAGE")
 
 func getongoingname(givers, takers):
-	return "[name1] and [name2] rub [their] [penis3] together."
+	return tr("SEXACTION_FROTTAGE_ONGOING_1")
 
 func getongoingdescription(givers, takers):
-	return "[name1] and [name2] continue to {^rub:grind} [their] [penis3] together."
+	return tr("SEXACTION_FROTTAGE_ONGOING_DESC_1")
 
 func requirements():
 	var valid = true

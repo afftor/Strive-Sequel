@@ -117,20 +117,20 @@ var OrgasmDenyPlayer
 var OrgasmDenyStage = 0
 
 var OrgasmDenyTextButtons = {
-	cum = 'Let [name2] cum',
-	beg = 'Make [name2] beg for it',
-	deny = 'Deny [name2] orgasm'
+	cum = 'INTERACTION_ORGASM_DENY_BTN_CUM',
+	beg = 'INTERACTION_ORGASM_DENY_BTN_BEG',
+	deny = 'INTERACTION_ORGASM_DENY_BTN_DENY'
 }
 var OrgasmDenyText = {
-	initiate = "[name1] stops [name2] before [he2] is able to reach orgasm.",
-	cum_female_petting = "[name1] holds [name2] down, working [his1] hand over [name2]'s [pussy2]. In a few moments [name2] jerks in [his1] hands as orgasm overwhelms [him2].",
-	cum_male_petting = "[name1] holds [name2] down, working [his1] hand over [name2]'s [penis2]. In a few moments [name2] releases a {^stream:sray} of {^semen:seed}, covering [name1]'s hand in it.",
-	cum_female_fucking = "[name1] resumes moving [his1] body to [name2]'s relief. After a few thrusts [name2] gasps for air as [his2] [pussy2] twitches in orgasm. ",
-	cum_male_fucking =  "[name1] allows [name2] to move again to [his2] relief. After a few thrusts, [he2] gasps for air, as [his2] seed fills [name1]. ",
-	beg = "[name1] lets [name2] know that [he2] must beg to let [him2] cum. ",
-	beg_success = "Unable to resist the temptation, [name2] looks into [his1] eyes and meekly begs for the relief.",
-	beg_failure = "Despite shameful condition, [name2] musters enough will and turns away from [name1] in distress. [He2]'s still on the edge, hoping to get off though. ",
-	deny = "[name1] does not allow [name2] to have [his2] relief by holding [him2] back. [name2] has no choice but to express [his2] disappointment. ",
+	initiate = "INTERACTION_ORGASM_DENY_INITIATE",
+	cum_female_petting = "INTERACTION_ORGASM_DENY_CUM_FEMALE_PETTING",
+	cum_male_petting = "INTERACTION_ORGASM_DENY_CUM_MALE_PETTING",
+	cum_female_fucking = "INTERACTION_ORGASM_DENY_CUM_FEMALE_FUCKING",
+	cum_male_fucking =  "INTERACTION_ORGASM_DENY_CUM_MALE_FUCKING",
+	beg = "INTERACTION_ORGASM_DENY_BEG",
+	beg_success = "INTERACTION_ORGASM_DENY_BEG_SUCCESS",
+	beg_failure = "INTERACTION_ORGASM_DENY_BEG_FAILURE",
+	deny = "INTERACTION_ORGASM_DENY_DENY",
 }
 
 func OrgasmDenyInitiate(player, victim):
@@ -138,10 +138,10 @@ func OrgasmDenyInitiate(player, victim):
 	OrgasmDenyVictim = victim
 	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 	$OrgasmDenial.show()
-	$OrgasmDenial/RichTextLabel.bbcode_text = decoder(OrgasmDenyText.initiate, [OrgasmDenyPlayer], [OrgasmDenyVictim])
-	$OrgasmDenial/ScrollContainer/VBoxContainer/Cum.text = decoder("Let [him2] cum",[OrgasmDenyPlayer], [OrgasmDenyVictim])
-	$OrgasmDenial/ScrollContainer/VBoxContainer/Beg.text = decoder("Make [him2] beg for it",[OrgasmDenyPlayer], [OrgasmDenyVictim])
-	$OrgasmDenial/ScrollContainer/VBoxContainer/Deny.text = decoder("Deny [him2] orgasm",[OrgasmDenyPlayer], [OrgasmDenyVictim])
+	$OrgasmDenial/RichTextLabel.bbcode_text = decoder(tr(OrgasmDenyText.initiate), [OrgasmDenyPlayer], [OrgasmDenyVictim])
+	$OrgasmDenial/ScrollContainer/VBoxContainer/Cum.text = decoder(tr(OrgasmDenyTextButtons.cum),[OrgasmDenyPlayer], [OrgasmDenyVictim])
+	$OrgasmDenial/ScrollContainer/VBoxContainer/Beg.text = decoder(tr(OrgasmDenyTextButtons.beg),[OrgasmDenyPlayer], [OrgasmDenyVictim])
+	$OrgasmDenial/ScrollContainer/VBoxContainer/Deny.text = decoder(tr(OrgasmDenyTextButtons.deny),[OrgasmDenyPlayer], [OrgasmDenyVictim])
 	OrgasmDenyStage = 0
 
 func OrgasmDenialCum():
@@ -156,17 +156,17 @@ func OrgasmDenialCum():
 		text += '_petting'
 	#$Panel/sceneeffects.bbcode_text +="\n" +
 	$OrgasmDenial/ScrollContainer/VBoxContainer/Beg.show()
-	OrgasmDenyVictim.orgasm(decoder(OrgasmDenyText[text], [OrgasmDenyPlayer], [OrgasmDenyVictim]))
+	OrgasmDenyVictim.orgasm(decoder(tr(OrgasmDenyText[text]), [OrgasmDenyPlayer], [OrgasmDenyVictim]))
 	$OrgasmDenial.hide()
 	rebuildparticipantslist()
 
 func OrgasmDenialBeg():
 	var text
 	if OrgasmDenyVictim.consent < 2 && randf() >= 0.5:
-		text = OrgasmDenyText.beg_failure
+		text = tr(OrgasmDenyText.beg_failure)
 		OrgasmDenyStage = 1
 	else:
-		text = OrgasmDenyText.beg_success
+		text = tr(OrgasmDenyText.beg_success)
 		OrgasmDenyStage = 2
 		OrgasmDenyVictim.begged_for_orgasm = true
 	$OrgasmDenial/RichTextLabel.bbcode_text = decoder(text, [OrgasmDenyPlayer], [OrgasmDenyVictim])
@@ -176,22 +176,22 @@ func OrgasmDenialDeny():
 	OrgasmDenyVictim.sens -= 250
 	#OrgasmDenyVictim.person.add_stat('submission' ,10 + OrgasmDenyVictim.person.get_stat('sexuals_factor')) #todo add new effect
 	$OrgasmDenial.hide()
-	$Panel/sceneeffects.bbcode_text +="\n" + decoder(OrgasmDenyText.deny, [OrgasmDenyPlayer], [OrgasmDenyVictim])
+	$Panel/sceneeffects.bbcode_text +="\n" + decoder(tr(OrgasmDenyText.deny), [OrgasmDenyPlayer], [OrgasmDenyVictim])
 	rebuildparticipantslist()
 
 var cumdict = {
-face = {reqs = [], name = "Face", text = "[name1] brings his {^penis:cock:dick} to [name2]'s face and release [his1] {^seed:semen:cum}. The white fluid stains [name2]'s face dripping down to [his2] chin.", specreqs = [], spectext = ''},
-mouth = {reqs = [], name = "Mouth", text = "[name1] puts his {^penis:cock:dick} into [name2]'s mouth for the final release. The stream of {^seed:semen:cum} hits [name2]'s throat having [him2] gulp it down.", specreqs = [], spectext = ''},
-hair = {reqs = [{code = 'stat', stat = 'hair_length', operant = 'neq', value = 'bald'}], name = "Hair", text = "[name1] puts his {^penis:cock:dick} to [name2]'s head and cums over [his2] hair. The {^seed:semen:cum} soils [name2]'s hair sticking between the strands.", specreqs = [], spectext = ''},
-chest = {reqs = [], name = "Chest", text = "[name1] takes his {^penis:cock:dick} into [his1] hand and points at [name2]'s chest, cumming all over it. The hot {^seed:semen:cum} drips down [name2]'s body.", specreqs = [], spectext = ''},
-belly = {reqs = [], name = "Belly", text = "[name1] puts his {^penis:cock:dick} into [his1] hand and points at [name2]'s belly. The hot {^seed:semen:cum} drips down [name2]'s navel and stomach.", specreqs = [], spectext = ''},
-pubis = {reqs = [], name = "Pubis", text = "[name1] takes out {^penis:cock:dick} and places at [name2]'s pubis. The hot {^seed:semen:cum} covers [name2]'s crotch.", specreqs = [], spectext = ''},
-pussy = {reqs = [{code = 'stat', stat = 'has_pussy', operant = 'eq', value = true}], name = "Pussy", text = "[name1] {^sticks:puts} his {^penis:cock:dick} into [name2]'s {^pussy:vagina:cunt}. The hot {^seed:semen:cum} {^splashes into [his2] womb:fills [his2] pussy}.", specreqs = [], spectext = ''},
-ass = {reqs = [], name = "Ass", text = "[name1] {^sticks:puts} his {^penis:cock:dick} into [name2]'s {^ass:anus:rear}. The hot {^seed:semen:cum} {^splashes into [his2] intestines:fills [his2] butt}.", specreqs = [], spectext = ''},
-back = {reqs = [], name = "Back", text = "[name1] puts his {^penis:cock:dick} into [his1] hand and points at [name2]'s back, cumming all over it. [name2] gasps as [he2] feels the hot fluid over [his2] back.", specreqs = [], spectext = ''},
-feet = {reqs = [{code = 'stat', stat = 'body_shape', operant = 'in', value = ['humanoid','shortstack']}], name = "Feet", text = "[name1] unable to hold back anymore starts cumming over [name2]'s feet, covering them in [his1] semen.", specreqs = [], spectext = ''},
-tail = {reqs = [{code = 'stat', stat = 'tail', operant = 'neq', value = ''}], name = "Tail", text = "[name1] grabs [name2]'s tail, pushing [his1] {^dick:cock:penis} onto it. With a groan, [name1] starts cumming over [name2]'s tail. ", specreqs = [], spectext = ''},
-hands = {reqs = [{code = 'stat', stat = 'arms', operant = 'neq', value = 'wings'}], name = "Hands", text = "[name1] unable to hold back anymore starts cumming over [name2]'s hands, covering them in [his1] semen.", specreqs = [], spectext = ''},
+face = {reqs = [], name = "INTERACTION_CUM_TARGET_FACE", text = "INTERACTION_CUM_TEXT_FACE", specreqs = [], spectext = ''},
+mouth = {reqs = [], name = "INTERACTION_CUM_TARGET_MOUTH", text = "INTERACTION_CUM_TEXT_MOUTH", specreqs = [], spectext = ''},
+hair = {reqs = [{code = 'stat', stat = 'hair_length', operant = 'neq', value = 'bald'}], name = "INTERACTION_CUM_TARGET_HAIR", text = "INTERACTION_CUM_TEXT_HAIR", specreqs = [], spectext = ''},
+chest = {reqs = [], name = "INTERACTION_CUM_TARGET_CHEST", text = "INTERACTION_CUM_TEXT_CHEST", specreqs = [], spectext = ''},
+belly = {reqs = [], name = "INTERACTION_CUM_TARGET_BELLY", text = "INTERACTION_CUM_TEXT_BELLY", specreqs = [], spectext = ''},
+pubis = {reqs = [], name = "INTERACTION_CUM_TARGET_PUBIS", text = "INTERACTION_CUM_TEXT_PUBIS", specreqs = [], spectext = ''},
+pussy = {reqs = [{code = 'stat', stat = 'has_pussy', operant = 'eq', value = true}], name = "INTERACTION_CUM_TARGET_PUSSY", text = "INTERACTION_CUM_TEXT_PUSSY", specreqs = [], spectext = ''},
+ass = {reqs = [], name = "INTERACTION_CUM_TARGET_ASS", text = "INTERACTION_CUM_TEXT_ASS", specreqs = [], spectext = ''},
+back = {reqs = [], name = "INTERACTION_CUM_TARGET_BACK", text = "INTERACTION_CUM_TEXT_BACK", specreqs = [], spectext = ''},
+feet = {reqs = [{code = 'stat', stat = 'body_shape', operant = 'in', value = ['humanoid','shortstack']}], name = "INTERACTION_CUM_TARGET_FEET", text = "INTERACTION_CUM_TEXT_FEET", specreqs = [], spectext = ''},
+tail = {reqs = [{code = 'stat', stat = 'tail', operant = 'neq', value = ''}], name = "INTERACTION_CUM_TARGET_TAIL", text = "INTERACTION_CUM_TEXT_TAIL", specreqs = [], spectext = ''},
+hands = {reqs = [{code = 'stat', stat = 'arms', operant = 'neq', value = 'wings'}], name = "INTERACTION_CUM_TARGET_HANDS", text = "INTERACTION_CUM_TEXT_HANDS", specreqs = [], spectext = ''},
 }
 
 func SelectCum(player, victim):
@@ -199,7 +199,7 @@ func SelectCum(player, victim):
 	OrgasmDenyVictim = victim
 	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 	$CumSelect.show()
-	var text = "As [name1] approaches orgasm [he1] choose to cum onto [name2]'s..."
+	var text = tr("INTERACTION_CUM_SELECT_TEXT")
 	$CumSelect/RichTextLabel.bbcode_text = decoder(text, [OrgasmDenyPlayer], [OrgasmDenyVictim])
 	
 	input_handler.ClearContainer($CumSelect/ScrollContainer/VBoxContainer)
@@ -207,13 +207,13 @@ func SelectCum(player, victim):
 		if victim.person.checkreqs(part.reqs) == false:
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($CumSelect/ScrollContainer/VBoxContainer)
-		newbutton.text = part.name
+		newbutton.text = tr(part.name)
 		newbutton.connect('pressed',self,'SelectCumTarget',[part])
 		
 		
 
 func SelectCumTarget(part):
-	OrgasmDenyPlayer.orgasm(decoder(part.text, [OrgasmDenyPlayer], [OrgasmDenyVictim]))
+	OrgasmDenyPlayer.orgasm(decoder(tr(part.text), [OrgasmDenyPlayer], [OrgasmDenyVictim]))
 	#$Panel/sceneeffects.bbcode_text += "\n" + decoder(part.text, [OrgasmDenyPlayer], [OrgasmDenyVictim])
 	$CumSelect.hide()
 	rebuildparticipantslist()
@@ -295,7 +295,7 @@ func startsequence(actors):
 			temparray.append("{color=yellow|You}")
 		else:
 			temparray.append("{color=yellow|"+i.get_short_name()+"}")
-	var text = input_handler.text_form_recitation(temparray) + " walk into the bedroom."
+	var text = tr("INTERACTION_START_ROOM") % input_handler.text_form_recitation(temparray)
 
 	var counter = 0
 	for i in participants:
@@ -345,7 +345,12 @@ func rebuildparticipantslist():
 		newnode.set_meta("person", i)
 		newnode.get_node('portrait').texture = i.person.get_icon_small()
 		newnode.get_node("sex").set_texture(images.get_icon(i.sex))
-		newnode.get_node("sex").set_tooltip(i.sex)
+		var sex_tooltip = "PRONOUNSEX"
+		if i.sex == "female":
+			sex_tooltip = "PRONOUNSEXF"
+		elif i.sex == "futa":
+			sex_tooltip = "PRONOUNSEXH"
+		newnode.get_node("sex").set_tooltip(tr(sex_tooltip))
 		newnode.get_node('HBoxContainer/arousal').value = i.sens
 		newnode.get_node("Stamina").value = i.stamina
 		globals.connecttexttooltip(newnode.get_node('Stamina'), tr("TOOLTIPSTAMINA"))
@@ -357,7 +362,7 @@ func rebuildparticipantslist():
 
 		if i.request != null:
 			newnode.get_node('HBoxContainer/desire').show()
-			newnode.get_node('HBoxContainer/desire').hint_tooltip = i.person.translate(requests[i.request])
+			newnode.get_node('HBoxContainer/desire').hint_tooltip = i.person.translate(tr(requests[i.request]))
 
 		if i.horny >= 100:
 			newnode.get_node("HBoxContainer/horny").show()
@@ -368,7 +373,7 @@ func rebuildparticipantslist():
 
 		if ai.has(i):
 			newnode.get_node('name').set('custom_colors/font_color', Color(1,0.2,0.8))
-			newnode.get_node('name').hint_tooltip = 'Leads'
+			newnode.get_node('name').hint_tooltip = tr("INTERACTION_LEADS")
 
 		newnode = get_node("Panel/givetakepanel/givercontainer/Button").duplicate()
 		get_node("Panel/givetakepanel/givercontainer").add_child(newnode)
@@ -407,16 +412,16 @@ func rebuildparticipantslist():
 	for i in givers:
 		if i.effects.has('tied') :
 			showactions = false
-			actionreplacetext = i.person.translate("[name] is tied and can't act.")
+			actionreplacetext = i.person.translate(tr("INTERACTION_ACT_BLOCK_TIED"))
 		elif i.subduedby.size() > 0:
 			showactions = false
-			actionreplacetext = i.person.translate("[name] is struggling and can't act.")
+			actionreplacetext = i.person.translate(tr("INTERACTION_ACT_BLOCK_STRUGGLING"))
 		elif i.effects.has('resist'):
 			showactions = false
-			actionreplacetext = i.person.translate("[name] resists and won't follow any orders.")
+			actionreplacetext = i.person.translate(tr("INTERACTION_ACT_BLOCK_RESIST"))
 		elif i.subduing != null && ((takers.size() > 0 && takers[0] != i.subduing) || takers.size() > 1 ) :
 			showactions = false
-			actionreplacetext = i.person.translate("[name] is busy holding down ") + i.subduing.person.translate("[name] \nand can only act on [him]. ")
+			actionreplacetext = i.person.translate(tr("INTERACTION_ACT_BLOCK_HOLDING_1")) + i.subduing.person.translate(tr("INTERACTION_ACT_BLOCK_HOLDING_2"))
 
 	var array = []
 	var bottomrow =  ['rope', 'subdue', 'deny_orgasm', 'cum_select']
@@ -477,16 +482,16 @@ func rebuildparticipantslist():
 				tooltiptext = i.getname() + "\n"+giver_name + ": "
 				
 				if i.consent_giver <= giver_consent:
-					tooltiptext += "{color=aqua|Willing}"
+					tooltiptext += tr("INTERACTION_CONSENT_WILLING")
 				else:
-					tooltiptext += "{color=yellow|Refusing}" 
+					tooltiptext += tr("INTERACTION_CONSENT_REFUSING")
 				
 				tooltiptext +=  "\n" + giver_text + "\n" + taker_name + ": "
 				
 				if i.consent_taker <= taker_consent:
-					tooltiptext += "{color=aqua|Willing}"
+					tooltiptext += tr("INTERACTION_CONSENT_WILLING")
 				else:
-					tooltiptext += "{color=yellow|Refusing}" 
+					tooltiptext += tr("INTERACTION_CONSENT_REFUSING")
 				
 				tooltiptext +=  "\n" + taker_text
 				
@@ -521,15 +526,15 @@ func rebuildparticipantslist():
 			get_node("Panel/GridContainer/GridContainer").add_child(newnode)
 			newnode.visible = true
 			if givers.size() < 2:
-				newnode.get_node("ActionName").text = (givers[0].person.translate("Let [name] Lead"))
+				newnode.get_node("ActionName").text = (givers[0].person.translate(tr("INTERACTION_LET_NAME_LEAD")))
 			else:
-				newnode.get_node("ActionName").set_text("Let Selected Lead")
+				newnode.get_node("ActionName").set_text(tr("INTERACTION_LET_SELECTED_LEAD"))
 			newnode.connect("pressed",self,'activateai')
 		elif selectmode == 'ai':
 			newnode = get_node("Panel/GridContainer/GridContainer/Button").duplicate()
 			get_node("Panel/GridContainer/GridContainer").add_child(newnode)
 			newnode.visible = true
-			newnode.set_text("Stop")
+			newnode.set_text(tr("INTERACTION_STOP"))
 			newnode.connect("pressed",self,'activateai')
 	else:
 			newnode = Label.new()
@@ -543,7 +548,7 @@ func rebuildparticipantslist():
 		text += '[color=yellow]' + i.name + '[/color], '
 	if givers.size() == 0:
 		text += '[...] '
-	text += 'will do it ... to '
+	text += tr("INTERACTION_SELECTION_TO")
 	for i in takers:
 		text += '[color=aqua]' + i.name + '[/color], '
 	if takers.size() == 0:
@@ -552,7 +557,7 @@ func rebuildparticipantslist():
 		text = text.substr(0, text.length() -2)+ '. '
 	text += "\n\n"
 	for i in ongoingactions:
-		text += decoder(i.scene.getongoingname(i.givers,i.takers), i.givers, i.takers) + ' [url='+str(ongoingactions.find(i))+'][Interrupt][/url]\n'
+		text += decoder(i.scene.getongoingname(i.givers,i.takers), i.givers, i.takers) + ' [url='+str(ongoingactions.find(i))+']' + tr("INTERACTION_INTERRUPT") + '[/url]\n'
 
 	if givers.size() == 0 && selectmode != 'ai':
 		get_node("Panel/passbutton").set_disabled(true)
@@ -560,9 +565,9 @@ func rebuildparticipantslist():
 		get_node("Panel/passbutton").set_disabled(false)
 
 	if selectmode == 'ai':
-		$Panel/passbutton.set_text("Observe")
+		$Panel/passbutton.set_text(tr("INTERACTION_OBSERVE"))
 	else:
-		$Panel/passbutton.set_text("Pass")
+		$Panel/passbutton.set_text(tr("INTERACTION_PASS"))
 
 	get_node("TextureFrame/Label").set_text(str(turns))
 
@@ -643,85 +648,85 @@ func count_action_consent(action, giver, taker):
 			pass
 		elif giver.sex_traits.has("exhibitionist"):
 			giver_consent += 1
-			giver_text += "{color=green|Is being observed (Exhibitionist)}\n"
+			giver_text += tr("INTERACTION_CONSENT_OBSERVED_EXHIBITIONIST")
 		else:
 			giver_consent -= 1
-			giver_text += "{color=red|Is being observed}\n"
+			giver_text += tr("INTERACTION_CONSENT_OBSERVED")
 
 		if taker.sex_traits.has("shameless"):
 			pass
 		elif taker.sex_traits.has("exhibitionist"):
 			taker_consent += 1
-			taker_text += "{color=green|Is being observed (Exhibitionist)}\n"
+			taker_text += tr("INTERACTION_CONSENT_OBSERVED_EXHIBITIONIST")
 		else:
 			taker_consent -= 1
-			taker_text += "{color=red|Is being observed}\n"
+			taker_text += tr("INTERACTION_CONSENT_OBSERVED")
 			#taker_text += "Is being observed: -\n"
 
 	if (action.givers.size() > 1 || action.takers.size() > 1) && !action.code in ['subdue','rope','orgasm_denial']:
 		if giver.sex_traits.has("group"):
 			giver_consent += 1
-			giver_text += "{color=green|Multiple partners (Likes Groups)}\n"
+			giver_text += tr("INTERACTION_CONSENT_MULTIPLE_LIKES")
 		else:
 			giver_consent -= 1
-			giver_text += "{color=red|Multiple partners}\n"
+			giver_text += tr("INTERACTION_CONSENT_MULTIPLE")
 
 		if taker.sex_traits.has("group"):
 			taker_consent += 1
-			taker_text += "{color=green|Multiple partners  (Likes Groups)}\n"
+			taker_text += tr("INTERACTION_CONSENT_MULTIPLE_LIKES")
 		else:
 			taker_consent -= 1
-			taker_text += "{color=red|Multiple partners}\n"
+			taker_text += tr("INTERACTION_CONSENT_MULTIPLE")
 
 	if giver.sex == taker.sex && !action.code in ['subdue','rope','orgasm_denial'] :
 		if giver.sex_traits.has("bisexual") == false:
 			giver_consent -= 1
-			giver_text += "{color=red|Same sex partner}\n"
+			giver_text += tr("INTERACTION_CONSENT_SAME_SEX")
 		if taker.sex_traits.has("bisexual") == false:
 			taker_consent -= 1
-			taker_text += "{color=red|Same sex partner}\n"
+			taker_text += tr("INTERACTION_CONSENT_SAME_SEX")
 
 	if action.givertags.has("anal"):
 		if giver.sex_traits.has("anal"):
 			pass
 		elif giver.sex_traits.has('anal_like'):
 			giver_consent += 1
-			giver_text += "{color=green|Anal (Likes Anal)}\n"
+			giver_text += tr("INTERACTION_CONSENT_ANAL_LIKES")
 		else:
 			giver_consent -= 1
-			giver_text += "{color=red|Anal}\n"
+			giver_text += tr("INTERACTION_CONSENT_ANAL")
 
 	if action.takertags.has("anal"):
 		if taker.sex_traits.has("anal"):
 			pass
 		elif taker.sex_traits.has('anal_like'):
 			taker_consent += 1
-			taker_text += "{color=green|Anal (Likes Anal)}\n"
+			taker_text += tr("INTERACTION_CONSENT_ANAL_LIKES")
 		else:
 			taker_consent -= 1
-			taker_text += "{color=red|Anal}\n"
+			taker_text += tr("INTERACTION_CONSENT_ANAL")
 
 	if giver.person.check_trait('undead') || giver.person.get_stat('unique') in ['dog','horse'] :
 		if !taker.sex_traits.has('deviant'):
 			taker_consent -= 2
-			taker_text += "{color=red|Repulsive partner}\n"
+			taker_text += tr("INTERACTION_CONSENT_REPULSIVE_PARTNER")
 	if taker.person.check_trait('undead') || taker.person.get_stat('unique') in ['dog','horse'] :
 		if !giver.sex_traits.has('deviant'):
 			giver_consent -= 2
-			giver_text += "{color=red|Repulsive partner}\n"
+			giver_text += tr("INTERACTION_CONSENT_REPULSIVE_PARTNER")
 
 	if giver.effects.has('tipsy'):
 		giver_consent += 1
-		giver_text += "{color=green|Tipsy}\n"
+		giver_text += tr("INTERACTION_CONSENT_TIPSY")
 	if giver.effects.has('drunk') :
 		giver_consent += 2
-		giver_text += "{color=green|Drunk}\n"
+		giver_text += tr("INTERACTION_CONSENT_DRUNK")
 	if taker.effects.has('tipsy'):
 		taker_consent += 1
-		taker_text += "{color=green|Tipsy}\n"
+		taker_text += tr("INTERACTION_CONSENT_TIPSY")
 	if taker.effects.has('drunk'):
 		taker_consent += 2
-		taker_text += "{color=green|Drunk}\n"
+		taker_text += tr("INTERACTION_CONSENT_DRUNK")
 
 #	if giver.horny >= 100:
 #		giver_consent += 1
@@ -738,33 +743,33 @@ func count_action_consent(action, giver, taker):
 				'rivals':
 					giver_consent -= 1
 					taker_consent -= 1
-					giver_text += "{color=red|Is a Rival}\n"
-					taker_text += "{color=red|Is a Rival}\n"
+					giver_text += tr("INTERACTION_CONSENT_REL_RIVAL")
+					taker_text += tr("INTERACTION_CONSENT_REL_RIVAL")
 				'freelovers':
 					giver_consent += 1
 					taker_consent += 1
-					giver_text += "{color=green|Is a Paramour}\n"
-					taker_text += "{color=green|Is a Paramour}\n"
+					giver_text += tr("INTERACTION_CONSENT_REL_PARAMOUR")
+					taker_text += tr("INTERACTION_CONSENT_REL_PARAMOUR")
 				'lovers':
 					giver_consent += 2
 					taker_consent += 2
-					giver_text += "{color=green|Is a Lover}\n"
-					taker_text += "{color=green|Is a Lover}\n"
+					giver_text += tr("INTERACTION_CONSENT_REL_LOVER")
+					taker_text += tr("INTERACTION_CONSENT_REL_LOVER")
 		
 		var relatives = ResourceScripts.game_party.checkifrelatives(giver.id, taker.id)
 		if relatives == true:
 			if giver.sex_traits.has("family_first"):
 				giver_consent += 1
-				giver_text += "{color=green|Partner is related}\n"
+				giver_text += tr("INTERACTION_CONSENT_RELATED_GOOD")
 			else:
 				giver_consent -= 1
-				giver_text += "{color=red|Partner is related}\n"
+				giver_text += tr("INTERACTION_CONSENT_RELATED_BAD")
 			if taker.sex_traits.has("family_first"):
 				taker_consent += 1
-				taker_text += "{color=green|Partner is related}\n"
+				taker_text += tr("INTERACTION_CONSENT_RELATED_GOOD")
 			else:
 				taker_consent -= 1
-				taker_text += "{color=red|Partner is related}\n"
+				taker_text += tr("INTERACTION_CONSENT_RELATED_BAD")
 #	if taker.person_relations.has(giver.id):
 #		var rel_value = taker.person_relations[giver.id]
 #		if rel_value >= 350:
@@ -783,27 +788,27 @@ func count_action_consent(action, giver, taker):
 	if giver.person.get_stat('body_shape') != taker.person.get_stat('body_shape') && !action.code in ['subdue','rope','orgasm_denial']:
 		if !giver.sex_traits.has("open_minded"):
 			giver_consent -= 1
-			giver_text += '{color=red|Partner is of different species}\n'
+			giver_text += tr("INTERACTION_CONSENT_DIFFERENT_SPECIES")
 		if !taker.sex_traits.has("open_minded"):
 			taker_consent -= 1
-			taker_text += "{color=red|Partner is of different species}\n"
+			taker_text += tr("INTERACTION_CONSENT_DIFFERENT_SPECIES")
 
 	if action.givertags.has('vagina') && action.givertags.has('penetration') && giver.person.get_stat('vaginal_virgin'):
 		giver_consent -= 1
-		giver_text += "{color=red|Is virgin}\n"
+		giver_text += tr("INTERACTION_CONSENT_VIRGIN")
 	if action.takertags.has('vagina') && action.takertags.has('penetration') && taker.person.get_stat('vaginal_virgin'):
 		taker_consent -= 1
-		taker_text += "{color=red|Is virgin}\n"
+		taker_text += tr("INTERACTION_CONSENT_VIRGIN")
 
 
 	if giver.person.has_profession('master'):
 		giver_consent = 100
-		giver_text = "Maximum"
+		giver_text = tr("INTERACTION_CONSENT_MAXIMUM")
 #		taker_consent += 1
 #		taker_text += "Partner is " + taker.person.translate("[master]") + ": +\n"
 	if taker.person.has_profession('master'):
 		taker_consent = 100
-		taker_text = "Maximum"
+		taker_text = tr("INTERACTION_CONSENT_MAXIMUM")
 #		giver_consent += 1
 #		giver_text += "Partner is " + giver.person.translate("[master]") + ": +\n"
 #	if giver.person.get_stat('slave_class') == 'slave':
@@ -814,14 +819,14 @@ func count_action_consent(action, giver, taker):
 #		taker_text += "Is a Slave: +1\n"
 	if action.code == 'subdue':
 		taker_consent = 25
-		taker_text = "Subdue: Receiver's consent ignored. "
+		taker_text = tr("INTERACTION_CONSENT_SUBDUE")
 
 	if giver_value == 0:
 		giver_consent = 0
-		giver_text = "{color=green|Action does not require consent}"
+		giver_text = tr("INTERACTION_CONSENT_NOT_REQUIRED")
 	if taker_value == 0:
 		taker_consent = 0
-		taker_text = "{color=green|Action does not require consent}"
+		taker_text = tr("INTERACTION_CONSENT_NOT_REQUIRED")
 	
 	return {giver_consent = giver_consent, taker_consent = taker_consent, giver_text = giver_text, taker_text = taker_text}
 #	var dict = {value = action.consent, giver_consent = giver.consent, taker_consent = taker.consent}
@@ -840,7 +845,7 @@ func open_item_list(member):
 	for item in array:
 		var newbutton = input_handler.DuplicateContainerTemplate($ItemSelectSex/ScrollContainer/GridContainer)
 		newbutton.get_node("icon").texture = load(item.icon)
-		newbutton.get_node("name").text = item.code.capitalize()
+		newbutton.get_node("name").text = tr(item.name)
 		newbutton.get_node("Percent").text = str(ResourceScripts.game_res.items[item.id].amount)
 		newbutton.connect("pressed", self, "use_item", [item])
 	# globals.ItemSelect(self, 'sex_use', 'use_item')
@@ -873,16 +878,16 @@ func sortactions(first, second):
 		return categoriesorder.find(first.category) < categoriesorder.find(second.category)
 
 var requests = {
-pet = "[name] wishes to be touched.",
-petgive = '[name] wishes to touch.',
-fuck = '[name] wishes to be penetrated.',
-fuckgive = '[name] wishes to penetrate.',
-pussy = "[name] wishes to have [his] pussy used.",
-penis = '[name] wishes to use [his] penis.',
-anal = '[name] wishes to have [his] ass used.',
-punish = '[name] wishes to be punished.',
-humiliate = '[name] wishes to be humiliated.',
-group = '[name] wishes to have multiple partners.'
+pet = "INTERACTION_REQUEST_PET",
+petgive = "INTERACTION_REQUEST_PETGIVE",
+fuck = "INTERACTION_REQUEST_FUCK",
+fuckgive = "INTERACTION_REQUEST_FUCKGIVE",
+pussy = "INTERACTION_REQUEST_PUSSY",
+penis = "INTERACTION_REQUEST_PENIS",
+anal = "INTERACTION_REQUEST_ANAL",
+punish = "INTERACTION_REQUEST_PUNISH",
+humiliate = "INTERACTION_REQUEST_HUMILIATE",
+group = "INTERACTION_REQUEST_GROUP"
 
 }
 
@@ -913,7 +918,7 @@ func generaterequest(member):
 
 	rval = rval[randi()%rval.size()]
 
-	$Panel/sceneeffects.bbcode_text += ("[color=#f4adf4]Desire: " + member.person.translate(requests[rval]) + '[/color]\n')
+	$Panel/sceneeffects.bbcode_text += (tr("INTERACTION_DESIRE_LABEL") % member.person.translate(tr(requests[rval])))
 
 	member.request = rval
 
@@ -973,7 +978,7 @@ func activateai():
 #			$Control/Panel/RichTextLabel.bbcode_text = i.person.translate('[name] refuses to participate. ')
 #			return
 		if i.effects.has('tied') || i.subduedby.size() > 0:
-			$Control/Panel/RichTextLabel.bbcode_text = i.person.translate("[name] is immobile and can't do anything. ")
+			$Control/Panel/RichTextLabel.bbcode_text = i.person.translate(tr("INTERACTION_ACT_BLOCK_IMMOBILE"))
 	ai.clear()
 	if selectmode != 'ai':
 		selectmode = 'ai'
@@ -1387,7 +1392,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 				i.set_lastaction(id_dict)
 			request = checkrequest(i)
 			if request == true:
-				textdict.orgasms += decoder("[color=aqua]Desire fullfiled! [name1] grows lewder and more sensitive. [/color]\n", [i], [i])
+				textdict.orgasms += decoder(tr("INTERACTION_DESIRE_FULFILLED"), [i], [i])
 		else:
 			for j in ongoingactions:
 				if i in j.givers + j.takers:
@@ -1449,33 +1454,30 @@ func resist_text(side, stamina, character):
 	var temparray = []
 	
 	if character.sex_traits.has("pushover"):
-		temparray += ["[name] feels {^involuntarily:helplessly} {^aroused:horny} from {^the rough treatment:being taken against [his] will}..."]
-		temparray += ["[name] {^moans:cries} {^involuntarily:helplessly} as [he] falls into submission..."]
-		temparray += ["[name] {^blushes:turns red} from [his] own perverted arousal..."]
+		temparray += ["INTERACTION_RESIST_PUSHOVER_1"]
+		temparray += ["INTERACTION_RESIST_PUSHOVER_2"]
+		temparray += ["INTERACTION_RESIST_PUSHOVER_3"]
 	else:
 		if stamina > 30:
-			temparray += ["[name] winces from the distress, but can't help with [his] growing {^desire:arousal}..."]
-			temparray += ["[name] shies away from the unwanted {^desire:arousal}..."]
-			temparray += ["[name] feels conflicted about [his] growing {^desire:arousal}..."]
+			temparray += ["INTERACTION_RESIST_HIGH_1"]
+			temparray += ["INTERACTION_RESIST_HIGH_2"]
+			temparray += ["INTERACTION_RESIST_HIGH_3"]
 		elif stamina > 0:
-			temparray += ["[name] meekly tries to push [his] partner away..."]
-			temparray += ["[name] closes his eyes in shame..."]
-			temparray += ["[name] weeps as [his] body betrays [him]..."]
+			temparray += ["INTERACTION_RESIST_LOW_1"]
+			temparray += ["INTERACTION_RESIST_LOW_2"]
+			temparray += ["INTERACTION_RESIST_LOW_3"]
 		else:
-			temparray += ["[name] is a broken mess barely reacting to any violation..."]
-			temparray += ["[name] stays quiet as [his] body is ravaged..."]
+			temparray += ["INTERACTION_RESIST_BROKEN_1"]
+			temparray += ["INTERACTION_RESIST_BROKEN_2"]
 	
 	
-	var counter = 0
 	var replace = globals.fastif(side == 'giver', '1]', '2]')
-	for i in temparray:
-		temparray[counter] = temparray[counter].replace(']', replace) 
-		counter += 1
+	var selected_text = tr(temparray[randi()%temparray.size()]).replace(']', replace)
 	
 	if character.sex_traits.has("pushover"):
-		return globals.TextEncoder("{color=yellow|"+temparray[randi()%temparray.size()] + "}")
+		return globals.TextEncoder("{color=yellow|" + selected_text + "}")
 	else:
-		return globals.TextEncoder("{color=red|"+temparray[randi()%temparray.size()] + "}")
+		return globals.TextEncoder("{color=red|" + selected_text + "}")
 
 func lewdness_aura(caster):
 	for i in participants:
@@ -1509,7 +1511,7 @@ func forced_character_speech(scene, character, textdict):
 			if like == true: textdict += "_like"
 			else: textdict += "_dislike"
 
-	text = speechdict[textdict][randi()%speechdict[textdict].size()]
+	text = tr(speechdict[textdict][randi()%speechdict[textdict].size()])
 
 	return show_charcter_speech(character, partner, text)
 
@@ -1585,7 +1587,7 @@ func characterspeech(scene):
 		array.append(i)
 	text = input_handler.weightedrandom(array)
 	if text != null:
-		text = text[randi()%text.size()]
+		text = tr(text[randi()%text.size()])
 
 	if text == null:
 		text = ''
@@ -1600,32 +1602,31 @@ func show_charcter_speech(character, partner, text):
 	return {text = '[color=lime]' + text + '[/color]', character = character, partner = partner}
 
 var speechdict = {
-resist = ["Stop it!", "No... I don't want to!", "Why are you doing this...", "You, bastard...", "Let me go!"],
-resistorgasm = ["Ahh-hh... No...", "*Sob* why... this feels so good...", "No, Please stop, before I... Ahh... No *sob*"],
-mute = ['...', '...!', '......', '*gasp*'],
-blowjob = ["Does it feel good? *slurp*", "Mh-m... this smell...", "Does this feel good, [name2]?", "You like my mouth, [name2]?"],
-blowjobtake = ["Like my cock, [name2]?" , "Yes, suck it, dear...", "Mmmm, suck it like that."],
-inexperienced = ["I've never done this...", "What's this?", "Not so fast, [name2], I'm new to this..."],
-#virgin = ["Aaah! My first time...", "My first time...", "My first time... you took it..."],
-vagina = ["Ah! Yes! Fuck my pussy!", "Yes, fill me up, [name2]!", "More, give me more, [name2]!", "Ah, this is so good, [name2]..."],
-anal = ["My {^ass:butt}... feels good...", "Ah... My {^ass:butt}...", "Keep {^fucking:ravaging:grinding} my {^ass:butt}, [name2]..."],
-orgasm = ["Cumming, I'm cumming!..", "Ah, Ahh, AAAHH!","[name2], please hold me, I'm cumming!"],
-analrape = ["Stop! Where are you putting it!?", "No, please, not there!", "No, not my {^ass:butt}... I beg you..."],
-sexcrazed = ["Your {^dick:cock:penis}... Yes...", "Give me your {^dick:cock:penis}, [name2]... I need it", "Fuck me, [name2], I begging you!.."],
-nonlesbian = ["No, we shouldn't...", "No, we are both girls...","[name2], Ah, stop, I'm not into girls..."],
-enjoysanal = ["Please, put my {^butt:ass} into a good use, [name2]...", "I want it in my {^butt:ass}..."],
-rough = ["[name2], do me harder...", "Yes... Please, abuse me!"],
-pain = ["Ouch! It hurts...", "Please, no more...", "*sob*", 'It hurts...', '[name2], please, stop...'],
-painlike = ["Umh... Yes, hit me harder...", "Yes, [name2], punish me...", "Ah... this strings... nicely..."],
-silence = ['Mmhmm...', '*gasp*', 'Mhm!!'],
-moans = ["Ah...", "Oh...", "Mmmh...", "[name2]..."],
+resist = ["INTERACTION_SPEECH_RESIST_1", "INTERACTION_SPEECH_RESIST_2", "INTERACTION_SPEECH_RESIST_3", "INTERACTION_SPEECH_RESIST_4", "INTERACTION_SPEECH_RESIST_5"],
+resistorgasm = ["INTERACTION_SPEECH_RESISTORGASM_1", "INTERACTION_SPEECH_RESISTORGASM_2", "INTERACTION_SPEECH_RESISTORGASM_3"],
+mute = ["INTERACTION_SPEECH_MUTE_1", "INTERACTION_SPEECH_MUTE_2", "INTERACTION_SPEECH_MUTE_3", "INTERACTION_SPEECH_MUTE_4"],
+blowjob = ["INTERACTION_SPEECH_BLOWJOB_1", "INTERACTION_SPEECH_BLOWJOB_2", "INTERACTION_SPEECH_BLOWJOB_3", "INTERACTION_SPEECH_BLOWJOB_4"],
+blowjobtake = ["INTERACTION_SPEECH_BLOWJOBTAKE_1", "INTERACTION_SPEECH_BLOWJOBTAKE_2", "INTERACTION_SPEECH_BLOWJOBTAKE_3"],
+inexperienced = ["INTERACTION_SPEECH_INEXPERIENCED_1", "INTERACTION_SPEECH_INEXPERIENCED_2", "INTERACTION_SPEECH_INEXPERIENCED_3"],
+vagina = ["INTERACTION_SPEECH_VAGINA_1", "INTERACTION_SPEECH_VAGINA_2", "INTERACTION_SPEECH_VAGINA_3", "INTERACTION_SPEECH_VAGINA_4"],
+anal = ["INTERACTION_SPEECH_ANAL_1", "INTERACTION_SPEECH_ANAL_2", "INTERACTION_SPEECH_ANAL_3"],
+orgasm = ["INTERACTION_SPEECH_ORGASM_1", "INTERACTION_SPEECH_ORGASM_2", "INTERACTION_SPEECH_ORGASM_3"],
+analrape = ["INTERACTION_SPEECH_ANALRAPE_1", "INTERACTION_SPEECH_ANALRAPE_2", "INTERACTION_SPEECH_ANALRAPE_3"],
+sexcrazed = ["INTERACTION_SPEECH_SEXCRAZED_1", "INTERACTION_SPEECH_SEXCRAZED_2", "INTERACTION_SPEECH_SEXCRAZED_3"],
+nonlesbian = ["INTERACTION_SPEECH_NONLESBIAN_1", "INTERACTION_SPEECH_NONLESBIAN_2", "INTERACTION_SPEECH_NONLESBIAN_3"],
+enjoysanal = ["INTERACTION_SPEECH_ENJOYSANAL_1", "INTERACTION_SPEECH_ENJOYSANAL_2"],
+rough = ["INTERACTION_SPEECH_ROUGH_1", "INTERACTION_SPEECH_ROUGH_2"],
+pain = ["INTERACTION_SPEECH_PAIN_1", "INTERACTION_SPEECH_PAIN_2", "INTERACTION_SPEECH_PAIN_3", "INTERACTION_SPEECH_PAIN_4", "INTERACTION_SPEECH_PAIN_5"],
+painlike = ["INTERACTION_SPEECH_PAINLIKE_1", "INTERACTION_SPEECH_PAINLIKE_2", "INTERACTION_SPEECH_PAINLIKE_3"],
+silence = ["INTERACTION_SPEECH_SILENCE_1", "INTERACTION_SPEECH_SILENCE_2", "INTERACTION_SPEECH_SILENCE_3"],
+moans = ["INTERACTION_SPEECH_MOANS_1", "INTERACTION_SPEECH_MOANS_2", "INTERACTION_SPEECH_MOANS_3", "INTERACTION_SPEECH_MOANS_4"],
 
-virgin_vaginal_like = ["Aaah! My first time...","[name2]... You took my first time...","Ah! I Had no idea this... feels so good..."],
-virgin_vaginal_dislike = ["Ouch... it hurts...", "Ah... No... *sob*", "Noo... My... First time..."],
-virgin_anal_like = ["Ah! My {^ass:butt}... Soiled...", "Oh! [name2], what are you... with my {^ass:butt}..."],
-virgin_anal_dislike = ["Ugh, no... It hurts...", "Why, my {^ass:butt}... stop..."],
-rope_like = ["Mmh... What are you going to do with me now?...", "Oooh... I feel... hot...", "Is this wrong... to like it?..."],
-rope_dislike = ["Tying me... why?", "Ugh.. This rope is so thick...", "W-what's this for?"],
+virgin_vaginal_like = ["INTERACTION_SPEECH_VIRGIN_VAGINAL_LIKE_1", "INTERACTION_SPEECH_VIRGIN_VAGINAL_LIKE_2", "INTERACTION_SPEECH_VIRGIN_VAGINAL_LIKE_3"],
+virgin_vaginal_dislike = ["INTERACTION_SPEECH_VIRGIN_VAGINAL_DISLIKE_1", "INTERACTION_SPEECH_VIRGIN_VAGINAL_DISLIKE_2", "INTERACTION_SPEECH_VIRGIN_VAGINAL_DISLIKE_3"],
+virgin_anal_like = ["INTERACTION_SPEECH_VIRGIN_ANAL_LIKE_1", "INTERACTION_SPEECH_VIRGIN_ANAL_LIKE_2"],
+virgin_anal_dislike = ["INTERACTION_SPEECH_VIRGIN_ANAL_DISLIKE_1", "INTERACTION_SPEECH_VIRGIN_ANAL_DISLIKE_2"],
+rope_like = ["INTERACTION_SPEECH_ROPE_LIKE_1", "INTERACTION_SPEECH_ROPE_LIKE_2", "INTERACTION_SPEECH_ROPE_LIKE_3"],
+rope_dislike = ["INTERACTION_SPEECH_ROPE_DISLIKE_1", "INTERACTION_SPEECH_ROPE_DISLIKE_2", "INTERACTION_SPEECH_ROPE_DISLIKE_3"],
 
 }
 
@@ -1756,7 +1757,7 @@ func output(scenescript, valid_lines, givers, takers):
 				if drop == false:
 					linearray += shared_lines[i][j].lines
 		if linearray.size() > 0:
-			output += linearray[randi()%linearray.size()]
+			output += tr(linearray[randi()%linearray.size()])
 
 	return decoder(output, givers, takers)
 
@@ -1854,9 +1855,9 @@ func endencounter():
 		
 		if i.stamina > 0 && i.low_actions_resisted > 7 - i.person.get_stat('sexuals_factor')/1.5 && i.person.get_stat('consent') < 6:
 			i.person.add_stat('consent', 1)
-			text += i.person.translate('[name] has opened [him]self to the new experience: Consent - {color=aqua|' + tr(variables.consent_dict[int(i.person.get_stat('consent'))]) + "}\n")
+			text += i.person.translate(tr("INTERACTION_END_CONSENT_GAIN")) % tr(variables.consent_dict[int(i.person.get_stat('consent'))])
 		elif i.stamina == 0:
-			text += i.person.translate("[name] has been devastated by this encounter and have not been able to increase [his] open mindedness. ")
+			text += i.person.translate(tr("INTERACTION_END_DEVASTATED"))
 		
 #		if i.new_action_performed == true:
 #			i.consentgain += 1
@@ -1872,7 +1873,7 @@ func endencounter():
 #		if i.effects.has("pheromones"):
 #			consenttext[i.id] += "\nWas drugged with pheromones: -" + str(floor(i.consentgain/2))
 #			i.consentgain = floor(i.consentgain/2)
-		text += i.person.translate("[name]: Orgasms - ") + str(i.orgasms) 
+		text += i.person.translate(tr("INTERACTION_END_ORGASMS")) % str(i.orgasms)
 #		i.person.sexuals += i.orgasms not relevant
 		var expgain = round(i.orgasms * 8 + i.sens/200)
 		var bonus = 1
@@ -1892,7 +1893,7 @@ func endencounter():
 		expgain = expgain * bonus
 
 		i.person.add_stat('base_exp', expgain)
-		text += "; Experience gained: " + str(expgain)
+		text += tr("INTERACTION_END_EXP_GAINED") % str(expgain)
 		if i.orgasms > 0:
 			var effect = 'satisfaction_1'
 			if i.orgasms >= 3:
@@ -1931,7 +1932,7 @@ func endencounter():
 			chance = (randf()*100 < (5 + 5 * p.person.get_stat('sexuals_factor')))
 			if chance && check && !p.person.get_unlocked_sex_traits().has(i):
 				p.person.unlock_sex_trait(i)
-				text += p.name + " learned trait: " + Traitdata.sex_traits[i].name + "\n"
+				text += tr("INTERACTION_END_TRAIT_LEARNED") % [p.name, Traitdata.sex_traits[i].name]
 	### Removing Dislikes
 	var dislikes = []
 	for p in participants:
@@ -1948,7 +1949,7 @@ func endencounter():
 					chance = (randf()*100 < (5 + 5 * p.person.get_stat('sexuals_factor')))
 					if (chance && check) :
 						p.person.get_negative_sex_traits().erase(i) #bad practice still
-						text += p.name + " lost trait: " + Traitdata.sex_traits[i].name + "\n"
+						text += tr("INTERACTION_END_TRAIT_LOST") % [p.name, Traitdata.sex_traits[i].name]
 
 	get_node("Control").show()
 	get_node("Control/Panel/RichTextLabel").set_bbcode(globals.TextEncoder(text))
@@ -2145,7 +2146,7 @@ func askslaveforaction(chosen):
 	var cont = false
 	chosenaction.givers = givers
 	chosenaction.takers = takers
-	var text = '[color=green][name1] initiates ' + chosenaction.getname() + ' with [name2].[/color]\n\n'
+	var text = tr("INTERACTION_AI_INITIATES") % chosenaction.getname()
 	if chosenaction.canlast == true && randf() >= 0.2:
 		cont = true
 	$PopupPanel/RichTextLabel.bbcode_text = debug
@@ -2228,7 +2229,7 @@ func resistattempt(member, strength):
 		member.stamina -= strength*15
 	
 	
-	result.text = "[name1] isn't happy doing this..."
+	result.text = tr("INTERACTION_RESIST_ATTEMPT")
 
 #	if resiststrength > subdue && resiststrength != 0:
 #		result.consent = true
@@ -2287,38 +2288,38 @@ func resistattempt(member, strength):
 
 
 func alcohol(member):
-	var text = "\n" + member.name + " has drank an alcoholic bevarage. "
+	var text = tr("INTERACTION_ITEM_ALCOHOL") % member.name
 	if member.effects.has("drunk") == false && member.effects.has('tipsy') == false:
 		member.sensmod += 0.2
 		member.hornymod += 0.5
 		member.horny += 25
 		member.stamina += 40
 		member.effects.append('drunk')
-		text += "It made [him] slightly more horny and sensitive. "
+		text += tr("INTERACTION_ITEM_AROUSAL_EFFECT")
 	else:
-		text += "But it seems [he] is already drunk. "
+		text += tr("INTERACTION_ITEM_ALREADY_DRUNK")
 	$Panel/sceneeffects.bbcode_text += member.person.translate(text)
 	givers = [member]
 	_on_passbutton_pressed()
 
 func beer(member):
-	var text = "\n" + member.name + " has drank a beer. "
+	var text = tr("INTERACTION_ITEM_BEER") % member.name
 	if member.effects.has("drunk") == false && member.effects.has("tipsy") == false:
 		member.sensmod += 0.1
 		member.hornymod += 0.3
 		member.horny += 10
 		member.stamina += 20
 		member.effects.append('tipsy')
-		text += "It made [him] slightly more horny and sensitive. "
+		text += tr("INTERACTION_ITEM_AROUSAL_EFFECT")
 	else:
-		text += "But it seems [he] is already drunk. "
+		text += tr("INTERACTION_ITEM_ALREADY_DRUNK")
 	$Panel/sceneeffects.bbcode_text += member.person.translate(text)
 	_on_passbutton_pressed()
 
 func aphrodisiac(member):
 	member.horny += 100
 	member.stamina += 50
-	var text = "\n" + member.name + " has used an aphrodisiac. [His] breath grew slower and heavier.\n{color=aqua|[name]} - {random_chat=0|aphrodisiac}"
+	var text = tr("INTERACTION_ITEM_APHRODISIAC") % member.name
 	member.effects.append("aphrodisiac")
 	input_handler.scene_characters = [member.person]
 	$Panel/sceneeffects.bbcode_text += member.person.translate(globals.TextEncoder(text))
@@ -2329,7 +2330,7 @@ func aphrodisiac(member):
 func sensitivity_pot(member):
 	member.sensmod += 1
 	member.lewdmod += 0.2
-	var text = "\n" + member.name + " has used an sensitivity potion. [His] body became more responsive.\n{color=aqua|[name]} - {random_chat=0|aphrodisiac}"
+	var text = tr("INTERACTION_ITEM_SENSITIVITY_POT") % member.name
 
 	input_handler.scene_characters = [member.person]
 	$Panel/sceneeffects.bbcode_text += member.person.translate(globals.TextEncoder(text))
@@ -2338,16 +2339,16 @@ func sensitivity_pot(member):
 func pheromones(member):
 	var text = ''
 	if member.effects.has('pheromones'):
-		text = "\n" + member.name +" is already under effect of pheromones."
+		text = tr("INTERACTION_ITEM_PHEROMONES_ALREADY") % member.name
 	else:
 		if member.person.get_stat('race') in races.race_groups.halfbeast + races.race_groups.beast:
 			member.effects.append("pheromones")
 			member.lewdmod += 1
 			member.consent = max(member.consent, 4)
 			input_handler.scene_characters = [member.person]
-			text = "\nPheromones were used on " + member.name + globals.TextEncoder("... [His] mind became engulfed in unquenchable thirst.\n{color=aqua|[name]} - {random_chat=0|aphrodisiac}")
+			text = tr("INTERACTION_ITEM_PHEROMONES_SUCCESS") % member.name
 		else:
-			text = "\nPheromones were used on " + member.name + ", but they had no effect on [him]. "
+			text = tr("INTERACTION_ITEM_PHEROMONES_FAIL") % member.name
 
 	givers = [member]
 	$Panel/sceneeffects.bbcode_text += member.person.translate(text)

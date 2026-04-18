@@ -17,7 +17,7 @@ const consent_giver = 0
 const consent_taker = 0
 
 func getname(state = null):
-	return "Selectively Cum"
+	return tr("SEXACTION_SELECTIVELY_CUM")
 
 func getongoingname(givers, takers):
 	return ""

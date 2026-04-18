@@ -170,15 +170,15 @@ func stamina_set(value):
 
 var impregnation_texts = {
 
-	can_be_impregnated = "[name] could certainly get pregnant from it...",
-	cant_be_impregnated = "However, due to racial differences, [name] won't be able to get pregnant from it...",
-	is_breeder_father = "Being a [color=yellow]Breed Sow[/color], [name] will certainly be able to get pregnant from it...", #2fix
-	is_breeder_mother = "Being a [color=yellow]Breed Sow[/color], [name] will certainly be able to get pregnant from it...",
-	female_contraceptives = "As [name] is on contraceptives, [he] won't be able to get pregnant from it...",
-	male_contraceptives = "As [name] is on contraceptives, [he] won't be able to impregnate anyone...",
-	already_pregnant_visible = "[name] could get pregnant from it if [he] wasn't already...",
-	mother_undead = "As [name] isn't actually alive, [he] won't be able to get pregnant...",
-	father_undead = "As [name] isn't actually alive, [he] won't be able to impregnate...",
+	can_be_impregnated = "INTERACTION_IMPREG_CAN",
+	cant_be_impregnated = "INTERACTION_IMPREG_CANT_RACE",
+	is_breeder_father = "INTERACTION_IMPREG_BREEDER_FATHER",
+	is_breeder_mother = "INTERACTION_IMPREG_BREEDER_MOTHER",
+	female_contraceptives = "INTERACTION_IMPREG_FEMALE_CONTRACEPTIVE",
+	male_contraceptives = "INTERACTION_IMPREG_MALE_CONTRACEPTIVE",
+	already_pregnant_visible = "INTERACTION_IMPREG_ALREADY_PREGNANT",
+	mother_undead = "INTERACTION_IMPREG_MOTHER_UNDEAD",
+	father_undead = "INTERACTION_IMPREG_FATHER_UNDEAD",
 }
 
 
@@ -197,6 +197,7 @@ func impregnation_text(second_character, mother_is_self = true):
 		return_text = impregnation_texts.mother_undead
 	elif preg_status.father_undead:
 		return_text = impregnation_texts.father_undead
+		return_text = tr(return_text)
 		match mother_is_self:
 			true:
 				return_text = second_character.person.translate(return_text)
@@ -208,6 +209,7 @@ func impregnation_text(second_character, mother_is_self = true):
 		return_text = impregnation_texts.female_contraceptives
 	elif preg_status.male_contraceptive:
 		return_text = impregnation_texts.male_contraceptives
+		return_text = tr(return_text)
 		match mother_is_self:
 			true:
 				return_text = second_character.person.translate(return_text)
@@ -223,6 +225,7 @@ func impregnation_text(second_character, mother_is_self = true):
 			return_text = impregnation_texts.is_breeder_mother
 		elif preg_status.father_breeder:
 			return_text = impregnation_texts.is_breeder_father
+			return_text = tr(return_text)
 			match mother_is_self:
 				true:
 					return_text = second_character.person.translate(return_text)
@@ -237,8 +240,10 @@ func impregnation_text(second_character, mother_is_self = true):
 	
 	match mother_is_self:
 		true:
+			return_text = tr(return_text)
 			return_text = person.translate(return_text)
 		false:
+			return_text = tr(return_text)
 			return_text = second_character.person.translate(return_text)
 	return "\n[color=silver]" + return_text + "[/color]"
 

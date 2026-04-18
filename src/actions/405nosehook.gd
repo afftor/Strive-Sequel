@@ -18,10 +18,10 @@ const consent_giver = 0
 const consent_taker = 3
 
 func getname(state = null):
-	return "Nose Hook"
+	return tr("SEXACTION_NOSE_HOOK")
 
 func getongoingname(givers, takers):
-	return "[name1] put hose hook[s/1] on [names2] face."
+	return tr("SEXACTION_NOSEHOOK_ONGOING_1")
 
 func getongoingdescription(givers, takers):
 	return ""

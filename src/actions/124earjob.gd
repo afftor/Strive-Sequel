@@ -20,15 +20,15 @@ const consent_giver = 0
 const consent_taker = 3
 
 func getname(state = null):
-	return "Earjob"
+	return tr("SEXACTION_EARJOB")
 
 func getongoingname(givers, takers):
-	return "[name1] rub[s/1] [his1] penis[/s1] on [name2]'s ears."
+	return tr("SEXACTION_EARJOB_ONGOING_1")
 
 func getongoingdescription(givers, takers):
 	var temparray = []
-	temparray += ["[name1] {^steadily :aggressively :}{^massage:stroke:rub:jerk}[s/1] [names2] ears with [his1] [penis1]."]
-	return temparray[randi()%temparray.size()]
+	temparray += ["SEXACTION_EARJOB_ONGOING_DESC_1"]
+	return tr(temparray[randi()%temparray.size()])
 
 func requirements():
 	var valid = true

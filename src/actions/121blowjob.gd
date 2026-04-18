@@ -21,18 +21,18 @@ const consent_taker = 3
 
 func getname(state = null):
 	if givers.size() == 0 || takers.size() == 0 || givers.size() + takers.size() == 2:
-		return "Blowjob"
+		return tr("SEXACTION_BLOWJOB")
 	else:
-		return "Smlt. Blowjob"
+		return tr("SEXACTION_SMLT_BLOWJOB")
 
 func getongoingname(givers, takers):
-	return "[name1] give[s/1] [a /1]blowjob[/s1] to [name2]."
+	return tr("SEXACTION_BLOWJOB_ONGOING_1")
 
 func getongoingdescription(givers, takers):
 	var temparray = []
-	temparray += ["[name1] {^steadily :rhythmically :carefully :}{^suck:blow}[s/1] [names2] [penis2]{^, trying to maintain eye contact:, studying [his2] reactions:}."]
-	temparray += ["[name1] {^work:nurse:serve}[s/1] {^the length of :the shaft[/s2] of :the tip[/s2] of :}[names2] [penis2] with [his1] mouth[/s1]."]
-	return temparray[randi()%temparray.size()]
+	temparray += ["SEXACTION_BLOWJOB_ONGOING_DESC_1"]
+	temparray += ["SEXACTION_BLOWJOB_ONGOING_DESC_2"]
+	return tr(temparray[randi()%temparray.size()])
 
 func requirements():
 	var valid = true

@@ -35,10 +35,10 @@ func requirements():
 	return valid
 
 func getname(state = null):
-	return "Lap Sitting Anal"
+	return tr("SEXACTION_LAP_SITTING_ANAL")
 
 func getongoingname(givers, takers):
-	return "[name1] fuck[s/1] [names2] ass[/es2] in the reverse lotus position."
+	return tr("SEXACTION_REVLOTUSANAL_ONGOING_1")
 
 func givereffect(member):
 	var effects = {sens = 200, horny = 20}
@@ -72,7 +72,7 @@ start_2_sexa = {
 		orifice = ["shift"],
 	},
 	lines = [
-		", {^enjoying:finding glee in} putting [partner2] in such an embarassing position. ",
+		"SEXACTION_REVLOTUSANAL_ACT_1",
 	]},
 	
 },
@@ -84,7 +84,7 @@ main_3_sex = {
 	},
 	lines = [
 		". ",
-		" from below. ",
+		"SEXACTION_REVLOTUSANAL_ACT_3",
 	]},
 	
 },
@@ -95,7 +95,7 @@ react_3_sexa = {
 	conditions = {
 	},
 	lines = [
-		" as [name1] make[s/1] a show of [him2].",
+		"SEXACTION_REVLOTUSANAL_ACT_4",
 	]},
 	
 },

@@ -18,10 +18,10 @@ const consent_giver = 0
 const consent_taker = 5
 
 func getname(state = null):
-	return "Anal vibrator"
+	return tr("SEXACTION_ANAL_VIBRATOR")
 
 func getongoingname(givers, takers):
-	return "[name1] put [a /2]vibrator[/s2] in [names2] anus[/s2]."
+	return tr("SEXACTION_ANALVIBRATO_ONGOING_1")
 
 func getongoingdescription(givers, takers):
 	return ""

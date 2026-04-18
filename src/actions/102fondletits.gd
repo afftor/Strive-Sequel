@@ -20,15 +20,15 @@ const consent_giver = 0
 const consent_taker = 1
 
 func getname(state = null):
-	return "Fondle Chest"
+	return tr("SEXACTION_FONDLE_CHEST")
 
 func getongoingname(givers, takers):
-	return "[name1] fondle[s/1] [names2] chest."
+	return tr("SEXACTION_FONDLETITS_ONGOING_1")
 
 func getongoingdescription(givers, takers):
 	var temparray = []
-	temparray += ["[name1] continue[s/1] {^fondling:caressing:rubbing:squeezing} [names2] [tits2]."]
-	return temparray[randi()%temparray.size()]
+	temparray += ["SEXACTION_FONDLETITS_ONGOING_DESC_1"]
+	return tr(temparray[randi()%temparray.size()])
 	
 func requirements():
 	var valid = true

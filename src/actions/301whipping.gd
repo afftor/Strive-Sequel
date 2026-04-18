@@ -18,7 +18,7 @@ const consent_giver = 0
 const consent_taker = 2
 
 func getname(state = null):
-	return "Whipping"
+	return tr("SEXACTION_WHIPPING")
 
 #func getongoingname(givers, takers):
 #	return "[name1] whip[s/1] [name2]."

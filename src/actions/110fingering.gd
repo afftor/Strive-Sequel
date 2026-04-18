@@ -20,13 +20,13 @@ const consent_giver = 0
 const consent_taker = 2
 
 func getname(state = null):
-	return "Fingering"
+	return tr("SEXACTION_FINGERING")
 
 func getongoingname(givers, takers):
-	return "[name1] finger[s/1] [names2] puss[y/ies2]."
+	return tr("SEXACTION_FINGERING_ONGOING_1")
 
 func getongoingdescription(givers, takers):
-	return "[name1] thrust[s/1] [his1] fingers in and out of [names2] [pussy2]."
+	return tr("SEXACTION_FINGERING_ONGOING_DESC_1")
 
 func requirements():
 	var valid = true
