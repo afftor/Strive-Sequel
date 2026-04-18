@@ -10248,14 +10248,14 @@ Before you are able to answer, the woman's figure is enveloped in a bright light
 	TEMPLE_1_2 = "You throw an unstable catalyst at the slate and it melts the stone away to the point you are able to pass through. It might prevent the stone from keeping out other intruders in future, but it's too late to think about that now.",
 	TEMPLE_2_1 = """As you walk into the large hall, you hear the sound of a group approaching the entrance. The group looks familiar to you, but they don't seem to recognize you.
 	
-{color=yellow|Small Bandit: — Look, boss, this fools have opened it for us.}
+{color=yellow|Small Bandit: — Look, boss, these fools have opened it for us.}
 
 {color=aqua|Fat Bandit: — These guys look kinda familiar...}
 
 {color=yellow|Boss: — Shut it you idiots. Greetings, stranger. This is quite a place you've found here. How about you let us take some of the things inside? Collectors will pay a good price for ancient elven art and stuff. Say, 1.000 gold and you let us take whatever you leave behind?}""",
 	TEMPLE_2_2 = """As you walk into the large hall, you hear the sound of a group approaching the entrance. The group looks familiar to you, but they don't seem to recognize you.
 	
-{color=yellow|Small Bandit: — Look, boss, this fools have opened it for us.}
+{color=yellow|Small Bandit: — Look, boss, these fools have opened it for us.}
 
 {color=aqua|Fat Bandit: — These guys look kinda familiar...}
 

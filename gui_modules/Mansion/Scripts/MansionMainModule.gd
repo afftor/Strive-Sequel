@@ -76,11 +76,14 @@ var always_show = [
 
 var newgame_bonuses
 
+var in_test_mode = false
+
 func _ready():
 #	input_handler.CurrentScene = self
 	if test_mode && OS.has_feature('editor'):
 		modding_core.handle_test_mode()
 		test_mode()
+		in_test_mode = true
 		mansion_state_set("default")
 	add_season_events()
 	var is_new_game = false
@@ -219,7 +222,7 @@ func reset_vars():
 # Handles Resizing and visibility
 func handle_test():
 	for nd in get_tree().get_nodes_in_group('test'):
-		nd.visible = test_mode
+		nd.visible = in_test_mode
 	for nd in get_tree().get_nodes_in_group('test_obsolete'):
 		nd.visible = false
 

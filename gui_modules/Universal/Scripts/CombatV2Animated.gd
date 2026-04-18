@@ -93,7 +93,7 @@ signal turn_started
 
 func _ready():
 	if gui_controller.mansion != null:
-		debug = gui_controller.mansion.test_mode
+		debug = gui_controller.mansion.in_test_mode
 	autoskill_dummy = ResourceScripts.scriptdict.class_slave.new("combat_dummy")
 	autoskill_dummy.position = 0
 	autoskill_dummy.displaynode = ResourceScripts.scriptdict.fighternode.new()

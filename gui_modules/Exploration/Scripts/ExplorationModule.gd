@@ -42,7 +42,7 @@ func _ready():
 	$LocationGui/Resources/Forget.connect("pressed", self, "forget_location")
 	return_all_btn.connect("pressed", self, "return_all_to_mansion")
 	$TestButton.connect("pressed", self, "test")
-	$TestButton.visible = gui_controller.mansion.test_mode
+	$TestButton.visible = gui_controller.mansion.in_test_mode
 	$JournalButton.connect("pressed", self, "open_journal")
 	cast_panel.connect("set_entity_use", self, "start_use_state")
 	use_state_panel.set_explorer(self)

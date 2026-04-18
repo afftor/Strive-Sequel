@@ -540,8 +540,8 @@ var loot_tables = {
 		{chance = 0.7, selector = [
 			{material = 'adamantine', min = 3, max = 6},
 			{material = 'bonedragon', min = 4, max = 8},
-			{material = 'letherdragon', min = 4, max = 8},
-			{material = 'woodancinet', min = 3, max = 5},
+			{material = 'leatherdragon', min = 4, max = 8},
+			{material = 'woodancient', min = 3, max = 5},
 			]},
 		]},
 	beastkin_area_shop = {list = [
