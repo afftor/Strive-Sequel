@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://gui_modules/Universal/Modules/NavigationModule.tscn" type="PackedScene" id=2]
@@ -36,6 +36,7 @@
 [ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/panel_dungeon_char_hover.png" type="Texture" id=34]
 [ext_resource path="res://gui_modules/Exploration/Modules/CastPanel.tscn" type="PackedScene" id=35]
 [ext_resource path="res://gui_modules/Exploration/Modules/use_state_panel.tscn" type="PackedScene" id=36]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/icon_charinfo_skills.png" type="Texture" id=37]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=39]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainExtraSmallBold.tres" type="DynamicFont" id=40]
 [ext_resource path="res://gui_modules/Exploration/Modules/AvailableSlaves.tscn" type="PackedScene" id=41]
@@ -247,6 +248,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="caster" type="TextureRect" parent="Positions/HBoxContainer/backrow/4/Image"]
+visible = false
+margin_left = 1.0
+margin_top = 126.0
+margin_right = 28.0
+margin_bottom = 153.0
+texture = ExtResource( 37 )
+expand = true
+
 [node name="5" type="TextureButton" parent="Positions/HBoxContainer/backrow"]
 margin_top = 176.0
 margin_right = 135.0
@@ -340,6 +350,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="caster" type="TextureRect" parent="Positions/HBoxContainer/backrow/5/Image"]
+visible = false
+margin_left = 1.0
+margin_top = 126.0
+margin_right = 28.0
+margin_bottom = 153.0
+texture = ExtResource( 37 )
+expand = true
+
 [node name="6" type="TextureButton" parent="Positions/HBoxContainer/backrow"]
 margin_top = 352.0
 margin_right = 135.0
@@ -360,9 +379,6 @@ mouse_default_cursor_shape = 2
 expand = true
 stretch_mode = 6
 script = ExtResource( 15 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="Positions/HBoxContainer/backrow/6/Image"]
 margin_top = 3.0
@@ -435,6 +451,15 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="caster" type="TextureRect" parent="Positions/HBoxContainer/backrow/6/Image"]
+visible = false
+margin_left = 1.0
+margin_top = 126.0
+margin_right = 28.0
+margin_bottom = 153.0
+texture = ExtResource( 37 )
+expand = true
 
 [node name="frontrow" type="VBoxContainer" parent="Positions/HBoxContainer"]
 margin_left = 143.0
@@ -539,6 +564,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="caster" type="TextureRect" parent="Positions/HBoxContainer/frontrow/1/Image"]
+visible = false
+margin_left = 1.0
+margin_top = 126.0
+margin_right = 28.0
+margin_bottom = 153.0
+texture = ExtResource( 37 )
+expand = true
+
 [node name="2" type="TextureButton" parent="Positions/HBoxContainer/frontrow"]
 margin_top = 176.0
 margin_right = 135.0
@@ -637,6 +671,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="caster" type="TextureRect" parent="Positions/HBoxContainer/frontrow/2/Image"]
+visible = false
+margin_left = 1.0
+margin_top = 126.0
+margin_right = 28.0
+margin_bottom = 153.0
+texture = ExtResource( 37 )
+expand = true
+
 [node name="3" type="TextureButton" parent="Positions/HBoxContainer/frontrow"]
 margin_top = 352.0
 margin_right = 135.0
@@ -734,6 +777,15 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="caster" type="TextureRect" parent="Positions/HBoxContainer/frontrow/3/Image"]
+visible = false
+margin_left = 1.0
+margin_top = 126.0
+margin_right = 28.0
+margin_bottom = 153.0
+texture = ExtResource( 37 )
+expand = true
 
 [node name="TextureRect" type="TextureRect" parent="Positions"]
 visible = false
@@ -834,6 +886,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="caster" type="TextureRect" parent="PresentedSlavesPanel/ScrollContainer/VBoxContainer/Button"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 37 )
+expand = true
+
 [node name="Label" type="Label" parent="PresentedSlavesPanel"]
 margin_right = 615.0
 margin_bottom = 87.0
@@ -861,7 +920,6 @@ text = "RETURN_ALL_MANSION_LABEL"
 clip_text = true
 
 [node name="ItemUsePanel" type="Panel" parent="."]
-visible = false
 margin_left = 328.001
 margin_top = 420.0
 margin_right = 628.001
@@ -872,8 +930,8 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ItemUsePanel"]
-margin_left = 26.0
-margin_top = 109.0
+margin_left = 15.0
+margin_top = 66.0
 margin_right = 292.0
 margin_bottom = 618.0
 scroll_horizontal_enabled = false
@@ -882,17 +940,16 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ItemUsePanel/ScrollContainer"]
-margin_right = 266.0
+margin_right = 277.0
 size_flags_horizontal = 3
 
 [node name="Button" type="TextureButton" parent="ItemUsePanel/ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 266.0
+margin_right = 277.0
 margin_bottom = 52.0
 rect_min_size = Vector2( 0, 40 )
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 27 )
-script = ExtResource( 15 )
 
 [node name="Icon" type="TextureRect" parent="ItemUsePanel/ScrollContainer/VBoxContainer/Button"]
 margin_left = 5.10843
@@ -932,7 +989,70 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ScrollContainer_old" type="ScrollContainer" parent="ItemUsePanel"]
+visible = false
+margin_left = 26.0
+margin_top = 109.0
+margin_right = 292.0
+margin_bottom = 618.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ItemUsePanel/ScrollContainer_old"]
+margin_right = 266.0
+size_flags_horizontal = 3
+
+[node name="Button" type="TextureButton" parent="ItemUsePanel/ScrollContainer_old/VBoxContainer"]
+visible = false
+margin_right = 266.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 40 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 27 )
+script = ExtResource( 15 )
+
+[node name="Icon" type="TextureRect" parent="ItemUsePanel/ScrollContainer_old/VBoxContainer/Button"]
+margin_left = 5.10843
+margin_top = 6.0
+margin_right = 45.1084
+margin_bottom = 46.0
+texture = ExtResource( 26 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="amount" type="Label" parent="ItemUsePanel/ScrollContainer_old/VBoxContainer/Button"]
+margin_left = 27.4532
+margin_top = 19.4405
+margin_right = 48.4532
+margin_bottom = 48.4405
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="ItemUsePanel/ScrollContainer_old/VBoxContainer/Button"]
+margin_left = 53.0
+margin_top = 6.0
+margin_right = 259.0
+margin_bottom = 43.0
+custom_fonts/font = ExtResource( 3 )
+text = "Item Title"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="SpellContainer" type="ScrollContainer" parent="ItemUsePanel"]
+visible = false
 margin_left = 17.0
 margin_top = 109.0
 margin_right = 283.0
@@ -992,6 +1112,7 @@ valign = 1
 clip_text = true
 
 [node name="ItemsButton" type="TextureButton" parent="ItemUsePanel"]
+visible = false
 margin_left = 151.175
 margin_top = 54.0
 margin_right = 279.175
@@ -1015,6 +1136,7 @@ align = 1
 valign = 1
 
 [node name="SpellsButton" type="TextureButton" parent="ItemUsePanel"]
+visible = false
 margin_left = 151.386
 margin_top = 54.0
 margin_right = 279.386

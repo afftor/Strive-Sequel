@@ -133,8 +133,7 @@ func _ready():
 		pos_node.metadata = i
 		pos_node.target_node = self
 		pos_node.target_function = 'slave_position_selected'
-		pos_node.connect("pressed", self, "on_use_state_pressed", [pos_node])
-		pos_node.connect("pressed", self, "open_cast_panel", [pos_node])
+		pos_node.connect("pressed", self, "process_cast_use", [pos_node])
 
 	$LocationGui.target_node = self
 	$LocationGui.target_function = 'slave_position_deselect'
@@ -620,6 +619,7 @@ func build_location_group():
 #					get_node(positiondict[i] + "/Image").texture = images.icons.class_slave
 #			get_node(positiondict[i] + "/Image").texture = character.get_class_icon()
 			get_node(positiondict[i] + "/Image").show()
+			get_node(positiondict[i] + "/Image/caster").visible = cast_panel.can_cast(character.id)
 			get_node(positiondict[i] + "/Image/TextureRect").hint_tooltip = (
 				"HP: "
 				+ str(floor(character.hp))
@@ -679,8 +679,8 @@ func build_location_group():
 				newbutton.get_node('icon').texture = images.get_icon('class_slave')
 		newbutton.get_node("Label").text = i.get_short_name()
 #		newbutton.connect("pressed", self, "return_character", [i])
-		newbutton.connect("pressed", self, "open_cast_panel", [newbutton, return_all_btn.visible])
-		newbutton.connect("pressed", self, "on_use_state_pressed", [newbutton])
+		newbutton.get_node("caster").visible = cast_panel.can_cast(i.id)
+		newbutton.connect("pressed", self, "process_cast_use", [newbutton, return_all_btn.visible, true])
 		if active_location.group.values().has(i.id):
 			newbutton.get_node("icon").modulate = Color(0.3, 0.3, 0.3)
 		globals.connectslavetooltip(newbutton, i)
@@ -689,7 +689,7 @@ func build_location_group():
 		&& is_visible()):#$LocationGui.is_visible()
 		nav.return_to_mansion()
 		return
-#	build_item_panel()
+	build_item_panel()
 #	build_spell_panel()
 
 func add_rolled_chars(tarr):
@@ -734,25 +734,25 @@ func return_all_to_mansion_confirm(by_teleport = false):
 	nav.return_to_mansion("default")
 
 
-#func build_item_panel():
-#	input_handler.ClearContainer($LocationGui/ItemUsePanel/ScrollContainer/VBoxContainer)
+func build_item_panel():
+	input_handler.ClearContainer($LocationGui/ItemUsePanel/ScrollContainer/VBoxContainer)
 #	var tutorial_items = false
-#	for i in ResourceScripts.game_res.items.values():
-#		if Items.itemlist[i.itembase].has('explor_effect') == false:
-#			continue
-#		var newnode = input_handler.DuplicateContainerTemplate(
-#			$LocationGui/ItemUsePanel/ScrollContainer/VBoxContainer
-#		)
-#		i.set_icon(newnode.get_node("Icon"))
-#		#newnode.get_node("Label").text = i.name
-#		newnode.get_node("amount").text = str(i.amount)
-#		newnode.get_node("Name").text = tr("ITEM" + str(i.code).to_upper())
-#		newnode.dragdata = i
-#		globals.connectitemtooltip_v2(newnode, i)
+	for i in ResourceScripts.game_res.items.values():
+		if Items.itemlist[i.itembase].has('explor_effect') == false:
+			continue
+		var newnode = input_handler.DuplicateContainerTemplate(
+			$LocationGui/ItemUsePanel/ScrollContainer/VBoxContainer
+		)
+		i.set_icon(newnode.get_node("Icon"))
+		#newnode.get_node("Label").text = i.name
+		newnode.get_node("amount").text = str(i.amount)
+		newnode.get_node("Name").text = tr("ITEM" + str(i.code).to_upper())
+		newnode.connect("pressed", self, "start_use_state", [cast_panel.ENTITY_ITEM, null, i])
+		globals.connectitemtooltip_v2(newnode, i)
 #		tutorial_items = true
-#	# if tutorial_items == true:
-#	# 	if !ResourceScripts.game_progress.active_tutorials.has("exploration_items"):
-#	# 		input_handler.ActivateTutorial("exploration_items")
+	# if tutorial_items == true:
+	# 	if !ResourceScripts.game_progress.active_tutorials.has("exploration_items"):
+	# 		input_handler.ActivateTutorial("exploration_items")
 #	switch_panel(panelmode)
 
 
@@ -1278,43 +1278,63 @@ func set_intimidate():
 	globals.start_fixed_event('dungeon_intimidate')
 	active_location.intimidate = true
 
-func open_cast_panel(port_node, with_return = false):
-	if is_in_use_state(): return
-	var person = port_node.get("dragdata")
-	if !person:
-		person = port_node.get("character")
-	if !person: return
-	
-	var bottom = with_return#move to arg if needed
-	if !bottom:
-		cast_panel.rect_global_position = Vector2(
-			port_node.get_global_rect().end.x,
-			port_node.rect_global_position.y)
+func process_cast_use(port_node, with_return = false, bottom = false):
+	if !is_in_use_state():#open_cast_panel
+		var person = port_node.get("dragdata")
+		if !person:
+			person = port_node.get("character")
+		if !person: return
+		
+		if !cast_panel.can_cast(person.id):
+			if with_return:
+				return_character(person)
+			return
+		
+		cast_panel.build_for_person(person.id, with_return)
+		if !bottom:
+			cast_panel.rect_global_position = Vector2(
+				port_node.get_global_rect().end.x,
+				port_node.rect_global_position.y)
+		else:
+			cast_panel.rect_global_position = Vector2(
+				port_node.rect_global_position.x,
+				port_node.get_global_rect().end.y)
+		cast_panel.show()
+		
 	else:
-		cast_panel.rect_global_position = Vector2(
-			port_node.rect_global_position.x,
-			port_node.get_global_rect().end.y)
-	cast_panel.build_for_person(person.id, with_return)
-	cast_panel.show()
+		var person = port_node.get("dragdata")
+		if !person:
+			person = port_node.get("character")
+		if !person:
+			return
+		
+		if use_state.type == cast_panel.ENTITY_SKILL:
+			use_e_combat_skill(use_state.caster, person, use_state.entity)
+		else:# use_state.type == cast_panel.ENTITY_SKILL: (ENTITY_RETURN can't come here)
+			use_item_on_character(person, use_state.entity)
+		try_stop_use_state()
 
 func start_use_state(type, caster, entity):
+	var use_state_panel_icon = use_state_panel.get_node("Button/Icon")
+	var use_state_panel_name = use_state_panel.get_node("Button/name")
 	if type == cast_panel.ENTITY_RETURN:
 		return_character(caster)
 		return
 	elif type == cast_panel.ENTITY_ITEM:
-		use_item_on_character(caster, entity)
-		return
-	#type == cast_panel.ENTITY_SKILL:
-	if entity.target == 'self':
-		use_e_combat_skill(caster, caster, entity)
-		return
+		entity.set_icon(use_state_panel_icon)
+		use_state_panel_name.text = tr("ITEM" + str(entity.code).to_upper())
+	else:# type == cast_panel.ENTITY_SKILL:
+		if entity.target == 'self':
+			use_e_combat_skill(caster, caster, entity)
+			return
+		use_state_panel_icon.texture = entity.icon
+		use_state_panel_name.text = entity.name
 	
 	use_state = {
+		type = type,
 		caster = caster,
-		skill = entity
+		entity = entity
 	}
-	use_state_panel.get_node("Button/Icon").texture = entity.icon
-	use_state_panel.get_node("Button/name").text = entity.name
 	use_state_panel.show()
 
 func try_stop_use_state():
@@ -1325,15 +1345,4 @@ func try_stop_use_state():
 func is_in_use_state():
 	return (use_state != null)
 
-func on_use_state_pressed(btn):
-	if use_state == null:
-		return
-	var person = btn.get("dragdata")
-	if !person:
-		person = btn.get("character")
-	if !person:
-		return
-	
-	use_e_combat_skill(use_state.caster, person, use_state.skill)
-	try_stop_use_state()#not really necessary, as use_state_panel should do it itself
 
