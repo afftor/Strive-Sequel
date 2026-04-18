@@ -19310,6 +19310,7 @@ In combat restore the amount of health equal to your health regeneration at the 
 	MAE_SCENE3_SS = "Mae scene during ritual",
 	HELEVIEL1_SS = "Reward by Heleviel for female main characters",
 	LILIA_SEX_1_3_SS = "Complete first Lilia's quest",
+	LILIA_SEX_2_1_SS = "Complete Lilia's quest",
 	CALI_TOUCHING_1_SS = "First scene with Cali during her sidequest",
 	CALI_BJ_HAPPY_1_SS = "Second scene with Cali during her sidequest",
 	CALI_RIDING_1_SS = "Complete Cali's sidequest",
