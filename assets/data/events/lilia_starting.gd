@@ -457,12 +457,12 @@ var data = {
 	lilia_mansion_1 = {
 		image = null, music = "lilia_theme", tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
 		reqs = [], 
-		text = [{text = "LILIA_MANSION_1", reqs = [], bonus_effects = [{code = 'affect_unique_character', name = 'lilia', type = 'set_availability', value = true},] },
+		text = [
+			{text = "LILIA_MANSION_1", reqs = [], bonus_effects = [{code = 'affect_unique_character', name = 'lilia', type = 'set_availability', value = true},] },
 			{text = "", reqs = [{type = 'decision', value = 'potion_tame', check = true}], bonus_effects = [{code = 'affect_unique_character', name = 'lilia', type = 'stat', stat = 'tame_factor', value = 1}]},
 			{text = "", reqs = [{type = 'decision', value = 'potion_sex', check = true}], bonus_effects = [{code = 'affect_unique_character', name = 'lilia', type = 'stat', stat = 'sexuals_factor', value = 1}]},
 			{text = "", reqs = [{type = 'decision', value = 'potion_wit_magic', check = true}], bonus_effects = [{code = 'affect_unique_character', name = 'lilia', type = 'stat', stat = 'wits_factor', value = 1}, {code = 'affect_unique_character', name = 'lilia', type = 'stat', stat = 'magic_factor', value = 1}]},
 		],
-		common_effects = [{code = 'affect_unique_character', name = 'lilia', type = 'set_availability', value = true}],
 		options = [ {
 			code = 'lilia_mansion_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ]
@@ -485,6 +485,7 @@ var data = {
 		text = [{text = "LILIA_MANSION_3", reqs = []}],
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		unlocked_gallery_seq = "lilia_sex_2",
 		custom_background = "lilia_sex_2_1",
 		common_effects = [{code = 'unique_character_changes', value = 'lilia', args = [
 			{code = 'tag', operant = 'remove', value = 'no_sex'}]}],

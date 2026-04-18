@@ -124,7 +124,7 @@ func add_relationship_value(char1, char2, value = 0):
 		if relationship_data[key].status in ['friends', 'lovers', 'freelovers'] && value < 0:
 			value *= 0.5 #makes established relationship reduce slower
 	else:
-		relationship_data[key] = {value = variables.relationship_base.default, status = 'acquintances'}
+		relationship_data[key] = {value = variables.relationship_base.default, status = 'acquaintances'}
 	
 	if check_locked_relationship(char1, char2):
 		return
@@ -153,8 +153,8 @@ func update_relationship_status(data, char1, char2):
 				attempt_romance(char1, char2)
 	elif status in ['friends','lovers','freelovers'] && value >= 60:
 			pass
-	elif status != 'acquintances':
-		change_relationship_status(char1, char2, 'acquintances')
+	elif status != 'acquaintances':
+		change_relationship_status(char1, char2, 'acquaintances')
 	#print(data)
 
 func get_all_possible_love_pairs():
