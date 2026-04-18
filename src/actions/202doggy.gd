@@ -38,10 +38,10 @@ func requirements():
 	return valid
 
 func getname(state = null):
-	return "Doggy Style"
+	return tr("SEXACTION_DOGGY_STYLE")
 
 func getongoingname(givers, takers):
-	return "[name1] fuck[s/1] [name2] doggy style."
+	return tr("SEXACTION_DOGGY_ONGOING_1")
 
 func givereffect(member):
 	var effects = {sens = 220, horny = 25}
@@ -75,7 +75,7 @@ start_2_sexv = {
 		orifice = ["shift"],
 	},
 	lines = [
-		", {^enjoying:relishing in} the {^fine:perfect} view of [partners2] [ass2]. ",
+		"SEXACTION_DOGGY_ACT_1",
 	]},
 	
 	insert = {
@@ -83,8 +83,8 @@ start_2_sexv = {
 		orifice = ["insert"],
 	},
 	lines = [
-		", {^adjusting:rolling} [his2] hips forward to expose [his2] [pussy2]. ",
-		", {^pressing:pushing} [his2] upper body downward to expose [his2] [pussy2]. ",
+		"SEXACTION_DOGGY_ACT_2",
+		"SEXACTION_DOGGY_ACT_3",
 	]},
 	
 },
@@ -96,8 +96,8 @@ main_3_sex = {
 	},
 	lines = [
 		". ",
-		" from behind. ",
-		" like [an /2]animal[/s2]. ",
+		"SEXACTION_DOGGY_ACT_5",
+		"SEXACTION_DOGGY_ACT_6",
 	]},
 	
 },
@@ -108,7 +108,7 @@ react_3_sexv = {
 	conditions = {
 	},
 	lines = [
-		" as [name1] [fucks1] [partner2] {^like [an /1]animal[/s1]:like [a /1]dog[/s1] in heat}.",
+		"SEXACTION_DOGGY_ACT_7",
 	]},
 	
 },

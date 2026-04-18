@@ -32,15 +32,15 @@ func requirements():
 	return valid
 
 func getname(state = null):
-	return "Double Penetrate"
+	return tr("SEXACTION_DOUBLE_PENETRATE")
 
 func getongoingname(givers, takers):
-	return "[name1] double penetrate[s/1] [name2]."
+	return tr("SEXACTION_DOUBLEPEN_ONGOING_1")
 
 func getongoingdescription(givers, takers):
 	var temparray = []
-	temparray += ["[name1] continue {^passionately :eagerly :}[fucking1] [name2] {^together:in union}."]
-	return temparray[randi()%temparray.size()]
+	temparray += ["SEXACTION_DOUBLEPEN_ONGOING_DESC_1"]
+	return tr(temparray[randi()%temparray.size()])
 
 
 

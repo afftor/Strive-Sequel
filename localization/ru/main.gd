@@ -169,6 +169,7 @@ var TranslationDict = {
 	EXPLOREUPGRADES = """Улучшения""",
 	EXPLORESERVICE = """Сервис""",
 	EXPLOREGUILDSHOP = """Магазин гильдии""",
+	EXPLOREUSE = """Use""", # MISSING TRANSLATION
 	STATSTRADING_IMPROVED_STATUS = "Улучшенный статус",
 	STATSTRADING_STAT_NAME = "Название характеристики",
 	STATSTRADING_CURRENT_VALUE = "Текущее значение",
@@ -4787,6 +4788,36 @@ Requires: Базовый рабский труд""",
 	LOG_COMBAT_HEAL = "\n%s получает %d хп.",
 	LOG_MANA = "мана %d.",
 	LOG_COMBAT_MANA = "\n%s получает %d маны.",
+	LOG_COMBAT_DEFEATED = """
+%s has been defeated.
+""", # MISSING TRANSLATION
+	LOG_COMBAT_EVADE_DAMAGE = """%s evades the damage.""", # MISSING TRANSLATION
+	LOG_COMBAT_CRITICAL = """[color=yellow]Critical!![/color] """, # MISSING TRANSLATION
+	LOG_COMBAT_USE_SKILL = """
+%s uses %s. """, # MISSING TRANSLATION
+	LOG_COMBAT_USE_ITEM = """
+%s uses %s. """, # MISSING TRANSLATION
+	LOG_COMBAT_AUTO_SKILL = """
+%s! """, # MISSING TRANSLATION
+	LOG_COMBAT_COPY_SKILL = """
+%s copied %s. """, # MISSING TRANSLATION
+	LOG_COMBAT_DRAIN_HEALTH = """%s drained %d health from %s and gained %d health.""", # MISSING TRANSLATION
+	LOG_COMBAT_HIT_DAMAGE = """%s is hit for %d damage (%s, %s). """, # MISSING TRANSLATION
+	LOG_COMBAT_HIT_DAMAGE_SIMPLE = """%s is hit for %d damage. """, # MISSING TRANSLATION
+	LOG_COMBAT_HEAL_HEALTH = """%s is healed for %d health.""", # MISSING TRANSLATION
+	LOG_COMBAT_RESTORE_MANA = """%s restored %d mana.""", # MISSING TRANSLATION
+	LOG_COMBAT_DRAIN_MANA = """%s drained %d mana from %s and gained %d mana.""", # MISSING TRANSLATION
+	LOG_COMBAT_LOSE_MANA = """%s lost %d mana.""", # MISSING TRANSLATION
+	LOG_COMBAT_RESTORE_STAT = """%s restored %d %s.""", # MISSING TRANSLATION
+	LOG_COMBAT_DRAIN_STAT = """%s drained %d %s from %s.""", # MISSING TRANSLATION
+	LOG_COMBAT_LOSE_STAT = """%s loses %d %s.""", # MISSING TRANSLATION
+	LOG_COMBAT_SET_STAT = """%s's %s is now %d.""", # MISSING TRANSLATION
+	RELATIONSHIPACQUAINTANCES = """Acquaintances""", # MISSING TRANSLATION
+	RELATIONSHIPFRIENDS = """Friends""", # MISSING TRANSLATION
+	RELATIONSHIPLOVERS = """Lovers""", # MISSING TRANSLATION
+	RELATIONSHIPFREELOVERS = """Paramours""", # MISSING TRANSLATION
+	RELATIONSHIPRIVALS = """Rivals""", # MISSING TRANSLATION
+	LOG_RELATIONSHIP_STATUS = """%s and %s have become %s""", # MISSING TRANSLATION
 	LOG_ADD_PART = "Добавление части %s в %s",
 	LOG_SET = "%s: %s",
 	DIALOGUECHARINSPECT = """*Осмотреть*""",
@@ -19926,6 +19957,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	CHAR_LABEL = "Персонаж",
 	QUESTS_LABEL = "Задание",
 	RETURN_ALL_MANSION_LABEL = """Вернуть всех в особняк""",
+	RETURN_MANSION_LABEL = """Recall""", # MISSING TRANSLATION
 	TRAVELERS_LABEL = """Путешественники""",
 	BATTLE_GROUP_LABEL = """Боевая группа""",
 	ITEMS_LABEL = """Предметы""",
@@ -20417,6 +20449,7 @@ In combat restore the amount of health equal to your health regeneration at the 
 	MAE_SCENE3_SS = """Сцена с Мэй во время ритуала""",
 	HELEVIEL1_SS = """Награда от Хелевиэль для основного женского персонажа""",
 	LILIA_SEX_1_3_SS = """Завершить первый квест Лилии""",
+	LILIA_SEX_2_1_SS = """Complete Lilia's quest""", # MISSING TRANSLATION
 	CALI_TOUCHING_1_SS = """Первая сцена с Кали во время ее побочного задания""",
 	CALI_BJ_HAPPY_1_SS = """Вторая сцена с Кали во время ее побочного задания""",
 	CALI_RIDING_1_SS = """Завершить побочный квест Кали""",

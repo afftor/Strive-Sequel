@@ -210,12 +210,12 @@ func execute():
 		elif is_drain > 0.0:
 			rval = parent.target.deal_damage(value, damage_type)
 			var rval2 = parent.caster.heal(rval * is_drain)
-			text += "%s drained %d health from %s and gained %d health." %[parent.caster.get_short_name(), rval, parent.target.get_short_name(), rval2]
+			text += tr("LOG_COMBAT_DRAIN_HEALTH") % [parent.caster.get_short_name(), rval, parent.target.get_short_name(), rval2]
 		elif parent.get_tags().has('no_log') && is_drain <= 0.0:
 			rval = parent.target.deal_damage(value, damage_type)
 		else:
 			rval = parent.target.deal_damage(value, damage_type)
-			text += "%s is hit for %d damage (%s, %s). " %[parent.target.get_short_name(), rval, get_ability_type(), get_damage_type_name()]#, s_skill2.value[i]]
+			text += tr("LOG_COMBAT_HIT_DAMAGE") % [parent.target.get_short_name(), rval, get_ability_type(), get_damage_type_name()]#, s_skill2.value[i]]
 		if (rval > 0
 				and !input_handler.globalsettings.no_damage_shake
 				and input_handler.combat_node != null
@@ -228,11 +228,11 @@ func execute():
 			var rval = parent.target.heal(value)
 		else:
 			var rval = parent.target.heal(value)
-			text += "%s is healed for %d health." %[parent.target.get_short_name(), rval]
+			text += tr("LOG_COMBAT_HEAL_HEALTH") % [parent.target.get_short_name(), rval]
 	elif damagestat == 'restore_mana' and dmgf == 0: #heal, heal no log
 		if !parent.get_tags().has('no log'):
 			var rval = parent.target.mana_update(value)
-			text += "%s restored %d mana." %[parent.target.get_short_name(), rval]
+			text += tr("LOG_COMBAT_RESTORE_MANA") % [parent.target.get_short_name(), rval]
 		else:
 			parent.target.mana_update(value)
 	elif damagestat == 'restore_mana' and dmgf == 1: #drain, damage, damage no log, drain no log
@@ -240,32 +240,32 @@ func execute():
 		if is_drain > 0.0:
 			var rval2 = parent.caster.mana_update(rval * is_drain)
 			if !parent.get_tags().has('no log'):
-				text += "%s drained %d mana from %s and gained %d mana." %[parent.caster.get_short_name(), rval, parent.target.get_short_name(), rval2]
+				text += tr("LOG_COMBAT_DRAIN_MANA") % [parent.caster.get_short_name(), rval, parent.target.get_short_name(), rval2]
 		if !parent.get_tags().has('no log'):
-			text += "%s lost %d mana." %[parent.target.get_short_name(), rval]
+			text += tr("LOG_COMBAT_LOSE_MANA") % [parent.target.get_short_name(), rval]
 	else:
 		var mod = dmgf
 		var stat = damagestat
 		if mod == 0:
 			var rval = parent.target.stat_update(stat, value)
 			if !parent.get_tags().has('no log'):
-				text += "%s restored %d %s." %[parent.target.get_short_name(), rval, tr(stat)]
+				text += tr("LOG_COMBAT_RESTORE_STAT") % [parent.target.get_short_name(), rval, tr(stat)]
 		elif mod == 1:
 			var rval = parent.target.stat_update(stat, -value)
 			if is_drain > 0.0:
 				var rval2 = parent.caster.stat_update(stat, -rval * is_drain)
 				if !parent.get_tags().has('no log'):
-					text += "%s drained %d %s from %s." %[parent.caster.get_short_name(), value, tr(stat),  parent.target.get_short_name()]
+					text += tr("LOG_COMBAT_DRAIN_STAT") % [parent.caster.get_short_name(), value, tr(stat),  parent.target.get_short_name()]
 			elif !parent.get_tags().has('no log'):
-				text += "%s loses %d %s." %[parent.target.get_short_name(), -rval, tr(stat)]
+				text += tr("LOG_COMBAT_LOSE_STAT") % [parent.target.get_short_name(), -rval, tr(stat)]
 		elif mod == 2:
 			var rval = parent.target.stat_update(stat, value, true)
 			if is_drain > 0.0:# use this on your own risk
 				var rval2 = parent.caster.stat_update(stat, -rval * is_drain)
 				if !parent.get_tags().has('no log'):
-					text += "%s drained %d %s from %s." %[parent.caster.get_short_name(), value, tr(stat),  parent.target.get_short_name()]
+					text += tr("LOG_COMBAT_DRAIN_STAT") % [parent.caster.get_short_name(), value, tr(stat),  parent.target.get_short_name()]
 			elif !parent.get_tags().has('no log'):
-				text += "%s's %s is now %d." %[parent.target.get_short_name(), tr(stat), value]
+				text += tr("LOG_COMBAT_SET_STAT") % [parent.target.get_short_name(), tr(stat), value]
 		else:
 			print('error in damagestat %s' % damagestat) #obsolete in new format
 	

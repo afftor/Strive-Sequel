@@ -283,7 +283,7 @@ func invoke_damage():
 		#check miss
 		if s_skill2.hit_res == variables.RES_MISS:
 			queuenode.add_sfx(s_skill2.target.displaynode, 'miss')
-			queuenode.add_combatlog(target.get_short_name() + " evades the damage.")
+			queuenode.add_combatlog(tr("LOG_COMBAT_EVADE_DAMAGE") % target.get_short_name())
 		else:
 			#hit landed animation
 			if template.has('sounddata') and !template.sounddata.empty() and template.sounddata.hit != null:

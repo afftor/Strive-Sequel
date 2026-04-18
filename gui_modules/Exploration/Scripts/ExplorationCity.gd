@@ -51,7 +51,7 @@ func _ready():
 	$SlaveMarket/HBoxContainer/UpgradeButton2.connect("pressed", self, "show_bodyupgrade_window")
 	$BuyLocation/LocationInfo/PurchaseLocation.connect("pressed", self, "purchase_location")
 	$TestButton.connect("pressed", self, "test")
-	$TestButton.visible = gui_controller.mansion.test_mode
+	$TestButton.visible = gui_controller.mansion.in_test_mode
 	$JournalButton.connect("pressed", self, "open_journal")
 	gui_controller.win_btn_connections_handler(true, $MansionJournalModule, $JournalButton)
 	gui_controller.windows_opened.clear()

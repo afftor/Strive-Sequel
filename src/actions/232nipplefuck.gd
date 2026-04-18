@@ -21,13 +21,13 @@ const consent_level_max = 50
 const consent_giver = 4
 const consent_taker = 5
 func getname(state = null):
-	return "Nipple fuck"
+	return tr("SEXACTION_NIPPLE_FUCK")
 
 func getongoingname(givers, takers):
-	return "[name1] fuck[s/1] [names2] nipples."
+	return tr("SEXACTION_NIPPLEFUCK_ONGOING_1")
 
 func getongoingdescription(givers, takers):
-	return "[name2] moan[s/2] as [names1] thrust[s/1] [his1] [penis1] in and out of [his2] nipples."
+	return tr("SEXACTION_NIPPLEFUCK_ONGOING_DESC_1")
 
 func requirements():
 	var valid = true

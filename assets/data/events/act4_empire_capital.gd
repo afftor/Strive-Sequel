@@ -823,6 +823,20 @@ var data = {
 					},
 					{
 						code = "add_timed_event",
+						value = "rouge_demoness_intermission_start",
+						args = [
+							{
+								type = "add_to_date",
+								date = [
+									2,
+									2
+								],
+								hour = 1
+							}
+						]
+					},
+					{
+						code = "add_timed_event",
 						value = {
 							quest = "act_4_capital",
 							stage = "arena"
@@ -1231,6 +1245,19 @@ var data = {
 						code = "progress_quest",
 						value = "act_4_capital",
 						stage = "act4_continue"
+					},
+					{
+						code = "add_timed_event",
+						value = "rouge_melchor_confrontation_start",
+						args = [
+							{
+								type = "add_to_hour",
+								hour = [
+									1,
+									1
+								]
+							}
+						]
 					},
 					{
 						code = "update_city"

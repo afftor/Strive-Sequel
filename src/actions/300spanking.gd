@@ -18,7 +18,7 @@ const consent_giver = 0
 const consent_taker = 2
 
 func getname(state = null):
-	return "Spanking"
+	return tr("SEXACTION_SPANKING")
 
 #func getongoingname(givers, takers):
 #	return "[name1] spank[s/1] [names2] ass."

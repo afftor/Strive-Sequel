@@ -158,7 +158,7 @@ var skills = {
 		targetreqs = [],
 		effects = [], #effect now is hardcoded
 		cost = {mp = 15},
-		charges = 0,
+		charges = 2,
 		combatcooldown = 0,
 		cooldown = 1,
 		catalysts = {},

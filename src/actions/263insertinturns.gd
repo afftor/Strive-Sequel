@@ -33,15 +33,15 @@ func requirements():
 	return valid
 
 func getname(state = null):
-	return "Fuck in turns"
+	return tr("SEXACTION_FUCK_IN_TURNS")
 
 func getongoingname(givers, takers):
-	return "[name1] [fuck1] [name2] [pussy2] periodically taking turns and switching."
+	return tr("SEXACTION_INSERTINTURNS_ONGOING_1")
 
 func getongoingdescription(givers, takers):
 	var temparray = []
-	temparray += ["[name1] continue {^passionately :eagerly :} [fucking1] [name2] in turns."]
-	return temparray[randi()%temparray.size()]
+	temparray += ["SEXACTION_INSERTINTURNS_ONGOING_DESC_1"]
+	return tr(temparray[randi()%temparray.size()])
 
 
 

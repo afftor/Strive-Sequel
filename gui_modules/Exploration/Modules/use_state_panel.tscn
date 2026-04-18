@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/panel_complete.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/iconsgear/lifeshard.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/panel_dungeon_item.png" type="Texture" id=4]
+[ext_resource path="res://gui_modules/Exploration/Scripts/use_state_panel.gd" type="Script" id=5]
+
+[node name="use_state_panel" type="NinePatchRect"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -270.5
+margin_top = -170.0
+margin_right = 270.5
+margin_bottom = -48.0
+texture = ExtResource( 2 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+script = ExtResource( 5 )
+
+[node name="Button" type="TextureButton" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+rect_min_size = Vector2( 0, 40 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 4 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = 11.0
+margin_right = -431.0
+margin_bottom = -14.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="name" type="Label" parent="Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 103.0
+margin_top = 13.0
+margin_right = -11.0
+margin_bottom = -12.0
+custom_fonts/font = ExtResource( 1 )
+text = "Item Title"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

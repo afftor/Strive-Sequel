@@ -15,10 +15,10 @@ const takertags = []
 const consent_level = 0 #added due to testing, i think this script is broken overall
 
 func getname(state = null):
-	return "Wear Strap-on"
+	return tr("SEXACTION_WEAR_STRAP_ON")
 
 func getongoingname(givers, takers):
-	return "[name1] [is1] wearing a strap-on."
+	return tr("SEXACTION_WEARSTRAPON_ONGOING_1")
 
 func getongoingdescription(givers, takers):
 	return ""

@@ -18,10 +18,10 @@ const consent_giver = 0
 const consent_taker = 3
 
 func getname(state = null):
-	return "Blindfold"
+	return tr("SEXACTION_BLINDFOLD")
 
 func getongoingname(givers, takers):
-	return "[name1] put blindfold[s/1] on [names2] eyes."
+	return tr("SEXACTION_BLINDFOLD_ONGOING_1")
 
 func getongoingdescription(givers, takers):
 	return ""

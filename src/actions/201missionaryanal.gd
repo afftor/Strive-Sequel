@@ -28,10 +28,10 @@ func requirements():
 
 func getname(state = null):
 	
-	return "Missionary Anal"
+	return tr("SEXACTION_MISSIONARY_ANAL")
 
 func getongoingname(givers, takers):
-	return "[name1] fuck[s/1] [names2] ass[/es2] in the missionary position."
+	return tr("SEXACTION_MISSIONARYANAL_ONGOING_1")
 
 func givereffect(member):
 	var effects = {sens = 200, horny = 20}
@@ -64,7 +64,7 @@ start_2_sexa = {
 		orifice = ["shift"],
 	},
 	lines = [
-		", {^enjoying:relishing in} the closeness of [partners2] [body2]. ",
+		"SEXACTION_MISSIONARYANAL_ACT_1",
 	]},
 	
 	insert = {
@@ -72,7 +72,7 @@ start_2_sexa = {
 		orifice = ["insert"],
 	},
 	lines = [
-		", {^spreading:parting:pulling apart:holding apart} [his2] thighs to expose [his2] [anus2]. ",
+		"SEXACTION_MISSIONARYANAL_ACT_2",
 	]},
 	
 },
@@ -84,7 +84,7 @@ main_3_sex = {
 	},
 	lines = [
 		". ",
-		" from above. ",
+		"SEXACTION_MISSIONARYANAL_ACT_4",
 	]},
 	
 },
@@ -95,7 +95,7 @@ react_3_sexa = {
 	conditions = {
 	},
 	lines = [
-		" as [name1] [fucks1] [partners2] [anus2].",
+		"SEXACTION_MISSIONARYANAL_ACT_5",
 	]},
 	
 },

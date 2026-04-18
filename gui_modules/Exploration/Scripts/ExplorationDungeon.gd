@@ -9,9 +9,13 @@ onready var map_panel = $LocationGui/MapPanel
 onready var map_container = $LocationGui/MapPanel/CanvasLayer
 onready var level_container = $LocationGui/Panel/ScrollContainer/GridContainer
 onready var level_panel = $LocationGui/Panel
+onready var cast_panel = $LocationGui/cast_panel
+onready var use_state_panel = $LocationGui/use_state_panel
+onready var return_all_btn = $LocationGui/PresentedSlavesPanel/ReturnAll
 
 #var active_area
 var active_location
+var use_state
 
 var positiondict = {
 	1: "LocationGui/Positions/HBoxContainer/frontrow/1",
@@ -125,21 +129,25 @@ func location_chars_check(dict):
 func _ready():
 	set_process_input(false)
 	for i in positiondict:
-		get_node(positiondict[i]).metadata = i
-		get_node(positiondict[i]).target_node = self
-		get_node(positiondict[i]).target_function = 'slave_position_selected'
+		var pos_node = get_node(positiondict[i])
+		pos_node.metadata = i
+		pos_node.target_node = self
+		pos_node.target_function = 'slave_position_selected'
+		pos_node.connect("pressed", self, "process_cast_use", [pos_node])
 
 	$LocationGui.target_node = self
 	$LocationGui.target_function = 'slave_position_deselect'
 	$LocationGui/PresentedSlavesPanel/ScrollContainer.target_node = self
 	$LocationGui/PresentedSlavesPanel/ScrollContainer.target_function = 'slave_position_deselect'
-	$LocationGui/ItemUsePanel/ItemsButton.connect("pressed", self, "switch_panel", ["items"])
-	$LocationGui/ItemUsePanel/SpellsButton.connect("pressed", self, "switch_panel", ["spells"])
+#	$LocationGui/ItemUsePanel/ItemsButton.connect("pressed", self, "switch_panel", ["items"])
+#	$LocationGui/ItemUsePanel/SpellsButton.connect("pressed", self, "switch_panel", ["spells"])
 	$LocationGui/ItemUsePanel/ItemsButton.pressed = true
 	$LocationGui/Resources/SelectWorkers.connect("pressed", self, "select_workers")
 	$LocationGui/Resources/Forget.connect("pressed", self, "forget_location")
-	$LocationGui/PresentedSlavesPanel/ReturnAll.connect("pressed", self, "return_all_to_mansion")
+	return_all_btn.connect("pressed", self, "return_all_to_mansion")
 	$JournalButton.connect("pressed", self, "open_journal")
+	cast_panel.connect("set_entity_use", self, "start_use_state")
+	use_state_panel.set_explorer(self)
 	
 	map_panel.get_node("res").connect("toggled", self, 'toggle_res')
 	map_panel.get_node("slaves").connect("toggled", self, 'toggle_slaves')
@@ -215,11 +223,11 @@ func open_location(data): #2fix
 	if !data.tags.has('infinite'):
 		map_panel.get_node("levels").visible = false
 		dungeon = active_location.dungeon[active_location.current_level]
-		$LocationGui/PresentedSlavesPanel/ReturnAll.visible = true
+		return_all_btn.visible = true
 		map_panel.get_node("res").visible = true
 #		res_panel.visible = true
 	else:
-		$LocationGui/PresentedSlavesPanel/ReturnAll.visible = false
+		return_all_btn.visible = false
 		map_panel.get_node("res").visible = false
 		res_panel.visible = false
 		dungeon = active_location.dungeon[0]
@@ -416,7 +424,7 @@ func use_e_combat_skill(caster, target, skill):
 func execute_skill(s_skill2):  #to update to exploration version
 	var text = ''
 	if s_skill2.hit_res == variables.RES_CRIT:
-		text += "[color=yellow]Critical!![/color] "
+		text += tr("LOG_COMBAT_CRITICAL")
 		#s_skill2.target.displaynode.process_critical()
 	for i in s_skill2.value:
 		if !i.check_conditions(): continue
@@ -429,30 +437,27 @@ func execute_skill(s_skill2):  #to update to exploration version
 			elif i.is_drain > 0.0:
 				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
 				var rval2 = s_skill2.caster.heal(rval * i.is_drain)
-				text += (
-					"%s drained %d health from %s and gained %d health."
-					% [
-						s_skill2.caster.get_short_name(),
-						rval,
-						s_skill2.target.get_short_name(),
-						rval2
-					]
-				)
+				text += tr("LOG_COMBAT_DRAIN_HEALTH") % [
+					s_skill2.caster.get_short_name(),
+					rval,
+					s_skill2.target.get_short_name(),
+					rval2
+				]
 			elif s_skill2.tags.has('no_log') &&  i.is_drain <= 0.0:
 				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
 			else:
 				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
-				text += "%s is hit for %d damage. " % [s_skill2.target.get_short_name(), rval]  #, s_skill2.value[i]]
+				text += tr("LOG_COMBAT_HIT_DAMAGE_SIMPLE") % [s_skill2.target.get_short_name(), rval]  #, s_skill2.value[i]]
 		elif i.damagestat == 'damage_hp' and i.dmgf == 1:  #heal, heal no log
 			if s_skill2.tags.has('no_log'):
 				var rval = s_skill2.target.heal(i.value)
 			else:
 				var rval = s_skill2.target.heal(i.value)
-				text += "%s is healed for %d health." % [s_skill2.target.get_short_name(), rval]
+				text += tr("LOG_COMBAT_HEAL_HEALTH") % [s_skill2.target.get_short_name(), rval]
 		elif i.damagestat == 'restore_mana' and i.dmgf == 0:  #heal, heal no log
 			if ! s_skill2.tags.has('no log'):
 				var rval = s_skill2.target.mana_update(i.value)
-				text += "%s restored %d mana." % [s_skill2.target.get_short_name(), rval]
+				text += tr("LOG_COMBAT_RESTORE_MANA") % [s_skill2.target.get_short_name(), rval]
 			else:
 				s_skill2.target.mana_update(i.value)
 		elif i.damagestat == 'restore_mana' and i.dmgf == 1:  #drain, damage, damage no log, drain no log
@@ -460,57 +465,42 @@ func execute_skill(s_skill2):  #to update to exploration version
 			if i.is_drain > 0.0:
 				var rval2 = s_skill2.caster.mana_update(rval * i.is_drain)
 				if ! s_skill2.tags.has('no log'):
-					text += (
-						"%s drained %d mana from %s and gained %d mana."
-						% [s_skill2.caster.get_short_name(), rval, s_skill2.target.name, rval2]
-					)
+					text += tr("LOG_COMBAT_DRAIN_MANA") % [s_skill2.caster.get_short_name(), rval, s_skill2.target.name, rval2]
 			if ! s_skill2.tags.has('no log'):
-				text += "%s lost %d mana." % [s_skill2.target.get_short_name(), rval]
+				text += tr("LOG_COMBAT_LOSE_MANA") % [s_skill2.target.get_short_name(), rval]
 		else:
 			var mod = i.dmgf
 			var stat = i.damagestat
 			if mod == 0:
 				var rval = s_skill2.target.stat_update(stat, i.value)
 				if ! s_skill2.tags.has('no log'):
-					text += (
-						"%s restored %d %s."
-						% [s_skill2.target.get_short_name(), rval, tr(stat)]
-					)
+					text += tr("LOG_COMBAT_RESTORE_STAT") % [s_skill2.target.get_short_name(), rval, tr(stat)]
 			elif mod == 1:
 				var rval = s_skill2.target.stat_update(stat, -i.value)
 				if i.is_drain > 0.0:
 					var rval2 = s_skill2.caster.stat_update(stat, -rval * i.is_drain)
 					if ! s_skill2.tags.has('no log'):
-						text += (
-							"%s drained %d %s from %s."
-							% [
-								s_skill2.caster.get_short_name(),
-								i.value,
-								tr(stat),
-								s_skill2.target.get_short_name()
-							]
-						)
+						text += tr("LOG_COMBAT_DRAIN_STAT") % [
+							s_skill2.caster.get_short_name(),
+							i.value,
+							tr(stat),
+							s_skill2.target.get_short_name()
+						]
 				elif ! s_skill2.tags.has('no log'):
-					text += "%s loses %d %s." % [s_skill2.target.get_short_name(), -rval, tr(stat)]
+					text += tr("LOG_COMBAT_LOSE_STAT") % [s_skill2.target.get_short_name(), -rval, tr(stat)]
 			elif mod == 2:
 				var rval = s_skill2.target.stat_update(stat, i.value, true)
 				if i.is_drain > 0.0:  # use this on your own risk
 					var rval2 = s_skill2.caster.stat_update(stat, -rval * i.is_drain)
 					if ! s_skill2.tags.has('no log'):
-						text += (
-							"%s drained %d %s from %s."
-							% [
-								s_skill2.caster.get_short_name(),
-								i.value,
-								tr(stat),
-								s_skill2.target.get_short_name()
-							]
-						)
+						text += tr("LOG_COMBAT_DRAIN_STAT") % [
+							s_skill2.caster.get_short_name(),
+							i.value,
+							tr(stat),
+							s_skill2.target.get_short_name()
+						]
 				elif ! s_skill2.tags.has('no log'):
-					text += (
-						"%s's %s is now %d."
-						% [s_skill2.target.get_short_name(), tr(stat), i.value]
-					)
+					text += tr("LOG_COMBAT_SET_STAT") % [s_skill2.target.get_short_name(), tr(stat), i.value]
 			else:
 				print('error in damagestat %s' % i.damagestat)  #obsolete in new format
 
@@ -611,6 +601,7 @@ func build_location_group():
 #					get_node(positiondict[i] + "/Image").texture = images.icons.class_slave
 #			get_node(positiondict[i] + "/Image").texture = character.get_class_icon()
 			get_node(positiondict[i] + "/Image").show()
+			get_node(positiondict[i] + "/Image/caster").visible = cast_panel.can_cast(character.id)
 			get_node(positiondict[i] + "/Image/TextureRect").hint_tooltip = (
 				"HP: "
 				+ str(floor(character.hp))
@@ -669,7 +660,9 @@ func build_location_group():
 			else:
 				newbutton.get_node('icon').texture = images.get_icon('class_slave')
 		newbutton.get_node("Label").text = i.get_short_name()
-		newbutton.connect("pressed", self, "return_character", [i])
+#		newbutton.connect("pressed", self, "return_character", [i])
+		newbutton.get_node("caster").visible = cast_panel.can_cast(i.id)
+		newbutton.connect("pressed", self, "process_cast_use", [newbutton, return_all_btn.visible, true])
 		if active_location.group.values().has(i.id):
 			newbutton.get_node("icon").modulate = Color(0.3, 0.3, 0.3)
 		globals.connectslavetooltip(newbutton, i)
@@ -679,8 +672,7 @@ func build_location_group():
 		nav.return_to_mansion()
 		return
 	build_item_panel()
-	build_spell_panel()
-
+#	build_spell_panel()
 
 func add_rolled_chars(tarr):
 	if active_location != null:
@@ -726,7 +718,7 @@ func return_all_to_mansion_confirm(by_teleport = false):
 
 func build_item_panel():
 	input_handler.ClearContainer($LocationGui/ItemUsePanel/ScrollContainer/VBoxContainer)
-	var tutorial_items = false
+#	var tutorial_items = false
 	for i in ResourceScripts.game_res.items.values():
 		if Items.itemlist[i.itembase].has('explor_effect') == false:
 			continue
@@ -737,99 +729,99 @@ func build_item_panel():
 		#newnode.get_node("Label").text = i.name
 		newnode.get_node("amount").text = str(i.amount)
 		newnode.get_node("Name").text = tr("ITEM" + str(i.code).to_upper())
-		newnode.dragdata = i
+		newnode.connect("pressed", self, "start_use_state", [cast_panel.ENTITY_ITEM, null, i])
 		globals.connectitemtooltip_v2(newnode, i)
-		tutorial_items = true
+#		tutorial_items = true
 	# if tutorial_items == true:
 	# 	if !ResourceScripts.game_progress.active_tutorials.has("exploration_items"):
 	# 		input_handler.ActivateTutorial("exploration_items")
-	switch_panel(panelmode)
+#	switch_panel(panelmode)
 
 
-var panelmode = 'items'
+#var panelmode = 'items'
+#
+#
+#func switch_panel(mode):
+#	panelmode = mode
+#	match mode:
+#		'items':
+#			$LocationGui/ItemUsePanel/ScrollContainer.show()
+#			$LocationGui/ItemUsePanel/SpellContainer.hide()
+#			$LocationGui/ItemUsePanel/SpellsButton.pressed = false
+#			$LocationGui/ItemUsePanel/ItemsButton.pressed = true
+#		'spells':
+#			$LocationGui/ItemUsePanel/ScrollContainer.hide()
+#			$LocationGui/ItemUsePanel/SpellContainer.show()
+#			$LocationGui/ItemUsePanel/SpellsButton.pressed = true
+#			$LocationGui/ItemUsePanel/ItemsButton.pressed = false
 
 
-func switch_panel(mode):
-	panelmode = mode
-	match mode:
-		'items':
-			$LocationGui/ItemUsePanel/ScrollContainer.show()
-			$LocationGui/ItemUsePanel/SpellContainer.hide()
-			$LocationGui/ItemUsePanel/SpellsButton.pressed = false
-			$LocationGui/ItemUsePanel/ItemsButton.pressed = true
-		'spells':
-			$LocationGui/ItemUsePanel/ScrollContainer.hide()
-			$LocationGui/ItemUsePanel/SpellContainer.show()
-			$LocationGui/ItemUsePanel/SpellsButton.pressed = true
-			$LocationGui/ItemUsePanel/ItemsButton.pressed = false
-
-
-func build_spell_panel():
-	input_handler.ClearContainer($LocationGui/ItemUsePanel/SpellContainer/VBoxContainer)
-	for id in ResourceScripts.game_party.character_order:
-		var person = ResourceScripts.game_party.characters[id]
-		if person.check_location(active_location.id, true):
-			for i in person.get_combat_skills() + person.get_explore_skills():
-				if i == "teleport":#hardcoded separately
-					continue
-				var skill = Skilldata.get_template(i, person)
-				if skill.tags.has('exploration') == false:
-					continue
-				var newnode = input_handler.DuplicateContainerTemplate(
-					$LocationGui/ItemUsePanel/SpellContainer/VBoxContainer
-				)
-				newnode.get_node('Icon').texture = skill.icon
-				if skill.tags.has('aura_active'):
-					newnode.get_node("Icon").material = load("res://assets/book_shader.tres")
-				newnode.get_node("name").text = skill.name
-				newnode.get_node("castername").text = person.get_short_name()
-				var text = skill.descript
-				var disabled = false
-				for st in skill.cost:
-					text += (
-						"\n\n"
-						+ statdata.statdata[st].name
-						+ " cost: "
-						+ str(skill.cost[st])
-						+ " ("
-						+ str(floor(person.get_stat(st)))
-						+ ")"
-					)
-				if !skill.catalysts.empty() and !person.has_status('ignore_catalysts_for_%s' % i):
-					text += '\n\nRequired Catalysts: '
-					for k in skill.catalysts:
-						text += (
-							"\n"
-							+ Items.materiallist[k].name
-							+ ": "
-							+ str(skill.catalysts[k])
-							+ " ("
-							+ str(ResourceScripts.game_res.materials[k])
-							+ ")"
-						)
-						if ResourceScripts.game_res.materials[k] < skill.catalysts[k]:
-							disabled = true
-				globals.connecttexttooltip(newnode, text)
-				if skill.target == 'self':
-					newnode.set_script(null)
-					newnode.connect('pressed', self, 'use_e_combat_skill', [person, person, skill])
-				else:
-					newnode.dragdata = {skill = skill, caster = person}
-				if !person.check_cost(skill.cost):
-					disabled = true
-				if person.has_status('no_obed_gain'):
-					disabled = true
-				if skill.charges > 0:
-					var leftcharges = skill.charges
-					if person.skills.combat_skill_charges.has(skill.code):
-						leftcharges -= person.skills.combat_skill_charges[skill.code]
-#						newbutton.get_node("charge").visible = true
-#						newbutton.get_node("charge").text = str(leftcharges)+"/"+str(skill.charges)
-					if leftcharges <= 0:
-						disabled = true
-				if disabled == true:
-					newnode.get_node("name").set("custom_colors/font_color", Color(1, 0.5, 0.5))
-					newnode.script = null
+#func build_spell_panel():
+#	input_handler.ClearContainer($LocationGui/ItemUsePanel/SpellContainer/VBoxContainer)
+#	for id in ResourceScripts.game_party.character_order:
+#		var person = ResourceScripts.game_party.characters[id]
+#		if person.check_location(active_location.id, true):
+#			for i in person.get_combat_skills() + person.get_explore_skills():
+#				if i == "teleport":#hardcoded separately
+#					continue
+#				var skill = Skilldata.get_template(i, person)
+#				if skill.tags.has('exploration') == false:
+#					continue
+#				var newnode = input_handler.DuplicateContainerTemplate(
+#					$LocationGui/ItemUsePanel/SpellContainer/VBoxContainer
+#				)
+#				newnode.get_node('Icon').texture = skill.icon
+#				if skill.tags.has('aura_active'):
+#					newnode.get_node("Icon").material = load("res://assets/book_shader.tres")
+#				newnode.get_node("name").text = skill.name
+#				newnode.get_node("castername").text = person.get_short_name()
+#				var text = skill.descript
+#				var disabled = false
+#				for st in skill.cost:
+#					text += (
+#						"\n\n"
+#						+ statdata.statdata[st].name
+#						+ " cost: "
+#						+ str(skill.cost[st])
+#						+ " ("
+#						+ str(floor(person.get_stat(st)))
+#						+ ")"
+#					)
+#				if !skill.catalysts.empty() and !person.has_status('ignore_catalysts_for_%s' % i):
+#					text += '\n\nRequired Catalysts: '
+#					for k in skill.catalysts:
+#						text += (
+#							"\n"
+#							+ Items.materiallist[k].name
+#							+ ": "
+#							+ str(skill.catalysts[k])
+#							+ " ("
+#							+ str(ResourceScripts.game_res.materials[k])
+#							+ ")"
+#						)
+#						if ResourceScripts.game_res.materials[k] < skill.catalysts[k]:
+#							disabled = true
+#				globals.connecttexttooltip(newnode, text)
+#				if skill.target == 'self':
+#					newnode.set_script(null)
+#					newnode.connect('pressed', self, 'use_e_combat_skill', [person, person, skill])
+#				else:
+#					newnode.dragdata = {skill = skill, caster = person}
+#				if !person.check_cost(skill.cost):
+#					disabled = true
+#				if person.has_status('no_obed_gain'):
+#					disabled = true
+#				if skill.charges > 0:
+#					var leftcharges = skill.charges
+#					if person.skills.combat_skill_charges.has(skill.code):
+#						leftcharges -= person.skills.combat_skill_charges[skill.code]
+##						newbutton.get_node("charge").visible = true
+##						newbutton.get_node("charge").text = str(leftcharges)+"/"+str(skill.charges)
+#					if leftcharges <= 0:
+#						disabled = true
+#				if disabled == true:
+#					newnode.get_node("name").set("custom_colors/font_color", Color(1, 0.5, 0.5))
+#					newnode.script = null
 
 
 func unfade(window, time = 0.5):
@@ -1267,3 +1259,72 @@ func reveal_map(caster):
 func set_intimidate():
 	globals.start_fixed_event('dungeon_intimidate')
 	active_location.intimidate = true
+
+func process_cast_use(port_node, with_return = false, bottom = false):
+	if !is_in_use_state():#open_cast_panel
+		var person = port_node.get("dragdata")
+		if !person:
+			person = port_node.get("character")
+		if !person: return
+		
+		if !cast_panel.can_cast(person.id):
+			if with_return:
+				return_character(person)
+			return
+		
+		cast_panel.build_for_person(person.id, with_return)
+		if !bottom:
+			cast_panel.rect_global_position = Vector2(
+				port_node.get_global_rect().end.x,
+				port_node.rect_global_position.y)
+		else:
+			cast_panel.rect_global_position = Vector2(
+				port_node.rect_global_position.x,
+				port_node.get_global_rect().end.y)
+		cast_panel.show()
+		
+	else:
+		var person = port_node.get("dragdata")
+		if !person:
+			person = port_node.get("character")
+		if !person:
+			return
+		
+		if use_state.type == cast_panel.ENTITY_SKILL:
+			use_e_combat_skill(use_state.caster, person, use_state.entity)
+		else:# use_state.type == cast_panel.ENTITY_SKILL: (ENTITY_RETURN can't come here)
+			use_item_on_character(person, use_state.entity)
+		try_stop_use_state()
+
+func start_use_state(type, caster, entity):
+	var use_state_panel_icon = use_state_panel.get_node("Button/Icon")
+	var use_state_panel_name = use_state_panel.get_node("Button/name")
+	if type == cast_panel.ENTITY_RETURN:
+		return_character(caster)
+		return
+	elif type == cast_panel.ENTITY_ITEM:
+		entity.set_icon(use_state_panel_icon)
+		use_state_panel_name.text = tr("ITEM" + str(entity.code).to_upper())
+	else:# type == cast_panel.ENTITY_SKILL:
+		if entity.target == 'self':
+			use_e_combat_skill(caster, caster, entity)
+			return
+		use_state_panel_icon.texture = entity.icon
+		use_state_panel_name.text = entity.name
+	
+	use_state = {
+		type = type,
+		caster = caster,
+		entity = entity
+	}
+	use_state_panel.show()
+
+func try_stop_use_state():
+	if !is_in_use_state(): return
+	use_state = null
+	use_state_panel.hide()
+
+func is_in_use_state():
+	return (use_state != null)
+
+

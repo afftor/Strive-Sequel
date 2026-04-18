@@ -1,0 +1,99 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=2]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_SEX_Skills.tres" type="Theme" id=5]
+[ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/panel_dungeon_travellers.png" type="Texture" id=6]
+[ext_resource path="res://gui_modules/Exploration/Scripts/CastPanel.gd" type="Script" id=7]
+[ext_resource path="res://src/scenes/close_screen_simple.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/panel_dungeon_item.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/iconsgear/lifeshard.png" type="Texture" id=14]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[node name="cast_panel" type="NinePatchRect"]
+margin_right = 300.0
+margin_bottom = 588.0
+texture = ExtResource( 6 )
+patch_margin_left = 77
+patch_margin_top = 78
+patch_margin_right = 77
+patch_margin_bottom = 26
+script = ExtResource( 7 )
+
+[node name="close_screen" parent="." instance=ExtResource( 8 )]
+
+[node name="bg" type="Panel" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 17.0
+margin_top = 62.0
+margin_right = 283.0
+margin_bottom = 570.0
+theme = ExtResource( 5 )
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 266.0
+size_flags_horizontal = 3
+
+[node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 266.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 40 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 13 )
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 5.10843
+margin_top = 6.0
+margin_right = 45.1084
+margin_bottom = 46.0
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="amount" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 27.4532
+margin_top = 19.4405
+margin_right = 48.4532
+margin_bottom = 48.4405
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "5"
+align = 1
+
+[node name="name" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 53.0
+margin_top = 6.0
+margin_right = 259.0
+margin_bottom = 43.0
+custom_fonts/font = ExtResource( 1 )
+text = "Item Title"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_top = -3.0
+margin_right = 300.0
+margin_bottom = 51.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "EXPLOREUSE"
+align = 1
+valign = 1

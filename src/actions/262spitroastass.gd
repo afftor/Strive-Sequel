@@ -30,15 +30,15 @@ func requirements():
 	return valid
 
 func getname(state = null):
-	return "Spit-roast Anal"
+	return tr("SEXACTION_SPIT_ROAST_ANAL")
 
 func getongoingname(givers, takers):
-	return "[name1] spit-roast[s/1] [name2]'s [anus2] and mouth."
+	return tr("SEXACTION_SPITROASTASS_ONGOING_1")
 
 func getongoingdescription(givers, takers):
 	var temparray = []
-	temparray += ["[name1] continue {^passionately :eagerly :}spit-roasting [name2]."]
-	return temparray[randi()%temparray.size()]
+	temparray += ["SEXACTION_SPITROASTASS_ONGOING_DESC_1"]
+	return tr(temparray[randi()%temparray.size()])
 
 
 

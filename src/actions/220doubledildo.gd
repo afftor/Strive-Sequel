@@ -18,13 +18,13 @@ const consent_giver = 4
 const consent_taker = 4
 
 func getname(state = null):
-	return "Double Dildo"
+	return tr("SEXACTION_DOUBLE_DILDO")
 
 func getongoingname(givers, takers):
-	return "[name1] and [name2] fuck each other with a double-ended dildo."
+	return tr("SEXACTION_DOUBLEDILDO_ONGOING_1")
 
 func getongoingdescription(givers, takers):
-	return "[name1] and [name2] {^shake:grind:pump} [their] hips together, as the dildo trusts in and out of [their] [pussy3]."
+	return tr("SEXACTION_DOUBLEDILDO_ONGOING_DESC_1")
 
 func requirements():
 	var valid = true

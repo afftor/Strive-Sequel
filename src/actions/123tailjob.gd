@@ -20,16 +20,16 @@ const consent_giver = 3
 const consent_taker = 3
 
 func getname(state = null):
-	return "Tailjob"
+	return tr("SEXACTION_TAILJOB")
 
 func getongoingname(givers, takers):
-	return "[name1] give[s/1] [a /2]tailjob[/s2] to [name2]."
+	return tr("SEXACTION_TAILJOB_ONGOING_1")
 
 func getongoingdescription(givers, takers):
 	var temparray = []
-	temparray += ["[name1] {^steadily :rhythmically :carefully :}{^massage:stroke:rub:jerk}[s/1] [names2] [penis2] with [his1] tail[/s1]{^, trying to maintain eye contact:, studying [his2] reactions:}."]
-	temparray += ["[name1] {^massage:work:stroke:rub}[s/1] {^up and down the length of:all along:the shaft[/s2] of} [names2] [penis2] with [his1] tail[/s1]."]
-	return temparray[randi()%temparray.size()]
+	temparray += ["SEXACTION_TAILJOB_ONGOING_DESC_1"]
+	temparray += ["SEXACTION_TAILJOB_ONGOING_DESC_2"]
+	return tr(temparray[randi()%temparray.size()])
 
 func requirements():
 	var valid = true

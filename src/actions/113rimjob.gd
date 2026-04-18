@@ -20,13 +20,13 @@ const consent_giver = 3
 const consent_taker = 4
 
 func getname(state = null):
-	return "Rimjob"
+	return tr("SEXACTION_RIMJOB")
 
 func getongoingname(givers, takers):
-	return "[name1] give[s/1] [a /1]rimjob[/s1] to [name2]."
+	return tr("SEXACTION_RIMJOB_ONGOING_1")
 
 func getongoingdescription(givers, takers):
-	return "[name1] {^eat[s/1] out:lick[s/1]:slurp[s/1] at} [names2] [anus2]."
+	return tr("SEXACTION_RIMJOB_ONGOING_DESC_1")
 
 func requirements():
 	var valid = true

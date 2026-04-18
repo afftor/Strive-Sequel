@@ -248,7 +248,7 @@ func setup_weapon_element():
 func execute_skill():
 	var text = ''
 	if hit_res == variables.RES_CRIT:
-		text += "[color=yellow]Critical!![/color] "
+		text += tr("LOG_COMBAT_CRITICAL")
 		queuenode.add_crit(target.displaynode)
 	#new section applying conception of multi-value skills
 	#TO POLISH & REMAKE

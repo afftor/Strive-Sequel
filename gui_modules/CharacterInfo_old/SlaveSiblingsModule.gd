@@ -427,7 +427,7 @@ func build_relations():
 		if character.get_full_name().begins_with('Child of'):
 			continue
 		
-		text += character.get_full_name() + ": " + i.relationship + "\n"
+		text += character.get_full_name() + ": " + tr("RELATIONSHIP" + i.relationship.to_upper()) + "\n"
 	$Relations.bbcode_text = text
 
 

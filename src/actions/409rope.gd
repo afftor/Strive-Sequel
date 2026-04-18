@@ -18,10 +18,10 @@ const consent_giver = 0
 const consent_taker = 0
 
 func getname(state = null):
-	return "Rope"
+	return tr("SEXACTION_ROPE")
 
 func getongoingname(givers, takers):
-	return "[name1] bind[s/1] [names2] bod[y/ies2] with [a /2]rope[/s2]."
+	return tr("SEXACTION_ROPE_ONGOING_1")
 
 func getongoingdescription(givers, takers):
 	return ""

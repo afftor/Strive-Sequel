@@ -20,7 +20,7 @@ const consent_giver = 0
 const consent_taker = 0
 
 func getname(state = null):
-	return "Wait"
+	return tr("SEXACTION_WAIT")
 
 func getongoingname(givers, takers):
 	return ""

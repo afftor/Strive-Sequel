@@ -311,7 +311,7 @@ func invoke_init():
 	
 	match mode:
 		variables.SKILL_BASE:
-			queuenode.add_combatlog("\n" + caster.get_short_name() + ' uses ' + template.name + ". ")
+			queuenode.add_combatlog(tr("LOG_COMBAT_USE_SKILL") % [caster.get_short_name(), template.name])
 			caster.pay_cost(template.cost)
 			if template.combatcooldown != 0:
 				caster.skills.combat_cooldowns[code] = template.combatcooldown
@@ -334,16 +334,16 @@ func invoke_init():
 					caster.add_stat('metrics_healused', 1)
 		
 		variables.SKILL_ITEM:
-			queuenode.add_combatlog("\n" + caster.get_short_name() + ' uses ' + combatnode.activeitem.name + ". ")
+			queuenode.add_combatlog(tr("LOG_COMBAT_USE_ITEM") % [caster.get_short_name(), combatnode.activeitem.name])
 			combatnode.activeitem.amount -= 1
 			combatnode.activeitem = null
 			caster.selectedskill = caster.get_skill_by_tag('default')
 		
 		variables.SKILL_AUTO:
-			queuenode.add_combatlog("\n" + template.name + "! ")
+			queuenode.add_combatlog(tr("LOG_COMBAT_AUTO_SKILL") % template.name)
 		
 		variables.SKILL_COPY:
-			queuenode.add_combatlog("\n" + caster.get_short_name() + ' copied ' + template.name + ". ")
+			queuenode.add_combatlog(tr("LOG_COMBAT_COPY_SKILL") % [caster.get_short_name(), template.name])
 	
 	if mode != variables.SKILL_AUTO and !tags.has('passive'):
 		process_event(variables.TR_CAST, {skill = self, caster = caster}) 

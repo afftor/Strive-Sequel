@@ -37,14 +37,14 @@ func requirements():
 
 func getname(state = null):
 	if givers.size() == 0 || takers.size() == 0:
-		return "Doggy Anal"
+		return tr("SEXACTION_DOGGY_ANAL")
 	elif givers[0].strapon == true && takers[0].person.get_stat('penis_size') != '':
-		return "Doggy Pegging"
+		return tr("SEXACTION_DOGGY_PEGGING")
 	else:
-		return "Doggy Anal"
+		return tr("SEXACTION_DOGGY_ANAL")
 
 func getongoingname(givers, takers):
-	return "[name1] fuck[s/1] [names2] ass[/es2] doggy style."
+	return tr("SEXACTION_DOGGYANAL_ONGOING_1")
 
 func givereffect(member):
 	var effects = {sens = 200, horny = 20}
@@ -77,7 +77,7 @@ start_2_sexa = {
 		orifice = ["shift"],
 	},
 	lines = [
-		", {^enjoying:relishing in} the {^fine:perfect} view of [partners2] [ass2]. ",
+		"SEXACTION_DOGGYANAL_ACT_1",
 	]},
 	
 	insert = {
@@ -85,8 +85,8 @@ start_2_sexa = {
 		orifice = ["insert"],
 	},
 	lines = [
-		", {^adjusting:rolling} [his2] hips forward to expose [his2] [anus2]. ",
-		", {^pressing:pushing} [his2] upper body downward to expose [his2] [anus2]. ",
+		"SEXACTION_DOGGYANAL_ACT_2",
+		"SEXACTION_DOGGYANAL_ACT_3",
 	]},
 	
 },
@@ -98,8 +98,8 @@ main_3_sex = {
 	},
 	lines = [
 		". ",
-		" from behind. ",
-		" like [an /2]animal[/s2]. ",
+		"SEXACTION_DOGGYANAL_ACT_5",
+		"SEXACTION_DOGGYANAL_ACT_6",
 	]},
 	
 },
@@ -110,7 +110,7 @@ react_3_sexa = {
 	conditions = {
 	},
 	lines = [
-		" as [name1] [fucks1] [partners2] [anus2] {^like [an /2]animal[/s2]:like a dog in heat}.",
+		"SEXACTION_DOGGYANAL_ACT_7",
 	]},
 	
 },

@@ -19,10 +19,10 @@ const consent_giver = 0
 const consent_taker = 1
 
 func getname(state = null):
-	return "Caress"
+	return tr("SEXACTION_CARESS")
 
 func getongoingname(givers, takers):
-	return "[name1] caress[es/1] [names2] [body2]."
+	return tr("SEXACTION_CARESS_ONGOING_1")
 
 func requirements():
 	var valid = true
