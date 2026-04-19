@@ -116,7 +116,7 @@ func _fill_skill_container():
 		panel.get_node('HBoxContainer/frame/icon').texture = skill.icon
 		panel.get_node('HBoxContainer/frame/icon').material = MASKED_SPRITE.duplicate(true)
 		panel.get_node('HBoxContainer/frame/icon').material.set_shader_param("mask", images.get_icon('frame_explore_mask'))
-		panel.get_node('HBoxContainer/skillname').text = "%s: %s" % [tr("SKILL"), tr(skill.name)]
+		panel.get_node('HBoxContainer/skillname').text = "%s: %s" % [tr("CLASS_SOCIAL_SKILL_LABEL"), tr(skill.name)]
 		if skill.has("container"):
 			globals.connecttexttooltip(panel, tr(skill.descript))
 		else:
@@ -130,7 +130,7 @@ func _fill_skill_container():
 			panel.get_node('HBoxContainer/frame/icon').texture = skill.icon
 			panel.get_node('HBoxContainer/frame/icon').material = MASKED_SPRITE.duplicate(true)
 			panel.get_node('HBoxContainer/frame/icon').material.set_shader_param("mask", images.get_icon('frame_explore_mask'))
-			panel.get_node('HBoxContainer/skillname').text = "%s: %s" % [tr("SKILL"), tr(skill.name)]
+			panel.get_node('HBoxContainer/skillname').text = "%s: %s" % [tr("CLASS_SOCIAL_SKILL_LABEL"), tr(skill.name)]
 			if skill.has("container"):
 				globals.connecttexttooltip(panel, tr(skill.descript))
 			else:
@@ -143,7 +143,7 @@ func _fill_skill_container():
 		panel.get_node('HBoxContainer/frame/icon').texture = skill.icon
 		panel.get_node('HBoxContainer/frame/icon').material = MASKED_SPRITE.duplicate(true)
 		panel.get_node('HBoxContainer/frame/icon').material.set_shader_param("mask", images.get_icon('frame_skill_mask'))
-		panel.get_node('HBoxContainer/skillname').text = "%s: %s" % [tr("SKILL"), tr(skill.name)]
+		panel.get_node('HBoxContainer/skillname').text = "%s: %s" % [tr("CLASS_COMBAT_SKILL_LABEL"), tr(skill.name)]
 		if skill.has("container"):
 			globals.connecttexttooltip(panel, tr(skill.descript))
 		else:
