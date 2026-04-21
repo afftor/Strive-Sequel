@@ -1,4 +1,4 @@
-[gd_scene load_steps=214 format=2]
+[gd_scene load_steps=215 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=2]
@@ -283,6 +283,8 @@ content_margin_left = 3.0
 content_margin_right = 3.0
 texture = ExtResource( 137 )
 region_rect = Rect2( 0, 0, 294, 49 )
+margin_left = 2.33591
+margin_right = 2.2752
 margin_top = 3.0
 margin_bottom = 3.0
 
@@ -291,8 +293,14 @@ content_margin_left = 3.0
 content_margin_right = 3.0
 texture = ExtResource( 137 )
 region_rect = Rect2( 0, 0, 294, 49 )
+margin_left = 3.08005
+margin_right = 2.16144
 margin_top = 3.0
 margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=50]
+texture = ExtResource( 69 )
+region_rect = Rect2( 0, 0, 1920, 1080 )
 
 [sub_resource type="DynamicFont" id=30]
 size = 22
@@ -794,6 +802,7 @@ theme = ExtResource( 19 )
 scroll_vertical_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SlaveInfoModule/TraitContainer"]
+margin_right = 674.0
 size_flags_horizontal = 3
 custom_constants/separation = 5
 alignment = 1
@@ -1833,7 +1842,6 @@ custom_fonts/font = ExtResource( 10 )
 text = "LOCKED_LABEL"
 
 [node name="ClassPanel" type="Panel" parent="SlaveClassesModule"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 978.0
@@ -1881,10 +1889,37 @@ margin_bottom = 257.0
 text = "Class Name"
 align = 1
 
-[node name="StatContainer" type="PanelContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer"]
+[node name="ReqsContainer" type="PanelContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer"]
 margin_top = 261.0
 margin_right = 677.0
-margin_bottom = 299.539
+margin_bottom = 336.539
+custom_styles/panel = SubResource( 47 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer/ReqsContainer"]
+margin_left = 3.0
+margin_top = 2.14639
+margin_right = 674.0
+margin_bottom = 73.1464
+
+[node name="Label" type="Label" parent="SlaveClassesModule/ClassPanel/VBoxContainer/ReqsContainer/VBoxContainer"]
+margin_right = 671.0
+margin_bottom = 33.0
+text = "Requirements"
+align = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SlaveClassesModule/ClassPanel/VBoxContainer/ReqsContainer/VBoxContainer"]
+margin_top = 37.0
+margin_right = 671.0
+margin_bottom = 71.0
+bbcode_enabled = true
+fit_content_height = true
+scroll_active = false
+deselect_on_focus_loss_enabled = false
+
+[node name="StatContainer" type="PanelContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer"]
+margin_top = 340.0
+margin_right = 677.0
+margin_bottom = 378.539
 custom_styles/panel = SubResource( 47 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="SlaveClassesModule/ClassPanel/VBoxContainer/StatContainer"]
@@ -1898,9 +1933,9 @@ scroll_active = false
 deselect_on_focus_loss_enabled = false
 
 [node name="MasteryContainer" type="VBoxContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer"]
-margin_top = 303.0
+margin_top = 382.0
 margin_right = 677.0
-margin_bottom = 303.0
+margin_bottom = 382.0
 custom_constants/separation = 1
 
 [node name="Panel" type="PanelContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer/MasteryContainer"]
@@ -1924,6 +1959,7 @@ margin_bottom = 52.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "Combat Mastery Points: "
+align = 1
 valign = 1
 
 [node name="frame" type="TextureRect" parent="SlaveClassesModule/ClassPanel/VBoxContainer/MasteryContainer/Panel/HBoxContainer"]
@@ -1944,14 +1980,14 @@ expand = true
 stretch_mode = 6
 
 [node name="SkillContainer" type="VBoxContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer"]
-margin_top = 307.0
+margin_top = 386.0
 margin_right = 677.0
-margin_bottom = 307.0
+margin_bottom = 386.0
 custom_constants/separation = 1
 
 [node name="Panel" type="PanelContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer/SkillContainer"]
 visible = false
-margin_right = 376.0
+margin_right = 677.0
 margin_bottom = 56.0
 rect_min_size = Vector2( 120, 30 )
 size_flags_horizontal = 3
@@ -1960,7 +1996,7 @@ custom_styles/panel = SubResource( 49 )
 [node name="HBoxContainer" type="HBoxContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer/SkillContainer/Panel"]
 margin_left = 3.0
 margin_top = 3.0
-margin_right = 373.0
+margin_right = 674.0
 margin_bottom = 53.0
 alignment = 2
 
@@ -1981,7 +2017,7 @@ stretch_mode = 6
 
 [node name="skillname" type="Label" parent="SlaveClassesModule/ClassPanel/VBoxContainer/SkillContainer/Panel/HBoxContainer"]
 margin_left = 54.0
-margin_right = 370.0
+margin_right = 671.0
 margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -1990,9 +2026,9 @@ align = 1
 valign = 1
 
 [node name="TraitsContainer" type="PanelContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer"]
-margin_top = 311.0
+margin_top = 390.0
 margin_right = 677.0
-margin_bottom = 349.539
+margin_bottom = 428.539
 custom_styles/panel = SubResource( 47 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="SlaveClassesModule/ClassPanel/VBoxContainer/TraitsContainer"]
@@ -2005,29 +2041,23 @@ fit_content_height = true
 scroll_active = false
 deselect_on_focus_loss_enabled = false
 
-[node name="ReqsContainer" type="PanelContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer"]
-margin_top = 353.0
+[node name="BonusText" type="PanelContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer"]
+margin_top = 836.461
 margin_right = 677.0
-margin_bottom = 391.539
+margin_bottom = 873.0
+rect_min_size = Vector2( 120, 30 )
+size_flags_horizontal = 3
+size_flags_vertical = 10
 custom_styles/panel = SubResource( 47 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SlaveClassesModule/ClassPanel/VBoxContainer/ReqsContainer"]
+[node name="Panel" type="Panel" parent="SlaveClassesModule/ClassPanel/VBoxContainer/BonusText"]
 margin_left = 3.0
 margin_top = 2.14639
 margin_right = 674.0
-margin_bottom = 36.1464
-bbcode_enabled = true
-fit_content_height = true
-scroll_active = false
-deselect_on_focus_loss_enabled = false
-
-[node name="BonusText" type="PanelContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer"]
-margin_top = 395.0
-margin_right = 677.0
-margin_bottom = 431.539
-rect_min_size = Vector2( 120, 30 )
+margin_bottom = 34.1464
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 47 )
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 50 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="SlaveClassesModule/ClassPanel/VBoxContainer/BonusText"]
 margin_left = 3.0
@@ -2041,7 +2071,8 @@ fit_content_height = true
 scroll_active = false
 
 [node name="separator" type="HBoxContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer"]
-margin_top = 435.0
+visible = false
+margin_top = 636.0
 margin_right = 677.0
 margin_bottom = 873.0
 size_flags_vertical = 3

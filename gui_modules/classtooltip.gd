@@ -80,7 +80,7 @@ func _fill_stat_container():
 	var tmp = ""
 	tmp = ResourceScripts.descriptions.get_class_bonuses(person, classdata)
 	_stat_container.visible = !tmp.empty()
-	_stat_container.get_node("RichTextLabel").bbcode_text = globals.TextEncoder(tmp)
+	_stat_container.get_node("RichTextLabel").bbcode_text = "[center]" + globals.TextEncoder(tmp) + "[/center]"
 
 
 func _fill_mastery_container():
@@ -164,7 +164,7 @@ func _fill_requirements_container():
 	var tmp = ""
 	tmp = ResourceScripts.descriptions.get_class_reqs(person, classdata)
 	_requirements_container.visible = !tmp.empty()
-	_requirements_container.get_node("RichTextLabel").bbcode_text = globals.TextEncoder(tmp)
+	_requirements_container.get_node("VBoxContainer/RichTextLabel").bbcode_text = "[center]" + globals.TextEncoder(tmp) + "[/center]"
 
 
 func _fill_bonus_text():
@@ -177,7 +177,7 @@ func _fill_bonus_text():
 			text += "\n\n"
 		text += extra
 	_bonus_panel.visible = text != ""
-	_bonus_text.bbcode_text = globals.TextEncoder(text)
+	_bonus_text.bbcode_text = person.translate(globals.TextEncoder(text))
 
 
 func _build_extra_bonus_text():

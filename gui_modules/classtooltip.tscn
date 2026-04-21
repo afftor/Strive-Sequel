@@ -62,7 +62,7 @@ script = ExtResource( 10 )
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 400.0
-margin_bottom = 311.0
+margin_bottom = 348.0
 size_flags_vertical = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
@@ -135,6 +135,7 @@ margin_bottom = 52.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "Combat Mastery Points: "
+align = 1
 valign = 1
 
 [node name="frame" type="TextureRect" parent="VBoxContainer/MasteryContainer/Panel/HBoxContainer"]
@@ -219,23 +220,34 @@ deselect_on_focus_loss_enabled = false
 [node name="ReqsContainer" type="PanelContainer" parent="VBoxContainer"]
 margin_top = 223.0
 margin_right = 390.0
-margin_bottom = 261.539
+margin_bottom = 298.539
 custom_styles/panel = SubResource( 47 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ReqsContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ReqsContainer"]
 margin_left = 3.0
 margin_top = 2.14639
 margin_right = 387.0
-margin_bottom = 36.1464
+margin_bottom = 73.1464
+
+[node name="Label" type="Label" parent="VBoxContainer/ReqsContainer/VBoxContainer"]
+margin_right = 384.0
+margin_bottom = 33.0
+text = "Requirements"
+align = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ReqsContainer/VBoxContainer"]
+margin_top = 37.0
+margin_right = 384.0
+margin_bottom = 71.0
 bbcode_enabled = true
 fit_content_height = true
 scroll_active = false
 deselect_on_focus_loss_enabled = false
 
 [node name="BonusText" type="PanelContainer" parent="VBoxContainer"]
-margin_top = 265.0
+margin_top = 302.0
 margin_right = 390.0
-margin_bottom = 301.539
+margin_bottom = 338.539
 rect_min_size = Vector2( 120, 30 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 47 )

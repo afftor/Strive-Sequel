@@ -93,7 +93,7 @@ var Skilllist = {
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 	},
 	
-	assassinate_en = {#deals 200% damage, only npc
+	assassinate_en = {#deals 150% damage, only npc
 		code = 'assassinate_en',
 		descript = '',
 		icon = load('res://assets/images/iconsskills/assassinate.png'),
@@ -105,7 +105,7 @@ var Skilllist = {
 		targetreqs = [],
 		effects = [], 
 		cost = {mp = 0},
-		charges = 3,
+		charges = 1,
 		combatcooldown = 0,
 		cooldown = 1,
 		catalysts = {},
@@ -115,7 +115,7 @@ var Skilllist = {
 		damage_type = 'weapon',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = ['caster.atk', '*2.0']
+		value = ['caster.atk', '*1.5']
 	},
 	earth_atk = {
 		code = 'earth_atk',

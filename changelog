@@ -5,8 +5,11 @@ Some minor text fixes for combat log, also moved all of its text into translatio
 Teleportation spell now has 2 charges per day
 GUI for casting spells in exploration has been slightly reworked
 Spellsword effect will now trigger on random target if original target dies from first hit
-Masks now display visually on paper dolls 
+Masks now display visually on paper dolls
 Slightly retconned demon race into demonkins
+Nerfed Assassinate stealthed version damage (to 2.25 from 2.75)
+Nerfed enemy assassinate damage multiplier from 2.0 to 1.5 and charges from 3 to 1
+Slightly rebalanced damage values on some enemies
 Fixed wrong icons showing in combat
 Fixed Lilia's scene not being added to gallery correctly
 Fixed oblivion potion giving more experience than it should with xp bonus

@@ -98,7 +98,7 @@ var skills = {
 		variations = [
 			{
 				reqs = [{code = 'has_status', status = 'hide', check = true}],
-				set = {value = 2.75},
+				set = {value = 2.25},
 				append = {tags = 'ultimate'}
 #				add = {descript = '_1'}
 			}
