@@ -609,6 +609,74 @@ func fill_boosters():
 func make_random_portrait():
 	statlist.make_random_portrait()
 
+func make_relative_of(person, relation, sync_surname = true, sync_age = true):
+	var target = person
+	if typeof(person) == TYPE_STRING:
+		target = characters_pool.get_char_by_id(person)
+	if target == null:
+		print("error - can't connect relative for %s: target is null" % id)
+		return false
+	if target.id == id:
+		print("error - character %s can't become a relative of itself" % id)
+		return false
+	relation = str(relation).to_lower()
+	match relation:
+		'sibling':
+			ResourceScripts.game_party.connectrelatives(id, target.id, 'sibling')
+		'parent', 'mother', 'father':
+			var parent_role = relation
+			if parent_role == 'parent':
+				parent_role = get_parent_relative_role()
+			ResourceScripts.game_party.connectrelatives(target.id, id, parent_role)
+		'child':
+			ResourceScripts.game_party.connectrelatives(id, target.id, target.get_parent_relative_role())
+		_:
+			print("error - unsupported relative type %s for %s" % [relation, id])
+			return false
+	if sync_surname:
+		var family_surname = target.get_stat('surname')
+		if family_surname != '':
+			set_stat('surname', family_surname)
+	if sync_age:
+		match relation:
+			'parent', 'mother', 'father':
+				align_relative_age(target, 'parent')
+			_:
+				align_relative_age(target, relation)
+	refresh_relatives_record()
+	return true
+
+func get_parent_relative_role():
+	if get_stat('sex') == 'male' and !get_stat('has_womb'):
+		return 'father'
+	return 'mother'
+
+func align_relative_age(person, relation):
+	var age_order = ['teen', 'adult', 'mature']
+	var self_age = get_stat('age')
+	var target_age = person.get_stat('age')
+	if !age_order.has(self_age) or !age_order.has(target_age):
+		return
+	var self_age_idx = age_order.find(self_age)
+	var target_age_idx = age_order.find(target_age)
+	match relation:
+		'sibling':
+			set_stat('age', target_age)
+		'parent':
+			if self_age_idx <= target_age_idx:
+				set_stat('age', age_order[min(target_age_idx + 1, age_order.size() - 1)])
+		'child':
+			if self_age_idx >= target_age_idx:
+				set_stat('age', age_order[max(target_age_idx - 1, 0)])
+
+func refresh_relatives_record():
+	if !ResourceScripts.game_party.relativesdata.has(id):
+		return
+	var reldata = ResourceScripts.game_party.relativesdata[id]
+	reldata.name = get_full_name()
+	reldata.race = get_stat('race')
+	reldata.sex = get_stat('sex')
+
 func setup_baby(mother, father):
 	var temp_race
 	var race1 = mother.get_stat('race')
@@ -2199,6 +2267,14 @@ func affect_char(template, manifest = false):
 			learn_skill(template.skill)
 		'add_combat_skill':
 			learn_c_skill(template.skill)
+		'make_relative_of':
+			var rel_char = template.value
+			if rel_char is String:
+				rel_char = characters_pool.get_char_by_id(rel_char)
+			if rel_char != null:
+				make_relative_of(rel_char, template.relation)
+				input_handler.update_slave_panel()
+				input_handler.update_slave_list()
 		'quest':
 			assign_to_quest_and_make_unavalible({id = template.id, name = template.name}, template.duration)
 		'slavetype':
