@@ -83,6 +83,46 @@ func _fill_stat_container():
 	_stat_container.get_node("RichTextLabel").bbcode_text = "[center]" + globals.TextEncoder(tmp) + "[/center]"
 
 
+func _get_mastery_pools(mastery_data):
+	match mastery_data.type:
+		'combat':
+			return ['combat', 'universal']
+		'spell':
+			return ['magic', 'universal']
+	return ['universal']
+
+
+func _get_invested_mastery_points(mastery_id, pools):
+	var invested_points = 0
+	for pool in pools:
+		invested_points += person.dyn_stats.masteries[mastery_id][pool].size()
+	return invested_points
+
+
+func _get_bonus_mastery_points(mastery_id, invested_points):
+	var mastery_level = int(person.get_stat('mastery_' + mastery_id))
+	return max(mastery_level - invested_points, 0)
+
+
+func _get_total_mastery_points(mastery_id, invested_points):
+	return invested_points + _get_bonus_mastery_points(mastery_id, invested_points)
+
+
+func _build_mastery_tooltip_text(mastery_id):
+	var mastery_data = Skilldata.masteries[mastery_id]
+	var text = "[center]" + tr("MASTERY" + mastery_id.to_upper()) + "[/center]\n"
+	text += tr("LVLBONUSPERPOINT") + ":\n"
+	text += globals.build_desc_for_bonusstats(mastery_data.passive).strip_edges() + "\n"
+	var pools = _get_mastery_pools(mastery_data)
+	var invested_points = _get_invested_mastery_points(mastery_id, pools)
+	var total_points = _get_total_mastery_points(mastery_id, invested_points)
+	text += "[center]"
+	text += tr("LVLTOTALPOINTS") + ": {color=yellow|%d}; " % total_points
+	text += tr("LVLINVESTED") + ": %d/%d" % [invested_points, variables.mastery_train_limit]
+	text += "[/center]"
+	return text
+
+
 func _fill_mastery_container():
 	input_handler.ClearContainer(_mastery_container, ['Panel'])
 	var has_rows = false
@@ -102,6 +142,7 @@ func _fill_mastery_container():
 			var mastery_data = Skilldata.masteries[mastery_id]
 			panel.get_node('HBoxContainer/frame/icon').texture = images.get_icon(mastery_data.icon)
 			panel.get_node('HBoxContainer/statname').text = "%s +%d" % [tr(statdata.statdata[stat].name), classdata.statchanges[stat]]
+			globals.connecttexttooltip(panel, person.translate(_build_mastery_tooltip_text(mastery_id)))
 	_mastery_container.visible = has_rows
 
 
