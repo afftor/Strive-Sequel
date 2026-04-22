@@ -472,12 +472,11 @@ var statdata = {
 		code = 'disabled_masteries',
 		name = '',
 		descript = '',
-		is_negative = true,
 		baseicon = 'food_love',
 		default_bonus = 'array',
 		array_type = 'mastery',
 		direct = false,
-		tags = []
+		tags = ['is_negative']
 	},
 	#factors
 	growth_factor = {
@@ -1730,7 +1729,6 @@ var statdata = {
 		code = 'breakdown_disabled',
 		name = '',
 		descript = '',
-		is_negative = true,
 		baseicon = 'food_love',
 		default_bonus = 'append',
 		direct = false,

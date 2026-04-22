@@ -20,6 +20,10 @@ region_rect = Rect2( 0, 0, 300, 40 )
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 370, 330 )
+margin_left = 11.1146
+margin_right = 11.3476
+margin_top = 12.0918
+margin_bottom = 10.453
 
 [resource]
 OptionButton/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
