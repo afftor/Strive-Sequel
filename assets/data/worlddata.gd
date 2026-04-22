@@ -110,22 +110,6 @@ var lands = {
 		capital_background_music = 'empire_capital',
 		preplanned_capital_events = ['emp_city_enter_0']
 	},
-	seas = {
-		code = 'seas',
-		name = tr("AREASEAS"),
-		enabled = false,
-		lead_race = 'Nereid',
-		secondary_races = ['Lamia','Scylla'],
-		policies = [],
-		travel_time = [3,6],#[15,36],
-		disposition = 15,
-		start_settlements_number = {},
-		starting_locations = [],
-		locations = {},
-		locationpool = ['dungeon_bandit_den'],
-		guilds = [],
-		area_shop_items = '',
-	},
 	 beastkin_tribe = {
 		code = 'beastkin_tribe',
 		name = tr("AREABEASTKIN_TRIBE"),

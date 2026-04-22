@@ -2596,6 +2596,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	STATTASK_CRIT_CHANCE = "任务暴击率",
 	STATMAGIC_FIND = """魔法寻获""",
 	STATMAGIC_FINDDESCRIPT = "提高发现物品的品质",
+	STATMANHUNT = """Manhunt""", # MISSING TRANSLATION
+	STATMANHUNTDESCRIPT = """Increases dungeon recruit find chance by 0.1 per point""", # MISSING TRANSLATION
 	RACEHUMAN = "人类",
 	RACEHUMANADJ = "人类",
 	RACEELF = "精灵",

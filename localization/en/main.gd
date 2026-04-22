@@ -2571,6 +2571,8 @@ Spell Mana cost reduced by 15%
 	STATTASK_CRIT_CHANCE = "Task Crit Chance",
 	STATMAGIC_FIND = "Magic Find",
 	STATMAGIC_FINDDESCRIPT = "Improves quality of items found",
+	STATMANHUNT = "Manhunt",
+	STATMANHUNTDESCRIPT = "Increases dungeon the chance to find dungeon recruits and quality of settlement recruits",
 	RACEHUMAN = "Human",
 	RACEHUMANADJ = "Human",
 	RACEELF = "Elf",

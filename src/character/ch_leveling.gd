@@ -752,7 +752,7 @@ func recruit_tick(task): #maybe incomplete
 	work_tick_values(taskdata.workstat)
 	while task.progress >= task.threshold:
 		task.progress -= task.threshold
-		globals.roll_hirelings(task.task_location)
+		globals.roll_hirelings(task.task_location, parent.get_ref())
 		globals.text_log_add('mansion', tr("HIRELINGFOUND"))
 		input_handler.PlaySound("ding")
 

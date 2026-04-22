@@ -1325,6 +1325,17 @@ var statdata = {
 		direct = false,
 		show_info = {category = 'non_combat'}
 	},
+	manhunt = {
+		code = 'manhunt',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		type = 'misc',
+		default_bonus = 'add',
+		tags = ['numeric', 'integer'],
+		direct = false,
+		show_info = {category = 'non_combat'}
+	},
 	mod_fish = {
 		code = 'mod_fish',
 		name = '',

@@ -1,11 +1,14 @@
 0.14.1f
 Unique characters will use naked sprites in sex interaction if nudity rule can be toggled for them (sex service task)
+Added new stat: Manhunt - it will improve chances to find recruits after combat and increase settlement recruitment quality
+Settlement recruitment progress for easy settlements is now 10 instead of 25 and 25 instead of 50 for hard settlements
 Some minor text fixes to sex interaction minigame, also moved all of its text into translation file (can be localized now)
 Some minor text fixes for combat log, also moved all of its text into translation file (can be localized now)
 Teleportation spell now has 2 charges per day
 GUI for casting spells in exploration has been slightly reworked
 Spellsword effect will now trigger on random target if original target dies from first hit
 Masks now display visually on paper dolls
+Slightly improved some racial basic stats for humans and elves
 Slightly retconned demon race into demonkins
 Nerfed Assassinate stealthed version damage (to 2.25 from 2.75)
 Nerfed enemy assassinate damage multiplier from 2.0 to 1.5 and charges from 3 to 1

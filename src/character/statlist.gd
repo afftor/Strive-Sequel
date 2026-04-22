@@ -241,6 +241,7 @@ var template_dynamic = {
 	mp_reg = variables.basic_mp_regen,
 	damage_reduction = 0,
 	magic_find = 0,
+	manhunt = 0,
 	atk = variables.basic_character_atk,
 	matk = variables.basic_character_matk,
 	damagetype = 'normal',

@@ -1936,11 +1936,21 @@ func roll_characters():
 		racedata = areadata.races.duplicate()
 	else:
 		print("ERROR - no racedata for %s" % areadata.code)
+	var manhunt_values = []
+	for ch_id in input_handler.active_location.group.values():
+		var scout = characters_pool.get_char_by_id(ch_id)
+		if scout != null:
+			manhunt_values.push_back(scout.get_stat('manhunt'))
+	manhunt_values.sort()
+	var manhunt_bonus = 0.0
+	for i in range(max(manhunt_values.size() - 2, 0), manhunt_values.size()):
+		manhunt_bonus += manhunt_values[i] * 0.1
 	if locdata.has('character_data'):
 		locdata = locdata.character_data
 		if locdata.has('chance_mod'):
-			chance1 *= locdata.chance_mod
-			chance2 *= locdata.chance_mod
+			var chance_mod = locdata.chance_mod + manhunt_bonus
+			chance1 *= chance_mod
+			chance2 *= chance_mod
 		if locdata.has('races'):
 			racedata = locdata.races.duplicate()
 		 #or weight_random if data is weighted 
@@ -1977,7 +1987,7 @@ func roll_characters():
 	return res
 
 
-func roll_hirelings(loc):
+func roll_hirelings(loc, recruiter = null):
 	var t_diff = 10 #stub main
 	if char_roll_data.event: t_diff += 2
 	
@@ -1993,6 +2003,8 @@ func roll_hirelings(loc):
 			racedata = locdata1.races.duplicate()
 		if locdata1.has('diff_roll'):
 			t_diff = locdata1.diff_roll
+	if recruiter != null:
+		t_diff += recruiter.get_stat('manhunt')
 	
 	
 	if racedata is Array and !racedata.empty():

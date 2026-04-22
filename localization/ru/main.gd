@@ -2722,6 +2722,8 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	STATTASK_CRIT_CHANCE = """Шанс крита при выполнении поручений""",
 	STATMAGIC_FIND = """Магический поиск""",
 	STATMAGIC_FINDDESCRIPT = "Увеличивает качество находимых предметов",
+	STATMANHUNT = """Manhunt""", # MISSING TRANSLATION
+	STATMANHUNTDESCRIPT = """Increases dungeon recruit find chance by 0.1 per point""", # MISSING TRANSLATION
 
 
 
