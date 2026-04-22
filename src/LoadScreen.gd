@@ -5,7 +5,7 @@ var wait_frames
 var time_max = 100 # msec
 var current_scene
 
-var loadingtipnumber = 15
+var loadingtipnumber = 16
 
 var load_lore = [
 	{name = "LOADLORE1NAME", text = "LOADLORE1", characters = ['duncan','myr']},

@@ -499,6 +499,7 @@ var TranslationDict = {
 	LOADINGTIP13 = """Разбирая снаряжение в гильдии рабочих, вы сможете добывать из него редкие ресурсы""",
 	LOADINGTIP14 = """Авермик продает рабов экзотических рас в Алироне каждые 2 недели""",
 	LOADINGTIP15 = """Стоимость персонажа повышает доход от всех его услуг""",
+	LOADINGTIP16 = """More classes can be unlocked from the guilds""", # MISSING TRANSLATION
 	
 	
 	LOADLORE1NAME = """Гильдии""",

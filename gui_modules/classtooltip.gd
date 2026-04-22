@@ -67,7 +67,7 @@ func update():
 
 func _rebuild():
 	_icon.texture = classdata.icon
-	_name.text = tr(ResourceScripts.descriptions.get_class_name(classdata, person))
+	_name.text = tr("CLASS_LABEL") +": "  + tr(ResourceScripts.descriptions.get_class_name(classdata, person))
 	_fill_stat_container()
 	_fill_mastery_container()
 	_fill_skill_container()

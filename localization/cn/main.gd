@@ -505,6 +505,7 @@ var TranslationDict = {
 	LOADINGTIP13 = "在工人公会拆解装备可提取其中的稀有资源",
 	LOADINGTIP14 = "艾维尔明克每两周在阿利隆贩卖一次外来种族的奴隶.",
 	LOADINGTIP15 = "角色价值会提升其所有服务收益",
+	LOADINGTIP16 = """More classes can be unlocked from the guilds""", # MISSING TRANSLATION
 	LOADLORE1NAME = "行会",
 	LOADLORE2NAME = "行会领袖",
 	LOADLORE3NAME = "疯王",
