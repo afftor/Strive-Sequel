@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_30.tres" type="DynamicFont" id=2]
@@ -12,7 +12,14 @@
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Hover.tres" type="StyleBox" id=10]
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Normal.tres" type="StyleBox" id=11]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttonframe_hover.png" type="Texture" id=12]
-[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttonframe_pressed.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/iconsclasses/Fighter.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/gui/charpanel/CharScreen_0003_portrait-frame.png" type="Texture" id=14]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/NOTO_SANS_Regular_24px.tres" type="DynamicFont" id=15]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/back_panel_hero_info.png" type="Texture" id=16]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/buttonframe_pressed.png-ea80ec5faf1a5d4e7af34f6aeb3ad61f.stex"
 
 [node name="RaceSelectionModule" type="Panel"]
 anchor_right = 1.0
@@ -38,24 +45,25 @@ custom_styles/panel = ExtResource( 6 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="RaceSelection"]
 margin_left = 23.0
-margin_top = 27.0
-margin_right = 323.0
+margin_top = 19.0
+margin_right = 320.0
 margin_bottom = 804.0
 theme = ExtResource( 3 )
+scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="RaceSelection/ScrollContainer"]
-margin_right = 300.0
+margin_right = 297.0
+margin_bottom = 56.0
 size_flags_horizontal = 3
 
 [node name="Button" type="TextureButton" parent="RaceSelection/ScrollContainer/VBoxContainer"]
-visible = false
-margin_right = 300.0
+margin_right = 297.0
 margin_bottom = 56.0
 rect_min_size = Vector2( 0, 40 )
 toggle_mode = true
 texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 13 )
-texture_hover = ExtResource( 12 )
+texture_pressed = ExtResource( 12 )
+texture_hover = SubResource( 1 )
 
 [node name="icon" type="TextureRect" parent="RaceSelection/ScrollContainer/VBoxContainer/Button"]
 margin_left = 7.7275
@@ -73,28 +81,75 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 1 )
 valign = 1
 
+[node name="ScrollContainer2" type="ScrollContainer" parent="RaceSelection"]
+margin_left = 336.0
+margin_top = 4.0
+margin_right = 768.0
+margin_bottom = 738.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RaceSelection/ScrollContainer2"]
+margin_right = 432.0
+margin_bottom = 734.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RaceSelection/ScrollContainer2/VBoxContainer"]
+margin_right = 432.0
+margin_bottom = 665.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 3 )
+custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Lorem Ipsum"
+text = "Lorem Ipsum"
+
+[node name="Button" type="TextureRect" parent="RaceSelection/ScrollContainer2/VBoxContainer"]
+margin_top = 669.0
+margin_right = 432.0
+margin_bottom = 734.0
+rect_min_size = Vector2( 65, 65 )
+texture = ExtResource( 16 )
+expand = true
+
+[node name="Label" type="Label" parent="RaceSelection/ScrollContainer2/VBoxContainer/Button"]
+margin_left = 80.0
+margin_top = 14.0
+margin_right = 421.0
+margin_bottom = 53.0
+custom_colors/font_color = Color( 1, 0.87451, 0.439216, 1 )
+custom_fonts/font = ExtResource( 15 )
+text = "Skill Name"
+align = 1
+valign = 1
+
+[node name="Icon" type="TextureRect" parent="RaceSelection/ScrollContainer2/VBoxContainer/Button"]
+margin_left = 2.0
+margin_right = 67.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 65, 65 )
+texture = ExtResource( 13 )
+expand = true
+
+[node name="TextureRect2" type="TextureRect" parent="RaceSelection/ScrollContainer2/VBoxContainer/Button"]
+margin_left = 1.0
+margin_right = 66.0
+margin_bottom = 65.0
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 6
+
 [node name="TextureRect" type="TextureRect" parent="RaceSelection"]
 self_modulate = Color( 1, 1, 1, 0.407843 )
 margin_left = 338.0
 margin_top = 6.0
 margin_right = 772.0
 margin_bottom = 740.0
+mouse_filter = 2
 texture = ExtResource( 7 )
 expand = true
 stretch_mode = 7
-
-[node name="RichTextLabel" type="RichTextLabel" parent="RaceSelection"]
-margin_left = 353.0
-margin_top = 27.0
-margin_right = 753.0
-margin_bottom = 721.0
-theme = ExtResource( 3 )
-custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/normal_font = ExtResource( 1 )
-bbcode_enabled = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ConfirmButton" type="Button" parent="."]
 margin_left = 558.137

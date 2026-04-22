@@ -2,6 +2,7 @@
 Unique characters will use naked sprites in sex interaction if nudity rule can be toggled for them (sex service task)
 Added new stat: Manhunt - it will improve chances to find recruits after combat and increase settlement recruitment quality
 Settlement recruitment progress for easy settlements is now 10 instead of 25 and 25 instead of 50 for hard settlements
+Dungeon basic chance to find recruits reduced from 0.25 to 0.1
 Some minor text fixes to sex interaction minigame, also moved all of its text into translation file (can be localized now)
 Some minor text fixes for combat log, also moved all of its text into translation file (can be localized now)
 Teleportation spell now has 2 charges per day

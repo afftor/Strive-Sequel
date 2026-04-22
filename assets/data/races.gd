@@ -32,7 +32,7 @@ var racelist = {
 			charm_factor = [1,4],
 			wits_factor = [1,4],
 		},
-		race_bonus = {hpmax_mul2 = 1.15, mod_collect = 0.1, price = 100, mastery_point_universal = 1},
+		race_bonus = {hpmax_mul2 = 1.15, mod_collect = 0.1, price = 100, mastery_point_universal = 1, manhunt = 1},
 		personality = {kind = 1, bold = 1, shy = 1, serious = 1},
 		diet_love = {vege = 1, meat = 1, fish = 1, grain = 1}, #weight for 1 random prefered food type
 		diet_hate = {vege = 10, meat = 10, fish = 10, grain = 10},#%chance for each food type to be refused
@@ -141,7 +141,7 @@ var racelist = {
 			charm_factor = [1,3],
 			wits_factor = [2,3],
 		},
-		race_bonus = {hpmax_mul2 = 1.0, hitrate = 5, mastery_marksmanship = 1, price = 130},
+		race_bonus = {hitrate = 5, mastery_marksmanship = 1, price = 130},
 		personality = {kind = 0.5, bold = 1, shy = 0.3, serious = 0.5},
 		diet_love = {vege = 1, meat = 0.2, fish = 0.5, grain = 1},
 		diet_hate = {vege = 5, meat = 45, fish = 15, grain = 5},

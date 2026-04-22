@@ -516,7 +516,7 @@ var itemrairity = {
 
 
 var dungeon_character_chances = {
-	initial_char_chance = 0.25,
+	initial_char_chance = 0.1,
 	initial_second_char_chance = 0.1,
 	rare_char_chance = 0.5,
 	rare_second_char_chance = 0.15,
