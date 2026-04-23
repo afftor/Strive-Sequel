@@ -1,6 +1,30 @@
 extends Reference
 
 var skills = {
+	sleep = {
+		code = 'sleep',
+		descript = '',
+		icon = "res://assets/images/iconsskills/Sedate.png",
+		type = 'combat',
+		ability_type = 'spell',
+		tags = ['debuff','ads', 'mind'],
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'sleep', duration = 2})],
+		cost = {mp = 8},
+		charges = 0,
+		combatcooldown = 3,
+		cooldown = 0,
+		catalysts = {},
+		target = 'enemy',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'mind',
+		sfx = [{code = 'mind_blast', target = 'target', period = 'predamage'}],
+		sounddata = {initiate = null, strike = 'blade', hit = null},
+		value = [['0']],
+		damagestat = ['no_stat']
+	},
 	mindblast = {
 		code = 'mindblast',
 		descript = '',

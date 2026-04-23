@@ -390,6 +390,8 @@ var TranslationDict = {
 	REQTRAIT = "需要",
 	REQPOPULATION = "需要人口",
 	REQSEX = "不允许用于",
+	REQHASSKILL = """Requires skill""", # MISSING TRANSLATION
+	REQHASSKILL_FALSE = """Must not know skill""", # MISSING TRANSLATION
 	REQVIRGINFALSE = "不是童贞",
 	REQOR = "或",
 	REQANY = "拥有任意",
@@ -1319,6 +1321,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SKILLFIREARRDESCRIPT_2 = "造成 100% 魔法攻击的 {color=yellow|火} 伤害。100% 概率附加 2 回合灼烧。",
 	SKILLMINDBLAST = "心灵冲击",
 	SKILLMINDBLASTDESCRIPT = "对单体目标造成 120% 魔法攻击的精神伤害。",
+	SKILLSLEEP = """Sleep""", # MISSING TRANSLATION
+	SKILLSLEEPDESCRIPT = """Puts target to {color=yellow|Sleep} for 2 turns. Sleep is removed when target takes damage.""", # MISSING TRANSLATION
 	SKILLPSYCHICBLAST = "精神冲击",
 	SKILLPSYCHICBLASTDESCRIPT = "对一整列造成 65% 魔法攻击的精神伤害。",
 	SKILLRESURRECT = "复活",

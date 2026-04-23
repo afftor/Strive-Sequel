@@ -994,7 +994,7 @@ var icons = {
 	class_master = "res://assets/Textures_v2/MANSION/icon_master.png",
 	class_servant = "res://assets/Textures_v2/MANSION/icon_servant.png",
 	class_slave = "res://assets/Textures_v2/MANSION/icon_slave.png",
-	class_slave_trained = "res://assets/Textures_v2/CHAR_INFO/training/slave_tr_normal.png",
+	class_slave_trained = "res://assets/Textures_v2/MANSION/trained_slave.png",
 	class_heir = "res://assets/images/iconsclasses/renown_royalty.png", 
 	class_spouse = "res://assets/Textures_v2/MANSION/icon_ring.png", 
 

@@ -15,8 +15,11 @@ Slightly retconned demon race into demonkins
 Nerfed Assassinate stealthed version damage (to 2.25 from 2.75)
 Nerfed enemy assassinate damage multiplier from 2.0 to 1.5 and charges from 3 to 1
 Slightly rebalanced damage values on some enemies
+Added new class - Shieldbearer and revamped Paladin class bonuses a bit
 Shields with DEF stats now have higher DEF
+Mind Mastery 1 now gets Sleep as a combat spell. Also fixed sleep not being removed by damage
 Added new starting bonus: Gifted, start with 4 more stats to distribute
+Trained slave has its own icon in list now
 Fixed wrong icons showing in combat
 Fixed Lilia's scene not being added to gallery correctly
 Fixed oblivion potion giving more experience than it should with xp bonus

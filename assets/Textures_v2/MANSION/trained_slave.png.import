@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Paladin.png-f5d75cbc2f913ea7beeb46b4297d2eb2.stex"
+path="res://.import/trained_slave.png-f5931e2b165d1ba182f3ec9d20e98843.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/iconsclasses/Paladin.png"
-dest_files=[ "res://.import/Paladin.png-f5d75cbc2f913ea7beeb46b4297d2eb2.stex" ]
+source_file="res://assets/Textures_v2/MANSION/trained_slave.png"
+dest_files=[ "res://.import/trained_slave.png-f5931e2b165d1ba182f3ec9d20e98843.stex" ]
 
 [params]
 

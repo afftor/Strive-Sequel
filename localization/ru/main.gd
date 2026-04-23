@@ -389,6 +389,8 @@ var TranslationDict = {
 	REQTRAIT = """Требуется""",
 	REQPOPULATION = """Не хватает Места""",
 	REQSEX = """Не разрешено для""",
+	REQHASSKILL = """Requires skill""", # MISSING TRANSLATION
+	REQHASSKILL_FALSE = """Must not know skill""", # MISSING TRANSLATION
 	REQVIRGINFALSE = """Не девственник/ца""",
 	REQOR = """или""",
 	SLAVE = """Раб""",
@@ -1367,6 +1369,8 @@ Hotkey: 3""",
 Горение: Теряет 8% от максимального HP за ход в виде огненного урона.""",
 	SKILLMINDBLAST = """Взрыв разума""",
 	SKILLMINDBLASTDESCRIPT = """Наносит 120% от MATK в качестве урона {color=yellow|Разуму}.""",
+	SKILLSLEEP = """Sleep""", # MISSING TRANSLATION
+	SKILLSLEEPDESCRIPT = """Puts target to {color=yellow|Sleep} for 2 turns. Sleep is removed when target takes damage.""", # MISSING TRANSLATION
 	SKILLPSYCHICBLAST = """Психический взрыв""",
 	SKILLPSYCHICBLASTDESCRIPT = """Наносит 65% от MATK как урон {color=yellow|Разуму} колонне.""",
 	SKILLRESURRECT = """Воскресить""",
