@@ -385,7 +385,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_tr_paladin_1', 'e_tr_paladin_2','e_tr_paladin_3','e_tr_paladin_4'],
+		effects = ['e_tr_paladin_1', 'e_tr_paladin_2','e_tr_paladin_3','e_tr_paladin_4', 'e_tr_paladin_5'],
 	},
 	bloodmage = {
 		code = 'bloodmage',

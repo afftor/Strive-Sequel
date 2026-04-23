@@ -1309,6 +1309,17 @@ func make_trait_known(trait):
 func get_gear(slot):
 	return equipment.get_gear(slot)
 
+func has_shield_with_evasion_bonus():
+	if !is_players_character:
+		return true
+	var shield_id = get_gear('lhand')
+	if shield_id == null or !ResourceScripts.game_res.items.has(shield_id):
+		return false
+	var shield_item = ResourceScripts.game_res.items[shield_id]
+	if shield_item.geartype != 'shield':
+		return false
+	return shield_item.get_bonusstats().get('evasion', 0) > 0
+
 func get_equiped_items():
 	return equipment.get_equiped_items()
 
@@ -1707,6 +1718,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'gear_equiped':
 			if i.has('param'): check = equipment.check_gear_equipped(i.value, i.param) == i.check
 			else: check = equipment.check_gear_equipped(i.value) == i.check
+		'shield_with_evasion_bonus':
+			check = has_shield_with_evasion_bonus() == i.check
 		'global_profession_limit':
 			check = ResourceScripts.game_party.check_profession_limit(i.profession, i.value)
 		'race':
