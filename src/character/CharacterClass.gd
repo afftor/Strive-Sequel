@@ -427,7 +427,7 @@ func generate_ea_character(gendata, desired_class):
 	return res
 
 
-func generate_random_character_from_data(races_l, desired_class = null, adjust_difficulty = 0, trait_blacklist = []):
+func generate_random_character_from_data(races_l, desired_class = null, adjust_difficulty = 0, trait_blacklist = [], guaranteed_classes = []):
 	adjust_difficulty = min(adjust_difficulty, 15)
 	var gendata = {race = '', sex = 'random', age = 'random'}
 
@@ -440,7 +440,7 @@ func generate_random_character_from_data(races_l, desired_class = null, adjust_d
 	create(gendata.race, gendata.sex, gendata.age)
 	dyn_stats.generate_data()
 	statlist.generate_random_character_from_data(adjust_difficulty)
-	dyn_stats.generate_random_character_from_data(desired_class, adjust_difficulty)
+	dyn_stats.generate_random_character_from_data(desired_class, adjust_difficulty, guaranteed_classes)
 	dyn_stats.get_random_traits(trait_blacklist)
 	xp_module.set_service_boost()
 
@@ -1901,6 +1901,12 @@ func decipher_single(ch):
 					text2 += tr("REQMUSTHAVEGEARTYPE") + ' ' + tr("REQMUSTHAVEGEARTYPE_" + i.value.to_upper()) + "."
 			else:
 				text2 += Items.itemlist[i.value].name + "."
+		'has_skill':
+			var skill_name = Skilldata.get_template(i.skill, self).name
+			if i.check:
+				text2 += "%s: %s." % [tr("REQHASSKILL"), skill_name]
+			else:
+				text2 += "%s: %s." % [tr("REQHASSKILL_FALSE"), skill_name]
 		'global_profession_limit':
 			text2 += tr("REQPROFLIMIT")+' ' + str(i.value) + " " + classesdata.professions[i.profession].name + " " + tr("REQPROFLIMIT2") + "."
 		'one_of_races':

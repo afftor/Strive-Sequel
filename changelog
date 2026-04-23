@@ -1,4 +1,4 @@
-0.14.1f
+0.14.2
 Unique characters will use naked sprites in sex interaction if nudity rule can be toggled for them (sex service task)
 Added new stat: Manhunt - it will improve chances to find recruits after combat and increase settlement recruitment quality
 Settlement recruitment progress for easy settlements is now 10 instead of 25 and 25 instead of 50 for hard settlements
@@ -8,6 +8,7 @@ Some minor text fixes for combat log, also moved all of its text into translatio
 Teleportation spell now has 2 charges per day
 GUI for casting spells in exploration has been slightly reworked
 Spellsword effect will now trigger on random target if original target dies from first hit
+Guild hirelings now always have at least 1 class of the guild's theme
 Masks now display visually on paper dolls
 Slightly improved some racial basic stats for humans and elves
 Slightly retconned demon race into demonkins

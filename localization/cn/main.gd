@@ -3052,6 +3052,8 @@ DIALOGUEMASTER_LUST_EXPREPORT = "你利用 [targetname] 的欲望为 [targethim]
 	TRAITDRUIDDESCRIPT = "大地法术伤害：+20%",
 	TRAITBERSERKERDESCRIPT = "{color=brown|狂暴}：击杀一名敌人后，获得一个额外回合（每场战斗仅限一次）。",
 	TRAITSNIPERDESCRIPT = "单体物理伤害：+25%",
+	TRAITSHIELDBEARER = """Shield Counter""", # MISSING TRANSLATION
+	TRAITSHIELDBEARERDESCRIPT = """{color=brown|Shield Counter}: If equipped with a shield that grants Evasion, counter enemy attacks with basic attack in melee range""", # MISSING TRANSLATION
 	TRAITPALADINDESCRIPT = "{color=brown|重击}：对亡灵和恶魔类敌人伤害增加 25%，受到其伤害减少 15%。",
 	TRAITROUGEDESCRIPT = """When in front row: +35% Damage, +10% Crit Chance..""", # MISSING TRANSLATION
 	TRAITASSASSINDESCRIPT = "{color=brown|潜行大师}：穿着中型装甲时也可激活隐藏状态。",
@@ -3561,6 +3563,7 @@ TRAITEFFECTBLESSED = "祝福:ATK +25%%",
 	BUFFDESCRIPTBLEEDING = "流血",
 	BUFFDESCRIPTCONFUSE = "混乱",
 	BUFFDESCRIPTFREEUSE = "允许在不消耗回合的情况下使用物品",
+	BUFFDESCRIPTPALADINGUARD = """Counters melee-reachable damaging attacks with a basic attack. For player characters, requires a shield with Evasion bonus.""", # MISSING TRANSLATION
 	BUFFDESCRIPTSHRED = "护甲降低",
 	BUFFDESCRIPTSHATTER = """破裂:魔防降低50%%""",
 	BUFFDESCRIPTGROWL = "速度与闪避降低",
@@ -3759,6 +3762,8 @@ PROFMASTER = "主人",
 	PROFSEXTOYDESCRIPT = "The art of being an object of desire for others.",
 	PROFFIGHTER = "斗士",
 	PROFFIGHTERDESCRIPT = "Fighters are basic melee soldiers capable of dealing and taking damage in combat.",
+	PROFSHIELDBEARER = """Shieldbearer""", # MISSING TRANSLATION
+	PROFSHIELDBEARERDESCRIPT = """Defensive fighters who specialize in shields, endurance, and punishing enemies that overextend in melee.""", # MISSING TRANSLATION
 	PROFKNIGHT = "骑士",
 	PROFKNIGHTDESCRIPT = "A noble fighter ready to serve [his] [Master]. [He] performs [his] duties on the frontline of the battlefield with honor. ",
 	PROFAPPRENTICE = "学徒",
@@ -5359,6 +5364,8 @@ ACHI_BTN_GROUP_MAIN = "主要",
 	ACHIBONUS_EXPSCROLLS_DESC = "开始游戏时自带10个经验卷轴",
 	ACHIBONUS_TALENT = """天赋异禀""",
 	ACHIBONUS_TALENT_DESC = """开局额外获得 2 点主人天赋点""",
+	ACHIBONUS_MASTER_FACTORS = """Gifted""", # MISSING TRANSLATION
+	ACHIBONUS_MASTER_FACTORS_DESC = """Start with +4 points for master factor upgrades""", # MISSING TRANSLATION
 	ACHIBONUS_CRAFTSMAN = """工匠""",
 	ACHIBONUS_CRAFTSMAN_DESC = "开始游戏时自带锻造、裁缝和炼金术一级升级",
 	ACHIBONUS_ROOMS = "寄宿房",

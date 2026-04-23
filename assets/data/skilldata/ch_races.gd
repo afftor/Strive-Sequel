@@ -34,7 +34,10 @@ var skills = {
 		tags = ['buff', 'support', 'instant', 'selfbuf'],
 		reqs = [],
 		targetreqs = [{code = 'has_status', status = 'ensnared', check = false}],
-		effects = [Effectdata.rebuild_template({effect = 'e_fa_flight'})],
+		effects = [
+			Effectdata.rebuild_template({effect = 'e_fa_flight'}),
+			Effectdata.rebuild_template({effect = 'e_fa_flight_upkeep'}),
+		],
 		cost = {mp = 5},
 		charges = 0,
 		combatcooldown = 0,
@@ -88,12 +91,22 @@ var effects = {
 		target = 'caster',
 		tags = ['flight'],
 		statchanges = {hitrate = 25, resist_earth = 50},
-		sub_effects = ['e_tr_flight_dodge', 'flight_upkeep'],
+		sub_effects = ['e_tr_flight_dodge'],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/Fear.png",
 			description = "TRAITEFFECTFLIGHT",
 			tags = ['combat_only'],
 		}],
+	},
+	e_fa_flight_upkeep = {
+		type = 'temp_s',
+		stack = 'flight_upkeep',
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		target = 'caster',
+		tags = ['flight'],
+		statchanges = {},
+		sub_effects = ['flight_upkeep'],
+		buffs = [],
 	},
 	e_tr_flight_dodge = {
 		type = 'trigger',
@@ -126,7 +139,10 @@ var effects = {
 				type = 'oneshot',
 				target = 'owner',
 				conditions = [{code = 'stat', stat = 'mp', operant = 'lte', value = 0}],
-				atomic = [{type = 'remove_effect', value = 'flight'}]
+				atomic = [
+					{type = 'remove_effect', value = 'flight'},
+					{type = 'remove_effect', value = 'flight_upkeep'}
+				]
 			}
 		]
 	},
@@ -139,4 +155,8 @@ var stacks = {
 		type = 'stack_t',
 		stack = 1
 	},#toggle
+	flight_upkeep = {
+		type = 'stack_t',
+		stack = 1
+	},
 }

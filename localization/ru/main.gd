@@ -3214,6 +3214,8 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	TRAITDRUIDDESCRIPT = """Урон от заклинаний земли: +20%""",
 	TRAITBERSERKERDESCRIPT = """{color=brown|Ярость}: Убив врага, получите дополнительный ход (один раз за бой).""",
 	TRAITSNIPERDESCRIPT = """Физический урон по одиночной цели: +25%""",
+	TRAITSHIELDBEARER = """Shield Counter""", # MISSING TRANSLATION
+	TRAITSHIELDBEARERDESCRIPT = """{color=brown|Shield Counter}: If equipped with a shield that grants Evasion, counter enemy attacks with basic attack in melee range""", # MISSING TRANSLATION
 	TRAITPALADINDESCRIPT = """{color=brown|Кара}: Наносите на 25% больше урона и получайте на 15% меньше урона от врагов типа нежити и демонов.""",
 	TRAITROUGEDESCRIPT = """Aditional bonuses if in front row.""", # MISSING TRANSLATION
 	TRAITROGUEDESCRIPT = """Aditional bonuses if in front row.""", # MISSING TRANSLATION
@@ -3730,6 +3732,7 @@ Requires: Базовый рабский труд""",
 	BUFFDESCRIPTBLEEDING = """Кровотечение: Получает 10%% физического урона от максимального HP за ход""",
 	BUFFDESCRIPTCONFUSE = """Замешательство""",
 	BUFFDESCRIPTFREEUSE = """Позволяет использовать предмет, не делая хода""",
+	BUFFDESCRIPTPALADINGUARD = """Counters melee-reachable damaging attacks with a basic attack. For player characters, requires a shield with Evasion bonus.""", # MISSING TRANSLATION
 	BUFFDESCRIPTSHRED = """Разрыв: ЗАЩ снижена на 25%%""",
 	BUFFDESCRIPTSHATTER = "Раскол: МЗАЩ уменьшена на 50%%",
 	BUFFDESCRIPTGROWL = """Скорость и уворот уменьшены""",
@@ -3935,6 +3938,8 @@ Requires: Базовый рабский труд""",
 	PROFSEXTOYDESCRIPT = """Искусство быть объектом желания для других""",
 	PROFFIGHTER = """Боец""",
 	PROFFIGHTERDESCRIPT = """Бойцы - это основные бойцы ближнего боя, способные наносить и получать урон в бою""",
+	PROFSHIELDBEARER = """Shieldbearer""", # MISSING TRANSLATION
+	PROFSHIELDBEARERDESCRIPT = """Defensive fighters who specialize in shields, endurance, and punishing enemies that overextend in melee.""", # MISSING TRANSLATION
 	PROFKNIGHT = """Рыцарь""",
 	PROFKNIGHTDESCRIPT = """Благородный боец, готовый служить [his] [Master]у. [He] с честью выполняет [his] обязанности на передовой линии поля боя.""",
 	PROFAPPRENTICE = """Подмастерье""",

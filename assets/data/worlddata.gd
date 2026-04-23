@@ -213,6 +213,7 @@ var factiondata = {
 		hireable_characters = [
 			{code = 'type1',
 			preference = ['combat'],
+			classes = ['fighter', 'rogue', 'archer', 'attendant'],
 			slavelevel = 0,
 			character_types = [['servant',1]],
 			character_bonuses = {},
@@ -250,6 +251,7 @@ var factiondata = {
 		hireable_characters = [
 			{code = 'type1',
 			preference = ['magic'],
+			classes = ['apprentice', 'scholar', 'acolyte'],
 			slavelevel = 0,
 			character_types = [['servant',1]],
 			character_bonuses = {},
@@ -299,6 +301,7 @@ var factiondata = {
 		hireable_characters = [
 			{code = 'type1',
 			preference = ['labor'],
+			classes = ['worker', 'hunter', 'smith', 'tailor', 'chef', 'farmer'],
 			slavelevel = 0,
 			character_types = [['servant',1]],
 			character_bonuses = {},# authority = [70,90], obedience = [48,48]},
@@ -336,6 +339,7 @@ var factiondata = {
 		hireable_characters = [
 			{code = 'type1',
 			preference = ['sexual','social'],
+			classes = ['harlot', 'maid', 'bard', 'dancer', 'thief'],
 			slavelevel = 0,
 			character_types = [['servant',1]],
 			character_bonuses = {},
@@ -1847,6 +1851,7 @@ func update_guilds_data():
 		else:
 			tempcat.slave_races = []
 		tempcat.preference = guild.preference.duplicate()
+		tempcat.classes = []
 		tempcat.slavelevel = 0
 		guild.hireable_characters.push_back(tempcat)
 

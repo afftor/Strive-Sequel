@@ -156,6 +156,8 @@ func make_guild(code, area):
 	}
 	for tdata in data.hireable_characters:
 		var typedata = tdata.duplicate(true)
+		if !typedata.has('classes'):
+			typedata.classes = []
 		if !tdata.tags.has("unique_slave_races"):
 			typedata.slave_races = area.races.duplicate(true)
 		for i in tdata.slave_races:
@@ -230,7 +232,10 @@ func make_slave_for_guild(slavetype, rare_races_upgrade = 0):
 	var tr_bll = []
 	if slavetype.has('no_traits'):
 		tr_bll = slavetype.no_traits
-	newslave.generate_random_character_from_data(race, slaveclass, slavetype.slavelevel + round(randf()-0.3), tr_bll)
+	var guaranteed_classes = []
+	if slavetype.has('classes'):
+		guaranteed_classes = slavetype.classes
+	newslave.generate_random_character_from_data(race, slaveclass, slavetype.slavelevel + round(randf()-0.3), tr_bll, guaranteed_classes)
 	var char_class = input_handler.weightedrandom(slavetype.character_types)
 	newslave.set_slave_category(char_class)
 	var bonus_resolved = {}
