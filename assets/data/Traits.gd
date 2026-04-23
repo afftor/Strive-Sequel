@@ -379,13 +379,21 @@ var traits = {
 		tags = ['combat_casting'],
 		bonusstats = {}
 	},
+	shieldbearer = {
+		code = 'shieldbearer',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_paladin_5_display', 'e_tr_paladin_5'],
+	},
 	paladin = {
 		code = 'paladin',
 		name = '',
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_tr_paladin_1', 'e_tr_paladin_2','e_tr_paladin_3','e_tr_paladin_4', 'e_tr_paladin_5'],
+		effects = ['e_tr_paladin_1', 'e_tr_paladin_2','e_tr_paladin_3','e_tr_paladin_4'],
 	},
 	bloodmage = {
 		code = 'bloodmage',

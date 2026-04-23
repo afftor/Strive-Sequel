@@ -33,6 +33,7 @@ var state_map = [
 	'invoke_animations_2',
 	'invoke_instancing',
 	'invoke_predamage',
+	'invoke_def_hit',
 	'invoke_damage',
 	'invoke_postdamage',
 	'invoke_cleanup'
@@ -272,6 +273,16 @@ func invoke_predamage():
 		if !parent.tags.has('passive'):
 			s_skill2.target.process_event(variables.TR_DEF, {skill = s_skill2, caster = caster, target = s_skill2.target})
 			effects_pool.process_event(variables.TR_DEF, s_skill2.target)
+	combatnode.turns += 1
+	step += 1
+	queuenode.call_deferred('invoke_resume')
+
+
+func invoke_def_hit():
+	for s_skill2 in instances:
+		if !parent.tags.has('passive'):
+			s_skill2.target.process_event(variables.TR_DEF_HIT, {skill = s_skill2, caster = caster, target = s_skill2.target})
+			effects_pool.process_event(variables.TR_DEF_HIT, s_skill2.target)
 		s_skill2.setup_effects_final()
 	combatnode.turns += 1
 	step += 1

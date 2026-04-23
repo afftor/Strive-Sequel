@@ -102,11 +102,6 @@ func createfromskill(temp):
 	
 
 
-func can_target_counterattack_in_melee():
-	if combatnode == null or target == null or caster == null:
-		return false
-	return combatnode.get_enemy_targets_melee(target).has(caster)
-
 
 func process_check(check:Array):
 	var op1 = check[0]
@@ -127,9 +122,6 @@ func process_check(check:Array):
 					if val.source in op2: 
 						return true
 				return false
-		elif op1 == 'can_target_counterattack_in_melee':
-			op1 = can_target_counterattack_in_melee()
-		else:
 			op1 = get(op1)
 			return input_handler.operate(check[1], op1, op2)
 	elif active_instance != null:

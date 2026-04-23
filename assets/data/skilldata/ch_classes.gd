@@ -1168,12 +1168,16 @@ var effects = {
 	e_tr_paladin_2 = Effectdata.rebuild_skillvalue_template({target_race = 'demon', tag = 'damage',  value = 1.25}),
 	e_tr_paladin_3 = Effectdata.rebuild_defvalue_template({target_race = 'undead', tag = 'damage',  value = 0.85}),
 	e_tr_paladin_4 = Effectdata.rebuild_defvalue_template({target_race = 'demon', tag = 'damage',  value = 0.85}),
+	e_tr_paladin_5_display = {
+		type = 'simple',
+		conditions = [{code = 'shield_with_evasion_bonus', check = true}],
+		buffs = ['b_paladin_guard'],
+	},
 	e_tr_paladin_5 = {
 		type = 'trigger',
-		trigger = [variables.TR_DEF],
+		trigger = [variables.TR_DEF_HIT],
 		req_skill = true,
 		conditions = [
-			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
 			{type = 'skill', value = ['tags', 'has', 'damage']},
 			{type = 'skill', value = ['can_target_counterattack_in_melee', 'eq', true]},
 			{type = 'owner', value = [{code = 'shield_with_evasion_bonus', check = true}]},
@@ -2155,6 +2159,11 @@ var buffs = {
 	b_bishop = {
 		icon = "res://assets/images/iconsclasses/Bishop.png",
 		description = "BUFFDESCRIPTBISHOP",
+		tags = ['combat_only'],
+	},
+	b_paladin_guard = {
+		icon = "res://assets/images/iconsclasses/Paladin.png",
+		description = "BUFFDESCRIPTPALADINGUARD",
 		tags = ['combat_only'],
 	},
 	b_templar = {
