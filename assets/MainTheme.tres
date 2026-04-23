@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/images/gui/universal/input.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/universal/input blocked.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/gui/panels/arrows.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/panel.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/panel_factors.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/gui/universal/spinbox.png" type="Texture" id=12]
 [ext_resource path="res://assets/Themes_v2/SimpleBgPanel.tres" type="StyleBox" id=13]
 [ext_resource path="res://assets/images/gui/universal/scrollbar2.png" type="Texture" id=14]
@@ -89,13 +89,13 @@ margin_right = 6.59175
 margin_top = 2.64148
 margin_bottom = 1.80748
 
-[sub_resource type="StyleBoxTexture" id=14]
+[sub_resource type="StyleBoxTexture" id=21]
 texture = ExtResource( 11 )
-region_rect = Rect2( -0.0170555, -0.928366, 501.52, 502.371 )
-margin_left = 66.0
-margin_right = 67.4645
-margin_top = 66.728
-margin_bottom = 62.8257
+region_rect = Rect2( 0, 0, 400, 650 )
+margin_left = 58.5797
+margin_right = 53.0007
+margin_top = 71.2295
+margin_bottom = 72.5273
 
 [sub_resource type="StyleBoxTexture" id=20]
 texture = ExtResource( 19 )
@@ -208,7 +208,7 @@ OptionButton/styles/focus = null
 OptionButton/styles/hover = null
 OptionButton/styles/normal = null
 OptionButton/styles/pressed = null
-Panel/styles/panel = SubResource( 14 )
+Panel/styles/panel = SubResource( 21 )
 Panel/styles/panelf = null
 Panel/styles/panelnc = null
 PopupMenu/styles/panel = SubResource( 20 )

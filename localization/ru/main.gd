@@ -1432,6 +1432,9 @@ Hotkey: 3""",
 	SKILLVOIDSLAM = "Пустотный взрыв",
 	SKILLFLY_EVASION = """Полет""",
 	SKILLFLY_EVASIONDESCRIPT = """Увеличивает уворот на 65 на 3 хода.""",
+	SKILLFLIGHT = """Flight""", # MISSING TRANSLATION
+	SKILLFLIGHTDESCRIPT = """Instant cast. Costs 5 mana to activate and 3 mana at the end of each turn. While active: 80% dodge chance against melee attacks, +25 Hit Chance, +50 Earth Resist. Cannot be used while Ensnared. Recast for free to cancel.""", # MISSING TRANSLATION
+	SKILLFLIGHT_REMOVE = """Land""", # MISSING TRANSLATION
 	SKILLEUPHORIA_APPLY = """Эйфория""",
 	SKILLEUPHORIA_APPLYDESCRIPT = """При активации увеличивает весь урон на половину текущей похоти. Каждый ход отнимает часть вашей похоти. Активируйте вновь, для отключения.""",
 	SKILLEUPHORIA_REMOVE = """Эйфория""",
@@ -3018,6 +3021,7 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	THRALLS1DESCRIPT = "Имеет 1 Приспешника",
 	THRALLS0DESCRIPT = "Не имеет Приспешников",
 	EFFECTNAME_E_THRALL = "Приспешник",
+	EFFECTNAME_FLIGHT = """Flight""", # MISSING TRANSLATION
 
 	SKILLSUPREMACY = """Превосходство""",
 	SKILLSUPREMACYDESCRIPT = """Категория: {color=green|Милость}
@@ -3592,6 +3596,7 @@ Requires: Базовый рабский труд""",
 	TRAITEFFECTBLESSED = """Благословенный: +25%% ATK.""",
 	TRAITEFFECTMENTALBLESS = """Ментально благословенный: +25%% MATK.""",
 	TRAITEFFECTFLY = """Полет: +65 уворота.""",
+	TRAITEFFECTFLIGHT = """Flight: 80% dodge vs melee, +25 Hit Chance, +50 Earth Resist""", # MISSING TRANSLATION
 	TRAITEFFECTSHATTERED = """Раскол: -25 МЗАЩ.""",
 	TRAITEFFECTFIREBURST = """Огненный взрыв: -20 точности""",
 	TRAITEFFECTSWIPE = """Разрез: -20 ЗАЩ.""",

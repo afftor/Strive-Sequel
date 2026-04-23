@@ -678,7 +678,7 @@ func unassigned_points():
 	if mode == 'freemode':
 		return 0
 	if mode == 'master':
-		points = variables.master_starting_stats + 5
+		points = variables.master_starting_stats + 5 + ResourceScripts.game_progress.master_starting_factor_bonus
 		for st in ['physics_factor','wits_factor','charm_factor','sexuals_factor', "magic_factor"]:
 			points -= int(person.get_stat(st))
 	

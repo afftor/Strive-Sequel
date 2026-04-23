@@ -1382,6 +1382,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SKILLSOUL_BINDDESCRIPT = "扭曲目标心智使其屈服于你的意志。休整一天后将服从你大多数命令。",
 	SKILLFLY_EVASION = "飞行",
 	SKILLFLY_EVASIONDESCRIPT = "闪避提高 65，持续 3 回合。",
+	SKILLFLIGHT = """Flight""", # MISSING TRANSLATION
+	SKILLFLIGHTDESCRIPT = """Instant cast. Costs 5 mana to activate and 3 mana at the end of each turn. While active: 80% dodge chance against melee attacks, +25 Hit Chance, +50 Earth Resist. Cannot be used while Ensnared. Recast for free to cancel.""", # MISSING TRANSLATION
+	SKILLFLIGHT_REMOVE = """Land""", # MISSING TRANSLATION
 	SKILLEUPHORIA_APPLY = "亢奋",
 	SKILLEUPHORIA_APPLYDESCRIPT = "激活后，所有伤害提高量等于当前欲望值的一半。每回合会消耗部分欲望，再次激活可关闭。",
 	SKILLEUPHORIA_REMOVE = "亢奋",
@@ -2878,6 +2881,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	THRALLS1DESCRIPT = "拥有 1 名魅从",
 	THRALLS0DESCRIPT = "没有魅从",
 	EFFECTNAME_E_THRALL = "身为魅从",
+	EFFECTNAME_FLIGHT = """Flight""", # MISSING TRANSLATION
 	SKILLSUPREMACY = "至高无上",
 	SKILLSUPREMACYDESCRIPT = """类型：{color=green|仁慈}
 令目标对施法者产生敬畏与尊重。大幅提高忠诚度。受魅力因子加成。
@@ -3423,6 +3427,7 @@ DIALOGUEMASTER_LUST_EXPREPORT = "你利用 [targetname] 的欲望为 [targethim]
 TRAITEFFECTBLESSED = "祝福:ATK +25%%",
 	TRAITEFFECTMENTALBLESS = "心灵祝福:MATK +25%%",
 	TRAITEFFECTFLY = "飞行:闪避 +65",
+	TRAITEFFECTFLIGHT = """Flight: 80% dodge vs melee, +25 Hit Chance, +50 Earth Resist""", # MISSING TRANSLATION
 	TRAITEFFECTSHATTERED = "破碎:闪避 -25",
 	TRAITEFFECTFIREBURST = "烈焰爆发: -20 命中率",
 	TRAITEFFECTSWIPE = "横扫:DEF -20",

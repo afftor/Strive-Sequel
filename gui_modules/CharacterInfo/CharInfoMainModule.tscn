@@ -1,4 +1,4 @@
-[gd_scene load_steps=216 format=2]
+[gd_scene load_steps=215 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=2]
@@ -346,10 +346,6 @@ region_rect = Rect2( 0, 0, 1920, 1080 )
 [sub_resource type="DynamicFont" id=19]
 size = 24
 font_data = ExtResource( 7 )
-
-[sub_resource type="StyleBoxTexture" id=46]
-texture = ExtResource( 134 )
-region_rect = Rect2( 0, 0, 306, 198 )
 
 [node name="CharInfoMainModule" type="Panel" groups=["pauseprocess"]]
 light_mask = 0
@@ -3684,7 +3680,6 @@ align = 1
 valign = 1
 
 [node name="SlaveSiblingsModule" type="TextureRect" parent="."]
-visible = false
 light_mask = 0
 margin_left = 239.0
 margin_top = 105.0
@@ -3993,7 +3988,6 @@ margin_left = 3.0
 margin_top = 7.0
 margin_right = 1377.0
 margin_bottom = 819.0
-custom_styles/panel = SubResource( 46 )
 
 [node name="Button" type="Button" parent="."]
 visible = false
