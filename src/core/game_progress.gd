@@ -40,6 +40,7 @@ var planned_loc_events = {}
 
 
 var master_points = 1
+var master_starting_factor_bonus = 0
 
 var char_events = {
 	interval = -1,
@@ -131,6 +132,7 @@ func fix_serialization():
 			tmp.push_back(line)
 	seen_dialogues = tmp
 	master_points = int(master_points)
+	master_starting_factor_bonus = int(master_starting_factor_bonus)
 	
 	#divine_symbol_quest fix
 	var t = get_active_quest('divine_symbol_quest')

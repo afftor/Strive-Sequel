@@ -237,6 +237,9 @@ func prep_exp_scrolls():
 func prep_talent_points():
 	ResourceScripts.game_progress.master_points += 2
 
+func prep_master_factor_points():
+	ResourceScripts.game_progress.master_starting_factor_bonus = 4
+
 func prep_craftsman():
 	ResourceScripts.game_res.level_up_upgrade("forge", 1)
 	ResourceScripts.game_res.level_up_upgrade("tailor", 1)
