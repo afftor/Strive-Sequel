@@ -4037,6 +4037,8 @@ Requires: Базовый рабский труд""",
 	PROFFREYAS_PRIESTESSDESCRIPT = """Когда-то она была верховной жрицей эльфов, но теперь в этом титуле больше блеска, чем силы.""",
 	PROFASHMEDAI_CHAMPION = """Чемпион Ашмедаи""",
 	PROFASHMEDAI_CHAMPIONDESCRIPT = """Новая избранница была выбрана для совершения разврата от Его имени. WIP""",
+	PROFROUGE = """Apex Predator""", # MISSING TRANSLATION
+	PROFROUGEDESCRIPT = """Neither warrior nor beast alone, but a perfect speciemen honed to dominate.""", # MISSING TRANSLATION
 	
 		
 	PROFDEATHKNIGHT = """Рыцарь смерти""",

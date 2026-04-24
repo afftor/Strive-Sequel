@@ -3326,9 +3326,7 @@ Only one attunement can be taken""",
 	TRAITSUCCUBUS_COMBAT = "Combat attunement",
 	TRAITSUCCUBUS_COMBATDESCRIPT = """HP Factor: +20%; HP Regen: +100%; Gain lust when taking damage.
 Only one attunement can be taken""",
-	
 	FINISHTRAINING = "Finish training? Leftover spirit will be used to purchase additional bonuses.",
-	
 	TRAITTRAINING_VALUE = "Trained spec",
 	TRAITTRAINING_VALUEDESCRIPT = "+25% Value",
 	TRAITTRAINING_PRODUCTIVITY = "Trained spec",
@@ -3349,7 +3347,6 @@ Only one attunement can be taken""",
 	TRAITTRAINING_TRAINERDESCRIPT = "+3 trainer slots and trainer status",
 	TRAITTRAINING_HEAL = "Trained spec",
 	TRAITTRAINING_HEALDESCRIPT = "+50% healing efficiency",
-	
 	TRAITEFFECTVIRGIN = """[center]{color=yellow|Virginity}[/center]
 As [name] has a observable virginity, this makes [him] more desirable for certain individuals.
 {color=yellow|Sell price is increased by 25%%}""",
@@ -4619,7 +4616,8 @@ Sex skills are increased when performing related action and their growth is depe
 	INTERACTION_ACT_BLOCK_STRUGGLING = "[name] is struggling and can't act.",
 	INTERACTION_ACT_BLOCK_RESIST = "[name] resists and won't follow any orders.",
 	INTERACTION_ACT_BLOCK_HOLDING_1 = "[name] is busy holding down ",
-	INTERACTION_ACT_BLOCK_HOLDING_2 = "[name] \nand can only act on [him]. ",
+	INTERACTION_ACT_BLOCK_HOLDING_2 = """[name] 
+and can only act on [him]. """,
 	INTERACTION_ACT_BLOCK_IMMOBILE = "[name] is immobile and can't do anything. ",
 	INTERACTION_CONSENT_WILLING = "{color=aqua|Willing}",
 	INTERACTION_CONSENT_REFUSING = "{color=yellow|Refusing}",
@@ -4631,23 +4629,40 @@ Sex skills are increased when performing related action and their growth is depe
 	INTERACTION_INTERRUPT = "Interrupt",
 	INTERACTION_OBSERVE = "Observe",
 	INTERACTION_PASS = "Pass",
-	INTERACTION_CONSENT_OBSERVED_EXHIBITIONIST = "{color=green|Is being observed (Exhibitionist)}\n",
-	INTERACTION_CONSENT_OBSERVED = "{color=red|Is being observed}\n",
-	INTERACTION_CONSENT_MULTIPLE_LIKES = "{color=green|Multiple partners (Likes Groups)}\n",
-	INTERACTION_CONSENT_MULTIPLE = "{color=red|Multiple partners}\n",
-	INTERACTION_CONSENT_SAME_SEX = "{color=red|Same sex partner}\n",
-	INTERACTION_CONSENT_ANAL_LIKES = "{color=green|Anal (Likes Anal)}\n",
-	INTERACTION_CONSENT_ANAL = "{color=red|Anal}\n",
-	INTERACTION_CONSENT_REPULSIVE_PARTNER = "{color=red|Repulsive partner}\n",
-	INTERACTION_CONSENT_TIPSY = "{color=green|Tipsy}\n",
-	INTERACTION_CONSENT_DRUNK = "{color=green|Drunk}\n",
-	INTERACTION_CONSENT_REL_RIVAL = "{color=red|Is a Rival}\n",
-	INTERACTION_CONSENT_REL_PARAMOUR = "{color=green|Is a Paramour}\n",
-	INTERACTION_CONSENT_REL_LOVER = "{color=green|Is a Lover}\n",
-	INTERACTION_CONSENT_RELATED_GOOD = "{color=green|Partner is related}\n",
-	INTERACTION_CONSENT_RELATED_BAD = "{color=red|Partner is related}\n",
-	INTERACTION_CONSENT_DIFFERENT_SPECIES = "{color=red|Partner is of different species}\n",
-	INTERACTION_CONSENT_VIRGIN = "{color=red|Is virgin}\n",
+	INTERACTION_CONSENT_OBSERVED_EXHIBITIONIST = """{color=green|Is being observed (Exhibitionist)}
+""",
+	INTERACTION_CONSENT_OBSERVED = """{color=red|Is being observed}
+""",
+	INTERACTION_CONSENT_MULTIPLE_LIKES = """{color=green|Multiple partners (Likes Groups)}
+""",
+	INTERACTION_CONSENT_MULTIPLE = """{color=red|Multiple partners}
+""",
+	INTERACTION_CONSENT_SAME_SEX = """{color=red|Same sex partner}
+""",
+	INTERACTION_CONSENT_ANAL_LIKES = """{color=green|Anal (Likes Anal)}
+""",
+	INTERACTION_CONSENT_ANAL = """{color=red|Anal}
+""",
+	INTERACTION_CONSENT_REPULSIVE_PARTNER = """{color=red|Repulsive partner}
+""",
+	INTERACTION_CONSENT_TIPSY = """{color=green|Tipsy}
+""",
+	INTERACTION_CONSENT_DRUNK = """{color=green|Drunk}
+""",
+	INTERACTION_CONSENT_REL_RIVAL = """{color=red|Is a Rival}
+""",
+	INTERACTION_CONSENT_REL_PARAMOUR = """{color=green|Is a Paramour}
+""",
+	INTERACTION_CONSENT_REL_LOVER = """{color=green|Is a Lover}
+""",
+	INTERACTION_CONSENT_RELATED_GOOD = """{color=green|Partner is related}
+""",
+	INTERACTION_CONSENT_RELATED_BAD = """{color=red|Partner is related}
+""",
+	INTERACTION_CONSENT_DIFFERENT_SPECIES = """{color=red|Partner is of different species}
+""",
+	INTERACTION_CONSENT_VIRGIN = """{color=red|Is virgin}
+""",
 	INTERACTION_CONSENT_MAXIMUM = "Maximum",
 	INTERACTION_CONSENT_SUBDUE = "Subdue: Receiver's consent ignored. ",
 	INTERACTION_CONSENT_NOT_REQUIRED = "{color=green|Action does not require consent}",
@@ -4661,25 +4676,42 @@ Sex skills are increased when performing related action and their growth is depe
 	INTERACTION_REQUEST_PUNISH = "[name] wishes to be punished.",
 	INTERACTION_REQUEST_HUMILIATE = "[name] wishes to be humiliated.",
 	INTERACTION_REQUEST_GROUP = "[name] wishes to have multiple partners.",
-	INTERACTION_DESIRE_LABEL = "[color=#f4adf4]Desire: %s[/color]\n",
-	INTERACTION_DESIRE_FULFILLED = "[color=aqua]Desire fullfiled! [name1] grows lewder and more sensitive. [/color]\n",
-	INTERACTION_END_CONSENT_GAIN = "[name] has opened [him]self to the new experience: Consent - {color=aqua|%s}\n",
+	INTERACTION_DESIRE_LABEL = """[color=#f4adf4]Desire: %s[/color]
+""",
+	INTERACTION_DESIRE_FULFILLED = """[color=aqua]Desire fullfiled! [name1] grows lewder and more sensitive. [/color]
+""",
+	INTERACTION_END_CONSENT_GAIN = """[name] has opened [him]self to the new experience: Consent - {color=aqua|%s}
+""",
 	INTERACTION_END_DEVASTATED = "[name] has been devastated by this encounter and have not been able to increase [his] open mindedness. ",
 	INTERACTION_END_ORGASMS = "[name]: Orgasms - %s",
 	INTERACTION_END_EXP_GAINED = "; Experience gained: %s",
-	INTERACTION_END_TRAIT_LEARNED = "%s learned trait: %s\n",
-	INTERACTION_END_TRAIT_LOST = "%s lost trait: %s\n",
-	INTERACTION_AI_INITIATES = "[color=green][name1] initiates %s with [name2].[/color]\n\n",
+	INTERACTION_END_TRAIT_LEARNED = """%s learned trait: %s
+""",
+	INTERACTION_END_TRAIT_LOST = """%s lost trait: %s
+""",
+	INTERACTION_AI_INITIATES = """[color=green][name1] initiates %s with [name2].[/color]
+
+""",
 	INTERACTION_RESIST_ATTEMPT = "[name1] isn't happy doing this...",
-	INTERACTION_ITEM_ALCOHOL = "\n%s has drank an alcoholic beverage. ",
-	INTERACTION_ITEM_BEER = "\n%s has drank a beer. ",
+	INTERACTION_ITEM_ALCOHOL = """
+%s has drank an alcoholic beverage. """,
+	INTERACTION_ITEM_BEER = """
+%s has drank a beer. """,
 	INTERACTION_ITEM_AROUSAL_EFFECT = "It made [him] slightly more horny and sensitive. ",
 	INTERACTION_ITEM_ALREADY_DRUNK = "But it seems [he] is already drunk. ",
-	INTERACTION_ITEM_APHRODISIAC = "\n%s has used an aphrodisiac. [His] breath grew slower and heavier.\n{color=aqua|[name]} - {random_chat=0|aphrodisiac}",
-	INTERACTION_ITEM_SENSITIVITY_POT = "\n%s has used an sensitivity potion. [His] body became more responsive.\n{color=aqua|[name]} - {random_chat=0|aphrodisiac}",
-	INTERACTION_ITEM_PHEROMONES_ALREADY = "\n%s is already under effect of pheromones.",
-	INTERACTION_ITEM_PHEROMONES_SUCCESS = "\nPheromones were used on %s... [His] mind became engulfed in unquenchable thirst.\n{color=aqua|[name]} - {random_chat=0|aphrodisiac}",
-	INTERACTION_ITEM_PHEROMONES_FAIL = "\nPheromones were used on %s, but they had no effect on [him]. ",
+	INTERACTION_ITEM_APHRODISIAC = """
+%s has used an aphrodisiac. [His] breath grew slower and heavier.
+{color=aqua|[name]} - {random_chat=0|aphrodisiac}""",
+	INTERACTION_ITEM_SENSITIVITY_POT = """
+%s has used an sensitivity potion. [His] body became more responsive.
+{color=aqua|[name]} - {random_chat=0|aphrodisiac}""",
+	INTERACTION_ITEM_PHEROMONES_ALREADY = """
+%s is already under effect of pheromones.""",
+	INTERACTION_ITEM_PHEROMONES_SUCCESS = """
+Pheromones were used on %s... [His] mind became engulfed in unquenchable thirst.
+{color=aqua|[name]} - {random_chat=0|aphrodisiac}""",
+	INTERACTION_ITEM_PHEROMONES_FAIL = """
+Pheromones were used on %s, but they had no effect on [him]. """,
 	INTERACTION_RESIST_PUSHOVER_1 = "[name] feels {^involuntarily:helplessly} {^aroused:horny} from {^the rough treatment:being taken against [his] will}...",
 	INTERACTION_RESIST_PUSHOVER_2 = "[name] {^moans:cries} {^involuntarily:helplessly} as [he] falls into submission...",
 	INTERACTION_RESIST_PUSHOVER_3 = "[name] {^blushes:turns red} from [his] own perverted arousal...",
@@ -11159,7 +11191,10 @@ The men smirk at her reaction.
 	CALI_INTRO_4_2 = "{color=yellow|Slaver: — Alright, but don't take too long. There might be a new customer for her by the time you make your mind up. He-he.}",
 	CALI_INTRO_4_3 = "The slaver smirks as you pass them the money and leave the cave. You turn to the still bound Cali.",
 	CALI_INTRO_4_4 = "{color=yellow|Slaver: — Oh, is that so? You can try!}",
-	GOT_CALI_1_1 = """The bound wolf girl sits before you, looking up at you with defiance and a hint of fear.
+	GOT_CALI_1_1 = """The bound wolf girl lays on the ground left to you. She looks into your eyes with defiance and a hint of fear.
+
+{color=yellow| — So? What are you going to do with me now?}""",
+	GOT_CALI_1_1_WOLF = """The bound wolf girl lays on the ground left to you. As she looks up at you, she notices your wolflike features. A faint sign of interest crosses her face, though the defiance in her eyes remains tempered by fear and caution.
 
 {color=yellow| — So? What are you going to do with me now?}""",
 	GOT_CALI_1_2 = """The bound wolf girl quietly sits before you. Her composed expression betrays hints of fear and wonder that she's trying to hide.
@@ -19177,8 +19212,10 @@ Hotkey: 3""",
 	TOOLTIP_TURNS = "turn(s).",
 	TOOLTIP_TYPE = "Type",
 	TOOLTIP_TYPE_ITEM = "Item",
-	TOOLTIP_TYPE_SKILL = "Skill\n(scaled by ATK and Physics, disabled by Disarm)",
-	TOOLTIP_TYPE_SPELL = "Spell\n(scaled by MATK and Wits, disabled by Silence)",
+	TOOLTIP_TYPE_SKILL = """Skill
+(scaled by ATK and Physics, disabled by Disarm)""",
+	TOOLTIP_TYPE_SPELL = """Spell
+(scaled by MATK and Wits, disabled by Silence)""",
 	TOOLTIP_TARGET = "Target type",
 	TOOLTIP_TARGET_ALL = "Any",
 	TOOLTIP_TARGET_ALLY = "Allies",
@@ -21642,20 +21679,16 @@ It doesn't seem like Mae buys your lie, but it comforts her that you choose to p
 	MAE_CITY_QUEST_STAGE_0 = "Take Mae to the market in Aliron.",
 	MAE_CITY_QUEST_STAGE_1 = "Visit Shelia's home with Mae.",
 	MAE_CITY_QUEST_STAGE_2 = "Speak with Mae after crafting potion she requested.",
-#	MAE_CITY_QUEST_STAGE_25 = "Tell Mae about potion.",
 	MAE_CITY_QUEST_STAGE_3 = "Return to Shelia's home with Mae.",
 	MAE_CITY_QUEST_STAGE_4 = "Search for Mae in Aliron.",
 	MAE_MARKET_OPTION = "Food Market",
 	MAE_SHELIA_OPTION = "Shelia's home",
 	MAE_POTION_OPTION = "Shelia's home",
 	MAE_POTION_READY_OPTION = "Your potion is finally crafted.",
-#	MAE_POTION_TASK_NAME = "Brew Mae's Ritual Potion",
-#	MAE_POTION_TASK_DESC = "Prepare the ritual brew Mae needs for the exorcism.",
 	MAE_SEARCH_TASK_NAME = "Search for Mae",
 	MAE_SEARCH_TASK_DESC = "Scour Aliron for any sign of Mae's whereabouts.",
 	MATERIALSPIRIT_POTION = "Spirit Potion",
 	MATERIALSPIRIT_POTIONDESCRIPT = "A special potion for Mae to better spirit communications.",
-	
 	MAE_DRUID_EVENT_START = """Mae finds you in the afternoon, seemingly excited about something.
 
 {color=yellow|Mae: — H-hey, [name]... I was browsing through your library, and I found a note saying you know a druid from the elven forest. I was wondering... could you take me to them?}""",
@@ -23770,8 +23803,7 @@ She looks away quickly, but not before you catch the glisten in her eyes.
 	JEANMAGESSEARCHTASKDESCRIPT = "You must find an information about demon",
 	MATERIALMINDLINK = "Mind-Link Artifact",
 	MATERIALMINDLINKDESCRIPT = "A complicated device for linking ones consciousness.",
-	
-	JEAN_DREAM_1 = """As you wake up in an unusual space you try to focus. The question arises in your mind, of what kind of scene you want to experience, however the only which comes to your mind is your recent companion. The lusty thought quickly overwhelms your mind as the surrounding space changes.""",
+	JEAN_DREAM_1 = "As you wake up in an unusual space you try to focus. The question arises in your mind, of what kind of scene you want to experience, however the only which comes to your mind is your recent companion. The lusty thought quickly overwhelms your mind as the surrounding space changes.",
 	JEAN_DREAM_2 = """In the next moment you see Jean in flesh hanging in front of you, being caught in the middle of a dungeon in some ludicrous trap. Her skirt bunched around her waist, leaving her lower body bare and vulnerable. The rope pulling her head back forces her neck into an elegant, agonizing arch. Her red eyes, burning with a volatile mix of fury and lust, are fixed on you. Her breasts, freed from her bodice, sway slightly with her shallow, rapid breaths, the peaks hard and flushed.
 
 {color=yellow| — You are a real pervert, you know!}
@@ -23790,8 +23822,7 @@ With one smooth, powerful thrust, you bury yourself inside her. The force of it 
 You reach around her body, one hand cupping a bouncing breast, the other finding her clit. You roll the pebbled nipple between your fingers, pinching it just hard enough to make her gasp. Your other hand works at her clit, rubbing it in fast, merciless circles. The dual stimulation is too much. Her body convulses, her pussy clamping down on your cock like a vise as she comes with a silent scream, her head thrown back, her body a bow of taut, quivering flesh.
 
 You continue to thrust into her spasming pussy, chasing your own release. The sight of her, bound and helpless in the throes of pleasure, her skin flushed and gleaming with sweat, pushes you over the edge. You drive deep one last time, your cock pulsing as you empty yourself into her. You stay there for a moment, your bodies joined, her breathing ragged, her limbs slack in their bonds""",
-	JEAN_DREAM_6 = """You step back, watching as your seed trickles down her inner thigh, a stark, white line against her flushed skin. She hangs limp in her bonds, her body spent, her anger momentarily forgotten, replaced by a dazed, sated bliss. In the next moment the world around you breaks, you come back to your senses at the brothel.""",
-	
+	JEAN_DREAM_6 = "You step back, watching as your seed trickles down her inner thigh, a stark, white line against her flushed skin. She hangs limp in her bonds, her body spent, her anger momentarily forgotten, replaced by a dazed, sated bliss. In the next moment the world around you breaks, you come back to your senses at the brothel.",
 	JEAN_WED_1 = """You lay her gently on the king-sized bed, the mattress yielding beneath her slight weight. The white silk of the wedding dress pools around her, a stark, lovely contrast to her pink skin. You work the delicate laces of her bodice, parting the fabric until the swell of her breasts is exposed to the cool air. Her long, golden hair fans out across the white sheets. You leave her dress on but for the undone front, her body turned on its side, one leg drawn up, the curve of her hip a perfect line beneath the rumpled silk. Her red eyes watching you tensely.
 
 {color=yellow| — H-hey, are you going to stare just like that?} 
@@ -23921,7 +23952,9 @@ She turns back to Melchor.
 {color=yellow|Rouge: — Of course, just don't keep me waiting. Until then...}
 
 Rouge turns around and leaves without letting either of you respond.""",
-	ROUGE_MANSION_ARRIVAL = "You arrive at your mansion with Rouge walking a half step ahead of you, inspecting the halls with open curiosity.\n\n{color=yellow|Rouge: — Well, this place isn't too shabby. I guess that's a given for the mayor of Aliron himself.}",
+	ROUGE_MANSION_ARRIVAL = """You arrive at your mansion with Rouge walking a half step ahead of you, inspecting the halls with open curiosity.
+
+{color=yellow|Rouge: — Well, this place isn't too shabby. I guess that's a given for the mayor of Aliron himself.}""",
 	ROUGE_MANSION_OPTION_REASON = "Why have you requested to join me?",
 	ROUGE_MANSION_OPTION_STATUS = "You aren't just here because of my status, are you?",
 	ROUGE_MANSION_REASON = """{color=yellow|Rouge: — Why indeed. You are fresh blood, a self-made man, aren't you? Not like Melchor, his ilk from the senate, or even the emperor. I thought I'd been at the empire too long and getting some fresh air isn't the worst idea.}
@@ -23975,7 +24008,9 @@ Rouge passes you the list of articles for her bedroom, still smiling as you read
 	ROUGE_WORKERS_FURNITURE_CANNOT_AFFORD = "{color=yellow|Rouge: — Huh, I didn't take you for a cheapskate. Do you mind reconsidering? This would reflect very poorly on you, you know.}",
 	ROUGE_WORKERS_OPTION_RECONSIDER = "Fine, we can get it if you insist...",
 	ROUGE_WORKERS_OPTION_NO_INDULGE = "I have no need for such things, and I've decided I'm not going to indulge your every whim.",
-	ROUGE_WORKERS_FURNITURE_MATERIALS_OFFER = "{color=aqua|Sigmund: — Yah, I understand, I actually expected dat. I can offer ya a secondary contract. 150 Thick Leather, 100 Iron Wood. I know dat ya have the workforce for those.}\n\nSeemingly Rouge is not too bothered by your hesitation.",
+	ROUGE_WORKERS_FURNITURE_MATERIALS_OFFER = """{color=aqua|Sigmund: — Yah, I understand, I actually expected dat. I can offer ya a secondary contract. 150 Thick Leather, 100 Iron Wood. I know dat ya have the workforce for those.}
+
+Seemingly Rouge is not too bothered by your hesitation.""",
 	ROUGE_WORKERS_FURNITURE_PAID = "{color=yellow|Rouge: — Good. I shall be waiting back home then.}",
 	ROUGE_WORKERS_FURNITURE_CHARM_SUCCESS = """Rouge gives you a scornful look but there's a hint of respect in it. It seems she's ready to give you credit for this decision.
 
@@ -24130,7 +24165,9 @@ Making it out of the building you reach the small back gate, but two men are blo
 	ROUGE_WAREHOUSE_OPTION_FULL_OF_YOURSELF = "You are really full of yourself.",
 	ROUGE_WAREHOUSE_OPTION_WHAT_NOW = "What do I do now?",
 	ROUGE_WAREHOUSE_GROTUS_REPRIMAND = "Grotus doesn't seem to pay the slightest attention to your reprimand — the adrenaline from the danger is clearly still running hot.",
-	ROUGE_WAREHOUSE_GROTUS_WHAT_NOW = "{color=yellow|Grotus: — Huh!? Why are you asking me? I don't care. You had some mission from the mistress? Then go do it.}\n\nSaying that he left you to yourself. Perhaps now you can report back to Melchor.",
+	ROUGE_WAREHOUSE_GROTUS_WHAT_NOW = """{color=yellow|Grotus: — Huh!? Why are you asking me? I don't care. You had some mission from the mistress? Then go do it.}
+
+Saying that he left you to yourself. Perhaps now you can report back to Melchor.""",
 	ROUGE_REPORT_MELCHOR_KETCH = """You brief Melchor on the warehouse the cult is using, going into detail about your recent ordeal but leaving out who helped you escape.
 
 {color=aqua|Melchor: — You say Ketch himself was there? That's enough, that bastard has been on the wanted list for too long. I'm deploying my special forces immediately — you're coming with us.}""",
@@ -24182,7 +24219,6 @@ He passes you some gold and has the soldiers escort you from the scene before de
 
 He passes you some gold and has the soldiers escort you from the scene before departing himself.""",
 	ROUGE_RETURN_TO_ROUGE = "{color=yellow|Rouge: — Nice work. I knew I could count on you. I think we've learned something about the cult's operations — let's take it easy for now.}",
-	# Lira questline draft conversion
 	LIRA_QUEST3_QUEST_NAME = "Lira's Lifestory",
 	LIRA_QUEST3_QUEST_SUMMARY = "Lira is trying to understand her new place in the mansion.",
 	LIRA_QUEST3_QUEST_STAGE_TALK = "Talk to Lira about her life at the mansion.",
@@ -24201,7 +24237,7 @@ He passes you some gold and has the soldiers escort you from the scene before de
 	LIRA_QUEST3_OVER_PAST_FEW_DAYS_LIRA = """Over the past few days, Lira has slowly begun to settle into life at the mansion. You occasionally see her helping with small chores or assisting in the kitchen, slowly making connections with other servants during shared labor.
 The only person she hasn't been able to connect with appears to be her new master: you. Whenever you're in the same space, she just watches you from afar, shielding herself with formality and politeness during your short exchanges.
 You decide it’s time to talk to her about that matter.""",
-	LIRA_QUEST3_SEE_LIRA_WALK_ROOM_SEEMS = """As you see Lira walk into her room it seems like a good time to address her behavior.""",
+	LIRA_QUEST3_SEE_LIRA_WALK_ROOM_SEEMS = "As you see Lira walk into her room it seems like a good time to address her behavior.",
 	LIRA_QUEST3_COUPLE_MOMENTS_KNOCK_OPENS_DOOR = """A couple of moments after you knock, she opens the door. As she sees you, her eyes open wide, but she quickly tries to regain her composure and bows her head.
 You barge in unannounced, making Lira jump up from her seat. She quickly hides a small elven prayer bead and stands up, facing you briefly before bowing her head.
 {color=yellow|Lira: — Ah, greeting, [master]! Apologies, I was not expecting you… I mean, how can I be of service?}""",
@@ -24227,7 +24263,7 @@ For a moment, she just stares at you, blinking. Then something in her expression
 {color=yellow|Lira: — This… this is the first time someone has asked me this question. I'll need to think about it, but in the meantime, I promise to do my best to serve you, [master].}
 After that matter is settled, Lira asks a few more questions about her household duties. Once she has her answers, she seems about to leave, but hesitates, as if struck by a thought. She turns back to you.
 {color=yellow|Lira: — [master]… it may be bold of me, but may I ask you for a favor?}""",
-	LIRA_QUEST3_LIRA_EXILED_FOREST_WASNT_ALLOWED = """{color=yellow|Lira: — When I was exiled from the forest, I wasn't allowed to take anything with me. Of course, I don't expect to get my things from the priest quarters, but I had some personal stash hidden in a grove near the city. Can you please escort me there?}""",
+	LIRA_QUEST3_LIRA_EXILED_FOREST_WASNT_ALLOWED = "{color=yellow|Lira: — When I was exiled from the forest, I wasn't allowed to take anything with me. Of course, I don't expect to get my things from the priest quarters, but I had some personal stash hidden in a grove near the city. Can you please escort me there?}",
 	LIRA_QUEST3_BOWS_HEAD_FLASHES_GRATEFUL_SMILE = """She bows her head and flashes you a grateful smile.
 {color=yellow|Lira: — Thank you, [master]!}""",
 	LIRA_QUEST3_DEEPER_WALK_BENEATH_TALL_TREES = """The deeper you walk beneath the tall trees, the more familiar the surroundings seem to Lira. She moves with slightly more confidence here, occasionally glancing around as if recognizing distant landmarks.
@@ -24240,7 +24276,7 @@ Lira lowers her gaze.""",
 Once you're out of earshot, Lira exhales quietly. She glances back toward the trees where the patrol disappeared.
 {color=aqua|Lira: — The way they looked at me… it was terrifying. It's nice that I now have someone who can protect me like that…}
 The patrol leader squints at you for a couple of intense moments, then snorts and turns away. The rest of the elves also step aside, casting disdainful glances at Lira.
-{color=yellow|Elf Patrol Leader: — Since Freya's Priestess tolerates you, I won't argue. Just make sure this "traveler" leaves the forest as soon as possible. You can go now.}
+{color=yellow|Elf Patrol Leader: — Since Freya's Priestess tolerates you, I won't argue. Just make sure this \"traveler\" leaves the forest as soon as possible. You can go now.}
 Once you're out of earshot, Lira exhales quietly. She glances back toward the trees where the patrol disappeared.
 {color=aqua|Lira: — I always thought exile meant death… but thanks to you, it doesn't seem that way anymore. And now I can even walk through these woods as a traveler… What a strange feeling…}
 {color=aqua|Lira: — Thank you.}""",
@@ -24250,7 +24286,7 @@ Lira quickly steps to your side.""",
 	LIRA_QUEST3_LIRA_DID_COME_ALWAYS_THOUGHT = """{color=yellow|Lira: — W-where did they come from?! I always thought this place was safe… Or was it Freya who used to guard me?...}
 She forcefully shakes her head.
 {color=yellow|Lira: — Ah, it doesn't matter now! I saw you fight before, you can deal with them, right? I'll help!}""",
-	LIRA_QUEST3_LIRA = """{color=yellow|Lira: — Got it!}""",
+	LIRA_QUEST3_LIRA = "{color=yellow|Lira: — Got it!}",
 	LIRA_QUEST3_TOGETHER_SLAY_AGGRESSIVE_BEASTS_FIGHT = """Together you slay the aggressive beasts.
 After the fight, Lira looks down at her hands, which shimmer with a faint green glow.
 {color=yellow|Lira: — Phew… This… this was my first ever fight, [master]. Did I… did I do well?}""",
@@ -24261,7 +24297,7 @@ After the fight, Lira looks down at her hands, sore from the fight.
 She flexes her fingers slowly, then looks at you.
 {color=yellow|Lira: — But for some reason it feels… fine. Maybe even good. My body feels hot… and strong.}""",
 	LIRA_QUEST3_LOOKS_BACK_HANDS_SLAIN_CENTIPEDES = """She looks back at her hands, then at the slain centipedes, then simply shrugs.
-{color=yellow|Lira: — I… I don't know, honestly. Though now that I think about it… I was always better with physical tasks. Magic never came as easily. The elders used to say I had more "fire in my blood" than was proper for someone of my calling.}
+{color=yellow|Lira: — I… I don't know, honestly. Though now that I think about it… I was always better with physical tasks. Magic never came as easily. The elders used to say I had more \"fire in my blood\" than was proper for someone of my calling.}
 {color=yellow|Lira: — Anyway, let's hope there won't be any unpleasant surprises today.}""",
 	LIRA_QUEST3_LIRA_GOES_BACK_HOLLOW_TREE = """Lira goes back to the hollow tree and finally retrieves her hidden belongings. She doesn't try to hide any of them, so you have a good look.
 They consist of just a few things: a worn leather diary, a few simple wooden toys carved by hand, a small cloth doll with uneven stitching, and a worn-out brush with a few strands of hair still caught between its teeth.
@@ -24290,32 +24326,32 @@ She sets it down carefully. Her hand hovers over the wooden brush.
 She nods, carefully wrapping the bundle and tucking it away.
 {color=yellow|Lira: — Yes, [master]. Thank you for bringing me here. It means a lot.}
 The two of you make your way back to the road, leaving the quiet grove behind.""",
-	LIRA_QUEST3_OPTION_KNOCK_DOOR = """Knock on the door""",
-	LIRA_QUEST3_OPTION_WALK_ROOM = """Walk into her room""",
-	LIRA_QUEST3_OPTION_BUSY_DOING = """Are you busy? What were you doing?""",
-	LIRA_QUEST3_OPTION_OTHER_SERVANTS_TREAT = """How does other servants treat you?""",
-	LIRA_QUEST3_OPTION_SEEM_WATCH_CLOSELY_YET_NEVER_STRIKE = """You seem to watch me closely, yet never strike up a conversation. Why? What's on your mind?""",
-	LIRA_QUEST3_OPTION_FEEL_FREE_SHARE_THOUGHTS_LISTENING = """Feel free to share your thoughts, I’m listening""",
-	LIRA_QUEST3_OPTION_DON_WORRY_UNDERSTAND_WANT = """Don’t worry, I understand. So what is that you want?""",
-	LIRA_QUEST3_OPTION_SERVE_DEVOTEDLY_SERVED_FREYA_THATS_WHOLE = """You should serve me just as devotedly as you served Freya. That's the whole point of being a slave, isn't it?""",
-	LIRA_QUEST3_OPTION_WHILE_FORMALLY_SLAVE_PLACE_STRICT_RESTRICTIONS = """While formally you're my slave, I don't place strict restrictions. So I ask you what would you want?""",
-	LIRA_QUEST3_OPTION_COURSE = """Of course, what is it?""",
-	LIRA_QUEST3_OPTION_HOPEFULLY_BOTHERSOME = """Hopefully it's not too bothersome""",
-	LIRA_QUEST3_OPTION_FINE_SHOW_GOOD_OBEDIENT_SLAVES = """Fine, let's go. I should show that I'm a good master to my obedient slaves.""",
-	LIRA_QUEST3_OPTION_ALRIGHT_LET_MOVE_MAYBE_THESE_THINGS = """Alright, let’s move. Maybe these things will help you figure out what you want.""",
-	LIRA_QUEST3_OPTION_SEARCH_GROVE = """Search for the grove""",
-	LIRA_QUEST3_OPTION_PRIESTESS_ANYMORE_SHES_SLAVE_PERSONAL_PROPERTY = """She is not a priestess anymore. She's my slave, my personal property. There’s no rules forbidding me from bringing my belongings into the forest.""",
-	LIRA_QUEST3_OPTION_EXILED_MEANS_LONGER_LIVE_AMONG_DOESNT = """"Exiled" means she can no longer live among you. It doesn't mean she cannot pass through the forest as a traveler. We're only here briefly.""",
-	LIRA_QUEST3_OPTION_STAY_BACK_HELP_LEAVE_FIGHTING = """Just stay back and help with what you can. Leave the fighting to me.""",
-	LIRA_QUEST3_OPTION_FIGHT_TOGETHER_SIDE_SIDE_CAPABLE_MORE = """We fight together, side by side. You're capable of more than just standing behind.""",
-	LIRA_QUEST3_OPTION_DID_GREAT_ESPECIALLY_FIRST_FIGHT = """You did great, especially for the first fight""",
-	LIRA_QUEST3_OPTION_LOOKS_LIKE_NATURAL_TYPE_MAGIC = """Looks like you're a natural with this type of magic""",
-	LIRA_QUEST3_OPTION_MAYBE_PENT_RAGE_YEARS_OBEDIENCE = """Maybe it's all the pent-up rage from years of obedience?""",
-	LIRA_QUEST3_OPTION_SOMETHING_RACE = """Could this have something to do with your race?""",
-	LIRA_QUEST3_OPTION_DID_WRITE_DIARY = """What did you write in the diary?""",
-	LIRA_QUEST3_OPTION_DID_HIDE_THESE = """Why did you hide these here?""",
-	LIRA_QUEST3_OPTION_FEEL_BETTER_GETTING_THESE_BACK = """Do you feel better after getting these back?""",
-	LIRA_QUEST3_OPTION_ALRIGHT_HEAD_BACK_SHOULDNT_LINGER_FOREST = """Alright, time to head back. We shouldn't linger in the forest.""",
+	LIRA_QUEST3_OPTION_KNOCK_DOOR = "Knock on the door",
+	LIRA_QUEST3_OPTION_WALK_ROOM = "Walk into her room",
+	LIRA_QUEST3_OPTION_BUSY_DOING = "Are you busy? What were you doing?",
+	LIRA_QUEST3_OPTION_OTHER_SERVANTS_TREAT = "How does other servants treat you?",
+	LIRA_QUEST3_OPTION_SEEM_WATCH_CLOSELY_YET_NEVER_STRIKE = "You seem to watch me closely, yet never strike up a conversation. Why? What's on your mind?",
+	LIRA_QUEST3_OPTION_FEEL_FREE_SHARE_THOUGHTS_LISTENING = "Feel free to share your thoughts, I’m listening",
+	LIRA_QUEST3_OPTION_DON_WORRY_UNDERSTAND_WANT = "Don’t worry, I understand. So what is that you want?",
+	LIRA_QUEST3_OPTION_SERVE_DEVOTEDLY_SERVED_FREYA_THATS_WHOLE = "You should serve me just as devotedly as you served Freya. That's the whole point of being a slave, isn't it?",
+	LIRA_QUEST3_OPTION_WHILE_FORMALLY_SLAVE_PLACE_STRICT_RESTRICTIONS = "While formally you're my slave, I don't place strict restrictions. So I ask you what would you want?",
+	LIRA_QUEST3_OPTION_COURSE = "Of course, what is it?",
+	LIRA_QUEST3_OPTION_HOPEFULLY_BOTHERSOME = "Hopefully it's not too bothersome",
+	LIRA_QUEST3_OPTION_FINE_SHOW_GOOD_OBEDIENT_SLAVES = "Fine, let's go. I should show that I'm a good master to my obedient slaves.",
+	LIRA_QUEST3_OPTION_ALRIGHT_LET_MOVE_MAYBE_THESE_THINGS = "Alright, let’s move. Maybe these things will help you figure out what you want.",
+	LIRA_QUEST3_OPTION_SEARCH_GROVE = "Search for the grove",
+	LIRA_QUEST3_OPTION_PRIESTESS_ANYMORE_SHES_SLAVE_PERSONAL_PROPERTY = "She is not a priestess anymore. She's my slave, my personal property. There’s no rules forbidding me from bringing my belongings into the forest.",
+	LIRA_QUEST3_OPTION_EXILED_MEANS_LONGER_LIVE_AMONG_DOESNT = "\"Exiled\" means she can no longer live among you. It doesn't mean she cannot pass through the forest as a traveler. We're only here briefly.",
+	LIRA_QUEST3_OPTION_STAY_BACK_HELP_LEAVE_FIGHTING = "Just stay back and help with what you can. Leave the fighting to me.",
+	LIRA_QUEST3_OPTION_FIGHT_TOGETHER_SIDE_SIDE_CAPABLE_MORE = "We fight together, side by side. You're capable of more than just standing behind.",
+	LIRA_QUEST3_OPTION_DID_GREAT_ESPECIALLY_FIRST_FIGHT = "You did great, especially for the first fight",
+	LIRA_QUEST3_OPTION_LOOKS_LIKE_NATURAL_TYPE_MAGIC = "Looks like you're a natural with this type of magic",
+	LIRA_QUEST3_OPTION_MAYBE_PENT_RAGE_YEARS_OBEDIENCE = "Maybe it's all the pent-up rage from years of obedience?",
+	LIRA_QUEST3_OPTION_SOMETHING_RACE = "Could this have something to do with your race?",
+	LIRA_QUEST3_OPTION_DID_WRITE_DIARY = "What did you write in the diary?",
+	LIRA_QUEST3_OPTION_DID_HIDE_THESE = "Why did you hide these here?",
+	LIRA_QUEST3_OPTION_FEEL_BETTER_GETTING_THESE_BACK = "Do you feel better after getting these back?",
+	LIRA_QUEST3_OPTION_ALRIGHT_HEAD_BACK_SHOULDNT_LINGER_FOREST = "Alright, time to head back. We shouldn't linger in the forest.",
 	LIRA_QUEST1_DAY_USUAL_STEP_OUTSIDE_MANSION = """You go about your day as usual, but as you step outside the mansion, you realize the streets of Alliron are more crowded and noisier than they were just yesterday. A steady stream of people flows along the main road toward the central square. From there, despite the distance, you can already hear merchants shouting, the faint lilt of music, and the low, constant hum of a crowd.
 
 You stop one of the passersby, and they point toward a nearby wooden post covered in flashy flyers. You walk over and pull one loose.
@@ -24337,7 +24373,7 @@ You tell her what you’ve learned, including that an elven delegation will be p
 {color=yellow|Lira: — The fair? Oh, right, I think I’ve heard other servants talk about it… They said its the time when tons of vendors gather all in one place so you could buy almost anything, and then participate in some fun games set up purely for the indulgent… And you say even the elves are here, huh… I wish I could see this “fair” for myself…}
 
 She looks down for a moment, reminiscing. When she looks up again, there is a silent plea in her eyes.""",
-	LIRA_QUEST1_LIRA_THINK_PERHAPS_CHANCE_VISIT = """{color=yellow|Lira: — [master], do you think… Perhaps there’s a chance I could visit the fair? I… I’d like to experience it for once, at least, just to know what all the talk was about.}""",
+	LIRA_QUEST1_LIRA_THINK_PERHAPS_CHANCE_VISIT = "{color=yellow|Lira: — [master], do you think… Perhaps there’s a chance I could visit the fair? I… I’d like to experience it for once, at least, just to know what all the talk was about.}",
 	LIRA_QUEST1_NODS_IMMEDIATELY_TRYING_HARD_HIDE = """She nods immediately, trying hard to hide the smile spreading on her lips.
 
 {color=yellow|Lira: — Of course, [master]. I will behave properly. Thank you!}
@@ -24352,7 +24388,7 @@ Guests of all races move through the crowd with joy on their faces and an easygo
 Lira slows down and looks around, trying to track everything at once. A childlike expression of wonder can be seen on her face as she follows you deeper into the fair.
 
 As you stand in the middle of the fair there are a couple of different routes you can take.""",
-	LIRA_QUEST1_TURN_FOOD_STALLS_AREA_APPROACH = """You turn to the food stalls area. As you approach closer, Lira’s eyes dart from one thing to another, unable to settle up until her stomach lets out a loud, unmistakable rumble. Her face flushes a bit.""",
+	LIRA_QUEST1_TURN_FOOD_STALLS_AREA_APPROACH = "You turn to the food stalls area. As you approach closer, Lira’s eyes dart from one thing to another, unable to settle up until her stomach lets out a loud, unmistakable rumble. Her face flushes a bit.",
 	LIRA_QUEST1_POINT_SAMPLE_PIECES_EXPLAIN_SIMPLE = """You point out the sample pieces and explain to her a simple way to try the food without spending a single coin. Lira looks at you with both surprise and slight caution, but then goes around the vendors’ stalls, sampling a few bites to their disgruntled looks. She returns to you with a small smile.
 
 {color=yellow|Lira: — The food here is so good, [master]! I hope I can eat more of it someday…}
@@ -24378,7 +24414,7 @@ Noticing you watching her, Lira gets a bit flustered and averts her gaze, trying
 Noticing you watching her, Lira smiles a bit awkwardly before taking the hairpin and turning back to you.
 
 {color=yellow|Lira: — [master], I might be getting a little greedy… but can we also get this one? I like it a lot.}""",
-	LIRA_QUEST1_WALK_STALL_TAKE_PLACE_SMALL = """You walk to the stall and take your place in the small queue. While you wait for your turn, you have a moment to consider your options.""",
+	LIRA_QUEST1_WALK_STALL_TAKE_PLACE_SMALL = "You walk to the stall and take your place in the small queue. While you wait for your turn, you have a moment to consider your options.",
 	LIRA_QUEST1_TURN_POINT_LEAF_SHAPED_PIN = """When it’s your turn, you point out the leaf‑shaped pin. The merchant nods, names a price, and you hand over the coins without haggling. A moment later, the small package is yours.
 
 You decide to keep your coins. When your turn comes, you ask the merchant to show you several items from the higher shelves, pointing and gesturing with your free hand while the other, hidden from sight, nimbly slips the leaf‑shaped pin from its display. In the noise and bustle of the fair, no one notices the quick sleight of hand.
@@ -24722,7 +24758,7 @@ The costume fits her as if it were made for her. The leather and feathers frame 
 {color=yellow|Lira: — Let's go home, [master].}
 
 Under the approving gaze of the vendor, you leave his booth behind and move toward the mansion.""",
-	LIRA_QUEST1_LIRA_WALKS_SLIGHTLY_FRONT_LETTING = """Lira walks slightly in front of you, letting you enjoy the view of her swaying hips and the teasing flow of the skirt. Soon, your head is filled with a myriad of ideas, one of which seems like the perfect ending for this day. And so, despite the mansion already being in view, you gently tap Lira's shoulder and guide her to the side of the road, into the bushes.""",
+	LIRA_QUEST1_LIRA_WALKS_SLIGHTLY_FRONT_LETTING = "Lira walks slightly in front of you, letting you enjoy the view of her swaying hips and the teasing flow of the skirt. Soon, your head is filled with a myriad of ideas, one of which seems like the perfect ending for this day. And so, despite the mansion already being in view, you gently tap Lira's shoulder and guide her to the side of the road, into the bushes.",
 	LIRA_QUEST1_WALK_BACK_MANSION_QUIET_HAND = """The walk back to the mansion is quiet. Hand in hand, you make your way through the lantern-lit streets. The feathers of her costume catch the soft light, and she walks a little taller than she did this morning.
 
 When you finally reach the gates, she stops. The mansion stands warm and familiar against the darkening sky. For a moment, she simply looks at it, then turns to you.
@@ -24736,56 +24772,56 @@ Her voice is soft.""",
 She lifts her gaze, and her eyes are bright.
 
 {color=yellow|Lira: — So I just wanted to say thank you. For today. For everything. I… I never thought I would say it, but whenever I'm with you, I can't help but think that I'm glad I was exiled. Just wanted you to know that. Goodnight, [master]!}""",
-	LIRA_QUEST1_OPTION_FINE_TAKE_STAY_CLOSE_BEHAVE_LIKE = """Fine, I’ll take you there, but you stay close and behave like a good girl should""",
-	LIRA_QUEST1_OPTION_SURE_THING_RIGHT_SATISFY_CURIOSITY_YOURS = """Sure thing, let's go right now. Time to satisfy that curiosity of yours""",
-	LIRA_QUEST1_OPTION_FOOD_STALLS = """Go to the food stalls""",
-	LIRA_QUEST1_OPTION_ACCESSORIES_AREA = """Go to the accessories area""",
-	LIRA_QUEST1_OPTION_SHOOTING_RANGE = """Go to the shooting range""",
-	LIRA_QUEST1_OPTION_ELVEN_PART_FAIR = """Go to the elven part of the fair""",
-	LIRA_QUEST1_OPTION_SUGGEST_TRIES_FREE_SAMPLES = """Suggest she tries some free samples""",
-	LIRA_QUEST1_OPTION_OFFER_BUY_FOOD = """Offer to buy her food (-200g)""",
-	LIRA_QUEST1_OPTION_COURSE_LIKE_REWARD_GOOD_BEHAVING_SERVANTS = """Of course. I like to reward good behaving servants with treats""",
-	LIRA_QUEST1_OPTION_SURE_THING_KNOW_WANT_TRY_PICK = """Sure thing, I know you want to try it, so go on, pick whatever you like""",
-	LIRA_QUEST1_OPTION_DID_WANT_HAIRPIN = """Did you want that hairpin?""",
-	LIRA_QUEST1_OPTION_SOMETHING_CAUGHT_EYE = """Is there something that caught your eye?""",
-	LIRA_QUEST1_OPTION_SURE_SPOIL_SLAVE_LITTLE_ESPECIALLY_SINCE = """Sure, why not spoil my slave a little? Especially since I’m sure you’ll work it off later""",
-	LIRA_QUEST1_OPTION_PROBLEM_ALLOWED_GOOD_THINGS_CONSIDER_GIFT = """No problem, you’re allowed to have good things. Consider it a gift""",
-	LIRA_QUEST1_OPTION_PAY_HAIRPIN = """Pay for the hairpin (-300g)""",
-	LIRA_QUEST1_OPTION_STEAL_HAIRPIN = """Steal the hairpin""",
-	LIRA_QUEST1_OPTION_SUITS_PERFECTLY = """It suits you perfectly""",
-	LIRA_QUEST1_OPTION_COURSE_LIKE_SLAVES_PRETTY = """Of course it is, I like my slaves pretty""",
-	LIRA_QUEST1_OPTION_JOIN_COMPETITION_YOURSELF = """Join the competition yourself""",
-	LIRA_QUEST1_OPTION_LIRA_JOIN_COMPETITION = """Have Lira join the competition""",
-	LIRA_QUEST1_OPTION_KEEP_SHOOTING = """Keep shooting""",
-	LIRA_QUEST1_OPTION_PUSH_TRAINED_MUSCLES_DRAW_FULL_STRING = """Push your trained muscles to draw the full string""",
-	LIRA_QUEST1_OPTION_HEY_TRY_WIN_SOMETHING = """Hey, why don't you try? Win something for your [master].""",
-	LIRA_QUEST1_OPTION_INTERESTED_AHEAD_MAYBE_YOULL_ENJOY = """If you're interested, go ahead. Maybe you'll enjoy it.""",
-	LIRA_QUEST1_OPTION_PROUD_DID_GREAT = """I am proud of you. You did great.""",
-	LIRA_QUEST1_OPTION_SURE_DID_PRIZE = """Sure did. Now let's go get that prize.""",
-	LIRA_QUEST1_OPTION_LOOKS_LIKE_SOMEONE_SORE_LOSER_FORGET = """Looks like someone is a sore loser. Forget about him, Lira. Let's go.""",
-	LIRA_QUEST1_OPTION_MAYOR_ALIRON_LET_TELL_SOMETHING = """As the mayor of Aliron, let me tell you something…""",
-	LIRA_QUEST1_OPTION_EXCUSE_COMPANION_ASKED_QUESTION = """Excuse me. My companion asked a question.""",
-	LIRA_QUEST1_OPTION_MUCH_DOLL = """How much is for that doll?""",
-	LIRA_QUEST1_OPTION_MEANING = """What is the meaning of this?""",
-	LIRA_QUEST1_OPTION_LITERALLY_SAW_HIDE_DOLL = """I literally saw you hide the doll!""",
-	LIRA_QUEST1_OPTION_PLACE_BESIDE = """You should. Your place is beside me now.""",
-	LIRA_QUEST1_OPTION_BECAUSE_NEED_APPROVAL_HAPPY = """You should. Because you don't need their approval to be happy.""",
-	LIRA_QUEST1_OPTION_GRAB_HAND_PULL_CROWD = """Grab her hand and pull her into the crowd""",
-	LIRA_QUEST1_OPTION_OFFER_HAND = """Offer her your hand""",
-	LIRA_QUEST1_OPTION_SHES_SLAVE_GRATEFUL_LET_DEAL_INSTEAD = """She's my slave, and what of it? You should be grateful I let her deal with you instead of calling the guards.""",
-	LIRA_QUEST1_OPTION_SHES_SOMEONE_EASILY_BEAT_ASS_WANT = """She's someone who can easily beat your ass. Want me to ask her to do it again, or should we just call the guards?""",
-	LIRA_QUEST1_OPTION_YEAH_DEAL = """Yeah, go deal with it""",
-	LIRA_QUEST1_OPTION_NAH_STAY_HANDLE = """Nah, stay here, I'll handle it""",
-	LIRA_QUEST1_OPTION_SLAVE_DOESNT_NEED_MONEY_PROVIDE_EVERYTHING = """A slave doesn't need money. I provide everything you need""",
-	LIRA_QUEST1_OPTION_EARNED_YOURS = """You earned it. It's yours""",
-	LIRA_QUEST1_OPTION_THINK_MIGHT_ABLE_HELP = """I think we might be able to help with that""",
-	LIRA_QUEST1_OPTION_DON_WEAR_LIRA = """Why don’t you wear it, Lira?""",
-	LIRA_QUEST1_OPTION_WORRY_SOMEONE_ELSES_OPINION_SHOULDNT_FOCUS = """Why do you worry about someone else's opinion? Shouldn't you focus on what your [master] thinks? And why would you hide your body? Let them see what I am proud to own!""",
-	LIRA_QUEST1_OPTION_SAY_DISLIKE_MEANING_YOUD_WEAR_OPINION = """You didn't say you dislike it, meaning you'd wear it if not for the opinion of others. But why do you even care? If you wish to feel free, you should stop fearing what others might think or say!""",
-	LIRA_QUEST1_OPTION_LOOK_INCREDIBLE = """You look incredible.""",
-	LIRA_QUEST1_OPTION_LIKE_MEANT_WEAR = """It's like you were meant to wear this.""",
-	LIRA_QUEST1_OPTION_COURSE = """Of course.""",
-	LIRA_QUEST1_OPTION_AHEAD = """Go ahead.""",
+	LIRA_QUEST1_OPTION_FINE_TAKE_STAY_CLOSE_BEHAVE_LIKE = "Fine, I’ll take you there, but you stay close and behave like a good girl should",
+	LIRA_QUEST1_OPTION_SURE_THING_RIGHT_SATISFY_CURIOSITY_YOURS = "Sure thing, let's go right now. Time to satisfy that curiosity of yours",
+	LIRA_QUEST1_OPTION_FOOD_STALLS = "Go to the food stalls",
+	LIRA_QUEST1_OPTION_ACCESSORIES_AREA = "Go to the accessories area",
+	LIRA_QUEST1_OPTION_SHOOTING_RANGE = "Go to the shooting range",
+	LIRA_QUEST1_OPTION_ELVEN_PART_FAIR = "Go to the elven part of the fair",
+	LIRA_QUEST1_OPTION_SUGGEST_TRIES_FREE_SAMPLES = "Suggest she tries some free samples",
+	LIRA_QUEST1_OPTION_OFFER_BUY_FOOD = "Offer to buy her food (-200g)",
+	LIRA_QUEST1_OPTION_COURSE_LIKE_REWARD_GOOD_BEHAVING_SERVANTS = "Of course. I like to reward good behaving servants with treats",
+	LIRA_QUEST1_OPTION_SURE_THING_KNOW_WANT_TRY_PICK = "Sure thing, I know you want to try it, so go on, pick whatever you like",
+	LIRA_QUEST1_OPTION_DID_WANT_HAIRPIN = "Did you want that hairpin?",
+	LIRA_QUEST1_OPTION_SOMETHING_CAUGHT_EYE = "Is there something that caught your eye?",
+	LIRA_QUEST1_OPTION_SURE_SPOIL_SLAVE_LITTLE_ESPECIALLY_SINCE = "Sure, why not spoil my slave a little? Especially since I’m sure you’ll work it off later",
+	LIRA_QUEST1_OPTION_PROBLEM_ALLOWED_GOOD_THINGS_CONSIDER_GIFT = "No problem, you’re allowed to have good things. Consider it a gift",
+	LIRA_QUEST1_OPTION_PAY_HAIRPIN = "Pay for the hairpin (-300g)",
+	LIRA_QUEST1_OPTION_STEAL_HAIRPIN = "Steal the hairpin",
+	LIRA_QUEST1_OPTION_SUITS_PERFECTLY = "It suits you perfectly",
+	LIRA_QUEST1_OPTION_COURSE_LIKE_SLAVES_PRETTY = "Of course it is, I like my slaves pretty",
+	LIRA_QUEST1_OPTION_JOIN_COMPETITION_YOURSELF = "Join the competition yourself",
+	LIRA_QUEST1_OPTION_LIRA_JOIN_COMPETITION = "Have Lira join the competition",
+	LIRA_QUEST1_OPTION_KEEP_SHOOTING = "Keep shooting",
+	LIRA_QUEST1_OPTION_PUSH_TRAINED_MUSCLES_DRAW_FULL_STRING = "Push your trained muscles to draw the full string",
+	LIRA_QUEST1_OPTION_HEY_TRY_WIN_SOMETHING = "Hey, why don't you try? Win something for your [master].",
+	LIRA_QUEST1_OPTION_INTERESTED_AHEAD_MAYBE_YOULL_ENJOY = "If you're interested, go ahead. Maybe you'll enjoy it.",
+	LIRA_QUEST1_OPTION_PROUD_DID_GREAT = "I am proud of you. You did great.",
+	LIRA_QUEST1_OPTION_SURE_DID_PRIZE = "Sure did. Now let's go get that prize.",
+	LIRA_QUEST1_OPTION_LOOKS_LIKE_SOMEONE_SORE_LOSER_FORGET = "Looks like someone is a sore loser. Forget about him, Lira. Let's go.",
+	LIRA_QUEST1_OPTION_MAYOR_ALIRON_LET_TELL_SOMETHING = "As the mayor of Aliron, let me tell you something…",
+	LIRA_QUEST1_OPTION_EXCUSE_COMPANION_ASKED_QUESTION = "Excuse me. My companion asked a question.",
+	LIRA_QUEST1_OPTION_MUCH_DOLL = "How much is for that doll?",
+	LIRA_QUEST1_OPTION_MEANING = "What is the meaning of this?",
+	LIRA_QUEST1_OPTION_LITERALLY_SAW_HIDE_DOLL = "I literally saw you hide the doll!",
+	LIRA_QUEST1_OPTION_PLACE_BESIDE = "You should. Your place is beside me now.",
+	LIRA_QUEST1_OPTION_BECAUSE_NEED_APPROVAL_HAPPY = "You should. Because you don't need their approval to be happy.",
+	LIRA_QUEST1_OPTION_GRAB_HAND_PULL_CROWD = "Grab her hand and pull her into the crowd",
+	LIRA_QUEST1_OPTION_OFFER_HAND = "Offer her your hand",
+	LIRA_QUEST1_OPTION_SHES_SLAVE_GRATEFUL_LET_DEAL_INSTEAD = "She's my slave, and what of it? You should be grateful I let her deal with you instead of calling the guards.",
+	LIRA_QUEST1_OPTION_SHES_SOMEONE_EASILY_BEAT_ASS_WANT = "She's someone who can easily beat your ass. Want me to ask her to do it again, or should we just call the guards?",
+	LIRA_QUEST1_OPTION_YEAH_DEAL = "Yeah, go deal with it",
+	LIRA_QUEST1_OPTION_NAH_STAY_HANDLE = "Nah, stay here, I'll handle it",
+	LIRA_QUEST1_OPTION_SLAVE_DOESNT_NEED_MONEY_PROVIDE_EVERYTHING = "A slave doesn't need money. I provide everything you need",
+	LIRA_QUEST1_OPTION_EARNED_YOURS = "You earned it. It's yours",
+	LIRA_QUEST1_OPTION_THINK_MIGHT_ABLE_HELP = "I think we might be able to help with that",
+	LIRA_QUEST1_OPTION_DON_WEAR_LIRA = "Why don’t you wear it, Lira?",
+	LIRA_QUEST1_OPTION_WORRY_SOMEONE_ELSES_OPINION_SHOULDNT_FOCUS = "Why do you worry about someone else's opinion? Shouldn't you focus on what your [master] thinks? And why would you hide your body? Let them see what I am proud to own!",
+	LIRA_QUEST1_OPTION_SAY_DISLIKE_MEANING_YOUD_WEAR_OPINION = "You didn't say you dislike it, meaning you'd wear it if not for the opinion of others. But why do you even care? If you wish to feel free, you should stop fearing what others might think or say!",
+	LIRA_QUEST1_OPTION_LOOK_INCREDIBLE = "You look incredible.",
+	LIRA_QUEST1_OPTION_LIKE_MEANT_WEAR = "It's like you were meant to wear this.",
+	LIRA_QUEST1_OPTION_COURSE = "Of course.",
+	LIRA_QUEST1_OPTION_AHEAD = "Go ahead.",
 	LIRA_QUEST2_COUPLE_DAYS_PASSED_SINCE_FAIR = """A couple of days have passed since the fair. Lira seems even more accustomed to her new life now, as she handles chores with ease, and also smiles and greets you warmly whenever your paths cross.
 
 Still, you've noticed her a few times standing by a window or near the gates, watching people pass by with a thoughtful look in her eyes. Curious about what's on her mind, you decide to speak with her the next time you see her.""",
@@ -24825,7 +24861,7 @@ She blinks, clearly not expecting that answer.
 After that Lira gets back to her duties, while you contemplate the ways you could learn more about her, as her origin seems to be a question worth your curiosity.
 
 The first and most obvious way to start your investigation would be to just visit the place Lira used to live for most of her life, the temple in the elven capital, and so that is exactly what you plan to do.""",
-	LIRA_QUEST2_JOURNEY_QUITE_FAMILIAR_WASTE_MUCH = """The journey is quite familiar by now, so you don't waste too much time on it and soon step under the shadow of the elven great tree. Elves move through the avenues with measured steps, their conversations low, their gazes flicking toward you only briefly before sliding away.""",
+	LIRA_QUEST2_JOURNEY_QUITE_FAMILIAR_WASTE_MUCH = "The journey is quite familiar by now, so you don't waste too much time on it and soon step under the shadow of the elven great tree. Elves move through the avenues with measured steps, their conversations low, their gazes flicking toward you only briefly before sliding away.",
 	LIRA_QUEST2_INSIDE_TEMPLE_AIR_FEELS_STILL = """Inside the temple, the air feels still, almost heavy with ritual and tradition. Incense lingers in the corridors, and the soft echo of distant chanting filters through the walls.
 
 It doesn't take long to arrange an audience, though the priestesses don't seem particularly pleased to see you. You're tolerated, but not welcomed. Eventually, you're led into the headmistress's chamber, who regards you with a measured, slightly tired expression.
@@ -24968,7 +25004,7 @@ She looks up at you with trust and confidence in her eyes.
 {color=yellow|Lira: — Thank you, [master]. I won't let you down. I'll prove that I can do this.}
 She straightens her back, and though her hands tremble slightly, her voice is steady.
 {color=yellow|Lira: — Thank you for believing in me, [master]. I'll try to do my best.}""",
-	LIRA_QUEST2_AGREEING_PLAN_BRIEFLY_DISCUSS_DETAILS = """After agreeing to her plan, you briefly discuss the details. The best place for an ambush seems to be the stretch of road near the hills, where the trees grow close to the path. That is where you head next.""",
+	LIRA_QUEST2_AGREEING_PLAN_BRIEFLY_DISCUSS_DETAILS = "After agreeing to her plan, you briefly discuss the details. The best place for an ambush seems to be the stretch of road near the hills, where the trees grow close to the path. That is where you head next.",
 	LIRA_QUEST2_HIDE_AMONG_THICK_BUSHES_OVERGROWN = """You hide among the thick bushes and overgrown trees, ready to act at the first sign of danger. Lira stands on the road, pretending to rest, then slowly begins to walk along the route just as you discussed. You follow her, still hiding your presence.
 Time passes, and soon the sun begins to fall when you finally hear hoofbeats. Five riders appear around the bend, all rough-looking men with worn leather armour and hands resting on their hilts. They spot Lira immediately and gallop to circle her, grinning in their saddles.
 {color=yellow|Bandit: — Well, well. What's a pretty little thing like you doing all alone out here?}""",
@@ -24978,7 +25014,7 @@ Unaware of your approach, the bandits keep spouting nonsense until you manage to
 	LIRA_QUEST2_WITHIN_MOMENT_THREE_BANDITS_DOWN = """Within a moment, three bandits are down. But as you are fighting the fourth, the last one manages to grab Lira and pull her onto his horse.
 {color=yellow|Lira: — [master]!}
 The rider kicks his heels into the horse's flanks, and the beast bolts down the road, kicking up dust and leaving you far behind.""",
-	LIRA_QUEST2_TURN_BACK_BANDITS_LYING_GROUND = """You turn back to the bandits lying on the ground. Two are unconscious. One is groaning, clutching his arm. He glares at you but doesn't try to run.""",
+	LIRA_QUEST2_TURN_BACK_BANDITS_LYING_GROUND = "You turn back to the bandits lying on the ground. Two are unconscious. One is groaning, clutching his arm. He glares at you but doesn't try to run.",
 	LIRA_QUEST2_BANDIT_GONNA_TRY_GIRL_BACK = """{color=yellow|Bandit: — What, you gonna try and get your girl back? Heh, the boss will show you why you shouldn't have messed with us!}
 He spits at your feet and glares.
 The cold steel pressing against his skin quickly clears his mind of arrogant delusions.
@@ -24989,7 +25025,7 @@ The bandit hesitates. You press the blade just a fraction deeper.
 Bandit: — Shit, fine, fine! Guess I'll be leaving the band anyway… It's to the east! Old cave system, hidden deep in the forest. About two hours from here. Follow the dry creek bed.
 He gives you a rough description between shaky breaths. You commit it to memory.
 You tell him that he'd better not be lying, then tie him up and leave him on the road. You mount one of the remaining horses and get ready to bring Lira back.""",
-	LIRA_QUEST2_TRAIL_LEADS_OFF_ROAD_FOREST = """The trail leads you off the road and into the forest. Eventually, you spot the entrance to a hidden cave, half-concealed by overhanging brush. Voices echo faintly from within, and the tracking device points directly ahead. Time to step inside.""",
+	LIRA_QUEST2_TRAIL_LEADS_OFF_ROAD_FOREST = "The trail leads you off the road and into the forest. Eventually, you spot the entrance to a hidden cave, half-concealed by overhanging brush. Voices echo faintly from within, and the tracking device points directly ahead. Time to step inside.",
 	LIRA_QUEST2_DESPITE_PREVIOUS_CLASHES_INSIDE_LEADERS = """Despite your previous clashes, inside the leader's lair the bandit leader and a couple of his guards are sitting relaxed, passing around a flask and laughing, unaware of what's coming.
 
 You peek around the corner and notice Lira in the corner of the cave: restrained, but conscious. Her eyes meet yours across the dim space, and her face immediately lights up. You step into the light.""",
@@ -25131,7 +25167,7 @@ A faint, warm smile appears.
 {color=yellow|Lira: — F-free…?}
 For a moment, she looks at you with confusion, but then the smile returns to her face. She leans forward and presses her head to your chest.
 {color=yellow|Lira: — There's no need for that, [master]. I don't want to be free. I want to be yours.}""",
-	LIRA_QUEST2_LIRA_TOOK_TREATED_TREATED_LIKE = """{color=yellow|Lira: — You took me in and you treated me well, treated me like a person, even though you didn't have to. You were the one who taught me not to fear and how to be myself. Next to you I am no longer afraid to voice my real thoughts, probably for the first time in my life.}""",
+	LIRA_QUEST2_LIRA_TOOK_TREATED_TREATED_LIKE = "{color=yellow|Lira: — You took me in and you treated me well, treated me like a person, even though you didn't have to. You were the one who taught me not to fear and how to be myself. Next to you I am no longer afraid to voice my real thoughts, probably for the first time in my life.}",
 	LIRA_QUEST2_LOOKS_DOWN_AMULET_CLUTCHES_HAND = """She looks down at the amulet she clutches in her hand.
 {color=yellow|Lira: — The more I looked at my past, the more I realized how little freedom I really had: first sold as a barely conscious child, and then put into the temple, where every step was dictated by rituals and rules… Huh.}
 She suddenly lets out a quiet laugh and looks up at the sky.""",
@@ -25152,63 +25188,63 @@ She takes your hand and holds it between both of hers.
 When you finally reach the mansion, the familiar sight of its gates brings a sense of closure.
 You take a couple of hours to rest from the journey, but then get back to work, dealing with the piled-up responsibilities. Time flows by, but as the evening comes, you are distracted by the sound of a door opening.
 Lira approaches you with a warm smile on her face and a clear determination in her eyes. She gently pushes the documents you've been signing to the side and puts her face close to yours, showing no hesitation this time and taking the whole initiative.""",
-	LIRA_QUEST2_OPTION_BEEN_DOING_LATELY_SEEMS_SOMETHING_MIND = """How have you been doing lately? It seems that something is on your mind.""",
-	LIRA_QUEST2_OPTION_YOUVE_SEEMED_DISTRACTED_LATELY_WHATS_TROUBLING = """You've seemed distracted lately. What's troubling you?""",
-	LIRA_QUEST2_OPTION_PEOPLE_RATHER_CRUEL_SOMETIMES = """People could be rather cruel sometimes""",
-	LIRA_QUEST2_OPTION_DIDN_DESERVE_SUCH_TREATMENT = """You didn’t deserve such treatment""",
-	LIRA_QUEST2_OPTION_THATS_RIGHT_WAY_LOOK_PRESENT_MATTERS = """That's the right way to look at it. The present matters more than the past""",
-	LIRA_QUEST2_OPTION_LIFE_UNPREDICTABLE_MIGHT_FIND_ANSWERS_LEAST = """Life is unpredictable. You might find your answers when you least expect it""",
-	LIRA_QUEST2_OPTION_TRY_LOOK_CHANCE = """I could try to look into it, if I get the chance""",
-	LIRA_QUEST2_OPTION_THOUGHT_TEMPLE_WELCOME_SOMEONE_CONTACT_GODDESS = """I thought the temple would welcome someone who was in contact with you goddess""",
-	LIRA_QUEST2_OPTION_GOING_ASK_LIRA_DOING_BASICALLY_RAISED = """Are you not going to ask how’s the Lira doing? You basically raised her, didn’t you?""",
-	LIRA_QUEST2_OPTION_STRAIGHT_BUSINESS_WANT_KNOW_LIRA_ORIGIN = """Straight to the business then. I want to know about Lira’s origin""",
-	LIRA_QUEST2_OPTION_TELL_LEARNED = """Tell her what you learned""",
-	LIRA_QUEST2_OPTION_COME_EXPLAIN_WAY = """Just come with me. I'll explain on the way""",
-	LIRA_QUEST2_OPTION_CAME_CHECK_NEXT_CLUE = """That’s why I came to you. Time to check the next clue""",
-	LIRA_QUEST2_OPTION_LET_START_LOCAL_SLAVE_TRADER = """I am. Let’s start with the local slave trader""",
-	LIRA_QUEST2_OPTION_TODAY_INQUIRE_DEAL_MADE_PAST = """Not today. I'm here to inquire about a deal you made in the past""",
-	LIRA_QUEST2_OPTION_REMEMBER_TRIBAL_ELVEN_CHILD_SOLD_OTHER = """Do you remember the tribal elven child you sold to other elves fifteen years ago?""",
-	LIRA_QUEST2_OPTION_DIDN_TRY_CURE_KID_MEDICINE_AREN = """Why didn’t you try to cure the kid? Medicine aren’t that expensive""",
-	LIRA_QUEST2_OPTION_LIVED_LONG_ENOUGH_COME_ASK_QUESTIONS = """Well, she lived long enough to come and ask questions""",
-	LIRA_QUEST2_OPTION_DID_KID = """So where did you get that kid from?""",
-	LIRA_QUEST2_OPTION_AREN_WRONG_FAIR_WORSE_WITHOUT = """You aren’t wrong, it’s not fair but we could be worse without it.""",
-	LIRA_QUEST2_OPTION_THATS_WORLD_WORKS_STRONG_RISE_WEAK = """That's just how the world works. The strong rise, the weak are used""",
-	LIRA_QUEST2_OPTION_COURSE_WANT_BOTTOM_STORY = """Of course. I want to get to the bottom of this story.""",
-	LIRA_QUEST2_OPTION_DOESNT_MATTER_EASY_WANT_SOMETHING_DONE = """It doesn't matter if it's easy or not. If I want something, I get it done.""",
-	LIRA_QUEST2_OPTION_MANY_WAYS_LOOSEN_TONGUES_NEED_WAIT = """There are many ways to loosen their tongues when we need to. But that can wait.""",
-	LIRA_QUEST2_OPTION_CHECK_NOTICE_BOARD_FIRST = """Let's just check the notice board first.""",
-	LIRA_QUEST2_OPTION_THINK_IDEA_USE_CARAVAN_LURE = """I think I have an idea. We'll use the caravan to lure them in.""",
-	LIRA_QUEST2_OPTION_WOULDNT_NEED_LOOK_BANDITS_CAME_LOOKING = """We wouldn't need to look for the bandits if they came looking for us first.""",
-	LIRA_QUEST2_OPTION_WANT_RISK_LIFE_THATS_WANT_HANDLE = """I don't want to risk your life, but if that's how you want to handle it, I'll allow it""",
-	LIRA_QUEST2_OPTION_THATS_SOUND_PLAN_CARAVAN_STILL_MUCH = """That's a sound plan, but the caravan is still a much more prominent target. Besides, I'd rather risk someone else's life than yours""",
-	LIRA_QUEST2_OPTION_ASK_HIDEOUT = """Ask him about their hideout""",
-	LIRA_QUEST2_OPTION_PUT_BLADE_THROAT = """Put your blade to his throat""",
-	LIRA_QUEST2_OPTION_MANY = """How many of you are there?""",
-	LIRA_QUEST2_OPTION_FOCUSING_SLAVE_TRADE_SPECIFICALLY = """Why are you focusing on slave trade specifically?""",
-	LIRA_QUEST2_OPTION_HIDEOUT = """Where is your hideout?""",
-	LIRA_QUEST2_OPTION_ENTER = """Enter""",
-	LIRA_QUEST2_OPTION_EVERYONE_ELSE_CAVE_ALREADY_DEAD_GIVE = """Everyone else in the cave is already dead. I'll give you one chance to make it easier for you and surrender""",
-	LIRA_QUEST2_OPTION_FINISH_FIGHT = """Time to finish this (fight)""",
-	LIRA_QUEST2_OPTION_FINE_WAY = """Fine. We'll do it your way""",
-	LIRA_QUEST2_OPTION_DON_WANT_RISK_USING_CARAVAN = """I don’t want to risk it. We're using the caravan""",
-	LIRA_QUEST2_OPTION_THATS_VALID_POINT = """That's a valid point""",
-	LIRA_QUEST2_OPTION_THINK = """I'll think about it""",
-	LIRA_QUEST2_OPTION_HIRE_EXTRA_GUARDS_GOLD = """Hire extra guards (-500 gold)""",
-	LIRA_QUEST2_OPTION_IGNORE_ADVICE = """Ignore her advice""",
-	LIRA_QUEST2_OPTION_HEAD = """We're not here for your head""",
-	LIRA_QUEST2_OPTION_ASK_QUESTIONS = """We're here to ask questions""",
-	LIRA_QUEST2_OPTION_MAYBE_REASONS_EVERYTHING_SIMPLE_SOUNDS = """Maybe she had her reasons. Not everything is as simple as it sounds""",
-	LIRA_QUEST2_OPTION_SOUNDS_LIKE_FAMILY_WASNT_WORTH_LOOKING = """Sounds like your family wasn't worth looking for in the first place""",
-	LIRA_QUEST2_OPTION_YEAH_SELL_TRIBAL_ELVEN_CHILDREN = """Yeah, do you sell tribal elven children?""",
-	LIRA_QUEST2_OPTION_LOOKING_UNCOVER_SHADY_DEALS_PAST = """I'm looking to uncover some of your shady deals from the past.""",
-	LIRA_QUEST2_OPTION_TELL_HAPPENED_BACK = """Why don't you tell us what happened back then?""",
-	LIRA_QUEST2_OPTION_YOUD_BETTER_EXPLAIN_YOURSELF_OLD_MAN = """You'd better explain yourself, old man.""",
-	LIRA_QUEST2_OPTION_RIGHT_AFRAID_HIGH_KARMA_CAUGHT = """You are right to be afraid. It's high time karma caught up to you.""",
-	LIRA_QUEST2_OPTION_EVEN_WORTH_DIRTYING_HANDS_LIVE_WHATEVER = """You are not even worth dirtying my hands. Just live whatever small time you have left, knowing what you did.""",
-	LIRA_QUEST2_OPTION_DID_THATS_MATTERS = """But you did. And that's what matters""",
-	LIRA_QUEST2_OPTION_SEEMS_GODS_MERCIFUL = """It seems the gods were merciful for once""",
-	LIRA_QUEST2_OPTION_STAY_ALREADY_BELONG = """Stay as you are. You already belong here""",
-	LIRA_QUEST2_OPTION_SET_FREE = """What if I set you free?""",
-	LIRA_QUEST2_OPTION_SCREW_FATE_MEANS_PUTTING_GENUINE_SMILE = """Screw fate. If it means putting a genuine smile on your face, I'll free you from slavery. You can be my servant, not my property""",
-	LIRA_QUEST2_OPTION_GLAD_ABLE_GIVE_YOUVE_BEEN_LOOKING = """I'm glad I was able to give you what you've been looking for. Don't worry, I'll keep treating you well""",
+	LIRA_QUEST2_OPTION_BEEN_DOING_LATELY_SEEMS_SOMETHING_MIND = "How have you been doing lately? It seems that something is on your mind.",
+	LIRA_QUEST2_OPTION_YOUVE_SEEMED_DISTRACTED_LATELY_WHATS_TROUBLING = "You've seemed distracted lately. What's troubling you?",
+	LIRA_QUEST2_OPTION_PEOPLE_RATHER_CRUEL_SOMETIMES = "People could be rather cruel sometimes",
+	LIRA_QUEST2_OPTION_DIDN_DESERVE_SUCH_TREATMENT = "You didn’t deserve such treatment",
+	LIRA_QUEST2_OPTION_THATS_RIGHT_WAY_LOOK_PRESENT_MATTERS = "That's the right way to look at it. The present matters more than the past",
+	LIRA_QUEST2_OPTION_LIFE_UNPREDICTABLE_MIGHT_FIND_ANSWERS_LEAST = "Life is unpredictable. You might find your answers when you least expect it",
+	LIRA_QUEST2_OPTION_TRY_LOOK_CHANCE = "I could try to look into it, if I get the chance",
+	LIRA_QUEST2_OPTION_THOUGHT_TEMPLE_WELCOME_SOMEONE_CONTACT_GODDESS = "I thought the temple would welcome someone who was in contact with you goddess",
+	LIRA_QUEST2_OPTION_GOING_ASK_LIRA_DOING_BASICALLY_RAISED = "Are you not going to ask how’s the Lira doing? You basically raised her, didn’t you?",
+	LIRA_QUEST2_OPTION_STRAIGHT_BUSINESS_WANT_KNOW_LIRA_ORIGIN = "Straight to the business then. I want to know about Lira’s origin",
+	LIRA_QUEST2_OPTION_TELL_LEARNED = "Tell her what you learned",
+	LIRA_QUEST2_OPTION_COME_EXPLAIN_WAY = "Just come with me. I'll explain on the way",
+	LIRA_QUEST2_OPTION_CAME_CHECK_NEXT_CLUE = "That’s why I came to you. Time to check the next clue",
+	LIRA_QUEST2_OPTION_LET_START_LOCAL_SLAVE_TRADER = "I am. Let’s start with the local slave trader",
+	LIRA_QUEST2_OPTION_TODAY_INQUIRE_DEAL_MADE_PAST = "Not today. I'm here to inquire about a deal you made in the past",
+	LIRA_QUEST2_OPTION_REMEMBER_TRIBAL_ELVEN_CHILD_SOLD_OTHER = "Do you remember the tribal elven child you sold to other elves fifteen years ago?",
+	LIRA_QUEST2_OPTION_DIDN_TRY_CURE_KID_MEDICINE_AREN = "Why didn’t you try to cure the kid? Medicine aren’t that expensive",
+	LIRA_QUEST2_OPTION_LIVED_LONG_ENOUGH_COME_ASK_QUESTIONS = "Well, she lived long enough to come and ask questions",
+	LIRA_QUEST2_OPTION_DID_KID = "So where did you get that kid from?",
+	LIRA_QUEST2_OPTION_AREN_WRONG_FAIR_WORSE_WITHOUT = "You aren’t wrong, it’s not fair but we could be worse without it.",
+	LIRA_QUEST2_OPTION_THATS_WORLD_WORKS_STRONG_RISE_WEAK = "That's just how the world works. The strong rise, the weak are used",
+	LIRA_QUEST2_OPTION_COURSE_WANT_BOTTOM_STORY = "Of course. I want to get to the bottom of this story.",
+	LIRA_QUEST2_OPTION_DOESNT_MATTER_EASY_WANT_SOMETHING_DONE = "It doesn't matter if it's easy or not. If I want something, I get it done.",
+	LIRA_QUEST2_OPTION_MANY_WAYS_LOOSEN_TONGUES_NEED_WAIT = "There are many ways to loosen their tongues when we need to. But that can wait.",
+	LIRA_QUEST2_OPTION_CHECK_NOTICE_BOARD_FIRST = "Let's just check the notice board first.",
+	LIRA_QUEST2_OPTION_THINK_IDEA_USE_CARAVAN_LURE = "I think I have an idea. We'll use the caravan to lure them in.",
+	LIRA_QUEST2_OPTION_WOULDNT_NEED_LOOK_BANDITS_CAME_LOOKING = "We wouldn't need to look for the bandits if they came looking for us first.",
+	LIRA_QUEST2_OPTION_WANT_RISK_LIFE_THATS_WANT_HANDLE = "I don't want to risk your life, but if that's how you want to handle it, I'll allow it",
+	LIRA_QUEST2_OPTION_THATS_SOUND_PLAN_CARAVAN_STILL_MUCH = "That's a sound plan, but the caravan is still a much more prominent target. Besides, I'd rather risk someone else's life than yours",
+	LIRA_QUEST2_OPTION_ASK_HIDEOUT = "Ask him about their hideout",
+	LIRA_QUEST2_OPTION_PUT_BLADE_THROAT = "Put your blade to his throat",
+	LIRA_QUEST2_OPTION_MANY = "How many of you are there?",
+	LIRA_QUEST2_OPTION_FOCUSING_SLAVE_TRADE_SPECIFICALLY = "Why are you focusing on slave trade specifically?",
+	LIRA_QUEST2_OPTION_HIDEOUT = "Where is your hideout?",
+	LIRA_QUEST2_OPTION_ENTER = "Enter",
+	LIRA_QUEST2_OPTION_EVERYONE_ELSE_CAVE_ALREADY_DEAD_GIVE = "Everyone else in the cave is already dead. I'll give you one chance to make it easier for you and surrender",
+	LIRA_QUEST2_OPTION_FINISH_FIGHT = "Time to finish this (fight)",
+	LIRA_QUEST2_OPTION_FINE_WAY = "Fine. We'll do it your way",
+	LIRA_QUEST2_OPTION_DON_WANT_RISK_USING_CARAVAN = "I don’t want to risk it. We're using the caravan",
+	LIRA_QUEST2_OPTION_THATS_VALID_POINT = "That's a valid point",
+	LIRA_QUEST2_OPTION_THINK = "I'll think about it",
+	LIRA_QUEST2_OPTION_HIRE_EXTRA_GUARDS_GOLD = "Hire extra guards (-500 gold)",
+	LIRA_QUEST2_OPTION_IGNORE_ADVICE = "Ignore her advice",
+	LIRA_QUEST2_OPTION_HEAD = "We're not here for your head",
+	LIRA_QUEST2_OPTION_ASK_QUESTIONS = "We're here to ask questions",
+	LIRA_QUEST2_OPTION_MAYBE_REASONS_EVERYTHING_SIMPLE_SOUNDS = "Maybe she had her reasons. Not everything is as simple as it sounds",
+	LIRA_QUEST2_OPTION_SOUNDS_LIKE_FAMILY_WASNT_WORTH_LOOKING = "Sounds like your family wasn't worth looking for in the first place",
+	LIRA_QUEST2_OPTION_YEAH_SELL_TRIBAL_ELVEN_CHILDREN = "Yeah, do you sell tribal elven children?",
+	LIRA_QUEST2_OPTION_LOOKING_UNCOVER_SHADY_DEALS_PAST = "I'm looking to uncover some of your shady deals from the past.",
+	LIRA_QUEST2_OPTION_TELL_HAPPENED_BACK = "Why don't you tell us what happened back then?",
+	LIRA_QUEST2_OPTION_YOUD_BETTER_EXPLAIN_YOURSELF_OLD_MAN = "You'd better explain yourself, old man.",
+	LIRA_QUEST2_OPTION_RIGHT_AFRAID_HIGH_KARMA_CAUGHT = "You are right to be afraid. It's high time karma caught up to you.",
+	LIRA_QUEST2_OPTION_EVEN_WORTH_DIRTYING_HANDS_LIVE_WHATEVER = "You are not even worth dirtying my hands. Just live whatever small time you have left, knowing what you did.",
+	LIRA_QUEST2_OPTION_DID_THATS_MATTERS = "But you did. And that's what matters",
+	LIRA_QUEST2_OPTION_SEEMS_GODS_MERCIFUL = "It seems the gods were merciful for once",
+	LIRA_QUEST2_OPTION_STAY_ALREADY_BELONG = "Stay as you are. You already belong here",
+	LIRA_QUEST2_OPTION_SET_FREE = "What if I set you free?",
+	LIRA_QUEST2_OPTION_SCREW_FATE_MEANS_PUTTING_GENUINE_SMILE = "Screw fate. If it means putting a genuine smile on your face, I'll free you from slavery. You can be my servant, not my property",
+	LIRA_QUEST2_OPTION_GLAD_ABLE_GIVE_YOUVE_BEEN_LOOKING = "I'm glad I was able to give you what you've been looking for. Don't worry, I'll keep treating you well"
 }
