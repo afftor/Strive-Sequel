@@ -7531,6 +7531,22 @@ The miniature girl reacted to your appearance unexpectedly nonchalantly.
 {color=yellow|— Zephyra.}
 
 Zephyra briefly bowed down to you after she introduced herself.""",
+
+	DIVINE_SYMBOL_23_FOX = """You enter a sumptuous though dimly lit room. A small figure on the other side turns at you.
+
+For a moment Zephyra simply stares. Then her eyes widen and she suddenly darts forward in a blur, circling around you with restless energy. Before you can say anything she leans in close, sniffing at your clothes, your legs and your tail, hardly containing her excitement.
+
+{color=yellow|— Wait, wait... no way. You're a foxkin? Ahaha, that's unexpected.}
+
+She makes another quick round around you, tail twitching with poorly restrained delight, then abruptly stops herself and straightens up as though remembering she was supposed to be acting with more dignity.
+
+{color=yellow|— Well, it took you a while and now you don't even knock. I'd call it rude, but who am I to talk now.}
+
+The miniature girl reacted to your appearance with poorly disguised excitement, though she was clearly making an effort to compose herself again.
+
+{color=yellow|— Zephyra.}
+
+Zephyra briefly bowed down to you after she introduced herself.""",
 	DIVINE_SYMBOL_24 = """{color=yellow|— Before I forget... Here, an acquaintance gift.}
 
 She passes you a roll of paper she took from the pile on a small table. As you unfold it you see a rough but somewhat talented sketch of a [man]'s portrait. On a second look you notice how this person vaguely resembles you. Seeing the look on your face, Zephyra shines with excitement.
@@ -12126,6 +12142,12 @@ Cali was shy now realizing what she had just done and nodded now, still blushing
 
 {color=yellow| — Hi! I'm Lilia. What's your name? Are you an adventurer? You are so big! We don't get people like you here often. What brought you here?}""",
 	LILIA_STARTING_1_OPTION_1 = "Nice to meet you, I'm [name].",
+	LILIA_STARTING_1_FAIRY = """As you move through the village with occasional elves and fae observing you, you notice that most residents stay very cautious and turn away once your gaze falls upon them. That is, except for one very curious fairy with long red hair. The moment she notices your wings and unmistakable fairy features, her eyes light up with open interest. Yet rather than taking you for one of the locals, she only seems more intrigued by the fact that someone like you is clearly not from here. After she realizes that she has caught your attention, she dashes at you, completely ignoring any formalities as she releases a rapid torrent of questions.
+
+{color=yellow| — Hi! I'm Lilia. What's your name? Are you an adventurer? You're a fairy too, but not from around here, are you? We don't get visitors like you often. What brought you here?}""",
+	LILIA_STARTING_1_SMALL = """As you move through the village with occasional elves and fae observing you, you notice that most residents stay very cautious and turn away once your gaze falls upon them. That is, except for one very curious fairy with long red hair. After she realizes that she has caught your attention, she darts toward you, then pauses in mid-flight to stare for a second with bright, puzzled curiosity. You are much closer to her own size than the outsiders she seems to have imagined, and that only makes you seem even more unusual to her. A moment later she perks right back up and barrels ahead, completely ignoring any formalities as she releases a rapid torrent of questions.
+
+{color=yellow| — Hi! I'm Lilia. What's your name? Are you an adventurer? Oh, you're small... I mean, small for an outsider! I thought you'd all be huge. We still don't get people like you here often. What brought you here?}""",
 	LILIA_STARTING_1_OPTION_2 = "Woah, not so fast.",
 	LILIA_STARTING_1_OPTION_3 = "You really know no manners, do you?",
 	LILIA_STARTING_2_1 = """{color=yellow|— Ah, sorry, it's just so exciting and rare to meet someone like you! You look so big and strong!}
@@ -25246,5 +25268,5 @@ Lira approaches you with a warm smile on her face and a clear determination in h
 	LIRA_QUEST2_OPTION_STAY_ALREADY_BELONG = "Stay as you are. You already belong here",
 	LIRA_QUEST2_OPTION_SET_FREE = "What if I set you free?",
 	LIRA_QUEST2_OPTION_SCREW_FATE_MEANS_PUTTING_GENUINE_SMILE = "Screw fate. If it means putting a genuine smile on your face, I'll free you from slavery. You can be my servant, not my property",
-	LIRA_QUEST2_OPTION_GLAD_ABLE_GIVE_YOUVE_BEEN_LOOKING = "I'm glad I was able to give you what you've been looking for. Don't worry, I'll keep treating you well"
+	LIRA_QUEST2_OPTION_GLAD_ABLE_GIVE_YOUVE_BEEN_LOOKING = "I'm glad I was able to give you what you've been looking for. Don't worry, I'll keep treating you well",
 }

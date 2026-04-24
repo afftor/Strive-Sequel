@@ -21,7 +21,11 @@ var data = {
 	lilia_startring_1 = {
 		image = null, music = "lilia_theme",tags = ['dialogue_scene'],
 		reqs = [], character = "lilia", 
-		text = [{text = "LILIA_STARTING_1", reqs = []}],
+		text = [
+			{text = "LILIA_STARTING_1_FAIRY", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "Fairy"}]}]},
+			{text = "LILIA_STARTING_1_SMALL", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'neq', value = "Fairy"}, {code = 'stat', stat = 'height', operant = 'in', value = ['tiny','petite']}]}]},
+			{text = "LILIA_STARTING_1", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'neq', value = "Fairy"}, {code = 'stat', stat = 'height', operant = 'not_in', value = ['tiny','petite']}]}]}
+		],
 		common_effects = [{code = 'progress_quest', value = 'lilia_meet_quest', stage = 'stage2'},{code = 'update_location'}],
 		options = [ {
 			code = 'lilia_starting_2', text = "LILIA_STARTING_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', master_translate = true,

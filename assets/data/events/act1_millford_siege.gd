@@ -398,7 +398,10 @@ var data = {
 	
 	divine_symbol_18 = {
 		image = null, music = 'zephyra_theme', tags = ['dialogue_scene'], character = "zephyra",
-		text = [{text = "DIVINE_SYMBOL_23", reqs = []}],
+		text = [
+			{text = "DIVINE_SYMBOL_23_FOX", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "HalfkinFox"}, {code = 'stat', stat = 'race', operant = 'eq', value = "BeastkinFox", orflag = true}]}]},
+			{text = "DIVINE_SYMBOL_23", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'neq', value = "HalfkinFox"}, {code = 'stat', stat = 'race', operant = 'neq', value = "BeastkinFox"}]}]}
+		],
 		options = [ {
 			code = 'divine_symbol_19', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}],
