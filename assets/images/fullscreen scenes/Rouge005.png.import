@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/redhead_1.png-b4d67332e510d4d31661704db748db5d.stex"
+path="res://.import/Rouge005.png-114ab1da7c3bd33b084de2fd96cc6167.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/fullscreen scenes/redhead_1.png"
-dest_files=[ "res://.import/redhead_1.png-b4d67332e510d4d31661704db748db5d.stex" ]
+source_file="res://assets/images/fullscreen scenes/Rouge005.png"
+dest_files=[ "res://.import/Rouge005.png-114ab1da7c3bd33b084de2fd96cc6167.stex" ]
 
 [params]
 

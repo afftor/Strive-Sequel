@@ -1038,8 +1038,8 @@ var professions = {
 		code = 'rouge',
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsclasses/rogue.png"), #fix
-		tags = [],
+		icon = load("res://assets/images/iconsclasses/rouge.png"), 
+		tags = ['permanent'],
 		categories = ['combat'],
 		showupreqs = [{code = 'disabled', check = true}],
 		reqs = [{code = 'cant_spawn_naturally'}],

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/redhead_3.png-867dbc5542aa60fd48e782cb680c8ece.stex"
+path="res://.import/lira_shopping.png-7dd90d864c7f646c0cf91915da2e6eb2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/fullscreen scenes/redhead_3.png"
-dest_files=[ "res://.import/redhead_3.png-867dbc5542aa60fd48e782cb680c8ece.stex" ]
+source_file="res://assets/images/scenes/lira_shopping.png"
+dest_files=[ "res://.import/lira_shopping.png-7dd90d864c7f646c0cf91915da2e6eb2.stex" ]
 
 [params]
 
