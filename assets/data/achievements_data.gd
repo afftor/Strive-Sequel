@@ -637,6 +637,14 @@ var bonuses = {
 		preparation = "prep_talent_points",
 		cost = 15
 	},
+	master_factor_points = {
+		name = "ACHIBONUS_MASTER_FACTORS",
+		description = "ACHIBONUS_MASTER_FACTORS_DESC",
+		hint = "",
+		icon = "res://assets/images/gui/gui icons/growth_factor.png",
+		preparation = "prep_master_factor_points",
+		cost = 10
+	},
 	craftsman = {
 		name = "ACHIBONUS_CRAFTSMAN",
 		description = "ACHIBONUS_CRAFTSMAN_DESC",
@@ -662,7 +670,7 @@ var bonuses = {
 		cost = 5
 	},
 }
-var always_ulocked_bonuses = ["exp_scrolls", "talent_points", "craftsman", "rooms", "literate"]
+var always_ulocked_bonuses = ["exp_scrolls", "talent_points", "master_factor_points", "craftsman", "rooms", "literate"]
 
 func prepare_data():
 	#infinite_levels group

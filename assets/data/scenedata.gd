@@ -2836,6 +2836,33 @@ var quests = {
 			capital = {code = 'capital', name = 'LIRA_LOST_QUEST_NAME', descript = 'LIRA_LOST_QUEST_CAPITAL'},
 		},
 	},
+	lira_quest3_quest = {
+		code = 'lira_quest3_quest',
+		summary = "LIRA_QUEST3_QUEST_SUMMARY",
+		stages = {
+			talk = {code = 'talk', name = 'LIRA_QUEST3_QUEST_NAME', descript = 'LIRA_QUEST3_QUEST_STAGE_TALK'},
+			grove = {code = 'grove', name = 'LIRA_QUEST3_QUEST_NAME', descript = 'LIRA_QUEST3_QUEST_STAGE_GROVE'},
+		},
+	},
+	lira_quest1_quest = {
+		code = 'lira_quest1_quest',
+		summary = "LIRA_QUEST1_QUEST_SUMMARY",
+		stages = {
+			fair = {code = 'fair', name = 'LIRA_QUEST1_QUEST_NAME', descript = 'LIRA_QUEST1_QUEST_STAGE_FAIR'},
+			return_home = {code = 'return_home', name = 'LIRA_QUEST1_QUEST_NAME', descript = 'LIRA_QUEST1_QUEST_STAGE_RETURN'},
+		},
+	},
+	lira_quest2_quest = {
+		code = 'lira_quest2_quest',
+		summary = "LIRA_QUEST2_QUEST_SUMMARY",
+		stages = {
+			temple = {code = 'temple', name = 'LIRA_QUEST2_QUEST_NAME', descript = 'LIRA_QUEST2_QUEST_STAGE_TEMPLE'},
+			trader = {code = 'trader', name = 'LIRA_QUEST2_QUEST_NAME', descript = 'LIRA_QUEST2_QUEST_STAGE_TRADER'},
+			bandits = {code = 'bandits', name = 'LIRA_QUEST2_QUEST_NAME', descript = 'LIRA_QUEST2_QUEST_STAGE_BANDITS'},
+			merchant = {code = 'merchant', name = 'LIRA_QUEST2_QUEST_NAME', descript = 'LIRA_QUEST2_QUEST_STAGE_MERCHANT'},
+			return_home = {code = 'return_home', name = 'LIRA_QUEST2_QUEST_NAME', descript = 'LIRA_QUEST2_QUEST_STAGE_RETURN'},
+		},
+	},
 	kuro_errand_quest = {
 		code = 'kuro_errand_quest',
 		summary = "KURO_ERRAND_QUEST_SUMMARY",

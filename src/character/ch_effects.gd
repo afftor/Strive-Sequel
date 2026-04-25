@@ -409,6 +409,8 @@ func apply_status(data):
 			remove_all_temp_effects_tag('shock')
 			if parent.get_ref().has_status('boss_resists'):
 				data.duration = 1
+	if eff_id in ['stun', 'ensnared', 'sleep']:
+		remove_all_temp_effects_tag('flight')
 #		_:
 #			var effect = Effectdata.effect_table[Effectdata.get_effect_for_status(eff_id)]
 	

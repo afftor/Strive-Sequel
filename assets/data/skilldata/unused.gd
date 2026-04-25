@@ -439,7 +439,7 @@ var skills = {
 	fly_evasion = {
 		code = 'fly_evasion',
 		descript = '',
-		icon = load('res://assets/images/iconsskills/Fear.png'),
+		icon = load('res://assets/images/iconsraces/angel.png'),
 		learn_reqs = [{code = 'stat', stat = 'wings', operant = 'neq', value = ''}],
 		learn_cost = 500,
 		type = 'combat', 
@@ -447,7 +447,7 @@ var skills = {
 		tags = ['buff','support'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_t_fly'})], 
+		effects = [Effectdata.rebuild_template({effect = 'e_t_fly', duration = 1})], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 4, #i think this is right
@@ -1151,26 +1151,26 @@ var effects = {
 #		],
 #		buffs = []
 #	},
-#	e_t_fly = {
-#		type = 'temp_s',
-#		target = 'target',
-#		name = 'fly',
-#		tick_event = variables.TR_TURN_GET,
-#		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-#		duration = 3,
-#		stack = 1,#or not
-#		tags = ['buff'],
-#		sub_effects = [],
-#		atomic = [{type = 'stat_add', stat = 'evasion', value = 65}],
-#		buffs = [
-#			{
-#				icon = "res://assets/images/iconsskills/Fear.png",
-#				description = "TRAITEFFECTFLY",
-#				limit = 1,
-#				t_name = 'fly'
-#			}
-#		],
-#	},
+	e_t_fly = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'fly',
+		tick_event = variables.TR_TURN_GET,
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'arg',
+		stack = 1,#or not
+		tags = ['buff'],
+		sub_effects = [],
+		atomic = [{type = 'stat_add', stat = 'evasion', value = 90}],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsraces/angel.png",
+				description = "TRAITEFFECTFLY",
+				limit = 1,
+				t_name = 'fly'
+			}
+		],
+	},
 #	e_s_eshatter = {
 #		type = 'temp_s',
 #		target = 'target',

@@ -871,7 +871,7 @@ func roll_growth(diff):
 	set_default_value('growth_factor', tmp)
 
 
-func generate_random_character_from_data(desired_class = null, adjust_difficulty = 0):
+func generate_random_character_from_data(desired_class = null, adjust_difficulty = 0, guaranteed_classes = []):
 	roll_growth(adjust_difficulty)
 	
 	var slaveclass = desired_class
@@ -883,6 +883,9 @@ func generate_random_character_from_data(desired_class = null, adjust_difficulty
 	
 	var difficulty = int(round(adjust_difficulty))
 	var classcounter = round(rand_range(variables.slave_classes_per_difficulty[difficulty][0], variables.slave_classes_per_difficulty[difficulty][1]))
+	var guaranteed_class = get_guaranteed_class(guaranteed_classes)
+	if guaranteed_class != null and classcounter < 1:
+		classcounter = 1
 	
 	#Add extra stats for harder characters
 	var bonus_counter = 0
@@ -904,17 +907,36 @@ func generate_random_character_from_data(desired_class = null, adjust_difficulty
 	
 	#assign classes
 	while classcounter > 0:
-		if randf() > 0.65:
+		if guaranteed_class == null and randf() > 0.65:
 			classcounter -= 1
 			continue
-		var classarray = []
-		if randf() >= 0.85:
-			classarray = get_class_list('any', parent.get_ref())
+		if guaranteed_class != null:
+			unlock_class(guaranteed_class, false)
+			guaranteed_class = null
 		else:
-			classarray = get_class_list(slaveclass, parent.get_ref())
-		if classarray != null && classarray.size() > 0:
-			unlock_class(input_handler.random_from_array(classarray).code, true)
+			var classarray = []
+			if randf() >= 0.85:
+				classarray = get_class_list('any', parent.get_ref())
+			else:
+				classarray = get_class_list(slaveclass, parent.get_ref())
+			if classarray != null && classarray.size() > 0:
+				unlock_class(input_handler.random_from_array(classarray).code, true)
 		classcounter -= 1
+
+
+func get_guaranteed_class(class_array):
+	if class_array.empty():
+		return null
+	var valid_classes = []
+	for prof in class_array:
+		if !classesdata.professions.has(prof):
+			continue
+		if professions.has(prof):
+			continue
+		valid_classes.push_back(prof)
+	if valid_classes.empty():
+		return null
+	return input_handler.random_from_array(valid_classes)
 
 
 func get_racial_features(race):

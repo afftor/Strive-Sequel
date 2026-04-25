@@ -30,7 +30,7 @@ var skills = {
 	dip_poison = {
 		code = 'dip_poison',
 		descript = '',
-		icon = "res://assets/images/iconsskills/skill_dip_poison.png",
+		icon = "res://assets/images/iconsclasses/assassin.png",
 		type = 'combat', 
 		ability_type = 'skill',
 		tags = ['damage','ads', 'damage_spot', 'stealth_casting'],
@@ -98,7 +98,7 @@ var skills = {
 		variations = [
 			{
 				reqs = [{code = 'has_status', status = 'hide', check = true}],
-				set = {value = 2.75},
+				set = {value = 2.25},
 				append = {tags = 'ultimate'}
 #				add = {descript = '_1'}
 			}

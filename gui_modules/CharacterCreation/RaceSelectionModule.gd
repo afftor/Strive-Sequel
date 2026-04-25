@@ -1,11 +1,13 @@
 extends Panel
 
 var selected_race = ""
+var fallback_icon = preload("res://assets/images/gui/panels/noimage.png")
 
 func _ready():
 	$ConfirmButton.connect("pressed", self, "select_character_race")
 	$CancelButton.connect("pressed", self, "cancel_race_selection")
 	$RandomButton.connect("pressed", self, "roll_random_race")
+	$RaceSelection/ScrollContainer2/VBoxContainer/Button.hide()
 
 
 func select_race():
@@ -59,7 +61,7 @@ func show_race_info(temprace):
 	var text = race.descript
 	
 #	text += "\n\n{color=yellow|" + tr("RACE_BONUSES") + ": " + globals.build_desc_for_bonusstats(race.race_bonus)
-	text += "\n\n" + tr("RACE_BONUSES") + ": " + globals.build_desc_for_bonusstats(race.race_bonus)
+	text += "\n\n[center]" + tr("RACE_BONUSES") + "\n" + globals.build_desc_for_bonusstats(race.race_bonus) + "[/center]"
 #	for i in race.race_bonus:
 #		if (i as String).begins_with('resist'):
 #			text += i.replace("resist_","").capitalize() + " Resist: " + str(race.race_bonus[i]) + "%, "
@@ -70,7 +72,8 @@ func show_race_info(temprace):
 #			text += statdata.statdata[i].name + ": " + str(race.race_bonus[i]) + ', '
 #	text = text.substr(0, text.length() - 2) + ".}"
 	
-	$RaceSelection/RichTextLabel.bbcode_text = globals.TextEncoder(text)
+	$RaceSelection/ScrollContainer2/VBoxContainer/RichTextLabel.bbcode_text = globals.TextEncoder(text)
+	_update_race_exclusive_entries(temprace)
 	text = race.code.to_lower().replace('halfkin','beastkin')
 	var tmp = person.get_stat('sex')
 	if tmp != null:
@@ -85,6 +88,89 @@ func show_race_info(temprace):
 	
 	$RaceSelection/TextureRect.texture = image
 	update_buttons()
+
+
+func _update_race_exclusive_entries(race_id):
+	var person = get_parent().person
+	var container = $RaceSelection/ScrollContainer2/VBoxContainer
+	input_handler.ClearContainer(container, ['RichTextLabel', 'Button'])
+	for skill_id in _get_race_exclusive_skills(race_id):
+		var skill = Skilldata.get_template(skill_id, person)
+		var newbutton = input_handler.DuplicateContainerTemplate(container)
+		newbutton.get_node('Label').text = tr("RACE_EXCLUSIVE_SKILL_LABEL") % skill.name
+		newbutton.get_node('Icon').texture = _get_entry_icon(skill.icon)
+		if skill.has('container'):
+			globals.connecttexttooltip(newbutton, tr(skill.descript))
+		else:
+			globals.connectskilltooltip(newbutton, skill.code, person)
+	for class_id in _get_race_exclusive_classes(race_id):
+		var classdata = classesdata.professions[class_id]
+		var newbutton = input_handler.DuplicateContainerTemplate(container)
+		newbutton.get_node('Label').text = tr("RACE_EXCLUSIVE_CLASS_LABEL") % ResourceScripts.descriptions.get_class_name(classdata, person)
+		newbutton.get_node('Icon').texture = _get_entry_icon(classdata.icon)
+		globals.connectclasstooltip(newbutton, person, class_id)
+
+
+func _get_race_exclusive_skills(race_id):
+	var race = races.racelist[race_id]
+	var skill_list = []
+	for group in ['skills', 'combat_skills', 'explore_skills']:
+		if !race.has(group):
+			continue
+		for skill_id in race[group]:
+			if !skill_list.has(skill_id):
+				skill_list.append(skill_id)
+	return skill_list
+
+
+func _get_race_exclusive_classes(race_id):
+	var class_list = []
+	var race_is_beast = _is_race_beast(race_id)
+	for class_id in classesdata.professions:
+		var classdata = classesdata.professions[class_id]
+		if _is_disabled_class(classdata):
+			continue
+		if class_id == 'pet':
+			continue
+		if _has_matching_race_requirement(classdata.showupreqs, race_id, race_is_beast) or _has_matching_race_requirement(classdata.reqs, race_id, race_is_beast):
+			class_list.append(class_id)
+	class_list.sort()
+	return class_list
+
+
+func _has_matching_race_requirement(reqs, race_id, race_is_beast):
+	for req in reqs:
+		match req.code:
+			'race':
+				if req.check and req.race == race_id:
+					return true
+			'one_of_races':
+				if req.value.has(race_id):
+					return true
+			'race_is_beast':
+				if req.check == race_is_beast:
+					return true
+	return false
+
+
+func _is_disabled_class(classdata):
+	if classdata.tags.has('obsolete'):
+		return true
+	for req_group in ['showupreqs', 'reqs']:
+		for req in classdata[req_group]:
+			if req.code == 'disabled' and req.check:
+				return true
+	return false
+
+
+func _is_race_beast(race_id):
+	return races.racelist[race_id].tags.has('beast')
+
+
+func _get_entry_icon(icon):
+	if icon != null:
+		return icon
+	return fallback_icon
 
 func update_buttons():
 	for button in $RaceSelection/ScrollContainer/VBoxContainer.get_children():

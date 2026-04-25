@@ -59,6 +59,11 @@ func createfromskill():
 		if value[v].template.is_process:
 			 pval_i = v
 
+func can_target_counterattack_in_melee():
+	if combatnode == null or target == null or caster == null:
+		return false
+	return combatnode.get_enemy_targets_melee(target).has(caster)
+
 
 func process_check(check:Array): #2remake
 	var op1 = check[0]
@@ -78,6 +83,8 @@ func process_check(check:Array): #2remake
 					if val.source in op2: 
 						return true
 				return false
+		elif op1 == 'can_target_counterattack_in_melee':
+			op1 = can_target_counterattack_in_melee()
 		elif typeof(op1) == TYPE_STRING: 
 			op1 = get(op1)
 		return input_handler.operate(check[1], op1, op2)

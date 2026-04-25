@@ -106,7 +106,7 @@ var professions = {
 		categories = ['social'],
 		showupreqs = [],
 		reqs = [{code = 'stat', stat = 'authority_factor', operant = 'gte', value = 3}],
-		statchanges = {wits_bonus = 5, physics_bonus = 5, trainee_amount = 1},
+		statchanges = {wits_bonus = 5, physics_bonus = 5, trainee_amount = 1, manhunt = 1},
 		traits = ['trainer'],
 		skills = ['discipline'],
 		combatskills = ["command"],
@@ -151,7 +151,7 @@ var professions = {
 		categories = ['labor'],
 		showupreqs = [],
 		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 2}],
-		statchanges = {hpmax = 15, mod_hunt = 0.5, mod_fish = 0.5, mastery_marksmanship = 1},
+		statchanges = {hpmax = 15, mod_hunt = 0.5, mod_fish = 0.5, mastery_marksmanship = 1, manhunt = 1},
 		traits = ['hunter_damage'], #'hunter'],
 		skills = [],
 		combatskills = [],
@@ -356,7 +356,7 @@ var professions = {
 		categories = ['social','sexual'],
 		showupreqs = [{code = 'race_is_beast',check = false}],
 		reqs = [{code = 'stat', stat = 'tame_factor', operant = 'gte', value = 3}, {code = 'race_is_beast',check = false}],
-		statchanges = {charm_bonus = 10, mod_pros = 0.2, price = 100},
+		statchanges = {charm_bonus = 10, mod_pros = 0.2, price = 100, manhunt = 1},
 		traits = [],
 		skills = [],
 		combatskills = [],
@@ -371,7 +371,7 @@ var professions = {
 		categories = ['social', 'sexual'],
 		showupreqs = [{code = 'race_is_beast',check = true}],
 		reqs = [{code = 'stat', stat = 'tame_factor', operant = 'gte', value = 2}, {code = 'race_is_beast',check = true}],
-		statchanges = {charm_bonus = 15, sexuals_bonus = 5, mod_pros = 0.3, price = 150},
+		statchanges = {charm_bonus = 15, sexuals_bonus = 5, mod_pros = 0.3, price = 150, manhunt = 1},
 		traits = [],
 		skills = [],
 		combatskills = [],
@@ -439,6 +439,21 @@ var professions = {
 		combatskills = [],
 		conflict_classes = [],
 	},
+	shieldbearer = {
+		code = 'shieldbearer',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/shieldbearer.png"),
+		tags = [],
+		categories = ['combat'],
+		showupreqs = [],
+		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 3},{code = 'has_profession', profession = 'fighter', check = true}],
+		statchanges = {hpmax = 20, mastery_point_combat = 1, mastery_protection = 2},
+		traits = ['shieldbearer'],
+		skills = [],
+		combatskills = [],
+		conflict_classes = ['knight'],
+	},
 	knight = {
 		code = 'knight',
 		name = '',
@@ -447,12 +462,12 @@ var professions = {
 		tags = [],
 		categories = ['combat'],
 		showupreqs = [{code = "class_unlocked", class = 'knight', operant = 'eq', check = true}],
-		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 4},{code = 'has_profession', profession = 'fighter', check = true},{code = 'has_profession', profession = 'paladin', check = false}],
+		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 4},{code = 'has_profession', profession = 'fighter', check = true}],
 		statchanges = {hpmax = 15, armor = 5, damage_mod_melee = 0.15, speed = 5, chg_strength_max = 1, mastery_warfare = 2, mastery_point_combat = 2},
 		traits = ['heavy_armor'],
 		skills = [],
 		combatskills = [],
-		conflict_classes = ['paladin'],
+		conflict_classes = ['paladin','shieldbearer'],
 	},
 	dragonknight = {
 		code = 'dragonknight',
@@ -639,8 +654,8 @@ var professions = {
 		icon = load("res://assets/images/iconsclasses/soul eater.png"),
 		tags = [],
 		categories = ['social','magic'],
-		showupreqs = [],
-		reqs = [{code = 'has_profession', profession = 'dominator', check = true},{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 5}, {code = 'stat', stat = 'wits_factor', operant = 'gte', value = 3}],
+		showupreqs = [{code = 'race', check = true, race = 'Demon'}],
+		reqs = [{code = 'race', check = true, race = 'Demon'},{code = 'stat', stat = 'wits', operant = 'gte', value = 75},{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 4}],
 		statchanges = {damage_mod_mind = 0.2, mastery_point_magic = 1},
 		traits = [],
 		skills = ['consume_soul','drain_mana'],
@@ -703,7 +718,7 @@ var professions = {
 		categories = ['combat'],
 		showupreqs = [],
 		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 3}],
-		statchanges = {critchance = 3, speed = 5, evasion = 10, chg_dexterity_max = 1, mastery_point_combat = 2, mastery_stealth = 1}, 
+		statchanges = {critchance = 3, speed = 5, evasion = 10, chg_dexterity_max = 1, mastery_point_combat = 2, mastery_stealth = 1, manhunt = 1}, 
 		traits = ['medium_armor'],
 		skills = [],
 		combatskills = [],
@@ -778,12 +793,12 @@ var professions = {
 		tags = [],
 		categories = ['combat'],
 		showupreqs = [{code = "class_unlocked", class = 'paladin', operant = 'eq', check = true}],
-		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 5},{code = 'has_profession', profession = 'fighter', check = true},{code = 'has_profession', profession = 'knight', check = false}],
-		statchanges = {armor = 8, hpmax = 30, resist_dark = 10, resist_light = 10, chg_strength_max = 1, mastery_protection = 2, mastery_light = 1},
+		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 5},{code = 'has_profession', profession = 'shieldbearer', check = true}],
+		statchanges = {armor = 10, hpmax = 25, resist_dark = 10, resist_light = 10, chg_strength_max = 1, mastery_leadership = 2, mastery_warfare = 1, mastery_light = 1},
 		traits = ['heavy_armor', 'paladin'],
 		skills = [],
 		combatskills = [],
-		conflict_classes = ['knight'],
+		conflict_classes = ['knight','deathknight'],
 	},
 	shaman = {
 		code = 'shaman',
@@ -921,7 +936,7 @@ var professions = {
 		traits = ['bishop'],
 		skills = [],
 		combatskills = [],
-		conflict_classes = ['necromancer'],
+		conflict_classes = ['necromancer','deathknight'],
 	},
 	monk = {
 		code = 'monk',
@@ -1023,8 +1038,8 @@ var professions = {
 		code = 'rouge',
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsclasses/rogue.png"), #fix
-		tags = [],
+		icon = load("res://assets/images/iconsclasses/rouge.png"), 
+		tags = ['permanent'],
 		categories = ['combat'],
 		showupreqs = [{code = 'disabled', check = true}],
 		reqs = [{code = 'cant_spawn_naturally'}],
@@ -1061,7 +1076,7 @@ var professions = {
 		categories = ['combat'],
 		showupreqs = [],
 		reqs = [{code = 'has_profession', profession = 'knight', check = true},{code = 'stat', stat = 'physics', operant = 'gte', value = 80}],
-		statchanges = {hpmax = 10, resist_light = 20, speed = 5, chg_strength_max = 1, mastery_point_universal = 1, mastery_warfare = 1},
+		statchanges = {hpmax = 10, resist_light = 20, chg_strength_max = 1, mastery_point_universal = 1, mastery_warfare = 1},
 		traits = ['deathknight_trait'],
 		skills = [],
 		combatskills = [],
@@ -1174,3 +1189,32 @@ var professions = {
 		conflict_classes = [],
 	},
 }
+
+
+func _ready():
+	_apply_conflict_class_reqs()
+
+
+func _apply_conflict_class_reqs():
+	for prof_id in professions:
+		if !professions[prof_id].has('reqs'):
+			professions[prof_id].reqs = []
+	for prof_id in professions:
+		var prof = professions[prof_id]
+		var conflicts = []
+		if prof.has('conflict_classes'):
+			conflicts += prof.conflict_classes
+		for other_id in professions:
+			if other_id == prof_id:
+				continue
+			var other = professions[other_id]
+			if other.has('conflict_classes') and other.conflict_classes.has(prof_id) and !conflicts.has(other_id):
+				conflicts.append(other_id)
+		for conflict_id in conflicts:
+			var exists = false
+			for req in prof.reqs:
+				if req.code == 'has_profession' and req.profession == conflict_id and req.check == false:
+					exists = true
+					break
+			if !exists:
+				prof.reqs.append({code = 'has_profession', profession = conflict_id, check = false})

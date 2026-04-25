@@ -24,15 +24,15 @@ var racelist = {
 		icon = "res://assets/images/iconsraces/human.png",
 		basestats = {
 			food_consumption = [2,4],
-			physics_factor = [1,4],
+			physics_factor = [2,4],
 			magic_factor = [1,3],
 			tame_factor = [2,3],
 			authority_factor = [2,4],
-			sexuals_factor = [1,3],
-			charm_factor = [1,3],
-			wits_factor = [1,3],
+			sexuals_factor = [1,5],
+			charm_factor = [1,4],
+			wits_factor = [1,4],
 		},
-		race_bonus = {hpmax_mul2 = 1.15, mod_collect = 0.1, price = 100, mastery_point_universal = 1},
+		race_bonus = {hpmax_mul2 = 1.15, mod_collect = 0.1, price = 100, mastery_point_universal = 1, manhunt = 1},
 		personality = {kind = 1, bold = 1, shy = 1, serious = 1},
 		diet_love = {vege = 1, meat = 1, fish = 1, grain = 1}, #weight for 1 random prefered food type
 		diet_hate = {vege = 10, meat = 10, fish = 10, grain = 10},#%chance for each food type to be refused
@@ -93,7 +93,7 @@ var racelist = {
 		icon = "res://assets/images/iconsraces/elf1.png",
 		basestats = {
 			food_consumption = [2,3],
-			physics_factor = [1,2],
+			physics_factor = [1,3],
 			magic_factor = [2,4],
 			tame_factor = [2,3],
 			authority_factor = [2,4],
@@ -141,7 +141,7 @@ var racelist = {
 			charm_factor = [1,3],
 			wits_factor = [2,3],
 		},
-		race_bonus = {hpmax_mul2 = 1.0, hitrate = 5, mastery_marksmanship = 1, price = 130},
+		race_bonus = {hitrate = 5, mastery_marksmanship = 1, price = 130},
 		personality = {kind = 0.5, bold = 1, shy = 0.3, serious = 0.5},
 		diet_love = {vege = 1, meat = 0.2, fish = 0.5, grain = 1},
 		diet_hate = {vege = 5, meat = 45, fish = 15, grain = 5},
@@ -404,7 +404,7 @@ var racelist = {
 		diet_hate = {vege = 10, meat = 80, fish = 30, grain = 10},
 		tags = [],
 		race_tags = ['midget','uncommon'],
-		combat_skills = ['fairy_heal'],
+		combat_skills = ['fairy_heal', 'flight'],
 		bodyparts = {
 			ears = ['elven'],
 			hair_color = ['green','blond','purple','white','gradient'],
@@ -477,6 +477,7 @@ var racelist = {
 			wits_factor = [2,5],
 		},
 		race_bonus = {hpmax_mul2 = 1.3, resist_dark = 15, mastery_dark = 1, price = 200},
+		combat_skills = ['fly_evasion'],
 		personality = {kind = 0.2, bold = 1, shy = 0.3, serious = 1},
 		diet_love = {vege = 0.5, meat = 2, fish = 1, grain = 1},
 		diet_hate = {vege = 20, meat = 5, fish = 10, grain = 15},
@@ -518,6 +519,7 @@ var racelist = {
 			wits_factor = [2,4],
 		},
 		race_bonus = {hpmax_mul2 = 1.4, resist_light = 10, mastery_light = 1, price = 210},
+		combat_skills = ['fly_evasion'],
 		diet_love = {vege = 1, meat = 0.3, fish = 0.7, grain = 1},
 		diet_hate = {vege = 5, meat = 15, fish = 10, grain = 5},
 		personality = {kind = 1, bold = 0.3, shy = 0.5, serious = 1},
@@ -554,6 +556,7 @@ var racelist = {
 			wits_factor = [2,4],
 		},
 		race_bonus = {hpmax_mul2 = 1.5, resist_fire = 10, mastery_point_combat = 1, price = 300},
+		combat_skills = ['fly_evasion'],
 		personality = {kind = 0.3, bold = 1, shy = 0.2, serious = 0.5},
 		diet_love = {vege = 1, meat = 3, fish = 1, grain = 1},
 		diet_hate = {vege = 35, meat = 5, fish = 10, grain = 30},
@@ -660,6 +663,7 @@ var racelist = {
 		diet_hate = {vege = 15, meat = 10, fish = 5, grain = 5},
 		tags = [],
 		race_tags = ['monster'],
+		combat_skills = ['flight'],
 		bodyparts = {
 			body_lower = ['avian'],
 			body_shape = ['halfbird'],
@@ -978,7 +982,7 @@ var racelist = {
 			charm_factor = [2,5],
 			wits_factor = [1,2],
 		},
-		race_bonus = {hpmax_mul2 = 1, sexuals_bonus = 5, mastery_point_magic = 1, price = 100},
+		race_bonus = {sexuals_bonus = 5, mastery_point_magic = 1, price = 100},
 		personality = {kind = 1, bold = 0.2, shy = 1, serious = 0.3},
 		diet_love = {vege = 3, meat = 0.3, fish = 0.5, grain = 2},
 		diet_hate = {vege = 5, meat = 40, fish = 30, grain = 5},
@@ -1173,7 +1177,7 @@ var racelist = {
 			charm_factor = [2,5],
 			wits_factor = [1,2],
 		},
-		race_bonus = {hpmax_mul2 = 1, sexuals_bonus = 5, mastery_point_magic = 1, price = 100},
+		race_bonus = {sexuals_bonus = 5, mastery_point_magic = 1, price = 100},
 		personality = {kind = 1, bold = 0.2, shy = 1, serious = 0.3},
 		diet_love = {vege = 3, meat = 0.3, fish = 0.5, grain = 2},
 		diet_hate = {vege = 5, meat = 40, fish = 30, grain = 5},
@@ -1360,5 +1364,3 @@ func get_random_race_by_tags_noweight(tags, num = 1):
 
 func get_random_starting_race():
 	return get_random_race_by_tags_noweight(['starting_race'])
-
-

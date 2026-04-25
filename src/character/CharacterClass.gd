@@ -163,6 +163,10 @@ func get_stat(statname, nobonus = false, desc_ready = false):
 			'armor_base':
 #				return ('servant') #temporal, until correct recolor of armor
 				var res =  equipment.get_gear_type('chest')
+				if res == 'hector_armor':
+					res = 'chest_base_metal'
+				elif res == 'garb_of_forest':
+					res = 'chest_base_leather'
 				if res == null and !has_work_rule('nudity'):
 					res = 'underwear'
 				if !GeneratorData.transforms[statname].has(res):
@@ -171,6 +175,8 @@ func get_stat(statname, nobonus = false, desc_ready = false):
 			'armor_lower':
 #				return ('servant') #temporal, until correct recolor of armor
 				var res = equipment.get_gear_type('legs')
+				if res == 'garb_of_forest':
+					res = 'legs_base_leather'
 				if res == null and !has_work_rule('nudity'):
 					res = 'underwear'
 				if !GeneratorData.transforms[statname].has(res):
@@ -427,7 +433,7 @@ func generate_ea_character(gendata, desired_class):
 	return res
 
 
-func generate_random_character_from_data(races_l, desired_class = null, adjust_difficulty = 0, trait_blacklist = []):
+func generate_random_character_from_data(races_l, desired_class = null, adjust_difficulty = 0, trait_blacklist = [], guaranteed_classes = []):
 	adjust_difficulty = min(adjust_difficulty, 15)
 	var gendata = {race = '', sex = 'random', age = 'random'}
 
@@ -440,7 +446,7 @@ func generate_random_character_from_data(races_l, desired_class = null, adjust_d
 	create(gendata.race, gendata.sex, gendata.age)
 	dyn_stats.generate_data()
 	statlist.generate_random_character_from_data(adjust_difficulty)
-	dyn_stats.generate_random_character_from_data(desired_class, adjust_difficulty)
+	dyn_stats.generate_random_character_from_data(desired_class, adjust_difficulty, guaranteed_classes)
 	dyn_stats.get_random_traits(trait_blacklist)
 	xp_module.set_service_boost()
 
@@ -608,6 +614,74 @@ func fill_boosters():
 
 func make_random_portrait():
 	statlist.make_random_portrait()
+
+func make_relative_of(person, relation, sync_surname = true, sync_age = true):
+	var target = person
+	if typeof(person) == TYPE_STRING:
+		target = characters_pool.get_char_by_id(person)
+	if target == null:
+		print("error - can't connect relative for %s: target is null" % id)
+		return false
+	if target.id == id:
+		print("error - character %s can't become a relative of itself" % id)
+		return false
+	relation = str(relation).to_lower()
+	match relation:
+		'sibling':
+			ResourceScripts.game_party.connectrelatives(id, target.id, 'sibling')
+		'parent', 'mother', 'father':
+			var parent_role = relation
+			if parent_role == 'parent':
+				parent_role = get_parent_relative_role()
+			ResourceScripts.game_party.connectrelatives(target.id, id, parent_role)
+		'child':
+			ResourceScripts.game_party.connectrelatives(id, target.id, target.get_parent_relative_role())
+		_:
+			print("error - unsupported relative type %s for %s" % [relation, id])
+			return false
+	if sync_surname:
+		var family_surname = target.get_stat('surname')
+		if family_surname != '':
+			set_stat('surname', family_surname)
+	if sync_age:
+		match relation:
+			'parent', 'mother', 'father':
+				align_relative_age(target, 'parent')
+			_:
+				align_relative_age(target, relation)
+	refresh_relatives_record()
+	return true
+
+func get_parent_relative_role():
+	if get_stat('sex') == 'male' and !get_stat('has_womb'):
+		return 'father'
+	return 'mother'
+
+func align_relative_age(person, relation):
+	var age_order = ['teen', 'adult', 'mature']
+	var self_age = get_stat('age')
+	var target_age = person.get_stat('age')
+	if !age_order.has(self_age) or !age_order.has(target_age):
+		return
+	var self_age_idx = age_order.find(self_age)
+	var target_age_idx = age_order.find(target_age)
+	match relation:
+		'sibling':
+			set_stat('age', target_age)
+		'parent':
+			if self_age_idx <= target_age_idx:
+				set_stat('age', age_order[min(target_age_idx + 1, age_order.size() - 1)])
+		'child':
+			if self_age_idx >= target_age_idx:
+				set_stat('age', age_order[max(target_age_idx - 1, 0)])
+
+func refresh_relatives_record():
+	if !ResourceScripts.game_party.relativesdata.has(id):
+		return
+	var reldata = ResourceScripts.game_party.relativesdata[id]
+	reldata.name = get_full_name()
+	reldata.race = get_stat('race')
+	reldata.sex = get_stat('sex')
 
 func setup_baby(mother, father):
 	var temp_race
@@ -1241,6 +1315,17 @@ func make_trait_known(trait):
 func get_gear(slot):
 	return equipment.get_gear(slot)
 
+func has_shield_with_evasion_bonus():
+	if !is_players_character:
+		return true
+	var shield_id = get_gear('lhand')
+	if shield_id == null or !ResourceScripts.game_res.items.has(shield_id):
+		return false
+	var shield_item = ResourceScripts.game_res.items[shield_id]
+	if shield_item.geartype != 'shield':
+		return false
+	return shield_item.get_bonusstats().get('evasion', 0) > 0
+
 func get_equiped_items():
 	return equipment.get_equiped_items()
 
@@ -1639,6 +1724,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'gear_equiped':
 			if i.has('param'): check = equipment.check_gear_equipped(i.value, i.param) == i.check
 			else: check = equipment.check_gear_equipped(i.value) == i.check
+		'shield_with_evasion_bonus':
+			check = has_shield_with_evasion_bonus() == i.check
 		'global_profession_limit':
 			check = ResourceScripts.game_party.check_profession_limit(i.profession, i.value)
 		'race':
@@ -1753,7 +1840,10 @@ func decipher_reqs(reqs, colorcode = false, purestat = false):
 #			continue
 		text2 = decipher_single(i)
 		if colorcode == true:
-			if checkreqs([i], purestat):
+			var passed = checkreqs([i], purestat)
+			if i.code == 'has_profession' and i.check == false:
+				passed = !has_profession(i.profession)
+			if passed:
 				text2 = '{color=green|' + text2 + '}'
 			else:
 				text2 = '{color=red|' + text2 + '}'
@@ -1820,6 +1910,12 @@ func decipher_single(ch):
 					text2 += tr("REQMUSTHAVEGEARTYPE") + ' ' + tr("REQMUSTHAVEGEARTYPE_" + i.value.to_upper()) + "."
 			else:
 				text2 += Items.itemlist[i.value].name + "."
+		'has_skill':
+			var skill_name = Skilldata.get_template(i.skill, self).name
+			if i.check:
+				text2 += "%s: %s." % [tr("REQHASSKILL"), skill_name]
+			else:
+				text2 += "%s: %s." % [tr("REQHASSKILL_FALSE"), skill_name]
 		'global_profession_limit':
 			text2 += tr("REQPROFLIMIT")+' ' + str(i.value) + " " + classesdata.professions[i.profession].name + " " + tr("REQPROFLIMIT2") + "."
 		'one_of_races':
@@ -2199,6 +2295,14 @@ func affect_char(template, manifest = false):
 			learn_skill(template.skill)
 		'add_combat_skill':
 			learn_c_skill(template.skill)
+		'make_relative_of':
+			var rel_char = template.value
+			if rel_char is String:
+				rel_char = characters_pool.get_char_by_id(rel_char)
+			if rel_char != null:
+				make_relative_of(rel_char, template.relation)
+				input_handler.update_slave_panel()
+				input_handler.update_slave_list()
 		'quest':
 			assign_to_quest_and_make_unavalible({id = template.id, name = template.name}, template.duration)
 		'slavetype':

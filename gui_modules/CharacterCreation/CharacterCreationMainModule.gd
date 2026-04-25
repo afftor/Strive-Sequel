@@ -78,8 +78,10 @@ var freemode_fixed_stats = [
 ]
 
 var selected_class = ''
+var selected_master_relation = 'none'
+var age_order = ['teen', 'adult', 'mature']
 
-var introduction_text = {master = "Create your Master Character", 'slave' : 'Create your Starting Slave', freemode = ""}
+var introduction_text = {master = "CHARCREATE_INTRO_MASTER", 'slave' : 'CHARCREATE_INTRO_SLAVE', freemode = ""}
 
 var savefilename
 var saveloadstate
@@ -163,6 +165,7 @@ var tooltips_stat = ['slave_class']
 onready var RaceSelection = $RaceSelectionModule
 onready var ClassSelection = $ClassSelectionModule
 onready var TraitSelection = $TraitSelection
+onready var RelationshipSelect = $RelationshipSelect
 onready var ragdoll = $RagdollPanel/ragdoll
 
 var possible_vals = {}
@@ -193,7 +196,16 @@ func _ready():
 	$VBoxContainer/sextrait.connect('pressed', self, "open_sex_traits")
 	$VBoxContainer/trait.connect('pressed', self, "open_traits")
 	$VBoxContainer/personality.connect('pressed', self, "open_personality_selection")
+	$MasterRelationPanel/button.connect('pressed', self, "open_master_relation_selection")
+	$RelationshipSelect/Cancel.connect("pressed", self, "hide_relationship_selection")
 	globals.connecttexttooltip($VBoxContainer/personality, tr("INFOPERSONALITY"))
+	globals.connecttexttooltip($NameReroll, tr("CHARCREATE_TOOLTIP_REROLL_NAME"))
+	globals.connecttexttooltip($RaceReroll, tr("CHARCREATE_TOOLTIP_RANDOM_RACE"))
+	globals.connecttexttooltip($AppearanceReroll, tr("CHARCREATE_TOOLTIP_REROLL_APPEARANCE"))
+	globals.connecttexttooltip($SaveButton, tr("TOOLTIPSAVECHARACTER"))
+	globals.connecttexttooltip($LoadButton, tr("TOOLTIPLOADCHARACTER"))
+	globals.connecttexttooltip($MasterRelationPanel/TooltipRelations, tr("CHARCREATE_MASTER_RELATION_TOOLTIP"))
+	$DietPanel/RichTextLabel.bbcode_text = tr("CHARCREATE_DIET_HELP")
 	$RaceReroll.connect("pressed", self, "reroll_race")
 	
 	$modes/Stats.connect("pressed", self, 'build_stats')
@@ -642,6 +654,9 @@ func change_value_node(stat, value): #for scrollable nodes
 	rebuild_ragdoll(stat)
 	build_node_for_stat(stat)
 	build_description()
+	build_master_relation()
+	if RelationshipSelect.visible:
+		build_master_relation_selection()
 	build_upgrades()
 
 
@@ -654,6 +669,7 @@ func change_value_node_selectable(stat, newvalue): #for selectable nodes
 	rebuild_ragdoll(stat)
 	build_node_for_stat(stat)
 	build_description()
+	build_master_relation()
 	build_upgrades()
 
 
@@ -662,7 +678,7 @@ func unassigned_points():
 	if mode == 'freemode':
 		return 0
 	if mode == 'master':
-		points = variables.master_starting_stats + 5
+		points = variables.master_starting_stats + 5 + ResourceScripts.game_progress.master_starting_factor_bonus
 		for st in ['physics_factor','wits_factor','charm_factor','sexuals_factor', "magic_factor"]:
 			points -= int(person.get_stat(st))
 	
@@ -680,7 +696,7 @@ func update_points(): #visual only
 		FillStats()
 		build_class()
 	
-	$StatsModule/totalstatlabel.text = "Unassigned stats: %d" % unassigned_points()
+	$StatsModule/totalstatlabel.text = tr("CHARCREATE_UNASSIGNED_STATS") % unassigned_points()
 	$StatsModule/totalstatlabel.visible = (mode != 'freemode')
 
 
@@ -721,6 +737,7 @@ func check_food_filter():
 
 func build_food_filter():
 	var val = {}
+	$DietPanel/RichTextLabel.bbcode_text = tr("CHARCREATE_DIET_HELP")
 	if mode == 'freemode':
 		preservedsettings.food_filter = {}
 		for food in foods:
@@ -748,7 +765,7 @@ func build_food_filter():
 		node.get_node('button/LArr').visible = (mode != 'freemode')
 		node.get_node('button/RArr').visible = (mode != 'freemode')
 		
-		node.get_node('button/Label').text = val[food]
+		node.get_node('button/Label').text = tr("CHARCREATE_FOOD_STATE_" + val[food].to_upper())
 	
 
 
@@ -797,6 +814,7 @@ func MainMenu():
 func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 	preservedsettings.clear()
 	selected_class = ''
+	selected_master_relation = 'none'
 #	build_class()
 #	build_race()
 #	build_sex_trait()
@@ -804,7 +822,7 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 	show()
 	guild = newguild
 #	$CancelButton.visible = input_handler.CurrentScreen == 'mansion'
-	$introduction.bbcode_text = introduction_text[type]
+	$introduction.bbcode_text = tr(introduction_text[type])
 	if type == 'slave':
 		$introduction.bbcode_text += " " + str(ResourceScripts.game_party.characters.size())
 	mode = type
@@ -825,6 +843,7 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 	$BackButtonCheats.visible = is_from_cheats
 	$SaveButton.visible = !is_from_cheats
 	$LoadButton.visible = !is_from_cheats
+	$MasterRelationPanel.visible = (type != 'master')
 	build_food_filter()
 	rebuild_slave()
 	build_stats()
@@ -836,6 +855,7 @@ func open_freemode(char_to_open, flag = false):
 		flag = true
 	upgrades_removal = flag
 	preservedsettings.clear()
+	selected_master_relation = 'none'
 	show()
 	$introduction.bbcode_text = introduction_text['freemode']
 	mode = 'freemode'
@@ -853,6 +873,7 @@ func open_freemode(char_to_open, flag = false):
 	$LoadButton.visible = false
 	$BackButton.visible = false
 	$BackButtonCheats.visible = false
+	$MasterRelationPanel.visible = false
 
 
 
@@ -882,6 +903,7 @@ func rebuild_slave():
 	build_class()
 	build_sex_trait()
 	build_trait()
+	build_master_relation()
 
 
 func confirm_character():
@@ -951,6 +973,7 @@ func finish_character():
 			globals.equip_char(person, 'chest_base_cloth', {ArmorBaseCloth = 'cloth', ArmorTrim = 'wood'})
 			globals.equip_char(person, 'legs_base_cloth', {ArmorBaseCloth = 'cloth', ArmorTrim = 'wood'})
 		ResourceScripts.game_party.add_slave(person)
+		apply_master_relationship()
 		
 		input_handler.emit_signal("CharacterCreated")
 		input_handler.add_random_chat_message(person, 'hire')
@@ -1197,6 +1220,7 @@ func FillStats():
 	build_description()
 	build_race()
 	build_personality()
+	build_master_relation()
 	update_points()
 	build_upgrades()
 #	build_food_filter()
@@ -1216,6 +1240,13 @@ func open_traits():
 func open_personality_selection():
 	hide_all_dialogues()
 	TraitSelection.build_personality()
+
+
+func open_master_relation_selection():
+	if mode == 'master' or mode == 'freemode':
+		return
+	hide_all_dialogues()
+	build_master_relation_selection()
 
 
 func select_sex_trait(trait_id):
@@ -1243,6 +1274,104 @@ func select_personality(code):
 	update_points()
 
 
+func get_master_relation_options():
+	return ['none', 'child', 'parent', 'sibling']
+
+
+func get_master_relation_display(code):
+	match str(code):
+		'none':
+			return tr("NONE")
+		'child':
+			return tr("CHARCREATE_MASTER_RELATION_CHILD")
+		'parent':
+			return tr("CHARCREATE_MASTER_RELATION_PARENT")
+		'sibling':
+			return tr("CHARCREATE_MASTER_RELATION_SIBLING")
+	return str(code)
+
+
+func get_master_relation_target():
+	if ResourceScripts.game_party == null:
+		return null
+	return ResourceScripts.game_party.get_master()
+
+
+func get_master_relation_block_reason(code):
+	if code == 'none':
+		return ""
+	var master_char = get_master_relation_target()
+	if master_char == null:
+		return tr("CHARCREATE_MASTER_RELATION_BLOCKED_NO_MASTER")
+	var self_age = age_order.find(person.get_stat('age'))
+	var master_age = age_order.find(master_char.get_stat('age'))
+	if self_age == -1 or master_age == -1:
+		return ""
+	match code:
+		'child':
+			if master_age < self_age:
+				return tr("CHARCREATE_MASTER_RELATION_BLOCKED_CHILD")
+		'parent':
+			if master_age > self_age:
+				return tr("CHARCREATE_MASTER_RELATION_BLOCKED_PARENT")
+	return ""
+
+
+func is_master_relation_available(code):
+	return get_master_relation_block_reason(code) == ""
+
+
+func hide_relationship_selection():
+	RelationshipSelect.hide()
+
+
+func build_master_relation_selection():
+	input_handler.ClearContainer($RelationshipSelect/ScrollContainer/VBoxContainer, ['Button'])
+	for code in get_master_relation_options():
+		var newbutton = input_handler.DuplicateContainerTemplate($RelationshipSelect/ScrollContainer/VBoxContainer)
+		newbutton.text = get_master_relation_display(code)
+		newbutton.pressed = selected_master_relation == code
+		var lock_reason = get_master_relation_block_reason(code)
+		if lock_reason != "":
+			newbutton.disabled = true
+			globals.connecttexttooltip(newbutton, lock_reason)
+		else:
+			newbutton.connect("pressed", self, "select_master_relation", [code])
+	RelationshipSelect.show()
+
+
+func select_master_relation(code):
+	selected_master_relation = code
+	hide_relationship_selection()
+	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
+	build_master_relation()
+
+
+func build_master_relation():
+	var is_visible = (mode != 'master' and mode != 'freemode')
+	$MasterRelationPanel.visible = is_visible
+	if !is_visible:
+		return
+	if !is_master_relation_available(selected_master_relation):
+		selected_master_relation = 'none'
+	var master_char = get_master_relation_target()
+	$MasterRelationPanel/button/Label.text = get_master_relation_display(selected_master_relation)
+	$MasterRelationPanel/button.disabled = (master_char == null)
+	if master_char == null:
+		$MasterRelationPanel/RichTextLabel.bbcode_text = globals.TextEncoder(tr("CHARCREATE_MASTER_RELATION_NO_MASTER"))
+	else:
+		$MasterRelationPanel/RichTextLabel.bbcode_text = globals.TextEncoder(tr("CHARCREATE_MASTER_RELATION_PANEL_TEXT") % [person.get_short_name(), tr("MASTER"), master_char.get_short_name()])
+
+
+func apply_master_relationship():
+	if mode == 'master' or selected_master_relation == 'none':
+		return
+	var master_char = get_master_relation_target()
+	if master_char == null:
+		return
+	person.make_relative_of(master_char, selected_master_relation, false, false)
+
+
 func build_trait():
 	if preservedsettings.has("traits") && preservedsettings.traits != null:
 		var trdata = Traitdata.traits[preservedsettings.traits]
@@ -1267,7 +1396,7 @@ func build_trait():
 	else:
 		$VBoxContainer/trait/bg.texture = null
 		$VBoxContainer/trait/icon.texture = null
-		$VBoxContainer/trait/Label.text = "Trait"
+		$VBoxContainer/trait/Label.text = tr("TRAITS")
 	$VBoxContainer/trait.disabled = (mode == 'freemode')
 
 
@@ -1276,7 +1405,7 @@ func build_sex_trait():
 		var trdata = Traitdata.sex_traits[preservedsettings.sex_traits]
 		$VBoxContainer/sextrait/Label.text = tr(trdata.name)
 	else:
-		$VBoxContainer/sextrait/Label.text = "Sex Trait"
+		$VBoxContainer/sextrait/Label.text = tr("STATSEXTRAIT")
 	$VBoxContainer/sextrait.disabled = (mode == 'freemode')
 
 
@@ -1290,7 +1419,7 @@ func build_personality():
 		else:
 			$VBoxContainer/personality/icon.texture = null
 	else:
-		$VBoxContainer/personality/Label.text = "Personality"
+		$VBoxContainer/personality/Label.text = tr("STATPERSONALITY")
 		$VBoxContainer/personality/icon.texture = null
 	$VBoxContainer/personality.disabled = (mode == 'freemode')
 
@@ -1345,7 +1474,7 @@ func build_class():
 			$VBoxContainer/class/icon.texture = null
 	else:
 		$VBoxContainer/class/icon.texture = null
-		$VBoxContainer/class/Label.text = "Class"
+		$VBoxContainer/class/Label.text = tr("CLASS_LABEL")
 	$VBoxContainer/class.disabled = (mode == 'freemode')
 
 
@@ -1371,6 +1500,7 @@ func hide_all_dialogues():
 	RaceSelection.hide()
 	TraitSelection.hide()
 	ClassSelection.hide()
+	RelationshipSelect.hide()
 
 var upgradecost = 0
 var upgradecostgold = 0

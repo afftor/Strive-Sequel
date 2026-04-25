@@ -102,6 +102,7 @@ func createfromskill(temp):
 	
 
 
+
 func process_check(check:Array):
 	var op1 = check[0]
 	var op2 = check[2]
@@ -121,7 +122,6 @@ func process_check(check:Array):
 					if val.source in op2: 
 						return true
 				return false
-		else:
 			op1 = get(op1)
 			return input_handler.operate(check[1], op1, op2)
 	elif active_instance != null:

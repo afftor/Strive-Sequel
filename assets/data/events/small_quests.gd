@@ -630,7 +630,12 @@ var data = {
 				],
 				dialogue_argument = 1,
 				type = "next_dialogue",
-				bonus_effects = [{code = 'clear_subroom', optional = true}]
+				bonus_effects = [
+					{
+						code = "clear_subroom",
+						optional = true
+					}
+				]
 			}
 		]
 	},
@@ -903,21 +908,13 @@ var data = {
 		]
 	},
 	purchased_cali = {
-		image = null,
 		tags = [
 			"dialogue_scene"
 		],
 		reqs = [
 
 		],
-		text = [
-			{
-				text = "CALI_INTRO_4_3",
-				reqs = [
-
-				]
-			}
-		],
+		text = "CALI_INTRO_4_3",
 		options = [
 			{
 				code = "got_cali_1_1",
@@ -931,7 +928,6 @@ var data = {
 		]
 	},
 	got_cali_1_1 = {
-		image = null,
 		music = "cali_theme",
 		tags = [
 			"dialogue_scene"
@@ -940,12 +936,8 @@ var data = {
 
 		],
 		text = [
-			{
-				text = "GOT_CALI_1_1",
-				reqs = [
-
-				]
-			}
+			{text = "GOT_CALI_1_1_WOLF", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "HalfkinWolf"}, {code = 'stat', stat = 'race', operant = 'eq', value = "BeastkinWolf", orflag = true}]}]},
+			{text = "GOT_CALI_1_1", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'neq', value = "HalfkinWolf"}, {code = 'stat', stat = 'race', operant = 'neq', value = "BeastkinWolf"}]}]}
 		],
 		options = [
 			{
@@ -966,7 +958,8 @@ var data = {
 				dialogue_argument = 2,
 				type = "next_dialogue"
 			}
-		]
+		],
+		custom_background = "force_cali1"
 	},
 	got_cali_1_2 = {
 		image = null,
@@ -1519,7 +1512,7 @@ var data = {
 						stage = "audience"
 					}
 				]
-			},
+			}
 		]
 	},
 	excalibur_quest_1 = {

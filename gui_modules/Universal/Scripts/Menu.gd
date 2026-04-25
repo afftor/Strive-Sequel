@@ -354,6 +354,9 @@ func start_game_confirm():
 	ResourceScripts.game_world.make_world()
 	$VBoxContainer/newgamebutton.disabled = true
 	globals.start_new_game = true
+	ResourceScripts.game_progress.master_starting_factor_bonus = 0
+	if newgame_bonuses.has("master_factor_points"):
+		ResourceScripts.game_progress.master_starting_factor_bonus = 4
 	ResourceScripts.game_globals.newgame = true
 	ResourceScripts.game_globals.original_version = globals.gameversion
 	get_node("/root").remove_child(self)

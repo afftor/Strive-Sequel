@@ -1,12 +1,30 @@
-0.14.1f
+0.14.2
 Unique characters will use naked sprites in sex interaction if nudity rule can be toggled for them (sex service task)
+Added new stat: Manhunt - it will improve chances to find recruits after combat and increase settlement recruitment quality
+Settlement recruitment progress for easy settlements is now 10 instead of 25 and 25 instead of 50 for hard settlements
+Dungeon basic chance to find recruits reduced from 0.25 to 0.1
 Some minor text fixes to sex interaction minigame, also moved all of its text into translation file (can be localized now)
 Some minor text fixes for combat log, also moved all of its text into translation file (can be localized now)
 Teleportation spell now has 2 charges per day
 GUI for casting spells in exploration has been slightly reworked
 Spellsword effect will now trigger on random target if original target dies from first hit
-Masks now display visually on paper dolls 
+Guild hirelings now always have at least 1 class of the guild's theme
+Masks now display visually on paper dolls
+Slightly improved some racial basic stats for humans and elves
+Slightly retconned demon race into demonkins
+Souleater is now demonkin exclusive class and no longer requires Dominator.
+Nerfed Assassinate stealthed version damage (to 2.25 from 2.75)
+Nerfed enemy assassinate damage multiplier from 2.0 to 1.5 and charges from 3 to 1
+Slightly rebalanced damage values on some enemies
+Added new class - Shieldbearer and revamped Paladin class bonuses a bit
+Cali, Lilia and Zephyra now have slightly different first reaction for cases when player race would matter
+Shields with DEF stats now have higher DEF
+Mind Mastery 1 now gets Sleep as a combat spell. Also fixed sleep not being removed by damage
+Added new starting bonus: Gifted, start with 4 more stats to distribute
+Trained slave has its own icon in list now
+Fixed Hector armor and Garb of the forest not displaying correctly on paper doll
 Fixed wrong icons showing in combat
+Fixed some class conflicts not working correctly
 Fixed Lilia's scene not being added to gallery correctly
 Fixed oblivion potion giving more experience than it should with xp bonus
 Fixed gold cost for skills not working correctly

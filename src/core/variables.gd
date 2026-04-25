@@ -18,13 +18,7 @@ var timeword = {
 	4:"NIGHT",
 	0:"NIGHT",
 }
-#var timeword = {
-#	1:"6:00",
-#	2:"12:00",
-#	3:"18:00",
-#	4:"00:00",
-#	0:"00:00",
-#}
+
 var SecndsPerTransition = 1.0
 var SecondsPerHour = 3
 var NoScenes = false
@@ -52,7 +46,7 @@ var use_log_alert = true
 enum {PANEL_SOC, PANEL_COM}
 
 enum {RES_MISS = 1, RES_HIT = 2, RES_CRIT = 4, RES_HITCRIT = 6};
-enum {TR_CAST,TR_CAST_TARGET, TR_PREHIT, TR_PREDEF, TR_HIT, TR_DEF, TR_TURN_S, TR_TURN_GET, TR_TURN_F, TR_DEATH, TR_KILL, TR_DMG, TR_POSTDAMAGE, TR_POST_TARG, TR_SKILL_FINISH, TR_HEAL, TR_COMBAT_S, TR_COMBAT_F, TR_SHIELD_DOWN, TR_TAUNT_FAIL, TR_DAY, TR_S_CAST, TR_S_HIT, TR_S_TARGET, TR_SHACKLES_OFF, TR_TICK, TR_RES, TR_SOC_SPEC, TR_MOVE, TR_REMOVE, TR_CUSTOM, TR_CUSTOM1, TR_EXPLORE_POSTDAMAGE, TR_NONE, TR_STACK, TR_VICTORY, TR_WEAPON, TR_ARMOR, TR_OBLIVION};
+enum {TR_CAST,TR_CAST_TARGET, TR_PREHIT, TR_PREDEF, TR_HIT, TR_DEF, TR_TURN_S, TR_TURN_GET, TR_TURN_F, TR_DEATH, TR_KILL, TR_DMG, TR_POSTDAMAGE, TR_POST_TARG, TR_SKILL_FINISH, TR_HEAL, TR_COMBAT_S, TR_COMBAT_F, TR_SHIELD_DOWN, TR_TAUNT_FAIL, TR_DAY, TR_S_CAST, TR_S_HIT, TR_S_TARGET, TR_SHACKLES_OFF, TR_TICK, TR_RES, TR_SOC_SPEC, TR_MOVE, TR_REMOVE, TR_CUSTOM, TR_CUSTOM1, TR_EXPLORE_POSTDAMAGE, TR_NONE, TR_STACK, TR_VICTORY, TR_WEAPON, TR_ARMOR, TR_OBLIVION, TR_DEF_HIT};
 enum {SKILL_BASE, SKILL_ITEM, SKILL_COPY, SKILL_FA, SKILL_AUTO, SKILL_EFFECT}
 
 enum {TARGET_FORCED, TARGET_KEEP, TARGET_KEEPFIRST, TARGET_NOKEEP, TARGET_MOVEFIRST};
@@ -96,7 +90,7 @@ var farming_rules = ['milk', 'pheromones', 'seed', 'eggs', 'magic_dust', 'reptil
 var skin_coverage_false = ['scale','fur_white','fur_grey','fur_brown','fur_stripped','fur_black','fur_orange','fur_orange_white'] #list of skincoverage blocking skin desription
 
 
-var personal_stats = ['hair_color', 'hair_style', 'hair_length', 'name', "nickname", 'race', 'sex', 'age', 'height', 'eye_color', "eye_shape", 'ears', 'skin', "horns", "wings","tail", "body_lower", "body_shape", "penis_size", "penis_type", "balls_size", "tits_size", "ass_size", "multiple_tits", "multiple_tits_developed","skin_coverage", 'eyeshape', 'eye_tex', 'eyebrows', 'lips', 'chin', 'nose', 'body_color_skin', 'body_color_wings', 'body_color_tail', 'body_color_horns', 'body_color_animal', 'hair_base', 'hair_base_length', 'hair_fringe', 'hair_fringe_length', 'hair_assist', 'hair_assist_length', 'hair_back', 'hair_back_length', 'hair_back_color_1', 'hair_back_color_2', 'hair_assist_color_1', 'hair_assist_color_2', 'hair_base_color_1', 'hair_base_color_2', 'beard', 'hair_facial_color', 'icon_image', 'body_image', ] #stats used to fully change identity
+var personal_stats = ['hair_color', 'hair_style', 'hair_length', 'name', "nickname", 'race', 'sex', 'age', 'height', 'eye_color', "eye_shape", 'ears', 'skin', "horns", "wings","tail", "body_lower", "body_shape", "penis_size", "penis_type", "balls_size", "tits_size", "ass_size", "multiple_tits", "multiple_tits_developed","skin_coverage", 'eyeshape', 'eye_tex', 'eyebrows', 'lips', 'chin', 'nose', 'body_color_skin', 'body_color_wings', 'body_color_tail', 'body_color_horns', 'body_color_animal', 'hair_base', 'hair_base_length', 'hair_fringe', 'hair_fringe_length', 'hair_assist', 'hair_assist_length', 'hair_back', 'hair_back_length', 'hair_back_color_1', 'hair_back_color_2', 'hair_assist_color_1', 'hair_assist_color_2', 'hair_base_color_1', 'hair_base_color_2', 'beard', 'hair_facial_color', 'icon_image', 'body_image', ] #stats used to fully change appearance
 
 var booster_tiers = {
 	1:['milk', 'pheromones', 'seed'],
@@ -449,10 +443,10 @@ var real_ops = ['eq', 'neq', 'gte', 'gt', 'lte', 'lt', 'has', 'hasno']
 var skill_condstats = ['name', 'type', 'ability_type', 'tags', 'damage_type']
 var char_condstats = ['hp', 'hpmax', 'mp', 'mpmax', 'is_players_character', 'age', 'sex', 'physics_factor', 'magic_factor', 'tame_factor', 'brave_factor', 'growth_factor', 'charm_factor', 'wits_factor', 'sexuals_factor']#incomplete
 var char_indexstats = ['counters', 'bonuses']#possibly incomplete
-var eventlist = ['TR_CAST','TR_HIT', 'TR_DEF', 'TR_TURN_S', 'TR_TURN_GET', 'TR_TURN_F', 'TR_DEATH', 'TR_KILL', 'TR_DMG', 'TR_POSTDAMAGE', 'TR_SKILL_FINISH', 'TR_HEAL', 'TR_COMBAT_S', 'TR_COMBAT_F', 'TR_DAY', 'TR_S_CAST', 'TR_S_TARGET', 'TR_TICK', 'TR_MOVE', 'TR_REMOVE']
-var eventhelp = [self.TR_CAST, self.TR_HIT, self.TR_DEF, self.TR_TURN_S, self.TR_TURN_GET, self.TR_TURN_F, self.TR_DEATH, self.TR_KILL, self.TR_DMG, self.TR_POSTDAMAGE, self.TR_SKILL_FINISH, self.TR_HEAL, self.TR_COMBAT_S, self.TR_COMBAT_F, self.TR_DAY, self.TR_S_CAST, self.TR_S_TARGET, self.TR_TICK, self.TR_MOVE, self.TR_REMOVE]
+var eventlist = ['TR_CAST','TR_HIT', 'TR_DEF', 'TR_DEF_HIT', 'TR_TURN_S', 'TR_TURN_GET', 'TR_TURN_F', 'TR_DEATH', 'TR_KILL', 'TR_DMG', 'TR_POSTDAMAGE', 'TR_SKILL_FINISH', 'TR_HEAL', 'TR_COMBAT_S', 'TR_COMBAT_F', 'TR_DAY', 'TR_S_CAST', 'TR_S_TARGET', 'TR_TICK', 'TR_MOVE', 'TR_REMOVE']
+var eventhelp = [self.TR_CAST, self.TR_HIT, self.TR_DEF, self.TR_DEF_HIT, self.TR_TURN_S, self.TR_TURN_GET, self.TR_TURN_F, self.TR_DEATH, self.TR_KILL, self.TR_DMG, self.TR_POSTDAMAGE, self.TR_SKILL_FINISH, self.TR_HEAL, self.TR_COMBAT_S, self.TR_COMBAT_F, self.TR_DAY, self.TR_S_CAST, self.TR_S_TARGET, self.TR_TICK, self.TR_MOVE, self.TR_REMOVE]
 var short_res = [self.RES_HITCRIT, self.RES_CRIT, self.RES_MISS]
-var eventdesc = ['skill used by caster','before skill take effect per target', 'before skill take effect on target', 'beginning of combat turn', 'character get action', 'character ends action', 'character is dead', 'character kills opponent', 'character is damaged', 'after skill take effect per target', 'skill using is completed', 'character is healed', 'combat start', 'combat end', 'per day', 'social skill is used', 'social skill used on target', 'per hour', 'character changes location', 'character is removed from player']
+var eventdesc = ['skill used by caster','before skill take effect per target', 'before skill take effect on target', 'after defender retarget is resolved', 'beginning of combat turn', 'character get action', 'character ends action', 'character is dead', 'character kills opponent', 'character is damaged', 'after skill take effect per target', 'skill using is completed', 'character is healed', 'combat start', 'combat end', 'per day', 'social skill is used', 'social skill used on target', 'per hour', 'character changes location', 'character is removed from player']
 var targetlist = ['not a trigger child', 'self', 'skill', 'caster', 'target', 'receiver', 'owner', 'parent']
 var effecttypes = ['oneshot', 'static', 'trigger','temp_s','temp_p','temp_u','c_static', 'dynamic']
 var effectdesc = ['oneshot', 'static', 'trigger','temp_s','temp_p','temp_u','c_static', 'dynamic']
@@ -522,7 +516,7 @@ var itemrairity = {
 
 
 var dungeon_character_chances = {
-	initial_char_chance = 0.25,
+	initial_char_chance = 0.1,
 	initial_second_char_chance = 0.1,
 	rare_char_chance = 0.5,
 	rare_second_char_chance = 0.15,

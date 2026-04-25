@@ -110,22 +110,6 @@ var lands = {
 		capital_background_music = 'empire_capital',
 		preplanned_capital_events = ['emp_city_enter_0']
 	},
-	seas = {
-		code = 'seas',
-		name = tr("AREASEAS"),
-		enabled = false,
-		lead_race = 'Nereid',
-		secondary_races = ['Lamia','Scylla'],
-		policies = [],
-		travel_time = [3,6],#[15,36],
-		disposition = 15,
-		start_settlements_number = {},
-		starting_locations = [],
-		locations = {},
-		locationpool = ['dungeon_bandit_den'],
-		guilds = [],
-		area_shop_items = '',
-	},
 	 beastkin_tribe = {
 		code = 'beastkin_tribe',
 		name = tr("AREABEASTKIN_TRIBE"),
@@ -229,6 +213,7 @@ var factiondata = {
 		hireable_characters = [
 			{code = 'type1',
 			preference = ['combat'],
+			classes = ['fighter', 'rogue', 'archer', 'attendant'],
 			slavelevel = 0,
 			character_types = [['servant',1]],
 			character_bonuses = {},
@@ -266,6 +251,7 @@ var factiondata = {
 		hireable_characters = [
 			{code = 'type1',
 			preference = ['magic'],
+			classes = ['apprentice', 'scholar', 'acolyte'],
 			slavelevel = 0,
 			character_types = [['servant',1]],
 			character_bonuses = {},
@@ -315,6 +301,7 @@ var factiondata = {
 		hireable_characters = [
 			{code = 'type1',
 			preference = ['labor'],
+			classes = ['worker', 'hunter', 'smith', 'tailor', 'chef', 'farmer'],
 			slavelevel = 0,
 			character_types = [['servant',1]],
 			character_bonuses = {},# authority = [70,90], obedience = [48,48]},
@@ -352,6 +339,7 @@ var factiondata = {
 		hireable_characters = [
 			{code = 'type1',
 			preference = ['sexual','social'],
+			classes = ['harlot', 'maid', 'bard', 'dancer', 'thief'],
 			slavelevel = 0,
 			character_types = [['servant',1]],
 			character_bonuses = {},
@@ -1894,6 +1882,7 @@ func update_guilds_data():
 		else:
 			tempcat.slave_races = []
 		tempcat.preference = guild.preference.duplicate()
+		tempcat.classes = []
 		tempcat.slavelevel = 0
 		guild.hireable_characters.push_back(tempcat)
 

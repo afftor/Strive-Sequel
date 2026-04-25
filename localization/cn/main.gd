@@ -390,6 +390,8 @@ var TranslationDict = {
 	REQTRAIT = "需要",
 	REQPOPULATION = "需要人口",
 	REQSEX = "不允许用于",
+	REQHASSKILL = """Requires skill""", # MISSING TRANSLATION
+	REQHASSKILL_FALSE = """Must not know skill""", # MISSING TRANSLATION
 	REQVIRGINFALSE = "不是童贞",
 	REQOR = "或",
 	REQANY = "拥有任意",
@@ -505,6 +507,7 @@ var TranslationDict = {
 	LOADINGTIP13 = "在工人公会拆解装备可提取其中的稀有资源",
 	LOADINGTIP14 = "艾维尔明克每两周在阿利隆贩卖一次外来种族的奴隶.",
 	LOADINGTIP15 = "角色价值会提升其所有服务收益",
+	LOADINGTIP16 = """More classes can be unlocked from the guilds""", # MISSING TRANSLATION
 	LOADLORE1NAME = "行会",
 	LOADLORE2NAME = "行会领袖",
 	LOADLORE3NAME = "疯王",
@@ -1023,6 +1026,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TOOLTIPPROGRESSREQUIRED = "所需工作单位",
 	TOOLTIPSAVECHARACTER = "保存角色模板",
 	TOOLTIPLOADCHARACTER = "加载角色模板",
+	CHARCREATE_TOOLTIP_REROLL_NAME = """Reroll Name""", # MISSING TRANSLATION
+	CHARCREATE_TOOLTIP_RANDOM_RACE = """Random Race""", # MISSING TRANSLATION
+	CHARCREATE_TOOLTIP_REROLL_APPEARANCE = """Reroll Appearance""", # MISSING TRANSLATION
 	TOOLTIPSKIPPROLOGUE = "跳过序章任务并从第一段主线开始。贷款任务会被禁用。",
 	TOOLTIPSKILLPOINTS = "技能点通过战斗获得，用于购买新的战斗技能。",
 	TOOLTIPSUCCUBUS = """[Succubus] 通过魅惑他人获得力量.每个眷属都会爱上 [succubus],并让 [him] 变得更强.""",
@@ -1030,6 +1036,37 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TOOLTIPMASTERTRAINING = "主人天赋需要使用专属主人点数购买，主人点数会随主线推进获得。",
 	SAVENAME = "存档名称",
 	SAVETEMPLATEDESCRIPT = "您可以保存现有的角色模板以供重复使用.",
+	CHARCREATE_MODE_STATS = """Stats""", # MISSING TRANSLATION
+	CHARCREATE_MODE_VISUALS = """Visuals""", # MISSING TRANSLATION
+	CHARCREATE_SURNAME_PLACEHOLDER = """Surname""", # MISSING TRANSLATION
+	CHARCREATE_NICKNAME_PLACEHOLDER = """Optional""", # MISSING TRANSLATION
+	CHARCREATE_RACE_DEFAULT = """Race""", # MISSING TRANSLATION
+	CHARCREATE_TRAIT_DEFAULT = """Trait""", # MISSING TRANSLATION
+	CHARCREATE_CLASS_DEFAULT = """Class""", # MISSING TRANSLATION
+	CHARCREATE_PERSONALITY_DEFAULT = """Personality""", # MISSING TRANSLATION
+	CHARCREATE_SEX_TRAIT_DEFAULT = """Sex Trait""", # MISSING TRANSLATION
+	CHARCREATE_VISUALS_DESC_PLACEHOLDER = """""", # MISSING TRANSLATION
+	CHARCREATE_FOOD_MEAT = """Meat""", # MISSING TRANSLATION
+	CHARCREATE_FOOD_FISH = """Fish""", # MISSING TRANSLATION
+	CHARCREATE_FOOD_VEGETABLES = """Vegetables""", # MISSING TRANSLATION
+	CHARCREATE_FOOD_GRAINS = """Grains""", # MISSING TRANSLATION
+	CHARCREATE_FOOD_NEUTRAL = """Neutral""", # MISSING TRANSLATION
+	CHARCREATE_FOOD_STATE_LIKE = """Like""", # MISSING TRANSLATION
+	CHARCREATE_FOOD_STATE_NEUTRAL = """Neutral""", # MISSING TRANSLATION
+	CHARCREATE_FOOD_STATE_HATE = """Hate""", # MISSING TRANSLATION
+	CHARCREATE_DIET_HELP = """Select 1 Liked and at least 1 Hated food types.""", # MISSING TRANSLATION
+	CHARCREATE_UNASSIGNED_STATS = """Unassigned stats: %d""", # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_TOOLTIP = """Choose how this new character is related to the current master.""", # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_NONE = """None""", # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_CHILD = """Child""", # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_PARENT = """Parent""", # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_SIBLING = """Sibling""", # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_PANEL_PLACEHOLDER = """""", # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_PANEL_TEXT = """Select %s's relationship with %s.""", # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_NO_MASTER = """No master character is available for relationship selection.""", # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_BLOCKED_NO_MASTER = """No master character is available for relationship selection.""", # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_BLOCKED_CHILD = """Child is unavailable because the master must be the same age or older.""", # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_BLOCKED_PARENT = """Parent is unavailable because the master must be the same age or younger.""", # MISSING TRANSLATION
 	TOOLTIPIMPROVESCREEN = "通过献祭同品质同类型装备来强化当前装备。被献祭装备会消失。",
 	TOOLHANDLE = '工具手柄',
 	WEAPONHANDLE = '武器手柄',
@@ -1284,6 +1321,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SKILLFIREARRDESCRIPT_2 = "造成 100% 魔法攻击的 {color=yellow|火} 伤害。100% 概率附加 2 回合灼烧。",
 	SKILLMINDBLAST = "心灵冲击",
 	SKILLMINDBLASTDESCRIPT = "对单体目标造成 120% 魔法攻击的精神伤害。",
+	SKILLSLEEP = """Sleep""", # MISSING TRANSLATION
+	SKILLSLEEPDESCRIPT = """Puts target to {color=yellow|Sleep} for 2 turns. Sleep is removed when target takes damage.""", # MISSING TRANSLATION
 	SKILLPSYCHICBLAST = "精神冲击",
 	SKILLPSYCHICBLASTDESCRIPT = "对一整列造成 65% 魔法攻击的精神伤害。",
 	SKILLRESURRECT = "复活",
@@ -1347,6 +1386,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SKILLSOUL_BINDDESCRIPT = "扭曲目标心智使其屈服于你的意志。休整一天后将服从你大多数命令。",
 	SKILLFLY_EVASION = "飞行",
 	SKILLFLY_EVASIONDESCRIPT = "闪避提高 65，持续 3 回合。",
+	SKILLFLIGHT = """Flight""", # MISSING TRANSLATION
+	SKILLFLIGHTDESCRIPT = """Instant cast. Costs 5 mana to activate and 3 mana at the end of each turn. While active: 80% dodge chance against melee attacks, +25 Hit Chance, +50 Earth Resist. Cannot be used while Ensnared. Recast for free to cancel.""", # MISSING TRANSLATION
+	SKILLFLIGHT_REMOVE = """Land""", # MISSING TRANSLATION
 	SKILLEUPHORIA_APPLY = "亢奋",
 	SKILLEUPHORIA_APPLYDESCRIPT = "激活后，所有伤害提高量等于当前欲望值的一半。每回合会消耗部分欲望，再次激活可关闭。",
 	SKILLEUPHORIA_REMOVE = "亢奋",
@@ -2595,6 +2637,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	STATTASK_CRIT_CHANCE = "任务暴击率",
 	STATMAGIC_FIND = """魔法寻获""",
 	STATMAGIC_FINDDESCRIPT = "提高发现物品的品质",
+	STATMANHUNT = """Manhunt""", # MISSING TRANSLATION
+	STATMANHUNTDESCRIPT = """Increases dungeon recruit find chance by 0.1 per point""", # MISSING TRANSLATION
 	RACEHUMAN = "人类",
 	RACEHUMANADJ = "人类",
 	RACEELF = "精灵",
@@ -2841,6 +2885,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	THRALLS1DESCRIPT = "拥有 1 名魅从",
 	THRALLS0DESCRIPT = "没有魅从",
 	EFFECTNAME_E_THRALL = "身为魅从",
+	EFFECTNAME_FLIGHT = """Flight""", # MISSING TRANSLATION
 	SKILLSUPREMACY = "至高无上",
 	SKILLSUPREMACYDESCRIPT = """类型：{color=green|仁慈}
 令目标对施法者产生敬畏与尊重。大幅提高忠诚度。受魅力因子加成。
@@ -3011,6 +3056,8 @@ DIALOGUEMASTER_LUST_EXPREPORT = "你利用 [targetname] 的欲望为 [targethim]
 	TRAITDRUIDDESCRIPT = "大地法术伤害：+20%",
 	TRAITBERSERKERDESCRIPT = "{color=brown|狂暴}：击杀一名敌人后，获得一个额外回合（每场战斗仅限一次）。",
 	TRAITSNIPERDESCRIPT = "单体物理伤害：+25%",
+	TRAITSHIELDBEARER = """Shield Counter""", # MISSING TRANSLATION
+	TRAITSHIELDBEARERDESCRIPT = """{color=brown|Shield Counter}: If equipped with a shield that grants Evasion, counter enemy attacks with basic attack in melee range""", # MISSING TRANSLATION
 	TRAITPALADINDESCRIPT = "{color=brown|重击}：对亡灵和恶魔类敌人伤害增加 25%，受到其伤害减少 15%。",
 	TRAITROUGEDESCRIPT = """When in front row: +35% Damage, +10% Crit Chance..""", # MISSING TRANSLATION
 	TRAITASSASSINDESCRIPT = "{color=brown|潜行大师}：穿着中型装甲时也可激活隐藏状态。",
@@ -3386,6 +3433,7 @@ DIALOGUEMASTER_LUST_EXPREPORT = "你利用 [targetname] 的欲望为 [targethim]
 TRAITEFFECTBLESSED = "祝福:ATK +25%%",
 	TRAITEFFECTMENTALBLESS = "心灵祝福:MATK +25%%",
 	TRAITEFFECTFLY = "飞行:闪避 +65",
+	TRAITEFFECTFLIGHT = """Flight: 80% dodge vs melee, +25 Hit Chance, +50 Earth Resist""", # MISSING TRANSLATION
 	TRAITEFFECTSHATTERED = "破碎:闪避 -25",
 	TRAITEFFECTFIREBURST = "烈焰爆发: -20 命中率",
 	TRAITEFFECTSWIPE = "横扫:DEF -20",
@@ -3519,6 +3567,7 @@ TRAITEFFECTBLESSED = "祝福:ATK +25%%",
 	BUFFDESCRIPTBLEEDING = "流血",
 	BUFFDESCRIPTCONFUSE = "混乱",
 	BUFFDESCRIPTFREEUSE = "允许在不消耗回合的情况下使用物品",
+	BUFFDESCRIPTPALADINGUARD = """Counters melee-reachable damaging attacks with a basic attack. For player characters, requires a shield with Evasion bonus.""", # MISSING TRANSLATION
 	BUFFDESCRIPTSHRED = "护甲降低",
 	BUFFDESCRIPTSHATTER = """破裂:魔防降低50%%""",
 	BUFFDESCRIPTGROWL = "速度与闪避降低",
@@ -3717,6 +3766,8 @@ PROFMASTER = "主人",
 	PROFSEXTOYDESCRIPT = "The art of being an object of desire for others.",
 	PROFFIGHTER = "斗士",
 	PROFFIGHTERDESCRIPT = "Fighters are basic melee soldiers capable of dealing and taking damage in combat.",
+	PROFSHIELDBEARER = """Shieldbearer""", # MISSING TRANSLATION
+	PROFSHIELDBEARERDESCRIPT = """Defensive fighters who specialize in shields, endurance, and punishing enemies that overextend in melee.""", # MISSING TRANSLATION
 	PROFKNIGHT = "骑士",
 	PROFKNIGHTDESCRIPT = "A noble fighter ready to serve [his] [Master]. [He] performs [his] duties on the frontline of the battlefield with honor. ",
 	PROFAPPRENTICE = "学徒",
@@ -3805,6 +3856,8 @@ PROFSOULEATER = "噬魂者",
 	PROFFREYAS_PRIESTESSDESCRIPT = "Once a high priestess of elves, now this title hold more bluster than power.",
 	PROFASHMEDAI_CHAMPION = "阿斯蒙蒂斯冠军",
 	PROFASHMEDAI_CHAMPIONDESCRIPT = "The new chosen to carry out depraved acts in its name. WIP",
+	PROFROUGE = """Apex Predator""", # MISSING TRANSLATION
+	PROFROUGEDESCRIPT = """Neither warrior nor beast alone, but a perfect speciemen honed to dominate.""", # MISSING TRANSLATION
 	PROFDEATHKNIGHT = "死亡骑士",
 	PROFDEATHKNIGHTDESCRIPT = "Sworn to their nature or master, cursed warriors are able to grow stronger the more they slaughter.",
 	PROFWARLOCK = "术士",
@@ -5317,6 +5370,8 @@ ACHI_BTN_GROUP_MAIN = "主要",
 	ACHIBONUS_EXPSCROLLS_DESC = "开始游戏时自带10个经验卷轴",
 	ACHIBONUS_TALENT = """天赋异禀""",
 	ACHIBONUS_TALENT_DESC = """开局额外获得 2 点主人天赋点""",
+	ACHIBONUS_MASTER_FACTORS = """Gifted""", # MISSING TRANSLATION
+	ACHIBONUS_MASTER_FACTORS_DESC = """Start with +4 points for master factor upgrades""", # MISSING TRANSLATION
 	ACHIBONUS_CRAFTSMAN = """工匠""",
 	ACHIBONUS_CRAFTSMAN_DESC = "开始游戏时自带锻造、裁缝和炼金术一级升级",
 	ACHIBONUS_ROOMS = "寄宿房",
@@ -5925,6 +5980,8 @@ ACHI_BTN_GROUP_MAIN = "主要",
 继续？ （原始保存文件将保持不变，但不适用于当前版本）""",
 	CREATECHARQUESTION = "确认创建此角色？",
 	CREATECHARACTERFEMALE = "警告：您选择了女性角色。大多数游戏脚本事件都是从男性视角进行的，但无论如何都会显示。确认？",
+	CHARCREATE_INTRO_MASTER = """Create your Master Character""", # MISSING TRANSLATION
+	CHARCREATE_INTRO_SLAVE = """Create your Starting Slave""", # MISSING TRANSLATION
 	RETURNTOMAINMENUQUESTION = "返回主菜单？",
 	FORGETLOCATIONQUESTION = "忘记这个位置？所有出现的角色都会被送回大厦.这个动作无法撤消.",
 	SENDCHARBACKQUESTION = "发回[name]？",
@@ -7013,6 +7070,21 @@ ACHI_BTN_GROUP_MAIN = "主要",
 {color=yellow|— 西风。}
 
 泽菲拉在自我介绍后向你短暂鞠躬。""",
+	DIVINE_SYMBOL_23_FOX = """You enter a sumptuous though dimly lit room. A small figure on the other side turns at you.
+
+For a moment Zephyra simply stares. Then her eyes widen and she suddenly darts forward in a blur, circling around you with restless energy. Before you can say anything she leans in close, sniffing at your clothes, your legs and your tail, hardly containing her excitement.
+
+{color=yellow|— Wait, wait... no way. You're a foxkin? Ahaha, that's unexpected.}
+
+She makes another quick round around you, tail twitching with poorly restrained delight, then abruptly stops herself and straightens up as though remembering she was supposed to be acting with more dignity.
+
+{color=yellow|— Well, it took you a while and now you don't even knock. I'd call it rude, but who am I to talk now.}
+
+The miniature girl reacted to your appearance with poorly disguised excitement, though she was clearly making an effort to compose herself again.
+
+{color=yellow|— Zephyra.}
+
+Zephyra briefly bowed down to you after she introduced herself.""", # MISSING TRANSLATION
 	DIVINE_SYMBOL_24 = """{color=yellow|— 在我忘记之前...这是一份熟人礼物。}
 
 她递给你一卷纸，是她从小桌子上的一堆纸中取出的。当你展开它时，你会看到一幅粗糙但有些才华横溢的[man]肖像素描。再看一眼，你就会发现这个人与你有几分相似。看到你脸上的表情，泽菲拉露出兴奋的光芒。
@@ -10593,6 +10665,9 @@ Erlen：——当然，她只会选择当时在神殿的人，所以通常只允
 	GOT_CALI_1_1 = """被束缚的狼女坐在你面前，抬头看着你，眼神里带着挑衅和一丝恐惧。
 
 {color=yellow| - 所以？你现在要对我做什么？}""",
+	GOT_CALI_1_1_WOLF = """The bound wolf girl lays on the ground left to you. As she looks up at you, she notices your wolflike features. A faint sign of interest crosses her face, though the defiance in her eyes remains tempered by fear and caution.
+
+{color=yellow| — So? What are you going to do with me now?}""", # MISSING TRANSLATION
 	GOT_CALI_1_2 = """被束缚的狼少女静静地坐在你的面前。她平静的表情流露出她试图掩饰的恐惧和惊奇。
 
 {color=yellow| ——你、你在看什么？你要对我做什么？ }""",
@@ -11506,6 +11581,12 @@ You look puzzled as you realize that he points at Cali, who does not take it wit
 
 {color=yellow| - 你好！我是莉莉娅。你叫什么名字？你是冒险家吗？你都这么大了！我们这里不常见到像你这样的人。是什么把你带到这里来的？}""",
 	LILIA_STARTING_1_OPTION_1 = "很高兴认识你,我是 [name].",
+	LILIA_STARTING_1_FAIRY = """As you move through the village with occasional elves and fae observing you, you notice that most residents stay very cautious and turn away once your gaze falls upon them. That is, except for one very curious fairy with long red hair. The moment she notices your wings and unmistakable fairy features, her eyes light up with open interest. Yet rather than taking you for one of the locals, she only seems more intrigued by the fact that someone like you is clearly not from here. After she realizes that she has caught your attention, she dashes at you, completely ignoring any formalities as she releases a rapid torrent of questions.
+
+{color=yellow| — Hi! I'm Lilia. What's your name? Are you an adventurer? You're a fairy too, but not from around here, are you? We don't get visitors like you often. What brought you here?}""", # MISSING TRANSLATION
+	LILIA_STARTING_1_SMALL = """As you move through the village with occasional elves and fae observing you, you notice that most residents stay very cautious and turn away once your gaze falls upon them. That is, except for one very curious fairy with long red hair. After she realizes that she has caught your attention, she darts toward you, then pauses in mid-flight to stare for a second with bright, puzzled curiosity. You are much closer to her own size than the outsiders she seems to have imagined, and that only makes you seem even more unusual to her. A moment later she perks right back up and barrels ahead, completely ignoring any formalities as she releases a rapid torrent of questions.
+
+{color=yellow| — Hi! I'm Lilia. What's your name? Are you an adventurer? Oh, you're small... I mean, small for an outsider! I thought you'd all be huge. We still don't get people like you here often. What brought you here?}""", # MISSING TRANSLATION
 	LILIA_STARTING_1_OPTION_2 = "哇哦，没那么快。",
 	LILIA_STARTING_1_OPTION_3 = "你真是不懂礼貌，是吗？",
 	LILIA_STARTING_2_1 = """{color=yellow|— 啊，抱歉，遇到你这样的人真是太令人兴奋和难得了！你看起来又大又壮！}
@@ -18528,6 +18609,10 @@ DUNGEONNOUN1 = "隧道 Tunnels",
 	RACE_BONUSES = "种族奖励",
 	SOCIAL_SKILLS = "社交技能",
 	COMBAT_SKILLS = "战斗技巧",
+	RACE_EXCLUSIVE_SKILL_LABEL = """Racial Skill: %s""", # MISSING TRANSLATION
+	RACE_EXCLUSIVE_CLASS_LABEL = """Exclusive Class: %s""", # MISSING TRANSLATION
+	CLASS_SOCIAL_SKILL_LABEL = """Social""", # MISSING TRANSLATION
+	CLASS_COMBAT_SKILL_LABEL = """Combat""", # MISSING TRANSLATION
 	PERSONAL_STAT = "个人统计",
 	PERSONAL_METRICS = """统计""",
 	REMOVE_BUTTON = """释放""",

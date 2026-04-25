@@ -472,12 +472,11 @@ var statdata = {
 		code = 'disabled_masteries',
 		name = '',
 		descript = '',
-		is_negative = true,
 		baseicon = 'food_love',
 		default_bonus = 'array',
 		array_type = 'mastery',
 		direct = false,
-		tags = []
+		tags = ['is_negative']
 	},
 	#factors
 	growth_factor = {
@@ -1325,6 +1324,17 @@ var statdata = {
 		direct = false,
 		show_info = {category = 'non_combat'}
 	},
+	manhunt = {
+		code = 'manhunt',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		type = 'misc',
+		default_bonus = 'add',
+		tags = ['numeric', 'integer'],
+		direct = false,
+		show_info = {category = 'non_combat'}
+	},
 	mod_fish = {
 		code = 'mod_fish',
 		name = '',
@@ -1719,7 +1729,6 @@ var statdata = {
 		code = 'breakdown_disabled',
 		name = '',
 		descript = '',
-		is_negative = true,
 		baseicon = 'food_love',
 		default_bonus = 'append',
 		direct = false,

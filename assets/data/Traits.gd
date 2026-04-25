@@ -379,6 +379,14 @@ var traits = {
 		tags = ['combat_casting'],
 		bonusstats = {}
 	},
+	shieldbearer = {
+		code = 'shieldbearer',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_paladin_5_display', 'e_tr_paladin_5'],
+	},
 	paladin = {
 		code = 'paladin',
 		name = '',

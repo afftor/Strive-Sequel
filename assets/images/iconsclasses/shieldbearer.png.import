@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/redhead_1.png-b4d67332e510d4d31661704db748db5d.stex"
+path="res://.import/shieldbearer.png-2c4e4f2a30ca678f7ae90acfa2cb2f45.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/fullscreen scenes/redhead_1.png"
-dest_files=[ "res://.import/redhead_1.png-b4d67332e510d4d31661704db748db5d.stex" ]
+source_file="res://assets/images/iconsclasses/shieldbearer.png"
+dest_files=[ "res://.import/shieldbearer.png-2c4e4f2a30ca678f7ae90acfa2cb2f45.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
