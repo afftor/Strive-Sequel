@@ -831,12 +831,13 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("foxmask", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("service_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("hector_armor", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("jacket", {}))
 		var titem = globals.CreateGearItem("cali_heirloom_test", {})
 		titem.set_quality_level('legendary')
 		globals.AddItemToInventory(titem) #legendary version
 		globals.AddItemToInventory(globals.CreateGearItem("worker_outfit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("leather_collar", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("garb_of_forest", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("amulet_of_recognition", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("corruptive_essence"))
@@ -959,7 +960,7 @@ func test_mode():
 
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
 		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
-		input_handler.interactive_message('purchased_cali', '', {})
+		#input_handler.interactive_message('purchased_cali', '', {})
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		

@@ -7070,6 +7070,21 @@ ACHI_BTN_GROUP_MAIN = "主要",
 {color=yellow|— 西风。}
 
 泽菲拉在自我介绍后向你短暂鞠躬。""",
+	DIVINE_SYMBOL_23_FOX = """You enter a sumptuous though dimly lit room. A small figure on the other side turns at you.
+
+For a moment Zephyra simply stares. Then her eyes widen and she suddenly darts forward in a blur, circling around you with restless energy. Before you can say anything she leans in close, sniffing at your clothes, your legs and your tail, hardly containing her excitement.
+
+{color=yellow|— Wait, wait... no way. You're a foxkin? Ahaha, that's unexpected.}
+
+She makes another quick round around you, tail twitching with poorly restrained delight, then abruptly stops herself and straightens up as though remembering she was supposed to be acting with more dignity.
+
+{color=yellow|— Well, it took you a while and now you don't even knock. I'd call it rude, but who am I to talk now.}
+
+The miniature girl reacted to your appearance with poorly disguised excitement, though she was clearly making an effort to compose herself again.
+
+{color=yellow|— Zephyra.}
+
+Zephyra briefly bowed down to you after she introduced herself.""", # MISSING TRANSLATION
 	DIVINE_SYMBOL_24 = """{color=yellow|— 在我忘记之前...这是一份熟人礼物。}
 
 她递给你一卷纸，是她从小桌子上的一堆纸中取出的。当你展开它时，你会看到一幅粗糙但有些才华横溢的[man]肖像素描。再看一眼，你就会发现这个人与你有几分相似。看到你脸上的表情，泽菲拉露出兴奋的光芒。
@@ -10650,6 +10665,9 @@ Erlen：——当然，她只会选择当时在神殿的人，所以通常只允
 	GOT_CALI_1_1 = """被束缚的狼女坐在你面前，抬头看着你，眼神里带着挑衅和一丝恐惧。
 
 {color=yellow| - 所以？你现在要对我做什么？}""",
+	GOT_CALI_1_1_WOLF = """The bound wolf girl lays on the ground left to you. As she looks up at you, she notices your wolflike features. A faint sign of interest crosses her face, though the defiance in her eyes remains tempered by fear and caution.
+
+{color=yellow| — So? What are you going to do with me now?}""", # MISSING TRANSLATION
 	GOT_CALI_1_2 = """被束缚的狼少女静静地坐在你的面前。她平静的表情流露出她试图掩饰的恐惧和惊奇。
 
 {color=yellow| ——你、你在看什么？你要对我做什么？ }""",
@@ -11563,6 +11581,12 @@ You look puzzled as you realize that he points at Cali, who does not take it wit
 
 {color=yellow| - 你好！我是莉莉娅。你叫什么名字？你是冒险家吗？你都这么大了！我们这里不常见到像你这样的人。是什么把你带到这里来的？}""",
 	LILIA_STARTING_1_OPTION_1 = "很高兴认识你,我是 [name].",
+	LILIA_STARTING_1_FAIRY = """As you move through the village with occasional elves and fae observing you, you notice that most residents stay very cautious and turn away once your gaze falls upon them. That is, except for one very curious fairy with long red hair. The moment she notices your wings and unmistakable fairy features, her eyes light up with open interest. Yet rather than taking you for one of the locals, she only seems more intrigued by the fact that someone like you is clearly not from here. After she realizes that she has caught your attention, she dashes at you, completely ignoring any formalities as she releases a rapid torrent of questions.
+
+{color=yellow| — Hi! I'm Lilia. What's your name? Are you an adventurer? You're a fairy too, but not from around here, are you? We don't get visitors like you often. What brought you here?}""", # MISSING TRANSLATION
+	LILIA_STARTING_1_SMALL = """As you move through the village with occasional elves and fae observing you, you notice that most residents stay very cautious and turn away once your gaze falls upon them. That is, except for one very curious fairy with long red hair. After she realizes that she has caught your attention, she darts toward you, then pauses in mid-flight to stare for a second with bright, puzzled curiosity. You are much closer to her own size than the outsiders she seems to have imagined, and that only makes you seem even more unusual to her. A moment later she perks right back up and barrels ahead, completely ignoring any formalities as she releases a rapid torrent of questions.
+
+{color=yellow| — Hi! I'm Lilia. What's your name? Are you an adventurer? Oh, you're small... I mean, small for an outsider! I thought you'd all be huge. We still don't get people like you here often. What brought you here?}""", # MISSING TRANSLATION
 	LILIA_STARTING_1_OPTION_2 = "哇哦，没那么快。",
 	LILIA_STARTING_1_OPTION_3 = "你真是不懂礼貌，是吗？",
 	LILIA_STARTING_2_1 = """{color=yellow|— 啊，抱歉，遇到你这样的人真是太令人兴奋和难得了！你看起来又大又壮！}

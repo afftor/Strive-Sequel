@@ -24,9 +24,9 @@ var tasklist = {
 	special = { #don't remove - we need fallback for special tasks
 		code = 'special',
 		base_workers = 1,
-		production_icon = load("res://assets/images/gui/service.png"),
+		production_icon = load("res://assets/Textures_v2/DUNGEON/Icons/exclaim.png"),
 		production_descript = tr("JOBPROSTITUTEGOLDDESCRIPT"),
-		icon = "res://assets/images/gui/service.png",
+		icon = "res://assets/Textures_v2/DUNGEON/Icons/exclaim.png",
 		progress_per_item = 10,
 		tags = ['hide_progress_ratio', 'special']
 	},

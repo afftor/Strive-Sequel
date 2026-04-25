@@ -452,7 +452,7 @@ var professions = {
 		traits = ['shieldbearer'],
 		skills = [],
 		combatskills = [],
-		conflict_classes = [],
+		conflict_classes = ['knight'],
 	},
 	knight = {
 		code = 'knight',
@@ -462,12 +462,12 @@ var professions = {
 		tags = [],
 		categories = ['combat'],
 		showupreqs = [{code = "class_unlocked", class = 'knight', operant = 'eq', check = true}],
-		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 4},{code = 'has_profession', profession = 'fighter', check = true},{code = 'has_profession', profession = 'paladin', check = false}],
+		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 4},{code = 'has_profession', profession = 'fighter', check = true}],
 		statchanges = {hpmax = 15, armor = 5, damage_mod_melee = 0.15, speed = 5, chg_strength_max = 1, mastery_warfare = 2, mastery_point_combat = 2},
 		traits = ['heavy_armor'],
 		skills = [],
 		combatskills = [],
-		conflict_classes = ['paladin'],
+		conflict_classes = ['paladin','shieldbearer'],
 	},
 	dragonknight = {
 		code = 'dragonknight',
@@ -793,12 +793,12 @@ var professions = {
 		tags = [],
 		categories = ['combat'],
 		showupreqs = [{code = "class_unlocked", class = 'paladin', operant = 'eq', check = true}],
-		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 5},{code = 'has_profession', profession = 'shieldbearer', check = true},{code = 'has_profession', profession = 'knight', check = false}],
-		statchanges = {armor = 8, hpmax = 25, resist_dark = 10, resist_light = 10, chg_strength_max = 1, mastery_leadership = 2, mastery_warfare = 1, mastery_light = 1},
+		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 5},{code = 'has_profession', profession = 'shieldbearer', check = true}],
+		statchanges = {armor = 10, hpmax = 25, resist_dark = 10, resist_light = 10, chg_strength_max = 1, mastery_leadership = 2, mastery_warfare = 1, mastery_light = 1},
 		traits = ['heavy_armor', 'paladin'],
 		skills = [],
 		combatskills = [],
-		conflict_classes = ['knight'],
+		conflict_classes = ['knight','deathknight'],
 	},
 	shaman = {
 		code = 'shaman',
@@ -936,7 +936,7 @@ var professions = {
 		traits = ['bishop'],
 		skills = [],
 		combatskills = [],
-		conflict_classes = ['necromancer'],
+		conflict_classes = ['necromancer','deathknight'],
 	},
 	monk = {
 		code = 'monk',
@@ -1076,7 +1076,7 @@ var professions = {
 		categories = ['combat'],
 		showupreqs = [],
 		reqs = [{code = 'has_profession', profession = 'knight', check = true},{code = 'stat', stat = 'physics', operant = 'gte', value = 80}],
-		statchanges = {hpmax = 10, resist_light = 20, speed = 5, chg_strength_max = 1, mastery_point_universal = 1, mastery_warfare = 1},
+		statchanges = {hpmax = 10, resist_light = 20, chg_strength_max = 1, mastery_point_universal = 1, mastery_warfare = 1},
 		traits = ['deathknight_trait'],
 		skills = [],
 		combatskills = [],
@@ -1189,3 +1189,32 @@ var professions = {
 		conflict_classes = [],
 	},
 }
+
+
+func _ready():
+	_apply_conflict_class_reqs()
+
+
+func _apply_conflict_class_reqs():
+	for prof_id in professions:
+		if !professions[prof_id].has('reqs'):
+			professions[prof_id].reqs = []
+	for prof_id in professions:
+		var prof = professions[prof_id]
+		var conflicts = []
+		if prof.has('conflict_classes'):
+			conflicts += prof.conflict_classes
+		for other_id in professions:
+			if other_id == prof_id:
+				continue
+			var other = professions[other_id]
+			if other.has('conflict_classes') and other.conflict_classes.has(prof_id) and !conflicts.has(other_id):
+				conflicts.append(other_id)
+		for conflict_id in conflicts:
+			var exists = false
+			for req in prof.reqs:
+				if req.code == 'has_profession' and req.profession == conflict_id and req.check == false:
+					exists = true
+					break
+			if !exists:
+				prof.reqs.append({code = 'has_profession', profession = conflict_id, check = false})

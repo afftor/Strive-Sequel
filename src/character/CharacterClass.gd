@@ -163,6 +163,10 @@ func get_stat(statname, nobonus = false, desc_ready = false):
 			'armor_base':
 #				return ('servant') #temporal, until correct recolor of armor
 				var res =  equipment.get_gear_type('chest')
+				if res == 'hector_armor':
+					res = 'chest_base_metal'
+				elif res == 'garb_of_forest':
+					res = 'chest_base_leather'
 				if res == null and !has_work_rule('nudity'):
 					res = 'underwear'
 				if !GeneratorData.transforms[statname].has(res):
@@ -171,6 +175,8 @@ func get_stat(statname, nobonus = false, desc_ready = false):
 			'armor_lower':
 #				return ('servant') #temporal, until correct recolor of armor
 				var res = equipment.get_gear_type('legs')
+				if res == 'garb_of_forest':
+					res = 'legs_base_leather'
 				if res == null and !has_work_rule('nudity'):
 					res = 'underwear'
 				if !GeneratorData.transforms[statname].has(res):
@@ -1834,7 +1840,10 @@ func decipher_reqs(reqs, colorcode = false, purestat = false):
 #			continue
 		text2 = decipher_single(i)
 		if colorcode == true:
-			if checkreqs([i], purestat):
+			var passed = checkreqs([i], purestat)
+			if i.code == 'has_profession' and i.check == false:
+				passed = !has_profession(i.profession)
+			if passed:
 				text2 = '{color=green|' + text2 + '}'
 			else:
 				text2 = '{color=red|' + text2 + '}'
