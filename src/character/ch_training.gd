@@ -457,6 +457,8 @@ func apply_training(code):
 			dispositions_known[cat] = true  
 			effect_text += "%s - %s \n" % [tr(cat_data.name), dispositions[cat]] 
 	#apply
+	if parent.get_ref().has_status('no_loyalty_training'):
+		result_data.loyalty = 0
 	loyalty += result_data.loyalty
 	spirit += result_data.spirit
 	if randf() >= 0.6 && cat != 'positive' && code != 'mindread':

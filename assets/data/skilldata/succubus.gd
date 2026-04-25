@@ -37,6 +37,7 @@ var skills = {
 		chance = [['caster.charm_factor', '*15'], '-', ['target.wits_factor', '*10'], '_10'],
 		reqs = [{code = 'can_add_thrall', check = true}],
 		targetreqs = [
+			{code = 'has_status', status = 'no_trainings', check = false},
 			{code = 'trait', trait = 'succubus', check = false},
 			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = null}
 			],

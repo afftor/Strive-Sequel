@@ -2041,14 +2041,9 @@ var data = {
 						],
 						type = "next_dialogue",
 						bonus_effects = [
+							{code = "make_story_character", value = "Jean", recruit_from_location = true},
 							{
-								code = "make_story_character",
-								value = "Jean",
-								recruit_from_location = true
-							},
-							{
-								code = "add_timed_event",
-								value = "jean_sidequest_start",
+								code = "add_timed_event", value = "jean_sidequest_start",
 								args = [{type = "add_to_date", date = [3,4], hour = 1}]
 							}
 						]
@@ -2057,9 +2052,7 @@ var data = {
 						code = "jean_recruit_reply",
 						dialogue_argument = 2,
 						text = "JEAN_RECRUIT_OPT_NONEED",
-						reqs = [
-
-						],
+						reqs = [],
 						type = "next_dialogue"
 					}
 				]
@@ -2090,20 +2083,12 @@ var data = {
 						code = "jean_recruit_reply",
 						dialogue_argument = 3,
 						text = "JEAN_RECRUIT_OPT_SLAVE",
-						reqs = [
-
-						],
+						reqs = [],
 						type = "next_dialogue",
 						bonus_effects = [
+							{code = "make_story_character", value = "Jean", recruit_from_location = true, slave_category = "slave"},
 							{
-								code = "make_story_character",
-								value = "Jean",
-								recruit_from_location = true,
-								slave_category = "slave"
-							},
-							{
-								code = "add_timed_event",
-								value = "jean_sidequest_start",
+								code = "add_timed_event", value = "jean_sidequest_start",
 								args = [{type = "add_to_date", date = [3,4], hour = 1}]
 							}
 						]
@@ -2112,9 +2097,7 @@ var data = {
 						code = "jean_recruit_go",
 						dialogue_argument = 0,
 						text = "JEAN_RECRUIT_OPT_GO",
-						reqs = [
-
-						],
+						reqs = [],
 						type = "next_dialogue"
 					}
 				]
@@ -2224,21 +2207,12 @@ var data = {
 		]
 	},
 	jean_recruit_reply_asap = {
-		reqs = [
-
-		],
-		tags = [
-			"dialogue_scene"
-		],
+		reqs = [],
+		tags = ["dialogue_scene"],
 		common_effects = [
+			{code = "make_story_character", value = "Jean", recruit_from_location = true},
 			{
-				code = "make_story_character",
-				value = "Jean",
-				recruit_from_location = true
-			},
-			{
-				code = "add_timed_event",
-				value = "jean_sidequest_start",
+				code = "add_timed_event", value = "jean_sidequest_start",
 				args = [{type = "add_to_date", date = [3,4], hour = 1}]
 			}
 		],
@@ -2305,16 +2279,10 @@ var data = {
 				code = "hara_recruit_reply",
 				dialogue_argument = 1,
 				text = "HARA_RECRUIT_OPT_PRO",
-				reqs = [
-
-				],
+				reqs = [],
 				type = "next_dialogue",
 				bonus_effects = [
-					{
-						code = "make_story_character",
-						value = "Hara",
-						recruit_from_location = true
-					}
+					{code = "make_story_character", value = "Hara", recruit_from_location = true}
 				]
 			},
 			{
@@ -2403,25 +2371,17 @@ var data = {
 				code = "hara_recruit_reply",
 				dialogue_argument = 2,
 				text = "HARA_RECRUIT_OPT_DO",
-				reqs = [
-
-				],
+				reqs = [],
 				type = "next_dialogue",
 				bonus_effects = [
-					{
-						code = "make_story_character",
-						value = "Hara",
-						recruit_from_location = true
-					}
+					{code = "make_story_character", value = "Hara", recruit_from_location = true}
 				]
 			},
 			{
 				code = "close",
 				dialogue_argument = 0,
 				text = "HARA_RECRUIT_OPT_OTHER",
-				reqs = [
-
-				],
+				reqs = [],
 				type = "next_dialogue"
 			}
 		]
@@ -2929,57 +2889,26 @@ var data = {
 		]
 	},
 	kuro_recruit_end_zeph = {
-		reqs = [
-
-		],
-		tags = [
-			"dialogue_scene",
-			"master_translate"
-		],
+		reqs = [],
+		tags = ["dialogue_scene", "master_translate"],
 		character = "kuro",
 		character2 = "zephyra",
-		text = [
-			{
-				text = "KURO_RECRUIT_JOIN_ZEPH6",
-				reqs = [
-
-				]
-			}
-		],
+		text = "KURO_RECRUIT_JOIN_ZEPH6",
 		options = [
 			{
 				code = "close",
 				dialogue_argument = 0,
 				text = "DIALOGUECLOSE",
-				reqs = [
-
-				],
+				reqs = [],
 				type = "next_dialogue",
 				bonus_effects = [
+					{code = "make_story_character", value = "Kuro", recruit_from_location = true},
+					{code = "remove_decision", value = "TempRecruitKuro"},
+					{code = "update_city"},
 					{
-						code = "make_story_character",
-						value = "Kuro",
-						recruit_from_location = true
-					},
-					{
-						code = "remove_decision",
-						value = "TempRecruitKuro"
-					},
-					{
-						code = "update_city"
-					},
-					{
-						code = "add_timed_event",
-						value = "kuro_tome_start",
+						code = "add_timed_event", value = "kuro_tome_start",
 						args = [
-							{
-								type = "add_to_date",
-								date = [
-									5,
-									5
-								],
-								hour = 1
-							}
+							{type = "add_to_date", date = [5, 5], hour = 1}
 						]
 					}
 				]
@@ -3303,55 +3232,25 @@ var data = {
 		]
 	},
 	kuro_recruit_end = {
-		reqs = [
-
-		],
-		tags = [
-			"dialogue_scene"
-		],
+		reqs = [],
+		tags = ["dialogue_scene"],
 		character = "kuro",
-		text = [
-			{
-				text = "KURO_RECRUIT_END",
-				reqs = [
-
-				]
-			}
-		],
+		text = "KURO_RECRUIT_END",
 		options = [
 			{
 				code = "close",
 				dialogue_argument = 0,
 				text = "DIALOGUECLOSE",
-				reqs = [
-
-				],
+				reqs = [],
 				type = "next_dialogue",
 				bonus_effects = [
+					{code = "make_story_character", value = "Kuro", recruit_from_location = true},
+					{code = "remove_decision", value = "TempRecruitKuro"},
+					{code = "update_city"},
 					{
-						code = "make_story_character",
-						value = "Kuro",
-						recruit_from_location = true
-					},
-					{
-						code = "remove_decision",
-						value = "TempRecruitKuro"
-					},
-					{
-						code = "update_city"
-					},
-					{
-						code = "add_timed_event",
-						value = "kuro_tome_start",
+						code = "add_timed_event", value = "kuro_tome_start",
 						args = [
-							{
-								type = "add_to_date",
-								date = [
-									5,
-									5
-								],
-								hour = 1
-							}
+							{type = "add_to_date", date = [5, 5], hour = 1}
 						]
 					}
 				]

@@ -273,7 +273,7 @@ func build_training_servant():
 			panel.pressed = true
 		else:
 			panel.pressed = false
-			if person.get_stat('loyalty') >= cost and person.checkreqs(trdata.reqs) and person.training.check_stored_reqs(tr):
+			if person.get_stat('loyalty') >= cost and person.checkreqs(trdata.reqs) and person.training.check_stored_reqs(tr) and !person.has_status('no_trainings'):
 				panel.connect('toggled', self, 'press_trait_servant', [tr])
 			else:
 				panel.disabled = true
@@ -397,7 +397,7 @@ func build_training_traits():
 			panel.get_node('Label').visible = false
 		else:
 			panel.pressed = false
-			if person.get_stat('loyalty') >= person.get_training_cost() and person.checkreqs(trdata.reqs) and person.training.check_stored_reqs(tr): 
+			if person.get_stat('loyalty') >= person.get_training_cost() and person.checkreqs(trdata.reqs) and person.training.check_stored_reqs(tr) and !person.has_status('no_trainings'): 
 				panel.connect('toggled', self, 'press_trait', [tr])
 			else:
 				panel.disabled = true

@@ -233,6 +233,7 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	CHARNAMELIRA = "Lira",
 	CHARNAMEAMELIA = "Amelia",
 	CHARNAMEKURO = "Kuro",
+	CHARNAMEROUGE = "Rouge",
 	LOCATIONTHE = "The ",
 	TOTALPRODUCTIVITY = "Total Productivity",
 	INVENTORYCHARACTERLIST = "Character List",
@@ -3385,6 +3386,7 @@ Increased Health, DEF and MDEF""",
 	TRAITEFFECTHATEDFOOD = "Hated Food: -10%% Productivity",
 	TRAITEFFECTSTARVE = "Starvation: -50%% Productivity, -50%% Damage",
 	TRAITEFFECTGRAVEINJ = "Grave Injury: -25%% Productivity, -50 Sexuals. Can't participate in Combat",
+	TRAITEFFECTINJ = "Injury: -30%% Max HP, -20 Hitrate.",
 	TRAITEFFECTDISCIPLINE = "Discipline: +50%% Labor and craft efficiencies",
 	TRAITEFFECTSEDUCE = "Seduce: -7 Obedience drain",
 	TRAITEFFECTGREATSEDUCE = "Great Seduce: Prevents escapes; -9 Obedience drain, +50%% Lust growth",
@@ -17908,6 +17910,7 @@ You feel like she almost has to force herself from hiding from you.""",
 
 {color=yellow|— [Master], you've been missing Lilia? Let's go to bed already!}""",
 	DIALOGUEJEANINITIATEM = "{color=yellow|— Yes? Don't just give me that oogling look, if you don't have anything serious I have business to do.}",
+	DIALOGUEROUGEINITIATEM = "{color=yellow|— Yes? Don't just give me that oogling look, if you don't have anything serious I have business to do.}", #2fix!!
 	DIALOGUELILITHINIT = "{color=yellow|— [Master], you wanna play? I'm always ready to play.}",
 	DIALOGUEZEPHYRA_UNDERWEAR = "In your hands you hold a piece of clothing which was surrendered to you by Zephyra. Pondering on what actual benefit it can have, one thought is stuck in your mind... What if you wear it on your head? Surely, this is a terrible idea...",
 	DIALOGUEZEPHYRA_UNDERWEAROPTION = "Do it",
@@ -23871,32 +23874,23 @@ You can feel your climax building, a tightening in your groin. You can feel hers
 	JEAN_WED_6 = """You follow her over the edge a few strokes later, burying yourself deep inside her as your release hits. A groan rips from your throat as you pulse, filling her with your seed. You collapse against her, your breath coming in ragged gasps, your bodies slick with sweat. For a long moment, you lie there, your heart hammering against your ribs, her body still trembling beneath yours.
 
 {color=yellow| — AAah... This felt too good... Hey, you aren't planning to just stop here?}""",
-	ROUGE_QUEST_NAME = "Rouge: Imperial games",
-	ROUGE_QUEST_SUMMARY = "Rouge's rivalry in the Empire has drawn you into her affairs.",
-	ROUGE_QUEST_STAGE_MANSION = "Bring Rouge to the mansion.",
-	ROUGE_QUEST_STAGE_FURNITURE = "Speak with the Workers Guild about Rouge's room.",
-	ROUGE_QUEST_STAGE_LETTER = "Wait for Rouge's next request.",
-	ROUGE_QUEST_STAGE_MELCHOR = "Deliver Rouge's letter to Melchor.",
-	ROUGE_QUEST_STAGE_WAREHOUSE = "Search the Empire capital for the cult's warehouse.",
-	ROUGE_QUEST_STAGE_RAID = "Report the warehouse to Melchor.",
-	ROUGE_QUEST_STAGE_REWARD = "Return to Melchor.",
-	ROUGE_QUEST_STAGE_ROUGE = "Return to Rouge.",
+	
 	ROUGE_DEMONESS_INTERMISSION_START = """At the rich bedroom of the imperial palace Rouge finds a visitor - Mhyrana was waiting for her there. As Rouge looked around she found her servant cowering in the corner, looking relieved at her arrival.
 
-{color=yellow|Grotus: — Miss Rouge, you have a vis...!}
+{color=green|Grotus: — Miss Rouge, you have a vis...!}
 
 {color=yellow|Rouge: — Shut it, I have eyes. Leave us alone, worm.}
 
-{color=yellow|Grotus: — B-but of course, my mistress!}""",
-	ROUGE_DEMONESS_INTERMISSION_MHYRANA = """{color=aqua|Mhyrana: — So you've met with [him]. The one who defeated your other sister.}
+{color=green|Grotus: — B-but of course, my mistress!}""",
+	ROUGE_DEMONESS_INTERMISSION_MHYRANA_1 = """{color=aqua|Mhyrana: — So you've met with [him]. The one who defeated your other sister.}
 
 {color=yellow|Rouge: — Are you taunting me? I don't care about those failures, neither the black one nor the white one.}
 
 {color=aqua|Mhyrana: — Yet, you have not produced the results that I've requested.}
 
 {color=yellow|Rouge: — Yes, your stupid ancient trash, I remember. You know I'm working on it.}
-
-{color=aqua|Mhyrana: — I think you work far more on your power-hungry ambitions than that.}
+""",
+	ROUGE_DEMONESS_INTERMISSION_MHYRANA_2 = """{color=aqua|Mhyrana: — I think you work far more on your power-hungry ambitions than that.}
 
 {color=yellow|Rouge: — Those go hand in hand, don't they? Either way, don't spoil my fun, you know it never ends well for those who do.}
 
@@ -23905,15 +23899,15 @@ You can feel your climax building, a tightening in your groin. You can feel hers
 As the words sound like a thinly disguised threat, the fox woman pays no attention to it. Inside she feels more irritated about the comparison.
 
 {color=yellow|Rouge: — Are you done yet?}""",
-	ROUGE_DEMONESS_INTERMISSION_GROTUS = """{color=aqua|Mhyrana: — Yeah, I am...}
+	ROUGE_DEMONESS_INTERMISSION_GROTUS_1 = """{color=aqua|Mhyrana: — Yeah, I am...}
 
 Mhyrana turns her glance toward the slightly open door. She notices the silhouette of the recently dismissed servant who has been watching the two women talk. As he realizes the demon woman is looking at him, his body jerks in response, quickly retreating.
 
 {color=aqua|Mhyrana: — How does someone like you keep such a nasty thing around?}
 
 {color=yellow|Rouge: — Grotus? Ha-ha, that's exactly why.}
-
-{color=aqua|Mhyrana: — Care to explain?}
+""",
+	ROUGE_DEMONESS_INTERMISSION_GROTUS_2 = """{color=aqua|Mhyrana: — Care to explain?}
 
 {color=yellow|Rouge: — I took him from the slums. He's a man of no ambition, no virtue, no dignity, no intelligence. Utterly pathetic. It truly fascinates me how a person can be so much like an animal.}
 
@@ -23930,7 +23924,7 @@ The demon woman's eyes narrow in response, her lips pressed into a deeper frown 
 	ROUGE_MELCHOR_OPTION_MILD_EXERCISE = "It was but a mild exercise for me.",
 	ROUGE_MELCHOR_OPTION_CROWDS_PLEASED = "The crowds seemed rather pleased.",
 	ROUGE_MELCHOR_OPTION_CIRCUMSTANCES = "I was only dragged into it by circumstances.",
-	ROUGE_MELCHOR_CONFRONTATION_RESPONSE = """Melchor exhales through his nose, unimpressed.
+	ROUGE_MELCHOR_CONFRONTATION_RESPONSE_1 = """Melchor exhales through his nose, unimpressed.
 
 {color=aqua|Melchor: — Spare me the excuses. This is not a scene, and I will not have order undermined for entertainment. Especially not under my stewardship.}
 
@@ -23938,9 +23932,9 @@ He turns fully toward Rouge, his expression hardening.
 
 {color=aqua|Melchor: — As for you... this is the last straw. A stranger with no standing, yet somehow you slither closer to the Emperor with every passing day.}
 
-{color=yellow|Rouge: — You make it sound so flattering when you say it like that.}
+{color=yellow|Rouge: — You make it sound so flattering when you say it like that.}""",
 
-{color=aqua|Melchor: — You manipulate and embed yourself where you do not belong. I will not tolerate this any longer.}
+	ROUGE_MELCHOR_CONFRONTATION_RESPONSE_2 = """{color=aqua|Melchor: — You manipulate and embed yourself where you do not belong. I will not tolerate this any longer.}
 
 Rouge raises her hands lightly, mock-placating.
 
@@ -23948,9 +23942,9 @@ Rouge raises her hands lightly, mock-placating.
 
 She glances at you sideways.
 
-{color=yellow|Rouge: — That is, if [name] wishes to take me into [his] custody.}
+{color=yellow|Rouge: — That is, if [name] wishes to take me into [his] custody.}""",
 
-Melchor freezes, clearly caught off guard. After a long pause, he looks at you, jaw tight.
+	ROUGE_MELCHOR_CONFRONTATION_RESPONSE_3 = """Melchor freezes, clearly caught off guard. After a long pause, he looks at you, jaw tight.
 
 {color=aqua|Melchor: — ...Absurd. Yet preferable. Will you take responsibility for her and keep her away from here?}""",
 	ROUGE_MELCHOR_OPTION_ACCEPT_CUSTODY = "That's a bit sudden... But who am I to refuse a beautiful woman.",
@@ -23962,24 +23956,25 @@ Melchor freezes, clearly caught off guard. After a long pause, he looks at you, 
 Melchor folds his arms.
 
 {color=aqua|Melchor: — See that you do. This arrangement is already a concession.}""",
-	ROUGE_MELCHOR_CONFRONTATION_REFUSE = """Rouge gives you a mildly offended look, then chuckles.
+	ROUGE_MELCHOR_CONFRONTATION_REFUSE_1 = """Rouge gives you a mildly offended look, then chuckles.
 
 {color=yellow|Rouge: — Don't regret it later, dear.}
 
 She turns back to Melchor.
 
 {color=yellow|Rouge: — I'll be staying for now then, you'll have to denounce me officially first. And we'll see how the council members vote. Fufu.}""",
-	ROUGE_MELCHOR_CONFRONTATION_DEPART = """{color=aqua|Melchor: — Damn you... I'll make you pay for all of this.}
+	ROUGE_MELCHOR_CONFRONTATION_REFUSE_2 = """{color=aqua|Melchor: — Damn you... I'll make you pay for all of this.}
 
 {color=yellow|Rouge: — Of course, just don't keep me waiting. Until then...}
 
 Rouge turns around and leaves without letting either of you respond.""",
+
 	ROUGE_MANSION_ARRIVAL = """You arrive at your mansion with Rouge walking a half step ahead of you, inspecting the halls with open curiosity.
 
-{color=yellow|Rouge: — Well, this place isn't too shabby. I guess that's a given for the mayor of Aliron himself.}""",
+{color=yellow|Rouge: — Well, this place isn't too shabby. I guess that's a given for the mayor of Aliron [him]self.}""",
 	ROUGE_MANSION_OPTION_REASON = "Why have you requested to join me?",
 	ROUGE_MANSION_OPTION_STATUS = "You aren't just here because of my status, are you?",
-	ROUGE_MANSION_REASON = """{color=yellow|Rouge: — Why indeed. You are fresh blood, a self-made man, aren't you? Not like Melchor, his ilk from the senate, or even the emperor. I thought I'd been at the empire too long and getting some fresh air isn't the worst idea.}
+	ROUGE_MANSION_REASON = """{color=yellow|Rouge: — Why indeed. You are fresh blood, a self-made [man], aren't you? Not like Melchor, his ilk from the senate, or even the emperor. I thought I'd been at the empire too long and getting some fresh air isn't the worst idea.}
 
 Rouge smiled with a faint hint of something predatory.""",
 	ROUGE_MANSION_STATUS = """{color=yellow|Rouge: — Fufu, I wonder. Could it be this little kingdom has caught my eye as an empire's sleeping agent? Not really, but I do have an interest in you, you know. It's like something unseen just draws me to your side... Ahaha.}
@@ -23990,6 +23985,7 @@ Rouge's playful demeanor makes it impossible to tell whenever she's joking or se
 	ROUGE_MANSION_OPTION_SHOW_QUARTERS = "Follow me. I'll show you your quarters.",
 	ROUGE_MANSION_OPTION_SLAVE_STATUS = "Since you're under my roof, you can be placed under slave status.",
 	ROUGE_MANSION_CUSTODY_WARNING = "{color=yellow|Rouge: — Ah, my apologies, I only wish for us to coexist beneficially. Fufu.}",
+	ROUGE_MANSION_LEAD = "{color=yellow|Rouge: — Right behind you.}",
 	ROUGE_MANSION_SLAVE_STATUS = "{color=yellow|Rouge: — Really? Is that some particular kink of yours? That sounds like a fun game, alright, you can try, but don't think I'll be any easier to handle because of it.}",
 	ROUGE_MANSION_OPTION_SLAVE_CONFIRM = "I'll do it then... for my reassurance and your safety.",
 	ROUGE_MANSION_OPTION_NEVERMIND_QUARTERS = "Nevermind, let me show you your quarters.",
@@ -23999,6 +23995,7 @@ Rouge's playful demeanor makes it impossible to tell whenever she's joking or se
 {color=yellow|Rouge: — Very well. My luggage will be arriving soon, don't worry, it's just a few personal things. Now if you'll excuse me...}
 
 She rudely closes the door, leaving you standing outside. Feels like you'll be hearing more from her soon.""",
+
 	ROUGE_ROOM_COMPLAINT_START = """Not long after you've left for your own business, Rouge comes to your office with a less than pleasant expression.
 
 {color=yellow|Rouge: — [name], I need your attention. This is completely inexcusable! I know this place isn't up to the empire's standards but the room you've given me is just insulting.}""",
@@ -24012,9 +24009,11 @@ She rudely closes the door, leaving you standing outside. Feels like you'll be h
 	ROUGE_ROOM_COMPLAINT_DEMANDING = "{color=yellow|Rouge: — I may be demanding, but so what? I know what I deserve, and if you expect me to stay on your side you should make my time worth it.}",
 	ROUGE_ROOM_COMPLAINT_REFUSE = "{color=yellow|Rouge: — Oh? I thought better of you. You might not recognize the fortune of having me by your side. Let it be known that you should not disappoint me like that.}",
 	ROUGE_ROOM_COMPLAINT_ACCEPT = "{color=yellow|Rouge: — Now that's what I like to hear. I don't expect this poor countryside to have the best service I could get back there, but it's the thought that counts after all.}",
+
 	ROUGE_WORKERS_FURNITURE_START = """{color=aqua|Sigmund: — Furnitcha ya say..? Well, it would be an honor to do dat for a mayor's guest.}
 
 {color=yellow|Rouge: — What a pleasant thing to hear. Let me have a look at your catalogs.}""",
+	ROUGE_WORKERS_FURNITURE_REENTER = """{color=aqua|Sigmund: — Yah, I remember. Ya've got da payment?}""",
 	ROUGE_WORKERS_FURNITURE_TERMS = """After some time passes, Rouge returns to you with Sigmund.
 
 {color=aqua|Sigmund: — Yah, ya have quite the demands, lass.}
@@ -24022,18 +24021,21 @@ She rudely closes the door, leaving you standing outside. Feels like you'll be h
 {color=yellow|Rouge: — Ah, my only concern is that the mayor has a place befitting [his] status.}
 
 Rouge passes you the list of articles for her bedroom, still smiling as you read the final sum. It comes to 10,000 gold with all work considered. Some of the pieces are ready to be delivered while others are to be made with the utmost urgency.""",
-	ROUGE_WORKERS_OPTION_PAY_GOLD = "Fine, I can surely recoup these costs...",
+	ROUGE_WORKERS_OPTION_PAY_GOLD = "Fine, I can surely recoup these costs... (10000 gold)",
 	ROUGE_WORKERS_OPTION_CANNOT_AFFORD = "We can't afford it...",
 	ROUGE_WORKERS_OPTION_DISCUSS = "Can we discuss this?",
 	ROUGE_WORKERS_OPTION_MATERIALS = "I have the materials you need.",
 	ROUGE_WORKERS_OPTION_NEED_TIME = "I need some time to consider.",
+	ROUGE_WORKERS_FURNITURE_PAY = """Rouge smiles at your agreement.
+	
+	{color=yellow|Rouge: — Good. I shall be waiting back home then}""",
 	ROUGE_WORKERS_FURNITURE_CANNOT_AFFORD = "{color=yellow|Rouge: — Huh, I didn't take you for a cheapskate. Do you mind reconsidering? This would reflect very poorly on you, you know.}",
 	ROUGE_WORKERS_OPTION_RECONSIDER = "Fine, we can get it if you insist...",
 	ROUGE_WORKERS_OPTION_NO_INDULGE = "I have no need for such things, and I've decided I'm not going to indulge your every whim.",
 	ROUGE_WORKERS_FURNITURE_MATERIALS_OFFER = """{color=aqua|Sigmund: — Yah, I understand, I actually expected dat. I can offer ya a secondary contract. 150 Thick Leather, 100 Iron Wood. I know dat ya have the workforce for those.}
 
 Seemingly Rouge is not too bothered by your hesitation.""",
-	ROUGE_WORKERS_FURNITURE_PAID = "{color=yellow|Rouge: — Good. I shall be waiting back home then.}",
+	ROUGE_WORKERS_FURNITURE_RECONSIDER = "Rouge nods with satisfaction.",
 	ROUGE_WORKERS_FURNITURE_CHARM_SUCCESS = """Rouge gives you a scornful look but there's a hint of respect in it. It seems she's ready to give you credit for this decision.
 
 {color=yellow|Rouge: — Very well, if you say so, [master]. I don't think we should have come all the way here for nothing, so if you don't mind, I'll pay for it myself. Don't look so surprised, did you really think I was poor?}
@@ -24044,6 +24046,7 @@ Rouge leaves to seal the contract as you wait for her to return. Mildly surprise
 {color=yellow|Rouge: — I can't believe it. You really said that? I'm starting to think you might not be the right [man] for me to follow after all. Fine, I'll pay for the necessities with my own money, it's a beggar's wage to me anyway.}
 
 Rouge leaves to seal the contract as you wait for her to return. Mildly surprised, you leave the workers' guild with Rouge walking slightly behind — it seems her attitude has grown colder.""",
+
 	ROUGE_LETTER_REQUEST = """In the afternoon Rouge approaches you with a request. She seems to have grown quite accustomed to being your resident.
 
 {color=yellow|Rouge: — Darling, it's been a while since we left the capital. While I'm not in any particular hurry to return, I've been picking up some rumors from there. And since I've still promised Melchor not to show my face there, maybe you could do me a favor?}""",
@@ -24062,7 +24065,8 @@ She pauses as if remembering something.
 {color=yellow|Rouge: — I suppose there's one more reason. I can probably trust you more than any of my friends in the empire with something like this.}""",
 	ROUGE_LETTER_REQUEST_RIVALS = "{color=yellow|Rouge: — Even bitter rivals can share a common interest once in a while, fufu. Don't fret about it, and we'll all benefit.}",
 	ROUGE_LETTER_REQUEST_ACCEPT = "{color=yellow|Rouge: — Very good. I'll be watching from somewhere nearby. Just so he won't spot me and get angry about it, fufu.}",
-	ROUGE_CHAT_ROOT = "",
+
+	ROUGE_CHAT_ROOT = " ",#fix
 	ROUGE_CHAT_OPTION_CULT = "Tell me about the cult.",
 	ROUGE_CHAT_OPTION_MELCHOR = "What's your deal with Melchor?",
 	ROUGE_CHAT_CULT = "{color=yellow|Rouge: — Mostly they are weaklings who found some comfort in the madness of going to war with reality. I suppose I got dragged into it a bit as well, but you can't blame me. Mhyrana as their leader can be a fearsome adversary.}",
@@ -24074,6 +24078,7 @@ She pauses as if remembering something.
 	ROUGE_CHAT_CULT_KURO = "{color=yellow|Rouge: — She always was a strange one, so I'm hardly surprised. That's on her though. Besides, haven't you already given her a piece of your mind? Might need a few more lessons to make sure her head stays on straight, fufu.}",
 	ROUGE_CHAT_CULT_GOAL = "{color=yellow|Rouge: — Hell if I know. Mhyrana has been plotting something like a grand revolution across the empire, or maybe it's some sort of cataclysm. Her followers are little more than fanatics and I can't say whether she has a real plan or is just acting on a whim.}",
 	ROUGE_CHAT_MELCHOR = "{color=yellow|Rouge: — Ah, he's just an old fool clinging to power long past his time. He doesn't like me, the feeling is mutual. He thinks he's so great simply because he was born into high society as part of an ancient clan. He really believes that makes him untouchable and important — what a laugh.}",
+
 	ROUGE_MEET_MELCHOR_START = """You find Melchor at his office. The rich decoration makes even you feel a twinge of envy. After getting the meeting approved, you make your way inside as he observes you with a skeptical look.
 
 {color=aqua|Melchor: — You again. [name], if I'm not mistaken. Mayor of Aliron, been hunting down artifacts and got dragged into business with the elves and the dwarven kingdom.}""",
@@ -24099,6 +24104,7 @@ The contents of the letter name a few locations in the city likely used by the c
 	ROUGE_MEET_OPTION_REWARD = "What will I get out of it?",
 	ROUGE_MEET_MELCHOR_MUTUAL_INTEREST = "{color=aqua|Melchor: — Yeah, yeah, now get to it. I seethe just thinking about those fanatics plotting behind our backs at this very moment.}",
 	ROUGE_MEET_MELCHOR_REWARD = "{color=aqua|Melchor: — You came here on that vixen's behalf, didn't you? Ask her for your reward for being a good errand boy. Well, if this operation yields results you might get some recognition from the empire. Now go, you can't afford to waste time here.}",
+	
 	ROUGE_WAREHOUSE_SEARCH = "After going through various storage districts and finding little more than empty buildings with traces of questionable activity, you finally come across a multistory warehouse showing signs of recent use. Avoiding some suspicious-looking guards you make your way to the back entrance.",
 	ROUGE_WAREHOUSE_APPROACH_KETCH = "You hear a familiar voice as your curiosity draws you closer to the door.",
 	ROUGE_WAREHOUSE_APPROACH_HENCHMAN = "You hear a loud argument coming through the door which catches your attention.",
@@ -24119,11 +24125,12 @@ The contents of the letter name a few locations in the city likely used by the c
 	ROUGE_WAREHOUSE_SLIP_INSIDE = """You quietly make it inside, moving through a poorly lit passage. Your nose quickly catches the foul smell filling the air. Further down the passage you find a small half-open door. Peering inside, you catch sight of a few ritual circles smeared in blood. One of the tables appears to have a dismembered body on it.
 
 Before you can get back out, you hear footsteps behind you — your presence has been discovered.""",
-	ROUGE_WAREHOUSE_CAPTURE = """Suddenly you hear footsteps behind you. A cult patrol cuts off your escape route.
-
-{color=aqua|— Hey, who's there!? We've got a snitch here!}
+	ROUGE_WAREHOUSE_CAPTURE_1 = """Suddenly you hear footsteps behind you. A cult patrol cuts off your escape route.
+""",
+	ROUGE_WAREHOUSE_CAPTURE_2 = """{color=aqua|— Hey, who's there!? We've got a snitch here!}
 
 A powerful security spell you hadn't noticed activates and catches you in its grip. You feel your consciousness slipping...""",
+
 	ROUGE_INTERROGATION_KETCH_START = """You wake up in a dark room, your hands tied to a chair. Your head is splitting with a headache but your limbs seem to be intact.
 
 {color=yellow|Ketch: — Well, our sleeping princess is finally awake.}
@@ -24153,12 +24160,13 @@ As he reaches for his blade, a sudden banging at the door stops him.""",
 
 {color=aqua|Henchman: — Who the hell is this [guy]? Why haven't you put [him] with the rest?}
 
-{color=aqua|Cultist: — We found him lurking around outside, he might know something.}""",
-	ROUGE_INTERROGATION_HENCHMAN_QUESTION = """{color=aqua|Henchman: — Fine, then I'll file a report to Mhyrana.}
+{color=green|Cultist: — We found him lurking around outside, he might know something.}""",
+	ROUGE_INTERROGATION_HENCHMAN_QUESTION_1 = """{color=aqua|Henchman: — Fine, then I'll file a report to Mhyrana.}
 
 {color=aqua|Henchman: — So, our unlucky guest, let's hear it — who knows you're here?}""",
 	ROUGE_INTERROGATION_OPTION_BUSINESS = "None of your business.",
 	ROUGE_INTERROGATION_OPTION_SQUAD = "I have a squad ready to storm this place.",
+	ROUGE_INTERROGATION_HENCHMAN_QUESTION_2 = """{color=aqua|Henchman: —Hah, looks like you want it the hard way. Can't complain...}""",
 	ROUGE_INTERROGATION_OVER_KETCH = """{color=aqua|Goon: — Master Ketch, there's a group of people outside the building, looks like some kind of mob — could be officials...}
 
 {color=yellow|Ketch: — Huh, what the hell?!}
@@ -24168,11 +24176,11 @@ As he reaches for his blade, a sudden banging at the door stops him.""",
 {color=yellow|Ketch: — Damn it... Stay put, I'll be right back.}""",
 	ROUGE_INTERROGATION_OVER_HENCHMAN = """{color=aqua|Henchman: — Master, there's a group of people outside the building, looks like some kind of mob — could be officials...}
 
-{color=aqua|Cultist: — Huh, what the hell?!}
+{color=green|Cultist: — Huh, what the hell?!}
 
 {color=aqua|Henchman: — What do we do? You need to come see this.}
 
-{color=aqua|Cultist: — Damn it... We'll be right back.}""",
+{color=green|Cultist: — Damn it... We'll be right back.}""",
 	ROUGE_GROTUS_RESCUE = """As your interrogator composes himself and leaves the room, after a moment the door opens and another man walks in. You recognize him as Grotus, Rouge's servant whom you've seen before. He moves closer anxiously and begins undoing your restraints.
 
 {color=yellow|Grotus: — You fool... I can't believe I'm being made to rescue you. Do you have any idea what kind of danger I'm putting myself in? If it weren't for the mistress's orders I'd gut you myself!}
@@ -24180,10 +24188,11 @@ As he reaches for his blade, a sudden banging at the door stops him.""",
 As he finishes freeing you, you finally manage to stand and thank him.
 
 {color=yellow|Grotus: — Forget it, I'm out of here. Don't you dare mention who helped you if they catch you again! The western side of the building should have only a few watchers. I'm gone!}""",
-	ROUGE_WAREHOUSE_ESCAPE = """The small man retreats so quickly you can barely track him — until another cultist steps into his path. The shouts from outside are getting louder, so you decide it's better to move.
+	ROUGE_WAREHOUSE_ESCAPE_1 = """The small man retreats so quickly you can barely track him — until another cultist steps into his path. The shouts from outside are getting louder, so you decide it's better to move.""",
+	ROUGE_WAREHOUSE_ESCAPE_2 = """Making it out of the building you reach the small back gate, but two men are blocking the way, weapons drawn and ready to stop you.""",
+	ROUGE_WAREHOUSE_ESCAPE_WIN = """As you deal with the two cultists and put distance between yourself and the warehouse, Grotus appears before you unexpectedly.
 
-Making it out of the building you reach the small back gate, but two men are blocking the way, weapons drawn and ready to stop you.""",
-	ROUGE_WAREHOUSE_ESCAPE_WIN = "{color=yellow|Grotus: — Not too bad for a moron like you. Remember to be grateful for my help when you report back to mistress Rouge!}",
+{color=yellow|Grotus: — Not too bad for a moron like you. Remember to be grateful for my help when you report back to mistress Rouge!}""",
 	ROUGE_WAREHOUSE_OPTION_FULL_OF_YOURSELF = "You are really full of yourself.",
 	ROUGE_WAREHOUSE_OPTION_WHAT_NOW = "What do I do now?",
 	ROUGE_WAREHOUSE_GROTUS_REPRIMAND = "Grotus doesn't seem to pay the slightest attention to your reprimand — the adrenaline from the danger is clearly still running hot.",
@@ -24201,11 +24210,10 @@ Saying that he left you to yourself. Perhaps now you can report back to Melchor.
 {color=aqua|Soldier Leader: — We've confirmed these are the dangerous cultists and they're not surrendering. Move in.}
 
 A small group of combat mages began chanting potent fire spells, quickly setting the barricades ablaze while others kept bystanders at a distance. Agonized cries began echoing from inside the building.""",
-	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE = """As the cult's followers kept the soldiers occupied, Ketch slipped into a small underground tunnel prepared specifically for an escape. He fought his way past a couple of soldiers before his followers managed to set up a rearguard, but the fighting left him tired and wounded.
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_1 = """As the cult's followers kept the soldiers occupied, Ketch slipped into a small underground tunnel prepared specifically for an escape. He fought his way past a couple of soldiers before his followers managed to set up a rearguard, but the fighting left him tired and wounded.
 
-{color=yellow|Ketch: — Fucking hell, how did it go this wrong? If I get my hands on that [name] I swear [he]'ll never—}
-
-A figure stepped out of the shadows ahead. Ketch's expression shifted to shock — not because it was someone unexpected, but because of what it meant.
+{color=yellow|Ketch: — Fucking hell, how did it go this wrong? If I get my hands on that [name] I swear [he]'ll never—}""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2 = """A figure stepped out of the shadows ahead. Ketch's expression shifted to shock — not because it was someone unexpected, but because of what it meant.
 
 {color=yellow|Ketch: — You... You set this whole thing up, you bitch!}
 
@@ -24215,23 +24223,56 @@ A figure stepped out of the shadows ahead. Ketch's expression shifted to shock �
 	ROUGE_REPORT_MELCHOR_KETCH_DEAD = """The strike comes before Ketch can see it. A wound to his chest kills him on the spot, blood spraying across the walls.
 
 {color=yellow|Rouge: — Fufu, I hope darling won't be too cross with me about this.}""",
-	ROUGE_REPORT_MELCHOR_BASEMENT_INTRO = """It doesn't take long for the imperial mages to finish off the remaining cultists and extinguish the fires. You make your way into the building, which is miraculously not too badly damaged. A small open cellar trapdoor catches your eye. You descend just in time to hear a pained cry from ahead. Moving through it you find Rouge, to your surprise, having just finished off Ketch. His lifeless body slumps to the ground.
+	ROUGE_REPORT_KETCH_BASEMENT_INTRO = """It doesn't take long for the imperial mages to finish off the remaining cultists and extinguish the fires. You make your way into the building, which is miraculously not too badly damaged. A small open cellar trapdoor catches your eye. You descend just in time to hear a pained cry from ahead. Moving through it you find Rouge, to your surprise, having just finished off Ketch. His lifeless body slumps to the ground.
 
 {color=yellow|Rouge: — Ah, [name], just in time.}""",
 	ROUGE_REPORT_OPTION_WHAT_HAPPENED = "What happened here?",
 	ROUGE_REPORT_OPTION_CAPITAL = "Aren't you supposed to stay away from the capital?",
-	ROUGE_REPORT_MELCHOR_WHAT_HAPPENED = "{color=yellow|Rouge: — Just taking out some trash. I heard the Hybris champion gave you trouble in the past. I had my own grievances with him as well.}",
-	ROUGE_REPORT_MELCHOR_CAPITAL = "{color=yellow|Rouge: — Fufu, I suppose I may have bent one little promise — you won't tell on me though, will you? I'll stay well clear of this from now on.}",
-	ROUGE_REPORT_MELCHOR_BASEMENT = """{color=yellow|Rouge: — There's a hidden cult basement just around the corner. I imagine you'd like to take a look before Melchor's men sweep the place.}
-
-While the upper level of the warehouse mostly held weapons and various tools, the underground was a different story. Cramped rooms were filled with refuse and dirty rags. You couldn't quite make sense of it until one of the rooms revealed a grim sight: many human bodies and parts piled together, gutted, drained of blood. The stench made your stomach turn.
+	ROUGE_REPORT_KETCH_WHAT_HAPPENED = "{color=yellow|Rouge: — Just taking out some trash. I heard the Hybris champion gave you trouble in the past. I had my own grievances with him as well.}",
+	ROUGE_REPORT_KETCH_CAPITAL = "{color=yellow|Rouge: — Fufu, I suppose I may have bent one little promise — you won't tell on me though, will you? I'll stay well clear of this from now on.}",
+	ROUGE_REPORT_KETCH_BASEMENT_1 = """{color=yellow|Rouge: — There's a hidden cult basement just around the corner. I imagine you'd like to take a look before Melchor's men sweep the place.}""",
+	ROUGE_REPORT_KETCH_BASEMENT_2 = """While the upper level of the warehouse mostly held weapons and various tools, the underground was a different story. Cramped rooms were filled with refuse and dirty rags. You couldn't quite make sense of it until one of the rooms revealed a grim sight: many human bodies and parts piled together, gutted, drained of blood. The stench made your stomach turn.
 
 {color=yellow|Rouge: — They used this place to sacrifice people. Mostly the poor and immigrants who wouldn't be looked for. Looks like they were building toward something big.}""",
 	ROUGE_REPORT_OPTION_OTHER_PLACES = "How many other places like this are there across the empire?",
 	ROUGE_REPORT_OPTION_CLEAR_OUT = "So you wanted me to help clear this out?",
+	ROUGE_REPORT_KETCH_BASEMENT_3 = """{color=yellow|Rouge: —  I'm sure more than a few. Why do you think the empire is fighting them? Though I don't think they're doing a particularly good job. Regardless, I have my own agenda and it's time for me to leave.}""",
+	ROUGE_REPORT_KETCH_BASEMENT_4 = """{color=yellow|Rouge: — No, I was mostly after that bastard. But it's good that we both got something out of it, isn't it? Not to mention we made Melchor do something useful for once. Well, it's time for me to leave now.}""",
+	
+	ROUGE_REPORT_HENCHMAN_BASEMENT_INTRO = """It doesn't take long for the imperial mages to finish off the remaining cultists and extinguish the fires. You make your way into the building, which is miraculously not too badly damaged. A small open cellar trapdoor catches your eye. You descend into the underground passage and find Rouge already there, standing amidst the cramped halls as if she had been expecting you.
+
+{color=yellow|Rouge: — Ah, [name], there you are. I thought you'd notice the trapdoor sooner or later.}""",
+	ROUGE_REPORT_OPTION_WHAT_DOING = "What are you doing here?",
+#	ROUGE_REPORT_OPTION_CAPITAL = "Aren't you supposed to stay away from the capital?",
+	ROUGE_REPORT_HENCHMAN_WHAT_HAPPENED = """{color=yellow|Rouge: — Looking around, of course. These fanatics had more than one secret tucked away beneath their feet, and I was curious what exactly they'd been hiding down here.}""",
+#	ROUGE_REPORT_KETCH_CAPITAL = """Rouge: — Fufu, I suppose I may have bent one little promise — you won't tell on me though, will you? I'll stay well clear of this from now on.""",
+	ROUGE_REPORT_HENCHMAN_BASEMENT_1 = """Rouge gestures for you to follow. She leads you deeper into the underground, through cramped rooms filled with refuse and dirty rags. You couldn't quite make sense of it until one of the rooms revealed a grim sight: many human bodies and parts piled together, gutted, drained of blood. A strange thought of familiarity towards the victims fills you. You feel like you can't take a single breath in that room. 
+
+Rouge's face turns grim, this is the first time you can see her being this serious.
+
+{color=yellow|Rouge: — They used this place to sacrifice people. Mostly the poor and immigrants who wouldn't be looked for. Looks like they were building toward something big.}""",
+#	ROUGE_REPORT_OPTION_OTHER_PLACES = "How many other places like this are there across the empire?",
+	ROUGE_REPORT_OPTION_SHOW = "So you came down here just to show me this?",
+	ROUGE_REPORT_HENCHMAN_BASEMENT_2 = """{color=yellow|Rouge: — I'm sure more than a few. Why do you think the empire is fighting them? Though I don't think they're doing a particularly good job.}""",
+	ROUGE_REPORT_HENCHMAN_BASEMENT_3 = """{color=yellow|Rouge: — Not just this. Come along, darling. There's one more thing worth seeing before Melchor's men start trampling through the place.}""",
+	ROUGE_REPORT_HENCHMAN_BASEMENT_4 = """Rouge leads you back up from the cellar and through the warehouse proper. The upper level is cluttered with crates, weapons, and various tools, though now that the fighting has ended it all feels strangely hollow. What looked at first like a simple stockpile now carried a more deliberate purpose: staging supplies for raids, rituals, and whatever the cult had been preparing next.
+
+{color=yellow|Rouge: — This is what they wanted to keep close at hand. Steel above, butcher's work below. Efficient, in its own ugly way.}
+
+You glance back toward the cellar entrance, the foul air still drifting up from beneath. The whole building feels tainted now, as if the blood below had seeped into the walls themselves.
+
+{color=yellow|Rouge: — Well, you've seen enough. The empire will pick through the remains soon enough, and I have no desire to linger around soldiers longer than necessary.}
+
+Before you can say anything else, Rouge steps away toward a side exit with that same unhurried confidence. By the time you move after her, she is already gone.""",
+	
 	ROUGE_REPORT_MELCHOR_RETURN = """You find Melchor at his office, seemingly satisfied with the raid.
 
 {color=aqua|Melchor: — Ah, you again. Good work leading us to the cult. We even recovered that bastard's body, though it seems someone else did the killing. Was that you?}""",
+	ROUGE_REPORT_MELCHOR_RETURN_2 = """You find Melchor at his office, seemingly satisfied with the raid.
+
+{color=aqua|Melchor: — Ah, you again. Good work leading us to the cult. We've confirmed the lower chambers were exactly as foul as you claimed. Nevertheless, here's something for your trouble — now I have more important matters to attend to.}
+
+He passes you some gold and has the soldiers escort you from the scene before departing himself.""",
 	ROUGE_REPORT_OPTION_IT_WAS_ROUGE = "It was Rouge.",
 	ROUGE_REPORT_OPTION_I_DID_IT = "Yeah, I did it.",
 	ROUGE_REPORT_MELCHOR_REWARD_ROUGE = """{color=aqua|Melchor: — W-what? You must be joking. My agents reported no one else in the area. Nevertheless, here's something for your trouble — now I have more important matters to attend to.}
@@ -24241,6 +24282,63 @@ He passes you some gold and has the soldiers escort you from the scene before de
 
 He passes you some gold and has the soldiers escort you from the scene before departing himself.""",
 	ROUGE_RETURN_TO_ROUGE = "{color=yellow|Rouge: — Nice work. I knew I could count on you. I think we've learned something about the cult's operations — let's take it easy for now.}",
+	
+	ROUGE_QUEST_NAME = "Rouge: Imperial games",
+	ROUGE_QUEST_SUMMARY = "Rouge's rivalry in the Empire has drawn you into her affairs.",
+	ROUGE_QUEST_STAGE_MANSION = "Bring Rouge to the mansion.",
+	ROUGE_QUEST_STAGE_FURNITURE = "Speak with the Workers Guild about Rouge's room.",
+	ROUGE_QUEST_STAGE_FURNITURE_GET = "Get requested furniture one way or another.",
+	ROUGE_QUEST_STAGE_LETTER = "Wait for Rouge's next request.",
+	ROUGE_QUEST_STAGE_MELCHOR = "Deliver Rouge's letter to Melchor.",
+	ROUGE_QUEST_STAGE_WAREHOUSE = "Search the Empire capital for the cult's warehouse.",
+	ROUGE_QUEST_STAGE_RAID = "Report the warehouse to Melchor.",
+	ROUGE_QUEST_STAGE_REWARD = "Return to Melchor.",
+	ROUGE_QUEST_STAGE_ROUGE = "Return to Rouge.",
+	
+	ROUGE_CAPITAL_OPTION_LETTER = "Meet Melchor",
+	ROUGE_CAPITAL_OPTION_WAREHOUSE = "Suspicious warehouse",
+	ROUGE_CAPITAL_OPTION_RAID = "Report",
+	ROUGE_CAPITAL_OPTION_REWARD = "Meet Melchor",
+	ROUGE_CHAT_OPTION_REPORT = "Your task is done.",
+	
+	ROUGE_SEX_1 = """Rouge lounges on the white silk sheets. Her body is a masterpiece of generous curves, her skin seems to glow in the dim light. Her hair, a cascade of fiery red, fans out around her head like a halo. Her fox ears, a darker shade of red, twitch with interest as you approach. Her eyes, the color of molten gold, gleam with a predatory light that promises both pleasure and possession. Two sleek, red tails, tipped with white, swish slowly behind her, a hypnotic, mesmerizing dance. She pats the space between her breasts, an invitation that is both a challenge and a command.
+
+{color=yellow|Rouge: — Come on here, I'm in the mood to make our first time... special. Unless it's too cheeky for you.}""",
+	ROUGE_SEX_2 = """You kneel over her chest, straddling her torso. Her breasts are large and soft, the perfect size to engulf your cock. You place your cock in the valley between them, the heat of her skin. She presses her breasts together, creating a tight, warm channel for you to embrace.
+
+{color=yellow|Rouge: — Yes... Enjoy it to your heart's content.}
+
+You start to move, a slow, deliberate slide that builds in speed and intensity. The sight of your cock disappearing and reappearing between her soft, warm flesh is intensely erotic. Her golden eyes never leave your face, watching every flicker of pleasure that crosses your features. Her tails wrap around your legs, holding you in place, a gentle but firm reminder that you are hers.""",
+	ROUGE_SEX_3 = """Her hands join her breasts, her fingers digging into the soft flesh, adding to the pressure. This new sensation, combined with the tight, wet heat of her breasts brings you to orgasm. You groan, your body tensing as you climax, your cum spurting onto her chest and neck, painting her tits with your semen.
+
+{color=yellow|Rouge: — Fufu, don't you dare to stop now. We're gonna do a whole lot more.}
+
+Unbeknownst to yourself, you feel that you are ready for way more.""",
+	ROUGE_SEX_4 = """The sight of your seed glistening on her skin seems to ignite a new fire in her eyes. Without a word, she shifts, lifting her head slightly from the pillows. Her long tongue darts out, curling around the base of your still-hard shaft. She begins to clean you with slow, deliberate licks, moving upwards with agonizing slowness. Her tongue is impossibly long and flexible; it wraps around your cock like a living thing as she takes you into her mouth.
+
+The warmth of her mouth is a stark contrast to the cool air on your wet skin. She takes you deep into her throat without any sign of gagging or discomfort; as if this was what she was born for. Her lips form a tight seal around the base while that incredible tongue continues its dance inside its hot prison.""",
+	ROUGE_SEX_5 = """The pressure builds, a coiling heat in your groin that demands release. Her movements become more urgent, her head bobbing faster as she senses your impending climax. Her golden eyes are locked onto yours, a silent command to let go, to give her everything. Just as the wave of pleasure crests and you feel the first spasm of orgasm, she pulls back with surprising speed.
+
+Your cock escapes her mouth with a wet pop just in time for the first thick rope of cum to arc through the air and land across her cheek. She doesn't flinch; instead she tilts her head back slightly and closes those gold eyes as if receiving some kind of sacred blessing from above.
+
+{color=yellow|Rouge: — Mm, yes, give me it all... Just for me!}
+
+More spurts follow one after another until they paint most parts of her face, forehead, and even some strands get caught in that fiery red hair.""",
+	ROUGE_SEX_6 = """Rouge doesn't give you a moment to recover. She releases her breasts, her hands moving to your shoulders, pulling you down for a brief, hard kiss. Her tails unwrap from your legs, only to wrap around your waist, pulling you down, positioning your still-hard cock at her entrance. She's wet, ready for you. You slide into her with a single, smooth thrust, her pussy clamping down on you, a hot, wet welcome.
+
+{color=yellow|Rouge: — Aaah, you fit... so perfectly...}""",
+	ROUGE_SEX_7 = """
+You start to move, a slow, deep rhythm that quickly builds in intensity. Her hips rise to meet yours, her legs wrapping around your waist, pulling you deeper. Her tails are everywhere, caressing your back, your arms, your legs, a constant, sensual touch that heightens your arousal.
+
+{color=yellow|Rouge: — Do it rougher, you fool.}
+
+Her body is a landscape of pleasure for you to explore. Your hands roam over her curves, your lips finding hers, your tongues tangling in a passionate kiss. Her hands are just as busy, her nails digging into your back, fingers tangling in your hair. The room fills with the sounds of raw sex - the slap of your bodies meeting, your moans and gasps.""",
+	ROUGE_SEX_8 = """You can feel your second climax building, a slow, steady pressure that threatens to overwhelm you. You can feel hers too, in the way her pussy starts to spasm around you, in the way her body tenses beneath you. At the last moment you push it the deepest you can. That's all it takes. Her body arches, a cry of pure pleasure tearing from her throat as she comes. Her pussy clamps down on your cock, milking you, pulling your own release from you.
+
+{color=yellow|Rouge: — AAaaaaah!... [name]!... Yes... }
+
+You collapse against her, your body spent, your breathing ragged. Her tails wrap around you, holding you close, a possessive, protective embrace.""",
+
 	LIRA_QUEST3_QUEST_NAME = "Lira's Lifestory",
 	LIRA_QUEST3_QUEST_SUMMARY = "Lira is trying to understand her new place in the mansion.",
 	LIRA_QUEST3_QUEST_STAGE_TALK = "Talk to Lira about her life at the mansion.",
@@ -25269,4 +25367,5 @@ Lira approaches you with a warm smile on her face and a clear determination in h
 	LIRA_QUEST2_OPTION_SET_FREE = "What if I set you free?",
 	LIRA_QUEST2_OPTION_SCREW_FATE_MEANS_PUTTING_GENUINE_SMILE = "Screw fate. If it means putting a genuine smile on your face, I'll free you from slavery. You can be my servant, not my property",
 	LIRA_QUEST2_OPTION_GLAD_ABLE_GIVE_YOUVE_BEEN_LOOKING = "I'm glad I was able to give you what you've been looking for. Don't worry, I'll keep treating you well",
+
 }

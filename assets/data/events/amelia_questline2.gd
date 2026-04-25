@@ -3577,27 +3577,11 @@ var data = {
 				],
 				dialogue_argument = 1,
 				bonus_effects = [
-					{
-						code = "money_change",
-						operant = "-",
-						value = 3000
-					},
-					{
-						code = "decision",
-						value = "amelia_bought"
-					},
-					{
-						code = "progress_quest",
-						value = "amelia_main_quest",
-						stage = "stage11"
-					},
-					{
-						code = "update_guild"
-					},
-					{
-						code = "make_story_character",
-						value = "Amelia"
-					}
+					{code = "money_change", operant = "-", value = 3000},
+					{code = "decision", value = "amelia_bought"},
+					{code = "progress_quest", value = "amelia_main_quest", stage = "stage11"},
+					{code = "update_guild"},
+					{code = "make_story_character", value = "Amelia"}
 				]
 			},
 			{
@@ -3616,27 +3600,11 @@ var data = {
 				],
 				dialogue_argument = 1,
 				bonus_effects = [
-					{
-						code = "money_change",
-						operant = "-",
-						value = 1500
-					},
-					{
-						code = "decision",
-						value = "amelia_bought"
-					},
-					{
-						code = "progress_quest",
-						value = "amelia_main_quest",
-						stage = "stage11"
-					},
-					{
-						code = "update_guild"
-					},
-					{
-						code = "make_story_character",
-						value = "Amelia"
-					}
+					{code = "money_change", operant = "-", value = 1500},
+					{code = "decision", value = "amelia_bought"},
+					{code = "progress_quest", value = "amelia_main_quest", stage = "stage11"},
+					{code = "update_guild"},
+					{code = "make_story_character", value = "Amelia"}
 				]
 			},
 			{

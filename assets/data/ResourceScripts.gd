@@ -84,6 +84,7 @@ onready var node_data = {
 	input_handler.NODE_CHARCREATE : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://gui_modules/CharacterCreation/CharacterCreationMainModule.tscn"), calls = 'open'},
 	input_handler.NODE_CHAREDIT : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://gui_modules/CharacterCreation/CharacterCreationMainModule.tscn"), calls = 'open_freemode'},
 	input_handler.NODE_COMBATPOSITIONS : {name = 'combatpositions', mode = 'scene', scene = preload("res://src/scenes/PositionSelectMenu.tscn"), calls = 'open'},
+	input_handler.NODE_COMBATPOSITIONS_DUEL : {name = 'combatpositions', mode = 'scene', scene = preload("res://src/scenes/PositionSelectMenu.tscn"), calls = 'open_duel'},
 	input_handler.NODE_SYSMESSAGE : {name = 'SysMessage', mode = 'scene', scene = preload("res://src/scenes/SysMessage.tscn") },
 	input_handler.NODE_SLAVEMODULE : {name = 'slavemodule', mode = 'scene', scene = preload("res://gui_modules/CharacterInfo/CharInfoMainModule.tscn") },
 	input_handler.NODE_INVENTORY_NEW : {name = 'inventory_new', mode = 'scene', scene = preload("res://gui_modules/Inventory/Modules/InventoryMainModule.tscn") },

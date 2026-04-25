@@ -15,6 +15,7 @@ var pos_int
 var group#dict: key - position (string), value - char's id
 var confirm_call# = {target, method}
 var allow_remote = false
+var duel = false
 var limit = 0
 var group_fixed = false
 
@@ -31,10 +32,17 @@ func tut_get_ConfirmButton():
 	return $ConfirmButton
 
 func open():#for default use
+	set_duel(false)
 	open_defined(input_handler.active_location.group)
+
+func open_duel():
+	set_duel(true)
+	open_defined({})
+
 
 func open_defined(new_group, con_target = null, con_method = null):
 	group = new_group
+	input_handler.active_location.group = group
 	set_remote(variables.allow_remote_intereaction)
 	set_limit(0)
 	show()
@@ -51,7 +59,9 @@ func open_defined(new_group, con_target = null, con_method = null):
 func selectfighter(position):
 	pos_int = position
 	var reqs
-	if allow_remote:
+	if duel:
+		reqs = [{code = 'is_master', check = true}]
+	elif allow_remote:
 		reqs = []
 	else:
 		reqs = [{code = 'is_at_location', value = input_handler.active_location.id, check = true}]
@@ -69,7 +79,7 @@ func slave_position_selected(character):
 			build_location_group()
 			emit_signal("group_changed")
 		return
-	if character.has_status('no_combat'):
+	if character.has_status('no_combat') and !duel:
 		input_handler.SystemMessage(character.translate(tr('CHAR_NO_COMBAT')))
 		return
 	elif !character.is_combatant():
@@ -172,6 +182,9 @@ func unfix_group():
 
 func set_remote(value):
 	allow_remote = (value or variables.allow_remote_intereaction)
+
+func set_duel(value):
+	duel = value
 
 func set_limit(new_limit):
 	limit = new_limit
