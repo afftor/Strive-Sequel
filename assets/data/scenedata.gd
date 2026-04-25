@@ -2077,6 +2077,20 @@ var dialogue_inits = {
 		{
 			code = 'default',
 			name = tr("DIALOGUEMEETLEADER"),
+			reqs = [{type = 'active_quest_stage', value = 'rouge_quest', stage = 'furniture'}],
+			target = 'rouge_workers_furniture_start',
+			target_option = 1,
+		},
+		{
+			code = 'default',
+			name = tr("DIALOGUEMEETLEADER"),
+			reqs = [{type = 'active_quest_stage', value = 'rouge_quest', stage = 'furniture_get'}],
+			target = 'rouge_workers_furniture_terms',
+			target_option = 0,
+		},
+		{
+			code = 'default',
+			name = tr("DIALOGUEMEETLEADER"),
 			reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}],
 			target = 'workers_introduction2',
 			target_option = 3,
@@ -2862,6 +2876,7 @@ var quests = {
 		stages = {
 			mansion = {code = 'mansion', name = 'ROUGE_QUEST_NAME', descript = 'ROUGE_QUEST_STAGE_MANSION'},
 			furniture = {code = 'furniture', name = 'ROUGE_QUEST_NAME', descript = 'ROUGE_QUEST_STAGE_FURNITURE'},
+			furniture_get = {code = 'furniture_get', name = 'ROUGE_QUEST_NAME', descript = 'ROUGE_QUEST_STAGE_FURNITURE_GET'},
 			letter = {code = 'letter', name = 'ROUGE_QUEST_NAME', descript = 'ROUGE_QUEST_STAGE_LETTER'},
 			melchor = {code = 'melchor', name = 'ROUGE_QUEST_NAME', descript = 'ROUGE_QUEST_STAGE_MELCHOR'},
 			warehouse = {code = 'warehouse', name = 'ROUGE_QUEST_NAME', descript = 'ROUGE_QUEST_STAGE_WAREHOUSE'},

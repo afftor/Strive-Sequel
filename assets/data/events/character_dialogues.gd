@@ -763,14 +763,103 @@ var data = {
 						{code = 'has_profession', profession = 'spouse', check = false},
 						]
 					}],
-			},	
+			},
 		], 
 		options = [
-			{code = 'cali_act3_jean_1', text = "CALI_ACT3_JEAN_START_OPTION", reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage6'}, {type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage8', orflag = true}], dialogue_argument = 1, type = 'next_dialogue',},
-			{code = 'cali_act3_jean_4', text = "CALI_ACT3_JEAN_3_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage7'}], dialogue_argument = 1, type = 'next_dialogue',},
+			{
+				code = 'cali_act3_jean_1', 
+				text = "CALI_ACT3_JEAN_START_OPTION", 
+				reqs = [
+					{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage6'}, 
+					{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage8', orflag = true}
+				], 
+				dialogue_argument = 1, 
+				type = 'next_dialogue',
+			},
+			{
+				code = 'cali_act3_jean_4', 
+				text = "CALI_ACT3_JEAN_3_OPTION_1", 
+				reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage7'}], 
+				dialogue_argument = 1, 
+				type = 'next_dialogue',
+			},
 			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1}
 		],
 	},
+	
+	rouge_dialogue_start = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'rouge',
+		text = [
+			{
+				text = "DIALOGUEROUGEINITIATEM", 
+				reqs = [
+					{type = 'active_character_checks', value = [
+						{code = 'trait', trait = 'training_s_relation', check = false},
+						{code = 'has_profession', profession = 'spouse', check = false},
+						]
+					}],
+			},
+		], 
+		options = [
+			{code = 'rouge_chat_cult', text = "ROUGE_CHAT_OPTION_CULT", reqs = [], dialogue_argument = 1, type = 'next_dialogue', remove_after_first_use = true,},
+			{code = 'rouge_chat_melchor', text = "ROUGE_CHAT_OPTION_MELCHOR", reqs = [], dialogue_argument = 1, type = 'next_dialogue', remove_after_first_use = true,},
+			{
+				code = 'rouge_return_to_rouge',
+				text = "ROUGE_CHAT_OPTION_REPORT", 
+				reqs = [{type = 'active_quest_stage', value = 'rouge_quest', stage = 'rouge'}], 
+				dialogue_argument = 1, 
+				type = 'next_dialogue',
+			},
+			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1}
+		],
+	},
+#	rouge_chat_root = {
+#		reqs = [],
+#		image = null,
+#		character = "rouge",
+#		tags = ["dialogue_scene"],
+#		text = "ROUGE_CHAT_ROOT",
+#		options = [
+#			{code = "rouge_chat_cult", text = "ROUGE_CHAT_OPTION_CULT", reqs = [], type = "next_dialogue"},
+#			{code = "rouge_chat_melchor", text = "ROUGE_CHAT_OPTION_MELCHOR", reqs = [], type = "next_dialogue"}
+#		]
+#	},
+	rouge_chat_cult = {
+		reqs = [],
+		image = null,
+		character = "rouge",
+		tags = ["dialogue_scene"],
+		text = [
+			{text = "ROUGE_CHAT_CULT", reqs = [], previous_dialogue_option = 1},
+			{text = "ROUGE_CHAT_CULT_ALLY", reqs = [], previous_dialogue_option = 2},
+			{text = "ROUGE_CHAT_CULT_KURO", reqs = [], previous_dialogue_option = 3},
+			{text = "ROUGE_CHAT_CULT_GOAL", reqs = [], previous_dialogue_option = 4},
+		], 
+		options = [
+			{code = "rouge_chat_cult", text = "ROUGE_CHAT_OPTION_CULT_ALLY", reqs = [], type = "next_dialogue", dialogue_argument = 2},
+			{
+				code = "rouge_chat_cult", 
+				text = "ROUGE_CHAT_OPTION_KURO", 
+				reqs = [ #i'm very disappointed with lack of proper decision bound to kuro recruiting
+					{type = "event_seen", check = true, value = "kuro_recruit_end_zeph"},
+					{orflag = true, type = "event_seen", check = true, value = "kuro_recruit_end"},
+				], 
+				type = "next_dialogue", 
+				dialogue_argument = 3
+			},
+			{code = "rouge_chat_cult", text = "ROUGE_CHAT_OPTION_CULT_GOAL", reqs = [], type = "next_dialogue", dialogue_argument = 4},
+			{code = "rouge_dialogue_start", text = "ROUGE_CHAT_OPTION_NO_MORE", reqs = [], type = "next_dialogue"}
+		]
+	},
+	rouge_chat_melchor = {
+		reqs = [], 
+		image = null, 
+		character = "rouge", 
+		tags = ["dialogue_scene"], 
+		text = "ROUGE_CHAT_MELCHOR", 
+		options = [{code = "rouge_chat_root", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
+	},
+	
 	
 	kuro_dialogue_start = {
 		tags = ['dialogue_scene'], reqs = [], character = 'kuro',

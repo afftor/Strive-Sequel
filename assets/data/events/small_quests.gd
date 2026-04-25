@@ -255,10 +255,7 @@ var data = {
 				],
 				dialogue_argument = 1,
 				bonus_effects = [
-					{
-						code = "make_story_character",
-						value = "Aire"
-					}
+					{code = "make_story_character", value = "Aire"}
 				]
 			}
 		]
@@ -304,10 +301,7 @@ var data = {
 				],
 				dialogue_argument = 1,
 				bonus_effects = [
-					{
-						code = "make_story_character",
-						value = "Aire"
-					}
+					{code = "make_story_character", value = "Aire"}
 				]
 			}
 		]
@@ -488,11 +482,7 @@ var data = {
 		],
 		character = "jean",
 		common_effects = [
-			{
-				code = "make_story_character",
-				value = "Jean",
-				recruit_from_location = true
-			},
+			{code = "make_story_character", value = "Jean", recruit_from_location = true},
 			{
 				code = "unique_character_changes",
 				value = "jean",
@@ -553,11 +543,7 @@ var data = {
 		],
 		character = "jean",
 		common_effects = [
-			{
-				code = "make_story_character",
-				value = "Jean",
-				recruit_from_location = true
-			},
+			{code = "make_story_character", value = "Jean", recruit_from_location = true},
 			{
 				code = "unique_character_changes",
 				value = "jean",
@@ -1038,12 +1024,7 @@ var data = {
 			}
 		],
 		common_effects = [
-			{
-				code = "make_story_character",
-				value = "Cali",
-				recruit_from_location = true,
-				slave_category = "slave"
-			},
+			{code = "make_story_character", value = "Cali", recruit_from_location = true, slave_category = "slave"},
 			{
 				code = "decision",
 				value = "cali_raped"
@@ -1353,11 +1334,7 @@ var data = {
 				],
 				previous_dialogue_option = 2,
 				bonus_effects = [
-					{
-						code = "make_story_character",
-						value = "Cali",
-						recruit_from_location = true
-					},
+					{code = "make_story_character", value = "Cali", recruit_from_location = true},
 					{
 						code = "add_timed_event",
 						value = "cali_sidequest_1",

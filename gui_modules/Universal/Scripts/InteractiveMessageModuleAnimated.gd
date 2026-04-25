@@ -880,6 +880,11 @@ func quest_fight(code):
 	#close(true)
 
 
+func quest_fight_duel(code):
+	globals.char_roll_data.no_roll = true
+	globals.current_enemy_group = code
+	input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS_DUEL)
+
 
 func save_scene_to_gallery(scene):
 	if scene.has("unlocked_gallery_seq"):
@@ -1442,7 +1447,7 @@ func select_option(number):
 			cancel_skill_usage()
 	elif current_scene.tags.has("custom_effect"):
 		ResourceScripts.custom_effects.call(code) #controvertial moment cause most of those methods have a different signature
-	elif current_scene.tags.has("dialogue_scene") && !(code in ['close','quest_fight']):
+	elif current_scene.tags.has("dialogue_scene") && !(code in ['close','quest_fight', 'quest_fight_duel']):
 		
 		hold_selection = true
 		if option.has('dialogue_argument') == false:

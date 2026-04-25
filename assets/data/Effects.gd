@@ -391,6 +391,22 @@ var effect_table = {
 			}
 		],
 	},
+	e_quest_injury = {
+		type = 'temp_s',
+		stack = 'injury',
+		tick_event = variables.TR_TICK,
+		target = 'owner',
+		duration = 4,
+		sub_effects = [],
+		tags = ['on_dead', 'injury'],
+		statchanges = {hpmax_add_part = -0.3, hitrate = -20},
+		buffs = [
+			{#to fix
+				icon = "res://assets/images/iconsskills/icon_blood_explosion.png",
+				description = "TRAITEFFECTINJ", 
+			}
+		],
+	},
 	
 	e_s_undead = {
 		type = 'trigger',

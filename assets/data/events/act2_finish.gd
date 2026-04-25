@@ -3874,11 +3874,7 @@ var data = {
 				],
 				previous_dialogue_option = 2,
 				bonus_effects = [
-					{
-						code = "make_story_character",
-						value = "Lira",
-						recruit_from_location = true
-					}
+					{code = "make_story_character", value = "Lira", recruit_from_location = true}
 				]
 			}
 		],
@@ -4229,14 +4225,8 @@ var data = {
 			}
 		],
 		common_effects = [
-			{
-				code = "make_story_character",
-				value = "Heleviel",
-				recruit_from_location = true
-			},
-			{
-				code = "plan_mansion_event",
-				value = "heleviel_quest_1"
+			{code = "make_story_character", value = "Heleviel", recruit_from_location = true},
+			{code = "plan_mansion_event", value = "heleviel_quest_1"
 #				value = "heleviel_mansion_1"
 			}
 		],

@@ -1381,6 +1381,37 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'jean_sylas_girl_plan_return', args = []}]
 		},
 		{
+			text = tr("ROUGE_CAPITAL_OPTION_LETTER"),
+			reqs = [{type = 'active_quest_stage', value = 'rouge_quest', stage = 'melchor'}],
+			args = [{code = 'start_event', data = 'rouge_meet_melchor_start', args = []}]
+		},
+		{
+			text = tr("ROUGE_CAPITAL_OPTION_WAREHOUSE"),
+			reqs = [{type = 'active_quest_stage', value = 'rouge_quest', stage = 'warehouse'}],
+			args = [{code = 'start_event', data = 'rouge_warehouse_search', args = []}]
+		},
+		{
+			text = tr("ROUGE_CAPITAL_OPTION_RAID"),
+			reqs = [{type = 'active_quest_stage', value = 'rouge_quest', stage = 'raid'}],
+			args = [{code = 'start_event', data = 'rouge_report_melchor_start', args = []}]
+		},
+		{
+			text = tr("ROUGE_CAPITAL_OPTION_REWARD"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'rouge_quest', stage = 'reward'},
+				{type = "decision", value = "KetchKilled", check = false},
+				],
+			args = [{code = 'start_event', data = 'rouge_report_melchor_return', args = []}]
+		},
+		{
+			text = tr("ROUGE_CAPITAL_OPTION_REWARD"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'rouge_quest', stage = 'reward'},
+				{type = "decision", value = "KetchKilled", check = true},
+				],
+			args = [{code = 'start_event', data = 'rouge_report_melchor_return_alternate', args = []}]
+		},
+		{
 			text = tr("EMPIRE_CAPITAL1"), 
 			reqs = [{type = 'active_quest_stage', value = 'act_4_capital', stage = 'ceremony', state = true}], 
 			args = [{code = 'start_event', data = 'emp_ceremony_1', args = []}]

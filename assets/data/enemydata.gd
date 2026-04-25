@@ -93,6 +93,8 @@ var encounters = {
 	jean_sylas_2 = {unittype = 'randomgroup', unitcode = 'jean_sylas_2', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_sylas_sylas_win_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
 	jean_demon_1 = {unittype = 'randomgroup', unitcode = 'jean_demon_1', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_sylas_fight_jean_result', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
 	jean_demon_2 = {unittype = 'randomgroup', unitcode = 'jean_demon_2', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_sylas_demon_fight_result', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
+	
+	rouge_warehouse_escape = {unittype = 'randomgroup', unitcode = 'rouge_warehouse_escape', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'rouge_warehouse_escape_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
 }
 
 var enemygroups = {
@@ -238,6 +240,7 @@ var enemygroups = {
 	jean_sylas_2 = {reqs = [], units = {sylas_weak = [1,1]}},
 	jean_demon_1 = {reqs = [], units = {jean_evil = [1,1]}},
 	jean_demon_2 = {reqs = [], units = {jean_demon = [1,1]}},
+	rouge_warehouse_escape = {reqs = [], units = {jean_demon = [1,1]}},
 	
 	mimic = {reqs = [], units = {mimic = [1,1]}},
 	

@@ -55,7 +55,7 @@ func setup_upgrade(upgrade_id):
 			$cost.text = str(person.get_minor_training_time_left()) + tr('MSLMTURN')
 		else:
 			$bg.modulate = color_dict.lock3
-	elif upgrade_data.has('reqs') and !person.checkreqs(upgrade_data.reqs):
+	elif upgrade_data.has('reqs') and !person.checkreqs(upgrade_data.reqs) or person.has_status('no_trainings'):
 		disabled = true
 		$bg.modulate = color_dict.lock2
 		set_inactive()

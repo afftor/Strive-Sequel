@@ -377,6 +377,12 @@ var unique_dict = { #shows available talk characters. Scenes go in order from hi
 			{code = 'jean_dialogue_start', reqs = []}
 		]
 	},
+	rouge = {
+		code = 'rouge', 
+		scenes = [
+			{code = 'rouge_dialogue_start', reqs = []}
+		]
+	},
 	
 	amelia = {
 		code = 'amelia',

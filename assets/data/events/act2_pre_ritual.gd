@@ -318,23 +318,14 @@ var data = {
 			}
 		],
 		common_effects = [
-			{
-				code = "make_story_character",
-				value = "Zephyra",
-				recruit_from_location = true
-			},
-			{
-				code = "decision",
-				value = "ZephyraRecruited"
-			}
+			{code = "make_story_character", value = "Zephyra", recruit_from_location = true},
+			{code = "decision", value = "ZephyraRecruited"}
 		],
 		options = [
 			{
 				code = "act2_scene",
 				text = "DIALOGUECONTINUE",
-				reqs = [
-
-				],
+				reqs = [],
 				dialogue_argument = 1,
 				type = "next_dialogue",
 				change_dialogue_type = 2

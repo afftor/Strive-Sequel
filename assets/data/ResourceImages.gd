@@ -438,6 +438,15 @@ var backgrounds = {
 	zephyra_wed_6 = "res://assets/images/fullscreen scenes/ZephyraCG018.png",
 	zephyra_wed_7 = "res://assets/images/fullscreen scenes/ZephyraCG019.png",
 	
+	rouge_1 = "res://assets/images/fullscreen scenes/redhead_1.png",
+	rouge_2 = "res://assets/images/fullscreen scenes/redhead_2.png",
+	rouge_3 = "res://assets/images/fullscreen scenes/redhead_3.png",
+	rouge_4 = "res://assets/images/fullscreen scenes/redhead_4.png",
+	rouge_5 = "res://assets/images/fullscreen scenes/redhead_5.png",
+	rouge_6 = "res://assets/images/fullscreen scenes/redhead_6.png",
+	rouge_7 = "res://assets/images/fullscreen scenes/redhead_7.png",
+	rouge_8 = "res://assets/images/fullscreen scenes/redhead_8.png",
+	
 	#masteries
 	mastery_air = "res://assets/Textures_v2/CLASS_INFO/back_masteri/back_air.png",
 	mastery_stealth = "res://assets/Textures_v2/CLASS_INFO/back_masteri/back_rogue.png",
@@ -837,6 +846,9 @@ var sprites = {
 	dwarf_king = load("res://assets/images/sprites/king.png"),
 	rouge = load("res://assets/images/sprites/rouge.png"),
 	rouge2 = load("res://assets/images/sprites/rouge_2.png"),
+	rouge_body = load("res://assets/images/sprites/rouge_body.png"),
+	rouge_nude = load("res://assets/images/sprites/rouge_nude.png"),
+	rouge_nude_body = load("res://assets/images/sprites/rouge_nude_body.png"),
 	grotus = load("res://assets/images/sprites/grotus.png"),
 	bolthar = load("res://assets/images/sprites/gnome.png"),
 	keeper = load("res://assets/images/sprites/keeper.png"),

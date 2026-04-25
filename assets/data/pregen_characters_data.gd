@@ -896,7 +896,7 @@ var pregen_characters = {
 		ass_size = 'big',
 		tits_size = 'big',
 		sex_traits = [],
-		tags = [],
+		tags = ['no_trainings', 'no_loyalty_training', 'no_loyalty_growth'],
 		personality_kind = -75,
 		personality_bold = 65,
 		food_like = 'meat',
@@ -913,7 +913,7 @@ var pregen_characters = {
 			magic = 'weak',
 		},
 		achi_wedding = "wedding_rouge",
-		achi_bonus = "rouge_start"
+		achi_bonus = "rouge_start",
 	},
 #tutorial
 	tutorial_master = {
