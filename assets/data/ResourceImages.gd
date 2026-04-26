@@ -438,14 +438,15 @@ var backgrounds = {
 	zephyra_wed_6 = "res://assets/images/fullscreen scenes/ZephyraCG018.png",
 	zephyra_wed_7 = "res://assets/images/fullscreen scenes/ZephyraCG019.png",
 	
-	rouge_1 = "res://assets/images/fullscreen scenes/redhead_1.png",
-	rouge_2 = "res://assets/images/fullscreen scenes/redhead_2.png",
-	rouge_3 = "res://assets/images/fullscreen scenes/redhead_3.png",
-	rouge_4 = "res://assets/images/fullscreen scenes/redhead_4.png",
-	rouge_5 = "res://assets/images/fullscreen scenes/redhead_5.png",
-	rouge_6 = "res://assets/images/fullscreen scenes/redhead_6.png",
-	rouge_7 = "res://assets/images/fullscreen scenes/redhead_7.png",
-	rouge_8 = "res://assets/images/fullscreen scenes/redhead_8.png",
+	rouge_1 = "res://assets/images/fullscreen scenes/Rouge001.png",
+	rouge_2 = "res://assets/images/fullscreen scenes/Rouge002.png",
+	rouge_3 = "res://assets/images/fullscreen scenes/Rouge003.png",
+	rouge_4 = "res://assets/images/fullscreen scenes/Rouge004.png",
+	rouge_5 = "res://assets/images/fullscreen scenes/Rouge005.png",
+	rouge_6 = "res://assets/images/fullscreen scenes/Rouge006.png",
+	rouge_7 = "res://assets/images/fullscreen scenes/Rouge007.png",
+	rouge_8 = "res://assets/images/fullscreen scenes/Rouge008.png",
+	rouge_9 = "res://assets/images/fullscreen scenes/Rouge009.png",
 	
 	#masteries
 	mastery_air = "res://assets/Textures_v2/CLASS_INFO/back_masteri/back_air.png",
