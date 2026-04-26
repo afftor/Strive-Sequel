@@ -2836,14 +2836,6 @@ var quests = {
 			capital = {code = 'capital', name = 'LIRA_LOST_QUEST_NAME', descript = 'LIRA_LOST_QUEST_CAPITAL'},
 		},
 	},
-	lira_quest3_quest = {
-		code = 'lira_quest3_quest',
-		summary = "LIRA_QUEST3_QUEST_SUMMARY",
-		stages = {
-			talk = {code = 'talk', name = 'LIRA_QUEST3_QUEST_NAME', descript = 'LIRA_QUEST3_QUEST_STAGE_TALK'},
-			grove = {code = 'grove', name = 'LIRA_QUEST3_QUEST_NAME', descript = 'LIRA_QUEST3_QUEST_STAGE_GROVE'},
-		},
-	},
 	lira_quest1_quest = {
 		code = 'lira_quest1_quest',
 		summary = "LIRA_QUEST1_QUEST_SUMMARY",
