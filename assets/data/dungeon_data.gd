@@ -2743,6 +2743,36 @@ var dungeons = {
 		travel_time = [1,1],
 		scripteventdata = []
 	},
+	quest_empire_catacomb_entry = {
+		code = 'quest_empire_catacomb_entry',
+		type = 'encounter',
+		name = "ACT4_QUEST_CATACOMB_NAME",
+		classname = '',
+		descript = "ACT4_QUEST_CATACOMB_DESC",
+		difficulty = 'easy',
+		background = 'cave_4',
+		custom_background = 'combat_cave',
+		enemyarray = [],
+		eventarray = [],
+		levels = [1,1],
+		resources = '',
+		stages_per_level = [1,1],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local',
+		events = [],
+		options = [
+			{
+				text = "ACT4_QUEST_CATACOMB_OPTION_ENTER",
+				reqs = [{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'catacombs', state = true}],
+				args = [{code = 'start_event', data = 'emp_catacomb_entry_1', args = []}]
+			}
+		],
+		tags = ['quest'],
+		area = 'empire',
+		travel_time = [1,1],
+		scripteventdata = []
+	},
 	quest_mountain_pass = {
 		code = 'quest_mountain_pass',
 		type = 'encounter',

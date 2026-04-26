@@ -2217,6 +2217,13 @@ var dialogue_inits = {
 		},
 		{
 			code = 'default',
+			name = "ACT4_MYR_GUILD_OPTION_SHOW_WRITING",
+			reqs = [{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'myr_translation', state = true}],
+			target = 'emp_myr_catacomb_writing',
+			target_option = 0,
+		},
+		{
+			code = 'default',
 			name = tr("DIALOGUEMEETLEADER"),
 			reqs = [],
 			target = 'mages_introduction3',
@@ -2926,6 +2933,17 @@ var quests = {
 			wait2 = {code = 'wait2', name = 'ACT_4_CAPITAL_NAME', descript = 'ACT_4_CAPITAL_WAIT2'},
 			arena = {code = 'arena', name = 'ACT_4_CAPITAL_NAME', descript = 'ACT_4_CAPITAL_ARENA'},
 			act4_continue = {code = 'act4_continue', name = 'ACT_4_CAPITAL_NAME', descript = 'ACT_4_CONTINUE'}
+		}
+	},
+	erdyna_quest = {
+		code = 'erdyna_quest',
+		summary = 'ERDYNA_QUEST_SUMMARY',
+		stages = {
+			followup = {code = 'followup', name = 'ERDYNA_QUEST_NAME', descript = 'ERDYNA_QUEST_STAGE_FOLLOWUP'},
+			senerus = {code = 'senerus', name = 'ERDYNA_QUEST_NAME', descript = 'ERDYNA_QUEST_STAGE_SENERUS'},
+			catacombs = {code = 'catacombs', name = 'ERDYNA_QUEST_NAME', descript = 'ERDYNA_QUEST_STAGE_CATACOMBS'},
+			myr_translation = {code = 'myr_translation', name = 'ERDYNA_QUEST_NAME', descript = 'ERDYNA_QUEST_STAGE_MYR'},
+			dragonhunters = {code = 'dragonhunters', name = 'ERDYNA_QUEST_NAME', descript = 'ERDYNA_QUEST_STAGE_DRAGONHUNTERS'},
 		}
 	},
 	kuro_quest_3 = {

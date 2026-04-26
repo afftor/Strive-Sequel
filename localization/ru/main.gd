@@ -234,6 +234,7 @@ var TranslationDict = {
 	CHARNAMELIRA = """Лира""",
 	CHARNAMEAMELIA = """Амелия""",
 	CHARNAMEKURO = """Куро""",
+	CHARNAMEROUGE = """Rouge""", # MISSING TRANSLATION
 	LOCATIONTHE = """ """,
 	TOTALPRODUCTIVITY = """Общая производительность""",
 	INVENTORYCHARACTERLIST = """Список персонажей""",
@@ -3581,6 +3582,7 @@ Requires: Базовый рабский труд""",
 	TRAITEFFECTHATEDFOOD = """Ненавистная еда: -10%% производительности.""",
 	TRAITEFFECTSTARVE = """Голодание: -50%% производительности, -50%% урона""",
 	TRAITEFFECTGRAVEINJ = """Тяжелое ранение: -25%% Производительность, -50%% Сексуальность. Не может участвовать в бою""",
+	TRAITEFFECTINJ = """Injury: -30%% Max HP, -20 Hitrate.""", # MISSING TRANSLATION
 	TRAITEFFECTDISCIPLINE = """Дисциплина: +50%% эффективности труда и ремесла""",
 	TRAITEFFECTSEDUCE = """Соблазнение: -7 утечка повиновения""",
 	TRAITEFFECTGREATSEDUCE = """Великое соблазнение: Предотвращает побеги; -9 утечка повиновения, +50%% роста похоти""",
@@ -18371,6 +18373,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 
 - [Master], ты скучал по Лилии? Давай уже ляжем в постель!""",
 	DIALOGUEJEANINITIATEM = """ """,
+	DIALOGUEROUGEINITIATEM = """{color=yellow|— Yes? Don't just give me that oogling look, if you don't have anything serious I have business to do.}""", # MISSING TRANSLATION
 	DIALOGUELILITHINIT = """- [Master], хочешь развлечься? Я всегда готова.""",
 	
 	DIALOGUEZEPHYRA_UNDERWEAR = """В руках вы держите предмет одежды, который был передан вам Зефирой. Размышляя о том, какую пользу он может принести, вы задумались... А что, если надеть его на голову? Конечно, это ужасная идея...""",

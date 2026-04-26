@@ -20622,7 +20622,7 @@ The dwarf grunts, pointing to a shelf. She snatches a glowing bottle of liquid, 
 {color=yellow|— New around here, eh? Word of advice, don't linger in this fume-pit too long. Vapors will turn your brain to mush, like this guy here.}
 
 She leaves before you can answer but her uncharacteristic appearance makes you think you'll meet her in future.""",
-	ACT_4_CONTINUE = "You've finished current main story content. Please wait for the next update and consider supporting the game's development if you hadn't already.",
+	ACT_4_CONTINUE = "Follow up on the leads you've uncovered in the Empire.",
 	ACT_4_CAPITAL_SUMMARY = "You've been invited to the Grand Empire's Capital. This feels like the artifact chasing quest is coming to its conclusion.",
 	ACT_4_CAPITAL_NAME = "Each against all",
 	ACT_4_CAPITAL_ENTER = "Go to the Empire's capital",
@@ -25433,5 +25433,309 @@ The two of you make your way back to the road, leaving the quiet grove behind.""
 	LIRA_QUEST_1_OPTION_WHY_DID_YOU_HIDE_THESE = "Why did you hide these here?",
 	LIRA_QUEST_1_OPTION_DO_YOU_FEEL_BETTER = "Do you feel better after getting these back?",
 	LIRA_QUEST_1_OPTION_TIME_TO_HEAD_BACK = "Alright, time to head back. We shouldn't linger in the forest.",
+	ACT4_MYR_GUILD_OPTION_SHOW_WRITING = "Show the catacomb writing",
+	ACT4_EMPIRE_CAPITAL_OPTION_ERDYNA = "Talk to Erdyna",
+	ACT4_EMPIRE_CAPITAL_OPTION_SENERUS = "Visit Senerus's home",
+	ACT4_QUEST_CATACOMB_OPTION_ENTER = "Enter the catacombs",
+	ACT4_QUEST_CATACOMB_NAME = "Hidden Catacomb Entrance",
+	ACT4_QUEST_CATACOMB_DESC = "A concealed entrance outside the imperial walls leads toward the sealed catacombs beneath the capital.",
+	ERDYNA_QUEST_SUMMARY = "Erdyna has gotten involved in your search for the Empire's artifact and pointed you toward people and places hidden beneath the capital.",
+	ERDYNA_QUEST_NAME = "Erdyna's Lead",
+	ERDYNA_QUEST_STAGE_FOLLOWUP = "Meet with Erdyna again in the Empire capital and follow up on what she learned.",
+	ERDYNA_QUEST_STAGE_SENERUS = "Visit Senerus with Erdyna and learn what he knows about the artifact.",
+	ERDYNA_QUEST_STAGE_CATACOMBS = "Investigate the accessible catacomb entrance outside the Empire capital.",
+	ERDYNA_QUEST_STAGE_MYR = "Show the copied catacomb writing to Myr and ask what she can make of it.",
+	ERDYNA_QUEST_STAGE_DRAGONHUNTERS = "Travel to the elven lands and seek out the dragon hunters for answers about the sealed doors.",
+	ACT4_ERDYNA_FOLLOWUP_1 = """{color=yellow|Erdyna: — Alright, so about that artifact. Hope you didn't take me for an expert on these things, but worry not. I happen to know just the right person for something like that. But first I need to stop by my crew's base. Will you follow?}""",
+	ACT4_ERDYNA_FOLLOWUP_1_OPTION_GO = "Alright, let's go.",
+	ACT4_ERDYNA_FOLLOWUP_1_OPTION_LATER = "I'll drop by when I have time.",
+	ACT4_ERDYNA_FOLLOWUP_LATER = """{color=yellow|Erdyna: — Hmph, fine, but don't keep me waiting.}
+
+Before parting ways, Erdyna tells you how to find her gang's hideout. You walk back to the main street considering how wise it is to follow her like that.""",
+	ACT4_ERDYNA_HIDEOUT_1 = """A few streets pass as Erdyna sneaks into a seemingly obvious dead end, only to reveal it as a disguised entrance. You follow her down through the half-blocked passage until you end up in sewer-like surroundings with clear signs of habitation. Your eyes adjust to the darkness, partially broken by a couple of dim oil lanterns.
+
+{color=yellow|Erdyna: — Better plug your nose around here, haha.}
+
+Despite her comment, the smell is surprisingly not completely awful. After a moment you see two silhouettes emerging from the shadows.""",
+	ACT4_ERDYNA_HIDEOUT_2 = """{color=aqua|Man: — Well, if it isn't Erdyna, King of the bandits herself.}
+
+{color=yellow|Erdyna: — Shut it. I told you not to call me that in front of guests.}
+
+{color=aqua|Man: — Haha, sorry, boss. But... weren't you trying to beat this [guy] just a little while ago?}
+
+{color=yellow|Erdyna: — Whatever, I need some information. Where's Paul?}""",
+	ACT4_ERDYNA_HIDEOUT_3_0 = """{color=aqua|Man: — At his hole, as usual.}
+
+{color=yellow|Erdyna: — Perfect. Let's go.}
+
+Erdyna walks quickly deeper into the tunnels, beckoning you to follow.""",
+	ACT4_ERDYNA_HIDEOUT_3_1 = """{color=yellow|Erdyna: — Ugh, it's just a stupid joke. First time I came here I was just a dumb kid looking for a way to survive. They asked what the hell I wanted from them, I said I was gonna be the king of bandits, they laughed so hard they let me stay just like that.}
+
+{color=yellow|Erdyna: — Of course I had no clue bandits don't have titles like that, or that it's a male one. Oh, and we don't call ourselves bandits, obviously.}""",
+	ACT4_ERDYNA_HIDEOUT_3_2 = """{color=yellow|Erdyna: — What do you think, smartass? I'm not a citizen and I don't pass for a normal person.}
+
+She points at her lizard-like features.
+
+{color=yellow|Erdyna: — The only option left to me was to live like this. It's not so bad since I can hold my own in a fight better than anyone around here.}""",
+	ACT4_ERDYNA_HIDEOUT_3_3 = "Erdyna glances back at you, waiting to see whether you have anything else to ask before moving on.",
+	ACT4_ERDYNA_HIDEOUT_3_OPTION_KING = "'King of the bandits'?",
+	ACT4_ERDYNA_HIDEOUT_3_OPTION_BANDIT = "Why did you become a bandit?",
+	ACT4_ERDYNA_HIDEOUT_3_OPTION_MOVE = "Let's keep moving.",
+	ACT4_ERDYNA_PAUL_1 = """Less than a minute later you find Paul sleeping in a small makeshift room. Erdyna doesn't hold back as she bangs on the wooden board, jolting him awake.
+
+{color=yellow|Erdyna: — Paul, damn it, why are you sleeping at a time like this? Wake up, I've got a job for you.}
+
+Wide-eyed from the shock, the man quickly calms down as he recognizes the girl.
+
+{color=aqua|Paul: — Ah... Oh, it's you, boss... What happened?}""",
+	ACT4_ERDYNA_PAUL_2 = """{color=yellow|Erdyna: — Remember that ancient elven guy who had us tracking down old books for him a few months back? I need his address.}
+
+{color=aqua|Paul: — Huh? Don't you remember? He probably hasn't moved, has he?}
+
+{color=yellow|Erdyna: — Do I look like I'd remember useless stuff like that? Come on, remind me.}
+
+Paul sighs and starts scrambling through some notes lying around him.""",
+	ACT4_ERDYNA_PAUL_3 = """{color=aqua|Paul: — Yeah, that... looks about right.}
+
+{color=yellow|Erdyna: — Great, now get back to sleep, you've done enough for today.}
+
+{color=aqua|Paul: — Like hell I can sleep now...}
+
+Erdyna doesn't listen to his complaints, turning around and leading you back outside.
+
+{color=yellow|Erdyna: — I might not remember his address that well, but that elven guy is a specialist on religious subjects. Let's go pay him a visit.}""",
+	ACT4_SENERUS_HOME_1 = """Erdyna takes you to one of the less miserable looking houses deep in the slums. After a couple minutes of banging on the door, an elven man finally opens it, keeping it half-closed and talking through the gap.""",
+	ACT4_SENERUS_HOME_2 = """{color=aqua|Man: - You... I told you not to come here again, and certainly not to bring anyone.}
+
+{color=yellow|Erdyna: - Nah, don't remember that. Come on, I really need a smart guy like you to help my friend here.}
+
+As the elven man takes a careful look at you, he visibly relaxes. Perhaps your more civil, professional appearance reassures him you aren't just some thug.
+
+{color=aqua|Man: - Fine, get in. Quickly.}""",
+	ACT4_SENERUS_HOME_3 = """The inside of the house looks old and worn. The space is crammed with books and antiquities. Moving to the other room you find a large table covered in scribbled papers and candles.
+
+{color=yellow|Erdyna: - Senerus, you really should clean up in here.}
+
+{color=aqua|Senerus: - It's clean. How about you get to the point.}
+
+{color=yellow|Erdyna: - Right, you see...}""",
+	ACT4_SENERUS_HOME_4 = """Erdyna explains your search for the artifacts. As you go into detail about your journey and the items in question, the elf grows more and more pensive.
+
+{color=aqua|Senerus: - I see, the grand artifacts. It's a shame they've been so neglected.}
+
+{color=aqua|Senerus: - I suppose you don't know much about them, do you? This will be a long story.}
+
+{color=yellow|Erdyna: - Ugh, I hate long stories. I'll see myself out, let me know when you're done.}
+
+Erdyna leaves you alone with the elf, closing the door as she heads outside.""",
+	ACT4_SENERUS_HOME_4_OPTION_LISTEN = "Alright, I'm listening.",
+	ACT4_SENERUS_HOME_4_OPTION_SHORT = "Give me the short version.",
+	ACT4_SENERUS_REPEAT_1 = """Senerus opens the door after a short delay and studies you with visible reluctance before deciding you are less troublesome than leaving you outside.
+
+{color=aqua|Senerus: - You again. Fine, come in if you intend to ask something relevant.}
+
+Once inside, he returns to the cramped study and waits for you to get to the point.""",
+	ACT4_SENERUS_LONG_1 = """{color=aqua|Senerus: - First, let's go through the ancient times and the creation of the world. Most knowledge from that period has been lost, which is no surprise given it happened eons ago and time has not worked in our favor. I've spent my life recovering and restoring whatever I could find, but even so I cannot realistically prove that everything I consider plausible is actually true, so take what I say as my own interpretation of how the world came to be.}
+
+{color=aqua|Senerus: - In the beginning there was a world with no life in it. Or rather no sentient life. A rather barren place, but not without another, less physical quality: magic energy. Though calling it simply magic isn't entirely accurate. The magic energy that exists today is only an echo of the primal magic that existed at the dawn of the world.}""",
+	ACT4_SENERUS_LONG_2 = """{color=aqua|Senerus: - Then something happened. Sentience appeared in the world, the very first of its kind, the one that started everything. It took the form of a man, the First God. He reached into the world's magic energy and it changed. From the raw primal chaos it had existed as, it bent under his will. Nearly all of the world's magic energy came under his control and he began reshaping the world with it.}
+
+{color=aqua|Senerus: - Life became sentient, whether by his design or as a consequence of his influence. More deities arose as they gained access to this refined magic. Some of them are the gods you know today. That was a time of incredible prosperity and power, brought about by him. Even ordinary people could conjure that refined energy in ways that would put today's archmage to shame. Most of the ancient and magic-touched races were created in those times, though even they have lost the memory of those origins.}""",
+	ACT4_SENERUS_LONG_3 = """{color=aqua|Senerus: - But as you might expect, the downfall eventually came. Various ancient religions describe it differently, but one thing is certain: the First One fell. Some theorize he was slain by an outside force, perhaps as an act of protection. Either way, it changed everything, even if the effects weren't immediately apparent.}
+
+{color=aqua|Senerus: - Since the First One was the only being so deeply intertwined with the magic force, his death brought inevitable stagnation to the magical arts. You see, magic energy is like water. There is plenty of it in nature, but as it is used it grows spoiled, becoming unhealthy or unsuitable for refined purposes. The First One did not just cleanse that water for others; he made it so that anyone in contact with it could draw healing from it. The raw magic energy became something close to what we now call divine magic.}
+
+{color=aqua|Senerus: - His disappearance did not undo all of his work, but the amount of divine magic available could never again increase. The deities are capable of their miracles largely because they received their powers during that time when magic was first shaped by the First One. The artifacts you are looking for belonged to the First One, or were made with his energy, which is why they are unique. Of course, over the ages people have forgotten about the ancient magic, and the artifacts themselves have grown weaker, but they are remarkable nonetheless.}""",
+	ACT4_SENERUS_SHORT_1 = """Senerus adjusts his posture with visible reluctance, as if compressing a lecture he would much rather give in full.
+
+{color=aqua|Senerus: - Very well. The short version is this: the artifacts you seek are remnants of the earliest divine age, tied to powers far older and greater than the gods most people worship now.}
+
+{color=aqua|Senerus: - Long ago the world was shaped by a being some traditions call the First God. Whether he created everything or merely changed it is still debated, but much of what we know as divine magic traces back to him.}""",
+	ACT4_SENERUS_SHORT_2 = """{color=aqua|Senerus: - After his fall that power began to diminish. The old miracles could no longer be renewed in the same way, and what remained was scattered through relics, bloodlines, and the gods who had already risen by then.}
+
+{color=aqua|Senerus: - That is why these artifacts matter. They are not valuable merely because they are ancient. They are fragments of a lost age, still carrying traces of a power the world can no longer reproduce.}
+
+Erdyna groans from the doorway, already losing patience with the lecture.
+
+{color=yellow|Erdyna: - Yeah, yeah, ancient god stuff, rare magic, very important. I'll be outside. Call me when you get to the useful part.}
+
+Without waiting for an answer, she slips out and closes the door behind her.""",
+	ACT4_SENERUS_SHORT_3 = "{color=aqua|Senerus: - The offensively short version, yes. If you want substance, ask properly and I will answer what I can.}",
+	ACT4_SENERUS_HUB_0 = "{color=aqua|Senerus: — What else do you want to know?}",
+	ACT4_SENERUS_HUB_1 = """{color=aqua|Senerus: — In truth it's very difficult to say how he came to be, but I have my own theory, completely unprovable of course. Given the circumstances, I believe the magic energy itself gave rise to him. That would best explain his extraordinary degree of control over it.}
+
+{color=aqua|Senerus: — What else?}""",
+	ACT4_SENERUS_HUB_2 = """{color=aqua|Senerus: — Shortly after the demise of the First One there was an invasion from another world. These were the demons, also potent wielders of magic but of a very different kind. This led to the first great war, in which they ultimately lost and were culled, though some managed to adapt to our world. Some even harnessed divine powers, transforming into malevolent deities.}
+
+{color=aqua|Senerus: — The most notable thing I can tell you about them is their relationship with magic energy. They were nowhere near the level of divine magic and could sometimes even be outmatched by powerful sorcerers, but their magic is distinct. They could transform raw magical energy into their own corrupted form of power, which is often tied to sexual energy. While sexual energy is not inherently tainted, demons could access it far more easily.}
+
+{color=aqua|Senerus: — What else?}""",
+	ACT4_SENERUS_HUB_3 = "{color=aqua|Senerus: — Then ask about the gods.}",
+	ACT4_SENERUS_HUB_4 = "{color=aqua|Senerus: — Ask what you need to know about champions.}",
+	ACT4_SENERUS_HUB_OPTION_FIRST_GOD = "But who is the First God?",
+	ACT4_SENERUS_HUB_OPTION_DEMONS = "What can you tell me about demons?",
+	ACT4_SENERUS_HUB_OPTION_GODS = "I have some questions about gods...",
+	ACT4_SENERUS_HUB_OPTION_CHAMPIONS = "Can you tell me about champions?",
+	ACT4_SENERUS_HUB_OPTION_ARTIFACT = "Enough talking, I want to know where I can find another artifact around here.",
+	ACT4_SENERUS_HUB_OPTION_LEAVE = "I'll be off.",
+	ACT4_SENERUS_GODS_0 = "{color=aqua|Senerus: — Fine, I'll tell you what I know.}",
+	ACT4_SENERUS_GODS_1 = """{color=aqua|Senerus: — Ah, those are shrines of Erebus. His cults were common in the early ages, though now he seems to be worshipped mostly out of habit. Attributed to earth and stone, his nature has always been similar: quiet, enduring, often seeming absent and yet his presence somehow weighing on you all the same.}
+
+{color=aqua|Senerus: — His following grew more prominent after the loss of the First One. Beyond that there is not much to say about his personality or goals, as he appears to be extremely dormant.}""",
+	ACT4_SENERUS_GODS_2 = """{color=aqua|Senerus: — Ah, Celena is a well-known one. Being tied to the moon and its inherent powers she has managed to remain relevant even without grand support. As for her nature, she is what you would call a pacifist, perhaps not in spirit but in practice. She tends to avoid conflict but still offers what help she can to those in need.}
+
+{color=aqua|Senerus: — In that way she does take after her mother. A small comfort that people can still draw from the divine.}""",
+	ACT4_SENERUS_GODS_3 = """{color=aqua|Senerus: — Ah, Elisia, almost forgot about her. Partly because her existence was almost entirely bound to the First One. Her cults vanished almost completely after his death, and it is hard to say much about her on her own. She was one of the first deities to emerge after the First One, and she was essentially his life partner, giving birth to a few other divine beings before disappearing. Some First One cults believed she died alongside him, others say she tried to protect him but failed.}
+
+{color=aqua|Senerus: — Beyond that, she was connected to animals. Her image was often associated with doves and foxes. The beastkin race has been tied to her, at least in part.}""",
+	ACT4_SENERUS_GODS_4 = "{color=aqua|Senerus: — Our collective mother, of course. I mean the elves, obviously. She is somewhat more... feral than I would personally appreciate, but she is deeply in tune with her people, the forests, and all life within them. Naturally, she was among the first gods, and her strength and pride reflect that.}",
+	ACT4_SENERUS_GODS_5 = "{color=aqua|Senerus: — That is not going to happen tomorrow. Nor do we have any real idea whether it can be prevented, or whether it is even possible for mortals to do so. Don't worry yourself over it, it will take centuries or even millennia before any noticeable decline occurs.}",
+	ACT4_SENERUS_GODS_6 = "{color=aqua|Senerus: — Ask what you still need, or we can return to the artifacts.}",
+	ACT4_SENERUS_GODS_OPTION_EREBUS = "There's shrines made of stone that I come across sometimes.",
+	ACT4_SENERUS_GODS_OPTION_CELENA = "Aliron kingdom seems to have a prominent Celena temple.",
+	ACT4_SENERUS_GODS_OPTION_ELISIA = "Celena's mother?",
+	ACT4_SENERUS_GODS_OPTION_FREYA = "What can you tell me about Freya?",
+	ACT4_SENERUS_GODS_OPTION_MAGIC = "Wait, are you saying all magic will eventually degrade? Why isn't anyone doing anything about it?",
+	ACT4_SENERUS_GODS_OPTION_RETURN = "Fine, let's get back to the artifacts...",
+	ACT4_SENERUS_CHAMPIONS_0 = "{color=aqua|Senerus: — There is not much to say, they are simply vessels capable of channeling divine magic and a little extra from their patrons. This comes at the cost of having to follow their deity's will. Given what you've told me I assume you've encountered at least a couple.}",
+	ACT4_SENERUS_CHAMPIONS_1 = "{color=aqua|Senerus: — The so-called god of winds. Actually a fairly recent one, appearing only a few centuries ago. He keeps no high profile, has sparse followers, and stays out of the way. If I had to guess, his powers were either always limited or he obtained them from another divine being and only in a small amount.}",
+	ACT4_SENERUS_CHAMPIONS_2 = "{color=aqua|Senerus: — Nixx is a frightening one, and among the oldest as well. She governs darkness and the depths. What began as a calm, protective deity has shifted over time toward something far more sinister. Her powers match her domain and her age. Of all the divine forces, I would not want to make an enemy of her.}",
+	ACT4_SENERUS_CHAMPIONS_3 = "{color=aqua|Senerus: — Ah, that is an interesting one. It is not entirely clear, but I tend to believe he was one of the original invading demons who managed to accumulate enough divine energy to become a deity himself.}",
+	ACT4_SENERUS_CHAMPIONS_4 = "{color=aqua|Senerus: — Ask what you still need, or we can return to the artifacts.}",
+	ACT4_SENERUS_CHAMPIONS_OPTION_ALIOS = "Alios",
+	ACT4_SENERUS_CHAMPIONS_OPTION_NIXX = "Nixx",
+	ACT4_SENERUS_CHAMPIONS_OPTION_ASHMEDAI = "Ashmedai",
+	ACT4_SENERUS_CHAMPIONS_OPTION_RETURN = "Let's get back to the artifacts.",
+	ACT4_SENERUS_ARTIFACT_LEAD = """{color=aqua|Senerus: — The empire does not publicize its magical holdings, but we are not talking about an ordinary artifact, and by now it would be common knowledge if they possessed something like this. I believe it resides somewhere within the walls of this city, likely drawn here by such a concentration of wealth and population. There are vast catacombs beneath the city, and I would suggest starting your search there. I can point you to one of the entrances that is still accessible. In the meantime I will look into what you might specifically be searching for.}
+
+Senerus gives you directions to the catacombs before returning to his work.
+
+You make your way out of Senerus's house. Before you can look around, Erdyna jumps out in front of you, impatiently questioning what you've learned.
+
+{color=yellow|Erdyna: — Huuuh? Catacombs, you say. The city passages have been sealed a long time ago, but I know how we can get in there. I know a tunnel entrance at the countryside. Meet me there.}
+
+After giving you the directions for the catacomb entrance Erdyna leaves you alone for today.""",
+	ACT4_CATACOMB_ENTRY_1 = """A couple hundred feet outside of city walls you meet with the lizard girl as agreed. After exchanging your greeting she starts leading you to the hidden underground entrance.
+
+{color=yellow|Erdyna: — I haven't been here for a while, but it should be close...}""",
+	ACT4_CATACOMB_ENTRY_2 = """However as you make it through one of the storehouses and its undergrounds you stop as another group of shady figures appears ahead of you.
+
+{color=aqua|Man: - No way, what the hell are you doing here?}
+
+{color=yellow|Erdyna: - Red Rooks? Didn't expect to find you here. That would be our annoying competitors.}
+
+From her tone you realize it's another city gang.""",
+	ACT4_CATACOMB_ENTRY_2B = """{color=aqua|Group Leader: - Huh, isn't that the scaled bitch herself? Your minions roughed us up pretty badly last time.}
+
+{color=yellow|Erdyna: - Hah, tell me about it. Or better don't. I have important business, so why don't you just let us pass.}
+
+{color=aqua|Group Leader: - I don't think so. Why don't we actually pay you back for that? It's not every day when you are walking by yourself with some foreign goof. Even with your strength you hardly will win against us all.}""",
+	ACT4_CATACOMB_ENTRY_2_OPTION_PHYSICS = "[Physics factor check] You really think you stand a chance against two of us?",
+	ACT4_CATACOMB_ENTRY_2_OPTION_DIPLOMACY = "We're not here to waste time fighting over gang grudges.",
+	ACT4_CATACOMB_ENTRY_2_OPTION_ATTACK = "*Prepare to attack*",
+	ACT4_CATACOMB_ENTRY_3_1_STRONG = """The Red Rooks leader looks over you, measuring your appearance. His smile slowly fades as he starts doubting himself.
+
+{color=aqua|Group Leader: — Damn you... Fine, have it your way. We won't forget this, Erdyna.}
+
+You move out of the way, letting the group leave without a fight.
+
+{color=yellow|Erdyna: - Hah, run away with the tail behind your legs, that suits you best.}""",
+	ACT4_CATACOMB_INTIMIDATED_1 = """The last of the gang disappears back into the passage, cursing under their breath as their footsteps fade into the dark. The corridor grows quiet again, save for the distant drip of water somewhere deeper below.
+
+Erdyna watches them go with open contempt, then relaxes her stance.
+
+{color=yellow|Erdyna: - Pathetic. If that was enough to make them fold, they had no business blocking this place to begin with.}""",
+	ACT4_CATACOMB_ENTRY_3_1_WEAK = """Your threat only draws laughter from the gang.
+
+{color=aqua|Group Leader: — Two of you? That's cute. I still count more blades on our side.}
+
+Erdyna clicks her tongue, already shifting her stance.
+
+{color=yellow|Erdyna: — Yeah, that wasn't convincing enough. Guess we'll do this the fun way.}""",
+	ACT4_CATACOMB_ENTRY_3_2 = """The gang leader gives you an unimpressed look, but Erdyna suddenly cuts in before he can answer, grinning with open mockery.
+
+{color=yellow|Erdyna: — Hear that? He's politely telling you to crawl back into whatever gutter you came from. I'd take the advice while you still can.}
+
+The provocation lands exactly as intended. Several of the thugs bristle at once, hands tightening around their weapons.
+
+{color=aqua|Group Leader: — Big mouth as always. Let's teach you some manners.}
+
+{color=yellow|Erdyna: — Tch, no point talking to these thugs, but I was itching for a fight.}""",
+	ACT4_CATACOMB_ENTRY_3_3 = """You wordlessly ready yourself. The meaning is clear enough even before Erdyna lets out a low, eager chuckle beside you.
+
+{color=yellow|Erdyna: — Knew this would come to it.}
+
+The opposing gang spreads through the passage, clearly preparing to overwhelm you by numbers alone.""",
+	ACT4_CATACOMB_AFTER_FIGHT = """The last of the enemy finally falls still with a handful running away. Erdyna smirks at you, lowering her weapon.
+
+{color=yellow|Erdyna: — Don't think they gonna come back any time soon, so let's move on.}""",
+	ACT4_CATACOMB_DEEPER_1 = """The corridor beyond grows older with every step. The rough stone and improvised supports of the catacombs gradually give way to something far more ancient, its walls carved with the kind of precision no ordinary burial tunnels would ever need.
+
+At the very end of the passage you and Erdyna finally come to a halt.
+
+Set into the rock before you stands a pair of gigantic doors. They are old beyond reason, fashioned from a dark metal gone dull with age and framed by pale stone carved into shapes you can't immediately make sense of. Long lines of writing run across their surface in a language neither of you recognizes.
+
+Erdyna steps closer, narrowing her eyes as she studies the symbols.
+
+{color=yellow|Erdyna: — That's no script I've ever seen before. It doesn't look imperial, not dwarven either.}""",
+	ACT4_CATACOMB_DEEPER_1_OPTION_EXAMINE = "Examine the writing.",
+	ACT4_CATACOMB_DOORS_HELEVIEL_0 = """The letters are sharp and elegant at the same time, each line cut with unnatural precision. Even without understanding them, there is something deliberate and severe in their form, as though the inscription was never meant to welcome anyone inside.
+
+Before you can say anything, Heleviel moves past you and stops in front of the doors. For the first time since entering the depths, her usual composure gives way to open surprise.
+
+{color=yellow|Heleviel: — Wait.}
+
+She raises a hand toward the inscription without quite touching it, her expression tightening as she follows the lines from one edge of the gate to the other.
+
+{color=yellow|Heleviel: — This is ancient elven script... but not a form most scholars would ever read. It belongs to a tradition associated with the dragon hunters.}
+
+Erdyna turns to her sharply.
+
+{color=aqua|Erdyna: — Dragon hunters?}
+
+Heleviel gives a slow nod, still staring at the doors.
+
+{color=yellow|Heleviel: — An elite clan from the older elven traditions. Secretive even by our standards, proud, and deeply concerned with preserving their own legacy. They still maintain their seat at our lands.}""",
+	ACT4_CATACOMB_DOORS_HELEVIEL_1 = "{color=yellow|Heleviel: — Connected, almost certainly. Whether they built this place, sealed it, or merely claimed it later, I cannot say. But this script was not placed here by accident.}",
+	ACT4_CATACOMB_DOORS_HELEVIEL_2 = """Heleviel's gaze lingers on the inscription a moment longer before she exhales quietly.
+
+{color=yellow|Heleviel: — Not fully. I recognize the tradition, not every archaic variation of its script. Enough to know this was done deliberately.}""",
+	ACT4_CATACOMB_DOORS_HELEVIEL_3 = """Erdyna folds her arms, dissatisfied but no longer doubtful.
+
+{color=aqua|Erdyna: — Then that's our next lead.}
+
+You take one last look at the enormous sealed doors. Whatever lies beyond them has waited here for a very long time already. It will have to wait a little longer.""",
+	ACT4_CATACOMB_DOORS_HELEVIEL_OPTION_CONNECTED = "So this place is connected to them?",
+	ACT4_CATACOMB_DOORS_HELEVIEL_OPTION_READ = "Can you read what it says?",
+	ACT4_CATACOMB_DOORS_HELEVIEL_OPTION_VISIT = "Well, this won't budge. I guess our best chance is to visit them.",
+	ACT4_CATACOMB_DOORS_MYR = """You stare at the inscription for a while longer, but it gets you nowhere. The language is unlike anything you've seen before, old and refined in a way that makes guessing feel pointless.
+
+{color=yellow|Erdyna: — Don't look at me like that, I have no clue what's going on here.}
+
+Not wanting to leave empty-handed, you take out a sheet and carefully copy the shapes of the letters as best as you can.
+
+Perhaps someone like the mage guild leader should know about it. Or at least know where to point us.""",
+	ACT4_MYR_CATACOMB_WRITING_0 = """You tell Myr about your finding, observing her reaction.
+
+{color=yellow|Myr: — Hmph. You really do have a talent for digging up troublesome things.}
+
+You present the copied symbols and describe the doors as best as you can. Myr takes the page from you and studies it in silence, her eyes moving quickly at first before slowing with growing concentration.
+
+{color=yellow|Myr: — Huh. This isn't merely old elven. It's a very particular ancient form of it. You should thank me for living this long to know, honestly.}""",
+	ACT4_MYR_CATACOMB_WRITING_1 = """Myr shakes her head almost at once.
+
+{color=yellow|Myr: — No. Recognizing it and actually reading it are rather different matters, as you may imagine.}""",
+	ACT4_MYR_CATACOMB_WRITING_2 = """Myr taps one of the symbols lightly with her finger.
+
+{color=yellow|Myr: - To a very old elven tradition. Elves used to have lots of secretive organizations back in the day. Secretive, prestigious, and very fond of preserving knowledge in ways inconvenient to everyone else. So you better ask someone at their lands, that's your best bet anyway.}""",
+	ACT4_MYR_CATACOMB_FOLLOWUP_0 = """Erdyna meets you as you walk out of Myr's office with the new target.
+
+{color=aqua|Erdyna: - Eh, elves? Never been there, I wonder what they have to say.}""",
+	ACT4_MYR_CATACOMB_WRITING_OPTION_READ = "So you can read it?",
+	ACT4_MYR_CATACOMB_WRITING_OPTION_BELONG = "What does it belong to?",
+	ACT4_MYR_CATACOMB_WRITING_OPTION_CURIOUS = "Are you just that curious about it to keep following me?",
+	ACT4_MYR_CATACOMB_WRITING_OPTION_VISIT = "I'm well known at the elven lands. Let's go visit them.",
+	ACT4_MYR_CATACOMB_REPLY_1 = "{color=aqua|Erdyna: - Hell, yeah, what do you think? Those doors must have something rich behind them, don't they? I'm sure you gonna be generous enough to spare it with me as we finish, haha.}",
+	ACT4_MYR_CATACOMB_REPLY_2 = "{color=aqua|Erdyna: - Not surprised, you are a big shot, aren't ya? Well, I'll be right behind you.}",
 
 }
