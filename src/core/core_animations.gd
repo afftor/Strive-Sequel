@@ -243,7 +243,10 @@ func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = f
 	var x = load(images.GFX_sprites[effect]).instance()
 	node.add_child(x)
 	x.position = node.rect_size/2
-	if flip == true: x.set_flip_h(true)
+	if flip == true:
+		x.set_flip_h(true)
+		if x.get("offset"):
+			x.offset = x.offset * -1
 	#x.set_anchors_and_margins_preset(Control.PRESET_CENTER)
 	x.play()
 
