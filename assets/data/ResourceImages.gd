@@ -447,6 +447,7 @@ var backgrounds = {
 	rouge_7 = "res://assets/images/fullscreen scenes/Rouge007.png",
 	rouge_8 = "res://assets/images/fullscreen scenes/Rouge008.png",
 	rouge_9 = "res://assets/images/fullscreen scenes/Rouge009.png",
+
 	
 	#masteries
 	mastery_air = "res://assets/Textures_v2/CLASS_INFO/back_masteri/back_air.png",

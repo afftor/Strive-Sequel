@@ -20622,7 +20622,7 @@ The dwarf grunts, pointing to a shelf. She snatches a glowing bottle of liquid, 
 {color=yellow|— New around here, eh? Word of advice, don't linger in this fume-pit too long. Vapors will turn your brain to mush, like this guy here.}
 
 She leaves before you can answer but her uncharacteristic appearance makes you think you'll meet her in future.""",
-	ACT_4_CONTINUE = "You've finished current main story content. Please wait for the next update and consider supporting the game's development if you hadn't already.",
+	ACT_4_CONTINUE = "Follow up on the leads you've uncovered in the Empire.",
 	ACT_4_CAPITAL_SUMMARY = "You've been invited to the Grand Empire's Capital. This feels like the artifact chasing quest is coming to its conclusion.",
 	ACT_4_CAPITAL_NAME = "Each against all",
 	ACT_4_CAPITAL_ENTER = "Go to the Empire's capital",
@@ -24339,10 +24339,6 @@ Her body is a landscape of pleasure for you to explore. Your hands roam over her
 
 You collapse against her, your body spent, your breathing ragged. Her tails wrap around you, holding you close, a possessive, protective embrace.""",
 
-	LIRA_QUEST3_QUEST_NAME = "Lira's Lifestory",
-	LIRA_QUEST3_QUEST_SUMMARY = "Lira is trying to understand her new place in the mansion.",
-	LIRA_QUEST3_QUEST_STAGE_TALK = "Talk to Lira about her life at the mansion.",
-	LIRA_QUEST3_QUEST_STAGE_GROVE = "Escort Lira to the hidden grove near the elven city.",
 	LIRA_QUEST1_QUEST_NAME = "Lira's Learning",
 	LIRA_QUEST1_QUEST_SUMMARY = "Lira wants to see the fair in Aliron and learn more about life outside the temple.",
 	LIRA_QUEST1_QUEST_STAGE_FAIR = "Take Lira to the city fair.",
@@ -24354,124 +24350,7 @@ You collapse against her, your body spent, your breathing ragged. Her tails wrap
 	LIRA_QUEST2_QUEST_STAGE_BANDITS = "Find the bandit leader connected to Lira's sale.",
 	LIRA_QUEST2_QUEST_STAGE_MERCHANT = "Confront the merchant who took Lira from her mother.",
 	LIRA_QUEST2_QUEST_STAGE_RETURN = "Return to the mansion with Lira.",
-	LIRA_QUEST3_OVER_PAST_FEW_DAYS_LIRA = """Over the past few days, Lira has slowly begun to settle into life at the mansion. You occasionally see her helping with small chores or assisting in the kitchen, slowly making connections with other servants during shared labor.
-The only person she hasn't been able to connect with appears to be her new master: you. Whenever you're in the same space, she just watches you from afar, shielding herself with formality and politeness during your short exchanges.
-You decide it’s time to talk to her about that matter.""",
-	LIRA_QUEST3_SEE_LIRA_WALK_ROOM_SEEMS = "As you see Lira walk into her room it seems like a good time to address her behavior.",
-	LIRA_QUEST3_COUPLE_MOMENTS_KNOCK_OPENS_DOOR = """A couple of moments after you knock, she opens the door. As she sees you, her eyes open wide, but she quickly tries to regain her composure and bows her head.
-You barge in unannounced, making Lira jump up from her seat. She quickly hides a small elven prayer bead and stands up, facing you briefly before bowing her head.
-{color=yellow|Lira: — Ah, greeting, [master]! Apologies, I was not expecting you… I mean, how can I be of service?}""",
-	LIRA_QUEST3_HESITATES_BIT_TAKING_SMALL_ELVEN = """She hesitates a bit before taking a small elven prayer bead out of her pocket and earnestly presenting it to you.
-{color=yellow|Lira: — I was simply praying, [master]. It… it doesn't give the same feeling as before, but it's what I'm used to, and it calms me down a bit. I hope this is okay with you.}
-A small smile shows on Lira’s lips.
-{color=yellow|Lira: — They treat me well, [master]. I was afraid at first, but they turned out to be quite friendly and are helping me get used to… well, everything.}
-Presented with a direct question, Lira blushes a bit and lowers her head once again.
-{color=yellow|Lira: — I-I apologize if that was inappropriate or upset you…}
-Seeing that you silently wait, she hesitantly continues.
-{color=yellow|Lira: — If I'm being honest, I was just trying… trying to understand what my role is from now on. What I'm supposed to do, how I'm supposed to behave, all of that…}""",
-	LIRA_QUEST3_LIRA_TAKES_SMALL_BREATH_LIRA = """Lira takes a small breath.
-{color=yellow|Lira: — When I lived among the elves, everything had a very strict order. A priestess knew exactly what she was meant to become… what duties awaited her… how she was supposed to spend her day or address others…}
-{color=yellow|Lira: — But now everything is different, and I… Ah, sorry, I didn't mean to start rambling, it's probably boring you…}""",
-	LIRA_QUEST3_LIRA_OKAY_TRYING_SAY_SPENT = """{color=yellow|Lira: — Oh!… Okay! I was just trying to say that I spent most of my life preparing for the path of a priestess, so it's hard for me to just forget all of that and become a proper… well, slave.}
-{color=yellow|Lira: — I tried to look at what others do, but they also behave very differently from one another. That's why I was contemplating just asking you directly, and I guess now is the time…}""",
-	LIRA_QUEST3_NODS_PAUSES_BRIEFLY_ASKING_DIRECTLY = """She nods, then pauses briefly before asking directly.
-{color=yellow|Lira: — Can you please tell me what you expect from me? Who am I supposed to be?}
-Considering that she's here all alone and you're the only person she truly knows outside the elf kingdom, your answer will clearly carry significant weight in how she begins to see her future.""",
-	LIRA_QUEST3_LIRA_TAKES_COUPLE_MOMENTS_THINK = """Lira takes a couple of moments to think silently, then nods.
-{color=yellow|Lira: — I guess this is the only answer. You are the one who saved my life, after all, so I shall repay your kindness. I will need some time to adjust, but I promise to do my best to serve you, [master].}
-For a moment, she just stares at you, blinking. Then something in her expression softens, and you see a tentative smile begin to form.
-{color=yellow|Lira: — This… this is the first time someone has asked me this question. I'll need to think about it, but in the meantime, I promise to do my best to serve you, [master].}
-After that matter is settled, Lira asks a few more questions about her household duties. Once she has her answers, she seems about to leave, but hesitates, as if struck by a thought. She turns back to you.
-{color=yellow|Lira: — [master]… it may be bold of me, but may I ask you for a favor?}""",
-	LIRA_QUEST3_LIRA_EXILED_FOREST_WASNT_ALLOWED = "{color=yellow|Lira: — When I was exiled from the forest, I wasn't allowed to take anything with me. Of course, I don't expect to get my things from the priest quarters, but I had some personal stash hidden in a grove near the city. Can you please escort me there?}",
-	LIRA_QUEST3_BOWS_HEAD_FLASHES_GRATEFUL_SMILE = """She bows her head and flashes you a grateful smile.
-{color=yellow|Lira: — Thank you, [master]!}""",
-	LIRA_QUEST3_DEEPER_WALK_BENEATH_TALL_TREES = """The deeper you walk beneath the tall trees, the more familiar the surroundings seem to Lira. She moves with slightly more confidence here, occasionally glancing around as if recognizing distant landmarks.
-Not long after entering the deeper woods, an elven patrol steps out from between the trees. They recognize you quickly enough and offer a polite nod, but when their eyes fall on Lira, the mood shifts immediately.
-One of the elves frowns.""",
-	LIRA_QUEST3_ELF_PATROL_LEADER_REBEL_PRIESTESS = """{color=yellow|Elf Patrol Leader: — What is a rebel priestess doing here? The terms of your exile were made clear! Or do you have a death wish?}
-Lira lowers her gaze.""",
-	LIRA_QUEST3_TENSE_MOMENT_PATROL_LEADER_NODS = """After a tense moment, the patrol leader nods and takes his hand from the hilt of his sword. The rest of the elves also step aside, casting disdainful glances at Lira.
-{color=yellow|Elf Patrol Leader: — So be it. Guess being a human plaything is already punishment enough for this rebel scum. You can go now.}
-Once you're out of earshot, Lira exhales quietly. She glances back toward the trees where the patrol disappeared.
-{color=aqua|Lira: — The way they looked at me… it was terrifying. It's nice that I now have someone who can protect me like that…}
-The patrol leader squints at you for a couple of intense moments, then snorts and turns away. The rest of the elves also step aside, casting disdainful glances at Lira.
-{color=yellow|Elf Patrol Leader: — Since Freya's Priestess tolerates you, I won't argue. Just make sure this \"traveler\" leaves the forest as soon as possible. You can go now.}
-Once you're out of earshot, Lira exhales quietly. She glances back toward the trees where the patrol disappeared.
-{color=aqua|Lira: — I always thought exile meant death… but thanks to you, it doesn't seem that way anymore. And now I can even walk through these woods as a traveler… What a strange feeling…}
-{color=aqua|Lira: — Thank you.}""",
-	LIRA_QUEST3_SHORT_WALK_REACH_GROVE_PLACE = """After a short walk, you reach the grove. The place is quiet and well-hidden: a small clearing surrounded by ancient roots and moss-covered stones.
-Lira kneels near a hollow tree where she hid her belongings, but before she can reach them, the ground near the roots begins to move. Several enormous centipedes burst out from beneath the soil and begin to circle you.
-Lira quickly steps to your side.""",
-	LIRA_QUEST3_LIRA_DID_COME_ALWAYS_THOUGHT = """{color=yellow|Lira: — W-where did they come from?! I always thought this place was safe… Or was it Freya who used to guard me?...}
-She forcefully shakes her head.
-{color=yellow|Lira: — Ah, it doesn't matter now! I saw you fight before, you can deal with them, right? I'll help!}""",
-	LIRA_QUEST3_LIRA = "{color=yellow|Lira: — Got it!}",
-	LIRA_QUEST3_TOGETHER_SLAY_AGGRESSIVE_BEASTS_FIGHT = """Together you slay the aggressive beasts.
-After the fight, Lira looks down at her hands, which shimmer with a faint green glow.
-{color=yellow|Lira: — Phew… This… this was my first ever fight, [master]. Did I… did I do well?}""",
-	LIRA_QUEST3_SMILES_BRIGHTLY_PLEASED_PRAISE_LIRA = """She smiles brightly, pleased with the praise.
-{color=yellow|Lira: — I'm glad I was helpful! It actually took me a long time to properly use this magic, but I guess in the end, all that training paid off…}
-After the fight, Lira looks down at her hands, sore from the fight.
-{color=yellow|Lira: — I… I never had to fight before, so this is the first time for me… I probably should be scared or nervous…}
-She flexes her fingers slowly, then looks at you.
-{color=yellow|Lira: — But for some reason it feels… fine. Maybe even good. My body feels hot… and strong.}""",
-	LIRA_QUEST3_LOOKS_BACK_HANDS_SLAIN_CENTIPEDES = """She looks back at her hands, then at the slain centipedes, then simply shrugs.
-{color=yellow|Lira: — I… I don't know, honestly. Though now that I think about it… I was always better with physical tasks. Magic never came as easily. The elders used to say I had more \"fire in my blood\" than was proper for someone of my calling.}
-{color=yellow|Lira: — Anyway, let's hope there won't be any unpleasant surprises today.}""",
-	LIRA_QUEST3_LIRA_GOES_BACK_HOLLOW_TREE = """Lira goes back to the hollow tree and finally retrieves her hidden belongings. She doesn't try to hide any of them, so you have a good look.
-They consist of just a few things: a worn leather diary, a few simple wooden toys carved by hand, a small cloth doll with uneven stitching, and a worn-out brush with a few strands of hair still caught between its teeth.
-She holds each item gently, as if they might crumble at the slightest pressure.""",
-	LIRA_QUEST3_LIRA_FLIPS_THROUGH_FEW_PAGES = """Lira flips through a few pages, a nostalgic smile touching her lips.
-{color=yellow|Lira: — Mostly small things. My first day of training… I was so tired afterward that I overslept and missed both breakfast and lunch the next day.}
-She turns another page, chuckling softly.
-{color=yellow|Lira: — The time I accidentally set my room on fire during a ritual… They made me scrub every floor in the temple for a couple of months and sent me to live in a tiny closet during the repairs. But it was closer to the forest and easier to run off to, so I actually liked it more.}""",
-	LIRA_QUEST3_POINTS_ANOTHER_ENTRY_LIRA_PART = """She points at another entry.
-{color=yellow|Lira: — This part here… it's about the first time I successfully healed someone. It took me a month of training while others learned it in weeks, but I was still happy I could do it at all…}
-On the next pages, she finds some old sketches of different flowers.
-{color=yellow|Lira: — Huh, just like with magic, I was never very good at drawing either. But I liked trying.}
-Together you skim through more of the diary as Lira shares her stories.
-She looks slightly embarrassed, her ears twitching a little.
-{color=yellow|Lira: — Priestesses aren't supposed to have personal belongings. Attachment to material things is seen as… a weakness. A distraction from serving the goddess.}
-She runs her thumb over the wooden bird's chipped wing.""",
-	LIRA_QUEST3_LIRA_FIRST_KEPT_THESE_HIDDEN = """{color=yellow|Lira: — At first, I kept these hidden under my bed. But eventually they found out and told me to get rid of them. So I did. Threw them into the garbage, only to take them back at night and hide them here.}
-She looks down at the bundle.
-{color=yellow|Lira: — Then every time I was sent for supplies, I could come here and check on them, and also write about recent events in my diary. Huh, I suppose I was a bit rebellious even then…}
-A warm smile appears on her face.
-{color=yellow|Lira: — I am. Those trinkets might seem worthless to everyone else, but for me they're like memories saved in magic and every time I touch them, I travel back to a different time…}
-She picks up the small cloth doll.""",
-	LIRA_QUEST3_LIRA_ONE_MADE_MYSELF_SMALL = """{color=yellow|Lira: — This one… I made her myself when I was very small. Before the temple. I don't even remember where I learned to sew or how long I had her, but I remember sleeping with her every night.}
-She sets it down carefully. Her hand hovers over the wooden brush.
-{color=yellow|Lira: — And this one is the only thing I have that reminds me of my mother. I… I don't even remember her face anymore, but this proves she cared since it was her gift to me. So yeah, I'm happy to get everything back.}
-She nods, carefully wrapping the bundle and tucking it away.
-{color=yellow|Lira: — Yes, [master]. Thank you for bringing me here. It means a lot.}
-The two of you make your way back to the road, leaving the quiet grove behind.""",
-	LIRA_QUEST3_OPTION_KNOCK_DOOR = "Knock on the door",
-	LIRA_QUEST3_OPTION_WALK_ROOM = "Walk into her room",
-	LIRA_QUEST3_OPTION_BUSY_DOING = "Are you busy? What were you doing?",
-	LIRA_QUEST3_OPTION_OTHER_SERVANTS_TREAT = "How does other servants treat you?",
-	LIRA_QUEST3_OPTION_SEEM_WATCH_CLOSELY_YET_NEVER_STRIKE = "You seem to watch me closely, yet never strike up a conversation. Why? What's on your mind?",
-	LIRA_QUEST3_OPTION_FEEL_FREE_SHARE_THOUGHTS_LISTENING = "Feel free to share your thoughts, I’m listening",
-	LIRA_QUEST3_OPTION_DON_WORRY_UNDERSTAND_WANT = "Don’t worry, I understand. So what is that you want?",
-	LIRA_QUEST3_OPTION_SERVE_DEVOTEDLY_SERVED_FREYA_THATS_WHOLE = "You should serve me just as devotedly as you served Freya. That's the whole point of being a slave, isn't it?",
-	LIRA_QUEST3_OPTION_WHILE_FORMALLY_SLAVE_PLACE_STRICT_RESTRICTIONS = "While formally you're my slave, I don't place strict restrictions. So I ask you what would you want?",
-	LIRA_QUEST3_OPTION_COURSE = "Of course, what is it?",
-	LIRA_QUEST3_OPTION_HOPEFULLY_BOTHERSOME = "Hopefully it's not too bothersome",
-	LIRA_QUEST3_OPTION_FINE_SHOW_GOOD_OBEDIENT_SLAVES = "Fine, let's go. I should show that I'm a good master to my obedient slaves.",
-	LIRA_QUEST3_OPTION_ALRIGHT_LET_MOVE_MAYBE_THESE_THINGS = "Alright, let’s move. Maybe these things will help you figure out what you want.",
-	LIRA_QUEST3_OPTION_SEARCH_GROVE = "Search for the grove",
-	LIRA_QUEST3_OPTION_PRIESTESS_ANYMORE_SHES_SLAVE_PERSONAL_PROPERTY = "She is not a priestess anymore. She's my slave, my personal property. There’s no rules forbidding me from bringing my belongings into the forest.",
-	LIRA_QUEST3_OPTION_EXILED_MEANS_LONGER_LIVE_AMONG_DOESNT = "\"Exiled\" means she can no longer live among you. It doesn't mean she cannot pass through the forest as a traveler. We're only here briefly.",
-	LIRA_QUEST3_OPTION_STAY_BACK_HELP_LEAVE_FIGHTING = "Just stay back and help with what you can. Leave the fighting to me.",
-	LIRA_QUEST3_OPTION_FIGHT_TOGETHER_SIDE_SIDE_CAPABLE_MORE = "We fight together, side by side. You're capable of more than just standing behind.",
-	LIRA_QUEST3_OPTION_DID_GREAT_ESPECIALLY_FIRST_FIGHT = "You did great, especially for the first fight",
-	LIRA_QUEST3_OPTION_LOOKS_LIKE_NATURAL_TYPE_MAGIC = "Looks like you're a natural with this type of magic",
-	LIRA_QUEST3_OPTION_MAYBE_PENT_RAGE_YEARS_OBEDIENCE = "Maybe it's all the pent-up rage from years of obedience?",
-	LIRA_QUEST3_OPTION_SOMETHING_RACE = "Could this have something to do with your race?",
-	LIRA_QUEST3_OPTION_DID_WRITE_DIARY = "What did you write in the diary?",
-	LIRA_QUEST3_OPTION_DID_HIDE_THESE = "Why did you hide these here?",
-	LIRA_QUEST3_OPTION_FEEL_BETTER_GETTING_THESE_BACK = "Do you feel better after getting these back?",
-	LIRA_QUEST3_OPTION_ALRIGHT_HEAD_BACK_SHOULDNT_LINGER_FOREST = "Alright, time to head back. We shouldn't linger in the forest.",
+
 	LIRA_QUEST1_DAY_USUAL_STEP_OUTSIDE_MANSION = """You go about your day as usual, but as you step outside the mansion, you realize the streets of Alliron are more crowded and noisier than they were just yesterday. A steady stream of people flows along the main road toward the central square. From there, despite the distance, you can already hear merchants shouting, the faint lilt of music, and the low, constant hum of a crowd.
 
 You stop one of the passersby, and they point toward a nearby wooden post covered in flashy flyers. You walk over and pull one loose.
@@ -25367,5 +25246,496 @@ Lira approaches you with a warm smile on her face and a clear determination in h
 	LIRA_QUEST2_OPTION_SET_FREE = "What if I set you free?",
 	LIRA_QUEST2_OPTION_SCREW_FATE_MEANS_PUTTING_GENUINE_SMILE = "Screw fate. If it means putting a genuine smile on your face, I'll free you from slavery. You can be my servant, not my property",
 	LIRA_QUEST2_OPTION_GLAD_ABLE_GIVE_YOUVE_BEEN_LOOKING = "I'm glad I was able to give you what you've been looking for. Don't worry, I'll keep treating you well",
+	LIRA_QUEST_1_INTRO = """Over the past few days, Lira has slowly begun to settle into life at the mansion. You occasionally see her helping with small chores or assisting in the kitchen, slowly making connections with other servants during shared labor.
+
+The only person she hasn't been able to connect with appears to be her new master: you. Whenever you're in the same space, she just watches you from afar, shielding herself with formality and politeness during your short exchanges.
+
+You decide it’s time to talk to her about that matter.""",
+	LIRA_QUEST_1_TALK_TO_LIRA = "As you see Lira walk into her room it seems like a good time to address her behavior.",
+	LIRA_QUEST_1_ROOM_ENTRY = """A couple of moments after you knock, she opens the door. As she sees you, her eyes open wide, but she quickly tries to regain her composure and bows her head.
+
+You barge in unannounced, making Lira jump up from her seat. She quickly hides a small elven prayer bead and stands up, facing you briefly before bowing her head.
+
+{color=yellow|Lira: — Ah, greeting, [master]! Apologies, I was not expecting you… I mean, how can I be of service?}""",
+	LIRA_QUEST_1_BUSY = """She hesitates a bit before taking a small elven prayer bead out of her pocket and earnestly presenting it to you.
+
+{color=yellow|Lira: — I was simply praying, [master]. It… it doesn't give the same feeling as before, but it's what I'm used to, and it calms me down a bit. I hope this is okay with you.}""",
+	LIRA_QUEST_1_SERVANTS = """A small smile shows on Lira’s lips.
+
+{color=yellow|Lira: — They treat me well, [master]. I was afraid at first, but they turned out to be quite friendly and are helping me get used to… well, everything.}""",
+	LIRA_QUEST_1_WATCH_REASON = """Presented with a direct question, Lira blushes a bit and lowers her head once again.
+
+{color=yellow|Lira: — I-I apologize if that was inappropriate or upset you…}
+
+Seeing that you silently wait, she hesitantly continues.
+
+{color=yellow|Lira: — If I'm being honest, I was just trying… trying to understand what my role is from now on. What I'm supposed to do, how I'm supposed to behave, all of that…}
+
+{color=yellow|Lira: — When I lived among the elves, everything had a very strict order. A priestess knew exactly what she was meant to become… what duties awaited her… how she was supposed to spend her day or address others…}
+
+{color=yellow|Lira: — But now everything is different, and I… Ah, sorry, I didn't mean to start rambling, it's probably boring you…}""",
+	LIRA_QUEST_1_WATCH_REASON_FOLLOWUP = """{color=yellow|Lira: — Oh!… Okay! I was just trying to say that I spent most of my life preparing for the path of a priestess, so it's hard for me to just forget all of that and become a proper… well, slave.}
+
+{color=yellow|Lira: — I tried to look at what others do, but they also behave very differently from one another. That's why I was contemplating just asking you directly, and I guess now is the time…}
+
+She nods, then pauses briefly before asking directly.
+
+{color=yellow|Lira: — Can you please tell me what you expect from me? Who am I supposed to be?}
+
+Considering that she's here all alone and you're the only person she truly knows outside the elf kingdom, your answer will clearly carry significant weight in how she begins to see her future.""",
+	LIRA_QUEST_1_EXPECTATIONS = """Lira waits quietly for your answer. Whatever you tell her now will shape how she begins to see her place in your household.""",
+	LIRA_QUEST_1_EXPECTATIONS_ANSWER = """Lira takes a couple of moments to think silently, then nods.
+
+{color=yellow|Lira: — I guess this is the only answer. You are the one who saved my life, after all, so I shall repay your kindness. I will need some time to adjust, but I promise to do my best to serve you, [master].}
+
+For a moment, she just stares at you, blinking. Then something in her expression softens, and you see a tentative smile begin to form.
+
+{color=yellow|Lira: — This… this is the first time someone has asked me this question. I'll need to think about it, but in the meantime, I promise to do my best to serve you, [master].}
+
+After that matter is settled, Lira asks a few more questions about her household duties. Once she has her answers, she seems about to leave, but hesitates, as if struck by a thought. She turns back to you.
+
+{color=yellow|Lira: — [master]… it may be bold of me, but may I ask you for a favor?}""",
+	LIRA_QUEST_1_FAVOR_REQUEST = "{color=yellow|Lira: — When I was exiled from the forest, I wasn't allowed to take anything with me. Of course, I don't expect to get my things from the priest quarters, but I had some personal stash hidden in a grove near the city. Can you please escort me there?}",
+	LIRA_QUEST_1_FAVOR_ACCEPT = """She bows her head and flashes you a grateful smile.
+
+{color=yellow|Lira: — Thank you, [master]!}""",
+	LIRA_QUEST_1_SEARCH_GROVE = """The deeper you walk beneath the tall trees, the more familiar the surroundings seem to Lira. She moves with slightly more confidence here, occasionally glancing around as if recognizing distant landmarks.
+
+Not long after entering the deeper woods, an elven patrol steps out from between the trees. They recognize you quickly enough and offer a polite nod, but when their eyes fall on Lira, the mood shifts immediately.
+
+One of the elves frowns.""",
+	LIRA_QUEST_1_PATROL_CONFRONTATION = """{color=yellow|Elf Patrol Leader: — What is a rebel priestess doing here? The terms of your exile were made clear! Or do you have a death wish?}
+
+Lira lowers her gaze.""",
+	LIRA_QUEST_1_PATROL_DEPENDENCY = """After a tense moment, the patrol leader nods and takes his hand from the hilt of his sword. The rest of the elves also step aside, casting disdainful glances at Lira.
+
+{color=yellow|Elf Patrol Leader: — So be it. Guess being a human plaything is already punishment enough for this rebel scum. You can go now.}
+
+Once you're out of earshot, Lira exhales quietly. She glances back toward the trees where the patrol disappeared.
+
+{color=yellow|Lira: — The way they looked at me… it was terrifying. It's nice that I now have someone who can protect me like that…}
+
+{color=yellow|Lira: — Thank you.}""",
+	LIRA_QUEST_1_PATROL_FREEDOM = """The patrol leader squints at you for a couple of intense moments, then snorts and turns away. The rest of the elves also step aside, casting disdainful glances at Lira.
+
+{color=yellow|Elf Patrol Leader: — Since Freya's Priestess tolerates you, I won't argue. Just make sure this "traveler" leaves the forest as soon as possible. You can go now.}
+
+Once you're out of earshot, Lira exhales quietly. She glances back toward the trees where the patrol disappeared.
+
+{color=yellow|Lira: — I always thought exile meant death… but thanks to you, it doesn't seem that way anymore. And now I can even walk through these woods as a traveler… What a strange feeling…}
+
+{color=yellow|Lira: — Thank you.}""",
+	LIRA_QUEST_1_GROVE_ARRIVAL = """After a short walk, you reach the grove. The place is quiet and well-hidden: a small clearing surrounded by ancient roots and moss-covered stones.
+
+Lira kneels near a hollow tree where she hid her belongings, but before she can reach them, the ground near the roots begins to move. Several enormous centipedes burst out from beneath the soil and begin to circle you.
+
+Lira quickly steps to your side.""",
+	LIRA_QUEST_1_CENTIPEDE_WARNING = """{color=yellow|Lira: — W-where did they come from?! I always thought this place was safe… Or was it Freya who used to guard me?...}
+
+She forcefully shakes her head.
+
+{color=yellow|Lira: — Ah, it doesn't matter now! I saw you fight before, you can deal with them, right? I'll help!}""",
+	LIRA_QUEST_1_FIGHT_PLAN = """The centipedes keep circling closer while Lira steadies herself beside you, waiting to hear how you want to handle the fight.""",
+	LIRA_QUEST_1_FIGHT_READY = "{color=yellow|Lira: — Got it!}",
+	LIRA_QUEST_1_DEPENDENCY_FIGHT_AFTERMATH = """Together you slay the aggressive beasts.
+
+After the fight, Lira looks down at her hands, which shimmer with a faint green glow.
+
+{color=yellow|Lira: — Phew… This… this was my first ever fight, [master]. Did I… did I do well?}""",
+	LIRA_QUEST_1_DEPENDENCY_FIGHT_PRAISE = """She smiles brightly, pleased with the praise.
+
+{color=yellow|Lira: — I'm glad I was helpful! It actually took me a long time to properly use this magic, but I guess in the end, all that training paid off…}
+
+{color=yellow|Lira: — Anyway, let's hope there won't be any unpleasant surprises today.}""",
+	LIRA_QUEST_1_FREEDOM_FIGHT_AFTERMATH = """Together you slay the aggressive beasts.
+
+After the fight, Lira looks down at her hands, sore from the fight.
+
+{color=yellow|Lira: — I… I never had to fight before, so this is the first time for me… I probably should be scared or nervous…}
+
+She flexes her fingers slowly, then looks at you.
+
+{color=yellow|Lira: — But for some reason it feels… fine. Maybe even good. My body feels hot… and strong.}""",
+	LIRA_QUEST_1_FREEDOM_FIGHT_REFLECTION = """She looks back at her hands, then at the slain centipedes, then simply shrugs.
+
+{color=yellow|Lira: — I… I don't know, honestly. Though now that I think about it… I was always better with physical tasks. Magic never came as easily. The elders used to say I had more "fire in my blood" than was proper for someone of my calling.}
+
+{color=yellow|Lira: — Anyway, let's hope there won't be any unpleasant surprises today.}""",
+	LIRA_QUEST_1_BELONGINGS_ROOT = """Lira goes back to the hollow tree and finally retrieves her hidden belongings. She doesn't try to hide any of them, so you have a good look.
+
+They consist of just a few things: a worn leather diary, a few simple wooden toys carved by hand, a small cloth doll with uneven stitching, and a worn-out brush with a few strands of hair still caught between its teeth.
+
+She holds each item gently, as if they might crumble at the slightest pressure.""",
+	LIRA_QUEST_1_DIARY_PART_1 = """Lira flips through a few pages, a nostalgic smile touching her lips.
+
+{color=yellow|Lira: — Mostly small things. My first day of training… I was so tired afterward that I overslept and missed both breakfast and lunch the next day.}
+
+She turns another page, chuckling softly.
+
+{color=yellow|Lira: — The time I accidentally set my room on fire during a ritual… They made me scrub every floor in the temple for a couple of months and sent me to live in a tiny closet during the repairs. But it was closer to the forest and easier to run off to, so I actually liked it more.}""",
+	LIRA_QUEST_1_DIARY_PART_2 = """She points at another entry.
+
+{color=yellow|Lira: — This part here… it's about the first time I successfully healed someone. It took me a month of training while others learned it in weeks, but I was still happy I could do it at all…}
+
+On the next pages, she finds some old sketches of different flowers.
+
+{color=yellow|Lira: — Huh, just like with magic, I was never very good at drawing either. But I liked trying.}
+
+Together you skim through more of the diary as Lira shares her stories.""",
+	LIRA_QUEST_1_HIDDEN_BELONGINGS = """She looks slightly embarrassed, her ears twitching a little.
+
+{color=yellow|Lira: — Priestesses aren't supposed to have personal belongings. Attachment to material things is seen as… a weakness. A distraction from serving the goddess.}
+
+She runs her thumb over the wooden bird's chipped wing.
+
+{color=yellow|Lira: — At first, I kept these hidden under my bed. But eventually they found out and told me to get rid of them. So I did. Threw them into the garbage, only to take them back at night and hide them here.}
+
+{color=yellow|Lira: — Then every time I was sent for supplies, I could come here and check on them, and also write about recent events in my diary. Huh, I suppose I was a bit rebellious even then…}""",
+	LIRA_QUEST_1_FEEL_BETTER = """A warm smile appears on her face.
+
+{color=yellow|Lira: — I am. Those trinkets might seem worthless to everyone else, but for me they're like memories saved in magic and every time I touch them, I travel back to a different time…}
+
+She picks up the small cloth doll.
+
+{color=yellow|Lira: — This one… I made her myself when I was very small. Before the temple. I don't even remember where I learned to sew or how long I had her, but I remember sleeping with her every night.}
+
+She sets it down carefully. Her hand hovers over the wooden brush.
+
+{color=yellow|Lira: — And this one is the only thing I have that reminds me of my mother. I… I don't even remember her face anymore, but this proves she cared since it was her gift to me. So yeah, I'm happy to get everything back.}""",
+	LIRA_QUEST_1_HEAD_BACK = """She nods, carefully wrapping the bundle and tucking it away.
+
+{color=yellow|Lira: — Yes, [master]. Thank you for bringing me here. It means a lot.}
+
+The two of you make your way back to the road, leaving the quiet grove behind.""",
+	LIRA_QUEST_1_OPTION_KNOCK_ON_THE_DOOR = "Knock on the door",
+	LIRA_QUEST_1_OPTION_WALK_INTO_HER_ROOM = "Walk into her room",
+	LIRA_QUEST_1_OPTION_ARE_YOU_BUSY = "Are you busy? What were you doing?",
+	LIRA_QUEST_1_OPTION_HOW_DO_SERVANTS_TREAT_YOU = "How does other servants treat you?",
+	LIRA_QUEST_1_OPTION_YOU_SEEM_TO_WATCH_ME = "You seem to watch me closely, yet never strike up a conversation. Why? What's on your mind?",
+	LIRA_QUEST_1_OPTION_FEEL_FREE_TO_SHARE = "Feel free to share your thoughts, I’m listening",
+	LIRA_QUEST_1_OPTION_DONT_WORRY_I_UNDERSTAND = "Don’t worry, I understand. So what is that you want?",
+	LIRA_QUEST_1_OPTION_SERVE_AS_YOU_SERVED_FREYA = "You should serve me just as devotedly as you served Freya. That's the whole point of being a slave, isn't it?",
+	LIRA_QUEST_1_OPTION_WHAT_WOULD_YOU_WANT = "While formally you're my slave, I don't place strict restrictions. So I ask you what would you want?",
+	LIRA_QUEST_1_OPTION_OF_COURSE_WHAT_IS_IT = "Of course, what is it?",
+	LIRA_QUEST_1_OPTION_HOPEFULLY_NOT_TOO_BOTHERSOME = "Hopefully it's not too bothersome",
+	LIRA_QUEST_1_OPTION_FINE_LETS_GO = "Fine, let's go. I should show that I'm a good master to my obedient slaves.",
+	LIRA_QUEST_1_OPTION_ALRIGHT_LETS_MOVE = "Alright, let’s move. Maybe these things will help you figure out what you want.",
+	LIRA_QUEST_1_OPTION_SEARCH_FOR_THE_GROVE = "Search for the grove",
+	LIRA_QUEST_1_OPTION_SHE_IS_NOT_A_PRIESTESS = "She is not a priestess anymore. She's my slave, my personal property. There’s no rules forbidding me from bringing my belongings into the forest.",
+	LIRA_QUEST_1_OPTION_EXILED_MEANS = "\"Exiled\" means she can no longer live among you. It doesn't mean she cannot pass through the forest as a traveler. We're only here briefly.",
+	LIRA_QUEST_1_OPTION_STAY_BACK_AND_HELP = "Just stay back and help with what you can. Leave the fighting to me.",
+	LIRA_QUEST_1_OPTION_WE_FIGHT_TOGETHER = "We fight together, side by side. You're capable of more than just standing behind.",
+	LIRA_QUEST_1_OPTION_YOU_DID_GREAT = "You did great, especially for the first fight",
+	LIRA_QUEST_1_OPTION_NATURAL_WITH_THIS_MAGIC = "Looks like you're a natural with this type of magic",
+	LIRA_QUEST_1_OPTION_PENT_UP_RAGE = "Maybe it's all the pent-up rage from years of obedience?",
+	LIRA_QUEST_1_OPTION_SOMETHING_TO_DO_WITH_RACE = "Could this have something to do with your race?",
+	LIRA_QUEST_1_OPTION_WHAT_DID_YOU_WRITE = "What did you write in the diary?",
+	LIRA_QUEST_1_OPTION_WHY_DID_YOU_HIDE_THESE = "Why did you hide these here?",
+	LIRA_QUEST_1_OPTION_DO_YOU_FEEL_BETTER = "Do you feel better after getting these back?",
+	LIRA_QUEST_1_OPTION_TIME_TO_HEAD_BACK = "Alright, time to head back. We shouldn't linger in the forest.",
+	ACT4_MYR_GUILD_OPTION_SHOW_WRITING = "Show the catacomb writing",
+	ACT4_EMPIRE_CAPITAL_OPTION_ERDYNA = "Talk to Erdyna",
+	ACT4_EMPIRE_CAPITAL_OPTION_SENERUS = "Visit Senerus's home",
+	ACT4_QUEST_CATACOMB_OPTION_ENTER = "Enter the catacombs",
+	ACT4_QUEST_CATACOMB_NAME = "Hidden Catacomb Entrance",
+	ACT4_QUEST_CATACOMB_DESC = "A concealed entrance outside the imperial walls leads toward the sealed catacombs beneath the capital.",
+	ERDYNA_QUEST_SUMMARY = "Erdyna has gotten involved in your search for the Empire's artifact and pointed you toward people and places hidden beneath the capital.",
+	ERDYNA_QUEST_NAME = "Erdyna's Lead",
+	ERDYNA_QUEST_STAGE_FOLLOWUP = "Meet with Erdyna again in the Empire capital and follow up on what she learned.",
+	ERDYNA_QUEST_STAGE_SENERUS = "Visit Senerus with Erdyna and learn what he knows about the artifact.",
+	ERDYNA_QUEST_STAGE_CATACOMBS = "Investigate the accessible catacomb entrance outside the Empire capital.",
+	ERDYNA_QUEST_STAGE_MYR = "Show the copied catacomb writing to Myr and ask what she can make of it.",
+	ERDYNA_QUEST_STAGE_DRAGONHUNTERS = "Travel to the elven lands and seek out the dragon hunters for answers about the sealed doors.",
+	ACT4_ERDYNA_FOLLOWUP_1 = """{color=yellow|Erdyna: — Alright, so about that artifact. Hope you didn't take me for an expert on these things, but worry not. I happen to know just the right person for something like that. But first I need to stop by my crew's base. Will you follow?}""",
+	ACT4_ERDYNA_FOLLOWUP_1_OPTION_GO = "Alright, let's go.",
+	ACT4_ERDYNA_FOLLOWUP_1_OPTION_LATER = "I'll drop by when I have time.",
+	ACT4_ERDYNA_FOLLOWUP_LATER = """{color=yellow|Erdyna: — Hmph, fine, but don't keep me waiting.}
+
+Before parting ways, Erdyna tells you how to find her gang's hideout. You walk back to the main street considering how wise it is to follow her like that.""",
+	ACT4_ERDYNA_HIDEOUT_1 = """A few streets pass as Erdyna sneaks into a seemingly obvious dead end, only to reveal it as a disguised entrance. You follow her down through the half-blocked passage until you end up in sewer-like surroundings with clear signs of habitation. Your eyes adjust to the darkness, partially broken by a couple of dim oil lanterns.
+
+{color=yellow|Erdyna: — Better plug your nose around here, haha.}
+
+Despite her comment, the smell is surprisingly not completely awful. After a moment you see two silhouettes emerging from the shadows.""",
+	ACT4_ERDYNA_HIDEOUT_2 = """{color=aqua|Man: — Well, if it isn't Erdyna, King of the bandits herself.}
+
+{color=yellow|Erdyna: — Shut it. I told you not to call me that in front of guests.}
+
+{color=aqua|Man: — Haha, sorry, boss. But... weren't you trying to beat this [guy] just a little while ago?}
+
+{color=yellow|Erdyna: — Whatever, I need some information. Where's Paul?}""",
+	ACT4_ERDYNA_HIDEOUT_3_0 = """{color=aqua|Man: — At his hole, as usual.}
+
+{color=yellow|Erdyna: — Perfect. Let's go.}
+
+Erdyna walks quickly deeper into the tunnels, beckoning you to follow.""",
+	ACT4_ERDYNA_HIDEOUT_3_1 = """{color=yellow|Erdyna: — Ugh, it's just a stupid joke. First time I came here I was just a dumb kid looking for a way to survive. They asked what the hell I wanted from them, I said I was gonna be the king of bandits, they laughed so hard they let me stay just like that.}
+
+{color=yellow|Erdyna: — Of course I had no clue bandits don't have titles like that, or that it's a male one. Oh, and we don't call ourselves bandits, obviously.}""",
+	ACT4_ERDYNA_HIDEOUT_3_2 = """{color=yellow|Erdyna: — What do you think, smartass? I'm not a citizen and I don't pass for a normal person.}
+
+She points at her lizard-like features.
+
+{color=yellow|Erdyna: — The only option left to me was to live like this. It's not so bad since I can hold my own in a fight better than anyone around here.}""",
+	ACT4_ERDYNA_HIDEOUT_3_3 = "Erdyna glances back at you, waiting to see whether you have anything else to ask before moving on.",
+	ACT4_ERDYNA_HIDEOUT_3_OPTION_KING = "'King of the bandits'?",
+	ACT4_ERDYNA_HIDEOUT_3_OPTION_BANDIT = "Why did you become a bandit?",
+	ACT4_ERDYNA_HIDEOUT_3_OPTION_MOVE = "Let's keep moving.",
+	ACT4_ERDYNA_PAUL_1 = """Less than a minute later you find Paul sleeping in a small makeshift room. Erdyna doesn't hold back as she bangs on the wooden board, jolting him awake.
+
+{color=yellow|Erdyna: — Paul, damn it, why are you sleeping at a time like this? Wake up, I've got a job for you.}
+
+Wide-eyed from the shock, the man quickly calms down as he recognizes the girl.
+
+{color=aqua|Paul: — Ah... Oh, it's you, boss... What happened?}""",
+	ACT4_ERDYNA_PAUL_2 = """{color=yellow|Erdyna: — Remember that ancient elven guy who had us tracking down old books for him a few months back? I need his address.}
+
+{color=aqua|Paul: — Huh? Don't you remember? He probably hasn't moved, has he?}
+
+{color=yellow|Erdyna: — Do I look like I'd remember useless stuff like that? Come on, remind me.}
+
+Paul sighs and starts scrambling through some notes lying around him.""",
+	ACT4_ERDYNA_PAUL_3 = """{color=aqua|Paul: — Yeah, that... looks about right.}
+
+{color=yellow|Erdyna: — Great, now get back to sleep, you've done enough for today.}
+
+{color=aqua|Paul: — Like hell I can sleep now...}
+
+Erdyna doesn't listen to his complaints, turning around and leading you back outside.
+
+{color=yellow|Erdyna: — I might not remember his address that well, but that elven guy is a specialist on religious subjects. Let's go pay him a visit.}""",
+	ACT4_SENERUS_HOME_1 = """Erdyna takes you to one of the less miserable looking houses deep in the slums. After a couple minutes of banging on the door, an elven man finally opens it, keeping it half-closed and talking through the gap.""",
+	ACT4_SENERUS_HOME_2 = """{color=aqua|Man: - You... I told you not to come here again, and certainly not to bring anyone.}
+
+{color=yellow|Erdyna: - Nah, don't remember that. Come on, I really need a smart guy like you to help my friend here.}
+
+As the elven man takes a careful look at you, he visibly relaxes. Perhaps your more civil, professional appearance reassures him you aren't just some thug.
+
+{color=aqua|Man: - Fine, get in. Quickly.}""",
+	ACT4_SENERUS_HOME_3 = """The inside of the house looks old and worn. The space is crammed with books and antiquities. Moving to the other room you find a large table covered in scribbled papers and candles.
+
+{color=yellow|Erdyna: - Senerus, you really should clean up in here.}
+
+{color=aqua|Senerus: - It's clean. How about you get to the point.}
+
+{color=yellow|Erdyna: - Right, you see...}""",
+	ACT4_SENERUS_HOME_4 = """Erdyna explains your search for the artifacts. As you go into detail about your journey and the items in question, the elf grows more and more pensive.
+
+{color=aqua|Senerus: - I see, the grand artifacts. It's a shame they've been so neglected.}
+
+{color=aqua|Senerus: - I suppose you don't know much about them, do you? This will be a long story.}
+
+{color=yellow|Erdyna: - Ugh, I hate long stories. I'll see myself out, let me know when you're done.}
+
+Erdyna leaves you alone with the elf, closing the door as she heads outside.""",
+	ACT4_SENERUS_HOME_4_OPTION_LISTEN = "Alright, I'm listening.",
+	ACT4_SENERUS_HOME_4_OPTION_SHORT = "Give me the short version.",
+	ACT4_SENERUS_REPEAT_1 = """Senerus opens the door after a short delay and studies you with visible reluctance before deciding you are less troublesome than leaving you outside.
+
+{color=aqua|Senerus: - You again. Fine, come in if you intend to ask something relevant.}
+
+Once inside, he returns to the cramped study and waits for you to get to the point.""",
+	ACT4_SENERUS_LONG_1 = """{color=aqua|Senerus: - First, let's go through the ancient times and the creation of the world. Most knowledge from that period has been lost, which is no surprise given it happened eons ago and time has not worked in our favor. I've spent my life recovering and restoring whatever I could find, but even so I cannot realistically prove that everything I consider plausible is actually true, so take what I say as my own interpretation of how the world came to be.}
+
+{color=aqua|Senerus: - In the beginning there was a world with no life in it. Or rather no sentient life. A rather barren place, but not without another, less physical quality: magic energy. Though calling it simply magic isn't entirely accurate. The magic energy that exists today is only an echo of the primal magic that existed at the dawn of the world.}""",
+	ACT4_SENERUS_LONG_2 = """{color=aqua|Senerus: - Then something happened. Sentience appeared in the world, the very first of its kind, the one that started everything. It took the form of a man, the First God. He reached into the world's magic energy and it changed. From the raw primal chaos it had existed as, it bent under his will. Nearly all of the world's magic energy came under his control and he began reshaping the world with it.}
+
+{color=aqua|Senerus: - Life became sentient, whether by his design or as a consequence of his influence. More deities arose as they gained access to this refined magic. Some of them are the gods you know today. That was a time of incredible prosperity and power, brought about by him. Even ordinary people could conjure that refined energy in ways that would put today's archmage to shame. Most of the ancient and magic-touched races were created in those times, though even they have lost the memory of those origins.}""",
+	ACT4_SENERUS_LONG_3 = """{color=aqua|Senerus: - But as you might expect, the downfall eventually came. Various ancient religions describe it differently, but one thing is certain: the First One fell. Some theorize he was slain by an outside force, perhaps as an act of protection. Either way, it changed everything, even if the effects weren't immediately apparent.}
+
+{color=aqua|Senerus: - Since the First One was the only being so deeply intertwined with the magic force, his death brought inevitable stagnation to the magical arts. You see, magic energy is like water. There is plenty of it in nature, but as it is used it grows spoiled, becoming unhealthy or unsuitable for refined purposes. The First One did not just cleanse that water for others; he made it so that anyone in contact with it could draw healing from it. The raw magic energy became something close to what we now call divine magic.}
+
+{color=aqua|Senerus: - His disappearance did not undo all of his work, but the amount of divine magic available could never again increase. The deities are capable of their miracles largely because they received their powers during that time when magic was first shaped by the First One. The artifacts you are looking for belonged to the First One, or were made with his energy, which is why they are unique. Of course, over the ages people have forgotten about the ancient magic, and the artifacts themselves have grown weaker, but they are remarkable nonetheless.}""",
+	ACT4_SENERUS_SHORT_1 = """Senerus adjusts his posture with visible reluctance, as if compressing a lecture he would much rather give in full.
+
+{color=aqua|Senerus: - Very well. The short version is this: the artifacts you seek are remnants of the earliest divine age, tied to powers far older and greater than the gods most people worship now.}
+
+{color=aqua|Senerus: - Long ago the world was shaped by a being some traditions call the First God. Whether he created everything or merely changed it is still debated, but much of what we know as divine magic traces back to him.}""",
+	ACT4_SENERUS_SHORT_2 = """{color=aqua|Senerus: - After his fall that power began to diminish. The old miracles could no longer be renewed in the same way, and what remained was scattered through relics, bloodlines, and the gods who had already risen by then.}
+
+{color=aqua|Senerus: - That is why these artifacts matter. They are not valuable merely because they are ancient. They are fragments of a lost age, still carrying traces of a power the world can no longer reproduce.}
+
+Erdyna groans from the doorway, already losing patience with the lecture.
+
+{color=yellow|Erdyna: - Yeah, yeah, ancient god stuff, rare magic, very important. I'll be outside. Call me when you get to the useful part.}
+
+Without waiting for an answer, she slips out and closes the door behind her.""",
+	ACT4_SENERUS_SHORT_3 = "{color=aqua|Senerus: - The offensively short version, yes. If you want substance, ask properly and I will answer what I can.}",
+	ACT4_SENERUS_HUB_0 = "{color=aqua|Senerus: — What else do you want to know?}",
+	ACT4_SENERUS_HUB_1 = """{color=aqua|Senerus: — In truth it's very difficult to say how he came to be, but I have my own theory, completely unprovable of course. Given the circumstances, I believe the magic energy itself gave rise to him. That would best explain his extraordinary degree of control over it.}
+
+{color=aqua|Senerus: — What else?}""",
+	ACT4_SENERUS_HUB_2 = """{color=aqua|Senerus: — Shortly after the demise of the First One there was an invasion from another world. These were the demons, also potent wielders of magic but of a very different kind. This led to the first great war, in which they ultimately lost and were culled, though some managed to adapt to our world. Some even harnessed divine powers, transforming into malevolent deities.}
+
+{color=aqua|Senerus: — The most notable thing I can tell you about them is their relationship with magic energy. They were nowhere near the level of divine magic and could sometimes even be outmatched by powerful sorcerers, but their magic is distinct. They could transform raw magical energy into their own corrupted form of power, which is often tied to sexual energy. While sexual energy is not inherently tainted, demons could access it far more easily.}
+
+{color=aqua|Senerus: — What else?}""",
+	ACT4_SENERUS_HUB_3 = "{color=aqua|Senerus: — Then ask about the gods.}",
+	ACT4_SENERUS_HUB_4 = "{color=aqua|Senerus: — Ask what you need to know about champions.}",
+	ACT4_SENERUS_HUB_OPTION_FIRST_GOD = "But who is the First God?",
+	ACT4_SENERUS_HUB_OPTION_DEMONS = "What can you tell me about demons?",
+	ACT4_SENERUS_HUB_OPTION_GODS = "I have some questions about gods...",
+	ACT4_SENERUS_HUB_OPTION_CHAMPIONS = "Can you tell me about champions?",
+	ACT4_SENERUS_HUB_OPTION_ARTIFACT = "Enough talking, I want to know where I can find another artifact around here.",
+	ACT4_SENERUS_HUB_OPTION_LEAVE = "I'll be off.",
+	ACT4_SENERUS_GODS_0 = "{color=aqua|Senerus: — Fine, I'll tell you what I know.}",
+	ACT4_SENERUS_GODS_1 = """{color=aqua|Senerus: — Ah, those are shrines of Erebus. His cults were common in the early ages, though now he seems to be worshipped mostly out of habit. Attributed to earth and stone, his nature has always been similar: quiet, enduring, often seeming absent and yet his presence somehow weighing on you all the same.}
+
+{color=aqua|Senerus: — His following grew more prominent after the loss of the First One. Beyond that there is not much to say about his personality or goals, as he appears to be extremely dormant.}""",
+	ACT4_SENERUS_GODS_2 = """{color=aqua|Senerus: — Ah, Celena is a well-known one. Being tied to the moon and its inherent powers she has managed to remain relevant even without grand support. As for her nature, she is what you would call a pacifist, perhaps not in spirit but in practice. She tends to avoid conflict but still offers what help she can to those in need.}
+
+{color=aqua|Senerus: — In that way she does take after her mother. A small comfort that people can still draw from the divine.}""",
+	ACT4_SENERUS_GODS_3 = """{color=aqua|Senerus: — Ah, Elisia, almost forgot about her. Partly because her existence was almost entirely bound to the First One. Her cults vanished almost completely after his death, and it is hard to say much about her on her own. She was one of the first deities to emerge after the First One, and she was essentially his life partner, giving birth to a few other divine beings before disappearing. Some First One cults believed she died alongside him, others say she tried to protect him but failed.}
+
+{color=aqua|Senerus: — Beyond that, she was connected to animals. Her image was often associated with doves and foxes. The beastkin race has been tied to her, at least in part.}""",
+	ACT4_SENERUS_GODS_4 = "{color=aqua|Senerus: — Our collective mother, of course. I mean the elves, obviously. She is somewhat more... feral than I would personally appreciate, but she is deeply in tune with her people, the forests, and all life within them. Naturally, she was among the first gods, and her strength and pride reflect that.}",
+	ACT4_SENERUS_GODS_5 = "{color=aqua|Senerus: — That is not going to happen tomorrow. Nor do we have any real idea whether it can be prevented, or whether it is even possible for mortals to do so. Don't worry yourself over it, it will take centuries or even millennia before any noticeable decline occurs.}",
+	ACT4_SENERUS_GODS_6 = "{color=aqua|Senerus: — Ask what you still need, or we can return to the artifacts.}",
+	ACT4_SENERUS_GODS_OPTION_EREBUS = "There's shrines made of stone that I come across sometimes.",
+	ACT4_SENERUS_GODS_OPTION_CELENA = "Aliron kingdom seems to have a prominent Celena temple.",
+	ACT4_SENERUS_GODS_OPTION_ELISIA = "Celena's mother?",
+	ACT4_SENERUS_GODS_OPTION_FREYA = "What can you tell me about Freya?",
+	ACT4_SENERUS_GODS_OPTION_MAGIC = "Wait, are you saying all magic will eventually degrade? Why isn't anyone doing anything about it?",
+	ACT4_SENERUS_GODS_OPTION_RETURN = "Fine, let's get back to the artifacts...",
+	ACT4_SENERUS_CHAMPIONS_0 = "{color=aqua|Senerus: — There is not much to say, they are simply vessels capable of channeling divine magic and a little extra from their patrons. This comes at the cost of having to follow their deity's will. Given what you've told me I assume you've encountered at least a couple.}",
+	ACT4_SENERUS_CHAMPIONS_1 = "{color=aqua|Senerus: — The so-called god of winds. Actually a fairly recent one, appearing only a few centuries ago. He keeps no high profile, has sparse followers, and stays out of the way. If I had to guess, his powers were either always limited or he obtained them from another divine being and only in a small amount.}",
+	ACT4_SENERUS_CHAMPIONS_2 = "{color=aqua|Senerus: — Nixx is a frightening one, and among the oldest as well. She governs darkness and the depths. What began as a calm, protective deity has shifted over time toward something far more sinister. Her powers match her domain and her age. Of all the divine forces, I would not want to make an enemy of her.}",
+	ACT4_SENERUS_CHAMPIONS_3 = "{color=aqua|Senerus: — Ah, that is an interesting one. It is not entirely clear, but I tend to believe he was one of the original invading demons who managed to accumulate enough divine energy to become a deity himself.}",
+	ACT4_SENERUS_CHAMPIONS_4 = "{color=aqua|Senerus: — Ask what you still need, or we can return to the artifacts.}",
+	ACT4_SENERUS_CHAMPIONS_OPTION_ALIOS = "Alios",
+	ACT4_SENERUS_CHAMPIONS_OPTION_NIXX = "Nixx",
+	ACT4_SENERUS_CHAMPIONS_OPTION_ASHMEDAI = "Ashmedai",
+	ACT4_SENERUS_CHAMPIONS_OPTION_RETURN = "Let's get back to the artifacts.",
+	ACT4_SENERUS_ARTIFACT_LEAD = """{color=aqua|Senerus: — The empire does not publicize its magical holdings, but we are not talking about an ordinary artifact, and by now it would be common knowledge if they possessed something like this. I believe it resides somewhere within the walls of this city, likely drawn here by such a concentration of wealth and population. There are vast catacombs beneath the city, and I would suggest starting your search there. I can point you to one of the entrances that is still accessible. In the meantime I will look into what you might specifically be searching for.}
+
+Senerus gives you directions to the catacombs before returning to his work.
+
+You make your way out of Senerus's house. Before you can look around, Erdyna jumps out in front of you, impatiently questioning what you've learned.
+
+{color=yellow|Erdyna: — Huuuh? Catacombs, you say. The city passages have been sealed a long time ago, but I know how we can get in there. I know a tunnel entrance at the countryside. Meet me there.}
+
+After giving you the directions for the catacomb entrance Erdyna leaves you alone for today.""",
+	ACT4_CATACOMB_ENTRY_1 = """A couple hundred feet outside of city walls you meet with the lizard girl as agreed. After exchanging your greeting she starts leading you to the hidden underground entrance.
+
+{color=yellow|Erdyna: — I haven't been here for a while, but it should be close...}""",
+	ACT4_CATACOMB_ENTRY_2 = """However as you make it through one of the storehouses and its undergrounds you stop as another group of shady figures appears ahead of you.
+
+{color=aqua|Man: - No way, what the hell are you doing here?}
+
+{color=yellow|Erdyna: - Red Rooks? Didn't expect to find you here. That would be our annoying competitors.}
+
+From her tone you realize it's another city gang.""",
+	ACT4_CATACOMB_ENTRY_2B = """{color=aqua|Group Leader: - Huh, isn't that the scaled bitch herself? Your minions roughed us up pretty badly last time.}
+
+{color=yellow|Erdyna: - Hah, tell me about it. Or better don't. I have important business, so why don't you just let us pass.}
+
+{color=aqua|Group Leader: - I don't think so. Why don't we actually pay you back for that? It's not every day when you are walking by yourself with some foreign goof. Even with your strength you hardly will win against us all.}""",
+	ACT4_CATACOMB_ENTRY_2_OPTION_PHYSICS = "[Physics factor check] You really think you stand a chance against two of us?",
+	ACT4_CATACOMB_ENTRY_2_OPTION_DIPLOMACY = "We're not here to waste time fighting over gang grudges.",
+	ACT4_CATACOMB_ENTRY_2_OPTION_ATTACK = "*Prepare to attack*",
+	ACT4_CATACOMB_ENTRY_3_1_STRONG = """The Red Rooks leader looks over you, measuring your appearance. His smile slowly fades as he starts doubting himself.
+
+{color=aqua|Group Leader: — Damn you... Fine, have it your way. We won't forget this, Erdyna.}
+
+You move out of the way, letting the group leave without a fight.
+
+{color=yellow|Erdyna: - Hah, run away with the tail behind your legs, that suits you best.}""",
+	ACT4_CATACOMB_INTIMIDATED_1 = """The last of the gang disappears back into the passage, cursing under their breath as their footsteps fade into the dark. The corridor grows quiet again, save for the distant drip of water somewhere deeper below.
+
+Erdyna watches them go with open contempt, then relaxes her stance.
+
+{color=yellow|Erdyna: - Pathetic. If that was enough to make them fold, they had no business blocking this place to begin with.}""",
+	ACT4_CATACOMB_ENTRY_3_1_WEAK = """Your threat only draws laughter from the gang.
+
+{color=aqua|Group Leader: — Two of you? That's cute. I still count more blades on our side.}
+
+Erdyna clicks her tongue, already shifting her stance.
+
+{color=yellow|Erdyna: — Yeah, that wasn't convincing enough. Guess we'll do this the fun way.}""",
+	ACT4_CATACOMB_ENTRY_3_2 = """The gang leader gives you an unimpressed look, but Erdyna suddenly cuts in before he can answer, grinning with open mockery.
+
+{color=yellow|Erdyna: — Hear that? He's politely telling you to crawl back into whatever gutter you came from. I'd take the advice while you still can.}
+
+The provocation lands exactly as intended. Several of the thugs bristle at once, hands tightening around their weapons.
+
+{color=aqua|Group Leader: — Big mouth as always. Let's teach you some manners.}
+
+{color=yellow|Erdyna: — Tch, no point talking to these thugs, but I was itching for a fight.}""",
+	ACT4_CATACOMB_ENTRY_3_3 = """You wordlessly ready yourself. The meaning is clear enough even before Erdyna lets out a low, eager chuckle beside you.
+
+{color=yellow|Erdyna: — Knew this would come to it.}
+
+The opposing gang spreads through the passage, clearly preparing to overwhelm you by numbers alone.""",
+	ACT4_CATACOMB_AFTER_FIGHT = """The last of the enemy finally falls still with a handful running away. Erdyna smirks at you, lowering her weapon.
+
+{color=yellow|Erdyna: — Don't think they gonna come back any time soon, so let's move on.}""",
+	ACT4_CATACOMB_DEEPER_1 = """The corridor beyond grows older with every step. The rough stone and improvised supports of the catacombs gradually give way to something far more ancient, its walls carved with the kind of precision no ordinary burial tunnels would ever need.
+
+At the very end of the passage you and Erdyna finally come to a halt.
+
+Set into the rock before you stands a pair of gigantic doors. They are old beyond reason, fashioned from a dark metal gone dull with age and framed by pale stone carved into shapes you can't immediately make sense of. Long lines of writing run across their surface in a language neither of you recognizes.
+
+Erdyna steps closer, narrowing her eyes as she studies the symbols.
+
+{color=yellow|Erdyna: — That's no script I've ever seen before. It doesn't look imperial, not dwarven either.}""",
+	ACT4_CATACOMB_DEEPER_1_OPTION_EXAMINE = "Examine the writing.",
+	ACT4_CATACOMB_DOORS_HELEVIEL_0 = """The letters are sharp and elegant at the same time, each line cut with unnatural precision. Even without understanding them, there is something deliberate and severe in their form, as though the inscription was never meant to welcome anyone inside.
+
+Before you can say anything, Heleviel moves past you and stops in front of the doors. For the first time since entering the depths, her usual composure gives way to open surprise.
+
+{color=yellow|Heleviel: — Wait.}
+
+She raises a hand toward the inscription without quite touching it, her expression tightening as she follows the lines from one edge of the gate to the other.
+
+{color=yellow|Heleviel: — This is ancient elven script... but not a form most scholars would ever read. It belongs to a tradition associated with the dragon hunters.}
+
+Erdyna turns to her sharply.
+
+{color=aqua|Erdyna: — Dragon hunters?}
+
+Heleviel gives a slow nod, still staring at the doors.
+
+{color=yellow|Heleviel: — An elite clan from the older elven traditions. Secretive even by our standards, proud, and deeply concerned with preserving their own legacy. They still maintain their seat at our lands.}""",
+	ACT4_CATACOMB_DOORS_HELEVIEL_1 = "{color=yellow|Heleviel: — Connected, almost certainly. Whether they built this place, sealed it, or merely claimed it later, I cannot say. But this script was not placed here by accident.}",
+	ACT4_CATACOMB_DOORS_HELEVIEL_2 = """Heleviel's gaze lingers on the inscription a moment longer before she exhales quietly.
+
+{color=yellow|Heleviel: — Not fully. I recognize the tradition, not every archaic variation of its script. Enough to know this was done deliberately.}""",
+	ACT4_CATACOMB_DOORS_HELEVIEL_3 = """Erdyna folds her arms, dissatisfied but no longer doubtful.
+
+{color=aqua|Erdyna: — Then that's our next lead.}
+
+You take one last look at the enormous sealed doors. Whatever lies beyond them has waited here for a very long time already. It will have to wait a little longer.""",
+	ACT4_CATACOMB_DOORS_HELEVIEL_OPTION_CONNECTED = "So this place is connected to them?",
+	ACT4_CATACOMB_DOORS_HELEVIEL_OPTION_READ = "Can you read what it says?",
+	ACT4_CATACOMB_DOORS_HELEVIEL_OPTION_VISIT = "Well, this won't budge. I guess our best chance is to visit them.",
+	ACT4_CATACOMB_DOORS_MYR = """You stare at the inscription for a while longer, but it gets you nowhere. The language is unlike anything you've seen before, old and refined in a way that makes guessing feel pointless.
+
+{color=yellow|Erdyna: — Don't look at me like that, I have no clue what's going on here.}
+
+Not wanting to leave empty-handed, you take out a sheet and carefully copy the shapes of the letters as best as you can.
+
+Perhaps someone like the mage guild leader should know about it. Or at least know where to point us.""",
+	ACT4_MYR_CATACOMB_WRITING_0 = """You tell Myr about your finding, observing her reaction.
+
+{color=yellow|Myr: — Hmph. You really do have a talent for digging up troublesome things.}
+
+You present the copied symbols and describe the doors as best as you can. Myr takes the page from you and studies it in silence, her eyes moving quickly at first before slowing with growing concentration.
+
+{color=yellow|Myr: — Huh. This isn't merely old elven. It's a very particular ancient form of it. You should thank me for living this long to know, honestly.}""",
+	ACT4_MYR_CATACOMB_WRITING_1 = """Myr shakes her head almost at once.
+
+{color=yellow|Myr: — No. Recognizing it and actually reading it are rather different matters, as you may imagine.}""",
+	ACT4_MYR_CATACOMB_WRITING_2 = """Myr taps one of the symbols lightly with her finger.
+
+{color=yellow|Myr: - To a very old elven tradition. Elves used to have lots of secretive organizations back in the day. Secretive, prestigious, and very fond of preserving knowledge in ways inconvenient to everyone else. So you better ask someone at their lands, that's your best bet anyway.}""",
+	ACT4_MYR_CATACOMB_FOLLOWUP_0 = """Erdyna meets you as you walk out of Myr's office with the new target.
+
+{color=aqua|Erdyna: - Eh, elves? Never been there, I wonder what they have to say.}""",
+	ACT4_MYR_CATACOMB_WRITING_OPTION_READ = "So you can read it?",
+	ACT4_MYR_CATACOMB_WRITING_OPTION_BELONG = "What does it belong to?",
+	ACT4_MYR_CATACOMB_WRITING_OPTION_CURIOUS = "Are you just that curious about it to keep following me?",
+	ACT4_MYR_CATACOMB_WRITING_OPTION_VISIT = "I'm well known at the elven lands. Let's go visit them.",
+	ACT4_MYR_CATACOMB_REPLY_1 = "{color=aqua|Erdyna: - Hell, yeah, what do you think? Those doors must have something rich behind them, don't they? I'm sure you gonna be generous enough to spare it with me as we finish, haha.}",
+	ACT4_MYR_CATACOMB_REPLY_2 = "{color=aqua|Erdyna: - Not surprised, you are a big shot, aren't ya? Well, I'll be right behind you.}",
 
 }

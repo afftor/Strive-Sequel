@@ -1782,7 +1782,8 @@ var data = {
 				],
 				type = "next_dialogue",
 				bonus_effects = [
-
+					{code = "progress_quest", value = "erdyna_quest", stage = "followup"},
+					{code = "update_city"}
 				]
 			}
 		]

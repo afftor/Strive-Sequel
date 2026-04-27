@@ -1410,6 +1410,21 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'emp_erdyna_intro_1', args = []}]
 		},
 		{
+			text = "ACT4_EMPIRE_CAPITAL_OPTION_ERDYNA",
+			reqs = [{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'followup', state = true}],
+			args = [{code = 'start_event', data = 'emp_erdyna_followup_1', args = []}]
+		},
+		{
+			text = "ACT4_EMPIRE_CAPITAL_OPTION_SENERUS",
+			reqs = [{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'senerus', state = true}],
+			args = [{code = 'start_event', data = 'emp_senerus_home_1', args = []}]
+		},
+		{
+			text = "ACT4_EMPIRE_CAPITAL_OPTION_SENERUS",
+			reqs = [{type = 'any_quest_stage', value = 'erdyna_quest', stages = ['catacombs', 'myr_translation', 'dragonhunters']}],
+			args = [{code = 'start_event', data = 'emp_senerus_repeat_1', args = []}]
+		},
+		{
 			text = tr("ARENA_NAME"), 
 			reqs = [{type = 'active_quest_stage', value = 'act_4_capital', stage = 'arena', state = true}], 
 			args = [{code = 'start_event', data = 'emp_arena_1', args = []}]
