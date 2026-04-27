@@ -2843,12 +2843,12 @@ var quests = {
 			capital = {code = 'capital', name = 'LIRA_LOST_QUEST_NAME', descript = 'LIRA_LOST_QUEST_CAPITAL'},
 		},
 	},
-	lira_quest1_quest = {
-		code = 'lira_quest1_quest',
-		summary = "LIRA_QUEST1_QUEST_SUMMARY",
+	lira_quest_2 = {
+		code = 'lira_quest_2',
+		summary = "LIRA_QUEST2_QUEST_SUMMARY",
 		stages = {
-			fair = {code = 'fair', name = 'LIRA_QUEST1_QUEST_NAME', descript = 'LIRA_QUEST1_QUEST_STAGE_FAIR'},
-			return_home = {code = 'return_home', name = 'LIRA_QUEST1_QUEST_NAME', descript = 'LIRA_QUEST1_QUEST_STAGE_RETURN'},
+			fair = {code = 'fair', name = 'LIRA_QUEST2_QUEST_NAME', descript = 'LIRA_QUEST2_QUEST_STAGE_FAIR'},
+			return_home = {code = 'return_home', name = 'LIRA_QUEST2_QUEST_NAME', descript = 'LIRA_QUEST2_QUEST_STAGE_RETURN'},
 		},
 	},
 	lira_quest2_quest = {
@@ -2979,6 +2979,14 @@ var quests = {
 			stage5_3 = {code = 'stage5_3', name = 'HELEVIEL_QUEST3_NAME', descript = "HELEVIEL_SLAVE_STAGE_5_3"},
 			stage5_4 = {code = 'stage5_4', name = 'HELEVIEL_QUEST3_NAME', descript = "HELEVIEL_SLAVE_STAGE_5_4"},
 			stage6 = {code = 'stage6', name = 'HELEVIEL_QUEST3_NAME', descript = "HELEVIEL_SLAVE_STAGE_6"},
+		},
+	},
+	lira_quest_1 = {
+		code = 'lira_quest_1',
+		summary = "LIRA_QUEST_1_SUMMARY",
+		stages = {
+			start = {code = 'start', name = 'LIRA_QUEST_1_NAME', descript = 'LIRA_QUEST_1_JOURNAL_START'},
+			grove = {code = 'grove', name = 'LIRA_QUEST_1_NAME', descript = 'LIRA_QUEST_1_JOURNAL_GROVE'},
 		},
 	},
 }

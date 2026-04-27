@@ -171,7 +171,8 @@ var data = {
 	},
 	emp_senerus_home_1 = {
 		image = null,
-		character = "erdyna",
+		character = "senerus",
+		character2 = "erdyna",
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "ACT4_SENERUS_HOME_1",
@@ -186,7 +187,8 @@ var data = {
 	},
 	emp_senerus_home_2 = {
 		image = null,
-		character = "erdyna",
+		character = "senerus",
+		character2 = "erdyna",
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "ACT4_SENERUS_HOME_2",
@@ -202,7 +204,8 @@ var data = {
 	},
 	emp_senerus_home_3 = {
 		image = null,
-		character = "erdyna",
+		character = "senerus",
+		character2 = "erdyna",
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "ACT4_SENERUS_HOME_3",
@@ -217,7 +220,8 @@ var data = {
 	},
 	emp_senerus_home_4 = {
 		image = null,
-		character = "erdyna",
+		character = "senerus",
+		character2 = "erdyna",
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "ACT4_SENERUS_HOME_4",
@@ -253,6 +257,7 @@ var data = {
 	},
 	emp_senerus_long_1 = {
 		image = null,
+		character = "senerus",
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "ACT4_SENERUS_LONG_1",
@@ -267,6 +272,7 @@ var data = {
 	},
 	emp_senerus_long_2 = {
 		image = null,
+		character = "senerus",
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "ACT4_SENERUS_LONG_2",
@@ -282,6 +288,7 @@ var data = {
 	},
 	emp_senerus_short_1 = {
 		image = null,
+		character = "senerus",
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "ACT4_SENERUS_SHORT_1",
@@ -296,7 +303,7 @@ var data = {
 	},
 	emp_senerus_short_2 = {
 		image = null,
-		character = "erdyna",
+		character = "senerus",
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "ACT4_SENERUS_SHORT_2",
@@ -312,6 +319,7 @@ var data = {
 	},
 	emp_senerus_hub = {
 		image = null,
+		character = "senerus",
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [
@@ -399,6 +407,7 @@ var data = {
 	},
 	emp_senerus_gods = {
 		image = null,
+		character = "senerus",
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [
@@ -488,6 +497,7 @@ var data = {
 	},
 	emp_senerus_champions = {
 		image = null,
+		character = "senerus",
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [
@@ -551,7 +561,8 @@ var data = {
 	},
 	emp_senerus_artifact_lead = {
 		image = null,
-		character = "erdyna",
+		character = "senerus",
+		character2 = "erdyna",
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "ACT4_SENERUS_ARTIFACT_LEAD",

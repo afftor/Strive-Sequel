@@ -1654,9 +1654,16 @@ var fixed_location_options = { #override serialized data
 	],
 	quest_gryphon_cave_location = [
 		{
-			text = tr("QUEST_GRYPHON_CAVE_LOCATION1"), 
+			text = tr("QUEST_GRYPHON_CAVE_LOCATION1"),
 			reqs = [{type = 'dialogue_seen', check = false, value = 'GRYPHON_CAVE_START'}],
 			args = [{code = 'start_event', data = 'gryphon_cave_start', args = []}]
+		},
+	],
+	quest_lira_grove_location = [
+		{
+			text = tr("QUEST_LIRA_GROVE_LOCATION1"),
+			reqs = [{type = 'dialogue_seen', check = false, value = 'LIRA_QUEST_1_SEARCH_GROVE'}],
+			args = [{code = 'start_event', data = 'lira_quest_1_search_grove', args = []}]
 		},
 	],
 	quest_ritual_location = [

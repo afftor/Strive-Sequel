@@ -438,15 +438,15 @@ var backgrounds = {
 	zephyra_wed_6 = "res://assets/images/fullscreen scenes/ZephyraCG018.png",
 	zephyra_wed_7 = "res://assets/images/fullscreen scenes/ZephyraCG019.png",
 	
-	rouge_1 = "res://assets/images/fullscreen scenes/Rouge001.png",
-	rouge_2 = "res://assets/images/fullscreen scenes/Rouge002.png",
-	rouge_3 = "res://assets/images/fullscreen scenes/Rouge003.png",
-	rouge_4 = "res://assets/images/fullscreen scenes/Rouge004.png",
-	rouge_5 = "res://assets/images/fullscreen scenes/Rouge005.png",
-	rouge_6 = "res://assets/images/fullscreen scenes/Rouge006.png",
-	rouge_7 = "res://assets/images/fullscreen scenes/Rouge007.png",
-	rouge_8 = "res://assets/images/fullscreen scenes/Rouge008.png",
-	rouge_9 = "res://assets/images/fullscreen scenes/Rouge009.png",
+	rouge_sex_1 = "res://assets/images/fullscreen scenes/Rouge001.png",
+	rouge_sex_2 = "res://assets/images/fullscreen scenes/Rouge002.png",
+	rouge_sex_3 = "res://assets/images/fullscreen scenes/Rouge003.png",
+	rouge_sex_4 = "res://assets/images/fullscreen scenes/Rouge004.png",
+	rouge_sex_5 = "res://assets/images/fullscreen scenes/Rouge005.png",
+	rouge_sex_6 = "res://assets/images/fullscreen scenes/Rouge006.png",
+	rouge_sex_7 = "res://assets/images/fullscreen scenes/Rouge007.png",
+	rouge_sex_8 = "res://assets/images/fullscreen scenes/Rouge008.png",
+	rouge_sex_9 = "res://assets/images/fullscreen scenes/Rouge009.png",
 
 	
 	#masteries
@@ -862,6 +862,7 @@ var sprites = {
 	erdyna_body = load("res://assets/images/sprites/dragongirl_body.png"),
 	erdyna_nude = load("res://assets/images/sprites/dragongirl_nude_fhd.png"),
 	erdyna_nude_body = load("res://assets/images/sprites/dragongirl_nude_body.png"),
+	senerus = load("res://assets/images/sprites/senerus.png"),
 	}
 
 func get_sprite(id):
@@ -934,6 +935,10 @@ var portraits = {
 	kuro = "res://assets/images/portraits/Kuro_prt.png",
 	kuro_nude = "res://assets/images/portraits/Kuro_prt_nude.png",
 	kuro_wed = "res://assets/images/portraits/kuro_wed_prt.png",
+	rouge = "res://assets/images/portraits/rouge_prt/rouge_default_prt_bold.png",
+	rouge_nude = "res://assets/images/portraits/rouge_prt/rouge_nude_prt_bold.png",
+	rouge_wed = "res://assets/images/portraits/rouge_prt/rouge_wed_prt_bold.png",
+	
 }
 
 func get_portrait(id):

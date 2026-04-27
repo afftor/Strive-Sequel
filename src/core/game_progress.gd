@@ -175,7 +175,7 @@ func fix_serialization():
 		globals.common_effects([{code = 'add_timed_event', value = "zephyra_lilia_1", args = [{type = 'add_to_date', date = [5,10], hour = 2}]}])
 	if !timed_event_exists("lilia_finale_1") and !seen_events.has("lilia_finale_1") and completed_quests.has("sick_lilia_quest") and ResourceScripts.game_party.get_unique_slave("lilia") != null:
 		globals.common_effects([{code = 'add_timed_event', value = "lilia_finale_1", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
-	if !seen_events.has("zephyra_painting_1") && !timed_event_exists("zephyra_painting_1") && completed_quests.has('zephyra_bath_quest') && completed_quests.has('getting_lira_quest'):
+	if !seen_events.has("zephyra_painting_1") && !timed_event_exists("zephyra_painting_1") && completed_quests.has('zephyra_bath_quest') && completed_quests.has('getting_lira_quest') && ResourceScripts.game_party.if_unique_available('zephyra'):
 		globals.common_effects([{code = 'add_timed_event', value = "zephyra_painting_1", args = [{type = 'add_to_date', date = [2,5], hour = 1}]}])
 	if !seen_events.has("kuro3_init_1") && !timed_event_exists("kuro3_init_1") && completed_quests.has('kuro_errand_quest'):
 		globals.common_effects([{code = 'add_timed_event', value = "kuro3_init_1", args = [{type = 'add_to_date', date = [4,4], hour = 1}]}])

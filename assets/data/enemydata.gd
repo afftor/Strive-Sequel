@@ -96,6 +96,9 @@ var encounters = {
 	jean_demon_2 = {unittype = 'randomgroup', unitcode = 'jean_demon_2', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_sylas_demon_fight_result', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
 	
 	rouge_warehouse_escape = {unittype = 'randomgroup', unitcode = 'rouge_warehouse_escape', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'rouge_warehouse_escape_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
+
+	lira_grove_centipedes_dep = {unittype = 'randomgroup', unitcode = 'lira_grove_enemy', bg = 'combat_forest', bgm = 'default', win_effects = [{code = 'start_event', data = 'lira_quest_1_dependency_fight_aftermath', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	lira_grove_centipedes_free = {unittype = 'randomgroup', unitcode = 'lira_grove_enemy', bg = 'combat_forest', bgm = 'default', win_effects = [{code = 'start_event', data = 'lira_quest_1_freedom_fight_aftermath', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 }
 
 var enemygroups = {
@@ -251,6 +254,7 @@ var enemygroups = {
 	jungle_easy2 = {reqs = [], units = {giant_ant = [1,2], centipede = [0,1], maneater_plant = [0,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
 	jungle_medium1 = {reqs = [], units = {wild_raptor = [2,3], maneater_plant = [1,2]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
 	jungle_medium2 = {reqs = [], units = {centipede = [1,2], giant_ant = [2,3]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
+	lira_grove_enemy = {reqs = [], units = {centipede = [2,3]}},
 	jungle_boss1 = {reqs = [], units = {wild_raptor = [1,2], great_viper = [1,1]}},
 	jungle_boss2 = {reqs = [], units = {ogre_melee = [1,1], ogre_alpha = [1,1], ogre_mage = [1,1]}},
 	jungle_boss3 = {reqs = [], units = {maneater_plant = [0,2], gryphon = [1,1]}},

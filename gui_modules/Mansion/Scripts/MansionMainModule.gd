@@ -810,7 +810,7 @@ func test_mode():
 				{code = 'make_story_character', value = 'Heleviel'},
 				{code = 'make_story_character', value = 'Jean'},
 				{code = 'make_story_character', value = 'Zephyra'},
-				{code = 'make_story_character', value = 'Amelia'},
+				{code = 'make_story_character', value = 'Rouge'},
 				{code = 'make_story_character', value = 'Kuro'},
 				{code = 'make_story_character', value = 'Lilia'},
 				{code = 'make_story_character', value = 'Mae'},

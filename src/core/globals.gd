@@ -2089,6 +2089,8 @@ func common_effects(effects):
 				if character == null:
 					continue
 				for k in i.args:
+					if k.has('reqs') and !character.checkreqs(k.reqs):
+						continue
 					if k.code == 'sextrait':
 						match k.operant:
 							'add':

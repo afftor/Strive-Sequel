@@ -3945,7 +3945,10 @@ var data = {
 			},
 			{
 				text = "",
-				reqs = [{type = "quest_completed", name = "zephyra_bath_quest", check = true}],
+				reqs = [
+					{type = "quest_completed", name = "zephyra_bath_quest", check = true},
+					{type = "unique_available", name = "zephyra", check = true},
+				],
 				bonus_effects = [
 					{
 						code = "add_timed_event",
@@ -4261,7 +4264,10 @@ var data = {
 			},
 			{
 				text = "",
-				reqs = [{type = "quest_completed", name = "zephyra_bath_quest", check = true}],
+				reqs = [
+					{type = "quest_completed", name = "zephyra_bath_quest", check = true},
+					{type = "unique_available", name = "zephyra", check = true},
+				],
 				bonus_effects = [
 					{
 						code = "add_timed_event",

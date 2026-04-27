@@ -6,7 +6,7 @@ var data = {
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_INTRO", reqs = []}],
 		options = [
-			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1},
+			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'progress_quest', value = 'lira_quest_1', stage = 'start'}]},
 		],
 	},
 	lira_quest_1_talk_to_lira = {
@@ -90,7 +90,7 @@ var data = {
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_FAVOR_ACCEPT", reqs = []}],
 		options = [
-			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1},
+			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'progress_quest', value = 'lira_quest_1', stage = 'grove'}, {code = 'make_quest_location', value = 'quest_lira_grove_location'}]},
 		],
 	},
 	lira_quest_1_search_grove = {
@@ -167,8 +167,8 @@ var data = {
 			{text = "LIRA_QUEST_1_FIGHT_READY", reqs = [], previous_dialogue_option = 2},
 		],
 		options = [
-			{code = 'lira_quest_1_dependency_fight_aftermath', text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, previous_dialogue_option = 1, type = 'next_dialogue'},
-			{code = 'lira_quest_1_freedom_fight_aftermath', text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, previous_dialogue_option = 2, type = 'next_dialogue'},
+			{code = 'quest_fight', text = "DIALOGUEFIGHTOPTION", reqs = [], args = 'lira_grove_centipedes_dep', dialogue_argument = 1, previous_dialogue_option = 1, type = 'next_dialogue'},
+			{code = 'quest_fight', text = "DIALOGUEFIGHTOPTION", reqs = [], args = 'lira_grove_centipedes_free', dialogue_argument = 1, previous_dialogue_option = 2, type = 'next_dialogue'},
 		],
 	},
 	lira_quest_1_dependency_fight_aftermath = {
@@ -241,7 +241,7 @@ var data = {
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_HEAD_BACK", reqs = []}],
 		options = [
-			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1},
+			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'complete_quest', value = 'lira_quest_1'}]},
 		],
 	},
 }
