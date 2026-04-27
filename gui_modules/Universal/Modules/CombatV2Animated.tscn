@@ -619,10 +619,10 @@ expand = true
 stretch_mode = 4
 
 [node name="row1" type="Control" parent="Panel"]
-margin_left = 467.0
+margin_left = 33.0
 margin_top = 115.0
-margin_right = 467.0
-margin_bottom = 743.0
+margin_right = 433.0
+margin_bottom = 316.0
 mouse_filter = 2
 
 [node name="row2" type="Control" parent="Panel"]

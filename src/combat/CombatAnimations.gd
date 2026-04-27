@@ -260,7 +260,12 @@ func gfx_animsprite(node, args):
 	else:
 		#for now it seems thet 7 turns is repeat loop duration
 		custom_delays[node] = {delay = 0.2, cur_timer = cur_timer, time = 7}
-	ResourceScripts.core_animations.gfx_sprite(node, args.sprite_name, 0.5, duration)
+	var flip = false
+	if node.has_method("get_flip"):
+		flip = node.get_flip()
+	elif node.has_meta("anim_flip"):
+		flip = node.get_meta("anim_flip")
+	ResourceScripts.core_animations.gfx_sprite(node, args.sprite_name, 0.5, duration, flip)
 	
 	return nextanimationtime + aftereffectdelay
 

@@ -118,6 +118,12 @@ func _ready():
 	$SkillBook.connect("closing", self, "RebuildSkillPanel")
 	$SkillPanelRowSwitch/Up.connect("pressed", self, "change_skill_panel_row", [-1])
 	$SkillPanelRowSwitch/Down.connect("pressed", self, "change_skill_panel_row", [1])
+	
+	for pos in battlefield_target_groups:
+		var flip_val = (pos < 7)
+		for node in battlefield_target_groups[pos].values():
+			node.set_meta("anim_flip", flip_val)
+	
 	input_handler.register_btn_source('combat_close', self, 'tut_get_CloseButton')
 	input_handler.register_btn_source('combat_rewards_signal', self, null, null, null, 'rewards_anim_finished')
 	input_handler.register_btn_source('combat_turn_signal', self, null, null, null, 'turn_started')
