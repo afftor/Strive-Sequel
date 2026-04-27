@@ -122,6 +122,16 @@ func process_check(check:Array):
 					if val.source in op2: 
 						return true
 				return false
+		elif op1 == 'is_qualified_for_spellsword_followup':
+			op1 = false
+			if tags.has('damage') and target_number == 'single' and ability_type == 'skill' and follow_up == null:
+				if mode == variables.SKILL_BASE:
+					op1 = true
+				elif mode == variables.SKILL_EFFECT:
+					if code == 'attack':
+						op1 = true
+			return input_handler.operate(check[1], op1, op2)
+		else:
 			op1 = get(op1)
 			return input_handler.operate(check[1], op1, op2)
 	elif active_instance != null:

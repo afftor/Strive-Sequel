@@ -65,9 +65,9 @@ var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mp', 'lust']
 var resists_list = ['normal','fire','earth','air','water','light','dark','mind'] 
 var fighter_stats_list = ['hpmax','mpmax','atk','matk','armor','mdef','hitrate','evasion','armorpenetration','speed', 'critchance','critmod']
 
-var skill_args_checking_list_1 = ['target_range', 'target_number', 'ability_type', 'damage_type', 'tags', 'mode', 'follow_up']
+var skill_args_checking_list_1 = ['target_range', 'target_number', 'ability_type', 'damage_type', 'tags', 'mode', 'follow_up', 'is_qualified_for_spellsword_followup']
 var skill_args_checking_list_2 = ['damage_type']
-var skill_args_checking_list_3 = ['chance', 'evade', 'critchance', 'armor_p', 'hit_res', 'damage_type']
+var skill_args_checking_list_3 = ['chance', 'evade', 'critchance', 'armor_p', 'hit_res', 'damage_type', 'can_target_counterattack_in_melee']
 
 
 var enemy_rarechance = 0.1
