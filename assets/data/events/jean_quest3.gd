@@ -3502,19 +3502,8 @@ var data = {
 						value = "jean_sylas_artifact_crafted",
 						args = [
 							{
-								type = "has_material",
-								operant = "eq",
-								value = 1,
-								material = "mindlink",
-								negative = "repeat_next_turn"
-							},
-							{
-								type = "add_to_date",
-								date = [
-									1,
-									1
-								],
-								hour = 1
+								type = "add_to_hour",
+								hour = [1, 1],
 							}
 						]
 					}
@@ -3528,7 +3517,13 @@ var data = {
 			"dialogue_scene"
 		],
 		reqs = [
-
+			{
+				type = "has_material",
+				operant = "eq",
+				value = 1,
+				material = "mindlink",
+				negative = "repeat_next_turn"
+			},
 		],
 		text = [
 			{
