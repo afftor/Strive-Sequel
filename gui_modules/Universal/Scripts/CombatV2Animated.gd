@@ -1574,7 +1574,9 @@ func SelectSkill(skill, user_act = true):
 			return
 		globals.closeskilltooltip()
 		activecharacter.selectedskill = activecharacter.get_skill_by_tag('default')
-		
+		ClearSkillTargets()
+		ClearItemPanel()
+		ClearSkillPanel()
 		call_deferred('use_skill', activeaction, activecharacter, activecharacter)
 
 
