@@ -1369,6 +1369,11 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'jean_sylas_girl_plan_return', args = []}]
 		},
 		{
+			text = tr("ROUGE_CAPITAL_OPTION_FIND"),
+			reqs = [{type = 'active_quest_stage', value = 'act_4_capital', stage = 'act4_continue'}],
+			args = [{code = 'start_event', data = 'rouge_melchor_confrontation_start', args = []}]
+		},
+		{
 			text = tr("ROUGE_CAPITAL_OPTION_LETTER"),
 			reqs = [{type = 'active_quest_stage', value = 'rouge_quest', stage = 'melchor'}],
 			args = [{code = 'start_event', data = 'rouge_meet_melchor_start', args = []}]
@@ -1405,9 +1410,18 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'emp_ceremony_1', args = []}]
 		},
 		{
-			text = tr("EMPIRE_CAPITAL2"), 
-			reqs = [{type = 'event_seen', check = false, value = 'emp_erdyna_intro_1'},], 
+			text = tr("EMPIRE_CAPITAL2"),
+			reqs = [{type = 'event_seen', check = false, value = 'emp_erdyna_intro_1'},],
 			args = [{code = 'start_event', data = 'emp_erdyna_intro_1', args = []}]
+		},
+		{
+			text = "ACT4_EMPIRE_CAPITAL_OPTION_ERDYNA",
+			reqs = [
+				{type = 'event_seen', check = true, value = 'emp_erdyna_intro_12'},
+				{type = 'has_active_quest', name = 'erdyna_quest', check = false},
+				{type = 'quest_completed', name = 'erdyna_quest', check = false},
+			],
+			args = [{code = 'start_event', data = 'emp_erdyna_followup_1', args = []}]
 		},
 		{
 			text = "ACT4_EMPIRE_CAPITAL_OPTION_ERDYNA",

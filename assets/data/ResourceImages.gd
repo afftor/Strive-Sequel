@@ -447,6 +447,8 @@ var backgrounds = {
 	rouge_sex_7 = "res://assets/images/fullscreen scenes/Rouge007.png",
 	rouge_sex_8 = "res://assets/images/fullscreen scenes/Rouge008.png",
 	rouge_sex_9 = "res://assets/images/fullscreen scenes/Rouge009.png",
+	rouge_warehouse_1 = "res://assets/images/scenes/warehouses_1.png",
+	rouge_warehouse_2 = "res://assets/images/scenes/warehouses_2.png",
 
 	
 	#masteries

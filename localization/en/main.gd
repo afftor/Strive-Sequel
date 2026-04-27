@@ -20885,7 +20885,9 @@ You note her lizard-like traits, the subtle pride in her voice hinting at a life
 	EMP_ERDYNA_INTRO_11_OPTION_2 = "There's a dangerous cult and some old relics...",
 	EMP_ERDYNA_INTRO_12 = """You pause, the weight of your mission settling over you as the alley's damp chill seeps into your bones. After a moment's thought, you decide a local guide could be useful. You briefly explain your goal of finding ancient artifacts or uncovering details about a dangerous cult. Erdyna's eyes gleam as she nods thoughtfully.
 
-{color=yellow|— I see, I see... Old relics, religious stuff? I know just the place to dig up information on that. History and temples aren't exactly popular around here, so you're lucky I know someone who deals in that sort of thing. Let's move.}""",
+{color=yellow|Erdyna: — Old relics, religious stuff? History and temples aren't exactly popular around here, so you're lucky you ran into me. I know someone who deals in exactly that sort of thing.}
+
+She tells you where to find her when you're ready, then disappears into the crowd.""",
 	KURO3_DIALOGUE_INIT = "So, what's up with the artifacts we're dealing with?",
 	KURO3_DIALOGUE_1 = """Kuro takes a long look at your face, trying to figure out if you're joking.
 
@@ -24315,6 +24317,7 @@ He passes you some gold and has the soldiers escort you from the scene before de
 	ROUGE_QUEST_STAGE_REWARD = "Return to Melchor.",
 	ROUGE_QUEST_STAGE_ROUGE = "Return to Rouge.",
 	
+	ROUGE_CAPITAL_OPTION_FIND = "Find Rouge",
 	ROUGE_CAPITAL_OPTION_LETTER = "Meet Melchor",
 	ROUGE_CAPITAL_OPTION_WAREHOUSE = "Suspicious warehouse",
 	ROUGE_CAPITAL_OPTION_RAID = "Report",
@@ -25236,12 +25239,12 @@ The two of you make your way back to the road, leaving the quiet grove behind.""
 	ACT4_QUEST_CATACOMB_NAME = "Hidden Catacomb Entrance",
 	ACT4_QUEST_CATACOMB_DESC = "A concealed entrance outside the imperial walls leads toward the sealed catacombs beneath the capital.",
 	ERDYNA_QUEST_SUMMARY = "Erdyna has gotten involved in your search for the Empire's artifact and pointed you toward people and places hidden beneath the capital.",
-	ERDYNA_QUEST_NAME = "Erdyna's Lead",
-	ERDYNA_QUEST_STAGE_FOLLOWUP = "Meet with Erdyna again in the Empire capital and follow up on what she learned.",
+	ERDYNA_QUEST_NAME = "Erdyna: The Bandit King",
+	ERDYNA_QUEST_STAGE_FOLLOWUP = "Meet with Erdyna again in the Empire capital.",
 	ERDYNA_QUEST_STAGE_SENERUS = "Visit Senerus with Erdyna and learn what he knows about the artifact.",
-	ERDYNA_QUEST_STAGE_CATACOMBS = "Investigate the accessible catacomb entrance outside the Empire capital.",
-	ERDYNA_QUEST_STAGE_MYR = "Show the copied catacomb writing to Myr and ask what she can make of it.",
-	ERDYNA_QUEST_STAGE_DRAGONHUNTERS = "Travel to the elven lands and seek out the dragon hunters for answers about the sealed doors.",
+	ERDYNA_QUEST_STAGE_CATACOMBS = "Visit catacomb entrance in Empire region.",
+	ERDYNA_QUEST_STAGE_MYR = "Show the copied catacomb writing to Myr.",
+	ERDYNA_QUEST_STAGE_DRAGONHUNTERS = "Visit elven capital for more information on catacomb doors.",
 	ACT4_ERDYNA_FOLLOWUP_1 = """{color=yellow|Erdyna: — Alright, so about that artifact. Hope you didn't take me for an expert on these things, but worry not. I happen to know just the right person for something like that. But first I need to stop by my crew's base. Will you follow?}""",
 	ACT4_ERDYNA_FOLLOWUP_1_OPTION_GO = "Alright, let's go.",
 	ACT4_ERDYNA_FOLLOWUP_1_OPTION_LATER = "I'll drop by when I have time.",

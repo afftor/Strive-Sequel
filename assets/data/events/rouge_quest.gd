@@ -109,6 +109,7 @@ var data = {
 					{code = "make_story_character", value = "Rouge", recruit_from_location = true},
 					{code = 'plan_mansion_event', value = 'rouge_mansion_arrival'},
 					{code = "progress_quest", value = "rouge_quest", stage = "mansion"},
+					{code = "complete_quest", value = "act_4_capital"},
 				]
 			}
 		]
@@ -135,7 +136,10 @@ var data = {
 				text = "DIALOGUECLOSE", 
 				reqs = [], 
 				type = "next_dialogue",
-				bonus_effects = [{code = "decision", value = "rouge_refused"}] #2add more
+				bonus_effects = [
+					{code = "decision", value = "rouge_refused"},
+					{code = "complete_quest", value = "act_4_capital"},
+				] #2add more
 			}
 		]
 	},
@@ -586,8 +590,8 @@ var data = {
 	},
 	
 	rouge_warehouse_search = {
-		reqs = [], 
-		image = null, 
+		reqs = [],
+		image = "rouge_warehouse_1",
 		music = 'intimate_dark',
 		tags = ["dialogue_scene"], 
 		text = "ROUGE_WAREHOUSE_SEARCH", 
@@ -791,7 +795,7 @@ var data = {
 	},
 	rouge_report_melchor_raid = {
 		reqs = [],
-		image = null,
+		image = "rouge_warehouse_2",
 		tags = ["dialogue_scene", "blackscreen_transition_common"],
 		text = "ROUGE_REPORT_MELCHOR_RAID",
 		options = [
