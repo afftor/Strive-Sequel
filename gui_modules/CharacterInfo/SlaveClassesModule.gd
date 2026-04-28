@@ -25,7 +25,7 @@ func _ready():
 		i.connect("pressed",self,'class_category', [i.name])
 	for i in $MasteryPanel/Categories.get_children():
 		i.connect("pressed", self, 'change_mastery_category', [i.name])
-	$ClassPanel/VBoxContainer/HBoxContainer2/Unlock.connect('pressed', self, 'unlock_class')
+	$ClassPanel/HBoxContainer2/Unlock.connect('pressed', self, 'unlock_class')
 	for ch in $categories.get_children():
 		globals.connecttexttooltip(ch, tr("CAT_" + str(ch.name).to_upper() + "_DESC"))
 #	$UpgradeButton.connect("pressed", $stats_upgrade, 'show')
@@ -65,7 +65,7 @@ func tut_get_class_fighter():
 			return btn
 
 func tut_get_unlock():
-	return $ClassPanel/VBoxContainer/HBoxContainer2/Unlock
+	return $ClassPanel/HBoxContainer2/Unlock
 
 func tut_get_leadership():
 	for btn in $MasteryPanel/Categories2.get_children():
@@ -214,18 +214,18 @@ func open_class(classcode):
 	$ClassPanel._open_panel(person, classcode)
 	if person.has_profession(tempclass.code):
 		text = person.translate('[name] has already acquired this class.')
-		$ClassPanel/VBoxContainer/HBoxContainer2/Unlock.hide()
-		$ClassPanel/VBoxContainer/HBoxContainer2/ExpLabel.set("custom_colors/font_color", Color(1,1,1))
+		$ClassPanel/HBoxContainer2/Unlock.hide()
+		$ClassPanel/HBoxContainer2/ExpLabel.set("custom_colors/font_color", Color(1,1,1))
 	else:
 		text = tr("EXPREQUIRED")+": " + str(person.get_next_class_exp()) + "/" +  str(floor(person.get_stat('base_exp'))) 
-		$ClassPanel/VBoxContainer/HBoxContainer2/Unlock.show()
+		$ClassPanel/HBoxContainer2/Unlock.show()
 		if person.get_stat('base_exp') < person.get_next_class_exp():
-			$ClassPanel/VBoxContainer/HBoxContainer2/ExpLabel.set("custom_colors/font_color", variables.hexcolordict.red)
+			$ClassPanel/HBoxContainer2/ExpLabel.set("custom_colors/font_color", variables.hexcolordict.red)
 		else:
-			$ClassPanel/VBoxContainer/HBoxContainer2/ExpLabel.set("custom_colors/font_color", variables.hexcolordict.green)
-	$ClassPanel/VBoxContainer/HBoxContainer2/Unlock.disabled = class_locked || (person.get_stat('base_exp') < person.get_next_class_exp())
+			$ClassPanel/HBoxContainer2/ExpLabel.set("custom_colors/font_color", variables.hexcolordict.green)
+	$ClassPanel/HBoxContainer2/Unlock.disabled = class_locked || (person.get_stat('base_exp') < person.get_next_class_exp())
 	
-	$ClassPanel/VBoxContainer/HBoxContainer2/ExpLabel.text = text
+	$ClassPanel/HBoxContainer2/ExpLabel.text = text
 	update_class_buttons(classcode)
 	$ClassPanel.visible = true
 	$MasteryPanel.hide()

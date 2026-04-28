@@ -1855,7 +1855,8 @@ anchor_bottom = 1.0
 margin_left = 10.0
 margin_top = 10.0
 margin_right = -10.0
-margin_bottom = -10.0
+margin_bottom = -71.0
+mouse_filter = 2
 size_flags_vertical = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer"]
@@ -2076,12 +2077,13 @@ margin_right = 677.0
 margin_bottom = 873.0
 size_flags_vertical = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer"]
-margin_top = 877.0
-margin_right = 677.0
-margin_bottom = 934.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="SlaveClassesModule/ClassPanel"]
+margin_left = 10.0
+margin_top = 887.0
+margin_right = 687.0
+margin_bottom = 944.0
 
-[node name="ExpLabel" type="Label" parent="SlaveClassesModule/ClassPanel/VBoxContainer/HBoxContainer2"]
+[node name="ExpLabel" type="Label" parent="SlaveClassesModule/ClassPanel/HBoxContainer2"]
 light_mask = 0
 margin_top = 12.0
 margin_right = 502.0
@@ -2091,7 +2093,7 @@ custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 10 )
 text = "Experience: "
 
-[node name="Unlock" type="Button" parent="SlaveClassesModule/ClassPanel/VBoxContainer/HBoxContainer2"]
+[node name="Unlock" type="Button" parent="SlaveClassesModule/ClassPanel/HBoxContainer2"]
 light_mask = 0
 margin_left = 506.0
 margin_right = 677.0
@@ -3984,6 +3986,7 @@ custom_fonts/font = ExtResource( 1 )
 text = "Stats"
 
 [node name="StatsPanel" parent="SlaveSiblingsModule" instance=ExtResource( 144 )]
+visible = false
 margin_left = 3.0
 margin_top = 7.0
 margin_right = 1377.0
