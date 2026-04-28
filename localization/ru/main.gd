@@ -3871,6 +3871,11 @@ Requires: Базовый рабский труд""",
 	EFFECTNAME_WARD_D = "оберег от проклятий",
 	EFFECTNAME_WATERSHIELD = "водяной щит",
 	EFFECTNAME_CLARITY = "ясность",
+	EFFECTNAME_RAMONT_PARRY_N_RIPOSTE = """Parry & Riposte""", # MISSING TRANSLATION
+	EFFECTNAME_RAMONT_PARRY_N_RIPOSTE_BUFF = """Parry & Riposte""", # MISSING TRANSLATION
+	EFFECT_RAMONTPARRY = """Dodge the next non-spell attack, if it's melee and not spell, Ramont counterattacks. Remove once targeted.""", # MISSING TRANSLATION
+	EFFECTNAME_EVICTION_NOTICE = """Eviction Notice""", # MISSING TRANSLATION
+	EFFECT_EVICTION_NOTICE = """Ramont will use powerful move against this unit.""", # MISSING TRANSLATION
 
 		
 	RESETTRAINREQ = """Сбросить обучение на 0-й этап и восстановить дух. Требуется зелье Забвения.""",

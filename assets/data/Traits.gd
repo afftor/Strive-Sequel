@@ -1636,7 +1636,15 @@ var traits = {
 		effects = ['setup_ward_test'],
 		tags = [],
 	},
-	
+	ramont_riposte_stance = {
+		code = 'ramont_riposte_stance',
+		name = '',
+		descript = '',
+		icon = null, 
+		visible = false,
+		effects = ['ramont_parry_n_riposte_stance'],
+		tags = [],
+	},
 	
 	#exploration related traits
 	#needs to hardcode most of traits
@@ -2663,6 +2671,7 @@ var succubus_trainings = {
 		position = [0.7, 2],
 		icon = load("res://assets/images/iconstraits/l_sword.png"),
 	},
+	
 }
 
 

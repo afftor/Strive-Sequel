@@ -481,6 +481,8 @@ func generate_simple_fighter(tempname, setup_ai = true):
 			else:
 				fill_ai(data.ai)
 		ai.set_obj(self)
+		if data.has('skill_rotation'):
+			ai.set_skill_rotation(data.skill_rotation)
 		if data.ai_position.has('ranged'):
 			ai.ai_position = 'any'
 	if data.has('tags') and data.tags.has('boss'):
@@ -1825,6 +1827,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			for j in i.or_list:
 				or_check = or_check or valuecheck(j, ignore_npc_stats_gear)
 			return or_check
+		'is_in_ranged_zone':
+			check = (position in range(4,7) || position in range(10,13)) == i.check
 	return check
 
 
