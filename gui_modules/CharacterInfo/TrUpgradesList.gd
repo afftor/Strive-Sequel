@@ -279,6 +279,7 @@ func build_training_servant():
 				panel.disabled = true
 				panel.material = load("res://assets/sfx/bw_shader.tres")
 				panel.get_node('icon').material = load("res://assets/sfx/bw_shader.tres")
+				panel.get_node('icon').modulate = Color(0.3, 0.3, 0.3, 1.0)
 
 
 func build_training_header():
@@ -403,6 +404,7 @@ func build_training_traits():
 				panel.disabled = true
 				panel.material = load("res://assets/sfx/bw_shader.tres")
 				panel.get_node('icon').material = load("res://assets/sfx/bw_shader.tres")
+				panel.get_node('icon').modulate = Color(0.3, 0.3, 0.3, 1.0)
 
 
 func activate_training(tr_code):

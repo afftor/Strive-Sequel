@@ -1228,11 +1228,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -609.0
-margin_top = -376.5
-margin_right = -609.0
-margin_bottom = -376.5
-rect_scale = Vector2( 0.5, 0.5 )
+margin_left = -567.0
+margin_top = -368.5
+margin_right = -567.0
+margin_bottom = -368.5
+rect_scale = Vector2( 0.45, 0.45 )
 
 [node name="room" type="Control" parent="MapPanel/CanvasLayer"]
 visible = false
@@ -1378,8 +1378,8 @@ expand = true
 
 [node name="crop" type="Light2D" parent="MapPanel"]
 light_mask = 32
-position = Vector2( 652, 433 )
-scale = Vector2( 1.78533, 1.064 )
+position = Vector2( 628, 375.5 )
+scale = Vector2( 1.61333, 0.776667 )
 texture = ExtResource( 68 )
 mode = 3
 range_item_cull_mask = 32
