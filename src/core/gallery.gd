@@ -65,6 +65,7 @@ var scenes = {
 	mae_wedding = ['mae_wedding_1', 'mae_wed_2', 'mae_wed_3', 'mae_wed_4', 'mae_wed_5',],
 	jean_wedding = ['jean_wedding_1', 'jean_wed_2', 'jean_wed_3', 'jean_wed_4', 'jean_wed_5', 'jean_wed_6',],
 	jean_dream = ['jean_dream_1', 'jean_dream_2', 'jean_dream_3', 'jean_dream_4', 'jean_dream_5', 'jean_dream_6', ],
+	rouge_sex = ['rouge_sex_1', 'rouge_sex_2', 'rouge_sex_3', 'rouge_sex_4', 'rouge_sex_5', 'rouge_sex_6', 'rouge_sex_7', 'rouge_sex_8', ],
 }
 #was forced to add a id to scene lists for unlock purpose
 var scenes_order = [
@@ -79,7 +80,7 @@ var scenes_order = [
 	'ana_blow','ana_wed','zephyra_wed',
 	'heleviel_bar_sex', 'heleviel_forest_sex', 'heleviel_wedding',
 	'mae_sex_behind', 'mae_sex_ritual', 'mae_spirit_northern_ritual', 'mae_wedding',
-	'jean_wedding', 'jean_dream',
+	'jean_wedding', 'jean_dream', 'rouge_sex'
 	]
 var story_scenes = ['anastasia_event_alive', 'elven_temple_scene', 'act1_art', 'act2_art'] #maybe we should define this as 'scenes' unlocks and ero_scenes as 'backgrounds' unlocks - but for now there are no more and i can't add something like 'daisyevent' or 'aire_death'
 var ero_scenes = [
@@ -145,7 +146,8 @@ var ero_scenes = [
 'mae_northern_1',
 'mae_wedding_1',
 'jean_wedding_1',
-'jean_dream',
+'jean_dream_1',
+'rouge_sex_1',
 ] 
 #fill next 2 arrays manually, if needed certain list
 var mono_scenes
@@ -216,6 +218,7 @@ var ero_scenes_collection = {
 	'mae_wedding_': ['mae_wedding_1', 'mae_wedding_2', 'mae_wedding_4', 'mae_wedding_5', 'mae_wedding_7'],
 	'jean_wedding_': ['jean_wedding_1', 'jean_wedding_2', 'jean_wedding_3', 'jean_wedding_4'],
 	'jean_dream_': ['jean_dream_1', 'jean_dream_2', 'jean_dream_3', 'jean_dream_4'],
+	'rouge_sex_': ['rouge_sex_1', 'rouge_sex_2', 'rouge_sex_3', 'rouge_sex_4', 'rouge_sex_5', 'rouge_sex_6', 'rouge_sex_7', 'rouge_sex_8',],
 }
 #so these arrays are needed for storing order 
 
@@ -289,6 +292,7 @@ var scene_tooltips = {
 	mae_wedding_1 = "MAE_WEDDING_SS",
 	jean_wedding_1 = "JEAN_WEDDING_SS",
 	jean_dream_1 = "JEAN_DREAM_SS",
+	rouge_sex_1 = "ROUGE_SEX_SS",
 }
 
 
