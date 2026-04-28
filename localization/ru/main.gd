@@ -3222,6 +3222,7 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	TRAITSHIELDBEARER = """Shield Counter""", # MISSING TRANSLATION
 	TRAITSHIELDBEARERDESCRIPT = """{color=brown|Shield Counter}: If equipped with a shield that grants Evasion, counter enemy attacks with basic attack in melee range""", # MISSING TRANSLATION
 	TRAITPALADINDESCRIPT = """{color=brown|Кара}: Наносите на 25% больше урона и получайте на 15% меньше урона от врагов типа нежити и демонов.""",
+	TRAITROUGE = """Ruthless""", # MISSING TRANSLATION
 	TRAITROUGEDESCRIPT = """Aditional bonuses if in front row.""", # MISSING TRANSLATION
 	TRAITROGUEDESCRIPT = """Aditional bonuses if in front row.""", # MISSING TRANSLATION
 	TRAITASSASSINDESCRIPT = """{color=brown|Мастерство скрытности}: Скрытность может быть активирована в средней броне.""",
@@ -3870,6 +3871,11 @@ Requires: Базовый рабский труд""",
 	EFFECTNAME_WARD_D = "оберег от проклятий",
 	EFFECTNAME_WATERSHIELD = "водяной щит",
 	EFFECTNAME_CLARITY = "ясность",
+	EFFECTNAME_RAMONT_PARRY_N_RIPOSTE = """Parry & Riposte""", # MISSING TRANSLATION
+	EFFECTNAME_RAMONT_PARRY_N_RIPOSTE_BUFF = """Parry & Riposte""", # MISSING TRANSLATION
+	EFFECT_RAMONTPARRY = """Dodge the next non-spell attack, if it's melee and not spell, Ramont counterattacks. Remove once targeted.""", # MISSING TRANSLATION
+	EFFECTNAME_EVICTION_NOTICE = """Eviction Notice""", # MISSING TRANSLATION
+	EFFECT_EVICTION_NOTICE = """Ramont will use powerful move against this unit.""", # MISSING TRANSLATION
 
 		
 	RESETTRAINREQ = """Сбросить обучение на 0-й этап и восстановить дух. Требуется зелье Забвения.""",
@@ -19679,6 +19685,8 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	
 	QUEST_GRYPHON_CAVE_LOCATION_TEXT = """Логово старшего грифона""",
 	QUEST_GRYPHON_CAVE_LOCATION_DESC = """ """,
+	QUEST_LIRA_GROVE_LOCATION_TEXT = """Lira's Stash""", # MISSING TRANSLATION
+	QUEST_LIRA_GROVE_LOCATION_DESC = """A secluded grove at the edge of the elven forest where Lira hid her belongings after her exile.""", # MISSING TRANSLATION
 	
 	QUEST_RITUAL_LOCATION_TEXT = """Поле трав""",
 	QUEST_RITUAL_LOCATION_DESC = """ """,
@@ -19866,6 +19874,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	QUEST_DAISY_ADMIRER_LOCATION1 = """Подойти""",
 	
 	QUEST_GRYPHON_CAVE_LOCATION1 = """Подойти к пещере""",
+	QUEST_LIRA_GROVE_LOCATION1 = """Search the grove""", # MISSING TRANSLATION
 	QUEST_MAE_SEARCH = """Искать Мэй""",
 	QUEST_LEON_FOREST_2_1 = """Искать Леона""",
 	

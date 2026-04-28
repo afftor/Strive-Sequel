@@ -9,6 +9,10 @@ var ai_position = 'melee'
 
 var current_state
 var next_state
+#==== skill rotation ====
+var skills_rotation_array = null
+var skill_rotation_counter = 0 
+#==== for skill rotation ====
 
 func _init():
 	current_state = 0
@@ -200,6 +204,13 @@ func _get_action(hide_ignore = false):
 #		print (s_n, " ", curw)
 		if curw > 0: 
 			actions.push_back([s_n, curw])
+	#=== Skill rotation zone ====
+	var skill_in_rotation = _skill_rotation(actions)
+	#print(skill_in_rotation)
+	if skill_in_rotation:
+		#print('skill_rotation_success!')
+		return skill_in_rotation
+	#=== Skill rotation zone ===
 	if actions.size() == 0:
 #		print ('ERROR IN AI TEMPLATE')
 		return app_obj.get_skill_by_tag('default')
@@ -212,3 +223,34 @@ func _get_target(s_name):#for chosen with _get_action() func
 	for t in skill_targets[s_name]:
 		targets.push_back([t.target, t.quality])
 	return input_handler.weightedrandom(targets)
+
+func set_skill_rotation(rotation_array):
+	skills_rotation_array = rotation_array
+
+func _skill_rotation(actions):
+	if skills_rotation_array == null:
+		#print('skills_rotation_array is null')
+		return false
+	var current_skill_rotation = skills_rotation_array[skill_rotation_counter]
+	if current_skill_rotation.size() == 0:
+		skill_rotation_step()
+		#print('skills_rotation_array is empty')
+		return false
+	var usuable_skills = []
+	for u_s in actions:
+		usuable_skills.push_back(u_s[0])
+	#print('Usable skill =')
+	#print(usuable_skills)
+	for skill_unit in current_skill_rotation: #Check if we skill on this turn rotation is usable, if so, do it.
+		if usuable_skills.has(skill_unit):
+			skill_rotation_step()
+			#print('returning skill of th rotation:' + skill_unit)
+			return skill_unit
+	if !current_skill_rotation.has('Unskippable'):
+		skill_rotation_step()
+	return false
+
+func skill_rotation_step():
+	skill_rotation_counter += 1
+	if skill_rotation_counter >= skills_rotation_array.size():
+		skill_rotation_counter = 0
