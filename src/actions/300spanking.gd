@@ -43,21 +43,21 @@ func takereffect(member):
 
 func initiate():
 	var temparray = []
-	temparray += ["[name1] {^spank:slap:beat:swat}[s/1] [names2] [ass2]{^ with [an /1]open hand[/s1]: until it turns red:, intent on humiliating [him2]}."]
-	temparray += ["[name1] {^spank:slap:beat:swat}[s/1] [name2] {^right :square :}{^across:on} [his2] [ass2] {^repeatedly:again and again:over and over}."]
-	return temparray[randi()%temparray.size()]
+	temparray += ["SEXACTION_SPANKING_INITIATE_1"]
+	temparray += ["SEXACTION_SPANKING_INITIATE_2"]
+	return tr(temparray[randi()%temparray.size()])
 
 func reaction(member):
 	var text = ''
 	#elif member.consent == false:
 		#TBD
 	if member.sens < 300:
-		text = "[name2] {^jerk:wince:writhe}[s/2] in pain from the {^humiliating:demeaning:embarassing} punishment."
+		text = tr("SEXACTION_SPANKING_REACTION_1")
 	elif member.sens < 600:
-		text = "[name2] cries out with each blow to [his2] buttox, though [his2] voice betrays some enjoyment."
+		text = tr("SEXACTION_SPANKING_REACTION_2")
 	elif member.sens < 950:
-		text = "[names2] moans make it {^hard:difficult} to tell if [he2] in pain or enjoying [himself2]."
+		text = tr("SEXACTION_SPANKING_REACTION_3")
 	else:
-		text = "[names2] body {^trembles:quivers} {^with each swat:each time [name1] slap[s/1] [his2] [ass2]}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}."
-	
+		text = tr("SEXACTION_SPANKING_REACTION_4")
+
 	return text

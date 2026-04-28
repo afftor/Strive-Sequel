@@ -53,9 +53,4 @@ func takereffect(member):
 	return effects
 
 func initiate():
-	var text = ''
-	var temparray = []
-	temparray += ["[name1] {^passionately :eagerly :}[fuck1] [names2]'s [anus2] and mouth. "]
-	text += temparray[randi()%temparray.size()]
-	temparray.clear()
-	return text
+	return tr("SEXACTION_SPITROASTASS_INITIATE_1")

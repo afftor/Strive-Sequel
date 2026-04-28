@@ -296,10 +296,11 @@ func apply_default_personality():
 func build_stats():
 	$modes/Stats.pressed = true
 	$modes/Visuals.pressed = false
-	
+
 	$StatsModule.visible = true
 	$DietPanel.visible = true
 	$VisualsModule.visible = false
+	build_master_relation()
 	if mode != 'freemode':
 		$UpgradesPanel.visible = false
 		$VBoxContainer.visible = true
@@ -308,10 +309,11 @@ func build_stats():
 func build_visuals():
 	$modes/Stats.pressed = false
 	$modes/Visuals.pressed = true
-	
+
 	$StatsModule.visible = false
 	$DietPanel.visible = false
 	$VisualsModule.visible = true
+	$MasterRelationPanel.visible = false
 	if mode == 'freemode':
 		$UpgradesPanel.visible = true
 		$VBoxContainer.visible = false

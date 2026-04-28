@@ -51,19 +51,14 @@ func takereffect(member):
 	return effects
 
 func initiate():
-	var text = ''
-	var temparray = []
-	temparray += ["[name1] {^wrap:tie}[s/1] a rope around [names2] body to restrict [his2] movements."]
-	text += temparray[randi()%temparray.size()]
 	for i in takers:
 		ResourceScripts.game_res.materials.rope -= 1
 		i.effects.append('tied')
-	temparray.clear()
-	return text
+	return tr("SEXACTION_ROPE_INITIATE_1")
 
 func reaction(member):
 	var text = ''
 	if member.energy == 0:
-		text = "[name2] lie[s/2] unconscious, with [his2] body still tied down."
+		text = tr("SEXACTION_ROPE_REACTION_UNCONSCIOUS")
 
 	return text

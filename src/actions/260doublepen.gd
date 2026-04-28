@@ -55,9 +55,4 @@ func takereffect(member):
 	return effects
 
 func initiate():
-	var text = ''
-	var temparray = []
-	temparray += ["[name1] put [names2] between them and [fuck1] [his2] {^orifices:holes}. "]
-	text += temparray[randi()%temparray.size()]
-	temparray.clear()
-	return text
+	return tr("SEXACTION_DOUBLEPEN_INITIATE_1")

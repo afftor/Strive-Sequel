@@ -48,18 +48,12 @@ func takereffect(member):
 	return effects
 
 func initiate():
-	var text = ''
-	var temparray = []
-	temparray += ["[name1] {^place:shove:stick}[s/1] a nose hook on [names2] face, pulling [his2] nose up and forcibly open [his2] mouth a little."]
-#	temparray += ["[name1] latch[es/1] onto [names2] nipples"]
-	text += temparray[randi()%temparray.size()]
-	temparray.clear()
-	return text
+	return tr("SEXACTION_NOSEHOOK_INITIATE_1")
 
 func reaction(member):
 	var text = ''
 	if member.energy == 0:
-		text = "[name2] lie[s/2] unconscious, with the nose hook on her face opening her mouth slightly."
+		text = tr("SEXACTION_NOSEHOOK_REACTION_UNCONSCIOUS")
 	#elif member.consent == false:
 		#TBD
 # probably fear description related as since its pulling the nose up the person will have a hard time keeping her mouth closed

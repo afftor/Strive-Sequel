@@ -61,19 +61,19 @@ func takereffect(member):
 func initiate():
 	var temparray = []
 	if givers.size() == 2:
-		temparray += ["[name1] take[s/1] turns {^french :}kissing [name2] and licking {^all around :}[his2] face[/s2]."]
-		temparray += ["[name1] take[s/1] turns coiling [his1] tongue[/s1] inside [names2] mouth[/s2] and [he2] {^eagerly:enthusiastically} return[s/2] the gesture."]
+		temparray += ["SEXACTION_KISS_INITIATE_DOUBLE_1"]
+		temparray += ["SEXACTION_KISS_INITIATE_DOUBLE_2"]
 	else:
-		temparray += ["[name1] {^french :}kiss[es/1] [name2], licking {^all around :}[his2] face[/s2]."]
-		temparray += ["[name1] coil[s/1] [his1] tongue[/s1] inside [names2] mouth[/s2] and [he2] {^eagerly:enthusiastically} return[s/2] the gesture."]
-	temparray += ["[name1] grab[s/1] [name2] and {^deeply :}kiss[es/1] [him2], {^driving [his1] tongue[/s1] into [his2] mouth[/s2]:eagerly tasting [his2] lips}."]
-	return temparray[randi()%temparray.size()]
+		temparray += ["SEXACTION_KISS_INITIATE_1"]
+		temparray += ["SEXACTION_KISS_INITIATE_2"]
+	temparray += ["SEXACTION_KISS_INITIATE_3"]
+	return tr(temparray[randi()%temparray.size()])
 
 
 func taker_resist():
 	var temparray = []
 	if takers[0].stamina > 20:
-		temparray += ["[name2] shies away from the kiss seemingly nervous..."]
+		temparray += ["SEXACTION_KISS_RESIST_1"]
 	else:
-		temparray += ["[name2] tries to push back against the undesired action..."]
-	return temparray[randi()%temparray.size()]
+		temparray += ["SEXACTION_KISS_RESIST_2"]
+	return tr(temparray[randi()%temparray.size()])

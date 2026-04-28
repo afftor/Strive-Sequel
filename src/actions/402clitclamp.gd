@@ -48,30 +48,20 @@ func takereffect(member):
 	return effects
 
 func initiate():
-	var text = ''
-	var temparray = []
-	temparray += ["[name1] {^place:stick}[s/1] clips on [names2] clit."]
-#	temparray += ["[name1] latch[es/1] onto [names2] nipples"]
-	text += temparray[randi()%temparray.size()]
-	temparray.clear()
-#	temparray += [", {^licking:teasing} and {^kissing:sucking on} them."]
-#	temparray += [", {^lightly:gently} {^nibbling at:stimulating} them with [his1] teeth."]
-#	temparray += [", {^greedily slurping at them:nursing} like [a /1]bab[y/ies1]."]
-#	text += temparray[randi()%temparray.size()]
-	return text
+	return tr("SEXACTION_CLITCLAMP_INITIATE_1")
 
 func reaction(member):
 	var text = ''
 	if member.energy == 0:
-		text = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] clit {^respond:react} to {^the stimulation:the clamps pression:the clamps teasing}."
+		text = tr("SEXACTION_CLITCLAMP_REACTION_UNCONSCIOUS")
 	#elif member.consent == false:
 		#TBD
 	elif member.sens < 100:
-		text = "[name2] {^show:give}[s/2] little {^response:reaction} to [his2] clit being {^stimulated:teased:pressed:pinched}."
+		text = tr("SEXACTION_CLITCLAMP_REACTION_1")
 	elif member.sens < 400:
-		text = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] clit are {^stimulated:teased:pressed:pinched}."
+		text = tr("SEXACTION_CLITCLAMP_REACTION_2")
 	elif member.sens < 800:
-		text = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] clit are {^stimulated:teased::pressed:pinched}."
+		text = tr("SEXACTION_CLITCLAMP_REACTION_3")
 	else:
-		text = "[names2] body {^trembles:quivers} {^by the slightest pressure of the clamps:in response of the clamps pression}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}."
+		text = tr("SEXACTION_CLITCLAMP_REACTION_4")
 	return text

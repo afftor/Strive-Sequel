@@ -52,9 +52,4 @@ func takereffect(member):
 	return effects
 
 func initiate():
-	var text = ''
-	var temparray = []
-	temparray += ["[name1] [fuck1] [names2] [anus2] periodically taking turns and switching."]
-	text += temparray[randi()%temparray.size()]
-	temparray.clear()
-	return text
+	return tr("SEXACTION_INSERTINTURNSASS_INITIATE_1")

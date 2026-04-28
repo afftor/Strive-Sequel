@@ -42,21 +42,19 @@ func takereffect(member):
 	return effects
 
 func initiate():
-	var temparray = []
-	temparray += ["[name1] {^lash}[s/1] at [names2] [body2] with a leather whip."]
-	return temparray[rand_range(0,temparray.size())]
+	return tr("SEXACTION_WHIPPING_INITIATE_1")
 
 func reaction(member):
 	var text = ''
 	#elif member.consent == false:
 		#TBD
 	if member.sens < 300:
-		text = "[name2] {^jerk:wince:writhe}[s/2] in pain from the {^harsh:severe:brutal} punishment."
+		text = tr("SEXACTION_WHIPPING_REACTION_1")
 	elif member.sens < 600:
-		text = "[name2] cries out with each {^strike:lash}, though [his2] voice betrays some enjoyment."
+		text = tr("SEXACTION_WHIPPING_REACTION_2")
 	elif member.sens < 950:
-		text = "[names2] moans make it {^hard:difficult} to tell if [he2] in pain or enjoying [himself2]."
+		text = tr("SEXACTION_WHIPPING_REACTION_3")
 	else:
-		text = "[name2] barely reacts to {^heavy:painful} {^strikes:lashes} as [he2] edge[s/2] toward orgasm."
-	
+		text = tr("SEXACTION_WHIPPING_REACTION_4")
+
 	return text

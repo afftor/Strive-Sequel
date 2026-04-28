@@ -3060,6 +3060,7 @@ DIALOGUEMASTER_LUST_EXPREPORT = "你利用 [targetname] 的欲望为 [targethim]
 	TRAITSHIELDBEARER = """Shield Counter""", # MISSING TRANSLATION
 	TRAITSHIELDBEARERDESCRIPT = """{color=brown|Shield Counter}: If equipped with a shield that grants Evasion, counter enemy attacks with basic attack in melee range""", # MISSING TRANSLATION
 	TRAITPALADINDESCRIPT = "{color=brown|重击}：对亡灵和恶魔类敌人伤害增加 25%，受到其伤害减少 15%。",
+	TRAITROUGE = """Ruthless""", # MISSING TRANSLATION
 	TRAITROUGEDESCRIPT = """When in front row: +35% Damage, +10% Crit Chance..""", # MISSING TRANSLATION
 	TRAITASSASSINDESCRIPT = "{color=brown|潜行大师}：穿着中型装甲时也可激活隐藏状态。",
 	TRAITASNIPERDESCRIPT = """Marksmanship skills won't break In The Shadows effect.""", # MISSING TRANSLATION
@@ -18388,6 +18389,8 @@ DUNGEONNOUN1 = "隧道 Tunnels",
 	QUEST_GRYPHON_FOREST_LOCATION_DESC = "",
 	QUEST_GRYPHON_CAVE_LOCATION_TEXT = "狮鹫巢穴 Elder Gryphon Lair",
 	QUEST_GRYPHON_CAVE_LOCATION_DESC = "",
+	QUEST_LIRA_GROVE_LOCATION_TEXT = """Lira's Stash""", # MISSING TRANSLATION
+	QUEST_LIRA_GROVE_LOCATION_DESC = """A secluded grove at the edge of the elven forest where Lira hid her belongings after her exile.""", # MISSING TRANSLATION
 	QUEST_RITUAL_LOCATION_TEXT = "药草田 Herbs Field",
 	QUEST_RITUAL_LOCATION_DESC = "",
 	QUEST_LEON_FOREST_TEXT = "里昂的踪迹 Leon's location",
@@ -18546,6 +18549,7 @@ DUNGEONNOUN1 = "隧道 Tunnels",
 	QUEST_FINAL_OPERATION_LOCATION2 = "搜索 Search",
 	QUEST_DAISY_ADMIRER_LOCATION1 = "接近 Approach",
 	QUEST_GRYPHON_CAVE_LOCATION1 = "接近洞穴 Approach Cave",
+	QUEST_LIRA_GROVE_LOCATION1 = """Search the grove""", # MISSING TRANSLATION
 	QUEST_MAE_SEARCH = "寻找阿梅 Search For Mae",
 	QUEST_LEON_FOREST_2_1 = "寻找莱昂 Search For Leon",
 	QUEST_WHITE_STAG_LOCATION1 = "寻找白鹿 Search For Leon", 

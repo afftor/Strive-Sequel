@@ -56,22 +56,19 @@ func takereffect(member):
 	return effects
 
 func initiate():
-	var temparray = []
-	temparray += ["[name1] {^push:shove}[s/1] [his1] [penis1] into [names2] mouth [/s1], intent on humiliating [him2]."]
-#	temparray += ["[name1] {^take:place:shove}[s/1] into [name2] {^right :square :}{^across:on} [his2] [ass2] {^repeatedly:again and again:over and over}."]
-	return temparray[randi()%temparray.size()]
+	return tr("SEXACTION_DEEPTHROAT_INITIATE_1")
 
 func reaction(member):
 	var text = ''
 	#elif member.consent == false:
 		#TBD
 	if member.sens < 300:
-		text = "[name2] {^jerk:wince:writhe}[s/2] in pain from the {^humiliating:demeaning:embarassing} punishment."
+		text = tr("SEXACTION_DEEPTHROAT_REACTION_1")
 	elif member.sens < 600:
-		text = "[name2] cries out with each push into [his2] throat, though [his2] facial expression betrays some enjoyment."
+		text = tr("SEXACTION_DEEPTHROAT_REACTION_2")
 	elif member.sens < 950:
-		text = "[names2] expression make it {^hard:difficult} to tell if [he2] in pain or enjoying [himself2] from the gagging."
+		text = tr("SEXACTION_DEEPTHROAT_REACTION_3")
 	else:
-		text = "[names2] body {^trembles:quivers} {^with each push:each time [name1] slam[s/1] [his2] throat}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}."
-	
+		text = tr("SEXACTION_DEEPTHROAT_REACTION_4")
+
 	return text

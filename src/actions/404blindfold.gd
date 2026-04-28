@@ -62,22 +62,12 @@ func takereffect(member):
 	return effects
 
 func initiate():
-	var text = ''
-	var temparray = []
-	temparray += ["[name1] {^place:put}[s/1] a blindfold on [names2] eyes."]
-#	temparray += ["[name1] latch[es/1] onto [names2] nipples"]
-	text += temparray[randi()%temparray.size()]
-	temparray.clear()
-#	temparray += [", {^licking:teasing} and {^kissing:sucking on} them."]
-#	temparray += [", {^lightly:gently} {^nibbling at:stimulating} them with [his1] teeth."]
-#	temparray += [", {^greedily slurping at them:nursing} like [a /1]bab[y/ies1]."]
-#	text += temparray[randi()%temparray.size()]
-	return text
+	return tr("SEXACTION_BLINDFOLD_INITIATE_1")
 
 func reaction(member):
 	var text = ''
 	if member.energy == 0:
-		text = "[name2] lie[s/2] unconscious, with the blinfold still on [his2] eyes."
+		text = tr("SEXACTION_BLINDFOLD_REACTION_UNCONSCIOUS")
 	#elif member.consent == false:
 		#TBD
 # probably fear descriptions here as she woulnd see who or what is doing things to her

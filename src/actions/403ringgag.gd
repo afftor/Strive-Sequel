@@ -49,18 +49,12 @@ func takereffect(member):
 	return effects
 
 func initiate():
-	var text = ''
-	var temparray = []
-	temparray += ["[name1] {^:place:shove:insert}[s/1] a ring gag into [names2] mouth[/s1] to enable forced inside mouth actions."]
-#	temparray += ["[name1] latch[es/1] onto [names2] nipples"]
-	text += temparray[randi()%temparray.size()]
-	temparray.clear()
-	return text
+	return tr("SEXACTION_RINGGAG_INITIATE_1")
 
 func reaction(member):
 	var text = ''
 	if member.energy == 0:
-		text = "[name2] lie[s/2] unconscious, with the ring gag still in [his2] mouth."
+		text = tr("SEXACTION_RINGGAG_REACTION_UNCONSCIOUS")
 	#elif member.consent == false:
 		#TBD
 # fear should probably used here to change the reaction description as if this tool is placed then the abouse will start

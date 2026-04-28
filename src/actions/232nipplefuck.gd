@@ -51,22 +51,20 @@ func takereffect(member):
 	return effects
 
 func initiate():
-	var text = ''
-	text += "[name1] uses [his1] [penis1] to {^fuck:penetrate} [names2] {^lubricating:elastic:stretching} nipples."
-	return text
+	return tr("SEXACTION_NIPPLEFUCK_INITIATE_1")
 
 func reaction(member):
 	var text = ''
 	if member.energy == 0:
-		text = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [penis2] {^respond:react}[s/#2] to {^the stimulation:[names1] efforts:[name1] against [him2]}."
+		text = tr("SEXACTION_NIPPLEFUCK_REACTION_UNCONSCIOUS")
 	#elif member.consent == false:
 		#TBD
 	elif member.sens < 100:
-		text = "[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] efforts}."
+		text = tr("SEXACTION_NIPPLEFUCK_REACTION_1")
 	elif member.sens < 400:
-		text = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] nipples get[s/#2] {^fucked:penetrated}."
+		text = tr("SEXACTION_NIPPLEFUCK_REACTION_2")
 	elif member.sens < 800:
-		text = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] nipples get[s/#2] {^fucked:penetrated}."
+		text = tr("SEXACTION_NIPPLEFUCK_REACTION_3")
 	else:
-		text = "[names2] body {^trembles:quivers} {^at the slightest movement of [names1] [penis1]:in response to [names1] efforts}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}."
+		text = tr("SEXACTION_NIPPLEFUCK_REACTION_4")
 	return text

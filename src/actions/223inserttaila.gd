@@ -50,22 +50,20 @@ func takereffect(member):
 
 
 func initiate():
-	var temparray = []
-	temparray += ["[name1] insert[s/1] [his1] thick tail into [names2] [ass2]. "]
-	return temparray[randi()%temparray.size()]
+	return tr("SEXACTION_INSERTTAILA_INITIATE_1")
 
 func reaction(member):
 	var text = ''
 	if member.energy == 0:
-		text = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [ass2] {^respond:react}[s/#2] to {^the stimulation:[names1] tail[/s1]}."
+		text = tr("SEXACTION_INSERTTAILA_REACTION_UNCONSCIOUS")
 	#elif member.consent == false:
 		#TBD
 	elif member.sens < 100:
-		text = "[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] efforts:[names1] tail[/s1]}."
+		text = tr("SEXACTION_INSERTTAILA_REACTION_1")
 	elif member.sens < 400:
-		text = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] [ass2] get[s/#2] {^fucked:penetrated} by [names1] tail[/s1]."
+		text = tr("SEXACTION_INSERTTAILA_REACTION_2")
 	elif member.sens < 800:
-		text = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [ass2] get[s/#2] {^fucked:penetrated} by [names1] tail[/s1]."
+		text = tr("SEXACTION_INSERTTAILA_REACTION_3")
 	else:
-		text = "[names2] body {^trembles:quivers} {^at the slightest movement of [names1] tail[/s1] inside [his2] [ass2]:in response to [names1] penetrating}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}."
+		text = tr("SEXACTION_INSERTTAILA_REACTION_4")
 	return text

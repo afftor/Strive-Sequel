@@ -48,35 +48,35 @@ func initiate():
 	for i in givers:
 		if i.mouth != null:
 			kissable = false
-	temparray += ["[name1] {^gently:tenderly:carefully} {^stroke:fondle:cuddle:massage}[s/1] and {^caress[es/1]:rub[s/1]} [names2] [body2]"]
-	temparray += ["[name1] {^run:rub:work}[s/1] [his1] hands all {^over:along:around} [names2] [body2]"]
-	text += temparray[randi()%temparray.size()]
+	temparray += ["SEXACTION_CARESS_INITIATE_1"]
+	temparray += ["SEXACTION_CARESS_INITIATE_2"]
+	text += tr(temparray[randi()%temparray.size()])
 	temparray.clear()
 	if kissable:
-		temparray += [", kissing [him2] all over"]
-		temparray += [", kissing and teasing [him2] with [his1] tongue[/s1]"]
-		temparray += [", planting {^a few small:fleeting:a few brief} kisses as [he1] go[es/1]"]
-		text += temparray[randi()%temparray.size()]
+		temparray += ["SEXACTION_CARESS_INITIATE_KISSABLE_1"]
+		temparray += ["SEXACTION_CARESS_INITIATE_KISSABLE_2"]
+		temparray += ["SEXACTION_CARESS_INITIATE_KISSABLE_3"]
+		text += tr(temparray[randi()%temparray.size()])
 		temparray.clear()
 	else:
-		temparray += [", {^hitting:touching} all the right spots"]
-		temparray += [", {^thoroughly:expertly} pleasuring [him2]"]
-		text += temparray[randi()%temparray.size()]
+		temparray += ["SEXACTION_CARESS_INITIATE_NOKISS_1"]
+		temparray += ["SEXACTION_CARESS_INITIATE_NOKISS_2"]
+		text += tr(temparray[randi()%temparray.size()])
 		temparray.clear()
 	return text + '.'
 
 func reaction(member):
 	var text = ''
 	if member.energy == 0:
-		text = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] body {^responds:reacts} to {^the stimulation:[names1] touch:[names1] caress}."
+		text = tr("SEXACTION_CARESS_REACTION_UNCONSCIOUS")
 	#elif member.consent == false:
 		#TBD
 	elif member.sens < 100:
-		text = "[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] touch:[names1] caress}."
+		text = tr("SEXACTION_CARESS_REACTION_1")
 	elif member.sens < 400:
-		text = "[name2] {^begin:start}[s/2] to {^respond:react} to {^the stimulation:[names1] touch:[names1] caress}."
+		text = tr("SEXACTION_CARESS_REACTION_2")
 	elif member.sens < 800:
-		text = "[name2] {^revel:bask}[s/2] in {^the stimulation:[names1] touch:[names1] caress}{^, [his2] arousal clearly showing:, becoming more and more excited:}."
+		text = tr("SEXACTION_CARESS_REACTION_3")
 	else:
-		text = "[names2] body {^trembles:quivers} {^at the slightest touch:with every touch:each time [name1] touch[es/1] [him2]}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}."
+		text = tr("SEXACTION_CARESS_REACTION_4")
 	return text

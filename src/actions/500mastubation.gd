@@ -50,25 +50,20 @@ func takereffect(member):
 	return effects
 
 func initiate():
-	var text = ''
-	var temparray = []
-	temparray += ["[name1] order[s/1] [name2] to masturbate exposing to anyone willing to see [his2] intimate parts."]
-	text += temparray[randi()%temparray.size()]
-	temparray.clear()
-	return text
+	return tr("SEXACTION_MASTURBATION_INITIATE_1")
 
 func reaction(member):
 	var text = ''
 	if member.energy == 0:
-		text = "[name2] lie[s/2] unconscious."
+		text = tr("SEXACTION_MASTURBATION_REACTION_UNCONSCIOUS")
 	#elif member.consent == false:
 		#TBD
 	elif member.sens < 100:
-		text = "[name2] {^show:give}[s/2] little {^response:reaction} to [his2] intimate parts being {^stimulated:teased}."
+		text = tr("SEXACTION_MASTURBATION_REACTION_1")
 	elif member.sens < 400:
-		text = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] intimate parts are {^stimulated:teased}."
+		text = tr("SEXACTION_MASTURBATION_REACTION_2")
 	elif member.sens < 800:
-		text = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] intimate parts are {^stimulated:teased}."
+		text = tr("SEXACTION_MASTURBATION_REACTION_3")
 	else:
-		text = "[names2] body {^trembles:quivers} {^at the slightest movement of [his2] fingers[/s1]:in response to [his2] fingers}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}."
+		text = tr("SEXACTION_MASTURBATION_REACTION_4")
 	return text

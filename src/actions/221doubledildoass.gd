@@ -41,22 +41,20 @@ func takereffect(member):
 	return effects
 
 func initiate():
-	var text = ''
-	text += "[name1] insert[s/1] a double dildo into [his1] and [names2] [ass3], {^grinding:pumping:gyrating} [his1] hips against [partners2]."
-	return text
+	return tr("SEXACTION_DOUBLEDILDOASS_INITIATE_1")
 
 func reaction(member):
 	var text = ''
 	if member.energy == 0:
-		text = "[names2] [ass2] {^trembles:twitches}, {^responding:reacting} to {^the stimulation:[names1] efforts:the dildo inside [him2]} even in [his2] unconcious state."
+		text = tr("SEXACTION_DOUBLEDILDOASS_REACTION_UNCONSCIOUS")
 	#elif member.consent == false:
 		#TBD
 	elif member.sens < 100:
-		text = "[names2] [ass2] {^presents:gives} some resistance to {^the intrusion:[names1] efforts:the dildo inside [him2]}{^, still somewhat unprepared:, not yet fully prepared:}."
+		text = tr("SEXACTION_DOUBLEDILDOASS_REACTION_1")
 	elif member.sens < 300:
-		text = "[names2] [ass2] {^begins:starts} to {^respond:react} to the {^sensation:feeling} of {^the intrusion:[names1] dildo:the dildo inside [him2]}."
+		text = tr("SEXACTION_DOUBLEDILDOASS_REACTION_2")
 	elif member.sens < 600:
-		text = "[names2] [ass2] {^trembles:quivers} in {^response:reaction} to the {^sensation:feeling} of {^[names1] dildo:the dildo inside [him2]}, [his2] arousal {^made clear:apparent:clearly showing}."
+		text = tr("SEXACTION_DOUBLEDILDOASS_REACTION_3")
 	else:
-		text = "[names2] [ass2] {^violently trembles:clenches:quivers} {^with every movement of [names1] hips:in response to [names1] efforts}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}."
+		text = tr("SEXACTION_DOUBLEDILDOASS_REACTION_4")
 	return text

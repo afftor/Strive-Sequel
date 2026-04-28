@@ -59,22 +59,22 @@ func takereffect(member):
 
 func initiate():
 	var temparray = []
-	temparray += ["[name1] {^take:place:shove}[s/1] [names2] [penis2] into [his1] mouth[/s1], {^carefully serving:working the length of:coiling around} [it2] with [his1] tongue[/s1]."]
-	temparray += ["[name1] {^kiss[es/1]:rub[s/1] [his1] face against:lick[s/1] the tip of:admire[s/1]} [names2] [penis2] as [he1] begin[s/1] {^servicing:slurping at:milking:attending} [it2]."]
-	return temparray[randi()%temparray.size()]
+	temparray += ["SEXACTION_BLOWJOB_INITIATE_1"]
+	temparray += ["SEXACTION_BLOWJOB_INITIATE_2"]
+	return tr(temparray[randi()%temparray.size()])
 
 func reaction(member):
 	var text = ''
 	if member.energy == 0:
-		text = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [penis2] {^respond:react}[s/#2] to {^the stimulation:[names1] mouth[/s1]:[names1] fellatio}."
+		text = tr("SEXACTION_BLOWJOB_REACTION_UNCONSCIOUS")
 	#elif member.consent == false:
 		#TBD
 	elif member.sens < 100:
-		text = "[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] efforts:[names1] fellatio}."
+		text = tr("SEXACTION_BLOWJOB_REACTION_1")
 	elif member.sens < 400:
-		text = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] [penis2] get[s/#2] {^sucked:licked:fellated}."
+		text = tr("SEXACTION_BLOWJOB_REACTION_2")
 	elif member.sens < 800:
-		text = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [penis2] get[s/#2] {^sucked:licked:fellated}."
+		text = tr("SEXACTION_BLOWJOB_REACTION_3")
 	else:
-		text = "[names2] body {^trembles:quivers} {^at the slightest movement of [names1] tongue[/s1] against [his2] [penis2]:in response to [names1] fellatio}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}."
+		text = tr("SEXACTION_BLOWJOB_REACTION_4")
 	return text

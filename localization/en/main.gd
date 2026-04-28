@@ -4846,6 +4846,250 @@ Pheromones were used on %s, but they had no effect on [him]. """,
 	SEXACTION_EARJOB_ONGOING_DESC_1 = "[name1] {^steadily :aggressively :}{^massage:stroke:rub:jerk}[s/1] [names2] ears with [his1] [penis1].",
 	SEXACTION_FOOTJOB_ONGOING_1 = "[name1] give[s/1] [a /2]footjob[/s2] to [name2].",
 	SEXACTION_FOOTJOB_ONGOING_DESC_1 = "[name1] {^steadily :aggressively :}{^massage:stroke:rub:jerk}[s/1] [names2] [penis2] with [his1] feet.",
+	SEXACTION_CARESS_INITIATE_1 = "[name1] {^gently:tenderly:carefully} {^stroke:fondle:cuddle:massage}[s/1] and {^caress[es/1]:rub[s/1]} [names2] [body2]",
+	SEXACTION_CARESS_INITIATE_2 = "[name1] {^run:rub:work}[s/1] [his1] hands all {^over:along:around} [names2] [body2]",
+	SEXACTION_CARESS_INITIATE_KISSABLE_1 = ", kissing [him2] all over",
+	SEXACTION_CARESS_INITIATE_KISSABLE_2 = ", kissing and teasing [him2] with [his1] tongue[/s1]",
+	SEXACTION_CARESS_INITIATE_KISSABLE_3 = ", planting {^a few small:fleeting:a few brief} kisses as [he1] go[es/1]",
+	SEXACTION_CARESS_INITIATE_NOKISS_1 = ", {^hitting:touching} all the right spots",
+	SEXACTION_CARESS_INITIATE_NOKISS_2 = ", {^thoroughly:expertly} pleasuring [him2]",
+	SEXACTION_CARESS_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] body {^responds:reacts} to {^the stimulation:[names1] touch:[names1] caress}.",
+	SEXACTION_CARESS_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] touch:[names1] caress}.",
+	SEXACTION_CARESS_REACTION_2 = "[name2] {^begin:start}[s/2] to {^respond:react} to {^the stimulation:[names1] touch:[names1] caress}.",
+	SEXACTION_CARESS_REACTION_3 = "[name2] {^revel:bask}[s/2] in {^the stimulation:[names1] touch:[names1] caress}{^, [his2] arousal clearly showing:, becoming more and more excited:}.",
+	SEXACTION_CARESS_REACTION_4 = "[names2] body {^trembles:quivers} {^at the slightest touch:with every touch:each time [name1] touch[es/1] [him2]}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_KISS_INITIATE_DOUBLE_1 = "[name1] take[s/1] turns {^french :}kissing [name2] and licking {^all around :}[his2] face[/s2].",
+	SEXACTION_KISS_INITIATE_DOUBLE_2 = "[name1] take[s/1] turns coiling [his1] tongue[/s1] inside [names2] mouth[/s2] and [he2] {^eagerly:enthusiastically} return[s/2] the gesture.",
+	SEXACTION_KISS_INITIATE_1 = "[name1] {^french :}kiss[es/1] [name2], licking {^all around :}[his2] face[/s2].",
+	SEXACTION_KISS_INITIATE_2 = "[name1] coil[s/1] [his1] tongue[/s1] inside [names2] mouth[/s2] and [he2] {^eagerly:enthusiastically} return[s/2] the gesture.",
+	SEXACTION_KISS_INITIATE_3 = "[name1] grab[s/1] [name2] and {^deeply :}kiss[es/1] [him2], {^driving [his1] tongue[/s1] into [his2] mouth[/s2]:eagerly tasting [his2] lips}.",
+	SEXACTION_KISS_RESIST_1 = "[name2] shies away from the kiss seemingly nervous...",
+	SEXACTION_KISS_RESIST_2 = "[name2] tries to push back against the undesired action...",
+	SEXACTION_FONDLETITS_INITIATE_1 = "[name1] {^squeeze[s/1]:fondle[s/1]:massage[s/1]:caress[es/1]} [names2] [tits2]",
+	SEXACTION_FONDLETITS_INITIATE_2 = "[name1] {^run:rub:work}[s/1] [his1] hands all around [names2] [tits2]",
+	SEXACTION_FONDLETITS_INITIATE_SUFFIX_1 = ", {^playing with:teasing:flicking and teasing} [his2] nipples.",
+	SEXACTION_FONDLETITS_INITIATE_SUFFIX_2 = ", kneading into the surrounding {^flesh:tissue}.",
+	SEXACTION_FONDLETITS_INITIATE_KISSABLE_1 = ", {^kissing:licking} and {^kneading:teasing} them.",
+	SEXACTION_FONDLETITS_INITIATE_KISSABLE_2 = ", {^burrying:nuzzling} [his1] face[/s1] in them.",
+	SEXACTION_FONDLETITS_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [tits2] {^respond:react} to {^the stimulation:[names1] touch:[names1] caress}.",
+	SEXACTION_FONDLETITS_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] touch:[names1] caress}.",
+	SEXACTION_FONDLETITS_REACTION_2 = "[name2] {^begin:start}[s/2] to {^respond:react} to {^the stimulation:[names1] touch:[names1] caress}.",
+	SEXACTION_FONDLETITS_REACTION_3 = "[name2] {^revel:bask}[s/2] in {^the stimulation:[names1] touch:[names1] caress}{^, [his2] arousal clearly showing:, becoming more and more excited:}.",
+	SEXACTION_FONDLETITS_REACTION_4 = "[names2] body {^trembles:quivers} {^at the slightest touch:with every touch:each time [name1] touch[es/1] [his2] [tits2]}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_SUCKNIPPLES_INITIATE_1 = "[name1] {^take:place:shove:stick}[s/1] [names2] nipples into [his1] mouth[/s1]",
+	SEXACTION_SUCKNIPPLES_INITIATE_2 = "[name1] latch[es/1] onto [names2] nipples",
+	SEXACTION_SUCKNIPPLES_INITIATE_SUFFIX_1 = ", {^licking:teasing} and {^kissing:sucking on} them.",
+	SEXACTION_SUCKNIPPLES_INITIATE_SUFFIX_2 = ", {^lightly:gently} {^nibbling at:stimulating} them with [his1] teeth.",
+	SEXACTION_SUCKNIPPLES_INITIATE_SUFFIX_3 = ", {^greedily slurping at them:nursing} like [a /1]bab[y/ies1].",
+	SEXACTION_SUCKNIPPLES_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] nipples {^respond:react} to {^the stimulation:[names1] suckling:[names1] teasing}.",
+	SEXACTION_SUCKNIPPLES_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to [his2] nipples being {^stimulated:teased:sucked on:suckled}.",
+	SEXACTION_SUCKNIPPLES_REACTION_2 = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] nipples are {^stimulated:teased:sucked on:suckled}.",
+	SEXACTION_SUCKNIPPLES_REACTION_3 = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] nipples are {^stimulated:teased:sucked on:suckled}.",
+	SEXACTION_SUCKNIPPLES_REACTION_4 = "[names2] body {^trembles:quivers} {^at the slightest movement of [names1] tongue[/s1]:in response to [names1] suckling}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_FINGERING_INITIATE_1 = "[name1] {^easily:effortlessly} {^get:work:slip:slide}[s/1] [his1] fingers into [names2] [pussy2]",
+	SEXACTION_FINGERING_INITIATE_2 = "[name1] {^slowly:carefully} {^get:work:slip:slide}[s/1] [his1] fingers into [names2] [pussy2]",
+	SEXACTION_FINGERING_INITIATE_VIRGIN = ", {^probing inside:pumping [his1] fingers:stimulating the enterance} without breaking [his2] hymen[/s2].",
+	SEXACTION_FINGERING_INITIATE_SUFFIX = ", {^driving:pumping:pushing} [his1] fingers in and out.",
+	SEXACTION_FINGERING_REACTION_UNCONSCIOUS = "[names2] [pussy2] {^trembles:twitches}, {^responding:reacting} to {^the stimulation:[names1] fingers:[names1] caress} even in [his2] unconcious state.",
+	SEXACTION_FINGERING_REACTION_1 = "[names2] [pussy2] {^presents:gives} some resistance to {^the intrusion:[names1] fingers:[names1] caress}{^, still somewhat unprepared:, not yet fully prepared:}.",
+	SEXACTION_FINGERING_REACTION_2 = "[names2] [pussy2] {^begins:starts} to {^respond:react} to the {^sensation:feeling} of {^[names1] fingers:[names1] caress}.",
+	SEXACTION_FINGERING_REACTION_3 = "[names2] [pussy2] {^trembles:quivers} in {^response:reaction} to the {^sensation:feeling} of {^[names1] fingers:[names1] caress}, [his2] arousal {^made clear:apparent:clearly showing}.",
+	SEXACTION_FINGERING_REACTION_4 = "[names2] [pussy2] {^violently trembles:clenches:quivers} with every movement of [names1] fingers{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_ASSFINGERING_INITIATE_1 = "[name1] {^easily:effortlessly} {^get:work:slip:slide}[s/1] [his1] fingers into [names2] [anus2]",
+	SEXACTION_ASSFINGERING_INITIATE_2 = "[name1] {^slowly:carefully} {^get:work:slip:slide}[s/1] [his1] fingers into [names2] [anus2]",
+	SEXACTION_ASSFINGERING_INITIATE_SUFFIX = ", {^driving:pumping:pushing} [his1] fingers in and out.",
+	SEXACTION_ASSFINGERING_REACTION_UNCONSCIOUS = "[names2] [anus2] {^trembles:twitches}, {^responding:reacting} to {^the stimulation:[names1] fingers:[names1] caress} even in [his2] unconcious state.",
+	SEXACTION_ASSFINGERING_REACTION_1 = "[names2] [anus2] {^presents:gives} some resistance to {^the intrusion:[names1] fingers:[names1] caress}{^, still somewhat unprepared:, not yet fully prepared:}.",
+	SEXACTION_ASSFINGERING_REACTION_2 = "[names2] [anus2] {^begins:starts} to {^respond:react} to the {^sensation:feeling} of {^[names1] fingers:[names1] caress}.",
+	SEXACTION_ASSFINGERING_REACTION_3 = "[names2] [anus2] {^trembles:quivers} in {^response:reaction} to the {^sensation:feeling} of {^[names1] fingers:[names1] caress}, [his2] arousal {^made clear:apparent:clearly showing}.",
+	SEXACTION_ASSFINGERING_REACTION_4 = "[names2] [anus2] {^violently trembles:clenches:quivers} with every movement of [names1] fingers{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[es/2] toward orgasm:}.",
+	SEXACTION_CUNNILINGUS_INITIATE_1 = "[name1] {^eat[s/1] out:lick[s/1]:slurp[s/1] at} [names2] [pussy2], {^gently:steadily:diligently} stimulating [his2] pink clit[/s2].",
+	SEXACTION_CUNNILINGUS_REACTION_UNCONSCIOUS = "[names2] [pussy2] {^trembles:twitches}, {^responding:reacting} to {^the stimulation:[names1] licking:[names1] tongue[/s1]} even in [his2] unconcious state.",
+	SEXACTION_CUNNILINGUS_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] licking:[names1] tongue[/s1]}.",
+	SEXACTION_CUNNILINGUS_REACTION_2 = "[names2] [pussy2] {^begins:starts} to {^respond:react} to the {^sensation:feeling} of {^[names1] licking:[names1] tongue[/s1]}.",
+	SEXACTION_CUNNILINGUS_REACTION_3 = "[names2] [pussy2] {^trembles:quivers} in {^response:reaction} to the {^sensation:feeling} of {^[names1] licking:[names1] tongue[/s1]}, [his2] arousal {^made clear:apparent:clearly showing}.",
+	SEXACTION_CUNNILINGUS_REACTION_4 = "[names2] [pussy2] {^violently trembles:clenches:quivers} with every movement of [names1] tongue[/s1]{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_RIMJOB_INITIATE_1 = "[name1] {^eat[s/1] out:lick[s/1]:slurp[s/1] at} [names2] [anus2], stimulating the {^enterance:walls} with [his1] tongue[/s1].",
+	SEXACTION_RIMJOB_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [anus2] {^respond:react}[s/#2] to {^the stimulation:[names1] tongue[/s1]}.",
+	SEXACTION_RIMJOB_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] tongue[/s1]}.",
+	SEXACTION_RIMJOB_REACTION_2 = "[name2] {^begin:start}[s/2] to {^respond:react} to {^the stimulation:[names1] tongue[/s1]}.",
+	SEXACTION_RIMJOB_REACTION_3 = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [anus2] [is2] {^stimulated:licked:eaten out}.",
+	SEXACTION_RIMJOB_REACTION_4 = "[names2] body {^trembles:quivers} {^at the slightest movement of [names1] tongue[/s1]:in response to [names1] licking}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_HANDJOB_INITIATE_1 = "[name1] {^grip:grab:seize}[s/1] [names2] [penis2] and {^massage:stroke:rub:jerk}[s/1] [it2] with {^inensity:intense focus:fervor:passion}.",
+	SEXACTION_HANDJOB_INITIATE_2 = "[name1] {^tease[s/1]:brush[es/1] against} the {^tip:shaft:base}[/s2] of [names2] [penis2] with [his1] fingertips as [he1] {^service:stroke:milk:attend}[s/1] [it2] with [his1] hands.",
+	SEXACTION_HANDJOB_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [penis2] {^respond:react}[s/#2] to {^the stimulation:[names1] touch}.",
+	SEXACTION_HANDJOB_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] fingers:[names1] touch}.",
+	SEXACTION_HANDJOB_REACTION_2 = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] [penis2] get[s/#2] {^jerked:stroked}.",
+	SEXACTION_HANDJOB_REACTION_3 = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [penis2] get[s/#2] {^jerked:stroked}.",
+	SEXACTION_HANDJOB_REACTION_4 = "[names2] body {^trembles:quivers} {^at the slightest movement of [names1] fingers against [his2] [penis2]:in response to [names1] jerking}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_BLOWJOB_INITIATE_1 = "[name1] {^take:place:shove}[s/1] [names2] [penis2] into [his1] mouth[/s1], {^carefully serving:working the length of:coiling around} [it2] with [his1] tongue[/s1].",
+	SEXACTION_BLOWJOB_INITIATE_2 = "[name1] {^kiss[es/1]:rub[s/1] [his1] face against:lick[s/1] the tip of:admire[s/1]} [names2] [penis2] as [he1] begin[s/1] {^servicing:slurping at:milking:attending} [it2].",
+	SEXACTION_BLOWJOB_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [penis2] {^respond:react}[s/#2] to {^the stimulation:[names1] mouth[/s1]:[names1] fellatio}.",
+	SEXACTION_BLOWJOB_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] efforts:[names1] fellatio}.",
+	SEXACTION_BLOWJOB_REACTION_2 = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] [penis2] get[s/#2] {^sucked:licked:fellated}.",
+	SEXACTION_BLOWJOB_REACTION_3 = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [penis2] get[s/#2] {^sucked:licked:fellated}.",
+	SEXACTION_BLOWJOB_REACTION_4 = "[names2] body {^trembles:quivers} {^at the slightest movement of [names1] tongue[/s1] against [his2] [penis2]:in response to [names1] fellatio}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_TITJOB_INITIATE_1 = "[name1] buries [names2] [penis2] in [his1] [tits1], {^squeezing:teasing} and {^rubbing:massaging:milking} [it2].",
+	SEXACTION_TITJOB_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [penis2] {^respond:react}[s/#2] to {^the stimulation:[names1] [tits1]}.",
+	SEXACTION_TITJOB_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] efforts:[names1] [tits1]}.",
+	SEXACTION_TITJOB_REACTION_2 = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] [penis2] get[s/#2] {^rubbed:massaged:squeezed} by [names1] [tits1].",
+	SEXACTION_TITJOB_REACTION_3 = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [penis2] get[s/#2] {^rubbed:massaged:squeezed} by [names1] [tits1].",
+	SEXACTION_TITJOB_REACTION_4 = "[names2] body {^trembles:quivers} {^at the slightest movement of [names1] [tits1] against [his2] [penis2]:in response to [names1] [tits1]}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_TAILJOB_INITIATE_1 = "[name1] wrap[/s1] [his1] tail around [names2] [penis2] and {^massage:stroke:rub:jerk}[s/1] [it2].",
+	SEXACTION_TAILJOB_INITIATE_2 = "[name1] {^tease[s/1]:brush[es/1] against} the {^tip:shaft:base}[/s2] of [names2] [penis2] as [he1] {^service:stroke:attend}[s/1] [it2] with [his1] tail[/s1].",
+	SEXACTION_TAILJOB_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [penis2] {^respond:react}[s/#2] to {^the stimulation:[names1] tail[/s1]}.",
+	SEXACTION_TAILJOB_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] efforts:[names1] tail[/s1]}.",
+	SEXACTION_TAILJOB_REACTION_2 = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] [penis2] get[s/#2] {^jerked:stroked} by [names1] tail[/s1].",
+	SEXACTION_TAILJOB_REACTION_3 = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [penis2] get[s/#2] {^jerked:stroked} by [names1] tail[/s1].",
+	SEXACTION_TAILJOB_REACTION_4 = "[names2] body {^trembles:quivers} {^at the slightest movement of [names1] tail[/s1] against [his2] [penis2]:in response to [names1] stroking}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_EARJOB_INITIATE_1 = "[name1] {^steadily :rhythmically :} {^massage:stroke:rub:jerk}[s/1] [names2] ears with [his1] [penis1].",
+	SEXACTION_EARJOB_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [penis2] {^respond:react}[s/#2] to {^the stimulation:[names1] touch}.",
+	SEXACTION_EARJOB_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] feet:[names1] touch}.",
+	SEXACTION_EARJOB_REACTION_2 = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] [penis2] get[s/#2] {^jerked:stroked}.",
+	SEXACTION_EARJOB_REACTION_3 = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [penis2] get[s/#2] {^jerked:stroked}.",
+	SEXACTION_EARJOB_REACTION_4 = "[names2] body {^trembles:quivers} {^at the slightest movement of [names1] feet against [his2] [penis2]:in response to [names1] jerking}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_FOOTJOB_INITIATE_1 = "[name1] {^steadily :rhythmically :} {^massage:stroke:rub:jerk}[s/1] [names2] [penis2] with [his1] feet.",
+	SEXACTION_FOOTJOB_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [penis2] {^respond:react}[s/#2] to {^the stimulation:[names1] touch}.",
+	SEXACTION_FOOTJOB_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] feet:[names1] touch}.",
+	SEXACTION_FOOTJOB_REACTION_2 = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] [penis2] get[s/#2] {^jerked:stroked}.",
+	SEXACTION_FOOTJOB_REACTION_3 = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [penis2] get[s/#2] {^jerked:stroked}.",
+	SEXACTION_FOOTJOB_REACTION_4 = "[names2] body {^trembles:quivers} {^at the slightest movement of [names1] feet against [his2] [penis2]:in response to [names1] jerking}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_DOUBLEDILDO_INITIATE_1 = "[name1] insert[s/1] a double dildo into [his1] and [names2] pussies, {^grinding:pumping:gyrating} [his1] hips against [partner2].",
+	SEXACTION_DOUBLEDILDO_REACTION_UNCONSCIOUS = "[names2] [pussy2] {^trembles:twitches}, {^responding:reacting} to {^the stimulation:[names1] efforts:the dildo inside [him2]} even in [his2] unconcious state.",
+	SEXACTION_DOUBLEDILDO_REACTION_1 = "[names2] [pussy2] {^presents:gives} some resistance to {^the intrusion:[names1] efforts:the dildo inside [him2]}{^, still somewhat unprepared:, not yet fully prepared:}.",
+	SEXACTION_DOUBLEDILDO_REACTION_2 = "[names2] [pussy2] {^begins:starts} to {^respond:react} to the {^sensation:feeling} of {^the intrusion:[names1] dildo:the dildo inside [him2]}.",
+	SEXACTION_DOUBLEDILDO_REACTION_3 = "[names2] [pussy2] {^trembles:quivers} in {^response:reaction} to the {^sensation:feeling} of {^[names1] dildo:the dildo inside [him2]}, [his2] arousal {^made clear:apparent:clearly showing}.",
+	SEXACTION_DOUBLEDILDO_REACTION_4 = "[names2] [pussy2] {^violently trembles:clenches:quivers} {^with every movement of [names1] hips:in response to [names1] efforts}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_DOUBLEDILDOASS_INITIATE_1 = "[name1] insert[s/1] a double dildo into [his1] and [names2] [ass3], {^grinding:pumping:gyrating} [his1] hips against [partners2].",
+	SEXACTION_DOUBLEDILDOASS_REACTION_UNCONSCIOUS = "[names2] [ass2] {^trembles:twitches}, {^responding:reacting} to {^the stimulation:[names1] efforts:the dildo inside [him2]} even in [his2] unconcious state.",
+	SEXACTION_DOUBLEDILDOASS_REACTION_1 = "[names2] [ass2] {^presents:gives} some resistance to {^the intrusion:[names1] efforts:the dildo inside [him2]}{^, still somewhat unprepared:, not yet fully prepared:}.",
+	SEXACTION_DOUBLEDILDOASS_REACTION_2 = "[names2] [ass2] {^begins:starts} to {^respond:react} to the {^sensation:feeling} of {^the intrusion:[names1] dildo:the dildo inside [him2]}.",
+	SEXACTION_DOUBLEDILDOASS_REACTION_3 = "[names2] [ass2] {^trembles:quivers} in {^response:reaction} to the {^sensation:feeling} of {^[names1] dildo:the dildo inside [him2]}, [his2] arousal {^made clear:apparent:clearly showing}.",
+	SEXACTION_DOUBLEDILDOASS_REACTION_4 = "[names2] [ass2] {^violently trembles:clenches:quivers} {^with every movement of [names1] hips:in response to [names1] efforts}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_INSERTTAILV_INITIATE_1 = "[name1] insert[s/1] [his1] thick tail into [names2] [pussy2].",
+	SEXACTION_INSERTTAILV_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [pussy2] {^respond:react}[s/#2] to {^the stimulation:[names1] tail[/s1]}.",
+	SEXACTION_INSERTTAILV_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] efforts:[names1] tail[/s1]}.",
+	SEXACTION_INSERTTAILV_REACTION_2 = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] [pussy2] get[s/#2] {^fucked:penetrated} by [names1] tail[/s1].",
+	SEXACTION_INSERTTAILV_REACTION_3 = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [pussy2] get[s/#2] {^fucked:penetrated} by [names1] tail[/s1].",
+	SEXACTION_INSERTTAILV_REACTION_4 = "[names2] body {^trembles:quivers} {^at the slightest movement of [names1] tail[/s1] inside [his2] [pussy2]:in response to [names1] penetrating}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_INSERTTAILA_INITIATE_1 = "[name1] insert[s/1] [his1] thick tail into [names2] [ass2].",
+	SEXACTION_INSERTTAILA_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [ass2] {^respond:react}[s/#2] to {^the stimulation:[names1] tail[/s1]}.",
+	SEXACTION_INSERTTAILA_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] efforts:[names1] tail[/s1]}.",
+	SEXACTION_INSERTTAILA_REACTION_2 = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] [ass2] get[s/#2] {^fucked:penetrated} by [names1] tail[/s1].",
+	SEXACTION_INSERTTAILA_REACTION_3 = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [ass2] get[s/#2] {^fucked:penetrated} by [names1] tail[/s1].",
+	SEXACTION_INSERTTAILA_REACTION_4 = "[names2] body {^trembles:quivers} {^at the slightest movement of [names1] tail[/s1] inside [his2] [ass2]:in response to [names1] penetrating}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_TRIBADISM_INITIATE_1 = "[name1] and [name2] {^sway:shake} [their] hips and {^grind:rub} [their] [pussy3] together.",
+	SEXACTION_TRIBADISM_REACTION_UNCONSCIOUS = "[names2] [pussy2] {^trembles:twitches}, {^responding:reacting} to {^the stimulation:[names1] efforts:[name1] against [him2]} even in [his2] unconcious state.",
+	SEXACTION_TRIBADISM_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] efforts:[name1] against [him2]}{^, still somewhat unprepared:, not yet fully prepared:}.",
+	SEXACTION_TRIBADISM_REACTION_2 = "[names2] [pussy2] {^begins:starts} to {^respond:react} to the {^sensation:feeling} of {^[names1] efforts:[name1] against [him2]}.",
+	SEXACTION_TRIBADISM_REACTION_3 = "[names2] [pussy2] {^trembles:quivers} in {^response:reaction} to the {^sensation:feeling} of {^[names1] efforts:[name1] against [him2]}, [his2] arousal {^made clear:apparent:clearly showing}.",
+	SEXACTION_TRIBADISM_REACTION_4 = "[names2] [pussy2] {^violently trembles:clenches:quivers} {^with every movement of [names1] hips:in response to [names1] efforts}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_FROTTAGE_INITIATE_1 = "[name1] and [name2] {^rub:grind:press} [their] [penis3] {^together:against one another}.",
+	SEXACTION_FROTTAGE_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [penis2] {^respond:react}[s/#2] to {^the stimulation:[names1] efforts:[name1] against [him2]}.",
+	SEXACTION_FROTTAGE_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] efforts}.",
+	SEXACTION_FROTTAGE_REACTION_2 = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] [penis2] get[s/#2] {^rubbed:stimulated:teased}.",
+	SEXACTION_FROTTAGE_REACTION_3 = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [penis2] get[s/#2] {^rubbed:stimulated:teased}.",
+	SEXACTION_FROTTAGE_REACTION_4 = "[names2] body {^trembles:quivers} {^at the slightest movement of [names1] [penis1] against [his_2]:in response to [names1] efforts}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_NIPPLEFUCK_INITIATE_1 = "[name1] uses [his1] [penis1] to {^fuck:penetrate} [names2] {^lubricating:elastic:stretching} nipples.",
+	SEXACTION_NIPPLEFUCK_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [penis2] {^respond:react}[s/#2] to {^the stimulation:[names1] efforts:[name1] against [him2]}.",
+	SEXACTION_NIPPLEFUCK_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] efforts}.",
+	SEXACTION_NIPPLEFUCK_REACTION_2 = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] nipples get[s/#2] {^fucked:penetrated}.",
+	SEXACTION_NIPPLEFUCK_REACTION_3 = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] nipples get[s/#2] {^fucked:penetrated}.",
+	SEXACTION_NIPPLEFUCK_REACTION_4 = "[names2] body {^trembles:quivers} {^at the slightest movement of [names1] [penis1]:in response to [names1] efforts}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_DOUBLEPEN_INITIATE_1 = "[name1] put [names2] between them and [fuck1] [his2] {^orifices:holes}.",
+	SEXACTION_SPITROAST_INITIATE_1 = "[name1] {^passionately :eagerly :}[fuck1] [names2]'s [pussy2] and mouth.",
+	SEXACTION_SPITROASTASS_INITIATE_1 = "[name1] {^passionately :eagerly :}[fuck1] [names2]'s [anus2] and mouth.",
+	SEXACTION_INSERTINTURNS_INITIATE_1 = "[name1] [fuck1] [names2] [pussy2] periodically taking turns and switching.",
+	SEXACTION_INSERTINTURNSASS_INITIATE_1 = "[name1] [fuck1] [names2] [anus2] periodically taking turns and switching.",
+	SEXACTION_SPANKING_INITIATE_1 = "[name1] {^spank:slap:beat:swat}[s/1] [names2] [ass2]{^ with [an /1]open hand[/s1]: until it turns red:, intent on humiliating [him2]}.",
+	SEXACTION_SPANKING_INITIATE_2 = "[name1] {^spank:slap:beat:swat}[s/1] [name2] {^right :square :}{^across:on} [his2] [ass2] {^repeatedly:again and again:over and over}.",
+	SEXACTION_SPANKING_REACTION_1 = "[name2] {^jerk:wince:writhe}[s/2] in pain from the {^humiliating:demeaning:embarassing} punishment.",
+	SEXACTION_SPANKING_REACTION_2 = "[name2] cries out with each blow to [his2] buttox, though [his2] voice betrays some enjoyment.",
+	SEXACTION_SPANKING_REACTION_3 = "[names2] moans make it {^hard:difficult} to tell if [he2] in pain or enjoying [himself2].",
+	SEXACTION_SPANKING_REACTION_4 = "[names2] body {^trembles:quivers} {^with each swat:each time [name1] slap[s/1] [his2] [ass2]}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_WHIPPING_INITIATE_1 = "[name1] {^lash}[s/1] at [names2] [body2] with a leather whip.",
+	SEXACTION_WHIPPING_REACTION_1 = "[name2] {^jerk:wince:writhe}[s/2] in pain from the {^harsh:severe:brutal} punishment.",
+	SEXACTION_WHIPPING_REACTION_2 = "[name2] cries out with each {^strike:lash}, though [his2] voice betrays some enjoyment.",
+	SEXACTION_WHIPPING_REACTION_3 = "[names2] moans make it {^hard:difficult} to tell if [he2] in pain or enjoying [himself2].",
+	SEXACTION_WHIPPING_REACTION_4 = "[name2] barely reacts to {^heavy:painful} {^strikes:lashes} as [he2] edge[s/2] toward orgasm.",
+	SEXACTION_DEEPTHROAT_INITIATE_1 = "[name1] {^push:shove}[s/1] [his1] [penis1] into [names2] mouth [/s1], intent on humiliating [him2].",
+	SEXACTION_DEEPTHROAT_REACTION_1 = "[name2] {^jerk:wince:writhe}[s/2] in pain from the {^humiliating:demeaning:embarassing} punishment.",
+	SEXACTION_DEEPTHROAT_REACTION_2 = "[name2] cries out with each push into [his2] throat, though [his2] facial expression betrays some enjoyment.",
+	SEXACTION_DEEPTHROAT_REACTION_3 = "[names2] expression make it {^hard:difficult} to tell if [he2] in pain or enjoying [himself2] from the gagging.",
+	SEXACTION_DEEPTHROAT_REACTION_4 = "[names2] body {^trembles:quivers} {^with each push:each time [name1] slam[s/1] [his2] throat}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_FISTING_INITIATE_1 = "[name1] {^easily:effortlessly} {^get:work:slip:slide}[s/1] [his1] {^hand:fist} into [names2] [pussy2]",
+	SEXACTION_FISTING_INITIATE_2 = "[name1] {^slowly:carefully} {^get:work:slip:slide}[s/1] [his1] {^hand:fist} into [names2] [pussy2]",
+	SEXACTION_FISTING_INITIATE_VIRGIN = ", claiming [his2] virginity as it rips through [his2] hymen.",
+	SEXACTION_FISTING_INITIATE_SUFFIX = ", {^driving:pumping:pushing} [his1] it in and out.",
+	SEXACTION_FISTING_REACTION_UNCONSCIOUS = "[names2] [pussy2] {^trembles:twitches}, {^responding:reacting} to {^the stimulation:[names1] fingers:[names1] caress} even in [his2] unconcious state.",
+	SEXACTION_FISTING_REACTION_1 = "[names2] [pussy2] {^presents:gives} some resistance to {^the intrusion:[names1] fingers:[names1] caress}{^, still somewhat unprepared:, not yet fully prepared:}.",
+	SEXACTION_FISTING_REACTION_2 = "[names2] [pussy2] {^begins:starts} to {^respond:react} to the {^sensation:feeling} of {^[names1] fingers:[names1] caress}.",
+	SEXACTION_FISTING_REACTION_3 = "[names2] [pussy2] {^trembles:quivers} in {^response:reaction} to the {^sensation:feeling} of {^[names1] fingers:[names1] caress}, [his2] arousal {^made clear:apparent:clearly showing}.",
+	SEXACTION_FISTING_REACTION_4 = "[names2] [pussy2] {^violently trembles:clenches:quivers} with every movement of [names1] fingers{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_ANALFISTING_INITIATE_1 = "[name1] {^easily:effortlessly} {^get:work:slip:slide}[s/1] [his1] {^hand:fist} into [names2] [anus2]",
+	SEXACTION_ANALFISTING_INITIATE_2 = "[name1] {^slowly:carefully} {^get:work:slip:slide}[s/1] [his1] {^hand:fist} into [names2] [anus2]",
+	SEXACTION_ANALFISTING_INITIATE_SUFFIX = ", {^driving:pumping:pushing} [his1] it in and out.",
+	SEXACTION_ANALFISTING_REACTION_UNCONSCIOUS = "[names2] [anus2] {^trembles:twitches}, {^responding:reacting} to {^the stimulation:[names1] fingers:[names1] caress} even in [his2] unconcious state.",
+	SEXACTION_ANALFISTING_REACTION_1 = "[names2] [anus2] {^presents:gives} some resistance to {^the intrusion:[names1] fingers:[names1] caress}{^, still somewhat unprepared:, not yet fully prepared:}.",
+	SEXACTION_ANALFISTING_REACTION_2 = "[names2] [anus2] {^begins:starts} to {^respond:react} to the {^sensation:feeling} of {^[names1] fingers:[names1] caress}.",
+	SEXACTION_ANALFISTING_REACTION_3 = "[names2] [anus2] {^trembles:quivers} in {^response:reaction} to the {^sensation:feeling} of {^[names1] fingers:[names1] caress}, [his2] arousal {^made clear:apparent:clearly showing}.",
+	SEXACTION_ANALFISTING_REACTION_4 = "[names2] [anus2] {^violently trembles:clenches:quivers} with every movement of [names1] fingers{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[es/2] toward orgasm:}.",
+	SEXACTION_NIPPLECLAMP_INITIATE_1 = "[name1] {^place:stick}[s/1] clips on [names2] nipples.",
+	SEXACTION_NIPPLECLAMP_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] nipples {^respond:react} to {^the stimulation:the clamps pression:the clamps teasing}.",
+	SEXACTION_NIPPLECLAMP_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to [his2] nipples being {^stimulated:teased:pressed:pinched}.",
+	SEXACTION_NIPPLECLAMP_REACTION_2 = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] nipples are {^stimulated:teased:pressed:pinched}.",
+	SEXACTION_NIPPLECLAMP_REACTION_3 = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] nipples are {^stimulated:teased::pressed:pinched}.",
+	SEXACTION_NIPPLECLAMP_REACTION_4 = "[names2] body {^trembles:quivers} {^by the slightest pressure of the clamps:in response of the clamps pression}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_CLITCLAMP_INITIATE_1 = "[name1] {^place:stick}[s/1] clips on [names2] clit.",
+	SEXACTION_CLITCLAMP_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] clit {^respond:react} to {^the stimulation:the clamps pression:the clamps teasing}.",
+	SEXACTION_CLITCLAMP_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to [his2] clit being {^stimulated:teased:pressed:pinched}.",
+	SEXACTION_CLITCLAMP_REACTION_2 = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] clit are {^stimulated:teased:pressed:pinched}.",
+	SEXACTION_CLITCLAMP_REACTION_3 = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] clit are {^stimulated:teased::pressed:pinched}.",
+	SEXACTION_CLITCLAMP_REACTION_4 = "[names2] body {^trembles:quivers} {^by the slightest pressure of the clamps:in response of the clamps pression}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_RINGGAG_INITIATE_1 = "[name1] {^:place:shove:insert}[s/1] a ring gag into [names2] mouth[/s1] to enable forced inside mouth actions.",
+	SEXACTION_RINGGAG_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, with the ring gag still in [his2] mouth.",
+	SEXACTION_BLINDFOLD_INITIATE_1 = "[name1] {^place:put}[s/1] a blindfold on [names2] eyes.",
+	SEXACTION_BLINDFOLD_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, with the blinfold still on [his2] eyes.",
+	SEXACTION_NOSEHOOK_INITIATE_1 = "[name1] {^place:shove:stick}[s/1] a nose hook on [names2] face, pulling [his2] nose up and forcibly open [his2] mouth a little.",
+	SEXACTION_NOSEHOOK_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, with the nose hook on her face opening her mouth slightly.",
+	SEXACTION_VIBRATOR_INITIATE_1 = "[name1] {^push:place:shove:stick}[s/1] [a /2]vibrator[/s2] into [names2] {^pussy:fuck hole:front door:vagina}[/s2]",
+	SEXACTION_VIBRATOR_INITIATE_SUFFIX = ", {^stimulating:teasing} [it2].",
+	SEXACTION_VIBRATOR_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] {^pussy:fuck hole:front door:vagina} still {^respond:react} to {^the stimulation:vibration}.",
+	SEXACTION_VIBRATOR_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to [his2] {^pussy:fuck hole:front door:vagina} being {^stimulated:teased:used}.",
+	SEXACTION_VIBRATOR_REACTION_2 = "[name2] {^begin:start}[s/2] to {^respond:react} at the {^stimulation:tease:use} of [his2] {^pussy:fuck hole:front door:vagina}.",
+	SEXACTION_VIBRATOR_REACTION_3 = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} at [his2] {^pussy:fuck hole:front door:vagina} been {^stimulated:teased:used}.",
+	SEXACTION_VIBRATOR_REACTION_4 = "[names2] body {^trembles:quivers} {^at the slightest stimulation of the vibrator:in response to the vibrator}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm}.",
+	SEXACTION_ANALVIBRATOR_INITIATE_1 = "[name1] {^push:place:shove:stick}[s/1] [a /2]vibrator[/s2] into [names2] {^asshole:shit hole:back door}[/s2]",
+	SEXACTION_ANALVIBRATOR_INITIATE_SUFFIX = ", {^stimulating:teasing} [it2].",
+	SEXACTION_ANALVIBRATOR_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] {^asshole:shit hole:back door} still {^respond:react} to {^the stimulation:vibration}.",
+	SEXACTION_ANALVIBRATOR_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to [his2] {^asshole:shit hole:back door} being {^stimulated:teased:used}.",
+	SEXACTION_ANALVIBRATOR_REACTION_2 = "[name2] {^begin:start}[s/2] to {^respond:react} at the {^stimulation:tease:use} of [his2] {^asshole:shit hole:back door}.",
+	SEXACTION_ANALVIBRATOR_REACTION_3 = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} at [his2] {^asshole:shit hole:back door} been {^stimulated:teased:used}.",
+	SEXACTION_ANALVIBRATOR_REACTION_4 = "[names2] body {^trembles:quivers} {^at the slightest stimulation of the vibrator:in response to the vibrator}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_ROPE_INITIATE_1 = "[name1] {^wrap:tie}[s/1] a rope around [names2] body to restrict [his2] movements.",
+	SEXACTION_ROPE_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, with [his2] body still tied down.",
+	SEXACTION_MILKER_INITIATE_1 = "[name1] {^place:shove:stick}[s/1] [a /2]milker[/s2] on [names2] nipples",
+	SEXACTION_MILKER_INITIATE_SUFFIX_1 = ", {^teasing} and {^sucking on} them.",
+	SEXACTION_MILKER_INITIATE_SUFFIX_2 = ", {^lightly:gently} {^stimulating} them with its suction mechanism.",
+	SEXACTION_MILKER_INITIATE_SUFFIX_3 = ", {^greedily slurping at them:nursing} like [a /1]bab[y/ies1].",
+	SEXACTION_MASTURBATION_INITIATE_1 = "[name1] order[s/1] [name2] to masturbate exposing to anyone willing to see [his2] intimate parts.",
+	SEXACTION_MASTURBATION_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious.",
+	SEXACTION_MASTURBATION_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to [his2] intimate parts being {^stimulated:teased}.",
+	SEXACTION_MASTURBATION_REACTION_2 = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] intimate parts are {^stimulated:teased}.",
+	SEXACTION_MASTURBATION_REACTION_3 = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] intimate parts are {^stimulated:teased}.",
+	SEXACTION_MASTURBATION_REACTION_4 = "[names2] body {^trembles:quivers} {^at the slightest movement of [his2] fingers[/s1]:in response to [his2] fingers}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.",
+	SEXACTION_GROVELING_INITIATE_1 = "[name2] submissively wait[s/2] facedown for [names1] orders like [a /2]good slave[/s2].",
+	SEXACTION_GROVELING_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious.",
+	SEXACTION_FACESITTING_INITIATE_1 = "[name1] {^place:shove:stick}[s/1] [his1] intimate parts on [names2] face[/s2] and mouth[/es2].",
+	SEXACTION_FACESITTING_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious.",
+	SEXACTION_ANALFACESITTING_INITIATE_1 = "[name1] {^place:shove:stick}[s/1] [his1] bottom parts on [names2] face[/s2] and mouth[/es2] tilting [his2] hips to make sure it's the asshole that is given.",
+	SEXACTION_ANALFACESITTING_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious.",
+	SEXACTION_MASSAGEWITHFOOT_INITIATE_1 = "[name1] step[s/1] on [name2] shamefully massaging [him2].",
+	SEXACTION_MASSAGEWITHFOOT_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious.",
+	SEXACTION_LICKFEET_INITIATE_1 = "[name1] {^place:shove:stick}[s/1] [his1] feet in front of [name2] and order[s/1] [him2] to {^lick:suck:service} [his1] feet clean.",
+	SEXACTION_LICKFEET_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious.",
+	SEXACTION_ENEMAPLUG_INITIATE_1 = "[name1] {^put:place:shove:stick}[s/1] enema liquid into [names2] anus then insert plug[/s1] to make sure it holds in.",
+	SEXACTION_ENEMAPLUG_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] anus {^respond:react} to {^the liquid} trying to flow out but still restricted by the plug.",
 	SEXACTION_MISSIONARY_ONGOING_1 = "[name1] fuck[s/1] [name2] in the missionary position.",
 	SEXACTION_MISSIONARY_ACT_1 = ", {^enjoying:relishing in} the closeness of [partners2] [body2]. ",
 	SEXACTION_MISSIONARY_ACT_2 = ", {^spreading:parting:pulling apart:holding apart} [his2] thighs to expose [his2] [pussy2]. ",
@@ -25304,60 +25548,60 @@ Erdyna doesn't listen to his complaints, turning around and leading you back out
 
 {color=yellow|Erdyna: — I might not remember his address that well, but that elven guy is a specialist on religious subjects. Let's go pay him a visit.}""",
 	ACT4_SENERUS_HOME_1 = """Erdyna takes you to one of the less miserable looking houses deep in the slums. After a couple minutes of banging on the door, an elven man finally opens it, keeping it half-closed and talking through the gap.""",
-	ACT4_SENERUS_HOME_2 = """{color=aqua|Man: - You... I told you not to come here again, and certainly not to bring anyone.}
+	ACT4_SENERUS_HOME_2 = """{color=aqua|Man: — You... I told you not to come here again, and certainly not to bring anyone.}
 
-{color=yellow|Erdyna: - Nah, don't remember that. Come on, I really need a smart guy like you to help my friend here.}
+{color=yellow|Erdyna: — Nah, don't remember that. Come on, I really need a smart guy like you to help my friend here.}
 
 As the elven man takes a careful look at you, he visibly relaxes. Perhaps your more civil, professional appearance reassures him you aren't just some thug.
 
-{color=aqua|Man: - Fine, get in. Quickly.}""",
+{color=aqua|Man: — Fine, get in. Quickly.}""",
 	ACT4_SENERUS_HOME_3 = """The inside of the house looks old and worn. The space is crammed with books and antiquities. Moving to the other room you find a large table covered in scribbled papers and candles.
 
-{color=yellow|Erdyna: - Senerus, you really should clean up in here.}
+{color=yellow|Erdyna: — Senerus, you really should clean up in here.}
 
-{color=aqua|Senerus: - It's clean. How about you get to the point.}
+{color=aqua|Senerus: — It's clean. How about you get to the point.}
 
-{color=yellow|Erdyna: - Right, you see...}""",
+{color=yellow|Erdyna: — Right, you see...}""",
 	ACT4_SENERUS_HOME_4 = """Erdyna explains your search for the artifacts. As you go into detail about your journey and the items in question, the elf grows more and more pensive.
 
-{color=aqua|Senerus: - I see, the grand artifacts. It's a shame they've been so neglected.}
+{color=aqua|Senerus: — I see, the grand artifacts. It's a shame they've been so neglected.}
 
-{color=aqua|Senerus: - I suppose you don't know much about them, do you? This will be a long story.}
+{color=aqua|Senerus: — I suppose you don't know much about them, do you? This will be a long story.}
 
-{color=yellow|Erdyna: - Ugh, I hate long stories. I'll see myself out, let me know when you're done.}
+{color=yellow|Erdyna: — Ugh, I hate long stories. I'll see myself out, let me know when you're done.}
 
 Erdyna leaves you alone with the elf, closing the door as she heads outside.""",
 	ACT4_SENERUS_HOME_4_OPTION_LISTEN = "Alright, I'm listening.",
 	ACT4_SENERUS_HOME_4_OPTION_SHORT = "Give me the short version.",
 	ACT4_SENERUS_REPEAT_1 = """Senerus opens the door after a short delay and studies you with visible reluctance before deciding you are less troublesome than leaving you outside.
 
-{color=aqua|Senerus: - You again. Fine, come in if you intend to ask something relevant.}
+{color=aqua|Senerus: — You again. Fine, come in if you intend to ask something relevant.}
 
 Once inside, he returns to the cramped study and waits for you to get to the point.""",
-	ACT4_SENERUS_LONG_1 = """{color=aqua|Senerus: - First, let's go through the ancient times and the creation of the world. Most knowledge from that period has been lost, which is no surprise given it happened eons ago and time has not worked in our favor. I've spent my life recovering and restoring whatever I could find, but even so I cannot realistically prove that everything I consider plausible is actually true, so take what I say as my own interpretation of how the world came to be.}
+	ACT4_SENERUS_LONG_1 = """{color=aqua|Senerus: — First, let's go through the ancient times and the creation of the world. Most knowledge from that period has been lost, which is no surprise given it happened eons ago and time has not worked in our favor. I've spent my life recovering and restoring whatever I could find, but even so I cannot realistically prove that everything I consider plausible is actually true, so take what I say as my own interpretation of how the world came to be.}
 
-{color=aqua|Senerus: - In the beginning there was a world with no life in it. Or rather no sentient life. A rather barren place, but not without another, less physical quality: magic energy. Though calling it simply magic isn't entirely accurate. The magic energy that exists today is only an echo of the primal magic that existed at the dawn of the world.}""",
-	ACT4_SENERUS_LONG_2 = """{color=aqua|Senerus: - Then something happened. Sentience appeared in the world, the very first of its kind, the one that started everything. It took the form of a man, the First God. He reached into the world's magic energy and it changed. From the raw primal chaos it had existed as, it bent under his will. Nearly all of the world's magic energy came under his control and he began reshaping the world with it.}
+{color=aqua|Senerus: — In the beginning there was a world with no life in it. Or rather no sentient life. A rather barren place, but not without another, less physical quality: magic energy. Though calling it simply magic isn't entirely accurate. The magic energy that exists today is only an echo of the primal magic that existed at the dawn of the world.}""",
+	ACT4_SENERUS_LONG_2 = """{color=aqua|Senerus: — Then something happened. Sentience appeared in the world, the very first of its kind, the one that started everything. It took the form of a man, the First God. He reached into the world's magic energy and it changed. From the raw primal chaos it had existed as, it bent under his will. Nearly all of the world's magic energy came under his control and he began reshaping the world with it.}
 
-{color=aqua|Senerus: - Life became sentient, whether by his design or as a consequence of his influence. More deities arose as they gained access to this refined magic. Some of them are the gods you know today. That was a time of incredible prosperity and power, brought about by him. Even ordinary people could conjure that refined energy in ways that would put today's archmage to shame. Most of the ancient and magic-touched races were created in those times, though even they have lost the memory of those origins.}""",
-	ACT4_SENERUS_LONG_3 = """{color=aqua|Senerus: - But as you might expect, the downfall eventually came. Various ancient religions describe it differently, but one thing is certain: the First One fell. Some theorize he was slain by an outside force, perhaps as an act of protection. Either way, it changed everything, even if the effects weren't immediately apparent.}
+{color=aqua|Senerus: — Life became sentient, whether by his design or as a consequence of his influence. More deities arose as they gained access to this refined magic. Some of them are the gods you know today. That was a time of incredible prosperity and power, brought about by him. Even ordinary people could conjure that refined energy in ways that would put today's archmage to shame. Most of the ancient and magic-touched races were created in those times, though even they have lost the memory of those origins.}""",
+	ACT4_SENERUS_LONG_3 = """{color=aqua|Senerus: — But as you might expect, the downfall eventually came. Various ancient religions describe it differently, but one thing is certain: the First One fell. Some theorize he was slain by an outside force, perhaps as an act of protection. Either way, it changed everything, even if the effects weren't immediately apparent.}
 
-{color=aqua|Senerus: - Since the First One was the only being so deeply intertwined with the magic force, his death brought inevitable stagnation to the magical arts. You see, magic energy is like water. There is plenty of it in nature, but as it is used it grows spoiled, becoming unhealthy or unsuitable for refined purposes. The First One did not just cleanse that water for others; he made it so that anyone in contact with it could draw healing from it. The raw magic energy became something close to what we now call divine magic.}
+{color=aqua|Senerus: — Since the First One was the only being so deeply intertwined with the magic force, his death brought inevitable stagnation to the magical arts. You see, magic energy is like water. There is plenty of it in nature, but as it is used it grows spoiled, becoming unhealthy or unsuitable for refined purposes. The First One did not just cleanse that water for others; he made it so that anyone in contact with it could draw healing from it. The raw magic energy became something close to what we now call divine magic.}
 
-{color=aqua|Senerus: - His disappearance did not undo all of his work, but the amount of divine magic available could never again increase. The deities are capable of their miracles largely because they received their powers during that time when magic was first shaped by the First One. The artifacts you are looking for belonged to the First One, or were made with his energy, which is why they are unique. Of course, over the ages people have forgotten about the ancient magic, and the artifacts themselves have grown weaker, but they are remarkable nonetheless.}""",
+{color=aqua|Senerus: — His disappearance did not undo all of his work, but the amount of divine magic available could never again increase. The deities are capable of their miracles largely because they received their powers during that time when magic was first shaped by the First One. The artifacts you are looking for belonged to the First One, or were made with his energy, which is why they are unique. Of course, over the ages people have forgotten about the ancient magic, and the artifacts themselves have grown weaker, but they are remarkable nonetheless.}""",
 	ACT4_SENERUS_SHORT_1 = """Senerus adjusts his posture with visible reluctance, as if compressing a lecture he would much rather give in full.
 
-{color=aqua|Senerus: - Very well. The short version is this: the artifacts you seek are remnants of the earliest divine age, tied to powers far older and greater than the gods most people worship now.}
+{color=aqua|Senerus: — Very well. The short version is this: the artifacts you seek are remnants of the earliest divine age, tied to powers far older and greater than the gods most people worship now.}
 
-{color=aqua|Senerus: - Long ago the world was shaped by a being some traditions call the First God. Whether he created everything or merely changed it is still debated, but much of what we know as divine magic traces back to him.}""",
-	ACT4_SENERUS_SHORT_2 = """{color=aqua|Senerus: - After his fall that power began to diminish. The old miracles could no longer be renewed in the same way, and what remained was scattered through relics, bloodlines, and the gods who had already risen by then.}
+{color=aqua|Senerus: — Long ago the world was shaped by a being some traditions call the First God. Whether he created everything or merely changed it is still debated, but much of what we know as divine magic traces back to him.}""",
+	ACT4_SENERUS_SHORT_2 = """{color=aqua|Senerus: — After his fall that power began to diminish. The old miracles could no longer be renewed in the same way, and what remained was scattered through relics, bloodlines, and the gods who had already risen by then.}
 
-{color=aqua|Senerus: - That is why these artifacts matter. They are not valuable merely because they are ancient. They are fragments of a lost age, still carrying traces of a power the world can no longer reproduce.}
+{color=aqua|Senerus: — That is why these artifacts matter. They are not valuable merely because they are ancient. They are fragments of a lost age, still carrying traces of a power the world can no longer reproduce.}
 
 Senerus pauses, seemingly dissatisfied with how much he had to leave unsaid.
 
-{color=aqua|Senerus: - That is the offensively short version. If you want substance, ask properly and I will answer what I can.}""",
-	ACT4_SENERUS_SHORT_3 = "{color=aqua|Senerus: - The offensively short version, yes. If you want substance, ask properly and I will answer what I can.}",
+{color=aqua|Senerus: — That is the offensively short version. If you want substance, ask properly and I will answer what I can.}""",
+	ACT4_SENERUS_SHORT_3 = "{color=aqua|Senerus: — The offensively short version, yes. If you want substance, ask properly and I will answer what I can.}",
 	ACT4_SENERUS_HUB_0 = "{color=aqua|Senerus: — What else do you want to know?}",
 	ACT4_SENERUS_HUB_1 = """{color=aqua|Senerus: — In truth it's very difficult to say how he came to be, but I have my own theory, completely unprovable of course. Given the circumstances, I believe the magic energy itself gave rise to him. That would best explain his extraordinary degree of control over it.}
 
@@ -25417,16 +25661,16 @@ After giving you the directions for the catacomb entrance Erdyna leaves you alon
 {color=yellow|Erdyna: — I haven't been here for a while, but it should be close...}""",
 	ACT4_CATACOMB_ENTRY_2 = """However as you make it through one of the storehouses and its undergrounds you stop as another group of shady figures appears ahead of you.
 
-{color=aqua|Man: - No way, what the hell are you doing here?}
+{color=aqua|Man: — No way, what the hell are you doing here?}
 
-{color=yellow|Erdyna: - Red Rooks? Didn't expect to find you here. That would be our annoying competitors.}
+{color=yellow|Erdyna: — Red Rooks? Didn't expect to find you here. That would be our annoying competitors.}
 
 From her tone you realize it's another city gang.""",
-	ACT4_CATACOMB_ENTRY_2B = """{color=aqua|Group Leader: - Huh, isn't that the scaled bitch herself? Your minions roughed us up pretty badly last time.}
+	ACT4_CATACOMB_ENTRY_2B = """{color=aqua|Group Leader: — Huh, isn't that the scaled bitch herself? Your minions roughed us up pretty badly last time.}
 
-{color=yellow|Erdyna: - Hah, tell me about it. Or better don't. I have important business, so why don't you just let us pass.}
+{color=yellow|Erdyna: — Hah, tell me about it. Or better don't. I have important business, so why don't you just let us pass.}
 
-{color=aqua|Group Leader: - I don't think so. Why don't we actually pay you back for that? It's not every day when you are walking by yourself with some foreign goof. Even with your strength you hardly will win against us all.}""",
+{color=aqua|Group Leader: — I don't think so. Why don't we actually pay you back for that? It's not every day when you are walking by yourself with some foreign goof. Even with your strength you hardly will win against us all.}""",
 	ACT4_CATACOMB_ENTRY_2_OPTION_PHYSICS = "[Physics factor check] You really think you stand a chance against two of us?",
 	ACT4_CATACOMB_ENTRY_2_OPTION_DIPLOMACY = "We're not here to waste time fighting over gang grudges.",
 	ACT4_CATACOMB_ENTRY_2_OPTION_ATTACK = "*Prepare to attack*",
@@ -25436,12 +25680,12 @@ From her tone you realize it's another city gang.""",
 
 You move out of the way, letting the group leave without a fight.
 
-{color=yellow|Erdyna: - Hah, run away with the tail behind your legs, that suits you best.}""",
+{color=yellow|Erdyna: — Hah, run away with the tail behind your legs, that suits you best.}""",
 	ACT4_CATACOMB_INTIMIDATED_1 = """The last of the gang disappears back into the passage, cursing under their breath as their footsteps fade into the dark. The corridor grows quiet again, save for the distant drip of water somewhere deeper below.
 
 Erdyna watches them go with open contempt, then relaxes her stance.
 
-{color=yellow|Erdyna: - Pathetic. If that was enough to make them fold, they had no business blocking this place to begin with.}""",
+{color=yellow|Erdyna: — Pathetic. If that was enough to make them fold, they had no business blocking this place to begin with.}""",
 	ACT4_CATACOMB_ENTRY_3_1_WEAK = """Your threat only draws laughter from the gang.
 
 {color=aqua|Group Leader: — Two of you? That's cute. I still count more blades on our side.}
@@ -25524,15 +25768,15 @@ You present the copied symbols and describe the doors as best as you can. Myr ta
 {color=yellow|Myr: — No. Recognizing it and actually reading it are rather different matters, as you may imagine.}""",
 	ACT4_MYR_CATACOMB_WRITING_2 = """Myr taps one of the symbols lightly with her finger.
 
-{color=yellow|Myr: - To a very old elven tradition. Elves used to have lots of secretive organizations back in the day. Secretive, prestigious, and very fond of preserving knowledge in ways inconvenient to everyone else. So you better ask someone at their lands, that's your best bet anyway.}""",
+{color=yellow|Myr: — To a very old elven tradition. Elves used to have lots of secretive organizations back in the day. Secretive, prestigious, and very fond of preserving knowledge in ways inconvenient to everyone else. So you better ask someone at their lands, that's your best bet anyway.}""",
 	ACT4_MYR_CATACOMB_FOLLOWUP_0 = """Erdyna meets you as you walk out of Myr's office with the new target.
 
-{color=aqua|Erdyna: - Eh, elves? Never been there, I wonder what they have to say.}""",
+{color=aqua|Erdyna: — Eh, elves? Never been there, I wonder what they have to say.}""",
 	ACT4_MYR_CATACOMB_WRITING_OPTION_READ = "So you can read it?",
 	ACT4_MYR_CATACOMB_WRITING_OPTION_BELONG = "What does it belong to?",
 	ACT4_MYR_CATACOMB_WRITING_OPTION_CURIOUS = "Are you just that curious about it to keep following me?",
 	ACT4_MYR_CATACOMB_WRITING_OPTION_VISIT = "I'm well known at the elven lands. Let's go visit them.",
-	ACT4_MYR_CATACOMB_REPLY_1 = "{color=aqua|Erdyna: - Hell, yeah, what do you think? Those doors must have something rich behind them, don't they? I'm sure you gonna be generous enough to spare it with me as we finish, haha.}",
-	ACT4_MYR_CATACOMB_REPLY_2 = "{color=aqua|Erdyna: - Not surprised, you are a big shot, aren't ya? Well, I'll be right behind you.}",
+	ACT4_MYR_CATACOMB_REPLY_1 = "{color=aqua|Erdyna: — Hell, yeah, what do you think? Those doors must have something rich behind them, don't they? I'm sure you gonna be generous enough to spare it with me as we finish, haha.}",
+	ACT4_MYR_CATACOMB_REPLY_2 = "{color=aqua|Erdyna: — Not surprised, you are a big shot, aren't ya? Well, I'll be right behind you.}",
 
 }

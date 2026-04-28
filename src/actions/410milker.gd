@@ -48,17 +48,11 @@ func takereffect(member):
 	return effects
 
 func initiate():
-	var text = ''
 	var temparray = []
-	temparray += ["[name1] {^place:shove:stick}[s/1] [a /2]milker[/s2] on [names2] nipples"]
-#	temparray += ["[name1] latch[es/1] onto [names2] nipples"]
-	text += temparray[randi()%temparray.size()]
-	temparray.clear()
-	temparray += [", {^teasing} and {^sucking on} them."]
-	temparray += [", {^lightly:gently} {^stimulating} them with its suction mechanism."]
-	temparray += [", {^greedily slurping at them:nursing} like [a /1]bab[y/ies1]."]
-	text += temparray[randi()%temparray.size()]
-	return text
+	temparray += ["SEXACTION_MILKER_INITIATE_SUFFIX_1"]
+	temparray += ["SEXACTION_MILKER_INITIATE_SUFFIX_2"]
+	temparray += ["SEXACTION_MILKER_INITIATE_SUFFIX_3"]
+	return tr("SEXACTION_MILKER_INITIATE_1") + tr(temparray[randi()%temparray.size()])
 
 func reaction(member):
 	var text = ''

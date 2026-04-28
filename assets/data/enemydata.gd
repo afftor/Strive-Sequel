@@ -244,7 +244,7 @@ var enemygroups = {
 	jean_sylas_2 = {reqs = [], units = {sylas_weak = [1,1]}},
 	jean_demon_1 = {reqs = [], units = {jean_evil = [1,1]}},
 	jean_demon_2 = {reqs = [], units = {jean_demon = [1,1]}},
-	rouge_warehouse_escape = {reqs = [], units = {jean_demon = [1,1]}},
+	rouge_warehouse_escape = {reqs = [], units = {bandit_boss_melee = [1,1]}},
 	
 	mimic = {reqs = [], units = {mimic = [1,1]}},
 	

@@ -47,23 +47,12 @@ func takereffect(member):
 	return effects
 
 func initiate():
-	var text = ''
-	var temparray = []
-#	temparray += ["[name1] {^take:place:shove:stick}[s/1] [names2] nipples into [his1] mouth[/s1]"]
-	temparray += ["[name1] {^place:shove:stick}[s/1] [his1] feet in front of [name2] and order[s/1] [him2] to {^lick:suck:service} [his1] feet clean."]
-#	temparray += ["[name1] latch[es/1] onto [names2] nipples"]
-	text += temparray[randi()%temparray.size()]
-	temparray.clear()
-#	temparray += [", {^licking:teasing} and {^kissing:sucking on} them."]
-#	temparray += [", {^lightly:gently} {^nibbling at:stimulating} them with [his1] teeth."]
-#	temparray += [", {^greedily slurping at them:nursing} like [a /1]bab[y/ies1]."]
-#	text += temparray[randi()%temparray.size()]
-	return text
+	return tr("SEXACTION_LICKFEET_INITIATE_1")
 
 func reaction(member):
 	var text = ''
 	if member.energy == 0:
-		text = "[name2] lie[s/2] unconscious."
+		text = tr("SEXACTION_LICKFEET_REACTION_UNCONSCIOUS")
 	#elif member.consent == false:
 		#TBD
 # not sure what humiliation reaction should be
