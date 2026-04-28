@@ -3677,7 +3677,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	EFFECTNAME_WATERSHIELD = "water shield",
 	EFFECTNAME_CLARITY = "clarity",
 	EFFECTNAME_RAMONT_PARRY_N_RIPOSTE = 'Parry & Riposte',
-	EFFECT_RAMONTPARRY = 'Dodge the next non-spell attack, if it\'s melee and not spell, counterattacks. Remove once being hit or evaded an attack.',
+	EFFECT_RAMONTPARRY = 'Dodge and counterattack next enemy skill.',
 	EFFECTNAME_EVICTION_NOTICE = 'Eviction Notice',
 	EFFECT_EVICTION_NOTICE = 'Ramont will use powerful move against this unit.',
 	RESETTRAINREQ = "Reset training to step 0 and restore Spirit. Requires Oblivion potion.",
