@@ -2857,6 +2857,7 @@ Wits: -10; EXP Gain: -10%; Sell price is greatly lowered.""",
 	THRALLS0DESCRIPT = "Has no Thralls",
 	EFFECTNAME_E_THRALL = "Is a Thrall",
 	EFFECTNAME_FLIGHT = "Flight",
+	EFFECTNAME_FLIGHT_UPKEEP = "Flight",
 	SKILLSUPREMACY = "Supremacy",
 	SKILLSUPREMACYDESCRIPT = """Category: {color=green|Gracious}
 Overwhelms target with awe and respect for caster. Greatly increases Loyalty. Improved by Charm Factor.
@@ -3437,6 +3438,11 @@ Increased Health, DEF and MDEF""",
 	TRAITEFFECTHOLY = "Divine Radiance: -20 MDEF",
 	TRAITEFFECTPOSITIONTAKEN = "Position Taken: +50 Armor Penetration; +20%% Damage",
 	TRAITEFFECTWINDWALL = "Wind Wall: -50%% Ranged Damage",
+	TRAITEFFECTWATERSHIELD = "Water Shield: +40 Fire Resistance",
+	TRAITEFFECTFIRESHIELD = "Fire Shield: +40 Water Resistance",
+	TRAITEFFECTAIRSHIELD = "Air Shield: +40 Earth Resistance, +10%% Ranged Resistance",
+	TRAITEFFECTEARTHSHIELD = "Earth Shield: Armor increased by 50%% of Spell Power",
+	TRAITEFFECTEARTHSHIELD_1 = "Earth Shield: Armor increased by 50%% of Spell Power, MDEF increased by 40%% of Spell Power",
 	TRAITEFFECTPETSUIT = """When wearer has Pet class:
 Charm: +10
 Social skills effect: +10%.""",
@@ -7175,6 +7181,7 @@ The princess notices Aire tensing up in response to the question.
 	MATERIALDARK_ESSENCE = "Dark Essence",
 	MATERIALDARK_ESSENCEDESCRIPT = "Commonly obtained from Demons.",
 	QUESTREQSCOMPLETE = "Quest subtask complete",
+	RESOURCEGATHERED = "Your Earth Magic extracts the resources from this area and moves them to you.",
 	ENEMYTYPEBANDITS = "Bandits",
 	ENEMYTYPEWOLVES = "Wolves",
 	ENEMYTYPEUNDEAD = "Undeads",
@@ -19630,7 +19637,8 @@ Hotkey: 3""",
 	TRAVEL_LABEL = "Travel",
 	MANSION_LABEL = "Mansion",
 	CHAR_LABEL = "Character",
-	QUESTS_LABEL = "Quest",
+	QUEST_LABEL = "Quest",
+	MONEY_LABEL = "Money",
 	RETURN_ALL_MANSION_LABEL = "Recall Everyone",
 	RETURN_MANSION_LABEL = "Recall",
 	TRAVELERS_LABEL = "Travelers",
@@ -24498,7 +24506,7 @@ A small group of combat mages began chanting potent fire spells, quickly setting
 {color=yellow|Ketch: — The cult will hear about this—}""",
 	ROUGE_REPORT_MELCHOR_KETCH_DEAD = """The strike comes before Ketch can see it. A wound to his chest kills him on the spot, blood spraying across the walls.
 
-{color=yellow|Rouge: — Fufu, I hope darling won't be too cross with me about this.}""",
+{color=yellow|Rouge: — Fufu, I hope darling won't be too strict with me about this.}""",
 	ROUGE_REPORT_KETCH_BASEMENT_INTRO = """It doesn't take long for the imperial mages to finish off the remaining cultists and extinguish the fires. You make your way into the building, which is miraculously not too badly damaged. A small open cellar trapdoor catches your eye. You descend just in time to hear a pained cry from ahead. Moving through it you find Rouge, to your surprise, having just finished off Ketch. His lifeless body slumps to the ground.
 
 {color=yellow|Rouge: — Ah, [name], just in time.}""",
@@ -24574,7 +24582,7 @@ He passes you some gold and has the soldiers escort you from the scene before de
 	ROUGE_CAPITAL_OPTION_FIND = "Find Rouge",
 	ROUGE_CAPITAL_OPTION_LETTER = "Meet Melchor",
 	ROUGE_CAPITAL_OPTION_WAREHOUSE = "Suspicious warehouse",
-	ROUGE_CAPITAL_OPTION_RAID = "Report",
+	ROUGE_CAPITAL_OPTION_RAID = "Meet Melchor",
 	ROUGE_CAPITAL_OPTION_REWARD = "Meet Melchor",
 	ROUGE_CHAT_OPTION_REPORT = "Your task is done.",
 	

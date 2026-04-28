@@ -447,10 +447,7 @@ var backgrounds = {
 	rouge_sex_7 = "res://assets/images/fullscreen scenes/Rouge007.png",
 	rouge_sex_8 = "res://assets/images/fullscreen scenes/Rouge008.png",
 	rouge_sex_9 = "res://assets/images/fullscreen scenes/Rouge009.png",
-	rouge_warehouse_1 = "res://assets/images/scenes/warehouses_1.png",
-	rouge_warehouse_2 = "res://assets/images/scenes/warehouses_2.png",
 
-	
 	#masteries
 	mastery_air = "res://assets/Textures_v2/CLASS_INFO/back_masteri/back_air.png",
 	mastery_stealth = "res://assets/Textures_v2/CLASS_INFO/back_masteri/back_rogue.png",
@@ -707,7 +704,8 @@ var scenes = {
 	treasure = "res://assets/images/scenes/treasure.png",
 	slave_letter = "res://assets/images/scenes/slave_letter.png",
 	slave_pray = "res://assets/images/scenes/slave_pray.png",
-	
+	rouge_warehouse_1 = "res://assets/images/scenes/warehouses_1.png",
+	rouge_warehouse_2 = "res://assets/images/scenes/warehouses_2.png",
 
 }
 

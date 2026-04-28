@@ -3628,6 +3628,11 @@ Requires: Базовый рабский труд""",
 	TRAITEFFECTHOLY = """Божественное сияние: -20 MЗАЩ""",
 	TRAITEFFECTPOSITIONTAKEN = """Занятая позиция: +50 бронепробиваемость; +20%% урона""",
 	TRAITEFFECTWINDWALL = """Стена ветра: -50% дистанционного урона.""",
+	TRAITEFFECTWATERSHIELD = """Water Shield: +40 Fire Resistance""", # MISSING TRANSLATION
+	TRAITEFFECTFIRESHIELD = """Fire Shield: +40 Water Resistance""", # MISSING TRANSLATION
+	TRAITEFFECTAIRSHIELD = """Air Shield: +40 Earth Resistance, +10%% Ranged Resistance""", # MISSING TRANSLATION
+	TRAITEFFECTEARTHSHIELD = """Earth Shield: Armor increased by 50%% of Spell Power""", # MISSING TRANSLATION
+	TRAITEFFECTEARTHSHIELD_1 = """Earth Shield: Armor increased by 50%% of Spell Power, MDEF increased by 40%% of Spell Power""", # MISSING TRANSLATION
 	TRAITEFFECTPETSUIT = """Если у владельца есть класс питомец:
 Обаяние: +10
 Эффект социальных навыков: +10%.""",
@@ -6940,6 +6945,7 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	
 	
 	QUESTREQSCOMPLETE = """Подзадача квеста выполнена""",
+	RESOURCEGATHERED = """Your Earth Magic extracts the resources from this area and moves them to you.""", # MISSING TRANSLATION
 
 	ENEMYTYPEBANDITS = """Бандиты""",
 	ENEMYTYPEWOLVES = """Волки""",
@@ -20050,6 +20056,8 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	TRAVEL_LABEL = """Путешествие""",
 	MANSION_LABEL = "Особняк",
 	CHAR_LABEL = "Персонаж",
+	QUEST_LABEL = """Quest""", # MISSING TRANSLATION
+	MONEY_LABEL = """Money""", # MISSING TRANSLATION
 	QUESTS_LABEL = "Задание",
 	RETURN_ALL_MANSION_LABEL = """Вернуть всех в особняк""",
 	RETURN_MANSION_LABEL = """Recall""", # MISSING TRANSLATION

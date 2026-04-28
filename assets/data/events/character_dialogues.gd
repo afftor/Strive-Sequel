@@ -2248,7 +2248,7 @@ var data = {
 		character = "rouge", 
 		tags = ["dialogue_scene"], 
 		text = "ROUGE_CHAT_MELCHOR", 
-		options = [{code = "rouge_chat_root", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
+		options = [{code = "rouge_dialogue_start", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
 	},
 	
 	kuro_dialogue_start = {

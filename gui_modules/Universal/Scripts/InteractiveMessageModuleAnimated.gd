@@ -930,15 +930,15 @@ func handle_scene_backgrounds(scene):
 	try_hide_scene_backgrounds(scene, type_trans_time)
 	
 	var shading = $Shading
-	if scene.tags.has("shading_background"):
+	if !scene.tags.has("no_shading_background"):
 		if !shading.visible:
 			shading.modulate.a = 0
 			shading.show()
-			ResourceScripts.core_animations.UnfadeAnimation(shading, 1.0)
+			ResourceScripts.core_animations.UnfadeAnimation(shading, 0.2)
 	elif shading.visible and !shading.get_meta("fading", false):
-		ResourceScripts.core_animations.FadeAnimation(shading, 1.0)
+		ResourceScripts.core_animations.FadeAnimation(shading, 0.2)
 		shading.set_meta("fading", true)
-		yield(get_tree().create_timer(1.0), "timeout")
+		yield(get_tree().create_timer(0.2), "timeout")
 		shading.set_meta("fading", false)
 		shading.hide()
 

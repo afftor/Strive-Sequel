@@ -587,10 +587,10 @@ var skills = {
 		#for now duration, no_delays and no_repeat_delays params works only for predamage period
 		#with caster or target and only with gfx_animsprite!
 		sfx = [{code = 'void_barrage', target = 'target', period = 'predamage', duration = 0.2, no_repeat_delays = true}],
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = null, strike = 'spell_dark', hit = null},
 		value = 0.85,
 	},
-	
+
 	dark_bonus = {
 		code = 'dark_bonus',
 		name = '',

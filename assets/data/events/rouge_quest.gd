@@ -559,8 +559,8 @@ var data = {
 			{text = "ROUGE_MEET_MELCHOR_ADDRESSES", reqs = [], previous_dialogue_option = 3},
 		],
 		options = [
-			{code = "rouge_meet_melchor_cult", text = "ROUGE_MEET_OPTION_CULT", reqs = [],  dialogue_argument = 2},
-			{code = "rouge_meet_melchor_addresses", text = "ROUGE_MEET_OPTION_ADDRESSES", reqs = [], dialogue_argument = 3},
+			{code = "rouge_meet_melchor_letter", text = "ROUGE_MEET_OPTION_CULT", reqs = [], dialogue_argument = 2, remove_after_first_use = true},
+			{code = "rouge_meet_melchor_letter", text = "ROUGE_MEET_OPTION_ADDRESSES", reqs = [], dialogue_argument = 3, remove_after_first_use = true},
 			{code = "rouge_meet_melchor_plan", text = "ROUGE_MEET_OPTION_PLAN", reqs = [], type = "next_dialogue"}
 		]
 	},
@@ -663,6 +663,7 @@ var data = {
 		character = "ketch", 
 		tags = ["dialogue_scene"], 
 		text = "ROUGE_INTERROGATION_KETCH_TOUGH", 
+		common_effects = [{code = 'play_sound', value = 'punch'}, {code = 'screen_shake', strength = 3, length = 0.3}],
 		options = [
 			{code = "rouge_interrogation_ketch_rouge", text = "ROUGE_INTERROGATION_OPTION_ROUGE_SENT", reqs = [], type = "next_dialogue"}, 
 			{code = "rouge_interrogation_ketch_bitch", text = "ROUGE_INTERROGATION_OPTION_HIT_LIKE", reqs = [], type = "next_dialogue"}
@@ -682,7 +683,7 @@ var data = {
 		character = "ketch", 
 		tags = ["dialogue_scene"], 
 		text = "ROUGE_INTERROGATION_KETCH_BITCH", 
-		common_effects = [{code = 'affect_master', type = 'effect', value = 'e_quest_injury'}],
+		common_effects = [{code = 'play_sound', value = 'punch'}, {code = 'screen_shake', strength = 3, length = 0.3}, {code = 'affect_master', type = 'effect', value = 'e_quest_injury'}],
 		options = [{code = "rouge_interrogation_over_ketch", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
 	},
 	rouge_interrogation_henchman_start = {
@@ -707,6 +708,7 @@ var data = {
 		image = null, 
 		tags = ["dialogue_scene"], 
 		text = "ROUGE_INTERROGATION_HENCHMAN_QUESTION_2", 
+		common_effects = [{code = 'play_sound', value = 'punch'}, {code = 'screen_shake', strength = 3, length = 0.3}],
 		options = [{code = "rouge_interrogation_over_henchman", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
 	},
 	rouge_interrogation_over_ketch = {
@@ -758,7 +760,7 @@ var data = {
 			{text = "ROUGE_WAREHOUSE_GROTUS_REPRIMAND", reqs = [], previous_dialogue_option = 2},
 		], 
 		options = [
-			{code = "rouge_warehouse_escape_win", text = "ROUGE_WAREHOUSE_OPTION_FULL_OF_YOURSELF", reqs = [], type = "next_dialogue", dialogue_argument = 2}, 
+			{code = "rouge_warehouse_escape_win", text = "ROUGE_WAREHOUSE_OPTION_FULL_OF_YOURSELF", reqs = [], dialogue_argument = 2, remove_after_first_use = true},
 			{code = "rouge_warehouse_grotus_what_now", text = "ROUGE_WAREHOUSE_OPTION_WHAT_NOW", reqs = [], type = "next_dialogue"}
 		]
 	},
@@ -791,7 +793,13 @@ var data = {
 			{text = "ROUGE_REPORT_MELCHOR_KETCH", reqs = [{type = "decision", value = "KetchKilled", check = false}]},
 			{text = "ROUGE_REPORT_MELCHOR_NO_KETCH", reqs = [{type = "decision", value = "KetchKilled", check = true}]}
 		],
-		options = [{code = "rouge_report_melchor_raid", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
+		options = [{
+			code = "rouge_report_melchor_raid", 
+			text = "DIALOGUECONTINUE", 
+			reqs = [], 
+			type = "next_dialogue",
+			}
+			]
 	},
 	rouge_report_melchor_raid = {
 		reqs = [],
@@ -854,10 +862,10 @@ var data = {
 			{text = "ROUGE_REPORT_KETCH_CAPITAL", reqs = [], previous_dialogue_option = [3, 5]},
 		],
 		options = [
-			{code = "rouge_report_ketch_basement_intro", text = "ROUGE_REPORT_OPTION_WHAT_HAPPENED", reqs = [], type = "next_dialogue", dialogue_argument = 2, previous_dialogue_option = 1},
-			{code = "rouge_report_ketch_basement_intro", text = "ROUGE_REPORT_OPTION_WHAT_HAPPENED", reqs = [], type = "next_dialogue", dialogue_argument = 4, previous_dialogue_option = 3},
-			{code = "rouge_report_ketch_basement_intro", text = "ROUGE_REPORT_OPTION_CAPITAL", reqs = [], type = "next_dialogue", dialogue_argument = 3, previous_dialogue_option = 1},
-			{code = "rouge_report_ketch_basement_intro", text = "ROUGE_REPORT_OPTION_CAPITAL", reqs = [], type = "next_dialogue", dialogue_argument = 5, previous_dialogue_option = 2},
+			{code = "rouge_report_ketch_basement_intro", text = "ROUGE_REPORT_OPTION_WHAT_HAPPENED", reqs = [], dialogue_argument = 2, previous_dialogue_option = 1},
+			{code = "rouge_report_ketch_basement_intro", text = "ROUGE_REPORT_OPTION_WHAT_HAPPENED", reqs = [], dialogue_argument = 4, previous_dialogue_option = 3},
+			{code = "rouge_report_ketch_basement_intro", text = "ROUGE_REPORT_OPTION_CAPITAL", reqs = [], dialogue_argument = 3, previous_dialogue_option = 1},
+			{code = "rouge_report_ketch_basement_intro", text = "ROUGE_REPORT_OPTION_CAPITAL", reqs = [], dialogue_argument = 5, previous_dialogue_option = 2},
 			{code = "rouge_report_ketch_basement_1", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue", previous_dialogue_option = [4, 5]}
 		]
 	},
@@ -889,9 +897,9 @@ var data = {
 			{text = "ROUGE_REPORT_KETCH_BASEMENT_3", reqs = [], previous_dialogue_option = 1},
 			{text = "ROUGE_REPORT_KETCH_BASEMENT_4", reqs = [], previous_dialogue_option = 2},
 		],
-		options = [{code = "close", text = "DIALOGUECLOSE", reqs = [], type = "next_dialogue", bonus_effects = [{code = "progress_quest", value = "rouge_quest", stage = "reward"}]}]
+		options = [{code = "close", text = "DIALOGUECLOSE", reqs = [], type = "next_dialogue", bonus_effects = [{code = "progress_quest", value = "rouge_quest", stage = "reward"},{code = "update_city"}]}]
 	},
-	
+
 	rouge_report_henchman_basement_intro = {
 		reqs = [],
 		image = null,
@@ -903,10 +911,10 @@ var data = {
 			{text = "ROUGE_REPORT_KETCH_CAPITAL", reqs = [], previous_dialogue_option = [3, 5]},
 		],
 		options = [
-			{code = "rouge_report_henchman_basement_intro", text = "ROUGE_REPORT_OPTION_WHAT_DOING", reqs = [], type = "next_dialogue", dialogue_argument = 2, previous_dialogue_option = 1},
-			{code = "rouge_report_henchman_basement_intro", text = "ROUGE_REPORT_OPTION_WHAT_DOING", reqs = [], type = "next_dialogue", dialogue_argument = 4, previous_dialogue_option = 3},
-			{code = "rouge_report_henchman_basement_intro", text = "ROUGE_REPORT_OPTION_CAPITAL", reqs = [], type = "next_dialogue", dialogue_argument = 3, previous_dialogue_option = 1},
-			{code = "rouge_report_henchman_basement_intro", text = "ROUGE_REPORT_OPTION_CAPITAL", reqs = [], type = "next_dialogue", dialogue_argument = 5, previous_dialogue_option = 2},
+			{code = "rouge_report_henchman_basement_intro", text = "ROUGE_REPORT_OPTION_WHAT_DOING", reqs = [], dialogue_argument = 2, previous_dialogue_option = 1},
+			{code = "rouge_report_henchman_basement_intro", text = "ROUGE_REPORT_OPTION_WHAT_DOING", reqs = [], dialogue_argument = 4, previous_dialogue_option = 3},
+			{code = "rouge_report_henchman_basement_intro", text = "ROUGE_REPORT_OPTION_CAPITAL", reqs = [], dialogue_argument = 3, previous_dialogue_option = 1},
+			{code = "rouge_report_henchman_basement_intro", text = "ROUGE_REPORT_OPTION_CAPITAL", reqs = [], dialogue_argument = 5, previous_dialogue_option = 2},
 			{code = "rouge_report_henchman_basement_1", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue", previous_dialogue_option = [4, 5], dialogue_argument = 1}
 		]
 	},
@@ -921,10 +929,10 @@ var data = {
 			{text = "ROUGE_REPORT_HENCHMAN_BASEMENT_3", reqs = [], previous_dialogue_option = [3, 5]},
 		],
 		options = [
-			{code = "rouge_report_henchman_basement_1", text = "ROUGE_REPORT_OPTION_OTHER_PLACES", reqs = [], type = "next_dialogue", dialogue_argument = 2, previous_dialogue_option = 1},
-			{code = "rouge_report_henchman_basement_1", text = "ROUGE_REPORT_OPTION_OTHER_PLACES", reqs = [], type = "next_dialogue", dialogue_argument = 4, previous_dialogue_option = 3},
-			{code = "rouge_report_henchman_basement_1", text = "ROUGE_REPORT_OPTION_SHOW", reqs = [], type = "next_dialogue", dialogue_argument = 3, previous_dialogue_option = 1},
-			{code = "rouge_report_henchman_basement_1", text = "ROUGE_REPORT_OPTION_SHOW", reqs = [], type = "next_dialogue", dialogue_argument = 5, previous_dialogue_option = 2},
+			{code = "rouge_report_henchman_basement_1", text = "ROUGE_REPORT_OPTION_OTHER_PLACES", reqs = [], dialogue_argument = 2, previous_dialogue_option = 1},
+			{code = "rouge_report_henchman_basement_1", text = "ROUGE_REPORT_OPTION_OTHER_PLACES", reqs = [], dialogue_argument = 4, previous_dialogue_option = 3},
+			{code = "rouge_report_henchman_basement_1", text = "ROUGE_REPORT_OPTION_SHOW", reqs = [], dialogue_argument = 3, previous_dialogue_option = 1},
+			{code = "rouge_report_henchman_basement_1", text = "ROUGE_REPORT_OPTION_SHOW", reqs = [], dialogue_argument = 5, previous_dialogue_option = 2},
 			{code = "rouge_report_henchman_basement_2", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue", previous_dialogue_option = [4, 5]}
 		]
 	},
@@ -934,7 +942,8 @@ var data = {
 		character = "rouge", 
 		tags = ["dialogue_scene"], 
 		text = "ROUGE_REPORT_HENCHMAN_BASEMENT_4",
-		options = [{code = "close", text = "DIALOGUECLOSE", reqs = [], type = "next_dialogue", bonus_effects = [{code = "progress_quest", value = "rouge_quest", stage = "reward"}]}]
+		options = [{code = "close", text = "DIALOGUECLOSE", reqs = [], type = "next_dialogue", bonus_effects = [{code = "progress_quest", value = "rouge_quest", stage = "reward"},{code = "update_city"}]}]
+			
 	},
 	
 	rouge_report_melchor_return = {

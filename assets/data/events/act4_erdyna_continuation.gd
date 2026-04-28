@@ -101,7 +101,6 @@ var data = {
 				code = "emp_erdyna_hideout_3",
 				text = "ACT4_ERDYNA_HIDEOUT_3_OPTION_KING",
 				reqs = [],
-				type = "next_dialogue",
 				dialogue_argument = 1,
 				remove_after_first_use = true
 			},
@@ -109,7 +108,6 @@ var data = {
 				code = "emp_erdyna_hideout_3",
 				text = "ACT4_ERDYNA_HIDEOUT_3_OPTION_BANDIT",
 				reqs = [],
-				type = "next_dialogue",
 				dialogue_argument = 2,
 				remove_after_first_use = true
 			},
@@ -366,7 +364,6 @@ var data = {
 				code = "emp_senerus_hub",
 				text = "ACT4_SENERUS_HUB_OPTION_FIRST_GOD",
 				reqs = [],
-				type = "next_dialogue",
 				dialogue_argument = 1,
 				remove_after_first_use = true
 			},
@@ -374,7 +371,6 @@ var data = {
 				code = "emp_senerus_hub",
 				text = "ACT4_SENERUS_HUB_OPTION_DEMONS",
 				reqs = [],
-				type = "next_dialogue",
 				dialogue_argument = 2,
 				remove_after_first_use = true
 			},
@@ -382,21 +378,20 @@ var data = {
 				code = "emp_senerus_gods",
 				text = "ACT4_SENERUS_HUB_OPTION_GODS",
 				reqs = [],
-				type = "next_dialogue",
 				dialogue_argument = 3
 			},
 			{
 				code = "emp_senerus_champions",
 				text = "ACT4_SENERUS_HUB_OPTION_CHAMPIONS",
 				reqs = [],
-				type = "next_dialogue",
 				dialogue_argument = 4
 			},
 			{
 				code = "emp_senerus_artifact_lead",
 				text = "ACT4_SENERUS_HUB_OPTION_ARTIFACT",
 				reqs = [],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				remove_after_first_use = true
 			},
 			{
 				code = "close",
@@ -453,7 +448,6 @@ var data = {
 				code = "emp_senerus_gods",
 				text = "ACT4_SENERUS_GODS_OPTION_EREBUS",
 				reqs = [],
-				type = "next_dialogue",
 				dialogue_argument = 1,
 				remove_after_first_use = true
 			},
@@ -461,7 +455,6 @@ var data = {
 				code = "emp_senerus_gods",
 				text = "ACT4_SENERUS_GODS_OPTION_CELENA",
 				reqs = [],
-				type = "next_dialogue",
 				dialogue_argument = 2,
 				remove_after_first_use = true
 			},
@@ -469,7 +462,6 @@ var data = {
 				code = "emp_senerus_gods",
 				text = "ACT4_SENERUS_GODS_OPTION_ELISIA",
 				reqs = [{type = "dialogue_selected", value = "ACT4_SENERUS_GODS_OPTION_CELENA", check = true}],
-				type = "next_dialogue",
 				dialogue_argument = 3,
 				remove_after_first_use = true
 			},
@@ -477,7 +469,6 @@ var data = {
 				code = "emp_senerus_gods",
 				text = "ACT4_SENERUS_GODS_OPTION_FREYA",
 				reqs = [],
-				type = "next_dialogue",
 				dialogue_argument = 4,
 				remove_after_first_use = true
 			},
@@ -485,7 +476,6 @@ var data = {
 				code = "emp_senerus_gods",
 				text = "ACT4_SENERUS_GODS_OPTION_MAGIC",
 				reqs = [],
-				type = "next_dialogue",
 				dialogue_argument = 5,
 				remove_after_first_use = true
 			},
@@ -533,7 +523,6 @@ var data = {
 				code = "emp_senerus_champions",
 				text = "ACT4_SENERUS_CHAMPIONS_OPTION_ALIOS",
 				reqs = [{type = "unique_available", name = "zephyra", check = true}],
-				type = "next_dialogue",
 				dialogue_argument = 1,
 				remove_after_first_use = true
 			},
@@ -541,7 +530,6 @@ var data = {
 				code = "emp_senerus_champions",
 				text = "ACT4_SENERUS_CHAMPIONS_OPTION_NIXX",
 				reqs = [{type = "unique_available", name = "kuro", check = true}],
-				type = "next_dialogue",
 				dialogue_argument = 2,
 				remove_after_first_use = true
 			},
@@ -549,7 +537,6 @@ var data = {
 				code = "emp_senerus_champions",
 				text = "ACT4_SENERUS_CHAMPIONS_OPTION_ASHMEDAI",
 				reqs = [{type = "unique_available", name = "lilith", check = true}],
-				type = "next_dialogue",
 				dialogue_argument = 3,
 				remove_after_first_use = true
 			},
@@ -789,7 +776,6 @@ var data = {
 				code = "emp_catacomb_doors_heleviel",
 				text = "ACT4_CATACOMB_DOORS_HELEVIEL_OPTION_CONNECTED",
 				reqs = [],
-				type = "next_dialogue",
 				dialogue_argument = 1,
 				remove_after_first_use = true
 			},
@@ -797,7 +783,6 @@ var data = {
 				code = "emp_catacomb_doors_heleviel",
 				text = "ACT4_CATACOMB_DOORS_HELEVIEL_OPTION_READ",
 				reqs = [],
-				type = "next_dialogue",
 				dialogue_argument = 2,
 				remove_after_first_use = true
 			},
@@ -863,7 +848,6 @@ var data = {
 				code = "emp_myr_catacomb_writing",
 				text = "ACT4_MYR_CATACOMB_WRITING_OPTION_READ",
 				reqs = [],
-				type = "next_dialogue",
 				dialogue_argument = 1,
 				remove_after_first_use = true
 			},
@@ -871,7 +855,6 @@ var data = {
 				code = "emp_myr_catacomb_writing",
 				text = "ACT4_MYR_CATACOMB_WRITING_OPTION_BELONG",
 				reqs = [],
-				type = "next_dialogue",
 				dialogue_argument = 2,
 				remove_after_first_use = true
 			},

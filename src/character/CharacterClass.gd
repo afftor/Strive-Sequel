@@ -1843,6 +1843,8 @@ func decipher_reqs(reqs, colorcode = false, purestat = false):
 #		if i.has('orflag'):
 #			continue
 		text2 = decipher_single(i)
+		if text2 == '':
+			continue
 		if colorcode == true:
 			var passed = checkreqs([i], purestat)
 			if i.code == 'has_profession' and i.check == false:
