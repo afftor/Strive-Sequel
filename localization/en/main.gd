@@ -19905,6 +19905,7 @@ In combat restore the amount of health equal to your health regeneration at the 
 	MAE_WEDDING_SS = "Become Mae's husband.",
 	JEAN_WEDDING_SS = "Become Jean's husband.",
 	JEAN_DREAM_SS = "See Jean in a dream.",
+	ROUGE_SEX_SS = "Impress Rouge Enough to be laid.",
 	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_1 = """You explain to Alise that one of your slaves needs a change of clothes.
 
 {color=yellow|— Why, yes, proper servants' attire is one of our specialties. You know, the right clothes make a big difference even for less ideal bodies, naturally we have tailors who can adjust for any required body type. But what are you looking for, anyway?}""",
