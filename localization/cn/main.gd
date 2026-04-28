@@ -19197,6 +19197,7 @@ In combat restore the amount of health equal to your health regeneration at the 
 	MAE_WEDDING_SS = "成为梅的丈夫。",
 	JEAN_WEDDING_SS = "成为吉恩的丈夫。",
 	JEAN_DREAM_SS = "梦中见到珍。",
+	ROUGE_SEX_SS = """Impress Rouge Enough to be laid.""", # MISSING TRANSLATION
 	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_1 = """你向艾莉丝解释说你的一个奴隶需要换衣服。
 
 {color=yellow|— 为什么，是的，得体的仆人着装是我们的特色之一。您知道，即使对于不太理想的体型来说，合适的衣服也会产生很大的影响，当然我们有裁缝可以根据任何所需的体型进行调整。但无论如何，你在寻找什么？}""",

@@ -244,7 +244,7 @@ var enemygroups = {
 	jean_sylas_2 = {reqs = [], units = {sylas_weak = [1,1]}},
 	jean_demon_1 = {reqs = [], units = {jean_evil = [1,1]}},
 	jean_demon_2 = {reqs = [], units = {jean_demon = [1,1]}},
-	rouge_warehouse_escape = {reqs = [], units = {bandit_boss_melee = [1,1]}},
+	rouge_warehouse_escape = {reqs = [], units = {bandit_melee = [2,2]}},
 	
 	mimic = {reqs = [], units = {mimic = [1,1]}},
 	
@@ -1395,7 +1395,7 @@ var enemies = {
 #		ai = [['basic', 0], ['ads', 100]],
 		ai_position = ['ranged'],
 		xpreward = 7,
-		allowed_mastery = ['warfare','marksmanship','leadership'],
+		allowed_mastery = ['warfare','marksmanship','leadership','stealth'],
 	},
 	spider_aoe = {
 		code = 'spider_aoe',
@@ -1421,7 +1421,7 @@ var enemies = {
 		ai = [['damage_spot', 50], ['ads', 33], ['aoe', 100], ['selfbuf', 50], ['trap', 50]],
 		ai_position = ['ranged'],
 		xpreward = 7,
-		allowed_mastery = ['warfare','marksmanship','leadership'],
+		allowed_mastery = ['warfare','marksmanship','leadership','stealth'],
 	},
 	spider_alfa_boss = {
 		code = 'spider_alfa_boss',

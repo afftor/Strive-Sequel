@@ -122,8 +122,9 @@ func start_scene():
 	gui_controller.current_screen = gui_controller.sex_panel
 	gui_controller.sex_panel.raise()
 	gui_controller.sex_panel.startsequence(selected_characters)
-	gui_controller.sex_panel.show()
-	hide()
+	ResourceScripts.core_animations.OpenAnimation(gui_controller.sex_panel)
+	get_parent().mansion_state_set("hidden")
+	gui_controller.close_scene(self)
 
 
 

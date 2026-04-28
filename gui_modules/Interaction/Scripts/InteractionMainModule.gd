@@ -2175,6 +2175,8 @@ func askslaveforaction(chosen):
 	startscene(chosenaction, cont, decoder(text, groupchosen, grouptarget))
 
 func _on_finishbutton_pressed():
+	if ResourceScripts.core_animations.BeingAnimated.has(self):
+		return
 	gui_controller.clock.visible = true
 	ai.clear()
 	for i in participants:
@@ -2185,14 +2187,14 @@ func _on_finishbutton_pressed():
 					i.person_sexexp.sexexp_partners.erase(k.id)
 					i.person_sexexp.sexexp_orgasms.erase(k.id)
 	selectmode = 'normal'
+	last_action_dict_id = 0
+	yield(ResourceScripts.core_animations.CloseAnimation(self, 0.3), "completed")
 	gui_controller.current_screen = gui_controller.previous_screen
 	gui_controller.current_screen.raise()
 	gui_controller.current_screen.show()
 	if gui_controller.current_screen == gui_controller.mansion:
 		gui_controller.current_screen.mansion_state_set("default")
 		gui_controller.clock.raise()
-	last_action_dict_id = 0
-	hide()
 	# input_handler.update_slave_list()
 
 

@@ -1609,6 +1609,7 @@ func start_sex():
 		gui_controller.sex_panel = input_handler.get_spec_node(input_handler.NODE_SEX)
 	gui_controller.sex_panel.startsequence([master, person])
 	gui_controller.sex_panel.raise()
+	ResourceScripts.core_animations.OpenAnimation(gui_controller.sex_panel)
 
 
 func _on_finishbutton_pressed():
