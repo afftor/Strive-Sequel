@@ -693,6 +693,7 @@ func add_trait(tr_code):
 		parent.get_ref().set_work_rule("contraceptive", false)
 	if tr_code == 'master_communicative' and parent.get_ref().is_master():
 		ResourceScripts.game_globals.weekly_dates_left += 2
+		ResourceScripts.game_globals.update_weekly_dates()
 	if trait.has('tags') and trait.tags.has('remove_untrained'):
 		remove_trait('untrained')
 	if tr_code == 'core_trait':
