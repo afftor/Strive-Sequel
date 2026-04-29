@@ -448,6 +448,7 @@ func slave_list_manager():
 				mansion_prev_state = null
 				active_person = skill_source
 				hovered_person = null
+				SlaveListModule.rebuild()
 			else:
 				skill_source = active_person
 			SkillModule.build_skill_panel()
@@ -572,6 +573,7 @@ func test_mode():
 		ResourceScripts.game_progress.seen_dialogues.append("PRIESTESS_SWORD_TALK_1_1")
 		ResourceScripts.game_progress.seen_dialogues.append("ALIRONCHURCHFIRSTCOME")
 		ResourceScripts.game_progress.unlocked_classes.append('alchemist')
+		ResourceScripts.game_progress.unlocked_classes.append('paladin')
 		ResourceScripts.game_progress.unlocked_classes.append('smith')
 		var character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
 		character.create('Human', 'male', 'random')
@@ -608,7 +610,7 @@ func test_mode():
 		character.set_stat('eye_color','green')
 		character.unlock_class("master")
 		character.unlock_class("worker")
-		character.unlock_class("spellsword")
+#		character.unlock_class("paladin")
 #		character.unlock_class("assassin")
 		character.unlock_class("knight")
 		character.set_stat('height', 'average')
