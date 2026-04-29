@@ -165,6 +165,8 @@ func fix_serialization():
 		globals.common_effects([{code = 'add_timed_event', value = "mae_initiate_start", args = [{type = 'add_to_date', date = [3,3], hour = 1}]}])
 	if !seen_events.has("heleviel_quest_1") and ResourceScripts.game_party.get_unique_slave('heleviel') != null:
 		globals.common_effects([{code = 'plan_mansion_event', value = "heleviel_quest_1"}])
+	if !seen_events.has("lira_quest_3_intro") && !timed_event_exists("lira_quest_3_intro") && completed_quests.has('lira_quest_2') && !completed_quests.has('lira_quest_3'):
+		globals.common_effects([{code = 'add_timed_event', value = "lira_quest_3_intro", args = [{type = 'add_to_date', date = [3,3], hour = 1}]}])
 	
 	if !seen_events.has("mae_druid_event_start") && !timed_event_exists("mae_druid_event_start") && seen_events.has("mae_search_complete_final"):
 		globals.common_effects([

@@ -906,7 +906,7 @@ var data = {
 		text = [{text = "LIRA_QUEST2_LIRA_THOUGHT_HAPPY_LIVING_TEMPLE", reqs = []}],
 		options = [
 			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
-				bonus_effects = [{code = 'complete_quest', value = 'lira_quest_2'}]},
+				bonus_effects = [{code = 'complete_quest', value = 'lira_quest_2'}, {code = 'add_timed_event', value = "lira_quest_3_intro", args = [{type = 'add_to_date', date = [3,3], hour = 1}]}]},
 		],
 	},
 }

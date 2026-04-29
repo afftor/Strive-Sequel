@@ -525,6 +525,21 @@ var data = {
 	
 	#end
 	
+	rouge_melchor_visit = {
+		reqs = [],
+		image = null,
+		music = 'empire_capital',
+		tags = ["dialogue_scene", "master_translate"],
+		text = "ROUGE_MELCHOR_VISIT_OFFICE",
+		options = [
+			{code = "rouge_meet_melchor_start", text = "ROUGE_MELCHOR_VISIT_OPTION_LETTER", reqs = [{type = "active_quest_stage", value = "rouge_quest", stage = "melchor"}], type = "next_dialogue"},
+			{code = "rouge_report_melchor_start", text = "ROUGE_MELCHOR_VISIT_OPTION_RAID", reqs = [{type = "active_quest_stage", value = "rouge_quest", stage = "raid"}], type = "next_dialogue"},
+			{code = "rouge_report_melchor_return", text = "ROUGE_MELCHOR_VISIT_OPTION_REWARD", reqs = [{type = "active_quest_stage", value = "rouge_quest", stage = "reward"}, {type = "decision", value = "KetchKilled", check = false}], type = "next_dialogue"},
+			{code = "rouge_report_melchor_return_alternate", text = "ROUGE_MELCHOR_VISIT_OPTION_REWARD", reqs = [{type = "active_quest_stage", value = "rouge_quest", stage = "reward"}, {type = "decision", value = "KetchKilled", check = true}], type = "next_dialogue"},
+			{code = "close", text = "DIALOGUECLOSE", reqs = [], type = "next_dialogue"}
+		]
+	},
+
 	rouge_meet_melchor_start = {
 		reqs = [],
 		music = 'empire_capital',

@@ -716,6 +716,11 @@ var random_dungeon_events = {
 
 var fixed_location_options = { #override serialized data
 	aliron = [
+		{
+			text = tr("LIRA_QUEST3_ALIRON_TRADER_OPTION"),
+			reqs = [{type = 'active_quest_stage', value = 'lira_quest_3', stage = 'trader', state = true}],
+			args = [{code = 'start_event', data = 'lira_quest_3_slave_trader', args = []}]
+		},
 #		{
 #			text = tr('ARENA_NAME'),
 #			reqs = [],
@@ -966,6 +971,11 @@ var fixed_location_options = { #override serialized data
 		},
 	],
 	elf_capital = [
+		{
+			text = tr("LIRA_QUEST3_ELF_TEMPLE_OPTION"),
+			reqs = [{type = 'active_quest_stage', value = 'lira_quest_3', stage = 'temple', state = true}],
+			args = [{code = 'start_event', data = 'lira_quest_3_temple_audience', args = []}]
+		},
 		{
 			text = tr("ELF_CAPITAL1"), 
 			reqs = [
@@ -1314,6 +1324,31 @@ var fixed_location_options = { #override serialized data
 	
 	empire_capital = [
 		{
+			text = tr("LIRA_QUEST3_EMPIRE_NOTICE_OPTION"),
+			reqs = [{type = 'active_quest_stage', value = 'lira_quest_3', stage = 'empire', state = true}],
+			args = [{code = 'start_event', data = 'lira_quest_3_empire_notice', args = []}]
+		},
+		{
+			text = tr("LIRA_QUEST3_EMPIRE_CARAVAN_MASTER_OPTION"),
+			reqs = [{type = 'active_quest_stage', value = 'lira_quest_3', stage = 'caravan_prepare', state = true}],
+			args = [{code = 'start_event', data = 'lira_quest_3_caravan_master', args = []}]
+		},
+		{
+			text = tr("LIRA_QUEST3_EMPIRE_CARAVAN_ATTACK_OPTION"),
+			reqs = [{type = 'active_quest_stage', value = 'lira_quest_3', stage = 'caravan_attack', state = true}],
+			args = [{code = 'start_event', data = 'lira_quest_3_caravan_attack', args = []}]
+		},
+		{
+			text = tr("LIRA_QUEST3_EMPIRE_FOLLOW_LEADER_OPTION"),
+			reqs = [{type = 'active_quest_stage', value = 'lira_quest_3', stage = 'follow_leader', state = true}],
+			args = [{code = 'start_event', data = 'lira_quest_3_follow_leader', args = []}]
+		},
+		{
+			text = tr("LIRA_QUEST3_EMPIRE_MERCHANT_OPTION"),
+			reqs = [{type = 'active_quest_stage', value = 'lira_quest_3', stage = 'merchant', state = true}],
+			args = [{code = 'start_event', data = 'lira_quest_3_merchant_shop', args = []}]
+		},
+		{
 			text = tr("JEAN_SIDEQUEST_GL"),
 			reqs = [{type = 'active_quest_stage', value = 'jean_first_sidequest', stage = 'capital'}],
 			args = [{code = 'start_event', data = 'jean_sidequest_capital_start', args = []}]
@@ -1374,35 +1409,14 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'rouge_melchor_confrontation_start', args = []}]
 		},
 		{
-			text = tr("ROUGE_CAPITAL_OPTION_LETTER"),
-			reqs = [{type = 'active_quest_stage', value = 'rouge_quest', stage = 'melchor'}],
-			args = [{code = 'start_event', data = 'rouge_meet_melchor_start', args = []}]
+			text = tr("ROUGE_CAPITAL_OPTION_MELCHOR"),
+			reqs = [{type = 'decision', value = 'rouge_accepted', check = true}],
+			args = [{code = 'start_event', data = 'rouge_melchor_visit', args = []}]
 		},
 		{
 			text = tr("ROUGE_CAPITAL_OPTION_WAREHOUSE"),
 			reqs = [{type = 'active_quest_stage', value = 'rouge_quest', stage = 'warehouse'}],
 			args = [{code = 'start_event', data = 'rouge_warehouse_search', args = []}]
-		},
-		{
-			text = tr("ROUGE_CAPITAL_OPTION_RAID"),
-			reqs = [{type = 'active_quest_stage', value = 'rouge_quest', stage = 'raid'}],
-			args = [{code = 'start_event', data = 'rouge_report_melchor_start', args = []}]
-		},
-		{
-			text = tr("ROUGE_CAPITAL_OPTION_REWARD"),
-			reqs = [
-				{type = 'active_quest_stage', value = 'rouge_quest', stage = 'reward'},
-				{type = "decision", value = "KetchKilled", check = false},
-				],
-			args = [{code = 'start_event', data = 'rouge_report_melchor_return', args = []}]
-		},
-		{
-			text = tr("ROUGE_CAPITAL_OPTION_REWARD"),
-			reqs = [
-				{type = 'active_quest_stage', value = 'rouge_quest', stage = 'reward'},
-				{type = "decision", value = "KetchKilled", check = true},
-				],
-			args = [{code = 'start_event', data = 'rouge_report_melchor_return_alternate', args = []}]
 		},
 		{
 			text = tr("EMPIRE_CAPITAL1"), 
@@ -1678,6 +1692,13 @@ var fixed_location_options = { #override serialized data
 			text = tr("QUEST_LIRA_GROVE_LOCATION1"),
 			reqs = [{type = 'dialogue_seen', check = false, value = 'LIRA_QUEST_1_SEARCH_GROVE'}],
 			args = [{code = 'start_event', data = 'lira_quest_1_search_grove', args = []}]
+		},
+	],
+	quest_lira_road_location = [
+		{
+			text = tr("LIRA_QUEST3_ROAD_AMBUSH_OPTION"),
+			reqs = [{type = 'active_quest_stage', value = 'lira_quest_3', stage = 'road', state = true}],
+			args = [{code = 'start_event', data = 'lira_quest_3_road_ambush', args = []}]
 		},
 	],
 	quest_ritual_location = [
