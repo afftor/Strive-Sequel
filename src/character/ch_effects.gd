@@ -321,8 +321,11 @@ func remove_t_global(eff_id):
 		effects_temp_globals.remove(pos)
 
 
-func remove_effect(eff_id):
-	rebuild = variables.DYN_STATS_REBUILD
+func remove_effect(eff_id, internal = false):
+	if internal:
+		reset_rebuild_delay()
+	else:
+		rebuild = variables.DYN_STATS_REBUILD
 	var obj = effects_pool.get_effect_by_id(eff_id)
 	if obj is temp_e_global:
 		remove_t_global(eff_id)

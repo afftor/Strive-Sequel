@@ -175,10 +175,10 @@ func e_apply(): #temporal solution until proper rework via apply_status
 	sub_effects.clear()
 
 
-func remove():
+func remove(internal = false):
 	var obj = get_applied_obj()
 	if obj != null:
-		obj.remove_effect(id)
+		obj.remove_effect(id, internal)
 	#.remove()
 	is_applied = false
 

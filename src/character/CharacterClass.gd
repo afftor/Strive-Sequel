@@ -1047,8 +1047,8 @@ func remove_effect_stack(id):
 	dyn_stats.remove_effect_stack(id)
 
 
-func remove_effect(eff_id):
-	dyn_stats.remove_effect(eff_id)
+func remove_effect(eff_id, internal = false):
+	dyn_stats.remove_effect(eff_id, internal)
 
 
 func remove_temp_effect_tag(eff_tag):#function for non-direct temps removing, like heal or dispel
@@ -2024,6 +2024,8 @@ func rest_tick():
 	for e in find_temp_effect_tag('addition_rest_tick'):
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.process_tick(variables.TR_TICK)
+	if dyn_stats.delay_rebuild:
+		dyn_stats.reset_rebuild()
 
 
 func translate(text, number = -1):

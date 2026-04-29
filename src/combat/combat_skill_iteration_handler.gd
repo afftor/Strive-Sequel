@@ -247,7 +247,7 @@ func invoke_instancing():
 			for atomic in queued_atomics:
 				s_skill2.apply_atomic(atomic)
 			#place for non-existing another trigger
-			s_skill2.process_event(variables.TR_PREHIT)
+			s_skill2.process_event(variables.TR_PREHIT, {skill = s_skill2, caster = caster, target = s_skill2.target})
 			if parent.mode != variables.SKILL_AUTO and !parent.tags.has('passive'): 
 				s_skill2.caster.process_event(variables.TR_PREHIT, {skill = s_skill2, caster = caster, target = s_skill2.target})
 				effects_pool.process_event(variables.TR_PREHIT, s_skill2.caster)
