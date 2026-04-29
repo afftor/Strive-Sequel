@@ -68,7 +68,7 @@ func show_class_info(text, tempclass, person):
 	get_parent().selected_class = tempclass.code
 	selected_class = tempclass.code
 	# text += input_handler.show_class_info(tempclass.code, person)
-	$ClassPanel/ClassDescript.bbcode_text = person.translate(text)
+	$ClassPanel/scroll._open_panel(get_parent().person, tempclass.code)
 	update_pressed_buttons()
 
 
