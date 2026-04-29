@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=3]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=4]
 [ext_resource path="res://gui_modules/CharacterCreation/ClassSelectionModule.gd" type="Script" id=5]
+[ext_resource path="res://assets/Fonts_v2/Noto_Serif/NotoSerif-Italic.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=7]
 [ext_resource path="res://assets/images/iconsclasses/Whore.png" type="Texture" id=8]
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Pressed.tres" type="StyleBox" id=9]
@@ -12,6 +13,16 @@
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Hover.tres" type="StyleBox" id=11]
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Normal.tres" type="StyleBox" id=12]
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Disabled.tres" type="StyleBox" id=13]
+[ext_resource path="res://assets/images/gui/universal/skill_frame.png" type="Texture" id=14]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/masteries_icons/combat.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/gui/explore/Captured Characters/frame_hero.png" type="Texture" id=16]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_gold_square.png" type="Texture" id=17]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_ellipse.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/iconsclasses/Fighter.png" type="Texture" id=19]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_32.tres" type="DynamicFont" id=20]
+[ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=21]
+[ext_resource path="res://gui_modules/classtooltip.gd" type="Script" id=22]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/ConfirmWindowTheme.tres" type="Theme" id=23]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -20,6 +31,40 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=2]
 size = 20
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=47]
+content_margin_left = 3.0
+content_margin_right = 3.0
+texture = ExtResource( 16 )
+region_rect = Rect2( 0, 0, 294, 49 )
+margin_left = 2.2531
+margin_right = 2.46228
+margin_top = 2.14639
+margin_bottom = 2.39234
+
+[sub_resource type="StyleBoxTexture" id=48]
+content_margin_left = 3.0
+content_margin_right = 3.0
+texture = ExtResource( 16 )
+region_rect = Rect2( 0, 0, 294, 49 )
+margin_top = 3.0
+margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=49]
+content_margin_left = 3.0
+content_margin_right = 3.0
+texture = ExtResource( 16 )
+region_rect = Rect2( 0, 0, 294, 49 )
+margin_top = 3.0
+margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=50]
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[sub_resource type="DynamicFont" id=30]
+size = 22
+font_data = ExtResource( 6 )
 
 [node name="ClassSelectionModule" type="Panel"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -36,10 +81,8 @@ margin_left = -390.0
 margin_top = -414.5
 margin_right = 390.0
 margin_bottom = 414.5
+theme = ExtResource( 23 )
 custom_styles/panel = ExtResource( 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Background" type="Panel" parent="ClassPanel"]
 self_modulate = Color( 0.180392, 0.054902, 0.713726, 1 )
@@ -130,17 +173,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ClassDescript" type="RichTextLabel" parent="ClassPanel"]
-margin_left = 347.0
-margin_top = 16.0
-margin_right = 761.0
-margin_bottom = 727.0
-custom_fonts/normal_font = ExtResource( 2 )
-bbcode_enabled = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="ConfirmButton" type="Button" parent="ClassPanel"]
 margin_left = 551.244
 margin_top = 749.125
@@ -175,3 +207,241 @@ text = "Cancel"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="scroll" type="ScrollContainer" parent="ClassPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 344.0
+margin_top = 15.0
+margin_right = -14.0
+margin_bottom = -98.0
+mouse_filter = 2
+size_flags_vertical = 0
+theme = ExtResource( 3 )
+scroll_horizontal_enabled = false
+script = ExtResource( 22 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ClassPanel/scroll"]
+margin_right = 422.0
+margin_bottom = 716.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ClassPanel/scroll/VBoxContainer"]
+margin_right = 422.0
+margin_bottom = 220.0
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="ClassPanel/scroll/VBoxContainer/HBoxContainer"]
+margin_left = 101.0
+margin_right = 321.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 220, 220 )
+texture = ExtResource( 17 )
+stretch_mode = 6
+
+[node name="ClassIcon" type="TextureRect" parent="ClassPanel/scroll/VBoxContainer/HBoxContainer/TextureRect2"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 19 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="ClassPanel/scroll/VBoxContainer"]
+margin_top = 224.0
+margin_right = 422.0
+margin_bottom = 266.0
+custom_colors/font_color = Color( 1, 0.831373, 0, 1 )
+custom_fonts/font = ExtResource( 20 )
+text = "Class Name"
+align = 1
+
+[node name="ReqsContainer" type="PanelContainer" parent="ClassPanel/scroll/VBoxContainer"]
+margin_top = 270.0
+margin_right = 422.0
+margin_bottom = 307.539
+custom_styles/panel = SubResource( 47 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ClassPanel/scroll/VBoxContainer/ReqsContainer"]
+margin_left = 3.0
+margin_top = 2.14639
+margin_right = 419.0
+margin_bottom = 35.1464
+
+[node name="Label" type="Label" parent="ClassPanel/scroll/VBoxContainer/ReqsContainer/VBoxContainer"]
+margin_right = 416.0
+margin_bottom = 14.0
+text = "Requirements"
+align = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ClassPanel/scroll/VBoxContainer/ReqsContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 416.0
+margin_bottom = 33.0
+bbcode_enabled = true
+fit_content_height = true
+scroll_active = false
+deselect_on_focus_loss_enabled = false
+
+[node name="StatContainer" type="PanelContainer" parent="ClassPanel/scroll/VBoxContainer"]
+margin_top = 311.0
+margin_right = 422.0
+margin_bottom = 330.539
+custom_styles/panel = SubResource( 47 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ClassPanel/scroll/VBoxContainer/StatContainer"]
+margin_left = 3.0
+margin_top = 2.14639
+margin_right = 419.0
+margin_bottom = 17.1464
+bbcode_enabled = true
+fit_content_height = true
+scroll_active = false
+deselect_on_focus_loss_enabled = false
+
+[node name="MasteryContainer" type="VBoxContainer" parent="ClassPanel/scroll/VBoxContainer"]
+margin_top = 334.0
+margin_right = 422.0
+margin_bottom = 334.0
+custom_constants/separation = 1
+
+[node name="Panel" type="PanelContainer" parent="ClassPanel/scroll/VBoxContainer/MasteryContainer"]
+visible = false
+margin_right = 376.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 120, 30 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 48 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ClassPanel/scroll/VBoxContainer/MasteryContainer/Panel"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 373.0
+margin_bottom = 55.0
+alignment = 2
+
+[node name="statname" type="Label" parent="ClassPanel/scroll/VBoxContainer/MasteryContainer/Panel/HBoxContainer"]
+margin_right = 314.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Combat Mastery Points: "
+align = 1
+valign = 1
+
+[node name="frame" type="TextureRect" parent="ClassPanel/scroll/VBoxContainer/MasteryContainer/Panel/HBoxContainer"]
+margin_left = 318.0
+margin_right = 370.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 52, 52 )
+texture = ExtResource( 18 )
+expand = true
+stretch_mode = 6
+
+[node name="icon" type="TextureRect" parent="ClassPanel/scroll/VBoxContainer/MasteryContainer/Panel/HBoxContainer/frame"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 15 )
+expand = true
+stretch_mode = 6
+
+[node name="SkillContainer" type="VBoxContainer" parent="ClassPanel/scroll/VBoxContainer"]
+margin_top = 338.0
+margin_right = 422.0
+margin_bottom = 338.0
+custom_constants/separation = 1
+
+[node name="Panel" type="PanelContainer" parent="ClassPanel/scroll/VBoxContainer/SkillContainer"]
+visible = false
+margin_right = 677.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 120, 30 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 49 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ClassPanel/scroll/VBoxContainer/SkillContainer/Panel"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 674.0
+margin_bottom = 53.0
+alignment = 2
+
+[node name="frame" type="TextureRect" parent="ClassPanel/scroll/VBoxContainer/SkillContainer/Panel/HBoxContainer"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 6
+
+[node name="icon" type="TextureRect" parent="ClassPanel/scroll/VBoxContainer/SkillContainer/Panel/HBoxContainer/frame"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand = true
+stretch_mode = 6
+
+[node name="skillname" type="Label" parent="ClassPanel/scroll/VBoxContainer/SkillContainer/Panel/HBoxContainer"]
+margin_left = 54.0
+margin_right = 671.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Skill: Water Edge"
+align = 1
+valign = 1
+
+[node name="TraitsContainer" type="PanelContainer" parent="ClassPanel/scroll/VBoxContainer"]
+margin_top = 342.0
+margin_right = 422.0
+margin_bottom = 361.539
+custom_styles/panel = SubResource( 47 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ClassPanel/scroll/VBoxContainer/TraitsContainer"]
+margin_left = 3.0
+margin_top = 2.14639
+margin_right = 419.0
+margin_bottom = 17.1464
+bbcode_enabled = true
+fit_content_height = true
+scroll_active = false
+deselect_on_focus_loss_enabled = false
+
+[node name="BonusText" type="PanelContainer" parent="ClassPanel/scroll/VBoxContainer"]
+margin_top = 679.461
+margin_right = 422.0
+margin_bottom = 716.0
+rect_min_size = Vector2( 120, 30 )
+size_flags_horizontal = 3
+size_flags_vertical = 10
+custom_styles/panel = SubResource( 47 )
+
+[node name="Panel" type="Panel" parent="ClassPanel/scroll/VBoxContainer/BonusText"]
+margin_left = 3.0
+margin_top = 2.14639
+margin_right = 419.0
+margin_bottom = 34.1464
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 50 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ClassPanel/scroll/VBoxContainer/BonusText"]
+margin_left = 3.0
+margin_top = 2.14639
+margin_right = 419.0
+margin_bottom = 34.1464
+custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/normal_font = SubResource( 30 )
+bbcode_enabled = true
+fit_content_height = true
+scroll_active = false
+
+[node name="separator" type="HBoxContainer" parent="ClassPanel/scroll/VBoxContainer"]
+visible = false
+margin_top = 659.0
+margin_right = 677.0
+margin_bottom = 873.0
+size_flags_vertical = 3
