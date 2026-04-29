@@ -1,7 +1,7 @@
 extends Reference
 var data = {
 	lira_quest_1_intro = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_INTRO", reqs = []}],
@@ -10,7 +10,7 @@ var data = {
 		],
 	},
 	lira_quest_1_talk_to_lira = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_TALK_TO_LIRA", reqs = []}],
@@ -20,7 +20,7 @@ var data = {
 		],
 	},
 	lira_quest_1_room_entry = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [
@@ -36,7 +36,7 @@ var data = {
 		],
 	},
 	lira_quest_1_watch_reason = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_WATCH_REASON", reqs = []}],
@@ -46,7 +46,7 @@ var data = {
 		],
 	},
 	lira_quest_1_watch_reason_followup = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_WATCH_REASON_FOLLOWUP", reqs = []}],
@@ -55,7 +55,7 @@ var data = {
 		],
 	},
 	lira_quest_1_expectations = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_EXPECTATIONS", reqs = []}],
@@ -65,7 +65,7 @@ var data = {
 		],
 	},
 	lira_quest_1_expectations_answer = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_EXPECTATIONS_ANSWER", reqs = []}],
@@ -75,7 +75,7 @@ var data = {
 		],
 	},
 	lira_quest_1_favor_request = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_FAVOR_REQUEST", reqs = []}],
@@ -85,7 +85,7 @@ var data = {
 		],
 	},
 	lira_quest_1_favor_accept = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_FAVOR_ACCEPT", reqs = []}],
@@ -94,7 +94,7 @@ var data = {
 		],
 	},
 	lira_quest_1_search_grove = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_SEARCH_GROVE", reqs = []}],
@@ -103,7 +103,7 @@ var data = {
 		],
 	},
 	lira_quest_1_patrol_confrontation = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_PATROL_CONFRONTATION", reqs = []}],
@@ -113,7 +113,7 @@ var data = {
 		],
 	},
 	lira_quest_1_patrol_dependency = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_PATROL_DEPENDENCY", reqs = []}],
@@ -122,7 +122,7 @@ var data = {
 		],
 	},
 	lira_quest_1_patrol_freedom = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_PATROL_FREEDOM", reqs = []}],
@@ -131,7 +131,7 @@ var data = {
 		],
 	},
 	lira_quest_1_grove_arrival = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_GROVE_ARRIVAL", reqs = []}],
@@ -140,7 +140,7 @@ var data = {
 		],
 	},
 	lira_quest_1_centipede_warning = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_CENTIPEDE_WARNING", reqs = []}],
@@ -149,7 +149,7 @@ var data = {
 		],
 	},
 	lira_quest_1_fight_plan = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_FIGHT_PLAN", reqs = []}],
@@ -159,7 +159,7 @@ var data = {
 		],
 	},
 	lira_quest_1_fight_ready = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [
@@ -172,7 +172,7 @@ var data = {
 		],
 	},
 	lira_quest_1_dependency_fight_aftermath = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_DEPENDENCY_FIGHT_AFTERMATH", reqs = []}],
@@ -182,7 +182,7 @@ var data = {
 		],
 	},
 	lira_quest_1_dependency_fight_praise = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_DEPENDENCY_FIGHT_PRAISE", reqs = []}],
@@ -191,7 +191,7 @@ var data = {
 		],
 	},
 	lira_quest_1_freedom_fight_aftermath = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_FREEDOM_FIGHT_AFTERMATH", reqs = []}],
@@ -201,7 +201,7 @@ var data = {
 		],
 	},
 	lira_quest_1_freedom_fight_reflection = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_FREEDOM_FIGHT_REFLECTION", reqs = []}],
@@ -210,7 +210,7 @@ var data = {
 		],
 	},
 	lira_quest_1_belongings_root = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [
@@ -227,7 +227,7 @@ var data = {
 		],
 	},
 	lira_quest_1_diary_part_1 = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_DIARY_PART_1", reqs = []}],
@@ -236,7 +236,7 @@ var data = {
 		],
 	},
 	lira_quest_1_head_back = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_HEAD_BACK", reqs = []}],

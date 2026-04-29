@@ -1386,6 +1386,17 @@ var data = {
 				value = "act1_start"
 			},
 			{
+				code = "add_timed_event",
+				value = "ginny_visit",
+				skip_existing = true,
+				args = [
+					{
+						type = "add_to_hour",
+						hour = [1, 1]
+					}
+				]
+			},
+			{
 				code = "achievement",
 				value = "prologue"
 			}

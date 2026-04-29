@@ -1,7 +1,7 @@
 extends Reference
 var data = {
 	lira_quest2_day_usual_step_outside_mansion = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_DAY_USUAL_STEP_OUTSIDE_MANSION", reqs = []}],
@@ -10,7 +10,7 @@ var data = {
 		],
 	},
 	lira_quest2_find_lira_front_garden_tends = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_FIND_LIRA_FRONT_GARDEN_TENDS", reqs = []}],
@@ -19,7 +19,7 @@ var data = {
 		],
 	},
 	lira_quest2_lira_know_special_occasion_today = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_LIRA_KNOW_SPECIAL_OCCASION_TODAY", reqs = []}],
@@ -28,7 +28,7 @@ var data = {
 		],
 	},
 	lira_quest2_lira_think_perhaps_chance_visit = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_LIRA_THINK_PERHAPS_CHANCE_VISIT", reqs = []}],
@@ -40,7 +40,7 @@ var data = {
 		],
 	},
 	lira_quest2_agree_dep = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_AGREE_DEP", reqs = []}],
@@ -49,7 +49,7 @@ var data = {
 		],
 	},
 	lira_quest2_agree_free = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_AGREE_FREE", reqs = []}],
@@ -58,7 +58,7 @@ var data = {
 		],
 	},
 	lira_quest2_fair_arrival = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_FAIR_ARRIVAL", reqs = []}],
@@ -70,7 +70,7 @@ var data = {
 		variations = [
 			{
 				reqs = [{type = 'local_counter', name = 'total_visits', operant = 'gte', value = 4, check = true}],
-				tags = ['dialogue_scene', 'master_translate'],
+				tags = ['dialogue_scene', 'master_translate'], character = 'lira',
 				text = [{text = "LIRA_QUEST2_FAIR_WINDING_DOWN", reqs = []}],
 				options = [
 					{code = 'lira_quest2_costume_reveal', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
@@ -81,7 +81,7 @@ var data = {
 					{type = 'local_counter', name = 'total_visits', operant = 'gte', value = 2, check = true},
 					{type = 'local_counter', name = 'brawler_done', operant = 'lt', value = 1, check = true},
 				],
-				tags = ['dialogue_scene', 'master_translate'],
+				tags = ['dialogue_scene', 'master_translate'], character = 'lira',
 				text = [{text = "LIRA_QUEST2_BENCH_BRAWLER_INTRO", reqs = []}],
 				options = [
 					{code = 'lira_quest2_brawler_incident', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
@@ -89,7 +89,7 @@ var data = {
 			},
 			{
 				reqs = [],
-				tags = ['dialogue_scene', 'master_translate'],
+				tags = ['dialogue_scene', 'master_translate'], character = 'lira',
 				text = [{text = "LIRA_QUEST2_HUB_TEXT", reqs = []}],
 				options = [
 					{code = 'lira_quest2_food_intro', text = "LIRA_QUEST2_OPTION_FOOD_STALLS", reqs = [{type = 'local_counter', name = 'food_visited', operant = 'lt', value = 1, check = true}], dialogue_argument = 1, type = 'next_dialogue'},
@@ -101,7 +101,7 @@ var data = {
 		],
 	},
 	lira_quest2_food_intro = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_TURN_FOOD_STALLS_AREA_APPROACH", reqs = []}],
@@ -111,7 +111,7 @@ var data = {
 		],
 	},
 	lira_quest2_food_free_result = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		common_effects = [
@@ -124,7 +124,7 @@ var data = {
 		],
 	},
 	lira_quest2_food_buy_offer = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_FOOD_BUY_OFFER", reqs = []}],
@@ -136,7 +136,7 @@ var data = {
 		],
 	},
 	lira_quest2_food_buy_result = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		common_effects = [
@@ -150,7 +150,7 @@ var data = {
 		],
 	},
 	lira_quest2_acc_intro = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_ACC_INTRO", reqs = []}],
@@ -162,7 +162,7 @@ var data = {
 		variations = [
 			{
 				reqs = [{type = 'local_counter', name = 'df_balance', operant = 'gte', value = 0, check = true}],
-				tags = ['dialogue_scene', 'master_translate'],
+				tags = ['dialogue_scene', 'master_translate'], character = 'lira',
 				text = [{text = "LIRA_QUEST2_ACC_DEP_FLUSTERED", reqs = []}],
 				options = [
 					{code = 'lira_quest2_acc_dep_confirm', text = "LIRA_QUEST2_OPTION_DID_WANT_HAIRPIN", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
@@ -171,7 +171,7 @@ var data = {
 			},
 			{
 				reqs = [],
-				tags = ['dialogue_scene', 'master_translate'],
+				tags = ['dialogue_scene', 'master_translate'], character = 'lira',
 				text = [{text = "LIRA_QUEST2_ACC_FREE_APPROACH", reqs = []}],
 				options = [
 					{code = 'lira_quest2_acc_stall_queue', text = "LIRA_QUEST2_OPTION_SURE_SPOIL_SLAVE_LITTLE_ESPECIALLY_SINCE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -183,7 +183,7 @@ var data = {
 		],
 	},
 	lira_quest2_acc_dep_confirm = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_ACC_DEP_CONFIRM", reqs = []}],
@@ -195,7 +195,7 @@ var data = {
 		],
 	},
 	lira_quest2_acc_stall_queue = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_WALK_STALL_TAKE_PLACE_SMALL", reqs = []}],
@@ -205,7 +205,7 @@ var data = {
 		],
 	},
 	lira_quest2_acc_pay = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		common_effects = [
@@ -217,7 +217,7 @@ var data = {
 		],
 	},
 	lira_quest2_acc_steal = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_ACC_STEAL_RESULT", reqs = []}],
@@ -226,7 +226,7 @@ var data = {
 		],
 	},
 	lira_quest2_acc_hairpin_present = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_ACC_HAIRPIN_PRESENT", reqs = []}],
@@ -238,7 +238,7 @@ var data = {
 		],
 	},
 	lira_quest2_acc_hairpin_conclusion = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		common_effects = [
@@ -251,7 +251,7 @@ var data = {
 		],
 	},
 	lira_quest2_shooting_intro = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_SHOOTING_INTRO", reqs = []}],
@@ -261,7 +261,7 @@ var data = {
 		],
 	},
 	lira_quest2_player_setup = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_MAKE_WAY_VENDOR_COVER_ENTRANCE", reqs = []}],
@@ -273,7 +273,7 @@ var data = {
 		],
 	},
 	lira_quest2_player_fail = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		common_effects = [
@@ -286,7 +286,7 @@ var data = {
 		],
 	},
 	lira_quest2_player_win_setup = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_PLAYER_WIN_SETUP", reqs = []}],
@@ -295,7 +295,7 @@ var data = {
 		],
 	},
 	lira_quest2_player_win_vendor = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_VENDOR_FORCES_LIPS_WIDER_SMILE", reqs = []}],
@@ -304,7 +304,7 @@ var data = {
 		],
 	},
 	lira_quest2_player_win_prize = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		common_effects = [
@@ -317,7 +317,7 @@ var data = {
 		],
 	},
 	lira_quest2_shooting_lira_intro = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_SHOOTING_LIRA_INTRO", reqs = []}],
@@ -329,7 +329,7 @@ var data = {
 		],
 	},
 	lira_quest2_lira_shooting_dep = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_LIRA_SHOOTING_DEP", reqs = []}],
@@ -338,7 +338,7 @@ var data = {
 		],
 	},
 	lira_quest2_lira_shooting_free = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_LIRA_SHOOTING_FREE", reqs = []}],
@@ -347,7 +347,7 @@ var data = {
 		],
 	},
 	lira_quest2_lira_shooting_setup = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_MAKE_WAY_VENDOR_COVER_ENTRANCE_2", reqs = []}],
@@ -356,7 +356,7 @@ var data = {
 		],
 	},
 	lira_quest2_lira_shooting_progress = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_HITS_FIFTH_SIXTH_SEVENTH_SHOTS", reqs = []}],
@@ -365,7 +365,7 @@ var data = {
 		],
 	},
 	lira_quest2_lira_shooting_wins = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_VENDOR_CONGRATULATIONS_WINNER_GHM_SEE", reqs = []}],
@@ -375,7 +375,7 @@ var data = {
 		],
 	},
 	lira_quest2_lira_shooting_booth = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_FINALLY_RUSH_PEOPLE_SUBSIDES_LIRA", reqs = []}],
@@ -384,7 +384,7 @@ var data = {
 		],
 	},
 	lira_quest2_lira_shooting_vendor_insult = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_LIRA_HUH_DID_VENDOR_FINALLY", reqs = []}],
@@ -394,7 +394,7 @@ var data = {
 		],
 	},
 	lira_quest2_lira_shooting_sore1 = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_PAT_LIRA_SHOULDER_TELL_IGNORE", reqs = []}],
@@ -403,7 +403,7 @@ var data = {
 		],
 	},
 	lira_quest2_lira_shooting_sore2 = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		common_effects = [
@@ -416,7 +416,7 @@ var data = {
 		],
 	},
 	lira_quest2_lira_shooting_mayor1 = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_LIRA_SHOOTING_MAYOR_SPEECH", reqs = []}],
@@ -425,7 +425,7 @@ var data = {
 		],
 	},
 	lira_quest2_lira_shooting_mayor2 = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		common_effects = [
@@ -438,7 +438,7 @@ var data = {
 		],
 	},
 	lira_quest2_elven_intro = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_ELVEN_INTRO", reqs = []}],
@@ -447,7 +447,7 @@ var data = {
 		],
 	},
 	lira_quest2_elven_figurines = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_LIRA_OBSIDIAN_FIGURINES_KNEW_CRAFTSMAN", reqs = []}],
@@ -456,7 +456,7 @@ var data = {
 		],
 	},
 	lira_quest2_elven_doll_stall = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_LIRA_LOOK_ONE_PRETTY_REACHES", reqs = []}],
@@ -465,7 +465,7 @@ var data = {
 		],
 	},
 	lira_quest2_elven_confusion = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_LIRA_LOOKS_CONFUSION_FLICKERING_ACROSS", reqs = []}],
@@ -475,7 +475,7 @@ var data = {
 		],
 	},
 	lira_quest2_elven_ask_companion = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_ELVEN_VENDOR_COMPANION", reqs = []}],
@@ -485,7 +485,7 @@ var data = {
 		],
 	},
 	lira_quest2_elven_ask_direct = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_ELVEN_VENDOR_DIRECT", reqs = []}],
@@ -495,7 +495,7 @@ var data = {
 		],
 	},
 	lira_quest2_elven_vendor_ignores = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_ELVEN_VENDOR_SEEMS_IGNORE_QUESTIONS", reqs = []}],
@@ -504,7 +504,7 @@ var data = {
 		],
 	},
 	lira_quest2_elven_herbs_stall = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_LIRA_HEY_KNOW_HEAR_LEAST", reqs = []}],
@@ -513,7 +513,7 @@ var data = {
 		],
 	},
 	lira_quest2_elven_exile_reveal = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_LIRA_LOOKS_AROUND_DESPERATELY_SEARCHING", reqs = []}],
@@ -522,7 +522,7 @@ var data = {
 		],
 	},
 	lira_quest2_elven_lira_reaction = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_LIRA_APOLOGIES_LEAVE_ABRUPTLY_MOMENT", reqs = []}],
@@ -542,7 +542,7 @@ var data = {
 		],
 	},
 	lira_quest2_elven_dep_response = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_ELVEN_DEP_RESPONSE", reqs = []}],
@@ -551,7 +551,7 @@ var data = {
 		],
 	},
 	lira_quest2_elven_free_response = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_ELVEN_FREE_RESPONSE", reqs = []}],
@@ -560,7 +560,7 @@ var data = {
 		],
 	},
 	lira_quest2_elven_dancing_approach = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_TWO_WALK_SILENCE_WHILE_LEAVING", reqs = []}],
@@ -569,7 +569,7 @@ var data = {
 		],
 	},
 	lira_quest2_elven_dancing_invite = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_WATCHES_PAIR_SPIN_PAST_WOMAN", reqs = []}],
@@ -581,7 +581,7 @@ var data = {
 		],
 	},
 	lira_quest2_elven_dancing_dep = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_DANCING_DEP", reqs = []}],
@@ -590,7 +590,7 @@ var data = {
 		],
 	},
 	lira_quest2_elven_dancing_free = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_DANCING_FREE", reqs = []}],
@@ -599,7 +599,7 @@ var data = {
 		],
 	},
 	lira_quest2_elven_dancing_end = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		common_effects = [
@@ -612,7 +612,7 @@ var data = {
 		],
 	},
 	lira_quest2_brawler_incident = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_NEAR_ONE_TAVERNS_TWO_MEN", reqs = []}],
@@ -624,7 +624,7 @@ var data = {
 		variations = [
 			{
 				reqs = [{type = 'local_counter', name = 'df_balance', operant = 'lt', value = 0, check = true}],
-				tags = ['dialogue_scene', 'master_translate'],
+				tags = ['dialogue_scene', 'master_translate'], character = 'lira',
 				text = [{text = "LIRA_QUEST2_RUSHES_TOWARD_BRAWLERS_LIRA_HEY", reqs = []}],
 				options = [
 					{code = 'lira_quest2_brawler_struggle', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
@@ -632,7 +632,7 @@ var data = {
 			},
 			{
 				reqs = [],
-				tags = ['dialogue_scene', 'master_translate'],
+				tags = ['dialogue_scene', 'master_translate'], character = 'lira',
 				text = [{text = "LIRA_QUEST2_BRAWLER_DEP_ENTRY", reqs = []}],
 				options = [
 					{code = 'lira_quest2_brawler_free_intro', text = "LIRA_QUEST2_OPTION_YEAH_DEAL", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -644,7 +644,7 @@ var data = {
 		],
 	},
 	lira_quest2_brawler_free_intro = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_RUSHES_TOWARD_BRAWLERS_LIRA_HEY", reqs = []}],
@@ -653,7 +653,7 @@ var data = {
 		],
 	},
 	lira_quest2_brawler_struggle = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		common_effects = [
@@ -668,7 +668,7 @@ var data = {
 		],
 	},
 	lira_quest2_brawler_free_aftermath = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_BRAWLER_FREE_AFTERMATH", reqs = []}],
@@ -677,7 +677,7 @@ var data = {
 		],
 	},
 	lira_quest2_brawler_dep_player_handles = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_BRAWLER_PLAYER_HANDLES", reqs = []}],
@@ -686,7 +686,7 @@ var data = {
 		],
 	},
 	lira_quest2_brawler_mayor_recognition = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_DRUNK_MAN_MAYOR_REALIZE_SCRAMBLES", reqs = []}],
@@ -695,7 +695,7 @@ var data = {
 		],
 	},
 	lira_quest2_brawler_owner_thanks = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		common_effects = [
@@ -710,7 +710,7 @@ var data = {
 		variations = [
 			{
 				reqs = [{type = 'local_counter', name = 'lira_handled_drunk', operant = 'gte', value = 1, check = true}],
-				tags = ['dialogue_scene', 'master_translate'],
+				tags = ['dialogue_scene', 'master_translate'], character = 'lira',
 				text = [{text = "LIRA_QUEST2_BRAWLER_OWNER_REWARD", reqs = []}],
 				options = [
 					{code = 'lira_quest2_brawler_reward_dep', text = "LIRA_QUEST2_OPTION_SLAVE_DOESNT_NEED_MONEY_PROVIDE_EVERYTHING", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -729,7 +729,7 @@ var data = {
 			},
 			{
 				reqs = [],
-				tags = ['dialogue_scene', 'master_translate'],
+				tags = ['dialogue_scene', 'master_translate'], character = 'lira',
 				text = [{text = "LIRA_QUEST2_BRAWLER_RETURN_TEXT", reqs = []}],
 				options = [
 					{code = 'lira_quest2_hub', text = "LIRA_QUEST2_OPTION_RETURN_TO_FAIR", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
@@ -738,7 +738,7 @@ var data = {
 		],
 	},
 	lira_quest2_brawler_reward_dep = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_BRAWLER_REWARD_DEP", reqs = []}],
@@ -747,7 +747,7 @@ var data = {
 		],
 	},
 	lira_quest2_brawler_reward_free = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_BRAWLER_REWARD_FREE", reqs = []}],
@@ -756,7 +756,7 @@ var data = {
 		],
 	},
 	lira_quest2_brawler_return = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_BRAWLER_RETURN_TEXT", reqs = []}],
@@ -765,7 +765,7 @@ var data = {
 		],
 	},
 	lira_quest2_costume_reveal = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_COSTUME_CONSISTING_HEADDRESS_CROWNED_LONG", reqs = []}],
@@ -774,7 +774,7 @@ var data = {
 		],
 	},
 	lira_quest2_costume_show = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_LIRA_FEATHERS_SEEM_QUITE_NICE", reqs = []}],
@@ -784,7 +784,7 @@ var data = {
 		],
 	},
 	lira_quest2_costume_lira_react = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_LIRA_HUH_WANT_WEAR_EYES", reqs = []}],
@@ -808,7 +808,7 @@ var data = {
 		],
 	},
 	lira_quest2_costume_dep_speech1 = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_LIRA_BLINKS_LIRA_PROUD_WEARING", reqs = []}],
@@ -817,7 +817,7 @@ var data = {
 		],
 	},
 	lira_quest2_costume_dep_speech2 = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_COSTUME_DEP_CONCLUSION", reqs = []}],
@@ -826,7 +826,7 @@ var data = {
 		],
 	},
 	lira_quest2_costume_free_speech1 = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_COSTUME_FREE_REFLECTION", reqs = []}],
@@ -835,7 +835,7 @@ var data = {
 		],
 	},
 	lira_quest2_costume_free_speech2 = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_HAND_REACHES_BRUSH_FEATHERS_LIRA", reqs = []}],
@@ -844,7 +844,7 @@ var data = {
 		],
 	},
 	lira_quest2_costume_purchase = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_TOSS_BAG_COINS_SMILING_VENDOR", reqs = []}],
@@ -853,7 +853,7 @@ var data = {
 		],
 	},
 	lira_quest2_costume_admire = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_CATCHES_REFLECTION_NEARBY_LANTERN_PAUSES", reqs = []}],
@@ -863,7 +863,7 @@ var data = {
 		],
 	},
 	lira_quest2_costume_compliment = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_SMILE_WIDENS_WORDS_NOTICE_EYES", reqs = []}],
@@ -872,7 +872,7 @@ var data = {
 		],
 	},
 	lira_quest2_costume_walk = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_LIRA_WALKS_SLIGHTLY_FRONT_LETTING", reqs = []}],
@@ -881,7 +881,7 @@ var data = {
 		],
 	},
 	lira_quest2_costume_epilogue_start = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_WALK_BACK_MANSION_QUIET_HAND", reqs = []}],
@@ -891,7 +891,7 @@ var data = {
 		],
 	},
 	lira_quest2_epilogue1 = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_LIRA_ONE_EVER_TAKEN_SUCH", reqs = []}],
@@ -900,7 +900,7 @@ var data = {
 		],
 	},
 	lira_quest2_epilogue2 = {
-		image = null,
+		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST2_LIRA_THOUGHT_HAPPY_LIVING_TEMPLE", reqs = []}],

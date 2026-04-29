@@ -2051,6 +2051,8 @@ func common_effects(effects):
 				ResourceScripts.game_party.add_slave(newslave)
 				ResourceScripts.game_party.build_starting_relations(newslave.id)
 			'add_timed_event':
+				if i.has('skip_existing') and i.skip_existing and ResourceScripts.game_progress.timed_event_exists(i.value):
+					continue
 				var newevent = {reqs = [], code = i.value}
 				for k in i.args:
 					match k.type:
