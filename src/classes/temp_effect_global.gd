@@ -126,12 +126,12 @@ func soft_remove(): #remove without calling app_obj.remove_effect(), useful for 
 #	sub_effects.clear()
 #	pass
 
-func remove():
+func remove(internal = false):
 	if !is_applied: return
 	.remove()
 	for e in sub_effects:
 		var t = effects_pool.get_effect_by_id(e)
-		t.remove()
+		t.remove(true)
 	sub_effects.clear()
 	is_applied = false
 

@@ -22,7 +22,7 @@ func process_event(ev, data = {}):
 	for rec in cash:
 		var tmp = effects_pool.get_effect_by_id(rec[0])
 		if tmp is temp_e_simple:
-			if tmp.process_tick(ev) != variables.TE_RES_NOACT:
+			if !(tmp.process_tick(ev) in [variables.TE_RES_NOACT, variables.TE_RES_INACTIVE]):
 				break
 
 
@@ -34,7 +34,7 @@ func process_tick(ev):
 	for rec in cash:
 		var tmp = effects_pool.get_effect_by_id(rec[0])
 		if tmp is temp_e_simple:
-			if tmp.process_tick(ev) != variables.TE_RES_NOACT:
+			if !(tmp.process_tick(ev) in [variables.TE_RES_NOACT, variables.TE_RES_INACTIVE]):
 				break
 
 

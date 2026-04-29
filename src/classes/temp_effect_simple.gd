@@ -37,7 +37,8 @@ func apply():
 
 
 func process_tick(ev):
-	if !is_applied: return
+	if !is_applied: 
+		return variables.TE_RES_INACTIVE
 	var obj = get_applied_obj()
 	var res = variables.TE_RES_NOACT
 	if template.has('tick_event') and template.tick_event.has(ev):
@@ -47,15 +48,15 @@ func process_tick(ev):
 		for b in buffs:
 			b.calculate_args()
 		if remains == 0:
-			remove()
+			remove(true)
 			res = variables.TE_RES_REMOVE
+	return res
 
 
 func process_remove(ev):
 	if template.has('rem_event') and template.rem_event.has(ev):
 		var obj = get_applied_obj()
-		remove()
-		obj.reset_rebuild_delay()
+		remove(true)
 
 
 func merge_duration(tvalue):

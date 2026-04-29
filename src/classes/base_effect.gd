@@ -37,7 +37,7 @@ func fill_sub_effects(firsttime = false):
 			tmp.calculate_args(get_args_resolved())
 
 
-func remove():
+func remove(internal = false):
 	if !is_applied: 
 		return
 	for e in sub_effects:
@@ -45,7 +45,7 @@ func remove():
 		tmp.is_applied = false
 	var obj = get_applied_obj()
 	if obj != null and is_stored:
-		obj.remove_effect(id)
+		obj.remove_effect(id, internal)
 	is_applied = false
 
 

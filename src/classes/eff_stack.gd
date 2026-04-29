@@ -84,7 +84,7 @@ func process_reset(ev):
 		var tmp = effects_pool.get_effect_by_id(rec)
 		if tmp.template.type == 'trigger':
 			tmp.process_reset(ev)
-	for rec in effects:
+	for rec in effects.keys().duplicate():
 		var tmp = effects_pool.get_effect_by_id(rec)
 		if tmp is temp_e_simple:
 			tmp.process_remove(ev)
