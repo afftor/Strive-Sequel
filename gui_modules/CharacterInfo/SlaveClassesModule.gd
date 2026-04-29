@@ -31,7 +31,7 @@ func _ready():
 #	$UpgradeButton.connect("pressed", $stats_upgrade, 'show')
 	if !get_parent().name == "CheatsModule":
 		$CheckBox.connect("pressed", self, "checkbox_locked")
-	input_handler.AddPanelOpenCloseAnimation($ClassPanel)
+#	input_handler.AddPanelOpenCloseAnimation($ClassPanel)
 	$MasteryPanel/AddPoint.connect("pressed", self, 'add_mastery_prompt')
 	$MasteryPanel/AddPoint2.connect("pressed", self, 'add_mastery_prompt_1')
 	$MasteryPanel/SkillBookButton.connect("pressed", self, "SkillBookButtonPress")
@@ -203,6 +203,7 @@ func sort_by_name(first,second):
 func open_class(classcode):
 	#if !gui_controller.windows_opened.has($ClassPanel):
 	#	gui_controller.windows_opened.append($ClassPanel)
+	print($ClassPanel.modulate)
 	var tempclass = classesdata.professions[classcode]
 	var class_locked = true
 	if !ResourceScripts.game_globals.unlock_all_classes:
@@ -211,7 +212,7 @@ func open_class(classcode):
 		class_locked = false
 	var text #= ResourceScripts.descriptions.get_class_details(person, tempclass)
 	current_class = classcode
-	$ClassPanel._open_panel(person, classcode)
+	$ClassPanel/scroll._open_panel(person, classcode)
 	if person.has_profession(tempclass.code):
 		text = person.translate('[name] has already acquired this class.')
 		$ClassPanel/HBoxContainer2/Unlock.hide()
@@ -229,6 +230,7 @@ func open_class(classcode):
 	update_class_buttons(classcode)
 	$ClassPanel.visible = true
 	$MasteryPanel.hide()
+	print($ClassPanel.modulate)
 
 
 func update_class_buttons(classcode):

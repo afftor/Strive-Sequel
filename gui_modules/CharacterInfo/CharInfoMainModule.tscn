@@ -284,8 +284,6 @@ content_margin_left = 3.0
 content_margin_right = 3.0
 texture = ExtResource( 137 )
 region_rect = Rect2( 0, 0, 294, 49 )
-margin_left = 2.33591
-margin_right = 2.2752
 margin_top = 3.0
 margin_bottom = 3.0
 
@@ -294,8 +292,6 @@ content_margin_left = 3.0
 content_margin_right = 3.0
 texture = ExtResource( 137 )
 region_rect = Rect2( 0, 0, 294, 49 )
-margin_left = 3.08005
-margin_right = 2.16144
 margin_top = 3.0
 margin_bottom = 3.0
 
@@ -1847,9 +1843,8 @@ margin_right = 699.0
 margin_bottom = 197.0
 theme = ExtResource( 133 )
 custom_styles/panel = SubResource( 1 )
-script = ExtResource( 138 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SlaveClassesModule/ClassPanel"]
+[node name="scroll" type="ScrollContainer" parent="SlaveClassesModule/ClassPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -1858,13 +1853,23 @@ margin_right = -10.0
 margin_bottom = -71.0
 mouse_filter = 2
 size_flags_vertical = 0
+theme = ExtResource( 15 )
+scroll_horizontal_enabled = false
+script = ExtResource( 138 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SlaveClassesModule/ClassPanel/scroll"]
+margin_right = 677.0
+margin_bottom = 873.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer"]
 margin_right = 677.0
 margin_bottom = 220.0
 alignment = 1
 
-[node name="TextureRect2" type="TextureRect" parent="SlaveClassesModule/ClassPanel/VBoxContainer/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer/HBoxContainer"]
 margin_left = 228.0
 margin_right = 448.0
 margin_bottom = 220.0
@@ -1872,7 +1877,7 @@ rect_min_size = Vector2( 220, 220 )
 texture = ExtResource( 143 )
 stretch_mode = 6
 
-[node name="ClassIcon" type="TextureRect" parent="SlaveClassesModule/ClassPanel/VBoxContainer/HBoxContainer/TextureRect2"]
+[node name="ClassIcon" type="TextureRect" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer/HBoxContainer/TextureRect2"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1880,7 +1885,7 @@ texture = ExtResource( 146 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="SlaveClassesModule/ClassPanel/VBoxContainer"]
+[node name="Label" type="Label" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer"]
 margin_top = 224.0
 margin_right = 677.0
 margin_bottom = 266.0
@@ -1889,25 +1894,25 @@ custom_fonts/font = ExtResource( 6 )
 text = "Class Name"
 align = 1
 
-[node name="ReqsContainer" type="PanelContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer"]
+[node name="ReqsContainer" type="PanelContainer" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer"]
 margin_top = 270.0
 margin_right = 677.0
 margin_bottom = 345.539
 custom_styles/panel = SubResource( 47 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer/ReqsContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer/ReqsContainer"]
 margin_left = 3.0
 margin_top = 2.14639
 margin_right = 674.0
 margin_bottom = 73.1464
 
-[node name="Label" type="Label" parent="SlaveClassesModule/ClassPanel/VBoxContainer/ReqsContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer/ReqsContainer/VBoxContainer"]
 margin_right = 671.0
 margin_bottom = 33.0
 text = "Requirements"
 align = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SlaveClassesModule/ClassPanel/VBoxContainer/ReqsContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer/ReqsContainer/VBoxContainer"]
 margin_top = 37.0
 margin_right = 671.0
 margin_bottom = 71.0
@@ -1916,13 +1921,13 @@ fit_content_height = true
 scroll_active = false
 deselect_on_focus_loss_enabled = false
 
-[node name="StatContainer" type="PanelContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer"]
+[node name="StatContainer" type="PanelContainer" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer"]
 margin_top = 349.0
 margin_right = 677.0
 margin_bottom = 387.539
 custom_styles/panel = SubResource( 47 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SlaveClassesModule/ClassPanel/VBoxContainer/StatContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer/StatContainer"]
 margin_left = 3.0
 margin_top = 2.14639
 margin_right = 674.0
@@ -1932,13 +1937,13 @@ fit_content_height = true
 scroll_active = false
 deselect_on_focus_loss_enabled = false
 
-[node name="MasteryContainer" type="VBoxContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer"]
+[node name="MasteryContainer" type="VBoxContainer" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer"]
 margin_top = 391.0
 margin_right = 677.0
 margin_bottom = 391.0
 custom_constants/separation = 1
 
-[node name="Panel" type="PanelContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer/MasteryContainer"]
+[node name="Panel" type="PanelContainer" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer/MasteryContainer"]
 visible = false
 margin_right = 376.0
 margin_bottom = 58.0
@@ -1946,14 +1951,14 @@ rect_min_size = Vector2( 120, 30 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 48 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer/MasteryContainer/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer/MasteryContainer/Panel"]
 margin_left = 3.0
 margin_top = 3.0
 margin_right = 373.0
 margin_bottom = 55.0
 alignment = 2
 
-[node name="statname" type="Label" parent="SlaveClassesModule/ClassPanel/VBoxContainer/MasteryContainer/Panel/HBoxContainer"]
+[node name="statname" type="Label" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer/MasteryContainer/Panel/HBoxContainer"]
 margin_right = 314.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -1962,7 +1967,7 @@ text = "Combat Mastery Points: "
 align = 1
 valign = 1
 
-[node name="frame" type="TextureRect" parent="SlaveClassesModule/ClassPanel/VBoxContainer/MasteryContainer/Panel/HBoxContainer"]
+[node name="frame" type="TextureRect" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer/MasteryContainer/Panel/HBoxContainer"]
 margin_left = 318.0
 margin_right = 370.0
 margin_bottom = 52.0
@@ -1971,7 +1976,7 @@ texture = ExtResource( 145 )
 expand = true
 stretch_mode = 6
 
-[node name="icon" type="TextureRect" parent="SlaveClassesModule/ClassPanel/VBoxContainer/MasteryContainer/Panel/HBoxContainer/frame"]
+[node name="icon" type="TextureRect" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer/MasteryContainer/Panel/HBoxContainer/frame"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1979,13 +1984,13 @@ texture = ExtResource( 86 )
 expand = true
 stretch_mode = 6
 
-[node name="SkillContainer" type="VBoxContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer"]
+[node name="SkillContainer" type="VBoxContainer" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer"]
 margin_top = 395.0
 margin_right = 677.0
 margin_bottom = 395.0
 custom_constants/separation = 1
 
-[node name="Panel" type="PanelContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer/SkillContainer"]
+[node name="Panel" type="PanelContainer" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer/SkillContainer"]
 visible = false
 margin_right = 677.0
 margin_bottom = 56.0
@@ -1993,14 +1998,14 @@ rect_min_size = Vector2( 120, 30 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 49 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer/SkillContainer/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer/SkillContainer/Panel"]
 margin_left = 3.0
 margin_top = 3.0
 margin_right = 674.0
 margin_bottom = 53.0
 alignment = 2
 
-[node name="frame" type="TextureRect" parent="SlaveClassesModule/ClassPanel/VBoxContainer/SkillContainer/Panel/HBoxContainer"]
+[node name="frame" type="TextureRect" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer/SkillContainer/Panel/HBoxContainer"]
 margin_right = 50.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
@@ -2008,14 +2013,14 @@ texture = ExtResource( 45 )
 expand = true
 stretch_mode = 6
 
-[node name="icon" type="TextureRect" parent="SlaveClassesModule/ClassPanel/VBoxContainer/SkillContainer/Panel/HBoxContainer/frame"]
+[node name="icon" type="TextureRect" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer/SkillContainer/Panel/HBoxContainer/frame"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 expand = true
 stretch_mode = 6
 
-[node name="skillname" type="Label" parent="SlaveClassesModule/ClassPanel/VBoxContainer/SkillContainer/Panel/HBoxContainer"]
+[node name="skillname" type="Label" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer/SkillContainer/Panel/HBoxContainer"]
 margin_left = 54.0
 margin_right = 671.0
 margin_bottom = 50.0
@@ -2025,13 +2030,13 @@ text = "Skill: Water Edge"
 align = 1
 valign = 1
 
-[node name="TraitsContainer" type="PanelContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer"]
+[node name="TraitsContainer" type="PanelContainer" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer"]
 margin_top = 399.0
 margin_right = 677.0
 margin_bottom = 437.539
 custom_styles/panel = SubResource( 47 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SlaveClassesModule/ClassPanel/VBoxContainer/TraitsContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer/TraitsContainer"]
 margin_left = 3.0
 margin_top = 2.14639
 margin_right = 674.0
@@ -2041,7 +2046,7 @@ fit_content_height = true
 scroll_active = false
 deselect_on_focus_loss_enabled = false
 
-[node name="BonusText" type="PanelContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer"]
+[node name="BonusText" type="PanelContainer" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer"]
 margin_top = 836.461
 margin_right = 677.0
 margin_bottom = 873.0
@@ -2050,7 +2055,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 10
 custom_styles/panel = SubResource( 47 )
 
-[node name="Panel" type="Panel" parent="SlaveClassesModule/ClassPanel/VBoxContainer/BonusText"]
+[node name="Panel" type="Panel" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer/BonusText"]
 margin_left = 3.0
 margin_top = 2.14639
 margin_right = 674.0
@@ -2059,7 +2064,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 50 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SlaveClassesModule/ClassPanel/VBoxContainer/BonusText"]
+[node name="RichTextLabel" type="RichTextLabel" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer/BonusText"]
 margin_left = 3.0
 margin_top = 2.14639
 margin_right = 674.0
@@ -2070,9 +2075,9 @@ bbcode_enabled = true
 fit_content_height = true
 scroll_active = false
 
-[node name="separator" type="HBoxContainer" parent="SlaveClassesModule/ClassPanel/VBoxContainer"]
+[node name="separator" type="HBoxContainer" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer"]
 visible = false
-margin_top = 636.0
+margin_top = 659.0
 margin_right = 677.0
 margin_bottom = 873.0
 size_flags_vertical = 3
@@ -3682,6 +3687,7 @@ align = 1
 valign = 1
 
 [node name="SlaveSiblingsModule" type="TextureRect" parent="."]
+visible = false
 light_mask = 0
 margin_left = 239.0
 margin_top = 105.0

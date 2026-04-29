@@ -28,6 +28,8 @@ func _open_panel(new_person, class_id):
 	person = new_person
 	classdata = classesdata.professions[class_id]
 	_rebuild()
+	visible = true
+	set_process(false)
 
 
 func update():
