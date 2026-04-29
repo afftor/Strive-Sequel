@@ -134,11 +134,6 @@ func fix_serialization():
 	master_points = int(master_points)
 	master_starting_factor_bonus = int(master_starting_factor_bonus)
 	
-	#divine_symbol_quest fix
-	var t = get_active_quest('divine_symbol_quest')
-	if t != null:
-#		if tmp.stage in []: # for i deduced that millford should be locked for full duration of quest
-		globals.common_effects([{code = 'set_location_param', location = 'settlement_plains1', area = 'plains', param = 'locked', value = true},])
 	#marriage spouse fix
 	if spouse!= null and !globals.valuecheck({type = 'has_spouse', check = true}) and !marriage_completed:
 		var clear = []
@@ -163,34 +158,14 @@ func fix_serialization():
 				print("removed dialogue: " + line)
 				selected_dialogues.erase(line)
 	
-	fix_event_duplicate("lilia_finale_1")
-	
-	while planned_mansion_events.has("ZCEvent_1"): # fixes multiple ZCEvent_1 events
-		planned_mansion_events.erase("ZCEvent_1")
-	if !seen_events.has("ZCEvent_1") && !planned_mansion_events.has("ZCEvent_1") && (completed_quests.has('cali_heirloom_quest') || completed_quests.has('cali_taming_quest')):
-		planned_mansion_events.append("ZCEvent_1")
-	if !seen_events.has("goblin_quest_0") && !timed_event_exists("goblin_quest_0") && !seen_events.has("goblin_quest_1") && !timed_event_exists("goblin_quest_1") && completed_quests.has('sword_artifact_quest'):
-		globals.common_effects([{code = 'add_timed_event', value = "goblin_quest_0", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
-	if !seen_events.has("zephyra_lilia_1") && !timed_event_exists("zephyra_lilia_1") && completed_quests.has('zephyra_bath_quest'):
-		globals.common_effects([{code = 'add_timed_event', value = "zephyra_lilia_1", args = [{type = 'add_to_date', date = [5,10], hour = 2}]}])
-	if !timed_event_exists("lilia_finale_1") and !seen_events.has("lilia_finale_1") and completed_quests.has("sick_lilia_quest") and ResourceScripts.game_party.get_unique_slave("lilia") != null:
-		globals.common_effects([{code = 'add_timed_event', value = "lilia_finale_1", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
-	if !seen_events.has("zephyra_painting_1") && !timed_event_exists("zephyra_painting_1") && completed_quests.has('zephyra_bath_quest') && completed_quests.has('getting_lira_quest') && ResourceScripts.game_party.if_unique_available('zephyra'):
-		globals.common_effects([{code = 'add_timed_event', value = "zephyra_painting_1", args = [{type = 'add_to_date', date = [2,5], hour = 1}]}])
+
 	if !seen_events.has("kuro3_init_1") && !timed_event_exists("kuro3_init_1") && completed_quests.has('kuro_errand_quest'):
 		globals.common_effects([{code = 'add_timed_event', value = "kuro3_init_1", args = [{type = 'add_to_date', date = [4,4], hour = 1}]}])
 	if !seen_events.has("mae_initiate_start") && !timed_event_exists("mae_initiate_start") && seen_events.has("after_ritual_good_2_1_2"):
 		globals.common_effects([{code = 'add_timed_event', value = "mae_initiate_start", args = [{type = 'add_to_date', date = [3,3], hour = 1}]}])
 	if !seen_events.has("heleviel_quest_1") and ResourceScripts.game_party.get_unique_slave('heleviel') != null:
 		globals.common_effects([{code = 'plan_mansion_event', value = "heleviel_quest_1"}])
-	if !dialogue_local_counters.has('mae_perverted_actions') and seen_events.has('pre_ritual_7_3_3'):
-		dialogue_local_counters.mae_perverted_actions = 1
-		dialogue_local_counters.mae_sex_actions = 1
-		decisions.push_back('MaeBlow')
-		if seen_events.has('ritual_6_1_1'):
-			dialogue_local_counters.mae_perverted_actions += 1
-		if selected_dialogues.has('MAE_SEARCH_COMPLETE_FINAL_OPTION_3'):
-			dialogue_local_counters.mae_perverted_actions += 1
+	
 	if !seen_events.has("mae_druid_event_start") && !timed_event_exists("mae_druid_event_start") && seen_events.has("mae_search_complete_final"):
 		globals.common_effects([
 			{code = "add_timed_event", value = "mae_druid_event_start", args = [{type = "add_to_date", date = [2, 2], hour = 2}]},
@@ -198,7 +173,7 @@ func fix_serialization():
 		])
 	if !seen_events.has("jean_sidequest_start") and ResourceScripts.game_party.get_unique_slave('jean') != null:
 		globals.common_effects([{code = 'plan_mansion_event', value = "jean_sidequest_start"}])
-	#2add amelia questline here. idk how cause herbs quest can be failed - so need correct condition
+	
 	
 	#char_events
 	char_events.interval = int(char_events.interval)
