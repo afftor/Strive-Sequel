@@ -610,7 +610,7 @@ func test_mode():
 		character.set_stat('eye_color','green')
 		character.unlock_class("master")
 		character.unlock_class("worker")
-#		character.unlock_class("paladin")
+		character.unlock_class("shieldbearer")
 #		character.unlock_class("assassin")
 		character.unlock_class("knight")
 		character.set_stat('height', 'average')

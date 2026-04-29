@@ -82,6 +82,32 @@ var skills = {
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.3
 	},
+	
+	boar_heal = { #mae trait auto skill
+		code = 'boar_heal',
+		descript = '',
+		icon = load("res://assets/images/iconsskills/takeposition.png"),
+		type = 'auto', 
+		ability_type = 'skill',
+		tags = ['instant'],
+		reqs = [],
+		targetreqs = [],
+		effects = [], 
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'line',
+		target_range = 'any',
+		damage_type = 'weapon',
+		damage = 0,
+		sfx = [{code = 'heal', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = null, hit = null},
+		value = ['10'],
+		damagestat = ['-damage_hp']
+	},
 }
 var effects = {
 	e_fa_flight = {
@@ -145,6 +171,25 @@ var effects = {
 				]
 			}
 		]
+	},
+	e_boar_autoheal = Effectdata.rebuild_autocast({skill = 'boar_heal', trigger = [variables.TR_TURN_S]}),
+	e_satyr_mpreg = { 
+		type = 'trigger',
+		trigger = [variables.TR_CAST],
+		conditions = [
+			{type = 'skill', value = ['ability_type', 'eq', 'spell']},
+			{type = 'skill', value = ['tags', 'has', 'targets_ally']},
+			],
+		req_skill = true,
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				args = {amount = {obj = 'self', func = 'amount', amount = 4}},
+				atomic = [{type = 'sfx', value = 'mind_shatter'}, 'a_manasiphon'] #fix sfx
+			}
+		],
+		buffs = []
 	},
 }
 var atomic_effects = {}

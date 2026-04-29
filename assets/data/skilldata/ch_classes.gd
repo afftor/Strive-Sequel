@@ -1186,6 +1186,7 @@ var effects = {
 			{
 				type = 'oneshot',
 				target = 'owner',
+				args = {caster = {obj = 'parent', func = 'arg', arg = 'caster', comment = 'couneratk_target'}},
 				atomic = [{type = 'use_combat_skill', skill = 'attack', target = ['parent_args', 'caster']}],
 			}
 		],
