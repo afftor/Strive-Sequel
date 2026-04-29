@@ -1,3 +1,14 @@
+0.14.2b
+Added darker background for events
+Revamped Hector's boss fight (by Garden)
+Fixed void barrage using wrong sound effect
+Fixed Senerus sprite being too big
+Fixed class GUI tooltip when it's too long
+Fixed some effects not showing correct tooltips in combat
+Fixed class tooltip showing empty requirements field in some cases
+Fixed multiple issues with Rouge's quest
+Fixed multiple event combat encounters featuring incorrect background
+Fixed flight effect incorrectly showing in combat log
 0.14.2a
 Multiple fixes regarding quests and gui behavior 
 0.14.2

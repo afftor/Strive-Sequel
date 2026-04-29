@@ -203,7 +203,6 @@ func sort_by_name(first,second):
 func open_class(classcode):
 	#if !gui_controller.windows_opened.has($ClassPanel):
 	#	gui_controller.windows_opened.append($ClassPanel)
-	print($ClassPanel.modulate)
 	var tempclass = classesdata.professions[classcode]
 	var class_locked = true
 	if !ResourceScripts.game_globals.unlock_all_classes:
@@ -230,7 +229,6 @@ func open_class(classcode):
 	update_class_buttons(classcode)
 	$ClassPanel.visible = true
 	$MasteryPanel.hide()
-	print($ClassPanel.modulate)
 
 
 func update_class_buttons(classcode):

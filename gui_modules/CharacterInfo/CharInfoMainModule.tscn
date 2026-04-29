@@ -284,6 +284,8 @@ content_margin_left = 3.0
 content_margin_right = 3.0
 texture = ExtResource( 137 )
 region_rect = Rect2( 0, 0, 294, 49 )
+margin_left = 2.33591
+margin_right = 2.2752
 margin_top = 3.0
 margin_bottom = 3.0
 
@@ -292,6 +294,8 @@ content_margin_left = 3.0
 content_margin_right = 3.0
 texture = ExtResource( 137 )
 region_rect = Rect2( 0, 0, 294, 49 )
+margin_left = 3.08005
+margin_right = 2.16144
 margin_top = 3.0
 margin_bottom = 3.0
 
@@ -1851,7 +1855,6 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = -10.0
 margin_bottom = -71.0
-mouse_filter = 2
 size_flags_vertical = 0
 theme = ExtResource( 15 )
 scroll_horizontal_enabled = false
@@ -1860,7 +1863,6 @@ script = ExtResource( 138 )
 [node name="VBoxContainer" type="VBoxContainer" parent="SlaveClassesModule/ClassPanel/scroll"]
 margin_right = 677.0
 margin_bottom = 873.0
-mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 

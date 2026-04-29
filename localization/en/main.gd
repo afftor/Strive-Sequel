@@ -25845,7 +25845,7 @@ The two of you make your way back to the road, leaving the quiet grove behind.""
 	ERDYNA_QUEST_STAGE_SENERUS = "Visit Senerus with Erdyna and learn what he knows about the artifact.",
 	ERDYNA_QUEST_STAGE_CATACOMBS = "Visit catacomb entrance in Empire region.",
 	ERDYNA_QUEST_STAGE_MYR = "Show the copied catacomb writing to Myr.",
-	ERDYNA_QUEST_STAGE_DRAGONHUNTERS = "Visit elven capital for more information on catacomb doors.",
+	ERDYNA_QUEST_STAGE_DRAGONHUNTERS = "Progression of this event is currently WIP, please update the game when it is added. Thank you for playing and consider supporting the development.",#"Visit elven capital for more information on catacomb doors.",
 	ACT4_ERDYNA_FOLLOWUP_1 = """{color=yellow|Erdyna: — Alright, so about that artifact. Hope you didn't take me for an expert on these things, but worry not. I happen to know just the right person for something like that. But first I need to stop by my crew's base. Will you follow?}""",
 	ACT4_ERDYNA_FOLLOWUP_1_OPTION_GO = "Alright, let's go.",
 	ACT4_ERDYNA_FOLLOWUP_1_OPTION_LATER = "I'll drop by when I have time.",
