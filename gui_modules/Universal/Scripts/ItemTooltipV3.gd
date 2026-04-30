@@ -122,6 +122,7 @@ func material_tooltip(data, workers_data = {}):
 #	if data.has('amount'):
 #		text += "\nOwned: " + str(data.amount)
 	iconnode.texture = item.icon
+	$TopPanel/IconFrame.material = null
 	build_price(item.price)
 	textnode2.bbcode_text = globals.TextEncoder(text)
 	
