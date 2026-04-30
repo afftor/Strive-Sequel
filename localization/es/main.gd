@@ -3462,6 +3462,18 @@ Mayor daño y tasa de impacto""",
 Mayor evasión, tasa de impacto y MAG DEF""",
 	TRAITEFFECTRARETOUGH = """Raro: Duro
 Mayor salud, DEF y MAG DEF""",
+	TRAITMONSTER_MASTERY_WARFAREDESCRIPT = """Warfare Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_PROTECTIONDESCRIPT = """Protection Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_STEALTHDESCRIPT = """Stealth Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_MARKSMANSHIPDESCRIPT = """Marksmanship Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_LEADERSHIPDESCRIPT = """Leadershp Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_FIREDESCRIPT = """Fire Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_WATERDESCRIPT = """Water Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_AIRDESCRIPT = """Air Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_EARTHDESCRIPT = """Earth Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_LIGHTDESCRIPT = """Light Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_DARKDESCRIPT = """Dark Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_MINDDESCRIPT = """Mind Mastery""", # MISSING TRANSLATION
 	TRAITEFFECTHARDWORK = "Trabajo duro: +50%% Productividad",
 	TRAITEFFECTPHYSBUF = "Elixir de fuerza del ogro: +80 Física",
 	TRAITEFFECTWITSBUF = "Elixir de Mente Expandida: +80 Ingenio",
@@ -11550,6 +11562,9 @@ Los hombres sonríen ante su reacción.
 	GOT_CALI_1_1 = """La chica loba atada se sienta frente a ti y te mira desafiante y con un dejo de miedo.
 
 —¿Y entonces? ¿Qué vas a hacer conmigo ahora?""",
+	GOT_CALI_1_1_WOLF = """The bound wolf girl lays on the ground left to you. As she looks up at you, she notices your wolflike features. A faint sign of interest crosses her face, though the defiance in her eyes remains tempered by fear and caution.
+
+{color=yellow| — So? What are you going to do with me now?}""", # MISSING TRANSLATION
 	GOT_CALI_1_2 = """La chica lobo atada se sienta tranquilamente frente a ti. Su expresión serena delata indicios de miedo y asombro que está tratando de ocultar.
 
 —¿Q-qué estás mirando? ¿Qué vas a hacer conmigo?""",

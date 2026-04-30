@@ -20114,6 +20114,9 @@ Dopo pochi minuti non è successo più nulla e [name] decide di andare avanti.""
 	BODYUPGRADEDESCRIPT_UPGRADE_BREEDER = """Permette l'accoppiamento con qualsiasi razza.
 I Debuff di gravidanza sono più deboli
 I figli erediteranno solo le statistiche di questo genitore.""",
+	BODYUPGRADENAME_UPGRADE_METABOLISM = """Extreme Metabolism""", # MISSING TRANSLATION
+	BODYUPGRADEDESCRIPT_UPGRADE_METABOLISM = """+10 Food Consumption
+In combat restore the amount of health equal to your health regeneration at the start of every round.""", # MISSING TRANSLATION
 	QUALITYPOOR = "Povero",
 	QUALITYAVERAGE = "Nella media",
 	QUALITYGOOD = "Buono",

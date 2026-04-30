@@ -16747,6 +16747,11 @@ OLD_TEMPLE_OPT_FINE = """Ладно, сделаю, что смогу""",
 Вождь кобольдов: - Приходите в таверну дворфьей столицы через 3 дня; к тому времени мы разработаем новый маршрут, по которому вы сможете добраться до нас так, чтобы не нашли люди короля.
 
 Сказав это, он уходит со своей группой.""",
+	OLD_TEMPLE_FINISH3_1 = """He takes the other ring from you and orders everyone to move out of the temple.
+
+{color=yellow|Kobold Leader: — Come to the dwarven capital tavern in 3 days; by that time, we'll get a new route to get you to us without King's men finding it.}
+
+After stating that, he leaves with his group.""", # MISSING TRANSLATION
 	DTAVERN_REBEL = """Быстро осмотрев комнату, ваше внимание привлекает фигура в капюшоне, сидящая далеко в задней части. Плащ, в который он одет, представляет собой мрачный набор земляных цветов, прекрасно сочетающийся с тенями в углу.
 
 Фигура в капюшоне: - Ты тот, кого я жду? Не выделяйся. Смешайся с толпой и следуй за мной через некоторое время.

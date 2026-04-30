@@ -83,6 +83,15 @@ func _ready():
 #		if i.find('.remap') >= 0:
 #			continue
 #		var newaction = load(i).new()
+	$Panel/stopbutton.text = tr("INTERACTION_STOP")
+	$Panel/blacklist.text = tr("INTERACTION_ACTION_VIS")
+	$Panel/aiallow.text = tr("INTERACTION_ONLY_WATCH")
+	$Panel/givetakepanel/Label.text = tr("INTERACTION_ACTORS")
+	$Panel/givetakepanel/Label2.text = tr("INTERACTION_RECEIVERS")
+	$Control/Panel/finishbutton.text = tr("INTERACTION_FINISH")
+	$blacklist/closeblacklist.text = tr("DIALOGUECLOSE")
+	$blacklist/RichTextLabel.bbcode_text = tr("INTERACTION_HIDE_ACTIONS_HINT")
+	$ItemSelectSex/Label.text = tr("SELECTITEM")
 	$Panel/sceneeffects1.connect("meta_clicked", self, '_on_sceneeffects1_meta_clicked')
 	for i in globals.sex_actions_dict.values():
 		categories[i.category].append(i)

@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.14.2c'
+const gameversion = '0.14.2d'
 
 #time
 signal hour_tick
@@ -3076,7 +3076,7 @@ func update_localization_file(update_loc: String, primary_loc = "en"):
 		
 		# look for keys in text lines (full word that's followed by = symbol)
 		var regex = RegEx.new()
-		regex.compile("([A-Z_0-9]+(?=\\s|\\=))")
+		regex.compile("([A-Z_0-9]+(?=\\s*=))")
 		
 		# create new temporary file named main2.gd
 		var tmp_file = File.new()

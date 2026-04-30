@@ -496,7 +496,7 @@ func can_enter_room(room_id):
 func gather_res(loc_id, amount):
 	var location = ResourceScripts.world_gen.get_location_from_code(loc_id)
 	var data = {
-		text = tr('RESOURCEGATHERED' + '\n'), 
+		text = tr('RESOURCEGATHERED') + '\n', 
 		image = 'chest',
 		tags = ['skill_report_event'], 
 		options = []
