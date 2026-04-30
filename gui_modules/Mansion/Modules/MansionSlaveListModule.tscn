@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=2]
@@ -36,7 +36,6 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/bar_trainees_filler.png" type="Texture" id=34]
 [ext_resource path="res://assets/Textures_v2/MANSION/no.png" type="Texture" id=35]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_disabled.png" type="Texture" id=36]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_tratis_pressed.png" type="Texture" id=37]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_inventory_hover.png" type="Texture" id=38]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_traits_default.png" type="Texture" id=39]
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_interactions.png" type="Texture" id=40]
@@ -231,7 +230,7 @@ margin_top = 6.0
 margin_right = 530.0
 margin_bottom = 46.0
 texture_normal = ExtResource( 39 )
-texture_pressed = ExtResource( 37 )
+texture_pressed = ExtResource( 39 )
 texture_hover = ExtResource( 50 )
 expand = true
 
@@ -267,7 +266,7 @@ margin_top = 6.0
 margin_right = 570.0
 margin_bottom = 46.0
 texture_normal = ExtResource( 39 )
-texture_pressed = ExtResource( 37 )
+texture_pressed = ExtResource( 39 )
 texture_hover = ExtResource( 50 )
 expand = true
 
@@ -302,7 +301,7 @@ margin_top = 6.0
 margin_right = 610.0
 margin_bottom = 46.0
 texture_normal = ExtResource( 39 )
-texture_pressed = ExtResource( 37 )
+texture_pressed = ExtResource( 39 )
 texture_hover = ExtResource( 50 )
 expand = true
 
@@ -337,7 +336,7 @@ margin_top = 6.0
 margin_right = 650.0
 margin_bottom = 46.0
 texture_normal = ExtResource( 39 )
-texture_pressed = ExtResource( 37 )
+texture_pressed = ExtResource( 39 )
 texture_hover = ExtResource( 50 )
 expand = true
 
