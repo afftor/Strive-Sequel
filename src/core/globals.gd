@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.14.2b'
+const gameversion = '0.14.2c'
 
 #time
 signal hour_tick
@@ -98,8 +98,10 @@ func _ready():
 	Effectdata.fix_eff_data()
 	
 	if OS.has_feature('editor'):
-		update_localization_file("ru")
-		update_localization_file("cn")
+		for loc_path in input_handler.scanfolder(variables.LocalizationFolder):
+			var loc_code = loc_path.replace(variables.LocalizationFolder, '')
+			if loc_code != "en":
+				update_localization_file(loc_code)
 	
 	#console
 	var console = load("res://gui_modules/Console/console.tscn").instance()

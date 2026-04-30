@@ -1003,15 +1003,15 @@ func text_changed(text, value):
 func check_confirm_possibility():
 	if mode != 'freemode':
 		if !check_food_filter():
-			input_handler.SystemMessage("You must select one liked and at least one hated food type.")
+			input_handler.SystemMessage(tr("CHARCREATE_SYS_FOOD_REQUIRED"))
 			return false
 		
 		if !check_class_possibility():
-			input_handler.SystemMessage("You must select a correct starting Class")
+			input_handler.SystemMessage(tr("CHARCREATE_SYS_CLASS_REQUIRED"))
 			return false
 		
 		if !has_selected_personality():
-			input_handler.SystemMessage("You must select a Personality")
+			input_handler.SystemMessage(tr("CHARCREATE_SYS_PERSONALITY_REQUIRED"))
 			return false
 	
 	elif !check_upgrades():
@@ -1033,9 +1033,9 @@ func hideSaveLoadPanel():
 
 func SaveLoadCharPanel(saveloadmode):
 	if saveloadmode == "save":
-		$SaveLoadCharPanel/SaveLoadButton.text = "Save"
+		$SaveLoadCharPanel/SaveLoadButton.text = tr("CHARCREATE_TEMPLATE_SAVE_BUTTON")
 	else:
-		$SaveLoadCharPanel/SaveLoadButton.text = "Load"
+		$SaveLoadCharPanel/SaveLoadButton.text = tr("CHARCREATE_TEMPLATE_LOAD_BUTTON")
 	$SaveLoadCharPanel.show()
 	ResourceScripts.core_animations.UnfadeAnimation($SaveLoadCharPanel, 0.5)
 	yield(get_tree().create_timer(0.5), "timeout")
@@ -1090,7 +1090,7 @@ func SaveCharacter():
 	var text = JSON.print(character_to_save)
 	file.store_string(text)
 	file.close()
-	input_handler.SystemMessage("Character Template Saved")
+	input_handler.SystemMessage(tr("CHARCREATE_SYS_TEMPLATE_SAVED"))
 	hideSaveLoadPanel()
 
 
@@ -1149,14 +1149,14 @@ func LoadCharacter(updated_char_to_load = null):
 	build_trait()
 	
 	hideSaveLoadPanel()
-	input_handler.SystemMessage("Character Template Loaded")
+	input_handler.SystemMessage(tr("CHARCREATE_SYS_TEMPLATE_LOADED"))
 
 
 func DeleteCharacter():
 	var deletename = $SaveLoadCharPanel/LineEdit.text + ".ch"
 	var dir = Directory.new()
 	dir.remove(variables.userfolder + 'savedcharacters/' + deletename)
-	input_handler.SystemMessage("Character Deleted")
+	input_handler.SystemMessage(tr("CHARCREATE_SYS_TEMPLATE_DELETED"))
 	SaveLoadCharPanel(saveloadstate)
 
 
@@ -1570,9 +1570,9 @@ func toggle_upgrade(upg):
 
 func check_upgrades():
 	if upgradecost > person.get_upgrade_points():
-		input_handler.SystemMessage("Too many upgrades for this character")
+		input_handler.SystemMessage(tr("CHARCREATE_SYS_TOO_MANY_UPGRADES"))
 		return false
 	if upgradecostgold > ResourceScripts.game_res.money:
-		input_handler.SystemMessage("Not enough money")
+		input_handler.SystemMessage(tr("CHARCREATE_SYS_NOT_ENOUGH_MONEY"))
 		return false
 	return true

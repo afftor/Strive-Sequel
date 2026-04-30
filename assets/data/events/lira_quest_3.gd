@@ -5,6 +5,9 @@ var data = {
 		character = "lira",
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
+		common_effects = [
+			{code = 'remove_timed_events', value = ['lira_quest_3_intro']},
+		],
 		text = [{text = "LIRA_QUEST3_INTRO", reqs = []}],
 		options = [
 			{code = 'lira_quest_3_talk_origin', text = "LIRA_QUEST3_OPTION_HOW_HAVE_YOU_BEEN", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
@@ -496,8 +499,20 @@ var data = {
 		reqs = [],
 		text = [{text = "LIRA_QUEST3_RETURN_HOME", reqs = []}],
 		options = [
-			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
-				bonus_effects = [{code = 'complete_quest', value = 'lira_quest_3'}]},
+			{code = 'close', text = "DIALOGUECLOSE", reqs = [{type = 'local_counter', name = 'df_balance', operant = 'lt', value = 0, check = true}], dialogue_argument = 1,
+				bonus_effects = [
+					{code = 'complete_quest', value = 'lira_quest_3'},
+					{code = 'affect_unique_character', name = 'lira', type = 'stat', stat = 'physics_factor', value = 2},
+					{code = 'affect_unique_character', name = 'lira', type = 'stat', stat = 'growth_factor', value = 1},
+					{code = 'affect_unique_character', name = 'lira', type = 'stat', stat = 'authority_factor', value = 1},
+				]},
+			{code = 'close', text = "DIALOGUECLOSE", reqs = [{type = 'local_counter', name = 'df_balance', operant = 'gte', value = 0, check = true}], dialogue_argument = 1,
+				bonus_effects = [
+					{code = 'complete_quest', value = 'lira_quest_3'},
+					{code = 'affect_unique_character', name = 'lira', type = 'stat', stat = 'wits_factor', value = 1},
+					{code = 'affect_unique_character', name = 'lira', type = 'stat', stat = 'growth_factor', value = 1},
+					{code = 'affect_unique_character', name = 'lira', type = 'stat', stat = 'tame_factor', value = 1},
+				]},
 		],
 	},
 }

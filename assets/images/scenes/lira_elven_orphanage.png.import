@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lira_borzoi elven.png-1b50983027080d954123a374c4844ebf.stex"
+path="res://.import/lira_elven_orphanage.png-7d2a4bf3abce943df701725a4a8fb996.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/lira_borzoi elven.png"
-dest_files=[ "res://.import/lira_borzoi elven.png-1b50983027080d954123a374c4844ebf.stex" ]
+source_file="res://assets/images/scenes/lira_elven_orphanage.png"
+dest_files=[ "res://.import/lira_elven_orphanage.png-7d2a4bf3abce943df701725a4a8fb996.stex" ]
 
 [params]
 

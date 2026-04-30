@@ -8,11 +8,23 @@ var itemarray = []
 var mode
 var categories = ['all','weapon','gear','usable','material']
 var category = 'all'
+var category_tooltips = {
+	all = 'INVENTORYALL',
+	food = 'INVENTORYMATERIAL',
+	usable = 'INVENTORYUSE',
+	material = 'INVENTORYMATERIAL',
+	tool = 'INVENTORYTOOL',
+	weapon = 'INVENTORYWEAPON',
+	armor = 'INVENTORYARMOR',
+	costume = 'INVENTORYCOSTUME',
+}
 
 func _ready():
 	$Scroller/ScrollContainer/GridContainer/Button.set_meta('type', 'none')
 	for i in $HBoxContainer.get_children():
 		i.connect('pressed',self,'selectcategory', [i])	
+		globals.connecttexttooltip(i, tr(category_tooltips[i.name]))
+	globals.connecttexttooltip($switchstyle, tr('SWITCHINVENTORY'))
 	$SearchFilter.connect("text_changed", self, 'filter_changed')
 	$switchstyle.connect('pressed',self, 'switch_container')
 	if input_handler.globalsettings.grid_inventory == false:

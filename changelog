@@ -1,3 +1,12 @@
+0.14.2d
+Updated localization files to all copy missing lines for all languages from english. Changed chinese code from cn to zh
+Substantially improved localization capabilities for non-latin languages
+Fixed shading background affecting full screen scenes
+0.14.2c
+Kuro and Rouge no longer start awful on ng+
+Fixed Shieldbearer's passive causing issues
+Fixed Radiance skill not working properly for hiding effect
+Fixed some stacking debuffs breaking character data
 0.14.2b
 Added darker background for events
 Revamped Hector's boss fight (by Garden)

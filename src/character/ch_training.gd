@@ -149,6 +149,9 @@ func has_resistance_block():
 	if !is_slave(): return false
 	return get_loyalty_penalty() == 1
 	
+func get_disposition_name(value):
+	return tr('DISPOSITION' + value.to_upper())
+
 
 #not sure for the classification, but it corresponds to conditions in SlaveSiblingsModule.gd
 func is_slave():
@@ -410,7 +413,7 @@ func apply_training(code):
 		parent.get_ref().affect_char({type = 'set_availability', value = false, duration = 1})
 	if code in ['rape', 'publicuse']:
 		if parent.get_ref().get_stat('vaginal_virgin'):
-			effect_text += "%s takes virginity of %s" % [ch_trainer.get_short_name(), parent.get_ref().get_short_name()]
+			effect_text += tr('TRAININGVIRGINITYTAKEN') % [ch_trainer.get_short_name(), parent.get_ref().get_short_name()]
 			parent.get_ref().take_virginity('vaginal', trainer) #add finetune for bodypart checking
 	if code == 'mindcontrol':
 		for rec in ['positive', 'physical', 'humiliation', 'social', 'sexual']:
@@ -438,7 +441,8 @@ func apply_training(code):
 				var dis = input_handler.random_from_array(pool)
 				pool.erase(dis)
 				dispositions_known[dis] = true  
-				effect_text += "%s - %s \n" % [dis, dispositions[dis]] 
+				var ddata = Skilldata.training_categories[dis]
+				effect_text += "%s - %s \n" % [tr(ddata.name), get_disposition_name(dispositions[dis])]
 	else:
 #		cooldown.main = 3
 		if cat == 'positive':
@@ -455,7 +459,7 @@ func apply_training(code):
 		if !dispositions_known[cat]: # and result in ['success', 'crit_success']:
 			effect_text += tr('WITSREVEALDISPOSITION')
 			dispositions_known[cat] = true  
-			effect_text += "%s - %s \n" % [tr(cat_data.name), dispositions[cat]] 
+			effect_text += "%s - %s \n" % [tr(cat_data.name), get_disposition_name(dispositions[cat])]
 	#apply
 	if parent.get_ref().has_status('no_loyalty_training'):
 		result_data.loyalty = 0
@@ -525,13 +529,13 @@ func apply_training(code):
 
 
 func get_dispositions_text():
-	var text = "Dispositions: \n"
+	var text = tr('TRAININGDISPOSITIONS') + "\n"
 	for dis in dispositions_known:
 		var ddata = Skilldata.training_categories[dis]
 		if dispositions_known[dis]:
-			text += "%s : %s\n" % [tr(ddata.name), dispositions[dis]]
+			text += "%s : %s\n" % [tr(ddata.name), get_disposition_name(dispositions[dis])]
 		else:
-			 text += "%s : unknown\n" % tr(ddata.name)
+			text += "%s : %s\n" % [tr(ddata.name), tr('TRAININGDISPOSITIONUNKNOWN')]
 	return text
 
 #not used

@@ -163,6 +163,8 @@ func gear_tooltip(data, item = null):
 		$TopPanel/IconFrame/quality_color.show()
 		$TopPanel/IconFrame/quality_color.texture = variables.quality_colors[item.quality]
 	$LowPanel/HBoxContainer/HoldShift.visible = item.get('partcolororder') != null
+	if item.get('partcolororder') != null:
+		$LowPanel/HBoxContainer/HoldShift.text = tr("INFOHOLDSHIFT")
 	item.set_icon(iconnode)
 	if item.get('partcolororder') != null:
 		input_handler.itemshadeimage(iconnode, item)

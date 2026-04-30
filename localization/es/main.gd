@@ -7,6 +7,7 @@ var TranslationDict = {
 	VARIABLESTIMEWORDNIGHT = "NOCHE",
 	MENUCONTINUE = "Continuar",
 	MENUNEWGAME = "Nuevo juego",
+	MENUTUTORIAL = """Tutorial""", # MISSING TRANSLATION
 	MENULOAD = "Cargar",
 	MENUOPTIONS = "Opciones",
 	MENUCREDITS = "Credito",
@@ -24,6 +25,8 @@ var TranslationDict = {
 	GALLERYTOOLTIPTOP = "Estado de la escena:",
 	GALLERYRESETBUTTON = "Reiniciar",
 	GALLERYRESETTEXT = "¿Estás seguro de que deseas restablecer TODO el progreso de la galería?",
+	GALLERYACHI = """Achievements""", # MISSING TRANSLATION
+	GALLERYACHITEXT = """Gives NG+ points""", # MISSING TRANSLATION
 	MODLOAD = "Mods cargados",
 	MODLOAD1 = "Estas modificaciones se aplicarán al juego y estarán disponibles en el editor la próxima vez que se inicie el juego.",
 	MODLIST = "Lista de mods disponibles para cargar",
@@ -70,6 +73,7 @@ var TranslationDict = {
 	OPTCLOSE = "Cerrar",
 	TUTORIALS = "Tutoriales",
 	LOCATIONLIST = "Lista de ubicaciones",
+	BUTTONTRAVEL = """Travel Map""", # MISSING TRANSLATION
 	OPTGAMEPLAYFURRIES = "Furros",
 	OPTGAMEPLAYFURRMULT = "Múltiples pezones en furros",
 	OPTGAMEPLAYFUTA = "Futas con pelotas",
@@ -90,6 +94,7 @@ var TranslationDict = {
 	OPTGRAPHICRANDOMPORTRAIT = "Retratos aleatorios",
 	OPTGRAPHICDISABLEANIMATIONBACKGROUNDS = "Deshabilitar fondos de animación",
 	OPTDISABLEPAPERDOLL = "Deshabilitar sprites generados",
+	OPTDISABLEDAMAGESHAKE = """Disable damage shake""", # MISSING TRANSLATION
 	OPTCHEATENTERCODE = "Introducir código",
 	OPTCHEATACTIVATE = "Activar",
 	OPTCHEATGETCODE = "Obtener código",
@@ -163,6 +168,18 @@ pero conservarás todos tus personajes, objetos e inventario. Usa este modo para
 	EXPLOREUPGRADES = "Mejoras",
 	EXPLORESERVICE = "Servicio",
 	EXPLOREGUILDSHOP = "Tienda del gremio",
+	EXPLOREUSE = """Use""", # MISSING TRANSLATION
+	STATSTRADING_IMPROVED_STATUS = """Improved Status""", # MISSING TRANSLATION
+	STATSTRADING_STAT_NAME = """Stat Name""", # MISSING TRANSLATION
+	STATSTRADING_CURRENT_VALUE = """Current Value""", # MISSING TRANSLATION
+	STATSTRADING_PRICE = """Price""", # MISSING TRANSLATION
+	STATSTRADING_UPGRADE = """Upgrade""", # MISSING TRANSLATION
+	STATSTRADING_TESTING = """Testing""", # MISSING TRANSLATION
+	STATSTRADING_CHOOSE_RECEIVER = """Choose Receiver""", # MISSING TRANSLATION
+	STATSTRADING_CHOOSE_DONOR = """Choose Donor""", # MISSING TRANSLATION
+	STATSTRADING_NOTHING_TO_UPGRADE = """Nothing to Upgrade""", # MISSING TRANSLATION
+	STATSTRADING_CHARACTER_NAME = """Character Name""", # MISSING TRANSLATION
+	STATSTRADING_FACTOR_UPGRADES = """Factor Upgrades""", # MISSING TRANSLATION
 	SIBLINGMODULESKILLSKILLS = "Hab. sexuales",
 	SIBLINGMODULECONSENT = "Consentir: ",
 	SIBLINGMODULERULES = "Reglas y condiciones",
@@ -173,6 +190,7 @@ pero conservarás todos tus personajes, objetos e inventario. Usa este modo para
 	SIBLINGMODULESUCCUBUS = "Entrenamiento de súcubo",
 	SIBLINGMODULETRAININGSSERVANTS = "Desbloqueos de subordinados",
 	SIBLINGMODULETRAININGSMASTER = "Formación del maestro",
+	SIBLINGMODULEMINORTRAINING = """Proficiencies""", # MISSING TRANSLATION
 	SIBLINGMODULEFOODCONSUMPTION = "Consumo diario",
 	SIBLINGMODULEMAIN = "Principal",
 	SIBLINGMODULESEX = "Sexo",
@@ -188,7 +206,9 @@ pero conservarás todos tus personajes, objetos e inventario. Usa este modo para
 	SIBLINGMODULEAVAILABLE = "Disponible",
 	SIBLINGMODULEAVAILABLETOOLTIP = "El número de capacitaciones menores disponibles depende del factor de crecimiento.",
 	SIBLINGMODULETHRALLLIST = "Esclavos",
+	FAILALREADYSUCCUBUS = """Can't use corruptive essence on Thralls or Succubi""", # MISSING TRANSLATION
 	MINORTRAINMAXREACHED = "Se alcanzó el máximo de entrenamiento menor",
+	MINORTRAIN_TRAIT_AQUIRED = """trait %s aquired""", # MISSING TRANSLATION
 	SYSMESSAGEATLEAST1CHAR = "Selecciona al menos 1 personaje para luchar.",
 	OPERANTATLEAST = "A lo menos",
 	OPERANTATMOST = "A lo más",
@@ -212,15 +232,19 @@ pero conservarás todos tus personajes, objetos e inventario. Usa este modo para
 	CHARNAMELIRA = "Lira",
 	CHARNAMEAMELIA = "Amelia",
 	CHARNAMEKURO = "Kuro",
+	CHARNAMEROUGE = """Rouge""", # MISSING TRANSLATION
 	LOCATIONTHE = "El ",
 	TOTALPRODUCTIVITY = "Productividad total",
 	INVENTORYCHARACTERLIST = "Lista de personajes",
 	INVENTORYSTASH = "Escondite",
 	INVENTORYFILTER = "Filtrar",
+	INVENTORYTOCHARACTER = """To Character""", # MISSING TRANSLATION
+	INVENTORYTOMANSION = """To Mansion""", # MISSING TRANSLATION
 	NEWGAMENAME = "Nuevo juego",
 	NEWGAMESETTING = "Configuracion",
 	NEWGAMESKIPPROL = "Saltar el prólogo",
 	NEWGAMESTART = "Iniciar juego",
+	NGP_BTN = """NG+""", # MISSING TRANSLATION
 	SPELLCAST_LABEL = "Lanzar hechizo",
 	BACKTOPRESETS = "Atras",
 	PRESETDATADEBUGCUSTOMNAME = "Personalizado",
@@ -250,6 +274,8 @@ pero conservarás todos tus personajes, objetos e inventario. Usa este modo para
 	NEWGAMESETTINGFREE_UPGRADE = "Mejora gratuitas",
 	NEWGAMESETTINGMATERIALS = "Materiales de partida",
 	NEWGAMESETTINGMONEY = "Oro inicial",
+	NEWGAMESETTINGHARD_MONSTERS = """Harder enemy combat AI""", # MISSING TRANSLATION
+	SETTINGHARD_MONSTERS_DESCRIPT = """Enemy combat AI will be more advanced""", # MISSING TRANSLATION
 	SETTINGSKIP_PROLOGUE_DESCRIPT = "Comienza la historia al principio del acto 1.",
 	SETTINGGF_ONLY_UPG_DESCRIPT = "Sólo el factor de crecimiento se puede mejorar en el mercado.",
 	SETTINGPERMADEATH_DESCRIPT = "Muerte permanente",
@@ -265,6 +291,8 @@ pero conservarás todos tus personajes, objetos e inventario. Usa este modo para
 	DIFF_EASY = "facil",
 	DIFF_NORMAL = "normal",
 	DIFF_HARD = "dificil",
+	NEWGAMEPLUSNAME = """New game +""", # MISSING TRANSLATION
+	NEWGAMEPLUS_POINTS = """Points:""", # MISSING TRANSLATION
 	TUTORIALINFONAME = "Introducción",
 	TUTORIALINFOQUESTION = "¿Primera vez en Strive: Conquest?",
 	TUTORIALINFOEXPLANATION = """Puedes abrir el tutorial cuando lo desees.
@@ -283,13 +311,23 @@ usando             botón.""",
 	TUTORIALLIST7 = "habilidades",
 	TUTORIALLIST8 = "tatuaje",
 	TUTORIALLIST9 = "formación",
+	TUTORIALLIST10 = """breakdown""", # MISSING TRANSLATION
 	LMMTRAVEL = "Viajes",
 	LMMUPGRADES = "Mejoras",
 	LMMDATE = "Citas",
 	LMMINVENTORY = "Inventario",
 	LMMCRAFT = "Elaborar",
 	LMMJOURNAL = "Diario",
+	LMMOPTIONS = """Menu""", # MISSING TRANSLATION
 	LMMWORK = "Trabajar",
+	BTNLEVELING = """Leveling""", # MISSING TRANSLATION
+	BTNDATE = """Date""", # MISSING TRANSLATION
+	BTNCHAT = """Chat""", # MISSING TRANSLATION
+	BTNRELATIONS = """Relations""", # MISSING TRANSLATION
+	BTNCUSTOMIZATION = """Customization""", # MISSING TRANSLATION
+	BTNINVENTORY = """Inventory""", # MISSING TRANSLATION
+	BTNOCCUPATION = """Occupation""", # MISSING TRANSLATION
+	BTNEXPEL = """Expel""", # MISSING TRANSLATION
 	MSLMNAME = "Lista de personajes",
 	MSLMSex = "Sex",
 	MSLMNNAME = "Nombre ",
@@ -300,6 +338,10 @@ usando             botón.""",
 	MSLMLOC = "Ubicación",
 	MSLMTYPE = "Tipo",
 	MSLMINV = "Equipo",
+	LVLBONUSPERPOINT = """Bonus per point""", # MISSING TRANSLATION
+	LVLCURRENT = """Current""", # MISSING TRANSLATION
+	LVLTOTALPOINTS = """Total Points""", # MISSING TRANSLATION
+	LVLINVESTED = """Invested""", # MISSING TRANSLATION
 	TRAINERSAVAILABLE = "Entrenadores disponibles",
 	MSLMRELOC = "Reubicación",
 	MSLMRE = "en",
@@ -323,14 +365,23 @@ usando             botón.""",
 	REQRACE = "Raza",
 	REQRACEISBEAST = "Solo para razas bestiales",
 	REQMUSTHAVEGEAR = "Debe tener",
+	REQMUSTHAVEGEAR_FALSE = """Must not have""", # MISSING TRANSLATION
+	REQMUSTHAVEGEARTYPE = """gear of type:""", # MISSING TRANSLATION
+	REQMUSTHAVEGEARTYPE_SPEAR = """polearm""", # MISSING TRANSLATION
+	REQMUSTHAVEGEARTYPE_BOW = """ranged weapon""", # MISSING TRANSLATION
+	REQMUSTHAVEGEARTYPE_MEDIUM = """medium armor""", # MISSING TRANSLATION
+	REQMUSTHAVEGEARTYPE_HEAVY = """heavy armor""", # MISSING TRANSLATION
 	REQPROFLIMIT = "Solo",
 	REQPROFLIMIT2 = "permitido",
 	REQONEOFRACES = "Sólo para",
 	REQTRAIT = "Requiere",
 	REQPOPULATION = "Debe tener población",
 	REQSEX = "No permitido para",
+	REQHASSKILL = """Requires skill""", # MISSING TRANSLATION
+	REQHASSKILL_FALSE = """Must not know skill""", # MISSING TRANSLATION
 	REQVIRGINFALSE = "No soy virgen",
 	REQOR = "o",
+	REQANY = """has any""", # MISSING TRANSLATION
 	SLAVE = "Esclavo",
 	MASTER = "Maestro",
 	PEON = "Subordinado",
@@ -357,7 +408,27 @@ usando             botón.""",
 [color=aqua]La Obediencia del Heredero se agota un 50% más lento y la Lealtad un 50% más rápido. El Heredero tiene una penalización del 20% en Recolección, Agricultura y Pesca.[/color] """,
 	CHARTYPESPOUSEDESCRIPT = "Esposa del [Master] de la mansión. Si bien no posee cualidades sobresalientes, [his] hijos del [Master] y su esposa obtendrán el estatus de herederos y podrán recibir entrenamiento especial durante su crecimiento.",
 	CHARTYPESLAVE_TRAINEDDESCRIPT = "Estos esclavos han terminado su entrenamiento y han aceptado su nuevo destino a pecho. Ya no necesitan un entrenador asignado.",
+	MSLMCONTEXT_OPEN = """Open Info""", # MISSING TRANSLATION
+	MSLMCONTEXT_OPEN_CLASS_TAB = """  Classes""", # MISSING TRANSLATION
+	MSLMCONTEXT_OPEN_SIBLINGS_TAB = """  Trainings""", # MISSING TRANSLATION
+	MSLMCONTEXT_OPEN_CUSTOMIZATION_TAB = """  Customization""", # MISSING TRANSLATION
+	MSLMCONTEXT_OPEN_OCCUPATION = """Occupation""", # MISSING TRANSLATION
+	MSLMCONTEXT_INVENTORY = """Inventory""", # MISSING TRANSLATION
 	SLAVEINFOMODULEOBEDIENCE = "Obediencia",
+	CHARINFO_IMAGE_OPACITY_TOOLTIP = """Image Opacity""", # MISSING TRANSLATION
+	CHARINFO_DESCRIPTION_LABEL = """Description""", # MISSING TRANSLATION
+	CHARINFO_SEARCH_PLACEHOLDER = """Search""", # MISSING TRANSLATION
+	CHARINFO_ASSIGN_BOTH_TOOLTIP = """Will attempt to assign both portrait and body image, if same file name exists in both folders""", # MISSING TRANSLATION
+	CHARINFO_OPEN_FILE_TITLE = """Open a File""", # MISSING TRANSLATION
+	CHARINFO_SELECT_NEW_IMAGE_DIALOG = """Select New Image""", # MISSING TRANSLATION
+	CHARINFO_SELECTED_FOLDER_HELP = """Selected folder and all subfolders in it will provide images to the required area and will be saved upon exit""", # MISSING TRANSLATION
+	CHARINFO_OPEN_DIRECTORY_TITLE = """Open a Directory""", # MISSING TRANSLATION
+	CHARINFO_SELECT_DEFAULT_FOLDER_DIALOG = """Select default path folder""", # MISSING TRANSLATION
+	CHARINFO_NO_IMAGES_HELP = """[center]You have no images with fitting criterias available.[/center]
+[center]Put your images into portrait folder and hit 'Reload Portraits' button[/center]""", # MISSING TRANSLATION
+	CHARINFO_STATS_BUTTON = """Stats""", # MISSING TRANSLATION
+	CHARINFO_UPGRADE_LABEL = """Upgrade""", # MISSING TRANSLATION
+	CHARINFO_SET_ABILITIES_TOOLTIP = """Set Abilities for combat""", # MISSING TRANSLATION
 	SIMRESIST = "Resiste",
 	SIMLOYALTYGAIN = "Ganancia de lealtad",
 	SIMOBEDIENCEDRAIN = "Drenaje de obediencia",
@@ -379,6 +450,17 @@ usando             botón.""",
 	LIGHTRESIST = "Luz",
 	DARKRESIST = "Sombra",
 	MINDRESIST = "Mente",
+	DAMAGETYPENORMAL = """Normal""", # MISSING TRANSLATION
+	DAMAGETYPEFIRE = """Fire""", # MISSING TRANSLATION
+	DAMAGETYPEEARTH = """Earth""", # MISSING TRANSLATION
+	DAMAGETYPEAIR = """Air""", # MISSING TRANSLATION
+	DAMAGETYPEWATER = """Water""", # MISSING TRANSLATION
+	DAMAGETYPELIGHT = """Light""", # MISSING TRANSLATION
+	DAMAGETYPEDARK = """Dark""", # MISSING TRANSLATION
+	DAMAGETYPEMIND = """Mind""", # MISSING TRANSLATION
+	DAMAGETYPESKILL = """Physical""", # MISSING TRANSLATION
+	DAMAGETYPESPELL = """Magic""", # MISSING TRANSLATION
+	DAMAGETYPEITEM = """Item""", # MISSING TRANSLATION
 	ALLRESIST = "Todos",
 	HEALTHP = "Vida: ",
 	MANAP = "Mana:",
@@ -421,6 +503,7 @@ usando             botón.""",
 	LOADINGTIP13 = "Desmantelar equipo en el gremio de trabajadores puede permitirte extraer recursos raros de él.",
 	LOADINGTIP14 = "Avermik vende esclavos de razas exóticas en Aliron cada 2 semanas",
 	LOADINGTIP15 = "El valor del personaje aumenta todos sus ingresos por servicios.",
+	LOADINGTIP16 = """More classes can be unlocked from the guilds""", # MISSING TRANSLATION
 	LOADLORE1NAME = "Gremios",
 	LOADLORE2NAME = "Líderes del gremio",
 	LOADLORE3NAME = "El Rey Loco",
@@ -482,6 +565,7 @@ Sin embargo, aunque parezca que los terratenientes no sienten más que desprecio
 	TASKS = "Tareas",
 	LABELDISLOCATION = "Trastorno",
 	LABELDESTINATION = "Destino",
+	LABELSEXSKILLS = """Sex Skills""", # MISSING TRANSLATION
 	STARTINGADJ = "Comienzo",
 	FOODTYPEMEAT = "Carne",
 	FOODTYPEFISH = "Pescado",
@@ -614,6 +698,8 @@ Tipo de comida: Pescado, Verduras.""",
 	MATERIALDRACONIC_SCALESDESCRIPT = "Las partes del dragón están adornadas tanto por su belleza como por su calidad superior.",
 	MATERIALHERBS = "",
 	MATERIALHERBSDESCRIPT = "",
+	MATERIALVESPERINE_CAGE = """Vesperine Cage""", # MISSING TRANSLATION
+	MATERIALVESPERINE_CAGEDESCRIPT = """An ancient device of unknown purpose.""", # MISSING TRANSLATION
 	MATERIALINK_TRIBAL = "Tinta: Poder",
 	MATERIALINK_BRANDINGDESCRIPT = """Un conjunto de herramientas y tinta que permite aplicar una firma mágica específica al sujeto. Inicialmente implementada por ganaderos y domadores, la marca fue adoptada por las sociedades esclavistas para establecer su dominio sobre los conquistados. Los tatuajes no son tan dolorosos de aplicar, pero sí igual de degradantes, ya que llevan el nombre del propietario.
 
@@ -668,6 +754,8 @@ De lo contrario: +3 Física""",
 	ITEMSLOTNECK = "Cuello",
 	ITEMSLOTTOOL = "Herramienta",
 	ITEMREQNONUNIQUE = "Solo se puede aplicar a esclavos no únicos.",
+	ITEMREQSMASTERYLIT = """Masteries levels not matched, no Literacy proficiency or already know this skill""", # MISSING TRANSLATION
+	ITEMREQSLITERACY = """Proficiency in Literacy is required for reading""", # MISSING TRANSLATION
 	ITEMREQSMASTERY = "Niveles de maestría no coincidentes o ya conoces esta habilidad",
 	ITEMLEATHER_COLLAR = "Collar de cuero",
 	ITEMLEATHER_COLLARDESCRIPT = "Un collar de cuero sencillo que simboliza propiedad.",
@@ -932,11 +1020,34 @@ Reducido por la evasión del enemigo""",
 	TOOLTIPPROGRESSREQUIRED = "Unidades de trabajo requeridas",
 	TOOLTIPSAVECHARACTER = "Guardar plantilla de personaje",
 	TOOLTIPLOADCHARACTER = "Cargar plantilla de personaje",
+	CHARCREATE_TOOLTIP_REROLL_NAME = """Reroll Name""", # MISSING TRANSLATION
+	CHARCREATE_TOOLTIP_RANDOM_RACE = """Random Race""", # MISSING TRANSLATION
+	CHARCREATE_TOOLTIP_REROLL_APPEARANCE = """Reroll Appearance""", # MISSING TRANSLATION
 	TOOLTIPSKIPPROLOGUE = "Se omiten las misiones del prólogo y se inicia el primer arco argumental. La misión de préstamo está desactivada.",
 	TOOLTIPSKILLPOINTS = "Los puntos de habilidad se obtienen en las batallas y se utilizan para comprar nuevas habilidades de combate.",
 	TOOLTIPSUCCUBUS = "[Succubus] obtiene poderes de {color=green|Cautivador} otros. Cada esclavo se enamora de [succubus] y hace [him] aumenta tu fuerza. Los puntos de desbloqueo se obtienen al cautivar a más personajes.",
+	TOOLTIPMINORTRAINING = """Proficiencies are purchased with gold. It will take time to complete training. {color=yellow|Growth Factor} defines number of maximum Proficiencies. {color=yellow|Wits Factor} will make allow completion faster.""", # MISSING TRANSLATION
+	TOOLTIPMASTERTRAINING = """Master Talents can be purchased with exclusive Master Points which are awarded with main story progression.""", # MISSING TRANSLATION
 	SAVENAME = "Nombre guardado",
 	SAVETEMPLATEDESCRIPT = "Puedes guardar la plantilla de personaje existente para usarla repetidamente.",
+	CHARCREATE_MODE_STATS = """Stats""", # MISSING TRANSLATION
+	CHARCREATE_MODE_VISUALS = """Visuals""", # MISSING TRANSLATION
+	CHARCREATE_VISUALS_DESC_PLACEHOLDER = """""", # MISSING TRANSLATION
+	CHARCREATE_FOOD_STATE_LIKE = """Like""", # MISSING TRANSLATION
+	CHARCREATE_FOOD_STATE_NEUTRAL = """Neutral""", # MISSING TRANSLATION
+	CHARCREATE_FOOD_STATE_HATE = """Hate""", # MISSING TRANSLATION
+	CHARCREATE_DIET_HELP = """Select 1 Liked and at least 1 Hated food types.""", # MISSING TRANSLATION
+	CHARCREATE_UNASSIGNED_STATS = """Unassigned stats: %d""", # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_TOOLTIP = """Choose how the new character is related to the current master. This has no real consequence for the main story and primarily a roleplay setup. """, # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_CHILD = """Child""", # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_PARENT = """Parent""", # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_SIBLING = """Sibling""", # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_PANEL_PLACEHOLDER = """""", # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_PANEL_TEXT = """Select %s's relationship with %s %s.""", # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_NO_MASTER = """No master character is available for relationship selection.""", # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_BLOCKED_NO_MASTER = """No master character is available for relationship selection.""", # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_BLOCKED_CHILD = """Child is unavailable because the master must be the same age or older.""", # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_BLOCKED_PARENT = """Parent is unavailable because the master must be the same age or younger.""", # MISSING TRANSLATION
 	TOOLTIPIMPROVESCREEN = "Mejora tu equipo sacrificando equipo similar de la misma calidad. El equipo sacrificado se perderá.",
 	TOOLHANDLE = "Empuñadura",
 	WEAPONHANDLE = "Empuñadura",
@@ -1097,6 +1208,9 @@ Tecla de acceso rápido: 3""",
 	QUESTREPUTATION = "Reputación",
 	QUESTTASKACQ = "Tarea adquirida",
 	REQUIREMENTSARENTMET = "No se cumplen los requisitos.",
+	REQUIREMENTSMET = """Requirements are met.""", # MISSING TRANSLATION
+	REQ_HIDE_PRETENDER = """Hide unqualified""", # MISSING TRANSLATION
+	REQ_SHOW_PRETENDER = """Show unqualified""", # MISSING TRANSLATION
 	NOTENOUGHLOYALTY = "No hay suficiente lealtad",
 	NOTENOUGHMASTERPOINTS = "No hay suficientes puntos maestros",
 	QUESTCOMPLETEMESSAGE = "Misión completada",
@@ -1195,6 +1309,8 @@ Quema: recibe un 8% del HP máximo como daño de fuego por turno.""",
 Quema: recibe un 8% del HP máximo como daño de fuego por turno.""",
 	SKILLMINDBLAST = "Explosión mental",
 	SKILLMINDBLASTDESCRIPT = "Inflige el 120% de MAG ATK como daño de {color=yellow|Mente}",
+	SKILLSLEEP = """Sleep""", # MISSING TRANSLATION
+	SKILLSLEEPDESCRIPT = """Puts target to {color=yellow|Sleep} for 2 turns. Sleep is removed when target takes damage.""", # MISSING TRANSLATION
 	SKILLPSYCHICBLAST = "Explosión psíquica",
 	SKILLPSYCHICBLASTDESCRIPT = "Inflige el 65% de MAG ATK como daño de {color=yellow|Mente} a una columna.",
 	SKILLRESURRECT = "Resucitar",
@@ -1260,6 +1376,9 @@ Silenciado: No puede usar habilidades de tipo hechizo.""",
 	SKILLSOUL_BINDDESCRIPT = "Domina la mente de la persona para que se someta a tu voluntad. Tras un día de descanso, acatará la mayoría de tus órdenes. ",
 	SKILLFLY_EVASION = "Vuelo",
 	SKILLFLY_EVASIONDESCRIPT = "Aumenta la evasión en 65 durante 3 turnos.",
+	SKILLFLIGHT = """Flight""", # MISSING TRANSLATION
+	SKILLFLIGHTDESCRIPT = """Instant cast. Costs 5 mana to activate and 3 mana at the end of each turn. While active: 80% dodge chance against melee attacks, +25 Hit Chance, +50 Earth Resist. Cannot be used while Ensnared. Recast for free to cancel.""", # MISSING TRANSLATION
+	SKILLFLIGHT_REMOVE = """Land""", # MISSING TRANSLATION
 	SKILLEUPHORIA_APPLY = "Euforia",
 	SKILLEUPHORIA_APPLYDESCRIPT = "Al activarse, aumenta todo el daño a la mitad de tu lujuria actual. Drena parte de tu lujuria cada turno. Reactívala para desactivarla.",
 	SKILLEUPHORIA_REMOVE = "Euforia",
@@ -1444,6 +1563,93 @@ Silenciado: No puede usar habilidades de tipo hechizo.""",
 	SKILLABYSS_GAZEDESCRIPT = "Inflige el 125% MAG ATK como daño de {color=yellow|Mente} a todos los enemigos. Aturde durante 2 turnos.",
 	SKILLDARK_FLAME = "Llamas oscuras",
 	SKILLDARK_FLAMEDESCRIPT = "Convierte todos los efectos de Quemadura de los enemigos en efectos de Llama Oscura. Infligen daño verdadero, no se extinguen con daño de Agua y duran 4 turnos.",
+	SKILLFIREARROWS_APPLY = """Fire Arrows""", # MISSING TRANSLATION
+	SKILLFIREARROWS_REMOVE = """Fire Arrows remove""", # MISSING TRANSLATION
+	SKILLFIREARROWS_APPLYDESCRIPT = """Set weapon damage element to Fire. Weapon attacks and skills have 20% chance to apply Burn. Drain 1 mana per attack.
+Must have Bow weapon type equipped.
+
+Does not take turn to activate.
+Only one Arrow type spell can be active.""", # MISSING TRANSLATION
+	SKILLPOISONARROWS_APPLY = """Poison Arrows""", # MISSING TRANSLATION
+	SKILLPOISONARROWS_REMOVE = """Poison Arrows remove""", # MISSING TRANSLATION
+	SKILLPOISONARROWS_APPLYDESCRIPT = """Weapon attacks and skills have 65% chance to apply Poison for 3 turns. Drain 1 mana per attack. At Marksmanship Mastery 4+ also applies Shred with 25% chance.
+Must have Bow weapon type equipped.
+
+Does not take turn to activate.
+Only one Arrow type spell can be active.""", # MISSING TRANSLATION
+	SKILLSPELLSWORD_AURA = """Spell Tracing""", # MISSING TRANSLATION
+	SKILLSPELLSWORD_AURADESCRIPT = """[center]Spell Tracing[/center]
+Magic flows through your body into the weapon, allowing to follow up your physical single target attacks with a basic spell of your choice. Requires the spell being learnt. Drains 1 mana per attack.
+
+Does not take turn to activate. """, # MISSING TRANSLATION
+	SKILLARCANEBLADE_AURA = """Elemental Weapon""", # MISSING TRANSLATION
+	SKILLARCANEBLADE_AURADESCRIPT = """[center]Elemental Weapon[/center]
+Change weapon element to one you have at least level 2 Mastery in. Takes 5 mana per activation.
+
+Does not take turn to activate. """, # MISSING TRANSLATION
+	SKILLARCANE_MASTERY = """Arcane Mastery""", # MISSING TRANSLATION
+	SKILLARCANE_MASTERYDESCRIPT = """When activated, next spell cast becomes instant.""", # MISSING TRANSLATION
+	SKILLAURA_FIREARR = """Spell Tracing: Fire Arrow""", # MISSING TRANSLATION
+	SKILLAURA_FIREARR_REMOVE = """Turn off Spell Tracing""", # MISSING TRANSLATION
+	SKILLAURA_FIREARRDESCRIPT = """Single target skills have 75% chance to follow up with a Fire Arrow for free.""", # MISSING TRANSLATION
+	SKILLAURA_IMPALE = """Spell Tracing: Impale""", # MISSING TRANSLATION
+	SKILLAURA_IMPALE_REMOVE = """Turn off Spell Tracing""", # MISSING TRANSLATION
+	SKILLAURA_IMPALEDESCRIPT = """Single target skills have 75% chance to follow up with a Impale for free.""", # MISSING TRANSLATION
+	SKILLAURA_LIGHTNING = """Spell Tracing: Lightning""", # MISSING TRANSLATION
+	SKILLAURA_LIGHTNING_REMOVE = """Turn off Spell Tracing""", # MISSING TRANSLATION
+	SKILLAURA_LIGHTNINGDESCRIPT = """Single target skills have 75% chance to follow up with a Lightning for free.""", # MISSING TRANSLATION
+	SKILLAURA_DARKNESS = """Spell Tracing: Darkness""", # MISSING TRANSLATION
+	SKILLAURA_DARKNESS_REMOVE = """Turn off Spell Tracing""", # MISSING TRANSLATION
+	SKILLAURA_DARKNESSDESCRIPT = """Single target skills have 75% chance to follow up with a Darkness for free.""", # MISSING TRANSLATION
+	SKILLAURA_DMGAIR = """Elemental Weapon: Air""", # MISSING TRANSLATION
+	SKILLAURA_DMGAIR_REMOVE = """Turn off Elemental Weapon""", # MISSING TRANSLATION
+	SKILLAURA_DMGAIRDESCRIPT = """Change weapon element to air""", # MISSING TRANSLATION
+	SKILLAURA_DMGEARTH = """Elemental Weapon: Earth""", # MISSING TRANSLATION
+	SKILLAURA_DMGEARTH_REMOVE = """Turn off Elemental Weapon""", # MISSING TRANSLATION
+	SKILLAURA_DMGEARTHDESCRIPT = """Change weapon element to earth""", # MISSING TRANSLATION
+	SKILLAURA_DMGFIRE = """Elemental Weapon: Fire""", # MISSING TRANSLATION
+	SKILLAURA_DMGFIRE_REMOVE = """Turn off Elemental Weapon""", # MISSING TRANSLATION
+	SKILLAURA_DMGFIREDESCRIPT = """Change weapon element to fire""", # MISSING TRANSLATION
+	SKILLAURA_DMGLIGHT = """Elemental Weapon: Light""", # MISSING TRANSLATION
+	SKILLAURA_DMGLIGHT_REMOVE = """Turn off Elemental Weapon""", # MISSING TRANSLATION
+	SKILLAURA_DMGLIGHTDESCRIPT = """Change weapon element to light""", # MISSING TRANSLATION
+	SKILLAURA_DMGDARK = """Elemental Weapon: Dark""", # MISSING TRANSLATION
+	SKILLAURA_DMGDARK_REMOVE = """Turn off Elemental Weapon""", # MISSING TRANSLATION
+	SKILLAURA_DMGDARKDESCRIPT = """Change weapon element to dark""", # MISSING TRANSLATION
+	SKILLAURA_DMGWATER = """Elemental Weapon: water""", # MISSING TRANSLATION
+	SKILLAURA_DMGWATER_REMOVE = """Turn off Elemental Weapon""", # MISSING TRANSLATION
+	SKILLAURA_DMGWATERDESCRIPT = """Change weapon element to water""", # MISSING TRANSLATION
+	SKILLRANGER_AURA = """Animal Companion""", # MISSING TRANSLATION
+	SKILLRANGER_AURA_REMOVE = """Turn off Animal Companion""", # MISSING TRANSLATION
+	SKILLRANGER_AURADESCRIPT = """Passive Summon: Trained Dog""", # MISSING TRANSLATION
+	SKILLNECRO_AURA = """Mastery of the Dead""", # MISSING TRANSLATION
+	SKILLNECRO_AURA_REMOVE = """Turn off Mastery of the Dead""", # MISSING TRANSLATION
+	SKILLNECRO_AURADESCRIPT = """Passive Summon: Skeletons. Number skeletons is defined by Magic Factor.""", # MISSING TRANSLATION
+	SKILLRAMONT_RIPOSTE_STANCE_SKILL = """Parry & Riposte Stance""", # MISSING TRANSLATION
+	SKILLCOMMAND_EMBARGO = """Command: Embargo""", # MISSING TRANSLATION
+	SKILLRAMONT_EMBRAGO = """Enforcing Embargo""", # MISSING TRANSLATION
+	SKILLRAMONT_EVICTION_NOTICE = """Eviction Notice""", # MISSING TRANSLATION
+	SKILLRAMONT_PIERCING_OBSIDIAN = """Piercing Obsidian""", # MISSING TRANSLATION
+	STATUSDESC_BLEED = """Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANSLATION
+	STATUSDESC_POISON = """Poisoned: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANSLATION
+	STATUSDESC_BURN = """Burning: Take 8% of Maximum HP as Fire damage per turn.""", # MISSING TRANSLATION
+	STATUSDESC_SHRED = """Shredded: DEF is reduced by 25%.""", # MISSING TRANSLATION
+	STATUSDESC_FEAR = """Fear: Damage is reduced by 25%.""", # MISSING TRANSLATION
+	STATUSDESC_TAUNT = """Taunted: Focused on caster""", # MISSING TRANSLATION
+	STATUSDESC_PROVOKE = """Provoked: Focused on caster, can use only single-target abilities.""", # MISSING TRANSLATION
+	STATUSDESC_DISARM = """Disarmed: Can't use Skill type abilities.""", # MISSING TRANSLATION
+	STATUSDESC_SILENCE = """Silenced: Can't use Spell type abilities.""", # MISSING TRANSLATION
+	STATUSDESC_FORTIFIED = """Fortified: Incoming Damage is reduced by 25%.""", # MISSING TRANSLATION
+	STATUSDESC_HIDE = """In The Shadows: greatly increased evasion and armor penetration.""", # MISSING TRANSLATION
+	STATUSDESC_ENSNARED = """Ensnared: Evasion is reduced by 75.""", # MISSING TRANSLATION
+	STATUSDESC_MARKED = """Marked: Target takes 15% more damage.""", # MISSING TRANSLATION
+	STATUSDESC_WET = """Wet: Next Fire damage is reduced by 50%, next Air damage is increased by 50%, next application of Freeze is guaranteed.""", # MISSING TRANSLATION
+	STATUSDESC_FREEZE = """Frozen: Next attack deals 125% damage. Air attacks deal 200% and Fire attacks deal 50% of damage instead.""", # MISSING TRANSLATION
+	STATUSDESC_SHOCK = """Shocked: Damage is reduced by 15%.""", # MISSING TRANSLATION
+	STATUSDESC_BLIND = """Blind: Hit chance is reduced by 50.""", # MISSING TRANSLATION
+	STATUSDESC_CURSED = """Cursed: All resists except neutral are lowered by 40.""", # MISSING TRANSLATION
+	STATUSDESC_STUN = """Stunned: Cannot act""", # MISSING TRANSLATION
+	STATUSDESC_SHATTER = """Shattered: MDEF is reduced by 50%.""", # MISSING TRANSLATION
 	TRAITVIGORDESCRIPT = "Aumenta la regeneración de salud en un 30%.",
 	TRAITMEDITATIONDESCRIPT = "Aumenta la regeneración de maná en un 30%.",
 	MASTERYBLOCKSRC = "Bloqueado por %s: %s",
@@ -1471,12 +1677,25 @@ Silenciado: No puede usar habilidades de tipo hechizo.""",
 	STATMASTERY_LIGHT = "Maestria: Luz",
 	STATMASTERY_DARK = "Maestria: Sombra",
 	STATMASTERY_MIND = "Maestria: Mente",
+	STATMASTERY_WARFAREDESCRIPT = """Overall points invested in Mastery of Warfare""", # MISSING TRANSLATION
+	STATMASTERY_PROTECTIONDESCRIPT = """Overall points invested in Mastery of Protection""", # MISSING TRANSLATION
+	STATMASTERY_STEALTHDESCRIPT = """Overall points invested in Mastery of Stealth""", # MISSING TRANSLATION
+	STATMASTERY_MARKSMANSHIPDESCRIPT = """Overall points invested in Mastery of Marksmanship""", # MISSING TRANSLATION
+	STATMASTERY_LEADERSHIPDESCRIPT = """Overall points invested in Mastery of Leadership""", # MISSING TRANSLATION
+	STATMASTERY_FIREDESCRIPT = """Overall points invested in Mastery of Fire""", # MISSING TRANSLATION
+	STATMASTERY_WATERDESCRIPT = """Overall points invested in Mastery of Water""", # MISSING TRANSLATION
+	STATMASTERY_AIRDESCRIPT = """Overall points invested in Mastery of Air""", # MISSING TRANSLATION
+	STATMASTERY_EARTHDESCRIPT = """Overall points invested in Mastery of Earth""", # MISSING TRANSLATION
+	STATMASTERY_LIGHTDESCRIPT = """Overall points invested in Mastery of Light""", # MISSING TRANSLATION
+	STATMASTERY_DARKDESCRIPT = """Overall points invested in Mastery of Dark""", # MISSING TRANSLATION
+	STATMASTERY_MINDDESCRIPT = """Overall points invested in Mastery of Mind""", # MISSING TRANSLATION
 	ADD_MASTERY_CONFIRM = "Gastar puntos de [color=yellow]especializaciòn[/color] para actualizar maestria?",
 	ADD_MASTERY_CONFIRM_UNIVERSAL = "Gastar puntos de [color=yellow]universal[/color] para actualizar maestria?",
 	STATMASTERY_POINT_MAGIC = "Punto de maestría mágica",
 	STATMASTERY_POINT_COMBAT = "Punto de maestría en combate",
 	STATMASTERY_POINT_UNIVERSAL = "Punto de Maestría Universal",
 	STATDISABLED_MASTERIES = "Maestrías restringidas",
+	WHOSHOULDCAST = """Choose Caster""", # MISSING TRANSLATION
 	ACTIONPRAISE = "Elogio",
 	ACTIONPRAISEDESCRIPT = "Mostrar simpatía y elogios [name].",
 	ACTIONREWARD = "Premio",
@@ -1578,6 +1797,8 @@ Mejora la disposición hacia acciones de {color=yellow|Aleatorio}. Costs 5 Mana.
 	TRAININGLABELLOYALTYGROW = "%.0f + %.2f",
 	TRAININGLABELRESISTANCE = "%.0f",
 	TRAININGLABELRESISTANCEDROP = "%.0f - %.0f",
+	TRAINING_TRAINER_NAME = """Trainer: %s""", # MISSING TRANSLATION
+	TRAINING_SLAVES_ASSIGNED = """%s - Slaves Assigned: %d/%d""", # MISSING TRANSLATION
 	TRAININGTOOLTIPRESISTANCE = """La resistencia del esclava reduce la eficiencia del entrenamiento de acciones que no sean {color=yellow|positivas}.
 %s's La resistencia cae %.0f por turno.""",
 	TRAININGTOOLTIPRESISTULT = "La resistencia actual es demasiado alta para el entrenamiento.",
@@ -1601,7 +1822,14 @@ Mejora la disposición hacia acciones de {color=yellow|Aleatorio}. Costs 5 Mana.
 """,
 	TRAININGNOTAVAILABLEUNIQUE = "[color=red]Primero debes completar las misiones personales de [name]. [/color]",
 	TRIANINGREQUIRES = "Categorías de formación obligatorias: ",
+	TRAININGVIRGINITYTAKEN = """%s takes virginity of %s""", # MISSING TRANSLATION
+	TRAININGDISPOSITIONS = """Dispositions:""", # MISSING TRANSLATION
+	TRAININGDISPOSITIONUNKNOWN = """unknown""", # MISSING TRANSLATION
 	DISPOSITIONCHANGE = "Disposición a %s ha cambiado",
+	DISPOSITIONRESIST = """resist""", # MISSING TRANSLATION
+	DISPOSITIONNEUTRAL = """neutral""", # MISSING TRANSLATION
+	DISPOSITIONWEAK = """weak""", # MISSING TRANSLATION
+	DISPOSITIONKINK = """kink""", # MISSING TRANSLATION
 	DISPOSITIONSETRESIST = """Disposición a %s is ahora resiste
 """,
 	DISPOSITIONSETNEUTRAL = """Disposición a %s ahora es neutral
@@ -1682,10 +1910,17 @@ Mejora la disposición hacia acciones de {color=yellow|Aleatorio}. Costs 5 Mana.
 	TASKPRODUCE = "Producir",
 	TASKPRODUCEDESCRIPT = "Asignado para producir materiales",
 	TASKSPECIALDESCRIPT = "",
+	SEXSELECT_INTERACTIONS = """Interactions left this week: %s/%s""", # MISSING TRANSLATION
+	SEXSELECT_MISSING_TRAITS = """[name] has not given [his] full consent for sex yet, this interaction will be more stressful for [him]. """, # MISSING TRANSLATION
 	BEDROOMTOOLTIP = "Número de personajes disponibles para interacciones sexuales. Aumenta con la mejora del dormitorio.",
 	DATETOOLTIP = "Fechas disponibles esta semana. Aumenta con el Factor de Encanto del Maestro y se reinicia al inicio de la semana.",
 	SEXTOOLTIP = "Interacciones sexuales restantes esta semana. Aumenta con el Factor Sexual del Maestro y se reinicia al inicio de la semana.",
 	DATETOOLTIPSHORT = "Citas disponibles del jugador el dia de hoy.",
+	NODATEMASTER = """Dating must be initiated from non-master character""", # MISSING TRANSLATION
+	NODATEUNIQUE = """[name] won't agree for a dating at this point in time.""", # MISSING TRANSLATION
+	NODATERELATION = """[name] lacks a necessary training to agree for the date.""", # MISSING TRANSLATION
+	NODATETODAY = """[name] has already attended to a date with you today.""", # MISSING TRANSLATION
+	NODATEWEEK = """You have no dates left this week""", # MISSING TRANSLATION
 	SEXTOOLTIPSHORT = "Encuentro sexuales disponibles del jugador el dia de hoy.",
 	TRAINTOOLTIP = "Entrenamientos disponibles del jugador el dia de hoy.",
 	TOOLTIPLOYALTYOBEDIENCE = "Los puntos de lealtad se obtienen en cada turno según el Factor de Doma. Con él, puedes desbloquear nuevas acciones y habilidades pasivas.",
@@ -1846,6 +2081,7 @@ Servicio es un modificador global para esta asignación.""",
 	STATDAMAGETYPE = "",
 	STATWEAPON_ELEMENT = "",
 	STATDAMAGE_REDUCTION = "",
+	STATDAMAGE_REDUCTIONDESCRIPT = """Damage Reduction""", # MISSING TRANSLATION
 	STATBURN_MOD = "",
 	STATBLEED_MOD = "",
 	STATPOISON_MOD = "",
@@ -1874,6 +2110,7 @@ Servicio es un modificador global para esta asignación.""",
 	STATPRICE_ADD_PART = "",
 	STATPRICE_ADD = "",
 	STATBASE_TASK_CRIT_CHANCE = "",
+	STATBASE_TASK_CRIT_CHANCEDESCRIPT = """Base chance of critical success at tasks""", # MISSING TRANSLATION
 	STATPENIS_VIRGIN_LOST = "",
 	STATVAGINAL_VIRGIN_LOST = "",
 	STATANAL_VIRGIN_LOST = "",
@@ -1971,6 +2208,7 @@ Servicio es un modificador global para esta asignación.""",
 	STATMANACOST_MOD_AOE = "Costo de maná de AoE",
 	STATMANACOST_MOD_TRUE = "",
 	STATMANACOST_MOD_HEAL = "Coste de maná de curación",
+	STATMANACOST = """Cost""", # MISSING TRANSLATION
 	INNATE = "innato",
 	STATPERSONALITYDESCRIPT = "La personalidad define los patrones de habla de los personajes y proporciona una pequeña ventaja. Puede ajustarse posteriormente con entrenamiento.",
 	SLAVEDIET = "Preferencias alimentarias",
@@ -2031,16 +2269,20 @@ Servicio es un modificador global para esta asignación.""",
 	STATENERGY = "Energia",
 	STATENERGYDESCRIPT = "La energía se recupera durante el sueño y es necesaria para la realización de tareas. Cuando el personaje se ve obligado a trabajar sin energía, acumula agotamiento.",
 	STATHPMAX = "Máxima salud",
+	STATHPMAXDESCRIPT = """Maximal Health""", # MISSING TRANSLATION
 	STATHPFACTOR = "Factor de salud",
 	STATHPFACTORDESCRIPT = "Determina las bonificaciones de salud que se obtienen de la mayoría de las maneras. Un factor de salud alto puede aumentar considerablemente la supervivencia.",
 	STATHP_REG_MOD = "Factor de curación",
 	STATHP_REG = "Regeneración de la salud",
+	STATHP_REGDESCRIPT = """Increases passive health regeneration each turn""", # MISSING TRANSLATION
 	STATMP_REG_ADD = "Regeneración de maná",
 	STATMP_REG = "Regeneración de maná",
+	STATMP_REGDESCRIPT = """Increases passive mana regeneration each turn""", # MISSING TRANSLATION
 	STATHPMAXMOD = "Máxima salud",
 	STATMP = "Maná",
 	STATMPDESCRIPT = "El maná se utiliza para lanzar hechizos y utilizar algunas habilidades.",
 	STATMPMAX = "Máximo de maná",
+	STATMPMAXDESCRIPT = """Maximal Mana""", # MISSING TRANSLATION
 	STATMPMAXMOD = "Máximo de maná",
 	STATHITRATE = "% golpe",
 	STATHITRATEDESCRIPT = "Probabilidad de impactar al enemigo. Reducida por la evasión del objetivo.",
@@ -2070,6 +2312,8 @@ Servicio es un modificador global para esta asignación.""",
 	STATMODRANGED = "Daño a distancia.",
 	STATDAMAGE_MOD_SKILL = "Daño físico",
 	STATDAMAGE_MOD_HEAL = "Bonificación de curación",
+	STATDAMAGE_MOD_SKILLDESCRIPT = """Modifies Physical Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_HEALDESCRIPT = """Modifies Healing efficiency""", # MISSING TRANSLATION
 	STATFATIGUE = "Fatiga",
 	STATEXHAUSTION = "Agotamiento",
 	STATFATIGUEDESCRIPT = "Fatiga mental del personaje. La fatiga reduce la productividad. Se recupera al concentrarse en la alegría.",
@@ -2086,6 +2330,7 @@ Servicio es un modificador global para esta asignación.""",
 	STATCHARMDESCRIPT = "{color=yellow|Encanto} representa el atractivo y la apariencia del personaje. Un Gran Encanto hace que las obras y habilidades sociales sean mucho más efectivas. Se desarrolla al usar habilidades sociales.",
 	STATSEXUALSDESCRIPT = "{color=yellow|Sexual} la competencia representa las habilidades del personaje en los placeres corporales. Se calcula mediante la suma de las tres habilidades sexuales más importantes y afecta ciertas tareas y habilidades.",
 	STATGROWTH_FACTOR = "Crecimiento",
+	STATGROWTH_FACTOR_FULLNAME = """Growth Factor""", # MISSING TRANSLATION
 	STATMAGIC_FACTOR = "Afinidad mágica",
 	STATPHYSICS_FACTOR = "Afinidad de física",
 	STATWITS_FACTOR = "Afinidad con ingenio",
@@ -2093,6 +2338,7 @@ Servicio es un modificador global para esta asignación.""",
 	STATSEXUALS_FACTOR = "Afinidad sexual",
 	STATTAME_FACTOR = "Afinidad de domesticacion",
 	STATAUTHORITY_FACTOR = "Afinidad de autoridad",
+	STATFACTOR = """Factor""", # MISSING TRANSLATION
 	STATSLAVE_CLASS = "Tipo",
 	STATPHYSICS_BONUS = "Físico",
 	STATWITS_BONUS = "Ingenio",
@@ -2103,6 +2349,11 @@ Servicio es un modificador global para esta asignación.""",
 	STATTRAINING_SPIRIT = "Espiritu de formación",
 	STATRESISTANCE_RED = "Velocidad de caída de la resistencia",
 	STATTRAINER_LOYALTY_BONUS = "Fidelización del aprendiz",
+	STATTRAINING_LOYALTYDESCRIPT = """Loyalty bonus gained by this character from Training""", # MISSING TRANSLATION
+	STATTRAINING_SPIRITDESCRIPT = """Adjustment for Spirit decline during Training""", # MISSING TRANSLATION
+	STATRESISTANCE_REDDESCRIPT = """Speed of slave's Resistance dropping with time""", # MISSING TRANSLATION
+	STATTRAINER_LOYALTY_BONUSDESCRIPT = """Loyalty bonus received by this character's trainee""", # MISSING TRANSLATION
+	STATTRAINEE_AMOUNTDESCRIPT = """Maximal number of trainee""", # MISSING TRANSLATION
 	TRAITTRAINER = "Entrenador",
 	TRAITTRAINERDESCRIPT = "Puede supervisar a los esclavos",
 	STATSPIRIT = "Espíritu",
@@ -2136,6 +2387,7 @@ Daño +15%, Salud +20.""",
 	STATCONSENT = "Consentir",
 	STATCONSENTDESCRIPT = "Afecta el consentimiento para las acciones durante las interacciones sexuales. Cada acción tiene un consentimiento diferente según los rasgos, las parejas y otros factores. Este número representa solo el valor inalterado. El consentimiento básico aumenta al obtener resultados positivos, al probar nuevas acciones y parejas. También aumenta ligeramente con las habilidades de disciplina.",
 	STATEXP_GAIN_MOD = "Bono de experiencia",
+	STATEXP_GAIN_MODDESCRIPT = """Modifies Experience gaining""", # MISSING TRANSLATION
 	STATLOYALTY_GAIN_MOD = "Ganancia de lealtad",
 	STATLOYALTY_GAIN = "Ganancia de lealtad",
 	STATLUSTTICK = "Crecimiento de la lujuria",
@@ -2156,6 +2408,22 @@ Daño +15%, Salud +20.""",
 	STATMOD_HOSTESS = "Ingresos de anfitriona",
 	STATMOD_DANCER = "Ingresos de bailarina",
 	STATMOD_STRIP = "Ingresos de stripper",
+	STATMOD_BUILDDESCRIPT = """Modifies Upgrading Efficiency""", # MISSING TRANSLATION
+	STATMOD_COLLECTDESCRIPT = """Modifies Collection Efficiency""", # MISSING TRANSLATION
+	STATMOD_HUNTDESCRIPT = """Modifies Hunt Efficiency""", # MISSING TRANSLATION
+	STATMOD_FISHDESCRIPT = """Modifies Fish Efficiency""", # MISSING TRANSLATION
+	STATMOD_COOKDESCRIPT = """Modifies Cook Efficiency""", # MISSING TRANSLATION
+	STATMOD_SMITHDESCRIPT = """Modifies Smith Efficiency""", # MISSING TRANSLATION
+	STATMOD_TAILORDESCRIPT = """Modifies Tailor Efficiency""", # MISSING TRANSLATION
+	STATMOD_ALCHEMYDESCRIPT = """Modifies Alchemy Efficiency""", # MISSING TRANSLATION
+	STATMOD_FARMDESCRIPT = """Modifies Farming Efficiency""", # MISSING TRANSLATION
+	STATMOD_SERVICEDESCRIPT = """Modifies Service Efficiency""", # MISSING TRANSLATION
+	STATMOD_PROSDESCRIPT = """Modifies Sex Service Efficiency""", # MISSING TRANSLATION
+	STATMOD_TASK_EFFICIECNYDESCRIPT = """Modifies Task Efficiency""", # MISSING TRANSLATION
+	STATMOD_WAITRESSDESCRIPT = """Modifies Waitress Income""", # MISSING TRANSLATION
+	STATMOD_HOSTESSDESCRIPT = """Modifies Hostess Income""", # MISSING TRANSLATION
+	STATMOD_DANCERDESCRIPT = """Modifies Dancer Income""", # MISSING TRANSLATION
+	STATMOD_STRIPDESCRIPT = """Modifies Stripper Income""", # MISSING TRANSLATION
 	STATRESIST_NORMAL = "Res normal",
 	STATRESIST_FIRE = "Res fuego",
 	STATRESIST_AIR = "Res aire",
@@ -2164,6 +2432,50 @@ Daño +15%, Salud +20.""",
 	STATRESIST_LIGHT = "Res luz",
 	STATRESIST_DARK = "Res sombra",
 	STATRESIST_MIND = "Res mente",
+	STATRESIST_AOE = """Area Resist""", # MISSING TRANSLATION
+	STATRESIST_BLEED = """Bleed Resist""", # MISSING TRANSLATION
+	STATRESIST_BLIND = """Blind Resist""", # MISSING TRANSLATION
+	STATRESIST_BURN = """Burn Resist""", # MISSING TRANSLATION
+	STATRESIST_CONFUSE = """Confuse Resist""", # MISSING TRANSLATION
+	STATRESIST_CURSED = """Curse Resist""", # MISSING TRANSLATION
+	STATRESIST_DISARM = """Disarm Resist""", # MISSING TRANSLATION
+	STATRESIST_FEAR = """Fear Resist""", # MISSING TRANSLATION
+	STATRESIST_FREEZE = """Freeze Resist""", # MISSING TRANSLATION
+	STATRESIST_HEAL = """Heal Resist""", # MISSING TRANSLATION
+	STATRESIST_MELEE = """Melee Resist""", # MISSING TRANSLATION
+	STATRESIST_POISON = """Poison Resist""", # MISSING TRANSLATION
+	STATRESIST_RANGED = """Ranged Resist""", # MISSING TRANSLATION
+	STATRESIST_SHOCK = """Shock Resist""", # MISSING TRANSLATION
+	STATRESIST_SILENCE = """Silence Resist""", # MISSING TRANSLATION
+	STATRESIST_SLEEP = """Sleep Resist""", # MISSING TRANSLATION
+	STATRESIST_STUN = """Stun Resist""", # MISSING TRANSLATION
+	STATRESIST_WET = """Wet Resist""", # MISSING TRANSLATION
+	STATRESIST_NORMALDESCRIPT = """Resistance to Normal damage""", # MISSING TRANSLATION
+	STATRESIST_FIREDESCRIPT = """Resistance to Fire damage""", # MISSING TRANSLATION
+	STATRESIST_AIRDESCRIPT = """Resistance to Air damage""", # MISSING TRANSLATION
+	STATRESIST_EARTHDESCRIPT = """Resistance to Earth damage""", # MISSING TRANSLATION
+	STATRESIST_WATERDESCRIPT = """Resistance to Water damage""", # MISSING TRANSLATION
+	STATRESIST_LIGHTDESCRIPT = """Resistance to Light damage""", # MISSING TRANSLATION
+	STATRESIST_DARKDESCRIPT = """Resistance to Dark damage""", # MISSING TRANSLATION
+	STATRESIST_MINDDESCRIPT = """Resistance to Mind damage""", # MISSING TRANSLATION
+	STATRESIST_AOEDESCRIPT = """Resistance to Area damage""", # MISSING TRANSLATION
+	STATRESIST_BLEEDDESCRIPT = """Resistance to Bleed effect""", # MISSING TRANSLATION
+	STATRESIST_BLINDDESCRIPT = """Resistance to Blind effect""", # MISSING TRANSLATION
+	STATRESIST_BURNDESCRIPT = """Resistance to Burn effect""", # MISSING TRANSLATION
+	STATRESIST_CONFUSEDESCRIPT = """Resistance to Confuse effect""", # MISSING TRANSLATION
+	STATRESIST_CURSEDDESCRIPT = """Resistance to Curse effect""", # MISSING TRANSLATION
+	STATRESIST_DISARMDESCRIPT = """Resistance to Disarm effect""", # MISSING TRANSLATION
+	STATRESIST_FEARDESCRIPT = """Resistance to Fear effect""", # MISSING TRANSLATION
+	STATRESIST_FREEZEDESCRIPT = """Resistance to Freeze effect""", # MISSING TRANSLATION
+	STATRESIST_HEALDESCRIPT = """Resistance to Heal effect""", # MISSING TRANSLATION
+	STATRESIST_MELEEDESCRIPT = """Resistance to Melee damage""", # MISSING TRANSLATION
+	STATRESIST_POISONDESCRIPT = """Resistance to Poison effect""", # MISSING TRANSLATION
+	STATRESIST_RANGEDDESCRIPT = """Resistance to Ranged damage""", # MISSING TRANSLATION
+	STATRESIST_SHOCKDESCRIPT = """Resistance to Shock effect""", # MISSING TRANSLATION
+	STATRESIST_SILENCEDESCRIPT = """Resistance to Silence effect""", # MISSING TRANSLATION
+	STATRESIST_SLEEPDESCRIPT = """Resistance to Sleep effect""", # MISSING TRANSLATION
+	STATRESIST_STUNDESCRIPT = """Resistance to Stun effect""", # MISSING TRANSLATION
+	STATRESIST_WETDESCRIPT = """Resistance to Wet effect""", # MISSING TRANSLATION
 	STATENCHANT_CAPACITY_MOD = "Capacidad de encantamiento",
 	STATENCHANT_CAPACITY = "Capacidad de encantamiento",
 	STATENCHCAP = "Capacidad de encantamiento",
@@ -2354,6 +2666,9 @@ El coste de maná del hechizo se redujo en un 15 %.
 	STATTASK_EFFICIENCY_TOOL = "Bono por eficiencia de tareas",
 	STATTASK_CRIT_CHANCE = "Probabilidad crítica de la tarea",
 	STATMAGIC_FIND = "Hallazgo mágico",
+	STATMAGIC_FINDDESCRIPT = """Improves quality of items found""", # MISSING TRANSLATION
+	STATMANHUNT = """Manhunt""", # MISSING TRANSLATION
+	STATMANHUNTDESCRIPT = """Increases dungeon the chance to find dungeon recruits and quality of settlement recruits""", # MISSING TRANSLATION
 	RACEHUMAN = "Humano",
 	RACEHUMANADJ = "Humano",
 	RACEELF = "Elfo",
@@ -2601,6 +2916,8 @@ Lealtad: +25, Obediencia máxima.""",
 	THRALLS1DESCRIPT = "Tiene 1 esclavo",
 	THRALLS0DESCRIPT = "No tiene esclavos",
 	EFFECTNAME_E_THRALL = "Es un esclavo",
+	EFFECTNAME_FLIGHT = """Flight""", # MISSING TRANSLATION
+	EFFECTNAME_FLIGHT_UPKEEP = """Flight""", # MISSING TRANSLATION
 	
 	SKILLSUPREMACY = "Supremacía",
 	SKILLSUPREMACYDESCRIPT = """Categoría: {color=green|Gracioso}
@@ -2733,6 +3050,12 @@ El entrenamiento tiene mayores posibilidades de éxito.""",
 	TRAITCHEFDESCRIPT = "Cocinar es 100% más rápido.",
 	TRAITATTENDANTDESCRIPT = "Una vez por turno de combate, [name] puede usar un objeto sin usar un turno.",
 	TRAITALCHEMISTDESCRIPT = "Los objetos curativos son un 25% más efectivos en combate.",
+	TRAITMASTER_ALCHEMISTT = """Master Alchemist""", # MISSING TRANSLATION
+	TRAITMASTER_ALCHEMISTDESCRIPT = """Crafted alchemy items are at least normal quality.""", # MISSING TRANSLATION
+	TRAITMASTER_SMITH = """Master smith""", # MISSING TRANSLATION
+	TRAITMASTER_SMITHDESCRIPT = """Crafted Forge items are at least Normal quality.""", # MISSING TRANSLATION
+	TRAITMASTER_TAILOR = """Master Tailor""", # MISSING TRANSLATION
+	TRAITMASTER_TAILORDESCRIPT = """Crafted Tailor items are at least Normal quality.""", # MISSING TRANSLATION
 	TRAITFARMERDESCRIPT = "La agricultura es un 50% más eficiente.",
 	TRAITBREEDERDESCRIPT = """Permite la cría con cualquier raza.
 Las desventajas del embarazo son más débiles
@@ -2764,13 +3087,23 @@ Los ataques de habilidad poseen elemento Oscuro.""",
 	TRAITBASIC_SPELLSDESCRIPT = "Permite aprender hechizos y bastones de combate básicos.",
 	TRAITADVANCED_SPELLSDESCRIPT = "Permite aprender hechizos y bastones de combate avanzados.",
 	TRAITHUNTER_DAMAGEDESCRIPT = "Daño contra bestias: +15%",
+	TRAITSPELLSWORDDESCRIPT = """All offensive skills and spells are cast and considered as {color=yellow|Melee Range}.
+	
+Single target magic spells have 100% chance to be followed up with a basic melee attack.""", # MISSING TRANSLATION
+	TRAITCASTERDESCRIPT = """Recover 10% of maximum mana after combat""", # MISSING TRANSLATION
 	TRAITBISHOPDESCRIPT = """Daño de magia de luz: +25%
 {color=brown|Luminancia}: Las habilidades de Luz de objetivo único hacen que el objetivo reciba más daño de Luz y Oscuridad.""",
 	TRAITDRUIDDESCRIPT = "Daño de hechizo de tierra: +20%",
 	TRAITBERSERKERDESCRIPT = """{color=brown|Frenesí}: después de matar a un enemigo, obtienes un turno adicional (una vez por combate).""",
 	TRAITSNIPERDESCRIPT = "Daño físico de un solo objetivo: +25%",
+	TRAITSHIELDBEARERDESCRIPT = """{color=brown|Shield Counter}: If equipped with a shield that grants Evasion, counter enemy attacks in melee range.""", # MISSING TRANSLATION
 	TRAITPALADINDESCRIPT = "{color=brown|Castigar}: Inflige un 25% más de daño y recibe un 15% menos de daño de enemigos tipo no muertos y demonios.",
+	TRAITROUGE = """Ruthless""", # MISSING TRANSLATION
+	TRAITROUGEDESCRIPT = """Restore some health and mana when deals killing blow.
+When in front row: +35% Damage, +10% Crit Chance.
+Can't be Trained or receive Loyalty Points.""", # MISSING TRANSLATION
 	TRAITASSASSINDESCRIPT = "{color=brown|Maestría en sigilo}: Esconderse se puede activar con armadura media.",
+	TRAITASNIPERDESCRIPT = """Marksmanship skills won't break In The Shadows effect.""", # MISSING TRANSLATION
 	TRAITBLOODMAGEDESCRIPT = "{color=brown|Maestría en sangre}: infligir daño a objetivos sangrantes recupera HP y MP y aumenta MATK hasta el final de la pelea.",
 	TRAITNECROMANCERDESCRIPT = "{color=brown|Maestría de los Muertos}: Invocación pasiva: Esqueletos. La cantidad de esqueletos se define por el Factor Mágico.",
 	TRAITRANGERDESCRIPT = "{color=brown|Compañero animal}: Invocación pasiva: Perro entrenado",
@@ -2801,6 +3134,7 @@ Las acciones de entrenamiento Físico y Sexual tienen un 25% más de impacto."""
 	TRAITMAGIC_TOOLSDESCRIPT = "Permite el uso de herramientas mágicas como bastones.",
 	TRAITUNDEADDESCRIPT = "[name] ya no es un ser vivo. El consumo de comida se reduce a 0; el encanto se reduce en 100; la resistencia a la luz -50; la resistencia a la oscuridad +50; el daño oscuro +20%%; no puede embarazar ni quedar embarazada.",
 	TRAITNIXX_CHAMPIONDESCRIPT = "Las habilidades del elemento oscuro tienen una probabilidad de golpe de +30 e ignoran la DEF y MAG DEF del objetivo.",
+	TRAITNIXX_CHAMPION2DESCRIPT = """Additional dark damage to melee skills""", # MISSING TRANSLATION
 	TRAITSPOUSE = "Esposa",
 	TRAITSPOUSEDESCRIPT = "Los futuros hijos entre [Master] y Cónyuge reciben Su estatus en lugar de Esclavo o Peón.",
 	TRAITPRODIGY = "Prodigio",
@@ -3052,6 +3386,27 @@ Requiere consentimiento \"Dispuesto\" o superior.""",
 	TRAITSUCCUBUS_MAGICDESCRIPT = "MAG ATK: +10; Max MP: +25; Regeneración de MP: +50%\nSolo se puede realizar una sintonización",
 	TRAITSUCCUBUS_COMBAT = "Sintonización de combate",
 	TRAITSUCCUBUS_COMBATDESCRIPT = "Factor HP: +20%; Regeneración HP: +100%; Obtiene la última vez que recibe daño..\nSolo se puede realizar una sintonización",
+	FINISHTRAINING = """Finish training? Leftover spirit will be used to purchase additional bonuses.""", # MISSING TRANSLATION
+	TRAITTRAINING_VALUE = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_VALUEDESCRIPT = """+25% Value""", # MISSING TRANSLATION
+	TRAITTRAINING_PRODUCTIVITY = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_PRODUCTIVITYDESCRIPT = """+30% Productivity""", # MISSING TRANSLATION
+	TRAITTRAINING_XP = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_XPDESCRIPT = """+20% xp gain""", # MISSING TRANSLATION
+	TRAITTRAINING_HP = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_HPDESCRIPT = """+25 health""", # MISSING TRANSLATION
+	TRAITTRAINING_ATK = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_ATKDESCRIPT = """+10 atk""", # MISSING TRANSLATION
+	TRAITTRAINING_MATK = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_MATKDESCRIPT = """+10 matk""", # MISSING TRANSLATION
+	TRAITTRAINING_DEF = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_DEFDESCRIPT = """+10 def""", # MISSING TRANSLATION
+	TRAITTRAINING_MDEF = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_MDEFDESCRIPT = """+15 mdef""", # MISSING TRANSLATION
+	TRAITTRAINING_TRAINER = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_TRAINERDESCRIPT = """+3 trainer slots and trainer status""", # MISSING TRANSLATION
+	TRAITTRAINING_HEAL = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_HEALDESCRIPT = """+50% healing efficiency""", # MISSING TRANSLATION
 	TRAITEFFECTVIRGIN = """[center]{color=yellow|Virginidad}[/center]
 Como [name] tiene una virginidad observable, esto lo hace que [him] sea más deseable para ciertos individuos.
 {color=yellow|El precio de venta se incrementa en 25%%}""",
@@ -3073,10 +3428,12 @@ Mayor salud, DEF y MAG DEF""",
 	TRAITEFFECTHARDWORK = "Trabajo duro: +50%% Productividad",
 	TRAITEFFECTPHYSBUF = "Elixir de fuerza del ogro: +80 Física",
 	TRAITEFFECTWITSBUF = "Elixir de Mente Expandida: +80 Ingenio",
+	TRAITEFFECTALCOHOL = """Wasted: -1 Loyalty Gain, +1 Spirit Gain, -15%% Productivity""", # MISSING TRANSLATION
 	TRAITEFFECTFAVFOOD = "Comida favorita: +5%% Productividad, +5%% Ganancia de experiencia",
 	TRAITEFFECTHATEDFOOD = "Comida odiada: -10%% Productividad.",
 	TRAITEFFECTSTARVE = "Starvation: -50%% Productividad, -50%% Damage.",
 	TRAITEFFECTGRAVEINJ = "Lesión grave: -25%% Productividad, -50 Sexuales. No pueden participar en combate.",
+	TRAITEFFECTINJ = """Injury: -30%% Max HP, -20 Hitrate.""", # MISSING TRANSLATION
 	TRAITEFFECTDISCIPLINE = "Disciplina: +50%% Eficiencias laborales y artesanales.",
 	TRAITEFFECTSEDUCE = "Seducir: -7 Drenaje de obediencia",
 	TRAITEFFECTGREATSEDUCE = "Gran Seducción: Evita escapes; -9 Drenaje de Obediencia, +50%% Crecimiento de la lujuria.",
@@ -3098,6 +3455,7 @@ Mayor salud, DEF y MAG DEF""",
 	TRAITEFFECTBLESSED = "Bendito: +25%% ATK.",
 	TRAITEFFECTMENTALBLESS = "Bendecido mentalmente: +25%% MAG ATK.",
 	TRAITEFFECTFLY = "Volar: +65 Evasión.",
+	TRAITEFFECTFLIGHT = """Flight: 80% dodge vs melee, +25 Hit Chance, +50 Earth Resist""", # MISSING TRANSLATION
 	TRAITEFFECTSHATTERED = "Destrozado: -25 MAG DEF.",
 	TRAITEFFECTFIREBURST = "Explosión de fuego: -20 probabilidad de golpe.",
 	TRAITEFFECTSWIPE = "Deslizar: -20 DEF.",
@@ -3120,6 +3478,11 @@ Mayor salud, DEF y MAG DEF""",
 	TRAITEFFECTHOLY = "Resplandor divino: -20 MAG DEF",
 	TRAITEFFECTPOSITIONTAKEN = "Posición tomada: +50 penetración de armadura; +20%% daño",
 	TRAITEFFECTWINDWALL = "Muro de viento: -50%% Daño a distancia",
+	TRAITEFFECTWATERSHIELD = """Water Shield: +40 Fire Resistance""", # MISSING TRANSLATION
+	TRAITEFFECTFIRESHIELD = """Fire Shield: +40 Water Resistance""", # MISSING TRANSLATION
+	TRAITEFFECTAIRSHIELD = """Air Shield: +40 Earth Resistance, +10%% Ranged Resistance""", # MISSING TRANSLATION
+	TRAITEFFECTEARTHSHIELD = """Earth Shield: Armor increased by 50%% of Spell Power""", # MISSING TRANSLATION
+	TRAITEFFECTEARTHSHIELD_1 = """Earth Shield: Armor increased by 50%% of Spell Power, MDEF increased by 40%% of Spell Power""", # MISSING TRANSLATION
 	TRAITEFFECTPETSUIT = """Cuando el usuario tiene clase de mascota:
 Encanto: +10
 Efecto de habilidades sociales: +10%.""",
@@ -3152,6 +3515,60 @@ Efecto de habilidades sociales: +10%.""",
 	TRAITEFFECTHASTE = "La velocidad aumenta",
 	EFFECTCOFFIBLESS = "Aumento de la ganancia de experiencia en un 20%%",
 	EUPHORIABUFF = "Euforia: daño aumentado",
+	FIREARROWBUFF = """Fire Arrows: your attacks burn your enemies.""", # MISSING TRANSLATION
+	EFFECTNAME_E_LOVE = """Lover present""", # MISSING TRANSLATION
+	EFFECTNAME_E_FRIEND = """Friend present""", # MISSING TRANSLATION
+	EFFECTNAME_E_RIVAL = """Rival present""", # MISSING TRANSLATION
+	EFFECTNAME_E_PERSON_BOLD = """Is Bold""", # MISSING TRANSLATION
+	EFFECTNAME_E_PERSON_SHY = """Is Shy""", # MISSING TRANSLATION
+	EFFECTNAME_E_PERSON_KIND = """Is kind""", # MISSING TRANSLATION
+	EFFECTNAME_E_PERSON_SERIOUS = """Is serious""", # MISSING TRANSLATION
+	EFFECTNAME_WORK_RULE_RATION = """Rations applied""", # MISSING TRANSLATION
+	EFFECTNAME_WORK_RULE_SHIFTS = """Work shifts applied""", # MISSING TRANSLATION
+	EFFECTNAME_WORK_RULE_MASTURBATION = """Masturbation enabled""", # MISSING TRANSLATION
+	EFFECTNAME_E_I_PET_SUIT_BONUS = """Pet suit effect""", # MISSING TRANSLATION
+	EFFECTNAME_E_I_ANAL = """Anal beeds effect""", # MISSING TRANSLATION
+	EFFECTNAME_E_TAIL_PLUG_BONUS = """Tail plug effect""", # MISSING TRANSLATION
+	EFFECTNAME_E_PREGNANCY = """Is pregnant""", # MISSING TRANSLATION
+	EFFECTNAME_E_PREGNANCY1 = """Is heavily pregnant""", # MISSING TRANSLATION
+	EFFECTNAME_E_PREGNANCY_BREEDER = """Is pregnant (breeder)""", # MISSING TRANSLATION
+	EFFECTNAME_E_MKUP = """Tattoo""", # MISSING TRANSLATION
+	EFFECTNAME_E_TLUST1 = """Tattoo""", # MISSING TRANSLATION
+	EFFECTNAME_E_TLUST2 = """Tattoo""", # MISSING TRANSLATION
+	EFFECTNAME_E_THPR = """Tattoo""", # MISSING TRANSLATION
+	EFFECTNAME_E_TMPR = """Tattoo""", # MISSING TRANSLATION
+	EFFECTNAME_E_TRIB1 = """Tattoo""", # MISSING TRANSLATION
+	EFFECTNAME_E_TRIB2 = """Tattoo""", # MISSING TRANSLATION
+	EFFECTNAME_E_TR_ALIOS = """Champion of Alios""", # MISSING TRANSLATION
+	EFFECTNAME_VALKYRIE_SPEAR_BONUS = """Valkyrie""", # MISSING TRANSLATION
+	EFFECTNAME_E_WE_DARK_STATIC = """Deathknight""", # MISSING TRANSLATION
+	EFFECTNAME_E_RARE_STURDY = """Sturdy enemy""", # MISSING TRANSLATION
+	EFFECTNAME_E_RARE_NIMBLE = """Nimble enemy""", # MISSING TRANSLATION
+	EFFECTNAME_E_RARE_STRONG = """Strong enemy""", # MISSING TRANSLATION
+	EFFECTNAME_E_RARE_DEADLY = """Deadly enemy""", # MISSING TRANSLATION
+	EFFECTNAME_E_RARE_PRECISE = """Preciese enemy""", # MISSING TRANSLATION
+	EFFECTNAME_E_RARE_TOUGH = """Tough enemy""", # MISSING TRANSLATION
+	EFFECTNAME_E_MINIBOSS = """Miniboss""", # MISSING TRANSLATION
+	EFFECTNAME_E_BOSS = """Boss""", # MISSING TRANSLATION
+	EFFECTNAME_DEMON_FORM = """In Demon form""", # MISSING TRANSLATION
+	EFFECTNAME_HUMAN_FORM = """In Human form""", # MISSING TRANSLATION
+	EFFECTNAME_MAGIC_ATUNEMENT = """Magic attunement""", # MISSING TRANSLATION
+	EFFECTNAME_COMBAT_ATUNEMENT_PASSIVE = """Combat attunement""", # MISSING TRANSLATION
+	EFFECTNAME_SUCCUBUS_THRALLS_0 = """Has 0 thralls""", # MISSING TRANSLATION
+	EFFECTNAME_SUCCUBUS_THRALLS_1 = """Has 1 thrall""", # MISSING TRANSLATION
+	EFFECTNAME_SUCCUBUS_THRALLS_2 = """Has 2 thralls""", # MISSING TRANSLATION
+	EFFECTNAME_SUCCUBUS_THRALLS_3 = """Has 3 thralls""", # MISSING TRANSLATION
+	EFFECTNAME_SUCCUBUS_THRALLS_4 = """Has 4 thralls""", # MISSING TRANSLATION
+	EFFECTNAME_SUCCUBUS_THRALLS_5 = """Has 5 thralls""", # MISSING TRANSLATION
+	EFFECTNAME_SUCCUBUS_THRALLS_6 = """Has 6 thralls""", # MISSING TRANSLATION
+	EFFECTNAME_MAX_STATS = """Stats of max value""", # MISSING TRANSLATION
+	EFFECTNAME_E_S_NOSTUN = """Stun immunity""", # MISSING TRANSLATION
+	EFFECTNAME_WORK_RULE_LUXURY = """Luxury rooms""", # MISSING TRANSLATION
+	EFFECTNAME_CURSE_DECLINE_1 = """Curse of decline lv 1""", # MISSING TRANSLATION
+	EFFECTNAME_CURSE_DECLINE_2 = """Curse of decline lv 2""", # MISSING TRANSLATION
+	EFFECTNAME_CURSE_FRAGILITY_1 = """Curse of fragility lv 1""", # MISSING TRANSLATION
+	EFFECTNAME_CURSE_FRAGILITY_2 = """Curse of fragility lv 2""", # MISSING TRANSLATION
+	EFFECTNAME_COMMANDER = """Commander present""", # MISSING TRANSLATION
 	BUFFDESCRIPTSHACKLES = "Grilletes",
 	BUFFDESCRIPTGREATSHACKLES = "Grandes grilletes",
 	BUFFDESCRIPTCHARM = "Está encantado. Quedan %d horas.",
@@ -3176,6 +3593,8 @@ Efecto de habilidades sociales: +10%.""",
 	BUFFDESCRIPTPOISON = "Envenenado: recibe el 10%% del HP máximo como daño neutral por turno",
 	BUFFDESCRIPTBLEEDING = "Sangrado: recibe el 10%% del HP máximo como daño neutral por turno",
 	BUFFDESCRIPTCONFUSE = "Confusión",
+	BUFFDESCRIPTFREEUSE = """Allows to use an item without taking a turn""", # MISSING TRANSLATION
+	BUFFDESCRIPTPALADINGUARD = """Counters melee-reachable damaging attacks with a basic attack. For player characters, requires a shield with Evasion bonus.""", # MISSING TRANSLATION
 	BUFFDESTRAITEFFECTMASTERCOMBATCRIPTFREEUSE = "Permite utilizar un objeto sin necesidad de turno.",
 	BUFFDESCRIPTSHRED = "Destrozado: La DEF se reduce en un 50%%",
 	BUFFDESCRIPTSHATTER = "Destrozado: La MAG DEF se reduce en un 50%%",
@@ -3208,6 +3627,106 @@ El siguiente ataque inflige un 125%% de daño. Los ataques aéreos infligen un 2
 	BUFFDESCRIPTSHOCK = """Sorprendido
 Todo el daño recibido aumenta en un 15%%, la descarga adicional tiene la posibilidad de aturdir.""",
 	BUFFDESCRIPTENSNARE = "Atrapado: La evasión se reduce en 75",
+	LOGEFFECTIMMUNE = """
+%s is immune to %s.""", # MISSING TRANSLATION
+	LOGEFFECTRESIST = """
+%s resists %s.""", # MISSING TRANSLATION
+	LOGEFFECTAPPLY = """
+%s is affected by %s.""", # MISSING TRANSLATION
+	LOGEFFECTTOGGLEON = """
+%s on %s is active""", # MISSING TRANSLATION
+	LOGEFFECTTOGGLEOFF = """
+%s on %s is off""", # MISSING TRANSLATION
+	LOGEFFECTTOGGLEOFFON = """
+%s is reapplied on %s""", # MISSING TRANSLATION
+	LOGEFFECTRENEW = """
+%s is reapplied on %s""", # MISSING TRANSLATION
+	EFFECTNAME_LUMINANCE = """luminance""", # MISSING TRANSLATION
+	EFFECTNAME_DEFENDED = """protection""", # MISSING TRANSLATION
+	EFFECTNAME_WARDED = """ward""", # MISSING TRANSLATION
+	EFFECTNAME_D_WARDED = """curse ward""", # MISSING TRANSLATION
+	EFFECTNAME_DEFAULT = """ """, # MISSING TRANSLATION
+	EFFECTNAME_INJURY = """injury""", # MISSING TRANSLATION
+	EFFECTNAME_REGEN = """regeneration""", # MISSING TRANSLATION
+	EFFECTNAME_FIREBURST = """fire burst""", # MISSING TRANSLATION
+	EFFECTNAME_ARROWRAIN = """arrow rain""", # MISSING TRANSLATION
+	EFFECTNAME_SSTRIKE = """shadow strike""", # MISSING TRANSLATION
+	EFFECTNAME_BLIND = """blind""", # MISSING TRANSLATION
+	EFFECTNAME_FEAR = """fear""", # MISSING TRANSLATION
+	EFFECTNAME_SHOCK = """shock""", # MISSING TRANSLATION
+	EFFECTNAME_STUN = """stun""", # MISSING TRANSLATION
+	EFFECTNAME_CHARM = """charm""", # MISSING TRANSLATION
+	EFFECTNAME_WET = """wet""", # MISSING TRANSLATION
+	EFFECTNAME_FREEZE = """freeze""", # MISSING TRANSLATION
+	EFFECTNAME_DISARM = """disarm""", # MISSING TRANSLATION
+	EFFECTNAME_SILENCE = """silence""", # MISSING TRANSLATION
+	EFFECTNAME_GROWL = """growl""", # MISSING TRANSLATION
+	EFFECTNAME_SLAM = """slam""", # MISSING TRANSLATION
+	EFFECTNAME_CONFUSE = """confuse""", # MISSING TRANSLATION
+	EFFECTNAME_CURSED = """curse""", # MISSING TRANSLATION
+	EFFECTNAME_HOLYDEBUFF = """""", # MISSING TRANSLATION
+	EFFECTNAME_TAUNT = """taunt""", # MISSING TRANSLATION
+	EFFECTNAME_HIDE = """In The Shadows""", # MISSING TRANSLATION
+	EFFECTNAME_STONEWALL = """stone wall""", # MISSING TRANSLATION
+	EFFECTNAME_LAST_STAND = """last stand""", # MISSING TRANSLATION
+	EFFECTNAME_REJUVENATION = """rejuvenation""", # MISSING TRANSLATION
+	EFFECTNAME_MAGICWARD = """magic ward""", # MISSING TRANSLATION
+	EFFECTNAME_TAKEPOSITION = """take position""", # MISSING TRANSLATION
+	EFFECTNAME_BURN = """burn""", # MISSING TRANSLATION
+	EFFECTNAME_BLEED = """bleed""", # MISSING TRANSLATION
+	EFFECTNAME_POISON = """poison""", # MISSING TRANSLATION
+	EFFECTNAME_DARKFLAME = """dark flame""", # MISSING TRANSLATION
+	EFFECTNAME_SHRED = """shred""", # MISSING TRANSLATION
+	EFFECTNAME_SHATTER = """shatter""", # MISSING TRANSLATION
+	EFFECTNAME_SLEEP = """sleep""", # MISSING TRANSLATION
+	EFFECTNAME_ENSNARE = """ensnare""", # MISSING TRANSLATION
+	EFFECTNAME_HASTE = """haste""", # MISSING TRANSLATION
+	EFFECTNAME_AIRSHIELD = """air shield""", # MISSING TRANSLATION
+	EFFECTNAME_EYEOFTHESTORM = """eye of the storm""", # MISSING TRANSLATION
+	EFFECTNAME_BLOODMAGE_BONUS = """bloodmage bonus""", # MISSING TRANSLATION
+	EFFECTNAME_TEMPLAR_PROT = """templar protection""", # MISSING TRANSLATION
+	EFFECTNAME_COMMAND = """command""", # MISSING TRANSLATION
+	EFFECTNAME_REFINE = """weapon refine""", # MISSING TRANSLATION
+	EFFECTNAME_DISTRACT = """distract""", # MISSING TRANSLATION
+	EFFECTNAME_DRAGONMIGHT = """dragon might""", # MISSING TRANSLATION
+	EFFECTNAME_WINDWALL = """wind wall""", # MISSING TRANSLATION
+	EFFECTNAME_DEVOUR = """devour""", # MISSING TRANSLATION
+	EFFECTNAME_SPIRIT = """spirit""", # MISSING TRANSLATION
+	EFFECTNAME_BARD = """bard's performance""", # MISSING TRANSLATION
+	EFFECTNAME_REFLECTION = """reflection""", # MISSING TRANSLATION
+	EFFECTNAME_PROTECTIVE_SHELL = """protective shell""", # MISSING TRANSLATION
+	EFFECTNAME_DEATHKNIGHT = """deathknight bonus""", # MISSING TRANSLATION
+	EFFECTNAME_EUPHORIA = """euphoria""", # MISSING TRANSLATION
+	EFFECTNAME_FIREARROWS = """enchanted arrows""", # MISSING TRANSLATION
+	EFFECTNAME_VEIL = """veil""", # MISSING TRANSLATION
+	EFFECTNAME_EARTH_SHIELD = """earth shield""", # MISSING TRANSLATION
+	EFFECTNAME_IMPALE = """inpale""", # MISSING TRANSLATION
+	EFFECTNAME_SPELL_MASTERY = """spell mastery""", # MISSING TRANSLATION
+	EFFECTNAME_THORNS = """thorns""", # MISSING TRANSLATION
+	EFFECTNAME_VAMPIRISM = """vampirism""", # MISSING TRANSLATION
+	EFFECTNAME_ENCH_COMMANDER = """""", # MISSING TRANSLATION
+	EFFECTNAME_WARLOCK = """""", # MISSING TRANSLATION
+	EFFECTNAME_E_S_ROUGE = """At frontline""", # MISSING TRANSLATION
+	EFFECTNAME_MANASIPHON = """""", # MISSING TRANSLATION
+	EFFECTNAME_BLOODBOIL = """blood boil""", # MISSING TRANSLATION
+	EFFECTNAME_FIRESHIELD = """fire shield""", # MISSING TRANSLATION
+	EFFECTNAME_HUNTERSMARK = """hunter's mark""", # MISSING TRANSLATION
+	EFFECTNAME_BLESSING = """blessing""", # MISSING TRANSLATION
+	EFFECTNAME_ELPROTECT = """elemental protection""", # MISSING TRANSLATION
+	EFFECTNAME_TRAP_DEBUFF = """trap""", # MISSING TRANSLATION
+	EFFECTNAME_BOLTTRAP_DEBUFF = """bolt trap""", # MISSING TRANSLATION
+	EFFECTNAME_CURSEATK = """curse""", # MISSING TRANSLATION
+	EFFECTNAME_ATKPASS = """""", # MISSING TRANSLATION
+	EFFECTNAME_ATKPASS_REMOVE = """""", # MISSING TRANSLATION
+	EFFECTNAME_DEFENDER = """defender""", # MISSING TRANSLATION
+	EFFECTNAME_WARD = """ward""", # MISSING TRANSLATION
+	EFFECTNAME_WARD_D = """curse ward""", # MISSING TRANSLATION
+	EFFECTNAME_WATERSHIELD = """water shield""", # MISSING TRANSLATION
+	EFFECTNAME_CLARITY = """clarity""", # MISSING TRANSLATION
+	EFFECTNAME_RAMONT_PARRY_N_RIPOSTE = """Parry & Riposte""", # MISSING TRANSLATION
+	EFFECT_RAMONTPARRY = """Dodge and counterattack next enemy skill.""", # MISSING TRANSLATION
+	EFFECTNAME_EVICTION_NOTICE = """Eviction Notice""", # MISSING TRANSLATION
+	EFFECT_EVICTION_NOTICE = """Ramont will use powerful move against this unit.""", # MISSING TRANSLATION
 	RESETTRAINREQ = "Reinicia el entrenamiento al nivel 0 y recupera el espíritu. Requiere la poción de olvido.",
 	RESETTRAINING = "Se descartará todo el progreso del entrenamiento. ¿Estás seguro?",
 	BUFFDESCRIPTDEFENDER = "Defensor: Protegerá a los aliados de los ataques a menos que esté aturdido.",
@@ -3248,6 +3767,8 @@ Las acciones positivas, sociales, físicas y de humillación proporcionan más l
 	PROFHUNTERDESCRIPT = "Los cazadores se especializan en rastrear y matar juego.",
 	PROFSMITH = "Herrero",
 	PROFSMITHDESCRIPT = "Los herreros son maestros artesanos, capaces de trabajar con todo tipo de materiales.",
+	PROFTAILOR = """Tailor""", # MISSING TRANSLATION
+	PROFTAILORDESCRIPT = """Tailors specialize in production of cloth and leather armor as well as everyday garments.""", # MISSING TRANSLATION
 	PROFCHEF = "Cocinero",
 	PROFCHEFDESCRIPT = "Un cocinero experto es siempre una valiosa incorporación a cualquier hogar.",
 	PROFATTENDANT = "Acompañante",
@@ -3278,6 +3799,8 @@ Las acciones positivas, sociales, físicas y de humillación proporcionan más l
 	PROFSEXTOYDESCRIPT = "El arte de ser objeto de deseo para los demás.",
 	PROFFIGHTER = "Luchador",
 	PROFFIGHTERDESCRIPT = "Los luchadores son soldados cuerpo a cuerpo básicos capaces de infligir y recibir daño en combate.",
+	PROFSHIELDBEARER = """Shieldbearer""", # MISSING TRANSLATION
+	PROFSHIELDBEARERDESCRIPT = """Defensive fighters who specialize in shields, endurance, and punishing enemies that overextend in melee.""", # MISSING TRANSLATION
 	PROFKNIGHT = "Caballero",
 	PROFKNIGHTDESCRIPT = "Un noble luchador dispuesto a servir a [his] [Master].[He] Cumple [his] deberes en la primera línea del campo de batalla con honor.",
 	PROFAPPRENTICE = "Aprendiz de mago",
@@ -3338,7 +3861,11 @@ Las acciones positivas, sociales, físicas y de humillación proporcionan más l
 	PROFALIOS_CHAMPION = "Campeón de Alios",
 	PROFALIOS_CHAMPIONDESCRIPT = "Una chica solitaria con poderes misteriosos y un pasado inexplorado. Una cosa está clara: su afiliación divina es real.",
 	PROFNIXX_CHAMPION = "Campeón de Nixx",
+	PROFSATORI = """Satori""", # MISSING TRANSLATION
+	PROFASURA = """Asura""", # MISSING TRANSLATION
 	PROFNIXX_CHAMPIONDESCRIPT = "Estos poderes aterradores provienen de una fuente desconocida que solo unos pocos sabios del mundo son capaces de descifrar. WIP",
+	PROFSATORIDESCRIPT = """Only the one who has reached lowest point will be able to perceive the reality to its fullest.""", # MISSING TRANSLATION
+	PROFASURADESCRIPT = """Lust for power and control can get you to very strange places, but the cost will never feel fair.""", # MISSING TRANSLATION
 	PROFRENOWN_ROYALTY = "Realeza de renombre",
 	PROFRENOWN_ROYALTYDESCRIPT = "La sangre real es una bendición en sí misma, más aún cuando es reconocida por otros. ",
 	PROFBROKEN_ROYALTY = "Realeza rota",
@@ -3351,6 +3878,10 @@ Las acciones positivas, sociales, físicas y de humillación proporcionan más l
 	PROFMONKDESCRIPT = "Luchadores religiosos que utilizan su entrenamiento espiritual para enfrentarse a los enemigos.",
 	PROFBISHOP = "Obispo",
 	PROFBISHOPDESCRIPT = "Solo unos pocos selectos alcanzan este rango. Los miembros más importantes de la iglesia son capaces de desatar poderes divinos.",
+	PROFSPELLSWORD = """Spellsword""", # MISSING TRANSLATION
+	PROFSPELLSWORDDESCRIPT = """By mixing magic and martial arts especially gifted individuals are capable of fighting with both at the same time.""", # MISSING TRANSLATION
+	PROFARCANE_BLADE = """Arcane Blade""", # MISSING TRANSLATION
+	PROFARCANE_BLADEDESCRIPT = """Further honing their magic skills, Spellswords become capable not only flinging spells in the midst of fight but even imbuing their weapon in elements.""", # MISSING TRANSLATION
 	PROFSPOUSE = "Esposo",
 	PROFSPOUSEALT = "Esposa",
 	PROFSPOUSEDESCRIPT = "Una esposa oficialmente comprometida del [Master] de la Mansión. Puede entrenar a 2 personas más.",
@@ -3358,6 +3889,8 @@ Las acciones positivas, sociales, físicas y de humillación proporcionan más l
 	PROFFREYAS_PRIESTESSDESCRIPT = "Antaño una gran sacerdotisa de los elfos, ahora este título encierra más fanfarronería que poder.",
 	PROFASHMEDAI_CHAMPION = "Campeón ashmedai",
 	PROFASHMEDAI_CHAMPIONDESCRIPT = "Los nuevos elegidos para llevar a cabo actos depravados en su nombre. WIP",
+	PROFROUGE = """Apex Predator""", # MISSING TRANSLATION
+	PROFROUGEDESCRIPT = """Neither warrior nor beast alone, but a perfect speciemen honed to dominate.""", # MISSING TRANSLATION
 	PROFDEATHKNIGHT = "Caballero de la Muerte",
 	PROFDEATHKNIGHTDESCRIPT = "Los guerreros no muertos, que han jurado lealtad a su naturaleza o a su amo, pueden volverse más fuertes cuanto más matan.",
 	PROFWARLOCK = "Brujo",
@@ -3492,6 +4025,7 @@ Las acciones positivas, sociales, físicas y de humillación proporcionan más l
 	UPGRADEFARM_SLOTS = "Espacio en la granja",
 	UPGRADEFARM_SLOTSDESCRIPT = "Proporciona espacios adicionales para productos agrícolas.",
 	UPGRADELIST_UNLOCK = "Desbloquea esto para {color=green|%s} %s?",
+	UPGRADELIST_UNLOCK_MINOR = """Unlock this for {color=green|%s} %s? It will take %s turns.""", # MISSING TRANSLATION
 	UPGRADELIST_UNLOCK_MP = "Puntos maestros",
 	UPGRADELIST_UNLOCK_GOLD = "Oro",
 	BODYPARTAGETEEN = "Joven",
@@ -3731,6 +4265,8 @@ Las acciones positivas, sociales, físicas y de humillación proporcionan más l
 	BODYPARTSKINTEALDESCRIPT = "[His] skin is [color=aqua]teal[/color].",
 	BODYPARTSKIN_COVERAGEPLANTDESCRIPT = "Various leaves and bits of [color=aqua]plant matter[/color] cover parts of [his] body.",
 	BODYPARTSKIN_COVERAGESCALEDESCRIPT = "[His] skin is partly covered with [color=aqua]scales[/color].",
+	BODYPARTSKIN_COVERAGESCALE2DESCRIPT = """[His] skin is partly covered with [color=aqua]scales[/color].""", # MISSING TRANSLATION
+	BODYPARTSKIN_COVERAGESCALE3DESCRIPT = """[His] skin is partly covered with [color=aqua]scales[/color].""", # MISSING TRANSLATION
 	BODYPARTSKIN_COVERAGEFEATHERSDESCRIPT = "[His] body is covered in [color=aqua]bird-like feathers[/color] in many places.",
 	BODYPARTSKIN_COVERAGEFUR_WHITEDESCRIPT = "[His] body is covered in thick, soft [color=aqua]fur of marble color[/color].",
 	BODYPARTSKIN_COVERAGEFUR_GREYDESCRIPT = "[His] body is covered in thick, soft [color=aqua]fur of gray color[/color].",
@@ -3762,6 +4298,7 @@ Las acciones positivas, sociales, físicas y de humillación proporcionan más l
 	BODYPARTTAILTENTACLESDESCRIPT = " ",
 	BODYPARTTAILHORSEDESCRIPT = " ",
 	BODYPARTTAILSPIDERDESCRIPT = " ",
+	BODYPARTTAILMOUSEDESCRIPT = """ """, # MISSING TRANSLATION
 	BODYPARTHEIGHTTINYDESCRIPT = "[His] estatura es [color=aqua] extremadamente pequeño [/color], apenas la mitad del tamaño de una persona normal.",
 	BODYPARTHEIGHTPETITEDESCRIPT = "[His] estatura es bastante [color=aqua]pequeña[/color].",
 	BODYPARTHEIGHTSHORTDESCRIPT = "[His] altura es bastante [color=aqua]baja[/color].",
@@ -3996,6 +4533,15 @@ Las habilidades sexuales aumentan al realizar acciones relacionadas y su crecimi
 	SQ_MAGE_DESC = "[factionname] busca un mago que pueda ejercer hechicería poderosa.",
 	SQ_ASSASSIN_T2_NAME1 = "Asesino",
 	SQ_ASSASSIN_T2_DESC = "[factionname] Requiere un maestro asesino para misiones encubiertas.",
+	SHOWSTAT_CAT_COMBAT = """Combat""", # MISSING TRANSLATION
+	SHOWSTAT_CAT_NON_COMBAT = """Noncombat""", # MISSING TRANSLATION
+	SHOWSTAT_FINAL = """Final""", # MISSING TRANSLATION
+	STATREQ_IS_SLAVE_TYPE = """Must be""", # MISSING TRANSLATION
+	STATREQ_IS_NOT_SLAVE_TYPE = """Must not be""", # MISSING TRANSLATION
+	STATREQ_IS_FREE = """Must be free of quests and at mansion""", # MISSING TRANSLATION
+	STATREQ_IS_NOT_FREE = """Must be on quest or out of mansion""", # MISSING TRANSLATION
+	STATREQ_TRAINING_OBEDIENCE = """Obedience must be trained""", # MISSING TRANSLATION
+	STATREQ_WORKRULE_LOCK = """Character is Locked""", # MISSING TRANSLATION
 	
 	DIALOGUECLOSE = "Cerrar",
 	DIALOGUECONFIRM = "Confirmar",
@@ -4054,6 +4600,715 @@ Las habilidades sexuales aumentan al realizar acciones relacionadas y su crecimi
 	LOG_COMBAT_HEAL = "\n%s obtienes %d vida.",
 	LOG_MANA = "mana %d.",
 	LOG_COMBAT_MANA = "\n%s obtienes %d mana.",
+	LOG_COMBAT_DEFEATED = """
+%s has been defeated.
+""", # MISSING TRANSLATION
+	LOG_COMBAT_EVADE_DAMAGE = """%s evades the damage.""", # MISSING TRANSLATION
+	LOG_COMBAT_CRITICAL = """[color=yellow]Critical!![/color] """, # MISSING TRANSLATION
+	LOG_COMBAT_USE_SKILL = """
+%s uses %s. """, # MISSING TRANSLATION
+	LOG_COMBAT_USE_ITEM = """
+%s uses %s. """, # MISSING TRANSLATION
+	LOG_COMBAT_AUTO_SKILL = """
+%s! """, # MISSING TRANSLATION
+	LOG_COMBAT_COPY_SKILL = """
+%s copied %s. """, # MISSING TRANSLATION
+	LOG_COMBAT_DRAIN_HEALTH = """%s drained %d health from %s and gained %d health.""", # MISSING TRANSLATION
+	LOG_COMBAT_HIT_DAMAGE = """%s is hit for %d damage (%s, %s). """, # MISSING TRANSLATION
+	LOG_COMBAT_HIT_DAMAGE_SIMPLE = """%s is hit for %d damage. """, # MISSING TRANSLATION
+	LOG_COMBAT_HEAL_HEALTH = """%s is healed for %d health.""", # MISSING TRANSLATION
+	LOG_COMBAT_RESTORE_MANA = """%s restored %d mana.""", # MISSING TRANSLATION
+	LOG_COMBAT_DRAIN_MANA = """%s drained %d mana from %s and gained %d mana.""", # MISSING TRANSLATION
+	LOG_COMBAT_LOSE_MANA = """%s lost %d mana.""", # MISSING TRANSLATION
+	LOG_COMBAT_RESTORE_STAT = """%s restored %d %s.""", # MISSING TRANSLATION
+	LOG_COMBAT_DRAIN_STAT = """%s drained %d %s from %s.""", # MISSING TRANSLATION
+	LOG_COMBAT_LOSE_STAT = """%s loses %d %s.""", # MISSING TRANSLATION
+	LOG_COMBAT_SET_STAT = """%s's %s is now %d.""", # MISSING TRANSLATION
+	RELATIONSHIPACQUAINTANCES = """Acquaintances""", # MISSING TRANSLATION
+	RELATIONSHIPACQUINTANCES = """Acquaintances""", # MISSING TRANSLATION
+	RELATIONSHIPFRIENDS = """Friends""", # MISSING TRANSLATION
+	RELATIONSHIPLOVERS = """Lovers""", # MISSING TRANSLATION
+	RELATIONSHIPFREELOVERS = """Paramours""", # MISSING TRANSLATION
+	RELATIONSHIPRIVALS = """Rivals""", # MISSING TRANSLATION
+	LOG_RELATIONSHIP_STATUS = """%s and %s have become %s""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_DENY_BTN_CUM = """Let [him2] cum""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_DENY_BTN_BEG = """Make [him2] beg for it""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_DENY_BTN_DENY = """Deny [him2] orgasm""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_DENY_INITIATE = """[name1] stops [name2] before [he2] is able to reach orgasm.""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_DENY_CUM_FEMALE_PETTING = """[name1] holds [name2] down, working [his1] hand over [name2]'s [pussy2]. In a few moments [name2] jerks in [his1] hands as orgasm overwhelms [him2].""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_DENY_CUM_MALE_PETTING = """[name1] holds [name2] down, working [his1] hand over [name2]'s [penis2]. In a few moments [name2] releases a {^stream:spray} of {^semen:seed}, covering [name1]'s hand in it.""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_DENY_CUM_FEMALE_FUCKING = """[name1] resumes moving [his1] body to [name2]'s relief. After a few thrusts [name2] gasps for air as [his2] [pussy2] twitches in orgasm. """, # MISSING TRANSLATION
+	INTERACTION_ORGASM_DENY_CUM_MALE_FUCKING = """[name1] allows [name2] to move again to [his2] relief. After a few thrusts, [he2] gasps for air, as [his2] seed fills [name1]. """, # MISSING TRANSLATION
+	INTERACTION_ORGASM_DENY_BEG = """[name1] lets [name2] know that [he2] must beg to let [him2] cum. """, # MISSING TRANSLATION
+	INTERACTION_ORGASM_DENY_BEG_SUCCESS = """Unable to resist the temptation, [name2] looks into [his1] eyes and meekly begs for the relief.""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_DENY_BEG_FAILURE = """Despite shameful condition, [name2] musters enough will and turns away from [name1] in distress. [He2]'s still on the edge, hoping to get off though. """, # MISSING TRANSLATION
+	INTERACTION_ORGASM_DENY_DENY = """[name1] does not allow [name2] to have [his2] relief by holding [him2] back. [name2] got no choice but to express [his2] disappointment. """, # MISSING TRANSLATION
+	INTERACTION_CUM_TARGET_FACE = """Face""", # MISSING TRANSLATION
+	INTERACTION_CUM_TARGET_MOUTH = """Mouth""", # MISSING TRANSLATION
+	INTERACTION_CUM_TARGET_HAIR = """Hair""", # MISSING TRANSLATION
+	INTERACTION_CUM_TARGET_CHEST = """Chest""", # MISSING TRANSLATION
+	INTERACTION_CUM_TARGET_BELLY = """Belly""", # MISSING TRANSLATION
+	INTERACTION_CUM_TARGET_PUBIS = """Pubis""", # MISSING TRANSLATION
+	INTERACTION_CUM_TARGET_PUSSY = """Pussy""", # MISSING TRANSLATION
+	INTERACTION_CUM_TARGET_ASS = """Ass""", # MISSING TRANSLATION
+	INTERACTION_CUM_TARGET_BACK = """Back""", # MISSING TRANSLATION
+	INTERACTION_CUM_TARGET_FEET = """Feet""", # MISSING TRANSLATION
+	INTERACTION_CUM_TARGET_TAIL = """Tail""", # MISSING TRANSLATION
+	INTERACTION_CUM_TARGET_HANDS = """Hands""", # MISSING TRANSLATION
+	INTERACTION_CUM_SELECT_TEXT = """As [name1] approaches orgasm [he1] choose to cum onto [name2]'s...""", # MISSING TRANSLATION
+	INTERACTION_CUM_TEXT_FACE = """[name1] brings his {^penis:cock:dick} to [name2]'s face and release [his1] {^seed:semen:cum}. The white fluid stains [name2]'s face dripping down to [his2] chin.""", # MISSING TRANSLATION
+	INTERACTION_CUM_TEXT_MOUTH = """[name1] puts his {^penis:cock:dick} into [name2]'s mouth for the final release. The stream of {^seed:semen:cum} hits [name2]'s throat having [him2] gulp it down.""", # MISSING TRANSLATION
+	INTERACTION_CUM_TEXT_HAIR = """[name1] puts his {^penis:cock:dick} to [name2]'s head and cums over [his2] hair. The {^seed:semen:cum} soils [name2]'s hair sticking between the strands.""", # MISSING TRANSLATION
+	INTERACTION_CUM_TEXT_CHEST = """[name1] takes his {^penis:cock:dick} into [his1] hand and points at [name2]'s chest, cumming all over it. The hot {^seed:semen:cum} drips down [name2]'s body.""", # MISSING TRANSLATION
+	INTERACTION_CUM_TEXT_BELLY = """[name1] puts his {^penis:cock:dick} into [his1] hand and points at [name2]'s belly. The hot {^seed:semen:cum} drips down [name2]'s navel and stomach.""", # MISSING TRANSLATION
+	INTERACTION_CUM_TEXT_PUBIS = """[name1] takes out {^penis:cock:dick} and places at [name2]'s pubis. The hot {^seed:semen:cum} covers [name2]'s crotch.""", # MISSING TRANSLATION
+	INTERACTION_CUM_TEXT_PUSSY = """[name1] {^sticks:puts} his {^penis:cock:dick} into [name2]'s {^pussy:vagina:cunt}. The hot {^seed:semen:cum} {^splashes into [his2] womb:fills [his2] pussy}.""", # MISSING TRANSLATION
+	INTERACTION_CUM_TEXT_ASS = """[name1] {^sticks:puts} his {^penis:cock:dick} into [name2]'s {^ass:anus:rear}. The hot {^seed:semen:cum} {^splashes into [his2] intestines:fills [his2] butt}.""", # MISSING TRANSLATION
+	INTERACTION_CUM_TEXT_BACK = """[name1] puts his {^penis:cock:dick} into [his1] hand and points at [name2]'s back, cumming all over it. [name2] gasps as [he2] feels the hot fluid over [his2] back.""", # MISSING TRANSLATION
+	INTERACTION_CUM_TEXT_FEET = """[name1] unable to hold back anymore starts cumming over [name2]'s feet, covering them in [his1] semen.""", # MISSING TRANSLATION
+	INTERACTION_CUM_TEXT_TAIL = """[name1] grabs [name2]'s tail, pushing [his1] {^dick:cock:penis} onto it. With a groan, [name1] starts cumming over [name2]'s tail. """, # MISSING TRANSLATION
+	INTERACTION_CUM_TEXT_HANDS = """[name1] unable to hold back anymore starts cumming over [name2]'s hands, covering them in [his1] semen.""", # MISSING TRANSLATION
+	INTERACTION_START_ROOM = """%s walk into the bedroom.""", # MISSING TRANSLATION
+	INTERACTION_ACT_BLOCK_TIED = """[name] is tied and can't act.""", # MISSING TRANSLATION
+	INTERACTION_ACT_BLOCK_STRUGGLING = """[name] is struggling and can't act.""", # MISSING TRANSLATION
+	INTERACTION_ACT_BLOCK_RESIST = """[name] resists and won't follow any orders.""", # MISSING TRANSLATION
+	INTERACTION_ACT_BLOCK_HOLDING_1 = """[name] is busy holding down """, # MISSING TRANSLATION
+	INTERACTION_ACT_BLOCK_HOLDING_2 = """[name] 
+and can only act on [him]. """, # MISSING TRANSLATION
+	INTERACTION_ACT_BLOCK_IMMOBILE = """[name] is immobile and can't do anything. """, # MISSING TRANSLATION
+	INTERACTION_CONSENT_WILLING = """{color=aqua|Willing}""", # MISSING TRANSLATION
+	INTERACTION_CONSENT_REFUSING = """{color=yellow|Refusing}""", # MISSING TRANSLATION
+	INTERACTION_LEADS = """Leads""", # MISSING TRANSLATION
+	INTERACTION_LET_NAME_LEAD = """Let [name] Lead""", # MISSING TRANSLATION
+	INTERACTION_LET_SELECTED_LEAD = """Let Selected Lead""", # MISSING TRANSLATION
+	INTERACTION_STOP = """Stop""", # MISSING TRANSLATION
+	INTERACTION_SELECTION_TO = """will do it ... to """, # MISSING TRANSLATION
+	INTERACTION_INTERRUPT = """Interrupt""", # MISSING TRANSLATION
+	INTERACTION_OBSERVE = """Observe""", # MISSING TRANSLATION
+	INTERACTION_PASS = """Pass""", # MISSING TRANSLATION
+	INTERACTION_CONSENT_OBSERVED_EXHIBITIONIST = """{color=green|Is being observed (Exhibitionist)}
+""", # MISSING TRANSLATION
+	INTERACTION_CONSENT_OBSERVED = """{color=red|Is being observed}
+""", # MISSING TRANSLATION
+	INTERACTION_CONSENT_MULTIPLE_LIKES = """{color=green|Multiple partners (Likes Groups)}
+""", # MISSING TRANSLATION
+	INTERACTION_CONSENT_MULTIPLE = """{color=red|Multiple partners}
+""", # MISSING TRANSLATION
+	INTERACTION_CONSENT_SAME_SEX = """{color=red|Same sex partner}
+""", # MISSING TRANSLATION
+	INTERACTION_CONSENT_ANAL_LIKES = """{color=green|Anal (Likes Anal)}
+""", # MISSING TRANSLATION
+	INTERACTION_CONSENT_ANAL = """{color=red|Anal}
+""", # MISSING TRANSLATION
+	INTERACTION_CONSENT_REPULSIVE_PARTNER = """{color=red|Repulsive partner}
+""", # MISSING TRANSLATION
+	INTERACTION_CONSENT_TIPSY = """{color=green|Tipsy}
+""", # MISSING TRANSLATION
+	INTERACTION_CONSENT_DRUNK = """{color=green|Drunk}
+""", # MISSING TRANSLATION
+	INTERACTION_CONSENT_REL_RIVAL = """{color=red|Is a Rival}
+""", # MISSING TRANSLATION
+	INTERACTION_CONSENT_REL_PARAMOUR = """{color=green|Is a Paramour}
+""", # MISSING TRANSLATION
+	INTERACTION_CONSENT_REL_LOVER = """{color=green|Is a Lover}
+""", # MISSING TRANSLATION
+	INTERACTION_CONSENT_RELATED_GOOD = """{color=green|Partner is related}
+""", # MISSING TRANSLATION
+	INTERACTION_CONSENT_RELATED_BAD = """{color=red|Partner is related}
+""", # MISSING TRANSLATION
+	INTERACTION_CONSENT_DIFFERENT_SPECIES = """{color=red|Partner is of different species}
+""", # MISSING TRANSLATION
+	INTERACTION_CONSENT_VIRGIN = """{color=red|Is virgin}
+""", # MISSING TRANSLATION
+	INTERACTION_CONSENT_MAXIMUM = """Maximum""", # MISSING TRANSLATION
+	INTERACTION_CONSENT_SUBDUE = """Subdue: Receiver's consent ignored. """, # MISSING TRANSLATION
+	INTERACTION_CONSENT_NOT_REQUIRED = """{color=green|Action does not require consent}""", # MISSING TRANSLATION
+	INTERACTION_REQUEST_PET = """[name] wishes to be touched.""", # MISSING TRANSLATION
+	INTERACTION_REQUEST_PETGIVE = """[name] wishes to touch.""", # MISSING TRANSLATION
+	INTERACTION_REQUEST_FUCK = """[name] wishes to be penetrated.""", # MISSING TRANSLATION
+	INTERACTION_REQUEST_FUCKGIVE = """[name] wishes to penetrate.""", # MISSING TRANSLATION
+	INTERACTION_REQUEST_PUSSY = """[name] wishes to have [his] pussy used.""", # MISSING TRANSLATION
+	INTERACTION_REQUEST_PENIS = """[name] wishes to use [his] penis.""", # MISSING TRANSLATION
+	INTERACTION_REQUEST_ANAL = """[name] wishes to have [his] ass used.""", # MISSING TRANSLATION
+	INTERACTION_REQUEST_PUNISH = """[name] wishes to be punished.""", # MISSING TRANSLATION
+	INTERACTION_REQUEST_HUMILIATE = """[name] wishes to be humiliated.""", # MISSING TRANSLATION
+	INTERACTION_REQUEST_GROUP = """[name] wishes to have multiple partners.""", # MISSING TRANSLATION
+	INTERACTION_DESIRE_LABEL = """[color=#f4adf4]Desire: %s[/color]
+""", # MISSING TRANSLATION
+	INTERACTION_DESIRE_FULFILLED = """[color=aqua]Desire fullfiled! [name1] grows lewder and more sensitive. [/color]
+""", # MISSING TRANSLATION
+	INTERACTION_END_CONSENT_GAIN = """[name] has opened [him]self to the new experience: Consent - {color=aqua|%s}
+""", # MISSING TRANSLATION
+	INTERACTION_END_DEVASTATED = """[name] has been devastated by this encounter and have not been able to increase [his] open mindedness. """, # MISSING TRANSLATION
+	INTERACTION_END_ORGASMS = """[name]: Orgasms - %s""", # MISSING TRANSLATION
+	INTERACTION_END_EXP_GAINED = """; Experience gained: %s""", # MISSING TRANSLATION
+	INTERACTION_END_TRAIT_LEARNED = """%s learned trait: %s
+""", # MISSING TRANSLATION
+	INTERACTION_END_TRAIT_LOST = """%s lost trait: %s
+""", # MISSING TRANSLATION
+	INTERACTION_AI_INITIATES = """[color=green][name1] initiates %s with [name2].[/color]
+
+""", # MISSING TRANSLATION
+	INTERACTION_RESIST_ATTEMPT = """[name1] isn't happy doing this...""", # MISSING TRANSLATION
+	INTERACTION_ITEM_ALCOHOL = """
+%s has drank an alcoholic beverage. """, # MISSING TRANSLATION
+	INTERACTION_ITEM_BEER = """
+%s has drank a beer. """, # MISSING TRANSLATION
+	INTERACTION_ITEM_AROUSAL_EFFECT = """It made [him] slightly more horny and sensitive. """, # MISSING TRANSLATION
+	INTERACTION_ITEM_ALREADY_DRUNK = """But it seems [he] is already drunk. """, # MISSING TRANSLATION
+	INTERACTION_ITEM_APHRODISIAC = """
+%s has used an aphrodisiac. [His] breath grew slower and heavier.
+{color=aqua|[name]} - {random_chat=0|aphrodisiac}""", # MISSING TRANSLATION
+	INTERACTION_ITEM_SENSITIVITY_POT = """
+%s has used an sensitivity potion. [His] body became more responsive.
+{color=aqua|[name]} - {random_chat=0|aphrodisiac}""", # MISSING TRANSLATION
+	INTERACTION_ITEM_PHEROMONES_ALREADY = """
+%s is already under effect of pheromones.""", # MISSING TRANSLATION
+	INTERACTION_ITEM_PHEROMONES_SUCCESS = """
+Pheromones were used on %s... [His] mind became engulfed in unquenchable thirst.
+{color=aqua|[name]} - {random_chat=0|aphrodisiac}""", # MISSING TRANSLATION
+	INTERACTION_ITEM_PHEROMONES_FAIL = """
+Pheromones were used on %s, but they had no effect on [him]. """, # MISSING TRANSLATION
+	INTERACTION_RESIST_PUSHOVER_1 = """[name] feels {^involuntarily:helplessly} {^aroused:horny} from {^the rough treatment:being taken against [his] will}...""", # MISSING TRANSLATION
+	INTERACTION_RESIST_PUSHOVER_2 = """[name] {^moans:cries} {^involuntarily:helplessly} as [he] falls into submission...""", # MISSING TRANSLATION
+	INTERACTION_RESIST_PUSHOVER_3 = """[name] {^blushes:turns red} from [his] own perverted arousal...""", # MISSING TRANSLATION
+	INTERACTION_RESIST_HIGH_1 = """[name] winces from the distress, but can't help with [his] growing {^desire:arousal}...""", # MISSING TRANSLATION
+	INTERACTION_RESIST_HIGH_2 = """[name] shies away from the unwanted {^desire:arousal}...""", # MISSING TRANSLATION
+	INTERACTION_RESIST_HIGH_3 = """[name] feels conflicted about [his] growing {^desire:arousal}...""", # MISSING TRANSLATION
+	INTERACTION_RESIST_LOW_1 = """[name] meekly tries to push [his] partner away...""", # MISSING TRANSLATION
+	INTERACTION_RESIST_LOW_2 = """[name] closes his eyes in shame...""", # MISSING TRANSLATION
+	INTERACTION_RESIST_LOW_3 = """[name] weeps as [his] body betrays [him]...""", # MISSING TRANSLATION
+	INTERACTION_RESIST_BROKEN_1 = """[name] is a broken mess barely reacting to any violation...""", # MISSING TRANSLATION
+	INTERACTION_RESIST_BROKEN_2 = """[name] stays quiet as [his] body is ravaged...""", # MISSING TRANSLATION
+	INTERACTION_IMPREG_CAN = """[name] could certainly get pregnant from it...""", # MISSING TRANSLATION
+	INTERACTION_IMPREG_CANT_RACE = """However, due to racial differences, [name] won't be able to get pregnant from it...""", # MISSING TRANSLATION
+	INTERACTION_IMPREG_BREEDER_FATHER = """Being unordinarily virile, [name] will certainly be able to impregnate [name2]...""", # MISSING TRANSLATION
+	INTERACTION_IMPREG_BREEDER_MOTHER = """Being unordinarily fertile, [name] will certainly be able to get pregnant from it...""", # MISSING TRANSLATION
+	INTERACTION_IMPREG_FEMALE_CONTRACEPTIVE = """As [name] is on contraceptives, [he] won't be able to get pregnant from it...""", # MISSING TRANSLATION
+	INTERACTION_IMPREG_MALE_CONTRACEPTIVE = """As [name] is on contraceptives, [he] won't be able to impregnate anyone...""", # MISSING TRANSLATION
+	INTERACTION_IMPREG_ALREADY_PREGNANT = """[name] could get pregnant from it if [he] wasn't already...""", # MISSING TRANSLATION
+	INTERACTION_IMPREG_MOTHER_UNDEAD = """As [name] isn't actually alive, [he] won't be able to get pregnant...""", # MISSING TRANSLATION
+	INTERACTION_IMPREG_FATHER_UNDEAD = """As [name] isn't actually alive, [he] won't be able to impregnate...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_RESIST_1 = """Stop it!""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_RESIST_2 = """No... I don't want to!""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_RESIST_3 = """Why are you doing this...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_RESIST_4 = """You, bastard...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_RESIST_5 = """Let me go!""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_RESISTORGASM_1 = """Ahh-hh... No...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_RESISTORGASM_2 = """*Sob* why... this feels so good...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_RESISTORGASM_3 = """No, Please stop, before I... Ahh... No *sob*""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_MUTE_1 = """...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_MUTE_2 = """...!""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_MUTE_3 = """......""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_MUTE_4 = """*gasp*""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_BLOWJOB_1 = """Does it feel good? *slurp*""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_BLOWJOB_2 = """Mh-m... this smell...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_BLOWJOB_3 = """Does this feel good, [name2]?""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_BLOWJOB_4 = """You like my mouth, [name2]?""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_BLOWJOBTAKE_1 = """Like my cock, [name2]?""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_BLOWJOBTAKE_2 = """Yes, suck it, dear...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_BLOWJOBTAKE_3 = """Mmmm, suck it like that.""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_INEXPERIENCED_1 = """I've never done this...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_INEXPERIENCED_2 = """What's this?""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_INEXPERIENCED_3 = """Not so fast, [name2], I'm new to this...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_VAGINA_1 = """Ah! Yes! Fuck my pussy!""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_VAGINA_2 = """Yes, fill me up, [name2]!""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_VAGINA_3 = """More, give me more, [name2]!""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_VAGINA_4 = """Ah, this is so good, [name2]...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_ANAL_1 = """My {^ass:butt}... feels good...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_ANAL_2 = """Ah... My {^ass:butt}...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_ANAL_3 = """Keep {^fucking:ravaging:grinding} my {^ass:butt}, [name2]...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_ORGASM_1 = """Cumming, I'm cumming!..""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_ORGASM_2 = """Ah, Ahh, AAAHH!""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_ORGASM_3 = """[name2], please hold me, I'm cumming!""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_ANALRAPE_1 = """Stop! Where are you putting it!?""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_ANALRAPE_2 = """No, please, not there!""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_ANALRAPE_3 = """No, not my {^ass:butt}... I beg you...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_SEXCRAZED_1 = """Your {^dick:cock:penis}... Yes...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_SEXCRAZED_2 = """Give me your {^dick:cock:penis}, [name2]... I need it""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_SEXCRAZED_3 = """Fuck me, [name2], I begging you!..""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_NONLESBIAN_1 = """No, we shouldn't...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_NONLESBIAN_2 = """No, we are both girls...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_NONLESBIAN_3 = """[name2], Ah, stop, I'm not into girls...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_ENJOYSANAL_1 = """Please, put my {^butt:ass} into a good use, [name2]...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_ENJOYSANAL_2 = """I want it in my {^butt:ass}...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_ROUGH_1 = """[name2], do me harder...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_ROUGH_2 = """Yes... Please, abuse me!""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_PAIN_1 = """Ouch! It hurts...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_PAIN_2 = """Please, no more...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_PAIN_3 = """*sob*""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_PAIN_4 = """It hurts...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_PAIN_5 = """[name2], please, stop...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_PAINLIKE_1 = """Umh... Yes, hit me harder...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_PAINLIKE_2 = """Yes, [name2], punish me...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_PAINLIKE_3 = """Ah... this strings... nicely...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_SILENCE_1 = """Mmhmm...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_SILENCE_2 = """*gasp*""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_SILENCE_3 = """Mhm!!""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_MOANS_1 = """Ah...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_MOANS_2 = """Oh...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_MOANS_3 = """Mmmh...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_MOANS_4 = """[name2]...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_VIRGIN_VAGINAL_LIKE_1 = """Aaah! My first time...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_VIRGIN_VAGINAL_LIKE_2 = """[name2]... You took my first time...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_VIRGIN_VAGINAL_LIKE_3 = """Ah! I Had no idea this... feels so good...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_VIRGIN_VAGINAL_DISLIKE_1 = """Ouch... it hurts...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_VIRGIN_VAGINAL_DISLIKE_2 = """Ah... No... *sob*""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_VIRGIN_VAGINAL_DISLIKE_3 = """Noo... My... First time...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_VIRGIN_ANAL_LIKE_1 = """Ah! My {^ass:butt}... Soiled...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_VIRGIN_ANAL_LIKE_2 = """Oh! [name2], what are you... with my {^ass:butt}...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_VIRGIN_ANAL_DISLIKE_1 = """Ugh, no... It hurts...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_VIRGIN_ANAL_DISLIKE_2 = """Why, my {^ass:butt}... stop...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_ROPE_LIKE_1 = """Mmh... What are you going to do with me now?...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_ROPE_LIKE_2 = """Oooh... I feel... hot...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_ROPE_LIKE_3 = """Is this wrong... to like it?...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_ROPE_DISLIKE_1 = """Tying me... why?""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_ROPE_DISLIKE_2 = """Ugh.. This rope is so thick...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_ROPE_DISLIKE_3 = """W-what's this for?""", # MISSING TRANSLATION
+	SEXACTION_CARESS_ONGOING_1 = """[name1] caress[es/1] [names2] [body2].""", # MISSING TRANSLATION
+	SEXACTION_KISS_ONGOING_1 = """[name1] kiss[es/1] [name2].""", # MISSING TRANSLATION
+	SEXACTION_KISS_ONGOING_DESC_1 = """[name1] and [name2] {^passionately :eagerly :}{^press together:exchange saliva:kiss}, {^showing no sign of separating from each others lips:coiling each others tongues together:biting and sucking each other's lips}.""", # MISSING TRANSLATION
+	SEXACTION_KISS_ONGOING_DESC_2 = """[name1] {^passionately :eagerly :}{^exchange[s/1] saliva with:kiss[es/1]:make[s/1] out with} [name2], {^savoring the taste of [his2] lips:trying [his1] best to share}.""", # MISSING TRANSLATION
+	SEXACTION_KISS_ONGOING_DESC_3 = """[name1] {^passionately :eagerly :}{^exchange[s/1] saliva with:kiss[es/1]:make[s/1] out with} [name2], {^savoring the taste of [his2] lips:trying [his1] best keep both satisfied}.""", # MISSING TRANSLATION
+	SEXACTION_FONDLETITS_ONGOING_1 = """[name1] fondle[s/1] [names2] chest.""", # MISSING TRANSLATION
+	SEXACTION_FONDLETITS_ONGOING_DESC_1 = """[name1] continue[s/1] {^fondling:caressing:rubbing:squeezing} [names2] [tits2].""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_ONGOING_1 = """[name1] suck[s/1] on [names2] nipples.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_ONGOING_DESC_1 = """[name1] continue[s/1] {^licking:teasing} and {^kissing:sucking on} [names2] nipples""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_ONGOING_DESC_2 = """, rolling them around with [his1] tongue[/s1].""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_ONGOING_DESC_3 = """, {^lightly:gently} {^nibbling at:stimulating} them with [his1] teeth.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_ONGOING_DESC_4 = """, {^greedily slurping at them:nursing} like [a /1]bab[y/ies1].""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_ONGOING_1 = """[name1] finger[s/1] [names2] puss[y/ies2].""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_ONGOING_DESC_1 = """[name1] thrust[s/1] [his1] fingers in and out of [names2] [pussy2].""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_ONGOING_1 = """[name1] finger[s/1] [names2] ass[es/2].""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_ONGOING_DESC_1 = """[name1] thrust[s/1] [his1] fingers in and out of [names2] [anus2].""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_ONGOING_1 = """[name1] lick[s/1] [names2] puss[y/ies2].""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_ONGOING_DESC_1 = """[name1] {^eat[s/1] out:lick[s/1]:slurp[s/1] at} [names2] [pussy2].""", # MISSING TRANSLATION
+	SEXACTION_RIMJOB_ONGOING_1 = """[name1] give[s/1] [a /1]rimjob[/s1] to [name2].""", # MISSING TRANSLATION
+	SEXACTION_RIMJOB_ONGOING_DESC_1 = """[name1] {^eat[s/1] out:lick[s/1]:slurp[s/1] at} [names2] [anus2].""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_ONGOING_1 = """[name1] give[s/1] [a /1]handjob[/s1] to [name2].""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_ONGOING_DESC_1 = """[name1] {^steadily :rhythmically :carefully :}{^massage:stroke:rub:jerk}[s/1] [names2] [penis2]{^, trying to maintain eye contact:, studying [his2] reactions:}.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_ONGOING_DESC_2 = """[name1] {^massage:work:stroke:rub}[s/1] {^up and down the length of:all along:the shaft[/s2] of} [names2] [penis2] with [his1] hands.""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_ONGOING_1 = """[name1] give[s/1] [a /1]blowjob[/s1] to [name2].""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_ONGOING_DESC_1 = """[name1] {^steadily :rhythmically :carefully :}{^suck:blow}[s/1] [names2] [penis2]{^, trying to maintain eye contact:, studying [his2] reactions:}.""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_ONGOING_DESC_2 = """[name1] {^work:nurse:serve}[s/1] {^the length of :the shaft[/s2] of :the tip[/s2] of :}[names2] [penis2] with [his1] mouth[/s1].""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_ONGOING_1 = """[name1] give[s/1] [a /2]titjob[/s2] to [name2].""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_ONGOING_DESC_1 = """[name1] continue[s/1] {^rubbing:massaging:squeezing} [names2] [penis2] with [his1] [tits1].""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_ONGOING_1 = """[name1] give[s/1] [a /2]tailjob[/s2] to [name2].""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_ONGOING_DESC_1 = """[name1] {^steadily :rhythmically :carefully :}{^massage:stroke:rub:jerk}[s/1] [names2] [penis2] with [his1] tail[/s1]{^, trying to maintain eye contact:, studying [his2] reactions:}.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_ONGOING_DESC_2 = """[name1] {^massage:work:stroke:rub}[s/1] {^up and down the length of:all along:the shaft[/s2] of} [names2] [penis2] with [his1] tail[/s1].""", # MISSING TRANSLATION
+	SEXACTION_EARJOB_ONGOING_1 = """[name1] rub[s/1] [his1] penis[/s1] on [name2]'s ears.""", # MISSING TRANSLATION
+	SEXACTION_EARJOB_ONGOING_DESC_1 = """[name1] {^steadily :aggressively :}{^massage:stroke:rub:jerk}[s/1] [names2] ears with [his1] [penis1].""", # MISSING TRANSLATION
+	SEXACTION_FOOTJOB_ONGOING_1 = """[name1] give[s/1] [a /2]footjob[/s2] to [name2].""", # MISSING TRANSLATION
+	SEXACTION_FOOTJOB_ONGOING_DESC_1 = """[name1] {^steadily :aggressively :}{^massage:stroke:rub:jerk}[s/1] [names2] [penis2] with [his1] feet.""", # MISSING TRANSLATION
+	SEXACTION_CARESS_INITIATE_1 = """[name1] {^gently:tenderly:carefully} {^stroke:fondle:cuddle:massage}[s/1] and {^caress[es/1]:rub[s/1]} [names2] [body2]""", # MISSING TRANSLATION
+	SEXACTION_CARESS_INITIATE_2 = """[name1] {^run:rub:work}[s/1] [his1] hands all {^over:along:around} [names2] [body2]""", # MISSING TRANSLATION
+	SEXACTION_CARESS_INITIATE_KISSABLE_1 = """, kissing [him2] all over""", # MISSING TRANSLATION
+	SEXACTION_CARESS_INITIATE_KISSABLE_2 = """, kissing and teasing [him2] with [his1] tongue[/s1]""", # MISSING TRANSLATION
+	SEXACTION_CARESS_INITIATE_KISSABLE_3 = """, planting {^a few small:fleeting:a few brief} kisses as [he1] go[es/1]""", # MISSING TRANSLATION
+	SEXACTION_CARESS_INITIATE_NOKISS_1 = """, {^hitting:touching} all the right spots""", # MISSING TRANSLATION
+	SEXACTION_CARESS_INITIATE_NOKISS_2 = """, {^thoroughly:expertly} pleasuring [him2]""", # MISSING TRANSLATION
+	SEXACTION_CARESS_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] body {^responds:reacts} to {^the stimulation:[names1] touch:[names1] caress}.""", # MISSING TRANSLATION
+	SEXACTION_CARESS_REACTION_1 = """[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] touch:[names1] caress}.""", # MISSING TRANSLATION
+	SEXACTION_CARESS_REACTION_2 = """[name2] {^begin:start}[s/2] to {^respond:react} to {^the stimulation:[names1] touch:[names1] caress}.""", # MISSING TRANSLATION
+	SEXACTION_CARESS_REACTION_3 = """[name2] {^revel:bask}[s/2] in {^the stimulation:[names1] touch:[names1] caress}{^, [his2] arousal clearly showing:, becoming more and more excited:}.""", # MISSING TRANSLATION
+	SEXACTION_CARESS_REACTION_4 = """[names2] body {^trembles:quivers} {^at the slightest touch:with every touch:each time [name1] touch[es/1] [him2]}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_KISS_INITIATE_DOUBLE_1 = """[name1] take[s/1] turns {^french :}kissing [name2] and licking {^all around :}[his2] face[/s2].""", # MISSING TRANSLATION
+	SEXACTION_KISS_INITIATE_DOUBLE_2 = """[name1] take[s/1] turns coiling [his1] tongue[/s1] inside [names2] mouth[/s2] and [he2] {^eagerly:enthusiastically} return[s/2] the gesture.""", # MISSING TRANSLATION
+	SEXACTION_KISS_INITIATE_1 = """[name1] {^french :}kiss[es/1] [name2], licking {^all around :}[his2] face[/s2].""", # MISSING TRANSLATION
+	SEXACTION_KISS_INITIATE_2 = """[name1] coil[s/1] [his1] tongue[/s1] inside [names2] mouth[/s2] and [he2] {^eagerly:enthusiastically} return[s/2] the gesture.""", # MISSING TRANSLATION
+	SEXACTION_KISS_INITIATE_3 = """[name1] grab[s/1] [name2] and {^deeply :}kiss[es/1] [him2], {^driving [his1] tongue[/s1] into [his2] mouth[/s2]:eagerly tasting [his2] lips}.""", # MISSING TRANSLATION
+	SEXACTION_KISS_RESIST_1 = """[name2] shies away from the kiss seemingly nervous...""", # MISSING TRANSLATION
+	SEXACTION_KISS_RESIST_2 = """[name2] tries to push back against the undesired action...""", # MISSING TRANSLATION
+	SEXACTION_FONDLETITS_INITIATE_1 = """[name1] {^squeeze[s/1]:fondle[s/1]:massage[s/1]:caress[es/1]} [names2] [tits2]""", # MISSING TRANSLATION
+	SEXACTION_FONDLETITS_INITIATE_2 = """[name1] {^run:rub:work}[s/1] [his1] hands all around [names2] [tits2]""", # MISSING TRANSLATION
+	SEXACTION_FONDLETITS_INITIATE_SUFFIX_1 = """, {^playing with:teasing:flicking and teasing} [his2] nipples.""", # MISSING TRANSLATION
+	SEXACTION_FONDLETITS_INITIATE_SUFFIX_2 = """, kneading into the surrounding {^flesh:tissue}.""", # MISSING TRANSLATION
+	SEXACTION_FONDLETITS_INITIATE_KISSABLE_1 = """, {^kissing:licking} and {^kneading:teasing} them.""", # MISSING TRANSLATION
+	SEXACTION_FONDLETITS_INITIATE_KISSABLE_2 = """, {^burrying:nuzzling} [his1] face[/s1] in them.""", # MISSING TRANSLATION
+	SEXACTION_FONDLETITS_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [tits2] {^respond:react} to {^the stimulation:[names1] touch:[names1] caress}.""", # MISSING TRANSLATION
+	SEXACTION_FONDLETITS_REACTION_1 = """[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] touch:[names1] caress}.""", # MISSING TRANSLATION
+	SEXACTION_FONDLETITS_REACTION_2 = """[name2] {^begin:start}[s/2] to {^respond:react} to {^the stimulation:[names1] touch:[names1] caress}.""", # MISSING TRANSLATION
+	SEXACTION_FONDLETITS_REACTION_3 = """[name2] {^revel:bask}[s/2] in {^the stimulation:[names1] touch:[names1] caress}{^, [his2] arousal clearly showing:, becoming more and more excited:}.""", # MISSING TRANSLATION
+	SEXACTION_FONDLETITS_REACTION_4 = """[names2] body {^trembles:quivers} {^at the slightest touch:with every touch:each time [name1] touch[es/1] [his2] [tits2]}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_INITIATE_1 = """[name1] {^take:place:shove:stick}[s/1] [names2] nipples into [his1] mouth[/s1]""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_INITIATE_2 = """[name1] latch[es/1] onto [names2] nipples""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_INITIATE_SUFFIX_1 = """, {^licking:teasing} and {^kissing:sucking on} them.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_INITIATE_SUFFIX_2 = """, {^lightly:gently} {^nibbling at:stimulating} them with [his1] teeth.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_INITIATE_SUFFIX_3 = """, {^greedily slurping at them:nursing} like [a /1]bab[y/ies1].""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] nipples {^respond:react} to {^the stimulation:[names1] suckling:[names1] teasing}.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACTION_1 = """[name2] {^show:give}[s/2] little {^response:reaction} to [his2] nipples being {^stimulated:teased:sucked on:suckled}.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACTION_2 = """[name2] {^begin:start}[s/2] to {^respond:react} as [his2] nipples are {^stimulated:teased:sucked on:suckled}.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACTION_3 = """[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] nipples are {^stimulated:teased:sucked on:suckled}.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACTION_4 = """[names2] body {^trembles:quivers} {^at the slightest movement of [names1] tongue[/s1]:in response to [names1] suckling}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_INITIATE_1 = """[name1] {^easily:effortlessly} {^get:work:slip:slide}[s/1] [his1] fingers into [names2] [pussy2]""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_INITIATE_2 = """[name1] {^slowly:carefully} {^get:work:slip:slide}[s/1] [his1] fingers into [names2] [pussy2]""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_INITIATE_VIRGIN = """, {^probing inside:pumping [his1] fingers:stimulating the enterance} without breaking [his2] hymen[/s2].""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_INITIATE_SUFFIX = """, {^driving:pumping:pushing} [his1] fingers in and out.""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACTION_UNCONSCIOUS = """[names2] [pussy2] {^trembles:twitches}, {^responding:reacting} to {^the stimulation:[names1] fingers:[names1] caress} even in [his2] unconcious state.""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACTION_1 = """[names2] [pussy2] {^presents:gives} some resistance to {^the intrusion:[names1] fingers:[names1] caress}{^, still somewhat unprepared:, not yet fully prepared:}.""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACTION_2 = """[names2] [pussy2] {^begins:starts} to {^respond:react} to the {^sensation:feeling} of {^[names1] fingers:[names1] caress}.""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACTION_3 = """[names2] [pussy2] {^trembles:quivers} in {^response:reaction} to the {^sensation:feeling} of {^[names1] fingers:[names1] caress}, [his2] arousal {^made clear:apparent:clearly showing}.""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACTION_4 = """[names2] [pussy2] {^violently trembles:clenches:quivers} with every movement of [names1] fingers{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_INITIATE_1 = """[name1] {^easily:effortlessly} {^get:work:slip:slide}[s/1] [his1] fingers into [names2] [anus2]""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_INITIATE_2 = """[name1] {^slowly:carefully} {^get:work:slip:slide}[s/1] [his1] fingers into [names2] [anus2]""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_INITIATE_SUFFIX = """, {^driving:pumping:pushing} [his1] fingers in and out.""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACTION_UNCONSCIOUS = """[names2] [anus2] {^trembles:twitches}, {^responding:reacting} to {^the stimulation:[names1] fingers:[names1] caress} even in [his2] unconcious state.""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACTION_1 = """[names2] [anus2] {^presents:gives} some resistance to {^the intrusion:[names1] fingers:[names1] caress}{^, still somewhat unprepared:, not yet fully prepared:}.""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACTION_2 = """[names2] [anus2] {^begins:starts} to {^respond:react} to the {^sensation:feeling} of {^[names1] fingers:[names1] caress}.""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACTION_3 = """[names2] [anus2] {^trembles:quivers} in {^response:reaction} to the {^sensation:feeling} of {^[names1] fingers:[names1] caress}, [his2] arousal {^made clear:apparent:clearly showing}.""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACTION_4 = """[names2] [anus2] {^violently trembles:clenches:quivers} with every movement of [names1] fingers{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[es/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_INITIATE_1 = """[name1] {^eat[s/1] out:lick[s/1]:slurp[s/1] at} [names2] [pussy2], {^gently:steadily:diligently} stimulating [his2] pink clit[/s2].""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACTION_UNCONSCIOUS = """[names2] [pussy2] {^trembles:twitches}, {^responding:reacting} to {^the stimulation:[names1] licking:[names1] tongue[/s1]} even in [his2] unconcious state.""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACTION_1 = """[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] licking:[names1] tongue[/s1]}.""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACTION_2 = """[names2] [pussy2] {^begins:starts} to {^respond:react} to the {^sensation:feeling} of {^[names1] licking:[names1] tongue[/s1]}.""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACTION_3 = """[names2] [pussy2] {^trembles:quivers} in {^response:reaction} to the {^sensation:feeling} of {^[names1] licking:[names1] tongue[/s1]}, [his2] arousal {^made clear:apparent:clearly showing}.""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACTION_4 = """[names2] [pussy2] {^violently trembles:clenches:quivers} with every movement of [names1] tongue[/s1]{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_RIMJOB_INITIATE_1 = """[name1] {^eat[s/1] out:lick[s/1]:slurp[s/1] at} [names2] [anus2], stimulating the {^enterance:walls} with [his1] tongue[/s1].""", # MISSING TRANSLATION
+	SEXACTION_RIMJOB_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [anus2] {^respond:react}[s/#2] to {^the stimulation:[names1] tongue[/s1]}.""", # MISSING TRANSLATION
+	SEXACTION_RIMJOB_REACTION_1 = """[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] tongue[/s1]}.""", # MISSING TRANSLATION
+	SEXACTION_RIMJOB_REACTION_2 = """[name2] {^begin:start}[s/2] to {^respond:react} to {^the stimulation:[names1] tongue[/s1]}.""", # MISSING TRANSLATION
+	SEXACTION_RIMJOB_REACTION_3 = """[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [anus2] [is2] {^stimulated:licked:eaten out}.""", # MISSING TRANSLATION
+	SEXACTION_RIMJOB_REACTION_4 = """[names2] body {^trembles:quivers} {^at the slightest movement of [names1] tongue[/s1]:in response to [names1] licking}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_INITIATE_1 = """[name1] {^grip:grab:seize}[s/1] [names2] [penis2] and {^massage:stroke:rub:jerk}[s/1] [it2] with {^inensity:intense focus:fervor:passion}.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_INITIATE_2 = """[name1] {^tease[s/1]:brush[es/1] against} the {^tip:shaft:base}[/s2] of [names2] [penis2] with [his1] fingertips as [he1] {^service:stroke:milk:attend}[s/1] [it2] with [his1] hands.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [penis2] {^respond:react}[s/#2] to {^the stimulation:[names1] touch}.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACTION_1 = """[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] fingers:[names1] touch}.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACTION_2 = """[name2] {^begin:start}[s/2] to {^respond:react} as [his2] [penis2] get[s/#2] {^jerked:stroked}.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACTION_3 = """[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [penis2] get[s/#2] {^jerked:stroked}.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACTION_4 = """[names2] body {^trembles:quivers} {^at the slightest movement of [names1] fingers against [his2] [penis2]:in response to [names1] jerking}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_INITIATE_1 = """[name1] {^take:place:shove}[s/1] [names2] [penis2] into [his1] mouth[/s1], {^carefully serving:working the length of:coiling around} [it2] with [his1] tongue[/s1].""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_INITIATE_2 = """[name1] {^kiss[es/1]:rub[s/1] [his1] face against:lick[s/1] the tip of:admire[s/1]} [names2] [penis2] as [he1] begin[s/1] {^servicing:slurping at:milking:attending} [it2].""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [penis2] {^respond:react}[s/#2] to {^the stimulation:[names1] mouth[/s1]:[names1] fellatio}.""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACTION_1 = """[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] efforts:[names1] fellatio}.""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACTION_2 = """[name2] {^begin:start}[s/2] to {^respond:react} as [his2] [penis2] get[s/#2] {^sucked:licked:fellated}.""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACTION_3 = """[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [penis2] get[s/#2] {^sucked:licked:fellated}.""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACTION_4 = """[names2] body {^trembles:quivers} {^at the slightest movement of [names1] tongue[/s1] against [his2] [penis2]:in response to [names1] fellatio}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_INITIATE_1 = """[name1] buries [names2] [penis2] in [his1] [tits1], {^squeezing:teasing} and {^rubbing:massaging:milking} [it2].""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [penis2] {^respond:react}[s/#2] to {^the stimulation:[names1] [tits1]}.""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACTION_1 = """[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] efforts:[names1] [tits1]}.""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACTION_2 = """[name2] {^begin:start}[s/2] to {^respond:react} as [his2] [penis2] get[s/#2] {^rubbed:massaged:squeezed} by [names1] [tits1].""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACTION_3 = """[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [penis2] get[s/#2] {^rubbed:massaged:squeezed} by [names1] [tits1].""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACTION_4 = """[names2] body {^trembles:quivers} {^at the slightest movement of [names1] [tits1] against [his2] [penis2]:in response to [names1] [tits1]}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_INITIATE_1 = """[name1] wrap[/s1] [his1] tail around [names2] [penis2] and {^massage:stroke:rub:jerk}[s/1] [it2].""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_INITIATE_2 = """[name1] {^tease[s/1]:brush[es/1] against} the {^tip:shaft:base}[/s2] of [names2] [penis2] as [he1] {^service:stroke:attend}[s/1] [it2] with [his1] tail[/s1].""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [penis2] {^respond:react}[s/#2] to {^the stimulation:[names1] tail[/s1]}.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_REACTION_1 = """[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] efforts:[names1] tail[/s1]}.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_REACTION_2 = """[name2] {^begin:start}[s/2] to {^respond:react} as [his2] [penis2] get[s/#2] {^jerked:stroked} by [names1] tail[/s1].""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_REACTION_3 = """[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [penis2] get[s/#2] {^jerked:stroked} by [names1] tail[/s1].""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_REACTION_4 = """[names2] body {^trembles:quivers} {^at the slightest movement of [names1] tail[/s1] against [his2] [penis2]:in response to [names1] stroking}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_EARJOB_INITIATE_1 = """[name1] {^steadily :rhythmically :} {^massage:stroke:rub:jerk}[s/1] [names2] ears with [his1] [penis1].""", # MISSING TRANSLATION
+	SEXACTION_EARJOB_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [penis2] {^respond:react}[s/#2] to {^the stimulation:[names1] touch}.""", # MISSING TRANSLATION
+	SEXACTION_EARJOB_REACTION_1 = """[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] feet:[names1] touch}.""", # MISSING TRANSLATION
+	SEXACTION_EARJOB_REACTION_2 = """[name2] {^begin:start}[s/2] to {^respond:react} as [his2] [penis2] get[s/#2] {^jerked:stroked}.""", # MISSING TRANSLATION
+	SEXACTION_EARJOB_REACTION_3 = """[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [penis2] get[s/#2] {^jerked:stroked}.""", # MISSING TRANSLATION
+	SEXACTION_EARJOB_REACTION_4 = """[names2] body {^trembles:quivers} {^at the slightest movement of [names1] feet against [his2] [penis2]:in response to [names1] jerking}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_FOOTJOB_INITIATE_1 = """[name1] {^steadily :rhythmically :} {^massage:stroke:rub:jerk}[s/1] [names2] [penis2] with [his1] feet.""", # MISSING TRANSLATION
+	SEXACTION_FOOTJOB_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [penis2] {^respond:react}[s/#2] to {^the stimulation:[names1] touch}.""", # MISSING TRANSLATION
+	SEXACTION_FOOTJOB_REACTION_1 = """[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] feet:[names1] touch}.""", # MISSING TRANSLATION
+	SEXACTION_FOOTJOB_REACTION_2 = """[name2] {^begin:start}[s/2] to {^respond:react} as [his2] [penis2] get[s/#2] {^jerked:stroked}.""", # MISSING TRANSLATION
+	SEXACTION_FOOTJOB_REACTION_3 = """[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [penis2] get[s/#2] {^jerked:stroked}.""", # MISSING TRANSLATION
+	SEXACTION_FOOTJOB_REACTION_4 = """[names2] body {^trembles:quivers} {^at the slightest movement of [names1] feet against [his2] [penis2]:in response to [names1] jerking}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_DOUBLEDILDO_INITIATE_1 = """[name1] insert[s/1] a double dildo into [his1] and [names2] pussies, {^grinding:pumping:gyrating} [his1] hips against [partner2].""", # MISSING TRANSLATION
+	SEXACTION_DOUBLEDILDO_REACTION_UNCONSCIOUS = """[names2] [pussy2] {^trembles:twitches}, {^responding:reacting} to {^the stimulation:[names1] efforts:the dildo inside [him2]} even in [his2] unconcious state.""", # MISSING TRANSLATION
+	SEXACTION_DOUBLEDILDO_REACTION_1 = """[names2] [pussy2] {^presents:gives} some resistance to {^the intrusion:[names1] efforts:the dildo inside [him2]}{^, still somewhat unprepared:, not yet fully prepared:}.""", # MISSING TRANSLATION
+	SEXACTION_DOUBLEDILDO_REACTION_2 = """[names2] [pussy2] {^begins:starts} to {^respond:react} to the {^sensation:feeling} of {^the intrusion:[names1] dildo:the dildo inside [him2]}.""", # MISSING TRANSLATION
+	SEXACTION_DOUBLEDILDO_REACTION_3 = """[names2] [pussy2] {^trembles:quivers} in {^response:reaction} to the {^sensation:feeling} of {^[names1] dildo:the dildo inside [him2]}, [his2] arousal {^made clear:apparent:clearly showing}.""", # MISSING TRANSLATION
+	SEXACTION_DOUBLEDILDO_REACTION_4 = """[names2] [pussy2] {^violently trembles:clenches:quivers} {^with every movement of [names1] hips:in response to [names1] efforts}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_DOUBLEDILDOASS_INITIATE_1 = """[name1] insert[s/1] a double dildo into [his1] and [names2] [ass3], {^grinding:pumping:gyrating} [his1] hips against [partners2].""", # MISSING TRANSLATION
+	SEXACTION_DOUBLEDILDOASS_REACTION_UNCONSCIOUS = """[names2] [ass2] {^trembles:twitches}, {^responding:reacting} to {^the stimulation:[names1] efforts:the dildo inside [him2]} even in [his2] unconcious state.""", # MISSING TRANSLATION
+	SEXACTION_DOUBLEDILDOASS_REACTION_1 = """[names2] [ass2] {^presents:gives} some resistance to {^the intrusion:[names1] efforts:the dildo inside [him2]}{^, still somewhat unprepared:, not yet fully prepared:}.""", # MISSING TRANSLATION
+	SEXACTION_DOUBLEDILDOASS_REACTION_2 = """[names2] [ass2] {^begins:starts} to {^respond:react} to the {^sensation:feeling} of {^the intrusion:[names1] dildo:the dildo inside [him2]}.""", # MISSING TRANSLATION
+	SEXACTION_DOUBLEDILDOASS_REACTION_3 = """[names2] [ass2] {^trembles:quivers} in {^response:reaction} to the {^sensation:feeling} of {^[names1] dildo:the dildo inside [him2]}, [his2] arousal {^made clear:apparent:clearly showing}.""", # MISSING TRANSLATION
+	SEXACTION_DOUBLEDILDOASS_REACTION_4 = """[names2] [ass2] {^violently trembles:clenches:quivers} {^with every movement of [names1] hips:in response to [names1] efforts}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_INITIATE_1 = """[name1] insert[s/1] [his1] thick tail into [names2] [pussy2].""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [pussy2] {^respond:react}[s/#2] to {^the stimulation:[names1] tail[/s1]}.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_REACTION_1 = """[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] efforts:[names1] tail[/s1]}.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_REACTION_2 = """[name2] {^begin:start}[s/2] to {^respond:react} as [his2] [pussy2] get[s/#2] {^fucked:penetrated} by [names1] tail[/s1].""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_REACTION_3 = """[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [pussy2] get[s/#2] {^fucked:penetrated} by [names1] tail[/s1].""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_REACTION_4 = """[names2] body {^trembles:quivers} {^at the slightest movement of [names1] tail[/s1] inside [his2] [pussy2]:in response to [names1] penetrating}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_INITIATE_1 = """[name1] insert[s/1] [his1] thick tail into [names2] [ass2].""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [ass2] {^respond:react}[s/#2] to {^the stimulation:[names1] tail[/s1]}.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_REACTION_1 = """[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] efforts:[names1] tail[/s1]}.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_REACTION_2 = """[name2] {^begin:start}[s/2] to {^respond:react} as [his2] [ass2] get[s/#2] {^fucked:penetrated} by [names1] tail[/s1].""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_REACTION_3 = """[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [ass2] get[s/#2] {^fucked:penetrated} by [names1] tail[/s1].""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_REACTION_4 = """[names2] body {^trembles:quivers} {^at the slightest movement of [names1] tail[/s1] inside [his2] [ass2]:in response to [names1] penetrating}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_TRIBADISM_INITIATE_1 = """[name1] and [name2] {^sway:shake} [their] hips and {^grind:rub} [their] [pussy3] together.""", # MISSING TRANSLATION
+	SEXACTION_TRIBADISM_REACTION_UNCONSCIOUS = """[names2] [pussy2] {^trembles:twitches}, {^responding:reacting} to {^the stimulation:[names1] efforts:[name1] against [him2]} even in [his2] unconcious state.""", # MISSING TRANSLATION
+	SEXACTION_TRIBADISM_REACTION_1 = """[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] efforts:[name1] against [him2]}{^, still somewhat unprepared:, not yet fully prepared:}.""", # MISSING TRANSLATION
+	SEXACTION_TRIBADISM_REACTION_2 = """[names2] [pussy2] {^begins:starts} to {^respond:react} to the {^sensation:feeling} of {^[names1] efforts:[name1] against [him2]}.""", # MISSING TRANSLATION
+	SEXACTION_TRIBADISM_REACTION_3 = """[names2] [pussy2] {^trembles:quivers} in {^response:reaction} to the {^sensation:feeling} of {^[names1] efforts:[name1] against [him2]}, [his2] arousal {^made clear:apparent:clearly showing}.""", # MISSING TRANSLATION
+	SEXACTION_TRIBADISM_REACTION_4 = """[names2] [pussy2] {^violently trembles:clenches:quivers} {^with every movement of [names1] hips:in response to [names1] efforts}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_FROTTAGE_INITIATE_1 = """[name1] and [name2] {^rub:grind:press} [their] [penis3] {^together:against one another}.""", # MISSING TRANSLATION
+	SEXACTION_FROTTAGE_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [penis2] {^respond:react}[s/#2] to {^the stimulation:[names1] efforts:[name1] against [him2]}.""", # MISSING TRANSLATION
+	SEXACTION_FROTTAGE_REACTION_1 = """[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] efforts}.""", # MISSING TRANSLATION
+	SEXACTION_FROTTAGE_REACTION_2 = """[name2] {^begin:start}[s/2] to {^respond:react} as [his2] [penis2] get[s/#2] {^rubbed:stimulated:teased}.""", # MISSING TRANSLATION
+	SEXACTION_FROTTAGE_REACTION_3 = """[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [penis2] get[s/#2] {^rubbed:stimulated:teased}.""", # MISSING TRANSLATION
+	SEXACTION_FROTTAGE_REACTION_4 = """[names2] body {^trembles:quivers} {^at the slightest movement of [names1] [penis1] against [his_2]:in response to [names1] efforts}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_NIPPLEFUCK_INITIATE_1 = """[name1] uses [his1] [penis1] to {^fuck:penetrate} [names2] {^lubricating:elastic:stretching} nipples.""", # MISSING TRANSLATION
+	SEXACTION_NIPPLEFUCK_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] [penis2] {^respond:react}[s/#2] to {^the stimulation:[names1] efforts:[name1] against [him2]}.""", # MISSING TRANSLATION
+	SEXACTION_NIPPLEFUCK_REACTION_1 = """[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] efforts}.""", # MISSING TRANSLATION
+	SEXACTION_NIPPLEFUCK_REACTION_2 = """[name2] {^begin:start}[s/2] to {^respond:react} as [his2] nipples get[s/#2] {^fucked:penetrated}.""", # MISSING TRANSLATION
+	SEXACTION_NIPPLEFUCK_REACTION_3 = """[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] nipples get[s/#2] {^fucked:penetrated}.""", # MISSING TRANSLATION
+	SEXACTION_NIPPLEFUCK_REACTION_4 = """[names2] body {^trembles:quivers} {^at the slightest movement of [names1] [penis1]:in response to [names1] efforts}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_DOUBLEPEN_INITIATE_1 = """[name1] put [names2] between them and [fuck1] [his2] {^orifices:holes}.""", # MISSING TRANSLATION
+	SEXACTION_SPITROAST_INITIATE_1 = """[name1] {^passionately :eagerly :}[fuck1] [names2]'s [pussy2] and mouth.""", # MISSING TRANSLATION
+	SEXACTION_SPITROASTASS_INITIATE_1 = """[name1] {^passionately :eagerly :}[fuck1] [names2]'s [anus2] and mouth.""", # MISSING TRANSLATION
+	SEXACTION_INSERTINTURNS_INITIATE_1 = """[name1] [fuck1] [names2] [pussy2] periodically taking turns and switching.""", # MISSING TRANSLATION
+	SEXACTION_INSERTINTURNSASS_INITIATE_1 = """[name1] [fuck1] [names2] [anus2] periodically taking turns and switching.""", # MISSING TRANSLATION
+	SEXACTION_SPANKING_INITIATE_1 = """[name1] {^spank:slap:beat:swat}[s/1] [names2] [ass2]{^ with [an /1]open hand[/s1]: until it turns red:, intent on humiliating [him2]}.""", # MISSING TRANSLATION
+	SEXACTION_SPANKING_INITIATE_2 = """[name1] {^spank:slap:beat:swat}[s/1] [name2] {^right :square :}{^across:on} [his2] [ass2] {^repeatedly:again and again:over and over}.""", # MISSING TRANSLATION
+	SEXACTION_SPANKING_REACTION_1 = """[name2] {^jerk:wince:writhe}[s/2] in pain from the {^humiliating:demeaning:embarassing} punishment.""", # MISSING TRANSLATION
+	SEXACTION_SPANKING_REACTION_2 = """[name2] cries out with each blow to [his2] buttox, though [his2] voice betrays some enjoyment.""", # MISSING TRANSLATION
+	SEXACTION_SPANKING_REACTION_3 = """[names2] moans make it {^hard:difficult} to tell if [he2] in pain or enjoying [himself2].""", # MISSING TRANSLATION
+	SEXACTION_SPANKING_REACTION_4 = """[names2] body {^trembles:quivers} {^with each swat:each time [name1] slap[s/1] [his2] [ass2]}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_WHIPPING_INITIATE_1 = """[name1] {^lash}[s/1] at [names2] [body2] with a leather whip.""", # MISSING TRANSLATION
+	SEXACTION_WHIPPING_REACTION_1 = """[name2] {^jerk:wince:writhe}[s/2] in pain from the {^harsh:severe:brutal} punishment.""", # MISSING TRANSLATION
+	SEXACTION_WHIPPING_REACTION_2 = """[name2] cries out with each {^strike:lash}, though [his2] voice betrays some enjoyment.""", # MISSING TRANSLATION
+	SEXACTION_WHIPPING_REACTION_3 = """[names2] moans make it {^hard:difficult} to tell if [he2] in pain or enjoying [himself2].""", # MISSING TRANSLATION
+	SEXACTION_WHIPPING_REACTION_4 = """[name2] barely reacts to {^heavy:painful} {^strikes:lashes} as [he2] edge[s/2] toward orgasm.""", # MISSING TRANSLATION
+	SEXACTION_DEEPTHROAT_INITIATE_1 = """[name1] {^push:shove}[s/1] [his1] [penis1] into [names2] mouth [/s1], intent on humiliating [him2].""", # MISSING TRANSLATION
+	SEXACTION_DEEPTHROAT_REACTION_1 = """[name2] {^jerk:wince:writhe}[s/2] in pain from the {^humiliating:demeaning:embarassing} punishment.""", # MISSING TRANSLATION
+	SEXACTION_DEEPTHROAT_REACTION_2 = """[name2] cries out with each push into [his2] throat, though [his2] facial expression betrays some enjoyment.""", # MISSING TRANSLATION
+	SEXACTION_DEEPTHROAT_REACTION_3 = """[names2] expression make it {^hard:difficult} to tell if [he2] in pain or enjoying [himself2] from the gagging.""", # MISSING TRANSLATION
+	SEXACTION_DEEPTHROAT_REACTION_4 = """[names2] body {^trembles:quivers} {^with each push:each time [name1] slam[s/1] [his2] throat}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_FISTING_INITIATE_1 = """[name1] {^easily:effortlessly} {^get:work:slip:slide}[s/1] [his1] {^hand:fist} into [names2] [pussy2]""", # MISSING TRANSLATION
+	SEXACTION_FISTING_INITIATE_2 = """[name1] {^slowly:carefully} {^get:work:slip:slide}[s/1] [his1] {^hand:fist} into [names2] [pussy2]""", # MISSING TRANSLATION
+	SEXACTION_FISTING_INITIATE_VIRGIN = """, claiming [his2] virginity as it rips through [his2] hymen.""", # MISSING TRANSLATION
+	SEXACTION_FISTING_INITIATE_SUFFIX = """, {^driving:pumping:pushing} [his1] it in and out.""", # MISSING TRANSLATION
+	SEXACTION_FISTING_REACTION_UNCONSCIOUS = """[names2] [pussy2] {^trembles:twitches}, {^responding:reacting} to {^the stimulation:[names1] fingers:[names1] caress} even in [his2] unconcious state.""", # MISSING TRANSLATION
+	SEXACTION_FISTING_REACTION_1 = """[names2] [pussy2] {^presents:gives} some resistance to {^the intrusion:[names1] fingers:[names1] caress}{^, still somewhat unprepared:, not yet fully prepared:}.""", # MISSING TRANSLATION
+	SEXACTION_FISTING_REACTION_2 = """[names2] [pussy2] {^begins:starts} to {^respond:react} to the {^sensation:feeling} of {^[names1] fingers:[names1] caress}.""", # MISSING TRANSLATION
+	SEXACTION_FISTING_REACTION_3 = """[names2] [pussy2] {^trembles:quivers} in {^response:reaction} to the {^sensation:feeling} of {^[names1] fingers:[names1] caress}, [his2] arousal {^made clear:apparent:clearly showing}.""", # MISSING TRANSLATION
+	SEXACTION_FISTING_REACTION_4 = """[names2] [pussy2] {^violently trembles:clenches:quivers} with every movement of [names1] fingers{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_ANALFISTING_INITIATE_1 = """[name1] {^easily:effortlessly} {^get:work:slip:slide}[s/1] [his1] {^hand:fist} into [names2] [anus2]""", # MISSING TRANSLATION
+	SEXACTION_ANALFISTING_INITIATE_2 = """[name1] {^slowly:carefully} {^get:work:slip:slide}[s/1] [his1] {^hand:fist} into [names2] [anus2]""", # MISSING TRANSLATION
+	SEXACTION_ANALFISTING_INITIATE_SUFFIX = """, {^driving:pumping:pushing} [his1] it in and out.""", # MISSING TRANSLATION
+	SEXACTION_ANALFISTING_REACTION_UNCONSCIOUS = """[names2] [anus2] {^trembles:twitches}, {^responding:reacting} to {^the stimulation:[names1] fingers:[names1] caress} even in [his2] unconcious state.""", # MISSING TRANSLATION
+	SEXACTION_ANALFISTING_REACTION_1 = """[names2] [anus2] {^presents:gives} some resistance to {^the intrusion:[names1] fingers:[names1] caress}{^, still somewhat unprepared:, not yet fully prepared:}.""", # MISSING TRANSLATION
+	SEXACTION_ANALFISTING_REACTION_2 = """[names2] [anus2] {^begins:starts} to {^respond:react} to the {^sensation:feeling} of {^[names1] fingers:[names1] caress}.""", # MISSING TRANSLATION
+	SEXACTION_ANALFISTING_REACTION_3 = """[names2] [anus2] {^trembles:quivers} in {^response:reaction} to the {^sensation:feeling} of {^[names1] fingers:[names1] caress}, [his2] arousal {^made clear:apparent:clearly showing}.""", # MISSING TRANSLATION
+	SEXACTION_ANALFISTING_REACTION_4 = """[names2] [anus2] {^violently trembles:clenches:quivers} with every movement of [names1] fingers{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[es/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_NIPPLECLAMP_INITIATE_1 = """[name1] {^place:stick}[s/1] clips on [names2] nipples.""", # MISSING TRANSLATION
+	SEXACTION_NIPPLECLAMP_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] nipples {^respond:react} to {^the stimulation:the clamps pression:the clamps teasing}.""", # MISSING TRANSLATION
+	SEXACTION_NIPPLECLAMP_REACTION_1 = """[name2] {^show:give}[s/2] little {^response:reaction} to [his2] nipples being {^stimulated:teased:pressed:pinched}.""", # MISSING TRANSLATION
+	SEXACTION_NIPPLECLAMP_REACTION_2 = """[name2] {^begin:start}[s/2] to {^respond:react} as [his2] nipples are {^stimulated:teased:pressed:pinched}.""", # MISSING TRANSLATION
+	SEXACTION_NIPPLECLAMP_REACTION_3 = """[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] nipples are {^stimulated:teased::pressed:pinched}.""", # MISSING TRANSLATION
+	SEXACTION_NIPPLECLAMP_REACTION_4 = """[names2] body {^trembles:quivers} {^by the slightest pressure of the clamps:in response of the clamps pression}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_CLITCLAMP_INITIATE_1 = """[name1] {^place:stick}[s/1] clips on [names2] clit.""", # MISSING TRANSLATION
+	SEXACTION_CLITCLAMP_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] clit {^respond:react} to {^the stimulation:the clamps pression:the clamps teasing}.""", # MISSING TRANSLATION
+	SEXACTION_CLITCLAMP_REACTION_1 = """[name2] {^show:give}[s/2] little {^response:reaction} to [his2] clit being {^stimulated:teased:pressed:pinched}.""", # MISSING TRANSLATION
+	SEXACTION_CLITCLAMP_REACTION_2 = """[name2] {^begin:start}[s/2] to {^respond:react} as [his2] clit are {^stimulated:teased:pressed:pinched}.""", # MISSING TRANSLATION
+	SEXACTION_CLITCLAMP_REACTION_3 = """[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] clit are {^stimulated:teased::pressed:pinched}.""", # MISSING TRANSLATION
+	SEXACTION_CLITCLAMP_REACTION_4 = """[names2] body {^trembles:quivers} {^by the slightest pressure of the clamps:in response of the clamps pression}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_RINGGAG_INITIATE_1 = """[name1] {^:place:shove:insert}[s/1] a ring gag into [names2] mouth[/s1] to enable forced inside mouth actions.""", # MISSING TRANSLATION
+	SEXACTION_RINGGAG_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, with the ring gag still in [his2] mouth.""", # MISSING TRANSLATION
+	SEXACTION_BLINDFOLD_INITIATE_1 = """[name1] {^place:put}[s/1] a blindfold on [names2] eyes.""", # MISSING TRANSLATION
+	SEXACTION_BLINDFOLD_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, with the blinfold still on [his2] eyes.""", # MISSING TRANSLATION
+	SEXACTION_NOSEHOOK_INITIATE_1 = """[name1] {^place:shove:stick}[s/1] a nose hook on [names2] face, pulling [his2] nose up and forcibly open [his2] mouth a little.""", # MISSING TRANSLATION
+	SEXACTION_NOSEHOOK_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, with the nose hook on her face opening her mouth slightly.""", # MISSING TRANSLATION
+	SEXACTION_VIBRATOR_INITIATE_1 = """[name1] {^push:place:shove:stick}[s/1] [a /2]vibrator[/s2] into [names2] {^pussy:fuck hole:front door:vagina}[/s2]""", # MISSING TRANSLATION
+	SEXACTION_VIBRATOR_INITIATE_SUFFIX = """, {^stimulating:teasing} [it2].""", # MISSING TRANSLATION
+	SEXACTION_VIBRATOR_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] {^pussy:fuck hole:front door:vagina} still {^respond:react} to {^the stimulation:vibration}.""", # MISSING TRANSLATION
+	SEXACTION_VIBRATOR_REACTION_1 = """[name2] {^show:give}[s/2] little {^response:reaction} to [his2] {^pussy:fuck hole:front door:vagina} being {^stimulated:teased:used}.""", # MISSING TRANSLATION
+	SEXACTION_VIBRATOR_REACTION_2 = """[name2] {^begin:start}[s/2] to {^respond:react} at the {^stimulation:tease:use} of [his2] {^pussy:fuck hole:front door:vagina}.""", # MISSING TRANSLATION
+	SEXACTION_VIBRATOR_REACTION_3 = """[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} at [his2] {^pussy:fuck hole:front door:vagina} been {^stimulated:teased:used}.""", # MISSING TRANSLATION
+	SEXACTION_VIBRATOR_REACTION_4 = """[names2] body {^trembles:quivers} {^at the slightest stimulation of the vibrator:in response to the vibrator}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm}.""", # MISSING TRANSLATION
+	SEXACTION_ANALVIBRATOR_INITIATE_1 = """[name1] {^push:place:shove:stick}[s/1] [a /2]vibrator[/s2] into [names2] {^asshole:shit hole:back door}[/s2]""", # MISSING TRANSLATION
+	SEXACTION_ANALVIBRATOR_INITIATE_SUFFIX = """, {^stimulating:teasing} [it2].""", # MISSING TRANSLATION
+	SEXACTION_ANALVIBRATOR_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] {^asshole:shit hole:back door} still {^respond:react} to {^the stimulation:vibration}.""", # MISSING TRANSLATION
+	SEXACTION_ANALVIBRATOR_REACTION_1 = """[name2] {^show:give}[s/2] little {^response:reaction} to [his2] {^asshole:shit hole:back door} being {^stimulated:teased:used}.""", # MISSING TRANSLATION
+	SEXACTION_ANALVIBRATOR_REACTION_2 = """[name2] {^begin:start}[s/2] to {^respond:react} at the {^stimulation:tease:use} of [his2] {^asshole:shit hole:back door}.""", # MISSING TRANSLATION
+	SEXACTION_ANALVIBRATOR_REACTION_3 = """[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} at [his2] {^asshole:shit hole:back door} been {^stimulated:teased:used}.""", # MISSING TRANSLATION
+	SEXACTION_ANALVIBRATOR_REACTION_4 = """[names2] body {^trembles:quivers} {^at the slightest stimulation of the vibrator:in response to the vibrator}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_ROPE_INITIATE_1 = """[name1] {^wrap:tie}[s/1] a rope around [names2] body to restrict [his2] movements.""", # MISSING TRANSLATION
+	SEXACTION_ROPE_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, with [his2] body still tied down.""", # MISSING TRANSLATION
+	SEXACTION_MILKER_INITIATE_1 = """[name1] {^place:shove:stick}[s/1] [a /2]milker[/s2] on [names2] nipples""", # MISSING TRANSLATION
+	SEXACTION_MILKER_INITIATE_SUFFIX_1 = """, {^teasing} and {^sucking on} them.""", # MISSING TRANSLATION
+	SEXACTION_MILKER_INITIATE_SUFFIX_2 = """, {^lightly:gently} {^stimulating} them with its suction mechanism.""", # MISSING TRANSLATION
+	SEXACTION_MILKER_INITIATE_SUFFIX_3 = """, {^greedily slurping at them:nursing} like [a /1]bab[y/ies1].""", # MISSING TRANSLATION
+	SEXACTION_MASTURBATION_INITIATE_1 = """[name1] order[s/1] [name2] to masturbate exposing to anyone willing to see [his2] intimate parts.""", # MISSING TRANSLATION
+	SEXACTION_MASTURBATION_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious.""", # MISSING TRANSLATION
+	SEXACTION_MASTURBATION_REACTION_1 = """[name2] {^show:give}[s/2] little {^response:reaction} to [his2] intimate parts being {^stimulated:teased}.""", # MISSING TRANSLATION
+	SEXACTION_MASTURBATION_REACTION_2 = """[name2] {^begin:start}[s/2] to {^respond:react} as [his2] intimate parts are {^stimulated:teased}.""", # MISSING TRANSLATION
+	SEXACTION_MASTURBATION_REACTION_3 = """[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] intimate parts are {^stimulated:teased}.""", # MISSING TRANSLATION
+	SEXACTION_MASTURBATION_REACTION_4 = """[names2] body {^trembles:quivers} {^at the slightest movement of [his2] fingers[/s1]:in response to [his2] fingers}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}.""", # MISSING TRANSLATION
+	SEXACTION_GROVELING_INITIATE_1 = """[name2] submissively wait[s/2] facedown for [names1] orders like [a /2]good slave[/s2].""", # MISSING TRANSLATION
+	SEXACTION_GROVELING_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious.""", # MISSING TRANSLATION
+	SEXACTION_FACESITTING_INITIATE_1 = """[name1] {^place:shove:stick}[s/1] [his1] intimate parts on [names2] face[/s2] and mouth[/es2].""", # MISSING TRANSLATION
+	SEXACTION_FACESITTING_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious.""", # MISSING TRANSLATION
+	SEXACTION_ANALFACESITTING_INITIATE_1 = """[name1] {^place:shove:stick}[s/1] [his1] bottom parts on [names2] face[/s2] and mouth[/es2] tilting [his2] hips to make sure it's the asshole that is given.""", # MISSING TRANSLATION
+	SEXACTION_ANALFACESITTING_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious.""", # MISSING TRANSLATION
+	SEXACTION_MASSAGEWITHFOOT_INITIATE_1 = """[name1] step[s/1] on [name2] shamefully massaging [him2].""", # MISSING TRANSLATION
+	SEXACTION_MASSAGEWITHFOOT_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious.""", # MISSING TRANSLATION
+	SEXACTION_LICKFEET_INITIATE_1 = """[name1] {^place:shove:stick}[s/1] [his1] feet in front of [name2] and order[s/1] [him2] to {^lick:suck:service} [his1] feet clean.""", # MISSING TRANSLATION
+	SEXACTION_LICKFEET_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious.""", # MISSING TRANSLATION
+	SEXACTION_ENEMAPLUG_INITIATE_1 = """[name1] {^put:place:shove:stick}[s/1] enema liquid into [names2] anus then insert plug[/s1] to make sure it holds in.""", # MISSING TRANSLATION
+	SEXACTION_ENEMAPLUG_REACTION_UNCONSCIOUS = """[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] anus {^respond:react} to {^the liquid} trying to flow out but still restricted by the plug.""", # MISSING TRANSLATION
+	SEXACTION_MISSIONARY_ONGOING_1 = """[name1] fuck[s/1] [name2] in the missionary position.""", # MISSING TRANSLATION
+	SEXACTION_MISSIONARY_ACT_1 = """, {^enjoying:relishing in} the closeness of [partners2] [body2]. """, # MISSING TRANSLATION
+	SEXACTION_MISSIONARY_ACT_2 = """, {^spreading:parting:pulling apart:holding apart} [his2] thighs to expose [his2] [pussy2]. """, # MISSING TRANSLATION
+	SEXACTION_MISSIONARY_ACT_4 = """ from above. """, # MISSING TRANSLATION
+	SEXACTION_MISSIONARY_ACT_5 = """ as [name1] [fucks1] [partner2].""", # MISSING TRANSLATION
+	SEXACTION_MISSIONARYANAL_ONGOING_1 = """[name1] fuck[s/1] [names2] ass[/es2] in the missionary position.""", # MISSING TRANSLATION
+	SEXACTION_MISSIONARYANAL_ACT_1 = """, {^enjoying:relishing in} the closeness of [partners2] [body2]. """, # MISSING TRANSLATION
+	SEXACTION_MISSIONARYANAL_ACT_2 = """, {^spreading:parting:pulling apart:holding apart} [his2] thighs to expose [his2] [anus2]. """, # MISSING TRANSLATION
+	SEXACTION_MISSIONARYANAL_ACT_4 = """ from above. """, # MISSING TRANSLATION
+	SEXACTION_MISSIONARYANAL_ACT_5 = """ as [name1] [fucks1] [partners2] [anus2].""", # MISSING TRANSLATION
+	SEXACTION_DOGGY_ONGOING_1 = """[name1] fuck[s/1] [name2] doggy style.""", # MISSING TRANSLATION
+	SEXACTION_DOGGY_ACT_1 = """, {^enjoying:relishing in} the {^fine:perfect} view of [partners2] [ass2]. """, # MISSING TRANSLATION
+	SEXACTION_DOGGY_ACT_2 = """, {^adjusting:rolling} [his2] hips forward to expose [his2] [pussy2]. """, # MISSING TRANSLATION
+	SEXACTION_DOGGY_ACT_3 = """, {^pressing:pushing} [his2] upper body downward to expose [his2] [pussy2]. """, # MISSING TRANSLATION
+	SEXACTION_DOGGY_ACT_5 = """ from behind. """, # MISSING TRANSLATION
+	SEXACTION_DOGGY_ACT_6 = """ like [an /2]animal[/s2]. """, # MISSING TRANSLATION
+	SEXACTION_DOGGY_ACT_7 = """ as [name1] [fucks1] [partner2] {^like [an /1]animal[/s1]:like [a /1]dog[/s1] in heat}.""", # MISSING TRANSLATION
+	SEXACTION_DOGGYANAL_ONGOING_1 = """[name1] fuck[s/1] [names2] ass[/es2] doggy style.""", # MISSING TRANSLATION
+	SEXACTION_DOGGYANAL_ACT_1 = """, {^enjoying:relishing in} the {^fine:perfect} view of [partners2] [ass2]. """, # MISSING TRANSLATION
+	SEXACTION_DOGGYANAL_ACT_2 = """, {^adjusting:rolling} [his2] hips forward to expose [his2] [anus2]. """, # MISSING TRANSLATION
+	SEXACTION_DOGGYANAL_ACT_3 = """, {^pressing:pushing} [his2] upper body downward to expose [his2] [anus2]. """, # MISSING TRANSLATION
+	SEXACTION_DOGGYANAL_ACT_5 = """ from behind. """, # MISSING TRANSLATION
+	SEXACTION_DOGGYANAL_ACT_6 = """ like [an /2]animal[/s2]. """, # MISSING TRANSLATION
+	SEXACTION_DOGGYANAL_ACT_7 = """ as [name1] [fucks1] [partners2] [anus2] {^like [an /2]animal[/s2]:like a dog in heat}.""", # MISSING TRANSLATION
+	SEXACTION_LOTUS_ONGOING_1 = """[name1] fuck[s/1] [name2] in the lotus position.""", # MISSING TRANSLATION
+	SEXACTION_LOTUS_ACT_1 = """, {^enjoying:relishing in} the closeness of [partners2] [body2]. """, # MISSING TRANSLATION
+	SEXACTION_LOTUS_ACT_3 = """ from below. """, # MISSING TRANSLATION
+	SEXACTION_LOTUS_ACT_4 = """ as [his3] [body3] entwine.""", # MISSING TRANSLATION
+	SEXACTION_LOTUSANAL_ONGOING_1 = """[name1] fuck[s/1] [names2] ass[/es2] in the lotus position.""", # MISSING TRANSLATION
+	SEXACTION_LOTUSANAL_ACT_1 = """, {^enjoying:relishing in} the closeness of [partners2] [body2]. """, # MISSING TRANSLATION
+	SEXACTION_LOTUSANAL_ACT_3 = """ from below. """, # MISSING TRANSLATION
+	SEXACTION_LOTUSANAL_ACT_4 = """ as [his3] [body3] entwine.""", # MISSING TRANSLATION
+	SEXACTION_REVLOTUS_ONGOING_1 = """[name1] fuck[s/1] [name2] in the reverse lotus position.""", # MISSING TRANSLATION
+	SEXACTION_REVLOTUS_ACT_1 = """, {^enjoying:finding glee in} putting [partner2] in such an embarassing position. """, # MISSING TRANSLATION
+	SEXACTION_REVLOTUS_ACT_3 = """ from below. """, # MISSING TRANSLATION
+	SEXACTION_REVLOTUS_ACT_4 = """ as [name1] make[s/1] a show of [him2].""", # MISSING TRANSLATION
+	SEXACTION_REVLOTUSANAL_ONGOING_1 = """[name1] fuck[s/1] [names2] ass[/es2] in the reverse lotus position.""", # MISSING TRANSLATION
+	SEXACTION_REVLOTUSANAL_ACT_1 = """, {^enjoying:finding glee in} putting [partner2] in such an embarassing position. """, # MISSING TRANSLATION
+	SEXACTION_REVLOTUSANAL_ACT_3 = """ from below. """, # MISSING TRANSLATION
+	SEXACTION_REVLOTUSANAL_ACT_4 = """ as [name1] make[s/1] a show of [him2].""", # MISSING TRANSLATION
+	SEXACTION_ONTOP_ONGOING_1 = """[name1] has [name2] riding on top of [him1].""", # MISSING TRANSLATION
+	SEXACTION_ONTOP_ACT_1 = """, {^enjoying:finding glee in} putting [partner2] in such an embarassing position. """, # MISSING TRANSLATION
+	SEXACTION_ONTOP_ACT_3 = """ from below. """, # MISSING TRANSLATION
+	SEXACTION_ONTOP_ACT_4 = """ as [name2] ride[s/1] on [him1].""", # MISSING TRANSLATION
+	SEXACTION_ONTOPANAL_ONGOING_1 = """[name1] has [name2] anally riding on top of [him1].""", # MISSING TRANSLATION
+	SEXACTION_ONTOPANAL_ACT_1 = """, {^enjoying:finding glee in} putting [partner2] in such an embarassing position. """, # MISSING TRANSLATION
+	SEXACTION_ONTOPANAL_ACT_3 = """ from below. """, # MISSING TRANSLATION
+	SEXACTION_ONTOPANAL_ACT_4 = """ as [name1] make[s/1] a show of [him2].""", # MISSING TRANSLATION
+	SEXACTION_DOUBLEDILDO_ONGOING_1 = """[name1] and [name2] fuck each other with a double-ended dildo.""", # MISSING TRANSLATION
+	SEXACTION_DOUBLEDILDO_ONGOING_DESC_1 = """[name1] and [name2] {^shake:grind:pump} [their] hips together, as the dildo trusts in and out of [their] [pussy3].""", # MISSING TRANSLATION
+	SEXACTION_DOUBLEDILDOASS_ONGOING_1 = """[name1] and [name2] fuck each other's assholes with a double-ended dildo.""", # MISSING TRANSLATION
+	SEXACTION_DOUBLEDILDOASS_ONGOING_DESC_1 = """[name1] and [name2] {^shake:grind:pump} [their] hips together, as the dildo trusts in and out of [their] [ass3].""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_ONGOING_1 = """[name1] fuck[s/1] [name2]'s pussy with [his1] tail.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_ONGOING_DESC_1 = """[name1] thrust[s/1] [his1] tail in and out of [names2] [pussy2].""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_ONGOING_1 = """[name1] fuck[s/1] [name2]'s ass with [his1] tail.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_ONGOING_DESC_1 = """[name1] thrust[s/1] [his1] tail in and out of [names2] [ass2].""", # MISSING TRANSLATION
+	SEXACTION_TRIBADISM_ONGOING_1 = """[name1] and [name2] rub [their] pussies together.""", # MISSING TRANSLATION
+	SEXACTION_TRIBADISM_ONGOING_DESC_1 = """[name1] and [name2] continue to grind [their] [pussy3] together.""", # MISSING TRANSLATION
+	SEXACTION_FROTTAGE_ONGOING_1 = """[name1] and [name2] rub [their] [penis3] together.""", # MISSING TRANSLATION
+	SEXACTION_FROTTAGE_ONGOING_DESC_1 = """[name1] and [name2] continue to {^rub:grind} [their] [penis3] together.""", # MISSING TRANSLATION
+	SEXACTION_NIPPLEFUCK_ONGOING_1 = """[name1] fuck[s/1] [names2] nipples.""", # MISSING TRANSLATION
+	SEXACTION_NIPPLEFUCK_ONGOING_DESC_1 = """[name2] moan[s/2] as [names1] thrust[s/1] [his1] [penis1] in and out of [his2] nipples.""", # MISSING TRANSLATION
+	SEXACTION_DOUBLEPEN_ONGOING_1 = """[name1] double penetrate[s/1] [name2].""", # MISSING TRANSLATION
+	SEXACTION_DOUBLEPEN_ONGOING_DESC_1 = """[name1] continue {^passionately :eagerly :}[fucking1] [name2] {^together:in union}.""", # MISSING TRANSLATION
+	SEXACTION_SPITROAST_ONGOING_1 = """[name1] spit-roast[s/1] [name2]'s pussy and mouth.""", # MISSING TRANSLATION
+	SEXACTION_SPITROAST_ONGOING_DESC_1 = """[name1] continue {^passionately :eagerly :}[fucking1] [name2] [pussy2] and mouth.""", # MISSING TRANSLATION
+	SEXACTION_SPITROASTASS_ONGOING_1 = """[name1] spit-roast[s/1] [name2]'s [anus2] and mouth.""", # MISSING TRANSLATION
+	SEXACTION_SPITROASTASS_ONGOING_DESC_1 = """[name1] continue {^passionately :eagerly :}spit-roasting [name2].""", # MISSING TRANSLATION
+	SEXACTION_INSERTINTURNS_ONGOING_1 = """[name1] [fuck1] [name2] [pussy2] periodically taking turns and switching.""", # MISSING TRANSLATION
+	SEXACTION_INSERTINTURNS_ONGOING_DESC_1 = """[name1] continue {^passionately :eagerly :} [fucking1] [name2] in turns.""", # MISSING TRANSLATION
+	SEXACTION_INSERTINTURNSASS_ONGOING_1 = """[name1] [fuck1] [names2] [anus2] periodically taking turns and switching.""", # MISSING TRANSLATION
+	SEXACTION_INSERTINTURNSASS_ONGOING_DESC_1 = """[name1] continue {^passionately :eagerly :} [fucking1] [names2] [anus2] in turns.""", # MISSING TRANSLATION
+	SEXACTION_WEARSTRAPON_ONGOING_1 = """[name1] [is1] wearing a strap-on.""", # MISSING TRANSLATION
+	SEXACTION_DEEPTHROAT_ONGOING_1 = """[name1] fuck[s/1] [names2] throat[/s1].""", # MISSING TRANSLATION
+	SEXACTION_DEEPTHROAT_ONGOING_DESC_1 = """[name1] {^roughly :forcefully :}{^push:slam}[s/1] [his1] [penis1] into [names2] {^throat:mouth pussy}.""", # MISSING TRANSLATION
+	SEXACTION_DEEPTHROAT_ONGOING_DESC_2 = """[name1] {^work:nurse:serve}[s/1] {^the length of :the shaft[/s2] of :the tip[/s2] of :}[names2] [penis2] with [his1] mouth[/s1].""", # MISSING TRANSLATION
+	SEXACTION_FISTING_ONGOING_1 = """[name1] fist[s/1] [names2] puss[y/ies2].""", # MISSING TRANSLATION
+	SEXACTION_FISTING_ONGOING_DESC_1 = """[name1] thrust[s/1] [his1] fist in and out of [names2] [pussy2].""", # MISSING TRANSLATION
+	SEXACTION_ANALFISTING_ONGOING_1 = """[name1] fist[s/1] [names2] ass[es/2].""", # MISSING TRANSLATION
+	SEXACTION_ANALFISTING_ONGOING_DESC_1 = """[name1] thrust[s/1] [his1] hand in and out of [names2] [anus2].""", # MISSING TRANSLATION
+	SEXACTION_NIPPLECLAMP_ONGOING_1 = """[name1] put clip[s/1] on [names2] nipples.""", # MISSING TRANSLATION
+	SEXACTION_CLITCLAMP_ONGOING_1 = """[name1] put clip[s/1] on [names2] clit[/s1].""", # MISSING TRANSLATION
+	SEXACTION_RINGGAG_ONGOING_1 = """[name1] put ring gag[s/1] in [names2] mouth.""", # MISSING TRANSLATION
+	SEXACTION_BLINDFOLD_ONGOING_1 = """[name1] put blindfold[s/1] on [names2] eyes.""", # MISSING TRANSLATION
+	SEXACTION_NOSEHOOK_ONGOING_1 = """[name1] put hose hook[s/1] on [names2] face.""", # MISSING TRANSLATION
+	SEXACTION_VIBRATOR_ONGOING_1 = """[name1] put [a /2]vibrator[/s2] in [names2] vagina[/s2].""", # MISSING TRANSLATION
+	SEXACTION_ANALVIBRATO_ONGOING_1 = """[name1] put [a /2]vibrator[/s2] in [names2] anus[/s2].""", # MISSING TRANSLATION
+	SEXACTION_ROPE_ONGOING_1 = """[name1] bind[s/1] [names2] bod[y/ies2] with [a /2]rope[/s2].""", # MISSING TRANSLATION
+	SEXACTION_MILKER_ONGOING_1 = """[name1] put [a /2]milker[/s2] on [names2] nipples.""", # MISSING TRANSLATION
+	SEXACTION_SUBDUE_ONGOING_1 = """[name1] [is1] holding down [name2].""", # MISSING TRANSLATION
+	SEXACTION_MASTUBATION_ONGOING_1 = """[name2] masturbate[s/2] as [name1] ordered.""", # MISSING TRANSLATION
+	SEXACTION_GROVELING_ONGOING_1 = """[name2] grovel[s/2] as [name1] ordered.""", # MISSING TRANSLATION
+	SEXACTION_FACESITTING_ONGOING_1 = """[name1] sit[s/1] on [names2] face[/s2].""", # MISSING TRANSLATION
+	SEXACTION_ANALFACESITTING_ONGOING_1 = """[name1] sit[s/1] [his1] anus[/es1] on [names2] face.""", # MISSING TRANSLATION
+	SEXACTION_MASSAGEWITHFOOT_ONGOING_1 = """[name1] step[s/1] on [name2] giving a humiliating massage.""", # MISSING TRANSLATION
+	SEXACTION_LICKFEET_ONGOING_1 = """[name2] lick[s/2] [names1] feet as ordered.""", # MISSING TRANSLATION
+	SEXACTION_ENEMAPLUG_ONGOING_1 = """[name1] injects enema liquid into [names2] anus then plug it.""", # MISSING TRANSLATION
+	SEXACTION_ANAL_FACE_SITTING = """Anal face sitting""", # MISSING TRANSLATION
+	SEXACTION_ANAL_FISTING = """Anal Fisting""", # MISSING TRANSLATION
+	SEXACTION_ANAL_VIBRATOR = """Anal vibrator""", # MISSING TRANSLATION
+	SEXACTION_ASS_FINGERING = """Ass Fingering""", # MISSING TRANSLATION
+	SEXACTION_BLINDFOLD = """Blindfold""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB = """Blowjob""", # MISSING TRANSLATION
+	SEXACTION_CARESS = """Caress""", # MISSING TRANSLATION
+	SEXACTION_CLIT_CLAMP = """Clit Clamp""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS = """Cunnilingus""", # MISSING TRANSLATION
+	SEXACTION_DEEPTHROAT = """Deepthroat""", # MISSING TRANSLATION
+	SEXACTION_DOGGY_ANAL = """Doggy Anal""", # MISSING TRANSLATION
+	SEXACTION_DOGGY_PEGGING = """Doggy Pegging""", # MISSING TRANSLATION
+	SEXACTION_DOGGY_STYLE = """Doggy Style""", # MISSING TRANSLATION
+	SEXACTION_DOUBLE_ANAL_DILDO = """Double Anal Dildo""", # MISSING TRANSLATION
+	SEXACTION_DOUBLE_DILDO = """Double Dildo""", # MISSING TRANSLATION
+	SEXACTION_DOUBLE_KISS = """Double Kiss""", # MISSING TRANSLATION
+	SEXACTION_DOUBLE_PENETRATE = """Double Penetrate""", # MISSING TRANSLATION
+	SEXACTION_EARJOB = """Earjob""", # MISSING TRANSLATION
+	SEXACTION_ENEMA_PLUG = """Enema + Plug""", # MISSING TRANSLATION
+	SEXACTION_FACE_SITTING = """Face sitting""", # MISSING TRANSLATION
+	SEXACTION_FINGERING = """Fingering""", # MISSING TRANSLATION
+	SEXACTION_FISTING = """Fisting""", # MISSING TRANSLATION
+	SEXACTION_FONDLE_CHEST = """Fondle Chest""", # MISSING TRANSLATION
+	SEXACTION_FOOTJOB = """Footjob""", # MISSING TRANSLATION
+	SEXACTION_FROTTAGE = """Frottage""", # MISSING TRANSLATION
+	SEXACTION_FUCK_ASS_IN_TURNS = """Fuck ass in turns""", # MISSING TRANSLATION
+	SEXACTION_FUCK_IN_TURNS = """Fuck in turns""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB = """Handjob""", # MISSING TRANSLATION
+	SEXACTION_INSERT_TAIL_ASS = """Insert Tail Ass""", # MISSING TRANSLATION
+	SEXACTION_INSERT_TAIL_PUSSY = """Insert Tail Pussy""", # MISSING TRANSLATION
+	SEXACTION_KISS = """Kiss""", # MISSING TRANSLATION
+	SEXACTION_LAP_SITTING = """Lap Sitting""", # MISSING TRANSLATION
+	SEXACTION_LAP_SITTING_ANAL = """Lap Sitting Anal""", # MISSING TRANSLATION
+	SEXACTION_LOTUS = """Lotus""", # MISSING TRANSLATION
+	SEXACTION_LOTUS_ANAL = """Lotus Anal""", # MISSING TRANSLATION
+	SEXACTION_LOTUS_PEGGING = """Lotus Pegging""", # MISSING TRANSLATION
+	SEXACTION_MASSAGE_WITH_FOOT = """Massage with foot""", # MISSING TRANSLATION
+	SEXACTION_MILKER = """Milker""", # MISSING TRANSLATION
+	SEXACTION_MISSIONARY = """Missionary""", # MISSING TRANSLATION
+	SEXACTION_MISSIONARY_ANAL = """Missionary Anal""", # MISSING TRANSLATION
+	SEXACTION_NIPPLE_CLAMP = """Nipple Clamp""", # MISSING TRANSLATION
+	SEXACTION_NIPPLE_FUCK = """Nipple fuck""", # MISSING TRANSLATION
+	SEXACTION_NIPPLE_SUCKING = """Nipple Sucking""", # MISSING TRANSLATION
+	SEXACTION_NOSE_HOOK = """Nose Hook""", # MISSING TRANSLATION
+	SEXACTION_ON_TOP = """On Top""", # MISSING TRANSLATION
+	SEXACTION_ON_TOP_ANAL = """On Top Anal""", # MISSING TRANSLATION
+	SEXACTION_ORDER_GROVELLING = """Order Grovelling""", # MISSING TRANSLATION
+	SEXACTION_ORDER_LICK_FEET = """Order Lick feet""", # MISSING TRANSLATION
+	SEXACTION_ORDER_MASTURBATION = """Order Masturbation""", # MISSING TRANSLATION
+	SEXACTION_ORGASM_DENIAL = """Orgasm Denial""", # MISSING TRANSLATION
+	SEXACTION_RIMJOB = """Rimjob""", # MISSING TRANSLATION
+	SEXACTION_RING_GAG = """Ring Gag""", # MISSING TRANSLATION
+	SEXACTION_ROPE = """Rope""", # MISSING TRANSLATION
+	SEXACTION_SELECTIVELY_CUM = """Selectively Cum""", # MISSING TRANSLATION
+	SEXACTION_SMLT_BLOWJOB = """Smlt. Blowjob""", # MISSING TRANSLATION
+	SEXACTION_SMLT_HANDJOB = """Smlt. Handjob""", # MISSING TRANSLATION
+	SEXACTION_SMLT_TITJOB = """Smlt. Titjob""", # MISSING TRANSLATION
+	SEXACTION_SPANKING = """Spanking""", # MISSING TRANSLATION
+	SEXACTION_SPIT_ROAST = """Spit-roast""", # MISSING TRANSLATION
+	SEXACTION_SPIT_ROAST_ANAL = """Spit-roast Anal""", # MISSING TRANSLATION
+	SEXACTION_SUBDUE = """Subdue""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB = """Tailjob""", # MISSING TRANSLATION
+	SEXACTION_TITJOB = """Titjob""", # MISSING TRANSLATION
+	SEXACTION_TRIBADISM = """Tribadism""", # MISSING TRANSLATION
+	SEXACTION_VIBRATOR = """Vibrator""", # MISSING TRANSLATION
+	SEXACTION_WAIT = """Wait""", # MISSING TRANSLATION
+	SEXACTION_WEAR_STRAP_ON = """Wear Strap-on""", # MISSING TRANSLATION
+	SEXACTION_WHIPPING = """Whipping""", # MISSING TRANSLATION
 	LOG_ADD_PART = "añadir parte de %s a %s",
 	LOG_SET = "%s es %s",
 	DIALOGUECHARINSPECT = "Inspeccionar",
@@ -4266,6 +5521,9 @@ Como el [boy] se convierte en tu esclavo, [he] puede ser una adición muy útil 
 {color=aqua|Educación del heredero} (sólo para herederos potenciales)— {color=yellow|5.000 oro}, Proporciona un aumento en todas las estadísticas y afinidades, una gran cantidad de EXP y 1 rasgo positivo aleatorio.""",
 	DIALOGUETUTNOTHING = "Sin entrenamiento (gratis)",
 	DIALOGUETUTSLAVE = "Entrenamiento de esclavos (500 oro)",
+	DIALOGUETUTSLAVE1 = """Slave Training: Workforce (500 Gold)""", # MISSING TRANSLATION
+	DIALOGUETUTSLAVE2 = """Slave Training: Warrior (500 Gold)""", # MISSING TRANSLATION
+	DIALOGUETUTSLAVE3 = """Slave Training: Service (500 Gold)""", # MISSING TRANSLATION
 	DIALOGUETUTACADEMY = "Centro de enseñanza (1.500 oro)",
 	DIALOGUETUTHEIR = "Educación del heredero (5.000 oro)",
 	SPRINGTEXT = "Encuentras un pequeño claro con un manantial. Podría ser un buen momento para descansar.",
@@ -4438,9 +5696,12 @@ La mujer desaparece tan rápido como apareció ante ti, dejándote frente a la m
 	ENEMYSUMMON_SKELETON_ARCHER = "Arquero esqueleto",
 	ENEMYDEMONESS = "Demonio",
 	ENEMYGREG = "Greg",
+	ENEMYGREG_ACT4 = """Greg, the Renegade""", # MISSING TRANSLATION
 	ENEMYAIRE = "Aire",
 	ENEMYKURDAN = "Kurdan",
 	ENEMYLEON = "Leon",
+	ENEMYLILITH_BOSS_1 = """Ashmedai""", # MISSING TRANSLATION
+	ENEMYLILITH_BOSS_2 = """Ashmedai""", # MISSING TRANSLATION
 	ENEMYWHITE_STAG = "Ciervo blanco",
 	ENEMYWHITE_STAG_HUMAN = "Persona misteriosa",
 	ENEMYELF_SPECTER = "Espectro elfo",
@@ -4449,6 +5710,14 @@ La mujer desaparece tan rápido como apareció ante ti, dejándote frente a la m
 	ENEMYDWARF_FIGHTER_ELITE = "Soldado enano de élite",
 	ENEMYDWARF_RANGED = "Ballestero enano",
 	ENEMYKURO = "Kuro",
+	ENEMYERDYNA = """Erdyna""", # MISSING TRANSLATION
+	ENEMYNIXX = """Nixx""", # MISSING TRANSLATION
+	ENEMYMUTANT = """Mutant""", # MISSING TRANSLATION
+	ENEMYMUTANT2 = """Deformed""", # MISSING TRANSLATION
+	ENEMYSYLAS = """Sylas""", # MISSING TRANSLATION
+	ENEMYSYLAS_WEAK = """Weakened Sylas""", # MISSING TRANSLATION
+	ENEMYJEAN_EVIL = """Jean""", # MISSING TRANSLATION
+	ENEMYJEAN_DEMON = """Demon""", # MISSING TRANSLATION
 	FOODFILTERHIGH = "Alto",
 	FOODFILTERMED = "Medio",
 	FOODFILTERLOW = "Bajo",
@@ -4540,6 +5809,7 @@ El menú 'Viajes' te permite seleccionar otras ubicaciones y hacer que tus perso
 	TUTORIAL_LOCATIONS_RESOURCES = "Otras ubicaciones permiten recolectar los recursos que se presentan en ellas. Las ubicaciones de tipo asentamiento permiten recolectar recursos infinitamente, pero tienen un límite en la cantidad de personajes que pueden recolectarlos a la vez. Las ubicaciones de combate permiten recolectar una cantidad limitada de recursos después de completarlas.",
 	TUTORIAL_TATTOO_1 = "Una vez que hayas desbloqueado el Salón de Belleza, podrás aplicar tatuajes a tus personajes. Los tatuajes otorgan bonificaciones permanentes y requieren tinta creada en la pestaña de Alquimia. Para acceder al menú de Tatuajes, usa el botón correspondiente en la pantalla de inventario.",
 	TUTORIAL_TATTOO_2 = "Cada tipo de tatuaje tiene ciertas bonificaciones, requiere tinta especial y se aplica solo a ciertas partes del cuerpo. Algunos también pueden tener requisitos adicionales. Los tatuajes se pueden eliminar o reemplazar, pero la tinta no se reembolsa.",
+	TUTORIAL_BREAKDOWN_1 = """Breakdown tutorial placeholder""", # MISSING TRANSLATION
 	TRAVELINGTUTORIAL1 = "Este es el mapa del mundo. A la izquierda puedes seleccionar las ubicaciones a las que viajar. A la derecha se mostrará la información de la ubicación seleccionada. Haz clic en Enviar para enviar a tus personajes a otra ubicación.",
 	TRAVELINGTUTORIAL2 = "Tras seleccionar Enviar, selecciona la ubicación donde viajarán los personajes. En la fila inferior puedes seleccionar quién viajará exactamente. El viaje tardará un tiempo para que los personajes lleguen a la nueva ubicación.",
 	JOBTUTORIAL1 = "En Ocupaciones, puedes asignar personajes a diversas tareas, que se ven cerca de la imagen de la ubicación. En la parte superior, puedes seleccionar otras ubicaciones donde tengas personajes.",
@@ -4641,6 +5911,184 @@ Aumenta la productividad en un 25%. El personaje no ganará experiencia ni estad
 	SETTINGTURN_BASED_TIME_FLOW_NAME = """Por turnos 
 Flujo del tiempo""",
 	SETTINGTURN_BASED_TIME_FLOW_DESCRIPT = "Hace que el tiempo fluya en turnos de una hora de duración.",
+	ACHIEVEMENT_ACQUIRED = """You acquired achievement""", # MISSING TRANSLATION
+	ACHIBONUS_ACQUIRED = """You unlocked bonus""", # MISSING TRANSLATION
+	ACHIEVEMENT_PROLOGUE_NAME = """Prologue""", # MISSING TRANSLATION
+	ACHIEVEMENT_PROLOGUE_DESC = """Prologue is finished""", # MISSING TRANSLATION
+	ACHIEVEMENT_PROLOGUE_HINT = """Finish prologue""", # MISSING TRANSLATION
+	ACHIEVEMENT_ACT1_NAME = """Act 1""", # MISSING TRANSLATION
+	ACHIEVEMENT_ACT1_DESC = """Act 1 is finished""", # MISSING TRANSLATION
+	ACHIEVEMENT_ACT1_HINT = """Finish 1 act""", # MISSING TRANSLATION
+	ACHIEVEMENT_ACT2_NAME = """Act 2""", # MISSING TRANSLATION
+	ACHIEVEMENT_ACT2_DESC = """Act 2 is finished""", # MISSING TRANSLATION
+	ACHIEVEMENT_ACT2_HINT = """Finish 2 act""", # MISSING TRANSLATION
+	ACHIEVEMENT_ACT3_NAME = """Act 3""", # MISSING TRANSLATION
+	ACHIEVEMENT_ACT3_DESC = """Act 3 is finished""", # MISSING TRANSLATION
+	ACHIEVEMENT_ACT3_HINT = """Finish 3 act""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_DAISY_NAME = """Daisy""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_DAISY_DESC = """Daisy married""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_DAISY_HINT = """Marry Daisy""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_HELEVIEL_NAME = """Heleviel""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_HELEVIEL_DESC = """Heleviel married""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_HELEVIEL_HINT = """Marry Heleviel""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_AMELIA_NAME = """Amelia""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_AMELIA_DESC = """Amelia married""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_AMELIA_HINT = """Marry Amelia""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_CALI_NAME = """Cali""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_CALI_DESC = """Cali married""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_CALI_HINT = """Marry Cali""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_LILIA_NAME = """Lilia""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_LILIA_DESC = """Lilia married""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_LILIA_HINT = """Marry Lilia""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_LILITH_NAME = """Lilith""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_LILITH_DESC = """Lilith married""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_LILITH_HINT = """Marry Lilith""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_KURO_NAME = """Kuro""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_KURO_DESC = """Kuro married""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_KURO_HINT = """Marry Kuro""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_ANA_NAME = """Anastasia""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_ANA_DESC = """Anastasia married""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_ANA_HINT = """Marry Anastasia""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_ZEPHYRA_NAME = """Zephyra""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_ZEPHYRA_DESC = """Zephyra married""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_ZEPHYRA_HINT = """Marry Zephyra""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_MAE_NAME = """Mae""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_MAE_DESC = """Mae married""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_MAE_HINT = """Marry Mae""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_JEAN_NAME = """Jean""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_JEAN_DESC = """Jean married""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_JEAN_HINT = """Marry Jean""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_HARA_NAME = """Hara""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_HARA_DESC = """Hara married""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_HARA_HINT = """Marry Hara""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_LIRA_NAME = """Lira""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_LIRA_DESC = """Lira married""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_LIRA_HINT = """Marry Lira""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_ROUGE_NAME = """Rouge""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_ROUGE_DESC = """Rouge married""", # MISSING TRANSLATION
+	ACHIEVEMENT_WED_ROUGE_HINT = """Marry Rouge""", # MISSING TRANSLATION
+	ACHIEVEMENT_MAX_TAILOR_NAME = """Master tailor""", # MISSING TRANSLATION
+	ACHIEVEMENT_MAX_TAILOR_DESC = """Tailor Workshop upgraded to level 3""", # MISSING TRANSLATION
+	ACHIEVEMENT_MAX_TAILOR_HINT = """Upgrade Tailor Workshop to level 3""", # MISSING TRANSLATION
+	ACHIEVEMENT_MAX_FORGE_NAME = """Master smith""", # MISSING TRANSLATION
+	ACHIEVEMENT_MAX_FORGE_DESC = """Forge upgraded to level 3""", # MISSING TRANSLATION
+	ACHIEVEMENT_MAX_FORGE_HINT = """Upgrade Forge to level 3""", # MISSING TRANSLATION
+	ACHIEVEMENT_MAX_ALCHEMY_NAME = """Master alchemist""", # MISSING TRANSLATION
+	ACHIEVEMENT_MAX_ALCHEMY_DESC = """Alchemy Room upgraded to level 3""", # MISSING TRANSLATION
+	ACHIEVEMENT_MAX_ALCHEMY_HINT = """Upgrade Alchemy Room to level 3""", # MISSING TRANSLATION
+	ACHIEVEMENT_UPGRADES_NAME = """Master craftsman""", # MISSING TRANSLATION
+	ACHIEVEMENT_UPGRADES_DESC = """All three workshop upgrades made""", # MISSING TRANSLATION
+	ACHIEVEMENT_UPGRADES_HINT = """Upgrade three workshops to level 3""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_BANDEN_NAME = """Bandit Den""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_BANDEN_DESC = """Bandit Den cleared""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_BANDEN_HINT = """Complete Bandit Den dungeon""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_BANFORT_NAME = """Bandit Fort""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_BANFORT_DESC = """Bandit Fort cleared""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_BANFORT_HINT = """Complete Bandit Fort dungeon""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_REBEL_NAME = """Rebel Redoubt""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_REBEL_DESC = """Rebel Redoubt cleared""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_REBEL_HINT = """Complete Rebel Redoubt dungeon""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_CRYPT_NAME = """Crypt""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_CRYPT_DESC = """Crypt cleared""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_CRYPT_HINT = """Complete Crypt dungeon""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_GOBCAV_NAME = """Goblin Cave""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_GOBCAV_DESC = """Goblin Cave cleared""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_GOBCAV_HINT = """Complete Goblin Cave dungeon""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_GROVE_NAME = """Grove""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_GROVE_DESC = """Grove cleared""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_GROVE_HINT = """Complete Grove dungeon""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_SPIDER_NAME = """Spider Lair""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_SPIDER_DESC = """Spider Lair cleared""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_SPIDER_HINT = """Complete Spider Lair dungeon""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_JUNGLES_NAME = """Ancient Jungles""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_JUNGLES_DESC = """Ancient Jungles cleared""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_JUNGLES_HINT = """Complete Ancient Jungles dungeon""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_DEPTHS_NAME = """Fire Depths""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_DEPTHS_DESC = """Fire Depths cleared""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_DEPTHS_HINT = """Complete Fire Depths dungeon""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_GOBHOLD_NAME = """Goblin Stronghold""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_GOBHOLD_DESC = """Goblin Stronghold cleared""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_GOBHOLD_HINT = """Complete Goblin Stronghold dungeon""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_INF_NAME = """Tower of Dreams %s""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_INF_DESC = """Advanced past level %s""", # MISSING TRANSLATION
+	ACHIEVEMENT_DUNG_INF_HINT = """Advance past %s level in Tower of Dreams""", # MISSING TRANSLATION
+	ACHIEVEMENT_ITEM_AIREBOW_NAME = """Aire's bow""", # MISSING TRANSLATION
+	ACHIEVEMENT_ITEM_AIREBOW_DESC = """Got Aire's bow""", # MISSING TRANSLATION
+	ACHIEVEMENT_ITEM_AIREBOW_HINT = """Get Aire's bow""", # MISSING TRANSLATION
+	ACHIEVEMENT_ITEM_ZBRUSH_NAME = """Zephyra's brush""", # MISSING TRANSLATION
+	ACHIEVEMENT_ITEM_ZBRUSH_DESC = """Got Zephyra's brush""", # MISSING TRANSLATION
+	ACHIEVEMENT_ITEM_ZBRUSH_HINT = """Get Zephyra's brush""", # MISSING TRANSLATION
+	ACHIEVEMENT_ITEM_HOLYSWORD_NAME = """Sword from the stone""", # MISSING TRANSLATION
+	ACHIEVEMENT_ITEM_HOLYSWORD_DESC = """Got Sword from the stone""", # MISSING TRANSLATION
+	ACHIEVEMENT_ITEM_HOLYSWORD_HINT = """Get Sword from the stone""", # MISSING TRANSLATION
+	ACHIEVEMENT_METEORITE_NAME = """Meteorite quest""", # MISSING TRANSLATION
+	ACHIEVEMENT_METEORITE_DESC = """Meteorite quest completed""", # MISSING TRANSLATION
+	ACHIEVEMENT_METEORITE_HINT = """Complete meteorite quest""", # MISSING TRANSLATION
+	ACHIEVEMENT_RESET_ASK = """Are you sure you want to reset ALL achievements progress?""", # MISSING TRANSLATION
+	ACHIGROUP_WEDDING_NAME = """Wedding""", # MISSING TRANSLATION
+	ACHIGROUP_WEDDING_DESC = """Marry each unique character""", # MISSING TRANSLATION
+	ACHIGROUP_DUNGEONS_NAME = """Dungeons""", # MISSING TRANSLATION
+	ACHIGROUP_DUNGEONS_DESC = """Complete generic dungeons""", # MISSING TRANSLATION
+	ACHIGROUP_INFINITE_NAME = """Tower of Dreams""", # MISSING TRANSLATION
+	ACHIGROUP_INFINITE_DESC = """Advance Tower of Dreams""", # MISSING TRANSLATION
+	ACHI_BTN_GROUP_MAIN = """Main""", # MISSING TRANSLATION
+	ACHIBONUS_DAISY_START = """Start with Daisy""", # MISSING TRANSLATION
+	ACHIBONUS_DAISY_START_DESC = """Start game with Daisy""", # MISSING TRANSLATION
+	ACHIBONUS_DAISY_START_HINT = """Get Daisy""", # MISSING TRANSLATION
+	ACHIBONUS_AIRE_START = """Start with Aire""", # MISSING TRANSLATION
+	ACHIBONUS_AIRE_START_DESC = """Start game with Aire""", # MISSING TRANSLATION
+	ACHIBONUS_AIRE_START_HINT = """Get Aire""", # MISSING TRANSLATION
+	ACHIBONUS_KURO_START = """Start with Kuro""", # MISSING TRANSLATION
+	ACHIBONUS_KURO_START_DESC = """Start game with Kuro""", # MISSING TRANSLATION
+	ACHIBONUS_KURO_START_HINT = """Get Kuro""", # MISSING TRANSLATION
+	ACHIBONUS_CALI_START = """Start with Cali""", # MISSING TRANSLATION
+	ACHIBONUS_CALI_START_DESC = """Start game with Cali""", # MISSING TRANSLATION
+	ACHIBONUS_CALI_START_HINT = """Get Cali""", # MISSING TRANSLATION
+	ACHIBONUS_ANA_START = """Start with Anastasia""", # MISSING TRANSLATION
+	ACHIBONUS_ANA_START_DESC = """Start game with Anastasia""", # MISSING TRANSLATION
+	ACHIBONUS_ANA_START_HINT = """Get Anastasia""", # MISSING TRANSLATION
+	ACHIBONUS_AMELIA_START = """Start with Amelia""", # MISSING TRANSLATION
+	ACHIBONUS_AMELIA_START_DESC = """Start game with Amelia""", # MISSING TRANSLATION
+	ACHIBONUS_AMELIA_START_HINT = """Get Amelia""", # MISSING TRANSLATION
+	ACHIBONUS_HELEVIEL_START = """Start with Heleviel""", # MISSING TRANSLATION
+	ACHIBONUS_HELEVIEL_START_DESC = """Start game with Heleviel""", # MISSING TRANSLATION
+	ACHIBONUS_HELEVIEL_START_HINT = """Get Heleviel""", # MISSING TRANSLATION
+	ACHIBONUS_LIRA_START = """Start with Lira""", # MISSING TRANSLATION
+	ACHIBONUS_LIRA_START_DESC = """Start game with Lira""", # MISSING TRANSLATION
+	ACHIBONUS_LIRA_START_HINT = """Get Lira""", # MISSING TRANSLATION
+	ACHIBONUS_ZEPHYRA_START = """Start with Zephyra""", # MISSING TRANSLATION
+	ACHIBONUS_ZEPHYRA_START_DESC = """Start game with Zephyra""", # MISSING TRANSLATION
+	ACHIBONUS_ZEPHYRA_START_HINT = """Get Zephyra""", # MISSING TRANSLATION
+	ACHIBONUS_MAE_START = """Start with Mae""", # MISSING TRANSLATION
+	ACHIBONUS_MAE_START_DESC = """Start game with Mae""", # MISSING TRANSLATION
+	ACHIBONUS_MAE_START_HINT = """Get Mae""", # MISSING TRANSLATION
+	ACHIBONUS_JEAN_START = """Start with Jean""", # MISSING TRANSLATION
+	ACHIBONUS_JEAN_START_DESC = """Start game with Jean""", # MISSING TRANSLATION
+	ACHIBONUS_JEAN_START_HINT = """Get Jean""", # MISSING TRANSLATION
+	ACHIBONUS_HARA_START = """Start with Hara""", # MISSING TRANSLATION
+	ACHIBONUS_HARA_START_DESC = """Start game with Hara""", # MISSING TRANSLATION
+	ACHIBONUS_HARA_START_HINT = """Get Hara""", # MISSING TRANSLATION
+	ACHIBONUS_LILIA_START = """Start with Lilia""", # MISSING TRANSLATION
+	ACHIBONUS_LILIA_START_DESC = """Start game with Lilia""", # MISSING TRANSLATION
+	ACHIBONUS_LILIA_START_HINT = """Get Lilia""", # MISSING TRANSLATION
+	ACHIBONUS_LILITH_START = """Start with Lilith""", # MISSING TRANSLATION
+	ACHIBONUS_LILITH_START_DESC = """Start game with Lilith""", # MISSING TRANSLATION
+	ACHIBONUS_LILITH_START_HINT = """Get Lilith""", # MISSING TRANSLATION
+	ACHIBONUS_ROUGE_START = """Start with Rouge""", # MISSING TRANSLATION
+	ACHIBONUS_ROUGE_START_DESC = """Start game with Rouge""", # MISSING TRANSLATION
+	ACHIBONUS_ROUGE_START_HINT = """Get Rouge""", # MISSING TRANSLATION
+	ACHIBONUS_EXPSCROLLS = """Scribe""", # MISSING TRANSLATION
+	ACHIBONUS_EXPSCROLLS_DESC = """Start with 10 experience scrolls""", # MISSING TRANSLATION
+	ACHIBONUS_TALENT = """Talented""", # MISSING TRANSLATION
+	ACHIBONUS_TALENT_DESC = """Start with +2 master talent points""", # MISSING TRANSLATION
+	ACHIBONUS_MASTER_FACTORS = """Gifted""", # MISSING TRANSLATION
+	ACHIBONUS_MASTER_FACTORS_DESC = """Start with +4 points for master factor upgrades""", # MISSING TRANSLATION
+	ACHIBONUS_CRAFTSMAN = """Craftsman""", # MISSING TRANSLATION
+	ACHIBONUS_CRAFTSMAN_DESC = """Start with forge, tailor and alchemy level 1 upgrades""", # MISSING TRANSLATION
+	ACHIBONUS_ROOMS = """Boarding house""", # MISSING TRANSLATION
+	ACHIBONUS_ROOMS_DESC = """Start with room level 1 upgrade""", # MISSING TRANSLATION
+	ACHIBONUS_LITERATE = """Literate""", # MISSING TRANSLATION
+	ACHIBONUS_LITERATE_DESC = """Start with Literacy trait""", # MISSING TRANSLATION
 	INTRODIALOGUE = """Han pasado doce años desde el derrocamiento de la monarquía en el Reino de Aliron. Liberada del reinado anterior, su capital, Aliron, se ha convertido en un centro de vida social y cultural, brindando incluso a los más desfavorecidos la oportunidad de convertirse en personas de poder e influencia, siempre que sean capaces...
 
 Eres una de las personas que logró llegar justo a tiempo para adquirir una propiedad recientemente liberada de su antiguo propietario. El único problema es que su precio de venta supera tus posibilidades. Sin otra opción para empezar una nueva vida, has solicitado un préstamo gigantesco para lograr tu objetivo. Te has convertido en propietario de un pequeño terreno con una mansión ruinosa.""",
@@ -4684,6 +6132,9 @@ Eres una de las personas que logró llegar justo a tiempo para adquirir una prop
 	STARTUPGRADEBONUS2 = "Taller de sastrería",
 	STARTUPGRADEBONUS3 = "Sala de alquimia",
 	STARTUPGRADEBONUS4 = "Esencia corruptora",
+	ALIRON_CORRUPTIVE_ESSENCE_EVENT = """While walking through Aliron's markets you stumble upon a discreet peddler offering a single vial of corruptive essence for a steep price. It's a rare chance to secure the forbidden mixture without relying on luck.""", # MISSING TRANSLATION
+	ALIRON_CORRUPTIVE_ESSENCE_PURCHASE = """Buy the corruptive essence (1 000 gold)""", # MISSING TRANSLATION
+	ALIRON_CORRUPTIVE_ESSENCE_DISMISS = """Shoo the merchant""", # MISSING TRANSLATION
 	FIGHTERSINTRODUCTION1 = """Un hombre grande, equipado con una armadura pesada, te mira con desinterés.
 
 — ¿Qué pasa? Si buscas trabajo, primero tendrás que registrarte como combatiente. No trato con reclutas.""",
@@ -5277,16 +6728,111 @@ Sin embargo, puedes actualizar el archivo.
 ¿Continuar? (El archivo de partida guardada original permanecerá intacto, pero no funcionará con la versión actual)""",
 	CREATECHARQUESTION = "¿Confirmar la creación de este personaje?",
 	CREATECHARACTERFEMALE = "Advertencia: Has seleccionado un personaje femenino. La mayoría de los eventos programados en el juego se desarrollan desde la perspectiva masculina, pero se mostrarán de todos modos. ¿Confirmas?",
+	UPDATECHARBROKENUPGRAES = """Some current body upgrades are incompatible with this character and will be removed. Confirm?""", # MISSING TRANSLATION
+	CHARCREATE_INTRO_MASTER = """Create your Master Character""", # MISSING TRANSLATION
+	CHARCREATE_INTRO_SLAVE = """Create your Starting Slave""", # MISSING TRANSLATION
 	RETURNTOMAINMENUQUESTION = "¿Regresar al menú principal?",
 	FORGETLOCATIONQUESTION = "¿Quieres que esta ubicación se elimine? Todos los personajes presentes serán enviados de regreso a la Mansión. Esta acción no se puede deshacer.",
 	SENDCHARBACKQUESTION = "¿Enviar [name] de vuelta?",
+	SENDCHARBACKTPQUESTION = """Cast teleport?""", # MISSING TRANSLATION
 	SENDCHARBACKTOMANSIONQUESTION = "¿Enviar a [name] de vuelta a la Mansión?",
 	RETURNALLCHARSTOMANSIONQUESTION = "¿Regresar a todos los personajes a la Mansión?",
 	CANCELTASKQUESTION = "¿Cancelar esta tarea?",
 	FORFEITQUESTQUESTION = "¿Renunciar a esta misión?",
 	REMOVEUPGRADEFROMQUEUEQUESTION = "¿Eliminar esta actualización de la cola?",
 	STARTTHISGAME = "¿Empezar este juego?",
+	STARTTUTORIAL = """Start new tutorial?""", # MISSING TRANSLATION
+	ABORTTUTORIALQ = """Abort tutorial?""", # MISSING TRANSLATION
+	CHOOSETUTORIAL = """Choose tutorial""", # MISSING TRANSLATION
 	UPDATEFILE = "¿Actualizar este archivo?",
+	TUTORIALNAME1 = """1. Training""", # MISSING TRANSLATION
+	TUTORIALNAME2 = """2. Work""", # MISSING TRANSLATION
+	TUTORIALNAME3 = """3. Leveling""", # MISSING TRANSLATION
+	TUTORIALNAME4 = """4. Quests and combat""", # MISSING TRANSLATION
+	ABORTTUTORIAL = """Abort tutorial""", # MISSING TRANSLATION
+	PROMPTTUTORIAL = """For first-time players, it is recommended to play through the tutorial section to learn the basic controls and mechanics.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING1 = """This tutorial will explain the basic mechanics of managing your mansion and characters. Your {color=yellow|Master} character represents you and is responsible for managing other characters.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING2 = """Let's start by using the Master's default skill, Mentor, on one of your subordinates. It will increase the amount of experience they gain for one day.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING3 = """Select a character from the list to finish casting the skill.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING4 = """The skill you used will go on cooldown, and you will receive a short report, as with many similar actions.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING5 = """Another important feature is the character settings at the top of the character list. You can customize various behaviors and tasks here, but for now we will set up some basic food rules.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING6 = """By default, characters will have their food rules set to their preferences, but you can customize them further. Clicking on a food option will cycle its priority for that character.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING8 = """Now that this is done, let's switch back to the default menu.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING9 = """Select Daisy to access her details and information.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING10 = """You can open a character window with a double-click, or by using the Character Info button.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING11 = """Daisy is classified as an untrained slave and requires a trainer to oversee and conduct her training. Untrained slaves will not work without a trainer.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING12 = """Assign your Master as her trainer by selecting them.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING13 = """To issue training, select the Praise action.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING14 = """Different slaves have different preferences for training actions, which affects their effectiveness. Try to keep their spirit high by the end of the training.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING15 = """Daisy has accumulated enough Loyalty points to unlock Obedience training. This basic training is required for some tasks and quests that involve giving characters away.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING16 = """Confirm the unlock.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING17 = """On the second tab, you can find special proficiencies that provide additional enhancements to a character.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING18 = """These proficiencies take time and money to complete, but they do not make the character unavailable for other work.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING19 = """Confirm the unlock.""", # MISSING TRANSLATION
+	TUTORIAL_WORK0 = """You can leave this menu by closing it using the button in the top-right corner. Many windows can also be closed with a right-click.""", # MISSING TRANSLATION
+	TUTORIAL_WORK1 = """Select the Mansion button to access your building upgrades.""", # MISSING TRANSLATION
+	TUTORIAL_WORK2 = """This menu contains various improvements for your mansion. Each upgrade requires resources and work time to complete.""", # MISSING TRANSLATION
+	TUTORIAL_WORK3 = """Confirming an upgrade will consume the required resources and place it in the queue.""", # MISSING TRANSLATION
+	TUTORIAL_WORK4 = """Now, return to the main menu to assign a character to work on the upgrade.""", # MISSING TRANSLATION
+	TUTORIAL_WORK5 = """Select the Work menu.""", # MISSING TRANSLATION
+	TUTORIAL_WORK6 = """Different tasks become available at different stages and locations, with more unlocked through quests and upgrades. For now, select Upgrading.""", # MISSING TRANSLATION
+	TUTORIAL_WORK7 = """Assign Daisy to the upgrading task by selecting her. She will work on the upgrade while assigned to this task and location.""", # MISSING TRANSLATION
+	TUTORIAL_WORK8 = """You can now leave this menu.""", # MISSING TRANSLATION
+	TUTORIAL_WORK9 = """Click Finish Turn to advance time so your characters can progress their work and proficiency learning.""", # MISSING TRANSLATION
+	TUTORIAL_WORK10 = """Now let's take a look at the Service task. It differs from other tasks in the Work menu and has additional rules applied to the character.""", # MISSING TRANSLATION
+	TUTORIAL_WORK11 = """Service allows you to assign a character to various types of service work, including sexual services. Non-sexual tasks have different stat correlations and bonuses, so be sure to read the details. Assign Daisy to work as a waitress.""", # MISSING TRANSLATION
+	TUTORIAL_WORK12 = """Return to the Work menu.""", # MISSING TRANSLATION
+	TUTORIAL_WORK13 = """Even though you selected her as a waitress, you must first reassign her from crafting to service work.""", # MISSING TRANSLATION
+	TUTORIAL_WORK14 = """Here you can review additional rules and benefits of service work. While working, characters generate experience and a stat related to their task each turn.""", # MISSING TRANSLATION
+	TUTORIAL_LEVELING0 = """Speaking of experience, let's look at another way to gain it.""", # MISSING TRANSLATION
+	TUTORIAL_LEVELING1 = """Select Inventory to view your possessions.""", # MISSING TRANSLATION
+	TUTORIAL_LEVELING2 = """Select your Master as the active character to manage.""", # MISSING TRANSLATION
+	TUTORIAL_LEVELING3 = """Use a Scroll of Knowledge to grant your Master some experience. This is an easy way to quickly increase a new character's power.""", # MISSING TRANSLATION
+	TUTORIAL_LEVELING4 = """Close the panel.""", # MISSING TRANSLATION
+	TUTORIAL_LEVELING5 = """Close the inventory.""", # MISSING TRANSLATION
+	TUTORIAL_LEVELING6 = """Open the Master's character information window.""", # MISSING TRANSLATION
+	TUTORIAL_LEVELING7 = """Now that you have enough experience, open the Leveling tab.""", # MISSING TRANSLATION
+	TUTORIAL_LEVELING8 = """Experience is used to unlock classes, each granting bonuses, passives, and skills. Unlock the Fighter class.""", # MISSING TRANSLATION
+	TUTORIAL_LEVELING9 = """There is no limit to how many classes a character can have, but each additional class requires more experience. It is generally better to specialize early and add secondary classes later.""", # MISSING TRANSLATION
+	TUTORIAL_LEVELING10 = """There is one more thing to do in the Leveling tab.""", # MISSING TRANSLATION
+	TUTORIAL_LEVELING11 = """Unlocking the Fighter class grants mastery points. Use them to unlock combat or magic masteries that provide combat skills. Unlock the Leadership mastery.""", # MISSING TRANSLATION
+	TUTORIAL_LEVELING12 = """There are two types of mastery points. Universal points can be used for either combat or magic masteries, while specialized points are restricted to one type.""", # MISSING TRANSLATION
+	TUTORIAL_LEVELING13 = """Masteries also provide minor passive stat bonuses, so keep those in mind.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT0 = """Now let's leave the mansion.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT1 = """You can find the navigation panel at the top. For now, only the local city of Aliron is available.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT2 = """Select the notice board to view available repeatable quests.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT3 = """Accept the Trouble Solving quest.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT4 = """All quests provide item rewards and guild reputation. Reputation can be used to purchase special guild services. Trouble Solving requires traveling to a procedurally generated location.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT5 = """Open the map menu to learn how to send characters to a new location.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT6 = """Select two characters who will travel to complete the task.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT8 = """In the location list, find the special quest location you need to visit.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT9 = """Click Send to begin traveling.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT10 = """Once characters are on the route, you must advance time for them to arrive.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT11 = """Finish the turn to advance time.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT12 = """The new location will appear in the navigation bar. Select it to enter.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT13 = """To assign characters to the combat party, drag their portraits into the empty slots at the bottom.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT14 = """The right column is for melee characters, while the left is for ranged. Melee characters protect ranged ones from melee damage. If a melee character is placed in the back column, their melee skills will deal only half damage.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT15 = """Click Proceed to start the battle.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT16 = """This quest can be initiated from a dialogue window.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT17 = """Battles started from dialogue allow you to set up and confirm your party again.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT19 = """During combat, use special abilities by selecting them on the skill bar.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT20 = """Most abilities require a target and must be confirmed before use.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT22 = """Support abilities work similarly but target allies instead. Apply Earth Shield to your Master.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT24 = """Finish the combat.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT26 = """The loot window displays the results of the fight.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT27 = """You received a random character after the fight, which is common in dungeon encounters. Select them to inspect.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT28 = """Undesirable characters can be sold immediately, recruited, or enslaved.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT29 = """Attempt to persuade them by selecting the appropriate option.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT30 = """Persuasion attempts favor characters with high Charm.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT31 = """Only characters at the same location can be used for recruitment.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT32 = """Attempt recruitment by comparing the recruiter's stats to the target's.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT33 = """If recruitment fails, the character will be enslaved instead.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT34 = """Return to the mansion.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT35 = """Many quests must be turned in manually through the journal.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT36 = """Select the Minor Quests tab.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT37 = """Select the quest you accepted.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT38 = """Click Complete to receive your rewards.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT39 = """You have now completed a crash course in the game's basic controls. Many additional details and nuances exist, so be sure to read tooltips if you want to learn more.""", # MISSING TRANSLATION
 	QUESTLOG_AFTERELECTIONOPTION1 = "Visita Myr para saber cómo puedes ayudar.",
 	QUESTLOG_AFTERELECTIONOPTION2 = "Visita el dormitorio de Fred en Aliron para conocer su paradero.",
 	QUESTLOG_AFTERELECTIONOPTION3 = "Encuentra el punto de encuentro de Fred fuera de Aliron.",
@@ -5628,6 +7174,7 @@ Esta no es una información muy conocida, pero parece que los rebeldes sabían d
 	ARMORENC = "Incrustaciones",
 	WEAPONENC = "Incrustaciones",
 	WEAPONELEMENTBASE = "Element",
+	WEAPONELEMENENCHANT = """Damage Element: """, # MISSING TRANSLATION
 	 ITEMLATEX_SUIT = "Traje de látex",
 	ITEMLATEX_SUITDESCRIPT = "Una prenda ajustada que acentúa las curvas del cuerpo.",
 	ITEMSERVICE_SUIT = "Disfraz de conejito",
@@ -5674,6 +7221,7 @@ Esta no es una información muy conocida, pero parece que los rebeldes sabían d
 	MATERIALDARK_ESSENCE = "Esencia oscura",
 	MATERIALDARK_ESSENCEDESCRIPT = "Comúnmente obtenido de los demonios.",
 	QUESTREQSCOMPLETE = "Subtarea de misión completada",
+	RESOURCEGATHERED = """Your Earth Magic extracts the resources from this area and moves them to you.""", # MISSING TRANSLATION
 	ENEMYTYPEBANDITS = "Bandidos",
 	ENEMYTYPEWOLVES = "Lobos",
 	ENEMYTYPEUNDEAD = "No muertos",
@@ -5698,8 +7246,30 @@ Esta no es una información muy conocida, pero parece que los rebeldes sabían d
 	STATDAMAGE_MOD_MIND = "Daño de mente",
 	STATDAMAGE_MOD_MELEE = "Daño cuerpo a cuerpo",
 	STATDAMAGE_MOD_RANGED = "Daño a distancia",
+	STATDAMAGE_MOD_ALL = """All Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_AOE = """Area Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_NORMAL = """Normal Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_PHYSIC = """Physic Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_SPELL = """Spell Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_TRUE = """True Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_FIREDESCRIPT = """Modifies Fire Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_WATERDESCRIPT = """Modifies Water Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_AIRDESCRIPT = """Modifies Air Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_EARTHDESCRIPT = """Modifies Earth Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_LIGHTDESCRIPT = """Modifies Light Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_DARKDESCRIPT = """Modifies Dark Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_MINDDESCRIPT = """Modifies Mind Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_MELEEDESCRIPT = """Modifies Melee Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_RANGEDDESCRIPT = """Modifies Ranged Skill Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_ALLDESCRIPT = """Modifies All Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_AOEDESCRIPT = """Modifies Area Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_NORMALDESCRIPT = """Modifies Normal Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_PHYSICDESCRIPT = """Modifies Physic Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_SPELLDESCRIPT = """Modifies Spell Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_TRUEDESCRIPT = """Modifies True Damage""", # MISSING TRANSLATION
 	ENEMYMANEATER_PLANT = "Planta comehombres",
 	ENEMYCENTIPEDE = "Ciempiés",
+	ENEMYCENTIPEDE_QUEST = """Centipede""", # MISSING TRANSLATION
 	ENEMYOGRE_ALPHA = "Ogro Alfa",
 	ENEMYROCK_THROWER = "lanzapiedras",
 	ENEMYGIANT_ANT = "Hormiga gigante",
@@ -5743,6 +7313,13 @@ Esta no es una información muy conocida, pero parece que los rebeldes sabían d
 	ARENA_TIMER = "Próximo rival en",
 	ARENA_FEE = "Debes tener 1000 de oro para ingresar a la arena.",
 	ARENA_TOOLTIP = "Esta es la arena.",
+	TRAVEL_HAS_GROUP = """Group with such name already exists!""", # MISSING TRANSLATION
+	TRAVEL_ADD_GROUP = """New group""", # MISSING TRANSLATION
+	TRAVEL_ALL_SELECTED = """all selected""", # MISSING TRANSLATION
+	TRAVEL_MOVE_TO = """Move to %s""", # MISSING TRANSLATION
+	TRAVEL_RENAME = """Rename""", # MISSING TRANSLATION
+	TRAVEL_MOVE_UP = """Move up""", # MISSING TRANSLATION
+	TRAVEL_MOVE_DOWN = """Move down""", # MISSING TRANSLATION
 	SKILLPOISON_BITE = "Mordedura de veneno",
 	SKILLPOISON_BITE_S = "Mordedura de veneno",
 	SKILLENTANGLE_SA = "Enredar",
@@ -6258,6 +7835,21 @@ La niña en miniatura reaccionó a tu aparición con una indiferencia inesperada
 — Zephyra.
 
 Zephyra se inclinó brevemente ante ti después de decir su nombre.""",
+	DIVINE_SYMBOL_23_FOX = """You enter a sumptuous though dimly lit room. A small figure on the other side turns at you.
+
+For a moment Zephyra simply stares. Then her eyes widen and she suddenly darts forward in a blur, circling around you with restless energy. Before you can say anything she leans in close, sniffing at your clothes, your legs and your tail, hardly containing her excitement.
+
+{color=yellow|— Wait, wait... no way. You're a foxkin? Ahaha, that's unexpected.}
+
+She makes another quick round around you, tail twitching with poorly restrained delight, then abruptly stops herself and straightens up as though remembering she was supposed to be acting with more dignity.
+
+{color=yellow|— Well, it took you a while and now you don't even knock. I'd call it rude, but who am I to talk now.}
+
+The miniature girl reacted to your appearance with poorly disguised excitement, though she was clearly making an effort to compose herself again.
+
+{color=yellow|— Zephyra.}
+
+Zephyra briefly bowed down to you after she introduced herself.""", # MISSING TRANSLATION
 	DIVINE_SYMBOL_24 = """— Antes de que me olvide... Toma, un regalo de una conocida.
 
 Te pasa un rollo de papel que tomó de la pila que había sobre una mesita. Cuando lo desdoblas, ves un boceto tosco pero bastante talentoso del retrato de un hombre. Al mirarlo por segunda vez, notas que esa persona se parece vagamente a ti. Al ver la expresión de tu rostro, Zephyra brilla de emoción.
@@ -7730,6 +9322,8 @@ Empujas a Anastasia al suelo y ella abre bien las piernas para ti. La montas y e
 	ITEMXARI_AMULETDESCRIPT = "Obra personal de Xari que te obsequiamos por tu ayuda. Brilla con el poder imbuido por su creador.",
 	ITEMAMELIA_DRESS = "Vestido de sirvienta Amelia",
 	ITEMAMELIA_DRESSDESCRIPT = "Antiguo vestido perteneciente a uno de los líderes de los Siervos. Su excepcional trabajo artesanal no muestra ningún signo de desgaste.",	
+	ITEMAMENIXX_HEADGEAR = """Void Cape""", # MISSING TRANSLATION
+	ITEMAMENIXX_HEADGEARDESCRIPT = """An ethereal cape greatly improving waerer's magic resistance by redirecting the hostile magic into the other dimension.""", # MISSING TRANSLATION
 	SCENEWIP = "Lo sentimos, esta escena está en proceso. ",
 	AMELIASCENEOPTION = "Me pregunto si podrías compensarme por mi trabajo...",
 	UNIQUE_CLASS = "No se puede aprender normalmente",
@@ -7767,6 +9361,7 @@ Empujas a Anastasia al suelo y ella abre bien las piernas para ti. La montas y e
 	KURDAN_EXTRA_REPLY2 = "— He estudiado magia desde que era joven. Mi padre era un practicante experimentado, así que supongo que es algo que se transmite en la familia. Algunos la ven como una herramienta, un simple medio para un fin, pero yo siento mucha más curiosidad por la mecánica subyacente de su funcionamiento y el papel que desempeña en el mundo. Sin embargo, todavía tengo mucho que aprender.",
 	KURDAN_EXTRA_OPTION3 = "Acerca de los orcos...",
 	KURDAN_EXTRA_REPLY3 = "— Los que unieron mis países natales decidieron prohibir por completo la práctica de la magia. Hoy se encuentran en una posición difícil después de haber sido gobernados durante tanto tiempo con puño de hierro por el culto de Thoth. Ahora el culto es perseguido y nosotros... han reemplazado la magia por la tecnología como base de su poder. Creo que es inevitable que te los encuentres algún día.",
+	MAE_EXTRA_GREET = """{color=yellow|— Greetings, [name]. Do you have some questions for me?}""", # MISSING TRANSLATION
 	AMELIA_BONUS_QUESTION = "— [name], tengo una pregunta para ti y por favor responde con sinceridad. ¿Quién te parece más atractivo entre la princesa y yo? Ella parece apenas un poco más joven que yo y no puedo negar su belleza, eso por sí solo debe hacerla bastante atractiva.",
 	AMELIA_BONUS_QUESTION_OPTION1 = "Princesa.",
 	AMELIA_BONUS_QUESTION_OPTION2 = "Tu, Amelia.",
@@ -10531,6 +12126,31 @@ Llevas a Cali a un lado y le explicas que este es su deber por ahora.
 
 Al final, ella aceptó que tenía que lidiar con las consecuencias de sus propias acciones.""",
 	CALI_WILLIAM_13 = "Mientras firma los papeles, Cali, algo a regañadientes, se marcha con William por el plazo acordado.",
+	CALI_WILLIAM_EVENING_1 = """The first evening at William's place unfolds. Cali lies on the massive king-sized bed, a stark, small figure against the silk sheets. The black and white maid uniform feels foreign and stiff on her body; the skirt is too short and the apron barely hides the small expanse of her chest. Soft but surprisingly strong bracers circle her wrists and ankles, pulling her limbs taut toward the headboard. Her gray hair is disheveled and her knees are bent and spread, the skirt hem the only thing obscuring her underwear.
+
+{color=aqua|William: — You don't feel too uncomfortable, do you? But given the luxury of your dinner, a bit of discomfort shouldn't be a big deal.}
+
+{color=yellow|Cali: — Hmph, it's no big deal once I get my sword back. Just get on with it.}""", # MISSING TRANSLATION
+	CALI_WILLIAM_EVENING_2 = """A slow, predatory smile spreads across William's lips at her defiant words. He moves to the side of the bed, his shadow falling over her smaller frame while his fingers run down the front of her starched blouse. He peels it open, letting the cool air of the room hit her skin. Cali's small, perky breasts are now completely bare, the nipples hardening from the chill and her anxiety.
+
+{color=aqua|William: — Heh, I knew you are one pretty thing despite your temper.}
+
+His gaze lingers before he flips the hem of her skirt up over her belly, letting it pool there. Cali squeezes her eyes shut for a second, a flush of shame creeping up her neck.""", # MISSING TRANSLATION
+	CALI_WILLIAM_EVENING_3 = """William's fingers hook under the waistband of her simple white panties. He peels the thin fabric down slowly, over the curve of her hips and down her thighs until her pussy is completely exposed, bare and open to his sight. Cali clenches her jaw, focusing on the feeling of the restraints on her ankles to distract from the raw humiliation.
+
+{color=aqua|William: — Don't worry, I have a bit of side help to let you relax.}
+
+He picks up a small, ornate bottle from the nightstand and pours a golden aphrodisiac oil into his palm. When his slick fingers touch her clit, a warm, tingling heat spreads and a soft gasp escapes her lips despite herself. He rubs the oil into her folds with slow, deliberate circles until a dull, needy ache builds in her core and a soft, unwilling whimper slips out.""", # MISSING TRANSLATION
+	CALI_WILLIAM_EVENING_4 = """Her pussy is soaking wet now, lips puffy and glistening with the aphrodisiac oil and her own slick juices. William moves over her, positioning himself between her spread legs as his hard cock springs free and slaps against her inner thigh, thick and heavy with precum. He lines the head up with her slick pussy and pushes in with relentless pressure. Her breath catches as she stretches around him and a choked-off moan escapes when he sinks in to the hilt.
+
+He pulls out almost all the way before plunging back in with long, powerful strokes. The wet, slapping sounds of their bodies fill the room alongside Cali's increasingly loud cries. Bound hands clench as she pushes her hips back to meet him, her body taking over even as her tail twitches beneath her. The pressure in her core becomes an inferno until it explodes into a blinding orgasm that makes her whole body shake.""", # MISSING TRANSLATION
+	CALI_WILLIAM_EVENING_5 = """{color=yellow|Cali: — I-I'm... No more... Cumming!...}
+
+Her walls clamp down on him as the orgasm tears through her, her entire body going rigid. The intense, rhythmic spasms of her pussy milk his cock until he groans and buries himself deep, painting her insides with hot, thick cum. When he pulls out, a rush of warmth leaks from her abused pussy to stain the silk sheets. Cali lies limp against the bed, trembling from the aftershocks, defiance shattered and replaced by aching satisfaction.
+
+{color=aqua|William: — You did well for the first time. Perhaps at the weekend I'll invite friends over, ha-ha.}
+
+Cali's blue eyes are glazed over, staring at the ornate ceiling. Perhaps this week will last drastically longer than she thought.""", # MISSING TRANSLATION
 	CALI_GRAT_BAD = "En la fecha acordada, Cali regresa a su mansión. A pesar de haber traído su reliquia, se niega rotundamente a hablar de nada de lo que sucedió durante su estadía. ",
 	CALI_GRAT_1 = """Al regresar a la Mansión, Cali te mira con reverencia.
 
@@ -10821,6 +12441,12 @@ Cali se sintió tímida al darse cuenta de lo que acababa de hacer y asintió, t
 
 — ¡Hola! Soy Lilia. ¿Cómo te llamas? ¿Eres una aventurera? ¡Eres muy grande! No recibimos gente como tú a menudo. ¿Qué te trajo aquí?""",
 	LILIA_STARTING_1_OPTION_1 = "Encantado de conocerte, soy [name].",
+	LILIA_STARTING_1_FAIRY = """As you move through the village with occasional elves and fae observing you, you notice that most residents stay very cautious and turn away once your gaze falls upon them. That is, except for one very curious fairy with long red hair. The moment she notices your wings and unmistakable fairy features, her eyes light up with open interest. Yet rather than taking you for one of the locals, she only seems more intrigued by the fact that someone like you is clearly not from here. After she realizes that she has caught your attention, she dashes at you, completely ignoring any formalities as she releases a rapid torrent of questions.
+
+{color=yellow| — Hi! I'm Lilia. What's your name? Are you an adventurer? You're a fairy too, but not from around here, are you? We don't get visitors like you often. What brought you here?}""", # MISSING TRANSLATION
+	LILIA_STARTING_1_SMALL = """As you move through the village with occasional elves and fae observing you, you notice that most residents stay very cautious and turn away once your gaze falls upon them. That is, except for one very curious fairy with long red hair. After she realizes that she has caught your attention, she darts toward you, then pauses in mid-flight to stare for a second with bright, puzzled curiosity. You are much closer to her own size than the outsiders she seems to have imagined, and that only makes you seem even more unusual to her. A moment later she perks right back up and barrels ahead, completely ignoring any formalities as she releases a rapid torrent of questions.
+
+{color=yellow| — Hi! I'm Lilia. What's your name? Are you an adventurer? Oh, you're small... I mean, small for an outsider! I thought you'd all be huge. We still don't get people like you here often. What brought you here?}""", # MISSING TRANSLATION
 	LILIA_STARTING_1_OPTION_2 = "Vaya, no tan rápido.",
 	LILIA_STARTING_1_OPTION_3 = "Realmente no tienes modales, ¿verdad?",
 	LILIA_STARTING_2_1 = """— Ah, lo siento, ¡es tan emocionante y raro encontrar a alguien como tú! ¡Te ves tan grande y fuerte!
@@ -15881,6 +17507,7 @@ Kuro aparentemente desestima tus elogios y mira hacia otro lado.
 Al momento siguiente ella se fue de su manera habitual.""",
 LIRA_LOST_START = "Mientras atraviesas el bosque, de repente oyes la voz de una mujer pidiendo ayuda. Te acercas a ella con cautela...",
 	LIRA_LOST_START2 = "— ¡Extranjero! Qué alivio que no sean animales ni monstruos... He venido aquí a recoger algunas hierbas, pero parece que me he perdido. Mi nombre es Lira, espero que no te moleste llevarme a la capital de los elfos.",
+	LIRA_DIALOGUE_START = """{color=yellow|Lira: — Is there anything you need, [master]?}""", # MISSING TRANSLATION
 	LIRA_LOST_OPT_SURE = "Claro que puedes quedarte",
 	LIRA_LOST_OPT_PRICE = "Mi ayuda sólo puede tener un precio",
 	LIRA_LOST_REPLY_SURE = "— Dios te bendiga, una vez que salgamos de esta situación te mostraré el camino.",
@@ -16473,12 +18100,36 @@ DIVINE_SYMBOL_NAME = "Influencia divina",
 	LIRA_LOST_QUEST_NAME = "Lira perdida",
 	LIRA_LOST_QUEST_SUMMARY = "Ayuda a Lira a salir del bosque",
 	LIRA_LOST_QUEST_CAPITAL = "Llegar a la capital de los elfos",
+	HELEVIEL_QUEST1_NAME = """Heleviel: New Perspective""", # MISSING TRANSLATION
+	HELEVIEL_QUEST1_SUMMARY = """Help the former High Priestess adapt to life in Aliron by working at the bar.""", # MISSING TRANSLATION
+	HELEVIEL_QUEST2_NAME = """Heleviel: Helping the weak""", # MISSING TRANSLATION
+	HELEVIEL_QUEST2_SUMMARY = """Due to her status, surely Heleviel should be capable of healer work.""", # MISSING TRANSLATION
+	HELEVIEL_QUEST3_NAME = """Heleviel: Redemption""", # MISSING TRANSLATION
+	HELEVIEL_QUEST3_SUMMARY = """Arrange an ritual in the elven capital to restore Heleviel's bond with Freya.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_STAGE_1 = """Assign Heleviel to work as a waitress in Aliron.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_STAGE_2 = """Let Heleviel work as a waitress for some time.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_STAGE_3 = """Visit Aliron's church on Heleviel's behalf.""", # MISSING TRANSLATION
+	HELEVIEL_CITY_OPTION = """*Bring Heleviel to assist Ginny*""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_STAGE_4 = """Travel with Heleviel to the beastkin village and secure a silverleaf antidote.""", # MISSING TRANSLATION
+	HELEVIEL_CITY_OPTION_2 = """Speak with Savra""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_STAGE_5 = """Visit Elven Capital.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_STAGE_5_3 = """Pay for ritual""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_STAGE_5_4 = """Wait a day""", # MISSING TRANSLATION
+	HELEVIEL_CITY_OPTION_3 = """Speak about ritual""", # MISSING TRANSLATION
+	HELEVIEL_CITY_OPTION_4 = """Pay for ritual""", # MISSING TRANSLATION
+	HELEVIEL_CITY_OPTION_5 = """Attend the ritual""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_STAGE_6 = """Attend the ritual.""", # MISSING TRANSLATION
 	KURO_ERRAND_QUEST_NAME = "El pequeño recado de Kuro",
 	KURO_ERRAND_QUEST_SUMMARY = "Sigue el rastro misterioso",
 	KURO_ERRAND_QUEST_CHURCH = "Visita a Ginny en su templo.",
 	KURO_ERRAND_QUEST_INVITE = "Visita el barrio exterior de Aliron, estás invitado a",
 	KURO_ERRAND_QUEST_SEARCH = "Busca en el escondite pistas sobre otros lugares similares.",
 KURO_ERRAND_QUEST_BASE = "Limpiar la base matriz del culto",
+	KURO_QUEST_3_NAME = """Kuro: Apostasy""", # MISSING TRANSLATION
+	KURO_QUEST_3_SUMMARY = """Kuro has an insidious plan regarding her patron.""", # MISSING TRANSLATION
+	KURO_QUEST_3_CRAFT = """Craft Vesperine Cage, then speak to Kuro.""", # MISSING TRANSLATION
+	KURO_QUEST_3_DEPTHS = """Search in Crystaldepths""", # MISSING TRANSLATION
+	KURO_QUEST_3_DUNGEON = """Deal with Nixx at the Wailing Halls""", # MISSING TRANSLATION
 	DIALOGUEANAINITIATELP = """Anastasia te saluda con cara tímida. Parece que no está muy acostumbrada a este nuevo rol.
 
 — H-hola, [Master]... ¿Cómo estuvo tu día?""",
@@ -16556,6 +18207,7 @@ DIALOGUECALIINITIATEHP = """Cali aparece frente a ti rogando ansiosamente por tu
 
 — [Master], ¿has estado extrañando a Lilia? ¡Vámonos a la cama ya!""",
 	DIALOGUEJEANINITIATEM = "— ¿Sí? No me mires así, si no tienes nada serio que hacer, yo tengo asuntos que atender.",
+	DIALOGUEROUGEINITIATEM = """{color=yellow|— Yes? Don't just give me that oogling look, if you don't have anything serious I have business to do.}""", # MISSING TRANSLATION
 	DIALOGUELILITHINIT = "— [Master], ¿quieres jugar? Siempre estoy listo para jugar.",
 	DIALOGUEZEPHYRA_UNDERWEAR = "En tus manos tienes una prenda de vestir que te entregó Zephyra. Mientras reflexionas sobre qué beneficio real puede tener, una mente se queda atrapada en tu mente... ¿Y si la llevas en la cabeza? Sin duda, es una idea terrible...",
 	DIALOGUEZEPHYRA_UNDERWEAROPTION = "Hazlo",
@@ -16576,6 +18228,7 @@ Zephyra se congela al ver tu acción. Su rostro presagia tu perdición. El tiemp
 	METRICS_PARTNERS_ONE = "[He] sólo tuvo una {color=yellow|única pareja} ​​durante todo este tiempo. ",
 	METRICS_PARTNERS_NONE = "[He] no parecía haber tenido actividad sexual con nadie hasta el momento...",
 	METRICS_IMPREGS = "[He] fue embarazada {color=yellow|%d} veces lo que terminó en parto {color=yellow|%d} veces. ",
+	METRICS_PREGNANCIES = """[He] had impregnated {color=yellow|%d} time(s). """, # MISSING TRANSLATION
 	METRICS_PEGNANCIES = "[He] había impregnado a {color=yellow|%d} veces. ",
 	METRICS_VIRGINITY_YOU = "[He] perdió [his] virginidad vaginal con {color=yellow|tú}. ",
 	METRICS_VIRGINITY_OTHER = "[He] perdió [his] virginidad vaginal con {color=yellow|%s}. ",
@@ -16586,6 +18239,7 @@ Zephyra se congela al ver tu acción. Su rostro presagia tu perdición. El tiemp
 	METRICS_SOURCE_BROTHEL_CUSTOMER = "Un cliente de un burdel",
 	METRICS_SOURCE_GUILD_TRAINER = "Un entrenador del gremio, durante el entrenamiento de juguetes sexuales.",
 	METRICS_SOURCE_WILLIAM = "William, el famoso coleccionista de Aliron",
+	METRICS_SOURCE_YOU = """[mastername], [his] [master]""", # MISSING TRANSLATION
 	METRICS_WIN_NAME = "%d/%d Batallas ganadas",
 	METRICS_SERVICEPERFORMED_NAME = "Se realizó tarea de servicio para %d/%d turno",
 	METRICS_SOCSKILLUSED_NAME = "Habilidades sociales utilizadas %d/%d ",
@@ -16619,10 +18273,22 @@ Zephyra se congela al ver tu acción. Su rostro presagia tu perdición. El tiemp
 	LILITH_QUEST_FINISHED_DESCRIPTION = "Lilith sonríe satisfecha al escuchar tus palabras pero detrás de su sonrisa se puede sentir una lujuria mal escondida.",
 	LILITH_QUEST_UNFINISHED_TEXT = "¿Matrimonio? Uh... No creo que debamos apresurarnos en algo así todavía, [Master].",
 	LILITH_QUEST_UNFINISHED_DESCRIPTION = "Lilith te lanza una mirada dudosa, sintiéndose más distante de ti.",
+	HELEVIEL_QUEST_FINISHED_TEXT = """Very well, after everything happened, I'm fully at your disposal. I'll follow your local customs if that's your request.""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_FINISHED_DESCRIPTION = """Heleviel pauses at your offer and you spot her face blushing as she breathes in for the response.""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_UNFINISHED_TEXT = """Marry on your customs? You surely jesting me. """, # MISSING TRANSLATION
+	HELEVIEL_QUEST_UNFINISHED_DESCRIPTION = """Heleviel looks at you with a poorly concealed scorn and disdain.""", # MISSING TRANSLATION
 	AMELIA_PROPOSAL_TEXT = "Ay, no esperaba que me hicieras sonrojar después de todo eso. Por supuesto, este es un gran honor.",
 	AMELIA_PROPOSAL_DESCRIPT = "Amelia te mira con una satisfacción reservada, delatada por su ligero temblor visible.",
 	KURO_QUEST_FINISHED_TEXT = "Es una propuesta de la que podrías arrepentirte seriamente. Por eso voy a obligarte a que la mantengas. ",
 	KURO_QUEST_FINISHED_DESCRIPTION = "Kuro te mira de una manera diferente a como la has visto siempre. Su expresión es casi onírica...",
+	MAE_PROPOSAL_FINISHED_TEXT = """M-me? Your wife?.. I never thought someone would choose me like that... If you truly want it, then I will stay by your side.""", # MISSING TRANSLATION
+	MAE_PROPOSAL_FINISHED_DESCRIPT = """Mae freezes for a moment. Her tail sways nervously before she lowers her gaze, smiling with quiet sincerity.""", # MISSING TRANSLATION
+	MAE_PROPOSAL_UNFINISHED_TEXT = """I-I'm sorry... I don't think I can accept something like this yet, it feels too early for me.""", # MISSING TRANSLATION
+	MAE_PROPOSAL_UNFINISHED_DESCRIPT = """Mae fidgets with her fingers, avoiding your eyes.""", # MISSING TRANSLATION
+	JEAN_PROPOSAL_FINISHED_TEXT = """M-marry? You can't be serious! This is all so... Yes, I agree!""", # MISSING TRANSLATION
+	JEAN_PROPOSAL_FINISHED_DESCRIPT = """Jean's eyes are wide open, she take a few moments gasping and flustering red until finally she speaks up.""", # MISSING TRANSLATION
+	JEAN_PROPOSAL_UNFINISHED_TEXT = """You've gotta be joking. I don't have time for jokes like this.""", # MISSING TRANSLATION
+	JEAN_PROPOSAL_UNFINISHED_DESCRIPT = """Jean blushes slightly but quickly dismisses your approach while looking away.""", # MISSING TRANSLATION
 	HIRE_LINE1 = "...Un placer conocerte, [Master].",
 	HIRE_LINE2 = "Por favor, cuida de mí, [Master].",
 	HIRE_LINE3 = "¡Así que eres mi nuevo [Master]! ¡Un placer conocerte!",
@@ -17275,6 +18941,8 @@ Zephyra se congela al ver tu acción. Su rostro presagia tu perdición. El tiemp
 	NOSPEC = "Sin especialidad",
 	NOSPECDESCRIPT = "No elijas ninguna especialidad y termina el entrenamiento.",
 	TRAINFINISHTEXT = "Termina el entrenamiento después de obtener el rasgo Reconocimiento de maestría. Para obtener la especialidad, el [color=yellow]Espíritu[/color] debe ser superior al 50%.",
+	TRAININGBONUSES = """Bonuses:""", # MISSING TRANSLATION
+	TRAININGTRAINEES = """Trainees:""", # MISSING TRANSLATION
 	AREAPLAINS = "Llanuras",
 	AREAFORESTS = "Bosques",
 	AREAMOUNTAINS = "Montañas",
@@ -17680,6 +19348,8 @@ AREASEAS = "Mares",
 	QUEST_GRYPHON_FOREST_LOCATION_DESC = "",
 	QUEST_GRYPHON_CAVE_LOCATION_TEXT = "Guarida del grifo anciano",
 	QUEST_GRYPHON_CAVE_LOCATION_DESC = "",
+	QUEST_LIRA_GROVE_LOCATION_TEXT = """Lira's Stash""", # MISSING TRANSLATION
+	QUEST_LIRA_GROVE_LOCATION_DESC = """A secluded grove at the edge of the elven forest where Lira hid her belongings after her exile.""", # MISSING TRANSLATION
 	QUEST_RITUAL_LOCATION_TEXT = "Campo de hierbas",
 	QUEST_RITUAL_LOCATION_DESC = "",
 	QUEST_LEON_FOREST_TEXT = "Ubicación de León",
@@ -17736,6 +19406,8 @@ AREASEAS = "Mares",
 	QUEST_CULT_PARENTBASE_DESC = "",
 	QUEST_STAR_CRATER_TEXT = "Mancha de estrella caída",
 	QUEST_STAR_CRATER_DESC = "",
+	QUEST_DUNGEON_KURO_NIXX = """Wailing Halls""", # MISSING TRANSLATION
+	QUEST_DUNGEON_KURO_NIXX_DESCRIPT = """""", # MISSING TRANSLATION
    ALIRON1 = "Revisa las calles",
 	ALIRON2 = "Búsqueda de Reim",
 	ALIRON3 = "Visita el dormitorio de Fred",
@@ -17759,6 +19431,7 @@ AREASEAS = "Mares",
 	ALIRON21 = "Búsqueda de Zephyra",
 	ALIRON22 = "Conoce a Ketch",
 	ALIRON23 = "Consultar información sobre Amelia",
+	ALIRON24 = """Check the discreet merchant""", # MISSING TRANSLATION
 	ALIRON_KURO_CHURCH = "Iglesia de Aliron",
 	ELF_CAPITAL1 = "Conoce a la sacerdotisa",
 	ELF_CAPITAL2 = "Busque al contrabandista",
@@ -17828,6 +19501,7 @@ AREASEAS = "Mares",
 	QUEST_FINAL_OPERATION_LOCATION2 = "Buscar",
 	QUEST_DAISY_ADMIRER_LOCATION1 = "Acercarse",
 	QUEST_GRYPHON_CAVE_LOCATION1 = "Aproximación a la cueva",
+	QUEST_LIRA_GROVE_LOCATION1 = """Search the grove""", # MISSING TRANSLATION
 	QUEST_MAE_SEARCH = "Buscar a Mae",
 	QUEST_LEON_FOREST_2_1 = "Buscar a Leon",
 	QUEST_WHITE_STAG_LOCATION1 = "Buscar a Leon",
@@ -17861,12 +19535,45 @@ Tecla de acceso rápido: 3""",
 	TOOLTIP_COOLDOWN = "Enfriamiento",
 	TOOLTIP_MANACOST = "Costo mana",
 	TOOLTIP_DAY_S = "Dias",
+	TOOLTIP_TURNS = """turn(s).""", # MISSING TRANSLATION
+	TOOLTIP_TYPE = """Type""", # MISSING TRANSLATION
+	TOOLTIP_TYPE_ITEM = """Item""", # MISSING TRANSLATION
+	TOOLTIP_TYPE_SKILL = """Skill
+(scaled by ATK and Physics, disabled by Disarm)""", # MISSING TRANSLATION
+	TOOLTIP_TYPE_SPELL = """Spell
+(scaled by MATK and Wits, disabled by Silence)""", # MISSING TRANSLATION
+	TOOLTIP_TARGET = """Target type""", # MISSING TRANSLATION
+	TOOLTIP_TARGET_ALL = """Any""", # MISSING TRANSLATION
+	TOOLTIP_TARGET_ALLY = """Allies""", # MISSING TRANSLATION
+	TOOLTIP_TARGET_ENEMY = """Enemies""", # MISSING TRANSLATION
+	TOOLTIP_TARGET_SELF = """Self""", # MISSING TRANSLATION
+	TOOLTIP_NUMBER = """Targets""", # MISSING TRANSLATION
+	TOOLTIP_NUMBER_ALL = """All""", # MISSING TRANSLATION
+	TOOLTIP_NUMBER_ALLOWED = """All allowed""", # MISSING TRANSLATION
+	TOOLTIP_NUMBER_LINE = """Line""", # MISSING TRANSLATION
+	TOOLTIP_NUMBER_NON = """No target""", # MISSING TRANSLATION
+	TOOLTIP_NUMBER_NONGROUP = """No target group""", # MISSING TRANSLATION
+	TOOLTIP_NUMBER_ROW = """Row""", # MISSING TRANSLATION
+	TOOLTIP_NUMBER_SINGLE = """Single""", # MISSING TRANSLATION
+	TOOLTIP_NUMBER_SINGLENON = """Single no target""", # MISSING TRANSLATION
+	TOOLTIP_NUMBER_RANDOM = """Random""", # MISSING TRANSLATION
+	TOOLTIP_RANGE = """Range""", # MISSING TRANSLATION
+	TOOLTIP_RANGE_WEAPON = """As per weapon""", # MISSING TRANSLATION
+	TOOLTIP_RANGE_ANY = """Everyone""", # MISSING TRANSLATION
+	TOOLTIP_RANGE_MELEE = """Melee""", # MISSING TRANSLATION
+	TOOLTIP_RANGE_NOT_CASTER = """Everyone but caster""", # MISSING TRANSLATION
+	TOOLTIP_RANGE_DEAD = """Only dead""", # MISSING TRANSLATION
 	SKILL_SWITCH_TOOLTIP = "Habilidades sociales/combate",
 	SLAVE_LOYALTY = "Lealtad",
 	RACE_BONUSES = "Bonificaciones de carrera",
 	SOCIAL_SKILLS = "Habilidades sociales",
 	COMBAT_SKILLS = "Habilidades de combate",
+	RACE_EXCLUSIVE_SKILL_LABEL = """Racial Skill: %s""", # MISSING TRANSLATION
+	RACE_EXCLUSIVE_CLASS_LABEL = """Exclusive Class: %s""", # MISSING TRANSLATION
+	CLASS_SOCIAL_SKILL_LABEL = """Social Ability""", # MISSING TRANSLATION
+	CLASS_COMBAT_SKILL_LABEL = """Combat Ability""", # MISSING TRANSLATION
 	PERSONAL_STAT = "Estadísticas personales",
+	PERSONAL_METRICS = """Metrics""", # MISSING TRANSLATION
 	REMOVE_BUTTON = "Liberar",
 	TALK_BUTTON = "Hablar a",
 	BODY_UPGRADE_TOOLTIP = "Puedes modificar visualmente tu personaje por un precio aquí",
@@ -17967,8 +19674,11 @@ Tecla de acceso rápido: 3""",
 	TRAVEL_LABEL = "Viajar",
 	MANSION_LABEL = "Mansion",
 	CHAR_LABEL = "Personaje",
+	QUEST_LABEL = """Quest""", # MISSING TRANSLATION
+	MONEY_LABEL = """Money""", # MISSING TRANSLATION
 	QUESTS_LABEL = "Misión",
 	RETURN_ALL_MANSION_LABEL = "Regresar a todos",
+	RETURN_MANSION_LABEL = """Recall""", # MISSING TRANSLATION
 	TRAVELERS_LABEL = "Viajeros",
 	BATTLE_GROUP_LABEL = "Grupo de batalla",
 	ITEMS_LABEL = "Items",
@@ -18000,6 +19710,7 @@ Tecla de acceso rápido: 3""",
 	DISLIKED_ACTIONS_LABEL = "Acciones no deseadas",
 	NOSERVITUDE = "-Servidumbre",
 	COMBAT_ABILS_LABEL = "Habilidades de combate",
+	ONQUESTLABEL = """[name] is unavailable at this point of time.""", # MISSING TRANSLATION
 	DATING_LIVING_ROOM = "Sala de estar",
 	DATING_BEDROOM = "Dormitorio",
 	DATING_TORTURE_ROOM = "Sala de tortura",
@@ -18348,6 +20059,13 @@ Después de unos minutos todavía no pasa nada y [name] decide seguir adelante."
 	BODYUPGRADEDESCRIPT_UPGRADE_RESIST = "La resistencia mágica de [name] le permitirá negar hechizos enemigos con un 25% de probabilidad.",
 	BODYUPGRADENAME_UPGRADE_THICKBLOOD = "Sangre espesa",
 	BODYUPGRADEDESCRIPT_UPGRADE_THICKBLOOD = "[name] obtendrá inmunidad al sangrado y al veneno.",
+	BODYUPGRADENAME_UPGRADE_BREEDER = """Breeder""", # MISSING TRANSLATION
+	BODYUPGRADEDESCRIPT_UPGRADE_BREEDER = """Allows breeding with any race.
+Pregnancy Debuffs are weaker
+Offspring will inherit only this parent's stats.""", # MISSING TRANSLATION
+	BODYUPGRADENAME_UPGRADE_METABOLISM = """Extreme Metabolism""", # MISSING TRANSLATION
+	BODYUPGRADEDESCRIPT_UPGRADE_METABOLISM = """+10 Food Consumption
+In combat restore the amount of health equal to your health regeneration at the start of every round.""", # MISSING TRANSLATION
 	QUALITYPOOR = "Pobre",
 	QUALITYAVERAGE = "Promedio",
 	QUALITYGOOD = "Bueno",
@@ -18438,9 +20156,11 @@ Después de unos minutos todavía no pasa nada y [name] decide seguir adelante."
 	MAE_SCENE3_SS = "Escena de Mae durante el ritual",
 	HELEVIEL1_SS = "Recompensa de Heleviel para personajes principales femeninos",
 	LILIA_SEX_1_3_SS = "Completa la primera misión de Lilia.",
+	LILIA_SEX_2_1_SS = """Complete Lilia's quest""", # MISSING TRANSLATION
 	CALI_TOUCHING_1_SS = "Primera escena con Cali durante su misión secundaria.",
 	CALI_BJ_HAPPY_1_SS = "Segunda escena con Cali durante su misión secundaria.",
 	CALI_RIDING_1_SS = "Completa la misión secundaria de Cali.",
+	CALI_AMELIA_SS = """Reject Cali's approaches""", # MISSING TRANSLATION
 	HALLOWEEN_SCENE_SS = "Evento de Halloween con Cali y Anastasia",
 	CHRISTMAS_SCENE_SS = "Evento navideño con Daisy",
 	HELEVIEL_MANSION_SS = "Recluta a Heleviel",
@@ -18456,6 +20176,7 @@ Después de unos minutos todavía no pasa nada y [name] decide seguir adelante."
 	ZEPHYRA_DISAPPEARANCE_GUARDS_1_SS = "Echa un vistazo a la historia falsa de Zephyra durante su segunda misión secundaria.",
 	DAISY_WEDDING_SS = "Toma a Daisy como tu esposa (esclava)",
 	CALI_WEDDING_SS = "Haz de Cali tu compañero de por vida",
+	CALI_WILLIAM_SS = """Lend Cali to the other party in exchange for her sword""", # MISSING TRANSLATION
 	AMELIA_WEDDING_SS = "Asciende a Amelia a la vicepresidencia de tu Mansión",
 	ANASTASIA_EVENT_ALIVE_SS = "Mantén viva a Anastasia al final del acto 1",
 	ELVEN_TEMPLE_SCENE_SS = "Evento del templo de los elfos",
@@ -18476,6 +20197,16 @@ Después de unos minutos todavía no pasa nada y [name] decide seguir adelante."
 	ANASTASIA_BLOWJOB_SS = "Acepta la 'recompensa' de Anastasia*",
 	ANASTASIA_WEDDING_SS = "Casarse con una (ex)princesa.",
 	ZEPHYRA_WEDDING_SS = "Matrimonio con Zephyra",
+	HELEVIEL_BAR_SS = """Take an opportunity over Heleviel during her work hours""", # MISSING TRANSLATION
+	HELEVIEL_FOREST_SS = """Commit a public indecency with a reformed elven priestess.""", # MISSING TRANSLATION
+	HELEVIEL_WEDDING_SS = """Become a new life for former elven high priestess.""", # MISSING TRANSLATION
+	MAE_BEHIND_SS = """Give Mae an opportunity to become a druid.""", # MISSING TRANSLATION
+	MAE_RITUAL_SS = """Make Mae perform a spirit binding ritual in a special way.""", # MISSING TRANSLATION
+	MAE_NORTHERN_SS = """Complete Mae's adoption for frivolous sexual acts.""", # MISSING TRANSLATION
+	MAE_WEDDING_SS = """Become Mae's husband.""", # MISSING TRANSLATION
+	JEAN_WEDDING_SS = """Become Jean's husband.""", # MISSING TRANSLATION
+	JEAN_DREAM_SS = """See Jean in a dream.""", # MISSING TRANSLATION
+	ROUGE_SEX_SS = """Impress Rouge Enough to be laid.""", # MISSING TRANSLATION
 	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_1 = """Le explicas a Alise que uno de tus esclavos necesita un cambio de ropa.
 
 — Pues sí, la vestimenta adecuada para el servicio es una de nuestras especialidades. Ya sabes, la ropa adecuada marca la diferencia incluso para cuerpos menos ideales; por supuesto, tenemos sastres que se adaptan a cualquier tipo de cuerpo. Pero, ¿qué buscas?""",
@@ -18644,6 +20375,7 @@ El aire huele ligeramente a polvo y pulimento, el jarrón roto brilla bajo la lu
 —Maestro, recibí esto... una carta de la esposa de un soldado rebelde. Está desesperada, me ruega que encuentre a su esposo. Ha estado perdido desde que terminó la lucha. Por favor, sé que no estoy en posición de pedir favores, pero ¿lo aceptará? ¿Ayudarla a buscarlo? No... no soporto ignorar su súplica. Incluyó su nombre, Liora, y estoy segura de que hablaría con usted si la buscara.""",
 	ANA_LETTER_1_2 = """Anastasia parpadea, sorprendida, pero se tranquiliza; su voz tiembla pero es decidida.
 —Yo... Haré lo que me pida, Maestro. Lo que sea. Solo por favor, ayúdela. Ya lo perdió todo.""",
+	ANA_LETTER_1_OPTION_1_1 = """I can't reject your plea when asked with such a sad face. I'll take care of it.""", # MISSING TRANSLATION
 	ANA_LETTER_1_OPTION_1 = "¿Sigues aferrado a tus viejas causas? Bien, entrégame la carta, veré qué puedo hacer.",
 	ANA_LETTER_1_OPTION_2 = "Concéntrate en tus deberes, no en historias tristes. Ahora eres mi esclavo, no un salvador rebelde. Guarda esa carta para ti.",
 	ANA_LETTER_1_OPTION_3 = "Un marido desaparecido, ¿eh? ¿Qué gano yo si pierdo el tiempo en esto?",
@@ -19459,5 +21191,4969 @@ Erdyna: — Realmente eres un outsider, que no tiene ni idea del Gran Imperio. N
 	EMP_ERDYNA_INTRO_12 = """Hace una pausa, el peso de su misión se asienta sobre usted cuando el frío húmedo del callejón se filtra en sus huesos. Después de pensar un momento, usted decide que una guía local podría ser útil. Usted explica brevemente su objetivo de encontrar artefactos antiguos o descubrir detalles sobre un culto peligroso. Los ojos de Erdyna brillaron mientras asiente cuidadosamente.
 
 - Ya veo, veo ... ¿viejas reliquias, cosas religiosas? Sé el lugar para desenterrar información sobre eso. La historia y los templos no son exactamente populares por aquí, por lo que tienes suerte de conocer a alguien que trata ese tipo de cosas. Movámonos.""",
+	KURO3_DIALOGUE_INIT = """So, what's up with the artifacts we're dealing with?""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_1 = """Kuro takes a long look at your face, trying to figure out if you're joking.
+
+{color=yellow|— You really don't know anything, yet you decided to drag yourself into this whole mess? It's hard to believe how careless you are. But I guess that's to be expected from you.}
+
+{color=yellow|— Say, what do you know about the gods?}""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_1_OPTION_1 = """They're like watching over us, rewarding us for good deeds?""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_1_OPTION_2 = """They must walk among us, just like you and me.""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_1_OPTION_3 = """I haven't thought much about them.""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_2_1 = """{color=yellow|— *Sigh* That's the last thing that matters in your situation.}""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_2_2 = """{color=yellow|— Yeah, I can see the pattern. Well, nonetheless.}""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_2 = """{color=yellow|— The mortal world we see and live in is perishable. Everything grows old, gets sick and damaged, and is eventually destroyed, losing all form. The only things that transcend it are concepts—the idea of how you can be remembered even after death in people's minds. The gods have strong connections to these very concepts, which is why their powers can overcome physical boundaries with relative ease.}""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_2_OPTION_1 = """How does this connect to the whole artifact collection ordeal?""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_2_OPTION_2 = """I don't really care about all this smart-ass crap.""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_3_1 = """{color=yellow|— Causal adequacy dictates that everything must have a beginning. While some gods may have acquired their status from preceding god-entities and others have ascended to godhood from mortal beings, there must still have been an origin to the world itself. The artifacts the cult, and you, are after are seemingly tied to the very first god, one whose name has even been lost in our ever-degrading world.}""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_3_2 = """{color=yellow|— He had many names, but it matters little now. Either way, your real problem is the cult — and even more so, the oldest sister, Rouge.}""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_3_3 = """{color=yellow|— There's not much to tell; she's exactly what she looks like. A tyrant who only respects power and at times is little more than a wild beast. Her raw strength is unparalleled. I'd need at least five or six copies of myself to stand a real chance against her, so it's best to avoid getting into fight with her if possible.}""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_3_4 = """{color=yellow|— Obviously, she and I are on your side, but since she's a dunce who only acts on instinct... I hate it, but her ability to be stupid is incredible. No, I guess that comes off wrong. Thing is that her instincts shouldn't be taken lightly and she is more useful than not.}""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_3_OPTION_1 = """So, you know what that god was called?""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_3_OPTION_2 = """Can you tell me about Rouge?""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_3_OPTION_3 = """What about Zephyra?""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_3_OPTION_4 = """How exactly are the three of you connected to me""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_3_OPTION_5 = """Thanks for the information.""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_4_1 = """Kuro flashes a smug smile before answering.
+
+— What makes you think I know that? There must be something special about you, isn't there? Shouldn't you know what makes you special? *Chuckle*""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_4_2 = """— That's not true. I haven't told a single lie here yet..""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_4_OPTION_1 = """You're obviously lying. Why don't you just say it?""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_4_OPTION_2 = """Withholding that information is what lets you enjoy having some control over me?""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_4_OPTION_3 = """Forget it...""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_5 = """Kuro's grin widens, her eyes flashing with particular joy.
+
+— This mental sharpness of yours is exactly what makes it all truly... fun.
+
+Before you can respond, Kuro retreats in her usual style, fading into the shadows.""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_6 = """— Then why don't you just stick to doing what you feel like doing? You won't waste my time or yours. And given that you've been successful so far, I don't think you need me telling you what to do.
+
+Despite your rude response, Kuro takes no offense. She quickly retreats in her usual style, fading into the shadows.""", # MISSING TRANSLATION
+	KURO3_INIT_1_1 = """Today Kuro has approached you.
+
+{color=yellow|— It's time we take care of Nixx. I'll need your help with this.}
+
+Her tone is far more demanding than pleading.
+
+{color=yellow|— Thanks to the book from the elf woman, I've finally found a way to deal with her. But you'll have to help me.}""", # MISSING TRANSLATION
+	KURO3_INIT_1_2 = """{color=yellow|— Yes. Haven't I just said so? We don't have much of an option here. Unlike me, she won't abandon the cult's alliance and side with you. It was obvious the moment I joined her. Even after fooling her last time, it's way too dangerous to keep her unchecked. Besides, I plan to make use of her powers for us.}""", # MISSING TRANSLATION
+	KURO3_INIT_1_3 = """Kuro lets out a demonstrative sigh slightly rolling her eyes.
+
+{color=yellow|— Okay, look. I'm fundamentally incapable of betraying you, just like Zephyra. It's time for you to accept that and move on with this mission.}""", # MISSING TRANSLATION
+	KURO3_INIT_1_OPTION_1 = """Are you planning to betray her?""", # MISSING TRANSLATION
+	KURO3_INIT_1_OPTION_2 = """Can I really trust you?""", # MISSING TRANSLATION
+	KURO3_INIT_1_OPTION_3 = """Let's say you've persuaded me. What do we do?""", # MISSING TRANSLATION
+	KURO3_INIT_2 = """{color=yellow|— Great, we shouldn't waste time. I've learned the incantation from Myr's book, but before we confront her, you'll need to prepare a magic catalyst. Challenging a goddess, especially an ancient one, will require more than a few spells.}
+
+Kuro pulls an ancient-looking scroll from behind her back and hands it to you with a stern look. As you scan it, you spot many notes in Kuro's handwriting, explaining the materials and processes for crafting it.
+
+{color=yellow|— I want you to make this. It's the Vesperine Cage, capable of containing her powers. Once it's done, we'll go after her.}""", # MISSING TRANSLATION
+	KURO3_INIT_3_OPTION = """*Show Vesperine Cage to Kuro*""", # MISSING TRANSLATION
+	KURO3_INIT_3 = """Kuro fiddles with the crafted device in her hands for a moment before tucking it behind her back.
+
+{color=yellow|— Pretty good. Consider that high praise. I don't give it often. It's time for our first move. We head to Crystaldepths, it was her last residing location that I knew of.}""", # MISSING TRANSLATION
+	KURO3_DEPTHS_OPTION = """Search for Nixx follower""", # MISSING TRANSLATION
+	KURO3_DEPTHS_1 = """You follow Kuro as she confidently navigates deeper into the settlement, down one of the pathways, until she reaches a small house.
+
+She barges in leisurely, revealing the living conditions of a missing family, complete with a few children's toys. A quick look around reveals a cellar door.""", # MISSING TRANSLATION
+	KURO3_DEPTHS_2 = """The cellar turns out to be much more spacious than expected, with a small tunnel leading deeper into the caves. Kuro doesn't hesitate, quickly spotting her target.
+
+A short yelp echoes as Kuro drags a clothed figure of a man into the light. By his attire, he seems to be the house owner.
+
+{color=yellow|Kuro: — Long time no see, Cerab. Nixx has moved out of here, hasn't she? Looks like you're still her main guy around here.}
+
+{color=yellow|Cerab: — Y-you... So it is true you've turned on her!}""", # MISSING TRANSLATION
+	KURO3_DEPTHS_3 = """Black tendrils controlled by Kuro keep the man tightly restrained, allowing him only to speak.
+
+{color=yellow|Kuro: — Tell me where you've taken her.}
+
+Cerab defiantly turns his head away, signaling his refusal to speak. Kuro, displeased, glares at him and unleashes her powers.
+
+{color=yellow|Cerab: — Ghhh... Argh!.. This test of my devotion is nothing!}""", # MISSING TRANSLATION
+	KURO3_DEPTHS_4 = """{color=yellow|Kuro: — So you want to do it the hard way? No pity for your family? They might lose their husband and father.}
+
+Kuro's voice sounds deadly serious. She clearly has no remorse about torturing the man until she gets what she wants.
+
+{color=yellow|Cerab: — Hah, you should know our families are little more than a cover. Do your worst, you apostate!}
+
+{color=yellow|Kuro: — Stubborn man. I'm no torture expert, but since you've left me no choice...}""", # MISSING TRANSLATION
+	KURO3_DEPTHS_4_OPTION_1 = """Don't do it; we'd better find someone else around here to get this information from. (1000 gold)""", # MISSING TRANSLATION
+	KURO3_DEPTHS_4_OPTION_2 = """Let me get it straight from his mind instead. [Mind Mastery]""", # MISSING TRANSLATION
+	KURO3_DEPTHS_4_OPTION_3 = """*Stay quiet*""", # MISSING TRANSLATION
+	KURO3_DEPTHS_5 = """You insist on sparing the man from Kuro's gruesome approach and head back into the settlement. The hefty sum of coins you've prepared as a reward quickly loosens a few tongues, revealing the details of Nixx's true altar transportation, which was assisted by a couple of locals. Connecting the dots, you and Kuro realize it was taken to ancient underground ruins not far from this region.""", # MISSING TRANSLATION
+	KURO3_DEPTHS_6 = """Kuro steps aside as you begin chanting your mind-reading spell. Unsurprisingly, Cerab resists as best he can, but your expertise allows you to breach his mind soon enough, forcing him to reveal the location of Nixx's true altar: ancient underground ruins not far from this region. Kuro seems satisfied with the answer; she nods and leads you away.
+
+{color=yellow|Kuro: — I'm slightly ashamed that it didn't occur to me. I'll have to admit that was rather cunning of you.}""", # MISSING TRANSLATION
+	KURO3_DEPTHS_7 = """You and Kuro stay quiet as the torture continues. The black tendrils slowly pierce the man's flesh, tearing through skin and peeling it off. His cries of pain, though loud, are conveniently muffled underground. His breathing turns ragged from the pain, but Kuro ensures the damage won't kill him outright.
+
+{color=yellow|Cerab: — F...fuck you... just... just kill me...}
+
+With a crunchy sound, a nail is torn off, followed by an even louder cry.
+
+{color=yellow|Kuro: — Don't feel too bad for him; he's killed and sacrificed more than a few victims to her. I wonder if you'd beg for mercy if I didn't know that.}""", # MISSING TRANSLATION
+	KURO3_DEPTHS_8 = """As time passes, you notice a few things. The torture is scarily pragmatic: not only is life-threatening damage kept to a minimum, but Kuro takes irregular breaks, making each resumption more unpredictable and unnerving. Minutes feel like hours, keeping you constantly aware of possible interruptions from outsiders, but none come.
+
+{color=yellow|Kuro: — Shall we try the teeth or an eye next?}
+
+Kuro's voice is empty, gnawing on the man's spirit no less than the lasting pain.""", # MISSING TRANSLATION
+	KURO3_DEPTHS_9 = """Finally, the cultist breaks down entirely.
+
+{color=yellow|Cerab: — N-no... Stop... I will tell you... Just, please... Stop...}
+
+{color=yellow|Kuro: — Just don't think you can lie to me.}
+
+As the man collapses to the ground, released from his torture, he slowly explains how Nixx's true altar was moved to ancient underground ruins not far from here. Kuro seems satisfied; she nods and leads you away, leaving her victim half-dead.""", # MISSING TRANSLATION
+	KURO3_DEPTHS_10_1 = """{color=yellow|Kuro: — Looks like she suspected something might happen after last time. Those ruins won't be easy to explore.}""", # MISSING TRANSLATION
+	KURO3_DEPTHS_10_2 = """{color=yellow|Kuro: — He's no danger to us. Once we deal with Nixx, the other followers will blame him for betraying her and make him suffer even more.}""", # MISSING TRANSLATION
+	KURO3_DEPTHS_10_3 = """{color=yellow|Kuro: — Maybe. But this had to be done. Nixx is too dangerous to leave as the cult's ally. You already know what I could do with her powers, don't you?}""", # MISSING TRANSLATION
+	KURO3_DEPTHS_10_4 = """{color=yellow|Kuro: — Nixx was once a deity of the night—that is, until all light died out, and she became what she is now. Darkness holds many secrets, and that's partly why I sided with her, though her powers are formidable too. Everything has a price; someone like Zephyra could never become her champion.}""", # MISSING TRANSLATION
+	KURO3_DEPTHS_10_OPTION_1 = """Shouldn't we finish off that man?""", # MISSING TRANSLATION
+	KURO3_DEPTHS_10_OPTION_2 = """You've gone way too far with that.""", # MISSING TRANSLATION
+	KURO3_DEPTHS_10_OPTION_3 = """Can you tell me more about her?""", # MISSING TRANSLATION
+	KURO3_DEPTHS_10_OPTION_4 = """Alright, let's go then.""", # MISSING TRANSLATION
+	KURO3_DEPTHS_11 = """{color=yellow|Kuro: — Yes. Now the real hard part begins. This could get really dangerous, so let's do our best.}""", # MISSING TRANSLATION
+	KURO3_DUNGEON_1 = """As you navigate the dark, moist halls, Kuro suddenly stops you. Giving her a puzzled look, you see her investigating one of the brick walls.
+
+{color=yellow|— They tried to hide it well.}
+
+She begrudgingly inserts her hand into a crack, and with a clicking sound, part of the wall slides aside.
+
+{color=yellow|— Come on. I can feel she's here.}""", # MISSING TRANSLATION
+	KURO3_DUNGEON_2 = """Entering the secret room, you closely follow Kuro's steps as she ensures you don't alert anything. Finally, you come across an intricate wall framed with stone pillars and an effigy made of some dark material.
+
+{color=yellow|Kuro: — She seems to be in slumber now. Let's not waste time.}""", # MISSING TRANSLATION
+	KURO3_DUNGEON_3 = """She quickly pulls out the Vesperine Cage, activates it, and points it at the wall. Its ethereal light illuminates the room, but the dark fog around the effigy remains motionless.
+
+{color=yellow|Kuro: — Stay alert. This should seal her powers in moments.}""", # MISSING TRANSLATION
+	KURO3_DUNGEON_4 = """In the Cage's light, the floating black mass becomes more solid and visible. Despite both of you trying to stay calm, it lasts only a moment before it begins squirming chaotically. A distant, grave voice echoes in your head.
+
+{color=yellow|Nixx: — Finally shown yourself? Think you can stop me with this little thing?}
+
+{color=yellow|Kuro: — Damn it, you should've stayed down!}
+
+Kuro is clearly frustrated by her plan going awry but remains determined.""", # MISSING TRANSLATION
+	KURO3_DUNGEON_5 = """Despite Nixx's energy being mostly contained by the Cage's focused beam, she finds an opening and launches a deadly attack in your direction.
+
+{color=yellow|Nixx: — You've made a mistake not coming alone.}
+
+{color=yellow|Kuro: — Grh... Curses!}
+
+Kuro's concentration breaks as she moves to protect you, which is just enough for Nixx to follow up with an overwhelming energy mass that swallows you both.""", # MISSING TRANSLATION
+	KURO3_DUNGEON_6 = """You find yourself in a wall-less space where only dim darkness surrounds you. Next to you, Kuro rubs her forehead in defeat. As you try to get information from her, the awfulness of your situation dawns on you.
+
+{color=yellow|Kuro: — It's over, we've lost. She's trapped us in her pocket dimension. There's no way out on our own... In time, it'll sap our energy, and we'll die here.}
+
+{color=yellow|Kuro: — Damn it, what an idiotic way to lose... In this place, I can't use any of her powers either.}""", # MISSING TRANSLATION
+	KURO3_DUNGEON_6_OPTION_1 = """Don't give up just yet.""", # MISSING TRANSLATION
+	KURO3_DUNGEON_6_OPTION_2 = """There must be something we can do.""", # MISSING TRANSLATION
+	KURO3_DUNGEON_6_OPTION_3 = """It's all your fault.""", # MISSING TRANSLATION
+	KURO3_DUNGEON_7 = """Kuro barely reacts to your words. She seems far more susceptible to the energy drain here, acting heavily drunk—her speech sloppy, dampened by the darkness.
+
+{color=yellow|Kuro: — I'm sorry, [name]. I should've done better... It's really hard to... concentrate...}""", # MISSING TRANSLATION
+	KURO3_DUNGEON_8 = """{color=yellow|Kuro: — It's... it's been lonely by myself... for all... this time... Zephyra and Rouge... they don't remember a thing... after all...}
+
+Time drifts slowly without any indication as you start feeling dizzy yourself.""", # MISSING TRANSLATION
+	KURO3_DUNGEON_9_1 = """You feel a familiar presence, something otherworldly, yet not alien to this realm. A soft voice speaks to you.
+
+{color=yellow|Voice: — You disappoint me to no end... You can't die here, can you? There's not much I can do, but with her on your side... This should be just enough to break free.}""", # MISSING TRANSLATION
+	KURO3_DUNGEON_9_2 = """You feel an alien presence appear in the darkness, something otherworldly, yet not of this realm. A soft voice speaks to you.
+
+{color=yellow|Voice: — This is not the time or place; you can't die here. There's not much I can do, but with her on your side... This should be just enough to break free.}""", # MISSING TRANSLATION
+	KURO3_DUNGEON_9 = """A foreign command enters your mind, guiding your actions. You stand, approaching Kuro, who barely moves. Your hand grabs hers, pulling her up effortlessly. Despite her pallor, her hand is warm, instinctively grasping yours in return.
+
+An unknown ancient language fills your mind, and you begin chanting-more a hymn than a spell. You've never heard it before and can't understand it. A dim light surrounds you both, draining the darkness from the surroundings. Kuro's groans grow louder as she clings to you harder as the light restores her and your strength which has just been sapped.""", # MISSING TRANSLATION
+	KURO3_DUNGEON_10 = """An explosion erupts as you reach the peak; your mind is instantly freed from the external control. You and Kuro find yourselves back in the room, Nixx's altar before you. Kuro regains her senses; Nixx is clearly confused by your escape, her powers wavering from the damage you've inflicted.
+
+{color=yellow|Nixx: — How did you...?!}
+
+{color=yellow|Kuro: — No time for talk, [name], we need to defeat her now!}""", # MISSING TRANSLATION
+	KURO3_WIN = """The damage you've inflicted sends Nixx into recuperation, allowing Kuro to once again activate the entrapping device.
+
+{color=yellow|Nixx: — You... damned vixen... If you plan on taking my powers... You'll never find rest for this...}
+
+{color=yellow|Kuro: — That's so? You should know better than me there's no rest for the wicked. }
+
+The Cage shimmers with bright light, fully consuming what's left of Nixx's essence. Kuro falls to her knees, having expended all her remaining energy.""", # MISSING TRANSLATION
+	KURO3_WIN_OPTION_1 = """*Help Kuro*""", # MISSING TRANSLATION
+	KURO3_WIN_OPTION_2 = """*Seize the Cage for yourself*""", # MISSING TRANSLATION
+	KURO3_GOOD_1 = """You grab Kuro, helping her stand after the exhausting fight. Her skin feels hot, her face covered in sweat, but her emotions are those of triumphant victory and admiration for you.
+
+{color=yellow|Kuro: — Th-thank you, [name]. Looks like I'm shaking a bit. We did something that only happens in legends.}
+
+She looks down at her hands, firmly holding the now-closed Cage.
+
+{color=yellow|Kuro: — I'll absorb her essence now. With this, her powers, and most importantly, her knowledge, will become part of me. Don't worry, I can handle it.}""", # MISSING TRANSLATION
+	KURO3_GOOD_2 = """Without further delay, Kuro clutches the device tightly. You feel the powers inside surging, visibly engulfing her body. Her groans, followed by heavy panting, fill the small room as you watch in awe. After a moment, the device shatters as Kuro completes her ordeal.
+
+You steady her for a minute as her eyes remain unfocused and her body processes the change. You sense the transformation in her being. Something about her appearance, energy, and aura has shifted. Slightly, but noticeably to you. A supernatural feel is now etched into her presence.
+
+{color=yellow|Kuro: — Ah... This will take some time to get used to... My thoughts are all mixed... but... there's so much new information...}""", # MISSING TRANSLATION
+	KURO3_GOOD_2_OPTION_1 = """So, what's that information you've been aiming for?""", # MISSING TRANSLATION
+	KURO3_GOOD_2_OPTION_2 = """Got any clues to great treasure troves there?""", # MISSING TRANSLATION
+	KURO3_GOOD_2_OPTION_3 = """I'm glad you're safe.""", # MISSING TRANSLATION
+	KURO3_GOOD_3_1 = """{color=yellow|Kuro: — It's... I can't say for certain yet, but I hope to learn more about everything I can.}""", # MISSING TRANSLATION
+	KURO3_GOOD_3_2 = """{color=yellow|Kuro: — Heh, very funny. You really think a foul ancient being like her would care about some gold coins?}""", # MISSING TRANSLATION
+	KURO3_GOOD_3_3 = """{color=yellow|Kuro: — Please, [name], you're making me blush, and it's really not suitable for someone who's just done what I did. Let's save it for later.}""", # MISSING TRANSLATION
+	KURO3_GOOD_3 = """
+	
+{color=yellow|Kuro: — One thing's for sure: Nixx is no more, and it will both help us against the cult and stop me from worrying.}
+
+Kuro finally steadies herself, releasing your hand, and you leave the place.""", # MISSING TRANSLATION
+	KURO3_BAD_1 = """You snatch the Cage from Kuro's powerless hands with ease, feeling the power within. As you glance at the puzzled Kuro, you focus on the ancient sealed powers, feeling them surge from the device into you. Kuro raises her head, speechless in disbelief, too weak to fight or perhaps too confused to react.
+
+You feel the raw dark powers now yours as they merge with your body, leaving the Cage empty and useless.""", # MISSING TRANSLATION
+	KURO3_BAD_2 = """{color=yellow|Kuro: — Hah... hahaha...}
+
+Her laugh sounds dry and empty. Minutes pass as she stares at the ground in defeat.
+
+{color=yellow|Kuro: — That's really stupid, isn't it? After all that work, you just took it for yourself... No, I'm... No. I'll accept my utter defeat. What do you plan to do with me now that my champion powers are gone?}""", # MISSING TRANSLATION
+	KURO3_BAD_2_OPTION_1 = """You'll stay by my side.""", # MISSING TRANSLATION
+	KURO3_BAD_2_OPTION_2 = """You'll stay by my side... as a slave.""", # MISSING TRANSLATION
+	KURO3_BAD_2_OPTION_3 = """I have no use for you anymore.""", # MISSING TRANSLATION
+	KURO3_BAD_3 = """{color=yellow|Kuro: — ...Got to admit, that's some scheme you pulled on me. I've stated I'm on your side, and that can't be changed... I'll do what I can to help with whatever ominous plan you have.}
+
+Helping Kuro up, you prepare to leave.""", # MISSING TRANSLATION
+	KURO3_BAD_4 = """{color=yellow|Kuro: — ...I guess I won't be able to escape any collar now. Is this how you plan to make me atone?}
+
+Kuro's face shows vulnerability and a hint of fear. Something that she rarely displays.
+
+{color=yellow|Kuro: — I hope you aren't devoid of any mercy for me.}""", # MISSING TRANSLATION
+	KURO3_BAD_5 = """For once, Kuro's face shows clear pain, but it quickly returns to normal.
+
+{color=yellow|Kuro: — I understand. So that's what it's like to be on the receiving end of evil.}
+
+You leave Kuro seemingly stuck in place as you contemplate your newly acquired powers.""", # MISSING TRANSLATION
+	KURO3_DIALOGUE2_INIT = """About that time we were trapped...""", # MISSING TRANSLATION
+	KURO3_DIALOGUE2_1 = """You tell Kuro about the time you were trapped by Nixx and the mysterious voice that freed you. To your surprise, she responds almost disinterestedly.
+
+{color=yellow|— That's so? We got lucky, I suppose. I really should've known better than putting us in such danger.}""", # MISSING TRANSLATION
+	KURO3_DIALOGUE2_1_OPTION_1 = """Do you know whose voice that was?""", # MISSING TRANSLATION
+	KURO3_DIALOGUE2_1_OPTION_2 = """Will I lose control over myself again?""", # MISSING TRANSLATION
+	KURO3_DIALOGUE2_2_1 = """Kuro pauses, searching for the right words.
+
+{color=yellow|— It was probably an ancient, forgotten deity, or rather, what's left of one. Good thing she was on our side, wasn't it?}""", # MISSING TRANSLATION
+	KURO3_DIALOGUE2_2_2 = """{color=yellow|— What, are you hoping some powerful deity will solve all your problems? I thought you were too old for such naive expectations.}
+
+Kuro smirks at you in her usual way.
+
+{color=yellow|— No, I doubt she'll help us again after this. We're on our own.}""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_1 = """Bringing Heleviel to Aliron unsurprisingly wasn't taken well by her. After claiming her as a slave you barely managed to keep her behavior in line, however she's far from being of any use in these lands she barely ever been to before.
+
+{color=yellow|— Curses upon you and your human towns. To think the once noble High Priestess of Freya herself would be forced to become a slave for someone like you. Even if I have to serve you because my survival depends on it, don't ever think of making me into an obedient toy.}""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_1_OPTION_1 = """We could start by getting along first""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_1_OPTION_2 = """I have broken in many slaves, you think you stand a chance?""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_2_1 = """{color=yellow|— Getting along? With a [race]? You've got to be kidding me. I can never be friends with someone like you, it's completely impossible and degrading to even consider.}""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_2_1a = """{color=yellow|— Hmph. If you want us to get along, you should start by releasing me and then punishing that traitorous bastard Erlen. That's the bare minimum of your apology for me to even consider it.}""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_2_2 = """{color=yellow|— Break me? I was the chosen of Freya for decades, not some peasant fool you can train with a stick. You won't make me beg for mercy with such threats.}""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_2 = """It seems Heleviel does not actively try to cause problems or break free—at least not yet. However, her behavior is entirely entitled, making her of little use. Even if she's ready to follow your orders, her lack of manners for her new position is in dire need of fixing. Perhaps the best way is to bring her down to earth if you plan to employ her for any real work.
+
+Thinking for a bit, you come up with a suitable idea: having her work as a waitress will quickly put her in a position where she will have to serve people she has always looked down on.""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_3 = """You lead Heleviel to her workplace, making her change into her new uniform. It seems ideal for breaking her air of nobility, making her blend in as if she were just another elven girl.
+
+{color=yellow|Heleviel: — I can't believe it. Mother Freya, what have I done to deserve this...}""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_3_OPTION_1 = """You better be respectful to the customers now""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_3_OPTION_2 = """These clothes do make you look cute""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_4_1 = """Knowing there's no way around it, Heleviel has no choice but to grit her teeth in submission.
+
+{color=yellow|Heleviel: — Fine, if that's what it takes.}""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_4_2 = """{color=yellow|Heleviel: — T-that's nonsense. These are completely undignified and unsuitable for someone of my former status. I can't believe you make elves wear this at all.}
+
+Yet your compliment has not gone entirely unnoticed, perhaps partly because the new look has made her feel more vulnerable.""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_5 = """You leave Heleviel in the custody of the bar owner and go back to your own business. It's better to give her some time in the new conditions.""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_6 = """One of the evenings you are invited by a few other officials for a friendly drink. As you get to the suggested bar you realize it's the one where you put Heleviel to work.""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_7 = """Soon you notice Heleviel being assigned as your server. After giving her a knowing smile, she composedly averts her eyes.
+
+{color=yellow|Official 1: — This bar has the best elf girls, you know. That white-haired one is especially cute when angry.}
+
+He gives a small pinch to Heleviel's butt once she turns away from the table, followed by an angry yelp.""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_8 = """{color=yellow|Heleviel: — What are you doing, you foul man!..}",
+
+However, as she notices you, she quickly stops herself.""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_8_OPTION_1 = """*Scold the official*""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_8_OPTION_2 = """*Stay silent*""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_8_1 = """You scold the man over his inappropriate behavior. Heleviel watches it with a troubled face not daring to voice any further objection.
+
+{color=aqua|Official 2: — Sorry, I just get too excited over elven girls. Hey, Miss, why don't you sit and drink with us for a bit? There aren't too many customers here. And get the other waitress too!},
+
+{color=yellow|Heleviel: — I... I don't know what you are talking about...}""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_8_2 = """{color=aqua|Official 2: — Sorry, sorry. Hey, Miss, why don't you sit and drink with us for a bit? There aren't too many customers here. And get the other waitress too!}
+
+{color=yellow|Heleviel: — I... I don't know what you are talking about...}""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_9 = """Heleviel rushes into the backrooms, avoiding eye contact with you.
+
+{color=aqua|Official 1: — Hey, Mayor, seems like she knows you. Can you tell her that I'm sorry? Wouldn't want to get on her bad side, haha.}
+
+You leave the table and find Heleviel in the backrooms as she glares at you with irritation. You notice she's far less angry than you'd expect.
+
+{color=yellow|Heleviel: — What is it? You want me to keep your friends company now? This is just a humiliation for someone of my status!}""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_9_OPTION_1 = """Fine, just serve us normally""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_9_OPTION_2 = """I could give you a few days off...""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_10_1 = """{color=yellow|Heleviel: — ...Very well, I can do that. Don't let those men run their hands wherever they want.}""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_10_2 = """Heleviel stays silent for a while, considering your offer. She seems not only repulsed by the idea but also aware of the importance of the meeting to you. Your offer outweighs her reluctance.
+
+{color=yellow|Heleviel: — Fine. Goddess, if I ever had to imagine what I would be going through in my life...}
+
+You return to the table. Soon after, Heleviel and another elven waitress join to entertain your group. Heleviel plays along with the request but decides to sit right next to you. A few moments later more booze is served, and in the feisty atmosphere your companions nag the elf girls into drinking with them.""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_11 = """{color=aqua|Official 1: — Come on, don't be shy, the treat is on us.}
+
+Initially refusing, Heleviel slowly gives in to peer pressure and sips the beverage, occasionally responding to small talk from the other men.
+
+{color=aqua|Official 2: — Haha, looks like she's really into you, Mayor—constantly blushing and looking in your direction. You're aiming for a big fish, gal.}
+
+{color=yellow|Heleviel: — I-I'm not! It's... It's just [he]... looks like someone I know.}""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_12 = """Her lie passes with a laugh as she slowly gets tipsy and more open, almost forgetting her real position here.
+
+{color=aqua|Official 2: — You're quite eloquent for a simple bar girl. What's your name again?}
+
+{color=yellow|Heleviel: — I'm H-Haelith. My parents always said I was smarter than most, I suppose.}
+
+You note with amusement how Heleviel holds herself in this situation. While not extremely enthusiastic about it, she's clearly let some of her guard down.""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_12_OPTION_1 = """*Put a hand on her thigh*""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_12_OPTION_2 = """*Do nothing*""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_13 = """The evening continues uneventfully with your patrons until it gets late enough for everyone to leave. As nobody else is around, you get a small comment from Heleviel before she leaves her shift, still bearing her tipsiness.
+
+{color=yellow|Heleviel: — I suppose it wasn't too bad after all. Your friends are disgusting for being such lechers toward elven women, though.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_INIT = """With time, Heleviel has grown more accustomed to life in slavery under you. Her bickering has mostly disappeared. Yesterday you received a help request from Aliron's church, which seems like a good next step for Heleviel to work on in order to improve her cultural accommodation.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_INTRO_TEXT = """You bring Heleviel to the church, finding Ginny in her usual workplace.
+
+{color=yellow|Heleviel: — Hmph, so this is Celena's temple, and you must be her local priest. What a pitiful decoration. No wonder Celena is only a subservient goddess with measly followers compared to Freya.}
+
+{color=aqua|Ginny: — It's true that Freya is more revered than Celena, but I'm her devoted follower in this town. Celena is a merciful goddess, and she wants to help those in need.}
+
+{color=yellow|Heleviel: — What difference does it make if her establishment is so insignificant? I swear Freya's followers would never stoop so low.}
+
+{color=aqua|Ginny: — Perhaps, but my goal is to assist others, even those of different religions.}
+
+Both women give you a short glance, as if asking whose side you are on.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_OPTION_1 = """Helping others is a noble cause by itself""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_OPTION_2 = """A stronger following does strike respect into others""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_OPTION_3 = """Following gods is a custom of the past""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_REPLY_1 = """{color=aqua|Ginny: — I'm truly glad our mayor is of the same mind.}
+	Heleviel says nothing. She simply pouts, deciding not to continue.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_REPLY_2 = """{color=yellow|Heleviel: — Hmh, it's true. Maybe you should consider making a shrine to Freya here. Of course she wouldn't approve of such a place by itself, but it would make for a first step...}
+	
+	Ginny's smile grows more strained as she waits for Heleviel to finish.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_REPLY_3 = """As neither Heleviel nor Ginny finds any support from you, they both fall quiet at your remark.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_ASSIGN_TEXT = """{color=aqua|Ginny: — A-anyway, I take it you've come to help us? Recently the number of injured people from the Fighters Guild has increased, and we lack the necessary healers.}
+
+{color=yellow|Heleviel: — Huh? You expect me to use my—and Freya's—powers for simple nurse work? Unbelievable.}
+
+After looking at you, Heleviel realizes there's no way she can dodge it, and her shoulders drop in small defeat.
+
+{color=yellow|Heleviel: — *Sigh* How low must I fall now...}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_HEALING_TEXT = """After moving to the infirmary, the former priestess is assigned to mend the wounds of the injured. Her disdain is especially notable when she has to take care of male fighters. Yet her spirit does not seem broken; the determination forged by years of strict customs is still there.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_ARGUMENT_TEXT = """The next patient is a male elf soldier with a severe-looking wound.
+
+{color=aqua|Elf: — O-ouch, you could be a bit gentler, you know.}
+
+{color=yellow|Heleviel: — Don't cry over a bit of pain. It's bad enough that I have to serve men like this. I don't need to listen to your whining.}
+
+{color=aqua|Elf: — Wait, you look familiar. I swear you look like Freya's High Priestess. It can't be someone like that treating wounded soldiers over here.}
+
+Heleviel looks slightly unsettled at being recognized, but she still shows no sign of accepting a lower role in this interaction.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_ARGUMENT_TEXT2 = """{color=yellow|Heleviel: — Hmph, Freya's ways can lead us to the hardest places.}
+
+{color=aqua|Elf: — Hah, you're just a slave forced to serve humans now.}
+
+{color=yellow|Heleviel: — T-this is only a temporary penance before Freya guides me back to an even greater role! But an uncivilized buffoon like you likely won't understand it.}
+
+{color=aqua|Elf: — Shut it. You're the reason I left the forests and have to serve humans. Your hatred for men and your rules drove us into being disempowered, low-class people.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_ARGUMENT_TEXT3 = """{color=yellow|Heleviel: — How dare you! I only followed Freya's vision and served her order! Even if our rules were strict, they were entirely justified.}
+
+{color=aqua|Elf: — Justified, you say? I like it. Then your demotion into a slave is also justified. Now you serve not only your owners but one of your own kind—someone you always looked down on.}
+
+Heleviel does not respond; however, her face is growing with anger.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_FOOT_TEXT = """{color=aqua|Elf: — My wounds feel better already, but now that I think about it, why don't you also wash my feet? They've been quite sore from all the marches.}
+
+{color=yellow|Heleviel: — H-how dare you!!}
+
+The former High Priestess is practically shaking in place but well aware she's unable to do anything in this situation.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_FOOT_OPTION_1 = """That's a good idea, after all she needs to learn and accept her new place""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_FOOT_OPTION_2 = """She won't do this, there are other people who still need care""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_FOOT_REPLY_1 = """Heleviel's ears turn red from anger and embarrassment, but knowing there's no escape from this, she forces herself to perform the task, feeling her dignity slip away at the male elf's cruel grin.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_FOOT_REPLY_2 = """Heleviel's shoulders drop in relief at your words, spared from the humiliating task. The elf soldier tuts in irritation but doesn't protest. After pointedly thanking you instead of Heleviel, he leaves, making way for the next patient.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_AFTER_FOOT = """After being sufficiently humiliated by the task, the elf soldier leaves with a chuckle. You give Heleviel some time to rest before the next patient.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_POISON_TEXT = """After some time Heleviel comes out of the infirmary and approaches you.
+
+{color=yellow|Heleviel: — The last patient is poisoned by silverleaf. I'm afraid there's nothing I can do with my magic, but... I believe there might be a way in the forests.}
+
+You feel like Heleviel is being evasive about the issue, but you let her continue.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_POISON_OPTION_1 = """Is something bothering you?""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_POISON_OPTION_2 = """Seems like you aren't thrilled about going there""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_POISON_REPLY_1 = """{color=yellow|Heleviel: — Elves were never on good terms with them. They don't follow Freya, they're savage beasts who know little but mating like ones.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_POISON_REPLY_2 = """{color=yellow|Heleviel: — Of course I'm not. Elves were never on good terms with them. They don't follow Freya, they're savage beasts who know little but mating like ones.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_POISON_OPTION_3 = """They live in their own ways""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_POISON_OPTION_4 = """You aren't exactly wrong there""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_CHURCH_POISON_REPLY = """{color=yellow|Heleviel: — Even if the goddess allows their existence, I can't accept those who stray that far from her order. Our community has survived for ages and stayed strong because of that. I've put additional regulations regarding them, too. Getting the cure from them will prove challenging. We'd better hurry if we want that man to survive.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_BEASTKIN_INTRO_TEXT = """After finding Savra, you and Heleviel explain that you are looking for an antidote to silverleaf poison.
+
+{color=yellow|Savra: — Why, yes, I think I have a spare one in my stores.}
+
+Even though she realizes that the one asking is a former High Priestess of Freya herself, the shaman acts very casually.
+
+{color=yellow|Savra: — However, I can't just give it to you for free, can I? There's a favor I want you to do, Lady Heleviel.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_BEASTKIN_OPTION_1 = """She will do whatever you ask of her""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_BEASTKIN_OPTION_2 = """Well, if it's something adequate""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_BEASTKIN_REPLY = """The elf woman stiffens a bit but continues, knowing there's little she can do here.
+
+{color=yellow|Heleviel: — It is to save a life, so...}
+
+{color=aqua|Savra: — It's nothing big. You see, recently we found a stray halfkin child. The girl seems to have an elven parent, and she's a bit adamant about following Freya's teachings no matter what. Would you bless her in Freya's name?}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_BEASTKIN_CHILD_TEXT = """Heleviel frowns upon hearing that, trying to respond cautiously.
+
+{color=yellow|Heleviel: — That is... not really possible, I'm afraid...}
+
+Savra cuts in with a rather quick follow-up.
+
+{color=aqua|Savra: — Then you can do it in your name. Surely that's not too taxing on your dignity if you want that mixture?}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_BEASTKIN_CHILD_TEXT_2 = """{color=yellow|Heleviel: — ...Fine, I'll do it. But you should know this is nothing like a real rite of Freya.}
+
+{color=aqua|Savra: — Of course, I know. Now go and complete your part of the deal while I look for that potion.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_BEASTKIN_CHILD_TEXT_3 = """It doesn't take you long to find one of the halfkin children playing around—the girl Savra described. As you approach, she quickly turns her attention to Heleviel.
+
+{color=aqua|Girl: — Wow, no way! You're Freya's High Priestess!}
+
+{color=yellow|Heleviel: — ...A former priestess. How did you end up here, little one?}
+
+{color=aqua|Girl: — After my mom died I was taken here. They said I can't live with the other elves. But there are no temples like my mom's here.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_BEASTKIN_CHILD_TEXT_4 = """You see Heleviel grow uneasy as she's forced to deal with the girl, but Savra interrupts you and asks you to come with her, leaving the elf and the child alone.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_BEASTKIN_SAVRA_TEXT = """In her hut, Savra passes you the bottle with the antidote.
+
+{color=yellow|Savra: — Who knew I'd live to see the day Freya's High Priestess herself visited us. You've gotten quite far, haven't you.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_BEASTKIN_SAVRA_OPTION_1 = """You don't really mind helping her?""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_BEASTKIN_SAVRA_OPTION_2 = """I think she's been changing her ways""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_BEASTKIN_SAVRA_OPTION_3 = """Thank you, we'd better be on our way""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_BEASTKIN_SAVRA_REPLY_1 = """{color=yellow|Savra: — It is what it is. After all, she's in no position to hurt us, nor do I feel hostility from her. There's still her lingering distaste for non-elves, but she's mature and experienced enough to hide it properly.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_BEASTKIN_SAVRA_REPLY_2 = """{color=yellow|Savra: — If that's so, it says more about your character than hers. After all, old people are stubborn—and elves especially so.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_BEASTKIN_SAVRA_REPLY_3 = """{color=yellow|Savra: — Yes. And thank you for indulging me as well. I can't help but find it quite amusing to see the elven High Priestess herself reduced to such a status.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_BEASTKIN_RETURN_TEXT = """You find Heleviel finishing her talk with the girl as she rises. Her face shows a mix of emotions that's hard to read, the most obvious being uncertainty. After confirming that you've obtained what you came for, she lowers her eyes, preparing to leave.
+
+{color=yellow|Heleviel: — We'd better hurry for the patient's sake.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_BEASTKIN_RETURN_TEXT_2 = """You've made it in time for Heleviel to administer the drug and ensure the patient survives. With that, her healer task comes to an end—until next time.
+
+{color=aqua|Your training has improved Heleviel's skills and she no longer has the Crude trait.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_REQUEST_TEXT = """At the end of your workday, Heleviel unexpectedly approaches you, her face even more worried and stressed than usual.
+
+{color=yellow|— [Master]...}
+
+The word comes out almost naturally. Over the last weeks she has grown a lot more compliant.
+
+{color=yellow|— I need your help with something...}
+
+{color=yellow|— I have to confess to you: I can no longer feel any of Freya's presence. It's grown weaker since the day you brought me here, and for the last few days I can't feel anything at all.}
+
+The anxiety in her voice makes it clear she is distressed by losing the connection she has had for most of her life—distressed enough to confess it to you.
+
+{color=yellow|— I know this is a difficult request, but I beg you to allow me to go back to Freya's temple. I need an audience with the new High Priestess.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_OPTION_1 = """It's not a simple task given your exile. What would I get from it?""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_OPTION_2 = """I'll see what I can do""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_OPTION_3 = """It seems like too much work, but I might consider it""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_REPLY_1 = """{color=yellow|— You already control my life to the point that I follow your orders—what else can I possibly offer? My position granted me any property I had, so I've lost that as well.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_REPLY_2 = """{color=yellow|— Thank you. I'll be waiting for your progress, then.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_ERLEN_TEXT = """You find Erlen not far from the main temple. As you explain your situation, his face brims with poorly disguised disapproval.
+
+{color=yellow|— You say she wants an audience with Lira? Normally, I would never allow it, but if you of all people ask for this... Tell me, what are you actually aiming to achieve?}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_ERLEN_OPTION_1 = """I genuinely want to cheer her up""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_ERLEN_OPTION_2 = """This may be helpful to us, she was a high priestess for a long time after all""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_ERLEN_REPLY_1 = """{color=yellow|— I don't like it. You're too soft. But I'm not going to stop you. You'll find Lira at the temple—she'll probably be glad to help.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_ERLEN_REPLY_2 = """{color=yellow|— I see. Pragmatic as ever, it seems. Fine, I'm not going to stop you. You'll find Lira at the temple—she'll probably be glad to help.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_LIRA_TEXT = """{color=yellow|— Sir [name], it's a pleasure that you still visit us. I don't get a lot of free time now that I've been assigned this role, but meeting with you is one thing I am obliged to find time for.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_LIRA_TEXT_2 = """
+You explain to Lira Heleviel's issue, and she falls into silence until she finally speaks up.
+
+{color=yellow|— Well, if Sir Erlen has allowed it, I'd be glad to help. Even though she was shunned by the community, she was a ruler for a long time. However, to perform such a rite we'll need a lot of resources. I'm afraid I have to charge you 2,500 gold.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_PAY_OPTION = """*Pay* (-2,500 gold)""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_LATER_OPTION = """I'll come back later""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_PAY = """You pass Lira the money she asked for.
+
+{color=yellow|— This is great. Now I must prepare for the ritual. Bring Heleviel to us tomorrow... Oh, and it's better to keep her face concealed while walking through the streets.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_POSTPONE = """Lira nods and leaves you.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_PAY_TEXT = """You meet with Lira again and pass her the money.
+
+{color=yellow|— This is great. Now I must prepare for the ritual. Bring Heleviel to us tomorrow... Oh, and it's better to keep her face concealed while walking through the streets.}
+""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_INTRO = """You lead Heleviel through the streets of her former home, dressed in a long hooded robe. Positively surprised by your agreement to help her, she looks like nothing she was the last time you met her here.
+
+{color=yellow|— This is all the same, but it feels so... different.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_MID = """After you deliver Heleviel to the temple's entrance, an acolyte takes her inside, leaving you waiting until it's over.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_FREYA = """As the ritual starts, only Lira and Heleviel are left alone in the room. Heleviel needs no instructions—she knows the importance of this meditation. Lira will be the channel for contact with the Goddess. This kind of connection is only possible due to the elves' preservation of traditions and religion—something she would never be able to achieve in Aliron.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_FREYA_2 = """Lira's eyes open, a dim light forming around them in the darkness.
+
+{color=aqua|Freya: — Speak.}
+
+{color=yellow|Heleviel: — Why have you left me?! Why have you given my position to another? Have I not been your most faithful servant?}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_FREYA_3 = """Freya only smirks through Lira at the elf girl's visible anger. This makes Heleviel lower her voice slightly.
+
+{color=yellow|Heleviel: — Was I really wrong in my practices?..}
+
+{color=aqua|Freya: — Yes. You went too far with your fear of losing power, didn't you? But you are still my child, Heleviel.}
+
+{color=yellow|Heleviel: — I don't understand...}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_FREYA_4 = """{color=aqua|Freya: — Even though you disliked the conditions you were put through—hated them—you still accepted them as part of my will. This is why you were in your position for so long.}
+
+{color=yellow|Heleviel: — But why then did you replace me? Why have I lost the feeling of your guidance?}
+
+{color=aqua|Freya: — You needed a break from your duties. As for the latter, it was your fault—you started questioning yourself.}
+
+Heleviel visibly jerks at this notion but quickly calms herself.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_ORDER = """{color=yellow|Heleviel: — I beg your forgiveness...}
+	
+{color=aqua|Freya: — Of course. You will have to atone. That you are already doing. Speaking of which, what do you think of your master?}
+
+Heleviel pauses for some time, choosing her words with caution.
+
+{color=yellow|Heleviel: — I... find [him] tolerable. I would much prefer someone who was also a fellow follower, but you chose [him] for me, so I'm in no position to argue.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_ORDER_2 = """Freya smirks again. It seems she is about to finish this interaction.
+
+{color=aqua|Freya: — I knew I could count on you. And it's time for my final words to you, so listen well. These are hard times, and I'm entrusting you to take care of this person. [He] is not what [he] may appear at first sight, but you seem to already know that.}
+
+{color=yellow|Heleviel: — T-that's... no way. You're saying that I must follow [him] now?!}
+
+For the first time Heleviel is truly shocked by this revelation—or rather, this order from her patron.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_ORDER_3 = """Freya stays silent, indicating no need to explain herself.
+
+{color=yellow|Heleviel: — I see. This is the mission you've been saving for me all this time—not just atonement like I thought. I can do that. [He] is certainly an influential person.}
+
+{color=aqua|Freya: — So be it. And one last thing. Consider having offspring with [him], it's a rare chance for someone childless at your age.}
+
+Heleviel's face turns completely red, but she manages not to speak up.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_CONCLUSION = """Finally, the otherworldly glow disappears from Lira's face and she drops down in exhaustion. The ritual is over, and Heleviel is led back to you.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_INTERLUDE = """Standing under the grand tree Heleviel nods to you being ready to leave.
+
+{color=yellow|Heleviel: — Thank you for bringing me here, I'm finally ready to leave it for good.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_INTERLUDE_OPTION_1 = """Let's go then""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_INTERLUDE_OPTION_2 = """[Sex Factor] There's a better way to thank me than simple words""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_SEX_ATTEMPT_1 = """Heleviel gives you a confused look but something in her mind does not let her to protest. You push her to the tree as her face turns red.
+
+{color=yellow|Heleviel: — Hold on... You know that Erlen's scouts must be watching us?}
+
+You don't show any care and this mentality transmits to Heleviel as well.
+
+{color=yellow|Heleviel: — ...Curses, it's on them then...}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_SEX_ATTEMPT_2 = """Heleviel ignores your remark and heads out of the capital not waiting for you.""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_END_TEXT = """As you leave the city, you notice Heleviel's behavior has changed. She seems more content and sure-footed as she follows you. When you ask if she's satisfied, her response sounds a bit more personal than usual.
+
+{color=yellow|Heleviel: — Yes. Thank you for supporting my request. Finally, I can answer what I can give you in return for this favor. I give my word that I shall be loyal to you and your decisions, as long as they don't challenge Freya. My powers are at your disposal.}""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_END_OPTION_1 = """Let's get along then""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_END_OPTION_2 = """You better not disappoint me""", # MISSING TRANSLATION
+	HELEVIEL_SLAVE_RITUAL_END_2 = """Heleviel nods affirmatively and moves closer to you. Her new role has been settled.""", # MISSING TRANSLATION
+	HELEVIEL_BAR_SEX_1 = """You feel Heleviel's soft skin on your palm as she seemingly pays no attention. Initially you think she doesn't notice, but brief side glances from her indicate she's well aware of your bold move. Yet she makes no attempt to move away or resist—perhaps because of the alcohol or because she isn't completely opposed to this...
+
+As the night continues and other patrons get more rowdy with the waitresses, Heleviel excuses herself and leaves the table. Her legs wobble slightly as she makes it into the backrooms after giving you a short bow. Finding everyone else too busy with themselves, you decide to check on Heleviel and follow after her.""", # MISSING TRANSLATION
+	HELEVIEL_BAR_SEX_2 = """You enter one of the backrooms; it seems nobody is there except for her taking a breath, her face slightly flushed as she looks at you.
+
+{color=yellow|Heleviel: — Is this how humans spend their free time here? This is so preposterous and lecherous. Freya's teachings would never allow something like this...}
+
+Despite her protests you easily notice how her words lack true indignation. Moreover, her thighs subtly rub together as the distance between you closes.""", # MISSING TRANSLATION
+	HELEVIEL_BAR_SEX_2_OPTOPN_1 = """*Kiss her*""", # MISSING TRANSLATION
+	HELEVIEL_BAR_SEX_2_OPTOPN_2 = """*Take her roughly*""", # MISSING TRANSLATION
+	HELEVIEL_BAR_SEX_3 = """Your lips meet hers in the dimly lit backroom of the bar. Heleviel's white hair cascades over her shoulders, a stark contrast to the dim look of the room. The faint scent of ale and her unique elven fragrance fills the air as you deepen the kiss, tasting the sweetness on her tongue. Her green eyes flutter closed, long lashes brushing against her cheeks. Her curvaceous figure strains against the tight waitress uniform, the fabric stretched taut across her ample chest. You break the kiss, your hand on her shoulder, and gently guide her to turn around.
+
+{color=yellow|— C-curses, was this your plan all along? Ah, I don't care anymore, you cunning scoundrel...}
+
+Heleviel complies, her movements slightly unsteady from the alcohol. Her palms press flat against the rough surface of the table as she bends forward, the position unfamiliar and awkward for the former High Priestess. The skirt of her uniform rides up, revealing the smooth pale skin of her thighs. You step behind her, one hand tracing the curve of her spine before settling on her hip. With your other hand, you lift the skirt higher, bunching it at her waist. She tenses slightly as you pull her panties down, exposing her glistening pussy.""", # MISSING TRANSLATION
+	HELEVIEL_BAR_SEX_4 = """You position yourself behind her, your hard dick pressing against her entrance. Heleviel gasps as you begin to push in, the penetration slow but steady. Her tight pussy stretches to accommodate you, her body unused to such intrusion. You grip her hips, pulling her back against you as you thrust deeper. Her moans are muffled against the table surface, her fingers digging into the wood. Each thrust sends waves of pleasure through her body, her large breasts swaying with the rhythm. The table creaks beneath her as you pick up the pace, your dick sliding in and out of her slick heat with increasing intensity.
+
+{color=yellow|— M-m-mh... What's this... Humiliation... Why does it feels good...}""", # MISSING TRANSLATION
+	HELEVIEL_BAR_SEX_5 = """Heleviel's green eyes are half-lidded with pleasure and surprise as you continue to take her from behind. Her dignified facade crumbles with each powerful thrust, replaced by raw, unbridled desire. You lean over her, your breath hot against her ear as you reach around to cup her heavy breasts through the thin fabric of her uniform. Her nipples harden beneath your touch, her back arching instinctively. The room fills with the sound of skin slapping against skin and her increasingly loud moans.
+
+{color=yellow|— D-don't stop now... If you stop... I can't....}
+
+You drive into her harder, faster, your dick hitting that sensitive spot deep inside her that makes her cry out. Heleviel's controlled demeanor shatters completely, her moans growing louder, more desperate, echoing in the small backroom. Her green eyes, usually so serious and composed, are now clouded with a haze of lustful pleasure. You can feel her body beginning to tense beneath you, the muscles in her thighs and back tightening as she pushes back against you, meeting your rhythm with an instinctual need.""", # MISSING TRANSLATION
+	HELEVIEL_BAR_SEX_6 = """The table scrapes across the floor as you give one final, deep thrust. A guttural cry escapes Heleviel's lips as her orgasm crashes through her. Her pussy clenches around your dick in rhythmic pulses, milking you as she trembles uncontrollably. Her vision blurs, a raw, carnal release that strips away every last piece of her dignified persona. The force of her climax triggers your own, and you bury yourself deep inside her, your dick pulsing as you fill her with your warmth.""", # MISSING TRANSLATION
+	HELEVIEL_BAR_SEX_7 = """For a long moment, the only sound in the room is your heavy breathing and whimpering moans still escaping Heleviel's lips. Her body goes limp, collapsing forward onto the table, her long white hair fanned out around her head like a halo. You stay inside her for a moment longer, feeling the aftershocks of her orgasm still shuddering through her. Slowly, you withdraw, a trail of your combined fluids dripping from her still-trembling pussy. Heleviel doesn't move, her face turned to the side, her eyes closed as she tries to process the intensity of what just happened. The once-dignified elf is now a disheveled, satisfied mess, her waitress uniform wrinkled and stained, her body still humming with pleasure.""", # MISSING TRANSLATION
+	HELEVIEL_BAR_SEX_8 = """You helped Heleviel clean herself and the mess you'd made around the room. It only took moments for the elf woman to compose herself, as if nothing had just happened between you. Yet as you went home to the mansion, you noticed a small change in her behavior, as if she were looking at you with more warmth now. """, # MISSING TRANSLATION
+	HELEVIEL_FOREST_SEX_1 = """You don't hesitate, pressing her against the immense, rough trunk of the Great Tree. The bark is a stark, abrasive texture against the smooth fabric of her ceremonial robes. Your lips claim hers, a kiss that is both possessive and demanding. Heleviel's initial stiffness melts away under the intensity, her hands tentatively coming up to rest on your shoulders. Her white hair, still radiating a faint residual light from the ritual, cascades down her back, a stark contrast to the deep, ancient wood. You break the kiss, your eyes locking with hers as your hands find the clasps of her clothes, deftly undoing them. The heavy garments part, revealing the pale skin beneath, her large breasts heaving with each ragged breath.
+
+{color=yellow|— Men sure are lustful creatures. To think that I would surrender myself to one so readily...}""", # MISSING TRANSLATION
+	HELEVIEL_FOREST_SEX_2 = """Heleviel hesitates for a moment, her dignity warring with her desire. Then, with a soft sigh she lifts one leg, wrapping it around your waist. The movement opens her to you, the fabric of her undergarments the only barrier remaining. You hook your finger into the side of the thin material, pulling it aside to reveal her already damp pussy. Your other hand steadies her hip as you guide your hard dick to her entrance. She gasps as you push in, the penetration slow but deliberate. The position is unfamiliar, leaving her feeling exposed and vulnerable, yet a thrill of pleasure runs through her as you begin to move.
+
+{color=yellow|— Y-you are horrible... for making me... feel like this...}""", # MISSING TRANSLATION
+	HELEVIEL_FOREST_SEX_3 = """You begin to move, a slow, deep rhythm that grinds your hips against hers. Heleviel's green eyes are wide, a silent gasp escaping her lips as she adjusts to the sensation of being taken against the sacred tree. Each thrust pushes her deeper into the trunk. Her large breasts press against your chest, the hard buds of her nipples felt on your skin even through the layers of clothing between you.
+
+{color=yellow|— Nhh... Harder... Ruin me from being a priestess...}
+
+You increase the pace, your movements becoming more forceful, more possessive. Your dick slides in and out of her slick pussy with ease now, her body having adjusted to your size. Heleviel's head falls back against the tree, her white hair a cascade against the ancient wood. The leg wrapped around your waist tightens, pulling you closer. Her dignity is forgotten, replaced by raw need as she matches your rhythm, her hips moving to meet yours.""", # MISSING TRANSLATION
+	HELEVIEL_FOREST_SEX_4 = """You thrust harder, deeper, hitting that sensitive spot inside her that makes her cry out, her body arching against yours. Heleviel's body tenses, her nails digging into your shoulders as her orgasm begins to build. Her green eyes are half-lidded, clouded with pleasure, her lips parted in a quiet beg for release.
+
+{color=yellow|— I... I'm gonna... Cum... For you...}
+
+With a final, deep thrust, you drive into her one last time. Heleviel cries out, her body convulsing as her orgasm crashes through her. Her pussy clenches around your dick in rhythmic pulses, milking you as she trembles uncontrollably. The intensity of her pleasure triggers your own release, and you bury yourself deep inside her, your dick pulsing as you fill her with your seed. For a long moment, the only sound in the clearing is your harsh breathing and Heleviel's soft whimpers as she recovers from her orgasm.""", # MISSING TRANSLATION
+	HELEVIEL_WEDDING_1 = """Heleviel stands before you, the intricate silver threads of her white wedding gown shimmering in the dim light. Her long white hair is unbound, cascading over her shoulders like a waterfall of moonlight. For a long moment, she just looks at you, her green eyes unreadable, her serious, dignified mask firmly in place. Then, with a slow, deliberate grace, she turns her back to you.
+
+{color=yellow|— Well, my dear [husband], you must be as eager as I am.}
+
+She moves to the bed, her steps silent on the thick rug. She pauses, then slowly kneels in front of you, lowering her upper body until her breasts press into the ground. She raises her rear, presenting herself to you. She looks back at you over her shoulder, her white hair spilling across her back, green eyes dark with a mixture of apprehension and invitation.""", # MISSING TRANSLATION
+	HELEVIEL_WEDDING_2 = """{color=yellow|— Look how much I submit to you, please don't keep me waiting.}
+
+You approach her, your movements unhurried. You run a hand over the smooth curve of her ass, your fingers tracing the line of her thong before hooking into the delicate fabric and pulling it aside. Her pussy is already glistening with her juices, the lips swollen and parted in readiness. You kneel behind her, your hard dick pressing against her entrance. Heleviel tenses slightly, a soft gasp escaping her lips as you begin to push in. Her tight pussy stretches to accommodate you, her body still adjusting to your size. You grip her hips, pulling her back against you as you thrust deeper.""", # MISSING TRANSLATION
+	HELEVIEL_WEDDING_3 = """{color=yellow|— Ngh... You are so ruthless to me...}
+
+Her ass pushes back against you, meeting your thrusts with an instinctual rhythm that belies her lingering awkwardness. The room is filled with the soft sounds of your bodies joining, the slick slide of your dick in and out of her wet pussy, and Heleviel's soft, hitching breaths. The candlelight catches the sheen of sweat on her skin, highlighting the curve of her spine and the swell of her hips. Her large breasts sway with each thrust.""", # MISSING TRANSLATION
+	HELEVIEL_WEDDING_4 = """{color=yellow|— Ah, breed me... Like... Like a lowly animal... Aah...}
+
+Unsure if she refers to you or herself, you increase the pace, your movements becoming more forceful, more possessive. Your hands grip her hips tighter, driving your dick deeper into her. Heleviel's head falls forward, her white hair a curtain that hides her face, but you can hear her moans growing louder, more desperate. The leg not supporting her weight trembles, her body beginning to lose its composure under the onslaught of pleasure.
+
+You lean over her, your chest pressing against her back, your breath hot against her ear. Heleviel complies, turning her head to meet your gaze. Her green eyes are dark with pleasure, her lips parted, her face flushed. The sight of her, so wanton, so abandoned, sends a fresh wave of desire through you. You thrust harder, deeper, hitting that sensitive spot inside her that makes her cry out, her body arching against yours. The control she's always tried to maintain is gone, replaced by raw need.""", # MISSING TRANSLATION
+	HELEVIEL_WEDDING_5 = """The sight of her, so wanton, so abandoned, sends a fresh wave of desire through you. You thrust harder, deeper, hitting that sensitive spot inside her that makes her cry out, her body arching against yours. She matches your rhythm, her hips moving to meet yours with an increasingly desperate urgency. You can feel her body beginning to tremble, her pussy clenching around your dick in a rhythm that signals her impending release. Her moans fill the room.
+
+With a final, deep thrust, you drive into her one last time. Heleviel cries out, her body convulsing as her orgasm crashes through her. Her pussy clenches around your dick in rhythmic pulses, milking you as she trembles uncontrollably. The intensity of her pleasure triggers your own release, and you bury yourself deep inside her, your dick pulsing as you fill her with your semen. For a long moment, the only sound in the room is your harsh breathing and Heleviel's soft whimpers.
+
+{color=yellow|— Aah!!.. So hot... Your seed is filling me!..}""", # MISSING TRANSLATION
+	HELEVIEL_WEDDING_6 = """Slowly, you withdraw, collapsing onto the bed beside her. Heleviel lies there, her body still humming with pleasure, her white hair a tangled mess around her head. She turns to face you, her green eyes soft, a mixture of satisfaction and lingering vulnerability in their depths. The dignified High Priestess is gone, replaced by a woman who has completely surrendered to you. She reaches out, her hand finding yours, her fingers lacing through yours in a silent gesture of connection.
+
+{color=yellow|— This is so silly, but... What I feel the most right now, not being a former priestess or an elf. It's that I'm a woman. Your woman.}""", # MISSING TRANSLATION
+	HELEVIEL_SNOWSET_WORKERS_OPTION = """Check shelves""", # MISSING TRANSLATION
+	HELEVIEL_SNOWSET_EVENT_1 = """As you walk through the guild, suddenly Heleviel, who you took with you, spots something that catches her eye: a bright set of clothes sitting in a corner, seemingly abandoned. It draws her in, and she approaches it with fascination as she lifts it up.""", # MISSING TRANSLATION
+	HELEVIEL_SNOWSET_EVENT_2 = """You seem to be interested in it.
+
+{color=yellow|Heleviel: — N-no-... I mean, yes, I am interested in this. Even someone of my status can appreciate such fine craftsmanship. I want it. After all, I don't have that many spare clothes now. Maybe you should consider getting it for me.}""", # MISSING TRANSLATION
+	HELEVIEL_SNOWSET_EVENT_3 = """Slightly taken aback by her sudden display of assertiveness, you can't help but get curious. You call Sigmund over with the suit.
+
+{color=aqua|Sigmund: — Aye, ya can have dat.}
+
+{color=yellow|Heleviel: — This will cost us, I assume.}
+
+Sigmund strokes his beard, observing the elven woman and the skimpy suit for a few moments, until he finally speaks up.
+
+{color=aqua|Sigmund: — How about a favor 'stead? Ya seem to be eager to wear it. We can think of something.}
+
+Heleviel raises a brow, but it's too late to back out.""", # MISSING TRANSLATION
+	HELEVIEL_SNOWSET_EVENT_4 = """After a few minutes, Heleviel comes out of the dressing room wearing the clothes. They certainly appear more skimpy than what you'd expect her to wear willingly. However, her face is rather content as she looks herself over in the mirror.
+
+{color=yellow|Heleviel: — Just about the right size, as I predicted.}""", # MISSING TRANSLATION
+	HELEVIEL_SNOWSET_OPTION_1 = """I didn't take you for someone who would want to wear something like this.""", # MISSING TRANSLATION
+	HELEVIEL_SNOWSET_OPTION_2 = """So what's the deal for you getting it for free?""", # MISSING TRANSLATION
+	HELEVIEL_SNOWSET_EVENT_5A = """{color=yellow|Heleviel: — Oh, that... It just resembles a suit worn by one powerful sorceress that I knew a long time ago. It makes me feel a bit like her now, although naturally there's no magic in it. I guess I always thought it's entertaining to appear as someone else.}""", # MISSING TRANSLATION
+	HELEVIEL_SNOWSET_EVENT_5B = """Heleviel closes her eyes in meditation, before composing herself to deliver a clear, steady speech.
+
+{color=yellow|Heleviel: — This is a boon. A custom of goodwill. And I want to thank you, not only for the gift, but for the hands and hearts behind it that chose to make it here. Your work and benevolence deserve my sincerest blessing, which I deliver to you. You have my gratitude, and more than anyone, [name], who is the reason that I'm here. Merry Christmas!}""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_START = """After a few days of living at your place, Mae, a beastkin shaman who joined you after the obscene ritual, finally approaches you. She rubs her legs together, looking down before she finally speaks up.
+
+{color=yellow|Mae: — H-hi, how's your day?}""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_OPTION_1 = """It's nice""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_OPTION_2 = """Is there something you want to ask?""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_REPLY_1 = """{color=yellow|Mae: — R-really? That's good to hear.}
+
+Judging by Mae's tone, she still isn't quite used to the luxury of a city mansion after all that happened.""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_REPLY_2 = """{color=yellow|Mae: — Y-yeah, sorry, I was not sure how to start...}""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_FAVOR = """{color=yellow|Mae: — Anyway, there's a favor I want to ask. Well, you see, I... can't get used to the food around here after living in the forests... It... doesn't quite taste right to me.}""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_FAVOR_OPTION_1 = """I remember you eating rather happily with others""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_FAVOR_OPTION_2 = """So what do you want?""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_FAVOR_RETURN = """Mae's face blushes slightly and she starts stammering, speaking faster.
+
+{color=yellow|Mae: — Y-yeah, I did, I couldn't show my distaste, could I?}""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_REQUEST = """{color=yellow|Mae: — I wanted to go to the local market, it's just... I'm not used to buying stuff over here. Oh, and I could also get some rare herbs for my rituals while I'm at it.}""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_REQUEST_OPTION_1 = """Alright, I can show you around""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_REQUEST_OPTION_2 = """Maybe once I have time""", # MISSING TRANSLATION
+	MAE_QUEST_INITIATE_CLOSE = """{color=yellow|Mae: — Thank you, I hope it won't take you too long...}""", # MISSING TRANSLATION
+	MAE_MARKET_START = """You lead Mae to the market, slowly guiding her through various stalls as she observes her surroundings with wide eyes.
+
+{color=yellow|Mae: — Wow, it's only been a couple of years since I visited last time, but things have changed so much...}""", # MISSING TRANSLATION
+	MAE_MARKET_FRUIT_INTRO = """As you guide Mae between the stalls, a bright splash of color catches her eye. She stops short, ears perking up.
+
+{color=yellow|Mae: — Oh... that fruit...}
+
+On a velvet cloth sits a pile of glossy, amber-skinned fruits, each one perfectly round and faintly warm as if it was just picked.
+
+{color=aqua|Fruit Vendor: — Sunplums! Fresh shipment, rare this season! Price is firm.}
+
+Mae takes one look at the sign and immediately pulls her hand back.
+
+{color=yellow|Mae: — I-it's... pricey. Back in the woods we just... found them rarely like this.}
+
+She stares a moment longer, swallowing, then looks at you with a hesitant, embarrassed smile.""", # MISSING TRANSLATION
+	MAE_MARKET_FRUIT_OPTION_BUY = """*Buy it for her* (250 gold)""", # MISSING TRANSLATION
+	MAE_MARKET_FRUIT_OPTION_STEAL = """*Steal it while the vendor isn't looking*""", # MISSING TRANSLATION
+	MAE_MARKET_FRUIT_OPTION_MOVE = """We better move on""", # MISSING TRANSLATION
+	MAE_MARKET_FRUIT_BUY = """You reach for your coin pouch without making a big deal out of it.
+
+{color=aqua|Fruit Vendor: — Good choice. Mind the juice, it stains.}
+
+The vendor wraps it in thin paper and passes it over. Mae accepts it with both hands like it's a gift.""", # MISSING TRANSLATION
+	MAE_MARKET_FRUIT_STEAL = """You scan the vendor's posture, the flow of people, the way the stall's edge creates a blind spot. The vendor turns to argue with another customer about weights and measures.
+
+But your hand is already between the cloth and the fruit. In one smooth motion, you slip a sunplum into a sleeve pouch.""", # MISSING TRANSLATION
+	MAE_MARKET_FRUIT_AFTER = """{color=yellow|Mae: — R-really? For me?.. Thank you...}
+
+She takes a careful bite. Her eyes widen, and her tail gives a tiny, involuntary swish.
+
+For the first time since arriving in the city, she looks genuinely at ease.""", # MISSING TRANSLATION
+	MAE_MARKET_FRUIT_MOVE_ON = """Mae flinches at her own lingering stare, then forces a polite nod.
+
+{color=yellow|Mae: — Y-yeah... you're right. I got carried away.}
+
+She takes one last look, then quickly steps after you, as if afraid she might change her mind.""", # MISSING TRANSLATION
+	MAE_MARKET_SHELIA_INTRO = """As you make your way through the market, a couple of beastkin suddenly approach you. A female one looks surprised as she takes a closer look at Mae.
+
+{color=aqua|Stranger Beastkin: — Oh, Mae, is that you?}
+
+{color=yellow|Mae: — H-hi, Shelia, it's been a while.}
+
+{color=aqua|Shelia: — What an outfit, so you really went to live in the woods?}
+
+{color=yellow|Mae: — Well, that's a long story...}""", # MISSING TRANSLATION
+	MAE_MARKET_SHELIA_TALK = """{color=aqua|Shelia: — No way, you're a tribal shaman now? And you live at a mayor's place too. Are you like one of his close partners? Haha.}
+
+{color=yellow|Mae: — T-that's not like that...}""", # MISSING TRANSLATION
+	MAE_MARKET_SHELIA_REL_OPTION_1 = """Our relationship is strictly professional""", # MISSING TRANSLATION
+	MAE_MARKET_SHELIA_REL_OPTION_2 = """You aren't exactly wrong...""", # MISSING TRANSLATION
+	MAE_MARKET_SHELIA_REQUEST = """{color=aqua|Shelia: — Yeah, yeah, I get it, someone with knowledge from the far woods can be very valuable...}
+
+The girl pauses for a bit as if recalling something.
+
+{color=aqua|Shelia: — Oh, about that, I just remembered. My younger cousin has been acting weird and being sick for about a week already. Local apothecaries couldn't give us anything. I feel like it might be something... unusual. Maybe you could take a look?}
+
+{color=yellow|Mae: — I suppose, it can't hurt to try. Savra taught me about many different conditions.}""", # MISSING TRANSLATION
+	MAE_MARKET_SHELIA_WAIT = """{color=aqua|Shelia: — That's great! I'll be waiting for you at my place then.}
+
+The beastkin explained their home location and went on with their errands.
+
+{color=yellow|Mae: — Hope you don't mind me trying to help them?}""", # MISSING TRANSLATION
+	MAE_MARKET_SHELIA_RESPONSE_OPTION_1 = """It's worth it to keep helping your friends""", # MISSING TRANSLATION
+	MAE_MARKET_SHELIA_RESPONSE_OPTION_2 = """I think this can help your training""", # MISSING TRANSLATION
+	MAE_MARKET_SHELIA_RESPONSE_1 = """{color=yellow|Mae: — Y-yeah, I wonder what they really think of me now that I'm back being like this...}""", # MISSING TRANSLATION
+	MAE_MARKET_SHELIA_RESPONSE_2 = """{color=yellow|Mae: — You think so? I guess it would be nice to be more useful to you.}""", # MISSING TRANSLATION
+	MAE_FRIEND_VISIT_1 = """You visit a small dormitory. Mae approaches the young beastkin boy lying in bed, weak and feeble. When she finishes her inspection, she turns to you.
+
+{color=yellow|Mae: — It seems he is possessed by a nasty spirit. It's unusual, spirits are weak outside their natural habitat and don't like densely populated cities... I think I can take care of it with a ritual, but I don't have the necessary brew for it. W-would you help me out with this, [name]?}""", # MISSING TRANSLATION
+	MAE_FRIEND_VISIT_1_OPTION_1 = """Well, it would be weird to stop at this point""", # MISSING TRANSLATION
+	MAE_FRIEND_VISIT_1_OPTION_2 = """I don't really have much free time, I'll consider it""", # MISSING TRANSLATION
+	MAE_FRIEND_VISIT_1_AFTER = """Mae nods, quickly returning her gaze to the boy. She seems genuinely concerned for his well-being.
+
+{color=yellow|Mae: — Thank you. I'll make sure to remember everything correctly for it.}
+
+As you leave, she gives you a recipe for the potion she wants you to make. It doesn't seem difficult, but it will take a bit of time.""", # MISSING TRANSLATION
+	MAE_POTION_READY = """{color=yellow|Mae: — You've done it? Thank you. Now we can go back to Shelia's house.}""", # MISSING TRANSLATION
+	MAE_FRIEND_VISIT_2_START = """As Mae reaches the child's bed, she prepares the potion by pouring it into a cup. She slowly makes him drink it before taking out a wood-carved talisman she has been preparing over the last few days.
+
+{color=yellow|Mae: — C-can you leave us alone for a bit? I need to concentrate, and it would help if no one was watching.}""", # MISSING TRANSLATION
+	MAE_FRIEND_VISIT_2_WAIT = """You and Shelia leave Mae alone, closing the door behind her.
+
+{color=aqua|Shelia: — She looks like she actually knows what she's doing, doesn't she?..}
+
+After a couple minutes, when Shelia serves you some water, you are both startled by a sudden yelp and a crash.""", # MISSING TRANSLATION
+	MAE_FRIEND_VISIT_2_CRASH = """After taking a few moments to force the door, you finally make it inside to find the bed with the boy still in place. A few pieces of furniture and clothes are scattered across the floor, and the window is wide open with one side damaged.
+
+The boy breathes heavily but seems more active than before, slowly coming to his senses. However, Mae is nowhere to be seen.
+
+The broken window catches the attention of the guards outside, and after a short time you are approached by them for questioning.
+
+{color=aqua|Guard: — Your mayorship? We heard loud noises and something barged through the window.}
+
+Despite your best efforts, you are unable to follow after Mae wherever she was taken, and the guards seem to have no idea either.
+
+At least to your and Shelia's relief, her ritual actually worked, and by the end of the day the boy was on his feet. Still, you need to find Mae.""", # MISSING TRANSLATION
+	MAE_FRIEND_VISIT_2_OPTION_WISDOM = """[Wisdom Challenge] Observe the patterns of the tracks left by Mae""", # MISSING TRANSLATION
+	MAE_FRIEND_VISIT_2_OPTION_CLOSE = """Close""", # MISSING TRANSLATION
+	MAE_FRIEND_VISIT_2_TRACK_SUCCESS = """You spend additional time studying the mess Mae made and asking witnesses what they saw. This helps you narrow down the possible direction she moved in and will greatly help with the search.""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_START = """A whole day has been spent trying to find Mae. Many strangers reported seeing her roaming through town and causing chaos, noting that she looked drugged or delusional, but she never stayed around for long, as if trying to escape others' eyes.
+
+Finally you've managed to find her not far from your mansion, in an isolated dead end, sitting against the wall. Her eyes are wide and watering as she sees you.
+
+{color=yellow|Mae: — [name], n-no... I... Ah!.. I screwed up big, the s-spirit got me...}
+
+Her body visibly shakes as she looks exhausted from suppressing the entity fighting her.""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_OPTION_1 = """What does it do exactly?""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_OPTION_2 = """How can I help you?""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_VOICE_1 = """{color=yellow|Mae: — I-it can't take me, but... it wants to...}
+
+{color=aqua|Voice: — If you didn't come after me you foul beastkin! I'll spill your dirty secrets that pester your mind now.}
+
+{color=yellow|Mae: — N-no, please... don't listen!}""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_VOICE_2 = """{color=aqua|Voice: — Your poor and useless being only good for this suffering, no money, no home, so pathetic!}
+
+Mae closes her eyes and covers her face with her paws in shame as you are the sole observer of her humiliation.
+
+{color=yellow|Mae: — T-that's nothing I can help with!}
+
+{color=aqua|Voice: — And also fat! Just look at how obese you are! That's what you were trying to hide, that you eat too much! And just changing your diet would change anything!}""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_VOICE_3 = """Under the stress of the situation and your scrutinizing gaze, Mae's voice finally grows more irritated, her body tensing.
+
+{color=yellow|Mae: — E-enough... shut up! This is all a lie, you are just a parasite, feeding... on suffering...}
+
+The spirit completely ignores her pleas. It seems to act purely on instinct, with no sentience beyond putting Mae down with its taunts.
+
+{color=aqua|Voice: — That orgy is still on your dirty mind you slut, the way everyone was looking at your flabby body. They were looking at your gigantic tits and fat ass!}""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_VOICE_4A = """{color=aqua|Voice: — And you can't stop thinking how your pussy was ravished by this man every...}""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_VOICE_4B = """{color=aqua|Voice: — And you can't stop thinking how lewd it was being surrounded by cocks...}""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_VOICE_4C = """A loud cry erupts from Mae as her body is enveloped in blue light. After only a moment the voice is gone, and she falls to the ground, panting heavily. Her eyes are full of tears.""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_OPTION_HELP = """*Help her get up*""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_OPTION_STAND = """*Let her do it by herself*""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_HELP = """You gently pick Mae up and put her on her feet. She doesn't say anything as you take her back to the mansion, but you can clearly feel her ache to forget everything that happened.""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_STAND = """You let Mae take a breath until she's able to stand by herself. You lead her back into the mansion as she says nothing, but you can clearly feel her ache to forget everything that happened.""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_HOME = """Finally at home, Mae has calmed down and speaks slowly, holding her hands together.
+
+{color=yellow|Mae: — Aah, it was all because of me... I forgot to close the window curtains before the ritual, so it broke free... I'm so sorry about this...}""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_HOME_OPTION_1 = """No matter, I'm glad you are safe""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_HOME_OPTION_2 = """It's alright, it was your first time after all""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_HOME_OPTION_3 = """Your mistake did cost me a lot of time""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_RESPONSE_1 = """Mae visibly blushes and looks away at your words.
+
+{color=yellow|Mae: — R-really? Thank you, I'm glad you say that, but... going through something so embarrassing... I need a rest.}""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_RESPONSE_2 = """{color=yellow|Mae: — T-Thank you. This is one lesson I'll never forget... I need a rest.}""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_RESPONSE_3 = """Mae seems disappointed by your harsh words, visibly lowering her head.
+
+{color=yellow|Mae: — I'm sorry... this is really an awful rookie mistake of me.}""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_CONCERN = """Before going to her room, she suddenly gives you a vulnerable look.
+
+{color=yellow|Mae: — ...About the things that it said...}
+
+Judging by her blush, it wasn't so much about her insecurity and more about the lewd stuff she went through with you.""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_FINAL_OPTION_1 = """I couldn't really hear what it said... (lie)""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_FINAL_OPTION_2 = """Yeah, it was a bit embarrassing, but we all have moments like this""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_FINAL_OPTION_3 = """If you enjoyed it, you shouldn't shy away from it. You have a lot of potential in you.""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_FINAL_1 = """{color=yellow|Mae: — I-I see... that's good then...}
+
+It doesn't seem like Mae buys your lie, but it comforts her that you choose to pretend nothing happened.""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_FINAL_2 = """{color=yellow|Mae: — Thank you... uhm, I hope we can forget about this happening soon.}""", # MISSING TRANSLATION
+	MAE_SEARCH_COMPLETE_FINAL_3 = """{color=yellow|Mae: — Y-you really think so? Potential in things like this... feels inappropriate to me. But if you are saying so, maybe it's more normal than I thought... Thank you, [name], I feel a little better now I guess.}""", # MISSING TRANSLATION
+	MAE_CITY_QUEST_NAME = """Mae: New old grounds""", # MISSING TRANSLATION
+	MAE_CITY_QUEST_SUMMARY = """Mae asks for help adjusting to the city.""", # MISSING TRANSLATION
+	MAE_CITY_QUEST_STAGE_0 = """Take Mae to the market in Aliron.""", # MISSING TRANSLATION
+	MAE_CITY_QUEST_STAGE_1 = """Visit Shelia's home with Mae.""", # MISSING TRANSLATION
+	MAE_CITY_QUEST_STAGE_2 = """Speak with Mae after crafting potion she requested.""", # MISSING TRANSLATION
+	MAE_CITY_QUEST_STAGE_3 = """Return to Shelia's home with Mae.""", # MISSING TRANSLATION
+	MAE_CITY_QUEST_STAGE_4 = """Search for Mae in Aliron.""", # MISSING TRANSLATION
+	MAE_MARKET_OPTION = """Food Market""", # MISSING TRANSLATION
+	MAE_SHELIA_OPTION = """Shelia's home""", # MISSING TRANSLATION
+	MAE_POTION_OPTION = """Shelia's home""", # MISSING TRANSLATION
+	MAE_POTION_READY_OPTION = """Your potion is finally crafted.""", # MISSING TRANSLATION
+	MAE_SEARCH_TASK_NAME = """Search for Mae""", # MISSING TRANSLATION
+	MAE_SEARCH_TASK_DESC = """Scour Aliron for any sign of Mae's whereabouts.""", # MISSING TRANSLATION
+	MATERIALSPIRIT_POTION = """Spirit Potion""", # MISSING TRANSLATION
+	MATERIALSPIRIT_POTIONDESCRIPT = """A special potion for Mae to better spirit communications.""", # MISSING TRANSLATION
+	MAE_DRUID_EVENT_START = """Mae finds you in the afternoon, seemingly excited about something.
+
+{color=yellow|Mae: — H-hey, [name]... I was browsing through your library, and I found a note saying you know a druid from the elven forest. I was wondering... could you take me to them?}""", # MISSING TRANSLATION
+	MAE_DRUID_EVENT_OPTION_1 = """Why do you want to go there?""", # MISSING TRANSLATION
+	MAE_DRUID_EVENT_OPTION_2 = """What's with the sudden interest?""", # MISSING TRANSLATION
+	MAE_DRUID_EVENT_FOLLOWUP = """{color=yellow|Mae: — I heard about druids from Savra. They are connected to nature too, but they learn and study it instead of simply reaching out to it. I wonder if I could learn something from them.}""", # MISSING TRANSLATION
+	MAE_DRUID_EVENT_FOLLOWUP_OPTION_1 = """I'll see what I can do.""", # MISSING TRANSLATION
+	MAE_DRUID_EVENT_FOLLOWUP_OPTION_2 = """Fine... if I can find the time.""", # MISSING TRANSLATION
+	MAE_DRUID_LORIEN_INTRO = """You take Mae to Lorien, who meets you cautiously at his observatory. As you introduce Mae, she bows respectfully.
+
+{color=yellow|Mae: — Hello, Sir Lorien... I know this is inappropriate, but I truly want to learn more about your ways of nature and magic.}""", # MISSING TRANSLATION
+	MAE_DRUID_LORIEN_TIME = """Some time passes as Mae spends time with Lorien, sharing their passion for studying nature.
+
+{color=aqua|Lorien: — I must admit, you have the affinity to earn the privilege of becoming a druid...}""", # MISSING TRANSLATION
+	MAE_DRUID_LORIEN_OFFER_HIGH = """{color=aqua|Lorien: — However, I'm afraid this is strictly against the rules...}
+
+He glances around carefully, as if checking that no one is watching.
+
+{color=aqua|Lorien: — You know, [name], with some coin, I could train Mae without anyone noticing.}
+
+Mae looks at you with hopeful, pleading eyes.
+
+*Lorien asks for 2,000 gold, and Mae will spend 5 days training to gain the Druid class.*""", # MISSING TRANSLATION
+	MAE_DRUID_LORIEN_OFFER_LOW = """{color=aqua|Lorien: — After Heleviel was removed from power, our rules were relaxed. I think I can secure a place in the funding to enroll her as my trainee. However, I still need some gold to cover the costs.}
+
+*Lorien asks for 500 gold, and Mae will spend 5 days training to gain the Druid class.*""", # MISSING TRANSLATION
+	MAE_DRUID_LORIEN_OFFER_OPTION_1 = """This is a rather large investment, Mae...""", # MISSING TRANSLATION
+	MAE_DRUID_LORIEN_OFFER_OPTION_PAY_HIGH = """Fine, I'll pay (2,000 gold)""", # MISSING TRANSLATION
+	MAE_DRUID_LORIEN_OFFER_OPTION_PAY_LOW = """Fine, I'll pay (500 gold)""", # MISSING TRANSLATION
+	MAE_DRUID_LORIEN_OFFER_OPTION_THINK = """I'll think about it.""", # MISSING TRANSLATION
+	MAE_DRUID_LORIEN_INVESTMENT = """{color=yellow|Mae: — I-I understand... but... I might never get another chance like this again. I swear, I'll do anything you want afterward.}""", # MISSING TRANSLATION
+	MAE_DRUID_LORIEN_PAID = """Mae's face brightens as she thanks you profusely. You leave her in Lorien's custody for the time being.""", # MISSING TRANSLATION
+	MAE_DRUID_LORIEN_REINITIATE = """You meet Lorien again. His offer still stands.""", # MISSING TRANSLATION
+	MAE_DRUID_LORIEN_OFFER_OPTION_PAY_HIGH_SHORT = """Fine, I'll pay (2,000 gold)""", # MISSING TRANSLATION
+	MAE_DRUID_LORIEN_OFFER_OPTION_PAY_LOW_SHORT = """Fine, I'll pay (500 gold)""", # MISSING TRANSLATION
+	MAE_DRUID_RETURN = """After a few days, Mae finally returns to the mansion from her training. She seems genuinely happy to see you again.
+
+{color=yellow|Mae: — [name]! Thank you so much. I learned so many new things...}""", # MISSING TRANSLATION
+	MAE_DRUID_RETURN_OPTION_1 = """I think you can thank me better than that...""", # MISSING TRANSLATION
+	MAE_DRUID_RETURN_OPTION_2 = """I've been missing you too.""", # MISSING TRANSLATION
+	MAE_DRUID_RETURN_OPTION_3 = """Then it's better for you to get to work.""", # MISSING TRANSLATION
+	MAE_DRUID_RETURN_AFFECTION = """Mae smiles at you. The air around her feels more mature now.""", # MISSING TRANSLATION
+	MAE_DRUID_RETURN_WORK = """Mae nods quietly and leaves for her room, slightly disappointed.""", # MISSING TRANSLATION
+	MAE_SPIRIT_QUEST_INITIATE = """Mae approaches you in the morning, asking for a favor.
+
+{color=yellow|Mae: — Good morning, [name]. It's time for me to revisit our village. I need to complete my next ritual of spiritual connection, so... if you don't mind taking me there, I was hoping for your company.}""", # MISSING TRANSLATION
+	MAE_SPIRIT_QUEST_INITIATE_OPTION_1 = """Sure, I'm glad to help.""", # MISSING TRANSLATION
+	MAE_SPIRIT_QUEST_INITIATE_OPTION_2 = """You must be missing everyone from that night?""", # MISSING TRANSLATION
+	MAE_SPIRIT_QUEST_INITIATE_OPTION_3 = """Maybe if I have time.""", # MISSING TRANSLATION
+	MAE_SPIRIT_QUEST_INITIATE_RESPONSE_1 = """{color=yellow|Mae: — Thank you. I'm ready whenever you are, so just say when.}""", # MISSING TRANSLATION
+	MAE_SPIRIT_QUEST_INITIATE_RESPONSE_2 = """{color=yellow|Mae: — W-what are you saying? It's not like that. I'm still embarrassed about it. Please don't bring it up when we're there. I feel like I'll die of shame.}""", # MISSING TRANSLATION
+	MAE_SPIRIT_QUEST_INITIATE_RESPONSE_3 = """{color=yellow|Mae: — I see. I'll be waiting then. It's not urgent, but it has to be done eventually.}""", # MISSING TRANSLATION
+	MAE_SPIRIT_FOLLOW_START = """As Mae cautiously walks into familiar surroundings, you notice there are slightly fewer people around than usual. You see Savra returning from the forest. She invites you into the hut, ready to hear Mae's story.""", # MISSING TRANSLATION
+	MAE_SPIRIT_FOLLOW_SAVRA = """{color=aqua|Savra: — So, how was it, going back to city life after living with us?}
+
+{color=yellow|Mae: — A bit awkward, but nothing too bad, I suppose.}""", # MISSING TRANSLATION
+	MAE_SPIRIT_FOLLOW_SAVRA_2 = """
+{color=yellow|Mae: — Well I was wondering if it is time for me to do a spirit-binding ritual.}
+
+{color=aqua|Savra: — Of course. That's what you're here for, isn't it? You're a smart girl, remembering all the things I keep forgetting.}
+
+{color=aqua|Savra: — You must go into the woods, to the special ground I showed you during our winter tour. Wait until midnight, when the moon is up.}
+
+Mae nods eagerly. She carefully notes Savra's instructions before leaving.""", # MISSING TRANSLATION
+	MAE_SPIRIT_FOLLOW_MIDNIGHT = """{color=yellow|Mae: — To tell the truth, I'm a bit nervous... can you come with me? Even though I know the woods, I would hate to run into a wild animal.}""", # MISSING TRANSLATION
+	MAE_SPIRIT_FOLLOW_OPTION_1 = """I was afraid you wouldn't ask.""", # MISSING TRANSLATION
+	MAE_SPIRIT_FOLLOW_OPTION_2 = """I can't exactly leave someone useless like you alone, I suppose.""", # MISSING TRANSLATION
+	MAE_SPIRIT_FOLLOW_OPTION_3 = """This is really turning into a pain in the ass...""", # MISSING TRANSLATION
+	MAE_SPIRIT_FOLLOW_RESPONSE_1 = """Mae perks up at your answer, and her worries seem to fade.""", # MISSING TRANSLATION
+	MAE_SPIRIT_FOLLOW_RESPONSE_2 = """Mae smiles awkwardly.
+
+{color=yellow|Mae: — T-thanks... sorry. I hope I'll become more useful in the future.}""", # MISSING TRANSLATION
+	MAE_SPIRIT_FOLLOW_RESPONSE_3 = """Mae looks away and rubs her hands in frustration without saying anything.""", # MISSING TRANSLATION
+	MAE_SPIRIT_RITUAL_START = """As Mae begins preparing the ritual, the night air thickens until mist fills most of your vision.
+
+A familiar figure appears, as if woven from the fog itself.""", # MISSING TRANSLATION
+	MAE_SPIRIT_RITUAL_STAG_INTRO = """{color=aqua|White Stag: — You... the new shaman came to make a deal with one of the guardian spirits?}
+
+The White Stag studies Mae closely. She shivers under its gaze.
+
+{color=aqua|White Stag: — This won't do. You are weak. Your spirit is not sufficient to become a shaman. Tell Savra I oppose it.}
+
+Mae's face goes pale, but she steadies herself as the White Stag turns to leave.""", # MISSING TRANSLATION
+	MAE_SPIRIT_RITUAL_STAG_CHALLENGE = """{color=yellow|Mae: — W-wait. I'm not weak. I studied a lot to become a shaman. You can't just reject me like that.}
+
+{color=aqua|White Stag: — You cannot study nature, child. You can only become one with it, and I don't see that in you.}
+
+Mae looks even more worried now, glancing at you as you watch in silence.""", # MISSING TRANSLATION
+	MAE_SPIRIT_RITUAL_OPTION_PROGRESS = """She has been making big progress with her sensuality.""", # MISSING TRANSLATION
+	MAE_SPIRIT_RITUAL_OPTION_PERSUADE = """[Persuasion challenge]She might be weak in spirit, but her body is exceptionally healthy, and that must count for something.""", # MISSING TRANSLATION
+	MAE_SPIRIT_RITUAL_OPTION_BARGAIN = """Surely there's something we can do for you to change your mind.""", # MISSING TRANSLATION
+	MAE_SPIRIT_RITUAL_STAG_ACCEPT = """The White Stag takes another long look at Mae, and its expression shifts.
+
+{color=aqua|White Stag: — Fine. There is some truth in that. Your body's vitality can compensate for your lack of competence, at least in the eyes of some.}""", # MISSING TRANSLATION
+	MAE_SPIRIT_RITUAL_STAG_HIDE = """The White Stag pauses, considering your offer.
+
+{color=aqua|White Stag: — Very well. There may be a spirit or two still willing to bond with you. Bring me an Ancestral Hide. That way, we will know you are serious.}
+
+The White Stag disappears into the mist, leaving you alone together.""", # MISSING TRANSLATION
+	MAE_SPIRIT_RITUAL_STAG_HIDE_2 = """{color=yellow|Mae: — Ancestral Hide, huh... it can be made with rare leather and a simple magical rite. I hope it doesn't bother you too much.}""", # MISSING TRANSLATION
+	MAE_SPIRIT_HIDE_RETURN = """Mae summons the White Stag again and hands over the item you crafted.
+
+{color=aqua|White Stag: — So you have returned. You kept your part of the deal, so I will keep mine. In truth, while your mind is far from ideal, your body is a worthy offer for a contract.}""", # MISSING TRANSLATION
+	MAE_SPIRIT_WHITE_STAG_CONTINUATION_1 = """{color=aqua|White Stag: — I have a guardian spirit that expressed willingness to bond with you. Hearthtusk has a reputation as a strong, loyal companion you can rely on.}
+	{color=aqua|White Stag: — And there is another who showed interest. Velhorn, a rowdy satyr spirit who wishes to be your associate.}""", # MISSING TRANSLATION
+	MAE_SPIRIT_WHITE_STAG_CONTINUATION_2 = """{color=aqua|White Stag: — And... surprisingly, you have also caught the interest of Noctara, a wise owl spirit.}""", # MISSING TRANSLATION
+	MAE_SPIRIT_WHITE_STAG_CONTINUATION_3 = """Mae makes a decision in her mind, but still addresses you quietly, unsure of her own voice.""", # MISSING TRANSLATION
+	MAE_SPIRIT_WHITE_STAG_MAE_OWL = """{color=yellow|Mae: — Do you think an owl spirit would suit me?..}""", # MISSING TRANSLATION
+	MAE_SPIRIT_WHITE_STAG_MAE_SAFE = """{color=yellow|Mae: — I think Hearthtusk would suit me... it's not much of a choice, but it feels safe.}""", # MISSING TRANSLATION
+	MAE_SPIRIT_WHITE_STAG_MAE_SATYR = """{color=yellow|Mae: — That satyr spirit sounds... intriguing, don't you think?}""", # MISSING TRANSLATION
+	MAE_SPIRIT_CHOICE_SUPPORT = """It's your choice. I'll support you.""", # MISSING TRANSLATION
+	MAE_SPIRIT_CHOICE_HEARTH = """Hearthtusk sounds like the safe option.""", # MISSING TRANSLATION
+	MAE_SPIRIT_CHOICE_VELHORN = """You should pick Velhorn. That sounds more fun.""", # MISSING TRANSLATION
+	MAE_SPIRIT_CHOICE_NOCTARA = """Yes. A wise guardian spirit seems right for you.""", # MISSING TRANSLATION
+	MAE_SPIRIT_CHOICE_RESULT = """Mae nods and tells the White Stag her choice.
+
+{color=aqua|White Stag: — So be it. Finish the ritual, and it will be done.}
+
+The White Stag vanishes into the mist the same way it arrived.""", # MISSING TRANSLATION
+	MAE_SPIRIT_AFTER_CHOICE = """{color=yellow|Mae: — It's almost done, but I need a place with stronger power... I know some ancient ruins nearby that feel like the right spot.}
+
+{color=yellow|Mae: — I just hope it's not too dangerous for us.}""", # MISSING TRANSLATION
+	MAE_SPIRIT_AFTER_CHOICE_OPTION_1 = """You should brace yourself for danger. You're not just an apprentice anymore.""", # MISSING TRANSLATION
+	MAE_SPIRIT_AFTER_CHOICE_OPTION_2 = """It won't be as dangerous with me there.""", # MISSING TRANSLATION
+	MAE_SPIRIT_AFTER_CHOICE_OPTION_3 = """You seemed more nervous in front of a cock.""", # MISSING TRANSLATION
+	MAE_SPIRIT_AFTER_CHOICE_RESPONSE_1 = """{color=yellow|Mae: — You're right. I can do it... well, with your help at least.}""", # MISSING TRANSLATION
+	MAE_SPIRIT_AFTER_CHOICE_RESPONSE_2 = """{color=yellow|Mae: — Thank you, [name]. I'm glad you're on my side.}""", # MISSING TRANSLATION
+	MAE_SPIRIT_AFTER_CHOICE_RESPONSE_3 = """{color=yellow|Mae: — H-hey, don't say that. I'm being serious.}""", # MISSING TRANSLATION
+	MAE_SPIRIT_AFTER_CHOICE_LEAVE = """You leave with Mae, preparing to finish the task.""", # MISSING TRANSLATION
+	MAE_ANCIENT_JUNGLE_START = """You find a small, half-ruined altar in a secluded, overgrown room. Mae nods approvingly.
+
+{color=yellow|Mae: — Yes. I can feel it. The magic is especially strong here. This must have been used as a ritual chamber in the past.}""", # MISSING TRANSLATION
+	MAE_ANCIENT_JUNGLE_RITUAL_CHOICE = """As Mae prepares, settling into a meditation pose, you grow bored and study the walls by torchlight. A few reliefs, seemingly undamaged by time, catch your eye. They suggest the rituals held here were far more perverse in nature.
+
+Mae notices your interest and raises her voice.
+
+{color=yellow|Mae: — [name]? Is there something on the wall?}""", # MISSING TRANSLATION
+	MAE_ANCIENT_JUNGLE_RITUAL_OPTION_1 = """Maybe you should do a slightly different ritual...""", # MISSING TRANSLATION
+	MAE_ANCIENT_JUNGLE_RITUAL_OPTION_2 = """No, it's nothing.""", # MISSING TRANSLATION
+	MAE_ANCIENT_JUNGLE_RITUAL_LEWD = """Mae steps closer, scanning the lewd images.
+
+{color=yellow|Mae: — O-oh my... it seems this place was used for a different kind of ritual. Something like this would surely make it more potent...}
+
+Hesitant at first, she quickly gives in to the idea of attempting something different from what she originally planned.
+
+{color=yellow|Mae: — You won't tell anyone what I'm going to do here?}""", # MISSING TRANSLATION
+	MAE_ANCIENT_JUNGLE_RITUAL_LEWD_OPTION_1 = """Saying you got horny and did something naughty? Don't worry about it.""", # MISSING TRANSLATION
+	MAE_ANCIENT_JUNGLE_RITUAL_LEWD_OPTION_2 = """This might be the least weird thing that happens to you so far.""", # MISSING TRANSLATION
+	MAE_ANCIENT_JUNGLE_RITUAL_LEWD_RESPONSE_1 = """{color=yellow|Mae: — Sigh... I really have become weird, getting excited about something like this, haven't I...}""", # MISSING TRANSLATION
+	MAE_ANCIENT_JUNGLE_RITUAL_LEWD_RESPONSE_2 = """Mae pouts at you.
+
+{color=yellow|Mae: — Come on. It's your fault, with all the things that have happened to me since I met you...}""", # MISSING TRANSLATION
+	MAE_ANCIENT_JUNGLE_RITUAL_SCENE = """Mae slowly removes her clothes and positions herself on the altar. Her legs spread wide as she begins the ritual.""", # MISSING TRANSLATION
+	MAE_ANCIENT_JUNGLE_RITUAL_FINISH = """As the ritual ends, a dim light surrounds Mae.""", # MISSING TRANSLATION
+	MAE_ANCIENT_JUNGLE_RITUAL_HEARTHTUSK = """A warm, steady presence settles around Mae, like a heartbeat beneath the earth. Strength answers her call, quiet and loyal, promising endurance and protection on the paths ahead.
+
+{color=aqua|Hearthtusk: — Your roots will run deep, and your steps will not break. I will stand with you when the ground itself resists.}
+
+{color=yellow|Mae: — I feel it... steady and warm. I will not falter. I promise.}""", # MISSING TRANSLATION
+	MAE_ANCIENT_JUNGLE_RITUAL_VELHORN = """Soft laughter echoes through the ruins as wild energy coils around her spirit. Passion and impulse bind together, urging Mae to live boldly and learn through experience rather than restraint.
+
+{color=aqua|Velhorn: — Live loudly, feel deeply, and do not deny what stirs within you. Through passion, your spirit will grow strong.}
+
+{color=yellow|Mae: — My heart is racing... but it feels right. I won't be afraid of myself anymore.}""", # MISSING TRANSLATION
+	MAE_ANCIENT_JUNGLE_RITUAL_NOCTARA = """The light dims as calm wisdom descends, feathered and patient. Insight takes root in silence, offering clarity, foresight, and watchful guidance through shadowed nights.
+
+{color=aqua|Noctara: — In silence, truth reveals its wings. I grant you sight beyond fear and patience beyond doubt.}
+
+{color=yellow|Mae: — It's so calm now... I will listen, and I will learn.}""", # MISSING TRANSLATION
+	MAE_SPIRIT_VISIT_SAVRA = """Mae and you return to the village as dawn slips between the trees. Savra listens in silence while Mae recounts the ritual, her voice steady despite everything she endured. When Mae finishes, Savra closes her eyes for a long moment, then nods.
+
+{color=aqua|Savra: — You have done well. Binding a guardian spirit is no small feat, especially for one walking your path. You are no longer just my apprentice.}
+
+Mae straightens slightly at the words.
+
+{color=aqua|Savra: — But there is one final task I must ask of you. To the north, beyond the old pine ridges, there is another forest tribe. Their shaman sent word. Something troubles their land, and they asked for help. This will be your trial as a shaman who walks beyond her home.}
+
+Mae turns to you, searching your face before speaking.
+
+{color=yellow|Mae: — I... I want to do this. But I won't lie. It scares me a little.}""", # MISSING TRANSLATION
+	MAE_SPIRIT_VISIT_SAVRA_OPTION_1 = """Of course we'll help them. This is important for you.""", # MISSING TRANSLATION
+	MAE_SPIRIT_VISIT_SAVRA_OPTION_2 = """We can go, but I don't like being sent into unknown trouble.""", # MISSING TRANSLATION
+	MAE_SPIRIT_VISIT_SAVRA_RESPONSE = """Mae's ears perk up, and she nods eagerly.
+
+{color=yellow|Mae: — Thank you. With you by my side, I think I can handle whatever awaits us there.}""", # MISSING TRANSLATION
+	MAE_NORTHERN_TRIBE_START = """You arrive at the northern forest tribe by late afternoon. The settlement looks familiar in many ways, wooden huts woven with vines and charms, stone totems half-covered in moss. Still, the air feels different, heavier somehow.
+
+As you walk the main path, Mae slows her pace. Several young male beastkin linger nearby, pretending to keep busy, but their eyes keep drifting toward her. When Mae glances back, they quickly look away, ears flicking nervously.
+
+Mae shifts uncomfortably, lowering her voice.
+
+{color=yellow|Mae: — A-are they all staring at me...?}""", # MISSING TRANSLATION
+	MAE_NORTHERN_TRIBE_DIRECTIONS = """Eventually, one of the villagers approaches. After a brief exchange, he gives you directions to the local shaman's hut. He hesitates, then speaks again.
+
+{color=aqua|Villager: — Our shaman hasn't been well lately. He's been resting for days.}
+
+Mae nods politely, concern flashing across her face.
+
+{color=yellow|Mae: — Now I see why we had to come here.}""", # MISSING TRANSLATION
+	MAE_NORTHERN_TRIBE_SHAMAN = """Inside the shaman's hut, the air is warm and heavy with the scent of herbs. An elderly lion beastkin sits near the fire, his mane faded with age, but his posture still firm. When he looks up, you immediately notice the resemblance.
+
+{color=yellow|Mae: — He looks like Leon.}
+
+{color=aqua|Shaman: — Hah. You're not wrong. I'm Rakar, his older brother. The one who stayed behind to grow old with spirits instead of blades. Thank Rundas you came.}""", # MISSING TRANSLATION
+	MAE_NORTHERN_TRIBE_REQUEST = """Rakar gestures for you to sit, his tone calm, almost casual despite the situation.
+
+{color=aqua|Rakar: — I won't waste your time. I've been ill lately. Nothing dramatic, but enough that I can't safely perform rituals. Because of that, the coming-of-age rites for our young males have been delayed.}
+
+Mae's expression tightens with concern.
+
+{color=yellow|Mae: — Those rituals are important for them...}""", # MISSING TRANSLATION
+	MAE_NORTHERN_TRIBE_REQUEST_2 = """{color=aqua|Rakar: — Exactly. Spirits can grow impatient, and so can young men. They want to become proper warriors and hunters. That is why I asked for help. Savra spoke highly of you, Mae. I also see you recently bound a guardian spirit.}
+
+{color=yellow|Mae: — I did... but I'm still learning.}""", # MISSING TRANSLATION
+	MAE_NORTHERN_TRIBE_REQUEST_3 = """{color=aqua|Rakar: — I want you to lead the coming-of-age festival in my place. The customs must be fulfilled, and I would rather trust a careful outsider than rush it myself in this state.}
+
+Mae exhales slowly, glancing at you, then nods.
+
+{color=yellow|Mae: — I understand. I can't deny a request from a shaman of your status.}""", # MISSING TRANSLATION
+	MAE_NORTHERN_TRIBE_REQUEST_OPTION_1 = """So what is this festival supposed to be?""", # MISSING TRANSLATION
+	MAE_NORTHERN_TRIBE_REQUEST_OPTION_2 = """Don't rush into promises.""", # MISSING TRANSLATION
+	MAE_NORTHERN_TRIBE_OFFER = """Rakar clears his throat, leaning back with a tired, honest sigh.
+
+{color=aqua|Rakar: — The coming-of-age rite for our tribe is... communal. It is a ritual of vitality and unity. Mae would stand at the center, with the initiates and a companion.}
+
+{color=yellow|Mae: — C-communal...? You mean... like that?}
+
+{color=aqua|Rakar: — I believe you performed something similar not too long ago.}""", # MISSING TRANSLATION
+	MAE_NORTHERN_TRIBE_OFFER_2 = """Mae blushes, the memory flashing across her face.
+
+{color=aqua|Rakar: — But I can tell you may have adopted a different way of life among [race]. If you want, I will allow you to handle it differently.}""", # MISSING TRANSLATION
+	MAE_NORTHERN_TRIBE_OFFER_OPTION_1 = """[Sexual Factor]That ritual sounds fun, Mae. Let's do it. (one time)""", # MISSING TRANSLATION
+	MAE_NORTHERN_TRIBE_OFFER_OPTION_2 = """We should pass on it.""", # MISSING TRANSLATION
+	MAE_NORTHERN_TRIBE_OFFER_OPTION_3 = """Have we missed something?""", # MISSING TRANSLATION
+	MAE_NORTHERN_RITUAL_ACCEPT = """{color=yellow|Mae: — W-well... I guess it's a custom.}
+
+{color=aqua|Rakar: — Very good. I knew I could count on new blood. Let me instruct you...}""", # MISSING TRANSLATION
+	MAE_NORTHERN_RITUAL_REFUSE = """{color=yellow|Mae: — No... s-sorry. I don't think I can do that.}
+
+Rakar looks disappointed, but Mae's nervousness keeps him from pushing.""", # MISSING TRANSLATION
+	MAE_NORTHERN_RITUAL_AFTER = """The next day, you and Mae visit Rakar one last time before leaving.
+
+{color=aqua|Rakar: — Ah, what a splendid coming-of-age ritual you provided. I'm sure they won't forget it.}
+
+{color=yellow|Mae: — Y-yeah... it wasn't too bad. I guess I'm getting used to this. Are you sure you'll recover with time?}
+
+{color=aqua|Rakar: — Of course. I still have years ahead of me. By the way, I have a small parting gift for you.}""", # MISSING TRANSLATION
+	MAE_NORTHERN_RITUAL_GIFT = """Rakar hands Mae an ornate leather headdress.
+
+{color=yellow|Rakar: — Good luck on your adventures, and don't forget your duties.}
+
+As you leave the hut, Mae turns to you.
+
+{color=yellow|Mae: — Thank you, [name]. Without you, I wouldn't have been able to do any of that. You really helped me grow as a person.}""", # MISSING TRANSLATION
+	MAE_NORTHERN_DECLINE = """Rakar looks very disappointed, perhaps more than someone as old and wise as he seems should be.
+
+{color=aqua|Rakar: — That's a shame... maybe you could give me just a quick glimpse of your luxurious chest, then? I was really hoping to be honored during the ceremony...}
+
+{color=yellow|Mae: — Huh...? What!?}
+
+{color=aqua|Rakar: — It's a joke. Don't worry. Do it however you want. I'll leave it to you.}""", # MISSING TRANSLATION
+	MAE_NORTHERN_DECLINE_2 = """As you leave the hut, Mae speaks quietly to you.
+
+{color=yellow|Mae: — I can do the ritual that was performed for me when I was accepted into the tribe. I think that will be enough.}""", # MISSING TRANSLATION
+	MAE_NORTHERN_DECLINE_FESTIVAL = """After preparing for the festival, it proceeds without issue. Mae holds herself steady and dignified, with almost no stuttering, as her status demands.""", # MISSING TRANSLATION
+	MAE_NORTHERN_DECLINE_GIFT = """The next day, you and Mae visit Rakar one last time before leaving.
+
+{color=aqua|Rakar: — You did a good job. Not quite what I hoped to see, but it served its purpose.}
+
+{color=yellow|Mae: — Thank you. Are you sure you'll recover with time?}
+
+{color=aqua|Rakar: — Of course. I still have years ahead of me. By the way, I have a small parting gift for you.}""", # MISSING TRANSLATION
+	MAE_NORTHERN_MISSED = """{color=yellow|Mae: — Hmm. Can you tell me more about your illness?}
+
+Mae listens as Rakar describes his symptoms, and as he goes on, her face brightens.
+
+{color=yellow|Mae: — Oh... I know what this is. Lorien taught me about it. You haven't been eating only cooked meat recently, have you?}
+
+{color=aqua|Rakar: — Well, it's been difficult for me to eat raw food at my age...}""", # MISSING TRANSLATION
+	MAE_NORTHERN_MISSED_AFTER = """After spending more time helping Rakar with herbs and dietary advice, his condition improves notably.
+
+In less than two days, Rakar is already looking better.
+
+{color=aqua|Rakar: — At this rate, I can hold the festival myself. My condition has improved thanks to your help. That was something you learned from the elves? Their way of uniting with nature is something to behold. Now, I have a small parting gift for you.}""", # MISSING TRANSLATION
+	MAE_SEX_BEHIND_1 = """You stand behind her, the warmth of her back pressing against your chest. The tribalistic bra she wore moments ago lies discarded on the wooden floor, along with her simple loincloth. Your arms wrap around her soft, chubby form, hands coming to rest on her heavy breasts. They fill your palms completely, the creamy fur surprisingly silky against your skin. Her nipples stiffen immediately at your touch, small points of hardness that you roll between your thumb and forefinger.
+
+She trembles, a shiver running through her entire body, but doesn't pull away. Instead, she arches slightly into your touch, her dreamy eyes half-closed, lips parted in silent pleasure. Your hands continue their exploration, kneading the soft flesh, feeling the weight of her tits as they sway gently with each movement.
+
+Your erect cock presses against her back. With one hand still caressing her breast, you slide the other down her plump stomach, over the slight curve of her belly, until you reach the juncture of her thighs. She's already wet, her arousal evident in the slickness that coats your fingers when you brush against her folds.
+
+{color=yellow|Mae: — Ah... I can't believe I get wet so easily from your hands...}""", # MISSING TRANSLATION
+	MAE_SEX_BEHIND_2 = """Guiding your cock between her thighs, you feel the heat of her even before you're fully positioned. Her thighs are soft yet firm, encasing you in a warm embrace. When you finally push through, the sensation is exquisite - the friction of her creamy fur against your skin, combined with the slickness from her pussy, creates a perfect combination.
+
+{color=yellow|Mae: — Hngh... This feels so weird...}
+
+You begin to move slowly at first, establishing a rhythm that has her gasping softly. Her breasts bounce with each thrust, and you reach around to pinch her nipples again, eliciting a choked sound of pleasure. Her wide thighs tremble with the effort of staying upright, and you can feel the muscles tensing and releasing in sync with your movements.""", # MISSING TRANSLATION
+	MAE_SEX_BEHIND_3 = """You withdraw slightly, repositioning yourself at her entrance. She tenses momentarily, her plump ass pushing back against you in anticipation. With a slow, steady push, you enter her, the tight pussy enveloping you inch by inch. She cries out softly as you fill her completely, leaning on you for support.
+
+Her pussy walls grip you tightly, and you savor the sensation before beginning to move. Each thrust impale her slightly deeper, her heavy tits swinging in rhythm with your movements. You reach around to cup them again, using them as leverage to pull her back onto you with every stroke.
+
+{color=yellow|Mae: — Ah, gods... doing it while standing in your office...}
+
+The room fills with the sounds of your bodies meeting, her soft gasps and whimpers, your heavy breathing. Her reddish eyes are glazed with pleasure. You can feel her approaching climax as her walls begin to flutter around you, her thighs trembling uncontrollably now.""", # MISSING TRANSLATION
+	MAE_SEX_BEHIND_4 = """{color=yellow|Mae: — Aaah, I'm about to... Nhhh!...}
+
+You quicken your pace, driving deeper into her, your fingers digging into the soft flesh of her breasts. She throws her head back against your shoulder, a choked cry escaping her lips as she finally comes undone. Her orgasm washes over her, her pussy contracting around you so tightly that it pushes you over the edge too. You bury yourself deep inside her as your release pulses through you, filling her with your semen.
+
+For a moment, you both remain still, connected in the aftermath of your shared pleasure. Then, slowly, you withdraw from her, watching as your seed trickles down the inside of her thigh. She turns to face you, her face flushed and her eyes heavy with satisfaction, a small smile playing on her lips.
+
+{color=yellow|Mae: — You made me do it again... I feel like I'm really getting used to it.}""", # MISSING TRANSLATION
+	MAE_SEX_RITUAL_1 = """{color=yellow|Mae: — Can't believe I'm going to do something like this...}
+
+Mae's bare feet slapped softly against the uneven flagstones as she approached the altar. With a soft grunt of effort, she hauled her chubby frame onto the cold stone. The shock of it against the heat of her skin made her shiver, her heavy tits swaying with the movement. She settled into a deep squat, knees wide apart, the plump flesh of her thighs quivering slightly. The position put her dripping cunt on full display, its pink folds already slick and puffy with anticipation. Her wide hips and the generous curve of her ass made the pose both difficult and shamelessly exposing.
+
+Her reddish eyes, half-lidded and hazy, drifted around the shadowy chamber. One hand slid down the soft swell of her belly. Padded fingers brushed through the thatch of hair above her slit before delving lower.""", # MISSING TRANSLATION
+	MAE_SEX_RITUAL_2 = """The sounds were wet, obscene in the quiet chamber. A slick, wet noise echoed off the stone walls as she worked her finger faster against her clit. Her hips began to rock, a slow, grinding rhythm against her own hand. Juice leaked from her cunt, trickling down the inside of her thigh, glistening on her brown fur. The scent of her arousal—musk, sweet and animalistic—rose to fill the small space, mingling with the ancient smell of the room.
+
+{color=yellow|Mae: — Ooh... I can feel it... The energy of this place... It's really getting to me...}
+
+Her breath came in ragged pants now, misting in the cool air. She abandoned the pretense of slowness, her fingers becoming a blur. Two of them plunged into her clenching pussy, curling upwards to find that spongy spot inside. She fucked herself with them, hard, her palm slapping against her splayed pussy lips with every thrust.
+
+The build-up was a coiling heat in her gut, a tightening of every muscle. Her squat widened, her feet planted firmly on the obsidian. Her cunt made a sloppy, sucking sound around her fingers as she pushed them in and out. Her back arched, thrusting her tits forward. A low, guttural moan was torn from her throat, the only sound of voice she allowed herself.""", # MISSING TRANSLATION
+	MAE_SEX_RITUAL_3 = """{color=yellow|Mae: — Aaah! I'm!... Cumming!!}
+
+A gush of fluid flooded her hand, her thighs, dripping onto the altar beneath her. Her whole body seized, muscles clamping down, a tremor running from her clenched toes up through her plump body to the tips of her ears. Her head fell back, her long brown hair brushing against the cold stone, another silent cry hanging on her lips.""", # MISSING TRANSLATION
+	MAE_SEX_RITUAL_4 = """{color=aqua|Velhorn: — Well now, why stop here little tanuki? You want to have a bit more fun for our little bonding session, don't you? }
+
+The pleasure was still ebbing, a warm, languid tide, when something beneath her came alive.Shadows detached themselves from the corners of the room, flowing like liquid across the floor. They were vines, thick as her wrist, covered in a dark, moss-like fuzz. They moved with an impossible, silent grace.
+
+{color=yellow|Mae: — W-wait... Wow, this is...}
+
+Her protest was only a minor habit, her body and mind have been quickly succumbing to pleasure desiring for more.""", # MISSING TRANSLATION
+	MAE_SEX_RITUAL_5 = """One snaked around her ankle, the texture rough and surprisingly warm against her fur. Before she could even twitch, another mirrored it on her other leg. They pulled, not hard, but with an unyielding strength, forcing her squat even wider, stretching her thighs until the muscles burned. She was trapped, her legs splayed obscenely, her pussy still dripping onto the altar.
+
+More vines slithered up her body. They coiled around her plush waist, the tips brushing against the underside of her heavy tits. Two of them, thinner and more flexible, wrapped around each of her wrists, pulling her arms behind her back and binding them at the small of her spine. She was immobilized, a living offering on the black stone, her chest heaving with panicked breaths that made her tits jiggle.""", # MISSING TRANSLATION
+	MAE_SEX_RITUAL_6 = """A vine, different from the others, rose up between her spread legs. It was thicker, and its tip was not pointed but bulbous, shaped almost like a fat, knotted mushroom head, glistening with a clear, viscous sap. It nudged against her still-sensitive clit, making her jolt. Then, without warning, it drove into her.
+
+{color=yellow|Mae: — Aaah!... So big...}
+
+Mae's back arched off the stone. It filled her completely, stretching her pussy to its limits. The rough, fuzzy texture scraped against her inner walls as it began to move, deep and hard. It penetrated her with a rhythmic precision, each thrust bringing a moan from her lungs. The bulbous head dragged against her sensitive spot with every pass, sending jolts of agonizing pleasure through her bound body.
+
+As her body adjusted, another vine, thinner but just as determined, probed at the tight ass. It circled the rim, smearing its slick sap around her hole. Mae tensed, a fresh wave of panic washing over her. It pushed, insistent and unyielding. The burn was sharp as her sphincter was forced open, yielding inch by inch to the invasive vine. It filled her ass, a strange, full pressure that mingled with the overwhelming sensation in her cunt.""", # MISSING TRANSLATION
+	MAE_SEX_RITUAL_7 = """The two vines found a rhythm. As one pulled back, the other pushed forward, a relentless assault that sawed through her. Her plump body was rocked between them, her tits bouncing with the force of their fucking. She lost herself in pleasure as her both holes were used. Her body betrayed her, responding to the rough treatment with a renewed wave of heat.
+
+{color=aqua|Velhorn: — Come on, she wants you to join, her mouth is still free.}
+
+You moved without a delay, your own cock hard and heavy in your grip. You approached her head, looming over her bound form. Her soft, pink lips were parted, panting around the silent moans. You grabbed a fistful of her long brown hair, tilting her head back. Her reddish eyes, wide and glazed, stared up at you.
+
+{color=yellow|Mae: — Ah, [name]... Fill me...}
+
+You pressed the head of your cock against her lips. She hesitated for a second, her body still rocking from the dual fucking she was receiving. Then, her lips parted willingly, allowing you to slide in. The wet heat of her mouth was a welcome sensation. You pushed deeper, groaning as you felt the head of your dick brush against the back of her throat. She gagged slightly, but didn't resist, her tongue swirling around your shaft.""", # MISSING TRANSLATION
+	MAE_SEX_RITUAL_8 = """You set the pace, fucking her face in counterpoint to the vines. As they thrust deep into her cunt and ass, you would pull back, leaving just the tip of your cock between her lips. Then, as they withdrew, you would slam forward, burying yourself to the hilt in her tight throat.
+
+Her moans became muffled gurgles around your thick shaft. The vibrations of her sounds sent shivers of pleasure up your spine. You could feel her body tensing, her muscles tightening as another orgasm built. Her pussy clamped down hard on the vine fucking her, and her ass convulsed around the other. The pleasure was too much. Mae's body thrashed against her bonds as she came, a silent scream tearing from her throat. You watched, mesmerized, as your own release erupted, painting her face and tits with thick, white ropes of cum. The vines within her shuddered, flooding both her holes with their own hot, viscous sap.
+
+Finally the ritual was complete, the vines withdrawn and released her body into your arms.""", # MISSING TRANSLATION
+	MAE_SEX_TRIBE_1 = """The ritual starts with the beastkin gathering around. Mae is already free from her clothes, shaking slightly with anticipation. You lay on the ground, waiting for her move.
+
+She straddles your hips, her plump, furry thighs gripping your own. The creamy brown fur of her body is adorned with swirling purple tribal symbols. Her heavy tits rise and fall with each ragged breath, the erect nipples stiff and peeking through her fur. Her reddish eyes, usually so shy and downcast, are now dark with a lustful haze as she takes in the chaotic scene around her.
+
+{color=yellow|Mae: — I'm not too heavy, [master]? I am... really drenched, though.}
+
+You feel the wet heat of her pussy against your stomach, the slick juices matting the fur there. She shifts her weight, her hands braced on your chest, the muscles in her thick thighs flexing. Slowly, deliberately, she reaches between them and grabs your throbbing cock. The touch is electric, sending a jolt straight up your spine. She guides the head to her dripping entrance, her own slickness coating you instantly.
+
+Without hesitation, she sinks down. Her tight cunt stretches to accommodate your girth, the walls hot and velvety as they grip your shaft. A low groan escapes your lips as she takes you to the hilt, her plump ass resting on your pelvis. She starts to move, a slow, grinding rhythm that makes your head spin. The sight of her, this once-shy tanuki, riding you with abandon in the middle of this debauched ritual, is almost too much to bear.""", # MISSING TRANSLATION
+	MAE_SEX_TRIBE_2 = """Her hips rock back and forth, the movement becoming more frantic with every passing second. You can feel every twitch of her inner muscles as she clenches around you. Her heavy tits bounce with the force of her movements. She leans forward, her long brown hair brushing against your chest, and you get a clear view of the other beastkin men moving in closer. Their cocks are hard and ready, their eyes locked on the tanuki girl riding you.
+
+Mae seems to sense their presence. Reaching out with both hands, she wraps her fingers around the two nearest cocks. Her grip is firm, her hands slick with her own juices and your precum. She starts to stroke them in time with her grinding, her wrists twisting in a way that has both men groaning in pleasure. She starts recalling the previous time she was in same situation, however this time nothing alien clouds her mind.
+
+{color=yellow|Mae: — Aah, I'm really doing this...}""", # MISSING TRANSLATION
+	MAE_SEX_TRIBE_3 = """She leans back, changing the angle and driving your cock even deeper inside her. Her pace quickens, the wet slap of flesh on flesh filling the air. Her handjobs become more erratic, her fingers flying over the shafts, her thumbs swirling around the leaking tips. She takes the new cock into her mouth, her lips stretched wide around the canine-like cock.
+
+The beastkin she's blowing grabs a handful of her long brown hair, forcing her head down further. Mae gags slightly but doesn't resist, her throat working as she takes him deeper. Her movements on your lap become more frenzied, her pussy clamping down on your cock like it has a mind of its own. The dual stimulation has her writhing, her body a conduit for the raw, animalistic pleasure of the moment.
+
+{color=yellow|Mae: — Mhh, I'm turning into a complete slut... Aaah... But it feels... so good...}""", # MISSING TRANSLATION
+	MAE_SEX_TRIBE_4 = """Just when you think she can't handle any more, another beastkin moves behind her. Without any preamble, he kneels and presses the thick head of his cock against her tight asshole. Mae tenses for a moment, her body going still, but then she relaxes, a muffled moan escaping around the cock in her mouth.
+
+The wolf-kin pushes in slowly, giving her time to adjust. You can feel the pressure against your own cock through the thin wall separating her holes. Once he's fully seated inside her, they begin to move in tandem, one pulling out as the other pushes in.
+
+{color=yellow|Mae: — AAAhh... All of my holes!... Together...}
+
+The rhythm is brutal, relentless. Mae is caught between you, her body a vessel for their collective lust. Her mind goes blank, consumed by the overwhelming sensations. Your cock in her cunt, another in her ass, a third stretching her lips, and two more in her hands. She's nothing but a series of holes to be used, a willing participant in this primal ritual.
+
+The pace becomes more frantic, more erratic. The wolf-kin behind her grabs her plump hips, his claws digging into her flesh as he drives into her with punishing force. Your own thrusts become more powerful, lifting her off the ground with each upward stroke.""", # MISSING TRANSLATION
+	MAE_SEX_TRIBE_5 = """You feel her start to tremble, her whole body shaking with the force of her impending orgasm. Her cunt spasms around your cock, the walls clamping down so tight it's almost painful. Her moans become high-pitched, desperate mewls around the dick in her mouth.
+
+{color=yellow|Mae: — Aaaaaaah!!...}
+
+First is the man in her mouth. With a loud roar, he pulls back slightly and shoots thick ropes of cum across her face and into her open mouth. Almost simultaneously, the two cocks in her hands erupt, coating her heavy tits and soft stomach in hot, sticky fluid.
+
+You grab her wide hips, slamming her down one last time as your own orgasm crashes over you. Your cock pulses, filling her with spurt after spurt of hot cum. The feeling triggers her own release.
+
+Mae throws her head back, an orgasmic cry on her lips as her body convulses. Her juices gush out, soaking your thighs and the ground beneath you. Her cunt milks your cock, drawing out every last drop of your seed. Yet, the festival is far from over...""", # MISSING TRANSLATION
+	MAE_WEDDING_1 = """The wedding celebration's echoes still linger in the night air beyond your chamber, but inside, the only sounds are the soft crackle of the hearth and the frantic beat of your own heart. Mae stands before you, her tribal wedding garments. A beaded bra that strains against her heavy breasts and a loincloth that does little to hide the generous curve of her ass, making her look both primal and achingly vulnerable.
+
+You reach out, your fingers tracing the line of her cheek. She flinches at the contact, a soft whimper escaping her lips, but she doesn't pull away. A sweet scent of anticipation hangs in the air between you. You move behind her.
+
+{color=yellow|Mae: — Please, do anything you want to me...}""", # MISSING TRANSLATION
+	MAE_WEDDING_2 = """Your hands slide down her shoulders, feeling the soft creamy fur give way to supple flesh. You unfasten her bra, and it falls away, revealing her heavy tits. They droop slightly from their weight, the nipples hard and dark in the firelight. You take their weight in your hands, feeling their warmth, their softness.
+
+Her body tenses for a moment, then relaxes into yours, the plumpness of her ass molding perfectly against your groin. Her wide thighs part slightly as you run your hands down her stomach, down to the coarse fabric of her loincloth. You pull it aside, exposing her to the firelight. Her pussy is already slick, glistening with wetness. The lips are thick and puffy, a darker shade than the surrounding fur.
+
+You grip her thighs, feeling their impressive girth in your hands. You lift her effortlessly, her body light despite its generous curves. Her legs wrap around your waist, her ankles locking behind your back. You position her, her back pressed against your chest, her thighs held wide and high in the crook of your arms. The angle exposes her completely, leaving her slick pussy open and waiting.
+
+{color=yellow|Mae: — Ah... this is slightly embarrassing...}""", # MISSING TRANSLATION
+	MAE_WEDDING_3 = """You enter her in one smooth, deep thrust. She gasps, her body tensing as your cock stretches her. You can feel every inch of her inner walls, every twitch and flutter of her muscles as they adjust to your size. You hold her there for a moment, buried to the hilt, letting her get used to the feeling of being so full.
+
+You pull out almost completely, leaving just the tip of your cock inside her, then slam back in, your hips meeting the flesh of her ass with a wet, meaty sound. Her tits bounce with each thrust, her head lolls back against your shoulder, her reddish eyes glazed over with pleasure. Her claws dig into your arms, not in pain, but in a desperate attempt to anchor herself as you piston into her.
+
+The scent of sex fills the room, musky and sweet. Her pussy is tighting around you, clenching and unclenching with each thrust. You can feel her body tensing, her breathing coming in short, sharp gasps. Her thighs tremble in your grip.
+
+You feel her orgasm build, a deep tremor that starts in her core and radiates outward. Her pussy spasms around your cock, her juices flooding you as she comes with a scream, her body arching back against yours. You continue to thrust through her orgasm, drawing out her pleasure until she's a limp, trembling mass in your arms. You cum in a moment, filling her orgasming pussy with your seed.
+
+{color=yellow|Mae: — Aaah!... It's so hot!..}""", # MISSING TRANSLATION
+	MAE_WEDDING_4 = """But you're not done. You pull out of her, your cock slick with her juices. Her ass is still raised, exposed and waiting. You position yourself at her other entrance. She tenses, her body bracing for what's to come accepting anything you demand.
+
+{color=yellow|Mae: — [name]... Even my butt? Please, be gentle...}
+
+You push in slowly, feeling the resistance of her sphincter as it stretches to accommodate you. Her body trembles, a mix of pain and pleasure, but she doesn't try to pull away. You're halfway in when you pause, letting her adjust, then you push in the rest of the way, burying yourself in her tight ass.
+
+Her hot ass grip milks your cock with every movement. You start to thrust, slowly at first, then faster, harder. The sounds she makes now are different, deeper, more primal. Her body rocks with each thrust, her tits slapping against her chest.""", # MISSING TRANSLATION
+	MAE_WEDDING_5 = """Her hands grip your arms tightly, her knuckles white. You can feel her body responding, her ass clenching around you, her hips pushing back to meet your thrusts. She's enjoying this as much as you are, the thought sending a fresh wave of arousal through you.
+
+Her body jerks, her legs kicking out, her hips bucking wildly as you continue to pound her ass. You feel her ass spasm as another orgasm rips through her, more intense than the last. You cum again, this time in her ass, your hips jerking as you empty yourself into her.
+
+You pull out slowly, watching as your cum leaks from her ass, down her thighs. She's a mess, but she's your mess. You lower her to the bed, her body limp with exhaustion and satisfaction.
+
+{color=yellow|Mae: — [name], I love you...}""", # MISSING TRANSLATION
+	MAE_LORIEN_OPTION = """Meet Lorien with Mae""", # MISSING TRANSLATION
+	MAE_SPIRIT_FOLLOW_OPTION = """Follow after Mae""", # MISSING TRANSLATION
+	MAE_SPIRIT_VISIT_SAVRA_OPTION = """Visit Savra""", # MISSING TRANSLATION
+	MAE_SPIRIT_RITUAL_OPTION = """Let Mae prepare for the spirit ritual""", # MISSING TRANSLATION
+	MAE_SPIRIT_RITUAL_OPTION_REMINDER = """Return when you have the Ancestral Hide""", # MISSING TRANSLATION
+	MAE_NORTHERN_TRIBE_OPTION = """Make it in""", # MISSING TRANSLATION
+	QUEST_MAE_SPIRIT_RITUAL_TEXT = """Ritual Grounds""", # MISSING TRANSLATION
+	QUEST_MAE_SPIRIT_RITUAL_DESC = """A misty clearing where Mae can attempt her spirit-binding ritual.""", # MISSING TRANSLATION
+	QUEST_MAE_ANCIENT_JUNGLE_TEXT = """Ancient Jungle Ruins""", # MISSING TRANSLATION
+	QUEST_MAE_ANCIENT_JUNGLE_DESC = """Ancient ruins hidden in the jungle, steeped in ritual power.""", # MISSING TRANSLATION
+	QUEST_MAE_NORTHERN_TRIBE_TEXT = """Northern Forest Tribe""", # MISSING TRANSLATION
+	QUEST_MAE_NORTHERN_TRIBE_DESC = """A distant beastkin tribe waiting for Mae's guidance.""", # MISSING TRANSLATION
+	MAE_SPIRIT_QUEST_NAME = """Mae: Guardian Spirit""", # MISSING TRANSLATION
+	MAE_SPIRIT_QUEST_SUMMARY = """Mae must complete a spirit-binding ritual.""", # MISSING TRANSLATION
+	MAE_SPIRIT_QUEST_STAGE_0 = """Return to Mae's village.""", # MISSING TRANSLATION
+	MAE_SPIRIT_QUEST_STAGE_1 = """Bring Mae at the ritual grounds.""", # MISSING TRANSLATION
+	MAE_SPIRIT_QUEST_STAGE_1_HIDE = """Craft an Ancestral Hide and return to the ritual grounds.""", # MISSING TRANSLATION
+	MAE_SPIRIT_QUEST_STAGE_2 = """Complete the ritual in the ancient jungle ruins.""", # MISSING TRANSLATION
+	MAE_SPIRIT_QUEST_STAGE_4 = """Report back to Savra.""", # MISSING TRANSLATION
+	MAE_SPIRIT_QUEST_STAGE_5 = """Travel to the northern forest tribe.""", # MISSING TRANSLATION
+	MATERIALANCESTRAL_HIDE = """Ancestral Hide""", # MISSING TRANSLATION
+	MATERIALANCESTRAL_HIDEDESCRIPT = """A ceremonial hide prepared with rare mythic leather and a simple rite. It carries the weight of an old pact.""", # MISSING TRANSLATION
+	ITEMORNATE_LEATHER_HEADDRESS = """Ornate Leather Headdress""", # MISSING TRANSLATION
+	ITEMORNATE_LEATHER_HEADDRESSDESCRIPT = """A ceremonial headdress gifted by a northern tribe. It hums faintly with old magic.""", # MISSING TRANSLATION
+	TRAITSPIRIT_BOAR = """Guardian Spirit: Hearthtusk""", # MISSING TRANSLATION
+	TRAITSPIRIT_BOARDESCRIPT = """Physics factor +1, HP max +15, DEF +10
+Allies in the same column recover 10 HP at the end of the global turn.""", # MISSING TRANSLATION
+	TRAITSPIRIT_SATYR = """Guardian Spirit: Velhorn""", # MISSING TRANSLATION
+	TRAITSPIRIT_SATYRDESCRIPT = """Sex Factor +1, Authority Factor +1, MATK +3, MDEF +5
+Restore 4 mana after casting a spell on an ally or yourself.""", # MISSING TRANSLATION
+	TRAITSPIRIT_OWL = """Guardian Spirit: Noctara""", # MISSING TRANSLATION
+	TRAITSPIRIT_OWLDESCRIPT = """Wits Factor +1, Wits bonus +10, XP bonus +20%""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_START_1 = """A few days pass after Jean settles into your mansion. She keeps mostly to herself, spending long hours locked in her room or staring into space with an unreadable expression while performing her duties. Unlike some of the others, she does not openly seek your attention - or at least, that was the case up until this evening.
+
+Jean approaches you after midnight, when most of the mansion has already settled into silence. She pretends to be relaxed, but her posture is tense, shoulders slightly raised as if bracing for refusal.
+
+She clears her throat.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_START_2 = """{color=yellow|Jean: — So, um... don't mean to offend, but your mansion isn't really suited for long-term hosting of a mage like myself.}
+
+She gestures vaguely around, clearly choosing her words with care.
+
+{color=yellow|Jean: — I mean, it's fine overall, it has all the necessary commodities and such... But when it comes to food for the intellect... it's like trying to find water in the desert. Out of a few dozen books you have, only one is about magic. Very basic magic, to be precise. The rest are, uh...}
+
+She hesitates. Her cheeks flush slightly.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_START_3 = """{color=yellow|Jean: — ...mostly stories and images that could only serve as a guide for some rather... questionable activities.}
+
+She quickly waves her hand, clearly trying to move past that.
+
+{color=yellow|Jean: — Anyway. What I mean to say is that I also have needs... As a mage, I mean!}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_REQUEST_OPTION_1 = """If there's something you lack, I can try to provide it for you.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_REQUEST_OPTION_2 = """Just cut to the chase. What do you want?""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_REQUEST_OPTION_3 = """Ugh. Can you stop bothering me with such meager problems?""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RESPONSE_12 = """Jean exhales quietly, clearly relieved - though she immediately tries to hide it.
+
+{color=yellow|Jean: — Okay, so... I'm doing some magical research, and I really need one specific tome for it. I've heard the Grand Library in the Empire Capital has a copy.}
+
+She crosses her arms.
+
+{color=yellow|Jean: — Just a quick trip there and back. I wouldn't dream of taking more than the necessary time from our renowned mayor.}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RESPONSE_3 = """Jean purses her lips in indignation but, surprisingly, does not snap back.
+
+{color=yellow|Jean: — I need a book. For my research. From the Grand Library in the Empire Capital. Can you help?}
+
+She pauses briefly before adding, her tone dripping with sarcasm:
+
+{color=yellow|Jean: — Just a quick trip there and back. I wouldn't dream of taking more than necessary time from our renowned mayor.}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RESPONSE_COMMON = """Despite her barely hidden sarcasm, you sense that this request is important to her. The longer you hesitate, the more she shifts nervously, avoiding direct eye contact.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_DECISION_OPTION_1 = """Alright, we'll go right away.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_DECISION_OPTION_2 = """What kind of research is this? Are you sure Aliron has nothing on the subject?""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_DECISION_OPTION_3 = """Fine. I'll deal with it when I have time.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_QUESTION = """From the look on her face, it's obvious that your questions were something she feared all along. Which makes her lack of preparation all the more amusing. Her eyes dart around as she clumsily tries to dismiss your question.
+
+{color=yellow|Jean: — Ugh, you're not a mage. You wouldn't even understand it...}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_QUESTION_OPTION = """Maybe not, but I know a few. I can ask Myr. She'd understand, right?""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_DECISION_QUESTION = """For a brief moment, genuine terror crosses Jean's face before she regains control.
+
+{color=yellow|Jean: — Are you really going to bother the Guild Leader over something so insignificant? Did you forget how easy it is to piss her off? She'd just throw you out of the room like she did before!}
+
+She scoffs.
+
+{color=yellow|Jean: — So reckless... Anyway, if you don't want to do it, you can just say it, okay? Just tell me clearly whether you're going to help me or not.}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_CLOSE_1 = """Her face lights up instantly, though she forces herself to maintain a carefully indifferent expression.
+
+{color=yellow|Jean: — Thank you. I appreciate it. I'll go get ready.}
+
+She leaves quickly, before you can comment.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_CLOSE_2 = """Jean's expression turns sour for a brief moment - then she schools her face and turns away. As she leaves, the determination in her posture is unmistakable. You get the distinct feeling that if this matter isn't addressed soon, her patience will run out far quicker than you might expect.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_CAPITAL_START = """The Empire Capital greets you as it always does: noise, crowds, and a suffocating sense of arrogance. Merchants shout from every corner, guards eye you with suspicion, and robed scholars glide past, treating everyone beneath their station as invisible.
+
+Jean attempts to ask for directions to the library, but no one even slows their step. After several such attempts, she begrudgingly buys a map from a peddler who clearly makes a living off lost newcomers.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_CAPITAL_LIBRARY = """{color=yellow|Jean: — Alright, looks like the library should be next to that giant tower... Let's go!}
+You let her lead, and soon you find yourselves before the massive doors of this treasury of knowledge. While you linger for a moment, admiring the elaborate decorations, Jean wastes no time and heads straight inside, only to be abruptly stopped by the guard.
+
+{color=aqua|Guard: — Entry is only allowed with a valid pass. Do you have one?}
+
+Jean sighs and admits she doesn't, then asks the guard how to obtain one. He begrudgingly explains that citizens may acquire a pass at the town hall, while non-citizens must have it issued by the library itself after submitting an official request. Hearing this, Jean's eyes light up with hope as she looks at the guard pleadingly.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_CAPITAL_GUARD = """{color=yellow|Jean: — You said non-locals can get a pass directly from the library, right? So, um... could you just let us inside for a moment...}
+
+Her question is cut short by the guard's resounding denial. The hopeful spark in Jean's eyes fades. She makes several more attempts to persuade him, but he refuses to budge. Seeing that this is getting nowhere, you decide to intervene.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_CAPITAL_GUARD_RETURN = """{color=aqua|Guard: — You again? I told you that I won't let you in without the pass.}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_GUARD_OPTION_1 = """Surely exceptions can be made... ( - 500 gold)""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_GUARD_OPTION_2 = """Perhaps I should speak to the Melchor about this...""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_GUARD_OPTION_3 = """I only promised to bring you to the capital. The rest is on you.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_GUARD_OPTION_4 = """Let's come back later.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_GUARD_ENTRY_BRIBE = """You quietly press a heavy purse into the guard's palm. He weighs it for a moment before it disappears beneath his armor. Without another word, he steps aside and suddenly finds something very interesting to stare at elsewhere.
+
+Jean stands astonished for a moment, then squints at the guard, shaking her head in disapproval, before following you inside. As the doors close behind you and your footsteps echo through the hall, she glances at you with gratitude.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_GUARD_ENTRY_MELCHOR = """The moment the guard hears that name, his arrogant demeanor evaporates.
+
+{color=aqua|Guard: — Wait! I think I can make an exception for guests of our city. There's no need to bother his wiseness over such a minor incident, yes?}
+
+Jean stands frozen for a moment, clearly unsure what just happened, before hurrying after you. Nonetheless, as the doors close behind you and your footsteps echo through the hall, she glances at you with gratitude.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_GUARD_REFUSE_1 = """Jean freezes. For a moment, she genuinely looks lost, her gaze drifts from the guard to the library doors, then drops to the ground beneath her feet. She presses her lips together, thinking, as an awkward silence settles in.
+
+Then, suddenly, her cheeks flare red. She shifts her weight, straightens her posture, and takes a hesitant step toward the guard.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_GUARD_REFUSE_2 = """{color=yellow|Jean: — Um... hey...}
+
+She awkwardly leans in, immediately misjudging the distance, then straightens again, flustered.
+
+{color=aqua|Guard: — Keep your distance.}
+
+{color=yellow|Jean: — O-oh! Sorry, I just thought that maybe... well...}
+
+She hesitates, clearly regretting the idea already, but after a moment, forces herself to continue.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_GUARD_REFUSE_3 = """{color=yellow|Jean: — Hey, don't be like that... Maybe we could, you know... come to some kind of arrangement?}
+
+The guard raises an eyebrow and slowly looks her up and down, his gaze lingering on her chest just long enough for her to notice.
+
+{color=yellow|Guard: — Pfft. Don't flatter yourself. You ain't got nothing to offer.}
+
+	Jean blinks.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_GUARD_REFUSE_4 = """{color=yellow|Jean: — I... Excuse me?}
+
+It takes her a second to understand the implication. Then realization hits. Her face flushes bright red, first with embarrassment, then with pure fury.
+
+{color=yellow|Jean: — Did you just imply that I'm...?! You fucking asshole! I'm gonna...!}
+
+She lunges forward, ready to make things much worse. You move fast, grabbing her wrist and pulling her back before she can act.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_GUARD_REFUSE_5 = """{color=yellow|Jean: — Hey! Let go! I'll show him...!}
+
+It takes her a couple of minutes to cool down. Finally, she stomps her foot and demonstratively turns away, staring in the opposite direction of the guard.
+
+Seeing that this is going nowhere, you decide it's time to step in.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_LIBRARY_INSIDE_1 = """Inside, the air smells of dust and old parchment. The ancient librarian barely acknowledges Jean, focusing instead on the papers scattered across his desk. After several minutes of searching through the records, he finally informs her that the only copy of the book has already been taken.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_LIBRARY_INSIDE_2 = """{color=yellow|Jean: — Then can you at least tell me the return date? I'll come back that very day.}
+
+The librarian hesitates. His gaze drifts over your gear, then Jean's. Apparently satisfied with what he sees, he nods and clears his throat.
+
+{color=aqua|Librarian: — Now, you see, the book is long overdue. And while this is not how the standard process works... since the borrower has ignored all of our letters, I am inclined to help you and share his address.}
+
+{color=yellow|Jean: — Oh! Thank you, that would be a great help to us!}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_LIBRARY_ADDRESS_1 = """{color=aqua|Librarian: — The condition, of course, is that you return the book to the library immediately after retrieving it. Only then may you obtain it through the proper process.}
+
+{color=aqua|Librarian: — I could then issue a library pass in your name and allow you to borrow the book via standard procedure. I assume you do not currently possess one. Am I correct?}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_LIBRARY_ADDRESS_2 = """Jean hesitates for half a second, waiting for your reaction.
+
+{color=aqua|Librarian: — Then I assume we have an agreement?}
+
+He shifts his gaze between Jean and you, clearly waiting for your answer.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_LIBRARY_OPTION_1 = """We do. Just tell us where to go.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_LIBRARY_OPTION_2 = """You said the book has been missing for a long time, so it's not a simple task. How about a bit of extra compensation?""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_LIBRARY_NOTE_1 = """Encouraged by your straightforward response, the librarian quickly scribbles down an address and hands you the note. You nod and step back out into the bustling streets of the capital.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_LIBRARY_NOTE_2 = """The librarian frowns, clearly displeased, but after a brief pause he exhales sharply.
+
+{color=aqua|Librarian: — Fine. I'll throw in a bit of coin as well. Just so this matter is resolved already. Now get out.}
+
+You nod and step back out into the bustling streets of the capital.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_START_1 = """The capital's layout turns out to be quite chaotic, to say the least. Streets intersect at odd angles or fade into one another without signs or markers. After nearly an hour of walking, you are fairly sure you've found the correct street - only to realize that none of the buildings bear numbers.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_START_2 = """As you circle the area yet again, you notice a street beggar watching your struggle with thinly veiled amusement.
+
+{color=aqua|Beggar: — Heh, you lost something, or are you just like walking in circles?}
+
+Ignoring his comment, Jean stays composed and shows him the note.
+
+{color=yellow|Jean: — Do you know which building this is?}
+
+{color=aqua|Beggar: — Maybe I do. What's in it for me?}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_BEGGAR_OPTION_1 = """How about some booze?""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_BEGGAR_OPTION_2 = """Will a bit of gold help you remember? (- 100 gold)""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_BEGGAR_OPTION_3 = """A beating if you don't answer the question, how about that? (PHY>3)""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_BEGGAR_PAY = """After receiving payment, the beggar points to the building you've been standing next to all along, then quickly scurries away.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_BEGGAR_THREAT = """{color=aqua|Beggar: — Alright, alright, it's this one!}
+
+He points right back at the building you were staying next to all this time, then quickly retreats, clearly taking your threats seriously.
+
+{color=yellow|Jean: — Well... at least we found the place. Let's go.}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_BEGGAR_FAIL = """{color=aqua|Beggar: — A beating? What for, huh? I'm just sitting here, minding my own damn business. If you don't wanna pay then you can look for your stupid building yourself!}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_LOCK = """Jean steps back, scanning the building. It shows no sign of life.
+
+{color=yellow|Jean: — Hey, you got any ideas? Should we wait, or maybe...?}
+
+You take her hint and take a closer look at the lock. It looks sturdy but also fairly old. You're confident you could open it with some simple tools, but that still would produce some noise. Alternatively, you can also try and look around the building for some other way inside.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_LOCK_OPTION_1 = """I think it's time to use my tools. I don't want to wait here for days.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_LOCK_OPTION_2 = """Let's look around first, we might find some other entrance.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_FRONT = """Jean hesitates for a moment, but then steps aside and lets you do your thing. You kneel by the door and get to work. The lock resists at first, but after a couple of minutes it finally gives way with a soft click.
+
+You glance around, making sure no one is watching. Luckily for you, the street is empty. You then step inside, while Jean follows closely behind.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_WINDOW = """You decide to walk around the house first, which soon proves to be the right decision. As you circle the building, you notice one of the side windows left slightly ajar, its latch broken. You boost yourself up and slip through the window, landing quietly inside the dusty interior. You then help Jean climb in after you.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_ENTER_1 = """The moment you step inside, the air grows heavy with dust, mold, and a faint metallic tang. Jean moves a little farther inside and stops in front of a bookshelf.
+
+{color=yellow|Jean: — No, it doesn't seem like anyone has touched these books recently. No point wasting time here. This place feels creepy, so let's find what we came for and get out as soon as possible.}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_ENTER_2 = """You agree, and the two of you quietly move forward into a dark corridor, trying to guess which room would make the most sense to search first.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_GOLEMS_1 = """Deciding to simply check every room one by one, you move deeper inside. Suddenly, you feel a wave of magic, which, while subtle, is still unmistakably reacting to your presence.
+
+A low hum vibrates through the house, faint yet noticeable. Runes briefly flare along the walls, only to dim again moments later.
+
+Jean immediately reaches for her staff, though it doesn't seem like the danger is imminent, or at least not yet.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_GOLEMS_15 = """{color=yellow|Jean: — You felt that too, right? Do you think th...}
+
+She doesn't get a chance to finish her sentence. Heavy, grinding footsteps echo behind you as the corridor is blocked by guardian golems, clearly activated by your intrusion.
+
+{color=yellow|Jean: — Oh crap... this place was warded. Looks like we'll have to deal with these things somehow...}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_GOLEMS_2 = """You land the final blow on the last golem, but before you can relax, more constructs begin to emerge from hidden compartments. You raise your weapons once again, but before the second fight fully unfolds, a voice comes from the other side.
+
+{color=aqua|Unfamiliar Voice: — Hey, stupid rocks! Over here!}
+
+As the golems turn to assess the new threat, you seize the opportunity and strike them from behind.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_WINDOW_NOISE_1 = """You move through the house slowly, dust muffling your footsteps. You manage to check only a couple of rooms when the sound of combat suddenly echoes from the other side of the mansion.
+
+You exchange a glance with Jean before both of you head toward the noise.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_WINDOW_NOISE_2 = """Before you, several guardian golems are steadily cornering a woman wielding an axe. She fights back stubbornly, but her movements are growing increasingly desperate. Jean gives you a worried look.
+
+{color=yellow|Jean: — What should we do? Looks like she triggered a defensive trap. They won't just leave her alone.}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_HELP_OPTION = """Let's help her.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_WAIT_OPTION = """Let's wait a bit more.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_WAIT_FIGHT = """You pull back slightly, watching. The stranger ducks and weaves, narrowly avoiding crushing blows, but her movements gradually get frantic and inefficient. It's clear that without help, she won't last much longer.
+
+You briefly reconsider whether waiting was the right call as one of the golems suddenly turns around and begins marching straight toward you.
+
+{color=yellow|Jean: — Looks like they have a pretty good detection system...}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RYNN_INTRO_1 = """The last golem collapses with a heavy crash, its stone body cracking apart as the glow in its core fades and dies.
+
+The unfamiliar woman bends forward, hands braced on her knees, breathing hard. A thin sheen of sweat glistens on her skin. After a few seconds, she straightens. Suddenly her eyes focus on Jean and her expression begins to soften.
+
+{color=aqua|Woman: — Jean? Is that you?}
+
+Surprised to hear her own name, Jean squints, trying to get a better look at the woman in front of her.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RYNN_INTRO_2 = """{color=yellow|Jean: — We've definitely met before... Rynn?}
+
+The woman nods and sheathes her sword.
+
+{color=aqua|Rynn: — Huh, who would've thought I'd meet an old acquaintance in a place like this! And what are you and your friend doing here?}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RYNN_CHAT_1 = """After taking a minute to explain how you got here Rynn listens closely.
+
+{color=yellow|Jean: — ... and that's how we ended up in this shithole, looking for that one damn book.}
+
+{color=aqua|Rynn: — Well, there's no shortage of books in this place. You might actually find what you're looking for. My task is a bit harder...}
+
+You notice Rynn's expression darken.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RYNN_CHAT_2 = """{color=aqua|Rynn: — I'm looking for my brother, or at least any clues that could help me find him. He was last seen with the man who owned this place. After that... he vanished.}
+
+{color=aqua|Rynn: — Say, since we ended up here at the same time... what do you think about us joining forces? If there are more traps or guards left, dealing with them together would be easier.}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RYNN_HELPED = """{color=aqua|Rynn: — Besides, I still owe you thanks for helping me. So, if the opportunity arises, I would gladly return the favor.}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RYNN_HELPED_YOU = """{color=aqua|Rynn: — You've already seen what I'm capable of, and all three of us would form quite a formidable party.}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RYNN_CHAT_3 = """She looks at you with a glimmer of hope in her eyes, waiting for your response""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RYNN_OPTION_1 = """So how do you two know each other?""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RYNN_OPTION_2 = """Can you tell us more about the situation with your brother?""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RYNN_OPTION_3 = """Alright, sounds reasonable. Three pairs of eyes are better than two.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RYNN_HISTORY = """{color=yellow|Jean: — We've met a couple of times during my time in the Mage Academy, when she and other recruits from the Fighters' Guild visited us to learn how to properly use artifacts.}
+
+{color=aqua|Rynn: — That's right, and since Jean was known for getting into arguments with the head of the academy and earning herself punishments, she was sent to deal with us muscleheads much more often than others.}
+
+{color=yellow|Jean: — Now, you didn't have to mention that! Though you're not wrong... Anyway.}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RYNN_BROTHER_1 = """Rynn sighs.
+
+{color=aqua|Rynn: — I wish I had more to tell. We came here, to the Empire's capital, looking for mercenary work. However, since the jobs didn't pay that much, he became an arena fighter instead. And a good one at that.}
+
+{color=aqua|Rynn: — Recently, he caught the attention of some “wealthy sponsor,” as he called him. Said he was going to get a great deal, that we'd be swimming in gold... And then he disappeared.}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RYNN_BROTHER_2 = """She drops her gaze. A silence settles over the room for a moment before she continues.
+
+{color=aqua|Rynn: — I learned that the sponsor owns this mansion, so I came here looking for answers. Or at least some clues. I broke in through the window and searched for anything useful... And then I met you two. And offered an alliance. So... are you in?}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RYNN_JOIN = """Rynn allows herself a small smile.
+
+{color=aqua|Rynn: — Good. Let's not waste time then.}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_START = """After searching the upper floors for some time, you move down to the ground level. There Jean notices a suspicious-looking book on one of the shelves. When she pulls it out, part of the wall shifts aside, revealing a narrow staircase descending into the cellar.
+
+{color=yellow|Jean: — I knew that book felt out of place! Must be some kind of hidden basement...}
+
+Jean looks at you with uncertainty in her eyes.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_OPTION_1 = """We've come this far. No point in turning back now. Let's go.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_OPTION_2 = """Is our great mage afraid of a little darkness now?""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_DESCEND_1 = """You gather near the staircase and begin descending slowly into the darkness. Jean summons a small magical flame to light your way.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_DESCEND_2 = """{color=yellow|Jean: — Huh? Who said I was afraid? It's just... we already agreed to work together, didn't we? Hmph.}
+
+She turns back toward the staircase, her steps a bit uncertain. Only after you and Rynn join her does she seem to relax.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_DESCEND_COMMON = """The stone beneath your feet is uneven and worn, used far more often than its concealment would suggest. Jean's magical light flickers, casting shadows along the walls.
+
+The staircase soon opens into a wide chamber, dimly lit by residual magic clinging to etched symbols. Several empty cages stand in the center, iron bars bent and scratched from the inside.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_CAGES = """Rynn moves slowly between the cages, her gaze narrowing as she studies the twisted metal.
+
+{color=yellow|Rynn: — Is it possible... that he kept my brother in one of these?}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_CAGES_OPTION = """Those marks look like they were left by some kind of creature, not just a regular human.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_CIRCLE_1 = """{color=aqua|Rynn: — Perhaps you're right... But then where did he hide my brother...?}
+
+You don't have a clear answer to that question, so you decide to take a closer look at one of the magic circles on the floor.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_CIRCLE_2 = """You crouch near the circle, studying the markings. They seem different from the ones you're used to seeing, making you think they might be from a different era altogether. You point this out to Rynn.
+
+{color=aqua|Rynn: — I agree. They feel... wrong. Unfortunately, I'm not a mage, so I can't say much more than that.}
+
+Hearing this, you realize that you do, in fact, have a mage with you. You turn and gesture for Jean to come closer, pointing at the circle. However, to your surprise, she seems completely uninterested in your finding, which you find pretty odd. She gives the markings a brief glance, then turns away, muttering that she doesn't recognize them either. Then quickly moves to the far side of the room and resumes rummaging through the owner's desk and papers.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_CIRCLE_OPTION_1 = """Looks like whatever magic this was isn't active anymore, so let's focus on our task.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_CIRCLE_OPTION_2 = """Aren't you interested in unknown magic? That's not like you.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_REACT_1 = """You shrug at Jean's antics and decide to move on with your mission. Quietly, you hope your observation remains true and that the magic stays dormant, at least until you're out of this place.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_REACT_2 = """You raise an eyebrow, questioning Jean's behavior. She shifts uncomfortably, clearly unhappy at being put on the spot.
+
+{color=yellow|Jean: — It might be difficult to believe, but even someone of my level can't know every spell that exists in the world. Besides, I didn't come here to analyze someone else's scribbles. I came for the book. And once I find it, I want to leave this creepy place as fast as possible.}
+
+Her response leaves little room for further questions, and you decide to drop the matter for now.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_BOOK_1 = """You spread out and continue searching the underground chamber. While Rynn focuses on a second room nearby, you and Jean remain here.
+
+Jean is clearly motivated now, thoroughly scanning shelves and loose stacks of notes. Suddenly her hand freezes mid-motion, and then she pulls out a thick tome wrapped in faded leather.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_BOOK_2 = """{color=yellow|Jean: — Finally! This is it!}
+
+She presses the book to her chest and closes her eyes for a moment, relief plain on her face.
+
+{color=yellow|Jean: — We are ready to leave now... I guess we should check on Rynn first.}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_SHELF = """You follow Jean into the second room. There, you find Rynn standing next to a heavy shelf, clearly trying to move it.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_SHELF_OPTION_1 = """Help her move it""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_SHELF_OPTION_2 = """Look for a switch""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_SHELF_SUCCESS_1 = """You step up beside her and, together, push the heavy shelf aside. With a loud scrape, part of the mechanism breaks free, revealing a hidden tunnel that is clearly well-maintained and was used recently.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_SHELF_SUCCESS_2 = """One look at the shelf's placement tells you why it caught her attention. Having already encountered one such mechanism, it doesn't take long to find a hidden switch nearby. With a harsh grinding sound, the shelf slides aside, revealing a hidden tunnel that is clearly well-maintained and was used recently.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_SHELF_FAIL_1 = """You brace yourself and push against the shelf together with Rynn. The wood creaks, dust trickles down from above... Unfortunately, the shelf barely shifts an inch before settling back into place.
+
+Rynn exhales sharply and steps back.
+
+{color=aqua|Rynn: — Damn it... this thing's heavier than it looks. It seems brute force alone won't be enough.}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_SHELF_FAIL_2 = """You carefully examine the shelf and the surrounding wall, running your fingers along seams and suspicious-looking carvings. There has to be some kind of mechanism around.
+	
+Alas, even after several minutes of searching, you come up empty-handed. Whatever opens this passage, it isn't obvious. Or you're simply missing something.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_SHELF_JEAN_1 = """As you and Rynn exchange frustrated looks, Jean lets out a quiet sigh.
+
+{color=yellow|Jean: — Looks like you need help from a professional, huh? Let me see!}
+
+She steps closer, briefly scans the wall, then reaches behind the shelf and presses on a barely visible indentation.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_SHELF_JEAN_2 = """With a low grinding sound, hidden mechanisms engage. The shelf slowly slides aside, revealing a hidden tunnel that is clearly well-maintained and was used recently.
+
+Jean straightens up, brushing dust from her sleeves.
+
+{color=yellow|Jean: — There you go.}
+
+Clearly satisfied with herself, she steps back.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_CHOICE = """{color=aqua|Rynn: — Phew, thanks! I knew I wasn't crazy! That thing looked far too suspicious. Hey, do you think...}
+
+She turns around and only then notices the book Jean is still clutching to her chest.
+
+{color=aqua|Rynn: — Looks like you already found what you were looking for. I suppose you are leaving?}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_OPTION_1 = """We didn't come this far just to walk away. Let's see where it leads.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_OPTION_2 = """We found what we came here for, so it's time for us to go.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_1 = """At your response, a smile of relief breaks through Rynn's expression.
+
+{color=aqua|Rynn: — Thank you. Honestly, the thought of going in there alone gave me chills. So I very much appreciate the company.}
+
+She turns back toward the tunnel, determination replacing hesitation. You and Jean step up beside her, ready to follow.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_2 = """You step into the tunnel. It is narrow and damp, forcing you to move in single file.
+
+Halfway through, the air shifts suddenly. The stench of rotting flesh fills your nostrils as a low growl echoes through the stone.
+
+From the shadows ahead, a twisted, bestial arm lunges toward Rynn. She narrowly dodges, then swings at the creature with her sword, pushing him back. Moments later, several more monsters emerge from the darkness, forcing you to fight.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_3 = """Under your combined assault, the monsters collapse quickly. Unsure whether this was another trap or simply wandering creatures, you continue forward, this time with even more caution.
+
+Soon, the passage opens into a concealed exit beyond the city walls. Fresh air rushes in, but unfortunately it brings no answers.
+
+You search the area, but time and the elements have erased any usable traces.
+
+Rynn sighs and looks back toward the city.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_4 = """{color=aqua|Rynn: — ... Well, at least now we know how my brother could've disappeared without anyone noticing. With that tunnel the owner of that place could freely leave the city, unseen by the guards.}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_TUNNEL_5 = """She turns to you and Jean.
+
+{color=aqua|Rynn: — Thank you for helping me. Jean, I wish our reunion was under better circumstances, but it was a pleasure nonetheless.}
+
+You say your goodbyes and part ways with Rynn, who soon disappears into the woods.
+
+After she's gone, you both glance back at the tunnel, then unanimously agree to take the longer but far less unsettling route back to the capital, passing through the city gates.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_LEAVE_1 = """You extend your hand, trying to end things on a neutral note. Rynn shakes it firmly.
+
+{color=aqua|Rynn: — I understand. I wish you safe travels.}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_UNDERGROUND_LEAVE_2 = """{color=yellow|Jean: — Same to you.}
+
+As you turn to leave, you notice Jean hesitates for a moment, looking back at Rynn. Then she manages to say her goodbyes and follows you up the stairs. Her expression is conflicted with relief and embarrassment.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RETURN_START = """The Grand Library greets you with its usual quiet grandeur: tall arches, the scent of old paper and soft echoes of footsteps on polished stone.
+
+The librarian looks up as you approach, recognition flickering in his eyes when he notices Jean and then once again when he sees the book she carries.
+
+He scans you from head to toe and then, with practiced professionalism, carefully pretends nothing out of the ordinary is amiss.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RETURN_LIBRARIAN = """{color=aqua|Librarian: — You're back sooner than expected. I take it your... errand was successful?}
+
+Jean places the tome on the counter with deliberate care, turning it so the seal is clearly visible. She hands the book over. The librarian opens it, skims through several pages, then closes it and sets it aside.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RETURN_PASS = """{color=aqua|Librarian: — Good. Then I may finally close that notice... And, of course, officially place the book in your care. For no longer than four weeks, naturally. And as promised...}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RETURN_PASS_NO_BARGAIN = """{color=aqua|Librarian: — Your library pass.}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RETURN_PASS_BARGAIN = """{color=aqua|Librarian: — Your library pass... and a bit of extra gratitude to note.}
+
+He slides a small pouch across the counter. It disappears into your pocket moments later.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RETURN_END_1 = """The librarian begins writing in his ledger. A few minutes pass before he finally hands the book back to Jean. She grabs it instantly, tucking the tome under her arm, barely containing her excitement.
+
+{color=yellow|Jean: — Finally! Who would've thought it'd turn into such an adventure!}
+
+She notices the librarian's disapproving look.
+
+{color=yellow|Jean: — Hmm? Oh, right! No shouting in the library... Um. We'll be leaving now.}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RETURN_END_2 = """You leave the library and make your way back home. Once inside, Jean turns toward you, hesitating for a moment before speaking.
+
+{color=yellow|Jean: — I suppose... I should say thank you.}
+
+She shifts her weight slightly.
+
+{color=yellow|Jean: — Don't get any strange ideas. I could have done it myself, but still... I guess it was easier with you around. Yeah. That's all. So... thank you.}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RETURN_END_OPTION_1 = """You're welcome. If you ever need help, I'll be there.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RETURN_END_OPTION_2 = """No problem. So... are you going to tell me what's so special about that book?""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RETURN_THANKS = """Jean looks down, avoiding your gaze, pretending to examine the worn spine of the book. After a moment, she gives you a brief nod and a quick, genuine smile. Without another word, she heads to her room.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RETURN_QUESTION = """Jean furrows her brow and looks away.
+
+{color=yellow|Jean: — Um... like I said, it's for my magical research. I don't really want to explain.}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RETURN_QUESTION_OPTION_1 = """Magical research, huh? Hmm, could it be... some sexual magic? Or a spell to create some magical sex toy?""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RETURN_QUESTION_OPTION_2 = """And here I thought you'd trust me more by now. Alright, I'll stop asking. I hope you'll be able to trust me more in the future.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RETURN_TEASE = """Jean's face turns red instantly. Her eyes widen, and you can't help but grin at her reaction.
+
+{color=yellow|Jean: — Wha... Absolutely not! How did you even get that idea?!}""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RETURN_TEASE_OPTION_1 = """You're being so secretive about it. It's only natural to wonder.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RETURN_TEASE_OPTION_2 = """I mean, if you want to prove me wrong, you could just tell me what it's about.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RETURN_TEASE_RESPONSE = """{color=yellow|Jean: — It's...}
+
+She opens her mouth... then closes it again.
+
+{color=yellow|Jean: — Agh! Just forget it! You're impossible! I... I need to study!}
+
+Realizing there's no way to win this argument, she storms out of the room.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RETURN_TRUST = """After your comment, Jean averts her eyes, unable to meet your gaze.
+
+{color=yellow|Jean: — That... Um, yeah, sorry... I promise I'll explain to you everything later.}
+
+She then nods and promptly leaves the room.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_GL = """Grand Library""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_OPTION = """Search for the mansion""", # MISSING TRANSLATION
+	JEAN_RUINS_SQ_1 = """Since you recovered that book Jean was so adamant about obtaining, she has been stuck in her room for days, barely setting foot outside. Curious and slightly worried about her well-being, you decide to pay her a visit.
+
+Her room greets you with quite a sight: loose notes cover both the table and the floor, layers of dust and grime coating the table. Despite hearing the door open, she doesn't even turn around.
+
+{color=yellow|Jean: — Thanks, just put the food somewhere on the floor... I'll get it later.}""", # MISSING TRANSLATION
+	JEAN_RUINS_SQ_2 = """You promptly inform her that you are not, in fact, a servant. Hearing your voice, she finally turns around, startled.
+
+{color=yellow|Jean: — Oh! Sorry, I didn't expect it to be you.}
+
+She clears her throat, trying to regain her composure.
+
+{color=yellow|Jean: — Um... did you need something? Or to what do I owe the visit?}""", # MISSING TRANSLATION
+	JEAN_RUINS_SQ_21 = """You explain that you were simply curious how her research is going. At first, she frowns slightly, then shrugs.
+
+{color=yellow|Jean: — It's going alright. Taking a bit longer than I expected.}""", # MISSING TRANSLATION
+	JEAN_RUINS_SQ_21_OPTION_1 = """Your place is a mess.""", # MISSING TRANSLATION
+	JEAN_RUINS_SQ_21_OPTION_2 = """Seems like you are taking your time""", # MISSING TRANSLATION
+	JEAN_RUINS_SQ_22 = """{color=yellow|Jean:  — Fine, fine! I'm a bit stuck, alright? What does that have to do with you? This is just a personal project, it's not like I'm on some deadline!}""", # MISSING TRANSLATION
+	JEAN_RUINS_SQ_OPT_HELP = """It doesn't have to concern me. I just want to help a friend.""", # MISSING TRANSLATION
+	JEAN_RUINS_SQ_OPT_USEFUL = """You live on my property. I'd rather you be useful than rot in your room.""", # MISSING TRANSLATION
+	JEAN_RUINS_SQ_3_KIND = """Hearing that, Jean averts her gaze for a moment, her cheeks get slightly more pink as she is clearly unsure how to react to such a direct display of kindness.
+
+{color=yellow|— Well, um... alright. Noted, I guess... Thanks. Though I'm not sure what you can really do to help.}""", # MISSING TRANSLATION
+	JEAN_RUINS_SQ_4_KIND = """{color=yellow|Jean: — It's not something I can't read or don't understand. The problem is that the text references ancient history and places I've never even heard of. So, I don't know where I should even begin looking for the clues.}""", # MISSING TRANSLATION
+	JEAN_RUINS_SQ_3_RUDE = """Jean clicks her tongue, clearly not appreciating your comment, but unable to argue with it. She sighs and gestures toward the notes.
+
+{color=yellow|Jean: — As you can see, I've already done quite a bit of work. It's just that one crucial part of the text references ancient history and places I've never heard of.}""", # MISSING TRANSLATION
+	JEAN_RUINS_SQ_4_RUDE = """{color=yellow|Jean: — So, I don't know where I should even begin looking for the clues. After I got the book I thought it would be simple. That I would find the artifact, prove the theory, prove everyone wrong... Darn it.}""", # MISSING TRANSLATION
+	JEAN_RUINS_SQ_OPT_MYR = """How about asking Myr about it?""", # MISSING TRANSLATION
+	JEAN_RUINS_SQ_OPT_CHURCH = """Maybe the church can help.""", # MISSING TRANSLATION
+	JEAN_RUINS_SQ_4_MYR = """Jean visibly stiffens the moment you mention Myr.
+
+{color=yellow|Jean: — Absolutely not. I'm not going to run to her every time I hit a wall. Besides... she'd just lecture me for an hour and then throw me out for wasting her time. Let's find another way.}""", # MISSING TRANSLATION
+	JEAN_RUINS_SQ_5 = """{color=yellow|Jean: — Guess it can't be helped. Back when I was in the Academy I never asked for help, but it seems that I could really use some outside expertise. And the Church might have records that never made it into academic circulation.}""", # MISSING TRANSLATION
+	JEAN_Q2_CHURCH_ENTER = """Ginny approaches you with a warm smile, her gaze lingering on Jean with open curiosity.
+
+{color=aqua|Ginny: — Always glad to see you at our church, Mayor. Is there anything I can help you with?}
+
+You nod and let Jean explain the situation. Ginny listens closely as she describes the ruins and the kind of information she needs.
+
+{color=aqua|Ginny: — Ancient ruins in the western region of the Empire... Hmm, that area did house several temples, even before it officially became part of the Empire.}""", # MISSING TRANSLATION
+	JEAN_Q2_CHURCH_2 = """She gestures for you to follow and leads you into a quieter wing of the church.
+
+{color=aqua|Ginny: — As far as I remember, there were some stories about underlying power struggles at the time. Some temples were abandoned, and the records became fragmented.}
+
+{color=yellow|Jean: — Was there any mention of, say, a powerful artifact? Something described as a dark sphere, maybe? Anything like that?}
+
+Ginny thinks for a moment.""", # MISSING TRANSLATION
+	JEAN_Q2_CHURCH_3_ARTIFACT = """{color=aqua|Ginny: — Hmm... I can't say I remember that detail. But there were rumors of a demon being involved! Without any real evidence, though.}""", # MISSING TRANSLATION
+	JEAN_Q2_CHURCH_4_OPTION_1 = """Jean, does your research have something to do with demons? They are not someone to trifle with, you know.""", # MISSING TRANSLATION
+	JEAN_Q2_CHURCH_4_OPTION_2 = """What was that demon doing there? I bet they were the source of all the trouble.""", # MISSING TRANSLATION
+	JEAN_Q2_CHURCH_4_OPTION_3 = """No evidence? Then how do we know what to trust?""", # MISSING TRANSLATION
+	JEAN_Q2_DEMON_WARN = """{color=yellow|Jean: — Of course not, that's the first time I've heard about them since Myr's classes!}
+
+She studies you with visible surprise.
+
+{color=yellow|Jean: — I didn't expect you to have actually met one. Seems even the rumors didn't cover all of your adventures.}""", # MISSING TRANSLATION
+	JEAN_Q2_DEMON_INFO = """{color=aqua|Ginny: — Your intuition is on point. Or are you speaking from experience? Anyway, you are correct. The rumors had it that it was the demon who swayed one of the bishops from God's way and made him turn on his brothers.}
+
+{color=aqua|Ginny: — I should warn you though, my recollection may not be perfect. It's been years since I read those records, and many of them contradict each other.}""", # MISSING TRANSLATION
+	JEAN_Q2_CROSSREF_1 = """Ginny smiles faintly.""", # MISSING TRANSLATION
+	JEAN_Q2_CROSSREF_2 = """{color=aqua|Ginny: — We cross-reference everything with reliable sources. Proper study, cataloging... it will take time and I can't do it alone, but if you're willing to help, we might find something together.}
+
+Jean hesitates, glances at you. You give her a small nod. After a moment, she exhales.
+
+{color=yellow|Jean: — Alright. When do we start?}
+
+Instead of answering, Ginny opens a heavy wooden door. Beyond it stretches the church library with rows of shelves packed with worn volumes, dust gathering along their edges.""", # MISSING TRANSLATION
+	JEAN_Q2_LIBRARY = """{color=aqua|Ginny: — Now, if you're willing.}
+
+Jean clearly hadn't expected something of this scale, but she steps inside without protest. You leave them to their work and return to the mansion. Later that evening she returns but informs that this is going to take more time than that...""", # MISSING TRANSLATION
+	JEAN_Q2_RESEARCH_DONE = """Over the next few days, Jean spends long hours in the library. Whenever you stop by, you find her seated at a long wooden table, surrounded by open books and comparing passages, copying symbols, muttering to herself.
+
+Finally, on the fourth evening, Jean returns with a faint smile and a single sheet of paper. The findings are condensed into one thing: an approximate location of the ruins you have been searching for.""", # MISSING TRANSLATION
+	JEAN_Q2_RUINS_APPROACH = """The road deteriorates the closer you get to the marked location, turning from stone path into uneven dirt before vanishing entirely. Jean checks her notes constantly, stopping now and then to adjust your direction.
+
+The deeper you go, the more remnants of ancient structures begin to surface, half-swallowed by vegetation, barely recognizable beneath moss and roots. At last you reach a collapsed stone entrance. Jean compares the carvings with her notes and nods.""", # MISSING TRANSLATION
+	JEAN_Q2_CENTRAL_HALL = """The first few rooms of the ruins turn out to be largely unremarkable, but everything changes the moment you enter the central hall.
+
+The former temple has been repurposed. Metal cages line the chamber, each holding a monster. The moment they spot you, the creatures begin to slam into the bars. The metal bends under the impact.
+
+Only one cage is different and you need but a single glance to immediately recognize the woman inside.
+
+{color=yellow|Jean: — Rynn?! How did she get here?!}
+
+Hearing the sound of Jean's voice, Rynn instantly looks up, hope flashing in her eyes.""", # MISSING TRANSLATION
+	JEAN_Q2_HALL_FIGURE = """Suddenly a movement at the far end of the hall draws your attention. A hooded figure emerges from a staircase descending deeper into the ruins. He freezes when he sees you.
+
+{color=aqua|Figure: — H-huh? Intruders? Again?! How did you even get here?! Curses!}
+
+{color=aqua|Rynn: — Be careful! He controls them!}
+
+The figure raises his wooden staff, laughter slipping from under the hood.
+
+{color=aqua|Figure: — Indeed I do! And since you, fools, come all the way here I'll let them play with you until you wish to get in the cage yourself!}
+
+The cages, all except the one with Rynn inside, burst open. Monsters surge forward, flooding the hall, driven into a frenzy. There's no avoiding the fight. You raise your weapon.""", # MISSING TRANSLATION
+	JEAN_Q2_AFTER_FIGHT = """With the last creature falling you turn to the hooded figure.
+
+{color=aqua|Figure: — No-no, this wasn't supposed to happen! How did you even...}
+
+Seeing you approach him, he shuts up, turns around and runs down the staircase, disappearing deeper into the ruins.
+
+You consider following him, but then your gaze returns to Rynn's cage. She's conscious, but clearly injured and out of fighting spirit, and she won't be any help in your pursuit.""", # MISSING TRANSLATION
+	JEAN_Q2_CHOICE_FREE_RYNN = """Free Rynn""", # MISSING TRANSLATION
+	JEAN_Q2_CHOICE_PURSUE = """Pursue the hooded figure""", # MISSING TRANSLATION
+	JEAN_Q2_FREE_RYNN_1 = """You turn away from the staircase. Jean shoots you a look of relief, and together you force the cage open, helping the injured woman get out.
+
+{color=aqua|Rynn: — Thank you! When I heard your voices, I couldn't believe it at first, but gods, I'm so lucky you managed to find this place...!}
+
+She looks at the dead monsters around you.
+
+{color=aqua|Rynn: — ... And that, apparently, you were ready to take on a small army of those things. I barely managed to kill half a dozen before I was overpowered and captured.}""", # MISSING TRANSLATION
+	JEAN_Q2_FREE_RYNN_OPTION_1 = """Coming here alone was reckless. There are easier ways to die if that's your goal.""", # MISSING TRANSLATION
+	JEAN_Q2_FREE_RYNN_OPTION_2 = """I'm glad you are alive. Looks like we came just in time.""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_REPRIMAND = """Rynn lowers her gaze at your reprimand.
+
+{color=aqua|Rynn: — Yeah, I know... I was in a rush and didn't really think this through. Again, thank you for saving me.}""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_GLAD = """Rynn gives a faint smile.
+
+{color=aqua|Rynn: — Yeah, me too! Even though it didn't look like they were going to kill me right away, I still probably would've ended up like one of those poor souls if it wasn't for you guys.}""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_HOW_FOUND = """Jean steps closer.
+
+{color=yellow|Jean: — How did you even find this place? I had to dig through hundreds of old historical records just to narrow down the approximate location of this temple!}
+
+A bit confused by the question, Rynn shrugs.
+
+{color=aqua|Rynn: — Well, I wasn't looking for any temple in particular, just for a place that could hide both these monsters and their creator.}""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_HOW_FOUND_3 = """{color=aqua|Rynn: — So, after we parted ways, I started asking local fighting guilds, traders and hunters about any notable areas with caves or ruins like this. One of the hunters told me about this place, so I decided to check it and, well...}
+
+{color=aqua|Rynn: — We all know how it ended. And what about you? How did you get here?}
+
+Jean explains how you found the location while you treat Rynn's wounds. Most of the cuts and bite marks don't seem life-threatening, but she still looks unwell.""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_CAMP_SETUP = """Once Jean finishes her story, you help Rynn to her feet and escort her outside. Near the entrance you quickly set up a makeshift camp where she can rest.
+
+{color=aqua|Rynn: — I'm sorry I can't be of any use to you right now... Just be careful in there, okay? We don't know what kind of creatures might be deeper inside.}
+
+You head back toward the ruins. The staircase leading deeper into the dungeon awaits.""", # MISSING TRANSLATION
+	JEAN_Q2_PURSUE_PAST_RYNN = """You turn away from the cage and rush toward the staircase, pulling Jean along with you.
+
+The hope in Rynn's eyes turns into confusion and then hurt as she sees you running past her. Summoning what strength she has left, she grabs the cold metal bars and shouts after you.
+
+{color=yellow|Rynn: — H-hey, where are you going? Don't just leave me here! Please...!}""", # MISSING TRANSLATION
+	JEAN_Q2_PURSUE_JEAN_DOUBTS = """Hearing her pleas, Jean glances back at the cage, then turns to you, surprise and doubt written all over her face.
+
+{color=yellow|Jean: — Wait, aren't we going to help her? That doesn't feel right!}
+
+You quickly explain your reasoning and promise that you'll come back for Rynn on your way back. Jean clearly doesn't like the answer, but after a brief hesitation she nods and follows you deeper into the dungeon.""", # MISSING TRANSLATION
+	JEAN_Q2_LAB_ESCAPED = """You enter the final chamber only to find it empty. In the far-left corner lies a collapsed tunnel. The hooded figure used the time it took you to get here to flee, and he brought the ceiling down behind him. There's no way to continue the pursuit.""", # MISSING TRANSLATION
+	JEAN_Q2_LAB_SEARCH = """{color=yellow|Jean: — Looks like we won't be questioning him after all.}
+
+You turn your attention to the room itself. This laboratory is far larger than anything you expected. Ritual circles overlap across the floor, cages line the walls, some empty, some stained with old blood. Tables are cluttered with notes, diagrams, and half-finished experiments.
+
+Jean flips through the papers quickly. You notice her expression shift and her eyes linger on certain pages longer than others. But when you ask what's wrong, she shakes her head.""", # MISSING TRANSLATION
+	JEAN_Q2_BOSS_FIGHT_INTRO_1 = """Before reaching what looks like the final section, a group of monsters emerges from the shadows and blocks your path. There are fewer than before, but they move with disturbing coordination. Some have armor fused into their flesh, others move unnaturally in sync. At their center stands a larger creature reinforced with crude metal.
+
+Behind them stands the hooded figure, still clutching the artifact.""", # MISSING TRANSLATION
+	JEAN_Q2_BOSS_FIGHT_INTRO_2 = """{color=aqua|Figure: — You got lucky before! But now you'll witness the results of our latest experiment. And I won't go easy on you this time!}
+
+His hands shake as he gathers energy at the tip of his staff and fires a blazing projectile. Clearly aimed at you, the spell somehow misses and nearly hits Jean instead, who was half a room away. She manages to sidestep it just in time, though part of her hat catches fire. Muttering a curse, she tears it off and stomps it out.
+
+{color=yellow|Jean: — You bastard! You're gonna pay for that!}""", # MISSING TRANSLATION
+	JEAN_Q2_CAPTURE_FIGURE_1 = """When the last monster is finished, you rush into the final chamber. The hooded figure is trying to open a hidden passage, but the mechanism is old and slow. You pin him to the ground before it fully opens.""", # MISSING TRANSLATION
+	JEAN_Q2_CAPTURE_FIGURE_2 = """{color=aqua|Figure: — I surrender, I surrender! Please don't kill me! Mercy! I'm the victim myself!}
+
+Watching him tremble, you immediately doubt he was ever the mastermind. Jean plants her hands on her hips and stands above him.""", # MISSING TRANSLATION
+	JEAN_Q2_CAPTURE_FIGURE_3 = """{color=yellow|Jean: — Oh, really? And you expect us to believe it? You were just trying to kill us while spouting nonsense about how you "won't go easy on us"! And now you're suddenly the victim?!}
+
+Terrified, the captive crawls closer to you.
+
+{color=aqua|Figure: — I was wrong! Very-very wrong! I didn't even mean it, I was just trying to scare you! I was really scared myself!}
+
+{color=yellow|Jean: — Oh yeah? Good! You were right to be scared! 'Cause you shouldn't have attacked us! And shouldn't have burned my favorite hat with your stupid, clumsy, second-rate spell!}
+
+She kicks the captive a couple of times, making him retreat behind you, then spits to the side and crosses her arms, leaving him for you to deal with.""", # MISSING TRANSLATION
+	JEAN_Q2_INTERROGATE_OPTION_1 = """Who even are you?""", # MISSING TRANSLATION
+	JEAN_Q2_INTERROGATE_OPTION_2 = """Where's the real mastermind?""", # MISSING TRANSLATION
+	JEAN_Q2_INTERROGATE_OPTION_3 = """Alright, tell us what's going on here.""", # MISSING TRANSLATION
+	JEAN_Q2_INTERROGATE_WHO = """{color=aqua|Figure: — One day I was just minding my own business and stumbled upon these ruins. Got curious, looked inside, saw a couple of monsters and decided to back away... But then suddenly this guy in a robe showed up behind me. Said I knew too much and couldn't leave anymore.}
+
+{color=aqua|Figure: — Next thing I knew, I was stuck here, taking care of monsters. I don't even know his name, had to call him "Master" all the time!}
+
+{color=aqua|Figure: — And he looks... normal. Just an ordinary guy, really. Though he talks like some old grandpa despite looking barely older than me...}""", # MISSING TRANSLATION
+	JEAN_Q2_INTERROGATE_MASTERLOC = """{color=aqua|Figure: — I don't know! I swear! He comes and goes whenever he wants! Sometimes he disappears for days, sometimes longer!}
+
+{color=aqua|Figure: — I know he spends a lot of time in the capital though, he mentioned it more than once. But not just there... he travels all over the Empire.}
+
+{color=aqua|Figure: — I mean, he's the one who brought most of the captives here in the first place. I mean, except that last girl. She kinda walked into this place on her own...}""", # MISSING TRANSLATION
+	JEAN_Q2_INTERROGATE_FULL_1 = """Whether from nerves or desperation, he spills everything without much prompting. He was captured by the real mastermind, branded with a tracking spell, and given a choice between joining the ranks of monsters or helping to take care of them.
+
+He served the real mastermind for the last couple of months, though according to him, he was little more than an errand boy. All of the experiments were conducted by the master himself and they were exactly what you've already pieced together: every monster in this place was once human, later transformed by some ancient looking artifact.""", # MISSING TRANSLATION
+	JEAN_Q2_INTERROGATE_FULL_2 = """Despite clearly being distraught by the revelation, Jean pulls out a note as soon as she hears about the artifact and shows it to him, asking if it matches the description. 
+
+The captive eagerly nods. Jean's expression darkens, but when you ask her what's wrong, she just shakes her head.""", # MISSING TRANSLATION
+	JEAN_Q2_LAB_CONCLUDE = """{color=yellow|Jean: — It's... nothing. Just... a lot of new information.}
+
+Her tone says otherwise.""", # MISSING TRANSLATION
+	JEAN_Q2_LAB_OPTION_LET = """Alright then, we will discuss it later""", # MISSING TRANSLATION
+	JEAN_Q2_LAB_OPTION_PRESS = """You're hiding something. What is it, Jean?""", # MISSING TRANSLATION
+	JEAN_Q2_LAB_REACT_LET = """You decide not to push her and instead focus on finishing business in this place. Jean nods and begins stuffing several notes into her bag.""", # MISSING TRANSLATION
+	JEAN_Q2_LAB_REACT_PRESS_1 = """Jean exhales sharply and lowers the papers.
+
+{color=yellow|Jean: — ... Fine. The artifact that is crucial for my research... it's mentioned here. Not directly, but the descriptions match.}
+
+She hesitates before continuing.""", # MISSING TRANSLATION
+	JEAN_Q2_LAB_REACT_PRESS_2 = """{color=yellow|Jean: — The problem is... even though its powers are supposed to serve a very different purpose, these notes strongly suggest it was used as a main catalyst for creating... those things.}
+
+She gestures toward the hallway where you fought the last wave of monsters and shakes her head.""", # MISSING TRANSLATION
+	JEAN_Q2_LAB_REACT_PRESS_3 = """{color=yellow|Jean: — I never thought it could be used this way. Was it corrupted somehow? Damn it... this ruins everything! I wanted to prove this power could be used to preserve life... not create monsters!}
+
+She strikes the table with her fist, sparks flying on impact, leaving a scorched mark behind. After a moment, she straightens up and begins stuffing the notes into her bag.""", # MISSING TRANSLATION
+	JEAN_Q2_LAB_REACT = """{color=yellow|Jean: — I'll study these later. I don't want to spend more time here than necessary.}""", # MISSING TRANSLATION
+	JEAN_Q2_LAB_FINISH = """You wait for her to finish, then move toward the exit. Jean pauses in the doorway, staring back at the lab with open disgust.
+{color=yellow|Jean: — This place shouldn't exist.}
+
+The look she gives you makes it clear this isn't just a remark.""", # MISSING TRANSLATION
+	JEAN_Q2_LAB_BURN_OPTION_1 = """Then let's make sure it doesn't.""", # MISSING TRANSLATION
+	JEAN_Q2_LAB_BURN_OPTION_2 = """Just don't burn us in the process.""", # MISSING TRANSLATION
+	JEAN_Q2_BURN_LAB = """Jean nods, then puts both of her hands in front of her and closes her eyes. A swirling fire begins to form next to her palms, growing rapidly until the heat becomes intense enough to sting your skin. With visible relief, she hurls the spell into the lab. She then grabs your hand, and the two of you run as a fiery tornado tears through the chamber behind you.""", # MISSING TRANSLATION
+	JEAN_Q2_BURN_LAB_RYNN = """When you return to the cage chamber, you rush to free Rynn only to find her already unconscious, her body burning with fever.
+
+Worry flashes across Jean's face, but there's no time to stop and talk.
+
+You hoist Rynn onto your shoulder and hurry out of the ruins, soon breaking out into the open air.""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_CAMP_RETURN = """You return to the small camp where you last left Rynn. As you approach, she greets you, but her voice is noticeably weaker than before.
+
+{color=aqua|Rynn: — Glad you guys are okay. So... what happened down there?}
+
+Jean explains what you learned. Hearing that the culprit escaped, Rynn lowers her gaze.
+
+{color=aqua|Rynn: — Sorry... If you hadn't stopped to save me, maybe you would've caught him.}""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_CAMP_OPTION_1 = """Don't blame yourself. It was my choice and I still think it was the correct one.""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_CAMP_OPTION_2 = """Maybe. But we can't change it now, so no point in dwelling on it.""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_FEVER_1_1 = """She smiles faintly.""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_FEVER_1_2 = """She sighs.
+
+{color=aqua|Rynn: — Yeah, I guess you are right...}""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_FEVER_1 = """Suddenly, she breaks into a coughing fit. Her breathing is shallow, her movements are sluggish, and she's sweating despite the air not being particularly warm.""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_FEVER_ASK_1 = """How do you feel?""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_FEVER_ASK_2 = """Your fever must be acting up. You better rest.""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_FEVER_2_1 = """{color=aqua|Rynn: — Not great... Guess being locked in a cold cage for two days didn't help. Or maybe...}""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_FEVER_2_2 = """{color=aqua|Rynn: — Yeah, you are probably right... Could it really be...?}""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_FEVER_3 = """She hesitates, then shakes her head.
+
+{color=aqua|Rynn: — Never mind. Probably just a fever dream.}
+
+You and Jean exchange glances.""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_PUSH_TELL_1 = """Tell us anyway. It could be important.""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_PUSH_TELL_2 = """You're hiding something. Don't you think we at least deserve some honesty?""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_VOICE_PUSH_1 = """Rynn exhales.
+
+{color=aqua|Rynn: — Yeah... alright. I just didn't want to sound crazy.}""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_VOICE_PUSH_2 = """Rynn frowns slightly.
+
+{color=aqua|Rynn: — I'm not hiding it because I don't trust you... I just don't know if it was real. But fine. I'll tell you.}""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_OVERHEARD = """{color=aqua|Rynn: — After I got knocked out... I remember hearing voices near my cage. Two people talking... something about life force. Transfers. Magical stuff.}
+
+She pauses to catch her breath.
+
+{color=aqua|Rynn: — While waiting for you, I started thinking maybe they did something to me... but I figured it was just a dream.}
+
+Jean's face drains of color. She pulls out her notes, flipping through them with trembling fingers. When she looks up, fear is clear on her face.""", # MISSING TRANSLATION
+	JEAN_Q2_CURSE_REVEAL_1 = """{color=yellow|Jean: — I... don't think it was a dream. When she said "transfer," I remembered seeing that word over and over in the notes. So I looked deeper...}
+
+She glances at Rynn with pity. Rynn notices and looks anxiously between the two of you.
+
+{color=aqua|Rynn: — What? Do you know something?}
+
+Jean hesitates, unable to meet her eyes.""", # MISSING TRANSLATION
+	JEAN_Q2_CURSE_REVEAL_2 = """{color=yellow|Jean: — If what you heard is real... then the curse has already been cast on you. The one that creates... them.}
+
+{color=aqua|Rynn: — Them? Who's them? Do you mean...?}
+
+Silence settles between the three of you as realization sinks in. Rynn's breath catches. Slowly, she looks down at her hands, as if expecting them to already be changing.
+
+{color=aqua|Rynn: — And... How long do I have?}""", # MISSING TRANSLATION
+	JEAN_Q2_CURSE_2 = """{color=yellow|Jean: — I don't know. The notes say it varies. Sometimes days... sometimes weeks. But never longer than a month.}
+
+Rynn lowers her head, absorbing the news. When she speaks again, each word seems to take effort.
+
+{color=aqua|Rynn: — I mean... I lived a dangerous life. I never really expected to die of old age. But this... like this...?}""", # MISSING TRANSLATION
+	JEAN_Q2_CURSE_3 = """She looks up at you, fear plain in her eyes.
+
+{color=aqua|Rynn: — I don't want to go like that. Is there... a way to stop it? Anything?}
+
+Jean shakes her head slowly.
+
+{color=yellow|Jean: — We don't know yet. Maybe if we find the artifact... maybe the academy... I don't know...}""", # MISSING TRANSLATION
+	JEAN_Q2_CURSE_4 = """While Jean trails off, practically muttering her thoughts aloud, Rynn begins to lean back and so you rush forward just in time to catch her. The movement snaps Jean out of her stupor and she hurries to Rynn's side.
+
+{color=aqua|Rynn: — S-sorry... that was a lot to take in... I think I need to rest for a bit... But if there's any hope... maybe you can still help me...?}
+
+Rynn slips into unconsciousness.
+
+You and Jean exchange uncertain glances. She clenches her fists.""", # MISSING TRANSLATION
+	JEAN_Q2_CAPTIVE_OUTSIDE_1 = """Once outside, you stop and check on Rynn. She lies motionless on the cold ground, her body burning with fever. Her breathing is shallow, uneven. You and Jean do what you can with the limited supplies you have, but it's obvious she isn't going to wake up anytime soon.
+	
+Your captive watches the scene in silence, leaning against a rock with an unreadable expression.
+
+{color=yellow|Jean: — Don't just stand there like a statue! If you're not going to help, the least you can do is stay out of the way.}
+
+{color=aqua|Captive: — It won't change anything anyway, so why bother?}""", # MISSING TRANSLATION
+	JEAN_Q2_CAPTIVE_OUTSIDE_2 = """{color=yellow|Jean: — What do you mean by that? What did you do to her?}
+
+{color=aqua|Captive: — I didn't do anything! The boss did! He visited a couple of days ago, when she was already here, and so, you know... So better leave her before the curse turns her...}
+
+Jean blinks several times, her face draining of color as the words sink in. Then she suddenly grabs him by the collar and shakes him violently.""", # MISSING TRANSLATION
+	JEAN_Q2_CAPTIVE_OUTSIDE_3 = """{color=yellow|Jean: — What kind of curse is it?! Is there any way to stop it? Reverse it? How long does she have?! Tell me something, you useless piece of shit!}
+
+{color=aqua|Captive: — I don't kn—}
+
+{color=yellow|Jean: — You were right there when it happened!}
+
+{color=aqua|Captive: — But I didn't understand a word he was saying! I was just nodding along! All I know is that some turned in days, some in weeks, and the longest was a month! That's all I know, I swear!}""", # MISSING TRANSLATION
+	JEAN_Q2_CAPTIVE_OUTSIDE_4 = """Jean releases him with a sharp shove.
+	
+{color=yellow|Jean: — Get out of my sight!}
+
+{color=aqua|Captive: — Hey, I'd be happy to get out of everyone's sight. You just need to untie me.}
+
+Jean looks back at him slowly.
+
+{color=yellow|Jean: — Huh? Are you seriously expecting us to just let you go?}""", # MISSING TRANSLATION
+	JEAN_Q2_CAPTIVE_OUTSIDE_5 = """{color=aqua|Captive: — Well... why not? I didn't do...}
+	
+She cuts him off immediately.
+
+{color=yellow|Jean: — Yeah, yeah, you “didn't do anything” except follow orders of some maniac! And those orders included guarding the place, keeping prisoners locked up, and apparently even attacking intruders, which for someone who is that cowardly is surprisingly brave, even too brave for “just following orders”!}""", # MISSING TRANSLATION
+	JEAN_Q2_CAPTIVE_OUTSIDE_6 = """{color=yellow|Jean: — Even now, you didn't bother telling us about her condition right away. You just stood there and watched.}
+
+Jean continues, her words spilling out in a heated rant about responsibility, morality, and cowardice. While much of it is clearly fueled by frustration and fear, a lot of what she says hits pretty close to the truth. 
+
+After a few minutes, Jean finally turns away and sits down beside Rynn, her shoulders slumping. You step closer to the captive.""", # MISSING TRANSLATION
+	JEAN_Q2_CAPTIVE_OPTION_FREE = """It's your lucky day. Get the hell out of here.""", # MISSING TRANSLATION
+	JEAN_Q2_CAPTIVE_OPTION_JAIL = """Forget about walking away. We're handing you over to the guards.""", # MISSING TRANSLATION
+	JEAN_Q2_CAPTIVE_OPTION_KILL = """The intel you gave us isn't worth keeping you around.""", # MISSING TRANSLATION
+	JEAN_Q2_CAPTIVE_FREE_1 = """You cut his bonds. He thanks you repeatedly and runs off without looking back. Jean watches silently.
+
+{color=yellow|Jean: — Really? You think he deserves that freedom?}""", # MISSING TRANSLATION
+	JEAN_Q2_CAPTIVE_FREE_OPTION_1 = """You said so yourself he wasn't the mastermind.""", # MISSING TRANSLATION
+	JEAN_Q2_CAPTIVE_FREE_OPTION_2 = """I don't want to watch our backs for the rest of the journey.""", # MISSING TRANSLATION
+	JEAN_Q2_CAPTIVE_FREE_2 = """Jean exhales but lets it go.""", # MISSING TRANSLATION
+	JEAN_Q2_CAPTIVE_JAIL = """Hearing your decision, the captive sighs but doesn't argue. He lowers his head, accepting his fate.""", # MISSING TRANSLATION
+	JEAN_Q2_CAPTIVE_KILL_1 = """The moment he realizes what you mean, the captive tries to run, but he doesn't make it far. Your blade finds his neck in a single swift motion. He collapses almost instantly.
+
+At the sound, Jean spins around. Her eyes widen in shock and fear.
+
+{color=yellow|Jean: — Did you just... why?! I thought we were taking him to jail! That's... that's too far, isn't it?!}""", # MISSING TRANSLATION
+	JEAN_Q2_CAPTIVE_KILL_OPTION_1 = """He already tried to kill us once. I won't give him a second chance.""", # MISSING TRANSLATION
+	JEAN_Q2_CAPTIVE_KILL_OPTION_2 = """Forget about him. We should focus on Rynn.""", # MISSING TRANSLATION
+	JEAN_Q2_CAPTIVE_KILL_2 = """Jean hesitates, staring at the lifeless body, then slowly nods.
+
+{color=yellow|Jean: — Alright...}
+
+She turns back to Rynn.""", # MISSING TRANSLATION
+	JEAN_Q2_CAPTIVE_FINAL = """{color=yellow|Jean: — Hey... do you think there's anything we can do to save her?}
+
+She asks without turning around.
+
+With the captive's fate decided, only one other decision remains.""", # MISSING TRANSLATION
+	JEAN_Q2_CURSE_FINAL_0 = """Rynn, the stranger you've met only a few times, yet each time you stood on the same side, fighting the same enemies. Now she's cursed and could turn into one of those monsters without warning.""", # MISSING TRANSLATION
+	JEAN_Q2_CURSE_FINAL = """{color=yellow|Jean: — How did it turn out like this?! All I wanted was to finish my research, not get dragged into some nightmare where I have to decide whether people live or die!}
+
+While she vents, you look at Rynn's unconscious body. There are people who might be able to help her, but there's no certainty any of them can.""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_SAVE_OPTION = """Let's try our best to save her. First, let's get her to the church.""", # MISSING TRANSLATION
+	JEAN_Q2_RYNN_LEAVE_OPTION = """Sorry, Jean. I don't want to take any risks. We'd best just leave her.""", # MISSING TRANSLATION
+	JEAN_Q2_SAVE_RYNN_1 = """Jean forces herself to calm down. She turns to you, determination hardening her expression.
+
+{color=yellow|Jean: — Yeah. Let's do this. We'll have to carry her out of here.}""", # MISSING TRANSLATION
+	JEAN_Q2_SAVE_RYNN_2 = """The trip back is quiet. Rynn stirs occasionally but never wakes. As soon as you reach Aliron, you head straight for the church. Ginny steps forward to greet you as usual, but upon noticing your urgency immediately leads you to the lazaret.""", # MISSING TRANSLATION
+	JEAN_Q2_CHURCH_RYNN_ARRIVE = """{color=aqua|Ginny: — Considering everything we know, I believe I understand how the curse works.}
+
+{color=aqua|Ginny: — It drains the victim's life force slowly. Once it runs too low... the body transforms and begins feeding on outside energy. That's how those monsters are created.}""", # MISSING TRANSLATION
+	JEAN_Q2_CHURCH_RYNN_OPTION_1 = """Can it be removed?""", # MISSING TRANSLATION
+	JEAN_Q2_CHURCH_RYNN_OPTION_2 = """Can you at least delay it?""", # MISSING TRANSLATION
+	JEAN_Q2_CHURCH_RYNN_2 = """{color=aqua|Ginny: — I can stabilize her, give her some more time, but I can't remove the curse itself.}
+
+{color=yellow|Jean: — We understand. Thank you for doing what you can. And we... we'll have to use the time we got and think of a way to deal with the curse.}
+
+You nod in agreement, thank Ginny once more, and leave Rynn in her care. Together with Jean, you return to the mansion.""", # MISSING TRANSLATION
+	JEAN_Q2_LEAVE_RYNN_1 = """Jean stares at you in disbelief.
+
+{color=yellow|Jean: — W-what? You're saying we just leave her here?! This is too cruel...}
+
+Tears fill her eyes as she helplessly looks back at Rynn's unconscious body while you walk away, leaving her alone in the wilderness.""", # MISSING TRANSLATION
+	JEAN_Q2_LEAVE_RYNN_2 = """Once inside the mansion, Jean goes straight to her room and locks the door behind her. You think you can hear sobbing coming from that side.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_NAME = """Jean: A Bookish Request""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_SUMMARY = """Jean needs a rare tome from the Grand Library in the Empire Capital.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_CAPITAL = """Visit the Grand Library in the Empire Capital.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_CAPITAL_1 = """Find a way into the Grand Library.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION = """Search the book owner's mansion in the capital.""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_MANSION_1 = """Convince the beggar to cooperate""", # MISSING TRANSLATION
+	JEAN_SIDEQUEST_RETURN = """Return the book to the Grand Library.""", # MISSING TRANSLATION
+	JEAN_RUINS_SUMMARY = """Help Jean with her research""", # MISSING TRANSLATION
+	JEAN_RUINS_NAME = """Jean: Ruins""", # MISSING TRANSLATION
+	JEAN_RUINS_1 = """Get information from Ginny""", # MISSING TRANSLATION
+	JEAN_RUINS_2 = """Wait until searching will be done""", # MISSING TRANSLATION
+	JEAN_RUINS_3 = """Searh newly found location""", # MISSING TRANSLATION
+	QUEST_JEAN_RUINS_TEXT = """Demonic ruins""", # MISSING TRANSLATION
+	QUEST_JEAN_RUINS_DESC = """Ancient ruins keeping artifact Jean desires""", # MISSING TRANSLATION
+	JEAN_SYLAS_QUEST_NAME = """Jean: The Demon in the Sphere""", # MISSING TRANSLATION
+	JEAN_SYLAS_QUEST_SUMMARY = """Jean needs help tracking down the mastermind behind the cursed artifact.""", # MISSING TRANSLATION
+	JEAN_SYLAS_QUEST_STAGE_1 = """Visit chosen guild""", # MISSING TRANSLATION
+	JEAN_SYLAS_QUEST_STAGE_2 = """Search for leads in Empire Capital""", # MISSING TRANSLATION
+	JEAN_SYLAS_QUEST_STAGE_3 = """Visit Arena""", # MISSING TRANSLATION
+	JEAN_SYLAS_QUEST_STAGE_4 = """Ask merchants""", # MISSING TRANSLATION
+	JEAN_SYLAS_QUEST_STAGE_5 = """Seek for a lost cart""", # MISSING TRANSLATION
+	JEAN_SYLAS_QUEST_STAGE_6 = """Investigete a lead to brothel""", # MISSING TRANSLATION
+	JEAN_SYLAS_QUEST_STAGE_7 = """Bring Jean a money to get a change""", # MISSING TRANSLATION
+	JEAN_SYLAS_QUEST_STAGE_8 = """Bring news to Myr""", # MISSING TRANSLATION
+	JEAN_SYLAS_QUEST_STAGE_9 = """Search guild library""", # MISSING TRANSLATION
+	JEAN_SYLAS_QUEST_STAGE_10 = """Discuss your findings with Myr""", # MISSING TRANSLATION
+	JEAN_SYLAS_QUEST_STAGE_11 = """Craft a mind-linking artifact""", # MISSING TRANSLATION
+	JEAN_SYLAS_QUEST_STAGE_12 = """Confront a demon-posessed Jean""", # MISSING TRANSLATION
+	JEAN_SYLAS_QUEST_STAGE_13 = """Bring orb to church""", # MISSING TRANSLATION
+	JEAN_SYLAS_QUEST_STAGE_14 = """Give away orb to research""", # MISSING TRANSLATION
+	JEANSYLASDUNCANOPTION = """I need some assistance with the one case...""", # MISSING TRANSLATION
+	JEANSYLASMYROPTION = """I need some assistance with the one case...""", # MISSING TRANSLATION
+	JEANSYLASMYROPTION2 = """There's an issue with Jean...""", # MISSING TRANSLATION
+	JEANSYLASMYROPTION3 = """I found what we were looking for...""", # MISSING TRANSLATION
+	JEANCHURCHESEARCHTASKNAME = """*Search church archives*""", # MISSING TRANSLATION
+	JEANCHURCHESEARCHTASKDESCRIPT = """Jean must find location of the ruins""", # MISSING TRANSLATION
+	JEAN_SYLAS_NEXT_DAY_START = """The events that occurred in those ruins clearly left an impression on Jean. The next morning, you head upstairs to check on her and find her staring at the pile of notes on the table with a somewhat lost expression.""", # MISSING TRANSLATION
+	JEAN_SYLAS_NEXT_DAY_OPTION_CHECK = """How are you doing?""", # MISSING TRANSLATION
+	JEAN_SYLAS_NEXT_DAY_OPTION_LATER = """Should I come back later?""", # MISSING TRANSLATION
+	JEAN_SYLAS_NEXT_DAY_FOLLOWUP = """Hearing your voice, she blinks in surprise, then exhales and turns to you.
+{color=yellow|Jean: — Oh, sorry, I didn't notice you there. I was just thinking about, well, this whole thing.}
+
+She vaguely points towards the notes on the table.
+
+{color=yellow|Jean: — I've been obsessed with this research for so long, always sure I was on the right path, but now... something has changed for me. Did I ever tell you how it started?}""", # MISSING TRANSLATION
+	JEAN_SYLAS_ORIGIN_OPTION_FULL = """I'm all ears""", # MISSING TRANSLATION
+	JEAN_SYLAS_ORIGIN_OPTION_SHORT = """Short version, if you don't mind""", # MISSING TRANSLATION
+	JEAN_SYLAS_ORIGIN_OPTION_REPEAT = """I think you did, actually. That you'd heard the legend...""", # MISSING TRANSLATION
+	JEAN_SYLAS_ORIGIN_FULL_1 = """She taps the well-worn, bulging notebook.
+{color=yellow|Jean: — This research of mine... it started years ago, back when I was still in the Academy. I heard a legend about an artifact that could give you the power to bring back the dead...}
+
+A bitter smile crosses her face.
+
+{color=yellow|Jean: — And I was bold enough to mention during Myr's lecture that I believed it. That such a thing was possible through purely mortal magic. You can guess the reaction. The chuckle, the look. She said I didn't understand the limits of magic, that people like me confuse ambition with ability.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_ORIGIN_FULL_2 = """She folds her arms.
+{color=yellow|Jean: — So, of course I decided to prove her wrong. Started chasing every rumor about that orb, every possible location — whether it was a private collection, some remote monastery...}
+
+She gives you a small, fleeting smirk.
+
+{color=yellow|Jean: — ...or even a dwarven vault. Yet now, after I learned that its magic is very different from what I thought, that it is dangerous and it's hurting people, my research... it no longer feels important.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_ORIGIN_SHORT = """{color=yellow|Jean: — Right, better not to waste time... Long story short, back in the Academy I heard a legend about an artifact that could supposedly bring back the dead. I was foolish enough to say during Myr's lecture that I believed such a thing was possible through mortal magic alone... and, well, you can imagine how that went.}
+	
+She folds her arms briefly.
+
+{color=yellow|Jean: — So I started chasing every rumor about that orb, trying to prove her wrong. But after what we saw in the ruins... after what it actually does to people... my research suddenly doesn't feel that important anymore.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_ORIGIN_REPEAT = """{color=yellow|Jean: — ...and decided to find the artifact to study its rumored resurrection magic, yeah. That was indeed the beginning. But you know what really kept me motivated to actually carry on with the search for so long? Myr!}
+	
+She scoffs.
+
+{color=yellow|Jean: — Or, to be more precise, our... rivalry? Beef? Whatever you wanna call it. I was just so eager to prove her wrong I was ready to go to the other side of the world for that! And now...}
+
+She returns her gaze to the scattered notes.
+
+{color=yellow|Jean: — ...I no longer find it that important.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_HELP_PROMPT = """Jean looks directly at you.
+	
+{color=yellow|Jean: — Instead, the only thing I have on my mind right now is stopping the mastermind behind all of this, so that no more people are turned into these monstrosities. So, will you help me?}""", # MISSING TRANSLATION
+	JEAN_SYLAS_HELP_OPTION_WITH_YOU = """You won't be doing it alone""", # MISSING TRANSLATION
+	JEAN_SYLAS_HELP_OPTION_FAVOR = """Only cause I would also expect favor in the future""", # MISSING TRANSLATION
+	JEAN_SYLAS_HELP_RESPONSE_WITH_YOU = """Jean visibly relaxes, her face lights up with a smile.
+	
+{color=yellow|Jean: — Thank you. I'll remember that.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_HELP_RESPONSE_FAVOR = """Jean blinks. Then straightens a little.
+	
+{color=yellow|Jean: — Fair enough. Help me finish this, and I'll be in your debt.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_GUILD_SUGGESTION = """After a brief discussion, it becomes clear that the only place with fresh leads on the mastermind is the Empire's capital. But before you head there, Jean brings up a suggestion.
+	
+{color=yellow|Jean: — As much as I hate to admit it, we could use support from one of the guild leaders. Someone with actual reach and power. Which leaves us with two options.}
+
+She starts counting on her fingers.""", # MISSING TRANSLATION
+	JEAN_SYLAS_GUILD_OPTIONS_INTRO = """{color=yellow|Jean: — The first one is Duncan. Rynn used to train in his guild before she left for the Empire. She might not be alone in that, so Duncan could help us get some useful contacts. And the other option is...}
+	
+A grimace shows on Jean's face.
+
+{color=yellow|Jean: — ...Myr. Plenty of knowledge, plenty of influence... and an ego to match all of that.}
+
+She glances at you sideways.""", # MISSING TRANSLATION
+	JEAN_SYLAS_GUILD_OPTION_DUNCAN = """No need to look at me like that, I get it. Let's visit Duncan""", # MISSING TRANSLATION
+	JEAN_SYLAS_GUILD_OPTION_MYR = """Between saving your pride and catching a maniac, only one choice is right. Myr it is""", # MISSING TRANSLATION
+	JEAN_SYLAS_GUILD_CHOICE_DUNCAN = """Jean nods, visibly more at ease.
+	
+{color=yellow|Jean: — Good. Let's start with him. He's way less irritating than the alternative.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_GUILD_CHOICE_MYR = """{color=yellow|Jean: — Fine. Let's just try to deal with her as quickly as possible.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_DUNCAN_HELP_1 = """You explain the situation. Duncan listens carefully, then gives a slow nod.
+	
+{color=aqua|Duncan: — ...Rynn, huh. Yeah, I remember her. Tough kid. Shame that happened to her. Curse on these curses, a warrior's demise should come from iron, not some witchery.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_DUNCAN_HELP_2 = """{color=aqua|Duncan: — Give me some time. I'll reach out to some of my former students and ask them to dig around.}
+	
+{color=yellow|Jean: — Thank you.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_HELP_1 = """You explain the situation. Myr listens in silence, finally responding in her usual condescending tone.
+
+{color=aqua|Myr: — You certainly have a knack for finding trouble. Though it's not surprising, considering your tendency to take into your care all sorts of rubb... troubled individuals.}
+
+Her gaze shifts to Jean.
+
+{color=aqua|Myr: — Looks like your fruitless search finally brought at least some results, though it's obviously very different from what you dreamed of.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_HELP_2 = """{color=yellow|Jean: — Bet you're so-o-o happy right now.}
+
+{color=aqua|Myr: — 'Happy'? Young lady, you severely overestimate my engagement in this one-sided rivalry. Neither your success nor failure affects my mood. Though I would be somewhat satisfied if you forgot your stubbornness and got back to studying.}
+
+Jean's jaw tightens, but she holds her tongue.
+
+{color=yellow|Myr: — Alas, it doesn't look like that's going to be the case. At least not before you deal with that 'maniac'. Fine then, I shall spare you my assistance.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_HELP_DEVICE = """Myr reaches into a drawer and produces a small, faintly glowing device with a red gem inside metal brackets. She drops it into your hands.
+	
+{color=aqua|Myr: — There you are.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_HELP_OPTION_THANKS = """Thank you, we appreciate your help""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_HELP_OPTION_WHAT_IS_IT = """Am I supposed to know what it is and how to use it?""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_HELP_RESPONSE_THANKS = """{color=aqua|Myr: — You're welcome. Feel free to leave my office when you're done processing our talk. Hopefully in like ten seconds.}
+
+As you walk out of Myr's office, Jean asks to take a look at the device. After careful examination, she finally concludes.
+
+{color=yellow|Jean: — So it is a jammer, huh. Never thought they could be used that way... But I guess that makes sense. Since monsters are controlled by magic and it blocks the magical signals they should also be affected... in theory. We'll have to see for ourselves.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_HELP_RESPONSE_WHAT_IS_IT = """{color=aqua|Myr: — You may not, but she should. Or I would be even more disappointed than usual.}
+
+Jean scoffs.
+
+{color=yellow|Jean: — What's there to know? I can see that it's a jammer. You think we could try and cut that guy's connection to his monsters?}
+
+{color=aqua|Myr: — I can see that you've retained at least some knowledge from your studies at the Academy. And yes, that is exactly what I expect to happen. Now, if you have no further questions, please leave my office. And if you do have questions I won't be answering them anyway.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_AFTER_GUILD_RYNN_ALIVE = """After settling the matter with the guild, you and Jean head for the church to check on Rynn. Her condition remains stable, but Ginny reminds you that this won't be the case forever and if you want to save her you should bring back the artifact.""", # MISSING TRANSLATION
+	JEAN_SYLAS_AFTER_GUILD_RYNN_LEFT = """After settling the matter with the guild, you and Jean head back to the mansion, preparing for the journey.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CAPITAL_MEET = """The Empire's capital greets you with its usual indifference and crowded streets. After a brief discussion, you decide to split your efforts: you'll check the building you last entered, while Jean returns to the library to fish for more information.
+	
+You diligently do your part and visit the abandoned house, yet see no signs of anyone visiting it since the last time you were here. Done with your part, you go back to the central square and wait for Jean. About an hour later, she finally shows up.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CAPITAL_OPTION_DELAY = """What took you so long?""", # MISSING TRANSLATION
+	JEAN_SYLAS_CAPITAL_OPTION_USEFUL = """Learned anything useful?""", # MISSING TRANSLATION
+	JEAN_SYLAS_CAPITAL_REPLY_DELAY = """{color=yellow|Jean: — It takes time to persuade a person to talk, you know? Especially if it goes against the rules.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_CAPITAL_REPLY_USEFUL = """{color=yellow|Jean: — A bit. Mostly rumors and hearsay, but it's more than we knew before.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_CAPITAL_SYLAS_INFO = """She pulls out her notebook.
+	
+{color=yellow|Jean: — What matters, though, is that we at least know his name now. He's called Sylas. A former famous arena fighter who got injured and couldn't compete anymore. He vanished from the city for a while... then suddenly came back this year, looking younger than he should and loaded with gold.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_CAPITAL_LEAD_SUGGESTION = """{color=yellow|Jean: — And you know, apart from the obvious connection to the arena, that last part about the gold really got me thinking...}
+	
+{color=yellow|Jean: — The kind of equipment we saw? Cages, metalwork, lab equipment... that doesn't appear out of thin air. Even if you have gold, you'd have to buy that from someone, and pretty regularly, considering the scale. So, what if we check that lead?}
+
+She looks at you expectantly.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CAPITAL_OPTION_ARENA_DUNCAN = """Let's check the Arena first, it should be easier with Duncan's connections.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CAPITAL_OPTION_ARENA_MYR = """Let's check the Arena first, he must have some ties there.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CAPITAL_OPTION_MERCHANTS = """Let's go with your lead. Merchants must know something.""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_INTRO = """The Arena is as loud and restless as ever. Steel rings against steel somewhere in the distance, and the air carries that familiar mix of sweat, dust, and cheap bravado.
+	
+As you approach the administrative section, you see a familiar figure observing the ongoing sparring matches. When you come closer, he finally notices you and furrows his eyebrows in displeasure.
+
+{color=aqua|Melchor: — ...You again.}
+
+His eyes narrow, already suspicious.""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_MELCHOR_INTRO = """{color=yellow|Jean: — Greetings. We're looking for information about a former fighter. Sylas.}
+	
+A brief flicker of recognition shows on his face before Melchor's expression hardens.
+
+{color=aqua|Melchor: — That man is banned from the Arena. That's all you need to know.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_OPTION_REASON = """Banned? For what reason?""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_OPTION_NOT_FRIENDS = """We are not his friends.""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_OPTION_PERSONAL = """Do you have a personal story with him?""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_OPTION_DANGEROUS = """He is dangerous. We need to find him before more people get hurt.""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_REPLY_REASON = """Melchor gives a short, humorless snort.
+{color=aqua|Melchor: — For plenty of reasons. Shame there was none with enough proof to make it official.}
+
+{color=yellow|Jean: — But if all the rumors about missing people are true...}
+
+{color=aqua|Melchor: — The court does not operate on rumors. Unfortunately.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_REPLY_NOT_FRIENDS = """{color=aqua|Melchor: — Neither do I, nor would I recommend anyone be.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_REPLY_PERSONAL = """Melchor's eyes narrow a fraction, and his face turns into a grimace.
+	
+{color=aqua|Melchor: — The story isn't personal. I'd just call it... the story of a bad investment. I saw him struggling all those years back and sponsored his training before a championship. Not only did he lose, but he then ran away, never approaching me again. Tsk. Disappointment.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_REPLY_DANGEROUS = """Melchor gives you a long look, then shrugs just a bit.
+	
+{color=aqua|Melchor: — Even if I wanted to get involved in this mess any further, I'd still have no idea what to tell you. I haven't met him personally, and he won't be coming back due to the ban. If you really want to, feel free to ask around.}
+
+{color=yellow|Jean: — Alright then, thanks. Guess we'll have to do just that.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_MYR_FIND = """You roam the arena for some time, questioning both fighters and rare spectators alike. Eventually, one of them gives you a knowing look when the topic of Sylas comes up.
+	
+{color=aqua|Fighter: — Looking for Sylas, huh? A lot of people do, mostly the relatives of the missing... But we were told to shut up about it and not bring up the topic. Bad for business.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_MYR_OPTION_BRIBE = """What if I make it worth your while? (500 gold)""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_MYR_OPTION_ARM = """How about a quick arm-wrestling match? If I lose, I pay, if you lose, you talk.""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_MYR_BRIBE = """He quickly glances to the sides, then nods and grabs the money, covering it with his training shield.""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_MYR_ARM_START = """{color=aqua|Fighter: — Heh. Confident, aren't you? ...Alright, why not. Been a slow day anyway.}
+	
+He drops onto a nearby crate and slaps his elbow down on a scarred wooden table. The man rolls his shoulder once, then extends his hand. You extend yours.""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_MYR_ARM_WIN = """For the first second, neither of you moves. Muscles tense. The table creaks faintly under the pressure. Then you push. The fighter's smirk falters.
+	
+The man grits his teeth, tries to recover, but it's too late. With a sharp thud, his hand hits the table.
+
+{color=aqua|Fighter: — H-huh? I lost? Damn, you got that sleeper build or something?}""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_MYR_ARM_LOSE = """You push first, but the fighter doesn't even flinch. His arm holds steady like a stone pillar.
+	
+A second later, he grins and starts pushing back. Fast. Despite your best effort, your hand slams into the wood.
+
+{color=aqua|Fighter: — Heh, nice. Come back if you wanna try again, I'd love more free money.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_OPTION_MERCHANTS = """Ok, let's go to merchants.""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_MYR_TALK = """{color=aqua|Fighter: — ...Fine, I'll talk. But you didn't hear it from me.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_DUNCAN_INTRO = """As soon as you step into the arena, one of the fighters approaches you, lowering his voice.
+	
+{color=aqua|Fighter: — Heard you're looking into Sylas. Duncan sent word you might come. I'll tell you what I know. No charge.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_FIGHTER_THINK = """The fighter scratches his jaw, thinking.""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_FIGHTER_INFO_1 = """{color=aqua|Fighter: — I dunno anything about his past, but when this guy showed up, he was loaded with gold. Started sponsoring our top fighters, inviting them on trips and to galas... only for some of them to never come back.}
+	
+He jerks his head back toward Melchor's direction.
+
+{color=aqua|Fighter: — Management noticed, of course, started watching him closely. And when too many coincidences piled up, they booted his ass from here. Indefinite ban.}
+
+The fighter leans in slightly.""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_FIGHTER_INFO_2 = """{color=aqua|Fighter: — But here's the part you didn't hear from the officials. Word going around is that it didn't stop the guy. He's still in the city. And recently he paid off the debts of one of the local brothels, basically became their patron overnight.}
+	
+Jean and you exchange a look.
+
+{color=aqua|Fighter: — If you ask me? That smells really bad.}
+
+He steps back.
+
+{color=aqua|Fighter: — That's all I've got.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARENA_FIGHTER_END = """You thank your informant and step away from the arena.
+	
+Jean's gaze meets yours.
+
+{color=yellow|Jean: — I think we just found our next destination.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_MERCHANTS_INTRO = """The wealthy trade district greets you with long rows of polished signs hanging above well-kept storefronts. Jean slows slightly, scanning the street.
+	
+{color=yellow|Jean: — If someone were supplying large cages and specialized equipment, it wouldn't be some back-alley blacksmith. This kind of work leaves a paper trail. Let's start.}
+
+It takes some asking around, but eventually one name keeps coming up: a merchant known for handling custom ironwork orders. You approach the shop and let yourselves in.
+
+The shop smells faintly of oil and hot metal. Behind the counter stands a thickset merchant with careful eyes that immediately size you up.""", # MISSING TRANSLATION
+	JEAN_SYLAS_MERCHANTS_TALK_1 = """{color=aqua|Merchant: — Good day to you, outsiders. Looking for something specific?}
+	
+{color=yellow|Jean: — Information, actually. We're trying to track large cage shipments commissioned over the past months.}
+
+The merchant's expression closes almost instantly.
+
+{color=aqua|Merchant: — Then you're looking in the wrong place. I don't discuss my clients.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_MERCHANTS_TALK_2 = """{color=yellow|Jean: — Even if those shipments were used for... illegal purposes?}
+	
+The merchant studies both of you more carefully now, his gaze more calculating.
+
+{color=aqua|Merchant: — That sounds like the guards problem, not mine.}
+
+A brief silence stretches. Then his eyes narrow slightly, as if reconsidering something.""", # MISSING TRANSLATION
+	JEAN_SYLAS_MERCHANTS_TALK_21 = """{color=aqua|Merchant: — Although...perhaps we can help each other.}
+
+{color=yellow|Jean: — I'm listening.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_MERCHANTS_TALK_3 = """The merchant gestures vaguely toward the street.
+	
+{color=aqua|Merchant: — One of my regular carriage drivers was supposed to be back from a delivery, but he still hasn't shown up. Find him, make sure he's able to work again, and I might be more willing to check my records.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_MERCHANTS_OPTION_START = """Where should we start?""", # MISSING TRANSLATION
+	JEAN_SYLAS_MERCHANTS_OPTION_ENEMIES = """Do you have enemies?""", # MISSING TRANSLATION
+	JEAN_SYLAS_MERCHANTS_OPTION_DEAL = """Deal.""", # MISSING TRANSLATION
+	JEAN_SYLAS_MERCHANTS_REPLY_START = """{color=aqua|Merchant: — The eastern district. Where the road is shortest. And, unfortunately, that's also where the slums are.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_MERCHANTS_REPLY_ENEMIES = """{color=aqua|Merchant: — Enemies? No. Competitors, rivals? Plenty. The sweeter the profit, the bitterer the grudges.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_MERCHANTS_REPLY_DEAL = """{color=aqua|Merchant: — Good. I'll be waiting then.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_CARRIAGE_SEARCH = """You spend the next couple of hours combing through the eastern district's mangled streets.
+	
+Finally, you spot a slightly battered carriage pulled halfway into an alley. The merchant's emblem is still clearly visible on the side panel.
+
+A pair of rough-looking thugs are in the middle of unloading the last crate.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CARRIAGE_APPROACH = """Jean leans slightly closer to you, lowering her voice.
+	
+{color=yellow|Jean: — That's the mark. And unless this merchant recently hired the worst movers in the Empire... I'd say we found our problem.}
+
+She studies the men for a moment, lips tightening with clear irritation.
+
+{color=yellow|Jean: — Your call. But the longer we stand here, the more they take from the cart.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_CARRIAGE_OPTION_ERDYNA = """*Let Erdyna deal with them*""", # MISSING TRANSLATION
+	JEAN_SYLAS_CARRIAGE_OPTION_DIPLOMACY = """Hey. Return the stolen goods and the driver, and I won't report you to the guards.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CARRIAGE_OPTION_PAY = """I'm willing to pay you to put everything back where it belongs.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CARRIAGE_OPTION_INTIMIDATE = """Hey, fuckers! You picked the wrong cart to rob!""", # MISSING TRANSLATION
+	JEAN_SYLAS_CARRIAGE_ERDYNA_1 = """Erdyna walks out from your group, giving the bandits a smirking look. The nearest thug opens his mouth, but then freezes. The second one squints, then his eyes widen.
+	
+{color=aqua|Thug: — Oh shit.}
+
+{color=aqua|Erdyna: — Indeed it is. 'Cause you boys just robbed someone I have dealings with.}
+
+One of the thugs immediately straightens.
+
+{color=aqua|Thug: — W-we didn't know, we swear...}""", # MISSING TRANSLATION
+	JEAN_SYLAS_CARRIAGE_ERDYNA_2 = """{color=aqua|Erdyna: — Oh, I believe you. Which is why you're going to very carefully put everything back. And then disappear.}
+	
+The thugs move instantly. Crates are shoved back onto the carriage with frantic speed. Someone runs to drag out the tied-up driver. After the last crate is restored, the thugs scatter without another word.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CARRIAGE_DIPLOMACY = """One of the thugs squints at you, then snorts.
+	
+{color=aqua|Thug: — Report to the guards? Pfft! Bo-o-oys, get them!}
+
+{color=yellow|Jean: — ...So much for the diplomatic approach.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_CARRIAGE_PAY = """{color=aqua|Thug: — Oh? You've got coin? Then hand it over, moron! Bo-o-oys, get them!}
+
+Jean rolls her eyes.
+
+{color=yellow|Jean: — I hate it when they skip straight to the predictable part.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_CARRIAGE_INTIMIDATE_FAIL = """The thug cracks his knuckles slowly, grin spreading.
+	
+{color=aqua|Thug: — What the fuck did you just say? Bo-o-oys, get him!}
+
+Jean sighs under her breath.
+
+{color=yellow|Jean: — Well... you tried.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_CARRIAGE_INTIMIDATE_SUCCESS = """Your voice cuts through the alley with enough force to make both thugs visibly flinch. They look at you, then bolt down the alley in a panic.
+
+{color=yellow|Jean: — ...Well. That was...}""", # MISSING TRANSLATION
+	JEAN_SYLAS_CARRIAGE_INTIMIDATE_RETURN = """Suddenly you hear footsteps. A lot of footsteps.
+	
+The same two thugs come rushing back, this time with a much larger group behind them.
+
+{color=aqua|Thug: — Yeah, these are the ones! Bo-o-oys, get them!}
+
+Jean rolls her shoulders, already gathering sparks between her fingers.
+
+{color=yellow|Jean: — Of course it couldn't be that simple.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_CARRIAGE_FIGHT_INTRO = """A crowd of thugs jumps from the alleys and rushes at you.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CARRIAGE_AFTER_FIGHT = """With the thugs dealt with, the rest is easy. You hand the surviving troublemakers over to the city guards, untie the shaken but grateful driver, and help reload the scattered cargo back onto the carriage.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CARRIAGE_AFTER_FIGHT_DRIVER = """The freed driver wastes no time taking the reins and drives you straight to the merchant's shop.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CARRIAGE_RETURN_MERCHANT = """The merchant looks far more cooperative when you return. After checking on the cargo and the driver, he invites you to the back room and pulls out a ledger.
+	
+{color=aqua|Merchant: — Large reinforced cages... yes, there were a few unusual bulk orders. All in one name: Sylas. Let me find the delivery routes.}
+
+He flips a couple of pages.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CARRIAGE_ROUTES = """{color=aqua|Merchant: — Shipments went to three places: a private house in the western district, some ruins three days to the north... Oh, and just a week ago to the brothel in the lower district.}
+	
+{color=yellow|Jean: — Can you write us the last address?}
+
+The merchant obliges, then bids you farewell.
+
+Outside, Jean's gaze meets yours.
+
+{color=yellow|Jean: — I think we just found our next destination.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_INTRO = """You follow the directions and soon find yourself weaving deeper into the eastern district, where the streets grow narrower, dirtier, and noticeably quieter. Eventually, the crooked alley leads you to your destination.
+	
+A three-story building rises ahead, still looking surprisingly lavish despite its age, which makes it feel distinctly out of place among the surrounding grime.
+The moment you step inside, warm, perfumed air rolls over you.""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_GIRLS = """A couple of scantily clad girls are lounging on one of the sofas. The moment they spot you, they immediately drift toward you with polished smiles on their faces.
+	
+{color=aqua|Girl1: — Welcome, welcome! First time here, handsome? Oh, are you a couple? Looking for some extra company?}
+
+{color=pink|Girl2: — We have all kinds of pleasures. Just tell us what you're in the mood for.
+
+A slight blush appears on Jean's cheeks, but she manages to stay quiet.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_OPTION_FLIRT = """Well, I wasn't planning on staying, but with smiles like yours...""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_OPTION_QUESTIONS = """First I was hoping to ask you a couple of questions...""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_FLIRT_JEAN = """Jean jabs you with an elbow.
+	
+{color=yellow|Jean: — Ahem! Don't forget what we're here for!}
+
+{color=yellow|Jean: — Hey, we actually wanted to ask you a couple of questions. Is that alright?}""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_MADAM_INTRO = """The girls exchange a quick glance, their smiles faltering, turning into barely helpful masks.
+	
+{color=aqua|Girl1: — Sorry, but we're not the academic type to answer questions.}
+
+{color=pink|Girl2: — All we know is how to bring pleasure to our clients, so if you're not looking for that, we can't help you.}
+
+Before you can push the topic further, the atmosphere in the room noticeably shifts. A tall woman in immaculate attire approaches you with measured, confident steps. The madam gives you and Jean a long, appraising look.
+
+{color=aqua|Madam: — I don't believe I've seen you here before, dear guests. Care to tell me what exactly you're looking for tonight?}""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_MADAM_OPTION_DISAPPEAR = """We are investigating several disappearances in the area.""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_MADAM_OPTION_LOOKING = """We are just looking around. First time here.""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_MADAM_DISMISS_1 = """The madam listens without interrupting. When you finish, her smile does not change.
+	
+{color=aqua|Madam: — Unfortunately, if you're not here to enjoy the establishment, I'll have to politely ask you to leave.}
+
+She gestures lightly toward the door, then follows you until you're both outside.""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_MADAM_DISMISS_2 = """{color=yellow|Jean: — Well, that went pretty badly... Maybe next time we should come up with a better plan, or...}
+
+Jean suddenly stops and lightly catches your sleeve.
+
+{color=yellow|Jean: — ...Wait.}
+
+From the narrow alley beside the brothel comes the uneven sound of someone trying very hard not to cry.""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_CRYING = """You turn the corner and spot a girl dressed the same way as the other two from the brothel. Her shoulders are shaking, makeup slightly smeared as tears run down her face.
+	
+When she notices you approaching, she startles and tries to cover her face. Jean steps forward and softens her tone.
+
+{color=yellow|Jean: — Hey, are you alright? What happened?}
+
+{color=aqua|Girl: — I... Sorry, I shouldn't talk about it...}""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_CRYING_OPTION_TRUST = """It's alright, we won't tell anyone, you can trust us. We just want to help.""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_CRYING_OPTION_DISAPPEAR = """Is it about people disappearing lately?""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_CRYING_OPTION_AMELIA = """Let Amelia calm the girl down""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_GIRL_TRUST = """The girl looks up at you through tears. After some hesitation, she speaks in a quiet whisper.""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_GIRL_KNOWS = """{color=aqua|Girl: — S-so you already know? I knew I wasn't crazy...}""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_GIRL_BAD = """{color=aqua|Girl: — Something... something bad is going on here. I don't know why, but after that guy in all black showed up, people... people suddenly started disappearing... And one of them...}
+	
+She begins to sob again.""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_GIRL_DAREN = """{color=aqua|Girl: — ...one of them was my Daren. He was a regular at first, but then we fell for each other... He was a mage, and he promised that after finishing his studies he would get me out of here... and now he's gone...}
+	
+Some noise comes from inside the building. The girl startles and glances nervously toward the brothel entrance.
+
+{color=aqua|Girl: — I... I really should go. Sorry...}
+
+She walks away, trying to wipe the tears as she goes.""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_AMELIA_INTRO = """Amelia approaches the crying girl, who seems to recognize her immediately.
+	
+{color=aqua|Girl: — A-Amelia? W-what are you doing here? I missed you so much... I shouldn't have left Aliron... I thought life in the Empire would be better... It's not...}
+
+{color=aqua|Amelia: — There, there, girl. It's gonna be alright. If you want to come back, I can ask the guild for you, okay? But first you need to tell us what happened.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_AMELIA_DETAILS = """{color=aqua|Girl: — I don't know the details... but something bad is going on here. After that guy in all black — Sylas or something — showed up and talked to the madam, the whole atmosphere got weird... and what's worse... people suddenly started disappearing. And one of them...}
+	
+She begins to sob again. Amelia puts a hand on the girl's head, comforting her.
+
+{color=aqua|Girl: — ...one of them was my Daren. He was a regular at first, but then we fell for each other... He was a mage, and he promised that after finishing his studies he would get me out of here... and now he's gone...}""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_AMELIA_DAREN = """Some noise comes from inside the building. The girl startles and glances nervously toward the brothel entrance, but Amelia's presence calms her enough not to run away.
+	
+{color=aqua|Girl: — I swear, he wouldn't just leave me! And I remember one time he actually stumbled onto that Sylas guy as he was leaving the madam's office at night... and Sylas looked at him strangely... and then Daren never showed up again... He must've done something to him, but I can't prove it...}
+
+You leave Amelia to take care of the girl while you and Jean step aside to discuss the situation.""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_PLAN_INTRO = """{color=yellow|Jean: — Well, that confirms our suspicions. Sylas does visit this place often, and the madam definitely has some business with him. If only we could somehow get to her office and check her documents...}""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_PLAN_OPTION_CLIENT = """I can pretend to be a client""", # MISSING TRANSLATION
+	JEAN_SYLAS_BROTHEL_PLAN_OPTION_GIRL = """You can pretend to be a new girl""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_PLAN = """{color=yellow|Jean: — Hmm, but wouldn't that be suspicious? Though I guess if you can stall her for even just half an hour, I should be able to sneak in and take a look.}
+	
+You discuss some details before fully settling on this plan.
+
+{color=yellow|Jean: — Alright, time to start. Just keep her busy. I'll handle the rest.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_RETURN = """You once again step inside the brothel, immediately gaining the madam's attention.
+	
+{color=aqua|Madam: — Oh? I thought I made the rules of our establishment clear. Or did you change your mind and wish to use our services after all?}""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_OPTION_RUN_DOWN = """Exactly. Can you give me a run down of what you offer?""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_OPTION_RECOMMEND = """Yeah, since I'm already here, why not at least try? Anything you'd recommend?""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_OPTION_STORMED = """The girl I came with already stormed off. So... I might as well use your services.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_OFFER = """The madam studies you for a brief moment, then her smile deepens slightly.
+{color=aqua|Madam: — Oh, we've got a lot to offer... but I may have something special just for you.}
+
+She gestures toward one of the velvet chairs nearby.
+{color=aqua|Madam: — A premium magical dream experience. Discreet, safe... and quite immersive.}
+
+From her pocket, she produces a sleek, faintly glowing device that looks like a thin circlet with a small polished crystal set at the front. Soft runes shimmer along its surface.
+
+{color=aqua|Madam: — Think of it as... guided fantasy. You remain perfectly safe while enjoying whatever dream you desire. Does it pique your interest?}""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_OPTION_TELL_MORE = """Tell me more about the device.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_OPTION_COST = """And how much does it cost?""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_OPTION_DECLINE = """On the other hand I'd rather not.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_OPTION_ACCEPT = """Fine. Let's try it.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_TELL_MORE = """{color=aqua|Madam: — Oh, it's very simple to use. Just put the circlet on your head and lower the part with the crystal to cover your eyes. Then we can activate the runes, and the magic will do the rest. Most guests find the experience quite... memorable.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_COST = """{color=aqua|Madam: — No need to worry about that, our first customers always get a discount. A mere 100 gold, and you're in the land of dreams.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_DECLINE = """You shake your head, refusing the offer. But as the mission stands, instead you begin to ask questions about the girls who work here, their skills and expertise, and whether they can come down and introduce themselves.
+	
+The madam obliges, indulging your whims, even ordering a couple of girls to come in only for you to reject them. Soon you've gone through the entire catalog and seen everything this place has to offer.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_DECLINE_2 = """The madam's patience is thinning visibly. Her smile is gone, replaced with tight‑lipped irritation. After half an hour, you apologize and step back into the hallway.
+
+The madam walks you out and slams the door behind you.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_ACCEPT = """You agree and pay the price.
+The madam's smile widens slightly as she places the device into your hands and begins explaining how to use it.
+
+You repeat your questions about the runes two or three times, probably looking like a complete fool, but at least it buys Jean some time.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_ACCEPT_2 = """Finally, satisfied, she gently adjusts the circlet on your head.
+	
+{color=aqua|Madam: — Just relax, dear guest... and enjoy.}
+
+The crystal flares softly, and the room dissolves into darkness.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_AFTER = """After you finally leave the brothel, you find Jean waiting for you outside, a satisfied smirk playing on her lips.
+	
+{color=yellow|Jean: — Took you long enough.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_AFTER_OPTION_HOW = """How did it go?""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_AFTER_OPTION_FOUND = """Hope you found something.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_AFTER_INFO = """She dusts off her sleeve casually.
+	
+{color=yellow|Jean: — Luckily for us, they never really bothered with security. As soon as she focused on you, I slipped upstairs and went for the most expensive‑looking door. A couple of minor spells later, and I was free to explore her office.}
+
+{color=yellow|Jean: — I found the ledger almost immediately, and Sylas's name is all over the last few pages. He's playing a "patron" role — shows up every couple of days just to shower this place with more money.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_AFTER_OPTION_PAY = """Must be the pay for her help in kidnappings.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_AFTER_OPTION_WHEN = """When will he show up next time?""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_AFTER_PAY_REPLY = """{color=yellow|Jean: — Exactly. Obviously, they wouldn't write that in a ledger, but we know that's the only thing he cares about.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_AFTER_WHEN_REPLY = """{color=yellow|Jean: — There wasn't an exact date stated, obviously, but we can deduce from the information we have.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_CLIENT_AFTER_TIMING = """{color=yellow|Jean: — Judging by the gap between his previous visits, he comes here every couple of days. His last visit was two days ago, so he should be back either today or tomorrow. That's our chance to get him.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_OPTION_PREPARE_AMBUSH = """Prepare for an ambush.""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_SHOCK = """Jean turns to you, her eyes wide.
+
+{color=yellow|Jean: — H-huh?! What do you mean? Are you out of your mind?!}""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_OPTION_PRETEND = """You just have to pretend for a bit, no one's actually going to ask you to join.""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_OPTION_UNDERCOVER = """Did you never hear about undercover operations? Why are you making a big deal out of this?""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_OBJECTION = """{color=yellow|Jean: — Easy for you to say! You're not the one who has to pretend to be a whore! Besides, it's a stupid idea anyway. She knows my face and will realize everything right away!}""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_OPTION_DISGUISE = """Does the word 'disguise' mean anything to you?""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_OPTION_CHANGE = """I didn't mean to go in like this. Obviously, you should change.""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_NO_CLOTHES = """{color=yellow|Jean: — Change? Into what? I didn't take any spare clothes with me!}""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_OPTION_GOLD = """Give Jean 500 gold""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_OPTION_WAIT = """Just wait a minute here, I gotta get something...""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_RETURN = """You walk back to the brothel with Jean that you previously suggested should change her clothes; she gives you a dubious look.""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_GOLD = """Jean looks at the bag of coins you presented, confused. Then it clicks.
+
+{color=yellow|Jean: — Wait, you want me not only to pretend to be a whore, but also dress like one?!}
+
+You stay silent but it's obvious she needs to look convincing for the job.
+
+{color=yellow|Jean: — Unbelievable! That's the stupidest idea I've ever heard!}""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_OPTION_BETTER = """You got a better one? She knows my face even better than yours.""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_OPTION_CATCH = """Do you want to catch this maniac or not?""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_GOLD_REPLY = """Jean stares at you with great frustration, but doesn't refute your arguments. After a moment, she puffs up her cheeks and turns away.
+	
+{color=yellow|Jean: — ...Fine... I'll do it for the mission!}""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_DISGUISE = """She grabs the money and disappears into the crowd. You wait an hour, then another, and finally she shows up.""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_OPTION_COMPLIMENT = """That looks great on you""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_OPTION_BLEND = """You'll blend in right away""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_RESPONSE_COMPLIMENT = """Jean blushes a bit.
+	
+{color=yellow|Jean: — Oh, quit it. You know I'm wearing it only because I have no other choice.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_RESPONSE_BLEND = """Jean furrows her eyebrows.
+	
+{color=yellow|Jean: — Did you mean that as a compliment, but too dumb to understand why it isn't or did you actually want to say I look like a whore right now?}
+
+{color=yellow|Jean: — Nevermind, it's best you don't answer it.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_GO = """{color=yellow|Jean: — Alright, no point in postponing this any longer... Let's do it!}
+	
+She sighs, then puts on a fake smile and goes inside. You stealthily follow her from a distance.""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_HALLWAY = """Just as you planned, she is intercepted by the madam right away, who questions her intention.
+
+{color=yellow|Jean: — Hey-y-y, so, like, I kinda need money right now, and I saw your place, so I was wondering if you're, like, hiring or something?}
+
+{color=aqua|Madam: — Huh. That's... unexpected. Although now that I think about it, we could use another girl or two to cover all the shifts. Why don't we discuss your qualifications in detail...}
+
+As soon as you hear them go into another room, you quickly slip upstairs and look around. Fortunately, the corridor is empty. Unfortunately, you don't know which door leads to the madam's office.""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_OPTION_DOOR1 = """Pick the first door""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_OPTION_DOOR2 = """Pick the second door""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_OPTION_DOOR3 = """Pick the third door""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_OPTION_DOOR4 = """Pick the most lavish looking door""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_DOOR1 = """You pick the first door and quietly try to open it. The creaking of a bed and loud moans suddenly hit your ears. You quickly close the door.""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_DOOR2 = """You pick the second door and quietly try to open it. At first you don't hear anything, but then the sound of quiet snoring reaches you. You quickly close the door.""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_DOOR3 = """You pick the third door and quietly try to open it. Suddenly you hear a familiar voice.
+	
+{color=aqua|Girl: — W-who's there? Madam? I'll be right away!}
+
+The girl you spoke to in the alley tries to leave and freezes upon seeing you. You lower your voice and quickly explain your mission. She checks the corridor, then quietly whispers.
+
+{color=aqua|Girl: — Try the last door. But I don't want to get in trouble, so I didn't see you, okay?}
+
+She promptly closes the door.""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_OFFICE = """You pick the most lavish‑looking door and find that it is closed. After quickly dealing with the lock, you slip inside the office. The interior seems rather generic — a couple of cabinets, some paintings, and a massive wooden table with dozens of letters and documents scattered on it.""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_OPTION_PAINTINGS = """Check the paintings for a safe.""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_OPTION_CABINETS = """Check the cabinets.""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_OPTION_TABLE = """Check the table.""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_PAINTINGS = """There is no stash behind any of them. Not even a small one.""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_CABINETS = """The cabinets contain a surprising number of wine bottles. Mostly empty ones.""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_TABLE = """You quickly scan the letters, soon realizing that most of them are from angry creditors. This establishment was really in deep financial trouble. Luckily for them, Sylas and his gold came along. Luckily for you, the ledger with detailed records of every transaction and even the dates of his visits was also there, buried under the pile of letters.
+
+You quickly copy the relevant information into your notebook, then put the ledger back, sprinkling some letters on top, trying to make it look undisturbed. Then you retrace your steps and finally slip out of the brothel.""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_AFTER = """After an hour or so, Jean finally emerges from the brothel, her face deep red.""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_AFTER_OPTION_SLOW = """Took you long enough""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_AFTER_OPTION_LEARNED = """You look like you've learned a lot""", # MISSING TRANSLATION
+	JEAN_SYLAS_GIRL_PLAN_AFTER_RESPONSE = """{color=yellow|Jean: — Shut. Up. So many very personal questions... and so many things I didn't know — and wish I still didn't. This better be worth it! Did you find something?}
+	
+You tell her about your findings.
+
+{color=yellow|Jean: — Okay, at least that wasn't for nothing. Judging by the gap between his previous visits, he comes here every couple of days. His last visit was two days ago, so he should be back either today or tomorrow. That's our chance to get him... but first, give me back my clothes! I want to change right now!}""", # MISSING TRANSLATION
+	JEAN_SYLAS_AMBUSH_WAIT = """You hide in one of the alleys and begin your wait. Hours go by, then, just past midnight, he finally appears.
+	
+Covered in dark clothes, just as the girl described, Sylas confidently walks toward the brothel entrance — giving you the perfect opportunity to strike.""", # MISSING TRANSLATION
+	JEAN_SYLAS_AMBUSH_OPTION_ATTACK = """Attack him""", # MISSING TRANSLATION
+	JEAN_SYLAS_SYLAS_CONFRONT = """You nod to Jean and ready your weapon. She raises her arm and sends a fire arrow directly at Sylas, yet all of a sudden he dodges it, as if knowing from where it would come. As you walk out of your hiding his face shows no hint of surprise.
+
+{color=aqua|Sylas: — Ah, finally. I was wondering why you were taking so long.}
+
+{color=yellow|Jean: — You knew we were waiting for you?!}
+
+{color=aqua|Sylas: — Of course I did. First you barge into my house, then you destroy my lab, and now you show up here, trying to sniff out my whereabouts. Did you really think I wouldn't notice? Such foolishness.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_SYLAS_OPTION_MISTAKE = """If you knew we were waiting, coming here was your biggest mistake.""", # MISSING TRANSLATION
+	JEAN_SYLAS_SYLAS_OPTION_FIGHT = """Less talk, more fight!""", # MISSING TRANSLATION
+	JEAN_SYLAS_SYLAS_REPLY_MISTAKE = """{color=aqua|Sylas: — Oh? And why is that? Or do you think I came unprepared?}""", # MISSING TRANSLATION
+	JEAN_SYLAS_SYLAS_REPLY_FIGHT = """{color=aqua|Sylas: — You're itching for a fight that much? Fine, so be it.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_SYLAS_MONSTERS = """He snaps his fingers, and suddenly a bunch of monsters rush from the sides. Another bunch comes from behind, rushing in from the brothel's cellar.""", # MISSING TRANSLATION
+	JEAN_SYLAS_SYLAS_MONSTERS_2 = """{color=aqua|Sylas: — Hope this setup satisfies your violent nature. But in the end, I'll personally put you to rest.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_SYLAS_SERVANT_KILLED = """One of them has familiar features, and soon you realize it was his servant from the ruins that joined the fray.""", # MISSING TRANSLATION
+	JEAN_SYLAS_SYLAS_SERVANT_FREED = """Behind the monsters you notice a familiar figure of the servant from the ruins, who skittishly hides in the back.""", # MISSING TRANSLATION
+	JEAN_SYLAS_SYLAS_DEVICE = """While your enemy gloats, you feel the magical device Myr gave you in your pocket and press the activation button. Suddenly, a wave of energy emanates from your location. The monsters it hits become confused and sluggish, their movements turn frantic, then aimless. The army of battle monsters turns into a crowd of barely functioning imbeciles.
+
+{color=aqua|Sylas: — How did you... Agh, fine! I'll do it myself!}""", # MISSING TRANSLATION
+	JEAN_SYLAS_SYLAS_WIN_1 = """The battle is chaotic, but in the end, you and Jean come out on top. Sylas is pale, exhausted, but still standing and more furious.
+	
+{color=aqua|Sylas: — Curses on you! But I will not fall here, not after everything I have accomplished!}
+
+Sylas raises his hands, holding the dark sphere that pulses with sickly violet light.
+
+{color=aqua|Sylas: — You have no idea what you've just interfered with! O Benefactor, I beseech you, grant me more of your power!}""", # MISSING TRANSLATION
+	JEAN_SYLAS_SYLAS_WIN_2 = """The pulse intensifies as something inside the artifact answers. Dark fog materializes around Sylas, circling him like a snake.
+
+{color=aqua|???: — More power? You're asking for more power after losing everything I gave you? Magic, might, money, minions... and you still got beaten like a street dog... just like all those years ago! It's time for me to find a new tool.}
+
+{color=aqua|Sylas: — W-what? How dare you?! I thought we were partners! You can't do this to me!}
+
+He tries to grab the sphere, but it slips from his hands and flies into the air. The dark fog circles around it like a halo, then suddenly forms into a projectile that slams into your chest, sending you flying backward.""", # MISSING TRANSLATION
+	JEAN_SYLAS_SYLAS_WIN_3 = """{color=yellow|Jean: — [name], are you alr...}
+	
+Jean freezes mid-sentence as the dark fog begins circling her face and the sphere floats into her hands. Her body goes rigid. Her head drops... then lifts again, an unnaturally wide smile stretching across her face. Her eyes shift to a dark violet. Her mouth hangs open, but the sound that comes next is not hers.""", # MISSING TRANSLATION
+	JEAN_SYLAS_SYLAS_WIN_4 = """{color=aqua|Jean: — Ah, that is much better! Comparing that old fool to this young mage is like trading a crippled donkey for a warhorse! With her power, I'll finally be free of that dusty piece of scrying glass!}
+
+{color=aqua|Jean: — Now if you'll excuse me... this body has places to be. Ta-ta, fools.}
+
+Jean's body suddenly rises into the air and then flies into the night, leaving you alone with the collapsed Sylas... and the couple dozen guards who were summoned by the sounds of your fight and are now eager for an explanation.""", # MISSING TRANSLATION
+	JEAN_SYLAS_RETURN_ALIRON = """You return to Aliron with more questions than answers. The situation has clearly gotten out of hand. There's only one person that can make sense of what just happened. Time to talk to Myr.""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_OPTION_2 = """There's an issue with Jean...""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_ISSUE_INTRO = """{color=aqua|Myr: — Oh? I assumed that insolent girl was missing just because she didn't want to show herself to my eyes, but your tone suggests something went very wrong. Go on, tell me.}
+	
+You recount everything that transpired: the brothel, Sylas, the artifact, and the moment Jean fell under the creature's control.""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_ISSUE_LIBRARY = """{color=aqua|Myr: — Huh. That's... curious. I mean, terrible for her, of course, but as a phenomenon it's certainly worth studying...}
+	
+That's the first time Myr has shown that much interest in a while.
+
+{color=aqua|Myr: — Ah, right. I assume you're not here for scientific discourse, but for advice. We'll have to do some digging ourselves. The guild's library is this way.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_ISSUE_OPTION_SNARK = """Is this the first time you invited someone there instead of begrudgingly allowing them in after they begged?""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_ISSUE_OPTION_ARCHIVES = """You think the guild archives hold the answers?""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_ISSUE_SNARK = """{color=aqua|Myr: — I only do this because I don't want to deal with the aftermath of that entity getting out. And don't try anything funny, I'll be watching you.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_ISSUE_ARCHIVES = """{color=aqua|Myr: — Answers, clues, something. Mages have to deal with a lot of stuff, so the library should have historical records on a wide variety of entities. You just need to search through it.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_LIBRARY_COMPLETE = """After spending hours upon hours in that library, you finally collect all the mentions of people from the past who suddenly began behaving strangely, and also find an account of the ritual that originally bound that creature inside the sphere.
+
+Time to present them to Myr.""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_OPTION_3 = """I found what we were looking for...""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_RECORDS_INTRO_1 = """Myr scans them quickly, her eyes moving faster with each line.
+
+{color=aqua|Myr: — ...Yes. This fits.}
+
+She sets the papers down.""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_RECORDS_INTRO_2 = """{color=aqua|Myr: — We're dealing with a parasitic entity that feeds on its host's desires, then traps them inside a constructed illusion while using their body for its own benefit.}
+	
+She taps one particular passage.
+
+{color=aqua|Myr: — According to these records, the creature cannot fully manifest on its own, which explains why it needed a host in the first place. And the things it said about magic and power... it must be gathering strength to reverse the original sealing ritual.}
+
+{color=aqua|Myr: — Since the ritual was done with one of the Champions of that time, it was of a high quality, so the only way to break it is to recreate it in reverse and in the same location. Which means it will have to return to the original ruins at some point.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_RECORDS_OPTION_RUINS = """So I just need to head back to those ruins?""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_RECORDS_OPTION_SAVE = """Can Jean be saved?""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_RECORDS_RUINS = """{color=aqua|Myr: — Only if you want to get into a futile fight and get Jean dead.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_RECORDS_PLAN = """{color=aqua|Myr: — To save Jean, we first need to incapacitate her without killing her, and then break the demon's illusion. The first part is relatively easy. She may be a strong mage, but she's not that strong.}
+
+{color=aqua|Myr: — Jean's biggest weakness is her pride and arrogance. And since the demon still has to share her body with her mind, he is bound to inherit some of her bad habits.}
+
+{color=aqua|Myr: — Just wait for her biggest attack and dodge it, then you'll have an opening to get back at her. I'm sure you'll manage. Now, when it comes to breaking the illusion, you must use your own will to aid her. Just link your consciousness with hers and help her see through the illusion.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_RECORDS_OPTION_SAFE = """Is it safe?""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_RECORDS_OPTION_HOW = """How do I do that?""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_RECORDS_SAFE = """{color=aqua|Myr: — For you? Yes. Worst‑case scenario, you simply lose the connection. For the person you're trying to wake, it might get unpleasant if the dissonance between illusion and reality is too painful to acknowledge, but it's nothing that girl couldn't take.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_MYR_RECORDS_ARTIFACT = """{color=aqua|Myr: — There is a special artifact that can be created, but it requires some rare materials. I'm sure you'll manage to get them, though. Then just follow the instructions.}
+She reaches for the parchment and begins sketching a small arcane diagram. When she's done, she hands you the schematic.
+
+{color=aqua|Myr: — There. This should be your ticket to saving that arrogant brat. And be quick about it, we don't know how much time it takes for that demon to reverse the ritual.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_ARTIFACT_CRAFTED = """You finish crafting the artifact. Now you are prepared for the showdown with Jean and the demon inside her.""", # MISSING TRANSLATION
+	JEAN_SYLAS_SEARCH_JEAN_INTRO_1 = """The ruins look the same, yet the atmosphere feels different this time. You step inside and walk unobstructed to the central chamber, where the cages used to be. Now they are piled against the walls, while in the center Jean is drawing intricate magical circles on the floor.
+
+Upon your arrival, she turns toward you. Her eyes still glow that unsettling violet. A distorted smile touches her lips.
+
+{color=aqua|Jean: — You're persistent, I'll give you that. I did expect you'd come to try and get your girl back, but you came even earlier than I predicted.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_SEARCH_JEAN_INTRO_2 = """{color=aqua|Jean: — Not that it really matters. I've learned all your tricks during your fight with that loser, Sylas. So I'll just squish you like a bug and carry on with my plan.}
+
+{color=aqua|Jean: — I'm so close to getting my freedom back. There's no way I'm letting some mortal stop me. Do you have any idea how long I've been preparing for this?}""", # MISSING TRANSLATION
+	JEAN_SYLAS_SEARCH_JEAN_OPTION_LONG = """Long?""", # MISSING TRANSLATION
+	JEAN_SYLAS_SEARCH_JEAN_OPTION_VERY_LONG = """Very long?""", # MISSING TRANSLATION
+	JEAN_SYLAS_SEARCH_JEAN_OPTION_RECORDS = """I read the records, alright. You were sealed five hundred years ago. Doesn't even sound that long for a creature like you.""", # MISSING TRANSLATION
+	JEAN_SYLAS_DEMON_TIME_LONG = """{color=aqua|Jean: — Five hundred years, dammit! Five hundred years sealed in a piece of glass! All just because one of those fucking zealots turned out to be oh so holy and raised an alarm after noticing my presence!}""", # MISSING TRANSLATION
+	JEAN_SYLAS_DEMON_TIME_RECORDS = """{color=aqua|Jean: — Fuck you! Five hundred years isn't long when you're having fun, not when you're stuck in one place! And all because one of those fucking zealots turned out to be oh so holy and raised an alarm after noticing my presence!}""", # MISSING TRANSLATION
+	JEAN_SYLAS_DEMON_MONOLOGUE_1 = """{color=reed|Jean: — I was so bored and could do nothing about it! Well... almost nothing. Of course, I tirelessly worked on my plan to escape, but that's a given.}
+
+The creature continues, clearly reveling in its own cunning, savoring each word like a well‑earned victory.""", # MISSING TRANSLATION
+	JEAN_SYLAS_DEMON_MONOLOGUE_2 = """{color=aqua|Jean: — Even stuck in that glass, I shaped legends. I guided discoveries. I nudged the curious exactly where I needed them. I changed dozens of hosts just to grab a tiny bit more power for myself each time...}
+
+Jean's lips curl slightly.
+
+{color=aqua|Jean: — 'Cause strong hosts are very rare. Usually they can fulfill their desires themselves, leaving me no leverage... So you have no idea how happy I was when I saw that this girl, despite all her power, was consumed by her desires!}
+
+{color=aqua|Jean: — With her magical potential, I knew she was the final piece. Her power was enough to start the ritual already, all I need to do now is to get rid of you and carry on with it. And it's time to start with that task!}""", # MISSING TRANSLATION
+	JEAN_SYLAS_FIGHT_JEAN_RESULT = """The fierce fight makes you sweat quite a lot, but it still comes to an end with you as the last one standing. Jean finally collapses, weakened enough that even the demon can't force her body to move.
+
+You rush forward and press the mind‑linking artifact to her forehead. At that moment your world suddenly becomes a blur.""", # MISSING TRANSLATION
+	JEAN_SYLAS_DREAM_START = """You find yourself standing in the middle of the Mage's Guild. To the side, you see none other than Jean herself, talking to Myr. Both of them are smiling at each other.
+
+{color=aqua|Myr: — I must say, the way you've worked around the limitations of the original formula truly deserves recognition.}
+
+{color=yellow|Jean: — Oh, it wasn't that big of a deal. I just used the new type of magical circle I created for energy storage. I also hoped to patent it along with the new formula and add it to the curriculum. Do you think the guild could help me with that?}""", # MISSING TRANSLATION
+	JEAN_SYLAS_DREAM_PRAISE = """{color=aqua|Myr: — Of course, my dear. I'll issue the orders right away. Naturally, they will both bear your name, to commemorate your achievement in history.}
+
+{color=yellow|Jean: — Ah, there's no need for that. I just wanted to do some good for the magical community.}
+
+{color=aqua|Myr: — No-no, I insist! The world should know its geniuses...}""", # MISSING TRANSLATION
+	JEAN_SYLAS_DREAM_OPTION_FUN = """I see you had your share of fun. But it's time to go back to reality, Jean""", # MISSING TRANSLATION
+	JEAN_SYLAS_DREAM_OPTION_WAKE = """Jean, wake up. You know this is a dream. Do you really think Myr would ever praise you like that?""", # MISSING TRANSLATION
+	JEAN_SYLAS_DREAM_REPLY_FUN = """{color=yellow|Jean: — Oh, [name], you've decided to visit us? How nice of you! I missed you, you know? You should visit more often!}
+
+{color=yellow|Jean: — ...But wait, what are you talking about? I don't understand. Reality? Also, you look pretty worn out, did you come here right after a battle? Hold on, are you injured? Do you need any help?}
+
+She looks at you with deep concern in her eyes.""", # MISSING TRANSLATION
+	JEAN_SYLAS_DREAM_REPLY_WAKE = """{color=yellow|Jean: — Oh, [name], how did you end up here? You should've told us you were coming. I'd have organized some snacks at the very least...}
+
+{color=yellow|Jean: — ...And what are you saying? Why wouldn't Myr congratulate me when I deserved it? I mean, it's true that we started on the wrong note and didn't see eye to eye at first, but we reconciled after I presented my thesis... my thesis on... what?}
+
+She begins to look more and more confused, unable to properly retrieve the nonexistent chain of events that would lead her to this moment.""", # MISSING TRANSLATION
+	JEAN_SYLAS_DREAM_BREAK_OPTION_REMEMBER = """Jean, listen to me. Remember. Your research, the old house, Rynn, the monastery ruins, the monsters, the Empire's capital, Sylas, our fight with him""", # MISSING TRANSLATION
+	JEAN_SYLAS_DREAM_BREAK_OPTION_ILLUSION = """This is all just an illusion, Jean. The demon trapped your mind here while using your body as a tool for his own gain""", # MISSING TRANSLATION
+	JEAN_SYLAS_DREAM_BREAK_RESPONSE = """{color=yellow|Jean: — W-what? That's nonsense! We've dealt with that case ages ago! And after that I... it's been years... wait, why can't I remember what I was doing all that time? ...Ah, why does my head suddenly hurt? ...Could it really be? ...All of that is just an illusion?...}
+
+As she begins to regain her freedom, the illusory jail starts to crumble. Myr's figure distorts and disappears as the pieces of the stage are consumed by darkness.""", # MISSING TRANSLATION
+	JEAN_SYLAS_WAKE_REALITY = """A moment later, you find yourself back in reality. Jean slowly opens her eyes, and they go wide as she realizes where she is.
+
+{color=yellow|Jean: — S-so it really was just an illusion?! All of it?! Oh, my body hurt so much... Why?...}
+
+You help Jean to her feet, and together you look at the dark fog that escaped from her body and now swirls over the magical circles, slowly forming some sort of creature. Its violet eyes look at you with clear disdain.""", # MISSING TRANSLATION
+	JEAN_SYLAS_DEMON_REVEAL = """{color=aqua|Demon: — YOU! You stupid, nosy human with your stupid dirty tricks! I had this girl locked up in the sweetest dreams, the kind she'd never escape on her own! Yet you just had to ruin it for me, didn't you?!}
+
+{color=aqua|Demon: — Oh, but it's not over yet! I've siphoned enough energy from her to create this vessel, and I will finish what I've started! DIE!}""", # MISSING TRANSLATION
+	JEAN_SYLAS_OPTION_FIGHT_DEMON = """Fight""", # MISSING TRANSLATION
+	JEAN_SYLAS_DEMON_FIGHT_RESULT = """Together with Jean, you manage to overpower the demon. Its fragile, temporary form begins to dissipate back into fog, which in turn gets sucked back into the floating glass sphere.
+
+{color=aqua|Demon: — NO-O-O, NOT AGAIN, I WAS SO CLOSE... curse you souls... you mortal... bastards...}
+
+The sphere slowly lowers itself before finally falling to the ground with a tiny clink.""", # MISSING TRANSLATION
+	JEAN_SYLAS_SPHERE_CHOICE = """Jean gives it a cautious look.
+
+{color=yellow|Jean: — Did we... actually win? It's not an illusion this time, right?}
+
+She pinches herself and winces from the pain.
+
+{color=yellow|Jean: — Ouch. Alright, so, what do we do with it now? After being controlled by that thing, I don't even want to touch it!}""", # MISSING TRANSLATION
+	JEAN_SYLAS_SPHERE_OPTION_CHURCH = """We still need to get it to the Church to save Rynn""", # MISSING TRANSLATION
+	JEAN_SYLAS_SPHERE_OPTION_RESEARCH = """Guess it's still can be your research topic""", # MISSING TRANSLATION
+	JEAN_SYLAS_SPHERE_OPTION_DESTROY = """We should just destroy it on the spot""", # MISSING TRANSLATION
+	JEAN_SYLAS_SPHERE_CHURCH = """{color=yellow|Jean: — Oh, right, that curse won't disappear on its own! Let me grab it, then. I hope we get back in time.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_SPHERE_RESEARCH_DEAD = """{color=yellow|Jean: — I can't believe I'm the one who has to ask this, but isn't it way too dangerous? Although... I guess humanity might not get another opportunity to study a weakened demon of this sort... Fine, let me grab it and let's go to the guild.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_SPHERE_RESEARCH_ALIVE = """{color=yellow|Jean: — I can't believe I'm the one who has to ask this, but isn't it way too dangerous? Although... I guess we might not get another opportunity to study a weakened demon of this sort...}
+
+{color=yellow|Jean: — ...But wait, what studies are you talking about? We need it to remove the curse from Rynn! You're not saying we should let her, are you?...}""", # MISSING TRANSLATION
+	JEAN_SYLAS_SPHERE_OPTION_RIGHT = """You're right, I almost forgot about it. Let's go to the Church""", # MISSING TRANSLATION
+	JEAN_SYLAS_SPHERE_OPTION_UP_TO_YOU = """It's up to you. But Rynn is just one person, and we have no guarantees it'll even work. The research, though, could benefit everyone""", # MISSING TRANSLATION
+	JEAN_SYLAS_SPHERE_RIGHT = """{color=yellow|Jean: — Yeah, let's go.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_SPHERE_UP_TO_YOU = """{color=yellow|Jean: — When you put it like that... She's just one person. We don't even know if the cure will work. But research... it could let us prevent something like this from happening again.}
+
+{color=yellow|Jean: — Yeah... I guess, this is a better way. I'm sorry, Rynn. But we can't lose this opportunity. Let's go to the guild.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_SPHERE_DESTROY_DEAD = """{color=yellow|Jean: — Yeah, you're right. Time to put an end to this evil creature. Whoever sealed it last time probably didn't have enough strength to kill it, but now that it's weakened, I'm sure we'll manage. And even if we can't destroy it completely, at least it won't be able to set foot on this plane for a long time.}
+
+Hearing your decision, the sphere tries to roll away on its own, but Jean easily catches it and places it between some rocks. Realizing it won't be able to escape, the demon tries to say something, but its voice is so quiet you hear nothing but a few faint squeaks.
+
+Jean focuses all her remaining magical energy into a blindingly bright fire arrow, then throws it directly at the glass sphere. It shatters with a loud crack, inhuman screams in an unknown tongue filling your ears as the dark fog dissipates into nothingness.
+
+{color=yellow|Jean: — For everyone you've hurt on your journey. For Rynn.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_SPHERE_DESTROY_ALIVE = """{color=yellow|Jean: — Yeah, that was also my first thought, but don't forget that we need it to remove the curse from Rynn. Let me grab it and then we should head back to Church. I hope we will get back in time.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_CHURCH_EVENT_1 = """You rush to the Church and present the artifact to Ginny. Together you alert the Mage's guild and within days a small circle of senior guild mages is assembled around the artifact. They dissect the curse piece by piece and soon find a way to remove it from Rynn's body.
+
+After the ritual, the curse's energy reverses its flow and shatters the glass sphere on contact. With one final curse in an unknown tongue, the demon leaves this plane.
+
+The next day, Rynn opens her eyes. Weak, but alive and still human.
+
+{color=aqua|Rynn: — ...Where am I? What happened?}
+
+You spend a whole hour recounting all the events that transpired.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CHURCH_EVENT_2 = """{color=yellow|Jean: — ...but in the end, with the help of the Church, we were able to lift the curse. You're safe now.}
+
+{color=aqua|Rynn: — That's... an incredible story! And you saved my life again! Thank you!}
+
+She gives Jean a hug, and they talk more about the details of the adventure.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CHURCH_EVENT_3 = """{color=aqua|Rynn: — By the way... when that demon possessed you, did you get a chance to talk to him? Did he say anything about my brother?}
+
+{color=yellow|Jean: — We didn't really talk, but as he was binding my will, I remember him mentioning that, unlike Sylas, he wouldn't let anyone escape his grasp... which means at least one person did escape before. Unfortunately, we don't know who it was or when that happened.}
+
+{color=aqua|Rynn: — So he really might still be out there somewhere... Well, I guess I'll just keep searching... when Ginny lets me leave, of course.}
+
+You let her rest and return to your mansion. A week later, Rynn, fully healed, pays you a visit.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CHURCH_EVENT_4 = """She thanks you both for saving her life and says that if you ever call for help, she will answer. For now, though, she will continue to look for her brother.
+
+As you both watch her walk away, Jean turns to you.
+
+{color=yellow|Jean: — Hey. I... never really said it properly, did I?}
+
+She shifts awkwardly, uncomfortable with this moment of vulnerability.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CHURCH_EVENT_5 = """{color=yellow|Jean: — This whole mess... it was my research, my obsession, my baggage. You didn't have to follow me into any of it.}
+
+She finally looks at you.
+
+{color=yellow|Jean: — But you did. You were there, every time. So... thanks. For not giving up on me.}
+
+She punches your shoulder lightly.""", # MISSING TRANSLATION
+	JEAN_SYLAS_CHURCH_EVENT_6 = """{color=yellow|Jean: — And in the end, we actually did it. Caught the demon, saved Rynn, and even Myr looks at me with slightly less disdain. Not the worst outcome, eh?}
+
+She looks away quickly, but not before you catch the glisten in her eyes.
+
+{color=yellow|Jean: — Now come on. Let's go home. Huh, I didn't even notice how I started calling your mansion 'home'... Guess it'll be harder now if you ever want to get rid of me, heh.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_KEEP_SPHERE_1 = """You make your way back to Aliron and head to the Mage's Guild. The glass sphere survived the journey and is now carefully stored in Jean's bag.
+
+Myr meets you in the hallway. She looks at you first, then glances at Jean, her face betraying no surprise or any other emotion. Then her gaze shifts directly to Jean's bag.
+
+{color=aqua|Myr: — ...Well. I see you didn't come back empty-handed.}
+
+Jean carefully takes the artifact from her bag and holds it in her hands.""", # MISSING TRANSLATION
+	JEAN_SYLAS_KEEP_SPHERE_2 = """{color=yellow|Jean: — You could say that. The demon is beaten to exhaustion and currently resides inside, I doubt he'll pose any threat for quite some time. As such, I want to study it. Do you think the Academy would be interested in my research?}
+
+For a brief moment, genuine amusement flashes across Myr's face.
+
+{color=aqua|Myr: — You're asking if a bunch of old farts... of respectable mages would be interested in studying a weakened, contained parasitic demon and its magic? Pfft. Yes. Yes, they would.}
+
+Myr takes the sphere, turning it slowly in her fingers. The glass hums faintly. She gives it back to Jean with an appraising look.""", # MISSING TRANSLATION
+	JEAN_SYLAS_KEEP_SPHERE_3 = """{color=aqua|Myr: — It seems your efforts were not entirely wasted after all... even if the result was rather... unconventional.}
+
+{color=yellow|Jean: — I'll take that as praise.}
+
+{color=aqua|Myr: — Take it as you like. I'll have a new permit issued for you, it should be ready in a couple of days. After that, you will once again be welcome in the halls of the Academy. This time as a senior researcher.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_KEEP_SPHERE_31 = """For a moment, Jean just blinks.
+
+{color=yellow|Jean: — ...Seriously? Senior?}
+
+{color=aqua|Myr: — Try not to faint. It would be embarrassing.}
+
+Jean quickly looks away, but the small, satisfied smile is impossible to miss. Myr concludes the meeting is over and walks away.""", # MISSING TRANSLATION
+	JEAN_SYLAS_KEEP_SPHERE_4 = """Outside the guild, Jean lingers on the steps, unusually quiet.
+
+{color=yellow|Jean: — ...The cost Rynn had to pay for me to be in this position...}
+She exhales slowly.
+
+{color=yellow|Jean: — I won't waste this chance.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_KEEP_SPHERE_5 = """She glances at you.
+
+{color=yellow|Jean: — Hey. Just so you know... I really appreciate that you stayed with me through all this mess.}
+
+She shifts awkwardly, uncomfortable with this moment of vulnerability.""", # MISSING TRANSLATION
+	JEAN_SYLAS_KEEP_SPHERE_51 = """{color=yellow|Jean: — You were there. Every time. So... thanks. For not giving up on me.}
+
+She punches your shoulder lightly.
+
+{color=yellow|Jean: — In the end, we made quite good partners, eh? Hopefully that won't be our last adventure.}
+
+She looks away quickly, but not before you catch the glisten in her eyes.""", # MISSING TRANSLATION
+	JEAN_SYLAS_KEEP_SPHERE_52 = """{color=yellow|Jean: — Now come on. Let's go home. Huh, I didn't even notice how I started calling your mansion 'home'... Guess it'll be harder now if you ever want to get rid of me, heh.}""", # MISSING TRANSLATION
+	JEAN_SYLAS_DESTROY_EPILOGUE_1 = """After the journey is over, you return to the mansion and take some time to rest. In the evening, you notice Jean watching the sunset on the balcony and join her.
+
+Eventually, the sun hides behind the horizon, and Jean turns to you.
+
+{color=yellow|Jean: — ...Well.}
+
+She exhales.""", # MISSING TRANSLATION
+	JEAN_SYLAS_DESTROY_EPILOGUE_2 = """{color=yellow|Jean: — That was quite the adventure, wasn't it?}
+
+{color=yellow|Jean: — Not exactly what I was hoping for when this whole thing started. But in the end, at least one ancient horror is permanently off the list. Even if it came with great loss.}
+
+She then turns to you.""", # MISSING TRANSLATION
+	JEAN_SYLAS_DESTROY_EPILOGUE_3 = """{color=yellow|Jean: — You know, this whole thing showed me what it feels like to have someone watch your back.}
+
+She shifts awkwardly, uncomfortable with this moment of vulnerability.
+
+{color=yellow|Jean: — So... I just wanted to say thank you. For staying with me through all this mess. For not giving up on me.}
+
+She punches your shoulder lightly.""", # MISSING TRANSLATION
+	JEAN_SYLAS_DESTROY_EPILOGUE_4 = """{color=yellow|Jean: — In the end, we made quite good partners, eh? I just hope our next adventure is a lot brighter.}
+
+She looks away quickly, but not before you catch the glisten in her eyes.
+
+{color=yellow|Jean: — Now come on. Let's go home. Huh, I didn't even notice how I started calling your mansion 'home'... Guess it'll be harder now if you ever want to get rid of me, heh.}""", # MISSING TRANSLATION
+	JEAN_CAPITAL_OPTION_SEARCH = """Meet Jean""", # MISSING TRANSLATION
+	JEAN_CAPITAL_OPTION_ARENA = """Investigate Arena""", # MISSING TRANSLATION
+	JEAN_CAPITAL_OPTION_MERCHANTS = """Merchant Quarter""", # MISSING TRANSLATION
+	JEAN_CAPITAL_OPTION_CART = """Seek lost cart""", # MISSING TRANSLATION
+	JEAN_CAPITAL_OPTION_BROTHEL = """Visit brothel""", # MISSING TRANSLATION
+	JEAN_CAPITAL_OPTION_BROTHEL_RETURN = """Return to Jean""", # MISSING TRANSLATION
+	QUEST_JEAN_DEMON_LOCATION_TEXT = """Empty demonic ruins""", # MISSING TRANSLATION
+	QUEST_JEAN_DEMON_LOCATION_DESC = """Jean should be here""", # MISSING TRANSLATION
+	JEAN_DEMON_OPTION = """Search for Jean""", # MISSING TRANSLATION
+	JEANMAGESSEARCHTASKNAME = """*Search archives of mages guild*""", # MISSING TRANSLATION
+	JEANMAGESSEARCHTASKDESCRIPT = """You must find an information about demon""", # MISSING TRANSLATION
+	MATERIALMINDLINK = """Mind-Link Artifact""", # MISSING TRANSLATION
+	MATERIALMINDLINKDESCRIPT = """A complicated device for linking ones consciousness.""", # MISSING TRANSLATION
+	JEAN_DREAM_1 = """As you wake up in an unusual space you try to focus. The question arises in your mind, of what kind of scene you want to experience, however the only which comes to your mind is your recent companion. The lusty thought quickly overwhelms your mind as the surrounding space changes.""", # MISSING TRANSLATION
+	JEAN_DREAM_2 = """In the next moment you see Jean in flesh hanging in front of you, being caught in the middle of a dungeon in some ludicrous trap. Her skirt bunched around her waist, leaving her lower body bare and vulnerable. The rope pulling her head back forces her neck into an elegant, agonizing arch. Her red eyes, burning with a volatile mix of fury and lust, are fixed on you. Her breasts, freed from her bodice, sway slightly with her shallow, rapid breaths, the peaks hard and flushed.
+
+{color=yellow| — You are a real pervert, you know!}
+
+You walk a slow circle around her suspended form. The sight of her straining against the ropes, the sheen of sweat on her skin, the way her body is displayed for your pleasure, sends a fresh wave of desire through you. You stop behind her. You run a single finger down her spine, from the nape of her neck to the cleft of her ass. A shudder wracks her body, a visible tremor that runs through her limbs and makes the ropes creak.""", # MISSING TRANSLATION
+	JEAN_DREAM_3 = """Your hands land on her ass, the flesh firm and cool beneath your palms. You squeeze, watching the skin turn white under the pressure before flooding back with color. Her breath catches. You raise one hand and bring it down in a sharp smack. The sound echoes in the room, followed by her sharp intake of breath. A red imprint of your hand blossoms on her pale skin. You do it again, on the other cheek. And again. A rhythm of blows that turns her skin a rosy pink, the heat radiating from her onto your palms.
+
+You stop, your fingers trailing over the heated skin, feeling the slight tremor that still runs through her. Her legs, encased in the black leather boots, are spread just enough for you to see the glistening wetness on her inner thighs. You reach between them from behind, your fingers sliding easily between her swollen folds. She's soaked. Her body betrays her anger, her hips rocking back against your hand, seeking more friction. You thrust two fingers inside her, curling them to find that sensitive spot deep within.""", # MISSING TRANSLATION
+	JEAN_DREAM_4 = """{color=yellow| — Enough of your games, once I get out...}
+
+You rub the head against her dripping entrance, coating yourself in her slickness. You watch her body tense in anticipation.
+
+With one smooth, powerful thrust, you bury yourself inside her. The force of it pushes her forward, the ropes biting into her wrists. Her back arches further, a broken cry tearing from her throat. You don't give her time to adjust. You set a brutal pace from the start, pulling out almost completely before slamming back in, your hips smacking against her reddened ass with each thrust. The frame groans with the force of your movements, the ropes straining.""", # MISSING TRANSLATION
+	JEAN_DREAM_5 = """{color=yellow| — Aah... You are the worst!}
+
+You reach around her body, one hand cupping a bouncing breast, the other finding her clit. You roll the pebbled nipple between your fingers, pinching it just hard enough to make her gasp. Your other hand works at her clit, rubbing it in fast, merciless circles. The dual stimulation is too much. Her body convulses, her pussy clamping down on your cock like a vise as she comes with a silent scream, her head thrown back, her body a bow of taut, quivering flesh.
+
+You continue to thrust into her spasming pussy, chasing your own release. The sight of her, bound and helpless in the throes of pleasure, her skin flushed and gleaming with sweat, pushes you over the edge. You drive deep one last time, your cock pulsing as you empty yourself into her. You stay there for a moment, your bodies joined, her breathing ragged, her limbs slack in their bonds""", # MISSING TRANSLATION
+	JEAN_DREAM_6 = """You step back, watching as your seed trickles down her inner thigh, a stark, white line against her flushed skin. She hangs limp in her bonds, her body spent, her anger momentarily forgotten, replaced by a dazed, sated bliss. In the next moment the world around you breaks, you come back to your senses at the brothel.""", # MISSING TRANSLATION
+	JEAN_WED_1 = """You lay her gently on the king-sized bed, the mattress yielding beneath her slight weight. The white silk of the wedding dress pools around her, a stark, lovely contrast to her pink skin. You work the delicate laces of her bodice, parting the fabric until the swell of her breasts is exposed to the cool air. Her long, golden hair fans out across the white sheets. You leave her dress on but for the undone front, her body turned on its side, one leg drawn up, the curve of her hip a perfect line beneath the rumpled silk. Her red eyes watching you tensely.
+
+{color=yellow| — H-hey, are you going to stare just like that?} 
+
+Your fingers trace the line of her lifted thigh, from the smooth back of her knee up to the silken curve where it meets her hip. The warmth of her skin seeps into your touch. You hook a finger into the narrow band of her underwear, the last remaining barrier, and pull it down. The fabric whispers against her skin as you peel it away, revealing the outline of the pussy between her legs, glistening faintly in the dim lamplight. You watch the muscles in her thighs tense as her legs fall further open, a subtle, unwilling invitation. Her chest rises and falls a little faster as her nipples harden from the arousal.""", # MISSING TRANSLATION
+	JEAN_WED_2 = """You take your weight on one arm beside her, leaning over her body. Your free hand moves to her chest, cupping the soft mound of her breast. Her breath hitches. You brush your thumb over the hardened peak, feeling it pucker further against your skin. You lower your head, your breath ghosting over the sensitive flesh before your lips close around it. You suckle gently, then a little harder, your tongue swirling around the nub. Her back arches slightly, a gasp torn from her throat though she tries to swallow it. Your other hand slides down her stomach, until your fingers find her pussy.
+
+{color=yellow| — Aah! Not so sudden, you brute...}
+
+You part her folds, feeling the slippery wetness that coats your fingertips. Despite her protests, she's certainly looking forward to more. You circle the small, hidden bud of her clit, watching her face as you do. Her brow furrows, her lips parting, a flush spreading from her cheeks down her neck. Her hips give a small, involuntary twitch, pressing up against your hand. You dip a finger inside her, then a second, her walls clenching around the intrusion.""", # MISSING TRANSLATION
+	JEAN_WED_3 = """You draw back, positioning yourself between her legs. Your cock, heavy and rigid, rests for a moment against the slick entrance to her body. Then you push forward. The head of your cock breaches her pussy. You pause, letting her adjust, watching the way her body stretches around you. A shudder runs through her.
+
+{color=yellow| — Aah... So full...}
+
+Then you push deeper. A slow, relentless slide into her heat. Her inner walls yield, clinging to every inch of you as you bury yourself to the hilt. Her hands clutch at the bed sheets, her knuckles white. You stay there for a moment, fully sheathed, feeling the deep, clenching rhythm of her pulse around your shaft.""", # MISSING TRANSLATION
+	JEAN_WED_4 = """You begin to move. A slow withdrawal, almost pulling out completely, before thrusting back in, hard. The impact jars her body, a small cry escaping her lips. Her breasts, still exposed from her gown, jiggle with the force of your movements. Her golden hair is a tangled mess on the pillow, strands clinging to her damp cheeks. You set a steady, demanding pace, each withdrawal long and deliberate, each thrust deep and forceful. The sound of your bodies meeting is a rhythmic slap in the quiet room, punctuated by her gasps and your own groans.
+
+Your gaze falls to where your bodies join, watching your cock disappear into her stretched pussy, glistening with her arousal. You pull out almost completely, revealing the flushed, swollen folds, only to bury yourself inside her again with a grunt of satisfaction. Her hips begin to lift to meet your thrusts, a hesitant, answering rhythm that betrays her body's growing desire.""", # MISSING TRANSLATION
+	JEAN_WED_5 = """Your pace quickens, your control fraying. You lean down, your body blanketing hers, your mouth finding the pulse point on her neck. You nip and suck at the sensitive skin, marking her as yours. Her legs wrap around your waist, pulling you deeper. This new angle allows you to drive into her even harder, your cock hitting a spot deep inside that makes her cry out, a raw, unrestrained sound of pleasure.
+
+{color=yellow| — I'm... so close...}
+
+You can feel your climax building, a tightening in your groin. You can feel hers too, in the way her pussy begins to spasm around you. You reach between your bodies, your fingers finding her clit, rubbing it in tight, fast circles as you continue to pound into her. That's all it takes. Her body bows, her inner muscles clamping down on your cock as she shatters. A long, drawn-out moan escapes her.""", # MISSING TRANSLATION
+	JEAN_WED_6 = """You follow her over the edge a few strokes later, burying yourself deep inside her as your release hits. A groan rips from your throat as you pulse, filling her with your seed. You collapse against her, your breath coming in ragged gasps, your bodies slick with sweat. For a long moment, you lie there, your heart hammering against your ribs, her body still trembling beneath yours.
+
+{color=yellow| — AAah... This felt too good... Hey, you aren't planning to just stop here?}""", # MISSING TRANSLATION
+	ROUGE_DEMONESS_INTERMISSION_START = """At the rich bedroom of the imperial palace Rouge finds a visitor - Mhyrana was waiting for her there. As Rouge looked around she found her servant cowering in the corner, looking relieved at her arrival.
+
+{color=green|Grotus: — Miss Rouge, you have a vis...!}
+
+{color=yellow|Rouge: — Shut it, I have eyes. Leave us alone, worm.}
+
+{color=green|Grotus: — B-but of course, my mistress!}""", # MISSING TRANSLATION
+	ROUGE_DEMONESS_INTERMISSION_MHYRANA_1 = """{color=aqua|Mhyrana: — So you've met with [him]. The one who defeated your other sister.}
+
+{color=yellow|Rouge: — Are you taunting me? I don't care about those failures, neither the black one nor the white one.}
+
+{color=aqua|Mhyrana: — Yet, you have not produced the results that I've requested.}
+
+{color=yellow|Rouge: — Yes, your stupid ancient trash, I remember. You know I'm working on it.}
+""", # MISSING TRANSLATION
+	ROUGE_DEMONESS_INTERMISSION_MHYRANA_2 = """{color=aqua|Mhyrana: — I think you work far more on your power-hungry ambitions than that.}
+
+{color=yellow|Rouge: — Those go hand in hand, don't they? Either way, don't spoil my fun, you know it never ends well for those who do.}
+
+{color=aqua|Mhyrana: — As long as you realize that. Don't make the same mistake that Kuro did.}
+
+As the words sound like a thinly disguised threat, the fox woman pays no attention to it. Inside she feels more irritated about the comparison.
+
+{color=yellow|Rouge: — Are you done yet?}""", # MISSING TRANSLATION
+	ROUGE_DEMONESS_INTERMISSION_GROTUS_1 = """{color=aqua|Mhyrana: — Yeah, I am...}
+
+Mhyrana turns her glance toward the slightly open door. She notices the silhouette of the recently dismissed servant who has been watching the two women talk. As he realizes the demon woman is looking at him, his body jerks in response, quickly retreating.
+
+{color=aqua|Mhyrana: — How does someone like you keep such a nasty thing around?}
+
+{color=yellow|Rouge: — Grotus? Ha-ha, that's exactly why.}
+""", # MISSING TRANSLATION
+	ROUGE_DEMONESS_INTERMISSION_GROTUS_2 = """{color=aqua|Mhyrana: — Care to explain?}
+
+{color=yellow|Rouge: — I took him from the slums. He's a man of no ambition, no virtue, no dignity, no intelligence. Utterly pathetic. It truly fascinates me how a person can be so much like an animal.}
+
+The demon woman's eyes narrow in response, her lips pressed into a deeper frown than usual, but she dares not voice her protest.
+
+{color=aqua|Mhyrana: — ...Hmph, I'll leave you to your own games then.}""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_CONFRONTATION_START = """A noble looking old man approaches from the upper gallery, his steps heavy with restrained fury.
+
+{color=yellow|Rouge: — Ah, Melchor, I was sure you were busy today.}
+
+{color=aqua|Melchor: — I knew it was you, vixen. You've overstepped your place and tested my patience in front of half the capital.}
+
+{color=yellow|Rouge: — *Smirks* Please, I only used this place for what it is and paid my dues. Besides, it's [name], the mayor of Aliron [him]self who desired to participate for our entertainment.}""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_OPTION_MILD_EXERCISE = """It was but a mild exercise for me.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_OPTION_CROWDS_PLEASED = """The crowds seemed rather pleased.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_OPTION_CIRCUMSTANCES = """I was only dragged into it by circumstances.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_CONFRONTATION_RESPONSE_1 = """Melchor exhales through his nose, unimpressed.
+
+{color=aqua|Melchor: — Spare me the excuses. This is not a scene, and I will not have order undermined for entertainment. Especially not under my stewardship.}
+
+He turns fully toward Rouge, his expression hardening.
+
+{color=aqua|Melchor: — As for you... this is the last straw. A stranger with no standing, yet somehow you slither closer to the Emperor with every passing day.}
+
+{color=yellow|Rouge: — You make it sound so flattering when you say it like that.}""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_CONFRONTATION_RESPONSE_2 = """{color=aqua|Melchor: — You manipulate and embed yourself where you do not belong. I will not tolerate this any longer.}
+
+Rouge raises her hands lightly, mock-placating.
+
+{color=yellow|Rouge: — Fine, fine. If my presence offends you that deeply, why don't I just leave for somewhere more appealing.}
+
+She glances at you sideways.
+
+{color=yellow|Rouge: — That is, if [name] wishes to take me into [his] custody.}""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_CONFRONTATION_RESPONSE_3 = """Melchor freezes, clearly caught off guard. After a long pause, he looks at you, jaw tight.
+
+{color=aqua|Melchor: — ...Absurd. Yet preferable. Will you take responsibility for her and keep her away from here?}""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_OPTION_ACCEPT_CUSTODY = """That's a bit sudden... But who am I to refuse a beautiful woman.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_OPTION_REFUSE_TRAP = """I'm not falling into this trap.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_CONFRONTATION_ACCEPT = """Rouge's smile turns satisfied, almost playful.
+
+{color=yellow|Rouge: — How reassuring. I promise I'll keep my distance for the time being.}
+
+Melchor folds his arms.
+
+{color=aqua|Melchor: — See that you do. This arrangement is already a concession.}""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_CONFRONTATION_REFUSE_1 = """Rouge gives you a mildly offended look, then chuckles.
+
+{color=yellow|Rouge: — Don't regret it later, dear.}
+
+She turns back to Melchor.
+
+{color=yellow|Rouge: — I'll be staying for now then, you'll have to denounce me officially first. And we'll see how the council members vote. Fufu.}""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_CONFRONTATION_REFUSE_2 = """{color=aqua|Melchor: — Damn you... I'll make you pay for all of this.}
+
+{color=yellow|Rouge: — Of course, just don't keep me waiting. Until then...}
+
+Rouge turns around and leaves without letting either of you respond.""", # MISSING TRANSLATION
+	ROUGE_MANSION_ARRIVAL = """You arrive at your mansion with Rouge walking a half step ahead of you, inspecting the halls with open curiosity.
+
+{color=yellow|Rouge: — Well, this place isn't too shabby. I guess that's a given for the mayor of Aliron [him]self.}""", # MISSING TRANSLATION
+	ROUGE_MANSION_OPTION_REASON = """Why have you requested to join me?""", # MISSING TRANSLATION
+	ROUGE_MANSION_OPTION_STATUS = """You aren't just here because of my status, are you?""", # MISSING TRANSLATION
+	ROUGE_MANSION_REASON = """{color=yellow|Rouge: — Why indeed. You are fresh blood, a self-made [man], aren't you? Not like Melchor, his ilk from the senate, or even the emperor. I thought I'd been at the empire too long and getting some fresh air isn't the worst idea.}
+
+Rouge smiled with a faint hint of something predatory.""", # MISSING TRANSLATION
+	ROUGE_MANSION_STATUS = """{color=yellow|Rouge: — Fufu, I wonder. Could it be this little kingdom has caught my eye as an empire's sleeping agent? Not really, but I do have an interest in you, you know. It's like something unseen just draws me to your side... Ahaha.}
+
+Rouge's playful demeanor makes it impossible to tell whenever she's joking or serious, which keeps you on your toes.""", # MISSING TRANSLATION
+	ROUGE_MANSION_HANDLE = """{color=yellow|Rouge: — So, all that said, how are you planning to handle me?}""", # MISSING TRANSLATION
+	ROUGE_MANSION_OPTION_CUSTODY_WARNING = """Careful with that tone. You're here under my custody.""", # MISSING TRANSLATION
+	ROUGE_MANSION_OPTION_SHOW_QUARTERS = """Follow me. I'll show you your quarters.""", # MISSING TRANSLATION
+	ROUGE_MANSION_OPTION_SLAVE_STATUS = """Since you're under my roof, you can be placed under slave status.""", # MISSING TRANSLATION
+	ROUGE_MANSION_CUSTODY_WARNING = """{color=yellow|Rouge: — Ah, my apologies, I only wish for us to coexist beneficially. Fufu.}""", # MISSING TRANSLATION
+	ROUGE_MANSION_LEAD = """{color=yellow|Rouge: — Right behind you.}""", # MISSING TRANSLATION
+	ROUGE_MANSION_SLAVE_STATUS = """{color=yellow|Rouge: — Really? Is that some particular kink of yours? That sounds like a fun game, alright, you can try, but don't think I'll be any easier to handle because of it.}""", # MISSING TRANSLATION
+	ROUGE_MANSION_OPTION_SLAVE_CONFIRM = """I'll do it then... for my reassurance and your safety.""", # MISSING TRANSLATION
+	ROUGE_MANSION_OPTION_NEVERMIND_QUARTERS = """Nevermind, let me show you your quarters.""", # MISSING TRANSLATION
+	ROUGE_MANSION_SLAVE_CONFIRM = """You go through the procedure of assigning Rouge as your legal slave. Despite that, you have a feeling she wouldn't be held by you for any length of time if she weren't allowing it.""", # MISSING TRANSLATION
+	ROUGE_MANSION_SHOW_QUARTERS = """As you get Rouge to one of the better rooms, she looks over your interior. While her mouth is smiling, her eyes are cold and judging.
+
+{color=yellow|Rouge: — Very well. My luggage will be arriving soon, don't worry, it's just a few personal things. Now if you'll excuse me...}
+
+She rudely closes the door, leaving you standing outside. Feels like you'll be hearing more from her soon.""", # MISSING TRANSLATION
+	ROUGE_ROOM_COMPLAINT_START = """Not long after you've left for your own business, Rouge comes to your office with a less than pleasant expression.
+
+{color=yellow|Rouge: — [name], I need your attention. This is completely inexcusable! I know this place isn't up to the empire's standards but the room you've given me is just insulting.}""", # MISSING TRANSLATION
+	ROUGE_ROOM_OPTION_BARELY_WORSE = """Your room is barely worse than my own.""", # MISSING TRANSLATION
+	ROUGE_ROOM_OPTION_NOTHING_WRONG = """I don't remember there being anything wrong with it.""", # MISSING TRANSLATION
+	ROUGE_ROOM_OPTION_GET_USED = """You should just get used to it.""", # MISSING TRANSLATION
+	ROUGE_ROOM_COMPLAINT_DEMANDS = """{color=yellow|Rouge: — As if that's your excuse. I'm not like you, I deserve the very best, you know. You are the owner and you've taken the responsibility of being my host, so you should do better. How old is this mansion anyway? I can smell mold in at least two of the rooms. Surely you can see to getting new furniture for my quarters.}""", # MISSING TRANSLATION
+	ROUGE_ROOM_OPTION_DEMANDING = """You are really demanding.""", # MISSING TRANSLATION
+	ROUGE_ROOM_OPTION_REFUSE = """I won't be doing that, just get used to it.""", # MISSING TRANSLATION
+	ROUGE_ROOM_OPTION_WORKERS_GUILD = """Alright, I suppose I can ask the workers' guild...""", # MISSING TRANSLATION
+	ROUGE_ROOM_COMPLAINT_DEMANDING = """{color=yellow|Rouge: — I may be demanding, but so what? I know what I deserve, and if you expect me to stay on your side you should make my time worth it.}""", # MISSING TRANSLATION
+	ROUGE_ROOM_COMPLAINT_REFUSE = """{color=yellow|Rouge: — Oh? I thought better of you. You might not recognize the fortune of having me by your side. Let it be known that you should not disappoint me like that.}""", # MISSING TRANSLATION
+	ROUGE_ROOM_COMPLAINT_ACCEPT = """{color=yellow|Rouge: — Now that's what I like to hear. I don't expect this poor countryside to have the best service I could get back there, but it's the thought that counts after all.}""", # MISSING TRANSLATION
+	ROUGE_WORKERS_FURNITURE_START = """{color=aqua|Sigmund: — Furnitcha ya say..? Well, it would be an honor to do dat for a mayor's guest.}
+
+{color=yellow|Rouge: — What a pleasant thing to hear. Let me have a look at your catalogs.}""", # MISSING TRANSLATION
+	ROUGE_WORKERS_FURNITURE_REENTER = """{color=aqua|Sigmund: — Yah, I remember. Ya've got da payment?}""", # MISSING TRANSLATION
+	ROUGE_WORKERS_FURNITURE_TERMS = """After some time passes, Rouge returns to you with Sigmund.
+
+{color=aqua|Sigmund: — Yah, ya have quite the demands, lass.}
+
+{color=yellow|Rouge: — Ah, my only concern is that the mayor has a place befitting [his] status.}
+
+Rouge passes you the list of articles for her bedroom, still smiling as you read the final sum. It comes to 10,000 gold with all work considered. Some of the pieces are ready to be delivered while others are to be made with the utmost urgency.""", # MISSING TRANSLATION
+	ROUGE_WORKERS_OPTION_PAY_GOLD = """Fine, I can surely recoup these costs... (10000 gold)""", # MISSING TRANSLATION
+	ROUGE_WORKERS_OPTION_CANNOT_AFFORD = """We can't afford it...""", # MISSING TRANSLATION
+	ROUGE_WORKERS_OPTION_DISCUSS = """Can we discuss this?""", # MISSING TRANSLATION
+	ROUGE_WORKERS_OPTION_MATERIALS = """I have the materials you need.""", # MISSING TRANSLATION
+	ROUGE_WORKERS_OPTION_NEED_TIME = """I need some time to consider.""", # MISSING TRANSLATION
+	ROUGE_WORKERS_FURNITURE_PAY = """Rouge smiles at your agreement.
+	
+	{color=yellow|Rouge: — Good. I shall be waiting back home then}""", # MISSING TRANSLATION
+	ROUGE_WORKERS_FURNITURE_PAID_GOLD = """Rouge smiles at your agreement, looking entirely too satisfied with herself.
+
+{color=yellow|Rouge: — Good. I knew you would understand the value of proper appearances. Try not to look so wounded, darling, money is only useful when it buys something worth having.}
+
+{color=aqua|Sigmund: — We'll get da order moving right away. Finest hands in da guild, no worries there.}
+
+Rouge leaves to seal the contract while you wait for her to return. By the time you leave the workers' guild, she is walking beside you with an air of victory, already speaking as if the new room was a settled fact from the start.""", # MISSING TRANSLATION
+	ROUGE_WORKERS_FURNITURE_PAID_MATERIALS = """Sigmund checks over the promised materials with a practical nod.
+
+{color=aqua|Sigmund: — Yah, dis'll do. Saves coin, costs sweat, same as most honest work. We'll start as soon as da wagons arrive.}
+
+Rouge watches the exchange with a faint smile, though she gives you a sidelong look once the contract is sealed.
+
+{color=yellow|Rouge: — Resourceful, aren't you? I suppose I can appreciate a [man] who knows how to turn raw stock into comfort. Very well, darling, I'll consider this acceptable.}
+
+With the arrangements made, you leave the workers' guild together. Rouge seems pleased enough, walking beside you with an air of victory.""", # MISSING TRANSLATION
+	ROUGE_WORKERS_FURNITURE_CANNOT_AFFORD = """{color=yellow|Rouge: — Huh, I didn't take you for a cheapskate. Do you mind reconsidering? This would reflect very poorly on you, you know.}""", # MISSING TRANSLATION
+	ROUGE_WORKERS_OPTION_RECONSIDER = """Fine, we can get it if you insist...""", # MISSING TRANSLATION
+	ROUGE_WORKERS_OPTION_NO_INDULGE = """I have no need for such things, and I've decided I'm not going to indulge your every whim.""", # MISSING TRANSLATION
+	ROUGE_WORKERS_FURNITURE_MATERIALS_OFFER = """{color=aqua|Sigmund: — Yah, I understand, I actually expected dat. I can offer ya a secondary contract. 150 Thick Leather, 100 Iron Wood. I know dat ya have the workforce for those.}
+
+Seemingly Rouge is not too bothered by your hesitation.""", # MISSING TRANSLATION
+	ROUGE_WORKERS_FURNITURE_RECONSIDER = """Rouge nods with satisfaction.""", # MISSING TRANSLATION
+	ROUGE_WORKERS_FURNITURE_CHARM_SUCCESS = """Rouge gives you a scornful look but there's a hint of respect in it. It seems she's ready to give you credit for this decision.
+
+{color=yellow|Rouge: — Very well, if you say so, [master]. I don't think we should have come all the way here for nothing, so if you don't mind, I'll pay for it myself. Don't look so surprised, did you really think I was poor?}
+
+Rouge leaves to seal the contract as you wait for her to return. Mildly surprised, you leave the workers' guild with Rouge walking next to you.""", # MISSING TRANSLATION
+	ROUGE_WORKERS_FURNITURE_CHARM_FAIL = """Rouge rolls her eyes, letting out an uncharacteristic sigh.
+
+{color=yellow|Rouge: — I can't believe it. You really said that? I'm starting to think you might not be the right [man] for me to follow after all. Fine, I'll pay for the necessities with my own money, it's a beggar's wage to me anyway.}
+
+Rouge leaves to seal the contract as you wait for her to return. Mildly surprised, you leave the workers' guild with Rouge walking slightly behind — it seems her attitude has grown colder.""", # MISSING TRANSLATION
+	ROUGE_LETTER_REQUEST = """In the afternoon Rouge approaches you with a request. She seems to have grown quite accustomed to being your resident.
+
+{color=yellow|Rouge: — Darling, it's been a while since we left the capital. While I'm not in any particular hurry to return, I've been picking up some rumors from there. And since I've still promised Melchor not to show my face there, maybe you could do me a favor?}""", # MISSING TRANSLATION
+	ROUGE_LETTER_OPTION_FAVOR = """What kind of favor?""", # MISSING TRANSLATION
+	ROUGE_LETTER_OPTION_FISHY = """That sounds pretty fishy, I'm still not sure what your goals are...""", # MISSING TRANSLATION
+	ROUGE_LETTER_REQUEST_DETAILS = """{color=yellow|Rouge: — There's a little letter I want you to deliver to Melchor. We may be on the wrong foot with each other but there's still some common ground for us to find, fufu. Oh, and it's magically sealed by the empire's customs, just so you won't get too curious about the contents.}""", # MISSING TRANSLATION
+	ROUGE_LETTER_OPTION_CONTENTS = """What's exactly in the letter?""", # MISSING TRANSLATION
+	ROUGE_LETTER_OPTION_WHY_YOU = """Why me? If you have informants, you could just ask them.""", # MISSING TRANSLATION
+	ROUGE_LETTER_OPTION_RIVALS = """Melchor? I thought you two were rivals.""", # MISSING TRANSLATION
+	ROUGE_LETTER_OPTION_ACCEPT = """Alright, I'll do it when I'm there.""", # MISSING TRANSLATION
+	ROUGE_LETTER_REQUEST_CONTENTS = """{color=yellow|Rouge: — Ah, just some choice gossip. Don't worry, it will all make sense in time.}""", # MISSING TRANSLATION
+	ROUGE_LETTER_REQUEST_WHY_YOU = """{color=yellow|Rouge: — Two reasons. Firstly, you are more respectable to him than anyone I could ask. Secondly, why wouldn't I use such a handsome courier for something I'm entrusting personally? I assure you, this is beneficial to all of us.}
+
+She pauses as if remembering something.
+
+{color=yellow|Rouge: — I suppose there's one more reason. I can probably trust you more than any of my friends in the empire with something like this.}""", # MISSING TRANSLATION
+	ROUGE_LETTER_REQUEST_RIVALS = """{color=yellow|Rouge: — Even bitter rivals can share a common interest once in a while, fufu. Don't fret about it, and we'll all benefit.}""", # MISSING TRANSLATION
+	ROUGE_LETTER_REQUEST_ACCEPT = """{color=yellow|Rouge: — Very good. I'll be watching from somewhere nearby. Just so he won't spot me and get angry about it, fufu.}""", # MISSING TRANSLATION
+	ROUGE_CHAT_ROOT = """ """, # MISSING TRANSLATION
+	ROUGE_CHAT_OPTION_CULT = """Tell me about the cult.""", # MISSING TRANSLATION
+	ROUGE_CHAT_OPTION_MELCHOR = """What's your deal with Melchor?""", # MISSING TRANSLATION
+	ROUGE_CHAT_CULT = """{color=yellow|Rouge: — Mostly they are weaklings who found some comfort in the madness of going to war with reality. I suppose I got dragged into it a bit as well, but you can't blame me. Mhyrana as their leader can be a fearsome adversary.}""", # MISSING TRANSLATION
+	ROUGE_CHAT_OPTION_CULT_ALLY = """So you aren't their ally?""", # MISSING TRANSLATION
+	ROUGE_CHAT_OPTION_KURO = """Kuro sided with them.""", # MISSING TRANSLATION
+	ROUGE_CHAT_OPTION_CULT_GOAL = """What's their goal?""", # MISSING TRANSLATION
+	ROUGE_CHAT_OPTION_NO_MORE = """I don't have any more questions.""", # MISSING TRANSLATION
+	ROUGE_CHAT_CULT_ALLY = """{color=yellow|Rouge: — I can be an ally for a time but I will never be one of them. Mhyrana knows it, but she loves using whatever leverage she can. I can't stand her morbidity nor their hollow souls. And now that I'm here I don't think they'll be paying me any visits.}""", # MISSING TRANSLATION
+	ROUGE_CHAT_CULT_KURO = """{color=yellow|Rouge: — She always was a strange one, so I'm hardly surprised. That's on her though. Besides, haven't you already given her a piece of your mind? Might need a few more lessons to make sure her head stays on straight, fufu.}""", # MISSING TRANSLATION
+	ROUGE_CHAT_CULT_GOAL = """{color=yellow|Rouge: — Hell if I know. Mhyrana has been plotting something like a grand revolution across the empire, or maybe it's some sort of cataclysm. Her followers are little more than fanatics and I can't say whether she has a real plan or is just acting on a whim.}""", # MISSING TRANSLATION
+	ROUGE_CHAT_MELCHOR = """{color=yellow|Rouge: — Ah, he's just an old fool clinging to power long past his time. He doesn't like me, the feeling is mutual. He thinks he's so great simply because he was born into high society as part of an ancient clan. He really believes that makes him untouchable and important — what a laugh.}""", # MISSING TRANSLATION
+	ROUGE_MEET_MELCHOR_START = """You find Melchor at his office. The rich decoration makes even you feel a twinge of envy. After getting the meeting approved, you make your way inside as he observes you with a skeptical look.
+
+{color=yellow|Melchor: — You again. [name], if I'm not mistaken. Mayor of Aliron, been hunting down artifacts and got dragged into business with the elves and the dwarven kingdom.}""", # MISSING TRANSLATION
+	ROUGE_MEET_OPTION_INFORMED = """You are quite well informed.""", # MISSING TRANSLATION
+	ROUGE_MEET_OPTION_SPIES = """I didn't take you for someone who spies on people.""", # MISSING TRANSLATION
+	ROUGE_MEET_MELCHOR_REASON = """{color=yellow|Melchor: — The Empire keeps close watch on surrounding lands and important events. Anyway, why did you request this meeting? I hope it has nothing to do with the vixen in your custody. I still don't understand why she left with you, so I'll be watching you carefully around here.}""", # MISSING TRANSLATION
+	ROUGE_MEET_OPTION_LETTER = """I have a letter for you.""", # MISSING TRANSLATION
+	ROUGE_MEET_OPTION_ROUGE_MESSAGE = """Actually, Rouge asked me to bring you this message.""", # MISSING TRANSLATION
+	ROUGE_MEET_MELCHOR_LETTER = """With no less of an annoyed look he takes the letter from Rouge and breaks its enchantment with his personal seal. Quickly going through the writing, he shoves it back to you.
+
+{color=yellow|Melchor: — Curses! Does she expect me to take this seriously? That wicked woman must be taking me for a fool.}
+
+The contents of the letter name a few locations in the city likely used by the cult, requesting a prompt investigation.""", # MISSING TRANSLATION
+	ROUGE_MEET_OPTION_CULT = """It seems to be about the cult, are you moving on it?""", # MISSING TRANSLATION
+	ROUGE_MEET_OPTION_ADDRESSES = """These addresses are worth checking, aren't they?""", # MISSING TRANSLATION
+	ROUGE_MEET_OPTION_PLAN = """So what are you planning to do about it?""", # MISSING TRANSLATION
+	ROUGE_MEET_MELCHOR_CULT = """{color=yellow|Melchor: — No chance. We have banned the cult and have been pursuing their followers. However, some of these properties may have ties to them. In fact, I was certain Rouge was dealing with them herself, but she's been under the emperor's personal protection.}""", # MISSING TRANSLATION
+	ROUGE_MEET_MELCHOR_ADDRESSES = """{color=aqua|Melchor: — I can't pull our special agents based on suspicion alone. On top of that, moving on them would tip them off in the first place.}""", # MISSING TRANSLATION
+	ROUGE_MEET_MELCHOR_PLAN = """Melchor walks to the window, irritably staring at the bustling street.
+
+{color=yellow|Melchor: — I suppose we have no other option here. I'll have to ask for your assistance. You brought this message after all, and they are your enemies too. If the cult really is using any of those buildings as a base, I'll deal with them on the spot.}""", # MISSING TRANSLATION
+	ROUGE_MEET_OPTION_MUTUAL_INTEREST = """I guess we have a mutual interest here.""", # MISSING TRANSLATION
+	ROUGE_MEET_OPTION_REWARD = """What will I get out of it?""", # MISSING TRANSLATION
+	ROUGE_MEET_MELCHOR_MUTUAL_INTEREST = """{color=yellow|Melchor: — Yeah, yeah, now get to it. I seethe just thinking about those fanatics plotting behind our backs at this very moment.}""", # MISSING TRANSLATION
+	ROUGE_MEET_MELCHOR_REWARD = """{color=yellow|Melchor: — You came here on that vixen's behalf, didn't you? Ask her for your reward for being a good errand boy. Well, if this operation yields results you might get some recognition from the empire. Now go, you can't afford to waste time here.}""", # MISSING TRANSLATION
+	ROUGE_WAREHOUSE_SEARCH = """After going through various storage districts and finding little more than empty buildings with traces of questionable activity, you finally come across a multistory warehouse showing signs of recent use. Avoiding some suspicious-looking guards you make your way to the back entrance.""", # MISSING TRANSLATION
+	ROUGE_WAREHOUSE_APPROACH_KETCH = """You hear a familiar voice as your curiosity draws you closer to the door.""", # MISSING TRANSLATION
+	ROUGE_WAREHOUSE_APPROACH_HENCHMAN = """You hear a loud argument coming through the door which catches your attention.""", # MISSING TRANSLATION
+	ROUGE_WAREHOUSE_OPTION_PEEK = """Peek through the door stealthily.""", # MISSING TRANSLATION
+	ROUGE_WAREHOUSE_OPTION_SLIP_INSIDE = """Slip inside.""", # MISSING TRANSLATION
+	ROUGE_WAREHOUSE_PEEK_KETCH = """You manage to hold your breath and stay silent, peering through the gap to see a familiar figure.
+
+{color=yellow|Ketch: — Move faster, dammit. I can't believe I'm stuck here with useless morons like you. I'll have words with Mhyrana about this later...}
+
+{color=aqua|Cultist: — But master Ketch, you know it's an important task-}
+
+{color=yellow|Ketch: — Shut it, unless you want to get gutted.}""", # MISSING TRANSLATION
+	ROUGE_WAREHOUSE_PEEK_HENCHMAN = """You manage to hold your breath and stay silent, peering through the gap to see two people talking, one of them clearly holding authority over the place.
+
+{color=aqua|Henchman: — Is it true we've been having trouble finding new subjects?}
+
+{color=aqua|Cultist: — Preparations are going as planned, a few more weeks and—}""", # MISSING TRANSLATION
+	ROUGE_WAREHOUSE_SLIP_INSIDE = """You quietly make it inside, moving through a poorly lit passage. Your nose quickly catches the foul smell filling the air. Further down the passage you find a small half-open door. Peering inside, you catch sight of a few ritual circles smeared in blood. One of the tables appears to have a dismembered body on it.
+
+Before you can get back out, you hear footsteps behind you — your presence has been discovered.""", # MISSING TRANSLATION
+	ROUGE_WAREHOUSE_CAPTURE_1 = """Suddenly you hear footsteps behind you. A cult patrol cuts off your escape route.
+""", # MISSING TRANSLATION
+	ROUGE_WAREHOUSE_CAPTURE_2 = """{color=aqua|— Hey, who's there!? We've got a snitch here!}
+
+A powerful security spell you hadn't noticed activates and catches you in its grip. You feel your consciousness slipping...""", # MISSING TRANSLATION
+	ROUGE_INTERROGATION_KETCH_START = """You wake up in a dark room, your hands tied to a chair. Your head is splitting with a headache but your limbs seem to be intact.
+
+{color=yellow|Ketch: — Well, our sleeping princess is finally awake.}
+
+{color=aqua|Goon: — Should we report it to Mhyrana?}
+
+{color=yellow|Ketch: — Hold off on that. I want to know what this fucker found out about us first. Get back to your post.}
+
+{color=yellow|Ketch: — I knew you were nothing but trouble, but this goes way too far. Now tell me before I lose my patience — how did you find us? Who else knows you're here?}""", # MISSING TRANSLATION
+	ROUGE_INTERROGATION_OPTION_SILENT = """*Stay silent*""", # MISSING TRANSLATION
+	ROUGE_INTERROGATION_OPTION_NOTHING = """I'm not telling you anything.""", # MISSING TRANSLATION
+	ROUGE_INTERROGATION_OPTION_ROUGE = """It was Rouge...""", # MISSING TRANSLATION
+	ROUGE_INTERROGATION_KETCH_TOUGH = """{color=yellow|Ketch: — Yeah, great time to play tough, you idiot. I'd be bored if you didn't give me a reason to hurt you.}
+
+A sharp blow to your side makes you groan.
+
+{color=yellow|Ketch: — I know you didn't just stumble across this warehouse. Now spill it.}""", # MISSING TRANSLATION
+	ROUGE_INTERROGATION_OPTION_ROUGE_SENT = """Rouge sent me.""", # MISSING TRANSLATION
+	ROUGE_INTERROGATION_OPTION_HIT_LIKE = """You hit like a bitch.""", # MISSING TRANSLATION
+	ROUGE_INTERROGATION_KETCH_ROUGE = """{color=yellow|Ketch: — That bitch? You've gotta be shitting me. I swear, I'll make her pay the moment I get the chance...}""", # MISSING TRANSLATION
+	ROUGE_INTERROGATION_KETCH_BITCH = """His face twists in rage as he lands an especially hard punch to your chest. You feel a rib crack and wince in pain.
+
+{color=yellow|Ketch: — Really? Good thing I have a blade then!..}
+
+As he reaches for his blade, a sudden banging at the door stops him.""", # MISSING TRANSLATION
+	ROUGE_INTERROGATION_HENCHMAN_START = """You wake up in a dark room, your hands tied to a chair. Your head is splitting with a headache but your limbs seem to be intact.
+
+{color=yellow|Henchman: — Who the hell is this [guy]? Why haven't you put [him] with the rest?}
+
+{color=aqua|Cultist: — We found him lurking around outside, he might know something.}""", # MISSING TRANSLATION
+	ROUGE_INTERROGATION_HENCHMAN_QUESTION_1 = """{color=aqua|Henchman: — Fine, then I'll file a report to Mhyrana.}
+
+{color=aqua|Henchman: — So, our unlucky guest, let's hear it — who knows you're here?}""", # MISSING TRANSLATION
+	ROUGE_INTERROGATION_OPTION_BUSINESS = """None of your business.""", # MISSING TRANSLATION
+	ROUGE_INTERROGATION_OPTION_SQUAD = """I have a squad ready to storm this place.""", # MISSING TRANSLATION
+	ROUGE_INTERROGATION_HENCHMAN_QUESTION_2 = """{color=aqua|Henchman: —Hah, looks like you want it the hard way. Can't complain...}""", # MISSING TRANSLATION
+	ROUGE_INTERROGATION_OVER_KETCH = """{color=aqua|Goon: — Master Ketch, there's a group of people outside the building, looks like some kind of mob — could be officials...}
+
+{color=yellow|Ketch: — Huh, what the hell?!}
+
+{color=aqua|Goon: — What do we do? You need to come see this.}
+
+{color=yellow|Ketch: — Damn it... Stay put, I'll be right back.}""", # MISSING TRANSLATION
+	ROUGE_INTERROGATION_OVER_HENCHMAN = """{color=aqua|Henchman: — Master, there's a group of people outside the building, looks like some kind of mob — could be officials...}
+
+{color=green|Cultist: — Huh, what the hell?!}
+
+{color=aqua|Henchman: — What do we do? You need to come see this.}
+
+{color=green|Cultist: — Damn it... We'll be right back.}""", # MISSING TRANSLATION
+	ROUGE_GROTUS_RESCUE = """As your interrogator composes himself and leaves the room, after a moment the door opens and another man walks in. You recognize him as Grotus, Rouge's servant whom you've seen before. He moves closer anxiously and begins undoing your restraints.
+
+{color=yellow|Grotus: — You fool... I can't believe I'm being made to rescue you. Do you have any idea what kind of danger I'm putting myself in? If it weren't for the mistress's orders I'd gut you myself!}
+
+As he finishes freeing you, you finally manage to stand and thank him.
+
+{color=yellow|Grotus: — Forget it, I'm out of here. Don't you dare mention who helped you if they catch you again! The western side of the building should have only a few watchers. I'm gone!}""", # MISSING TRANSLATION
+	ROUGE_WAREHOUSE_ESCAPE_1 = """The small man retreats so quickly you can barely track him — until another cultist steps into his path. The shouts from outside are getting louder, so you decide it's better to move.""", # MISSING TRANSLATION
+	ROUGE_WAREHOUSE_ESCAPE_2 = """Making it out of the building you reach the small back gate, but two men are blocking the way, weapons drawn and ready to stop you.""", # MISSING TRANSLATION
+	ROUGE_WAREHOUSE_ESCAPE_WIN = """As you deal with the two cultists and put distance between yourself and the warehouse, Grotus appears before you unexpectedly.
+
+{color=yellow|Grotus: — Not too bad for a moron like you. Remember to be grateful for my help when you report back to mistress Rouge!}""", # MISSING TRANSLATION
+	ROUGE_WAREHOUSE_OPTION_FULL_OF_YOURSELF = """You are really full of yourself.""", # MISSING TRANSLATION
+	ROUGE_WAREHOUSE_OPTION_WHAT_NOW = """What do I do now?""", # MISSING TRANSLATION
+	ROUGE_WAREHOUSE_GROTUS_REPRIMAND = """Grotus doesn't seem to pay the slightest attention to your reprimand — the adrenaline from the danger is clearly still running hot.""", # MISSING TRANSLATION
+	ROUGE_WAREHOUSE_GROTUS_WHAT_NOW = """{color=yellow|Grotus: — Huh!? Why are you asking me? I don't care. You had some mission from the mistress? Then go do it.}
+
+Saying that he left you to yourself. Perhaps now you can report back to Melchor.""", # MISSING TRANSLATION
+	ROUGE_REPORT_MELCHOR_KETCH = """You brief Melchor on the warehouse the cult is using, going into detail about your recent ordeal but leaving out who helped you escape.
+
+{color=yellow|Melchor: — You say Ketch himself was there? That's enough, that bastard has been on the wanted list for too long. I'm deploying my special forces immediately — you're coming with us.}""", # MISSING TRANSLATION
+	ROUGE_REPORT_MELCHOR_NO_KETCH = """You brief Melchor on the warehouse the cult is using, going into detail about your recent ordeal but leaving out who helped you escape.
+
+{color=yellow|Melchor: — I've had my eye on that one too. Fine, let's move before they can. I'm deploying my special forces immediately — you're coming with us.}""", # MISSING TRANSLATION
+	ROUGE_REPORT_MELCHOR_RAID = """A unit of lightly armored combatants is dispatched immediately to the warehouse you just visited. The building is quickly surrounded by imperial fighters who move with clear experience, but the cult has prepared for a siege.
+
+{color=aqua|Soldier Leader: — We've confirmed these are the dangerous cultists and they're not surrendering. Move in.}
+
+A small group of combat mages began chanting potent fire spells, quickly setting the barricades ablaze while others kept bystanders at a distance. Agonized cries began echoing from inside the building.""", # MISSING TRANSLATION
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_1 = """As the cult's followers kept the soldiers occupied, Ketch slipped into a small underground tunnel prepared specifically for an escape. He fought his way past a couple of soldiers before his followers managed to set up a rearguard, but the fighting left him tired and wounded.
+
+{color=yellow|Ketch: — Fucking hell, how did it go this wrong? If I get my hands on that [name] I swear [he]'ll never—}""", # MISSING TRANSLATION
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2 = """A figure stepped out of the shadows ahead. Ketch's expression shifted to shock — not because it was someone unexpected, but because of what it meant.
+
+{color=yellow|Ketch: — You... You set this whole thing up, you bitch!}
+
+{color=aqua|Rouge: — And you thought you could insult and threaten me without it coming back around? Attack my sisters?}
+
+{color=yellow|Ketch: — The cult will hear about this—}""", # MISSING TRANSLATION
+	ROUGE_REPORT_MELCHOR_KETCH_DEAD = """The strike comes before Ketch can see it. A wound to his chest kills him on the spot, blood spraying across the walls.
+
+{color=yellow|Rouge: — Fufu, I hope darling won't be too strict with me about this.}""", # MISSING TRANSLATION
+	ROUGE_REPORT_KETCH_BASEMENT_INTRO = """It doesn't take long for the imperial mages to finish off the remaining cultists and extinguish the fires. You make your way into the building, which is miraculously not too badly damaged. A small open cellar trapdoor catches your eye. You descend just in time to hear a pained cry from ahead. Moving through it you find Rouge, to your surprise, having just finished off Ketch. His lifeless body slumps to the ground.
+
+{color=yellow|Rouge: — Ah, [name], just in time.}""", # MISSING TRANSLATION
+	ROUGE_REPORT_OPTION_WHAT_HAPPENED = """What happened here?""", # MISSING TRANSLATION
+	ROUGE_REPORT_OPTION_CAPITAL = """Aren't you supposed to stay away from the capital?""", # MISSING TRANSLATION
+	ROUGE_REPORT_KETCH_WHAT_HAPPENED = """{color=yellow|Rouge: — Just taking out some trash. I heard the Hybris champion gave you trouble in the past. I had my own grievances with him as well.}""", # MISSING TRANSLATION
+	ROUGE_REPORT_KETCH_CAPITAL = """{color=yellow|Rouge: — Fufu, I suppose I may have bent one little promise — you won't tell on me though, will you? I'll stay well clear of this from now on.}""", # MISSING TRANSLATION
+	ROUGE_REPORT_KETCH_BASEMENT_1 = """{color=yellow|Rouge: — There's a hidden cult basement just around the corner. I imagine you'd like to take a look before Melchor's men sweep the place.}""", # MISSING TRANSLATION
+	ROUGE_REPORT_KETCH_BASEMENT_2 = """While the upper level of the warehouse mostly held weapons and various tools, the underground was a different story. Cramped rooms were filled with refuse and dirty rags. You couldn't quite make sense of it until one of the rooms revealed a grim sight: many human bodies and parts piled together, gutted, drained of blood. The stench made your stomach turn.
+
+{color=yellow|Rouge: — They used this place to sacrifice people. Mostly the poor and immigrants who wouldn't be looked for. Looks like they were building toward something big.}""", # MISSING TRANSLATION
+	ROUGE_REPORT_OPTION_OTHER_PLACES = """How many other places like this are there across the empire?""", # MISSING TRANSLATION
+	ROUGE_REPORT_OPTION_CLEAR_OUT = """So you wanted me to help clear this out?""", # MISSING TRANSLATION
+	ROUGE_REPORT_KETCH_BASEMENT_3 = """{color=yellow|Rouge: —  I'm sure more than a few. Why do you think the empire is fighting them? Though I don't think they're doing a particularly good job. Regardless, I have my own agenda and it's time for me to leave.}""", # MISSING TRANSLATION
+	ROUGE_REPORT_KETCH_BASEMENT_4 = """{color=yellow|Rouge: — No, I was mostly after that bastard. But it's good that we both got something out of it, isn't it? Not to mention we made Melchor do something useful for once. Well, it's time for me to leave now.}""", # MISSING TRANSLATION
+	ROUGE_REPORT_HENCHMAN_BASEMENT_INTRO = """It doesn't take long for the imperial mages to finish off the remaining cultists and extinguish the fires. You make your way into the building, which is miraculously not too badly damaged. A small open cellar trapdoor catches your eye. You descend into the underground passage and find Rouge already there, standing amidst the cramped halls as if she had been expecting you.
+
+{color=yellow|Rouge: — Ah, [name], there you are. I thought you'd notice the trapdoor sooner or later.}""", # MISSING TRANSLATION
+	ROUGE_REPORT_OPTION_WHAT_DOING = """What are you doing here?""", # MISSING TRANSLATION
+	ROUGE_REPORT_HENCHMAN_WHAT_HAPPENED = """{color=yellow|Rouge: — Looking around, of course. These fanatics had more than one secret tucked away beneath their feet, and I was curious what exactly they'd been hiding down here.}""", # MISSING TRANSLATION
+	ROUGE_REPORT_HENCHMAN_BASEMENT_1 = """Rouge gestures for you to follow. She leads you deeper into the underground, through cramped rooms filled with refuse and dirty rags. You couldn't quite make sense of it until one of the rooms revealed a grim sight: many human bodies and parts piled together, gutted, drained of blood. A strange thought of familiarity towards the victims fills you. You feel like you can't take a single breath in that room. 
+
+Rouge's face turns grim, this is the first time you can see her being this serious.
+
+{color=yellow|Rouge: — They used this place to sacrifice people. Mostly the poor and immigrants who wouldn't be looked for. Looks like they were building toward something big.}""", # MISSING TRANSLATION
+	ROUGE_REPORT_OPTION_SHOW = """So you came down here just to show me this?""", # MISSING TRANSLATION
+	ROUGE_REPORT_HENCHMAN_BASEMENT_2 = """{color=yellow|Rouge: — I'm sure more than a few. Why do you think the empire is fighting them? Though I don't think they're doing a particularly good job.}""", # MISSING TRANSLATION
+	ROUGE_REPORT_HENCHMAN_BASEMENT_3 = """{color=yellow|Rouge: — Not just this. Come along, darling. There's one more thing worth seeing before Melchor's men start trampling through the place.}""", # MISSING TRANSLATION
+	ROUGE_REPORT_HENCHMAN_BASEMENT_4 = """Rouge leads you back up from the cellar and through the warehouse proper. The upper level is cluttered with crates, weapons, and various tools, though now that the fighting has ended it all feels strangely hollow. What looked at first like a simple stockpile now carried a more deliberate purpose: staging supplies for raids, rituals, and whatever the cult had been preparing next.
+
+{color=yellow|Rouge: — This is what they wanted to keep close at hand. Steel above, butcher's work below. Efficient, in its own ugly way.}
+
+You glance back toward the cellar entrance, the foul air still drifting up from beneath. The whole building feels tainted now, as if the blood below had seeped into the walls themselves.
+
+{color=yellow|Rouge: — Well, you've seen enough. The empire will pick through the remains soon enough, and I have no desire to linger around soldiers longer than necessary.}
+
+Before you can say anything else, Rouge steps away toward a side exit with that same unhurried confidence. By the time you move after her, she is already gone.""", # MISSING TRANSLATION
+	ROUGE_REPORT_MELCHOR_RETURN = """You find Melchor at his office, seemingly satisfied with the raid.
+
+{color=yellow|Melchor: — Ah, you again. Good work leading us to the cult. We even recovered that bastard's body, though it seems someone else did the killing. Was that you?}""", # MISSING TRANSLATION
+	ROUGE_REPORT_MELCHOR_RETURN_2 = """You find Melchor at his office, seemingly satisfied with the raid.
+
+{color=yellow|Melchor: — Ah, you again. Good work leading us to the cult. We've confirmed the lower chambers were exactly as foul as you claimed. Nevertheless, here's something for your trouble — now I have more important matters to attend to.}
+
+He passes you some gold and has the soldiers escort you from the scene before departing himself.""", # MISSING TRANSLATION
+	ROUGE_REPORT_OPTION_IT_WAS_ROUGE = """It was Rouge.""", # MISSING TRANSLATION
+	ROUGE_REPORT_OPTION_I_DID_IT = """Yeah, I did it.""", # MISSING TRANSLATION
+	ROUGE_REPORT_MELCHOR_REWARD_ROUGE = """{color=yellow|Melchor: — W-what? You must be joking. My agents reported no one else in the area. Nevertheless, here's something for your trouble — now I have more important matters to attend to.}
+
+He passes you some gold and has the soldiers escort you from the scene before departing himself.""", # MISSING TRANSLATION
+	ROUGE_REPORT_MELCHOR_REWARD_SELF = """{color=yellow|Melchor: — Is that so? I'll turn a blind eye to it this time, but know that only imperial officials are authorized to carry out justice here. Nevertheless, here's something for your trouble — now I have more important matters to attend to.}
+
+He passes you some gold and has the soldiers escort you from the scene before departing himself.""", # MISSING TRANSLATION
+	ROUGE_RETURN_TO_ROUGE = """{color=yellow|Rouge: — Nice work. I knew I could count on you. I think we've learned something about the cult's operations — let's take it easy for now.}""", # MISSING TRANSLATION
+	ROUGE_QUEST_NAME = """Rouge: Imperial games""", # MISSING TRANSLATION
+	ROUGE_QUEST_SUMMARY = """Rouge's rivalry in the Empire has drawn you into her affairs.""", # MISSING TRANSLATION
+	ROUGE_QUEST_STAGE_MANSION = """Bring Rouge to the mansion.""", # MISSING TRANSLATION
+	ROUGE_QUEST_STAGE_FURNITURE = """Speak with the Workers Guild about Rouge's room.""", # MISSING TRANSLATION
+	ROUGE_QUEST_STAGE_FURNITURE_GET = """Get requested furniture one way or another.""", # MISSING TRANSLATION
+	ROUGE_QUEST_STAGE_LETTER = """Wait for Rouge's next request.""", # MISSING TRANSLATION
+	ROUGE_QUEST_STAGE_MELCHOR = """Deliver Rouge's letter to Melchor.""", # MISSING TRANSLATION
+	ROUGE_QUEST_STAGE_WAREHOUSE = """Search the Empire capital for the cult's warehouse.""", # MISSING TRANSLATION
+	ROUGE_QUEST_STAGE_RAID = """Report the warehouse to Melchor.""", # MISSING TRANSLATION
+	ROUGE_QUEST_STAGE_REWARD = """Return to Melchor.""", # MISSING TRANSLATION
+	ROUGE_QUEST_STAGE_ROUGE = """Return to Rouge.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_VISIT_OFFICE = """You come to visit Melchor's office, but the clerks at the door make it clear that he has little patience for unplanned guests. It would be better not to bother him without a good reason.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_VISIT_OPTION_LETTER = """*Deliver Rouge's letter.*""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_VISIT_OPTION_RAID = """*Report the warehouse.*""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_VISIT_OPTION_REWARD = """*Consult on the warehouse task.*""", # MISSING TRANSLATION
+	ROUGE_CAPITAL_OPTION_FIND = """Find Rouge""", # MISSING TRANSLATION
+	ROUGE_CAPITAL_OPTION_MELCHOR = """Visit Melchor""", # MISSING TRANSLATION
+	ROUGE_CAPITAL_OPTION_LETTER = """Meet Melchor""", # MISSING TRANSLATION
+	ROUGE_CAPITAL_OPTION_WAREHOUSE = """Suspicious warehouse""", # MISSING TRANSLATION
+	ROUGE_CAPITAL_OPTION_RAID = """Meet Melchor""", # MISSING TRANSLATION
+	ROUGE_CAPITAL_OPTION_REWARD = """Meet Melchor""", # MISSING TRANSLATION
+	ROUGE_CHAT_OPTION_REPORT = """Your task is done.""", # MISSING TRANSLATION
+	ROUGE_FURNITURE_REWARD = """{color=yellow|Rouge: — So you really did it. My room finally gonna look like it belongs to someone with taste.}
+
+She leans back with a satisfied smile, then gives you a slow, appraising look.
+
+{color=yellow|Rouge: — I suppose I have to reward you properly for going through all that trouble. Come here.}""", # MISSING TRANSLATION
+	ROUGE_FURNITURE_REWARD_OPTION_ACCEPT = """*Come closer*""", # MISSING TRANSLATION
+	ROUGE_FURNITURE_REWARD_OPTION_REFUSE = """I'm not in the mood right now.""", # MISSING TRANSLATION
+	ROUGE_FURNITURE_REWARD_REFUSE = """For a moment Rouge simply stares at you, as if the answer failed to fit into any category she had prepared for.
+
+{color=yellow|Rouge: — ...Really? After all that buildup?}
+
+Her tails flick once, sharp with irritation, but she exhales and looks away before her annoyance can fully settle into anger.
+
+{color=yellow|Rouge: — Fine. I suppose even you are allowed to be difficult sometimes. Don't think this offer will be up since you decided to test my patience today.}""", # MISSING TRANSLATION
+	ROUGE_SEX_1 = """Rouge lounges on the white silk sheets. Her body is a masterpiece of generous curves, her skin seems to glow in the dim light. Her hair, a cascade of fiery red, fans out around her head like a halo. Her fox ears, a darker shade of red, twitch with interest as you approach. Her eyes, the color of molten gold, gleam with a predatory light that promises both pleasure and possession. Two sleek, red tails, tipped with white, swish slowly behind her, a hypnotic, mesmerizing dance. She pats the space between her breasts, an invitation that is both a challenge and a command.
+
+{color=yellow|Rouge: — Come on here, I'm in the mood to make our first time... special. Unless it's too cheeky for you.}""", # MISSING TRANSLATION
+	ROUGE_SEX_2 = """You kneel over her chest, straddling her torso. Her breasts are large and soft, the perfect size to engulf your cock. You place your cock in the valley between them, the heat of her skin. She presses her breasts together, creating a tight, warm channel for you to embrace.
+
+{color=yellow|Rouge: — Yes... Enjoy it to your heart's content.}
+
+You start to move, a slow, deliberate slide that builds in speed and intensity. The sight of your cock disappearing and reappearing between her soft, warm flesh is intensely erotic. Her golden eyes never leave your face, watching every flicker of pleasure that crosses your features. Her tails wrap around your legs, holding you in place, a gentle but firm reminder that you are hers.""", # MISSING TRANSLATION
+	ROUGE_SEX_3 = """Her hands join her breasts, her fingers digging into the soft flesh, adding to the pressure. This new sensation, combined with the tight, wet heat of her breasts brings you to orgasm. You groan, your body tensing as you climax, your cum spurting onto her chest and neck, painting her tits with your semen.
+
+{color=yellow|Rouge: — Fufu, don't you dare to stop now. We're gonna do a whole lot more.}
+
+Unbeknownst to yourself, you feel that you are ready for way more.""", # MISSING TRANSLATION
+	ROUGE_SEX_4 = """The sight of your seed glistening on her skin seems to ignite a new fire in her eyes. Without a word, she shifts, lifting her head slightly from the pillows. Her long tongue darts out, curling around the base of your still-hard shaft. She begins to clean you with slow, deliberate licks, moving upwards with agonizing slowness. Her tongue is impossibly long and flexible; it wraps around your cock like a living thing as she takes you into her mouth.
+
+The warmth of her mouth is a stark contrast to the cool air on your wet skin. She takes you deep into her throat without any sign of gagging or discomfort; as if this was what she was born for. Her lips form a tight seal around the base while that incredible tongue continues its dance inside its hot prison.""", # MISSING TRANSLATION
+	ROUGE_SEX_5 = """The pressure builds, a coiling heat in your groin that demands release. Her movements become more urgent, her head bobbing faster as she senses your impending climax. Her golden eyes are locked onto yours, a silent command to let go, to give her everything. Just as the wave of pleasure crests and you feel the first spasm of orgasm, she pulls back with surprising speed.
+
+Your cock escapes her mouth with a wet pop just in time for the first thick rope of cum to arc through the air and land across her cheek. She doesn't flinch; instead she tilts her head back slightly and closes those gold eyes as if receiving some kind of sacred blessing from above.
+
+{color=yellow|Rouge: — Mm, yes, give me it all... Just for me!}
+
+More spurts follow one after another until they paint most parts of her face, forehead, and even some strands get caught in that fiery red hair.""", # MISSING TRANSLATION
+	ROUGE_SEX_6 = """Rouge doesn't give you a moment to recover. She releases her breasts, her hands moving to your shoulders, pulling you down for a brief, hard kiss. Her tails unwrap from your legs, only to wrap around your waist, pulling you down, positioning your still-hard cock at her entrance. She's wet, ready for you. You slide into her with a single, smooth thrust, her pussy clamping down on you, a hot, wet welcome.
+
+{color=yellow|Rouge: — Aaah, you fit... so perfectly...}""", # MISSING TRANSLATION
+	ROUGE_SEX_7 = """
+You start to move, a slow, deep rhythm that quickly builds in intensity. Her hips rise to meet yours, her legs wrapping around your waist, pulling you deeper. Her tails are everywhere, caressing your back, your arms, your legs, a constant, sensual touch that heightens your arousal.
+
+{color=yellow|Rouge: — Do it rougher, you fool.}
+
+Her body is a landscape of pleasure for you to explore. Your hands roam over her curves, your lips finding hers, your tongues tangling in a passionate kiss. Her hands are just as busy, her nails digging into your back, fingers tangling in your hair. The room fills with the sounds of raw sex - the slap of your bodies meeting, your moans and gasps.""", # MISSING TRANSLATION
+	ROUGE_SEX_8 = """You can feel your second climax building, a slow, steady pressure that threatens to overwhelm you. You can feel hers too, in the way her pussy starts to spasm around you, in the way her body tenses beneath you. At the last moment you push it the deepest you can. That's all it takes. Her body arches, a cry of pure pleasure tearing from her throat as she comes. Her pussy clamps down on your cock, milking you, pulling your own release from you.
+
+{color=yellow|Rouge: — AAaaaaah!... [name]!... Yes... }
+
+You collapse against her, your body spent, your breathing ragged. Her tails wrap around you, holding you close, a possessive, protective embrace.""", # MISSING TRANSLATION
+	LIRA_QUEST2_QUEST_NAME = """Lira: Fair""", # MISSING TRANSLATION
+	LIRA_QUEST2_QUEST_SUMMARY = """Lira wants to see the fair in Aliron and learn more about life outside the temple.""", # MISSING TRANSLATION
+	LIRA_QUEST2_QUEST_STAGE_START = """Talk to Lira at the mansion.""", # MISSING TRANSLATION
+	LIRA_QUEST2_QUEST_STAGE_FAIR = """Take Lira to the city fair.""", # MISSING TRANSLATION
+	LIRA_QUEST2_QUEST_STAGE_RETURN = """Return to the mansion with Lira.""", # MISSING TRANSLATION
+	LIRA_QUEST3_QUEST_NAME = """Lira: Origins""", # MISSING TRANSLATION
+	LIRA_QUEST3_QUEST_SUMMARY = """Lira wants to learn where she came from, and the trail leads you to her past.""", # MISSING TRANSLATION
+	LIRA_QUEST3_QUEST_STAGE_START = """Talk to Lira at the mansion.""", # MISSING TRANSLATION
+	LIRA_QUEST3_QUEST_STAGE_TEMPLE = """Visit the temple in the elven capital.""", # MISSING TRANSLATION
+	LIRA_QUEST3_QUEST_STAGE_REPORT_LIRA = """Talk to Lira""", # MISSING TRANSLATION
+	LIRA_QUEST3_QUEST_STAGE_TRADER = """Question the Aliron slave trader.""", # MISSING TRANSLATION
+	LIRA_QUEST3_QUEST_STAGE_EMPIRE = """Travel to the Empire Capital and look for the bandit leader.""", # MISSING TRANSLATION
+	LIRA_QUEST3_QUEST_STAGE_ROAD = """Visit ambush spot.""", # MISSING TRANSLATION
+	LIRA_QUEST3_QUEST_STAGE_DEN = """Follow the directions to the bandits' den and rescue Lira.""", # MISSING TRANSLATION
+	LIRA_QUEST3_QUEST_STAGE_CARAVAN_PREPARE = """Find the caravan master and arrange the bait caravan.""", # MISSING TRANSLATION
+	LIRA_QUEST3_QUEST_STAGE_CARAVAN_ATTACK = """Ride with the caravan and wait for the bandit ambush.""", # MISSING TRANSLATION
+	LIRA_QUEST3_QUEST_STAGE_FOLLOW_LEADER = """Have the captured bandit leader guide you to the old merchant.""", # MISSING TRANSLATION
+	LIRA_QUEST3_QUEST_STAGE_MERCHANT = """Enter the merchant's shop and uncover the last part of Lira's past.""", # MISSING TRANSLATION
+	LIRA_QUEST3_QUEST_STAGE_RETURN = """Return to the mansion with Lira.""", # MISSING TRANSLATION
+	LIRA_QUEST3_ALIRON_TRADER_OPTION = """Question the slave trader""", # MISSING TRANSLATION
+	LIRA_QUEST3_ELF_TEMPLE_OPTION = """Enter the temple""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_NOTICE_OPTION = """Check the notice board""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_CARAVAN_MASTER_OPTION = """Offer your help to the caravan master""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_CARAVAN_ATTACK_OPTION = """Use the caravan as bait""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_FOLLOW_LEADER_OPTION = """Follow the bandit leader""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_MERCHANT_OPTION = """Enter the shop""", # MISSING TRANSLATION
+	LIRA_QUEST3_ROAD_AMBUSH_OPTION = """Lay down the ambush""", # MISSING TRANSLATION
+	LIRA_QUEST3_DEN_ENTER_OPTION = """Enter the den""", # MISSING TRANSLATION
+	LIRA_QUEST3_ROAD_LOCATION_NAME = """Stretch of Road""", # MISSING TRANSLATION
+	LIRA_QUEST3_ROAD_LOCATION_DESC = """A lonely road near the eastern hills, where caravans and travelers make tempting targets for bandits.""", # MISSING TRANSLATION
+	LIRA_QUEST3_DEN_LOCATION_NAME = """Bandits' Den""", # MISSING TRANSLATION
+	LIRA_QUEST3_DEN_LOCATION_DESC = """A hidden cave system deep in the forest, used by the bandits who once carried Lira toward Aliron.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_HOW_HAVE_YOU_BEEN = """How have you been doing lately? It seems that something is on your mind.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_DISTRACTED = """You've seemed distracted lately. What's troubling you?""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_PEOPLE_CRUEL = """People can be rather cruel sometimes.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_DIDNT_DESERVE = """You didn't deserve such treatment.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_PRESENT_MATTERS = """That's the right way to look at it. The present matters more than the past.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_MAY_FIND_ANSWERS = """Life is unpredictable. You might find your answers when you least expect it.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_LOOK_INTO_IT = """I could try to look into it, if I get the chance.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_TEMPLE_WELCOME = """I thought the temple would welcome someone who was in contact with your goddess.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_ASK_LIRA = """Are you not going to ask how Lira is doing? You basically raised her, didn't you?""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_BUSINESS = """Straight to business then. I want to know about Lira's origin.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_TELL_LEARNED = """*Tell her what you learned*""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_COME_WITH_ME = """Just come with me. I'll explain on the way.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_DEAL_PAST = """Not today. I'm here to inquire about a deal you made in the past.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_TRIBAL_CHILD = """Do you remember the tribal elven child you sold to other elves fifteen years ago?""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_MEDICINE = """Why didn't you try to cure the child? Medicine is not that expensive.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_SURVIVED = """But you did. And that's what matters.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_WHERE_GET_KID = """So where did you get that child from?""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_FAIR_BUT_BAD = """You aren't wrong. It isn't fair, even if the world could be worse without it.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_WORLD_WORKS = """That's just how the world works. The strong rise, the weak are used.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_USE_CARAVAN = """I think I have an idea. We'll use the caravan to lure them in.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_BANDITS_FIND_US = """We wouldn't need to look for the bandits if they came looking for us first.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_ALLOW_LIRA_BAIT = """I don't want to risk your life, but if that's how you want to handle it, I'll allow it.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_USE_CARAVAN_ANYWAY = """The caravan is a much more prominent target. I'd rather risk someone else's life than yours.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_ASK_HIDEOUT = """Ask him about their hideout.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_BLADE_THROAT = """Put your blade to his throat.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_HOW_MANY = """How many of you are there?""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_SLAVE_TRADE = """Why are you focusing on slave trade specifically?""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_HIDEOUT = """Where is your hideout?""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_ENTER = """Enter""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_SURRENDER = """Everyone else in the cave is already dead. Surrender and make this easier.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_HIRE_GUARDS = """Hire extra guards (-500 gold)""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_IGNORE_ADVICE = """Ignore her advice.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_NOT_HEAD = """We're not here for your head.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_ASK_QUESTIONS = """We're here to ask questions.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_MOTHER_REASONS = """Maybe she had her reasons. Not everything is as simple as it sounds.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_FAMILY_NOT_WORTH = """Sounds like your family wasn't worth looking for in the first place.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_SELL_CHILDREN = """Yeah, do you sell tribal elven children?""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_SHADY_DEALS = """I'm looking to uncover some of your shady deals from the past.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_TELL_WHAT_HAPPENED = """Why don't you tell us what happened back then?""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_EXPLAIN_OLD_MAN = """You'd better explain yourself, old man.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_KARMA = """You are right to be afraid. It's high time karma caught up to you.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_NOT_WORTH = """You are not even worth dirtying my hands. Live with what you did.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_GODS_MERCIFUL = """It seems the gods were merciful for once.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_STAY_BELONG = """Stay as you are. You already belong here.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_SET_FREE = """What if I set you free?""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_FREE_SERVANT = """Screw fate. I'll free you from slavery. You can be my servant, not my property.""", # MISSING TRANSLATION
+	LIRA_QUEST3_OPTION_KEEP_TREATING_WELL = """I'm glad I gave you what you've been looking for. I'll keep treating you well.""", # MISSING TRANSLATION
+	LIRA_QUEST3_INTRO = """A couple of days have passed since the fair. Lira seems even more accustomed to her new life now, handling chores with ease and greeting you warmly whenever your paths cross.
+
+Still, you have noticed her standing by a window or near the gates, watching people pass with a thoughtful look. Curious about what is on her mind, you speak with her the next time you see her.
+
+You find her in the corner of the kitchen, resting after helping with the cooking. As you approach, she looks up and immediately rises with a light smile.
+
+{color=yellow|Lira: — Greetings, [master]! Is there anything I could help you with?}""", # MISSING TRANSLATION
+	LIRA_QUEST3_TALK_ORIGIN = """{color=yellow|Lira: — Oh... was it that noticeable?}
+
+She chuckles softly and looks down at her hands.
+
+{color=yellow|Lira: — Ah, sorry, [master]. It's nothing serious, really. I was just... wondering about my origins.}
+
+She glances toward the window.
+
+{color=yellow|Lira: — After everything that happened at the fair, after seeing how the elves treated me and how easily they turned their backs on me... it made me realise that I was always an outsider to them. Someone to tolerate, but not one of their own.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_ORIGIN_DEP = """She folds her hands in her lap.
+
+{color=yellow|Lira: — That's why I started thinking... there should be someone for whom I am their own, right? Somewhere there are those wildlings, tribal elves, whatever they are called, from whom I came to this world. I just don't know where they are, who they are, or why I was separated from them.}
+
+She straightens slightly, as if catching herself in something improper.
+
+{color=yellow|Lira: — Ah, sorry, [master], I didn't mean to waste your time with this. I'm sure you have better things to do than listen to my rambling.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_ORIGIN_FREE = """She folds her hands in her lap.
+
+{color=yellow|Lira: — That's why I started thinking... there should be someone for whom I am their own, right? Somewhere there are those wildlings, tribal elves, whatever they are called, from whom I came to this world. I just don't know where they are, who they are, or why I was separated from them.}
+
+She gives a small smile, her voice softening.
+
+{color=yellow|Lira: — Thank you for listening, [master]. It's nice having someone who actually does. Back in the temple, no one would have bothered.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_OFFER_SEARCH_1 = """{color=yellow|Lira: — I agree, [master]. There's no point in dwelling on things that can't be changed.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_OFFER_SEARCH_2 = """{color=yellow|Lira: — That... sounds comforting, actually. Leaving it to chance might be the best way.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_OFFER_SEARCH_3 = """She blinks, clearly not expecting that answer.
+
+{color=yellow|Lira: — You would...? I didn't expect that. I didn't want to burden you, but if you learn something about that, it would mean a lot to me. Thank you, [master].}""", # MISSING TRANSLATION
+	LIRA_QUEST3_OFFER_SEARCH_END = """After that, Lira gets back to her duties while you consider how to learn more. The first and most obvious place to start is the temple in the elven capital, where Lira lived for most of her life.""", # MISSING TRANSLATION
+	LIRA_QUEST3_TEMPLE_AUDIENCE = """The journey is familiar, and soon you step beneath the shadow of the elven great tree.
+
+Inside the temple, the air feels still and heavy with ritual. It does not take long to arrange an audience, though the priestesses look more tolerant than welcoming. Eventually, you are led to the headmistress's chamber.
+
+{color=aqua|Headmistress: — I assume you have a solid reason for asking for this audience. You do not strike me as someone who visits for the scenery.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_TEMPLE_ROOT_1 = """{color=aqua|Headmistress: — The fact that you were granted this audience should already be considered a warm welcome. The Goddess choosing an extreme measure once does not make you holy. Do not ask for more than you already got.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_TEMPLE_ROOT_2 = """{color=aqua|Headmistress: — Why would I ask about someone who instigated rebellion and was sentenced to exile? I raised many girls here, and one turning out like that is a stain on my reputation. I would rather not mention her more than necessary.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_TEMPLE_ORIGIN = """She listens as you explain the purpose of your visit. A heavy sigh escapes her.
+
+{color=aqua|Headmistress: — Fine. I will speak briefly, in the hopes of never returning to this topic.}
+
+The child was not born within the bounds of the forest. A group of young elves visited Aliron, bought every elven slave they could find, and brought the whole group back. Only then did they notice Lira's otherness, so they gave her to the temple in hopes the Goddess would acknowledge and protect her.
+
+{color=aqua|Headmistress: — And she did. The child was raised as one of the priestesses, with barely any difference in treatment. Yet the kindness of a goddess was apparently not enough for her to stay loyal. That is all there is to know.}
+
+After getting what little information the temple had to offer, you leave. The journey back gives you time to decide how to present your findings to Lira.""", # MISSING TRANSLATION
+	LIRA_QUEST3_REPORT_LIRA = """You find Lira in the garden, a half-finished basket of herbs at her feet. As you approach, she turns and politely stands.
+
+{color=yellow|Lira: — Greetings, [master]! Is there anything I could help you with?}""", # MISSING TRANSLATION
+	LIRA_QUEST3_REPORT_LIRA_FREE = """You recount what the headmistress told you. Lira listens in silence, her expression slowly shifting.
+
+{color=yellow|Lira: — I see. I guess that confirms the suspicions I had. Where else would an unknown child of a different race come from, except from the slave trade?}
+
+She looks down, then suddenly smirks.
+
+{color=yellow|Lira: — Though I guess now it doesn't matter as much, huh. [master], are you going to follow that trail? If so, I would be glad to escort you.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_REPORT_LIRA_DEP = """You turn and gesture for her to follow.
+
+{color=yellow|Lira: — Master? What are you-}
+
+She hesitates, confused, but her training and trust win out. She rises, brushes dirt from her skirt, and falls into step behind you.
+
+{color=yellow|Lira: — O-okay... I'll follow.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_SLAVE_TRADER = """The familiar noise of the marketplace greets you as you find the local slave trader near the edge of the square. Chains and collars hang from hooks, and a handful of slaves sit quietly in a pen behind him.
+
+He glances up with a practiced smile.
+
+{color=aqua|Trader: — Well now... what can I do for you today? Looking for something specific?}""", # MISSING TRANSLATION
+	LIRA_QUEST3_SLAVE_TRADER_HISTORY = """The trader raises his eyebrows, but years of experience taught him not to question clients.
+
+{color=aqua|Trader: — One moment. My memory is not good enough for every deal, but the paper remembers everything. Fifteen years, you say?}
+
+He pulls a thick ledger from beneath the counter. After a few minutes his finger stops on a small line of faded ink.
+
+{color=aqua|Trader: — Huh. You were correct. Some elves decided to play heroes and were throwing gold at anyone with long ears, so I sold an entire stock that day, even the defective ones.}
+
+{color=yellow|Lira: — D-defective? What do you mean, defective?}
+
+{color=aqua|Trader: — The ones not in prime condition. Crippled, elderly, sick. That child burned with fever for a month or two. I had to assign another slave just to watch it, which meant I was losing money.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_SLAVE_TRADER_ROOT = """{color=aqua|Trader: — Gods know how that kid survived, but before I sold it to the elves it was barely more than skin and bones. Good thing those elves did not look too closely.}
+
+Lira stiffens beside you, but says nothing.""", # MISSING TRANSLATION
+	LIRA_QUEST3_SLAVE_TRADER_LEAD = """{color=aqua|Trader: — As for where I got the kid? There was a raid near the border. Guards intercepted a bandit caravan with illegal goods: slaves, contraband, the usual. The goods were supposed to go to auction, but I had arrangements with the local authorities.}
+
+He closes the ledger.
+
+{color=aqua|Trader: — As for where the bandits got her, ask their leader. He did not stay in prison long, and now he seems to be raiding in the empire's wasteland.}
+
+On the way home, Lira's thoughts stay elsewhere.
+
+{color=yellow|Lira: — It feels so weird seeing all those people in cages... and thinking I was spared such a fate. Yet I feel sad knowing others are not as lucky. Do you think I am wrong for thinking like this?}""", # MISSING TRANSLATION
+	LIRA_QUEST3_SLAVE_TRADER_LIRA_REACTS = """Lira accepts your answer, though the conversation leaves a weight behind.
+
+{color=yellow|Lira: — [master], are we going to look for that bandit leader? He is the only one left who might know the answer, but he is somewhere in a different country, so it does not look easy.}
+
+You confirm that the search will continue. Inspired by your words, Lira flashes a small smile.
+
+{color=yellow|Lira: — Then I will be waiting for your orders, [master].}""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_NOTICE = """Following the lead, you arrive at the Empire Capital. The city greets you with crowded streets, hurried footsteps, and faces that do not linger on strangers.
+
+Lira stays close to your side, overwhelmed by the scale of it all.
+
+You find a notice board. One worn sheet bears the crude likeness of a man with a jagged scar.
+
+WANTED: Renowned bandit group. Charges: caravan raids, illegal slave trade, multiple counts of murder.
+
+The listed sightings point east, toward hills where caravans have been vanishing.
+
+{color=yellow|Lira: — This must be him... but how do we find him? We cannot just roam those hills for months.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_BAIT_CHOICE = """As you consider the problem, a caravan passes on the main road: three wagons, bored guards, and a cage wagon with slumped figures behind iron bars.
+
+Lira follows your gaze and frowns.
+
+{color=yellow|Lira: — [master], I have no doubt your plan would work, but maybe we can try something else? It feels wrong to risk someone else's life for my benefit. What if I play the bait? A lonely woman on the road would draw their attention too, and I believe you would come to my rescue.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_LIRA_BAIT_ACCEPT_FREE = """{color=yellow|Lira: — Thank you, [master]. I will not let you down. I will prove that I can do this.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_LIRA_BAIT_ACCEPT_DEP = """{color=yellow|Lira: — Thank you for believing in me, [master]. I will try to do my best.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_CARAVAN_PLAN_FREE = """Lira's face falls when you refuse her offer.
+
+{color=yellow|Lira: — [master], please... I can do this. I am not afraid. Those slaves do not have a choice, but I do.}
+
+You keep to the caravan plan. She sighs but does not argue further.
+
+{color=yellow|Lira: — As you wish, [master].}""", # MISSING TRANSLATION
+	LIRA_QUEST3_CARAVAN_PLAN_DEP = """Lira listens to your decision, then nods.
+
+{color=yellow|Lira: — I understand, [master]. If you think this is best, I trust you. But may I ask one favor? I would feel calmer if we hired extra guards to protect everyone else while you deal with the main force.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_ROAD_AMBUSH = """You hide among thick bushes and overgrown trees. Lira stands on the road, pretending to rest, then slowly walks along the route.
+
+Near sunset, five rough-looking riders appear around the bend. They spot Lira immediately and circle her.
+
+{color=aqua|Bandit: — Well, well. What's a pretty little thing like you doing all alone out here?}
+
+Lira feigns fear. The moment one of them reaches for her, you rush into the attack.""", # MISSING TRANSLATION
+	LIRA_QUEST3_ROAD_AFTER_FIGHT = """Within moments, three bandits are down. But as you fight the fourth, the last rider grabs Lira and pulls her onto his horse.
+
+{color=yellow|Lira: — [master]!}
+
+The horse bolts down the road, leaving dust behind.
+
+You turn back to the bandits lying on the ground. One is conscious, glaring, but not brave enough to run.""", # MISSING TRANSLATION
+	LIRA_QUEST3_ROAD_INTERROGATE = """The bandit talks once the threat becomes clear. There are a few dozen of them, their leader has contacts for selling captives quickly, and their hideout lies east in an old cave system hidden deep in the forest.
+
+He gives you a rough description: follow the dry creek bed about two hours from here.
+
+You tie him up, mount one of the remaining horses, and prepare to bring Lira back.""", # MISSING TRANSLATION
+	LIRA_QUEST3_DEN_ENTRY = """The trail leads off the road and into the forest. Eventually you spot the cave entrance, half-concealed by brush. Voices echo faintly from within.
+
+The directions point directly ahead. Time to step inside.""", # MISSING TRANSLATION
+	LIRA_QUEST3_DEN_BOSS = """Inside the leader's lair, the bandit leader and a couple of guards sit relaxed, passing around a flask and laughing, unaware of what is coming.
+
+You spot Lira in the corner: restrained, but conscious. Her eyes meet yours across the dim space, and her face lights up as you step into the open.""", # MISSING TRANSLATION
+	LIRA_QUEST3_DEN_SURRENDER = """Caught off guard by your sudden arrival, the bandits go pale. Your imposing figure and the blood on your blade say enough. After a brief exchange of looks, they drop their weapons.
+
+You tie them up and release Lira. She gives you a tight hug.
+
+{color=yellow|Lira: — [master], I am so glad to see you! And... we did it!}""", # MISSING TRANSLATION
+	LIRA_QUEST3_DEN_FIGHT_AFTERMATH = """The element of surprise works in your favor, and soon the bandits are defeated. You tie up the bloodied but conscious leader, then release Lira from her bonds. She gives you a tight hug.
+
+{color=yellow|Lira: — [master], I am so glad to see you! And... we did it!}""", # MISSING TRANSLATION
+	LIRA_QUEST3_CARAVAN_MASTER = """You find the caravan master at a local tavern, openly complaining about changing routes because of the bandit threat. You offer to help, explaining your plan.
+
+He is skeptical at first, but when he hears you will cover potential losses, he agrees and leaves to prepare the new route.
+
+Now you only need to decide whether to follow Lira's advice and hire additional guards.""", # MISSING TRANSLATION
+	LIRA_QUEST3_CARAVAN_READY_HIRE = """You find a group of rough but professional mercenaries near the city gate. After a quick negotiation, they agree to join the caravan. Lira gives you an approving nod.""", # MISSING TRANSLATION
+	LIRA_QUEST3_CARAVAN_READY_NO_HIRE = """Lira sighs quietly but does not argue. Instead, she walks to the slave wagon and speaks softly to the figures inside. Her expression is heavy.""", # MISSING TRANSLATION
+	LIRA_QUEST3_CARAVAN_ATTACK = """The journey is tense. A couple of days pass without incident before the hills draw closer and the trees thicken.
+
+Then a massive tree crashes down ahead, blocking the road.
+
+{color=yellow|Lira: — [master]! There!}
+
+Bandits pour from the treeline, weapons raised, unaware they are the ones walking into a trap.""", # MISSING TRANSLATION
+	LIRA_QUEST3_CARAVAN_AFTER_HIRE = """The hired mercenaries prove their worth. They form a shield wall around the wagons and keep the bandits away from the captives. When the dust settles, the bandit leader is bloodied, dazed, and alive.""", # MISSING TRANSLATION
+	LIRA_QUEST3_CARAVAN_AFTER_NO_HIRE = """The battle is fiercer than expected. Some bandits reach the wagons before falling, damaging the caravan and wounding several captives. Lira rushes to bind their wounds in silence. When the dust settles, the bandit leader is bloodied, dazed, and alive.""", # MISSING TRANSLATION
+	LIRA_QUEST3_BANDIT_LEADER_QUESTIONS = """The bandit leader spits to the side.
+
+{color=aqua|Bandit Leader: — Since I am still alive, does that mean you went through all this just for me? Damn. I have had bounty hunters after me before, but none fought like that.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_BANDIT_LEADER_MOTHER = """You explain the situation. At first he looks annoyed, then something clicks.
+
+{color=aqua|Bandit Leader: — Hah. You are kidding me. That was years ago. I remember, barely. I did not get her myself. Bought her off a shady merchant. The guy told me the kid was given to him by her own mother.}
+
+Lira steps closer.
+
+{color=yellow|Lira: — My... mother? Did you say my own mother gave me away? But why would she do that?}""", # MISSING TRANSLATION
+	LIRA_QUEST3_BANDIT_LEADER_MERCHANT = """The bandit leader shrugs.
+
+{color=aqua|Bandit Leader: — Hey, that is what the guy told me. Since you want all the details, ask that merchant himself. He is still alive, same shop in the capital. I can take you right to his doorstep.}
+
+You exchange a glance with Lira and nod.""", # MISSING TRANSLATION
+	LIRA_QUEST3_FOLLOW_LEADER = """The journey back takes time, but eventually you return to the capital with the bandit leader in tow.
+
+He guides you through unfamiliar streets to a quiet district, then points at a modest building with green shutters.
+
+{color=aqua|Bandit Leader: — There. That corner shop. No sign.}
+
+Done with him, you call over city guards. Once they recognize the face from the notice board, they put him in irons and lead him away. One guard tips his helmet and promises the reward will be waiting at the garrison.""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_SHOP = """You push the door open, and a small bell chimes. The shop smells of old paper and dust. Shelves hold trinkets, faded books, and oddities from distant lands.
+
+In the corner, an elderly man rises from a worn armchair with a practiced smile.
+
+{color=aqua|Merchant: — Ah, greetings. Welcome to my humble shop. Anything you are looking for?}""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_CONFESSION = """His smile falters when his eyes settle on Lira. Recognition flickers across his face, and he goes pale.
+
+{color=aqua|Merchant: — W-wait...}
+
+{color=yellow|Lira: — Looks like you remember me.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_AMULET = """The merchant admits that a tribal elf woman brought Lira to him overseas, hooded and nervous. She said her clan had rituals where weak children did not survive long, and that her own time was limited. She wanted her daughter gone, far away, somewhere safe.
+
+{color=aqua|Merchant: — She gave me money, not much, and an amulet. Said it would protect you.}
+
+{color=yellow|Lira: — Huh? But I didn't have any amulet.}
+
+The merchant confesses that he kept it. He retrieves a bronze pendant with a dark gemstone and places it in Lira's hands.
+
+{color=yellow|Lira: — It's... beautiful.}
+
+Then he admits the rest: he brought her to Aliron and sold her to the bandit because the money was good.""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_JUDGMENT = """Lira stands in silence, fingers wrapped around the pendant. The merchant turns to you, voice shaking.
+
+{color=aqua|Merchant: — I told you everything I knew, so... what is going to happen to me?}
+
+You look at the man who took a desperate mother's plea, her money, and her child's only heirloom, then sold the girl for profit.""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_AFTER_KILL = """The merchant's eyes widen, but your blade silences him. Lira flinches, watches the body for a moment, then looks down at the amulet. {color=yellow|Lira: — Let's go home, [master].}""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_AFTER_SPARE = """The merchant seems to shrink under your gaze. You take Lira by the shoulder and leave him with the weight of what he did.""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_AFTER = """You step out of the shop. The street is ordinary: people walking, children laughing, no one knowing what just happened inside the modest building with green shutters.
+
+Outside the city, you stop to rest by the road. Lira sits on a fallen log, turning the amulet over in her hands.""", # MISSING TRANSLATION
+	LIRA_QUEST3_PAST_RESOLVED = """{color=yellow|Lira: — So... this is the story of my past. I was born in some tribe overseas that sacrificed weak children, and I was next in line. My mother, who was not in good health either, decided to save me by giving me to a merchant and hoping I would get a better life far away.}
+
+She clutches the amulet.
+
+{color=yellow|Lira: — She did not just abandon me. She tried to save me in the only way she could. I wish I could thank her for that, even though it did not work out as she intended.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_FINAL_COMMON = """{color=yellow|Lira: — Everything we learned confirms what I already knew: I never had a place to belong to in the past. So it is time to stop looking at the past. I should focus on my present and future, and in both, I can only see myself in one place... next to you, [master].}""", # MISSING TRANSLATION
+	LIRA_QUEST3_FINAL_DEP = """{color=yellow|Lira: — You took me in when no one else was willing to look at me. You treated me like a person, and you have been on that path with me to the end. You gave me purpose, a place to belong, someone to follow, someone to believe in. If you will have me, I want to stay by your side. As your slave, your companion, your everything.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_FINAL_FREE = """{color=yellow|Lira: — You took me in and treated me like a person even though you did not have to. You taught me not to fear and how to be myself. The more I look at my past, the more I see how little freedom I had before you. If fate says I must belong to someone, then I wish to at least be yours.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_FINAL_ANSWER_DEP_STAY = """{color=yellow|Lira: — Thank you... [master].}""", # MISSING TRANSLATION
+	LIRA_QUEST3_FINAL_ANSWER_DEP_FREE = """{color=yellow|Lira: — F-free...?}
+
+For a moment she looks confused, but then smiles and presses her head to your chest.
+
+{color=yellow|Lira: — There is no need for that, [master]. I do not want to be free. I want to be yours.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_FINAL_ANSWER_FREE_FREE = """For a moment, she just stares at you.
+
+{color=yellow|Lira: — You... you mean it? I do not even know what to say... Thank you. I will stay by your side, not because I have to, but because I want to.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_FINAL_ANSWER_FREE_STAY = """{color=yellow|Lira: — Then I have nothing to fear. If you promise to keep treating me like this, I do not need a piece of paper to tell me I am free. Being with you, knowing that you see me as a person, is enough. Thank you, [master].}""", # MISSING TRANSLATION
+	LIRA_QUEST3_RETURN_HOME = """The journey back is quiet but comfortable. Lira walks close to you, and her smile never fully leaves her face.
+
+When you reach the mansion, the familiar gates bring a sense of closure. You rest for a couple of hours, then return to your duties.
+
+As evening comes, Lira enters with a warm smile and clear determination. She gently pushes your documents aside, leans close, and takes the initiative without hesitation.
+
+What follows is private, tender, and entirely hers to begin. By the time the night settles, the last weight of the journey has finally lifted from her shoulders.""", # MISSING TRANSLATION
+	LIRA_QUEST2_DAY_USUAL_STEP_OUTSIDE_MANSION = """You go about your day as usual, but as you step outside the mansion, you realize the streets of Alliron are more crowded and noisier than they were just yesterday. A steady stream of people flows along the main road toward the central square. From there, despite the distance, you can already hear merchants shouting, the faint lilt of music, and the low, constant hum of a crowd.
+
+You stop one of the passersby, and they point toward a nearby wooden post covered in flashy flyers. You walk over and pull one loose.
+
+The writing promises a city‑wide fair stretching from the central square into the surrounding districts, with plenty of food, games, competitions, music, and dancing. At the bottom there is also a mention of a couple of special visiting groups, including the elven themed one.
+
+As you read it, you realize that one of your servants might be quite interested in hearing such news. Perhaps it is time to speak to Lira.""", # MISSING TRANSLATION
+	LIRA_QUEST2_FIND_LIRA_FRONT_GARDEN_TENDS = """You find Lira in the front garden. She tends to some flowers, yet her attention seems to be elsewhere as her gaze constantly drifts toward the entrance gates and the flow of people beyond.
+
+As she notices you watching her, she startles slightly before giving you a curtsy bow.
+
+{color=yellow|Lira: — Ah, greetings, [master]! I didn't notice you there at first.}
+
+She glances back at the crowd, then turns to you. Curiosity mixed with hesitation shows on her face.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_KNOW_SPECIAL_OCCASION_TODAY = """{color=yellow|Lira: — [master], do you know if there is some special occasion today, or is something else going on? There seem to be many more people on the streets than usual.}
+
+You tell her what you've learned, including that an elven delegation will be present.
+
+{color=yellow|Lira: — The fair? Oh, right, I think I've heard other servants talk about it... They said its the time when tons of vendors gather all in one place so you could buy almost anything, and then participate in some fun games set up purely for the indulgent... And you say even the elves are here, huh... I wish I could see this “fair” for myself...}
+
+She looks down for a moment, reminiscing. When she looks up again, there is a silent plea in her eyes.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_THINK_PERHAPS_CHANCE_VISIT = """{color=yellow|Lira: — [master], do you think... Perhaps there's a chance I could visit the fair? I... I'd like to experience it for once, at least, just to know what all the talk was about.}""", # MISSING TRANSLATION
+	LIRA_QUEST2_NODS_IMMEDIATELY_TRYING_HARD_HIDE = """She nods immediately, trying hard to hide the smile spreading on her lips.
+
+{color=yellow|Lira: — Of course, [master]. I will behave properly. Thank you!}
+
+Her expression brightens before she can catch herself, and you see a big smile on her face.
+
+{color=yellow|Lira: — Y-yes! Thank you, [master]!}""", # MISSING TRANSLATION
+	LIRA_QUEST2_REACH_CENTRAL_SQUARE_FAIR_ALREADY = """By the time you reach the central square, the fair is already in full swing. Colorful banners stretch between buildings, performers occupy every free corner, and the air is thick with competing smells: roasted nuts, honey cakes, spiced cider, some game grilling on a spit.
+
+Guests of all races move through the crowd with joy on their faces and an easygoing attitude you wouldn't see any other day.
+
+Lira slows down and looks around, trying to track everything at once. A childlike expression of wonder can be seen on her face as she follows you deeper into the fair.
+
+As you stand in the middle of the fair there are a couple of different routes you can take.""", # MISSING TRANSLATION
+	LIRA_QUEST2_TURN_FOOD_STALLS_AREA_APPROACH = """You turn to the food stalls area. As you approach closer, Lira's eyes dart from one thing to another, unable to settle up until her stomach lets out a loud, unmistakable rumble. Her face flushes a bit.""", # MISSING TRANSLATION
+	LIRA_QUEST2_POINT_SAMPLE_PIECES_EXPLAIN_SIMPLE = """You point out the sample pieces and explain to her a simple way to try the food without spending a single coin. Lira looks at you with both surprise and slight caution, but then goes around the vendors' stalls, sampling a few bites to their disgruntled looks. She returns to you with a small smile.
+
+{color=yellow|Lira: — The food here is so good, [master]! I hope I can eat more of it someday...}
+
+You begin to describe the local delicacies, watching her mouth water. As she gulps and looks at the stalls with hungry eyes, you put your hand on her shoulder and tell her she can choose whatever she wants as it's your treat today. Her eyes widened in surprise.
+
+{color=yellow|Lira: — [master], you're saying I can choose whatever I want? R-really?}""", # MISSING TRANSLATION
+	LIRA_QUEST2_DOESN_NEED_TOLD_TWICE_EYES = """She doesn't need to be told twice. Her eyes sweep over the stalls and after a brief hesitation, she begins pointing at what catches her attention. You follow behind, paying as she collects her treats. When she finally has her arms full, she finds a spot to stand and samples one of the treats carefully, as if it might disappear. After the first bite, her eyes begin to shine.
+
+{color=yellow|Lira: — Oh! It's... it's very good, [master]! I don't think I've ever tried anything as good before!}
+
+She eats with visible enjoyment, her earlier restraint forgotten. The rest of the food disappears quickly, leaving behind an invigorated Lira with a fulfilled smile on her face.
+
+You turn toward the accessories area. As you approach, you slow your pace, letting Lira look around. She admires the huge variety of goods put on display by traveling merchants with an almost childlike wonder on her face.
+
+It takes some time, but finally you notice her focus on something for longer than usual, and as you follow her gaze you see a small silver hairpin shaped like a leaf, its edges delicately curved.
+
+Noticing you watching her, Lira gets a bit flustered and averts her gaze, trying to pretend the hairpin wasn't that interesting to her.""", # MISSING TRANSLATION
+	LIRA_QUEST2_BRIEF_HESITATION_NODS_POINTS_HAIRPIN = """After a brief hesitation, she nods and points at the hairpin.
+
+{color=yellow|Lira: — [master], can... can we also get this one? It's... it's really pretty...}
+
+Noticing you watching her, Lira smiles a bit awkwardly before taking the hairpin and turning back to you.
+
+{color=yellow|Lira: — [master], I might be getting a little greedy... but can we also get this one? I like it a lot.}""", # MISSING TRANSLATION
+	LIRA_QUEST2_WALK_STALL_TAKE_PLACE_SMALL = """You walk to the stall and take your place in the small queue. While you wait for your turn, you have a moment to consider your options.""", # MISSING TRANSLATION
+	LIRA_QUEST2_TURN_POINT_LEAF_SHAPED_PIN = """When it's your turn, you point out the leaf‑shaped pin. The merchant nods, names a price, and you hand over the coins without haggling. A moment later, the small package is yours.
+
+You decide to keep your coins. When your turn comes, you ask the merchant to show you several items from the higher shelves, pointing and gesturing with your free hand while the other, hidden from sight, nimbly slips the leaf‑shaped pin from its display. In the noise and bustle of the fair, no one notices the quick sleight of hand.
+
+You make a few vague comments about the quality, then thank the merchant and step away.
+
+You return to Lira and present the hairpin to her. She accepts it with both hands, her eyes bright.
+
+{color=yellow|Lira: — Thank you, [master]! I will cherish it...}
+
+She admires the pin and turns it over a couple of times, then carefully fixes it in her hair. Her fingers are uncertain at first, adjusting it once, twice, before she finally lets her hands drop. A shy smile forms on her lips.
+
+{color=yellow|Lira: — Does it... does it look good?}
+
+She looks up at you expectantly, the silver leaf catching the afternoon light.""", # MISSING TRANSLATION
+	LIRA_QUEST2_SMILE_FACE_GROWS_LITTLE_WARMER = """The smile on her face grows a little warmer.
+
+The two of you move away from the stall and soon return to the central area.
+
+You reach a more open area where a shooting range has been set up. Colorful targets line the far end, and a small crowd has gathered to watch.
+
+{color=yellow|Vendor: — Step right up! Test your aim! Best bows in the city, even a child could handle them! Score enough points and win a special prize!}
+
+A steady stream of people comes to the stall, drawn by the vendor's shouts, yet most join the crowd of onlookers. Only a handful attempt shots, and most start missing by the fifth or sixth arrow, losing any chance at a decent score. So far, no one has claimed the grand prize.""", # MISSING TRANSLATION
+	LIRA_QUEST2_MAKE_WAY_VENDOR_COVER_ENTRANCE = """You make your way to the vendor. After you cover the entrance fee, he gives you a bow, then explains the rules: ten shots, with the score for each hit increasing every round, and better rewards for higher scores. It seems that most participants don't make it past the seventh target, so you're curious how you will do.
+
+As the vendor hands you the bow, you confidently take your position.
+
+The draw is heavier than you expected. You manage to keep your aim steady for the first few shots, but by the fourth arrow, your muscles are already burning, your hand beginning to tremble.""", # MISSING TRANSLATION
+	LIRA_QUEST2_GRIT_TEETH_KEEP_GOING_ARMS = """You grit your teeth and keep going, but your arms give out. The fifth arrow flies wide. The sixth barely grazes the target. By the seventh, you miss entirely. The vendor comes to you after you shoot your last arrow.
+
+{color=yellow|Vendor: — Ah, that was pretty close, but alas! Better luck next time!}
+
+You step back, shaking out your aching arms, and return to Lira's side. She watches you with a mix of concern and curiosity. Seeing that your mood was not soured much she gives you a reassuring smile.
+
+{color=aqua|Lira: — I think you did good, [master]. The challenge must be quite hard on purpose.}
+
+(same as if >Have Lira join the competition).
+
+You adjust your stance, plant your feet, and call on the strength you've built through your own training. Then draw the string fully. The arrow flies straight. Bullseye.
+
+You shoot again. Another bullseye. By the sixth shot, people are watching you with genuine interest, while the vendor's fake smile is barely holding.
+
+You keep shooting, and when the tenth shot lands dead center, the crowd erupts into applause.""", # MISSING TRANSLATION
+	LIRA_QUEST2_VENDOR_FORCES_LIPS_WIDER_SMILE = """The vendor forces his lips into a wider smile, though his eyes betray his less than welcoming gaze..
+
+{color=yellow|Vendor: — Well, well, well, looks like we've got a winner!}
+
+He waves you over, and you approach the booth, coming inside right after him. The vendor rummaging noisily through his stock, his face is clearly sour. Yet, when he emerges with the prize bow, he has the fake smile back on his face once again.
+
+{color=yellow|Vendor: — Ghm... right. Congratulations! A well-earned victory.}""", # MISSING TRANSLATION
+	LIRA_QUEST2_HANDS_OVER_PRIZE_BOW_POLISHED = """He hands over the prize bow, polished and elegant, clearly worth the effort. You accept it with a nod, then leave the booth, feeling the burning gaze of the vendor drilling holes in your back.
+
+You return to Lira, who is watching you with wide, shining eyes.
+
+{color=yellow|Lira: — [master]... that was incredible! I didn't know you could shoot like that! Congratulations on your victory!}
+
+You take the compliments and thank her for rooting for you. Having won the grand prize, theres not reason for you to stay at the shooting range any longer, so soon you return to the central area.
+
+You look at Lira and notice her interest in the competition, as she watches intently while the current shooters try to score a decent result.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_WANT_PARTICIPATE_SEEMS_BIT = """{color=yellow|Lira: — Oh? You want me to participate, [master]?}
+
+She seems a bit shy at the request, but curiosity is written all over her face, so she quickly nods.
+
+{color=yellow|Lira: — Alright then, I'll try to do my best and make you proud of me, [master]!}
+
+{color=yellow|Lira: — I was just going to ask... It's like you can read my mind, [master]!}
+
+She looks at the struggling shooters, nods to herself, and turns back to you.
+
+{color=yellow|Lira: — I think I can do better than them... I'll make you proud of me, [master]!}""", # MISSING TRANSLATION
+	LIRA_QUEST2_MAKE_WAY_VENDOR_COVER_ENTRANCE_2 = """You make your way to the vendor. After you cover the entrance fee, he gives Lira a bow, then explains the rules: ten shots, with the score for each hit increasing every round, and better rewards for higher scores. It seems that most participants don't make it past the seventh target, so you're curious how Lira will do.
+
+The first shot is a miss, the second one barely hits, scoring the lowest possible result.
+
+You watch Lira glance at her bow and think about something briefly. Then she draws it again, and you notice that her stance has changed a bit, now having more emphasis on her back muscles. The third shot is a hit. The fourth is a bullseye.""", # MISSING TRANSLATION
+	LIRA_QUEST2_HITS_FIFTH_SIXTH_SEVENTH_SHOTS = """As she hits the fifth, sixth, and seventh shots right into the bullseye, you look at the vendor and see that his smile begins to falter. It's clear to you that he's barely containing his anger as Lira beats his rigged game.
+
+She scores bullseyes with her eighth, ninth, and tenth shot, getting the highest score on the board and crossing the threshold for the grand prize. The crowd begins to loudly cheer her, putting a surprised expression on Lira's face.
+
+The vendor's eye is twitching, yet, after a momentary hesitation, he forces himself to plaster an even wider smile and steps out to the crowd.""", # MISSING TRANSLATION
+	LIRA_QUEST2_VENDOR_CONGRATULATIONS_WINNER_GHM_SEE = """{color=yellow|Vendor: — C-c-congratulations to our winner! Ghm... See, people? Even an untrained slave girl can manage it! Come try your luck!}
+
+The stream of contenders seems to grow after the shout, and the vendor spends a couple of moments handling their payments.
+
+Lira comes back to your side, winded and sweaty, but with the biggest smile on her face.
+
+{color=aqua|Lira: — I-I did it, [master]! I hope I made you proud!}""", # MISSING TRANSLATION
+	LIRA_QUEST2_FINALLY_RUSH_PEOPLE_SUBSIDES_LIRA = """Finally, when the rush of people subsides, you and Lira approach the vendor for the reward. He tells you to follow him inside the booth, and the moment the door closes, his smile finally drops. He gives Lira a scorching look, then turns away and starts rummaging through his possessions, grumbling quietly, yet audibly enough.
+
+{color=yellow|Vendor: — Tsk. Had to be an elven girl in the crowd. Ruined a perfectly good business for me...}
+
+Lira, who a moment ago was the happiest she'd been in a while, quickly drops her smile and blinks in surprise.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_HUH_DID_VENDOR_FINALLY = """{color=yellow|Lira: — H-huh? B-but what did I do?...}
+
+As the vendor finally digs out the prize bow, he rudely pushes it into Lira's chest, making her take a step back.
+
+{color=aqua|Vendor: — There. You got your prize. Now get out of here and don't even think of coming back again.}
+
+{color=yellow|Lira: — O-okay...}""", # MISSING TRANSLATION
+	LIRA_QUEST2_PAT_LIRA_SHOULDER_TELL_IGNORE = """You pat Lira on the shoulder and tell her to ignore the scammer, then leave the range behind. She nods, clutching the prize bow to her chest, still a little shaken.
+
+{color=yellow|Lira: — I just wanted to... I didn't mean to make him angry...}
+
+You explain to her that she did nothing wrong and how the game was rigged from the start.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_SEE_KNEW_DIDN_BREAK = """{color=yellow|Lira: — Oh... I see now. I knew I didn't break any rules, but was afraid to argue... I just don't like it when people are angry at me... Thank you for supporting me, [master]!}
+
+She manages a small smile, and the two of you walk away from the shooting range, soon returning to the central area.
+
+While putting your hand on Lira's shoulder to calm her down, you inform the vendor that while he may be banning Lira from the shooting range, you, as the Mayor of Aliron, are banning him from participating in any further fairs. Additionally, you will make sure that if anyone else organizes a shooting range, especially any associated with him, it will be thoroughly checked, including the real draw weight of the bows.
+
+The vendor at first seemed like he was going to argue, yet hearing your title made him finally take a closer look at you, after which he closed his mouth and went pale, the only thing showing his emotions were his fury-filled eyes.
+
+After giving him a piece of your mind, you and Lira walk out of the booth.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_HAVEN_SEEN_ANGRY_KINDA = """{color=yellow|Lira: — I haven't seen you so angry before, [master]... But I'm kinda... kinda glad you protected me... Thank you, [master].}
+
+The small smile returned to her face. The two of you walk away from the shooting range, soon returning to the central area.
+
+You follow the signs marking the guest section and soon step into the elven territory.
+
+The stalls here seem to be built in a different way, and the vendors aren't shouting their invitations every minute, but overall there isn't much difference between this and the regular part. The crowd here is no thinner than before, and no one pays much attention to the two of you.
+
+Lira, who was a bit tense upon stepping into this part, seems to relax. As you walk next to the stalls, she even begins to point out things that are familiar to her.
+
+{color=yellow|Lira: — Oh, I know these herbs... We used to gather similar ones in the temple. They were used in some rituals... It feels kind of nostalgic to see them here...}
+
+She moves to the next stall.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_OBSIDIAN_FIGURINES_KNEW_CRAFTSMAN = """{color=yellow|Lira: — Oh, and here are some obsidian figurines. I knew a craftsman who carved those... His prices were much lower, though...}
+
+You notice the owner of the figurine stall squint at that comment, yet he remains silent. Still, Lira realizes her blunder on her own and quickly steps back to your side, flushing a bit.
+
+You continue through the elven section, passing one stall after another. Lira's initial nervousness has faded, and she walks beside you with growing ease.
+
+She pauses at a stall displaying small trinkets, one of them being a well‑crafted doll with clearly elven ears.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_LOOK_ONE_PRETTY_REACHES = """{color=yellow|Lira: — Oh, [master], look, this one is so pretty...}
+
+She reaches out to give the soft material a light touch, then turns to the vendor, who is currently attending to another customer.
+
+{color=yellow|Lira: — Greetings! Excuse me... how much is this?}
+
+The vendor gives no reaction to the question, instead busying himself rearranging his wares, his back deliberately turned.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_LOOKS_CONFUSION_FLICKERING_ACROSS = """Lira looks at you, confusion flickering across her face.
+
+{color=yellow|Lira: — Maybe... maybe he didn't hear me?}""", # MISSING TRANSLATION
+	LIRA_QUEST2_VENDOR_GIVES_SIDE_EYE_VENDOR = """The vendor gives you a side eye.
+
+{color=yellow|Vendor: — What is your question, dear customer?}
+
+You repeat Lira's question and point at the doll. The elf takes the doll and hides it under the desk.
+
+{color=yellow|Vendor: — Unfortunately, we seem to run out of stock.}
+
+The vendor turns to you and gives you a scrutinizing look, then takes the doll and hides it under the desk.
+
+{color=yellow|Vendor: — Unfortunately, we seem to run out of stock.}""", # MISSING TRANSLATION
+	LIRA_QUEST2_ELVEN_VENDOR_SEEMS_IGNORE_QUESTIONS = """The elven vendor now seems to ignore your questions as well. You and Lira exchange equally puzzled glances, but seeing that further conversation is impossible, you decide to move on.
+
+At the next stall, Lira tries again. Spotting a small bundle of dried herbs tied with a ribbon, the kind she pointed out earlier as familiar, she speaks to the elven vendor.
+
+{color=yellow|Lira: — Greetings! Excuse me, how much for this?}
+
+The vendor, an older elf with a weathered face, doesn't look up. His hands continue sorting through his wares, unhurried. Lira's voice grows more desperate.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_HEY_KNOW_HEAR_LEAST = """{color=yellow|Lira: — H-hey, I know you can hear me. Can you at least tell me what's wrong? Why are you ignoring me?}
+
+After a long pause, the vendor finally speaks, addressing no one in particular, his gaze fixed somewhere to the side.
+
+{color=aqua|Vendor: — The one who asks already knows the answer. Exiles are not welcome among the elves, no matter what land they stand on.}
+
+Around you, the other vendors seem to look everywhere but at her. A deliberate and highlighted avoidance.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_LOOKS_AROUND_DESPERATELY_SEARCHING = """Lira looks around as if desperately searching for someone willing to break the silence, but then her gaze drops to the ground, her hands curling at her sides.
+
+{color=yellow|Lira: — I... I understand. I'm sorry. I didn't mean to cause trouble. [master], let's leave, please...}
+
+She turns away from the stall and walks with her eyes on the ground. You walk in silence through the rest of the elven section. When you finally step back into the regular part of the fair, she lets out a long, slow breath before looking at you.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_APOLOGIES_LEAVE_ABRUPTLY_MOMENT = """{color=yellow|Lira: — Apologies that we had to leave so abruptly, [master]... For a moment I thought... I don't know what I thought. That maybe outside the forest things would be different.}
+
+She shakes her head.
+
+{color=yellow|Lira: — Even here, they won't let me stay beside them. I should just accept that already...}""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_LOOKS_MOMENT_OFFERS_SMALL = """Lira looks up at you for a moment, then offers a small, quiet nod.
+
+{color=yellow|Lira: — Yes... Thank you for taking me in, [master].}
+
+The smile doesn't return to her face, but her posture settles and becomes less tense.
+
+She looks at you with wide‑eyed surprise. Her lips part slightly, then close again, words failing her for a heartbeat.
+
+{color=yellow|Lira: — That's... something I've never thought about before...}
+
+She blinks, and the surprise in her eyes slowly gives way to a fragile hope. She offers you a genuine, if small, smile.
+
+{color=yellow|Lira: — Thank you, [master].}""", # MISSING TRANSLATION
+	LIRA_QUEST2_TWO_WALK_SILENCE_WHILE_LEAVING = """The two of you walk in silence for a while, leaving the elven section behind. The sounds of the main fair gradually wash over you again: music, laughter, the constant shuffle of feet. Little by little, Lira's shoulders relax.
+
+As you move deeper into the fair, Lira begins to look around again, albeit more calmly than before. Eventually, her attention settles on a part of the fair you haven't visited yet. A large crowd has gathered near a wooden platform where couples move together to the rhythm of a fast, lively tune.""", # MISSING TRANSLATION
+	LIRA_QUEST2_WATCHES_PAIR_SPIN_PAST_WOMAN = """She watches a pair spin past, the woman laughing, her partner's arm steady around her waist. Another couple joins, then another. The dance isn't formal, it's just about movement, joy, and bodies sharing the rhythm.
+
+{color=yellow|Lira: — They seem to be having fun...}
+
+Her voice is quiet, but there's a thread of curiosity in it.""", # MISSING TRANSLATION
+	LIRA_QUEST2_TELL_TRY_HERSELF_TAKE_WRIST = """You tell her that it's time to try it for herself, then take her by the wrist before she can overthink it and pull her into the circle.
+
+{color=yellow|Lira: — W-wait—!}
+
+She stumbles at first, clearly unprepared, her feet don't know where to go. But as you guide her through the first few steps, she slowly lets go of the tension in her body and starts to find the rhythm on her own.
+
+By the second turn, she's no longer resisting the music. By the third, she's smiling.
+
+You extend your hand toward her, palm up, mimicking what the other couples did.
+
+She looks at it for a moment, and then she places her fingers into your palm. Her skin is warm.
+
+{color=yellow|Lira: — I... I've never done this before.}
+
+You tell her not to worry and guide her gently, giving her space to find her own pace. She's hesitant at first, but she's quick to adapt. Her steps grow more confident with each turn, her movements lighter, freer. Before long, she lets out a quiet laugh, and for a moment, she looks like she belongs here.""", # MISSING TRANSLATION
+	LIRA_QUEST2_COUPLE_DANCES_TWO_STEP_ASIDE = """After a couple of dances, the two of you step aside to catch your breath. Lira's cheeks are flushed, her hair slightly out of place, but she's still smiling.
+
+{color=yellow|Lira: — That was... actually really fun.}
+
+For once, the flush on her face isn't from embarrassment.
+
+After spending some time exploring the fair, you decide to take a breather and sit on one of the benches near the central square.
+
+A sudden crash interrupts the moment.""", # MISSING TRANSLATION
+	LIRA_QUEST2_NEAR_ONE_TAVERNS_TWO_MEN = """Near one of the taverns, two men spill out into the street, shoving each other. One of them is clearly drunk; he swings wildly and knocks over a nearby table. Glasses shatter. A woman yelps and steps back.
+
+{color=yellow|Drunk Man: — O-oh, I'm gonna teach you a lesson, you lowly scrub!}
+
+The other man backs away, hands raised, trying to calm him down. But the drunk only gets louder, his voice rising, his fists clenching.
+
+Lira watches the scene, her expression tightening.""", # MISSING TRANSLATION
+	LIRA_QUEST2_RUSHES_TOWARD_BRAWLERS_LIRA_HEY = """She rushes toward the brawlers.
+
+{color=yellow|Lira: — Hey, hey, enough of that! You're disturbing other people!}
+
+The drunk turns toward her, sneering.
+
+{color=aqua|Drunk Man: — And who the hell are you supposed to be, huh?! Fuck off!}""", # MISSING TRANSLATION
+	LIRA_QUEST2_TRIES_SWING_LIRA_GRABS_ARM = """He tries to swing at her, but Lira grabs his arm and shoves him down onto the ground with surprising force. He hits the dirt with a grunt, the air knocked out of him, but not the fight.
+
+{color=yellow|Drunk Man: — Y-you! Dirty slave! Do you even know who you're messing with?! How dare you touch me?! Who do you think you are?! I'm gonna—}
+
+You step in.""", # MISSING TRANSLATION
+	LIRA_QUEST2_DRUNK_MAN_FUCK_LIRA_LOOKS = """{color=yellow|Drunk Man: — And who the fuck you are...?}
+
+Lira looks at you first.
+
+{color=aqua|Lira: — Should I...?}""", # MISSING TRANSLATION
+	LIRA_QUEST2_STEP_YOURSELF_PUSHING_DRUNK_BACK = """You step in yourself, pushing the drunk back hard enough to make him stumble and lose his balance. He hits the dirt with a grunt, the air knocked out of him, but not the fight.
+
+{color=yellow|Drunk Man: — How dare you touch me?! Do you even know who I am?! And who the fuck are you...?}
+
+Suddenly, recognition hits. His eyes widened. The anger drains out of his face, replaced by fear.""", # MISSING TRANSLATION
+	LIRA_QUEST2_DRUNK_MAN_MAYOR_REALIZE_SCRAMBLES = """{color=yellow|Drunk Man: — M‑mayor?!... I didn't realize...}
+
+He scrambles to his feet, nearly tripping over himself.
+
+{color=yellow|Drunk Man: — I... I apologize. I didn't mean any trouble...}
+
+He doesn't wait for a response. He disappears into the crowd without another word, leaving everyone staring after him.""", # MISSING TRANSLATION
+	LIRA_QUEST2_TAVERN_OWNER_EXHALES_LOUDLY_WIPING = """The tavern owner exhales loudly, wiping his forehead with the back of his hand.
+
+{color=yellow|Owner: — Gods... thank you. That could've ended badly.}
+
+He looks at Lira for a moment, then lets out a short laugh.
+
+{color=yellow|Owner: — Didn't expect the girl to deal with him like that! Nicely done. Here. For saving me the trouble.}
+
+He tosses her a small pouch. Lira looks down at it, then up at you. There's a silent question in her eyes.""", # MISSING TRANSLATION
+	LIRA_QUEST2_NODS_IMMEDIATELY_PRESENTS_POUCH_LIRA = """She nods immediately and presents the pouch to you.
+
+{color=yellow|Lira: — Of course... I understand, [master].}
+
+She looks at the coins again, then back at you. Her brow furrows slightly.
+
+{color=yellow|Lira: — Mine...? Thank you, [master]. I'll try to use them wisely.}
+
+She closes her fingers around the coins, tucking them into her robe carefully, like something precious.
+
+Done with the sudden event, you get back to the bench as rest for a short while, before returning back to the central area of the fair.
+
+Between all the wandering and wondering, the day slipped away without you noticing. The fair is winding down. The crowd has thinned, and the vendors are packing their wares. The music has faded to a distant melody, the lanterns casting long shadows across the cobblestones.
+
+You're about to turn toward the mansion when something catches your eye near a half‑packed stall. Most of the wares are just the usual garments: simple maid dresses, tavern‑girl skirts, nothing you haven't seen a dozen times before, but at the very end of the rack hangs something different.""", # MISSING TRANSLATION
+	LIRA_QUEST2_COSTUME_CONSISTING_HEADDRESS_CROWNED_LONG = """A costume consisting of a headdress crowned with long trailing feathers, a leather bodice trimmed with fur, and a layered skirt with both fur and feathers. It's wild, primal, the kind of thing you'd expect to see on a fierce tribal huntress. And now you absolutely wish to see it on your companion.
+
+You gently tap Lira's shoulder and point toward it. She takes a good look at the costume.
+
+{color=yellow|Lira: — Oh, that looks pretty... and  quite unique. I haven't seen anyone wearing anything like this at the fair. It's so... bold. And certainly eye‑catching.}
+
+She tilts her head, studying the details.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_FEATHERS_SEEM_QUITE_NICE = """{color=yellow|Lira: — The feathers seem quite nice, and the fur looks soft to the touch... It looks like the one who crafted it put a lot of effort in it.}
+
+The vendor notices your interest.
+
+{color=aqua|Vendor: — You've got a keen eye, young lady. Saw some tribal girl wearing it once, and it stuck in my mind ever since. Just had to scrap the materials and sew it to sooth that itch. And now all that is left is to find someone to wear it so that it stops collecting dust in my closet.}""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_HUH_WANT_WEAR_EYES = """{color=yellow|Lira: — H-huh? You want me to wear it?}
+
+Her eyes widen at your suggestion. There's a flush on her face as she shifts her gaze between you and the costume behind her.
+
+{color=yellow|Lira: — I-I know I said it is pretty and all, but I didn't think you'd offer to buy it for me! I just... I don't think I have the courage to wear something like that in front of everyone... It's too revealing...}""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_BLINKS_LIRA_PROUD_WEARING = """Lira blinks.
+
+{color=yellow|Lira: — Proud?... For wearing it?... But... Well...}
+
+She looks at the costume again, and besides hesitation you notice that there is both acceptance and curiocity in her expression.
+
+{color=yellow|Lira: — I'd never thought I would wear something like that in public... But I can't pretend I haven't been thinking about it ever since you pointed it out. And knowing that you like it... maybe that's enough. Maybe my worries truly are outdated.}""", # MISSING TRANSLATION
+	LIRA_QUEST2_LOOKS_CURRENT_CLOTHING_PULLS_DOWN = """She looks at her current clothing, then pulls down her old hood.
+
+{color=yellow|Lira: — I'm not a priestess anymore. I'm not even welcome among the elves. Why should I worry about keeping a pure appearance or abide by the elven rules? If [master] likes my body and wants me to show more of it...}
+
+She meets your eyes, and a small, genuine smile touches her lips.
+
+{color=yellow|Lira: — Then I want to wear it. For you, [master]. And maybe... for me, too.}
+
+Lira stares at you for a moment, the words sinking in.
+
+{color=yellow|Lira: — Stop fearing... to be free?... Huh... If only it was that easy...}
+
+She looks down at her hands, then back at the costume, then up at you.
+
+{color=yellow|Lira: — But then again, maybe this moment is exactly what I needed... With you pushing me forward, I shall forget all the dogmas and taboos that were forced on me and do what I want to... At the end of the day, what is there even to lose for me?}""", # MISSING TRANSLATION
+	LIRA_QUEST2_HAND_REACHES_BRUSH_FEATHERS_LIRA = """Her hand reaches out to brush the feathers.
+
+{color=yellow|Lira: — I'd be lying if I said I didn't want to try it on... Ever since I saw it, I keep imagining what it would feel like to be this bold... Imagining myself in it somehow gives me that rebellious, freeing feeling I used to feel whenever I sneaked out of my room after curfew... And when I think about others seeing me in it, there's a strange feeling in my stomach...}
+
+She looks up at you, and there's a fire in her eyes that wasn't there before.
+
+{color=yellow|Lira: — So maybe it's time for me to stop imagining and start acting on my desires. Thank you for opening my eyes, [master]! You were right, I do want to wear it! Not just for your pleasure, but also for my own.}""", # MISSING TRANSLATION
+	LIRA_QUEST2_TOSS_BAG_COINS_SMILING_VENDOR = """You toss a bag of coins to the smiling vendor and point Lira toward the small changing booth. She grabs the costume, hesitates for just a moment, then disappears inside.
+
+A few minutes later, she steps out.
+
+The costume fits her as if it were made for her. The leather and feathers frame her body in a way that is both wild and elegant, the headdress lending her a strange, fierce grace she's never shown before.""", # MISSING TRANSLATION
+	LIRA_QUEST2_CATCHES_REFLECTION_NEARBY_LANTERN_PAUSES = """She catches her reflection in a nearby lantern and pauses, her hand rising to touch the feathers at her shoulder. Her cheeks are still slightly flushed, but a slow smile spreads across her face. She turn to you, her ears twitching slightly.
+
+{color=yellow|Lira: — Well... Do you like how I look, [master]?}""", # MISSING TRANSLATION
+	LIRA_QUEST2_SMILE_WIDENS_WORDS_NOTICE_EYES = """Her smile widens at your words, and you notice her eyes flickering with a hint of something you haven't seen from her before: pride. Lira then confidently steps close and grabs your hand.
+
+{color=yellow|Lira: — Let's go home, [master].}
+
+Under the approving gaze of the vendor, you leave his booth behind and move toward the mansion.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_WALKS_SLIGHTLY_FRONT_LETTING = """Lira walks slightly in front of you, letting you enjoy the view of her swaying hips and the teasing flow of the skirt. Soon, your head is filled with a myriad of ideas, one of which seems like the perfect ending for this day. And so, despite the mansion already being in view, you gently tap Lira's shoulder and guide her to the side of the road, into the bushes.""", # MISSING TRANSLATION
+	LIRA_QUEST2_WALK_BACK_MANSION_QUIET_HAND = """The walk back to the mansion is quiet. Hand in hand, you make your way through the lantern-lit streets. The feathers of her costume catch the soft light, and she walks a little taller than she did this morning.
+
+When you finally reach the gates, she stops. The mansion stands warm and familiar against the darkening sky. For a moment, she simply looks at it, then turns to you.
+
+{color=yellow|Lira: — [master]... may I say something?}""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_ONE_EVER_TAKEN_SUCH = """{color=yellow|Lira: — No one has ever taken such care of me before.}
+
+Her voice is soft.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_THOUGHT_HAPPY_LIVING_TEMPLE = """{color=yellow|Lira: — I thought I was happy living in the temple, but now I think that might've been just contentment and obedience. There, no one cared about my desires. But here... you do. Even though you don't have to. And knowing that puts a smile on my face.}
+
+She lifts her gaze, and her eyes are bright.
+
+{color=yellow|Lira: — So I just wanted to say thank you. For today. For everything. I... I never thought I would say it, but whenever I'm with you, I can't help but think that I'm glad I was exiled. Just wanted you to know that. Goodnight, [master]!}""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_FINE_TAKE_STAY_CLOSE_BEHAVE_LIKE = """Fine, I'll take you there, but you stay close and behave like a good girl should""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_SURE_THING_RIGHT_SATISFY_CURIOSITY_YOURS = """Sure thing, let's go right now. Time to satisfy that curiosity of yours""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_FOOD_STALLS = """Go to the food stalls""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_ACCESSORIES_AREA = """Go to the accessories area""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_SHOOTING_RANGE = """Go to the shooting range""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_ELVEN_PART_FAIR = """Go to the elven part of the fair""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_SUGGEST_TRIES_FREE_SAMPLES = """Suggest she tries some free samples""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_OFFER_BUY_FOOD = """Offer to buy her food (-200g)""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_COURSE_LIKE_REWARD_GOOD_BEHAVING_SERVANTS = """Of course. I like to reward good behaving servants with treats""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_SURE_THING_KNOW_WANT_TRY_PICK = """Sure thing, I know you want to try it, so go on, pick whatever you like""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_DID_WANT_HAIRPIN = """Did you want that hairpin?""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_SOMETHING_CAUGHT_EYE = """Is there something that caught your eye?""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_SURE_SPOIL_SLAVE_LITTLE_ESPECIALLY_SINCE = """Sure, why not spoil my slave a little? Especially since I'm sure you'll work it off later""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_PROBLEM_ALLOWED_GOOD_THINGS_CONSIDER_GIFT = """No problem, you're allowed to have good things. Consider it a gift""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_PAY_HAIRPIN = """Pay for the hairpin (-300g)""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_STEAL_HAIRPIN = """Steal the hairpin""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_SUITS_PERFECTLY = """It suits you perfectly""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_COURSE_LIKE_SLAVES_PRETTY = """Of course it is, I like my slaves pretty""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_JOIN_COMPETITION_YOURSELF = """Join the competition yourself""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_LIRA_JOIN_COMPETITION = """Have Lira join the competition""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_KEEP_SHOOTING = """Keep shooting""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_PUSH_TRAINED_MUSCLES_DRAW_FULL_STRING = """Push your trained muscles to draw the full string""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_HEY_TRY_WIN_SOMETHING = """Hey, why don't you try? Win something for your [master].""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_INTERESTED_AHEAD_MAYBE_YOULL_ENJOY = """If you're interested, go ahead. Maybe you'll enjoy it.""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_PROUD_DID_GREAT = """I am proud of you. You did great.""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_SURE_DID_PRIZE = """Sure did. Now let's go get that prize.""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_LOOKS_LIKE_SOMEONE_SORE_LOSER_FORGET = """Looks like someone is a sore loser. Forget about him, Lira. Let's go.""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_MAYOR_ALIRON_LET_TELL_SOMETHING = """As the mayor of Aliron, let me tell you something...""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_EXCUSE_COMPANION_ASKED_QUESTION = """Excuse me. My companion asked a question.""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_MUCH_DOLL = """How much is for that doll?""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_MEANING = """What is the meaning of this?""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_LITERALLY_SAW_HIDE_DOLL = """I literally saw you hide the doll!""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_PLACE_BESIDE = """You should. Your place is beside me now.""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_BECAUSE_NEED_APPROVAL_HAPPY = """You should. Because you don't need their approval to be happy.""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_GRAB_HAND_PULL_CROWD = """Grab her hand and pull her into the crowd""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_OFFER_HAND = """Offer her your hand""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_SHES_SLAVE_GRATEFUL_LET_DEAL_INSTEAD = """She's my slave, and what of it? You should be grateful I let her deal with you instead of calling the guards.""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_SHES_SOMEONE_EASILY_BEAT_ASS_WANT = """She's someone who can easily beat your ass. Want me to ask her to do it again, or should we just call the guards?""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_YEAH_DEAL = """Yeah, go deal with it""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_NAH_STAY_HANDLE = """Nah, stay here, I'll handle it""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_SLAVE_DOESNT_NEED_MONEY_PROVIDE_EVERYTHING = """A slave doesn't need money. I provide everything you need""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_EARNED_YOURS = """You earned it. It's yours""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_THINK_MIGHT_ABLE_HELP = """I think we might be able to help with that""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_DON_WEAR_LIRA = """Why don't you wear it, Lira?""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_WORRY_SOMEONE_ELSES_OPINION_SHOULDNT_FOCUS = """Why do you worry about someone else's opinion? Shouldn't you focus on what your [master] thinks? And why would you hide your body? Let them see what I am proud to own!""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_SAY_DISLIKE_MEANING_YOUD_WEAR_OPINION = """You didn't say you dislike it, meaning you'd wear it if not for the opinion of others. But why do you even care? If you wish to feel free, you should stop fearing what others might think or say!""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_LOOK_INCREDIBLE = """You look incredible.""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_LIKE_MEANT_WEAR = """It's like you were meant to wear this.""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_COURSE = """Of course.""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_AHEAD = """Go ahead.""", # MISSING TRANSLATION
+	LIRA_QUEST2_OPTION_RETURN_TO_FAIR = """Return to the fair""", # MISSING TRANSLATION
+	LIRA_QUEST2_AGREE_DEP = """She nods immediately, trying hard to hide the smile spreading on her lips.
+
+{color=yellow|Lira: — Of course, [master]. I will behave properly. Thank you!}""", # MISSING TRANSLATION
+	LIRA_QUEST2_AGREE_FREE = """Her expression brightens before she can catch herself, and you see a big smile on her face.
+
+{color=yellow|Lira: — Y-yes! Thank you, [master]!}""", # MISSING TRANSLATION
+	LIRA_QUEST2_FAIR_ARRIVAL = """By the time you reach the central square, the fair is already in full swing. Colorful banners stretch between buildings, performers occupy every free corner, and the air is thick with competing smells: roasted nuts, honey cakes, spiced cider, some game grilling on a spit.
+
+Guests of all races move through the crowd with joy on their faces and an easygoing attitude you wouldn't see any other day.
+
+Lira slows down and looks around, trying to track everything at once. A childlike expression of wonder can be seen on her face as she follows you deeper into the fair.""", # MISSING TRANSLATION
+	LIRA_QUEST2_HUB_TEXT = """As you stand in the middle of the fair there are a couple of different routes you can take.""", # MISSING TRANSLATION
+	LIRA_QUEST2_BENCH_BRAWLER_INTRO = """After spending some time exploring the fair, you decide to take a breather and sit on one of the benches near the central square.
+
+A sudden crash interrupts the moment.""", # MISSING TRANSLATION
+	LIRA_QUEST2_FAIR_WINDING_DOWN = """Between all the wandering and wondering, the day slipped away without you noticing. The fair is winding down. The crowd has thinned, and the vendors are packing their wares. The music has faded to a distant melody, the lanterns casting long shadows across the cobblestones.
+
+You're about to turn toward the mansion when something catches your eye near a half‑packed stall. Most of the wares are just the usual garments: simple maid dresses, tavern‑girl skirts, nothing you haven't seen a dozen times before, but at the very end of the rack hangs something different.""", # MISSING TRANSLATION
+	LIRA_QUEST2_FOOD_FREE_RESULT = """You point out the sample pieces and explain to her a simple way to try the food without spending a single coin. Lira looks at you with both surprise and slight caution, but then goes around the vendors' stalls, sampling a few bites to their disgruntled looks. She returns to you with a small smile.
+
+{color=yellow|Lira: — The food here is so good, [master]! I hope I can eat more of it someday...}""", # MISSING TRANSLATION
+	LIRA_QUEST2_FOOD_BUY_OFFER = """You begin to describe the local delicacies, watching her mouth water. As she gulps and looks at the stalls with hungry eyes, you put your hand on her shoulder and tell her she can choose whatever she wants as it's your treat today. Her eyes widened in surprise.
+
+{color=yellow|Lira: — [master], you're saying I can choose whatever I want? R-really?}""", # MISSING TRANSLATION
+	LIRA_QUEST2_FOOD_BUY_RESULT = """She doesn't need to be told twice. Her eyes sweep over the stalls and after a brief hesitation, she begins pointing at what catches her attention. You follow behind, paying as she collects her treats. When she finally has her arms full, she finds a spot to stand and samples one of the treats carefully, as if it might disappear. After the first bite, her eyes begin to shine.
+
+{color=yellow|Lira: — Oh! It's... it's very good, [master]! I don't think I've ever tried anything as good before!}
+
+She eats with visible enjoyment, her earlier restraint forgotten. The rest of the food disappears quickly, leaving behind an invigorated Lira with a fulfilled smile on her face.""", # MISSING TRANSLATION
+	LIRA_QUEST2_ACC_INTRO = """You turn toward the accessories area. As you approach, you slow your pace, letting Lira look around. She admires the huge variety of goods put on display by traveling merchants with an almost childlike wonder on her face.
+
+It takes some time, but finally you notice her focus on something for longer than usual, and as you follow her gaze you see a small silver hairpin shaped like a leaf, its edges delicately curved.""", # MISSING TRANSLATION
+	LIRA_QUEST2_ACC_DEP_FLUSTERED = """Noticing you watching her, Lira gets a bit flustered and averts her gaze, trying to pretend the hairpin wasn't that interesting to her.""", # MISSING TRANSLATION
+	LIRA_QUEST2_ACC_DEP_CONFIRM = """After a brief hesitation, she nods and points at the hairpin.
+
+{color=yellow|Lira: — [master], can... can we also get this one? It's... it's really pretty...}""", # MISSING TRANSLATION
+	LIRA_QUEST2_ACC_FREE_APPROACH = """Noticing you watching her, Lira smiles a bit awkwardly before taking the hairpin and turning back to you.
+
+{color=yellow|Lira: — [master], I might be getting a little greedy... but can we also get this one? I like it a lot.}""", # MISSING TRANSLATION
+	LIRA_QUEST2_ACC_PAY_RESULT = """When it's your turn, you point out the leaf‑shaped pin. The merchant nods, names a price, and you hand over the coins without haggling. A moment later, the small package is yours.""", # MISSING TRANSLATION
+	LIRA_QUEST2_ACC_STEAL_RESULT = """You decide to keep your coins. When your turn comes, you ask the merchant to show you several items from the higher shelves, pointing and gesturing with your free hand while the other, hidden from sight, nimbly slips the leaf‑shaped pin from its display. In the noise and bustle of the fair, no one notices the quick sleight of hand.
+
+You make a few vague comments about the quality, then thank the merchant and step away.""", # MISSING TRANSLATION
+	LIRA_QUEST2_ACC_HAIRPIN_PRESENT = """You return to Lira and present the hairpin to her. She accepts it with both hands, her eyes bright.
+
+{color=yellow|Lira: — Thank you, [master]! I will cherish it...}
+
+She admires the pin and turns it over a couple of times, then carefully fixes it in her hair. Her fingers are uncertain at first, adjusting it once, twice, before she finally lets her hands drop. A shy smile forms on her lips.
+
+{color=yellow|Lira: — Does it... does it look good?}
+
+She looks up at you expectantly, the silver leaf catching the afternoon light.""", # MISSING TRANSLATION
+	LIRA_QUEST2_ACC_HAIRPIN_CONCLUSION = """The smile on her face grows a little warmer.
+
+The two of you move away from the stall and soon return to the central area.""", # MISSING TRANSLATION
+	LIRA_QUEST2_SHOOTING_INTRO = """You reach a more open area where a shooting range has been set up. Colorful targets line the far end, and a small crowd has gathered to watch.
+
+{color=aqua|Vendor: — Step right up! Test your aim! Best bows in the city, even a child could handle them! Score enough points and win a special prize!}
+
+A steady stream of people comes to the stall, drawn by the vendor's shouts, yet most join the crowd of onlookers. Only a handful attempt shots, and most start missing by the fifth or sixth arrow, losing any chance at a decent score. So far, no one has claimed the grand prize.""", # MISSING TRANSLATION
+	LIRA_QUEST2_PLAYER_FAIL = """You grit your teeth and keep going, but your arms give out. The fifth arrow flies wide. The sixth barely grazes the target. By the seventh, you miss entirely. The vendor comes to you after you shoot your last arrow.
+
+{color=aqua|Vendor: — Ah, that was pretty close, but alas! Better luck next time!}
+
+You step back, shaking out your aching arms, and return to Lira's side. She watches you with a mix of concern and curiosity. Seeing that your mood was not soured much she gives you a reassuring smile.
+
+{color=yellow|Lira: — I think you did good, [master]. The challenge must be quite hard on purpose.}""", # MISSING TRANSLATION
+	LIRA_QUEST2_PLAYER_WIN_SETUP = """You adjust your stance, plant your feet, and call on the strength you've built through your own training. Then draw the string fully. The arrow flies straight. Bullseye.
+
+You shoot again. Another bullseye. By the sixth shot, people are watching you with genuine interest, while the vendor's fake smile is barely holding.
+
+You keep shooting, and when the tenth shot lands dead center, the crowd erupts into applause.""", # MISSING TRANSLATION
+	LIRA_QUEST2_PLAYER_WIN_PRIZE = """He hands over the prize bow, polished and elegant, clearly worth the effort. You accept it with a nod, then leave the booth, feeling the burning gaze of the vendor drilling holes in your back.
+
+You return to Lira, who is watching you with wide, shining eyes.
+
+{color=yellow|Lira: — [master]... that was incredible! I didn't know you could shoot like that! Congratulations on your victory!}
+
+You take the compliments and thank her for rooting for you. Having won the grand prize, there's no reason for you to stay at the shooting range any longer.""", # MISSING TRANSLATION
+	LIRA_QUEST2_SHOOTING_LIRA_INTRO = """You look at Lira and notice her interest in the competition, as she watches intently while the current shooters try to score a decent result.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_SHOOTING_DEP = """{color=yellow|Lira: — Oh? You want me to participate, [master]?}
+
+She seems a bit shy at the request, but curiosity is written all over her face, so she quickly nods.
+
+{color=yellow|Lira: — Alright then, I'll try to do my best and make you proud of me, [master]!}""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_SHOOTING_FREE = """{color=yellow|Lira: — I was just going to ask... It's like you can read my mind, [master]!}
+
+She looks at the struggling shooters, nods to herself, and turns back to you.
+
+{color=yellow|Lira: — I think I can do better than them... I'll make you proud of me, [master]!}""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_SHOOTING_SORE_REFLECT = """{color=yellow|Lira: — Oh... I see now. I knew I didn't break any rules, but was afraid to argue... I just don't like it when people are angry at me... Thank you for supporting me, [master]!}
+
+She manages a small smile, and the two of you walk away from the shooting range, soon returning to the central area.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_SHOOTING_MAYOR_SPEECH = """While putting your hand on Lira's shoulder to calm her down, you inform the vendor that while he may be banning Lira from the shooting range, you, as the Mayor of Aliron, are banning him from participating in any further fairs. Additionally, you will make sure that if anyone else organizes a shooting range, especially any associated with him, it will be thoroughly checked, including the real draw weight of the bows.
+
+The vendor at first seemed like he was going to argue, yet hearing your title made him finally take a closer look at you, after which he closed his mouth and went pale, the only thing showing his emotions were his fury-filled eyes.
+
+After giving him a piece of your mind, you and Lira walk out of the booth.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_SHOOTING_MAYOR_AFTERMATH = """{color=yellow|Lira: — I haven't seen you so angry before, [master]... But I'm kinda... kinda glad you protected me... Thank you, [master].}
+
+The small smile returned to her face. The two of you walk away from the shooting range, soon returning to the central area.""", # MISSING TRANSLATION
+	LIRA_QUEST2_ELVEN_INTRO = """You follow the signs marking the guest section and soon step into the elven territory.
+
+The stalls here seem to be built in a different way, and the vendors aren't shouting their invitations every minute, but overall there isn't much difference between this and the regular part. The crowd here is no thinner than before, and no one pays much attention to the two of you.
+
+Lira, who was a bit tense upon stepping into this part, seems to relax. As you walk next to the stalls, she even begins to point out things that are familiar to her.
+
+{color=yellow|Lira: — Oh, I know these herbs... We used to gather similar ones in the temple. They were used in some rituals... It feels kind of nostalgic to see them here...}
+
+She moves to the next stall.""", # MISSING TRANSLATION
+	LIRA_QUEST2_ELVEN_VENDOR_COMPANION = """The vendor gives you a side eye.
+
+{color=aqua|Vendor: — What is your question, dear customer?}
+
+You repeat Lira's question and point at the doll. The elf takes the doll and hides it under the desk.
+
+{color=aqua|Vendor: — Unfortunately, we seem to run out of stock.}""", # MISSING TRANSLATION
+	LIRA_QUEST2_ELVEN_VENDOR_DIRECT = """The vendor turns to you and gives you a scrutinizing look, then takes the doll and hides it under the desk.
+
+{color=aqua|Vendor: — Unfortunately, we seem to run out of stock.}""", # MISSING TRANSLATION
+	LIRA_QUEST2_ELVEN_DEP_RESPONSE = """Lira looks up at you for a moment, then offers a small, quiet nod.
+
+{color=yellow|Lira: — Yes... Thank you for taking me in, [master].}
+
+The smile doesn't return to her face, but her posture settles and becomes less tense.""", # MISSING TRANSLATION
+	LIRA_QUEST2_ELVEN_FREE_RESPONSE = """She looks at you with wide‑eyed surprise. Her lips part slightly, then close again, words failing her for a heartbeat.
+
+{color=yellow|Lira: — That's... something I've never thought about before...}
+
+She blinks, and the surprise in her eyes slowly gives way to a fragile hope. She offers you a genuine, if small, smile.
+
+{color=yellow|Lira: — Thank you, [master].}""", # MISSING TRANSLATION
+	LIRA_QUEST2_DANCING_DEP = """You tell her that it's time to try it for herself, then take her by the wrist before she can overthink it and pull her into the circle.
+
+{color=yellow|Lira: — W-wait—!}
+
+She stumbles at first, clearly unprepared, her feet don't know where to go. But as you guide her through the first few steps, she slowly lets go of the tension in her body and starts to find the rhythm on her own.
+
+By the second turn, she's no longer resisting the music. By the third, she's smiling.""", # MISSING TRANSLATION
+	LIRA_QUEST2_DANCING_FREE = """You extend your hand toward her, palm up, mimicking what the other couples did.
+
+She looks at it for a moment, and then she places her fingers into your palm. Her skin is warm.
+
+{color=yellow|Lira: — I... I've never done this before.}
+
+You tell her not to worry and guide her gently, giving her space to find her own pace. She's hesitant at first, but she's quick to adapt. Her steps grow more confident with each turn, her movements lighter, freer. Before long, she lets out a quiet laugh, and for a moment, she looks like she belongs here.""", # MISSING TRANSLATION
+	LIRA_QUEST2_BRAWLER_DEP_ENTRY = """Lira looks at you first.
+
+{color=yellow|Lira: — Should I...?}""", # MISSING TRANSLATION
+	LIRA_QUEST2_BRAWLER_FREE_AFTERMATH = """{color=yellow|Drunk Man: — And who the fuck you are...?}
+
+Suddenly, recognition hits. His eyes widened. The anger drains out of his face, replaced by fear.""", # MISSING TRANSLATION
+	LIRA_QUEST2_BRAWLER_PLAYER_HANDLES = """You step in yourself, pushing the drunk back hard enough to make him stumble and lose his balance. He hits the dirt with a grunt, the air knocked out of him, but not the fight.
+
+{color=yellow|Drunk Man: — How dare you touch me?! Do you even know who I am?! And who the fuck are you...?}
+
+Suddenly, recognition hits. His eyes widened. The anger drains out of his face, replaced by fear.""", # MISSING TRANSLATION
+	LIRA_QUEST2_BRAWLER_OWNER_THANKS = """The tavern owner exhales loudly, wiping his forehead with the back of his hand.
+
+{color=aqua|Owner: — Gods... thank you. That could've ended badly.}""", # MISSING TRANSLATION
+	LIRA_QUEST2_BRAWLER_OWNER_REWARD = """He looks at Lira for a moment, then lets out a short laugh.
+
+{color=aqua|Owner: — Didn't expect the girl to deal with him like that! Nicely done. Here. For saving me the trouble.}
+
+He tosses her a small pouch. Lira looks down at it, then up at you. There's a silent question in her eyes.""", # MISSING TRANSLATION
+	LIRA_QUEST2_BRAWLER_REWARD_DEP = """She nods immediately and presents the pouch to you.
+
+{color=yellow|Lira: — Of course... I understand, [master].}""", # MISSING TRANSLATION
+	LIRA_QUEST2_BRAWLER_REWARD_FREE = """She looks at the coins again, then back at you. Her brow furrows slightly.
+
+{color=yellow|Lira: — Mine...? Thank you, [master]. I'll try to use them wisely.}
+
+She closes her fingers around the coins, tucking them into her robe carefully, like something precious.""", # MISSING TRANSLATION
+	LIRA_QUEST2_BRAWLER_RETURN_TEXT = """Done with the sudden event, you get back to the bench and rest for a short while, before returning to the central area of the fair.""", # MISSING TRANSLATION
+	LIRA_QUEST2_COSTUME_DEP_CONCLUSION = """She looks at her current clothing, then pulls down her old hood.
+
+{color=yellow|Lira: — I'm not a priestess anymore. I'm not even welcome among the elves. Why should I worry about keeping a pure appearance or abide by the elven rules? If [master] likes my body and wants me to show more of it...}
+
+She meets your eyes, and a small, genuine smile touches her lips.
+
+{color=yellow|Lira: — Then I want to wear it. For you, [master]. And maybe... for me, too.}""", # MISSING TRANSLATION
+	LIRA_QUEST2_COSTUME_FREE_REFLECTION = """Lira stares at you for a moment, the words sinking in.
+
+{color=yellow|Lira: — Stop fearing... to be free?... Huh... If only it was that easy...}
+
+She looks down at her hands, then back at the costume, then up at you.
+
+{color=yellow|Lira: — But then again, maybe this moment is exactly what I needed... With you pushing me forward, I shall forget all the dogmas and taboos that were forced on me and do what I want to... At the end of the day, what is there even to lose for me?}""", # MISSING TRANSLATION
+	LIRA_QUEST_1_INTRO = """Over the past few days, Lira has slowly begun to settle into life at the mansion. You occasionally see her helping with small chores or assisting in the kitchen, slowly making connections with other servants during shared labor.
+
+The only person she hasn't been able to connect with appears to be her new master: you. Whenever you're in the same space, she just watches you from afar, shielding herself with formality and politeness during your short exchanges.
+
+You decide it's time to talk to her about that matter.""", # MISSING TRANSLATION
+	LIRA_QUEST_1_TALK_TO_LIRA = """As you see Lira walk into her room it seems like a good time to address her behavior.""", # MISSING TRANSLATION
+	LIRA_QUEST_1_ROOM_ENTRY = """A couple of moments after you knock, she opens the door. As she sees you, her eyes open wide, but she quickly tries to regain her composure and bows her head.
+
+You barge in unannounced, making Lira jump up from her seat. She quickly hides a small elven prayer bead and stands up, facing you briefly before bowing her head.
+
+{color=yellow|Lira: — Ah, greeting, [master]! Apologies, I was not expecting you... I mean, how can I be of service?}""", # MISSING TRANSLATION
+	LIRA_QUEST_1_BUSY = """She hesitates a bit before taking a small elven prayer bead out of her pocket and earnestly presenting it to you.
+
+{color=yellow|Lira: — I was simply praying, [master]. It... it doesn't give the same feeling as before, but it's what I'm used to, and it calms me down a bit. I hope this is okay with you.}""", # MISSING TRANSLATION
+	LIRA_QUEST_1_SERVANTS = """A small smile shows on Lira's lips.
+
+{color=yellow|Lira: — They treat me well, [master]. I was afraid at first, but they turned out to be quite friendly and are helping me get used to... well, everything.}""", # MISSING TRANSLATION
+	LIRA_QUEST_1_WATCH_REASON = """Presented with a direct question, Lira blushes a bit and lowers her head once again.
+
+{color=yellow|Lira: — I-I apologize if that was inappropriate or upset you...}
+
+Seeing that you silently wait, she hesitantly continues.
+
+{color=yellow|Lira: — If I'm being honest, I was just trying... trying to understand what my role is from now on. What I'm supposed to do, how I'm supposed to behave, all of that...}
+
+{color=yellow|Lira: — When I lived among the elves, everything had a very strict order. A priestess knew exactly what she was meant to become... what duties awaited her... how she was supposed to spend her day or address others...}
+
+{color=yellow|Lira: — But now everything is different, and I... Ah, sorry, I didn't mean to start rambling, it's probably boring you...}""", # MISSING TRANSLATION
+	LIRA_QUEST_1_WATCH_REASON_FOLLOWUP = """{color=yellow|Lira: — Oh!... Okay! I was just trying to say that I spent most of my life preparing for the path of a priestess, so it's hard for me to just forget all of that and become a proper... well, slave.}
+
+{color=yellow|Lira: — I tried to look at what others do, but they also behave very differently from one another. That's why I was contemplating just asking you directly, and I guess now is the time...}
+
+She nods, then pauses briefly before asking directly.
+
+{color=yellow|Lira: — Can you please tell me what you expect from me? Who am I supposed to be?}
+
+Considering that she's here all alone and you're the only person she truly knows outside the elf kingdom, your answer will clearly carry significant weight in how she begins to see her future.""", # MISSING TRANSLATION
+	LIRA_QUEST_1_EXPECTATIONS = """Lira waits quietly for your answer. Whatever you tell her now will shape how she begins to see her place in your household.""", # MISSING TRANSLATION
+	LIRA_QUEST_1_EXPECTATIONS_ANSWER = """Lira takes a couple of moments to think silently, then nods.
+
+{color=yellow|Lira: — I guess this is the only answer. You are the one who saved my life, after all, so I shall repay your kindness. I will need some time to adjust, but I promise to do my best to serve you, [master].}
+
+For a moment, she just stares at you, blinking. Then something in her expression softens, and you see a tentative smile begin to form.
+
+{color=yellow|Lira: — This... this is the first time someone has asked me this question. I'll need to think about it, but in the meantime, I promise to do my best to serve you, [master].}
+
+After that matter is settled, Lira asks a few more questions about her household duties. Once she has her answers, she seems about to leave, but hesitates, as if struck by a thought. She turns back to you.
+
+{color=yellow|Lira: — [master]... it may be bold of me, but may I ask you for a favor?}""", # MISSING TRANSLATION
+	LIRA_QUEST_1_FAVOR_REQUEST = """{color=yellow|Lira: — When I was exiled from the forest, I wasn't allowed to take anything with me. Of course, I don't expect to get my things from the priest quarters, but I had some personal stash hidden in a grove near the city. Can you please escort me there?}""", # MISSING TRANSLATION
+	LIRA_QUEST_1_FAVOR_ACCEPT = """She bows her head and flashes you a grateful smile.
+
+{color=yellow|Lira: — Thank you, [master]!}""", # MISSING TRANSLATION
+	LIRA_QUEST_1_SEARCH_GROVE = """The deeper you walk beneath the tall trees, the more familiar the surroundings seem to Lira. She moves with slightly more confidence here, occasionally glancing around as if recognizing distant landmarks.
+
+Not long after entering the deeper woods, an elven patrol steps out from between the trees. They recognize you quickly enough and offer a polite nod, but when their eyes fall on Lira, the mood shifts immediately.
+
+One of the elves frowns.""", # MISSING TRANSLATION
+	LIRA_QUEST_1_PATROL_CONFRONTATION = """{color=yellow|Elf Patrol Leader: — What is a rebel priestess doing here? The terms of your exile were made clear! Or do you have a death wish?}
+
+Lira lowers her gaze.""", # MISSING TRANSLATION
+	LIRA_QUEST_1_PATROL_DEPENDENCY = """After a tense moment, the patrol leader nods and takes his hand from the hilt of his sword. The rest of the elves also step aside, casting disdainful glances at Lira.
+
+{color=yellow|Elf Patrol Leader: — So be it. Guess being a human plaything is already punishment enough for this rebel scum. You can go now.}
+
+Once you're out of earshot, Lira exhales quietly. She glances back toward the trees where the patrol disappeared.
+
+{color=yellow|Lira: — The way they looked at me... it was terrifying. It's nice that I now have someone who can protect me like that...}
+
+{color=yellow|Lira: — Thank you.}""", # MISSING TRANSLATION
+	LIRA_QUEST_1_PATROL_FREEDOM = """The patrol leader squints at you for a couple of intense moments, then snorts and turns away. The rest of the elves also step aside, casting disdainful glances at Lira.
+
+{color=yellow|Elf Patrol Leader: — Since Freya's Priestess tolerates you, I won't argue. Just make sure this "traveler" leaves the forest as soon as possible. You can go now.}
+
+Once you're out of earshot, Lira exhales quietly. She glances back toward the trees where the patrol disappeared.
+
+{color=yellow|Lira: — I always thought exile meant death... but thanks to you, it doesn't seem that way anymore. And now I can even walk through these woods as a traveler... What a strange feeling...}
+
+{color=yellow|Lira: — Thank you.}""", # MISSING TRANSLATION
+	LIRA_QUEST_1_GROVE_ARRIVAL = """After a short walk, you reach the grove. The place is quiet and well-hidden: a small clearing surrounded by ancient roots and moss-covered stones.
+
+Lira kneels near a hollow tree where she hid her belongings, but before she can reach them, the ground near the roots begins to move. Several enormous centipedes burst out from beneath the soil and begin to circle you.
+
+Lira quickly steps to your side.""", # MISSING TRANSLATION
+	LIRA_QUEST_1_CENTIPEDE_WARNING = """{color=yellow|Lira: — W-where did they come from?! I always thought this place was safe... Or was it Freya who used to guard me?...}
+
+She forcefully shakes her head.
+
+{color=yellow|Lira: — Ah, it doesn't matter now! I saw you fight before, you can deal with them, right? I'll help!}""", # MISSING TRANSLATION
+	LIRA_QUEST_1_FIGHT_PLAN = """The centipedes keep circling closer while Lira steadies herself beside you, waiting to hear how you want to handle the fight.""", # MISSING TRANSLATION
+	LIRA_QUEST_1_FIGHT_READY = """{color=yellow|Lira: — Got it!}""", # MISSING TRANSLATION
+	LIRA_QUEST_1_DEPENDENCY_FIGHT_AFTERMATH = """Together you slay the aggressive beasts.
+
+After the fight, Lira looks down at her hands, which shimmer with a faint green glow.
+
+{color=yellow|Lira: — Phew... This... this was my first ever fight, [master]. Did I... did I do well?}""", # MISSING TRANSLATION
+	LIRA_QUEST_1_DEPENDENCY_FIGHT_PRAISE = """She smiles brightly, pleased with the praise.
+
+{color=yellow|Lira: — I'm glad I was helpful! It actually took me a long time to properly use this magic, but I guess in the end, all that training paid off...}
+
+{color=yellow|Lira: — Anyway, let's hope there won't be any unpleasant surprises today.}""", # MISSING TRANSLATION
+	LIRA_QUEST_1_FREEDOM_FIGHT_AFTERMATH = """Together you slay the aggressive beasts.
+
+After the fight, Lira looks down at her hands, sore from the fight.
+
+{color=yellow|Lira: — I... I never had to fight before, so this is the first time for me... I probably should be scared or nervous...}
+
+She flexes her fingers slowly, then looks at you.
+
+{color=yellow|Lira: — But for some reason it feels... fine. Maybe even good. My body feels hot... and strong.}""", # MISSING TRANSLATION
+	LIRA_QUEST_1_FREEDOM_FIGHT_REFLECTION = """She looks back at her hands, then at the slain centipedes, then simply shrugs.
+
+{color=yellow|Lira: — I... I don't know, honestly. Though now that I think about it... I was always better with physical tasks. Magic never came as easily. The elders used to say I had more "fire in my blood" than was proper for someone of my calling.}
+
+{color=yellow|Lira: — Anyway, let's hope there won't be any unpleasant surprises today.}""", # MISSING TRANSLATION
+	LIRA_QUEST_1_BELONGINGS_ROOT = """Lira goes back to the hollow tree and finally retrieves her hidden belongings. She doesn't try to hide any of them, so you have a good look.
+
+They consist of just a few things: a worn leather diary, a few simple wooden toys carved by hand, a small cloth doll with uneven stitching, and a worn-out brush with a few strands of hair still caught between its teeth.
+
+She holds each item gently, as if they might crumble at the slightest pressure.""", # MISSING TRANSLATION
+	LIRA_QUEST_1_DIARY_PART_1 = """Lira flips through a few pages, a nostalgic smile touching her lips.
+
+{color=yellow|Lira: — Mostly small things. My first day of training... I was so tired afterward that I overslept and missed both breakfast and lunch the next day.}
+
+She turns another page, chuckling softly.
+
+{color=yellow|Lira: — The time I accidentally set my room on fire during a ritual... They made me scrub every floor in the temple for a couple of months and sent me to live in a tiny closet during the repairs. But it was closer to the forest and easier to run off to, so I actually liked it more.}""", # MISSING TRANSLATION
+	LIRA_QUEST_1_DIARY_PART_2 = """She points at another entry.
+
+{color=yellow|Lira: — This part here... it's about the first time I successfully healed someone. It took me a month of training while others learned it in weeks, but I was still happy I could do it at all...}
+
+On the next pages, she finds some old sketches of different flowers.
+
+{color=yellow|Lira: — Huh, just like with magic, I was never very good at drawing either. But I liked trying.}
+
+Together you skim through more of the diary as Lira shares her stories.""", # MISSING TRANSLATION
+	LIRA_QUEST_1_HIDDEN_BELONGINGS = """She looks slightly embarrassed, her ears twitching a little.
+
+{color=yellow|Lira: — Priestesses aren't supposed to have personal belongings. Attachment to material things is seen as... a weakness. A distraction from serving the goddess.}
+
+She runs her thumb over the wooden bird's chipped wing.
+
+{color=yellow|Lira: — At first, I kept these hidden under my bed. But eventually they found out and told me to get rid of them. So I did. Threw them into the garbage, only to take them back at night and hide them here.}
+
+{color=yellow|Lira: — Then every time I was sent for supplies, I could come here and check on them, and also write about recent events in my diary. Huh, I suppose I was a bit rebellious even then...}""", # MISSING TRANSLATION
+	LIRA_QUEST_1_FEEL_BETTER = """A warm smile appears on her face.
+
+{color=yellow|Lira: — I am. Those trinkets might seem worthless to everyone else, but for me they're like memories saved in magic and every time I touch them, I travel back to a different time...}
+
+She picks up the small cloth doll.
+
+{color=yellow|Lira: — This one... I made her myself when I was very small. Before the temple. I don't even remember where I learned to sew or how long I had her, but I remember sleeping with her every night.}
+
+She sets it down carefully. Her hand hovers over the wooden brush.
+
+{color=yellow|Lira: — And this one is the only thing I have that reminds me of my mother. I... I don't even remember her face anymore, but this proves she cared since it was her gift to me. So yeah, I'm happy to get everything back.}""", # MISSING TRANSLATION
+	LIRA_QUEST_1_HEAD_BACK = """She nods, carefully wrapping the bundle and tucking it away.
+
+{color=yellow|Lira: — Yes, [master]. Thank you for bringing me here. It means a lot.}
+
+The two of you make your way back to the road, leaving the quiet grove behind.""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_KNOCK_ON_THE_DOOR = """Knock on the door""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_WALK_INTO_HER_ROOM = """Walk into her room""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_ARE_YOU_BUSY = """Are you busy? What were you doing?""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_HOW_DO_SERVANTS_TREAT_YOU = """How does other servants treat you?""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_YOU_SEEM_TO_WATCH_ME = """You seem to watch me closely, yet never strike up a conversation. Why? What's on your mind?""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_FEEL_FREE_TO_SHARE = """Feel free to share your thoughts, I'm listening""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_DONT_WORRY_I_UNDERSTAND = """Don't worry, I understand. So what is that you want?""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_SERVE_AS_YOU_SERVED_FREYA = """You should serve me just as devotedly as you served Freya. That's the whole point of being a slave, isn't it?""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_WHAT_WOULD_YOU_WANT = """While formally you're my slave, I don't place strict restrictions. So I ask you what would you want?""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_OF_COURSE_WHAT_IS_IT = """Of course, what is it?""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_HOPEFULLY_NOT_TOO_BOTHERSOME = """Hopefully it's not too bothersome""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_FINE_LETS_GO = """Fine, let's go. I should show that I'm a good master to my obedient slaves.""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_ALRIGHT_LETS_MOVE = """Alright, let's move. Maybe these things will help you figure out what you want.""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_SEARCH_FOR_THE_GROVE = """Search for the grove""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_SHE_IS_NOT_A_PRIESTESS = """She is not a priestess anymore. She's my slave, my personal property. There's no rules forbidding me from bringing my belongings into the forest.""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_EXILED_MEANS = """"Exiled" means she can no longer live among you. It doesn't mean she cannot pass through the forest as a traveler. We're only here briefly.""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_STAY_BACK_AND_HELP = """Just stay back and help with what you can. Leave the fighting to me.""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_WE_FIGHT_TOGETHER = """We fight together, side by side. You're capable of more than just standing behind.""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_YOU_DID_GREAT = """You did great, especially for your first time""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_NATURAL_WITH_THIS_MAGIC = """Looks like you're a natural with this type of magic""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_PENT_UP_RAGE = """Maybe it's all the pent-up rage from years of obedience?""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_SOMETHING_TO_DO_WITH_RACE = """Could this have something to do with your race?""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_WHAT_DID_YOU_WRITE = """What did you write in the diary?""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_WHY_DID_YOU_HIDE_THESE = """Why did you hide these here?""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_DO_YOU_FEEL_BETTER = """Do you feel better after getting these back?""", # MISSING TRANSLATION
+	LIRA_QUEST_1_OPTION_TIME_TO_HEAD_BACK = """Alright, time to head back. We shouldn't linger in the forest.""", # MISSING TRANSLATION
+	LIRA_QUEST_1_NAME = """Lira: Remnants of the Past""", # MISSING TRANSLATION
+	LIRA_QUEST_1_SUMMARY = """A recently acquired elven slave, Lira has been quietly observing you since her arrival at the mansion. Getting to know her may help her find her place.""", # MISSING TRANSLATION
+	LIRA_QUEST_1_JOURNAL_START = """Talk to Lira.""", # MISSING TRANSLATION
+	LIRA_QUEST_1_JOURNAL_GROVE = """Visit a special place Lira has told you about.""", # MISSING TRANSLATION
+	ACT4_MYR_GUILD_OPTION_SHOW_WRITING = """Show the catacomb writing""", # MISSING TRANSLATION
+	ACT4_EMPIRE_CAPITAL_OPTION_ERDYNA = """Talk to Erdyna""", # MISSING TRANSLATION
+	ACT4_EMPIRE_CAPITAL_OPTION_SENERUS = """Visit Senerus's home""", # MISSING TRANSLATION
+	ACT4_QUEST_CATACOMB_OPTION_ENTER = """Enter the catacombs""", # MISSING TRANSLATION
+	ACT4_QUEST_CATACOMB_NAME = """Hidden Catacomb Entrance""", # MISSING TRANSLATION
+	ACT4_QUEST_CATACOMB_DESC = """A concealed entrance outside the imperial walls leads toward the sealed catacombs beneath the capital.""", # MISSING TRANSLATION
+	ERDYNA_QUEST_SUMMARY = """Erdyna has gotten involved in your search for the Empire's artifact and pointed you toward people and places hidden beneath the capital.""", # MISSING TRANSLATION
+	ERDYNA_QUEST_NAME = """Erdyna: The Bandit King""", # MISSING TRANSLATION
+	ERDYNA_QUEST_STAGE_FOLLOWUP = """Meet with Erdyna again in the Empire capital.""", # MISSING TRANSLATION
+	ERDYNA_QUEST_STAGE_SENERUS = """Visit Senerus with Erdyna and learn what he knows about the artifact.""", # MISSING TRANSLATION
+	ERDYNA_QUEST_STAGE_CATACOMBS = """Visit catacomb entrance in Empire region.""", # MISSING TRANSLATION
+	ERDYNA_QUEST_STAGE_MYR = """Show the copied catacomb writing to Myr.""", # MISSING TRANSLATION
+	ERDYNA_QUEST_STAGE_DRAGONHUNTERS = """Progression of this event is currently WIP, please update the game when it is added. Thank you for playing and consider supporting the development.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_FOLLOWUP_1 = """{color=yellow|Erdyna: — Alright, so about that artifact. Hope you didn't take me for an expert on these things, but worry not. I happen to know just the right person for something like that. But first I need to stop by my crew's base. Will you follow?}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_FOLLOWUP_1_OPTION_GO = """Alright, let's go.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_FOLLOWUP_1_OPTION_LATER = """I'll drop by when I have time.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_FOLLOWUP_LATER = """{color=yellow|Erdyna: — Hmph, fine, but don't keep me waiting.}
+
+Before parting ways, Erdyna tells you how to find her gang's hideout. You walk back to the main street considering how wise it is to follow her like that.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_HIDEOUT_1 = """A few streets pass as Erdyna sneaks into a seemingly obvious dead end, only to reveal it as a disguised entrance. You follow her down through the half-blocked passage until you end up in sewer-like surroundings with clear signs of habitation. Your eyes adjust to the darkness, partially broken by a couple of dim oil lanterns.
+
+{color=yellow|Erdyna: — Better plug your nose around here, haha.}
+
+Despite her comment, the smell is surprisingly not completely awful. After a moment you see two silhouettes emerging from the shadows.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_HIDEOUT_2 = """{color=aqua|Man: — Well, if it isn't Erdyna, King of the bandits herself.}
+
+{color=yellow|Erdyna: — Shut it. I told you not to call me that in front of guests.}
+
+{color=aqua|Man: — Haha, sorry, boss. But... weren't you trying to beat this [guy] just a little while ago?}
+
+{color=yellow|Erdyna: — Whatever, I need some information. Where's Paul?}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_HIDEOUT_3_0 = """{color=aqua|Man: — At his hole, as usual.}
+
+{color=yellow|Erdyna: — Perfect. Let's go.}
+
+Erdyna walks quickly deeper into the tunnels, beckoning you to follow.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_HIDEOUT_3_1 = """{color=yellow|Erdyna: — Ugh, it's just a stupid joke. First time I came here I was just a dumb kid looking for a way to survive. They asked what the hell I wanted from them, I said I was gonna be the king of bandits, they laughed so hard they let me stay just like that.}
+
+{color=yellow|Erdyna: — Of course I had no clue bandits don't have titles like that, or that it's a male one. Oh, and we don't call ourselves bandits, obviously.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_HIDEOUT_3_2 = """{color=yellow|Erdyna: — What do you think, smartass? I'm not a citizen and I don't pass for a normal person.}
+
+She points at her lizard-like features.
+
+{color=yellow|Erdyna: — The only option left to me was to live like this. It's not so bad since I can hold my own in a fight better than anyone around here.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_HIDEOUT_3_3 = """Erdyna glances back at you, waiting to see whether you have anything else to ask before moving on.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_HIDEOUT_3_OPTION_KING = """'King of the bandits'?""", # MISSING TRANSLATION
+	ACT4_ERDYNA_HIDEOUT_3_OPTION_BANDIT = """Why did you become a bandit?""", # MISSING TRANSLATION
+	ACT4_ERDYNA_HIDEOUT_3_OPTION_MOVE = """Let's keep moving.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_PAUL_1 = """Less than a minute later you find Paul sleeping in a small makeshift room. Erdyna doesn't hold back as she bangs on the wooden board, jolting him awake.
+
+{color=yellow|Erdyna: — Paul, damn it, why are you sleeping at a time like this? Wake up, I've got a job for you.}
+
+Wide-eyed from the shock, the man quickly calms down as he recognizes the girl.
+
+{color=aqua|Paul: — Ah... Oh, it's you, boss... What happened?}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_PAUL_2 = """{color=yellow|Erdyna: — Remember that ancient elven guy who had us tracking down old books for him a few months back? I need his address.}
+
+{color=aqua|Paul: — Huh? Don't you remember? He probably hasn't moved, has he?}
+
+{color=yellow|Erdyna: — Do I look like I'd remember useless stuff like that? Come on, remind me.}
+
+Paul sighs and starts scrambling through some notes lying around him.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_PAUL_3 = """{color=aqua|Paul: — Yeah, that... looks about right.}
+
+{color=yellow|Erdyna: — Great, now get back to sleep, you've done enough for today.}
+
+{color=aqua|Paul: — Like hell I can sleep now...}
+
+Erdyna doesn't listen to his complaints, turning around and leading you back outside.
+
+{color=yellow|Erdyna: — I might not remember his address that well, but that elven guy is a specialist on religious subjects. Let's go pay him a visit.}""", # MISSING TRANSLATION
+	ACT4_SENERUS_HOME_1 = """Erdyna takes you to one of the less miserable looking houses deep in the slums. After a couple minutes of banging on the door, an elven man finally opens it, keeping it half-closed and talking through the gap.""", # MISSING TRANSLATION
+	ACT4_SENERUS_HOME_2 = """{color=aqua|Man: — You... I told you not to come here again, and certainly not to bring anyone.}
+
+{color=yellow|Erdyna: — Nah, don't remember that. Come on, I really need a smart guy like you to help my friend here.}
+
+As the elven man takes a careful look at you, he visibly relaxes. Perhaps your more civil, professional appearance reassures him you aren't just some thug.
+
+{color=aqua|Man: — Fine, get in. Quickly.}""", # MISSING TRANSLATION
+	ACT4_SENERUS_HOME_3 = """The inside of the house looks old and worn. The space is crammed with books and antiquities. Moving to the other room you find a large table covered in scribbled papers and candles.
+
+{color=yellow|Erdyna: — Senerus, you really should clean up in here.}
+
+{color=aqua|Senerus: — It's clean. How about you get to the point.}
+
+{color=yellow|Erdyna: — Right, you see...}""", # MISSING TRANSLATION
+	ACT4_SENERUS_HOME_4 = """Erdyna explains your search for the artifacts. As you go into detail about your journey and the items in question, the elf grows more and more pensive.
+
+{color=aqua|Senerus: — I see, the grand artifacts. It's a shame they've been so neglected.}
+
+{color=aqua|Senerus: — I suppose you don't know much about them, do you? This will be a long story.}
+
+{color=yellow|Erdyna: — Ugh, I hate long stories. I'll see myself out, let me know when you're done.}
+
+Erdyna leaves you alone with the elf, closing the door as she heads outside.""", # MISSING TRANSLATION
+	ACT4_SENERUS_HOME_4_OPTION_LISTEN = """Alright, I'm listening.""", # MISSING TRANSLATION
+	ACT4_SENERUS_HOME_4_OPTION_SHORT = """Give me the short version.""", # MISSING TRANSLATION
+	ACT4_SENERUS_REPEAT_1 = """Senerus opens the door after a short delay and studies you with visible reluctance before deciding you are less troublesome than leaving you outside.
+
+{color=aqua|Senerus: — You again. Fine, come in if you intend to ask something relevant.}
+
+Once inside, he returns to the cramped study and waits for you to get to the point.""", # MISSING TRANSLATION
+	ACT4_SENERUS_LONG_1 = """{color=aqua|Senerus: — First, let's go through the ancient times and the creation of the world. Most knowledge from that period has been lost, which is no surprise given it happened eons ago and time has not worked in our favor. I've spent my life recovering and restoring whatever I could find, but even so I cannot realistically prove that everything I consider plausible is actually true, so take what I say as my own interpretation of how the world came to be.}
+
+{color=aqua|Senerus: — In the beginning there was a world with no life in it. Or rather no sentient life. A rather barren place, but not without another, less physical quality: magic energy. Though calling it simply magic isn't entirely accurate. The magic energy that exists today is only an echo of the primal magic that existed at the dawn of the world.}""", # MISSING TRANSLATION
+	ACT4_SENERUS_LONG_2 = """{color=aqua|Senerus: — Then something happened. Sentience appeared in the world, the very first of its kind, the one that started everything. It took the form of a man, the First God. He reached into the world's magic energy and it changed. From the raw primal chaos it had existed as, it bent under his will. Nearly all of the world's magic energy came under his control and he began reshaping the world with it.}
+
+{color=aqua|Senerus: — Life became sentient, whether by his design or as a consequence of his influence. More deities arose as they gained access to this refined magic. Some of them are the gods you know today. That was a time of incredible prosperity and power, brought about by him. Even ordinary people could conjure that refined energy in ways that would put today's archmage to shame. Most of the ancient and magic-touched races were created in those times, though even they have lost the memory of those origins.}""", # MISSING TRANSLATION
+	ACT4_SENERUS_LONG_3 = """{color=aqua|Senerus: — But as you might expect, the downfall eventually came. Various ancient religions describe it differently, but one thing is certain: the First One fell. Some theorize he was slain by an outside force, perhaps as an act of protection. Either way, it changed everything, even if the effects weren't immediately apparent.}
+
+{color=aqua|Senerus: — Since the First One was the only being so deeply intertwined with the magic force, his death brought inevitable stagnation to the magical arts. You see, magic energy is like water. There is plenty of it in nature, but as it is used it grows spoiled, becoming unhealthy or unsuitable for refined purposes. The First One did not just cleanse that water for others; he made it so that anyone in contact with it could draw healing from it. The raw magic energy became something close to what we now call divine magic.}
+
+{color=aqua|Senerus: — His disappearance did not undo all of his work, but the amount of divine magic available could never again increase. The deities are capable of their miracles largely because they received their powers during that time when magic was first shaped by the First One. The artifacts you are looking for belonged to the First One, or were made with his energy, which is why they are unique. Of course, over the ages people have forgotten about the ancient magic, and the artifacts themselves have grown weaker, but they are remarkable nonetheless.}""", # MISSING TRANSLATION
+	ACT4_SENERUS_SHORT_1 = """Senerus adjusts his posture with visible reluctance, as if compressing a lecture he would much rather give in full.
+
+{color=aqua|Senerus: — Very well. The short version is this: the artifacts you seek are remnants of the earliest divine age, tied to powers far older and greater than the gods most people worship now.}
+
+{color=aqua|Senerus: — Long ago the world was shaped by a being some traditions call the First God. Whether he created everything or merely changed it is still debated, but much of what we know as divine magic traces back to him.}""", # MISSING TRANSLATION
+	ACT4_SENERUS_SHORT_2 = """{color=aqua|Senerus: — After his fall that power began to diminish. The old miracles could no longer be renewed in the same way, and what remained was scattered through relics, bloodlines, and the gods who had already risen by then.}
+
+{color=aqua|Senerus: — That is why these artifacts matter. They are not valuable merely because they are ancient. They are fragments of a lost age, still carrying traces of a power the world can no longer reproduce.}
+
+Senerus pauses, seemingly dissatisfied with how much he had to leave unsaid.
+
+{color=aqua|Senerus: — That is the offensively short version. If you want substance, ask properly and I will answer what I can.}""", # MISSING TRANSLATION
+	ACT4_SENERUS_SHORT_3 = """{color=aqua|Senerus: — The offensively short version, yes. If you want substance, ask properly and I will answer what I can.}""", # MISSING TRANSLATION
+	ACT4_SENERUS_HUB_0 = """{color=aqua|Senerus: — What else do you want to know?}""", # MISSING TRANSLATION
+	ACT4_SENERUS_HUB_1 = """{color=aqua|Senerus: — In truth it's very difficult to say how he came to be, but I have my own theory, completely unprovable of course. Given the circumstances, I believe the magic energy itself gave rise to him. That would best explain his extraordinary degree of control over it.}
+
+{color=aqua|Senerus: — What else?}""", # MISSING TRANSLATION
+	ACT4_SENERUS_HUB_2 = """{color=aqua|Senerus: — Shortly after the demise of the First One there was an invasion from another world. These were the demons, also potent wielders of magic but of a very different kind. This led to the first great war, in which they ultimately lost and were culled, though some managed to adapt to our world. Some even harnessed divine powers, transforming into malevolent deities.}
+
+{color=aqua|Senerus: — The most notable thing I can tell you about them is their relationship with magic energy. They were nowhere near the level of divine magic and could sometimes even be outmatched by powerful sorcerers, but their magic is distinct. They could transform raw magical energy into their own corrupted form of power, which is often tied to sexual energy. While sexual energy is not inherently tainted, demons could access it far more easily.}
+
+{color=aqua|Senerus: — What else?}""", # MISSING TRANSLATION
+	ACT4_SENERUS_HUB_3 = """{color=aqua|Senerus: — Then ask about the gods.}""", # MISSING TRANSLATION
+	ACT4_SENERUS_HUB_4 = """{color=aqua|Senerus: — Ask what you need to know about champions.}""", # MISSING TRANSLATION
+	ACT4_SENERUS_HUB_OPTION_FIRST_GOD = """But who is the First God?""", # MISSING TRANSLATION
+	ACT4_SENERUS_HUB_OPTION_DEMONS = """What can you tell me about demons?""", # MISSING TRANSLATION
+	ACT4_SENERUS_HUB_OPTION_GODS = """I have some questions about gods...""", # MISSING TRANSLATION
+	ACT4_SENERUS_HUB_OPTION_CHAMPIONS = """Can you tell me about champions?""", # MISSING TRANSLATION
+	ACT4_SENERUS_HUB_OPTION_ARTIFACT = """Enough talking, I want to know where I can find another artifact around here.""", # MISSING TRANSLATION
+	ACT4_SENERUS_HUB_OPTION_LEAVE = """I'll be off.""", # MISSING TRANSLATION
+	ACT4_SENERUS_GODS_0 = """{color=aqua|Senerus: — Fine, I'll tell you what I know.}""", # MISSING TRANSLATION
+	ACT4_SENERUS_GODS_1 = """{color=aqua|Senerus: — Ah, those are shrines of Erebus. His cults were common in the early ages, though now he seems to be worshipped mostly out of habit. Attributed to earth and stone, his nature has always been similar: quiet, enduring, often seeming absent and yet his presence somehow weighing on you all the same.}
+
+{color=aqua|Senerus: — His following grew more prominent after the loss of the First One. Beyond that there is not much to say about his personality or goals, as he appears to be extremely dormant.}""", # MISSING TRANSLATION
+	ACT4_SENERUS_GODS_2 = """{color=aqua|Senerus: — Ah, Celena is a well-known one. Being tied to the moon and its inherent powers she has managed to remain relevant even without grand support. As for her nature, she is what you would call a pacifist, perhaps not in spirit but in practice. She tends to avoid conflict but still offers what help she can to those in need.}
+
+{color=aqua|Senerus: — In that way she does take after her mother. A small comfort that people can still draw from the divine.}""", # MISSING TRANSLATION
+	ACT4_SENERUS_GODS_3 = """{color=aqua|Senerus: — Ah, Elisia, almost forgot about her. Partly because her existence was almost entirely bound to the First One. Her cults vanished almost completely after his death, and it is hard to say much about her on her own. She was one of the first deities to emerge after the First One, and she was essentially his life partner, giving birth to a few other divine beings before disappearing. Some First One cults believed she died alongside him, others say she tried to protect him but failed.}
+
+{color=aqua|Senerus: — Beyond that, she was connected to animals. Her image was often associated with doves and foxes. The beastkin race has been tied to her, at least in part.}""", # MISSING TRANSLATION
+	ACT4_SENERUS_GODS_4 = """{color=aqua|Senerus: — Our collective mother, of course. I mean the elves, obviously. She is somewhat more... feral than I would personally appreciate, but she is deeply in tune with her people, the forests, and all life within them. Naturally, she was among the first gods, and her strength and pride reflect that.}""", # MISSING TRANSLATION
+	ACT4_SENERUS_GODS_5 = """{color=aqua|Senerus: — That is not going to happen tomorrow. Nor do we have any real idea whether it can be prevented, or whether it is even possible for mortals to do so. Don't worry yourself over it, it will take centuries or even millennia before any noticeable decline occurs.}""", # MISSING TRANSLATION
+	ACT4_SENERUS_GODS_6 = """{color=aqua|Senerus: — Ask what you still need, or we can return to the artifacts.}""", # MISSING TRANSLATION
+	ACT4_SENERUS_GODS_OPTION_EREBUS = """There's shrines made of stone that I come across sometimes.""", # MISSING TRANSLATION
+	ACT4_SENERUS_GODS_OPTION_CELENA = """Aliron kingdom seems to have a prominent Celena temple.""", # MISSING TRANSLATION
+	ACT4_SENERUS_GODS_OPTION_ELISIA = """Celena's mother?""", # MISSING TRANSLATION
+	ACT4_SENERUS_GODS_OPTION_FREYA = """What can you tell me about Freya?""", # MISSING TRANSLATION
+	ACT4_SENERUS_GODS_OPTION_MAGIC = """Wait, are you saying all magic will eventually degrade? Why isn't anyone doing anything about it?""", # MISSING TRANSLATION
+	ACT4_SENERUS_GODS_OPTION_RETURN = """Fine, let's get back to the artifacts...""", # MISSING TRANSLATION
+	ACT4_SENERUS_CHAMPIONS_0 = """{color=aqua|Senerus: — There is not much to say, they are simply vessels capable of channeling divine magic and a little extra from their patrons. This comes at the cost of having to follow their deity's will. Given what you've told me I assume you've encountered at least a couple.}""", # MISSING TRANSLATION
+	ACT4_SENERUS_CHAMPIONS_1 = """{color=aqua|Senerus: — The so-called god of winds. Actually a fairly recent one, appearing only a few centuries ago. He keeps no high profile, has sparse followers, and stays out of the way. If I had to guess, his powers were either always limited or he obtained them from another divine being and only in a small amount.}""", # MISSING TRANSLATION
+	ACT4_SENERUS_CHAMPIONS_2 = """{color=aqua|Senerus: — Nixx is a frightening one, and among the oldest as well. She governs darkness and the depths. What began as a calm, protective deity has shifted over time toward something far more sinister. Her powers match her domain and her age. Of all the divine forces, I would not want to make an enemy of her.}""", # MISSING TRANSLATION
+	ACT4_SENERUS_CHAMPIONS_3 = """{color=aqua|Senerus: — Ah, that is an interesting one. It is not entirely clear, but I tend to believe he was one of the original invading demons who managed to accumulate enough divine energy to become a deity himself.}""", # MISSING TRANSLATION
+	ACT4_SENERUS_CHAMPIONS_4 = """{color=aqua|Senerus: — Ask what you still need, or we can return to the artifacts.}""", # MISSING TRANSLATION
+	ACT4_SENERUS_CHAMPIONS_OPTION_ALIOS = """Alios""", # MISSING TRANSLATION
+	ACT4_SENERUS_CHAMPIONS_OPTION_NIXX = """Nixx""", # MISSING TRANSLATION
+	ACT4_SENERUS_CHAMPIONS_OPTION_ASHMEDAI = """Ashmedai""", # MISSING TRANSLATION
+	ACT4_SENERUS_CHAMPIONS_OPTION_RETURN = """Let's get back to the artifacts.""", # MISSING TRANSLATION
+	ACT4_SENERUS_ARTIFACT_LEAD = """{color=aqua|Senerus: — The empire does not publicize its magical holdings, but we are not talking about an ordinary artifact, and by now it would be common knowledge if they possessed something like this. I believe it resides somewhere within the walls of this city, likely drawn here by such a concentration of wealth and population. There are vast catacombs beneath the city, and I would suggest starting your search there. I can point you to one of the entrances that is still accessible. In the meantime I will look into what you might specifically be searching for.}
+
+Senerus gives you directions to the catacombs before returning to his work.
+
+You make your way out of Senerus's house. Before you can look around, Erdyna jumps out in front of you, impatiently questioning what you've learned.
+
+{color=yellow|Erdyna: — Huuuh? Catacombs, you say. The city passages have been sealed a long time ago, but I know how we can get in there. I know a tunnel entrance at the countryside. Meet me there.}
+
+After giving you the directions for the catacomb entrance Erdyna leaves you alone for today.""", # MISSING TRANSLATION
+	ACT4_CATACOMB_ENTRY_1 = """A couple hundred feet outside of city walls you meet with the lizard girl as agreed. After exchanging your greeting she starts leading you to the hidden underground entrance.
+
+{color=yellow|Erdyna: — I haven't been here for a while, but it should be close...}""", # MISSING TRANSLATION
+	ACT4_CATACOMB_ENTRY_2 = """However as you make it through one of the storehouses and its undergrounds you stop as another group of shady figures appears ahead of you.
+
+{color=aqua|Man: — No way, what the hell are you doing here?}
+
+{color=yellow|Erdyna: — Red Rooks? Didn't expect to find you here. That would be our annoying competitors.}
+
+From her tone you realize it's another city gang.""", # MISSING TRANSLATION
+	ACT4_CATACOMB_ENTRY_2B = """{color=aqua|Group Leader: — Huh, isn't that the scaled bitch herself? Your minions roughed us up pretty badly last time.}
+
+{color=yellow|Erdyna: — Hah, tell me about it. Or better don't. I have important business, so why don't you just let us pass.}
+
+{color=aqua|Group Leader: — I don't think so. Why don't we actually pay you back for that? It's not every day when you are walking by yourself with some foreign goof. Even with your strength you hardly will win against us all.}""", # MISSING TRANSLATION
+	ACT4_CATACOMB_ENTRY_2_OPTION_PHYSICS = """[Physics factor check] You really think you stand a chance against two of us?""", # MISSING TRANSLATION
+	ACT4_CATACOMB_ENTRY_2_OPTION_DIPLOMACY = """We're not here to waste time fighting over gang grudges.""", # MISSING TRANSLATION
+	ACT4_CATACOMB_ENTRY_2_OPTION_ATTACK = """*Prepare to attack*""", # MISSING TRANSLATION
+	ACT4_CATACOMB_ENTRY_3_1_STRONG = """The Red Rooks leader looks over you, measuring your appearance. His smile slowly fades as he starts doubting himself.
+
+{color=aqua|Group Leader: — Damn you... Fine, have it your way. We won't forget this, Erdyna.}
+
+You move out of the way, letting the group leave without a fight.
+
+{color=yellow|Erdyna: — Hah, run away with the tail behind your legs, that suits you best.}""", # MISSING TRANSLATION
+	ACT4_CATACOMB_INTIMIDATED_1 = """The last of the gang disappears back into the passage, cursing under their breath as their footsteps fade into the dark. The corridor grows quiet again, save for the distant drip of water somewhere deeper below.
+
+Erdyna watches them go with open contempt, then relaxes her stance.
+
+{color=yellow|Erdyna: — Pathetic. If that was enough to make them fold, they had no business blocking this place to begin with.}""", # MISSING TRANSLATION
+	ACT4_CATACOMB_ENTRY_3_1_WEAK = """Your threat only draws laughter from the gang.
+
+{color=aqua|Group Leader: — Two of you? That's cute. I still count more blades on our side.}
+
+Erdyna clicks her tongue, already shifting her stance.
+
+{color=yellow|Erdyna: — Yeah, that wasn't convincing enough. Guess we'll do this the fun way.}""", # MISSING TRANSLATION
+	ACT4_CATACOMB_ENTRY_3_2 = """The gang leader gives you an unimpressed look, but Erdyna suddenly cuts in before he can answer, grinning with open mockery.
+
+{color=yellow|Erdyna: — Hear that? He's politely telling you to crawl back into whatever gutter you came from. I'd take the advice while you still can.}
+
+The provocation lands exactly as intended. Several of the thugs bristle at once, hands tightening around their weapons.
+
+{color=aqua|Group Leader: — Big mouth as always. Let's teach you some manners.}
+
+{color=yellow|Erdyna: — Tch, no point talking to these thugs, but I was itching for a fight.}""", # MISSING TRANSLATION
+	ACT4_CATACOMB_ENTRY_3_3 = """You wordlessly ready yourself. The meaning is clear enough even before Erdyna lets out a low, eager chuckle beside you.
+
+{color=yellow|Erdyna: — Knew this would come to it.}
+
+The opposing gang spreads through the passage, clearly preparing to overwhelm you by numbers alone.""", # MISSING TRANSLATION
+	ACT4_CATACOMB_AFTER_FIGHT = """The last of the enemy finally falls still with a handful running away. Erdyna smirks at you, lowering her weapon.
+
+{color=yellow|Erdyna: — Don't think they gonna come back any time soon, so let's move on.}""", # MISSING TRANSLATION
+	ACT4_CATACOMB_DEEPER_1 = """The corridor beyond grows older with every step. The rough stone and improvised supports of the catacombs gradually give way to something far more ancient, its walls carved with the kind of precision no ordinary burial tunnels would ever need.
+
+At the very end of the passage you and Erdyna finally come to a halt.
+
+Set into the rock before you stands a pair of gigantic doors. They are old beyond reason, fashioned from a dark metal gone dull with age and framed by pale stone carved into shapes you can't immediately make sense of. Long lines of writing run across their surface in a language neither of you recognizes.
+
+Erdyna steps closer, narrowing her eyes as she studies the symbols.
+
+{color=yellow|Erdyna: — That's no script I've ever seen before. It doesn't look imperial, not dwarven either.}""", # MISSING TRANSLATION
+	ACT4_CATACOMB_DEEPER_1_OPTION_EXAMINE = """Examine the writing.""", # MISSING TRANSLATION
+	ACT4_CATACOMB_DOORS_HELEVIEL_0 = """The letters are sharp and elegant at the same time, each line cut with unnatural precision. Even without understanding them, there is something deliberate and severe in their form, as though the inscription was never meant to welcome anyone inside.
+
+Before you can say anything, Heleviel moves past you and stops in front of the doors. For the first time since entering the depths, her usual composure gives way to open surprise.
+
+{color=yellow|Heleviel: — Wait.}
+
+She raises a hand toward the inscription without quite touching it, her expression tightening as she follows the lines from one edge of the gate to the other.
+
+{color=yellow|Heleviel: — This is ancient elven script... but not a form most scholars would ever read. It belongs to a tradition associated with the dragon hunters.}
+
+Erdyna turns to her sharply.
+
+{color=aqua|Erdyna: — Dragon hunters?}
+
+Heleviel gives a slow nod, still staring at the doors.
+
+{color=yellow|Heleviel: — An elite clan from the older elven traditions. Secretive even by our standards, proud, and deeply concerned with preserving their own legacy. They still maintain their seat at our lands.}""", # MISSING TRANSLATION
+	ACT4_CATACOMB_DOORS_HELEVIEL_1 = """{color=yellow|Heleviel: — Connected, almost certainly. Whether they built this place, sealed it, or merely claimed it later, I cannot say. But this script was not placed here by accident.}""", # MISSING TRANSLATION
+	ACT4_CATACOMB_DOORS_HELEVIEL_2 = """Heleviel's gaze lingers on the inscription a moment longer before she exhales quietly.
+
+{color=yellow|Heleviel: — Not fully. I recognize the tradition, not every archaic variation of its script. Enough to know this was done deliberately.}""", # MISSING TRANSLATION
+	ACT4_CATACOMB_DOORS_HELEVIEL_3 = """Erdyna folds her arms, dissatisfied but no longer doubtful.
+
+{color=aqua|Erdyna: — Then that's our next lead.}
+
+You take one last look at the enormous sealed doors. Whatever lies beyond them has waited here for a very long time already. It will have to wait a little longer.""", # MISSING TRANSLATION
+	ACT4_CATACOMB_DOORS_HELEVIEL_OPTION_CONNECTED = """So this place is connected to them?""", # MISSING TRANSLATION
+	ACT4_CATACOMB_DOORS_HELEVIEL_OPTION_READ = """Can you read what it says?""", # MISSING TRANSLATION
+	ACT4_CATACOMB_DOORS_HELEVIEL_OPTION_VISIT = """Well, this won't budge. I guess our best chance is to visit them.""", # MISSING TRANSLATION
+	ACT4_CATACOMB_DOORS_MYR = """You stare at the inscription for a while longer, but it gets you nowhere. The language is unlike anything you've seen before, old and refined in a way that makes guessing feel pointless.
+
+{color=yellow|Erdyna: — Don't look at me like that, I have no clue what's going on here.}
+
+Not wanting to leave empty-handed, you take out a sheet and carefully copy the shapes of the letters as best as you can.
+
+Perhaps someone like the mage guild leader should know about it. Or at least know where to point us.""", # MISSING TRANSLATION
+	ACT4_MYR_CATACOMB_WRITING_0 = """You tell Myr about your finding, observing her reaction.
+
+{color=yellow|Myr: — Hmph. You really do have a talent for digging up troublesome things.}
+
+You present the copied symbols and describe the doors as best as you can. Myr takes the page from you and studies it in silence, her eyes moving quickly at first before slowing with growing concentration.
+
+{color=yellow|Myr: — Huh. This isn't merely old elven. It's a very particular ancient form of it. You should thank me for living this long to know, honestly.}""", # MISSING TRANSLATION
+	ACT4_MYR_CATACOMB_WRITING_1 = """Myr shakes her head almost at once.
+
+{color=yellow|Myr: — No. Recognizing it and actually reading it are rather different matters, as you may imagine.}""", # MISSING TRANSLATION
+	ACT4_MYR_CATACOMB_WRITING_2 = """Myr taps one of the symbols lightly with her finger.
+
+{color=yellow|Myr: — To a very old elven tradition. Elves used to have lots of secretive organizations back in the day. Secretive, prestigious, and very fond of preserving knowledge in ways inconvenient to everyone else. So you better ask someone at their lands, that's your best bet anyway.}""", # MISSING TRANSLATION
+	ACT4_MYR_CATACOMB_FOLLOWUP_0 = """Erdyna meets you as you walk out of Myr's office with the new target.
+
+{color=aqua|Erdyna: — Eh, elves? Never been there, I wonder what they have to say.}""", # MISSING TRANSLATION
+	ACT4_MYR_CATACOMB_WRITING_OPTION_READ = """So you can read it?""", # MISSING TRANSLATION
+	ACT4_MYR_CATACOMB_WRITING_OPTION_BELONG = """What does it belong to?""", # MISSING TRANSLATION
+	ACT4_MYR_CATACOMB_WRITING_OPTION_CURIOUS = """Are you just that curious about it to keep following me?""", # MISSING TRANSLATION
+	ACT4_MYR_CATACOMB_WRITING_OPTION_VISIT = """I'm well known at the elven lands. Let's go visit them.""", # MISSING TRANSLATION
+	ACT4_MYR_CATACOMB_REPLY_1 = """{color=aqua|Erdyna: — Hell, yeah, what do you think? Those doors must have something rich behind them, don't they? I'm sure you gonna be generous enough to spare it with me as we finish, haha.}""", # MISSING TRANSLATION
+	ACT4_MYR_CATACOMB_REPLY_2 = """{color=aqua|Erdyna: — Not surprised, you are a big shot, aren't ya? Well, I'll be right behind you.}""", # MISSING TRANSLATION
 }
+
 

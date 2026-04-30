@@ -196,7 +196,11 @@ func prep_aire_start():
 	globals.common_effects([{code = 'make_story_character', value = 'Aire'}])
 
 func prep_kuro_start():
-	globals.common_effects([{code = 'make_story_character', value = 'Kuro'}])
+	globals.common_effects([{code = 'make_story_character', value = 'Kuro'},
+		{code = 'unique_character_changes', value = 'kuro', args = [
+			{code = 'add_trait', trait = 'training_s_combat'},
+			{code = 'add_trait', trait = 'training_s_working'},
+		]},])
 
 func prep_ana_start():
 	globals.common_effects([{code = 'make_story_character', value = 'Anastasia'}])
@@ -229,7 +233,16 @@ func prep_lilith_start():
 	globals.common_effects([{code = 'make_story_character', value = 'Lilith'}])
 
 func prep_rouge_start():
-	globals.common_effects([{code = 'make_story_character', value = 'Rouge'}])
+	globals.common_effects([
+		{code = 'make_story_character', value = 'Rouge'},
+		{code = 'unique_character_changes', value = 'rouge', args = [
+			{code = 'add_trait', trait = 'training_s_combat'},
+			{code = 'add_trait', trait = 'training_s_working'},
+			{code = 'add_trait', trait = 'training_s_relation'},
+			{code = 'add_trait', trait = 'training_s_sexservice'},
+			{code = 'add_trait', trait = 'training_s_sexservice_adv'},
+		]},
+	])
 
 func prep_exp_scrolls():
 	globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 10))

@@ -14,6 +14,14 @@ var bodypath = input_handler.globalsettings.body_folder
 
 func _ready():
 	get_parent().get_node("ScrollContainer/_v_scroll").connect("value_changed", self, "_on_scroll")
+	IconBlock.get_node("search").placeholder_text = tr("CHARINFO_SEARCH_PLACEHOLDER")
+	IconBlock.get_node("assignboth").hint_tooltip = tr("CHARINFO_ASSIGN_BOTH_TOOLTIP")
+	get_node("FileDialog").window_title = tr("CHARINFO_OPEN_FILE_TITLE")
+	get_node("FileDialog").dialog_text = tr("CHARINFO_SELECT_NEW_IMAGE_DIALOG")
+	get_node("selectfolders/RichTextLabel").bbcode_text = tr("CHARINFO_SELECTED_FOLDER_HELP")
+	get_node("folderdialogue").window_title = tr("CHARINFO_OPEN_DIRECTORY_TITLE")
+	get_node("folderdialogue").dialog_text = tr("CHARINFO_SELECT_DEFAULT_FOLDER_DIALOG")
+	get_parent().get_node("noimagestext").bbcode_text = tr("CHARINFO_NO_IMAGES_HELP")
 
 func mode_set(value):
 	if mode != value:

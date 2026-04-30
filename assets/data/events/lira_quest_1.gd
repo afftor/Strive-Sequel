@@ -10,13 +10,18 @@ var data = {
 		],
 	},
 	lira_quest_1_talk_to_lira = {
-		image = null, character = 'lira',
-		tags = ['dialogue_scene', 'master_translate'],
-		reqs = [],
-		text = [{text = "LIRA_QUEST_1_TALK_TO_LIRA", reqs = []}],
-		options = [
-			{code = 'lira_quest_1_room_entry', text = "LIRA_QUEST_1_OPTION_KNOCK_ON_THE_DOOR", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
-			{code = 'lira_quest_1_room_entry', text = "LIRA_QUEST_1_OPTION_WALK_INTO_HER_ROOM", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+		variations = [
+			{
+				reqs = [{type = 'active_quest_stage', value = 'lira_quest_1', stage = 'start'}],
+				image = null, character = 'lira',
+				music = 'lira_theme',
+				tags = ['dialogue_scene', 'master_translate'],
+				text = [{text = "LIRA_QUEST_1_TALK_TO_LIRA", reqs = []}],
+				options = [
+					{code = 'lira_quest_1_room_entry', text = "LIRA_QUEST_1_OPTION_KNOCK_ON_THE_DOOR", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+					{code = 'lira_quest_1_room_entry', text = "LIRA_QUEST_1_OPTION_WALK_INTO_HER_ROOM", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+				],
+			},
 		],
 	},
 	lira_quest_1_room_entry = {
@@ -30,8 +35,8 @@ var data = {
 			{text = "LIRA_QUEST_1_SERVANTS", reqs = [], previous_dialogue_option = 4},
 		],
 		options = [
-			{code = 'lira_quest_1_room_entry', text = "LIRA_QUEST_1_OPTION_ARE_YOU_BUSY", reqs = [], dialogue_argument = 3, previous_dialogue_option = [1, 2, 3, 4], type = 'next_dialogue'},
-			{code = 'lira_quest_1_room_entry', text = "LIRA_QUEST_1_OPTION_HOW_DO_SERVANTS_TREAT_YOU", reqs = [], dialogue_argument = 4, previous_dialogue_option = [1, 2, 3, 4], type = 'next_dialogue'},
+			{code = 'lira_quest_1_room_entry', text = "LIRA_QUEST_1_OPTION_ARE_YOU_BUSY", reqs = [], dialogue_argument = 3, previous_dialogue_option = [1, 2, 3, 4]},
+			{code = 'lira_quest_1_room_entry', text = "LIRA_QUEST_1_OPTION_HOW_DO_SERVANTS_TREAT_YOU", reqs = [], dialogue_argument = 4, previous_dialogue_option = [1, 2, 3, 4]},
 			{code = 'lira_quest_1_watch_reason', text = "LIRA_QUEST_1_OPTION_YOU_SEEM_TO_WATCH_ME", reqs = [], dialogue_argument = 3, previous_dialogue_option = [1, 2, 3, 4], type = 'next_dialogue'},
 		],
 	},
@@ -80,8 +85,10 @@ var data = {
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_FAVOR_REQUEST", reqs = []}],
 		options = [
-			{code = 'lira_quest_1_favor_accept', text = "LIRA_QUEST_1_OPTION_FINE_LETS_GO", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
-			{code = 'lira_quest_1_favor_accept', text = "LIRA_QUEST_1_OPTION_ALRIGHT_LETS_MOVE", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+			{code = 'lira_quest_1_favor_accept', text = "LIRA_QUEST_1_OPTION_FINE_LETS_GO", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+				bonus_effects = [{code = 'dialogue_counter', name = 'df_balance', op = '+'}]},
+			{code = 'lira_quest_1_favor_accept', text = "LIRA_QUEST_1_OPTION_ALRIGHT_LETS_MOVE", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
+				bonus_effects = [{code = 'dialogue_counter', name = 'df_balance', op = '-'}]},
 		],
 	},
 	lira_quest_1_favor_accept = {
@@ -103,31 +110,37 @@ var data = {
 		],
 	},
 	lira_quest_1_patrol_confrontation = {
-		image = null, character = 'lira',
+		image = "lira_forest_patrol",
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_PATROL_CONFRONTATION", reqs = []}],
 		options = [
-			{code = 'lira_quest_1_patrol_dependency', text = "LIRA_QUEST_1_OPTION_SHE_IS_NOT_A_PRIESTESS", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
-			{code = 'lira_quest_1_patrol_freedom', text = "LIRA_QUEST_1_OPTION_EXILED_MEANS", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+			{code = 'lira_quest_1_patrol_result', text = "LIRA_QUEST_1_OPTION_SHE_IS_NOT_A_PRIESTESS", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+				bonus_effects = [{code = 'dialogue_counter', name = 'df_balance', op = '+'}]},
+			{code = 'lira_quest_1_patrol_result', text = "LIRA_QUEST_1_OPTION_EXILED_MEANS", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
+				bonus_effects = [{code = 'dialogue_counter', name = 'df_balance', op = '-'}]},
 		],
 	},
-	lira_quest_1_patrol_dependency = {
-		image = null, character = 'lira',
-		tags = ['dialogue_scene', 'master_translate'],
-		reqs = [],
-		text = [{text = "LIRA_QUEST_1_PATROL_DEPENDENCY", reqs = []}],
-		options = [
-			{code = 'lira_quest_1_grove_arrival', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
-		],
-	},
-	lira_quest_1_patrol_freedom = {
-		image = null, character = 'lira',
-		tags = ['dialogue_scene', 'master_translate'],
-		reqs = [],
-		text = [{text = "LIRA_QUEST_1_PATROL_FREEDOM", reqs = []}],
-		options = [
-			{code = 'lira_quest_1_grove_arrival', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+	lira_quest_1_patrol_result = {
+		variations = [
+			{
+				reqs = [{type = 'local_counter', name = 'df_balance', operant = 'gte', value = 0, check = true}],
+				image = "lira_forest_patrol",
+				tags = ['dialogue_scene', 'master_translate'],
+				text = [{text = "LIRA_QUEST_1_PATROL_DEPENDENCY", reqs = []}],
+				options = [
+					{code = 'lira_quest_1_grove_arrival', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+				],
+			},
+			{
+				reqs = [{type = 'local_counter', name = 'df_balance', operant = 'lt', value = 0, check = true}],
+				image = "lira_forest_patrol",
+				tags = ['dialogue_scene', 'master_translate'],
+				text = [{text = "LIRA_QUEST_1_PATROL_FREEDOM", reqs = []}],
+				options = [
+					{code = 'lira_quest_1_grove_arrival', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+				],
+			},
 		],
 	},
 	lira_quest_1_grove_arrival = {
@@ -140,6 +153,7 @@ var data = {
 		],
 	},
 	lira_quest_1_centipede_warning = {
+		music = "threat",
 		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
@@ -154,8 +168,10 @@ var data = {
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_FIGHT_PLAN", reqs = []}],
 		options = [
-			{code = 'lira_quest_1_fight_ready', text = "LIRA_QUEST_1_OPTION_STAY_BACK_AND_HELP", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
-			{code = 'lira_quest_1_fight_ready', text = "LIRA_QUEST_1_OPTION_WE_FIGHT_TOGETHER", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+			{code = 'lira_quest_1_fight_ready', text = "LIRA_QUEST_1_OPTION_STAY_BACK_AND_HELP", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+				bonus_effects = [{code = 'dialogue_counter', name = 'df_balance', op = '+'}]},
+			{code = 'lira_quest_1_fight_ready', text = "LIRA_QUEST_1_OPTION_WE_FIGHT_TOGETHER", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
+				bonus_effects = [{code = 'dialogue_counter', name = 'df_balance', op = '-'}]},
 		],
 	},
 	lira_quest_1_fight_ready = {
@@ -167,8 +183,8 @@ var data = {
 			{text = "LIRA_QUEST_1_FIGHT_READY", reqs = [], previous_dialogue_option = 2},
 		],
 		options = [
-			{code = 'quest_fight', text = "DIALOGUEFIGHTOPTION", reqs = [], args = 'lira_grove_centipedes_dep', dialogue_argument = 1, previous_dialogue_option = 1, type = 'next_dialogue'},
-			{code = 'quest_fight', text = "DIALOGUEFIGHTOPTION", reqs = [], args = 'lira_grove_centipedes_free', dialogue_argument = 1, previous_dialogue_option = 2, type = 'next_dialogue'},
+			{code = 'quest_fight', text = "DIALOGUEFIGHTOPTION", reqs = [{type = 'local_counter', name = 'df_balance', operant = 'gte', value = 0, check = true}], args = 'lira_grove_centipedes_dep', dialogue_argument = 1, type = 'next_dialogue'},
+			{code = 'quest_fight', text = "DIALOGUEFIGHTOPTION", reqs = [{type = 'local_counter', name = 'df_balance', operant = 'lt', value = 0, check = true}], args = 'lira_grove_centipedes_free', dialogue_argument = 1, type = 'next_dialogue'},
 		],
 	},
 	lira_quest_1_dependency_fight_aftermath = {
@@ -220,9 +236,9 @@ var data = {
 			{text = "LIRA_QUEST_1_FEEL_BETTER", reqs = [], previous_dialogue_option = 4},
 		],
 		options = [
-			{code = 'lira_quest_1_diary_part_1', text = "LIRA_QUEST_1_OPTION_WHAT_DID_YOU_WRITE", reqs = [], dialogue_argument = 1, previous_dialogue_option = [1, 2, 3, 4], type = 'next_dialogue'},
-			{code = 'lira_quest_1_belongings_root', text = "LIRA_QUEST_1_OPTION_WHY_DID_YOU_HIDE_THESE", reqs = [], dialogue_argument = 3, previous_dialogue_option = [1, 2, 3, 4], type = 'next_dialogue'},
-			{code = 'lira_quest_1_belongings_root', text = "LIRA_QUEST_1_OPTION_DO_YOU_FEEL_BETTER", reqs = [], dialogue_argument = 4, previous_dialogue_option = [1, 2, 3, 4], type = 'next_dialogue'},
+			{code = 'lira_quest_1_diary_part_1', text = "LIRA_QUEST_1_OPTION_WHAT_DID_YOU_WRITE", reqs = [], dialogue_argument = 1, previous_dialogue_option = [1, 2, 3, 4]},
+			{code = 'lira_quest_1_belongings_root', text = "LIRA_QUEST_1_OPTION_WHY_DID_YOU_HIDE_THESE", reqs = [], dialogue_argument = 3, previous_dialogue_option = [1, 2, 3, 4]},
+			{code = 'lira_quest_1_belongings_root', text = "LIRA_QUEST_1_OPTION_DO_YOU_FEEL_BETTER", reqs = [], dialogue_argument = 4, previous_dialogue_option = [1, 2, 3, 4]},
 			{code = 'lira_quest_1_head_back', text = "LIRA_QUEST_1_OPTION_TIME_TO_HEAD_BACK", reqs = [], dialogue_argument = 4, previous_dialogue_option = [1, 2, 3, 4], type = 'next_dialogue'},
 		],
 	},
@@ -241,7 +257,7 @@ var data = {
 		reqs = [],
 		text = [{text = "LIRA_QUEST_1_HEAD_BACK", reqs = []}],
 		options = [
-			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'complete_quest', value = 'lira_quest_1'}]},
+			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'complete_quest', value = 'lira_quest_1'}, {code = 'progress_quest', value = 'lira_quest_2', stage = 'start'}]},
 		],
 	},
 }

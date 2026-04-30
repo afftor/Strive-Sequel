@@ -13,6 +13,9 @@ var data = {
 		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
+		common_effects = [
+			{code = 'progress_quest', value = 'lira_quest_2', stage = 'fair'},
+		],
 		text = [{text = "LIRA_QUEST2_FIND_LIRA_FRONT_GARDEN_TENDS", reqs = []}],
 		options = [
 			{code = 'lira_quest2_lira_know_special_occasion_today', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
@@ -170,7 +173,7 @@ var data = {
 				],
 			},
 			{
-				reqs = [],
+				reqs = [{type = 'local_counter', name = 'df_balance', operant = 'lt', value = 0, check = true}],
 				tags = ['dialogue_scene', 'master_translate'], character = 'lira',
 				text = [{text = "LIRA_QUEST2_ACC_FREE_APPROACH", reqs = []}],
 				options = [
@@ -631,7 +634,7 @@ var data = {
 				],
 			},
 			{
-				reqs = [],
+				reqs = [{type = 'local_counter', name = 'df_balance', operant = 'gte', value = 0, check = true}],
 				tags = ['dialogue_scene', 'master_translate'], character = 'lira',
 				text = [{text = "LIRA_QUEST2_BRAWLER_DEP_ENTRY", reqs = []}],
 				options = [
@@ -906,7 +909,7 @@ var data = {
 		text = [{text = "LIRA_QUEST2_LIRA_THOUGHT_HAPPY_LIVING_TEMPLE", reqs = []}],
 		options = [
 			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
-				bonus_effects = [{code = 'complete_quest', value = 'lira_quest_2'}, {code = 'add_timed_event', value = "lira_quest_3_intro", args = [{type = 'add_to_date', date = [3,3], hour = 1}]}]},
+				bonus_effects = [{code = 'complete_quest', value = 'lira_quest_2'}, {code = 'progress_quest', value = 'lira_quest_3', stage = 'start'}, {code = 'add_timed_event', value = "lira_quest_3_intro", args = [{type = 'add_to_date', date = [3,3], hour = 1}]}]},
 		],
 	},
 }

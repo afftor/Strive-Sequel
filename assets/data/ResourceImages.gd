@@ -582,6 +582,11 @@ var scenes = {
 	lilia_farewell= "res://assets/images/scenes/lilia_farewell.png",
 	lilia_unicorn = "res://assets/images/scenes/lilia_unicorn.png",
 	lilith_angry = "res://assets/images/scenes/lilith_angry.png",
+	lira_elven_orphanage = "res://assets/images/scenes/lira_elven_orphanage.png",
+	lira_forest_patrol = "res://assets/images/scenes/lira_forest patrol.png",
+	lira_gnome_medallion = "res://assets/images/scenes/lira_gnome medallion.png",
+	lira_shooting = "res://assets/images/scenes/lira_shooting.png",
+	lira_shopping = "res://assets/images/scenes/lira_shopping.png",
 	
 	dungeon_forest_block = "res://assets/images/scenes/dungeon_forest_block.png",
 	

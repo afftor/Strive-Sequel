@@ -77,7 +77,7 @@ margin_right = 516.002
 margin_bottom = 62.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "Trainees:"
+text = "TRAININGTRAINEES"
 clip_text = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="trainees"]
@@ -147,7 +147,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "Assign trainer"
+text = "TRAINING_ASSIGN_TRAINER_BUTTON"
 align = 1
 valign = 1
 clip_text = true
@@ -199,7 +199,7 @@ margin_right = 193.0
 margin_bottom = 39.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "Reset training"
+text = "TRAINING_RESET_BUTTON"
 valign = 1
 clip_text = true
 
@@ -293,7 +293,7 @@ margin_right = 573.414
 margin_bottom = 40.2111
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "Reset training"
+text = "TRAINING_RESET_BUTTON"
 valign = 1
 clip_text = true
 
@@ -317,7 +317,7 @@ margin_top = 48.0
 margin_right = 474.0
 margin_bottom = 83.0
 custom_fonts/font = ExtResource( 2 )
-text = "character loyalty: 100"
+text = "TRAINREADY"
 valign = 1
 
 [node name="cost" type="Label" parent="training"]
@@ -331,7 +331,7 @@ margin_right = 300.0
 margin_bottom = -85.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "Reset training"
+text = "TRAINING_RESET_BUTTON"
 valign = 1
 clip_text = true
 
@@ -355,7 +355,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "Finish training"
+text = "TRAINING_FINISH_BUTTON"
 align = 1
 valign = 1
 clip_text = true
@@ -471,7 +471,7 @@ margin_right = 296.0
 margin_bottom = 299.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "Reset training"
+text = "TRAINING_RESET_BUTTON"
 valign = 1
 clip_text = true
 
@@ -657,7 +657,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "Reset training"
+text = "TRAINING_RESET_BUTTON"
 align = 1
 valign = 1
 clip_text = true
@@ -754,5 +754,5 @@ margin_right = 385.0
 margin_bottom = -23.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "Trainees:"
+text = "TRAININGTRAINEES"
 clip_text = true

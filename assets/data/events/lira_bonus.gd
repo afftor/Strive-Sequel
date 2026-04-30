@@ -1,5 +1,15 @@
 extends Reference
 var data = {
+	lira_dialogue_start = {
+		image = null, character = 'lira',
+		music = "lira_theme",
+		tags = ['dialogue_scene', 'master_translate'],
+		reqs = [],
+		text = [{text = "LIRA_DIALOGUE_START", reqs = []}],
+		options = [
+			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1},
+		],
+	},
 	lira_lost_start = {
 		variations = [
 			{

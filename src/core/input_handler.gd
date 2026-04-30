@@ -376,6 +376,8 @@ func _init():
 
 	#Applying active translation
 	var activetranslation = Translation.new()
+	if globalsettings.ActiveLocalization == 'cn':
+		globalsettings.ActiveLocalization = 'zh'
 	if TranslationData.has(globalsettings.ActiveLocalization) == false:
 		globalsettings.ActiveLocalization = 'en'
 	var translationscript = load(TranslationData[globalsettings.ActiveLocalization].data).new()
@@ -1731,6 +1733,8 @@ func font_size_calculator(label): #, text, font):
 	var new_font = DynamicFont.new()
 	new_font.use_filter = true
 	new_font.font_data = load(font.get_font_data().get_font_path())
+	for i in range(font.get_fallback_count()):
+		new_font.add_fallback(font.get_fallback(i))
 	new_font.size = font.get_size()
 	var text_width = new_font.get_string_size(label.get_text()).x
 	var label_text_width = label.get_size().x - PADDINGS

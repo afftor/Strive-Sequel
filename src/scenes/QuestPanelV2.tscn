@@ -39,6 +39,7 @@ custom_fonts/italics_font = ExtResource( 10 )
 custom_fonts/bold_font = ExtResource( 10 )
 custom_fonts/normal_font = ExtResource( 10 )
 bbcode_enabled = true
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -46,7 +47,7 @@ __meta__ = {
 [node name="QuestDescript" type="RichTextLabel" parent="RightPanel"]
 margin_top = 53.0
 margin_right = 367.0
-margin_bottom = 439.0
+margin_bottom = 445.0
 size_flags_vertical = 3
 theme = ExtResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
@@ -57,9 +58,9 @@ __meta__ = {
 }
 
 [node name="DiffLabel" type="Label" parent="RightPanel"]
-margin_top = 443.0
+margin_top = 449.0
 margin_right = 367.0
-margin_bottom = 478.0
+margin_bottom = 482.0
 theme = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Difficulty"
@@ -69,9 +70,9 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="RightPanel"]
-margin_top = 482.0
+margin_top = 486.0
 margin_right = 367.0
-margin_bottom = 517.0
+margin_bottom = 519.0
 theme = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Requirements"
@@ -81,9 +82,9 @@ __meta__ = {
 }
 
 [node name="reqs" type="HBoxContainer" parent="RightPanel"]
-margin_top = 521.0
+margin_top = 523.0
 margin_right = 367.0
-margin_bottom = 521.0
+margin_bottom = 523.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -123,7 +124,7 @@ text = "1"
 align = 2
 
 [node name="Label2" type="Label" parent="RightPanel"]
-margin_top = 525.0
+margin_top = 527.0
 margin_right = 367.0
 margin_bottom = 560.0
 theme = ExtResource( 4 )

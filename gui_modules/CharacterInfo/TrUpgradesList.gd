@@ -121,7 +121,7 @@ func build_trainer_list():
 		var panel = input_handler.DuplicateContainerTemplate($trainer_list/Container2/Container, 'Button')
 		panel.get_node('icon').texture = tchar.get_icon()
 		globals.connectslavetooltip(panel.get_node('icon'), tchar)
-		panel.get_node('name').text = tchar.get_full_name() + " - Slaves Assigned: %d/%d" % [used, amount]
+		panel.get_node('name').text = tr("TRAINING_SLAVES_ASSIGNED") % [tchar.get_full_name(), used, amount]
 		panel.connect('pressed', self, 'assign_trainer', [id])
 		var text = ""
 		for prof in tchar.get_professions():
@@ -285,7 +285,7 @@ func build_training_servant():
 func build_training_header():
 	var trainer = person.get_trainer()
 	$training/trainer_frame/icon.texture = trainer.get_icon()
-	$training/name.text = "Trainer: " + trainer.get_full_name()
+	$training/name.text = tr("TRAINING_TRAINER_NAME") % trainer.get_full_name()
 #	$training/spirit.text = tr('TRAININGLABELSPIRIT') % person.get_stat('spirit')
 	$training/spirit.value = person.get_stat('spirit')
 	
@@ -425,8 +425,8 @@ func press_trait(value, tr_code):
 	if !person.check_trait(tr_code):
 		selected_id = tr_code
 		var data = Traitdata.traits[tr_code]
-		var text = "Unlock this for {color=green|" + str(person.get_training_cost()) + "} Loyalty?"
-		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'learn_upgrade_confirmed', tr(text)])
+		var text = tr("UPGRADELIST_UNLOCK") % [str(person.get_training_cost()), tr("STATLOYALTY")]
+		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'learn_upgrade_confirmed', text])
 #		person.add_training(tr_code)
 	build_training_traits()
 
@@ -435,8 +435,8 @@ func press_trait_post(value, tr_code):
 	if !person.check_trait(tr_code):
 		selected_id = tr_code
 		var data = Traitdata.traits[tr_code]
-		var text = "Unlock this for {color=green|" + str(data.cost) + "} Spirit?"
-		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'learn_upgrade_post_confirmed', tr(text)])
+		var text = tr("UPGRADELIST_UNLOCK") % [str(data.cost), tr("STATSPIRIT")]
+		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'learn_upgrade_post_confirmed', text])
 #		person.add_training(tr_code)
 	build_posttrain()
 
@@ -445,8 +445,8 @@ func press_trait_servant(value, tr_code):
 	if !person.check_trait(tr_code):
 		selected_id = tr_code
 		var data = Traitdata.traits[tr_code]
-		var text = "Unlock this for {color=green|%s} Loyalty?" % person.get_servant_training_cost()
-		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'learn_upgrade_confirmed', tr(text)])
+		var text = tr("UPGRADELIST_UNLOCK") % [str(person.get_servant_training_cost()), tr("STATLOYALTY")]
+		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'learn_upgrade_confirmed', text])
 #		person.add_training(tr_code)
 	build_training_servant()
 

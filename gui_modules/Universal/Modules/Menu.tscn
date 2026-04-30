@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=2]
+[gd_scene load_steps=90 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=2]
@@ -66,6 +66,8 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/tick_disabled.png" type="Texture" id=64]
 [ext_resource path="res://gui_modules/achievements/bonus_unit.tscn" type="PackedScene" id=65]
 [ext_resource path="res://src/scenes/CloseButton.tscn" type="PackedScene" id=66]
+[ext_resource path="res://assets/Fonts_v2/Noto_Serif/NotoSerif-BoldItalic.ttf" type="DynamicFontData" id=67]
+[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Medium.otf" type="DynamicFontData" id=68]
 
 [sub_resource type="DynamicFont" id=5]
 size = 64
@@ -74,6 +76,7 @@ outline_color = Color( 0.137255, 0.137255, 0.137255, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 29 )
+fallback/0 = ExtResource( 68 )
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -91,6 +94,7 @@ use_mipmaps = true
 use_filter = true
 extra_spacing_bottom = -10
 font_data = ExtResource( 24 )
+fallback/0 = ExtResource( 67 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 24
@@ -1053,9 +1057,6 @@ custom_colors/font_color = Color( 0.941176, 0.92549, 0.741176, 1 )
 custom_colors/font_color_pressed = Color( 0.655824, 0.660156, 0.521523, 1 )
 custom_fonts/font = ExtResource( 26 )
 text = "MENUCHANGELOG"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Changelogpanel" type="Panel" parent="."]
 visible = false

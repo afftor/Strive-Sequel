@@ -409,7 +409,7 @@ margin_top = 21.0
 margin_right = 767.0
 margin_bottom = 46.0
 rect_scale = Vector2( 0.8, 0.8 )
-hint_tooltip = "Image Opacity"
+hint_tooltip = "CHARINFO_IMAGE_OPACITY_TOOLTIP"
 min_value = 10.0
 value = 100.0
 ticks_on_borders = true
@@ -765,7 +765,7 @@ margin_bottom = 3.0
 custom_styles/hover = SubResource( 43 )
 custom_styles/pressed = SubResource( 44 )
 custom_styles/normal = SubResource( 45 )
-text = "Description"
+text = "CHARINFO_DESCRIPTION_LABEL"
 
 [node name="Description" type="Panel" parent="SlaveInfoModule"]
 margin_left = 971.0
@@ -927,7 +927,7 @@ custom_styles/hover = SubResource( 39 )
 custom_styles/pressed = SubResource( 40 )
 custom_styles/normal = SubResource( 41 )
 toggle_mode = true
-text = "Sex Traits"
+text = "SIBLINGMODULESEXTRAITS"
 
 [node name="Label2" type="Label" parent="SlaveInfoModule"]
 margin_left = 403.227
@@ -1141,7 +1141,7 @@ margin_bottom = 33.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 10 )
-text = "Current Personality"
+text = "PERSONALITYCURRENT"
 
 [node name="value" type="Label" parent="SlaveInfoModule/UpgradesPanel/SuccubUpgradesList/info/VBoxContainer/record"]
 margin_left = 201.0
@@ -1529,7 +1529,7 @@ margin_left = 288.0
 margin_top = 568.0
 margin_right = 944.0
 margin_bottom = 600.0
-text = "Traits"
+text = "TRAITS"
 align = 1
 
 [node name="SexTraitsPanel" type="Panel" parent="SlaveInfoModule"]
@@ -1663,6 +1663,7 @@ texture_hover = ExtResource( 194 )
 expand = true
 
 [node name="SlaveClassesModule" type="Panel" parent="."]
+visible = false
 light_mask = 0
 margin_left = 229.0
 margin_top = 104.0
@@ -1911,7 +1912,7 @@ margin_bottom = 73.1464
 [node name="Label" type="Label" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer/ReqsContainer/VBoxContainer"]
 margin_right = 671.0
 margin_bottom = 33.0
-text = "Requirements"
+text = "REQUIREMENTS_TOOLTIP"
 align = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="SlaveClassesModule/ClassPanel/scroll/VBoxContainer/ReqsContainer/VBoxContainer"]
@@ -2093,7 +2094,7 @@ margin_bottom = 944.0
 [node name="ExpLabel" type="Label" parent="SlaveClassesModule/ClassPanel/HBoxContainer2"]
 light_mask = 0
 margin_top = 12.0
-margin_right = 502.0
+margin_right = 485.0
 margin_bottom = 45.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -2102,14 +2103,14 @@ text = "Experience: "
 
 [node name="Unlock" type="Button" parent="SlaveClassesModule/ClassPanel/HBoxContainer2"]
 light_mask = 0
-margin_left = 506.0
+margin_left = 489.0
 margin_right = 677.0
 margin_bottom = 57.0
 size_flags_vertical = 8
 theme = ExtResource( 58 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 56 )
-text = "Unlock"
+text = "UNLOCK"
 
 [node name="MasteryPanel" type="Panel" parent="SlaveClassesModule"]
 visible = false
@@ -2402,7 +2403,7 @@ margin_right = -69.3273
 margin_bottom = -4.8999
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 12 )
-text = "Upgrade"
+text = "CHARINFO_UPGRADE_LABEL"
 valign = 1
 
 [node name="TextureRect" type="TextureRect" parent="SlaveClassesModule/MasteryPanel/AddPoint"]
@@ -2438,7 +2439,7 @@ margin_right = -71.4364
 margin_bottom = -4.00903
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 12 )
-text = "Upgrade"
+text = "CHARINFO_UPGRADE_LABEL"
 valign = 1
 
 [node name="TextureRect" type="TextureRect" parent="SlaveClassesModule/MasteryPanel/AddPoint2"]
@@ -2527,7 +2528,7 @@ margin_left = -93.6854
 margin_top = -311.35
 margin_right = -13.6854
 margin_bottom = -231.35
-hint_tooltip = "Set Abilitites for combat"
+hint_tooltip = "CHARINFO_SET_ABILITIES_TOOLTIP"
 texture_normal = ExtResource( 105 )
 texture_pressed = ExtResource( 96 )
 texture_hover = ExtResource( 93 )
@@ -3158,7 +3159,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 custom_fonts/font = ExtResource( 10 )
-text = "Upgrade"
+text = "CHARINFO_UPGRADE_LABEL"
 
 [node name="stats_upgrade" parent="SlaveClassesModule" instance=ExtResource( 66 )]
 visible = false
@@ -3180,7 +3181,7 @@ margin_top = 2.32677
 margin_right = 670.453
 margin_bottom = 64.3268
 custom_fonts/font = ExtResource( 188 )
-text = "Classes"
+text = "CLASSES_LABEL"
 align = 1
 
 [node name="SlaveDetailsModule" type="Panel" parent="."]
@@ -3330,7 +3331,7 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 10 )
-placeholder_text = "Search"
+placeholder_text = "CHARINFO_SEARCH_PLACEHOLDER"
 
 [node name="addcustom" type="Button" parent="SlaveDetailsModule/VBoxContainer/IconBlock"]
 light_mask = 0
@@ -3417,7 +3418,7 @@ margin_top = 294.0
 margin_right = 315.0
 margin_bottom = 334.0
 rect_min_size = Vector2( 315, 40 )
-hint_tooltip = "Will attempt to assign both portrait and body image, if same file name exists in both folders"
+hint_tooltip = "CHARINFO_ASSIGN_BOTH_TOOLTIP"
 theme = ExtResource( 60 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -3556,7 +3557,7 @@ rect_min_size = Vector2( 250, 87.5 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
 window_title = "Open a File"
-dialog_text = "Select New Image"
+dialog_text = "CHARINFO_SELECT_NEW_IMAGE_DIALOG"
 dialog_hide_on_ok = true
 mode = 0
 access = 2
@@ -3641,8 +3642,8 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 custom_fonts/normal_font = ExtResource( 10 )
 bbcode_enabled = true
-bbcode_text = "Selected folder and all subfolders in it will provide images to the required area and will be saved upon exit"
-text = "Selected folder and all subfolders in it will provide images to the required area and will be saved upon exit"
+bbcode_text = "CHARINFO_SELECTED_FOLDER_HELP"
+text = "CHARINFO_SELECTED_FOLDER_HELP"
 
 [node name="folderdialogue" type="FileDialog" parent="SlaveDetailsModule/PopUp"]
 light_mask = 0
@@ -3658,7 +3659,7 @@ rect_min_size = Vector2( 250, 87.5 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
 window_title = "Open a Directory"
-dialog_text = "Select default path folder"
+dialog_text = "CHARINFO_SELECT_DEFAULT_FOLDER_DIALOG"
 mode = 2
 access = 2
 
@@ -3673,10 +3674,8 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 custom_fonts/normal_font = ExtResource( 10 )
 bbcode_enabled = true
-bbcode_text = "[center]You have no images with fitting criterias available.[/center]
-[center]Put your images into portrait folder and hit 'Reload Portraits' button[/center]"
-text = "You have no images with fitting criterias available.
-Put your images into portrait folder and hit 'Reload Portraits' button"
+bbcode_text = "CHARINFO_NO_IMAGES_HELP"
+text = "CHARINFO_NO_IMAGES_HELP"
 
 [node name="Label2" type="Label" parent="SlaveDetailsModule"]
 light_mask = 0
@@ -3980,7 +3979,7 @@ margin_right = 294.408
 margin_bottom = 454.727
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 10 )
-text = "Current Personality"
+text = "PERSONALITYCURRENT"
 align = 1
 
 [node name="Button" type="Button" parent="SlaveSiblingsModule"]
@@ -3991,7 +3990,7 @@ margin_bottom = 736.0
 rect_min_size = Vector2( 250, 60 )
 theme = ExtResource( 58 )
 custom_fonts/font = ExtResource( 1 )
-text = "Stats"
+text = "CHARINFO_STATS_BUTTON"
 
 [node name="StatsPanel" parent="SlaveSiblingsModule" instance=ExtResource( 144 )]
 visible = false

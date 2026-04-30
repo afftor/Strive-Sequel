@@ -1244,7 +1244,7 @@ var scenedict = {
 		tags = ['dialogue_scene','master_translate'],
 		text = "INTRODIALOGUE",
 		options = [
-		{code = 'starting_dialogue', text = "Continue", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'starting_dialogue', text = tr("CONTINUE"), reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
 		]
 	},
 
@@ -2843,10 +2843,19 @@ var quests = {
 			capital = {code = 'capital', name = 'LIRA_LOST_QUEST_NAME', descript = 'LIRA_LOST_QUEST_CAPITAL'},
 		},
 	},
+	lira_quest_1 = {
+		code = 'lira_quest_1',
+		summary = "LIRA_QUEST_1_SUMMARY",
+		stages = {
+			start = {code = 'start', name = 'LIRA_QUEST_1_NAME', descript = 'LIRA_QUEST_1_JOURNAL_START'},
+			grove = {code = 'grove', name = 'LIRA_QUEST_1_NAME', descript = 'LIRA_QUEST_1_JOURNAL_GROVE'},
+		},
+	},
 	lira_quest_2 = {
 		code = 'lira_quest_2',
 		summary = "LIRA_QUEST2_QUEST_SUMMARY",
 		stages = {
+			start = {code = 'start', name = 'LIRA_QUEST2_QUEST_NAME', descript = 'LIRA_QUEST2_QUEST_STAGE_START'},
 			fair = {code = 'fair', name = 'LIRA_QUEST2_QUEST_NAME', descript = 'LIRA_QUEST2_QUEST_STAGE_FAIR'},
 			return_home = {code = 'return_home', name = 'LIRA_QUEST2_QUEST_NAME', descript = 'LIRA_QUEST2_QUEST_STAGE_RETURN'},
 		},
@@ -2855,6 +2864,7 @@ var quests = {
 		code = 'lira_quest_3',
 		summary = "LIRA_QUEST3_QUEST_SUMMARY",
 		stages = {
+			start = {code = 'start', name = 'LIRA_QUEST3_QUEST_NAME', descript = 'LIRA_QUEST3_QUEST_STAGE_START'},
 			temple = {code = 'temple', name = 'LIRA_QUEST3_QUEST_NAME', descript = 'LIRA_QUEST3_QUEST_STAGE_TEMPLE'},
 			report_lira = {code = 'report_lira', name = 'LIRA_QUEST3_QUEST_NAME', descript = 'LIRA_QUEST3_QUEST_STAGE_REPORT_LIRA'},
 			trader = {code = 'trader', name = 'LIRA_QUEST3_QUEST_NAME', descript = 'LIRA_QUEST3_QUEST_STAGE_TRADER'},
@@ -2987,14 +2997,6 @@ var quests = {
 			stage6 = {code = 'stage6', name = 'HELEVIEL_QUEST3_NAME', descript = "HELEVIEL_SLAVE_STAGE_6"},
 		},
 	},
-	lira_quest_1 = {
-		code = 'lira_quest_1',
-		summary = "LIRA_QUEST_1_SUMMARY",
-		stages = {
-			start = {code = 'start', name = 'LIRA_QUEST_1_NAME', descript = 'LIRA_QUEST_1_JOURNAL_START'},
-			grove = {code = 'grove', name = 'LIRA_QUEST_1_NAME', descript = 'LIRA_QUEST_1_JOURNAL_GROVE'},
-		},
-	},
 }
 
 var old_quest_stages = {
@@ -3008,4 +3010,3 @@ var error_stage = {
 	name = 'Error',
 	descript = 'There is error with quest %s on stage %s. The quest is incompleteable. Please, report this to developers.'
 }
-

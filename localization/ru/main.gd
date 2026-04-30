@@ -427,6 +427,20 @@ var TranslationDict = {
 	MSLMCONTEXT_OPEN_OCCUPATION = "Занятие",
 	MSLMCONTEXT_INVENTORY = "Инвентарь",
 	SLAVEINFOMODULEOBEDIENCE = """Повиновение""",
+	CHARINFO_IMAGE_OPACITY_TOOLTIP = """Image Opacity""", # MISSING TRANSLATION
+	CHARINFO_DESCRIPTION_LABEL = """Description""", # MISSING TRANSLATION
+	CHARINFO_SEARCH_PLACEHOLDER = """Search""", # MISSING TRANSLATION
+	CHARINFO_ASSIGN_BOTH_TOOLTIP = """Will attempt to assign both portrait and body image, if same file name exists in both folders""", # MISSING TRANSLATION
+	CHARINFO_OPEN_FILE_TITLE = """Open a File""", # MISSING TRANSLATION
+	CHARINFO_SELECT_NEW_IMAGE_DIALOG = """Select New Image""", # MISSING TRANSLATION
+	CHARINFO_SELECTED_FOLDER_HELP = """Selected folder and all subfolders in it will provide images to the required area and will be saved upon exit""", # MISSING TRANSLATION
+	CHARINFO_OPEN_DIRECTORY_TITLE = """Open a Directory""", # MISSING TRANSLATION
+	CHARINFO_SELECT_DEFAULT_FOLDER_DIALOG = """Select default path folder""", # MISSING TRANSLATION
+	CHARINFO_NO_IMAGES_HELP = """[center]You have no images with fitting criterias available.[/center]
+[center]Put your images into portrait folder and hit 'Reload Portraits' button[/center]""", # MISSING TRANSLATION
+	CHARINFO_STATS_BUTTON = """Stats""", # MISSING TRANSLATION
+	CHARINFO_UPGRADE_LABEL = """Upgrade""", # MISSING TRANSLATION
+	CHARINFO_SET_ABILITIES_TOOLTIP = """Set Abilities for combat""", # MISSING TRANSLATION
 	SIMRESIST = """Сопротивление""",
 	SIMLOYALTYGAIN = """Прирост верности""",
 	SIMOBEDIENCEDRAIN = """Утечка повиновения""",
@@ -1082,7 +1096,7 @@ var TranslationDict = {
 	CHARCREATE_MASTER_RELATION_PARENT = """Parent""", # MISSING TRANSLATION
 	CHARCREATE_MASTER_RELATION_SIBLING = """Sibling""", # MISSING TRANSLATION
 	CHARCREATE_MASTER_RELATION_PANEL_PLACEHOLDER = """""", # MISSING TRANSLATION
-	CHARCREATE_MASTER_RELATION_PANEL_TEXT = """Select %s's relationship with %s.""", # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_PANEL_TEXT = """Select %s's relationship with %s %s.""", # MISSING TRANSLATION
 	CHARCREATE_MASTER_RELATION_NO_MASTER = """No master character is available for relationship selection.""", # MISSING TRANSLATION
 	CHARCREATE_MASTER_RELATION_BLOCKED_NO_MASTER = """No master character is available for relationship selection.""", # MISSING TRANSLATION
 	CHARCREATE_MASTER_RELATION_BLOCKED_CHILD = """Child is unavailable because the master must be the same age or older.""", # MISSING TRANSLATION
@@ -1808,6 +1822,8 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	TRAININGLABELLOYALTYGROW = "%.0f + %.2f",
 	TRAININGLABELRESISTANCE = "%.0f",
 	TRAININGLABELRESISTANCEDROP = "%.0f - %.0f",
+	TRAINING_TRAINER_NAME = """Trainer: %s""", # MISSING TRANSLATION
+	TRAINING_SLAVES_ASSIGNED = """%s - Slaves Assigned: %d/%d""", # MISSING TRANSLATION
 	TRAININGTOOLTIPRESISTANCE = """Сопротивление раба снижает эффективность тренировок не {color=yellow|Позитивных} действий.
 %s's сопротивление падает на %.0f за ход.""",
 	TRAININGTOOLTIPRESISTULT = "Текущее сопротивление слишком велико для тренировки.",
@@ -1832,7 +1848,14 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 """,
 	TRAININGNOTAVAILABLEUNIQUE = "[color=red]Сначала необходимо выполнить личные квесты для персонажа [name].[/color]",
 	TRIANINGREQUIRES = """Обязательные категории тренировки: """,
+	TRAININGVIRGINITYTAKEN = """%s takes virginity of %s""", # MISSING TRANSLATION
+	TRAININGDISPOSITIONS = """Dispositions:""", # MISSING TRANSLATION
+	TRAININGDISPOSITIONUNKNOWN = """unknown""", # MISSING TRANSLATION
 	DISPOSITIONCHANGE = """Позиция к %s изменена""",
+	DISPOSITIONRESIST = """resist""", # MISSING TRANSLATION
+	DISPOSITIONNEUTRAL = """neutral""", # MISSING TRANSLATION
+	DISPOSITIONWEAK = """weak""", # MISSING TRANSLATION
+	DISPOSITIONKINK = """kink""", # MISSING TRANSLATION
 	DISPOSITIONSETRESIST = """Позиция к %s теперь сопротивляется
 """,
 	DISPOSITIONSETNEUTRAL = """Позиция к %s теперь нейтральна
@@ -6423,6 +6446,7 @@ LICHAIRETALK6_5 = """Борьба Эйры постепенно ослабева
 Продолжить? (оригинальный файл сохранения останется нетронутым, но не будет работать с текущей версией)""",
 	CREATECHARQUESTION = """Подтвердить создание этого персонажа?""",
 	CREATECHARACTERFEMALE = """Внимание: Вы выбрали персонажа женского пола. Большинство игровых сценариев разыгрывается с мужской точки зрения, но они будут показаны независимо от этого. Подтвердить?""",
+	UPDATECHARBROKENUPGRAES = """Some current body upgrades are incompatible with this character and will be removed. Confirm?""", # MISSING TRANSLATION
 	CHARCREATE_INTRO_MASTER = """Create your Master Character""", # MISSING TRANSLATION
 	CHARCREATE_INTRO_SLAVE = """Create your Starting Slave""", # MISSING TRANSLATION
 	RETURNTOMAINMENUQUESTION = """Вернуться в главное меню?""",
@@ -6997,6 +7021,7 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	STATDAMAGE_MOD_TRUEDESCRIPT = "Изменяет истинный урон",
 	ENEMYMANEATER_PLANT = """Растение-людоед""",
 	ENEMYCENTIPEDE = """Сороконожка""",
+	ENEMYCENTIPEDE_QUEST = """Centipede""", # MISSING TRANSLATION
 	ENEMYOGRE_ALPHA = """Огр Альфа""",
 	ENEMYROCK_THROWER = """Метатель камней""",
 	ENEMYGIANT_ANT = """Гигантский муравей""",
@@ -17640,6 +17665,7 @@ KURO_WHISKEY_DIG3 = """Босс: - Чего вы ждете? Если вы не 
 В следующее мгновение она исчезает в своей обычной манере.""",
 	LIRA_LOST_START = """Пробираясь через лес, вы вдруг слышите женский голос, зовущий на помощь. Вы осторожно движетесь к нему...""",
 	LIRA_LOST_START2 = """- Незнакомец! Какое облегчение, что это не животные или монстры... Я пришла сюда, чтобы собрать немного трав, но, кажется, я заблудилась. Меня зовут Лира, надеюсь, вам не составит труда доставить меня в эльфийскую столицу""",
+	LIRA_DIALOGUE_START = """{color=yellow|Lira: — Is there anything you need, [master]?}""", # MISSING TRANSLATION
 	LIRA_LOST_OPT_SURE = """Конечно, вы можете задержаться здесь""",
 	LIRA_LOST_OPT_PRICE = """Моя помощь имеет цену""",
 	LIRA_LOST_REPLY_SURE = """- Слава Богу, как только мы выберемся из этой трясины, я покажу тебе дорогу""",
