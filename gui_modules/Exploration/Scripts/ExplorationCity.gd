@@ -40,6 +40,8 @@ func _ready():
 	gui_controller.add_close_button($GuildShop)
 	gui_controller.add_close_button($QuestBoard)
 	gui_controller.add_close_button($SlaveMarket)
+	$GuildShop/Label.text = tr("REPUTATION_SHOP_LABEL")
+	$SlaveMarket/HBoxContainer/UpgradeButton2/Label.text = tr("UPGRADE_BODY_LABEL")
 	
 	selected_location = 'aliron'
 	selected_area = ResourceScripts.game_world.areas.plains
@@ -384,9 +386,6 @@ func fade(window, time = 0.5):
 	window.hide()
 	# window.set("modulate", Color(1, 1, 1, 0))
 
-var infotext = "Upgrades effects and quest settings update after some time passed. "
-
-
 func faction_disassemble(pressed, pressed_button, guild):
 	hide_guild_panels()
 	if $FactionDetails.is_visible():
@@ -487,7 +486,7 @@ func buy_item(item_ref, price, amount, type = "item"):
 		item_name = classesdata.professions[item_ref].name
 		if ResourceScripts.game_progress.unlocked_classes.has(item_ref):
 			$GuildShop/NumberSelection2.show()
-			$GuildShop/NumberSelection2/ItemPrice.text = "Unlocked"
+			$GuildShop/NumberSelection2/ItemPrice.text = tr("UNLOCKED_LABEL")
 			$GuildShop/NumberSelection2/Button.disabled = true
 			return
 	if type == "item":
@@ -566,13 +565,11 @@ func faction_upgrade(pressed, pressed_button, guild):
 	gui_controller.win_btn_connections_handler(pressed, $FactionDetails, pressed_button)
 	active_faction = guild
 	self.current_pressed_area_btn = pressed_button
-	var text = ''
 	# $FactionDetails.visible = pressed
 	input_handler.ClearContainer($FactionDetails/Scroll/VBoxContainer)
-	text = infotext
-	$FactionDetails/RichTextLabel.text = text
-	$FactionDetails/FactionPoints.text = "Faction points: " + str(active_faction.totalreputation)
-	$FactionDetails/UnspentPoints.text = "Unspent points: " + str(active_faction.reputation)
+	$FactionDetails/RichTextLabel.text = tr("UPGRADES_INFO")
+	$FactionDetails/FactionPoints.text = tr("FACTION_POINTS") + ": " + str(active_faction.totalreputation)
+	$FactionDetails/UnspentPoints.text = tr("UNSPENT_POINTS") + ": " + str(active_faction.reputation)
 
 	var check = true
 	for i in worlddata.guild_upgrades.values():
@@ -584,7 +581,7 @@ func faction_upgrade(pressed, pressed_button, guild):
 		if !check:
 			continue
 		var newnode = input_handler.DuplicateContainerTemplate($FactionDetails/Scroll/VBoxContainer)
-		text = tr(i.name) + ": " + tr(i.descript)
+		var text = tr(i.name) + ": " + tr(i.descript)
 		var currentupgradelevel
 		if active_faction.upgrades.has(i.code):
 			currentupgradelevel = active_faction.upgrades[i.code]
@@ -600,9 +597,9 @@ func faction_upgrade(pressed, pressed_button, guild):
 			continue
 		newnode.get_node("text").bbcode_text = text
 		newnode.get_node("Price").text = (
-			"Cost: "
+			tr("COST_LABEL") + ": "
 			+ str(i.cost[currentupgradelevel])
-			+ " points"
+			+ " " + tr("POINTS_LABEL")
 		)
 		newnode.get_node("confirm").connect(
 			'pressed', self, "unlock_upgrade", [i, currentupgradelevel]
@@ -791,7 +788,7 @@ func show_slave_info(person):
 			continue
 		button.pressed = button.get_meta("person") == person_to_hire
 	globals.connecttexttooltip($SlaveMarket/RichTextLabel, person.show_race_description())
-	$SlaveMarket/exp.text = "Exp: " + str(floor(person.get_stat('base_exp')))
+	$SlaveMarket/exp.text = tr("EXP_LABEL") + ": " + str(floor(person.get_stat('base_exp')))
 	var text = "[center]" + person.get_full_name() + "[/center]"
 	input_handler.ClearContainer($SlaveMarket/TextureRect/professions)
 	if person.get_prof_number() > 5:
@@ -843,7 +840,7 @@ func show_slave_info(person):
 		slavename += "F"
 	text = (
 		tr('TYPE_LABEL') + ': ' + "[color=yellow]"
-		+ slavename
+		+ tr(slavename)
 		+ "[/color]\n"
 	)
 	
@@ -866,7 +863,7 @@ func show_slave_info(person):
 	
 #	globals.build_loyalty_traitlist(person, $SlaveMarket/scroll/traitscontainer)
 	
-	$SlaveMarket/ConsentLabel.text = "Consent: " + str(floor(person.get_stat('consent')))
+	$SlaveMarket/ConsentLabel.text = tr("STATCONSENT") + ": " + str(floor(person.get_stat('consent')))
 	$SlaveMarket/PurchaseButton.disabled = false
 	#$PurchaseButton.disabled = person.calculate_price() > ResourceScripts.game_res.money
 	# rebuild_traits(person)
@@ -930,7 +927,7 @@ func show_location_info(location):
 	purchasing_location = location
 	$BuyLocation/LocationInfo.show()
 	$BuyLocation/LocationInfo/LocationName.text = location.classname
-	$BuyLocation/LocationInfo/Difficulty.text = "Difficulty: " + str(location.difficulty).capitalize()
+	$BuyLocation/LocationInfo/Difficulty.text = tr("DIFFIC_LABEL") + ": " + tr("DIFFICULTY_" + location.difficulty.to_upper())
 	$BuyLocation/LocationInfo/Price.text = str(location.purchase_price)
 	input_handler.ClearContainer($BuyLocation/LocationInfo/Resources/GridContainer)
 	for i in location.gatherable_resources.pool:
@@ -974,7 +971,7 @@ func purchase_location():
 			'purchase_dungeon_location', 'location_purchase_event', {}
 		)
 	else:
-		input_handler.SystemMessage("Can't purchase anymore")
+		input_handler.SystemMessage(tr("CANT_PURCHASE_LOC_LABEL"))
 	location_purchase(true, current_pressed_area_btn)
 
 

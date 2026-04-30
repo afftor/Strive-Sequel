@@ -260,7 +260,6 @@ margin_bottom = 1080.0
 script = ExtResource( 50 )
 
 [node name="InfoPanel" type="TextureRect" parent="."]
-visible = false
 margin_left = 696.0
 margin_top = 104.0
 margin_right = 1256.0

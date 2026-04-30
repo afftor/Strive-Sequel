@@ -251,6 +251,15 @@ func _input(event):
 
 
 func _ready():#2add button connections
+	$InfoPanel/Label.text = tr("INFORMATION_LABEL")
+	$InfoPanel/buttons/Sendbutton/Label.text = tr("CONFIRM")
+	$InfoPanel/buttons/Teleport/Label.text = tr("SKILLTELEPORT")
+	$InfoPanel/buttons/Forget/Label.text = tr("FORGET_LABEL")
+	$InfoPanel/VBoxContainer/Label2.text = tr("GALLERYCHAR")
+	$InfoPanel/VBoxContainer/Label3.text = tr("UPGRADERES")
+	$FromLocList/Label.text = tr("SELECT_CHAR_LABEL")
+	$ToLocList/Label.text = tr("LOCATION_LIST_LABEL")
+	$Back/Label.text = tr("BACK")
 	$Back.connect('pressed', self, 'close')
 	$mode.connect('pressed', self, 'from_loc_set')
 #	$FromLocList/Sendbutton.connect('pressed', self, 'from_loc_set')
@@ -643,7 +652,7 @@ func build_info(loc = null):
 	if from_loc != 'adv_mode' and not_temporal_info and !selected_chars.empty() and from_loc != to_loc:
 		info_btn_send.visible = true
 		$InfoPanel/time.visible = true
-		$InfoPanel/time.text = "Travel time - %d t" % globals.calculate_travel_time(from_loc, to_loc).time
+		$InfoPanel/time.text = tr("TRAVEL_TIME_LABEL") + " - %d t" % globals.calculate_travel_time(from_loc, to_loc).time
 		
 		can_teleport = false
 		for sort_loc in sorted_locations:
@@ -661,7 +670,7 @@ func build_info(loc = null):
 
 func make_panel_for_location(panel, loc):
 	if loc.id == 'travel':
-		set_loc_text(panel, "Characters on the road")
+		set_loc_text(panel, tr("CHARS_ON_ROAD_LABEL"))
 	else:
 		var data = ResourceScripts.world_gen.get_location_from_code(loc.id)
 		var text = data.name
@@ -1079,7 +1088,7 @@ func match_state():
 		if selected_loc == null:
 #			$FromLocList/Sendbutton/Label.text = 'Adv.Mode'
 #			$FromLocList/Sendbutton.visible = false
-			$mode/Label.text = 'Adv. Mode'
+			$mode/Label.text = tr("ADV_MODE_LABEL")
 			$mode.visible = true
 		else:
 #			$FromLocList/Sendbutton.visible = true
@@ -1092,7 +1101,7 @@ func match_state():
 		$ToLocList.visible = true
 		if from_loc == 'adv_mode':
 			$FromLocList.visible = false
-			$mode/Label.text = 'Smpl.Mode'
+			$mode/Label.text = tr("SMPL_MODE_LABEL")
 			$mode.visible = true
 		else:
 			$FromLocList.visible = true

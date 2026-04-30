@@ -87,11 +87,11 @@ func build_description(upgrade_id):
 
 	desc_panel.visible = true
 
-	var text = tr(upgrade_data.name) + " Level "
+	var text = ''
 	if upgrade_next_state == null:
-		text +=  str(upgrade_lv)
+		text = tr('UPGRADELEVEL') % [tr(upgrade_data.name), upgrade_lv]
 	else:
-		text += str(upgrade_lv + 1)
+		text = tr('UPGRADELEVEL') % [tr(upgrade_data.name), upgrade_lv + 1]
 	desc_panel.get_node("VBoxContainer/desc_header").text = text #+ " description"
 	text = tr(upgrade_data.descript) + "\n"
 	if upgrade_next_state != null:
@@ -109,12 +109,12 @@ func build_description(upgrade_id):
 		desc_panel.get_node("VBoxContainer/resources").visible = false
 		work_cost.get_parent().visible = false
 		can_upgrade = false
-		text += "\nUpgrade purchased. Set characters to Upgrading to start working on it.\nCurrent Progress: %d/%d" % [ResourceScripts.game_res.upgrade_progresses[upgrade_id].progress, upgrade_next_state.taskprogress]
+		text += "\n" + tr('UPGRADEPURCHASEDQUEUED') % [ResourceScripts.game_res.upgrade_progresses[upgrade_id].progress, upgrade_next_state.taskprogress]
 	elif ResourceScripts.game_res.upgrade_progresses.has(upgrade_id):
 		desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer").visible = false
 		desc_panel.get_node("VBoxContainer/resources").visible = false
 		work_cost.get_parent().visible = false
-		text += "\nUpgrade purchased but not queued. \nCurrent Progress: %d/%d" % [ResourceScripts.game_res.upgrade_progresses[upgrade_id].progress, upgrade_next_state.taskprogress]
+		text += "\n" + tr('UPGRADEPURCHASEDNOTQUEUED') % [ResourceScripts.game_res.upgrade_progresses[upgrade_id].progress, upgrade_next_state.taskprogress]
 	elif upgrade_next_state == null:
 		desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer").visible = false
 		desc_panel.get_node("VBoxContainer/resources").visible = false
@@ -127,7 +127,7 @@ func build_description(upgrade_id):
 		can_upgrade = false
 	else:
 		if upgrade_next_state.has('tax'):
-			text += "\n\n{color=yellow|This upgrade will increase Weekly Tax by %d}" % upgrade_next_state.tax 
+			text += "\n\n" + tr('UPGRADETAXINCREASE') % upgrade_next_state.tax
 		input_handler.ClearContainer(desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"))
 		for res in upgrade_next_state.cost:
 			var panel = input_handler.DuplicateContainerTemplate(desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"))
@@ -202,10 +202,10 @@ func build_queue_list():
 
 		remains += update_progresses(upgradedata.upgradelist[upgrade], newbutton, currentupgradelevel)
 
-		globals.connecttexttooltip(newbutton, "Drag and drop to change order. Click to remove from queue.")
+		globals.connecttexttooltip(newbutton, tr('UPGRADEQUEUETOOLTIP'))
 		newbutton.connect("pressed", self, "remove_from_upgrades_queue", [upgrade])
 		if output > 0:
-			newbutton.get_node("time").text = "%d t" % int(ceil(remains / (1.0 * output)))
+			newbutton.get_node("time").text = tr('UPGRADETIMETURNS') % int(ceil(remains / (1.0 * output)))
 		else:
 			newbutton.get_node("time").visible = false
 
@@ -262,10 +262,10 @@ func update_button(newbutton, person):
 				var time_left_string = ''
 				if time_left == 1:
 					time_left = 4 - ResourceScripts.game_globals.hour
-					time_left_string = str(time_left) + " turns" 
+					time_left_string = tr('UPGRADEQUESTTURNS') % time_left
 				else:
-					time_left_string = str(time_left) + " d."
-				newbutton.get_node("job/Label").text = "On Quest: " + time_left_string
+					time_left_string = tr('UPGRADEQUESTDAYS') % time_left
+				newbutton.get_node("job/Label").text = tr('UPGRADEONQUEST') % time_left_string
 			else:
 				newbutton.get_node("job/Label").text = person.get_unaval_string()
 		else:
@@ -274,7 +274,7 @@ func update_button(newbutton, person):
 		if !gatherable:
 			newbutton.get_node("job/Label").text = tasks.tasklist[person.get_work()].name
 		else:
-			newbutton.get_node("job/Label").text = "Gathering " + Items.materiallist[person.get_work()].name
+			newbutton.get_node("job/Label").text = tr('UPGRADEGATHERING') % Items.materiallist[person.get_work()].name
 
 
 func can_add_worker():
@@ -352,4 +352,4 @@ func add_upgrade_to_queue():
 	build_description(selected_upgrade)
 	upgradeslist.update_upgrades_tree(tree_tab)
 	build_queue_list()
-	input_handler.SystemMessage("New upgrade added to queue: " + upgradedata.upgradelist[selected_upgrade].name)
+	input_handler.SystemMessage(tr('UPGRADEADDEDQUEUE') % tr(upgradedata.upgradelist[selected_upgrade].name))

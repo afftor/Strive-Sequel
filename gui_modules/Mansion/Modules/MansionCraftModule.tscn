@@ -138,7 +138,7 @@ margin_top = 3.0
 margin_bottom = 54.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 48 )
-text = "Characters"
+text = "CRAFTCHARACTERS"
 align = 1
 
 [node name="QueueFrame" type="TextureRect" parent="frame"]
@@ -154,7 +154,7 @@ margin_top = 2.0
 margin_bottom = 53.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 48 )
-text = "Craft Order"
+text = "CRAFTORDER"
 align = 1
 
 [node name="categories" type="HBoxContainer" parent="."]
@@ -182,7 +182,7 @@ margin_top = 129.0
 margin_right = 145.0
 margin_bottom = 153.0
 custom_fonts/font = ExtResource( 1 )
-text = "Blacksmith"
+text = "BLACKSMITH"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -205,7 +205,7 @@ margin_top = 129.0
 margin_right = 158.0
 margin_bottom = 153.0
 custom_fonts/font = ExtResource( 1 )
-text = "Cooking"
+text = "TASKCOOKING"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -229,7 +229,7 @@ margin_top = 129.0
 margin_right = 160.0
 margin_bottom = 153.0
 custom_fonts/font = ExtResource( 1 )
-text = "Tailoring"
+text = "CRAFTTAILORING"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -253,7 +253,7 @@ margin_top = 129.0
 margin_right = 155.0
 margin_bottom = 153.0
 custom_fonts/font = ExtResource( 1 )
-text = "Alchemy"
+text = "TASKALCHEMY"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -278,7 +278,7 @@ margin_right = 190.236
 margin_bottom = 196.678
 custom_colors/font_color = Color( 0.811765, 0.811765, 0.811765, 1 )
 custom_fonts/font = ExtResource( 48 )
-text = "Enchant"
+text = "CRAFTENCHANT"
 align = 1
 
 [node name="filter" type="HBoxContainer" parent="."]
@@ -551,7 +551,7 @@ texture_hover = ExtResource( 65 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Confirm"
+text = "CONFIRM"
 align = 1
 valign = 1
 
@@ -569,7 +569,7 @@ texture_hover = ExtResource( 66 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Back"
+text = "BACK"
 align = 1
 valign = 1
 
@@ -761,7 +761,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "Back"
+text = "BACK"
 align = 1
 valign = 1
 

@@ -28,7 +28,7 @@ func _ready():
 		i.connect("pressed", self, 'select_category', [i.name])
 	for i in $filter.get_children():
 		i.connect('pressed',self, 'set_filter', [i.name])
-		i.hint_tooltip = filtercategories[i.name]
+		globals.connecttexttooltip(i, tr(filtercategories[i.name]))
 
 func cancel_choise():
 	$NumberSelect.hide()
@@ -50,11 +50,11 @@ var craftcategories = {
 	smith = {reqs = [{type = "has_upgrade", name = 'forge', value = 1}]},
 }
 var filtercategories = {
-	all = "All",
-	materials = "Food&Materials",
-	gear = "Gear",
-	costume = "Costume",
-	usables = "Usables",
+	all = "CRAFTFILTERALL",
+	materials = "CRAFTFILTERMATERIALS",
+	gear = "CRAFTFILTERGEAR",
+	costume = "CRAFTFILTERCOSTUME",
+	usables = "CRAFTFILTERUSABLES",
 }
 
 func update():
@@ -169,7 +169,7 @@ func rebuild_recipe_list():
 			for k in i.materials:
 				var newnode = input_handler.DuplicateContainerTemplate(newbutton.get_node("HBoxContainer"))
 				var recipeitem = Items.materiallist[k]
-				var bonustext = "\n\nRequired for Craft: " + str(i.materials[k])
+				var bonustext = "\n\n" + tr('CRAFTREQUIREDFOR') % str(i.materials[k])
 				globals.connectmaterialtooltip(newnode,recipeitem, bonustext)
 				newnode.texture = recipeitem.icon
 				newnode.get_node("Label").text = str(i.materials[k])
@@ -179,14 +179,14 @@ func rebuild_recipe_list():
 				var newnode = input_handler.DuplicateContainerTemplate(newbutton.get_node("HBoxContainer"))
 				var partdata = Items.Parts[k]
 				newnode.texture = partdata.icon
-				newnode.hint_tooltip = "Materials required for: " + tr(partdata.name)
+				globals.connecttexttooltip(newnode, tr('CRAFTMATERIALSREQUIREDFOR') % tr(partdata.name))
 				newnode.get_node("Label").text = str(item.parts[k])
 
 
 		var progressnode = newbutton.get_node("WorkUnits")
 		progressnode.texture = images.get_icon(i.worktype)
 		progressnode.get_node("Label").text = str(i.workunits)
-		progressnode.hint_tooltip = 'Progress required per craft'
+		globals.connecttexttooltip(progressnode, tr('TOOLTIPPROGRESSREQUIRED'))
 
 func update_buttons(item):
 	for button in $CraftSelect/ScrollContainer/VBoxContainer.get_children():
@@ -239,7 +239,7 @@ func number_change(value):
 	if repeats >= 100:
 		repeats = -1
 		visiblerepeats = '∞'
-	text = "[center]Repeat " + visiblerepeats + " times.[/center] "#" + selected_item.name + "
+	text = tr('CRAFTREPEATTIMES') % visiblerepeats
 	$NumberSelect/RichTextLabel.bbcode_text = text
 #
 #func craft_select(item):
@@ -454,7 +454,7 @@ func make_material_list(container):
 #			parttext = parttext.substr(0, parttext.length()-2)
 #			newbutton.get_node("Label").bbcode_text = parttext
 
-			var temptext = '[center]' + i.name + "[/center]\nIn possession: " + str(ResourceScripts.game_res.materials[i.code]) +  "\nPart Effects:" + get_mat_bonuses(i, part)
+			var temptext = '[center]' + i.name + "[/center]\n" + tr('CRAFTINPOSSESSION') + ": " + str(ResourceScripts.game_res.materials[i.code]) +  "\n" + tr('CRAFTPARTEFFECTS') + ":" + get_mat_bonuses(i, part)
 				
 			newbutton.get_node("name").text = i.name
 			newbutton.set_meta('material', i.code)

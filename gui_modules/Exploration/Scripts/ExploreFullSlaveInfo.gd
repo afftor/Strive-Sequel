@@ -34,7 +34,7 @@ func tut_get_close_button():
 
 
 func update_purchase_btn():
-	$PurchaseButton/Label.text = gui_controller.exploration_city.hiremode.capitalize()
+	$PurchaseButton/Label.text = tr(gui_controller.exploration_city.hiremode.to_upper() + "_LABEL")
 	if gui_controller.exploration_city.hiremode == "sell":
 		$PurchaseButton.disabled = false
 	else:

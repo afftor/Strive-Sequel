@@ -90,7 +90,7 @@ func add_stamina(value):
 
 
 func update_stamina():
-	map_panel.get_node("Stamina/Label").text = "Stamina: %d/%d" % [active_location.stamina, 100]
+	map_panel.get_node("Stamina/Label").text = tr("STAMINA_LABEL") + ": %d/%d" % [active_location.stamina, 100]
 	#2add progress bar
 
 
@@ -143,6 +143,7 @@ func _ready():
 #	$LocationGui/ItemUsePanel/SpellsButton.connect("pressed", self, "switch_panel", ["spells"])
 	$LocationGui/ItemUsePanel/ItemsButton.pressed = true
 	$LocationGui/Resources/SelectWorkers.connect("pressed", self, "select_workers")
+	$LocationGui/Resources/SelectWorkers.text = tr("SELECT_WORKERS_LABEL")
 	$LocationGui/Resources/Forget.connect("pressed", self, "forget_location")
 	return_all_btn.connect("pressed", self, "return_all_to_mansion")
 	$JournalButton.connect("pressed", self, "open_journal")
@@ -152,9 +153,9 @@ func _ready():
 	map_panel.get_node("res").connect("toggled", self, 'toggle_res')
 	map_panel.get_node("slaves").connect("toggled", self, 'toggle_slaves')
 	map_panel.get_node("levels").connect("toggled", self, 'toggle_levels')
-	globals.connecttexttooltip(map_panel.get_node("res"), "Show/hide local resources")
-	globals.connecttexttooltip(map_panel.get_node("slaves"), "Show/hide captured characters")
-	globals.connecttexttooltip(map_panel.get_node("levels"), "Select unlocked level")
+	globals.connecttexttooltip(map_panel.get_node("res"), tr("TOOLTIP_SHOW_HIDE_RESOURCES"))
+	globals.connecttexttooltip(map_panel.get_node("slaves"), tr("TOOLTIP_SHOW_HIDE_CHARS"))
+	globals.connecttexttooltip(map_panel.get_node("levels"), tr("TOOLTIP_SELECT_LEVEL"))
 	gui_controller.win_btn_connections_handler(true, $MansionJournalModule, $JournalButton)
 	gui_controller.windows_opened.clear()
 	globals.connect("hour_tick", self, "build_location_group")
@@ -603,11 +604,11 @@ func build_location_group():
 			get_node(positiondict[i] + "/Image").show()
 			get_node(positiondict[i] + "/Image/caster").visible = cast_panel.can_cast(character.id)
 			get_node(positiondict[i] + "/Image/TextureRect").hint_tooltip = (
-				"HP: "
+				tr("STATHP") + ": "
 				+ str(floor(character.hp))
 				+ '/'
 				+ str(floor(character.get_stat('hpmax')))
-				+ "\nMP: "
+				+ "\n" + tr("STATMP") + ": "
 				+ str(floor(character.mp))
 				+ '/'
 				+ str(floor(character.get_stat('mpmax')))
@@ -702,7 +703,7 @@ func return_all_to_mansion():
 	var teleport_base = $teleport_base
 	teleport_base.set_loc_id(active_location.id)
 	teleport_base.set_confirm_func(self, "return_all_to_mansion_confirm")
-	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [teleport_base, 'teleport_check', "Return all character back to Mansion?"])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [teleport_base, 'teleport_check', tr("RETURN_ALL_MANSION_QUESTION")])
 
 
 func return_all_to_mansion_confirm(by_teleport = false):
@@ -917,7 +918,7 @@ func room_pressed(room_id):
 	if selected_room != null and active_subroom == null:
 		return
 	if globals.check_location_group() == false:
-		input_handler.SystemMessage("Select at least 1 character before advancing. ")
+		input_handler.SystemMessage(tr("SELECT_CHAR_BEFORE_ADV"))
 		return
 	if !ResourceScripts.game_world.can_enter_room(room_id):
 		return
@@ -931,7 +932,7 @@ func room_pressed(room_id):
 		return
 	if !(data.type in ['ladder_up', 'ladder_down', 'ladder_down_survival']):
 		if get_current_stamina() < data.stamina_cost:
-			input_handler.SystemMessage("No stamina")
+			input_handler.SystemMessage(tr("NO_STAMINA_LABEL"))
 			return
 		if !data.has('challenge') or data.challenge == null:
 			pay_stamina(data.stamina_cost)
@@ -1107,7 +1108,7 @@ func move_to_room(room_id = null):
 func subroom_pressed(room_id, subroom_id):
 	reset_active_location()
 	if globals.check_location_group() == false:
-		input_handler.SystemMessage("Select at least 1 character before advancing. ")
+		input_handler.SystemMessage(tr("SELECT_CHAR_BEFORE_ADV"))
 		return
 	globals.reset_roll_data()
 	globals.char_roll_data.diff = active_location.difficulty
@@ -1117,7 +1118,7 @@ func subroom_pressed(room_id, subroom_id):
 	var data = ResourceScripts.game_world.rooms[room_id]
 	var subroom_data = data.subrooms[subroom_id]
 	if get_current_stamina() < subroom_data.stamina_cost:
-		input_handler.SystemMessage("No stamina")
+		input_handler.SystemMessage(tr("NO_STAMINA_LABEL"))
 		return
 	active_subroom = null
 	selected_room = null

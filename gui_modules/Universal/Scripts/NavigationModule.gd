@@ -122,9 +122,9 @@ func build_accessible_locations(args = null):
 			newbutton2.get_node('icon').texture = images.get_background('mansion')
 			newbutton.connect("pressed", self, "return_to_mansion")
 			newbutton2.connect("pressed", self, "return_to_mansion")
-			globals.connecttexttooltip(newbutton, "%s" % ["Mansion"])
+			globals.connecttexttooltip(newbutton, tr("MANSION_LABEL"))
 			newbutton.get_node('amount').text = "%d/%d" % [free_chars.aliron, chars.aliron]
-			newbutton2.get_node('Label').text = "%s - %d/%d" % ["Mansion", free_chars.aliron, chars.aliron]
+			newbutton2.get_node('Label').text = "%s - %d/%d" % [tr("MANSION_LABEL"), free_chars.aliron, chars.aliron]
 			# newbutton.set_meta("data", i)
 #			newseparator.visible = true
 			newbutton.pressed = gui_controller.current_screen == gui_controller.mansion

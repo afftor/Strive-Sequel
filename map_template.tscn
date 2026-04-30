@@ -112,14 +112,14 @@ margin_bottom = 611.0
 
 [node name="Label" type="Label" parent="Panel/Map/LocationInfo/ScrollContainer"]
 margin_right = 470.0
-margin_bottom = 35.0
+margin_bottom = 33.0
 text = "Location Name"
 align = 1
 
 [node name="VBoxContainer" type="GridContainer" parent="Panel/Map/LocationInfo/ScrollContainer"]
-margin_top = 39.0
+margin_top = 37.0
 margin_right = 470.0
-margin_bottom = 193.0
+margin_bottom = 191.0
 columns = 6
 
 [node name="Button" type="TextureButton" parent="Panel/Map/LocationInfo/ScrollContainer/VBoxContainer"]
@@ -195,16 +195,16 @@ expand = true
 stretch_mode = 5
 
 [node name="Label2" type="Label" parent="Panel/Map/LocationInfo/ScrollContainer"]
-margin_top = 197.0
+margin_top = 195.0
 margin_right = 470.0
-margin_bottom = 232.0
+margin_bottom = 228.0
 text = "Resources"
 align = 1
 
 [node name="VBoxContainer2" type="GridContainer" parent="Panel/Map/LocationInfo/ScrollContainer"]
-margin_top = 236.0
+margin_top = 232.0
 margin_right = 470.0
-margin_bottom = 311.0
+margin_bottom = 307.0
 columns = 6
 
 [node name="Button" type="TextureButton" parent="Panel/Map/LocationInfo/ScrollContainer/VBoxContainer2"]

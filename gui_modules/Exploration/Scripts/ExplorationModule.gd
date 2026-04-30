@@ -483,11 +483,11 @@ func build_location_group():
 			get_node(positiondict[i] + "/Image").show()
 			get_node(positiondict[i] + "/Image/caster").visible = cast_panel.can_cast(character.id)
 			get_node(positiondict[i] + "/Image/TextureRect").hint_tooltip = (
-				"HP: "
+				tr("STATHP") + ": "
 				+ str(floor(character.hp))
 				+ '/'
 				+ str(floor(character.get_stat('hpmax')))
-				+ "\nMP: "
+				+ "\n" + tr("STATMP") + ": "
 				+ str(floor(character.mp))
 				+ '/'
 				+ str(floor(character.get_stat('mpmax')))
@@ -583,7 +583,7 @@ func return_all_to_mansion():
 	var teleport_base = $teleport_base
 	teleport_base.set_loc_id(active_location.id)
 	teleport_base.set_confirm_func(self, "return_all_to_mansion_confirm")
-	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [teleport_base, 'teleport_check', "Return all character back to Mansion?"])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [teleport_base, 'teleport_check', tr("RETURN_ALL_MANSION_QUESTION")])
 
 
 func return_all_to_mansion_confirm(by_teleport = false):

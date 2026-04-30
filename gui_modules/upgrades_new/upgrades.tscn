@@ -424,7 +424,7 @@ margin_top = 10.909
 margin_right = 487.289
 margin_bottom = 53.909
 custom_fonts/font = ExtResource( 27 )
-text = "Available Characters"
+text = "UPGRADEAVAILABLECHARACTERS"
 align = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
@@ -582,7 +582,7 @@ margin_right = 608.0
 margin_bottom = 42.0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 28 )
-text = "Bonuses"
+text = "UPGRADEBONUSES"
 align = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="description/VBoxContainer2"]
@@ -645,7 +645,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 35 )
-text = "CLOSE"
+text = "DIALOGUECLOSE"
 align = 1
 valign = 1
 __meta__ = {

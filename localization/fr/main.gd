@@ -542,6 +542,21 @@ en utilisant le bouton.""",
 	UPGRADECHAR = "Caractères",
 	UPGRADECRAFT = "Artisanat",
 	UPGRADERES = "Ressources",
+	UPGRADELEVEL = """%s Level %d""", # MISSING TRANSLATION
+	UPGRADEPURCHASEDQUEUED = """Upgrade purchased. Set characters to Upgrading to start working on it.
+Current Progress: %d/%d""", # MISSING TRANSLATION
+	UPGRADEPURCHASEDNOTQUEUED = """Upgrade purchased but not queued.
+Current Progress: %d/%d""", # MISSING TRANSLATION
+	UPGRADETAXINCREASE = """{color=yellow|This upgrade will increase Weekly Tax by %d}""", # MISSING TRANSLATION
+	UPGRADEQUEUETOOLTIP = """Drag and drop to change order. Click to remove from queue.""", # MISSING TRANSLATION
+	UPGRADETIMETURNS = """%d t""", # MISSING TRANSLATION
+	UPGRADEONQUEST = """On Quest: %s""", # MISSING TRANSLATION
+	UPGRADEQUESTTURNS = """%s turns""", # MISSING TRANSLATION
+	UPGRADEQUESTDAYS = """%s d.""", # MISSING TRANSLATION
+	UPGRADEGATHERING = """Gathering %s""", # MISSING TRANSLATION
+	UPGRADEADDEDQUEUE = """New upgrade added to queue: %s""", # MISSING TRANSLATION
+	UPGRADEAVAILABLECHARACTERS = """Available Characters""", # MISSING TRANSLATION
+	UPGRADEBONUSES = """Bonuses""", # MISSING TRANSLATION
 	##
 	
 	#Time
@@ -1182,6 +1197,20 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	TIME = "Temps",
 	CRAFT = "Artisanat",
 	BLACKSMITH = "Forgeron",
+	CRAFTCHARACTERS = """Characters""", # MISSING TRANSLATION
+	CRAFTORDER = """Craft Order""", # MISSING TRANSLATION
+	CRAFTTAILORING = """Tailoring""", # MISSING TRANSLATION
+	CRAFTENCHANT = """Enchant""", # MISSING TRANSLATION
+	CRAFTFILTERALL = """All""", # MISSING TRANSLATION
+	CRAFTFILTERMATERIALS = """Food&Materials""", # MISSING TRANSLATION
+	CRAFTFILTERGEAR = """Gear""", # MISSING TRANSLATION
+	CRAFTFILTERCOSTUME = """Costume""", # MISSING TRANSLATION
+	CRAFTFILTERUSABLES = """Usables""", # MISSING TRANSLATION
+	CRAFTREPEATTIMES = """[center]Repeat %s times.[/center]""", # MISSING TRANSLATION
+	CRAFTREQUIREDFOR = """Required for Craft: %s""", # MISSING TRANSLATION
+	CRAFTMATERIALSREQUIREDFOR = """Materials required for: %s""", # MISSING TRANSLATION
+	CRAFTINPOSSESSION = """In possession""", # MISSING TRANSLATION
+	CRAFTPARTEFFECTS = """Part Effects""", # MISSING TRANSLATION
 	PROGRESS = "Progrès",
 	LEVELS = """Levels""", # MISSING TRANSLATION
 	NIVEAUX = "Niveaux",
@@ -2520,6 +2549,7 @@ Damage +15%, Health +20.""", # MISSING TRANSLATION
 	STATPRODUCTIVITYDESCRIPT = """Affects all productive tasks. Total productivity applies to all occupations, while efficiency will boost specific tasks.""", # MISSING TRANSLATION
 	STATPRODUCTIVITYCDESCRIPT = "Affecte toutes les tâches productives. La productivité totale s'applique à toutes les professions, tandis que l'efficacité stimule des tâches spécifiques.",
 	STATCONSENT = "Consentement",
+	STAMINA_LABEL = """Stamina""", # MISSING TRANSLATION
 	STATCONSENTDESCRIPT = "Affecte le consentement pour les actions durant les interactions sexuelles. Chaque action a un consentement différent basé sur les traits, les partenaires et d'autres facteurs. Ce nombre ne représente que la valeur non modifiée. Le consentement de base augmente lorsque l'on obtient des résultats positifs, que l'on essaie de nouvelles actions et de nouveaux partenaires. Les compétences en matière de discipline augmentent aussi légèrement. ",
 	
 	STATEXP_GAIN_MOD = "Bonus d'expérience",
@@ -20136,6 +20166,7 @@ Touche de raccourci : 3""",
 	CUR_LEVEL_LABEL = "Niveau actuel",
 	MAX_WORKERS_LABEL = "Nombre maximum de travailleurs",
 	CURRENT_WORKERS_LABEL = "Travailleurs actuels",
+	SELECT_WORKERS_LABEL = """Select Workers""", # MISSING TRANSLATION
 	GATHERING_MOD_LABEL = "Mod de collecte",
 	
 	DESCRIPT_BUTTON_TEXT = "Ajouter une description personnalisée",
@@ -20178,6 +20209,12 @@ Touche de raccourci : 3""",
 	QUEST_SETTINGS = "Paramètres de la quête : ",
 	FACTION_POINTS = "Points de faction",
 	UNSPENT_POINTS = "Points non dépensés",
+	UPGRADES_INFO = """Upgrade effects and quest settings update after some time has passed.""", # MISSING TRANSLATION
+	UNLOCKED_LABEL = """Unlocked""", # MISSING TRANSLATION
+	POINTS_LABEL = """points""", # MISSING TRANSLATION
+	CANT_PURCHASE_LOC_LABEL = """Can't purchase anymore""", # MISSING TRANSLATION
+	REPUTATION_SHOP_LABEL = """Reputation Shop""", # MISSING TRANSLATION
+	UPGRADE_BODY_LABEL = """Upgrade Body""", # MISSING TRANSLATION
 	MARKETPLACE_LABEL = "Marché",
 	COST_LABEL = "Coût",
 	NUMBER_LABEL = "Nombre",
@@ -20200,6 +20237,11 @@ Touche de raccourci : 3""",
 	TARGET_LOC_LABEL = "Emplacement cible",
 	TRAVEL_TIME_LABEL = "Durée du voyage",
 	EST_TRAVEL_TIME_LABEL = "Durée estimée du voyage",
+	SELECT_CHAR_LABEL = """Select Character""", # MISSING TRANSLATION
+	LOCATION_LIST_LABEL = """Location List""", # MISSING TRANSLATION
+	CHARS_ON_ROAD_LABEL = """Characters on the road""", # MISSING TRANSLATION
+	ADV_MODE_LABEL = """Adv. Mode""", # MISSING TRANSLATION
+	SMPL_MODE_LABEL = """Smpl. Mode""", # MISSING TRANSLATION
 	LOC_UNACCEPT_LABEL = "Lieu inaccessible",
 	LOC_BEEN_REMOVED_LABEL = "Le lieu a été supprimé",
 	ARRIVED_AT_LOC_LABEL = "arrivé au lieu",
@@ -20210,17 +20252,33 @@ Touche de raccourci : 3""",
 	QUEST_LABEL = """Quest""", # MISSING TRANSLATION
 	MONEY_LABEL = """Money""", # MISSING TRANSLATION
 	RETURN_ALL_MANSION_LABEL = "Rappeler tout le monde",
+	RETURN_ALL_MANSION_QUESTION = """Return all characters back to Mansion?""", # MISSING TRANSLATION
 	RETURN_MANSION_LABEL = """Recall""", # MISSING TRANSLATION
 	TRAVELERS_LABEL = "Voyageurs",
 	BATTLE_GROUP_LABEL = "Groupe de combat",
 	ITEMS_LABEL = "Objets",
 	SPELLS_LABEL = "Sorts",
 	QUICK_SELL_LABEL = "Vente rapide",
+	HIRE_LABEL = """Hire""", # MISSING TRANSLATION
+	SELL_LABEL = """Sell""", # MISSING TRANSLATION
 	CAPTURED_CHARACTERS_LABEL = "Personnages capturés",
 	CYCLES_LABEL = "cycles",
 	FORGET_LOC_LABEL = "Oublier l'emplacement",
 	SKIP_TO_LAST_ROOM_LABEL = "Sauter à la dernière pièce",
+	ROOM_EMPTY_TOOLTIP = """Empty room""", # MISSING TRANSLATION
+	ROOM_COMBAT_TOOLTIP = """Guarded room""", # MISSING TRANSLATION
+	ROOM_BOSS_TOOLTIP = """Dungeon boss""", # MISSING TRANSLATION
+	ROOM_EVENT_TOOLTIP = """Room""", # MISSING TRANSLATION
+	ROOM_LADDER_DOWN_TOOLTIP = """Ladder down""", # MISSING TRANSLATION
+	ROOM_LADDER_UP_TOOLTIP = """Ladder up""", # MISSING TRANSLATION
+	ROOM_UNKNOWN_TOOLTIP = """Unknown room""", # MISSING TRANSLATION
+	SUBROOM_EMPTY_TOOLTIP = """Subroom - empty""", # MISSING TRANSLATION
+	SUBROOM_EVENT_TOOLTIP = """Subroom - event""", # MISSING TRANSLATION
+	SUBROOM_RESOURCE_TOOLTIP = """Subroom - resource""", # MISSING TRANSLATION
+	SUBROOM_UNKNOWN_TOOLTIP = """Unknown subroom""", # MISSING TRANSLATION
 	ADVANCE_LABEL = "Avancer",
+	SELECT_CHAR_BEFORE_ADV = """Select at least 1 character before advancing.""", # MISSING TRANSLATION
+	NO_STAMINA_LABEL = """No stamina""", # MISSING TRANSLATION
 	LOC_COMPLETE = "Localisation complète",
 	CANT_PAY_COSTS_LABEL = "Ne peut pas payer les coûts",
 	NO_CHARGES_LEFT_LABEL = "Il ne reste plus de frais",
