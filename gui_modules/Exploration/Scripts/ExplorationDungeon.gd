@@ -10,14 +10,12 @@ onready var map_container = $LocationGui/MapPanel/CanvasLayer
 onready var level_container = $LocationGui/Panel/ScrollContainer/GridContainer
 onready var level_panel = $LocationGui/Panel
 onready var cast_panel = $LocationGui/cast_panel
-#onready var use_state_panel = $LocationGui/use_state_panel
+onready var use_state_panel = $LocationGui/use_state_panel
 onready var return_all_btn = $LocationGui/PresentedSlavesPanel/ReturnAll
 
 #var active_area
 var active_location
 var use_state
-var cur_char_btn
-var abort_cancel_input = false
 
 var positiondict = {
 	1: "LocationGui/Positions/HBoxContainer/frontrow/1",
@@ -150,8 +148,7 @@ func _ready():
 	return_all_btn.connect("pressed", self, "return_all_to_mansion")
 	$JournalButton.connect("pressed", self, "open_journal")
 	cast_panel.connect("set_entity_use", self, "start_use_state")
-	cast_panel.connect("hide", self, "try_to_unpress_char")
-#	use_state_panel.set_explorer(self)
+	use_state_panel.set_explorer(self)
 	
 	map_panel.get_node("res").connect("toggled", self, 'toggle_res')
 	map_panel.get_node("slaves").connect("toggled", self, 'toggle_slaves')
@@ -274,7 +271,6 @@ func open_location(data): #2fix
 	input_handler.exploration_node = self
 	#input_handler.interactive_message("spring", '',{})
 #	globals.common_effects([{code = "reveal_active_dungeon"}])
-	update_intimidate()
 
 
 func build_location_description():
@@ -667,7 +663,7 @@ func build_location_group():
 		newbutton.get_node("Label").text = i.get_short_name()
 #		newbutton.connect("pressed", self, "return_character", [i])
 		newbutton.get_node("caster").visible = cast_panel.can_cast(i.id)
-		newbutton.connect("pressed", self, "process_cast_use", [newbutton, return_all_btn.visible])
+		newbutton.connect("pressed", self, "process_cast_use", [newbutton, return_all_btn.visible, true])
 		if active_location.group.values().has(i.id):
 			newbutton.get_node("icon").modulate = Color(0.3, 0.3, 0.3)
 		globals.connectslavetooltip(newbutton, i)
@@ -734,7 +730,7 @@ func build_item_panel():
 		#newnode.get_node("Label").text = i.name
 		newnode.get_node("amount").text = str(i.amount)
 		newnode.get_node("Name").text = tr("ITEM" + str(i.code).to_upper())
-		newnode.connect("pressed", self, "start_use_state", [cast_panel.ENTITY_ITEM, null, i, newnode])
+		newnode.connect("pressed", self, "start_use_state", [cast_panel.ENTITY_ITEM, null, i])
 		globals.connectitemtooltip_v2(newnode, i)
 #		tutorial_items = true
 	# if tutorial_items == true:
@@ -979,7 +975,6 @@ func scout_room(room_id, s_range, stay = false):
 			else:
 				data.intimidate = active_location.intimidate
 				active_location.intimidate = false
-				update_intimidate()
 				StartCombat(data)
 		'combat_boss':
 			selected_room = room_id
@@ -1265,9 +1260,8 @@ func reveal_map(caster):
 func set_intimidate():
 	globals.start_fixed_event('dungeon_intimidate')
 	active_location.intimidate = true
-	update_intimidate()
 
-func process_cast_use(port_node, with_return = false):#bottom = false
+func process_cast_use(port_node, with_return = false, bottom = false):
 	if !is_in_use_state():#open_cast_panel
 		var person = port_node.get("dragdata")
 		if !person:
@@ -1279,23 +1273,16 @@ func process_cast_use(port_node, with_return = false):#bottom = false
 				return_character(person)
 			return
 		
-		if cast_panel.visible:
-			cast_panel.abort_this_input_hide()
-			cast_panel.hide()
-			yield(get_tree(), 'idle_frame')
 		cast_panel.build_for_person(person.id, with_return)
-#		if !bottom:
-#			cast_panel.rect_global_position = Vector2(
-#				port_node.get_global_rect().end.x,
-#				port_node.rect_global_position.y)
-#		else:
-#			cast_panel.rect_global_position = Vector2(
-#				port_node.rect_global_position.x,
-#				port_node.get_global_rect().end.y)
-		
+		if !bottom:
+			cast_panel.rect_global_position = Vector2(
+				port_node.get_global_rect().end.x,
+				port_node.rect_global_position.y)
+		else:
+			cast_panel.rect_global_position = Vector2(
+				port_node.rect_global_position.x,
+				port_node.get_global_rect().end.y)
 		cast_panel.show()
-		cur_char_btn = port_node
-		cur_char_btn.get_node("pressed_bg").show()
 		
 	else:
 		var person = port_node.get("dragdata")
@@ -1310,66 +1297,35 @@ func process_cast_use(port_node, with_return = false):#bottom = false
 			use_item_on_character(person, use_state.entity)
 		try_stop_use_state()
 
-func start_use_state(type, caster, entity, btn):
-#	var use_state_panel_icon = use_state_panel.get_node("Button/Icon")
-#	var use_state_panel_name = use_state_panel.get_node("Button/name")
-	if is_in_use_state():
-		abort_cancel_input = true
-	try_stop_use_state(type == cast_panel.ENTITY_SKILL)
+func start_use_state(type, caster, entity):
+	var use_state_panel_icon = use_state_panel.get_node("Button/Icon")
+	var use_state_panel_name = use_state_panel.get_node("Button/name")
 	if type == cast_panel.ENTITY_RETURN:
 		return_character(caster)
-		cast_panel.hide()
 		return
-#	elif type == cast_panel.ENTITY_ITEM:
-#		entity.set_icon(use_state_panel_icon)
-#		use_state_panel_name.text = tr("ITEM" + str(entity.code).to_upper())
-	elif type == cast_panel.ENTITY_SKILL:
+	elif type == cast_panel.ENTITY_ITEM:
+		entity.set_icon(use_state_panel_icon)
+		use_state_panel_name.text = tr("ITEM" + str(entity.code).to_upper())
+	else:# type == cast_panel.ENTITY_SKILL:
 		if entity.target == 'self':
 			use_e_combat_skill(caster, caster, entity)
-			cast_panel.rebuild()
 			return
-#		use_state_panel_icon.texture = entity.icon
-#		use_state_panel_name.text = entity.name
+		use_state_panel_icon.texture = entity.icon
+		use_state_panel_name.text = entity.name
 	
 	use_state = {
 		type = type,
 		caster = caster,
 		entity = entity
 	}
-	btn.get_node("pressed_bg").show()
-	use_state.btn = btn
-#	use_state_panel.show()
+	use_state_panel.show()
 
-func try_stop_use_state(keep_panel = false):
+func try_stop_use_state():
 	if !is_in_use_state(): return
-	if use_state.has("btn"):
-		use_state.btn.get_node("pressed_bg").hide()
 	use_state = null
-	if !keep_panel:
-		cast_panel.hide()
-#	use_state_panel.hide()
-
-func try_to_unpress_char():
-	if cur_char_btn and is_instance_valid(cur_char_btn):
-		cur_char_btn.get_node("pressed_bg").hide()
-		cur_char_btn = null
+	use_state_panel.hide()
 
 func is_in_use_state():
 	return (use_state != null)
 
-func _input(event):
-	if !visible or !is_in_use_state(): return
-	if event.is_action_released("RMB") or event.is_action_released("LMB"):
-		get_tree().connect("idle_frame", self, "process_cancel_input", [], CONNECT_ONESHOT)
 
-func process_cancel_input():
-	var this_abort = abort_cancel_input
-	abort_cancel_input = false
-	if this_abort or cast_panel.cur_input_is_my(): return
-	try_stop_use_state()
-
-func update_intimidate():
-	if !active_location: return
-	$LocationGui/MapPanel/intimidate.visible = (
-		active_location.has("intimidate")
-		and active_location.intimidate)

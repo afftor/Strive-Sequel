@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://gui_modules/Universal/Modules/NavigationModule.tscn" type="PackedScene" id=2]
@@ -35,14 +35,11 @@
 [ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/panel_dungeon_portraitsmall.png" type="Texture" id=33]
 [ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/panel_dungeon_char_hover.png" type="Texture" id=34]
 [ext_resource path="res://gui_modules/Exploration/Modules/CastPanel.tscn" type="PackedScene" id=35]
-[ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=36]
+[ext_resource path="res://gui_modules/Exploration/Modules/use_state_panel.tscn" type="PackedScene" id=36]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/icon_charinfo_skills.png" type="Texture" id=37]
-[ext_resource path="res://assets/images/iconsskills/Fear.png" type="Texture" id=38]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=39]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainExtraSmallBold.tres" type="DynamicFont" id=40]
 [ext_resource path="res://gui_modules/Exploration/Modules/AvailableSlaves.tscn" type="PackedScene" id=41]
-[ext_resource path="res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_polygon_mask.png" type="Texture" id=42]
-[ext_resource path="res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_gold_polygon.png" type="Texture" id=43]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type.png" type="Texture" id=62]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type_pressed.png" type="Texture" id=63]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type_hover.png" type="Texture" id=64]
@@ -64,22 +61,6 @@
 [sub_resource type="ImageTexture" id=1]
 
 [sub_resource type="ImageTexture" id=2]
-
-[sub_resource type="Shader" id=3]
-code = "shader_type canvas_item;
-render_mode blend_mix;
-
-uniform sampler2D mask;
-
-void fragment(){
-	vec4 color = texture(TEXTURE, UV);
-	color.a = texture(mask, UV).a;
-	COLOR = color;
-}"
-
-[sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 3 )
-shader_param/mask = ExtResource( 42 )
 
 [node name="LocationGui" type="Panel"]
 margin_right = 1920.0
@@ -219,15 +200,6 @@ margin_bottom = 153.0
 texture = ExtResource( 37 )
 expand = true
 
-[node name="pressed_bg" type="TextureRect" parent="Positions/HBoxContainer/backrow/4"]
-visible = false
-modulate = Color( 2, 2, 2, 1 )
-show_behind_parent = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 36 )
-expand = true
-
 [node name="5" type="TextureButton" parent="Positions/HBoxContainer/backrow"]
 margin_top = 176.0
 margin_right = 135.0
@@ -325,15 +297,6 @@ margin_top = 126.0
 margin_right = 28.0
 margin_bottom = 153.0
 texture = ExtResource( 37 )
-expand = true
-
-[node name="pressed_bg" type="TextureRect" parent="Positions/HBoxContainer/backrow/5"]
-visible = false
-modulate = Color( 2, 2, 2, 1 )
-show_behind_parent = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 36 )
 expand = true
 
 [node name="6" type="TextureButton" parent="Positions/HBoxContainer/backrow"]
@@ -436,15 +399,6 @@ margin_top = 126.0
 margin_right = 28.0
 margin_bottom = 153.0
 texture = ExtResource( 37 )
-expand = true
-
-[node name="pressed_bg" type="TextureRect" parent="Positions/HBoxContainer/backrow/6"]
-visible = false
-modulate = Color( 2, 2, 2, 1 )
-show_behind_parent = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 36 )
 expand = true
 
 [node name="frontrow" type="VBoxContainer" parent="Positions/HBoxContainer"]
@@ -553,15 +507,6 @@ margin_bottom = 153.0
 texture = ExtResource( 37 )
 expand = true
 
-[node name="pressed_bg" type="TextureRect" parent="Positions/HBoxContainer/frontrow/1"]
-visible = false
-modulate = Color( 2, 2, 2, 1 )
-show_behind_parent = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 36 )
-expand = true
-
 [node name="2" type="TextureButton" parent="Positions/HBoxContainer/frontrow"]
 margin_top = 176.0
 margin_right = 135.0
@@ -664,15 +609,6 @@ margin_top = 126.0
 margin_right = 28.0
 margin_bottom = 153.0
 texture = ExtResource( 37 )
-expand = true
-
-[node name="pressed_bg" type="TextureRect" parent="Positions/HBoxContainer/frontrow/2"]
-visible = false
-modulate = Color( 2, 2, 2, 1 )
-show_behind_parent = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 36 )
 expand = true
 
 [node name="3" type="TextureButton" parent="Positions/HBoxContainer/frontrow"]
@@ -779,15 +715,6 @@ margin_bottom = 153.0
 texture = ExtResource( 37 )
 expand = true
 
-[node name="pressed_bg" type="TextureRect" parent="Positions/HBoxContainer/frontrow/3"]
-visible = false
-modulate = Color( 2, 2, 2, 1 )
-show_behind_parent = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 36 )
-expand = true
-
 [node name="TextureRect" type="TextureRect" parent="Positions"]
 visible = false
 margin_top = 5.0
@@ -850,15 +777,6 @@ texture_disabled = ExtResource( 33 )
 texture_focused = ExtResource( 33 )
 stretch_mode = 5
 script = ExtResource( 15 )
-
-[node name="pressed_bg" type="TextureRect" parent="PresentedSlavesPanel/ScrollContainer/VBoxContainer/Button"]
-visible = false
-modulate = Color( 2, 2, 2, 1 )
-show_behind_parent = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 36 )
-expand = true
 
 [node name="icon" type="TextureRect" parent="PresentedSlavesPanel/ScrollContainer/VBoxContainer/Button"]
 show_behind_parent = true
@@ -954,15 +872,6 @@ margin_bottom = 52.0
 rect_min_size = Vector2( 0, 40 )
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 27 )
-
-[node name="pressed_bg" type="TextureRect" parent="ItemUsePanel/ScrollContainer/VBoxContainer/Button"]
-visible = false
-modulate = Color( 2, 2, 2, 1 )
-show_behind_parent = true
-margin_right = 266.0
-margin_bottom = 52.0
-texture = ExtResource( 36 )
-expand = true
 
 [node name="Icon" type="TextureRect" parent="ItemUsePanel/ScrollContainer/VBoxContainer/Button"]
 margin_left = 5.10843
@@ -1467,25 +1376,6 @@ anchor_bottom = 1.0
 mouse_filter = 2
 expand = true
 
-[node name="intimidate" type="TextureRect" parent="MapPanel"]
-visible = false
-margin_left = 25.0
-margin_top = 21.0
-margin_right = 87.0
-margin_bottom = 85.0
-texture = ExtResource( 43 )
-expand = true
-stretch_mode = 6
-
-[node name="icon" type="TextureRect" parent="MapPanel/intimidate"]
-show_behind_parent = true
-material = SubResource( 4 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 38 )
-expand = true
-stretch_mode = 6
-
 [node name="crop" type="Light2D" parent="MapPanel"]
 light_mask = 32
 position = Vector2( 628, 375.5 )
@@ -1624,7 +1514,5 @@ text = "1"
 
 [node name="cast_panel" parent="." instance=ExtResource( 35 )]
 visible = false
-margin_left = 810.0
-margin_top = 442.0
-margin_right = 1110.0
-margin_bottom = 1030.0
+
+[node name="use_state_panel" parent="." instance=ExtResource( 36 )]
