@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/panel_complete.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/iconsgear/lifeshard.png" type="Texture" id=3]
 [ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/panel_dungeon_item.png" type="Texture" id=4]
-[ext_resource path="res://gui_modules/Exploration/Scripts/use_state_panel.gd" type="Script" id=5]
+[ext_resource path="res://gui_modules/unused/use_state_panel.gd" type="Script" id=5]
 
 [node name="use_state_panel" type="NinePatchRect"]
 visible = false
