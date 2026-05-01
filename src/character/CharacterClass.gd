@@ -2326,7 +2326,7 @@ func affect_char(template, manifest = false):
 		'reset_cooldowns':
 			skills.reset_cooldowns()
 		'dungeon_effect':
-			if gui_controller.exploration_dungeon != null:
+			if gui_controller.exploration_dungeon != null and input_handler.exploration_node == gui_controller.exploration_dungeon:
 				match template.value:
 					'reveal_map':
 						gui_controller.exploration_dungeon.reveal_map(self)
