@@ -25,6 +25,7 @@ var positiondict = {
 
 func _ready():
 	# ResourceScripts.game_world.make_world()
+	set_process_input(false)
 	for i in positiondict:
 		var pos_node = get_node(positiondict[i])
 		pos_node.metadata = i
@@ -140,6 +141,10 @@ func open(location):
 func open_location(data):
 	input_handler.ActivateTutorial("TUTORIALLIST6")
 	input_handler.StopBackgroundSound()
+	#added set_process_input() like in ExplorationDungeon.gd
+	#it seems useless now, but mind, that NavigationModule.gd switches it off,
+	#wich can cause unexpected behavioral
+	set_process_input(true)
 	gui_controller.nav_panel = $LocationGui/NavigationModule
 #	nav = $LocationGui/NavigationModule
 	selected_location = data.id
