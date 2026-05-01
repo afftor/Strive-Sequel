@@ -436,32 +436,6 @@ var skills = {
 		value = [['caster.matk', '*2.5']],
 		damagestat = ['-damage_hp']
 	},
-	fly_evasion = {
-		code = 'fly_evasion',
-		descript = '',
-		icon = load('res://assets/images/iconsraces/angel.png'),
-		learn_reqs = [{code = 'stat', stat = 'wings', operant = 'neq', value = ''}],
-		learn_cost = 500,
-		type = 'combat', 
-		ability_type = 'spell',
-		tags = ['buff','support'],
-		reqs = [],
-		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_t_fly', duration = 1})], 
-		cost = {},
-		charges = 0,
-		combatcooldown = 4, #i think this is right
-		cooldown = 0,
-		catalysts = {},
-		target = 'self',
-		target_number = 'single',
-		target_range = 'any',
-		damage_type = 'weapon',
-		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = null, hit = null},
-		value = ['0'],
-		damagestat = 'no_stat'
-	},
 	earth_shatter = {
 		code = 'earth_shatter',
 		
@@ -1151,26 +1125,6 @@ var effects = {
 #		],
 #		buffs = []
 #	},
-	e_t_fly = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'fly',
-		tick_event = variables.TR_TURN_GET,
-		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		duration = 'arg',
-		stack = 1,#or not
-		tags = ['buff'],
-		sub_effects = [],
-		atomic = [{type = 'stat_add', stat = 'evasion', value = 90}],
-		buffs = [
-			{
-				icon = "res://assets/images/iconsraces/angel.png",
-				description = "TRAITEFFECTFLY",
-				limit = 1,
-				t_name = 'fly'
-			}
-		],
-	},
 #	e_s_eshatter = {
 #		type = 'temp_s',
 #		target = 'target',
