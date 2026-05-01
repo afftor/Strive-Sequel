@@ -853,7 +853,10 @@ var Skilllist = {
 		tags = ['damage', 'basic', 'ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'bleed', chance = 0.5, duration = 2}), Effectdata.rebuild_template({effect = 'disarm', duration = 1})],
+		effects = [
+			Effectdata.rebuild_template({effect = 'bleed', chance = 0.5, duration = 2}), 
+			Effectdata.rebuild_template({effect = 'disarm', duration = 1})
+		],
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -903,7 +906,10 @@ var Skilllist = {
 		tags = ['debuff', 'ads', 'damage'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_hmark', duration = 3}), Effectdata.rebuild_template({effect = 'burn', chance = 0.5, duration = 3})], 
+		effects = [
+			Effectdata.rebuild_template({effect = 'e_s_hmark', duration = 3}), 
+			Effectdata.rebuild_template({effect = 'burn', chance = 0.5, duration = 3})
+		], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -975,7 +981,11 @@ var Skilllist = {
 		tags = ['damage', 'ads', 'dark'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'silence', duration = 1}), Effectdata.rebuild_template({effect = 'stun', duration = 1}), Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('burn')})], 
+		effects = [
+			Effectdata.rebuild_template({effect = 'silence', duration = 1}), 
+			Effectdata.rebuild_template({effect = 'stun', duration = 1}), 
+			Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('burn')})
+		], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 2,
@@ -998,7 +1008,10 @@ var Skilllist = {
 		tags = ['damage','ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_shred', duration = 3}), Effectdata.rebuild_template({effect = 'burn', duration = 2})], 
+		effects = [
+			Effectdata.rebuild_template({effect = 'e_s_shred', duration = 3}), 
+			Effectdata.rebuild_template({effect = 'burn', duration = 2})
+		], 
 		cost = {mp = 3},
 		charges = 0,
 		combatcooldown = 0,
@@ -1021,7 +1034,10 @@ var Skilllist = {
 		tags = ['damage', 'aoe', 'ads', 'fire'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'burn', chance = 0.3, duration = 2}), Effectdata.rebuild_template({effect = 'blind', duration = 1})], 
+		effects = [
+			Effectdata.rebuild_template({effect = 'burn', chance = 0.3, duration = 2}), 
+			Effectdata.rebuild_template({effect = 'blind', duration = 1})
+		], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -1042,7 +1058,11 @@ var Skilllist = {
 		tags = ['damage', 'ads', 'air'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'stun', duration = 1}), Effectdata.rebuild_template({effect = 'e_s_shred', duration = 2}), Effectdata.rebuild_template({effect = 'e_s_shatter', duration = 2})],
+		effects = [
+			Effectdata.rebuild_template({effect = 'stun', duration = 1}), 
+			Effectdata.rebuild_template({effect = 'e_s_shred', duration = 2}), 
+			Effectdata.rebuild_template({effect = 'e_s_shatter', duration = 2})
+		],
 		cost = {mp = 3},
 		charges = 0,
 		combatcooldown = 0,
@@ -1063,7 +1083,10 @@ var Skilllist = {
 		tags = ['damdge', 'aoe', 'ads', 'air'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'wet'}), Effectdata.rebuild_template({effect = 'disarm', duration = 1, chance = 0.3})], 
+		effects = [
+			Effectdata.rebuild_template({effect = 'wet'}), 
+			Effectdata.rebuild_template({effect = 'disarm', duration = 1, chance = 0.3})
+		], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -1107,7 +1130,10 @@ var Skilllist = {
 		tags = ['debuff', 'damage', 'ads', 'mind'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_hmark', duration = 3}), Effectdata.rebuild_template({effect = 'fear', duration = 3})], 
+		effects = [
+			Effectdata.rebuild_template({effect = 'e_s_hmark', duration = 3}), 
+			Effectdata.rebuild_template({effect = 'fear', duration = 3})
+		], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -1179,7 +1205,10 @@ var Skilllist = {
 		tags = ['debuff', 'aoe', 'ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'cursed', duration = 2}), Effectdata.rebuild_template({effect = 'sleep', chance = 0.3, duration = 1})], 
+		effects = [
+			Effectdata.rebuild_template({effect = 'cursed', duration = 2}), 
+			Effectdata.rebuild_template({effect = 'sleep', chance = 0.3, duration = 1})
+		], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -1223,7 +1252,10 @@ var Skilllist = {
 		tags = ['damage','debuff', 'ads', 'dark'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'disarm', chance = 0.5, duration = 2}), Effectdata.rebuild_template({effect = 'silence', chance = 0.5, duration = 2})], 
+		effects = [
+			Effectdata.rebuild_template({effect = 'disarm', chance = 0.5, duration = 2}), 
+			Effectdata.rebuild_template({effect = 'silence', chance = 0.5, duration = 2})
+		], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -1290,7 +1322,10 @@ var Skilllist = {
 		tags = ['damage','aoe', 'ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'fear', duration = 2}), Effectdata.rebuild_template({effect = 'bleed', duration = 2, chance = 0.5})], 
+		effects = [
+			Effectdata.rebuild_template({effect = 'fear', duration = 2}), 
+			Effectdata.rebuild_template({effect = 'bleed', duration = 2, chance = 0.5})
+		], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -1313,7 +1348,11 @@ var Skilllist = {
 		tags = ['damage','debuff', 'ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'bleed', duration = 2}), Effectdata.rebuild_template({effect = 'poison', duration = 2}), Effectdata.rebuild_template({effect = 'e_s_ensnare', duration = 2})], 
+		effects = [
+			Effectdata.rebuild_template({effect = 'bleed', duration = 2}), 
+			Effectdata.rebuild_template({effect = 'poison', duration = 2}), 
+			Effectdata.rebuild_template({effect = 'e_s_ensnare', duration = 2})
+		], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -1336,7 +1375,10 @@ var Skilllist = {
 		tags = ['damage','aoe', 'ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'disarm',  duration = 1}), Effectdata.rebuild_template({effect = 'e_s_shred', duration = 2})], 
+		effects = [
+			Effectdata.rebuild_template({effect = 'disarm',  duration = 1}), 
+			Effectdata.rebuild_template({effect = 'e_s_shred', duration = 2})
+		], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -1383,7 +1425,10 @@ var Skilllist = {
 		tags = ['damage','debuff', 'ads', 'light'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'blind', duration = 2, chance = 0.7}), Effectdata.rebuild_template({effect = 'stun', duration = 1, chance = 0.3})], 
+		effects = [
+			Effectdata.rebuild_template({effect = 'blind', duration = 2, chance = 0.7}), 
+			Effectdata.rebuild_template({effect = 'stun', duration = 1, chance = 0.3})
+		], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -1406,7 +1451,10 @@ var Skilllist = {
 		tags = ['damage','ads', 'air', 'aoe'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect =  'silence', duration = 1, chance = 0.7}), Effectdata.rebuild_template({effect = 'disarm', duration = 1, chance = 0.7})], 
+		effects = [
+			Effectdata.rebuild_template({effect =  'silence', duration = 1, chance = 0.7}), 
+			Effectdata.rebuild_template({effect = 'disarm', duration = 1, chance = 0.7})
+		], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -1475,7 +1523,11 @@ var Skilllist = {
 		tags = ['damage','ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_ensnare', duration = 2}), Effectdata.rebuild_template({effect = 'silence',  duration = 1}), Effectdata.rebuild_template({effect = 'disarm', duration = 1})], 
+		effects = [
+			Effectdata.rebuild_template({effect = 'e_s_ensnare', duration = 2}), 
+			Effectdata.rebuild_template({effect = 'silence',  duration = 1}), 
+			Effectdata.rebuild_template({effect = 'disarm', duration = 1})
+		], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -1498,7 +1550,10 @@ var Skilllist = {
 		tags = ['damage','ads', 'aoe', 'water'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'poison', duration = 2}), Effectdata.rebuild_template({effect = 'e_s_shred',  duration = 3})], 
+		effects = [
+			Effectdata.rebuild_template({effect = 'poison', duration = 2}),
+			Effectdata.rebuild_template({effect = 'e_s_shred',  duration = 3})
+		], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -1521,7 +1576,10 @@ var Skilllist = {
 		tags = ['damage', 'basic', 'ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'bleed', chance = 0.5, duration = 2}), Effectdata.rebuild_template({effect = 'fear', chance = 0.7, duration = 1})],
+		effects = [
+			Effectdata.rebuild_template({effect = 'bleed', chance = 0.5, duration = 2}),
+			Effectdata.rebuild_template({effect = 'fear', chance = 0.7, duration = 1})
+		],
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
