@@ -2115,7 +2115,7 @@ func common_effects(effects):
 						character.add_trait(k.trait)
 					elif k.code == 'create_and_equip': #there should be static items only
 						var item = CreateGearItem(k.item, k.parts)
-						AddItemToInventory(item)
+						AddItemToInventory(item, false)
 						character.equip(item)
 					elif k.code == 'take_virginity':
 						if k.partner == 'master':
@@ -3000,7 +3000,7 @@ func apply_starting_preset():
 
 func equip_char(ch, type, args, quality = 'poor'):
 	var newgear = CreateGearItemQuality(type, args, quality) #should add no enchantments/curses
-	AddItemToInventory(newgear)
+	AddItemToInventory(newgear, false)
 	ch.equip(newgear)
 
 

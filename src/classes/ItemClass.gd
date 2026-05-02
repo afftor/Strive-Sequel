@@ -118,6 +118,9 @@ func CreateUsable(ItemName = '', number = 1):
 func amount_set(value):
 	amount = value
 	if amount <= 0:
+		if owner != null:
+			print("wwarning - state-based removal of equipped item")
+			characters_pool.get_char_by_id(owner).unequip(self, false)
 #		ResourceScripts.game_res.items.erase(id)
 		ResourceScripts.game_res.call_deferred('remove_item_id', id)
 
@@ -764,7 +767,7 @@ func identify():
 
 func destroy():
 	if owner != null:
-		characters_pool.get_char_by_id(owner).unequip(self)
+		characters_pool.get_char_by_id(owner).unequip(self, false)
 	globals.remove_item(self)
 
 func get_owner():
