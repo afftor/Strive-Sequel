@@ -10,7 +10,11 @@ var skills = {
 		tags = ['heal', 'noreduce', 'noevade','support', 'exploration'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_regen', push_value = true, duration = 2}),Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('poison')}),Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('burn')})], 
+		effects = [
+			Effectdata.rebuild_template({effect = 'e_s_regen', push_value = true, duration = 2}),
+			Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('poison')}),
+			Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('burn')})
+		], 
 		cost = {mp = 10},
 		charges = 0,
 		combatcooldown = 0,

@@ -316,17 +316,18 @@ func update_resources():
 	restbutton.connect("pressed", self, "select_resource", [{code = "rest"}, "rest", restbutton])
 	globals.connecttexttooltip(restbutton, tr('TASKREST'))
 	
-	servicebutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
-	if selected_job != null:
-		if selected_job.has("code"):
-			if selected_job.code == "brothel":
-				servicebutton.pressed = true
-	servicebutton.get_node("TextureRect").texture = load("res://assets/images/gui/service.png")
-	servicebutton.connect("pressed", self, "select_resource", [{code = "brothel"}, "brothel", servicebutton])
-	globals.connecttexttooltip(servicebutton, tr('TASKRESTSERVICE'))
-	
 	var person_location = selected_location
 	var location = ResourceScripts.world_gen.get_location_from_code(person_location)
+	
+	if location.type == 'capital':
+		servicebutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
+		if selected_job != null:
+			if selected_job.has("code"):
+				if selected_job.code == "brothel":
+					servicebutton.pressed = true
+		servicebutton.get_node("TextureRect").texture = load("res://assets/images/gui/service.png")
+		servicebutton.connect("pressed", self, "select_resource", [{code = "brothel"}, "brothel", servicebutton])
+		globals.connecttexttooltip(servicebutton, tr('TASKRESTSERVICE'))
 	
 	for r_task in ['recruit_easy', 'recruit_hard']:
 		if location.has('tags') and location.tags.has(r_task):

@@ -559,7 +559,7 @@ func make_item(id, level):
 			q = 'legendary'
 			t = 't6'
 			item = globals.CreateGearItemQualityEnchants(id, t, q)
-	globals.AddItemToInventory(item)
+	globals.AddItemToInventory(item, false)
 	return item
 
 

@@ -1691,27 +1691,28 @@ func rebuild_template(args):
 			receiver = {obj = 'receiver', func = 'eq'},
 		},
 	}
-	if args.has('trigger'): res.trigger.push_back(args.trigger) #for simplicity only one trigger type can be passed
-	else: res.trigger.push_back(variables.TR_POSTDAMAGE)
-
-	if args.has('res_condition'): 
-		res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', args.res_condition]})
+	if args.has('trigger'): 
+		res.trigger.push_back(args.trigger) #for simplicity only one trigger type can be passed
 	else: 
-		res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]})
-
+		res.trigger.push_back(variables.TR_POSTDAMAGE)
+		if args.has('res_condition'): 
+			res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', args.res_condition]})
+		else: 
+			res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]})
+	
 	if args.has('checkres'):
 		res.conditions.push_back({type = 'checkres', value = args.chance, resist = args.checkres})
 	elif args.has('chance'):
 		res.args.chance = {obj = 'self', func = 'chance', chance = args.chance}
 #		res.conditions.push_back({type = 'random', value = args.chance})
-
+	
 	if args.has('duration'): 
 		res.args.duration = {obj = 'self', func = 'dur', dur = args.duration}
 	if args.has('push_value'):
 		res.args.process_value = {obj = 'parent', func = 'get', arg = 'process_value'}
 	
 	res.sub_effects.push_back(args.effect)
-
+	
 	return res
 
 
