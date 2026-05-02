@@ -315,6 +315,7 @@ var effects = {
 		target = 'target',
 		atomic = [{type = 'remove_all_effects', value = 'atkpass'}],
 	},
+	#Ramont
 	ramont_parry_n_riposte_stance = {
 		type = 'trigger',
 		trigger = [variables.TR_TURN_S],
@@ -472,6 +473,209 @@ var effects = {
 		tags = [],
 		atomic = [{type = 'use_combat_skill', skill = 'ramont_embrago'},]
 	},
+	#Hector
+	hector_blood_of_mother = {
+		type = 'trigger',
+		trigger = [variables.TR_COMBAT_S],
+		conditions = [],
+		atomic = [],
+		buffs = [],
+		req_skill = false,
+		tags = ['hector_blood_of_mother'],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				atomic = [{type = 'use_combat_skill', skill = 'hector_blood_of_mother'}]
+			},
+		],
+	},
+	cali_vengeful_wrath_apply = {
+		type = 'oneshot',
+		target = 'target',
+		tags = [],
+		conditions = [
+			{code = 'stat', stat = 'unique', operant = 'eq', value = "cali"},
+		],
+		atomic = [{type = 'sfx', value = 'provocation'},{type = 'effect', value = 'cali_vengeful_wrath'},],
+	},
+	cali_vengeful_wrath = {
+		type = 'temp_s',
+		target = 'target',
+		stack = 'cali_vengeful_wrath',
+		tick_event = [variables.TR_NONE],
+		rem_event = [variables.TR_COMBAT_F],
+		duration = 3,
+		tags = ['cali_vengeful_wrath'],
+		statchanges = {atk = 30, armorpenetration = 20},
+		sub_effects = [
+			{
+				type = 'trigger',
+				trigger = [variables.TR_HIT],
+				req_skill = true,
+				conditions = [
+					{type = 'target', value = [{code = 'trait', trait = 'hector_blood_of_mother', check = true}]},
+					{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}
+				],
+				sub_effects = [
+					{
+						type = 'oneshot',
+						target = 'skill',
+						conditions = [],
+						atomic = [{type = 'stat_mul', stat = 'value', value = 1.2},],
+					},
+					{
+						type = 'oneshot',
+						target = 'target',
+						conditions = [],
+						atomic = [{type = 'remove_all_effects', value = 'hector_vain_pride_s'}],
+					},
+				]
+			},
+		],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/skill_bloodboil.png",
+			description = "EFFECT_CALI_VENGEFUL_WRATH",
+		}]
+	},
+	hector_vain_pride = {
+		type = 'simple',
+		statchanges = {},
+		buffs = [{
+			icon = "res://assets/images/iconsskills/defaultattack.png",
+			description = "TRAIT_HECTOR_VAIN_PRIDE",
+		}]
+	},
+	hector_vain_pride_on_hit = {
+		type = 'trigger',
+		req_skill = true,
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'skill', value = ['tags', 'has', 'damage'] },
+		],
+		buffs = [],
+		duration = 1,
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'caster',
+				conditions = [],
+				atomic = [{type = 'effect', value = 'hector_vain_pride_s'},],
+			},
+		],
+		args = {
+			skill = {obj = 'skill', func = 'eq'},
+			caster = {obj = 'caster', func = 'eq'},
+			target = {obj = 'target', func = 'eq'},
+			receiver = {obj = 'receiver', func = 'eq'},
+		},
+	},
+	hector_on_miss = {
+		type = 'trigger',
+		trigger = [variables.TR_POST_TARG],
+		req_skill = true,
+		conditions = [
+			{type = 'skill', value = ['tags', 'has', 'damage'] },
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_MISS]},
+		],
+		args = {
+			skill = {obj = 'skill', func = 'eq'},
+			caster = {obj = 'caster', func = 'eq'},
+			target = {obj = 'target', func = 'eq'},
+		},
+		buffs = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'target',
+				atomic = [{type = 'effect', value = 'hector_vain_pride_s'}],
+			},
+		]
+	},
+	hector_vain_pride_on_def = {
+		type = 'trigger',
+		trigger = [variables.TR_POST_TARG],
+		req_skill = true,
+		conditions = [
+			{type = 'skill', value = ['tags', 'has', 'damage'] },
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+		],
+		args = {
+			skill = {obj = 'skill', func = 'eq'},
+			caster = {obj = 'caster', func = 'eq'},
+			target = {obj = 'target', func = 'eq'},
+		},
+		buffs = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'target',
+				atomic = [{type = 'remove_effect', value = 'hector_vain_pride_s'}],
+			},
+		]
+	},
+	hector_vain_pride_s = {
+		type = 'temp_s',
+		target = 'target',
+		stack = 'hector_vain_pride_s',
+		rem_event = [variables.TR_DEATH,variables.TR_COMBAT_F],
+		tick_event = [variables.TR_NONE],
+		tags = ['hector_vain_pride_s'],
+		duration = 1,
+		statchanges = {atk = 10, hitrate = 10},
+		sub_effects = [],
+		buffs = ['b_hector_vain_pride_s']
+	},
+	bodyguard = {
+		type = 'temp_s',
+		target = 'target',
+		stack = 'bodyguard',
+		rem_event = [variables.TR_DEATH,variables.TR_COMBAT_F],
+		tick_event = [variables.TR_TURN_F],
+		tags = ['bodyguard','defensive','remove_by_immoblizing'],
+		duration = 'arg',
+		statchanges = {},
+		sub_effects = [],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/Protect.png",
+			description = "EFFECT_BODYGUARD",
+		}]
+	},
+	vip = {
+		type = 'temp_s',
+		target = 'target',
+		stack = 'vip',
+		tick_event = [variables.TR_NONE],
+		rem_event = [variables.TR_COMBAT_F],
+		duration = 1,
+		tags = ['vip'],
+		statchanges = {},
+		sub_effects = [
+			{
+				type = 'trigger',
+				trigger = [variables.TR_POST_TARG],
+				req_skill = true,
+				conditions = [
+					{type = 'skill', value = ['tags', 'has', 'damage'] },
+					{type = 'skill', value = ['target_number', 'eq', 'single']},
+					{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}
+				],
+				sub_effects = [
+					{
+						type = 'oneshot',
+						target = 'target',
+						conditions = [],
+						atomic = [{type = 'remove_all_effects', value = 'vip'}],
+					},
+				]
+			},
+		],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/icon_mirror_image.png",
+			description = "EFFECT_VIP",
+		}]
+	},
 }
 var atomic_effects = {}
 var buffs = {
@@ -508,6 +712,11 @@ var buffs = {
 		icon = "res://assets/images/iconsskills/strongattack.png",
 		description = "EFFECT_RAMONTPARRY",
 	},
+	b_hector_vain_pride_s = {
+		icon = "res://assets/images/iconsskills/defaultattack.png",
+		description = "TRAIT_HECTOR_VAIN_PRIDE_S",
+		tags = ['show_amount']
+	},
 }
 
 var stacks = {
@@ -520,12 +729,29 @@ var stacks = {
 		buff = 'b_atkpass'
 	}, #st 0
 	atkpass_remove = {}, #st 1
-		ramont_parry_n_riposte = {
+	ramont_parry_n_riposte = {
 		type = 'stack_s',
 		stack = 1,
 	},
 	eviction_notice = {
 		type = 'stack_s',
 		stack = 2,
+	},
+	cali_vengeful_wrath = {
+		type = 'stack_s',
+		stack = 1,
+	},
+	hector_vain_pride_s = {
+		type = 'stack_a',
+		stack = 10,
+		buff = 'b_hector_vain_pride_s',
+	},
+	bodyguard = {
+		type = 'stack_s',
+		stack = 1,
+	},
+	vip = {
+		type = 'stack_s',
+		stack = 1,
 	},
 }

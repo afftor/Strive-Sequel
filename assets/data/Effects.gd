@@ -713,6 +713,14 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_POST_TARG, variables.TR_DEATH],
 		duration = 'arg',
 		buffs = ['b_sleep'],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				conditions = [],
+				atomic = [{type = 'remove_all_effects', value = 'remove_by_immoblizing'}],
+			},
+		]
 	},
 	e_s_blind = {
 		type = 'temp_s',
@@ -805,7 +813,7 @@ var effect_table = {
 				type = 'oneshot',
 				target = 'owner',
 				conditions = [],
-				atomic = [{type = 'remove_all_effects', value = 'hide'}],
+				atomic = [{type = 'remove_all_effects', value = 'hide'},{type = 'remove_all_effects', value = 'remove_by_immoblizing'}],
 			},
 		],
 	},
@@ -818,6 +826,14 @@ var effect_table = {
 		stack = 'charm',
 		tags = ['debuff', 'charm', 'disable'],
 		buffs = ['b_charm_c'],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				conditions = [],
+				atomic = [{type = 'remove_all_effects', value = 'remove_by_immoblizing'}],
+			},
+		]
 	},
 	e_s_wet = {
 		type = 'temp_s',
@@ -868,7 +884,7 @@ var effect_table = {
 				type = 'oneshot',
 				target = 'owner',
 				conditions = [],
-				atomic = [{type = 'remove_all_effects', value = 'hide'}],
+				atomic = [{type = 'remove_all_effects', value = 'hide'},{type = 'remove_all_effects', value = 'remove_by_immoblizing'}],
 			},
 		]
 	},

@@ -1088,6 +1088,8 @@ func use_skill(skill_code, caster, target, mode = variables.SKILL_BASE):
 	var template = Skilldata.get_template_combat(skill_code, caster)
 	if template.ability_type == 'item':
 		mode = variables.SKILL_ITEM
+	if have_bodyguard(target) and template.tags.has('damage') and template.target_number == 'single':
+		target = get_bodyguard(target)
 	var tmp_handler = ActionQueue.add_skill_callback()
 	tmp_handler.mode = mode
 	tmp_handler.parent = self
@@ -1975,3 +1977,24 @@ func hide_popup_skill():
 
 func get_current_actor():#for external use
 	return get_char_by_pos(currentactor)
+
+func have_bodyguard(guard_target):
+	if !guard_target.has_status('vip'):
+		return false
+	var allies = get_allied_targets(guard_target)
+	for ally in allies:
+		if ally.has_status('bodyguard') and ally.can_act():
+			return true
+	return false
+
+func get_bodyguard(guard_target):
+	var allies = get_allied_targets(guard_target)
+	var guards = []
+	for ally in allies:
+		if ally.has_status('bodyguard') and ally.can_act():
+			guards.push_back(ally)
+	if guards.size() <= 0:
+		print('error - get_bodyguard func got call even when there\'s no bodyguard? How?')
+		return guard_target
+	return input_handler.random_from_array(guards)
+	

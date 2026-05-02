@@ -240,6 +240,9 @@ func refine_target(skill, caster, ttarget): #s_skill, caster, target
 	elif skill.keep_target == variables.TARGET_MOVEFIRST:
 		skill.keep_target = variables.TARGET_KEEP
 		change = true
+	elif combatnode.have_bodyguard(ttarget) and tags.has('damage') and target_number == 'single':
+		change = true
+		return combatnode.get_bodyguard(ttarget)
 	if !change: 
 		return ttarget
 	#fing new target
