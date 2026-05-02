@@ -11,7 +11,6 @@ onready var MenuModule = $MansionBottomLeftModule
 #onready var UpgradesModule = $MansionUpgradesModule
 #onready var NavModule = $NavigationModule
 onready var CraftModule = $MansionCraftModule
-onready var CraftSmallModule = $MansionCraftSmallModule
 onready var JobModule = $MansionJobModule2
 onready var SexSelect = $SexSelectMenu
 onready var Journal = $MansionJournalModule
@@ -406,11 +405,7 @@ func craft_handler():
 			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(871, 300))
 			ResourceScripts.core_animations.FadeAnimation(CraftModule, 0.3)
 			CraftModule.hide()
-			CraftSmallModule.update()
-			CraftSmallModule.show()
 			SlaveListModule.rebuild()
-			ResourceScripts.core_animations.UnfadeAnimation(CraftSmallModule, 0.3)
-			ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
 
 
 #func travels_manager(params):
@@ -494,7 +489,6 @@ func slave_list_manager():
 			else:
 				persons_for_craft.erase(active_person)
 			SlaveListModule.rebuild()
-			CraftSmallModule.update()
 		'sex':
 			if !sex_participants.has(active_person) && active_person != null:
 				sex_participants.append(active_person)

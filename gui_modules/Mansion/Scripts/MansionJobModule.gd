@@ -181,7 +181,7 @@ func update_status(newbutton, ch):
 	var gatherable = Items.materiallist.has(ch.get_work())
 	if ch.get_work() == '' or !ch.is_avaliable():
 		if !ch.is_on_quest():
-			newbutton.get_node("Status").texture = load("res://assets/images/gui/gui icons/icon_bedlimit.png")
+			newbutton.get_node("Status").texture = load("res://assets/images/gui/icon_bed.png")
 		if !ch.is_worker():
 			newbutton.disabled = true
 	elif ch.get_work() == 'special':
@@ -312,7 +312,7 @@ func update_resources():
 		if selected_job.has("code"):
 			if selected_job.code == "rest":
 				restbutton.pressed = true
-	restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_bedlimit.png")
+	restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/icon_bed.png")
 	restbutton.connect("pressed", self, "select_resource", [{code = "rest"}, "rest", restbutton])
 	globals.connecttexttooltip(restbutton, tr('TASKREST'))
 	
@@ -420,7 +420,7 @@ func update_resources():
 			if Items.materiallist.has(i.production_item):
 				globals.connectmaterialtooltip(newbutton, Items.materiallist[i.production_item])
 			else:
-				globals.connecttexttooltip(newbutton, i.name)
+				globals.connecttexttooltip(newbutton, tr(i.name))
 			var tmp_job = i
 			var tmp_res
 			if i.has("production_item"):
@@ -559,30 +559,30 @@ func select_resource(job, resource, newbutton):
 			text = tr(stored_spec_job.descript) + "\n" + tr("TASKRONMISSIONCOMPLETE")
 		elif job.has('worktool') || job.has('tool_type'):
 			$Worktool.show()
-			globals.connecttexttooltip($Worktool, "Effective Tool: Will increase work speed when equipped")
+			globals.connecttexttooltip($Worktool, tr("JOBWORKTOOLTOOLTIP"))
 		if !job.tags.has('hide_progress_ratio'):
 			$Workunit.show()
 			$WorkunitLabel.show()
 			$WorkunitLabel.text = "%.1f" % job.progress_per_item
-			globals.connecttexttooltip($Workunit, "Progress required per item")
+			globals.connecttexttooltip($Workunit, tr("JOBWORKUNITTOOLTIP"))
 		
 		if job.has('workstat'):
 			$Workstat.texture = stat_icons[job.workstat]
 			$Workstat.show()
 			if job.code != 'brothel':
-				globals.connecttexttooltip($Workstat, "Job Stat: " + tr("STAT"+job.workstat.to_upper()) + "\nThis stat will grow by attending to this job.")
+				globals.connecttexttooltip($Workstat, tr("JOBSTATTOOLTIP") % tr("STAT"+job.workstat.to_upper()))
 			else:
-				globals.connecttexttooltip($Workstat, "Growing stat will depend on what task will be performed by character when servicing customers.")
+				globals.connecttexttooltip($Workstat, tr("JOBSTATBROTHELDESCRIPT"))
 		if job.has('mod') and job.mod != "":
 			$Modlabel.show()
 			$Workmod.show()
 			$Modlabel.text = tr("STAT" + job.mod.to_upper())
-			globals.connecttexttooltip($Workmod, "Task Efficiency Modifier")
+			globals.connecttexttooltip($Workmod, tr("JOBMODTOOLTIP"))
 		elif job.has('workmod'):
 			$Modlabel.show()
 			$Workmod.show()
 			$Modlabel.text = tr("STAT" + job.workmod.to_upper())
-			globals.connecttexttooltip($Workmod, "Task Efficiency Modifier")
+			globals.connecttexttooltip($Workmod, tr("JOBMODTOOLTIP"))
 			
 		
 		$DescriptionLabel.bbcode_text = text
@@ -807,7 +807,7 @@ var brothel_rules = {
 func show_brothel_options():
 	
 	$BrothelRules.show()
-	$BrothelRules/Label.text = "Service Rules: " + person.get_short_name()
+	$BrothelRules/Label.text = tr("FARMSERVICERULES") % person.get_short_name()
 	input_handler.ClearContainer($BrothelRules/GridContainer)
 	
 	var location = ResourceScripts.world_gen.get_location_from_code(person.get_location())
@@ -1050,7 +1050,7 @@ func build_char_farm(char_id):
 		globals.connectmaterialtooltip(newbutton, rdata)
 		newbutton.get_node('icon').texture = rdata.icon
 		newbutton.get_node('HBoxContainer/res_name').text = tr(rdata.name)
-		newbutton.get_node('HBoxContainer/amount').text = tr("Progress: %.1f per turn") % ch.get_progress_farm(res)
+		newbutton.get_node('HBoxContainer/amount').text = tr("FARMPROGRESSTURN") % ch.get_progress_farm(res)
 		if ch.get_farm_res(res):
 			newbutton.pressed = true
 			newbutton.connect('pressed', self, 'toggle_farm_res', [ch, res, false])
@@ -1062,7 +1062,7 @@ func build_char_farm(char_id):
 				newbutton.disabled = false
 			else:
 				newbutton.disabled = true
-				globals.connecttexttooltip(newbutton, "Growth factor is too low")
+				globals.connecttexttooltip(newbutton, tr("FARMGROWTHFACTORLOW"))
 	yield(get_tree(),"idle_frame")
 	if $Frame_farm/char_panel/ScrollContainer/farm_rules.get_children().size() > 1:
 		$Frame_farm/char_panel/Label.text = tr("FARMAVAILABLEPRDODUCTS") 
@@ -1074,12 +1074,7 @@ func build_char_farm(char_id):
 	var text = ""
 	
 	
-	text = (
-		"[center]Details[/center]"+
-		"\nNumber of items produced per character is based on their Growth Factor.\nItem Limit: "
-		+ str(items_set) + "/"
-		+ str(ch.get_farming_limit())
-	)
+	text = tr("FARMDETAILS") % [str(items_set), str(ch.get_farming_limit())]
 	
 	$Frame_farm/char_panel/desc.bbcode_text = text
 
@@ -1122,7 +1117,7 @@ func build_boosters():
 		#free to add any more data
 		newbutton.pressed = boost_data.value
 		if boost_data.value:
-			text += " - Activated"
+			text += " - " + tr("FARMACTIVATED")
 		
 		newbutton.get_node('Label').text = text
 #		if f:

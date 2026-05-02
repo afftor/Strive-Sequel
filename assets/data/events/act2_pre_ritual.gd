@@ -10,6 +10,11 @@ var data = {
 				type = "unique_available",
 				name = "zephyra",
 				check = false
+			},
+			{
+				type = "decision",
+				value = "ZephyraRefused",
+				check = false
 			}
 		],
 		text = [
@@ -348,6 +353,12 @@ var data = {
 				reqs = [
 
 				]
+			}
+		],
+		common_effects = [
+			{
+				code = "decision",
+				value = "ZephyraRefused"
 			}
 		],
 		options = [

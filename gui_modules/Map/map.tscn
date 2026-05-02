@@ -747,6 +747,7 @@ margin_left = 19.0
 margin_top = 97.0
 margin_right = -18.0
 margin_bottom = -20.0
+theme = ExtResource( 45 )
 scroll_horizontal_enabled = false
 
 [node name="LocCatList" type="VBoxContainer" parent="ToLocList/LocScroll"]

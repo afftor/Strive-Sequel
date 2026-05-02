@@ -120,7 +120,7 @@ func update_sell_list():
 		var item = Items.materiallist[i]
 		var type = get_item_category(item)
 		var newbutton = input_handler.DuplicateContainerTemplate($SellBlock/ScrollContainer/VBoxContainer)
-		newbutton.get_node("name").text = item.name
+		newbutton.get_node("name").text = tr(item.name)
 		newbutton.get_node("icon").texture = item.icon
 		newbutton.get_node("price").text = str(ceil(item.price * variables.material_sell_multiplier))
 		newbutton.get_node("amount").visible = true
@@ -140,7 +140,7 @@ func update_sell_list():
 		var newbutton = input_handler.DuplicateContainerTemplate(
 			$SellBlock/ScrollContainer/VBoxContainer
 		)
-		newbutton.get_node("name").text = item.name
+		newbutton.get_node("name").text = tr(item.name)
 		item.set_icon(newbutton.get_node("icon"))  #.texture = item.get_icon()
 		if item.quality != "":
 			newbutton.get_node("quality_color").show()

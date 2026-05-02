@@ -75,7 +75,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "Return to Craft"
+text = "ENCHANTBACK"
 align = 1
 valign = 1
 
@@ -97,7 +97,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "Improve gear"
+text = "ENCHANTIMPROVE"
 align = 1
 valign = 1
 __meta__ = {
@@ -208,7 +208,7 @@ texture_disabled = ExtResource( 25 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
-text = "Apply Minor Curse"
+text = "ENCHANTAPPLYMINORCURSE"
 align = 1
 valign = 1
 
@@ -227,7 +227,7 @@ texture_disabled = ExtResource( 25 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
-text = "Apply Major Curse"
+text = "ENCHANTAPPLYMAJORCURSE"
 align = 1
 valign = 1
 
@@ -510,7 +510,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 16 )
-text = "Apply"
+text = "ENCHANTAPPLY"
 align = 1
 valign = 1
 

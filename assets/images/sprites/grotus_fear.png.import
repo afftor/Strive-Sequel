@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/trap.png-8dc805abc4bc2ca5f8bb34f983e9e45f.stex"
+path="res://.import/grotus_fear.png-06dbce2fdbe5aef2140779cc078d853d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/trap.png"
-dest_files=[ "res://.import/trap.png-8dc805abc4bc2ca5f8bb34f983e9e45f.stex" ]
+source_file="res://assets/images/sprites/grotus_fear.png"
+dest_files=[ "res://.import/grotus_fear.png-06dbce2fdbe5aef2140779cc078d853d.stex" ]
 
 [params]
 

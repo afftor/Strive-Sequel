@@ -119,7 +119,7 @@ theme = ExtResource( 16 )
 
 [node name="all" type="Button" parent="categories"]
 light_mask = 0
-margin_right = 140.0
+margin_right = 153.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 0, 40 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -131,7 +131,7 @@ text = "CAT_ALL"
 [node name="social" type="Button" parent="categories"]
 light_mask = 0
 margin_top = 44.0
-margin_right = 140.0
+margin_right = 153.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 0, 40 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -143,7 +143,7 @@ text = "CAT_SOCIAL"
 [node name="labor" type="Button" parent="categories"]
 light_mask = 0
 margin_top = 88.0
-margin_right = 140.0
+margin_right = 153.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 0, 40 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -155,7 +155,7 @@ text = "CAT_LABOR"
 [node name="sexual" type="Button" parent="categories"]
 light_mask = 0
 margin_top = 132.0
-margin_right = 140.0
+margin_right = 153.0
 margin_bottom = 172.0
 rect_min_size = Vector2( 0, 40 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -167,7 +167,7 @@ text = "CAT_SEXUAL"
 [node name="combat" type="Button" parent="categories"]
 light_mask = 0
 margin_top = 176.0
-margin_right = 140.0
+margin_right = 153.0
 margin_bottom = 216.0
 rect_min_size = Vector2( 0, 40 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -179,7 +179,7 @@ text = "CAT_COMBAT"
 [node name="magic" type="Button" parent="categories"]
 light_mask = 0
 margin_top = 220.0
-margin_right = 140.0
+margin_right = 153.0
 margin_bottom = 260.0
 rect_min_size = Vector2( 0, 40 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )

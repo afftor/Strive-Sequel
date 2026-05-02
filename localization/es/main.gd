@@ -155,6 +155,7 @@ pero conservarás todos tus personajes, objetos e inventario. Usa este modo para
 	PRONOUNGROOMF = "novia",
 	PRONOUNBOY = "chico",
 	PRONOUNBOYF = "chica",
+	PRONOUNBOYFUTA = """girl""", # MISSING TRANSLATION
 	PRONOUNHIMSELFL = "si mismo",
 	PRONOUNHIMSELFLF = "si misma",
 	BUTTONMENU = "Menu",
@@ -1173,6 +1174,7 @@ Reducido por la evasión del enemigo""",
 	CHAR_UNAVALIABLE = "Indisponible",
 	CHAR_UNAVALIABLE_TURN = "Indisponible: %s t.",
 	CHAR_UNAVALIABLE_DAY = "Indisponible: %s d.",
+	CHAR_TRAVEL = """Travelling""", # MISSING TRANSLATION
 	NO_FREE_SLOTS = "Esta tarea no tiene espacios disponibles",
 	ANOTHERPROFSELECTED = "Sólo se puede seleccionar una especialización.",
 	NOMATERIALSFORITEMPART = "No tienes materiales adecuados para esta pieza del artículo",
@@ -1192,6 +1194,9 @@ Reducido por la evasión del enemigo""",
 	EFFECT = "efecto",
 	CLASSINFO = "Detalles de la clase",
 	CLASSSTATCHANGES = "Cambios de estadísticas",
+	CLASSALREADYACQUIRED = """[name] has already acquired this class.""", # MISSING TRANSLATION
+	CLASSNEWACQUIREDLOG = """[name] has acquired new Class: %s""", # MISSING TRANSLATION
+	MASTERYPOINTS = """%d Points""", # MISSING TRANSLATION
 	INVENTORY = "Inventario",
 	WORKERLIST = "Lista de trabajadores",
 	HEROLIST = "Lista de héroes",
@@ -2586,6 +2591,20 @@ Daño +15%, Salud +20.""",
 	TOOLTIPGOLD = "Oro propio. El oro se usa para comprar esclavos y objetos, y se puede obtener vendiéndolos, completando misiones y algunas tareas.",
 	TOOLTIPFOOD = "Comida disponible en la bodega. Todos los personajes usan comida, que se puede obtener en algunas tareas y aumentar cocinando. La falta de comida provoca agotamiento y, finalmente, la muerte.",
 	TOOLTIPENCHANTSCREEN = "Puedes aplicar encantamientos y maldiciones a un objeto. Aplicar una maldición aumentará la capacidad de encantamiento del objeto, pero la maldición será aleatoria y solo se revelará al equipar el objeto.",
+	ENCHANTBACK = """Return to Craft""", # MISSING TRANSLATION
+	ENCHANTIMPROVE = """Improve Gear""", # MISSING TRANSLATION
+	ENCHANTAPPLYMINORCURSE = """Apply Minor Curse""", # MISSING TRANSLATION
+	ENCHANTAPPLYMAJORCURSE = """Apply Major Curse""", # MISSING TRANSLATION
+	ENCHANTAPPLY = """Apply""", # MISSING TRANSLATION
+	ENCHANTEQUIPPEDBY = """Is equipped by %s""", # MISSING TRANSLATION
+	ENCHANTCAPACITYLABEL = """Enchant Capacity:""", # MISSING TRANSLATION
+	ENCHANTQUALITYLABEL = """Quality:""", # MISSING TRANSLATION
+	ENCHANTCURSELABEL = """Curse: """, # MISSING TRANSLATION
+	ENCHANTCURSEUNKNOWNMINOR = """Unknown Minor""", # MISSING TRANSLATION
+	ENCHANTCURSEUNKNOWNMAJOR = """Unknown Major""", # MISSING TRANSLATION
+	ENCHANTCOSTDEC = """Capacity -%d""", # MISSING TRANSLATION
+	ENCHANTCOSTINC = """Capacity +%d""", # MISSING TRANSLATION
+	ENCHANTLVFORMAT = """%s lv %d""", # MISSING TRANSLATION
 	MASTERPOINTTOP = "Nuevo punto maestro",
 	MASTERPOINTSTOP = "Nuevos puntos maestros",
 	MASTERPOINTBOTTOM = "%d puntos",
@@ -15052,6 +15071,7 @@ Completas un pequeño formulario indicando qué acciones deben excluirse de su c
 Con un dejo de duda, Cali acepta probar estas actividades.
 
 — Eh, no estoy segura de ser buena con estas cosas...""",
+	CALI_SERVANTS_AMELIA_OPTION_1 = """Actually, could you help out Cali...""", # MISSING TRANSLATION
 	CALI_SERVANTS_NEW_LEADER_1_OPTION_1 = "No te preocupes, puedes hacerlo.",
 	CALI_SERVANTS_NEW_LEADER_1_OPTION_2 = "Para todo hay una primera vez, no lo sabrás hasta que lo intentes.",
 	CALI_SERVANTS_NEW_LEADER_1_OPTION_3 = "No debes desanimarte ahora que empezamos.",
@@ -19001,6 +19021,12 @@ Zephyra se congela al ver tu acción. Su rostro presagia tu perdición. El tiemp
 	AREAEMPIRE = "Imperio",
 AREASEAS = "Mares",
 	AREABEASTKIN_TRIBE = "Bosques lejanos",
+	CAPITALALIRON = """Aliron""", # MISSING TRANSLATION
+	CAPITALELVEN = """Elven Capital""", # MISSING TRANSLATION
+	CAPITALDWARVEN = """Dwarven Capital""", # MISSING TRANSLATION
+	CAPITALEMPIRE = """Empire Capital""", # MISSING TRANSLATION
+	CAPITALBEASTKIN = """Beastkin Tribe""", # MISSING TRANSLATION
+	WORKERSDISASSEMBLE = """Disassemble""", # MISSING TRANSLATION
 	AREACAPITALS = "Capital",
 	AREASETTLEMENTS = "Pueblos",
 	AREAQUESTS = "Misión",
@@ -19781,6 +19807,22 @@ Tecla de acceso rápido: 3""",
 	SELECT_SLOT_FIRST_LABEL = "Seleccione la ranura de la granja",
 	FARMAVAILABLEPRDODUCTS = "Productos disponibles",
 	FARMAVAILABLEPRDODUCTSNO = "No hay productos disponibles para este personaje",
+	FARMCHOOSE = """Choose""", # MISSING TRANSLATION
+	FARMREMOVE = """Remove""", # MISSING TRANSLATION
+	FARMALLOWEDCUSTOMERS = """Allowed Customers""", # MISSING TRANSLATION
+	FARMSERVICERULES = """Service Rules: %s""", # MISSING TRANSLATION
+	FARMPROGRESSTURN = """Progress: %.1f per turn""", # MISSING TRANSLATION
+	FARMGROWTHFACTORLOW = """Growth factor is too low""", # MISSING TRANSLATION
+	FARMDETAILS = """[center]Details[/center]
+Number of items produced per character is based on their Growth Factor.
+Item Limit: %s/%s""", # MISSING TRANSLATION
+	FARMACTIVATED = """Activated""", # MISSING TRANSLATION
+	JOBWORKTOOLTOOLTIP = """Effective Tool: Will increase work speed when equipped""", # MISSING TRANSLATION
+	JOBWORKUNITTOOLTIP = """Progress required per item""", # MISSING TRANSLATION
+	JOBSTATTOOLTIP = """Job Stat: %s
+This stat will grow by attending to this job.""", # MISSING TRANSLATION
+	JOBSTATBROTHELDESCRIPT = """Growing stat will depend on what task will be performed by character when servicing customers.""", # MISSING TRANSLATION
+	JOBMODTOOLTIP = """Task Efficiency Modifier""", # MISSING TRANSLATION
 	LACKS_BASIC_SERV_LABEL = "Carece de Entrenamiento: Servidumbre Básica",
 	REFUSE_TO_WHORE_LABEL = "se niega a realizar tareas sexuales",
 	REFUSE_THIS_TASK_LABEL = "se niega a realizar esta tarea",

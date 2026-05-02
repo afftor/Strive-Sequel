@@ -172,6 +172,7 @@ var TranslationDict = {
 	PRONOUNGROOMF = "mariée",
 	PRONOUNBOY = "garçon", 
 	PRONOUNBOYF = "fille",
+	PRONOUNBOYFUTA = """girl""", # MISSING TRANSLATION
 	PRONOUNHIMSELFL = """himself""", # MISSING TRANSLATION
 	PRONOUNHIMSELFLF = """herself""", # MISSING TRANSLATION
 	
@@ -1278,6 +1279,9 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	EFFECT = """effect""", # MISSING TRANSLATION
 	CLASSINFO = "Détails de la classe",
 	CLASSSTATCHANGES = "Changements de Stat",
+	CLASSALREADYACQUIRED = """[name] has already acquired this class.""", # MISSING TRANSLATION
+	CLASSNEWACQUIREDLOG = """[name] has acquired new Class: %s""", # MISSING TRANSLATION
+	MASTERYPOINTS = """%d Points""", # MISSING TRANSLATION
 
 	INVENTORY = "Inventaire",
 	WORKERLIST = "Liste des travailleurs",
@@ -2723,6 +2727,20 @@ Damage +15%, Health +20.""", # MISSING TRANSLATION
 	TOOLTIPGOLD = "Or possédé. L'or est utilisé pour acheter des esclaves et des objets et peut être obtenu en vendant des objets, en complétant des quêtes et certaines tâches",
 	TOOLTIPFOOD = "Nourriture possédée / nourriture consommée par jour. La nourriture est utilisée par tous les personnages et peut être obtenue en accomplissant certaines tâches et augmentée en cuisinant. Le manque de nourriture conduit à l'épuisement et à la mort. ",
 	TOOLTIPENCHANTSCREEN = "Vous pouvez appliquer des enchantements et des malédictions à un objet. L'application d'une malédiction augmentera la capacité d'enchantement de l'objet, mais la malédiction sera aléatoire et ne sera révélée qu'au moment d'équiper l'objet. ",
+	ENCHANTBACK = """Return to Craft""", # MISSING TRANSLATION
+	ENCHANTIMPROVE = """Improve Gear""", # MISSING TRANSLATION
+	ENCHANTAPPLYMINORCURSE = """Apply Minor Curse""", # MISSING TRANSLATION
+	ENCHANTAPPLYMAJORCURSE = """Apply Major Curse""", # MISSING TRANSLATION
+	ENCHANTAPPLY = """Apply""", # MISSING TRANSLATION
+	ENCHANTEQUIPPEDBY = """Is equipped by %s""", # MISSING TRANSLATION
+	ENCHANTCAPACITYLABEL = """Enchant Capacity:""", # MISSING TRANSLATION
+	ENCHANTQUALITYLABEL = """Quality:""", # MISSING TRANSLATION
+	ENCHANTCURSELABEL = """Curse: """, # MISSING TRANSLATION
+	ENCHANTCURSEUNKNOWNMINOR = """Unknown Minor""", # MISSING TRANSLATION
+	ENCHANTCURSEUNKNOWNMAJOR = """Unknown Major""", # MISSING TRANSLATION
+	ENCHANTCOSTDEC = """Capacity -%d""", # MISSING TRANSLATION
+	ENCHANTCOSTINC = """Capacity +%d""", # MISSING TRANSLATION
+	ENCHANTLVFORMAT = """%s lv %d""", # MISSING TRANSLATION
 	
 	MASTERPOINTTOP = "Nouveau Point de Maître",
 	MASTERPOINTSTOP = "Nouveaux points de maîtrise",
@@ -15356,6 +15374,7 @@ Vous remplissez un petit formulaire indiquant les actions à exclure de son entr
 Avec un soupçon de doute, Cali accepte d'essayer ces activités. 
 
 - Huh, je ne suis pas sûre d'être douée pour ce genre de choses...""",
+	CALI_SERVANTS_AMELIA_OPTION_1 = """Actually, could you help out Cali...""", # MISSING TRANSLATION
 	CALI_SERVANTS_NEW_LEADER_1_OPTION_1 = "Ne t'inquiète pas, tu peux le faire",
 	CALI_SERVANTS_NEW_LEADER_1_OPTION_2 = "Il y a une première fois pour tout, vous ne le saurez pas tant que vous n'aurez pas essayé",
 	CALI_SERVANTS_NEW_LEADER_1_OPTION_3 = "Il ne faut pas se décourager comme on a commencé",
@@ -19363,6 +19382,12 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	AREASTEPPE = "Steppe",
 	AREASEAS = "Mers",
 	AREABEASTKIN_TRIBE = "Forêts lointaines",
+	CAPITALALIRON = """Aliron""", # MISSING TRANSLATION
+	CAPITALELVEN = """Elven Capital""", # MISSING TRANSLATION
+	CAPITALDWARVEN = """Dwarven Capital""", # MISSING TRANSLATION
+	CAPITALEMPIRE = """Empire Capital""", # MISSING TRANSLATION
+	CAPITALBEASTKIN = """Beastkin Tribe""", # MISSING TRANSLATION
+	WORKERSDISASSEMBLE = """Disassemble""", # MISSING TRANSLATION
 	AREACAPITALS = "Capitales",
 	AREASETTLEMENTS = "Villages",
 	AREAQUESTS = "Quêtes",
@@ -20291,6 +20316,22 @@ Touche de raccourci : 3""",
 	SELECT_SLOT_FIRST_LABEL = "Sélectionner un créneau d'exploitation",
 	FARMAVAILABLEPRDODUCTS = "Produits disponibles",
 	FARMAVAILABLEPRDODUCTSNO = "Aucun produit disponible pour ce personnage",
+	FARMCHOOSE = """Choose""", # MISSING TRANSLATION
+	FARMREMOVE = """Remove""", # MISSING TRANSLATION
+	FARMALLOWEDCUSTOMERS = """Allowed Customers""", # MISSING TRANSLATION
+	FARMSERVICERULES = """Service Rules: %s""", # MISSING TRANSLATION
+	FARMPROGRESSTURN = """Progress: %.1f per turn""", # MISSING TRANSLATION
+	FARMGROWTHFACTORLOW = """Growth factor is too low""", # MISSING TRANSLATION
+	FARMDETAILS = """[center]Details[/center]
+Number of items produced per character is based on their Growth Factor.
+Item Limit: %s/%s""", # MISSING TRANSLATION
+	FARMACTIVATED = """Activated""", # MISSING TRANSLATION
+	JOBWORKTOOLTOOLTIP = """Effective Tool: Will increase work speed when equipped""", # MISSING TRANSLATION
+	JOBWORKUNITTOOLTIP = """Progress required per item""", # MISSING TRANSLATION
+	JOBSTATTOOLTIP = """Job Stat: %s
+This stat will grow by attending to this job.""", # MISSING TRANSLATION
+	JOBSTATBROTHELDESCRIPT = """Growing stat will depend on what task will be performed by character when servicing customers.""", # MISSING TRANSLATION
+	JOBMODTOOLTIP = """Task Efficiency Modifier""", # MISSING TRANSLATION
 	LACKS_BASIC_SERV_LABEL = "Manque de formation : Servitude de base",
 	REFUSE_TO_WHORE_LABEL = "refuse d'accomplir des tâches sexuelles",
 	REFUSE_THIS_TASK_LABEL = "refuse d'accomplir cette tâche",

@@ -37,7 +37,7 @@ var TranslationDict = {
 	MODSORT = "Sort",
 	MODOPENEDITOR = "Open Editor (Alpha Version)",
 	MENUCREDITSNAME = "Credits",
-	MENUCREDITSDESC = """Game design, writing, programming: Maverik /
+	MENUCREDITSDESC = """Game design, writing, programming: Maverik 
 
 		Combat and skill programming: ykoc
 
@@ -47,6 +47,7 @@ var TranslationDict = {
 
 		Character design: Nightigall
 		Character design: @naisk47
+		Character design: Allanheil
 		Scene art: Allanheil
 		Background art: Laynesis, OMA (Olga Morozova)
 		Icon art: Persich
@@ -62,6 +63,8 @@ var TranslationDict = {
 		Also thanks to: negtize724
 						
 		Russian Translation: LordKrogaton
+		Chinese Translation: lingyumumu 
+		Italian Translation: Scarichino
 
 		Ambient battle noise: swords and shouting - pfranzen
 		https://freesound.org/people/pfranzen/sounds/192072/""",
@@ -156,6 +159,7 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	PRONOUNGROOMF = "bride",
 	PRONOUNBOY = "boy",
 	PRONOUNBOYF = "girl",
+	PRONOUNBOYFUTA = "futanari",
 	PRONOUNHIMSELFL = "himself",
 	PRONOUNHIMSELFLF = "herself",
 	BUTTONMENU = "Menu",
@@ -1182,6 +1186,7 @@ Reduced by enemy's evasion""",
 	CHAR_UNAVALIABLE = "Unavailable",
 	CHAR_UNAVALIABLE_TURN = "Unavail: %s t.",
 	CHAR_UNAVALIABLE_DAY = "Unavail: %s d.",
+	CHAR_TRAVEL = "Travelling",
 	NO_FREE_SLOTS = "This task has no available slots left",
 	ANOTHERPROFSELECTED = "Can only select one specialization.",
 	NOMATERIALSFORITEMPART = "You have no suitable materials for this item part",
@@ -1201,6 +1206,9 @@ Reduced by enemy's evasion""",
 	EFFECT = "effect",
 	CLASSINFO = "Class Details",
 	CLASSSTATCHANGES = "Stat Changes",
+	CLASSALREADYACQUIRED = "[name] has already acquired this class.",
+	CLASSNEWACQUIREDLOG = "[name] has acquired new Class: %s",
+	MASTERYPOINTS = "%d Points",
 	INVENTORY = "Inventory",
 	WORKERLIST = "Worker List",
 	HEROLIST = "Hero List",
@@ -1345,7 +1353,7 @@ Hotkey: 3""",
 	SKILLMINDBLAST = "Mind Blast",
 	SKILLMINDBLASTDESCRIPT = "Deals 120% of MATK as {color=yellow|Mind} damage.",
 	SKILLSLEEP = "Sleep",
-	SKILLSLEEPDESCRIPT = "Puts target to {color=yellow|Sleep} for 2 turns. Sleep is removed when target takes damage.",
+	SKILLSLEEPDESCRIPT = "Puts target to {color=yellow|Sleep} for 3 turns. Sleep is removed when target takes damage.",
 	SKILLPSYCHICBLAST = "Psychic Blast",
 	SKILLPSYCHICBLASTDESCRIPT = "Deals 65% of MATK as {color=yellow|Mind} damage to a column.",
 	SKILLRESURRECT = "Resurrect",
@@ -1742,7 +1750,7 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""",
 	ACTIONSTRONGINFLUENCEDESCRIPT = "Use strong magic to put [name]'s mind into submission. Costs 10 mana.",
 	ACTIONSTRONGINFLUENCEDESCRIPTMASTERY = "Training Action: Magic influence aiming to improve target's obedience. Stronger than Influence.",
 	ACTIONMINDCONTROL = "Hypnosis",
-	ACTIONMINDCONTROLDESCRIPT = "The strongest control option will greatly bend most minds. Costs 25 mana. Requires Dominator class.",
+	ACTIONMINDCONTROLDESCRIPT = "The strongest control option will greatly bend most minds. Costs 25 mana.",
 	ACTIONMINDCONTROLDESCRIPTMASTERY = "Training Action: Magic influence aiming to improve target's obedience. Stronger than Influence.",
 	ACTIONTYPEPOSITIVE = "Positive",
 	ACTIONTYPEPHYSICAL = "Physical",
@@ -1791,8 +1799,8 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""",
 	TRAINING_TRAINER_NAME = "Trainer: %s",
 	TRAINING_SLAVES_ASSIGNED = "%s - Slaves Assigned: %d/%d",
 	TRAINING_ASSIGN_TRAINER_BUTTON = "Assign trainer",
-	TRAINING_RESET_BUTTON = "Reset training",
-	TRAINING_FINISH_BUTTON = "Finish training",
+	TRAINING_RESET_BUTTON = "Reset Training",
+	TRAINING_FINISH_BUTTON = "Finish Training",
 	TRAININGTOOLTIPRESISTANCE = """Slave Resistance reduces training efficiency of non-{color=yellow|Positive} actions.
 %s's resistance drops by %.0f per turn.""",
 	TRAININGTOOLTIPRESISTULT = "Current resistance too high for training.",
@@ -2550,6 +2558,25 @@ Damage +15%, Health +20.""",
 	TOOLTIPGOLD = "Owned gold. Gold is used for buying slaves and items and can be obtained from selling items, completing quests and some tasks.",
 	TOOLTIPFOOD = "Owned Food items / food consumed per day. Food is used by every character and can be obtained from some tasks and increased with cooking. Lack of food will lead to exhaustion and eventual death. ",
 	TOOLTIPENCHANTSCREEN = "You can apply enchants and curses to an item. Applying curse will increase item's enchantment capacity, but the curse will be random and only revealed on equipping the item. ",
+	ENCHANTBACK = "Return to Craft",
+	ENCHANTIMPROVE = "Improve Gear",
+	ENCHANTAPPLYMINORCURSE = "Apply Minor Curse",
+	ENCHANTAPPLYMAJORCURSE = "Apply Major Curse",
+	ENCHANTAPPLY = "Apply",
+	ENCHANTEQUIPPEDBY = "Is equipped by %s",
+	ENCHANTCAPACITYLABEL = "Enchant Capacity:",
+	ENCHANTQUALITYLABEL = "Quality:",
+	ENCHANTCURSELABEL = "Curse: ",
+	ENCHANTCURSEUNKNOWNMINOR = "Unknown Minor",
+	ENCHANTCURSEUNKNOWNMAJOR = "Unknown Major",
+	ENCHANTCOSTDEC = "Capacity -%d",
+	ENCHANTCOSTINC = "Capacity +%d",
+	ENCHANTLVFORMAT = "%s lv %d",
+	TASKINFORESOURCES = "Resources",
+	TASKINFOUPGRADES = "Upgrades",
+	TASKINFONORESOURCES = "Not Enough Resources for craft.",
+	TASKINFOWORKERS = "Workers:",
+	TASKINFOINVENTORY = "In inventory:",
 	MASTERPOINTTOP = "New Master Point",
 	MASTERPOINTSTOP = "New Master Points",
 	MASTERPOINTBOTTOM = "%d point",
@@ -3137,6 +3164,19 @@ Hotkey: 3""",
 	SELECT_SLOT_FIRST_LABEL = "Select Farm Slot",
 	FARMAVAILABLEPRDODUCTS = "Avaliable Products",
 	FARMAVAILABLEPRDODUCTSNO = "No Products Available for this character",
+	FARMCHOOSE = "Choose",
+	FARMREMOVE = "Remove",
+	FARMALLOWEDCUSTOMERS = "Allowed Customers",
+	FARMSERVICERULES = "Service Rules: %s",
+	FARMPROGRESSTURN = "Progress: %.1f per turn",
+	FARMGROWTHFACTORLOW = "Growth factor is too low",
+	FARMDETAILS = "[center]Details[/center]\nNumber of items produced per character is based on their Growth Factor.\nItem Limit: %s/%s",
+	FARMACTIVATED = "Activated",
+	JOBWORKTOOLTOOLTIP = "Effective Tool: Will increase work speed when equipped",
+	JOBWORKUNITTOOLTIP = "Progress required per item",
+	JOBSTATTOOLTIP = "Job Stat: %s\nThis stat will grow by attending to this job.",
+	JOBSTATBROTHELDESCRIPT = "Growing stat will depend on what task will be performed by character when servicing customers.",
+	JOBMODTOOLTIP = "Task Efficiency Modifier",
 	LACKS_BASIC_SERV_LABEL = "lacks Training: Basic Servitude",
 	REFUSE_TO_WHORE_LABEL = "refuses to perfrorm sexual tasks",
 	REFUSE_THIS_TASK_LABEL = "refuses to perfrorm this task",
@@ -15532,6 +15572,7 @@ You fill out a small form denoting which actions should be excluded from her tra
 With a hint of doubt, Cali agrees to try these activities.
 
 {color=yellow|— Huh, I'm not sure I'm good with this stuff...}""",
+	CALI_SERVANTS_AMELIA_OPTION_1 = "Actually, could you help out Cali...",
 	CALI_SERVANTS_NEW_LEADER_1_OPTION_1 = "Don't worry, you can do it.",
 	CALI_SERVANTS_NEW_LEADER_1_OPTION_2 = "There's first time for everything, you won't know until you try.",
 	CALI_SERVANTS_NEW_LEADER_1_OPTION_3 = "You shouldn't get discouraged right as we started.",
@@ -19479,6 +19520,12 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	AREAEMPIRE = "Empire",
 	AREASEAS = "Seas",
 	AREABEASTKIN_TRIBE = "Far Forests",
+	CAPITALALIRON = "Aliron",
+	CAPITALELVEN = "Elven Capital",
+	CAPITALDWARVEN = "Dwarven Capital",
+	CAPITALEMPIRE = "Empire Capital",
+	CAPITALBEASTKIN = "Beastkin Tribe",
+	WORKERSDISASSEMBLE = "Disassemble",
 	AREACAPITALS = "Capitals",
 	AREASETTLEMENTS = "Villages",
 	AREAQUESTS = "Quests",
@@ -23365,7 +23412,7 @@ Tears fill her eyes as she helplessly looks back at Rynn's unconscious body whil
 	JEAN_SYLAS_QUEST_STAGE_8 = "Bring news to Myr",
 	JEAN_SYLAS_QUEST_STAGE_9 = "Search guild library",
 	JEAN_SYLAS_QUEST_STAGE_10 = "Discuss your findings with Myr",
-	JEAN_SYLAS_QUEST_STAGE_11 = "Craft a mind-linking artifact",
+	JEAN_SYLAS_QUEST_STAGE_11 = "Craft a mind-linking device",
 	JEAN_SYLAS_QUEST_STAGE_12 = "Confront a demon-posessed Jean",
 	JEAN_SYLAS_QUEST_STAGE_13 = "Bring orb to church",
 	JEAN_SYLAS_QUEST_STAGE_14 = "Give away orb to research",
@@ -24049,7 +24096,6 @@ You help Jean to her feet, and together you look at the dark fog that escaped fr
 	JEAN_SYLAS_DEMON_REVEAL = """{color=aqua|Demon: — YOU! You stupid, nosy human with your stupid dirty tricks! I had this girl locked up in the sweetest dreams, the kind she'd never escape on her own! Yet you just had to ruin it for me, didn't you?!}
 
 {color=aqua|Demon: — Oh, but it's not over yet! I've siphoned enough energy from her to create this vessel, and I will finish what I've started! DIE!}""",
-	JEAN_SYLAS_OPTION_FIGHT_DEMON = "Fight",
 	JEAN_SYLAS_DEMON_FIGHT_RESULT = """Together with Jean, you manage to overpower the demon. Its fragile, temporary form begins to dissipate back into fog, which in turn gets sucked back into the floating glass sphere.
 
 {color=aqua|Demon: — NO-O-O, NOT AGAIN, I WAS SO CLOSE... curse you souls... you mortal... bastards...}
@@ -24204,7 +24250,7 @@ She looks away quickly, but not before you catch the glisten in her eyes.
 	JEAN_DEMON_OPTION = "Search for Jean",
 	JEANMAGESSEARCHTASKNAME = "*Search archives of mages guild*",
 	JEANMAGESSEARCHTASKDESCRIPT = "You must find an information about demon",
-	MATERIALMINDLINK = "Mind-Link Artifact",
+	MATERIALMINDLINK = "Mind-Link",
 	MATERIALMINDLINKDESCRIPT = "A complicated device for linking ones consciousness.",
 	JEAN_DREAM_1 = "As you wake up in an unusual space you try to focus. The question arises in your mind, of what kind of scene you want to experience, however the only which comes to your mind is your recent companion. The lusty thought quickly overwhelms your mind as the surrounding space changes.",
 	JEAN_DREAM_2 = """In the next moment you see Jean in flesh hanging in front of you, being caught in the middle of a dungeon in some ludicrous trap. Her skirt bunched around her waist, leaving her lower body bare and vulnerable. The rope pulling her head back forces her neck into an elegant, agonizing arch. Her red eyes, burning with a volatile mix of fury and lust, are fixed on you. Her breasts, freed from her bodice, sway slightly with her shallow, rapid breaths, the peaks hard and flushed.

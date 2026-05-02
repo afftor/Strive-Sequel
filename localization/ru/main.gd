@@ -156,6 +156,7 @@ var TranslationDict = {
 	PRONOUNGROOMF = """невеста""",
 	PRONOUNBOY = """парень""", 
 	PRONOUNBOYF = """девушка""",
+	PRONOUNBOYFUTA = """girl""", # MISSING TRANSLATION
 	PRONOUNHIMSELFL = """себя""",
 	PRONOUNHIMSELFLF = """себя""",	
 	BUTTONMENU = """Меню""",
@@ -1235,6 +1236,7 @@ Current Progress: %d/%d""", # MISSING TRANSLATION
 	CHAR_UNAVALIABLE = """Недоступен""",
 	CHAR_UNAVALIABLE_TURN = "Отсутствует: %s хд.",
 	CHAR_UNAVALIABLE_DAY = "Отсутствует: %s дн.",
+	CHAR_TRAVEL = """Travelling""", # MISSING TRANSLATION
 	NO_FREE_SLOTS = """Для этой задачи не осталось свободных мест""",
 	ANOTHERPROFSELECTED = """Можно выбрать только одну специализацию.""",
 	NOMATERIALSFORITEMPART = """У вас нет подходящих материалов для этой части.""",
@@ -1257,6 +1259,9 @@ Current Progress: %d/%d""", # MISSING TRANSLATION
 	EFFECT = "эффект",
 	CLASSINFO = """Подробности о классе""",
 	CLASSSTATCHANGES = """Изменения характеристик""",
+	CLASSALREADYACQUIRED = """[name] has already acquired this class.""", # MISSING TRANSLATION
+	CLASSNEWACQUIREDLOG = """[name] has acquired new Class: %s""", # MISSING TRANSLATION
+	MASTERYPOINTS = """%d Points""", # MISSING TRANSLATION
 
 	INVENTORY = """Инвентарь""",
 	WORKERLIST = """Список рабочих""",
@@ -2685,6 +2690,20 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	TOOLTIPGOLD = """Золото в наличии. Золото используется для покупки рабов и предметов и может быть получено при продаже предметов, выполнении квестов и некоторых заданий.""",
 	TOOLTIPFOOD = """Продукты питания в наличии / количество потребляемой пищи в день. Еда используется каждым персонажем, ее можно получить при выполнении некоторых заданий и увеличить при приготовлении пищи. Недостаток пищи приводит к истощению и возможной смерти.""",
 	TOOLTIPENCHANTSCREEN = """Вы можете наложить на предмет чары и проклятия. Наложение проклятия увеличит способность предмета к зачарованию, но проклятие будет случайным и появится только при экипировке предмета.""",	
+	ENCHANTBACK = """Return to Craft""", # MISSING TRANSLATION
+	ENCHANTIMPROVE = """Improve Gear""", # MISSING TRANSLATION
+	ENCHANTAPPLYMINORCURSE = """Apply Minor Curse""", # MISSING TRANSLATION
+	ENCHANTAPPLYMAJORCURSE = """Apply Major Curse""", # MISSING TRANSLATION
+	ENCHANTAPPLY = """Apply""", # MISSING TRANSLATION
+	ENCHANTEQUIPPEDBY = """Is equipped by %s""", # MISSING TRANSLATION
+	ENCHANTCAPACITYLABEL = """Enchant Capacity:""", # MISSING TRANSLATION
+	ENCHANTQUALITYLABEL = """Quality:""", # MISSING TRANSLATION
+	ENCHANTCURSELABEL = """Curse: """, # MISSING TRANSLATION
+	ENCHANTCURSEUNKNOWNMINOR = """Unknown Minor""", # MISSING TRANSLATION
+	ENCHANTCURSEUNKNOWNMAJOR = """Unknown Major""", # MISSING TRANSLATION
+	ENCHANTCOSTDEC = """Capacity -%d""", # MISSING TRANSLATION
+	ENCHANTCOSTINC = """Capacity +%d""", # MISSING TRANSLATION
+	ENCHANTLVFORMAT = """%s lv %d""", # MISSING TRANSLATION
 	MASTERPOINTTOP = """Новое очко способностей Мастера""",
 	MASTERPOINTSTOP = """Новые очки способностей Мастера""",
 	MASTERPOINTBOTTOM = """%d очков""",
@@ -3585,26 +3604,26 @@ Requires: Базовый рабский труд""",
 	TRAITSUCCUBUS_COMBATDESCRIPT = """Фактор ОЗ: +20%; Восстановление ОЗ: +100%; Получает похоть при получении урона.
 Можно выбрать только одно усиление.""",
 	FINISHTRAINING = """Finish training? Leftover spirit will be used to purchase additional bonuses.""", # MISSING TRANSLATION
-	TRAITTRAINING_VALUE = """1""", # MISSING TRANSLATION
-	TRAITTRAINING_VALUEDESCRIPT = """""", # MISSING TRANSLATION
-	TRAITTRAINING_PRODUCTIVITY = """2""", # MISSING TRANSLATION
-	TRAITTRAINING_PRODUCTIVITYDESCRIPT = """""", # MISSING TRANSLATION
-	TRAITTRAINING_XP = """3""", # MISSING TRANSLATION
-	TRAITTRAINING_XPDESCRIPT = """""", # MISSING TRANSLATION
-	TRAITTRAINING_HP = """4""", # MISSING TRANSLATION
-	TRAITTRAINING_HPDESCRIPT = """""", # MISSING TRANSLATION
-	TRAITTRAINING_ATK = """5""", # MISSING TRANSLATION
-	TRAITTRAINING_ATKDESCRIPT = """""", # MISSING TRANSLATION
-	TRAITTRAINING_MATK = """6""", # MISSING TRANSLATION
-	TRAITTRAINING_MATKDESCRIPT = """""", # MISSING TRANSLATION
-	TRAITTRAINING_DEF = """7""", # MISSING TRANSLATION
-	TRAITTRAINING_DEFDESCRIPT = """""", # MISSING TRANSLATION
-	TRAITTRAINING_MDEF = """8""", # MISSING TRANSLATION
-	TRAITTRAINING_MDEFDESCRIPT = """""", # MISSING TRANSLATION
-	TRAITTRAINING_TRAINER = """9""", # MISSING TRANSLATION
-	TRAITTRAINING_TRAINERDESCRIPT = """""", # MISSING TRANSLATION
-	TRAITTRAINING_HEAL = """10""", # MISSING TRANSLATION
-	TRAITTRAINING_HEALDESCRIPT = """""", # MISSING TRANSLATION
+	TRAITTRAINING_VALUE = "Trained spec",
+	TRAITTRAINING_VALUEDESCRIPT = "+25% Value",
+	TRAITTRAINING_PRODUCTIVITY = "Trained spec",
+	TRAITTRAINING_PRODUCTIVITYDESCRIPT = "+30% Productivity",
+	TRAITTRAINING_XP = "Trained spec",
+	TRAITTRAINING_XPDESCRIPT = "+20% xp gain",
+	TRAITTRAINING_HP = "Trained spec",
+	TRAITTRAINING_HPDESCRIPT = "+25 health",
+	TRAITTRAINING_ATK = "Trained spec",
+	TRAITTRAINING_ATKDESCRIPT = "+10 atk",
+	TRAITTRAINING_MATK = "Trained spec",
+	TRAITTRAINING_MATKDESCRIPT = "+10 matk",
+	TRAITTRAINING_DEF = "Trained spec",
+	TRAITTRAINING_DEFDESCRIPT = "+10 def",
+	TRAITTRAINING_MDEF = "Trained spec",
+	TRAITTRAINING_MDEFDESCRIPT = "+15 mdef",
+	TRAITTRAINING_TRAINER = "Trained spec",
+	TRAITTRAINING_TRAINERDESCRIPT = "+3 trainer slots and trainer status",
+	TRAITTRAINING_HEAL = "Trained spec",
+	TRAITTRAINING_HEALDESCRIPT = "+50% healing efficiency",
 	TRAITEFFECTVIRGIN = """[center]{color=yellow|Девственность}[/center]
 Поскольку [name] обладает наблюдаемой девственностью, это делает [him] более желанным для определенных людей. 
 {color=yellow|Цена продажи увеличена на 25%%}""",
@@ -4713,13 +4732,7 @@ Requires: Базовый рабский труд""",
 	SEXTRAITCURIOUSDESCRIPT = """Хотя [name] интересуется сексом, [he] на самом деле получает не только удовольствие. Сексуальные встречи дают на 25% больше опыта.""",
 	SEXTRAITLIFE_POWERDESCRIPT = """Секс освежает [name]. Восстанавливает 10 здоровья за оргазм после сексуального взаимодействия.""",
 
-
-# 	SEXTRAITGROUPDESCRIPT = """[name] любит заниматься с несколькими партнерами одновременно. Групповые действия вызывают у 33% больше похоти и возбуждения.""",
-# 	SEXTRAITLIKES_SHORTSTACKSDESCRIPT = """[name] предпочитает партнеров меньшего роста. Действия с персонажами маленького роста дают на 25% больше возбуждения и похоти.""",
-# 	SEXTRAITLIKES_BEASTSDESCRIPT = """[name] предпочитает звероподобных партнеров. Действия с расами звероподобных или полузвероподобных дают на 25% больше возбуждения и похоти.""",
-# 	SEXTRAITLEWDNESS_AURADESCRIPT = """[name] имеет необычную ауру вокруг [him], заставляющую всех участников с каждым ходом немного больше возбуждаться.""",
-# 	SEXTRAITBISEXUALDESCRIPT = """[name] полностью принял утопание в сексуальном удовольствии с любым полом. Снимает штраф с однополых действий.""",
-# 	SEXTRAITDEVIANTDESCRIPT = """[name] готов/а пойти на такое, на что нормальные люди обычно не идут. Снимает штраф с действий с животными и нежитью.""",
+	INTERACTION_START_ROOM = """%s walk into the bedroom.""", # MISSING TRANSLATION
 
 	DIALOGUEESCAPETEXT = """[name] сбежал/а из-под вашего присмотра. Возможно, вам следовало больше внимания уделить их верности или поведению""",
 	DIALOGUEESCAPECLOSE = """*Это прискорбно*""",
@@ -15048,6 +15061,7 @@ AMELIA_TRIAL_NORMAL_1 = """Амелия: - О... Теперь понятно. С
 С ноткой сомнения Кали соглашается попробовать эти занятия. 
 
 - Хм, не уверена, что у меня это получится...""",
+	CALI_SERVANTS_AMELIA_OPTION_1 = """Actually, could you help out Cali...""", # MISSING TRANSLATION
 	CALI_SERVANTS_NEW_LEADER_1_OPTION_1 = """Не волнуйся, у тебя все получится.""",
 	CALI_SERVANTS_NEW_LEADER_1_OPTION_2 = """Все бывает в первый раз, не узнаешь, пока не попробуешь.""",
 	CALI_SERVANTS_NEW_LEADER_1_OPTION_3 = """Не стоит отчаиваться, как только мы начали.""",
@@ -19263,6 +19277,12 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	AREAEMPIRE = """Империя""",
 	AREASEAS = """Моря""",
 	AREABEASTKIN_TRIBE = """Дальние леса""",
+	CAPITALALIRON = """Aliron""", # MISSING TRANSLATION
+	CAPITALELVEN = """Elven Capital""", # MISSING TRANSLATION
+	CAPITALDWARVEN = """Dwarven Capital""", # MISSING TRANSLATION
+	CAPITALEMPIRE = """Empire Capital""", # MISSING TRANSLATION
+	CAPITALBEASTKIN = """Beastkin Tribe""", # MISSING TRANSLATION
+	WORKERSDISASSEMBLE = """Disassemble""", # MISSING TRANSLATION
 	AREACAPITALS = """Столицы""",
 	AREASETTLEMENTS = """Деревни""",
 	AREAQUESTS = """Квесты""",
@@ -20179,6 +20199,22 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	SELECT_SLOT_FIRST_LABEL = """Выберите сначала слот""",
 	FARMAVAILABLEPRDODUCTS = """Доступные продукты""",
 	FARMAVAILABLEPRDODUCTSNO = """Для этого персонажа нет доступных продуктов""",
+	FARMCHOOSE = """Choose""", # MISSING TRANSLATION
+	FARMREMOVE = """Remove""", # MISSING TRANSLATION
+	FARMALLOWEDCUSTOMERS = """Allowed Customers""", # MISSING TRANSLATION
+	FARMSERVICERULES = """Service Rules: %s""", # MISSING TRANSLATION
+	FARMPROGRESSTURN = """Progress: %.1f per turn""", # MISSING TRANSLATION
+	FARMGROWTHFACTORLOW = """Growth factor is too low""", # MISSING TRANSLATION
+	FARMDETAILS = """[center]Details[/center]
+Number of items produced per character is based on their Growth Factor.
+Item Limit: %s/%s""", # MISSING TRANSLATION
+	FARMACTIVATED = """Activated""", # MISSING TRANSLATION
+	JOBWORKTOOLTOOLTIP = """Effective Tool: Will increase work speed when equipped""", # MISSING TRANSLATION
+	JOBWORKUNITTOOLTIP = """Progress required per item""", # MISSING TRANSLATION
+	JOBSTATTOOLTIP = """Job Stat: %s
+This stat will grow by attending to this job.""", # MISSING TRANSLATION
+	JOBSTATBROTHELDESCRIPT = """Growing stat will depend on what task will be performed by character when servicing customers.""", # MISSING TRANSLATION
+	JOBMODTOOLTIP = """Task Efficiency Modifier""", # MISSING TRANSLATION
 	LACKS_BASIC_SERV_LABEL = """Не хватает обучения: Базовое служение""",
 	REFUSE_TO_WHORE_LABEL = """отказывается выполнять сексуальные задания""",
 	REFUSE_THIS_TASK_LABEL = """отказывается выполнять это задание""",

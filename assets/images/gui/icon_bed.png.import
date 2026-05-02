@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/slave_love.png-63ad27cb57d1fb21c7b76c93d80e57cf.stex"
+path="res://.import/icon_bed.png-a86ee77855d4c475db67b1e57bd40fab.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/slave_love.png"
-dest_files=[ "res://.import/slave_love.png-63ad27cb57d1fb21c7b76c93d80e57cf.stex" ]
+source_file="res://assets/images/gui/icon_bed.png"
+dest_files=[ "res://.import/icon_bed.png-a86ee77855d4c475db67b1e57bd40fab.stex" ]
 
 [params]
 

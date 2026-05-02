@@ -156,6 +156,7 @@ ma manterrà comunque tutti i tuoi personaggi, oggetti e inventario. Usa questa 
 	PRONOUNGROOMF = "sposa",
 	PRONOUNBOY = "ragazzo",
 	PRONOUNBOYF = "ragazza",
+	PRONOUNBOYFUTA = """girl""", # MISSING TRANSLATION
 	PRONOUNHIMSELFL = "se stesso",
 	PRONOUNHIMSELFLF = "se stessa",
 	BUTTONMENU = "Menù",
@@ -1172,6 +1173,7 @@ Ridotto dall'evasione del nemico""",
 	CHAR_UNAVALIABLE = "Indisponibile",
 	CHAR_UNAVALIABLE_TURN = "Indisp: %s t.",
 	CHAR_UNAVALIABLE_DAY = "Indisp: %s g.",
+	CHAR_TRAVEL = """Travelling""", # MISSING TRANSLATION
 	NO_FREE_SLOTS = "Per questa attività non sono disponibili slot",
 	ANOTHERPROFSELECTED = "Può selezionare solo una specializzazione.",
 	NOMATERIALSFORITEMPART = "Non si dispone di materiali adatti per questa parte dell'articolo",
@@ -1191,6 +1193,9 @@ Ridotto dall'evasione del nemico""",
 	EFFECT = "effetto",
 	CLASSINFO = "Dettagli della classe",
 	CLASSSTATCHANGES = "Modifiche alle statistiche",
+	CLASSALREADYACQUIRED = """[name] has already acquired this class.""", # MISSING TRANSLATION
+	CLASSNEWACQUIREDLOG = """[name] has acquired new Class: %s""", # MISSING TRANSLATION
+	MASTERYPOINTS = """%d Points""", # MISSING TRANSLATION
 	INVENTORY = "Inventario",
 	WORKERLIST = "Elenco dei lavoratori",
 	HEROLIST = "Elenco degli eroi",
@@ -2535,6 +2540,20 @@ Danno +15%, Salute +20.""",
 	TOOLTIPGOLD = "Oro posseduto. L'oro viene utilizzato per l'acquisto di schiavi e oggetti e può essere ottenuto vendendo oggetti, completando missioni e alcuni compiti.",
 	TOOLTIPFOOD = "Prodotti alimentari di proprietà / cibo consumato al giorno. Il cibo è usato da ogni personaggio e può essere ottenuto da alcuni compiti e aumentato con la cottura. La mancanza di cibo porterà all'esaurimento e alla fine alla morte. ",
 	TOOLTIPENCHANTSCREEN = "Puoi applicare incantesimi e maledizioni a un oggetto. L'applicazione della maledizione aumenterà la capacità di incantesimo dell'oggetto, ma la maledizione sarà casuale e verrà rivelata solo quando si ottiene l'oggetto. ",
+	ENCHANTBACK = """Return to Craft""", # MISSING TRANSLATION
+	ENCHANTIMPROVE = """Improve Gear""", # MISSING TRANSLATION
+	ENCHANTAPPLYMINORCURSE = """Apply Minor Curse""", # MISSING TRANSLATION
+	ENCHANTAPPLYMAJORCURSE = """Apply Major Curse""", # MISSING TRANSLATION
+	ENCHANTAPPLY = """Apply""", # MISSING TRANSLATION
+	ENCHANTEQUIPPEDBY = """Is equipped by %s""", # MISSING TRANSLATION
+	ENCHANTCAPACITYLABEL = """Enchant Capacity:""", # MISSING TRANSLATION
+	ENCHANTQUALITYLABEL = """Quality:""", # MISSING TRANSLATION
+	ENCHANTCURSELABEL = """Curse: """, # MISSING TRANSLATION
+	ENCHANTCURSEUNKNOWNMINOR = """Unknown Minor""", # MISSING TRANSLATION
+	ENCHANTCURSEUNKNOWNMAJOR = """Unknown Major""", # MISSING TRANSLATION
+	ENCHANTCOSTDEC = """Capacity -%d""", # MISSING TRANSLATION
+	ENCHANTCOSTINC = """Capacity +%d""", # MISSING TRANSLATION
+	ENCHANTLVFORMAT = """%s lv %d""", # MISSING TRANSLATION
 	MASTERPOINTTOP = "Nuovo punto maestro",
 	MASTERPOINTSTOP = "Nuovi punti Maestro",
 	MASTERPOINTBOTTOM = "%d punto",
@@ -15025,6 +15044,7 @@ Compili un piccolo modulo indicando quali azioni dovrebbero essere escluse dal s
 Con un pizzico di dubbio, Cali accetta di provare queste attività. 
 
 {color=yellow|— Eh, non sono sicuro di essere bravo con questa roba...}""",
+	CALI_SERVANTS_AMELIA_OPTION_1 = """Actually, could you help out Cali...""", # MISSING TRANSLATION
 	CALI_SERVANTS_NEW_LEADER_1_OPTION_1 = "Non preoccuparti, puoi farcela.",
 	CALI_SERVANTS_NEW_LEADER_1_OPTION_2 = "C'è la prima volta per tutto, non lo saprai finché non ci provi.",
 	CALI_SERVANTS_NEW_LEADER_1_OPTION_3 = "Non dovresti scoraggiarti proprio come abbiamo iniziato.",
@@ -18972,6 +18992,12 @@ Zephyra si blocca quando vede il tuo gesto. Il suo volto segna il tuo destino. I
 	AREAEMPIRE = "Impero",
 	AREASEAS = "Mari",
 	AREABEASTKIN_TRIBE = "Foreste Lontane",
+	CAPITALALIRON = """Aliron""", # MISSING TRANSLATION
+	CAPITALELVEN = """Elven Capital""", # MISSING TRANSLATION
+	CAPITALDWARVEN = """Dwarven Capital""", # MISSING TRANSLATION
+	CAPITALEMPIRE = """Empire Capital""", # MISSING TRANSLATION
+	CAPITALBEASTKIN = """Beastkin Tribe""", # MISSING TRANSLATION
+	WORKERSDISASSEMBLE = """Disassemble""", # MISSING TRANSLATION
 	AREACAPITALS = "Capitali",
 	AREASETTLEMENTS = "Villaggi",
 	AREAQUESTS = "Missioni",
@@ -19750,6 +19776,22 @@ Tasto di scelta rapida: 3""",
 	SELECT_SLOT_FIRST_LABEL = "Seleziona slot fattoria",
 	FARMAVAILABLEPRDODUCTS = "Prodotti disponibili",
 	FARMAVAILABLEPRDODUCTSNO = "Nessun prodotto disponibile per questo personaggio",
+	FARMCHOOSE = """Choose""", # MISSING TRANSLATION
+	FARMREMOVE = """Remove""", # MISSING TRANSLATION
+	FARMALLOWEDCUSTOMERS = """Allowed Customers""", # MISSING TRANSLATION
+	FARMSERVICERULES = """Service Rules: %s""", # MISSING TRANSLATION
+	FARMPROGRESSTURN = """Progress: %.1f per turn""", # MISSING TRANSLATION
+	FARMGROWTHFACTORLOW = """Growth factor is too low""", # MISSING TRANSLATION
+	FARMDETAILS = """[center]Details[/center]
+Number of items produced per character is based on their Growth Factor.
+Item Limit: %s/%s""", # MISSING TRANSLATION
+	FARMACTIVATED = """Activated""", # MISSING TRANSLATION
+	JOBWORKTOOLTOOLTIP = """Effective Tool: Will increase work speed when equipped""", # MISSING TRANSLATION
+	JOBWORKUNITTOOLTIP = """Progress required per item""", # MISSING TRANSLATION
+	JOBSTATTOOLTIP = """Job Stat: %s
+This stat will grow by attending to this job.""", # MISSING TRANSLATION
+	JOBSTATBROTHELDESCRIPT = """Growing stat will depend on what task will be performed by character when servicing customers.""", # MISSING TRANSLATION
+	JOBMODTOOLTIP = """Task Efficiency Modifier""", # MISSING TRANSLATION
 	LACKS_BASIC_SERV_LABEL = "manca l'addestramento: servitù di base",
 	REFUSE_TO_WHORE_LABEL = "si rifiuta di svolgere compiti sessuali",
 	REFUSE_THIS_TASK_LABEL = "si rifiuta di svolgere questo compito",

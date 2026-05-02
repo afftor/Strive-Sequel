@@ -1520,11 +1520,11 @@ func get_pronoun_value(pronoun):
 		"boygirlfuta":
 			match statlist.sex:
 				'male':
-					return 'boy'
+					return tr('PRONOUNBOY')
 				'female':
-					return 'girl'
+					return tr('PRONOUNBOYF')
 				'futa':
-					return 'futanari'
+					return tr('PRONOUNBOYFUTA')
 		"boy": return globals.fastif(statlist.sex == 'male', 'boy', 'girl')
 		"himself": return globals.fastif(statlist.sex == 'male', tr('PRONOUNHIMSELFL'), tr("PRONOUNHIMSELFLF"))
 		"mastername": 

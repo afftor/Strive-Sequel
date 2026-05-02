@@ -154,7 +154,7 @@ func rebuild_recipe_list():
 			item = Items.materiallist[i.resultitem]
 			globals.connectmaterialtooltip(newbutton.get_node('icon'), item, '')
 		newbutton.get_node("number").text = str(i.resultamount)
-		newbutton.get_node('Label').text = item.name
+		newbutton.get_node('Label').text = tr(item.name)
 		newbutton.set_meta('item', i)
 		newbutton.connect("pressed", self, 'selectcraftitem', [i])
 		newbutton.get_node('icon').texture = item.icon
@@ -310,6 +310,7 @@ func selectcraftitem(item):
 	else:
 		$MaterialSetupPanel/EndItemFrame/Label.visible = false
 	$NumberSelect.show()
+	number_change(repeats)
 	$MaterialSetupPanel.show()
 	get_node("MaterialSetupPanel/ModularSetup/").visible = item.crafttype != 'basic'
 	get_node("MaterialSetupPanel/BasicSetup/").visible = !get_node("MaterialSetupPanel/ModularSetup/").visible
@@ -336,11 +337,11 @@ func selectcraftitem(item):
 		$NumberSelect/NumberConfirm.disabled = false
 		$MaterialSetupPanel/EndItemFrame/EndItem.material = null
 		$MaterialSetupPanel/EndItemFrame/EndItem.texture = baseitem.icon
-		var item_name = baseitem.name
+		var item_name = tr(baseitem.name)
 		$MaterialSetupPanel/Label.text = item_name
 		var font = input_handler.font_size_calculator($MaterialSetupPanel/Label)
 		$MaterialSetupPanel/Label.set("custom_fonts/font", font)
-		var encoded_text = str(globals.TextEncoder(baseitem.descript))
+		var encoded_text = str(globals.TextEncoder(tr(baseitem.descript)))
 		$MaterialSetupPanel/EndItemDescript.bbcode_text = encoded_text
 		var basic_setup_container = $MaterialSetupPanel/BasicSetup/ScrollContainer/VBoxContainer
 
@@ -363,7 +364,7 @@ func selectcraftitem(item):
 					if item_value.owner == null:
 						amount += item_value.amount
 			newbutton.get_node("Reqs").text = str(amount)+ "/" +str(item.items[i])
-			newbutton.get_node("Name").text = str(Items.itemlist[i].name)
+			newbutton.get_node("Name").text = tr(Items.itemlist[i].name)
 			newbutton.disabled = item.items[i] > amount
 #			globals.connectitemtooltip_v2(newbutton, Items.itemlist[i])
 	
@@ -454,9 +455,9 @@ func make_material_list(container):
 #			parttext = parttext.substr(0, parttext.length()-2)
 #			newbutton.get_node("Label").bbcode_text = parttext
 
-			var temptext = '[center]' + i.name + "[/center]\n" + tr('CRAFTINPOSSESSION') + ": " + str(ResourceScripts.game_res.materials[i.code]) +  "\n" + tr('CRAFTPARTEFFECTS') + ":" + get_mat_bonuses(i, part)
-				
-			newbutton.get_node("name").text = i.name
+			var temptext = '[center]' + tr(i.name) + "[/center]\n" + tr('CRAFTINPOSSESSION') + ": " + str(ResourceScripts.game_res.materials[i.code]) +  "\n" + tr('CRAFTPARTEFFECTS') + ":" + get_mat_bonuses(i, part)
+
+			newbutton.get_node("name").text = tr(i.name)
 			newbutton.set_meta('material', i.code)
 			globals.connecttexttooltip(newbutton,temptext)
 			
@@ -474,9 +475,9 @@ func get_mat_bonuses(material, part):
 		var endvalue = material.parts[part][k]
 		if endvalue is Array:
 			for j in endvalue:
-				text += '\n' + Effectdata.effect_table[j].descript
+				text += '\n' + tr(Effectdata.effect_table[j].descript)
 		elif endvalue is String:
-			text += '\n' + statdata.statdata[k].name + ': ' + endvalue
+			text += '\n' + tr(statdata.statdata[k].name) + ': ' + endvalue
 		else:
 			if itemdata.basemods.has(k):
 				endvalue = endvalue * float(itemdata.basemods[k])
@@ -491,7 +492,7 @@ func get_mat_bonuses(material, part):
 						if k.ends_with('_' + suffix):
 							data = statdata.statdata[k.trim_suffix('_' + suffix)]
 							break
-				text += '\n' + data.name + ': ' + str(endvalue)
+				text += '\n' + tr(data.name) + ': ' + str(endvalue)
 			
 	return text
 
@@ -531,8 +532,8 @@ func choosematerial(button):
 #					parttext += statdata.statdata[k].name + ": " +  str(i.parts[part][k]) + ", "
 #			parttext = parttext.substr(0, parttext.length()-2)
 #			newbutton.get_node("Label").bbcode_text = parttext
-			newbutton.get_node("Label").text = i.name
-			globals.connecttexttooltip(newbutton, '[center]' + i.name + "[/center]\n" + i.descript)
+			newbutton.get_node("Label").text = tr(i.name)
+			globals.connecttexttooltip(newbutton, '[center]' + tr(i.name) + "[/center]\n" + tr(i.descript))
 			newbutton.connect("pressed",self,'selectmaterial',[i, part, cost])
 
 
@@ -561,7 +562,7 @@ func selectmaterial(material, part, cost):
 				k.get_node("name").set("custom_colors/font_color", Color(fontcolor))
 			
 			if checkpart == part:
-				var temptext = tr(Items.Parts[part].name) + "\n" + material.name #+ ": " + str(cost)
+				var temptext = tr(Items.Parts[part].name) + "\n" + tr(material.name) #+ ": " + str(cost)
 				#i.get_node("number").text = str(cost)
 				i.get_node("PartDescript").text = temptext 
 	
@@ -588,7 +589,7 @@ func checkcreatingitem(item):
 		else:
 			resourcedict[i.material] = i.price
 	for i in resourcedict:
-		text += "\n" + i.capitalize() + ' - ' + str(resourcedict[i])
+		text += "\n" + tr(Items.materiallist[i].name) + ' - ' + str(resourcedict[i])
 
 	var fullrecipe = true
 	for i in baseitem.parts:
@@ -609,7 +610,7 @@ func checkcreatingitem(item):
 	else:
 		text += '\n'
 		$NumberSelect/NumberConfirm.disabled = false
-	$MaterialSetupPanel/Label.text = baseitem.name
+	$MaterialSetupPanel/Label.text = tr(baseitem.name)
 	globals.TextEncoder(text, $MaterialSetupPanel/EndItemDescript)
 	#globals.connecttooltip($NumberSelect/EndItem, text)
 	enditem.set_icon($MaterialSetupPanel/EndItemFrame/EndItem)
@@ -684,14 +685,14 @@ func update_char_button(newbutton, person):
 			newbutton.pressed = false
 			newbutton.disabled = true
 		'travel':
-			newbutton.get_node("job").text = tr('CHAR_TRAVEL')
+			newbutton.get_node("job").text = tr("CHAR_TRAVEL")
 			newbutton.pressed = false
 			newbutton.disabled = true
 		_:
 			if Items.materiallist.has(twork):
-				newbutton.get_node("job").text =  Items.materiallist[twork].name
+				newbutton.get_node("job").text = tr(Items.materiallist[twork].name)
 			else:
-				newbutton.get_node("job").text =  tasks.tasklist[twork].name
+				newbutton.get_node("job").text = tr(tasks.tasklist[twork].name)
 			newbutton.disabled = false
 			newbutton.pressed = (twork == craft_category)
 

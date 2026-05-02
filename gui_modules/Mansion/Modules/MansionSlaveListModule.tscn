@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=2]
@@ -36,6 +36,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/bar_trainees_filler.png" type="Texture" id=34]
 [ext_resource path="res://assets/Textures_v2/MANSION/no.png" type="Texture" id=35]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_disabled.png" type="Texture" id=36]
+[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Medium.otf" type="DynamicFontData" id=37]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_inventory_hover.png" type="Texture" id=38]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_traits_default.png" type="Texture" id=39]
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_interactions.png" type="Texture" id=40]
@@ -53,6 +54,7 @@
 [sub_resource type="DynamicFont" id=6]
 size = 30
 font_data = ExtResource( 1 )
+fallback/0 = ExtResource( 37 )
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -951,7 +953,7 @@ custom_styles/focus = SubResource( 3 )
 custom_styles/disabled = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
 toggle_mode = true
-text = "Mansion"
+text = " MANSION"
 flat = true
 
 [node name="VSeparator" type="TextureRect" parent="TravelsContainerPanel"]

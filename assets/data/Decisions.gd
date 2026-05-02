@@ -33,6 +33,7 @@ var decisions = {
 	SaveRebels = "Mines quest decision to save rebels from demon",
 	ZephyraRecruited = "Divine symbol or artifacts questline, Zephyra recruited divine_symbol_26, 27, 28, zephyra_recruitment_6_good",
 	ZephyraEnslaved = "Divine symbol questline, Zephyra enslaved divine_symbol_26",
+	ZephyraRefused = "Player refused Zephyra at divine_symbol_29 (act1) or zephyra_recruitment_6_bad (act2), blocks further recruitment prompts",
 	anastasia_rape_scene = "Anastasia was raped setting you on negative route for her",
 	KurdanRecruited = "Mines quest decision to recruit Kurdan",
 	KurdanFollowing = "Mines quest decision that  Kurdan will follow",

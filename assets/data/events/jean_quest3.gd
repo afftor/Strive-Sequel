@@ -1529,7 +1529,7 @@ var data = {
 		options = [
 			{
 				code = "jean_sylas_carriage_fight_intro",
-				text = "JEAN_SYLAS_OPTION_FIGHT_THUGS",
+				text = "DIALOGUEFIGHTOPTION",
 				reqs = [
 
 				],
@@ -3519,7 +3519,7 @@ var data = {
 		reqs = [
 			{
 				type = "has_material",
-				operant = "eq",
+				operant = "gte",
 				value = 1,
 				material = "mindlink",
 				negative = "repeat_next_turn"

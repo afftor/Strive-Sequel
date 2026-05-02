@@ -306,6 +306,7 @@ region_rect = Rect2( 0, 0, 1920, 1080 )
 [sub_resource type="DynamicFont" id=30]
 size = 22
 font_data = ExtResource( 189 )
+fallback/0 = ExtResource( 39 )
 
 [sub_resource type="StyleBoxTexture" id=9]
 texture = ExtResource( 69 )
@@ -346,6 +347,7 @@ region_rect = Rect2( 0, 0, 1920, 1080 )
 [sub_resource type="DynamicFont" id=19]
 size = 24
 font_data = ExtResource( 7 )
+fallback/0 = ExtResource( 39 )
 
 [node name="CharInfoMainModule" type="Panel" groups=["pauseprocess"]]
 light_mask = 0

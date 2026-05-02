@@ -30,7 +30,7 @@ var lands = {
 		capital_dynamic_background = 'aliron',
 		capital_background_noise = 'aliron_noise',
 		capital_background_music = 'wimborn',
-		capital_name = "Aliron",
+		capital_name = tr("CAPITALALIRON"),
 		capital_code = 'aliron',
 	},
 	forests = {
@@ -52,7 +52,7 @@ var lands = {
 		area_shop_items = 'forests_area_shop',
 		capital_background = 'elf_capital',
 		capital_icon = 'elf_capital',
-		capital_name = "Elven Capital",
+		capital_name = tr("CAPITALELVEN"),
 		capital_code = 'elf_capital',
 		capital_dynamic_background = 'elf_capital',
 		capital_background_noise = 'elf_noise',
@@ -78,7 +78,7 @@ var lands = {
 		area_shop_items = 'mountain_area_shop',
 		capital_background = 'dwarfs_city',
 		capital_icon = 'dwarfs_city',
-		capital_name = "Dwarven Capital",
+		capital_name = tr("CAPITALDWARVEN"),
 		capital_code = 'dwarf_capital',
 		capital_dynamic_background = 'dwarfs_city',
 #		capital_background_noise = '',
@@ -103,7 +103,7 @@ var lands = {
 		capital_options = [],
 		capital_background = 'empire',
 		capital_icon = 'empire',
-		capital_name = "Empire Capital",
+		capital_name = tr("CAPITALEMPIRE"),
 		capital_code = 'empire_capital',
 		capital_dynamic_background = 'empire',
 #		capital_background_noise = '',
@@ -128,7 +128,7 @@ var lands = {
 		area_shop_items = 'beastkin_area_shop',
 		capital_background = 'beastkin_capital',
 		capital_icon = 'beastkin_capital',
-		capital_name = "Beastkin Tribe",
+		capital_name = tr("CAPITALBEASTKIN"),
 		capital_code = 'beastkin_capital',
 		capital_dynamic_background = 'beastkin_capital',
 		capital_background_noise = 'elf_noise',
@@ -273,7 +273,7 @@ var factiondata = {
 		bonus_actions = [
 			{
 				code = 'disassemble',
-				name = 'Disassemble',
+				name = 'WORKERSDISASSEMBLE',
 				reqs = [
 					{
 						type = "has_faction_upgrade",
@@ -834,8 +834,9 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'gryphon_hunter_start', args = []}]
 		},
 		{
-			text = tr("ALIRON12"), 
-			reqs = [{type = 'active_quest_stage', value = 'pre_sword_artifact_quest', stage = 'stage1', state = true}], 
+			text = tr("ALIRON12"),
+			reqs = [{type = 'active_quest_stage', value = 'pre_sword_artifact_quest', stage = 'stage1', state = true},
+				{type = 'decision', value = 'ZephyraRefused', check = false}],
 			args = [{code = 'start_event', data = 'zephyra_recruitment_1', args = []}]
 		},
 		{

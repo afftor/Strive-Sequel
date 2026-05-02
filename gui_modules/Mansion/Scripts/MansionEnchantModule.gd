@@ -65,7 +65,7 @@ func build_item_list():
 		panel.pressed = selected_item == id
 		if item.owner != null:
 			panel.get_node("WornIcon").show()
-			globals.connecttexttooltip(panel.get_node("WornIcon"),'Is equipped by ' + item.get_owner().get_short_name())
+			globals.connecttexttooltip(panel.get_node("WornIcon"), tr("ENCHANTEQUIPPEDBY") % item.get_owner().get_short_name())
 
 
 func select_item(id):
@@ -123,9 +123,9 @@ func build_ench_panel(panel):
 	var id = panel.get_meta('id')
 	var enchdata = Items.enchantments[id] 
 	var item = ResourceScripts.game_res.items[selected_item]
-	panel.get_node('Label').text = enchdata.name
+	panel.get_node('Label').text = tr(enchdata.name)
 	panel.get_node('icon').texture = enchdata.icon
-	globals.connecttexttooltip(panel, enchdata.descript)
+	globals.connecttexttooltip(panel, tr(enchdata.descript))
 #	if item.enchants.has(id):
 	if selected_enchants.has(id):
 		var value = selected_enchants[id]
@@ -134,7 +134,7 @@ func build_ench_panel(panel):
 			panel.get_node('Rarr').visible = true
 			var cost = enchdata.levels[value + 1].cap_cost - enchdata.levels[value].cap_cost
 			panel.get_node('Rarr').disabled = (cost > titem.get_e_capacity())
-			globals.connecttexttooltip(panel.get_node('Rarr'), "Capacity -%d" % cost )
+			globals.connecttexttooltip(panel.get_node('Rarr'), tr("ENCHANTCOSTDEC") % cost )
 		else:
 			panel.get_node('Rarr').visible = false
 		if item.enchants.has(id):
@@ -145,7 +145,7 @@ func build_ench_panel(panel):
 					cost = enchdata.levels[value].cap_cost - enchdata.levels[value - 1].cap_cost
 				else:
 					cost = enchdata.levels[value].cap_cost
-					globals.connecttexttooltip(panel.get_node('Larr'), "Capacity +%d" % cost )
+					globals.connecttexttooltip(panel.get_node('Larr'), tr("ENCHANTCOSTINC") % cost )
 			else:
 				panel.get_node('Larr').visible = false
 		else:
@@ -155,7 +155,7 @@ func build_ench_panel(panel):
 				cost = enchdata.levels[value].cap_cost - enchdata.levels[value - 1].cap_cost
 			else:
 				cost = enchdata.levels[value].cap_cost
-			globals.connecttexttooltip(panel.get_node('Larr'), "Capacity +%d" % cost )
+			globals.connecttexttooltip(panel.get_node('Larr'), tr("ENCHANTCOSTINC") % cost )
 	elif item.enchants.has(id):
 		var value = item.enchants[id]
 		selected_enchants[id] = value
@@ -164,7 +164,7 @@ func build_ench_panel(panel):
 			panel.get_node('Rarr').visible = true
 			var cost = enchdata.levels[value + 1].cap_cost - enchdata.levels[value].cap_cost
 			panel.get_node('Rarr').disabled = (cost > titem.get_e_capacity())
-			globals.connecttexttooltip(panel.get_node('Rarr'), "Capacity -%d" % cost )
+			globals.connecttexttooltip(panel.get_node('Rarr'), tr("ENCHANTCOSTDEC") % cost )
 		else:
 			panel.get_node('Rarr').visible = false
 		panel.get_node('Larr').visible = false
@@ -173,7 +173,7 @@ func build_ench_panel(panel):
 		panel.get_node('Rarr').visible = true
 		var cost = enchdata.levels[1].cap_cost
 		panel.get_node('Rarr').disabled = (cost > titem.get_e_capacity())
-		globals.connecttexttooltip(panel.get_node('Rarr'), "Capacity -%d" % cost )
+		globals.connecttexttooltip(panel.get_node('Rarr'), tr("ENCHANTCOSTDEC") % cost )
 		panel.get_node('Larr').visible = false
 
 
@@ -198,15 +198,15 @@ func build_enchantment_list():
 
 
 func build_item_panel(panel, item):
-	panel.get_node('name').text = item.name
+	panel.get_node('name').text = tr(item.name)
 	item.set_icon(panel.get_node('icon'))
 	input_handler.ClearContainer(panel.get_node('stats'), ['line', 'line2'])
 	if item.get_e_capacity_max() > 0:
 		var enc_cap = input_handler.DuplicateContainerTemplate(panel.get_node('stats'), 'line')
-		enc_cap.get_node('name').text = 'Enchant Capacity:'
+		enc_cap.get_node('name').text = tr("ENCHANTCAPACITYLABEL")
 		enc_cap.get_node('value').text = '%d/%d' % [item.get_e_capacity(), item.get_e_capacity_max()] #shows free cap, not used
 	var quality = input_handler.DuplicateContainerTemplate(panel.get_node('stats'), 'line')
-	quality.get_node('name').text = 'Quality:'
+	quality.get_node('name').text = tr("ENCHANTQUALITYLABEL")
 	quality.get_node('value').text = tr("QUALITY"+item.quality.to_upper())
 	var stats_text = input_handler.DuplicateContainerTemplate(panel.get_node('stats'), 'line2')
 	stats_text.bbcode_text = globals.TextEncoder(globals.build_desc_for_bonusstats(item.bonusstats))
@@ -226,18 +226,18 @@ func build_item_panel(panel, item):
 	else:
 		var text = ""
 		var curse_text = input_handler.DuplicateContainerTemplate(panel.get_node('stats'), 'line2')
-		text = "Curse: "
+		text = tr("ENCHANTCURSELABEL")
 		if item.curse_known:
 			var cursedata = Items.curses[item.curse]
-			text += cursedata.name
+			text += tr(cursedata.name)
 		elif item.curse.ends_with('minor'):
-			text += 'unknown minor'
+			text += tr("ENCHANTCURSEUNKNOWNMINOR")
 		elif item.curse.ends_with('major'):
-			text += 'unknown major'
+			text += tr("ENCHANTCURSEUNKNOWNMAJOR")
 		curse_text.bbcode_text = text
 	for id in item.enchants:
 		var ench_text = input_handler.DuplicateContainerTemplate(panel.get_node('stats'), 'line2')
-		ench_text.bbcode_text = "%s lv %d" % [tr(Items.enchantments[id].name), item.enchants[id]]
+		ench_text.bbcode_text = tr("ENCHANTLVFORMAT") % [tr(Items.enchantments[id].name), item.enchants[id]]
 	#free 2add other descriptions
 
 
@@ -309,7 +309,7 @@ func _item_matches_filter(item, filter_text):
 	if filter_text == "":
 		return true
 	filter_text = filter_text.to_lower()
-	if item.name.to_lower().find(filter_text) >= 0:
+	if tr(item.name).to_lower().find(filter_text) >= 0:
 		return true
 	if typeof(item.description) == TYPE_STRING and item.description.to_lower().find(filter_text) >= 0:
 		return true

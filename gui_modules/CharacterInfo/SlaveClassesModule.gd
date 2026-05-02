@@ -144,7 +144,7 @@ func update():
 				newbutton.texture_hover = load("res://assets/images/gui/universal/skill_frame_diabled.png")
 				newbutton.texture_pressed = load("res://assets/images/gui/universal/skill_frame_diabled.png")
 				# newbutton.disabled = true
-		newbutton.get_node('name').text = name
+		newbutton.get_node('name').text = tr(name)
 		newbutton.connect('pressed',self,"open_class", [i.code])
 		newbutton.set_meta('class_code', i.code)
 		globals.connectclasstooltip(newbutton, person, i.code)
@@ -176,7 +176,7 @@ func update():
 
 	for i in $"BaseStatsPanel/base_stats".get_children():
 		if statdata.statdata.has(i.name.replace("label_","")):
-				globals.connecttexttooltip(i, statdata.statdata[i.name.replace("label_", "")].descript)
+				globals.connecttexttooltip(i, tr(statdata.statdata[i.name.replace("label_", "")].descript))
 
 func checkbox_locked():
 	person = input_handler.interacted_character
@@ -213,7 +213,7 @@ func open_class(classcode):
 	current_class = classcode
 	$ClassPanel/scroll._open_panel(person, classcode)
 	if person.has_profession(tempclass.code):
-		text = person.translate('[name] has already acquired this class.')
+		text = person.translate(tr("CLASSALREADYACQUIRED"))
 		$ClassPanel/HBoxContainer2/Unlock.hide()
 		$ClassPanel/HBoxContainer2/ExpLabel.set("custom_colors/font_color", Color(1,1,1))
 	else:
@@ -250,7 +250,7 @@ func unlock_class():
 	person.add_stat('base_exp', -person.get_next_class_exp())
 	person.unlock_class(current_class)
 	yield(get_tree().create_timer(0.2),"timeout")
-	globals.text_log_add("char", person.translate("[name] has acquired new Class: " + classesdata.professions[current_class].name))
+	globals.text_log_add("char", person.translate(tr("CLASSNEWACQUIREDLOG") % tr(classesdata.professions[current_class].name)))
 	get_parent().BodyModule.update()
 	get_parent().set_state("default")
 
@@ -307,7 +307,7 @@ func build_mastery_cat():
 			button.connect('pressed', self, 'change_mastery', [mas])
 			button.get_node('icon').texture = images.get_icon(masdata.icon)
 			button.get_node('icon/Label').text = str(lv)
-			globals.connecttexttooltip(button, masdata.name)
+			globals.connecttexttooltip(button, tr(masdata.name))
 			text += "[center]"+tr("MASTERY"+mas.to_upper()) + "[/center]\n"+tr("LVLBONUSPERPOINT")+":\n"
 			text += globals.build_desc_for_bonusstats(masdata.passive) + '\n'
 			if lv > 0:
@@ -348,7 +348,7 @@ func change_mastery(mas):
 #			node.get_node('icon/Label').text = str(person.get_stat('mastery_' + cmastery))
 	input_handler.ClearContainer($MasteryPanel/mastery/ScrollContainer/VBoxContainer, ['HSeparator', 'container'])
 	var masdata = Skilldata.masteries[mas]
-	$MasteryPanel/mastery/Label.text = masdata.name
+	$MasteryPanel/mastery/Label.text = tr(masdata.name)
 	$MasteryPanel/mastery.texture = images.get_background(masdata.background, true)
 	match masdata.type:
 		'combat':
@@ -451,9 +451,9 @@ func change_mastery(mas):
 	
 	$MasteryPanel/AddPoint.disabled = !person.can_upgrade_mastery(mas)
 	$MasteryPanel/AddPoint2.disabled = !person.can_upgrade_mastery(mas, true)
-	$MasteryPanel/Categories3/combat/Label.text = "%d Points" % person.get_stat('mastery_point_combat')
-	$MasteryPanel/Categories3/magic/Label.text = "%d Points" % person.get_stat('mastery_point_magic')
-	$MasteryPanel/Categories3/universal/Label.text = "%d Points" % person.get_stat('mastery_point_universal')
+	$MasteryPanel/Categories3/combat/Label.text = tr("MASTERYPOINTS") % person.get_stat('mastery_point_combat')
+	$MasteryPanel/Categories3/magic/Label.text = tr("MASTERYPOINTS") % person.get_stat('mastery_point_magic')
+	$MasteryPanel/Categories3/universal/Label.text = tr("MASTERYPOINTS") % person.get_stat('mastery_point_universal')
 	
 
 #	text += tr('FOR')
