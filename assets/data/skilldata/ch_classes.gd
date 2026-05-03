@@ -1448,7 +1448,7 @@ var effects = {
 	},
 	e_tr_templar_heal = {
 		type = 'trigger',
-		trigger = [variables.TR_TURN_F],
+		trigger = [variables.TR_TURN_S],
 		req_skill = false,
 		sub_effects = [
 			{
