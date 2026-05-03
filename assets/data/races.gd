@@ -866,7 +866,7 @@ var racelist = {
 			penis_type = ['feline'],
 			chin = ['beastkin'],
 			nose = ['beastkin'],
-			lips = ['beastkin_cry','beastkin_open','beastkin_smile']
+			lips = ['none']
 			},
 		global_weight = 10,
 		training_disposition = {

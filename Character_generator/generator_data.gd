@@ -4283,20 +4283,24 @@ var transforms = {
 	},
 	
 	lips = { #misplaced files, single male style
+		none = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Lips_tex', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Lips_tex', texture = null},
+		],
 		style1 = [
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Lips_tex', texture = "res://Character_generator/images/12_lips/lips_m1.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Lips_tex', texture = "res://Character_generator/images/12_lips/lips1.png"},
 		],
 		style2 = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Lips_tex', texture = "res://Character_generator/images/12_lips/lips_m1.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Lips_tex', texture = "res://Character_generator/images/12_lips/lips_m2.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Lips_tex', texture = "res://Character_generator/images/12_lips/lips2.png"},
 		],
 		style3 = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Lips_tex', texture = "res://Character_generator/images/12_lips/lips_m1.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Lips_tex', texture = "res://Character_generator/images/12_lips/lips_m3.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Lips_tex', texture = "res://Character_generator/images/12_lips/lips3.png"},
 		],
 		style4 = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Lips_tex', texture = "res://Character_generator/images/12_lips/lips_m1.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Lips_tex', texture = "res://Character_generator/images/12_lips/lips_m4.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Lips_tex', texture = "res://Character_generator/images/12_lips/lips4.png"},
 		],
 		style5 = [

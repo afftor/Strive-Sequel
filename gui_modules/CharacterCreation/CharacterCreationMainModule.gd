@@ -846,6 +846,7 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 	$SaveButton.visible = !is_from_cheats
 	$LoadButton.visible = !is_from_cheats
 	$MasterRelationPanel.visible = (type != 'master')
+	$modes.visible = true
 	build_food_filter()
 	rebuild_slave()
 	build_stats()
@@ -876,6 +877,7 @@ func open_freemode(char_to_open, flag = false):
 	$BackButton.visible = false
 	$BackButtonCheats.visible = false
 	$MasterRelationPanel.visible = false
+	$modes.visible = false
 
 
 
