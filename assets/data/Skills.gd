@@ -113,7 +113,7 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'assassinate', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = ['caster.atk', '*1.5']
 	},

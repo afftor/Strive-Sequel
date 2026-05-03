@@ -20,7 +20,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'mind',
-		sfx = [{code = 'mind_blast', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'devour_spirit', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat']
@@ -60,7 +60,7 @@ var skills = {
 #		new_syntax = true,
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'stun', duration = 4})],
+		effects = [Effectdata.rebuild_template({effect = 'stun', duration = 3})],
 		cost = {mp = 10},
 		charges = 0,
 		combatcooldown = 2,

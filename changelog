@@ -1,4 +1,7 @@
 0.14.2e
+Spell changes
+Sleep: cost 8 > 7, duration 2 > 3
+Mind Shatter: stun duration 4 > 3
 Fixed multiple skill issues
 Fixed potentially a case where items could be removed from equipped character
 Fixed service appearing in locations where it shouldnt
