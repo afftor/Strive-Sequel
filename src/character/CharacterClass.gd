@@ -2835,7 +2835,6 @@ func minor_training_tick():
 	if minor_training_timer <= 0:
 		finish_minor_training()
 
-#This probably wont work if the buff aint got stack as parent, but im not familar enough with effect code to fix it -Garden 
 func get_buff_number(status): 
 	var result = 0
 	var id_checkable = false
