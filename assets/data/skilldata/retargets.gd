@@ -11,7 +11,7 @@ var skills = {
 		tags = [ 'noevade','noreduce','support', 'aoe', 'passive'],
 		reqs = [],
 		targetreqs = [],
-		effects = ['e_protect'],
+		effects = ['e_defend'],
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -26,9 +26,35 @@ var skills = {
 		value = [['0']],
 		damagestat = 'no_stat'
 	},
+	
+	protect_me = {
+		code = 'protect_me',
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconsskills/light_spell_aoe.png",
+		type = 'combat', 
+		ability_type = 'spell',
+		tags = [ 'noevade','noreduce','support'],
+		reqs = [],
+		targetreqs = [{code = 'stat',  stat = 'combat_position', value = 9, operant = 'lte'}],
+		effects = ['e_protect'],
+		cost = {},
+		charges = 0,
+		combatcooldown = 4,
+		cooldown = 0,
+		catalysts = {},
+		target = 'ally',
+		target_number = 'single',
+		target_range = 'not_caster',
+		damage_type = 'light',
+		sfx = [], 
+		sounddata = {initiate = null, strike = null, hit = null},
+		value = [['0']],
+		damagestat = 'no_stat'
+	},
 }
 var effects = {
-	e_protect = {
+	e_defend = {
 		type = 'trigger',
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
@@ -104,6 +130,66 @@ var effects = {
 	},
 	
 	setup_retarget_default = Effectdata.rebuild_autocast({skill = 'mass_defend', trigger = [variables.TR_COMBAT_S]}),
+	
+	e_protect = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+		req_skill = true,
+		args = {duration = {obj = 'self', func = 'dur', dur = 3}},
+		sub_effects = ['protect_temp', 'protect_mark'],
+		buffs = []
+	},
+	protect_mark = {
+		type = 'temp_s',
+		target = 'target',
+		stack = 'defender',
+		daration = 'parent',
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		tags = ['defender'],
+		buffs = ['b_defender'],
+	},
+	protect_temp = {
+		type = 'temp_global',
+		tags = ['duration_none', 'defended'],
+		target = 'caster',
+		req_skill = true,
+		name = 'defended',
+		timers = [
+			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
+			{events = variables.TR_DEATH, objects = 'target', timer = 1},
+			{events = variables.TR_TURN_F, objects = 'target', timer = 3},
+		],
+		sub_effects = ['protect_retarget'],
+	},
+	protect_retarget = {
+		type = 'trigger',
+		conditions = [
+			{type = 'skill', value = ['tags', 'has', 'damage']},
+			{type = 'skill', value = ['tags', 'hasno', 'aoe']},
+			{type = 'owner', value = [{code = 'has_status', status = 'defender', check = false}]},
+			{type = 'defender', value = [{code = 'has_status', status = 'disable', check = false}]},
+			],
+		trigger = [variables.TR_DEF],
+		req_skill = true,
+		args = {defender = {obj = 'parent', func = 'arg', arg = 'target'}},
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'defender',
+				atomic = [{type = 'sfx', value = 'targetattack'}],
+			},
+			{
+				type = 'oneshot',
+				target = 'skill',
+				args = {defender = {obj = 'parent', func = 'arg', arg = 'defender'}},
+				atomic = [{type = 'stat_set', stat = 'target', value = ['parent_args', 'defender']}],
+			},
+		],
+		buffs = []
+	},
+
 }
 var atomic_effects = {}
 var buffs = {
