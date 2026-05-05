@@ -47,8 +47,8 @@ var skills = {
 		target_number = 'single',
 		target_range = 'not_caster',
 		damage_type = 'light',
-		sfx = [], 
-		sounddata = {initiate = null, strike = null, hit = null},
+		sfx = [{code = 'leader_mark', target = 'target', period = 'predamage'},{code = 'taunt', target = 'caster', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'bow', hit = null},
 		value = [['0']],
 		damagestat = 'no_stat'
 	},

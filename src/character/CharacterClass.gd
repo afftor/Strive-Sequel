@@ -14,6 +14,7 @@ var training = ResourceScripts.scriptdict.ch_training.new()
 var enthrall = ResourceScripts.scriptdict.ch_enthrall.new()
 var displaynode = null
 var ai = null
+var need_req = false #For boss or monster that really need move req to function
 
 var id
 var is_active = true
@@ -483,6 +484,8 @@ func generate_simple_fighter(tempname, setup_ai = true):
 		ai.set_obj(self)
 		if data.has('skill_rotation'):
 			ai.set_skill_rotation(data.skill_rotation)
+		if data.has('need_req'):
+			need_req = data.need_req
 		if data.ai_position.has('ranged'):
 			ai.ai_position = 'any'
 	if data.has('tags') and data.tags.has('boss'):
@@ -1100,7 +1103,7 @@ func can_evade():
 	return res
 
 func can_use_skill(skill):
-	if is_players_character and !check_cost(skill.cost): 
+	if (is_players_character or need_req) and skill.has('reqs') and !checkreqs(skill.reqs): 
 		return false
 	if skill.type == 'auto': 
 		return false
@@ -1770,6 +1773,11 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			check = !i.check
 		'has_status':
 			check = has_status(i.status) == i.check
+		'buff_number':
+			if has_status(i.status):
+				check = input_handler.operate(i.operant, get_buff_number(i.status), i.value)
+			else:
+				check = false
 		'slave_type':
 			check = input_handler.operate(i.operant, get_stat('slave_class'), i.value)
 		'population':
@@ -1829,6 +1837,17 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			return or_check
 		'is_in_ranged_zone':
 			check = (position in range(4,7) || position in range(10,13)) == i.check
+		'in_front_of_someone':
+			if input_handler.combat_node == null:
+				check = false
+			if (position in range(4,7) || position in range(10,13)):
+				check = false
+			else:
+				var char_behind = input_handler.combat_node.get_char_by_pos(position + 3)
+				var char_alive = false
+				if char_behind != null: 
+					char_alive = !char_behind.is_koed()
+				check = char_alive == i.check
 	return check
 
 
@@ -2815,3 +2834,28 @@ func minor_training_tick():
 	minor_training_timer -= 1
 	if minor_training_timer <= 0:
 		finish_minor_training()
+
+func get_buff_number(status):
+	var result = 0
+	var id_checkable = false
+	for buff in dyn_stats.buffs:
+		if buff.parent == null:
+			continue
+		id_checkable = false
+		if "code" in buff.parent:
+			id_checkable = true
+			if buff.parent.code != status:
+				continue
+		elif 'template_id' in buff.parent:
+			id_checkable = true
+			if buff.parent.template_id != status:
+				continue
+		if !id_checkable:
+			continue
+		if buff.tags.has('show_amount'):
+			if buff.get_stacks() != null:
+				result += buff.get_stacks()
+		else:
+			if buff.get_duration() != null:
+				result += buff.get_duration().count
+	return result
