@@ -1175,7 +1175,7 @@ var effects = {
 	},
 	e_tr_paladin_5 = {
 		type = 'trigger',
-		trigger = [variables.TR_DEF_HIT],
+		trigger = [variables.TR_POST_TARG],
 		req_skill = true,
 		conditions = [
 			{type = 'skill', value = ['tags', 'has', 'damage']},
@@ -1448,7 +1448,7 @@ var effects = {
 	},
 	e_tr_templar_heal = {
 		type = 'trigger',
-		trigger = [variables.TR_TURN_GET],
+		trigger = [variables.TR_TURN_S],
 		req_skill = false,
 		sub_effects = [
 			{

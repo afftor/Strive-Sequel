@@ -231,10 +231,12 @@ func resolve_value(check_m):
 
 func setup_effects_final():
 	process_value = value[pval_i].value
-	if template.has('custom_duration'):
-		for e in effects:
-			var eff = effects_pool.get_effect_by_id(e)
-			eff.set_args('duration', tempdur)
+	for e in effects:
+		var eff = effects_pool.get_effect_by_id(e)
+		if template.has('custom_duration'):
+			eff.args.duration = tempdur
+		if eff.args.has('target'):
+			eff.args.target = target
 
 
 func calculate_dmg():

@@ -344,6 +344,7 @@ var bodypartsdata = {
 			{code = 'eye_tex', value = [['eyes1m', 1],['eyes2m', 1],['eyes3m', 1],['eyes4m', 1],['eyes5m', 1],], reqs = []},
 			{code = 'chin', value = [['default', 1],['male', 1],['muscle', 1]], reqs = []},
 			{code = 'chin', value = [['beastkin', 1]], reqs = [{code = 'one_of_races', value = ['BeastkinCat','BeastkinWolf', 'BeastkinFox', 'BeastkinBunny', 'BeastkinTanuki'], check = true}]},
+			{code = 'chin', value = [['kobold', 1], ['kobold_2', 1]], reqs = [{code = 'race', race = 'Kobold', check = true}]},
 			{code = 'eyebrows', value = [['style1', 1],['style6', 1],['style7', 1]], reqs = []},
 		]},
 		female = {code = 'female', name = '', chardescript = '', bodychanges = [
@@ -364,6 +365,7 @@ var bodypartsdata = {
 			{code = 'eye_tex', value = [['eyes1', 1],['eyes2', 1],['eyes3', 1],['eyes4', 1],['eyes5', 1],], reqs = []},
 			{code = 'chin', value = [['default', 1],['curve', 1],['small', 1],['skinny', 1]], reqs = []},
 			{code = 'chin', value = [['beastkin', 1]], reqs = [{code = 'one_of_races', value = ['BeastkinCat','BeastkinWolf', 'BeastkinFox', 'BeastkinBunny', 'BeastkinTanuki'], check = true}]},
+			{code = 'chin', value = [['kobold', 1], ['kobold_2', 1]], reqs = [{code = 'race', race = 'Kobold', check = true}]},
 			{code = 'eyebrows', value = [['style1', 1],['style2', 1],['style3', 1],['style4', 1],['style5', 1]], reqs = []},
 		]},
 		futa = {code = 'futa', name = '', chardescript = '', bodychanges = [
@@ -382,6 +384,7 @@ var bodypartsdata = {
 			{code = 'eye_tex', value = [['eyes1', 1],['eyes2', 1],['eyes3', 1],['eyes4', 1],['eyes5', 1],], reqs = []},
 			{code = 'chin', value = [['default', 1],['curve', 1],['small', 1],['skinny', 1]], reqs = []},
 			{code = 'chin', value = [['beastkin', 1]], reqs = [{code = 'one_of_races', value = ['BeastkinCat','BeastkinWolf', 'BeastkinFox', 'BeastkinBunny', 'BeastkinTanuki'], check = true}]},
+			{code = 'chin', value = [['kobold', 1], ['kobold_2', 1]], reqs = [{code = 'race', race = 'Kobold', check = true}]},
 			{code = 'eyebrows', value = [['style1', 1],['style2', 1],['style3', 1],['style4', 1],['style5', 1]], reqs = []},
 		]},
 	},
