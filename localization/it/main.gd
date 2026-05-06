@@ -156,6 +156,7 @@ ma manterrà comunque tutti i tuoi personaggi, oggetti e inventario. Usa questa 
 	PRONOUNGROOMF = "sposa",
 	PRONOUNBOY = "ragazzo",
 	PRONOUNBOYF = "ragazza",
+	PRONOUNBOYFUTA = """futanari""", # MISSING TRANSLATION
 	PRONOUNHIMSELFL = "se stesso",
 	PRONOUNHIMSELFLF = "se stessa",
 	BUTTONMENU = "Menù",
@@ -1182,6 +1183,7 @@ Ridotto dall'evasione del nemico""",
 	CHAR_UNAVALIABLE = "Indisponibile",
 	CHAR_UNAVALIABLE_TURN = "Indisp: %s t.",
 	CHAR_UNAVALIABLE_DAY = "Indisp: %s g.",
+	CHAR_TRAVEL = """Travelling""", # MISSING TRANSLATION
 	NO_FREE_SLOTS = "Per questa attività non sono disponibili slot",
 	ANOTHERPROFSELECTED = "Può selezionare solo una specializzazione.",
 	NOMATERIALSFORITEMPART = "Non si dispone di materiali adatti per questa parte dell'articolo",
@@ -1201,6 +1203,9 @@ Ridotto dall'evasione del nemico""",
 	EFFECT = "effetto",
 	CLASSINFO = "Dettagli della classe",
 	CLASSSTATCHANGES = "Modifiche alle statistiche",
+	CLASSALREADYACQUIRED = """[name] has already acquired this class.""", # MISSING TRANSLATION
+	CLASSNEWACQUIREDLOG = """[name] has acquired new Class: %s""", # MISSING TRANSLATION
+	MASTERYPOINTS = """%d Points""", # MISSING TRANSLATION
 	INVENTORY = "Inventario",
 	WORKERLIST = "Elenco dei lavoratori",
 	HEROLIST = "Elenco degli eroi",
@@ -2550,6 +2555,25 @@ Danno +15%, Salute +20.""",
 	TOOLTIPGOLD = "Oro posseduto. L'oro viene utilizzato per l'acquisto di schiavi e oggetti e può essere ottenuto vendendo oggetti, completando missioni e alcuni compiti.",
 	TOOLTIPFOOD = "Prodotti alimentari di proprietà / cibo consumato al giorno. Il cibo è usato da ogni personaggio e può essere ottenuto da alcuni compiti e aumentato con la cottura. La mancanza di cibo porterà all'esaurimento e alla fine alla morte. ",
 	TOOLTIPENCHANTSCREEN = "Puoi applicare incantesimi e maledizioni a un oggetto. L'applicazione della maledizione aumenterà la capacità di incantesimo dell'oggetto, ma la maledizione sarà casuale e verrà rivelata solo quando si ottiene l'oggetto. ",
+	ENCHANTBACK = """Return to Craft""", # MISSING TRANSLATION
+	ENCHANTIMPROVE = """Improve Gear""", # MISSING TRANSLATION
+	ENCHANTAPPLYMINORCURSE = """Apply Minor Curse""", # MISSING TRANSLATION
+	ENCHANTAPPLYMAJORCURSE = """Apply Major Curse""", # MISSING TRANSLATION
+	ENCHANTAPPLY = """Apply""", # MISSING TRANSLATION
+	ENCHANTEQUIPPEDBY = """Is equipped by %s""", # MISSING TRANSLATION
+	ENCHANTCAPACITYLABEL = """Enchant Capacity:""", # MISSING TRANSLATION
+	ENCHANTQUALITYLABEL = """Quality:""", # MISSING TRANSLATION
+	ENCHANTCURSELABEL = """Curse: """, # MISSING TRANSLATION
+	ENCHANTCURSEUNKNOWNMINOR = """Unknown Minor""", # MISSING TRANSLATION
+	ENCHANTCURSEUNKNOWNMAJOR = """Unknown Major""", # MISSING TRANSLATION
+	ENCHANTCOSTDEC = """Capacity -%d""", # MISSING TRANSLATION
+	ENCHANTCOSTINC = """Capacity +%d""", # MISSING TRANSLATION
+	ENCHANTLVFORMAT = """%s lv %d""", # MISSING TRANSLATION
+	TASKINFORESOURCES = """Resources""", # MISSING TRANSLATION
+	TASKINFOUPGRADES = """Upgrades""", # MISSING TRANSLATION
+	TASKINFONORESOURCES = """Not Enough Resources for craft.""", # MISSING TRANSLATION
+	TASKINFOWORKERS = """Workers:""", # MISSING TRANSLATION
+	TASKINFOINVENTORY = """In inventory:""", # MISSING TRANSLATION
 	MASTERPOINTTOP = "Nuovo punto maestro",
 	MASTERPOINTSTOP = "Nuovi punti Maestro",
 	MASTERPOINTBOTTOM = "%d punto",
@@ -3137,6 +3161,22 @@ Tasto di scelta rapida: 3""",
 	SELECT_SLOT_FIRST_LABEL = "Seleziona slot fattoria",
 	FARMAVAILABLEPRDODUCTS = "Prodotti disponibili",
 	FARMAVAILABLEPRDODUCTSNO = "Nessun prodotto disponibile per questo personaggio",
+	FARMCHOOSE = """Choose""", # MISSING TRANSLATION
+	FARMREMOVE = """Remove""", # MISSING TRANSLATION
+	FARMALLOWEDCUSTOMERS = """Allowed Customers""", # MISSING TRANSLATION
+	FARMSERVICERULES = """Service Rules: %s""", # MISSING TRANSLATION
+	FARMPROGRESSTURN = """Progress: %.1f per turn""", # MISSING TRANSLATION
+	FARMGROWTHFACTORLOW = """Growth factor is too low""", # MISSING TRANSLATION
+	FARMDETAILS = """[center]Details[/center]
+Number of items produced per character is based on their Growth Factor.
+Item Limit: %s/%s""", # MISSING TRANSLATION
+	FARMACTIVATED = """Activated""", # MISSING TRANSLATION
+	JOBWORKTOOLTOOLTIP = """Effective Tool: Will increase work speed when equipped""", # MISSING TRANSLATION
+	JOBWORKUNITTOOLTIP = """Progress required per item""", # MISSING TRANSLATION
+	JOBSTATTOOLTIP = """Job Stat: %s
+This stat will grow by attending to this job.""", # MISSING TRANSLATION
+	JOBSTATBROTHELDESCRIPT = """Growing stat will depend on what task will be performed by character when servicing customers.""", # MISSING TRANSLATION
+	JOBMODTOOLTIP = """Task Efficiency Modifier""", # MISSING TRANSLATION
 	LACKS_BASIC_SERV_LABEL = "manca l'addestramento: servitù di base",
 	REFUSE_TO_WHORE_LABEL = "si rifiuta di svolgere compiti sessuali",
 	REFUSE_THIS_TASK_LABEL = "si rifiuta di svolgere questo compito",
@@ -15532,6 +15572,7 @@ Compili un piccolo modulo indicando quali azioni dovrebbero essere escluse dal s
 Con un pizzico di dubbio, Cali accetta di provare queste attività. 
 
 {color=yellow|— Eh, non sono sicuro di essere bravo con questa roba...}""",
+	CALI_SERVANTS_AMELIA_OPTION_1 = """Actually, could you help out Cali...""", # MISSING TRANSLATION
 	CALI_SERVANTS_NEW_LEADER_1_OPTION_1 = "Non preoccuparti, puoi farcela.",
 	CALI_SERVANTS_NEW_LEADER_1_OPTION_2 = "C'è la prima volta per tutto, non lo saprai finché non ci provi.",
 	CALI_SERVANTS_NEW_LEADER_1_OPTION_3 = "Non dovresti scoraggiarti proprio come abbiamo iniziato.",
@@ -19479,6 +19520,12 @@ Zephyra si blocca quando vede il tuo gesto. Il suo volto segna il tuo destino. I
 	AREAEMPIRE = "Impero",
 	AREASEAS = "Mari",
 	AREABEASTKIN_TRIBE = "Foreste Lontane",
+	CAPITALALIRON = """Aliron""", # MISSING TRANSLATION
+	CAPITALELVEN = """Elven Capital""", # MISSING TRANSLATION
+	CAPITALDWARVEN = """Dwarven Capital""", # MISSING TRANSLATION
+	CAPITALEMPIRE = """Empire Capital""", # MISSING TRANSLATION
+	CAPITALBEASTKIN = """Beastkin Tribe""", # MISSING TRANSLATION
+	WORKERSDISASSEMBLE = """Disassemble""", # MISSING TRANSLATION
 	AREACAPITALS = "Capitali",
 	AREASETTLEMENTS = "Villaggi",
 	AREAQUESTS = "Missioni",
@@ -24327,6 +24374,7 @@ Lancia un'occhiata di lato verso di te.
 
 {color=aqua|Melchor: — ...Assurdo. Eppure preferibile. Ti assumerai la responsabilità per lei e la terrai lontana da qui?}""",
 	ROUGE_MELCHOR_OPTION_ACCEPT_CUSTODY = "È un po' improvviso... Ma chi sono io per rifiutare una bella donna.",
+	ROUGE_MELCHOR_OPTION_ACCEPT_NEED = """I suppose I can't turn away someone in need.""", # MISSING TRANSLATION
 	ROUGE_MELCHOR_OPTION_REFUSE_TRAP = "Non cadrò in questa trappola.",
 	ROUGE_MELCHOR_CONFRONTATION_ACCEPT = """Il sorriso di Rouge diventa soddisfatto, quasi giocoso.
 
@@ -25952,6 +26000,13 @@ The two of you make your way back to the road, leaving the quiet grove behind.""
 	ACT4_QUEST_CATACOMB_OPTION_ENTER = "Entra nelle catacombe",
 	ACT4_QUEST_CATACOMB_NAME = "Ingresso Nascosto delle Catacombe",
 	ACT4_QUEST_CATACOMB_DESC = "Un ingresso nascosto fuori dalle mura imperiali conduce verso le catacombe sigillate sotto la capitale.",
+	ACT4_ERDYNA_QUEST_SUMMARY = """Erdyna has gotten involved in your search for the Empire's artifact and pointed you toward people and places hidden beneath the capital.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_QUEST_NAME = """Erdyna: The Bandit King""", # MISSING TRANSLATION
+	ACT4_ERDYNA_QUEST_STAGE_FOLLOWUP = """Meet with Erdyna again in the Empire capital.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_QUEST_STAGE_SENERUS = """Visit Senerus with Erdyna and learn what he knows about the artifact.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_QUEST_STAGE_CATACOMBS = """Visit catacomb entrance in Empire region.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_QUEST_STAGE_MYR = """Show the copied catacomb writing to Myr.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_QUEST_STAGE_DRAGONHUNTERS = """Visit House Thalendir in the elven capital to learn about the catacomb seal.""", # MISSING TRANSLATION
 	ERDYNA_QUEST_SUMMARY = "Erdyna si è coinvolta nella tua ricerca dell'artefatto dell'Impero e ti ha indicato persone e luoghi nascosti sotto la capitale.",
 	ERDYNA_QUEST_NAME = "Erdyna: Il Re dei Banditi",
 	ERDYNA_QUEST_STAGE_FOLLOWUP = "Incontra di nuovo Erdyna nella capitale dell'Impero.",
@@ -26248,5 +26303,247 @@ Le presenti i simboli copiati e descrivi le porte come meglio puoi. Myr prende l
 	ACT4_MYR_CATACOMB_WRITING_OPTION_VISIT = "Sono ben conosciuto nelle terre elfiche. Andiamo a fargli visita.",
 	ACT4_MYR_CATACOMB_REPLY_1 = "{color=aqua|Erdyna: — Diavolo, sì, cosa credi? Quelle porte devono nascondere qualcosa di prezioso, no? Sono sicura che sarai abbastanza generoso da condividerlo con me quando avremo finito, aha.}",
 	ACT4_MYR_CATACOMB_REPLY_2 = "{color=aqua|Erdyna: — Non mi sorprende, sei un pezzo grosso, no? Bene, sarò proprio dietro di te.}",
+	ACT4_ERDYNA_QUEST_STAGE_ARCHIVES = """Get the Empire's archive records about the underground structures beneath the capital.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_QUEST_STAGE_ARCHIVE_SEARCH = """Search the imperial capital for a lead on the archive records.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_QUEST_STAGE_ARCHIVE_DUNGEON = """Clear the thieves' hideout near the imperial capital and recover the archive records.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_QUEST_STAGE_RECORDS = """Return to House Thalendir with the archive records.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_QUEST_STAGE_ERDYNA_RETURN = """Check on Erdyna in the imperial capital.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_ARCHIVE_SEARCH_TASK_NAME = """*Search the imperial capital*""", # MISSING TRANSLATION
+	ACT4_ERDYNA_ARCHIVE_SEARCH_TASK_DESC = """*Send a group to look for traces of the missing archive records in the capital.*""", # MISSING TRANSLATION
+	ACT4_ERDYNA_ELF_CAPITAL_OPT_LINEAGE = """Ask about the dragon hunters lineage.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_ELF_CAPITAL_OPT_VISIT = """Visit House Thalendir.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_ELF_CAPITAL_OPT_RETURN = """Return to House Thalendir estate.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_EMPIRE_CAPITAL_OPT_MELCHOR = """Ask Melchor about imperial archive records.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_EMPIRE_CAPITAL_OPT_GROTUS = """Find Grotus about the archive records.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_THALENDIR_HOUSE_NAME = """House Thalendir Estate""", # MISSING TRANSLATION
+	ACT4_ERDYNA_THALENDIR_HOUSE_DESC = """The guarded estate of House Thalendir in the elven capital.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_ARCHIVE_HIDEOUT_NAME = """Archive Thieves' Hideout""", # MISSING TRANSLATION
+	ACT4_ERDYNA_ARCHIVE_HIDEOUT_DESC = """An abandoned hideout near the imperial roads where thieves may have left a stolen archive copy.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_LINEAGE_1 = """You spend some time asking around the elven capital about the old dragon hunters lineage. The name still carries enough weight to make people cautious, though most of those you question answer with polite evasions rather than open refusal.
+
+{color=yellow|Erdyna: — I can't see anyone but elves through here. And they live on the trees, huh?}
+
+Erdyna follows close by, unusually meek for once. She keeps glancing at the carved signs, old family emblems, and distant guarded estates with a tense look she tries to hide badly. Whenever you ask what is bothering her, she only shrugs it off and tells you to keep looking.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_LINEAGE_2 = """By late afternoon, persistence finally earns you more than vague directions. One of the local officials, after hearing about the sealed doors beneath the imperial capital, agrees that your matter may concern House Thalendir.
+
+{color=aqua|Official: — Their estate is not within the common districts. Follow the northern road past the old terraces. If your business is truly tied to their ancient charge, they will decide whether to hear you.}
+
+{color=yellow|Erdyna: — Great. I can't wait for us to figure this out and go back to my home streets.}
+
+The official gives her a brief, unreadable look before turning away. With the location known you can get back on the road.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_VISIT_1 = """The path given to you by the official leads away from the livelier parts of the forest. Erdyna walks beside you with her usual restless confidence.
+
+The building waiting at the end looks old even by elven standards, its pale walls framed by ancient trees and covered with fine carvings.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_VISIT_2 = """The moment you step past the threshold, the air changes.
+
+The carved patterns along the walls flare with pale light, and Erdyna suddenly staggers beside you. Her body locks in place before she can take another step, muscles straining as a magic glow gathers around her limbs.
+
+{color=yellow|Erdyna: — Ngh...! What the hell is this?!}
+
+Several guards turn at once. Blades come free, servants retreat in alarm.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_VISIT_2_OPTION_CALM = """Try to calm everyone down.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_VISIT_2_OPTION_WEAPON = """Reach for your weapon.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_VISIT_ENTRY_REPLY_CALM = """You raise your hands, forcing your voice above the sudden panic before anyone can make the first mistake.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_VISIT_ENTRY_REPLY_WEAPON = """Your hand moves toward your weapon on instinct, but the guards react just as quickly. In a heartbeat several blades are pointed at you, their owners tense enough to strike at the slightest movement.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_VISIT_ENTRY_REPLY_ANY = """{color=yellow|Vaeloria: — Enough.}
+
+The command cuts through the hall with clear authority.
+
+She carries herself like someone long accustomed to obedience. Her clothes are elegant without softness, and the sharpness in her eyes makes it clear that everyone in the manor waits for her command. A long ceremonial spear rests in her hand.
+
+{color=yellow|Vaeloria: — I am Vaeloria of House Thalendir. Do not worsen your position. That ward has not mistaken its target.}
+
+{color=aqua|Erdyna: — Target? I didn't do anything!}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_WARD_OPTION_WHAT = """What's going on here?""", # MISSING TRANSLATION
+	ACT4_ERDYNA_WARD_OPTION_RELEASE = """Release her right now!""", # MISSING TRANSLATION
+	ACT4_ERDYNA_WARD_OPTION_DRAGONKIN = """[Dragonkin] Why doesn't it affect me then?""", # MISSING TRANSLATION
+	ACT4_ERDYNA_WARD_REPLY_1 = """{color=yellow|Vaeloria: — An old defensive spell has awakened. It was made by this house for one purpose.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_WARD_REPLY_2 = """Vaeloria's gaze turns to you, calm and severe.
+
+{color=yellow|Vaeloria: — You are in no position to make demands inside my family's hall.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_WARD_REPLY_3 = """Vaeloria's eyes narrow slightly as she looks you over with renewed attention.
+
+{color=yellow|Vaeloria: — It is not meant for anything merely dragonlike. The ward was made for a specific kind of dragon, and it recognizes the bloodline that came from them. If it does not bind you, then your blood is not the one it was taught to answer.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_WARD_REPLY_ANY = """{color=yellow|Vaeloria: — This is a dragon detecting ward. A relic from the age when my lineage fought those creatures and their kin. It responds only to blood it was made to bind.}
+
+For a moment the hall grows quieter than before.
+
+Erdyna's eyes widen, her expression twisting from anger into disbelief.
+
+{color=aqua|Erdyna: — Dragon? Are you insane? I don't have anything to do with dragons!}
+
+{color=yellow|Vaeloria: — Your denial does not matter.}
+
+{color=yellow|Vaeloria: — As for you, outsider, how about you explain yourself.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_WARD_OPTION_NEGOTIATE = """Negotiate.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_WARD_OPTION_FIGHT = """Start fight.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_NEGOTIATE_INTRO = """Two guards start pulling Erdyna toward one of the side corridors. She digs her heels in, but the chains and the remaining weakness from the ward leave her with little room to resist.
+
+{color=aqua|Erdyna: — Hey! I'm not done talking here!}
+
+Vaeloria does not look back at her.
+
+{color=yellow|Vaeloria: — We know who you are, [name] of Aliron. I have no wish to turn this hall into a battlefield against you or those who may stand behind you. That is the only reason this conversation is still possible.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_NEGOTIATE_HUB_0 = """{color=yellow|Vaeloria: — Speak, then.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_NEGOTIATE_HUB_1 = """Vaeloria's expression does not change.
+
+{color=yellow|Vaeloria: — She will be held until her bloodline is confirmed. After that, unless there is a reason to stay our hand, she will eventually be executed.}
+
+Erdyna goes still for a moment, the words striking harder than the chains.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_NEGOTIATE_HUB_4 = """{color=yellow|Vaeloria: — She will not be released merely because you ask it of me. Not now, at least. Our memory and traditions have stronger meaning than you would expect.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_NEGOTIATE_OPTION_FATE = """What will become of her?""", # MISSING TRANSLATION
+	ACT4_ERDYNA_NEGOTIATE_OPTION_FORCE = """That's enough. I'll save Erdyna by force.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_NEGOTIATE_OPTION_GATES = """Tell her about the gates and the letters on them.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_NEGOTIATE_OPTION_FREE = """You should free her.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_NEGOTIATE_OPTION_LEAVE = """Leave for now.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_ARCHIVE_REQUEST_1 = """You tell Vaeloria about the sealed doors beneath the imperial capital grounds, and about the ancient letters carved across them. This finally makes her silence sharpen into something more focused.
+
+{color=yellow|Vaeloria: — So that seal still stands. My clan has fought dragons since before your Empire drew its first breath. The place you describe was sealed nearly five hundred years ago, when there was no imperial capital above it.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_ARCHIVE_REQUEST_2 = """{color=yellow|Vaeloria: — A dragon tyrant was slain there. Mighty enough that even in death, the residue of his magic could not be left for scavengers, cultists, or ambitious fools. The chamber was sealed to keep that power from being claimed by those who would turn it toward evil. After so many centuries, it may be safe to open, however I will not hand you the tablet on that assumption alone.}
+
+{color=yellow|Vaeloria: — Bring me the Empire's archive records on the underground structures beneath the capital. Maps, surveys, anything that shows what has been built around the old seal and whether it has been disturbed. We cannot simply walk into imperial archives and demand them ourselves, but if you want the key, I need to know what state that place is truly in.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_FIGHT_ENTRY = """Your hand moves to your weapon again, and this time the intent behind it is impossible to mistake.
+
+{color=yellow|Vaeloria: — Think carefully. Draw that weapon in my family's hall, and I will treat you as an intruder, not a guest.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_FIGHT_ENTRY_OPTION_DOWN = """Put the weapon down.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_FIGHT_WIN_1 = """The last standing elf drops to one knee, one hand pressed against a bleeding wound while the rest of the hall lies scattered around you.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_FIGHT_WIN_2 = """You seize the wounded elf before he can crawl away and force him to look at you.
+
+The question does not need much explanation. The sealed doors beneath the imperial capital. The key they were keeping from you.
+
+{color=yellow|Guard: — The tablet... in the side chamber. Stone case, beneath the hunting mural. It is not a key like you think, but it will answer the seal.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_FIGHT_WIN_3 = """You find the chamber where he said it would be. Behind a carved panel rests a flat stone tablet no larger than a book, dark and heavy, with the same severe ancient script etched across its surface.
+
+By the time you return to the hall, the surviving elves have no strength left to stop you.
+
+You kneel beside Erdyna and work at the chains until the lock finally gives under your hand. Erdyna catches herself against your shoulder as she gets her balance back. For once, she has no immediate joke ready.
+
+{color=yellow|Erdyna: — Damn it... I owe you one now, I guess.}
+
+You help her back to her feet. With the stone tablet secured and House Thalendir in no shape to pursue you immediately, the two of you leave the manor behind.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_RETURN_1 = """The guards at House Thalendir's estate recognize you before you reach the entrance.
+
+{color=yellow|Vaeloria: — You have returned. I assume you've brought the Empire's archive records?}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_RECORDS_RESULT_1 = """Vaeloria studies the records for a long time, comparing the maps and surveys with older notes brought by her attendants.
+
+{color=yellow|Vaeloria: — The seal appears undisturbed. Your request is reckless, but not baseless. I will release the girl and provide what you need to open the way. What you do beyond that point will be your burden.}
+
+The chains holding Erdyna fall away. She rubs her wrists, glaring at the manor around her as if memorizing every face inside it.
+
+{color=aqua|Erdyna: — Took you long enough. Let's get out of here before I start regretting not breaking something.}
+
+With the stone tablet secured, the two of you leave House Thalendir behind.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_AFTER_LEAVE_1 = """You make it some distance away from the estate before Erdyna's steps begin to slow. At first she tries to hide it, walking with her usual stubborn pace, but the strain shows in the tightness of her jaw and the way her hand keeps brushing against the nearest tree for support.
+
+{color=yellow|Erdyna: — Hey... hold up a bit.}
+
+She exhales sharply, looking back toward the distant manor with open resentment.
+
+{color=yellow|Erdyna: — That damn spell took more out of me than I thought. I need a break before my legs decide to quit on their own.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_AFTER_LEAVE_2 = """You find a sheltered place off the road and make a small campfire before night fully settles. Erdyna sits close to the warmth, quieter than usual, arms resting over her knees as she watches the flames move.
+
+For a long while she says nothing. When she finally speaks, her voice is lower than you are used to hearing.
+
+{color=yellow|Erdyna: — You know... I don't think anyone ever went that far for me before.}
+
+She gives a short laugh, but it comes out weaker than intended.
+
+{color=yellow|Erdyna: — Usually people either want something, run away, or decide I'm too much trouble. Guess I got used to that. Having you actually stay there... it felt... unusual.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_AFTER_LEAVE_OPTION_QUIET = """Keep quiet.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_AFTER_LEAVE_OPTION_DRAGONKIN = """So you are actually a dragonkin?""", # MISSING TRANSLATION
+	ACT4_ERDYNA_AFTER_LEAVE_REVEAL_1 = """You remain silent, letting the fire fill the space between you. Erdyna glances at you once, figuring that the explanation is in place from her.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_AFTER_LEAVE_REVEAL_2 = """Erdyna's shoulders tense at the question. For a moment you expect her to snap back with some crude joke, but she only stares into the fire.
+
+{color=yellow|Erdyna: — Never thought it would get out of the bag like this.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_AFTER_LEAVE_REVEAL_ANY_1 = """She slowly stands and turns her back to you. Her fingers hesitate at the edge of her clothes before she lowers her jacket enough to bare her back to the firelight.
+
+Two long scars run beneath her shoulder blades, old and pale against her skin. They are too even to look like ordinary wounds.
+
+{color=yellow|Erdyna: — Been hiding these from everyone for as long as I can remember. Horns and tail are easy enough to explain away. Call yourself a kobold, act rough, make people think you're just some gutter-born freak and most of them stop looking deeper. I also had wings though.}
+
+{color=yellow|Erdyna: — I sold them off when I was younger. Needed the money to survive, and after a while I realized it was safer that way too. If anyone had seen them and guessed what I was, that's it. Dragonkin are worth too much. Someone would've slapped a collar on me sooner or later and called it a rare prize.}
+
+The image comes across your mind before you can ignore it: Erdyna younger, smaller, held down somewhere out of sight while a saw bites through the living wings she was desperate enough to trade away.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_AFTER_LEAVE_REVEAL_ANY_2 = """She lets the shirt fall back into place, but she does not turn around immediately.
+
+{color=yellow|Erdyna: — So yeah. I kept pretending. Better to be a loud-mouthed kobold from the streets than someone's expensive property.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_AFTER_LEAVE_HUB_0 = """{color=yellow|Erdyna: — Anyway... what?}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_AFTER_LEAVE_HUB_1 = """Erdyna glances back at you over her shoulder, the corner of her mouth lifting into a familiar smirk.
+
+{color=yellow|Erdyna: — My gang? Hell no. You think I'd let those idiots know something this big? They can barely keep quiet about where they hid their booze.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_AFTER_LEAVE_HUB_2 = """{color=yellow|Erdyna: — Thank you. It's all in the past so I got over it a long time ago.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_AFTER_LEAVE_HUB_3 = """Erdyna looks at you for a moment, then lets out a quiet snort.
+
+{color=yellow|Erdyna: — Hah. Maybe you have a point. Haven't been much of use till this time though.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_AFTER_LEAVE_HUB_4_SUCCESS = """Erdyna blinks, caught off guard in a way she does not quite manage to hide.
+
+{color=yellow|Erdyna: — You really think so? Never thought someone would show interest in me like this... not after seeing all that. Guess you're stranger than I thought.}
+
+{color=yellow|Erdyna: — Say... Why don't you move a bit closer?}
+
+The mood lingers for a moment, but the exhaustion from the ward catches up with her before it can go further.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_AFTER_LEAVE_HUB_4_FAIL = """Erdyna stares at you for a second, then rolls her eyes.
+
+{color=yellow|Erdyna: — Seriously? That's your line after all that? Try not to trip over your own tongue next time.}
+
+Even so, her tone lacks real anger. She just pulls her shirt more firmly into place and turns back toward the fire.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_AFTER_LEAVE_OPTION_GANG = """Does your gang know about it?""", # MISSING TRANSLATION
+	ACT4_ERDYNA_AFTER_LEAVE_OPTION_SORRY = """I'm sorry for what you've gone through.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_AFTER_LEAVE_OPTION_HONOR = """You should be honored to be one of dragon blood.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_AFTER_LEAVE_OPTION_FLIRT = """[Sex factor] Your scars aren't nearly as fascinating as your curves.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_AFTER_LEAVE_OPTION_REST = """Let's have a good rest.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_MELCHOR_ARCHIVES_1 = """Melchor looks at you as if you have just asked him to hand over the imperial treasury.
+
+{color=yellow|Melchor: — Absolutely not.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_MELCHOR_ARCHIVES_2 = """He leans back in his chair, his expression hardening with immediate suspicion.
+
+{color=yellow|Melchor: — The Empire's archive records are not curiosities to be passed into outsider hands. Especially not records concerning the capital's underground structures. Under my authority, that will never happen.}
+
+{color=yellow|Melchor: — If this is another errand for that vixen or some other reckless scheme, abandon it. I have tolerated enough disorder from you already.}
+
+You leave Melchor's office with the refusal still ringing in your ears.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_GROTUS_OFFER_1 = """Outside the office, you barely make it several steps before a familiar hunched figure slips closer from the side corridor.
+
+{color=yellow|Grotus: — M-my good [man]... I could not help overhearing a small part of that conversation. Purely by accident, of course!}
+
+He wrings his hands, glancing back toward Melchor's door before lowering his voice.
+
+{color=yellow|Grotus: — The archive copy you need... I might be able to obtain it. Quietly. Discreetly. For a modest compensation, naturally.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_GROTUS_OFFER_OPTION_PRICE = """How much?""", # MISSING TRANSLATION
+	ACT4_ERDYNA_GROTUS_OFFER_OPTION_NOT_INTERESTED = """I'm not interested.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_GROTUS_PRICE = """Grotus gives a nervous smile that shows too many teeth.
+
+{color=yellow|Grotus: — Three thousand gold. A very fair price for such dangerous work, yes?}
+
+You have a strong feeling he greatly overcharges you, but there is no obvious way to find another such opportunity this quickly.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_GROTUS_PRICE_OPTION_PAY = """Fine, get me the records. (-3000 gold)""", # MISSING TRANSLATION
+	ACT4_ERDYNA_GROTUS_PRICE_OPTION_NO = """No. I'll find another way.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_GROTUS_OFFER_2 = """Grotus' smile falters, but only for a moment.
+
+{color=yellow|Grotus: — Ah... of course. If you change your mind, I will be nearby. Though if you intend to search the city yourself, I would suggest starting soon. Documents like these have a way of disappearing into unpleasant places.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_GROTUS_FIND = """You find Grotus loitering near one of the quieter administrative corridors. The moment he notices you, he straightens with an eager, anxious smile.
+
+{color=yellow|Grotus: — Ah! You've returned. Have you reconsidered my offer?}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_GROTUS_FIND_OPTION_PAY = """Pay Grotus for the archive records. (-3000 gold)""", # MISSING TRANSLATION
+	ACT4_ERDYNA_GROTUS_FIND_OPTION_NOT_YET = """Not yet.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_GROTUS_DELIVERY_1 = """Grotus bows so quickly it almost looks painful.
+
+{color=yellow|Grotus: — Wonderful, wonderful! You will not regret this. I shall return once the matter is handled.}""", # MISSING TRANSLATION
+	ACT4_ERDYNA_GROTUS_DELIVERY_2 = """About an hour later, Grotus finds you in one of the capital's quieter backstreets. He looks even more nervous than before, but there is a sealed document case clutched tightly in his hands.
+
+{color=yellow|Grotus: — Here, here... exactly as promised. I was never here, you never saw me, and I most certainly did not touch anything important. Please, don't mention this to Miss Rouge as well.}
+
+He pushes the case into your hands, gives a twitchy bow, and disappears back into the alleys before you can ask anything more.
+
+With the archive records secured, it is time to bring them back to House Thalendir.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_ARCHIVE_SEARCH_COMPLETE_1 = """After asking around, checking old administrative paths, and following a few dubious rumors, you finally piece together what happened to the archive copy.
+
+It was stolen some time ago by a band of thieves who likely had no idea what they were carrying. Their trail leads away from the capital and toward an old dungeon not far beyond the city roads.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_ARCHIVE_SEARCH_COMPLETE_2 = """The last reliable account says the thieves abandoned their stolen goods there after something went wrong. Since then, the place has gained a worse reputation. Travelers avoid it, locals mutter about the dead moving inside, and no one seems eager to confirm the stories personally.
+
+If the archive copy is still anywhere, it should be in that dungeon, buried among the thieves' abandoned loot and whatever undead now occupy the place.""", # MISSING TRANSLATION
+	ACT4_ERDYNA_ARCHIVE_DUNGEON_COMPLETE = """With the dungeon cleared, you search through the thieves' abandoned loot and soon find a sealed imperial document case. The archive records inside are worn but still readable enough for Vaeloria's request.
+
+You secure the case and leave the dungeon behind. With the archive records in hand, it is time to bring them back to House Thalendir.""", # MISSING TRANSLATION
 
 }

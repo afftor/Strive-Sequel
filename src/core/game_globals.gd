@@ -116,8 +116,8 @@ func advance_hour():
 		i.act_prepared()
 	for i in ResourceScripts.game_party.characters.values():
 		i.tick()
-	
 	hour += 1
+	
 	ResourceScripts.game_world.advance_hour()
 	ResourceScripts.char_events.advance_hour()
 	if hour > variables.HoursPerDay:

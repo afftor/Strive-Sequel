@@ -967,7 +967,10 @@ var data = {
 				text = "DIALOGUECLOSE",
 				reqs = [],
 				type = "next_dialogue",
-				bonus_effects = [{code = "update_city"}]
+				bonus_effects = [
+					{code = "make_quest_location", value = "quest_thalendir_house"},
+					{code = "update_city"}
+				]
 			}
 		]
 	},
@@ -1472,6 +1475,7 @@ var data = {
 				type = "next_dialogue",
 				bonus_effects = [
 					{code = "progress_quest", value = "erdyna_quest", stage = "erdyna_return"},
+					{code = "remove_quest_location", value = "quest_thalendir_house"},
 					{code = "update_city"}
 				]
 			}

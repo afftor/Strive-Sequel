@@ -2849,6 +2849,43 @@ var dungeons = {
 		travel_time = [1,1],
 		scripteventdata = []
 	},
+	quest_thalendir_house = {
+		code = 'quest_thalendir_house',
+		type = 'encounter',
+		name = "ACT4_ERDYNA_THALENDIR_HOUSE_NAME",
+		classname = '',
+		descript = "ACT4_ERDYNA_THALENDIR_HOUSE_DESC",
+		difficulty = 'easy',
+		background = 'elf_capital',
+		enemyarray = [],
+		eventarray = [],
+		levels = [1,1],
+		resources = '',
+		stages_per_level = [1,1],
+		bgm = "frostford",
+		purchase_price = 0,
+		affiliation = 'local',
+		events = [],
+		options = [
+			{
+				text = "ACT4_ERDYNA_ELF_CAPITAL_OPT_VISIT",
+				reqs = [
+					{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'dragonhunters', state = true},
+					{type = 'dialogue_seen', value = 'act4_erdyna_visit_1', check = false}
+				],
+				args = [{code = 'start_event', data = 'act4_erdyna_visit_1', args = []}]
+			},
+			{
+				text = "ACT4_ERDYNA_ELF_CAPITAL_OPT_RETURN",
+				reqs = [{type = 'any_quest_stage', value = 'erdyna_quest', stages = ['act4_erdyna_archives', 'act4_erdyna_records']}],
+				args = [{code = 'start_event', data = 'act4_erdyna_return_1', args = []}]
+			}
+		],
+		tags = ['quest'],
+		area = 'forests',
+		travel_time = [1,1],
+		scripteventdata = []
+	},
 	quest_thalendir_archive_hideout = {
 		code = 'quest_thalendir_archive_hideout',
 		type = 'dungeon',

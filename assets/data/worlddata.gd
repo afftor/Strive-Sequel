@@ -1148,19 +1148,6 @@ var fixed_location_options = { #override serialized data
 			],
 			args = [{code = 'start_event', data = 'act4_erdyna_lineage_1', args = []}]
 		},
-		{
-			text = tr("ACT4_ERDYNA_ELF_CAPITAL_OPT_VISIT"),
-			reqs = [
-				{type = 'dialogue_seen', value = 'act4_erdyna_lineage_2', check = true},
-				{type = 'dialogue_seen', value = 'act4_erdyna_visit_1', check = false}
-			],
-			args = [{code = 'start_event', data = 'act4_erdyna_visit_1', args = []}]
-		},
-		{
-			text = tr("ACT4_ERDYNA_ELF_CAPITAL_OPT_RETURN"),
-			reqs = [{type = 'any_quest_stage', value = 'erdyna_quest', stages = ['act4_erdyna_archives', 'act4_erdyna_records']}],
-			args = [{code = 'start_event', data = 'act4_erdyna_return_1', args = []}]
-		},
 	],
 	dwarf_capital = [
 		{

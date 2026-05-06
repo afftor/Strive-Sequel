@@ -1997,7 +1997,6 @@ func tick():
 	var skip_work = false
 	if get_work() == '':
 		skip_work = true
-	
 	self.hp += get_stat('hp_reg')
 	self.mp += get_stat('mp_reg')
 	#loyalty and obedience changes are in stats

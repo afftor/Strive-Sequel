@@ -119,7 +119,6 @@ func regen_quests():
 						
 						#exceptions (used only in factions' addons)
 						if req.has('exceptions') and quest_code in req.exceptions:
-							print("%s is exception!" % quest_code)
 							available = false
 						
 						#has_tag conditions (probably used only in factions' addons)
