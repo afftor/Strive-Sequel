@@ -15,6 +15,7 @@ var enthrall = ResourceScripts.scriptdict.ch_enthrall.new()
 var displaynode = null
 var ai = null
 var need_req = false #For boss or monster that really need move req to function
+var mark_for_escape = false
 
 var id
 var is_active = true
@@ -1647,6 +1648,10 @@ func killed(direct_call = true):
 	if is_master():
 		input_handler.interactive_message('generic_lose_scene', '', {})
 
+func enemy_escape():
+	if input_handler.combat_node == null: 
+		return
+	mark_for_escape = true
 
 func teleport(data):
 	var locdata = ResourceScripts.game_world.find_location_by_data(data)
@@ -2361,6 +2366,8 @@ func affect_char(template, manifest = false):
 					data.stamina -= template.cost
 					if manifest:
 						globals.manifest_and_log("dungeon", "%s stamina spent in %s" % [template.cost, data.name])
+		'escape_fight': #this effect intended only to be use by enemy
+			enemy_escape()
 
 
 func is_koed():

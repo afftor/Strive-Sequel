@@ -5757,6 +5757,8 @@ La donna scompare con la stessa rapidità con cui è apparsa davanti a te, lasci
 	ENEMYSYLAS_WEAK = "Sylas indebolito",
 	ENEMYJEAN_EVIL = "Jean",
 	ENEMYJEAN_DEMON = "Demone",
+	ENEMYCLANSMAN_GUARD = """Clansman Guard""", # MISSING TRANSLATION
+	ENEMYCLANSMAN_ARCHER = """Clansman Archer""", # MISSING TRANSLATION
 	FOODFILTERHIGH = "Alto",
 	FOODFILTERMED = "Med", #
 	FOODFILTERLOW = "Basso",

@@ -706,7 +706,6 @@ var Skilllist = {
 	},
 	voidslam = {
 		code = 'voidslam',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attack.png"),
 		type = 'combat', 

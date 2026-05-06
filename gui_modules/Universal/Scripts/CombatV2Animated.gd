@@ -480,7 +480,27 @@ func checkdeaths():
 				else:
 					playergroup.erase(i)
 				summons.erase(i)
+		elif tchar.mark_for_escape:
+			enemy_escape(tchar)
 
+func enemy_escape(escaper):
+	escaper.defeated = true
+	escaper.hp = 0
+	input_handler.emit_signal('fighter_changed')
+	combatlogadd(tr("LOG_COMBAT_ENEMY_ESCAPED") % escaper.get_short_name())
+	var i = escaper.position
+	for j in range(turnorder.size()):
+		if turnorder[j].pos == i:
+			turnorder.remove(j)
+			update_queue_asynch()
+			break
+	escaper.displaynode.queue_free()
+	escaper.displaynode = null
+	escaper.is_active = false
+	battlefield[i] = null
+	enemygroup.erase(i)
+	if summons.has(i):
+		summons.erase(i)
 
 var playergroupcounter = 0
 func checkwinlose():

@@ -1663,7 +1663,24 @@ var traits = {
 		effects = ['hector_vain_pride','hector_vain_pride_on_hit','hector_on_miss','hector_vain_pride_on_def'],
 		tags = [],
 	},
-	
+	demoness_what_a_pain = {
+		code = 'demoness_what_a_pain',
+		name = '',
+		descript = '',
+		icon = null, 
+		visible = false,
+		effects = ['demoness_what_a_pain'],
+		tags = [],
+	},
+	kurdan_mind_controlled = {
+		code = 'kurdan_mind_controlled',
+		name = '',
+		descript = '',
+		icon = null, 
+		visible = false,
+		effects = ['kurdan_mind_controlled','kurdan_mind_controlled_1'],
+		tags = ['kurdan_mind_controlled'],
+	},
 	
 	#exploration related traits
 	#needs to hardcode most of traits
