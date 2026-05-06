@@ -751,7 +751,6 @@ var data = {
 				reqs = [
 					{
 						type = "location_has_specific_slaves",
-						value = 1,
 						location = "quest_white_stag_location",
 						reqs = [
 							{
@@ -1347,7 +1346,6 @@ var data = {
 					{
 						type = "location_has_specific_slaves",
 						check = true,
-						value = 1,
 						location = "quest_temple_location",
 						reqs = [
 							{
@@ -1364,7 +1362,6 @@ var data = {
 					{
 						type = "location_has_specific_slaves",
 						check = false,
-						value = 1,
 						location = "quest_temple_location",
 						reqs = [
 							{
@@ -1589,7 +1586,6 @@ var data = {
 					{
 						type = "location_has_specific_slaves",
 						check = true,
-						value = 1,
 						location = "quest_temple_location",
 						reqs = [
 							{
@@ -1606,7 +1602,6 @@ var data = {
 					{
 						type = "location_has_specific_slaves",
 						check = false,
-						value = 1,
 						location = "quest_temple_location",
 						reqs = [
 							{
@@ -1626,7 +1621,6 @@ var data = {
 					{
 						type = "location_has_specific_slaves",
 						check = true,
-						value = 1,
 						location = "quest_temple_location",
 						reqs = [
 							{
@@ -1646,7 +1640,6 @@ var data = {
 					{
 						type = "location_has_specific_slaves",
 						check = false,
-						value = 1,
 						location = "quest_temple_location",
 						reqs = [
 							{
@@ -1702,7 +1695,6 @@ var data = {
 					{
 						type = "location_has_specific_slaves",
 						check = false,
-						value = 1,
 						location = "quest_temple_location",
 						reqs = [
 							{
@@ -1752,7 +1744,6 @@ var data = {
 					{
 						type = "location_has_specific_slaves",
 						check = true,
-						value = 1,
 						location = "quest_temple_location",
 						reqs = [
 							{

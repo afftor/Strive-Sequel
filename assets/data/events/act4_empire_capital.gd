@@ -538,7 +538,6 @@ var data = {
 					{
 						type = "location_has_specific_slaves",
 						check = true,
-						value = 1,
 						location = "empire_capital",
 						reqs = [
 							{
@@ -550,7 +549,6 @@ var data = {
 					{
 						type = "location_has_specific_slaves",
 						check = true,
-						value = 1,
 						location = "empire_capital",
 						reqs = [
 							{

@@ -1299,7 +1299,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = ['no_random'],
-		basestats = {training_loyalty = 2, physics_bonus = 5, wits_bonus = 5, charm_bonus = 5, sexuals_bonus = 5},
+		basestats = {trainer_loyalty_bonus = 0.2, physics_bonus = 5, wits_bonus = 5, charm_bonus = 5, sexuals_bonus = 5},
 	},
 	animal_ears = {#
 		code = 'animal_ears',

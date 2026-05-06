@@ -2849,6 +2849,44 @@ var dungeons = {
 		travel_time = [1,1],
 		scripteventdata = []
 	},
+	quest_thalendir_archive_hideout = {
+		code = 'quest_thalendir_archive_hideout',
+		type = 'dungeon',
+		name = "ACT4_ERDYNA_ARCHIVE_HIDEOUT_NAME",
+		classname = '',
+		descript = "ACT4_ERDYNA_ARCHIVE_HIDEOUT_DESC",
+		character_data = {
+			chance_mod = 1.5,
+			races = [['local', 3], ['common',5], ['uncommon',1]]
+		},
+		difficulty = 'medium',
+		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
+		custom_background = 'combat_cave',
+		enemyarray = [['skeletons_easy', 1], ['skeletons_easy2', 1], ['skeletons_zombies', 0.75], ['skeletons_zombies2', 0.75]],
+		final_enemy = [['skeletons_lich_boss', 1]], final_enemy_type = 'monster',
+		event_data = {},
+		event_room_number = [0,0],
+		material_room_number = [0,0],
+		main_route_length = [4,5],
+		bonus_rooms = [1,1],
+		levels = [1,1],
+		base_room_stamina_cost = [5,8],
+		resources = '',
+		gather_settings = 'base',
+		gatherable_resources = '',
+		gather_mod = [2,2.5],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local',
+		tags = ['quest'],
+		area = 'empire',
+		travel_time = [1,1],
+		events = [],
+		options = [],
+		scripteventdata = [
+			{trigger = 'dungeon_complete', args = 'act4_erdyna_archive_dungeon_complete', reqs = [{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'archive_dungeon'}]}
+		]
+	},
 	quest_mountain_pass = {
 		code = 'quest_mountain_pass',
 		type = 'encounter',

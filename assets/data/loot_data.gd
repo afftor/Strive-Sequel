@@ -506,9 +506,11 @@ var loot_tables = {
 		{material = 'bread', min = 30, max = 60},
 		{material = 'clothsilk', min = 10, max = 15, chance = 0.9},
 		{material = 'bone', min = 5, max = 20, chance = 0.7},
-		{item = 'lifegem', min = 4, max = 8},
+		{item = 'lifegem', min = 3, max = 6},
+		{item = 'energygem', min = 1, max = 3},
 		{material = 'steel', min = 15, max = 30, chance = 0.9},
 		{material = 'mithril', min = 6, max = 12, chance = 0.8},
+		{material = 'ogre_teeth', min = 1, max = 2, chance = 0.8},
 		{repeat_min = 2, repeat_max = 4, chance = 0.8, selector = [
 			{item = 'sword'},
 			{item = 'swordadv'},

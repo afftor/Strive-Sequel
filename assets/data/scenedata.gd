@@ -2953,13 +2953,18 @@ var quests = {
 	},
 	erdyna_quest = {
 		code = 'erdyna_quest',
-		summary = 'ERDYNA_QUEST_SUMMARY',
+		summary = 'ACT4_ERDYNA_QUEST_SUMMARY',
 		stages = {
-			followup = {code = 'followup', name = 'ERDYNA_QUEST_NAME', descript = 'ERDYNA_QUEST_STAGE_FOLLOWUP'},
-			senerus = {code = 'senerus', name = 'ERDYNA_QUEST_NAME', descript = 'ERDYNA_QUEST_STAGE_SENERUS'},
-			catacombs = {code = 'catacombs', name = 'ERDYNA_QUEST_NAME', descript = 'ERDYNA_QUEST_STAGE_CATACOMBS'},
-			myr_translation = {code = 'myr_translation', name = 'ERDYNA_QUEST_NAME', descript = 'ERDYNA_QUEST_STAGE_MYR'},
-			dragonhunters = {code = 'dragonhunters', name = 'ERDYNA_QUEST_NAME', descript = 'ERDYNA_QUEST_STAGE_DRAGONHUNTERS'},
+			followup = {code = 'followup', name = 'ACT4_ERDYNA_QUEST_NAME', descript = 'ACT4_ERDYNA_QUEST_STAGE_FOLLOWUP'},
+			senerus = {code = 'senerus', name = 'ACT4_ERDYNA_QUEST_NAME', descript = 'ACT4_ERDYNA_QUEST_STAGE_SENERUS'},
+			catacombs = {code = 'catacombs', name = 'ACT4_ERDYNA_QUEST_NAME', descript = 'ACT4_ERDYNA_QUEST_STAGE_CATACOMBS'},
+			myr_translation = {code = 'myr_translation', name = 'ACT4_ERDYNA_QUEST_NAME', descript = 'ACT4_ERDYNA_QUEST_STAGE_MYR'},
+			dragonhunters = {code = 'dragonhunters', name = 'ACT4_ERDYNA_QUEST_NAME', descript = 'ACT4_ERDYNA_QUEST_STAGE_DRAGONHUNTERS'},
+			act4_erdyna_archives = {code = 'act4_erdyna_archives', name = 'ACT4_ERDYNA_QUEST_NAME', descript = 'ACT4_ERDYNA_QUEST_STAGE_ARCHIVES'},
+			archive_search = {code = 'archive_search', name = 'ACT4_ERDYNA_QUEST_NAME', descript = 'ACT4_ERDYNA_QUEST_STAGE_ARCHIVE_SEARCH'},
+			archive_dungeon = {code = 'archive_dungeon', name = 'ACT4_ERDYNA_QUEST_NAME', descript = 'ACT4_ERDYNA_QUEST_STAGE_ARCHIVE_DUNGEON'},
+			act4_erdyna_records = {code = 'act4_erdyna_records', name = 'ACT4_ERDYNA_QUEST_NAME', descript = 'ACT4_ERDYNA_QUEST_STAGE_RECORDS'},
+			erdyna_return = {code = 'erdyna_return', name = 'ACT4_ERDYNA_QUEST_NAME', descript = 'ACT4_ERDYNA_QUEST_STAGE_ERDYNA_RETURN'},
 		}
 	},
 	kuro_quest_3 = {

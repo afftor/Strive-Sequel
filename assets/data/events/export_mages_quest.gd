@@ -356,7 +356,7 @@ var data = {
 		options = [# Fix Reqs
 			{code = 'xari_encounter10', text = "XARIENCOUNTER9REPLY1",
 			reqs = [
-				{type = "location_has_specific_slaves", value = 1, location = 'quest_mages_xari', reqs = [
+				{type = "location_has_specific_slaves", location = 'quest_mages_xari', reqs = [
 					{code = 'one_of_races', value = ['Elf','TribalElf','DarkElf']}, 
 					{code = 'sex', operant = 'neq', value = 'female'}]}], dialogue_argument = 1, type = 'next_dialogue'},
 			{code = 'close', text = "XARIENCOUNTER9REPLY2", reqs = []},

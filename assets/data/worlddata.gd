@@ -1136,9 +1136,30 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'heleviel_slave_ritual_pay_after', args = []}]
 		},
 		{
-			text = tr("HELEVIEL_CITY_OPTION_5"), 
-			reqs = [{type = 'active_quest_stage', value = 'heleviel_quest3', stage = 'stage6'}], 
+			text = tr("HELEVIEL_CITY_OPTION_5"),
+			reqs = [{type = 'active_quest_stage', value = 'heleviel_quest3', stage = 'stage6'}],
 			args = [{code = 'start_event', data = 'heleviel_slave_ritual_ceremony_intro', args = []}]
+		},
+		{
+			text = tr("ACT4_ERDYNA_ELF_CAPITAL_OPT_LINEAGE"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'dragonhunters', state = true},
+				{type = 'dialogue_seen', value = 'act4_erdyna_lineage_2', check = false}
+			],
+			args = [{code = 'start_event', data = 'act4_erdyna_lineage_1', args = []}]
+		},
+		{
+			text = tr("ACT4_ERDYNA_ELF_CAPITAL_OPT_VISIT"),
+			reqs = [
+				{type = 'dialogue_seen', value = 'act4_erdyna_lineage_2', check = true},
+				{type = 'dialogue_seen', value = 'act4_erdyna_visit_1', check = false}
+			],
+			args = [{code = 'start_event', data = 'act4_erdyna_visit_1', args = []}]
+		},
+		{
+			text = tr("ACT4_ERDYNA_ELF_CAPITAL_OPT_RETURN"),
+			reqs = [{type = 'any_quest_stage', value = 'erdyna_quest', stages = ['act4_erdyna_archives', 'act4_erdyna_records']}],
+			args = [{code = 'start_event', data = 'act4_erdyna_return_1', args = []}]
 		},
 	],
 	dwarf_capital = [
@@ -1454,8 +1475,35 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'emp_senerus_repeat_1', args = []}]
 		},
 		{
-			text = tr("ARENA_NAME"), 
-			reqs = [{type = 'active_quest_stage', value = 'act_4_capital', stage = 'arena', state = true}], 
+			text = tr("ACT4_ERDYNA_EMPIRE_CAPITAL_OPT_MELCHOR"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'act4_erdyna_archives', state = true},
+				{type = 'dialogue_seen', value = 'act4_erdyna_melchor_archives_1', check = false}
+			],
+			args = [{code = 'start_event', data = 'act4_erdyna_melchor_archives_1', args = []}]
+		},
+		{
+			text = tr("ACT4_ERDYNA_EMPIRE_CAPITAL_OPT_GROTUS"),
+			reqs = [
+				{type = 'any_quest_stage', value = 'erdyna_quest', stages = ['act4_erdyna_archives', 'archive_search']},
+				{type = 'dialogue_seen', value = 'act4_erdyna_melchor_archives_2', check = true},
+				{type = 'dialogue_seen', value = 'act4_erdyna_grotus_delivery', check = false}
+			],
+			args = [{code = 'start_event', data = 'act4_erdyna_grotus_find', args = []}]
+		},
+		{
+			text = "ACT4_3_EMPIRE_CAPITAL_OPT_ERDYNA_RETURN",
+			reqs = [{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'erdyna_return', state = true}],
+			args = [{code = 'start_event', data = 'erdyna_capital_return_1', args = []}]
+		},
+		{
+			text = "ACT4_3_EMPIRE_CAPITAL_OPT_ERDYNA_HIDEOUT",
+			reqs = [{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'erdyna_hideout', state = true}],
+			args = [{code = 'start_event', data = 'erdyna_old_hideout_1', args = []}]
+		},
+		{
+			text = tr("ARENA_NAME"),
+			reqs = [{type = 'active_quest_stage', value = 'act_4_capital', stage = 'arena', state = true}],
 			args = [{code = 'start_event', data = 'emp_arena_1', args = []}]
 		},
 		{
@@ -1487,13 +1535,13 @@ var fixed_location_options = { #override serialized data
 		{
 			text = tr("SETTLEMENT_PLAINS2_1"), 
 			reqs = [ 
-				{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage1'}, {type = "location_has_specific_slaves", check = true, value = 1, location = 'settlement_plains2', reqs = [{code = 'unique', value = 'cali'}]}],
+				{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage1'}, {type = "location_has_specific_slaves", check = true, location = 'settlement_plains2', reqs = [{code = 'unique', value = 'cali'}]}],
 			args = [{code = 'start_event', data = 'cali_farmer_1', args = []}]
 		},
 		{
 			text = tr("SETTLEMENT_PLAINS2_2"), 
 			reqs = [ 
-				{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage2'},{type = "location_has_specific_slaves", check = true, value = 1, location = 'settlement_plains2', reqs = [{code = 'unique', value = 'cali'}]}
+				{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage2'},{type = "location_has_specific_slaves", check = true, location = 'settlement_plains2', reqs = [{code = 'unique', value = 'cali'}]}
 			],
 			args = [{code = 'start_event', data = 'cali_farmer_4', args = []}]
 		},
@@ -1513,13 +1561,13 @@ var fixed_location_options = { #override serialized data
 		{
 			text = tr("SETTLEMENT_FOREST2_1"), 
 			reqs = [{type = 'active_quest_stage', value = 'lilia_finale_quest', stage = 'stage8'},
-			{type = "location_has_specific_slaves", check = true, value = 1, location = 'settlement_forest1', reqs = [{code = 'unique', value = 'lilia'}]}],
+			{type = "location_has_specific_slaves", check = true, location = 'settlement_forest1', reqs = [{code = 'unique', value = 'lilia'}]}],
 			args = [{code = 'start_event', data = 'lilith_good_route_village', args = []}]
 		},
 		{
 			text = tr("SETTLEMENT_FOREST2_2"), 
 			reqs = [{type = 'active_quest_stage', value = 'lilith_patron_quest', stage = 'stage10'},
-			{type = "location_has_specific_slaves", check = true, value = 1, location = 'settlement_forest1', reqs = [{code = 'unique', value = 'lilith'}]}],
+			{type = "location_has_specific_slaves", check = true, location = 'settlement_forest1', reqs = [{code = 'unique', value = 'lilith'}]}],
 			args = [{code = 'start_event', data = 'lilith_bad_route_village', args = []}]
 		},
 	],
@@ -1644,7 +1692,7 @@ var fixed_location_options = { #override serialized data
 		{
 			text = tr("QUEST_CALI_VILLAGE1"), 
 			reqs = [
-				{type = "location_has_specific_slaves", check = true, value = 1, location = 'quest_cali_village', reqs = [{code = 'unique', value = 'cali'}]},
+				{type = "location_has_specific_slaves", check = true, location = 'quest_cali_village', reqs = [{code = 'unique', value = 'cali'}]},
 				{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage10', state = true}
 				], 
 			args = [{code = 'start_event', data = 'cali_hector_1', args = []}]

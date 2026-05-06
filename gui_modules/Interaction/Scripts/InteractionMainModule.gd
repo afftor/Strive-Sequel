@@ -480,10 +480,12 @@ func rebuildparticipantslist():
 			get_node("Panel/GridContainer/GridContainer").add_child(newnode)
 			newnode.visible = true
 			newnode.get_node("ActionName").set_text(i.getname())
-			if i.consent_giver > giver_consent || i.consent_taker > taker_consent:
-				
-				
-				newnode.modulate = Color(1,0.7,0.7)
+			var missing_consent = max(i.consent_giver - giver_consent, i.consent_taker - taker_consent)
+			if missing_consent > 0:
+				if missing_consent == 1:
+					newnode.modulate = Color(1,1,0.45)
+				else:
+					newnode.modulate = Color(1,0.7,0.7)
 
 			var tooltiptext
 			if input_handler.globalsettings.show_full_consent || true:

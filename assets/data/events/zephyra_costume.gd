@@ -3,7 +3,7 @@ var data = {
 	zephyra_costume_1 = { 
 		variations = [ {
 			image = null, music = "zephyra_theme", tags = ['dialogue_scene','master_translate'],
-			reqs = [{type = "location_has_specific_slaves", check = true, value = 1, location = 'elf_capital', reqs = [{code = 'unique', value = 'zephyra'}]}],
+			reqs = [{type = "location_has_specific_slaves", check = true, location = 'elf_capital', reqs = [{code = 'unique', value = 'zephyra'}]}],
 			 character = 'zephyra',
 			text = [ {text = "ZEPHYRA_COSTUME_2", reqs = []} ],
 			options = [ {

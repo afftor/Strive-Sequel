@@ -282,9 +282,9 @@ var data = {
 						check = false
 					},
 					{
-						type = "has_hero",
-						name = "aire",
-						check = false
+						type = "unique_character_checks", 
+						name = "aire", 
+						value = []
 					}
 				],
 				type = "next_dialogue",

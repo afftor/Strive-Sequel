@@ -88,6 +88,7 @@ var data = {
 		text = "ROUGE_MELCHOR_CONFRONTATION_RESPONSE_3",
 		options = [
 			{code = "rouge_melchor_confrontation_accept", text = "ROUGE_MELCHOR_OPTION_ACCEPT_CUSTODY", reqs = [], type = "next_dialogue"},
+			{code = "rouge_melchor_confrontation_accept", text = "ROUGE_MELCHOR_OPTION_ACCEPT_NEED", reqs = [], type = "next_dialogue"},
 			{code = "rouge_melchor_confrontation_refuse_1", text = "ROUGE_MELCHOR_OPTION_REFUSE_TRAP", reqs = [], type = "next_dialogue"}
 		]
 	},

@@ -80,6 +80,7 @@ var encounters = {
 	erdyna_thugs_fight = {unittype = 'randomgroup', unitcode = 'erdyna_thugs', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'emp_erdyna_intro_3', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
 	erdyna_duel_fight = {unittype = 'randomgroup', unitcode = 'erdyna_boss', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'emp_erdyna_intro_6', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
 	red_rooks_fight = {unittype = 'randomgroup', unitcode = 'erdyna_thugs', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'emp_catacomb_after_fight', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	act4_erdyna_estate_fight = {unittype = 'randomgroup', unitcode = 'act4_erdyna_estate_guards', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'act4_erdyna_fight_win_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	nixx_group = {unittype = 'randomgroup', unitcode = 'nixx_boss', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'kuro3_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
 	
 	jean_golems_door = {unittype = 'randomgroup', unitcode = 'jean_golems_door', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_sidequest_mansion_golems_2', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
@@ -198,6 +199,7 @@ var enemygroups = {
 	temple_raiders = {reqs = [], units = {bandit_melee = [2,2], bandit_boss_melee = [1,1], bandit_mage = [3,3]}},
 	temple_specters = {reqs = [], units = {elf_specter = [6,6]}},
 	bridge_guards = {reqs = [], units = {elf_soldier = [6,6]}},
+	act4_erdyna_estate_guards = {reqs = [], units = {elf_soldier = [6,6]}},
 	cali_goblins_first = {reqs = [], units = {cave_goblin_melee = [1,3], cave_goblin_archer = [1,2]}},
 	cali_goblins_second = {reqs = [], units = {cave_goblin_melee = [2,3], cave_goblin_archer = [2,3], cave_goblin_mage = [0,1]}},
 	troll_clothes = {reqs = [], units = {troll = [1,1]}},

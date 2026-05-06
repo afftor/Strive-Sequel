@@ -2669,7 +2669,6 @@ var data = {
 					{
 						type = "location_has_specific_slaves",
 						check = true,
-						value = 1,
 						location = 'dwarf_capital',
 						reqs = [
 							{

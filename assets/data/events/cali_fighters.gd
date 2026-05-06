@@ -114,14 +114,14 @@ var data = {
 	cali_goblins_1 = {
 		variations = [ { # NO CALI
 			image = null, tags = ['dialogue_scene'],
-			reqs = [{type = "location_has_specific_slaves", check = false, value = 1, location = 'quest_cali_goblins_location', reqs = [
+			reqs = [{type = "location_has_specific_slaves", check = false, location = 'quest_cali_goblins_location', reqs = [
 					{code = 'unique', value = 'cali'}]}], 
 			text = [{text = 'CALI_GOBLINS_NO_CALI', reqs = []}], 
 			options = [ {
 				code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			} ]
 		}, {
-			image = null, music = "cali_theme", tags = ['dialogue_scene', 'master_translate'], reqs = [{type = "location_has_specific_slaves", check = true, value = 1, location = 'quest_cali_goblins_location', reqs = [
+			image = null, music = "cali_theme", tags = ['dialogue_scene', 'master_translate'], reqs = [{type = "location_has_specific_slaves", check = true, location = 'quest_cali_goblins_location', reqs = [
 					{code = 'unique', value = 'cali'}]}], character = "cali",
 			text = [ {text = "CALI_GOBLINS_1", reqs = []} ],
 			options = [ {

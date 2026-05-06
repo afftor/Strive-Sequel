@@ -1495,6 +1495,29 @@ var unique_sprites = {
 			unlocked = true
 			},
 	},
+	rouge = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "rouge_body", 
+			face_path = "rouge",
+			unlocked = true
+			},
+		nude = {
+			name = "Nude",
+			descript = "",
+			path = "rouge_nude_body", 
+			face_path = "rouge_nude",
+			unlocked = true
+			},
+		wed = {
+			name = "Wedding",
+			descript = "",
+			path = "rouge_wed_body", 
+			face_path = "rouge_wed",
+			unlocked = true
+			},
+	},
 	
 	
 	

@@ -400,13 +400,13 @@ var data = {
 		{text = "LOOKING_FOR_PRINCESS_38", reqs = [], previous_dialogue_option = 2},
 		{text = "LOOKING_FOR_PRINCESS_39", reqs = [], previous_dialogue_option = 3},
 		{text = "LOOKING_FOR_PRINCESS_40", reqs = [
-				{type = "location_has_specific_slaves", value = 1, location = 'elf_capital', reqs = [
+				{type = "location_has_specific_slaves", location = 'elf_capital', reqs = [
 					{code = 'unique', value = 'zephyra'}]}] }],
 		options = [ {
 			code = 'looking_for_princess_elven_12', text = "LOOKING_FOR_PRINCESS_OPTION_40", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, {
 			code = 'looking_for_princess_elven_15', text = "LOOKING_FOR_PRINCESS_OPTION_41", reqs = [
-				{type = "location_has_specific_slaves", value = 1, location = 'elf_capital', reqs = [
+				{type = "location_has_specific_slaves", location = 'elf_capital', reqs = [
 					{code = 'unique', value = 'zephyra'}]}], dialogue_argument = 2, type = 'next_dialogue'
 		}, {
 			code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_42", reqs = [], dialogue_argument = 4, type = 'next_dialogue',

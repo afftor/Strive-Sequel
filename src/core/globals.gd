@@ -2596,6 +2596,23 @@ func common_effects(effects):
 					if i.has(st):
 						template[st] = i[st]
 				ResourceScripts.game_party.active_tasks.push_back(template)
+			'remove_special_task_for_location':
+				for task in ResourceScripts.game_party.active_tasks.duplicate():
+					if task.code != 'special':
+						continue
+					if task.task_location != i.location:
+						continue
+					if i.has('event'):
+						var found_event = false
+						for dir in task.args:
+							if dir.code == 'start_event' and dir.data == i.event:
+								found_event = true
+								break
+						if !found_event:
+							continue
+					ResourceScripts.game_party.clean_task(task)
+					ResourceScripts.game_party.active_tasks.erase(task)
+				emit_signal("task_removed")
 			'add_hireling_to_location':
 				roll_hirelings(i.location)
 			'finish_worktask':
@@ -2879,14 +2896,15 @@ func valuecheck(dict):
 			return !ResourceScripts.game_world.find_location_by_data({code = dict.location}) == null
 		'location_has_specific_slaves':
 			var counter = 0
-			var location = ResourceScripts.game_world.find_location_by_data({code = dict.location}).location
+			var location = input_handler.active_location.id if !dict.has("location") else ResourceScripts.game_world.find_location_by_data({code = dict.location}).location
+			var completed = dict.get("completed", false)
 			for i in ResourceScripts.game_party.characters.values():
-				if i.check_location(location):
+				if i.check_location(location, completed):
 					if i.checkreqs(dict.reqs) == true && !i.has_profession('master'):
 						counter += 1
 			if dict.has("check"):
-				return dict.check == (counter >= dict.value)
-			return counter >= dict.value
+				return dict.check == (counter > 0)
+			return counter > 0
 		'class_unlocked':
 			return ResourceScripts.game_progress.if_class_unlocked(dict.class, dict.check, dict.operant)
 		'timed_option':
