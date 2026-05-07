@@ -5,9 +5,55 @@ var season_events_range = {
 	christmas = {start = [15,12], end = [15,13], event = 'christmas_pre_start', event_reqs = []}
 }
 
+var comic_events = {
+	test1 = [
+		{type = 'text', text = "TESTTEST"},
+		[
+			{type = 'frame', image = "res://assets/images/backgrounds/cave1.png", position = Vector2(150, 100), size = Vector2(300, 100)},
+			{type = 'text', text = "TESTTEST2"},
+		],
+		{type = 'frame', image = "res://assets/images/backgrounds/cave2.png", position = Vector2(300, 200), size = Vector2(400, 150)},
+		[
+			{type = 'reset'},
+			{type = 'frame', image = "res://assets/images/backgrounds/cave2.png", position = Vector2(150, 100), size = Vector2(400, 200)},
+			{type = 'frame', image = "res://assets/images/backgrounds/cave3.png", position = Vector2(300, 200), size = Vector2(650, 400)},
+			{type = 'text', text = "TESTTEST3"},
+		],
+		{type = 'continue', scene = 'comic_test_2'}
+	],
+	test2 = [
+		[
+			{type = 'frame', image = "res://assets/images/backgrounds/cave2.png", position = Vector2(150, 100), size = Vector2(600, 300), delay = 0.1},
+			{type = 'frame', image = "res://assets/images/backgrounds/cave3.png", position = Vector2(300, 200), size = Vector2(1300, 800), delay = 0.1},
+			{type = 'text', text = "TESTTEST3"},
+		],
+		{type = 'text', text = "TESTTEST4"},
+		[
+			{type = 'frame', image = "res://assets/images/backgrounds/cave4.png", position = Vector2(150, 100), size = Vector2(1000, 600)},
+			{type = 'text', text = "TESTTEST5"},
+		],
+		{type = 'frame', image = "res://assets/images/backgrounds/cave5.png", position = Vector2(300, 200), size = Vector2(1000, 600)},
+		{type = 'close'}
+	],
+}
+
 
 #wolves_skirmish_start
 var scenedict = {
+	comic_test_1 = {
+		text = "",
+		image = null,
+		tags = [],
+		comic_scene = 'test1',
+		options = []
+	},
+	comic_test_2 = {
+		text = "",
+		image = null,
+		tags = [],
+		comic_scene = 'test2',
+		options = []
+	},
 	childbirth = {text = tr("DIALOGUECHILDBIRTHTEXT"), image = 'childbirth', tags = ['active_character_translate'], options = [{code = 'keepbaby', reqs = [], text = tr("DIALOGUEKEEPBABY")}, {code = 'removebaby', reqs = [], text = tr("DIALOGUEREMOVEBABY")}]},
 	childbirth_alt = {text = tr("DIALOGUECHILDBIRTHTEXT"), image = 'childbirth', tags = ['active_character_translate'], options = [{code = 'removebaby', reqs = [], text = tr("DIALOGUEREMOVEBABY")}]}, #change text
 	select_tutelage = {

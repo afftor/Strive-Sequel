@@ -576,7 +576,7 @@ func test_mode():
 		ResourceScripts.game_progress.unlocked_classes.append('paladin')
 		ResourceScripts.game_progress.unlocked_classes.append('smith')
 		var character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
-		character.create('Human', 'male', 'random')
+		character.create('Demon', 'male', 'random')
 		character.fill_boosters()
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
@@ -610,7 +610,7 @@ func test_mode():
 		character.set_stat('eye_color','green')
 		character.unlock_class("master")
 		character.unlock_class("worker")
-		character.unlock_class("shieldbearer")
+		character.unlock_class("templar")
 #		character.unlock_class("assassin")
 		character.unlock_class("knight")
 		character.set_stat('height', 'average')
@@ -949,7 +949,7 @@ func test_mode():
 		ResourceScripts.game_progress.decisions.append("bracelet_found")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 
-#		input_handler.interactive_message('amelia_main_guild_1', '', {})
+		input_handler.interactive_message('comic_test_1', '', {})
 #		input_handler.interactive_message('halloween_9', '', {})
 #		input_handler.interactive_message('force_cali_6', '', {})
 		#ResourceScripts.gallery.play_scene(0)
