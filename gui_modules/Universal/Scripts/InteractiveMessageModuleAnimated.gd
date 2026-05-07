@@ -31,6 +31,7 @@ var dialogue_type_exceptions = ["church_event"]
 func _ready():
 	$BackgroundT2/BackgroundT2/HideButton.connect("pressed", self, "hide_dialogue")
 	$ShowPanel/ShowButton.connect("pressed", self, "hide_dialogue", ["show"])
+	$ComicPanel/NextButton.connect('pressed', self, 'advanve_comic')
 	$CharacterImage.material = load("res://assets/silouette_shader.tres").duplicate()
 	if get_node_or_null("CharacterImage2") != null:
 		$CharacterImage2.material = load("res://assets/silouette_shader.tres").duplicate()
@@ -87,6 +88,8 @@ func open(scene):
 		save_scene_to_gallery(scene)
 	if scene.has("unlocked_char_sprites"):
 		input_handler.update_progress_data("unique_sprites", scene.unlocked_char_sprites)
+	if scene.has('comic_scene'):
+		run_comic_scene(scene.comic_scene)
 	
 	if !is_just_started:
 		determine_dialogue_type(scene)
@@ -1471,3 +1474,60 @@ func is_select_blocked_by_node():
 			return true
 		select_blocking_nodes.remove(i)
 	return false
+
+
+#comic handling
+var comic_data = []
+var comic_pos = 0
+func run_comic_scene(scene_id):
+	$ComicPanel.reset()
+	ResourceScripts.core_animations.UnfadeAnimation($ComicPanel, 0.2)
+	comic_data = scenedata.comic_events[scene_id]
+	comic_pos = 0
+	run_comic_line()
+
+
+func advanve_comic():
+	comic_pos += 1
+	run_comic_line()
+
+
+func run_comic_line():
+	var comic_line = comic_data[comic_pos]
+	if comic_line is Dictionary:
+		run_comic_operation(comic_line)
+	else:
+		for op in comic_line:
+			run_comic_operation(op)
+
+
+func run_comic_operation(dict):
+	if !dict.has('type'):
+		print("Error in comic_template")
+		return 
+	match dict.type:
+		'close':
+			$ComicPanel.hide()
+			close()
+		'continue':
+			$ComicPanel.hide()
+			dialogue_next(dict.scene, 1)
+		'text':
+			$ComicPanel.show_text(dict.text)
+		'frame':
+			if dict.has('delay'):
+				$ComicPanel.show_frame(dict.image, dict.position, dict.size, dict.delay)
+			else:
+				$ComicPanel.show_frame(dict.image, dict.position, dict.size)
+		'reset':
+			$ComicPanel.reset()
+		'sound':
+			input_handler.PlaySound(dict.value)
+		'play_noise':
+			input_handler.PlayBackgroundSound(dict.sound)
+		'stop_noise':
+			input_handler.StopBackgroundSound()
+		'resume_noise':
+			input_handler.ResumeBackgroundSound()
+
+

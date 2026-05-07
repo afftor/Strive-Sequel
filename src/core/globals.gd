@@ -81,10 +81,16 @@ func _ready():
 			continue
 		var newscript  = load(i).new()
 		for k in newscript.data:
-			if scenedata.scenedict.has(k) == false:
-				scenedata.scenedict[k] = newscript.data[k]
-			else:
+			if scenedata.scenedict.has(k):
 				print("Error: Scene data key already exists: " + k)
+			else:
+				scenedata.scenedict[k] = newscript.data[k]
+		if newscript.get('comic_events') != null:
+			for k in newscript.comic_events:
+				if scenedata.comic_events.has(k):
+					print("Error: Scene data key already exists: " + k)
+				else:
+					scenedata.comic_events[k] = newscript.comic_events[k]
 
 	randomize() #for legacy code sake
 	rng.randomize()

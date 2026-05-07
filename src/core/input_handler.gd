@@ -1475,6 +1475,8 @@ func evaluate(input): #used to read strings as conditions when needed
 
 func ClearContainer(container, template = ['Button']):
 	for i in container.get_children():
+		if !(i is CanvasItem):
+			continue
 		if !template.has(i.name):
 			i.hide()
 			i.queue_free()
@@ -1482,6 +1484,8 @@ func ClearContainer(container, template = ['Button']):
 
 func ClearContainerForced(container, template = ['Button']):
 	for i in container.get_children():
+		if !(i is CanvasItem):
+			continue
 		if !template.has(i.name):
 			i.hide()
 			i.free()

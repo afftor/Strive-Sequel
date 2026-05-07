@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://assets/images/portraits/daisy_prt.png" type="Texture" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -20,9 +20,11 @@
 [ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/button_hide.png" type="Texture" id=18]
 [ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/button_hide_hover.png" type="Texture" id=19]
 [ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/button_hide_pressed.png" type="Texture" id=20]
+[ext_resource path="res://gui_modules/Universal/Scripts/ComicPanel.gd" type="Script" id=21]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/button_sprite_active.png" type="Texture" id=22]
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=23]
 [ext_resource path="res://gui_modules/Universal/ShowPanel.tscn" type="PackedScene" id=24]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=25]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 9 )
@@ -59,6 +61,9 @@ margin_bottom = 64.5747
 [sub_resource type="StyleBoxTexture" id=11]
 
 [sub_resource type="StyleBoxTexture" id=12]
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0, 0, 0, 1 )
 
 [node name="InteractiveMessageModule" type="Control" groups=["disable_rmb_esc", "pauseprocess"]]
 anchor_right = 1.0
@@ -433,3 +438,43 @@ __meta__ = {
 
 [node name="ShowPanel" parent="." instance=ExtResource( 24 )]
 visible = false
+
+[node name="ComicPanel" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 13 )
+script = ExtResource( 21 )
+
+[node name="Frame" type="TextureRect" parent="ComicPanel"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+expand = true
+
+[node name="Text" type="RichTextLabel" parent="ComicPanel"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 229.0
+margin_top = -88.0
+margin_right = -287.0
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+
+[node name="NextButton" type="Button" parent="ComicPanel"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="ComicPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -187.0
+margin_top = -32.0
+custom_colors/font_color = Color( 1, 0.980392, 0, 1 )
+custom_fonts/font = ExtResource( 25 )
+text = "Click to continue..."
