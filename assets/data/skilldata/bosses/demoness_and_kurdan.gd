@@ -143,7 +143,7 @@ var skills = {
 		reqs = [],
 		targetreqs = [],
 		effects = [
-			Effectdata.rebuild_template({effect = 'enemy_escape'}),
+			Effectdata.rebuild_template({effect = 'mark_for_escape'}),
 		],
 		cost = {},
 		charges = 0,
@@ -297,13 +297,6 @@ var effects = {
 		tags = [],
 		conditions = [],
 		atomic = [{type = 'damage_percent', value = 100},],
-	},
-	enemy_escape = {
-		type = 'oneshot',
-		target = 'caster',
-		tags = [],
-		conditions = [],
-		atomic = [{type = 'escape_fight'},],
 	},
 	demoness_what_a_pain = {
 		type = 'trigger',

@@ -36,7 +36,7 @@ var skills = {
 		ability_type = 'spell',
 		tags = [ 'noevade','noreduce','support'],
 		reqs = [],
-		targetreqs = [{code = 'stat',  stat = 'combat_position', value = 9, operant = 'lte'}],
+		targetreqs = [{code = 'is_in_ranged_zone', check = false}],
 		effects = ['e_protect'],
 		cost = {},
 		charges = 0,

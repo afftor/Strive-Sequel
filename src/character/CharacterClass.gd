@@ -15,7 +15,6 @@ var enthrall = ResourceScripts.scriptdict.ch_enthrall.new()
 var displaynode = null
 var ai = null
 var need_req = false #For boss or monster that really need move req to function
-var mark_for_escape = false
 
 var id
 var is_active = true
@@ -1648,11 +1647,6 @@ func killed(direct_call = true):
 	if is_master():
 		input_handler.interactive_message('generic_lose_scene', '', {})
 
-func enemy_escape():
-	if input_handler.combat_node == null: 
-		return
-	mark_for_escape = true
-
 func teleport(data):
 	var locdata = ResourceScripts.game_world.find_location_by_data(data)
 	if locdata.area == null or locdata.location == null:
@@ -1780,7 +1774,7 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			check = has_status(i.status) == i.check
 		'buff_number':
 			if has_status(i.status):
-				check = input_handler.operate(i.operant, get_buff_number(i.status), i.value)
+				check = input_handler.operate(i.operant, dyn_stats.get_buff_number(i.status), i.value)
 			else:
 				check = false
 		'slave_type':
@@ -2366,8 +2360,6 @@ func affect_char(template, manifest = false):
 					data.stamina -= template.cost
 					if manifest:
 						globals.manifest_and_log("dungeon", "%s stamina spent in %s" % [template.cost, data.name])
-		'escape_fight': #this effect intended only to be use by enemy
-			enemy_escape()
 
 
 func is_koed():
@@ -2841,28 +2833,3 @@ func minor_training_tick():
 	minor_training_timer -= 1
 	if minor_training_timer <= 0:
 		finish_minor_training()
-
-func get_buff_number(status):
-	var result = 0
-	var id_checkable = false
-	for buff in dyn_stats.buffs:
-		if buff.parent == null:
-			continue
-		id_checkable = false
-		if "code" in buff.parent:
-			id_checkable = true
-			if buff.parent.code != status:
-				continue
-		elif 'template_id' in buff.parent:
-			id_checkable = true
-			if buff.parent.template_id != status:
-				continue
-		if !id_checkable:
-			continue
-		if buff.tags.has('show_amount'):
-			if buff.get_stacks() != null:
-				result += buff.get_stacks()
-		else:
-			if buff.get_duration() != null:
-				result += buff.get_duration().count
-	return result

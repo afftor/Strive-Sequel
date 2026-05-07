@@ -480,7 +480,7 @@ func checkdeaths():
 				else:
 					playergroup.erase(i)
 				summons.erase(i)
-		elif tchar.mark_for_escape:
+		elif tchar.has_status('mark_for_escape'):
 			enemy_escape(tchar)
 
 func enemy_escape(escaper):

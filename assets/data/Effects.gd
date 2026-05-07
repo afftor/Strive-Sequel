@@ -1294,7 +1294,15 @@ var effect_table = {
 			},
 		]
 	},
-	
+	mark_for_escape = {
+		type = 'temp_s',
+		target = 'target',
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		conditions = [],
+		buffs = [],
+		statchanges = {},
+		tags = ['mark_for_escape'],
+	},
 };
 
 var atomic = {
