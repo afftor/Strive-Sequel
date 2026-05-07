@@ -207,6 +207,9 @@ pero conservarás todos tus personajes, objetos e inventario. Usa este modo para
 	SIBLINGMODULEAVAILABLE = "Disponible",
 	SIBLINGMODULEAVAILABLETOOLTIP = "El número de capacitaciones menores disponibles depende del factor de crecimiento.",
 	SIBLINGMODULETHRALLLIST = "Esclavos",
+	SIBLINGMODULEFATEREMOVED = """Gone""", # MISSING TRANSLATION
+	SIBLINGMODULEFATERDEAD = """Dead""", # MISSING TRANSLATION
+	SIBLINGMODULEFATERESCAPE = """Escaped""", # MISSING TRANSLATION
 	FAILALREADYSUCCUBUS = """Can't use corruptive essence on Thralls or Succubi""", # MISSING TRANSLATION
 	MINORTRAINMAXREACHED = "Se alcanzó el máximo de entrenamiento menor",
 	MINORTRAIN_TRAIT_AQUIRED = """trait %s aquired""", # MISSING TRANSLATION
@@ -20163,6 +20166,7 @@ Después de unos minutos todavía no pasa nada y [name] decide seguir adelante."
 	DISCIPLINE_LABEL = "Disciplina",
 	TRAINING_LABEL = "Capacitación",
 	LOCATION_LABEL = "Ubicación",
+	WORK_LABEL = """Work""", # MISSING TRANSLATION
 	BODYUPGRADENAME_UPGRADE_THICK_SKIN = "Piel gruesa",
 	BODYUPGRADEDESCRIPT_UPGRADE_THICK_SKIN = "La piel de [name] será mucho más resistente a los efectos mágicos. MAG DEF +10. Incompatible con Pelaje/Escamas.",
 	BODYUPGRADENAME_UPGRADE_THICK_COVERAGE = "Cobertura espesa",

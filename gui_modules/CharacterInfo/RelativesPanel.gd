@@ -75,6 +75,8 @@ func build_panel(panel, tnewdata, tchar):
 		panel.get_node('Icon').texture = null #this is bad, but we can't afford to store icons
 		globals.connecttexttooltip(panel.get_node('name'), build_tooltip_text(tnewdata))
 #		panel.get_node('name').disabled = true
+	
+	input_handler.font_size_adjust(panel.get_node('name'))
 
 
 func build_tooltip_text(reldata):

@@ -190,7 +190,7 @@ func character_selected(character):
 
 func character_selected_coonfirm():
 	var character = tchar
-	ResourceScripts.game_party.add_fate(character.id, tr("SOLD")) #or not sold
+	ResourceScripts.game_party.add_fate(character.id, tr("SIBLINGMODULEFATEREMOVED")) #or not sold
 	ResourceScripts.game_party.remove_slave(character, true)
 	selected_req.delivered_slaves += 1
 	show_quest_info(selectedquest)

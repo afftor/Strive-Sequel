@@ -209,6 +209,9 @@ var TranslationDict = {
 	SIBLINGMODULEAVAILABLE = "Доступно",
 	SIBLINGMODULEAVAILABLETOOLTIP = "Количество доступных очков для этой вкладки.",
 	SIBLINGMODULETHRALLLIST = """Приспешники""",
+	SIBLINGMODULEFATEREMOVED = """Gone""", # MISSING TRANSLATION
+	SIBLINGMODULEFATERDEAD = """Dead""", # MISSING TRANSLATION
+	SIBLINGMODULEFATERESCAPE = """Escaped""", # MISSING TRANSLATION
 	FAILALREADYSUCCUBUS = "Нельзя использовать развращающую эссенцию на приспешниках или суккубах",
 	MINORTRAINMAXREACHED = "Достигнут максимум изученных навыков",
 	MINORTRAIN_TRAIT_AQUIRED = "навык %s получен",
@@ -20563,6 +20566,7 @@ This stat will grow by attending to this job.""", # MISSING TRANSLATION
 	DISCIPLINE_LABEL = """Дисциплина""",
 	TRAINING_LABEL = """Тренировка""",
 	LOCATION_LABEL = """Локация""",
+	WORK_LABEL = """Work""", # MISSING TRANSLATION
 
 	BODYUPGRADENAME_UPGRADE_THICK_SKIN = """Утолщенная кожа""",
 	BODYUPGRADEDESCRIPT_UPGRADE_THICK_SKIN = """Кожа [name] будет гораздо более устойчива к магическим воздействиям. MЗАЩ +10. Несовместимо с мехом/чешуей""",

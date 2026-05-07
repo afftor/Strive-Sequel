@@ -20662,6 +20662,7 @@ Authority: +""", # MISSING TRANSLATION
 	DISCIPLINE_LABEL = "Discipline",
 	TRAINING_LABEL = "Formation",
 	LOCATION_LABEL = "Emplacement",
+	WORK_LABEL = """Work""", # MISSING TRANSLATION
 	
 	BODYUPGRADENAME_UPGRADE_THICK_SKIN = "Peau épaisse",
 	BODYUPGRADEDESCRIPT_UPGRADE_THICK_SKIN = "[name] aura une peau beaucoup plus résistante aux effets magiques. MDEF +10. Incompatible avec la fourrure/écailles",

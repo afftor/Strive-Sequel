@@ -1639,7 +1639,7 @@ func killed(direct_call = true):
 	ResourceScripts.game_party.check_breakdown_on_char_loss(self)
 	equipment.clear_equip()
 	training.clear_training()
-	ResourceScripts.game_party.add_fate(id, tr("DIED"))
+	ResourceScripts.game_party.add_fate(id, tr("SIBLINGMODULEFATEDEAD"))
 	is_active = false
 	ResourceScripts.game_party.character_order.erase(id)
 	characters_pool.call_deferred('cleanup')
@@ -1991,7 +1991,7 @@ func escape_actions():
 	remove_from_work_quest()
 	remove_from_task()
 	remove_from_travel()
-	ResourceScripts.game_party.add_fate(id, tr("ESCAPED"))
+	ResourceScripts.game_party.add_fate(id, tr("SIBLINGMODULEFATEESCAPE"))
 	is_active = false #for now, to replace with corresponding mechanic
 	characters_pool.cleanup()
 
@@ -2333,7 +2333,7 @@ func affect_char(template, manifest = false):
 		'slavetype':
 			set_slave_category(template.value)
 		'remove':
-			ResourceScripts.game_party.add_fate(id, tr("REMOVED"))
+			ResourceScripts.game_party.add_fate(id, tr("SIBLINGMODULEFATEREMOVED"))
 			ResourceScripts.game_party.remove_slave(self, true)
 			input_handler.slave_list_node.rebuild()
 		'turn_into_unique':

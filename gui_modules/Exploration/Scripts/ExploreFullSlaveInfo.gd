@@ -193,7 +193,7 @@ func sell_slave():
 func sell_slave_confirm():
 	var selectedperson = gui_controller.exploration_city.person_to_hire
 	ResourceScripts.game_res.money += int(round(selectedperson.calculate_price(true)/2))
-	ResourceScripts.game_party.add_fate(selectedperson.id, tr("SOLD"))
+	ResourceScripts.game_party.add_fate(selectedperson.id, tr("SIBLINGMODULEFATEREMOVED"))
 	ResourceScripts.game_party.remove_slave(selectedperson)
 	gui_controller.exploration_city.active_faction.slaves.append(selectedperson.id)
 #	selectedperson.is_players_character = false

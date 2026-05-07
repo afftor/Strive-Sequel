@@ -3690,7 +3690,6 @@ align = 1
 valign = 1
 
 [node name="SlaveSiblingsModule" type="TextureRect" parent="."]
-visible = false
 light_mask = 0
 margin_left = 239.0
 margin_top = 105.0
@@ -3716,9 +3715,9 @@ __meta__ = {
 
 [node name="RelativesPanel" type="VBoxContainer" parent="SlaveSiblingsModule"]
 margin_left = 288.0
-margin_top = 46.0
+margin_top = 28.0
 margin_right = 946.0
-margin_bottom = 734.0
+margin_bottom = 716.0
 mouse_filter = 2
 script = ExtResource( 126 )
 
@@ -3993,6 +3992,7 @@ rect_min_size = Vector2( 250, 60 )
 theme = ExtResource( 58 )
 custom_fonts/font = ExtResource( 1 )
 text = "CHARINFO_STATS_BUTTON"
+clip_text = true
 
 [node name="StatsPanel" parent="SlaveSiblingsModule" instance=ExtResource( 144 )]
 visible = false

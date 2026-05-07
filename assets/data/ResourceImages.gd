@@ -1019,7 +1019,7 @@ var icons = {
 	class_servant = "res://assets/Textures_v2/MANSION/icon_servant.png",
 	class_slave = "res://assets/Textures_v2/MANSION/icon_slave.png",
 	class_slave_trained = "res://assets/Textures_v2/MANSION/trained_slave.png",
-	class_heir = "res://assets/images/iconsclasses/renown_royalty.png", 
+	class_heir = "res://assets/Textures_v2/MANSION/heir_icon.png", 
 	class_spouse = "res://assets/Textures_v2/MANSION/icon_ring.png", 
 
 	quest_slave_delivery = "res://assets/images/gui/slavepanel/charm.png",

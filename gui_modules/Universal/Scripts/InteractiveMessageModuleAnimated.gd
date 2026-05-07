@@ -672,7 +672,7 @@ func remove_servant(code):
 
 func remove_selected(person):
 	input_handler.active_character = person
-	ResourceScripts.game_party.add_fate(person.id, tr("LOST"))
+	ResourceScripts.game_party.add_fate(person.id, tr("SIBLINGMODULEFATEREMOVED"))
 	ResourceScripts.game_party.remove_slave(person, true)
 	input_handler.slave_list_node.rebuild()
 
@@ -808,7 +808,7 @@ func keepbaby():
 	
 
 func removebaby():
-	ResourceScripts.game_party.add_fate(input_handler.active_character.get_stat('pregnancy_baby'), tr("KEEPNOT"))
+	ResourceScripts.game_party.add_fate(input_handler.active_character.get_stat('pregnancy_baby'), tr("SIBLINGMODULEFATEREMOVED"))
 #	if (int(ResourceScripts.game_globals.date) % input_handler.globalsettings.autosave_frequency == 0) and int(ResourceScripts.game_globals.hour) == 1:
 #		globals.autosave(true)
 	close()

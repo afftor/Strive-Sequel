@@ -105,10 +105,10 @@ rect_min_size = Vector2( 290, 385 )
 theme = ExtResource( 12 )
 
 [node name="MansionSlaveListModule" parent="." instance=ExtResource( 5 )]
-margin_left = 320.0
-margin_top = 136.0
-margin_right = 1420.0
-margin_bottom = 936.0
+margin_left = 319.0
+margin_top = 137.0
+margin_right = 1419.0
+margin_bottom = 937.0
 rect_min_size = Vector2( 1100, 580 )
 
 [node name="MansionLogModule" parent="." instance=ExtResource( 10 )]

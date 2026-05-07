@@ -208,6 +208,9 @@ ma manterrà comunque tutti i tuoi personaggi, oggetti e inventario. Usa questa 
 	SIBLINGMODULEAVAILABLE = "Disponibile",
 	SIBLINGMODULEAVAILABLETOOLTIP = "Numero di punti disponibili per questa scheda.",
 	SIBLINGMODULETHRALLLIST = "Schiavi",
+	SIBLINGMODULEFATEREMOVED = """Gone""", # MISSING TRANSLATION
+	SIBLINGMODULEFATERDEAD = """Dead""", # MISSING TRANSLATION
+	SIBLINGMODULEFATERESCAPE = """Escaped""", # MISSING TRANSLATION
 	FAILALREADYSUCCUBUS = "Non si può usare l'essenza corruttiva su Schiavi o Succubi",
 	MINORTRAINMAXREACHED = "Competenze Massime sbloccate",
 	MINORTRAIN_TRAIT_AQUIRED = "tratto %s acquisito",
@@ -20164,6 +20167,7 @@ Dopo pochi minuti non è successo più nulla e [name] decide di andare avanti.""
 	DISCIPLINE_LABEL = "Disciplina",
 	TRAINING_LABEL = "Addestramento",
 	LOCATION_LABEL = "Ubicazione",
+	WORK_LABEL = """Work""", # MISSING TRANSLATION
 	BODYUPGRADENAME_UPGRADE_THICK_SKIN = "Pelle Spessa",
 	BODYUPGRADEDESCRIPT_UPGRADE_THICK_SKIN = "La pelle di [name] sarà molto più sensibile agli effetti magici. MDEF +10. Incompatibile con pelliccia/squame.",
 	BODYUPGRADENAME_UPGRADE_THICK_COVERAGE = "Copertura Spessa",

@@ -1731,6 +1731,9 @@ const PADDINGS = 40
 #		new_font.size = new_size
 #	return new_font
 
+func font_size_adjust(node):
+	var new_font = font_size_calculator(node)
+	node.set("custom_fonts/font", new_font)
 
 func font_size_calculator(label): #, text, font):
 	var font = label.get_font("font")
