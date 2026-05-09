@@ -710,7 +710,7 @@ var effect_table = {
 		tags = ['affliction', 'disable', 'sleep'],
 		target = 'target',
 		tick_event = [variables.TR_TURN_F],
-		rem_event = [variables.TR_COMBAT_F, variables.TR_POST_TARG, variables.TR_DEATH],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEF_HIT, variables.TR_DEATH],
 		duration = 'arg',
 		buffs = ['b_sleep'],
 	},
@@ -856,7 +856,7 @@ var effect_table = {
 	e_s_freeze = {#parent-duration version
 		type = 'temp_s',
 		target = 'target',
-		rem_event = [variables.TR_COMBAT_F, variables.TR_POSTDAMAGE, variables.TR_DEATH],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEF_HIT, variables.TR_DEATH],
 		tick_event = [variables.TR_TURN_F],
 		duration = 'arg',
 		stack = 'freeze',
