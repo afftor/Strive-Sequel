@@ -259,7 +259,7 @@ anchor_bottom = 1.0
 texture = ExtResource( 42 )
 expand = true
 
-[node name="tool" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["default"]]
+[node name="lhand" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["default"]]
 visible = false
 margin_left = 530.0
 margin_top = 6.0
@@ -270,14 +270,14 @@ texture_pressed = ExtResource( 39 )
 texture_hover = ExtResource( 50 )
 expand = true
 
-[node name="back" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/tool"]
+[node name="back" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/lhand"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 38 )
 expand = true
 
-[node name="quality_color" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/tool"]
+[node name="quality_color" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/lhand"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -288,7 +288,7 @@ margin_bottom = -2.0
 texture = ExtResource( 42 )
 expand = true
 
-[node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/tool"]
+[node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/lhand"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0

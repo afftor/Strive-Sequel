@@ -189,8 +189,8 @@ func rebuild():
 		
 		newbutton.get_node("rhand").connect("pressed", self, 'OpenInventory', [person])
 		newbutton.get_node("rhand").set_disabled(false)
-		newbutton.get_node("tool").connect("pressed", self, 'OpenInventory', [person])
-		newbutton.get_node("tool").set_disabled(false)
+		newbutton.get_node("lhand").connect("pressed", self, 'OpenInventory', [person])
+		newbutton.get_node("lhand").set_disabled(false)
 		newbutton.get_node("chest").connect("pressed", self, 'OpenInventory', [person])
 		newbutton.get_node("chest").set_disabled(false)
 		newbutton.get_node("legs").connect("pressed", self, 'OpenInventory', [person])
@@ -226,7 +226,7 @@ func rebuild():
 		if person.is_on_quest():
 			newbutton.disabled = true
 			newbutton.get_node("rhand").set_disabled(true)
-			newbutton.get_node("tool").set_disabled(true)
+			newbutton.get_node("lhand").set_disabled(true)
 			newbutton.get_node("chest").set_disabled(true)
 			newbutton.get_node("legs").set_disabled(true)
 		else:
@@ -639,7 +639,7 @@ func update_button(newbutton, t_mode = mode):
 	#class
 	newbutton.get_node("state").texture = person.get_class_icon()
 	#gear
-	for slot in ['rhand', 'tool', 'chest', 'legs']:
+	for slot in ['rhand', 'lhand', 'chest', 'legs']:
 		var titem = person.equipment.gear[slot]
 		if titem == null:
 			newbutton.get_node(slot + "/icon").texture = null
