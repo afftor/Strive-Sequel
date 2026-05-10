@@ -43,6 +43,7 @@ var music = {
 	exploration = "res://assets/sounds/music/exploration.ogg",
 
 	wimborn = "res://assets/sounds/music/wimborn.ogg",
+	aliron = "res://assets/sounds/music/aliron_theme.ogg",
 	gorn = "res://assets/sounds/music/gorn.ogg",
 	frostford = "res://assets/sounds/music/frostford.ogg",
 	empire_capital = "res://assets/sounds/music/capital_ost.ogg",

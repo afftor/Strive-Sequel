@@ -351,6 +351,23 @@ func connecttexttooltip(node, text, move_right = false):
 		node.disconnect("mouse_entered",self,'showtexttooltip')
 	node.connect("mouse_entered",self,'showtexttooltip', [node, text, move_right])
 
+func get_character_personality_tooltip(personality):
+	var text = tr("INFOPERSONALITY")
+	return highlight_current_personality_bonus_tooltip(text, personality)
+
+func highlight_current_personality_bonus_tooltip(text, personality):
+	if personality == null:
+		return text
+	var personality_name = tr("PERSONALITYNAME" + personality.to_upper())
+	var section_start = text.find("[center]" + personality_name + "[/center]")
+	if section_start == -1:
+		return text
+	var section_end = text.find("\n[center]", section_start + 1)
+	if section_end == -1:
+		section_end = text.length()
+	var section = text.substr(section_start, section_end - section_start)
+	return text.substr(0, section_start) + "{color=green|" + section + "}" + text.substr(section_end, text.length() - section_end)
+
 func showtexttooltip(node, text, move_right):
 	if node == null or !is_instance_valid(node) or !node.is_visible_in_tree():
 		return

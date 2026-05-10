@@ -38,7 +38,7 @@ func update(person = null, from_dialogue = false):
 	if person != null:
 		var text = ""
 		$Panel/personality.text = tr("PERSONALITYCURRENT") + "\n" + tr("PERSONALITYNAME" + person.get_stat('personality').to_upper())
-		globals.connecttexttooltip($Panel/personality, tr("INFOPERSONALITY" + person.get_stat('personality').to_upper()))
+		globals.connecttexttooltip($Panel/personality, globals.get_character_personality_tooltip(person.get_stat('personality')))
 		$Panel/fame_cont/fame.text = tr(person.get_fame_bonus('name'))
 		globals.connecttexttooltip($Panel/fame_cont/fame,
 			person.translate(

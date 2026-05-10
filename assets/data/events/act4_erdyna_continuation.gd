@@ -709,6 +709,7 @@ var data = {
 	emp_catacomb_after_fight = {
 		image = null,
 		character = "erdyna",
+		music = "dungeon",
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = "ACT4_CATACOMB_AFTER_FIGHT",
@@ -824,6 +825,7 @@ var data = {
 	emp_myr_catacomb_writing = {
 		image = null,
 		character = "myr",
+		music = "erdyna_theme",
 		tags = ["dialogue_scene"],
 		reqs = [],
 		text = [
@@ -943,6 +945,7 @@ var data = {
 	act4_erdyna_lineage_1 = {
 		image = null,
 		character = "erdyna",
+		music = "erdyna_theme",
 		tags = ["dialogue_scene", "act4_erdyna"],
 		reqs = [],
 		text = "ACT4_ERDYNA_LINEAGE_1",
@@ -1016,8 +1019,8 @@ var data = {
 	},
 	act4_erdyna_visit_entry_reply = {
 		image = null,
-		character = "vaeloria",
-		character2 = "erdyna",
+		character = "erdyna",
+		character2 = "vaeloria",
 		tags = ["dialogue_scene", "act4_erdyna"],
 		reqs = [],
 		text = [
@@ -1062,8 +1065,8 @@ var data = {
 	},
 	act4_erdyna_ward_reply = {
 		image = null,
-		character = "vaeloria",
-		character2 = "erdyna",
+		character = "erdyna",
+		character2 = "vaeloria",
 		tags = ["dialogue_scene", "act4_erdyna"],
 		reqs = [],
 		text = [
@@ -1104,8 +1107,8 @@ var data = {
 	},
 	act4_erdyna_negotiate_intro = {
 		image = null,
-		character = "vaeloria",
-		character2 = "erdyna",
+		character = "erdyna",
+		character2 = "vaeloria",
 		tags = ["dialogue_scene", "act4_erdyna"],
 		reqs = [],
 		text = "ACT4_ERDYNA_NEGOTIATE_INTRO",
@@ -1120,8 +1123,8 @@ var data = {
 	},
 	act4_erdyna_negotiate_hub = {
 		image = null,
-		character = "vaeloria",
-		character2 = "erdyna",
+		character = "erdyna",
+		character2 = "vaeloria",
 		tags = ["dialogue_scene", "act4_erdyna"],
 		reqs = [],
 		text = [
@@ -1216,6 +1219,7 @@ var data = {
 		image = null,
 		character = "vaeloria",
 		character2 = "erdyna",
+		music = "threat",
 		tags = ["dialogue_scene", "act4_erdyna"],
 		reqs = [],
 		text = "ACT4_ERDYNA_FIGHT_ENTRY",
@@ -1237,6 +1241,7 @@ var data = {
 	},
 	act4_erdyna_fight_win_1 = {
 		image = null,
+		music = "erdyna_theme",
 		tags = ["dialogue_scene", "act4_erdyna"],
 		reqs = [],
 		text = "ACT4_ERDYNA_FIGHT_WIN_1",
@@ -1282,39 +1287,249 @@ var data = {
 	act4_erdyna_return_1 = {
 		image = null,
 		character = "vaeloria",
-		character2 = "erdyna",
+		music = "erdyna_theme",
 		tags = ["dialogue_scene", "act4_erdyna"],
 		reqs = [],
 		text = "ACT4_ERDYNA_RETURN_1",
 		options = [
 			{
-				code = "act4_erdyna_negotiate_hub",
-				text = "DIALOGUECONTINUE",
-				reqs = [{type = "active_quest_stage", value = "erdyna_quest", stage = "act4_erdyna_archives", state = true}],
+				code = "act4_erdyna_records_result_1",
+				text = "ACT4_3_RECORDS_RETURN_OPTION_HAND_OVER",
+				reqs = [{type = "active_quest_stage", value = "erdyna_quest", stage = "act4_erdyna_records", state = true}],
 				type = "next_dialogue"
 			},
 			{
-				code = "act4_erdyna_records_result_1",
-				text = "DIALOGUECONTINUE",
-				reqs = [{type = "active_quest_stage", value = "erdyna_quest", stage = "act4_erdyna_records", state = true}],
+				code = "close",
+				text = "DIALOGUELEAVE",
+				reqs = [],
 				type = "next_dialogue"
-			}
+			},
 		]
 	},
 	act4_erdyna_records_result_1 = {
 		image = null,
 		character = "vaeloria",
-		character2 = "erdyna",
 		tags = ["dialogue_scene", "act4_erdyna"],
 		reqs = [],
 		text = "ACT4_ERDYNA_RECORDS_RESULT_1",
+		options = [
+			{
+				code = "act4_3_records_result_2",
+				text = "DIALOGUECONTINUE",
+				reqs = [],
+				type = "next_dialogue"
+			}
+		]
+	},
+	act4_3_records_result_2 = {
+		image = null,
+		character = "vaeloria",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_RECORDS_RESULT_2",
+		options = [
+			{
+				code = "act4_3_records_negotiation",
+				text = "ACT4_3_RECORDS_RESULT_OPTION_ERDYNA",
+				reqs = [],
+				type = "next_dialogue"
+			},
+			{
+				code = "act4_3_records_fight_entry",
+				text = "DIALOGUEFIGHTOPTION",
+				reqs = [],
+				type = "next_dialogue"
+			},
+			{
+				code = "act4_3_records_leave_erdyna",
+				text = "DIALOGUELEAVE",
+				reqs = [],
+				type = "next_dialogue"
+			}
+		]
+	},
+	act4_3_records_negotiation = {
+		image = null,
+		character = "vaeloria",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = [
+			{
+				text = "ACT4_3_RECORDS_NEGOTIATION_0",
+				reqs = [],
+				previous_dialogue_option = 0
+			},
+			{
+				text = "ACT4_3_RECORDS_CHARM_FAIL",
+				reqs = [],
+				previous_dialogue_option = 1
+			}
+		],
+		options = [
+			{
+				code = "act4_3_records_charm_result",
+				text = "ACT4_3_RECORDS_OPTION_CHARM",
+				reqs = [],
+				type = "next_dialogue",
+				remove_after_first_use = true
+			},
+			{
+				code = "act4_3_records_bribe",
+				text = "ACT4_3_RECORDS_OPTION_BRIBE",
+				reqs = [{type = "has_money", value = 5000}],
+				type = "next_dialogue",
+				bonus_effects = [{code = "money_change", operant = "-", value = 5000}]
+			},
+			{
+				code = "act4_3_records_leave_erdyna",
+				text = "ACT4_3_RECORDS_OPTION_LEAVE_ERDYNA",
+				reqs = [],
+				type = "next_dialogue"
+			},
+			{
+				code = "act4_3_records_fight_entry",
+				text = "DIALOGUEFIGHTOPTION",
+				reqs = [],
+				type = "next_dialogue"
+			}
+		]
+	},
+	act4_3_records_charm_result = {
+		image = null,
+		character = "vaeloria",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = [
+			{
+				text = "ACT4_3_RECORDS_CHARM_SUCCESS",
+				reqs = [{type = "master_check", value = [{code = "stat", stat = "charm_factor", operant = "gte", value = 6}]}]
+			},
+			{
+				text = "ACT4_3_RECORDS_CHARM_FAIL",
+				reqs = [{type = "master_check", value = [{code = "stat", stat = "charm_factor", operant = "lt", value = 6}]}]
+			}
+		],
+		options = [
+			{
+				code = "act4_3_erdyna_released_1",
+				text = "DIALOGUECONTINUE",
+				reqs = [{type = "master_check", value = [{code = "stat", stat = "charm_factor", operant = "gte", value = 6}]}],
+				type = "next_dialogue",
+				bonus_effects = [{code = "decision", value = "ThalendirFreedByRecords"}]
+			},
+			{
+				code = "act4_3_records_negotiation",
+				text = "DIALOGUECONTINUE",
+				reqs = [{type = "master_check", value = [{code = "stat", stat = "charm_factor", operant = "lt", value = 6}]}],
+				type = "next_dialogue",
+				dialogue_argument = 1
+			}
+		]
+	},
+	act4_3_records_bribe = {
+		image = null,
+		character = "vaeloria",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_RECORDS_BRIBE",
+		options = [
+			{
+				code = "act4_3_erdyna_released_1",
+				text = "DIALOGUECONTINUE",
+				reqs = [],
+				type = "next_dialogue",
+				bonus_effects = [{code = "decision", value = "ThalendirFreedByBribe"}]
+			}
+		]
+	},
+	act4_3_records_fight_entry = {
+		image = null,
+		character = "vaeloria",
+		music = "threat",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_RECORDS_FIGHT_ENTRY",
+		options = [
+			{
+				code = "quest_fight",
+				args = "act4_erdyna_estate_fight",
+				text = "DIALOGUEFIGHTOPTION",
+				reqs = [],
+				type = "next_dialogue"
+			}
+		]
+	},
+	act4_3_records_leave_erdyna = {
+		image = null,
+		character = "vaeloria",
+		music = "tragic",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_RECORDS_LEAVE_ERDYNA",
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = "decision", value = "ThalendirErdynaAbandoned"},
+					{code = "progress_quest", value = "erdyna_quest", stage = "catacombs_opened"},
+					{code = "remove_quest_location", value = "quest_thalendir_house"},
+					{code = "make_quest_location", value = "quest_empire_catacomb_entry"},
+					{code = "update_city"}
+				]
+			}
+		]
+	},
+	act4_3_erdyna_released_1 = {
+		image = null,
+		character = "vaeloria",
+		character2 = "erdyna",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_ERDYNA_RELEASED_1",
+		options = [
+			{
+				code = "act4_3_erdyna_released_2",
+				text = "DIALOGUECONTINUE",
+				reqs = [],
+				type = "next_dialogue"
+			}
+		]
+	},
+	act4_3_erdyna_released_2 = {
+		image = null,
+		character = "vaeloria",
+		character2 = "erdyna",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_ERDYNA_RELEASED_2",
+		options = [
+			{
+				code = "act4_3_erdyna_released_3",
+				text = "DIALOGUECONTINUE",
+				reqs = [],
+				type = "next_dialogue"
+			}
+		]
+	},
+	act4_3_erdyna_released_3 = {
+		image = null,
+		character = "erdyna",
+		music = "erdyna_theme",
+		tags = ["dialogue_scene", "blackscreen_transition_common", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_ERDYNA_RELEASED_3",
 		options = [
 			{
 				code = "act4_erdyna_after_leave_1",
 				text = "DIALOGUECONTINUE",
 				reqs = [],
 				type = "next_dialogue",
-				bonus_effects = [{code = "decision", value = "ThalendirFreedByRecords"}]
+				bonus_effects = [
+					{code = "remove_quest_location", value = "quest_thalendir_house"}
+				]
 			}
 		]
 	},
@@ -1428,16 +1643,6 @@ var data = {
 				reqs = [],
 				previous_dialogue_option = 3
 			},
-			{
-				text = "ACT4_ERDYNA_AFTER_LEAVE_HUB_4_SUCCESS",
-				reqs = [{type = "master_check", value = [{code = "stat", stat = "sexuals_factor", operant = "gte", value = 5}]}],
-				previous_dialogue_option = 4
-			},
-			{
-				text = "ACT4_ERDYNA_AFTER_LEAVE_HUB_4_FAIL",
-				reqs = [{type = "master_check", value = [{code = "stat", stat = "sexuals_factor", operant = "lt", value = 5}]}],
-				previous_dialogue_option = 4
-			}
 		],
 		options = [
 			{
@@ -1462,10 +1667,10 @@ var data = {
 				remove_after_first_use = true
 			},
 			{
-				code = "act4_erdyna_after_leave_hub",
+				code = "act4_erdyna_flirt_result",
 				text = "ACT4_ERDYNA_AFTER_LEAVE_OPTION_FLIRT",
 				reqs = [],
-				dialogue_argument = 4,
+				type = "next_dialogue",
 				remove_after_first_use = true
 			},
 			{
@@ -1481,9 +1686,44 @@ var data = {
 			}
 		]
 	},
+	act4_erdyna_flirt_result = {
+		variations = [
+			{
+				reqs = [{type = "master_check", value = [{code = "stat", stat = "sexuals_factor", operant = "gte", value = 5}]}],
+				image = null,
+				character = "erdyna",
+				tags = ["dialogue_scene", "act4_erdyna"],
+				text = "ACT4_ERDYNA_AFTER_LEAVE_HUB_4_SUCCESS",
+				options = [
+					{
+						code = "erdyna_campfire_1",
+						text = "DIALOGUECONTINUE",
+						reqs = [],
+						type = "next_dialogue"
+					}
+				]
+			},
+			{
+				reqs = [{type = "master_check", value = [{code = "stat", stat = "sexuals_factor", operant = "lt", value = 5}]}],
+				image = null,
+				character = "erdyna",
+				tags = ["dialogue_scene", "act4_erdyna"],
+				text = "ACT4_ERDYNA_AFTER_LEAVE_HUB_4_FAIL",
+				options = [
+					{
+						code = "act4_erdyna_after_leave_hub",
+						text = "DIALOGUECONTINUE",
+						reqs = [],
+						type = "next_dialogue"
+					}
+				]
+			}
+		]
+	},
 	act4_erdyna_melchor_archives_1 = {
 		image = null,
 		character = "chancellor",
+		music = "erdyna_theme",
 		tags = ["dialogue_scene", "act4_erdyna"],
 		reqs = [],
 		text = "ACT4_ERDYNA_MELCHOR_ARCHIVES_1",
@@ -1515,6 +1755,7 @@ var data = {
 	act4_erdyna_grotus_offer_1 = {
 		image = null,
 		character = "grotus",
+		music = "erdyna_theme",
 		tags = ["dialogue_scene", "act4_erdyna"],
 		reqs = [],
 		text = "ACT4_ERDYNA_GROTUS_OFFER_1",
@@ -1594,6 +1835,7 @@ var data = {
 	act4_erdyna_grotus_find = {
 		image = null,
 		character = "grotus",
+		music = "erdyna_theme",
 		tags = ["dialogue_scene", "act4_erdyna"],
 		reqs = [],
 		text = "ACT4_ERDYNA_GROTUS_FIND",
@@ -1655,6 +1897,7 @@ var data = {
 	},
 	act4_erdyna_archive_search_complete_1 = {
 		image = null,
+		music = "erdyna_theme",
 		tags = ["dialogue_scene", "act4_erdyna"],
 		reqs = [],
 		text = "ACT4_ERDYNA_ARCHIVE_SEARCH_COMPLETE_1",
@@ -1688,6 +1931,7 @@ var data = {
 	},
 	act4_erdyna_archive_dungeon_complete = {
 		image = null,
+		music = "dungeon",
 		tags = ["dialogue_scene", "act4_erdyna"],
 		reqs = [],
 		text = "ACT4_ERDYNA_ARCHIVE_DUNGEON_COMPLETE",
@@ -1700,6 +1944,502 @@ var data = {
 				bonus_effects = [
 					{code = "set_completed_active_location"},
 					{code = "progress_quest", value = "erdyna_quest", stage = "act4_erdyna_records"},
+					{code = "update_city"}
+				]
+			}
+		]
+	},
+	erdyna_capital_return_1 = {
+		image = null,
+		character = "erdyna",
+		music = "erdyna_theme",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_ERDYNA_CAPITAL_RETURN_1",
+		options = [
+			{
+				code = "erdyna_capital_return_2",
+				text = "DIALOGUECONTINUE",
+				reqs = [],
+				type = "next_dialogue"
+			}
+		]
+	},
+	erdyna_capital_return_2 = {
+		image = null,
+		character = "erdyna",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_ERDYNA_CAPITAL_RETURN_2",
+		options = [
+			{
+				code = "erdyna_capital_return_3",
+				text = "DIALOGUECONTINUE",
+				reqs = [],
+				type = "next_dialogue"
+			}
+		]
+	},
+	erdyna_capital_return_3 = {
+		image = null,
+		character = "erdyna",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_ERDYNA_CAPITAL_RETURN_3",
+		options = [
+			{
+				code = "erdyna_capital_return_help",
+				text = "ACT4_3_ERDYNA_CAPITAL_RETURN_OPTION_HELP",
+				reqs = [],
+				type = "next_dialogue"
+			},
+			{
+				code = "erdyna_capital_return_physics",
+				text = "ACT4_3_ERDYNA_CAPITAL_RETURN_OPTION_PHYSICS",
+				reqs = [],
+				type = "next_dialogue",
+				remove_after_first_use = true
+			},
+			{
+				code = "erdyna_capital_return_leave",
+				text = "ACT4_3_ERDYNA_CAPITAL_RETURN_OPTION_LEAVE",
+				reqs = [],
+				type = "next_dialogue"
+			}
+		]
+	},
+	erdyna_capital_return_help = {
+		image = null,
+		character = "erdyna",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_ERDYNA_CAPITAL_RETURN_HELP",
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = "progress_quest", value = "erdyna_quest", stage = "erdyna_hideout"},
+					{code = "update_city"}
+				]
+			}
+		]
+	},
+	erdyna_capital_return_physics = {
+		image = null,
+		character = "erdyna",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = [
+			{
+				text = "ACT4_3_ERDYNA_CAPITAL_RETURN_PHYSICS_SUCCESS",
+				reqs = [{type = "master_check", value = [{code = "stat", stat = "physics_factor", operant = "gte", value = 5}]}]
+			},
+			{
+				text = "ACT4_3_ERDYNA_CAPITAL_RETURN_PHYSICS_FAIL",
+				reqs = [{type = "master_check", value = [{code = "stat", stat = "physics_factor", operant = "lt", value = 5}]}]
+			}
+		],
+		options = [
+			{
+				code = "close",
+				text = "ACT4_3_ERDYNA_CAPITAL_RETURN_OPTION_GOOD",
+				reqs = [{type = "master_check", value = [{code = "stat", stat = "physics_factor", operant = "gte", value = 5}]}],
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = "progress_quest", value = "erdyna_quest", stage = "catacombs_opened"},
+					{code = "make_quest_location", value = "quest_empire_catacomb_entry"},
+					{code = "update_city"}
+				]
+			},
+			{
+				code = "erdyna_capital_return_help",
+				text = "ACT4_3_ERDYNA_CAPITAL_RETURN_OPTION_KIDDING",
+				reqs = [{type = "master_check", value = [{code = "stat", stat = "physics_factor", operant = "gte", value = 5}]}],
+				type = "next_dialogue"
+			},
+			{
+				code = "erdyna_capital_return_3",
+				text = "DIALOGUECONTINUE",
+				reqs = [{type = "master_check", value = [{code = "stat", stat = "physics_factor", operant = "lt", value = 5}]}],
+				type = "next_dialogue"
+			}
+		]
+	},
+	erdyna_capital_return_leave = {
+		image = null,
+		character = "erdyna",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_ERDYNA_CAPITAL_RETURN_LEAVE",
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = "decision", value = "ErdynaLeftForRedRooksAlone"},
+					{code = "complete_quest", value = "erdyna_quest"},
+					{code = "update_city"}
+				]
+			}
+		]
+	},
+	erdyna_old_hideout_1 = {
+		image = null,
+		character = "erdyna",
+		music = "erdyna_theme",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_ERDYNA_OLD_HIDEOUT_1",
+		options = [
+			{
+				code = "erdyna_old_hideout_2",
+				text = "DIALOGUECONTINUE",
+				reqs = [],
+				type = "next_dialogue"
+			}
+		]
+	},
+	erdyna_old_hideout_2 = {
+		image = null,
+		character = "erdyna",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_ERDYNA_OLD_HIDEOUT_2",
+		options = [
+			{
+				code = "erdyna_old_hideout_move",
+				text = "ACT4_3_ERDYNA_OLD_HIDEOUT_OPTION_CRUSH",
+				reqs = [],
+				type = "next_dialogue"
+			},
+			{
+				code = "erdyna_old_hideout_move",
+				text = "ACT4_3_ERDYNA_OLD_HIDEOUT_OPTION_CAREFUL",
+				reqs = [],
+				type = "next_dialogue"
+			},
+			{
+				code = "erdyna_old_hideout_move",
+				text = "ACT4_3_ERDYNA_OLD_HIDEOUT_OPTION_SORRY",
+				reqs = [],
+				type = "next_dialogue"
+			}
+		]
+	},
+	erdyna_old_hideout_move = {
+		image = null,
+		character = "erdyna",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_ERDYNA_OLD_HIDEOUT_MOVE",
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = "progress_quest", value = "erdyna_quest", stage = "red_rooks_fort"},
+					{code = "make_quest_location", value = "quest_red_rooks_old_fort"},
+					{code = "update_city"}
+				]
+			}
+		]
+	},
+	red_rooks_old_fort_complete_1 = {
+		image = null,
+		character = "erdyna",
+		music = "threat",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_RED_ROOKS_COMPLETE_1",
+		options = [
+			{
+				code = "red_rooks_old_fort_complete_2",
+				text = "DIALOGUECONTINUE",
+				reqs = [],
+				type = "next_dialogue"
+			}
+		]
+	},
+	red_rooks_old_fort_complete_2 = {
+		image = null,
+		character = "erdyna",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_RED_ROOKS_COMPLETE_2",
+		options = [
+			{
+				code = "red_rooks_betrayal_entry",
+				text = "ACT4_3_RED_ROOKS_OPTION_BETRAY",
+				reqs = [],
+				type = "next_dialogue"
+			},
+			{
+				code = "red_rooks_leader_refuse",
+				text = "ACT4_3_RED_ROOKS_OPTION_REFUSE",
+				reqs = [],
+				type = "next_dialogue"
+			}
+		]
+	},
+	red_rooks_betrayal_entry = {
+		image = null,
+		character = "erdyna",
+		music = "threat",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_RED_ROOKS_BETRAYAL_ENTRY",
+		options = [
+			{
+				code = "quest_fight",
+				args = "act4_3_erdyna_betrayal_fight",
+				text = "DIALOGUEFIGHTOPTION",
+				reqs = [],
+				type = "next_dialogue"
+			}
+		]
+	},
+	red_rooks_betrayal_win_1 = {
+		image = null,
+		character = "erdyna",
+		music = "tragic",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_RED_ROOKS_BETRAYAL_WIN",
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = "money_change", operant = "+", value = 1000},
+					{code = "affect_unique_character", name = "erdyna", type = "slavetype", value = "slave"},
+					{code = "decision", value = "ErdynaBetrayedRedRooks"},
+					{code = "complete_quest", value = "erdyna_quest"},
+					{code = "set_completed_active_location"},
+					{code = "update_city"}
+				]
+			}
+		]
+	},
+	red_rooks_leader_refuse = {
+		image = null,
+		character = "erdyna",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_RED_ROOKS_REFUSE",
+		options = [
+			{
+				code = "quest_fight",
+				args = "act4_3_red_rooks_leader_fight",
+				text = "DIALOGUEFIGHTOPTION",
+				reqs = [],
+				type = "next_dialogue"
+			}
+		]
+	},
+	red_rooks_leader_win_1 = {
+		image = null,
+		character = "erdyna",
+		music = "erdyna_theme",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_RED_ROOKS_LEADER_WIN_1",
+		options = [
+			{
+				code = "red_rooks_leader_win_2",
+				text = "DIALOGUECONTINUE",
+				reqs = [],
+				type = "next_dialogue",
+				bonus_effects = [{code = "screen_black_transition", value = 1}]
+			}
+		]
+	},
+	red_rooks_leader_win_2 = {
+		image = null,
+		character = "erdyna",
+		tags = ["dialogue_scene", "blackscreen_transition_common", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_RED_ROOKS_LEADER_WIN_2",
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = "decision", value = "ErdynaBandRescued"},
+					{code = "progress_quest", value = "erdyna_quest", stage = "catacombs_opened"},
+					{code = "set_completed_active_location"},
+					{code = "make_quest_location", value = "quest_empire_catacomb_entry"},
+					{code = "update_city"}
+				]
+			}
+		]
+	},
+	act4_3_sealed_doors_alone_1 = {
+		image = null,
+		music = "dungeon",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_SEALED_DOORS_ALONE_1",
+		options = [
+			{
+				code = "act4_3_sealed_doors_alone_2",
+				text = "DIALOGUECONTINUE",
+				reqs = [],
+				type = "next_dialogue"
+			}
+		]
+	},
+	act4_3_sealed_doors_alone_2 = {
+		image = null,
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_SEALED_DOORS_ALONE_2",
+		options = [
+			{
+				code = "act4_3_opened_seal_1",
+				text = "DIALOGUECONTINUE",
+				reqs = [],
+				type = "next_dialogue"
+			}
+		]
+	},
+	act4_3_sealed_doors_erdyna_1 = {
+		image = null,
+		character = "erdyna",
+		music = "dungeon",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_SEALED_DOORS_ERDYNA_1",
+		options = [
+			{
+				code = "act4_3_sealed_doors_erdyna_2",
+				text = "DIALOGUECONTINUE",
+				reqs = [],
+				type = "next_dialogue"
+			}
+		]
+	},
+	act4_3_sealed_doors_erdyna_2 = {
+		image = null,
+		character = "erdyna",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_SEALED_DOORS_ERDYNA_2",
+		options = [
+			{
+				code = "act4_3_opened_seal_1",
+				text = "DIALOGUECONTINUE",
+				reqs = [],
+				type = "next_dialogue"
+			}
+		]
+	},
+	act4_3_opened_seal_1 = {
+		image = null,
+		music = "dungeon",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_OPENED_SEAL_1",
+		options = [
+			{
+				code = "act4_3_opened_seal_2",
+				text = "DIALOGUECONTINUE",
+				reqs = [],
+				type = "next_dialogue"
+			}
+		]
+	},
+	act4_3_opened_seal_2 = {
+		image = null,
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_OPENED_SEAL_2",
+		options = [
+			{
+				code = "quest_fight",
+				args = "act4_3_opened_seal_cultists",
+				text = "DIALOGUEFIGHTOPTION",
+				reqs = [],
+				type = "next_dialogue"
+			}
+		]
+	},
+	act4_3_opened_seal_after_fight = {
+		image = null,
+		music = "dungeon",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_OPENED_SEAL_AFTER_FIGHT",
+		options = [
+			{
+				code = "act4_3_artifact_found_alone",
+				text = "DIALOGUECONTINUE",
+				reqs = [{type = "decision", value = "ErdynaBetrayedRedRooks", check = true}],
+				type = "next_dialogue"
+			},
+			{
+				code = "act4_3_artifact_found_alone",
+				text = "DIALOGUECONTINUE",
+				reqs = [{type = "decision", value = "ThalendirErdynaAbandoned", check = true}],
+				type = "next_dialogue"
+			},
+			{
+				code = "act4_3_artifact_found_erdyna",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+					{type = "decision", value = "ErdynaBetrayedRedRooks", check = false},
+					{type = "decision", value = "ThalendirErdynaAbandoned", check = false}
+				],
+				type = "next_dialogue"
+			}
+		]
+	},
+	act4_3_artifact_found_alone = {
+		image = null,
+		music = "dungeon",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_ARTIFACT_FOUND_ALONE",
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = "remove_quest_location", value = "quest_empire_catacomb_entry"},
+					{code = "complete_quest", value = "erdyna_quest"},
+					{code = "update_city"}
+				]
+			}
+		]
+	},
+	act4_3_artifact_found_erdyna = {
+		image = null,
+		character = "erdyna",
+		music = "erdyna_theme",
+		tags = ["dialogue_scene", "act4_erdyna"],
+		reqs = [],
+		text = "ACT4_3_ARTIFACT_FOUND_ERDYNA",
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = "remove_quest_location", value = "quest_empire_catacomb_entry"},
+					{code = "complete_quest", value = "erdyna_quest"},
 					{code = "update_city"}
 				]
 			}

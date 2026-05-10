@@ -670,7 +670,7 @@ var data = {
 		options = [
 			{code = "rouge_interrogation_ketch_tough", text = "ROUGE_INTERROGATION_OPTION_SILENT", reqs = [], type = "next_dialogue"},
 			{code = "rouge_interrogation_ketch_tough", text = "ROUGE_INTERROGATION_OPTION_NOTHING", reqs = [], type = "next_dialogue"},
-			{code = "rouge_interrogation_ketch_rouge", text = "ROUGE_INTERROGATION_OPTION_ROUGE", reqs = [], type = "next_dialogue"}
+			{code = "rouge_interrogation_ketch_rouge", text = "ROUGE_INTERROGATION_OPTION_ROUGE", reqs = [], type = "next_dialogue", bonus_effects = [{code = "decision", value = "KetchWarnedAboutRouge"}]}
 		]
 	},
 	rouge_interrogation_ketch_tough = {
@@ -681,7 +681,7 @@ var data = {
 		text = "ROUGE_INTERROGATION_KETCH_TOUGH", 
 		common_effects = [{code = 'play_sound', value = 'punch'}, {code = 'screen_shake', strength = 3, length = 0.3}],
 		options = [
-			{code = "rouge_interrogation_ketch_rouge", text = "ROUGE_INTERROGATION_OPTION_ROUGE_SENT", reqs = [], type = "next_dialogue"}, 
+			{code = "rouge_interrogation_ketch_rouge", text = "ROUGE_INTERROGATION_OPTION_ROUGE_SENT", reqs = [], type = "next_dialogue", bonus_effects = [{code = "decision", value = "KetchWarnedAboutRouge"}]},
 			{code = "rouge_interrogation_ketch_bitch", text = "ROUGE_INTERROGATION_OPTION_HIT_LIKE", reqs = [], type = "next_dialogue"}
 		]
 	},
@@ -818,13 +818,28 @@ var data = {
 			]
 	},
 	rouge_report_melchor_raid = {
-		reqs = [],
-		image = "rouge_warehouse_2",
-		tags = ["dialogue_scene", "blackscreen_transition_common"],
-		text = "ROUGE_REPORT_MELCHOR_RAID",
-		options = [
-			{code = "rouge_report_melchor_ketch_escape_1", text = "DIALOGUECONTINUE", reqs = [{type = "decision", value = "KetchKilled", check = false}], type = "next_dialogue"},
-			{code = "rouge_report_henchman_basement_intro", text = "DIALOGUECONTINUE", reqs = [{type = "decision", value = "KetchKilled", check = true}], type = "next_dialogue", bonus_effects = [{code = "screen_black_transition", value = 1}], dialogue_argument = 1}
+		variations = [
+			{
+				reqs = [{type = "decision", value = "KetchKilled", check = false}, {type = "decision", value = "KetchWarnedAboutRouge", check = true}],
+				image = "rouge_warehouse_2",
+				tags = ["dialogue_scene", "blackscreen_transition_common"],
+				text = "ROUGE_REPORT_MELCHOR_RAID",
+				options = [{code = "rouge_report_melchor_ketch_warned_escape_1", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
+			},
+			{
+				reqs = [{type = "decision", value = "KetchKilled", check = false}],
+				image = "rouge_warehouse_2",
+				tags = ["dialogue_scene", "blackscreen_transition_common"],
+				text = "ROUGE_REPORT_MELCHOR_RAID",
+				options = [{code = "rouge_report_melchor_ketch_escape_1", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
+			},
+			{
+				reqs = [],
+				image = "rouge_warehouse_2",
+				tags = ["dialogue_scene", "blackscreen_transition_common"],
+				text = "ROUGE_REPORT_MELCHOR_RAID",
+				options = [{code = "rouge_report_henchman_basement_intro", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue", bonus_effects = [{code = "screen_black_transition", value = 1}], dialogue_argument = 1}]
+			}
 		]
 	},
 	
@@ -867,22 +882,82 @@ var data = {
 			}
 		]
 	},
-	rouge_report_ketch_basement_intro = {
+	rouge_report_melchor_ketch_warned_escape_1 = {
+		reqs = [],
+		image = null,
+		music = 'threat',
+		character = "ketch",
+		tags = ["dialogue_scene", "master_translate", "blackscreen_transition_common"],
+		text = "ROUGE_REPORT_MELCHOR_KETCH_WARNED_ESCAPE_1",
+		options = [{code = "rouge_report_melchor_ketch_warned_escape_2", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
+	},
+	rouge_report_melchor_ketch_warned_escape_2 = {
+		reqs = [],
+		image = null,
+		music = 'rouge_theme',
+		character = "ketch",
+		character2 = "rouge",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_REPORT_MELCHOR_KETCH_WARNED_ESCAPE_2",
+		options = [{code = "rouge_report_melchor_ketch_warned_escape_3", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
+	},
+	rouge_report_melchor_ketch_warned_escape_3 = {
 		reqs = [],
 		image = null,
 		character = "rouge",
-		tags = ["dialogue_scene", "master_translate"],
-		text = [
-			{text = "ROUGE_REPORT_KETCH_BASEMENT_INTRO", reqs = [], previous_dialogue_option = 1},
-			{text = "ROUGE_REPORT_KETCH_WHAT_HAPPENED", reqs = [], previous_dialogue_option = [2, 4]},
-			{text = "ROUGE_REPORT_KETCH_CAPITAL", reqs = [], previous_dialogue_option = [3, 5]},
-		],
+		tags = ["dialogue_scene"],
+		text = "ROUGE_REPORT_MELCHOR_KETCH_WARNED_ESCAPE_3",
 		options = [
-			{code = "rouge_report_ketch_basement_intro", text = "ROUGE_REPORT_OPTION_WHAT_HAPPENED", reqs = [], dialogue_argument = 2, previous_dialogue_option = 1},
-			{code = "rouge_report_ketch_basement_intro", text = "ROUGE_REPORT_OPTION_WHAT_HAPPENED", reqs = [], dialogue_argument = 4, previous_dialogue_option = 3},
-			{code = "rouge_report_ketch_basement_intro", text = "ROUGE_REPORT_OPTION_CAPITAL", reqs = [], dialogue_argument = 3, previous_dialogue_option = 1},
-			{code = "rouge_report_ketch_basement_intro", text = "ROUGE_REPORT_OPTION_CAPITAL", reqs = [], dialogue_argument = 5, previous_dialogue_option = 2},
-			{code = "rouge_report_ketch_basement_1", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue", previous_dialogue_option = [4, 5]}
+			{
+				code = "rouge_report_ketch_basement_intro",
+				text = "DIALOGUECONTINUE",
+				reqs = [],
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = "screen_black_transition", value = 1}
+				],
+				dialogue_argument = 1
+			}
+		]
+	},
+	rouge_report_ketch_basement_intro = {
+		variations = [
+			{
+				reqs = [{type = "decision", value = "KetchWarnedAboutRouge", check = true}],
+				image = null,
+				character = "rouge",
+				tags = ["dialogue_scene", "master_translate"],
+				text = [
+					{text = "ROUGE_REPORT_KETCH_ESCAPED_BASEMENT_INTRO", reqs = [], previous_dialogue_option = 1},
+					{text = "ROUGE_REPORT_KETCH_ESCAPED_WHAT_HAPPENED", reqs = [], previous_dialogue_option = [2, 4]},
+					{text = "ROUGE_REPORT_KETCH_CAPITAL", reqs = [], previous_dialogue_option = [3, 5]},
+				],
+				options = [
+					{code = "rouge_report_ketch_basement_intro", text = "ROUGE_REPORT_OPTION_WHAT_HAPPENED", reqs = [], dialogue_argument = 2, previous_dialogue_option = 1},
+					{code = "rouge_report_ketch_basement_intro", text = "ROUGE_REPORT_OPTION_WHAT_HAPPENED", reqs = [], dialogue_argument = 4, previous_dialogue_option = 3},
+					{code = "rouge_report_ketch_basement_intro", text = "ROUGE_REPORT_OPTION_CAPITAL", reqs = [], dialogue_argument = 3, previous_dialogue_option = 1},
+					{code = "rouge_report_ketch_basement_intro", text = "ROUGE_REPORT_OPTION_CAPITAL", reqs = [], dialogue_argument = 5, previous_dialogue_option = 2},
+					{code = "rouge_report_ketch_basement_1", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue", previous_dialogue_option = [4, 5]}
+				]
+			},
+			{
+				reqs = [],
+				image = null,
+				character = "rouge",
+				tags = ["dialogue_scene", "master_translate"],
+				text = [
+					{text = "ROUGE_REPORT_KETCH_BASEMENT_INTRO", reqs = [], previous_dialogue_option = 1},
+					{text = "ROUGE_REPORT_KETCH_WHAT_HAPPENED", reqs = [], previous_dialogue_option = [2, 4]},
+					{text = "ROUGE_REPORT_KETCH_CAPITAL", reqs = [], previous_dialogue_option = [3, 5]},
+				],
+				options = [
+					{code = "rouge_report_ketch_basement_intro", text = "ROUGE_REPORT_OPTION_WHAT_HAPPENED", reqs = [], dialogue_argument = 2, previous_dialogue_option = 1},
+					{code = "rouge_report_ketch_basement_intro", text = "ROUGE_REPORT_OPTION_WHAT_HAPPENED", reqs = [], dialogue_argument = 4, previous_dialogue_option = 3},
+					{code = "rouge_report_ketch_basement_intro", text = "ROUGE_REPORT_OPTION_CAPITAL", reqs = [], dialogue_argument = 3, previous_dialogue_option = 1},
+					{code = "rouge_report_ketch_basement_intro", text = "ROUGE_REPORT_OPTION_CAPITAL", reqs = [], dialogue_argument = 5, previous_dialogue_option = 2},
+					{code = "rouge_report_ketch_basement_1", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue", previous_dialogue_option = [4, 5]}
+				]
+			}
 		]
 	},
 	rouge_report_ketch_basement_1 = {
@@ -963,14 +1038,38 @@ var data = {
 	},
 	
 	rouge_report_melchor_return = {
-		reqs = [],
-		image = null,
-		character = 'chancellor',
-		tags = ["dialogue_scene"],
-		text = "ROUGE_REPORT_MELCHOR_RETURN",
-		options = [
-			{code = "rouge_report_melchor_reward", text = "ROUGE_REPORT_OPTION_IT_WAS_ROUGE", reqs = [], type = "next_dialogue", dialogue_argument = 1},
-			{code = "rouge_report_melchor_reward", text = "ROUGE_REPORT_OPTION_I_DID_IT", reqs = [], type = "next_dialogue", dialogue_argument = 2}
+		variations = [
+			{
+				reqs = [{type = "decision", value = "KetchWarnedAboutRouge", check = true}],
+				image = null,
+				character = 'chancellor',
+				tags = ["dialogue_scene"],
+				text = "ROUGE_REPORT_MELCHOR_RETURN_KETCH_ESCAPED",
+				options = [
+					{
+						code = "close",
+						text = "DIALOGUECLOSE",
+						reqs = [],
+						type = "next_dialogue",
+						bonus_effects = [
+							{code = "money_change", operant = "+", value = 1000},
+							{code = "progress_quest", value = "rouge_quest", stage = "rouge"},
+							{code = "update_city"}
+						]
+					}
+				]
+			},
+			{
+				reqs = [],
+				image = null,
+				character = 'chancellor',
+				tags = ["dialogue_scene"],
+				text = "ROUGE_REPORT_MELCHOR_RETURN",
+				options = [
+					{code = "rouge_report_melchor_reward", text = "ROUGE_REPORT_OPTION_IT_WAS_ROUGE", reqs = [], type = "next_dialogue", dialogue_argument = 1},
+					{code = "rouge_report_melchor_reward", text = "ROUGE_REPORT_OPTION_I_DID_IT", reqs = [], type = "next_dialogue", dialogue_argument = 2}
+				]
+			}
 		]
 	},
 	rouge_report_melchor_reward = {
@@ -1018,25 +1117,51 @@ var data = {
 	},
 	
 	rouge_return_to_rouge = {
-		reqs = [], 
-		image = null, 
-		character = "rouge", 
-		tags = ["dialogue_scene"], 
-		text = "ROUGE_RETURN_TO_ROUGE", 
-		options = [
+		variations = [
 			{
-				code = "close",
-				text = "DIALOGUECLOSE",
-				reqs = [],
-				type = "next_dialogue",
-				bonus_effects = [
-					{code = "unique_character_changes", value = "rouge", args = [
-						{code = "add_trait", trait = "training_s_working", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
-						{code = "add_trait", trait = "training_callmaster", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
-					]},
-					{code = "complete_quest", value = "rouge_quest"},
+				reqs = [{type = "decision", value = "KetchWarnedAboutRouge", check = true}],
+				image = null,
+				character = "rouge",
+				tags = ["dialogue_scene"],
+				text = "ROUGE_RETURN_TO_ROUGE_KETCH_ESCAPED",
+				options = [
+					{
+						code = "close",
+						text = "DIALOGUECLOSE",
+						reqs = [],
+						type = "next_dialogue",
+						bonus_effects = [
+							{code = "unique_character_changes", value = "rouge", args = [
+								{code = "add_trait", trait = "training_s_working", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
+								{code = "add_trait", trait = "training_callmaster", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
+							]},
+							{code = "complete_quest", value = "rouge_quest"},
+						]
+					}
 				]
-			}
+			},
+			{
+				reqs = [],
+				image = null,
+				character = "rouge",
+				tags = ["dialogue_scene"],
+				text = "ROUGE_RETURN_TO_ROUGE",
+				options = [
+					{
+						code = "close",
+						text = "DIALOGUECLOSE",
+						reqs = [],
+						type = "next_dialogue",
+						bonus_effects = [
+							{code = "unique_character_changes", value = "rouge", args = [
+								{code = "add_trait", trait = "training_s_working", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
+								{code = "add_trait", trait = "training_callmaster", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
+							]},
+							{code = "complete_quest", value = "rouge_quest"},
+						]
+					}
+				]
+			},
 		]
 	},
 	

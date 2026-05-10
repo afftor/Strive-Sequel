@@ -2503,5 +2503,1030 @@ var data = {
 			}
 		],
 		image = "daisyevent"
+	},
+	char_rnd_hunt_offering = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"active_character_translate"
+		],
+		image = "no_image",
+		text = [
+			{
+				text = "CHARRND_HUNT_OFFERING",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "char_rnd_hunt_offering2",
+				text = "CHARRND_HUNT_OFFERING_OPT_ACCEPT",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "loyalty",
+						value = "var_hunt_loyalty_accept"
+					}
+				]
+			},
+			{
+				code = "char_rnd_hunt_offering2",
+				text = "CHARRND_HUNT_OFFERING_OPT_EXPLAIN",
+				dialogue_argument = 2,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "base_exp",
+						value = "var_hunt_exp_explain"
+					},
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "loyalty",
+						value = "var_hunt_loyalty_explain"
+					}
+				]
+			},
+			{
+				code = "char_rnd_hunt_offering2",
+				text = "CHARRND_HUNT_OFFERING_OPT_REFUSE",
+				dialogue_argument = 3,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "unique_character_changes",
+						value = "master",
+						args = [
+							{
+								code = "wits",
+								value = "var_hunt_wits_refuse",
+								operant = "+"
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	char_rnd_hunt_offering2 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"active_character_translate"
+		],
+		image = "no_image",
+		text = [
+			{
+				text = "CHARRND_HUNT_OFFERING_REPLY_ACCEPT",
+				reqs = [
+
+				],
+				previous_dialogue_option = 1
+			},
+			{
+				text = "CHARRND_HUNT_OFFERING_REPLY_EXPLAIN",
+				reqs = [
+
+				],
+				previous_dialogue_option = 2
+			},
+			{
+				text = "CHARRND_HUNT_OFFERING_REPLY_REFUSE",
+				reqs = [
+
+				],
+				previous_dialogue_option = 3
+			}
+		],
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				type = "next_dialogue",
+				reqs = [
+
+				]
+			}
+		]
+	},
+	char_rnd_late_knock = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"active_character_translate"
+		],
+		image = "no_image",
+		text = [
+			{
+				text = "CHARRND_LATE_KNOCK",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "char_rnd_late_knock2",
+				text = "CHARRND_LATE_KNOCK_OPT_DISMISS",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "base_exp",
+						value = "var_late_knock_exp_dismiss"
+					}
+				]
+			},
+			{
+				code = "char_rnd_late_knock2",
+				text = "CHARRND_LATE_KNOCK_OPT_INVITE",
+				dialogue_argument = 2,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "charm",
+						value = "var_late_knock_charm_invite"
+					}
+				]
+			},
+			{
+				code = "char_rnd_late_knock2",
+				text = "CHARRND_LATE_KNOCK_OPT_PULL",
+				dialogue_argument = 3,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "loyalty",
+						value = "var_late_knock_loyalty_pull"
+					},
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "base_exp",
+						value = "var_late_knock_exp_pull"
+					}
+				]
+			}
+		]
+	},
+	char_rnd_late_knock2 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"active_character_translate"
+		],
+		image = "no_image",
+		text = [
+			{
+				text = "CHARRND_LATE_KNOCK_REPLY_DISMISS",
+				reqs = [
+
+				],
+				previous_dialogue_option = 1
+			},
+			{
+				text = "CHARRND_LATE_KNOCK_REPLY_INVITE",
+				reqs = [
+
+				],
+				previous_dialogue_option = 2
+			},
+			{
+				text = "CHARRND_LATE_KNOCK_REPLY_PULL",
+				reqs = [
+
+				],
+				previous_dialogue_option = 3
+			}
+		],
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				type = "next_dialogue",
+				reqs = [
+
+				]
+			}
+		]
+	},
+	char_rnd_caught = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"few_scene_characters_translate"
+		],
+		image = "no_image",
+		text = [
+			{
+				text = "CHARRND_CAUGHT",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "char_rnd_caught2",
+				text = "CHARRND_CAUGHT_OPT_LEAVE",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "base_exp",
+						value = "var_caught_xp"
+					}
+				]
+			},
+			{
+				code = "char_rnd_caught2",
+				text = "CHARRND_CAUGHT_OPT_LEDGER",
+				dialogue_argument = 2,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "base_exp",
+						value = "var_caught_xp"
+					}
+				]
+			},
+			{
+				code = "char_rnd_caught2",
+				text = "CHARRND_CAUGHT_OPT_TIME",
+				dialogue_argument = 3,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "base_exp",
+						value = "var_caught_xp"
+					}
+				]
+			}
+		]
+	},
+	char_rnd_caught2 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"few_scene_characters_translate"
+		],
+		image = "no_image",
+		text = [
+			{
+				text = "CHARRND_CAUGHT_REPLY_LEAVE",
+				reqs = [
+
+				],
+				previous_dialogue_option = 1
+			},
+			{
+				text = "CHARRND_CAUGHT_REPLY_LEDGER",
+				reqs = [
+
+				],
+				previous_dialogue_option = 2
+			},
+			{
+				text = "CHARRND_CAUGHT_REPLY_TIME",
+				reqs = [
+
+				],
+				previous_dialogue_option = 3
+			}
+		],
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				type = "next_dialogue",
+				reqs = [
+
+				]
+			}
+		]
+	},
+	char_rnd_admirer = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"active_character_translate"
+		],
+		image = "no_image",
+		text = [
+			{
+				text = "CHARRND_ADMIRER",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "char_rnd_admirer2",
+				text = "CHARRND_ADMIRER_OPT_SEND",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "wits",
+						value = "var_admirer_wits_send"
+					},
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "base_exp",
+						value = "var_admirer_exp_send"
+					}
+				]
+			},
+			{
+				code = "char_rnd_admirer2",
+				text = "CHARRND_ADMIRER_OPT_NEGOTIATE",
+				dialogue_argument = 2,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "charm",
+						value = "var_admirer_charm_negotiate"
+					},
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "base_exp",
+						value = "var_admirer_exp_negotiate"
+					}
+				]
+			},
+			{
+				code = "char_rnd_admirer2",
+				text = "CHARRND_ADMIRER_OPT_REFUSE",
+				dialogue_argument = 3,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "base_exp",
+						value = "var_admirer_exp_refuse"
+					},
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "loyalty",
+						value = "var_admirer_loyalty_refuse"
+					}
+				]
+			}
+		]
+	},
+	char_rnd_admirer2 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"active_character_translate"
+		],
+		image = "no_image",
+		text = [
+			{
+				text = "CHARRND_ADMIRER_REPLY_SEND",
+				reqs = [
+
+				],
+				previous_dialogue_option = 1
+			},
+			{
+				text = "CHARRND_ADMIRER_REPLY_NEGOTIATE",
+				reqs = [
+
+				],
+				previous_dialogue_option = 2
+			},
+			{
+				text = "CHARRND_ADMIRER_REPLY_REFUSE",
+				reqs = [
+
+				],
+				previous_dialogue_option = 3
+			}
+		],
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				type = "next_dialogue",
+				reqs = [
+
+				]
+			}
+		]
+	},
+	char_rnd_bath = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"active_character_translate"
+		],
+		image = "no_image",
+		text = [
+			{
+				text = "CHARRND_BATH",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "char_rnd_bath2",
+				text = "CHARRND_BATH_OPT_ACCEPT",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "loyalty",
+						value = "var_bath_loyalty_accept"
+					},
+					{
+						code = "unique_character_changes",
+						value = "master",
+						args = [
+							{
+								code = "base_exp",
+								value = "var_bath_exp_accept",
+								operant = "+"
+							}
+						]
+					}
+				]
+			},
+			{
+				code = "char_rnd_bath2",
+				text = "CHARRND_BATH_OPT_PULLIN",
+				dialogue_argument = 2,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "loyalty",
+						value = "var_bath_loyalty_pullin"
+					}
+				]
+			},
+			{
+				code = "char_rnd_bath2",
+				text = "CHARRND_BATH_OPT_DISMISS",
+				dialogue_argument = 3,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "unique_character_changes",
+						value = "master",
+						args = [
+							{
+								code = "base_exp",
+								value = "var_bath_exp_dismiss",
+								operant = "+"
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	char_rnd_bath2 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"active_character_translate"
+		],
+		image = "no_image",
+		text = [
+			{
+				text = "CHARRND_BATH_REPLY_ACCEPT",
+				reqs = [
+
+				],
+				previous_dialogue_option = 1
+			},
+			{
+				text = "CHARRND_BATH_REPLY_PULLIN",
+				reqs = [
+
+				],
+				previous_dialogue_option = 2
+			},
+			{
+				text = "CHARRND_BATH_REPLY_DISMISS",
+				reqs = [
+
+				],
+				previous_dialogue_option = 3
+			}
+		],
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				type = "next_dialogue",
+				reqs = [
+
+				]
+			}
+		]
+	},
+	char_rnd_theft = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"active_character_translate"
+		],
+		image = "no_image",
+		text = [
+			{
+				text = "CHARRND_THEFT",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "char_rnd_theft2",
+				text = "CHARRND_THEFT_OPT_PUNISH",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "base_exp",
+						value = "var_theft_exp_punish"
+					}
+				]
+			},
+			{
+				code = "char_rnd_theft2",
+				text = "CHARRND_THEFT_OPT_EXPLAIN",
+				dialogue_argument = 2,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "loyalty",
+						value = "var_theft_loyalty_explain"
+					}
+				]
+			},
+			{
+				code = "char_rnd_theft2",
+				text = "CHARRND_THEFT_OPT_SILENT",
+				dialogue_argument = 3,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "unique_character_changes",
+						value = "master",
+						args = [
+							{
+								code = "base_exp",
+								value = "var_theft_exp_silent",
+								operant = "+"
+							},
+							{
+								code = "wits",
+								value = "var_theft_wits_silent",
+								operant = "+"
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	char_rnd_theft2 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"active_character_translate"
+		],
+		image = "no_image",
+		text = [
+			{
+				text = "CHARRND_THEFT_REPLY_PUNISH",
+				reqs = [
+
+				],
+				previous_dialogue_option = 1
+			},
+			{
+				text = "CHARRND_THEFT_REPLY_EXPLAIN",
+				reqs = [
+
+				],
+				previous_dialogue_option = 2
+			},
+			{
+				text = "CHARRND_THEFT_REPLY_SILENT",
+				reqs = [
+
+				],
+				previous_dialogue_option = 3
+			}
+		],
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				type = "next_dialogue",
+				reqs = [
+
+				]
+			}
+		]
+	},
+	char_rnd_sparring = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"few_scene_characters_translate"
+		],
+		image = "no_image",
+		text = [
+			{
+				text = "CHARRND_SPARRING",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "char_rnd_sparring2",
+				text = "CHARRND_SPARRING_OPT_MOVE",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "loyalty",
+						value = "var_sparring_loyalty_move"
+					},
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "base_exp",
+						value = "var_sparring_exp_move"
+					}
+				]
+			},
+			{
+				code = "char_rnd_sparring2",
+				text = "CHARRND_SPARRING_OPT_CARE",
+				dialogue_argument = 2,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "change_relationship_precise",
+						value = "var_sparring_relation_care"
+					},
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "base_exp",
+						value = "var_sparring_exp_care"
+					}
+				]
+			},
+			{
+				code = "char_rnd_sparring2",
+				text = "CHARRND_SPARRING_OPT_FORMAL",
+				dialogue_argument = 3,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "change_relationship_precise",
+						value = "var_sparring_relation_formal"
+					},
+					{
+						code = "unique_character_changes",
+						value = "master",
+						args = [
+							{
+								code = "base_exp",
+								value = "var_sparring_exp_formal",
+								operant = "+"
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	char_rnd_sparring2 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"few_scene_characters_translate"
+		],
+		image = "no_image",
+		text = [
+			{
+				text = "CHARRND_SPARRING_REPLY_MOVE",
+				reqs = [
+
+				],
+				previous_dialogue_option = 1
+			},
+			{
+				text = "CHARRND_SPARRING_REPLY_CARE",
+				reqs = [
+
+				],
+				previous_dialogue_option = 2
+			},
+			{
+				text = "CHARRND_SPARRING_REPLY_FORMAL",
+				reqs = [
+
+				],
+				previous_dialogue_option = 3
+			}
+		],
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				type = "next_dialogue",
+				reqs = [
+
+				]
+			}
+		]
+	},
+	char_rnd_laying = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"active_character_translate"
+		],
+		image = "no_image",
+		text = [
+			{
+				text = "CHARRND_LAYING",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "char_rnd_laying2",
+				text = "CHARRND_LAYING_OPT_TIME",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = "set_availability",
+						value = false,
+						duration = "var_laying_rest_dur"
+					},
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "base_exp",
+						value = "var_laying_exp_time"
+					},
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "loyalty",
+						value = "var_laying_loyalty_time"
+					}
+				]
+			},
+			{
+				code = "char_rnd_laying2",
+				text = "CHARRND_LAYING_OPT_STAY",
+				dialogue_argument = 2,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "unique_character_changes",
+						value = "master",
+						args = [
+							{
+								code = "charm",
+								value = "var_laying_charm_stay",
+								operant = "+"
+							},
+							{
+								code = "base_exp",
+								value = "var_laying_exp_stay",
+								operant = "+"
+							}
+						]
+					},
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "loyalty",
+						value = "var_laying_loyalty_stay"
+					}
+				]
+			},
+			{
+				code = "char_rnd_laying2",
+				text = "CHARRND_LAYING_OPT_WORK",
+				dialogue_argument = 3,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "unique_character_changes",
+						value = "master",
+						args = [
+							{
+								code = "base_exp",
+								value = "var_laying_exp_work",
+								operant = "+"
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	char_rnd_laying2 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"active_character_translate"
+		],
+		image = "no_image",
+		text = [
+			{
+				text = "CHARRND_LAYING_REPLY_TIME",
+				reqs = [
+
+				],
+				previous_dialogue_option = 1
+			},
+			{
+				text = "CHARRND_LAYING_REPLY_STAY",
+				reqs = [
+
+				],
+				previous_dialogue_option = 2
+			},
+			{
+				text = "CHARRND_LAYING_REPLY_WORK",
+				reqs = [
+
+				],
+				previous_dialogue_option = 3
+			}
+		],
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				type = "next_dialogue",
+				reqs = [
+
+				]
+			}
+		]
 	}
 }

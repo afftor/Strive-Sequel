@@ -29,7 +29,7 @@ var lands = {
 		capital_icon = 'aliron',
 		capital_dynamic_background = 'aliron',
 		capital_background_noise = 'aliron_noise',
-		capital_background_music = 'wimborn',
+		capital_background_music = 'aliron',
 		capital_name = tr("CAPITALALIRON"),
 		capital_code = 'aliron',
 	},

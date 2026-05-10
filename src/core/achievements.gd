@@ -34,6 +34,8 @@ func try_unlock_bonus(bonus_name):
 func try_add_quest_achimnt(quest_name):
 	if scenedata.quests[quest_name].has("achievement"):
 		try_add_achimnt(scenedata.quests[quest_name].achievement)
+	if scenedata.quests[quest_name].has("achi_bonus"):
+		try_unlock_bonus(scenedata.quests[quest_name].achi_bonus)
 
 func try_add_char_achimnt(unique_name):
 	for pregen_char in worlddata.pregen_characters.values():

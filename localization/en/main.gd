@@ -2552,7 +2552,7 @@ Damage +15%, Health +20.""",
 	FAME4_NAME = "High Renown",
 	FAME4_DESC = "[name] is known across the kingdom, [his] name carried by bards and travelers who speak of [his] actions.",
 	FAME5_NAME = "World's Exalted",
-	FAME5_DESC = "[name] is known in distant lands, [his] fame reaching foreign courts and the ears of rulers who know of him.",
+	FAME5_DESC = "[name] is known in distant lands, [his] fame reaching foreign courts and the ears of rulers who know of [him].",
 	FAME6_NAME = "Living Myth",
 	FAME6_DESC = "[name] is known by all across the world, [his] legendary deeds woven into tales that echo beyond [his] time.",
 	FAME_RISE_MANIFEST = "Fame rises! [He] is %s now.",
@@ -20523,6 +20523,62 @@ The air smells faintly of dust and polish, the broken vase glinting under the ch
 	CHARRND_BROKENVASE_REPLY_REPAIR = "You nod and tell [name] to go ahead with [his] repair. [He] exhales, setting to work with clumsy tools and sticky glue, costing [him] a whole day to do it. The vase returns, lumpy and uneven, but [he] beams with relief. [His] gratitude grows, and [he] takes extra care around you after.",
 	CHARRND_BROKENVASE_REPLY_REPLACE = "You shake your head and order [name] to replace the vase, no excuses. [He] pales, knowing the cost far exceeds [his] means, and promises to save for it. [His] steps grow heavy, shoulders slumped, and a quiet resentment simmers in [his] gaze.",
 	CHARRND_BROKENVASE_REPLY_PUNISH = "You grab [name]'s arm and berate [him] for [his] carelessness, docking [his] pay to cover the loss. [He] flinches, dropping the shards, and nods in silence. [His] work continues, but [he] avoids you, eyes downcast, the sting of your words lingering.",
+	CHARRND_HUNT_OFFERING = "You nearly kick it. A rabbit, dead and neatly placed on the stone just outside your door, killed cleanly with a bite to the neck. [name] is crouched a few feet away, watching you with bright, patient eyes and a tail that is moving in slow, expectant sweeps. [He] caught it before dawn. [He] has been waiting here since. In [his] mind, this is a significant gesture — proof of worth, tribute to someone important. [He] is waiting to find out if you understand that.",
+	CHARRND_HUNT_OFFERING_OPT_ACCEPT = "Pick it up and tell [him] it's a good catch",
+	CHARRND_HUNT_OFFERING_OPT_EXPLAIN = "Accept it, but explain that this is not how things work here",
+	CHARRND_HUNT_OFFERING_OPT_REFUSE = "Refuse it and tell [him] to dispose of it",
+	CHARRND_HUNT_OFFERING_REPLY_ACCEPT = "You crouch and lift the rabbit by the ears, turning it over, and tell [name] plainly that this is good work. The effect is immediate — [he] sits up straighter, ears pricked forward, tail moving faster. [He] follows you to the kitchen like [he] owns the place and hovers nearby while the cook takes it in hand. That evening [he] is close and settled and takes up slightly more space than usual, with a satisfied weight to [him] that was not there before.",
+	CHARRND_HUNT_OFFERING_REPLY_EXPLAIN = "You take the rabbit and then crouch to [name]'s level, explaining carefully — not unkindly — that hunting without permission on the grounds is not done, and gifts should be asked about first. [He] listens with the particular focus of someone working hard to follow reasoning that does not quite map onto how [he] thinks. [He] nods. You are not entirely convinced it landed. Three days later there is a dead pigeon outside your window.",
+	CHARRND_HUNT_OFFERING_REPLY_REFUSE = "You step over the rabbit and tell [name] you have no interest in this and [he] should get rid of it. [He] stares at you. Then at the rabbit. The tail goes still. [He] picks it up and goes, and the brightness in [him] dims for the rest of the day — not sulking, just genuinely confused in a way that has no outlet.",
+	CHARRND_LATE_KNOCK = "The knock comes well past midnight. [name] stands in the corridor in [his] sleeping clothes — loose linen, unlaced at the throat — holding a candle and explaining with a straight face that [he] had a question about the grain order for tomorrow morning. You look at [him]. [He] looks back. The question about the grain order hangs in the air between you like something neither of you believes in. [He] makes no move to leave.",
+	CHARRND_LATE_KNOCK_OPT_DISMISS = "Answer the question about the grain order and say goodnight",
+	CHARRND_LATE_KNOCK_OPT_INVITE = "Step aside and let [him] in",
+	CHARRND_LATE_KNOCK_OPT_PULL = "Pull [him] in by the collar and skip the pretense",
+	CHARRND_LATE_KNOCK_REPLY_DISMISS = "You tell [name] the grain order can wait until morning and start to close the door. [He] nods, says \"Of course,\" and turns. [His] footsteps down the corridor are slow and even and carry the specific dignity of someone who has decided to feel nothing about this. In the morning [he] is composed and efficient and does not bring it up, and you find you think about it more than you expected to.",
+	CHARRND_LATE_KNOCK_REPLY_INVITE = "You open the door wider without a word. [name] comes in and sets the candle on the table, and the grain order is not mentioned again. [He] stays until the candle burns low, and what happens in the meantime is thorough and unhurried — [he] has clearly been thinking about this longer than tonight. When [he] leaves before dawn [he] is quiet and careful, and in the morning [he] acts as though nothing has changed, but [his] eyes find yours first across every room for the rest of the week.",
+	CHARRND_LATE_KNOCK_REPLY_PULL = "You grab [name] by the front of [his] shirt, pull [him] across the threshold, and tell [him] if [he] wanted to come in [he] could have said so. [He] stumbles forward and then laughs — a short, unguarded thing — and the performance dissolves entirely. What follows is considerably less polite than the grain order conversation would have been. [He] leaves at dawn looking ruffled and thoroughly satisfied, and the grain order sorts itself out.",
+	CHARRND_CAUGHT = "You open the basement door looking for the second ledger, which the steward said was kept on the lower shelf. [name1] is on [his1] back across the grain sacks with [his1] tunic pushed up around [his1] chest. [name2] is on top of [him1] with [his2] trousers around [his2] knees, in the middle of something that, a moment ago, was clearly going well for both of them. The three of you look at each other. [name1] turns the color of a ripe tomato. [name2] does not move.",
+	CHARRND_CAUGHT_OPT_LEAVE = "Close the door and come back for the ledger later",
+	CHARRND_CAUGHT_OPT_LEDGER = "Step inside, collect the ledger from the shelf, and leave without a word",
+	CHARRND_CAUGHT_OPT_TIME = "Tell them to finish up, you need this room in an hour",
+	CHARRND_CAUGHT_REPLY_LEAVE = "You pull the door shut. You come back for the ledger in an hour, by which point [name1] and [name2] are in separate rooms pretending to be busy. Neither of them says a word about it. [name1] spends three days finding every possible reason to be useful to you, which you accept without comment.",
+	CHARRND_CAUGHT_REPLY_LEDGER = "You walk in, cross to the lower shelf, take the ledger, and walk back out. You do not hurry. The silence behind you is spectacular. [name2] finally dismounts somewhere around the time you reach the shelf. That evening both of them are so aggressively well-behaved that the rest of the household notices and begins speculating about what you must have said to them.",
+	CHARRND_CAUGHT_REPLY_TIME = "You inform [name1] and [name2] that you require the storage room for an inventory at the second hour after noon and would appreciate it returned to a usable state before then. Then you close the door. A stunned silence follows, then muffled laughter from inside — [name2]'s, mostly. They are out well before the hour is up, and both of them seem deeply, inexplicably at ease around you for the rest of the week.",
+	CHARRND_ADMIRER = "The bracelet arrives in a velvet box with a letter written in a careful hand. The sender — a wealthy merchant who visited the estate some weeks ago, dealing in cloth and imported dyes — has made his intentions plain: he is inviting [name] to a private dinner, is prepared to be generous, and would consider a longer arrangement if the evening goes well. He uses the word \"arrangement\" twice. The bracelet is genuine gold. [name] has read the letter and is waiting to see what you do with it.",
+	CHARRND_ADMIRER_OPT_SEND = "Send [him] to the dinner with instructions to come back with whatever the merchant offers",
+	CHARRND_ADMIRER_OPT_NEGOTIATE = "Write back to the merchant directly, negotiate your own terms, and send [name] as agreed",
+	CHARRND_ADMIRER_OPT_REFUSE = "Return the bracelet and forbid any further contact",
+	CHARRND_ADMIRER_REPLY_SEND = "You tell [name] to go, be pleasant, and find out what \"generous\" and \"longer arrangement\" actually mean in coin. [He] returns late that night with a figure that makes the bracelet look modest, a standing invitation for weekly visits, and the specific expression of someone who has just discovered that being looked at as a luxury item has a price that is not entirely unpleasant. The arrangement begins the following week.",
+	CHARRND_ADMIRER_REPLY_NEGOTIATE = "You draft a reply as [name]'s keeper, laying out terms — frequency, compensation, what is and is not available — in plain business language. The merchant writes back within two days, agrees to all of it, and adds a small percentage on top that you suspect is meant to impress. [name] reads the final terms with the expression of someone who has realized they are a line item in a ledger. [He] goes anyway, professionally, and comes back in better spirits than expected.",
+	CHARRND_ADMIRER_REPLY_REFUSE = "You send the bracelet back with a polite but final note. [name] watches the messenger leave with it and then says, quietly, that the merchant had seemed kind. You tell [him] that kind men who send gold bracelets to people they met once for an evening want something specific in return, and that it is not company. [He] is quiet for a moment and then nods, and there is something in the nod that looks a little like relief.",
+	CHARRND_BATH = "[name] has drawn the bath without being asked, laid out towels, and is now standing near the door with [his] sleeves rolled to the elbow, saying [he] is there to wash your hair if you want it. The phrasing is domestic and straightforward. The fact that [he] arranged all of this without being told is not. [He] is watching you with the even expression [he] uses when [he] is trying not to look like [he] is waiting for something.",
+	CHARRND_BATH_OPT_ACCEPT = "Accept. Just the hair.",
+	CHARRND_BATH_OPT_PULLIN = "Accept, and when [he] leans close enough, pull [him] in",
+	CHARRND_BATH_OPT_DISMISS = "Send [him] away and do it yourself",
+	CHARRND_BATH_REPLY_ACCEPT = "You settle into the bath and tip your head back. [name]'s hands are steady and practiced, working through your hair with warm water and something that smells faintly of cedar. [He] does not speak much. [His] fingers press firmly at your scalp, and you find yourself relaxed in a way that takes some effort to be dignified about. When [he] is done [he] wraps a towel around your shoulders and steps back and does not linger, and you are almost disappointed.",
+	CHARRND_BATH_REPLY_PULLIN = "[name] is rinsing your hair, leaning over the edge of the tub, when you reach up and take hold of [his] wrist. [He] goes still. You look up at [him] and [he] looks back, and then [he] is climbing in with [his] clothes still on, because apparently [he] does not want to take the time. What follows is wet and undignified and rather satisfying. You have to send for dry clothes afterward, which [he] does without any trace of apology.",
+	CHARRND_BATH_REPLY_DISMISS = "You tell [name] you appreciate the bath and [he] can go. [He] nods, straightens [his] sleeves, and goes without a word. You sit in the bath for a while thinking about [him] standing there with [his] arms bare and that particular even expression, and then you stop thinking about it on purpose. [name] does not offer again, but the bath is drawn without being asked every time after.",
+	CHARRND_THEFT = "Someone told on [name]. While you were away two days ago, the other staff dared [him] to take something from your private chambers — and [he] did. The item was your personal seal ring, which [he] wore on a cord around [his] neck for an evening to win the bet, then returned to its place before you came back. It is sitting exactly where it should be. [He] is standing in front of you now because [he] was reported, not because [he] volunteered this. [He] does not deny it.",
+	CHARRND_THEFT_OPT_PUNISH = "Punish [him] for the intrusion",
+	CHARRND_THEFT_OPT_EXPLAIN = "Let it go, but make sure [he] understands what [he] touched",
+	CHARRND_THEFT_OPT_SILENT = "Say nothing. Keep it.",
+	CHARRND_THEFT_REPLY_PUNISH = "You make clear that the ring is not a trinket and the chambers are not a game board, and that the dare does not distribute the blame. [name] takes the punishment without trying to redirect it toward whoever reported [him], which you note. [He] is careful and correct with you after — not fearful, just precise, in the way of someone who now knows exactly where the line is.",
+	CHARRND_THEFT_REPLY_EXPLAIN = "You do not punish [name], but you sit [him] down and explain what the seal ring is used for and what access to it would mean in the wrong hands. The full weight of what the dare actually involved lands somewhere around the third sentence. [He] looks at you differently after — not with guilt, exactly, but with a new sense of what you are, and what [he] is near.",
+	CHARRND_THEFT_REPLY_SILENT = "You tell [name] nothing is going to happen, and [he] can go. [He] does, visibly uncertain whether to be relieved. From this point forward [he] knows you have something on [him] — an unanswered debt sitting quietly in the room whenever you are both in it. You do not need to invoke it. The fact that you could is enough.",
+	CHARRND_SPARRING = "During morning training, [name1] broke [name2]'s arm. A throw that went two seconds too long, leverage applied past the point of resistance — a clean snap at the forearm. [name2] is being set and wrapped and is not raising [his2] voice about it. [name1] has not moved from outside the door in over an hour. [He1] is not injured. [He1] is simply standing there, and the space around [him1] has the particular quality of someone who does not know what to do with what they did.",
+	CHARRND_SPARRING_OPT_MOVE = "Tell [name1] it was an accident and [he1] needs to move",
+	CHARRND_SPARRING_OPT_CARE = "Make [name1] responsible for [name2]'s recovery",
+	CHARRND_SPARRING_OPT_FORMAL = "Hold [name1] formally responsible regardless",
+	CHARRND_SPARRING_REPLY_MOVE = "You find [name1] at the door and tell [him1] directly: it was a training accident, [name2] will heal, and standing in the corridor doing nothing fixes neither of those things. [He1] looks at you for a moment — wanting, you think, to be disagreed with — and then nods and goes. [He1] is quieter than usual for a few days and finds small reasons to check whether [name2] needs anything, which [he2] accepts with notable patience.",
+	CHARRND_SPARRING_REPLY_CARE = "You inform [name1] that [he1] will be attending to [name2] until the arm heals — whatever [he2] needs, whenever [he2] needs it. [name1] accepts this without argument. The two of them are in close quarters for the better part of three weeks. By the end of it the dynamic between them has shifted into something neither of them has a clean name for, and they do not go back to how they were.",
+	CHARRND_SPARRING_REPLY_FORMAL = "You tell [name1] that accidents during training are still a failure of control, and [he1] will answer for it accordingly. [He1] straightens and takes the consequence without redirecting blame onto the drill or the conditions or [name2]'s resistance. [name2] hears about this secondhand and says nothing to you directly, but [his2] opinion of [name1] visibly improves.",
+	CHARRND_LAYING = "[name] does not come down at the usual hour. You go to [his] room yourself. The door is not locked, and [he] does not tell you to leave when you open it — [he] just looks at you from the bed with the expression of someone caught between relief and embarrassment. [He] is dressed but hasn't risen, one hand pressed flat against [his] side. [He] tells you [he] is not well this morning, that it will pass, and that [he] is asking for a little time. [He] does not elaborate. [He] does not need to — the set of [his] jaw and the way [he] is holding [himself] say the rest clearly enough.",
+	CHARRND_LAYING_OPT_TIME = "Give [him] the time [he] needs",
+	CHARRND_LAYING_OPT_STAY = "Stay and help [him] through it",
+	CHARRND_LAYING_OPT_WORK = "Acknowledge it, then send [him] back to work",
+	CHARRND_LAYING_REPLY_TIME = "You tell [name] to take the morning and not to think about [his] duties until [he] feels right. [He] nods — grateful, and trying not to show how much. [He] is back before the afternoon, moving easier, saying nothing about it. [He] works the rest of the day with a focused, quiet steadiness, like someone who has been given something they did not expect to receive without cost.",
+	CHARRND_LAYING_REPLY_STAY = "You do not leave. You stay close and keep the room quiet and do what is useful without making it strange — water, a folded cloth, your presence without commentary. [name] does not thank you in words. [He] doesn't have the composure for it at the time. But [he] watches you in the hours afterward with an attention that is different from before, and when [he] looks at you across a room [he] does it the way people look at things they have decided to keep.",
+	CHARRND_LAYING_REPLY_WORK = "You hear [name] out and tell [him] you need [him] on [his] feet. [He] straightens, says nothing further, and goes. [He] manages it — you can see the effort it costs [him], a tightness in the way [he] moves that is gone by midday. [He] does not ask again.",
 	ANA_LETTER_1_1 = """Anastasia approaches you with a hesitant step, her hands clutching a crumpled letter. Her wide eyes shimmer with a mix of determination and uncertainty as she speaks.
 {color=yellow|— Master, I received this... a letter from a rebel soldier's wife. She's desperate, begging me to find her husband. He's been lost since the fighting ended. Please, I know I'm in no position to ask favors, but will you take it? Help her look for him? I... I can't bear to ignore her plea. She included her name, Liora, and I'm sure she'd speak to you if you sought her out.}""",
 	ANA_LETTER_1_2 = """Anastasia blinks, caught off guard, then steadies herself, her voice trembling but resolute.
@@ -24695,6 +24751,25 @@ A small group of combat mages began chanting potent fire spells, quickly setting
 	ROUGE_REPORT_MELCHOR_KETCH_DEAD = """The strike comes before Ketch can see it. A wound to his chest kills him on the spot, blood spraying across the walls.
 
 {color=yellow|Rouge: — Fufu, I hope darling won't be too strict with me about this.}""",
+	ROUGE_REPORT_MELCHOR_KETCH_WARNED_ESCAPE_1 = """As the cult's followers kept the soldiers occupied, Ketch slipped into a small underground tunnel prepared specifically for an escape. He fought his way past a couple of soldiers before his followers managed to set up a rearguard, but the fighting left him tired and wounded.
+
+The tunnel ahead should have been clear, but his pace slowed as your words came back to him.
+
+{color=yellow|Ketch: — If she is behind this...}
+
+He stops short, blade already in his hand.""",
+	ROUGE_REPORT_MELCHOR_KETCH_WARNED_ESCAPE_2 = """A figure stepped out of the shadows ahead. Ketch's expression shifted to fury, but not surprise.
+
+{color=yellow|Ketch: — I was wondering when you'd show yourself, you bitch.}
+
+{color=aqua|Rouge: — How rude. But I had enough of your arrogance about me.}
+
+Rouge moved first, her strike flashing toward his throat. Ketch threw himself aside before the strike landed, smashing a small vial against the wall as he fell. Bitter smoke flooded the passage and turned every shape into a blur.""",
+	ROUGE_REPORT_MELCHOR_KETCH_WARNED_ESCAPE_3 = """By the time the smoke thinned, Ketch was gone. A dark streak of blood marked where Rouge had cut him, but the trail vanished into a collapsed side passage before you could follow it.
+
+Rouge stood in the middle of the tunnel, perfectly still, her smile thin and hard.
+
+{color=yellow|Rouge: — Tch... I guess this isn't completely over for him'}""",
 	ROUGE_REPORT_KETCH_BASEMENT_INTRO = """It doesn't take long for the imperial mages to finish off the remaining cultists and extinguish the fires. You make your way into the building, which is miraculously not too badly damaged. A small open cellar trapdoor catches your eye. You descend just in time to hear a pained cry from ahead. Moving through it you find Rouge, to your surprise, having just finished off Ketch. His lifeless body slumps to the ground.
 
 {color=yellow|Rouge: — Ah, [name], just in time.}""",
@@ -24702,6 +24777,10 @@ A small group of combat mages began chanting potent fire spells, quickly setting
 	ROUGE_REPORT_OPTION_CAPITAL = "Aren't you supposed to stay away from the capital?",
 	ROUGE_REPORT_KETCH_WHAT_HAPPENED = "{color=yellow|Rouge: — Just taking out some trash. I heard the Hybris champion gave you trouble in the past. I had my own grievances with him as well.}",
 	ROUGE_REPORT_KETCH_CAPITAL = "{color=yellow|Rouge: — Fufu, I suppose I may have bent one little promise — you won't tell on me though, will you? I'll stay well clear of this from now on.}",
+	ROUGE_REPORT_KETCH_ESCAPED_BASEMENT_INTRO = """It doesn't take long for the imperial mages to finish off the remaining cultists and extinguish the fires. You make your way into the building, which is miraculously not too badly damaged. A small open cellar trapdoor catches your eye. You descend into the underground passage and find Rouge near a half-collapsed side tunnel, stretching her arms.
+
+{color=yellow|Rouge: — Ah, [name]. You missed a very ugly little chase.}""",
+	ROUGE_REPORT_KETCH_ESCAPED_WHAT_HAPPENED = "{color=yellow|Rouge: — Ketch got away. He was wounded, frightened, and much better prepared than he should have been. He'll likely lay lay for a few weeks from now on.}",
 	ROUGE_REPORT_KETCH_BASEMENT_1 = """{color=yellow|Rouge: — There's a hidden cult basement just around the corner. I imagine you'd like to take a look before Melchor's men sweep the place.}""",
 	ROUGE_REPORT_KETCH_BASEMENT_2 = """While the upper level of the warehouse mostly held weapons and various tools, the underground was a different story. Cramped rooms were filled with refuse and dirty rags. You couldn't quite make sense of it until one of the rooms revealed a grim sight: many human bodies and parts piled together, gutted, drained of blood. The stench made your stomach turn.
 
@@ -24745,6 +24824,13 @@ Before you can say anything else, Rouge steps away toward a side exit with that 
 {color=yellow|Melchor: — Ah, you again. Good work leading us to the cult. We've confirmed the lower chambers were exactly as foul as you claimed. Nevertheless, here's something for your trouble — now I have more important matters to attend to.}
 
 He passes you some gold and has the soldiers escort you from the scene before departing himself.""",
+	ROUGE_REPORT_MELCHOR_RETURN_KETCH_ESCAPED = """You find Melchor at his office, his satisfaction with the raid soured by the stack of reports on his desk.
+
+{color=yellow|Melchor: — Ah, you again. We confirmed the lower chambers were exactly as foul as you claimed, but Ketch escaped through some hidden tunnel before my agents could seal the building. Typical.}
+
+{color=yellow|Melchor: — Still, the warehouse is gone and we have more than enough evidence to keep hunting his people. Here's something for your trouble — now I have more important matters to attend to.}
+
+He passes you some gold and has the soldiers escort you from the scene before departing himself.""",
 	ROUGE_REPORT_OPTION_IT_WAS_ROUGE = "It was Rouge.",
 	ROUGE_REPORT_OPTION_I_DID_IT = "Yeah, I did it.",
 	ROUGE_REPORT_MELCHOR_REWARD_ROUGE = """{color=yellow|Melchor: — W-what? You must be joking. My agents reported no one else in the area. Nevertheless, here's something for your trouble — now I have more important matters to attend to.}
@@ -24754,6 +24840,11 @@ He passes you some gold and has the soldiers escort you from the scene before de
 
 He passes you some gold and has the soldiers escort you from the scene before departing himself.""",
 	ROUGE_RETURN_TO_ROUGE = "{color=yellow|Rouge: — Nice work. I knew I could count on you. I think we've learned something about the cult's operations — let's take it easy for now.}",
+	ROUGE_RETURN_TO_ROUGE_KETCH_ESCAPED = """{color=yellow|Rouge: — Nice work. I knew I could count on you. I think we've learned something about the cult's operations.}
+
+Rouge's smile thins for a moment.
+
+{color=yellow|Rouge: — Ketch will likely crawl back into our lives sooner or later. Men like him hate surviving a humiliation almost as much as they hate losing. Still, he's wounded, hunted, and busy hiding from Melchor's people. We have time now, so let's take it easy for a bit.}""",
 	
 	ROUGE_QUEST_NAME = "Rouge: Imperial games",
 	ROUGE_QUEST_SUMMARY = "Rouge's rivalry in the Empire has drawn you into her affairs.",
@@ -26415,7 +26506,7 @@ Erdyna goes still for a moment, the words striking harder than the chains.""",
 	ACT4_ERDYNA_NEGOTIATE_HUB_4 = "{color=yellow|Vaeloria: — She will not be released merely because you ask it of me. Not now, at least. Our memory and traditions have stronger meaning than you would expect.}",
 	ACT4_ERDYNA_NEGOTIATE_OPTION_FATE = "What will become of her?",
 	ACT4_ERDYNA_NEGOTIATE_OPTION_FORCE = "That's enough. I'll save Erdyna by force.",
-	ACT4_ERDYNA_NEGOTIATE_OPTION_GATES = "Tell her about the gates and the letters on them.",
+	ACT4_ERDYNA_NEGOTIATE_OPTION_GATES = "We have found some underground gates...",
 	ACT4_ERDYNA_NEGOTIATE_OPTION_FREE = "You should free her.",
 	ACT4_ERDYNA_NEGOTIATE_OPTION_LEAVE = "Leave for now.",
 	ACT4_ERDYNA_ARCHIVE_REQUEST_1 = """You tell Vaeloria about the sealed doors beneath the imperial capital grounds, and about the ancient letters carved across them. This finally makes her silence sharpen into something more focused.
@@ -26446,15 +26537,64 @@ You help her back to her feet. With the stone tablet secured and House Thalendir
 	ACT4_ERDYNA_RETURN_1 = """The guards at House Thalendir's estate recognize you before you reach the entrance.
 
 {color=yellow|Vaeloria: — You have returned. I assume you've brought the Empire's archive records?}""",
-	ACT4_ERDYNA_RECORDS_RESULT_1 = """Vaeloria studies the records for a long time, comparing the maps and surveys with older notes brought by her attendants.
+	ACT4_ERDYNA_RECORDS_RESULT_1 = """Vaeloria's eyes settle on the sealed document case in your hands.
 
-{color=yellow|Vaeloria: — The seal appears undisturbed. Your request is reckless, but not baseless. I will release the girl and provide what you need to open the way. What you do beyond that point will be your burden.}
+{color=yellow|Vaeloria: — So, you found them.}
 
-The chains holding Erdyna fall away. She rubs her wrists, glaring at the manor around her as if memorizing every face inside it.
+She takes the case from you with both hands and breaks the imperial seal carefully rather than tearing it open. Vaeloria reads in silence, her gaze moving with practiced speed over surveys, tunnel maps, and reports.""",
+	ACT4_3_RECORDS_RETURN_OPTION_HAND_OVER = "Hand over the Empire's archive records.",
+	ACT4_3_RECORDS_RESULT_2 = """She lays several maps beside each other on the table.
 
-{color=aqua|Erdyna: — Took you long enough. Let's get out of here before I start regretting not breaking something.}
+{color=yellow|Vaeloria: — The catacombs have been vanishing from the newer maps. Removed from record, layer by layer, as if someone wished the city itself to forget they existed.}
 
-With the stone tablet secured, the two of you leave House Thalendir behind.""",
+She turns away from the table and gestures to one of the guards. The elf disappears through a side door, returning a short while later with a flat stone tablet wrapped in dark cloth.
+
+{color=yellow|Vaeloria: — You've earned your key for whichever goal you gonna use it. I see no purpose in keeping it on us after all this time.}""",
+	ACT4_3_RECORDS_RESULT_OPTION_ERDYNA = "What about Erdyna?",
+	ACT4_3_RECORDS_NEGOTIATION_0 = """Vaeloria's hand remains near the tablet cloth, but her attention shifts fully to you.
+
+{color=yellow|Vaeloria: — The dragon-blooded girl remains a separate matter.}
+
+For once, the answer does not come as quickly as before. Vaeloria looks toward the corridor where Erdyna was taken, and the hesitation is too clear to miss.
+
+{color=yellow|Vaeloria: — These records prove the seal may be threatened. They do not prove she is harmless. Her blood answered an old ward made for a dangerous lineage, and my house has survived this long because we do not ignore such warnings.}
+
+Vaeloria folds her hands behind her back, expression stern again but not entirely closed.
+
+{color=yellow|Vaeloria: — Still... you brought what I asked for. That earns more consideration than sentiment alone.}""",
+	ACT4_3_RECORDS_OPTION_CHARM = "[Charm factor check] She might hold the blood of your past enemies in her but she's of no threat anymore, I can vow for it.",
+	ACT4_3_RECORDS_OPTION_BRIBE = "Maybe a good donation will save her from this sorry fate? Surely you'll never see her again. (-5000 gold)",
+	ACT4_3_RECORDS_OPTION_LEAVE_ERDYNA = "On the other hand I got all that I need.",
+	ACT4_3_RECORDS_CHARM_SUCCESS = """Vaeloria makes a long pause, not to process your words but to make up with her beliefs.
+
+{color=yellow|Vaeloria: — Very well. I will not pretend this sits comfortably with me, but I will not keep her prisoner as a sign of our goodwill towards your status and those that you rule.}""",
+	ACT4_3_RECORDS_CHARM_FAIL = "{color=yellow|Vaeloria: — No. I gave you the tablet as a part of our deal. We can't turn blind eye on our order just like this.}",
+	ACT4_3_RECORDS_BRIBE = """Vaeloria goes still when you name the sum. The offer does not soften her, exactly, but it gives the matter a shape her household can accept.
+
+{color=yellow|Vaeloria: — You would put that much gold behind her freedom?}
+
+She studies you for a long moment, then gives a small, severe nod.
+
+{color=yellow|Vaeloria: — So be it. Not everyone will put this much on the line for a stranger or even someone who kept them in dark about their nature.}""",
+	ACT4_3_RECORDS_FIGHT_ENTRY = """Vaeloria's expression hardens before your hand fully reaches your weapon.
+
+{color=yellow|Vaeloria: — So be it.}""",
+	ACT4_3_RECORDS_LEAVE_ERDYNA = "You take the tablet and turn away from the corridor, leaving Erdyna to her grim fate.",
+	ACT4_3_ERDYNA_RELEASED_1 = """{color=yellow|Vaeloria: — Bring her.}
+
+The order moves through the hall quickly. A few minutes later Erdyna is led back between two armed elves, wrists still locked in heavy restraints. She looks tired, furious, and ready to bite the first person who steps too close.
+
+{color=aqua|Erdyna: — Took you long enough.}""",
+	ACT4_3_ERDYNA_RELEASED_2 = """Vaeloria steps closer, stopping just outside Erdyna's reach.
+
+{color=yellow|Vaeloria: — You are being released into [name]'s custody. Do not mistake that for innocence. If your blood answers our ward again, or if you prove a danger to the seal, House Thalendir will not offer this mercy twice.}""",
+	ACT4_3_ERDYNA_RELEASED_3 = """One of the guards unlocks the chains. The iron falls away from Erdyna's wrists and arms with a dull clatter, leaving red marks where the metal bit too tightly. She flexes her fingers, then rolls her shoulders as if trying to shake the manor's magic out of her bones.
+
+{color=yellow|Erdyna: — You actually got me out.}
+
+The words come quieter than expected. Then she catches herself and forces a crooked smirk back into place.
+
+{color=yellow|Erdyna: — I can't wait to get out of here.}""",
 	ACT4_ERDYNA_AFTER_LEAVE_1 = """You make it some distance away from the estate before Erdyna's steps begin to slow. At first she tries to hide it, walking with her usual stubborn pace, but the strain shows in the tightness of her jaw and the way her hand keeps brushing against the nearest tree for support.
 
 {color=yellow|Erdyna: — Hey... hold up a bit.}
@@ -26569,6 +26709,348 @@ If the archive copy is still anywhere, it should be in that dungeon, buried amon
 	ACT4_ERDYNA_ARCHIVE_DUNGEON_COMPLETE = """With the dungeon cleared, you search through the thieves' abandoned loot and soon find a sealed imperial document case. The archive records inside are worn but still readable enough for Vaeloria's request.
 
 You secure the case and leave the dungeon behind. With the archive records in hand, it is time to bring them back to House Thalendir.""",
+	ACT4_3_ERDYNA_QUEST_STAGE_HIDEOUT = "Go to Erdyna's old hideout in the imperial capital.",
+	ACT4_3_ERDYNA_QUEST_STAGE_RED_ROOKS_FORT = "Clear the Red Rooks' old fort and rescue Erdyna's captured people.",
+	ACT4_3_ERDYNA_QUEST_STAGE_CATACOMBS_OPENED = "Return to the sealed doors beneath the imperial capital and use the Thalendir tablet.",
+	ACT4_3_EMPIRE_CAPITAL_OPT_ERDYNA_RETURN = "Look for Erdyna in the capital.",
+	ACT4_3_EMPIRE_CAPITAL_OPT_ERDYNA_HIDEOUT = "Go to Erdyna's old hideout.",
+	ACT4_3_QUEST_CATACOMB_OPTION_RETURN = "Return to the sealed doors.",
+	ACT4_3_RED_ROOKS_FORT_NAME = "Red Rooks Old Fort",
+	ACT4_3_RED_ROOKS_FORT_DESC = "The Red Rooks are holding Erdyna's captured people in an old fort near the lower canals. Break through the gang and reach their leader.",
+	ACT4_3_ERDYNA_CAPITAL_RETURN_1 = """You barely make it past the outer streets before a thin, bruised man stumbles out from an alley and freezes at the sight of Erdyna.
+
+{color=aqua|Man: — Boss...?}
+
+Erdyna stops so sharply you almost walk past her.
+
+{color=yellow|Erdyna: — Paul?}
+
+The man looks worse than when you last saw him: one eye swollen, clothes torn, blood dried along his temple.""",
+	ACT4_3_ERDYNA_CAPITAL_RETURN_2 = """{color=yellow|Erdyna: — What happened?}
+
+Paul swallows, eyes darting toward the street as if expecting someone to follow him.
+
+{color=aqua|Paul: — Red Rooks. They hit the hideout while you were gone. Came with more men than I've ever seen them gather...}
+
+Paul looks away.
+
+{color=aqua|Paul: — Some died. Most got taken. They dragged them toward the old canals. Said they were going to make an example out of anyone still calling you boss.}""",
+	ACT4_3_ERDYNA_CAPITAL_RETURN_3 = """Erdyna lets go of him and turns toward the alleys.
+
+{color=yellow|Erdyna: — I'm going.}
+
+{color=aqua|Paul: — Boss, you can't. Not alone. They're waiting for you. That's a trap!}
+
+Erdyna snaps toward him, choosing anger over fear.
+
+{color=yellow|Erdyna: — Then they can keep waiting until I put a knife in whoever thought this was a good idea!}""",
+	ACT4_3_ERDYNA_CAPITAL_RETURN_OPTION_HELP = "I'll help.",
+	ACT4_3_ERDYNA_CAPITAL_RETURN_OPTION_PHYSICS = "[Physics factor check] They lost because they were weak. And you will be dumb to follow after them.",
+	ACT4_3_ERDYNA_CAPITAL_RETURN_OPTION_LEAVE = "I have my own work to do.",
+	ACT4_3_ERDYNA_CAPITAL_RETURN_HELP = """Erdyna stares at you as if she expected an argument and does not quite know what to do with agreement.
+
+{color=yellow|Erdyna: — You're serious?}
+
+For a second she looks away. When she looks back, the old fire is there again.
+
+{color=yellow|Erdyna: — Good. They will regret to get on our bad side.}
+
+Paul gives you the best directions he can: an old canal yard beyond the lower warehouses, half collapsed and mostly abandoned except by smugglers, rats, and anyone desperate enough to hide where the city forgets to look.""",
+	ACT4_3_ERDYNA_CAPITAL_RETURN_PHYSICS_SUCCESS = """Erdyna's face twists with anger.
+
+{color=yellow|Erdyna: — You don't know a damn thing about them.}
+
+You hold your ground. The city does not care about loyalty. If she keeps trying to drag dead weight behind her, it will get her killed.
+
+For a long moment you think she might strike you.
+
+Instead, Erdyna looks away first.
+
+{color=yellow|Erdyna: — Damn you... You are right. You know better and you are way stronger than me. I hate to admit it. Sorry, Paul, you should get out of the city and let knows other who got away to do the same.}""",
+	ACT4_3_ERDYNA_CAPITAL_RETURN_PHYSICS_FAIL = "{color=yellow|Erdyna: — You've gotta be kidding me. I'm in deep gratitude towards you, but I can't abandon them, no matter what you say.}",
+	ACT4_3_ERDYNA_CAPITAL_RETURN_OPTION_GOOD = "Good, we have more work to do.",
+	ACT4_3_ERDYNA_CAPITAL_RETURN_OPTION_KIDDING = "I was kidding, lets go save them.",
+	ACT4_3_ERDYNA_CAPITAL_RETURN_LEAVE = """She gives a short laugh with no humor in it.
+
+{color=yellow|Erdyna: — Guess I should've seen that coming.}
+
+She starts toward the lower streets. After a few steps she stops, but does not turn around.
+
+{color=yellow|Erdyna: — Thanks for getting me out of that manor. I mean that much. But this is my mess. If you're not with me, then we're done.}""",
+	ACT4_3_ERDYNA_OLD_HIDEOUT_1 = """The old hideout is almost unrecognizable by the time you reach it.
+
+The disguised entrance has been forced open, the passage beyond torn apart by boots, blades, and careless hands.
+
+Erdyna stops just inside the entrance.
+
+{color=yellow|Erdyna: — Damn it.}""",
+	ACT4_3_ERDYNA_OLD_HIDEOUT_2 = """Near the back of the hideout, Erdyna finds a knife pinned through a folded note and into the wall. Her name is written across the outside in large, ugly letters. Erdyna pulls it free and reads in silence. With every line, her expression closes tighter.
+
+{color=yellow|Erdyna: — They're alive.}
+
+She crumples the edge of the note in her fist.
+
+{color=yellow|Erdyna: — It's a trap. They don't even care if I know it. They want me gone before they finish taking over what was mine.}""",
+	ACT4_3_ERDYNA_OLD_HIDEOUT_OPTION_CRUSH = "We'll crush them before they know what hit them.",
+	ACT4_3_ERDYNA_OLD_HIDEOUT_OPTION_CAREFUL = "Then we go carefully. If they want a trap, we turn it on them.",
+	ACT4_3_ERDYNA_OLD_HIDEOUT_OPTION_SORRY = "I'm sorry, Erdyna. We'll get them back.",
+	ACT4_3_ERDYNA_OLD_HIDEOUT_MOVE = """{color=yellow|Erdyna: — I really can count you on, can't I? I can see why you are more of a leader than me...}
+
+{color=yellow|Erdyna: — Either way, we move now. If they're expecting me to come running blind, they're going to be disappointed.}""",
+	ACT4_3_RED_ROOKS_COMPLETE_1 = """You push into the fort's central yard just as a heavy door opens on the far side.
+
+The Red Rooks leader steps out with several armed men at his back. He is broad, scarred, and smiling like someone who has waited all day to enjoy this moment. Behind him, bound prisoners are visible through the open doorway, bruised and frightened but alive.
+
+{color=aqua|Red Rooks Leader: — Look what crawled back.}
+
+Erdyna stops dead.
+
+The leader's smile widens.
+
+{color=aqua|Red Rooks Leader: — Filthy little lizard. You really thought those sewer rats were yours forever? They followed you because nobody stronger bothered taking them. Now we're fixing that mistake. Once you're gone, the last of them will learn who owns this place.}
+
+Erdyna takes one step forward before you can stop her.
+
+{color=yellow|Erdyna: — Say that again when I'm close enough to tear your tongue out.}
+
+The prisoners stir behind the leader, and for a moment her anger makes the whole yard feel ready to break. The Red Rooks leader only laughs.
+
+{color=aqua|Red Rooks Leader: — There it is. Always barking before thinking. That's why this was easy.}""",
+	ACT4_3_RED_ROOKS_COMPLETE_2 = """Erdyna bares her teeth at him, but this time she does not rush ahead. She forces herself to stop, breathing hard, and jerks her chin toward you instead.
+
+{color=yellow|Erdyna: — You miscalculated. I'm not alone here. You thought I'd come running in blind, same as always, and you built your little trap for that. But I brought someone worse than me.}
+
+For the first time, the Red Rooks leader's smile loses some of its certainty. His gaze shifts to you, measuring the distance, the weapon in your hand, and the bodies already lying across the yard.
+
+{color=aqua|Red Rooks Leader: — Worse than you? Maybe. Or maybe just smarter than you.}
+
+He lifts one hand, and the men behind him hesitate instead of rushing forward.
+
+{color=aqua|Red Rooks Leader: — You don't look like one of her gutter strays. So here's a better deal. Stand aside and help us put her down. You can keep the lizard girl when we're done, chains and all, and I'll throw in a thousand gold for the trouble.}
+
+Erdyna turns toward you, rage still burning in her face but something colder waiting beneath it.
+
+{color=yellow|Erdyna: — Don't tell me you're actually listening to this bastard!}""",
+	ACT4_3_RED_ROOKS_OPTION_BETRAY = "Deal. Erdyna is worth more to me captured.",
+	ACT4_3_RED_ROOKS_OPTION_REFUSE = "No deal. I'm not a lowlife like you.",
+	ACT4_3_RED_ROOKS_BETRAYAL_ENTRY = """Erdyna stares at you for a heartbeat, as if the words have not reached her yet.
+
+{color=yellow|Erdyna: — You... You gonna betray me just like this after all of that!?}
+
+Her hand tightens around her sword hilt.
+
+{color=yellow|Erdyna: — Fine. Come take me then.}
+
+The Red Rooks leader gives a satisfied grunt and steps aside, leaving the yard open between you and Erdyna.""",
+	ACT4_3_RED_ROOKS_BETRAYAL_WIN = """Erdyna goes down hard, still reaching for her weapon until one of the Red Rooks kicks it out of her hand.
+
+The leader tosses a heavy coin pouch at your feet while his men drag chains toward her.
+
+{color=aqua|Red Rooks Leader: — A deal's a deal.}
+
+You take hold of the chain and pull her away from the yard, leaving the Red Rooks to their victory and her people to whatever fate comes next.""",
+	ACT4_3_RED_ROOKS_REFUSE = """The leader's smile fades.
+
+{color=aqua|Red Rooks Leader: — Should've known. Nobody with sense walks into this yard for her.}
+
+Erdyna lets out a sharp breath beside you, not quite a laugh and not quite relief.
+
+{color=yellow|Erdyna: — Thanks. I mean it. Now let's shut him up.}""",
+	ACT4_3_RED_ROOKS_LEADER_WIN_1 = "The Red Rooks leader hits the ground and does not get back up. The men still standing look from him to you, then break before anyone needs to tell them what comes next.",
+	ACT4_3_RED_ROOKS_LEADER_WIN_2 = """The prisoners flinch when the door is forced open, then stare in disbelief as Erdyna steps into the room.
+
+Erdyna cuts through the nearest rope with a rough, angry motion.
+
+Erdyna gives orders to her men to move to the new hideout after which she finally turns to you.
+
+{color=yellow|Erdyna: — They will be recovering for awhile. I really don't know how to thank you properly... But I'll be by your side for whatever is left to do at those catacombs.}""",
+	ACT4_3_SEALED_DOORS_ALONE_1 = """The doors stand exactly as before: immense slabs of dark stone, covered in severe ancient script and untouched by the centuries pressing down around them.
+
+You take out the Thalendir tablet. It starts humming with dim glow.
+
+A deep sound rolls through the chamber. Not a crack or collapse, but the slow awakening of something built to resist time itself.""",
+	ACT4_3_SEALED_DOORS_ALONE_2 = """The tablet's light fades. Its surface has gone cold again, the script dull and inert, as if its purpose has finally been spent.
+
+Ahead, beyond the opened doors, a passage descends into blackness untouched by any living hand for centuries.""",
+	ACT4_3_SEALED_DOORS_ERDYNA_1 = """The doors stand exactly as before: immense slabs of dark stone, covered in severe ancient script and untouched by the centuries pressing down around them.
+
+{color=yellow|Erdyna: — Go on already, let's see what's behind these.}
+
+You take out the Thalendir tablet. It starts humming with dim glow.
+
+A deep sound rolls through the chamber. Not a crack or collapse, but the slow awakening of something built to resist time itself.""",
+	ACT4_3_SEALED_DOORS_ERDYNA_2 = """The tablet's light fades. Its surface has gone cold again, the script dull and inert, as if its purpose has finally been spent.
+
+Ahead, beyond the opened doors, a passage descends into blackness untouched by any living hand for centuries.
+
+{color=yellow|Erdyna: — Hell, that's really ancient down there. Right behind you.}""",
+	ACT4_3_OPENED_SEAL_1 = """You pass through the narrow gap between the ancient doors and descend into the tunnel beyond.
+
+The stonework changes almost immediately. The walls are no longer part of the imperial catacombs or the rough passages that led you here. They are older, cleaner, and unnervingly intact, as if the centuries have touched everything around this place except the corridor itself.""",
+	ACT4_3_OPENED_SEAL_2 = """You slow before the tunnel opens into a wider chamber. Several figures in dark robes stand around a cracked stone basin, their lanterns hooded and their weapons close at hand. Cult symbols mark their sleeves, but their presence here is more alarming than their allegiance.
+
+One of them turns at the sound of your approach.
+
+{color=yellow|Cultist: — Someone opened the main seal.}
+
+Another reaches for his blade.
+
+{color=yellow|Cultist: — They've found another entrance!}""",
+	ACT4_3_OPENED_SEAL_AFTER_FIGHT = """The last cultist falls, and the old chamber sinks back into a silence made worse by the bodies now scattered across its floor.
+
+You search them quickly. Their supplies are too recent to have come through the door you opened: fresh oil, city-made rope, scraps of food wrapped in waxed cloth, and a rough route sketch marked with symbols that do not match the path behind you.
+
+The tunnel continues past the chamber, descending toward older darkness and whatever the cultists were trying to reach before you interrupted them.""",
+	ACT4_3_ARTIFACT_FOUND_ALONE = """Your descent continues until you end up in an enormous cavern. A ceiling worth of multiple towers puts you in awe until you start realizing what's in front of you. A curved wall at least a hundred feet high, ancient and man-made. Abstract carved patterns make you think it's not just some functional building. As you try to encircle it, you realize it must be at least few districts in size and make a round shape of the structure.
+
+Something tells you this structure is an artifact... the one of size you never expected before. However, at this point you don't have much of a clue what to do about it, perhaps you'll figure it out soon.""",
+	ACT4_3_ARTIFACT_FOUND_ERDYNA = """Your descent continues until you end up in an enormous cavern. A ceiling worth of multiple towers puts you in awe until you start realizing what's in front of you. A curved wall at least a hundred feet high, ancient and man-made. Abstract carved patterns make you think it's not just some functional building. As you try to encircle it, you realize it must be at least few districts in size and make a round shape of the structure.
+
+{color=yellow|Erdyna: — Hell, this thing is huge...}
+
+Something tells you this structure is an artifact... the one of size you never expected before. However, at this point you don't have much of a clue what to do about it, perhaps you'll figure it out soon.""",
+
+	ERDYNA_CAMPFIRE_OPTION = "Invite her to sit by the fire for the evening.",
+
+	ERDYNA_CAMPFIRE_1 = """That evening, the campfire painted flickering patterns across her scales, making the green of her hair gleam like polished jade. The flirtation in the silence between you had grown heavier. Her yellow eyes, usually narrowed with suspicion, were wide and fixed on your lips. Without another word, she closed the distance.
+
+Her kiss was a clash, all teeth and desperate pressure. It was unskilled but fiercely earnest. When you didn't pull away, a sound rumbled in her chest, something between a purr and a growl. The fabric gave way with a slight tear she didn't seem to notice. The firelight caught the emerald cascade of her hair as she threw her head back, her small, bent horns catching the light. Her breasts, free from her roughspun shirt, were capped with hardened nipples.
+
+{color=yellow|Erdyna: — This is the first time I feel so... hot...}""",
+
+	ERDYNA_CAMPFIRE_2 = """She pushed you back, her strength unsurprising, her lizard tail thrashing against the ground. She straddled your hips, her scaled knees digging into the ground on either side of you. Her gaze was locked onto your erection, her lips parted. There was no hesitation, only a raw, driving need she'd never been allowed to feel before. Taking your cock in hand, she guided you to her entrance. Her folds already slick, parting easily.""",
+
+	ERDYNA_CAMPFIRE_3 = """{color=yellow|Erdyna: — Aaah!.. Hah... You are bigger than I thought... But I'm no weakling.}
+
+She sank down. A sharp gasp tore from her throat, her claws pricking your chest. The stretch was intense for her virgin slit, a burn that quickly morphed into a deep, satisfying ache. Her inner walls clamped down, a tight, wet heat gripping every inch. Her body trembled, not from pain, but from the sheer, overwhelming novelty of being filled. After a moment, she began to move.""",
+
+	ERDYNA_CAMPFIRE_4 = """Her rhythm was clumsy at first, an awkward grinding of her hips. She was chasing a feeling she couldn't name. She quickly found a better angle, lifting herself up before slamming back down, a wet slap echoing in the quiet woods. The lewd sight of your cock disappearing into her wet cunt, emerging glistening with her juices, made her inner muscles spasm. Her tail whipped back and forth. She leaned forward, her hair falling like a curtain around your faces, the scent of pine and smoke filling your lungs.
+
+{color=yellow|Erdyna: — Fuck... I had no idea... It gonna feel this good...}
+
+Her hips began to piston faster, driving you deeper.""",
+
+	ERDYNA_CAMPFIRE_5 = """The sight of her, this fierce, abrasive rogue dragonkin now so desperately chasing her own pleasure on top of you, was intoxicating. Her slit eyes squeezed shut, her mouth opening in a silent cry as her entire body went rigid. Her walls convulsed around you, pulling you deeper as a wave of her release washed through her.
+
+{color=yellow|Erdyna: — AAAAAHHHH! FUCK!..}
+
+The shuddering grip of her orgasm milked you, pulling your own release from you in a hot, sudden rush. You came deep inside her, and her body answered with another wave of spasms, her pussy clenching around you as if to keep every drop. For a long moment, the only sounds were the crackling fire, the pounding of blood in your ears, and her ragged, panting breaths.""",
+
+	ERDYNA_CAMPFIRE_6 = """Erdyna collapsed onto you, her full weight pressing down. Her green hair spilled across your chest, smelling of woodsmoke and sweat. The points of her small horns rested against your shoulder. Her body was limp, utterly spent. The ferocious energy that had driven her vanished, replaced by a boneless languidity. You felt the rapid beat of her heart against your ribs, a frantic drum that slowly, gradually, began to settle.
+
+{color=yellow|Erdyna: — Mind... If I stay a bit like this?}
+
+She clung onto you in an almost struggling snuggle, either in attempt to mark you or to keep this closeness in memory.
+
+Once your rest was over, you prepared to move on.""",
+
+	ERDYNA_WEDDING_1 = """The ceremony was brief, practical, and nothing like what either of you expected. Erdyna did not look at the officiant. She looked at you. When the words were spoken she did not flinch, and her jaw had that particular set she got when she had already decided something and was waiting for the rest of the world to catch up. The doors closed behind you both.""",
+
+	ERDYNA_WEDDING_2 = """The heavy chamber door clicked shut. Moonlight streamed through the high window, catching the dust motes dancing in the air. Erdyna was already on the bed, full of tension and anticipation in the dim light. Her verdant hair spilled across the pillows, a stark contrast to the pale linen. She didn't look at you. Instead, she shifted, her back arching as she settled onto her stomach, presenting her naked back with the scars she had spent her life hiding.
+
+Her bare ass rose in the moonlight, a silent, demanding invitation. Her lizard tail, thick and scaled at the base, tapered to a finer point, twitching with a feverish energy.
+
+{color=yellow|Erdyna: — Well, darling, for choosing me, today I'd like you to give all that I can.}""",
+
+	ERDYNA_WEDDING_3 = """You approached the bed. Her tail lifted, sinuous and deliberate. The tapered tip, covered in smoother, finer scales, brushed against your ready cock. It was a strange, electrifying sensation. The point of her tail traced the ridge, the texture a tantalizing friction against it. She moved with an experimental grace, learning your shape, your reactions. A slight pressure, a curling motion, and she began to stroke.
+
+{color=yellow|Erdyna: — This feels special, isn't it? Dragon's tail to be used like that... Heh, I like how it feels.}""",
+
+	ERDYNA_WEDDING_4 = """The scale-smooth tip glided up and down your shaft, smearing your leaking cum over her own scaly hide. Her movements grew bolder, faster, a rhythmic pumping that milked you with relentless precision. The tight coil in your groin snapped. Hot, thick seed erupted, painting her pale buttocks with pearly white streams that stood out starkly in the gloom.
+
+{color=yellow|Erdyna: — Mhm, done already? I hope you don't think you can take it easy with a demanding dragon wife like me?}
+
+However you didn't feel any tiredness just yet, your cock just as ready despite the recent orgasm.""",
+
+	ERDYNA_WEDDING_5 = """Your hands were on her, gripping her hips. You spread her open. Her cheeks parted, revealing the tight, pink rosebud of her ass and the glistening folds of her pussy below. Her scent rose to meet you, a musky, primal aroma that promised heat and yielding flesh. Your thumbs pressed into the soft skin, opening her further, exposing her completely to your gaze.
+
+{color=yellow|Erdyna: — Come on, claim me again... This time as your legal wife.}""",
+
+	ERDYNA_WEDDING_6 = """You guided yourself to her entrance. The heat radiating from her core was intense. You pressed forward, and her body gave way, enveloping the head of your cock in a wet, tight embrace. Her inner walls were ridged with subtle texture that gripped and pulled as you sank deeper. You sheathed yourself in one slow, relentless push until your hips were flush against her ass. Her back arched, a silent gasp in her taut posture.
+
+{color=yellow|Erdyna: — Oh... Yes, like that... Come on, fuck me like a brothel whore!}
+
+You began to move, withdrawing until only the tip remained inside, then thrusting back in, filling her completely. The room filled with the wet, rhythmic slap of skin on skin and her moans. Her pussy clung to you, a molten fist that milked your cock with every stroke. You felt her internal muscles flutter and contract around you as her pleasure built.""",
+
+	ERDYNA_WEDDING_7 = """{color=yellow|Erdyna: — Aah... I'm close now...}
+
+The pressure became unbearable. Her pussy tightened like a vise, her body demanding your release. With a final, forceful thrust, you buried yourself to the hilt. A raw groan tore from your throat as you came deep inside her. Pulse after pulse of your heat flooded her core, painting her inner walls with your essence. You felt her shudder beneath you, her entire body going taut as a bowstring. You stayed locked within her, her channel twitching and milking you for every last drop, until the last tremor subsided.
+
+{color=yellow|Erdyna: — AAhhhh... Fuck, this is too good...}""",
+
+	ERDYNA_WEDDING_8 = """Slowly, you withdrew. A torrent of your mixed fluids followed, glistening in the moonlight as it trailed down her thighs. Her body was limp beneath you, but her tail rose again — not to stroke, but to curl around your waist, pulling you down, keeping you close. Its scaly length was a cool pressure against your heated skin. You followed its silent guidance, your semi-hard cock sliding into the cleft of her ass, resting against the tight, small hole you had yet to claim.
+
+{color=yellow|Erdyna: — We both thinking the same? Claim me entirely.}""",
+
+	ERDYNA_WEDDING_9 = """You gathered the slickness leaking from her, coating your length and her forbidden entrance. Your fingers pressed against the tight ring, testing its resistance. You pushed. The muscle gave way with a slow, yielding stretch. The head of your cock breached her, and the sensation was overwhelming. You paused, letting her adjust, feeling the minute tremors that ran through her body. You pressed deeper, inch by agonizing inch, until you were fully sheathed in her tight heat. The pressure was exquisite, a brand new kind of paradise.""",
+
+	ERDYNA_WEDDING_10 = """You began to move, your strokes shallow at first, then longer, more confident. Her ass was a molten furnace, clenching around you with every retreat, sucking you back in with every advance. Her body rocked to meet your rhythm, her hands digging into the mattress. The pleasure built again, impossibly fast.
+
+{color=yellow|Erdyna: — Aahh... Yes, my ass... Ruin it!}
+
+Her whole body convulsed, a silent, violent orgasm that wracked her frame. The convulsive clenching of her anal passage around your thrusting cock was your undoing. You drove in one last, brutal time, grinding your hips against her ass as you spilled yourself into her depths, filling her with a second serving. You collapsed onto her back, your breath ragged against her scaled nape, your bodies joined and slick in the aftermath.""",
+
+	ERDYNA_WEDDING_11 = """You collapsed onto her, your full weight pressing her into the mattress. Your cock was still buried deep in her ass, her inner muscles still pulsing with the aftershocks of her release. Her tail remained locked around your leg. The room was silent again, but the silence was different now — heavier, saturated with the scent of sweat, musk, and your fluids. You could feel her breathing, a deep and ragged rhythm beneath you.
+
+{color=yellow|Erdyna: — [mastername], I love you...}""",
+
+	LIRA_BONUS1_1 = """The dim light spilling through tall windows painted stripes across the silk sheets. Lira lay beneath you, her pale pink hair a stark contrast to the dark skin of her shoulder. Her amber eyes, wide and glistening, were locked on yours. A faint tremor ran through her as you lowered your head, your lips finding hers. Her own lips were soft, parting with a gasp as your tongue traced their seam, seeking entry.
+
+{color=yellow|Lira: — [master], you'll be gentle?}
+
+You deepened the kiss, one hand sliding up her side, thumb brushing the curve of her breast. Her body arched into the touch. The thin fabric of her robe did little to hide the heat radiating from her skin, the hardening peak of her nipple against your palm. You broke the kiss, a string of saliva connecting your mouths for a moment.""",
+
+	LIRA_BONUS1_2 = """Your gaze traveled down her body as you settled between her thighs. You pushed the simple robe up, baring her to the cool night air. Her breasts were moderate, fitting perfectly in your hands, the dark areolas tightening into pebbled points as your thumbs circled them. Her stomach was taut, her hips flaring out to a round, firm butt that you could feel pressed against your thighs.
+
+{color=yellow|Lira: — [master], I've never done this before, but I thought about it...}
+
+Your fingers traced a path down her stomach. She shivered, her legs falling open further in invitation. Her virgin pussy was already slick, glistening in the dim light. You parted her folds with your thumbs, revealing the swollen bud of her clit and the dark, wet entrance waiting to be taken.""",
+
+	LIRA_BONUS1_3 = """You aligned yourself with her entrance, the head of your cock nudging against her slick pussy. Her hips bucked up involuntarily, a desperate motion. With one smooth thrust, you sank into her, sheathing yourself to the hilt. A choked moan escaped her lips, her back arching off the bed. She was impossibly tight, her walls clenching around you. You paused, letting her adjust, feeling her pulse around your cock.
+
+{color=yellow|Lira: — Aaah... I'm yours now...}""",
+
+	LIRA_BONUS1_4 = """You began to move, a slow, deliberate rhythm. Each thrust was deep, hitting that spot inside her that made her whole body tense with pleasure. Her hands, once clenched in the sheets, now flew up to grip your shoulders. Her moans were quiet, almost swallowed by the sound of skin slapping against skin.
+
+{color=yellow|Lira: — Ah... [master], harder... please...}
+
+You picked up the pace, your hips snapping forward harder, faster. The bed creaked in protest. Her breasts bounced with each thrust, the sight making your own arousal spike. You leaned down, capturing one nipple in your mouth, sucking hard. Her back bowed, a sharp cry tearing from her throat as you bit down gently.""",
+
+	LIRA_BONUS1_5 = """Her pussy walls began to flutter around you, a sign of her impending orgasm. You reached between your bodies, your thumb finding her clit. You rubbed it in circles, matching the rhythm of your thrusts. It was too much for her. Her whole body went rigid, clamping down on you as she came with a loud scream. Waves of pleasure racked her body, her legs shaking uncontrollably.
+
+{color=yellow|Lira: — Aaah!...}
+
+The sight of her cumming beneath you pushed you over the edge. With a final, deep thrust, you buried yourself inside her and spilled your seed, coating her insides with your warmth. You collapsed onto her, your weight pinning her to the bed as you both rode out the aftershocks.
+
+For a long moment, the only sound in the room was your ragged breathing.""",
+
+	LIRA_BONUS2_1 = """Lira dropped on the ground under your pressure.
+
+{color=yellow|Lira: — You wanna go for it like this, [master]?}
+
+Her leather and feather outfit did little to conceal her form. The small triangular patches over her breasts were straining. Her knees were bent, feet planted flat on the ground, holding her thighs open in a posture of blatant invitation. The amber of her eyes was wide, fixed on you, a flicker of apprehension warring with a deeper, more desperate devotion.""",
+
+	LIRA_BONUS2_2 = """You stepped into the space between her splayed legs. Your gaze roamed over the expanse of dark, exposed skin, from the gentle curve of her stomach to the glistening folds of her pussy. She was ready, her body betraying the meekness in her eyes.
+
+Taking hold of your cock, you guided it to her entrance. The initial contact drew a sharp gasp from her, her back arching off the ground. You pushed forward slowly, watching her stretch to accommodate your girth. The way her body swallowed your length was mesmerizing, a tight, wet sheath of muscle and flesh clinging to every inch.
+
+{color=yellow|Lira: — Aah... This feeling... Too good...}""",
+
+	LIRA_BONUS2_3 = """Lira's hands, which had been clenched at her sides, flew up to grip your forearms. You set a steady, deep rhythm, your hips rolling in a primal motion. Each thrust drove a soft cry from her throat, her body rocking with the force of your possession.
+
+{color=yellow|Lira: — Ah... I feel... So obscene... But good...}
+
+You watched her face, the way her features contorted in a mask of blissful agony. Her amber eyes were glazed over, unfocused, lost in the sensation. Her lips were parted, her breath coming in ragged pants. The sight of her, so open, so vulnerable, so utterly yours, sent a surge of possessive heat through you.""",
+
+	LIRA_BONUS2_4 = """You increased your pace, driving into her with harder, faster strokes. Your hands roamed her body, tracing the curve of her hips, the dip of her waist, the swell of her breasts. You pinched a peaked nipple through the thin leather, earning a sharp cry and a clenching of her inner walls. Her body was a taut bowstring, vibrating with a tension that begged for release. You could feel it building in her, the coiling heat in her core that was about to snap.""",
+
+	LIRA_BONUS2_5 = """{color=yellow|Lira: — AAah! I'm about to... Nh...}
+
+With one final, deep thrust, you buried yourself to the hilt inside her. Her body convulsed, a silent scream tearing from her throat as her orgasm ripped through her. Her pussy spasmed around you, a milking, clenching sensation that pulled your own release from you. You spilled into her, a hot, thick flood that filled her to the brim. For a long moment, you stayed locked together, the only sounds your mingled, ragged breaths.""",
+
+	LIRA_BONUS2_6 = """As you withdrew, a trickle of your mingled release escaped her, a pearly white streak against the dark skin of her inner thigh.
+
+{color=yellow|Lira: — We did it... Like animals, aren't we? I never thought I'd find pleasure in something like this with you, [master].}""",
 
 
 

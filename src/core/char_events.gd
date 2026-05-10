@@ -52,7 +52,14 @@ func try_start_event():
 	var event_reqs
 	if events_data.list[event_id].has("special_reqs"):
 		event_reqs = events_data.list[event_id].special_reqs
-	
+
+	if event_reqs and event_reqs.has('global_reqs'):
+		for req in event_reqs.global_reqs:
+			if req.type == 'has_upgrade':
+				if !ResourceScripts.game_res.if_has_upgrade(req.name, req.value):
+					return_events.append(event_id)
+					return false
+
 	var list_by_loc = {}
 	#get_romance_pair made unique solution. I can't come up with any universal idea
 	if event_reqs and event_reqs.has('get_romance_pair'):
@@ -63,6 +70,14 @@ func try_start_event():
 				true_pairs.append(pair)
 		if !true_pairs.empty():
 			list_by_loc.romance = input_handler.random_from_array(true_pairs)
+	elif event_reqs and event_reqs.has('get_lovers_pair'):
+		var lovers_pairs = party.get_all_lovers_pairs()
+		var true_pairs = []
+		for pair in lovers_pairs:
+			if is_same_location(pair[0], pair[1]):
+				true_pairs.append(pair)
+		if !true_pairs.empty():
+			list_by_loc.lovers = input_handler.random_from_array(true_pairs)
 	else:
 		for id in party.characters:
 			var party_char = party.characters[id]

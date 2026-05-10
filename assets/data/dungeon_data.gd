@@ -2842,6 +2842,31 @@ var dungeons = {
 				text = "ACT4_QUEST_CATACOMB_OPTION_ENTER",
 				reqs = [{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'catacombs', state = true}],
 				args = [{code = 'start_event', data = 'emp_catacomb_entry_1', args = []}]
+			},
+			{
+				text = "ACT4_3_QUEST_CATACOMB_OPTION_RETURN",
+				reqs = [
+					{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'catacombs_opened', state = true},
+					{type = 'decision', value = 'ErdynaBetrayedRedRooks', check = false},
+					{type = 'decision', value = 'ThalendirErdynaAbandoned', check = false}
+				],
+				args = [{code = 'start_event', data = 'act4_3_sealed_doors_erdyna_1', args = []}]
+			},
+			{
+				text = "ACT4_3_QUEST_CATACOMB_OPTION_RETURN",
+				reqs = [
+					{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'catacombs_opened', state = true},
+					{type = 'decision', value = 'ErdynaBetrayedRedRooks', check = true}
+				],
+				args = [{code = 'start_event', data = 'act4_3_sealed_doors_alone_1', args = []}]
+			},
+			{
+				text = "ACT4_3_QUEST_CATACOMB_OPTION_RETURN",
+				reqs = [
+					{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'catacombs_opened', state = true},
+					{type = 'decision', value = 'ThalendirErdynaAbandoned', check = true}
+				],
+				args = [{code = 'start_event', data = 'act4_3_sealed_doors_alone_1', args = []}]
 			}
 		],
 		tags = ['quest'],
@@ -2922,6 +2947,44 @@ var dungeons = {
 		options = [],
 		scripteventdata = [
 			{trigger = 'dungeon_complete', args = 'act4_erdyna_archive_dungeon_complete', reqs = [{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'archive_dungeon'}]}
+		]
+	},
+	quest_red_rooks_old_fort = {
+		code = 'quest_red_rooks_old_fort',
+		type = 'dungeon',
+		name = "ACT4_3_RED_ROOKS_FORT_NAME",
+		classname = '',
+		descript = "ACT4_3_RED_ROOKS_FORT_DESC",
+		character_data = {
+			chance_mod = 1.5,
+			races = [['local', 4], ['common', 4], ['uncommon', 1]]
+		},
+		difficulty = 'medium',
+		background_pool = ['cave_1', 'cave_2', 'cave_3', 'cave_4'],
+		custom_background = 'combat_cave',
+		enemyarray = [['bandits_medium', 1], ['bandits_assassin', 0.75], ['bandits_medium2', 0.75]],
+		final_enemy = [['erdyna_thugs', 1]], final_enemy_type = 'monster',
+		event_data = {},
+		event_room_number = [0,0],
+		material_room_number = [0,0],
+		main_route_length = [4,5],
+		bonus_rooms = [1,1],
+		levels = [1,1],
+		base_room_stamina_cost = [5,8],
+		resources = '',
+		gather_settings = 'base',
+		gatherable_resources = '',
+		gather_mod = [2,2.5],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local',
+		tags = ['quest'],
+		area = 'empire',
+		travel_time = [1,1],
+		events = [],
+		options = [],
+		scripteventdata = [
+			{trigger = 'dungeon_complete', args = 'red_rooks_old_fort_complete_1', reqs = [{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'red_rooks_fort'}]}
 		]
 	},
 	quest_mountain_pass = {

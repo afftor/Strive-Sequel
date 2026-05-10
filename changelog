@@ -6,11 +6,16 @@ Spell changes
 Sleep: cost 8 > 7, duration 2 > 3
 Mind Shatter: stun duration 4 > 3
 Empire capital now sells ogre teeth and energy gems
+Reworked Hector and first demoness fight bosses.
+Rouge will be able to learn proficiencies
+Reduced Mae search task work amount from 100 to 25
+Character unlocks for NG+ now tied to finishing their personal quests instead of just recruiting them 
 Fixed multiple skill issues
 Fixed potentially a case where items could be removed from equipped character
 Fixed service appearing in locations where it shouldnt
 Fixed Rouge nude sprite not working correctly
-Added more localized pieces
+Fixed Sleep and Freeze effects being removed before they should
+Added more localization parts
 Zephyra no longer will be camping church if you refuse her second time
 0.14.2d
 Updated localization files to all copy missing lines for all languages from english. Changed chinese code from cn to zh

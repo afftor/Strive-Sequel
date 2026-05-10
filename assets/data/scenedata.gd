@@ -2478,6 +2478,7 @@ var quests = {
 			stage1 = {code = 'stage1', name = "DAISY_LOST_NAME", descript = "DAISY_LOST_STAGE_1"}, # you should visit Amelia
 			stage2 = {code = 'stage2', name = "DAISY_LOST_NAME", descript = "DAISY_LOST_STAGE_2"}, # travel to this guys location
 		},
+		achi_bonus = "daisy_start",
 	},
 
 	amelia_silk_quest = {
@@ -2630,8 +2631,9 @@ var quests = {
 			stage9 = {code = 'stage9', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_9"}, # speek with cali
 			stage10 = {code = 'stage10', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_10"}, # go to village
 		},
+		achi_bonus = "cali_start",
 	},
-	
+
 	lilia_meet_quest = {
 		code = "lilia_meet_quest",
 		summary = "LILIA_MEET_QUEST_SUMMARY",
@@ -2677,8 +2679,9 @@ var quests = {
 			stage16 = {code = 'stage16', name = "CALI_TAMING_QUEST_NAME", descript = "CALI_TAMING_QUEST_STAGE_16"},  # talk to Сali
 			stage17 = {code = 'stage17', name = "CALI_TAMING_QUEST_NAME", descript = "CALI_TAMING_QUEST_STAGE_17"},  # talk to Сali tomorrow (kinda bad)
 		},
+		achi_bonus = "cali_start",
 	},
-	
+
 	zephyra_bath_quest = {
 		code = "zephyra_bath_quest",
 		summary = "ZEPHYRA_BATH_QUEST_SUMMARY",
@@ -2711,6 +2714,7 @@ var quests = {
 			stage3 = {code = 'stage3', name = "ZEPHYRA_DISAPPEARANCE_QUEST_NAME", descript = "ZEPHYRA_DISAPPEARANCE_QUEST_STAGE_3"}, # meet ketch
 #			stage1 = {code = 'stage1', name = "ZEPHYRA_DISAPPEARANCE_QUEST_NAME", descript = "ZEPHYRA_DISAPPEARANCE_QUEST_STAGE_1"}, # search for Zephyra
 		},
+		achi_bonus = "zephyra_start",
 	},
 	mae_city_quest = {
 		code = "mae_city_quest",
@@ -2735,24 +2739,26 @@ var quests = {
 			stage4 = {code = "stage4", name = "MAE_SPIRIT_QUEST_NAME", descript = "MAE_SPIRIT_QUEST_STAGE_4"},
 			stage5 = {code = "stage5", name = "MAE_SPIRIT_QUEST_NAME", descript = "MAE_SPIRIT_QUEST_STAGE_5"},
 		},
+		achi_bonus = "mae_start",
 	},
 	amelia_main_quest = {
 		code = 'amelia_main_quest',
 		summary = "AMELIA_MAIN_QUEST_SUMMARY",
 		stages = {
-			stage0 = {code = 'stage0', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_0'}, 
-			stage1 = {code = 'stage1', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_1'}, 
-			stage2 = {code = 'stage2', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_2'}, 
-			stage3 = {code = 'stage3', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_3'}, 
-			stage4 = {code = 'stage4', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_4'}, 
+			stage0 = {code = 'stage0', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_0'},
+			stage1 = {code = 'stage1', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_1'},
+			stage2 = {code = 'stage2', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_2'},
+			stage3 = {code = 'stage3', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_3'},
+			stage4 = {code = 'stage4', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_4'},
 			stage5 = {code = 'stage5', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_5'},
-			stage6 = {code = 'stage6', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_6'}, 
-			stage7 = {code = 'stage7', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_7'}, 
-			stage8 = {code = 'stage8', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_8'}, 
-			stage9 = {code = 'stage9', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_9'}, 
-			stage10 = {code = 'stage10', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_10'}, 
-			stage11 = {code = 'stage11', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_11'}, 
-		}
+			stage6 = {code = 'stage6', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_6'},
+			stage7 = {code = 'stage7', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_7'},
+			stage8 = {code = 'stage8', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_8'},
+			stage9 = {code = 'stage9', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_9'},
+			stage10 = {code = 'stage10', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_10'},
+			stage11 = {code = 'stage11', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_11'},
+		},
+		achi_bonus = "amelia_start",
 	},
 	lilia_finale_quest = {
 		code = 'lilia_finale_quest',
@@ -2766,6 +2772,7 @@ var quests = {
 			stage7 = {code = 'stage7', name = 'LILIA_FINALE_QUEST_NAME', descript = 'LILIA_FINALE_QUEST_STAGE_7'}, # wait for good route scene
 			stage8 = {code = 'stage8', name = 'LILIA_FINALE_QUEST_NAME', descript = 'LILIA_FINALE_QUEST_STAGE_8'}, # go to lilia village
 		},
+		achi_bonus = "lilia_start",
 	},
 	
 	lilith_patron_quest = {
@@ -2779,6 +2786,7 @@ var quests = {
 			stage14 = {code = 'stage14', name = 'LILITH_PATRON_QUEST_NAME', descript = 'LILITH_PATRON_QUEST_STAGE_14'}, # ask lilith about patron
 			stage15 = {code = 'stage15', name = 'LILITH_PATRON_QUEST_NAME', descript = 'LILITH_PATRON_QUEST_STAGE_15'}, # clear new patron dungeon
 		},
+		achi_bonus = "lilith_start",
 	},
 	
 	visit_dwarfs_quest = {
@@ -2821,6 +2829,7 @@ var quests = {
 			next_day = {code = 'next_day', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_NEXT_DAY'},
 			visit = {code = 'visit', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_VISIT'},
 		},
+		achi_bonus = "hara_start",
 	},
 	jean_free_quest = {
 		code = 'jean_free_quest',
@@ -2868,6 +2877,7 @@ var quests = {
 			stage13 = {code = 'stage13', name = 'JEAN_SYLAS_QUEST_NAME', descript = 'JEAN_SYLAS_QUEST_STAGE_13'},
 			stage14 = {code = 'stage14', name = 'JEAN_SYLAS_QUEST_NAME', descript = 'JEAN_SYLAS_QUEST_STAGE_14'},
 		},
+		achi_bonus = "jean_start",
 	},
 	kuro_tome_quest = {
 		code = 'kuro_tome_quest',
@@ -2923,6 +2933,7 @@ var quests = {
 			merchant = {code = 'merchant', name = 'LIRA_QUEST3_QUEST_NAME', descript = 'LIRA_QUEST3_QUEST_STAGE_MERCHANT'},
 			return_home = {code = 'return_home', name = 'LIRA_QUEST3_QUEST_NAME', descript = 'LIRA_QUEST3_QUEST_STAGE_RETURN'},
 		},
+		achi_bonus = "lira_start",
 	},
 	kuro_errand_quest = {
 		code = 'kuro_errand_quest',
@@ -2957,6 +2968,7 @@ var quests = {
 			stage12 = {code = 'stage12', name = 'ANASTASIA_QUEST2_NAME', descript = 'ANASTASIA_QUEST_STAGE12'}, #continue
 			stage13 = {code = 'stage13', name = 'ANASTASIA_QUEST2_NAME', descript = 'ANASTASIA_QUEST_STAGE13'}, #return to dunkan
 		},
+		achi_bonus = "anastasia_start",
 	},
 	rouge_quest = {
 		code = 'rouge_quest',
@@ -2972,6 +2984,7 @@ var quests = {
 			reward = {code = 'reward', name = 'ROUGE_QUEST_NAME', descript = 'ROUGE_QUEST_STAGE_REWARD'},
 			rouge = {code = 'rouge', name = 'ROUGE_QUEST_NAME', descript = 'ROUGE_QUEST_STAGE_ROUGE'},
 		},
+		achi_bonus = "rouge_start",
 	},
 	meteorite_quest = {
 		code = 'meteorite_quest',
@@ -3011,6 +3024,9 @@ var quests = {
 			archive_dungeon = {code = 'archive_dungeon', name = 'ACT4_ERDYNA_QUEST_NAME', descript = 'ACT4_ERDYNA_QUEST_STAGE_ARCHIVE_DUNGEON'},
 			act4_erdyna_records = {code = 'act4_erdyna_records', name = 'ACT4_ERDYNA_QUEST_NAME', descript = 'ACT4_ERDYNA_QUEST_STAGE_RECORDS'},
 			erdyna_return = {code = 'erdyna_return', name = 'ACT4_ERDYNA_QUEST_NAME', descript = 'ACT4_ERDYNA_QUEST_STAGE_ERDYNA_RETURN'},
+			erdyna_hideout = {code = 'erdyna_hideout', name = 'ACT4_ERDYNA_QUEST_NAME', descript = 'ACT4_3_ERDYNA_QUEST_STAGE_HIDEOUT'},
+			red_rooks_fort = {code = 'red_rooks_fort', name = 'ACT4_ERDYNA_QUEST_NAME', descript = 'ACT4_3_ERDYNA_QUEST_STAGE_RED_ROOKS_FORT'},
+			catacombs_opened = {code = 'catacombs_opened', name = 'ACT4_ERDYNA_QUEST_NAME', descript = 'ACT4_3_ERDYNA_QUEST_STAGE_CATACOMBS_OPENED'},
 		}
 	},
 	kuro_quest_3 = {
@@ -3020,7 +3036,8 @@ var quests = {
 			craft = {code = 'craft', name = 'KURO_QUEST_3_NAME', descript = 'KURO_QUEST_3_CRAFT'},
 			depths = {code = 'depths', name = 'KURO_QUEST_3_NAME', descript = 'KURO_QUEST_3_DEPTHS'},
 			dungeon = {code = 'dungeon', name = 'KURO_QUEST_3_NAME', descript = 'KURO_QUEST_3_DUNGEON'},
-		}
+		},
+		achi_bonus = "kuro_start",
 	},
 	heleviel_quest1 = {
 		code = 'heleviel_quest1',
@@ -3047,6 +3064,7 @@ var quests = {
 			stage5_4 = {code = 'stage5_4', name = 'HELEVIEL_QUEST3_NAME', descript = "HELEVIEL_SLAVE_STAGE_5_4"},
 			stage6 = {code = 'stage6', name = 'HELEVIEL_QUEST3_NAME', descript = "HELEVIEL_SLAVE_STAGE_6"},
 		},
+		achi_bonus = "heleviel_start",
 	},
 }
 

@@ -868,6 +868,7 @@ var sprites = {
 	erdyna_nude = load("res://assets/images/sprites/dragongirl_nude_fhd.png"),
 	erdyna_nude_body = load("res://assets/images/sprites/dragongirl_nude_body.png"),
 	senerus = load("res://assets/images/sprites/senerus.png"),
+	vaeloria = load("res://assets/images/sprites/vaeloria.png"),
 	}
 
 func get_sprite(id):

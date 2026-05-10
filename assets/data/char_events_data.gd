@@ -264,7 +264,173 @@ var list = {
 			var_brokenvase_duration = 1
 		}
 	},
-	
+	char_rnd_hunt_offering = {
+		special_reqs = {
+			char_reqs = [
+				{
+					code = 'one_of_races',
+					value = ['BeastkinCat', 'BeastkinFox', 'BeastkinWolf', 'HalfkinCat', 'HalfkinFox', 'HalfkinWolf']
+				},
+				{
+					code = 'stat',
+					stat = 'wits_factor',
+					operant = 'lte',
+					value = 2
+				}
+			]
+		},
+		vars = {
+			var_hunt_loyalty_accept = 15,
+			var_hunt_exp_explain = 35,
+			var_hunt_loyalty_explain = 5,
+			var_hunt_wits_refuse = 5
+		}
+	},
+	char_rnd_late_knock = {
+		special_reqs = {
+			char_reqs = [
+				{
+					code = 'trait',
+					trait = 'training_s_sexservice',
+					check = true
+				},
+				{
+					code = 'stat',
+					stat = 'consent',
+					operant = 'gte',
+					value = 2
+				},
+				{
+					code = 'slave_type',
+					operant = 'neq',
+					value = 'spouse'
+				}
+			]
+		},
+		vars = {
+			var_late_knock_exp_dismiss = 25,
+			var_late_knock_charm_invite = 10,
+			var_late_knock_loyalty_pull = 10,
+			var_late_knock_exp_pull = 15
+		}
+	},
+	char_rnd_caught = {
+		special_reqs = {
+			char_count = 2,
+			get_lovers_pair = true
+		},
+		vars = {
+			var_caught_xp = 15
+		}
+	},
+	char_rnd_admirer = {
+		vars = {
+			var_admirer_wits_send = 5,
+			var_admirer_exp_send = 15,
+			var_admirer_charm_negotiate = 5,
+			var_admirer_exp_negotiate = 15,
+			var_admirer_exp_refuse = 20,
+			var_admirer_loyalty_refuse = 10
+		}
+	},
+	char_rnd_bath = {
+		special_reqs = {
+			global_reqs = [
+				{
+					type = 'has_upgrade',
+					name = 'resting',
+					value = 1
+				}
+			],
+			char_reqs = [
+				{
+					code = 'trait',
+					trait = 'training_s_sexservice',
+					check = true
+				},
+				{
+					code = 'stat',
+					stat = 'consent',
+					operant = 'gte',
+					value = 2
+				},
+				{
+					code = 'slave_type',
+					operant = 'neq',
+					value = 'spouse'
+				}
+			]
+		},
+		vars = {
+			var_bath_loyalty_accept = 5,
+			var_bath_exp_accept = 20,
+			var_bath_loyalty_pullin = 15,
+			var_bath_exp_dismiss = 30
+		}
+	},
+	char_rnd_theft = {
+		special_reqs = {
+			char_reqs = [
+				{
+					code = 'stat',
+					stat = 'personality',
+					operant = 'neq',
+					value = 'bold'
+				}
+			]
+		},
+		vars = {
+			var_theft_exp_punish = 30,
+			var_theft_loyalty_explain = 10,
+			var_theft_exp_silent = 30,
+			var_theft_wits_silent = 5
+		}
+	},
+	char_rnd_sparring = {
+		special_reqs = {
+			char_count = 2,
+			char_reqs = [
+				{
+					code = 'has_status',
+					status = 'combatant',
+					check = true
+				}
+			]
+		},
+		vars = {
+			var_sparring_loyalty_move = 5,
+			var_sparring_exp_move = 15,
+			var_sparring_relation_care = 25,
+			var_sparring_exp_care = 25,
+			var_sparring_relation_formal = 15,
+			var_sparring_exp_formal = 30
+		}
+	},
+	char_rnd_laying = {
+		special_reqs = {
+			char_reqs = [
+				{
+					code = 'one_of_races',
+					value = ['Harpy', 'Lamia']
+				},
+				{
+					code = 'sex',
+					operant = 'neq',
+					value = 'male'
+				}
+			]
+		},
+		vars = {
+			var_laying_rest_dur = 2,
+			var_laying_exp_time = 25,
+			var_laying_loyalty_time = 5,
+			var_laying_charm_stay = 10,
+			var_laying_exp_stay = 20,
+			var_laying_loyalty_stay = 5,
+			var_laying_exp_work = 20
+		}
+	},
+
 }
 
 func supplement_events():

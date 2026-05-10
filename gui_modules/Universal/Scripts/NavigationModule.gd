@@ -152,13 +152,13 @@ func build_accessible_locations(args = null):
 		var locdata = ResourceScripts.world_gen.get_location_from_code(i)
 #		globals.connecttexttooltip(newbutton, locdata.name)
 		if i == 'aliron':
-			globals.connecttexttooltip(newbutton, locdata.name)
+			globals.connecttexttooltip(newbutton, tr(locdata.name))
 			newbutton.get_node('amount').text = ""
-			newbutton2.get_node('Label').text = "%s" % locdata.name
+			newbutton2.get_node('Label').text = "%s" % tr(locdata.name)
 		else:
-			globals.connecttexttooltip(newbutton, "%s" % [locdata.name])
+			globals.connecttexttooltip(newbutton, "%s" % [tr(locdata.name)])
 			newbutton.get_node('amount').text = "%d/%d" %  [free_chars[i], chars[i]]
-			newbutton2.get_node('Label').text = "%s - %d/%d" % [locdata.name, free_chars[i], chars[i]]
+			newbutton2.get_node('Label').text = "%s - %d/%d" % [tr(locdata.name), free_chars[i], chars[i]]
 		if locdata.type == 'capital':
 			newbutton.get_node('icon').texture = images.get_icon(worlddata.lands[locdata.area].capital_icon)
 			newbutton2.get_node('icon').texture = images.get_icon(worlddata.lands[locdata.area].capital_icon)

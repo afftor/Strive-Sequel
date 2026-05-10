@@ -373,7 +373,7 @@ var data = {
 					{
 						code = "add_special_task_for_location",
 						location = "aliron",
-						amount = 100,
+						amount = 25,
 						descript = "MAE_SEARCH_TASK_DESC",
 						name = "MAE_SEARCH_TASK_NAME",
 						max_workers = 4, #?

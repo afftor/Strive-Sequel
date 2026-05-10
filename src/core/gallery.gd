@@ -66,6 +66,10 @@ var scenes = {
 	jean_wedding = ['jean_wedding_1', 'jean_wed_2', 'jean_wed_3', 'jean_wed_4', 'jean_wed_5', 'jean_wed_6',],
 	jean_dream = ['jean_dream_1', 'jean_dream_2', 'jean_dream_3', 'jean_dream_4', 'jean_dream_5', 'jean_dream_6', ],
 	rouge_sex = ['rouge_sex_1', 'rouge_sex_2', 'rouge_sex_3', 'rouge_sex_4', 'rouge_sex_5', 'rouge_sex_6', 'rouge_sex_7', 'rouge_sex_8', ],
+	erdyna_campfire = ["erdyna_campfire_1","erdyna_campfire_2","erdyna_campfire_3","erdyna_campfire_4","erdyna_campfire_5","erdyna_campfire_6"],
+	erdyna_wedding = ["erdyna_wedding_2","erdyna_wedding_3","erdyna_wedding_4","erdyna_wedding_5","erdyna_wedding_6","erdyna_wedding_7","erdyna_wedding_8","erdyna_wedding_9","erdyna_wedding_10","erdyna_wedding_11"],
+	lira_bonus_scene1 = ["lira_bonus1_1","lira_bonus1_2","lira_bonus1_3","lira_bonus1_4","lira_bonus1_5"],
+	lira_bonus_scene2 = ["lira_bonus2_1","lira_bonus2_2","lira_bonus2_3","lira_bonus2_4","lira_bonus2_5","lira_bonus2_6"],
 }
 #was forced to add a id to scene lists for unlock purpose
 var scenes_order = [
@@ -80,7 +84,8 @@ var scenes_order = [
 	'ana_blow','ana_wed','zephyra_wed',
 	'heleviel_bar_sex', 'heleviel_forest_sex', 'heleviel_wedding',
 	'mae_sex_behind', 'mae_sex_ritual', 'mae_spirit_northern_ritual', 'mae_wedding',
-	'jean_wedding', 'jean_dream', 'rouge_sex'
+	'jean_wedding', 'jean_dream', 'rouge_sex',
+	'erdyna_campfire', 'erdyna_wedding', 'lira_bonus_scene1', 'lira_bonus_scene2'
 	]
 var story_scenes = ['anastasia_event_alive', 'elven_temple_scene', 'act1_art', 'act2_art'] #maybe we should define this as 'scenes' unlocks and ero_scenes as 'backgrounds' unlocks - but for now there are no more and i can't add something like 'daisyevent' or 'aire_death'
 var ero_scenes = [

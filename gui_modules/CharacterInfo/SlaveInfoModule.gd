@@ -109,7 +109,7 @@ func update():
 		$Panel/maininfo/personality/label.text = tr("PERSONALITYNAME" + person.get_stat("personality").to_upper())
 		$Panel/maininfo/personality/icon.texture = personality_icons[person.get_stat('personality')]
 		
-		globals.connecttexttooltip($Panel/maininfo/personality, tr('INFOPERSONALITY'))
+		globals.connecttexttooltip($Panel/maininfo/personality, globals.get_character_personality_tooltip(person.get_stat('personality')))
 		$Panel/maininfo/food/foodlikedicon.texture = foodicons[person.food.food_love]
 		globals.connecttexttooltip($Panel/maininfo/food/foodlikedicon, tr("FOODTYPE" + person.food.food_love.to_upper()))
 		input_handler.ClearContainer($Panel/maininfo/food/fooddislikedicons)

@@ -171,6 +171,17 @@ func get_all_possible_love_pairs():
 			love_list.append(chars)
 	return love_list
 
+func get_all_lovers_pairs():
+	var love_list = []
+	for key in relationship_data:
+		var data = relationship_data[key]
+		if data.status in ['lovers', 'freelovers']:
+			var chars = key.split("_")
+			if characters.has(chars[0]) and !characters[chars[0]].is_master() \
+			   and characters.has(chars[1]) and !characters[chars[1]].is_master():
+				love_list.append(chars)
+	return love_list
+
 
 func attempt_romance(char1, char2):
 	if characters[char1].is_master(): 
