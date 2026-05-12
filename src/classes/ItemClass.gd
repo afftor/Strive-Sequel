@@ -214,6 +214,14 @@ func CreateGear(ItemName = '', dictparts = {}, diffdata = {boost = 0, prof = fal
 			var material = Items.materiallist[parts[i]]
 			var materialeffects = material['parts'][i].duplicate(true)
 			
+			if materialeffects.has('task_efficiency_tool'):
+				for j in toolcategory:
+					materialeffects['task_efficiency_' + j] = materialeffects['task_efficiency_tool']
+				materialeffects.erase('task_efficiency_tool')
+			if materialeffects.has('task_crit_chance'):
+				for j in toolcategory:
+					materialeffects['task_crit_' + j] = materialeffects['task_crit_chance']
+				materialeffects.erase('task_crit_chance')
 			for j in materialeffects:
 #				if j == 'enchant_capacity_mod':
 #					materialeffects[j] -= 1.0
@@ -229,7 +237,7 @@ func CreateGear(ItemName = '', dictparts = {}, diffdata = {boost = 0, prof = fal
 				bonusstats.enchant_capacity *= parteffectdict[i]
 			elif self.get(i) != null && i != 'effects':
 				#self[i] += parteffectdict[i]
-				set(i, get(i)+parteffectdict[i])
+				set(i, get(i) + parteffectdict[i])
 			elif bonusstats.has(i):
 				bonusstats[i] += parteffectdict[i]
 			elif i == 'effects':
@@ -359,7 +367,19 @@ func build_possible_enchants(limit):
 func fix_gear():
 	var template = Items.itemlist[itembase]
 	reqs = template.reqs.duplicate()
-	
+	if itemtype == 'tool':
+		var _slot = toolcategory
+		if bonusstats.has('task_efficiency_tool'):
+			bonusstats['task_efficiency_' + _slot] = bonusstats.task_efficiency_tool
+			bonusstats.erase('task_efficiency_tool')
+		if bonusstats.has('task_crit_chance'):
+			bonusstats['task_crit_' + _slot] = bonusstats.task_crit_chance
+			bonusstats.erase('task_crit_chance')
+		if slots.has('tool'):
+			slots.erase('tool')
+			slots.push_back('tool_' + _slot)
+			if owner != null:
+				owner = null
 	for id in enchants:
 		enchants[id] = int(enchants[id])
 	if !bonusstats.has('enchant_capacity') and template.basestats.has('enchant_capacity'):

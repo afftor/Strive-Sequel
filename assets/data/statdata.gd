@@ -1670,7 +1670,7 @@ var statdata = {
 		default_bonus = 'set',
 	},
 	#items
-	task_crit_chance = { # for item desc
+	task_crit_chance = { # for item desc, obsolete
 		code = 'task_crit_chance',
 		name = '',
 		descript = '',
@@ -1678,7 +1678,7 @@ var statdata = {
 		baseicon = 'food_love',
 		skip_process = true
 	},
-	task_efficiency_tool = {
+	task_efficiency_tool = { #obsolete
 		code = 'task_efficiency_tool',
 		name = '',
 		descript = '',
@@ -1861,6 +1861,24 @@ func _ready():
 				percent = true,
 				direct = false,
 				container = 'manacost_mods',
+			}
+	for st in Statlist_init.task_efficiency:
+		statdata[st] = {
+				code = st,
+				tags = ['numeric'],
+				percent = true,
+				direct = false,
+				container = 'task_efficiency',
+				show_info = {category = 'non_combat', hide_if_1 = true}
+			}
+	for st in Statlist_init.task_crit:
+		statdata[st] = {
+				code = st,
+				tags = ['numeric'],
+				percent = true,
+				direct = false,
+				container = 'task_crit',
+				show_info = {category = 'non_combat', hide_if_0 = true}
 			}
 	
 	for val in statdata.values():

@@ -10,42 +10,42 @@ func _init():
 #func _ready():
 #	loot.data.make_loottable()
 
-var stats = {
-	atk = tr('DAMAGE'),
-	matk = tr('MATK'),
-	damagemod = tr('DAMAGEMOD'),
-	armor = tr('ARMOR'),
-	evasion = tr('EVASION'),
-	hitrate = tr('HITRATE'),
-	hpmax_add_part = tr("HEALTHPERCENT"),
-	mpmax_add_part = tr("MANAPERCENT"),
-	critchance = tr("CRITCHANCE"),
-	critmod = tr("CRITMOD"),
-	hpmax = tr("HEALTH"),
-	speed = tr("SPEED"),
-	armorpenetration = tr("ARMORPENETRATION"),
-	resist_fire = tr('RESISTFIRE'),
-	resist_water = tr('RESISTWATER'),
-	resist_earth = tr('RESISTEARTH'),
-	resist_air = tr('RESISTAIR'),
-	resist_light = tr('RESISTLIGHT'),
-	resist_dark = tr('RESISTDARK'),
-	resist_mind = tr('RESISTMIND'),
-	mdef = tr("MDEF"),
-	task_crit_chance = tr("TASKCRITCHANCE"),
-	task_efficiency_tool = tr("TASKEFFICIENCYTOOL"),
-
-	physics_bonus = '',
-	wits_bonus = '',
-	charm_bonus = '',
-	sexuals_bonus = '',
-	authority_factor = '',
-	
-	training_loyalty = '',
-	training_spirit = '',
-	
-	mod_cook = "",
-}
+#var stats = {
+#	atk = tr('DAMAGE'),
+#	matk = tr('MATK'),
+#	damagemod = tr('DAMAGEMOD'),
+#	armor = tr('ARMOR'),
+#	evasion = tr('EVASION'),
+#	hitrate = tr('HITRATE'),
+#	hpmax_add_part = tr("HEALTHPERCENT"),
+#	mpmax_add_part = tr("MANAPERCENT"),
+#	critchance = tr("CRITCHANCE"),
+#	critmod = tr("CRITMOD"),
+#	hpmax = tr("HEALTH"),
+#	speed = tr("SPEED"),
+#	armorpenetration = tr("ARMORPENETRATION"),
+#	resist_fire = tr('RESISTFIRE'),
+#	resist_water = tr('RESISTWATER'),
+#	resist_earth = tr('RESISTEARTH'),
+#	resist_air = tr('RESISTAIR'),
+#	resist_light = tr('RESISTLIGHT'),
+#	resist_dark = tr('RESISTDARK'),
+#	resist_mind = tr('RESISTMIND'),
+#	mdef = tr("MDEF"),
+#	task_crit_chance = tr("TASKCRITCHANCE"),
+#	task_efficiency_tool = tr("TASKEFFICIENCYTOOL"),
+#
+#	physics_bonus = '',
+#	wits_bonus = '',
+#	charm_bonus = '',
+#	sexuals_bonus = '',
+#	authority_factor = '',
+#
+#	training_loyalty = '',
+#	training_spirit = '',
+#
+#	mod_cook = "",
+#}
 
 
 var Parts = {
@@ -72,7 +72,7 @@ var Parts = {
 
 var partmaterials = {
 	ToolHandle = {
-		wood = {task_crit_chance = 0.03},
+		wood = {task_crit_chance = 0.03}, #placeholder for set of all task_crit_X stats
 		woodmagic = {task_crit_chance = 0.06},
 		woodancient = {task_crit_chance = 0.1},
 		woodiron = {task_crit_chance = 0.1},
@@ -102,7 +102,7 @@ var partmaterials = {
 		obsidian = {matk = 5, resist_earth = 10, resist_fire = 10, enchant_capacity_mod = 0.1},
 	},
 	ToolBlade = {
-		stone = {task_efficiency_tool = 0.15},
+		stone = {task_efficiency_tool = 0.15}, #placeholder for set of all task_efficiency_X stats
 		obsidian = {task_efficiency_tool = 0.30},
 		iron = {task_efficiency_tool = 0.25},
 		steel = {task_efficiency_tool = 0.35},
@@ -2174,7 +2174,7 @@ var itemlist = {
 		partcolororder = {ToolHandle = 1, ToolBlade = 2},
 		partmaterialname = "ToolBlade",
 		tags = ['tool', 'recipe'],
-		slots = ['tool'],
+		slots = ['tool_axe'],
 		hitsound = 'blade',
 		effects = [],
 	},
@@ -2198,7 +2198,7 @@ var itemlist = {
 		partcolororder = {ToolHandle = 1, ToolBlade = 2},
 		partmaterialname = "ToolBlade",
 		tags = ['tool', 'recipe'],
-		slots = ['tool'],
+		slots = ['tool_pickaxe'],
 		hitsound = 'blade',
 		effects = [],
 	},
@@ -2222,7 +2222,7 @@ var itemlist = {
 		partcolororder = {ToolHandle = 1, ToolClothwork = 2},
 		partmaterialname = "ToolClothwork",
 		tags = ['tool', 'recipe'],
-		slots = ['tool'],
+		slots = ['tool_rod'],
 		hitsound = 'blade',
 		effects = [],
 	},
@@ -2246,7 +2246,7 @@ var itemlist = {
 		partcolororder = {ToolHandle = 1, ToolBlade = 2},
 		partmaterialname = "ToolBlade",
 		tags = ['tool', 'recipe'],
-		slots = ['tool'],
+		slots = ['tool_hammer'],
 		hitsound = 'blade',
 		effects = [],
 	},
@@ -2270,7 +2270,7 @@ var itemlist = {
 		partcolororder = {ToolHandle = 1, ToolBlade = 2},
 		partmaterialname = "ToolBlade",
 		tags = ['tool', 'recipe'],
-		slots = ['tool'],
+		slots = ['tool_sickle'],
 		hitsound = 'blade',
 		effects = [],
 	},
@@ -2294,7 +2294,7 @@ var itemlist = {
 		partcolororder = {ToolHandle = 1, ToolBlade = 2},
 		partmaterialname = "ToolBlade",
 		tags = ['tool', 'recipe'],
-		slots = ['tool'],
+		slots = ['tool_hunt_knife'],
 		hitsound = 'blade',
 		effects = [],
 	},

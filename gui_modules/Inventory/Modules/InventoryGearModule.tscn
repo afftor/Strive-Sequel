@@ -249,10 +249,10 @@ __meta__ = {
 
 [node name="hands" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
-margin_left = 55.0
-margin_top = 305.451
-margin_right = 155.0
-margin_bottom = 405.451
+margin_left = 58.432
+margin_top = 268.0
+margin_right = 158.432
+margin_bottom = 368.0
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 8 )
@@ -301,10 +301,10 @@ __meta__ = {
 
 [node name="rhand" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
-margin_left = 55.5678
-margin_top = 87.451
-margin_right = 155.568
-margin_bottom = 187.451
+margin_left = 58.9998
+margin_top = 50.0
+margin_right = 159.0
+margin_bottom = 150.0
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 8 )
@@ -355,10 +355,10 @@ __meta__ = {
 
 [node name="lhand" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
-margin_left = 54.568
-margin_top = 197.451
-margin_right = 154.568
-margin_bottom = 297.451
+margin_left = 58.0
+margin_top = 160.0
+margin_right = 158.0
+margin_bottom = 260.0
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 8 )
@@ -627,22 +627,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="tool" type="TextureButton" parent="InventorySlots"]
+[node name="tool_axe" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
 margin_left = 56.568
-margin_top = 413.451
+margin_top = 383.0
 margin_right = 156.568
-margin_bottom = 513.451
+margin_bottom = 483.0
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="qualitycolor" type="TextureRect" parent="InventorySlots/tool"]
+[node name="qualitycolor" type="TextureRect" parent="InventorySlots/tool_axe"]
 visible = false
 show_behind_parent = true
 margin_left = 1.0
@@ -656,7 +653,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="icon" type="TextureRect" parent="InventorySlots/tool"]
+[node name="icon" type="TextureRect" parent="InventorySlots/tool_axe"]
 show_behind_parent = true
 light_mask = 0
 margin_left = -1.0
@@ -670,7 +667,262 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon2" type="TextureRect" parent="InventorySlots/tool"]
+[node name="icon2" type="TextureRect" parent="InventorySlots/tool_axe"]
+show_behind_parent = true
+light_mask = 0
+margin_left = -1.0
+margin_right = 99.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 28 )
+expand = true
+stretch_mode = 6
+
+[node name="tool_pickaxe" type="TextureButton" parent="InventorySlots"]
+light_mask = 0
+margin_left = 56.568
+margin_top = 491.0
+margin_right = 156.568
+margin_bottom = 591.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+expand = true
+
+[node name="qualitycolor" type="TextureRect" parent="InventorySlots/tool_pickaxe"]
+visible = false
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 99.0
+margin_bottom = 99.0
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="icon" type="TextureRect" parent="InventorySlots/tool_pickaxe"]
+show_behind_parent = true
+light_mask = 0
+margin_left = -1.0
+margin_right = 99.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 28 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon2" type="TextureRect" parent="InventorySlots/tool_pickaxe"]
+show_behind_parent = true
+light_mask = 0
+margin_left = -1.0
+margin_right = 99.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 28 )
+expand = true
+stretch_mode = 6
+
+[node name="tool_rod" type="TextureButton" parent="InventorySlots"]
+light_mask = 0
+margin_left = 56.568
+margin_top = 602.0
+margin_right = 156.568
+margin_bottom = 702.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+expand = true
+
+[node name="qualitycolor" type="TextureRect" parent="InventorySlots/tool_rod"]
+visible = false
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 99.0
+margin_bottom = 99.0
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="icon" type="TextureRect" parent="InventorySlots/tool_rod"]
+show_behind_parent = true
+light_mask = 0
+margin_left = -1.0
+margin_right = 99.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 28 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon2" type="TextureRect" parent="InventorySlots/tool_rod"]
+show_behind_parent = true
+light_mask = 0
+margin_left = -1.0
+margin_right = 99.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 28 )
+expand = true
+stretch_mode = 6
+
+[node name="tool_hammer" type="TextureButton" parent="InventorySlots"]
+light_mask = 0
+margin_left = 56.568
+margin_top = 709.0
+margin_right = 156.568
+margin_bottom = 809.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+expand = true
+
+[node name="qualitycolor" type="TextureRect" parent="InventorySlots/tool_hammer"]
+visible = false
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 99.0
+margin_bottom = 99.0
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="icon" type="TextureRect" parent="InventorySlots/tool_hammer"]
+show_behind_parent = true
+light_mask = 0
+margin_left = -1.0
+margin_right = 99.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 28 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon2" type="TextureRect" parent="InventorySlots/tool_hammer"]
+show_behind_parent = true
+light_mask = 0
+margin_left = -1.0
+margin_right = 99.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 28 )
+expand = true
+stretch_mode = 6
+
+[node name="tool_sickle" type="TextureButton" parent="InventorySlots"]
+light_mask = 0
+margin_left = 56.568
+margin_top = 817.0
+margin_right = 156.568
+margin_bottom = 917.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+expand = true
+
+[node name="qualitycolor" type="TextureRect" parent="InventorySlots/tool_sickle"]
+visible = false
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 99.0
+margin_bottom = 99.0
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="icon" type="TextureRect" parent="InventorySlots/tool_sickle"]
+show_behind_parent = true
+light_mask = 0
+margin_left = -1.0
+margin_right = 99.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 28 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon2" type="TextureRect" parent="InventorySlots/tool_sickle"]
+show_behind_parent = true
+light_mask = 0
+margin_left = -1.0
+margin_right = 99.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 28 )
+expand = true
+stretch_mode = 6
+
+[node name="tool_hunt_knife" type="TextureButton" parent="InventorySlots"]
+light_mask = 0
+margin_left = 56.568
+margin_top = 928.0
+margin_right = 156.568
+margin_bottom = 1028.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+expand = true
+
+[node name="qualitycolor" type="TextureRect" parent="InventorySlots/tool_hunt_knife"]
+visible = false
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 99.0
+margin_bottom = 99.0
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="icon" type="TextureRect" parent="InventorySlots/tool_hunt_knife"]
+show_behind_parent = true
+light_mask = 0
+margin_left = -1.0
+margin_right = 99.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 28 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon2" type="TextureRect" parent="InventorySlots/tool_hunt_knife"]
 show_behind_parent = true
 light_mask = 0
 margin_left = -1.0
@@ -687,9 +939,9 @@ margin_bottom = 40.0
 
 [node name="weapon" type="TextureButton" parent="recolor_buttons"]
 margin_left = 9.0
-margin_top = 117.0
+margin_top = 80.0
 margin_right = 53.0
-margin_bottom = 161.0
+margin_bottom = 124.0
 hint_tooltip = "Change Color"
 texture_normal = ExtResource( 32 )
 texture_pressed = ExtResource( 32 )
