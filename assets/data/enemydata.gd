@@ -2575,7 +2575,7 @@ var enemies = {
 		matk = 40,
 		speed = [65,30],
 		resists = {},
-		status_resists = {stun = 65, freeze = 55},
+		status_resists = {stun = 65, freeze = 55, disarm = 50, sleep = 50},
 		critmod = 1.5,
 		race = 'humanoid',
 		loot = 'bandit_loot',
