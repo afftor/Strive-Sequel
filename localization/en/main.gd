@@ -1652,6 +1652,8 @@ Does not take turn to activate. """,
 	SKILLI_VE_SEEN_ENOUGH = 'I\'ve seen enough...',
 	SKILLOVERWHELMING_FLAME = 'Overwhelming Flame',
 	SKILLI_MUST_RESIST = 'I...must resist...',
+	SKILLFOR_THE_PRINCESS = 'For the Princess!',
+	SKILLRICOCHET_SHOT = 'Ricochet Shot',
 	STATUSDESC_BLEED = "Bleeding: Take 10% of Maximum HP as neutral damage per turn.",
 	STATUSDESC_POISON = "Poisoned: Take 10% of Maximum HP as neutral damage per turn.",
 	STATUSDESC_BURN = "Burning: Take 8% of Maximum HP as Fire damage per turn.",
@@ -4339,6 +4341,14 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	EFFECTNAME_DARK_GIFT = 'Dark Gift',
 	EFFECT_DARK_GIFT = '+20 ATK & MATK, -20 DEF & MDEF.',
 	TRAIT_KURDAN_MIND_CONTROLLED = '-50 Mind resist. Devour Magic spell also deal 150% MATK damage when cast on this unit',
+	TRAIT_OVERWATCH_ASSIGNMENT = """On ally hit, fire an arrow at the attacker.
+On ally death, fire stronger attack at the killer.
+The effects disable if this unit is either immobilised or disarmed.
+""",
+	EFFECTNAME_BEHIND_COVER = 'Behind Cover',
+	EFFECT_BEHIND_COVER = 'Evade a range or AoE move for 1 time. Removed if Overwatch Assignment is triggered.',
+	EFFECTNAME_AIM_ADJUSTMENT = 'Aim Adjustment',
+	EFFECT_AIM_ADJUSTMENT = 'When using single-target range attack, gain 1 stack. At 3+ stack, the next attack always hit AND crit.',
 	RESETTRAINREQ = "Reset training to step 0 and restore Spirit. Requires Oblivion potion.",
 	RESETTRAINING = "All training progress will be discarded. Are you sure?",
 	BUFFDESCRIPTDEFENDER = "Defender: Will shield allies from attacks unless stunned.",

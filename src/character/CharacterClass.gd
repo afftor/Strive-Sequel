@@ -1784,7 +1784,7 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			if has_status(i.status):
 				check = input_handler.operate(i.operant, dyn_stats.get_buff_number(i.status), i.value)
 			else:
-				check = false
+				check = input_handler.operate(i.operant, 0, i.value)
 		'slave_type':
 			check = input_handler.operate(i.operant, get_stat('slave_class'), i.value)
 		'population':

@@ -1681,6 +1681,33 @@ var traits = {
 		effects = ['kurdan_mind_controlled','kurdan_mind_controlled_1'],
 		tags = ['kurdan_mind_controlled'],
 	},
+	aire_overwatch_assignment = {
+		code = 'aire_overwatch_assignment',
+		name = '',
+		descript = '',
+		icon = null, 
+		visible = false,
+		effects = ['overwatch_assignment','overwatch_apply'],
+		tags = [],
+	},
+	aire_behind_cover = {
+		code = 'aire_behind_cover',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['trait_behind_cover'],
+		tags = [],
+	},
+	aire_aim_adjustment = {
+		code = 'aire_aim_adjustment',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['tr_aim_adjustment'],
+		tags = [],
+	},
 	
 	#exploration related traits
 	#needs to hardcode most of traits
