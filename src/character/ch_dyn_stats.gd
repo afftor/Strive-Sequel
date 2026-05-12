@@ -6,6 +6,8 @@ var statlist = Statlist_init.template_dynamic.duplicate(true)
 var manacost_mods = Statlist_init.manacost_mods.duplicate(true) 
 var resists = Statlist_init.resists.duplicate(true) 
 var damage_mods = Statlist_init.damage_mods.duplicate(true) 
+var task_efficiency = Statlist_init.task_efficiency.duplicate(true)
+var task_crit = Statlist_init.task_crit.duplicate(true)
 var traits_stored = {}
 var body_upgrades = {}
 var professions = {}
@@ -366,6 +368,11 @@ func get_stat_data(stat, stop = variables.DYN_STATS_FULL): #full value
 						container = resists
 					'damage_mods':
 						container = damage_mods
+					'task_efficiency':
+						container = task_efficiency
+					'task_crit':
+						container = task_crit
+					
 			if container.has(stat):
 				if container[stat] is Array:
 					res.base_value = container[stat].duplicate()
@@ -612,6 +619,10 @@ func set_default_value(stat, value):
 					container = resists
 				'damage_mods':
 					container = damage_mods
+				'task_efficiency':
+					container = task_efficiency
+				'task_crit':
+					container = task_crit
 		if container.has(stat):
 			if !(value is Array) and data.tags.has('array_numeric'):
 				value = [value]
@@ -638,6 +649,10 @@ func add_stat_stored(stat, value):
 					container = resists
 				'damage_mods':
 					container = damage_mods
+				'task_efficiency':
+					container = task_efficiency
+				'task_crit':
+					container = task_crit
 		if container.has(stat):
 			if value is Array:
 				container[stat] = container[stat] + value.duplicate()

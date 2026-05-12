@@ -1504,6 +1504,14 @@ func fix_serialization():
 	if xp_module is Dictionary:
 		xp_module = dict2inst(xp_module)
 	if equipment is Dictionary:
+		if equipment.gear.has('tool'):
+			equipment.gear.tool_axe = null
+			equipment.gear.tool_pickaxe = null
+			equipment.gear.tool_hammer = null
+			equipment.gear.tool_rod = null
+			equipment.gear.tool_sickle = null
+			equipment.gear.tool_hunt_knife = null
+			equipment.gear.erase('tool')
 		equipment = dict2inst(equipment)
 	if skills is Dictionary:
 		skills = dict2inst(skills)

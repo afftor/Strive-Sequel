@@ -927,16 +927,12 @@ func fill_task_mods(task):
 	task_mods.crit = parent.get_ref().get_stat('base_task_crit_chance')
 	task_mods.diff = _get_base_crafting_diff()
 	task_mods.eff = 0
-	var item
-	if parent.get_ref().equipment.gear.tool != null:
-		item = ResourceScripts.game_res.items[parent.get_ref().equipment.gear.tool]
-	if item != null && task.has('worktool') && (task.worktool in item.toolcategory):
-		if item.bonusstats.has("task_efficiency_tool"):
-			task_mods.eff = item.bonusstats.task_efficiency_tool
-			task_mods.diff += 0.1 * item.bonusstats.task_efficiency_tool
-		if item.bonusstats.has("task_crit_chance"):
-			task_mods.crit += item.bonusstats.task_crit_chance
-			task_mods.diff += 0.4 * item.bonusstats.task_crit_chance
+	if task.has('worktool'):
+		var item = task.worktool
+		task_mods.eff = parent.get_ref().get_stat('task_efficiency_' + item)
+		task_mods.diff += 0.1 * parent.get_ref().get_stat('task_efficiency_' + item)
+		task_mods.crit += parent.get_ref().get_stat('task_crit_' + item)
+		task_mods.diff += 0.4 * parent.get_ref().get_stat('task_crit_' + item)
 	
 	if parent.get_ref().has_status('no_task_crit'):
 		task_mods.crit = 0
@@ -950,14 +946,10 @@ func fill_task_mods_res(task):
 	task_mods.crit = parent.get_ref().get_stat('base_task_crit_chance')
 	task_mods.diff = 0
 	task_mods.eff = 0
-	var item
-	if parent.get_ref().equipment.gear.tool != null:
-		item = ResourceScripts.game_res.items[parent.get_ref().equipment.gear.tool]
-	if item != null && task.has('tool_type') && (task.tool_type in item.toolcategory or ResourceScripts.game_res.upgrades.has('tool_swapper') and ResourceScripts.game_res.upgrades.tool_swapper > 0):
-		if item.bonusstats.has("task_efficiency_tool"):
-			task_mods.eff = item.bonusstats.task_efficiency_tool
-		if item.bonusstats.has("task_crit_chance"):
-			task_mods.crit += item.bonusstats.task_crit_chance
+	if task.has('worktool'):
+		var item = task.worktool
+		task_mods.eff = parent.get_ref().get_stat('task_efficiency_' + item)
+		task_mods.crit += parent.get_ref().get_stat('task_crit_' + item)
 	
 	if parent.get_ref().has_status('no_task_crit'):
 		task_mods.crit = 0
