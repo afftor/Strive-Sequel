@@ -79,7 +79,7 @@ func update(person = null, from_dialogue = false):
 			if !i in ['hpmax', 'mpmax','critmod', 'speed']:
 				$"BaseStatsPanel/base_stats".get_node(i).text = str(floor(person.get_stat(i)))
 			elif i == 'critmod':
-				$"BaseStatsPanel/base_stats".get_node(i).text = str(floor(person.get_stat(i)*100))
+				$"BaseStatsPanel/base_stats".get_node(i).text = str(floor(person.get_stat(i)*100)) + '%'
 			elif i == 'speed':
 				$"BaseStatsPanel/base_stats".get_node(i).text = str(floor(person.get_stat(i)[0]))
 	
