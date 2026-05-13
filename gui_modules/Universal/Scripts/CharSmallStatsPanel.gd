@@ -30,7 +30,7 @@ func open(character = ResourceScripts.scriptdict.class_slave.new("temp_char_stat
 		if !i in ['hpmax', 'mpmax','critmod', 'speed']:
 			$"base stats".get_node(i).text = str(floor(character.get_stat(i)))
 		elif i == 'critmod':
-			$"base stats".get_node(i).text = str(floor(character.get_stat(i)*100))
+			$"base stats".get_node(i).text = str(floor(character.get_stat(i)*100)) + '%'
 		elif i == 'speed':
 			$"base stats".get_node(i).text = str(floor(character.get_stat(i)[0]))
 	

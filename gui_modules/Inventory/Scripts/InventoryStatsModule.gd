@@ -34,7 +34,7 @@ func open_base_stats():
 		if !i in ['hpmax', 'mpmax','critmod', 'speed']:
 			$base_stats.get_node(i).text = str(floor(character.get_stat(i)))
 		elif i == 'critmod':
-			$base_stats.get_node(i).text = str(floor(character.get_stat(i)*100))
+			$base_stats.get_node(i).text = str(floor(character.get_stat(i)*100))  + '%'
 		elif i == 'speed':
 			$base_stats.get_node(i).text = str(floor(character.get_stat(i)[0]))
 	

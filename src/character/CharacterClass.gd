@@ -463,9 +463,9 @@ func get_class_list(category, person):
 func generate_simple_fighter(tempname, setup_ai = true):
 	var data = Enemydata.enemies[tempname]
 	for i in variables.fighter_stats_list:
-		if !data.has(i):
-			set_stat(i, 0)
-		else:
+		if data.has(i):
+#			set_stat(i, 0)
+#		else:
 			set_stat(i, data[i])
 	npc_reference = data.code
 	statlist.generate_simple_fighter(data)
@@ -2438,7 +2438,7 @@ func deal_damage(value, source = 'normal'):
 		process_event(variables.TR_DMG)
 		self.hp -= value
 		tmp = tmp - hp
-		if displaynode != null:
+		if displaynode != null and !defeated:
 			displaynode.setup_overlay(source)
 		return tmp
 	else:
