@@ -2438,7 +2438,7 @@ func deal_damage(value, source = 'normal'):
 		process_event(variables.TR_DMG)
 		self.hp -= value
 		tmp = tmp - hp
-		if displaynode != null:
+		if displaynode != null and !defeated:
 			displaynode.setup_overlay(source)
 		return tmp
 	else:
