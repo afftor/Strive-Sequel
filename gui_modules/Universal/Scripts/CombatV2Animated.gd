@@ -90,6 +90,7 @@ signal rewards_anim_finished
 signal combat_finished
 signal turn_started
 
+var queue_size_max
 
 func _ready():
 	if gui_controller.mansion != null:
@@ -132,6 +133,8 @@ func _ready():
 	input_handler.register_btn_source('combat_skill_2', self, 'tut_get_skill_shield')
 	input_handler.register_btn_source('combat_enemy', self, 'tut_get_enemy')
 	input_handler.register_btn_source('combat_ally', self, 'tut_get_master')
+	
+	queue_size_max = $Panel4/VBoxContainer.rect_size.x
 
 func tut_get_CloseButton():
 	return $Rewards/CloseButton
@@ -1675,6 +1678,12 @@ func update_queue(queue, current): #don't call in asynchroned state
 		tmp.get_node('hpbar').value = person.hp
 		tmp.connect("mouse_entered", self, 'FighterMouseOver', [person.id, true])
 		tmp.connect("mouse_exited", self, 'FighterMouseOverFinish', [person.id])
+	
+	yield(get_tree(), 'idle_frame')
+	var queue_cont = $Panel4/VBoxContainer
+	queue_cont.rect_scale.x = 1.0
+	if queue_cont.rect_size.x > queue_size_max:
+		queue_cont.rect_scale.x -= (queue_cont.rect_size.x - queue_size_max) / queue_cont.rect_size.x
 
 
 var active_position
