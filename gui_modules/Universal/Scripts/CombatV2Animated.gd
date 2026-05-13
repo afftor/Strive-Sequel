@@ -1589,7 +1589,9 @@ func SelectSkill(skill, user_act = true):
 				if checkwinlose():
 					return
 				else:
-					print("SKILL TARGET ERROR")
+					input_handler.SystemMessage(tr("NO_TARGETS"))
+					call_deferred('SelectSkill', activecharacter.get_skill_by_tag('default'))
+					return
 	if skill.has('cursor'): 
 		customcursor = skill.cursor
 	else: 
