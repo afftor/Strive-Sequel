@@ -1241,6 +1241,8 @@ var shades = {
 	taurus_f = "res://assets/images/raceshades/Taurus_F.png",
 	kobold_m = "res://assets/images/raceshades/Kobold_M.png",
 	kobold_f = "res://assets/images/raceshades/Kobold_F.png",
+	ratkin_m = "res://assets/images/raceshades/Mouse1_M.png",
+	ratkin_f = "res://assets/images/raceshades/Mouse1_F.png",
 
 }
 

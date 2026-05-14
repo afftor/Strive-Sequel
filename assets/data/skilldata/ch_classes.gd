@@ -1721,7 +1721,7 @@ var effects = {
 		statchanges = {evasion = 25, speed = 30}, 
 		buffs = [
 			{
-				icon = "res://assets/images/iconsskills/Discipline.png",
+				icon = "res://assets/images/iconsskills/icon_hare.png",
 				description = "TRAITEFFECTSPIRIT1",
 				tags = ['combat_only'],
 			}
@@ -1737,7 +1737,7 @@ var effects = {
 		statchanges = {damage_mod_skill = 0.2, hitrate = 30}, 
 		buffs = [
 			{
-				icon = "res://assets/images/iconsskills/Discipline.png",
+				icon = "res://assets/images/iconsskills/icon_eagle.png",
 				description = "TRAITEFFECTSPIRIT3",
 				tags = ['combat_only'],
 			}
@@ -1752,7 +1752,7 @@ var effects = {
 		sub_effects = ['e_t_turtle1', 'e_t_turtle2'],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsskills/Discipline.png",
+				icon = "res://assets/images/iconsskills/icon_turtle.png",
 				description = "TRAITEFFECTSPIRIT2",
 				tags = ['combat_only'],
 			}

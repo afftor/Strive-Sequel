@@ -244,8 +244,8 @@ var Skilllist = {
 		target_number = 'line',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sfx = [{code = 'arrowhail', target = 'target_group', period = 'windup'}], 
+		sounddata = {initiate = null, strike = 'bow', hit = null},
 		value = 0.65
 	},
 	explosivearr = {
