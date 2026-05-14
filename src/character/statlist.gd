@@ -368,6 +368,7 @@ var resists = {
 	resist_sleep = 0.0,
 	resist_blind = 0.0,
 	resist_shred = 0.0,
+	resist_shatter = 0.0,
 }
 var damage_mods = { 
 	damage_mod_all = 1.0,
