@@ -5359,6 +5359,7 @@ render_target_update_mode = 3
 gui_disable_input = true
 
 [node name="male_pose" type="Node2D" parent="VPC/VP" groups=["sex"]]
+visible = false
 light_mask = 4
 position = Vector2( 500, 500 )
 

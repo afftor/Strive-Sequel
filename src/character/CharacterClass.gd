@@ -463,9 +463,9 @@ func get_class_list(category, person):
 func generate_simple_fighter(tempname, setup_ai = true):
 	var data = Enemydata.enemies[tempname]
 	for i in variables.fighter_stats_list:
-		if !data.has(i):
-			set_stat(i, 0)
-		else:
+		if data.has(i):
+#			set_stat(i, 0)
+#		else:
 			set_stat(i, data[i])
 	npc_reference = data.code
 	statlist.generate_simple_fighter(data)
@@ -1784,7 +1784,7 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			if has_status(i.status):
 				check = input_handler.operate(i.operant, dyn_stats.get_buff_number(i.status), i.value)
 			else:
-				check = false
+				check = input_handler.operate(i.operant, 0, i.value)
 		'slave_type':
 			check = input_handler.operate(i.operant, get_stat('slave_class'), i.value)
 		'population':
@@ -2438,7 +2438,7 @@ func deal_damage(value, source = 'normal'):
 		process_event(variables.TR_DMG)
 		self.hp -= value
 		tmp = tmp - hp
-		if displaynode != null:
+		if displaynode != null and !defeated:
 			displaynode.setup_overlay(source)
 		return tmp
 	else:

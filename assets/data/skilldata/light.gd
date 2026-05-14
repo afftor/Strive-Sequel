@@ -92,7 +92,7 @@ var skills = {
 		cost = {mp = 10},
 		charges = 0,
 		combatcooldown = 0,
-		cooldown = 1,
+		cooldown = 2,
 		catalysts = {},
 		target = 'ally',
 		target_number = 'single',
@@ -190,7 +190,7 @@ var skills = {
 		reqs = [],
 		targetreqs = [],
 		effects = [
-			Effectdata.rebuild_template({effect = 'e_s_shatter', duration = 3}),
+			Effectdata.rebuild_template({effect = 'shatter', duration = 3}),
 			Effectdata.rebuild_template({trigger = variables.TR_PREHIT, effect = Effectdata.rebuild_remove_effect('hide')})
 		], 
 		cost = {mp = 9},
@@ -228,8 +228,8 @@ var skills = {
 		effects = [], 
 		cost = {mp = 25},
 		charges = 0,
-		combatcooldown = 0,
-		cooldown = 6,
+		combatcooldown = 6,
+		cooldown = 0,
 		catalysts = {},
 		target = 'ally',
 		target_number = 'all',

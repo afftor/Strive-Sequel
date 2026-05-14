@@ -60,8 +60,8 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'earth', 
-		sfx = [{code = 'acid_bomb', target = 'target', period = 'predamage'}], #fix
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sfx = [{code = 'earth_spike', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
 		value = 0.85,
 		variations = [
 			{
@@ -79,7 +79,7 @@ var skills = {
 		tags = ['damage','ads', 'earth', 'damage_spot'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_shred', duration = 3})], 
+		effects = [Effectdata.rebuild_template({effect = 'shred', duration = 3})], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -318,7 +318,7 @@ var effects = {
 		],
 		args = {duration = {obj = 'self', func = 'dr', dr = 5},},
 		req_skill = true,
-		sub_effects = ['e_s_shred'],
+		sub_effects = ['shred'],
 	},
 	e_t_disintegrate_2 = {
 		type = 'trigger',

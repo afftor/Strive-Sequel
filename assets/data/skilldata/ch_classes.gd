@@ -1497,6 +1497,42 @@ var effects = {
 		],
 		buffs = []
 	},
+	e_tr_occultist = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
+		req_skill = true,
+		conditions = [
+			{type = 'target', value = [
+				{code = 'has_status', check = true, status = 'cursed'},
+				{orfalg = true, code = 'has_status', check = true, status = 'blind'},
+				{orfalg = true, code = 'has_status', check = true, status = 'silence'},
+				{orfalg = true, code = 'has_status', check = true, status = 'fear'},
+			] },
+		],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				conditions = [],
+				atomic = [{type = 'stat_mul', stat = 'value', value = 1.15},],
+			},
+		]
+	},
+	e_tr_empyrian = {
+		type = 'trigger',
+		req_skill = true,
+		trigger = [variables.TR_POSTDAMAGE],
+		duration = 1,
+		conditions = [
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'skill', value = ['damage_type', 'eq', 'light']}
+			],
+		buffs = [],
+		sub_effects = ['burn'], 
+		args = {
+			duration = {obj = 'self', func = 'dr', dr = 1},
+		}
+	},
 	#skill-based
 	e_t_command = {
 		type = 'temp_s',
@@ -1685,7 +1721,7 @@ var effects = {
 		statchanges = {evasion = 25, speed = 30}, 
 		buffs = [
 			{
-				icon = "res://assets/images/iconsskills/Discipline.png",
+				icon = "res://assets/images/iconsskills/icon_hare.png",
 				description = "TRAITEFFECTSPIRIT1",
 				tags = ['combat_only'],
 			}
@@ -1701,7 +1737,7 @@ var effects = {
 		statchanges = {damage_mod_skill = 0.2, hitrate = 30}, 
 		buffs = [
 			{
-				icon = "res://assets/images/iconsskills/Discipline.png",
+				icon = "res://assets/images/iconsskills/icon_eagle.png",
 				description = "TRAITEFFECTSPIRIT3",
 				tags = ['combat_only'],
 			}
@@ -1716,7 +1752,7 @@ var effects = {
 		sub_effects = ['e_t_turtle1', 'e_t_turtle2'],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsskills/Discipline.png",
+				icon = "res://assets/images/iconsskills/icon_turtle.png",
 				description = "TRAITEFFECTSPIRIT2",
 				tags = ['combat_only'],
 			}

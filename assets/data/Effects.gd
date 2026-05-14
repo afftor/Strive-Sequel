@@ -1447,7 +1447,7 @@ var buffs = {
 		description = "BUFFDESCRIPTWET", 
 	},
 	b_freeze = {
-		icon = "res://assets/images/iconsskills/Barrier.png",
+		icon = "res://assets/images/iconsskills/freeze.png",
 		description = "BUFFDESCRIPTFROZEN", 
 	},
 	b_disarm = {
@@ -2041,6 +2041,10 @@ func get_effect_for_status(status):
 			return 'e_s_sleep'
 		'blind':
 			return 'e_s_blind'
+		'shred':
+			return 'e_s_shred'
+		'shatter':
+			return 'e_s_shatter'
 		_:
 			return status
 
