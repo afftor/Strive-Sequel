@@ -190,7 +190,7 @@ var skills = {
 		reqs = [],
 		targetreqs = [],
 		effects = [
-			Effectdata.rebuild_template({effect = 'e_s_shatter', duration = 3}),
+			Effectdata.rebuild_template({effect = 'shatter', duration = 3}),
 			Effectdata.rebuild_template({trigger = variables.TR_PREHIT, effect = Effectdata.rebuild_remove_effect('hide')})
 		], 
 		cost = {mp = 9},

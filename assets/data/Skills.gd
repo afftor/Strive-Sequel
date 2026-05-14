@@ -1060,7 +1060,7 @@ var Skilllist = {
 		effects = [
 			Effectdata.rebuild_template({effect = 'stun', duration = 1}), 
 			Effectdata.rebuild_template({effect = 'shred', duration = 2}), 
-			Effectdata.rebuild_template({effect = 'e_s_shatter', duration = 2})
+			Effectdata.rebuild_template({effect = 'shatter', duration = 2})
 		],
 		cost = {mp = 3},
 		charges = 0,
