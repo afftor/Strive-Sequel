@@ -160,7 +160,10 @@ var skills = {
 		tags = ['damage', 'aoe'],
 		reqs = [{code = 'buff_number', operant = 'gte', status = 'hector_vain_pride_s', value = 5}],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'bleed', duration = 2}), Effectdata.rebuild_template({effect = 'e_s_shred',  duration = 2})], 
+		effects = [
+			Effectdata.rebuild_template({effect = 'bleed', duration = 2}), 
+			Effectdata.rebuild_template({effect = 'shred',  duration = 2})
+		], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,

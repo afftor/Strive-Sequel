@@ -168,7 +168,7 @@ var skills = {
 		tags = ['damage','fire'],
 		reqs = [],
 		targetreqs = [{code = 'has_status', status = 'burn', check = true}],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_shred', duration = 2}),], 
+		effects = [Effectdata.rebuild_template({effect = 'shred', duration = 2}),], 
 		cost = {mp = 10},
 		charges = 0,
 		combatcooldown = 2,
