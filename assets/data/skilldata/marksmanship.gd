@@ -312,7 +312,7 @@ var effects = {
 			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
 		],
 		buffs = [],
-		sub_effects = ['e_s_shred'],
+		sub_effects = ['shred'],
 		args = {
 			skill = {obj = 'skill', func = 'eq'},
 			caster = {obj = 'caster', func = 'eq'},

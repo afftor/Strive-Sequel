@@ -592,7 +592,7 @@ var Skilllist = {
 		reqs = [],
 		targetreqs = [],
 #		effects = [Effectdata.rebuild_template({effect = 'e_s_shred_old', duration = 3})], #if change to new version - Effectdata.rebuild_template_globals({effect = 'e_s_shred2'})
-		effects = [Effectdata.rebuild_template({effect = 'e_s_shred', duration = 2})], 
+		effects = [Effectdata.rebuild_template({effect = 'shred', duration = 2})], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -1008,7 +1008,7 @@ var Skilllist = {
 		reqs = [],
 		targetreqs = [],
 		effects = [
-			Effectdata.rebuild_template({effect = 'e_s_shred', duration = 3}), 
+			Effectdata.rebuild_template({effect = 'shred', duration = 3}), 
 			Effectdata.rebuild_template({effect = 'burn', duration = 2})
 		], 
 		cost = {mp = 3},
@@ -1059,7 +1059,7 @@ var Skilllist = {
 		targetreqs = [],
 		effects = [
 			Effectdata.rebuild_template({effect = 'stun', duration = 1}), 
-			Effectdata.rebuild_template({effect = 'e_s_shred', duration = 2}), 
+			Effectdata.rebuild_template({effect = 'shred', duration = 2}), 
 			Effectdata.rebuild_template({effect = 'e_s_shatter', duration = 2})
 		],
 		cost = {mp = 3},
@@ -1376,7 +1376,7 @@ var Skilllist = {
 		targetreqs = [],
 		effects = [
 			Effectdata.rebuild_template({effect = 'disarm',  duration = 1}), 
-			Effectdata.rebuild_template({effect = 'e_s_shred', duration = 2})
+			Effectdata.rebuild_template({effect = 'shred', duration = 2})
 		], 
 		cost = {},
 		charges = 0,
@@ -1551,7 +1551,7 @@ var Skilllist = {
 		targetreqs = [],
 		effects = [
 			Effectdata.rebuild_template({effect = 'poison', duration = 2}),
-			Effectdata.rebuild_template({effect = 'e_s_shred',  duration = 3})
+			Effectdata.rebuild_template({effect = 'shred',  duration = 3})
 		], 
 		cost = {},
 		charges = 0,

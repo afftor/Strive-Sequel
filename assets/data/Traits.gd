@@ -403,6 +403,22 @@ var traits = {
 		icon = null,
 		effects = ['e_tr_bloodmage'],
 	},
+	occultist = {
+		code = 'occultist',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_occultist'],
+	},
+	empyrian = {
+		code = 'empyrian',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_empyrian'],
+	},
 	rouge = {
 		code = 'rouge',
 		name = '',

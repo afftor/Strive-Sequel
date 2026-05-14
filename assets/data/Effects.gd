@@ -2041,6 +2041,8 @@ func get_effect_for_status(status):
 			return 'e_s_sleep'
 		'blind':
 			return 'e_s_blind'
+		'shred':
+			return 'e_s_shred'
 		_:
 			return status
 
