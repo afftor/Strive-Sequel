@@ -243,7 +243,7 @@ func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = f
 	var x = load(images.GFX_sprites[effect]).instance()
 	node.add_child(x)
 	x.position = node.rect_size/2
-	if flip == true:
+	if flip:
 		x.set_flip_h(true)
 		if x.get("offset"):
 			x.offset = x.offset * -1
@@ -256,11 +256,14 @@ func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = f
 
 	if wr.get_ref(): x.queue_free()
 
-func gfx_particles(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
+func gfx_particles(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = false):
 	if !node.is_inside_tree(): return
 	var x = load(images.GFX_particles[effect]).instance()
 	node.add_child(x)
 	x.position = node.rect_size/2
+	if flip:
+		x.scale.x *= -1
+		x.rotation_degrees *= -1
 	#x.set_anchors_and_margins_preset(Control.PRESET_CENTER)
 	x.emitting = true
 
