@@ -74,7 +74,7 @@ var skills = {
 		damage_type = 'weapon',
 		aipatterns = ['attack'],
 		allowedtargets = ['enemy'],
-		value = 0.65,
+		value = 0.625,
 		sfx = [{code = 'ranged_attack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 	},
@@ -126,7 +126,7 @@ var skills = {
 		damage_type = 'weapon',
 		aipatterns = ['attack'],
 		allowedtargets = ['enemy'],
-		value = 1.5,
+		value = 1.4,
 		armor_p = [['target.armor','*0.3']],
 		sfx = [{code = 'provocation', target = 'caster', period = 'windup'},{code = 'ranged_attack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
@@ -285,7 +285,8 @@ var effects = {
 		conditions = [
 			{type = 'skill', value = ['tags', 'has', 'damage'] },
 			{type = 'target', value = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}] },
-			{type = 'target', value = [{code = 'trait', trait = 'aire_overwatch_assignment', check = false}] }
+			{type = 'target', value = [{code = 'trait', trait = 'aire_overwatch_assignment', check = false}] },
+			{type = 'caster', value = [{code = 'stat', stat = 'hp', operant = 'gt', value = 0}]}
 		],
 		args = {
 			skill = {obj = 'skill', func = 'eq'},
@@ -308,6 +309,7 @@ var effects = {
 			{code = 'trait', trait = 'aire_overwatch_assignment', check = true},
 			{code = 'has_status', status = 'disable', check = false},
 			{code = 'has_status', status = 'disarm', check = false},
+			{code = 'has_status', status = 'blind', check = false},
 		],
 		args = {targetValue = {obj = 'parent', func = 'arg', arg = 'caster'}},
 		atomic = [{type = 'use_combat_skill', skill = 'aire_cover_fire', target = ['parent_args', 'targetValue']},],
@@ -318,6 +320,7 @@ var effects = {
 		req_skill = true,
 		conditions = [
 			{type = 'target', value = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}] },
+			{type = 'owner', value = [{code = 'stat', stat = 'hp', operant = 'gt', value = 0}]}
 		],
 		args = {
 			skill = {obj = 'skill', func = 'eq'},
@@ -340,16 +343,18 @@ var effects = {
 			{code = 'trait', trait = 'aire_overwatch_assignment', check = true},
 			{code = 'has_status', status = 'disable', check = false},
 			{code = 'has_status', status = 'disarm', check = false},
-			#{type = 'target', value = [{code = 'stat', stat = 'hp', operant = 'gt', value = 0}]}
+			{code = 'has_status', status = 'blind', check = false},
 		],
 		args = {targetValue = {obj = 'parent', func = 'arg', arg = 'caster'}},
 		atomic = [{type = 'use_combat_skill', skill = 'aire_eye_for_an_eye', target = ['parent_args', 'targetValue']},],
 	},
 	trait_behind_cover = {
 		type = 'trigger',
-		trigger = [variables.TR_TURN_S],
+		trigger = [variables.TR_TURN_GET],
 		conditions = [
 			{type = 'owner', value = [{code = 'has_status', status = 'behind_cover', check = false}]},
+			{type = 'owner', value = [{code = 'has_status', status = 'disable', check = false}]},
+			{type = 'owner', value = [{code = 'has_status', status = 'cover_blocked', check = false}]},
 		],
 		atomic = [],
 		buffs = [],
@@ -361,7 +366,7 @@ var effects = {
 				target = 'owner',
 				atomic = [{type = 'sfx', value = 'earth_shield'},]
 			},
-			'behind_cover'
+			'behind_cover','cover_blocked'
 		],
 	},
 	behind_cover = {
@@ -375,6 +380,17 @@ var effects = {
 		statchanges = {},
 		sub_effects = ['behind_cover_tr_melee_aoe','behind_cover_tr_range'],
 		buffs = ['b_behind_cover'],
+	},
+	cover_blocked = {
+		type = 'temp_s',
+		target = 'owner',
+		tick_event = [variables.TR_NONE],
+		rem_event = [variables.TR_TURN_S, variables.TR_COMBAT_F],
+		duration = 1,
+		tags = ['cover_blocked'],
+		statchanges = {},
+		sub_effects = [],
+		buffs = [],
 	},
 	behind_cover_tr_melee_aoe = {
 		type = 'trigger',

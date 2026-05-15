@@ -1447,7 +1447,7 @@ var buffs = {
 		description = "BUFFDESCRIPTWET", 
 	},
 	b_freeze = {
-		icon = "res://assets/images/iconsskills/Barrier.png",
+		icon = "res://assets/images/iconsskills/freeze.png",
 		description = "BUFFDESCRIPTFROZEN", 
 	},
 	b_disarm = {

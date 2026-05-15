@@ -43,7 +43,7 @@ var skills = {
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_ensnare', duration = 1})], 
-		cost = {mp = 5},
+		cost = {mp = 4},
 		charges = 0,
 		combatcooldown = 1,
 		cooldown = 0,

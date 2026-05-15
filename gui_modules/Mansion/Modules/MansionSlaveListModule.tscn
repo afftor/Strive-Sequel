@@ -1068,31 +1068,6 @@ mouse_filter = 2
 expand = true
 stretch_mode = 6
 
-[node name="sex" type="Label" parent="HBoxContainer" groups=["brothel", "default", "food", "rules", "training"]]
-margin_left = 21.0
-margin_top = 44.0
-margin_right = 146.0
-margin_bottom = 86.0
-rect_min_size = Vector2( 50, 0 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 26 )
-text = "MSLMSex"
-align = 1
-
-[node name="name" type="Label" parent="HBoxContainer" groups=["brothel", "default", "food", "rules", "training"]]
-margin_left = 67.0
-margin_top = 44.0
-margin_right = 241.0
-margin_bottom = 86.0
-rect_min_size = Vector2( 125, 0 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 26 )
-text = "MSLMNNAME"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="stats" type="Label" parent="HBoxContainer" groups=["default", "training"]]
 visible = false
 margin_left = 196.0

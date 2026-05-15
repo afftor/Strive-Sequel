@@ -380,7 +380,8 @@ func fix_gear():
 		if slots.has('tool'):
 			slots.erase('tool')
 			for j in _slot:
-				slots.push_back('tool_' + _slot)
+				slots.push_back('tool_' + j)
+
 			if owner != null:
 				owner = null
 	for id in enchants:

@@ -5,8 +5,11 @@ Fixed Aire not being recruitable if you didn't recruit her during act 1
 Spell changes
 Sleep: cost 8 > 7, duration 2 > 3
 Mind Shatter: stun duration 4 > 3
+Black Tendrils: cost 5 > 4
+Resurrection: cooldown 1 > 2
+Mass resurrecton: Cooldown 0 > 5
 Empire capital now sells ogre teeth and energy gems
-Reworked Hector and first demoness fight bosses.
+Reworked Aire, Hector and first demoness fight bosses.
 Rouge will be able to learn proficiencies
 Reduced Mae search task work amount from 100 to 25
 Character unlocks for NG+ now tied to finishing their personal quests instead of just recruiting them 
@@ -15,6 +18,7 @@ Fixed potentially a case where items could be removed from equipped character
 Fixed service appearing in locations where it shouldnt
 Fixed Rouge nude sprite not working correctly
 Fixed Sleep and Freeze effects being removed before they should
+Fixed multiple wrong icons and animations related to combat
 Added more localization parts
 Zephyra no longer will be camping church if you refuse her second time
 0.14.2d

@@ -1538,7 +1538,7 @@ Hotkey: 3""",
 	SKILLDEVOUR_MAGIC = "Devour Magic",
 	SKILLDEVOUR_MAGICDESCRIPT = "Remove all positive buffs from a single enemy. Apply Silence for 3 turns.",
 	SKILLVEIL = "Shadow Veil",
-	SKILLVEILDESCRIPT = "Buff ally column for 5 turns: Light and Dark resists are increased by 30, MDEF is increased based on caster's MATK.",
+	SKILLVEILDESCRIPT = "Buff ally column for 5 turns: Light and Dark resists are increased by 30, MDEF is increased based on caster's MATK. Also appies In The Shadows for 5 turns.",
 	SKILLSKILL_VOID = "Void",
 	SKILLSKILL_VOIDDESCRIPT = "Deals 150% of MATK as {color=yellow|Dark} damage to all enemies. Enemies hit receive randomly Silence, Blind or Disarm. ",
 	SKILLMINDSHATTER = "Mind Shatter",
@@ -3005,6 +3005,7 @@ Wits: -10; EXP Gain: -10%; Sell price is greatly lowered.""",
 	THRALLS0DESCRIPT = "Has no Thralls",
 	EFFECTNAME_E_THRALL = "Is a Thrall",
 	EFFECTNAME_FLIGHT = "Flight",
+	EFFECTNAME_INSPIRE = "Inspire",
 	EFFECTNAME_FLIGHT_UPKEEP = "Flight",
 	TOOLTIP_CLOCK1 = """Advance Time
 Hotkey: 1""",
@@ -4346,7 +4347,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	TRAIT_KURDAN_MIND_CONTROLLED = '-50 Mind resist. Devour Magic spell also deal 150% MATK damage when cast on this unit',
 	TRAIT_OVERWATCH_ASSIGNMENT = """On ally hit, fire an arrow at the attacker.
 On ally death, fire stronger attack at the killer.
-The effects disable if this unit is either immobilised or disarmed.
+The effects disable if this unit is either immobilised, blind or disarmed.
 """,
 	EFFECTNAME_BEHIND_COVER = 'Behind Cover',
 	EFFECT_BEHIND_COVER = 'Evade a range or AoE move for 1 time. Removed if Overwatch Assignment is triggered.',
