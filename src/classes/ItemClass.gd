@@ -370,14 +370,18 @@ func fix_gear():
 	if itemtype == 'tool':
 		var _slot = toolcategory
 		if bonusstats.has('task_efficiency_tool'):
-			bonusstats['task_efficiency_' + _slot[0]] = bonusstats.task_efficiency_tool
+			for j in _slot:
+				bonusstats['task_efficiency_' + j] = bonusstats.task_efficiency_tool
 			bonusstats.erase('task_efficiency_tool')
 		if bonusstats.has('task_crit_chance'):
-			bonusstats['task_crit_' + _slot[0]] = bonusstats.task_crit_chance
+			for j in _slot:
+				bonusstats['task_crit_' + j] = bonusstats.task_crit_chance
 			bonusstats.erase('task_crit_chance')
 		if slots.has('tool'):
 			slots.erase('tool')
-			slots.push_back('tool_' + _slot[0])
+			for j in _slot:
+				slots.push_back('tool_' + j)
+
 			if owner != null:
 				owner = null
 	for id in enchants:
