@@ -1724,6 +1724,33 @@ var traits = {
 		effects = ['tr_aim_adjustment'],
 		tags = [],
 	},
+	leon_ambush_predator = {
+		code = 'leon_ambush_predator',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['leon_ambush_predator'],
+		tags = [],
+	},
+	leon_sanguine_instinct = {
+		code = 'leon_sanguine_instinct',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['sanguine_instinct', 'sanguine_instinct_apply', 'sanguine_instinct_self', 'bloodthrist_t3', 'bloodthrist_t5',],
+		tags = [],
+	},
+	leon_cornered_beast = {
+		code = 'leon_cornered_beast',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['cornered_beast_trait'],
+		tags = [],
+	},
 	
 	#exploration related traits
 	#needs to hardcode most of traits

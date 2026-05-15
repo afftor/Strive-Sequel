@@ -15,7 +15,7 @@ var skills = {
 			{code = 'stat', stat = 'racegroup', operant = 'eq', value = 'undead'},
 			{orflag = true, code = 'stat', stat = 'combatgroup', operant = 'eq', value = 'ally'},
 		],
-		effects = [], 
+		effects = [Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('bleed')})], 
 		cost = {mp = 6},
 		charges = 0,
 		combatcooldown = 2,
@@ -70,12 +70,15 @@ var skills = {
 		variations = [
 			{
 				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],
-				set = {targetreqs = [
+				set = {
+				targetreqs = [
 					{code = 'has_status', status = 'fear', check = true},
 					{orflag = true, code = 'has_status', status = 'blind', check = true},
 					{orflag = true, code = 'has_status', status = 'ensnared', check = true},
 					{orflag = true, code = 'has_status', status = 'cursed', check = true},
-				],}  
+				],
+				effects = [],
+				}  
 			}
 		]
 	},
