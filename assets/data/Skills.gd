@@ -194,7 +194,9 @@ var Skilllist = {
 		target_number = 'line',
 		target_range = 'weapon',
 		damage_type = 'fire',
-		sfx = [{code = 'flame', target = 'target', period = 'postdamage'}], 
+		sfx = [
+			{code = 'cleave', target = 'target_line', period = 'windup'},
+			{code = 'flame', target = 'target', period = 'postdamage'}],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['caster.atk','*0.2'], 0.7],
 		damagestat = ['no_stat', '+damage_hp']

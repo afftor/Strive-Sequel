@@ -260,12 +260,7 @@ func gfx_animsprite(node, args):
 	else:
 		#for now it seems thet 7 turns is repeat loop duration
 		custom_delays[node] = {delay = 0.2, cur_timer = cur_timer, time = 7}
-	var flip = false
-	if node.has_method("get_flip"):
-		flip = node.get_flip()
-	elif node.has_meta("anim_flip"):
-		flip = node.get_meta("anim_flip")
-	ResourceScripts.core_animations.gfx_sprite(node, args.sprite_name, 0.5, duration, flip)
+	ResourceScripts.core_animations.gfx_sprite(node, args.sprite_name, 0.5, duration, get_flip_for_node(node))
 	
 	return nextanimationtime + aftereffectdelay
 
@@ -275,10 +270,17 @@ func gfx_particles(node, args):
 	hp_update_delays[node] = 0 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0)
 	buffs_update_delays[node] = 0.5
-	ResourceScripts.core_animations.gfx_particles(node, args.sprite_name, 1, 1)
+	ResourceScripts.core_animations.gfx_particles(node, args.sprite_name, 1, 1, get_flip_for_node(node))
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay
+
+func get_flip_for_node(node):
+	if node.has_method("get_flip"):
+		return node.get_flip()
+	if node.has_meta("anim_flip"):
+		return node.get_meta("anim_flip")
+	return false
 
 func targetfire(node, args = null):
 	var tween = input_handler.GetTweenNode(node)

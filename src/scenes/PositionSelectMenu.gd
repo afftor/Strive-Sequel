@@ -26,7 +26,9 @@ func _ready():
 	
 	for i in positiondict:
 		get_node(positiondict[i]).connect('pressed', self, 'selectfighter', [i])
-	input_handler.register_btn_source('pos_select_confirm', self, 'tut_get_ConfirmButton')
+	#so it works only for input_handler.get_spec_node() call
+	if get_parent() == get_tree().get_root():
+		input_handler.register_btn_source('pos_select_confirm', self, 'tut_get_ConfirmButton')
 
 func tut_get_ConfirmButton():
 	return $ConfirmButton

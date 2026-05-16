@@ -700,7 +700,8 @@ func find_task_for_quest(q_id):
 		for dir in task.args:
 			if dir.code != 'finish_worktask':
 				continue
-			if dir.value == q_id:
+			#ids of slave's quests are floats for now
+			if typeof(dir.value) == typeof(q_id) and dir.value == q_id:
 				return task
 	return null
 
