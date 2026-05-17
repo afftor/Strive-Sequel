@@ -1,5 +1,7 @@
-0.14.2e
+0.14.3
 Amulet of recognition now improves loyalty from trainer instead of trainee
+New class: Occultist - Damage oriented priest counterpart, increases damage against debuffed targets
+New racial class (Seraph): Empyrian - Male counterpart class, provides immunity to some of the status effects and more
 Fixed templar effects not working as intended
 Fixed Aire not being recruitable if you didn't recruit her during act 1
 Spell changes
@@ -8,11 +10,17 @@ Mind Shatter: stun duration 4 > 3
 Black Tendrils: cost 5 > 4
 Resurrection: cooldown 1 > 2
 Mass resurrecton: Cooldown 0 > 5
+Trap: Now is stealth master 2 down from 3. Duration is 3 turns instead of infinite
+Botl trap: Now is stealth master 4 up from 1, requires 2 trap components, has 2 turns cooldown (effectively every other turn) and does not miss (previously only worked with 50% chance). Duration is 3 turns instead of infinite
+Assassinate: Now can be used at any range. Mana cost: 5 > 8
+Earth Shield, Air Shield, Wing Dash, Flight: Dispell Trap status effects now.
+Healing Light: Now removes Bleeding
 Empire capital now sells ogre teeth and energy gems
 Reworked Aire, Hector and first demoness fight bosses.
 Rouge will be able to learn proficiencies
 Reduced Mae search task work amount from 100 to 25
 Character unlocks for NG+ now tied to finishing their personal quests instead of just recruiting them 
+Attendant: Now also gives +1 universal mastery point
 Fixed multiple skill issues
 Fixed potentially a case where items could be removed from equipped character
 Fixed service appearing in locations where it shouldnt

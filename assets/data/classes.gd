@@ -211,7 +211,7 @@ var professions = {
 		categories = ['combat'],
 		showupreqs = [],
 		reqs = [],
-		statchanges = {hpmax = 10, physics_bonus = 5, mastery_leadership = 1},
+		statchanges = {hpmax = 10, physics_bonus = 5, mastery_leadership = 1, mastery_point_universal = 1},
 		traits = ['attendant'],
 		skills = [],
 		combatskills = [],
@@ -645,30 +645,29 @@ var professions = {
 		traits = ['medium_armor','valkyrie_spear'],
 		skills = [],
 		combatskills = [],
-		conflict_classes = [],
+		conflict_classes = ['empyrian'],
 	},
 	empyrian = {
 		code = 'empyrian',
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsclasses/valkyry.png"), #fix
+		icon = load("res://assets/images/iconsclasses/empyrian.png"),
 		tags = [],
 		categories = ['combat'],
 		showupreqs = [
 			{code = 'race', check = true, race = 'Seraph'}, 
-			{code = 'sex', operant = 'eq', value = 'male'}
+			{code = 'sex', operant = 'neq', value = 'female'}
 		],
 		reqs = [
-			{code = 'has_profession', profession = 'fighter', check = true},
-			{code = 'stat', stat = 'physics', operant = 'gte', value = 75},
 			{code = 'race', check = true, race = 'Seraph'},
-			{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 5}
-		], #fix
+			{code = 'stat', stat = 'physics', operant = 'gte', value = 50},
+			{code = 'stat', stat = 'wits', operant = 'gte', value = 50},
+		],
 		statchanges = {resist_shred = 200, resist_disarm = 200,}, #mb fix
 		traits = ['empyrian'],
 		skills = [],
 		combatskills = [],
-		conflict_classes = [],
+		conflict_classes = ['valkyrie'],
 	},
 	souleater = {
 		code = 'souleater',
@@ -948,21 +947,21 @@ var professions = {
 		traits = [],
 		skills = [],
 		combatskills = [],
-		conflict_classes = ['occultist'],
+		conflict_classes = ['necromancer','deathknight','occultist'],
 	},
 	occultist = {
 		code = 'occultist',
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsclasses/Priest.png"), #fix
+		icon = load("res://assets/images/iconsclasses/occultist.png"), 
 		tags = [],
 		categories = ['combat','magic'],
-		showupreqs = [{code = "class_unlocked", class = 'occultist', operant = 'eq', check = true}],
+		showupreqs = [],
 		reqs = [
-			{code = 'has_profession', profession = 'acolyte', check = true},
+			{code = 'has_any_profession', value = ['apprentice', 'scholar']},
 			{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 3}
 		],
-		statchanges = {}, #fix
+		statchanges = {wits_bonus = 10, mastery_dark = 1, mastery_point_magic = 2, chg_wisdom_max = 1, mpmax = 20},
 		traits = ['occultist'],
 		skills = [],
 		combatskills = [],
@@ -981,7 +980,7 @@ var professions = {
 		traits = ['bishop'],
 		skills = [],
 		combatskills = [],
-		conflict_classes = ['necromancer','deathknight'],
+		conflict_classes = ['necromancer','deathknight','occultist'],
 	},
 	monk = {
 		code = 'monk',

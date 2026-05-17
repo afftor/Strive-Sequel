@@ -2331,6 +2331,7 @@ Non potrai completare il turno se il numero totale dei tuoi personaggi è superi
 	STATCRITMOD = "Mod.Critico",
 	STATCRITMODDESCRIPT = "Definisce il danno bonus dei colpi critici.",
 	STATRESIST = "Resistere",
+	IMMUNITY = """Immunity""", # MISSING TRANSLATION
 	STATRESISTDESCRIPT = "Riduce i danni da un elemento specifico.",
 	STATDAMAGEMOD = "Danno Mult.",
 	STATDAMAGEMODDESCRIPT = "Aumenta tutti i danni in valore",
@@ -2468,6 +2469,7 @@ Danno +15%, Salute +20.""",
 	STATRESIST_CONFUSE = "Resistenza alla confusione",
 	STATRESIST_CURSED = "Resistenza alla Maledizione",
 	STATRESIST_DISARM = "Disarmo Resistenza",
+	STATRESIST_SHRED = """Shred Resist""", # MISSING TRANSLATION
 	STATRESIST_FEAR = "Resistenza alla Paura",
 	STATRESIST_FREEZE = "Resistenza al congelamento",
 	STATRESIST_HEAL = "Resistenza Cura",
@@ -3002,6 +3004,7 @@ Intelligenza: -10; Guadagno EXP: -10%; Il prezzo di vendita è notevolmente rido
 	EFFECTNAME_FLIGHT = "Volo",
 	EFFECTNAME_INSPIRE = """Inspire""", # MISSING TRANSLATION
 	EFFECTNAME_FLIGHT_UPKEEP = "Volo",
+	EFFECTNAME_FLY = """Wing Dash""", # MISSING TRANSLATION
 	TOOLTIP_CLOCK1 = """Tempo di anticipo
 Tasto di scelta rapida: 1""",
 	TOOLTIP_CLOCK2 = """Anticipo per 12h

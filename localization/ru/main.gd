@@ -2441,6 +2441,7 @@ Hotkey: 3""",
 	STATCRITMOD = """Крит Мод.""",
 	STATCRITMODDESCRIPT = """Определяет бонусный урон от критических попаданий.""",
 	STATRESIST = """Сопротивление""",
+	IMMUNITY = """Immunity""", # MISSING TRANSLATION
 	STATRESISTDESCRIPT = """Уменьшает урон от конкретного элемента.""",
 	STATDAMAGEMOD = """Мод. урона""",
 	STATDAMAGEMODDESCRIPT = """Увеличивает весь урон на величину""",
@@ -2587,6 +2588,7 @@ Hotkey: 3""",
 	STATRESIST_CONFUSE = "Сопротивление замешательству",
 	STATRESIST_CURSED = "Сопротивление проклятию",
 	STATRESIST_DISARM = "Сопротивление обезоруживанию",
+	STATRESIST_SHRED = """Shred Resist""", # MISSING TRANSLATION
 	STATRESIST_FEAR = "Сопротивление страху",
 	STATRESIST_FREEZE = "Сопротивление заморозке",
 	STATRESIST_HEAL = "Сопротивление лечению",
@@ -3149,6 +3151,7 @@ Hotkey: 3""",
 	EFFECTNAME_FLIGHT = "Flight",
 	EFFECTNAME_INSPIRE = """Inspire""", # MISSING TRANSLATION
 	EFFECTNAME_FLIGHT_UPKEEP = "Flight",
+	EFFECTNAME_FLY = """Wing Dash""", # MISSING TRANSLATION
 	TOOLTIP_CLOCK1 = """Продвинуть время вперёд
 Горячая клавиша: 1""",
 	TOOLTIP_CLOCK2 = """Продвинуть время вперёд на 12 часов

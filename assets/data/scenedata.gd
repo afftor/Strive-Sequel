@@ -1290,7 +1290,7 @@ var scenedict = {
 		tags = ['dialogue_scene','master_translate'],
 		text = "INTRODIALOGUE",
 		options = [
-		{code = 'starting_dialogue', text = tr("CONTINUE"), reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'starting_dialogue', text = tr("DIALOGUECONTINUE"), reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
 		]
 	},
 

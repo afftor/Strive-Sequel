@@ -35,6 +35,7 @@ var skills = {
 		reqs = [],
 		targetreqs = [{code = 'has_status', status = 'ensnared', check = false}],
 		effects = [
+			Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('trap')}),
 			Effectdata.rebuild_template({effect = 'e_fa_flight'}),
 			Effectdata.rebuild_template({effect = 'e_fa_flight_upkeep'}),
 		],
@@ -93,7 +94,10 @@ var skills = {
 		tags = ['buff','support'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_t_fly', duration = 1})], 
+		effects = [
+			Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('trap')}),
+			Effectdata.rebuild_template({effect = 'e_t_fly', duration = 1})
+		],
 		cost = {},
 		charges = 0,
 		combatcooldown = 4, #i think this is right

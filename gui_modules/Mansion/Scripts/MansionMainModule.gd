@@ -846,7 +846,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateUsableItem("beer", 7))
 		globals.AddItemToInventory(globals.CreateUsableItem("wine", 7))
 		globals.AddItemToInventory(globals.CreateUsableItem("corruptive_essence", 7))
-		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("sexswap_potion", 10))
 		globals.AddItemToInventory(globals.CreateUsableItem("oblivion_potion", 10))
 		globals.AddItemToInventory(globals.CreateUsableItem("skillbook_hyperborea", 3))

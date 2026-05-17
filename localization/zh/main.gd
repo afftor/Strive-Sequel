@@ -2359,6 +2359,7 @@ TASKHUNTING = "狩猎",
 	STATCRITMOD = "暴击伤害",
 	STATCRITMODDESCRIPT = "决定暴击额外伤害。",
 	STATRESIST = "抗性",
+	IMMUNITY = """Immunity""", # MISSING TRANSLATION
 	STATRESISTDESCRIPT = "减少对应元素伤害。",
 	STATDAMAGEMOD = "伤害倍率",
 	STATDAMAGEMODDESCRIPT = "按数值提高全部伤害。",
@@ -2496,6 +2497,7 @@ STAMINA_LABEL = """耐力""",
 	STATRESIST_CONFUSE = "混乱抗性",
 	STATRESIST_CURSED = "诅咒抗性",
 	STATRESIST_DISARM = "缴械抗性",
+	STATRESIST_SHRED = """Shred Resist""", # MISSING TRANSLATION
 	STATRESIST_FEAR = "恐惧抗性",
 	STATRESIST_FREEZE = "冻结抗性",
 	STATRESIST_HEAL = "治疗抗性",
@@ -3028,6 +3030,7 @@ STAMINA_LABEL = """耐力""",
 	EFFECTNAME_FLIGHT = """飞行""",
 	EFFECTNAME_INSPIRE = """Inspire""", # MISSING TRANSLATION
 	EFFECTNAME_FLIGHT_UPKEEP = """飞行中""",
+	EFFECTNAME_FLY = """Wing Dash""", # MISSING TRANSLATION
 	SKILLSUPREMACY = "至高无上",
 	SKILLSUPREMACYDESCRIPT = """类型：{color=green|仁慈}
 令目标对施法者产生敬畏与尊重。大幅提高忠诚度。受魅力因子加成。

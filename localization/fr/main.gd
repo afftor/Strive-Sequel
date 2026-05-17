@@ -2467,6 +2467,7 @@ You won't be able to finish turn if your total number of characters is bigger th
 	STATCRITMOD = "Crit Mod",
 	STATCRITMODDESCRIPT = "Définit le bonus de dégâts des coups critiques",
 	STATRESIST = "Résistance",
+	IMMUNITY = """Immunity""", # MISSING TRANSLATION
 	STATRESISTDESCRIPT = "Réduit les dégâts d'un élément spécifique",
 	STATDAMAGEMOD = "Mult. de dégâts",
 	STATDAMAGEMODDESCRIPT = "Augmente tous les dégâts d'une valeur",

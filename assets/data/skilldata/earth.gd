@@ -255,6 +255,7 @@ var effects = {
 		sub_effects = [
 			Effectdata.rebuild_remove_effect('shred'),
 			Effectdata.rebuild_remove_effect('shatter'),
+			Effectdata.rebuild_remove_effect('trap'),
 			'e_t_earthshield'
 			],
 		buffs = []
@@ -268,6 +269,7 @@ var effects = {
 		sub_effects = [
 			Effectdata.rebuild_remove_effect('shred'),
 			Effectdata.rebuild_remove_effect('shatter'),
+			Effectdata.rebuild_remove_effect('trap'),
 			'e_t_earthshield_1',
 			],
 		buffs = []

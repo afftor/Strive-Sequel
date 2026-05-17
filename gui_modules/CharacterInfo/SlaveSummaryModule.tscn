@@ -52,16 +52,18 @@ custom_styles/panel = ExtResource( 33 )
 script = ExtResource( 32 )
 
 [node name="Portrait" type="TextureRect" parent="."]
+show_behind_parent = true
 light_mask = 0
-margin_left = 11.0
-margin_top = 11.0
-margin_right = 208.0
-margin_bottom = 206.0
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 216.0
+margin_bottom = 214.0
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
 
 [node name="race" type="TextureRect" parent="."]
+visible = false
 margin_left = 14.4541
 margin_top = 15.9214
 margin_right = 54.454
@@ -71,10 +73,10 @@ expand = true
 stretch_mode = 6
 
 [node name="sex" type="TextureRect" parent="."]
-margin_left = 14.2384
-margin_top = 65.3627
-margin_right = 54.2384
-margin_bottom = 105.363
+margin_left = 5.91397
+margin_top = 6.49693
+margin_right = 45.914
+margin_bottom = 46.4972
 texture = ExtResource( 24 )
 expand = true
 stretch_mode = 6
@@ -83,10 +85,10 @@ __meta__ = {
 }
 
 [node name="age" type="TextureRect" parent="."]
-margin_left = 15.4827
-margin_top = 115.874
-margin_right = 55.4827
-margin_bottom = 155.874
+margin_left = 7.15825
+margin_top = 173.551
+margin_right = 47.1583
+margin_bottom = 213.551
 texture = ExtResource( 43 )
 expand = true
 stretch_mode = 6

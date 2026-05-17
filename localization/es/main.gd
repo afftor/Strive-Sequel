@@ -2353,6 +2353,7 @@ Servicio es un modificador global para esta asignación.""",
 	STATCRITMOD = "Mod Critico",
 	STATCRITMODDESCRIPT = "Define el daño adicional de los golpes críticos, el valor se expresa en porcentajes. 100% es el valor base.",
 	STATRESIST = "Resistir",
+	IMMUNITY = """Immunity""", # MISSING TRANSLATION
 	STATRESISTDESCRIPT = "Reduce el daño de un elemento específico.",
 	STATDAMAGEMOD = "Multiplicador de daño",
 	STATDAMAGEMODDESCRIPT = "Aumenta todo el daño por valor.",

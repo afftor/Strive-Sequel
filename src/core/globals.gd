@@ -647,7 +647,10 @@ func build_desc_for_bonusstats(bonusstats, mul = 1):
 						break
 			
 			if bonus != 'set':
-				text += data.name + ': '
+				if data.has('container') and data.container == 'resists' and !(value is bool or value is Array) and value >= 100:
+					text += get_resist_effect_name(data.code).capitalize() + ': '
+				else:
+					text += data.name + ': '
 			text += make_bonus_value_string(bonus, data, value) + '\n'
 	return text
 
@@ -656,6 +659,8 @@ func make_bonus_value_string(bonus_type, data, value):
 	var change = ''
 	match bonus_type:
 		"add", "add2":
+			if data.has('container') and data.container == 'resists' and value >= 100:
+				return '{color=green|' + tr("IMMUNITY") + '}'
 			text += '{color='
 			if data.percent and (!data.has('base_100') or !data.base_100):
 				value = value*100
@@ -708,6 +713,12 @@ func make_bonus_value_string(bonus_type, data, value):
 			text = text.trim_suffix(', ')
 			text += '}'
 	return text
+
+func get_resist_effect_name(stat):
+	var effect_id = stat.trim_prefix('resist_')
+	if variables.resists_list.has(effect_id):
+		return tr("DAMAGETYPE%s" % effect_id.to_upper())
+	return tr("EFFECTNAME_%s" % effect_id.to_upper())
 
 
 func build_oneline_desc_for_bonusstats(bonusstats, mul = 1):

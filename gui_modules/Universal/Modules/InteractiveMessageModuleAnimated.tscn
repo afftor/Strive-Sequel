@@ -293,8 +293,10 @@ custom_constants/line_separation = -8
 custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[color=#72a887]Test Text[/color]"
-text = "Test Text"
+text = "Test Text
+"
 fit_content_height = true
+scroll_active = false
 
 [node name="hotkey" type="Label" parent="BackgroundT1/ScrollContainer/VBoxContainer/Button"]
 visible = false

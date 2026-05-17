@@ -111,7 +111,10 @@ var skills = {
 		tags = ['support', 'buff'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_t_airshield', duration = 5})], 
+		effects = [
+			Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('trap')}),
+			Effectdata.rebuild_template({effect = 'e_t_airshield', duration = 5})
+		],
 		cost = {mp = 7},
 		charges = 0,
 		combatcooldown = 0,
