@@ -1,0 +1,246 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_class_rmb.png" type="Texture" id=1]
+[ext_resource path="res://gui_modules/CharacterInfo/ClassInformationPanel.gd" type="Script" id=2]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/panel_simpleclass.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/iconsclasses/Master.png" type="Texture" id=4]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gui/universal/skill_frame.png" type="Texture" id=7]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/Fonts_v2/Noto_Serif/NotoSerif-Italic.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_24.tres" type="DynamicFont" id=11]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 700, 820 )
+
+[sub_resource type="DynamicFont" id=30]
+size = 22
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 36
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = ExtResource( 8 )
+
+[node name="ClassPanel" type="Panel"]
+margin_left = 569.0
+margin_top = 70.0154
+margin_right = 1269.0
+margin_bottom = 890.015
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control2" type="Control" parent="."]
+show_behind_parent = true
+margin_left = -1036.0
+margin_top = -455.0
+margin_right = 1896.0
+margin_bottom = 1463.0
+
+[node name="Background" type="Panel" parent="."]
+visible = false
+self_modulate = Color( 0, 0, 0, 0.823529 )
+show_behind_parent = true
+margin_right = 700.0
+margin_bottom = 974.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+visible = false
+margin_left = -586.0
+margin_top = -134.052
+margin_right = 1363.0
+margin_bottom = 970.948
+
+[node name="descript" type="RichTextLabel" parent="."]
+margin_left = 45.0
+margin_top = 587.0
+margin_right = 670.0
+margin_bottom = 777.0
+custom_colors/default_color = Color( 1, 0.721569, 0.196078, 1 )
+custom_fonts/normal_font = SubResource( 30 )
+bbcode_enabled = true
+bbcode_text = "Apprenticeship is the first step of any mage aspirant. Capable of both combat, healing and social magic, but their strength is not the highest. Casting some spells also heavily relies no mana. "
+text = "Apprenticeship is the first step of any mage aspirant. Capable of both combat, healing and social magic, but their strength is not the highest. Casting some spells also heavily relies no mana. "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="."]
+margin_left = 261.0
+margin_top = 12.0
+margin_right = 676.0
+margin_bottom = 59.0
+custom_colors/font_color = Color( 0.878431, 0.772549, 0.345098, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+show_behind_parent = true
+margin_top = -2.0
+margin_right = 250.0
+margin_bottom = 248.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+visible = false
+show_behind_parent = true
+margin_left = -3.0
+margin_top = 1.0
+margin_right = 254.0
+margin_bottom = 254.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="ReqIcons" type="HBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 266.0
+margin_right = 232.0
+margin_bottom = 324.0
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="ReqIcons"]
+visible = false
+margin_left = 81.0
+margin_right = 131.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 50, 50 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ReqIcons/Icon"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 26.0
+margin_top = 29.0
+custom_colors/font_color = Color( 0.0313726, 0.980392, 0.0235294, 1 )
+custom_fonts/font = ExtResource( 11 )
+
+[node name="reqs" type="RichTextLabel" parent="."]
+margin_left = 20.0
+margin_top = 365.0
+margin_right = 233.0
+margin_bottom = 533.0
+theme = ExtResource( 5 )
+custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/normal_font = SubResource( 4 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bonus" type="RichTextLabel" parent="."]
+margin_left = 261.0
+margin_top = 59.0
+margin_right = 676.0
+margin_bottom = 250.0
+theme = ExtResource( 5 )
+custom_fonts/normal_font = ExtResource( 9 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SocialSkills" type="ScrollContainer" parent="."]
+margin_left = 261.0
+margin_top = 447.633
+margin_right = 659.0
+margin_bottom = 547.633
+scroll_vertical_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SocialSkills"]
+margin_right = 398.0
+size_flags_horizontal = 3
+
+[node name="Button" type="TextureRect" parent="SocialSkills/HBoxContainer"]
+visible = false
+margin_left = 161.0
+margin_right = 236.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="SocialSkills/HBoxContainer/Button"]
+margin_right = 76.0
+margin_bottom = 75.0
+mouse_filter = 2
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="CombatSkills" type="ScrollContainer" parent="."]
+margin_left = 261.0
+margin_top = 296.76
+margin_right = 659.0
+margin_bottom = 396.76
+scroll_vertical_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CombatSkills"]
+margin_right = 398.0
+size_flags_horizontal = 3
+
+[node name="Button" type="TextureRect" parent="CombatSkills/HBoxContainer"]
+visible = false
+margin_left = 161.0
+margin_right = 236.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="CombatSkills/HBoxContainer/Button"]
+margin_right = 76.0
+margin_bottom = 75.0
+mouse_filter = 2
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="SocialLabel" type="Label" parent="."]
+margin_left = 261.0
+margin_top = 414.684
+margin_right = 390.0
+margin_bottom = 446.684
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 9 )
+text = "SOCIAL_SKILLS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CombatLabel" type="Label" parent="."]
+margin_left = 261.0
+margin_top = 265.0
+margin_right = 414.0
+margin_bottom = 297.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 9 )
+text = "COMBAT_SKILLS"

@@ -67,7 +67,7 @@ func show_slave_info():
 			var name = ResourceScripts.descriptions.get_class_name(prof, person)
 			newnode.get_node("Label").text = name
 			newnode.get_node("ProfIcon").texture = prof.icon
-#			newnode.connect('signal_RMB_release', gui_controller, 'show_class_info', [prof.code, person])
+			newnode.connect('signal_RMB_release', gui_controller, 'show_class_info', [i, person])
 #			var temptext = "[center]"+ResourceScripts.descriptions.get_class_name(prof,person) + "[/center]\n"+ResourceScripts.descriptions.get_class_bonuses(person, prof) + ResourceScripts.descriptions.get_class_traits(person, prof)
 #			var social_skills = ''
 #			var combat_skills = ''
