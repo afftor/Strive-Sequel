@@ -87,9 +87,7 @@ func update(person = null):
 		newnode.get_node("Label").text = name
 		# newnode.get_node("TextureRect").rect_size = Vector2(86,86)
 		newnode.get_node("TextureRect").texture = prof.icon
-#		newnode.connect(
-#			'signal_RMB_release', gui_controller, 'show_class_info', [prof.code, person]
-#		)
+		newnode.connect('signal_RMB_release', gui_controller, 'show_class_info', [i, person])
 		globals.connectclasstooltip(newnode, person, i)
 #		var temptext = (
 #			"[center]"

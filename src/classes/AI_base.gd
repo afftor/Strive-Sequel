@@ -103,8 +103,12 @@ func _calculate_target_value(app_obj, prop_target, skill):
 			if act_targets.size() < 2:
 				res *= 0.5
 		'x_random':
-			if act_targets.size() < skill.number_rnd_targets:
-				res *= 0.5
+			if skill.number_rnd_targets is Array:
+				if act_targets.size() < skill.number_rnd_targets[1]:
+					res *= 0.5
+			else:
+				if act_targets.size() < skill.number_rnd_targets:
+					res *= 0.5
 	#taunt
 	if app_obj.has_status('taunt_soft'):
 		if app_obj.get_stat('taunt') == r_target.id:
