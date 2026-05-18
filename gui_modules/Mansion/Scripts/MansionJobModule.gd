@@ -283,9 +283,10 @@ func select_location(location):
 	var l = ResourceScripts.world_gen.get_location_from_code(location)
 	if l.has("background"):
 		$Landscape.texture = images.get_background(l.background)
-	if l.has("id"):
-		if l.id == "aliron":
-			$Landscape.texture = images.get_background("aliron")
+	if l.type == 'capital':
+		var area = ResourceScripts.game_world.areas[l.area]
+		if area.has('capital_background'):
+			$Landscape.texture = images.get_background(area.capital_background)
 
 
 func close_job_pannel():
