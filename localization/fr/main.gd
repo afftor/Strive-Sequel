@@ -332,8 +332,7 @@ var TranslationDict = {
 	#TutorialInfo
 	TUTORIALINFONAME = "Introduction",
 	TUTORIALINFOQUESTION = "C'est la première fois que vous jouez à Strive : Conquest ?",
-	TUTORIALINFOEXPLANATION = """Vous pouvez ouvrir le tutoriel quand vous le souhaitez,
-en utilisant le bouton.""",
+	TUTORIALINFOEXPLANATION = """Vous pouvez ouvrir le tutoriel quand vous le souhaitez, en utilisant %s le bouton.""",
 	TUTORIALINFODISMISS = "Terminer",
 	TUTORIALINFOENABLE = "Activer le tutoriel",
 	#Tutorial
