@@ -25,6 +25,7 @@ func _ready():
 #	quest_board()
 	input_handler.register_btn_source('quest_btn', self, 'tut_get_quest')
 	input_handler.register_btn_source('quest_accept', self, 'tut_get_AcceptQuest')
+	input_handler.register_btn_source('quest_close', self, 'tut_get_close_button')
 
 
 func tut_get_quest():
@@ -33,6 +34,8 @@ func tut_get_quest():
 			return btn.get_node("ButtonOverlay")
 func tut_get_AcceptQuest():
 	return $QuestDetails/AcceptQuest
+func tut_get_close_button():
+	return $CloseButton
 
 func selectcategory(button):
 	quest_mode = "guild"

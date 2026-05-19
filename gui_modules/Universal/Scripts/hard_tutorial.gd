@@ -274,6 +274,10 @@ var tutorials = {
 			text = 'TUTORIAL_COMBAT4',
 			panel_pos = Vector2(733,150)
 		},{
+			buttons = ['quest_close'],
+			text = 'TUTORIAL_COMBAT5',
+			panel_pos = Vector2(733,150)
+		},{
 			buttons = ['travel_btn'],
 			text = 'TUTORIAL_COMBAT5',
 			panel_pos = Vector2(733,150)
