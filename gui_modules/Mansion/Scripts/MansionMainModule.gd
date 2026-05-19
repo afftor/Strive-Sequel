@@ -941,6 +941,7 @@ func test_mode():
 
 		#globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("bracelet_found")
+		ResourceScripts.game_progress.decisions.append("act4_capital")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 
 		#input_handler.interactive_message('comic_test_1', '', {})
@@ -955,7 +956,7 @@ func test_mode():
 
 
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
-		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
+		ResourceScripts.game_progress.completed_quests.append("act4_capital")
 		#input_handler.interactive_message('purchased_cali', '', {})
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")

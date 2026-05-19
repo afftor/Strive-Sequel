@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.14.2d'
+const gameversion = '0.14.3 experimental'
 
 #time
 signal hour_tick
@@ -2163,6 +2163,12 @@ func common_effects(effects):
 						if k.partner == 'master':
 							k.partner = ResourceScripts.game_party.get_master().id
 						character.add_partner(k.partner)
+					elif k.code == 'remove_combat_skill':
+						character.unlearn_c_skill(k.skill)
+					elif k.code == 'remove_social_skill':
+						character.unlearn_skill(k.skill)
+					elif k.code == 'remove_explore_skill':
+						character.unlearn_e_skill(k.skill)
 					else:
 						character_stat_change(character, k)
 			'start_event':

@@ -238,6 +238,7 @@ ma manterrà comunque tutti i tuoi personaggi, oggetti e inventario. Usa questa 
 	CHARNAMEAMELIA = "Amelia", #
 	CHARNAMEKURO = "Kuro", #
 	CHARNAMEROUGE = "Rouge",
+	CHARNAMEERDYNA = """Erdyna""", # MISSING TRANSLATION
 	LOCATIONTHE = "Il ",
 	TOTALPRODUCTIVITY = "Produttività Totale",
 	INVENTORYCHARACTERLIST = "Personaggi",
@@ -3167,6 +3168,8 @@ Tasto di scelta rapida: 3""",
 	LOC_BEEN_REMOVED_LABEL = "La posizione è stata rimossa",
 	ARRIVED_AT_LOC_LABEL = "Arrivato sul posto",
 	RETURNED_TO_MANSION_LABEL = "tornato alla Villa",
+	CHAR_RELOCATING_TO_LOC_DESC = """[name] currently relocating to [color=yellow]%s[/color], which is located at [color=aqua]%s[/color]. [He] will be there in %s turns""", # MISSING TRANSLATION
+	CHAR_POSITIONED_AT_LOC_DESC = """[name] currently positioned at [color=yellow]%s[/color], which is located at [color=aqua]%s[/color]""", # MISSING TRANSLATION
 	TRAVEL_LABEL = "Viaggi",
 	MANSION_LABEL = "Villa",
 	CHAR_LABEL = "Persone",
@@ -20401,6 +20404,7 @@ In combattimento ripristina una quantità di salute pari al tuo valore di guarig
 	JEAN_WEDDING_SS = "Diventa il marito di Jean.",
 	JEAN_DREAM_SS = "Vedi Jean in un sogno.",
 	ROUGE_SEX_SS = "Impressiona Rouge abbastanza per giacerci.",
+	ERDYNA_CAMPFIRE_SS = """Flirt with a dragon by night's fire.""", # MISSING TRANSLATION
 	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_1 = """Spieghi ad Alise che uno dei tuoi schiavi ha bisogno di un cambio di vestiti.
 
 {color=yellow|— Ebbene, sì, l'abbigliamento adeguato dei servitori è una delle nostre specialità. Si sa, i vestiti giusti fanno una grande differenza anche per i corpi meno ideali, naturalmente abbiamo sarti che possono adattarsi a qualsiasi tipo di corpo richiesto. Ma cosa stai cercando, comunque?}""",
@@ -24656,6 +24660,9 @@ Si ferma come se ricordasse qualcosa.
 	ROUGE_MEET_OPTION_INFORMED = "Sei piuttosto ben informato.",
 	ROUGE_MEET_OPTION_SPIES = "Non ti avevo preso per uno che spia le persone.",
 	ROUGE_MEET_MELCHOR_REASON = "{color=yellow|Melchor: — L'Impero tiene d'occhio le terre circostanti e gli eventi importanti. Comunque, perché hai richiesto questo incontro? Spero non abbia niente a che fare con la volpe sotto la tua custodia. Non capisco ancora perché sia andata via con te, quindi ti terrò d'occhio attentamente qui.}",
+	ROUGE_TAX_MELCHOR_LETTER_1 = """Melchor glances up as you enter.
+
+{color=yellow|Melchor: — You again. I have no infromation on your ordeal worth sharing yet.}""", # MISSING TRANSLATION
 	ROUGE_MEET_OPTION_LETTER = "Ho una lettera per te.",
 	ROUGE_MEET_OPTION_ROUGE_MESSAGE = "In realtà, Rouge mi ha chiesto di portarti questo messaggio.",
 	ROUGE_MEET_MELCHOR_LETTER = """Con uno sguardo non meno infastidito prende la lettera da Rouge e ne rompe l'incantamento con il suo sigillo personale. Scorrendo rapidamente lo scritto, te la rispinge.
@@ -24909,6 +24916,8 @@ Rouge's smile thins for a moment.
 	ROUGE_MELCHOR_VISIT_OPTION_LETTER = "*Consegna la lettera di Rouge.*",
 	ROUGE_MELCHOR_VISIT_OPTION_RAID = "*Segnala il magazzino.*",
 	ROUGE_MELCHOR_VISIT_OPTION_REWARD = "*Consulta sul compito del magazzino.*",
+	ROUGE_MELCHOR_VISIT_OPTION_TAX_INTRO = """*Visit Melchor's office.*""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_VISIT_OPTION_TAX_RETURN = """*Return with the tax records.*""", # MISSING TRANSLATION
 
 	ROUGE_CAPITAL_OPTION_FIND = "Trova Rouge",
 	ROUGE_CAPITAL_OPTION_MELCHOR = "Visita Melchor",
@@ -24916,6 +24925,108 @@ Rouge's smile thins for a moment.
 	ROUGE_CAPITAL_OPTION_WAREHOUSE = "Magazzino sospetto",
 	ROUGE_CAPITAL_OPTION_RAID = "Incontra Melchor",
 	ROUGE_CAPITAL_OPTION_REWARD = "Incontra Melchor",
+	ROUGE_TAX_SETTLEMENT_NAME = """Remote Settlement""", # MISSING TRANSLATION
+	ROUGE_TAX_SETTLEMENT_DESC = """A remote emperila settlement with outstanding tax obligations.""", # MISSING TRANSLATION
+	ROUGE_TAX_SETTLEMENT_VISIT = """Investigate the settlement.""", # MISSING TRANSLATION
+	ROUGE_CAPITAL_OPTION_TAX_REGION = """Administrative region""", # MISSING TRANSLATION
+	ROUGE_QUEST_STAGE_TAX_INTRO = """Visit the Chancellor's office in the capital.""", # MISSING TRANSLATION
+	ROUGE_QUEST_STAGE_TAX_ERRAND = """Travel to the administrative region and settle the unpaid taxes.""", # MISSING TRANSLATION
+	ROUGE_QUEST_STAGE_TAX_DONE = """Return to Melchor with the signed records.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_INTRO_START = """{color=yellow|Melchor: — You again. [name], if I'm not mistaken. Mayor of Aliron, hunting down artifacts and already involved with the elves and the dwarven kingdom.}""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_OPTION_INFORMED = """You are quite well informed.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_OPTION_SPIES = """I didn't take you for someone who follows foreign mayors.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_OPTION_DIRECT = """Then you already know why I came to the capital.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_INTRO_RESPONSE = """{color=yellow|Melchor: — The Empire keeps close watch on surrounding lands and important events. Your movements are hardly subtle.}
+
+Melchor lets the matter hang long enough to make clear he expects you to speak.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_ARTIFACT_PUSH = """You explain that you are searching for an artifact hidden somewhere in the capital and need information to find it.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_OPTION_ARTIFACT_INFO = """I need information about the artifact hidden in the capital.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_OPTION_ARTIFACT_DIRECT = """Let's be direct. I'm looking for an artifact, and I need your help finding it.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_OPTION_ARTIFACT_MATTERS = """If you know what I'm after, then you know this matters.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_REFUSAL = """{color=yellow|Melchor: — Let me spare you the effort of dressing this up as necessity. I will not share information about imperial relics with an outsider. If there is an artifact within the capital, then it falls under imperial authority, not the curiosity of Aliron's mayor.}
+
+He presses his seal against the topmost document with more force than necessary.
+
+{color=yellow|Melchor: — You may have earned some reputation beyond our borders, but reputation is not jurisdiction.}""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_OPTION_EARN = """Surely there's some way I can earn it?""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_OPTION_PRICE = """I need this information, name your price.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_ASSIGNED = """{color=yellow|Melchor: — If you insist on being useful to the Empire, then prove you can handle imperial work without turning it into another spectacle. There is a remote administrative region that has fallen behind on its tax obligations. You will go there, collect what is owed, and return with the proper records.}""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_OPTION_COMPLAIN_TAXES = """You're sending me to collect taxes?""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_OPTION_COMPLAIN_MUNDANE = """What the hell kind of mundane task is that?""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_OPTION_ACCEPT = """Fine. Give me the location.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_COMPLAINT_RESPONSE = """{color=yellow|Melchor: — Yes. The machinery that keeps cities fed, soldiers paid, and roads maintained. Did you expect a glorious trial? This is how it works for capital clerks. They earn it through boring, mundane work that proves discipline, patience, and obedience to procedure. It is a tradition meant to test one's loyalty and responsibility.}""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_CLOSED = """{color=yellow|Melchor: — You'll get the details on the spot. Now you better not waste my time.}
+
+He writes a short authorization, seals it, and slides it across the desk. You take the document and the marked location.""", # MISSING TRANSLATION
+	ROUGE_TAX_REGION_ARRIVAL = """You arrive at the administrative region marked on Melchor's document. The place is far from the capital's polished streets, with scattered farms, rough roads, and a handful of settlements grouped around old imperial offices.
+
+After presenting Melchor's authorization, you spend some time checking the ledgers and asking around. Most settlements have paid late but eventually settled their obligations. One name, however, appears again and again in the unpaid records — a settlement that has not paid any standard taxes for several periods in a row.""", # MISSING TRANSLATION
+	ROUGE_TAX_REGION_OFFICIALS_BRIEF = """The local office stands apart from the rest of the settlement. Unlike the residents outside, the officials waiting there are humans from the Empire, dressed in formal but travel-worn uniforms.
+
+{color=aqua|Official: — You must be the one sent from the capital. Good. Perhaps now someone will finally take this seriously.}
+
+{color=aqua|Official: — The orcs here have been refusing to pay their standard taxes. Not delayed, not disputed through proper channels, simply refused. They have grown increasingly bold about ignoring imperial authority. We have tried reminders, warnings, and negotiations. If this continues, the Empire might be forced to send some soldiers to investigate.}""", # MISSING TRANSLATION
+	ROUGE_TAX_OPTION_GO_SEE = """I'll go see what's happening.""", # MISSING TRANSLATION
+	ROUGE_TAX_OPTION_HEAR_THEM = """If they refuse imperial authority, I need to hear it from them.""", # MISSING TRANSLATION
+	ROUGE_TAX_DRUKAR_APPROACH = """You cross the settlement under the wary eyes of its residents. Some stop working as you pass, others mutter to each other in low voices, but no one tries to block your way.
+
+At the building the official described, you find several orcs gathered in a tense meeting.""", # MISSING TRANSLATION
+	ROUGE_TAX_DRUKAR_SPEECH = """An older orc stands at the center of the hall, his heavy voice carrying over the crowd. The others listen with clenched fists and grim faces.
+
+{color=yellow|Drukar: — How many more seasons will we bow our heads and hand over what little we have? We built this place with our own hands. Our people bleed here, not the fat officials hiding behind seals and ledgers. Orcs should answer to orc rulers, not distant humans who remember us only when they want payment!}
+
+The gathered orcs answer him with rough voices of agreement before your presence is noticed.""", # MISSING TRANSLATION
+	ROUGE_TAX_DRUKAR_MEET_NONORC = """{color=yellow|Drukar: — Another imperial messenger? Come to threaten us with papers and soldiers?}
+
+You explain that Melchor sent you to investigate the unpaid taxes and return with the proper records.""", # MISSING TRANSLATION
+	ROUGE_TAX_DRUKAR_MEET_ORC = """{color=yellow|Drukar: — You? An orc? Why are you carrying the Empire's leash for them?}
+
+You explain that Melchor sent you to investigate the unpaid taxes and return with the proper records.
+
+{color=yellow|Drukar: — So they found one of our own to dress their demands in a friendlier face. Doesn't change what you came for. Our money and our obedience.}""", # MISSING TRANSLATION
+	ROUGE_TAX_DRUKAR_REFUSE = """{color=yellow|Drukar: — We refuse. Go back and tell your Chancellor that this settlement is done feeding the Empire.}""", # MISSING TRANSLATION
+	ROUGE_TAX_OPTION_FORCE = """Then I'll make you pay by force.""", # MISSING TRANSLATION
+	ROUGE_TAX_OPTION_PERSUADE_PAY = """You better forget about your rebellion — you are too weak against the Empire.""", # MISSING TRANSLATION
+	ROUGE_TAX_OPTION_PERSUADE_COVERUP = """Keep your rebellion quiet and pay for now. Let the records say nothing happened.""", # MISSING TRANSLATION
+	ROUGE_TAX_OPTION_PAY = """Forget it, you're not worth the trouble. I'll pay for it myself. (-6000 gold)""", # MISSING TRANSLATION
+	ROUGE_TAX_OPTION_LEAVE = """I'll come back later.""", # MISSING TRANSLATION
+	ROUGE_TAX_DRUKAR_COMBAT_START = """{color=yellow|Drukar: — Then come take them.}
+
+Several orcs draw their weapons around him.""", # MISSING TRANSLATION
+	ROUGE_TAX_DRUKAR_VICTORY = """With Drukar and his supporters defeated, the remaining orcs lose the will to resist. The settlement's leaders surrender the overdue taxes and sign the necessary records with sullen obedience.""", # MISSING TRANSLATION
+	ROUGE_TAX_DRUKAR_PERSUADE_PAY = """You tell Drukar that whatever anger he feels, an open refusal only gives the Empire an excuse to crush the settlement. If he wants to protect his people, he needs to choose a battle they can survive.
+
+For a while, the hall stays tense. Then Drukar spits to the side and lowers his hand from his weapon.
+
+{color=yellow|Drukar: — Fine. We pay this time.}
+
+The settlement's leaders gather the overdue taxes and sign the records, though none of them look pleased about it.""", # MISSING TRANSLATION
+	ROUGE_TAX_DRUKAR_PERSUADE_COVERUP = """You tell Drukar that rebellion cannot begin with a missing tax record. If the Empire notices open defiance now, soldiers will arrive before the settlement is ready.
+
+Drukar studies you with narrowed eyes, anger giving way to reluctant calculation.
+
+{color=yellow|Drukar: — Hmph. So we buy silence with the coin they demanded anyway.}
+
+He turns back to the gathered orcs. The settlement's leaders hand over the overdue taxes and sign the records, keeping their resentment carefully quiet.""", # MISSING TRANSLATION
+	ROUGE_TAX_DRUKAR_PAY = """You offer to cover the missing taxes yourself, making it clear that the payment will end the immediate dispute but not solve the settlement's larger grievance.
+
+Drukar looks at you in open suspicion.
+
+{color=yellow|Drukar: — You would pay the Empire from your own purse just to spare them trouble?}
+
+{color=yellow|Drukar: — Fine. If you want to waste your gold, we won't stop you.}
+
+You pay the overdue amount and secure the proper records from the local office.""", # MISSING TRANSLATION
+	ROUGE_TAX_REGION_RETURN = """{color=yellow|Drukar: — Back again? Did the Empire give you better threats, or did you come up with them yourself?}""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_RETURN = """You return to Melchor's office with the signed records and proof that the overdue taxes have been settled. He reads through the documents carefully, lingering on every seal and signature before setting them aside.
+
+{color=yellow|Melchor: — Hmph. Adequate. The payments are accounted for, the records are clean, and the region has been reminded that imperial obligations are not optional.}
+
+He leans back, his severe expression easing only slightly.
+
+{color=yellow|Melchor: — I will look into the information you requested. Imperial records are not something I can simply hand over at a whim, even now. It will take some time.}
+
+{color=yellow|Melchor: — You have done what I asked. Return later, and we will see what can be found.}""", # MISSING TRANSLATION
 	ROUGE_CHAT_OPTION_REPORT = "Il tuo compito è fatto.",
 	
 	ROUGE_FURNITURE_REWARD = """{color=yellow|Rouge: — Quindi l'hai davvero fatto. La mia stanza finalmente avrà l'aspetto di qualcuno con gusto.}
@@ -26411,6 +26522,9 @@ Incastonata nella roccia davanti a voi c'è un paio di porte gigantesche. Sono v
 Erdyna si avvicina, strizzando gli occhi mentre studia i simboli.
 
 {color=yellow|Erdyna: — Non è una scrittura che abbia mai visto. Non sembra imperiale, nemmeno nanica.}""",
+	ACT4_CATACOMB_DEEPER_1B = """Erdyna steps closer, narrowing her eyes as she studies the symbols.
+
+{color=yellow|Erdyna: — That's no script I've ever seen before. It doesn't look imperial, not dwarven either.}""", # MISSING TRANSLATION
 	ACT4_CATACOMB_DEEPER_1_OPTION_EXAMINE = "Esamina la scritta.",
 	ACT4_CATACOMB_DOORS_HELEVIEL_0 = """Le lettere sono allo stesso tempo taglienti ed eleganti, ogni linea incisa con precisione innaturale. Anche senza capirle, c'è qualcosa di deliberato e severo nella loro forma, come se l'iscrizione non fosse mai stata pensata per dare il benvenuto a nessuno.
 
@@ -26429,6 +26543,15 @@ Erdyna si volta verso di lei bruscamente.
 Heleviel annuisce lentamente, ancora fissando le porte.
 
 {color=yellow|Heleviel: — Un clan d'élite delle tradizioni elfiche più antiche. Segretissimi anche per i nostri standard, orgogliosi e profondamente interessati a preservare la propria eredità. Mantengono ancora la loro sede nelle nostre terre.}""",
+	ACT4_CATACOMB_DOORS_HELEVIEL_0B = """{color=yellow|Heleviel: — This is ancient elven script... but not a form most scholars would ever read. It belongs to a tradition associated with the dragon hunters.}
+
+Erdyna turns to her sharply.
+
+{color=aqua|Erdyna: — Dragon hunters?}
+
+Heleviel gives a slow nod, still staring at the doors.
+
+{color=yellow|Heleviel: — An elite clan from the older elven traditions. Secretive even by our standards, proud, and deeply concerned with preserving their own legacy. They still maintain their seat at our lands.}""", # MISSING TRANSLATION
 	ACT4_CATACOMB_DOORS_HELEVIEL_1 = "{color=yellow|Heleviel: — Collegati, quasi certamente. Se abbiano costruito questo posto, lo abbiano sigillato, o lo abbiano semplicemente reclamato in seguito, non saprei dire. Ma questa scritta non è stata messa qui per caso.}",
 	ACT4_CATACOMB_DOORS_HELEVIEL_2 = """Lo sguardo di Heleviel indugia sull'iscrizione un momento in più prima di espirare piano.
 

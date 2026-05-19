@@ -140,7 +140,9 @@ var data = {
 				bonus_effects = [
 					{code = "decision", value = "rouge_refused"},
 					{code = "complete_quest", value = "act_4_capital"},
-				] #2add more
+					{code = "progress_quest", value = "rouge_quest", stage = "tax_intro"},
+					{code = "update_city"},
+				]
 			}
 		]
 	},
@@ -533,11 +535,28 @@ var data = {
 		tags = ["dialogue_scene", "master_translate"],
 		text = "ROUGE_MELCHOR_VISIT_OFFICE",
 		options = [
-			{code = "rouge_meet_melchor_start", text = "ROUGE_MELCHOR_VISIT_OPTION_LETTER", reqs = [{type = "active_quest_stage", value = "rouge_quest", stage = "melchor"}], type = "next_dialogue"},
+			{code = "rouge_melchor_tax_intro_1", text = "ROUGE_MELCHOR_VISIT_OPTION_TAX_INTRO", reqs = [{type = "active_quest_stage", value = "rouge_quest", stage = "tax_intro"}], type = "next_dialogue"},
+			{code = "rouge_melchor_tax_return_1", text = "ROUGE_MELCHOR_VISIT_OPTION_TAX_RETURN", reqs = [{type = "active_quest_stage", value = "rouge_quest", stage = "tax_done"}], type = "next_dialogue"},
+			{code = "rouge_meet_melchor_start", text = "ROUGE_MELCHOR_VISIT_OPTION_LETTER", reqs = [{type = "active_quest_stage", value = "rouge_quest", stage = "melchor"}, {type = "decision", value = "rouge_refused", check = false}], type = "next_dialogue"},
+			{code = "rouge_tax_melchor_letter_1", text = "ROUGE_MELCHOR_VISIT_OPTION_LETTER", reqs = [{type = "active_quest_stage", value = "rouge_quest", stage = "melchor"}, {type = "decision", value = "rouge_refused", check = true}], type = "next_dialogue"},
 			{code = "rouge_report_melchor_start", text = "ROUGE_MELCHOR_VISIT_OPTION_RAID", reqs = [{type = "active_quest_stage", value = "rouge_quest", stage = "raid"}], type = "next_dialogue"},
 			{code = "rouge_report_melchor_return", text = "ROUGE_MELCHOR_VISIT_OPTION_REWARD", reqs = [{type = "active_quest_stage", value = "rouge_quest", stage = "reward"}, {type = "decision", value = "KetchKilled", check = false}], type = "next_dialogue"},
 			{code = "rouge_report_melchor_return_alternate", text = "ROUGE_MELCHOR_VISIT_OPTION_REWARD", reqs = [{type = "active_quest_stage", value = "rouge_quest", stage = "reward"}, {type = "decision", value = "KetchKilled", check = true}], type = "next_dialogue"},
+			{code = "act4_erdyna_melchor_archives_1", text = "ACT4_ERDYNA_EMPIRE_CAPITAL_OPT_MELCHOR", reqs = [{type = "active_quest_stage", value = "erdyna_quest", stage = "act4_erdyna_archives", state = true}, {type = "event_seen", value = "act4_erdyna_melchor_archives_1", check = false}], type = "next_dialogue"},
 			{code = "close", text = "DIALOGUECLOSE", reqs = [], type = "next_dialogue"}
+		]
+	},
+
+	rouge_tax_melchor_letter_1 = {
+		reqs = [],
+		image = null,
+		music = "empire_capital",
+		character = "chancellor",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_TAX_MELCHOR_LETTER_1",
+		options = [
+			{code = "rouge_meet_melchor_letter", text = "ROUGE_MEET_OPTION_LETTER", reqs = [], type = "next_dialogue", dialogue_argument = 1},
+			{code = "rouge_meet_melchor_letter", text = "ROUGE_MEET_OPTION_ROUGE_MESSAGE", reqs = [], type = "next_dialogue", dialogue_argument = 1},
 		]
 	},
 
@@ -1266,5 +1285,384 @@ var data = {
 		save_scene_to_gallery = true,
 		text = "ROUGE_SEX_8",
 		options = [{code = "close", text = "DIALOGUECLOSE", reqs = [], type = "next_dialogue"}]
+	},
+
+	# --- Refused-path: first Melchor office meeting + tax errand ---
+
+	rouge_melchor_tax_intro_1 = {
+		reqs = [],
+		image = null,
+		music = "empire_capital",
+		character = "chancellor",
+		tags = ["dialogue_scene", "master_translate"],
+		text = "ROUGE_MELCHOR_TAX_INTRO_START",
+		options = [
+			{code = "rouge_melchor_tax_intro_2", text = "ROUGE_MELCHOR_TAX_OPTION_INFORMED", reqs = [], type = "next_dialogue"},
+			{code = "rouge_melchor_tax_intro_2", text = "ROUGE_MELCHOR_TAX_OPTION_SPIES", reqs = [], type = "next_dialogue"},
+			{code = "rouge_melchor_tax_intro_2", text = "ROUGE_MELCHOR_TAX_OPTION_DIRECT", reqs = [], type = "next_dialogue"},
+		]
+	},
+	rouge_melchor_tax_intro_2 = {
+		reqs = [],
+		image = null,
+		character = "chancellor",
+		tags = ["dialogue_scene", "master_translate"],
+		text = "ROUGE_MELCHOR_TAX_INTRO_RESPONSE",
+		options = [
+			{code = "rouge_melchor_tax_artifact_2", text = "ROUGE_MELCHOR_TAX_OPTION_ARTIFACT_INFO", reqs = [], type = "next_dialogue"},
+			{code = "rouge_melchor_tax_artifact_2", text = "ROUGE_MELCHOR_TAX_OPTION_ARTIFACT_DIRECT", reqs = [], type = "next_dialogue"},
+			{code = "rouge_melchor_tax_artifact_2", text = "ROUGE_MELCHOR_TAX_OPTION_ARTIFACT_MATTERS", reqs = [], type = "next_dialogue"},
+		]
+	},
+	rouge_melchor_tax_artifact_2 = {
+		reqs = [],
+		image = null,
+		character = "chancellor",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_MELCHOR_TAX_REFUSAL",
+		options = [
+			{code = "rouge_melchor_tax_task_1", text = "ROUGE_MELCHOR_TAX_OPTION_EARN", reqs = [], type = "next_dialogue"},
+			{code = "rouge_melchor_tax_task_1", text = "ROUGE_MELCHOR_TAX_OPTION_PRICE", reqs = [], type = "next_dialogue"},
+		]
+	},
+	rouge_melchor_tax_task_1 = {
+		reqs = [],
+		image = null,
+		character = "chancellor",
+		tags = ["dialogue_scene", "master_translate"],
+		text = "ROUGE_MELCHOR_TAX_ASSIGNED",
+		options = [
+			{code = "rouge_melchor_tax_task_complaint", text = "ROUGE_MELCHOR_TAX_OPTION_COMPLAIN_TAXES", reqs = [], type = "next_dialogue"},
+			{code = "rouge_melchor_tax_task_complaint", text = "ROUGE_MELCHOR_TAX_OPTION_COMPLAIN_MUNDANE", reqs = [], type = "next_dialogue"},
+			{code = "rouge_melchor_tax_task_close", text = "ROUGE_MELCHOR_TAX_OPTION_ACCEPT", reqs = [], type = "next_dialogue"},
+		]
+	},
+	rouge_melchor_tax_task_complaint = {
+		reqs = [],
+		image = null,
+		character = "chancellor",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_MELCHOR_TAX_COMPLAINT_RESPONSE",
+		options = [
+			{code = "rouge_melchor_tax_task_close", text = "ROUGE_MELCHOR_TAX_OPTION_ACCEPT", reqs = [], type = "next_dialogue"},
+		]
+	},
+	rouge_melchor_tax_task_close = {
+		reqs = [],
+		image = null,
+		character = "chancellor",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_MELCHOR_TAX_CLOSED",
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = "progress_quest", value = "rouge_quest", stage = "tax_errand"},
+					{code = "make_quest_location", value = "quest_tax_settlement"},
+					{code = "update_city"},
+				]
+			}
+		]
+	},
+
+	# --- Tax region location events ---
+
+	rouge_tax_region_start = {
+		reqs = [],
+		image = null,
+		tags = ["dialogue_scene", "master_translate"],
+		text = "ROUGE_TAX_REGION_ARRIVAL",
+		options = [{code = "rouge_tax_region_officials", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
+	},
+	rouge_tax_region_officials = {
+		reqs = [],
+		image = null,
+		tags = ["dialogue_scene", "master_translate"],
+		text = "ROUGE_TAX_REGION_OFFICIALS_BRIEF",
+		options = [
+			{code = "rouge_tax_drukar_approach", text = "ROUGE_TAX_OPTION_GO_SEE", reqs = [], type = "next_dialogue"},
+			{code = "rouge_tax_drukar_approach", text = "ROUGE_TAX_OPTION_HEAR_THEM", reqs = [], type = "next_dialogue"},
+		]
+	},
+	rouge_tax_drukar_approach = {
+		reqs = [],
+		image = null,
+		tags = ["dialogue_scene"],
+		text = "ROUGE_TAX_DRUKAR_APPROACH",
+		options = [{code = "rouge_tax_drukar_meeting", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
+	},
+	rouge_tax_drukar_meeting = {
+		reqs = [],
+		image = null,
+		tags = ["dialogue_scene"],
+		text = "ROUGE_TAX_DRUKAR_SPEECH",
+		options = [{code = "rouge_tax_drukar_meet", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
+	},
+	rouge_tax_drukar_meet = {
+		variations = [
+			{
+				reqs = [{type = "master_check", value = [{code = "race", race = "orc", check = true}]}],
+				image = null,
+				character = "drukar",
+				tags = ["dialogue_scene", "master_translate"],
+				text = "ROUGE_TAX_DRUKAR_MEET_ORC",
+				options = [{code = "rouge_tax_drukar_hub", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
+			},
+			{
+				reqs = [],
+				image = null,
+				character = "drukar",
+				tags = ["dialogue_scene", "master_translate"],
+				text = "ROUGE_TAX_DRUKAR_MEET_NONORC",
+				options = [{code = "rouge_tax_drukar_hub", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
+			},
+		]
+	},
+	rouge_tax_drukar_hub = {
+		reqs = [],
+		image = null,
+		character = "drukar",
+		tags = ["dialogue_scene", "master_translate"],
+		text = "ROUGE_TAX_DRUKAR_REFUSE",
+		options = [
+			{code = "rouge_tax_drukar_combat_start", text = "ROUGE_TAX_OPTION_FORCE", reqs = [], type = "next_dialogue"},
+			{code = "rouge_tax_drukar_persuade_pay", text = "ROUGE_TAX_OPTION_PERSUADE_PAY", reqs = [{type = "master_check", value = [{code = "stat", stat = "charm_factor", operant = "gte", value = 4}]}], type = "next_dialogue"},
+			{code = "rouge_tax_drukar_persuade_coverup", text = "ROUGE_TAX_OPTION_PERSUADE_COVERUP", reqs = [{type = "master_check", value = [{code = "stat", stat = "charm_factor", operant = "gte", value = 6}]}], type = "next_dialogue"},
+			{code = "rouge_tax_drukar_pay", text = "ROUGE_TAX_OPTION_PAY", reqs = [{type = "has_items", name = "gold", operant = "gte", value = 6000}], type = "next_dialogue"},
+			{code = "close", text = "ROUGE_TAX_OPTION_LEAVE", reqs = [], type = "next_dialogue"},
+		]
+	},
+	rouge_tax_drukar_combat_start = {
+		reqs = [],
+		image = null,
+		character = "drukar",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_TAX_DRUKAR_COMBAT_START",
+		options = [
+			{code = "quest_fight", args = "rouge_drukar_fight", text = "DIALOGUEFIGHTOPTION", reqs = [], type = "next_dialogue"}
+		]
+	},
+	rouge_tax_drukar_victory = {
+		reqs = [],
+		image = null,
+		tags = ["dialogue_scene"],
+		text = "ROUGE_TAX_DRUKAR_VICTORY",
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = "progress_quest", value = "rouge_quest", stage = "tax_done"},
+					{code = "remove_quest_location", value = "quest_tax_settlement"},
+					{code = "update_city"},
+				]
+			}
+		]
+	},
+	rouge_tax_drukar_persuade_pay = {
+		reqs = [],
+		image = null,
+		character = "drukar",
+		tags = ["dialogue_scene", "master_translate"],
+		text = "ROUGE_TAX_DRUKAR_PERSUADE_PAY",
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = "progress_quest", value = "rouge_quest", stage = "tax_done"},
+					{code = "remove_quest_location", value = "quest_tax_settlement"},
+					{code = "update_city"},
+				]
+			}
+		]
+	},
+	rouge_tax_drukar_persuade_coverup = {
+		reqs = [],
+		image = null,
+		character = "drukar",
+		tags = ["dialogue_scene", "master_translate"],
+		text = "ROUGE_TAX_DRUKAR_PERSUADE_COVERUP",
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = "progress_quest", value = "rouge_quest", stage = "tax_done"},
+					{code = "remove_quest_location", value = "quest_tax_settlement"},
+					{code = "update_city"},
+				]
+			}
+		]
+	},
+	rouge_tax_drukar_pay = {
+		reqs = [],
+		image = null,
+		character = "drukar",
+		tags = ["dialogue_scene", "master_translate"],
+		text = "ROUGE_TAX_DRUKAR_PAY",
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = "money_change", operant = "-", value = 6000},
+					{code = "progress_quest", value = "rouge_quest", stage = "tax_done"},
+					{code = "remove_quest_location", value = "quest_tax_settlement"},
+					{code = "update_city"},
+				]
+			}
+		]
+	},
+
+	# Repeat visit to tax region after leaving without completing
+	rouge_tax_region_return = {
+		reqs = [],
+		image = null,
+		character = "drukar",
+		tags = ["dialogue_scene", "master_translate"],
+		text = "ROUGE_TAX_REGION_RETURN",
+		options = [{code = "rouge_tax_drukar_hub", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
+	},
+
+	# --- Refused-path: return to Melchor with records ---
+
+	rouge_melchor_tax_return_1 = {
+		reqs = [],
+		image = null,
+		music = "empire_capital",
+		character = "chancellor",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_MELCHOR_TAX_RETURN",
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = "progress_quest", value = "rouge_quest", stage = "rouge_meet"},
+					{code = "add_timed_event", value = "rouge_tax_letter_arrive", args = [{type = "add_to_date", date = [2, 2], hour = 3}]},
+					{code = "update_city"},
+				]
+			}
+		]
+	},
+
+	rouge_tax_letter_arrive = {
+		reqs = [],
+		image = null,
+		tags = ["dialogue_scene"],
+		text = "ROUGE_TAX_LETTER_ARRIVE",
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = "update_city"},
+				]
+			}
+		]
+	},
+
+	rouge_tax_capital_meet_1 = {
+		reqs = [],
+		image = null,
+		music = "empire_capital",
+		character = "rouge",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_TAX_CAPITAL_MEET_1",
+		options = [
+			{code = "rouge_tax_capital_meet_2", text = "ROUGE_TAX_CAPITAL_MEET_1_OPTION_LISTEN", reqs = [], type = "next_dialogue"},
+			{code = "rouge_tax_capital_meet_2", text = "ROUGE_TAX_CAPITAL_MEET_1_OPTION_WHY", reqs = [], type = "next_dialogue"},
+		]
+	},
+
+	rouge_tax_capital_meet_2 = {
+		reqs = [],
+		image = null,
+		music = "empire_capital",
+		character = "rouge",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_TAX_CAPITAL_MEET_2",
+		options = [
+			{
+				code = "rouge_tax_capital_accept",
+				text = "ROUGE_TAX_CAPITAL_MEET_2_OPTION_ACCEPT",
+				reqs = [],
+				type = "next_dialogue",
+			},
+			{
+				code = "rouge_tax_capital_refuse",
+				text = "ROUGE_TAX_CAPITAL_MEET_2_OPTION_REFUSE",
+				reqs = [],
+				type = "next_dialogue",
+			},
+		]
+	},
+
+	rouge_tax_capital_accept = {
+		reqs = [],
+		image = null,
+		music = "empire_capital",
+		character = "rouge",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_TAX_CAPITAL_ACCEPT",
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = "decision", value = "rouge_accepted_late"},
+					{code = "make_story_character", value = "Rouge", recruit_from_location = true},
+					{code = "plan_mansion_event", value = "rouge_mansion_arrival"},
+					{code = "unique_character_changes", value = "rouge", args = [
+						{code = "add_trait", trait = "training_s_combat", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
+						{code = "add_trait", trait = "training_s_relation", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
+						{code = "add_trait", trait = "training_obedience", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
+						{code = "add_trait", trait = "training_relation", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
+					]},
+					{code = "progress_quest", value = "rouge_quest", stage = "melchor"},
+					{code = "update_city"},
+				]
+			}
+		]
+	},
+
+	rouge_tax_capital_refuse = {
+		reqs = [],
+		image = null,
+		music = "empire_capital",
+		character = "rouge",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_TAX_CAPITAL_REFUSE",
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = "decision", value = "rouge_refused_late"},
+					{code = "progress_quest", value = "rouge_quest", stage = "melchor"},
+					{code = "update_city"},
+				]
+			}
+		]
 	},
 }

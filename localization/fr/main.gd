@@ -20309,6 +20309,8 @@ Touche de raccourci : 3""",
 	LOC_BEEN_REMOVED_LABEL = "Le lieu a été supprimé",
 	ARRIVED_AT_LOC_LABEL = "arrivé au lieu",
 	RETURNED_TO_MANSION_LABEL = "retourné au manoir",
+	CHAR_RELOCATING_TO_LOC_DESC = """[name] currently relocating to [color=yellow]%s[/color], which is located at [color=aqua]%s[/color]. [He] will be there in %s turns""", # MISSING TRANSLATION
+	CHAR_POSITIONED_AT_LOC_DESC = """[name] currently positioned at [color=yellow]%s[/color], which is located at [color=aqua]%s[/color]""", # MISSING TRANSLATION
 	TRAVEL_LABEL = "Voyage",
 	MANSION_LABEL = """Mansion""", # MISSING TRANSLATION
 	CHAR_LABEL = """Character""", # MISSING TRANSLATION

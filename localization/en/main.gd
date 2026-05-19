@@ -241,6 +241,7 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	CHARNAMEAMELIA = "Amelia",
 	CHARNAMEKURO = "Kuro",
 	CHARNAMEROUGE = "Rouge",
+	CHARNAMEERDYNA = "Erdyna",
 	LOCATIONTHE = "The ",
 	TOTALPRODUCTIVITY = "Total Productivity",
 	INVENTORYCHARACTERLIST = "Character List",
@@ -3178,6 +3179,8 @@ Hotkey: 3""",
 	LOC_BEEN_REMOVED_LABEL = "Location has been removed",
 	ARRIVED_AT_LOC_LABEL = "arrived at location",
 	RETURNED_TO_MANSION_LABEL = "returned to mansion",
+	CHAR_RELOCATING_TO_LOC_DESC = "[name] currently relocating to [color=yellow]%s[/color], which is located at [color=aqua]%s[/color]. [He] will be there in %s turns",
+	CHAR_POSITIONED_AT_LOC_DESC = "[name] currently positioned at [color=yellow]%s[/color], which is located at [color=aqua]%s[/color]",
 	TRAVEL_LABEL = "Travel",
 	MANSION_LABEL = "Mansion",
 	CHAR_LABEL = "Character",
@@ -15020,14 +15023,14 @@ Once again, Norlan makes a heavy sigh. For a moment, you notice signs of tiredne
 
 {color=yellow|Kid 1: — I told you, it moved! We should tell the guards or somebody!}
 
-{color=yellow|Kid 2: — They'll just say you're just making things up and beat us again. Come on, don't be a chicken! We'll check it out ourselves.}
+{color=aqua|Kid 2: — They'll just say you're just making things up and beat us again. Come on, don't be a chicken! We'll check it out ourselves.}
 
-{color=yellow|Kid 1: — But... What if there's a monster inside? What if it's a goblin? Or worse...""",
+{color=yellow|Kid 1: — But... What if there's a monster inside? What if it's a goblin? Or worse...}""",
 	AMELIA_SLAVE1_1_1 = """{color=yellow|Kid 2: — What if this, what if that! We'll never know until we check it out. Don't be scared!}
 
 {color=yellow|Kid 1: — No, no, no! I'm going to bring some adults here. I'm not getting close to that crate!}
 
-{color=yellow|Kid 2: — Wait... ah!}
+{color=aqua|Kid 2: — Wait... ah!}
 
 The kids run away. After a few moments, you observe the crate's lid lifting slightly. A set of wolf ears protrudes, trailed by a pair of green eyes. The eyes cautiously survey the surroundings before fixating on you. They widen in astonishment, and swiftly the lid is closed once more.""",
 	AMELIA_SLAVE1_2_1 = """The very same pair of green eyes, now brimming with tears, gaze up at you with trepidation from inside. A half-wolf girl, slave by the looks of it, is huddled within. Perhaps one of the missing individuals from the Servants Guild?
@@ -20428,6 +20431,7 @@ In combat restore the amount of health equal to your health regeneration at the 
 	JEAN_WEDDING_SS = "Become Jean's husband.",
 	JEAN_DREAM_SS = "See Jean in a dream.",
 	ROUGE_SEX_SS = "Impress Rouge Enough to be laid.",
+	ERDYNA_CAMPFIRE_SS = "Flirt with a dragon by night's fire.",
 	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_1 = """You explain to Alise that one of your slaves needs a change of clothes.
 
 {color=yellow|— Why, yes, proper servants' attire is one of our specialties. You know, the right clothes make a big difference even for less ideal bodies, naturally we have tailors who can adjust for any required body type. But what are you looking for, anyway?}""",
@@ -21218,7 +21222,9 @@ I've heard much about you and your recent deeds, and I believe it's time we met 
 
 Your admirer,
 Rouge""",
-	EMP_CITY_ENTER_0 = "You stand before the towering gates of the Grand Imperial City. A long line of travelers, traders, and all manner of strangers waits to be inspected and admitted inside. After waiting just over an hour, you edge closer, only to be halted by the guards. Their gleaming armor, worth a fortune compared to Aliron's, marks them as elite.",
+	EMP_CITY_ENTER_0 = """You stand before the towering gates of the Grand Imperial City. A long line of travelers, traders, and all manner of strangers waits to be inspected and admitted inside. After waiting just over an hour, you edge closer, only to be halted by the guards. Their gleaming armor, worth a fortune compared to Aliron's, marks them as elite.
+	
+""",
 	EMP_CITY_ENTER_0_BAD1 = "{color=yellow|— Hold it! You're not a citizen, not even of the Great Empire. The capital is closed to foreigners. Get lost.}",
 	EMP_CITY_ENTER_0_BAD2 = "{color=yellow|— Hold it! You're not a citizen, not even of the Great Empire. Your papers say you're the Mayor of Aliron? Nobody cares about that backwater town. The capital is closed to foreigners. Get lost.}",
 	EMP_CITY_ENTER_0_GOOD = "{color=yellow|— Hold it! You're not a citizen, not even of the Great Empire. Your papers say you're the Mayor of Aliron? Nobody cares about that backwater town. The capital is closed to foreigners...}",
@@ -22789,7 +22795,9 @@ She crosses her arms.
 She pauses briefly before adding, her tone dripping with sarcasm:
 
 {color=yellow|Jean: — Just a quick trip there and back. I wouldn't dream of taking more than necessary time from our renowned mayor.}""",
-	JEAN_SIDEQUEST_RESPONSE_COMMON = "Despite her barely hidden sarcasm, you sense that this request is important to her. The longer you hesitate, the more she shifts nervously, avoiding direct eye contact.",
+	JEAN_SIDEQUEST_RESPONSE_COMMON = """
+
+Despite her barely hidden sarcasm, you sense that this request is important to her. The longer you hesitate, the more she shifts nervously, avoiding direct eye contact.""",
 	JEAN_SIDEQUEST_DECISION_OPTION_1 = "Alright, we'll go right away.",
 	JEAN_SIDEQUEST_DECISION_OPTION_2 = "What kind of research is this? Are you sure Aliron has nothing on the subject?",
 	JEAN_SIDEQUEST_DECISION_OPTION_3 = "Fine. I'll deal with it when I have time.",
@@ -24682,6 +24690,9 @@ She pauses as if remembering something.
 	ROUGE_MEET_OPTION_INFORMED = "You are quite well informed.",
 	ROUGE_MEET_OPTION_SPIES = "I didn't take you for someone who spies on people.",
 	ROUGE_MEET_MELCHOR_REASON = "{color=yellow|Melchor: — The Empire keeps close watch on surrounding lands and important events. Anyway, why did you request this meeting? I hope it has nothing to do with the vixen in your custody. I still don't understand why she left with you, so I'll be watching you carefully around here.}",
+	ROUGE_TAX_MELCHOR_LETTER_1 = """Melchor glances up as you enter.
+
+{color=yellow|Melchor: — You again. I have no infromation on your ordeal worth sharing yet.}""",
 	ROUGE_MEET_OPTION_LETTER = "I have a letter for you.",
 	ROUGE_MEET_OPTION_ROUGE_MESSAGE = "Actually, Rouge asked me to bring you this message.",
 	ROUGE_MEET_MELCHOR_LETTER = """With no less of an annoyed look he takes the letter from Rouge and breaks its enchantment with his personal seal. Quickly going through the writing, he shoves it back to you.
@@ -24931,6 +24942,8 @@ Rouge's smile thins for a moment.
 	ROUGE_MELCHOR_VISIT_OPTION_LETTER = "*Deliver Rouge's letter.*",
 	ROUGE_MELCHOR_VISIT_OPTION_RAID = "*Report the warehouse.*",
 	ROUGE_MELCHOR_VISIT_OPTION_REWARD = "*Consult on the warehouse task.*",
+	ROUGE_MELCHOR_VISIT_OPTION_TAX_INTRO = "*Visit Melchor's office.*",
+	ROUGE_MELCHOR_VISIT_OPTION_TAX_RETURN = "*Return with the tax records.*",
 
 	ROUGE_CAPITAL_OPTION_FIND = "Find Rouge",
 	ROUGE_CAPITAL_OPTION_MELCHOR = "Visit Melchor",
@@ -24938,6 +24951,145 @@ Rouge's smile thins for a moment.
 	ROUGE_CAPITAL_OPTION_WAREHOUSE = "Suspicious warehouse",
 	ROUGE_CAPITAL_OPTION_RAID = "Meet Melchor",
 	ROUGE_CAPITAL_OPTION_REWARD = "Meet Melchor",
+	ROUGE_TAX_SETTLEMENT_NAME = "Remote Settlement",
+	ROUGE_TAX_SETTLEMENT_DESC = "A remote emperila settlement with outstanding tax obligations.",
+	ROUGE_TAX_SETTLEMENT_VISIT = "Investigate the settlement.",
+
+	ROUGE_QUEST_STAGE_TAX_INTRO = "Visit the Chancellor's office in the capital.",
+	ROUGE_QUEST_STAGE_TAX_ERRAND = "Travel to the administrative region and settle the unpaid taxes.",
+	ROUGE_QUEST_STAGE_TAX_DONE = "Return to Melchor with the signed records.",
+
+	ROUGE_MELCHOR_TAX_INTRO_START = """{color=yellow|Melchor: — You again. [name], if I'm not mistaken. Mayor of Aliron, hunting down artifacts and already involved with the elves and the dwarven kingdom.}""",
+	ROUGE_MELCHOR_TAX_OPTION_INFORMED = "You are quite well informed.",
+	ROUGE_MELCHOR_TAX_OPTION_SPIES = "I didn't take you for someone who follows foreign mayors.",
+	ROUGE_MELCHOR_TAX_OPTION_DIRECT = "Then you already know why I came to the capital.",
+	ROUGE_MELCHOR_TAX_INTRO_RESPONSE = """{color=yellow|Melchor: — The Empire keeps close watch on surrounding lands and important events. Your movements are hardly subtle.}
+
+Melchor lets the matter hang long enough to make clear he expects you to speak.""",
+	ROUGE_MELCHOR_TAX_OPTION_ARTIFACT_INFO = "I need information about the artifact hidden in the capital.",
+	ROUGE_MELCHOR_TAX_OPTION_ARTIFACT_DIRECT = "Let's be direct. I'm looking for an artifact, and I need your help finding it.",
+	ROUGE_MELCHOR_TAX_OPTION_ARTIFACT_MATTERS = "If you know what I'm after, then you know this matters.",
+	ROUGE_MELCHOR_TAX_REFUSAL = """{color=yellow|Melchor: — Let me spare you the effort of dressing this up as necessity. I will not share information about imperial relics with an outsider. If there is an artifact within the capital, then it falls under imperial authority, not the curiosity of Aliron's mayor.}
+
+He presses his seal against the topmost document with more force than necessary.
+
+{color=yellow|Melchor: — You may have earned some reputation beyond our borders, but reputation is not jurisdiction.}""",
+	ROUGE_MELCHOR_TAX_OPTION_EARN = "Surely there's some way I can earn it?",
+	ROUGE_MELCHOR_TAX_OPTION_PRICE = "I need this information, name your price.",
+	ROUGE_MELCHOR_TAX_ASSIGNED = """{color=yellow|Melchor: — If you insist on being useful to the Empire, then prove you can handle imperial work without turning it into another spectacle. There is a remote administrative region that has fallen behind on its tax obligations. You will go there, collect what is owed, and return with the proper records.}""",
+	ROUGE_MELCHOR_TAX_OPTION_COMPLAIN_TAXES = "You're sending me to collect taxes?",
+	ROUGE_MELCHOR_TAX_OPTION_COMPLAIN_MUNDANE = "What the hell kind of mundane task is that?",
+	ROUGE_MELCHOR_TAX_OPTION_ACCEPT = "Fine. Give me the location.",
+	ROUGE_MELCHOR_TAX_COMPLAINT_RESPONSE = """{color=yellow|Melchor: — Yes. The machinery that keeps cities fed, soldiers paid, and roads maintained. Did you expect a glorious trial? This is how it works for capital clerks. They earn it through boring, mundane work that proves discipline, patience, and obedience to procedure. It is a tradition meant to test one's loyalty and responsibility.}""",
+	ROUGE_MELCHOR_TAX_CLOSED = """{color=yellow|Melchor: — You'll get the details on the spot. Now you better not waste my time.}
+
+He writes a short authorization, seals it, and slides it across the desk. You take the document and the marked location.""",
+
+	ROUGE_TAX_REGION_ARRIVAL = """You arrive at the administrative region marked on Melchor's document. The place is far from the capital's polished streets, with scattered farms, rough roads, and a handful of settlements grouped around old imperial offices.
+
+After presenting Melchor's authorization, you spend some time checking the ledgers and asking around. Most settlements have paid late but eventually settled their obligations. One name, however, appears again and again in the unpaid records — a settlement that has not paid any standard taxes for several periods in a row.""",
+	ROUGE_TAX_REGION_OFFICIALS_BRIEF = """The local office stands apart from the rest of the settlement. Unlike the residents outside, the officials waiting there are humans from the Empire, dressed in formal but travel-worn uniforms.
+
+{color=aqua|Official: — You must be the one sent from the capital. Good. Perhaps now someone will finally take this seriously.}
+
+{color=aqua|Official: — The orcs here have been refusing to pay their standard taxes. Not delayed, not disputed through proper channels, simply refused. They have grown increasingly bold about ignoring imperial authority. We have tried reminders, warnings, and negotiations. If this continues, the Empire might be forced to send some soldiers to investigate.}""",
+	ROUGE_TAX_OPTION_GO_SEE = "I'll go see what's happening.",
+	ROUGE_TAX_OPTION_HEAR_THEM = "If they refuse imperial authority, I need to hear it from them.",
+	ROUGE_TAX_DRUKAR_APPROACH = """You cross the settlement under the wary eyes of its residents. Some stop working as you pass, others mutter to each other in low voices, but no one tries to block your way.
+
+At the building the official described, you find several orcs gathered in a tense meeting.""",
+	ROUGE_TAX_DRUKAR_SPEECH = """An older orc stands at the center of the hall, his heavy voice carrying over the crowd. The others listen with clenched fists and grim faces.
+
+{color=yellow|Drukar: — How many more seasons will we bow our heads and hand over what little we have? We built this place with our own hands. Our people bleed here, not the fat officials hiding behind seals and ledgers. Orcs should answer to orc rulers, not distant humans who remember us only when they want payment!}
+
+The gathered orcs answer him with rough voices of agreement before your presence is noticed.""",
+	ROUGE_TAX_DRUKAR_MEET_NONORC = """{color=yellow|Drukar: — Another imperial messenger? Come to threaten us with papers and soldiers?}
+
+You explain that Melchor sent you to investigate the unpaid taxes and return with the proper records.""",
+	ROUGE_TAX_DRUKAR_MEET_ORC = """{color=yellow|Drukar: — You? An orc? Why are you carrying the Empire's leash for them?}
+
+You explain that Melchor sent you to investigate the unpaid taxes and return with the proper records.
+
+{color=yellow|Drukar: — So they found one of our own to dress their demands in a friendlier face. Doesn't change what you came for. Our money and our obedience.}""",
+	ROUGE_TAX_DRUKAR_REFUSE = """{color=yellow|Drukar: — We refuse. Go back and tell your Chancellor that this settlement is done feeding the Empire.}""",
+	ROUGE_TAX_OPTION_FORCE = "Then I'll make you pay by force.",
+	ROUGE_TAX_OPTION_PERSUADE_PAY = "[Persuasion Challenge] You better forget about your rebellion — you are too weak against the Empire.",
+	ROUGE_TAX_OPTION_PERSUADE_COVERUP = "[Persuasion Challenge] Keep your rebellion quiet and pay for now. Let the records say nothing happened.",
+	ROUGE_TAX_OPTION_PAY = "Forget it, you're not worth the trouble. I'll pay for it myself. (-6000 gold)",
+	ROUGE_TAX_OPTION_LEAVE = "I'll come back later.",
+	ROUGE_TAX_DRUKAR_COMBAT_START = """{color=yellow|Drukar: — Then come take them.}
+
+Several orcs draw their weapons around him.""",
+	ROUGE_TAX_DRUKAR_VICTORY = """With Drukar and his supporters defeated, the remaining orcs lose the will to resist. The settlement's leaders surrender the overdue taxes and sign the necessary records with sullen obedience.""",
+	ROUGE_TAX_DRUKAR_PERSUADE_PAY = """You tell Drukar that whatever anger he feels, an open refusal only gives the Empire an excuse to crush the settlement. If he wants to protect his people, he needs to choose a battle they can survive.
+
+For a while, the hall stays tense. Then Drukar spits to the side and lowers his hand from his weapon.
+
+{color=yellow|Drukar: — Fine. We pay this time.}
+
+The settlement's leaders gather the overdue taxes and sign the records, though none of them look pleased about it.""",
+	ROUGE_TAX_DRUKAR_PERSUADE_COVERUP = """You tell Drukar that rebellion cannot begin with a missing tax record. If the Empire notices open defiance now, soldiers will arrive before the settlement is ready.
+
+Drukar studies you with narrowed eyes, anger giving way to reluctant calculation.
+
+{color=yellow|Drukar: — Hmph. So we buy silence with the coin they demanded anyway.}
+
+He turns back to the gathered orcs. The settlement's leaders hand over the overdue taxes and sign the records, keeping their resentment carefully quiet.""",
+	ROUGE_TAX_DRUKAR_PAY = """You offer to cover the missing taxes yourself, making it clear that the payment will end the immediate dispute but not solve the settlement's larger grievance.
+
+Drukar looks at you in open suspicion.
+
+{color=yellow|Drukar: — You would pay the Empire from your own purse just to spare them trouble?}
+
+{color=yellow|Drukar: — Fine. If you want to waste your gold, we won't stop you.}
+
+You pay the overdue amount and secure the proper records from the local office.""",
+	ROUGE_TAX_REGION_RETURN = """{color=yellow|Drukar: — Back again? Did the Empire give you better threats, or did you come up with them yourself?}""",
+
+	ROUGE_MELCHOR_TAX_RETURN = """You return to Melchor's office with the signed records and proof that the overdue taxes have been settled. He reads through the documents carefully, lingering on every seal and signature before setting them aside.
+
+{color=yellow|Melchor: — Hmph. Adequate. The payments are accounted for, the records are clean, and the region has been reminded that imperial obligations are not optional.}
+
+He leans back, his severe expression easing only slightly.
+
+{color=yellow|Melchor: — I will look into the information you requested. Imperial records are not something I can simply hand over at a whim, even now. It will take some time.}
+
+{color=yellow|Melchor: — You have done what I asked. Return later, and we will see what can be found.}""",
+	ROUGE_QUEST_STAGE_ROUGE_MEET = "A letter from Rouge — visit her at the capital.",
+	ROUGE_CAPITAL_OPTION_MEET_ROUGE = "Meet with Rouge",
+	ROUGE_TAX_LETTER_ARRIVE = """A letter arrives bearing a familiar seal. The handwriting is Rouge's.
+
+"I heard Melchor kept you busy. Congratulations on surviving his paperwork.
+
+There is something I need to discuss with you before I leave the capital. It concerns Melchor, and it might be worth your while to hear it in person rather than through a courier.
+
+I'll be at my usual place for another few days. Don't make me wait too long.
+
+— Rouge""",
+	ROUGE_TAX_CAPITAL_MEET_1 = """Rouge is where she said she'd be, meeting you at one of officials rooms.
+
+{color=yellow|Rouge: — Took you a while. I hear Melchor had you running errands for him.}
+
+{color=yellow|Rouge: — I have a letter for him. Something that may prove more useful to your dealings with him than any tax records could. I would rather it come from you than from a hired courier, and I would rather we spoke before I hand it over.}""",
+	ROUGE_TAX_CAPITAL_MEET_1_OPTION_LISTEN = "What's in the letter?",
+	ROUGE_TAX_CAPITAL_MEET_1_OPTION_WHY = "Why come to me for this?",
+	ROUGE_TAX_CAPITAL_MEET_2 = """{color=yellow|Rouge: — The contents are between Melchor and me, sealed by the empire's customs, just in case you were curious.}
+
+{color=yellow|Rouge: — There is something else. I am leaving the capital soon regardless. You know, before that I could still use your place to stay, I haven't given up on you just yet.}""",
+	ROUGE_TAX_CAPITAL_MEET_2_OPTION_ACCEPT = "You can come with me.",
+	ROUGE_TAX_CAPITAL_MEET_2_OPTION_REFUSE = "I'll take the letter. Nothing else has changed.",
+	ROUGE_TAX_CAPITAL_ACCEPT = """Rouge's expression shifts, her smile becomes amused, happy even.
+
+{color=yellow|Rouge: — Good. I'll arrange my things and follow you out.}
+
+She hands you the sealed envelope.
+
+{color=yellow|Rouge: — Well, I'll be on my way then, darling.}""",
+	ROUGE_TAX_CAPITAL_REFUSE = """Rouge holds your gaze a moment longer than necessary, then nods once.
+
+{color=yellow|Rouge: — Fair enough. Take the letter and see Melchor. He'll expect something from my direction eventually.}
+
+She hands you the sealed envelope without further comment.""",
 	ROUGE_CHAT_OPTION_REPORT = "Your task is done.",
 	
 	ROUGE_FURNITURE_REWARD = """{color=yellow|Rouge: — So you really did it. My room finally gonna look like it belongs to someone with taste.}
@@ -26195,7 +26347,8 @@ The two of you make your way back to the road, leaving the quiet grove behind.""
 	ACT4_ERDYNA_QUEST_STAGE_SENERUS = "Visit Senerus with Erdyna and learn what he knows about the artifact.",
 	ACT4_ERDYNA_QUEST_STAGE_CATACOMBS = "Visit catacomb entrance in Empire region.",
 	ACT4_ERDYNA_QUEST_STAGE_MYR = "Show the copied catacomb writing to Myr.",
-	ACT4_ERDYNA_QUEST_STAGE_DRAGONHUNTERS = "Visit House Thalendir in the elven capital to learn about the catacomb seal.",
+	ACT4_ERDYNA_QUEST_STAGE_DRAGONHUNTERS = "Visit the elven capital to search for the dragon hunters.",
+	ACT4_ERDYNA_QUEST_STAGE_THALENDIR_VISIT = "Visit House Thalendir estate.",
 	ACT4_ERDYNA_FOLLOWUP_1 = """{color=yellow|Erdyna: — Alright, so about that artifact. Hope you didn't take me for an expert on these things, but worry not. I happen to know just the right person for something like that. But first I need to stop by my crew's base. Will you follow?}""",
 	ACT4_ERDYNA_FOLLOWUP_1_OPTION_GO = "Alright, let's go.",
 	ACT4_ERDYNA_FOLLOWUP_1_OPTION_LATER = "I'll drop by when I have time.",
@@ -26419,9 +26572,8 @@ The opposing gang spreads through the passage, clearly preparing to overwhelm yo
 {color=yellow|Erdyna: — Don't think they gonna come back any time soon, so let's move on.}""",
 	ACT4_CATACOMB_DEEPER_1 = """The corridor beyond grows older with every step. The rough stone and improvised supports of the catacombs gradually give way to something far more ancient, its walls carved with the kind of precision no ordinary burial tunnels would ever need.
 
-At the very end of the passage you and Erdyna finally come to a halt.
-
-Set into the rock before you stands a pair of gigantic doors. They are old beyond reason, fashioned from a dark metal gone dull with age and framed by pale stone carved into shapes you can't immediately make sense of. Long lines of writing run across their surface in a language neither of you recognizes.
+At the very end of the passage you and Erdyna finally come to a halt.""",
+	ACT4_CATACOMB_DEEPER_1B = """Set into the rock before you stands a pair of gigantic doors. They are old beyond reason, fashioned from a dark metal gone dull with age and framed by pale stone carved into shapes you can't immediately make sense of. Long lines of writing run across their surface in a language neither of you recognizes.
 
 Erdyna steps closer, narrowing her eyes as she studies the symbols.
 
@@ -26433,9 +26585,8 @@ Before you can say anything, Heleviel moves past you and stops in front of the d
 
 {color=yellow|Heleviel: — Wait.}
 
-She raises a hand toward the inscription without quite touching it, her expression tightening as she follows the lines from one edge of the gate to the other.
-
-{color=yellow|Heleviel: — This is ancient elven script... but not a form most scholars would ever read. It belongs to a tradition associated with the dragon hunters.}
+She raises a hand toward the inscription without quite touching it, her expression tightening as she follows the lines from one edge of the gate to the other.""",
+	ACT4_CATACOMB_DOORS_HELEVIEL_0B = """{color=yellow|Heleviel: — This is ancient elven script... but not a form most scholars would ever read. It belongs to a tradition associated with the dragon hunters.}
 
 Erdyna turns to her sharply.
 
@@ -26492,13 +26643,13 @@ You present the copied symbols and describe the doors as best as you can. Myr ta
 	ACT4_ERDYNA_QUEST_STAGE_ERDYNA_RETURN = "Check on Erdyna in the imperial capital.",
 	ACT4_ERDYNA_ARCHIVE_SEARCH_TASK_NAME = "*Search the imperial capital*",
 	ACT4_ERDYNA_ARCHIVE_SEARCH_TASK_DESC = "*Send a group to look for traces of the missing archive records in the capital.*",
-	ACT4_ERDYNA_ELF_CAPITAL_OPT_LINEAGE = "Ask about the dragon hunters lineage.",
-	ACT4_ERDYNA_ELF_CAPITAL_OPT_VISIT = "Visit House Thalendir.",
-	ACT4_ERDYNA_ELF_CAPITAL_OPT_RETURN = "Return to House Thalendir estate.",
-	ACT4_ERDYNA_EMPIRE_CAPITAL_OPT_MELCHOR = "Ask Melchor about imperial archive records.",
-	ACT4_ERDYNA_EMPIRE_CAPITAL_OPT_GROTUS = "Find Grotus about the archive records.",
+	ACT4_ERDYNA_ELF_CAPITAL_OPT_LINEAGE = "Search for dragon hunters",
+	ACT4_ERDYNA_ELF_CAPITAL_OPT_VISIT = "Visit House Thalendir",
+	ACT4_ERDYNA_ELF_CAPITAL_OPT_RETURN = "Return to House Thalendir estate",
+	ACT4_ERDYNA_EMPIRE_CAPITAL_OPT_MELCHOR = "Ask Melchor about imperial archive records",
+	ACT4_ERDYNA_EMPIRE_CAPITAL_OPT_GROTUS = "Find Grotus about the archive records",
 	ACT4_ERDYNA_THALENDIR_HOUSE_NAME = "House Thalendir Estate",
-	ACT4_ERDYNA_THALENDIR_HOUSE_DESC = "The guarded estate of House Thalendir in the elven capital.",
+	ACT4_ERDYNA_THALENDIR_HOUSE_DESC = "The guarded estate of House Thalendir in the elven capital",
 	ACT4_ERDYNA_ARCHIVE_HIDEOUT_NAME = "Archive Thieves' Hideout",
 	ACT4_ERDYNA_ARCHIVE_HIDEOUT_DESC = "An abandoned hideout near the imperial roads where thieves may have left a stolen archive copy.",
 	ACT4_ERDYNA_LINEAGE_1 = """You spend some time asking around the elven capital about the old dragon hunters lineage. The name still carries enough weight to make people cautious, though most of those you question answer with polite evasions rather than open refusal.
@@ -26680,19 +26831,20 @@ For a long while she says nothing. When she finally speaks, her voice is lower t
 She gives a short laugh, but it comes out weaker than intended.
 
 {color=yellow|Erdyna: — Usually people either want something, run away, or decide I'm too much trouble. Guess I got used to that. Having you actually stay there... it felt... unusual.}""",
-	ACT4_ERDYNA_AFTER_LEAVE_OPTION_QUIET = "Keep quiet.",
+	ACT4_ERDYNA_AFTER_LEAVE_OPTION_QUIET = "*Keep quiet*",
 	ACT4_ERDYNA_AFTER_LEAVE_OPTION_DRAGONKIN = "So you are actually a dragonkin?",
 	ACT4_ERDYNA_AFTER_LEAVE_REVEAL_1 = "You remain silent, letting the fire fill the space between you. Erdyna glances at you once, figuring that the explanation is in place from her.",
 	ACT4_ERDYNA_AFTER_LEAVE_REVEAL_2 = """Erdyna's shoulders tense at the question. For a moment you expect her to snap back with some crude joke, but she only stares into the fire.
 
 {color=yellow|Erdyna: — Never thought it would get out of the bag like this.}""",
-	ACT4_ERDYNA_AFTER_LEAVE_REVEAL_ANY_1 = """She slowly stands and turns her back to you. Her fingers hesitate at the edge of her clothes before she lowers her jacket enough to bare her back to the firelight.
+	ACT4_ERDYNA_AFTER_LEAVE_REVEAL_ANY_1 = """
+
+She slowly stands and turns her back to you. Her fingers hesitate at the edge of her clothes before she lowers her jacket enough to bare her back to the firelight.
 
 Two long scars run beneath her shoulder blades, old and pale against her skin. They are too even to look like ordinary wounds.
 
-{color=yellow|Erdyna: — Been hiding these from everyone for as long as I can remember. Horns and tail are easy enough to explain away. Call yourself a kobold, act rough, make people think you're just some gutter-born freak and most of them stop looking deeper. I also had wings though.}
-
-{color=yellow|Erdyna: — I sold them off when I was younger. Needed the money to survive, and after a while I realized it was safer that way too. If anyone had seen them and guessed what I was, that's it. Dragonkin are worth too much. Someone would've slapped a collar on me sooner or later and called it a rare prize.}
+{color=yellow|Erdyna: — Been hiding these from everyone for as long as I can remember. Horns and tail are easy enough to explain away. Call yourself a kobold, act rough, make people think you're just some gutter-born freak and most of them stop looking deeper. I also had wings though.}""",
+	ACT4_ERDYNA_AFTER_LEAVE_REVEAL_ANY_1B = """{color=yellow|Erdyna: — I sold them off when I was younger. Needed the money to survive, and after a while I realized it was safer that way too. If anyone had seen them and guessed what I was, that's it. Dragonkin are worth too much. Someone would've slapped a collar on me sooner or later and called it a rare prize.}
 
 The image comes across your mind before you can ignore it: Erdyna younger, smaller, held down somewhere out of sight while a saw bites through the living wings she was desperate enough to trade away.""",
 
@@ -26870,15 +27022,8 @@ She crumples the edge of the note in her fist.
 
 The Red Rooks leader steps out with several armed men at his back. He is broad, scarred, and smiling like someone who has waited all day to enjoy this moment. Behind him, bound prisoners are visible through the open doorway, bruised and frightened but alive.
 
-{color=aqua|Red Rooks Leader: — Look what crawled back.}
-
-Erdyna stops dead.
-
-The leader's smile widens.
-
-{color=aqua|Red Rooks Leader: — Filthy little lizard. You really thought those sewer rats were yours forever? They followed you because nobody stronger bothered taking them. Now we're fixing that mistake. Once you're gone, the last of them will learn who owns this place.}
-
-Erdyna takes one step forward before you can stop her.
+{color=aqua|Red Rooks Leader: — Look what crawled back. Filthy little lizard. You really thought those sewer rats were yours forever? They followed you because nobody stronger bothered taking them. Now we're fixing that mistake. Once you're gone, the last of them will learn who owns this place.}""",
+	ACT4_3_RED_ROOKS_COMPLETE_1B = """Erdyna takes one step forward before you can stop her.
 
 {color=yellow|Erdyna: — Say that again when I'm close enough to tear your tongue out.}
 
@@ -26889,9 +27034,8 @@ The prisoners stir behind the leader, and for a moment her anger makes the whole
 
 {color=yellow|Erdyna: — You miscalculated. I'm not alone here. You thought I'd come running in blind, same as always, and you built your little trap for that. But I brought someone worse than me.}
 
-For the first time, the Red Rooks leader's smile loses some of its certainty. His gaze shifts to you, measuring the distance, the weapon in your hand, and the bodies already lying across the yard.
-
-{color=aqua|Red Rooks Leader: — Worse than you? Maybe. Or maybe just smarter than you.}
+For the first time, the Red Rooks leader's smile loses some of its certainty. His gaze shifts to you, measuring the distance, the weapon in your hand, and the bodies already lying across the yard.""",
+	ACT4_3_RED_ROOKS_COMPLETE_2B = """{color=aqua|Red Rooks Leader: — Worse than you? Maybe. Or maybe just smarter than you.}
 
 He lifts one hand, and the men behind him hesitate instead of rushing forward.
 
@@ -27012,6 +27156,16 @@ The shuddering grip of her orgasm milked you, pulling your own release from you 
 She clung onto you in an almost struggling snuggle, either in attempt to mark you or to keep this closeness in memory.
 
 Once your rest was over, you prepared to move on.""",
+	ERDYNA_CAMPFIRE_EPILOGUE = """Erdyna pulled herself upright, combing her hair back with her fingers and reaching for her jacket. For a moment she said nothing, staring into the dying embers.
+
+{color=yellow|Erdyna: — Before we head back down into those catacombs... I want to stop by the capital first. There's something I need to sort out there.}
+
+She glanced at you sidelong, a look that made clear she did not intend to explain further right now.""",
+	ERDYNA_CAMPFIRE_EPILOGUE_NONFLIRT = """The fire had burned low. Erdyna stared into the coals for a moment, then pushed herself to her feet and dusted off her jacket.
+
+{color=yellow|Erdyna: — Before we head back down into those catacombs... I want to stop by the capital first. There's something I need to sort out there.}
+
+She glanced at you sidelong, a look that made clear she did not intend to explain further right now.""",
 
 	ERDYNA_WEDDING_1 = """The ceremony was brief, practical, and nothing like what either of you expected. Erdyna did not look at the officiant. She looked at you. When the words were spoken she did not flinch, and her jaw had that particular set she got when she had already decided something and was waiting for the rest of the world to catch up. The doors closed behind you both.""",
 

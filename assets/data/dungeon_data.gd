@@ -2220,6 +2220,24 @@ var dungeons = {
 		events = [],
 		tags = ['quest'],
 	},
+	quest_tax_settlement = {
+		code = 'quest_tax_settlement',
+		type = 'encounter',
+		name = tr("ROUGE_TAX_SETTLEMENT_NAME"),
+		area = 'empire',
+		classname = '',
+		descript = tr("ROUGE_TAX_SETTLEMENT_DESC"),
+		difficulty = 'easy',
+		background = 'village2',
+		enemyarray = [],
+		eventarray = [],
+		levels = [1,1],
+		resources = '',
+		stages_per_level = [1,1],
+		travel_time = [1,1],
+		events = [],
+		tags = ['quest'],
+	},
 	quest_rebels_backrooms = {
 		code = 'quest_rebels_backrooms',
 		type = 'encounter',
@@ -2826,7 +2844,7 @@ var dungeons = {
 		classname = '',
 		descript = "ACT4_QUEST_CATACOMB_DESC",
 		difficulty = 'easy',
-		background = 'cave_4',
+		background = 'fort_1',
 		custom_background = 'combat_cave',
 		enemyarray = [],
 		eventarray = [],
@@ -2840,7 +2858,7 @@ var dungeons = {
 		options = [
 			{
 				text = "ACT4_QUEST_CATACOMB_OPTION_ENTER",
-				reqs = [{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'catacombs', state = true}],
+				reqs = [{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'catacombs'}],
 				args = [{code = 'start_event', data = 'emp_catacomb_entry_1', args = []}]
 			},
 			{
@@ -2887,7 +2905,7 @@ var dungeons = {
 		levels = [1,1],
 		resources = '',
 		stages_per_level = [1,1],
-		bgm = "frostford",
+		bgm = "exploration",
 		purchase_price = 0,
 		affiliation = 'local',
 		events = [],
@@ -2895,10 +2913,18 @@ var dungeons = {
 			{
 				text = "ACT4_ERDYNA_ELF_CAPITAL_OPT_VISIT",
 				reqs = [
-					{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'dragonhunters', state = true},
-					{type = 'dialogue_seen', value = 'act4_erdyna_visit_1', check = false}
+					{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'thalendir_visit'},
+					{type = 'event_seen', value = 'act4_erdyna_visit_1', check = false}
 				],
 				args = [{code = 'start_event', data = 'act4_erdyna_visit_1', args = []}]
+			},
+			{
+				text = "ACT4_ERDYNA_ELF_CAPITAL_OPT_RETURN",
+				reqs = [
+					{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'thalendir_visit'},
+					{type = 'event_seen', value = 'act4_erdyna_visit_1', check = true}
+				],
+				args = [{code = 'start_event', data = 'act4_erdyna_negotiate_hub', args = []}]
 			},
 			{
 				text = "ACT4_ERDYNA_ELF_CAPITAL_OPT_RETURN",
@@ -2960,8 +2986,8 @@ var dungeons = {
 			races = [['local', 4], ['common', 4], ['uncommon', 1]]
 		},
 		difficulty = 'medium',
-		background_pool = ['cave_1', 'cave_2', 'cave_3', 'cave_4'],
-		custom_background = 'combat_cave',
+		background_pool = ['fort1'],
+		custom_background = 'fort1',
 		enemyarray = [['bandits_medium', 1], ['bandits_assassin', 0.75], ['bandits_medium2', 0.75]],
 		final_enemy = [['erdyna_thugs', 1]], final_enemy_type = 'monster',
 		event_data = {},

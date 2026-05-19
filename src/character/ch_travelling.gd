@@ -89,7 +89,8 @@ func tick():
 #					if state.capitals.has(location):
 #						state.text_log_add("travel", get_short_name() + " arrived at location: " + state.areas[state.capitals[location].area].capital_name)
 #					else:
-				globals.text_log_add('travel', parent.get_ref().get_short_name() + " " + tr("ARRIVED_AT_LOC_LABEL") + ": " + ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[location].area][ResourceScripts.game_world.location_links[location].category][location].name)
+				var loc_data = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[location].area][ResourceScripts.game_world.location_links[location].category][location]
+				globals.text_log_add('travel', parent.get_ref().get_short_name() + " " + tr("ARRIVED_AT_LOC_LABEL") + ": " + tr(loc_data.name))
 			parent.get_ref().return_to_task()
 
 func make_location_description():
@@ -98,19 +99,19 @@ func make_location_description():
 	var active_location_name
 	if location == 'travel':
 		if travel_target.location == ResourceScripts.game_world.mansion_location:
-			active_location_name = 'Mansion'
-			active_area_name = ResourceScripts.game_world.get_default_area_name()
+			active_location_name = tr("MANSION")
+			active_area_name = tr(ResourceScripts.game_world.get_default_area_name())
 		else:
-			active_area_name = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[travel_target.location].area].name
-			active_location_name = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[travel_target.location].area][ResourceScripts.game_world.location_links[travel_target.location].category][travel_target.location].name
+			active_area_name = tr(ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[travel_target.location].area].name)
+			active_location_name = tr(ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[travel_target.location].area][ResourceScripts.game_world.location_links[travel_target.location].category][travel_target.location].name)
 	else:
-		active_area_name = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[location].area].name
-		active_location_name = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[location].area][ResourceScripts.game_world.location_links[location].category][travel_target.location].name
+		active_area_name = tr(ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[location].area].name)
+		active_location_name = tr(ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[location].area][ResourceScripts.game_world.location_links[location].category][location].name)
 	
 	if location == 'travel':
-		text = '[name] currently relocating to [color=yellow]' + active_location_name + "[/color], which is located at [color=aqua]" + active_area_name + "[/color]. [He] will be there in " + str(ceil(travel_time / travel_per_tick())) + ' turns'
+		text = tr("CHAR_RELOCATING_TO_LOC_DESC") % [active_location_name, active_area_name, str(ceil(travel_time / travel_per_tick()))]
 	else:
-		text = '[name] currently positioned at [color=yellow]' + active_location_name + "[/color], which is located at [color=aqua]" + active_area_name + "[/color]"
+		text = tr("CHAR_POSITIONED_AT_LOC_DESC") % [active_location_name, active_area_name]
 	return text
 
 func return_to_mansion(instant = false):

@@ -1518,6 +1518,12 @@ var data = {
 #				dialogue_argument = 1
 #			},
 			{
+				code = "emp_myr_catacomb_writing",
+				text = "ACT4_MYR_GUILD_OPTION_SHOW_WRITING",
+				reqs = [{type = "active_quest_stage", value = "erdyna_quest", stage = "myr_translation", state = true}],
+				type = "next_dialogue",
+			},
+			{
 				code = "mages_leader_close",
 				text = "MAGESINTRODUCTION3REPLY3",
 				reqs = [

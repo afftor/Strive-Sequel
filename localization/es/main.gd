@@ -19802,6 +19802,8 @@ Tecla de acceso rápido: 3""",
 	LOC_BEEN_REMOVED_LABEL = "La ubicación ha sido eliminada",
 	ARRIVED_AT_LOC_LABEL = "Llegó a la ubicación",
 	RETURNED_TO_MANSION_LABEL = "Regresó a la mansión",
+	CHAR_RELOCATING_TO_LOC_DESC = """[name] currently relocating to [color=yellow]%s[/color], which is located at [color=aqua]%s[/color]. [He] will be there in %s turns""", # MISSING TRANSLATION
+	CHAR_POSITIONED_AT_LOC_DESC = """[name] currently positioned at [color=yellow]%s[/color], which is located at [color=aqua]%s[/color]""", # MISSING TRANSLATION
 	TRAVEL_LABEL = "Viajar",
 	MANSION_LABEL = "Mansion",
 	CHAR_LABEL = "Personaje",
