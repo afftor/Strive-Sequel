@@ -7,4 +7,5 @@ func _ready():
 
 
 func open(classcode, person):
+	rect_size.y = 10
 	$scroll._open_panel(person, classcode)
