@@ -70,6 +70,9 @@ func _ready():
 	input_handler.register_btn_source('location_back_pos3', self, 'tut_get_back3', null, null, 'dropped')
 	input_handler.register_btn_source('location_back_highlight', self, null, self, "tut_get_back_highlight")
 	input_handler.register_btn_source('location_proceed', self, 'tut_get_first_info_btn')
+	input_handler.register_btn_source('location_master_pos', self, 'tut_get_master_pos')
+	input_handler.register_btn_source('location_servent_pos', self, 'tut_get_servent_pos')
+	input_handler.register_btn_source('location_reju_btn', cast_panel, 'tut_get_reju_btn')
 	$LocationGui/AvailableSlaves.tut_register_first_recruit()
 	$LocationGui/AvailableSlaves.tut_register_first_char()
 	$LocationGui/NavigationModule.tut_register_mansion_btn()
@@ -104,6 +107,16 @@ func tut_get_back_highlight():
 	return rect
 func tut_get_first_info_btn():
 	return $LocationGui/DungeonInfo/ScrollContainer/VBoxContainer.get_children()[0]
+func tut_get_master_pos():
+	for btn_path in positiondict.values():
+		var btn = get_node(btn_path)
+		if btn.character != null and btn.character.is_master():
+			return btn
+func tut_get_servent_pos():
+	for btn_path in positiondict.values():
+		var btn = get_node(btn_path)
+		if btn.character != null and btn.character.get_stat('slave_class') == 'servant':
+			return btn
 
 
 func clear_cashed():

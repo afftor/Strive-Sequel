@@ -333,6 +333,18 @@ var tutorials = {
 			text = 'TUTORIAL_COMBAT14',
 			panel_pos = Vector2(733,150)
 		},{
+			buttons = ['location_servent_pos'],
+			text = 'TUTORIAL_COMBAT14_1',
+			panel_pos = Vector2(733,150)
+		},{
+			buttons = ['location_reju_btn'],
+			text = 'TUTORIAL_COMBAT14_2',
+			panel_pos = Vector2(733,150)
+		},{
+			buttons = ['location_master_pos'],
+			text = 'TUTORIAL_COMBAT14_3',
+			panel_pos = Vector2(733,150)
+		},{
 			buttons = ['location_proceed'],
 			text = 'TUTORIAL_COMBAT15',
 			panel_pos = Vector2(733,150)

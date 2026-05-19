@@ -107,3 +107,10 @@ func on_pressed(type, caster, entity):
 
 func can_cast(person_id):
 	return build_for_person(person_id, false, true)
+
+func tut_get_reju_btn():
+	var reju_name = Skilldata.Skilllist["rejuvenation"].name
+	for btn in cont.get_children():
+		if btn.visible and is_instance_valid(btn) and btn.get_node("name").text == reju_name:
+			return btn
+	
