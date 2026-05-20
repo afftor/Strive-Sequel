@@ -107,6 +107,7 @@ func _ready():
 	var i = 4
 	if input_handler.CurrentScene == null:
 		modding_core.handle_test_mode()
+		gui_controller.sex_panel = self
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
 		globals.AddItemToInventory(globals.CreateUsableItem("aphrodisiac"))
 		globals.AddItemToInventory(globals.CreateUsableItem("strong_pheromones", 10))
