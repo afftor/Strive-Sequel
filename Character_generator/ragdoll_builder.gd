@@ -16,7 +16,7 @@ var _offset
 
 var character
 var test_template = {
-	sex = 'male', 
+	sex = 'female', 
 	race = 'Kobold', 
 	horns = 'short', 
 	ears = 'bunny_standing', 
@@ -64,7 +64,7 @@ var test_template = {
 	armor_lower = 'legs_adv_leather',
 #	armor_lower = 'legs_base_metal',
 #	armor_lower = 'servant',
-	armor_collar = 'leather_collar',
+	armor_collar = null,
 	armor_weapon = 'battleaxeadv',
 	armor_head = null,
 	armor_color_base = 'default',
@@ -214,17 +214,18 @@ func rebuild_cloth(value):
 			if !(transform.type in ['texture']):
 				continue
 			apply_transform(transform)
-	if value:
-		for stat in ['armor_base', 'armor_lower', 'armor_collar', 'armor_weapon', 'armor_head']:
-			if !GeneratorData.transforms.has(stat):
+	for stat in ['armor_base', 'armor_lower', 'armor_collar', 'armor_weapon', 'armor_head']:
+		if !value and stat != 'armor_collar':
+			continue
+		if !GeneratorData.transforms.has(stat):
+			continue
+		var st_val = _get_stat(stat)
+		if !GeneratorData.transforms[stat].has(st_val):
+			continue
+		for transform in GeneratorData.transforms[stat][st_val]:
+			if !(transform.type in ['texture']):
 				continue
-			var st_val = _get_stat(stat)
-			if !GeneratorData.transforms[stat].has(st_val):
-				continue
-			for transform in GeneratorData.transforms[stat][st_val]:
-				if !(transform.type in ['texture']):
-					continue
-				apply_transform(transform)
+			apply_transform(transform)
 		#second pass - all others
 	for stat in ['cloth']:
 		if !GeneratorData.transforms.has(stat):
@@ -236,17 +237,18 @@ func rebuild_cloth(value):
 			if (transform.type in ['texture']):
 				continue
 			apply_transform(transform)
-	if value:
-		for stat in ['armor_color_base', 'armor_color_lower', 'armor_color_collar', 'armor_color_weapon', 'armor_base', 'armor_lower', 'armor_collar', 'armor_weapon']:
-			if !GeneratorData.transforms.has(stat):
+	for stat in ['armor_color_base', 'armor_color_lower', 'armor_color_collar', 'armor_color_weapon', 'armor_base', 'armor_lower', 'armor_collar', 'armor_weapon']:
+		if !value and stat != 'armor_collar':
+			continue
+		if !GeneratorData.transforms.has(stat):
+			continue
+		var st_val = _get_stat(stat)
+		if !GeneratorData.transforms[stat].has(st_val):
+			continue
+		for transform in GeneratorData.transforms[stat][st_val]:
+			if (transform.type in ['texture']):
 				continue
-			var st_val = _get_stat(stat)
-			if !GeneratorData.transforms[stat].has(st_val):
-				continue
-			for transform in GeneratorData.transforms[stat][st_val]:
-				if (transform.type in ['texture']):
-					continue
-				apply_transform(transform)
+			apply_transform(transform)
 	
 	_root.render_target_clear_mode = Viewport.CLEAR_MODE_ONLY_NEXT_FRAME
 	_root.render_target_update_mode = Viewport.UPDATE_ONCE
