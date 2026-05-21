@@ -389,9 +389,10 @@ func update_resources():
 		if location_type == "dungeon":
 #			if location.completed == true:
 			gatherable_resources = location.gather_limit_resources
-			servicebutton.visible = false
+#			servicebutton.visible = false
 		elif location_type == 'encounter':
-			servicebutton.visible = false
+			pass
+#			servicebutton.visible = false
 		else:
 			if location.has("gather_resources"):
 				gatherable_resources = location.gather_resources
