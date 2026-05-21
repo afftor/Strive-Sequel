@@ -341,6 +341,7 @@ func open_char_info():
 	gui_controller.previous_screen.hide()
 	gui_controller.current_screen = gui_controller.slavepanel
 	gui_controller.close_all_closeable_windows()
+	gui_controller.slavepanel.update()
 	gui_controller.emit_signal("screen_changed")
 	ResourceScripts.core_animations.UnfadeAnimation(gui_controller.slavepanel, 0.3)
 

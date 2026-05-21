@@ -2203,7 +2203,7 @@ var buffs = {
 		tags = ['combat_only'],
 	},
 	b_paladin_guard = {
-		icon = "res://assets/images/iconsclasses/Paladin.png",
+		icon = "res://assets/images/iconsclasses/shieldbearer.png",
 		description = "BUFFDESCRIPTPALADINGUARD",
 		tags = ['combat_only'],
 	},

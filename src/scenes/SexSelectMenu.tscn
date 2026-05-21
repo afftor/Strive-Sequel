@@ -221,7 +221,7 @@ margin_left = 150.0
 margin_top = 121.0
 margin_right = 411.0
 margin_bottom = 154.0
-text = "Characters"
+text = "CRAFTCHARACTERS"
 align = 1
 
 [node name="Characters2" type="Label" parent="."]
@@ -229,7 +229,7 @@ margin_left = 754.031
 margin_top = 121.0
 margin_right = 1015.03
 margin_bottom = 154.0
-text = "Selected"
+text = "SELECTED_LABEL"
 align = 1
 
 [node name="ParticipantLabel" type="Label" parent="."]

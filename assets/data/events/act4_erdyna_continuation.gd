@@ -1013,9 +1013,7 @@ var data = {
 		]
 	},
 	act4_erdyna_visit_2 = {
-		image = null,
-		character = "erdyna",
-		character2 = "vaeloria",
+		image = "erdyna_hostage",
 		tags = ["dialogue_scene", "master_translate", "act4_erdyna"],
 		reqs = [],
 		text = "ACT4_ERDYNA_VISIT_2",

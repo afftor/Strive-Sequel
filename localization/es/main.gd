@@ -1187,6 +1187,7 @@ Reducido por la evasión del enemigo""",
 	NO_FREE_SLOTS = "Esta tarea no tiene espacios disponibles",
 	ANOTHERPROFSELECTED = "Sólo se puede seleccionar una especialización.",
 	NOMATERIALSFORITEMPART = "No tienes materiales adecuados para esta pieza del artículo",
+	NOCHARACTER = """You have no suitable characters""", # MISSING TRANSLATION
 	QUESTDEFEAT = "Fracaso",
 	QUESTREQUIREDCLASS = "Clase requerida",
 	LOGREPORTPREGNANCY = "[name] te dice que [he] parece estar embarazado.",
@@ -19790,6 +19791,8 @@ Tecla de acceso rápido: 3""",
 	FORGET_LABEL = "Olvidar",
 	AVAIL_RES_LABEL = "Recursos disponibles",
 	CHARS_SELECTED_LABEL = "Personajes seleccionados",
+	SELECTED_LABEL = """Selected""", # MISSING TRANSLATION
+	PARTICIPANTS_LABEL = """Participants: %s/%s""", # MISSING TRANSLATION
 	TARGET_LOC_LABEL = "Ubicación del objetivo",
 	TRAVEL_TIME_LABEL = "Tiempo de viaje",
 	EST_TRAVEL_TIME_LABEL = "Tiempo estimado de viaje",

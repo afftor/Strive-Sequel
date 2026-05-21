@@ -1610,6 +1610,8 @@ func characterspeech(scene):
 	if scene.scene.get("takertags") && scene.scene.takertags.has("pain") && partnerside == 'givers' && (character.person.check_trait('Likes it rough') || character.person.check_trait("Masochist")) && !character.effects.has('resist'):
 		dict.painlike = [speechdict.painlike, 2.5]
 
+	if character.person_sexexp.sexexp_actions.get(scene.scene.code, 0) == 1:
+		dict.inexperienced = [speechdict.inexperienced, 5]
 	dict.moans = [speechdict.moans, 0.25]
 	for i in prevailing_lines:
 		if dict.has(i):
@@ -1684,6 +1686,18 @@ func output(scenescript, valid_lines, givers, takers):
 	var virginsource = null
 	var link = null
 	#checks
+	var giver_skill_avg = 0.0
+	if scenescript.giver_skill.size() > 0:
+		for k in scenescript.giver_skill:
+			giver_skill_avg += givers[0].person_sexskills['sex_skills_' + k]
+		giver_skill_avg /= scenescript.giver_skill.size()
+
+	var taker_skill_avg = 0.0
+	if scenescript.taker_skill.size() > 0:
+		for k in scenescript.taker_skill:
+			taker_skill_avg += takers[0].person_sexskills['sex_skills_' + k]
+		taker_skill_avg /= scenescript.taker_skill.size()
+
 	var checks = {
 		code = scenescript.code,
 		link = null,
@@ -1694,6 +1708,8 @@ func output(scenescript, valid_lines, givers, takers):
 		facing = true if scenescript.rotation1.w == 0.0 && scenescript.rotation2.w == 0.0 else false,
 		arousal = 1,
 		lust = 1,
+		giver_skill_level = 'novice' if giver_skill_avg < 33 else ('skilled' if giver_skill_avg < 66 else 'mastered'),
+		taker_skill_level = 'novice' if taker_skill_avg < 33 else ('skilled' if taker_skill_avg < 66 else 'mastered'),
 	}
 
 	#link with ongoingactions
@@ -1746,9 +1762,10 @@ func output(scenescript, valid_lines, givers, takers):
 			virginpart = 'anal_virgin'
 			virginsource = givers
 	#assign virginity check
-	for i in virginsource:
-		if i.person.get_stat(virginpart) == false:
-			checks.virgin = false
+	if virginsource != null:
+		for i in virginsource:
+			if i.person.get_stat(virginpart) == false:
+				checks.virgin = false
 	#assign consent
 
 #	for j in takers:

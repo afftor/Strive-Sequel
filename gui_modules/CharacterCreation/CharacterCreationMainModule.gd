@@ -314,6 +314,7 @@ func build_visuals():
 	$DietPanel.visible = false
 	$VisualsModule.visible = true
 	$MasterRelationPanel.visible = false
+	RelationshipSelect.hide()
 	if mode == 'freemode':
 		$UpgradesPanel.visible = true
 		$VBoxContainer.visible = false
@@ -1247,7 +1248,7 @@ func open_personality_selection():
 
 
 func open_master_relation_selection():
-	if mode == 'master' or mode == 'freemode':
+	if !is_master_relation_panel_available():
 		return
 	hide_all_dialogues()
 	build_master_relation_selection()
@@ -1329,7 +1330,14 @@ func hide_relationship_selection():
 	RelationshipSelect.hide()
 
 
+func is_master_relation_panel_available():
+	return mode != 'master' and mode != 'freemode' and $StatsModule.visible
+
+
 func build_master_relation_selection():
+	if !is_master_relation_panel_available():
+		RelationshipSelect.hide()
+		return
 	input_handler.ClearContainer($RelationshipSelect/ScrollContainer/VBoxContainer, ['Button'])
 	for code in get_master_relation_options():
 		var newbutton = input_handler.DuplicateContainerTemplate($RelationshipSelect/ScrollContainer/VBoxContainer)
@@ -1352,9 +1360,10 @@ func select_master_relation(code):
 
 
 func build_master_relation():
-	var is_visible = (mode != 'master' and mode != 'freemode')
+	var is_visible = is_master_relation_panel_available()
 	$MasterRelationPanel.visible = is_visible
 	if !is_visible:
+		RelationshipSelect.hide()
 		return
 	if !is_master_relation_available(selected_master_relation):
 		selected_master_relation = 'none'

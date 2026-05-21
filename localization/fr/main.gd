@@ -20297,6 +20297,8 @@ Touche de raccourci : 3""",
 	FORGET_LABEL = "Oublier",
 	AVAIL_RES_LABEL = "Ressources disponibles",
 	CHARS_SELECTED_LABEL = "Caractères sélectionnés",
+	SELECTED_LABEL = """Selected""", # MISSING TRANSLATION
+	PARTICIPANTS_LABEL = """Participants: %s/%s""", # MISSING TRANSLATION
 	TARGET_LOC_LABEL = "Emplacement cible",
 	TRAVEL_TIME_LABEL = "Durée du voyage",
 	EST_TRAVEL_TIME_LABEL = "Durée estimée du voyage",
