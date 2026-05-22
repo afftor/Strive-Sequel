@@ -64,6 +64,7 @@ func update():
 			else:
 				get_node("subroom%d/icon"%(i + 1)).modulate = Color(variables.hexcolordict.green)
 	var text = ""
+	$intimidate.visible = (data.has('intimidate') and data.intimidate)
 	match data.status:
 		'cleared':
 			visible = true 

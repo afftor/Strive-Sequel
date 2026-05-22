@@ -1654,6 +1654,7 @@ func StartFixedAreaCombat(data): #non-rnd, 2test, 2fix
 		input_handler.combat_node = input_handler.get_combat_node()
 	if data.has('intimidate') and data.intimidate:
 		combat_data.instawin = true
+		data.intimidate = false
 	input_handler.combat_node.encountercode = enemydata
 	input_handler.combat_node.set_norun_mode(false)
 	input_handler.combat_node.start_combat(gui_controller.exploration_dungeon.active_location.group, enemies, background, music, combat_data)

@@ -243,7 +243,10 @@ func advance_hour():
 				j.stamina += 25
 				if j.stamina > 100:
 					j.stamina = 100
-			j.intimidate = false
+	for dung_data in dungeons.values():
+		for room_id in dung_data.rooms:
+			if rooms[room_id].has("intimidate"):
+				rooms[room_id].intimidate = false
 
 
 func quest_kill_receiver(enemycode):

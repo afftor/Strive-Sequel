@@ -90,7 +90,7 @@ var skills = {
 		combatcooldown = 0,
 		cooldown = 0,
 		catalysts = {},
-		target = 'ally',
+		target = 'self',
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'mind',
@@ -108,13 +108,14 @@ var skills = {
 		tags = ['support', 'exploration'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'setup_intimidate', trigger = variables.TR_EXPLORE_POSTDAMAGE})], 
+		effects = [],
 		cost = {mp = 5},
 		charges = 0,
 		combatcooldown = 0,
 		cooldown = 1,
 		catalysts = {},
-		target = 'ally',
+		target = 'room',
+		room_effect = "set_intimidate",
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'mind',
@@ -207,11 +208,11 @@ var effects = {
 		target = 'caster',
 		atomic = [{type = 'location_effect', value = 'gather_res'}]
 	},
-	setup_intimidate = {
-		type = 'oneshot',
-		target = 'caster',
-		atomic = [{type = 'dungeon_effect', value = 'set_intimidate'}]
-	}
+#	setup_intimidate = {
+#		type = 'oneshot',
+#		target = 'caster',
+#		atomic = [{type = 'dungeon_effect', value = 'set_intimidate'}]
+#	}
 }
 var atomic_effects = {}
 var buffs = {

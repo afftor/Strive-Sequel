@@ -853,7 +853,7 @@ func process_cast_use(port_node, with_return = false, bottom = false):
 		
 		if use_state.type == cast_panel.ENTITY_SKILL:
 			use_e_combat_skill(use_state.caster, person, use_state.entity)
-		else:# use_state.type == cast_panel.ENTITY_SKILL: (ENTITY_RETURN can't come here)
+		else:# use_state.type == cast_panel.ENTITY_ITEM: (ENTITY_RETURN can't come here)
 			use_item_on_character(person, use_state.entity)
 		try_stop_use_state()
 

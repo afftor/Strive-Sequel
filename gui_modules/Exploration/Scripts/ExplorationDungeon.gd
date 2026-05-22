@@ -335,6 +335,12 @@ func use_item_on_character(character, item):
 	#show_heal_items(position)
 	call_deferred('build_location_group')
 
+func use_skill_on_room(caster, room_id, skill):
+	if !skill.has("room_effect"):
+		return
+	call(skill.room_effect, room_id)
+	use_e_combat_skill(caster, caster, skill)
+	update_map()
 
 func use_e_combat_skill(caster, target, skill):
 	caster.pay_cost(skill.cost)
@@ -914,6 +920,14 @@ func get_scouting_range():
 
 
 func room_pressed(room_id):
+	if is_in_use_state():
+		#process cast on room
+		if use_state.entity.target != "room": return
+		var data = ResourceScripts.game_world.rooms[room_id]
+		if data.status != "scouted" or data.type != 'combat': return
+		use_skill_on_room(use_state.caster, room_id, use_state.entity)
+		try_stop_use_state()
+		return
 	reset_active_location()
 	if selected_room != null and active_subroom == null:
 		return
@@ -973,8 +987,6 @@ func scout_room(room_id, s_range, stay = false):
 				globals.start_fixed_event(data.challenge)
 #			input_handler.combat_advance = false
 			else:
-				data.intimidate = active_location.intimidate
-				active_location.intimidate = false
 				StartCombat(data)
 		'combat_boss':
 			selected_room = room_id
@@ -1257,9 +1269,14 @@ func reveal_map(caster):
 	update_map()
 
 
-func set_intimidate():
+#func set_intimidate():
+#	globals.start_fixed_event('dungeon_intimidate')
+#	active_location.intimidate = true
+
+func set_intimidate(room_id):
+	var data = ResourceScripts.game_world.rooms[room_id]
+	data.intimidate = true
 	globals.start_fixed_event('dungeon_intimidate')
-	active_location.intimidate = true
 
 func process_cast_use(port_node, with_return = false, bottom = false):
 	if !is_in_use_state():#open_cast_panel
@@ -1293,7 +1310,7 @@ func process_cast_use(port_node, with_return = false, bottom = false):
 		
 		if use_state.type == cast_panel.ENTITY_SKILL:
 			use_e_combat_skill(use_state.caster, person, use_state.entity)
-		else:# use_state.type == cast_panel.ENTITY_SKILL: (ENTITY_RETURN can't come here)
+		else:# use_state.type == cast_panel.ENTITY_ITEM: (ENTITY_RETURN can't come here)
 			use_item_on_character(person, use_state.entity)
 		try_stop_use_state()
 
