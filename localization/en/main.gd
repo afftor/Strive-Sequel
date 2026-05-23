@@ -44,6 +44,7 @@ var TranslationDict = {
 		GUI programming: Gerakena
 		Helper Programming: SphinxKingStone
 		Extended modding core/support: zeltop
+		Boss/Enemy design: Luster Garden
 
 		Character design: Nightigall
 		Character design: @naisk47
