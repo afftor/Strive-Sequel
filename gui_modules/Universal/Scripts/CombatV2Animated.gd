@@ -1372,6 +1372,7 @@ func CalculateTargets(skill, target, finale = false):
 		array.clear()
 		for pos in allowedtargets.enemy + allowedtargets.ally:
 			var tchar = get_char_by_pos(pos)
+			if tchar == null: continue #somehow this can happen
 			array.push_back(tchar)
 	return array
 

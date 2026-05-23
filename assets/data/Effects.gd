@@ -448,7 +448,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
-		tags = ['positive'],
+		tags = ['positive','regen'],
 		args = {value = {obj = 'process_value', func = 'eq'}},
 		sub_effects = ['e_t_regen'],
 		atomic = [],

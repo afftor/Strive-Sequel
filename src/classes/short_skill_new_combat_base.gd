@@ -166,7 +166,7 @@ func hit_roll():#not implemented various chance stat rolls due to not having for
 	var prop = chance - evade
 	if (!target.can_evade()): 
 		prop = 100 #target can not evade
-	if (caster != null) and (caster.combatgroup == target.combatgroup): 
+	if (caster != null) and (caster.combatgroup == target.combatgroup) and !tags.has('can_miss_ally'): 
 		prop = 100 #targeting ally
 	if prop < 5: 
 		prop = 5
