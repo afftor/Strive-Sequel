@@ -50,7 +50,7 @@ enum {TR_CAST,TR_CAST_TARGET, TR_PREHIT, TR_PREDEF, TR_HIT, TR_DEF, TR_TURN_S, T
 enum {SKILL_BASE, SKILL_ITEM, SKILL_COPY, SKILL_FA, SKILL_AUTO, SKILL_EFFECT}
 
 enum {TARGET_FORCED, TARGET_KEEP, TARGET_KEEPFIRST, TARGET_NOKEEP, TARGET_MOVEFIRST};
-enum {NT_MELEE, NT_ANY, NT_ANY_NOREPEAT, NT_WEAK, NT_WEAK_MELEE, NT_BACK, NT_CASTER, NT_WEAPON};
+enum {NT_MELEE, NT_ANY, NT_ANY_NOREPEAT, NT_WEAK, NT_WEAK_MELEE, NT_BACK, NT_CASTER, NT_WEAPON, NT_INDISCRIMINATE};
 
 enum {TE_RES_INACTIVE, TE_RES_NOACT, TE_RES_TICK, TE_RES_UPGRADE, TE_RES_DGRADE, TE_RES_REMOVE}
 enum {DYN_STATS_REBUILD, DYN_STATS_FACTORS, DYN_STATS_PREAREA, DYN_STATS_FULL}
@@ -67,7 +67,7 @@ var fighter_stats_list = ['hpmax','mpmax','atk','matk','armor','mdef','hitrate',
 
 var skill_args_checking_list_1 = ['target_range', 'target_number', 'ability_type', 'damage_type', 'tags', 'mode', 'follow_up', 'is_qualified_for_spellsword_followup']
 var skill_args_checking_list_2 = ['damage_type']
-var skill_args_checking_list_3 = ['chance', 'evade', 'critchance', 'armor_p', 'hit_res', 'damage_type', 'can_target_counterattack_in_melee']
+var skill_args_checking_list_3 = ['chance', 'evade', 'critchance', 'armor_p', 'hit_res', 'damage_type', 'can_target_counterattack_in_melee', 'skill_code']
 
 
 var enemy_rarechance = 0.1
