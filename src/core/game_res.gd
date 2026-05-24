@@ -41,6 +41,9 @@ func fix_serialization():
 	for i in clear_array:
 		materials.erase(i)
 	oldmaterials = materials.duplicate()
+	for i in upgrades.keys().duplicate():
+		if !upgradedata.upgradelist.has(i):
+			upgrades.erase(i)
 	for i in upgradedata.upgradelist.keys():
 		if !upgrades.has(i):
 			upgrades[i] = 0
@@ -65,7 +68,8 @@ func serialize():
 func fix_tax():
 	tax = 0
 	for upgrade in upgrades:
-		if upgrades[upgrade] <= 0: continue
+		if upgrades[upgrade] <= 0:
+			 continue
 		var udata = upgradedata.upgradelist[upgrade]
 		if udata.has('tax'): #not used but may be needed later
 			tax += udata.tax
