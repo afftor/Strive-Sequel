@@ -5436,6 +5436,10 @@ var transforms = {
 	},
 	
 	armor_head = {
+		null: [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null},
+		],
 		mask = [
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Head_armor_tex', texture = "res://Character_generator/images/25_head_masks/facemask2.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Head_armor_tex', texture = "res://Character_generator/images/25_head_masks/facemask2.png"},
