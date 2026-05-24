@@ -47,6 +47,8 @@ func tut_get_CloseButton():
 func rebuild():
 	selected_slot = null
 	build_occupation()
+	if restbutton != null:
+		select_resource({code = "rest"}, "rest", restbutton)
 
 
 func build_occupation():
