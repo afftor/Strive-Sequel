@@ -558,6 +558,12 @@ var scenes = {
 	leon = 'res://assets/images/scenes/leon.png',
 	ritual = 'res://assets/images/scenes/ritual.png',
 	
+	prey = "res://assets/images/scenes/prey.png",
+	slave_sex = "res://assets/images/scenes/slave sex.png",
+	jewelry = "res://assets/images/scenes/jewelry box bracelet.png",
+	night = "res://assets/images/scenes/night.png",
+	bathroom = "res://assets/images/scenes/bathroom.png",
+	
 	mae_camp = 'res://assets/images/scenes/mae_camp.png',
 	mae_market = "res://assets/images/scenes/mae_market.png",
 	mae_friend = "res://assets/images/scenes/mae_friend.png",

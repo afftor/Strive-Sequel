@@ -497,6 +497,8 @@ func get_stat_data(stat, stop = variables.DYN_STATS_FULL): #full value
 						else:
 							res.result = max(res.result, aggregate_bonus)
 	
+	if stat == 'sex_stamina':
+		res.result = clamp(res.result, 0, variables.sex_actions_stamina_cap)
 	if st_data.tags.has('integer'):
 		res.result = int(res.result)
 	return res
@@ -963,7 +965,7 @@ func get_racial_features(race):
 
 func process_chardata(chardata):
 	for i in chardata:
-		if !(i in ['code', 'slave_class', 'tags','sex_traits', 'sex_skills', 'personality', 'training_disposition', 'blocked_training_traits','traits', 'food_like', 'food_hate', 'classes', 'skills', 'mastery', 'achievement', 'achi_bonus', 'achi_wedding']):
+		if !(i in ['code', 'slave_class', 'tags','sex_traits', 'sex_skills', 'sex_training', 'personality', 'training_disposition', 'blocked_training_traits','traits', 'food_like', 'food_hate', 'classes', 'skills', 'mastery', 'achievement', 'achi_bonus', 'achi_wedding']):
 			var st_data = statdata.statdata[i]
 			if !st_data.direct:
 				set_default_value(i, chardata[i])

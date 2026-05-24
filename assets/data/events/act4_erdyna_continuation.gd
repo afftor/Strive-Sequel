@@ -883,7 +883,8 @@ var data = {
 				text = "DIALOGUECONTINUE",
 				reqs = [],
 				type = "next_dialogue",
-				previous_dialogue_option = 2
+				previous_dialogue_option = [1, 2],
+				bonus_effects = [{code = "screen_black_transition", value = 0.5}]
 			},
 			{
 				code = "close",

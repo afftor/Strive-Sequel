@@ -16,6 +16,24 @@ const linksets = {
 		"revlotus",
 		"revlotusanal",
 	],
+
+	tail = [
+		"inserttailv",
+		"inserttaila",
+	],
+
+	caress = [
+		"missionary",
+		"missionaryanal",
+		"doggy",
+		"doggyanal",
+		"lotus",
+		"lotusanal",
+		"revlotus",
+		"revlotusanal",
+		"ontop",
+		"ontopanal",
+	],
 }
 
 #shared lines for newtype actions
@@ -29,8 +47,9 @@ start_1_missionary = {
 		consent = [true],
 	},
 	lines = [
-		"[name1] {^hold:lift}[s/1] [names2] legs{^ over [his2] head: apart}",
-		"[name1] {^hug:hold:squeeze}[s/1] [name2] close to [his1] bod[y/ies1]",
+		"[name2] {^wraps:hooks}[s/2] [his2] legs around [name1]",
+		"[name2] {^pulls:draws}[s/2] [name1] {^closer:in}",
+		"[name2] {^arches:lifts}[s/2] [his2] hips to meet [name1]",
 	]},
 
 	repeat_mean = {
@@ -39,8 +58,9 @@ start_1_missionary = {
 		consent = [false],
 	},
 	lines = [
-		"[name1] {^roughly :}{^pull[s/1]:spread[s/1]:hold[s/1]} [names2] legs{^ over [his2] head: apart}",
-		"[name1] {^pin[s/1]:hold[s/1]} [name2] down",
+		"[name1] {^pin[s/1]:hold[s/1]} [name2] down as [he2] {^squirm[s/2]:writh[es/2]}",
+		"[name2] {^tr[ies/y2] to push:attempt[s/2] to push} [name1] away",
+		"[name2] {^whimper[s/2]:protest[s/2]} as [name1] {^press[es/1]:push[es/1]} [him2] into the {^mattress:sheets}",
 	]},
 
 	lotus_nice = {
@@ -49,8 +69,8 @@ start_1_missionary = {
 		consent = [true],
 	},
 	lines = [
-		"[name1] {^lower:drop}[s/1] [name2] onto [his2] back[/s2] and {^move:climb}[s/1] {^atop:on top of} [him2]",
-		"[name1] {^loosen:release}[s/1] [his1] {^embrace:hold} and {^lower:drop}[s/1] [name2] onto [his2] back[/s2]",
+		"[name2] {^let[s/2] [himself2]:allow[s/2] [himself2] to be} lowered onto [his2] back[/s2] as [name1] climb[s/1] {^atop:on top of} [him2]",
+		"[name2] {^shifts:rolls}[s/2] onto [his2] back[/s2] and [name1] settle[s/1] {^atop:over} [him2]",
 	]},
 
 	lotus_mean = {
@@ -59,8 +79,8 @@ start_1_missionary = {
 		consent = [false],
 	},
 	lines = [
-		"[name1] {^push[es/1]:shove[s/1]} [name2] onto [his2] back[/s2] and {^move:climb}[s/1] {^atop:on top of} [him2]",
-		"[name1] {^loosen:release}[s/1] [his1] {^grip:hold} and {^push[es/1]:shove[s/1]} [name2] onto [his2] back[/s2]",
+		"[name2] {^squirm[s/2]:struggle[s/2]} as [name1] {^push[es/1]:force[s/1]} [him2] onto [his2] back[/s2]",
+		"[name1] {^push[es/1]:shove[s/1]} [name2] onto [his2] back[/s2] despite [his2] {^protests:resistance}",
 	]},
 
 	revlotus_nice = {
@@ -69,8 +89,8 @@ start_1_missionary = {
 		consent = [true],
 	},
 	lines = [
-		"[name1] {^lower:guide}[s/1] [name2] {^forward:down} and {^flip:roll:turn}[s/1] [him2] over onto [his2] back",
-		"[name1] {^loosen:release}[s/1] [his1] {^embrace:hold} and {^flip:roll:turn}[s/1] [name2] onto [his2] back",
+		"[name2] {^let[s/2] [himself2]:allow[s/2] [himself2] to be} flipped over onto [his2] back",
+		"[name2] {^rolls:shifts}[s/2] over onto [his2] back as [name1] guide[s/1] [him2]",
 	]},
 
 	revlotus_mean = {
@@ -79,8 +99,8 @@ start_1_missionary = {
 		consent = [false],
 	},
 	lines = [
-		"[name1] {^push[es/1]:shove[s/1]} [name2] {^forward:down} and {^flip:roll:turn}[s/1] [him2] over onto [his2] back",
-		"[name1] {^loosen:release}[s/1] [his1] {^grip:hold} and {^flip:roll:turn}[s/1] [name2] onto [his2] back",
+		"[name2] {^struggle[s/2]:resist[s/2]} as [name1] {^flip[s/1]:force[s/1]} [him2] over onto [his2] back",
+		"[name1] {^flip[s/1]:turn[s/1]} [name2] over despite [his2] {^protests:resistance}",
 	]},
 
 	doggy_nice = {
@@ -89,8 +109,8 @@ start_1_missionary = {
 		consent = [true],
 	},
 	lines = [
-		"[name1] {^flip:roll:turn}[s/1] [name2] over {^onto [his2] back[/s2]:to face [him1]} and {^move:climb}[s/1] {^atop:on top of} [him2]",
-		"[name1] {^lift:guide:pull}[s/1] [name2] up off [his2] hands and knees and {^flip:roll:turn}[s/1] [him2] over",
+		"[name2] {^rolls:turns}[s/2] over onto [his2] back[/s2] and [name1] climb[s/1] {^atop:on top of} [him2]",
+		"[name2] {^let[s/2] [himself2]:allow[s/2] [himself2] to be} flipped over as [name1] settle[s/1] {^atop:over} [him2]",
 	]},
 
 	doggy_mean = {
@@ -99,8 +119,8 @@ start_1_missionary = {
 		consent = [false],
 	},
 	lines = [
-		"[name1] {^flip:roll:turn}[s/1] [name2] over {^onto [his2] back[/s2]:to face [him1]} and {^move:climb}[s/1] {^atop:on top of} [him2]",
-		"[name1] {^yank:jerk:pull}[s/1] [name2] up off [his2] hands and knees and {^flip:roll:turn}[s/1] [him2] over",
+		"[name2] {^struggle[s/2]:squirm[s/2]} as [name1] {^flip[s/1]:force[s/1]} [him2] onto [his2] back[/s2]",
+		"[name1] {^yank[s/1]:jerk[s/1]} [name2] onto [his2] back[/s2] as [he2] {^protest[s/2]:resist[s/2]}",
 	]},
 
 	insert_nice = {
@@ -109,8 +129,8 @@ start_1_missionary = {
 		consent = [true],
 	},
 	lines = [
-		"[name1] {^gently :}{^lay:set}[s/1] [name2] down{^ on [his2] back:}",
-		"[name1] {^roll:shift}[s/1] [name2] onto [his2] back and {^move:climb}[s/1] {^atop:on top of} [him2]",
+		"[name2] {^lies:settles}[s/2] down{^ on [his2] back:} as [name1] {^moves:climbs}[s/1] {^atop:on top of} [him2]",
+		"[name2] {^shifts:moves}[s/2] onto [his2] back, letting [name1] {^settle:climb} {^atop:over} [him2]",
 	]},
 
 	insert_mean = {
@@ -119,8 +139,8 @@ start_1_missionary = {
 		consent = [false],
 	},
 	lines = [
-		"[name1] {^roughly :}{^push[es/1]:pin[s/1]:hold[s/1]} [name2] down{^ on [his2] back:}",
-		"[name1] {^toss[es/1]:throw[s/1]} [name2] onto [his2] back and {^move:climb}[s/1] {^atop:on top of} [him2]",
+		"[name2] {^squirm[s/2]:struggle[s/2]} as [name1] {^pin[s/1]:hold[s/1]} [him2] down{^ on [his2] back:}",
+		"[name1] {^force[s/1]:push[es/1]} [name2] onto [his2] back as [he2] {^tr[ies/y2] to resist:protest[s/2]}",
 	]},
 
 },
@@ -133,8 +153,9 @@ start_1_doggy = {
 		consent = [true],
 	},
 	lines = [
-		"[name1] {^hold[s/1]:grasp[s/1]:stead[ies/y1]} [name2] by [his2] [hips2]",
-		"[name1] {^squeeze:knead:massage}[s/1] [names2] {^ass:butt}cheeks",
+		"[name2] {^push[es/2]:rock[s/2]} back against [name1]",
+		"[name2] {^arches:raises}[s/2] [his2] back, {^inviting:welcoming} [name1] deeper",
+		"[name2] {^grips:clutches}[s/2] the {^sheets:bedding} as [name1] continues",
 	]},
 
 	repeat_mean = {
@@ -143,9 +164,9 @@ start_1_doggy = {
 		consent = [false],
 	},
 	lines = [
-		"[name1] {^roughly :}{^squeeze:knead:swat}[s/1] [names2] {^ass:butt}cheeks",
-		"[name1] {^roughly :}{^grabs[s/1]:seize[s/1]} [name2] by [his2] [hips2]",
-		"[name1] {^pin[s/1]:hold[s/1]} [name2] down {^on all fours:on [his2] knees}",
+		"[name1] {^hold[s/1]:pin[s/1]} [name2] in place as [he2] {^tr[ies/y2] to pull away:attempt[s/2] to escape}",
+		"[name2] {^whimper[s/2]:whin[es/2]:protest[s/2]} as [name1] {^hold[s/1]:keep[s/1]} [him2] from moving",
+		"[name2] {^struggle[s/2]:squirm[s/2]} against [name1]'s grip",
 	]},
 
 	lotus_nice = {
@@ -154,8 +175,8 @@ start_1_doggy = {
 		consent = [true],
 	},
 	lines = [
-		"[name1] {^lower:guide}[s/1] [name2] back and {^flip:roll:turn}[s/1] [him2] over onto {^all fours:[his2] knees:[his2] hands and knees}",
-		"[name1] {^loosen:release}[s/1] [his1] {^embrace:hold} and {^flip:roll:turn}[s/1] [name2] onto {^all fours:[his2] knees:[his2] hands and knees}",
+		"[name2] {^let[s/2] [himself2]:allow[s/2] [himself2] to be} guided onto {^all fours:[his2] hands and knees}",
+		"[name2] {^shifts:rolls}[s/2] forward onto {^all fours:[his2] knees} as [name1] direct[s/1] [him2]",
 	]},
 
 	lotus_mean = {
@@ -164,8 +185,8 @@ start_1_doggy = {
 		consent = [false],
 	},
 	lines = [
-		"[name1] {^push[es/1]:shove[s/1]} [name2] back and {^flip:roll:turn}[s/1] [him2] over onto {^all fours:[his2] knees:[his2] hands and knees}",
-		"[name1] {^loosen:release}[s/1] [his1] {^grip:hold} and {^flip:roll:turn}[s/1] [name2] onto {^all fours:[his2] knees:[his2] hands and knees}",
+		"[name2] {^squirm[s/2]:struggle[s/2]} as [name1] {^push[es/1]:shove[s/1]} [him2] onto {^all fours:[his2] hands and knees}",
+		"[name1] {^force[s/1]:push[es/1]} [name2] forward onto {^all fours:[his2] knees} despite [his2] {^protests:resistance}",
 	]},
 
 	revlotus_nice = {
@@ -174,8 +195,8 @@ start_1_doggy = {
 		consent = [true],
 	},
 	lines = [
-		"[name1] {^lower:guide}[s/1] [name2] {^forward:down} onto {^all fours:[his2] knees:[his2] hands and knees}",
-		"[name1] {^loosen:release}[s/1] [his1] {^embrace:hold} and {^roll:shift}[s/1] [name2] onto {^all fours:[his2] knees:[his2] hands and knees}",
+		"[name2] {^let[s/2] [himself2]:shift[s/2]} forward onto {^all fours:[his2] hands and knees}",
+		"[name2] {^moves:settles}[s/2] into position as [name1] guide[s/1] [him2]",
 	]},
 
 	revlotus_mean = {
@@ -184,8 +205,8 @@ start_1_doggy = {
 		consent = [false],
 	},
 	lines = [
-		"[name1] {^push[es/1]:shove[s/1]} [name2] {^forward:down} onto {^all fours:[his2] knees:[his2] hands and knees}",
-		"[name1] {^loosen:release}[s/1] [his1] {^grip:hold} and {^push[es/1]:shove[s/1]} [name2] onto {^all fours:[his2] knees:[his2] hands and knees}",
+		"[name2] {^resist[s/2]:struggle[s/2]} as [name1] {^force[s/1]:push[es/1]} [him2] forward onto {^all fours:[his2] knees}",
+		"[name1] {^push[es/1]:shove[s/1]} [name2] into position as [he2] {^protest[s/2]:squirm[s/2]}",
 	]},
 
 	missionary_nice = {
@@ -194,8 +215,8 @@ start_1_doggy = {
 		consent = [true],
 	},
 	lines = [
-		"[name1] {^flip:roll:turn}[s/1] [name2] over onto {^all fours:[his2] knees:[his2] hands and knees}",
-		"[name1] {^lift:guide:pull}[s/1] [name2] up off [his2] back[/s2] and {^flip:roll:turn}[s/1] [him2] over",
+		"[name2] {^rolls:turns}[s/2] over onto {^all fours:[his2] hands and knees}",
+		"[name2] {^shifts:moves}[s/2] onto {^all fours:[his2] knees} as [name1] guide[s/1] [him2]",
 	]},
 
 	missionary_mean = {
@@ -204,8 +225,8 @@ start_1_doggy = {
 		consent = [false],
 	},
 	lines = [
-		"[name1] {^flip:roll:turn}[s/1] [name2] over onto {^all fours:[his2] knees:[his2] hands and knees}",
-		"[name1] {^yank:jerk:pull}[s/1] [name2] up off [his2] back[/s2] and {^flip:roll:turn}[s/1] [him2] over",
+		"[name2] {^squirm[s/2]:struggle[s/2]} as [name1] {^flip[s/1]:force[s/1]} [him2] onto {^all fours:[his2] hands and knees}",
+		"[name1] {^yank[s/1]:jerk[s/1]} [name2] over as [he2] {^protest[s/2]:resist[s/2]}",
 	]},
 
 	insert_nice = {
@@ -214,8 +235,8 @@ start_1_doggy = {
 		consent = [true],
 	},
 	lines = [
-		"[name1] {^gently :}{^guide:set}[s/1] [name2] down onto {^all fours:[his2] knees}",
-		"[name1] {^roll:shift}[s/1] [name2] onto [his2] hands and knees",
+		"[name2] {^get[s/2] on all fours:position[s/2] [himself2]} as [name1] move[s/1] behind [him2]",
+		"[name2] {^arches:raises}[s/2] [his2] back, {^presenting:offering} [himself2] to [name1]",
 	]},
 
 	insert_mean = {
@@ -224,8 +245,8 @@ start_1_doggy = {
 		consent = [false],
 	},
 	lines = [
-		"[name1] {^roughly :}{^push[es/1]:pin[s/1]:hold[s/1]} [name2] down {^on all fours:on [his2] knees}",
-		"[name1] {^toss[es/1]:throw[s/1]} [name2] onto [his2] hands and knees",
+		"[name2] {^struggle[s/2]:resist[s/2]} as [name1] {^force[s/1]:push[es/1]} [him2] onto [his2] hands and knees",
+		"[name1] {^pin[s/1]:hold[s/1]} [name2] down {^on all fours:on [his2] knees} as [he2] {^squirm[s/2]:protest[s/2]}",
 	]},
 
 },
@@ -452,6 +473,36 @@ start_2_sexv = {
 		", trying to {^take in:absorb} {^every detail:each second} of the {^tantilizing:erotic:sensual} display {^unfolding:playing out} {^before:in front of} [his1] eyes. ",
 	]},
 
+	same_giver_mastered_nice = {
+	conditions = {
+		orifice = ["same"],
+		consent = [true],
+		giver_skill_level = ['mastered'],
+	},
+	lines = [
+		", {^immediately:quickly} locking into a {^precise:perfect} rhythm as if [he1] never stopped. ",
+	]},
+
+	same_giver_skilled_nice = {
+	conditions = {
+		orifice = ["same"],
+		consent = [true],
+		giver_skill_level = ['skilled'],
+	},
+	lines = [
+		", {^settling:falling} back into a {^comfortable:steady} pace without missing a beat. ",
+	]},
+
+	same_giver_novice_nice = {
+	conditions = {
+		orifice = ["same"],
+		consent = [true],
+		giver_skill_level = ['novice'],
+	},
+	lines = [
+		", {^taking a moment:needing a beat} to {^find:reestablish} [his1] rhythm. ",
+	]},
+
 	holeswap = {
 	conditions = {
 		orifice = ["swap"],
@@ -464,10 +515,146 @@ start_2_sexv = {
 	insert = {
 	conditions = {
 		orifice = ["insert"],
+		taker_fingering_ongoing = [false],
 	},
 	lines = [
 		", {^aligning:lining up} [his1] [penis1] with the {^entrance:mouth} of [his2] [pussy2]. ",
 		", {^probing:pressing} {^the tip of :}[his1] [penis1] into the {^entrance:mouth} of [his2] [pussy2]. ",
+	]},
+
+	insert_giver_mastered_nice = {
+	conditions = {
+		orifice = ["insert"],
+		taker_fingering_ongoing = [false],
+		consent = [true],
+		giver_skill_level = ['mastered'],
+	},
+	lines = [
+		", {^pressing:sliding} inside [name2] at exactly the right angle, drawing a sharp breath from [him2]. ",
+	]},
+
+	insert_giver_skilled_nice = {
+	conditions = {
+		orifice = ["insert"],
+		taker_fingering_ongoing = [false],
+		consent = [true],
+		giver_skill_level = ['skilled'],
+	},
+	lines = [
+		", {^lining:aligning} [himself1] up carefully before {^pressing:sliding} inside [name2]. ",
+	]},
+
+	insert_giver_mastered_mean = {
+	conditions = {
+		orifice = ["insert"],
+		taker_fingering_ongoing = [false],
+		consent = [false],
+		giver_skill_level = ['mastered'],
+	},
+	lines = [
+		", {^driving:forcing} [himself1] inside with {^practiced:deliberate} control, leaving [name2] no room to resist. ",
+	]},
+
+	insert_giver_skilled_mean = {
+	conditions = {
+		orifice = ["insert"],
+		taker_fingering_ongoing = [false],
+		consent = [false],
+		giver_skill_level = ['skilled'],
+	},
+	lines = [
+		", {^pushing:forcing} [himself1] inside despite [name2]'s {^resistance:protests}. ",
+	]},
+
+	insert_giver_novice_nice = {
+	conditions = {
+		orifice = ["insert"],
+		taker_fingering_ongoing = [false],
+		consent = [true],
+		giver_skill_level = ['novice'],
+	},
+	lines = [
+		", {^fumbling:struggling} to find the right angle before {^pressing:pushing} inside [name2]. ",
+	]},
+
+	insert_taker_mastered_nice = {
+	conditions = {
+		orifice = ["insert"],
+		taker_fingering_ongoing = [false],
+		consent = [true],
+		taker_skill_level = ['mastered'],
+	},
+	lines = [
+		", [name2] {^tilt[s/2]:angle[s/2]} [his2] hips to {^take [name1] more easily:guide [name1] to the right spot}. ",
+	]},
+
+	insert_taker_skilled_nice = {
+	conditions = {
+		orifice = ["insert"],
+		taker_fingering_ongoing = [false],
+		consent = [true],
+		taker_skill_level = ['skilled'],
+	},
+	lines = [
+		", [name2] {^exhale[s/2]:relax[es/2]}, {^consciously:deliberately} opening up for [name1]. ",
+	]},
+
+	insert_taker_novice_nice = {
+	conditions = {
+		orifice = ["insert"],
+		taker_fingering_ongoing = [false],
+		consent = [true],
+		taker_skill_level = ['novice'],
+	},
+	lines = [
+		", [name2] {^clench[es/2]:tighten[s/2]} instinctively as [name1] {^press[es/1]:push[es/1]} inside. ",
+	]},
+
+	insert_taker_skilled_mean = {
+	conditions = {
+		orifice = ["insert"],
+		taker_fingering_ongoing = [false],
+		consent = [false],
+		taker_skill_level = ['skilled'],
+	},
+	lines = [
+		", [name2] {^clench[es/2]:tighten[s/2]} involuntarily as [name1] {^enter[s/1]:push[es/1] inside} [him2]. ",
+	]},
+
+	insert_taker_novice_mean = {
+	conditions = {
+		orifice = ["insert"],
+		taker_fingering_ongoing = [false],
+		consent = [false],
+		taker_skill_level = ['novice'],
+	},
+	lines = [
+		", [name2] {^lock[s/2]:seize[s/2]} up as [name1] {^force[s/1]:push[es/1]} inside [him2]. ",
+	]},
+
+	insert_fingering_nice = {
+	conditions = {
+		orifice = ["insert"],
+		taker_fingering_ongoing = [true],
+		consent = [true],
+	},
+	lines = [
+		"SEXDESC_VAGINAL_INSERT_FINGERING_TRANSITION_1",
+		"SEXDESC_VAGINAL_INSERT_FINGERING_TRANSITION_2",
+		"SEXDESC_VAGINAL_INSERT_FINGERING_TRANSITION_4",
+		"SEXDESC_VAGINAL_INSERT_FINGERING_TRANSITION_5",
+	]},
+
+	insert_fingering_mean = {
+	conditions = {
+		orifice = ["insert"],
+		taker_fingering_ongoing = [true],
+		consent = [false],
+	},
+	lines = [
+		"SEXDESC_VAGINAL_INSERT_FINGERING_TRANSITION_3",
+		"SEXDESC_VAGINAL_INSERT_FINGERING_TRANSITION_4",
+		"SEXDESC_VAGINAL_INSERT_FINGERING_TRANSITION_5",
 	]},
 
 },
@@ -658,6 +845,134 @@ main_1_sexv = {
 	},
 	lines = [
 		"[names2] [labia2] {^slide along:coil around:tug at} [names1] [penis1]",
+	]},
+
+	giver_mastered_nice = {
+	conditions = {
+		virgin = [false],
+		consent = [true],
+		giver_skill_level = ['mastered'],
+	},
+	lines = [
+		"[name1] {^adjust[s/1]:shift[s/1]} [his1] angle to {^draw out:elicit} a gasp from [name2]",
+		"[name1] {^read[s/1]:sense[s/1]} every shift in [name2]'s body and {^respond[s/1]:adjust[s/1]} accordingly",
+	]},
+
+	giver_skilled_nice = {
+	conditions = {
+		virgin = [false],
+		consent = [true],
+		giver_skill_level = ['skilled'],
+	},
+	lines = [
+		"[name1] {^maintain[s/1]:keep[s/1]} a {^steady:consistent} pace, {^watching:reading} [name2]'s reactions",
+	]},
+
+	giver_novice_nice = {
+	conditions = {
+		virgin = [false],
+		consent = [true],
+		giver_skill_level = ['novice'],
+	},
+	lines = [
+		"[name1] {^thrust[s/1]:move[s/1]} {^at the wrong angle:unevenly}, still finding [his1] footing",
+		"[name1] {^fumble[s/1]:struggle[s/1]} to maintain a rhythm",
+	]},
+
+	taker_mastered_nice = {
+	conditions = {
+		virgin = [false],
+		consent = [true],
+		taker_skill_level = ['mastered'],
+	},
+	lines = [
+		"[name2] {^clench[es/2]:squeeze[s/2]} around [name1] at exactly the right moment",
+		"[name2] {^angle[s/2]:tilt[s/2]} [his2] hips to {^take [name1] deeper:draw [name1] in further}",
+	]},
+
+	taker_skilled_nice = {
+	conditions = {
+		virgin = [false],
+		consent = [true],
+		taker_skill_level = ['skilled'],
+	},
+	lines = [
+		"[name2] {^start[s/2]:begin[s/2]} to {^rock:shift}[s/2] [his2] hips {^with:in time with} [name1]",
+		"[name2] {^consciously:deliberately} {^relax[es/2]:open[s/2] up} around [name1]",
+	]},
+
+	taker_novice_nice = {
+	conditions = {
+		virgin = [false],
+		consent = [true],
+		taker_skill_level = ['novice'],
+	},
+	lines = [
+		"[name2] {^clamp[s/2]:clench[es/2]} up involuntarily with each thrust",
+		"[name2] lie[s/2] {^rigid:motionless}, not knowing how to respond",
+	]},
+
+	giver_mastered_mean = {
+	conditions = {
+		virgin = [false],
+		consent = [false],
+		giver_skill_level = ['mastered'],
+	},
+	lines = [
+		"[name1] {^pin[s/1]:hold[s/1]} [name2] at exactly the right angle, knowing [he2] can't resist",
+		"[name1] {^use[s/1]:work[s/1]} [name2]'s body with {^clinical:cold} precision",
+	]},
+
+	giver_skilled_mean = {
+	conditions = {
+		virgin = [false],
+		consent = [false],
+		giver_skill_level = ['skilled'],
+	},
+	lines = [
+		"[name1] {^keep[s/1]:hold[s/1]} [name2] {^pinned:in place} with a {^confident:practiced} grip",
+	]},
+
+	giver_novice_mean = {
+	conditions = {
+		virgin = [false],
+		consent = [false],
+		giver_skill_level = ['novice'],
+	},
+	lines = [
+		"[name1] {^fumble[s/1]:struggle[s/1]} to maintain [his1] grip on [name2]",
+	]},
+
+	taker_mastered_mean = {
+	conditions = {
+		virgin = [false],
+		consent = [false],
+		taker_skill_level = ['mastered'],
+	},
+	lines = [
+		"[name2] {^clench[es/2]:squeeze[s/2]} around [name1] {^helplessly:involuntarily}, [his2] body {^responding:reacting} on its own",
+		"[name2] {^fight[s/2]:struggle[s/2]} against [his2] own instincts as [his2] hips {^twitch:shift} toward [name1]",
+	]},
+
+	taker_skilled_mean = {
+	conditions = {
+		virgin = [false],
+		consent = [false],
+		taker_skill_level = ['skilled'],
+	},
+	lines = [
+		"[name2] {^tr[ies/y2] to stay:struggle[s/2] to remain} still as [his2] hips {^twitch:shift} on their own",
+	]},
+
+	taker_novice_mean = {
+	conditions = {
+		virgin = [false],
+		consent = [false],
+		taker_skill_level = ['novice'],
+	},
+	lines = [
+		"[name2] {^lock[s/2]:clamp[s/2]} up entirely, body rigid with {^shock:panic}",
+		"[name2] {^whimper[s/2]:sob[s/2]}, unable to do anything but endure",
 	]},
 
 },
@@ -1054,6 +1369,65 @@ react_1_sex = {
 		"[name2] look[s/2] away in indignation",
 	]},
 
+	taker_mastered_nice = {
+	conditions = {
+		consent = [true],
+		taker_skill_level = ['mastered'],
+	},
+	lines = [
+		"[name2] {^clench[es/2]:squeeze[s/2]} around [name1], {^timing:coordinating} it with each thrust",
+		"[name2] {^tilt[s/2]:angle[s/2]} [his2] hips to {^take [name1] deeper:maximize the sensation}",
+	]},
+
+	taker_skilled_nice = {
+	conditions = {
+		consent = [true],
+		taker_skill_level = ['skilled'],
+	},
+	lines = [
+		"[name2] {^rock[s/2]:shift[s/2]} [his2] hips {^tentatively:experimentally}, {^finding:learning} what feels good",
+		"[name2] begin[s/2] to {^consciously:actively} move with [name1]",
+	]},
+
+	taker_novice_nice = {
+	conditions = {
+		consent = [true],
+		taker_skill_level = ['novice'],
+	},
+	lines = [
+		"[name2] {^gasp[s/2]:whimper[s/2]} at each sensation, {^overwhelmed:caught off guard} by the feeling",
+		"[name2] {^lie[s/2]:remain[s/2]} {^rigid:tense}, not knowing what to do with [himself2]",
+	]},
+
+	taker_mastered_mean = {
+	conditions = {
+		consent = [false],
+		taker_skill_level = ['mastered'],
+	},
+	lines = [
+		"[name2] {^clench[es/2]:squeeze[s/2]} around [name1] {^helplessly:involuntarily}, unable to stop [himself2]",
+		"[name2] {^fight[s/2]:struggle[s/2]} to suppress [his2] body's {^trained:instinctive} response",
+	]},
+
+	taker_skilled_mean = {
+	conditions = {
+		consent = [false],
+		taker_skill_level = ['skilled'],
+	},
+	lines = [
+		"[name2] {^tr[ies/y2] to stay:struggle[s/2] to remain} still as [his2] hips {^twitch:shift} on their own",
+	]},
+
+	taker_novice_mean = {
+	conditions = {
+		consent = [false],
+		taker_skill_level = ['novice'],
+	},
+	lines = [
+		"[name2] {^lock[s/2]:seize[s/2]} up, body rigid with {^shock:panic}",
+		"[name2] {^shudder[s/2]:flinch[es/2]} with each thrust, unable to adapt",
+	]},
+
 },
 
 react_1_fsex = {
@@ -1192,6 +1566,67 @@ react_2_sex = {
 	lines = [
 		", trying to {^resist:compose [himself2]:ignore what's happening}",
 		", feeling {^ashamed:demeaned}",
+		"",
+	]},
+
+	giver_mastered_nice = {
+	conditions = {
+		consent = [true],
+		giver_skill_level = ['mastered'],
+	},
+	lines = [
+		", every thrust {^precisely:expertly} aimed by [name1]",
+		", {^driven:pushed} further with each {^precise:well-placed} move from [name1]",
+		"",
+	]},
+
+	giver_skilled_nice = {
+	conditions = {
+		consent = [true],
+		giver_skill_level = ['skilled'],
+	},
+	lines = [
+		", guided along by [names1] {^steady:consistent} rhythm",
+		"",
+	]},
+
+	giver_novice_nice = {
+	conditions = {
+		consent = [true],
+		giver_skill_level = ['novice'],
+	},
+	lines = [
+		", {^despite:in spite of} [names1] {^uneven:clumsy} movements",
+		"",
+	]},
+
+	giver_mastered_mean = {
+	conditions = {
+		consent = [false],
+		giver_skill_level = ['mastered'],
+	},
+	lines = [
+		", [his2] body {^surrendering:giving in} to [names1] {^expert:practiced} control despite [himself2]",
+		"",
+	]},
+
+	giver_skilled_mean = {
+	conditions = {
+		consent = [false],
+		giver_skill_level = ['skilled'],
+	},
+	lines = [
+		", [his2] resistance {^crumbling:faltering} under [names1] {^confident:relentless} pace",
+		"",
+	]},
+
+	giver_novice_mean = {
+	conditions = {
+		consent = [false],
+		giver_skill_level = ['novice'],
+	},
+	lines = [
+		", {^even through:despite} [names1] {^clumsy:fumbling} handling",
 		"",
 	]},
 

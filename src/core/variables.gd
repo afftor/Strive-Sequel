@@ -76,7 +76,7 @@ var rare_enemy_traits = ['rare_sturdy', 'rare_nimble', 'rare_strong', 'rare_dead
 
 var productivity_mods = ['mod_build','mod_hunt', 'mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros', 'mod_service']
 
-var longtails = ['fox','cat','wolf','dragon','demon','tanuki','fish','lizard']
+var longtails = ['fox','cat','wolf','dragon','demon','tanuki','fish','lizard','kobold','rat']
 var longears = ['fox','cat','wolf','bunny_standing','bunny_drooping','elven','tanuki']
 
 var impregnation_compatibility = ['Human','Elf','DarkElf','TribalElf','Beastkin','Halfkin'] #the rest is only for same race
@@ -549,6 +549,10 @@ var consent_dict = {
 
 
 var resist_text_chancce = 0.25 #chance to display text of resisting actions during sex minigame
+
+var sex_actions_base = 9 #base action pool per character in sex minigame
+var sex_actions_stamina_cap = 10 #max sex_stamina stat value
+var sex_actions_per_factor = 1 #actions added per sexuals_factor point
 
 
 var disposition_results = {

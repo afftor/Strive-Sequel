@@ -591,7 +591,12 @@ func select_brothel_activity():
 		if parent.get_ref().has_status('harlotry'):
 			parent.get_ref().rest_tick()
 		#pick chance
-		if 50 + max(parent.get_ref().get_stat('sexuals')/2,parent.get_ref().get_stat('charm')/2) > randf()*100:
+		var _sex_skilled_count = 0
+		for _skill in ['petting', 'oral', 'pussy', 'anal', 'penetration', 'tail']:
+			var _lvl = parent.get_ref().get_stat('sex_training_' + _skill)
+			if _lvl == 'skilled' || _lvl == 'mastered':
+				_sex_skilled_count += 1
+		if 50 + max(_sex_skilled_count * 10, parent.get_ref().get_stat('charm')/2) > randf()*100:
 			var remove_from_sex = []
 			
 			#every rule toggled only has 50% chance to be picked by default
@@ -895,9 +900,7 @@ func add_metric_for_outcome(res_id):
 
 func work_tick_values(workstat):
 	if !parent.get_ref().has_status('no_working_bonuses'):
-		if workstat.findn("sex_skills") >= 0:
-			parent.get_ref().add_stat(workstat, rand_range(1.2,1.8))
-		else:
+		if workstat.findn("sex_skills") < 0:
 			parent.get_ref().add_stat(workstat, 0.36)
 		parent.get_ref().add_stat('base_exp', 5)
 

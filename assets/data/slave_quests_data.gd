@@ -378,7 +378,7 @@ var quests = {
 			},
 			{
 				generate_func = "getreq_random_sex_skills",
-				generate_args = [1, [30,50], "gte"],
+				generate_args = {num_range = [1, 3], level = "skilled", operant = "gte"},
 				chance = 0.7
 			},
 			{
@@ -808,8 +808,8 @@ var quests = {
 				reward_func_args = ['rare', 0.1]
 			},
 			{
-				generate_func = 'getreq_roll_stat',
-				generate_args = ['sexuals', [10,20], 'gte', 5],
+				generate_func = "getreq_random_sex_skills",
+				generate_args = {num_range = [1, 3], level = "skilled", operant = "gte"},
 				chance = 0.5
 			},
 			{
@@ -999,7 +999,7 @@ var quests = {
 			},
 			{
 				generate_func = "getreq_random_sex_skills",
-				generate_args = [1, [20,30], "gte", 5],
+				generate_args = {num_range = [1, 3], level = "skilled", operant = "gte"},
 				chance = 1.0
 			},
 		],
@@ -1267,19 +1267,16 @@ var quests = {
 				reward_func = "getrwd_race_tag",
 				reward_func_args = ['rare', 0.1]
 			},
-			[
-				{
-					generate_func = "getreq_random_sex_skills",
-					generate_args = [2, [30,50], "gte", 5],
-					chance = 0.5,
-					stop_on_me = true
-				},
-				{
-					generate_func = "getreq_random_sex_skills",
-					generate_args = [1, [30,50], "gte", 5],
-					chance = 1.0
-				},
-			],
+			{
+				generate_func = "getreq_random_sex_skills",
+				generate_args = {num = 1, level = "mastered", operant = "gte"},
+				chance = 1.0
+			},
+			{
+				generate_func = "getreq_random_sex_skills",
+				generate_args = {num_range = [1, 2], level = "skilled", operant = "gte"},
+				chance = 1.0
+			},
 			[
 				{
 					has_no_req = {code = "sex", value = 'male'},
@@ -1456,8 +1453,8 @@ var quests = {
 #	'num' - optional arg. Determines number of races in req
 #* getreq_random_starting_race()
 #	generate race req from starting_races_array
-#* getreq_random_sex_skills(num, val_range, operant, round_to)
-#	generate sex skill req with randomized value corresponding to race and sex reqs already in quest.
+#* getreq_random_sex_skills({num, level, operant, num_range?})
+#	generate sex skill req. num_range = [min, max] picks count randomly. level = 'skilled'/'mastered'.
 #	So this generate_func must be used AFTER any race or sex reqs
 #	'num' - number of sex skills
 #	'val_range' - array, representing range to randomize the skill value from

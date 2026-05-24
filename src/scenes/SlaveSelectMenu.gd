@@ -6,6 +6,7 @@ onready var req_info = $req_info
 onready var req_info_label = $req_info/reqs_list
 onready var slave_btn_cont = $ScrollContainer/VBoxContainer
 onready var hide_pretenders_btn = $hide_btn
+onready var prompt_label = $ScrollContainer/VBoxContainer/Label
 var reqs_text
 var hide_pretenders = false
 
@@ -18,7 +19,7 @@ func _ready():
 func tut_get_slave_btn():
 	return slave_btn_cont.get_children()[0]
 
-func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = null):
+func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = null, prompt = ''):
 	target_func = targetfunc
 	target_node = targetnode
 	req_info.hide()
@@ -27,7 +28,9 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = n
 	show()
 	if gui_controller.dialogue != null and gui_controller.dialogue.is_visible():
 		gui_controller.dialogue.add_select_blocking_node(self)
-	input_handler.ClearContainer(slave_btn_cont)
+	input_handler.ClearContainer(slave_btn_cont, ['Button', 'Label'])
+	prompt_label.bbcode_text = "[center]" + prompt + "[/center]"
+	prompt_label.visible = prompt != ''
 	if allow_remove == true:
 		var newnode = input_handler.DuplicateContainerTemplate(slave_btn_cont)
 		newnode.get_node("text").text = tr("REMOVE")

@@ -119,7 +119,7 @@ func amount_set(value):
 	amount = value
 	if amount <= 0:
 		if owner != null:
-			print("wwarning - state-based removal of equipped item")
+			print("warning - state-based removal of equipped item")
 			characters_pool.get_char_by_id(owner).unequip(self, false)
 #		ResourceScripts.game_res.items.erase(id)
 		ResourceScripts.game_res.call_deferred('remove_item_id', id)

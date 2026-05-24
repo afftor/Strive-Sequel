@@ -1,4 +1,4 @@
-[gd_scene load_steps=283 format=2]
+[gd_scene load_steps=282 format=2]
 
 [ext_resource path="res://Character_generator/images/03_ears/ears_human.png" type="Texture" id=1]
 [ext_resource path="res://Character_generator/images/00_body_nude/pregnancy_belly_mid.png" type="Texture" id=2]
@@ -117,7 +117,6 @@
 [ext_resource path="res://Character_generator/images/201_weapon_back/weapon_back_spear.png" type="Texture" id=115]
 [ext_resource path="res://Character_generator/images/03_ears/ears_rabbit2.png" type="Texture" id=116]
 [ext_resource path="res://Character_generator/images/109_armory_set_waitress_female/taz_armor_waitress.png" type="Texture" id=117]
-[ext_resource path="res://Character_generator/images/25_head_masks/facemask2.png" type="Texture" id=118]
 
 [sub_resource type="ShaderMaterial" id=1]
 
@@ -6086,7 +6085,6 @@ material = SubResource( 63 )
 position = Vector2( 590, -12 )
 rotation = -1.5708
 z_index = 1
-texture = ExtResource( 118 )
 
 [node name="Head_armor_tex_cloth" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["cloth", "cloth_top"]]
 light_mask = 4
@@ -6094,7 +6092,6 @@ material = SubResource( 63 )
 position = Vector2( 590, -12 )
 rotation = -1.5708
 z_index = 1
-texture = ExtResource( 118 )
 
 [node name="portrait2" type="TextureRect" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["portrait"]]
 margin_left = -44.1221

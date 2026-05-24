@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -45,14 +45,14 @@
 [ext_resource path="res://assets/Themes_v2/MANSION/Sex_Button_Normal.tres" type="StyleBox" id=43]
 [ext_resource path="res://assets/Themes_v2/MANSION/Ongoing_Pressed.tres" type="StyleBox" id=44]
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_actors.png" type="Texture" id=45]
-[ext_resource path="res://assets/images/sexicons/forced.png" type="Texture" id=46]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/cum_pressed.png" type="Texture" id=46]
 [ext_resource path="res://assets/images/sexicons/drunk.png" type="Texture" id=47]
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_actors_pressed.png" type="Texture" id=48]
 [ext_resource path="res://assets/images/sexicons/sens3.png" type="Texture" id=49]
 [ext_resource path="res://assets/images/sexicons/lust1.png" type="Texture" id=50]
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/icon_humiliation_pressed.png" type="Texture" id=51]
 [ext_resource path="res://assets/images/sexicons/sens5.png" type="Texture" id=52]
-[ext_resource path="res://assets/images/sexicons/sexcrazed.png" type="Texture" id=53]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/deny_hover.png" type="Texture" id=53]
 [ext_resource path="res://assets/images/iconsitems/bag.png" type="Texture" id=54]
 [ext_resource path="res://assets/images/sexicons/rope.png" type="Texture" id=55]
 [ext_resource path="res://assets/Themes_v2/MANSION/Sex_Buttons_Font.tres" type="DynamicFont" id=56]
@@ -70,13 +70,18 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/body_mask_crop.png" type="Texture" id=68]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_sexskills.png" type="Texture" id=69]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_sexskills_progress.png" type="Texture" id=70]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/train_hover.png" type="Texture" id=71]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/deny_normal.png" type="Texture" id=72]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/cum_hover.png" type="Texture" id=73]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/deny_pressed.png" type="Texture" id=74]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/cum_normal.png" type="Texture" id=75]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/train_pressed.png" type="Texture" id=76]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/train_normal.png" type="Texture" id=77]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
 use_filter = true
 font_data = ExtResource( 64 )
-
-[sub_resource type="StyleBoxTexture" id=2]
 
 [sub_resource type="StyleBoxTexture" id=3]
 
@@ -116,9 +121,6 @@ margin_right = 0.00012207
 rect_min_size = Vector2( 20, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PanelGeneral" type="Panel" parent="Panel"]
 margin_left = 459.0
@@ -173,9 +175,6 @@ custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 meta_underlined = false
 scroll_following = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="sceneeffects1" type="RichTextLabel" parent="Panel"]
 anchor_left = 1.0
@@ -202,13 +201,10 @@ anchor_bottom = 1.0
 margin_left = 922.0
 margin_top = 115.0
 margin_right = -531.0
-margin_bottom = -567.0
+margin_bottom = -429.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GridContainer" type="GridContainer" parent="Panel/GridContainer"]
 custom_constants/hseparation = 46
@@ -351,10 +347,14 @@ scroll_horizontal_enabled = false
 margin_right = 409.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
-custom_constants/separation = 16
 
-[node name="Panel" type="TextureButton" parent="Panel/CharList/ScrollContainer/VBoxContainer"]
+[node name="VBoxContainerMain" type="VBoxContainer" parent="Panel/CharList/ScrollContainer/VBoxContainer"]
 visible = false
+margin_right = 409.0
+margin_bottom = 80.0
+alignment = 1
+
+[node name="Panel" type="TextureButton" parent="Panel/CharList/ScrollContainer/VBoxContainer/VBoxContainerMain"]
 margin_right = 409.0
 margin_bottom = 52.0
 rect_min_size = Vector2( 340, 52 )
@@ -364,16 +364,7 @@ texture_normal = ExtResource( 21 )
 texture_pressed = ExtResource( 22 )
 texture_hover = ExtResource( 23 )
 
-[node name="Stamina" type="TextureProgress" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel"]
-margin_left = 48.0
-margin_top = 50.0
-margin_right = 304.0
-margin_bottom = 70.0
-value = 50.0
-texture_under = ExtResource( 69 )
-texture_progress = ExtResource( 70 )
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/CharList/ScrollContainer/VBoxContainer/VBoxContainerMain/Panel"]
 margin_left = 174.0
 margin_top = 6.0
 margin_right = 334.0
@@ -382,22 +373,23 @@ grow_horizontal = 0
 grow_vertical = 0
 alignment = 2
 
-[node name="desire" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel/HBoxContainer"]
+[node name="desire" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/VBoxContainerMain/Panel/HBoxContainer"]
 visible = false
-margin_right = 40.0
+margin_left = 76.0
+margin_right = 116.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "lust"
-size_flags_horizontal = 2
-size_flags_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 texture = ExtResource( 50 )
 expand = true
 stretch_mode = 6
 
-[node name="tied" type="TextureButton" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel/HBoxContainer"]
+[node name="tied" type="TextureButton" parent="Panel/CharList/ScrollContainer/VBoxContainer/VBoxContainerMain/Panel/HBoxContainer"]
 visible = false
-margin_left = 120.0
-margin_right = 160.0
+margin_left = 44.0
+margin_right = 84.0
 margin_bottom = 43.0
 rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "Tied"
@@ -405,24 +397,11 @@ texture_normal = ExtResource( 55 )
 expand = true
 stretch_mode = 4
 
-[node name="horny" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel/HBoxContainer"]
+[node name="drunk" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/VBoxContainerMain/Panel/HBoxContainer"]
 visible = false
-margin_left = 120.0
-margin_right = 160.0
+margin_left = 76.0
+margin_right = 116.0
 margin_bottom = 43.0
-rect_min_size = Vector2( 40, 40 )
-hint_tooltip = "Horny: Arousal gain is doubled"
-mouse_filter = 0
-texture = ExtResource( 53 )
-expand = true
-stretch_mode = 5
-
-[node name="drunk" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel/HBoxContainer"]
-visible = false
-margin_left = 332.033
-margin_top = 5.77391
-margin_right = 372.033
-margin_bottom = 45.7739
 rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "Drunk"
 mouse_filter = 0
@@ -430,43 +409,18 @@ texture = ExtResource( 47 )
 expand = true
 stretch_mode = 5
 
-[node name="forced" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel/HBoxContainer"]
-visible = false
-margin_left = 241.0
-margin_top = 5.77391
-margin_right = 281.0
-margin_bottom = 45.7739
-rect_min_size = Vector2( 40, 40 )
-hint_tooltip = "Forced"
-mouse_filter = 0
-texture = ExtResource( 46 )
-expand = true
-
-[node name="arousal" type="TextureProgress" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel/HBoxContainer"]
+[node name="arousal" type="TextureProgress" parent="Panel/CharList/ScrollContainer/VBoxContainer/VBoxContainerMain/Panel/HBoxContainer"]
 margin_left = 120.0
 margin_right = 160.0
 margin_bottom = 43.0
 rect_min_size = Vector2( 40, 40 )
-hint_tooltip = "Arousal"
-max_value = 1000.0
 value = 100.0
 texture_under = ExtResource( 49 )
 texture_progress = ExtResource( 52 )
 fill_mode = 3
 nine_patch_stretch = true
 
-[node name="container" type="Panel" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel"]
-visible = false
-margin_left = 5.0
-margin_top = 5.77391
-margin_right = 402.0
-margin_bottom = 45.7739
-custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="portrait" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel"]
+[node name="portrait" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/VBoxContainerMain/Panel"]
 margin_left = 5.0
 margin_top = 5.77391
 margin_right = 45.0
@@ -474,11 +428,8 @@ margin_bottom = 45.7739
 rect_min_size = Vector2( 40, 40 )
 expand = true
 stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="sex" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel"]
+[node name="sex" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/VBoxContainerMain/Panel"]
 margin_left = 53.5472
 margin_top = 5.77391
 margin_right = 93.5472
@@ -490,11 +441,11 @@ texture = ExtResource( 7 )
 expand = true
 stretch_mode = 6
 
-[node name="name" type="Label" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel"]
-margin_left = 94.0
-margin_top = 3.0
-margin_right = 194.0
-margin_bottom = 43.0
+[node name="name" type="Label" parent="Panel/CharList/ScrollContainer/VBoxContainer/VBoxContainerMain/Panel"]
+margin_left = 97.0
+margin_top = 5.0
+margin_right = 248.0
+margin_bottom = 45.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 0
@@ -505,18 +456,15 @@ text = "Name"
 valign = 1
 clip_text = true
 
-[node name="items" type="TextureButton" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel"]
+[node name="items" type="TextureButton" parent="Panel/CharList/ScrollContainer/VBoxContainer/VBoxContainerMain/Panel"]
 margin_left = 356.0
 margin_right = 408.0
 margin_bottom = 52.0
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 16 )
 texture_hover = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="TextureButton" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel/items"]
+[node name="TextureButton" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/VBoxContainerMain/Panel/items"]
 margin_left = 6.29051
 margin_top = 5.42363
 margin_right = 46.2905
@@ -524,6 +472,52 @@ margin_bottom = 45.4236
 rect_min_size = Vector2( 40, 0 )
 texture = ExtResource( 54 )
 expand = true
+
+[node name="arousal" type="TextureProgress" parent="Panel/CharList/ScrollContainer/VBoxContainer/VBoxContainerMain"]
+margin_left = 76.0
+margin_top = 56.0
+margin_right = 332.0
+margin_bottom = 76.0
+size_flags_horizontal = 6
+size_flags_vertical = 12
+max_value = 1000.0
+value = 50.0
+texture_under = ExtResource( 69 )
+texture_progress = ExtResource( 70 )
+
+[node name="BonusActions" type="HBoxContainer" parent="Panel/CharList/ScrollContainer/VBoxContainer/VBoxContainerMain"]
+margin_top = 80.0
+margin_right = 409.0
+margin_bottom = 80.0
+
+[node name="cum" type="TextureButton" parent="Panel/CharList/ScrollContainer/VBoxContainer/VBoxContainerMain/BonusActions"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+texture_normal = ExtResource( 75 )
+texture_pressed = ExtResource( 46 )
+texture_hover = ExtResource( 73 )
+
+[node name="deny" type="TextureButton" parent="Panel/CharList/ScrollContainer/VBoxContainer/VBoxContainerMain/BonusActions"]
+visible = false
+margin_left = 44.0
+margin_right = 84.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+texture_normal = ExtResource( 72 )
+texture_pressed = ExtResource( 74 )
+texture_hover = ExtResource( 53 )
+
+[node name="train" type="TextureButton" parent="Panel/CharList/ScrollContainer/VBoxContainer/VBoxContainerMain/BonusActions"]
+visible = false
+margin_left = 44.0
+margin_right = 84.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+texture_normal = ExtResource( 77 )
+texture_pressed = ExtResource( 76 )
+texture_hover = ExtResource( 71 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 margin_left = 950.406
@@ -651,9 +645,6 @@ margin_right = 881.0
 margin_bottom = 729.0
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Panel" type="Panel" parent="Panel/bodyimage"]
 visible = false
@@ -668,6 +659,9 @@ __meta__ = {
 [node name="ragdoll" parent="Panel" instance=ExtResource( 66 )]
 position = Vector2( 688.483, 402.746 )
 scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
 clothes = false
 
 [node name="bodymask" type="Light2D" parent="Panel"]
@@ -675,6 +669,9 @@ position = Vector2( 960.082, 539.954 )
 texture = ExtResource( 68 )
 mode = 3
 range_item_cull_mask = 4
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="blacklist" type="Button" parent="Panel"]
 anchor_top = 1.0
@@ -891,7 +888,7 @@ custom_styles/panel = ExtResource( 1 )
 margin_left = 35.0
 margin_top = 33.0
 margin_right = 907.0
-margin_bottom = 605.0
+margin_bottom = 627.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -1049,21 +1046,21 @@ size_flags_horizontal = 3
 
 [node name="Cum" type="Button" parent="OrgasmDenial/ScrollContainer/VBoxContainer"]
 margin_right = 471.0
-margin_bottom = 55.0
+margin_bottom = 53.0
 theme = ExtResource( 5 )
 text = "Make [him] cum"
 
 [node name="Beg" type="Button" parent="OrgasmDenial/ScrollContainer/VBoxContainer"]
-margin_top = 59.0
+margin_top = 57.0
 margin_right = 471.0
-margin_bottom = 114.0
+margin_bottom = 110.0
 theme = ExtResource( 5 )
 text = "Make [him] cum"
 
 [node name="Deny" type="Button" parent="OrgasmDenial/ScrollContainer/VBoxContainer"]
-margin_top = 118.0
+margin_top = 114.0
 margin_right = 471.0
-margin_bottom = 173.0
+margin_bottom = 167.0
 theme = ExtResource( 5 )
 text = "Make [him] cum"
 
@@ -1108,6 +1105,48 @@ margin_right = 471.0
 margin_bottom = 55.0
 theme = ExtResource( 5 )
 text = "Make [him] cum"
+
+[node name="EnthusiasmSelect" type="Panel" parent="." groups=["pauseprocess"]]
+visible = false
+margin_left = 571.84
+margin_top = 153.601
+margin_right = 1312.84
+margin_bottom = 724.601
+theme = ExtResource( 67 )
+
+[node name="Control" type="Control" parent="EnthusiasmSelect"]
+margin_left = -574.0
+margin_top = -152.0
+margin_right = 1350.0
+margin_bottom = 919.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="EnthusiasmSelect"]
+margin_left = 82.0
+margin_top = 32.0
+margin_right = 669.0
+margin_bottom = 137.0
+custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+text = "Character is showing enthusiasm"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="EnthusiasmSelect"]
+margin_left = 133.0
+margin_top = 188.0
+margin_right = 604.0
+margin_bottom = 553.0
+theme = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EnthusiasmSelect/ScrollContainer"]
+margin_right = 471.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="EnthusiasmSelect/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 471.0
+margin_bottom = 55.0
+theme = ExtResource( 5 )
+text = "Choice"
 
 [node name="Label" type="Label" parent="."]
 margin_left = 15.0

@@ -3,8 +3,42 @@ extends Panel
 
 #var person
 
-var universal_skills = ['oral','anal','petting']
 var current_person
+
+var sex_training_progress = {novice = 0, skilled = 50, mastered = 100}
+
+var mastery_required = {
+	penetration = [["missionary", "missionaryanal"], ["doggy", "doggyanal"], ["lotus", "lotusanal"], ["revlotus", "revlotusanal"], ["ontop", "ontopanal"]],
+	pussy = [["missionary"], ["doggy"], ["lotus"], ["revlotus"], ["ontop"]],
+	anal = [["missionaryanal"], ["doggyanal"], ["lotusanal"], ["revlotusanal"], ["ontopanal"]],
+	petting = [["caress"], ["fingering", "assfingering"], ["fondletits"], ["footjob"], ["titjob"], ["handjob"], ["massagefoot"], ["fisting", "analfisting"]],
+	oral = [["rimjob"], ["cunnilingus", "blowjob"], ["kiss"], ["sucknipples"]],
+	tail = [["tailjob"], ["inserttailv"], ["inserttaila"]],
+}
+
+var mastery_action_keys = {
+	missionary = "SEXACTION_MISSIONARY", missionaryanal = "SEXACTION_MISSIONARY_ANAL",
+	doggy = "SEXACTION_DOGGY_STYLE", doggyanal = "SEXACTION_DOGGY_ANAL",
+	lotus = "SEXACTION_LOTUS", lotusanal = "SEXACTION_LOTUS_ANAL",
+	revlotus = "SEXACTION_REVLOTUS", revlotusanal = "SEXACTION_REVLOTUSANAL",
+	ontop = "SEXACTION_ON_TOP", ontopanal = "SEXACTION_ON_TOP_ANAL",
+	inserttailv = "SEXACTION_INSERT_TAIL_PUSSY", inserttaila = "SEXACTION_INSERT_TAIL_ASS",
+	caress = "SEXACTION_CARESS", assfingering = "SEXACTION_ASS_FINGERING",
+	fingering = "SEXACTION_FINGERING", fondletits = "SEXACTION_FONDLE_CHEST",
+	footjob = "SEXACTION_FOOTJOB", titjob = "SEXACTION_TITJOB",
+	handjob = "SEXACTION_HANDJOB", massagefoot = "SEXACTION_MASSAGE_WITH_FOOT",
+	rimjob = "SEXACTION_RIMJOB", cunnilingus = "SEXACTION_CUNNILINGUS",
+	blowjob = "SEXACTION_BLOWJOB", kiss = "SEXACTION_KISS",
+	sucknipples = "SEXACTION_NIPPLE_SUCKING", tailjob = "SEXACTION_TAILJOB",
+	fisting = "SEXACTION_FISTING", analfisting = "SEXACTION_ANAL_FISTING",
+}
+
+func get_sex_training_label(state):
+	match state:
+		'novice': return tr("SEX_TRAINING_LEVEL_NOVICE")
+		'skilled': return tr("SEX_TRAINING_LEVEL_SKILLED")
+		'mastered': return tr("SEX_TRAINING_LEVEL_MASTERED")
+	return str(state).capitalize()
 
 func _ready():
 	$RichTextLabel.connect("meta_hover_started", self, 'text_url_hover')
@@ -107,16 +141,38 @@ func update(person = null, from_dialogue = false):
 		$food_hate/Container.visible = person.food.food_hate != null
 
 		input_handler.ClearContainer($SexSkills/VBoxContainer)
-		var s_skills = person.get_sex_skills()
-		for ii in s_skills: #bad way, need to move to using proper statdata (and proper translation keys) instead of stubs
-			var i = ii.trim_prefix('sex_skills_')
-			if s_skills[ii] == 0 && !universal_skills.has(i):
+		var s_skills = person.get_sex_training()
+		for ii in s_skills:
+			var state = s_skills[ii]
+			if ii == 'sex_training_tail' and state == 'novice':
+				continue
+			if ii == 'sex_training_penetration' and state == 'novice' and person.get_stat('penis_size') == '':
 				continue
 			var newbutton = input_handler.DuplicateContainerTemplate($SexSkills/VBoxContainer)
-			newbutton.get_node("Label").text = tr("SEXSKILL"+i.to_upper())
-			newbutton.get_node("ProgressBar").value = s_skills[ii]
-			newbutton.get_node("ProgressBar/Label").text = str(floor(s_skills[ii])) + '/100'
-			globals.connecttexttooltip(newbutton,  person.translate(tr("SEXSKILL"+i.to_upper()+"DESCRIPT")))
+			var state_label = get_sex_training_label(state)
+			newbutton.get_node("Label").text = tr("CHARINFO_" + ii.to_upper())
+			newbutton.get_node("ProgressBar").value = sex_training_progress.get(state, 0)
+			newbutton.get_node("ProgressBar/Label").text = state_label
+			var tooltip_text = person.translate(tr("STAT" + ii.to_upper() + "DESCRIPT")) + "\n" + tr("CUR_LEVEL_LABEL") + ": " + state_label
+			var skill_name = ii.replace('sex_training_', '')
+			if state == 'novice':
+				tooltip_text += "\n\n" + tr("MASTERY_HINT_NOVICE")
+			if state == 'skilled' and mastery_required.has(skill_name):
+				var progress = person.get_sex_mastery_progress().get(skill_name, [])
+				tooltip_text += "\n\n" + tr("MASTERY_HINT_SKILLED")
+				for group in mastery_required[skill_name]:
+					var labels = []
+					var group_done = false
+					for action in group:
+						labels.append(tr(mastery_action_keys.get(action, "SEXACTION_" + action.to_upper())))
+						if action in progress:
+							group_done = true
+					var group_label = PoolStringArray(labels).join(" / ")
+					if group_done:
+						tooltip_text += "\n{color=green|" + group_label + "}"
+					else:
+						tooltip_text += "\n{color=gray|" + group_label + "}"
+			globals.connecttexttooltip(newbutton, tooltip_text)
 	
 		rebuild_traits()
 	

@@ -1308,6 +1308,12 @@ func get_sex_traits():
 func get_sex_skills():
 	return statlist.get_sex_skills()
 
+func get_sex_training():
+	return statlist.get_sex_training()
+
+func get_sex_mastery_progress():
+	return statlist.get_sex_mastery_progress()
+
 func get_negative_sex_traits():
 	return statlist.get_negative_sex_traits()
 
@@ -2579,8 +2585,6 @@ func fill_ai(data):
 func take_virginity(type, partner, breakable = false):
 	if get_stat(type + '_virgin_lost') == null:
 		set_stat(type + "_virgin_lost", partner)
-		if breakable and get_stat('consent') < 2:
-			try_breakdown('brk_lose_virginity')
 		if get_stat('metrics_partners').has(partner) == false && partner.begins_with("hid"):
 			statlist.update_stat('metrics_partners', partner, 'append')
 		if !ResourceScripts.game_party.relativesdata.has(partner) && partner.begins_with("hid"):

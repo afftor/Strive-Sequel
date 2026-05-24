@@ -160,13 +160,13 @@ func regen_quests():
 								if req.generate_func == 'getreq_random_sex_skills':
 									#need to call it explicitly as the reqs analysis is required
 									#MIND that this req must be checked AFTER any race or sex reqs
-									var round_to = 1
-									if req.generate_args.size() >= 4:
-										round_to = req.generate_args[3]
+									var args = req.generate_args
+									var num = args.get('num', 1)
+									if args.has('num_range'):
+										num = args.num_range[0] + randi() % (args.num_range[1] - args.num_range[0] + 1)
 									true_reqs = getreq_random_sex_skills(
 										new_quest.requirements[0].statreqs + req_to_add,
-										req.generate_args[0], req.generate_args[1],
-										req.generate_args[2], round_to)
+										num, args.level, args.operant)
 								elif has_method(req.generate_func):
 									if req.has('generate_args'):
 										true_reqs = callv(req.generate_func, req.generate_args)
@@ -343,20 +343,17 @@ func getreq_random_starting_race():
 		race = races.get_random_starting_race(),
 		check = true}
 
-func getreq_random_sex_skills(other_reqs, num, val, operant, round_to = 1):
-	var array = ['sex_skills_petting',
-#		'sex_skills_penetration',
-#		'sex_skills_pussy',
-		'sex_skills_oral',
-		'sex_skills_anal',
-#		'sex_skills_tail'
+func getreq_random_sex_skills(other_reqs, num, level, operant):
+	var array = ['sex_training_petting',
+		'sex_training_oral',
+		'sex_training_anal',
 	]
 	var res = []
-	
+
 	if !has_req(other_reqs, {code = "sex", operant = "eq", value = 'male'}):
-		array.append('sex_skills_pussy')
+		array.append('sex_training_pussy')
 	if !has_req(other_reqs, {code = "sex", operant = "eq", value = 'female'}):
-		array.append('sex_skills_penetration')
+		array.append('sex_training_penetration')
 	var long_tail = false
 	for req in other_reqs:
 		if req.code == 'race' and req.check:
@@ -366,21 +363,28 @@ func getreq_random_sex_skills(other_reqs, num, val, operant, round_to = 1):
 			for race in req.value:
 				if _race_has_long_tail(race):
 					long_tail = true
+		elif req.code == 'stat_in_set' and req.stat.begins_with('sex_training_'):
+			array.erase(req.stat)
 	if long_tail:
-		array.append('sex_skills_tail')
-	
+		array.append('sex_training_tail')
+
 	if num > array.size():
 		push_error("getreq_random_sex_skills trys to gen more skills than possible")
 		num = array.size()
 	for i in range(num):
 		var idx = randi() % array.size()
 		var stat = array[idx]
-		if val is Array:
-			res.append(getreq_roll_stat(stat, val, operant, round_to))
-		else:
-			res.append({code = "stat", stat = stat, operant = operant, value = val})
+		res.append(getreq_roll_sex_training(stat, level, operant))
 		array.remove(idx)
 	return res
+
+func getreq_roll_sex_training(stat, level, operant):
+	var states = ['novice', 'skilled', 'mastered']
+	if operant == 'gte':
+		return {code = "stat_in_set", stat = stat, value = states.slice(states.find(level), states.size() - 1)}
+	if operant == 'lte':
+		return {code = "stat_in_set", stat = stat, value = states.slice(0, states.find(level))}
+	return {code = "stat", stat = stat, operant = 'eq', value = level}
 
 func _race_has_long_tail(race):
 	if !races.racelist[race].bodyparts.has('tail'):

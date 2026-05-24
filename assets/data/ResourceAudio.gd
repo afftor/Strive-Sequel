@@ -96,7 +96,8 @@ var sounds = {
 	fall = load("res://assets/sounds/sounds/fall.wav"),
 
 	door_open = load("res://assets/sounds/sounds/door.wav"),
-	ding = load("res://assets/sounds/sounds/ding.wav"),
+	ding = load("res://assets/sounds/sounds/ding.wav"),\
+	button_clank = load("res://assets/sounds/sounds/gui_button_clank.wav"),
 
 	morning = load("res://assets/sounds/sounds/morning_rooster.wav"),
 

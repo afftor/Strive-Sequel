@@ -365,7 +365,7 @@ var data = {
 		image = null, 
 		character = "rouge", 
 		character2 = "sigmund",
-		tags = ["dialogue_scene"], 
+		tags = ["dialogue_scene",'master_translate'], 
 		text = [
 			{text = "ROUGE_WORKERS_FURNITURE_PAID_GOLD", reqs = [], previous_dialogue_option = 1},
 			{text = "ROUGE_WORKERS_FURNITURE_PAID_MATERIALS", reqs = [], previous_dialogue_option = 2},
@@ -1207,7 +1207,7 @@ var data = {
 	rouge_sex_1 = {
 		image = null,
 		reqs = [],
-		music = 'intimacy_dark',
+		music = 'intimate_dark',
 		tags = ["dialogue_scene"],
 		custom_background = "rouge_sex_1",
 		scene_type = "ero_scene",

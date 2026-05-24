@@ -40,11 +40,11 @@ func requirements():
 	return valid
 
 func givereffect(member):
-	var effects = {sens = 160, horny = 10}
+	var effects = {sens = 160}
 	return effects
 
 func takereffect(member):
-	var effects = {sens = 160, horny = 10}
+	var effects = {sens = 160}
 	return effects
 
 func initiate():

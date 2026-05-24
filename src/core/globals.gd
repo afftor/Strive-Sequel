@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.14.3 experimental'
+const gameversion = '0.14.3 experimental 2'
 
 #time
 signal hour_tick
@@ -103,11 +103,11 @@ func _ready():
 	modding_core.load_mods()
 	Effectdata.fix_eff_data()
 	
-	if OS.has_feature('editor'):
-		for loc_path in input_handler.scanfolder(variables.LocalizationFolder):
-			var loc_code = loc_path.replace(variables.LocalizationFolder, '')
-			if loc_code != "en":
-				update_localization_file(loc_code)
+#	if OS.has_feature('editor'):
+#		for loc_path in input_handler.scanfolder(variables.LocalizationFolder):
+#			var loc_code = loc_path.replace(variables.LocalizationFolder, '')
+#			if loc_code != "en":
+#				update_localization_file(loc_code)
 	
 	#console
 	var console = load("res://gui_modules/Console/console.tscn").instance()
@@ -3038,7 +3038,7 @@ func apply_starting_preset():
 			for i in ['fighters','workers','servants','mages']:
 				common_effects([{code = 'reputation', name = i, operant = '+', value = preset.total_reputation}])
 		if preset.completed_quests.has("aliron_church_quest"):
-			ResourceScripts.game_progress.unlocked_classes.append('acolyte')
+r			ResourceScripts.game_progress.unlocked_classes.append('acolyte')
 		for i in preset.items:
 			if Items.itemlist[i].type == 'usable':
 				AddItemToInventory(CreateUsableItem(i, preset.items[i]))
@@ -3047,6 +3047,7 @@ func apply_starting_preset():
 					AddItemToInventory(CreateGearItem(i, {}))
 		for i in preset.upgrades:
 			ResourceScripts.game_res.upgrades[i] = preset.upgrades[i]
+		common_effects([{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
 		input_handler.interactive_message('servants_election_finish6')
 	else:
 		var preset = starting_presets.preset_data[ResourceScripts.game_globals.diff_money]

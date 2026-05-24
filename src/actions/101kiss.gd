@@ -18,10 +18,10 @@ const consent_level = 15
 const consent_giver = 1
 const consent_taker = 1
 
-const rotation1 = Quat(0.5, 0.0, 0.0, 0.0)
-const rotation2 = Quat(0.5, 0.0, 0.0, 0.0)
+const parallel = true
+const facing = true
 
-const linkset = "none"
+const linkset = "caress"
 
 const initiate = ['start_kiss']
 const ongoing = ['ongoing_kiss']
@@ -45,19 +45,39 @@ func requirements():
 	return valid
 
 func givereffect(member):
-	var effects = {sens = 120, horny = 25}
+	var effects = {sens = 120}
 	return effects
 
 func takereffect(member):
-	var effects = {sens = 120, horny = 25}
+	var effects = {sens = 120, horny = 35}
 	return effects
 
 const act_lines = {
 
 start_kiss = {
 
+	from_behind_nice = {
+	conditions = {
+		link_facing = [false],
+		consent = [true],
+	},
+	lines = [
+		"SEXACTION_KISS_FROM_BEHIND_NICE_1",
+		"SEXACTION_KISS_FROM_BEHIND_NICE_2",
+	]},
+
+	from_behind_mean = {
+	conditions = {
+		link_facing = [false],
+		consent = [false],
+	},
+	lines = [
+		"SEXACTION_KISS_FROM_BEHIND_MEAN_1",
+	]},
+
 	nice = {
 	conditions = {
+		link_facing = [true, null],
 		consent = [true],
 	},
 	lines = [
@@ -68,6 +88,7 @@ start_kiss = {
 
 	mean = {
 	conditions = {
+		link_facing = [true, null],
 		consent = [false],
 	},
 	lines = [
@@ -77,6 +98,7 @@ start_kiss = {
 
 	novice_nice = {
 	conditions = {
+		link_facing = [true, null],
 		consent = [true],
 		giver_skill_level = ['novice'],
 	},
@@ -87,6 +109,7 @@ start_kiss = {
 
 	novice_mean = {
 	conditions = {
+		link_facing = [true, null],
 		consent = [false],
 		giver_skill_level = ['novice'],
 	},
@@ -96,6 +119,7 @@ start_kiss = {
 
 	skilled_nice = {
 	conditions = {
+		link_facing = [true, null],
 		consent = [true],
 		giver_skill_level = ['skilled'],
 	},
@@ -106,6 +130,7 @@ start_kiss = {
 
 	skilled_mean = {
 	conditions = {
+		link_facing = [true, null],
 		consent = [false],
 		giver_skill_level = ['skilled'],
 	},
@@ -115,6 +140,7 @@ start_kiss = {
 
 	mastered_nice = {
 	conditions = {
+		link_facing = [true, null],
 		consent = [true],
 		giver_skill_level = ['mastered'],
 	},
@@ -125,6 +151,7 @@ start_kiss = {
 
 	mastered_mean = {
 	conditions = {
+		link_facing = [true, null],
 		consent = [false],
 		giver_skill_level = ['mastered'],
 	},
