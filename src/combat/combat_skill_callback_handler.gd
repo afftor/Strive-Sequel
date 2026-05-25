@@ -264,7 +264,7 @@ func refine_target(skill, caster, ttarget): #s_skill, caster, target
 					return null
 			avtargets.erase(ttarget)
 			if avtargets.empty():
-				ttarget
+				return ttarget
 			return input_handler.random_from_array(avtargets)
 		variables.NT_MELEE:
 			var avtargets = combatnode.get_enemy_targets_melee(caster)
