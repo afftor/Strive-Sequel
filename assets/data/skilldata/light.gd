@@ -1,7 +1,6 @@
 extends Reference
 
 var skills = {
-
 	healing = {
 		code = 'healing',
 		descript = '',
@@ -15,7 +14,10 @@ var skills = {
 			{code = 'stat', stat = 'racegroup', operant = 'eq', value = 'undead'},
 			{orflag = true, code = 'stat', stat = 'combatgroup', operant = 'eq', value = 'ally'},
 		],
-		effects = [Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('bleed')})], 
+		effects = [
+			'e_s_heal_setup',
+			Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('bleed')})
+		], 
 		cost = {mp = 6},
 		charges = 0,
 		combatcooldown = 2,
@@ -278,6 +280,21 @@ var skills = {
 	},
 }
 var effects = {
+	e_s_heal_setup = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
+		conditions = [
+			{type = 'target', value = [{code = 'stat', stat = 'racegroup', operant = 'eq', value = 'undead'}]}
+		],
+		req_skill = true,
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				atomic = [{type = 'add_tag', value = 'damage'}],
+			}
+		]
+	},
 	e_s_blessing = {
 		type = 'trigger',
 		trigger = [variables.TR_POSTDAMAGE],
