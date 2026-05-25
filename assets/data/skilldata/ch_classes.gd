@@ -1525,6 +1525,7 @@ var effects = {
 		duration = 1,
 		conditions = [
 			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'skill', value = ['tags', 'has', 'damage'] },
 			{type = 'skill', value = ['damage_type', 'eq', 'light']}
 			],
 		buffs = [],
