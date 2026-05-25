@@ -6,6 +6,7 @@ onready var nav = $LocationGui/NavigationModule
 onready var cast_panel = $LocationGui/cast_panel
 onready var use_state_panel = $LocationGui/use_state_panel
 onready var return_all_btn = $LocationGui/PresentedSlavesPanel/ReturnAll
+onready var present_char_cont = $LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer
 
 var selected_location
 var use_state
@@ -19,6 +20,8 @@ var positiondict = {
 	5: "LocationGui/Positions/HBoxContainer/backrow/5",
 	6: "LocationGui/Positions/HBoxContainer/backrow/6",
 }
+
+var animations = ResourceScripts.scriptdict.combat_animation.new()
 
 
 func _ready():
@@ -76,13 +79,15 @@ func _ready():
 	$LocationGui/AvailableSlaves.tut_register_first_recruit()
 	$LocationGui/AvailableSlaves.tut_register_first_char()
 	$LocationGui/NavigationModule.tut_register_mansion_btn()
+	
+	add_child(animations)
 
 func tut_get_master():
-	for btn in $LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer.get_children():
+	for btn in present_char_cont.get_children():
 		if btn.get('dragdata') != null and btn.dragdata.is_master():
 			return btn
 func tut_get_servent():
-	for btn in $LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer.get_children():
+	for btn in present_char_cont.get_children():
 		if btn.get('dragdata') != null and btn.dragdata.get_stat('slave_class') == 'servant':
 			return btn
 func tut_get_front1():
@@ -262,10 +267,12 @@ func use_item_on_character(character, item):
 	item.use_explore(character, self)  #item.use_explore(state.characters[active_location.group['pos'+str(position)]])
 	item.amount -= 1
 	#show_heal_items(position)
+	if is_animating():
+		yield(animations, 'alleffectsfinished')
 	call_deferred('build_location_group')
 
 
-func use_e_combat_skill(caster, target, skill):
+func use_e_combat_skill(caster, target, skill, silent = false):
 	caster.pay_cost(skill.cost)
 	caster.combatgroup = 'ally'
 	if !caster.has_status('ignore_catalysts_for_%s' % skill.code):
@@ -342,9 +349,10 @@ func use_e_combat_skill(caster, target, skill):
 	s_skill1.process_event(variables.TR_SKILL_FINISH)
 	caster.process_event(variables.TR_SKILL_FINISH, {skill = s_skill1, caster = caster, target = target})
 	s_skill1.remove_effects()
-	for i in skill.sounddata.values():
-		if i != null:
-			input_handler.PlaySound(i)
+	if !silent:
+		for i in skill.sounddata.values():
+			if i != null:
+				input_handler.PlaySound(i)
 	if skill.has('follow_up'):
 		active_skill = skill.followup
 		use_e_combat_skill(caster, target, skill)
@@ -541,13 +549,11 @@ func build_location_group():
 
 	var newbutton
 	var counter = 0
-	input_handler.ClearContainer($LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer)
+	input_handler.ClearContainer(present_char_cont)
 	var char_array = input_handler.get_location_characters_by_id(active_location.id)
 	for i in char_array:
 		counter += 1
-		newbutton = input_handler.DuplicateContainerTemplate(
-			$LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer
-		)
+		newbutton = input_handler.DuplicateContainerTemplate(present_char_cont)
 		newbutton.dragdata = i
 		newbutton.get_node("icon").texture = i.get_icon_small()
 		if newbutton.get_node('icon').texture == null:
@@ -629,7 +635,7 @@ func build_item_panel():
 		#newnode.get_node("Label").text = i.name
 		newnode.get_node("amount").text = str(i.amount)
 		newnode.get_node("Name").text = tr("ITEM" + str(i.code).to_upper())
-		newnode.connect("pressed", self, "start_use_state", [cast_panel.ENTITY_ITEM, null, i])
+		newnode.connect("pressed", self, "start_use_state", [cast_panel.ENTITY_ITEM, null, null, i])
 		globals.connectitemtooltip_v2(newnode, i)
 #		tutorial_items = true
 	# if tutorial_items == true:
@@ -833,7 +839,7 @@ func process_cast_use(port_node, with_return = false, bottom = false):
 				return_character(person)
 			return
 		
-		cast_panel.build_for_person(person.id, with_return)
+		cast_panel.build_for_person(person.id, port_node, with_return)
 		if !bottom:
 			cast_panel.rect_global_position = Vector2(
 				port_node.get_global_rect().end.x,
@@ -851,13 +857,18 @@ func process_cast_use(port_node, with_return = false, bottom = false):
 		if !person:
 			return
 		
+		use_state_panel.last_input_is_handled()
+		use_state_panel.hide()
 		if use_state.type == cast_panel.ENTITY_SKILL:
-			use_e_combat_skill(use_state.caster, person, use_state.entity)
+			animate(port_node, use_state.entity)
+			yield(animations, 'alleffectsfinished')
+			use_e_combat_skill(use_state.caster, person, use_state.entity, true)
 		else:# use_state.type == cast_panel.ENTITY_ITEM: (ENTITY_RETURN can't come here)
+			animate(port_node, {sfx = [{code = 'heal', duration = 1.0}]})
 			use_item_on_character(person, use_state.entity)
 		try_stop_use_state()
 
-func start_use_state(type, caster, entity):
+func start_use_state(type, caster, caster_node, entity):
 	var use_state_panel_icon = use_state_panel.get_node("Button/Icon")
 	var use_state_panel_name = use_state_panel.get_node("Button/name")
 	if type == cast_panel.ENTITY_RETURN:
@@ -868,7 +879,9 @@ func start_use_state(type, caster, entity):
 		use_state_panel_name.text = tr("ITEM" + str(entity.code).to_upper())
 	else:# type == cast_panel.ENTITY_SKILL:
 		if entity.target == 'self':
-			use_e_combat_skill(caster, caster, entity)
+			animate(caster_node, entity)
+			yield(animations, 'alleffectsfinished')
+			use_e_combat_skill(caster, caster, entity, true)
 			return
 		use_state_panel_icon.texture = entity.icon
 		use_state_panel_name.text = entity.name
@@ -879,11 +892,48 @@ func start_use_state(type, caster, entity):
 		entity = entity
 	}
 	use_state_panel.show()
+	highlight_spelltar_chars()
 
 func try_stop_use_state():
 	if !is_in_use_state(): return
+	unhighlight_spelltar_chars()
 	use_state = null
 	use_state_panel.hide()
 
 func is_in_use_state():
 	return (use_state != null)
+
+func highlight_spelltar_chars(char_id = null):
+	highlight_spelltar_chars_true(true, char_id)
+func unhighlight_spelltar_chars():
+	highlight_spelltar_chars_true(false)
+
+func highlight_spelltar_chars_true(value, char_id = null):
+	for i in positiondict:
+		var node = get_node(positiondict[i])
+		if !value or char_id == null or (node.character != null and node.character.id == char_id):
+			if !value or node.character != null:
+				node.get_node("mark").visible = value
+	for node in present_char_cont.get_children():
+		if !node.visible or !is_instance_valid(node):
+			continue
+		if !value or char_id == null or (node.dragdata != null and node.dragdata.id == char_id):
+			node.get_node("mark").visible = value
+
+func animate(target_node, skill):
+	for sfx_dict in skill.sfx:
+		#ignore sfx_dict.period and sfx_dict.target for now
+		animations.add_new_data({
+			node = target_node,
+			time = 0,
+			type = sfx_dict.code,
+			slot = 'SFX',
+			params = globals.make_sfx_params(sfx_dict)})
+	animations.check_start()
+	if skill.has('sounddata'):
+		for i in skill.sounddata.values():
+			if i != null:
+				input_handler.PlaySound(i)
+
+func is_animating():
+	return animations.is_busy

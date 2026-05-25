@@ -311,10 +311,14 @@ func decay(node, args):
 func heal(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
 	var nextanimationtime = 0.5
+	var duration = 1
+	if args != null and args.has('duration'):
+		duration = args.duration
+		nextanimationtime = duration*2
 	hp_update_delays[node] = 0 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0)
 	buffs_update_delays[node] = 0.5
-	ResourceScripts.core_animations.gfx_particles(node, 'heal', 1, 1)
+	ResourceScripts.core_animations.gfx_particles(node, 'heal', duration, duration)
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay

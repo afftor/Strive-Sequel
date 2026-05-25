@@ -115,6 +115,16 @@ texture_hover = ExtResource( 34 )
 stretch_mode = 3
 script = ExtResource( 17 )
 
+[node name="mark" type="TextureRect" parent="Positions/HBoxContainer/backrow/4"]
+visible = false
+modulate = Color( 0, 1, 0.133333, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 70 )
+expand = true
+
 [node name="Image" type="TextureRect" parent="Positions/HBoxContainer/backrow/4"]
 margin_left = 11.0
 margin_top = 6.0
@@ -214,6 +224,16 @@ texture_hover = ExtResource( 34 )
 stretch_mode = 3
 script = ExtResource( 17 )
 
+[node name="mark" type="TextureRect" parent="Positions/HBoxContainer/backrow/5"]
+visible = false
+modulate = Color( 0, 1, 0.133333, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 70 )
+expand = true
+
 [node name="Image" type="TextureRect" parent="Positions/HBoxContainer/backrow/5"]
 margin_left = 11.0
 margin_top = 6.0
@@ -312,6 +332,16 @@ texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 stretch_mode = 3
 script = ExtResource( 17 )
+
+[node name="mark" type="TextureRect" parent="Positions/HBoxContainer/backrow/6"]
+visible = false
+modulate = Color( 0, 1, 0.133333, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 70 )
+expand = true
 
 [node name="Image" type="TextureRect" parent="Positions/HBoxContainer/backrow/6"]
 margin_left = 11.0
@@ -420,6 +450,16 @@ texture_hover = ExtResource( 34 )
 stretch_mode = 3
 script = ExtResource( 17 )
 
+[node name="mark" type="TextureRect" parent="Positions/HBoxContainer/frontrow/1"]
+visible = false
+modulate = Color( 0, 1, 0.133333, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 70 )
+expand = true
+
 [node name="Image" type="TextureRect" parent="Positions/HBoxContainer/frontrow/1"]
 margin_left = 11.0
 margin_top = 6.0
@@ -520,6 +560,16 @@ texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 stretch_mode = 3
 script = ExtResource( 17 )
+
+[node name="mark" type="TextureRect" parent="Positions/HBoxContainer/frontrow/2"]
+visible = false
+modulate = Color( 0, 1, 0.133333, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 70 )
+expand = true
 
 [node name="Image" type="TextureRect" parent="Positions/HBoxContainer/frontrow/2"]
 margin_left = 11.0
@@ -624,6 +674,16 @@ texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 stretch_mode = 3
 script = ExtResource( 17 )
+
+[node name="mark" type="TextureRect" parent="Positions/HBoxContainer/frontrow/3"]
+visible = false
+modulate = Color( 0, 1, 0.133333, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 70 )
+expand = true
 
 [node name="Image" type="TextureRect" parent="Positions/HBoxContainer/frontrow/3"]
 margin_left = 11.0
@@ -780,6 +840,16 @@ texture_disabled = ExtResource( 33 )
 texture_focused = ExtResource( 33 )
 stretch_mode = 5
 script = ExtResource( 15 )
+
+[node name="mark" type="TextureRect" parent="PresentedSlavesPanel/ScrollContainer/VBoxContainer/Button"]
+visible = false
+modulate = Color( 0, 1, 0.133333, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 70 )
+expand = true
 
 [node name="icon" type="TextureRect" parent="PresentedSlavesPanel/ScrollContainer/VBoxContainer/Button"]
 show_behind_parent = true
@@ -1397,6 +1467,17 @@ anchor_bottom = 1.0
 texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
+
+[node name="mark" type="TextureRect" parent="MapPanel/CanvasLayer/room"]
+visible = false
+modulate = Color( 0, 1, 0.133333, 1 )
+margin_left = 75.0
+margin_top = 75.0
+margin_right = 195.0
+margin_bottom = 195.0
+mouse_filter = 2
+texture = ExtResource( 70 )
+expand = true
 
 [node name="crop" type="Light2D" parent="MapPanel"]
 light_mask = 32

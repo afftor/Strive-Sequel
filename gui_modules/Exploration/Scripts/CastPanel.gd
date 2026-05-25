@@ -7,10 +7,14 @@ enum {ENTITY_SKILL, ENTITY_ITEM, ENTITY_RETURN}
 onready var max_cont_h =  scroller.rect_size.y#508
 onready var bg_margin = rect_size.y - max_cont_h#80
 
-signal set_entity_use(type, caster, entity)
+signal set_entity_use(type, caster, caster_node, entity)
 
+var is_dungeon = false
 
-func build_for_person(person_id, add_return = false, only_check = false):
+func set_is_dungeon():
+	is_dungeon = true
+
+func build_for_person(person_id, person_node, add_return = false, only_check = false):
 	input_handler.ClearContainer(cont)
 	cont.rect_size.y = 0
 	var not_empty = false
@@ -20,6 +24,8 @@ func build_for_person(person_id, add_return = false, only_check = false):
 			continue
 		var skill = Skilldata.get_template(skill_id, person)
 		if !skill.tags.has('exploration'):
+			continue
+		if !is_dungeon and skill.tags.has('dungeon'):
 			continue
 		not_empty = true
 		if only_check:
@@ -69,7 +75,7 @@ func build_for_person(person_id, add_return = false, only_check = false):
 		if disabled:
 			newnode.get_node("name").set("custom_colors/font_color", Color(1, 0.5, 0.5))
 		else:
-			newnode.connect('pressed', self, 'on_pressed', [ENTITY_SKILL, person, skill])
+			newnode.connect('pressed', self, 'on_pressed', [ENTITY_SKILL, person, person_node, skill])
 	
 #	for item in ResourceScripts.game_res.items.values():
 #		if Items.itemlist[item.itembase].has('explor_effect') == false:
@@ -89,7 +95,7 @@ func build_for_person(person_id, add_return = false, only_check = false):
 		newnode.get_node('Icon').hide()
 		newnode.get_node("name").text = tr("RETURN_MANSION_LABEL")
 		newnode.get_node("amount").hide()
-		newnode.connect('pressed', self, 'on_pressed', [ENTITY_RETURN, person, {}])
+		newnode.connect('pressed', self, 'on_pressed', [ENTITY_RETURN, person, null, {}])
 	
 	yield(get_tree(), 'idle_frame')#mind, that yield() is also return!
 	
@@ -100,13 +106,13 @@ func build_for_person(person_id, add_return = false, only_check = false):
 		rect_position.y = screen.size.y - rect_size.y
 
 
-func on_pressed(type, caster, entity):
-	emit_signal("set_entity_use", type, caster, entity)
+func on_pressed(type, caster, person_node, entity):
+	emit_signal("set_entity_use", type, caster, person_node, entity)
 	hide()
 
 
 func can_cast(person_id):
-	return build_for_person(person_id, false, true)
+	return build_for_person(person_id, null, false, true)
 
 func tut_get_reju_btn():
 	var reju_name = Skilldata.Skilllist["rejuvenation"].name
