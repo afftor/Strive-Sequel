@@ -222,6 +222,8 @@ func CreateGear(ItemName = '', dictparts = {}, diffdata = {boost = 0, prof = fal
 				for j in toolcategory:
 					materialeffects['task_crit_' + j] = materialeffects['task_crit_chance']
 				materialeffects.erase('task_crit_chance')
+			if materialeffects.has('weapon_element') and parteffectdict.has('weapon_element'):
+				materialeffects.erase('weapon_element')
 			for j in materialeffects:
 #				if j == 'enchant_capacity_mod':
 #					materialeffects[j] -= 1.0
