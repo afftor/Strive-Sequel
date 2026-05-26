@@ -292,8 +292,17 @@ func activate_quest(quest_id):
 	var quest = get_quest(quest_id)
 	quest.state = states.active
 
-#func fail_quest(quest_id):
-#	quest_pool[quest_id].state = states.failed
+func fail_quest(quest_id):
+	get_quest(quest_id).state = states.failed
+
+func tick_quests():
+	for quest in get_quest_pool().values():
+		if quest.state != states.active:
+			continue
+		quest.time_limit -= 1
+		if quest.time_limit <= 0:
+			quest.state = states.failed
+			ResourceScripts.game_party.remove_quest_task(quest.id)
 
 func is_quest_active(quest_id) -> bool:
 	return get_quest(quest_id).state == states.active

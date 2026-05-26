@@ -585,7 +585,7 @@ var training_resistance = {
 }
 
 var breakdown_info = {
-	brk_lose_friend = {chance = 0.1, text = "BREAKDOWN_LFRIEND"},
+	brk_lose_friend = {chance = 0.1, text = "BREAKDOWN_LFRIEND"}, 
 	brk_lose_lover = {chance = 0.2, text = "BREAKDOWN_LLOVER"},
 	brk_lose_relative = {chance = 0.25, text = "BREAKDOWN_LRELATIVE"},
 	brk_dislike_food = {chance = 0.005, text = "BREAKDOWN_FOOD"},

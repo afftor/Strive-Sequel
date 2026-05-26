@@ -1146,54 +1146,8 @@ margin_right = 632.0
 margin_bottom = 752.0
 theme = ExtResource( 3 )
 custom_fonts/normal_font = ExtResource( 56 )
-bbcode_text = "Game design, writing, programming: Maverik
-
-Combat and skil programming: ykoc
-
-GUI programming: Gerakena
-Helper Programming: SphinxKingStone
-Extended modding core/support: zeltop
-
-Character design: Nightigall
-Character design: @naisk47
-Scene art: Allanheil
-Background art: Laynesis, OMA(Olga Morozova)
-Icon art: Persich
-
-Writing: ralphomayo
-Writing: plumpjack
-Writing: S[Mutt]
-
-Proofreading: Dorant, ralphomayo, Khuja, Erra Null, LynerBLUE
-
-Also thanks to: negtize724
-
-Ambient battle noise: swords and shouting - pfranzen
-https://freesound.org/people/pfranzen/sounds/192072/"
-text = "Game design, writing, programming: Maverik
-
-Combat and skil programming: ykoc
-
-GUI programming: Gerakena
-Helper Programming: SphinxKingStone
-Extended modding core/support: zeltop
-
-Character design: Nightigall
-Character design: @naisk47
-Scene art: Allanheil
-Background art: Laynesis, OMA(Olga Morozova)
-Icon art: Persich
-
-Writing: ralphomayo
-Writing: plumpjack
-Writing: S[Mutt]
-
-Proofreading: Dorant, ralphomayo, Khuja, Erra Null, LynerBLUE
-
-Also thanks to: negtize724
-
-Ambient battle noise: swords and shouting - pfranzen
-https://freesound.org/people/pfranzen/sounds/192072/"
+bbcode_text = "MENUCREDITSDESC"
+text = "MENUCREDITSDESC"
 __meta__ = {
 "_edit_use_anchors_": false
 }

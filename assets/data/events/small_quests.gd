@@ -256,7 +256,7 @@ var data = {
 				dialogue_argument = 1,
 				bonus_effects = [
 					{code = "make_story_character", value = "Aire"},
-					
+					{code = "decision", value = "aire_recruited"},
 				]
 			}
 		]
@@ -303,6 +303,7 @@ var data = {
 				dialogue_argument = 1,
 				bonus_effects = [
 					{code = "make_story_character", value = "Aire"},
+					{code = "decision", value = "aire_recruited"},
 				]
 			}
 		]

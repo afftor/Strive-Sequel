@@ -636,9 +636,10 @@ func select_brothel_activity():
 			if sex_rules.has('anal') && penis_check:
 				parent.get_ref().take_virginity('anal', 'brothel_customer')
 			
-			work_tick_values(input_handler.random_from_array(data.workstats))
+			if data.workstats.size() > 0:
+				work_tick_values(input_handler.random_from_array(data.workstats))
 			parent.get_ref().try_rise_fame('service')
-			
+
 			parent.get_ref().add_stat('metrics_randompartners', globals.fastif(sex_rules.has('group'), 2, 1))
 			
 			var goldearned = highest_value.value * (1 + (0.1 * sex_rules.size())) * min(5, (1 + 0.01 * parent.get_ref().calculate_price(false, true))) + bonus_gold# 10% percent for every toggled sex service + 1% of slave's value up to 500%
@@ -665,7 +666,8 @@ func select_brothel_activity():
 		var highest_value = get_highest_value(non_sex_rules)
 		
 		var data = tasks.gold_tasks_data[highest_value.code]
-		work_tick_values(input_handler.random_from_array(data.workstats))
+		if data.workstats.size() > 0:
+			work_tick_values(input_handler.random_from_array(data.workstats))
 		parent.get_ref().try_rise_fame('service')
 		
 		var goldearned = highest_value.value * min(4, (1 + 0.001 * parent.get_ref().calculate_price(false, true)))
@@ -808,6 +810,7 @@ func farm_tick():
 
 
 func work_tick():
+	
 	if is_on_quest:
 		return
 	

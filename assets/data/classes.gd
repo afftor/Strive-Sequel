@@ -478,7 +478,7 @@ var professions = {
 		categories = ['combat'],
 		showupreqs = [{code = 'race', check = true, race = 'Dragonkin'}],
 		reqs = [{code = 'stat', stat = 'physics', operant = 'gte', value = 80},{code = 'has_profession', profession = 'fighter', check = true},{code = 'race', check = true, race = 'Dragonkin'}],
-		statchanges = {hpmax = 25, physics_bonus = 15, damage_mod_melee = 0.15, resist_fire = 35, speed = 4, mastery_point_combat = 1, mastery_fire = 1},
+		statchanges = {hpmax = 25, physics_bonus = 15, resist_fire = 10, speed = 4, mastery_point_combat = 1, mastery_fire = 1},
 		traits = ['heavy_armor'],
 		skills = [],
 		combatskills = ['dragonmight'],

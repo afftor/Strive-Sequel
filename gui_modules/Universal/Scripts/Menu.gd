@@ -55,7 +55,7 @@ func _ready():
 	$NewOrTutorial/ButtonL.connect("pressed", self, 'close_new_or_tutorial', [1])
 	$NewOrTutorial/ButtonR.connect("pressed", self, 'close_new_or_tutorial', [2])
 	newgame_node.get_node("NGPButton").connect("pressed", self, 'switch_ng_bonuses')
-	
+	$Credits/Background/RichTextLabel.bbcode_text = tr("MENUCREDITSDESC")
 	cycle_backgrounds()
 
 func cycle_backgrounds():

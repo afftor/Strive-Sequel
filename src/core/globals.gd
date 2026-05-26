@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.14.3 experimental 2'
+const gameversion = '0.14.3'
 
 #time
 signal hour_tick
@@ -28,6 +28,7 @@ var rng := RandomNumberGenerator.new()
 var rng_controllable := RandomNumberGenerator.new()
 var file = File.new()
 var dir = Directory.new()
+var _save_thread = Thread.new()
 
 var workersdict
 var randomgroups
@@ -985,14 +986,26 @@ func SaveGame(name):
 		savedict[p] = ResourceScripts.get(p).serialize()
 #	ResourceScripts.game_res.fix_items_inventory(false)
 
-	file.open(variables.userfolder + 'saves/' + name + '.sav', File.WRITE)
-	file.store_line(to_json(savedict))
-	file.close()
-	var metadata = ConfigFile.new()
 	var config_data = {version = gameversion, time = OS.get_datetime(), master_name = ResourceScripts.game_party.get_master().get_stat('name'), day = ResourceScripts.game_globals.date, hour = ResourceScripts.game_globals.hour, population = ResourceScripts.game_party.characters.size(), gold = ResourceScripts.game_res.money, master_icon = ResourceScripts.game_party.get_master().get_icon(true), preset = ResourceScripts.game_globals.starting_preset}
+	if _save_thread.is_active():
+		_save_thread.wait_to_finish()
+	_save_thread.start(self, "_save_thread_write", [name, savedict, config_data])
+
+func _save_thread_write(args):
+	var name = args[0]
+	var savedict = args[1]
+	var config_data = args[2]
+	var f = File.new()
+	f.open(variables.userfolder + 'saves/' + name + '.sav', File.WRITE)
+	f.store_line(to_json(savedict))
+	f.close()
+	var metadata = ConfigFile.new()
 	for i in config_data:
 		metadata.set_value('details', i, config_data[i])
 	metadata.save(variables.userfolder + "saves/" + name + ".dat")
+	call_deferred("_save_complete", name)
+
+func _save_complete(name):
 	input_handler.SystemMessage("Game saved as " + name + ".sav")
 
 
@@ -3038,7 +3051,7 @@ func apply_starting_preset():
 			for i in ['fighters','workers','servants','mages']:
 				common_effects([{code = 'reputation', name = i, operant = '+', value = preset.total_reputation}])
 		if preset.completed_quests.has("aliron_church_quest"):
-r			ResourceScripts.game_progress.unlocked_classes.append('acolyte')
+			ResourceScripts.game_progress.unlocked_classes.append('acolyte')
 		for i in preset.items:
 			if Items.itemlist[i].type == 'usable':
 				AddItemToInventory(CreateUsableItem(i, preset.items[i]))
