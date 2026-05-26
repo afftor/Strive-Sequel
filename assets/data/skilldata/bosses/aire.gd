@@ -11,7 +11,7 @@ var skills = {
 		tags = ['aoe', 'debuff','instant','noreduce', 'noevade','passive'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'ts_underwatched', duration = 1})], 
+		effects = ['e_underwatch'], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -27,31 +27,6 @@ var skills = {
 		damagestat = ['no_stat'],
 		critchance = 0,
 		not_final = true
-	},
-	aire_cover_fire_request = {
-		code = 'aire_cover_fire_request',
-		descript = '',
-		icon =  "res://assets/images/iconsskills/arrowshower.png",
-		type = 'combat', 
-		ability_type = 'spell',
-		tags = ['aoe','support','noreduce', 'noevade','passive','instant'],
-		reqs = [],
-		targetreqs = [],
-		effects = [
-			Effectdata.rebuild_template({effect = 'e_spotted_by_overwatch'}),
-		], 
-		cost = {},
-		charges = 0,
-		combatcooldown = 0,
-		cooldown = 0,
-		catalysts = {},
-		target = 'self',
-		target_number = 'nontarget_group',
-		target_range = 'any',
-		damage_type = 'air',
-		value = [['0']],
-		damagestat = 'no_stat',
-		critchance = 0,
 	},
 	aire_cover_fire = {
 		code = 'aire_cover_fire',
@@ -77,33 +52,6 @@ var skills = {
 		value = 0.625,
 		sfx = [{code = 'ranged_attack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-	},
-	aire_eye_for_an_eye_request = {
-		code = 'aire_eye_for_an_eye_request',
-		descript = '',
-		icon =  "res://assets/images/iconsskills/arrowshower.png",
-		type = 'combat', 
-		ability_type = 'spell',
-		tags = ['aoe','support','noreduce', 'noevade','passive'],
-		reqs = [],
-		targetreqs = [],
-		effects = [
-			Effectdata.rebuild_template({effect = 'e_eye_for_an_eye'}),
-		], 
-		cost = {},
-		charges = 0,
-		combatcooldown = 0,
-		cooldown = 0,
-		catalysts = {},
-		target = 'self',
-		target_number = 'nontarget_group',
-		target_range = 'any',
-		damage_type = 'air',
-		sfx = [], 
-		sounddata = {initiate = null, strike = null, hit = null},
-		value = [['0']],
-		damagestat = 'no_stat',
-		critchance = 0,
 	},
 	aire_eye_for_an_eye = {
 		code = 'aire_eye_for_an_eye',
@@ -250,7 +198,7 @@ var effects = {
 	},
 	overwatch_apply = {
 		type = 'trigger',
-		trigger = [variables.TR_TURN_S, variables.TR_COMBAT_S],
+		trigger = [variables.TR_COMBAT_S],
 		conditions = [],
 		atomic = [],
 		buffs = [],
@@ -263,20 +211,33 @@ var effects = {
 			},
 		],
 	},
+	e_underwatch = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [],
+		req_skill = true,
+		sub_effects = ['ts_underwatched'],
+		buffs = []
+	},
 	ts_underwatched = {
-		type = 'temp_s',
+		type = 'temp_global',
 		target = 'target',
-		duration = 1,
 		tick_event = [variables.TR_TURN_S,],
 		rem_event = [variables.TR_COMBAT_F],
-		conditions = [],
-		buffs = [],
-		statchanges = {},
 		sub_effects = [
 			'tr_underwatched',
 			'tr_eye_for_an_eye'
 		],
-		tags = ['underwatched'],
+		name = 'underwatched',
+		args = {
+			skill = {obj = 'skill', func = 'eq'},
+			caster = {obj = 'caster', func = 'eq'},
+		},
+		timers = [
+			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
+			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
+		],
+		tags = ['underwatched','duration_none'],
 	},
 	tr_underwatched = {
 		type = 'trigger',
@@ -286,33 +247,26 @@ var effects = {
 			{type = 'skill', value = ['tags', 'has', 'damage'] },
 			{type = 'target', value = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}] },
 			{type = 'target', value = [{code = 'trait', trait = 'aire_overwatch_assignment', check = false}] },
-			{type = 'caster', value = [{code = 'stat', stat = 'hp', operant = 'gt', value = 0}]}
+			{type = 'caster', value = [{code = 'stat', stat = 'hp', operant = 'gt', value = 0}]},
+			{type = 'watcher', value = [{code = 'trait', trait = 'aire_overwatch_assignment', check = true},]},
+			{type = 'watcher', value = [{code = 'has_status', status = 'disable', check = false},]},
+			{type = 'watcher', value = [{code = 'has_status', status = 'disarm', check = false},]},
+			{type = 'watcher', value = [{code = 'has_status', status = 'blind', check = false},]},
 		],
 		args = {
 			skill = {obj = 'skill', func = 'eq'},
 			caster = {obj = 'caster', func = 'eq'},
 			target = {obj = 'target', func = 'eq'},
+			watcher = {obj = 'parent', func = 'arg', arg = 'caster'}
 		},
 		sub_effects = [
 			{
 				type = 'oneshot',
-				target = 'caster',
-				atomic = [{type = 'use_combat_skill', skill = 'aire_cover_fire_request'}],
+				target = 'watcher',
+				args = {caster = {obj = 'parent', func = 'arg', arg = 'caster'}},
+				atomic = [{type = 'use_combat_skill', skill = 'aire_cover_fire', target = ['parent_args', 'caster']}],
 			},
 		]
-	},
-	e_spotted_by_overwatch = {
-		type = 'oneshot',
-		target = 'target',
-		tags = [],
-		conditions = [
-			{code = 'trait', trait = 'aire_overwatch_assignment', check = true},
-			{code = 'has_status', status = 'disable', check = false},
-			{code = 'has_status', status = 'disarm', check = false},
-			{code = 'has_status', status = 'blind', check = false},
-		],
-		args = {targetValue = {obj = 'parent', func = 'arg', arg = 'caster'}},
-		atomic = [{type = 'use_combat_skill', skill = 'aire_cover_fire', target = ['parent_args', 'targetValue']},],
 	},
 	tr_eye_for_an_eye = {
 		type = 'trigger',
@@ -320,33 +274,26 @@ var effects = {
 		req_skill = true,
 		conditions = [
 			{type = 'target', value = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}] },
-			{type = 'owner', value = [{code = 'stat', stat = 'hp', operant = 'gt', value = 0}]}
+			{type = 'owner', value = [{code = 'stat', stat = 'hp', operant = 'gt', value = 0}]},
+			{type = 'watcher', value = [{code = 'trait', trait = 'aire_overwatch_assignment', check = true},]},
+			{type = 'watcher', value = [{code = 'has_status', status = 'disable', check = false},]},
+			{type = 'watcher', value = [{code = 'has_status', status = 'disarm', check = false},]},
+			{type = 'watcher', value = [{code = 'has_status', status = 'blind', check = false},]},
 		],
 		args = {
 			skill = {obj = 'skill', func = 'eq'},
 			caster = {obj = 'caster', func = 'eq'},
 			target = {obj = 'target', func = 'eq'},
+			watcher = {obj = 'parent', func = 'arg', arg = 'caster'}
 		},
 		sub_effects = [
 			{
 				type = 'oneshot',
-				target = 'caster',
-				atomic = [{type = 'use_combat_skill', skill = 'aire_eye_for_an_eye_request'}],
+				target = 'watcher',
+				args = {targetValue = {obj = 'parent', func = 'arg', arg = 'caster'}},
+				atomic = [{type = 'use_combat_skill', skill = 'aire_eye_for_an_eye', target = ['parent_args', 'targetValue']},],
 			},
 		]
-	},
-	e_eye_for_an_eye = {
-		type = 'oneshot',
-		target = 'target',
-		tags = [],
-		conditions = [
-			{code = 'trait', trait = 'aire_overwatch_assignment', check = true},
-			{code = 'has_status', status = 'disable', check = false},
-			{code = 'has_status', status = 'disarm', check = false},
-			{code = 'has_status', status = 'blind', check = false},
-		],
-		args = {targetValue = {obj = 'parent', func = 'arg', arg = 'caster'}},
-		atomic = [{type = 'use_combat_skill', skill = 'aire_eye_for_an_eye', target = ['parent_args', 'targetValue']},],
 	},
 	trait_behind_cover = {
 		type = 'trigger',
@@ -355,6 +302,7 @@ var effects = {
 			{type = 'owner', value = [{code = 'has_status', status = 'behind_cover', check = false}]},
 			{type = 'owner', value = [{code = 'has_status', status = 'disable', check = false}]},
 			{type = 'owner', value = [{code = 'has_status', status = 'cover_blocked', check = false}]},
+			{type = 'owner', value = [{code = 'stat', stat = 'hp', operant = 'gt', value = 0}]},
 		],
 		atomic = [],
 		buffs = [],
