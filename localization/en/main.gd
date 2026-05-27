@@ -1688,7 +1688,13 @@ Does not take turn to activate. """,
 	SKILLGRAZE_THE_GRASS_PRIORITY = 'Graze the Grass',
 	SKILLWILD_TRAMPLING = 'Wild Trampling',
 	SKILLHOW_DISSAPOINTING = 'How dissapointing...',
-	SKILLMUDDY_WATER  = 'Muddy Water',
+	SKILLMUDDY_WATER = 'Muddy Water',
+	SKILLENCROACHING_DUSK = 'Encroaching Dusk',
+	SKILLNIGHT_NIGHT = 'Night Night',
+	SKILLSILENT_NIGHT = 'Silent Night',
+	SKILLRAZE_THE_LIGHT = 'Raze the Light',
+	SKILLBUMP_IN_THE_NIGHT = 'Bump in the Night',
+	SKILLSKEWING_SHADOW = 'Skewing Shadow',
 	STATUSDESC_BLEED = "Bleeding: Take 10% of Maximum HP as neutral damage per turn.",
 	STATUSDESC_POISON = "Poisoned: Take 10% of Maximum HP as neutral damage per turn.",
 	STATUSDESC_BURN = "Burning: Take 8% of Maximum HP as Fire damage per turn.",
@@ -4444,6 +4450,22 @@ If this unit is wet, regenerate 6.25% of maxHp each turn.""",
 Once expired, White Stag can use 
 [How disappointing…] skill.
 Duration is extended by 1 when an ally is defeated.""",
+	EFFECTNAME_HELLO_SIS = 'Hello, sister~!',
+	EFFECT_HELLO_SIS = 'Deal +10% damage against Kuro.',
+	EFFECTNAME_DONT_TALK_TO_ME = '...Don\'t talk to Me',
+	EFFECT_DONT_TALK_TO_ME = 'Deal +10% damage against Zephyra.',
+	EFFECTNAME_NYCTOPHOBIA = 'Nyctophobia',
+	EFFECT_NYCTOPHOBIA = 'If this unit is affected by [In the Shadow]: Kuro cannot miss her attack against this unit & Take 15% of current HP as Dark damage each turn.',
+	EFFECTNAME_FADING_LIGHT = 'Fading Light',
+	EFFECT_FADING_LIGHT = 'Allow usage of [Night Night] spell. Can be removed by silence, disabling effect or hit by fire or light attack.',
+	EFFECTNAME_BINDING_SHADOW = 'Binding Shadow',
+	EFFECT_BINDING_SHADOW = """-50% speed. Shadow damage has a 50% chance to inflict Disarm for 1 turn.
+Negate the positive effects of [In the Shadow] effect.
+Remove once being hit by or use a light or fire move.""",
+	EFFECTNAME_UNHOLY_NIGHT = 'Unholy Night',
+	EFFECT_UNHOLY_NIGHT = 'Immune to Silence. +30 MATK.',
+	TRAIT_SNUFF_CANDLE_DESC = """When hit by a Light or Fire move, use Stuff Out against the attacker.
+Can be disabled if the user is silenced or immobilised.""",
 	RESETTRAINREQ = "Reset training to step 0 and restore Spirit. Requires Oblivion potion.",
 	RESETTRAINING = "All training progress will be discarded. Are you sure?",
 	BUFFDESCRIPTDEFENDER = "Defender: Will shield allies from attacks unless stunned.",
@@ -18725,6 +18747,16 @@ Upon hearing Zephyra's innocent proposal, Kuro gives a cold smirk.
 {color=yellow|Kuro: — That's just a stronger reason for me to take care of him right here.}
 
 {color=yellow|Zephyra: — ...Right, I didn't think about it. Sorry, [name], I guess we'll have to teach Kuro a lesson.}""",
+
+	KURO_BOSSFIGHT_BANTER_1 = """
+Zephyra: Let's not be hasty now, sis~
+""",
+	KURO_BOSSFIGHT_BANTER_2 = """
+Kuro loses Fading Light due to Zephyra's prank!
+""",
+	KURO_BOSSFIGHT_BANTER_3 = """
+Kuro: Stop. That.""",
+
 	COALBASE_ATTACK_AFTER_FIGHT = """As the last dwarven soldier is knocked out, Kuro is still standing, albeit visibly exhausted.
 
 {color=yellow|Kuro: — Ha-ah... You are so annoying. Fine, you've won this battle, I'm not fit for this kind of brawl...}

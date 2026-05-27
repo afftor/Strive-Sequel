@@ -23,7 +23,7 @@ var skills = {
 		target = 'ally',
 		target_number = 'single',
 		target_range = 'any',
-		damage_type = 'light',#not sure but not matters
+		damage_type = 'water',#not sure but not matters #It's matter now! -Garden
 		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['caster.matk', '*0.6'], ['caster.matk']],
@@ -143,7 +143,7 @@ var skills = {
 		target = 'ally',
 		target_number = 'single',
 		target_range = 'any',
-		damage_type = 'fire',#not sure but not matters
+		damage_type = 'water',#not sure but not matters #It matter now -Garden
 		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['0']],

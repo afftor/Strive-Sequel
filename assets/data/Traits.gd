@@ -1832,6 +1832,24 @@ var traits = {
 		effects = ['entrance_animation_eagle'],
 		tags = [],
 	},
+	nixx_blessing_nyctophobia = {
+		code = 'nixx_blessing_nyctophobia',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['kuro_boss_combat_start_effects'],
+		tags = [],
+	},
+	snuffing_out_the_candle = {
+		code = 'snuffing_out_the_candle',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['trait_snuff_candle', 'trigger_snuff_candle_light'],
+		tags = [],
+	},
 	#exploration related traits
 	#needs to hardcode most of traits
 	medium_armor = {#removes penalty from medium armor
