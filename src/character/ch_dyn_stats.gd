@@ -16,6 +16,7 @@ var bonuses_stored = {}
 
 #rebuildable
 var traits_real = {}
+var traits_2_real = {}
 var masteries_real = {}
 var skills_real = []
 var c_skills_real = []
@@ -85,6 +86,7 @@ func generate_data(stop_at = variables.DYN_STATS_FULL, forced = false):
 	#reset
 	clear_nonstored_effs()
 	traits_real = traits_stored.duplicate()
+	traits_2_real.clear()
 	masteries_real = masteries.duplicate(true)
 	masteries_sources.clear()
 	var process_skills = (stop_at == variables.DYN_STATS_FULL)
@@ -115,9 +117,11 @@ func generate_data(stop_at = variables.DYN_STATS_FULL, forced = false):
 	rebuild = variables.DYN_STATS_FACTORS
 	if rebuild >= stop_at and !forced:
 		return
-	update_masteries(process_skills)
 	for trait in traits_real:
 		process_trait_data(trait, traits_real[trait])
+	update_masteries(process_skills)
+	for trait in traits_2_real:
+		process_trait_data(trait, traits_2_real[trait])
 	var tattoos = parent.get_ref().get_tattoos()
 	for slot in tattoos:
 		if tattoos[slot] == null:
@@ -293,11 +297,17 @@ func gather_innate_bonuses():
 				add_stat_bonus(stat, st_data.innate_bonuses[rec], rec, 'innate', '', 0, true)
 
 
-func process_trait_add(id, timestamp):
-	if traits_real.has(id):
-		traits_real[id] = min(traits_real[id], timestamp)
+func process_trait_add(id, timestamp, second_pass = false):
+	if second_pass:
+		if traits_2_real.has(id):
+			traits_2_real[id] = min(traits_2_real[id], timestamp)
+		else:
+			traits_2_real[id] = timestamp
 	else:
-		traits_real[id] = timestamp
+		if traits_real.has(id):
+			traits_real[id] = min(traits_real[id], timestamp)
+		else:
+			traits_real[id] = timestamp
 
 
 func update_masteries(process_skills = true):
@@ -314,7 +324,7 @@ func update_masteries(process_skills = true):
 				if i < mas_data.maxlevel:
 					var lvdata = mas_data['level%d' % (i + 1)]
 					for trait in lvdata.traits:
-						process_trait_add(trait, mas_full[i])
+						process_trait_add(trait, mas_full[i], true)
 					if process_skills:
 						for id in lvdata.explore_skills:
 							if !e_skills_real.has(id):
@@ -329,7 +339,7 @@ func has_status(status):
 		var profdata = classesdata.professions[tr]
 		if profdata.has('tags') and profdata.tags.has(status):
 			return true
-	for tr in traits_real:
+	for tr in traits_real.keys() + traits_2_real.keys():
 		var traitdata = Traitdata.traits[tr]
 		if traitdata.has('tags') and traitdata.tags.has(status):
 			return true
@@ -754,7 +764,7 @@ func get_traits_by_tag(tag):
 	if rebuild < variables.DYN_STATS_PREAREA:
 		generate_data(variables.DYN_STATS_PREAREA)
 	var res = []
-	for tr in traits_real:
+	for tr in traits_real.keys() + traits_2_real.keys():
 		var traitdata = Traitdata.traits[tr]
 		if traitdata.has('tags') and traitdata.tags.has(tag):
 			res.push_back(tr)
@@ -763,7 +773,7 @@ func get_traits_by_tag(tag):
 
 func get_traits_by_arg(arg, value):
 	var res = []
-	for tr in traits_real:
+	for tr in traits_real.keys() + traits_2_real.keys():
 		var traitdata = Traitdata.traits[tr]
 		if traitdata.has(arg) and traitdata[arg] == value:
 			res.push_back(tr)
@@ -799,7 +809,7 @@ func get_random_traits(trait_blacklist = []):
 
 
 func get_traits_buffs():
-	for tr in traits_real:
+	for tr in traits_real.keys() + traits_2_real.keys():
 		var tbuff = Traitdata.make_buff_for_trait(tr)
 		if tbuff != null: 
 			buffs.push_back(tbuff)
