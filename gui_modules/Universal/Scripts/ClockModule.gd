@@ -172,9 +172,8 @@ func advance_turn(amount = 1):
 		ResourceScripts.game_globals.advance_hour()
 		amount -= 1
 		globals.emit_signal("hour_tick")
+	update_labels()
 #	rotate_sky()
-	return
-	
 	gui_controller.mansion.SlaveListModule.rebuild()
 	gui_controller.mansion.SkillModule.build_skill_panel()
 	update_labels()
@@ -246,5 +245,4 @@ func on_ext_block_press():
 		get_tree().set_input_as_handled()
 		var blocker = ext_blockers.back()
 		blocker.ref.get_ref().call(blocker.act)
-
 

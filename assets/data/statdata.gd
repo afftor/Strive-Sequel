@@ -648,6 +648,18 @@ var statdata = {
 		type = 'primal',
 		tags = ['integer', 'custom_getter'],
 	},
+	sex_stamina = {
+		code = 'sex_stamina',
+		name = '',
+		descript = '',
+		baseicon = 'stat_bf',
+		type = 'primal',
+		direct = false,
+		tags = ['integer', 'cap_up', 'cap_low'],
+		cap_up = 10,
+		cap_low = 0,
+		show_info = {category = 'non_combat'}
+	},
 	physics_bonus = {
 		code = 'physics_bonus',
 		name = '',
@@ -1828,6 +1840,12 @@ func _ready():
 				code = st,
 				tags = ['integer'],
 				container = 'sex_skills',
+			}
+	for st in Statlist_init.sex_training:
+		statdata[st] = {
+				code = st,
+				tags = ['sex_training'],
+				container = 'sex_training',
 			}
 	for st in Statlist_init.sexexp: #this is not technicaly a stat - but a messy log. added for a sanity sake
 		statdata[st] = {

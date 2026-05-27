@@ -369,15 +369,15 @@ func names(group):
 func fuck(group):
 	var outputs = []
 	var temp = ''
-	outputs += [getrandomfromarray(['fuck','plow','screw','penetrate','churn','pummel'])]
-	temp = getrandomfromarray(['plunge','hammer','pound','pump','slam','thrust','grind','drive'])
+	outputs += [getrandomfromarray(['SEXDESC_FUCK_BASE_1','SEXDESC_FUCK_BASE_2','SEXDESC_FUCK_BASE_3','SEXDESC_FUCK_BASE_4','SEXDESC_FUCK_BASE_5','SEXDESC_FUCK_BASE_6'])]
+	temp = getrandomfromarray(['SEXDESC_FUCK_THRUST_1','SEXDESC_FUCK_THRUST_2','SEXDESC_FUCK_THRUST_3','SEXDESC_FUCK_THRUST_4','SEXDESC_FUCK_THRUST_5','SEXDESC_FUCK_THRUST_6','SEXDESC_FUCK_THRUST_7','SEXDESC_FUCK_THRUST_8'])
 	temp += getrandomfromarray([' ' + his(group) + ' ' + penis(group),''])
 	temp += getrandomfromarray([' deep','']) + ' into'
 	outputs += [temp]
-	temp = getrandomfromarray(['plunge','pump','slide','thrust'])
+	temp = getrandomfromarray(['SEXDESC_FUCK_SLIDE_1','SEXDESC_FUCK_SLIDE_2','SEXDESC_FUCK_SLIDE_3','SEXDESC_FUCK_SLIDE_4'])
 	temp += getrandomfromarray([' ' + his(group) + ' ' + penis(group),'']) + ' in and out of'
 	outputs += [temp]
-	temp = getrandomfromarray(['plunge','thrust'])
+	temp = getrandomfromarray(['SEXDESC_FUCK_SLIDE_1','SEXDESC_FUCK_THRUST_6'])
 	temp += ' ' + getrandomfromarray([his(group) + ' ' + penis(group),himself(group)])
 	temp += ' ' + getrandomfromarray(['in and out of','inside'])
 	outputs += [temp]
@@ -391,32 +391,32 @@ func fucks(group):
 			return fuck(group)
 	var outputs = []
 	var temp = ''
-	outputs += [getrandomfromarray(['fucks','plows','screws','penetrates','churns','pummels'])]
-	temp = getrandomfromarray(['plunges','hammers','pounds','pumps','slams','thrusts','grinds','drives'])
+	outputs += [getrandomfromarray(['SEXDESC_FUCKS_BASE_1','SEXDESC_FUCKS_BASE_2','SEXDESC_FUCKS_BASE_3','SEXDESC_FUCKS_BASE_4','SEXDESC_FUCKS_BASE_5','SEXDESC_FUCKS_BASE_6'])]
+	temp = getrandomfromarray(['SEXDESC_FUCKS_THRUST_1','SEXDESC_FUCKS_THRUST_2','SEXDESC_FUCKS_THRUST_3','SEXDESC_FUCKS_THRUST_4','SEXDESC_FUCKS_THRUST_5','SEXDESC_FUCKS_THRUST_6','SEXDESC_FUCKS_THRUST_7','SEXDESC_FUCKS_THRUST_8'])
 	temp += getrandomfromarray([' ' + his(group) + ' ' + penis(group),''])
 	temp += getrandomfromarray([' deep','']) + ' into'
 	outputs += [temp]
-	temp = getrandomfromarray(['plunges','pumps','slides','thrusts'])
+	temp = getrandomfromarray(['SEXDESC_FUCKS_SLIDE_1','SEXDESC_FUCKS_SLIDE_2','SEXDESC_FUCKS_SLIDE_3','SEXDESC_FUCKS_SLIDE_4'])
 	temp += getrandomfromarray([' ' + his(group) + ' ' + penis(group),'']) + ' in and out of'
 	outputs += [temp]
-	temp = getrandomfromarray(['plunges','thrusts'])
+	temp = getrandomfromarray(['SEXDESC_FUCKS_SLIDE_1','SEXDESC_FUCKS_SLIDE_4'])
 	temp += ' ' + getrandomfromarray([his(group) + ' ' + penis(group),himself(group)])
-	temp += ' ' + getrandomfromarray(['in and out of','into','inside'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_FUCKS_INOUT_1','SEXDESC_FUCKS_INOUT_2','SEXDESC_FUCKS_INOUT_3'])
 	outputs += [temp]
 	return outputs[randi()%outputs.size()]
 
 func fucking(group):
 	var outputs = []
 	var temp = ''
-	outputs += [getrandomfromarray(['fucking','plowing','screwing','penetrating','churning','pummeling'])]
-	temp = getrandomfromarray(['plunging','hammering','pounding','pumping','slaming','thrusting','grinding','driving'])
+	outputs += [getrandomfromarray(['SEXDESC_FUCKING_BASE_1','SEXDESC_FUCKING_BASE_2','SEXDESC_FUCKING_BASE_3','SEXDESC_FUCKING_BASE_4','SEXDESC_FUCKING_BASE_5','SEXDESC_FUCKING_BASE_6'])]
+	temp = getrandomfromarray(['SEXDESC_FUCKING_THRUST_1','SEXDESC_FUCKING_THRUST_2','SEXDESC_FUCKING_THRUST_3','SEXDESC_FUCKING_THRUST_4','SEXDESC_FUCKING_THRUST_5','SEXDESC_FUCKING_THRUST_6','SEXDESC_FUCKING_THRUST_7','SEXDESC_FUCKING_THRUST_8'])
 	temp += getrandomfromarray([' ' + his(group) + ' ' + penis(group),''])
 	temp += getrandomfromarray([' deep','']) + ' into'
 	outputs += [temp]
-	temp = getrandomfromarray(['plunging','pumping','sliding','thrusting'])
+	temp = getrandomfromarray(['SEXDESC_FUCKING_SLIDE_1','SEXDESC_FUCKING_SLIDE_2','SEXDESC_FUCKING_SLIDE_3','SEXDESC_FUCKING_SLIDE_4'])
 	temp += getrandomfromarray([' ' + his(group) + ' ' + penis(group),'']) + ' in and out of'
 	outputs += [temp]
-	temp = getrandomfromarray(['plunging','thrusting'])
+	temp = getrandomfromarray(['SEXDESC_FUCKING_SLIDE_1','SEXDESC_FUCKING_SLIDE_4'])
 	temp += ' ' + getrandomfromarray([his(group) + ' ' + penis(group),himself(group)])
 	temp += ' ' + getrandomfromarray(['in and out of','into','inside'])
 	outputs += [temp]
@@ -425,21 +425,21 @@ func fucking(group):
 func vfuck(group):
 	var outputs = []
 	var temp = ''
-	outputs += [getrandomfromarray(['massage','squeeze','envelop','milk'])]
-	temp = getrandomfromarray(['grind','bounce','gyrate'])
-	temp += ' ' + getrandomfromarray(['on top of','on','atop'])
+	outputs += [getrandomfromarray(['SEXDESC_VFUCK_BASE_1','SEXDESC_VFUCK_BASE_2','SEXDESC_VFUCK_BASE_3','SEXDESC_VFUCK_BASE_4'])]
+	temp = getrandomfromarray(['SEXDESC_VFUCK_GRIND_1','SEXDESC_VFUCK_GRIND_2','SEXDESC_VFUCK_GRIND_3'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_GRIND_ATOP_1','SEXDESC_VFUCK_GRIND_ATOP_2','SEXDESC_VFUCK_GRIND_ATOP_3'])
 	outputs += [temp]
-	temp = getrandomfromarray(['grind','bounce','gyrate','thrust','pump','work'])
+	temp = getrandomfromarray(['SEXDESC_VFUCK_HIP_1','SEXDESC_VFUCK_HIP_2','SEXDESC_VFUCK_HIP_3','SEXDESC_VFUCK_HIP_4','SEXDESC_VFUCK_HIP_5','SEXDESC_VFUCK_HIP_6'])
 	temp += ' ' + his(group) + ' ' + hips(group)
-	temp += ' ' + getrandomfromarray(['on top of','on','atop'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_GRIND_ATOP_1','SEXDESC_VFUCK_GRIND_ATOP_2','SEXDESC_VFUCK_GRIND_ATOP_3'])
 	outputs += [temp]
-	temp = getrandomfromarray(['grind','thrust','slam','pound'])
+	temp = getrandomfromarray(['SEXDESC_VFUCK_SLAM_1','SEXDESC_VFUCK_SLAM_2','SEXDESC_VFUCK_SLAM_3','SEXDESC_VFUCK_SLAM_4'])
 	temp += ' ' + getrandomfromarray([his(group) + ' ' + pussy(group),himself(group)])
-	temp += ' ' + getrandomfromarray(['against','down on'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_SLAM_DIR_1','SEXDESC_VFUCK_SLAM_DIR_2'])
 	outputs += [temp]
-	temp = getrandomfromarray(['impale','pleasure','churn','satisfy'])
+	temp = getrandomfromarray(['SEXDESC_VFUCK_IMPALE_1','SEXDESC_VFUCK_IMPALE_2','SEXDESC_VFUCK_IMPALE_3','SEXDESC_VFUCK_IMPALE_4'])
 	temp += ' ' + getrandomfromarray([his(group) + ' ' + pussy(group),himself(group)])
-	temp += ' ' + getrandomfromarray(['on top of','on'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_IMPALE_DIR_1','SEXDESC_VFUCK_IMPALE_DIR_2'])
 	outputs += [temp]
 	return outputs[randi()%outputs.size()]
 
@@ -451,63 +451,63 @@ func vfucks(group):
 			return vfuck(group)
 	var outputs = []
 	var temp = ''
-	outputs += [getrandomfromarray(['massages','squeezes','envelops','milks'])]
-	temp = getrandomfromarray(['grinds','bounces','gyrates'])
-	temp += ' ' + getrandomfromarray(['on top of','on','atop'])
+	outputs += [getrandomfromarray(['SEXDESC_VFUCKS_BASE_1','SEXDESC_VFUCKS_BASE_2','SEXDESC_VFUCKS_BASE_3','SEXDESC_VFUCKS_BASE_4'])]
+	temp = getrandomfromarray(['SEXDESC_VFUCKS_GRIND_1','SEXDESC_VFUCKS_GRIND_2','SEXDESC_VFUCKS_GRIND_3'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_GRIND_ATOP_1','SEXDESC_VFUCK_GRIND_ATOP_2','SEXDESC_VFUCK_GRIND_ATOP_3'])
 	outputs += [temp]
-	temp = getrandomfromarray(['grinds','bounces','gyrates','thrusts','pumps','works'])
+	temp = getrandomfromarray(['SEXDESC_VFUCKS_HIP_1','SEXDESC_VFUCKS_HIP_2','SEXDESC_VFUCKS_HIP_3','SEXDESC_VFUCKS_HIP_4','SEXDESC_VFUCKS_HIP_5','SEXDESC_VFUCKS_HIP_6'])
 	temp += ' ' + his(group) + ' ' + hips(group)
-	temp += ' ' + getrandomfromarray(['on top of','on','atop'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_GRIND_ATOP_1','SEXDESC_VFUCK_GRIND_ATOP_2','SEXDESC_VFUCK_GRIND_ATOP_3'])
 	outputs += [temp]
-	temp = getrandomfromarray(['grinds','thrusts','slams','pounds'])
+	temp = getrandomfromarray(['SEXDESC_VFUCKS_SLAM_1','SEXDESC_VFUCKS_SLAM_2','SEXDESC_VFUCKS_SLAM_3','SEXDESC_VFUCKS_SLAM_4'])
 	temp += ' ' + getrandomfromarray([his(group) + ' ' + pussy(group),himself(group)])
-	temp += ' ' + getrandomfromarray(['against','down on'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_SLAM_DIR_1','SEXDESC_VFUCK_SLAM_DIR_2'])
 	outputs += [temp]
-	temp = getrandomfromarray(['impales','pleasures','churns','satisfies'])
+	temp = getrandomfromarray(['SEXDESC_VFUCKS_IMPALE_1','SEXDESC_VFUCKS_IMPALE_2','SEXDESC_VFUCKS_IMPALE_3','SEXDESC_VFUCKS_IMPALE_4'])
 	temp += ' ' + getrandomfromarray([his(group) + ' ' + pussy(group),himself(group)])
-	temp += ' ' + getrandomfromarray(['on top of','on'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_IMPALE_DIR_1','SEXDESC_VFUCK_IMPALE_DIR_2'])
 	outputs += [temp]
 	return outputs[randi()%outputs.size()]
 
 func vfucking(group):
 	var outputs = []
 	var temp = ''
-	outputs += [getrandomfromarray(['massaging','squeezing','enveloping','milking'])]
-	temp = getrandomfromarray(['grinding','bouncing','gyrating'])
-	temp += ' ' + getrandomfromarray(['on top of','on','atop'])
+	outputs += [getrandomfromarray(['SEXDESC_VFUCKING_BASE_1','SEXDESC_VFUCKING_BASE_2','SEXDESC_VFUCKING_BASE_3','SEXDESC_VFUCKING_BASE_4'])]
+	temp = getrandomfromarray(['SEXDESC_VFUCKING_GRIND_1','SEXDESC_VFUCKING_GRIND_2','SEXDESC_VFUCKING_GRIND_3'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_GRIND_ATOP_1','SEXDESC_VFUCK_GRIND_ATOP_2','SEXDESC_VFUCK_GRIND_ATOP_3'])
 	outputs += [temp]
-	temp = getrandomfromarray(['grinding','bouncing','gyrating','thrusting','pumping','working'])
+	temp = getrandomfromarray(['SEXDESC_VFUCKING_HIP_1','SEXDESC_VFUCKING_HIP_2','SEXDESC_VFUCKING_HIP_3','SEXDESC_VFUCKING_HIP_4','SEXDESC_VFUCKING_HIP_5','SEXDESC_VFUCKING_HIP_6'])
 	temp += ' ' + his(group) + ' ' + hips(group)
-	temp += ' ' + getrandomfromarray(['on top of','on','atop'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_GRIND_ATOP_1','SEXDESC_VFUCK_GRIND_ATOP_2','SEXDESC_VFUCK_GRIND_ATOP_3'])
 	outputs += [temp]
-	temp = getrandomfromarray(['grinding','thrusting','slamming','pounding'])
+	temp = getrandomfromarray(['SEXDESC_VFUCKING_SLAM_1','SEXDESC_VFUCKING_SLAM_2','SEXDESC_VFUCKING_SLAM_3','SEXDESC_VFUCKING_SLAM_4'])
 	temp += ' ' + getrandomfromarray([his(group) + ' ' + pussy(group),himself(group)])
-	temp += ' ' + getrandomfromarray(['against','down on'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_SLAM_DIR_1','SEXDESC_VFUCK_SLAM_DIR_2'])
 	outputs += [temp]
-	temp = getrandomfromarray(['impaling','pleasuring','churning','satisfying'])
+	temp = getrandomfromarray(['SEXDESC_VFUCKING_IMPALE_1','SEXDESC_VFUCKING_IMPALE_2','SEXDESC_VFUCKING_IMPALE_3','SEXDESC_VFUCKING_IMPALE_4'])
 	temp += ' ' + getrandomfromarray([his(group) + ' ' + pussy(group),himself(group)])
-	temp += ' ' + getrandomfromarray(['on top of','on'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_IMPALE_DIR_1','SEXDESC_VFUCK_IMPALE_DIR_2'])
 	outputs += [temp]
 	return outputs[randi()%outputs.size()]
 
 func afuck(group):
 	var outputs = []
 	var temp = ''
-	outputs += [getrandomfromarray(['massage','squeeze','envelop','milk'])]
-	temp = getrandomfromarray(['grind','bounce','gyrate'])
-	temp += ' ' + getrandomfromarray(['on top of','on','atop'])
+	outputs += [getrandomfromarray(['SEXDESC_VFUCK_BASE_1','SEXDESC_VFUCK_BASE_2','SEXDESC_VFUCK_BASE_3','SEXDESC_VFUCK_BASE_4'])]
+	temp = getrandomfromarray(['SEXDESC_VFUCK_GRIND_1','SEXDESC_VFUCK_GRIND_2','SEXDESC_VFUCK_GRIND_3'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_GRIND_ATOP_1','SEXDESC_VFUCK_GRIND_ATOP_2','SEXDESC_VFUCK_GRIND_ATOP_3'])
 	outputs += [temp]
-	temp = getrandomfromarray(['grind','bounce','gyrate','thrust','pump','work'])
+	temp = getrandomfromarray(['SEXDESC_VFUCK_HIP_1','SEXDESC_VFUCK_HIP_2','SEXDESC_VFUCK_HIP_3','SEXDESC_VFUCK_HIP_4','SEXDESC_VFUCK_HIP_5','SEXDESC_VFUCK_HIP_6'])
 	temp += ' ' + his(group) + ' ' + hips(group)
-	temp += ' ' + getrandomfromarray(['on top of','on','atop'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_GRIND_ATOP_1','SEXDESC_VFUCK_GRIND_ATOP_2','SEXDESC_VFUCK_GRIND_ATOP_3'])
 	outputs += [temp]
-	temp = getrandomfromarray(['grind','thrust','slam','pound'])
+	temp = getrandomfromarray(['SEXDESC_VFUCK_SLAM_1','SEXDESC_VFUCK_SLAM_2','SEXDESC_VFUCK_SLAM_3','SEXDESC_VFUCK_SLAM_4'])
 	temp += ' ' + getrandomfromarray([his(group) + ' ' + anus(group),himself(group)])
-	temp += ' ' + getrandomfromarray(['against','down on'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_SLAM_DIR_1','SEXDESC_VFUCK_SLAM_DIR_2'])
 	outputs += [temp]
-	temp = getrandomfromarray(['impale','pleasure','churn','satisfy'])
+	temp = getrandomfromarray(['SEXDESC_VFUCK_IMPALE_1','SEXDESC_VFUCK_IMPALE_2','SEXDESC_VFUCK_IMPALE_3','SEXDESC_VFUCK_IMPALE_4'])
 	temp += ' ' + getrandomfromarray([his(group) + ' ' + anus(group),himself(group)])
-	temp += ' ' + getrandomfromarray(['on top of','on'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_IMPALE_DIR_1','SEXDESC_VFUCK_IMPALE_DIR_2'])
 	outputs += [temp]
 	return outputs[randi()%outputs.size()]
 
@@ -519,42 +519,42 @@ func afucks(group):
 			return afuck(group)
 	var outputs = []
 	var temp = ''
-	outputs += [getrandomfromarray(['massages','squeezes','envelops','milks'])]
-	temp = getrandomfromarray(['grinds','bounces','gyrates'])
-	temp += ' ' + getrandomfromarray(['on top of','on','atop'])
+	outputs += [getrandomfromarray(['SEXDESC_VFUCKS_BASE_1','SEXDESC_VFUCKS_BASE_2','SEXDESC_VFUCKS_BASE_3','SEXDESC_VFUCKS_BASE_4'])]
+	temp = getrandomfromarray(['SEXDESC_VFUCKS_GRIND_1','SEXDESC_VFUCKS_GRIND_2','SEXDESC_VFUCKS_GRIND_3'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_GRIND_ATOP_1','SEXDESC_VFUCK_GRIND_ATOP_2','SEXDESC_VFUCK_GRIND_ATOP_3'])
 	outputs += [temp]
-	temp = getrandomfromarray(['grinds','bounces','gyrates','thrusts','pumps','works'])
+	temp = getrandomfromarray(['SEXDESC_VFUCKS_HIP_1','SEXDESC_VFUCKS_HIP_2','SEXDESC_VFUCKS_HIP_3','SEXDESC_VFUCKS_HIP_4','SEXDESC_VFUCKS_HIP_5','SEXDESC_VFUCKS_HIP_6'])
 	temp += ' ' + his(group) + ' ' + hips(group)
-	temp += ' ' + getrandomfromarray(['on top of','on','atop'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_GRIND_ATOP_1','SEXDESC_VFUCK_GRIND_ATOP_2','SEXDESC_VFUCK_GRIND_ATOP_3'])
 	outputs += [temp]
-	temp = getrandomfromarray(['grinds','thrusts','slams','pounds'])
+	temp = getrandomfromarray(['SEXDESC_VFUCKS_SLAM_1','SEXDESC_VFUCKS_SLAM_2','SEXDESC_VFUCKS_SLAM_3','SEXDESC_VFUCKS_SLAM_4'])
 	temp += ' ' + getrandomfromarray([his(group) + ' ' + anus(group),himself(group)])
-	temp += ' ' + getrandomfromarray(['against','down on'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_SLAM_DIR_1','SEXDESC_VFUCK_SLAM_DIR_2'])
 	outputs += [temp]
-	temp = getrandomfromarray(['impales','pleasures','churns','satisfies'])
+	temp = getrandomfromarray(['SEXDESC_VFUCKS_IMPALE_1','SEXDESC_VFUCKS_IMPALE_2','SEXDESC_VFUCKS_IMPALE_3','SEXDESC_VFUCKS_IMPALE_4'])
 	temp += ' ' + getrandomfromarray([his(group) + ' ' + anus(group),himself(group)])
-	temp += ' ' + getrandomfromarray(['on top of','on'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_IMPALE_DIR_1','SEXDESC_VFUCK_IMPALE_DIR_2'])
 	outputs += [temp]
 	return outputs[randi()%outputs.size()]
 
 func afucking(group):
 	var outputs = []
 	var temp = ''
-	outputs += [getrandomfromarray(['massaging','squeezing','enveloping','milking'])]
-	temp = getrandomfromarray(['grinding','bouncing','gyrating'])
-	temp += ' ' + getrandomfromarray(['on top of','on','atop'])
+	outputs += [getrandomfromarray(['SEXDESC_VFUCKING_BASE_1','SEXDESC_VFUCKING_BASE_2','SEXDESC_VFUCKING_BASE_3','SEXDESC_VFUCKING_BASE_4'])]
+	temp = getrandomfromarray(['SEXDESC_VFUCKING_GRIND_1','SEXDESC_VFUCKING_GRIND_2','SEXDESC_VFUCKING_GRIND_3'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_GRIND_ATOP_1','SEXDESC_VFUCK_GRIND_ATOP_2','SEXDESC_VFUCK_GRIND_ATOP_3'])
 	outputs += [temp]
-	temp = getrandomfromarray(['grinding','bouncing','gyrating','thrusting','pumping','working'])
+	temp = getrandomfromarray(['SEXDESC_VFUCKING_HIP_1','SEXDESC_VFUCKING_HIP_2','SEXDESC_VFUCKING_HIP_3','SEXDESC_VFUCKING_HIP_4','SEXDESC_VFUCKING_HIP_5','SEXDESC_VFUCKING_HIP_6'])
 	temp += ' ' + his(group) + ' ' + hips(group)
-	temp += ' ' + getrandomfromarray(['on top of','on','atop'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_GRIND_ATOP_1','SEXDESC_VFUCK_GRIND_ATOP_2','SEXDESC_VFUCK_GRIND_ATOP_3'])
 	outputs += [temp]
-	temp = getrandomfromarray(['grinding','thrusting','slamming','pounding'])
+	temp = getrandomfromarray(['SEXDESC_VFUCKING_SLAM_1','SEXDESC_VFUCKING_SLAM_2','SEXDESC_VFUCKING_SLAM_3','SEXDESC_VFUCKING_SLAM_4'])
 	temp += ' ' + getrandomfromarray([his(group) + ' ' + anus(group),himself(group)])
-	temp += ' ' + getrandomfromarray(['against','down on'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_SLAM_DIR_1','SEXDESC_VFUCK_SLAM_DIR_2'])
 	outputs += [temp]
-	temp = getrandomfromarray(['impaling','pleasuring','churning','satisfying'])
+	temp = getrandomfromarray(['SEXDESC_VFUCKING_IMPALE_1','SEXDESC_VFUCKING_IMPALE_2','SEXDESC_VFUCKING_IMPALE_3','SEXDESC_VFUCKING_IMPALE_4'])
 	temp += ' ' + getrandomfromarray([his(group) + ' ' + anus(group),himself(group)])
-	temp += ' ' + getrandomfromarray(['on top of','on'])
+	temp += ' ' + getrandomfromarray(['SEXDESC_VFUCK_IMPALE_DIR_1','SEXDESC_VFUCK_IMPALE_DIR_2'])
 	outputs += [temp]
 	return outputs[randi()%outputs.size()]
 
@@ -770,59 +770,59 @@ func partner(group):
 		var thick = thickness(i.person)
 		#feminity descriptors
 		if i.person.get_stat('tits_size') == 'masculine':
-			array1 += ["muscular","toned"]
+			array1 += ["SEXDESC_PARTNER_MASC_1","SEXDESC_PARTNER_MASC_2"]
 		elif thick < 3:
-			array1 += ["dainty","delicate","slim"]
+			array1 += ["SEXDESC_PARTNER_SLIM_1","SEXDESC_PARTNER_SLIM_2","SEXDESC_PARTNER_SLIM_3"]
 		elif thick < 5:
-			array1 += ["healthy","shapely"]
+			array1 += ["SEXDESC_PARTNER_MED_1","SEXDESC_PARTNER_MED_2"]
 		elif thick < 7:
-			array1 += ["healthy","shapely","sensuous","curvaceous","buxom"]
+			array1 += ["SEXDESC_PARTNER_THICK_1","SEXDESC_PARTNER_THICK_2","SEXDESC_PARTNER_THICK_3","SEXDESC_PARTNER_THICK_4","SEXDESC_PARTNER_THICK_5"]
 		else:
-			array1 += ["sensuous","curvaceous","buxom","voluptuous","bombastic","meaty"]
+			array1 += ["SEXDESC_PARTNER_VERYTHICK_1","SEXDESC_PARTNER_VERYTHICK_2","SEXDESC_PARTNER_VERYTHICK_3","SEXDESC_PARTNER_VERYTHICK_4","SEXDESC_PARTNER_VERYTHICK_5","SEXDESC_PARTNER_VERYTHICK_6"]
 		#body
 		if i.person.get_stat('pregnancy_duration') > 1:
-			array1 += ["pregnant","gravid"]
+			array1 += ["SEXDESC_PARTNER_PREGNANT_1","SEXDESC_PARTNER_PREGNANT_2"]
 		#age
 		match i.person.get_stat('age'):
 			'child':
-				array1 += ["young","adolescent"]
+				array1 += ["SEXDESC_PARTNER_NEET_1","SEXDESC_PARTNER_NEET_2"]
 				array2 += ["child"] if group.size() == 1 else ["children"]
 			'teen':
-				array1 += ['young']
+				array1 += ['SEXDESC_PARTNER_TEEN_1']
 				array2 += ["teen"] if group.size() == 1 else ["teens"]
 			_:
-				array1 += ['mature', 'adult']
+				array1 += ['SEXDESC_PARTNER_ADULT_1', 'SEXDESC_PARTNER_ADULT_2']
 		#beauty
 		if i.person.get_stat('charm') >= 50:
-			array1 += ['attractive']
+			array1 += ['SEXDESC_PARTNER_CHARM_1']
 			if i.person.get_stat('sex') == 'male':
-				array1 += ['handsome']
+				array1 += ['SEXDESC_PARTNER_CHARM_MALE_1']
 			elif i.person.get_stat('age') == 'child':
-				array1 += ['cute','pretty']
+				array1 += ['SEXDESC_PARTNER_CHARM_NEET_1','SEXDESC_PARTNER_CHARM_NEET_2']
 			elif i.person.get_stat('age') == 'teen':
-				array1 += ['cute','pretty','beautiful']
+				array1 += ['SEXDESC_PARTNER_CHARM_TEEN_1','SEXDESC_PARTNER_CHARM_TEEN_2','SEXDESC_PARTNER_CHARM_TEEN_3']
 			else:
-				array1 += ['pretty','beautiful']
+				array1 += ['SEXDESC_PARTNER_CHARM_ADULT_1','SEXDESC_PARTNER_CHARM_ADULT_2']
 		#size
 		match i.person.get_stat('height'):
 			'petite','shortstack':
-				array1 += ["tiny","small","little","pint-sized","diminutive"]
+				array1 += ["SEXDESC_PARTNER_SMALL_1","SEXDESC_PARTNER_SMALL_2","SEXDESC_PARTNER_SMALL_3","SEXDESC_PARTNER_SMALL_4","SEXDESC_PARTNER_SMALL_5"]
 			'tall', 'towering':
-				array1 += ["giant","large","big","tall"]
+				array1 += ["SEXDESC_PARTNER_LARGE_1","SEXDESC_PARTNER_LARGE_2","SEXDESC_PARTNER_LARGE_3","SEXDESC_PARTNER_LARGE_4"]
 		#personality
 		if i.person.get_stat('charm') > 60:
 			if i.person.get_stat('age') in ['child','teen']:
-				array1 += ['adorable','cute']
+				array1 += ['SEXDESC_PARTNER_CHARM_AGE_1','SEXDESC_PARTNER_CHARM_AGE_2']
 			if i.person.get_stat('age') in ['adult','teen','mature']:
-				array1 += ['charming','enchanting','captivating']
+				array1 += ['SEXDESC_PARTNER_CHARM_AGE2_1','SEXDESC_PARTNER_CHARM_AGE2_2','SEXDESC_PARTNER_CHARM_AGE2_3']
 		if i.person.get_stat('personality') == 'shy':
-			array1 += ['shy','meek']
+			array1 += ['SEXDESC_PARTNER_SHY_1','SEXDESC_PARTNER_SHY_2']
 		if i.person.get_stat('wits') > 80:
-			array1 += ['clever']
+			array1 += ['SEXDESC_PARTNER_CLEVER_1']
 		if i.person.get_stat('personality') == 'bold':
-			array1 += ['brave','haughty']
+			array1 += ['SEXDESC_PARTNER_BOLD_1','SEXDESC_PARTNER_BOLD_2']
 		if i.lust > 300:
-			array1 += ['horny', 'excited']
+			array1 += ['SEXDESC_PARTNER_HORNY_1', 'SEXDESC_PARTNER_HORNY_2']
 		#boy/girl
 		if i.person.get_stat('sex') == 'male':
 			if i.person.get_stat('age') == 'mature':
@@ -885,57 +885,57 @@ func partners(group):
 		var thick = thickness(i.person)
 		#feminity descriptors
 		if i.person.get_stat('tits_size') == 'masculine':
-			array1 += ["muscular","toned"]
+			array1 += ["SEXDESC_PARTNER_MASC_1","SEXDESC_PARTNER_MASC_2"]
 		elif thick < 3:
-			array1 += ["dainty","delicate","slim","petite"]
+			array1 += ["SEXDESC_PARTNER_SLIM_1","SEXDESC_PARTNER_SLIM_2","SEXDESC_PARTNER_SLIM_3","SEXDESC_BODY_SLIM_4"]
 		elif thick < 5:
-			array1 += ["healthy","shapely"]
+			array1 += ["SEXDESC_PARTNER_MED_1","SEXDESC_PARTNER_MED_2"]
 		elif thick < 7:
-			array1 += ["healthy","shapely","sensuous","curvaceous","buxom"]
+			array1 += ["SEXDESC_PARTNER_THICK_1","SEXDESC_PARTNER_THICK_2","SEXDESC_PARTNER_THICK_3","SEXDESC_PARTNER_THICK_4","SEXDESC_PARTNER_THICK_5"]
 		else:
-			array1 += ["sensuous","curvaceous","buxom","voluptuous","bombastic","meaty"]
+			array1 += ["SEXDESC_PARTNER_VERYTHICK_1","SEXDESC_PARTNER_VERYTHICK_2","SEXDESC_PARTNER_VERYTHICK_3","SEXDESC_PARTNER_VERYTHICK_4","SEXDESC_PARTNER_VERYTHICK_5","SEXDESC_PARTNER_VERYTHICK_6"]
 		#body
 		if i.person.get_stat('pregnancy_duration') > 1:
-			array1 += ["pregnant","gravid"]
+			array1 += ["SEXDESC_PARTNER_PREGNANT_1","SEXDESC_PARTNER_PREGNANT_2"]
 		#age
 		if i.person.get_stat('age') == 'child':
-			array1 += ["young","adolescent"]
+			array1 += ["SEXDESC_PARTNER_NEET_1","SEXDESC_PARTNER_NEET_2"]
 			array2 += ["child's"] if group.size() == 1 else ["childrens'"]
 		elif i.person.get_stat('age') == 'teen':
-			array1 += ['young']
+			array1 += ['SEXDESC_PARTNER_TEEN_1']
 			array2 += ["teen's"] if group.size() == 1 else ["teens'"]
 		else:
-			array1 += ['mature', 'adult']
+			array1 += ['SEXDESC_PARTNER_ADULT_1', 'SEXDESC_PARTNER_ADULT_2']
 		#beauty
 		if i.person.get_stat('charm') >= 50:
-			array1 += ['attractive']
+			array1 += ['SEXDESC_PARTNER_CHARM_1']
 			if i.person.get_stat('sex') == 'male':
-				array1 += ['handsome']
+				array1 += ['SEXDESC_PARTNER_CHARM_MALE_1']
 			elif i.person.get_stat('age') == 'child':
-				array1 += ['cute','pretty']
+				array1 += ['SEXDESC_PARTNER_CHARM_NEET_1','SEXDESC_PARTNER_CHARM_NEET_2']
 			elif i.person.get_stat('age') == 'teen':
-				array1 += ['cute','pretty','beautiful']
+				array1 += ['SEXDESC_PARTNER_CHARM_TEEN_1','SEXDESC_PARTNER_CHARM_TEEN_2','SEXDESC_PARTNER_CHARM_TEEN_3']
 			else:
-				array1 += ['pretty','beautiful']
+				array1 += ['SEXDESC_PARTNER_CHARM_ADULT_1','SEXDESC_PARTNER_CHARM_ADULT_2']
 		#size
 		if i.person.get_stat('height') in ['petite','shortstack']:
-			array1 += ["tiny","small","little","pint-sized","diminutive"]
+			array1 += ["SEXDESC_PARTNER_SMALL_1","SEXDESC_PARTNER_SMALL_2","SEXDESC_PARTNER_SMALL_3","SEXDESC_PARTNER_SMALL_4","SEXDESC_PARTNER_SMALL_5"]
 		elif i.person.get_stat('height') in ['tall', 'towering']:
-			array1 += ["giant","huge","large","big","tall"]
+			array1 += ["SEXDESC_PARTNER_LARGE_1","SEXDESC_BODY_LARGE_2","SEXDESC_PARTNER_LARGE_2","SEXDESC_PARTNER_LARGE_3","SEXDESC_PARTNER_LARGE_4"]
 		#personality
 		if i.person.get_stat('charm') > 60:
 			if i.person.get_stat('age') in ['child','teen']:
-				array1 += ['adorable','cute']
+				array1 += ['SEXDESC_PARTNER_CHARM_AGE_1','SEXDESC_PARTNER_CHARM_AGE_2']
 			if i.person.get_stat('age') in ['adult','teen']:
-				array1 += ['charming','enchanting','captivating']
+				array1 += ['SEXDESC_PARTNER_CHARM_AGE2_1','SEXDESC_PARTNER_CHARM_AGE2_2','SEXDESC_PARTNER_CHARM_AGE2_3']
 #		if mp.cour < 40:
 #			array1 += ['shy','meek']
 		if i.person.get_stat('wits') > 80:
-			array1 += ['clever']
+			array1 += ['SEXDESC_PARTNER_CLEVER_1']
 #		if mp.conf > 65:
 #			array1 += ['proud','haughty']
 		if i.lust > 300:
-			array1 += ['horny', 'excited']
+			array1 += ['SEXDESC_PARTNER_HORNY_1', 'SEXDESC_PARTNER_HORNY_2']
 		#boy/girl
 		if i.person.get_stat('sex') == 'male':
 			if i.person.get_stat('age') == 'adult':
@@ -992,46 +992,46 @@ func body(group):
 	var tarray = []
 	for i in group:
 		array1 = []
-		array2 = ["body"] if group.size() == 1 else ["bodies"]
+		array2 = ["SEXDESC_BODY_BASE_1"] if group.size() == 1 else ["SEXDESC_BODY_BASE_2"]
 		var thick = thickness(i.person)
 		#feminity
 		if i.person.get_stat('tits_size') == 'masculine':
-			array1 += ["muscular","toned"]
+			array1 += ["SEXDESC_BODY_MASCULINE_1","SEXDESC_BODY_MASCULINE_2"]
 		elif thick < 3:
-			array1 += ["dainty","delicate","slim","petite"]
+			array1 += ["SEXDESC_BODY_SLIM_1","SEXDESC_BODY_SLIM_2","SEXDESC_BODY_SLIM_3","SEXDESC_BODY_SLIM_4"]
 		elif thick < 5:
-			array1 += ["healthy","shapely"]
+			array1 += ["SEXDESC_BODY_MED_1","SEXDESC_BODY_MED_2"]
 		elif thick < 7:
-			array1 += ["healthy","shapely","sensuous","curvaceous","buxom"]
+			array1 += ["SEXDESC_BODY_THICK_1","SEXDESC_BODY_THICK_2","SEXDESC_BODY_THICK_3","SEXDESC_BODY_THICK_4","SEXDESC_BODY_THICK_5"]
 		else:
-			array1 += ["sensuous","curvaceous","buxom","voluptuous","bombastic"]
+			array1 += ["SEXDESC_BODY_VERYTHICK_1","SEXDESC_BODY_VERYTHICK_2","SEXDESC_BODY_VERYTHICK_3","SEXDESC_BODY_VERYTHICK_4","SEXDESC_BODY_VERYTHICK_5"]
 		#beauty
 		if i.person.get_stat('charm') >= 50:
-			array1 += ['alluring','enticing']
+			array1 += ['SEXDESC_BODY_CHARM_1','SEXDESC_BODY_CHARM_2']
 			if i.person.get_stat('age') in ['adult','teen'] && i.person.get_stat('sex') != 'male':
-				array1 += ['ravishing','seductive']
+				array1 += ['SEXDESC_BODY_CHARM_FEMALE_1','SEXDESC_BODY_CHARM_FEMALE_2']
 		#age
 		if i.person.get_stat('age') == 'child':
-			array1 += ["youthful","immature"]
+			array1 += ["SEXDESC_BODY_NEET_1","SEXDESC_BODY_NEET_2"]
 		elif i.person.get_stat('age') == 'teen':
-			array1 += ["youthful"]
+			array1 += ["SEXDESC_BODY_TEEN_1"]
 		elif i.person.get_stat('age') == 'adult':
 			if i.person.get_stat('sex') == 'male':
-				array1 += ["manly"]
+				array1 += ["SEXDESC_BODY_ADULT_MALE_1"]
 			else:
-				array1 += ["womanly","mature"]
+				array1 += ["SEXDESC_BODY_ADULT_FEMALE_1","SEXDESC_BODY_ADULT_FEMALE_2"]
 		#size
 		if i.person.get_stat('height') in ['petite','shortstack']:
-			array1 += ["tiny","small","little"]
+			array1 += ["SEXDESC_BODY_SMALL_1","SEXDESC_BODY_SMALL_2","SEXDESC_BODY_SMALL_3"]
 		elif i.person.get_stat('height') in ['tall','towering']:
-			array1 += ["giant","huge","large"]
+			array1 += ["SEXDESC_BODY_LARGE_1","SEXDESC_BODY_LARGE_2","SEXDESC_BODY_LARGE_3"]
 		#bodytype
 		if i.person.get_stat('body_shape') == 'jelly':
-			array1 += ["transparent","squishy","gelatinous"]
+			array1 += ["SEXDESC_BODY_JELLY_1","SEXDESC_BODY_JELLY_2","SEXDESC_BODY_JELLY_3"]
 		if i.person.get_stat('body_shape') == 'halfsnake':
-			array1 += ["long","serpentine"]
+			array1 += ["SEXDESC_BODY_SNAKE_1","SEXDESC_BODY_SNAKE_2"]
 		elif i.person.get_stat('skin_coverage') == 'full_body_fur':
-			array1 += ["furry","fluffy","fur-covered"]
+			array1 += ["SEXDESC_BODY_FUR_1","SEXDESC_BODY_FUR_2","SEXDESC_BODY_FUR_3"]
 		#for multiple people, only incude shared
 		if marray1 == null:
 			marray1 = array1
@@ -1059,35 +1059,35 @@ func penis(group):
 	var tarray = []
 	for i in group:
 		array1 = []
-		array2 = ['cock','dick','penis','shaft'] if group.size() == 1 else ['cocks','dicks','penises','shafts']
+		array2 = ['SEXDESC_PENIS_BASE_1','SEXDESC_PENIS_BASE_2','SEXDESC_PENIS_BASE_3','SEXDESC_PENIS_BASE_4'] if group.size() == 1 else ['SEXDESC_PENIS_BASE_1','SEXDESC_PENIS_BASE_2','SEXDESC_PENIS_BASE_3','SEXDESC_PENIS_BASE_4']
 		if i.person.get_stat('penis_size') == 'small':
-			array1 += ["tiny","small","petite"]
+			array1 += ["SEXDESC_PENIS_SMALL_1","SEXDESC_PENIS_SMALL_2","SEXDESC_PENIS_SMALL_3"]
 			if i.person.get_stat('age') == 'child':
-				array1 += ["immature"]
+				array1 += ["SEXDESC_PENIS_SMALL_NEET_1"]
 		elif i.person.get_stat('penis_size')== 'average':
-			array1 += ["average-sized","decently-sized"]
+			array1 += ["SEXDESC_PENIS_AVG_1","SEXDESC_PENIS_AVG_2"]
 			if i.person.get_stat('age') == 'child':
-				array1 += ["well-developed","adult-like"]
+				array1 += ["SEXDESC_PENIS_AVG_NEET_1","SEXDESC_PENIS_AVG_NEET_2"]
 		elif  i.person.get_stat('penis_size') == 'big':
-			array1 += ["big","sizeable","thick","girthy","impressively large"]
+			array1 += ["SEXDESC_PENIS_BIG_1","SEXDESC_PENIS_BIG_2","SEXDESC_PENIS_BIG_3","SEXDESC_PENIS_BIG_4","SEXDESC_PENIS_BIG_5"]
 			if i.person.get_stat('age') == 'child':
-				array1 += ["overgrown","surprisingly large"]
+				array1 += ["SEXDESC_PENIS_BIG_NEET_1","SEXDESC_PENIS_BIG_NEET_2"]
 		#penistype descriptors
 		match i.person.get_stat('penis_type'):
 			'feline':
-				array1 += ['barbed']
+				array1 += ['SEXDESC_PENIS_FELINE_1']
 			'canine':
-				array1 += ['knotted','tapered']
+				array1 += ['SEXDESC_PENIS_CANINE_1','SEXDESC_PENIS_CANINE_2']
 			'equine':
-				array1 += ['flared','long']
-				array2 += ['horse cock','horse dick']
+				array1 += ['SEXDESC_PENIS_EQUINE_1','SEXDESC_PENIS_EQUINE_2']
+				array2 += ['SEXDESC_PENIS_EQUINE_BASE_1','SEXDESC_PENIS_EQUINE_BASE_2']
 		#other descriptors
 		if i.person.get_stat('penis_size') == '':
-			array2 = ['strap-on','shaft'] if group.size() == 1 else ['strap-ons','shafts']
+			array2 = ['SEXDESC_PENIS_STRAPON_1','SEXDESC_PENIS_BASE_4'] if group.size() == 1 else ['SEXDESC_PENIS_STRAPON_1','SEXDESC_PENIS_BASE_4']
 		elif i.person.get_stat('sex') == 'male':
-			array2 += ['manhood'] if group.size() == 1 else ['manhoods']
+			array2 += ['SEXDESC_PENIS_MALE_1'] if group.size() == 1 else ['SEXDESC_PENIS_MALE_1']
 		elif i.person.get_stat('sex') == 'futanari':
-			array1 += ['futa']
+			array1 += ['SEXDESC_PENIS_FUTA_1']
 		#for multiple people, only incude shared
 		if marray1 == null:
 			marray1 = array1
@@ -1116,14 +1116,14 @@ func pussy(group):
 	var tarray = []
 	for i in group:
 		array1 = []
-		array2 = ["vagina","pussy","cunt"] if group.size() == 1 else ["vaginas","pussies","cunts"]
+		array2 = ["SEXDESC_PUSSY_BASE_1","SEXDESC_PUSSY_BASE_2","SEXDESC_PUSSY_BASE_3"] if group.size() == 1 else ["SEXDESC_PUSSY_BASE_1","SEXDESC_PUSSY_BASE_2","SEXDESC_PUSSY_BASE_3"]
 		#body
 		if i.horny >= 100:
-			array1 += ["wet","slick","dripping"]
+			array1 += ["SEXDESC_PUSSY_WET_1","SEXDESC_PUSSY_WET_2","SEXDESC_PUSSY_WET_3"]
 		if i.person.get_stat('has_womb') && i.person.get_stat('pregnancy_duration') == 0:
-			array1 += ["fertile"]
+			array1 += ["SEXDESC_PUSSY_FERTILE_1"]
 		if i.person.get_stat('vaginal_virgin'):
-			array1 += ["virgin","virginal","unused"]
+			array1 += ["SEXDESC_PUSSY_VIRGIN_1","SEXDESC_PUSSY_VIRGIN_2","SEXDESC_PUSSY_VIRGIN_3"]
 #		if mp.pubichair == 'clean':
 #			if mp.age == 'child':
 #				array1 += ["smooth","hairless","pubeless","bald"]
@@ -1132,16 +1132,16 @@ func pussy(group):
 		#age
 		match i.person.get_stat('age'):
 			'child':
-				array1 += ["childish","immature","girlish","youthful","undeveloped"]
+				array1 += ["SEXDESC_PUSSY_NEET_1","SEXDESC_PUSSY_NEET_2","SEXDESC_PUSSY_NEET_3","SEXDESC_PUSSY_NEET_4","SEXDESC_PUSSY_NEET_5"]
 			'teen':
-				array1 += ["girlish","youthful","developing"]
+				array1 += ["SEXDESC_PUSSY_TEEN_1","SEXDESC_PUSSY_TEEN_2","SEXDESC_PUSSY_TEEN_3"]
 			_:
-				array1 += ["womanly","mature","developed"]
+				array1 += ["SEXDESC_PUSSY_ADULT_1","SEXDESC_PUSSY_ADULT_2","SEXDESC_PUSSY_ADULT_3"]
 		#race
 		if i.person.get_stat('body_shape') == 'halfhorse':
-			array1 += ["muscular","horse","horse"]
+			array1 += ["SEXDESC_PUSSY_HORSE_1","SEXDESC_PUSSY_HORSE_2","SEXDESC_PUSSY_HORSE_2"]
 		else:
-			array2 += ["slit"] if group.size() == 1 else ["slits"]
+			array2 += ["SEXDESC_PUSSY_BASE_4"] if group.size() == 1 else ["SEXDESC_PUSSY_BASE_4"]
 		#for multiple people, only incude shared
 		if marray1 == null:
 			marray1 = array1
@@ -1172,7 +1172,7 @@ func boy(group):
 		return globals.fastif(i.person.get_stat('sex') == 'male', 'boy', 'girl')
 
 func labia(member):
-	var array = ["labia","pussy lips","genitals","folds"]
+	var array = ["SEXDESC_LABIA_1","SEXDESC_LABIA_2","SEXDESC_LABIA_3","SEXDESC_LABIA_4"]
 	return getrandomfromarray(array)
 
 func ass(group):
@@ -1183,60 +1183,60 @@ func ass(group):
 	var tarray = []
 	for i in group:
 		array1 = []
-		array2 = ["ass","butt","backside","rear"] if group.size() == 1 else ["asses","butts","backsides","rears"]
+		array2 = ["SEXDESC_ASS_BASE_1","SEXDESC_ASS_BASE_2","SEXDESC_ASS_BASE_3","SEXDESC_ASS_BASE_4"] if group.size() == 1 else ["SEXDESC_ASS_BASE_1","SEXDESC_ASS_BASE_2","SEXDESC_ASS_BASE_3","SEXDESC_ASS_BASE_4"]
 		#size/age descriptors
 
 		if i.person.get_stat('skin_coverage').find('fur') >= 0:
-			array1 += ['fuzzy','fluffy','furry']
+			array1 += ['SEXDESC_ASS_FUR_1','SEXDESC_ASS_FUR_2','SEXDESC_ASS_FUR_3']
 		match i.person.get_stat('ass_size'):
 			'flat':
-				array1 += ["flat","compact"]
+				array1 += ["SEXDESC_ASS_FLAT_1","SEXDESC_ASS_FLAT_2"]
 				if i.person.get_stat('age') == 'teen':
-					array1 += ["tiny","developing","childlike"]
+					array1 += ["SEXDESC_ASS_FLAT_TEEN_1","SEXDESC_ASS_FLAT_TEEN_2","SEXDESC_ASS_FLAT_TEEN_3"]
 				elif i.person.get_stat('age') == 'child':
-					array1 += ["tiny","developing","undeveloped","immature"]
+					array1 += ["SEXDESC_ASS_FLAT_NEET_1","SEXDESC_ASS_FLAT_NEET_2","SEXDESC_ASS_FLAT_NEET_3","SEXDESC_ASS_FLAT_NEET_4"]
 			'small':
-				array1 += ["small","compact"]
+				array1 += ["SEXDESC_ASS_SMALL_1","SEXDESC_ASS_SMALL_2"]
 				if i.person.get_stat('age') == 'teen':
-					array1 += ["developing"]
+					array1 += ["SEXDESC_ASS_SMALL_TEEN_1"]
 				elif i.person.get_stat('age') == 'child':
-					array1 += ["undeveloped","immature"]
+					array1 += ["SEXDESC_ASS_SMALL_NEET_1","SEXDESC_ASS_SMALL_NEET_2"]
 			'average':
-				array1 += ["round","well-rounded","shapely"]
+				array1 += ["SEXDESC_ASS_AVG_1","SEXDESC_ASS_AVG_2","SEXDESC_ASS_AVG_3"]
 				if i.person.get_stat('age') == 'teen':
-					array1 += ["well-developed"]
+					array1 += ["SEXDESC_ASS_AVG_TEEN_1"]
 				elif i.person.get_stat('age') == 'child':
-					array1 += ["well-developed","impressively large"]
+					array1 += ["SEXDESC_ASS_AVG_NEET_1","SEXDESC_ASS_AVG_NEET_2"]
 			'big':
-				array1 += ["big","sizeable","plump","hefty"]
+				array1 += ["SEXDESC_ASS_BIG_1","SEXDESC_ASS_BIG_2","SEXDESC_ASS_BIG_3","SEXDESC_ASS_BIG_4"]
 				if i.person.get_stat('age') == 'teen':
-					array1 += ["well-developed","impressively large"]
+					array1 += ["SEXDESC_ASS_BIG_TEEN_1","SEXDESC_ASS_BIG_TEEN_2"]
 				elif i.person.get_stat('age') == 'child':
-					array1 += ["overgrown","surprisingly large"]
+					array1 += ["SEXDESC_ASS_BIG_NEET_1","SEXDESC_ASS_BIG_NEET_2"]
 			'huge':
-				array1 += ["huge","massive","fat","meaty","gigantic","enormous"]
+				array1 += ["SEXDESC_ASS_HUGE_1","SEXDESC_ASS_HUGE_2","SEXDESC_ASS_HUGE_3","SEXDESC_ASS_HUGE_4","SEXDESC_ASS_HUGE_5","SEXDESC_ASS_HUGE_6"]
 				if i.person.get_stat('age') == 'teen':
-					array1 += ["well-developed","surprisingly large"]
+					array1 += ["SEXDESC_ASS_HUGE_TEEN_1","SEXDESC_ASS_HUGE_TEEN_2"]
 				elif i.person.get_stat('age') == 'child':
-					array1 += ["overgrown","shockingly large"]
+					array1 += ["SEXDESC_ASS_HUGE_NEET_1","SEXDESC_ASS_HUGE_NEET_2"]
 		#bodytype descriptors
 		match i.person.get_stat('body_shape'):
 			'jelly':
-				array1 += ["gelatinous","slimy","gooey"]
+				array1 += ["SEXDESC_ASS_JELLY_1","SEXDESC_ASS_JELLY_2","SEXDESC_ASS_JELLY_3"]
 			'halfhorse':
-				array1 += ["equine","hairy"]
-				array2 += ["hindquarters"]
+				array1 += ["SEXDESC_ASS_HORSE_1","SEXDESC_ASS_HORSE_2"]
+				array2 += ["SEXDESC_ASS_HORSE_BASE_1"]
 			'halfspider':
-				array1 += ["chitinous","spider"]
-				array2 = ["abdomen","butt"] if group.size() == 1 else ["abdomens","butts"]
+				array1 += ["SEXDESC_ASS_SPIDER_1","SEXDESC_ASS_SPIDER_2"]
+				array2 = ["SEXDESC_ASS_SPIDER_BASE_1","SEXDESC_ASS_BASE_2"] if group.size() == 1 else ["SEXDESC_ASS_SPIDER_BASE_1","SEXDESC_ASS_BASE_2"]
 		#beauty descriptors
 		if i.person.get_stat('charm') >= 50:
 			if i.person.get_stat('age') == 'child':
-				array1 += ["cute","cute","flawless","perfect"]
+				array1 += ["SEXDESC_ASS_CHARM_NEET_1","SEXDESC_ASS_CHARM_NEET_1","SEXDESC_ASS_CHARM_NEET_2","SEXDESC_ASS_CHARM_NEET_3"]
 			elif i.person.get_stat('age') == 'teen':
-				array1 += ["cute","beautiful","flawless","perfect"]
+				array1 += ["SEXDESC_ASS_CHARM_TEEN_1","SEXDESC_ASS_CHARM_TEEN_2","SEXDESC_ASS_CHARM_TEEN_3","SEXDESC_ASS_CHARM_TEEN_4"]
 			else:
-				array1 += ["seductive","beautiful","flawless","perfect"]
+				array1 += ["SEXDESC_ASS_CHARM_ADULT_1","SEXDESC_ASS_CHARM_ADULT_2","SEXDESC_ASS_CHARM_ADULT_3","SEXDESC_ASS_CHARM_ADULT_4"]
 		#for multiple people, only incude shared
 		if marray1 == null:
 			marray1 = array1
@@ -1266,41 +1266,41 @@ func hips(group):
 	var tarray = []
 	for i in group:
 		array1 = []
-		array2 = ["hips"]
+		array2 = ["SEXDESC_HIPS_BASE_1"]
 		#size/age descriptors
 		if i.person.get_stat('skin_coverage').find('fur') >= 0:
-			array1 += ['fuzzy','fluffy','furry']
+			array1 += ['SEXDESC_HIPS_FUR_1','SEXDESC_HIPS_FUR_2','SEXDESC_HIPS_FUR_3']
 		if i.person.get_stat('sex') == 'male' && i.person.get_stat('ass_size') in ['flat','small']:
-			array1 += ["trim","slim"]
+			array1 += ["SEXDESC_HIPS_TRIM_1","SEXDESC_HIPS_TRIM_2"]
 		else:
 			match i.person.get_stat('ass_size'):
 				'flat':
-					array1 += ["slim","slender","petite","tiny"]
+					array1 += ["SEXDESC_HIPS_FLAT_1","SEXDESC_HIPS_FLAT_2","SEXDESC_HIPS_FLAT_3","SEXDESC_HIPS_FLAT_4"]
 				'small':
-					array1 += ["slim","slender","svelte","small"]
+					array1 += ["SEXDESC_HIPS_SMALL_1","SEXDESC_HIPS_SMALL_2","SEXDESC_HIPS_SMALL_3","SEXDESC_HIPS_SMALL_4"]
 				'average':
-					array1 += ["curved","shapely"]
+					array1 += ["SEXDESC_HIPS_AVG_1","SEXDESC_HIPS_AVG_2"]
 					if i.person.get_stat('age') == 'teen':
-						array1 += ["well-developed"]
+						array1 += ["SEXDESC_HIPS_AVG_TEEN_1"]
 					elif i.person.get_stat('age') == 'child':
-						array1 += ["well-developed","impressively thick"]
+						array1 += ["SEXDESC_HIPS_AVG_NEET_1","SEXDESC_HIPS_AVG_NEET_2"]
 				'big':
-					array1 += ["sizeable","ample","wide","thick","curvaceous"]
+					array1 += ["SEXDESC_HIPS_BIG_1","SEXDESC_HIPS_BIG_2","SEXDESC_HIPS_BIG_3","SEXDESC_HIPS_BIG_4","SEXDESC_HIPS_BIG_5"]
 					if i.person.get_stat('age') == 'teen':
-						array1 += ["well-developed","impressively thick"]
+						array1 += ["SEXDESC_HIPS_BIG_TEEN_1","SEXDESC_HIPS_BIG_TEEN_2"]
 					elif i.person.get_stat('age') == 'child':
-						array1 += ["overgrown","surprisingly thick"]
+						array1 += ["SEXDESC_HIPS_BIG_NEET_1","SEXDESC_HIPS_BIG_NEET_2"]
 				'huge':
-					array1 += ["huge","massive","enormous","wide","thick","curvaceous"]
+					array1 += ["SEXDESC_HIPS_HUGE_1","SEXDESC_HIPS_HUGE_2","SEXDESC_HIPS_HUGE_3","SEXDESC_HIPS_HUGE_4","SEXDESC_HIPS_HUGE_5","SEXDESC_HIPS_HUGE_6"]
 					if i.person.get_stat('age') == 'teen':
-						array1 += ["well-developed","surprisingly thick"]
+						array1 += ["SEXDESC_HIPS_HUGE_TEEN_1","SEXDESC_HIPS_HUGE_TEEN_2"]
 					elif i.person.get_stat('age') == 'child':
-						array1 += ["overgrown","shockingly thick"]
+						array1 += ["SEXDESC_HIPS_HUGE_NEET_1","SEXDESC_HIPS_HUGE_NEET_2"]
 		#bodytype descriptors
 		if i.person.get_stat('body_shape') == 'halfhorse':
-			array1 += ["equine","hairy"]
+			array1 += ["SEXDESC_HIPS_HORSE_1","SEXDESC_HIPS_HORSE_2"]
 		elif i.person.get_stat('body_shape') == 'halfsnake':
-			array1 += ["scaly"]
+			array1 += ["SEXDESC_HIPS_SNAKE_1"]
 		#for multiple people, only incude shared
 		if marray1 == null:
 			marray1 = array1
@@ -1328,56 +1328,56 @@ func tits(group):
 	var tarray = []
 	for i in group:
 		array1 = []
-		array2 = ["tits","boobs","breasts","chest"] if group.size() == 1 else ["tits","boobs","breasts","chests"]
+		array2 = ["SEXDESC_TITS_BASE_1","SEXDESC_TITS_BASE_2","SEXDESC_TITS_BASE_3","SEXDESC_TITS_BASE_4"] if group.size() == 1 else ["SEXDESC_TITS_BASE_1","SEXDESC_TITS_BASE_2","SEXDESC_TITS_BASE_3","SEXDESC_TITS_BASE_4"]
 		#size/age descriptors
 		if i.person.get_stat('skin_coverage').find('fur') >= 0:
-			array1 += ['fuzzy','fluffy','furry']
+			array1 += ['SEXDESC_TITS_FUR_1','SEXDESC_TITS_FUR_2','SEXDESC_TITS_FUR_3']
 		match i.person.get_stat('tits_size'):
 			'masculine':
-				array1 += ["muscular","strong","toned"]
-				array2 = ["chest","pecs"] if group.size() == 1 else ["chests","pecs"]
+				array1 += ["SEXDESC_TITS_MASC_1","SEXDESC_TITS_MASC_2","SEXDESC_TITS_MASC_3"]
+				array2 = ["SEXDESC_TITS_MASC_BASE_1","SEXDESC_TITS_MASC_BASE_2"] if group.size() == 1 else ["SEXDESC_TITS_MASC_BASE_1","SEXDESC_TITS_MASC_BASE_2"]
 			'flat':
-				array1 += ["flat","small"]
+				array1 += ["SEXDESC_TITS_FLAT_1","SEXDESC_TITS_FLAT_2"]
 				if i.person.get_stat('age') == 'teen':
-					array1 += ["tiny","developing","childlike"]
+					array1 += ["SEXDESC_TITS_FLAT_TEEN_1","SEXDESC_TITS_FLAT_TEEN_2","SEXDESC_TITS_FLAT_TEEN_3"]
 				elif i.person.get_stat('age') == 'child':
-					array1 += ["tiny","developing","undeveloped","immature"]
+					array1 += ["SEXDESC_TITS_FLAT_NEET_1","SEXDESC_TITS_FLAT_NEET_2","SEXDESC_TITS_FLAT_NEET_3","SEXDESC_TITS_FLAT_NEET_4"]
 			'small':
-				array1 += ["small","compact"]
+				array1 += ["SEXDESC_TITS_SMALL_1","SEXDESC_TITS_SMALL_2"]
 				if i.person.get_stat('age') == 'teen':
-					array1 += ["developing"]
+					array1 += ["SEXDESC_TITS_SMALL_TEEN_1"]
 				elif i.person.get_stat('age') == 'child':
-					array1 += ["undeveloped","immature"]
+					array1 += ["SEXDESC_TITS_SMALL_NEET_1","SEXDESC_TITS_SMALL_NEET_2"]
 			'average':
-				array1 += ["round","well-rounded","shapely"]
+				array1 += ["SEXDESC_TITS_AVG_1","SEXDESC_TITS_AVG_2","SEXDESC_TITS_AVG_3"]
 				if i.person.get_stat('age') == 'teen':
-					array1 += ["well-developed"]
+					array1 += ["SEXDESC_TITS_AVG_TEEN_1"]
 				elif i.person.get_stat('age') == 'child':
-					array1 += ["well-developed","impressively large"]
+					array1 += ["SEXDESC_TITS_AVG_NEET_1","SEXDESC_TITS_AVG_NEET_2"]
 			'big':
-				array1 += ["big","sizeable","plump","hefty"]
+				array1 += ["SEXDESC_TITS_BIG_1","SEXDESC_TITS_BIG_2","SEXDESC_TITS_BIG_3","SEXDESC_TITS_BIG_4"]
 				if i.person.get_stat('age') == 'teen':
-					array1 += ["well-developed","impressively large"]
+					array1 += ["SEXDESC_TITS_BIG_TEEN_1","SEXDESC_TITS_BIG_TEEN_2"]
 				elif i.person.get_stat('age') == 'child':
-					array1 += ["overgrown","surprisingly large"]
+					array1 += ["SEXDESC_TITS_BIG_NEET_1","SEXDESC_TITS_BIG_NEET_2"]
 			'huge':
-				array1 += ["huge","massive","fat","meaty","gigantic","enormous"]
+				array1 += ["SEXDESC_TITS_HUGE_1","SEXDESC_TITS_HUGE_2","SEXDESC_TITS_HUGE_3","SEXDESC_TITS_HUGE_4","SEXDESC_TITS_HUGE_5","SEXDESC_TITS_HUGE_6"]
 				if i.person.get_stat('age') == 'teen':
-					array1 += ["well-developed","surprisingly large"]
+					array1 += ["SEXDESC_TITS_HUGE_TEEN_1","SEXDESC_TITS_HUGE_TEEN_2"]
 				elif i.person.get_stat('age') == 'child':
-					array1 += ["overgrown","shockingly large"]
+					array1 += ["SEXDESC_TITS_HUGE_NEET_1","SEXDESC_TITS_HUGE_NEET_2"]
 		#bodytype descriptors
 		if i.person.get_stat('body_shape') == 'jelly':
-			array1 += ["gelatinous","slimy","gooey"]
+			array1 += ["SEXDESC_TITS_JELLY_1","SEXDESC_TITS_JELLY_2","SEXDESC_TITS_JELLY_3"]
 		#beauty descriptors
 		if i.person.get_stat('charm') >= 50:
 			match i.person.get_stat('age'):
 				'child':
-					array1 += ["cute","cute","flawless","perfect"]
+					array1 += ["SEXDESC_TITS_CHARM_NEET_1","SEXDESC_TITS_CHARM_NEET_1","SEXDESC_TITS_CHARM_NEET_2","SEXDESC_TITS_CHARM_NEET_3"]
 				'teen':
-					array1 += ["cute","beautiful","flawless","perfect"]
+					array1 += ["SEXDESC_TITS_CHARM_TEEN_1","SEXDESC_TITS_CHARM_TEEN_2","SEXDESC_TITS_CHARM_TEEN_3","SEXDESC_TITS_CHARM_TEEN_4"]
 				_:
-					array1 += ["seductive","beautiful","flawless","perfect"]
+					array1 += ["SEXDESC_TITS_CHARM_ADULT_1","SEXDESC_TITS_CHARM_ADULT_2","SEXDESC_TITS_CHARM_ADULT_3","SEXDESC_TITS_CHARM_ADULT_4"]
 		#for multiple people, only incude shared
 		if marray1 == null:
 			marray1 = array1
@@ -1393,19 +1393,19 @@ func tits(group):
 					marray2.erase(j)
 	#30% of time do not use descriptors
 	if  randf() < 0.3 || marray1.empty():
-		return getrandomfromarray(marray2)
+		return getrandomfromarray(marray2, true)
 	else:
 		return getrandomfromarray(marray1) + " " + getrandomfromarray(marray2)
 
 func anus(member):
 	var array = []
-	var array2 = ["anus","asshole","butthole","rectum"]
+	var array2 = ["SEXDESC_ANUS_BASE_1","SEXDESC_ANUS_BASE_2","SEXDESC_ANUS_BASE_3","SEXDESC_ANUS_BASE_4"]
 	if member.person.get_stat('anal_virgin_lost') == null:
-		array += ["virgin","virginal","unused"]
+		array += ["SEXDESC_ANUS_VIRGIN_1","SEXDESC_ANUS_VIRGIN_2","SEXDESC_ANUS_VIRGIN_3"]
 	if member.person.get_stat('age') != 'adult':
-		array += ["pink","youthful"]
+		array += ["SEXDESC_ANUS_YOUNG_1","SEXDESC_ANUS_YOUNG_2"]
 	else:
-		array += ["rosy","mature"]
+		array += ["SEXDESC_ANUS_ADULT_1","SEXDESC_ANUS_ADULT_2"]
 	return getrandomfromarray(array) + " " + getrandomfromarray(array2)
 
 #register tickness
@@ -1431,9 +1431,11 @@ func thickness(ch):
 			thick += 4
 	return thick
 
-func getrandomfromarray(array):
+func getrandomfromarray(array, shouldpassempty = false):
 	if !array.empty():
-		return array[randi()%array.size()]
-	else:
+		return tr(array[randi()%array.size()])
+	elif shouldpassempty == false:
 		print("empty array passed to getrandomfromarray(array)")
+		return ""
+	else:
 		return ""

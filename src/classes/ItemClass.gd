@@ -119,7 +119,7 @@ func amount_set(value):
 	amount = value
 	if amount <= 0:
 		if owner != null:
-			print("wwarning - state-based removal of equipped item")
+			print("warning - state-based removal of equipped item")
 			characters_pool.get_char_by_id(owner).unequip(self, false)
 #		ResourceScripts.game_res.items.erase(id)
 		ResourceScripts.game_res.call_deferred('remove_item_id', id)
@@ -222,6 +222,8 @@ func CreateGear(ItemName = '', dictparts = {}, diffdata = {boost = 0, prof = fal
 				for j in toolcategory:
 					materialeffects['task_crit_' + j] = materialeffects['task_crit_chance']
 				materialeffects.erase('task_crit_chance')
+			if materialeffects.has('weapon_element') and parteffectdict.has('weapon_element'):
+				materialeffects.erase('weapon_element')
 			for j in materialeffects:
 #				if j == 'enchant_capacity_mod':
 #					materialeffects[j] -= 1.0

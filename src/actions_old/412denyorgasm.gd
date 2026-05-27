@@ -1,0 +1,47 @@
+extends Reference
+
+const category = 'SM'
+const code = 'deny_orgasm'
+var givers
+var takers
+const canlast = false
+const giverpart = ''
+const takerpart = ''
+const virginloss = false
+const givertags = ['noorgasm']
+const takertags = ['nooragsm']
+const giver_skill = []
+const taker_skill = []
+const consent_level = 10
+const consent_giver = 0
+const consent_taker = 0
+
+func getname(state = null):
+	return tr("SEXACTION_ORGASM_DENIAL")
+
+func getongoingname(givers, takers):
+	return ""
+
+func getongoingdescription(givers, takers):
+	return ""
+
+func requirements():
+	var valid = true
+	if givers.size() != 1 || takers.size() != 1 || takers[0].sens < 800:
+		valid = false
+	for i in givers:
+		if i.subduing != null:
+			valid = false
+	return valid
+
+func givereffect(member):
+	var effects = {lust = 0}
+	return effects
+
+func takereffect(member):
+	var effects = {lust = 0}
+	return effects
+	
+
+func initiate():
+	return "[name1] approaches edging [name2] as [he2] is about to climax."

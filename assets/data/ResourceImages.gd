@@ -465,7 +465,13 @@ var backgrounds = {
 	#technical screens
 	whitescreen = "res://assets/sfx/white.png",
 	blackscreen = "res://assets/sfx/black.png",
-
+	
+	
+	erdyna_campfire1 = "res://assets/images/fullscreen scenes/Erdyna_campfire001.png",
+	erdyna_campfire2 = "res://assets/images/fullscreen scenes/Erdyna_campfire002.png",
+	erdyna_campfire3 = "res://assets/images/fullscreen scenes/Erdyna_campfire003.png",
+	erdyna_campfire4 = "res://assets/images/fullscreen scenes/Erdyna_campfire004.png",
+	
 	}
 
 func get_background(id, cash = false):
@@ -551,6 +557,12 @@ var scenes = {
 	deer = 'res://assets/images/scenes/deer.png',
 	leon = 'res://assets/images/scenes/leon.png',
 	ritual = 'res://assets/images/scenes/ritual.png',
+	
+	prey = "res://assets/images/scenes/prey.png",
+	slave_sex = "res://assets/images/scenes/slave sex.png",
+	jewelry = "res://assets/images/scenes/jewelry box bracelet.png",
+	night = "res://assets/images/scenes/night.png",
+	bathroom = "res://assets/images/scenes/bathroom.png",
 	
 	mae_camp = 'res://assets/images/scenes/mae_camp.png',
 	mae_market = "res://assets/images/scenes/mae_market.png",
@@ -711,6 +723,11 @@ var scenes = {
 	slave_pray = "res://assets/images/scenes/slave_pray.png",
 	rouge_warehouse_1 = "res://assets/images/scenes/warehouses_1.png",
 	rouge_warehouse_2 = "res://assets/images/scenes/warehouses_2.png",
+	
+	erdyna_catacomb = "res://assets/images/scenes/erdyna_gate.png",
+	erdyna_hostage = "res://assets/images/scenes/erdyna_hostage.png",
+	erdyna_ring = "res://assets/images/scenes/erdyna_ring.png",
+	erdyna_scars = "res://assets/images/scenes/erdyna_scars.png",
 
 }
 
@@ -944,6 +961,11 @@ var portraits = {
 	rouge = "res://assets/images/portraits/rouge_prt/rouge_default_prt_bold.png",
 	rouge_nude = "res://assets/images/portraits/rouge_prt/rouge_nude_prt_bold.png",
 	rouge_wed = "res://assets/images/portraits/rouge_prt/rouge_wed_prt_bold.png",
+	erdyna = "res://assets/images/portraits/dragongirl_deafault_prt.png",
+	erdyna_nude = "res://assets/images/portraits/dragongirl_nude_prt.png",
+	erdyna_wed = "res://assets/images/portraits/dragongirl_wed_prt.png",
+	
+	
 	
 }
 

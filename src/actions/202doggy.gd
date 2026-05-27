@@ -18,6 +18,46 @@ const consent_level = 25
 const consent_giver = 3
 const consent_taker = 4
 
+const enthusiasm_giver = {
+	trigger_text = "INTERACTION_ENTHUSIASM_TRIGGER_DOGGY_GIVER",
+	btn_text = "INTERACTION_ENTHUSIASM_BTN",
+	choices = [
+		{name_key = "INTERACTION_ENTHUSIASM_DOGGY_G_CHOICE_PULL", personality = 'bold',
+			love_keys = ["INTERACTION_ENTHUSIASM_DOGGY_G_PULL_LOVE_1", "INTERACTION_ENTHUSIASM_DOGGY_G_PULL_LOVE_2"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_DOGGY_G_PULL_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_DOGGY_G_CHOICE_DEEPER", personality = 'serious',
+			love_keys = ["INTERACTION_ENTHUSIASM_DOGGY_G_DEEPER_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_DOGGY_G_DEEPER_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_DOGGY_G_CHOICE_LEAN", personality = 'kind',
+			love_keys = ["INTERACTION_ENTHUSIASM_DOGGY_G_LEAN_LOVE_1", "INTERACTION_ENTHUSIASM_DOGGY_G_LEAN_LOVE_2"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_DOGGY_G_LEAN_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_DOGGY_G_CHOICE_DONTSTOP", personality = 'shy',
+			love_keys = ["INTERACTION_ENTHUSIASM_DOGGY_G_DONTSTOP_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_DOGGY_G_DONTSTOP_HATE_1"]},
+	],
+	training_upgrades = [{skill = 'penetration', target = 'skilled'}],
+}
+
+const enthusiasm_taker = {
+	trigger_text = "INTERACTION_ENTHUSIASM_TRIGGER_DOGGY_TAKER",
+	btn_text = "INTERACTION_ENTHUSIASM_BTN",
+	choices = [
+		{name_key = "INTERACTION_ENTHUSIASM_DOGGY_T_CHOICE_PUSHBACK", personality = 'bold',
+			love_keys = ["INTERACTION_ENTHUSIASM_DOGGY_T_PUSHBACK_LOVE_1", "INTERACTION_ENTHUSIASM_DOGGY_T_PUSHBACK_LOVE_2"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_DOGGY_T_PUSHBACK_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_DOGGY_T_CHOICE_STILLNESS", personality = 'serious',
+			love_keys = ["INTERACTION_ENTHUSIASM_DOGGY_T_STILLNESS_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_DOGGY_T_STILLNESS_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_DOGGY_T_CHOICE_STROKE", personality = 'kind',
+			love_keys = ["INTERACTION_ENTHUSIASM_DOGGY_T_STROKE_LOVE_1", "INTERACTION_ENTHUSIASM_DOGGY_T_STROKE_LOVE_2"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_DOGGY_T_STROKE_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_DOGGY_T_CHOICE_HAND", personality = 'shy',
+			love_keys = ["INTERACTION_ENTHUSIASM_DOGGY_T_HAND_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_DOGGY_T_HAND_HATE_1"]},
+	],
+	training_upgrades = [{skill = 'pussy', target = 'skilled'}],
+}
+
 func requirements():
 	var valid = true
 	if takers.size() != 1 || givers.size() != 1:
@@ -44,18 +84,18 @@ func getongoingname(givers, takers):
 	return tr("SEXACTION_DOGGY_ONGOING_1")
 
 func givereffect(member):
-	var effects = {sens = 220, horny = 25}
+	var effects = {sens = 220}
 	if member.person.get_stat('penis_size') == '':
 		effects.sens /= 1.2
 	return effects
 
 func takereffect(member):
-	var effects = {sens = 200, horny = 10}
+	var effects = {sens = 200}
 	return effects
 
 #orientation of givers/takers
-const rotation1 = Quat(0.0,0.0,0.0,0.0)
-const rotation2 = Quat(0.5,0.0,0.0,1.0)
+const parallel = false
+const facing = false
 
 const initiate = ['start_1_doggy','start_2_sexv']
 
@@ -81,6 +121,7 @@ start_2_sexv = {
 	insert = {
 	conditions = {
 		orifice = ["insert"],
+		taker_fingering_ongoing = [false],
 	},
 	lines = [
 		"SEXACTION_DOGGY_ACT_2",
@@ -90,7 +131,7 @@ start_2_sexv = {
 },
 
 main_3_sex = {
-	
+
 	locational = {
 	conditions = {
 	},
@@ -99,7 +140,7 @@ main_3_sex = {
 		"SEXACTION_DOGGY_ACT_5",
 		"SEXACTION_DOGGY_ACT_6",
 	]},
-	
+
 },
 
 react_3_sexv = {

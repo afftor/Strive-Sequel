@@ -1427,19 +1427,6 @@ var data = {
 			"master_translate"
 		],
 		text = "DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_6",
-		common_effects = [
-			{
-				code = "unique_character_changes",
-				value = "daisy",
-				args = [
-					{
-						code = "sex_skills_oral",
-						operant = "+",
-						value = 20
-					}
-				]
-			}
-		],
 		options = [
 			{
 				code = "close",
@@ -2152,9 +2139,19 @@ var data = {
 						value = 1
 					},
 					{
-						code = "sex_skills_oral",
+						code = "sex_stamina",
 						operant = "+",
-						value = 15
+						value = 1
+					},
+					{
+						code = "sex_training_oral",
+						operant = "=",
+						value = "skilled"
+					},
+					{
+						code = "sex_training_petting",
+						operant = "=",
+						value = "skilled"
 					}
 				]
 			}
@@ -2455,29 +2452,24 @@ var data = {
 				value = "daisy",
 				args = [
 					{
-						code = "sexuals_factor",
+						code = "sex_stamina",
 						operant = "+",
-						value = 1
+						value = 3
 					},
 					{
-						code = "sex_skills_oral",
-						operant = "+",
-						value = 20
+						code = "sex_training_oral",
+						operant = "=",
+						value = "skilled"
 					},
 					{
-						code = "sex_skills_petting",
-						operant = "+",
-						value = 20
+						code = "sex_training_pussy",
+						operant = "=",
+						value = "skilled"
 					},
 					{
-						code = "sex_skills_pussy",
-						operant = "+",
-						value = 25
-					},
-					{
-						code = "sex_skills_anal",
-						operant = "+",
-						value = 15
+						code = "sex_training_anal",
+						operant = "=",
+						value = "skilled"
 					}
 				]
 			}

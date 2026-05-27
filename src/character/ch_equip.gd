@@ -101,22 +101,6 @@ func equip(item, item_prev_id = null):
 
 
 func unequip(item, hard = true):
-	#shuold be reworked due to new mechanics
-	#probably fixed
-	var duplicate = globals.get_duplicate_id_if_exist(item)
-	
-	if duplicate != null and hard:
-		var duplicate_item = ResourceScripts.game_res.items[duplicate]
-		if duplicate_item.owner == null:
-			if duplicate != item.id:
-				duplicate_item.amount += 1
-				item.amount = 0
-				item.owner = null
-			else:
-				item.amount += 1
-		duplicate_item.owner = null
-	else:
-		item.owner = null
 	for i in gear:
 		if gear[i] == item.id:
 			gear[i] = null
@@ -126,9 +110,24 @@ func unequip(item, hard = true):
 				parent.get_ref().process_event(variables.TR_ARMOR)
 	#removing bonuses
 	if item.curse!= null and hard:
+		item.owner = null
 		item.destroy()
+	else:
+		var duplicate = globals.get_duplicate_id_if_exist(item)
+		if duplicate != null and hard:
+			var duplicate_item = ResourceScripts.game_res.items[duplicate]
+			if duplicate_item.owner == null:
+				if duplicate != item.id:
+					duplicate_item.amount += 1
+					item.owner = null
+					item.amount = 0
+				else:
+					item.amount += 1
+			duplicate_item.owner = null
+		else:
+			item.owner = null
+	
 	parent.get_ref().reset_rebuild()
-
 
 
 func clear_equip(hard = true):

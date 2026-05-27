@@ -38,12 +38,12 @@ func requirements():
 
 #Disabling until something is decided about tools
 func givereffect(member):
-	var effects = {sens = 20, horny = 10}
+	var effects = {sens = 20}
 	return effects
 
 #Disabling until something is decided about tools
 func takereffect(member):
-	var effects = {sens = 120, horny = 20}
+	var effects = {sens = 120}
 	if member.person.get_stat('sex') == 'male':
 		effects.sens /= 1.3
 	return effects

@@ -42,13 +42,13 @@ func getongoingdescription(givers, takers):
 
 
 func givereffect(member):
-	var effects = {sens = 210, horny = 10}
+	var effects = {sens = 210}
 	if member.person.get_stat('penis_size') == '':
 		effects.sens /= 1.2
 	return effects
 
 func takereffect(member):
-	var effects = {sens = 200, horny = 5}
+	var effects = {sens = 200}
 	return effects
 
 func initiate():

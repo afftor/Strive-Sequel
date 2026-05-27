@@ -166,6 +166,7 @@ func update_buttons():
 			i.pressed = (get_parent().active_person == i.get_meta('slave'))
 
 func rebuild():
+	
 	update_dislocations()
 #	build_locations_list()
 	#LocationsPanel.visible = (get_parent().mansion_state != "sex")

@@ -1186,6 +1186,7 @@ Reducido por la evasión del enemigo""",
 	NO_FREE_SLOTS = "Esta tarea no tiene espacios disponibles",
 	ANOTHERPROFSELECTED = "Sólo se puede seleccionar una especialización.",
 	NOMATERIALSFORITEMPART = "No tienes materiales adecuados para esta pieza del artículo",
+	NOCHARACTER = """You have no suitable characters""", # MISSING TRANSLATION
 	QUESTDEFEAT = "Fracaso",
 	QUESTREQUIREDCLASS = "Clase requerida",
 	LOGREPORTPREGNANCY = "[name] te dice que [he] parece estar embarazado.",
@@ -19789,6 +19790,8 @@ Tecla de acceso rápido: 3""",
 	FORGET_LABEL = "Olvidar",
 	AVAIL_RES_LABEL = "Recursos disponibles",
 	CHARS_SELECTED_LABEL = "Personajes seleccionados",
+	SELECTED_LABEL = """Selected""", # MISSING TRANSLATION
+	PARTICIPANTS_LABEL = """Participants: %s/%s""", # MISSING TRANSLATION
 	TARGET_LOC_LABEL = "Ubicación del objetivo",
 	TRAVEL_TIME_LABEL = "Tiempo de viaje",
 	EST_TRAVEL_TIME_LABEL = "Tiempo estimado de viaje",
@@ -19801,6 +19804,8 @@ Tecla de acceso rápido: 3""",
 	LOC_BEEN_REMOVED_LABEL = "La ubicación ha sido eliminada",
 	ARRIVED_AT_LOC_LABEL = "Llegó a la ubicación",
 	RETURNED_TO_MANSION_LABEL = "Regresó a la mansión",
+	CHAR_RELOCATING_TO_LOC_DESC = """[name] currently relocating to [color=yellow]%s[/color], which is located at [color=aqua]%s[/color]. [He] will be there in %s turns""", # MISSING TRANSLATION
+	CHAR_POSITIONED_AT_LOC_DESC = """[name] currently positioned at [color=yellow]%s[/color], which is located at [color=aqua]%s[/color]""", # MISSING TRANSLATION
 	TRAVEL_LABEL = "Viajar",
 	MANSION_LABEL = "Mansion",
 	CHAR_LABEL = "Personaje",

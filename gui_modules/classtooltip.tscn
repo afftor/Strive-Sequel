@@ -232,7 +232,7 @@ margin_bottom = 73.1464
 [node name="Label" type="Label" parent="VBoxContainer/ReqsContainer/VBoxContainer"]
 margin_right = 384.0
 margin_bottom = 33.0
-text = "Requirements"
+text = "REQUIREMENTS_TOOLTIP"
 align = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ReqsContainer/VBoxContainer"]

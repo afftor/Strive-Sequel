@@ -341,6 +341,7 @@ func open_char_info():
 	gui_controller.previous_screen.hide()
 	gui_controller.current_screen = gui_controller.slavepanel
 	gui_controller.close_all_closeable_windows()
+	gui_controller.slavepanel.update()
 	gui_controller.emit_signal("screen_changed")
 	ResourceScripts.core_animations.UnfadeAnimation(gui_controller.slavepanel, 0.3)
 
@@ -809,7 +810,7 @@ func test_mode():
 				{code = 'make_story_character', value = 'Lira'},
 				{code = 'make_story_character', value = 'Kuro'},
 				{code = 'make_story_character', value = 'Rouge'},
-				{code = 'make_story_character', value = 'Mae'},
+				{code = 'make_story_character', value = 'Amelia'},
 				{code = 'affect_unique_character', name = 'mae', type = 'add_trait', trait = 'spirit_owl'},
 				{code = 'affect_unique_character', name = 'lilia', type = 'turn_into_unique', value = 'Lilith'},
 			]
@@ -941,6 +942,7 @@ func test_mode():
 
 		#globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("bracelet_found")
+		ResourceScripts.game_progress.decisions.append("act4_capital")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 
 		#input_handler.interactive_message('comic_test_1', '', {})
@@ -955,7 +957,7 @@ func test_mode():
 
 
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
-		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
+		ResourceScripts.game_progress.completed_quests.append("act4_capital")
 		#input_handler.interactive_message('purchased_cali', '', {})
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")

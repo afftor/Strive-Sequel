@@ -154,7 +154,7 @@ func _update_participant_label():
 		return
 	var current_count = selected_characters.size()
 	var max_count = calculate_sex_limits()
-	_participant_label.text = tr("Participants: %s/%s") % [str(current_count), str(max_count)]
+	_participant_label.text = tr("PARTICIPANTS_LABEL") % [str(current_count), str(max_count)]
 	if current_count > max_count:
 		_participant_label.add_color_override("font_color", Color(1, 0.4, 0.4))
 	else:

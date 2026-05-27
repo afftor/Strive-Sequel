@@ -282,9 +282,14 @@ var data = {
 						check = false
 					},
 					{
-						type = "unique_character_checks", 
-						name = "aire", 
-						value = []
+						type = "decision",
+						value = "aire_is_saved",
+						check = true
+					},
+					{
+						type = "decision",
+						value = "aire_recruited",
+						check = false
 					}
 				],
 				type = "next_dialogue",
@@ -1517,6 +1522,12 @@ var data = {
 #				type = "next_dialogue",
 #				dialogue_argument = 1
 #			},
+			{
+				code = "emp_myr_catacomb_writing",
+				text = "ACT4_MYR_GUILD_OPTION_SHOW_WRITING",
+				reqs = [{type = "active_quest_stage", value = "erdyna_quest", stage = "myr_translation", state = true}],
+				type = "next_dialogue",
+			},
 			{
 				code = "mages_leader_close",
 				text = "MAGESINTRODUCTION3REPLY3",

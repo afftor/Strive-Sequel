@@ -1,7 +1,10 @@
 extends Control
+const DecisionsData = preload("res://assets/data/Decisions.gd")
+
 var IsActive = false
 var history = []
 var history_index = -1
+var decisions_data = DecisionsData.new()
 onready var _RichTextLabel = get_node("Console/RichTextLabel")
 onready var _TextEdit = get_node("Console/TextEdit")
 
@@ -76,16 +79,6 @@ func _on_TextEdit_text_entered(new_text):
 		else:
 			output_text += "Command complete\n"
 		add_text(output_text)
-	elif splitstring[0] == "/launch" :
-		var a = input_handler.interactive_message(splitstring[1])
-
-		var output_text = new_text + "\n"
-
-		if a != null:
-			output_text += a + "\n"
-		else:
-			output_text += "Command complete\n"
-		add_text(output_text)
 	elif splitstring[0] == "/add_item":
 		if splitstring.size() < 2:
 			add_text("/add_item requires an item code\n")
@@ -144,6 +137,34 @@ func _on_TextEdit_text_entered(new_text):
 		else:
 			output_text += "Started event: " + event_name + "\n"
 		add_text(output_text)
+	elif splitstring[0] == "/decision":
+		if splitstring.size() < 2:
+			add_text("/decision requires a decision code\n")
+			return
+		var decision_name = splitstring[1]
+		var add_decision = true
+		if splitstring.size() >= 3:
+			var mode = splitstring[2].to_lower()
+			if mode in ["true", "add", "on", "1"]:
+				add_decision = true
+			elif mode in ["false", "remove", "off", "0"]:
+				add_decision = false
+			else:
+				add_text("/decision mode must be true/add/on/1 or false/remove/off/0\n")
+				return
+		var active_decisions = ResourceScripts.game_progress.decisions
+		var output_text = new_text + "\n"
+		if not decisions_data.decisions.has(decision_name) and not active_decisions.has(decision_name):
+			output_text += "Note: decision is not listed in Decisions.gd or current save; applying anyway.\n"
+		if add_decision:
+			if not active_decisions.has(decision_name):
+				active_decisions.append(decision_name)
+			output_text += "Decision added: " + decision_name + "\n"
+		else:
+			if active_decisions.has(decision_name):
+				active_decisions.erase(decision_name)
+			output_text += "Decision removed: " + decision_name + "\n"
+		add_text(output_text)
 
 func _common_prefix(strings):
 	var prefix = strings[0]
@@ -157,7 +178,7 @@ func _common_prefix(strings):
 func _handle_tab_complete():
 	var text = _TextEdit.text
 	var parts = text.split(" ")
-	var COMMANDS = ["/do", "/launch", "/add_item", "/start_event"]
+	var COMMANDS = ["/do", "/add_item", "/start_event", "/decision"]
 	var matches = []
 
 	if parts.size() <= 1:
@@ -179,12 +200,26 @@ func _handle_tab_complete():
 			for key in scenedata.scenedict:
 				if key.begins_with(arg_prefix):
 					matches.append(key)
+		elif cmd == "/decision":
+			if parts.size() == 2:
+				for key in decisions_data.decisions:
+					if key.begins_with(arg_prefix):
+						matches.append(key)
+				for key in ResourceScripts.game_progress.decisions:
+					if key.begins_with(arg_prefix) and not matches.has(key):
+						matches.append(key)
+			elif parts.size() == 3:
+				for key in ["true", "false", "add", "remove", "on", "off"]:
+					if key.begins_with(parts[2]):
+						matches.append(key)
 
 	if matches.size() == 0:
 		return
 	elif matches.size() == 1:
 		if parts.size() <= 1:
 			_TextEdit.text = matches[0] + " "
+		elif parts.size() == 3:
+			_TextEdit.text = parts[0] + " " + parts[1] + " " + matches[0]
 		else:
 			_TextEdit.text = parts[0] + " " + matches[0]
 		_TextEdit.caret_position = _TextEdit.text.length()
@@ -196,10 +231,16 @@ func _handle_tab_complete():
 			line += "  ... (" + str(matches.size() - MAX_SHOWN) + " more)"
 		add_text(line + "\n")
 		var common = _common_prefix(matches)
-		var current_prefix = parts[0] if parts.size() <= 1 else parts[1]
+		var current_prefix = parts[0]
+		if parts.size() == 2:
+			current_prefix = parts[1]
+		elif parts.size() == 3:
+			current_prefix = parts[2]
 		if common.length() > current_prefix.length():
 			if parts.size() <= 1:
 				_TextEdit.text = common
+			elif parts.size() == 3:
+				_TextEdit.text = parts[0] + " " + parts[1] + " " + common
 			else:
 				_TextEdit.text = parts[0] + " " + common
 			_TextEdit.caret_position = _TextEdit.text.length()

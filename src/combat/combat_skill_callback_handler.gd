@@ -264,7 +264,7 @@ func refine_target(skill, caster, ttarget): #s_skill, caster, target
 					return null
 			avtargets.erase(ttarget)
 			if avtargets.empty():
-				ttarget
+				return ttarget
 			return input_handler.random_from_array(avtargets)
 		variables.NT_MELEE:
 			var avtargets = combatnode.get_enemy_targets_melee(caster)
@@ -300,6 +300,15 @@ func refine_target(skill, caster, ttarget): #s_skill, caster, target
 				return combatnode.get_char_by_pos(target + 3)
 		variables.NT_CASTER:
 			return caster
+		variables.NT_INDISCRIMINATE:
+			var avtargets = combatnode.get_enemy_targets_all(caster)
+			if avtargets.empty(): 
+				avtargets = combatnode.get_enemy_targets_all(caster, true)
+			avtargets.append_array(combatnode.get_allied_targets(caster))
+			avtargets.erase(caster)
+			if avtargets.empty():
+				return null
+			return input_handler.random_from_array(avtargets)
 
 #real queue part
 func invoke():

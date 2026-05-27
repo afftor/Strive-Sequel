@@ -1525,6 +1525,7 @@ var effects = {
 		duration = 1,
 		conditions = [
 			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'skill', value = ['tags', 'has', 'damage'] },
 			{type = 'skill', value = ['damage_type', 'eq', 'light']}
 			],
 		buffs = [],
@@ -2203,7 +2204,7 @@ var buffs = {
 		tags = ['combat_only'],
 	},
 	b_paladin_guard = {
-		icon = "res://assets/images/iconsclasses/Paladin.png",
+		icon = "res://assets/images/iconsclasses/shieldbearer.png",
 		description = "BUFFDESCRIPTPALADINGUARD",
 		tags = ['combat_only'],
 	},

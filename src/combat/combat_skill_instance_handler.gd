@@ -79,12 +79,14 @@ func process_check(check:Array): #2remake
 					if val.damage_type == op2: return false
 				return true
 			elif check[1] == 'in':
-				for val in template.value:
-					if val.source in op2: 
+				for val in value:
+					if val.damage_type in op2: 
 						return true
 				return false
 		elif op1 == 'can_target_counterattack_in_melee':
 			op1 = can_target_counterattack_in_melee()
+		elif op1 == 'skill_code':
+			return input_handler.operate(check[1], template.code, op2)
 		elif typeof(op1) == TYPE_STRING: 
 			op1 = get(op1)
 		return input_handler.operate(check[1], op1, op2)

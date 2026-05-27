@@ -1,7 +1,7 @@
 extends Node
 
 
-var effect_nolog = ['commander', 'atkpass', 'atkpass_remove', 'hide', 'default', 'warlock', 'manasiphon', 'thorns', 'vampirism', 'ench_commander', 'spell_mastery', 'flight_upkeep'] #2add more
+var effect_nolog = ['commander', 'atkpass', 'atkpass_remove', 'hide', 'default', 'warlock', 'manasiphon', 'thorns', 'vampirism', 'ench_commander', 'spell_mastery', 'flight_upkeep', 'max_stats'] #2add more
 #to fix EFFECT TAGS TO TEMPLATE,
 #'positive'/'negative' - the widest classification (to most global cleaning like bard2 skill effect)
 #'buff'/'debuff' - additional markings for common effect removal effects (like purge) (and maybe add two more for a state effects)
@@ -448,7 +448,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
-		tags = ['positive'],
+		tags = ['positive','regen'],
 		args = {value = {obj = 'process_value', func = 'eq'}},
 		sub_effects = ['e_t_regen'],
 		atomic = [],

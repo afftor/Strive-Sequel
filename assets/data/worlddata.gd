@@ -1142,10 +1142,7 @@ var fixed_location_options = { #override serialized data
 		},
 		{
 			text = tr("ACT4_ERDYNA_ELF_CAPITAL_OPT_LINEAGE"),
-			reqs = [
-				{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'dragonhunters', state = true},
-				{type = 'dialogue_seen', value = 'act4_erdyna_lineage_2', check = false}
-			],
+			reqs = [{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'dragonhunters'}],
 			args = [{code = 'start_event', data = 'act4_erdyna_lineage_1', args = []}]
 		},
 	],
@@ -1423,6 +1420,19 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'rouge_melchor_visit', args = []}]
 		},
 		{
+			text = tr("ROUGE_CAPITAL_OPTION_MEET_ROUGE"),
+			reqs = [{type = 'active_quest_stage', value = 'rouge_quest', stage = 'rouge_meet'}],
+			args = [{code = 'start_event', data = 'rouge_tax_capital_meet_1', args = []}]
+		},
+		{
+			text = tr("ROUGE_CAPITAL_OPTION_MELCHOR"),
+			reqs = [
+				{type = 'decision', value = 'rouge_refused', check = true},
+				{type = 'any_quest_stage', value = 'rouge_quest', stages = ['tax_intro', 'tax_done', 'rouge_meet', 'melchor', 'raid', 'reward']}
+			],
+			args = [{code = 'start_event', data = 'rouge_melchor_visit', args = []}]
+		},
+		{
 			text = tr("ROUGE_CAPITAL_OPTION_WAREHOUSE"),
 			reqs = [{type = 'active_quest_stage', value = 'rouge_quest', stage = 'warehouse'}],
 			args = [{code = 'start_event', data = 'rouge_warehouse_search', args = []}]
@@ -1462,26 +1472,13 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'emp_senerus_repeat_1', args = []}]
 		},
 		{
-			text = tr("ACT4_ERDYNA_EMPIRE_CAPITAL_OPT_MELCHOR"),
-			reqs = [
-				{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'act4_erdyna_archives', state = true},
-				{type = 'dialogue_seen', value = 'act4_erdyna_melchor_archives_1', check = false}
-			],
-			args = [{code = 'start_event', data = 'act4_erdyna_melchor_archives_1', args = []}]
-		},
-		{
 			text = tr("ACT4_ERDYNA_EMPIRE_CAPITAL_OPT_GROTUS"),
 			reqs = [
 				{type = 'any_quest_stage', value = 'erdyna_quest', stages = ['act4_erdyna_archives', 'archive_search']},
-				{type = 'dialogue_seen', value = 'act4_erdyna_melchor_archives_2', check = true},
-				{type = 'dialogue_seen', value = 'act4_erdyna_grotus_delivery', check = false}
+				{type = 'event_seen', value = 'act4_erdyna_grotus_offer_1', check = true},
+				{type = 'event_seen', value = 'act4_erdyna_grotus_delivery', check = false}
 			],
 			args = [{code = 'start_event', data = 'act4_erdyna_grotus_find', args = []}]
-		},
-		{
-			text = "ACT4_3_EMPIRE_CAPITAL_OPT_ERDYNA_RETURN",
-			reqs = [{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'erdyna_return', state = true}],
-			args = [{code = 'start_event', data = 'erdyna_capital_return_1', args = []}]
 		},
 		{
 			text = "ACT4_3_EMPIRE_CAPITAL_OPT_ERDYNA_HIDEOUT",
@@ -1685,6 +1682,18 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'cali_hector_1', args = []}]
 		}
 	],
+	quest_tax_settlement = [
+		{
+			text = tr("ROUGE_TAX_SETTLEMENT_VISIT"),
+			reqs = [{type = "event_seen", check = false, value = "rouge_tax_region_start"}],
+			args = [{code = "start_event", data = "rouge_tax_region_start", args = []}]
+		},
+		{
+			text = tr("ROUGE_TAX_SETTLEMENT_VISIT"),
+			reqs = [{type = "event_seen", check = true, value = "rouge_tax_region_start"}],
+			args = [{code = "start_event", data = "rouge_tax_region_return", args = []}]
+		},
+	],
 	quest_rebels_backrooms = [
 		{
 			text = tr("QUEST_FINAL_OPERATION_LOCATION1"), 
@@ -1726,7 +1735,7 @@ var fixed_location_options = { #override serialized data
 	quest_lira_grove_location = [
 		{
 			text = tr("QUEST_LIRA_GROVE_LOCATION1"),
-			reqs = [{type = 'dialogue_seen', check = false, value = 'LIRA_QUEST_1_SEARCH_GROVE'}],
+			reqs = [{type = 'active_quest_stage', value = 'lira_quest_1', stage = 'grove'}],
 			args = [{code = 'start_event', data = 'lira_quest_1_search_grove', args = []}]
 		},
 	],

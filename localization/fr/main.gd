@@ -1108,7 +1108,9 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	TOOLTIPEPSPEED = "Réduit les chances de toucher de l'ennemi de cette valeur",
 	TOOLTIPSPEED = "Améliore vos chances d'agir avant les autres personnages",
 	TOOLTIPRESISTS = "Réduit les dégâts élémentaires par la résistance relative",
+	TOOLTIPAROUSAL = """Sensitivity: [name] will be able to experience orgasm once Sensitivity is filled. Sensitivity requires person's Arousal when performing action without consent.""", # MISSING TRANSLATION
 	TOOLTIPSTAMINA = "L'endurance est réduite lorsque vous effectuez une action sur laquelle le personnage n'est pas d'accord. Lorsqu'elles sont complètement épuisées, ces actions épuisent l'obéissance. De plus, lorsqu'il est complètement épuisé, le personnage ne sera pas en mesure d'améliorer son consentement. L'endurance est reconstituée par les orgasmes, mais elle est affectée par des rendements décroissants",
+	TOOLTIPHORNY = """Arousal: when performing actions without consent, lack of Arousal will stop character from experiencing pleasure. Caress actions will increase arousal for taker.""", # MISSING TRANSLATION
 	TOOLTIPSTAMINADUNGEON = """Exploration Stamina is depleted every time you take an exploration action. Every turn your group will generate a certain amount of it.""", # MISSING TRANSLATION
 
 	TOOLTIPFOODCONSUMPTION = "Consommation quotidienne de nourriture",
@@ -20296,6 +20298,8 @@ Touche de raccourci : 3""",
 	FORGET_LABEL = "Oublier",
 	AVAIL_RES_LABEL = "Ressources disponibles",
 	CHARS_SELECTED_LABEL = "Caractères sélectionnés",
+	SELECTED_LABEL = """Selected""", # MISSING TRANSLATION
+	PARTICIPANTS_LABEL = """Participants: %s/%s""", # MISSING TRANSLATION
 	TARGET_LOC_LABEL = "Emplacement cible",
 	TRAVEL_TIME_LABEL = "Durée du voyage",
 	EST_TRAVEL_TIME_LABEL = "Durée estimée du voyage",
@@ -20308,6 +20312,8 @@ Touche de raccourci : 3""",
 	LOC_BEEN_REMOVED_LABEL = "Le lieu a été supprimé",
 	ARRIVED_AT_LOC_LABEL = "arrivé au lieu",
 	RETURNED_TO_MANSION_LABEL = "retourné au manoir",
+	CHAR_RELOCATING_TO_LOC_DESC = """[name] currently relocating to [color=yellow]%s[/color], which is located at [color=aqua]%s[/color]. [He] will be there in %s turns""", # MISSING TRANSLATION
+	CHAR_POSITIONED_AT_LOC_DESC = """[name] currently positioned at [color=yellow]%s[/color], which is located at [color=aqua]%s[/color]""", # MISSING TRANSLATION
 	TRAVEL_LABEL = "Voyage",
 	MANSION_LABEL = """Mansion""", # MISSING TRANSLATION
 	CHAR_LABEL = """Character""", # MISSING TRANSLATION
@@ -26817,8 +26823,6 @@ You present the copied symbols and describe the doors as best as you can. Myr ta
 	ACT4_MYR_CATACOMB_REPLY_2 = """{color=aqua|Erdyna: — Not surprised, you are a big shot, aren't ya? Well, I'll be right behind you.}""", # MISSING TRANSLATION
 	
 }
-
-
 
 
 

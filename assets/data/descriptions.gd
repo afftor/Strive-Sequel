@@ -798,6 +798,13 @@ func get_fame_tier_bonus(tier):
 		text += '%s: {color=green|+%d%%}\n' % [tr('FAMEDESC_RECRUIT_BONUS'), int(dict.recruit_bonus * 100)]
 	return text
 
+func _sex_training_level_label(level):
+	match level:
+		'novice': return tr("SEX_TRAINING_LEVEL_NOVICE")
+		'skilled': return tr("SEX_TRAINING_LEVEL_SKILLED")
+		'mastered': return tr("SEX_TRAINING_LEVEL_MASTERED")
+	return level.capitalize()
+
 func make_slave_statreq_text(req):
 	match req.code:
 		'is_master':
@@ -826,6 +833,8 @@ func make_slave_statreq_text(req):
 				return tr("STATREQ_WORKRULE_LOCK")
 			return String(req).trim_prefix("{").trim_suffix("}")
 		'stat':
+			if req.stat.begins_with('sex_training_'):
+				return "%s: %s." % [tr("CHARINFO_" + req.stat.to_upper()), _sex_training_level_label(req.value)]
 			var stat_name = statdata.statdata[req.stat].name
 			var operant_text = input_handler.operant_translation(req.operant)
 			if req.stat.ends_with('factor') && input_handler.globalsettings.factors_as_words:
@@ -922,6 +931,15 @@ func make_slave_statreq_text(req):
 			print("warning: make_slave_statreq_text() used 'in_combat_party' code!")
 			if req.value: return "Must be in combat party"
 			else: return "Must not be in combat party"
+		'stat_in_set':
+			if req.stat.begins_with('sex_training_'):
+				var skill_label = tr("CHARINFO_" + req.stat.to_upper())
+				var min_level = req.value[0] if !req.value.empty() else 'novice'
+				var level_text = _sex_training_level_label(min_level)
+				if req.value.size() > 1:
+					level_text += " " + tr("REQORHIGHER")
+				return "%s: %s." % [skill_label, level_text]
+			return String(req).replace("{", "(").replace("}", ")")
 		'or_list':
 			var text = make_slave_statreq_text(req.or_list[0])
 			for i in range(1, req.or_list.size()):

@@ -188,6 +188,7 @@ var data = {
 		save_scene_to_gallery = true,
 		character = "cali",
 		tags = ['dialogue_scene', 'master_translate'],
+		reqs = [{type = 'unique_character_checks', name = 'cali', value = [{code = 'true'}], negative = 'cancel'}],
 		text = [
 			{text = "CALI_SEX_5", reqs = []},
 		],
@@ -203,19 +204,36 @@ var data = {
 				code = 'cali_sex_5_1',
 				text = "CALI_SEX_5_OPTION_2",
 				type = 'next_dialogue',
-				reqs = [],
-				bonus_effects = [], 
+				reqs = [{type = 'dialogue_seen', value = 'CALI_SEX_5_1', check = false}],
+				bonus_effects = [],
+				dialogue_argument = 2,
+			},
+			{
+				code = 'cali_sex_5_2',
+				text = "CALI_SEX_5_OPTION_2",
+				type = 'next_dialogue',
+				reqs = [{type = 'dialogue_seen', value = 'CALI_SEX_5_1', check = true}],
+				bonus_effects = [],
 				dialogue_argument = 2,
 			},
 		],
 	},
 	cali_sex_5_1 = {
 		character = "cali",
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [],
 		text = [ {text = "CALI_SEX_5_1", reqs = []} ],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'add_timed_event', value = "cali_sex_5", args = [{type = 'add_to_date', date = [3,3], hour = 2}]}]
+		} ],
+	},
+	cali_sex_5_2 = {
+		character = "cali",
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [],
+		text = [ {text = "CALI_SEX_5_2", reqs = []} ],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = []
 		} ],
 	},
 	

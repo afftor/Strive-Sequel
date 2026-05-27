@@ -1424,7 +1424,7 @@ __meta__ = {
 [node name="SexSkillsContainer" type="ScrollContainer" parent="SlaveInfoModule"]
 light_mask = 0
 margin_left = 9.0
-margin_top = 410.0
+margin_top = 435.0
 margin_right = 272.0
 margin_bottom = 652.0
 theme = ExtResource( 40 )
@@ -1432,7 +1432,7 @@ scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SlaveInfoModule/SexSkillsContainer"]
 light_mask = 0
-custom_constants/separation = 0
+custom_constants/separation = -11
 
 [node name="Button" type="HBoxContainer" parent="SlaveInfoModule/SexSkillsContainer/VBoxContainer"]
 visible = false
@@ -1522,6 +1522,17 @@ margin_right = 269.822
 margin_bottom = 404.905
 mouse_filter = 1
 custom_colors/font_color = Color( 0.929412, 0.156863, 0.862745, 1 )
+text = "SIBLINGMODULECONSENT"
+align = 1
+clip_text = true
+
+[node name="SexstaminaLabel" type="Label" parent="SlaveInfoModule"]
+margin_left = 12.8218
+margin_top = 404.905
+margin_right = 269.822
+margin_bottom = 436.905
+mouse_filter = 1
+custom_colors/font_color = Color( 1, 0.964706, 0.0588235, 1 )
 text = "SIBLINGMODULECONSENT"
 align = 1
 clip_text = true
@@ -3690,6 +3701,7 @@ align = 1
 valign = 1
 
 [node name="SlaveSiblingsModule" type="TextureRect" parent="."]
+visible = false
 light_mask = 0
 margin_left = 239.0
 margin_top = 105.0

@@ -238,6 +238,7 @@ ma manterrà comunque tutti i tuoi personaggi, oggetti e inventario. Usa questa 
 	CHARNAMEAMELIA = "Amelia", #
 	CHARNAMEKURO = "Kuro", #
 	CHARNAMEROUGE = "Rouge",
+	CHARNAMEERDYNA = """Erdyna""", # MISSING TRANSLATION
 	LOCATIONTHE = "Il ",
 	TOTALPRODUCTIVITY = "Produttività Totale",
 	INVENTORYCHARACTERLIST = "Personaggi",
@@ -434,6 +435,12 @@ ma manterrà comunque tutti i tuoi personaggi, oggetti e inventario. Usa questa 
 	CHARINFO_SELECT_DEFAULT_FOLDER_DIALOG = "Seleziona cartella percorso predefinito",
 	CHARINFO_NO_IMAGES_HELP = "[center]Non hai immagini disponibili con i criteri corrispondenti.[/center]\n[center]Inserisci le tue immagini nella cartella ritratti e premi il pulsante 'Ricarica Ritratti'[/center]",
 	CHARINFO_STATS_BUTTON = "Statistiche",
+	CHARINFO_SEX_TRAINING_PETTING = """Petting""", # MISSING TRANSLATION
+	CHARINFO_SEX_TRAINING_PENETRATION = """Penetration""", # MISSING TRANSLATION
+	CHARINFO_SEX_TRAINING_PUSSY = """Vaginal""", # MISSING TRANSLATION
+	CHARINFO_SEX_TRAINING_ORAL = """Oral""", # MISSING TRANSLATION
+	CHARINFO_SEX_TRAINING_ANAL = """Anal""", # MISSING TRANSLATION
+	CHARINFO_SEX_TRAINING_TAIL = """Tail""", # MISSING TRANSLATION
 	CHARINFO_UPGRADE_LABEL = "Miglioramento",
 	CHARINFO_SET_ABILITIES_TOOLTIP = "Imposta Abilità per il combattimento",
 	SIMRESIST = "Resistenze",
@@ -1040,7 +1047,9 @@ Ridotto dall'evasione del nemico""",
 	TOOLTIPEVASION = "Riduce la probabilità di colpire il nemico di questo valore",
 	TOOLTIPSPEED = "Migliora le tue probabilità di agire prima degli altri personaggi",
 	TOOLTIPRESISTS = "Riduce il danno elementale della resistenza relativa",
+	TOOLTIPAROUSAL = """Sensitivity: [name] will be able to experience orgasm once Sensitivity is filled. Sensitivity requires person's Arousal when performing action without consent.""", # MISSING TRANSLATION
 	TOOLTIPSTAMINA = "La Tolleranza si esaurisce quando si esegue un'azione su cui il personaggio non è d'accordo. Quando è completamente esaurita, tali azioni metteranno sotto pressione i personaggi e non saranno in grado di migliorare il proprio Consenso. La Tolleranza viene reintegrata con gli Orgasmi, ma è influenzata dalla diminuzione dei rendimenti.",
+	TOOLTIPHORNY = """Arousal: when performing actions without consent, lack of Arousal will stop character from experiencing pleasure. Caress actions will increase arousal for taker.""", # MISSING TRANSLATION
 	TOOLTIPSTAMINADUNGEON = "La resistenza all'esplorazione si esaurisce ogni volta che intraprendi un'azione di esplorazione. Ogni turno il tuo gruppo ne genererà una certa quantità.",
 	TOOLTIP_SHOW_HIDE_RESOURCES = "Mostra/nascondi risorse locali",
 	TOOLTIP_SHOW_HIDE_CHARS = "Mostra/nascondi personaggi catturati",
@@ -1195,6 +1204,7 @@ Ridotto dall'evasione del nemico""",
 	NO_FREE_SLOTS = "Per questa attività non sono disponibili slot",
 	ANOTHERPROFSELECTED = "Può selezionare solo una specializzazione.",
 	NOMATERIALSFORITEMPART = "Non si dispone di materiali adatti per questa parte dell'articolo",
+	NOCHARACTER = """You have no suitable characters""", # MISSING TRANSLATION
 	QUESTDEFEAT = "Sconfitta",
 	QUESTREQUIREDCLASS = "Classe richiesta",
 	LOGREPORTPREGNANCY = "[name] ti dice, quella [he] sembra essere incinta.",
@@ -2213,6 +2223,20 @@ Non potrai completare il turno se il numero totale dei tuoi personaggi è superi
 	STATSEX_SKILLS_ORAL = "Abilità sessuale orale",
 	STATSEX_SKILLS_ANAL = "Abilità sessuale anale",
 	STATSEX_SKILLS_TAIL = "Abilità sessuale con la coda",
+	STATSEX_STAMINA = """Sex Stamina""", # MISSING TRANSLATION
+	STATSEX_STAMINADESCRIPT = """Endurance for sexual training and related activities. Maximum: 10.""", # MISSING TRANSLATION
+	STATSEX_TRAINING_PETTING = """Petting Training""", # MISSING TRANSLATION
+	STATSEX_TRAINING_PETTINGDESCRIPT = """Training progress for petting actions.""", # MISSING TRANSLATION
+	STATSEX_TRAINING_PENETRATION = """Penetration Training""", # MISSING TRANSLATION
+	STATSEX_TRAINING_PENETRATIONDESCRIPT = """Training progress for penetrative actions.""", # MISSING TRANSLATION
+	STATSEX_TRAINING_PUSSY = """Vaginal Training""", # MISSING TRANSLATION
+	STATSEX_TRAINING_PUSSYDESCRIPT = """Training progress for vaginal actions.""", # MISSING TRANSLATION
+	STATSEX_TRAINING_ORAL = """Oral Training""", # MISSING TRANSLATION
+	STATSEX_TRAINING_ORALDESCRIPT = """Training progress for oral actions.""", # MISSING TRANSLATION
+	STATSEX_TRAINING_ANAL = """Anal Training""", # MISSING TRANSLATION
+	STATSEX_TRAINING_ANALDESCRIPT = """Training progress for anal actions.""", # MISSING TRANSLATION
+	STATSEX_TRAINING_TAIL = """Tail Training""", # MISSING TRANSLATION
+	STATSEX_TRAINING_TAILDESCRIPT = """Training progress for tail actions.""", # MISSING TRANSLATION
 	STATSEXEXP_PARTNERS = "",
 	STATSEXEXP_WATCHERS = "",
 	STATSEXEXP_ACTIONS = "",
@@ -3154,6 +3178,8 @@ Tasto di scelta rapida: 3""",
 	FORGET_LABEL = "Dimenticare",
 	AVAIL_RES_LABEL = "Risorse disponibili",
 	CHARS_SELECTED_LABEL = "Personaggi selezionati",
+	SELECTED_LABEL = """Selected""", # MISSING TRANSLATION
+	PARTICIPANTS_LABEL = """Participants: %s/%s""", # MISSING TRANSLATION
 	TARGET_LOC_LABEL = "Località di destinazione",
 	TRAVEL_TIME_LABEL = "Tempo di percorrenza",
 	EST_TRAVEL_TIME_LABEL = "Tempo di percorrenza stimato",
@@ -3166,6 +3192,8 @@ Tasto di scelta rapida: 3""",
 	LOC_BEEN_REMOVED_LABEL = "La posizione è stata rimossa",
 	ARRIVED_AT_LOC_LABEL = "Arrivato sul posto",
 	RETURNED_TO_MANSION_LABEL = "tornato alla Villa",
+	CHAR_RELOCATING_TO_LOC_DESC = """[name] currently relocating to [color=yellow]%s[/color], which is located at [color=aqua]%s[/color]. [He] will be there in %s turns""", # MISSING TRANSLATION
+	CHAR_POSITIONED_AT_LOC_DESC = """[name] currently positioned at [color=yellow]%s[/color], which is located at [color=aqua]%s[/color]""", # MISSING TRANSLATION
 	TRAVEL_LABEL = "Viaggi",
 	MANSION_LABEL = "Villa",
 	CHAR_LABEL = "Persone",
@@ -5283,6 +5311,8 @@ Le abilità sessuali aumentano quando si eseguono azioni correlate e la loro cre
 	INTERACTION_CUM_TARGET_TAIL = "Coda",
 	INTERACTION_CUM_TARGET_HANDS = "Mani",
 	INTERACTION_CUM_SELECT_TEXT = "Mentre [name1] si avvicina all'orgasmo [he1] sceglie di venire sul/sulla... di [name2]",
+	INTERACTION_BONUS_DENY_PROMPT = """Who should attempt to deny orgasm to [name1]?""", # MISSING TRANSLATION
+	INTERACTION_BONUS_CUM_PROMPT = """Who should [name1] select as a target?""", # MISSING TRANSLATION
 	INTERACTION_CUM_TEXT_FACE = "[name1] porta il suo {^pene:cazzo:uccello} al viso di [name2] e rilascia il suo {^seme:liquido:sborra}. Il fluido bianco macchia il viso di [name2] gocciolando fino al suo mento.",
 	INTERACTION_CUM_TEXT_MOUTH = "[name1] mette il suo {^pene:cazzo:uccello} nella bocca di [name2] per il rilascio finale. Il getto di {^seme:liquido:sborra} colpisce la gola di [name2] costringendola a ingoiare.",
 	INTERACTION_CUM_TEXT_HAIR = "[name1] mette il suo {^pene:cazzo:uccello} alla testa di [name2] e viene sui suoi capelli. Il {^seme:liquido:sborra} sporca i capelli di [name2] appiccicandosi tra le ciocche.",
@@ -5295,6 +5325,29 @@ Le abilità sessuali aumentano quando si eseguono azioni correlate e la loro cre
 	INTERACTION_CUM_TEXT_FEET = "[name1] incapace di trattenersi oltre inizia a venire sui piedi di [name2], coprendoli con il suo seme.",
 	INTERACTION_CUM_TEXT_TAIL = "[name1] afferra la coda di [name2], spingendo il suo {^cazzo:uccello:pene} su di essa. Con un gemito, [name1] inizia a venire sulla coda di [name2]. ",
 	INTERACTION_CUM_TEXT_HANDS = "[name1] incapace di trattenersi oltre inizia a venire sulle mani di [name2], coprendole con il suo seme.",
+	INTERACTION_ENTHUSIASM_SELECT_TEXT = """[name1] is especially eager right now. What does [name2] do?""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_BTN_BLOWJOB = """Respond to [his1] eagerness""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_CHOICE_DEEPTHROAT = """Grab [his1] head and push deeper""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_CHOICE_BERATE = """Call [him1] {^a lewd slut:[his2] little whore:filthy}""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_CHOICE_PAT = """Pat [his1] head""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_CHOICE_PRAISE = """Tell [him1] how well [he1] is doing""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_TRIGGER_BLOWJOB = """As [name1] work[s/1] [his1] mouth along [names2] [penis2], [name2] notice[s/2] a particular eagerness — [he1] seem[s/1] more {^focused:intent:invested} than usual...""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_DEEPTHROAT_LOVE_1 = """[name2] grab[s/2] [names1] head and force[s/2] [him1] down, burying [his1] face against [him2]. [name1] {^gag[s/1]:choke[s/1]} but take[s/1] it eagerly, [his1] muffled moaning pushing [name2] over — [name2] {^throb[s/2]:pulse[s/2]} and climaxes into [his1] throat.""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_DEEPTHROAT_LOVE_2 = """[name1] let[s/1] out a strangled {^moan:cry} as [name2] push[es/2] [him1] down, tears forming at the corners of [his1] eyes — [his1] enthusiasm redoubling even through the struggle, and then [name2] come[s/2] undone entirely.""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_DEEPTHROAT_HATE_1 = """[name2] grab[s/2] [names1] head and push[es/2] down hard. [name1] {^gag[s/1]:choke[s/1]}, clearly caught off guard — [his1] eagerness {^evaporate[s/1]:chill[s/1]} instantly, replaced by a look of {^discomfort:distress}.""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_DEEPTHROAT_HATE_2 = """[name1] {^jerk[s/1]:pull[s/1]} back as [name2] force[s/2] [him1] down, eyes wide — the sudden roughness breaking whatever rhythm [he1] had built.""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_BERATE_LOVE_1 = """[name2] {^lean[s/2] in:reach[es/2] down} and {^murmur[s/2]:breathe[s/2]} something {^foul:filthy:lewd} at [name1] — [his1] whole face flushes and [he1] work[s/1] harder for it, and a moment later [name2] {^pulse[s/2]:throb[s/2]} and climaxes in [his1] {^throat:mouth}.""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_BERATE_LOVE_2 = """The words land and [name1] {^whimper[s/1]:moan[s/1]}, cheeks going red — [he1] redoubles [his1] efforts for every syllable, and then [name2] can't hold back any longer.""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_BERATE_HATE_1 = """The words hit wrong — [name1] {^flinch[es/1]:stiffen[s/1]}, the eagerness gone in an instant, replaced by a {^wounded:blank} look.""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_BERATE_HATE_2 = """[name1] slow[s/1] to a halt, [his1] enthusiasm {^deflated:crushed} — the mood {^shattered:broken} entirely.""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_PAT_LOVE_1 = """[name2] slide[s/2] a hand over [names1] head, fingers threading slowly through [his1] hair. [name1] {^melt[s/1]:ease[s/1] into it} and works with fresh purpose — and [name2] {^tip[s/2] over:give[s/2] in} moments later.""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_PAT_LOVE_2 = """[name2] {^press[es/2]:hold[s/2]} [name1] {^gently:softly} by the head. [name1] {^shudder[s/1]:tremble[s/1]} at the touch and doubles [his1] efforts, until [name2] can't {^hold back:last} any longer.""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_PAT_HATE_1 = """[name1] {^blink[s/1]:glance[s/1] up} at the hand on [his1] head and {^stiffen[s/1]:pause[s/1]}, clearly not what [he1] was {^expecting:after} — the rhythm {^breaking:faltering}.""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_PAT_HATE_2 = """The pat lands flat — [name1] {^pull[s/1] back:slow[s/1]} slightly, [his1] eagerness {^dimmed:cooled} by the {^unwanted:unexpected} contact.""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_PRAISE_LOVE_1 = """[name2] {^tell[s/2]:remind[s/2]} [name1] how {^good:well} [he1] is doing — [his1] eyes {^light up:soften:shine} and [he1] lean[s/1] into the work with {^visible:obvious} {^enthusiasm:hunger}, pushing [name2] over the edge moments later.""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_PRAISE_LOVE_2 = """A word of {^praise:approval} from [name2] and [name1] {^bloom[s/1]:come[s/1] alive}, the encouragement landing exactly right — [his1] renewed effort pushing [name2] over the edge.""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_PRAISE_HATE_1 = """[name1] {^glance[s/1] up:look[s/1] at} [name2] at the praise with a {^flat:blank:unreadable} expression — the words {^missing:not landing}, whatever {^drive:momentum} [he1] had {^cooling:guttering}.""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_PRAISE_HATE_2 = """The encouragement {^falls flat:doesn't register} — [name1] {^slow[s/1]:lose[s/1] focus}, the cheerful tone {^clashing with:at odds with} whatever [he1] was feeling.""", # MISSING TRANSLATION
 	INTERACTION_START_ROOM = "%s entrano nella camera da letto.",
 	INTERACTION_ACT_BLOCK_TIED = "[name] è legata e non può agire.",
 	INTERACTION_ACT_BLOCK_STRUGGLING = "[name] sta lottando e non può agire.",
@@ -5379,6 +5432,12 @@ e può agire solo su [him]. """,
 """,
 	INTERACTION_END_TRAIT_LOST = """%s ha perso il tratto: %s
 """,
+	INTERACTION_END_SKILL_MASTERED = """%s has mastered the %s skill!
+""", # MISSING TRANSLATION
+	INTERACTION_END_LACK_CONSENT_SLAVE = """[name] hated the encounter: Resistance has increased, Loyalty -%s
+""", # MISSING TRANSLATION
+	INTERACTION_END_LACK_CONSENT_SERVANT = """[name] hated the encounter: lost subordinate training - %s
+""", # MISSING TRANSLATION
 	INTERACTION_AI_INITIATES = """[color=green][name1] inizia %s con [name2].[/color]
 
 """,
@@ -5427,6 +5486,11 @@ I feromoni sono stati usati su %s, ma non hanno avuto effetto su [him]. """,
 	INTERACTION_SPEECH_RESIST_3 = "Perché mi fai questo...",
 	INTERACTION_SPEECH_RESIST_4 = "Bastardo...",
 	INTERACTION_SPEECH_RESIST_5 = "Lasciami andare!",
+	INTERACTION_SPEECH_RESISTHORNY_1 = """Stop... I don't... why does this feel so...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_RESISTHORNY_2 = """No... but... I can't take this...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_RESISTHORNY_3 = """Don't... please... I can't think straight...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_RESISTHORNY_4 = """This is wrong... so why can't I...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_RESISTHORNY_5 = """Stop it... my body won't listen...""", # MISSING TRANSLATION
 	INTERACTION_SPEECH_RESISTORGASM_1 = "Ahh-hh... No...",
 	INTERACTION_SPEECH_RESISTORGASM_2 = "*Singhiozzo* perché... è così bello...",
 	INTERACTION_SPEECH_RESISTORGASM_3 = "No, per favore fermati, prima che io... Ahh... No *singhiozzo*",
@@ -5454,6 +5518,8 @@ I feromoni sono stati usati su %s, ma non hanno avuto effetto su [him]. """,
 	INTERACTION_SPEECH_ORGASM_1 = "Vengo, sto venendo!..",
 	INTERACTION_SPEECH_ORGASM_2 = "Ah, Ahh, AAAHH!",
 	INTERACTION_SPEECH_ORGASM_3 = "[name2], per favore tienimi, sto venendo!",
+	INTERACTION_SPEECH_ORGASM_4 = """AAAAAHHHHH!!....""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_ORGASM_5 = """Aah... I'm Cumming!!!..""", # MISSING TRANSLATION
 	INTERACTION_SPEECH_ANALRAPE_1 = "Smetti! Dove lo stai mettendo!?",
 	INTERACTION_SPEECH_ANALRAPE_2 = "No, ti prego, non lì!",
 	INTERACTION_SPEECH_ANALRAPE_3 = "No, non il mio {^culo:sedere}... Ti prego...",
@@ -5503,6 +5569,9 @@ I feromoni sono stati usati su %s, ma non hanno avuto effetto su [him]. """,
 	SEXACTION_KISS_ONGOING_DESC_1 = "[name1] e [name2] {^appassionatamente :avidamente :}{^si premono l'uno all'altra:si scambiano saliva:si baciano}, {^senza mostrare segno di separarsi dalle labbra dell'altro:intrecciando le loro lingue:mordendo e succhiando le labbra dell'altro}.",
 	SEXACTION_KISS_ONGOING_DESC_2 = "[name1] {^appassionatamente :avidamente :}{^si scambia saliva con:bacia:pomicia con} [name2], {^assaporando il gusto delle sue labbra:cercando di dare il meglio}.",
 	SEXACTION_KISS_ONGOING_DESC_3 = "[name1] {^appassionatamente :avidamente :}{^si scambia saliva con:bacia:pomicia con} [name2], {^assaporando il gusto delle sue labbra:cercando di soddisfare entrambi}.",
+	SEXACTION_KISS_MAIN2_1 = """ as [name1] {^passionately :eagerly :}kiss[es/1] [him2]""", # MISSING TRANSLATION
+	SEXACTION_KISS_MAIN2_2 = """ as [name1] {^press[es/1]:drive[s/1]} [his1] lips {^to:against} [names2]""", # MISSING TRANSLATION
+	SEXACTION_KISS_MAIN2_3 = """ as [name1] {^taste[s/1]:explore[s/1]} [names2] lips""", # MISSING TRANSLATION
 	SEXACTION_FONDLETITS_ONGOING_1 = "[name1] palpeggia il petto di [names2].",
 	SEXACTION_FONDLETITS_ONGOING_DESC_1 = "[name1] continua a {^palpeggiare:accarezzare:strofinare:stringere} [names2] [tits2].",
 	SEXACTION_SUCKNIPPLES_ONGOING_1 = "[name1] succhia i capezzoli di [names2].",
@@ -5521,9 +5590,13 @@ I feromoni sono stati usati su %s, ma non hanno avuto effetto su [him]. """,
 	SEXACTION_HANDJOB_ONGOING_1 = "[name1] fa un handjob a [name2].",
 	SEXACTION_HANDJOB_ONGOING_DESC_1 = "[name1] {^costantemente :ritmicamente :con cura :}{^massaggia:strof ina:sfrega:masturba} il [penis2] di [names2]{^, cercando di mantenere il contatto visivo:, studiando le sue reazioni:}.",
 	SEXACTION_HANDJOB_ONGOING_DESC_2 = "[name1] {^massaggia:lavora:strof ina:sfrega} {^su e giù per tutta la lunghezza:lungo tutta:l'asta} del [penis2] di [names2] con le sue mani.",
+	SEXACTION_HANDJOB_MAIN2_1 = """ as [name1] {^stroke:work}[s/1] [names2] [penis2] with [his1] {^hands:fingers}""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_MAIN2_2 = """ as [name1] {^slowly :carefully :}massage[s/1] [names2] [penis2]""", # MISSING TRANSLATION
 	SEXACTION_BLOWJOB_ONGOING_1 = "[name1] fa un pompino a [name2].",
 	SEXACTION_BLOWJOB_ONGOING_DESC_1 = "[name1] {^costantemente :ritmicamente :con cura :}{^succhia:pomp ina} il [penis2] di [names2]{^, cercando di mantenere il contatto visivo:, studiando le sue reazioni:}.",
 	SEXACTION_BLOWJOB_ONGOING_DESC_2 = "[name1] lavora {^tutta la lunghezza del:l'asta del:la punta del:} [penis2] di [names2] con la sua bocca.",
+	SEXACTION_BLOWJOB_MAIN2_1 = """ as [name1] {^suck:lick:work}[s/1] [names2] [penis2]""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_MAIN2_2 = """ as [name1] take[s/1] [names2] [penis2] into [his1] mouth[/s1]""", # MISSING TRANSLATION
 	SEXACTION_TITJOB_ONGOING_1 = "[name1] fa un titjob a [name2].",
 	SEXACTION_TITJOB_ONGOING_DESC_1 = "[name1] continua a {^strofinare:massaggiare:stringere} il [penis2] di [names2] con le sue [tits1].",
 	SEXACTION_TAILJOB_ONGOING_1 = "[name1] fa un tailjob a [name2].",
@@ -5547,11 +5620,42 @@ I feromoni sono stati usati su %s, ma non hanno avuto effetto su [him]. """,
 	SEXACTION_CARESS_REACTION_4 = "Il corpo di [names2] {^trema:freme} {^al minimo tocco:a ogni tocco:ogni volta che [name1] tocca}{^ mentre [he2] si avvicina rapidamente all'orgasmo: mentre [he2] si avvicina all'orgasmo: mentre [he2] è sull'orlo dell'orgasmo:}.",
 	SEXACTION_KISS_INITIATE_DOUBLE_1 = "[name1] si alterna tra baciare [name2] alla francese e leccare {^tutto :}il suo viso.",
 	SEXACTION_KISS_INITIATE_DOUBLE_2 = "[name1] si alterna nell'infilare la sua lingua nella bocca di [names2] e [he2] {^avidamente:con entusiasmo} ricambia il gesto.",
+	SEXACTION_KISS_FROM_BEHIND_NICE_1 = """[name1] {^lean[s/1] in and :}kiss[es/1] [names2] {^neck:nape} from behind.""", # MISSING TRANSLATION
+	SEXACTION_KISS_FROM_BEHIND_NICE_2 = """[name1] {^press[es/1]:plant[s/1]} [his1] lips {^to:against} the back of [names2] {^neck:shoulder}.""", # MISSING TRANSLATION
+	SEXACTION_KISS_FROM_BEHIND_MEAN_1 = """[name1] grab[s/1] [name2] by the {^hair:head} and {^forces:plants} a kiss on [his2] {^neck:nape}.""", # MISSING TRANSLATION
 	SEXACTION_KISS_INITIATE_1 = "[name1] bacia {^alla francese :}[name2], leccando {^tutto :}il suo viso.",
 	SEXACTION_KISS_INITIATE_2 = "[name1] infila la sua lingua nella bocca di [names2] e [he2] {^avidamente:con entusiasmo} ricambia il gesto.",
 	SEXACTION_KISS_INITIATE_3 = "[name1] afferra e bacia [name2] {^profondamente :}, {^spingendo la sua lingua nella sua bocca:assaporando avidamente le sue labbra}.",
 	SEXACTION_KISS_RESIST_1 = "[name2] si ritrae dal bacio apparentemente nervosa...",
 	SEXACTION_KISS_RESIST_2 = "[name2] cerca di resistere all'azione indesiderata...",
+	SEXACTION_KISS_INITIATE_NOVICE_NICE_1 = """[name1] {^hesitantly:nervously} lean[s/1] in and press[es/1] [his1] lips {^against:to} [names2]""", # MISSING TRANSLATION
+	SEXACTION_KISS_INITIATE_NOVICE_NICE_2 = """[name1] kiss[es/1] [name2] {^clumsily:shyly}, unsure what to do next""", # MISSING TRANSLATION
+	SEXACTION_KISS_INITIATE_NOVICE_MEAN_1 = """[name1] {^clumsily:awkwardly} force[s/1] a kiss on [name2]""", # MISSING TRANSLATION
+	SEXACTION_KISS_INITIATE_MASTERED_NICE_1 = """[name1] tilt[s/1] [names2] chin and kiss[es/1] [him2] with {^practiced:effortless} ease""", # MISSING TRANSLATION
+	SEXACTION_KISS_INITIATE_MASTERED_NICE_2 = """[name1] pull[s/1] [name2] into a {^deep:passionate} kiss {^effortlessly:without hesitation}""", # MISSING TRANSLATION
+	SEXACTION_KISS_INITIATE_MASTERED_MEAN_1 = """[name1] seize[s/1] [name2] and press[es/1] [his1] lips to [his2] with {^commanding:practiced} force""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_SKILL_TAKER_NOVICE_LOW_1 = """[name2] {^freezes:stiffens} for a moment, unsure how to respond""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_SKILL_TAKER_NOVICE_LOW_2 = """[name2] doesn't {^quite know:have any idea} what to do with [his2] tongue""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_SKILL_TAKER_NOVICE_HIGH_1 = """[name2] {^fumbles:stumbles} into kissing back despite [himself2]""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_SKILL_TAKER_MASTERED_LOW_1 = """[name2] return[s/2] the kiss with {^effortless:practiced} technique despite [his2] reservations""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_SKILL_TAKER_MASTERED_HIGH_1 = """[name2] take[s/2] over the kiss, {^guiding:leading} with {^practiced:expert} lips""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_SKILL_TAKER_MASTERED_HIGH_2 = """[name2] {^deepens:intensifies} the kiss, [his2] tongue {^moving skillfully:working expertly}""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL4_NICE_1 = """[name2] kiss[es/2] back {^hungrily:passionately:desperately}""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL4_NICE_2 = """[name2] let[s/2] out a soft {^moan:whimper} into [his1] mouth[/s1]""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL4_NICE_3 = """[name2] wrap[s/2] [his2] arms around [name1], pulling [him1] deeper into the kiss""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL4_MEAN_1 = """[name2] can no longer stop [himself2] from kissing back""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL4_MEAN_2 = """[name2] let[s/2] out a muffled {^moan:cry} against [his1] lips[/s1]""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL3_NICE_1 = """[name2] let[s/2] out a {^soft:quiet} {^moan:sigh} against [his1] lips[/s1]""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL3_NICE_2 = """[name2] lean[s/2] into the kiss""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL3_MEAN_1 = """[name2] can't help but respond to the kiss""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL3_MEAN_2 = """[name2] let[s/2] out a quiet {^moan:noise}""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL2_NICE_1 = """[name2] return[s/2] the kiss {^softly:gently}""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL2_NICE_2 = """[name2] melt[s/2] slightly into [name1]""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL2_MEAN_1 = """[name2] tense[s/2] but {^doesn't pull away:holds still}""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL1_NICE_1 = """[name2] {^accepts:receives} the kiss {^shyly:hesitantly}""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL1_NICE_2 = """[name2] hold[s/2] still""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL1_MEAN_1 = """[name2] clench[es/2] [his2] jaw""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL1_MEAN_2 = """[name2] turn[s/2] [his2] face away slightly""", # MISSING TRANSLATION
 	SEXACTION_FONDLETITS_INITIATE_1 = "[name1] {^stringe:palpeggia:massaggia:accarezza} [names2] [tits2]",
 	SEXACTION_FONDLETITS_INITIATE_2 = "[name1] {^pass:strof in:lavor}a le sue mani attorno a [names2] [tits2]",
 	SEXACTION_FONDLETITS_INITIATE_SUFFIX_1 = ", {^giocando con:stuzzicando:sfiorando e stuzzicando} i suoi capezzoli.",
@@ -5596,6 +5700,126 @@ I feromoni sono stati usati su %s, ma non hanno avuto effetto su [him]. """,
 	SEXACTION_CUNNILINGUS_REACTION_2 = "La [pussy2] di [names2] {^comincia:inizia} a {^rispondere:reagire} alla {^sensazione:stimolazione} della {^leccata di [names1]:lingua di [names1]}.",
 	SEXACTION_CUNNILINGUS_REACTION_3 = "La [pussy2] di [names2] {^trema:freme} in {^risposta:reazione} alla {^sensazione:stimolazione} della {^leccata di [names1]:lingua di [names1]}, la sua eccitazione {^evidente:chiaramente visibile}.",
 	SEXACTION_CUNNILINGUS_REACTION_4 = "La [pussy2] di [names2] {^trema violentemente:si contrae:freme} ad ogni movimento della lingua di [names1]{^ mentre si avvicina rapidamente all'orgasmo: mentre si avvicina all'orgasmo: mentre si avvicina al culmine:}.",
+	SEXACTION_FINGERING_ONGOING_DESC_2 = """[name1] {^curl[s/1]:crook[s/1]} [his1] fingers inside [names2] [pussy2], {^probing:exploring} the {^warm:sensitive} {^walls:interior}.""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_FROM_BEHIND_NICE_1 = """[name1] reach[es/1] around from behind and {^slip[s/1]:slide[s/1]:work[s/1]} [his1] fingers into [names2] [pussy2].""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_FROM_BEHIND_NICE_2 = """[name1] reach[es/1] [his1] hand around from behind, {^finding:reaching} [names2] [pussy2] and begin[s/1] {^fingering:working [his1] fingers into} [him2].""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_FROM_BEHIND_MEAN_1 = """[name1] reach[es/1] around from behind and force[s/1] [his1] fingers into [names2] [pussy2].""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_START_NICE_1 = """[name1] {^slips:slides:works} [his1] fingers into [names2] [pussy2], {^gently:softly} {^pumping:moving} them in and out.""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_START_NICE_2 = """[name1] reach[es/1] between [names2] thighs and begin[s/1] {^fingering:working [his1] fingers into} [names2] [pussy2].""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_START_MEAN_1 = """[name1] force[s/1] [his1] fingers into [names2] [pussy2] without warning.""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_START_MEAN_2 = """[name1] grab[s/1] [name2] and drive[s/1] [his1] fingers into [names2] [pussy2].""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_START_NOVICE_NICE_1 = """[name1] {^fumble[s/1]:work[s/1] tentatively at} [names2] [pussy2], {^still learning:not quite sure of} the right technique.""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_START_NOVICE_MEAN_1 = """[name1] {^clumsily:roughly} push[es/1] [his1] fingers into [names2] [pussy2].""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_START_SKILLED_NICE_1 = """[name1] {^deftly:skillfully} {^works:slides} [his1] fingers into [names2] [pussy2], settling quickly into a {^steady:practiced} rhythm.""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_START_SKILLED_MEAN_1 = """[name1] drive[s/1] [his1] fingers into [names2] [pussy2] {^firmly:with practiced force}, indifferent to [his2] reaction.""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_START_MASTERED_NICE_1 = """[name1] slide[s/1] [his1] fingers into [names2] [pussy2] with {^practiced:knowing} ease, immediately finding the right {^angle:depth:rhythm}.""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_START_MASTERED_MEAN_1 = """[name1] force[s/1] [his1] fingers into [names2] [pussy2] with {^expert:masterful} precision, knowing exactly how to overcome [his2] resistance.""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_AROUSAL4_NICE_1 = """[names2] [pussy2] clench[es/2] {^tightly:eagerly} around [names1] fingers""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_AROUSAL4_NICE_2 = """[name2] {^moan[s/2]:gasp[s/2]} and push[es/2] [his2] hips into [names1] hand[s/1]""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_AROUSAL4_MEAN_1 = """[names2] [pussy2] clench[es/2] around [names1] fingers {^despite:against} [his2] will""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_AROUSAL3_NICE_1 = """[names2] [pussy2] {^trembles:quivers} {^noticeably:warmly} around [names1] fingers""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_AROUSAL3_NICE_2 = """[name2] let[s/2] out a {^soft:low} moan""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_AROUSAL3_MEAN_1 = """[name2] {^clench[es/2] [his2] jaw:press[es/2] [his2] lips together} as [his2] [pussy2] responds against [his2] wishes""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_AROUSAL2_NICE_1 = """[names2] [pussy2] begin[s/2] to {^warm:respond} to [names1] fingers""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_AROUSAL2_MEAN_1 = """[name2] remain[s/2] still, {^refusing:trying not} to react""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_AROUSAL1_NICE_1 = """[names2] [pussy2] {^parts:yields} {^readily:willingly} around [names1] fingers""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_AROUSAL1_MEAN_1 = """[names2] [pussy2] tighten[s/2] against [names1] fingers""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_AROUSAL1_MEAN_2 = """[name2] tense[s/2] and look[s/2] away""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_SKILL_NOVICE_LOW_1 = """. [name1] {^fumble[s/1]:struggle[s/1]} to find the right {^angle:depth:rhythm}.""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_SKILL_NOVICE_HIGH_1 = """. [name1] manage[s/1] to draw a reaction despite [his1] {^inexperience:lack of practice}.""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_SKILL_SKILLED_LOW_1 = """. [name1] {^maintain[s/1]:keep[s/1]} a {^steady:practiced} motion throughout.""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_SKILL_SKILLED_HIGH_1 = """. [name1] {^read[s/1]:adjust[s/1] to} [names2] responses {^well:accurately}, {^picking up:increasing} the pace.""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_SKILL_MASTERED_LOW_1 = """. [name1] {^vary[ies/y1]:adjust[s/1]} depth and pace, reading every {^twitch:response}.""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_SKILL_MASTERED_HIGH_1 = """. [name1] move[s/1] [his1] fingers with {^precise:deliberate} timing, {^building [him2] toward:driving [him2] to the edge of} orgasm.""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_ONGOING_DESC_2 = """[name1] {^work[s/1]:pump[s/1]} [his1] fingers {^steadily:rhythmically} inside [names2] [anus2].""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_FROM_FRONT_NICE_1 = """[name1] reach[es/1] {^down:between} [names2] thighs and {^carefully:gently} {^works:eases} [his1] fingers into [names2] [anus2].""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_FROM_FRONT_NICE_2 = """[name1] slide[s/1] [his1] hand between [names2] legs and {^work[s/1]:ease[s/1]} [his1] fingers into [names2] [anus2].""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_FROM_FRONT_MEAN_1 = """[name1] reach[es/1] between [names2] legs and force[s/1] [his1] fingers into [names2] [anus2].""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_START_NICE_1 = """[name1] {^carefully:gently} {^works:eases} [his1] fingers into [names2] [anus2], giving [name2] time to {^adjust:relax}.""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_START_NICE_2 = """[name1] {^patiently:slowly} coaxes [his1] fingers into [names2] [anus2], {^careful:mindful} of the discomfort.""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_START_MEAN_1 = """[name1] force[s/1] [his1] fingers into [names2] [anus2] without warning.""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_START_MEAN_2 = """[name1] grab[s/1] [name2] and drive[s/1] [his1] fingers into [names2] [anus2].""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_START_NOVICE_NICE_1 = """[name1] {^hesitantly:tentatively} push[es/1] toward [names2] [anus2], {^unsure:uncertain} of the right approach.""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_START_NOVICE_MEAN_1 = """[name1] {^clumsily:awkwardly} force[s/1] [his1] fingers into [names2] [anus2].""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_START_SKILLED_NICE_1 = """[name1] {^carefully:skillfully} coaxes [his1] fingers into [names2] [anus2] with practiced {^care:technique}.""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_START_SKILLED_MEAN_1 = """[name1] drive[s/1] [his1] fingers into [names2] [anus2] {^firmly:without ceremony}, indifferent to [his2] reaction.""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_START_MASTERED_NICE_1 = """[name1] ease[s/1] [his1] fingers into [names2] [anus2] with {^expert:masterful} care, knowing exactly how to minimize {^resistance:discomfort}.""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_START_MASTERED_MEAN_1 = """[name1] force[s/1] [his1] fingers into [names2] [anus2] with {^expert:practiced} {^efficiency:precision}, dismissing any resistance.""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_AROUSAL4_NICE_1 = """[names2] [anus2] clench[es/2] {^intensely:desperately} around [names1] fingers""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_AROUSAL4_NICE_2 = """[name2] {^moan[s/2]:gasp[s/2]} and press[es/2] back against [names1] hand[s/1]""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_AROUSAL4_MEAN_1 = """[names2] [anus2] clench[es/2] around [names1] fingers {^despite:against} [his2] will""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_AROUSAL3_NICE_1 = """[names2] [anus2] {^trembles:quivers} {^noticeably:visibly} around [names1] fingers""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_AROUSAL3_NICE_2 = """[name2] let[s/2] out a {^soft:low} moan""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_AROUSAL3_MEAN_1 = """[name2] {^bite[s/2] [his2] lip:clench[es/2] [his2] jaw} as [his2] [anus2] tightens against [his2] will""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_AROUSAL2_NICE_1 = """[names2] [anus2] begin[s/2] to {^relax:open up} around [names1] fingers""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_AROUSAL2_MEAN_1 = """[name2] remain[s/2] tense but can't fully prevent [his2] body from {^responding:easing}""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_AROUSAL1_NICE_1 = """[names2] [anus2] {^yield[s/2]:give[s/2] way} to [names1] fingers""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_AROUSAL1_MEAN_1 = """[names2] [anus2] tighten[s/2] {^firmly:hard} against [names1] fingers""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_AROUSAL1_MEAN_2 = """[name2] tense[s/2] and {^look[s/2]:glare[s/2]} away""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_SKILL_NOVICE_LOW_1 = """. [name1] {^fumble[s/1]:struggle[s/1]} with the {^angle:approach}, {^still learning:not quite getting it right}.""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_SKILL_NOVICE_HIGH_1 = """. [name1] manage[s/1] to draw a response despite [his1] {^inexperience:lack of technique}.""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_SKILL_SKILLED_LOW_1 = """. [name1] {^maintain[s/1]:keep[s/1]} a {^steady:practiced} pace with {^clear:evident} experience.""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_SKILL_SKILLED_HIGH_1 = """. [name1] {^read[s/1]:pick[s/1] up on} [names2] reactions and {^adjust[s/1]:adapt[s/1]} accordingly.""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_SKILL_MASTERED_LOW_1 = """. [name1] move[s/1] with {^expert:practiced} control, {^reading:feeling} every {^twitch:response}.""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_SKILL_MASTERED_HIGH_1 = """. [name1] {^drive[s/1]:push[es/1]} with {^precise:deliberate} technique, {^building:drawing} [him2] {^toward:to the edge of} orgasm.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_ONGOING_DESC_FULL_1 = """[name1] continue[s/1] {^licking:teasing} and {^kissing:sucking on} [names2] nipples, rolling them {^around:back and forth} with [his1] tongue[/s1].""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_ONGOING_DESC_FULL_2 = """[name1] continue[s/1] {^licking:teasing} and {^kissing:sucking on} [names2] nipples, {^lightly:gently} {^nibbling at:stimulating} them with [his1] teeth.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_ONGOING_DESC_FULL_3 = """[name1] continue[s/1] {^nursing:suckling:slurping at} [names2] nipples.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_START_NICE_1 = """[name1] take[s/1] [names2] nipples into [his1] mouth[/s1], {^gently:softly} {^licking:sucking on:teasing} them.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_START_NICE_2 = """[name1] lean[s/1] in and latch[es/1] onto [names2] nipples, {^nursing:suckling} them {^gently:softly}.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_START_MEAN_1 = """[name1] grab[s/1] [names2] [tits2] and force[s/1] [names2] nipples into [his1] mouth[/s1].""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_START_MEAN_2 = """[name1] clamp[s/1] down on [names2] nipples without warning.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_START_NOVICE_NICE_1 = """[name1] {^hesitantly:tentatively} take[s/1] [names2] nipples into [his1] mouth[/s1], {^unsure:uncertain} of what to do with them.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_START_NOVICE_MEAN_1 = """[name1] {^clumsily:roughly} grab[s/1] at [names2] nipples.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_START_SKILLED_NICE_1 = """[name1] {^deftly:skillfully} suck[s/1] [names2] nipples into [his1] mouth[/s1], immediately applying the right {^pressure:suction}.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_START_SKILLED_MEAN_1 = """[name1] clamp[s/1] down on [names2] nipples with {^firm:practiced} intent.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_START_MASTERED_NICE_1 = """[name1] draw[s/1] [names2] nipples into [his1] mouth[/s1] with {^practiced:effortless} ease, {^instinctively:immediately} knowing how to {^tease:stimulate} them most {^effectively:pleasurably}.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_START_MASTERED_MEAN_1 = """[name1] suck[s/1] [names2] nipples into [his1] mouth[/s1] with {^expert:masterful} intent, knowing exactly how to {^break:overcome} any {^resistance:protest}.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_AROUSAL4_NICE_1 = """[names2] body {^trembles:shudders} {^at every:with each} {^flick:movement} of [names1] tongue[/s1]""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_AROUSAL4_NICE_2 = """[name2] {^moan[s/2]:cr[ies/y2] out} {^passionately:breathlessly} as [names1] mouth[/s1] works [his2] nipples""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_AROUSAL4_MEAN_1 = """[name2] {^moan[s/2]:whimper[s/2]} {^helplessly:involuntarily} at [names1] suckling""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_AROUSAL3_NICE_1 = """[name2] {^moan[s/2]:sigh[s/2]} {^softly:quietly} as [his2] nipples are {^sucked:teased:nursed}""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_AROUSAL3_NICE_2 = """[names2] nipples {^stiffen:harden} {^visibly:noticeably} between [names1] {^lips:teeth}""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_AROUSAL3_MEAN_1 = """[name2] let[s/2] out an {^unwilling:involuntary} sound as [names1] mouth[/s1] works [his2] nipples""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_AROUSAL2_NICE_1 = """[name2] {^begin[s/2]:start[s/2]} to {^respond:react} to [names1] attention on [his2] nipples""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_AROUSAL2_MEAN_1 = """[name2] {^squirm[s/2]:shift[s/2]} but [his2] nipples {^respond:react} to the {^stimulation:suckling}""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_AROUSAL1_NICE_1 = """[name2] {^twitch[es/2]:shiver[s/2]} slightly as [names1] mouth[/s1] {^closes:settles} on [his2] nipples""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_AROUSAL1_MEAN_1 = """[name2] {^squirm[s/2]:flinch[es/2]} as [names1] mouth[/s1] clamps down on [his2] nipples""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_AROUSAL1_MEAN_2 = """[name2] show[s/2] little reaction, still {^uncomfortable:unsettled}""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_SKILL_NOVICE_LOW_1 = """. [name1] {^nurse[s/1]:suckle[s/1]} somewhat {^awkwardly:inexpertly}, {^still finding:not yet finding} the right {^rhythm:technique}.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_SKILL_NOVICE_HIGH_1 = """. [name1] manage[s/1] to draw a reaction despite [his1] {^inexperience:lack of practice}.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_SKILL_SKILLED_LOW_1 = """. [name1] {^work[s/1]:attend[s/1] to} [names2] nipples with {^clear:evident} practice.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_SKILL_SKILLED_HIGH_1 = """. [name1] {^use[s/1]:apply[s/1]} [his1] tongue[/s1] {^skillfully:expertly}, {^adjusting:adapting} to draw out [names2] reaction.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_SKILL_MASTERED_LOW_1 = """. [name1] tend[s/1] to [names2] nipples with {^expert:meticulous} precision.""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_SKILL_MASTERED_HIGH_1 = """. [name1] {^suckle[s/1]:tongue[s/1]} [names2] nipples with {^exquisite:masterful} technique, {^drawing out:coaxing} every {^shiver:gasp} with ease.""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_ONGOING_DESC_2 = """[name1] {^lap[s/1]:tongue[s/1]} at [names2] {^clit:folds}, {^occasionally:periodically} {^probing:dipping} deeper into [names2] [pussy2].""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_START_NICE_1 = """[name1] {^ease[s/1]:lower[s/1] [his1] head} between [names2] thighs and begin[s/1] {^licking:eating out:tending to} [names2] [pussy2].""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_START_NICE_2 = """[name1] nestle[s/1] [his1] face between [names2] thighs and {^begin[s/1]:start[s/1]} {^lapping at:tasting:working} [names2] [pussy2].""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_START_MEAN_1 = """[name1] force[s/1] [name2] down and drive[s/1] [his1] face between [his2] thighs.""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_START_MEAN_2 = """[name1] grab[s/1] [name2] by the {^thighs:hips} and pull[s/1] [him2] to [his1] face.""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_START_NOVICE_NICE_1 = """[name1] {^hesitantly:tentatively} lower[s/1] [his1] head between [names2] thighs, {^still searching:not quite sure of} the right {^technique:approach}.""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_START_NOVICE_MEAN_1 = """[name1] {^clumsily:roughly} push[es/1] [his1] face between [names2] thighs.""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_START_SKILLED_NICE_1 = """[name1] settle[s/1] between [names2] thighs with {^easy:quiet} confidence and get[s/1] to work on [names2] [pussy2].""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_START_SKILLED_MEAN_1 = """[name1] pull[s/1] [name2] to [his1] face and goes to work on [names2] [pussy2] {^without ceremony:without asking}.""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_START_MASTERED_NICE_1 = """[name1] descend[s/1] between [names2] thighs with {^practiced:effortless} ease, immediately finding {^the most:exactly the right} {^sensitive:responsive} {^spots:areas}.""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_START_MASTERED_MEAN_1 = """[name1] pull[s/1] [name2] to [his1] face and goes to work on [names2] [pussy2] with {^expert:masterful} {^efficiency:precision}, knowing [he2] can't hold back for long.""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_AROUSAL4_NICE_1 = """[names2] [pussy2] {^trembles:quivers} {^intensely:wildly} against [names1] {^mouth:tongue[/s1]}""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_AROUSAL4_NICE_2 = """[name2] {^moan[s/2]:cr[ies/y2] out} {^passionately:breathlessly} with every {^flick:stroke} of [names1] tongue[/s1]""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_AROUSAL4_MEAN_1 = """[names2] [pussy2] {^betrays:responds against} [his2] will, {^clenching:trembling} {^desperately:helplessly} against [names1] mouth[/s1]""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_AROUSAL3_NICE_1 = """[names2] [pussy2] {^trembles:quivers} {^noticeably:eagerly} against [names1] {^mouth:tongue[/s1]}""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_AROUSAL3_NICE_2 = """[name2] {^moan[s/2]:sigh[s/2]} {^softly:deeply} as [names1] tongue[/s1] works [his2] [pussy2]""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_AROUSAL3_MEAN_1 = """[name2] press[es/2] [his2] lips together but can't prevent [his2] [pussy2] from responding""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_AROUSAL2_NICE_1 = """[names2] [pussy2] begin[s/2] to {^respond:react} to [names1] tongue[/s1]""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_AROUSAL2_MEAN_1 = """[name2] remain[s/2] {^still:rigid}, {^refusing:trying not} to react""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_AROUSAL1_NICE_1 = """[name2] {^spread[s/2]:part[s/2]} {^willingly:openly} for [names1] mouth[/s1]""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_AROUSAL1_MEAN_1 = """[name2] {^squirm[s/2]:tense[s/2]} at [names1] touch, {^trying:attempting} to {^pull away:close [his2] thighs}""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_AROUSAL1_MEAN_2 = """[name2] {^stare[s/2]:look[s/2]} away, {^refusing:trying not} to acknowledge [names1] actions""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_SKILL_NOVICE_LOW_1 = """. [name1] {^fumble[s/1]:struggle[s/1]} to find the right {^spots:rhythm:approach}.""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_SKILL_NOVICE_HIGH_1 = """. [name1] manage[s/1] to draw a reaction despite [his1] {^inexperienced:unpolished} technique.""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_SKILL_SKILLED_LOW_1 = """. [name1] {^lick[s/1]:work[s/1]} with {^clear:evident} skill, reading [names2] body {^well:accurately}.""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_SKILL_SKILLED_HIGH_1 = """. [name1] sense[s/1] [he2] is close and {^work[s/1]:move[s/1]} with growing urgency.""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_SKILL_MASTERED_LOW_1 = """. [name1] {^tend[s/1]:attend[s/1]} to [names2] [pussy2] with {^expert:masterful} {^focus:precision}.""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_SKILL_MASTERED_HIGH_1 = """. [name1] navigate[s/1] [names2] every reaction with {^flawless:unerring} instinct, {^pushing:driving} [him2] closer with each movement.""", # MISSING TRANSLATION
 	SEXACTION_RIMJOB_INITIATE_1 = "[name1] {^lecca:slurpa} il [anus2] di [names2], stimolando {^l'ingresso:le pareti} con la sua lingua.",
 	SEXACTION_RIMJOB_REACTION_UNCONSCIOUS = "[name2] giace priva di sensi, {^tremando:sussultando} {^leggermente :}mentre il suo [anus2] {^risponde:reagisce} {^alla stimolazione:alla lingua di [names1]}.",
 	SEXACTION_RIMJOB_REACTION_1 = "[name2] mostra poca {^risposta:reazione} {^alla stimolazione:alla lingua di [names1]}.",
@@ -5609,6 +5833,38 @@ I feromoni sono stati usati su %s, ma non hanno avuto effetto su [him]. """,
 	SEXACTION_HANDJOB_REACTION_2 = "[name2] comincia a {^rispondere:reagire} mentre il suo [penis2] viene {^masturbato:accarezzato}.",
 	SEXACTION_HANDJOB_REACTION_3 = "[name2] {^geme:grida} di {^piacere:eccitazione:estasi} mentre il suo [penis2] viene {^masturbato:accarezzato}.",
 	SEXACTION_HANDJOB_REACTION_4 = "Il corpo di [names2] {^trema:freme} {^al minimo movimento delle dita di [names1] contro il suo [penis2]:in risposta alla masturbazione di [names1]}{^ mentre si avvicina rapidamente all'orgasmo: mentre si avvicina all'orgasmo: mentre si avvicina al culmine:}.",
+	SEXACTION_HANDJOB_FROM_BEHIND_NICE_1 = """[name1] reach[es/1] around [name2] and wrap[s/1] [his1] hand[s/1] around [names2] [penis2].""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_FROM_BEHIND_NICE_2 = """[name1] {^slide[s/1]:reach[es/1]} [his1] hand[s/1] around from behind and {^take[s/1]:grip[s/1]} [names2] [penis2].""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_FROM_BEHIND_MEAN_1 = """[name1] reach[es/1] around and {^grab[s/1]:seize[s/1]} [names2] [penis2] from behind.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_START_NICE_1 = """[name1] wrap[s/1] [his1] hand[s/1] around [names2] [penis2] and begin[s/1] {^stroking:working} [it2].""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_START_MEAN_1 = """[name1] grab[s/1] [names2] [penis2] without asking.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_START_MEAN_2 = """[name1] take[s/1] hold of [names2] [penis2] {^abruptly:without warning}, {^ignoring:dismissing} [his2] reaction.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_START_NOVICE_NICE_1 = """[name1] {^hesitantly:carefully} wrap[s/1] [his1] hand[s/1] around [names2] [penis2], {^not quite sure of the right grip:still finding the right angle}.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_START_NOVICE_NICE_2 = """[name1] take[s/1] hold of [names2] [penis2] {^shyly:uncertainly}, {^fumbling:adjusting} before settling in.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_START_NOVICE_MEAN_1 = """[name1] grab[s/1] at [names2] [penis2] with an {^uncertain:unsteady} grip.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_START_SKILLED_NICE_1 = """[name1] take[s/1] hold of [names2] [penis2] with {^easy:quiet} confidence and settle[s/1] into a {^steady:comfortable} rhythm.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_START_SKILLED_MEAN_1 = """[name1] take[s/1] hold of [names2] [penis2] {^efficiently:without hesitation}, indifferent to [his2] discomfort.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_START_MASTERED_NICE_1 = """[name1] take[s/1] hold of [names2] [penis2] with {^practiced:knowing} ease, already {^reading:adjusting to} what [he2] responds to.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_START_MASTERED_MEAN_1 = """[name1] seize[s/1] [names2] [penis2] with {^practiced:expert} hands, confident [he2] can't resist what comes next.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL4_NICE_1 = """[name2] {^moan[s/2]:gasp[s/2]} and press[es/2] into [names1] hand[s/1]""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL4_NICE_2 = """[name2] rock[s/2] [his2] hips against [names1] grip""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL4_MEAN_1 = """[name2] can't stop [his2] hips from {^bucking:jerking} against [names1] grip""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL4_MEAN_2 = """[name2] let[s/2] out a {^stifled:choked} sound despite [himself2]""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL3_NICE_1 = """[name2] let[s/2] out a {^soft:low} moan""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL3_NICE_2 = """[name2] lean[s/2] slightly into [names1] hand[s/1]""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL3_MEAN_1 = """[name2] clench[es/2] [his2] jaw and hold[s/2] back a sound""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL3_MEAN_2 = """[name2] curl[s/2] [his2] fingers but can't stop [his2] body from responding""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL2_NICE_1 = """[name2] exhale[s/2] {^softly:quietly}""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL2_MEAN_1 = """[name2] remain[s/2] still, {^refusing:trying not} to react""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL1_NICE_1 = """[name2] {^accept[s/2]:allow[s/2]} [names1] touch without protest""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL1_MEAN_1 = """[name2] tense[s/2] at [names1] touch""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL1_MEAN_2 = """[name2] {^stare[s/2]:look[s/2]} away""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_SKILL_NOVICE_LOW_1 = """. [name1] {^fumble[s/1]:struggle[s/1]} to maintain a consistent rhythm.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_SKILL_NOVICE_HIGH_1 = """. [name1] {^strain[s/1]:struggle[s/1]} to keep up as [he2] gets close.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_SKILL_SKILLED_LOW_1 = """. [name1] {^maintain[s/1]:keep[s/1]} a {^steady:consistent} pace throughout.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_SKILL_SKILLED_HIGH_1 = """. [name1] press[es/1] harder, sensing [he2] is close.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_SKILL_MASTERED_LOW_1 = """. [name1] {^vary[ies/y1]:adjust[s/1]} pressure and pace, reading every response.""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_SKILL_MASTERED_HIGH_1 = """. [name1] {^stroke[s/1]:jerk[s/1]} with {^precise:deliberate} timing, {^building [him2] toward orgasm:pushing [him2] over the edge}.""", # MISSING TRANSLATION
 	SEXACTION_BLOWJOB_INITIATE_1 = "[name1] prende il [penis2] di [names2] in bocca, {^servendolo con cura:lavorando tutta la lunghezza:avvolgendolo} con la sua lingua.",
 	SEXACTION_BLOWJOB_INITIATE_2 = "[name1] {^bacia il:strofina il viso contro il:lecca la punta del:ammira il} [penis2] di [names2] mentre comincia a {^servirlo:succhiarlo:mungerlo:occuparsene}.",
 	SEXACTION_BLOWJOB_REACTION_UNCONSCIOUS = "[name2] giace priva di sensi, {^tremando:sussultando} {^leggermente :}mentre il suo [penis2] {^risponde:reagisce} {^alla stimolazione:alla bocca di [names1]:al pompino di [names1]}.",
@@ -5616,12 +5872,69 @@ I feromoni sono stati usati su %s, ma non hanno avuto effetto su [him]. """,
 	SEXACTION_BLOWJOB_REACTION_2 = "[name2] comincia a {^rispondere:reagire} mentre il suo [penis2] viene {^succhiato:leccato:pompinato}.",
 	SEXACTION_BLOWJOB_REACTION_3 = "[name2] {^geme:grida} di {^piacere:eccitazione:estasi} mentre il suo [penis2] viene {^succhiato:leccato:pompinato}.",
 	SEXACTION_BLOWJOB_REACTION_4 = "Il corpo di [names2] {^trema:freme} {^al minimo movimento della lingua di [names1] contro il suo [penis2]:in risposta al pompino di [names1]}{^ mentre si avvicina rapidamente all'orgasmo: mentre si avvicina all'orgasmo: mentre si avvicina al culmine:}.",
+	SEXACTION_BLOWJOB_START_NICE_1 = """[name1] {^lower[s/1] [his1] head:lean[s/1] in} and take[s/1] [names2] [penis2] into [his1] mouth[/s1].""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_START_NICE_2 = """[name1] {^kneel[s/1] before:drop[s/1] to [his1] knees in front of} [name2] and begin[s/1] attending [names2] [penis2] with [his1] mouth[/s1].""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_START_MEAN_1 = """[name1] {^force[s/1]:take[s/1]} [names2] [penis2] into [his1] mouth[/s1].""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_START_NOVICE_NICE_1 = """[name1] {^hesitantly:nervously} take[s/1] [names2] [penis2] into [his1] mouth[/s1], {^still working out the angle:unsure of the right approach}.""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_START_NOVICE_NICE_2 = """[name1] kiss[es/1] the tip[/s2] of [names2] [penis2] {^uncertainly:shyly} before {^taking it into:working it into} [his1] mouth[/s1].""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_START_NOVICE_MEAN_1 = """[name1] {^awkwardly:clumsily} take[s/1] [names2] [penis2] into [his1] mouth[/s1], {^still finding the right angle:unsteady in the motion}.""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_START_SKILLED_NICE_1 = """[name1] take[s/1] [names2] [penis2] into [his1] mouth[/s1] with {^easy:quiet} confidence, tongue[/s1] already {^working:moving}.""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_START_SKILLED_MEAN_1 = """[name1] take[s/1] [names2] [penis2] into [his1] mouth[/s1] {^efficiently:without ceremony}, indifferent to [his2] expression.""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_START_MASTERED_NICE_1 = """[name1] take[s/1] [names2] [penis2] deep into [his1] mouth[/s1] with {^practiced:effortless} ease, tongue[/s1] immediately working at exactly the right angle.""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_START_MASTERED_MEAN_1 = """[name1] take[s/1] [names2] [penis2] into [his1] mouth[/s1] with {^practiced:expert} control, knowing precisely how to make [him2] respond despite [his1] reluctance.""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL4_NICE_1 = """[name2] {^thread[s/2]:move[s/2]} [his2] fingers into [names1] hair[/s1], {^pulling [him1] deeper:holding [him1] in place}""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL4_NICE_2 = """[name2] {^moan[s/2]:gasp[s/2]} and rock[s/2] [his2] hips toward [names1] mouth[/s1]""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL4_MEAN_1 = """[name2] can't stop [himself2] from {^grabbing:gripping} [names1] hair[/s1]""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL4_MEAN_2 = """[name2] let[s/2] out a {^sharp:choked} sound despite [himself2]""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL3_NICE_1 = """[name2] let[s/2] out a {^low:soft} moan""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL3_NICE_2 = """[name2] {^rest[s/2]:press[es/2]} [his2] hand on [names1] head""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL3_MEAN_1 = """[name2] {^grip[s/2]:clench[es/2]} [his2] fist and look[s/2] away""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL3_MEAN_2 = """[name2] press[es/2] [his2] lips together but can't suppress the reaction""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL2_NICE_1 = """[name2] exhale[s/2] {^softly:sharply} through [his2] nose""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL2_MEAN_1 = """[name2] remain[s/2] {^rigid:tense}, refusing to react""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL1_NICE_1 = """[name2] {^allow[s/2]:let[s/2]} [name1] work, {^relaxed:unhurried}""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL1_MEAN_1 = """[name2] tense[s/2] as [name1] begin[s/1]""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL1_MEAN_2 = """[name2] {^stare[s/2]:look[s/2]} away""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_SKILL_NOVICE_LOW_1 = """. [name1] {^fumble[s/1]:struggle[s/1]} with the angle.""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_SKILL_NOVICE_HIGH_1 = """. [name1] {^strain[s/1]:struggle[s/1]} to keep up as [he2] gets close.""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_SKILL_SKILLED_LOW_1 = """. [name1] settle[s/1] into a {^steady:comfortable} rhythm.""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_SKILL_SKILLED_HIGH_1 = """. [name1] {^work[s/1]:move[s/1]} with growing urgency.""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_SKILL_MASTERED_LOW_1 = """. [name1] {^vary[ies/y1]:adjust[s/1]} pressure and depth, {^reading:feeling} [his2] every response.""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_SKILL_MASTERED_HIGH_1 = """. [name1] {^push[es/1]:drive[s/1]} [him2] closer with {^precise:deliberate} technique.""", # MISSING TRANSLATION
 	SEXACTION_TITJOB_INITIATE_1 = "[name1] seppellisce il [penis2] di [names2] tra le sue [tits1], {^stringendo:stuzzicando} e {^strofinando:massaggiando:mungendo} [it2].",
 	SEXACTION_TITJOB_REACTION_UNCONSCIOUS = "[name2] giace priva di sensi, {^tremando:sussultando} {^leggermente :}mentre il suo [penis2] {^risponde:reagisce} {^alla stimolazione:alle [tits1] di [names1]}.",
 	SEXACTION_TITJOB_REACTION_1 = "[name2] mostra poca {^risposta:reazione} {^alla stimolazione:agli sforzi di [names1]:alle [tits1] di [names1]}.",
 	SEXACTION_TITJOB_REACTION_2 = "[name2] comincia a {^rispondere:reagire} mentre il suo [penis2] viene {^strofinato:massaggiato:stretto} dalle [tits1] di [names1].",
 	SEXACTION_TITJOB_REACTION_3 = "[name2] {^geme:grida} di {^piacere:eccitazione:estasi} mentre il suo [penis2] viene {^strofinato:massaggiato:stretto} dalle [tits1] di [names1].",
 	SEXACTION_TITJOB_REACTION_4 = "Il corpo di [names2] {^trema:freme} {^al minimo movimento delle [tits1] di [names1] contro il suo [penis2]:in risposta alle [tits1] di [names1]}{^ mentre si avvicina rapidamente all'orgasmo: mentre si avvicina all'orgasmo: mentre si avvicina al culmine:}.",
+	SEXACTION_TITJOB_START_NICE_1 = """[name1] wrap[s/1] [his1] [tits1] around [names2] [penis2] and begin[s/1] {^moving:rocking} {^steadily:slowly}.""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_START_MEAN_1 = """[name1] press[es/1] [names2] [penis2] between [his1] [tits1].""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_START_MEAN_2 = """[name1] trap[s/1] [names2] [penis2] between [his1] [tits1] {^abruptly:without asking}.""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_START_NOVICE_NICE_1 = """[name1] {^hesitantly:carefully} position[s/1] [names2] [penis2] between [his1] [tits1], {^still working out the angle:adjusting into the right position}.""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_START_NOVICE_MEAN_1 = """[name1] {^awkwardly:clumsily} press[es/1] [names2] [penis2] between [his1] [tits1], {^struggling with the angle:unsteady in the motion}.""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_START_SKILLED_NICE_1 = """[name1] settle[s/1] [names2] [penis2] between [his1] [tits1] and begin[s/1] rocking with {^easy:quiet} confidence.""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_START_SKILLED_MEAN_1 = """[name1] trap[s/1] [names2] [penis2] between [his1] [tits1] {^efficiently:without ceremony}.""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_START_MASTERED_NICE_1 = """[name1] take[s/1] [names2] [penis2] between [his1] [tits1] with {^practiced:effortless} ease, already moving at exactly the right angle.""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_START_MASTERED_MEAN_1 = """[name1] pull[s/1] [name2] into [his1] [tits1] with {^practiced:expert} confidence, knowing [he2] has no way to resist.""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_AROUSAL4_NICE_1 = """[name2] {^moan[s/2]:let[s/2] out a low sound} and rock[s/2] [his2] hips into [names1] [tits1]""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_AROUSAL4_NICE_2 = """[name2] reach[es/2] [his2] hands to {^hold:touch} [names1] [tits1]""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_AROUSAL4_MEAN_1 = """[name2] can't stop [himself2] from {^thrusting:rocking} between [names1] [tits1]""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_AROUSAL4_MEAN_2 = """[name2] let[s/2] out a {^stifled:choked} sound despite [himself2]""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_AROUSAL3_NICE_1 = """[name2] let[s/2] out a {^soft:low} {^moan:sound}""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_AROUSAL3_NICE_2 = """[name2] {^rest[s/2]:place[s/2]} [his2] hands {^on [names1] shoulders:lightly on [names1] [tits1]}""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_AROUSAL3_MEAN_1 = """[name2] look[s/2] away as [his2] body starts to respond""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_AROUSAL3_MEAN_2 = """[name2] bite[s/2] [his2] lip but can't keep [his2] hips still""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_AROUSAL2_NICE_1 = """[name2] exhale[s/2] {^softly:quietly}""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_AROUSAL2_MEAN_1 = """[name2] remain[s/2] still, {^trying:refusing} to show any reaction""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_AROUSAL1_NICE_1 = """[name2] watch[es/2] [name1] with {^quiet:mild} interest""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_AROUSAL1_MEAN_1 = """[name2] tense[s/2] as [name1] begin[s/1]""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_AROUSAL1_MEAN_2 = """[name2] {^stare[s/2]:look[s/2]} away""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_SKILL_NOVICE_LOW_1 = """. [name1] {^fumble[s/1]:struggle[s/1]} to keep a consistent motion.""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_SKILL_NOVICE_HIGH_1 = """. [name1] {^strain[s/1]:struggle[s/1]} to maintain the pace as [he2] gets close.""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_SKILL_SKILLED_LOW_1 = """. [name1] rock[s/1] with {^steady:consistent} rhythm.""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_SKILL_SKILLED_HIGH_1 = """. [name1] {^squeeze[s/1]:press[es/1]} harder, sensing [he2] is close.""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_SKILL_MASTERED_LOW_1 = """. [name1] {^adjust[s/1]:shift[s/1]} [his1] angle with ease, always reading what [name2] responds to most.""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_SKILL_MASTERED_HIGH_1 = """. [name1] {^squeeze[s/1]:take[s/1]} [him2] to the edge with {^practiced:expert} motion.""", # MISSING TRANSLATION
 	SEXACTION_TAILJOB_INITIATE_1 = "[name1] avvolge la sua coda attorno al [penis2] di [names2] e lo {^massaggia:accarezza:strofina:masturba}.",
 	SEXACTION_TAILJOB_INITIATE_2 = "[name1] {^stuzzica:sfiora} la {^punta:asta:base} del [penis2] di [names2] mentre lo {^serve:accarezza:cura} con la sua coda.",
 	SEXACTION_TAILJOB_REACTION_UNCONSCIOUS = "[name2] giace priva di sensi, {^tremando:sussultando} {^leggermente :}mentre il suo [penis2] {^risponde:reagisce} {^alla stimolazione:alla coda di [names1]}.",
@@ -5832,6 +6145,80 @@ I feromoni sono stati usati su %s, ma non hanno avuto effetto su [him]. """,
 	SEXACTION_INSERTTAILV_ONGOING_1 = "[name1] scopa la figa di [name2] con la sua coda.",
 	SEXACTION_INSERTTAILV_ONGOING_DESC_1 = "[name1] spinge la sua coda dentro e fuori dalla [pussy2] di [names2].",
 	SEXACTION_INSERTTAILA_ONGOING_1 = "[name1] scopa il culo di [name2] con la sua coda.",
+	SEXACTION_TAILJOB_START_FURRY_NOVICE_1 = """[name1] {^carefully:tentatively} coil[s/1] [his1] tail around [names2] [penis2] — the fur tickle[s/1] awkwardly at first as [name1] try[ies/1] to find a workable grip.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_START_FURRY_SKILLED_1 = """[name1] wrap[s/1] [his1] {^soft:fluffy} tail around [names2] [penis2] with practiced ease, the warm fur {^settling:pressing} snugly against [his2] length.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_START_FURRY_MASTERED_1 = """[name1] draw[s/1] [his1] tail around [names2] [penis2] with unhurried precision — every inch of fur {^placed:applied} exactly where it will matter most.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_START_SCALY_NOVICE_1 = """[name1] {^carefully:awkwardly} coil[s/1] [his1] tail around [names2] [penis2] — the cool scales {^surprising:startling} [name2] as [name1] fumble[s/1] to find the right angle.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_START_SCALY_SKILLED_1 = """[name1] coil[s/1] [his1] {^smooth:sleek} tail around [names2] [penis2] with practiced ease, the cool scales {^settling:pressing} firmly against [his2] length.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_START_SCALY_MASTERED_1 = """[name1] draw[s/1] [his1] {^scaled:smooth} tail around [names2] [penis2] in one fluid motion — each coil {^placed:angled} to maximize pressure and friction.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_ONGOING_FURRY_NOVICE_1 = """[name1] stroke[s/1] [names2] [penis2] with [his1] tail, the rhythm {^uneven:inconsistent} — [he1] {^shift[s/1]:adjust[s/1]} often, still learning how to use [his1] tail this way.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_ONGOING_FURRY_NOVICE_2 = """[name1] work[s/1] [his1] fluffy tail against [names2] [penis2] with more enthusiasm than technique, the fur {^bunching:shifting} awkwardly between strokes.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_ONGOING_FURRY_SKILLED_1 = """[name1] {^steadily:rhythmically} stroke[s/1] [names2] [penis2] with [his1] {^soft:fluffy} tail, the warm {^fur:fluff} {^sliding:dragging} {^pleasantly:snugly} along [his2] length.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_ONGOING_FURRY_SKILLED_2 = """[name1] work[s/1] [his1] {^thick:dense} tail in {^long:steady} strokes along [names2] [penis2], the {^silky:plush} fur pressing warm and consistent against [him2].""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_ONGOING_FURRY_MASTERED_1 = """[name1] {^read[s/1]:watch[es/1]} every reaction as [he1] work[s/1] [his1] {^soft:silky} tail against [names2] [penis2] — {^adjusting:shifting} pressure and rhythm with {^effortless:practiced} precision.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_ONGOING_FURRY_MASTERED_2 = """[name1] vary[ies/1] {^the speed:the grip:the pressure} expertly, [his1] {^plush:soft} tail {^drawing:coaxing} exactly the response [he1] want[s/1] from [name2].""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_ONGOING_SCALY_NOVICE_1 = """[name1] stroke[s/1] [names2] [penis2] with [his1] {^scaled:reptilian} tail, the motion {^uneven:halting} — [he1] {^shift[s/1]:readjust[s/1]} frequently, still working out the mechanics.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_ONGOING_SCALY_NOVICE_2 = """[name1] work[s/1] [his1] tail against [names2] [penis2] with {^uncertain:clumsy} strokes, the cool scales catching at odd angles as [he1] try[ies/1] to find the right motion.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_ONGOING_SCALY_SKILLED_1 = """[name1] {^steadily:rhythmically} stroke[s/1] [names2] [penis2] with [his1] {^scaled:smooth} tail, the {^cool:firm} surface {^gliding:pressing} along [his2] length.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_ONGOING_SCALY_SKILLED_2 = """[name1] work[s/1] the {^sleek:smooth} length of [his1] {^scaled:reptilian} tail against [names2] [penis2], each stroke {^cool:firm} and {^deliberate:controlled}.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_ONGOING_SCALY_MASTERED_1 = """[name1] {^read[s/1]:watch[es/1]} every reaction as [he1] work[s/1] [his1] {^scaled:smooth} tail against [names2] [penis2] — {^adjusting:varying} the pressure and angle with {^effortless:practiced} control.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_ONGOING_SCALY_MASTERED_2 = """[name1] vary[ies/1] {^the grip:the speed:the pressure} with expert ease, [his1] {^sleek:smooth} tail {^drawing:coaxing} exactly the response [he1] want[s/1] from [name2].""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_SKILL_NOVICE_LOW_1 = """[name2] {^shift[s/2]:fidget[s/2]} slightly — [name1]'s technique is {^rough:uneven}, and [name2] can't quite settle into it.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_SKILL_NOVICE_HIGH_1 = """[name2] can't help {^responding:reacting} despite [name1]'s clumsy technique — the sensation is still there, {^if imprecise:even if uneven}.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_SKILL_SKILLED_LOW_1 = """[name1]'s practiced technique is methodical — [name2] {^begin[s/2]:start[s/2]} to {^sink into it:respond} as the rhythm {^find[s/2]:settle[s/2] into} its groove.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_SKILL_SKILLED_HIGH_1 = """[name1]'s confident strokes are drawing {^clear:unmistakable} reactions from [name2] — there's a skill to it, and [he2] {^feel[s/2]:know[s/2]} it.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_SKILL_MASTERED_LOW_1 = """[name1] work[s/1] with {^patient:unhurried} expertise — taking [his1] time, {^building:coaxing} slowly and {^deliberately:precisely}.""", # MISSING TRANSLATION
+	SEXACTION_TAILJOB_SKILL_MASTERED_HIGH_1 = """[name1] know[s/1] exactly what [he1]'s doing — each motion {^precisely:expertly} placed, and [name2] {^can barely contain:is struggling to hold back} the response.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_SHIFT_1 = """[name1] {^reposition[s/1]:adjust[s/1] [his1] tail}, pressing against a {^new angle:different spot} inside [name2].""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_START_FURRY_NOVICE_1 = """[name1] {^awkwardly:carefully} press[es/1] [his1] tail against [names2] [pussy2] — the insertion {^clumsy:uncertain}, [he1] push[es/1] too far then {^pull[s/1] back:repositions}, still figuring out the right angle.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_START_FURRY_SKILLED_1 = """[name1] {^ease[s/1]:press[es/1]} the {^thick:broad} base of [his1] {^fluffy:furred} tail into [names2] [pussy2] with practiced care, the warm fur {^stretching:filling} [him2] as [name1] push[es/1] deeper.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_START_FURRY_MASTERED_1 = """[name1] slide[s/1] [his1] furred tail into [names2] [pussy2] with unhurried ease — reading [his2] reaction as [he1] push[es/1] in, finding exactly the right depth and angle at once.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_START_SCALY_NOVICE_1 = """[name1] {^awkwardly:carefully} press[es/1] [his1] tail against [names2] [pussy2] — [name2] {^wince[s/2]:gasp[s/2] sharply} at the {^unexpected:sudden} cool hardness as [name1] push[es/1] in at the wrong angle.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_START_SCALY_SKILLED_1 = """[name1] slide[s/1] [his1] {^scaled:smooth} tail into [names2] [pussy2] with practiced ease, the {^cool:firm} surface {^stretching:pressing} [him2] open as [name1] ease[s/1] deeper.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_START_SCALY_MASTERED_1 = """[name1] guide[s/1] [his1] {^scaled:smooth} tail into [names2] [pussy2] with expert precision — angling it just right on the first push, watching [name2]'s expression to {^adjust:calibrate} as [he1] go[es/1] deeper.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_ONGOING_FURRY_NOVICE_1 = """[name1] thrust[s/1] [his1] tail in and out of [names2] [pussy2] with {^clumsy:uncertain} strokes — the rhythm {^uneven:erratic}, pausing to {^readjust:reposition} when the angle slip[s/1].""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_ONGOING_FURRY_NOVICE_2 = """[name1] work[s/1] [his1] furred tail in [names2] [pussy2] with more effort than elegance, {^adjusting:repositioning} frequently as [he1] try[ies/1] to maintain a consistent rhythm.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_ONGOING_FURRY_SKILLED_1 = """[name1] thrust[s/1] [his1] {^soft:fluffy} tail in and out of [names2] [pussy2], the warm fur {^dragging:rubbing} {^pleasantly:deliciously} against [his2] walls.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_ONGOING_FURRY_SKILLED_2 = """[name1] work[s/1] [his1] {^thick:dense} furred tail in and out of [names2] [pussy2], the {^plush:warm} texture {^filling:pressing} [him2] with every confident stroke.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_ONGOING_FURRY_MASTERED_1 = """[name1] drive[s/1] [his1] soft tail in and out of [names2] [pussy2] with expert rhythm — {^varying:shifting} the depth and angle {^effortlessly:precisely}, drawing each reaction from [name2] with intent.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_ONGOING_FURRY_MASTERED_2 = """[name1] work[s/1] [his1] furred tail with {^masterful:practiced} precision — knowing exactly how deep to push and when to pull, and [name2]'s reactions make it {^clear:obvious} that [he2] can feel the difference.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_ONGOING_SCALY_NOVICE_1 = """[name1] thrust[s/1] [his1] {^scaled:reptilian} tail in and out of [names2] [pussy2] with {^clumsy:uneven} strokes — the angle {^slipping:shifting} unpredictably as [name1] try[ies/1] to find [his1] rhythm.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_ONGOING_SCALY_NOVICE_2 = """[name1] work[s/1] [his1] {^scaled:smooth} tail inside [names2] [pussy2] with {^uncertain:halting} motions, still learning to control the firm surface effectively.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_ONGOING_SCALY_SKILLED_1 = """[name1] thrust[s/1] [his1] {^scaled:smooth} tail in and out of [names2] [pussy2], the {^cool:firm} surface {^dragging:pressing} against [his2] walls with every motion.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_ONGOING_SCALY_SKILLED_2 = """[name1] work[s/1] the {^hard:smooth} length of [his1] {^scaled:reptilian} tail in and out of [names2] [pussy2], each thrust {^deliberate:firm} and well-timed.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_ONGOING_SCALY_MASTERED_1 = """[name1] work[s/1] [his1] {^scaled:smooth} tail with {^masterful:expert} control — each stroke {^precisely:deliberately} angled, using the ridges of [his1] scales to {^draw out:maximize} [names2] response.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_ONGOING_SCALY_MASTERED_2 = """[name1] drive[s/1] [his1] {^scaled:reptilian} tail with {^practiced:expert} precision — varying depth and angle {^effortlessly:intentionally}, reading every one of [names2] reactions with ease.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_SKILL_NOVICE_LOW_1 = """[name2] {^fidget[s/2]:tense[s/2] slightly} — the insertion is present but [name1]'s {^clumsy:uneven} rhythm makes it hard to settle into.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_SKILL_NOVICE_HIGH_1 = """[name2] can't help {^responding:reacting} despite [name1]'s {^uneven:uncertain} technique — the sensation is there even if the delivery is rough.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_SKILL_SKILLED_LOW_1 = """[name1]'s practiced motions are beginning to build something in [name2] — {^deliberate:measured}, {^patient:steady}.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_SKILL_SKILLED_HIGH_1 = """[name2]'s reactions to [names1] practiced technique are {^clear:unmistakable} — [he2] can feel the confidence behind every stroke.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_SKILL_MASTERED_LOW_1 = """[name1] work[s/1] with {^patient:calculated} expertise, taking [his1] time — {^building:coaxing} [name2] slowly and {^deliberately:with clear intent}.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILV_SKILL_MASTERED_HIGH_1 = """[name1] know[s/1] exactly what [he1]'s doing — each motion {^precisely:expertly} calibrated, and [name2] {^can barely contain:is overwhelmed by} the response.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_SHIFT_1 = """[name1] {^reposition[s/1]:adjust[s/1] [his1] tail}, pressing against a {^new angle:different spot} inside [name2].""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_START_FURRY_NOVICE_1 = """[name1] {^awkwardly:carefully} press[es/1] [his1] tail against [names2] [ass2] — the insertion {^clumsy:uncertain}, [he1] push[es/1] too far then {^pull[s/1] back:repositions}, still figuring out the angle.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_START_FURRY_SKILLED_1 = """[name1] {^ease[s/1]:press[es/1]} the {^thick:broad} base of [his1] {^fluffy:furred} tail into [names2] [ass2] with practiced care, the warm fur {^stretching:filling} [him2] as [name1] push[es/1] deeper.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_START_FURRY_MASTERED_1 = """[name1] slide[s/1] [his1] furred tail into [names2] [ass2] with unhurried ease — reading [his2] reaction as [he1] push[es/1] in, finding exactly the right depth and angle at once.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_START_SCALY_NOVICE_1 = """[name1] {^awkwardly:carefully} press[es/1] [his1] tail against [names2] [ass2] — [name2] {^clench[es/2]:tense[s/2] sharply} at the {^unexpected:sudden} cool hardness as [name1] push[es/1] in at the wrong angle.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_START_SCALY_SKILLED_1 = """[name1] slide[s/1] [his1] {^scaled:smooth} tail into [names2] [ass2] with practiced ease, the {^cool:firm} surface {^stretching:pressing} [him2] open as [name1] ease[s/1] deeper.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_START_SCALY_MASTERED_1 = """[name1] guide[s/1] [his1] {^scaled:smooth} tail into [names2] [ass2] with expert precision — angling it just right on the first push, watching [name2]'s expression to {^adjust:calibrate} as [he1] go[es/1] deeper.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_ONGOING_FURRY_NOVICE_1 = """[name1] thrust[s/1] [his1] tail in and out of [names2] [ass2] with {^clumsy:uncertain} strokes — the rhythm {^uneven:erratic}, pausing to {^readjust:reposition} when the angle slip[s/1].""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_ONGOING_FURRY_NOVICE_2 = """[name1] work[s/1] [his1] furred tail in [names2] [ass2] with more effort than elegance, {^adjusting:repositioning} frequently as [he1] try[ies/1] to maintain a consistent rhythm.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_ONGOING_FURRY_SKILLED_1 = """[name1] thrust[s/1] [his1] {^soft:fluffy} tail in and out of [names2] [ass2], the warm fur {^dragging:rubbing} against [his2] walls with every motion.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_ONGOING_FURRY_SKILLED_2 = """[name1] work[s/1] [his1] {^thick:dense} furred tail in and out of [names2] [ass2], the {^plush:warm} texture {^filling:pressing} [him2] with every confident stroke.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_ONGOING_FURRY_MASTERED_1 = """[name1] drive[s/1] [his1] soft tail in and out of [names2] [ass2] with expert rhythm — {^varying:shifting} depth and angle {^effortlessly:precisely}, drawing each reaction from [name2] with intent.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_ONGOING_FURRY_MASTERED_2 = """[name1] work[s/1] [his1] furred tail with {^masterful:practiced} precision — knowing exactly how deep to push and when to pull, and [name2]'s reactions make it {^clear:obvious} that [he2] can feel the difference.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_ONGOING_SCALY_NOVICE_1 = """[name1] thrust[s/1] [his1] {^scaled:reptilian} tail in and out of [names2] [ass2] with {^clumsy:uneven} strokes — the angle {^slipping:shifting} unpredictably as [name1] try[ies/1] to find [his1] rhythm.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_ONGOING_SCALY_NOVICE_2 = """[name1] work[s/1] [his1] {^scaled:smooth} tail inside [names2] [ass2] with {^uncertain:halting} motions, still learning to control the firm surface effectively.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_ONGOING_SCALY_SKILLED_1 = """[name1] thrust[s/1] [his1] {^scaled:smooth} tail in and out of [names2] [ass2], the {^cool:firm} surface {^dragging:pressing} against [his2] walls with each stroke.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_ONGOING_SCALY_SKILLED_2 = """[name1] work[s/1] the {^hard:smooth} length of [his1] {^scaled:reptilian} tail in and out of [names2] [ass2], each thrust {^deliberate:firm} and well-timed.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_ONGOING_SCALY_MASTERED_1 = """[name1] work[s/1] [his1] {^scaled:smooth} tail with {^masterful:expert} control — each stroke {^precisely:deliberately} angled, using the ridges of [his1] scales to {^draw out:maximize} [names2] response.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_ONGOING_SCALY_MASTERED_2 = """[name1] drive[s/1] [his1] {^scaled:reptilian} tail with {^practiced:expert} precision — varying depth and angle {^effortlessly:intentionally}, reading every one of [names2] reactions with ease.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_SKILL_NOVICE_LOW_1 = """[name2] {^tense[s/2]:clench[es/2] slightly} — the insertion is present but [name1]'s {^clumsy:uneven} rhythm makes it hard to settle into.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_SKILL_NOVICE_HIGH_1 = """[name2] can't help {^responding:reacting} despite [name1]'s {^uneven:uncertain} technique — the sensation is there even if the delivery is rough.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_SKILL_SKILLED_LOW_1 = """[name1]'s practiced motions are beginning to build something in [name2] — {^deliberate:measured}, {^patient:steady}.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_SKILL_SKILLED_HIGH_1 = """[name2]'s reactions to [names1] practiced technique are {^clear:unmistakable} — [he2] can feel the confidence behind every stroke.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_SKILL_MASTERED_LOW_1 = """[name1] work[s/1] with {^patient:calculated} expertise, taking [his1] time — {^building:coaxing} [name2] slowly and {^deliberately:with clear intent}.""", # MISSING TRANSLATION
+	SEXACTION_INSERTTAILA_SKILL_MASTERED_HIGH_1 = """[name1] know[s/1] exactly what [he1]'s doing — each motion {^precisely:expertly} calibrated, and [name2] {^can barely contain:is overwhelmed by} the response.""", # MISSING TRANSLATION
 	SEXACTION_INSERTTAILA_ONGOING_DESC_1 = "[name1] spinge la sua coda dentro e fuori dal [ass2] di [names2].",
 	SEXACTION_TRIBADISM_ONGOING_1 = "[name1] e [name2] strofinano le [their] fighe insieme.",
 	SEXACTION_TRIBADISM_ONGOING_DESC_1 = "[name1] e [name2] continuano a strofinare le [their] [pussy3] insieme.",
@@ -20400,6 +20787,7 @@ In combattimento ripristina una quantità di salute pari al tuo valore di guarig
 	JEAN_WEDDING_SS = "Diventa il marito di Jean.",
 	JEAN_DREAM_SS = "Vedi Jean in un sogno.",
 	ROUGE_SEX_SS = "Impressiona Rouge abbastanza per giacerci.",
+	ERDYNA_CAMPFIRE_SS = """Flirt with a dragon by night's fire.""", # MISSING TRANSLATION
 	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_1 = """Spieghi ad Alise che uno dei tuoi schiavi ha bisogno di un cambio di vestiti.
 
 {color=yellow|— Ebbene, sì, l'abbigliamento adeguato dei servitori è una delle nostre specialità. Si sa, i vestiti giusti fanno una grande differenza anche per i corpi meno ideali, naturalmente abbiamo sarti che possono adattarsi a qualsiasi tipo di corpo richiesto. Ma cosa stai cercando, comunque?}""",
@@ -24655,6 +25043,9 @@ Si ferma come se ricordasse qualcosa.
 	ROUGE_MEET_OPTION_INFORMED = "Sei piuttosto ben informato.",
 	ROUGE_MEET_OPTION_SPIES = "Non ti avevo preso per uno che spia le persone.",
 	ROUGE_MEET_MELCHOR_REASON = "{color=yellow|Melchor: — L'Impero tiene d'occhio le terre circostanti e gli eventi importanti. Comunque, perché hai richiesto questo incontro? Spero non abbia niente a che fare con la volpe sotto la tua custodia. Non capisco ancora perché sia andata via con te, quindi ti terrò d'occhio attentamente qui.}",
+	ROUGE_TAX_MELCHOR_LETTER_1 = """Melchor glances up as you enter.
+
+{color=yellow|Melchor: — You again. I have no infromation on your ordeal worth sharing yet.}""", # MISSING TRANSLATION
 	ROUGE_MEET_OPTION_LETTER = "Ho una lettera per te.",
 	ROUGE_MEET_OPTION_ROUGE_MESSAGE = "In realtà, Rouge mi ha chiesto di portarti questo messaggio.",
 	ROUGE_MEET_MELCHOR_LETTER = """Con uno sguardo non meno infastidito prende la lettera da Rouge e ne rompe l'incantamento con il suo sigillo personale. Scorrendo rapidamente lo scritto, te la rispinge.
@@ -24908,6 +25299,8 @@ Rouge's smile thins for a moment.
 	ROUGE_MELCHOR_VISIT_OPTION_LETTER = "*Consegna la lettera di Rouge.*",
 	ROUGE_MELCHOR_VISIT_OPTION_RAID = "*Segnala il magazzino.*",
 	ROUGE_MELCHOR_VISIT_OPTION_REWARD = "*Consulta sul compito del magazzino.*",
+	ROUGE_MELCHOR_VISIT_OPTION_TAX_INTRO = """*Visit Melchor's office.*""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_VISIT_OPTION_TAX_RETURN = """*Return with the tax records.*""", # MISSING TRANSLATION
 
 	ROUGE_CAPITAL_OPTION_FIND = "Trova Rouge",
 	ROUGE_CAPITAL_OPTION_MELCHOR = "Visita Melchor",
@@ -24915,6 +25308,108 @@ Rouge's smile thins for a moment.
 	ROUGE_CAPITAL_OPTION_WAREHOUSE = "Magazzino sospetto",
 	ROUGE_CAPITAL_OPTION_RAID = "Incontra Melchor",
 	ROUGE_CAPITAL_OPTION_REWARD = "Incontra Melchor",
+	ROUGE_TAX_SETTLEMENT_NAME = """Remote Settlement""", # MISSING TRANSLATION
+	ROUGE_TAX_SETTLEMENT_DESC = """A remote emperila settlement with outstanding tax obligations.""", # MISSING TRANSLATION
+	ROUGE_TAX_SETTLEMENT_VISIT = """Investigate the settlement.""", # MISSING TRANSLATION
+	ROUGE_CAPITAL_OPTION_TAX_REGION = """Administrative region""", # MISSING TRANSLATION
+	ROUGE_QUEST_STAGE_TAX_INTRO = """Visit the Chancellor's office in the capital.""", # MISSING TRANSLATION
+	ROUGE_QUEST_STAGE_TAX_ERRAND = """Travel to the administrative region and settle the unpaid taxes.""", # MISSING TRANSLATION
+	ROUGE_QUEST_STAGE_TAX_DONE = """Return to Melchor with the signed records.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_INTRO_START = """{color=yellow|Melchor: — You again. [name], if I'm not mistaken. Mayor of Aliron, hunting down artifacts and already involved with the elves and the dwarven kingdom.}""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_OPTION_INFORMED = """You are quite well informed.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_OPTION_SPIES = """I didn't take you for someone who follows foreign mayors.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_OPTION_DIRECT = """Then you already know why I came to the capital.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_INTRO_RESPONSE = """{color=yellow|Melchor: — The Empire keeps close watch on surrounding lands and important events. Your movements are hardly subtle.}
+
+Melchor lets the matter hang long enough to make clear he expects you to speak.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_ARTIFACT_PUSH = """You explain that you are searching for an artifact hidden somewhere in the capital and need information to find it.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_OPTION_ARTIFACT_INFO = """I need information about the artifact hidden in the capital.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_OPTION_ARTIFACT_DIRECT = """Let's be direct. I'm looking for an artifact, and I need your help finding it.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_OPTION_ARTIFACT_MATTERS = """If you know what I'm after, then you know this matters.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_REFUSAL = """{color=yellow|Melchor: — Let me spare you the effort of dressing this up as necessity. I will not share information about imperial relics with an outsider. If there is an artifact within the capital, then it falls under imperial authority, not the curiosity of Aliron's mayor.}
+
+He presses his seal against the topmost document with more force than necessary.
+
+{color=yellow|Melchor: — You may have earned some reputation beyond our borders, but reputation is not jurisdiction.}""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_OPTION_EARN = """Surely there's some way I can earn it?""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_OPTION_PRICE = """I need this information, name your price.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_ASSIGNED = """{color=yellow|Melchor: — If you insist on being useful to the Empire, then prove you can handle imperial work without turning it into another spectacle. There is a remote administrative region that has fallen behind on its tax obligations. You will go there, collect what is owed, and return with the proper records.}""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_OPTION_COMPLAIN_TAXES = """You're sending me to collect taxes?""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_OPTION_COMPLAIN_MUNDANE = """What the hell kind of mundane task is that?""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_OPTION_ACCEPT = """Fine. Give me the location.""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_COMPLAINT_RESPONSE = """{color=yellow|Melchor: — Yes. The machinery that keeps cities fed, soldiers paid, and roads maintained. Did you expect a glorious trial? This is how it works for capital clerks. They earn it through boring, mundane work that proves discipline, patience, and obedience to procedure. It is a tradition meant to test one's loyalty and responsibility.}""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_CLOSED = """{color=yellow|Melchor: — You'll get the details on the spot. Now you better not waste my time.}
+
+He writes a short authorization, seals it, and slides it across the desk. You take the document and the marked location.""", # MISSING TRANSLATION
+	ROUGE_TAX_REGION_ARRIVAL = """You arrive at the administrative region marked on Melchor's document. The place is far from the capital's polished streets, with scattered farms, rough roads, and a handful of settlements grouped around old imperial offices.
+
+After presenting Melchor's authorization, you spend some time checking the ledgers and asking around. Most settlements have paid late but eventually settled their obligations. One name, however, appears again and again in the unpaid records — a settlement that has not paid any standard taxes for several periods in a row.""", # MISSING TRANSLATION
+	ROUGE_TAX_REGION_OFFICIALS_BRIEF = """The local office stands apart from the rest of the settlement. Unlike the residents outside, the officials waiting there are humans from the Empire, dressed in formal but travel-worn uniforms.
+
+{color=aqua|Official: — You must be the one sent from the capital. Good. Perhaps now someone will finally take this seriously.}
+
+{color=aqua|Official: — The orcs here have been refusing to pay their standard taxes. Not delayed, not disputed through proper channels, simply refused. They have grown increasingly bold about ignoring imperial authority. We have tried reminders, warnings, and negotiations. If this continues, the Empire might be forced to send some soldiers to investigate.}""", # MISSING TRANSLATION
+	ROUGE_TAX_OPTION_GO_SEE = """I'll go see what's happening.""", # MISSING TRANSLATION
+	ROUGE_TAX_OPTION_HEAR_THEM = """If they refuse imperial authority, I need to hear it from them.""", # MISSING TRANSLATION
+	ROUGE_TAX_DRUKAR_APPROACH = """You cross the settlement under the wary eyes of its residents. Some stop working as you pass, others mutter to each other in low voices, but no one tries to block your way.
+
+At the building the official described, you find several orcs gathered in a tense meeting.""", # MISSING TRANSLATION
+	ROUGE_TAX_DRUKAR_SPEECH = """An older orc stands at the center of the hall, his heavy voice carrying over the crowd. The others listen with clenched fists and grim faces.
+
+{color=yellow|Drukar: — How many more seasons will we bow our heads and hand over what little we have? We built this place with our own hands. Our people bleed here, not the fat officials hiding behind seals and ledgers. Orcs should answer to orc rulers, not distant humans who remember us only when they want payment!}
+
+The gathered orcs answer him with rough voices of agreement before your presence is noticed.""", # MISSING TRANSLATION
+	ROUGE_TAX_DRUKAR_MEET_NONORC = """{color=yellow|Drukar: — Another imperial messenger? Come to threaten us with papers and soldiers?}
+
+You explain that Melchor sent you to investigate the unpaid taxes and return with the proper records.""", # MISSING TRANSLATION
+	ROUGE_TAX_DRUKAR_MEET_ORC = """{color=yellow|Drukar: — You? An orc? Why are you carrying the Empire's leash for them?}
+
+You explain that Melchor sent you to investigate the unpaid taxes and return with the proper records.
+
+{color=yellow|Drukar: — So they found one of our own to dress their demands in a friendlier face. Doesn't change what you came for. Our money and our obedience.}""", # MISSING TRANSLATION
+	ROUGE_TAX_DRUKAR_REFUSE = """{color=yellow|Drukar: — We refuse. Go back and tell your Chancellor that this settlement is done feeding the Empire.}""", # MISSING TRANSLATION
+	ROUGE_TAX_OPTION_FORCE = """Then I'll make you pay by force.""", # MISSING TRANSLATION
+	ROUGE_TAX_OPTION_PERSUADE_PAY = """You better forget about your rebellion — you are too weak against the Empire.""", # MISSING TRANSLATION
+	ROUGE_TAX_OPTION_PERSUADE_COVERUP = """Keep your rebellion quiet and pay for now. Let the records say nothing happened.""", # MISSING TRANSLATION
+	ROUGE_TAX_OPTION_PAY = """Forget it, you're not worth the trouble. I'll pay for it myself. (-6000 gold)""", # MISSING TRANSLATION
+	ROUGE_TAX_OPTION_LEAVE = """I'll come back later.""", # MISSING TRANSLATION
+	ROUGE_TAX_DRUKAR_COMBAT_START = """{color=yellow|Drukar: — Then come take them.}
+
+Several orcs draw their weapons around him.""", # MISSING TRANSLATION
+	ROUGE_TAX_DRUKAR_VICTORY = """With Drukar and his supporters defeated, the remaining orcs lose the will to resist. The settlement's leaders surrender the overdue taxes and sign the necessary records with sullen obedience.""", # MISSING TRANSLATION
+	ROUGE_TAX_DRUKAR_PERSUADE_PAY = """You tell Drukar that whatever anger he feels, an open refusal only gives the Empire an excuse to crush the settlement. If he wants to protect his people, he needs to choose a battle they can survive.
+
+For a while, the hall stays tense. Then Drukar spits to the side and lowers his hand from his weapon.
+
+{color=yellow|Drukar: — Fine. We pay this time.}
+
+The settlement's leaders gather the overdue taxes and sign the records, though none of them look pleased about it.""", # MISSING TRANSLATION
+	ROUGE_TAX_DRUKAR_PERSUADE_COVERUP = """You tell Drukar that rebellion cannot begin with a missing tax record. If the Empire notices open defiance now, soldiers will arrive before the settlement is ready.
+
+Drukar studies you with narrowed eyes, anger giving way to reluctant calculation.
+
+{color=yellow|Drukar: — Hmph. So we buy silence with the coin they demanded anyway.}
+
+He turns back to the gathered orcs. The settlement's leaders hand over the overdue taxes and sign the records, keeping their resentment carefully quiet.""", # MISSING TRANSLATION
+	ROUGE_TAX_DRUKAR_PAY = """You offer to cover the missing taxes yourself, making it clear that the payment will end the immediate dispute but not solve the settlement's larger grievance.
+
+Drukar looks at you in open suspicion.
+
+{color=yellow|Drukar: — You would pay the Empire from your own purse just to spare them trouble?}
+
+{color=yellow|Drukar: — Fine. If you want to waste your gold, we won't stop you.}
+
+You pay the overdue amount and secure the proper records from the local office.""", # MISSING TRANSLATION
+	ROUGE_TAX_REGION_RETURN = """{color=yellow|Drukar: — Back again? Did the Empire give you better threats, or did you come up with them yourself?}""", # MISSING TRANSLATION
+	ROUGE_MELCHOR_TAX_RETURN = """You return to Melchor's office with the signed records and proof that the overdue taxes have been settled. He reads through the documents carefully, lingering on every seal and signature before setting them aside.
+
+{color=yellow|Melchor: — Hmph. Adequate. The payments are accounted for, the records are clean, and the region has been reminded that imperial obligations are not optional.}
+
+He leans back, his severe expression easing only slightly.
+
+{color=yellow|Melchor: — I will look into the information you requested. Imperial records are not something I can simply hand over at a whim, even now. It will take some time.}
+
+{color=yellow|Melchor: — You have done what I asked. Return later, and we will see what can be found.}""", # MISSING TRANSLATION
 	ROUGE_CHAT_OPTION_REPORT = "Il tuo compito è fatto.",
 	
 	ROUGE_FURNITURE_REWARD = """{color=yellow|Rouge: — Quindi l'hai davvero fatto. La mia stanza finalmente avrà l'aspetto di qualcuno con gusto.}
@@ -26410,6 +26905,9 @@ Incastonata nella roccia davanti a voi c'è un paio di porte gigantesche. Sono v
 Erdyna si avvicina, strizzando gli occhi mentre studia i simboli.
 
 {color=yellow|Erdyna: — Non è una scrittura che abbia mai visto. Non sembra imperiale, nemmeno nanica.}""",
+	ACT4_CATACOMB_DEEPER_1B = """Erdyna steps closer, narrowing her eyes as she studies the symbols.
+
+{color=yellow|Erdyna: — That's no script I've ever seen before. It doesn't look imperial, not dwarven either.}""", # MISSING TRANSLATION
 	ACT4_CATACOMB_DEEPER_1_OPTION_EXAMINE = "Esamina la scritta.",
 	ACT4_CATACOMB_DOORS_HELEVIEL_0 = """Le lettere sono allo stesso tempo taglienti ed eleganti, ogni linea incisa con precisione innaturale. Anche senza capirle, c'è qualcosa di deliberato e severo nella loro forma, come se l'iscrizione non fosse mai stata pensata per dare il benvenuto a nessuno.
 
@@ -26428,6 +26926,15 @@ Erdyna si volta verso di lei bruscamente.
 Heleviel annuisce lentamente, ancora fissando le porte.
 
 {color=yellow|Heleviel: — Un clan d'élite delle tradizioni elfiche più antiche. Segretissimi anche per i nostri standard, orgogliosi e profondamente interessati a preservare la propria eredità. Mantengono ancora la loro sede nelle nostre terre.}""",
+	ACT4_CATACOMB_DOORS_HELEVIEL_0B = """{color=yellow|Heleviel: — This is ancient elven script... but not a form most scholars would ever read. It belongs to a tradition associated with the dragon hunters.}
+
+Erdyna turns to her sharply.
+
+{color=aqua|Erdyna: — Dragon hunters?}
+
+Heleviel gives a slow nod, still staring at the doors.
+
+{color=yellow|Heleviel: — An elite clan from the older elven traditions. Secretive even by our standards, proud, and deeply concerned with preserving their own legacy. They still maintain their seat at our lands.}""", # MISSING TRANSLATION
 	ACT4_CATACOMB_DOORS_HELEVIEL_1 = "{color=yellow|Heleviel: — Collegati, quasi certamente. Se abbiano costruito questo posto, lo abbiano sigillato, o lo abbiano semplicemente reclamato in seguito, non saprei dire. Ma questa scritta non è stata messa qui per caso.}",
 	ACT4_CATACOMB_DOORS_HELEVIEL_2 = """Lo sguardo di Heleviel indugia sull'iscrizione un momento in più prima di espirare piano.
 

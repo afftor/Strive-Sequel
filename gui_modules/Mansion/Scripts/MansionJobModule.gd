@@ -47,6 +47,8 @@ func tut_get_CloseButton():
 func rebuild():
 	selected_slot = null
 	build_occupation()
+	if restbutton != null:
+		select_resource({code = "rest"}, "rest", restbutton)
 
 
 func build_occupation():
@@ -283,9 +285,10 @@ func select_location(location):
 	var l = ResourceScripts.world_gen.get_location_from_code(location)
 	if l.has("background"):
 		$Landscape.texture = images.get_background(l.background)
-	if l.has("id"):
-		if l.id == "aliron":
-			$Landscape.texture = images.get_background("aliron")
+	if l.type == 'capital':
+		var area = ResourceScripts.game_world.areas[l.area]
+		if area.has('capital_background'):
+			$Landscape.texture = images.get_background(area.capital_background)
 
 
 func close_job_pannel():
@@ -388,9 +391,10 @@ func update_resources():
 		if location_type == "dungeon":
 #			if location.completed == true:
 			gatherable_resources = location.gather_limit_resources
-			servicebutton.visible = false
+#			servicebutton.visible = false
 		elif location_type == 'encounter':
-			servicebutton.visible = false
+			pass
+#			servicebutton.visible = false
 		else:
 			if location.has("gather_resources"):
 				gatherable_resources = location.gather_resources
@@ -596,6 +600,7 @@ func show_faces():
 			$gridcontainerpanel.hide()
 			return
 	var max_workers_count = 0
+	var locdata = ResourceScripts.world_gen.get_location_from_code(selected_location)
 	if selected_job.has('upgrade_code') && selected_job.has('workers_per_upgrade') && selected_job.has('base_workers'):
 		var upgrade_level = ResourceScripts.game_res.findupgradelevel(selected_job.upgrade_code)
 		max_workers_count = selected_job.base_workers + selected_job.workers_per_upgrade * upgrade_level
@@ -603,15 +608,15 @@ func show_faces():
 		max_workers_count = selected_job.base_workers
 		if selected_job.code == "special" and stored_spec_job.has('max_workers'):
 			max_workers_count = stored_spec_job.max_workers
-	elif selected_location != 'aliron' && ResourceScripts.world_gen.get_location_from_code(selected_location).type != "dungeon":
+	elif locdata.type != "capital" && locdata.type != "dungeon":
 		if selected_job.has("production_item"):
-			max_workers_count = ResourceScripts.world_gen.get_location_from_code(selected_location).gather_resources[selected_job.production_item]
+			max_workers_count = locdata.gather_resources[selected_job.production_item]
 		else:
-			var gatherable_resources = ResourceScripts.world_gen.get_location_from_code(selected_location).gather_resources
+			var gatherable_resources = locdata.gather_resources
 			max_workers_count = gatherable_resources[selected_job.code]
 		#selected_job.type != "dungeon" &&
-	elif ResourceScripts.world_gen.get_location_from_code(selected_location).type == "dungeon":
-		max_workers_count = 0
+#	elif locdata.type == "dungeon":
+#		max_workers_count = 0
 	var any_workers = false
 	for p in ResourceScripts.game_party.characters.values():
 		var work = p.get_work()

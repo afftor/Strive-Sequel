@@ -164,6 +164,22 @@ var sex_skills = {
 	sex_skills_anal = 0, 
 	sex_skills_tail = 0,
 }
+var sex_training = {
+	sex_training_petting = 'novice',
+	sex_training_penetration = 'novice',
+	sex_training_pussy = 'novice',
+	sex_training_oral = 'novice',
+	sex_training_anal = 'novice',
+	sex_training_tail = 'novice',
+}
+var sex_mastery_progress = {
+	petting = [],
+	penetration = [],
+	pussy = [],
+	oral = [],
+	anal = [],
+	tail = [],
+}
 var metrics = {
 	metrics_ownership = 0, 
 	metrics_sex = 0, 
@@ -231,6 +247,7 @@ var template_dynamic = {
 	charm_factor = 1,
 	wits_factor = 1,
 	sexuals_factor = 1,
+	sex_stamina = 0,
 	#
 	trainee_amount = 0,
 	

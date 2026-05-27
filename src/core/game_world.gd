@@ -214,6 +214,7 @@ func get_default_area_name():
 
 
 func advance_day():
+	ResourceScripts.slave_quests.tick_quests()
 	for i in areas.values():
 		update_guilds(i)
 		var tmp = []
