@@ -12,6 +12,7 @@ func last_input_is_handled():
 func _input(event):
 	if !visible: return
 	if event.is_action_released("RMB") or event.is_action_released("LMB"):
+		if input_handler.hard_tutorial_active: return
 		last_input_handled = false
 		get_tree().connect("idle_frame", self, "try_stop_use_state", [], CONNECT_ONESHOT)
 	if event is InputEventMouseMotion:

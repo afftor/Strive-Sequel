@@ -8864,6 +8864,7 @@ Proceed? (original save file will stay untouched, but won't work with the curren
 	TUTORIAL_COMBAT14_1 = "You can use some explorer spells. Open cast menu.",
 	TUTORIAL_COMBAT14_2 = "Choose spells.",
 	TUTORIAL_COMBAT14_3 = "Use it on appropriate target.",
+	TUTORIAL_COMBAT14_4 = "Some spells and items can be used multiple times. To stop using them just click in some random place on screen, or click RMB (for this tutorial specifically).",
 	TUTORIAL_COMBAT15 = "Click Proceed to start the battle.",
 	TUTORIAL_COMBAT16 = "This quest can be initiated from a dialogue window.",
 	TUTORIAL_COMBAT17 = "Battles started from dialogue allow you to set up and confirm your party again.",
