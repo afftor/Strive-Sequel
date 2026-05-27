@@ -53,6 +53,8 @@ func can_add_data(data):
 	return true
 
 func add_new_data(data):
+	if data.node == null:
+		return
 	var recall = false
 	if !animations_queue.has(data.time): 
 		animations_queue[data.time] = {}

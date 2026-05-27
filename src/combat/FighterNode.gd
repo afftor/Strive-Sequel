@@ -50,6 +50,7 @@ var is_active = true
 
 func _ready():
 	connect("gui_input", self, "_on_Button_gui_input")
+	
 
 func _on_Button_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
@@ -262,6 +263,8 @@ func resurrect():
 
 func check_active():
 	if !is_active:
+		if fighter != null:
+			fighter.displaynode = null
 		queue_free()
 
 
