@@ -474,8 +474,9 @@ func checkdeaths():
 					break
 			#turnorder.erase(battlefield[i])
 			if summons.has(i):
-				tchar.displaynode.queue_free()
-				tchar.displaynode = null
+#				tchar.displaynode.queue_free()
+				tchar.displaynode.is_active = false
+#				tchar.displaynode = null
 				tchar.is_active = false
 				battlefield[i] = null
 				if tchar.combatgroup == 'enemy':
@@ -497,8 +498,9 @@ func enemy_escape(escaper):
 			turnorder.remove(j)
 			update_queue_asynch()
 			break
-	escaper.displaynode.queue_free()
-	escaper.displaynode = null
+#	escaper.displaynode.queue_free()
+	escaper.displaynode.is_active = false
+#	escaper.displaynode = null
 	escaper.is_active = false
 	battlefield[i] = null
 	enemygroup.erase(i)
@@ -905,6 +907,8 @@ func setup_autoskill(data, person):
 var fighterhighlighted = false
 func FighterShowStats(fighter):
 	var panel = fighter.displaynode
+	if panel == null:
+		return
 	panel.get_node("bars/HP/hplabel").show()
 	panel.get_node("bars/MP/mplabel").show()
 	

@@ -191,17 +191,23 @@ func add_combatlog(text):
 
 
 func add_sfx(node, code, params = {}):
+	if node == null:
+		return
 	var template = {node = node, time = combatnode.turns, type = code, slot = 'SFX', params = params}
 	add_animation(template)
 
 
 func add_crit(node):
+	if node == null:
+		return
 	var template = {node = node, time = combatnode.turns, type = 'critical', slot = 'crit', params = {}}
 	animationnode.add_new_data(template)
 #	add_animation(template)
 
 
 func add_rebuildbuffs(node): #test version
+	if node == null:
+		return
 	var template = {node = node, time = combatnode.turns, type = 'buffs', slot = 'buffs', params = {}}
 	var handler = animation_handler.new()
 	handler.template = template.duplicate(true)
