@@ -17,7 +17,9 @@ func _ready():
 	input_handler.register_btn_source('slave_select', self, 'tut_get_slave_btn')
 
 func tut_get_slave_btn():
-	return slave_btn_cont.get_children()[0]
+	for btn in slave_btn_cont.get_children():
+		if btn.has_signal("pressed"):
+			return btn
 
 func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = null, prompt = ''):
 	target_func = targetfunc

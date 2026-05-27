@@ -274,6 +274,10 @@ var tutorials = {
 			text = 'TUTORIAL_COMBAT4',
 			panel_pos = Vector2(733,150)
 		},{
+			buttons = ['quest_close'],
+			text = 'TUTORIAL_COMBAT5',
+			panel_pos = Vector2(733,150)
+		},{
 			buttons = ['travel_btn'],
 			text = 'TUTORIAL_COMBAT5',
 			panel_pos = Vector2(733,150)
@@ -327,6 +331,25 @@ var tutorials = {
 			block_event = {location_servent = ['released']},
 			highlight = ['location_servent', 'location_back_highlight'],
 			text = 'TUTORIAL_COMBAT14',
+			panel_pos = Vector2(733,150)
+		},{
+			buttons = ['location_servent_pos'],
+			text = 'TUTORIAL_COMBAT14_1',
+			panel_pos = Vector2(733,150)
+		},{
+			buttons = ['location_reju_btn'],
+			text = 'TUTORIAL_COMBAT14_2',
+			panel_pos = Vector2(733,150)
+		},{
+			buttons = ['location_master_pos'],
+			text = 'TUTORIAL_COMBAT14_3',
+			panel_pos = Vector2(733,150)
+		},{
+			buttons = [],
+			listen = ['close_by_RMB_sig'],
+			pass_RMB = true,
+			text = 'TUTORIAL_COMBAT14_4',
+			additional_func = 'stop_use_state',
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['location_proceed'],
@@ -513,6 +536,8 @@ func btn_truly_pressed():
 	if step_info.has('condition_func'):
 		if !self.call(step_info.condition_func):
 			return
+	if step_info.has('additional_func'):
+		self.call(step_info.additional_func)
 	free_listeners()
 	active_btns.clear()
 	tut_panel.highlight_off()
@@ -732,3 +757,11 @@ func is_RMB_pass():
 		if step_info.has('pass_RMB'):
 			return step_info.pass_RMB
 	return false
+
+#additional funcs
+func stop_use_state():
+	if gui_controller.exploration != null:
+		gui_controller.exploration.try_stop_use_state()
+
+
+#--------------

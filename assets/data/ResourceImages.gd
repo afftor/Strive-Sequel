@@ -1383,7 +1383,9 @@ var GFX_sprites = {
 	warmarch = "res://assets/sfx/hit_animation/warmarch.tscn",
 	aura_firearr = "res://assets/sfx/hit_animation/aura_firearr.tscn",
 	aura_arcaneblade = "res://assets/sfx/hit_animation/aura_arcaneblade.tscn",
-	dark_swril = "res://assets/sfx/hit_animation/dark_swirl.tscn",
+	bite = "res://assets/sfx/hit_animation/bite.tscn",
+	trap_snare = "res://assets/sfx/hit_animation/trap_snare.tscn",
+  dark_swril = "res://assets/sfx/hit_animation/dark_swirl.tscn",
 	shadow_spike = "res://assets/sfx/hit_animation/shadow_spike.tscn",
 	}
 

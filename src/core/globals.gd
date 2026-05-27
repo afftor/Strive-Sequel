@@ -1667,6 +1667,7 @@ func StartFixedAreaCombat(data): #non-rnd, 2test, 2fix
 		input_handler.combat_node = input_handler.get_combat_node()
 	if data.has('intimidate') and data.intimidate:
 		combat_data.instawin = true
+		data.intimidate = false
 	input_handler.combat_node.encountercode = enemydata
 	input_handler.combat_node.set_norun_mode(false)
 	input_handler.combat_node.start_combat(gui_controller.exploration_dungeon.active_location.group, enemies, background, music, combat_data)
@@ -3320,3 +3321,11 @@ func calculate_lux_rooms():
 		if p.check_work_rule("luxury"):
 			res += 1
 	return res
+
+func make_sfx_params(anim_dict, last_iteration = false):
+	var params = {}
+	if anim_dict.has('duration'): params.duration = anim_dict.duration
+	if anim_dict.has('no_delays'): params.no_delays = anim_dict.no_delays
+	if anim_dict.has('no_repeat_delays') and anim_dict.no_repeat_delays and !last_iteration:
+		params.no_delays = true
+	return params

@@ -397,9 +397,10 @@ alignment = 2
 
 [node name="Button" type="Button" parent="BackgroundT2/ScrollContainer/VBoxContainer"]
 visible = false
-margin_top = 205.0
+margin_top = 189.0
 margin_right = 970.0
 margin_bottom = 219.0
+rect_min_size = Vector2( 0, 30 )
 custom_styles/hover = SubResource( 8 )
 custom_styles/pressed = SubResource( 9 )
 custom_styles/focus = SubResource( 10 )
@@ -409,15 +410,17 @@ script = ExtResource( 4 )
 
 [node name="Label" type="RichTextLabel" parent="BackgroundT2/ScrollContainer/VBoxContainer/Button"]
 margin_left = 19.0
-margin_top = 9.0
+margin_top = -3.0
 margin_right = 955.0
-margin_bottom = 40.0
+margin_bottom = 28.0
 mouse_filter = 2
 custom_constants/line_separation = -8
 custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[color=#72a887]Test Text[/color]"
 text = "Test Text"
+fit_content_height = true
+scroll_active = false
 
 [node name="hotkey" type="Label" parent="BackgroundT2/ScrollContainer/VBoxContainer/Button"]
 visible = false

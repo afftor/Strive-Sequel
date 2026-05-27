@@ -4,7 +4,7 @@ const size = 270
 #2add more content
 func setup(room_id):
 	set_meta('id', room_id)
-	$main.connect("pressed", gui_controller.exploration_dungeon, 'room_pressed', [room_id])
+	$main.connect("pressed", gui_controller.exploration_dungeon, 'room_pressed', [room_id, $main])
 	var data = ResourceScripts.game_world.rooms[room_id]
 	rect_position.x = data.col * size
 	rect_position.y = data.row * size
@@ -64,6 +64,7 @@ func update():
 			else:
 				get_node("subroom%d/icon"%(i + 1)).modulate = Color(variables.hexcolordict.green)
 	var text = ""
+	$intimidate.visible = (data.has('intimidate') and data.intimidate)
 	match data.status:
 		'cleared':
 			visible = true 
@@ -111,3 +112,11 @@ func update():
 			visible = false
 		
 	globals.connecttexttooltip($main, text)
+
+func highlight_spelltar(value):
+	if !has_meta('id'):
+		return
+	var room_id = get_meta('id')
+	var data = ResourceScripts.game_world.rooms[room_id]
+	if !value or (data.status == "scouted" and data.type == 'combat'):
+		get_node("mark").visible = value
