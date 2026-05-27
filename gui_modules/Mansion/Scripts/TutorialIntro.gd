@@ -4,6 +4,7 @@ extends Control
 func _ready():
 	$Enable.connect("pressed", self, "select_option", [true])
 	$Dismiss.connect("pressed", self, "select_option", [false])
+	$Explanation.parse_bbcode("[center]%s[/center]" % (tr("TUTORIALINFOEXPLANATION") % "[img]res://assets/Textures_v2/MANSION/Tutorial_introduction/icon_tutorial_introduction.png[/img]"))
 
 func select_option(enabled):
 	ResourceScripts.game_progress.show_tutorial = enabled

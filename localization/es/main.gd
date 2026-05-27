@@ -303,8 +303,7 @@ pero conservarás todos tus personajes, objetos e inventario. Usa este modo para
 	NEWGAMEPLUS_POINTS = """Points:""", # MISSING TRANSLATION
 	TUTORIALINFONAME = "Introducción",
 	TUTORIALINFOQUESTION = "¿Primera vez en Strive: Conquest?",
-	TUTORIALINFOEXPLANATION = """Puedes abrir el tutorial cuando lo desees.
-usando             botón.""",
+	TUTORIALINFOEXPLANATION = """Puedes abrir el tutorial cuando lo desees. usando %s botón.""",
 	TUTORIALINFODISMISS = "Rechazar",
 	TUTORIALINFOENABLE = "Habilitar tutorial",
 	TUTORIALNAME = "Ayuda",

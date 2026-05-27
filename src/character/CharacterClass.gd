@@ -2361,9 +2361,8 @@ func affect_char(template, manifest = false):
 				match template.value:
 					'reveal_map':
 						gui_controller.exploration_dungeon.reveal_map(self)
-					
-					'set_intimidate':
-						gui_controller.exploration_dungeon.set_intimidate()
+#					'set_intimidate':
+#						gui_controller.exploration_dungeon.set_intimidate()
 		'location_effect':
 			match template.value:
 				'gather_res':

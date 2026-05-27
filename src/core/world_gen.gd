@@ -354,7 +354,6 @@ func make_location(code, area):
 	var location = DungeonData.dungeons[code].duplicate(true)
 	location.stamina = 100
 	location.active = true
-	location.intimidate = false
 	var text = tr(location.name)
 	if worlddata.locationnames.has(location.name+'_adjs'):
 		text = tr("LOCATIONTHE") + tr(worlddata.locationnames[location.name+"_adjs"][randi() % worlddata.locationnames[location.name + "_adjs"].size()]) + " " + tr(worlddata.locationnames[location.name+"_nouns"][randi() % worlddata.locationnames[location.name + "_nouns"].size()])
