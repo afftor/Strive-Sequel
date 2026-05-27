@@ -2372,6 +2372,13 @@ func affect_char(template, manifest = false):
 					data.stamina -= template.cost
 					if manifest:
 						globals.manifest_and_log("dungeon", "%s stamina spent in %s" % [template.cost, data.name])
+		'add_combat_log': #until we got proper midfight dialogue system, this will have to do.
+			if input_handler.combat_node == null: 
+				return
+			var new_log_text = tr(template.text)
+			if new_log_text.count('%s') > 0: #in case name is needed
+				new_log_text = new_log_text % get_short_name()
+			input_handler.combat_node.combatlogadd(new_log_text)
 
 
 func is_koed():
