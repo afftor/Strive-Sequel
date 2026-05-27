@@ -17,6 +17,7 @@ onready var present_char_cont = $LocationGui/PresentedSlavesPanel/ScrollContaine
 #var active_area
 var active_location
 var use_state
+var sfx_is_dedicated = false
 
 var positiondict = {
 	1: "LocationGui/Positions/HBoxContainer/frontrow/1",
@@ -32,6 +33,7 @@ var map_zoom_min = 0.3
 var map_zoom_step = 0.1
 
 var animations = ResourceScripts.scriptdict.combat_animation.new()
+var planed_animations = []
 
 #func _input(event):
 #	if event.is_action_pressed('MouseUp'):
@@ -170,6 +172,7 @@ func _ready():
 	input_handler.connect("clear_cashed", self, 'clear_cashed')
 	
 	add_child(animations)
+	animations.connect("alleffectsfinished", self, 'reset_sfx_dedicated')
 
 
 func clear_cashed():
@@ -338,21 +341,24 @@ func use_item_on_character(character, item):
 	item.use_explore(character, self)  #item.use_explore(state.characters[active_location.group['pos'+str(position)]])
 	item.amount -= 1
 	#show_heal_items(position)
-	if is_animating():
-		yield(animations, 'alleffectsfinished')
 	call_deferred('build_location_group')
 
 func use_skill_on_room(caster, room_id, room_node, skill):
 	if !skill.has("room_effect"):
 		return
 	use_state_panel.last_input_is_handled()
-	use_state_panel.hide()
-	animate(room_node, skill)
-	yield(animations, 'alleffectsfinished')
+	if is_in_dedicated_animation():
+		return
+#	if !use_state.multiuse:
+#		use_state_panel.hide()
+	animate(room_node, skill, use_state.dedicated_sfx)
+	if use_state.dedicated_sfx:
+		yield(animations, 'alleffectsfinished')
 	call(skill.room_effect, room_id)
 	use_e_combat_skill(caster, caster, skill, true)
 	update_map()
-	try_stop_use_state()
+	if !use_state.multiuse or cast_panel.is_skill_disabled(caster, skill):
+		try_stop_use_state()
 
 func use_e_combat_skill(caster, target, skill, silent = false):
 	caster.pay_cost(skill.cost)
@@ -680,10 +686,18 @@ func build_location_group():
 		newbutton.get_node("Label").text = i.get_short_name()
 #		newbutton.connect("pressed", self, "return_character", [i])
 		newbutton.get_node("caster").visible = cast_panel.can_cast(i.id)
+		if (is_in_use_state()
+			and (use_state.type != cast_panel.ENTITY_SKILL or use_state.entity.target != "room")):
+			newbutton.get_node("mark").show()
 		newbutton.connect("pressed", self, "process_cast_use", [newbutton, return_all_btn.visible, true])
 		if active_location.group.values().has(i.id):
 			newbutton.get_node("icon").modulate = Color(0.3, 0.3, 0.3)
 		globals.connectslavetooltip(newbutton, i)
+		for anim_num in range(planed_animations.size()-1, -1, -1):
+			var animation = planed_animations[anim_num]
+			if animation.person_id == i.id:
+				animate(newbutton, animation.skill)
+				planed_animations.remove(anim_num)
 	if (counter == 0
 		&& input_handler.active_location.id == active_location.id
 		&& is_visible()):#$LocationGui.is_visible()
@@ -1313,44 +1327,78 @@ func process_cast_use(port_node, with_return = false, bottom = false):
 		
 	else:
 		var person = port_node.get("dragdata")
+		var delayed_animation = true
 		if !person:
 			person = port_node.get("character")
+			delayed_animation = false
 		if !person:
 			return
 		
 		use_state_panel.last_input_is_handled()
-		use_state_panel.hide()
+		if is_in_dedicated_animation():
+			return
+#		if !use_state.multiuse:
+#			use_state_panel.hide()
+		var multiuse = false
 		if use_state.type == cast_panel.ENTITY_SKILL:
-			animate(port_node, use_state.entity)
-			yield(animations, 'alleffectsfinished')
+			if use_state.dedicated_sfx:
+				animate(port_node, use_state.entity, true)
+				yield(animations, 'alleffectsfinished')
+			elif delayed_animation:
+				plan_animation(person.id, use_state.entity)
+			else:
+				animate(port_node, use_state.entity)
 			use_e_combat_skill(use_state.caster, person, use_state.entity, true)
+			multiuse = (use_state.multiuse
+				and !cast_panel.is_skill_disabled(use_state.caster, use_state.entity))
 		else:# use_state.type == cast_panel.ENTITY_ITEM: (ENTITY_RETURN can't come here)
-			animate(port_node, {sfx = [{code = 'heal', duration = 1.0}]})
+			var anim_entity = {sfx = [{code = 'heal', duration = 1.0}]}
+			if delayed_animation:
+				plan_animation(person.id, anim_entity)
+			else:
+				animate(port_node, anim_entity)
 			use_item_on_character(person, use_state.entity)
-		try_stop_use_state()
+			multiuse = use_state.multiuse and use_state.entity.amount > 0
+		
+		if !multiuse:
+			try_stop_use_state()
 
 func start_use_state(type, caster, caster_node, entity):
+	if is_in_dedicated_animation():
+		return
 	var use_state_panel_icon = use_state_panel.get_node("Button/Icon")
 	var use_state_panel_name = use_state_panel.get_node("Button/name")
+	var multiuse = false
+	var dedicated_sfx = false
 	if type == cast_panel.ENTITY_RETURN:
 		return_character(caster)
 		return
 	elif type == cast_panel.ENTITY_ITEM:
 		entity.set_icon(use_state_panel_icon)
 		use_state_panel_name.text = tr("ITEM" + str(entity.code).to_upper())
+		multiuse = true
 	else:# type == cast_panel.ENTITY_SKILL:
+		dedicated_sfx = entity.tags.has('dedicated_sfx')
 		if entity.target == 'self':
-			animate(caster_node, entity)
-			yield(animations, 'alleffectsfinished')
+			if dedicated_sfx:
+				animate(caster_node, entity, true)
+				yield(animations, 'alleffectsfinished')
+			elif caster_node.get("dragdata"):
+				plan_animation(caster.id, entity)
+			else:
+				animate(caster_node, entity)
 			use_e_combat_skill(caster, caster, entity, true)
 			return
 		use_state_panel_icon.texture = entity.icon
 		use_state_panel_name.text = entity.name
+		multiuse = entity.tags.has('multiuse')
 	
 	use_state = {
 		type = type,
 		caster = caster,
-		entity = entity
+		entity = entity,
+		multiuse = multiuse,
+		dedicated_sfx = dedicated_sfx
 	}
 	use_state_panel.show()
 	if type == cast_panel.ENTITY_SKILL and entity.target == "room":
@@ -1396,7 +1444,8 @@ func highlight_spelltar_rooms_true(value):
 	for room in map_container.get_children():
 		room.highlight_spelltar(value)
 
-func animate(target_node, skill):
+func animate(target_node, skill, dedicated_sfx = false):
+	sfx_is_dedicated = sfx_is_dedicated or dedicated_sfx
 	for sfx_dict in skill.sfx:
 		#ignore sfx_dict.period and sfx_dict.target for now
 		animations.add_new_data({
@@ -1411,5 +1460,13 @@ func animate(target_node, skill):
 			if i != null:
 				input_handler.PlaySound(i)
 
-func is_animating():
-	return animations.is_busy
+func is_in_dedicated_animation():
+	return (sfx_is_dedicated
+		and (animations.is_busy or !planed_animations.empty()))
+
+#plan_animation can't be dedicated_sfx, as such sfx playes befor screen updates
+func plan_animation(person_id, skill):
+	planed_animations.append({person_id = person_id, skill = skill})
+
+func reset_sfx_dedicated():
+	sfx_is_dedicated = false

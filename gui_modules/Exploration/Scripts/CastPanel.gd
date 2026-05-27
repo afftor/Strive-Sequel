@@ -34,13 +34,10 @@ func build_for_person(person_id, person_node, add_return = false, only_check = f
 		newnode.get_node('Icon').texture = skill.icon
 		if skill.tags.has('aura_active'):
 			newnode.get_node("Icon").material = load("res://assets/book_shader.tres")
-		var disabled = false
 		if skill.charges > 0:
 			var leftcharges = skill.charges
 			if person.skills.combat_skill_charges.has(skill.code):
 				leftcharges -= person.skills.combat_skill_charges[skill.code]
-			if leftcharges <= 0:
-				disabled = true
 			newnode.get_node("name").text = "%s (%s/%s)" % [
 				skill.name,
 				leftcharges, skill.charges]
@@ -61,18 +58,12 @@ func build_for_person(person_id, person_node, add_return = false, only_check = f
 					Items.materiallist[k].name,
 					skill.catalysts[k],
 					ResourceScripts.game_res.materials[k]]
-				if ResourceScripts.game_res.materials[k] < skill.catalysts[k]:
-					disabled = true
 		if skill.charges > 0:
 			text += "\n\n%s: %s. %s: %s %s" % [
 				tr("MAX_CHARGES"), str(skill.charges),
 				tr("TOOLTIP_COOLDOWN"), str(skill.cooldown), tr("TOOLTIP_DAY_S")]
 		globals.connecttexttooltip(newnode, text)
-		if !person.check_cost(skill.cost):
-			disabled = true
-		if person.has_status('no_obed_gain'):
-			disabled = true
-		if disabled:
+		if is_skill_disabled(person, skill):
 			newnode.get_node("name").set("custom_colors/font_color", Color(1, 0.5, 0.5))
 		else:
 			newnode.connect('pressed', self, 'on_pressed', [ENTITY_SKILL, person, person_node, skill])
@@ -105,6 +96,27 @@ func build_for_person(person_id, person_node, add_return = false, only_check = f
 	if get_global_rect().end.y >= screen.size.y:
 		rect_position.y = screen.size.y - rect_size.y
 
+#func is_skill_disabled_by_id(person_id, skill_id):
+#	var person = ResourceScripts.game_party.characters[person_id]
+#	var skill = Skilldata.get_template(skill_id, person)
+#	return is_skill_disabled(person, skill)
+
+func is_skill_disabled(person, skill):
+	if skill.charges > 0:
+		var leftcharges = skill.charges
+		if person.skills.combat_skill_charges.has(skill.code):
+			leftcharges -= person.skills.combat_skill_charges[skill.code]
+		if leftcharges <= 0:
+			return true
+	if !skill.catalysts.empty() and !person.has_status('ignore_catalysts_for_%s' % skill.code):
+		for k in skill.catalysts:
+			if ResourceScripts.game_res.materials[k] < skill.catalysts[k]:
+				return true
+	if !person.check_cost(skill.cost):
+		return true
+	if person.has_status('no_obed_gain'):
+		return true
+	return false
 
 func on_pressed(type, caster, person_node, entity):
 	emit_signal("set_entity_use", type, caster, person_node, entity)

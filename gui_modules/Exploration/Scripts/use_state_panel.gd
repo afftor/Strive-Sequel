@@ -24,7 +24,8 @@ func show():
 	rect_global_position.y = pos.y + 20
 	.show()
 
+
 func try_stop_use_state():
 	if last_input_handled: return
-	if explorer.is_animating(): return
+	if explorer.is_in_dedicated_animation(): return
 	explorer.try_stop_use_state()
