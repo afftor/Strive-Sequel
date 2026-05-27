@@ -27535,53 +27535,67 @@ The only person she hasn't been able to connect with appears to be her new maste
 
 You decide it's time to talk to her about that matter.""",
 	LIRA_QUEST_1_TALK_TO_LIRA = "As you see Lira walk into her room it seems like a good time to address her behavior.",
-	LIRA_QUEST_1_ROOM_ENTRY = """A couple of moments after you knock, she opens the door. As she sees you, her eyes open wide, but she quickly tries to regain her composure and bows her head.
-
-You barge in unannounced, making Lira jump up from her seat. She quickly hides a small elven prayer bead and stands up, facing you briefly before bowing her head.
-
-{color=yellow|Lira: — Ah, greeting, [master]! Apologies, I was not expecting you... I mean, how can I be of service?}""",
+	LIRA_QUEST_1_OPTION_KNOCK_ON_THE_DOOR = "Knock on the door",
+	LIRA_QUEST_1_OPTION_WALK_INTO_HER_ROOM = "Walk into her room",
+	LIRA_QUEST_1_ROOM_ENTRY_1 = """A couple of moments after you knock, she opens the door. As she sees you, her eyes open wide, but she quickly tries to regain her composure and bows her head.
+	""",
+	LIRA_QUEST_1_ROOM_ENTRY_2 = """You barge in unannounced, making Lira jump up from her seat. She quickly hides a small elven prayer bead and stands up, facing you briefly before bowing her head.
+	""",
+	LIRA_QUEST_1_ROOM_ENTRY_3 = """{color=yellow|Lira: — Ah, greeting, [master]! Apologies, I was not expecting you... I mean, how can I be of service?}""",
+	LIRA_QUEST_1_OPTION_ARE_YOU_BUSY = "Are you busy? What were you doing?",
+	LIRA_QUEST_1_OPTION_HOW_DO_SERVANTS_TREAT_YOU = "How does other servants treat you?",
+	LIRA_QUEST_1_OPTION_YOU_SEEM_TO_WATCH_ME = "You seem to watch me closely, yet never strike up a conversation. Why? What's on your mind?",
 	LIRA_QUEST_1_BUSY = """She hesitates a bit before taking a small elven prayer bead out of her pocket and earnestly presenting it to you.
 
 {color=yellow|Lira: — I was simply praying, [master]. It... it doesn't give the same feeling as before, but it's what I'm used to, and it calms me down a bit. I hope this is okay with you.}""",
 	LIRA_QUEST_1_SERVANTS = """A small smile shows on Lira's lips.
 
 {color=yellow|Lira: — They treat me well, [master]. I was afraid at first, but they turned out to be quite friendly and are helping me get used to... well, everything.}""",
-	LIRA_QUEST_1_WATCH_REASON = """Presented with a direct question, Lira blushes a bit and lowers her head once again.
+	LIRA_QUEST_1_WATCH_REASON_1 = """Presented with a direct question, Lira blushes a bit and lowers her head once again.
 
 {color=yellow|Lira: — I-I apologize if that was inappropriate or upset you...}
 
 Seeing that you silently wait, she hesitantly continues.
 
-{color=yellow|Lira: — If I'm being honest, I was just trying... trying to understand what my role is from now on. What I'm supposed to do, how I'm supposed to behave, all of that...}
+{color=yellow|Lira: — If I'm being honest, I was just trying... trying to understand what my role is from now on. What I'm supposed to do, how I'm supposed to behave, all of that...}""",
+	LIRA_QUEST_1_WATCH_REASON_2 = """Lira takes a small breath.
 
 {color=yellow|Lira: — When I lived among the elves, everything had a very strict order. A priestess knew exactly what she was meant to become... what duties awaited her... how she was supposed to spend her day or address others...}
 
 {color=yellow|Lira: — But now everything is different, and I... Ah, sorry, I didn't mean to start rambling, it's probably boring you...}""",
-	LIRA_QUEST_1_WATCH_REASON_FOLLOWUP = """{color=yellow|Lira: — Oh!... Okay! I was just trying to say that I spent most of my life preparing for the path of a priestess, so it's hard for me to just forget all of that and become a proper... well, slave.}
+	LIRA_QUEST_1_OPTION_FEEL_FREE_TO_SHARE = "Feel free to share your thoughts, I'm listening",
+	LIRA_QUEST_1_OPTION_DONT_WORRY_I_UNDERSTAND = "Don't worry, I understand. So what is that you want?",
+	LIRA_QUEST_1_WATCH_REASON_FOLLOWUP_1 = """{color=yellow|Lira: — Oh!... Okay! I was just trying to say that I spent most of my life preparing for the path of a priestess, so it's hard for me to just forget all of that and become a proper... well, slave.}
 
-{color=yellow|Lira: — I tried to look at what others do, but they also behave very differently from one another. That's why I was contemplating just asking you directly, and I guess now is the time...}
+{color=yellow|Lira: — I tried to look at what others do, but they also behave very differently from one another. That's why I was contemplating just asking you directly, and I guess now is the time...}""",
+	LIRA_QUEST_1_WATCH_REASON_FOLLOWUP_2 = """She nods, then pauses briefly before asking directly.
+""",
+	LIRA_QUEST_1_WATCH_REASON_FOLLOWUP_3 = """{color=yellow|Lira: — Can you please tell me what you expect from me? Who am I supposed to be?}
 
-She nods, then pauses briefly before asking directly.
-
-{color=yellow|Lira: — Can you please tell me what you expect from me? Who am I supposed to be?}
-
-Considering that she's here all alone and you're the only person she truly knows outside the elf kingdom, your answer will clearly carry significant weight in how she begins to see her future.""",
-	LIRA_QUEST_1_EXPECTATIONS = """Lira waits quietly for your answer. Whatever you tell her now will shape how she begins to see her place in your household.""",
-	LIRA_QUEST_1_EXPECTATIONS_ANSWER = """Lira takes a couple of moments to think silently, then nods.
+{color=redConsidering that she's here all alone and you're the only person she truly knows outside the elf kingdom, your answer will clearly carry significant weight in how she begins to see her future.}""",
+	LIRA_QUEST_1_OPTION_SERVE_AS_YOU_SERVED_FREYA = "You should serve me just as devotedly as you served Freya. That's the whole point of being a slave, isn't it?",
+	LIRA_QUEST_1_OPTION_WHAT_WOULD_YOU_WANT = "While formally you're my slave, I don't place strict restrictions. So I ask you what would you want?",
+	LIRA_QUEST_1_EXPECTATIONS_ANSWER_1 = """Lira takes a couple of moments to think silently, then nods.
 
 {color=yellow|Lira: — I guess this is the only answer. You are the one who saved my life, after all, so I shall repay your kindness. I will need some time to adjust, but I promise to do my best to serve you, [master].}
-
-For a moment, she just stares at you, blinking. Then something in her expression softens, and you see a tentative smile begin to form.
+""",
+	LIRA_QUEST_1_EXPECTATIONS_ANSWER_2 = """For a moment, she just stares at you, blinking. Then something in her expression softens, and you see a tentative smile begin to form.
 
 {color=yellow|Lira: — This... this is the first time someone has asked me this question. I'll need to think about it, but in the meantime, I promise to do my best to serve you, [master].}
-
-After that matter is settled, Lira asks a few more questions about her household duties. Once she has her answers, she seems about to leave, but hesitates, as if struck by a thought. She turns back to you.
+""",
+	LIRA_QUEST_1_EXPECTATIONS_ANSWER_3 = """After that matter is settled, Lira asks a few more questions about her household duties. Once she has her answers, she seems about to leave, but hesitates, as if struck by a thought. She turns back to you.
 
 {color=yellow|Lira: — [master]... it may be bold of me, but may I ask you for a favor?}""",
+	LIRA_QUEST_1_OPTION_OF_COURSE_WHAT_IS_IT = "Of course, what is it?",
+	LIRA_QUEST_1_OPTION_HOPEFULLY_NOT_TOO_BOTHERSOME = "Hopefully it's not too bothersome",
 	LIRA_QUEST_1_FAVOR_REQUEST = "{color=yellow|Lira: — When I was exiled from the forest, I wasn't allowed to take anything with me. Of course, I don't expect to get my things from the priest quarters, but I had some personal stash hidden in a grove near the city. Can you please escort me there?}",
+	LIRA_QUEST_1_OPTION_FINE_LETS_GO = "Fine, let's go. I should show that I'm a good master to my obedient slaves.",
+	LIRA_QUEST_1_OPTION_ALRIGHT_LETS_MOVE = "Alright, let's move. Maybe these things will help you figure out what you want.",
 	LIRA_QUEST_1_FAVOR_ACCEPT = """She bows her head and flashes you a grateful smile.
 
 {color=yellow|Lira: — Thank you, [master]!}""",
+
+	LIRA_QUEST_1_OPTION_SEARCH_FOR_THE_GROVE = "Search for the grove",
 	LIRA_QUEST_1_SEARCH_GROVE = """The deeper you walk beneath the tall trees, the more familiar the surroundings seem to Lira. She moves with slightly more confidence here, occasionally glancing around as if recognizing distant landmarks.
 
 Not long after entering the deeper woods, an elven patrol steps out from between the trees. They recognize you quickly enough and offer a polite nod, but when their eyes fall on Lira, the mood shifts immediately.
@@ -27590,23 +27604,23 @@ One of the elves frowns.""",
 	LIRA_QUEST_1_PATROL_CONFRONTATION = """{color=yellow|Elf Patrol Leader: — What is a rebel priestess doing here? The terms of your exile were made clear! Or do you have a death wish?}
 
 Lira lowers her gaze.""",
+	LIRA_QUEST_1_OPTION_EXILED_MEANS = "\"Exiled\" means she can no longer live among you. It doesn't mean she cannot pass through the forest as a traveler. We're only here briefly.",
+	LIRA_QUEST_1_OPTION_SHE_IS_NOT_A_PRIESTESS = "She is not a priestess anymore. She's my slave, my personal property. There's no rules forbidding me from bringing my belongings into the forest.",
 	LIRA_QUEST_1_PATROL_DEPENDENCY = """After a tense moment, the patrol leader nods and takes his hand from the hilt of his sword. The rest of the elves also step aside, casting disdainful glances at Lira.
 
 {color=yellow|Elf Patrol Leader: — So be it. Guess being a human plaything is already punishment enough for this rebel scum. You can go now.}
 
 Once you're out of earshot, Lira exhales quietly. She glances back toward the trees where the patrol disappeared.
 
-{color=yellow|Lira: — The way they looked at me... it was terrifying. It's nice that I now have someone who can protect me like that...}
-
-{color=yellow|Lira: — Thank you.}""",
+{color=yellow|Lira: — The way they looked at me... it was terrifying. It's nice that I now have someone who can protect me like that...}""",
 	LIRA_QUEST_1_PATROL_FREEDOM = """The patrol leader squints at you for a couple of intense moments, then snorts and turns away. The rest of the elves also step aside, casting disdainful glances at Lira.
 
 {color=yellow|Elf Patrol Leader: — Since Freya's Priestess tolerates you, I won't argue. Just make sure this "traveler" leaves the forest as soon as possible. You can go now.}
 
 Once you're out of earshot, Lira exhales quietly. She glances back toward the trees where the patrol disappeared.
 
-{color=yellow|Lira: — I always thought exile meant death... but thanks to you, it doesn't seem that way anymore. And now I can even walk through these woods as a traveler... What a strange feeling...}
-
+{color=yellow|Lira: — I always thought exile meant death... but thanks to you, it doesn't seem that way anymore. And now I can even walk through these woods as a traveler... What a strange feeling...}""",
+	LIRA_QUEST_1_PATROL = """
 {color=yellow|Lira: — Thank you.}""",
 	LIRA_QUEST_1_GROVE_ARRIVAL = """After a short walk, you reach the grove. The place is quiet and well-hidden: a small clearing surrounded by ancient roots and moss-covered stones.
 
@@ -27618,20 +27632,24 @@ Lira quickly steps to your side.""",
 She forcefully shakes her head.
 
 {color=yellow|Lira: — Ah, it doesn't matter now! I saw you fight before, you can deal with them, right? I'll help!}""",
-	LIRA_QUEST_1_FIGHT_PLAN = """The centipedes keep circling closer while Lira steadies herself beside you, waiting to hear how you want to handle the fight.""",
+	LIRA_QUEST_1_OPTION_STAY_BACK_AND_HELP = "Just stay back and help with what you can. Leave the fighting to me.",
+	LIRA_QUEST_1_OPTION_WE_FIGHT_TOGETHER = "We fight together, side by side. You're capable of more than just standing behind.",
+#	LIRA_QUEST_1_FIGHT_PLAN = """The centipedes keep circling closer while Lira steadies herself beside you, waiting to hear how you want to handle the fight.""",
 	LIRA_QUEST_1_FIGHT_READY = "{color=yellow|Lira: — Got it!}",
-	LIRA_QUEST_1_DEPENDENCY_FIGHT_AFTERMATH = """Together you slay the aggressive beasts.
-
+	
+	LIRA_QUEST_1_FIGHT_AFTERMATH = """Together you slay the aggressive beasts.
+""",
+	LIRA_QUEST_1_DEPENDENCY_FIGHT_AFTERMATH = """
 After the fight, Lira looks down at her hands, which shimmer with a faint green glow.
 
 {color=yellow|Lira: — Phew... This... this was my first ever fight, [master]. Did I... did I do well?}""",
+	LIRA_QUEST_1_OPTION_YOU_DID_GREAT = "You did great, especially for your first time",
+	LIRA_QUEST_1_OPTION_NATURAL_WITH_THIS_MAGIC = "Looks like you're a natural with this type of magic",
 	LIRA_QUEST_1_DEPENDENCY_FIGHT_PRAISE = """She smiles brightly, pleased with the praise.
 
 {color=yellow|Lira: — I'm glad I was helpful! It actually took me a long time to properly use this magic, but I guess in the end, all that training paid off...}
-
-{color=yellow|Lira: — Anyway, let's hope there won't be any unpleasant surprises today.}""",
-	LIRA_QUEST_1_FREEDOM_FIGHT_AFTERMATH = """Together you slay the aggressive beasts.
-
+""",
+	LIRA_QUEST_1_FREEDOM_FIGHT_AFTERMATH = """
 After the fight, Lira looks down at her hands, sore from the fight.
 
 {color=yellow|Lira: — I... I never had to fight before, so this is the first time for me... I probably should be scared or nervous...}
@@ -27639,16 +27657,23 @@ After the fight, Lira looks down at her hands, sore from the fight.
 She flexes her fingers slowly, then looks at you.
 
 {color=yellow|Lira: — But for some reason it feels... fine. Maybe even good. My body feels hot... and strong.}""",
+	LIRA_QUEST_1_OPTION_PENT_UP_RAGE = "Maybe it's all the pent-up rage from years of obedience?",
+	LIRA_QUEST_1_OPTION_SOMETHING_TO_DO_WITH_RACE = "Could this have something to do with your race?",
 	LIRA_QUEST_1_FREEDOM_FIGHT_REFLECTION = """She looks back at her hands, then at the slain centipedes, then simply shrugs.
 
-{color=yellow|Lira: — I... I don't know, honestly. Though now that I think about it... I was always better with physical tasks. Magic never came as easily. The elders used to say I had more "fire in my blood" than was proper for someone of my calling.}
-
-{color=yellow|Lira: — Anyway, let's hope there won't be any unpleasant surprises today.}""",
+{color=yellow|Lira: — I... I don't know, honestly. Though now that I think about it... I was always better with physical tasks. Magic never came as easily. The elders used to say I had more 'fire in my blood' than was proper for someone of my calling.}
+""",
+	LIRA_QUEST_1_FIGHT_AFTERMATH_2 = """{color=yellow|Lira: — Anyway, let's hope there won't be any unpleasant surprises today.}""",
+	
 	LIRA_QUEST_1_BELONGINGS_ROOT = """Lira goes back to the hollow tree and finally retrieves her hidden belongings. She doesn't try to hide any of them, so you have a good look.
 
 They consist of just a few things: a worn leather diary, a few simple wooden toys carved by hand, a small cloth doll with uneven stitching, and a worn-out brush with a few strands of hair still caught between its teeth.
 
 She holds each item gently, as if they might crumble at the slightest pressure.""",
+	LIRA_QUEST_1_OPTION_WHAT_DID_YOU_WRITE = "What did you write in the diary?",
+	LIRA_QUEST_1_OPTION_WHY_DID_YOU_HIDE_THESE = "Why did you hide these here?",
+	LIRA_QUEST_1_OPTION_DO_YOU_FEEL_BETTER = "Do you feel better after getting these back?",
+	LIRA_QUEST_1_OPTION_TIME_TO_HEAD_BACK = "Alright, time to head back. We shouldn't linger in the forest.",
 	LIRA_QUEST_1_DIARY_PART_1 = """Lira flips through a few pages, a nostalgic smile touching her lips.
 
 {color=yellow|Lira: — Mostly small things. My first day of training... I was so tired afterward that I overslept and missed both breakfast and lunch the next day.}
@@ -27665,22 +27690,20 @@ On the next pages, she finds some old sketches of different flowers.
 {color=yellow|Lira: — Huh, just like with magic, I was never very good at drawing either. But I liked trying.}
 
 Together you skim through more of the diary as Lira shares her stories.""",
-	LIRA_QUEST_1_HIDDEN_BELONGINGS = """She looks slightly embarrassed, her ears twitching a little.
+	LIRA_QUEST_1_HIDDEN_BELONGINGS_1 = """She looks slightly embarrassed, her ears twitching a little.
 
 {color=yellow|Lira: — Priestesses aren't supposed to have personal belongings. Attachment to material things is seen as... a weakness. A distraction from serving the goddess.}
 
-She runs her thumb over the wooden bird's chipped wing.
-
-{color=yellow|Lira: — At first, I kept these hidden under my bed. But eventually they found out and told me to get rid of them. So I did. Threw them into the garbage, only to take them back at night and hide them here.}
+She runs her thumb over the wooden bird's chipped wing.""",
+	LIRA_QUEST_1_HIDDEN_BELONGINGS_2 = """{color=yellow|Lira: — At first, I kept these hidden under my bed. But eventually they found out and told me to get rid of them. So I did. Threw them into the garbage, only to take them back at night and hide them here.}
 
 {color=yellow|Lira: — Then every time I was sent for supplies, I could come here and check on them, and also write about recent events in my diary. Huh, I suppose I was a bit rebellious even then...}""",
-	LIRA_QUEST_1_FEEL_BETTER = """A warm smile appears on her face.
+	LIRA_QUEST_1_FEEL_BETTER_1 = """A warm smile appears on her face.
 
 {color=yellow|Lira: — I am. Those trinkets might seem worthless to everyone else, but for me they're like memories saved in magic and every time I touch them, I travel back to a different time...}
 
-She picks up the small cloth doll.
-
-{color=yellow|Lira: — This one... I made her myself when I was very small. Before the temple. I don't even remember where I learned to sew or how long I had her, but I remember sleeping with her every night.}
+She picks up the small cloth doll.""",
+	LIRA_QUEST_1_FEEL_BETTER_2 = """{color=yellow|Lira: — This one... I made her myself when I was very small. Before the temple. I don't even remember where I learned to sew or how long I had her, but I remember sleeping with her every night.}
 
 She sets it down carefully. Her hand hovers over the wooden brush.
 
@@ -27690,36 +27713,12 @@ She sets it down carefully. Her hand hovers over the wooden brush.
 {color=yellow|Lira: — Yes, [master]. Thank you for bringing me here. It means a lot.}
 
 The two of you make your way back to the road, leaving the quiet grove behind.""",
-	LIRA_QUEST_1_OPTION_KNOCK_ON_THE_DOOR = "Knock on the door",
-	LIRA_QUEST_1_OPTION_WALK_INTO_HER_ROOM = "Walk into her room",
-	LIRA_QUEST_1_OPTION_ARE_YOU_BUSY = "Are you busy? What were you doing?",
-	LIRA_QUEST_1_OPTION_HOW_DO_SERVANTS_TREAT_YOU = "How does other servants treat you?",
-	LIRA_QUEST_1_OPTION_YOU_SEEM_TO_WATCH_ME = "You seem to watch me closely, yet never strike up a conversation. Why? What's on your mind?",
-	LIRA_QUEST_1_OPTION_FEEL_FREE_TO_SHARE = "Feel free to share your thoughts, I'm listening",
-	LIRA_QUEST_1_OPTION_DONT_WORRY_I_UNDERSTAND = "Don't worry, I understand. So what is that you want?",
-	LIRA_QUEST_1_OPTION_SERVE_AS_YOU_SERVED_FREYA = "You should serve me just as devotedly as you served Freya. That's the whole point of being a slave, isn't it?",
-	LIRA_QUEST_1_OPTION_WHAT_WOULD_YOU_WANT = "While formally you're my slave, I don't place strict restrictions. So I ask you what would you want?",
-	LIRA_QUEST_1_OPTION_OF_COURSE_WHAT_IS_IT = "Of course, what is it?",
-	LIRA_QUEST_1_OPTION_HOPEFULLY_NOT_TOO_BOTHERSOME = "Hopefully it's not too bothersome",
-	LIRA_QUEST_1_OPTION_FINE_LETS_GO = "Fine, let's go. I should show that I'm a good master to my obedient slaves.",
-	LIRA_QUEST_1_OPTION_ALRIGHT_LETS_MOVE = "Alright, let's move. Maybe these things will help you figure out what you want.",
-	LIRA_QUEST_1_OPTION_SEARCH_FOR_THE_GROVE = "Search for the grove",
-	LIRA_QUEST_1_OPTION_SHE_IS_NOT_A_PRIESTESS = "She is not a priestess anymore. She's my slave, my personal property. There's no rules forbidding me from bringing my belongings into the forest.",
-	LIRA_QUEST_1_OPTION_EXILED_MEANS = "\"Exiled\" means she can no longer live among you. It doesn't mean she cannot pass through the forest as a traveler. We're only here briefly.",
-	LIRA_QUEST_1_OPTION_STAY_BACK_AND_HELP = "Just stay back and help with what you can. Leave the fighting to me.",
-	LIRA_QUEST_1_OPTION_WE_FIGHT_TOGETHER = "We fight together, side by side. You're capable of more than just standing behind.",
-	LIRA_QUEST_1_OPTION_YOU_DID_GREAT = "You did great, especially for your first time",
-	LIRA_QUEST_1_OPTION_NATURAL_WITH_THIS_MAGIC = "Looks like you're a natural with this type of magic",
-	LIRA_QUEST_1_OPTION_PENT_UP_RAGE = "Maybe it's all the pent-up rage from years of obedience?",
-	LIRA_QUEST_1_OPTION_SOMETHING_TO_DO_WITH_RACE = "Could this have something to do with your race?",
-	LIRA_QUEST_1_OPTION_WHAT_DID_YOU_WRITE = "What did you write in the diary?",
-	LIRA_QUEST_1_OPTION_WHY_DID_YOU_HIDE_THESE = "Why did you hide these here?",
-	LIRA_QUEST_1_OPTION_DO_YOU_FEEL_BETTER = "Do you feel better after getting these back?",
-	LIRA_QUEST_1_OPTION_TIME_TO_HEAD_BACK = "Alright, time to head back. We shouldn't linger in the forest.",
+	
 	LIRA_QUEST_1_NAME = "Lira: Remnants of the Past",
 	LIRA_QUEST_1_SUMMARY = "A recently acquired elven slave, Lira has been quietly observing you since her arrival at the mansion. Getting to know her may help her find her place.",
 	LIRA_QUEST_1_JOURNAL_START = "Talk to Lira.",
 	LIRA_QUEST_1_JOURNAL_GROVE = "Visit a special place Lira has told you about.",
+	
 	ACT4_MYR_GUILD_OPTION_SHOW_WRITING = "Show the catacomb writing",
 	ACT4_EMPIRE_CAPITAL_OPTION_ERDYNA = "Talk to Erdyna",
 	ACT4_EMPIRE_CAPITAL_OPTION_SENERUS = "Visit Senerus's home",

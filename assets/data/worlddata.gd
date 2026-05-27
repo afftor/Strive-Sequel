@@ -1735,7 +1735,7 @@ var fixed_location_options = { #override serialized data
 	quest_lira_grove_location = [
 		{
 			text = tr("QUEST_LIRA_GROVE_LOCATION1"),
-			reqs = [{type = 'dialogue_seen', check = false, value = 'LIRA_QUEST_1_SEARCH_GROVE'}],
+			reqs = [{type = 'active_quest_stage', value = 'lira_quest_1', stage = 'grove'}],
 			args = [{code = 'start_event', data = 'lira_quest_1_search_grove', args = []}]
 		},
 	],
