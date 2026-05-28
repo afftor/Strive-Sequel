@@ -506,10 +506,11 @@ func get_stat_data(stat, stop = variables.DYN_STATS_FULL): #full value
 								res.result[i] = max(res.result[i], aggregate_bonus)
 						else:
 							res.result = max(res.result, aggregate_bonus)
-	
 	if stat == 'sex_stamina':
 		res.result = clamp(res.result, 0, variables.sex_actions_stamina_cap)
-	if st_data.tags.has('integer'):
+	if st_data.tags.has('integer_floor'):
+		res.result = int(floor(res.result + 0.0001))
+	elif st_data.tags.has('integer'):
 		res.result = int(res.result)
 	return res
 

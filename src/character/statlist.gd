@@ -42,6 +42,8 @@ var template_direct = {
 	lastsexday = 0,
 	asser = 0, #shuold be removed fo no real use
 	
+	counterattacks = 0,
+	
 	#images
 	icon_image = '', 
 	dynamic_portrait = true,
@@ -271,6 +273,7 @@ var template_dynamic = {
 	critmod = 1.5,
 	speed = [30],
 	taunt = null,
+	counterattacks_max = 1.0,
 	productivity = 100.0,
 	#productivity mods
 	mod_build = 1.0,

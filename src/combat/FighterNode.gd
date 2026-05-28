@@ -179,6 +179,9 @@ func add_buff(i):
 			'lust':
 				newbuff.get_node("Label").show()
 				newbuff.get_node("Label").text = str(fighter.get_stat('lust'))
+			'counterattacks':
+				newbuff.get_node("Label").show()
+				newbuff.get_node("Label").text = str(fighter.get_stat('counterattacks'))
 	newbuff.hint_tooltip = text
 	
 	if i.tags.has('show_amount'):
