@@ -103,7 +103,8 @@ func update_modules():
 	for subscene in current_screen.get_children():
 		if subscene.get_class() == "Tween":
 			continue
-		subscene.update()
+		if subscene.has_method("update"):
+			subscene.update()
 		if subscene == nav_panel:
 			nav_panel.update_buttons()
 	clock_visibility()

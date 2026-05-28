@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/gui_button_clank.wav-7229e06e7d04a458386ce315d37a3857.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sounds/gui_button_clank.wav"
+dest_files=[ "res://.import/gui_button_clank.wav-7229e06e7d04a458386ce315d37a3857.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

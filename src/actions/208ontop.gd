@@ -17,6 +17,46 @@ const consent_level = 30
 const consent_giver = 3
 const consent_taker = 4
 
+const enthusiasm_giver = {
+	trigger_text = "INTERACTION_ENTHUSIASM_TRIGGER_ONTOP_GIVER",
+	btn_text = "INTERACTION_ENTHUSIASM_BTN",
+	choices = [
+		{name_key = "INTERACTION_ENTHUSIASM_ONTOP_G_CHOICE_THRUST", personality = 'bold',
+			love_keys = ["INTERACTION_ENTHUSIASM_ONTOP_G_THRUST_LOVE_1", "INTERACTION_ENTHUSIASM_ONTOP_G_THRUST_LOVE_2"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_ONTOP_G_THRUST_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_ONTOP_G_CHOICE_GRIP", personality = 'serious',
+			love_keys = ["INTERACTION_ENTHUSIASM_ONTOP_G_GRIP_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_ONTOP_G_GRIP_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_ONTOP_G_CHOICE_KISS", personality = 'kind',
+			love_keys = ["INTERACTION_ENTHUSIASM_ONTOP_G_KISS_LOVE_1", "INTERACTION_ENTHUSIASM_ONTOP_G_KISS_LOVE_2"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_ONTOP_G_KISS_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_ONTOP_G_CHOICE_HOLD", personality = 'shy',
+			love_keys = ["INTERACTION_ENTHUSIASM_ONTOP_G_HOLD_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_ONTOP_G_HOLD_HATE_1"]},
+	],
+	training_upgrades = [{skill = 'penetration', target = 'skilled'}],
+}
+
+const enthusiasm_taker = {
+	trigger_text = "INTERACTION_ENTHUSIASM_TRIGGER_ONTOP_TAKER",
+	btn_text = "INTERACTION_ENTHUSIASM_BTN",
+	choices = [
+		{name_key = "INTERACTION_ENTHUSIASM_ONTOP_T_CHOICE_HARDER", personality = 'bold',
+			love_keys = ["INTERACTION_ENTHUSIASM_ONTOP_T_HARDER_LOVE_1", "INTERACTION_ENTHUSIASM_ONTOP_T_HARDER_LOVE_2"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_ONTOP_T_HARDER_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_ONTOP_T_CHOICE_BRACE", personality = 'serious',
+			love_keys = ["INTERACTION_ENTHUSIASM_ONTOP_T_BRACE_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_ONTOP_T_BRACE_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_ONTOP_T_CHOICE_PRAISE", personality = 'kind',
+			love_keys = ["INTERACTION_ENTHUSIASM_ONTOP_T_PRAISE_LOVE_1", "INTERACTION_ENTHUSIASM_ONTOP_T_PRAISE_LOVE_2"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_ONTOP_T_PRAISE_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_ONTOP_T_CHOICE_LEAN", personality = 'shy',
+			love_keys = ["INTERACTION_ENTHUSIASM_ONTOP_T_LEAN_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_ONTOP_T_LEAN_HATE_1"]},
+	],
+	training_upgrades = [{skill = 'pussy', target = 'skilled'}],
+}
+
 func requirements():
 	var valid = true
 	if takers.size() != 1 || givers.size() != 1:
@@ -37,18 +77,18 @@ func getongoingname(givers, takers):
 	return tr("SEXACTION_ONTOP_ONGOING_1")
 
 func givereffect(member):
-	var effects = {sens = 220, horny = 25}
+	var effects = {sens = 220}
 	if member.person.get_stat('penis_size') == '':
 		effects.sens /= 1.2
 	return effects
 
 func takereffect(member):
-	var effects = {sens = 220, horny = 15}
+	var effects = {sens = 220}
 	return effects
 
 #orientation of givers/takers
-const rotation1 = Quat(0.0,0.0,0.0,0.0)
-const rotation2 = Quat(0.0,0.0,0.0,1.0)
+const parallel = true
+const facing = false
 
 const initiate = ['start_1_lotus','start_2_sexv']
 

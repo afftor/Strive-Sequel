@@ -7,6 +7,8 @@ var exterior = Statlist_init.sex_binded_exterior.duplicate(true)
 var exterior_alt = {}
 var sexexp = Statlist_init.sexexp.duplicate(true)
 var sex_skills = Statlist_init.sex_skills.duplicate(true)
+var sex_training = Statlist_init.sex_training.duplicate(true)
+var sex_mastery_progress = Statlist_init.sex_mastery_progress.duplicate(true)
 var metrics = Statlist_init.metrics.duplicate(true)
 var piercing = Statlist_init.piercing.duplicate(true)
 var armor_color = Statlist_init.armor_color.duplicate(true)
@@ -47,6 +49,14 @@ func deserialize(savedict):
 	for stat in sex_skills:
 		if savedict.sex_skills.has(stat):
 			sex_skills[stat] = savedict.sex_skills[stat] 
+	if savedict.has('sex_training'):
+		for stat in sex_training:
+			if savedict.sex_training.has(stat):
+				sex_training[stat] = savedict.sex_training[stat]
+	if savedict.has('sex_mastery_progress'):
+		for skill in sex_mastery_progress:
+			if savedict.sex_mastery_progress.has(skill):
+				sex_mastery_progress[skill] = savedict.sex_mastery_progress[skill].duplicate()
 	for stat in metrics:
 		if savedict.metrics.has(stat):
 			if savedict.metrics[stat] is Array:
@@ -128,6 +138,8 @@ func get_stat(stat):
 					container = sexexp
 				'sex_skills':
 					container = sex_skills
+				'sex_training':
+					container = sex_training
 				'metrics':
 					container = metrics
 				'piercing':
@@ -178,10 +190,7 @@ func get_consent():
 
 
 func get_sexuals():
-	var array = sex_skills.values()
-	array.sort()
-	array.invert()
-	return (array[0] + array[1] + array[2])/3
+	return 0
 
 
 func get_short_name():
@@ -342,6 +351,8 @@ func update_stat(stat, value, operant = 'set'):
 					container = sexexp
 				'sex_skills':
 					container = sex_skills
+				'sex_training':
+					container = sex_training
 				'metrics':
 					container = metrics
 				'piercing':
@@ -1031,6 +1042,23 @@ func get_sex_skills(): # I DO NOT LIKE TO DO SO - but incapsulating all of them 
 	return sex_skills
 
 
+func get_sex_training():
+	return sex_training
+
+
+func get_sex_mastery_progress():
+	return sex_mastery_progress
+
+
+func apply_sex_training_data(data):
+	for skill in data:
+		var stat = skill
+		if !str(stat).begins_with('sex_training_'):
+			stat = 'sex_training_' + skill
+		if sex_training.has(stat):
+			sex_training[stat] = data[skill]
+
+
 func get_sex_traits():
 	return sex_traits.keys()
 
@@ -1094,13 +1122,6 @@ func create_s_trait_select(trait_id):
 	unlocked_sex_traits.push_back(trait_id)
 
 
-var skill_shortcuts = {
-	vaginal_virgin = 'sex_skills_pussy',
-	anal_virgin = "sex_skills_anal",
-	mouth_virgin = 'sex_skills_oral',
-	penis_virgin = 'sex_skills_penetration',
-}
-
 func get_sex_features():
 	match statlist.sex:
 		'female':
@@ -1126,9 +1147,6 @@ func get_sex_features():
 	if statlist.vaginal_virgin_lost != null:
 		statlist.mouth_virgin_lost = statlist.vaginal_virgin_lost
 	
-	for i in ['vaginal_virgin', 'anal_virgin', 'mouth_virgin','penis_virgin']:
-		if statlist[i + '_lost'] != null:
-			sex_skills[skill_shortcuts[i]] = rand_range(1,10)
 	set_virginity_data()
 
 
@@ -1138,21 +1156,6 @@ func set_virginity_data():
 			parent.get_ref().take_virginity(i, ResourceScripts.game_party.get_master().id)
 #			statlist[i+'_lost'] = ResourceScripts.game_party.get_master().id
 #			metrics.metrics_partners.append(ResourceScripts.game_party.get_master().id)
-
-
-func add_random_sex_skill():
-	var array = ['sex_skills_petting']
-	for i in ['vaginal_virgin', 'anal_virgin', 'mouth_virgin','penis_virgin']:
-		if statlist[i + '_lost'] != null:
-			array.append(skill_shortcuts[i])
-	
-	if get_stat('penis_size') != '':
-		array.append('sex_skills_penetration')
-	if get_stat('tail') in variables.longtails:
-		array.append('sex_skills_tail')
-	
-	array = input_handler.random_from_array(array)
-	sex_skills[array] += rand_range(3,8)
 
 
 #generating char stuff
@@ -1172,16 +1175,15 @@ func process_chardata(chardata, unique = false):
 	if unique:
 		 statlist.unique = chardata.code
 	for i in chardata:
-		if !(i in ['code', 'slave_class', 'tags','sex_traits', 'sex_skills', 'personality', 'training_disposition', 'blocked_training_traits', 'traits', 'food_like', 'food_hate', 'classes', 'skills', 'mastery', 'achievement', 'achi_bonus', 'achi_wedding']):
+		if !(i in ['code', 'slave_class', 'tags','sex_traits', 'sex_skills', 'sex_training', 'personality', 'training_disposition', 'blocked_training_traits', 'traits', 'food_like', 'food_hate', 'classes', 'skills', 'mastery', 'achievement', 'achi_bonus', 'achi_wedding']):
 			var st_data = statdata.statdata[i]
 			if st_data.direct:
 				update_stat(i, chardata[i], 'set')
 	if chardata.has("sex_traits"):
 		for i in chardata.sex_traits:
 			add_sex_trait(i)
-	if chardata.has("sex_skills"):
-		for skill in chardata.sex_skills:
-			sex_skills['sex_skills_' + skill] = chardata.sex_skills[skill]
+	if chardata.has("sex_training"):
+		apply_sex_training_data(chardata.sex_training)
 	if chardata.has('icon_image'):
 		statlist.dynamic_portrait = false
 	if chardata.has('personality'):
@@ -1199,9 +1201,8 @@ func update_chardata(chardata):
 #	if chardata.has("traits"):
 #		for i in chardata.traits:
 #			add_trait(i)
-	if chardata.has("sex_skills"):
-		for skill in chardata.sex_skills:
-			sex_skills['sex_skills_' + skill] = chardata.sex_skills[skill]
+	if chardata.has("sex_training"):
+		apply_sex_training_data(chardata.sex_training)
 	if chardata.has('icon_image'):
 		statlist.dynamic_portrait = false
 
@@ -1232,13 +1233,10 @@ func generate_random_character_from_data(adjust_difficulty = 0):
 	
 	while difficulty > -1:
 		var array = []
-		array = ['physics', 'wits','sexuals', 'charm']
+		array = ['physics', 'wits', 'charm']
 		array = input_handler.random_from_array(array)
 		if randf() >= 0.7:
-			if array == 'sexuals':
-				add_random_sex_skill()
-			else:
-				update_stat(array, globals.rng.randi_range(1,15), 'add')
+			update_stat(array, globals.rng.randi_range(1,15), 'add')
 		difficulty -= 1
 
 

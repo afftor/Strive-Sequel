@@ -282,9 +282,14 @@ var data = {
 						check = false
 					},
 					{
-						type = "unique_character_checks", 
-						name = "aire", 
-						value = []
+						type = "decision",
+						value = "aire_is_saved",
+						check = true
+					},
+					{
+						type = "decision",
+						value = "aire_recruited",
+						check = false
 					}
 				],
 				type = "next_dialogue",

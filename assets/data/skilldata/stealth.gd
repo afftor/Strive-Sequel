@@ -156,7 +156,7 @@ var skills = {
 		target_number = 'line',
 		target_range = 'melee',
 		damage_type = 'weapon',
-		sfx = [{code = 'trap_cast', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'trap_snare', target = 'target', period = 'predamage'}],
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'

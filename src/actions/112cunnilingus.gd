@@ -15,9 +15,16 @@ const giver_skill = ['oral']
 const taker_skill = ['pussy']
 const consent_level = 15
 
-
 const consent_giver = 2
 const consent_taker = 3
+
+const parallel = true
+const facing = true
+const linkset = "none"
+
+const initiate = ['start_cunnilingus']
+const ongoing = ['ongoing_cunnilingus']
+const reaction = ['react_cunnilingus', 'react_2_sex', 'react_cunnilingus_skill']
 
 func getname(state = null):
 	return tr("SEXACTION_CUNNILINGUS")
@@ -25,51 +32,251 @@ func getname(state = null):
 func getongoingname(givers, takers):
 	return tr("SEXACTION_CUNNILINGUS_ONGOING_1")
 
-func getongoingdescription(givers, takers):
-	return tr("SEXACTION_CUNNILINGUS_ONGOING_DESC_1")
-
 func requirements():
 	var valid = true
 	if takers.size() < 1 || givers.size() < 1 || givers.size() + takers.size() > 3:
 		valid = false
 	else:
-#		for i in givers:
-#			if i.mouth != null:
-#				valid = false
 		for i in takers:
-#			if i.vagina != null || i.person.has_pussy == false:
-#				valid = false
 			if i.person.get_stat('has_pussy') == false:
 				valid = false
-#			elif i.clit != null:
-#				valid = false
 			elif i.person.get_stat('sex') == 'male':
 				valid = false
 	return valid
 
 func givereffect(member):
-	var effects = {sens = 90, horny = 15}
+	var effects = {sens = 90}
 	return effects
 
 func takereffect(member):
-	var effects = {sens = 180, horny = 25}
+	var effects = {sens = 180, horny = 45}
 	return effects
 
-func initiate():
-	return tr("SEXACTION_CUNNILINGUS_INITIATE_1")
+const act_lines = {
 
-func reaction(member):
-	var text = ''
-	if member.energy == 0:
-		text = tr("SEXACTION_CUNNILINGUS_REACTION_UNCONSCIOUS")
-	#elif member.consent == false:
-		#TBD
-	elif member.sens < 100:
-		text = tr("SEXACTION_CUNNILINGUS_REACTION_1")
-	elif member.sens < 300:
-		text = tr("SEXACTION_CUNNILINGUS_REACTION_2")
-	elif member.sens < 600:
-		text = tr("SEXACTION_CUNNILINGUS_REACTION_3")
-	else:
-		text = tr("SEXACTION_CUNNILINGUS_REACTION_4")
-	return text
+start_cunnilingus = {
+
+	nice = {
+	conditions = {
+		consent = [true],
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_START_NICE_1",
+		"SEXACTION_CUNNILINGUS_START_NICE_2",
+	]},
+
+	mean = {
+	conditions = {
+		consent = [false],
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_START_MEAN_1",
+		"SEXACTION_CUNNILINGUS_START_MEAN_2",
+	]},
+
+	novice_nice = {
+	conditions = {
+		consent = [true],
+		giver_skill_level = ['novice'],
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_START_NOVICE_NICE_1",
+	]},
+
+	novice_mean = {
+	conditions = {
+		consent = [false],
+		giver_skill_level = ['novice'],
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_START_NOVICE_MEAN_1",
+	]},
+
+	skilled_nice = {
+	conditions = {
+		consent = [true],
+		giver_skill_level = ['skilled'],
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_START_SKILLED_NICE_1",
+	]},
+
+	skilled_mean = {
+	conditions = {
+		consent = [false],
+		giver_skill_level = ['skilled'],
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_START_SKILLED_MEAN_1",
+	]},
+
+	mastered_nice = {
+	conditions = {
+		consent = [true],
+		giver_skill_level = ['mastered'],
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_START_MASTERED_NICE_1",
+	]},
+
+	mastered_mean = {
+	conditions = {
+		consent = [false],
+		giver_skill_level = ['mastered'],
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_START_MASTERED_MEAN_1",
+	]},
+
+},
+
+ongoing_cunnilingus = {
+
+	default = {
+	conditions = {
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_ONGOING_DESC_1",
+		"SEXACTION_CUNNILINGUS_ONGOING_DESC_2",
+	]},
+
+},
+
+react_cunnilingus = {
+
+	arousal_4_nice = {
+	conditions = {
+		consent = [true],
+		arousal = [4,5],
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_REACT_AROUSAL4_NICE_1",
+		"SEXACTION_CUNNILINGUS_REACT_AROUSAL4_NICE_2",
+	]},
+
+	arousal_4_mean = {
+	conditions = {
+		consent = [false],
+		arousal = [4,5],
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_REACT_AROUSAL4_MEAN_1",
+	]},
+
+	arousal_3_nice = {
+	conditions = {
+		consent = [true],
+		arousal = [3],
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_REACT_AROUSAL3_NICE_1",
+		"SEXACTION_CUNNILINGUS_REACT_AROUSAL3_NICE_2",
+	]},
+
+	arousal_3_mean = {
+	conditions = {
+		consent = [false],
+		arousal = [3],
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_REACT_AROUSAL3_MEAN_1",
+	]},
+
+	arousal_2_nice = {
+	conditions = {
+		consent = [true],
+		arousal = [2],
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_REACT_AROUSAL2_NICE_1",
+	]},
+
+	arousal_2_mean = {
+	conditions = {
+		consent = [false],
+		arousal = [2],
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_REACT_AROUSAL2_MEAN_1",
+	]},
+
+	arousal_1_nice = {
+	conditions = {
+		consent = [true],
+		arousal = [1],
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_REACT_AROUSAL1_NICE_1",
+	]},
+
+	arousal_1_mean = {
+	conditions = {
+		consent = [false],
+		arousal = [1],
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_REACT_AROUSAL1_MEAN_1",
+		"SEXACTION_CUNNILINGUS_REACT_AROUSAL1_MEAN_2",
+	]},
+
+},
+
+react_cunnilingus_skill = {
+
+	giver_novice_low = {
+	conditions = {
+		giver_skill_level = ['novice'],
+		arousal = [1,2],
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_REACT_SKILL_NOVICE_LOW_1",
+	]},
+
+	giver_novice_high = {
+	conditions = {
+		giver_skill_level = ['novice'],
+		arousal = [3,4,5],
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_REACT_SKILL_NOVICE_HIGH_1",
+	]},
+
+	giver_skilled_low = {
+	conditions = {
+		giver_skill_level = ['skilled'],
+		arousal = [1,2],
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_REACT_SKILL_SKILLED_LOW_1",
+	]},
+
+	giver_skilled_high = {
+	conditions = {
+		giver_skill_level = ['skilled'],
+		arousal = [3,4,5],
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_REACT_SKILL_SKILLED_HIGH_1",
+	]},
+
+	giver_mastered_low = {
+	conditions = {
+		giver_skill_level = ['mastered'],
+		arousal = [1,2],
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_REACT_SKILL_MASTERED_LOW_1",
+	]},
+
+	giver_mastered_high = {
+	conditions = {
+		giver_skill_level = ['mastered'],
+		arousal = [3,4,5],
+	},
+	lines = [
+		"SEXACTION_CUNNILINGUS_REACT_SKILL_MASTERED_HIGH_1",
+	]},
+
+},
+
+}

@@ -44,4 +44,4 @@ func takereffect(member):
 	
 
 func initiate():
-	return "As [name1] prepares to cum, [he1] focuses [his1] attention on [name2]..."
+	return "As [name1] prepare[s/1] to cum, [he1] focuses [his1] attention on [name2]..."

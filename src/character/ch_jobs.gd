@@ -46,7 +46,7 @@ func mining_mithril():
 
 
 func whoring_gold():
-	return (1 + parent.get_ref().get_stat('sexuals')/60.0 + parent.get_ref().get_stat('charm')/80.0)
+	return (1 + parent.get_ref().get_stat('charm')/80.0)
 
  
 func gold_waitress():
@@ -59,28 +59,40 @@ func gold_dancer():
 	return parent.get_ref().get_stat('mod_dancer') * (0.8 + parent.get_ref().get_stat('charm')/75.0 + parent.get_ref().get_stat('physics')/110.0)
 
 func gold_stripper():
-	return parent.get_ref().get_stat('mod_strip') *  (1.3 + parent.get_ref().get_stat('sexuals')/40.0)
+	return parent.get_ref().get_stat('mod_strip') * (1.3 * _sex_training_mult('petting'))
+
+func _sex_training_mult(skill_name):
+	var level = parent.get_ref().get_stat('sex_training_' + skill_name)
+	if level == 'mastered': return 1.8
+	elif level == 'skilled': return 1.35
+	return 1.0
 
 func gold_petting():
-	return (0.6 + parent.get_ref().get_stat('sex_skills_petting')/85.0)
+	return 0.99 * _sex_training_mult('petting')
 
 func gold_oral():
-	return (0.85 + parent.get_ref().get_stat('sex_skills_oral')/100)
+	return 1.03 * _sex_training_mult('oral')
 
 func gold_pussy():
-	return (1 + parent.get_ref().get_stat('sex_skills_pussy')/90.0)
+	return 1.17 * _sex_training_mult('pussy')
 
 func gold_penetration():
-	return (1.1 + parent.get_ref().get_stat('sex_skills_penetration')/70.0)
+	return 1.40 * _sex_training_mult('penetration')
 
 func gold_anal():
-	return (0.9 + parent.get_ref().get_stat('sex_skills_anal')/75)
+	return 1.24 * _sex_training_mult('anal')
 
 func gold_group():
-	return (1.5 + parent.get_ref().get_stat('sex_skills_anal')/60 + parent.get_ref().get_stat('sex_skills_pussy')/60)
+	var mult = (_sex_training_mult('anal') + _sex_training_mult('pussy')) / 2.0
+	return 2.69 * mult
 
 func gold_sextoy():
-	return (2.5 + parent.get_ref().get_stat('sexuals')/55)
+	var bonus = 0.0
+	for skill in ['petting', 'oral', 'pussy', 'anal', 'penetration', 'tail']:
+		var level = parent.get_ref().get_stat('sex_training_' + skill)
+		if level == 'mastered': bonus += 0.35
+		elif level == 'skilled': bonus += 0.15
+	return 2.5 + bonus
 
 func cooking_progress():
 	return variables.base_work_increment + (variables.stat_work_increment * (parent.get_ref().get_stat('wits')/50.0))

@@ -591,7 +591,12 @@ func select_brothel_activity():
 		if parent.get_ref().has_status('harlotry'):
 			parent.get_ref().rest_tick()
 		#pick chance
-		if 50 + max(parent.get_ref().get_stat('sexuals')/2,parent.get_ref().get_stat('charm')/2) > randf()*100:
+		var _sex_skilled_count = 0
+		for _skill in ['petting', 'oral', 'pussy', 'anal', 'penetration', 'tail']:
+			var _lvl = parent.get_ref().get_stat('sex_training_' + _skill)
+			if _lvl == 'skilled' || _lvl == 'mastered':
+				_sex_skilled_count += 1
+		if 50 + max(_sex_skilled_count * 10, parent.get_ref().get_stat('charm')/2) > randf()*100:
 			var remove_from_sex = []
 			
 			#every rule toggled only has 50% chance to be picked by default
@@ -631,9 +636,10 @@ func select_brothel_activity():
 			if sex_rules.has('anal') && penis_check:
 				parent.get_ref().take_virginity('anal', 'brothel_customer')
 			
-			work_tick_values(input_handler.random_from_array(data.workstats))
+			if data.workstats.size() > 0:
+				work_tick_values(input_handler.random_from_array(data.workstats))
 			parent.get_ref().try_rise_fame('service')
-			
+
 			parent.get_ref().add_stat('metrics_randompartners', globals.fastif(sex_rules.has('group'), 2, 1))
 			
 			var goldearned = highest_value.value * (1 + (0.1 * sex_rules.size())) * min(5, (1 + 0.01 * parent.get_ref().calculate_price(false, true))) + bonus_gold# 10% percent for every toggled sex service + 1% of slave's value up to 500%
@@ -660,7 +666,8 @@ func select_brothel_activity():
 		var highest_value = get_highest_value(non_sex_rules)
 		
 		var data = tasks.gold_tasks_data[highest_value.code]
-		work_tick_values(input_handler.random_from_array(data.workstats))
+		if data.workstats.size() > 0:
+			work_tick_values(input_handler.random_from_array(data.workstats))
 		parent.get_ref().try_rise_fame('service')
 		
 		var goldearned = highest_value.value * min(4, (1 + 0.001 * parent.get_ref().calculate_price(false, true)))
@@ -803,6 +810,7 @@ func farm_tick():
 
 
 func work_tick():
+	
 	if is_on_quest:
 		return
 	
@@ -895,9 +903,7 @@ func add_metric_for_outcome(res_id):
 
 func work_tick_values(workstat):
 	if !parent.get_ref().has_status('no_working_bonuses'):
-		if workstat.findn("sex_skills") >= 0:
-			parent.get_ref().add_stat(workstat, rand_range(1.2,1.8))
-		else:
+		if workstat.findn("sex_skills") < 0:
 			parent.get_ref().add_stat(workstat, 0.36)
 		parent.get_ref().add_stat('base_exp', 5)
 
