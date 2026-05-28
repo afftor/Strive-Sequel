@@ -604,6 +604,7 @@ func newturn():
 				cooldowncleararray.append(k)
 		for k in cooldowncleararray:
 			tchar.skills.combat_cooldowns.erase(k)
+		tchar.set_stat('counterattacks', tchar.get_stat('counterattacks_max'))
 
 
 func calculateorder():

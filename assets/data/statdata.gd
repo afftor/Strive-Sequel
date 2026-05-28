@@ -1547,6 +1547,25 @@ var statdata = {
 		tags = ['integer'],
 		direct = false,
 	},
+	#counterattacks
+	counterattacks = {
+		code = 'counterattacks',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = ['integer', 'cap_up', 'cap_low'],
+		cap_up = 'counterattacks_max',
+		cap_low = 0,
+	},
+	counterattacks_max = {
+		code = 'counterattacks_max',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = ['integer_floor'],
+		direct = false,
+		show_info = {category = 'combat'}
+	},
 	#sex
 	penis_virgin_lost = {
 		code = 'penis_virgin_lost',

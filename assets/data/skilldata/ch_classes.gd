@@ -1180,14 +1180,20 @@ var effects = {
 		conditions = [
 			{type = 'skill', value = ['tags', 'has', 'damage']},
 			{type = 'skill', value = ['can_target_counterattack_in_melee', 'eq', true]},
-			{type = 'owner', value = [{code = 'shield_with_evasion_bonus', check = true}]},
+			{type = 'owner', value = [
+				{code = 'shield_with_evasion_bonus', check = true}, 
+				{code = 'stat', stat = 'counterattacks', operant = 'gte', value = 1.0}
+			]},
 		],
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'owner',
 				args = {caster = {obj = 'parent', func = 'arg', arg = 'caster', comment = 'couneratk_target'}},
-				atomic = [{type = 'use_combat_skill', skill = 'attack', target = ['parent_args', 'caster']}],
+				atomic = [
+					{type = 'stat_add', stat = 'counterattacks', value = -1}, 
+					{type = 'use_combat_skill', skill = 'attack', target = ['parent_args', 'caster']}
+				],
 			}
 		],
 	},
@@ -2207,6 +2213,7 @@ var buffs = {
 		icon = "res://assets/images/iconsclasses/shieldbearer.png",
 		description = "BUFFDESCRIPTPALADINGUARD",
 		tags = ['combat_only'],
+		bonuseffect = 'counterattacks'
 	},
 	b_templar = {
 		icon = "res://assets/images/iconsclasses/Templar.png",
