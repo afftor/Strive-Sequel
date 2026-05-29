@@ -17,7 +17,7 @@ var npcs = []
 var aiobserve = false #True - player will not be picked by AI
 
 var takercategories = ['cunnilingus','rimjob','handjob','titjob','tailjob','blowjob']
-var analcategories = ['assfingering','rimjob','missionaryanal','doggyanal','lotusanal','revlotusanal','doubledildoass','inerttaila','analvibrator','enemaplug','insertinturnsass']
+var analcategories = ['assfingering','rimjob','missionaryanal','doggyanal','lotusanal','revlotusanal','ontopanal','doubledildoass','inserttaila','analvibrator','enemaplug','insertinturnsass']
 var punishcategories = []#globals.punishcategories
 var penetratecategories = ['missionary','missionaryanal','doggy','doggyanal','lotus','lotusanal','revlotus','revlotusanal','doubledildo','doubledildoass','inserttailv','inserttaila','tribadism','frottage']
 

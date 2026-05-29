@@ -273,6 +273,7 @@ var slave_starting_stats = 15
 
 var minimum_factor_value = 1
 var maximum_factor_value = 6
+var body_upgrade_points_per_growth_factor = 25
 
 var basic_character_atk = 15
 var basic_character_matk = 15

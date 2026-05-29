@@ -541,7 +541,7 @@ var professions = {
 		reqs = [
 			{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 4},
 			{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 2},
-			{code = 'has_any_profession', value = ['apprentice', 'scholar']}
+			{code = 'has_any_profession', value = ['apprentice', 'scholar', 'priest']}
 			],
 		statchanges = {mp_reg_add_part = 2, mpmax = 15, mastery_point_magic = 3},
 		traits = ['caster'],

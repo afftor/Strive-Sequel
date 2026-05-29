@@ -88,6 +88,10 @@ func go_for_code():
 	OS.shell_open("https://www.patreon.com/posts/new-password-18830450")
 
 
+func get_code():
+	go_for_code()
+
+
 func open():
 	$TabContainer/Gameplay/Scroll/Box/enable_tutorials.pressed = ResourceScripts.game_progress.show_tutorial
 	# $TabContainer/Cheats/EnterCodeMenu/Activate.disabled = true

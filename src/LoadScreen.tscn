@@ -51,12 +51,10 @@ script = ExtResource( 1 )
 anims/loading = SubResource( 1 )
 
 [node name="loading" type="TextureRect" parent="."]
-margin_right = 1920.0
-margin_bottom = 1080.0
+margin_left = -1.0
+margin_right = 1921.0
+margin_bottom = 1082.0
 texture = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="loading"]
 margin_right = 40.0

@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.14.3'
+const gameversion = '0.14.3a'
 
 #time
 signal hour_tick
@@ -2810,6 +2810,8 @@ func valuecheck(dict):
 		'false':
 			return false
 		"has_money":
+			if dict.has('check'):
+				return ResourceScripts.game_res.if_has_money(dict['value']) == dict.check
 			return ResourceScripts.game_res.if_has_money(dict['value'])
 		"has_loan_money":
 			return ResourceScripts.game_res.if_has_money(get_loan_sum(dict.stage - 1))

@@ -21,7 +21,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'earth',#not sure but not matters
 		sfx = [{code = 'earth_shield', target = 'target', period = 'predamage'}],
-		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
 		value = [['caster.matk']],
 		damagestat = ['no_stat'],
 		variations = [

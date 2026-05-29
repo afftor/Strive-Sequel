@@ -1,10 +1,13 @@
 0.14.3a
+Caster class requirement now also takes Priest as alternative to apprentice/scholar 
 Slightly nerfed dragon knight class, some of its bonuses moved to dragonkin race
+Presumably fixed blurriness for windows size scaling/higher resolution monitors
 Fixed some cases when autotarget skills could result in combat bugs
 Fixed double stone weapons having weird element
 Fixed Empyrian passive causing burn on friendly targets
 Fixed some location tasks causing errors
-Fixed aire recruiting option being visible after she was already recruited	
+Fixed aire recruiting option being visible after she was already recruited
+Fixed a bug preventing charcters with factors 6 from being generated
 0.14.3
 Fully reworked sex skills related mechanics and some of the scene and text.
 Added continuation of act 4 storyline focused on Erdyna's path.

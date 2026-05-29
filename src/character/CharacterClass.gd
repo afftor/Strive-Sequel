@@ -1949,7 +1949,7 @@ func decipher_single(ch):
 			else:
 				text2 += Items.itemlist[i.value].name + "."
 		'has_skill':
-			var skill_name = Skilldata.get_template(i.skill, self).name
+			var skill_name = Skilldata.get_template(i.value, self).name
 			if i.check:
 				text2 += "%s: %s." % [tr("REQHASSKILL"), skill_name]
 			else:

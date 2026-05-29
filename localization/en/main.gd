@@ -13863,7 +13863,7 @@ After thinking about it, you decide it might be a good idea to visit the Servant
 	CALI_SIDEQUEST_9_2_alt = """{color=yellow|— Hmm, if you say so I'll believe you. I'm not sure where to start, though. Do you have something on your mind? }
 
 After thinking about it, you decide it might be a good idea to visit the Workers Guild for some ideas.""",
-	CALI_SERVANTS_START_OPTION = "*Ask on Cali's beneficence*",
+	CALI_SERVANTS_START_OPTION = "*Ask on Cali's beneficence* [500 gold]",
 	CALI_SERVANTS_1 = """You approach ask around the guild helpers and they direct you to a general training for female servants. Basic skills of sewing, cooking and etiquette which will be a good spot for any girl to start with.
 
 With a hint of doubt, Cali agrees to try these activities.
@@ -17080,7 +17080,7 @@ You fill out a small form denoting which actions should be excluded from her tra
 	MARRIAGE_SERVANTS_NEW_LEADER_OPTION_1 = "*Invite them*",
 	MARRIAGE_SERVANTS_NEW_LEADER_OPTION_2 = "*Refuse*",
 	MARRIAGE_SERVANTS_NEW_LEADER_COMPLETE_4 = "{color=yellow|— Understood. With that set, I hope to see you soon and wish you a very happy wedding, [name].}",
-	CALI_SERVANTS_NEW_LEADER_START_OPTION = "*Ask on Cali's beneficence*",
+	CALI_SERVANTS_NEW_LEADER_START_OPTION = "*Ask on Cali's beneficence* [500 gold]",
 	CALI_SERVANTS_NEW_LEADER_1 = """You approach ask around the guild helpers and they direct you to a general training for female servants. Basic skills of sewing, cooking and etiquette which will be a good spot for any girl to start with.
 
 With a hint of doubt, Cali agrees to try these activities.

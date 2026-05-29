@@ -589,7 +589,7 @@ func fix_stat_data(stat, data):
 					data.bonuses.mul2 = []
 				data.bonuses.mul2.push_back({value = 1.2, src_type = 'upgrade', src_value = 'resting', timestamp = 0})
 		'upgrade_points_total':
-			data.base_value = get_stat('growth_factor') * 25
+			data.base_value = get_stat('growth_factor') * variables.body_upgrade_points_per_growth_factor
 #		'lustmax':
 #			data.base_value = get_stat('sexuals_factor') * 25 + 25
 		'trainee_amount':
@@ -931,8 +931,8 @@ func generate_random_character_from_data(desired_class = null, adjust_difficulty
 	for st in ['physics_factor', 'magic_factor', 'wits_factor','sexuals_factor', 'charm_factor']:
 		if statlist[st] < 1:
 			statlist[st] = 1
-		if statlist[st] > 5: # or 6, but this will turn factor bonuses useless
-			statlist[st] = 5
+		if statlist[st] > 6:
+			statlist[st] = 6
 	
 	#assign classes
 	while classcounter > 0:

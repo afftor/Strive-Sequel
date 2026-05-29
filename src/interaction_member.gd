@@ -301,7 +301,7 @@ func orgasm(custom_text = null):
 		#anus is in taker slot
 		elif scene.takers.find(self) >= 0:
 			if randf() < 0.4:
-				anustext = "[name2] feel[s/2] a {^sudden:intense::} {^jolt of electricity:warmth:wave of pleasure} inside [him2] and [his2]"
+				anustext = "[name2] feel[s/2] a {^sudden :intense ::}{^jolt of electricity:warmth:wave of pleasure} inside [him2] and [his2]"
 			else:
 				anustext = "[names2]"
 			if scene.scene.giverpart == 'penis':
@@ -321,7 +321,7 @@ func orgasm(custom_text = null):
 			#vagina in giver slot
 			if scene.givers.find(self) >= 0:
 				if randf() < 0.4:
-					vaginatext = "[name1] feel[s/1] a {^sudden:intense::} {^jolt of electricity:warmth:wave of pleasure} inside [him1] and [his1]"
+					vaginatext = "[name1] feel[s/1] a {^sudden :intense ::}{^jolt of electricity:warmth:wave of pleasure} inside [him1] and [his1]"
 				else:
 					vaginatext = "[names1]"
 				if scene.scene.takerpart == 'penis':
@@ -332,7 +332,7 @@ func orgasm(custom_text = null):
 			#vagina is in taker slot
 			elif scene.takers.find(self) >= 0:
 				if randf() < 0.4:
-					vaginatext = "[name2] feel[s/2] a {^sudden:intense::} {^jolt of electricity:warmth:wave of pleasure} inside [him2] and [his2]"
+					vaginatext = "[name2] feel[s/2] a {^sudden :intense ::}{^jolt of electricity:warmth:wave of pleasure} inside [him2] and [his2]"
 				else:
 					vaginatext = "[names2]"
 				if scene.scene.giverpart == 'penis':
