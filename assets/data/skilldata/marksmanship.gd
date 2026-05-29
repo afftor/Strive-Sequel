@@ -25,7 +25,7 @@ var skills = {
 		damage_type = 'weapon',
 		random_target = true,
 		not_final = true,
-		sfx = [{code = 'strafe', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'ranged_attack', target = 'target', period = 'predamage', duration = 0.2, no_repeat_delays = true}],#strafe
 		sounddata = {initiate = null, strike = 'bow', hit = null},
 		value = 0.45,
 		random_factor_p = 0.1,
