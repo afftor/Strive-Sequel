@@ -386,7 +386,7 @@ func invoke_animations_1():
 		caster.displaynode.process_sound(template.sounddata.initiate)
 	for i in animationdict.windup:
 		var sfxtarget = globals.ProcessSfxTarget(i.target, caster, target)
-		queuenode.add_sfx(sfxtarget, i.code)
+		queuenode.add_sfx(sfxtarget, i.code, globals.make_sfx_params(i))
 	
 	combatnode.turns += 1
 	step += 1

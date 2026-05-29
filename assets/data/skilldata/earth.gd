@@ -148,7 +148,9 @@ var skills = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'earth',
-		sfx = [{code = 'earthquake', target = 'target_group', period = 'windup'}], 
+		sfx = [
+			{code = 'shake_target', target = 'target_group', period = 'windup', alt_slot = 'SFX_BG'},
+			{code = 'earthquake', target = 'target_group', period = 'windup'}],
 		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
 		value = 0.4,
 		follow_up = 'eq_setup',

@@ -193,7 +193,11 @@ func add_combatlog(text):
 func add_sfx(node, code, params = {}):
 	if node == null:
 		return
-	var template = {node = node, time = combatnode.turns, type = code, slot = 'SFX', params = params}
+	var slot = 'SFX'
+	if params.has("alt_slot"):
+		slot = params.alt_slot
+		params.erase("alt_slot")
+	var template = {node = node, time = combatnode.turns, type = code, slot = slot, params = params}
 	add_animation(template)
 
 

@@ -185,10 +185,17 @@ func targetattack(node, args = null):
 func ranged_attack(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
 	var nextanimationtime = 0.2
-	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
-	log_update_delay = max(log_update_delay, 0.3)
-	buffs_update_delays[node] = 0.2
-	ResourceScripts.core_animations.gfx_sprite(node, 'arrow', 0.3, 0.4, node.get_flip())
+	var duration = 0.4
+	if args != null and args.has('duration'):
+		duration = args.duration
+		nextanimationtime = duration - 0.1
+	if args != null and args.has("no_delays") and args.no_delays:
+		custom_delays[node] = {delay = 0.2, cur_timer = cur_timer, time = 7}
+	else:
+		hp_update_delays[node] = 0.3 #delay for hp updating during this animation
+		log_update_delay = max(log_update_delay, 0.3)
+		buffs_update_delays[node] = 0.2
+	ResourceScripts.core_animations.gfx_sprite(node, 'arrow', 0.3, duration, node.get_flip())
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay
@@ -238,6 +245,22 @@ func earth_spike(node, args = null):
 	
 	return nextanimationtime + aftereffectdelay
 	#aftereffecttimer = nextanimationtime + aftereffectdelay
+
+func shake_target(node, args):
+	var duration = 0.5
+	if args.has('duration'):
+		duration = args.duration
+	var nextanimationtime = duration - 0.1
+	if !args.has("no_delays"):
+		hp_update_delays[node] = 0.5
+		log_update_delay = max(log_update_delay, 0.5)
+		buffs_update_delays[node] = 0.5
+	else:
+		#for now it seems thet 7 turns is repeat loop duration
+		custom_delays[node] = {delay = 0.2, cur_timer = cur_timer, time = 7}
+	ResourceScripts.core_animations.ShakeAnimation(node, duration)#, magnitude = 5
+	
+	return nextanimationtime + aftereffectdelay
 
 func gfx_video(node, args):
 	var nextanimationtime = 0.8
