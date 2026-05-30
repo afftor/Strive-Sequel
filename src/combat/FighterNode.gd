@@ -253,7 +253,7 @@ func noq_defeat():
 		turn_overlay(true)
 #		$Icon.material = load("res://assets/sfx/bw_shader.tres")
 	else:
-		fighter = null
+#		fighter = null
 		is_active = false
 #		queue_free()
 #	set_process_input(false)
@@ -266,8 +266,9 @@ func resurrect():
 
 func check_active():
 	if !is_active:
-		if fighter != null:
-			fighter.displaynode = null
+#		if fighter != null:
+		fighter.displaynode = null
+		fighter = null
 		queue_free()
 
 

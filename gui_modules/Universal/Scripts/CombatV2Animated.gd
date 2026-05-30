@@ -221,6 +221,8 @@ func reset_combat_data():
 
 
 func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', t_combat_data = {}):
+	ClearSkillPanel()
+	ClearItemPanel()
 	if images.backgrounds.has(background):
 		$Background.texture = images.get_background(background)
 	else:
@@ -477,7 +479,7 @@ func checkdeaths():
 #				tchar.displaynode.queue_free()
 				tchar.displaynode.is_active = false
 #				tchar.displaynode = null
-				tchar.is_active = false
+#				tchar.is_active = false
 				battlefield[i] = null
 				if tchar.combatgroup == 'enemy':
 					enemygroup.erase(i)
@@ -1776,6 +1778,8 @@ func FinishCombat(victory = true):
 		#mark enemy characters for clearing
 		#mb to change this part when dealing with captured enemies
 		var tchar = characters_pool.get_char_by_id(i)
+		if tchar.displaynode != null:
+			tchar.displaynode.check_active()
 		tchar.is_active = false
 	if victory:
 		CombatAnimations.force_end()
