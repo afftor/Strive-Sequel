@@ -3966,7 +3966,7 @@ var data = {
 				type = "next_dialogue"
 			},
 			{
-				code = "jean_sylas_sphere_destroy",
+				code = "jean_sylas_sphere_destroy_dead",
 				text = "JEAN_SYLAS_SPHERE_OPTION_DESTROY",
 				reqs = [
 					{
@@ -4105,7 +4105,7 @@ var data = {
 				type = "next_dialogue"
 			},
 			{
-				code = "jean_sylas_sphere_up_to_you",
+				code = "jean_sylas_sphere_research",
 				text = "JEAN_SYLAS_SPHERE_OPTION_UP_TO_YOU",
 				reqs = [
 
