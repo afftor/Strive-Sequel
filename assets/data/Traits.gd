@@ -1850,6 +1850,42 @@ var traits = {
 		effects = ['trait_snuff_candle', 'trigger_snuff_candle_light'],
 		tags = [],
 	},
+	dwarf_king_trait = {
+		code = 'dwarf_king_trait',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['dk_emergency_response_command','dk_national_security_concern'],
+		tags = [],
+	},
+	dwarf_skirmisher_trait = {
+		code = 'dwarf_skirmisher_trait',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['dwarf_skirmisher_trait','dwarf_skirmisher_trait_2'],
+		tags = [],
+	},
+	dwarf_shielder_trait = {
+		code = 'dwarf_shielder_trait',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['dwarf_shielder_trait','dwarf_shielder_trait_2'],
+		tags = [],
+	},
+	obsidian_golem_trait = {
+		code = 'obsidian_golem_trait',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['obsidian_golem_trait','obsidian_golem_trait_2'],
+		tags = [],
+	},
 	#exploration related traits
 	#needs to hardcode most of traits
 	medium_armor = {#removes penalty from medium armor

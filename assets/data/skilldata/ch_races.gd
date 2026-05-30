@@ -209,7 +209,7 @@ var effects = {
 		tick_event = variables.TR_TURN_GET,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
-		tags = ['buff'],
+		tags = ['buff','fly'],
 		statchanges = {evasion = 90},
 		buffs = [
 			{

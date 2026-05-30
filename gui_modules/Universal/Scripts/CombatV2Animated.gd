@@ -1100,7 +1100,23 @@ func summon(montype, limit, combatgroup, incombat = false): #reworked
 		tchar.process_event(variables.TR_COMBAT_S)
 		ActionQueue.add_rebuildbuffs(tchar.displaynode)
 
-
+func get_group_amount(combatgroup, alive = true): #First made to make a skill for Dwarf king that only be use if there aint space to summon. 
+	var amount = 0
+	var search_array
+	match combatgroup:
+		'enemy':
+			search_array = [7, 8, 9, 10, 11, 12] 
+		'ally':
+			if alive:
+				return playergroupcounter
+			else:
+				search_array = [1, 2, 3, 4, 5, 6]
+	for i in search_array:
+		if battlefield[i] == null:
+			continue
+		if !alive or !get_char_by_pos(i).defeated:
+			amount += 1
+	return amount
 
 func use_skill(skill_code, caster, target, mode = variables.SKILL_BASE):
 	if !ActionQueue.is_empty():
