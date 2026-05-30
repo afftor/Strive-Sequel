@@ -1861,6 +1861,15 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 				if char_behind != null: 
 					char_alive = !char_behind.is_koed()
 				check = char_alive == i.check
+		'group_amount':
+			if input_handler.combat_node == null:
+				return false
+			var amount = 0
+			if i.has("alive"):
+				amount = input_handler.combat_node.get_group_amount(combatgroup, i.alive)
+			else:
+				amount = input_handler.combat_node.get_group_amount(combatgroup)
+			check = input_handler.operate(i.operant, amount, i.value)
 	return check
 
 

@@ -21,8 +21,8 @@ var skills = {
 		target_number = 'nontarget_group',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [{code = 'earth_spike', target = 'target', period = 'postdamage'}], 
-		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
+		sfx = [{code = 'flame', target = 'target', period = 'predamage'}],
+		sounddata = {initiate = 'firehit', strike = null, hit = null, hittype = 'bodyarmor'},
 		value = 0.3,
 		not_final = true
 	},
