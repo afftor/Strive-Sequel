@@ -174,7 +174,6 @@ func advance_turn(amount = 1):
 		globals.emit_signal("hour_tick")
 	update_labels()
 #	rotate_sky()
-	
 	gui_controller.mansion.SlaveListModule.rebuild()
 	gui_controller.mansion.SkillModule.build_skill_panel()
 	update_labels()

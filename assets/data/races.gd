@@ -555,7 +555,7 @@ var racelist = {
 			charm_factor = [1,3],
 			wits_factor = [2,4],
 		},
-		race_bonus = {hpmax_mul2 = 1.5, resist_fire = 10, mastery_point_combat = 1, price = 300},
+		race_bonus = {hpmax_mul2 = 1.5, damage_mod_melee = 0.10, resist_fire = 20, mastery_point_combat = 1, price = 300},
 		combat_skills = ['fly_evasion'],
 		personality = {kind = 0.3, bold = 1, shy = 0.2, serious = 0.5},
 		diet_love = {vege = 1, meat = 3, fish = 1, grain = 1},

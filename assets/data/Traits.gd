@@ -485,7 +485,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_tr_nixx2'],
+		effects = ['e_tr_nixx','e_tr_nixx2'],
 		tags = []
 	},
 	witch = {
@@ -1832,6 +1832,24 @@ var traits = {
 		effects = ['entrance_animation_eagle'],
 		tags = [],
 	},
+	nixx_blessing_nyctophobia = {
+		code = 'nixx_blessing_nyctophobia',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['kuro_boss_combat_start_effects'],
+		tags = [],
+	},
+	snuffing_out_the_candle = {
+		code = 'snuffing_out_the_candle',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['trait_snuff_candle', 'trigger_snuff_candle_light'],
+		tags = [],
+	},
 	#exploration related traits
 	#needs to hardcode most of traits
 	medium_armor = {#removes penalty from medium armor
@@ -2471,8 +2489,8 @@ var sex_traits = { #only for interaction tab
 		code = "lewdness_aura",
 		name = "",
 		descript = "",
-		starting = true,
-		random_generation = true,
+		starting = false,
+		random_generation = false,
 		negative = false,
 		acquire_reqs = [],
 		reqs = [],
@@ -2502,14 +2520,14 @@ var sex_traits = { #only for interaction tab
 	},
 	bedroom_prodidgy = {
 		code = "bedroom_prodidgy",
-		name = "",
-		descript = "",
+		name = "SEXTRAITBEDROOM_PRODIDGY",
+		descript = "SEXTRAITBEDROOM_PRODIDGYDESCRIPT",
 		starting = true,
 		random_generation = true,
 		negative = false,
-		acquire_reqs = [{code = "actor_check", value = [{code = "stat", type = "bedroom_prodigy", operant = "gte", value = 3}]}],
+		acquire_reqs = [],
 		reqs = [],
-		effects = [{effect = 'skill_exp', operant = '+', value = 0.5, trigger = 'skill_exp_gain'}],
+		effects = [],
 	},
 	pushover = {
 		code = "pushover",

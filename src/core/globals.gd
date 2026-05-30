@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.14.3 experimental'
+const gameversion = '0.14.3'
 
 #time
 signal hour_tick
@@ -28,6 +28,7 @@ var rng := RandomNumberGenerator.new()
 var rng_controllable := RandomNumberGenerator.new()
 var file = File.new()
 var dir = Directory.new()
+var _save_thread = Thread.new()
 
 var workersdict
 var randomgroups
@@ -103,11 +104,11 @@ func _ready():
 	modding_core.load_mods()
 	Effectdata.fix_eff_data()
 	
-	if OS.has_feature('editor'):
-		for loc_path in input_handler.scanfolder(variables.LocalizationFolder):
-			var loc_code = loc_path.replace(variables.LocalizationFolder, '')
-			if loc_code != "en":
-				update_localization_file(loc_code)
+#	if OS.has_feature('editor'):
+#		for loc_path in input_handler.scanfolder(variables.LocalizationFolder):
+#			var loc_code = loc_path.replace(variables.LocalizationFolder, '')
+#			if loc_code != "en":
+#				update_localization_file(loc_code)
 	
 	#console
 	var console = load("res://gui_modules/Console/console.tscn").instance()
@@ -985,14 +986,26 @@ func SaveGame(name):
 		savedict[p] = ResourceScripts.get(p).serialize()
 #	ResourceScripts.game_res.fix_items_inventory(false)
 
-	file.open(variables.userfolder + 'saves/' + name + '.sav', File.WRITE)
-	file.store_line(to_json(savedict))
-	file.close()
-	var metadata = ConfigFile.new()
 	var config_data = {version = gameversion, time = OS.get_datetime(), master_name = ResourceScripts.game_party.get_master().get_stat('name'), day = ResourceScripts.game_globals.date, hour = ResourceScripts.game_globals.hour, population = ResourceScripts.game_party.characters.size(), gold = ResourceScripts.game_res.money, master_icon = ResourceScripts.game_party.get_master().get_icon(true), preset = ResourceScripts.game_globals.starting_preset}
+	if _save_thread.is_active():
+		_save_thread.wait_to_finish()
+	_save_thread.start(self, "_save_thread_write", [name, savedict, config_data])
+
+func _save_thread_write(args):
+	var name = args[0]
+	var savedict = args[1]
+	var config_data = args[2]
+	var f = File.new()
+	f.open(variables.userfolder + 'saves/' + name + '.sav', File.WRITE)
+	f.store_line(to_json(savedict))
+	f.close()
+	var metadata = ConfigFile.new()
 	for i in config_data:
 		metadata.set_value('details', i, config_data[i])
 	metadata.save(variables.userfolder + "saves/" + name + ".dat")
+	call_deferred("_save_complete", name)
+
+func _save_complete(name):
 	input_handler.SystemMessage("Game saved as " + name + ".sav")
 
 
@@ -1654,6 +1667,7 @@ func StartFixedAreaCombat(data): #non-rnd, 2test, 2fix
 		input_handler.combat_node = input_handler.get_combat_node()
 	if data.has('intimidate') and data.intimidate:
 		combat_data.instawin = true
+		data.intimidate = false
 	input_handler.combat_node.encountercode = enemydata
 	input_handler.combat_node.set_norun_mode(false)
 	input_handler.combat_node.start_combat(gui_controller.exploration_dungeon.active_location.group, enemies, background, music, combat_data)
@@ -3047,6 +3061,7 @@ func apply_starting_preset():
 					AddItemToInventory(CreateGearItem(i, {}))
 		for i in preset.upgrades:
 			ResourceScripts.game_res.upgrades[i] = preset.upgrades[i]
+		common_effects([{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
 		input_handler.interactive_message('servants_election_finish6')
 	else:
 		var preset = starting_presets.preset_data[ResourceScripts.game_globals.diff_money]
@@ -3306,3 +3321,11 @@ func calculate_lux_rooms():
 		if p.check_work_rule("luxury"):
 			res += 1
 	return res
+
+func make_sfx_params(anim_dict, last_iteration = false):
+	var params = {}
+	if anim_dict.has('duration'): params.duration = anim_dict.duration
+	if anim_dict.has('no_delays'): params.no_delays = anim_dict.no_delays
+	if anim_dict.has('no_repeat_delays') and anim_dict.no_repeat_delays and !last_iteration:
+		params.no_delays = true
+	return params

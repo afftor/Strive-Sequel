@@ -44,7 +44,7 @@ func givereffect(member):
 
 #Disabling until something is decided about tools
 func takereffect(member):
-	var effects = {horny = 5}
+	var effects = {}
 	return effects
 
 func initiate():

@@ -2512,7 +2512,7 @@ var data = {
 			"dialogue_scene",
 			"active_character_translate"
 		],
-		image = "no_image",
+		image = "prey",
 		text = [
 			{
 				text = "CHARRND_HUNT_OFFERING",
@@ -2525,6 +2525,7 @@ var data = {
 			{
 				code = "char_rnd_hunt_offering2",
 				text = "CHARRND_HUNT_OFFERING_OPT_ACCEPT",
+				active_char_translate = true,
 				dialogue_argument = 1,
 				type = "next_dialogue",
 				reqs = [
@@ -2565,6 +2566,7 @@ var data = {
 			{
 				code = "char_rnd_hunt_offering2",
 				text = "CHARRND_HUNT_OFFERING_OPT_REFUSE",
+				active_char_translate = true,
 				dialogue_argument = 3,
 				type = "next_dialogue",
 				reqs = [
@@ -2594,7 +2596,7 @@ var data = {
 			"dialogue_scene",
 			"active_character_translate"
 		],
-		image = "no_image",
+		image = "prey",
 		text = [
 			{
 				text = "CHARRND_HUNT_OFFERING_REPLY_ACCEPT",
@@ -2637,7 +2639,7 @@ var data = {
 			"dialogue_scene",
 			"active_character_translate"
 		],
-		image = "no_image",
+		image = "night",
 		text = [
 			{
 				text = "CHARRND_LATE_KNOCK",
@@ -2667,6 +2669,7 @@ var data = {
 			{
 				code = "char_rnd_late_knock2",
 				text = "CHARRND_LATE_KNOCK_OPT_INVITE",
+				active_char_translate = true,
 				dialogue_argument = 2,
 				type = "next_dialogue",
 				reqs = [
@@ -2684,6 +2687,7 @@ var data = {
 			{
 				code = "char_rnd_late_knock2",
 				text = "CHARRND_LATE_KNOCK_OPT_PULL",
+				active_char_translate = true,
 				dialogue_argument = 3,
 				type = "next_dialogue",
 				reqs = [
@@ -2714,7 +2718,7 @@ var data = {
 			"dialogue_scene",
 			"active_character_translate"
 		],
-		image = "no_image",
+		image = "night",
 		text = [
 			{
 				text = "CHARRND_LATE_KNOCK_REPLY_DISMISS",
@@ -2757,7 +2761,7 @@ var data = {
 			"dialogue_scene",
 			"few_scene_characters_translate"
 		],
-		image = "no_image",
+		image = "slave_sex",
 		text = [
 			{
 				text = "CHARRND_CAUGHT",
@@ -2828,7 +2832,7 @@ var data = {
 			"dialogue_scene",
 			"few_scene_characters_translate"
 		],
-		image = "no_image",
+		image = "slave_sex",
 		text = [
 			{
 				text = "CHARRND_CAUGHT_REPLY_LEAVE",
@@ -2871,7 +2875,7 @@ var data = {
 			"dialogue_scene",
 			"active_character_translate"
 		],
-		image = "no_image",
+		image = "jewelry",
 		text = [
 			{
 				text = "CHARRND_ADMIRER",
@@ -2884,6 +2888,7 @@ var data = {
 			{
 				code = "char_rnd_admirer2",
 				text = "CHARRND_ADMIRER_OPT_SEND",
+				active_char_translate = true,
 				dialogue_argument = 1,
 				type = "next_dialogue",
 				reqs = [
@@ -2907,6 +2912,7 @@ var data = {
 			{
 				code = "char_rnd_admirer2",
 				text = "CHARRND_ADMIRER_OPT_NEGOTIATE",
+				active_char_translate = true,
 				dialogue_argument = 2,
 				type = "next_dialogue",
 				reqs = [
@@ -2960,7 +2966,7 @@ var data = {
 			"dialogue_scene",
 			"active_character_translate"
 		],
-		image = "no_image",
+		image = "jewelry",
 		text = [
 			{
 				text = "CHARRND_ADMIRER_REPLY_SEND",
@@ -3003,7 +3009,7 @@ var data = {
 			"dialogue_scene",
 			"active_character_translate"
 		],
-		image = "no_image",
+		image = "bathroom",
 		text = [
 			{
 				text = "CHARRND_BATH",
@@ -3044,6 +3050,7 @@ var data = {
 			{
 				code = "char_rnd_bath2",
 				text = "CHARRND_BATH_OPT_PULLIN",
+				active_char_translate = true,
 				dialogue_argument = 2,
 				type = "next_dialogue",
 				reqs = [
@@ -3061,6 +3068,7 @@ var data = {
 			{
 				code = "char_rnd_bath2",
 				text = "CHARRND_BATH_OPT_DISMISS",
+				active_char_translate = true,
 				dialogue_argument = 3,
 				type = "next_dialogue",
 				reqs = [
@@ -3090,7 +3098,7 @@ var data = {
 			"dialogue_scene",
 			"active_character_translate"
 		],
-		image = "no_image",
+		image = "bathroom",
 		text = [
 			{
 				text = "CHARRND_BATH_REPLY_ACCEPT",
@@ -3133,7 +3141,7 @@ var data = {
 			"dialogue_scene",
 			"active_character_translate"
 		],
-		image = "no_image",
+		image = "warn",
 		text = [
 			{
 				text = "CHARRND_THEFT",
@@ -3146,6 +3154,7 @@ var data = {
 			{
 				code = "char_rnd_theft2",
 				text = "CHARRND_THEFT_OPT_PUNISH",
+				active_char_translate = true,
 				dialogue_argument = 1,
 				type = "next_dialogue",
 				reqs = [
@@ -3163,6 +3172,7 @@ var data = {
 			{
 				code = "char_rnd_theft2",
 				text = "CHARRND_THEFT_OPT_EXPLAIN",
+				active_char_translate = true,
 				dialogue_argument = 2,
 				type = "next_dialogue",
 				reqs = [
@@ -3214,7 +3224,7 @@ var data = {
 			"dialogue_scene",
 			"active_character_translate"
 		],
-		image = "no_image",
+		image = "warn",
 		text = [
 			{
 				text = "CHARRND_THEFT_REPLY_PUNISH",
@@ -3257,7 +3267,7 @@ var data = {
 			"dialogue_scene",
 			"few_scene_characters_translate"
 		],
-		image = "no_image",
+		image = "kneel",
 		text = [
 			{
 				text = "CHARRND_SPARRING",
@@ -3347,7 +3357,7 @@ var data = {
 			"dialogue_scene",
 			"few_scene_characters_translate"
 		],
-		image = "no_image",
+		image = "kneel",
 		text = [
 			{
 				text = "CHARRND_SPARRING_REPLY_MOVE",
@@ -3393,7 +3403,7 @@ var data = {
 		image = "no_image",
 		text = [
 			{
-				text = "CHARRND_LAYING",
+				text = "lilia_sick",
 				reqs = [
 
 				]
@@ -3403,6 +3413,7 @@ var data = {
 			{
 				code = "char_rnd_laying2",
 				text = "CHARRND_LAYING_OPT_TIME",
+				active_char_translate = true,
 				dialogue_argument = 1,
 				type = "next_dialogue",
 				reqs = [
@@ -3432,6 +3443,7 @@ var data = {
 			{
 				code = "char_rnd_laying2",
 				text = "CHARRND_LAYING_OPT_STAY",
+				active_char_translate = true,
 				dialogue_argument = 2,
 				type = "next_dialogue",
 				reqs = [
@@ -3465,6 +3477,7 @@ var data = {
 			{
 				code = "char_rnd_laying2",
 				text = "CHARRND_LAYING_OPT_WORK",
+				active_char_translate = true,
 				dialogue_argument = 3,
 				type = "next_dialogue",
 				reqs = [
@@ -3494,7 +3507,7 @@ var data = {
 			"dialogue_scene",
 			"active_character_translate"
 		],
-		image = "no_image",
+		image = "lilia_sick",
 		text = [
 			{
 				text = "CHARRND_LAYING_REPLY_TIME",

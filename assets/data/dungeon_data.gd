@@ -2987,7 +2987,7 @@ var dungeons = {
 		},
 		difficulty = 'medium',
 		background_pool = ['fort1'],
-		custom_background = 'fort1',
+		custom_background = 'combat_fort',
 		enemyarray = [['bandits_medium', 1], ['bandits_assassin', 0.75], ['bandits_medium2', 0.75]],
 		final_enemy = [['erdyna_thugs', 1]], final_enemy_type = 'monster',
 		event_data = {},
@@ -3651,7 +3651,8 @@ var dungeons = {
 			races = [['local', 3], ['common',5], ['uncommon',1]]
 		},
 		difficulty = 'medium',
-		background_pool = ['cave4'],
+		background = 'fire_depths1',
+		background_pool = ['fire_depths1'],
 		custom_background = 'combat_volcano',
 		enemyarray = [['firedepths_easy1', 1],['firedepths_easy2', 1],['firedepths_medium1', 1],['firedepths_medium2', 1]],
 		final_enemy = [['firedepths_boss1',1],['firedepths_boss2',1]], final_enemy_type = 'monster',

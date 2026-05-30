@@ -321,6 +321,8 @@ func check_timed_events():
 											if j.type in ['date']:
 												j.value += 1
 												break
+								'cancel':
+									deleting_events.append(i)
 			if failed:
 				gui_controller.clock.continue_timer = true
 			else:

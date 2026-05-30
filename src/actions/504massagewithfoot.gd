@@ -41,12 +41,12 @@ func requirements():
 
 #Disabling until something is decided about tools
 func givereffect(member):
-	var effects = {sens = 25, horny = 10}
+	var effects = {sens = 25}
 	return effects
 
 #Disabling until something is decided about tools
 func takereffect(member):
-	var effects = {sens = 150, horny = 20}
+	var effects = {sens = 150}
 	return effects
 
 func initiate():

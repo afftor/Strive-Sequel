@@ -6,9 +6,11 @@ onready var nav = $LocationGui/NavigationModule
 onready var cast_panel = $LocationGui/cast_panel
 onready var use_state_panel = $LocationGui/use_state_panel
 onready var return_all_btn = $LocationGui/PresentedSlavesPanel/ReturnAll
+onready var present_char_cont = $LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer
 
 var selected_location
 var use_state
+var sfx_is_dedicated = false
 
 
 var positiondict = {
@@ -19,6 +21,9 @@ var positiondict = {
 	5: "LocationGui/Positions/HBoxContainer/backrow/5",
 	6: "LocationGui/Positions/HBoxContainer/backrow/6",
 }
+
+var animations = ResourceScripts.scriptdict.combat_animation.new()
+var planed_animations = []
 
 
 func _ready():
@@ -70,16 +75,22 @@ func _ready():
 	input_handler.register_btn_source('location_back_pos3', self, 'tut_get_back3', null, null, 'dropped')
 	input_handler.register_btn_source('location_back_highlight', self, null, self, "tut_get_back_highlight")
 	input_handler.register_btn_source('location_proceed', self, 'tut_get_first_info_btn')
+	input_handler.register_btn_source('location_master_pos', self, 'tut_get_master_pos')
+	input_handler.register_btn_source('location_servent_pos', self, 'tut_get_servent_pos')
+	input_handler.register_btn_source('location_reju_btn', cast_panel, 'tut_get_reju_btn')
 	$LocationGui/AvailableSlaves.tut_register_first_recruit()
 	$LocationGui/AvailableSlaves.tut_register_first_char()
 	$LocationGui/NavigationModule.tut_register_mansion_btn()
+	
+	add_child(animations)
+	animations.connect("alleffectsfinished", self, 'reset_sfx_dedicated')
 
 func tut_get_master():
-	for btn in $LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer.get_children():
+	for btn in present_char_cont.get_children():
 		if btn.get('dragdata') != null and btn.dragdata.is_master():
 			return btn
 func tut_get_servent():
-	for btn in $LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer.get_children():
+	for btn in present_char_cont.get_children():
 		if btn.get('dragdata') != null and btn.dragdata.get_stat('slave_class') == 'servant':
 			return btn
 func tut_get_front1():
@@ -104,6 +115,16 @@ func tut_get_back_highlight():
 	return rect
 func tut_get_first_info_btn():
 	return $LocationGui/DungeonInfo/ScrollContainer/VBoxContainer.get_children()[0]
+func tut_get_master_pos():
+	for btn_path in positiondict.values():
+		var btn = get_node(btn_path)
+		if btn.character != null and btn.character.is_master():
+			return btn
+func tut_get_servent_pos():
+	for btn_path in positiondict.values():
+		var btn = get_node(btn_path)
+		if btn.character != null and btn.character.get_stat('slave_class') == 'servant':
+			return btn
 
 
 func clear_cashed():
@@ -252,7 +273,7 @@ func use_item_on_character(character, item):
 	call_deferred('build_location_group')
 
 
-func use_e_combat_skill(caster, target, skill):
+func use_e_combat_skill(caster, target, skill, silent = false):
 	caster.pay_cost(skill.cost)
 	caster.combatgroup = 'ally'
 	if !caster.has_status('ignore_catalysts_for_%s' % skill.code):
@@ -329,9 +350,10 @@ func use_e_combat_skill(caster, target, skill):
 	s_skill1.process_event(variables.TR_SKILL_FINISH)
 	caster.process_event(variables.TR_SKILL_FINISH, {skill = s_skill1, caster = caster, target = target})
 	s_skill1.remove_effects()
-	for i in skill.sounddata.values():
-		if i != null:
-			input_handler.PlaySound(i)
+	if !silent:
+		for i in skill.sounddata.values():
+			if i != null:
+				input_handler.PlaySound(i)
 	if skill.has('follow_up'):
 		active_skill = skill.followup
 		use_e_combat_skill(caster, target, skill)
@@ -528,13 +550,11 @@ func build_location_group():
 
 	var newbutton
 	var counter = 0
-	input_handler.ClearContainer($LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer)
+	input_handler.ClearContainer(present_char_cont)
 	var char_array = input_handler.get_location_characters_by_id(active_location.id)
 	for i in char_array:
 		counter += 1
-		newbutton = input_handler.DuplicateContainerTemplate(
-			$LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer
-		)
+		newbutton = input_handler.DuplicateContainerTemplate(present_char_cont)
 		newbutton.dragdata = i
 		newbutton.get_node("icon").texture = i.get_icon_small()
 		if newbutton.get_node('icon').texture == null:
@@ -547,11 +567,18 @@ func build_location_group():
 		newbutton.get_node("Label").text = i.get_short_name()
 #		newbutton.connect("pressed", self, "return_character", [i])
 		newbutton.get_node("caster").visible = cast_panel.can_cast(i.id)
+		if is_in_use_state():
+			newbutton.get_node("mark").show()
 		#return_all_btn is always visible here, but I'm still using this for unification reasons
 		newbutton.connect("pressed", self, "process_cast_use", [newbutton, return_all_btn.visible, true])
 		if active_location.group.values().has(i.id):
 			newbutton.get_node("icon").modulate = Color(0.3, 0.3, 0.3)
 		globals.connectslavetooltip(newbutton, i)
+		for anim_num in range(planed_animations.size()-1, -1, -1):
+			var animation = planed_animations[anim_num]
+			if animation.person_id == i.id:
+				animate(newbutton, animation.skill)
+				planed_animations.remove(anim_num)
 	if (counter == 0
 		&& input_handler.active_location.id == active_location.id
 		&& is_visible()):#$LocationGui.is_visible()
@@ -616,7 +643,7 @@ func build_item_panel():
 		#newnode.get_node("Label").text = i.name
 		newnode.get_node("amount").text = str(i.amount)
 		newnode.get_node("Name").text = tr("ITEM" + str(i.code).to_upper())
-		newnode.connect("pressed", self, "start_use_state", [cast_panel.ENTITY_ITEM, null, i])
+		newnode.connect("pressed", self, "start_use_state", [cast_panel.ENTITY_ITEM, null, null, i])
 		globals.connectitemtooltip_v2(newnode, i)
 #		tutorial_items = true
 	# if tutorial_items == true:
@@ -820,7 +847,7 @@ func process_cast_use(port_node, with_return = false, bottom = false):
 				return_character(person)
 			return
 		
-		cast_panel.build_for_person(person.id, with_return)
+		cast_panel.build_for_person(person.id, port_node, with_return)
 		if !bottom:
 			cast_panel.rect_global_position = Vector2(
 				port_node.get_global_rect().end.x,
@@ -833,44 +860,130 @@ func process_cast_use(port_node, with_return = false, bottom = false):
 		
 	else:
 		var person = port_node.get("dragdata")
+		var delayed_animation = true
 		if !person:
 			person = port_node.get("character")
+			delayed_animation = false
 		if !person:
 			return
 		
+		use_state_panel.last_input_is_handled()
+		if is_in_dedicated_animation():
+			return
+#		if !use_state.multiuse:
+#			use_state_panel.hide()
+		var multiuse = false
 		if use_state.type == cast_panel.ENTITY_SKILL:
-			use_e_combat_skill(use_state.caster, person, use_state.entity)
-		else:# use_state.type == cast_panel.ENTITY_SKILL: (ENTITY_RETURN can't come here)
+			if use_state.dedicated_sfx:
+				animate(port_node, use_state.entity, true)
+				yield(animations, 'alleffectsfinished')
+			elif delayed_animation:
+				plan_animation(person.id, use_state.entity)
+			else:
+				animate(port_node, use_state.entity)
+			use_e_combat_skill(use_state.caster, person, use_state.entity, true)
+			multiuse = (use_state.multiuse
+				and !cast_panel.is_skill_disabled(use_state.caster, use_state.entity))
+		else:# use_state.type == cast_panel.ENTITY_ITEM: (ENTITY_RETURN can't come here)
+			var anim_entity = {sfx = [{code = 'heal', duration = 1.0}]}
+			if delayed_animation:
+				plan_animation(person.id, anim_entity)
+			else:
+				animate(port_node, anim_entity)
 			use_item_on_character(person, use_state.entity)
-		try_stop_use_state()
+			multiuse = use_state.multiuse and use_state.entity.amount > 0
+		if !multiuse:
+			try_stop_use_state()
 
-func start_use_state(type, caster, entity):
+func start_use_state(type, caster, caster_node, entity):
+	if is_in_dedicated_animation():
+		return
 	var use_state_panel_icon = use_state_panel.get_node("Button/Icon")
 	var use_state_panel_name = use_state_panel.get_node("Button/name")
+	var multiuse = false
+	var dedicated_sfx = false
 	if type == cast_panel.ENTITY_RETURN:
 		return_character(caster)
 		return
 	elif type == cast_panel.ENTITY_ITEM:
 		entity.set_icon(use_state_panel_icon)
 		use_state_panel_name.text = tr("ITEM" + str(entity.code).to_upper())
+		multiuse = true
 	else:# type == cast_panel.ENTITY_SKILL:
+		dedicated_sfx = entity.tags.has('dedicated_sfx')
 		if entity.target == 'self':
-			use_e_combat_skill(caster, caster, entity)
+			if dedicated_sfx:
+				animate(caster_node, entity, true)
+				yield(animations, 'alleffectsfinished')
+			elif caster_node.get("dragdata"):
+				plan_animation(caster.id, entity)
+			else:
+				animate(caster_node, entity)
+			use_e_combat_skill(caster, caster, entity, true)
 			return
 		use_state_panel_icon.texture = entity.icon
 		use_state_panel_name.text = entity.name
+		multiuse = entity.tags.has('multiuse')
 	
 	use_state = {
 		type = type,
 		caster = caster,
-		entity = entity
+		entity = entity,
+		multiuse = multiuse,
+		dedicated_sfx = dedicated_sfx
 	}
 	use_state_panel.show()
+	highlight_spelltar_chars()
 
 func try_stop_use_state():
 	if !is_in_use_state(): return
+	unhighlight_spelltar_chars()
 	use_state = null
 	use_state_panel.hide()
 
 func is_in_use_state():
 	return (use_state != null)
+
+func highlight_spelltar_chars(char_id = null):
+	highlight_spelltar_chars_true(true, char_id)
+func unhighlight_spelltar_chars():
+	highlight_spelltar_chars_true(false)
+
+func highlight_spelltar_chars_true(value, char_id = null):
+	for i in positiondict:
+		var node = get_node(positiondict[i])
+		if !value or char_id == null or (node.character != null and node.character.id == char_id):
+			if !value or node.character != null:
+				node.get_node("mark").visible = value
+	for node in present_char_cont.get_children():
+		if !node.visible or !is_instance_valid(node):
+			continue
+		if !value or char_id == null or (node.dragdata != null and node.dragdata.id == char_id):
+			node.get_node("mark").visible = value
+
+func animate(target_node, skill, dedicated_sfx = false):
+	sfx_is_dedicated = sfx_is_dedicated or dedicated_sfx
+	for sfx_dict in skill.sfx:
+		#ignore sfx_dict.period and sfx_dict.target for now
+		animations.add_new_data({
+			node = target_node,
+			time = 0,
+			type = sfx_dict.code,
+			slot = 'SFX',
+			params = globals.make_sfx_params(sfx_dict)})
+	animations.check_start()
+	if skill.has('sounddata'):
+		for i in skill.sounddata.values():
+			if i != null:
+				input_handler.PlaySound(i)
+
+func is_in_dedicated_animation():
+	return (sfx_is_dedicated
+		and (animations.is_busy or !planed_animations.empty()))
+
+#plan_animation can't be dedicated_sfx, as such sfx playes befor screen updates
+func plan_animation(person_id, skill):
+	planed_animations.append({person_id = person_id, skill = skill})
+
+func reset_sfx_dedicated():
+	sfx_is_dedicated = false

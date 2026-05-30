@@ -16,10 +16,10 @@ var request
 var requestsdone = 0
 var consent = 0
 var consentgain = 1
-var stamina = 100 setget stamina_set
 
 var actions_resisted = {}
 var low_actions_resisted = 0
+var lack_consent = 0
 
 
 var number = 0
@@ -98,8 +98,11 @@ var punish_actions = []
 var mazo_actions = []
 var deviant_orgasms = 0
 var max_ongoing_actions = 0
+var gave_orgasm = false
+var skill_xp_bonus = 0
+var actions_remaining = 0
 
-var actionshad = {addtraits = [], removetraits = [], samesex = 0, samesexorgasms = 0, oppositesex = 0, oppositesexorgasms = 0, punishments = 0, group = 0}
+var actionshad = {addtraits = [], removetraits = [], samesex = 0, samesexorgasms = 0, oppositesex = 0, oppositesexorgasms = 0, punishments = 0, group = 0, actions = {}}
 
 #additional fields from person
 var id
@@ -123,6 +126,7 @@ func setup_person(ch, no_loyal = false):
 	if tmp != null && ResourceScripts.game_res.items[tmp].itembase == 'strapon':
 		strapon = true
 	lewd = 100
+	actions_remaining = variables.sex_actions_base + int(ch.get_stat('sexuals_factor')) * variables.sex_actions_per_factor + int(ch.get_stat('sex_stamina'))
 	for i in sex_traits:
 		var trait = Traitdata.sex_traits[i]
 		for k in trait.effects:
@@ -157,16 +161,8 @@ func lewd_set(value):
 
 func horny_set(value):
 	var change = value - horny
-	horny += change*hornymod
+	horny = min(100, horny + change*hornymod)
 
-func stamina_set(value):
-	var endvalue = stamina - value
-	if person.get_stat('slave_class') == 'slave':
-		endvalue = endvalue*0.66
-	stamina -= endvalue
-	if stamina <= 0:
-#		person.add_stat('obedience', (value + stamina))
-		stamina = 0
 
 var impregnation_texts = {
 
@@ -277,8 +273,6 @@ func orgasm(custom_text = null):
 	var anustext = ''
 	orgasms += 1
 	
-	if stamina > 0:
-		stamina += max(20 + 5*person.get_stat('sexuals_factor') - orgasms*10, 0)
 	
 #	if sceneref.participants.size() == 2 && person.has_profession("master"):
 #		if person.check_trait("Monogamous") && (sceneref.participants[0].person.has_profession("master") || sceneref.participants[1].person.has_profession("master")):
@@ -467,11 +461,7 @@ func actioneffect(values, scenedict_ids):
 	if values.has('horny'):
 		hornyinput = values.horny
 
-	if horny < 100:
-		sens_mod -= 0.5
-
 	if performed_actions.has(scenedict.scene.code):
-		sens_mod -= 0.05*performed_actions[scenedict.scene.code]
 		performed_actions[scenedict.scene.code] += 1
 	else:
 		performed_actions[scenedict.scene.code] = 1
@@ -479,7 +469,7 @@ func actioneffect(values, scenedict_ids):
 	var position
 	var seek_group
 	var self_group
-	var lowestconsent = 0
+	var lowestconsent = 100
 	if scenedict.givers.has(self):
 		self_group = 'giver'
 		seek_group = 'taker'
@@ -502,34 +492,8 @@ func actioneffect(values, scenedict_ids):
 			consented_actions[scenedict.scene.code] += 1
 		else:
 			consented_actions[scenedict.scene.code] = 1
-	if lowestconsent > scenedict.scene.consent_level:
-		var difference = min(lowestconsent - scenedict.scene.consent_level, 15)
-		sens_mod += difference * 0.02
-		horny_mod += difference * 0.02
 
-	var partner_skill = 0
-	var partner_skill_counter = 0
 	for i in scenedict[seek_group+'s']:
-		for k in scenedict.scene[seek_group+'_skill']:
-			partner_skill += i.person_sexskills['sex_skills_' + k]
-			partner_skill_counter += 1
-			var value = (1.0/scenedict.scene[seek_group+"_skill"].size()) * variables.sex_factor_skill_multiplier[int(i.person.get_stat('sexuals_factor'))]
-			var bonus = 1
-			for t in sex_traits:
-				var trait = Traitdata.sex_traits[t]
-				for j in trait.effects:
-					if j.trigger == 'skill_exp_gain_partner' && j.effect == 'skill_exp':
-						bonus = input_handler.math(j.operant, bonus, j.value)
-
-			for t in i.sex_traits:
-				var trait = Traitdata.sex_traits[t]
-				for j in trait.effects:
-					if j.trigger == 'skill_exp_gain' && j.effect == 'skill_exp':
-						bonus = input_handler.math(j.operant, bonus, j.value)
-
-			i.person_sexskills['sex_skills_' + k] = min(100,i.person_sexskills['sex_skills_' + k] + value * bonus)
-#			if i.person.sexuals + i.person.sexuals_bonus > partner_skill:
-#				partner_skill = i.person.sexuals + i.person.sexuals_bonus
 		if i.person.check_trait("undead") && sex_traits.has('omnisexual') == false:
 			sens_mod -= 0.5
 			horny_mod -= 0.5
@@ -544,8 +508,6 @@ func actioneffect(values, scenedict_ids):
 							sens_mod = input_handler.math(j.operant, sens_mod, j.value)
 						'horny_bonus':
 							horny_mod = input_handler.math(j.operant, horny_mod, j.value)
-
-	sens_mod += (partner_skill/max(partner_skill_counter,0.01))*1.25/100
 
 	if values.has('tags'):
 		if values.tags.has('punish'):
@@ -581,6 +543,8 @@ func actioneffect(values, scenedict_ids):
 					'horny_bonus':
 						horny_mod = input_handler.math(k.operant, horny_mod, k.value)
 
+	if forced:
+		sens_mod *= horny / 100.0
 	self.sens += sensinput*max(0.1, sens_mod)
 	self.horny += hornyinput*max(0.1, horny_mod)
 

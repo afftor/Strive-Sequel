@@ -386,7 +386,6 @@ var data = {
 		reqs = [],
 		text = [ 
 			{text = "CALI_WILLIAM_3_1", reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage6'}]}, #return
-			{text = "CALI_WILLIAM_3_2", reqs = [], previous_dialogue_option = 3}, #bargain fail
 			{text = "CALI_WILLIAM_3", reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage5_1'}], bonus_effects = [{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage6'}], previous_dialogue_option = 1},
 		],
 		options = [ {
@@ -477,7 +476,7 @@ var data = {
 			{
 				image = 'cali_meeting',
 				tags = ['dialogue_scene'], 
-				reqs = [{type = 'unique_character_checks', name = 'cali', value = [{code = 'stat', stat = 'sexuals', operant = 'gte', value = 50}, {code = 'stat', stat = 'charm', operant = 'gte', value = 50, orflag = true}]}],
+				reqs = [{type = 'unique_character_checks', name = 'cali', value = [{code = 'stat', stat = 'consent', operant = 'gte', value = 3}, {code = 'stat', stat = 'charm', operant = 'gte', value = 50, orflag = true}]}],
 				text = [ {text = "CALI_WILLIAM_11_1", reqs = []}],
 				options = [ {
 					code = 'cali_william_12', text = "CALI_WILLIAM_11_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',

@@ -1742,31 +1742,7 @@ var data = {
 						code = "unique_character_changes",
 						value = "mae",
 						args = [
-							{
-								code = "sex_skills_petting",
-								operant = "+",
-								value = 25
-							},
-							{
-								code = "sex_skills_pussy",
-								operant = "+",
-								value = 25
-							},
-							{
-								code = "sex_skills_oral",
-								operant = "+",
-								value = 25
-							},
-							{
-								code = "sex_skills_anal",
-								operant = "+",
-								value = 25
-							},
-							{
-								code = "sexuals_factor",
-								operant = "+",
-								value = 1
-							}
+							{code = "sexuals_factor", operant = "+", value = 1}
 						]
 					},
 					{

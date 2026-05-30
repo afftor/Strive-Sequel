@@ -1,0 +1,24 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/sfx/earth_spikes/spikes_1.png" type="Texture" id=1]
+[ext_resource path="res://assets/sfx/earth_spikes/spikes_2.png" type="Texture" id=2]
+[ext_resource path="res://assets/sfx/earth_spikes/spikes_5.png" type="Texture" id=5]
+[ext_resource path="res://assets/sfx/earth_spikes/spikes_6.png" type="Texture" id=6]
+[ext_resource path="res://assets/sfx/earth_spikes/spikes_7.png" type="Texture" id=7]
+[ext_resource path="res://assets/sfx/earth_spikes/spikes_8.png" type="Texture" id=8]
+[ext_resource path="res://assets/sfx/earth_spikes/spikes_9.png" type="Texture" id=9]
+[ext_resource path="res://assets/sfx/earth_spikes/spikes_10.png" type="Texture" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": false,
+"name": "default",
+"speed": 12.0
+} ]
+
+[node name="Node2D" type="AnimatedSprite"]
+self_modulate = Color( 0.317647, 0, 0.890196, 1 )
+position = Vector2( 125, 124.337 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 1 )

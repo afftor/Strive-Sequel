@@ -250,7 +250,7 @@ func show_save_details(save):
 	if !globals.compare_version(save.version, '0.10.3b'): #or fix
 		text2 += tr("LSPOUTDATED3")
 	elif save.version != globals.gameversion:
-		text2 += tr(" LSPOUTDATED2")
+		text2 += tr("LSPOUTDATED2")
 #	text += "\n" 
 	text2 += "\n" + get_date_time(save)
 	# text += get_date_time(save)

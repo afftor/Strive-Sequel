@@ -332,8 +332,7 @@ var TranslationDict = {
 	#TutorialInfo
 	TUTORIALINFONAME = "Introduction",
 	TUTORIALINFOQUESTION = "C'est la première fois que vous jouez à Strive : Conquest ?",
-	TUTORIALINFOEXPLANATION = """Vous pouvez ouvrir le tutoriel quand vous le souhaitez,
-en utilisant le bouton.""",
+	TUTORIALINFOEXPLANATION = """Vous pouvez ouvrir le tutoriel quand vous le souhaitez, en utilisant %s le bouton.""",
 	TUTORIALINFODISMISS = "Terminer",
 	TUTORIALINFOENABLE = "Activer le tutoriel",
 	#Tutorial
@@ -1109,7 +1108,9 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	TOOLTIPEPSPEED = "Réduit les chances de toucher de l'ennemi de cette valeur",
 	TOOLTIPSPEED = "Améliore vos chances d'agir avant les autres personnages",
 	TOOLTIPRESISTS = "Réduit les dégâts élémentaires par la résistance relative",
+	TOOLTIPAROUSAL = """Sensitivity: [name] will be able to experience orgasm once Sensitivity is filled. Sensitivity requires person's Arousal when performing action without consent.""", # MISSING TRANSLATION
 	TOOLTIPSTAMINA = "L'endurance est réduite lorsque vous effectuez une action sur laquelle le personnage n'est pas d'accord. Lorsqu'elles sont complètement épuisées, ces actions épuisent l'obéissance. De plus, lorsqu'il est complètement épuisé, le personnage ne sera pas en mesure d'améliorer son consentement. L'endurance est reconstituée par les orgasmes, mais elle est affectée par des rendements décroissants",
+	TOOLTIPHORNY = """Arousal: when performing actions without consent, lack of Arousal will stop character from experiencing pleasure. Caress actions will increase arousal for taker.""", # MISSING TRANSLATION
 	TOOLTIPSTAMINADUNGEON = """Exploration Stamina is depleted every time you take an exploration action. Every turn your group will generate a certain amount of it.""", # MISSING TRANSLATION
 
 	TOOLTIPFOODCONSUMPTION = "Consommation quotidienne de nourriture",
@@ -26822,8 +26823,6 @@ You present the copied symbols and describe the doors as best as you can. Myr ta
 	ACT4_MYR_CATACOMB_REPLY_2 = """{color=aqua|Erdyna: — Not surprised, you are a big shot, aren't ya? Well, I'll be right behind you.}""", # MISSING TRANSLATION
 	
 }
-
-
 
 
 

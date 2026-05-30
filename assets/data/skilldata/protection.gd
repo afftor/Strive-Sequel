@@ -114,7 +114,7 @@ var skills = {
 		target = 'self',
 		target_number = 'single',
 		target_range = 'any',
-		damage_type = 'light',#not sure but not matters
+		damage_type = 'earth',#not sure but not matters #It matter now! -Garden
 		sfx = [{code = 'stonewall', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['caster.hpmax', '*0.15']],

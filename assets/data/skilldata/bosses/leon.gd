@@ -153,7 +153,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'weapon',
 		damage_type = 'weapon',
-		sfx = [{code = 'draw_blood', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'bite', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'fleshhit', hit = null},
 		value = 1,
 	},

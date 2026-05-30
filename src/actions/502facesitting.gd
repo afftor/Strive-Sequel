@@ -38,12 +38,12 @@ func requirements():
 
 #Disabling until something is decided about tools
 func givereffect(member):
-	var effects = {sens = 100, tags = ['pervert'], horny = 20}
+	var effects = {sens = 100, tags = ['pervert']}
 	return effects
 
 #Disabling until something is decided about tools
 func takereffect(member):
-	var effects = {sens = 30, tags = ['punish','pervert'], horny = 10}
+	var effects = {sens = 30, tags = ['punish','pervert']}
 	return effects
 
 func initiate():
