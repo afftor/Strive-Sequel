@@ -1235,8 +1235,12 @@ func get_work():
 func get_tutelage_type():
 	return xp_module.get_tutelage_type()
 
+
 func is_on_quest():
 	return xp_module.is_on_quest()
+
+func is_unavaliable():
+	return xp_module.is_unavaliable()
 
 func is_free():
 	if is_on_quest(): return false
