@@ -516,8 +516,9 @@ func add_slave(person, child = false):
 
 func remove_slave(tempslave, permanent = false):
 	check_breakdown_on_char_loss(tempslave)#not sure, if it should be done only on permanent=true
-	tempslave.remove_from_travel()
-	tempslave.remove_from_task()
+	if !tempslave.is_unavaliable():
+		tempslave.remove_from_travel()
+		tempslave.remove_from_task()
 	tempslave.unequip_all()
 	tempslave.clear_training()
 	tempslave.clear_enthrall()
