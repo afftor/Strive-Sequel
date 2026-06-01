@@ -164,7 +164,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		custom_background = "kuro_book_0",
+		custom_background = "kuro_book_0_0",
 		reqs = [
 
 		],

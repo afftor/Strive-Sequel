@@ -1973,7 +1973,7 @@ var data = {
 		]
 	},
 	training_complete_serve_1 = {
-		music = "daisy_intimate",
+		music = "intimate",
 		image = null,
 		tags = [
 			"dialogue_scene",

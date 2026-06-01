@@ -235,7 +235,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	external_rewardchars = null
 	hide()
 	
-	$ItemPanel/debugvictory.visible = debug
+	$ItemPanel/debugvictory.visible = OS.has_feature('editor')
 	# if variables.combat_tests == false:
 	# 	ResourceScripts.core_animations.BlackScreenTransition(0.5)
 	# 	yield(get_tree().create_timer(0.5), 'timeout')

@@ -1925,12 +1925,24 @@ func output(scenescript, valid_lines, givers, takers):
 		taker_skill_level = t
 
 	var giver_tail_type = 'none'
+	var giver_tits_size = 'default'
 	if givers.size() > 0:
 		var _tail = givers[0].person.get_stat('tail')
 		if _tail in ['fox', 'cat', 'wolf', 'tanuki']:
 			giver_tail_type = 'furry'
 		elif _tail in ['dragon', 'demon', 'fish', 'lizard', 'kobold', 'rat']:
 			giver_tail_type = 'scaly'
+		var has_small_tits = false
+		for giver in givers:
+			match giver.person.get_stat('tits_size'):
+				'small':
+					has_small_tits = true
+				'flat', 'masculine':
+					pass
+				_:
+					giver_tits_size = 'default'
+					break
+			giver_tits_size = 'small' if has_small_tits else 'flat'
 
 	var checks = {
 		code = scenescript.code,
@@ -1949,6 +1961,7 @@ func output(scenescript, valid_lines, givers, takers):
 		taker_fingering_ongoing = false,
 		taker_vaginal_ongoing = false,
 		giver_tail_type = giver_tail_type,
+		giver_tits_size = giver_tits_size,
 	}
 
 	#link with ongoingactions
@@ -2050,8 +2063,15 @@ func output(scenescript, valid_lines, givers, takers):
 	for i in valid_lines:
 		linearray = []
 		if i in act_lines:
+			var has_matching_giver_tits_size = false
+			for j in act_lines[i]:
+				if act_lines[i][j].conditions.has('giver_tits_size') && act_lines[i][j].conditions.giver_tits_size.has(checks.giver_tits_size):
+					has_matching_giver_tits_size = true
+					break
 			for j in act_lines[i]:
 				drop = false
+				if has_matching_giver_tits_size && !act_lines[i][j].conditions.has('giver_tits_size'):
+					drop = true
 				for k in act_lines[i][j].conditions:
 					if checks.has(k) && !act_lines[i][j].conditions[k].has(checks[k]):
 						drop = true

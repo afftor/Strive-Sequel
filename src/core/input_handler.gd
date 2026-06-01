@@ -698,6 +698,9 @@ func SetMusicRandom(category):
 	SetMusic(track)
 
 func SetMusic(name, store = false, delay = 0):
+	if name == "stop":
+		StopMusic()
+		return
 	if !audio.music.has(name):
 		print("can't find track: " + name)
 		return

@@ -109,6 +109,8 @@ func update():
 				continue
 			if ii == 'sex_training_penetration' and state == 'novice' and active_person.get_stat('penis_size') == '':
 				continue
+			if ii == 'sex_training_pussy' and state == 'novice' and active_person.get_stat('sex') == 'male':
+				continue
 			var newbutton = input_handler.DuplicateContainerTemplate($SlaveInfoModule/SexSkillsContainer/VBoxContainer)
 			var state_label = get_sex_training_label(state)
 			newbutton.get_node("Label").text = tr("CHARINFO_" + ii.to_upper())
@@ -238,6 +240,5 @@ func open_gear():
 	gui_controller.current_screen = gui_controller.inventory
 	gui_controller.inventory.set_active_hero(active_person)
 	gui_controller.emit_signal("screen_changed")
-
 
 

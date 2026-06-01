@@ -1,3 +1,8 @@
+0.14.3b
+Added titjob variation for small sizes (as well as fixing petting - mastered acquirement this way)
+Fixed act 4 event storing multiple times
+Fixed a few issues related to Anastasia's quest
+Fixed pussy sex skill being shown for males by default
 0.14.3a
 Caster class requirement now also takes Priest as alternative to apprentice/scholar 
 Slightly nerfed dragon knight class, some of its bonuses moved to dragonkin race

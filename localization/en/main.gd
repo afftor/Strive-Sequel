@@ -7027,6 +7027,26 @@ SEXACTION_TITJOB_ONGOING_1 = "[name1] give[s/1] [a /2]titjob[/s2] to [name2].",
 	SEXACTION_TITJOB_REACT_SKILL_SKILLED_HIGH_1 = ". [name1] {^squeeze[s/1]:press[es/1]} harder, sensing [he2] is close.",
 	SEXACTION_TITJOB_REACT_SKILL_MASTERED_LOW_1 = ". [name1] {^adjust[s/1]:shift[s/1]} [his1] angle with ease, always reading what [name2] responds to most.",
 	SEXACTION_TITJOB_REACT_SKILL_MASTERED_HIGH_1 = ". [name1] {^squeeze[s/1]:press[es/1]} [his1] [tits1] tighter and feel[s/1] [name2] starting to {^buck:thrust} against [him1].",
+	SEXACTION_NAIZURI_SMALL_START_1 = "[name1] press[es/1] [names2] [penis2] against [his1] small chest; there may not be much to squeeze, but the close rubbing still warms both of them.",
+	SEXACTION_NAIZURI_SMALL_START_NOVICE_1 = "[name1] awkwardly press[es/1] [names2] [penis2] to [his1] small chest, joking that there is not much to work with while still finding a pleasant angle.",
+	SEXACTION_NAIZURI_SMALL_START_SKILLED_1 = "[name1] use[s/1] [his1] small chest with practiced hand pressure, making the modest handful stimulate both of them.",
+	SEXACTION_NAIZURI_SMALL_START_MASTERED_1 = "[name1] turn[s/1] [his1] small chest into a precise source of friction, getting impressive results from limited material.",
+	SEXACTION_NAIZURI_FLAT_START_1 = "[name1] rub[s/1] [names2] [penis2] along [his1] flat chest, making a teasing show of working with what little is there.",
+	SEXACTION_NAIZURI_FLAT_START_NOVICE_1 = "[name1] fumble[s/1] [names2] [penis2] against [his1] flat chest, half-laughing at the lack of cushion but still making the friction count.",
+	SEXACTION_NAIZURI_FLAT_START_SKILLED_1 = "[name1] grind[s/1] [names2] [penis2] along [his1] flat chest with steady confidence, proving softness is optional.",
+	SEXACTION_NAIZURI_FLAT_START_MASTERED_1 = "[name1] use[s/1] [his1] flat chest with expert pressure and rhythm, turning the joke about no boobs into something effective.",
+	SEXACTION_NAIZURI_SMALL_ONGOING_DESC_1 = "[name1] continue[s/1] the small-chested naizuri, keeping [names2] [penis2] pressed close enough to keep both bodies stimulated.",
+	SEXACTION_NAIZURI_FLAT_ONGOING_DESC_1 = "[name1] continue[s/1] grinding [names2] [penis2] along [his1] flat chest, proving that a lack of softness does not mean a lack of friction.",
+	SEXACTION_NAIZURI_SMALL_REACT_1 = "[name2] respond[s/2] despite the modest handful, [his2] [penis2] reacting to the tight pressure while [name1] enjoy[s/1] the contact too.",
+	SEXACTION_NAIZURI_FLAT_REACT_1 = "[name2] react[s/2] as [his2] [penis2] grind[s/#2] against [names1] flat chest, the joke about missing boobs not making it any less stimulating.",
+	SEXACTION_NAIZURI_SMALL_REACT_SKILL_1 = ". [name1] compensate[s/1] for the small chest with hands, angle, and a rhythm that keeps both sides interested.",
+	SEXACTION_NAIZURI_SMALL_REACT_SKILL_NOVICE_1 = ". [name1] fumble[s/1] a little, but the close contact still gets a reaction from both sides.",
+	SEXACTION_NAIZURI_SMALL_REACT_SKILL_SKILLED_1 = ". [name1] keep[s/1] the small-chested pressure steady, using skill where size is lacking.",
+	SEXACTION_NAIZURI_SMALL_REACT_SKILL_MASTERED_1 = ". [name1] make[s/1] every small shift count, drawing pleasure out of the modest contact.",
+	SEXACTION_NAIZURI_FLAT_REACT_SKILL_1 = ". [name1] use[s/1] steady friction and body pressure, getting more mileage from a flat chest than either of them might admit.",
+	SEXACTION_NAIZURI_FLAT_REACT_SKILL_NOVICE_1 = ". [name1] struggle[s/1] with the angle, but even the clumsy friction is not wasted.",
+	SEXACTION_NAIZURI_FLAT_REACT_SKILL_SKILLED_1 = ". [name1] keep[s/1] a controlled rhythm, making the flat contact work better than expected.",
+	SEXACTION_NAIZURI_FLAT_REACT_SKILL_MASTERED_1 = ". [name1] turn[s/1] the flat contact into exact, teasing pressure that stimulates both of them.",
 	SEXACTION_TAILJOB_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] efforts:[names1] tail[/s1]}.",
 	SEXACTION_TAILJOB_REACTION_2 = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] [penis2] get[s/#2] {^jerked:stroked} by [names1] tail[/s1].",
 	SEXACTION_TAILJOB_REACTION_3 = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [penis2] get[s/#2] {^jerked:stroked} by [names1] tail[/s1].",
@@ -7384,6 +7404,7 @@ SEXACTION_TITJOB_ONGOING_1 = "[name1] give[s/1] [a /2]titjob[/s2] to [name2].",
 	SEXACTION_MILKER = "Milker",
 	SEXACTION_MISSIONARY = "Missionary",
 	SEXACTION_MISSIONARY_ANAL = "Missionary Anal",
+	SEXACTION_NAIZURI = "Naizuri",
 	SEXACTION_NIPPLE_CLAMP = "Nipple Clamp",
 	SEXACTION_NIPPLE_FUCK = "Nipple fuck",
 	SEXACTION_NIPPLE_SUCKING = "Nipple Sucking",
@@ -7402,6 +7423,7 @@ SEXACTION_TITJOB_ONGOING_1 = "[name1] give[s/1] [a /2]titjob[/s2] to [name2].",
 	SEXACTION_SELECTIVELY_CUM = "Selectively Cum",
 	SEXACTION_SMLT_BLOWJOB = "Smlt. Blowjob",
 	SEXACTION_SMLT_HANDJOB = "Smlt. Handjob",
+	SEXACTION_SMLT_NAIZURI = "Smlt. Naizuri",
 	SEXACTION_SMLT_TITJOB = "Smlt. Titjob",
 	SEXACTION_SPANKING = "Spanking",
 	SEXACTION_SPIT_ROAST = "Spit-roast",
@@ -21993,7 +22015,7 @@ The tension crackles between them, [name1] pacing while [name2] stands firm, gla
 	CHARRND_QUARREL_REPLY_SUPPORT1 = "You stride over and back [name1], agreeing [he1]'s in the right. [His1] chest puffs out, and [he1] nods gratefully, while [name2] scowls, stepping back. The fight dies down, but [name2]'s resentment festers, and [name1] sticks closer to you.",
 	CHARRND_QUARREL_REPLY_SUPPORT2 = "You move in and side with [name2], calling out [name1]'s faults. [name2] smirks, vindicated, as [name1]'s face darkens with a sharp curse. The argument collapses, though [name1] stalks off, wounded, and [name2] grows bolder in your shadow.",
 	CHARRND_QUARREL_REPLY_PUNISH = "You bark at [name1] and [name2] to stop, ordering them to scrub the stables as punishment. They freeze, then slump, muttering as they shuffle off together. The quarrel ends, but their glares linger, and they share a grudging truce under your firm hand.",
-	CHARRND_LOVE = """You catch [name1] lingering near [name2] in the mansion's garden, eyes soft and hands fidgeting. [He1] stammers when [he2] glances over, a flush creeping up [his1] neck as [he1] tries to hide [his1] obvious crush. [name2] seems oblivious, tending to the plants, while [name1] hovers, caught between hope and nerves.
+	CHARRND_LOVE = """You catch [name1] lingering near [name2] in the mansion's garden. [He1] stammers when [he2] glances over, a flush creeping up [his1] neck as [he1] tries to hide [his1] obvious crush. [name2] seems oblivious, tending to the plants, while [name1] hovers, caught between hope and nerves.
 
 [name1] steals another look at [name2], then quickly turns away, flustered. [He2] hums to [himself2], unaware of the longing aimed [his2] way. You watch from the path, the moment tugging at you.""",
 	CHARRND_LOVE_OPT_HELP = "Help Them Become Lovers",
@@ -22118,8 +22140,10 @@ The air smells faintly of dust and polish, the broken vase glinting under the ch
 	CHARRND_LAYING_REPLY_STAY = "You do not leave. You stay close and keep the room quiet and do what is useful without making it strange: water, a folded cloth, your presence without commentary. [name] does not thank you in words. [He] doesn't have the composure for it at the time. But [he] watches you in the hours afterward with an attention that is different from before, and when [he] looks at you across a room [he] does it the way people look at things they have decided to keep.",
 	CHARRND_LAYING_REPLY_WORK = "You hear [name] out and tell [him] you need [him] on [his] feet. [He] straightens, says nothing further, and goes. [He] manages it, and you can see the effort it costs [him], a tightness in the way [he] moves that is gone by midday. [He] does not ask again.",
 	ANA_LETTER_1_1 = """Anastasia approaches you with a hesitant step, her hands clutching a crumpled letter. Her wide eyes shimmer with a mix of determination and uncertainty as she speaks.
+	
 {color=yellow|— Master, I received this... a letter from a rebel soldier's wife. She's desperate, begging me to find her husband. He's been lost since the fighting ended. Please, I know I'm in no position to ask favors, but will you take it? Help her look for him? I... I can't bear to ignore her plea. She included her name, Liora, and I'm sure she'd speak to you if you sought her out.}""",
 	ANA_LETTER_1_2 = """Anastasia blinks, caught off guard, then steadies herself, her voice trembling but resolute.
+	
 {color=yellow|— I... I'll do anything you ask of me, Master. Anything at all. Just please, help her. She's lost everything already.}""",
 	ANA_LETTER_1_OPTION_1_1 = "I can't reject your plea when asked with such a sad face. I'll take care of it.",
 	ANA_LETTER_1_OPTION_1 = "You're still clinging to your old causes? Fine, hand over the letter, I'll see what I can do.",
@@ -22127,13 +22151,18 @@ The air smells faintly of dust and polish, the broken vase glinting under the ch
 	ANA_LETTER_1_OPTION_3 = "A missing husband, huh? What's in it for me if I waste my time on this?",
 	ANA_LETTER_1_OPTION_4 = "Anything, you say? Alright, give me the letter, but you'll owe me something big later.",
 	ANA_LETTER_END = """Anastasia flinches at your words, her shoulders slumping slightly, though a flicker of defiance lingers in her gaze.
+	
 {color=yellow|— I... I know my place now, Master. I just thought... the common folk still suffer. I'll keep it, as you wish.}""",
 	ANA_LETTER_2_1 = """Anastasia's face lights up with tentative relief as she presses the letter into your hands.
+	
 {color=yellow|— Thank you, Master! Please, read it, she'll explain everything. I know you'll find her if you try.}""",
 	ANA_LETTER_2_2 = """Anastasia nods quickly, a flush creeping up her cheeks as she lowers her gaze and hands you the letter.
+	
 {color=yellow|— Yes, Master. Whatever you want, I'll do it. Thank you... truly. Please, read it, she needs you.}""",
 	ANA_LETTER_3 = """You unfold the crumpled letter Anastasia gave you, the ink smudged in places from what might have been tears. The handwriting is shaky but legible, and it reads:
+		
 “To Lady Anastasia, I'm Liora, wife of Gavril, one of your Uncle's old rebels. He went to war with your cause and never came back after the battle at Ashen Ridge. I beg you, find him, or just tell me he's gone. I wait every day by the broken fountain in the lower district, praying someone will help. Please, you're my last hope.”
+
 The words carry a raw, quiet desperation, and the name “Liora” is scrawled at the bottom.""",
 	MEET_LIORA = "Find Liora",
 	LIORA_1_1 = """You find the woman exactly where Anastasia said, huddled near the cracked remains of a fountain in the lower district. Her face is gaunt, etched with worry, and her hands twist nervously as she speaks.
@@ -22146,6 +22175,7 @@ The words carry a raw, quiet desperation, and the name “Liora” is scrawled a
 	LIORA_1_OPTION_2 = "The Ashen Ridge, huh? I'll track him down, don't waste my time with tears.",
 	LIORA_1_OPTION_3 = "Forget searching, I'll make you tell Anastasia I've already brought him back. Lie, and we're done here.",
 	LIORA_2_1 = """The woman stiffens at your tone but nods quickly.
+	
 {color=yellow|— Yes, sir. The Ashen Ridge, it's where the rebels made their stand. He was a fighter, strong... I just hope he's still out there. Thank you... thank you for this.}""",
 	LIORA_2_2 = "{color=yellow|— Thank you... even that means something. I'll be here, hoping.}",
 	LIORA_3 = "Lie? To the princess? But... but I, please, no, I can't do that! She'd find out, and—",
@@ -23755,7 +23785,7 @@ It doesn't seem like Mae buys your lie, but it comforts her that you choose to p
 	MAE_CITY_QUEST_SUMMARY = "Mae asks for help adjusting to the city.",
 	MAE_CITY_QUEST_STAGE_0 = "Take Mae to the market in Aliron.",
 	MAE_CITY_QUEST_STAGE_1 = "Visit Shelia's home with Mae.",
-	MAE_CITY_QUEST_STAGE_2 = "Speak with Mae after crafting potion she requested.",
+	MAE_CITY_QUEST_STAGE_2 = "Speak with Mae after crafting Spirit Potion she requested.",
 	MAE_CITY_QUEST_STAGE_3 = "Return to Shelia's home with Mae.",
 	MAE_CITY_QUEST_STAGE_4 = "Search for Mae in Aliron.",
 	MAE_MARKET_OPTION = "Food Market",

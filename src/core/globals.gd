@@ -2266,6 +2266,9 @@ func common_effects(effects):
 					gui_controller.exploration.build_location_group()
 				if gui_controller.exploration_dungeon != null:
 					gui_controller.exploration_dungeon.build_location_group()
+			'update_prts':
+				for ch in ResourceScripts.game_party.characters.values():
+					ch.update_prt()
 			'rewrite_save': #obsolete
 				pass
 #				if (int(ResourceScripts.game_globals.date) % input_handler.globalsettings.autosave_frequency == 0) and int(ResourceScripts.game_globals.hour) == 1:
@@ -2765,6 +2768,8 @@ func common_effects(effects):
 				ResourceScripts.slave_quests.set_faction_factor(i.faction, i.value)
 			'achievement':
 				input_handler.achievements.try_add_achimnt(i.value)
+			_:
+				push_error("Unknown common_effects code: %s in effect %s" % [str(i.code), str(i)])
 
 func after_wedding_event(character):
 	if character == null:
@@ -3031,6 +3036,9 @@ func valuecheck(dict):
 			return or_check
 		'has_item_with_tag':
 			return ResourceScripts.game_res.if_has_item_with_tag(dict.value)
+		_:
+			push_error("Unknown requirement type: %s in req %s" % [str(dict.type), str(dict)])
+			return false
 
 
 func apply_starting_preset():

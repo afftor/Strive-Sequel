@@ -49,6 +49,8 @@ var scriptdict = {
 	gamestart = "res://src/GameStart.gd",
 	rclickbutton = "res://src/scenes/RightClickReactButton.gd",
 	gallery = "res://src/core/gallery.gd",
+	event_validator = "res://src/core/event_validator.gd",
+	effect_validator = "res://src/core/effect_validator.gd",
 	rnd_portrait = "res://src/randomportraits/portrait.gd",
 	rnd_main = "res://src/randomportraits/randomportraits.gd",
 	#sex_scenes = "res://assets/data/SexScenes.gd"
@@ -119,7 +121,7 @@ onready var node_data = {
 }
 
 
-var singletones = ['descriptions','custom_effects', "core_animations", "world_gen", "custom_text", "gallery", 'rnd_main', "char_events", "slave_quests"]
+var singletones = ['descriptions','custom_effects', "core_animations", "world_gen", "custom_text", "gallery", "event_validator", "effect_validator", 'rnd_main', "char_events", "slave_quests"]
 #singletones
 var descriptions
 var custom_effects
@@ -127,6 +129,8 @@ var core_animations
 var world_gen
 var custom_text
 var gallery
+var event_validator
+var effect_validator
 var rnd_main
 var char_events
 var slave_quests

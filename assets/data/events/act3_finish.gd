@@ -1006,6 +1006,7 @@ var data = {
 					{
 						code = "add_timed_event",
 						value = "emp_city_init",
+						skip_existing = true,
 						args = [
 							{
 								type = "add_to_date",
@@ -1043,6 +1044,7 @@ var data = {
 					{
 						code = "add_timed_event",
 						value = "emp_city_init",
+						skip_existing = true,
 						args = [
 							{
 								type = "add_to_date",
@@ -1428,6 +1430,7 @@ var data = {
 					{
 						code = "add_timed_event",
 						value = "emp_city_init",
+						skip_existing = true,
 						args = [
 							{
 								type = "add_to_date",

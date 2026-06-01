@@ -2808,7 +2808,7 @@ var dungeons = {
 		affiliation = 'local', 
 		events = [],
 		tags = ['quest'],
-		area = 'mountains',
+		area = 'plains',
 		travel_time = [1,1],
 		scripteventdata = []
 	},

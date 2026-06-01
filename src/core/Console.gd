@@ -5,6 +5,7 @@ var IsActive = false
 var history = []
 var history_index = -1
 var decisions_data = DecisionsData.new()
+var COMMANDS = ["/help", "/do", "/add_item", "/start_event", "/decision", "/validate_events", "/validate_effects"]
 onready var _RichTextLabel = get_node("Console/RichTextLabel")
 onready var _TextEdit = get_node("Console/TextEdit")
 
@@ -61,7 +62,11 @@ func _on_TextEdit_text_entered(new_text):
 	history_index = -1
 	_TextEdit.clear()
 	var splitstring = new_text.split(" ")
-	if splitstring[0] == "/do" :
+	if new_text.strip_edges() == "":
+		return
+	if splitstring[0] == "/help":
+		add_text(new_text + "\n" + _get_help_text())
+	elif splitstring[0] == "/do" :
 		var jsonstring = JSON.parse(splitstring[1])
 		
 		if jsonstring.error:
@@ -165,6 +170,29 @@ func _on_TextEdit_text_entered(new_text):
 				active_decisions.erase(decision_name)
 			output_text += "Decision removed: " + decision_name + "\n"
 		add_text(output_text)
+	elif splitstring[0] == "/validate_events":
+		var output_text = new_text + "\n"
+		output_text += ResourceScripts.event_validator.validate_events(false) + "\n"
+		add_text(output_text)
+	elif splitstring[0] == "/validate_effects":
+		var output_text = new_text + "\n"
+		output_text += ResourceScripts.effect_validator.validate_effects(false) + "\n"
+		add_text(output_text)
+	else:
+		add_text(new_text + "\nUnknown command: " + splitstring[0] + "\nType /help for available commands.\n")
+
+func _get_help_text():
+	return PoolStringArray([
+		"Available commands:",
+		"/help - List console commands.",
+		"/do {json} - Run one common_effect command from JSON.",
+		"/add_item <code> [count] [quality] - Add an item or material.",
+		"/start_event <event_id> - Start a story event.",
+		"/decision <decision_id> [add/remove] - Add or remove a decision flag.",
+		"/validate_events - Validate event, quest, task, location, combat, audio, and image references.",
+		"/validate_effects - Validate trait, effect, buff, stack, skill, and timed-effect references.",
+		""
+	]).join("\n")
 
 func _common_prefix(strings):
 	var prefix = strings[0]
@@ -178,7 +206,6 @@ func _common_prefix(strings):
 func _handle_tab_complete():
 	var text = _TextEdit.text
 	var parts = text.split(" ")
-	var COMMANDS = ["/do", "/add_item", "/start_event", "/decision"]
 	var matches = []
 
 	if parts.size() <= 1:
