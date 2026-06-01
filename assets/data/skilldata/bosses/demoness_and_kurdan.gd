@@ -143,6 +143,7 @@ var skills = {
 		reqs = [],
 		targetreqs = [],
 		effects = [
+			Effectdata.rebuild_template({effect = 'untouchable_hidden'}),
 			Effectdata.rebuild_template({effect = 'mark_for_escape'}),
 		],
 		cost = {},
@@ -303,6 +304,7 @@ var effects = {
 		trigger = [variables.TR_POST_TARG, variables.TR_TURN_S, variables.TR_DMG],
 		conditions = [
 			{type = 'owner', value = [{code = 'stat', stat = 'hp', operant = 'lte', value = ['self.hpmax','*0.5']}]},
+			{type = 'owner', value = [{code = 'has_status', status = 'mark_for_escape', check = false}]},
 		],
 		atomic = [],
 		buffs = [],
@@ -316,6 +318,32 @@ var effects = {
 			},
 		],
 	},
+	untouchable_hidden = { #to prevent any shannanigun with the escape skill
+		type = 'temp_s',
+		target = 'target',
+		rem_event = [variables.TR_COMBAT_F, variables.TR_TURN_GET, variables.TR_DEATH],
+		conditions = [],
+		buffs = [],
+		statchanges = {resist_melee = 200, resist_ranged = 200},
+		sub_effects = [
+			{
+				type = 'trigger',
+				trigger = [variables.TR_DEF],
+				req_skill = true,
+				conditions = [],
+				args = {skill = {obj = 'skill', func = 'eq'}},
+				sub_effects = [
+					{
+						type = 'oneshot',
+						target = 'skill',
+						atomic = [{type = 'stat_mul', stat = 'value', value = 0.0},{type = 'stat_set', stat = 'hit_res', value = variables.RES_MISS},],
+					},
+				]
+			}
+		],
+		tags = ['untouchable_hidden'],
+	},
+	
 	kurdan_mind_controlled = {
 		type = 'simple',
 		statchanges = {resist_mind = -50},
