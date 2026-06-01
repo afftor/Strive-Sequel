@@ -487,6 +487,7 @@ var tut_menu
 var listeners = [
 	#{source, sig, fun}
 ]
+var remembered_soft_tutorial_state = false
 signal close_by_RMB
 
 func _init():

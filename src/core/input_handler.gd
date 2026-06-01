@@ -1987,9 +1987,13 @@ func activate_hard_tutorial():
 		return
 	hard_tutorial_active = true
 	hard_tutorial = ResourceScripts.scriptdict.hard_tutorial.new()
+	hard_tutorial.remembered_soft_tutorial_state = ResourceScripts.game_progress.show_tutorial
+	ResourceScripts.game_progress.show_tutorial = false
 
 func deactivate_hard_tutorial():
 	hard_tutorial_active = false
+	if hard_tutorial != null:
+		ResourceScripts.game_progress.show_tutorial = hard_tutorial.remembered_soft_tutorial_state
 	hard_tutorial = null
 
 func register_btn_source(btn_name, source, get_btn_func, rect_obj = null, rect_func = null, conf_signal = null):

@@ -243,7 +243,11 @@ func CancelQuest():
 
 func cancel_quest_confirm():
 	for ch in ResourceScripts.game_party.characters.values():
-		if ch.is_on_quest() and ch.get_work() != 'disabled' and selectedquest.id == ch.get_selected_quest():
+		if (ch.is_on_quest()
+				and ch.get_work() != 'disabled'
+				#probably need to do something with slaves' quest's int ids
+				and typeof(selectedquest.id) == typeof(ch.get_selected_quest())
+				and selectedquest.id == ch.get_selected_quest()):
 			ch.remove_from_work_quest()
 	ResourceScripts.game_world.complete_quest(selectedquest, "failed")
 	open()
