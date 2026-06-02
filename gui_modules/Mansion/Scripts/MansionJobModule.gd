@@ -112,10 +112,17 @@ func build_farm():
 
 
 func update_characters():
+	if selected_location == null:
+		print("no location selected")
+		return
+	var loc = ResourceScripts.world_gen.get_location_from_code(selected_location)
+	if loc == null:
+		print("error - selected location invalid")
+		return
 	input_handler.ClearContainer($CharacterList/GridContainer)
 	for i in ResourceScripts.game_party.character_order: 
 		var ch = ResourceScripts.game_party.characters[i]
-		if ch.get_location() != ResourceScripts.world_gen.get_location_from_code(selected_location).id or ch.is_on_quest():
+		if ch.get_location() != loc.id or ch.is_on_quest():
 			continue
 		
 		var newbutton = input_handler.DuplicateContainerTemplate($CharacterList/GridContainer)
