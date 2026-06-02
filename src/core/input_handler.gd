@@ -349,6 +349,8 @@ func _notification(what):
 
 
 func quit():
+	if globals._save_thread.is_active():
+		globals._save_thread.wait_to_finish()
 	characters_pool.cleanup(true)
 	globalsettings.window_size = OS.window_size
 	globalsettings.window_pos = OS.window_position

@@ -113,7 +113,7 @@ func _init():
 	globals.connect("hour_tick", self, 'check_timed_events')
 
 func serialize():
-	var res = inst2dict(self)
+	var res = inst2dict(self).duplicate(true)
 	
 	#arena
 	if arena.next_reward.has("items"):

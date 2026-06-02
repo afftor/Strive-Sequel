@@ -26,7 +26,7 @@ func _ready():
 	input_handler.connect("EnemyKilled", self, "quest_kill_receiver")
 
 func serialize():
-	var res = inst2dict(self)
+	var res = inst2dict(self).duplicate(true)
 	for area_k in areas:
 		var area_v = areas[area_k]
 		for fac_k in area_v.quests.factions:
@@ -94,10 +94,14 @@ func fix_serialization():
 #				print("wrong questnumber for %s - counters resetted" % [guild.name])
 #			elif guild.questsetting.total > guild.questsetting.easy + guild.questsetting.medium + guild.questsetting.hard:
 #				print("wrong questnumber for %s - unallocated quests" % [guild.name])
-	fix_old_rep_quests_rewords()
+	fix_old_rep_quests_rewards()
 	if serial_quest_items != null:
 		for item_s in serial_quest_items:
-			var items_list = areas[item_s.k_area].quests.factions[item_s.k_faction][item_s.k_quest].rewards.items
+			var quest_list = areas[item_s.k_area].quests.factions[item_s.k_faction]
+			if !quest_list.has(item_s.k_quest):
+				print("warning - corrupted save. quest data integrity is broken")
+				continue
+			var items_list = quest_list[item_s.k_quest].rewards.items
 			if items_list[0] is String:
 				items_list.clear()
 			var item_to_add = dict2inst(item_s.item)
@@ -105,6 +109,7 @@ func fix_serialization():
 				item_to_add.fix_gear()
 			items_list.append(item_to_add)
 	serial_quest_items = null
+	fix_broken_item_links()
 	
 	var tmp = ResourceScripts.world_gen.get_location_from_code('quest_cali_bandits_location')
 	if tmp != null and tmp.type != 'dungeon': 
@@ -123,14 +128,35 @@ func fix_serialization():
 				{code = "remove_quest_location", value = "quest_dungeon_kuro3"},
 			])
 
-#only for migration to new loot system's rewords in quests
+
+func fix_broken_item_links(): #remove broken quests for safety reasons
+	for area_k in areas:
+		var area_v = areas[area_k]
+		for fac_k in area_v.quests.factions:
+			var fac_v = area_v.quests.factions[fac_k]
+			var cleanarray = []
+			for quest_id in fac_v:
+				var quest_v = fac_v[quest_id]
+				if quest_v.rewards.has("items"):
+					for item in quest_v.rewards.items:
+						if item is String:
+							cleanarray.push_back(quest_id)
+			for id in cleanarray:
+				if fac_v.has(id):
+					print("warning - corrupted save. quest data integrity is broken. quest %s is removed" % id)
+					fac_v.erase(id)
+
+
+#only for migration to new loot system's rewards in quests
 #delete with time (22 oct 2025)
-func fix_old_rep_quests_rewords():
+func fix_old_rep_quests_rewards():
 	for area in areas.values():
 		for fac in area.quests.factions.values():
 			for quest in fac.values():
-				fix_old_quests_rewords(quest)
-func fix_old_quests_rewords(quest):
+				fix_old_quests_rewards(quest)
+
+
+func fix_old_quests_rewards(quest):
 	if !quest.has('rewards') or (quest.rewards is Dictionary):#new loot system
 		return
 	var new_rewards = Items.get_loot().get_rewards_template()
