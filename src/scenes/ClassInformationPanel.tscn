@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/CharacterInfo/ClassInformationPanel.gd" type="Script" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_32.tres" type="DynamicFont" id=12]
 [ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=13]
 [ext_resource path="res://gui_modules/classtooltip.gd" type="Script" id=14]
+
+[sub_resource type="StyleBoxEmpty" id=51]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )
@@ -68,6 +70,7 @@ margin_top = 70.0
 margin_right = 1269.0
 margin_bottom = 670.0
 theme = ExtResource( 3 )
+custom_styles/panel = SubResource( 51 )
 script = ExtResource( 2 )
 
 [node name="scroll" type="PanelContainer" parent="."]

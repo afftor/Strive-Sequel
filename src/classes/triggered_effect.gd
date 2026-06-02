@@ -112,10 +112,20 @@ func e_apply(): #temporal solution until proper rework via apply_status
 	
 	for e in sub_effects:
 		var eff = e
+		var t1 = null
+		if eff is Dictionary and eff.has('status'):
+			if eff.has('overload_target'):
+				t1 = eff.overload_target
+			eff = eff.status
 		if eff is String:
 			eff = Effectdata.get_effect_for_status(eff)
 			eff = Effectdata.effect_table[eff]
-		var t1 = eff.target
+		if t1 == null:
+			if eff.has('target'):
+				t1 = eff.target
+			else:
+				print('error - no target for sub_effect in %s' % str(template))
+				t1 = 'self'
 		match t1:
 			'self':
 				match eff.execute:
