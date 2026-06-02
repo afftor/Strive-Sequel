@@ -26,7 +26,7 @@ func _ready():
 	input_handler.connect("EnemyKilled", self, "quest_kill_receiver")
 
 func serialize():
-	var res = inst2dict(self)
+	var res = inst2dict(self).duplicate(true)
 	for area_k in areas:
 		var area_v = areas[area_k]
 		for fac_k in area_v.quests.factions:

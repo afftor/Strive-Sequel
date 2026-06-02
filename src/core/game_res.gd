@@ -57,7 +57,7 @@ func fix_serialization():
 
 func serialize():
 #	fix_items_inventory(true)
-	var res = inst2dict(self)
+	var res = inst2dict(self).duplicate(true)
 	res.items = {}
 	for i in items:
 		res.items[i] = inst2dict(items[i])

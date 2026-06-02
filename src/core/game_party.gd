@@ -436,7 +436,7 @@ func advance_day():
 			if _in_same_location(character_order[i],character_order[j]): relation_daily_change_same_loc(character_order[i],character_order[j])
 
 func serialize():
-	var res = inst2dict(self)
+	var res = inst2dict(self).duplicate(true)
 	res.characters = {}
 	res.babies = {}
 	for p in characters:

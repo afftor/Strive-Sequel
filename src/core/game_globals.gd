@@ -104,7 +104,7 @@ func fix_import():
 
 
 func serialize():
-	return inst2dict(self)
+	return inst2dict(self).duplicate(true)
 
 
 func advance_hour():
