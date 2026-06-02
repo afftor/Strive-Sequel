@@ -1280,6 +1280,25 @@ func CalculateTargets(skill, target, finale = false):
 						if tchar.defeated: continue
 						if !tchar.can_be_damaged(skill) and !finale: continue
 						array.append(tchar)
+		'wave': #this is basically a better line.
+			var i = 3
+			if targetgroup == 'player': i = 1
+			if variables.lines[i].has(target.position):
+				for j in variables.lines[i]:
+					var tchar
+					if battlefield[j] == null :
+						if battlefield[j + 3] == null:
+							continue
+						tchar = get_char_by_pos(j + 3)
+					else:
+						tchar = get_char_by_pos(j)
+					if tchar.defeated:
+						if battlefield[j + 3] == null:
+							continue
+						tchar = get_char_by_pos(j+3)
+						if tchar.defeated: continue
+					if !tchar.can_be_damaged(skill) and !finale: continue
+					array.append(tchar)
 		'all':
 			for j in range(1, 13):
 				if j in range(1,7) && targetgroup == 'player':

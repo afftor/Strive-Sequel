@@ -1886,6 +1886,24 @@ var traits = {
 		effects = ['obsidian_golem_trait','obsidian_golem_trait_2'],
 		tags = [],
 	},
+	from_heaven_above = {
+		code = 'from_heaven_above',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['from_heaven_above','from_heaven_above_1', 'terminus_flight', 'terminus_flight_1'],
+		tags = [],
+	},
+	turbulence_air = {
+		code = 'turbulence_air',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['turbulence_air','turbulence_air_trait'],
+		tags = [],
+	},
 	#exploration related traits
 	#needs to hardcode most of traits
 	medium_armor = {#removes penalty from medium armor

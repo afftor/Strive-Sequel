@@ -1387,6 +1387,7 @@ var GFX_sprites = {
 	trap_snare = "res://assets/sfx/hit_animation/trap_snare.tscn",
 	dark_swril = "res://assets/sfx/hit_animation/dark_swirl.tscn",
 	shadow_spike = "res://assets/sfx/hit_animation/shadow_spike.tscn",
+	meteor = "res://assets/sfx/hit_animation/meteor.tscn",
 	}
 
 var GFX_particles = {

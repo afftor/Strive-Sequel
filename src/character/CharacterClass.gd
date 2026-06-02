@@ -31,6 +31,7 @@ var combatgroup = ''
 var position = 0 # Not sure it's used or not. Make new field just in case
 var combat_position = 0 setget, get_combat_positon
 var selectedskill = 'attack'
+var last_damage_taken = 0
 
 var previous_location
 var price_compo_text
@@ -115,7 +116,7 @@ func get_stat_value_data(statname):
 func get_stat(statname, nobonus = false, desc_ready = false):
 	if desc_ready:
 		reset_stat_compo_dict()
-	if statname in ['hp', 'mp', 'shield', 'combatgroup', 'id', 'combat_position']:
+	if statname in ['hp', 'mp', 'shield', 'combatgroup', 'id', 'combat_position','last_damage_taken']:
 		return get(statname)
 	if statname in ['physics','wits','charm','sexuals']:
 		if nobonus:
@@ -1094,7 +1095,7 @@ func get_combat_buffs():
 func can_act():
 	if is_koed(): 
 		return false
-	return !has_status('disable')
+	return !has_status('disable') or has_status('ignore_disable')
 
 func can_evade():
 	var res = can_act()
@@ -2453,6 +2454,7 @@ func deal_damage(value, source = 'normal'):
 	if source != 'true':
 		value *= (1.0 - get_stat('resist_' + source)/100.0)
 	value = int(value);
+	last_damage_taken = value
 	if value > 0:
 		if shield > value:
 			self.shield -= value
