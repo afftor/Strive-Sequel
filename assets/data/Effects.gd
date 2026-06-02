@@ -1719,7 +1719,10 @@ func rebuild_template(args):
 	if args.has('push_value'):
 		res.args.process_value = {obj = 'parent', func = 'get', arg = 'process_value'}
 	
-	res.sub_effects.push_back(args.effect)
+	if args.has('target'):
+		res.sub_effects.push_back({status = args.effect, overload_target = args.target})
+	else:
+		res.sub_effects.push_back(args.effect)
 	
 	return res
 
@@ -1739,11 +1742,14 @@ func rebuild_template_globals(args):
 		},
 	}
 	var targetcondition = {type = 'target', value = []}
-	if args.has('trigger'): res.trigger.push_back(args.trigger) #for simplicity only one trigger type can be passed
-	else: res.trigger.push_back(variables.TR_POSTDAMAGE)
-
-	if args.has('res_condition'): res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', args.res_condition]})
-	else: res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]})
+	if args.has('trigger'): 
+		res.trigger.push_back(args.trigger) #for simplicity only one trigger type can be passed
+	else: 
+		res.trigger.push_back(variables.TR_POSTDAMAGE)
+		if args.has('res_condition'): 
+			res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', args.res_condition]})
+		else: 
+			res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]})
 	
 	if args.has('target_status'):
 		var tmp = targetcondition.duplicate(true)
@@ -1758,7 +1764,10 @@ func rebuild_template_globals(args):
 	if args.has('push_value'):
 		res.args.process_value = {obj = 'parent', func = 'get', arg = 'process_value'}
 	
-	res.sub_effects.push_back(args.effect)
+	if args.has('target'):
+		res.sub_effects.push_back({status = args.effect, overload_target = args.target})
+	else:
+		res.sub_effects.push_back(args.effect)
 	
 	return res
 
@@ -1958,27 +1967,6 @@ func rebuild_remove_effect(eff, target = 'target'):
 		atomic = [{type = 'remove_all_effects', value = eff}],
 	}
 	
-	return template
-
-
-func rebuild_make_status(args):
-	var atomic = {type = 'make_status_effect', parent = ['parent_id']}
-	var template = {
-		type = 'oneshot',
-		target = 'target',
-		args = {},
-		atomic = [],
-	}
-	atomic.effect = args.effect
-	if args.has('duration'):
-		atomic.duration = args.duration
-	else:
-		atomic.duration = 1
-	if args.has('chance'):
-		atomic.chance = args.chance
-	else:
-		atomic.chance = 1.0
-	template.atomic.push_back(atomic)
 	return template
 
 
