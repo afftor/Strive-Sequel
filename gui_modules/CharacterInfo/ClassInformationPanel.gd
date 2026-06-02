@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 
 
 #currently this is not required at all - due to similar effect of this closebutton and main charinfo's
