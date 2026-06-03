@@ -177,7 +177,7 @@ func targetattack(node, args = null):
 	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.3)
 	buffs_update_delays[node] = 0.4
-	ResourceScripts.core_animations.gfx_sprite(node, 'strike', 0.3, 0.1, node.get_flip())
+	ResourceScripts.core_animations.gfx_sprite(node, 'strike', 0.3, 0.1, get_flip_for_node(node, args))
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay
@@ -195,7 +195,7 @@ func ranged_attack(node, args = null):
 		hp_update_delays[node] = 0.3 #delay for hp updating during this animation
 		log_update_delay = max(log_update_delay, 0.3)
 		buffs_update_delays[node] = 0.2
-	ResourceScripts.core_animations.gfx_sprite(node, 'arrow', 0.3, duration, node.get_flip())
+	ResourceScripts.core_animations.gfx_sprite(node, 'arrow', 0.3, duration, get_flip_for_node(node, args))
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay
@@ -206,7 +206,7 @@ func firebolt(node, args = null):
 	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.3)
 	buffs_update_delays[node] = 0.2
-	ResourceScripts.core_animations.gfx_sprite(node, 'firebolt', 0.3, 0.4, node.get_flip())
+	ResourceScripts.core_animations.gfx_sprite(node, 'firebolt', 0.3, 0.4, get_flip_for_node(node, args))
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay
@@ -217,7 +217,7 @@ func water_attack(node, args = null):
 	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.3)
 	buffs_update_delays[node] = 0.2
-	ResourceScripts.core_animations.gfx_sprite(node, 'water_attack', 0.3, 0.4, node.get_flip())
+	ResourceScripts.core_animations.gfx_sprite(node, 'water_attack', 0.3, 0.4, get_flip_for_node(node, args))
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay
@@ -228,7 +228,7 @@ func flame(node, args = null):
 	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.3)
 	buffs_update_delays[node] = 0.4
-	ResourceScripts.core_animations.gfx_sprite(node, 'flame', 0.3, 0.5)
+	ResourceScripts.core_animations.gfx_sprite(node, 'flame', 0.3, 0.5, get_flip_for_node(node, args))
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay
@@ -239,7 +239,7 @@ func earth_spike(node, args = null):
 	hp_update_delays[node] = 0.5 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.5)
 	buffs_update_delays[node] = 0.5
-	ResourceScripts.core_animations.gfx_sprite(node, 'earth_spike', 0.7, 1)
+	ResourceScripts.core_animations.gfx_sprite(node, 'earth_spike', 0.7, 1, get_flip_for_node(node, args))
 	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
 	tween.start()
 	
@@ -267,7 +267,7 @@ func gfx_video(node, args):
 	hp_update_delays[node] = 0.5
 	log_update_delay = max(log_update_delay, 0.5)
 	buffs_update_delays[node] = 0.5
-	ResourceScripts.core_animations.gfx_video(node, args.video_name, 0.7, 2)
+	ResourceScripts.core_animations.gfx_video(node, args.video_name, 0.7, 2, get_flip_for_node(node, args))
 	
 	return nextanimationtime + aftereffectdelay
 
@@ -285,7 +285,7 @@ func gfx_animsprite(node, args):
 	else:
 		#for now it seems thet 7 turns is repeat loop duration
 		custom_delays[node] = {delay = 0.2, cur_timer = cur_timer, time = 7}
-	ResourceScripts.core_animations.gfx_sprite(node, args.sprite_name, 0.5, duration, get_flip_for_node(node))
+	ResourceScripts.core_animations.gfx_sprite(node, args.sprite_name, 0.5, duration, get_flip_for_node(node, args))
 	
 	return nextanimationtime + aftereffectdelay
 
@@ -295,12 +295,14 @@ func gfx_particles(node, args):
 	hp_update_delays[node] = 0 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0)
 	buffs_update_delays[node] = 0.5
-	ResourceScripts.core_animations.gfx_particles(node, args.sprite_name, 1, 1, get_flip_for_node(node))
+	ResourceScripts.core_animations.gfx_particles(node, args.sprite_name, 1, 1, get_flip_for_node(node, args))
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay
 
-func get_flip_for_node(node):
+func get_flip_for_node(node, args):
+	if args != null and args.has("force_flip"):
+		return args.force_flip
 	if node.has_method("get_flip"):
 		return node.get_flip()
 	if node.has_meta("anim_flip"):
@@ -326,7 +328,9 @@ func decay(node, args):
 	hp_update_delays[node] = 0.5 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.5)
 	buffs_update_delays[node] = 0.5
-	ResourceScripts.core_animations.gfx_sprite(node.get_parent().get_parent().get_parent().get_parent(), 'decay', 0.5, 1.5)
+	ResourceScripts.core_animations.gfx_sprite(
+		node.get_parent().get_parent().get_parent().get_parent(),
+		'decay', 0.5, 1.5, get_flip_for_node(node, args))
 	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
 	tween.start()
 	
@@ -343,7 +347,7 @@ func heal(node, args = null):
 	hp_update_delays[node] = 0 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0)
 	buffs_update_delays[node] = 0.5
-	ResourceScripts.core_animations.gfx_particles(node, 'heal', duration, duration)
+	ResourceScripts.core_animations.gfx_particles(node, 'heal', duration, duration, get_flip_for_node(node, args))
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay
@@ -354,7 +358,7 @@ func buff(node, args = null):
 	hp_update_delays[node] = 0 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0)
 	buffs_update_delays[node] = 0.5
-	ResourceScripts.core_animations.gfx_particles(node, 'buff', 1, 1)
+	ResourceScripts.core_animations.gfx_particles(node, 'buff', 1, 1, get_flip_for_node(node, args))
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay
@@ -365,7 +369,7 @@ func debuff(node, args = null):
 	hp_update_delays[node] = 0 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0)
 	buffs_update_delays[node] = 0.5
-	ResourceScripts.core_animations.gfx_particles(node, 'debuff', 1, 1)
+	ResourceScripts.core_animations.gfx_particles(node, 'debuff', 1, 1, get_flip_for_node(node, args))
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay
