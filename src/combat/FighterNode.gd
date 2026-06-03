@@ -62,8 +62,9 @@ func _ready():
 		buffs_cont = $Buffs
 		buffs_timer.connect("timeout", self, "show_next_buff_page")
 		buffs_cont.connect("mouse_entered", self, "mouse_in_buffs")
-		buffs_cont.connect("mouse_exited", self, "mouse_out_buffs")
+		buffs_cont.connect("mouse_exited", self, "try_mouse_out_buffs")
 		buffs_cont.connect("gui_input", self, "_on_buffs_gui_input")
+		buffs_cont.connect("resized", self, "_on_buffs_cont_resized")
 
 func _on_Button_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
@@ -212,7 +213,7 @@ func show_buff_page(make_fade = true):
 		yield(get_tree().create_timer(fade_time), "timeout")
 		buffs_in_fade = false
 	input_handler.ClearContainer(buffs_cont)
-	var max_pos = min(buff_scroll_page+1 * 3, buffs.size())
+	var max_pos = min((buff_scroll_page+1) * 3, buffs.size())
 	for i in range(buff_scroll_page * 3, max_pos):
 		add_buff(buffs[i])
 	if make_fade:
@@ -257,12 +258,16 @@ func add_buff(i):
 			newbuff.get_node("Label").show()
 
 func mouse_in_buffs():
+	if buffs_on_pause: return
 	buffs_on_pause = true
 	buffs_timer.paused = true
 
-func mouse_out_buffs():
+func try_mouse_out_buffs():
+	if !buffs_on_pause or is_mouse_on_buffs(): return
 	buffs_on_pause = false
 	buffs_timer.paused = false
+	if !buffs_timer.is_stopped():
+		buffs_timer.start()
 
 func _on_buffs_gui_input(event):
 	if !buffs_on_pause or buff_scroll_max_page == 0: return
@@ -273,6 +278,15 @@ func _on_buffs_gui_input(event):
 #		if buff_scroll_page < 0:
 #			buff_scroll_page = buff_scroll_max_page
 #		show_buff_page()
+
+func _on_buffs_cont_resized():
+	if buffs_on_pause:
+		try_mouse_out_buffs()
+	elif !buffs_on_pause and is_mouse_on_buffs():
+		mouse_in_buffs()
+
+func is_mouse_on_buffs():
+	return buffs_cont.get_rect().has_point(buffs_cont.get_parent().get_local_mouse_position())
 
 #not used
 #func update_buff(i): 

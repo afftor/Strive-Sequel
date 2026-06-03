@@ -452,8 +452,9 @@ __meta__ = {
 [node name="Buffs" type="HBoxContainer" parent="Panel/PlayerGroup/Back/left/Template"]
 margin_left = 10.0
 margin_top = 97.0
-margin_right = 168.0
+margin_right = 10.0
 margin_bottom = 147.0
+mouse_filter = 0
 
 [node name="Button" type="TextureRect" parent="Panel/PlayerGroup/Back/left/Template/Buffs"]
 visible = false
