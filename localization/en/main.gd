@@ -4519,9 +4519,10 @@ Can be removed by being frozen.""",
 Prepare to receive a lot of damage.""",
 	EFFECTNAME_HEIGHT_BEYOND_MORTAL_REACH = 'Height Beyond Mortal Reach',
 	EFFECT_HEIGHT_BEYOND_MORTAL_REACH = """Always evade melee attacks.
-50% chance to evade spells. Reduce ranged damage taken by 40%
+50% chance to evade spells. Reduce ranged damage taken by 40%.
 +125 Evasion and Earth resist is set to 100.
-Can use skill even under immobilizing effects.""",
+Can use skill even under immobilizing effects.
+Will use [Comet Dive] skill once expired.""",
 	EFFECTNAME_CATASTROPHIC_MOMENTUM = 'Catastrophic Momentum',
 	EFFECT_CATASTROPHIC_MOMENTUM = """+50% ATK and +150 Hit rate per stack (Max 2 stack).
 At 2 stack: Comet Dive now cause a damaging shockwave which can be resist by Stonewall and Earth Shield.

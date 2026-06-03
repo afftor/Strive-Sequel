@@ -180,7 +180,7 @@ var skills = {
 		aipatterns = ['attack'],
 		allowedtargets = ['enemy'],
 		value = [['tornado',null], 3],
-		sfx = [{code = 'wind_blade', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'wind_blade', target = 'target', period = 'predamage', force_flip = true}], 
 		sounddata = {initiate = null, strike = 'spell_break', hit = null},
 	},
 	downburst_gust = {
@@ -207,7 +207,7 @@ var skills = {
 		target_number = 'wave',
 		target_range = 'any',
 		damage_type = 'air',
-		sfx = [{code = 'wind_wall', target = 'caster_line', period = 'windup',force_flip = true}, {code = 'wind_blade', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'wind_blade', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'spell_lightning', hit = null},
 		value = 1.2,
 	},
