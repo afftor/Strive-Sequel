@@ -4516,17 +4516,15 @@ Demerit: Lose 15% of max hp every turn.
 Can be removed by being frozen.""",
 	EFFECTNAME_PREY_OF_BIRD = 'Prey of Bird',
 	EFFECT_PREY_OF_BIRD = """Unavoidable target of Elder Gryphon\'s Comet Dive skill. 
-If this unit take less than 51 damage from Comet dive,
-The Elder Gryphon becomes stun and takes significant recoil damage
-and prevent Comet Dive\'s shockwave from occuring.""",
+Prepare to receive a lot of damage.""",
 	EFFECTNAME_HEIGHT_BEYOND_MORTAL_REACH = 'Height Beyond Mortal Reach',
 	EFFECT_HEIGHT_BEYOND_MORTAL_REACH = """Always evade melee attacks.
 50% chance to evade spells. Reduce ranged damage taken by 40%
-+125 Evasion and +300 Hit rate.
-Can use skill even under immobilizing effects.
-Earth resist is set to 100""",
++125 Evasion and Earth resist is set to 100.
+Can use skill even under immobilizing effects.""",
 	EFFECTNAME_CATASTROPHIC_MOMENTUM = 'Catastrophic Momentum',
-	EFFECT_CATASTROPHIC_MOMENTUM = """+50% ATK per stack (Max 2 stack).
+	EFFECT_CATASTROPHIC_MOMENTUM = """+50% ATK and +150 Hit rate per stack (Max 2 stack).
+At 2 stack: Comet Dive now cause a damaging shockwave which can be resist by Stonewall and Earth Shield.
 Lose 1 stack when struck by a critical hit.
 Automatically consume 1 stack of this effect to clear immobilising effects.""",
 	EFFECTNAME_TURBULENCE_AIR = 'Turbulence Air',

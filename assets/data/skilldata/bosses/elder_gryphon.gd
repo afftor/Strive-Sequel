@@ -33,31 +33,6 @@ var skills = {
 		damagestat = 'no_stat',
 		evade = 0
 	},
-	staggering_recoil = {
-		code = 'staggering_recoil',
-		descript = '',
-		icon = "res://assets/images/iconsskills/cripple.png",
-		type = 'combat', 
-		ability_type = 'skill',
-		tags = ['damage','demerit'],
-		reqs = [],
-		targetreqs = [],
-		effects = [
-			Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('catastrophic_momentum'),}),
-		],
-		cost = {},
-		charges = 0,
-		combatcooldown = 0,
-		cooldown = 0,
-		catalysts = {},
-		target = 'self',
-		target_number = 'single',
-		target_range = 'melee',
-		damage_type = 'normal',
-		sfx = [{code = 'earth_spike', target = 'caster', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'avalanche', hit = null},
-		value = [['caster.hpmax','*0.1','caster.atk','*0.9'],],
-	},
 	comet_shockwave = {
 		code = 'comet_shockwave',
 		descript = '',
@@ -68,11 +43,11 @@ var skills = {
 		reqs = [],
 		targetreqs = [],
 		effects = [
+			'comet_shockwave_evasion',
 			Effectdata.rebuild_template({effect = 'knock_prone', chance = 0.25, duration = 2}),
 			Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('flight')}),
 			Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('fly')}),
 			Effectdata.rebuild_template({effect = 'knock_prone', duration = 1}),
-			Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('catastrophic_momentum', 'caster'),}),
 		], 
 		cost = {},
 		charges = 0,
@@ -159,11 +134,9 @@ var skills = {
 		],
 		targetreqs = [{code = 'has_status', status = 'prey_of_bird', check = true}],
 		effects = [
-			'e_comet_dive',
-			'e_comet_dive_1',
-			'e_comet_dive_2',
-			Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('prey_of_bird')}),
-			Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('boss_secret', 'caster'),}),
+			Effectdata.rebuild_template({trigger = variables.TR_POSTDAMAGE, effect = Effectdata.rebuild_remove_effect('prey_of_bird')}),
+			Effectdata.rebuild_template({trigger = variables.TR_POSTDAMAGE, effect = Effectdata.rebuild_remove_effect('boss_secret', 'caster'),}),
+			Effectdata.rebuild_template({trigger = variables.TR_POSTDAMAGE, effect = Effectdata.rebuild_remove_effect('catastrophic_momentum', 'caster'),}),
 		], 
 		cost = {},
 		charges = 0,
@@ -174,9 +147,15 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'normal',
-		sfx = [{code = 'spirit_eagle', target = 'caster', period = 'windup', reverse_flip = true},{code = 'meteor', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'spirit_eagle', target = 'caster', period = 'windup', force_flip = true},{code = 'meteor', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = 'spell_explosion', strike = 'explosion', hit = null},
-		value = [['caster.atk','0.9']],
+		value = [['caster.atk','1.4']],
+		variations = [
+			{
+				reqs = [{code = 'buff_number', status = 'catastrophic_momentum', operant = 'gte', value = 2}],
+				set = { follow_up = 'comet_shockwave'},
+			}
+		],
 	},
 	tornado = {
 		code = 'tornado',
@@ -228,7 +207,7 @@ var skills = {
 		target_number = 'wave',
 		target_range = 'any',
 		damage_type = 'air',
-		sfx = [{code = 'wind_wall', target = 'caster_line', period = 'windup',reverse_flip = true}, {code = 'wind_blade', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'wind_wall', target = 'caster_line', period = 'windup',force_flip = true}, {code = 'wind_blade', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'spell_lightning', hit = null},
 		value = 1.2,
 	},
@@ -420,7 +399,7 @@ var effects = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 3,
 		tags = ['height_beyond_mortal_reach','ignore_disable'],
-		statchanges = {resist_earth_set = 100, evasion = 125, hitrate = 300, resist_ranged = 40,},
+		statchanges = {resist_earth_set = 100, evasion = 125, resist_ranged = 40,},
 		sub_effects = [
 			{
 				type = 'trigger',
@@ -501,7 +480,7 @@ var effects = {
 		tick_event = [variables.TR_NONE],
 		tags = ['catastrophic_momentum'],
 		duration = 1,
-		statchanges = { atk_add_part = 0.5,},
+		statchanges = { atk_add_part = 0.5, hitrate = 150},
 		buffs = ['b_catastrophic_momentum']
 	},
 	terminus_flight = {
@@ -536,46 +515,21 @@ var effects = {
 			},
 		],
 	},
-	e_comet_dive = { #Parry
+	comet_shockwave_evasion = {
 		type = 'trigger',
+		trigger = [variables.TR_HIT],
 		req_skill = true,
-		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [
-			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-			{type = 'target', value = [{code = 'stat', stat = 'last_damage_taken', operant = 'lte', value = 50}]}
+			{type = 'target', value = [{code = 'or_list', or_list = [{code = 'has_status', status = 'earthshield', check = true},{code = 'has_status', status = 'stonewall', check = true},]},]},
 		],
+		args = {skill = {obj = 'skill', func = 'eq'}},
 		sub_effects = [
 			{
 				type = 'oneshot',
-				target = 'caster',
-				atomic = [{type = 'use_combat_skill', skill = 'staggering_recoil'}, {type = 'effect', value = 'e_s_stun', override = {duration = 2}}]
+				target = 'skill',
+				atomic = [{type = 'stat_mul', stat = 'value', value = 0.0},{type = 'stat_set', stat = 'hit_res', value = variables.RES_MISS},],
 			},
-		],
-	},
-	e_comet_dive_1 = { #Fail parry
-		type = 'trigger',
-		req_skill = true,
-		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [
-			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-			{type = 'target', value = [{code = 'stat', stat = 'last_damage_taken', operant = 'gt', value = 50}]}
-		],
-		sub_effects = ['comet_shockwave_oneshot'],
-	},
-	e_comet_dive_2 = { #Evade....somehow?
-		type = 'trigger',
-		trigger = [variables.TR_POSTDAMAGE],
-		req_skill = true,
-		conditions = [
-			{type = 'skill', value = ['hit_res', 'mask', variables.RES_MISS]},
-		],
-		sub_effects = ['comet_shockwave_oneshot'],
-	},
-	comet_shockwave_oneshot = {
-		type = 'oneshot',
-		target = 'caster',
-		args = {targetValue = {obj = 'parent', func = 'arg', arg = 'target'}},
-		atomic = [{type = 'use_combat_skill', skill = 'comet_shockwave', target = ['parent_args', 'targetValue']},]
+		]
 	},
 	e_storm_path = {
 		type = 'trigger',
