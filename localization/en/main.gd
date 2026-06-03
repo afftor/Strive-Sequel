@@ -1707,6 +1707,14 @@ Does not take turn to activate. """,
 	SKILLDOUBLE_BITTED_AXE = 'Double-bitted axe',
 	SKILLPRISMATIC_BEAM = 'Prismatic Beam',
 	SKILROCK_SLIDE = 'Rock Slide',
+	SKILLACCELERATING_PLUNGE = 'Accelerating Plunge',
+	SKILLCOMET_DIVE = 'Comet Dive',
+	SKILLTORNADO = 'Tornado',
+	SKILLDOWNBURST_GUST = 'Downburst Gust',
+	SKILLDEAFENING_SHRIEK = 'Deafening Shriek',
+	SKILLMULTILATE_PREY = 'Multilate Prey',
+	SKILLCHARGE_THROUGH = 'Charge Through',
+	SKILLSTORM_PATH = 'Storm Path',
 	STATUSDESC_BLEED = "Bleeding: Take 10% of Maximum HP as neutral damage per turn.",
 	STATUSDESC_POISON = "Poisoned: Take 10% of Maximum HP as neutral damage per turn.",
 	STATUSDESC_BURN = "Burning: Take 8% of Maximum HP as Fire damage per turn.",
@@ -4493,7 +4501,7 @@ At the end of his next turn, gain Unstoppable.""",
 	EFFECTNAME_KING_GUARD_AUTOMATION = 'golem\'s protection',
 	EFFECT_KING_GUARD_AUTOMATION = 'Dwarf King gain +80 MDEF and have +25% Disarm & Silence resist while this unit is alive',
 	EFFECTNAME_KNOCK_PRONE = 'Knock Prone',
-	EFFECT_KNOCK_PRONE = '-40 Earth Resistant, -50% Evasion and Hitrate, Spell cast by this unit have 30% chance to miss.',
+	EFFECT_KNOCKPRONE = '-40 Earth Resistant, -50% Evasion and Hitrate, Spell cast by this unit have 30% chance to miss.',
 	EFFECTNAME_UNSTOPPABLE = 'Unstoppable',
 	EFFECT_UNSTOPPABLE = 'Immune to Stun, Sleep, and Freeze',
 	EFFECTNAME_EXECUTION_ORDER = 'Execution Order',
@@ -4506,6 +4514,22 @@ On being kill: If the killer is a dwarf, they gain Promotion""",
 On turn end: Deal chip fire damage to all enemies.
 Demerit: Lose 15% of max hp every turn.
 Can be removed by being frozen.""",
+	EFFECTNAME_PREY_OF_BIRD = 'Prey of Bird',
+	EFFECT_PREY_OF_BIRD = """Unavoidable target of Elder Gryphon\'s Comet Dive skill. 
+Prepare to receive a lot of damage.""",
+	EFFECTNAME_HEIGHT_BEYOND_MORTAL_REACH = 'Height Beyond Mortal Reach',
+	EFFECT_HEIGHT_BEYOND_MORTAL_REACH = """Always evade melee attacks.
+50% chance to evade spells. Reduce ranged damage taken by 40%
++125 Evasion and Earth resist is set to 100.
+Can use skill even under immobilizing effects.""",
+	EFFECTNAME_CATASTROPHIC_MOMENTUM = 'Catastrophic Momentum',
+	EFFECT_CATASTROPHIC_MOMENTUM = """+50% ATK and +150 Hit rate per stack (Max 2 stack).
+At 2 stack: Comet Dive now cause a damaging shockwave which can be resist by Stonewall and Earth Shield.
+Lose 1 stack when struck by a critical hit.
+Automatically consume 1 stack of this effect to clear immobilising effects.""",
+	EFFECTNAME_TURBULENCE_AIR = 'Turbulence Air',
+	EFFECT_TURBULENCE_AIR_TRAIT = """Reduce hit rate of all enemy\'s single-target ranged attack (including spell) by 40.
+Mind, Light, and Dark resist of this unit cannot be alter.""",
 	RESETTRAINREQ = "Reset training to step 0 and restore Spirit. Requires Oblivion potion.",
 	RESETTRAINING = "All training progress will be discarded. Are you sure?",
 	BUFFDESCRIPTDEFENDER = "Defender: Will shield allies from attacks unless stunned.",
@@ -7789,6 +7813,7 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYOGRE_MAGE = "Ogre Mage",
 	ENEMYGRYPHON = "Gryphon",
 	ENEMYELDER_GRYPHON_BOSS = "Elder Gryphon",
+	ENEMYTORNADO = 'Tornado',
 	ENEMYWOLF = "Wolf",
 	ENEMYRAT = "Rat",
 	ENEMYSPIDER_WEAK = "Crawler",

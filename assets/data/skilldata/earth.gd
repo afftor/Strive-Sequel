@@ -283,7 +283,7 @@ var effects = {
 		tick_event = variables.TR_TURN_S,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 5,
-		tags = ['buff', 'shield'],
+		tags = ['buff', 'shield','earthshield'],
 		args = {value = {obj = 'skill', func = 'get', arg = 'process_value'}},
 		statchanges = {armor = [['arg', 'value'], '*', 0.5],},
 		buffs = [
@@ -300,7 +300,7 @@ var effects = {
 		tick_event = variables.TR_TURN_S,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 5,
-		tags = ['buff', 'shield'],
+		tags = ['buff', 'shield','earthshield'],
 		args = {value = {obj = 'skill', func = 'get', arg = 'process_value'}},
 		statchanges = {
 			armor = [['arg', 'value'], '*', 0.5],

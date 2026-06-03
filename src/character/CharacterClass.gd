@@ -1094,7 +1094,7 @@ func get_combat_buffs():
 func can_act():
 	if is_koed(): 
 		return false
-	return !has_status('disable')
+	return !has_status('disable') or has_status('ignore_disable')
 
 func can_evade():
 	var res = can_act()
