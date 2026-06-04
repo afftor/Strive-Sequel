@@ -212,12 +212,17 @@ func open_newgame():
 	#new game +
 	var bonuses = input_handler.achievements.get_unlocked_bonuses()
 	max_bonus_points = input_handler.achievements.get_all_points()
+	if OS.has_feature('editor'):
+		max_bonus_points = 999999
 	newgame_bonuses.clear()
+	ResourceScripts.game_globals.all_starting_races = false
 	var NGPButton = newgame_node.get_node("NGPButton")
-	NGPButton.visible = (!bonuses.empty()
-		and max_bonus_points > 0
+	var show_newgame_plus = OS.has_feature('editor') or (
+		max_bonus_points > 0
 		and input_handler.achievements.has_achimnt("act1"))
-	if NGPButton.visible:
+	NGPButton.hide()
+	if show_newgame_plus and !bonuses.empty():
+		newgame_bonuses_node.show()
 		cur_bonus_points = 0
 		update_bonus_points_text()
 		input_handler.ClearContainer(newgame_bonuses_cont, ["bonus", "locked"])
@@ -238,7 +243,6 @@ func open_newgame():
 		update_bonus_btns()
 	else:
 		newgame_bonuses_node.hide()
-	NGPButton.pressed = newgame_bonuses_node.visible
 
 func switch_ng_bonuses():
 	newgame_bonuses_node.visible = !newgame_bonuses_node.visible
@@ -357,6 +361,7 @@ func start_game_confirm():
 	ResourceScripts.game_progress.master_starting_factor_bonus = 0
 	if newgame_bonuses.has("master_factor_points"):
 		ResourceScripts.game_progress.master_starting_factor_bonus = 4
+	ResourceScripts.game_globals.all_starting_races = newgame_bonuses.has("all_starting_races")
 	ResourceScripts.game_globals.newgame = true
 	ResourceScripts.game_globals.original_version = globals.gameversion
 	get_node("/root").remove_child(self)

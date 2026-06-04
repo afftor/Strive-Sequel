@@ -44,6 +44,7 @@ func requirements():
 const enthusiasm = {
 	trigger_text = "INTERACTION_ENTHUSIASM_TRIGGER_FONDLETITS",
 	btn_text = "INTERACTION_ENTHUSIASM_BTN",
+	orgasm_target = 'partner',
 	choices = [
 		{name_key = "INTERACTION_ENTHUSIASM_FONDLETITS_CHOICE_SQUEEZE", personality = 'bold',
 			love_keys = ["INTERACTION_ENTHUSIASM_FONDLETITS_SQUEEZE_LOVE_1", "INTERACTION_ENTHUSIASM_FONDLETITS_SQUEEZE_LOVE_2"],

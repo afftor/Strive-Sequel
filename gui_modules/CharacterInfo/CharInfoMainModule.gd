@@ -42,7 +42,7 @@ var mastery_required = {
 	penetration = [["missionary", "missionaryanal"], ["doggy", "doggyanal"], ["lotus", "lotusanal"], ["revlotus", "revlotusanal"], ["ontop", "ontopanal"]],
 	pussy = [["missionary"], ["doggy"], ["lotus"], ["revlotus"], ["ontop"]],
 	anal = [["missionaryanal"], ["doggyanal"], ["lotusanal"], ["revlotusanal"], ["ontopanal"]],
-	petting = [["caress"], ["fondletits"], ["titjob"], ["handjob"], ["massagefoot"], ["footjob"], ["fingering", "assfingering"], ["fisting", "analfisting"]],
+	petting = [["fondletits", "titjob"], ["handjob", "fingering", "assfingering"], ["footjob", "massagefoot"], ["fisting", "analfisting"]],
 	oral = [["kiss"], ["sucknipples"], ["rimjob"], ["cunnilingus", "blowjob"]],
 	tail = [["tailjob"], ["inserttailv"], ["inserttaila"]],
 }

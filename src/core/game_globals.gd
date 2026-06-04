@@ -23,6 +23,7 @@ var diff_money = 'easy'
 var diff_materials = 'easy'
 var diff_free_chars = 0
 var easytrain = false
+var all_starting_races = false
 
 var seed_salt = randi()
 

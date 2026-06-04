@@ -1,8 +1,17 @@
 0.14.3b
+Added a save repair for old saves that missed Rouge's initial Act 4 event
+Restricted normal character creation to a dedicated player starting race list
+Added New Game+ Cosmopolitan bonus to unlock all character creation races
+Merged Literate New Game+ bonus into Scribe
+Revenge damage from Berserk class nerfed 
 Added titjob variation for small sizes (as well as fixing petting - mastered acquirement this way)
+Updated Daisy's event with some additional illustrations for Ramont
 Fixed act 4 event storing multiple times
 Fixed a few issues related to Anastasia's quest
 Fixed pussy sex skill being shown for males by default
+Cunnilingus now procs oral skill improvement
+Petting mastered skill now considerably easier to obtain
+Aphrodisiac will now also invoke hypersensitive trait behavior
 0.14.3a
 Caster class requirement now also takes Priest as alternative to apprentice/scholar 
 Slightly nerfed dragon knight class, some of its bonuses moved to dragonkin race

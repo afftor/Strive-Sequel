@@ -171,7 +171,7 @@ var skills = {
 		damage_type = 'weapon',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 1.7
+		value = 0.6
 	},
 	blood_magic = {#sacrifice 10% health to get 3x mana from it, 3 charges per day 
 		code = 'blood_magic',
@@ -1649,7 +1649,7 @@ var effects = {
 					hp = {obj = 'caster', func = 'stat', stat = 'hp'},
 					hpmax = {obj = 'caster', func = 'stat', stat = 'hpmax'}
 					},
-				atomic = [{type = 'stat_mul', stat = 'value', value = [['parent_args', 'hp'], '/', ['parent_args', 'hpmax'], '*', -3, '+', 4.0]}],
+				atomic = [{type = 'stat_mul', stat = 'value', value = [['parent_args', 'hp'], '/', ['parent_args', 'hpmax'], '*', -1, '+', 2.0]}],
 			},
 		],
 	},

@@ -207,6 +207,8 @@ func fix_serialization():
 	for num in clear_quests:
 		print("Removing old quest %s" % active_quests[num].code)
 		active_quests.remove(num)
+	if !globals.compare_version(ResourceScripts.game_globals.original_version, '0.14.3') and !seen_events.has("emp_city_init") and !timed_event_exists("emp_city_init"):
+		globals.common_effects([{code = "add_timed_event", value = "emp_city_init", args = [{type = "add_to_hour", hour = [1, 1]}]}])
 	
 	ResourceScripts.slave_quests.fix_serialization()
 

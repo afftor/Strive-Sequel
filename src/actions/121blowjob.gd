@@ -287,6 +287,7 @@ react_blowjob_skill = {
 const enthusiasm = {
 	trigger_text = "INTERACTION_ENTHUSIASM_TRIGGER_BLOWJOB",
 	btn_text = "INTERACTION_ENTHUSIASM_BTN",
+	orgasm_target = 'partner',
 	choices = [
 		{name_key = "INTERACTION_ENTHUSIASM_CHOICE_DEEPTHROAT", personality = 'bold',
 			love_keys = ["INTERACTION_ENTHUSIASM_DEEPTHROAT_LOVE_1", "INTERACTION_ENTHUSIASM_DEEPTHROAT_LOVE_2"],
