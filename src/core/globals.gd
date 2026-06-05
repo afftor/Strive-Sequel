@@ -2252,6 +2252,7 @@ func common_effects(effects):
 							if !input_handler.active_location.has('captured_characters'):
 								input_handler.active_location.captured_characters = []
 							input_handler.active_location.captured_characters.push_back(newcharacter.id)
+							newcharacter.is_active = true
 						number -= 1
 			'update_guild':
 				if gui_controller.exploration_city == null:
