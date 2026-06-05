@@ -230,7 +230,7 @@ func regen_quests():
 			var num_for_mod = req_num - (variables.SQ_req_num_mod_start - 1)
 			if num_for_mod > 0:
 				modifier += num_for_mod * variables.SQ_req_num_mod
-			var random_mod = rand_range(variables.SQ_random_reword[0], variables.SQ_random_reword[1] + 0.0099)
+			var random_mod = rand_range(variables.SQ_random_reward[0], variables.SQ_random_reward[1] + 0.0099)
 			random_mod = floor(random_mod * 100) * 0.01
 #			print("modifier ", modifier, " random_mod ", random_mod)
 			modifier += random_mod
