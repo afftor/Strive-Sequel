@@ -512,7 +512,7 @@ func remove_req(reqs, to_remove):
 func fix_serialization():
 	var progress = ResourceScripts.game_progress.slave_quests
 	for str_id in progress.quest_pool.keys():
-		ResourceScripts.game_world.fix_old_quests_rewords(progress.quest_pool[str_id])
+		ResourceScripts.game_world.fix_old_quests_rewards(progress.quest_pool[str_id])
 		progress.quest_pool[int(str_id)] = progress.quest_pool[str_id]
 		progress.quest_pool.erase(str_id)
 	var existing_factions = quest_data.factions.keys()
