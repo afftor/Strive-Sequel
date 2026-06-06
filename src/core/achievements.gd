@@ -248,6 +248,7 @@ func prep_rouge_start():
 
 func prep_exp_scrolls():
 	globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 10))
+	prep_literate()
 
 func prep_talent_points():
 	ResourceScripts.game_progress.master_points += 2
@@ -266,4 +267,7 @@ func prep_rooms():
 func prep_literate():
 	var character = ResourceScripts.game_party.get_master()
 	character.add_trait('literacy')
+
+func prep_all_starting_races():
+	pass
 

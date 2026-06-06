@@ -289,6 +289,15 @@ func get_bonus_mastery_points(mas, invested_points):
 func get_total_mastery_points(mas, invested_points):
 	return invested_points + get_bonus_mastery_points(mas, invested_points)
 
+func build_passive_mastery_bonus_tooltip(bonusstats, mul = 1):
+	var lines = globals.build_desc_for_bonusstats(bonusstats, mul).strip_edges().split("\n")
+	var result = []
+	for line in lines:
+		line = line.strip_edges()
+		if line != "":
+			result.append("Passive: " + line)
+	return PoolStringArray(result).join("\n")
+
 func build_mastery_cat():
 	input_handler.ClearContainer($MasteryPanel/Categories2, ['button'])
 	var tmp = null
@@ -309,10 +318,10 @@ func build_mastery_cat():
 			button.get_node('icon/Label').text = str(lv)
 			globals.connecttexttooltip(button, tr(masdata.name))
 			text += "[center]"+tr("MASTERY"+mas.to_upper()) + "[/center]\n"+tr("LVLBONUSPERPOINT")+":\n"
-			text += globals.build_desc_for_bonusstats(masdata.passive) + '\n'
+			text += build_passive_mastery_bonus_tooltip(masdata.passive) + '\n'
 			if lv > 0:
 				text += "[center]"+tr("LVLCURRENT")+":[/center]\n"
-				text += globals.build_desc_for_bonusstats(masdata.passive, lv) + '\n'
+				text += build_passive_mastery_bonus_tooltip(masdata.passive, lv) + '\n'
 			#add mastery tooltip
 			var mastery_points_pools = get_mastery_pools(masdata)
 			var invested_points = get_invested_mastery_points(mas, mastery_points_pools)

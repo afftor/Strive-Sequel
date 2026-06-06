@@ -257,6 +257,7 @@ var item_sell_multiplier = 0.75
 #Heroes
 var all_races_array = []
 var starting_races_array = ['Human','Elf','TribalElf','Orc','BeastkinCat', 'BeastkinFox', 'BeastkinWolf', 'BeastkinBunny','HalfkinCat', 'HalfkinFox', 'HalfkinWolf', 'HalfkinBunny']
+var player_starting_races_array = ['Human', 'Elf', 'TribalElf', 'Orc', 'Dwarf', 'BeastkinCat', 'BeastkinFox', 'BeastkinWolf', 'BeastkinBunny', 'BeastkinTanuki', 'HalfkinCat', 'HalfkinFox', 'HalfkinWolf', 'HalfkinBunny', 'HalfkinTanuki']
 
 var master_starting_classes = ['fighter','archer','worker','rogue','apprentice','scholar','hunter','acolyte']
 var slave_starting_classes = ['attendant', 'fighter', 'archer', 'worker', 'harlot', 'apprentice','hunter','acolyte']
@@ -688,7 +689,7 @@ var fame_rise_events = {#and max fame
 }
 const fame_rise_chance_service = 0.05
 
-var SQ_random_reword = [-0.1, 0.1]
+var SQ_random_reward = [-0.1, 0.1]
 const SQ_req_num_mod_start = 4
 const SQ_req_num_mod = 0.1
 

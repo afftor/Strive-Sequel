@@ -1107,7 +1107,7 @@ func can_use_skill(skill):
 		return false
 	if skill.type == 'auto': 
 		return false
-	if is_players_character and skill.has('reqs') and !checkreqs(skill.reqs): 
+	if is_players_character and !check_cost(skill.cost): 
 		return false
 	if skills.combat_cooldowns.has(skill.code): 
 		return false

@@ -145,6 +145,8 @@ func sens_set(value):
 	if sens >= 1000:
 		if lastaction == null || ((lastaction.givers.has(self) && lastaction.scene.givertags.has('noorgasm')) || (lastaction.takers.has(self) && lastaction.scene.takertags.has('noorgasm'))):
 			var can_orgasm = false
+			if effects.has("aphrodisiac"):
+				can_orgasm = true
 			for i in sex_traits:
 				var trait = Traitdata.sex_traits[i]
 				for k in trait.effects:
@@ -247,7 +249,7 @@ func impregnation_text(second_character, mother_is_self = true):
 
 
 
-func orgasm(custom_text = null):
+func orgasm(custom_text = null, show_text = true):
 	var text = ''
 	orgasm = true
 	sens = 0
@@ -290,24 +292,24 @@ func orgasm(custom_text = null):
 		#anus in giver slot
 		if scene.givers.find(self) >= 0:
 			if randf() < 0.4:
-				anustext = "[name1] feel[s/1] a {^sudden :intense ::}{^jolt of electricity:warmth:wave of pleasure} inside [him1] and [his1]"
+				anustext = tr("INTERACTION_ORGASM_ANUS_GIVER_FEEL")
 			else:
-				anustext = "[names1]"
+				anustext = tr("INTERACTION_ORGASM_GIVER_NAME")
 			if scene.scene.takerpart == 'penis':
-				anustext += " [anus1] {^squeezes:writhes around:clamps down on} [names2] [penis2] as [he1] reach[es/1] {^climax:orgasm}."
+				anustext += tr("INTERACTION_ORGASM_ANUS_GIVER_PENIS")
 			else:
-				anustext += " [anus1] {^convulses:twitches:quivers} {^in euphoria:in ecstasy:with pleasure} as [he1] reach[es/1] {^climax:orgasm}."
+				anustext += tr("INTERACTION_ORGASM_ANUS_GIVER_BODY")
 			anustext = sceneref.decoder(anustext, [self], scene.takers)
 		#anus is in taker slot
 		elif scene.takers.find(self) >= 0:
 			if randf() < 0.4:
-				anustext = "[name2] feel[s/2] a {^sudden :intense ::}{^jolt of electricity:warmth:wave of pleasure} inside [him2] and [his2]"
+				anustext = tr("INTERACTION_ORGASM_ANUS_TAKER_FEEL")
 			else:
-				anustext = "[names2]"
+				anustext = tr("INTERACTION_ORGASM_TAKER_NAME")
 			if scene.scene.giverpart == 'penis':
-				anustext += " [anus2] {^squeezes:writhes around:clamps down on} [names1] [penis1] as [he2] reach[es/2] {^climax:orgasm}."
+				anustext += tr("INTERACTION_ORGASM_ANUS_TAKER_PENIS")
 			else:
-				anustext += " [anus2] {^convulses:twitches:quivers} {^in euphoria:in ecstasy:with pleasure} as [he2] reach[es/2] {^climax:orgasm}."
+				anustext += tr("INTERACTION_ORGASM_ANUS_TAKER_BODY")
 			anustext = sceneref.decoder(anustext, scene.givers, [self])
 		#no default conditon
 	#vagina present
@@ -321,24 +323,24 @@ func orgasm(custom_text = null):
 			#vagina in giver slot
 			if scene.givers.find(self) >= 0:
 				if randf() < 0.4:
-					vaginatext = "[name1] feel[s/1] a {^sudden :intense ::}{^jolt of electricity:warmth:wave of pleasure} inside [him1] and [his1]"
+					vaginatext = tr("INTERACTION_ORGASM_PUSSY_GIVER_FEEL")
 				else:
-					vaginatext = "[names1]"
+					vaginatext = tr("INTERACTION_ORGASM_GIVER_NAME")
 				if scene.scene.takerpart == 'penis':
-					vaginatext += " [pussy1] {^squeezes:writhes around:clamps down on} [names2] [penis2] as [he1] reach[es/1] {^climax:orgasm}."
+					vaginatext += tr("INTERACTION_ORGASM_PUSSY_GIVER_PENIS")
 				else:
-					vaginatext += " [pussy1] {^convulses:twitches:quivers} {^in euphoria:in ecstasy:with pleasure} as [he1] reach[es/1] {^climax:orgasm}."
+					vaginatext += tr("INTERACTION_ORGASM_PUSSY_GIVER_BODY")
 				vaginatext = sceneref.decoder(vaginatext, [self], scene.takers)
 			#vagina is in taker slot
 			elif scene.takers.find(self) >= 0:
 				if randf() < 0.4:
-					vaginatext = "[name2] feel[s/2] a {^sudden :intense ::}{^jolt of electricity:warmth:wave of pleasure} inside [him2] and [his2]"
+					vaginatext = tr("INTERACTION_ORGASM_PUSSY_TAKER_FEEL")
 				else:
-					vaginatext = "[names2]"
+					vaginatext = tr("INTERACTION_ORGASM_TAKER_NAME")
 				if scene.scene.giverpart == 'penis':
-					vaginatext += " [pussy2] {^squeezes:writhes around:clamps down on} [names1] [penis1] as [he2] reach[es/2] {^climax:orgasm}."
+					vaginatext += tr("INTERACTION_ORGASM_PUSSY_TAKER_PENIS")
 				else:
-					vaginatext += " [pussy2] {^convulses:twitches:quivers} {^in euphoria:in ecstasy:with pleasure} as [he2] reach[es/2] {^climax:orgasm}."
+					vaginatext += tr("INTERACTION_ORGASM_PUSSY_TAKER_BODY")
 				vaginatext = sceneref.decoder(vaginatext, scene.givers, [self])
 			#no default conditon
 	#penis present
@@ -352,44 +354,44 @@ func orgasm(custom_text = null):
 			#penis in giver slot
 			if scene.givers.find(self) >= 0:
 				if randf() < 0.4:
-					penistext = "[name1] feel[s/1] {^a wave of:an intense} {^pleasure:euphoria} {^run through:course through:building in} [his1] [penis1] and [his1]"
+					penistext = tr("INTERACTION_ORGASM_PENIS_GIVER_FEEL")
 				else:
-					penistext = "[name1] {^thrust:jerk}[s/1] [his1] hips forward and a {^thick :hot :}{^jet:load:batch} of"
+					penistext = tr("INTERACTION_ORGASM_PENIS_GIVER_THRUST")
 				if scene.scene.takerpart == '':
-					penistext += " {^semen:seed:cum} {^pours onto:shoots onto:falls to} the {^ground:floor} as [he1] ejaculate[s/1]."
+					penistext += tr("INTERACTION_ORGASM_PENIS_GIVER_FLOOR")
 				elif ['anus','vagina','mouth'].has(scene.scene.takerpart):
 					if scene.scene.get('takerpart2') && scene.scene.givers[1] == self:
 						temptext = scene.scene.takerpart2.replace('anus', '[anus2]').replace('vagina','[pussy2]')
 					else:
 						temptext = scene.scene.takerpart.replace('anus', '[anus2]').replace('vagina','[pussy2]')
-					penistext += " {^semen:seed:cum} {^pours:shoots:pumps:sprays} into [names2] " + temptext + " as [he1] ejaculate[s/1]."
+					penistext += tr("INTERACTION_ORGASM_PENIS_GIVER_INTO") % temptext
 					if scene.scene.takerpart == 'vagina':
 						for i in scene.takers:
 							if sceneref.impregnationcheck(person,i.person) == true:
 								globals.impregnate(person, i.person)
 								penistext += impregnation_text(i, false)
 				elif scene.scene.takerpart == 'nipples':
-					penistext += " {^semen:seed:cum} fills [names2] hollow nipples. "
+					penistext += tr("INTERACTION_ORGASM_PENIS_GIVER_NIPPLES")
 				elif scene.scene.takerpart == 'penis':
-					penistext += " {^semen:seed:cum} {^pours:shoots:sprays}, covering [names2] [penis2]. "
+					penistext += tr("INTERACTION_ORGASM_PENIS_GIVER_ON_PENIS")
 				penistext = sceneref.decoder(penistext, [self], scene.takers)
 			#penis in taker slot
 			elif scene.takers.find(self) >= 0:
 				if randf() < 0.4:
-					penistext = "[name2] feel[s/2] {^a wave of:an intense} {^pleasure:euphoria} {^run through:course through:building in} [his2] [penis2] and [his2]"
+					penistext = tr("INTERACTION_ORGASM_PENIS_TAKER_FEEL")
 				else:
-					penistext = "[name2] {^thrust:jerk}[s/2] [his2] hips forward and a {^thick :hot :}{^jet:load:batch} of"
+					penistext = tr("INTERACTION_ORGASM_PENIS_TAKER_THRUST")
 				if scene.scene.code in ['handjob','titjob']:
-					penistext += " {^sticky:white:hot} {^semen:seed:cum} {^sprays onto:shoots all over:covers} [names1] face[/s1] as [he2] ejaculate[s/2]."
+					penistext += tr("INTERACTION_ORGASM_PENIS_TAKER_FACE")
 				elif scene.scene.code == 'tailjob':
-					penistext += " {^sticky:white:hot} {^semen:seed:cum} {^sprays onto:shoots all over:covers} [names1] tail[/s1] as [he2] ejaculate[s/2]."
+					penistext += tr("INTERACTION_ORGASM_PENIS_TAKER_TAIL")
 				elif scene.scene.giverpart == '':
-					penistext += " {^semen:seed:cum} {^pours onto:shoots onto:falls to} the {^ground:floor} as [he2] ejaculate[s/2]."
+					penistext += tr("INTERACTION_ORGASM_PENIS_TAKER_FLOOR")
 				elif scene.scene.giverpart == 'penis':
-					penistext += " {^semen:seed:cum} {^pours:shoots:sprays}, covering [names1] [penis1]. "
+					penistext += tr("INTERACTION_ORGASM_PENIS_TAKER_ON_PENIS")
 				elif ['anus','vagina','mouth'].has(scene.scene.giverpart):
 					temptext = scene.scene.giverpart.replace('anus', '[anus1]').replace('vagina','[pussy1]')
-					penistext += " {^semen:seed:cum} {^pours:shoots:pumps:sprays} into [names1] " + temptext + " as [he2] ejaculate[s/2]."
+					penistext += tr("INTERACTION_ORGASM_PENIS_TAKER_INTO") % temptext
 					if scene.scene.giverpart == 'vagina':
 						for i in scene.givers:
 							if sceneref.impregnationcheck(i.person, person) == true:
@@ -399,10 +401,10 @@ func orgasm(custom_text = null):
 		#orgasm without penis, secondary ejaculation
 		else:
 			if randf() < 0.4:
-				penistext = "[name2] {^twist:quiver:writhe}[s/2] in {^pleasure:euphoria:ecstacy} as"
+				penistext = tr("INTERACTION_ORGASM_PENIS_SECONDARY_TWIST")
 			else:
-				penistext = "[name2] {^can't hold back any longer:reach[es/2] [his2] limit} and"
-			penistext += " {^a jet of :a rope of :}{^semen:cum} {^fires:squirts:shoots} from {^the tip of :}[his2] {^neglected :throbbing ::}[penis2]."
+				penistext = tr("INTERACTION_ORGASM_PENIS_SECONDARY_LIMIT")
+			penistext += tr("INTERACTION_ORGASM_PENIS_SECONDARY_RELEASE")
 			penistext = sceneref.decoder(penistext, null, [self])
 #	if vaginatext != '' || anustext != '' || penistext != '':
 #		text += vaginatext + " " + anustext + " " + penistext
@@ -420,10 +422,10 @@ func orgasm(custom_text = null):
 	#final default condition
 	else:
 		if randf() < 0.4:
-			temptext = "[name2] feel[s/2] {^a sudden :an intense ::}{^jolt of electricity:heat:wave of pleasure} and [his2]"
+			temptext = tr("INTERACTION_ORGASM_BODY_FEEL")
 		else:
-			temptext = "[names2]"
-		temptext += " {^entire :whole :}body {^twists:quivers:writhes} in {^pleasure:euphoria:ecstacy} as [he2] reach[es/2] {^climax:orgasm}."
+			temptext = tr("INTERACTION_ORGASM_TAKER_NAME")
+		temptext += tr("INTERACTION_ORGASM_BODY_RELEASE")
 		text += sceneref.decoder(temptext, null, [self])
 
 	if lastaction.scene.code in sceneref.punishcategories && lastaction.takers.has(self):
@@ -442,6 +444,8 @@ func orgasm(custom_text = null):
 
 	if custom_text != null:
 		text = custom_text
+	if show_text == false:
+		return
 	#return
 	yield(sceneref.get_tree().create_timer(0.1), "timeout")
 	sceneref.get_node("Panel/sceneeffects").bbcode_text += "[color=#ff5df8]" + text + "[/color]\n"

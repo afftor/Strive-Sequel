@@ -1191,7 +1191,7 @@ var professions = {
 		code = 'nixx_champion',
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsclasses/nixx_champion.png"),
+		icon = load("res://assets/images/iconsclasses/nixx_champion2.png"),
 		tags = ['permanent'],
 		categories = ['magic','combat'],
 		showupreqs = [{code = 'disabled', check = true}],

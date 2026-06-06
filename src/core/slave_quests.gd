@@ -230,7 +230,7 @@ func regen_quests():
 			var num_for_mod = req_num - (variables.SQ_req_num_mod_start - 1)
 			if num_for_mod > 0:
 				modifier += num_for_mod * variables.SQ_req_num_mod
-			var random_mod = rand_range(variables.SQ_random_reword[0], variables.SQ_random_reword[1] + 0.0099)
+			var random_mod = rand_range(variables.SQ_random_reward[0], variables.SQ_random_reward[1] + 0.0099)
 			random_mod = floor(random_mod * 100) * 0.01
 #			print("modifier ", modifier, " random_mod ", random_mod)
 			modifier += random_mod
@@ -512,7 +512,7 @@ func remove_req(reqs, to_remove):
 func fix_serialization():
 	var progress = ResourceScripts.game_progress.slave_quests
 	for str_id in progress.quest_pool.keys():
-		ResourceScripts.game_world.fix_old_quests_rewords(progress.quest_pool[str_id])
+		ResourceScripts.game_world.fix_old_quests_rewards(progress.quest_pool[str_id])
 		progress.quest_pool[int(str_id)] = progress.quest_pool[str_id]
 		progress.quest_pool.erase(str_id)
 	var existing_factions = quest_data.factions.keys()

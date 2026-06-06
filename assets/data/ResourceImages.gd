@@ -798,6 +798,7 @@ var sprites = {
 	lira_body = load("res://assets/images/sprites/lira_body.png"),
 	bandits = load("res://assets/images/sprites/bandits.png"),
 	rakar = load("res://assets/images/sprites/rakar.png"),
+	ramont = load("res://assets/images/sprites/ramont.png"),
 	
 	cali_halloween = load("res://assets/images/sprites/cali_halloween.png"),
 	cali_halloween_body = load("res://assets/images/sprites/cali_halloween_body.png"),

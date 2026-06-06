@@ -49,6 +49,27 @@ func requirements():
 				valid = false
 	return valid
 
+const enthusiasm = {
+	trigger_text = "INTERACTION_ENTHUSIASM_TRIGGER_TAILJOB",
+	btn_text = "INTERACTION_ENTHUSIASM_BTN",
+	orgasm_target = 'partner',
+	choices = [
+		{name_key = "INTERACTION_ENTHUSIASM_TAILJOB_CHOICE_TIGHTER", personality = 'bold',
+			love_keys = ["INTERACTION_ENTHUSIASM_TAILJOB_TIGHTER_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_TAILJOB_TIGHTER_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_TAILJOB_CHOICE_RHYTHM", personality = 'serious',
+			love_keys = ["INTERACTION_ENTHUSIASM_TAILJOB_RHYTHM_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_TAILJOB_RHYTHM_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_TAILJOB_CHOICE_STROKE", personality = 'shy',
+			love_keys = ["INTERACTION_ENTHUSIASM_TAILJOB_STROKE_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_TAILJOB_STROKE_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_TAILJOB_CHOICE_PRAISE", personality = 'kind',
+			love_keys = ["INTERACTION_ENTHUSIASM_TAILJOB_PRAISE_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_TAILJOB_PRAISE_HATE_1"]},
+	],
+	training_upgrades = [{skill = 'tail', target = 'skilled'}],
+}
+
 func givereffect(member):
 	var effects = {sens = 75}
 	return effects

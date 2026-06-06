@@ -26,6 +26,27 @@ const initiate = ['start_cunnilingus']
 const ongoing = ['ongoing_cunnilingus']
 const reaction = ['react_cunnilingus', 'react_2_sex', 'react_cunnilingus_skill']
 
+const enthusiasm_giver = {
+	trigger_text = "INTERACTION_ENTHUSIASM_TRIGGER_CUNNILINGUS_GIVER",
+	btn_text = "INTERACTION_ENTHUSIASM_BTN",
+	orgasm_target = 'partner',
+	choices = [
+		{name_key = "INTERACTION_ENTHUSIASM_CUNNILINGUS_G_CHOICE_GUIDE", personality = 'bold',
+			love_keys = ["INTERACTION_ENTHUSIASM_CUNNILINGUS_G_GUIDE_LOVE_1", "INTERACTION_ENTHUSIASM_CUNNILINGUS_G_GUIDE_LOVE_2"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_CUNNILINGUS_G_GUIDE_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_CUNNILINGUS_G_CHOICE_STEADY", personality = 'serious',
+			love_keys = ["INTERACTION_ENTHUSIASM_CUNNILINGUS_G_STEADY_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_CUNNILINGUS_G_STEADY_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_CUNNILINGUS_G_CHOICE_TOUCH", personality = 'shy',
+			love_keys = ["INTERACTION_ENTHUSIASM_CUNNILINGUS_G_TOUCH_LOVE_1", "INTERACTION_ENTHUSIASM_CUNNILINGUS_G_TOUCH_LOVE_2"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_CUNNILINGUS_G_TOUCH_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_CUNNILINGUS_G_CHOICE_PRAISE", personality = 'kind',
+			love_keys = ["INTERACTION_ENTHUSIASM_CUNNILINGUS_G_PRAISE_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_CUNNILINGUS_G_PRAISE_HATE_1"]},
+	],
+	training_upgrades = [{skill = 'oral', target = 'skilled'}],
+}
+
 func getname(state = null):
 	return tr("SEXACTION_CUNNILINGUS")
 
