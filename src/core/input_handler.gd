@@ -747,6 +747,10 @@ func PlaySound(name, delay = 0):
 	yield(get_tree().create_timer(delay), 'timeout')
 	var soundnode = get_spec_node(self.NODE_SOUND) #GetSoundNode()
 	soundnode.stream = audio.sounds[name]
+	soundnode.pitch_scale = 1.0
+	if audio.random_pitch_sounds.has(name):
+		var pitch_randomness = audio.random_pitch_sounds[name]
+		soundnode.pitch_scale = rand_range(1.0 - pitch_randomness, 1.0 + pitch_randomness)
 	soundnode.seek(0)
 	soundnode.play(0)
 	yield(soundnode, 'finished')

@@ -158,3 +158,18 @@ var sounds = {
 	crunch = load("res://assets/sounds/sounds/crunch.wav"),
 	groan = load("res://assets/sounds/sounds/groan.wav"),
 }
+
+var random_pitch_sounds = {
+	blade = 0.4,
+	blunt_hit = 0.4,
+	fleshhit = 0.4,
+	bow = 0.4,
+	punch = 0.4,
+	slap = 0.4,
+	combatmiss = 0.4,
+	dodge = 0.4,
+	firehit = 0.4,
+	skill_scene = 0.2,
+	speech = 0.2,
+	avalanche = 0.3
+}
