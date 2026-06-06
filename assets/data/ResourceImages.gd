@@ -54,6 +54,7 @@ var backgrounds = {
 	crypt5 = "res://assets/images/backgrounds/crypt5.png",
 
 	fort1 = "res://assets/images/backgrounds/fort1.png",
+	fort_1 = "res://assets/images/backgrounds/fort1.png", #stub to remove later
 	fort2 = "res://assets/images/backgrounds/fort2.png",
 	fort3 = "res://assets/images/backgrounds/fort3.png",
 	
