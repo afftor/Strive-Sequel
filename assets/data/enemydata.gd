@@ -209,7 +209,7 @@ var enemygroups = {
 	goblin_quest = {reqs = [], units = {quest_goblin_boss = [2,2], quest_goblin_shaman = [2,2]}},
 	ketch_group = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
 	robbed_man = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
-	lilia_boss = {reqs = [], units = {lilith_boss = [1,1]}},
+	lilia_boss = {reqs = [], units = {bandit_melee = [3,3]}},
 	lilith_patron = {reqs = [], units = {lilith_boss_2 = [1,1], anthropoid = [2,2]}},
 
 	mercenary_fred_quest = {reqs = [], units = {bandit_melee = [2,2], bandit_archer = [2,2], bandit_mage = [1,1]}},

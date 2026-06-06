@@ -1101,6 +1101,9 @@ var icons = {
 	frame_trait = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_ellipse.png",
 	frame_trait_1 = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_gold_ellipse.png",
 	frame_trait_mask = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_ellipse_mask.png",
+	frame_sex_skill = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_heart.png",
+	frame_sex_skill_1 = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_gold_heart.png",
+	frame_sex_skill_mask = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_heart_mask.png",
 	
 	#masteries
 	mastery_air = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/air.png",

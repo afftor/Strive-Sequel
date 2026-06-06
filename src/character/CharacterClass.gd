@@ -381,7 +381,13 @@ func check_trait(trait):
 	if is_master() and trait.begins_with('loyalty_'): 
 		return true
 	
-	return (dyn_stats.traits_real.has(trait) or dyn_stats.traits_stored.has(trait) or statlist.sex_traits.has(trait) or statlist.negative_sex_traits.has(trait))
+	return (
+		dyn_stats.traits_real.has(trait)
+		or dyn_stats.traits_2_real.has(trait)
+		or dyn_stats.traits_stored.has(trait)
+		or statlist.sex_traits.has(trait)
+		or statlist.negative_sex_traits.has(trait)
+	)
 
 func predict_preg_time():
 	return statlist.predict_preg_time()

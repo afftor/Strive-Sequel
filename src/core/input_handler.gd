@@ -943,7 +943,7 @@ func open_shell(string):
 		'Discord':
 			path = "https://discord.gg/VXSx9Zk"
 		'Wiki':
-			path = "https://strive-conquest.fandom.com/wiki/Strive:_Conquest_Wiki"
+			path = "https://strivegames.miraheze.org/wiki/Main_Page"
 		'Subscribestar':
 			path = "https://subscribestar.adult/maverik"
 		'X':

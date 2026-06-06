@@ -101,6 +101,7 @@ var max_ongoing_actions = 0
 var gave_orgasm = false
 var skill_xp_bonus = 0
 var actions_remaining = 0
+var sex_spell_uses = {}
 
 var actionshad = {addtraits = [], removetraits = [], samesex = 0, samesexorgasms = 0, oppositesex = 0, oppositesexorgasms = 0, punishments = 0, group = 0, actions = {}}
 
@@ -449,6 +450,9 @@ func orgasm(custom_text = null, show_text = true):
 	#return
 	yield(sceneref.get_tree().create_timer(0.1), "timeout")
 	sceneref.get_node("Panel/sceneeffects").bbcode_text += "[color=#ff5df8]" + text + "[/color]\n"
+
+func add_sens_no_orgasm(value):
+	sens = min(sens + value * sensmod, 999)
 
 
 func actioneffect(values, scenedict_ids):

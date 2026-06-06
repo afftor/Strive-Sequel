@@ -199,8 +199,8 @@ func rebuild_traits():
 		var trait = Traitdata.sex_traits[i]
 		var newnode = input_handler.DuplicateContainerTemplate($ScrollContainer/traits)
 		if traits[i] == true:#trait is known
-			newnode.text = trait.name
-			var traittext = current_person.translate(trait.descript)
+			newnode.text = tr(trait.name)
+			var traittext = current_person.translate(tr(trait.descript))
 			for j in trait.reqs:
 				if j.has('code') && j.code == 'action_type':
 					traittext += "\n\n" + tr("DISLIKED_ACTIONS_LABEL") + ":[color=aqua] "

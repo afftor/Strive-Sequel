@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=2]
+[gd_scene load_steps=89 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -80,6 +80,8 @@
 [ext_resource path="res://assets/images/sprites/cali.png" type="Texture" id=78]
 [ext_resource path="res://assets/images/gui/charpanel/manaorb.png" type="Texture" id=79]
 [ext_resource path="res://assets/images/gui/charpanel/healthorb.png" type="Texture" id=80]
+[ext_resource path="res://assets/Textures_v2/icon_question_small_alt.png" type="Texture" id=81]
+[ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=82]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -598,7 +600,7 @@ margin_left = 174.0
 margin_right = 228.0
 margin_bottom = 54.0
 rect_min_size = Vector2( 40, 40 )
-hint_tooltip = "Tools"
+hint_tooltip = "Tools&Spells"
 size_flags_horizontal = 0
 size_flags_vertical = 2
 toggle_mode = true
@@ -1144,10 +1146,11 @@ text = "Make [him] cum"
 
 [node name="EnthusiasmSelect" type="Panel" parent="." groups=["pauseprocess"]]
 visible = false
-margin_left = 571.84
-margin_top = 153.601
-margin_right = 1312.84
-margin_bottom = 724.601
+margin_left = 572.0
+margin_top = 154.0
+margin_right = 1313.0
+margin_bottom = 723.0
+rect_pivot_offset = Vector2( 1546.35, 108.601 )
 theme = ExtResource( 67 )
 
 [node name="Control" type="Control" parent="EnthusiasmSelect"]
@@ -1167,18 +1170,18 @@ bbcode_enabled = true
 text = "Character is showing enthusiasm"
 
 [node name="MarkWrongButton" type="Button" parent="EnthusiasmSelect"]
-margin_left = 133.0
-margin_top = 145.0
-margin_right = 363.0
-margin_bottom = 177.0
+margin_left = 126.282
+margin_top = 492.752
+margin_right = 356.282
+margin_bottom = 545.752
 theme = ExtResource( 5 )
 text = "Mark wrong option"
 
 [node name="AllCorrectButton" type="Button" parent="EnthusiasmSelect"]
-margin_left = 374.0
-margin_top = 145.0
-margin_right = 604.0
-margin_bottom = 177.0
+margin_left = 378.621
+margin_top = 492.958
+margin_right = 608.621
+margin_bottom = 545.958
 theme = ExtResource( 5 )
 text = "All correct"
 
@@ -1186,7 +1189,7 @@ text = "All correct"
 margin_left = 133.0
 margin_top = 188.0
 margin_right = 604.0
-margin_bottom = 553.0
+margin_bottom = 465.0
 theme = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="EnthusiasmSelect/ScrollContainer"]
@@ -1199,6 +1202,17 @@ margin_right = 471.0
 margin_bottom = 55.0
 theme = ExtResource( 5 )
 text = "Choice"
+
+[node name="Tooltip_enthusiasm" type="TextureButton" parent="EnthusiasmSelect"]
+margin_left = 19.6318
+margin_top = 489.607
+margin_right = 83.6318
+margin_bottom = 553.608
+texture_normal = ExtResource( 81 )
+texture_hover = ExtResource( 82 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Label" type="Label" parent="."]
 margin_left = 15.0

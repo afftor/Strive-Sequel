@@ -590,6 +590,61 @@ var traits = {
 		tags = ['simple_icon', 'positive'],
 		bonusstats = {mp_reg_add_part = 0.33}
 	},
+	calming_touch = {
+		code = 'calming_touch',
+		name = "TRAITCALMING_TOUCH",
+		descript = "TRAITCALMING_TOUCHDESCRIPT",
+		visible = false,
+		icon = "res://assets/images/iconsskills/Charm.png",
+		show_in_parent_stats = true,
+		effects = [],
+		tags = ['simple_icon', 'positive', 'sex_action_unlock', 'exclusive'],
+		bonusstats = {}
+	},
+	empathic_insight = {
+		code = 'empathic_insight',
+		name = "TRAITEMPATHIC_INSIGHT",
+		descript = "TRAITEMPATHIC_INSIGHTDESCRIPT",
+		visible = false,
+		icon = "res://assets/images/iconsskills/Seduce.png",
+		show_in_parent_stats = true,
+		effects = [],
+		tags = ['simple_icon', 'positive', 'sex_action_unlock', 'exclusive'],
+		bonusstats = {}
+	},
+	refreshing_pulse = {
+		code = 'refreshing_pulse',
+		name = "TRAITREFRESHING_PULSE",
+		descript = "TRAITREFRESHING_PULSEDESCRIPT",
+		visible = false,
+		icon = "res://assets/images/iconsskills/lesserheal.png",
+		show_in_parent_stats = true,
+		effects = [],
+		tags = ['simple_icon', 'positive', 'sex_action_unlock', 'exclusive'],
+		bonusstats = {}
+	},
+	teasing_winds = {
+		code = 'teasing_winds',
+		name = "TRAITTEASING_WINDS",
+		descript = "TRAITTEASING_WINDSDESCRIPT",
+		visible = false,
+		icon = "res://assets/images/iconsskills/skill_hyperborea.png",
+		show_in_parent_stats = true,
+		effects = [],
+		tags = ['simple_icon', 'positive', 'sex_action_unlock', 'exclusive'],
+		bonusstats = {}
+	},
+	dark_rapture = {
+		code = 'dark_rapture',
+		name = "TRAITDARK_RAPTURE",
+		descript = "TRAITDARK_RAPTUREDESCRIPT",
+		visible = false,
+		icon = "res://assets/images/iconsskills/dark flame.png",
+		show_in_parent_stats = true,
+		effects = [],
+		tags = ['simple_icon', 'positive', 'sex_action_unlock', 'exclusive'],
+		bonusstats = {}
+	},
 	#positive
 	prodigy = {
 		code = 'prodigy',

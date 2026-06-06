@@ -28,6 +28,14 @@ var statuseffects = ['tied', 'subdued', 'drunk', 'tipsy', 'resist', 'sexcrazed',
 
 var selectedcategory = 'caress'
 var categories = {caress = [], fucking = [], tools = [], SM = [], humiliation = [], other = []}
+const ACTION_CATEGORY_TOOLTIPS = {
+	"caress": {name = "INTERACTION_CATEGORY_CARESS", description = "INTERACTION_CATEGORY_CARESS_TOOLTIP"},
+	"fucking": {name = "INTERACTION_CATEGORY_FUCKING", description = "INTERACTION_CATEGORY_FUCKING_TOOLTIP"},
+	"tools": {name = "INTERACTION_CATEGORY_TOOLS", description = "INTERACTION_CATEGORY_TOOLS_TOOLTIP"},
+	"SM": {name = "INTERACTION_CATEGORY_SM", description = "INTERACTION_CATEGORY_SM_TOOLTIP"},
+	"humiliation": {name = "INTERACTION_CATEGORY_HUMILIATION", description = "INTERACTION_CATEGORY_HUMILIATION_TOOLTIP"},
+	"other": {name = "INTERACTION_CATEGORY_OTHER", description = "INTERACTION_CATEGORY_OTHER_TOOLTIP"},
+}
 
 var secondactorcounter = {}
 
@@ -42,7 +50,6 @@ var enthusiasm_revealed_wrong_choices = []
 var enthusiasm_choice_buttons = []
 const ENTHUSIASM_MARK_WRONG_COSTS = [1, 1, 2]
 const ENTHUSIASM_ALL_CORRECT_COST = 5
-
 
 #not used
 #func dog():
@@ -102,11 +109,14 @@ func _ready():
 	$ItemSelectSex/Label.text = tr("SELECTITEM")
 	globals.connecttexttooltip($TextureFrame, tr("INTERACTION_CONNECTION_POINTS_TOOLTIP"))
 	globals.connecttexttooltip($TextureFrame/Label, tr("INTERACTION_CONNECTION_POINTS_TOOLTIP"))
+	globals.connecttexttooltip($EnthusiasmSelect/Tooltip_enthusiasm, _build_enthusiasm_tooltip())
 	$Panel/sceneeffects1.connect("meta_clicked", self, '_on_sceneeffects1_meta_clicked')
+	_refresh_sex_actions_dict()
 	for i in globals.sex_actions_dict.values():
 		categories[i.category].append(i)
 	for i in get_node("Panel/HBoxContainer").get_children():
 		i.connect("pressed",self,'changecategory',[i.get_name()])
+		_connect_action_category_tooltip(i)
 
 	filter = []#globals.state.actionblacklist
 
@@ -167,6 +177,57 @@ var OrgasmDenyText = {
 	beg_failure = "INTERACTION_ORGASM_DENY_BEG_FAILURE",
 	deny = "INTERACTION_ORGASM_DENY_DENY",
 }
+
+const SEX_ACTION_SPELL_COLOR = Color(0.55, 0.85, 1.0)
+
+func _build_enthusiasm_tooltip():
+	return tr("INTERACTION_ENTHUSIASM_TOOLTIP")
+
+func _connect_action_category_tooltip(button):
+	var category = button.get_name()
+	if !ACTION_CATEGORY_TOOLTIPS.has(category):
+		return
+	button.hint_tooltip = ""
+	globals.connecttexttooltip(button, _build_action_category_tooltip(category))
+
+func _build_action_category_tooltip(category):
+	var data = ACTION_CATEGORY_TOOLTIPS[category]
+	return "[center]%s[/center]\n\n%s" % [tr(data.name), tr(data.description)]
+
+func _refresh_sex_actions_dict():
+	for path in input_handler.dir_contents('res://src/actions'):
+		if !path.ends_with('.gd'):
+			continue
+		var newaction = load(path).new()
+		globals.sex_actions_dict[newaction.code] = newaction
+
+func _get_action_mana_cost(action):
+	var mana_cost = action.get("mana_cost")
+	if mana_cost == null:
+		return 0
+	return mana_cost
+
+func _is_spell_action(action):
+	if _get_action_mana_cost(action) > 0:
+		return true
+	if action.get("givertags") != null && action.givertags.has("magic"):
+		return true
+	if action.get("takertags") != null && action.takertags.has("magic"):
+		return true
+	return false
+
+func _setup_action_button_text(button, action, text):
+	var label = button.get_node("ActionName")
+	label.text = text
+	if _is_spell_action(action):
+		label.set("custom_colors/font_color", SEX_ACTION_SPELL_COLOR)
+	input_handler.font_size_adjust(label)
+
+func _append_action_tooltip_details(action, tooltiptext):
+	var mana_cost = _get_action_mana_cost(action)
+	if mana_cost > 0:
+		tooltiptext += "\n" + tr("INTERACTION_MANA_COST") % str(mana_cost)
+	return tooltiptext
 
 func OrgasmDenyInitiate(player, victim):
 	OrgasmDenyPlayer = player
@@ -466,14 +527,14 @@ func _apply_enthusiasm_wrong_choice_color(btn):
 	btn.set("custom_colors/font_color", color)
 	btn.set("custom_colors/font_color_hover", color.lightened(0.2))
 	btn.set("custom_colors/font_color_pressed", color.darkened(0.15))
-	globals.connecttexttooltip(btn, tr("INTERACTION_ENTHUSIASM_INCORRECT_TOOLTIP"))
+	#globals.connecttexttooltip(btn, tr("INTERACTION_ENTHUSIASM_INCORRECT_TOOLTIP"))
 
 func _apply_enthusiasm_corrected_choice_color(btn):
 	var color = Color(1.0, 0.9, 0.25)
 	btn.set("custom_colors/font_color", color)
 	btn.set("custom_colors/font_color_hover", color.lightened(0.15))
 	btn.set("custom_colors/font_color_pressed", color.darkened(0.15))
-	globals.connecttexttooltip(btn, tr("INTERACTION_ENTHUSIASM_CORRECT_TOOLTIP"))
+	#globals.connecttexttooltip(btn, tr("INTERACTION_ENTHUSIASM_CORRECT_TOOLTIP"))
 
 func _get_enthusiasm_mark_wrong_cost():
 	if enthusiasm_mark_wrong_used >= ENTHUSIASM_MARK_WRONG_COSTS.size():
@@ -751,6 +812,7 @@ func createtestdummy(type = 'normal'):
 	person.set_stat('consent', globals.rng.randi_range(2,5))
 	for i in Statlist_init.sex_skills:
 		person.add_stat(i, 100)
+	_add_max_test_masteries(person)
 #	if type == 'resist':
 #		person.set_stat('consent', false)
 		#globals.connectrelatives(participants[0].person, person, 'father')
@@ -769,6 +831,13 @@ func createtestdummy(type = 'normal'):
 	test_dummy_ids.append(person.id)
 	participants.append(newmember)
 
+func _add_max_test_masteries(person):
+	person.add_stat_bonuses({"enabled_masteries": Skilldata.masteries.keys()})
+	for mastery_id in Skilldata.masteries:
+		var maxlevel = Skilldata.masteries[mastery_id].maxlevel
+		person.dyn_stats.add_mastery_point_passive(mastery_id, maxlevel)
+		person.dyn_stats._add_mastery_as_bonuses(mastery_id, maxlevel, 1.0)
+	person.dyn_stats.generate_data(variables.DYN_STATS_FULL, true)
 
 func startsequence(actors):
 	set_process_input(true)
@@ -1003,16 +1072,18 @@ func rebuildparticipantslist():
 				continue
 
 			#find lowest consent possible for each participant
-			var giver_consent
+			var giver_consent = 100
 			var giver_name
 			var giver_text
-			var taker_consent
+			var taker_consent = 100
 			var taker_name
 			var taker_text
 			for j in givers:
+				giver_name = j.name
+				giver_text = tr("INTERACTION_CONSENT_NOT_REQUIRED")
 				for k in takers:
 					var consent = count_action_consent(i, j, k)
-					if giver_consent == null:
+					if giver_consent == 100:
 						giver_consent = consent.giver_consent
 						giver_name = j.name
 						giver_text = consent.giver_text
@@ -1021,7 +1092,7 @@ func rebuildparticipantslist():
 						giver_consent = consent.giver_consent
 						giver_text = consent.giver_text
 
-					if taker_consent == null:
+					if taker_consent == 100:
 						taker_consent = consent.taker_consent
 						taker_name = k.name
 						taker_text = consent.taker_text
@@ -1037,7 +1108,7 @@ func rebuildparticipantslist():
 			newnode = get_node("Panel/GridContainer/GridContainer/Button").duplicate()
 			get_node("Panel/GridContainer/GridContainer").add_child(newnode)
 			newnode.visible = true
-			newnode.get_node("ActionName").set_text(i.getname())
+			_setup_action_button_text(newnode, i, i.getname())
 			var missing_consent = max(i.consent_giver - giver_consent, i.consent_taker - taker_consent)
 			if missing_consent > 0:
 				if missing_consent == 1:
@@ -1055,14 +1126,14 @@ func rebuildparticipantslist():
 				else:
 					tooltiptext += tr("INTERACTION_CONSENT_REFUSING")
 				
-				tooltiptext +=  "\n" + giver_text + "\n" + taker_name + ": "
-				
-				if i.consent_taker <= taker_consent:
-					tooltiptext += tr("INTERACTION_CONSENT_WILLING")
-				else:
-					tooltiptext += tr("INTERACTION_CONSENT_REFUSING")
-				
-				tooltiptext +=  "\n" + taker_text
+				tooltiptext +=  "\n" + giver_text
+				if takers.size() > 0 && !_is_spell_action(i):
+					tooltiptext += "\n" + taker_name + ": "
+					if i.consent_taker <= taker_consent:
+						tooltiptext += tr("INTERACTION_CONSENT_WILLING")
+					else:
+						tooltiptext += tr("INTERACTION_CONSENT_REFUSING")
+					tooltiptext +=  "\n" + taker_text
 				
 				#tooltiptext = giver_name + "\n" + giver_text + taker_name + "\n" + taker_text
 				
@@ -1074,8 +1145,9 @@ func rebuildparticipantslist():
 				tooltiptext = i.getname()
 				if giver_consent < i.consent_giver:
 					tooltiptext += "\n{color=red|" + giver_name + " does not wish to engage into this action}"
-				if taker_consent < i.consent_taker:
+				if takers.size() > 0 && !_is_spell_action(i) && taker_consent < i.consent_taker:
 					tooltiptext += "\n{color=red|" + taker_name + " does not wish to engage into this action}"
+			tooltiptext = _append_action_tooltip_details(i, tooltiptext)
 			globals.connecttexttooltip(newnode, tooltiptext)
 			if result[0] == 'disabled':
 				newnode.disabled = true
@@ -1095,9 +1167,9 @@ func rebuildparticipantslist():
 			get_node("Panel/GridContainer/GridContainer").add_child(newnode)
 			newnode.visible = true
 			if givers.size() < 2:
-				newnode.get_node("ActionName").text = (givers[0].person.translate(tr("INTERACTION_LET_NAME_LEAD")))
+				_setup_action_button_text(newnode, globals.sex_actions_dict.wait, givers[0].person.translate(tr("INTERACTION_LET_NAME_LEAD")))
 			else:
-				newnode.get_node("ActionName").set_text(tr("INTERACTION_LET_SELECTED_LEAD"))
+				_setup_action_button_text(newnode, globals.sex_actions_dict.wait, tr("INTERACTION_LET_SELECTED_LEAD"))
 			newnode.connect("pressed",self,'activateai')
 		elif selectmode == 'ai':
 			newnode = get_node("Panel/GridContainer/GridContainer/Button").duplicate()
@@ -1906,6 +1978,11 @@ func startscene(scenescript, cont = false, pretext = ''):
 		if scenescript.has_method('takereffect'):
 			effects = scenescript.takereffect(i)
 			i.actioneffect(effects, id_dict)
+
+	if scenescript.has_method('apply_action'):
+		var extra_text = scenescript.apply_action(self, id_dict)
+		if extra_text != null && extra_text != "":
+			textdict.mainevent += "\n" + decoder(extra_text, givers, takers)
 
 	if scenescript.code in ['rope', 'subdue']:
 		cont = true

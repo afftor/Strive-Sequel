@@ -420,14 +420,22 @@ func change_mastery(mas):
 			var trdata = Traitdata.traits[tr_id]
 			var skill_icon = input_handler.DuplicateContainerTemplate(panel.get_node('container'), 'skill')
 			skill_icon.get_node('icon').material = load("res://assets/masked_sprite.tres").duplicate(true)
+			var frame_id = 'frame_trait'
+			var frame_mask_id = 'frame_trait_mask'
+			if trdata.has('tags') and trdata.tags.has('sex_action_unlock'):
+				frame_id = 'frame_sex_skill'
+				frame_mask_id = 'frame_sex_skill_mask'
 			if lv_tmp <= lv:
-				skill_icon.texture = images.get_icon('frame_trait_1')
+				skill_icon.texture = images.get_icon(frame_id + '_1')
 			else:
-				skill_icon.texture = images.get_icon('frame_trait')
+				skill_icon.texture = images.get_icon(frame_id)
 #			skill_icon.texture = images.get_icon('frame_trait')
-			skill_icon.get_node('icon').texture = trdata.icon
-			skill_icon.get_node('icon').material.set_shader_param('mask', images.get_icon('frame_trait_mask'))
-			globals.connecttexttooltip(skill_icon, trdata.descript)
+			if trdata.icon is String:
+				skill_icon.get_node('icon').texture = load(trdata.icon)
+			else:
+				skill_icon.get_node('icon').texture = trdata.icon
+			skill_icon.get_node('icon').material.set_shader_param('mask', images.get_icon(frame_mask_id))
+			globals.connecttexttooltip(skill_icon, tr(trdata.descript))
 #			if f:
 #				text += tr('TRAITLEARN') + tr(trdata.name) + '\n'
 		for s_id in lvdata.action:
