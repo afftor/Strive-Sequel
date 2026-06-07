@@ -680,6 +680,10 @@ func focus_on_person_task(ch):
 			select_resource({code = "brothel"}, "brothel", servicebutton)
 			show_brothel_options()
 			return
+	if work_code == 'special':
+		var spec_button = _find_special_button_for_char(person)
+		select_resource(tasks.tasklist.special, 'special', spec_button)
+		return
 	var work_product = person.xp_module.workproduct
 	var job_data = null
 	var resource = work_product
@@ -709,6 +713,18 @@ func _find_resource_button_for_job(job):
 		if button.get_meta("work") == job:
 			return button
 	return null
+
+func _find_special_button_for_char(character):
+	if character == null:
+		return null
+	for button in $Resourses/GridContainer.get_children():
+		if !button.has_meta("spec_job"):
+			continue
+		var task = button.get_meta('spec_job')
+		if task.workers.has(character.id):
+			return button
+	return null
+
 
 var stat_icons = {
 	physics = load("res://assets/images/gui/gui icons/icon_physics64.png"),
