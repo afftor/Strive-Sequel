@@ -74,12 +74,14 @@ func update(person = null):
 		$ScrollContainer/professions.set("custom_constants/hseparation", 6)
 		$ScrollContainer/professions/Button.rect_min_size = Vector2(37, 37)
 		$ScrollContainer/professions/Button/TextureRect.rect_size = Vector2(34, 34)
+		$ScrollContainer/professions/Button/TextureRect.set_anchors_and_margins_preset(Control.PRESET_CENTER, Control.PRESET_MODE_KEEP_SIZE)
 		$ScrollContainer/professions/Button/Label.hide()
 	else:
 		$ScrollContainer/professions.columns = 8
 		$ScrollContainer/professions.set("custom_constants/hseparation", 14)
 		$ScrollContainer/professions/Button.rect_min_size = Vector2(75, 75)
 		$ScrollContainer/professions/Button/TextureRect.rect_size = Vector2(70, 70)
+		$ScrollContainer/professions/Button/TextureRect.set_anchors_and_margins_preset(Control.PRESET_CENTER, Control.PRESET_MODE_KEEP_SIZE)
 	for i in person.get_professions():
 		var newnode = input_handler.DuplicateContainerTemplate($ScrollContainer/professions)
 		var prof = classesdata.professions[i]
