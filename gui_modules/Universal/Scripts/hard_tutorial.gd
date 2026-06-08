@@ -646,7 +646,7 @@ func tutorial_menu():
 
 func abort_tutorial():
 	stop_tut()
-	prepare_save_exit()
+	yield(prepare_save_exit(), "completed")
 	globals.return_to_main_menu()
 	input_handler.deactivate_hard_tutorial()
 
