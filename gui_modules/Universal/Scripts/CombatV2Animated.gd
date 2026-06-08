@@ -88,6 +88,7 @@ var dummy = {
 signal skill_use_finshed
 signal rewards_anim_finished
 signal combat_finished
+signal combat_cleaned_up
 signal turn_started
 
 var queue_size_max
@@ -1833,6 +1834,7 @@ func FinishCombat(victory = true):
 	gui_controller.current_screen = gui_controller.previous_screen
 	gui_controller.combat = null
 	characters_pool.cleanup()
+	emit_signal("combat_cleaned_up")
 
 
 #to check next functions

@@ -426,7 +426,7 @@ func _input(event):
 	if hard_tutorial_active:
 		var pass_event = false
 		if !hard_tutorial.active_btns.empty():
-			if event.is_action_pressed("ESC") and !hard_tutorial.is_in_menu():
+			if event.is_action_pressed("ESC") and hard_tutorial.can_open_menu():
 				hard_tutorial.tutorial_menu()
 			pass_event = event is InputEventMouseMotion
 			if event.is_action_released("RMB"):
@@ -559,7 +559,9 @@ func _input(event):
 						gui_controller.clock.hotkey_pressed(int(num))
 
 	if mass_select_client != null:
-		if mass_select_client.get_ref() == null or !mass_select_client.get_ref().is_visible_in_tree():
+		if (mass_select_client.get_ref() == null
+				or !mass_select_client.get_ref().is_visible_in_tree()
+				or (hard_tutorial_active and hard_tutorial.is_mass_select_banned())):
 			stop_mass_select()
 		elif event is InputEventMouseButton:
 			if event.is_action_pressed("LMB"):

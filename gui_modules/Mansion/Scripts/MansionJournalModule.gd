@@ -234,8 +234,8 @@ func Reward():
 	var suspended_rep = globals.Reward(selectedquest, true)
 	open()
 	input_handler.play_animation("repeatable_quest_completed")
-	yield(get_tree().create_timer(3.5), 'timeout')
 	if suspended_rep != null:
+#		yield(get_tree().create_timer(3.5), 'timeout')
 		globals.common_effects([{code = 'reputation', name = suspended_rep.guild, value = suspended_rep.value, operant = '+'}])
 
 func CancelQuest():
