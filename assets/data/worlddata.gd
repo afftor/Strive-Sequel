@@ -717,6 +717,11 @@ var random_dungeon_events = {
 var fixed_location_options = { #override serialized data
 	aliron = [
 		{
+			text = tr("LIRA_QUEST2_CITY_OPTION"),
+			reqs = [{type = 'active_quest_stage', value = 'lira_quest_2', stage = 'fair', state = true}],
+			args = [{code = 'start_event', data = 'lira_quest2_fair_arrival', args = []}]
+		},
+		{
 			text = tr("LIRA_QUEST3_ALIRON_TRADER_OPTION"),
 			reqs = [{type = 'active_quest_stage', value = 'lira_quest_3', stage = 'trader', state = true}],
 			args = [{code = 'start_event', data = 'lira_quest_3_slave_trader', args = []}]

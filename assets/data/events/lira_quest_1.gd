@@ -263,7 +263,7 @@ var data = {
 				reqs = [], dialogue_argument = 1, 
 				bonus_effects = [
 					{code = 'complete_quest', value = 'lira_quest_1'}, 
-					{code = 'progress_quest', value = 'lira_quest_2', stage = 'start'},
+#					{code = 'progress_quest', value = 'lira_quest_2', stage = 'start'}, #need adding a timed planned event instead
 					{code = 'update_location'}
 				]
 			},

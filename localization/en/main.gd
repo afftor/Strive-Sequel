@@ -27547,7 +27547,7 @@ She lifts her gaze, and her eyes are bright.
 	LIRA_QUEST2_QUEST_SUMMARY = "Lira wants to see the fair in Aliron and learn more about life outside the temple.",
 	LIRA_QUEST2_QUEST_STAGE_START = "Talk to Lira at the mansion.",
 	LIRA_QUEST2_QUEST_STAGE_FAIR = "Take Lira to the city fair.",
-	LIRA_QUEST2_QUEST_STAGE_RETURN = "Return to the mansion with Lira.",
+	LIRA_QUEST2_CITY_OPTION = "City Fair",
 	
 	ACT4_MYR_GUILD_OPTION_SHOW_WRITING = "Show the catacomb writing",
 	ACT4_EMPIRE_CAPITAL_OPTION_ERDYNA = "Talk to Erdyna",
