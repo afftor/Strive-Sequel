@@ -4,6 +4,7 @@ var decisions = {
 	anastasia_added = "Adds princess at princess_declaration_4",
 	aire_is_dead = "Happens after Lich fight lich_aire_talk6_6",
 	aire_is_saved = "Happens at Lich lich_enc_talk6",
+	aire_recruited = "Aire was recruited through story events",
 	aire_had_sex = "Happens after having sex with Aire as a gratitude for saving her from Lich lich_aire_talk4_4",
 	prison_avail = "Allows you to talk in prison",
 	search_advice_1 = "Not used",

@@ -179,7 +179,7 @@ func open(scene):
 		else:
 			new_background.modulate.a = 1
 	if scene.has("common_effects"):
-		globals.common_effects(scene.common_effects)
+		globals.common_effects(scene.common_effects, true)
 	clear_character_images()
 	$BackgroundT1/ImagePanel.hide()
 	handle_scene_backgrounds(scene)
@@ -1241,12 +1241,12 @@ func generate_scene_text(scene):
 		if input_handler.if_translation_key(i.text):
 			ResourceScripts.game_progress.seen_dialogues.append(i.text)
 		if i.has("bonus_effects"):
-			globals.common_effects(i.bonus_effects)
+			globals.common_effects(i.bonus_effects, true)
 		newtext += tr(i.text)
 	scenetext = newtext
 	scenetext = tr(scenetext)
 	if scene.has('bonus_effects'):
-		globals.common_effects(scene.bonus_effects)
+		globals.common_effects(scene.bonus_effects, true)
 
 	if scenetext.find("[locationname]") >= 0:
 		var data = ResourceScripts.world_gen.get_location_from_code(input_handler.selected_location)
@@ -1423,7 +1423,7 @@ func select_option(number):
 		ResourceScripts.game_progress.selected_dialogues.append(option.text_key)
 	
 	if option.has('bonus_effects'):
-		globals.common_effects(option.bonus_effects)
+		globals.common_effects(option.bonus_effects, true)
 	
 	if option.has('select_person'):
 		select_person_for_next_event(option)

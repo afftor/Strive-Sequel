@@ -1900,6 +1900,8 @@ func decipher_reqs(reqs, colorcode = false, purestat = false):
 			var passed = checkreqs([i], purestat)
 			if i.code == 'has_profession' and i.check == false:
 				passed = !has_profession(i.profession)
+			if i.code == 'race' and i.check == false:
+				passed = get_stat('race') != i.race
 			if passed:
 				text2 = '{color=green|' + text2 + '}'
 			else:
@@ -1951,7 +1953,7 @@ func decipher_single(ch):
 			if i.check:
 				text2 += tr("REQRACE") + ': ' + races.racelist[i.race].name
 			else:
-				continue
+				text2 += tr("REQCONFLICTRACE") + ': ' + races.racelist[i.race].name
 		'race_is_beast':
 			if i.check == true:
 				text2 += tr("REQRACEISBEAST") + ''

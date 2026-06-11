@@ -383,7 +383,7 @@ var effect_table = {
 		duration = 'arg',
 		sub_effects = [],
 		tags = ['addition_rest_tick', 'no_combat', 'on_dead', 'injury'],# need to implement person.has_status('no_combat') check in exploration interface
-		statchanges = {productivity = -0.25, sexuals_bonus = -50},
+		statchanges = {productivity = -0.25},
 		buffs = [
 			{#to fix
 				icon = "res://assets/images/iconsskills/icon_blood_explosion.png",

@@ -372,6 +372,7 @@ ma manterrà comunque tutti i tuoi personaggi, oggetti e inventario. Usa questa 
 	REQCONFLICTCLASS = "Classe in conflitto",
 	REQHASANYCLASS = "Ha una delle classi",
 	REQRACE = "Razza",
+	REQCONFLICTRACE = """Conflicting Race""", # MISSING TRANSLATION
 	REQRACEISBEAST = "Solo per le razze Bestiali",
 	REQMUSTHAVEGEAR = "Deve avere",
 	REQMUSTHAVEGEAR_FALSE = "Non deve avere",
@@ -2535,6 +2536,8 @@ Danno +15%, Salute +20.""",
 	STATENCHCAP = "Capacità di Incantamento",
 	STATQUALITY = "Qualità",
 	STATPRICE = "Valore",
+	STATCOUNTERATTACKS = """Counterattacks remained""", # MISSING TRANSLATION
+	STATCOUNTERATTACKS_MAX = """Counterattacks per turn""", # MISSING TRANSLATION
 	STATCHG_STRENGTH = "Cariche di Forza",
 	STATCHG_STRENGTH_MAX = "Forza Max. Cariche",
 	STATCHG_PERSUASION = "Cariche di Persuasione",
@@ -3109,6 +3112,8 @@ Tasto di scelta rapida: 3""",
 	REQUIREMENTS_TOOLTIP = "Fabbisogno",
 	LOCKED_LABEL = "Bloccato",
 	CUR_LEVEL_LABEL = "Livello attuale",
+	MASTERY_HINT_NOVICE = """Improves during sex encounters by responding correctly to encouragement.""", # MISSING TRANSLATION
+	MASTERY_HINT_SKILLED = """Reach mastery by bringing a partner to orgasm with each of the following actions:""", # MISSING TRANSLATION
 	MAX_WORKERS_LABEL = "Numero massimo di lavoratori",
 	CURRENT_WORKERS_LABEL = "Lavoratori attuali",
 	SELECT_WORKERS_LABEL = "Seleziona Lavoratori",
@@ -5020,6 +5025,11 @@ Azioni positive, sociali, fisiche e di umiliazione forniscono maggiore lealtà."
 	SEXTRAITDESIRED = "Desiderato",
 	SEXTRAITCURIOUS = "Curioso",
 	SEXTRAITLIFE_POWER = "Potere vitale",
+	TRAITCALMING_TOUCH = """Calming Touch""", # MISSING TRANSLATION
+	TRAITEMPATHIC_INSIGHT = """Empathic Insight""", # MISSING TRANSLATION
+	TRAITREFRESHING_PULSE = """Refreshing Pulse""", # MISSING TRANSLATION
+	TRAITTEASING_WINDS = """Teasing Winds""", # MISSING TRANSLATION
+	TRAITDARK_RAPTURE = """Dark Rapture""", # MISSING TRANSLATION
 	SEXSKILLSDESCRIPT = """Le abilità sessuali migliorano le prestazioni del personaggio durante l'interazione e influenzano la statistica dei Sessuali. Un'abilità sessuale più alta renderà un partner più eccitato dalle azioni del personaggio. 
 
 Le abilità sessuali aumentano quando si eseguono azioni correlate e la loro crescita dipende dal fattore sessuale.""",
@@ -5082,6 +5092,21 @@ Le abilità sessuali aumentano quando si eseguono azioni correlate e la loro cre
 	SEXTRAITDESIREDDESCRIPT = "[name] è estremamente attraente, rendendo i suoi partner più eccitati. L'eccitazione dei partner aumenta del 25%.",
 	SEXTRAITCURIOUSDESCRIPT = "Sebbene [name] sia interessato al sesso, [he] in realtà sta imparando molto di più. Gli incontri sessuali danno il 25% di esperienza in più.",
 	SEXTRAITLIFE_POWERDESCRIPT = "Il sesso è rinfrescante per [name]. Recupera 10 punti salute per orgasmo dopo l'interazione sessuale. ",
+	TRAITCALMING_TOUCHDESCRIPT = """Sex Interaction Spell: Calming Touch
+
+Reduces target's accumulated stress over non-consensual actions. 3 mana. Can only be cast once.""", # MISSING TRANSLATION
+	TRAITEMPATHIC_INSIGHTDESCRIPT = """Sex Interaction Spell: Empathic Insight
+
+Look inside everyone's hearts to Gain 3 Connection points. 6 Mana. Can only be cast once.""", # MISSING TRANSLATION
+	TRAITREFRESHING_PULSEDESCRIPT = """Sex Interaction Spell: Refreshing Pulse
+
+Restore 2 turns for all participants. 8 Mana, can only be cast once.""", # MISSING TRANSLATION
+	TRAITTEASING_WINDSDESCRIPT = """Sex Interaction Spell: Teasing Winds
+
+Greatly improves hornyness and arousal without making target orgasm. 5 Mana.""", # MISSING TRANSLATION
+	TRAITDARK_RAPTUREDESCRIPT = """Sex Interaction Spell: Dark Rapture
+
+Forces target to orgasm against their will with slight impact over consent. 7 Mana.""", # MISSING TRANSLATION
 	DIALOGUEESCAPETEXT = "[name] è sfuggito alla tua custodia. Forse avresti dovuto concentrarti di più sulla loro lealtà o sul loro comportamento.",
 	DIALOGUEESCAPECLOSE = "Questo è un peccato",
 	LOSE_MESSAGE = "Purtroppo, sembra che il tuo regno sia finito.",
@@ -5298,6 +5323,40 @@ Le abilità sessuali aumentano quando si eseguono azioni correlate e la loro cre
 	INTERACTION_ORGASM_DENY_BEG_SUCCESS = "Incapace di resistere alla tentazione, [name2] guarda nei suoi occhi e implora docilmente per il sollievo.",
 	INTERACTION_ORGASM_DENY_BEG_FAILURE = "Nonostante la condizione vergognosa, [name2] raduna abbastanza volontà e si volta da [name1] con angoscia. È ancora sul limite, sperando comunque di raggiungere il piacere. ",
 	INTERACTION_ORGASM_DENY_DENY = "[name1] non permette a [name2] di ottenere il suo sollievo trattenendola. [name2] non può che esprimere la sua delusione. ",
+	INTERACTION_ORGASM_GIVER_NAME = """[names1]""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_TAKER_NAME = """[names2]""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_ANUS_GIVER_FEEL = """[name1] feel[s/1] a {^sudden :intense ::}{^jolt of electricity:warmth:wave of pleasure} inside [him1] and [his1]""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_ANUS_GIVER_PENIS = """ [anus1] {^squeezes:writhes around:clamps down on} [names2] [penis2] as [he1] reach[es/1] {^climax:orgasm}.""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_ANUS_GIVER_BODY = """ [anus1] {^convulses:twitches:quivers} {^in euphoria:in ecstasy:with pleasure} as [he1] reach[es/1] {^climax:orgasm}.""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_ANUS_TAKER_FEEL = """[name2] feel[s/2] a {^sudden :intense ::}{^jolt of electricity:warmth:wave of pleasure} inside [him2] and [his2]""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_ANUS_TAKER_PENIS = """ [anus2] {^squeezes:writhes around:clamps down on} [names1] [penis1] as [he2] reach[es/2] {^climax:orgasm}.""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_ANUS_TAKER_BODY = """ [anus2] {^convulses:twitches:quivers} {^in euphoria:in ecstasy:with pleasure} as [he2] reach[es/2] {^climax:orgasm}.""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_PUSSY_GIVER_FEEL = """[name1] feel[s/1] a {^sudden :intense ::}{^jolt of electricity:warmth:wave of pleasure} inside [him1] and [his1]""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_PUSSY_GIVER_PENIS = """ [pussy1] {^squeezes:writhes around:clamps down on} [names2] [penis2] as [he1] reach[es/1] {^climax:orgasm}.""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_PUSSY_GIVER_BODY = """ [pussy1] {^convulses:twitches:quivers} {^in euphoria:in ecstasy:with pleasure} as [he1] reach[es/1] {^climax:orgasm}.""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_PUSSY_TAKER_FEEL = """[name2] feel[s/2] a {^sudden :intense ::}{^jolt of electricity:warmth:wave of pleasure} inside [him2] and [his2]""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_PUSSY_TAKER_PENIS = """ [pussy2] {^squeezes:writhes around:clamps down on} [names1] [penis1] as [he2] reach[es/2] {^climax:orgasm}.""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_PUSSY_TAKER_BODY = """ [pussy2] {^convulses:twitches:quivers} {^in euphoria:in ecstasy:with pleasure} as [he2] reach[es/2] {^climax:orgasm}.""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_PENIS_GIVER_FEEL = """[name1] feel[s/1] {^a wave of:an intense} {^pleasure:euphoria} {^run through:course through:building in} [his1] [penis1] and [his1]""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_PENIS_GIVER_THRUST = """[name1] {^thrust:jerk}[s/1] [his1] hips forward and a {^thick :hot :}{^jet:load:batch} of""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_PENIS_GIVER_FLOOR = """ {^semen:seed:cum} {^pours onto:shoots onto:falls to} the {^ground:floor} as [he1] ejaculate[s/1].""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_PENIS_GIVER_INTO = """ {^semen:seed:cum} {^pours:shoots:pumps:sprays} into [names2] %s as [he1] ejaculate[s/1].""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_PENIS_GIVER_NIPPLES = """ {^semen:seed:cum} fills [names2] hollow nipples. """, # MISSING TRANSLATION
+	INTERACTION_ORGASM_PENIS_GIVER_ON_PENIS = """ {^semen:seed:cum} {^pours:shoots:sprays}, covering [names2] [penis2]. """, # MISSING TRANSLATION
+	INTERACTION_ORGASM_PENIS_TAKER_FEEL = """[name2] feel[s/2] {^a wave of:an intense} {^pleasure:euphoria} {^run through:course through:building in} [his2] [penis2] and [his2]""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_PENIS_TAKER_THRUST = """[name2] {^thrust:jerk}[s/2] [his2] hips forward and a {^thick :hot :}{^jet:load:batch} of""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_PENIS_TAKER_FACE = """ {^sticky:white:hot} {^semen:seed:cum} {^sprays onto:shoots all over:covers} [names1] face[/s1] as [he2] ejaculate[s/2].""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_PENIS_TAKER_TAIL = """ {^sticky:white:hot} {^semen:seed:cum} {^sprays onto:shoots all over:covers} [names1] tail[/s1] as [he2] ejaculate[s/2].""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_PENIS_TAKER_FLOOR = """ {^semen:seed:cum} {^pours onto:shoots onto:falls to} the {^ground:floor} as [he2] ejaculate[s/2].""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_PENIS_TAKER_ON_PENIS = """ {^semen:seed:cum} {^pours:shoots:sprays}, covering [names1] [penis1]. """, # MISSING TRANSLATION
+	INTERACTION_ORGASM_PENIS_TAKER_INTO = """ {^semen:seed:cum} {^pours:shoots:pumps:sprays} into [names1] %s as [he2] ejaculate[s/2].""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_PENIS_SECONDARY_TWIST = """[name2] {^twist:quiver:writhe}[s/2] in {^pleasure:euphoria:ecstacy} as""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_PENIS_SECONDARY_LIMIT = """[name2] {^can't hold back any longer:reach[es/2] [his2] limit} and""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_PENIS_SECONDARY_RELEASE = """ {^a jet of :a rope of :}{^semen:cum} {^fires:squirts:shoots} from {^the tip of :}[his2] {^neglected :throbbing ::}[penis2].""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_BODY_FEEL = """[name2] feel[s/2] {^a sudden :an intense ::}{^jolt of electricity:heat:wave of pleasure} and [his2]""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_BODY_RELEASE = """ {^entire :whole :}body {^twists:quivers:writhes} in {^pleasure:euphoria:ecstacy} as [he2] reach[es/2] {^climax:orgasm}.""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_BODY_GIVER_FEEL = """[name1] feel[s/1] {^a sudden :an intense ::}{^jolt of electricity:heat:wave of pleasure} and [his1]""", # MISSING TRANSLATION
+	INTERACTION_ORGASM_BODY_GIVER_RELEASE = """ {^entire :whole :}body {^twists:quivers:writhes} in {^pleasure:euphoria:ecstacy} as [he1] reach[es/1] {^climax:orgasm}.""", # MISSING TRANSLATION
 	INTERACTION_CUM_TARGET_FACE = "Viso",
 	INTERACTION_CUM_TARGET_MOUTH = "Bocca",
 	INTERACTION_CUM_TARGET_HAIR = "Capelli",
@@ -5423,6 +5482,15 @@ e può agire solo su [him]. """,
 """,
 	INTERACTION_DESIRE_FULFILLED = """[color=aqua]Desiderio soddisfatto! [name1] diventa più lasciva e sensibile. [/color]
 """,
+	INTERACTION_SEX_MINIGAME_POINTS_GAINED = """[color=yellow]Connection points +%s: %s. Total: %s[/color]""", # MISSING TRANSLATION
+	INTERACTION_CONNECTION_POINTS_TOOLTIP = """Connection points are earned during sex interactions and can be spent during training opportunities.""", # MISSING TRANSLATION
+	INTERACTION_CONNECTION_POINTS_REASON_DESIRE = """[names1] desire fulfilled""", # MISSING TRANSLATION
+	INTERACTION_CONNECTION_POINTS_REASON_FIRST_ORGASM = """[names1] first orgasm""", # MISSING TRANSLATION
+	INTERACTION_CONNECTION_POINTS_REASON_VAGINAL_VIRGINITY = """[names2] vaginal virginity taken""", # MISSING TRANSLATION
+	INTERACTION_CONNECTION_POINTS_REASON_ANAL_VIRGINITY = """[names2] anal virginity taken""", # MISSING TRANSLATION
+	INTERACTION_CONNECTION_POINTS_REASON_SKILLED = """%s advanced to Skilled""", # MISSING TRANSLATION
+	INTERACTION_CONNECTION_POINTS_REASON_EMPATHIC_INSIGHT = """[names1] empathic insight""", # MISSING TRANSLATION
+	INTERACTION_MANA_COST = """Mana cost: %s""", # MISSING TRANSLATION
 	INTERACTION_END_CONSENT_GAIN = """[name] si è aperta alla nuova esperienza: Consenso - {color=aqua|%s}
 """,
 	INTERACTION_END_DEVASTATED = "[name] è stata devastata da questo incontro e non è riuscita ad aumentare la sua apertura mentale. ",
@@ -5432,6 +5500,8 @@ e può agire solo su [him]. """,
 """,
 	INTERACTION_END_TRAIT_LOST = """%s ha perso il tratto: %s
 """,
+	INTERACTION_NO_ACTIONS_LEFT = """has no actions remaining.""", # MISSING TRANSLATION
+	INTERACTION_END_STAMINA_GAINED = """; Sex stamina +1""", # MISSING TRANSLATION
 	INTERACTION_END_SKILL_MASTERED = """%s has mastered the %s skill!
 """, # MISSING TRANSLATION
 	INTERACTION_END_LACK_CONSENT_SLAVE = """[name] hated the encounter: Resistance has increased, Loyalty -%s
@@ -6261,6 +6331,17 @@ I feromoni sono stati usati su %s, ma non hanno avuto effetto su [him]. """,
 	SEXACTION_MASSAGEWITHFOOT_ONGOING_1 = "[name1] calpesta [name2] dando un massaggio umiliante.",
 	SEXACTION_LICKFEET_ONGOING_1 = "[name2] lecca i piedi di [names1] come ordinato.",
 	SEXACTION_ENEMAPLUG_ONGOING_1 = "[name1] inietta del liquido per clistere nel [anus2] di [names2] poi lo tappa.",
+	SEXACTION_CALMING_TOUCH_INITIATE = """[name1] place[s/1] [his1] hand on [name2], guiding [him2] into a slower rhythm with calm, steady pressure.""", # MISSING TRANSLATION
+	SEXACTION_CALMING_TOUCH_RESULT = """[name2]'s breathing evens out as the pressure of the encounter becomes easier to bear.""", # MISSING TRANSLATION
+	SEXACTION_EMPATHIC_INSIGHT_INITIATE = """[name1] close[s/1] [his1] eyes and follow[s/1] the emotional current moving through the room.""", # MISSING TRANSLATION
+	SEXACTION_EMPATHIC_INSIGHT_RESULT = """[name1] understand[s/1] the shape of the moment more clearly, finding the fragile places where trust can still be built.""", # MISSING TRANSLATION
+	SEXACTION_REFRESHING_PULSE_INITIATE = """Soft light gathers around [name1] before spreading through the room in a warm pulse.""", # MISSING TRANSLATION
+	SEXACTION_REFRESHING_PULSE_RESULT = """The glow leaves everyone steadier and more awake, ready to keep moving.""", # MISSING TRANSLATION
+	SEXACTION_TEASING_WINDS_INITIATE = """[name1] smile[s/1] like [he1] know[s/1] exactly what [name2] wants, then flick[s/1] [his1] fingers and send[s/1] a sly current of air under every vulnerable edge of [names2] body.""", # MISSING TRANSLATION
+	SEXACTION_TEASING_WINDS_RESULT = """The breeze curls and presses with almost deliberate cruelty, ghosting over [names2] most sensitive places until [his2] breath catches and [his2] body tightens, teased raw but kept just short of release.""", # MISSING TRANSLATION
+	SEXACTION_DARK_RAPTURE_INITIATE_1 = """[name1] seize[s/1] the moment with a cold, possessive look, drawing dark power into [his1] hand before pushing it deep into [names2] trembling body.""", # MISSING TRANSLATION
+	SEXACTION_DARK_RAPTURE_INITIATE_2 = """[name1] smirk[s/1] as dark power gathers around [his1] fingers, savoring the instant before [he1] drive[s/1] it deep into [names2] trembling body.""", # MISSING TRANSLATION
+	SEXACTION_DARK_RAPTURE_RESULT = """The magic clamps down and wrenches pleasure out of [name2] by force, flooding [his2] nerves in a brutal wave until [his2] body breaks into a helpless, shaking climax.""", # MISSING TRANSLATION
 	SEXACTION_ANAL_FACE_SITTING = "Seduta sul viso anale",
 	SEXACTION_ANAL_FISTING = "Fisting Anale",
 	SEXACTION_ANAL_VIBRATOR = "Vibratore anale",
@@ -6268,17 +6349,20 @@ I feromoni sono stati usati su %s, ma non hanno avuto effetto su [him]. """,
 	SEXACTION_BLINDFOLD = "Benda",
 	SEXACTION_BLOWJOB = "Pompino",
 	SEXACTION_CARESS = "Carezza",
+	SEXACTION_CALMING_TOUCH = """Calming Touch""", # MISSING TRANSLATION
 	SEXACTION_CLIT_CLAMP = "Pinza per Clitoride",
 	SEXACTION_CUNNILINGUS = "Cunnilingus",
 	SEXACTION_DEEPTHROAT = "Gola Profonda",
 	SEXACTION_DOGGY_ANAL = "Pecorina Anale",
 	SEXACTION_DOGGY_PEGGING = "Pecorina Pegging",
 	SEXACTION_DOGGY_STYLE = "Pecorina",
+	SEXACTION_DARK_RAPTURE = """Dark Rapture""", # MISSING TRANSLATION
 	SEXACTION_DOUBLE_ANAL_DILDO = "Doppio Dildo Anale",
 	SEXACTION_DOUBLE_DILDO = "Doppio Dildo",
 	SEXACTION_DOUBLE_KISS = "Bacio Doppio",
 	SEXACTION_DOUBLE_PENETRATE = "Doppia Penetrazione",
 	SEXACTION_EARJOB = "Auricolare",
+	SEXACTION_EMPATHIC_INSIGHT = """Empathic Insight""", # MISSING TRANSLATION
 	SEXACTION_ENEMA_PLUG = "Clistere + Plug",
 	SEXACTION_FACE_SITTING = "Seduta sul viso",
 	SEXACTION_FINGERING = "Ditalino",
@@ -6301,6 +6385,7 @@ I feromoni sono stati usati su %s, ma non hanno avuto effetto su [him]. """,
 	SEXACTION_MILKER = "Mungitrice",
 	SEXACTION_MISSIONARY = "Missionario",
 	SEXACTION_MISSIONARY_ANAL = "Missionario Anale",
+	SEXACTION_NAIZURI = """Naizuri""", # MISSING TRANSLATION
 	SEXACTION_NIPPLE_CLAMP = "Pinza per Capezzoli",
 	SEXACTION_NIPPLE_FUCK = "Scopata di Capezzoli",
 	SEXACTION_NIPPLE_SUCKING = "Succhiare Capezzoli",
@@ -6311,18 +6396,23 @@ I feromoni sono stati usati su %s, ma non hanno avuto effetto su [him]. """,
 	SEXACTION_ORDER_LICK_FEET = "Ordina Lecca Piedi",
 	SEXACTION_ORDER_MASTURBATION = "Ordina Masturbazione",
 	SEXACTION_ORGASM_DENIAL = "Negazione Orgasmo",
+	SEXACTION_REVLOTUS = """Lap Sitting""", # MISSING TRANSLATION
+	SEXACTION_REVLOTUSANAL = """Lap Sitting Anal""", # MISSING TRANSLATION
+	SEXACTION_REFRESHING_PULSE = """Refreshing Pulse""", # MISSING TRANSLATION
 	SEXACTION_RIMJOB = "Rimjob",
 	SEXACTION_RING_GAG = "Anello Bavaglio",
 	SEXACTION_ROPE = "Corda",
 	SEXACTION_SELECTIVELY_CUM = "Venire Selettivamente",
 	SEXACTION_SMLT_BLOWJOB = "Pomp. Simult.",
 	SEXACTION_SMLT_HANDJOB = "Sega Simult.",
+	SEXACTION_SMLT_NAIZURI = """Smlt. Naizuri""", # MISSING TRANSLATION
 	SEXACTION_SMLT_TITJOB = "Spagnola Simult.",
 	SEXACTION_SPANKING = "Sculacciata",
 	SEXACTION_SPIT_ROAST = "Spit-roast",
 	SEXACTION_SPIT_ROAST_ANAL = "Spit-roast Anale",
 	SEXACTION_SUBDUE = "Sottometti",
 	SEXACTION_TAILJOB = "Lavoretto con la coda",
+	SEXACTION_TEASING_WINDS = """Teasing Winds""", # MISSING TRANSLATION
 	SEXACTION_TITJOB = "Spagnola",
 	SEXACTION_TRIBADISM = "Tribadismo",
 	SEXACTION_VIBRATOR = "Vibratore",
@@ -6682,6 +6772,7 @@ La donna scompare con la stessa rapidità con cui è apparsa davanti a te, lasci
 	ENEMYOGRE_MAGE = "Mago Ogre",
 	ENEMYGRYPHON = "Grifone",
 	ENEMYELDER_GRYPHON_BOSS = "Anziano Grifone",
+	ENEMYTORNADO = """Tornado""", # MISSING TRANSLATION
 	ENEMYWOLF = "Lupo",
 	ENEMYRAT = "Ratto",
 	ENEMYSPIDER_WEAK = "Leccapiedi",
@@ -6724,11 +6815,19 @@ La donna scompare con la stessa rapidità con cui è apparsa davanti a te, lasci
 	ENEMYLILITH_BOSS_2 = "Ashmedai", #
 	ENEMYWHITE_STAG = "Cervo Bianco",
 	ENEMYWHITE_STAG_HUMAN = "Persona misteriosa",
+	ENEMYSMOTHERING_KUDZU = """Smothering Kudzu""", # MISSING TRANSLATION
+	ENEMYTHE_STRIDE = """The Stride""", # MISSING TRANSLATION
+	ENEMYTHE_SHELL = """The Shell""", # MISSING TRANSLATION
+	ENEMYTHE_TALON = """The Talon""", # MISSING TRANSLATION
 	ENEMYELF_SPECTER = "Spettro degli Elfi",
 	ENEMYELF_SOLDIER = "Soldato Elfico",
 	ENEMYDWARF_FIGHTER = "Combattente nano",
 	ENEMYDWARF_FIGHTER_ELITE = "Soldato nano d'élite",
 	ENEMYDWARF_RANGED = "Balestriere nano",
+	ENEMYDWARF_KING = """Dwarf King""", # MISSING TRANSLATION
+	ENEMYDWARVEN_SKIRMISHER = """Dwarf Skirmisher""", # MISSING TRANSLATION
+	ENEMYDWARVEN_SHIELDER = """Dwarf Shielder""", # MISSING TRANSLATION
+	ENEMYOBSIDIAN_GOLEM = """Obsidian Golem""", # MISSING TRANSLATION
 	ENEMYKURO = "Kuro", #
 	ENEMYERDYNA = "Erdyna", #
 	ENEMYNIXX = "Nixx", #
@@ -7112,6 +7211,8 @@ Flusso temporale""",
 	ACHIBONUS_ROOMS_DESC = "Inizia con le stanze potenziate al livello 1",
 	ACHIBONUS_LITERATE = "Letterato",
 	ACHIBONUS_LITERATE_DESC = "Inizi con il tratto Alfabetizzazione",
+	ACHIBONUS_ALL_RACES = """Cosmopolitan""", # MISSING TRANSLATION
+	ACHIBONUS_ALL_RACES_DESC = """Unlock all races during character creation regardless of their lore appropriateness. """, # MISSING TRANSLATION
 	INTRODIALOGUE = """Sono passati dodici anni da quando la monarchia è stata rovesciata nel Regno di Aliron. Libera dal regno precedente, la sua capitale Aliron è diventata un centro della società e della vita culturale, dando anche ai più bassi la possibilità di diventare una persona di potere e di influenza, ammesso che ne siano capaci... 
 
 Sei una delle persone che sono riuscite ad arrivare appena in tempo per assicurarsi una tenuta recentemente liberata dalla vecchia proprietà. L'unico problema è che il suo prezzo di vendita è al di là delle tue capacità. Non avendo altra opzione per iniziare una nuova vita, hai preso un prestito gigantesco per raggiungere il tuo obiettivo. Sei diventato proprietario di un piccolo pezzo di terra con sopra una villa fatiscente.""",
@@ -7835,6 +7936,10 @@ Procedere? (il file di salvataggio originale rimarrà inalterato, ma non funzion
 	TUTORIAL_COMBAT12 = "Il nuovo luogo apparirà nella barra di navigazione. Selezionalo per entrare.",
 	TUTORIAL_COMBAT13 = "Per assegnare personaggi al gruppo di combattimento, trascina i loro ritratti negli slot vuoti in basso.",
 	TUTORIAL_COMBAT14 = "La colonna destra è per i personaggi da mischia, mentre la sinistra è per quelli a distanza. I personaggi da mischia proteggono quelli a distanza dai danni da mischia. Se un personaggio da mischia è posizionato nella colonna posteriore, le sue abilità da mischia infliggeranno solo metà danno.",
+	TUTORIAL_COMBAT14_1 = """You can use some explorer spells. Open cast menu.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT14_2 = """Choose spells.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT14_3 = """Use it on appropriate target.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT14_4 = """Some spells and items can be used multiple times. To stop using them just click in some random place on screen, or click RMB (for this tutorial specifically).""", # MISSING TRANSLATION
 	TUTORIAL_COMBAT15 = "Clicca Procedi per iniziare la battaglia.",
 	TUTORIAL_COMBAT16 = "Questa missione può essere avviata da una finestra di dialogo.",
 	TUTORIAL_COMBAT17 = "Le battaglie avviate dal dialogo ti permettono di impostare e confermare il tuo gruppo nuovamente.",
@@ -8340,6 +8445,7 @@ La principessa nota che Aire si irrigidisce in risposta alla domanda.
 	TRAVEL_ALL_SELECTED = "tutti selezionati",
 	TRAVEL_MOVE_TO = "Muovi verso %s",
 	TRAVEL_RENAME = "Rinomina",
+	TRAVEL_GROUP_RENAME = """Rename""", # MISSING TRANSLATION
 	TRAVEL_MOVE_UP = "Avanza",
 	TRAVEL_MOVE_DOWN = "Scenditi",
 	SKILLPOISON_BITE = "Morso di veleno",
@@ -10345,6 +10451,8 @@ Spingi Anastasia sul pavimento e lei allarga le gambe per te. La monti e le infi
 	ITEMXARI_AMULETDESCRIPT = "Opera personale di Xari che ti è stata regalata per il tuo aiuto. Risplende del potere intriso del suo creatore.",
 	ITEMAMELIA_DRESS = "Vestito da serva di Amelia",
 	ITEMAMELIA_DRESSDESCRIPT = "Vecchio vestito che appartiene a uno dei capi del servitore. La sua eccezionale lavorazione artigianale non mostra alcun segno di stanchezza.",
+	ITEMNIXX_HEADGEAR = """Void Cape""", # MISSING TRANSLATION
+	ITEMNIXX_HEADGEARDESCRIPT = """An ethereal cape greatly improving waerer's magic resistance by redirecting the hostile magic into the other dimension.""", # MISSING TRANSLATION
 	ITEMAMENIXX_HEADGEAR = "Capo del Vuoto",
 	ITEMAMENIXX_HEADGEARDESCRIPT = "Un mantello etereo che migliora notevolmente la resistenza magica del waerer reindirizzando la magia ostile nell'altra dimensione.",
 	SCENEWIP = "Scusa! Questa scena è attualmente WIP. ",
@@ -11478,6 +11586,13 @@ Zephyra: — Sai cos'è un Artefatto? È un oggetto ricevuto dalla divinità, ch
 Zephyra: — Se me lo dici, allora non ti darò più fastidio.""",
 	ZEPHYRA_RECRUITMENT_3_3_OPTION_1 = "Sì, voglio che tu mi lasci in pace.",
 	ZEPHYRA_RECRUITMENT_3_3_OPTION_2 = "Ho cambiato idea.",
+	ZEPHYRA_RECRUITMENT_NOTE = """Zephyra leaves without another word. Only after she is gone do you notice a folded note left where she had been standing, as if she expected this outcome and prepared for it.
+
+The note is brief, but unusually direct for her. It warns that divine Artifacts can hold dangerous power even when they seem dormant, and that the sword once tied to the royal line was only one of them. If such relics are connected to the gods, then leaving them scattered for enemies to claim may be a mistake.
+
+One line mentions that the next closest lead points toward the elven lands.
+
+You are not sure how much of Zephyra's warning you trust. Still, powerful relics rarely stay irrelevant for long. It may be worth looking into them before someone worse does.""", # MISSING TRANSLATION
 	ZEPHYRA_RECRUITMENT_3_OPTION_1 = "Potrebbe esserci un problema con questo...",
 	ZEPHYRA_RECRUITMENT_3_OPTION_2 = "Questa spada non è più in nostro possesso.",
 	ZEPHYRA_RECRUITMENT_4 = """Spieghi a Zephyra cosa è successo durante i primi giorni della guerra civile.
@@ -12876,6 +12991,9 @@ Si nota come Cali abbia leggermente abbassato la voce, le mani che scivolavano d
 	CALI_SEX_5_1 = """Cali ti fa un piccolo broncio ma si trattiene dal protestare.
 
 {color=yellow|— Vedo, beh, un'altra volta, allora.}""",
+	CALI_SEX_5_2 = """Cali gives a quiet nod, the excitement gone from her face. She seems to understand this time that the answer won't change.
+
+{color=yellow|— ...I see. I'm sorry for bothering you, [Master]. I won't bring it up again.}""", # MISSING TRANSLATION
 	CALI_SEX_6 = """Porgi i soldi a Cali e dopo pochi istanti lei torna con un vassoio di gnocchi. L'odore è esattamente come ha detto. Passendoli agli altri servitori, presto si siede accanto a te dopo averne consegnato uno anche a te. 
 
 Voi due mangiate in silenzio mentre rimuginate sul dolcetto. Caldo, morbido e sapientemente cucinato, rifletti per qualche istante su come uscire da solo e vedere se tu e il mercante riuscite a raggiungere un accordo sulle consegne di queste prelibatezze.""",
@@ -17695,6 +17813,14 @@ Dopo aver sentito l'innocente proposta di Zephyra, Kuro fa un sorrisetto freddo.
 {color=yellow|Kuro: — Questo è un motivo più forte per me per prendermi cura di lui proprio qui.}
 
 {color=yellow|Zephyra: — ...Giusto, non ci ho pensato. Scusa, [name], immagino che dovremo dare una lezione a Kuro.}""",
+	KURO_BOSSFIGHT_BANTER_1 = """
+Zephyra: Let's not be hasty now, sis~
+""", # MISSING TRANSLATION
+	KURO_BOSSFIGHT_BANTER_2 = """
+Kuro loses Fading Light due to Zephyra's prank!
+""", # MISSING TRANSLATION
+	KURO_BOSSFIGHT_BANTER_3 = """
+Kuro: Stop. That.""", # MISSING TRANSLATION
 	COALBASE_ATTACK_AFTER_FIGHT = """Mentre l'ultimo soldato nano viene messo fuori combattimento, Kuro è ancora in piedi, anche se visibilmente esausto.
 
 {color=yellow|Kuro: — Ha-ah... Sei così fastidioso. Va bene, hai vinto questa battaglia, non sono adatto a questo tipo di rissa...}
@@ -26555,6 +26681,8 @@ She forcefully shakes her head.
 {color=yellow|Lira: — Ah, it doesn't matter now! I saw you fight before, you can deal with them, right? I'll help!}""", # TRANSLATE
 	LIRA_QUEST_1_FIGHT_PLAN = """I centopiedi continuano a girare sempre più vicini mentre Lira si mantiene ferma al tuo fianco, aspettando di sentire come vuoi gestire il combattimento.""",
 	LIRA_QUEST_1_FIGHT_READY = "{color=yellow|Lira: — Capito!}",
+	LIRA_QUEST_1_FIGHT_AFTERMATH = """Together you slay the aggressive beasts.
+""", # MISSING TRANSLATION
 	LIRA_QUEST_1_DEPENDENCY_FIGHT_AFTERMATH = """Together you slay the aggressive beasts.
 
 After the fight, Lira looks down at her hands, which shimmer with a faint green glow.
@@ -26627,13 +26755,37 @@ She sets it down carefully. Her hand hovers over the wooden brush.
 The two of you make your way back to the road, leaving the quiet grove behind.""", # TRANSLATE
 	LIRA_QUEST_1_OPTION_KNOCK_ON_THE_DOOR = "Bussa alla porta",
 	LIRA_QUEST_1_OPTION_WALK_INTO_HER_ROOM = "Entra nella sua stanza",
+	LIRA_QUEST_1_ROOM_ENTRY_1 = """A couple of moments after you knock, she opens the door. As she sees you, her eyes open wide, but she quickly tries to regain her composure and bows her head.
+	""", # MISSING TRANSLATION
+	LIRA_QUEST_1_ROOM_ENTRY_2 = """You barge in unannounced, making Lira jump up from her seat. She quickly hides a small elven prayer bead and stands up, facing you briefly before bowing her head.
+	""", # MISSING TRANSLATION
+	LIRA_QUEST_1_ROOM_ENTRY_3 = """{color=yellow|Lira: — Ah, greeting, [master]! Apologies, I was not expecting you... I mean, how can I be of service?}""", # MISSING TRANSLATION
 	LIRA_QUEST_1_OPTION_ARE_YOU_BUSY = "Sei impegnata? Cosa stavi facendo?",
 	LIRA_QUEST_1_OPTION_HOW_DO_SERVANTS_TREAT_YOU = "Come ti trattano gli altri servi?",
 	LIRA_QUEST_1_OPTION_YOU_SEEM_TO_WATCH_ME = "Sembri osservarmi attentamente, eppure non inizi mai una conversazione. Perché? Cosa hai in mente?",
 	LIRA_QUEST_1_OPTION_FEEL_FREE_TO_SHARE = "Sentiti libera di condividere i tuoi pensieri, ti ascolto",
 	LIRA_QUEST_1_OPTION_DONT_WORRY_I_UNDERSTAND = "Non preoccuparti, capisco. Quindi cosa desideri?",
+	LIRA_QUEST_1_WATCH_REASON_FOLLOWUP_1 = """{color=yellow|Lira: — Oh!... Okay! I was just trying to say that I spent most of my life preparing for the path of a priestess, so it's hard for me to just forget all of that and become a proper... well, slave.}
+
+{color=yellow|Lira: — I tried to look at what others do, but they also behave very differently from one another. That's why I was contemplating just asking you directly, and I guess now is the time...}""", # MISSING TRANSLATION
+	LIRA_QUEST_1_WATCH_REASON_FOLLOWUP_2 = """She nods, then pauses briefly before asking directly.
+""", # MISSING TRANSLATION
+	LIRA_QUEST_1_WATCH_REASON_FOLLOWUP_3 = """{color=yellow|Lira: — Can you please tell me what you expect from me? Who am I supposed to be?}
+
+{color=redConsidering that she's here all alone and you're the only person she truly knows outside the elf kingdom, your answer will clearly carry significant weight in how she begins to see her future.}""", # MISSING TRANSLATION
 	LIRA_QUEST_1_OPTION_SERVE_AS_YOU_SERVED_FREYA = "Dovresti servirmi con la stessa devozione con cui servivi Freya. È il senso dell'essere una schiava, no?",
 	LIRA_QUEST_1_OPTION_WHAT_WOULD_YOU_WANT = "Formalmente sei la mia schiava, ma non impongo restrizioni rigide. Quindi ti chiedo, cosa vorresti?",
+	LIRA_QUEST_1_EXPECTATIONS_ANSWER_1 = """Lira takes a couple of moments to think silently, then nods.
+
+{color=yellow|Lira: — I guess this is the only answer. You are the one who saved my life, after all, so I shall repay your kindness. I will need some time to adjust, but I promise to do my best to serve you, [master].}
+""", # MISSING TRANSLATION
+	LIRA_QUEST_1_EXPECTATIONS_ANSWER_2 = """For a moment, she just stares at you, blinking. Then something in her expression softens, and you see a tentative smile begin to form.
+
+{color=yellow|Lira: — This... this is the first time someone has asked me this question. I'll need to think about it, but in the meantime, I promise to do my best to serve you, [master].}
+""", # MISSING TRANSLATION
+	LIRA_QUEST_1_EXPECTATIONS_ANSWER_3 = """After that matter is settled, Lira asks a few more questions about her household duties. Once she has her answers, she seems about to leave, but hesitates, as if struck by a thought. She turns back to you.
+
+{color=yellow|Lira: — [master]... it may be bold of me, but may I ask you for a favor?}""", # MISSING TRANSLATION
 	LIRA_QUEST_1_OPTION_OF_COURSE_WHAT_IS_IT = "Certo, di che si tratta?",
 	LIRA_QUEST_1_OPTION_HOPEFULLY_NOT_TOO_BOTHERSOME = "Spero non sia troppo fastidioso",
 	LIRA_QUEST_1_OPTION_FINE_LETS_GO = "Va bene, andiamo. Devo dimostrare di essere un buon padrone per le mie schiave obbedienti.",

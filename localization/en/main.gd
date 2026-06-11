@@ -376,6 +376,7 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	REQCONFLICTCLASS = "Conflicting Class",
 	REQHASANYCLASS = "Has any of Classes",
 	REQRACE = "Race",
+	REQCONFLICTRACE = "Conflicting Race",
 	REQRACEISBEAST = "Only for Bestial races",
 	REQMUSTHAVEGEAR = "Must have",
 	REQMUSTHAVEGEAR_FALSE = "Must not have",
@@ -1826,7 +1827,7 @@ Improves disposition towards {color=yellow|Social} actions.""",
 	ACTIONPUBLICUSEDESCRIPT = """Place [name] in stockade having [him] serve a glory hole.
 Improves disposition towards {color=yellow|Positive and Humiliation} actions.""",
 	ACTIONMINDREAD = "Mind Read",
-	ACTIONMINDREADDESCRIPT = "Cast Mind Read on [name], potentially learning [his] strong and weak spots. Costs 5 Mana. ",
+	ACTIONMINDREADDESCRIPT = "Cast Mind Read on [name], potentially learning [his] strong and weak spots. Costs 3 Mana. ",
 	ACTIONMINDREADDESCRIPTMASTERY = "Training Action: Allows you to cast Mind Read on trainee, potentially learning their strong and weak spots.",
 	ACTIONINFLUENCE = "Influence",
 	ACTIONINFLUENCEDESCRIPT = """Use magic to influence [name]'s mind making [him] accept [his] role as a slave.
@@ -2770,7 +2771,7 @@ Spell Mana cost reduced by 15%
 	HEALERSLAVETRAITDESCRIPT = "Healing Efficiency: {color=green|+2%}",
 	MANAGERSLAVETRAITDESCRIPT = "Loyalty from skills: {color=green|+3%}",
 	INFOHOLDSHIFT = "Hold shift for details",
-	STATGROWTH_FACTORDESCRIPT = """Growth is character's affinity to getting stronger. As character acquire more classes all their stats increase. Non-slave characters will also gain Universal Mastery Points. Every point of growth increases the number of classes which will increase its stats. It also greatly affects character's Value.
+	STATGROWTH_FACTORDESCRIPT = """Growth is character's affinity to getting stronger. As character acquire more classes all their stats increase. Non-slave characters will also gain Universal Mastery Points. Every point of growth increasesde amount of classes that will raise character stats. It also greatly affects character's Value.
 
 {color=green|Affected stats are: Productivity, Physics, Wits, Charm, Max Health, Max Mana, Speed, Hitrate, Evasion, ATK, MATK, DEF, MDEF.} """,
 	STATPHYSICS_FACTORDESCRIPT = """{color=yellow|Physics factor} represents physical potential of the character. It increases [color=aqua]Physical[/color] growth and influences melee combat.
@@ -4010,7 +4011,7 @@ Requires: Sex:Advanced""",
 	TRAITTRAINING_OBEDIENCE = "Obedience",
 	TRAITTRAINING_OBEDIENCEDESCRIPT = "Make [name] give up on [his] autonomy, which will allow to freely sell or give [him] away.",
 	TRAITTRAINING_CALLMASTER = "Master Acknowledgement",
-	TRAITTRAINING_CALLMASTERDESCRIPT = """Demand [name] of [his] unwavering loyalty to you.
+	TRAITTRAINING_CALLMASTERDESCRIPT = """Demand [name]'s unwavering loyalty to you.
 	 
 {color=yellow|Allows to finish training and provide [him] with specilization.}""",
 	TRAITTRAINING_RELATION = "Relationship",
@@ -4129,7 +4130,7 @@ Increased Health, DEF and MDEF""",
 	TRAITEFFECTFAVFOOD = "Favorite Food: +5%% Productivity, +5%% Experience Gain",
 	TRAITEFFECTHATEDFOOD = "Hated Food: -10%% Productivity",
 	TRAITEFFECTSTARVE = "Starvation: -50%% Productivity, -50%% Damage",
-	TRAITEFFECTGRAVEINJ = "Grave Injury: -25%% Productivity, -50 Sexuals. Can't participate in Combat",
+	TRAITEFFECTGRAVEINJ = "Grave Injury: -25%% Productivity. Can't participate in Combat",
 	TRAITEFFECTINJ = "Injury: -30%% Max HP, -20 Hitrate.",
 	TRAITEFFECTDISCIPLINE = "Discipline: +50%% Labor and craft efficiencies",
 	TRAITEFFECTSEDUCE = "Seduce: -7 Obedience drain",
@@ -5183,9 +5184,9 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	TRAITREFRESHING_PULSE = "Refreshing Pulse",
 	TRAITTEASING_WINDS = "Teasing Winds",
 	TRAITDARK_RAPTURE = "Dark Rapture",
-	SEXSKILLSDESCRIPT = """Sex skills improve character's performance while interacting and affect the Sexuals stat. Higher Sex Skill will make a partner more aroused from Character's actions.
+	SEXSKILLSDESCRIPT = """Sex skills improve character's performance while interacting and affect protstitution performance. 
 
-Sex skills are increased when performing related action and their growth is dependent on Sex Factor.""",
+Sex skills are obtained during sex minigame during encouragement mechanic. Sex Factor makes it easier to trigger.""",
 	SEXSKILLORAL = "Oral",
 	SEXSKILLANAL = "Anal",
 	SEXSKILLPETTING = "Petting",
@@ -8178,7 +8179,7 @@ At the bottom left you can select items, unlock new classes and configure additi
 	TUTORIAL_LOCATIONS_RESOURCES = "Other locations allow to gather resources presented on them. Settlement type locations allow to gather resources infinitely, but have a limit on how many characters can gather it at once. Combat locations allow to gather a limited amount of resources after they've been cleared. ",
 	TUTORIAL_TATTOO_1 = "Once you've unlocked Beauty Parlor, you can apply tattoos to your characters. Tattoos provide permanent bonuses and require ink crafted at Alchemy tab. To access Tattoo menu use the corresponding button at inventory screen.",
 	TUTORIAL_TATTOO_2 = "Each tattoo type has certain bonuses, require special ink and apply to only selected bodyparts. Some might also have additional requirements. Tattoos can be removed or replaced but the ink is not refunded.",
-	TUTORIAL_BREAKDOWN_1 = "Breakdown tutorial placeholder",
+	TUTORIAL_BREAKDOWN_1 = "Some actions can led to a character suffering a breakdown. They will get better with time but until then they can't be controlled.",
 	TRAVELINGTUTORIAL1 = "This is the world map. At the left side you can select locations to travel to. On the right side selected location info will be shown. Click \"Send\" to send your characters to another location. ",
 	TRAVELINGTUTORIAL2 = "After selecting send, select location with characters who will travel. In bottom row you can select who exactly will travel. Travelling will take some time for characters to reach new location. ",
 	JOBTUTORIAL1 = "At Occupations you can assign characters to various tasks which can be seen near the location image. At the top you can select other locations you have characters at.",
@@ -8391,9 +8392,9 @@ Time Flow""",
 	ACHIEVEMENT_ITEM_HOLYSWORD_NAME = "Sword from the stone",
 	ACHIEVEMENT_ITEM_HOLYSWORD_DESC = "Got Sword from the stone",
 	ACHIEVEMENT_ITEM_HOLYSWORD_HINT = "Get Sword from the stone",
-	ACHIEVEMENT_METEORITE_NAME = "Meteorite quest",
-	ACHIEVEMENT_METEORITE_DESC = "Meteorite quest completed",
-	ACHIEVEMENT_METEORITE_HINT = "Complete meteorite quest",
+	ACHIEVEMENT_METEORITE_NAME = "Fallen Star",
+	ACHIEVEMENT_METEORITE_DESC = "Complete Fallen Star quest",
+	ACHIEVEMENT_METEORITE_HINT = "Complet Fallen Star quest",
 	ACHIEVEMENT_RESET_ASK = "Are you sure you want to reset ALL achievements progress?",
 	ACHIGROUP_WEDDING_NAME = "Wedding",
 	ACHIGROUP_WEDDING_DESC = "Marry each unique character",
@@ -8893,7 +8894,7 @@ Lust satisfied, you look at her lying there exhausted, broken and defenceless on
 	MAGESELECTION2REPLY2 = "Why would your sister not live here?",
 	MAGESELECTION3_1 = "{color=yellow|— No... Maybe. Do what you want, I guess... Actually, no, don't harm her. }",
 	MAGESELECTION3_2 = "{color=yellow|— She hates crowds and is not fond of surface cities, I guess. Can't say I'm much different, just more resilient. Things aren't so bad around the Mages Guild. }",
-	MAGESELECTION3_ANY = "Relatives always make things complicated. I'll give you a letter of invitation with the list of things to get from her.",
+	MAGESELECTION3_ANY = "{color=yellow|Relatives always make things complicated. I'll give you a letter of invitation with the list of things to get from her.}",
 	XARIENCOUNTER1 = """Before you are able to look inside the hut, which looks more like a cave, a young, excited dark elf girl comes to you.
 
 {color=yellow|— A guest! I haven't had any bandits visit me for a long time. Do you want to burn in fire or be eaten by trolls?}""",
@@ -9692,7 +9693,8 @@ The princess notices Aire tensing up in response to the question.
 	TRAVEL_ADD_GROUP = "New group",
 	TRAVEL_ALL_SELECTED = "all selected",
 	TRAVEL_MOVE_TO = "Move to %s",
-	TRAVEL_RENAME = "Rename",
+	TRAVEL_RENAME = "Setting",
+	TRAVEL_GROUP_RENAME = "Rename",
 	TRAVEL_MOVE_UP = "Move up",
 	TRAVEL_MOVE_DOWN = "Move down",
 	SKILLPOISON_BITE = "Poison Bite",
@@ -12831,6 +12833,13 @@ Zephyra: — Do you know what an Artifact is? It's an item received from deity, 
 Zephyra: — If you tell me, I won't be bothering you anymore then.}""",
 	ZEPHYRA_RECRUITMENT_3_3_OPTION_1 = "Yes, I want you to leave me alone.",
 	ZEPHYRA_RECRUITMENT_3_3_OPTION_2 = "I've changed my mind.",
+	ZEPHYRA_RECRUITMENT_NOTE = """Zephyra leaves without another word. Only after she is gone do you notice a folded note left where she had been standing, as if she expected this outcome and prepared for it.
+
+The note is brief, but unusually direct for her. It warns that divine Artifacts can hold dangerous power even when they seem dormant, and that the sword once tied to the royal line was only one of them. If such relics are connected to the gods, then leaving them scattered for enemies to claim may be a mistake.
+
+One line mentions that the next closest lead points toward the elven lands.
+
+You are not sure how much of Zephyra's warning you trust. Still, powerful relics rarely stay irrelevant for long. It may be worth looking into them before someone worse does.""",
 	ZEPHYRA_RECRUITMENT_3_OPTION_1 = "There might be a problem with this...",
 	ZEPHYRA_RECRUITMENT_3_OPTION_2 = "This sword is no longer in our possession.",
 	ZEPHYRA_RECRUITMENT_4 = """You explain to Zephyra what has happened during the earlier days of civil war.
@@ -13088,7 +13097,7 @@ As you try to sneak by the patrols, you trip on a tree root and fall on the grou
 {color=yellow|— I wonder if that's really some kind of fate that we...}""",
 	PRE_RITUAL_6_OPTION_1 = "I'm glad you are safe.",
 	PRE_RITUAL_6_OPTION_2 = "You should be more careful.",
-	PRE_RITUAL_6_OPTION_3 = "[Sexuals] I think you could thank me for this.",
+	PRE_RITUAL_6_OPTION_3 = "[Sex Factor] I think you could thank me for this.",
 	PRE_RITUAL_6_OPTION_4 = "Don't mention it.",
 	PRE_RITUAL_7_1AND2AND4 = "{color=yellow|— Y-yes. I'm really grateful. Now, I gotta collect the herbs we need again before we return, if you don't mind.}",
 	PRE_RITUAL_7_1AND2AND4_BAD = """{color=red|Failure}
@@ -15924,7 +15933,7 @@ Saying this, he leaves.
 
 Zephyra nods in agreement to your statement.
 
-{color=yellow|Zephyra: — Men of your moral conviction are a rare breed these days. Aren't I lucky to find you? He-he.""",
+{color=yellow|Zephyra: — Men of your moral conviction are a rare breed these days. Aren't I lucky to find you? He-he.}""",
 	ZEPHYRA_QUEST_10_3 = "{color=yellow|Zephyra: — Eeh? Are you too scared of your own wandering mind? Or perhaps just too simpleminded? Well, I don't blame you, this is a perfectly normal way to see things for many after all. There's a certain charm in it too...}",
 	ZEPHYRA_QUEST_11 = """Finally Ginny returns back to the church. After Zephyra gives her a retelling of today's events, she thanks the both of you.
 
@@ -20444,7 +20453,7 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	ANASTASIA_QUEST_STAGE11 = "Deal with Fort Defenders.",
 	ANASTASIA_QUEST_STAGE12 = "Deal with Reyan",
 	ANASTASIA_QUEST_STAGE13 = "Return to Duncan",
-	METEORITE_QUEST_NAME = "Meteorite Quest",
+	METEORITE_QUEST_NAME = "Fallen Star",
 	METEORITE_QUEST_SUMMARY = "A star fell not too far from elven forests. Druid Lorien wants you to investigate.",
 	METEORITE_QUEST_CHECK_OUT = "Check out fallen star",
 	METEORITE_QUEST_RETURN_METEOR = "Get back to Lorien",

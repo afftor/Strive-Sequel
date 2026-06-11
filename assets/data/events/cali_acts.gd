@@ -161,7 +161,7 @@ var data = {
 	},
 	
 	cali_act2_limnrov = {
-		image = null, tags = ['dialogue_scene'],
+		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
 		text = [{text = "CALI_ACT2_LIMNROV", reqs = []}],
 		options = [ {
@@ -668,7 +668,7 @@ var data = {
 	},
 	
 	cali_act4_merchant_2_1 = {
-		image = null, tags = ['dialogue_scene'],
+		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
 		text = [{text = "CALI_ACT4_MERCHANT_2_1", reqs = []}],
 		options = [ {
