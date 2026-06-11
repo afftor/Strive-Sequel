@@ -373,7 +373,7 @@ var data = {
 			{
 				code = 'lira_quest2_lira_shooting', 
 				text = "LIRA_QUEST2_OPTION_HEY_TRY_WIN_SOMETHING", 
-				reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+				reqs = [], dialogue_argument = 1, type = 'next_dialogue', master_translate = true,
 				bonus_effects = [{code = 'dialogue_counter', name = 'df_balance', op = '+'}]
 			},
 			{
@@ -798,7 +798,7 @@ var data = {
 		reqs = [],
 		text = "LIRA_QUEST2_LIRA_HUH_WANT_WEAR_EYES",
 		options = [
-			{code = 'lira_quest2_costume_dep_speech1', text = "LIRA_QUEST2_OPTION_WORRY_SOMEONE_ELSES_OPINION_SHOULDNT_FOCUS", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			{code = 'lira_quest2_costume_dep_speech1', text = "LIRA_QUEST2_OPTION_WORRY_SOMEONE_ELSES_OPINION_SHOULDNT_FOCUS", reqs = [], dialogue_argument = 1, type = 'next_dialogue', master_translate = true,
 				bonus_effects = [
 					{code = 'dialogue_counter', name = 'df_balance', op = '+'},
 					{code = 'dialogue_counter', name = 'df_balance', op = '+'},
