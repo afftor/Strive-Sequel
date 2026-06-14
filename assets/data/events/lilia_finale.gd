@@ -1786,7 +1786,7 @@ var data = {
 			},
 			{
 				code = "quest_fight",
-				text = "DIALOGUEFIGHT",
+				text = "DIALOGUEFIGHTOPTION",
 				reqs = [
 					{
 						type = "master_check",

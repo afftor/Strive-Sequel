@@ -17147,6 +17147,15 @@ Mientras se da la vuelta, de repente, numerosos cultistas irrumpen en la habitac
 Sin embargo, Kuro no se ve obstaculizado por esto. Un destello azul cegador estalla desde la máquina dejando a todos aturdidos mientras Kuro se protege con sus poderes. Rápidamente recupera las escamas ahora restauradas de la máquina y se dirige a la salida.
 
 El Rey: — Ustedes dos... ¡Traidores! ¡Guardias! ¡Maten a todos!""",
+	DWARF_CEREMONY_PEAK_COAL_BOSS = """The charging of scales reaches its peak as the ring you've gotten from Bolthar starts vibrating. At the crucial moment, coalition forces flood the room through the amplified portal technique, blades drawn and banners raised against the throne.
+
+The blue flash erupts before anyone can seize the machine. Kuro shields herself with her powers, snatches the restored scales from the sliding section, and slips toward the exit while the hall reels around her.
+
+{color=yellow|The King: — You... You brought them into my own hall? After everything I offered you?}
+
+The King shoves past his guards, the restored machine still crackling behind him. Rage burns through his voice as the old royal authority settles over the room like a hammer about to fall.
+
+{color=yellow|The King: — Then let every traitor see the price of raising a hand against dwarven royalty. I will break this coalition myself!}""", # MISSING TRANSLATION
 	DWARF_CEREMONY_OPT_CHASE = "[Dexterity challenge] Persigue a Kuro",
 	DWARF_CEREMONY_OPT_FIGHT = "Luchar",
 	DWARF_CEREMONY_REPLY_CHASE = """{color=green|Éxito}

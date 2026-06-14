@@ -19382,7 +19382,6 @@ However, Kuro is unhindered by this. As a blinding blue flash erupts from the ma
 
 {color=yellow|The King: — You two... Betrayers! Guards! Kill everyone!}""",
 	DWARF_CEREMONY_OPT_CHASE = "[Dexterity challenge] Chase after Kuro",
-	DWARF_CEREMONY_OPT_FIGHT = "Fight",
 	DWARF_CEREMONY_REPLY_CHASE = """{color=green|Success}
 
 You skillfully push through the chaos following Kuro's steps out of the palace.""",
@@ -19413,7 +19412,13 @@ As she turns away, a group of coalition troops laying in the hiding who were jus
 {color=yellow|The King: — That bitch even sided with the coalition behind my back! Take them out and get her!}""",
 	DWARF_CEREMONY_CAUGHTUP_CULT = """
 
-As she turns away, a group of cultists join the street blocking you from going after her.""",
+As Kuro turns away, the King steps forward instead of sending another line of guards. The fight in the palace has left soot across his armor, but the fury in his eyes has only sharpened.
+
+{color=yellow|The King: — You think I will let thieves, cultists and coalition oathbreakers tear my kingdom apart while I watch from behind a shield wall?}
+
+He raises his weapon, and the dwarves behind him fall back at once.
+
+{color=yellow|The King: — No. I will end this insult myself.}""",
 	KURO_RESOLUTION_INTRO = """You make your way to the nearby caves chasing after Kuro carrying the artifact. By going through unconventional paths soon you arrive in a desolated area.
 
 Everything apparently has been prepared beforehand as you spot Kuro standing in the middle of the ritual circle opening the portal. On a much larger perimeter the area is blocked out by a semi-transparent barrier not unlike one you've encountered at Millford, however this one is much darker.""",
@@ -24701,7 +24706,7 @@ You exchange a glance with Jean before both of you head toward the noise.""",
 	JEAN_SIDEQUEST_MANSION_WINDOW_NOISE_2 = """Before you, several guardian golems are steadily cornering a woman wielding an axe. She fights back stubbornly, but her movements are growing increasingly desperate. Jean gives you a worried look.
 
 {color=yellow|Jean: — What should we do? Looks like she triggered a defensive trap. They won't just leave her alone.}""",
-	JEAN_SIDEQUEST_MANSION_HELP_OPTION = "Let's help her.",
+	JEAN_SIDEQUEST_MANSION_HELP_OPTION = "Let's help her. *Attack*",
 	JEAN_SIDEQUEST_MANSION_WAIT_OPTION = "Let's wait a bit more.",
 	JEAN_SIDEQUEST_MANSION_WAIT_FIGHT = """You pull back slightly, watching. The stranger ducks and weaves, narrowly avoiding crushing blows, but her movements gradually get frantic and inefficient. It's clear that without help, she won't last much longer.
 
