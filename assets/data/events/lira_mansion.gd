@@ -1,16 +1,11 @@
 extends Reference
 var data = {
-	
 	lira_mansion_1 = {
 		image = null,
 		music = "lira_theme",
-		unlocked_gallery_seq = "lira_mansion",
-		save_scene_to_gallery = true,
-		tags = ['dialogue_scene', 'master_translate'],
+		tags = ['dialogue_scene'],
 		reqs = [],
-		text = [
-			{text = "LIRA_MANSION_1", reqs = []},
-		],
+		text = "LIRA_MANSION_1",
 		options = [
 			{
 				code = 'lira_mansion_2',
@@ -25,9 +20,7 @@ var data = {
 		image = null,
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
-		text = [
-			{text = "LIRA_MANSION_2", reqs = []},
-		],
+		text = "LIRA_MANSION_2",
 		options = [
 			{
 				code = 'lira_mansion_3',
@@ -40,11 +33,9 @@ var data = {
 	},
 	lira_mansion_3 = {
 		image = null,
-		tags = ['dialogue_scene', 'master_translate'],
+		tags = ['dialogue_scene'],
 		reqs = [],
-		text = [
-			{text = "LIRA_MANSION_3", reqs = []},
-		],
+		text = "LIRA_MANSION_3",
 		options = [
 			{
 				code = 'lira_mansion_4',
@@ -66,11 +57,12 @@ var data = {
 	},
 	lira_mansion_4 = {
 		image = null,
-		tags = ['dialogue_scene', 'master_translate'],
+		tags = ['dialogue_scene'],
 		reqs = [],
 		custom_background = "lira_sex_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		unlocked_gallery_seq = "lira_mansion",
 		common_effects = [{code = 'unique_character_changes', value = 'lira', args = [
 			{code = 'tag', operant = 'remove', value = 'no_sex'}]}],
 		text = [
@@ -90,14 +82,13 @@ var data = {
 	},
 	lira_mansion_5 = {
 		image = null,
-		tags = ['dialogue_scene', 'master_translate'],
+		tags = ['dialogue_scene'],
 		reqs = [],
 		music = "intimate_dark",
 		custom_background = "lira_sex_1",
 		scene_type = "ero_scene",
-		text = [
-			{text = "LIRA_MANSION_5", reqs = []},
-		],
+		save_scene_to_gallery = true,
+		text = "LIRA_MANSION_5",
 		options = [
 			{
 				code = 'lira_mansion_6',
@@ -110,14 +101,12 @@ var data = {
 	},
 	lira_mansion_6 = {
 		image = null,
-		tags = ['dialogue_scene', 'master_translate'],
+		tags = ['dialogue_scene'],
 		reqs = [],
 		custom_background = "lira_sex_2",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		text = [
-			{text = "LIRA_MANSION_6", reqs = []},
-		],
+		text = "LIRA_MANSION_6", 
 		options = [
 			{
 				code = 'lira_mansion_7',
@@ -134,9 +123,8 @@ var data = {
 		reqs = [],
 		custom_background = "lira_sex_2",
 		scene_type = "ero_scene",
-		text = [
-			{text = "LIRA_MANSION_7", reqs = []},
-		],
+		save_scene_to_gallery = true,
+		text = "LIRA_MANSION_7", 
 		options = [
 			{
 				code = 'lira_mansion_8',
@@ -149,14 +137,12 @@ var data = {
 	},
 	lira_mansion_8 = {
 		image = null,
-		tags = ['dialogue_scene', 'master_translate'],
+		tags = ['dialogue_scene'],
 		reqs = [],
 		custom_background = "lira_sex_3",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		text = [
-			{text = "LIRA_MANSION_8", reqs = []},
-		],
+		text = "LIRA_MANSION_8", 
 		options = [
 			{
 				code = 'lira_mansion_9',
@@ -173,9 +159,7 @@ var data = {
 		character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
-		text = [
-			{text = "LIRA_MANSION_9", reqs = []},
-		],
+		text = "LIRA_MANSION_9", 
 		options = [
 			{
 				code = 'close',

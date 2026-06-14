@@ -15237,7 +15237,7 @@ Heleviel repeated her mantra between gasping and choked breaths, her eyes glazed
 {color=yellow|Lira: — W-where are we going?}
 
 
-Lira asks you as she continues to try to hide herself, occasionally taking frightened looks around now, her eyes tracking every bit of movement intently as if some monster hid around every corner. You stop her finally in front of a hand carved wooden door, intricate in its design as she stops to stare at it.  """,
+Lira asks you as she continues to try to hide herself, occasionally taking frightened looks around now, her eyes tracking every bit of movement intently as if some monster hid around every corner. You stop her finally in front of a hand carved wooden door, intricate in its design as she stops to stare at it. """,
 	LIRA_MANSION_2 = """You move in behind her soon, your hand resting on her neck as she instantly seizes, starting to shake like a frightened rabbit. Her throat clenches a few times, her hips squirming as she seems ready to try to fight, to bolt at any moment, before she notices more than a few of your servants stop what they're doing as you hold her there, her face turning blood red. Turning her easily, she soon is facing the group of onlookers.
 
 {color=yellow|Lira: — Wh-what are you doing!? I-I'm not...}
@@ -27302,7 +27302,7 @@ After getting what little information they had to offer, you leave the temple. T
 
 She lowers her gaze slightly, her hands resting in her lap.
 
-{color=yellow|Lira: — It's just that at the time, you know, I didn't want to feel different from others, so I didn't delve into this. It would feel weird to know that I was a slave once…}""",
+{color=yellow|Lira: — It's just that at the time, you know, I didn't want to feel different from others, so I didn't delve into this. It would feel weird to know that I was a slave once...}""",
 	LIRA_QUEST3_REPORT_LIRA_3 = """She smirks suddenly.
 
 {color=yellow|Lira: — Though I guess now it doesn't matter as much, huh.}
@@ -27319,22 +27319,22 @@ Then she looks back at you, more focused now.
 She hesitates for a moment, clearly confused, but her training, or perhaps her trust, wins out.""",
 	LIRA_QUEST3_REPORT_LIRA_5 = """She rises, brushing the dirt from her skirt, and falls into step behind you.
 
-{color=yellow|Lira: — O-okay… I'll follow.}""",
+{color=yellow|Lira: — O-okay... I'll follow.}""",
 	LIRA_QUEST3_TRADER_1 = """The familiar noise of the marketplace greets you as usual. Merchants shouting, coins clinking, the endless shuffle of feet on worn cobblestones doesn't distract you in the slightest at this point, and so you quickly find the man you're looking for.
 
 The local slave trader operates openly near the edge of the square, his wares displayed with the same care as any other merchant. Chains and collars hang from hooks, and a handful of slaves sit quietly in a pen behind him, their eyes lowered.
 
 He glances up as you approach, his expression shifting quickly into a practiced smile.
 
-{color=aqua|Trader: — Well now… what can I do for you today? Looking for something specific? I just got a new shipment in, so you've got plenty of choice!}""",
+{color=aqua|Trader: — Well now... what can I do for you today? Looking for something specific? I just got a new shipment in, so you've got plenty of choice!}""",
 	LIRA_QUEST3_TRADER_OPTION_1 = "Not today. I'm here to inquire about a deal you made in the past",
 	LIRA_QUEST3_TRADER_OPTION_2 = "Do you remember the tribal elven child you sold to other elves fifteen years ago?",
 	LIRA_QUEST3_TRADER_2 = """The trader raises his eyebrows as you explain your request, but years of experience taught him not to question clients, so he simply asks you to wait for a bit.
 
-{color=aqua|Trader: — One moment, one moment… My memory isn't that great to remember every deal I ever had, but the paper remembers everything. Fifteen years, you say? Then it should be this ledger… Let's see…}
+{color=aqua|Trader: — One moment, one moment... My memory isn't that great to remember every deal I ever had, but the paper remembers everything. Fifteen years, you say? Then it should be this ledger... Let's see...}
 
 He pulls the thick ledger from beneath the counter and begins to flip through the pages, his finger tracing faded ink. After a couple of minutes it finally stops on a small line of text.""",
-	LIRA_QUEST3_TRADER_3 = """{color=aqua|Trader: — Huh. Well, would you look at that, you were correct, I did have such a deal… Oh, right, right, I remember now! Some elves decided to play heroes and were throwing gold at anyone with long ears, so I sold an entire stock that day, even including the defective ones!}
+	LIRA_QUEST3_TRADER_3 = """{color=aqua|Trader: — Huh. Well, would you look at that, you were correct, I did have such a deal... Oh, right, right, I remember now! Some elves decided to play heroes and were throwing gold at anyone with long ears, so I sold an entire stock that day, even including the defective ones!}
 
 Lira, who was quietly listening, couldn't stop herself from bursting with questions.
 
@@ -27356,34 +27356,34 @@ Lira stiffens slightly beside you, but says nothing.""",
 
 He looks her up and down.
 
-{color=aqua|Trader: — And also turned out to be quite a charming little thing, eh? Oh well, who knew it would turn out like that… Not that I'd be willing to wait fifteen years just to turn profit.}""",
+{color=aqua|Trader: — And also turned out to be quite a charming little thing, eh? Oh well, who knew it would turn out like that... Not that I'd be willing to wait fifteen years just to turn profit.}""",
 	LIRA_QUEST3_TRADER_7 = """The trader smirks slightly.
 
 {color=aqua|Trader: — Ah, that part's a bit more interesting.}
 
 He leans in just a little, lowering his voice.
 
-{color=aqua|Trader: — See, there was a raid near the border. The guards intercepted a bandit caravan with illegal goods, of course. Slaves, contraband, the usual. The goods were supposed to go to auction, but… let's just say I had certain arrangements with the local authorities.}""",
+{color=aqua|Trader: — See, there was a raid near the border. The guards intercepted a bandit caravan with illegal goods, of course. Slaves, contraband, the usual. The goods were supposed to go to auction, but... let's just say I had certain arrangements with the local authorities.}""",
 	LIRA_QUEST3_TRADER_8 = """{color=aqua|Trader: — So, a bit of persuasion and I bought the whole lot for dirt cheap. Then sold them later for a proper profit. Simple business.}
 
-{color=aqua|Trader: — As for where the bandits got her? No idea. Not my concern back then. Could have been a village raid, a passing caravan, a family who couldn't afford to feed her… The world's a messy place. You might as well ask the bandits' leader himself. He didn't stay in prison for too long and now seems to still be raiding in the empire's wasteland.}""",
+{color=aqua|Trader: — As for where the bandits got her? No idea. Not my concern back then. Could have been a village raid, a passing caravan, a family who couldn't afford to feed her... The world's a messy place. You might as well ask the bandits' leader himself. He didn't stay in prison for too long and now seems to still be raiding in the empire's wasteland.}""",
 	LIRA_QUEST3_TRADER_9 = """He closes the ledger with a thud.
 
 {color=aqua|Trader: — That's all I've got, folks.}
 
 You nod to the trader and step away from his wares, beginning to walk towards the mansion. Lira follows you, yet her thoughts seem to be elsewhere, as the conversation with the trader leaves a lingering weight behind. After you return home, she finally breaks the silence.""",
-	LIRA_QUEST3_TRADER_10 = """{color=yellow|Lira: — This feels so weird seeing all those people in cages… And to think I was spared such fate.}
+	LIRA_QUEST3_TRADER_10 = """{color=yellow|Lira: — This feels so weird seeing all those people in cages... And to think I was spared such fate.}
 
 She looks down at her hands.
 
 {color=yellow|Lira: — Yet I feel sad knowing others aren't as lucky. Do you think I'm wrong for thinking like this?}""",
 	LIRA_QUEST3_TRADER_OPTION_6 = "You aren't wrong, it's not fair but we could be worse without it. (+1F)",
 	LIRA_QUEST3_TRADER_OPTION_7 = "That's just how the world works. The strong rise, the weak are used (+1D)",
-	LIRA_QUEST3_TRADER_11 = """{color=yellow|Lira: — I guess you are right. Now that I think about it, back in the forests elves didn't really hold any slaves, but because of that many have simply been exiled or killed… Still though, I hope one day things can get better.}""",
+	LIRA_QUEST3_TRADER_11 = """{color=yellow|Lira: — I guess you are right. Now that I think about it, back in the forests elves didn't really hold any slaves, but because of that many have simply been exiled or killed... Still though, I hope one day things can get better.}""",
 	LIRA_QUEST3_TRADER_12 = """{color=yellow|Lira: — I suppose you are right, [master]. I should thank you for taking good care of me.}""",
 	LIRA_QUEST3_TRADER_13 = """In the end, Lira has no choice but to accept your answer and move on to more pressing matters.
 
-{color=yellow|Lira: — [master], are we going to look for that bandit leader? He's the only one left who might know the answer, but he's somewhere in a different country, so it doesn't look like an easy task…}""",
+{color=yellow|Lira: — [master], are we going to look for that bandit leader? He's the only one left who might know the answer, but he's somewhere in a different country, so it doesn't look like an easy task...}""",
 	LIRA_QUEST3_TRADER_OPTION_8 = "Of course. I want to get to the bottom of this story.",
 	LIRA_QUEST3_TRADER_OPTION_9 = "It doesn't matter if it's easy or not. If I want something, I get it done.",
 	LIRA_QUEST3_TRADER_14 = """Inspired by your words, Lira flashes you a smile.
@@ -27392,7 +27392,7 @@ She looks down at her hands.
 	
 		LIRA_QUEST3_EMPIRE_1 = """Following the lead, you soon arrive at the Empire's capital. The city greets you with its usual indifference: crowded streets, hurried footsteps, and faces that don't linger on strangers.
 Lira, who has never been here before, seems both surprised and slightly overwhelmed by the scale of it all. She sticks close to your side, her eyes darting across the endless crowds.
-{color=yellow|Lira: — [master], how do we even begin to look for that man? There are so many people here, but they don't look like they'd want to answer our questions…}""",
+{color=yellow|Lira: — [master], how do we even begin to look for that man? There are so many people here, but they don't look like they'd want to answer our questions...}""",
 	LIRA_QUEST3_EMPIRE_OPTION_1 = "There are many ways to loosen their tongues when we need to. But that can wait.",
 	LIRA_QUEST3_EMPIRE_OPTION_2 = "Let's just check the notice board first.",
 	LIRA_QUEST3_EMPIRE_2 = """You point to one of the notice boards and step closer. The wood is weathered, the papers pinned to it fluttering in the breeze. Most are faded, illegible. But one stands out. 
@@ -27401,7 +27401,7 @@ A worn sheet bearing the crude likeness of a man with a jagged scar across his f
 Charges: Caravan raids, illegal slave trade, multiple counts of murder”
 At the bottom, a list of locations where he was last seen. The general direction points to the hills to the east, exactly where caravans have been known to vanish.""",
 	LIRA_QUEST3_EMPIRE_4 = """Lira studies the paper beside you, her brow furrowed.
-{color=yellow|Lira: — This must be him…}
+{color=yellow|Lira: — This must be him...}
 She looks at the description again, comparing it to what you've heard from the trader. Her expression tightens.""",
 	LIRA_QUEST3_EMPIRE_5 = """{color=yellow|Lira: — So how do we find him? It's not like we can just walk up to his camp. And we can't just roam those hills for months.}
 
@@ -27409,9 +27409,9 @@ As you stand there thinking, a slow caravan rumbles past on the main road: three
 	LIRA_QUEST3_EMPIRE_OPTION_3 = "I think I have an idea. We'll use the caravan to lure them in.",
 	LIRA_QUEST3_EMPIRE_OPTION_4 = "We wouldn't need to look for the bandits if they came looking for us first.",
 	LIRA_QUEST3_EMPIRE_6 = """Lira follows your gaze. As she notices the figures in the cage, her eyebrows furrow.
-{color=yellow|Lira: — [master], I have no doubt your plan would work, but maybe we can try something else? It… it feels wrong to risk someone else's lives for my benefit. So what if I play the role of the bait? A lonely woman on the road would surely draw their attention too. They'd probably want to capture me and bring me right into their lair. And then…}
+{color=yellow|Lira: — [master], I have no doubt your plan would work, but maybe we can try something else? It... it feels wrong to risk someone else's lives for my benefit. So what if I play the role of the bait? A lonely woman on the road would surely draw their attention too. They'd probably want to capture me and bring me right into their lair. And then...}
 She looks up at you with trust and confidence in her eyes.
-{color=yellow|Lira: — … I believe that you would come to my rescue, [master]. What do you think?}""",
+{color=yellow|Lira: — ... I believe that you would come to my rescue, [master]. What do you think?}""",
 	LIRA_QUEST3_EMPIRE_OPTION_5 = "I don't want to risk your life, but if that's how you want to handle it, I'll allow it",
 	LIRA_QUEST3_EMPIRE_OPTION_6 = "That's a sound plan, but the caravan is still a much more prominent target. Besides, I'd rather risk someone else's life than yours",
 	LIRA_QUEST3_EMPIRE_7 = """Lira's face lights up with a genuine smile. There's determination in her eyes.
@@ -27420,18 +27420,18 @@ She looks up at you with trust and confidence in her eyes.
 {color=yellow|Lira: — Thank you for believing in me, [master]. I'll try to do my best.}""",
 	LIRA_QUEST3_EMPIRE_9 = """After agreeing to her plan, you briefly discuss the details. The best place for an ambush seems to be the stretch of road near the hills, where the trees grow close to the path. That is where you head next.""",
 	LIRA_QUEST3_EMPIRE_10 = """Lira's face falls the moment you refuse her offer. Her hands curl at her sides.
-{color=yellow|Lira: — [master], please… I can do this. I'm not afraid!}
+{color=yellow|Lira: — [master], please... I can do this. I'm not afraid!}
 She steps closer, her voice more insistent.
 {color=yellow|Lira: — Those slaves don't have a choice. But I do. I can choose to be there. Let me prove myself. Just one chance?}""",
 	LIRA_QUEST3_EMPIRE_OPTION_7 = "Fine. We'll do it your way",
-	LIRA_QUEST3_EMPIRE_OPTION_8 = "I don’t want to risk it. We're using the caravan",
+	LIRA_QUEST3_EMPIRE_OPTION_8 = "I don't want to risk it. We're using the caravan",
 	LIRA_QUEST3_EMPIRE_11 = """Lira lets out a deep sigh but doesn't argue any further.
-{color=yellow|Lira: — As you wish, [master]…}""",
+{color=yellow|Lira: — As you wish, [master]...}""",
 	LIRA_QUEST3_EMPIRE_12 = """After settling on the plan, you briefly discuss the details and begin looking for the caravan.""",
 	LIRA_QUEST3_EMPIRE_13 = """Lira listens to your decision, then nods slowly.
 {color=yellow|Lira: — I understand, [master]. You're way more experienced with these things than I am.}
 She looks toward the road where the caravan disappeared.
-{color=yellow|Lira: — So if you think this is the best way… then I trust you. We'll use the caravan. But… may I ask for a small favor? I don't doubt your strength, but I would feel much calmer if we could hire some extra guards just so they can focus on protecting everyone else while you deal with the main force.}""",
+{color=yellow|Lira: — So if you think this is the best way... then I trust you. We'll use the caravan. But... may I ask for a small favor? I don't doubt your strength, but I would feel much calmer if we could hire some extra guards just so they can focus on protecting everyone else while you deal with the main force.}""",
 	LIRA_QUEST3_EMPIRE_OPTION_9 = "That's a valid point",
 	LIRA_QUEST3_EMPIRE_OPTION_10 = "I'll think about it",
 	LIRA_QUEST3_EMPIRE_14 = """{color=yellow|Lira: — Thank you, [master].}""",
@@ -27458,7 +27458,7 @@ Lira rushes to them immediately, tearing strips from her own clothes to bind the
 Time passes, and soon the sun begins to fall when you finally hear hoofbeats. Five riders appear around the bend, all rough-looking men with worn leather armour and hands resting on their hilts. They spot Lira immediately and gallop to circle her, grinning in their saddles.
 {color=red|Bandit: — Well, well. What's a pretty little thing like you doing all alone out here?}""",
 	LIRA_QUEST3_ROAD_2 = """Lira says nothing. She takes a step back, feigning fear, which only makes the riders laugh.
-{color=red|Bandit: — No need to be scared. We'll take care of you. Just be ready to return the favour, heh…}
+{color=red|Bandit: — No need to be scared. We'll take care of you. Just be ready to return the favour, heh...}
 Unaware of your approach, the bandits keep spouting nonsense until you manage to get right next to them. The moment you see someone trying to grab Lira, you rush into attack.""",
 	LIRA_QUEST3_ROAD_POSTFIGHT_1 = """Within a moment, three bandits are down. But as you are fighting the fourth, the last one manages to grab Lira and pull her onto his horse.
 {color=yellow|Lira: — [master]!}
@@ -27469,14 +27469,14 @@ The rider kicks his heels into the horse's flanks, and the beast bolts down the 
 	LIRA_QUEST3_ROAD_POSTFIGHT_3 = """{color=red|Bandit: — What, you gonna try and get your girl back? Heh, the boss will show you why you shouldn't have messed with us!}
 He spits at your feet and glares.""",
 	LIRA_QUEST3_ROAD_POSTFIGHT_4 = """The cold steel pressing against his skin quickly clears his mind of arrogant delusions.
-{color=red|Bandit: — …Alright, alright! I'll talk! What do you want to know?}""",
+{color=red|Bandit: — ...Alright, alright! I'll talk! What do you want to know?}""",
 	LIRA_QUEST3_ROAD_POSTFIGHT_OPTION_3 = "How many of you are there?",
 	LIRA_QUEST3_ROAD_POSTFIGHT_OPTION_4 = "Why are you focusing on slave trade specifically?",
 	LIRA_QUEST3_ROAD_POSTFIGHT_OPTION_5 = "Where is your hideout?",
 	LIRA_QUEST3_ROAD_POSTFIGHT_5 = """{color=red|Bandit: — A couple of dozens. Maybe a few more. We lost some lately, but the boss keeps hiring. I don't know the exact number, never thought to count!}""",
-	LIRA_QUEST3_ROAD_POSTFIGHT_6 = """{color=red|Bandit: — Boss got some connections to sell the goods fast. Also, he started with it, so it's kind of his thing… And most don't really care what we do as long as the boss pays good coin.}""",
+	LIRA_QUEST3_ROAD_POSTFIGHT_6 = """{color=red|Bandit: — Boss got some connections to sell the goods fast. Also, he started with it, so it's kind of his thing... And most don't really care what we do as long as the boss pays good coin.}""",
 	LIRA_QUEST3_ROAD_POSTFIGHT_7 = """The bandit hesitates. You press the blade just a fraction deeper.
-{color=red|Bandit: — Shit, fine, fine! Guess I'll be leaving the band anyway… It's to the east! Old cave system, hidden deep in the forest. About two hours from here. Follow the dry creek bed.}
+{color=red|Bandit: — Shit, fine, fine! Guess I'll be leaving the band anyway... It's to the east! Old cave system, hidden deep in the forest. About two hours from here. Follow the dry creek bed.}
 He gives you a rough description between shaky breaths. You commit it to memory.
 You tell him that he'd better not be lying, then tie him up and leave him on the road. You mount one of the remaining horses and get ready to bring Lira back.""",
 	
@@ -27490,7 +27490,7 @@ You peek around the corner and notice Lira in the corner of the cave: restrained
 
 You quickly tie them up and then release Lira from her bonds. She gives you a tight hug.""",
 	LIRA_QUEST3_DEN_3 = """The element of surprise works in your favor, and soon the bandits are defeated. You tie up the bloodied, yet conscious leader, then release Lira from her bonds. She gives you a tight hug.""",
-	LIRA_QUEST3_DEN_4 = """{color=yellow|Lira: — [master], I'm so glad to see you! And… we did it!}
+	LIRA_QUEST3_DEN_4 = """{color=yellow|Lira: — [master], I'm so glad to see you! And... we did it!}
 
 You both turn towards the bandit leader.""",
 	
@@ -27501,31 +27501,31 @@ You both turn towards the bandit leader.""",
 	LIRA_QUEST3_BANDIT_LEADER_2 = """He blinks, genuinely puzzled.
 {color=red|Bandit Leader: — Then what the hell do you want?}
 You briefly explain the situation. At first, he looks annoyed. Then, after a moment, something clicks. His eyes narrow.""",
-	LIRA_QUEST3_BANDIT_LEADER_3 = """{color=red|Bandit Leader: — …Hah. You're kidding me.}
+	LIRA_QUEST3_BANDIT_LEADER_3 = """{color=red|Bandit Leader: — ...Hah. You're kidding me.}
 A rough laugh escapes him, quickly turning into a cough.
 {color=red|Bandit Leader: — That was years ago. A lifetime. And somehow it bit me in the ass after all this time.}
 He shakes his head.""",
-	LIRA_QUEST3_BANDIT_LEADER_4 = """{color=red|Bandit Leader: — Yeah, sure… I remember. Barely.}
+	LIRA_QUEST3_BANDIT_LEADER_4 = """{color=red|Bandit Leader: — Yeah, sure... I remember. Barely.}
 He looks at Lira more closely now, and you can almost see the gears turn in his brain, adding two and two together.
-{color=red|Bandit Leader: — So it's you, eh? That sickly little thing… Thought you wouldn't last long. Looked half-dead when I passed you along.}
+{color=red|Bandit Leader: — So it's you, eh? That sickly little thing... Thought you wouldn't last long. Looked half-dead when I passed you along.}
 Lira frowns a bit, but doesn't say anything. The bandit continues.""",
 	LIRA_QUEST3_BANDIT_LEADER_5 = """{color=red|Bandit Leader: — I didn't get her myself. Bought her off some merchant I worked with back then. Shady type. Dealt in all kinds of goods.}
 He shrugs.
 {color=red|Bandit Leader: — Guy told me the kid was given to him by her own mother. Said she told him to take the brat away or something along those lines.}""",
 	LIRA_QUEST3_BANDIT_LEADER_6 = """Lira blinks, her eyes wide open as she comes closer to the bandit.
-{color=yellow|Lira: — My… mother? Did you say it was my own mother who gave me away?}
+{color=yellow|Lira: — My... mother? Did you say it was my own mother who gave me away?}
 {color=red|Bandit Leader: — Hey, that's what that guy told me.}
-{color=yellow|Lira: — But why would she do that…? What kind of mother would give away her child…?}""",
+{color=yellow|Lira: — But why would she do that...? What kind of mother would give away her child...?}""",
 	LIRA_QUEST3_BANDIT_LEADER_OPTION_3 = "Maybe she had her reasons. Not everything is as simple as it sounds",
 	LIRA_QUEST3_BANDIT_LEADER_OPTION_4 = "Sounds like your family wasn't worth looking for in the first place",
 	LIRA_QUEST3_BANDIT_LEADER_7 = """Lira lowers her gaze, her brow furrowing.
-{color=yellow|Lira: — …Maybe. I suppose I don't know what kind of situation she was in.}
+{color=yellow|Lira: — ...Maybe. I suppose I don't know what kind of situation she was in.}
 She exhales quietly, her shoulders dropping slightly.
-{color=yellow|Lira: — I want to believe there was a reason. Something more than just… getting rid of me.}""",
+{color=yellow|Lira: — I want to believe there was a reason. Something more than just... getting rid of me.}""",
 	LIRA_QUEST3_BANDIT_LEADER_8 = """Lira pauses, her ears twitching faintly before lowering.
-{color=yellow|Lira: — …Maybe you're right.}
+{color=yellow|Lira: — ...Maybe you're right.}
 A long breath.
-{color=yellow|Lira: — It's just… hard to accept that without even knowing the full story. Hard to let go of something I never really had.}""",
+{color=yellow|Lira: — It's just... hard to accept that without even knowing the full story. Hard to let go of something I never really had.}""",
 	LIRA_QUEST3_BANDIT_LEADER_9 = """{color=red|Bandit Leader: — Hey, since you want all the details, why don't you ask that merchant himself? He's still kicking, lives in the capital, same shop as before. I can take you right to his doorstep.}
 You exchange a glance with Lira and then nod. """,
 	LIRA_QUEST3_BANDIT_LEADER_10 = """You make sure the binds on the bandit let him walk, but not run, then step out of the hideout and begin the journey back to the capital.""",
@@ -27535,7 +27535,7 @@ You exchange a glance with Lira and then nod. """,
 After getting past the gates, he takes a more active role and guides you through unfamiliar streets, past markets and residential quarters, until you reach a quieter district.
 {color=red|Bandit Leader: — There. That corner shop. Green shutters, no sign.}
 He points to a modest two-story building wedged between a bakery and a tailor's workshop. The windows are clean, the brass handle polished. It looks respectable.
-{color=yellow|Lira: — This is the place? It looks kind of… respectable. Who'd think the guy living there would be so shady.}""",
+{color=yellow|Lira: — This is the place? It looks kind of... respectable. Who'd think the guy living there would be so shady.}""",
 	LIRA_QUEST3_FOLLOW_LEADER_2 = """{color=red|Bandit Leader: — Yep. Sometimes appearance can be deceiving, heh. But who am I to preach?}
 Done with the bandit, you spot a pair of city guards and call them over. After explaining the situation, you hand the bandit over to them. As soon as they recognise the face from the notice board, they put him in irons and lead him away.
 One of the guards tips his helmet.
@@ -27546,50 +27546,50 @@ In the corner, an elderly man sits in a worn armchair, half-hidden behind a stac
 	LIRA_QUEST3_MERCHANT_OPTION_1 = "Yeah, do you sell tribal elven children?",
 	LIRA_QUEST3_MERCHANT_OPTION_2 = "I'm looking to uncover some of your shady deals from the past.",
 	LIRA_QUEST3_MERCHANT_2 = """He blinks, clearly caught off guard. His smile falters. His eyes dart from you to Lira, then stop on her. Recognition flickers across his face, and he goes pale.
-{color=green|Merchant: — W-wait…}
+{color=green|Merchant: — W-wait...}
 {color=yellow|Lira: — Looks like you remember me.}""",
 	LIRA_QUEST3_MERCHANT_3 = """He hesitates, his mouth opening and closing like a fish gasping for air. Then he exhales, and his shoulders slump. The fight drains out of him.
-{color=green|Merchant: — …Yeah. I do. I… I never thought I'd see you again… how did you even find me?}
+{color=green|Merchant: — ...Yeah. I do. I... I never thought I'd see you again... how did you even find me?}
 You ignore his question and step closer, looming over him.""",
 	LIRA_QUEST3_MERCHANT_OPTION_3 = "Why don't you tell us what happened back then?",
 	LIRA_QUEST3_MERCHANT_OPTION_4 = "You'd better explain yourself, old man.",
 	LIRA_QUEST3_MERCHANT_4 = """He flinches at your tone, but then begins to talk.
-{color=green|Merchant: — I was on a trip overseas when one day a tribal elf woman brought you to me herself. She came at night, hooded, nervous. Said she wanted you… gone. Far away. Somewhere safe.}
+{color=green|Merchant: — I was on a trip overseas when one day a tribal elf woman brought you to me herself. She came at night, hooded, nervous. Said she wanted you... gone. Far away. Somewhere safe.}
 Lira freezes for a moment, then raises an eyebrow.
 {color=yellow|Lira: — Safe?}""",
-	LIRA_QUEST3_MERCHANT_5 = """{color=green|Merchant: — Yeah. I don't remember all the details, but she said that their clan had some rituals. Sacrifices. That weak children didn't survive for long. And at the time…}
+	LIRA_QUEST3_MERCHANT_5 = """{color=green|Merchant: — Yeah. I don't remember all the details, but she said that their clan had some rituals. Sacrifices. That weak children didn't survive for long. And at the time...}
 He glances at Lira, then quickly looks away.
-{color=green|Merchant: — … you were a weak child. She told me that her time was limited as well, and since she wouldn't be able to protect you any longer after she was gone, she'd rather you went somewhere else.}
+{color=green|Merchant: — ... you were a weak child. She told me that her time was limited as well, and since she wouldn't be able to protect you any longer after she was gone, she'd rather you went somewhere else.}
 He pauses for a moment to cough, then carries on.""",
 	LIRA_QUEST3_MERCHANT_6 = """{color=green|Merchant: — So she gave you to me. Paid some money — not much, but she didn't look like she had much. Then told me to take you somewhere safe. Even gave you an amulet. Said it would protect you.}
 {color=yellow|Lira: — Huh? But I didn't have any amulet on me.}
 The merchant bites his tongue and tries to avert his gaze, but realising that it's too late, he sighs and confesses.""",
-	LIRA_QUEST3_MERCHANT_7 = """{color=green|Merchant: — I… I kept it. Tribal craftsmanship is quite valuable, so I've had it with me all these years. Still have it.}
+	LIRA_QUEST3_MERCHANT_7 = """{color=green|Merchant: — I... I kept it. Tribal craftsmanship is quite valuable, so I've had it with me all these years. Still have it.}
 He stands up, walks to the shelf, and takes a small bronze pendant with a dark gemstone inside from the deep within. Then brings it to Lira. She slowly reaches out her hand to touch it, and with noticeable hesitation, the merchant lets the charm fall into her hands.
-{color=yellow|Lira: — It's… beautiful.}
-{color=green|Merchant: — And it seems to bring luck. Or at least that's what I believe. Though now that I've met you, it seems its luck has run out…}""",
+{color=yellow|Lira: — It's... beautiful.}
+{color=green|Merchant: — And it seems to bring luck. Or at least that's what I believe. Though now that I've met you, it seems its luck has run out...}""",
 	LIRA_QUEST3_MERCHANT_8 = """{color=yellow|Lira: — So what happened next? What else did my mother say?}
-{color=green|Merchant: — Next? She left. Did some hand gestures over your head, put the amulet on you, and left. I got back to my ship and brought you here. And then…}
+{color=green|Merchant: — Next? She left. Did some hand gestures over your head, put the amulet on you, and left. I got back to my ship and brought you here. And then...}
 {color=yellow|Lira: — Sold me to some bandit.}
 The merchant tries to shrug but barely manages, as if losing his nerve halfway.""",
-	LIRA_QUEST3_MERCHANT_9 = """{color=green|Merchant: — The money was good, so… I'm not proud of it. But… it is what it is.}
+	LIRA_QUEST3_MERCHANT_9 = """{color=green|Merchant: — The money was good, so... I'm not proud of it. But... it is what it is.}
 Lira stands in silence, her fingers wrapped around the pendant. The merchant shifts uncomfortably, avoiding her gaze. He turn to you, his voice shaking.
 
-{color=green|Merchant: — I told you everything I knew, so… w-what is going to happen to me?}
+{color=green|Merchant: — I told you everything I knew, so... w-what is going to happen to me?}
 You look at the man who took a desperate mother's plea, her money, her child's only heirloom, and then sold the girl for profit.""",
 	LIRA_QUEST3_MERCHANT_OPTION_5 = "You are right to be afraid. It's high time karma caught up to you.",
 	LIRA_QUEST3_MERCHANT_OPTION_6 = "You are not even worth dirtying my hands. Just live whatever small time you have left, knowing what you did.",
 	LIRA_QUEST3_MERCHANT_10 = """The merchant's eyes widen, and he tries to scream, but your blade quickly silences him forever.
 His body slumps against the chair, then slides to the floor. The spectacles fall from his nose and clatter on the wooden planks.
 Lira flinches but doesn't look away. She watches the body for a moment, then looks down at the amulet in her hand.""",
-	LIRA_QUEST3_MERCHANT_11 = """{color=yellow|Lira: — …Let's go home, [master].}
+	LIRA_QUEST3_MERCHANT_11 = """{color=yellow|Lira: — ...Let's go home, [master].}
 Her voice sounds tired.""",
 	LIRA_QUEST3_MERCHANT_12 = """The merchant seems to shrink under your gaze, but that's all there is to it. You carefully take Lira by the shoulder, and you leave the shop.""",
 	LIRA_QUEST3_MERCHANT_13 = """You step out of the shop. The bell chimes one last time as the door closes behind you.
 The street is ordinary: people walking, children laughing, a dog barking somewhere in the distance. No one knows what just happened inside that modest building with the green shutters.
 Lira walks beside you in silence. She's still holding the amulet the merchant kept all those years. Her fingers trace its edges as you leave the old district behind and head toward the city gates.
 As you step outside the city, you stop to rest by the side of the road for a while. Lira sits on a fallen log, turning the amulet over in her hands for a moment before finally breaking the silence.""",
-	LIRA_QUEST3_AFTERMATH_1 = """{color=yellow|Lira: — So… looks like this is the story of my past.}
+	LIRA_QUEST3_AFTERMATH_1 = """{color=yellow|Lira: — So... looks like this is the story of my past.}
 She says it calmly, though there's a trace of sadness underneath.
 {color=yellow|Lira: — I was born in some barbaric tribe overseas that had a tradition of sacrificing weak children for their rituals, and I was next in line. My mother, who apparently also wasn't in great health, decided to save me by giving me to a random merchant, hoping I would get a better life far away.}
 She clutches the amulet in her hand.""",
@@ -27598,23 +27598,23 @@ She shakes her head.
 {color=yellow|Lira: — That greedy man didn't even try to look for a new family for me. Just dumped me with the first buyer for a few coins and even took the amulet. Then I changed hands a couple of times, like some second-hand relic. It's a miracle I even survived all of that, considering how all of them described my state at the time.}""",
 	LIRA_QUEST3_AFTERMATH_OPTION_1 = "But you did. And that's what matters",
 	LIRA_QUEST3_AFTERMATH_OPTION_2 = "It seems the gods were merciful for once",
-	LIRA_QUEST3_AFTERMATH_3 = """{color=yellow|Lira: — That's true… And everything we learned only confirms what I already knew: I never had a place to belong to in the past. So it's time for me to stop looking at the past, once and for all. I should focus on my present and my future. And in both, I can only see myself in one place…}
+	LIRA_QUEST3_AFTERMATH_3 = """{color=yellow|Lira: — That's true... And everything we learned only confirms what I already knew: I never had a place to belong to in the past. So it's time for me to stop looking at the past, once and for all. I should focus on my present and my future. And in both, I can only see myself in one place...}
 She turns to you and places her hand on yours. A smile appears on her face.
-{color=yellow|Lira: — … next to you, [master].}""",
-	LIRA_QUEST3_AFTERMATH_4 = """{color=yellow|Lira: — You took me in when no one else was willing to even look at me… And you treated me well. You treated me like a person, for the first time in my life. And you've been on that path with me to the end.}""",
-	LIRA_QUEST3_AFTERMATH_5 = """{color=yellow|Lira: — You gave me purpose. A place to belong. Someone to follow… someone to believe in.}
+{color=yellow|Lira: — ... next to you, [master].}""",
+	LIRA_QUEST3_AFTERMATH_4 = """{color=yellow|Lira: — You took me in when no one else was willing to even look at me... And you treated me well. You treated me like a person, for the first time in my life. And you've been on that path with me to the end.}""",
+	LIRA_QUEST3_AFTERMATH_5 = """{color=yellow|Lira: — You gave me purpose. A place to belong. Someone to follow... someone to believe in.}
 A faint, warm smile appears.
-{color=yellow|Lira: — So… if you'll have me, I want to stay by your side. As your slave and as your companion. Your… everything.}""",
+{color=yellow|Lira: — So... if you'll have me, I want to stay by your side. As your slave and as your companion. Your... everything.}""",
 	LIRA_QUEST3_AFTERMATH_OPTION_3 = "Stay as you are. You already belong here",
 	LIRA_QUEST3_AFTERMATH_OPTION_4 = "What if I set you free?",
 	LIRA_QUEST3_AFTERMATH_6 = """She smiles, visibly relieved, her shoulders relaxing.
-{color=yellow|Lira: — Thank you… [master].}""",
-	LIRA_QUEST3_AFTERMATH_7 = """{color=yellow|Lira: — F-free…?}
+{color=yellow|Lira: — Thank you... [master].}""",
+	LIRA_QUEST3_AFTERMATH_7 = """{color=yellow|Lira: — F-free...?}
 For a moment, she looks at you with confusion, but then the smile returns to her face. She leans forward and presses her head to your chest.
 {color=yellow|Lira: — There's no need for that, [master]. I don't want to be free. I want to be yours.}""",
 	LIRA_QUEST3_AFTERMATH_8 = """{color=yellow|Lira: — You took me in and you treated me well, treated me like a person, even though you didn't have to. You were the one who taught me not to fear and how to be myself. Next to you I am no longer afraid to voice my real thoughts, probably for the first time in my life.}""",
 	LIRA_QUEST3_AFTERMATH_9 = """She looks down at the amulet she clutches in her hand.
-{color=yellow|Lira: — The more I looked at my past, the more I realized how little freedom I really had: first sold as a barely conscious child, and then put into the temple, where every step was dictated by rituals and rules… Huh.}
+{color=yellow|Lira: — The more I looked at my past, the more I realized how little freedom I really had: first sold as a barely conscious child, and then put into the temple, where every step was dictated by rituals and rules... Huh.}
 She suddenly lets out a quiet laugh and looks up at the sky.""",
 	LIRA_QUEST3_AFTERMATH_10 = """{color=yellow|Lira: — Looking at it that way, maybe when Freya didn't choose me as her priestess, it was her mercy that I mistook for wrath. Only because of that I was able to become your companion, isn't it?}
 She moves closer to you.
@@ -27622,15 +27622,15 @@ She moves closer to you.
 	LIRA_QUEST3_AFTERMATH_OPTION_5 = "Screw fate. If it means putting a genuine smile on your face, I'll free you from slavery. You can be my servant, not my property",
 	LIRA_QUEST3_AFTERMATH_OPTION_6 = "I'm glad I was able to give you what you've been looking for. Don't worry, I'll keep treating you well",
 	LIRA_QUEST3_AFTERMATH_11 = """For a moment, she just stares at you, as if she can't believe what she just heard.
-{color=yellow|Lira: — You… you mean it?}
+{color=yellow|Lira: — You... you mean it?}
 Her lips tremble. Then she smiles, tears well in her eyes, but she doesn't wipe them away.""",
-	LIRA_QUEST3_AFTERMATH_12 = """{color=yellow|Lira: — I don't even know what to say… Thank you. I won't forget this, [master]. You've changed my life the way I couldn't even dream about… I am so glad I met you, and I'll stay by your side, not because I have to, but because I want to!}
+	LIRA_QUEST3_AFTERMATH_12 = """{color=yellow|Lira: — I don't even know what to say... Thank you. I won't forget this, [master]. You've changed my life the way I couldn't even dream about... I am so glad I met you, and I'll stay by your side, not because I have to, but because I want to!}
 She reaches out for a hug and embraces you, whispering in your ear.
 {color=yellow|Lira: — That truly means the world to me. Thank you, [master].}""",
 	LIRA_QUEST3_AFTERMATH_13 = """Lira looks at you with a small, genuine smile on her lips.
-{color=yellow|Lira: — Then I have nothing to fear. If you promise to keep treating me like this… I don't need a piece of paper to tell me I'm free.}
+{color=yellow|Lira: — Then I have nothing to fear. If you promise to keep treating me like this... I don't need a piece of paper to tell me I'm free.}
 She takes your hand and holds it between both of hers.
-{color=yellow|Lira: — Being with you, knowing that you see me as a person… that's enough. Thank you, [master]. For everything.}""",
+{color=yellow|Lira: — Being with you, knowing that you see me as a person... that's enough. Thank you, [master]. For everything.}""",
 
 	LIRA_QUEST3_RETURN = """The journey back was quiet but comfortable. Lira walked close to you, and her smile never left her face for the entire journey.
 When you finally reach the mansion, the familiar sight of its gates brings a sense of closure.

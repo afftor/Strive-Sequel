@@ -882,8 +882,8 @@ var data = {
 		text = "LIRA_QUEST3_RETURN",
 		options = [
 			{
-				code = "close", 
-				text = "DIALOGUECLOSE", 
+				code = "lira_mansion_1", 
+				text = "DIALOGUECONTINUE", 
 				reqs = [], 
 				dialogue_argument = 1, 
 				type = 'next_dialogue',

@@ -915,8 +915,8 @@ var data = {
 		text = "LIRA_QUEST2_LIRA_THOUGHT_HAPPY_LIVING_TEMPLE",
 		options = [
 			{
-				code = 'close', 
-				text = "DIALOGUECLOSE", 
+				code = 'lira_bonus2_1', 
+				text = "DIALOGUECONTINUE", 
 				reqs = [], dialogue_argument = 1,
 				bonus_effects = [
 					{code = 'complete_quest', value = 'lira_quest_2'}, 

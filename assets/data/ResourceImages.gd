@@ -308,6 +308,16 @@ var backgrounds = {
 	heleviel_bj_2 = "res://assets/images/fullscreen scenes/HelevielCG006.png",
 	heleviel_bj_3 = "res://assets/images/fullscreen scenes/HelevielCG007.png",
 	
+	lira_deflor_1 = "res://assets/images/fullscreen scenes/Lira_deflor0.png",
+	lira_deflor_2 = "res://assets/images/fullscreen scenes/Lira_deflor1.png",
+	lira_deflor_3 = "res://assets/images/fullscreen scenes/Lira_deflor2.png",
+	lira_deflor_4 = "res://assets/images/fullscreen scenes/Lira_deflor3.png",
+	
+	lira_tribal_sex_1 = "res://assets/images/fullscreen scenes/Lira_grass0.png",
+	lira_tribal_sex_2 = "res://assets/images/fullscreen scenes/Lira_grass1.png",
+	lira_tribal_sex_3 = "res://assets/images/fullscreen scenes/Lira_grass2.png",
+	lira_tribal_sex_4 = "res://assets/images/fullscreen scenes/Lira_grass3.png",
+	
 	lira_sex_1 = "res://assets/images/fullscreen scenes/LiraCG001.png",
 	lira_sex_2 = "res://assets/images/fullscreen scenes/LiraCG002.png",
 	lira_sex_3 = "res://assets/images/fullscreen scenes/LiraCG003.png",
