@@ -109,6 +109,7 @@ var sounds = {
 	bow = load("res://assets/sounds/sounds/ArrowShot.wav"),
 	skill_scene = load("res://assets/sounds/sounds/healeffect.wav"),
 	itemget = load("res://assets/sounds/sounds/itemget.wav"),
+	chest_opening = load("res://assets/sounds/sounds/chest_opening.wav"),
 	itemcreate = load("res://assets/sounds/sounds/itemcraft.wav"),
 	building = load("res://assets/sounds/sounds/building.wav"),
 	money_spend = load("res://assets/sounds/sounds/money_spend.wav"),

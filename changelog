@@ -1,4 +1,5 @@
 Added handling for act 2 transition in case when you refuse Zephyra at the end of act 1 and prevented church being blocked by it
+Renamed multiple key locations and areas to have less abstract names
 Fixed sexuals_bonus mod still existing on some items and effects
 0.14.3b
 Sex minigame:

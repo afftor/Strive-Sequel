@@ -3614,7 +3614,7 @@ Can only be used when no heavy armor is worn. Instant.""",
 	SKILLBARRIER = "Barrier",
 	SKILLBARRIERDESCRIPT = "Provides a magical shield that absorbs 100 damage. Shield lasts for 3 turns.",
 	SKILLASSASSINATE = "Assassinate",
-	SKILLASSASSINATEDESCRIPT = "Strike target for 175% of ATK. If user is In The Shadows, damage is increased to 225% of ATK.",
+	SKILLASSASSINATEDESCRIPT = "Can only be used while In The Shadows. Strikes target for 200% of ATK.",
 	SKILLPROTECT = "Protect",
 	SKILLPROTECTDESCRIPT = "Takes damage instead of ally for 2 turns.",
 	SKILLSHAREDTOY = "Shared Toy",
@@ -3779,13 +3779,12 @@ Single target magic spells have 100% chance to be followed up with a basic melee
 {color=brown|Luminance}: Single target Light abilities make target receive more Light and Dark damage.""",
 	TRAITDRUIDDESCRIPT = "Earth Spell damage: +20%",
 	TRAITBERSERKERDESCRIPT = "{color=brown|Frenzy}: After killing an enemy, gain an extra turn (once per combat).",
-	TRAITSNIPERDESCRIPT = "Single Target Physical damage: +25%",
+	TRAITSNIPERDESCRIPT = "Single Target Physical damage: +25%\nMarksmanship skills won't break In The Shadows effect.",
 	TRAITSHIELDBEARERDESCRIPT = "{color=brown|Shield Counter}: If equipped with a shield that grants Evasion, counter enemy attacks in melee range.",
 	TRAITPALADINDESCRIPT = "{color=brown|Smite}: Deal 25% more damage and take 15% less damage from Undead and Demon type enemies.",
 	TRAITROUGE = "Ruthless",
 	TRAITROUGEDESCRIPT = "Restore some health and mana when deals killing blow.\nWhen in front row: +35% Damage, +10% Crit Chance.\nCan't be Trained or receive Loyalty Points.",
 	TRAITASSASSINDESCRIPT = "Single target Warfare and Protection skills won't break In The Shadows effect.",
-	TRAITASNIPERDESCRIPT = "Marksmanship skills won't break In The Shadows effect.",
 	TRAITBLOODMAGEDESCRIPT = "{color=brown|Blood Mastery}: Dealing damage to bleeding targets recovers HP and MP and increases MATK until end of fight.",
 	TRAITALIOSDESCRIPT = "{color=brown|Unbound}: When only character is alive in party: gain +50 evasion, +20 speed until end of battle.",
 	TRAITMIXX_CHAMPIONDESCRIPT = "{color=brown|Seething Blackness}: Dark Element attacks ignore all DEF/MDEF and have +30 hit rating.",
@@ -8472,7 +8471,7 @@ Time Flow""",
 	ACHIBONUS_LITERATE_DESC = "Start with Literacy trait",
 	ACHIBONUS_ALL_RACES = "Cosmopolitan",
 	ACHIBONUS_ALL_RACES_DESC = "Unlock all races during character creation regardless of their lore appropriateness. ",
-	INTRODIALOGUE = """Twelve years have passed since monarchy was overthrown in Aliron Kingdom. Free of the previous reign, its capital Aliron has become a center of society and cultural life, giving even the lowest a chance to become a person of power and influence assuming they are capable...
+	INTRODIALOGUE = """Twelve years have passed since monarchy was overthrown in the Kingdom of Aliron. Free of the previous reign, its capital Aliron has become a center of society and cultural life, giving even the lowest a chance to become a person of power and influence assuming they are capable...
 
 You are one of the people who managed to get there just in time to secure an estate recently freed from old ownership. The only issue is that its sale price is beyond your capability. With no other option to start a new life, you've taken a gigantic loan to achieve your goal. You've become an owner of a small piece of land with a dilapidated mansion on it.""",
 	STARTINGDIALOGUE0 = """Just as you finished moving in, the bank assistant appears at your doorstep to check on you.
@@ -9676,7 +9675,7 @@ The princess notices Aire tensing up in response to the question.
 	ENEMYALCHEMIST = "Alchemist",
 	ENEMYBATTLE_TROLL = "Battle Troll",
 	NO_FIGHT_LOW_OBED = "[name] refuses to participate in a fight. (Combatant must be unlocked)",
-	NO_FIGHT_LOW_OBED2 = "[name] refuses to participate in a fight (low obedience).",
+	NO_FIGHT_LOW_OBED2 = "[name] refuses to participate in a fight (Needs Combat trait).",
 	CHAR_NO_COMBAT = "[name] has sustained a grave injury and is unable to participate in fights.",
 	PARTY_LIMIT = "Party limit reached.",
 	PARTY_FIXED = "Party is fixed! You can only switch positions.",
@@ -10766,9 +10765,9 @@ Myr takes a small medallion out of her desk. As she chants the spell, the medall
 {color=aqua|Myr: — Leave your professional quirks out of this unless you want to be thrown out.}
 
 {color=yellow|Amelia: — Alright, alright, I should be going anyway. Good luck, [name], I'm waiting for your success.}""",
-	LOOKING_FOR_PRINCESS_21 = "After testing the medallion you decide it points toward the elven forests. Your goal should be visiting them now.",
-	LOOKING_FOR_PRINCESS_22 = "You ask for an audience with the elven High Priestess, who seems to act as the prime ruler of the elven capital. Despite a natural distaste for outsiders, your status forced the elves to accept your request for an audience.",
-	LOOKING_FOR_PRINCESS_23 = "The medallion kept pointing at the elven capital so you were left no other option but to meet the High Priestess, who acts as the prime ruler of the elven capital. Despite natural distaste for outsiders, your status forced the elves to accept your request for an audience.",
+	LOOKING_FOR_PRINCESS_21 = "After testing the medallion you decide it points toward the Ambervale forests. Your goal should be visiting them now.",
+	LOOKING_FOR_PRINCESS_22 = "You ask for an audience with the elven High Priestess, who seems to act as the prime ruler of Eldewyn. Despite a natural distaste for outsiders, your status forced the elves to accept your request for an audience.",
+	LOOKING_FOR_PRINCESS_23 = "The medallion kept pointing at Eldewyn so you were left no other option but to meet the High Priestess, who acts as the prime ruler of Eldewyn. Despite natural distaste for outsiders, your status forced the elves to accept your request for an audience.",
 	LOOKING_FOR_PRINCESS_24 = """You've been brought to a large room with a few guards in it and you're told to wait there. After a minute an elven woman appeared from the opposite side to approach you. Her stature and the guards' reactions clearly indicate her superior position.
 
 {color=yellow|— Usually we do not welcome outsiders in our lands, but we've made a promise to receive ambassadors from the human lands. State your business, stranger.}""",
@@ -12951,7 +12950,7 @@ Zephyra leaves to her room before you get a chance to react. It seems she will t
 	PRIESTESS_SWORD_TALK_5 = "{color=yellow|— I've heard you are looking for the Sacred Bowl. Your story raises some questions, but my sources suggest your information is credible. I can talk the High Priestess into giving you a chance to claim the Sacred Bowl.}",
 	PRIESTESS_SWORD_TALK_5_OPTION_1 = "Why would you be so generous?",
 	PRIESTESS_SWORD_TALK_5_OPTION_2 = "This won't be for free I bet?",
-	PRIESTESS_SWORD_TALK_6 = "{color=yellow|— First, I need you to do something in return. On the edge of our forests there's a large beastkin tribe. I want you to travel there and deliver a message I'm going to pass to you, then return with an answer. The message will be sealed so only the receiver will be able to read it. I want you to deliver to the tribe's chieftain.}",
+	PRIESTESS_SWORD_TALK_6 = "{color=yellow|— First, I need you to do something in return. On the edge of the Ambervale forests there's a large beastkin tribe. I want you to travel there and deliver a message I'm going to pass to you, then return with an answer. The message will be sealed so only the receiver will be able to read it. I want you to deliver to the tribe's chieftain.}",
 	PRIESTESS_SWORD_TALK_6_OPTION_1 = "Do you dislike those Beastkin?",
 	PRIESTESS_SWORD_TALK_6_OPTION_2 = "Why won't you go yourself?",
 	PRIESTESS_SWORD_TALK_6_OPTION_3 = "Very well, I'll do it.",
@@ -13572,7 +13571,7 @@ The guards do indeed escort you out, though the entire time the silent men have 
 	AFTER_TEMPLE_PRIESTESS_5_1_1_BAD = """{color=red|Failure}
 
 {color=yellow|— I'm afraid this is not possible. Freya's High Priestess shall not be tainted by man's touch.}""",
-	AFTER_TEMPLE_PRIESTESS_5_1AND2 = "As you make your way out of the priestess' chambers, you are called out to by some hooded soldier. After confirming your identity, he informs you that Erlen wants to see you in the woods on the outskirts. After relaying his location to you, the soldier leaves quietly.",
+	AFTER_TEMPLE_PRIESTESS_5_1AND2 = "As you make your way out of the priestess' chambers, you are called out to by some hooded soldier. After confirming your identity, he informs you that Erlen wants to see you in the woods on the outskirts of Eldewyn. After relaying his location to you, the soldier leaves quietly.",
 	ERLERN_ENCOUNTER_START = "After scouting through the location, you can't find any signs of activity and start to wonder if you've come to the wrong place. Suddenly a couple of elven soldiers appear before you, taking you by surprise. As they inspect you, they tell you to follow them to meet Erlen.",
 	ERLERN_ENCOUNTER_1 = """Erlen meets you at the makeshift camp among the trees. You'd probably not recognize it as a camp if you didn't know it was there. Erlen's face remains impassive until you pass him the letter from Leon. After reading it, his expression grows more pessimistic.
 
@@ -13598,7 +13597,7 @@ After taking a long pause and pondering the letter, he finally speaks up.
 {color=yellow| — But it seems things are getting more complicated. My purpose is still firm, but it seems I'm gonna need more work done to fulfill it. Can I ask you for another favor?}""",
 	ERLERN_ENCOUNTER_2_OPTION_1 = "Yes.",
 	ERLERN_ENCOUNTER_2_OPTION_2 = "No.",
-	ERLERN_ENCOUNTER_3_1 = """{color=yellow|— Very good. As I'm stuck here, I need you to bring another person from the capital to me. There's another young, but bright, priestess of Freya, who you'll be able to find at the temple grounds. Her name is Lira. I want you to bring her to me, as she's a possible candidate for the next High Priestess.}
+	ERLERN_ENCOUNTER_3_1 = """{color=yellow|— Very good. As I'm stuck here, I need you to bring another person from Eldewyn to me. There's another young, but bright, priestess of Freya, who you'll be able to find at the temple grounds. Her name is Lira. I want you to bring her to me, as she's a possible candidate for the next High Priestess.}
 	
 {color=yellow|— You shouldn't waste any more time, just get her here, no matter what.}""",
 	ERLERN_ENCOUNTER_3_2 = "",
@@ -13687,7 +13686,7 @@ Erlen: — I've already sent the messengers to Leon in your name so they should 
 	ERLEN_LIRA_8_1_2 = """{color=yellow|Lira: — I-I appreciate your faith in me, but I'm still not sure about something big like this. I was accepted at the temple only out of goodwill. I'm not even native, and now you propose that I should become the next High Priestess? Even with my feelings towards you, this is a bit too much...}
 
 {color=aqua|Erlen: — Your own feelings are of little importance. If Freya considers you worthy, then you can do it. I'm tired of this state and I'm willing to bet everything on my faith in you.}""",
-	ERLEN_LIRA_8_2 = "{color=aqua|Erlen: — Given our current situation, there's only one thing we can do. We must break through right at the peak moment of the ritual. While you were away I've already prepared everything. Wait two more days and then come to the elven capital, Leon should make it by that time as well. Until then it's better to stay away from there.}",
+	ERLEN_LIRA_8_2 = "{color=aqua|Erlen: — Given our current situation, there's only one thing we can do. We must break through right at the peak moment of the ritual. While you were away I've already prepared everything. Wait two more days and then come to Eldewyn, Leon should make it by that time as well. Until then it's better to stay away from there.}",
 	ERLEN_LIRA_8_OPTION_1 = "I hope you aren't forgetting our deal.",
 	ERLEN_LIRA_8_OPTION_2 = "I might ask for something more for this kind of risk.",
 	ERLEN_LIRA_9_1 = "{color=aqua|Erlen: — If we succeed, you'll get any help you might request from me, be it access to the Sacred Bowl or anything else.} ",
@@ -13708,7 +13707,7 @@ Erlen decided to ignore Leon's remark and proceeded.
 {color=yellow|Leon: — Sounds easy. What's the catch?}
 
 {color=aqua|Erlen: — We have to get Lira inside the temple before the ceremony is over. We'll be leading the infiltration.}""",
-	ERLEN_LEON_3 = """As you make your way through the back streets led by Erlen, who knows the capital like the back of his own hand, you manage to avoid any patrols. Your group is fairly small, consisting of both elven and beastkin leaders and your personal team. As you make it closer to the main temple, you are forced to come out of hiding to cross the bridge that leads to the temple gates.
+	ERLEN_LEON_3 = """As you make your way through the back streets led by Erlen, who knows Eldewyn like the back of his own hand, you manage to avoid any patrols. Your group is fairly small, consisting of both elven and beastkin leaders and your personal team. As you make it closer to the main temple, you are forced to come out of hiding to cross the bridge that leads to the temple gates.
 
 However, the bridge is guarded. As your group is spotted the soldiers rush towards you. Erlen goes out in front of them.
 
@@ -13749,7 +13748,7 @@ Erlen hangs his head in a defeated posture, not saying anything. Lira tries to p
 	CEREMONY_HELEVIEL_3_1_OPTION_3 = "You've convinced me.",
 	CEREMONY_HELEVIEL_3_1_1 = """Heleviel takes a short pause, and decides to play along.
 
-{color=yellow| — Very well, she'll be exiled from our forests forever. Thank [name] for the gift of your life.}""",
+{color=yellow| — Very well, she'll be exiled from the Ambervale forests forever. Thank [name] for the gift of your life.}""",
 	CEREMONY_HELEVIEL_3_1_2 = """Heleviel smirks at your request.
 
 {color=yellow| — Very well, you may have her as long as you keep her in your domain. We don't care what she'll be doing if it's outside of our lands.}""",
@@ -14838,7 +14837,7 @@ Cali was shy now realizing what she had just done and nodded now, still blushing
 {color=aqua|Citizen B: — That's like for all of them, no?}
 
 {color=yellow|Citizen A: — Yeah, but the others simply scattered away and paid me no attention. I couldn't bring myself to call her out...}""",
-	LILIA_PRELUDE2 = "You decide to make a note about this village and perhaps visit it next time you go to elven forests.",
+	LILIA_PRELUDE2 = "You decide to make a note about this village and perhaps visit it next time you go to the Ambervale forests.",
 	LILIA_STARTING_1 = """As you move through the village with occasional elves and fae observing you, you notice that most residents stay very cautious and turn away once your gaze falls upon them. That is, except for one very curious fairy with long red hair. After she realizes that she has caught your attention, she dashes at you, completely ignoring any formalities as she releases a rapid torrent of questions.
 
 {color=yellow| — Hi! I'm Lilia. What's your name? Are you an adventurer? You are so big! We don't get people like you here often. What brought you here?}""",
@@ -14902,7 +14901,7 @@ She wasn't an experienced lover, but her tightness and willingness to please hel
 
 {color=yellow|— ...Amazing! Let's do this again some other time, okay?'}""",
 	LILIA_RECRUIT_1_1 = "{color=yellow|— Eh? I dunno, I don't think I know you well enough, [name].}",
-	LILIA_RECRUIT_1_2 = "{color=yellow|— Going with you..? Huh, I'm not sure, I never left the forests. I heard humans are pretty scary.}",
+	LILIA_RECRUIT_1_2 = "{color=yellow|— Going with you..? Huh, I'm not sure, I never left the Ambervale forests. I heard humans are pretty scary.}",
 	LILIA_RECRUIT_1_OPTION_1 = "[Charm Factor] I'd love to have you at my place.",
 	LILIA_RECRUIT_1_OPTION_2 = "Eventually you get used to it.",
 	LILIA_RECRUIT_1_OPTION_3 = "Humans can be pretty bad, but you'll be under my protection.",
@@ -17875,7 +17874,7 @@ The fairies fly away to play outside with Lilia following them, leaving you alon
 {color=yellow|Fairy2: — Wow! For real, we must've been blessed! }
 
 {color=yellow|Fairy1: — Yeah, even with Lilia being with us.}""",
-	LILIA_GOOD_ROUTE_3_CONTINUE_3 = """The fairies happily dash in its direction, but Lilia freezes. The time spent outside of the forests stirs some worries inside of her.
+	LILIA_GOOD_ROUTE_3_CONTINUE_3 = """The fairies happily dash in its direction, but Lilia freezes. The time spent outside of the grove stirs some worries inside of her.
 
 {color=yellow|Lilia: — Wait... This isn't normal...}
 
@@ -18416,7 +18415,7 @@ After you defeat the punks trying to attack you earlier nobody seems to want to 
 The barkeep throws the last insult as you exit the tavern.""",
 	DTAVERN_JEAN_AFIGHT = """The girl leads you to an alleyway, off the main street.
 
-{color=yellow|— I think nobody will bother us here.  I am guessing it's your first time visiting the glorious dwarven capital. You're fast to get in trouble. You'd better be grateful I came to your rescue.}""",
+{color=yellow|— I think nobody will bother us here. I am guessing it's your first time visiting glorious Stonegate. You're fast to get in trouble. You'd better be grateful I came to your rescue.}""",
 	DTAVERN_JEAN_AFIGHT_OPT_HELP = "I didn't need your help.",
 	DTAVERN_JEAN_AFIGHT_OPT_THK = "Thanks.",
 	DTAVERN_JEAN_AFIGHT_REPLY_HELP = "{color=yellow|— Another ungrateful brute. Just my luck. Well, you're welcome to go back in and wait for the guards to show up. Don't expect any handovers from me in prison.}",
@@ -18837,7 +18836,7 @@ You hear a sign of exhaustion and readiness to give in in his voice while consid
 {color=yellow|Masked Figure: — Stay put if you want to live.}""",
 	DWARF_PRISON_ATTACK1_2 = "The sounds of fighting grow more distant as the rescue team makes their escape. You're left alone in the cell, the opportunity for interrogation lost in the chaos of the rebel attack.",
 	DWARF_PRISON_ATTACK2 = "After the attack is over and the King's forces reestablish their presence you are only left with an option to search and pursue these attackers.",
-	DWARF_SEARCH = """After hours of searching, you finally stumble upon some promising tracks leading away from the Dwarf capital. The trail is faint, barely visible in the dim light of the underground caverns, but it's there—a mix of footprints and what appears to be drag marks, likely from the injured prisoner.
+	DWARF_SEARCH = """After hours of searching, you finally stumble upon some promising tracks leading away from Stonegate. The trail is faint, barely visible in the dim light of the underground caverns, but it's there—a mix of footprints and what appears to be drag marks, likely from the injured prisoner.
 
 After scouting the area, you manage to get more information on their likely destination which will require you to investigate it.""",
 	DWARF_SEARCH2 = """Eventually, you reach the Hollow Passage. Infamous place, even outside of the dwarven kingdom it is known for how dangerous it is... You also know it is a dead end. The coalition base should be somewhere within this passage.
@@ -18954,7 +18953,7 @@ He takes one of the rings from you and makes his way through the smallest cracks
 {color=yellow|Kobold Leader: — Just in time. You've done well, dweller. If it was just a bit later, we'd have more dead on our hands.}""",
 	OLD_TEMPLE_FINISH3_1 = """He takes the other ring from you and orders everyone to move out of the temple.
 
-{color=yellow|Kobold Leader: — Come to the dwarven capital tavern in 3 days; by that time, we'll get a new route to get you to us without King's men finding it.}
+{color=yellow|Kobold Leader: — Come to Stonegate's tavern in 3 days; by that time, we'll get a new route to get you to us without King's men finding it.}
 
 After stating that, he leaves with his group.""",
 	DTAVERN_REBEL = """Quickly scanning the room, your attention is drawn to a hooded figure seated far in the back. The cloak he wears is a drab collection of earthen colors, blending perfectly with the shadows in the corner.
@@ -19172,7 +19171,7 @@ Heleviel pauses for a moment contemplating something to herself.
 {color=yellow|— Mayor? Ah, yes, there's been a couple of spies from elven land, we've been ordered to keep them in jail. You can ask about them there.}""",
 	SACRED_SAP_FIGHTERS_1 = """The jailer leads you to the room with two tied and gagged elven girls who seem less than happy.
 
-{color=yellow|— These two are who you are looking for? Have been caught at the borders of elven forests by the patrol.}""",
+{color=yellow|— These two are who you are looking for? Have been caught at the borders of the Ambervale forests by the patrol.}""",
 	SACRED_SAP_FIGHTERS_1_OPT1 = "It seems you've roughed them up",
 	SACRED_SAP_FIGHTERS_1_OPT2 = "Why keep them in prison?",
 	SACRED_SAP_FIGHTERS_2 = """{color=yellow|— They've killed one farmer boy before they got caught. Seems like he sneaked up on them and got shot in the throat, after that our men managed to capture them with two injured. As you see we can't just let them go free now even if we forget those are spies. I mean, you are the mayor, but the guild will not overlook it.}
@@ -19192,7 +19191,7 @@ The elves look defiantly at you, their spirit does not seem to be broken yet."""
 	SACRED_SAP_FIGHTERS_4 = """You get the elven girls out of jail, instructing them to stay close to you so you can get them back to the elven lands. Initially they don't seem to trust you but as you bring up Heleviel's orders they agree to obey.
 
 You lead them chained and meet no interruption, soon making it out of city gates.""",
-	SACRED_SAP_FIGHTERS_5 = "As you get deeper into woods you unchain them, making it easier to move. Soon you all reach elven capital and meet Heleviel once more.",
+	SACRED_SAP_FIGHTERS_5 = "As you get deeper into woods you unchain them, making it easier to move. Soon you all reach Eldewyn and meet Heleviel once more.",
 	SACRED_SAP_HELEVIEL_4 = "{color=yellow|— You've done your part of the deal faithfully, [race]. I can respect that. Here's the item you've requested from us, take it and don't tell how you've earned it.}",
 	SACRED_SAP_ERLEN_START = """{color=yellow|— Hold on, [name]. Care for a small talk? }
 
@@ -19783,7 +19782,7 @@ The dark elf takes another pause before continuing with resistance in her voice.
 {color=yellow|Kuro: — Well, you better not waste any time then.}""",
 	KURO_LIB_OPT_WHAT = "What's in that book that you want anyway?",
 	KURO_LIB_OPT_FREETIME = "Maybe once I have a free time",
-	KURO_LIB_OPT_CAPITAL = "Dwarven Capital it is...",
+	KURO_LIB_OPT_CAPITAL = "Stonegate it is...",
 	KURO_LIB_REPLY_WHAT = "{color=yellow|Kuro: — All sorts of sex techniques to please a buffoon like you. What do you think? Let's not waste the time for pointless talks.}",
 	KURO_WHISKEY_MARKET = """After asking through several local merchants you finally manage to find one specialized in beverages.
 
@@ -19921,7 +19920,7 @@ Kuro seemingly dismisses your praise and looks away.
 
 In the next moment she's gone in her usual manner.""",
 	LIRA_LOST_START = "As you get through the woods, you suddenly hear a woman's voice calling for help. You cautiously move towards it...",
-	LIRA_LOST_START2 = "{color=yellow|— Stranger! What a relief this isn't animals or monsters... I've come here to gather some herbs but It seems I've got lost. My name is Lira, I hope it won't trouble you to get me to the elven capital.}",
+	LIRA_LOST_START2 = "{color=yellow|— Stranger! What a relief this isn't animals or monsters... I've come here to gather some herbs but It seems I've got lost. My name is Lira, I hope it won't trouble you to get me to Eldewyn.}",
 	LIRA_DIALOGUE_START = "{color=yellow|Lira: — Is there anything you need, [master]?}",
 	LIRA_LOST_OPT_SURE = "Sure, you can stick around",
 	LIRA_LOST_OPT_PRICE = "My help can only come at a price",
@@ -20267,7 +20266,7 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	PRINCESS_SEARCH_SUMMARY = "With rebel main hideout cleared, the princess is on the run. However, you can't finish the business until she's caught and brought back, dead or alive.",
 	PRINCESS_SEARCH_STAGE_1 = "You should visit Duncan and learn your next goal.",
 	PRINCESS_SEARCH_STAGE_2 = "Duncan explained that you won't be able to complete the elections until princess is found. It's time to find any leads which would help you to locate her.",
-	PRINCESS_SEARCH_STAGE_3 = "You've learned that the princess is hiding in elven lands. Travel to the elf capital and secure her.",
+	PRINCESS_SEARCH_STAGE_3 = "You've learned that the princess is hiding in elven lands. Travel to Eldewyn and secure her.",
 	PRINCESS_SEARCH_STAGE_4 = "Unfortunately, the princess deceased, yet you've acquired her body. Return to Duncan to finish the business.",
 	PRINCESS_SEARCH_STAGE_5 = "You've captured the princess herself. It's time to bring her back to Duncan.",
 	PRINCESS_PERSUASION_NAME = "Distressed Damsel",
@@ -20294,7 +20293,7 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	AMELIA_HERBS_NAME = "Amelia: Elven Botany",
 	AMELIA_HERBS_SUMMARY = "After helping her out, Amelia gave you a new task to earn her favor.",
 	AMELIA_HERBS_STAGE_1 = "Visit Amelia at the Servants Guild",
-	AMELIA_HERBS_STAGE_2 = "Travel to the Elven Capital and find the supplier Amelia told you about.",
+	AMELIA_HERBS_STAGE_2 = "Travel to Eldewyn and find the supplier Amelia told you about.",
 	AMELIA_HERBS_STAGE_3 = "Return to Amelia at the Servants Guild",
 	MARRIAGE_MAIN_NAME = "Marriage",
 	MARRIAGE_MAIN_SUMMARY = "Marriage",
@@ -20318,12 +20317,12 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	SWORD_ARTIFACT_QUEST_NAME = "Forests and Beasts",
 	SWORD_ARTIFACT_QUEST_SUMMARY = "Even though the Civil War is over, it seems there might be greater issues in your future. Zephyra told you to gather an ancient artifacts. It seems the next one can be found at elven lands.",
 	SWORD_ARTIFACT_QUEST_STAGE_1 = "Visit Ginny at Aliron's church",
-	SWORD_ARTIFACT_QUEST_STAGE_2 = "Talk with the High Priestess at Elven Capital",
+	SWORD_ARTIFACT_QUEST_STAGE_2 = "Talk with the High Priestess at Eldewyn",
 	SWORD_ARTIFACT_QUEST_STAGE_3 = "Visit Beastkin Tribe",
 	SWORD_ARTIFACT_QUEST_STAGE_4 = "Visit Lodge at Beastkin Tribe",
 	SWORD_ARTIFACT_QUEST_STAGE_5 = "Bring 2.000 Meat and Fish to Savra",
 	SWORD_ARTIFACT_QUEST_STAGE_6 = "Return to Beastkin Tribe after 1 day",
-	SWORD_ARTIFACT_QUEST_STAGE_7 = "Search for Mae in the forests",
+	SWORD_ARTIFACT_QUEST_STAGE_7 = "Search for Mae in the Ambervale forests",
 	SWORD_ARTIFACT_QUEST_STAGE_77 = "Perform the ritual with Mae on the next day",
 	SWORD_ARTIFACT_QUEST_STAGE_8 = "Search for Leon at Beastkin Tribe",
 	SWORD_ARTIFACT_QUEST_STAGE_9 = "Search for Leon at forest location",
@@ -20332,7 +20331,7 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	SWORD_ARTIFACT_QUEST_STAGE_12 = "Find a helper for Savra's work",
 	SWORD_ARTIFACT_QUEST_STAGE_13 = "Return to Leon once more",
 	SWORD_ARTIFACT_QUEST_STAGE_14 = "Track down the White Stag",
-	SWORD_ARTIFACT_QUEST_STAGE_15 = "Talk with Erlen at Elven Capital",
+	SWORD_ARTIFACT_QUEST_STAGE_15 = "Talk with Erlen at Eldewyn",
 	TEMPLE_QUEST_NAME = "Ancient Elven Temple",
 	TEMPLE_QUEST_SUMMARY = "Freya's High Priestess, Heleviel, asked you to bring here some sacred water required for the ritual.",
 	TEMPLE_QUEST_STAGE_1 = "Visit Ancient Elven Temple to obtain Sacred Water",
@@ -20340,10 +20339,10 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	GETTING_LIRA_QUEST_NAME = "Revelation",
 	GETTING_LIRA_QUEST_SUMMARY = "With all things set you have to make your move together with Erlen in attempt to deal with Heleviel. ",
 	GETTING_LIRA_QUEST_STAGE_1 = "Search for Erlen",
-	GETTING_LIRA_QUEST_STAGE_2 = "Find a way to get young priestess from Elven Capital to Erlen",
+	GETTING_LIRA_QUEST_STAGE_2 = "Find a way to get young priestess from Eldewyn to Erlen",
 	GETTING_LIRA_QUEST_STAGE_3 = "Get 10 Whiskey to get Lira out of the temple",
 	GETTING_LIRA_QUEST_STAGE_4 = "Return to Erlen with Lira",
-	GETTING_LIRA_QUEST_STAGE_5 = "Meet Erlen at Elven Capital",
+	GETTING_LIRA_QUEST_STAGE_5 = "Meet Erlen at Eldewyn",
 	CALI_FIGHTERS_QUEST_NAME = "Cali: Small and Brave",
 	CALI_FIGHTERS_QUEST_SUMMARY = "Your servant, Cali, wants to be more useful and decided to join Fighters Guild",
 	CALI_FIGHTERS_QUEST_STAGE_1 = "Visit Fighters Guild to register Cali",
@@ -20464,12 +20463,12 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	ANASTASIA_QUEST_STAGE12 = "Deal with Reyan",
 	ANASTASIA_QUEST_STAGE13 = "Return to Duncan",
 	METEORITE_QUEST_NAME = "Fallen Star",
-	METEORITE_QUEST_SUMMARY = "A star fell not too far from elven forests. Druid Lorien wants you to investigate.",
+	METEORITE_QUEST_SUMMARY = "A star fell not too far from the Ambervale forests. Druid Lorien wants you to investigate.",
 	METEORITE_QUEST_CHECK_OUT = "Check out fallen star",
 	METEORITE_QUEST_RETURN_METEOR = "Get back to Lorien",
 	METEORITE_QUEST_FIND_USE = "Find anyone who can figure out a good use for fallen star",
 	METEORITE_QUEST_GET_INSIDE = "Find a way to get inside dwarf lands",
-	METEORITE_QUEST_SEARCH_DURIM = "Search for Durim in dwarf capital",
+	METEORITE_QUEST_SEARCH_DURIM = "Search for Durim in Stonegate",
 	HARA_SCALES_QUEST_NAME = "Hara: fixing the Scales",
 	HARA_SCALES_QUEST_SUMMARY = "Help Hara to fix Scales of Destiny for the King",
 	HARA_SCALES_QUEST_SEE_HARA = "Visit Hara at workshop",
@@ -20495,8 +20494,8 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	DKING_HARA_QUEST_INFO = "You need to get information out of Coalition's agent in prison, whether by bringing gnome-decoy (Charm at least 50; Tame Factor at least 4) or by direct torture.",
 	DKING_HARA_QUEST_TRACKS = "You'll have to search for tracks of rebel attackers.",
 	DKING_HARA_QUEST_TEMPLE = "Find and help Coalition's group at Temple of the Old Gods to win a favor with Bolthar.",
-	DKING_HARA_QUEST_WAIT = "In 3 days Coalition's agent will show up in dwarven capital's tavern.",
-	DKING_HARA_QUEST_REBELTAVERN = "Search for Coalition's member in dwarven capital's tavern.",
+	DKING_HARA_QUEST_WAIT = "In 3 days Coalition's agent will show up in Stonegate's tavern.",
+	DKING_HARA_QUEST_REBELTAVERN = "Search for Coalition's member in Stonegate's tavern.",
 	DKING_HARA_QUEST_NEXTDAY = "Guards instructed you to return on the next day as the King will be waiting for you.",
 	DKING_HARA_QUEST_VISIT = "Return to the King.",
 	JEAN_FREE_QUEST_NAME = "Free Jean",
@@ -20506,27 +20505,27 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	KURO_TOME_QUEST_SUMMARY = "Help Kuro to get access to Myr's library",
 	KURO_TOME_QUEST_LIBRARY = "Visit Mages guild",
 	KURO_TOME_QUEST_MONEY = "Bring 500 gold to Myr of Mages guild",
-	KURO_TOME_QUEST_CAPITAL = "Search for Gilded Grasp whiskey in Dwarven Capital",
+	KURO_TOME_QUEST_CAPITAL = "Search for Gilded Grasp whiskey in Stonegate",
 	KURO_TOME_QUEST_CARRIAGE = "Investigate the whisky carriage's last known location",
-	KURO_TOME_QUEST_BOTTLE = "Visit Dwarven Capital",
+	KURO_TOME_QUEST_BOTTLE = "Visit Stonegate",
 	KURO_TOME_QUEST_BACK = "Bring whisky to Myr of Mages guild",
 	KURO_TOME_QUEST_TALK = "Talk to Kuro",
 	LIRA_LOST_QUEST_NAME = "Lost Lira",
 	LIRA_LOST_QUEST_SUMMARY = "Help Lira out of the grove",
-	LIRA_LOST_QUEST_CAPITAL = "Get to the elven capital",
+	LIRA_LOST_QUEST_CAPITAL = "Get to Eldewyn",
 	HELEVIEL_QUEST1_NAME = "Heleviel: New Perspective",
 	HELEVIEL_QUEST1_SUMMARY = "Help the former High Priestess adapt to life in Aliron by working at the bar.",
 	HELEVIEL_QUEST2_NAME = "Heleviel: Helping the weak",
 	HELEVIEL_QUEST2_SUMMARY = "Due to her status, surely Heleviel should be capable of healer work.",
 	HELEVIEL_QUEST3_NAME = "Heleviel: Redemption",
-	HELEVIEL_QUEST3_SUMMARY = "Arrange an ritual in the elven capital to restore Heleviel's bond with Freya.",
+	HELEVIEL_QUEST3_SUMMARY = "Arrange a ritual in Eldewyn to restore Heleviel's bond with Freya.",
 	HELEVIEL_SLAVE_STAGE_1 = "Assign Heleviel to work as a waitress in Aliron.",
 	HELEVIEL_SLAVE_STAGE_2 = "Let Heleviel work as a waitress for some time.",
 	HELEVIEL_SLAVE_STAGE_3 = "Visit Aliron's church on Heleviel's behalf.",
 	HELEVIEL_CITY_OPTION = "*Bring Heleviel to assist Ginny*",
 	HELEVIEL_SLAVE_STAGE_4 = "Travel with Heleviel to the beastkin village and secure a silverleaf antidote.",
 	HELEVIEL_CITY_OPTION_2 = "Speak with Savra",
-	HELEVIEL_SLAVE_STAGE_5 = "Visit Elven Capital.",
+	HELEVIEL_SLAVE_STAGE_5 = "Visit Eldewyn.",
 	HELEVIEL_SLAVE_STAGE_5_3 = "Pay for ritual",
 	HELEVIEL_SLAVE_STAGE_5_4 = "Wait a day",
 	HELEVIEL_CITY_OPTION_3 = "Speak about ritual",
@@ -21356,16 +21355,16 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	TRAINFINISHTEXT = "Finish training after taking Master Acknowledgement trait",
 	TRAININGBONUSES = "Bonuses:",
 	TRAININGTRAINEES = "Trainees:",
-	AREAPLAINS = "Plains",
-	AREAFORESTS = "Forests",
-	AREAMOUNTAINS = "Mountains",
-	AREAEMPIRE = "Empire",
+	AREAPLAINS = "Kingdom of Aliron",
+	AREAFORESTS = "Ambervale Forests",
+	AREAMOUNTAINS = "Iron Mountains",
+	AREAEMPIRE = "The Grand Empire",
 	AREASEAS = "Seas",
 	AREABEASTKIN_TRIBE = "Far Forests",
 	CAPITALALIRON = "Aliron",
-	CAPITALELVEN = "Elven Capital",
-	CAPITALDWARVEN = "Dwarven Capital",
-	CAPITALEMPIRE = "Empire Capital",
+	CAPITALELVEN = "Eldewyn",
+	CAPITALDWARVEN = "Stonegate",
+	CAPITALEMPIRE = "Palatine",
 	CAPITALBEASTKIN = "Beastkin Tribe",
 	WORKERSDISASSEMBLE = "Disassemble",
 	AREACAPITALS = "Capitals",
@@ -22857,7 +22856,7 @@ You explain that you've only been exploring surroundings but as you prepare to t
 	METEOR_LOUNGE_START_OPT_ANOTHER = "Maybe another time",
 	METEOR_LOUNGE_BRIEF = """Lorien offers you a cup of warm herbal tea before he starts explaining.
 
-{color=yellow|— The druids are not only spiritual guides but also natural observers. One of my tasks is to watch over the night sky and stars. Three moons ago I saw a star falling not too far from our forests. However as I delivered that information to the High Priestess she found that information... insignificant. }
+{color=yellow|— The druids are not only spiritual guides but also natural observers. One of my tasks is to watch over the night sky and stars. Three moons ago I saw a star falling not too far from the Ambervale forests. However as I delivered that information to the High Priestess she found that information... insignificant. }
 
 His voice sounds bitter when he addressed the High Priestess but its clear her authority invokes respect into him.
 
@@ -22899,7 +22898,7 @@ He studies the meteorite, hesitant to touch it, then shakes his head.
 As you take it with you, it makes you wonder if you know anyone who can figure out a good use for it...""",
 	METEOR_SIGMUND_START_OPT_FOUND = "I've found one strange rock which has fallen from the skies...",
 	METEOR_SIGMUND_START_OPT_PAYMENT = "I've got the payment for the pass (200 gold)",
-	METEOR_SIGMUND_START_OPT_ACCESS = "I've gained access to dwarf capital",
+	METEOR_SIGMUND_START_OPT_ACCESS = "I've gained access to Stonegate",
 	METEOR_SIGMUND_START = """His eyes, sharp beneath bushy brows, lock onto the meteorite as you present it. The stone's faint glow reflects in his intrigued gaze.
 
 {color=yellow|— This ain't no common stone. Fell from da sky, ye say? It's a fine metal, but me 'fraid I'm no help with something like dis. Ya'd need to find someone from dwarf lands. But they don't let strangers inside usually.}""",
@@ -22914,7 +22913,7 @@ As you take it with you, it makes you wonder if you know anyone who can figure o
 {color=yellow|— Alright, take dis piece. It'll get ya through guards. Da man you are looking for is called Durim, he works with stuff like this.}
 
 """,
-	METEOR_SIGMUND_LEAVE = "Getting all the necessary information you leave preparing to venture to the mountains.",
+	METEOR_SIGMUND_LEAVE = "Getting all the necessary information you leave preparing to venture to the Iron Mountains.",
 	METEOR_SIGMUND_ACCESS = """{color=yellow|— Ya did? Great to hear. Da man you are looking for is called Durim, he works with stuff like this.}
 
 """,
@@ -22953,10 +22952,10 @@ The dwarf grunts, pointing to a shelf. She snatches a glowing bottle of liquid, 
 {color=yellow|— New around here, eh? Word of advice, don't linger in this fume-pit too long. Vapors will turn your brain to mush, like this guy here.}
 
 She leaves before you can answer but her uncharacteristic appearance makes you think you'll meet her in future.""",
-	ACT_4_CONTINUE = "Follow up on the leads you've uncovered in the Empire.",
-	ACT_4_CAPITAL_SUMMARY = "You've been invited to the Grand Empire's Capital. This feels like the artifact chasing quest is coming to its conclusion.",
+	ACT_4_CONTINUE = "Follow up on the leads you've uncovered in the Grand Empire.",
+	ACT_4_CAPITAL_SUMMARY = "You've been invited to Palatine. This feels like the artifact chasing quest is coming to its conclusion.",
 	ACT_4_CAPITAL_NAME = "Each against all",
-	ACT_4_CAPITAL_ENTER = "Go to the Empire's capital",
+	ACT_4_CAPITAL_ENTER = "Go to Palatine",
 	ACT_4_CAPITAL_WAIT1 = "Wait until tomorrow",
 	ACT_4_CAPITAL_CEREMONY = "Attend the Ceremony",
 	ACT_4_CAPITAL_WAIT2 = "Wait until tomorrow",
@@ -22966,16 +22965,16 @@ She leaves before you can answer but her uncharacteristic appearance makes you t
 	EMP_CITY_INIT = """A new letter arrives today, its envelope adorned with intricate patterns that suggest a far more influential sender than you're accustomed to.
 
 “Dear [name], Mayor of Aliron,
-I've heard much about you and your recent deeds, and I believe it's time we met in person. I invite you to the Grand Empire's capital, the one and only. I assure you, it will be quite a sight for someone like you — and an opportunity to acquire that artifact you seek.”
+I've heard much about you and your recent deeds, and I believe it's time we met in person. I invite you to Palatine, the Grand Empire's capital, the one and only. I assure you, it will be quite a sight for someone like you — and an opportunity to acquire that artifact you seek.”
 
 Your admirer,
 Rouge""",
-	EMP_CITY_ENTER_0 = """You stand before the towering gates of the Grand Imperial City. A long line of travelers, traders, and all manner of strangers waits to be inspected and admitted inside. After waiting just over an hour, you edge closer, only to be halted by the guards. Their gleaming armor, worth a fortune compared to Aliron's, marks them as elite.
+	EMP_CITY_ENTER_0 = """You stand before the towering gates of Palatine. A long line of travelers, traders, and all manner of strangers waits to be inspected and admitted inside. After waiting just over an hour, you edge closer, only to be halted by the guards. Their gleaming armor, worth a fortune compared to Aliron's, marks them as elite.
 	
 """,
-	EMP_CITY_ENTER_0_BAD1 = "{color=yellow|— Hold it! You're not a citizen, not even of the Great Empire. The capital is closed to foreigners. Get lost.}",
-	EMP_CITY_ENTER_0_BAD2 = "{color=yellow|— Hold it! You're not a citizen, not even of the Great Empire. Your papers say you're the Mayor of Aliron? Nobody cares about that backwater town. The capital is closed to foreigners. Get lost.}",
-	EMP_CITY_ENTER_0_GOOD = "{color=yellow|— Hold it! You're not a citizen, not even of the Great Empire. Your papers say you're the Mayor of Aliron? Nobody cares about that backwater town. The capital is closed to foreigners...}",
+	EMP_CITY_ENTER_0_BAD1 = "{color=yellow|— Hold it! You're not a citizen, not even of the Grand Empire. The capital is closed to foreigners. Get lost.}",
+	EMP_CITY_ENTER_0_BAD2 = "{color=yellow|— Hold it! You're not a citizen, not even of the Grand Empire. Your papers say you're the Mayor of Aliron? Nobody cares about that backwater town. The capital is closed to foreigners. Get lost.}",
+	EMP_CITY_ENTER_0_GOOD = "{color=yellow|— Hold it! You're not a citizen, not even of the Grand Empire. Your papers say you're the Mayor of Aliron? Nobody cares about that backwater town. The capital is closed to foreigners...}",
 	EMP_CITY_ENTER_1 = """Before the guard can finish, a short man in rich but rumpled clothing appears, his looks and coarse manners highly contrast his status.
 
 {color=yellow|— Hey, you! Royal order! Let this [man] pass. I've got the papers for [him]!}
@@ -23583,7 +23582,7 @@ Heleviel looks slightly unsettled at being recognized, but she still shows no si
 
 {color=yellow|Heleviel: — T-this is only a temporary penance before Freya guides me back to an even greater role! But an uncivilized buffoon like you likely won't understand it.}
 
-{color=aqua|Elf: — Shut it. You're the reason I left the forests and have to serve humans. Your hatred for men and your rules drove us into being disempowered, low-class people.}""",
+{color=aqua|Elf: — Shut it. You're the reason I left the Ambervale forests and have to serve humans. Your hatred for men and your rules drove us into being disempowered, low-class people.}""",
 	HELEVIEL_SLAVE_CHURCH_ARGUMENT_TEXT3 = """{color=yellow|Heleviel: — How dare you! I only followed Freya's vision and served her order! Even if our rules were strict, they were entirely justified.}
 
 {color=aqua|Elf: — Justified, you say? I like it. Then your demotion into a slave is also justified. Now you serve not only your owners but one of your own kind—someone you always looked down on.}
@@ -23601,7 +23600,7 @@ The former High Priestess is practically shaking in place but well aware she's u
 	HELEVIEL_SLAVE_CHURCH_AFTER_FOOT = "After being sufficiently humiliated by the task, the elf soldier leaves with a chuckle. You give Heleviel some time to rest before the next patient.",
 	HELEVIEL_SLAVE_CHURCH_POISON_TEXT = """After some time Heleviel comes out of the infirmary and approaches you.
 
-{color=yellow|Heleviel: — The last patient is poisoned by silverleaf. I'm afraid there's nothing I can do with my magic, but... I believe there might be a way in the forests.}
+{color=yellow|Heleviel: — The last patient is poisoned by silverleaf. I'm afraid there's nothing I can do with my magic, but... I believe there might be a way in the Ambervale forests.}
 
 You feel like Heleviel is being evasive about the issue, but you let her continue.""",
 	HELEVIEL_SLAVE_CHURCH_POISON_OPTION_1 = "Is something bothering you?",
@@ -23863,7 +23862,7 @@ Heleviel raises a brow, but it's too late to back out.""",
 
 Judging by Mae's tone, she still isn't quite used to the luxury of a city mansion after all that happened.""",
 	MAE_QUEST_INITIATE_REPLY_2 = "{color=yellow|Mae: — Y-yeah, sorry, I was not sure how to start...}",
-	MAE_QUEST_INITIATE_FAVOR = "{color=yellow|Mae: — Anyway, there's a favor I want to ask. Well, you see, I... can't get used to the food around here after living in the forests... It... doesn't quite taste right to me.}",
+	MAE_QUEST_INITIATE_FAVOR = "{color=yellow|Mae: — Anyway, there's a favor I want to ask. Well, you see, I... can't get used to the food around here after living in the Ambervale forests... It... doesn't quite taste right to me.}",
 	MAE_QUEST_INITIATE_FAVOR_OPTION_1 = "I remember you eating rather happily with others",
 	MAE_QUEST_INITIATE_FAVOR_OPTION_2 = "So what do you want?",
 	MAE_QUEST_INITIATE_FAVOR_RETURN = """Mae's face blushes slightly and she starts stammering, speaking faster.
@@ -24531,14 +24530,14 @@ She quickly waves her hand, clearly trying to move past that.
 	JEAN_SIDEQUEST_REQUEST_OPTION_3 = "Ugh. Can you stop bothering me with such meager problems?",
 	JEAN_SIDEQUEST_RESPONSE_12 = """Jean exhales quietly, clearly relieved - though she immediately tries to hide it.
 
-{color=yellow|Jean: — Okay, so... I'm doing some magical research, and I really need one specific tome for it. I've heard the Grand Library in the Empire Capital has a copy.}
+{color=yellow|Jean: — Okay, so... I'm doing some magical research, and I really need one specific tome for it. I've heard the Grand Library in Palatine has a copy.}
 
 She crosses her arms.
 
 {color=yellow|Jean: — Just a quick trip there and back. I wouldn't dream of taking more than the necessary time from our renowned mayor.}""",
 	JEAN_SIDEQUEST_RESPONSE_3 = """Jean purses her lips in indignation but, surprisingly, does not snap back.
 
-{color=yellow|Jean: — I need a book. For my research. From the Grand Library in the Empire Capital. Can you help?}
+{color=yellow|Jean: — I need a book. For my research. From the Grand Library in Palatine. Can you help?}
 
 She pauses briefly before adding, her tone dripping with sarcasm:
 
@@ -24566,7 +24565,7 @@ She scoffs.
 
 She leaves quickly, before you can comment.""",
 	JEAN_SIDEQUEST_CLOSE_2 = "Jean's expression turns sour for a brief moment - then she schools her face and turns away. As she leaves, the determination in her posture is unmistakable. You get the distinct feeling that if this matter isn't addressed soon, her patience will run out far quicker than you might expect.",
-	JEAN_SIDEQUEST_CAPITAL_START = """The Empire Capital greets you as it always does: noise, crowds, and a suffocating sense of arrogance. Merchants shout from every corner, guards eye you with suspicion, and robed scholars glide past, treating everyone beneath their station as invisible.
+	JEAN_SIDEQUEST_CAPITAL_START = """Palatine greets you as it always does: noise, crowds, and a suffocating sense of arrogance. Merchants shout from every corner, guards eye you with suspicion, and robed scholars glide past, treating everyone beneath their station as invisible.
 
 Jean attempts to ask for directions to the library, but no one even slows their step. After several such attempts, she begrudgingly buys a map from a peddler who clearly makes a living off lost newcomers.""",
 	JEAN_SIDEQUEST_CAPITAL_LIBRARY = """{color=yellow|Jean: — Alright, looks like the library should be next to that giant tower... Let's go!}
@@ -24744,7 +24743,7 @@ You notice Rynn's expression darken.""",
 {color=yellow|Jean: — Now, you didn't have to mention that! Though you're not wrong... Anyway.}""",
 	JEAN_SIDEQUEST_RYNN_BROTHER_1 = """Rynn sighs.
 
-{color=aqua|Rynn: — I wish I had more to tell. We came here, to the Empire's capital, looking for mercenary work. However, since the jobs didn't pay that much, he became an arena fighter instead. And a good one at that.}
+{color=aqua|Rynn: — I wish I had more to tell. We came here, to Palatine, looking for mercenary work. However, since the jobs didn't pay that much, he became an arena fighter instead. And a good one at that.}
 
 {color=aqua|Rynn: — Recently, he caught the attention of some “wealthy sponsor,” as he called him. Said he was going to get a great deal, that we'd be swimming in gold... And then he disappeared.}""",
 	JEAN_SIDEQUEST_RYNN_BROTHER_2 = """She drops her gaze. A silence settles over the room for a moment before she continues.
@@ -25299,8 +25298,8 @@ You nod in agreement, thank Ginny once more, and leave Rynn in her care. Togethe
 Tears fill her eyes as she helplessly looks back at Rynn's unconscious body while you walk away, leaving her alone in the wilderness.""",
 	JEAN_Q2_LEAVE_RYNN_2 = "Once inside the mansion, Jean goes straight to her room and locks the door behind her. You think you can hear sobbing coming from that side.",
 	JEAN_SIDEQUEST_NAME = "Jean: A Bookish Request",
-	JEAN_SIDEQUEST_SUMMARY = "Jean needs a rare tome from the Grand Library in the Empire Capital.",
-	JEAN_SIDEQUEST_CAPITAL = "Visit the Grand Library in the Empire Capital.",
+	JEAN_SIDEQUEST_SUMMARY = "Jean needs a rare tome from the Grand Library in Palatine.",
+	JEAN_SIDEQUEST_CAPITAL = "Visit the Grand Library in Palatine.",
 	JEAN_SIDEQUEST_CAPITAL_1 = "Find a way into the Grand Library.",
 	JEAN_SIDEQUEST_MANSION = "Search the book owner's mansion in the capital.",
 	JEAN_SIDEQUEST_MANSION_1 = "Convince the beggar to cooperate",
@@ -25315,7 +25314,7 @@ Tears fill her eyes as she helplessly looks back at Rynn's unconscious body whil
 	JEAN_SYLAS_QUEST_NAME = "Jean: The Demon in the Sphere",
 	JEAN_SYLAS_QUEST_SUMMARY = "Jean needs help tracking down the mastermind behind the cursed artifact.",
 	JEAN_SYLAS_QUEST_STAGE_1 = "Visit chosen guild",
-	JEAN_SYLAS_QUEST_STAGE_2 = "Search for leads in Empire Capital",
+	JEAN_SYLAS_QUEST_STAGE_2 = "Search for leads in Palatine",
 	JEAN_SYLAS_QUEST_STAGE_3 = "Visit Arena",
 	JEAN_SYLAS_QUEST_STAGE_4 = "Ask merchants",
 	JEAN_SYLAS_QUEST_STAGE_5 = "Seek for a lost cart",
@@ -25383,7 +25382,7 @@ She returns her gaze to the scattered notes.
 	JEAN_SYLAS_HELP_RESPONSE_FAVOR = """Jean blinks. Then straightens a little.
 	
 {color=yellow|Jean: — Fair enough. Help me finish this, and I'll be in your debt.}""",
-	JEAN_SYLAS_GUILD_SUGGESTION = """After a brief discussion, it becomes clear that the only place with fresh leads on the mastermind is the Empire's capital. But before you head there, Jean brings up a suggestion.
+	JEAN_SYLAS_GUILD_SUGGESTION = """After a brief discussion, it becomes clear that the only place with fresh leads on the mastermind is Palatine. But before you head there, Jean brings up a suggestion.
 	
 {color=yellow|Jean: — As much as I hate to admit it, we could use support from one of the guild leaders. Someone with actual reach and power. Which leaves us with two options.}
 
@@ -25440,7 +25439,7 @@ Jean scoffs.
 {color=aqua|Myr: — I can see that you've retained at least some knowledge from your studies at the Academy. And yes, that is exactly what I expect to happen. Now, if you have no further questions, please leave my office. And if you do have questions I won't be answering them anyway.}""",
 	JEAN_SYLAS_AFTER_GUILD_RYNN_ALIVE = "After settling the matter with the guild, you and Jean head for the church to check on Rynn. Her condition remains stable, but Ginny reminds you that this won't be the case forever and if you want to save her you should bring back the artifact.",
 	JEAN_SYLAS_AFTER_GUILD_RYNN_LEFT = "After settling the matter with the guild, you and Jean head back to the mansion, preparing for the journey.",
-	JEAN_SYLAS_CAPITAL_MEET = """The Empire's capital greets you with its usual indifference and crowded streets. After a brief discussion, you decide to split your efforts: you'll check the building you last entered, while Jean returns to the library to fish for more information.
+	JEAN_SYLAS_CAPITAL_MEET = """Palatine greets you with its usual indifference and crowded streets. After a brief discussion, you decide to split your efforts: you'll check the building you last entered, while Jean returns to the library to fish for more information.
 	
 You diligently do your part and visit the abandoned house, yet see no signs of anyone visiting it since the last time you were here. Done with your part, you go back to the central square and wait for Jean. About an hour later, she finally shows up.""",
 	JEAN_SYLAS_CAPITAL_OPTION_DELAY = "What took you so long?",
@@ -25995,7 +25994,7 @@ She looks at you with deep concern in her eyes.""",
 {color=yellow|Jean: — ...And what are you saying? Why wouldn't Myr congratulate me when I deserved it? I mean, it's true that we started on the wrong note and didn't see eye to eye at first, but we reconciled after I presented my thesis... my thesis on... what?}
 
 She begins to look more and more confused, unable to properly retrieve the nonexistent chain of events that would lead her to this moment.""",
-	JEAN_SYLAS_DREAM_BREAK_OPTION_REMEMBER = "Jean, listen to me. Remember. Your research, the old house, Rynn, the monastery ruins, the monsters, the Empire's capital, Sylas, our fight with him",
+	JEAN_SYLAS_DREAM_BREAK_OPTION_REMEMBER = "Jean, listen to me. Remember. Your research, the old house, Rynn, the monastery ruins, the monsters, Palatine, Sylas, our fight with him",
 	JEAN_SYLAS_DREAM_BREAK_OPTION_ILLUSION = "This is all just an illusion, Jean. The demon trapped your mind here while using your body as a tool for his own gain",
 	JEAN_SYLAS_DREAM_BREAK_RESPONSE = """{color=yellow|Jean: — W-what? That's nonsense! We've dealt with that case ages ago! And after that I... it's been years... wait, why can't I remember what I was doing all that time? ...Ah, why does my head suddenly hurt? ...Could it really be? ...All of that is just an illusion?...}
 
@@ -26681,7 +26680,7 @@ Rouge's smile thins for a moment.
 	ROUGE_QUEST_STAGE_FURNITURE_GET = "Get requested furniture one way or another.",
 	ROUGE_QUEST_STAGE_LETTER = "Wait for Rouge's next request.",
 	ROUGE_QUEST_STAGE_MELCHOR = "Deliver Rouge's letter to Melchor.",
-	ROUGE_QUEST_STAGE_WAREHOUSE = "Search the Empire capital for the cult's warehouse.",
+	ROUGE_QUEST_STAGE_WAREHOUSE = "Search Palatine for the cult's warehouse.",
 	ROUGE_QUEST_STAGE_RAID = "Report the warehouse to Melchor.",
 	ROUGE_QUEST_STAGE_REWARD = "Return to Melchor.",
 	ROUGE_QUEST_STAGE_ROUGE = "Return to Rouge.",
@@ -26902,10 +26901,10 @@ You collapse against her, your body spent, your breathing ragged. Her tails wrap
 	LIRA_QUEST3_QUEST_NAME = "Lira: Origins",
 	LIRA_QUEST3_QUEST_SUMMARY = "Lira wants to learn where she came from, and the trail leads you to her past.",
 	LIRA_QUEST3_QUEST_STAGE_START = "Talk to Lira at the mansion.",
-	LIRA_QUEST3_QUEST_STAGE_TEMPLE = "Visit the temple in the elven capital.",
+	LIRA_QUEST3_QUEST_STAGE_TEMPLE = "Visit the temple in Eldewyn.",
 	LIRA_QUEST3_QUEST_STAGE_REPORT_LIRA = "Talk to Lira",
 	LIRA_QUEST3_QUEST_STAGE_TRADER = "Question the Aliron slave trader.",
-	LIRA_QUEST3_QUEST_STAGE_EMPIRE = "Travel to the Empire Capital and look for the bandit leader.",
+	LIRA_QUEST3_QUEST_STAGE_EMPIRE = "Travel to Palatine and look for the bandit leader.",
 	LIRA_QUEST3_QUEST_STAGE_ROAD = "Visit ambush spot.",
 	LIRA_QUEST3_QUEST_STAGE_DEN = "Follow the directions to the bandits' den and rescue Lira.",
 	LIRA_QUEST3_QUEST_STAGE_CARAVAN_PREPARE = "Find the caravan master and arrange the bait caravan.",
@@ -27008,7 +27007,7 @@ She gives a small smile, her voice softening.
 	LIRA_QUEST3_OFFER_SEARCH_3 = """She blinks, clearly not expecting that answer.
 
 {color=yellow|Lira: — You would...? I didn't expect that. I didn't want to burden you, but if you learn something about that, it would mean a lot to me. Thank you, [master].}""",
-	LIRA_QUEST3_OFFER_SEARCH_END = """After that, Lira gets back to her duties while you consider how to learn more. The first and most obvious place to start is the temple in the elven capital, where Lira lived for most of her life.""",
+	LIRA_QUEST3_OFFER_SEARCH_END = """After that, Lira gets back to her duties while you consider how to learn more. The first and most obvious place to start is the temple in Eldewyn, where Lira lived for most of her life.""",
 	LIRA_QUEST3_TEMPLE_AUDIENCE = """The journey is familiar, and soon you step beneath the shadow of the elven great tree.
 
 Inside the temple, the air feels still and heavy with ritual. It does not take long to arrange an audience, though the priestesses look more tolerant than welcoming. Eventually, you are led to the headmistress's chamber.
@@ -27077,7 +27076,7 @@ On the way home, Lira's thoughts stay elsewhere.
 You confirm that the search will continue. Inspired by your words, Lira flashes a small smile.
 
 {color=yellow|Lira: — Then I will be waiting for your orders, [master].}""",
-	LIRA_QUEST3_EMPIRE_NOTICE = """Following the lead, you arrive at the Empire Capital. The city greets you with crowded streets, hurried footsteps, and faces that do not linger on strangers.
+	LIRA_QUEST3_EMPIRE_NOTICE = """Following the lead, you arrive at Palatine. The city greets you with crowded streets, hurried footsteps, and faces that do not linger on strangers.
 
 Lira stays close to your side, overwhelmed by the scale of it all.
 
@@ -28090,11 +28089,11 @@ The two of you make your way back to the road, leaving the quiet grove behind.""
 	ACT4_QUEST_CATACOMB_DESC = "A concealed entrance outside the imperial walls leads toward the sealed catacombs beneath the capital.",
 	ACT4_ERDYNA_QUEST_SUMMARY = "Erdyna has gotten involved in your search for the Empire's artifact and pointed you toward people and places hidden beneath the capital.",
 	ACT4_ERDYNA_QUEST_NAME = "Erdyna: The Bandit King",
-	ACT4_ERDYNA_QUEST_STAGE_FOLLOWUP = "Meet with Erdyna again in the Empire capital.",
+	ACT4_ERDYNA_QUEST_STAGE_FOLLOWUP = "Meet with Erdyna again in Palatine.",
 	ACT4_ERDYNA_QUEST_STAGE_SENERUS = "Visit Senerus with Erdyna and learn what he knows about the artifact.",
-	ACT4_ERDYNA_QUEST_STAGE_CATACOMBS = "Visit catacomb entrance in Empire region.",
+	ACT4_ERDYNA_QUEST_STAGE_CATACOMBS = "Visit catacomb entrance in the Grand Empire region.",
 	ACT4_ERDYNA_QUEST_STAGE_MYR = "Show the copied catacomb writing to Myr.",
-	ACT4_ERDYNA_QUEST_STAGE_DRAGONHUNTERS = "Visit the elven capital to search for the dragon hunters.",
+	ACT4_ERDYNA_QUEST_STAGE_DRAGONHUNTERS = "Visit Eldewyn to search for the dragon hunters.",
 	ACT4_ERDYNA_QUEST_STAGE_THALENDIR_VISIT = "Visit House Thalendir estate.",
 	ACT4_ERDYNA_FOLLOWUP_1 = """{color=yellow|Erdyna: — Alright, so about that artifact. Hope you didn't take me for an expert on these things, but worry not. I happen to know just the right person for something like that. But first I need to stop by my crew's base. Will you follow?}""",
 	ACT4_ERDYNA_FOLLOWUP_1_OPTION_GO = "Alright, let's go.",
@@ -28236,11 +28235,11 @@ Senerus pauses, seemingly dissatisfied with how much he had to leave unsaid.
 	ACT4_SENERUS_GODS_3 = """{color=aqua|Senerus: — Ah, Elisia, almost forgot about her. Partly because her existence was almost entirely bound to the First One. Her cults vanished almost completely after his death, and it is hard to say much about her on her own. She was one of the first deities to emerge after the First One, and she was essentially his life partner, giving birth to a few other divine beings before disappearing. Some First One cults believed she died alongside him, others say she tried to protect him but failed.}
 
 {color=aqua|Senerus: — Beyond that, she was connected to animals. Her image was often associated with doves and foxes. The beastkin race has been tied to her, at least in part.}""",
-	ACT4_SENERUS_GODS_4 = "{color=aqua|Senerus: — Our collective mother, of course. I mean the elves, obviously. She is somewhat more... feral than I would personally appreciate, but she is deeply in tune with her people, the forests, and all life within them. Naturally, she was among the first gods, and her strength and pride reflect that.}",
+	ACT4_SENERUS_GODS_4 = "{color=aqua|Senerus: — Our collective mother, of course. I mean the elves, obviously. She is somewhat more... feral than I would personally appreciate, but she is deeply in tune with her people, the Ambervale forests, and all life within them. Naturally, she was among the first gods, and her strength and pride reflect that.}",
 	ACT4_SENERUS_GODS_5 = "{color=aqua|Senerus: — That is not going to happen tomorrow. Nor do we have any real idea whether it can be prevented, or whether it is even possible for mortals to do so. Don't worry yourself over it, it will take centuries or even millennia before any noticeable decline occurs.}",
 	ACT4_SENERUS_GODS_6 = "{color=aqua|Senerus: — Ask what you still need, or we can return to the artifacts.}",
 	ACT4_SENERUS_GODS_OPTION_EREBUS = "There's shrines made of stone that I come across sometimes.",
-	ACT4_SENERUS_GODS_OPTION_CELENA = "Aliron kingdom seems to have a prominent Celena temple.",
+	ACT4_SENERUS_GODS_OPTION_CELENA = "The Kingdom of Aliron seems to have a prominent Celena temple.",
 	ACT4_SENERUS_GODS_OPTION_ELISIA = "Celena's mother?",
 	ACT4_SENERUS_GODS_OPTION_FREYA = "What can you tell me about Freya?",
 	ACT4_SENERUS_GODS_OPTION_MAGIC = "Wait, are you saying all magic will eventually degrade? Why isn't anyone doing anything about it?",
@@ -28396,10 +28395,10 @@ You present the copied symbols and describe the doors as best as you can. Myr ta
 	ACT4_ERDYNA_EMPIRE_CAPITAL_OPT_MELCHOR = "Ask Melchor about imperial archive records",
 	ACT4_ERDYNA_EMPIRE_CAPITAL_OPT_GROTUS = "Find Grotus about the archive records",
 	ACT4_ERDYNA_THALENDIR_HOUSE_NAME = "House Thalendir Estate",
-	ACT4_ERDYNA_THALENDIR_HOUSE_DESC = "The guarded estate of House Thalendir in the elven capital",
+	ACT4_ERDYNA_THALENDIR_HOUSE_DESC = "The guarded estate of House Thalendir in Eldewyn",
 	ACT4_ERDYNA_ARCHIVE_HIDEOUT_NAME = "Archive Thieves' Hideout",
 	ACT4_ERDYNA_ARCHIVE_HIDEOUT_DESC = "An abandoned hideout near the imperial roads where thieves may have left a stolen archive copy.",
-	ACT4_ERDYNA_LINEAGE_1 = """You spend some time asking around the elven capital about the old dragon hunters lineage. The name still carries enough weight to make people cautious, though most of those you question answer with polite evasions rather than open refusal.
+	ACT4_ERDYNA_LINEAGE_1 = """You spend some time asking around Eldewyn about the old dragon hunters lineage. The name still carries enough weight to make people cautious, though most of those you question answer with polite evasions rather than open refusal.
 
 {color=yellow|Erdyna: — I can't see anyone but elves through here. And they live on the trees, huh?}
 

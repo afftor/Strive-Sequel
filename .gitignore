@@ -8,3 +8,4 @@ export_presets.cfg
 .DS_Store
 .aider*
 AGENTS.md
+.agents/

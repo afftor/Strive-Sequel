@@ -831,6 +831,7 @@ func set_baby_name(text):
 
 func open_chest():
 	hold_selection = true
+	input_handler.PlaySound("chest_opening")
 	var loot_win = input_handler.get_spec_node(input_handler.ANIM_LOOT)
 	if !gui_controller.windows_opened.has(loot_win):
 		gui_controller.windows_opened.append(loot_win)

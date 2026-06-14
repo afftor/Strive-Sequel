@@ -80,7 +80,7 @@ var skills = {
 		type = 'combat', 
 		ability_type = 'skill',
 		tags = ['damage', 'damage_spot', 'stealth_casting'],
-		reqs = [],
+		reqs = [{code = 'has_status', status = 'hide', check = true}],
 		targetreqs = [],
 		effects = [], 
 		cost = {mp = 8},
@@ -94,15 +94,7 @@ var skills = {
 		damage_type = 'weapon',
 		sfx = [{code = 'assassinate', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 1.75,
-		variations = [
-			{
-				reqs = [{code = 'has_status', status = 'hide', check = true}],
-				set = {value = 2.25},
-				append = {tags = 'ultimate'}
-#				add = {descript = '_1'}
-			}
-		]
+		value = 2.0,
 	},
 	devastation = {
 		code = 'devastation',
