@@ -483,6 +483,9 @@ var data = {
 		image = null, character = "lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_ROAD_2",
+		options = [
+			{code = 'quest_fight', args = 'lira_quest3_bait', text = "LIRA_QUEST3_DEN_OPTION_2", reqs = [], dialogue_argument = 0, type = 'next_dialogue',},
+		],
 	},
 	lira_quest3_road_postfight_1 = {
 		image = null,
