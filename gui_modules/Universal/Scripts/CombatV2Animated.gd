@@ -1142,6 +1142,8 @@ func use_skill(skill_code, caster, target, mode = variables.SKILL_BASE):
 	tmp_handler.setup_caster(caster)
 	tmp_handler.setup_target(target)
 	ActionQueue.invoke()
+	if template.has("tags") and template.tags.has("need_to_see"):
+		ResourceScripts.game_progress.try_append_seen_skill(skill_code)
 
 
 func get_char_by_pos(pos):
