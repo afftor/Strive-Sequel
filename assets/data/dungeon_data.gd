@@ -2586,7 +2586,7 @@ var dungeons = {
 		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
 		custom_background = 'combat_cave',
 		enemyarray = [['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
-		final_enemy = [['lira_quest_3_den_boss', 1]], final_enemy_type = 'event',
+		final_enemy = [['lira_quest3_den_1', 1]], final_enemy_type = 'event',
 		event_data = {},
 		event_room_number = [0,0],
 		material_room_number = [0,0],
@@ -2606,7 +2606,7 @@ var dungeons = {
 		tags = ['quest'],
 		options = [],
 		scripteventdata = [
-			{trigger = 'enter', args = 'lira_quest_3_den_entry'}
+			{trigger = 'enter', args = 'lira_quest3_den_intro_1'}
 		],
 	},
 	quest_leon_forest = {

@@ -2906,7 +2906,6 @@ var quests = {
 		stages = {
 			start = {code = 'start', name = 'LIRA_QUEST2_QUEST_NAME', descript = 'LIRA_QUEST2_QUEST_STAGE_START'},
 			fair = {code = 'fair', name = 'LIRA_QUEST2_QUEST_NAME', descript = 'LIRA_QUEST2_QUEST_STAGE_FAIR'},
-			return_home = {code = 'return_home', name = 'LIRA_QUEST2_QUEST_NAME', descript = 'LIRA_QUEST2_QUEST_STAGE_RETURN'},
 		},
 	},
 	lira_quest_3 = {
