@@ -289,6 +289,15 @@ func get_bonus_mastery_points(mas, invested_points):
 func get_total_mastery_points(mas, invested_points):
 	return invested_points + get_bonus_mastery_points(mas, invested_points)
 
+func build_passive_mastery_bonus_tooltip(bonusstats, mul = 1):
+	var lines = globals.build_desc_for_bonusstats(bonusstats, mul).strip_edges().split("\n")
+	var result = []
+	for line in lines:
+		line = line.strip_edges()
+		if line != "":
+			result.append("Passive: " + line)
+	return PoolStringArray(result).join("\n")
+
 func build_mastery_cat():
 	input_handler.ClearContainer($MasteryPanel/Categories2, ['button'])
 	var tmp = null
@@ -309,10 +318,10 @@ func build_mastery_cat():
 			button.get_node('icon/Label').text = str(lv)
 			globals.connecttexttooltip(button, tr(masdata.name))
 			text += "[center]"+tr("MASTERY"+mas.to_upper()) + "[/center]\n"+tr("LVLBONUSPERPOINT")+":\n"
-			text += globals.build_desc_for_bonusstats(masdata.passive) + '\n'
+			text += build_passive_mastery_bonus_tooltip(masdata.passive) + '\n'
 			if lv > 0:
 				text += "[center]"+tr("LVLCURRENT")+":[/center]\n"
-				text += globals.build_desc_for_bonusstats(masdata.passive, lv) + '\n'
+				text += build_passive_mastery_bonus_tooltip(masdata.passive, lv) + '\n'
 			#add mastery tooltip
 			var mastery_points_pools = get_mastery_pools(masdata)
 			var invested_points = get_invested_mastery_points(mas, mastery_points_pools)
@@ -411,14 +420,22 @@ func change_mastery(mas):
 			var trdata = Traitdata.traits[tr_id]
 			var skill_icon = input_handler.DuplicateContainerTemplate(panel.get_node('container'), 'skill')
 			skill_icon.get_node('icon').material = load("res://assets/masked_sprite.tres").duplicate(true)
+			var frame_id = 'frame_trait'
+			var frame_mask_id = 'frame_trait_mask'
+			if trdata.has('tags') and trdata.tags.has('sex_action_unlock'):
+				frame_id = 'frame_sex_skill'
+				frame_mask_id = 'frame_sex_skill_mask'
 			if lv_tmp <= lv:
-				skill_icon.texture = images.get_icon('frame_trait_1')
+				skill_icon.texture = images.get_icon(frame_id + '_1')
 			else:
-				skill_icon.texture = images.get_icon('frame_trait')
+				skill_icon.texture = images.get_icon(frame_id)
 #			skill_icon.texture = images.get_icon('frame_trait')
-			skill_icon.get_node('icon').texture = trdata.icon
-			skill_icon.get_node('icon').material.set_shader_param('mask', images.get_icon('frame_trait_mask'))
-			globals.connecttexttooltip(skill_icon, trdata.descript)
+			if trdata.icon is String:
+				skill_icon.get_node('icon').texture = load(trdata.icon)
+			else:
+				skill_icon.get_node('icon').texture = trdata.icon
+			skill_icon.get_node('icon').material.set_shader_param('mask', images.get_icon(frame_mask_id))
+			globals.connecttexttooltip(skill_icon, tr(trdata.descript))
 #			if f:
 #				text += tr('TRAITLEARN') + tr(trdata.name) + '\n'
 		for s_id in lvdata.action:

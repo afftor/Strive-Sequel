@@ -1076,6 +1076,25 @@ var data = {
 				dialogue_argument = 0
 			},
 			{
+				code = "cali_servants_1",
+				disabled = true,
+				text = "CALI_SERVANTS_START_OPTION",
+				reqs = [
+					{
+						type = "active_quest_stage",
+						value = "cali_servants_quest",
+						stage = "stage1"
+					},
+					{
+						type = "has_money",
+						value = 500,
+						check = false
+					}
+				],
+				type = "next_dialogue",
+				dialogue_argument = 0
+			},
+			{
 				code = "amelia_bonus",
 				text = "AMELIA_BONUS_OPTION",
 				reqs = [
@@ -1238,6 +1257,24 @@ var data = {
 					{
 						type = "has_money",
 						value = 500
+					}
+				],
+				type = "next_dialogue"
+			},
+			{
+				code = "cali_servants_new_leader_1",
+				disabled = true,
+				text = "CALI_SERVANTS_NEW_LEADER_START_OPTION",
+				reqs = [
+					{
+						type = "active_quest_stage",
+						value = "cali_servants_quest",
+						stage = "stage1"
+					},
+					{
+						type = "has_money",
+						value = 500,
+						check = false
 					}
 				],
 				type = "next_dialogue"

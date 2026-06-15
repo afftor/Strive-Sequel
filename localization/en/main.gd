@@ -263,7 +263,7 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	PRESETDATADEBUGNORMALNAME = "Normal",
 	PRESETDATADEBUGNORMALDIS = "Standard difficulty for players with a reasonable grasp at management games.",
 	PRESETDATADEBUGHARDNAME = "Hard",
-	PRESETDATADEBUGHARDDIS = "Challenging difficulty. Defeated characters are lost forever. Loan payments aren't cancelled with prologue completion. Factors can't be upgraded at slave market (except growth). ",
+	PRESETDATADEBUGHARDDIS = "Challenging difficulty. Defeated characters are lost forever. Loan payments aren't cancelled with prologue completion. Factors can't be upgraded at slave market (except Growth). ",
 	PRESETDATADEBUGIMPORTNAME = "import",
 	PRESETDATADEBUGIMPORTDIS = "Start with only a Master. ",
 	PRESETDATADEBUGADVANCEDNAME = "advanced",
@@ -376,6 +376,7 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	REQCONFLICTCLASS = "Conflicting Class",
 	REQHASANYCLASS = "Has any of Classes",
 	REQRACE = "Race",
+	REQCONFLICTRACE = "Conflicting Race",
 	REQRACEISBEAST = "Only for Bestial races",
 	REQMUSTHAVEGEAR = "Must have",
 	REQMUSTHAVEGEAR_FALSE = "Must not have",
@@ -837,7 +838,7 @@ Otherwise: +3 Physics""",
 	ITEMAPHRODISIAC = "Aphrodisiac",
 	ITEMAPHRODISIACDESCRIPT = """A strong potion bringing out a person's inner lust.
 
-Turns character Horny during sex interactions. """,
+Turns character Horny during sex interactions and allow them to orgasm even from mildly stimulating actions. """,
 	ITEMALCOHOL = "Whiskey",
 	ITEMALCOHOLDESCRIPT = """A simple strong beverage produced from various grains.
 
@@ -1694,6 +1695,32 @@ Does not take turn to activate. """,
 	SKILLRAZE_THE_LIGHT = 'Raze the Light',
 	SKILLBUMP_IN_THE_NIGHT = 'Bump in the Night',
 	SKILLSKEWING_SHADOW = 'Skewing Shadow',
+	SKILLSUMMON_RANDOM_DK_GUARD = 'Call Reinforcement',
+	SKILLKILL_THEM_NOW = 'Kill them NOW!',
+	SKILLDK_BUFF_ALLY = 'You..',
+	SKILLREGAL_INCENTIVE = 'I shall grant you Regal Incentive',
+	SKILLFORCE_OVERLOAD = 'Overload your Core, Now!',
+	SKILLCROSSBOWMEN_ON_MY_COMMAND = 'Crossbowmen! On my Command!',
+	SKILLDK_BLOW_EM_UP = 'Blow \'em Up!! I\'ll cover the repair cost personally.',
+	SKILLEMPEROR_HAMMERFALL = 'Emperor’s Hammerfall',
+	SKILLOPEN_THE_MAGMA_CHAMBER = 'That\'s it! Open the Magma Chamber Gate!!!',
+	SKILLTREMOR_WAVE = 'Tremor Wave',
+	SKILLDOUBLE_BITTED_AXE = 'Double-bitted axe',
+	SKILLPRISMATIC_BEAM = 'Prismatic Beam',
+	SKILROCK_SLIDE = 'Rock Slide',
+	SKILLACCELERATING_PLUNGE = 'Accelerating Plunge',
+	SKILLCOMET_DIVE = 'Comet Dive',
+	SKILLTORNADO = 'Tornado',
+	SKILLDOWNBURST_GUST = 'Downburst Gust',
+	SKILLDEAFENING_SHRIEK = 'Deafening Shriek',
+	SKILLMULTILATE_PREY = 'Multilate Prey',
+	SKILLCHARGE_THROUGH = 'Charge Through',
+	SKILLSTORM_PATH = 'Storm Path',
+	SKILLSPLIT_ARMOR_SPILL_BLOOD = 'Split the Armor, Spill the blood',
+	SKILLDUSTY_WHIRLWIND = 'Dusty Whirlwind',
+	SKILLBLURRING_FLURRY_OF_BLADE = 'Blurring Flurry of Blade',
+	SKILLBLINDING_CROSS_SLASH = 'Blinding Cross Slash',
+	SKILLDISPOSAL = 'Disposal',
 	STATUSDESC_BLEED = "Bleeding: Take 10% of Maximum HP as neutral damage per turn.",
 	STATUSDESC_POISON = "Poisoned: Take 10% of Maximum HP as neutral damage per turn.",
 	STATUSDESC_BURN = "Burning: Take 8% of Maximum HP as Fire damage per turn.",
@@ -1805,7 +1832,7 @@ Improves disposition towards {color=yellow|Social} actions.""",
 	ACTIONPUBLICUSEDESCRIPT = """Place [name] in stockade having [him] serve a glory hole.
 Improves disposition towards {color=yellow|Positive and Humiliation} actions.""",
 	ACTIONMINDREAD = "Mind Read",
-	ACTIONMINDREADDESCRIPT = "Cast Mind Read on [name], potentially learning [his] strong and weak spots. Costs 5 Mana. ",
+	ACTIONMINDREADDESCRIPT = "Cast Mind Read on [name], potentially learning [his] strong and weak spots. Costs 3 Mana. ",
 	ACTIONMINDREADDESCRIPTMASTERY = "Training Action: Allows you to cast Mind Read on trainee, potentially learning their strong and weak spots.",
 	ACTIONINFLUENCE = "Influence",
 	ACTIONINFLUENCEDESCRIPT = """Use magic to influence [name]'s mind making [him] accept [his] role as a slave.
@@ -2749,7 +2776,7 @@ Spell Mana cost reduced by 15%
 	HEALERSLAVETRAITDESCRIPT = "Healing Efficiency: {color=green|+2%}",
 	MANAGERSLAVETRAITDESCRIPT = "Loyalty from skills: {color=green|+3%}",
 	INFOHOLDSHIFT = "Hold shift for details",
-	STATGROWTH_FACTORDESCRIPT = """Growth is character's affinity to getting stronger. As character acquire more classes all their stats increase. Non-slave characters will also gain Universal Mastery Points. Every point of growth increases the number of classes which will increase its stats. It also greatly affects character's Value.
+	STATGROWTH_FACTORDESCRIPT = """Growth is character's affinity to getting stronger. As character acquire more classes all their stats increase. Non-slave characters will also gain Universal Mastery Points. Every point of growth increasesde amount of classes that will raise character stats. It also greatly affects character's Value.
 
 {color=green|Affected stats are: Productivity, Physics, Wits, Charm, Max Health, Max Mana, Speed, Hitrate, Evasion, ATK, MATK, DEF, MDEF.} """,
 	STATPHYSICS_FACTORDESCRIPT = """{color=yellow|Physics factor} represents physical potential of the character. It increases [color=aqua]Physical[/color] growth and influences melee combat.
@@ -3587,7 +3614,7 @@ Can only be used when no heavy armor is worn. Instant.""",
 	SKILLBARRIER = "Barrier",
 	SKILLBARRIERDESCRIPT = "Provides a magical shield that absorbs 100 damage. Shield lasts for 3 turns.",
 	SKILLASSASSINATE = "Assassinate",
-	SKILLASSASSINATEDESCRIPT = "Strike target for 175% of ATK. If user is In The Shadows, damage is increased to 225% of ATK.",
+	SKILLASSASSINATEDESCRIPT = "Can only be used while In The Shadows. Strikes target for 200% of ATK.",
 	SKILLPROTECT = "Protect",
 	SKILLPROTECTDESCRIPT = "Takes damage instead of ally for 2 turns.",
 	SKILLSHAREDTOY = "Shared Toy",
@@ -3752,13 +3779,12 @@ Single target magic spells have 100% chance to be followed up with a basic melee
 {color=brown|Luminance}: Single target Light abilities make target receive more Light and Dark damage.""",
 	TRAITDRUIDDESCRIPT = "Earth Spell damage: +20%",
 	TRAITBERSERKERDESCRIPT = "{color=brown|Frenzy}: After killing an enemy, gain an extra turn (once per combat).",
-	TRAITSNIPERDESCRIPT = "Single Target Physical damage: +25%",
+	TRAITSNIPERDESCRIPT = "Single Target Physical damage: +25%\nMarksmanship skills won't break In The Shadows effect.",
 	TRAITSHIELDBEARERDESCRIPT = "{color=brown|Shield Counter}: If equipped with a shield that grants Evasion, counter enemy attacks in melee range.",
 	TRAITPALADINDESCRIPT = "{color=brown|Smite}: Deal 25% more damage and take 15% less damage from Undead and Demon type enemies.",
 	TRAITROUGE = "Ruthless",
 	TRAITROUGEDESCRIPT = "Restore some health and mana when deals killing blow.\nWhen in front row: +35% Damage, +10% Crit Chance.\nCan't be Trained or receive Loyalty Points.",
 	TRAITASSASSINDESCRIPT = "Single target Warfare and Protection skills won't break In The Shadows effect.",
-	TRAITASNIPERDESCRIPT = "Marksmanship skills won't break In The Shadows effect.",
 	TRAITBLOODMAGEDESCRIPT = "{color=brown|Blood Mastery}: Dealing damage to bleeding targets recovers HP and MP and increases MATK until end of fight.",
 	TRAITALIOSDESCRIPT = "{color=brown|Unbound}: When only character is alive in party: gain +50 evasion, +20 speed until end of battle.",
 	TRAITMIXX_CHAMPIONDESCRIPT = "{color=brown|Seething Blackness}: Dark Element attacks ignore all DEF/MDEF and have +30 hit rating.",
@@ -3989,7 +4015,7 @@ Requires: Sex:Advanced""",
 	TRAITTRAINING_OBEDIENCE = "Obedience",
 	TRAITTRAINING_OBEDIENCEDESCRIPT = "Make [name] give up on [his] autonomy, which will allow to freely sell or give [him] away.",
 	TRAITTRAINING_CALLMASTER = "Master Acknowledgement",
-	TRAITTRAINING_CALLMASTERDESCRIPT = """Demand [name] of [his] unwavering loyalty to you.
+	TRAITTRAINING_CALLMASTERDESCRIPT = """Demand [name]'s unwavering loyalty to you.
 	 
 {color=yellow|Allows to finish training and provide [him] with specilization.}""",
 	TRAITTRAINING_RELATION = "Relationship",
@@ -4108,7 +4134,7 @@ Increased Health, DEF and MDEF""",
 	TRAITEFFECTFAVFOOD = "Favorite Food: +5%% Productivity, +5%% Experience Gain",
 	TRAITEFFECTHATEDFOOD = "Hated Food: -10%% Productivity",
 	TRAITEFFECTSTARVE = "Starvation: -50%% Productivity, -50%% Damage",
-	TRAITEFFECTGRAVEINJ = "Grave Injury: -25%% Productivity, -50 Sexuals. Can't participate in Combat",
+	TRAITEFFECTGRAVEINJ = "Grave Injury: -25%% Productivity. Can't participate in Combat",
 	TRAITEFFECTINJ = "Injury: -30%% Max HP, -20 Hitrate.",
 	TRAITEFFECTDISCIPLINE = "Discipline: +50%% Labor and craft efficiencies",
 	TRAITEFFECTSEDUCE = "Seduce: -7 Obedience drain",
@@ -4467,6 +4493,54 @@ Remove once being hit by or use a light or fire move.""",
 	EFFECT_UNHOLY_NIGHT = 'Immune to Silence. +30 MATK.',
 	TRAIT_SNUFF_CANDLE_DESC = """When hit by a Light or Fire move, use Stuff Out against the attacker.
 Can be disabled if the user is silenced or immobilised.""",
+	EFFECTNAME_DK_SECURITY_CONCERN_DESC = 'National Security\'s Concern',
+	TRAIT_DK_SECURITY_CONCERN_DESC = """When HP drops below 50% for the first time, randomly summon his soldier until the field is full but gain stun for 1 turn.
+At the end of his next turn, gain Unstoppable.""",
+	EFFECTNAME_KING_GUARD_B = 'King\'s Guard: Blade',
+	EFFECTNAME_KING_GUARD_BLADE = 'skirmisher\'s protection',
+	EFFECT_KING_GUARD_BLADE = 'Dwarf King take 30% less damage from melee attack and have +25% Disarm & Silence resist while this unit is alive',
+	EFFECTNAME_KING_GUARD_S = 'King\'s Guard: Shield',
+	EFFECTNAME_KING_GUARD_SHIELD = 'shielder\'s protection',
+	EFFECT_KING_GUARD_SHIELD = 'Dwarf King take 30% less damage from physical ranged attack and have +25% Disarm & Silence resist while this unit is alive',
+	EFFECTNAME_KING_GUARD_A = 'King\'s Guard: Automaton',
+	EFFECTNAME_KING_GUARD_AUTOMATION = 'golem\'s protection',
+	EFFECT_KING_GUARD_AUTOMATION = 'Dwarf King gain +80 MDEF and have +25% Disarm & Silence resist while this unit is alive',
+	EFFECTNAME_KNOCK_PRONE = 'Knock Prone',
+	EFFECT_KNOCKPRONE = '-40 Earth Resistant, -50% Evasion and Hitrate, Spell cast by this unit have 30% chance to miss.',
+	EFFECTNAME_UNSTOPPABLE = 'Unstoppable',
+	EFFECT_UNSTOPPABLE = 'Immune to Stun, Sleep, and Freeze',
+	EFFECTNAME_EXECUTION_ORDER = 'Execution Order',
+	EFFECT_EXECUTION_ORDER = """Gain 1 stack of Fragile whenever this unit is hit.
+On being kill: If the killer is a dwarf, they gain Promotion""",
+	EFFECTNAME_DWARF_PROMOTION = 'Promotion',
+	EFFECT_DWARF_PROMOTION = '+20% Damage dealt. +50 Hitrate. +30% Critical Chance. +10 Speed.',
+	EFFECTNAME_OVERLOADED_GOLEM_CORE = 'Overloaded Golem Core',
+	EFFECT_OVERLOADED_GOLEM_CORE = """All attacks now have a 70% chance of inflicting burn.
+On turn end: Deal chip fire damage to all enemies.
+Demerit: Lose 15% of max hp every turn.
+Can be removed by being frozen.""",
+	EFFECTNAME_PREY_OF_BIRD = 'Prey of Bird',
+	EFFECT_PREY_OF_BIRD = """Unavoidable target of Elder Gryphon\'s Comet Dive skill. 
+Prepare to receive a lot of damage.""",
+	EFFECTNAME_HEIGHT_BEYOND_MORTAL_REACH = 'Height Beyond Mortal Reach',
+	EFFECT_HEIGHT_BEYOND_MORTAL_REACH = """Always evade melee attacks.
+50% chance to evade spells. Reduce ranged damage taken by 40%.
++125 Evasion and Earth resist is set to 100.
+Can use skill even under immobilizing effects.
+Will use [Comet Dive] skill once expired.""",
+	EFFECTNAME_CATASTROPHIC_MOMENTUM = 'Catastrophic Momentum',
+	EFFECT_CATASTROPHIC_MOMENTUM = """+50% ATK and +150 Hit rate per stack (Max 2 stack).
+At 2 stack: Comet Dive now cause a damaging shockwave which can be resist by Stonewall and Earth Shield.
+Lose 1 stack when struck by a critical hit.
+Automatically consume 1 stack of this effect to clear immobilising effects.""",
+	EFFECTNAME_TURBULENCE_AIR = 'Turbulence Air',
+	EFFECT_TURBULENCE_AIR_TRAIT = """Reduce hit rate of all enemy\'s single-target ranged attack (including spell) by 40.
+Mind, Light, and Dark resist of this unit cannot be alter.""",
+	TRAIT_DUAL_BLADE_MASTERY_DESC = 'Disarm immunity. Every attack deals additional physical damage.',
+	EFFECTNAME_ANTAGONIZED = 'Antagonized',
+	EFFECTNAME_DUTY_TO_PROTECT = 'Duty to Protect',
+	EFFECT_ANTAGONIZED = 'Deal and Take +10% more damage.',
+	EFFECT_DUTY_TO_PROTECT = '+20 ATK nd Hit rate.',
 	RESETTRAINREQ = "Reset training to step 0 and restore Spirit. Requires Oblivion potion.",
 	RESETTRAINING = "All training progress will be discarded. Are you sure?",
 	BUFFDESCRIPTDEFENDER = "Defender: Will shield allies from attacks unless stunned.",
@@ -5114,9 +5188,14 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	SEXTRAITDESIRED = "Desired",
 	SEXTRAITCURIOUS = "Curious",
 	SEXTRAITLIFE_POWER = "Life Power",
-	SEXSKILLSDESCRIPT = """Sex skills improve character's performance while interacting and affect the Sexuals stat. Higher Sex Skill will make a partner more aroused from Character's actions.
+	TRAITCALMING_TOUCH = "Calming Touch",
+	TRAITEMPATHIC_INSIGHT = "Empathic Insight",
+	TRAITREFRESHING_PULSE = "Refreshing Pulse",
+	TRAITTEASING_WINDS = "Teasing Winds",
+	TRAITDARK_RAPTURE = "Dark Rapture",
+	SEXSKILLSDESCRIPT = """Sex skills improve character's performance while interacting and affect protstitution performance. 
 
-Sex skills are increased when performing related action and their growth is dependent on Sex Factor.""",
+Sex skills are obtained during sex minigame during encouragement mechanic. Sex Factor makes it easier to trigger.""",
 	SEXSKILLORAL = "Oral",
 	SEXSKILLANAL = "Anal",
 	SEXSKILLPETTING = "Petting",
@@ -5176,6 +5255,21 @@ Sex skills are increased when performing related action and their growth is depe
 	SEXTRAITDESIREDDESCRIPT = "[name] is extremely attractive, making [his] partners more excited. Partners' Arousal is increased by 25%.",
 	SEXTRAITCURIOUSDESCRIPT = "While [name] is interested in sex, [he]'s actually learning more than just it. Sex Encounters give 25% more experience.",
 	SEXTRAITLIFE_POWERDESCRIPT = "Sex is refreshing to [name]. Recovers 10 health per orgasm after sex interaction. ",
+	TRAITCALMING_TOUCHDESCRIPT = """Sex Interaction Spell: Calming Touch
+
+Reduces target's accumulated stress over non-consensual actions. 3 mana. Can only be cast once.""",
+	TRAITEMPATHIC_INSIGHTDESCRIPT = """Sex Interaction Spell: Empathic Insight
+
+Look inside everyone's hearts to Gain 3 Connection points. 6 Mana. Can only be cast once.""",
+	TRAITREFRESHING_PULSEDESCRIPT = """Sex Interaction Spell: Refreshing Pulse
+
+Restore 2 turns for all participants. 8 Mana, can only be cast once.""",
+	TRAITTEASING_WINDSDESCRIPT = """Sex Interaction Spell: Teasing Winds
+
+Greatly improves hornyness and arousal without making target orgasm. 5 Mana.""",
+	TRAITDARK_RAPTUREDESCRIPT = """Sex Interaction Spell: Dark Rapture
+
+Forces target to orgasm against their will with slight impact over consent. 7 Mana.""",
 	DIALOGUEESCAPETEXT = "[name] has escaped from your custody. Perhaps you should have focused on their loyalty or behavior more.",
 	DIALOGUEESCAPECLOSE = "This is unfortunate",
 	LOSE_MESSAGE = "Sadly, it seems that your reign is over.",
@@ -5392,6 +5486,40 @@ Sex skills are increased when performing related action and their growth is depe
 	INTERACTION_ORGASM_DENY_BEG_SUCCESS = "Unable to resist the temptation, [name2] look[s/2] into [his1] eyes and meekly beg[s/2] for the relief.",
 	INTERACTION_ORGASM_DENY_BEG_FAILURE = "Despite shameful condition, [name2] muster[s/2] enough will and turn[s/2] away from [name1] in distress. [He2]'s still on the edge, hoping to get off though. ",
 	INTERACTION_ORGASM_DENY_DENY = "[name1] does not allow [name2] to have [his2] relief by holding [him2] back. [name2] got no choice but to express [his2] disappointment. ",
+	INTERACTION_ORGASM_GIVER_NAME = "[names1]",
+	INTERACTION_ORGASM_TAKER_NAME = "[names2]",
+	INTERACTION_ORGASM_ANUS_GIVER_FEEL = "[name1] feel[s/1] a {^sudden :intense ::}{^jolt of electricity:warmth:wave of pleasure} inside [him1] and [his1]",
+	INTERACTION_ORGASM_ANUS_GIVER_PENIS = " [anus1] {^squeezes:writhes around:clamps down on} [names2] [penis2] as [he1] reach[es/1] {^climax:orgasm}.",
+	INTERACTION_ORGASM_ANUS_GIVER_BODY = " [anus1] {^convulses:twitches:quivers} {^in euphoria:in ecstasy:with pleasure} as [he1] reach[es/1] {^climax:orgasm}.",
+	INTERACTION_ORGASM_ANUS_TAKER_FEEL = "[name2] feel[s/2] a {^sudden :intense ::}{^jolt of electricity:warmth:wave of pleasure} inside [him2] and [his2]",
+	INTERACTION_ORGASM_ANUS_TAKER_PENIS = " [anus2] {^squeezes:writhes around:clamps down on} [names1] [penis1] as [he2] reach[es/2] {^climax:orgasm}.",
+	INTERACTION_ORGASM_ANUS_TAKER_BODY = " [anus2] {^convulses:twitches:quivers} {^in euphoria:in ecstasy:with pleasure} as [he2] reach[es/2] {^climax:orgasm}.",
+	INTERACTION_ORGASM_PUSSY_GIVER_FEEL = "[name1] feel[s/1] a {^sudden :intense ::}{^jolt of electricity:warmth:wave of pleasure} inside [him1] and [his1]",
+	INTERACTION_ORGASM_PUSSY_GIVER_PENIS = " [pussy1] {^squeezes:writhes around:clamps down on} [names2] [penis2] as [he1] reach[es/1] {^climax:orgasm}.",
+	INTERACTION_ORGASM_PUSSY_GIVER_BODY = " [pussy1] {^convulses:twitches:quivers} {^in euphoria:in ecstasy:with pleasure} as [he1] reach[es/1] {^climax:orgasm}.",
+	INTERACTION_ORGASM_PUSSY_TAKER_FEEL = "[name2] feel[s/2] a {^sudden :intense ::}{^jolt of electricity:warmth:wave of pleasure} inside [him2] and [his2]",
+	INTERACTION_ORGASM_PUSSY_TAKER_PENIS = " [pussy2] {^squeezes:writhes around:clamps down on} [names1] [penis1] as [he2] reach[es/2] {^climax:orgasm}.",
+	INTERACTION_ORGASM_PUSSY_TAKER_BODY = " [pussy2] {^convulses:twitches:quivers} {^in euphoria:in ecstasy:with pleasure} as [he2] reach[es/2] {^climax:orgasm}.",
+	INTERACTION_ORGASM_PENIS_GIVER_FEEL = "[name1] feel[s/1] {^a wave of:an intense} {^pleasure:euphoria} {^run through:course through:building in} [his1] [penis1] and [his1]",
+	INTERACTION_ORGASM_PENIS_GIVER_THRUST = "[name1] {^thrust:jerk}[s/1] [his1] hips forward and a {^thick :hot :}{^jet:load:batch} of",
+	INTERACTION_ORGASM_PENIS_GIVER_FLOOR = " {^semen:seed:cum} {^pours onto:shoots onto:falls to} the {^ground:floor} as [he1] ejaculate[s/1].",
+	INTERACTION_ORGASM_PENIS_GIVER_INTO = " {^semen:seed:cum} {^pours:shoots:pumps:sprays} into [names2] %s as [he1] ejaculate[s/1].",
+	INTERACTION_ORGASM_PENIS_GIVER_NIPPLES = " {^semen:seed:cum} fills [names2] hollow nipples. ",
+	INTERACTION_ORGASM_PENIS_GIVER_ON_PENIS = " {^semen:seed:cum} {^pours:shoots:sprays}, covering [names2] [penis2]. ",
+	INTERACTION_ORGASM_PENIS_TAKER_FEEL = "[name2] feel[s/2] {^a wave of:an intense} {^pleasure:euphoria} {^run through:course through:building in} [his2] [penis2] and [his2]",
+	INTERACTION_ORGASM_PENIS_TAKER_THRUST = "[name2] {^thrust:jerk}[s/2] [his2] hips forward and a {^thick :hot :}{^jet:load:batch} of",
+	INTERACTION_ORGASM_PENIS_TAKER_FACE = " {^sticky:white:hot} {^semen:seed:cum} {^sprays onto:shoots all over:covers} [names1] face[/s1] as [he2] ejaculate[s/2].",
+	INTERACTION_ORGASM_PENIS_TAKER_TAIL = " {^sticky:white:hot} {^semen:seed:cum} {^sprays onto:shoots all over:covers} [names1] tail[/s1] as [he2] ejaculate[s/2].",
+	INTERACTION_ORGASM_PENIS_TAKER_FLOOR = " {^semen:seed:cum} {^pours onto:shoots onto:falls to} the {^ground:floor} as [he2] ejaculate[s/2].",
+	INTERACTION_ORGASM_PENIS_TAKER_ON_PENIS = " {^semen:seed:cum} {^pours:shoots:sprays}, covering [names1] [penis1]. ",
+	INTERACTION_ORGASM_PENIS_TAKER_INTO = " {^semen:seed:cum} {^pours:shoots:pumps:sprays} into [names1] %s as [he2] ejaculate[s/2].",
+	INTERACTION_ORGASM_PENIS_SECONDARY_TWIST = "[name2] {^twist:quiver:writhe}[s/2] in {^pleasure:euphoria:ecstacy} as",
+	INTERACTION_ORGASM_PENIS_SECONDARY_LIMIT = "[name2] {^can't hold back any longer:reach[es/2] [his2] limit} and",
+	INTERACTION_ORGASM_PENIS_SECONDARY_RELEASE = " {^a jet of :a rope of :}{^semen:cum} {^fires:squirts:shoots} from {^the tip of :}[his2] {^neglected :throbbing ::}[penis2].",
+	INTERACTION_ORGASM_BODY_FEEL = "[name2] feel[s/2] {^a sudden :an intense ::}{^jolt of electricity:heat:wave of pleasure} and [his2]",
+	INTERACTION_ORGASM_BODY_RELEASE = " {^entire :whole :}body {^twists:quivers:writhes} in {^pleasure:euphoria:ecstacy} as [he2] reach[es/2] {^climax:orgasm}.",
+	INTERACTION_ORGASM_BODY_GIVER_FEEL = "[name1] feel[s/1] {^a sudden :an intense ::}{^jolt of electricity:heat:wave of pleasure} and [his1]",
+	INTERACTION_ORGASM_BODY_GIVER_RELEASE = " {^entire :whole :}body {^twists:quivers:writhes} in {^pleasure:euphoria:ecstacy} as [he1] reach[es/1] {^climax:orgasm}.",
 	INTERACTION_CUM_TARGET_FACE = "Face",
 	INTERACTION_CUM_TARGET_MOUTH = "Mouth",
 	INTERACTION_CUM_TARGET_HAIR = "Hair",
@@ -5421,71 +5549,198 @@ Sex skills are increased when performing related action and their growth is depe
 	INTERACTION_CUM_TEXT_HANDS = "[name1] unable to hold back anymore start[s/1] cumming over [name2]'s hands, covering them in [his1] semen.",
 	INTERACTION_ENTHUSIASM_SELECT_TEXT = "[name1] is mentally absorbed in current moment. pushing [him1] in right direction will make [him1] take this moment to heart...",
 	INTERACTION_ENTHUSIASM_BTN = "Training Opportunity",
+	INTERACTION_ENTHUSIASM_MARK_WRONG_BTN = "Mark wrong option (%s)",
+	INTERACTION_ENTHUSIASM_MARK_WRONG_USED = "Mark wrong option (used)",
+	INTERACTION_ENTHUSIASM_ALL_CORRECT_BTN = "Enforce success (%s)",
+	INTERACTION_ENTHUSIASM_ALL_CORRECT_USED = "Enforce success (complete)",
+	INTERACTION_ENTHUSIASM_INCORRECT_TOOLTIP = "This option is incorrect.",
+	INTERACTION_ENTHUSIASM_CORRECT_TOOLTIP = "All of the options will result in success",
+	INTERACTION_ENTHUSIASM_TOOLTIP = "[center]Training Opportunity[/center]\n\nPick the response that matches the character's personality. A correct choice makes the moment succeed and can improve sex-skill training; a wrong choice breaks the moment and reduces sensitivity.\n\nMark wrong option spends connection points to reveal one bad choice.\nEnforce success spends connection points and makes every option count as correct.",
+	INTERACTION_CATEGORY_CARESS = "Petting",
+	INTERACTION_CATEGORY_CARESS_TOOLTIP = "Basic contact and stimulation actions.",
+	INTERACTION_CATEGORY_FUCKING = "Penetration",
+	INTERACTION_CATEGORY_FUCKING_TOOLTIP = "Penetrative actions and positions.",
+	INTERACTION_CATEGORY_TOOLS = "Tools&Spells",
+	INTERACTION_CATEGORY_TOOLS_TOOLTIP = "Items, devices, restraints, and sex-interaction spells.",
+	INTERACTION_CATEGORY_SM = "S&M",
+	INTERACTION_CATEGORY_SM_TOOLTIP = "Rough, restrictive, and domination-focused actions.",
+	INTERACTION_CATEGORY_HUMILIATION = "Humiliation",
+	INTERACTION_CATEGORY_HUMILIATION_TOOLTIP = "Actions focused on shame, exposure, and obedience pressure.",
+	INTERACTION_CATEGORY_OTHER = "Other",
+	INTERACTION_CATEGORY_OTHER_TOOLTIP = "Miscellaneous interaction actions.",
 	INTERACTION_ENTHUSIASM_CHOICE_DEEPTHROAT = "Grab [his1] head and push deeper",
 	INTERACTION_ENTHUSIASM_CHOICE_BERATE = "Berate [him1]",
 	INTERACTION_ENTHUSIASM_CHOICE_PAT = "Pat [his1] head",
 	INTERACTION_ENTHUSIASM_CHOICE_PRAISE = "Encourage [him1]",
 	INTERACTION_ENTHUSIASM_TRIGGER_BLOWJOB = "As [name1] work[s/1] [his1] mouth along [names2] [penis2], [name2] notice[s/2] an unusual {^focus:intensity} to [his1] eagerness...",
-	INTERACTION_ENTHUSIASM_DEEPTHROAT_LOVE_1 = "[name2] grab[s/2] [names1] head and force[s/2] [him1] down, burying [his1] face against [him2]. [name1] {^gag[s/1]:choke[s/1]} but take[s/1] it eagerly, [his1] muffled moaning enough to push [name2] over the edge, {^throbbing:pulsing} as [he2] climaxes into [his1] throat.",
-	INTERACTION_ENTHUSIASM_DEEPTHROAT_LOVE_2 = "[name1] let[s/1] out a strangled {^moan:cry} as [name2] push[es/2] [him1] down, tears at the corners of [his1] eyes, enthusiasm only redoubling through the struggle, and then [name2] come[s/2] undone entirely.",
+	INTERACTION_ENTHUSIASM_DEEPTHROAT_LOVE_1 = "[name2] grab[s/2] [names1] head and force[s/2] [him1] down, burying [his1] face against [him2]. [name1] {^gag[s/1]:choke[s/1]} but take[s/1] it eagerly, [his1] muffled moaning making [name2] lose the last of [his2] restraint.",
+	INTERACTION_ENTHUSIASM_DEEPTHROAT_LOVE_2 = "[name1] let[s/1] out a strangled {^moan:cry} as [name2] push[es/2] [him1] down, tears at the corners of [his1] eyes, enthusiasm only redoubling through the struggle until [name2] gives in entirely.",
 	INTERACTION_ENTHUSIASM_DEEPTHROAT_HATE_1 = "[name2] grab[s/2] [names1] head and push[es/2] down hard. [name1] {^gag[s/1]:choke[s/1]}, clearly caught off guard, [his1] eagerness {^evaporating:chilling} instantly into a look of {^discomfort:distress}.",
 	INTERACTION_ENTHUSIASM_DEEPTHROAT_HATE_2 = "[name1] {^jerk[s/1]:pull[s/1]} back as [name2] force[s/2] [him1] down, eyes wide, the sudden roughness breaking whatever rhythm [he1] had built.",
-	INTERACTION_ENTHUSIASM_BERATE_LOVE_1 = "[name2] {^lean[s/2] in:reach[es/2] down} and {^murmur[s/2]:breathe[s/2]} something {^foul:filthy:lewd}. [name1]'s whole face flushes and [he1] work[s/1] harder for it, and a moment later [name2] {^pulse[s/2]:throb[s/2]} and climaxes in [his1] {^throat:mouth}.",
-	INTERACTION_ENTHUSIASM_BERATE_LOVE_2 = "The words land and [name1] {^whimper[s/1]:moan[s/1]}, cheeks going red, redoubling [his1] efforts for every syllable, until [name2] can't hold back any longer.",
+	INTERACTION_ENTHUSIASM_BERATE_LOVE_1 = "[name2] {^lean[s/2] in:reach[es/2] down} and {^murmur[s/2]:breathe[s/2]} something {^foul:filthy:lewd}. [name1]'s whole face flushes and [he1] work[s/1] harder for it, making [name2] lose [his2] composure.",
+	INTERACTION_ENTHUSIASM_BERATE_LOVE_2 = "The words land and [name1] {^whimper[s/1]:moan[s/1]}, cheeks going red, redoubling [his1] efforts for every syllable as [name2] gives [him2] exactly the reaction [he1] wanted.",
 	INTERACTION_ENTHUSIASM_BERATE_HATE_1 = "The words hit wrong. [name1] {^flinch[es/1]:stiffen[s/1]}, the eagerness gone in an instant, replaced by a {^wounded:blank} look.",
 	INTERACTION_ENTHUSIASM_BERATE_HATE_2 = "[name1] slow[s/1] to a halt, [his1] enthusiasm {^deflated:crushed}, the mood {^shattered:broken} entirely.",
-	INTERACTION_ENTHUSIASM_PAT_LOVE_1 = "[name2] slide[s/2] a hand over [names1] head, fingers threading slowly through [his1] hair. [name1] {^melt[s/1]:ease[s/1] into it} and works with fresh purpose, and [name2] {^tip[s/2] over:give[s/2] in} moments later.",
-	INTERACTION_ENTHUSIASM_PAT_LOVE_2 = "[name2] {^press[es/2]:hold[s/2]} [name1] {^gently:softly} by the head. [name1] {^shudder[s/1]:tremble[s/1]} at the touch and doubles [his1] efforts, until [name2] can't {^hold back:last} any longer.",
+	INTERACTION_ENTHUSIASM_PAT_LOVE_1 = "[name2] slide[s/2] a hand over [names1] head, fingers threading slowly through [his1] hair. [name1] {^melt[s/1]:ease[s/1] into it} and works with fresh purpose, drawing [name2] into the moment.",
+	INTERACTION_ENTHUSIASM_PAT_LOVE_2 = "[name2] {^press[es/2]:hold[s/2]} [name1] {^gently:softly} by the head. [name1] {^shudder[s/1]:tremble[s/1]} at the touch, then doubles [his1] efforts with obvious eagerness.",
 	INTERACTION_ENTHUSIASM_PAT_HATE_1 = "[name1] {^blink[s/1]:glance[s/1] up} at the hand on [his1] head and {^stiffen[s/1]:pause[s/1]}, clearly not what [he1] was {^expecting:after}, the rhythm {^breaking:faltering}.",
 	INTERACTION_ENTHUSIASM_PAT_HATE_2 = "The pat lands flat. [name1] {^pull[s/1] back:slow[s/1]} slightly, [his1] eagerness {^dimmed:cooled} by the {^unwanted:unexpected} contact.",
-	INTERACTION_ENTHUSIASM_PRAISE_LOVE_1 = "[name2] {^tell[s/2]:remind[s/2]} [name1] how {^good:well} [he1] is doing. [name1]'s eyes {^light up:soften:shine} and [he1] lean[s/1] into the work with {^visible:obvious} {^enthusiasm:hunger}, pushing [name2] over the edge moments later.",
-	INTERACTION_ENTHUSIASM_PRAISE_LOVE_2 = "A word of {^praise:approval} from [name2] and [name1] {^bloom[s/1]:come[s/1] alive}, the encouragement landing exactly right, [his1] renewed effort pushing [name2] over the edge.",
+	INTERACTION_ENTHUSIASM_PRAISE_LOVE_1 = "[name2] {^tell[s/2]:remind[s/2]} [name1] how {^good:well} [he1] is doing. [name1]'s eyes {^light up:soften:shine} and [he1] lean[s/1] into the work with {^visible:obvious} {^enthusiasm:hunger}.",
+	INTERACTION_ENTHUSIASM_PRAISE_LOVE_2 = "A word of {^praise:approval} from [name2] and [name1] {^bloom[s/1]:perk[s/1] up}, the encouragement landing exactly right as [his1] effort turns sure and eager.",
 	INTERACTION_ENTHUSIASM_PRAISE_HATE_1 = "[name1] {^glance[s/1] up:look[s/1] at} [name2] at the praise with a {^flat:blank:unreadable} expression, the words {^missing:not landing}, whatever {^drive:momentum} [he1] had {^cooling:guttering}.",
 	INTERACTION_ENTHUSIASM_PRAISE_HATE_2 = "The encouragement {^falls flat:doesn't register}. [name1] {^slow[s/1]:lose[s/1] focus}, the cheerful tone {^clashing with:at odds with} what [he1] was feeling.",
+	INTERACTION_ENTHUSIASM_TRIGGER_CUNNILINGUS_GIVER = "[name1] seem[s/1] unusually focused between [names2] thighs, [his1] attention settling into a rhythm...",
+	INTERACTION_ENTHUSIASM_CUNNILINGUS_G_CHOICE_GUIDE = "Guide [his1] head",
+	INTERACTION_ENTHUSIASM_CUNNILINGUS_G_CHOICE_STEADY = "Tell [him1] to keep that rhythm",
+	INTERACTION_ENTHUSIASM_CUNNILINGUS_G_CHOICE_TOUCH = "Run fingers through [his1] hair",
+	INTERACTION_ENTHUSIASM_CUNNILINGUS_G_CHOICE_PRAISE = "Praise [his1] attention",
+	INTERACTION_ENTHUSIASM_CUNNILINGUS_G_GUIDE_LOVE_1 = "[name2] guide[s/2] [names1] head with firm little corrections. [name1] follow[s/1] each cue, focus sharpening until [his1] mouth finds exactly the rhythm [name2] wanted.",
+	INTERACTION_ENTHUSIASM_CUNNILINGUS_G_GUIDE_LOVE_2 = "A slight pressure from [name2] is enough. [name1] adjust[s/1] immediately, learning the angle and pace by feel while [name2]'s reactions guide [him1].",
+	INTERACTION_ENTHUSIASM_CUNNILINGUS_G_GUIDE_HATE_1 = "[name2]'s guiding hand throws [name1] off. [he1] obey[s/1], but the correction turns [his1] focus hesitant instead of sharper.",
+	INTERACTION_ENTHUSIASM_CUNNILINGUS_G_STEADY_LOVE_1 = "[name2] urge[s/2] [him1] to keep exactly that pace. [name1] hold[s/1] the rhythm, learning from every reaction until [name2] can only tense.",
+	INTERACTION_ENTHUSIASM_CUNNILINGUS_G_STEADY_HATE_1 = "Trying to keep the same rhythm makes [name1] stiffen with concentration, and the careful repetition loses the instinct [he1] had found.",
+	INTERACTION_ENTHUSIASM_CUNNILINGUS_G_TOUCH_LOVE_1 = "[name2] thread[s/2] fingers through [names1] hair, not forcing, just grounding [him1]. [name1] relax[es/1] into the touch and works with warmer confidence.",
+	INTERACTION_ENTHUSIASM_CUNNILINGUS_G_TOUCH_LOVE_2 = "The hand in [names1] hair steadies [him1]. [name1] slow[s/1] just enough to read [names2] body, and the lesson sinks in at once.",
+	INTERACTION_ENTHUSIASM_CUNNILINGUS_G_TOUCH_HATE_1 = "The touch in [names1] hair distracts [him1]. [name1] lose[s/1] the fragile rhythm [he1] had built and has to start over.",
+	INTERACTION_ENTHUSIASM_CUNNILINGUS_G_PRAISE_LOVE_1 = "[name2] tell[s/2] [him1] how well [he1] is doing. [name1] brighten[s/1] at the praise, pouring that confidence back into careful attention.",
+	INTERACTION_ENTHUSIASM_CUNNILINGUS_G_PRAISE_HATE_1 = "The praise makes [name1] self-conscious. [he1] falter[s/1], thinking too hard about what was working instead of feeling it.",
 	INTERACTION_ENTHUSIASM_TRIGGER_FONDLETITS = "[name1] seem[s/1] particularly {^absorbed:attentive} in [names2] chest, [his1] hands moving with an eagerness that goes beyond routine...",
 	INTERACTION_ENTHUSIASM_FONDLETITS_CHOICE_SQUEEZE = "Make [him1] be more rough",
 	INTERACTION_ENTHUSIASM_FONDLETITS_CHOICE_NIPPLES = "Let [him1] play with [his2] nipples",
 	INTERACTION_ENTHUSIASM_FONDLETITS_CHOICE_CLOSENESS = "Guide [his1] hands",
 	INTERACTION_ENTHUSIASM_FONDLETITS_CHOICE_PRAISE = "Praise [his1] moves",
-	INTERACTION_ENTHUSIASM_FONDLETITS_SQUEEZE_LOVE_1 = "[name2] press[es/2] down on [names1] hands, urging [him1] to rub harder. [name1] lean[s/1] into it with obvious eagerness, [his1] whole focus sharpening.",
-	INTERACTION_ENTHUSIASM_FONDLETITS_SQUEEZE_LOVE_2 = "[name1] {^exhale[s/1]:let[s/1] out a low sound} as [name2] push[es/2] for more pressure, pouring it all back into [his1] touch, hands working with a focused intensity.",
+	INTERACTION_ENTHUSIASM_FONDLETITS_SQUEEZE_LOVE_1 = "[name2] press[es/2] down on [names1] hands, urging [him1] to rub harder. [name1] lean[s/1] into it with obvious eagerness, focus sharpening.",
+	INTERACTION_ENTHUSIASM_FONDLETITS_SQUEEZE_LOVE_2 = "[name1] {^exhale[s/1]:let[s/1] out a low sound} as [name2] push[es/2] for more pressure, hands working with focused intensity.",
 	INTERACTION_ENTHUSIASM_FONDLETITS_SQUEEZE_HATE_1 = "[name2] signal[s/2] for more pressure but [name1] pull[s/1] back slightly, the roughness {^not what [he1] had in mind:at odds with [his1] rhythm}.",
-	INTERACTION_ENTHUSIASM_FONDLETITS_NIPPLES_LOVE_1 = "[name2] steer[s/2] [names1] fingers with quiet precision. [name1] take[s/1] the cue immediately, working them with {^methodical:deliberate} attention until [name2] arch[es/2] into [him1].",
+	INTERACTION_ENTHUSIASM_FONDLETITS_NIPPLES_LOVE_1 = "[name2] steer[s/2] [names1] fingers with quiet precision. [name1] take[s/1] the cue immediately, working them with {^methodical:deliberate} attention.",
 	INTERACTION_ENTHUSIASM_FONDLETITS_NIPPLES_HATE_1 = "[name2] guide[s/2] [names1] fingers to [his2] nipples but [name1] seems uncertain with the {^specific:sudden} direction, [his1] touch turning hesitant rather than confident.",
-	INTERACTION_ENTHUSIASM_FONDLETITS_CLOSENESS_LOVE_1 = "[name2] take[s/2] [names1] hands gently and {^redirect[s/2]:guide[s/2]} them. [name1] follow[s/1] without resistance, [his1] touch {^softening:settling} under the quiet direction.",
-	INTERACTION_ENTHUSIASM_FONDLETITS_CLOSENESS_LOVE_2 = "Guided rather than commanded, [name1] {^ease[s/1] into it:settle[s/1]}, [his1] hands finding a new rhythm under [names2] steady direction.",
+	INTERACTION_ENTHUSIASM_FONDLETITS_CLOSENESS_LOVE_1 = "[name2] take[s/2] [names1] hands gently and {^redirect[s/2]:guide[s/2]} them. [name1] follow[s/1] without resistance, [his1] touch softening.",
+	INTERACTION_ENTHUSIASM_FONDLETITS_CLOSENESS_LOVE_2 = "Guided rather than commanded, [name1] {^ease[s/1] into it:settle[s/1]}, [his1] hands finding the rhythm [name2] needed.",
 	INTERACTION_ENTHUSIASM_FONDLETITS_CLOSENESS_HATE_1 = "[name1] tense[s/1] slightly as [name2] take[s/2] [his1] hands, the gentle correction {^landing as:reading as} a reminder that [he1] was doing it wrong, [his1] eagerness deflating.",
-	INTERACTION_ENTHUSIASM_FONDLETITS_PRAISE_LOVE_1 = "[name2] tell[s/2] [him1] how well [he1] is doing and [name1]'s face {^light[s/1] up:soften[s/1]}, [he1] pouring the encouragement back into [his1] touch, hands moving with fresh warmth.",
+	INTERACTION_ENTHUSIASM_FONDLETITS_PRAISE_LOVE_1 = "[name2] tell[s/2] [him1] how well [he1] is doing and [name1]'s face {^light[s/1] up:soften[s/1]}, [he1] pouring the encouragement back into [his1] touch.",
 	INTERACTION_ENTHUSIASM_FONDLETITS_PRAISE_HATE_1 = "The praise seem[s/2] to {^embarrass:fluster} [name1] more than encourage, leaving [him1] fumbling briefly, [his1] earlier focus lost.",
+	INTERACTION_ENTHUSIASM_TRIGGER_HANDJOB = "[name1] seem[s/1] unusually focused on [names2] cock, [his1] hand finding a rhythm that keeps tightening with intent...",
+	INTERACTION_ENTHUSIASM_HANDJOB_CHOICE_FASTER = "Tell [him1] to go faster",
+	INTERACTION_ENTHUSIASM_HANDJOB_CHOICE_RHYTHM = "Correct [his1] rhythm",
+	INTERACTION_ENTHUSIASM_HANDJOB_CHOICE_TOUCH = "Cover [his1] hand",
+	INTERACTION_ENTHUSIASM_HANDJOB_CHOICE_PRAISE = "Praise [his1] touch",
+	INTERACTION_ENTHUSIASM_HANDJOB_FASTER_LOVE_1 = "[name2] urge[s/2] [him1] faster and [name1] answer[s/1] at once, grip and pace sharpening into the exact motion [name2] wanted.",
+	INTERACTION_ENTHUSIASM_HANDJOB_FASTER_HATE_1 = "The push for speed throw[s/2] [name1] off, [his1] hand moving too quickly to keep the pressure that was working.",
+	INTERACTION_ENTHUSIASM_HANDJOB_RHYTHM_LOVE_1 = "[name2] give[s/2] a precise little correction and [name1] lock[s/1] onto it, repeating the stroke with focused confidence.",
+	INTERACTION_ENTHUSIASM_HANDJOB_RHYTHM_HATE_1 = "The correction makes [name1] overthink every motion, [his1] rhythm turning stiff where it had been natural.",
+	INTERACTION_ENTHUSIASM_HANDJOB_TOUCH_LOVE_1 = "[name2] cover[s/2] [names1] hand, guiding without forcing. [name1] relax[es/1] into the touch and learn[s/1] the pressure [name2] needed.",
+	INTERACTION_ENTHUSIASM_HANDJOB_TOUCH_HATE_1 = "[name1] tense[s/1] when [name2] cover[s/2] [his1] hand, the help landing like a rebuke and breaking [his1] focus.",
+	INTERACTION_ENTHUSIASM_HANDJOB_PRAISE_LOVE_1 = "[name2] praise[s/2] [his1] touch and [name1] brighten[s/1], pouring the encouragement into a steadier stroke.",
+	INTERACTION_ENTHUSIASM_HANDJOB_PRAISE_HATE_1 = "The praise make[s/2] [name1] self-conscious, [his1] hand faltering as [he1] start[s/1] thinking too hard about each motion.",
+	INTERACTION_ENTHUSIASM_TRIGGER_FINGERING = "[name1] seem[s/1] absorbed in the way [name2] react[s/2] under [his1] fingers, attention narrowing to every little response...",
+	INTERACTION_ENTHUSIASM_FINGERING_CHOICE_PRESSURE = "Tell [him1] to press harder",
+	INTERACTION_ENTHUSIASM_FINGERING_CHOICE_RHYTHM = "Keep [him1] on rhythm",
+	INTERACTION_ENTHUSIASM_FINGERING_CHOICE_GUIDE = "Guide [his1] fingers",
+	INTERACTION_ENTHUSIASM_FINGERING_CHOICE_PRAISE = "Praise [his1] attention",
+	INTERACTION_ENTHUSIASM_FINGERING_PRESSURE_LOVE_1 = "[name2] ask[s/2] for more pressure and [name1] find[s/1] it immediately, fingers working with enough certainty to keep [names2] attention fixed on every motion.",
+	INTERACTION_ENTHUSIASM_FINGERING_PRESSURE_HATE_1 = "More pressure makes [name1] lose the delicate angle [he1] had found, turning [his1] touch blunt and uncertain.",
+	INTERACTION_ENTHUSIASM_FINGERING_RHYTHM_LOVE_1 = "[name2] tell[s/2] [him1] to hold that rhythm. [name1] obey[s/1], steady and intent, learning from every breath.",
+	INTERACTION_ENTHUSIASM_FINGERING_RHYTHM_HATE_1 = "Trying to keep the exact rhythm makes [name1] stiffen with concentration, and the moment slip[s/1] out of [his1] hands.",
+	INTERACTION_ENTHUSIASM_FINGERING_GUIDE_LOVE_1 = "[name2] guide[s/2] [names1] fingers with small, careful movements. [name1] follow[s/1] every cue, confidence growing.",
+	INTERACTION_ENTHUSIASM_FINGERING_GUIDE_HATE_1 = "[name1] falter[s/1] under the guidance, the correction making [him1] hesitant instead of more precise.",
+	INTERACTION_ENTHUSIASM_FINGERING_PRAISE_LOVE_1 = "[name2] praise[s/2] [his1] attention and [name1] settle[s/1] into the encouragement, fingers moving with warmer confidence.",
+	INTERACTION_ENTHUSIASM_FINGERING_PRAISE_HATE_1 = "The praise distract[s/2] [name1], [his1] focus slipping as [he1] glance[s/1] up instead of reading [names2] body.",
+	INTERACTION_ENTHUSIASM_TRIGGER_ASSFINGERING = "[name1] seem[s/1] intent on every reaction [he1] draw[s/1] from [name2], fingers moving with cautious but growing confidence...",
+	INTERACTION_ENTHUSIASM_ASSFINGERING_CHOICE_DEEPER = "Tell [him1] to go deeper",
+	INTERACTION_ENTHUSIASM_ASSFINGERING_CHOICE_RHYTHM = "Correct [his1] rhythm",
+	INTERACTION_ENTHUSIASM_ASSFINGERING_CHOICE_STEADY = "Steady [his1] hand",
+	INTERACTION_ENTHUSIASM_ASSFINGERING_CHOICE_PRAISE = "Praise [his1] care",
+	INTERACTION_ENTHUSIASM_ASSFINGERING_DEEPER_LOVE_1 = "[name2] ask[s/2] for more and [name1] ease[s/1] deeper with focused care, keeping the added pressure controlled instead of rushed.",
+	INTERACTION_ENTHUSIASM_ASSFINGERING_DEEPER_HATE_1 = "The request for more depth makes [name1] rush the motion, losing the careful pace that had made it work.",
+	INTERACTION_ENTHUSIASM_ASSFINGERING_RHYTHM_LOVE_1 = "[name2] correct[s/2] [his1] rhythm and [name1] take[s/1] the lesson, repeating it with deliberate attention.",
+	INTERACTION_ENTHUSIASM_ASSFINGERING_RHYTHM_HATE_1 = "The correction leaves [name1] too careful, [his1] touch turning mechanical and losing the heat it had built.",
+	INTERACTION_ENTHUSIASM_ASSFINGERING_STEADY_LOVE_1 = "[name2] steady[s/2] [names1] hand and [name1] breathe[s/1] into the guidance, moving with patient confidence.",
+	INTERACTION_ENTHUSIASM_ASSFINGERING_STEADY_HATE_1 = "[name1] tense[s/1] at the steadying touch, reading it as pressure and falling out of [his1] rhythm.",
+	INTERACTION_ENTHUSIASM_ASSFINGERING_PRAISE_LOVE_1 = "[name2] praise[s/2] [his1] care and [name1] respond[s/1] with renewed focus, every motion turning more certain.",
+	INTERACTION_ENTHUSIASM_ASSFINGERING_PRAISE_HATE_1 = "The praise make[s/2] [name1] awkwardly aware of what [he1] is doing, and [his1] careful touch falter[s/1].",
+	INTERACTION_ENTHUSIASM_TRIGGER_TITJOB = "[name1] seem[s/1] unusually absorbed in the pressure around [names2] cock, finding a rhythm with growing confidence...",
+	INTERACTION_ENTHUSIASM_TITJOB_CHOICE_PRESS = "Tell [him1] to press tighter",
+	INTERACTION_ENTHUSIASM_TITJOB_CHOICE_RHYTHM = "Set a steady rhythm",
+	INTERACTION_ENTHUSIASM_TITJOB_CHOICE_CLOSER = "Pull [him1] closer",
+	INTERACTION_ENTHUSIASM_TITJOB_CHOICE_PRAISE = "Praise [his1] movement",
+	INTERACTION_ENTHUSIASM_TITJOB_PRESS_LOVE_1 = "[name2] ask[s/2] for tighter pressure and [name1] give[s/1] it eagerly, moving with focused confidence.",
+	INTERACTION_ENTHUSIASM_TITJOB_PRESS_HATE_1 = "The request for more pressure makes [name1] squeeze too awkwardly, breaking the smooth motion [he1] had found.",
+	INTERACTION_ENTHUSIASM_TITJOB_RHYTHM_LOVE_1 = "[name2] guide[s/2] the pace and [name1] follow[s/1] it cleanly, settling into a rhythm that makes the pressure feel deliberate.",
+	INTERACTION_ENTHUSIASM_TITJOB_RHYTHM_HATE_1 = "Trying to match the guided rhythm makes [name1] stiffen, and the movement lose[s/1] its easy heat.",
+	INTERACTION_ENTHUSIASM_TITJOB_CLOSER_LOVE_1 = "[name2] pull[s/2] [name1] closer and [he1] lean[s/1] into it, warmth and pressure aligning perfectly.",
+	INTERACTION_ENTHUSIASM_TITJOB_CLOSER_HATE_1 = "Being pulled closer makes [name1] shift awkwardly, the new angle ruining the pressure [he1] had built.",
+	INTERACTION_ENTHUSIASM_TITJOB_PRAISE_LOVE_1 = "[name2] praise[s/2] [his1] movement and [name1] answer[s/1] with renewed confidence, pressing with focused warmth.",
+	INTERACTION_ENTHUSIASM_TITJOB_PRAISE_HATE_1 = "The praise distract[s/2] [name1] just enough for [his1] motion to stumble, the earlier confidence fading.",
+	INTERACTION_ENTHUSIASM_TRIGGER_TAILJOB = "[name1] seem[s/1] unusually absorbed in the motion of [his1] tail, each coil and stroke growing more deliberate...",
+	INTERACTION_ENTHUSIASM_TAILJOB_CHOICE_TIGHTER = "Tell [him1] to wrap tighter",
+	INTERACTION_ENTHUSIASM_TAILJOB_CHOICE_RHYTHM = "Set a steady rhythm",
+	INTERACTION_ENTHUSIASM_TAILJOB_CHOICE_STROKE = "Stroke [his1] tail",
+	INTERACTION_ENTHUSIASM_TAILJOB_CHOICE_PRAISE = "Praise [his1] control",
+	INTERACTION_ENTHUSIASM_TAILJOB_TIGHTER_LOVE_1 = "[name2] ask[s/2] for a tighter wrap and [name1] adjust[s/1] at once, tail moving with focused, responsive pressure.",
+	INTERACTION_ENTHUSIASM_TAILJOB_TIGHTER_HATE_1 = "The request for more pressure makes [name1] coil too sharply, breaking the smooth rhythm [he1] had found.",
+	INTERACTION_ENTHUSIASM_TAILJOB_RHYTHM_LOVE_1 = "[name2] guide[s/2] the pace and [name1] follow[s/1] it cleanly, tail sliding with a rhythm [name2] can barely resist.",
+	INTERACTION_ENTHUSIASM_TAILJOB_RHYTHM_HATE_1 = "Trying to match the guided rhythm makes [name1] stiffen with concentration, [his1] tail losing the easy motion it had built.",
+	INTERACTION_ENTHUSIASM_TAILJOB_STROKE_LOVE_1 = "[name2] stroke[s/2] along [names1] tail, grounding [him1] without forcing. [name1] relax[es/1] into the touch and move[s/1] with steady confidence.",
+	INTERACTION_ENTHUSIASM_TAILJOB_STROKE_HATE_1 = "The touch on [names1] tail distracts [him1], [his1] careful motion stumbling as [he1] lose[s/1] the thread.",
+	INTERACTION_ENTHUSIASM_TAILJOB_PRAISE_LOVE_1 = "[name2] praise[s/2] [his1] control and [name1] brighten[s/1], pouring the encouragement into a surer rhythm.",
+	INTERACTION_ENTHUSIASM_TAILJOB_PRAISE_HATE_1 = "The praise makes [name1] self-conscious, [his1] tail faltering as [he1] start[s/1] thinking too hard about each motion.",
+	INTERACTION_ENTHUSIASM_TRIGGER_INSERTTAILV_GIVER = "[name1] seem[s/1] to be finding a sharper rhythm with [his1] tail inside [name2], every motion more intent than the last...",
+	INTERACTION_ENTHUSIASM_TRIGGER_INSERTTAILV_TAKER = "[name1] is taking [names2] tail with growing urgency, hips answering each motion as if [he1] want[s/1] more...",
+	INTERACTION_ENTHUSIASM_TRIGGER_INSERTTAILA_GIVER = "[name1] seem[s/1] to be finding a sharper rhythm with [his1] tail inside [name2], pressing deeper with careful intent...",
+	INTERACTION_ENTHUSIASM_TRIGGER_INSERTTAILA_TAKER = "[name1] is taking [names2] tail with a tense, hungry focus, pressing back as if [he1] want[s/1] more...",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_G_CHOICE_DEEPER = "Push [his1] tail deeper",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_G_CHOICE_RHYTHM = "Control the rhythm",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_G_CHOICE_TOUCH = "Guide [his1] tail",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_G_CHOICE_PRAISE = "Praise [his1] control",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_G_DEEPER_LOVE_1 = "[name1] press[es/1] deeper with [his1] tail, finding the angle by feel until [name2] tense[s/2] around the pressure.",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_G_DEEPER_HATE_1 = "Pushing deeper makes [name1] lose the careful angle [he1] had found, the awkward pressure breaking [his1] momentum.",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_G_RHYTHM_LOVE_1 = "[name1] settle[s/1] into a precise rhythm, tail moving with deliberate control as [name2]'s reactions sharpen.",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_G_RHYTHM_HATE_1 = "Trying to control every motion makes [name1] too careful, [his1] tail turning mechanical where it had been instinctive.",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_G_TOUCH_LOVE_1 = "[name2] guide[s/2] [names1] tail with small corrections. [name1] follow[s/1] each cue, confidence growing with every motion.",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_G_TOUCH_HATE_1 = "The guidance throws [name1] off, [his1] tail hesitating as the correction breaks the rhythm [he1] had built.",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_G_PRAISE_LOVE_1 = "[name2] praise[s/2] [his1] control and [name1] respond[s/1] with renewed focus, every movement of [his1] tail turning more certain.",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_G_PRAISE_HATE_1 = "The praise makes [name1] awkwardly aware of [his1] tail, and [his1] careful motion falter[s/1].",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_T_CHOICE_PRESS = "Press back harder",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_T_CHOICE_STEADY = "Hold still and take it",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_T_CHOICE_HAND = "Take [his2] hand",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_T_CHOICE_PRAISE = "Tell [him2] it feels good",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_T_PRESS_LOVE_1 = "[name1] press[es/1] back against [names2] tail with sudden certainty. [name2] catch[es/2] the motion and drive[s/2] into it.",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_T_PRESS_HATE_1 = "[name1] press[es/1] back too abruptly, the shift ruining the angle and forcing both of them to recover.",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_T_STEADY_LOVE_1 = "[name1] go[es/1] still and let[s/1] [name2] use [his2] tail exactly as [he2] wants, giving [himself1] over to the motion completely.",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_T_STEADY_HATE_1 = "Going still makes [name2] hesitate, the sudden passivity breaking the rhythm [name1] was riding.",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_T_HAND_LOVE_1 = "[name1] find[s/1] [names2] hand and hold[s/1] on. [name2] squeeze[s/2] back without slowing, letting [him1] keep [his1] nerve through every motion.",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_T_HAND_HATE_1 = "[name1] reach[es/1] for [names2] hand and lose[s/1] [his1] balance, the awkward adjustment costing [him1] the edge.",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_T_PRAISE_LOVE_1 = "[name1] tell[s/1] [name2] how good it feels, and [name2] answer[s/2] with a surer motion of [his2] tail.",
+	INTERACTION_ENTHUSIASM_INSERTTAIL_T_PRAISE_HATE_1 = "The praise comes out awkwardly, making [name2] pause just long enough for [names1] momentum to slip away.",
 	INTERACTION_ENTHUSIASM_TRIGGER_MISSIONARY_GIVER = "[name1] seem[s/1] to be {^losing himself:getting carried away}, thrusting with a raw urgency, breath uneven, driven by something more than routine...",
 	INTERACTION_ENTHUSIASM_TRIGGER_MISSIONARY_TAKER = "[name1]'s hips are rolling up to meet every thrust with a {^desperate:hungry} edge, wanting more than [he1] is getting...",
 	INTERACTION_ENTHUSIASM_MISSIONARY_G_CHOICE_HARDER = "Ask [him1] to be faster",
 	INTERACTION_ENTHUSIASM_MISSIONARY_G_CHOICE_CONTROL = "Ask [him1] to push harder",
 	INTERACTION_ENTHUSIASM_MISSIONARY_G_CHOICE_HOLD = "Wrap legs around [him1]",
 	INTERACTION_ENTHUSIASM_MISSIONARY_G_CHOICE_PRAISE = "Hold [him1] close",
-	INTERACTION_ENTHUSIASM_MISSIONARY_G_HARDER_LOVE_1 = "[name1]'s pace {^kick[s/1] up:accelerate[s/1]} immediately, [he1] moving faster, breath ragged, something in [him1] {^snapping:breaking} loose as [he1] tip[s/1] over the edge.",
-	INTERACTION_ENTHUSIASM_MISSIONARY_G_HARDER_LOVE_2 = "A single breathless word is all it take[s/2]. [name1] {^oblige[s/1]:give[s/1] it} without hesitation, the urgency finding its outlet at last, and [he1] come[s/1] undone in a rush.",
+	INTERACTION_ENTHUSIASM_MISSIONARY_G_HARDER_LOVE_1 = "[name1]'s pace {^kick[s/1] up:accelerate[s/1]} immediately, [he1] moving faster, breath ragged, something in [him1] {^snapping:breaking} loose.",
+	INTERACTION_ENTHUSIASM_MISSIONARY_G_HARDER_LOVE_2 = "A single breathless word is all it take[s/2]. [name1] {^oblige[s/1]:give[s/1] it} without hesitation, the urgency finding its outlet at last.",
 	INTERACTION_ENTHUSIASM_MISSIONARY_G_HARDER_HATE_1 = "The request throw[s/2] [name1] off, and [he1] tr[ies/y1] to adjust but the pace change disrupts whatever [he1] had built, [his1] rhythm {^scattering:falling apart}.",
-	INTERACTION_ENTHUSIASM_MISSIONARY_G_CONTROL_LOVE_1 = "[name2] ask[s/2] [him1] to push harder and [name1] {^press[es/1]:drive[s/1]} deeper at the urging, the added pressure drawing a {^sharp:broken} sound from [him1] as [he1] climaxes into it.",
+	INTERACTION_ENTHUSIASM_MISSIONARY_G_CONTROL_LOVE_1 = "[name2] ask[s/2] [him1] to push harder and [name1] {^press[es/1]:drive[s/1]} deeper at the urging, the added pressure drawing a {^sharp:broken} sound from [him1].",
 	INTERACTION_ENTHUSIASM_MISSIONARY_G_CONTROL_HATE_1 = "Pushing harder breaks [name1]'s careful rhythm, and [he1] {^strain[s/1]:force[s/1] it} without finding the right angle, momentum lost.",
-	INTERACTION_ENTHUSIASM_MISSIONARY_G_HOLD_LOVE_1 = "[name2]'s legs wrap around [name1] and [he1] {^stall[s/1]:freeze[s/1]} for a breath, then {^sink[s/1]:press[es/1]} in fully, the hold keeping [him1] close as [he1] comes undone.",
-	INTERACTION_ENTHUSIASM_MISSIONARY_G_HOLD_LOVE_2 = "Locked in by [names2] legs, [name1]'s frantic pace slows into something {^slower:deeper}, moving in long strokes until [he1] climaxes, unable to pull away.",
+	INTERACTION_ENTHUSIASM_MISSIONARY_G_HOLD_LOVE_1 = "[name2]'s legs wrap around [name1] and [he1] {^stall[s/1]:freeze[s/1]} for a breath, then {^sink[s/1]:press[es/1]} in fully, the hold keeping [him1] close.",
+	INTERACTION_ENTHUSIASM_MISSIONARY_G_HOLD_LOVE_2 = "Locked in by [names2] legs, [name1]'s frantic pace slows into something {^slower:deeper}, moving in long strokes, unable to pull away.",
 	INTERACTION_ENTHUSIASM_MISSIONARY_G_HOLD_HATE_1 = "[name1] feel[s/1] [names2] legs close around [him1] and {^tense[s/1]:pull[s/1] back instinctively}, the confinement reading as pressure rather than invitation.",
-	INTERACTION_ENTHUSIASM_MISSIONARY_G_PRAISE_LOVE_1 = "[name2] pull[s/2] [name1] down into [his2] arms and [he1] {^settle[s/1]:sink[s/1]} into it. Held close, [his1] thrusts slow and deep, and [he1] climaxes there against [names2] chest.",
+	INTERACTION_ENTHUSIASM_MISSIONARY_G_PRAISE_LOVE_1 = "[name2] pull[s/2] [name1] down into [his2] arms and [he1] {^settle[s/1]:sink[s/1]} into it. Held close, [his1] thrusts slow and deep.",
 	INTERACTION_ENTHUSIASM_MISSIONARY_G_PRAISE_HATE_1 = "[name1] resist[s/1] slightly as [name2] draw[s/2] [him1] close, the {^sudden:unexpected} constraint breaking [his1] stride.",
 	INTERACTION_ENTHUSIASM_MISSIONARY_T_CHOICE_PIN = "Guide [him1] to wrap [his2] legs",
 	INTERACTION_ENTHUSIASM_MISSIONARY_T_CHOICE_STILLNESS = "Pull [him1] close",
 	INTERACTION_ENTHUSIASM_MISSIONARY_T_CHOICE_FREE = "Hug and kiss [him1]",
 	INTERACTION_ENTHUSIASM_MISSIONARY_T_CHOICE_ENCOURAGE = "Move in sync with [him1]",
-	INTERACTION_ENTHUSIASM_MISSIONARY_T_PIN_LOVE_1 = "[name2] guide[s/2] [names1] legs around [his2] waist. [name1] lock[s/1] them there eagerly, pulling [name2] deeper until [name2] feel[s/2] the added pull tip [him2] over.",
-	INTERACTION_ENTHUSIASM_MISSIONARY_T_PIN_LOVE_2 = "Legs wrapped tight around [name2], [name1]'s hips {^tilt:angle} just right. [name2] press[es/2] in against that hold and come[s/2] undone.",
+	INTERACTION_ENTHUSIASM_MISSIONARY_T_PIN_LOVE_1 = "[name2] guide[s/2] [names1] legs around [his2] waist. [name1] lock[s/1] them there eagerly, pulling [name2] deeper.",
+	INTERACTION_ENTHUSIASM_MISSIONARY_T_PIN_LOVE_2 = "Legs wrapped tight around [name2], [name1]'s hips {^tilt:angle} just right. [name2] press[es/2] in against that hold.",
 	INTERACTION_ENTHUSIASM_MISSIONARY_T_PIN_HATE_1 = "[name1] resist[s/1] the guided motion, [his1] legs staying loose, the {^direction:prompt} feeling {^intrusive:awkward} rather than welcome.",
-	INTERACTION_ENTHUSIASM_MISSIONARY_T_STILLNESS_LOVE_1 = "[name2] pull[s/2] [name1] close against [his2] chest. [name1] {^still[s/1]:quiet[s/1]} in the embrace, the intimacy {^focusing:grounding} [him1], and [name2] follow[s/2] [him1] over a moment later.",
+	INTERACTION_ENTHUSIASM_MISSIONARY_T_STILLNESS_LOVE_1 = "[name2] pull[s/2] [name1] close against [his2] chest. [name1] {^still[s/1]:quiet[s/1]} in the embrace, letting the closeness settle [him1] into the rhythm.",
 	INTERACTION_ENTHUSIASM_MISSIONARY_T_STILLNESS_HATE_1 = "[name1] tense[s/1] as [name2] draw[s/2] [him1] in, the closeness {^reading as:feeling like} restraint rather than comfort, [his1] momentum lost.",
-	INTERACTION_ENTHUSIASM_MISSIONARY_T_FREE_LOVE_1 = "[name2] wrap[s/2] around [name1] and kiss[es/2] [him1]. [name1] {^soften[s/1]:melt[s/1]}, [his1] urgency {^dissolving:giving way} into something {^tender:close}, bringing [name2] to orgasm.",
-	INTERACTION_ENTHUSIASM_MISSIONARY_T_FREE_LOVE_2 = "Kissed and held, [name1]'s frantic energy {^settle[s/1]:slow[s/1] into something} searching. [he1] find[s/1] what [he1] needed in the closeness, and [name2] follow[s/2] [him1] over.",
+	INTERACTION_ENTHUSIASM_MISSIONARY_T_FREE_LOVE_1 = "[name2] wrap[s/2] around [name1] and kiss[es/2] [him1]. [name1] {^soften[s/1]:melt[s/1]}, [his1] urgency {^dissolving:giving way} into something {^tender:close}.",
+	INTERACTION_ENTHUSIASM_MISSIONARY_T_FREE_LOVE_2 = "Kissed and held, [name1]'s frantic energy {^settle[s/1]:slow[s/1]} into something more searching, and [he1] lean[s/1] into the closeness.",
 	INTERACTION_ENTHUSIASM_MISSIONARY_T_FREE_HATE_1 = "[name1] pull[s/1] back from [names2] kiss, {^too tender:too soft} for what [he1] was feeling, the {^gentleness:intimacy} {^extinguishing:smothering} [his1] momentum.",
-	INTERACTION_ENTHUSIASM_MISSIONARY_T_ENCOURAGE_LOVE_1 = "[name2] {^match[es/2]:mirror[s/2]} [names1] rhythm and [name1] {^exhale[s/1]:let[s/1] out a sound}, finding each other's pace as [name2] feel[s/2] [him2] tip over and they move together.",
+	INTERACTION_ENTHUSIASM_MISSIONARY_T_ENCOURAGE_LOVE_1 = "[name2] {^match[es/2]:mirror[s/2]} [names1] rhythm and [name1] {^exhale[s/1]:let[s/1] out a sound}, finding each other's pace as they move together.",
 	INTERACTION_ENTHUSIASM_MISSIONARY_T_ENCOURAGE_HATE_1 = "[name2]'s attempt to sync {^throw[s/2] off:disrupt[s/2]} [names1] rhythm rather than joining it, and [he1] lose[s/1] the thread entirely.",
 	INTERACTION_ENTHUSIASM_TRIGGER_MISSIONARYANAL_GIVER = "[name1] seem[s/1] to be {^losing himself:getting carried away}, pressing into [name2] harder, breath uneven, as if [he1] want[s/1] to be deeper still...",
 	INTERACTION_ENTHUSIASM_TRIGGER_MISSIONARYANAL_TAKER = "[name1]'s hips are tilting up to meet every thrust with a {^desperate:hungry} edge, pressing back to take [name2] deeper...",
@@ -5497,29 +5752,29 @@ Sex skills are increased when performing related action and their growth is depe
 	INTERACTION_ENTHUSIASM_DOGGY_G_CHOICE_DEEPER = "Slow down and push deeper",
 	INTERACTION_ENTHUSIASM_DOGGY_G_CHOICE_LEAN = "Lean over [him2]",
 	INTERACTION_ENTHUSIASM_DOGGY_G_CHOICE_DONTSTOP = "Whisper not to stop",
-	INTERACTION_ENTHUSIASM_DOGGY_G_PULL_LOVE_1 = "[name1] haul[s/1] [name2] back by the hips, a grunt of satisfaction escaping as [name2] gasp[s/2] at the force. [name1] {^chase[s/1]:find[s/1]} [his1] finish in the sound.",
-	INTERACTION_ENTHUSIASM_DOGGY_G_PULL_LOVE_2 = "Yanking [name2] back hard into every thrust, [name1] take[s/1] what [he1] needs. [name2] cry[ies/2] out as [name1] come[s/1] with a {^rough:broken} sound.",
+	INTERACTION_ENTHUSIASM_DOGGY_G_PULL_LOVE_1 = "[name1] haul[s/1] [name2] back by the hips, a grunt of satisfaction escaping as [name2] gasp[s/2] at the force. [name1] {^chase[s/1]:find[s/1]} what [he1] needs in the sound.",
+	INTERACTION_ENTHUSIASM_DOGGY_G_PULL_LOVE_2 = "Yanking [name2] back hard into every thrust, [name1] take[s/1] what [he1] needs. [name2] cry[ies/2] out at the force.",
 	INTERACTION_ENTHUSIASM_DOGGY_G_PULL_HATE_1 = "[name1] grab[s/1] [names2] hips and pull[s/1] too sharply. [name2] wince[s/2] and lose[s/2] [his2] footing, and the rhythm breaks apart before [name1] can recover.",
-	INTERACTION_ENTHUSIASM_DOGGY_G_DEEPER_LOVE_1 = "[name1] slow[s/1] to {^long:deliberate}, grinding strokes, each one deep and intentional, watching [name2] come undone until [name1] follow[s/1].",
+	INTERACTION_ENTHUSIASM_DOGGY_G_DEEPER_LOVE_1 = "[name1] slow[s/1] to {^long:deliberate}, grinding strokes, each one deep and intentional, watching [name2] react to every motion.",
 	INTERACTION_ENTHUSIASM_DOGGY_G_DEEPER_HATE_1 = "[name1] slow[s/1] and push[es/1] deeper, but the pace change kills the rhythm [name2] was riding, and [his2] reaction fades before [name1] can rebuild the momentum.",
-	INTERACTION_ENTHUSIASM_DOGGY_G_LEAN_LOVE_1 = "[name1] lean[s/1] forward and drape[s/1] over [name2], chest to [his2] back, the closeness and the rhythm together bringing them both over.",
-	INTERACTION_ENTHUSIASM_DOGGY_G_LEAN_LOVE_2 = "Pressed close with lips against the back of [names2] neck, [name1] {^nuzzle[s/1]:murmur[s/1]} something. [name2] {^soften[s/2]:shudder[s/2]}, and [name1] orgasm[s/1] from it.",
+	INTERACTION_ENTHUSIASM_DOGGY_G_LEAN_LOVE_1 = "[name1] lean[s/1] forward and drape[s/1] over [name2], chest to [his2] back, the closeness and the rhythm locking together.",
+	INTERACTION_ENTHUSIASM_DOGGY_G_LEAN_LOVE_2 = "Pressed close with lips against the back of [names2] neck, [name1] {^nuzzle[s/1]:murmur[s/1]} something low. [name2] {^soften[s/2]:yield[s/2]} beneath [him1], and the rhythm turns warmer.",
 	INTERACTION_ENTHUSIASM_DOGGY_G_LEAN_HATE_1 = "[name1] lean[s/1] forward, but the shift in weight changes the angle. [name2] tense[s/2], and the awkward adjustment kills [names1] momentum entirely.",
-	INTERACTION_ENTHUSIASM_DOGGY_G_DONTSTOP_LOVE_1 = "[name1] breathe[s/1] something urgent against [names2] ear. [name2] {^oblige[s/2]:comply[ies/2]} at once, the pace redoubling until [name1] tip[s/1] over almost immediately.",
+	INTERACTION_ENTHUSIASM_DOGGY_G_DONTSTOP_LOVE_1 = "[name1] breathe[s/1] something urgent against [names2] ear. [name2] {^oblige[s/2]:comply[ies/2]} at once, the pace redoubling immediately.",
 	INTERACTION_ENTHUSIASM_DOGGY_G_DONTSTOP_HATE_1 = "[name1]'s {^breathless plea:whispered words} seem[s/1] to {^confuse:startle} [name2], and the pause that follows breaks the spell entirely.",
 	INTERACTION_ENTHUSIASM_DOGGY_T_CHOICE_PUSHBACK = "Push back harder",
 	INTERACTION_ENTHUSIASM_DOGGY_T_CHOICE_STILLNESS = "Go still",
-	INTERACTION_ENTHUSIASM_DOGGY_T_CHOICE_STROKE = "Reach back and stroke [his2] arm",
-	INTERACTION_ENTHUSIASM_DOGGY_T_CHOICE_HAND = "Reach forward and take [his2] hand",
-	INTERACTION_ENTHUSIASM_DOGGY_T_PUSHBACK_LOVE_1 = "[name1] rock[s/1] back into every thrust with force. The sudden responsiveness {^startles:catches} [name2] in the best way, and [name1] feel[s/1] [him2] finish with a sharp breath.",
-	INTERACTION_ENTHUSIASM_DOGGY_T_PUSHBACK_LOVE_2 = "Matching [name2] thrust for thrust, [name1] turn[s/1] the pace into something {^frantic:desperate}. Neither can hold out, and [name1] tip[s/1] first.",
+	INTERACTION_ENTHUSIASM_DOGGY_T_CHOICE_STROKE = "Reach back and stroke [his1] arm",
+	INTERACTION_ENTHUSIASM_DOGGY_T_CHOICE_HAND = "Reach forward and take [his1] hand",
+	INTERACTION_ENTHUSIASM_DOGGY_T_PUSHBACK_LOVE_1 = "[name1] rock[s/1] back into every thrust with force. The sudden responsiveness {^startles:catches} [name2] in the best way.",
+	INTERACTION_ENTHUSIASM_DOGGY_T_PUSHBACK_LOVE_2 = "Matching [name2] thrust for thrust, [name1] turn[s/1] the pace into something {^frantic:desperate}. Neither can hold out for long.",
 	INTERACTION_ENTHUSIASM_DOGGY_T_PUSHBACK_HATE_1 = "[name1] push[es/1] back too hard and too fast. The rhythm breaks, [name2] stumble[s/2] in the tempo change, and [name1] can't find [his1] way back to the edge.",
-	INTERACTION_ENTHUSIASM_DOGGY_T_STILLNESS_LOVE_1 = "[name1] go[es/1] {^still:motionless}, forcing [name2] to take everything [he2] needs. [name1] find[s/1] something {^intoxicating:overwhelming} in the surrender and tip[s/1] over.",
+	INTERACTION_ENTHUSIASM_DOGGY_T_STILLNESS_LOVE_1 = "[name1] go[es/1] {^still:motionless}, forcing [name2] to take everything [he2] needs. [name1] find[s/1] something {^intoxicating:overwhelming} in the surrender.",
 	INTERACTION_ENTHUSIASM_DOGGY_T_STILLNESS_HATE_1 = "[name1]'s sudden stillness {^throw[s/1] off:confuse[s/1]} [name2], the disruption killing both their momentum. [name1] can't recover the edge.",
-	INTERACTION_ENTHUSIASM_DOGGY_T_STROKE_LOVE_1 = "[name1] reach[es/1] back and run[s/1] [his1] hand along [names2] arm. [name2] {^pause[s/2]:slow[s/2]} and lean[s/2] closer, something tender beneath the roughness that carries [name1] over.",
-	INTERACTION_ENTHUSIASM_DOGGY_T_STROKE_LOVE_2 = "The {^gentle:unexpected} touch along [names2] arm makes [him2] {^slow:soften}. [he2] hold[s/2] [name1] closer, and that closeness is what [name1] needed.",
+	INTERACTION_ENTHUSIASM_DOGGY_T_STROKE_LOVE_1 = "[name1] reach[es/1] back and run[s/1] [his1] hand along [names2] arm. [name2] {^pause[s/2]:slow[s/2]} and lean[s/2] closer, something tender beneath the roughness.",
+	INTERACTION_ENTHUSIASM_DOGGY_T_STROKE_LOVE_2 = "The {^gentle:unexpected} touch along [names2] arm makes [him2] {^slow:soften}. [he2] hold[s/2] [name1] closer in response, turning the rough pace intimate.",
 	INTERACTION_ENTHUSIASM_DOGGY_T_STROKE_HATE_1 = "[name1]'s reach breaks [his1] stance. [name2] {^pause[s/2]:stumble[s/2]}, and the {^awkward pause:interruption} kills the moment entirely.",
-	INTERACTION_ENTHUSIASM_DOGGY_T_HAND_LOVE_1 = "[name1] reach[es/1] forward and find[s/1] [names2] hand. [name2] {^squeeze[s/2]:clasp[s/2]} it without slowing, and that small {^anchor:tether} is what [name1] needed.",
+	INTERACTION_ENTHUSIASM_DOGGY_T_HAND_LOVE_1 = "[name1] reach[es/1] forward and find[s/1] [names2] hand. [name2] {^squeeze[s/2]:clasp[s/2]} it without slowing, giving [him1] something to hold onto.",
 	INTERACTION_ENTHUSIASM_DOGGY_T_HAND_HATE_1 = "[name1] reach[es/1] forward and {^lose[s/1]:break[s/1]} [his1] balance. [name2] catch[es/2] [him1], but the disruption costs [name1] [his1] momentum entirely.",
 	INTERACTION_ENTHUSIASM_TRIGGER_LOTUS_GIVER = "[name1] {^pull[s/1]:grind[s/1]} [name2] down harder, grip tight, breath uneven, as if {^chasing:reaching for} something more with every motion...",
 	INTERACTION_ENTHUSIASM_TRIGGER_LOTUS_TAKER = "[name1] is {^rocking:grinding} on [names2] lap with a {^desperate:hungry} intensity, arms around [his2] neck, clearly wanting more than [he1] is getting...",
@@ -5529,29 +5784,29 @@ Sex skills are increased when performing related action and their growth is depe
 	INTERACTION_ENTHUSIASM_LOTUS_G_CHOICE_GUIDE = "Guide the depth with both hands",
 	INTERACTION_ENTHUSIASM_LOTUS_G_CHOICE_KISS = "Pull [him2] into a kiss",
 	INTERACTION_ENTHUSIASM_LOTUS_G_CHOICE_HOLD = "Hold [him2] close",
-	INTERACTION_ENTHUSIASM_LOTUS_G_PULL_LOVE_1 = "[name1] haul[s/1] [name2] down hard, the desperation in it tipping them both over at nearly the same moment.",
-	INTERACTION_ENTHUSIASM_LOTUS_G_PULL_LOVE_2 = "Gripping [names2] hips and pulling [him2] down hard, [name1] {^chase[s/1]:find[s/1]} the final friction. [name2] follow[s/2] with a sharp sound.",
+	INTERACTION_ENTHUSIASM_LOTUS_G_PULL_LOVE_1 = "[name1] haul[s/1] [name2] down hard, the desperation in it tightening around both of them.",
+	INTERACTION_ENTHUSIASM_LOTUS_G_PULL_LOVE_2 = "Gripping [names2] hips and pulling [him2] down hard, [name1] {^chase[s/1]:find[s/1]} the exact friction [he1] wanted. [name2] answer[s/2] with a sharp sound.",
 	INTERACTION_ENTHUSIASM_LOTUS_G_PULL_HATE_1 = "[name1] pull[s/1] [name2] down too abruptly. [name2] {^wince[s/2]:flinch[es/2]}, the {^jarring motion:sudden pull} breaking both their rhythms.",
 	INTERACTION_ENTHUSIASM_LOTUS_G_GUIDE_LOVE_1 = "[name1] take[s/1] [names2] hips and control[s/1] each descent, {^precise:measured} and deep, watching [name2]'s expression until [name1] get[s/1] exactly what [he1] needs.",
 	INTERACTION_ENTHUSIASM_LOTUS_G_GUIDE_HATE_1 = "[name1]'s attempt to control the depth {^clashes:conflicts} with [names2] own rhythm, the resistance {^frustrating:killing} [names1] momentum before [he1] can rebuild it.",
-	INTERACTION_ENTHUSIASM_LOTUS_G_KISS_LOVE_1 = "[name1] pull[s/1] [name2] in by the back of the neck and kiss[es/1] [him2]. [name2] {^gasp[s/2]:melt[s/2]} into it, and they find the edge together in the closeness.",
-	INTERACTION_ENTHUSIASM_LOTUS_G_KISS_LOVE_2 = "Kissing [name2] deeply while [he2] move[s/2] in [names1] lap. [name1] feel[s/1] [him2] come undone in [his1] arms before [name1] follow[s/1].",
+	INTERACTION_ENTHUSIASM_LOTUS_G_KISS_LOVE_1 = "[name1] pull[s/1] [name2] in by the back of the neck and kiss[es/1] [him2]. [name2] {^gasp[s/2]:melt[s/2]} into it, and they find the same rhythm in the closeness.",
+	INTERACTION_ENTHUSIASM_LOTUS_G_KISS_LOVE_2 = "Kissing [name2] deeply while [he2] move[s/2] in [names1] lap, [name1] feel[s/1] [him2] shudder in [his1] arms.",
 	INTERACTION_ENTHUSIASM_LOTUS_G_KISS_HATE_1 = "[name1]'s kiss break[s/1] [names2] rhythm, and [he2] {^pause[s/2]:stop[s/2]} to respond before losing [his2] way back into the motion.",
-	INTERACTION_ENTHUSIASM_LOTUS_G_HOLD_LOVE_1 = "[name1] wrap[s/1] around [name2] and murmur[s/1] something low to [him2]. [name2] {^shudder[s/2]:lean[s/2] in} in a powerful orgasm.",
+	INTERACTION_ENTHUSIASM_LOTUS_G_HOLD_LOVE_1 = "[name1] wrap[s/1] around [name2] and murmur[s/1] something low to [him2]. [name2] {^lean[s/2] in:cling[s/2] closer}, matching [his1] rhythm.",
 	INTERACTION_ENTHUSIASM_LOTUS_G_HOLD_HATE_1 = "[name1]'s {^embrace:closeness} still[s/1] [name2] more than it encourages, [he2] seem[s/2] uncertain, and the hesitation kills [names1] approach to the edge.",
-	INTERACTION_ENTHUSIASM_LOTUS_T_CHOICE_GRIP = "Grip [his2] shoulders and take over",
-	INTERACTION_ENTHUSIASM_LOTUS_T_CHOICE_STEADY = "Hold [his2] waist, steady the pace",
-	INTERACTION_ENTHUSIASM_LOTUS_T_CHOICE_KISS = "Lean in and kiss [him2]",
+	INTERACTION_ENTHUSIASM_LOTUS_T_CHOICE_GRIP = "Grip [his1] shoulders and take over",
+	INTERACTION_ENTHUSIASM_LOTUS_T_CHOICE_STEADY = "Hold [his1] waist, steady the pace",
+	INTERACTION_ENTHUSIASM_LOTUS_T_CHOICE_KISS = "Lean in and kiss [him1]",
 	INTERACTION_ENTHUSIASM_LOTUS_T_CHOICE_FOREHEADS = "Press foreheads together",
-	INTERACTION_ENTHUSIASM_LOTUS_T_GRIP_LOVE_1 = "[name1] grab[s/1] [names2] shoulders and take[s/1] over the rhythm. [name2] {^let[s/2]:allow[s/2]} it, and [name1] drive[s/1] [himself/1] over while [name2] hold[s/2] on.",
-	INTERACTION_ENTHUSIASM_LOTUS_T_GRIP_LOVE_2 = "Bracing on [names2] shoulders, [name1] ride[s/1] faster and harder, tipping with a {^low sound:sharp exhale} as [name2] follow[s/2].",
+	INTERACTION_ENTHUSIASM_LOTUS_T_GRIP_LOVE_1 = "[name1] grab[s/1] [names2] shoulders and take[s/1] over the rhythm. [name2] {^let[s/2]:allow[s/2]} it, holding on while [name1] move[s/1].",
+	INTERACTION_ENTHUSIASM_LOTUS_T_GRIP_LOVE_2 = "Bracing on [names2] shoulders, [name1] ride[s/1] faster and harder, voice breaking into a {^low sound:sharp exhale}.",
 	INTERACTION_ENTHUSIASM_LOTUS_T_GRIP_HATE_1 = "[name1]'s grip on [names2] shoulders {^clashes:conflicts} with [his2] momentum, and they end up working against each other until the rhythm collapses.",
-	INTERACTION_ENTHUSIASM_LOTUS_T_STEADY_LOVE_1 = "[name1] press[es/1] [his1] hands to [names2] waist and find[s/1] a {^controlled:steady} rhythm, riding it to the end as [name2] follow[s/2] [him1] over.",
+	INTERACTION_ENTHUSIASM_LOTUS_T_STEADY_LOVE_1 = "[name1] press[es/1] [his1] hands to [names2] waist and find[s/1] a {^controlled:steady} rhythm, riding it as [name2] follow[s/2] [him1].",
 	INTERACTION_ENTHUSIASM_LOTUS_T_STEADY_HATE_1 = "[name1]'s steadying grip slow[s/1] the momentum [he1] had built, and the {^controlled pace:steadiness} can't rebuild the edge [name1] was riding.",
-	INTERACTION_ENTHUSIASM_LOTUS_T_KISS_LOVE_1 = "[name1] lean[s/1] in and kiss[es/1] [name2] deep, and they slow together, tender in it, that {^tenderness:closeness} carrying [name1] over.",
-	INTERACTION_ENTHUSIASM_LOTUS_T_KISS_LOVE_2 = "[name2] kiss[es/2] back without missing a beat. [name1] {^melt[s/1]:exhale[s/1]} and find[s/1] the edge in that moment of closeness.",
+	INTERACTION_ENTHUSIASM_LOTUS_T_KISS_LOVE_1 = "[name1] lean[s/1] in and kiss[es/1] [name2] deep, and they slow together, tender in it, letting the closeness guide [names1] rhythm.",
+	INTERACTION_ENTHUSIASM_LOTUS_T_KISS_LOVE_2 = "[name2] kiss[es/2] back without missing a beat. [name1] {^melt[s/1]:exhale[s/1]} into that moment of closeness.",
 	INTERACTION_ENTHUSIASM_LOTUS_T_KISS_HATE_1 = "[name1]'s kiss break[s/1] [names2] rhythm, and [he2] {^pull[s/2] back:pause[s/2]} to breathe before [name1] can recover [his1] momentum.",
-	INTERACTION_ENTHUSIASM_LOTUS_T_FOREHEADS_LOVE_1 = "[name1] press[es/1] [his1] forehead to [names2], eyes half-closed, {^present:there}, and [name2] slow[s/2] to match [him1]... then together they tip over.",
+	INTERACTION_ENTHUSIASM_LOTUS_T_FOREHEADS_LOVE_1 = "[name1] press[es/1] [his1] forehead to [names2], eyes half-closed, {^present:there}, and [name2] slow[s/2] to match [him1].",
 	INTERACTION_ENTHUSIASM_LOTUS_T_FOREHEADS_HATE_1 = "[name1] press[es/1] in for the closeness, but [name2] {^pull[s/2] back:lean[s/2] away} slightly, and the {^break:shift} in connection loses [names1] momentum entirely.",
 	INTERACTION_ENTHUSIASM_TRIGGER_REVLOTUS_GIVER = "[name1] {^plant[s/1] [his1] hands on [names2] hips:grip[s/1] [names2] waist} and begin[s/1] {^grinding:thrusting} up, driven and {^urgent:hungry}, clearly {^chasing:working toward} something...",
 	INTERACTION_ENTHUSIASM_TRIGGER_REVLOTUS_TAKER = "Perched on [names2] lap, [name1] is {^rolling:rocking} with an urgency that goes beyond routine, wanting more than [he1] is getting...",
@@ -5561,29 +5816,29 @@ Sex skills are increased when performing related action and their growth is depe
 	INTERACTION_ENTHUSIASM_REVLOTUS_G_CHOICE_CONTROL = "Control the pace with a firm grip",
 	INTERACTION_ENTHUSIASM_REVLOTUS_G_CHOICE_REACH = "Reach around and hold [him2]",
 	INTERACTION_ENTHUSIASM_REVLOTUS_G_CHOICE_TOUCH = "Run [his1] hands along [his2] sides",
-	INTERACTION_ENTHUSIASM_REVLOTUS_G_THRUST_LOVE_1 = "[name1] grip[s/1] [names2] hips and drive[s/1] up hard. [name2] gasp[s/2] and [name1] {^chase[s/1]:find[s/1]} the finish in [his2] reaction.",
-	INTERACTION_ENTHUSIASM_REVLOTUS_G_THRUST_LOVE_2 = "Thrusting up and holding [name2] down into every motion, [name1] take[s/1] what [he1] needs. [name2] follow[s/2] with a sharp {^cry:sound}.",
+	INTERACTION_ENTHUSIASM_REVLOTUS_G_THRUST_LOVE_1 = "[name1] grip[s/1] [names2] hips and drive[s/1] up hard. [name2] gasp[s/2] and [name1] {^chase[s/1]:find[s/1]} what [he1] needs in [his2] reaction.",
+	INTERACTION_ENTHUSIASM_REVLOTUS_G_THRUST_LOVE_2 = "Thrusting up and holding [name2] down into every motion, [name1] take[s/1] what [he1] needs. [name2] answer[s/2] with a sharp {^cry:sound}.",
 	INTERACTION_ENTHUSIASM_REVLOTUS_G_THRUST_HATE_1 = "[name1]'s sudden hard thrusts unbalance [name2], and [he2] scramble[s/2] for stability. The rhythm is gone.",
-	INTERACTION_ENTHUSIASM_REVLOTUS_G_CONTROL_LOVE_1 = "[name1] slow[s/1] to {^deliberate:grinding} strokes, keeping [name2] {^anchored:steady}. [name2] can't hold back from a powerful orgasm overwhelming [him2].",
+	INTERACTION_ENTHUSIASM_REVLOTUS_G_CONTROL_LOVE_1 = "[name1] slow[s/1] to {^deliberate:grinding} strokes, keeping [name2] {^anchored:steady} while the pressure builds in [him2].",
 	INTERACTION_ENTHUSIASM_REVLOTUS_G_CONTROL_HATE_1 = "[name1]'s attempt to control the pace frustrates [name2], and [he2] resist[s/2] the grip rather than yielding. [name1] lose[s/1] [his1] momentum.",
-	INTERACTION_ENTHUSIASM_REVLOTUS_G_REACH_LOVE_1 = "[name1] reach[es/1] around [names2] chest and pull[s/1] [him2] back against [himself/1]. The closeness {^turns:shifts} the urgency into something warmer, and [name1] find[s/1] [his1] finish in it.",
-	INTERACTION_ENTHUSIASM_REVLOTUS_G_REACH_LOVE_2 = "Wrapped around [name2] from behind, [name1] {^murmur[s/1]:breathe[s/1]} against [his2] neck. [name2] tilt[s/2] [his2] head back and [name1] tip[s/1] over.",
+	INTERACTION_ENTHUSIASM_REVLOTUS_G_REACH_LOVE_1 = "[name1] reach[es/1] around [names2] chest and pull[s/1] [him2] back against [himself/1]. The closeness {^turns:shifts} the urgency into something warmer.",
+	INTERACTION_ENTHUSIASM_REVLOTUS_G_REACH_LOVE_2 = "Wrapped around [name2] from behind, [name1] {^murmur[s/1]:breathe[s/1]} against [his2] neck. [name2] tilt[s/2] [his2] head back.",
 	INTERACTION_ENTHUSIASM_REVLOTUS_G_REACH_HATE_1 = "[name1] reach[es/1] around but the shift in weight {^throws:breaks} their balance, and the awkward recovery ruins the moment for both of them.",
-	INTERACTION_ENTHUSIASM_REVLOTUS_G_TOUCH_LOVE_1 = "[name1] run[s/1] [his1] hands up [names2] sides, slow and deliberate. The contrast to the motion {^undoes:unravels} them as [name2] experience a powerful orgasm.",
+	INTERACTION_ENTHUSIASM_REVLOTUS_G_TOUCH_LOVE_1 = "[name1] run[s/1] [his1] hands up [names2] sides, slow and deliberate. The contrast to the motion {^undoes:unravels} them.",
 	INTERACTION_ENTHUSIASM_REVLOTUS_G_TOUCH_HATE_1 = "[name1]'s {^soft touch:gentle gesture} read[s/1] as hesitation. [name2] slow[s/2], uncertain, and the momentum they had built dissolves.",
-	INTERACTION_ENTHUSIASM_REVLOTUS_T_CHOICE_FASTER = "Ask [him2] to move faster",
-	INTERACTION_ENTHUSIASM_REVLOTUS_T_CHOICE_GUIDE = "Reach back and guide [his2] rhythm",
-	INTERACTION_ENTHUSIASM_REVLOTUS_T_CHOICE_PRAISE = "Tell [him2] how good it feels",
-	INTERACTION_ENTHUSIASM_REVLOTUS_T_CHOICE_HAND = "Reach back and take [his2] hand",
-	INTERACTION_ENTHUSIASM_REVLOTUS_T_FASTER_LOVE_1 = "[name1] manage[s/1] a breathless word. [name2] comply[ies/2] immediately, the pace tipping [name1] over almost at once.",
-	INTERACTION_ENTHUSIASM_REVLOTUS_T_FASTER_LOVE_2 = "[name1] urge[s/1] [name2] faster with a {^breathless:desperate} sound. [name2] {^oblige[s/2]:deliver[s/2]}, and [name1] feel[s/1] [himself/1] go over before [he1] expected.",
+	INTERACTION_ENTHUSIASM_REVLOTUS_T_CHOICE_FASTER = "Ask [him1] to move faster",
+	INTERACTION_ENTHUSIASM_REVLOTUS_T_CHOICE_GUIDE = "Reach back and guide [his1] rhythm",
+	INTERACTION_ENTHUSIASM_REVLOTUS_T_CHOICE_PRAISE = "Tell [him1] how good it feels",
+	INTERACTION_ENTHUSIASM_REVLOTUS_T_CHOICE_HAND = "Reach back and take [his1] hand",
+	INTERACTION_ENTHUSIASM_REVLOTUS_T_FASTER_LOVE_1 = "[name1] manage[s/1] a breathless word. [name2] comply[ies/2] immediately, the pace tightening almost at once.",
+	INTERACTION_ENTHUSIASM_REVLOTUS_T_FASTER_LOVE_2 = "[name1] urge[s/1] [name2] faster with a {^breathless:desperate} sound. [name2] {^oblige[s/2]:deliver[s/2]}, and [name1] feel[s/1] [himself/1] give in to it.",
 	INTERACTION_ENTHUSIASM_REVLOTUS_T_FASTER_HATE_1 = "[name1]'s request comes out {^awkward:odd}, and [name2] {^pause[s/2]:slow[s/2]} to look at [him1]. The break in the moment costs [name1] [his1] edge entirely.",
-	INTERACTION_ENTHUSIASM_REVLOTUS_T_GUIDE_LOVE_1 = "[name1] reach[es/1] back and press[es/1] [his1] hand against [names2] hip, nudging [him2] into the exact rhythm [name1] needs. [name2] follow[s/2] it, and [name1] tip[s/1] over.",
+	INTERACTION_ENTHUSIASM_REVLOTUS_T_GUIDE_LOVE_1 = "[name1] reach[es/1] back and press[es/1] [his1] hand against [names2] hip, nudging [him2] into the exact rhythm [name1] needs. [name2] follow[s/2] it.",
 	INTERACTION_ENTHUSIASM_REVLOTUS_T_GUIDE_HATE_1 = "[name1] reach[es/1] back to guide [name2] but the gesture disrupts [names1] balance, sending [him1] forward slightly and losing everything [he1] had built.",
-	INTERACTION_ENTHUSIASM_REVLOTUS_T_PRAISE_LOVE_1 = "[name1] lean[s/1] back and let[s/1] [name2] hear it. The sound of [name1] lost in it {^drives:pushes} [name2] to redouble the effort, as [he2] reaches an orgasm.",
-	INTERACTION_ENTHUSIASM_REVLOTUS_T_PRAISE_LOVE_2 = "[name1] start[s/1] to speak and [name2] understand[s/2] the rest without words. [he2] push[es/2] up harder, and [name1] tip[s/1] over.",
+	INTERACTION_ENTHUSIASM_REVLOTUS_T_PRAISE_LOVE_1 = "[name1] lean[s/1] back and let[s/1] [name2] hear it. The sound of [name1] lost in it {^drives:pushes} [name2] to redouble the effort.",
+	INTERACTION_ENTHUSIASM_REVLOTUS_T_PRAISE_LOVE_2 = "[name1] start[s/1] to speak and [name2] understand[s/2] the rest without words. [he2] push[es/2] up harder.",
 	INTERACTION_ENTHUSIASM_REVLOTUS_T_PRAISE_HATE_1 = "[name1]'s {^voice:words} seem[s/1] to {^fluster:distract} [name2] more than encourage, and [he2] {^hesitate[s/2]:falter[s/2]}. [name1] can't recover the momentum.",
-	INTERACTION_ENTHUSIASM_REVLOTUS_T_HAND_LOVE_1 = "[name1] reach[es/1] back and find[s/1] [names2] hand. [name2] {^squeeze[s/2]:clasp[s/2]} it and keep[s/2] the rhythm without a word, and that steadiness is what [name1] needed.",
+	INTERACTION_ENTHUSIASM_REVLOTUS_T_HAND_LOVE_1 = "[name1] reach[es/1] back and find[s/1] [names2] hand. [name2] {^squeeze[s/2]:clasp[s/2]} it and keep[s/2] the rhythm without a word, giving [him1] something to answer.",
 	INTERACTION_ENTHUSIASM_REVLOTUS_T_HAND_HATE_1 = "[name1] reach[es/1] back and lose[s/1] [his1] balance. [name2] catch[es/2] [him1], but the disruption costs [name1] [his1] momentum.",
 	INTERACTION_ENTHUSIASM_TRIGGER_ONTOP_GIVER = "[name1] begin[s/1] thrusting up to meet [name2], {^urgent:driven}, {^hungry:eager}, doing more than [his1] share of the work...",
 	INTERACTION_ENTHUSIASM_TRIGGER_ONTOP_TAKER = "[name1] is {^riding:moving} with an intensity that's more than habit, {^chasing something:working toward a finish} rather than just going through the motions...",
@@ -5593,31 +5848,31 @@ Sex skills are increased when performing related action and their growth is depe
 	INTERACTION_ENTHUSIASM_ONTOP_G_CHOICE_GRIP = "Grip [his2] hips and set the pace",
 	INTERACTION_ENTHUSIASM_ONTOP_G_CHOICE_KISS = "Pull [him2] down for a kiss",
 	INTERACTION_ENTHUSIASM_ONTOP_G_CHOICE_HOLD = "Reach up and hold [his2] hands",
-	INTERACTION_ENTHUSIASM_ONTOP_G_THRUST_LOVE_1 = "[name1] drive[s/1] up into every one of [names2] descents. [name2] gasp[s/2] at the doubled force and [name1] find[s/1] [his1] finish in [his2] reaction.",
-	INTERACTION_ENTHUSIASM_ONTOP_G_THRUST_LOVE_2 = "Matching [name2] motion for motion, [name1] {^pound[s/1]:drive[s/1]} up. [name2] let[s/2] out a {^low:broken} sound and [name1] tip[s/1] over at it.",
+	INTERACTION_ENTHUSIASM_ONTOP_G_THRUST_LOVE_1 = "[name1] drive[s/1] up into every one of [names2] descents. [name2] gasp[s/2] at the doubled force and [name1] feed[s/1] on [his2] reaction.",
+	INTERACTION_ENTHUSIASM_ONTOP_G_THRUST_LOVE_2 = "Matching [name2] motion for motion, [name1] {^pound[s/1]:drive[s/1]} up. [name2] let[s/2] out a {^low:broken} sound.",
 	INTERACTION_ENTHUSIASM_ONTOP_G_THRUST_HATE_1 = "[name1]'s upward thrusts {^clash:collide} with [names2] descents, and they end up working against each other until both rhythm and momentum are gone.",
-	INTERACTION_ENTHUSIASM_ONTOP_G_GRIP_LOVE_1 = "[name1] take[s/1] hold of [names2] hips and slow[s/1] [him2] to a {^deliberate:grinding} rhythm. [name2] is able to pick up that exact spot, making [him2] cum quickly.",
+	INTERACTION_ENTHUSIASM_ONTOP_G_GRIP_LOVE_1 = "[name1] take[s/1] hold of [names2] hips and slow[s/1] [him2] to a {^deliberate:grinding} rhythm. [name2] is able to pick up that exact spot quickly.",
 	INTERACTION_ENTHUSIASM_ONTOP_G_GRIP_HATE_1 = "[name1] grip[s/1] [names2] hips to set the pace, but [name2] resist[s/2] the constraint, and they end up pulling in different directions until [name1] lose[s/1] [his1] momentum.",
-	INTERACTION_ENTHUSIASM_ONTOP_G_KISS_LOVE_1 = "[name1] pull[s/1] [name2] down by the neck and kiss[es/1] [him2] deep. [name2] {^collapse[s/2]:melt[s/2]} into it, and they move together into blissful orgasm.",
+	INTERACTION_ENTHUSIASM_ONTOP_G_KISS_LOVE_1 = "[name1] pull[s/1] [name2] down by the neck and kiss[es/1] [him2] deep. [name2] {^collapse[s/2]:melt[s/2]} into it, and they move together.",
 	INTERACTION_ENTHUSIASM_ONTOP_G_KISS_LOVE_2 = "[name2] lean[s/2] into the kiss and slow[s/2], and in that closeness [name1] find[s/1] what [he1] was chasing.",
 	INTERACTION_ENTHUSIASM_ONTOP_G_KISS_HATE_1 = "[name1] reach[es/1] up to pull [name2] into a kiss but the motion unbalances [him2], and [he2] {^catch[es/2]:grab[s/2]} [names1] shoulders to steady [himself/2], losing the rhythm entirely.",
-	INTERACTION_ENTHUSIASM_ONTOP_G_HOLD_LOVE_1 = "[name1] reach[es/1] up and find[s/1] [names2] hands. [name2] {^look[s/2]:glance[s/2]} down and {^squeeze[s/2]:grip[s/2]} back, and the small tether carries [name1] over.",
+	INTERACTION_ENTHUSIASM_ONTOP_G_HOLD_LOVE_1 = "[name1] reach[es/1] up and find[s/1] [names2] hands. [name2] {^look[s/2]:glance[s/2]} down and {^squeeze[s/2]:grip[s/2]} back, keeping [him1] locked into the motion.",
 	INTERACTION_ENTHUSIASM_ONTOP_G_HOLD_HATE_1 = "[name1] reach[es/1] for [names2] hands but the shift breaks [his1] rhythm. [name2] {^pause[s/2]:slow[s/2]}, and [name1] can't recover [his1] approach to the edge.",
-	INTERACTION_ENTHUSIASM_ONTOP_T_CHOICE_HARDER = "Tell [him2] to go harder",
-	INTERACTION_ENTHUSIASM_ONTOP_T_CHOICE_BRACE = "Brace on [his2] chest, match the rhythm",
-	INTERACTION_ENTHUSIASM_ONTOP_T_CHOICE_PRAISE = "Tell [him2] how good he feels",
-	INTERACTION_ENTHUSIASM_ONTOP_T_CHOICE_LEAN = "Lean down and kiss [him2]",
-	INTERACTION_ENTHUSIASM_ONTOP_T_HARDER_LOVE_1 = "[name1] breathe[s/1] the word and [name2] obey[s/2] immediately. [name1] tip[s/1] over almost at once.",
-	INTERACTION_ENTHUSIASM_ONTOP_T_HARDER_LOVE_2 = "[name1]'s {^demand:command} is barely a whisper but [name2] hear[s/2] it, and [he2] drive[s/2] up harder. Hitting the right note, it makes [name2] cum quickly.",
+	INTERACTION_ENTHUSIASM_ONTOP_T_CHOICE_HARDER = "Tell [him1] to go harder",
+	INTERACTION_ENTHUSIASM_ONTOP_T_CHOICE_BRACE = "Brace on [his1] chest, match the rhythm",
+	INTERACTION_ENTHUSIASM_ONTOP_T_CHOICE_PRAISE = "Tell [him1] how good he feels",
+	INTERACTION_ENTHUSIASM_ONTOP_T_CHOICE_LEAN = "Lean down and kiss [him1]",
+	INTERACTION_ENTHUSIASM_ONTOP_T_HARDER_LOVE_1 = "[name1] breathe[s/1] the word and [name2] obey[s/2] immediately, answering almost at once.",
+	INTERACTION_ENTHUSIASM_ONTOP_T_HARDER_LOVE_2 = "[name1]'s {^demand:command} is barely a whisper but [name2] hear[s/2] it, and [he2] drive[s/2] up harder, hitting exactly the right note.",
 	INTERACTION_ENTHUSIASM_ONTOP_T_HARDER_HATE_1 = "[name1]'s request for more seem[s/1] to {^startle:throw off} [name2], and [he2] {^hesitate[s/2]:falter[s/2]} in surprise. [name1] lose[s/1] [his1] edge.",
-	INTERACTION_ENTHUSIASM_ONTOP_T_BRACE_LOVE_1 = "[name1] press[es/1] [his1] hands to [names2] chest and lock[s/1] into [his2] rhythm, both working as one until [name1] tip[s/1] over and [name2] follow[s/2].",
+	INTERACTION_ENTHUSIASM_ONTOP_T_BRACE_LOVE_1 = "[name1] press[es/1] [his1] hands to [names2] chest and lock[s/1] into [his2] rhythm, both working as one.",
 	INTERACTION_ENTHUSIASM_ONTOP_T_BRACE_HATE_1 = "[name1] tr[ies/y1] to match [names2] rhythm but the timing {^clashes:mismatches}, and the collision of rhythms ruins both their momentum.",
-	INTERACTION_ENTHUSIASM_ONTOP_T_PRAISE_LOVE_1 = "[name1] let[s/1] [name2] hear every sound. [name2] seem[s/2] to take it as {^an invitation:fuel} and push[es/2] harder, carrying [name1] over.",
-	INTERACTION_ENTHUSIASM_ONTOP_T_PRAISE_LOVE_2 = "[name1] breathe[s/1] [names2] name, and [name2] understand[s/2] the rest. [he2] redouble[s/2] the effort, and [name1] tip[s/1] over with it still on [his1] lips.",
+	INTERACTION_ENTHUSIASM_ONTOP_T_PRAISE_LOVE_1 = "[name1] let[s/1] [name2] hear every sound. [name2] seem[s/2] to take it as {^an invitation:fuel} and push[es/2] harder.",
+	INTERACTION_ENTHUSIASM_ONTOP_T_PRAISE_LOVE_2 = "[name1] breathe[s/1] [names2] name, and [name2] understand[s/2] the rest. [he2] redouble[s/2] the effort while the name is still on [names1] lips.",
 	INTERACTION_ENTHUSIASM_ONTOP_T_PRAISE_HATE_1 = "The words seem[s/1] to {^fluster:embarrass} [name2] rather than spur [him2] on, and [he2] {^hesitate[s/2]:slow[s/2]}. [name1] can't recover the momentum.",
-	INTERACTION_ENTHUSIASM_ONTOP_T_LEAN_LOVE_1 = "[name1] lean[s/1] down and press[es/1] [his1] lips to [names2]. [name2] {^reach[es/2]:pull[s/2]} [him1] in and they finish tangled together.",
+	INTERACTION_ENTHUSIASM_ONTOP_T_LEAN_LOVE_1 = "[name1] lean[s/1] down and press[es/1] [his1] lips to [names2]. [name2] {^reach[es/2]:pull[s/2]} [him1] in and they move tangled together.",
 	INTERACTION_ENTHUSIASM_ONTOP_T_LEAN_HATE_1 = "[name1] lean[s/1] forward to kiss [name2] and lose[s/1] [his1] balance. [name2] catch[es/2] [him1] but the disruption costs [name1] [his1] momentum entirely.",
-	INTERACTION_ENTHUSIASM_SKILL_IMPROVED = "Something about that moment clicked for [name1]. Looks like [his1] %s skill has improved. ",
+	INTERACTION_ENTHUSIASM_SKILL_IMPROVED = "Something about that moment fell into place for [name1]. Looks like [his1] %s skill has improved. ",
 	INTERACTION_START_ROOM = "%s walk into the bedroom.",
 	INTERACTION_ACT_BLOCK_TIED = "[name] is tied and can't act.",
 	INTERACTION_ACT_BLOCK_STRUGGLING = "[name] is struggling and can't act.",
@@ -5693,6 +5948,15 @@ and can only act on [him]. """,
 """,
 	INTERACTION_DESIRE_FULFILLED = """[color=aqua]Desire fullfiled! [name1] grows lewder and more sensitive. [/color]
 """,
+	INTERACTION_SEX_MINIGAME_POINTS_GAINED = "[color=yellow]Connection points +%s: %s. Total: %s[/color]",
+	INTERACTION_CONNECTION_POINTS_TOOLTIP = "Connection points are earned during sex interactions and can be spent during training opportunities.",
+	INTERACTION_CONNECTION_POINTS_REASON_DESIRE = "[names1] desire fulfilled",
+	INTERACTION_CONNECTION_POINTS_REASON_FIRST_ORGASM = "[names1] first orgasm",
+	INTERACTION_CONNECTION_POINTS_REASON_VAGINAL_VIRGINITY = "[names2] vaginal virginity taken",
+	INTERACTION_CONNECTION_POINTS_REASON_ANAL_VIRGINITY = "[names2] anal virginity taken",
+	INTERACTION_CONNECTION_POINTS_REASON_SKILLED = "%s advanced to Skilled",
+	INTERACTION_CONNECTION_POINTS_REASON_EMPATHIC_INSIGHT = "[names1] empathic insight",
+	INTERACTION_MANA_COST = "Mana cost: %s",
 	INTERACTION_END_CONSENT_GAIN = """[name] has opened [him]self to the new experience: Consent - {color=aqua|%s}
 """,
 	INTERACTION_END_DEVASTATED = "[name] has been devastated by this encounter and have not been able to increase [his] open mindedness. ",
@@ -6033,19 +6297,19 @@ SEXACTION_TITJOB_ONGOING_1 = "[name1] give[s/1] [a /2]titjob[/s2] to [name2].",
 	SEXDICT_START_1_MISSIONARY_REPEAT_MEAN_2 = "[name2] {^tr[ies/y2] to push:attempt[s/2] to push} [name1] away",
 	SEXDICT_START_1_MISSIONARY_REPEAT_MEAN_3 = "[name2] {^whimper[s/2]:protest[s/2]} as [name1] {^press[es/1]:push[es/1]} [him2] into the {^mattress:sheets}",
 	SEXDICT_START_1_MISSIONARY_LOTUS_NICE_1 = "[name2] {^let[s/2] [himself2]:allow[s/2] [himself2] to be} lowered onto [his2] back[/s2] as [name1] climb[s/1] {^atop:on top of} [him2]",
-	SEXDICT_START_1_MISSIONARY_LOTUS_NICE_2 = "[name2] {^shifts:rolls}[s/2] onto [his2] back[/s2] and [name1] settle[s/1] {^atop:over} [him2]",
+	SEXDICT_START_1_MISSIONARY_LOTUS_NICE_2 = "[name2] {^shift:roll}[s/2] onto [his2] back[/s2] and [name1] settle[s/1] {^atop:over} [him2]",
 	SEXDICT_START_1_MISSIONARY_LOTUS_MEAN_1 = "[name2] {^squirm[s/2]:struggle[s/2]} as [name1] {^push[es/1]:force[s/1]} [him2] onto [his2] back[/s2]",
 	SEXDICT_START_1_MISSIONARY_LOTUS_MEAN_2 = "[name1] {^push[es/1]:shove[s/1]} [name2] onto [his2] back[/s2] despite [his2] {^protests:resistance}",
 	SEXDICT_START_1_MISSIONARY_REVLOTUS_NICE_1 = "[name2] {^let[s/2] [himself2]:allow[s/2] [himself2] to be} flipped over onto [his2] back",
-	SEXDICT_START_1_MISSIONARY_REVLOTUS_NICE_2 = "[name2] {^rolls:shifts}[s/2] over onto [his2] back as [name1] guide[s/1] [him2]",
+	SEXDICT_START_1_MISSIONARY_REVLOTUS_NICE_2 = "[name2] {^roll:shift}[s/2] over onto [his2] back as [name1] guide[s/1] [him2]",
 	SEXDICT_START_1_MISSIONARY_REVLOTUS_MEAN_1 = "[name2] {^struggle[s/2]:resist[s/2]} as [name1] {^flip[s/1]:force[s/1]} [him2] over onto [his2] back",
 	SEXDICT_START_1_MISSIONARY_REVLOTUS_MEAN_2 = "[name1] {^flip[s/1]:turn[s/1]} [name2] over despite [his2] {^protests:resistance}",
-	SEXDICT_START_1_MISSIONARY_DOGGY_NICE_1 = "[name2] {^rolls:turns}[s/2] over onto [his2] back[/s2] and [name1] climb[s/1] {^atop:on top of} [him2]",
+	SEXDICT_START_1_MISSIONARY_DOGGY_NICE_1 = "[name2] {^roll:turn}[s/2] over onto [his2] back[/s2] and [name1] climb[s/1] {^atop:on top of} [him2]",
 	SEXDICT_START_1_MISSIONARY_DOGGY_NICE_2 = "[name2] {^let[s/2] [himself2]:allow[s/2] [himself2] to be} flipped over as [name1] settle[s/1] {^atop:over} [him2]",
 	SEXDICT_START_1_MISSIONARY_DOGGY_MEAN_1 = "[name2] {^struggle[s/2]:squirm[s/2]} as [name1] {^flip[s/1]:force[s/1]} [him2] onto [his2] back[/s2]",
 	SEXDICT_START_1_MISSIONARY_DOGGY_MEAN_2 = "[name1] {^yank[s/1]:jerk[s/1]} [name2] onto [his2] back[/s2] as [he2] {^protest[s/2]:resist[s/2]}",
-	SEXDICT_START_1_MISSIONARY_INSERT_NICE_1 = "[name2] {^lies:settles}[s/2] down{^ on [his2] back:} as [name1] {^moves:climbs}[s/1] {^atop:on top of} [him2]",
-	SEXDICT_START_1_MISSIONARY_INSERT_NICE_2 = "[name2] {^shifts:moves}[s/2] onto [his2] back, letting [name1] {^settle:climb} {^atop:over} [him2]",
+	SEXDICT_START_1_MISSIONARY_INSERT_NICE_1 = "[name2] {^lie:settle}[s/2] down{^ on [his2] back:} as [name1] {^moves:climbs}[s/1] {^atop:on top of} [him2]",
+	SEXDICT_START_1_MISSIONARY_INSERT_NICE_2 = "[name2] {^shift:move}[s/2] onto [his2] back, letting [name1] {^settle:climb} {^atop:over} [him2]",
 	SEXDICT_START_1_MISSIONARY_INSERT_MEAN_1 = "[name2] {^squirm[s/2]:struggle[s/2]} as [name1] {^pin[s/1]:hold[s/1]} [him2] down{^ on [his2] back:}",
 	SEXDICT_START_1_MISSIONARY_INSERT_MEAN_2 = "[name1] {^force[s/1]:push[es/1]} [name2] onto [his2] back as [he2] {^tr[ies/y2] to resist:protest[s/2]}",
 	SEXDICT_START_1_DOGGY_REPEAT_NICE_1 = "[name2] {^push[es/2]:rock[s/2]} back against [name1]",
@@ -6055,15 +6319,15 @@ SEXACTION_TITJOB_ONGOING_1 = "[name1] give[s/1] [a /2]titjob[/s2] to [name2].",
 	SEXDICT_START_1_DOGGY_REPEAT_MEAN_2 = "[name2] {^whimper[s/2]:whin[es/2]:protest[s/2]} as [name1] {^hold[s/1]:keep[s/1]} [him2] from moving",
 	SEXDICT_START_1_DOGGY_REPEAT_MEAN_3 = "[name2] {^struggle[s/2]:squirm[s/2]} against [name1]'s grip",
 	SEXDICT_START_1_DOGGY_LOTUS_NICE_1 = "[name2] {^let[s/2] [himself2]:allow[s/2] [himself2] to be} guided onto {^all fours:[his2] hands and knees}",
-	SEXDICT_START_1_DOGGY_LOTUS_NICE_2 = "[name2] {^shifts:rolls}[s/2] forward onto {^all fours:[his2] knees} as [name1] direct[s/1] [him2]",
+	SEXDICT_START_1_DOGGY_LOTUS_NICE_2 = "[name2] {^shift:roll}[s/2] forward onto {^all fours:[his2] knees} as [name1] direct[s/1] [him2]",
 	SEXDICT_START_1_DOGGY_LOTUS_MEAN_1 = "[name2] {^squirm[s/2]:struggle[s/2]} as [name1] {^push[es/1]:shove[s/1]} [him2] onto {^all fours:[his2] hands and knees}",
 	SEXDICT_START_1_DOGGY_LOTUS_MEAN_2 = "[name1] {^force[s/1]:push[es/1]} [name2] forward onto {^all fours:[his2] knees} despite [his2] {^protests:resistance}",
 	SEXDICT_START_1_DOGGY_REVLOTUS_NICE_1 = "[name2] {^let[s/2] [himself2]:shift[s/2]} forward onto {^all fours:[his2] hands and knees}",
 	SEXDICT_START_1_DOGGY_REVLOTUS_NICE_2 = "[name2] {^moves:settles}[s/2] into position as [name1] guide[s/1] [him2]",
 	SEXDICT_START_1_DOGGY_REVLOTUS_MEAN_1 = "[name2] {^resist[s/2]:struggle[s/2]} as [name1] {^force[s/1]:push[es/1]} [him2] forward onto {^all fours:[his2] knees}",
 	SEXDICT_START_1_DOGGY_REVLOTUS_MEAN_2 = "[name1] {^push[es/1]:shove[s/1]} [name2] into position as [he2] {^protest[s/2]:squirm[s/2]}",
-	SEXDICT_START_1_DOGGY_MISSIONARY_NICE_1 = "[name2] {^rolls:turns}[s/2] over onto {^all fours:[his2] hands and knees}",
-	SEXDICT_START_1_DOGGY_MISSIONARY_NICE_2 = "[name2] {^shifts:moves}[s/2] onto {^all fours:[his2] knees} as [name1] guide[s/1] [him2]",
+	SEXDICT_START_1_DOGGY_MISSIONARY_NICE_1 = "[name2] {^roll:turn}[s/2] over onto {^all fours:[his2] hands and knees}",
+	SEXDICT_START_1_DOGGY_MISSIONARY_NICE_2 = "[name2] {^shift:move}[s/2] onto {^all fours:[his2] knees} as [name1] guide[s/1] [him2]",
 	SEXDICT_START_1_DOGGY_MISSIONARY_MEAN_1 = "[name2] {^squirm[s/2]:struggle[s/2]} as [name1] {^flip[s/1]:force[s/1]} [him2] onto {^all fours:[his2] hands and knees}",
 	SEXDICT_START_1_DOGGY_MISSIONARY_MEAN_2 = "[name1] {^yank[s/1]:jerk[s/1]} [name2] over as [he2] {^protest[s/2]:resist[s/2]}",
 	SEXDICT_START_1_DOGGY_INSERT_NICE_1 = "[name2] {^get[s/2] on all fours:position[s/2] [himself2]} as [name1] move[s/1] behind [him2]",
@@ -6988,6 +7252,26 @@ SEXACTION_TITJOB_ONGOING_1 = "[name1] give[s/1] [a /2]titjob[/s2] to [name2].",
 	SEXACTION_TITJOB_REACT_SKILL_SKILLED_HIGH_1 = ". [name1] {^squeeze[s/1]:press[es/1]} harder, sensing [he2] is close.",
 	SEXACTION_TITJOB_REACT_SKILL_MASTERED_LOW_1 = ". [name1] {^adjust[s/1]:shift[s/1]} [his1] angle with ease, always reading what [name2] responds to most.",
 	SEXACTION_TITJOB_REACT_SKILL_MASTERED_HIGH_1 = ". [name1] {^squeeze[s/1]:press[es/1]} [his1] [tits1] tighter and feel[s/1] [name2] starting to {^buck:thrust} against [him1].",
+	SEXACTION_NAIZURI_SMALL_START_1 = "[name1] press[es/1] [names2] [penis2] against [his1] small chest; there may not be much to squeeze, but the close rubbing still warms both of them.",
+	SEXACTION_NAIZURI_SMALL_START_NOVICE_1 = "[name1] awkwardly press[es/1] [names2] [penis2] to [his1] small chest, joking that there is not much to work with while still finding a pleasant angle.",
+	SEXACTION_NAIZURI_SMALL_START_SKILLED_1 = "[name1] use[s/1] [his1] small chest with practiced hand pressure, making the modest handful stimulate both of them.",
+	SEXACTION_NAIZURI_SMALL_START_MASTERED_1 = "[name1] turn[s/1] [his1] small chest into a precise source of friction, getting impressive results from limited material.",
+	SEXACTION_NAIZURI_FLAT_START_1 = "[name1] rub[s/1] [names2] [penis2] along [his1] flat chest, making a teasing show of working with what little is there.",
+	SEXACTION_NAIZURI_FLAT_START_NOVICE_1 = "[name1] fumble[s/1] [names2] [penis2] against [his1] flat chest, half-laughing at the lack of cushion but still making the friction count.",
+	SEXACTION_NAIZURI_FLAT_START_SKILLED_1 = "[name1] grind[s/1] [names2] [penis2] along [his1] flat chest with steady confidence, proving softness is optional.",
+	SEXACTION_NAIZURI_FLAT_START_MASTERED_1 = "[name1] use[s/1] [his1] flat chest with expert pressure and rhythm, turning the joke about no boobs into something effective.",
+	SEXACTION_NAIZURI_SMALL_ONGOING_DESC_1 = "[name1] continue[s/1] the small-chested naizuri, keeping [names2] [penis2] pressed close enough to keep both bodies stimulated.",
+	SEXACTION_NAIZURI_FLAT_ONGOING_DESC_1 = "[name1] continue[s/1] grinding [names2] [penis2] along [his1] flat chest, proving that a lack of softness does not mean a lack of friction.",
+	SEXACTION_NAIZURI_SMALL_REACT_1 = "[name2] respond[s/2] despite the modest handful, [his2] [penis2] reacting to the tight pressure while [name1] enjoy[s/1] the contact too.",
+	SEXACTION_NAIZURI_FLAT_REACT_1 = "[name2] react[s/2] as [his2] [penis2] grind[s/#2] against [names1] flat chest, the joke about missing boobs not making it any less stimulating.",
+	SEXACTION_NAIZURI_SMALL_REACT_SKILL_1 = ". [name1] compensate[s/1] for the small chest with hands, angle, and a rhythm that keeps both sides interested.",
+	SEXACTION_NAIZURI_SMALL_REACT_SKILL_NOVICE_1 = ". [name1] fumble[s/1] a little, but the close contact still gets a reaction from both sides.",
+	SEXACTION_NAIZURI_SMALL_REACT_SKILL_SKILLED_1 = ". [name1] keep[s/1] the small-chested pressure steady, using skill where size is lacking.",
+	SEXACTION_NAIZURI_SMALL_REACT_SKILL_MASTERED_1 = ". [name1] make[s/1] every small shift count, drawing pleasure out of the modest contact.",
+	SEXACTION_NAIZURI_FLAT_REACT_SKILL_1 = ". [name1] use[s/1] steady friction and body pressure, getting more mileage from a flat chest than either of them might admit.",
+	SEXACTION_NAIZURI_FLAT_REACT_SKILL_NOVICE_1 = ". [name1] struggle[s/1] with the angle, but even the clumsy friction is not wasted.",
+	SEXACTION_NAIZURI_FLAT_REACT_SKILL_SKILLED_1 = ". [name1] keep[s/1] a controlled rhythm, making the flat contact work better than expected.",
+	SEXACTION_NAIZURI_FLAT_REACT_SKILL_MASTERED_1 = ". [name1] turn[s/1] the flat contact into exact, teasing pressure that stimulates both of them.",
 	SEXACTION_TAILJOB_REACTION_1 = "[name2] {^show:give}[s/2] little {^response:reaction} to {^the stimulation:[names1] efforts:[names1] tail[/s1]}.",
 	SEXACTION_TAILJOB_REACTION_2 = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] [penis2] get[s/#2] {^jerked:stroked} by [names1] tail[/s1].",
 	SEXACTION_TAILJOB_REACTION_3 = "[name2] {^moan[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] [penis2] get[s/#2] {^jerked:stroked} by [names1] tail[/s1].",
@@ -7305,6 +7589,17 @@ SEXACTION_TITJOB_ONGOING_1 = "[name1] give[s/1] [a /2]titjob[/s2] to [name2].",
 	SEXACTION_MASSAGEWITHFOOT_ONGOING_1 = "[name1] step[s/1] on [name2] giving a humiliating massage.",
 	SEXACTION_LICKFEET_ONGOING_1 = "[name2] lick[s/2] [names1] feet as ordered.",
 	SEXACTION_ENEMAPLUG_ONGOING_1 = "[name1] injects enema liquid into [names2] anus then plug it.",
+	SEXACTION_CALMING_TOUCH_INITIATE = "[name1] place[s/1] [his1] hand on [name2], guiding [him2] into a slower rhythm with calm, steady pressure.",
+	SEXACTION_CALMING_TOUCH_RESULT = "[name2]'s breathing evens out as the pressure of the encounter becomes easier to bear.",
+	SEXACTION_EMPATHIC_INSIGHT_INITIATE = "[name1] close[s/1] [his1] eyes and follow[s/1] the emotional current moving through the room.",
+	SEXACTION_EMPATHIC_INSIGHT_RESULT = "[name1] understand[s/1] the shape of the moment more clearly, finding the fragile places where trust can still be built.",
+	SEXACTION_REFRESHING_PULSE_INITIATE = "Soft light gathers around [name1] before spreading through the room in a warm pulse.",
+	SEXACTION_REFRESHING_PULSE_RESULT = "The glow leaves everyone steadier and more awake, ready to keep moving.",
+	SEXACTION_TEASING_WINDS_INITIATE = "[name1] smile[s/1] like [he1] know[s/1] exactly what [name2] wants, then flick[s/1] [his1] fingers and send[s/1] a sly current of air under every vulnerable edge of [names2] body.",
+	SEXACTION_TEASING_WINDS_RESULT = "The breeze curls and presses with almost deliberate cruelty, ghosting over [names2] most sensitive places until [his2] breath catches and [his2] body tightens, teased raw but kept just short of release.",
+	SEXACTION_DARK_RAPTURE_INITIATE_1 = "[name1] seize[s/1] the moment with a cold, possessive look, drawing dark power into [his1] hand before pushing it deep into [names2] trembling body.",
+	SEXACTION_DARK_RAPTURE_INITIATE_2 = "[name1] smirk[s/1] as dark power gathers around [his1] fingers, savoring the instant before [he1] drive[s/1] it deep into [names2] trembling body.",
+	SEXACTION_DARK_RAPTURE_RESULT = "The magic clamps down and wrenches pleasure out of [name2] by force, flooding [his2] nerves in a brutal wave until [his2] body breaks into a helpless, shaking climax.",
 	SEXACTION_ANAL_FACE_SITTING = "Anal face sitting",
 	SEXACTION_ANAL_FISTING = "Anal Fisting",
 	SEXACTION_ANAL_VIBRATOR = "Anal vibrator",
@@ -7312,17 +7607,20 @@ SEXACTION_TITJOB_ONGOING_1 = "[name1] give[s/1] [a /2]titjob[/s2] to [name2].",
 	SEXACTION_BLINDFOLD = "Blindfold",
 	SEXACTION_BLOWJOB = "Blowjob",
 	SEXACTION_CARESS = "Caress",
+	SEXACTION_CALMING_TOUCH = "Calming Touch",
 	SEXACTION_CLIT_CLAMP = "Clit Clamp",
 	SEXACTION_CUNNILINGUS = "Cunnilingus",
 	SEXACTION_DEEPTHROAT = "Deepthroat",
 	SEXACTION_DOGGY_ANAL = "Doggy Anal",
 	SEXACTION_DOGGY_PEGGING = "Doggy Pegging",
 	SEXACTION_DOGGY_STYLE = "Doggy Style",
+	SEXACTION_DARK_RAPTURE = "Dark Rapture",
 	SEXACTION_DOUBLE_ANAL_DILDO = "Double Anal Dildo",
 	SEXACTION_DOUBLE_DILDO = "Double Dildo",
 	SEXACTION_DOUBLE_KISS = "Double Kiss",
 	SEXACTION_DOUBLE_PENETRATE = "Double Penetrate",
 	SEXACTION_EARJOB = "Earjob",
+	SEXACTION_EMPATHIC_INSIGHT = "Empathic Insight",
 	SEXACTION_ENEMA_PLUG = "Enema + Plug",
 	SEXACTION_FACE_SITTING = "Face sitting",
 	SEXACTION_FINGERING = "Fingering",
@@ -7345,6 +7643,7 @@ SEXACTION_TITJOB_ONGOING_1 = "[name1] give[s/1] [a /2]titjob[/s2] to [name2].",
 	SEXACTION_MILKER = "Milker",
 	SEXACTION_MISSIONARY = "Missionary",
 	SEXACTION_MISSIONARY_ANAL = "Missionary Anal",
+	SEXACTION_NAIZURI = "Naizuri",
 	SEXACTION_NIPPLE_CLAMP = "Nipple Clamp",
 	SEXACTION_NIPPLE_FUCK = "Nipple fuck",
 	SEXACTION_NIPPLE_SUCKING = "Nipple Sucking",
@@ -7355,20 +7654,23 @@ SEXACTION_TITJOB_ONGOING_1 = "[name1] give[s/1] [a /2]titjob[/s2] to [name2].",
 	SEXACTION_ORDER_LICK_FEET = "Order Lick feet",
 	SEXACTION_ORDER_MASTURBATION = "Order Masturbation",
 	SEXACTION_ORGASM_DENIAL = "Orgasm Denial",
-	SEXACTION_REVLOTUS = "Reverse Lotus",
-	SEXACTION_REVLOTUSANAL = "Reverse Lotus Anal",
+	SEXACTION_REVLOTUS = "Lap Sitting",
+	SEXACTION_REVLOTUSANAL = "Lap Sitting Anal",
+	SEXACTION_REFRESHING_PULSE = "Refreshing Pulse",
 	SEXACTION_RIMJOB = "Rimjob",
 	SEXACTION_RING_GAG = "Ring Gag",
 	SEXACTION_ROPE = "Rope",
 	SEXACTION_SELECTIVELY_CUM = "Selectively Cum",
 	SEXACTION_SMLT_BLOWJOB = "Smlt. Blowjob",
 	SEXACTION_SMLT_HANDJOB = "Smlt. Handjob",
+	SEXACTION_SMLT_NAIZURI = "Smlt. Naizuri",
 	SEXACTION_SMLT_TITJOB = "Smlt. Titjob",
 	SEXACTION_SPANKING = "Spanking",
 	SEXACTION_SPIT_ROAST = "Spit-roast",
 	SEXACTION_SPIT_ROAST_ANAL = "Spit-roast Anal",
 	SEXACTION_SUBDUE = "Subdue",
 	SEXACTION_TAILJOB = "Tailjob",
+	SEXACTION_TEASING_WINDS = "Teasing Winds",
 	SEXACTION_TITJOB = "Titjob",
 	SEXACTION_TRIBADISM = "Tribadism",
 	SEXACTION_VIBRATOR = "Vibrator",
@@ -7728,6 +8030,7 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYOGRE_MAGE = "Ogre Mage",
 	ENEMYGRYPHON = "Gryphon",
 	ENEMYELDER_GRYPHON_BOSS = "Elder Gryphon",
+	ENEMYTORNADO = 'Tornado',
 	ENEMYWOLF = "Wolf",
 	ENEMYRAT = "Rat",
 	ENEMYSPIDER_WEAK = "Crawler",
@@ -7779,6 +8082,10 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYDWARF_FIGHTER = "Dwarf Fighter",
 	ENEMYDWARF_FIGHTER_ELITE = "Elite Dwarf Soldier",
 	ENEMYDWARF_RANGED = "Dwarf Crossbowman",
+	ENEMYDWARF_KING = 'Dwarf King',
+	ENEMYDWARVEN_SKIRMISHER = 'Dwarf Skirmisher',
+	ENEMYDWARVEN_SHIELDER = 'Dwarf Shielder',
+	ENEMYOBSIDIAN_GOLEM = 'Obsidian Golem',
 	ENEMYKURO = "Kuro",
 	ENEMYERDYNA = "Erdyna",
 	ENEMYNIXX = "Nixx",
@@ -7881,7 +8188,7 @@ At the bottom left you can select items, unlock new classes and configure additi
 	TUTORIAL_LOCATIONS_RESOURCES = "Other locations allow to gather resources presented on them. Settlement type locations allow to gather resources infinitely, but have a limit on how many characters can gather it at once. Combat locations allow to gather a limited amount of resources after they've been cleared. ",
 	TUTORIAL_TATTOO_1 = "Once you've unlocked Beauty Parlor, you can apply tattoos to your characters. Tattoos provide permanent bonuses and require ink crafted at Alchemy tab. To access Tattoo menu use the corresponding button at inventory screen.",
 	TUTORIAL_TATTOO_2 = "Each tattoo type has certain bonuses, require special ink and apply to only selected bodyparts. Some might also have additional requirements. Tattoos can be removed or replaced but the ink is not refunded.",
-	TUTORIAL_BREAKDOWN_1 = "Breakdown tutorial placeholder",
+	TUTORIAL_BREAKDOWN_1 = "Some actions can led to a character suffering a breakdown. They will get better with time but until then they can't be controlled.",
 	TRAVELINGTUTORIAL1 = "This is the world map. At the left side you can select locations to travel to. On the right side selected location info will be shown. Click \"Send\" to send your characters to another location. ",
 	TRAVELINGTUTORIAL2 = "After selecting send, select location with characters who will travel. In bottom row you can select who exactly will travel. Travelling will take some time for characters to reach new location. ",
 	JOBTUTORIAL1 = "At Occupations you can assign characters to various tasks which can be seen near the location image. At the top you can select other locations you have characters at.",
@@ -8094,9 +8401,9 @@ Time Flow""",
 	ACHIEVEMENT_ITEM_HOLYSWORD_NAME = "Sword from the stone",
 	ACHIEVEMENT_ITEM_HOLYSWORD_DESC = "Got Sword from the stone",
 	ACHIEVEMENT_ITEM_HOLYSWORD_HINT = "Get Sword from the stone",
-	ACHIEVEMENT_METEORITE_NAME = "Meteorite quest",
-	ACHIEVEMENT_METEORITE_DESC = "Meteorite quest completed",
-	ACHIEVEMENT_METEORITE_HINT = "Complete meteorite quest",
+	ACHIEVEMENT_METEORITE_NAME = "Fallen Star",
+	ACHIEVEMENT_METEORITE_DESC = "Complete Fallen Star quest",
+	ACHIEVEMENT_METEORITE_HINT = "Complet Fallen Star quest",
 	ACHIEVEMENT_RESET_ASK = "Are you sure you want to reset ALL achievements progress?",
 	ACHIGROUP_WEDDING_NAME = "Wedding",
 	ACHIGROUP_WEDDING_DESC = "Marry each unique character",
@@ -8151,7 +8458,7 @@ Time Flow""",
 	ACHIBONUS_ROUGE_START_DESC = "Start game with Rouge",
 	ACHIBONUS_ROUGE_START_HINT = "Get Rouge",
 	ACHIBONUS_EXPSCROLLS = "Scribe",
-	ACHIBONUS_EXPSCROLLS_DESC = "Start with 10 Scrolls of Knowledge",
+	ACHIBONUS_EXPSCROLLS_DESC = "Start with Literacy trait and 10 Scrolls of Knowledge",
 	ACHIBONUS_TALENT = "Talented",
 	ACHIBONUS_TALENT_DESC = "Start with +2 master talent points",
 	ACHIBONUS_MASTER_FACTORS = "Gifted",
@@ -8162,7 +8469,9 @@ Time Flow""",
 	ACHIBONUS_ROOMS_DESC = "Start with room level 1 upgrade",
 	ACHIBONUS_LITERATE = "Literate",
 	ACHIBONUS_LITERATE_DESC = "Start with Literacy trait",
-	INTRODIALOGUE = """Twelve years have passed since monarchy was overthrown in Aliron Kingdom. Free of the previous reign, its capital Aliron has become a center of society and cultural life, giving even the lowest a chance to become a person of power and influence assuming they are capable...
+	ACHIBONUS_ALL_RACES = "Cosmopolitan",
+	ACHIBONUS_ALL_RACES_DESC = "Unlock all races during character creation regardless of their lore appropriateness. ",
+	INTRODIALOGUE = """Twelve years have passed since monarchy was overthrown in the Kingdom of Aliron. Free of the previous reign, its capital Aliron has become a center of society and cultural life, giving even the lowest a chance to become a person of power and influence assuming they are capable...
 
 You are one of the people who managed to get there just in time to secure an estate recently freed from old ownership. The only issue is that its sale price is beyond your capability. With no other option to start a new life, you've taken a gigantic loan to achieve your goal. You've become an owner of a small piece of land with a dilapidated mansion on it.""",
 	STARTINGDIALOGUE0 = """Just as you finished moving in, the bank assistant appears at your doorstep to check on you.
@@ -8594,7 +8903,7 @@ Lust satisfied, you look at her lying there exhausted, broken and defenceless on
 	MAGESELECTION2REPLY2 = "Why would your sister not live here?",
 	MAGESELECTION3_1 = "{color=yellow|— No... Maybe. Do what you want, I guess... Actually, no, don't harm her. }",
 	MAGESELECTION3_2 = "{color=yellow|— She hates crowds and is not fond of surface cities, I guess. Can't say I'm much different, just more resilient. Things aren't so bad around the Mages Guild. }",
-	MAGESELECTION3_ANY = "Relatives always make things complicated. I'll give you a letter of invitation with the list of things to get from her.",
+	MAGESELECTION3_ANY = "{color=yellow|Relatives always make things complicated. I'll give you a letter of invitation with the list of things to get from her.}",
 	XARIENCOUNTER1 = """Before you are able to look inside the hut, which looks more like a cave, a young, excited dark elf girl comes to you.
 
 {color=yellow|— A guest! I haven't had any bandits visit me for a long time. Do you want to burn in fire or be eaten by trolls?}""",
@@ -9366,7 +9675,7 @@ The princess notices Aire tensing up in response to the question.
 	ENEMYALCHEMIST = "Alchemist",
 	ENEMYBATTLE_TROLL = "Battle Troll",
 	NO_FIGHT_LOW_OBED = "[name] refuses to participate in a fight. (Combatant must be unlocked)",
-	NO_FIGHT_LOW_OBED2 = "[name] refuses to participate in a fight (low obedience).",
+	NO_FIGHT_LOW_OBED2 = "[name] refuses to participate in a fight (Needs Combat trait).",
 	CHAR_NO_COMBAT = "[name] has sustained a grave injury and is unable to participate in fights.",
 	PARTY_LIMIT = "Party limit reached.",
 	PARTY_FIXED = "Party is fixed! You can only switch positions.",
@@ -9393,7 +9702,8 @@ The princess notices Aire tensing up in response to the question.
 	TRAVEL_ADD_GROUP = "New group",
 	TRAVEL_ALL_SELECTED = "all selected",
 	TRAVEL_MOVE_TO = "Move to %s",
-	TRAVEL_RENAME = "Rename",
+	TRAVEL_RENAME = "Setting",
+	TRAVEL_GROUP_RENAME = "Rename",
 	TRAVEL_MOVE_UP = "Move up",
 	TRAVEL_MOVE_DOWN = "Move down",
 	SKILLPOISON_BITE = "Poison Bite",
@@ -10455,9 +10765,9 @@ Myr takes a small medallion out of her desk. As she chants the spell, the medall
 {color=aqua|Myr: — Leave your professional quirks out of this unless you want to be thrown out.}
 
 {color=yellow|Amelia: — Alright, alright, I should be going anyway. Good luck, [name], I'm waiting for your success.}""",
-	LOOKING_FOR_PRINCESS_21 = "After testing the medallion you decide it points toward the elven forests. Your goal should be visiting them now.",
-	LOOKING_FOR_PRINCESS_22 = "You ask for an audience with the elven High Priestess, who seems to act as the prime ruler of the elven capital. Despite a natural distaste for outsiders, your status forced the elves to accept your request for an audience.",
-	LOOKING_FOR_PRINCESS_23 = "The medallion kept pointing at the elven capital so you were left no other option but to meet the High Priestess, who acts as the prime ruler of the elven capital. Despite natural distaste for outsiders, your status forced the elves to accept your request for an audience.",
+	LOOKING_FOR_PRINCESS_21 = "After testing the medallion you decide it points toward the Ambervale forests. Your goal should be visiting them now.",
+	LOOKING_FOR_PRINCESS_22 = "You ask for an audience with the elven High Priestess, who seems to act as the prime ruler of Eldewyn. Despite a natural distaste for outsiders, your status forced the elves to accept your request for an audience.",
+	LOOKING_FOR_PRINCESS_23 = "The medallion kept pointing at Eldewyn so you were left no other option but to meet the High Priestess, who acts as the prime ruler of Eldewyn. Despite natural distaste for outsiders, your status forced the elves to accept your request for an audience.",
 	LOOKING_FOR_PRINCESS_24 = """You've been brought to a large room with a few guards in it and you're told to wait there. After a minute an elven woman appeared from the opposite side to approach you. Her stature and the guards' reactions clearly indicate her superior position.
 
 {color=yellow|— Usually we do not welcome outsiders in our lands, but we've made a promise to receive ambassadors from the human lands. State your business, stranger.}""",
@@ -12532,6 +12842,13 @@ Zephyra: — Do you know what an Artifact is? It's an item received from deity, 
 Zephyra: — If you tell me, I won't be bothering you anymore then.}""",
 	ZEPHYRA_RECRUITMENT_3_3_OPTION_1 = "Yes, I want you to leave me alone.",
 	ZEPHYRA_RECRUITMENT_3_3_OPTION_2 = "I've changed my mind.",
+	ZEPHYRA_RECRUITMENT_NOTE = """Zephyra leaves without another word. Only after she is gone do you notice a folded note left where she had been standing, as if she expected this outcome and prepared for it.
+
+The note is brief, but unusually direct for her. It warns that divine Artifacts can hold dangerous power even when they seem dormant, and that the sword once tied to the royal line was only one of them. If such relics are connected to the gods, then leaving them scattered for enemies to claim may be a mistake.
+
+One line mentions that the next closest lead points toward the elven lands.
+
+You are not sure how much of Zephyra's warning you trust. Still, powerful relics rarely stay irrelevant for long. It may be worth looking into them before someone worse does.""",
 	ZEPHYRA_RECRUITMENT_3_OPTION_1 = "There might be a problem with this...",
 	ZEPHYRA_RECRUITMENT_3_OPTION_2 = "This sword is no longer in our possession.",
 	ZEPHYRA_RECRUITMENT_4 = """You explain to Zephyra what has happened during the earlier days of civil war.
@@ -12633,7 +12950,7 @@ Zephyra leaves to her room before you get a chance to react. It seems she will t
 	PRIESTESS_SWORD_TALK_5 = "{color=yellow|— I've heard you are looking for the Sacred Bowl. Your story raises some questions, but my sources suggest your information is credible. I can talk the High Priestess into giving you a chance to claim the Sacred Bowl.}",
 	PRIESTESS_SWORD_TALK_5_OPTION_1 = "Why would you be so generous?",
 	PRIESTESS_SWORD_TALK_5_OPTION_2 = "This won't be for free I bet?",
-	PRIESTESS_SWORD_TALK_6 = "{color=yellow|— First, I need you to do something in return. On the edge of our forests there's a large beastkin tribe. I want you to travel there and deliver a message I'm going to pass to you, then return with an answer. The message will be sealed so only the receiver will be able to read it. I want you to deliver to the tribe's chieftain.}",
+	PRIESTESS_SWORD_TALK_6 = "{color=yellow|— First, I need you to do something in return. On the edge of the Ambervale forests there's a large beastkin tribe. I want you to travel there and deliver a message I'm going to pass to you, then return with an answer. The message will be sealed so only the receiver will be able to read it. I want you to deliver to the tribe's chieftain.}",
 	PRIESTESS_SWORD_TALK_6_OPTION_1 = "Do you dislike those Beastkin?",
 	PRIESTESS_SWORD_TALK_6_OPTION_2 = "Why won't you go yourself?",
 	PRIESTESS_SWORD_TALK_6_OPTION_3 = "Very well, I'll do it.",
@@ -12789,7 +13106,7 @@ As you try to sneak by the patrols, you trip on a tree root and fall on the grou
 {color=yellow|— I wonder if that's really some kind of fate that we...}""",
 	PRE_RITUAL_6_OPTION_1 = "I'm glad you are safe.",
 	PRE_RITUAL_6_OPTION_2 = "You should be more careful.",
-	PRE_RITUAL_6_OPTION_3 = "[Sexuals] I think you could thank me for this.",
+	PRE_RITUAL_6_OPTION_3 = "[Sex Factor] I think you could thank me for this.",
 	PRE_RITUAL_6_OPTION_4 = "Don't mention it.",
 	PRE_RITUAL_7_1AND2AND4 = "{color=yellow|— Y-yes. I'm really grateful. Now, I gotta collect the herbs we need again before we return, if you don't mind.}",
 	PRE_RITUAL_7_1AND2AND4_BAD = """{color=red|Failure}
@@ -13254,7 +13571,7 @@ The guards do indeed escort you out, though the entire time the silent men have 
 	AFTER_TEMPLE_PRIESTESS_5_1_1_BAD = """{color=red|Failure}
 
 {color=yellow|— I'm afraid this is not possible. Freya's High Priestess shall not be tainted by man's touch.}""",
-	AFTER_TEMPLE_PRIESTESS_5_1AND2 = "As you make your way out of the priestess' chambers, you are called out to by some hooded soldier. After confirming your identity, he informs you that Erlen wants to see you in the woods on the outskirts. After relaying his location to you, the soldier leaves quietly.",
+	AFTER_TEMPLE_PRIESTESS_5_1AND2 = "As you make your way out of the priestess' chambers, you are called out to by some hooded soldier. After confirming your identity, he informs you that Erlen wants to see you in the woods on the outskirts of Eldewyn. After relaying his location to you, the soldier leaves quietly.",
 	ERLERN_ENCOUNTER_START = "After scouting through the location, you can't find any signs of activity and start to wonder if you've come to the wrong place. Suddenly a couple of elven soldiers appear before you, taking you by surprise. As they inspect you, they tell you to follow them to meet Erlen.",
 	ERLERN_ENCOUNTER_1 = """Erlen meets you at the makeshift camp among the trees. You'd probably not recognize it as a camp if you didn't know it was there. Erlen's face remains impassive until you pass him the letter from Leon. After reading it, his expression grows more pessimistic.
 
@@ -13280,7 +13597,7 @@ After taking a long pause and pondering the letter, he finally speaks up.
 {color=yellow| — But it seems things are getting more complicated. My purpose is still firm, but it seems I'm gonna need more work done to fulfill it. Can I ask you for another favor?}""",
 	ERLERN_ENCOUNTER_2_OPTION_1 = "Yes.",
 	ERLERN_ENCOUNTER_2_OPTION_2 = "No.",
-	ERLERN_ENCOUNTER_3_1 = """{color=yellow|— Very good. As I'm stuck here, I need you to bring another person from the capital to me. There's another young, but bright, priestess of Freya, who you'll be able to find at the temple grounds. Her name is Lira. I want you to bring her to me, as she's a possible candidate for the next High Priestess.}
+	ERLERN_ENCOUNTER_3_1 = """{color=yellow|— Very good. As I'm stuck here, I need you to bring another person from Eldewyn to me. There's another young, but bright, priestess of Freya, who you'll be able to find at the temple grounds. Her name is Lira. I want you to bring her to me, as she's a possible candidate for the next High Priestess.}
 	
 {color=yellow|— You shouldn't waste any more time, just get her here, no matter what.}""",
 	ERLERN_ENCOUNTER_3_2 = "",
@@ -13369,7 +13686,7 @@ Erlen: — I've already sent the messengers to Leon in your name so they should 
 	ERLEN_LIRA_8_1_2 = """{color=yellow|Lira: — I-I appreciate your faith in me, but I'm still not sure about something big like this. I was accepted at the temple only out of goodwill. I'm not even native, and now you propose that I should become the next High Priestess? Even with my feelings towards you, this is a bit too much...}
 
 {color=aqua|Erlen: — Your own feelings are of little importance. If Freya considers you worthy, then you can do it. I'm tired of this state and I'm willing to bet everything on my faith in you.}""",
-	ERLEN_LIRA_8_2 = "{color=aqua|Erlen: — Given our current situation, there's only one thing we can do. We must break through right at the peak moment of the ritual. While you were away I've already prepared everything. Wait two more days and then come to the elven capital, Leon should make it by that time as well. Until then it's better to stay away from there.}",
+	ERLEN_LIRA_8_2 = "{color=aqua|Erlen: — Given our current situation, there's only one thing we can do. We must break through right at the peak moment of the ritual. While you were away I've already prepared everything. Wait two more days and then come to Eldewyn, Leon should make it by that time as well. Until then it's better to stay away from there.}",
 	ERLEN_LIRA_8_OPTION_1 = "I hope you aren't forgetting our deal.",
 	ERLEN_LIRA_8_OPTION_2 = "I might ask for something more for this kind of risk.",
 	ERLEN_LIRA_9_1 = "{color=aqua|Erlen: — If we succeed, you'll get any help you might request from me, be it access to the Sacred Bowl or anything else.} ",
@@ -13390,7 +13707,7 @@ Erlen decided to ignore Leon's remark and proceeded.
 {color=yellow|Leon: — Sounds easy. What's the catch?}
 
 {color=aqua|Erlen: — We have to get Lira inside the temple before the ceremony is over. We'll be leading the infiltration.}""",
-	ERLEN_LEON_3 = """As you make your way through the back streets led by Erlen, who knows the capital like the back of his own hand, you manage to avoid any patrols. Your group is fairly small, consisting of both elven and beastkin leaders and your personal team. As you make it closer to the main temple, you are forced to come out of hiding to cross the bridge that leads to the temple gates.
+	ERLEN_LEON_3 = """As you make your way through the back streets led by Erlen, who knows Eldewyn like the back of his own hand, you manage to avoid any patrols. Your group is fairly small, consisting of both elven and beastkin leaders and your personal team. As you make it closer to the main temple, you are forced to come out of hiding to cross the bridge that leads to the temple gates.
 
 However, the bridge is guarded. As your group is spotted the soldiers rush towards you. Erlen goes out in front of them.
 
@@ -13431,7 +13748,7 @@ Erlen hangs his head in a defeated posture, not saying anything. Lira tries to p
 	CEREMONY_HELEVIEL_3_1_OPTION_3 = "You've convinced me.",
 	CEREMONY_HELEVIEL_3_1_1 = """Heleviel takes a short pause, and decides to play along.
 
-{color=yellow| — Very well, she'll be exiled from our forests forever. Thank [name] for the gift of your life.}""",
+{color=yellow| — Very well, she'll be exiled from the Ambervale forests forever. Thank [name] for the gift of your life.}""",
 	CEREMONY_HELEVIEL_3_1_2 = """Heleviel smirks at your request.
 
 {color=yellow| — Very well, you may have her as long as you keep her in your domain. We don't care what she'll be doing if it's outside of our lands.}""",
@@ -13863,7 +14180,7 @@ After thinking about it, you decide it might be a good idea to visit the Servant
 	CALI_SIDEQUEST_9_2_alt = """{color=yellow|— Hmm, if you say so I'll believe you. I'm not sure where to start, though. Do you have something on your mind? }
 
 After thinking about it, you decide it might be a good idea to visit the Workers Guild for some ideas.""",
-	CALI_SERVANTS_START_OPTION = "*Ask on Cali's beneficence*",
+	CALI_SERVANTS_START_OPTION = "*Ask on Cali's beneficence* [500 gold]",
 	CALI_SERVANTS_1 = """You approach ask around the guild helpers and they direct you to a general training for female servants. Basic skills of sewing, cooking and etiquette which will be a good spot for any girl to start with.
 
 With a hint of doubt, Cali agrees to try these activities.
@@ -14520,7 +14837,7 @@ Cali was shy now realizing what she had just done and nodded now, still blushing
 {color=aqua|Citizen B: — That's like for all of them, no?}
 
 {color=yellow|Citizen A: — Yeah, but the others simply scattered away and paid me no attention. I couldn't bring myself to call her out...}""",
-	LILIA_PRELUDE2 = "You decide to make a note about this village and perhaps visit it next time you go to elven forests.",
+	LILIA_PRELUDE2 = "You decide to make a note about this village and perhaps visit it next time you go to the Ambervale forests.",
 	LILIA_STARTING_1 = """As you move through the village with occasional elves and fae observing you, you notice that most residents stay very cautious and turn away once your gaze falls upon them. That is, except for one very curious fairy with long red hair. After she realizes that she has caught your attention, she dashes at you, completely ignoring any formalities as she releases a rapid torrent of questions.
 
 {color=yellow| — Hi! I'm Lilia. What's your name? Are you an adventurer? You are so big! We don't get people like you here often. What brought you here?}""",
@@ -14584,7 +14901,7 @@ She wasn't an experienced lover, but her tightness and willingness to please hel
 
 {color=yellow|— ...Amazing! Let's do this again some other time, okay?'}""",
 	LILIA_RECRUIT_1_1 = "{color=yellow|— Eh? I dunno, I don't think I know you well enough, [name].}",
-	LILIA_RECRUIT_1_2 = "{color=yellow|— Going with you..? Huh, I'm not sure, I never left the forests. I heard humans are pretty scary.}",
+	LILIA_RECRUIT_1_2 = "{color=yellow|— Going with you..? Huh, I'm not sure, I never left the Ambervale forests. I heard humans are pretty scary.}",
 	LILIA_RECRUIT_1_OPTION_1 = "[Charm Factor] I'd love to have you at my place.",
 	LILIA_RECRUIT_1_OPTION_2 = "Eventually you get used to it.",
 	LILIA_RECRUIT_1_OPTION_3 = "Humans can be pretty bad, but you'll be under my protection.",
@@ -15625,7 +15942,7 @@ Saying this, he leaves.
 
 Zephyra nods in agreement to your statement.
 
-{color=yellow|Zephyra: — Men of your moral conviction are a rare breed these days. Aren't I lucky to find you? He-he.""",
+{color=yellow|Zephyra: — Men of your moral conviction are a rare breed these days. Aren't I lucky to find you? He-he.}""",
 	ZEPHYRA_QUEST_10_3 = "{color=yellow|Zephyra: — Eeh? Are you too scared of your own wandering mind? Or perhaps just too simpleminded? Well, I don't blame you, this is a perfectly normal way to see things for many after all. There's a certain charm in it too...}",
 	ZEPHYRA_QUEST_11 = """Finally Ginny returns back to the church. After Zephyra gives her a retelling of today's events, she thanks the both of you.
 
@@ -17080,7 +17397,7 @@ You fill out a small form denoting which actions should be excluded from her tra
 	MARRIAGE_SERVANTS_NEW_LEADER_OPTION_1 = "*Invite them*",
 	MARRIAGE_SERVANTS_NEW_LEADER_OPTION_2 = "*Refuse*",
 	MARRIAGE_SERVANTS_NEW_LEADER_COMPLETE_4 = "{color=yellow|— Understood. With that set, I hope to see you soon and wish you a very happy wedding, [name].}",
-	CALI_SERVANTS_NEW_LEADER_START_OPTION = "*Ask on Cali's beneficence*",
+	CALI_SERVANTS_NEW_LEADER_START_OPTION = "*Ask on Cali's beneficence* [500 gold]",
 	CALI_SERVANTS_NEW_LEADER_1 = """You approach ask around the guild helpers and they direct you to a general training for female servants. Basic skills of sewing, cooking and etiquette which will be a good spot for any girl to start with.
 
 With a hint of doubt, Cali agrees to try these activities.
@@ -17557,7 +17874,7 @@ The fairies fly away to play outside with Lilia following them, leaving you alon
 {color=yellow|Fairy2: — Wow! For real, we must've been blessed! }
 
 {color=yellow|Fairy1: — Yeah, even with Lilia being with us.}""",
-	LILIA_GOOD_ROUTE_3_CONTINUE_3 = """The fairies happily dash in its direction, but Lilia freezes. The time spent outside of the forests stirs some worries inside of her.
+	LILIA_GOOD_ROUTE_3_CONTINUE_3 = """The fairies happily dash in its direction, but Lilia freezes. The time spent outside of the grove stirs some worries inside of her.
 
 {color=yellow|Lilia: — Wait... This isn't normal...}
 
@@ -18098,7 +18415,7 @@ After you defeat the punks trying to attack you earlier nobody seems to want to 
 The barkeep throws the last insult as you exit the tavern.""",
 	DTAVERN_JEAN_AFIGHT = """The girl leads you to an alleyway, off the main street.
 
-{color=yellow|— I think nobody will bother us here.  I am guessing it's your first time visiting the glorious dwarven capital. You're fast to get in trouble. You'd better be grateful I came to your rescue.}""",
+{color=yellow|— I think nobody will bother us here. I am guessing it's your first time visiting glorious Stonegate. You're fast to get in trouble. You'd better be grateful I came to your rescue.}""",
 	DTAVERN_JEAN_AFIGHT_OPT_HELP = "I didn't need your help.",
 	DTAVERN_JEAN_AFIGHT_OPT_THK = "Thanks.",
 	DTAVERN_JEAN_AFIGHT_REPLY_HELP = "{color=yellow|— Another ungrateful brute. Just my luck. Well, you're welcome to go back in and wait for the guards to show up. Don't expect any handovers from me in prison.}",
@@ -18519,7 +18836,7 @@ You hear a sign of exhaustion and readiness to give in in his voice while consid
 {color=yellow|Masked Figure: — Stay put if you want to live.}""",
 	DWARF_PRISON_ATTACK1_2 = "The sounds of fighting grow more distant as the rescue team makes their escape. You're left alone in the cell, the opportunity for interrogation lost in the chaos of the rebel attack.",
 	DWARF_PRISON_ATTACK2 = "After the attack is over and the King's forces reestablish their presence you are only left with an option to search and pursue these attackers.",
-	DWARF_SEARCH = """After hours of searching, you finally stumble upon some promising tracks leading away from the Dwarf capital. The trail is faint, barely visible in the dim light of the underground caverns, but it's there—a mix of footprints and what appears to be drag marks, likely from the injured prisoner.
+	DWARF_SEARCH = """After hours of searching, you finally stumble upon some promising tracks leading away from Stonegate. The trail is faint, barely visible in the dim light of the underground caverns, but it's there—a mix of footprints and what appears to be drag marks, likely from the injured prisoner.
 
 After scouting the area, you manage to get more information on their likely destination which will require you to investigate it.""",
 	DWARF_SEARCH2 = """Eventually, you reach the Hollow Passage. Infamous place, even outside of the dwarven kingdom it is known for how dangerous it is... You also know it is a dead end. The coalition base should be somewhere within this passage.
@@ -18636,7 +18953,7 @@ He takes one of the rings from you and makes his way through the smallest cracks
 {color=yellow|Kobold Leader: — Just in time. You've done well, dweller. If it was just a bit later, we'd have more dead on our hands.}""",
 	OLD_TEMPLE_FINISH3_1 = """He takes the other ring from you and orders everyone to move out of the temple.
 
-{color=yellow|Kobold Leader: — Come to the dwarven capital tavern in 3 days; by that time, we'll get a new route to get you to us without King's men finding it.}
+{color=yellow|Kobold Leader: — Come to Stonegate's tavern in 3 days; by that time, we'll get a new route to get you to us without King's men finding it.}
 
 After stating that, he leaves with his group.""",
 	DTAVERN_REBEL = """Quickly scanning the room, your attention is drawn to a hooded figure seated far in the back. The cloak he wears is a drab collection of earthen colors, blending perfectly with the shadows in the corner.
@@ -18854,7 +19171,7 @@ Heleviel pauses for a moment contemplating something to herself.
 {color=yellow|— Mayor? Ah, yes, there's been a couple of spies from elven land, we've been ordered to keep them in jail. You can ask about them there.}""",
 	SACRED_SAP_FIGHTERS_1 = """The jailer leads you to the room with two tied and gagged elven girls who seem less than happy.
 
-{color=yellow|— These two are who you are looking for? Have been caught at the borders of elven forests by the patrol.}""",
+{color=yellow|— These two are who you are looking for? Have been caught at the borders of the Ambervale forests by the patrol.}""",
 	SACRED_SAP_FIGHTERS_1_OPT1 = "It seems you've roughed them up",
 	SACRED_SAP_FIGHTERS_1_OPT2 = "Why keep them in prison?",
 	SACRED_SAP_FIGHTERS_2 = """{color=yellow|— They've killed one farmer boy before they got caught. Seems like he sneaked up on them and got shot in the throat, after that our men managed to capture them with two injured. As you see we can't just let them go free now even if we forget those are spies. I mean, you are the mayor, but the guild will not overlook it.}
@@ -18874,7 +19191,7 @@ The elves look defiantly at you, their spirit does not seem to be broken yet."""
 	SACRED_SAP_FIGHTERS_4 = """You get the elven girls out of jail, instructing them to stay close to you so you can get them back to the elven lands. Initially they don't seem to trust you but as you bring up Heleviel's orders they agree to obey.
 
 You lead them chained and meet no interruption, soon making it out of city gates.""",
-	SACRED_SAP_FIGHTERS_5 = "As you get deeper into woods you unchain them, making it easier to move. Soon you all reach elven capital and meet Heleviel once more.",
+	SACRED_SAP_FIGHTERS_5 = "As you get deeper into woods you unchain them, making it easier to move. Soon you all reach Eldewyn and meet Heleviel once more.",
 	SACRED_SAP_HELEVIEL_4 = "{color=yellow|— You've done your part of the deal faithfully, [race]. I can respect that. Here's the item you've requested from us, take it and don't tell how you've earned it.}",
 	SACRED_SAP_ERLEN_START = """{color=yellow|— Hold on, [name]. Care for a small talk? }
 
@@ -19065,7 +19382,6 @@ However, Kuro is unhindered by this. As a blinding blue flash erupts from the ma
 
 {color=yellow|The King: — You two... Betrayers! Guards! Kill everyone!}""",
 	DWARF_CEREMONY_OPT_CHASE = "[Dexterity challenge] Chase after Kuro",
-	DWARF_CEREMONY_OPT_FIGHT = "Fight",
 	DWARF_CEREMONY_REPLY_CHASE = """{color=green|Success}
 
 You skillfully push through the chaos following Kuro's steps out of the palace.""",
@@ -19096,7 +19412,13 @@ As she turns away, a group of coalition troops laying in the hiding who were jus
 {color=yellow|The King: — That bitch even sided with the coalition behind my back! Take them out and get her!}""",
 	DWARF_CEREMONY_CAUGHTUP_CULT = """
 
-As she turns away, a group of cultists join the street blocking you from going after her.""",
+As Kuro turns away, the King steps forward instead of sending another line of guards. The fight in the palace has left soot across his armor, but the fury in his eyes has only sharpened.
+
+{color=yellow|The King: — You think I will let thieves, cultists and coalition oathbreakers tear my kingdom apart while I watch from behind a shield wall?}
+
+He raises his weapon, and the dwarves behind him fall back at once.
+
+{color=yellow|The King: — No. I will end this insult myself.}""",
 	KURO_RESOLUTION_INTRO = """You make your way to the nearby caves chasing after Kuro carrying the artifact. By going through unconventional paths soon you arrive in a desolated area.
 
 Everything apparently has been prepared beforehand as you spot Kuro standing in the middle of the ritual circle opening the portal. On a much larger perimeter the area is blocked out by a semi-transparent barrier not unlike one you've encountered at Millford, however this one is much darker.""",
@@ -19465,7 +19787,7 @@ The dark elf takes another pause before continuing with resistance in her voice.
 {color=yellow|Kuro: — Well, you better not waste any time then.}""",
 	KURO_LIB_OPT_WHAT = "What's in that book that you want anyway?",
 	KURO_LIB_OPT_FREETIME = "Maybe once I have a free time",
-	KURO_LIB_OPT_CAPITAL = "Dwarven Capital it is...",
+	KURO_LIB_OPT_CAPITAL = "Stonegate it is...",
 	KURO_LIB_REPLY_WHAT = "{color=yellow|Kuro: — All sorts of sex techniques to please a buffoon like you. What do you think? Let's not waste the time for pointless talks.}",
 	KURO_WHISKEY_MARKET = """After asking through several local merchants you finally manage to find one specialized in beverages.
 
@@ -19603,7 +19925,7 @@ Kuro seemingly dismisses your praise and looks away.
 
 In the next moment she's gone in her usual manner.""",
 	LIRA_LOST_START = "As you get through the woods, you suddenly hear a woman's voice calling for help. You cautiously move towards it...",
-	LIRA_LOST_START2 = "{color=yellow|— Stranger! What a relief this isn't animals or monsters... I've come here to gather some herbs but It seems I've got lost. My name is Lira, I hope it won't trouble you to get me to the elven capital.}",
+	LIRA_LOST_START2 = "{color=yellow|— Stranger! What a relief this isn't animals or monsters... I've come here to gather some herbs but It seems I've got lost. My name is Lira, I hope it won't trouble you to get me to Eldewyn.}",
 	LIRA_DIALOGUE_START = "{color=yellow|Lira: — Is there anything you need, [master]?}",
 	LIRA_LOST_OPT_SURE = "Sure, you can stick around",
 	LIRA_LOST_OPT_PRICE = "My help can only come at a price",
@@ -19949,7 +20271,7 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	PRINCESS_SEARCH_SUMMARY = "With rebel main hideout cleared, the princess is on the run. However, you can't finish the business until she's caught and brought back, dead or alive.",
 	PRINCESS_SEARCH_STAGE_1 = "You should visit Duncan and learn your next goal.",
 	PRINCESS_SEARCH_STAGE_2 = "Duncan explained that you won't be able to complete the elections until princess is found. It's time to find any leads which would help you to locate her.",
-	PRINCESS_SEARCH_STAGE_3 = "You've learned that the princess is hiding in elven lands. Travel to the elf capital and secure her.",
+	PRINCESS_SEARCH_STAGE_3 = "You've learned that the princess is hiding in elven lands. Travel to Eldewyn and secure her.",
 	PRINCESS_SEARCH_STAGE_4 = "Unfortunately, the princess deceased, yet you've acquired her body. Return to Duncan to finish the business.",
 	PRINCESS_SEARCH_STAGE_5 = "You've captured the princess herself. It's time to bring her back to Duncan.",
 	PRINCESS_PERSUASION_NAME = "Distressed Damsel",
@@ -19976,7 +20298,7 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	AMELIA_HERBS_NAME = "Amelia: Elven Botany",
 	AMELIA_HERBS_SUMMARY = "After helping her out, Amelia gave you a new task to earn her favor.",
 	AMELIA_HERBS_STAGE_1 = "Visit Amelia at the Servants Guild",
-	AMELIA_HERBS_STAGE_2 = "Travel to the Elven Capital and find the supplier Amelia told you about.",
+	AMELIA_HERBS_STAGE_2 = "Travel to Eldewyn and find the supplier Amelia told you about.",
 	AMELIA_HERBS_STAGE_3 = "Return to Amelia at the Servants Guild",
 	MARRIAGE_MAIN_NAME = "Marriage",
 	MARRIAGE_MAIN_SUMMARY = "Marriage",
@@ -20000,12 +20322,12 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	SWORD_ARTIFACT_QUEST_NAME = "Forests and Beasts",
 	SWORD_ARTIFACT_QUEST_SUMMARY = "Even though the Civil War is over, it seems there might be greater issues in your future. Zephyra told you to gather an ancient artifacts. It seems the next one can be found at elven lands.",
 	SWORD_ARTIFACT_QUEST_STAGE_1 = "Visit Ginny at Aliron's church",
-	SWORD_ARTIFACT_QUEST_STAGE_2 = "Talk with the High Priestess at Elven Capital",
+	SWORD_ARTIFACT_QUEST_STAGE_2 = "Talk with the High Priestess at Eldewyn",
 	SWORD_ARTIFACT_QUEST_STAGE_3 = "Visit Beastkin Tribe",
 	SWORD_ARTIFACT_QUEST_STAGE_4 = "Visit Lodge at Beastkin Tribe",
 	SWORD_ARTIFACT_QUEST_STAGE_5 = "Bring 2.000 Meat and Fish to Savra",
 	SWORD_ARTIFACT_QUEST_STAGE_6 = "Return to Beastkin Tribe after 1 day",
-	SWORD_ARTIFACT_QUEST_STAGE_7 = "Search for Mae in the forests",
+	SWORD_ARTIFACT_QUEST_STAGE_7 = "Search for Mae in the Ambervale forests",
 	SWORD_ARTIFACT_QUEST_STAGE_77 = "Perform the ritual with Mae on the next day",
 	SWORD_ARTIFACT_QUEST_STAGE_8 = "Search for Leon at Beastkin Tribe",
 	SWORD_ARTIFACT_QUEST_STAGE_9 = "Search for Leon at forest location",
@@ -20014,7 +20336,7 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	SWORD_ARTIFACT_QUEST_STAGE_12 = "Find a helper for Savra's work",
 	SWORD_ARTIFACT_QUEST_STAGE_13 = "Return to Leon once more",
 	SWORD_ARTIFACT_QUEST_STAGE_14 = "Track down the White Stag",
-	SWORD_ARTIFACT_QUEST_STAGE_15 = "Talk with Erlen at Elven Capital",
+	SWORD_ARTIFACT_QUEST_STAGE_15 = "Talk with Erlen at Eldewyn",
 	TEMPLE_QUEST_NAME = "Ancient Elven Temple",
 	TEMPLE_QUEST_SUMMARY = "Freya's High Priestess, Heleviel, asked you to bring here some sacred water required for the ritual.",
 	TEMPLE_QUEST_STAGE_1 = "Visit Ancient Elven Temple to obtain Sacred Water",
@@ -20022,10 +20344,10 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	GETTING_LIRA_QUEST_NAME = "Revelation",
 	GETTING_LIRA_QUEST_SUMMARY = "With all things set you have to make your move together with Erlen in attempt to deal with Heleviel. ",
 	GETTING_LIRA_QUEST_STAGE_1 = "Search for Erlen",
-	GETTING_LIRA_QUEST_STAGE_2 = "Find a way to get young priestess from Elven Capital to Erlen",
+	GETTING_LIRA_QUEST_STAGE_2 = "Find a way to get young priestess from Eldewyn to Erlen",
 	GETTING_LIRA_QUEST_STAGE_3 = "Get 10 Whiskey to get Lira out of the temple",
 	GETTING_LIRA_QUEST_STAGE_4 = "Return to Erlen with Lira",
-	GETTING_LIRA_QUEST_STAGE_5 = "Meet Erlen at Elven Capital",
+	GETTING_LIRA_QUEST_STAGE_5 = "Meet Erlen at Eldewyn",
 	CALI_FIGHTERS_QUEST_NAME = "Cali: Small and Brave",
 	CALI_FIGHTERS_QUEST_SUMMARY = "Your servant, Cali, wants to be more useful and decided to join Fighters Guild",
 	CALI_FIGHTERS_QUEST_STAGE_1 = "Visit Fighters Guild to register Cali",
@@ -20145,13 +20467,13 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	ANASTASIA_QUEST_STAGE11 = "Deal with Fort Defenders.",
 	ANASTASIA_QUEST_STAGE12 = "Deal with Reyan",
 	ANASTASIA_QUEST_STAGE13 = "Return to Duncan",
-	METEORITE_QUEST_NAME = "Meteorite Quest",
-	METEORITE_QUEST_SUMMARY = "A star fell not too far from elven forests. Druid Lorien wants you to investigate.",
+	METEORITE_QUEST_NAME = "Fallen Star",
+	METEORITE_QUEST_SUMMARY = "A star fell not too far from the Ambervale forests. Druid Lorien wants you to investigate.",
 	METEORITE_QUEST_CHECK_OUT = "Check out fallen star",
 	METEORITE_QUEST_RETURN_METEOR = "Get back to Lorien",
 	METEORITE_QUEST_FIND_USE = "Find anyone who can figure out a good use for fallen star",
 	METEORITE_QUEST_GET_INSIDE = "Find a way to get inside dwarf lands",
-	METEORITE_QUEST_SEARCH_DURIM = "Search for Durim in dwarf capital",
+	METEORITE_QUEST_SEARCH_DURIM = "Search for Durim in Stonegate",
 	HARA_SCALES_QUEST_NAME = "Hara: fixing the Scales",
 	HARA_SCALES_QUEST_SUMMARY = "Help Hara to fix Scales of Destiny for the King",
 	HARA_SCALES_QUEST_SEE_HARA = "Visit Hara at workshop",
@@ -20177,8 +20499,8 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	DKING_HARA_QUEST_INFO = "You need to get information out of Coalition's agent in prison, whether by bringing gnome-decoy (Charm at least 50; Tame Factor at least 4) or by direct torture.",
 	DKING_HARA_QUEST_TRACKS = "You'll have to search for tracks of rebel attackers.",
 	DKING_HARA_QUEST_TEMPLE = "Find and help Coalition's group at Temple of the Old Gods to win a favor with Bolthar.",
-	DKING_HARA_QUEST_WAIT = "In 3 days Coalition's agent will show up in dwarven capital's tavern.",
-	DKING_HARA_QUEST_REBELTAVERN = "Search for Coalition's member in dwarven capital's tavern.",
+	DKING_HARA_QUEST_WAIT = "In 3 days Coalition's agent will show up in Stonegate's tavern.",
+	DKING_HARA_QUEST_REBELTAVERN = "Search for Coalition's member in Stonegate's tavern.",
 	DKING_HARA_QUEST_NEXTDAY = "Guards instructed you to return on the next day as the King will be waiting for you.",
 	DKING_HARA_QUEST_VISIT = "Return to the King.",
 	JEAN_FREE_QUEST_NAME = "Free Jean",
@@ -20188,27 +20510,27 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	KURO_TOME_QUEST_SUMMARY = "Help Kuro to get access to Myr's library",
 	KURO_TOME_QUEST_LIBRARY = "Visit Mages guild",
 	KURO_TOME_QUEST_MONEY = "Bring 500 gold to Myr of Mages guild",
-	KURO_TOME_QUEST_CAPITAL = "Search for Gilded Grasp whiskey in Dwarven Capital",
+	KURO_TOME_QUEST_CAPITAL = "Search for Gilded Grasp whiskey in Stonegate",
 	KURO_TOME_QUEST_CARRIAGE = "Investigate the whisky carriage's last known location",
-	KURO_TOME_QUEST_BOTTLE = "Visit Dwarven Capital",
+	KURO_TOME_QUEST_BOTTLE = "Visit Stonegate",
 	KURO_TOME_QUEST_BACK = "Bring whisky to Myr of Mages guild",
 	KURO_TOME_QUEST_TALK = "Talk to Kuro",
 	LIRA_LOST_QUEST_NAME = "Lost Lira",
 	LIRA_LOST_QUEST_SUMMARY = "Help Lira out of the grove",
-	LIRA_LOST_QUEST_CAPITAL = "Get to the elven capital",
+	LIRA_LOST_QUEST_CAPITAL = "Get to Eldewyn",
 	HELEVIEL_QUEST1_NAME = "Heleviel: New Perspective",
 	HELEVIEL_QUEST1_SUMMARY = "Help the former High Priestess adapt to life in Aliron by working at the bar.",
 	HELEVIEL_QUEST2_NAME = "Heleviel: Helping the weak",
 	HELEVIEL_QUEST2_SUMMARY = "Due to her status, surely Heleviel should be capable of healer work.",
 	HELEVIEL_QUEST3_NAME = "Heleviel: Redemption",
-	HELEVIEL_QUEST3_SUMMARY = "Arrange an ritual in the elven capital to restore Heleviel's bond with Freya.",
+	HELEVIEL_QUEST3_SUMMARY = "Arrange a ritual in Eldewyn to restore Heleviel's bond with Freya.",
 	HELEVIEL_SLAVE_STAGE_1 = "Assign Heleviel to work as a waitress in Aliron.",
 	HELEVIEL_SLAVE_STAGE_2 = "Let Heleviel work as a waitress for some time.",
 	HELEVIEL_SLAVE_STAGE_3 = "Visit Aliron's church on Heleviel's behalf.",
 	HELEVIEL_CITY_OPTION = "*Bring Heleviel to assist Ginny*",
 	HELEVIEL_SLAVE_STAGE_4 = "Travel with Heleviel to the beastkin village and secure a silverleaf antidote.",
 	HELEVIEL_CITY_OPTION_2 = "Speak with Savra",
-	HELEVIEL_SLAVE_STAGE_5 = "Visit Elven Capital.",
+	HELEVIEL_SLAVE_STAGE_5 = "Visit Eldewyn.",
 	HELEVIEL_SLAVE_STAGE_5_3 = "Pay for ritual",
 	HELEVIEL_SLAVE_STAGE_5_4 = "Wait a day",
 	HELEVIEL_CITY_OPTION_3 = "Speak about ritual",
@@ -21038,16 +21360,16 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	TRAINFINISHTEXT = "Finish training after taking Master Acknowledgement trait",
 	TRAININGBONUSES = "Bonuses:",
 	TRAININGTRAINEES = "Trainees:",
-	AREAPLAINS = "Plains",
-	AREAFORESTS = "Forests",
-	AREAMOUNTAINS = "Mountains",
-	AREAEMPIRE = "Empire",
+	AREAPLAINS = "Kingdom of Aliron",
+	AREAFORESTS = "Ambervale Forests",
+	AREAMOUNTAINS = "Iron Mountains",
+	AREAEMPIRE = "The Grand Empire",
 	AREASEAS = "Seas",
 	AREABEASTKIN_TRIBE = "Far Forests",
 	CAPITALALIRON = "Aliron",
-	CAPITALELVEN = "Elven Capital",
-	CAPITALDWARVEN = "Dwarven Capital",
-	CAPITALEMPIRE = "Empire Capital",
+	CAPITALELVEN = "Eldewyn",
+	CAPITALDWARVEN = "Stonegate",
+	CAPITALEMPIRE = "Palatine",
 	CAPITALBEASTKIN = "Beastkin Tribe",
 	WORKERSDISASSEMBLE = "Disassemble",
 	AREACAPITALS = "Capitals",
@@ -21950,7 +22272,7 @@ The tension crackles between them, [name1] pacing while [name2] stands firm, gla
 	CHARRND_QUARREL_REPLY_SUPPORT1 = "You stride over and back [name1], agreeing [he1]'s in the right. [His1] chest puffs out, and [he1] nods gratefully, while [name2] scowls, stepping back. The fight dies down, but [name2]'s resentment festers, and [name1] sticks closer to you.",
 	CHARRND_QUARREL_REPLY_SUPPORT2 = "You move in and side with [name2], calling out [name1]'s faults. [name2] smirks, vindicated, as [name1]'s face darkens with a sharp curse. The argument collapses, though [name1] stalks off, wounded, and [name2] grows bolder in your shadow.",
 	CHARRND_QUARREL_REPLY_PUNISH = "You bark at [name1] and [name2] to stop, ordering them to scrub the stables as punishment. They freeze, then slump, muttering as they shuffle off together. The quarrel ends, but their glares linger, and they share a grudging truce under your firm hand.",
-	CHARRND_LOVE = """You catch [name1] lingering near [name2] in the mansion's garden, eyes soft and hands fidgeting. [He1] stammers when [he2] glances over, a flush creeping up [his1] neck as [he1] tries to hide [his1] obvious crush. [name2] seems oblivious, tending to the plants, while [name1] hovers, caught between hope and nerves.
+	CHARRND_LOVE = """You catch [name1] lingering near [name2] in the mansion's garden. [He1] stammers when [he2] glances over, a flush creeping up [his1] neck as [he1] tries to hide [his1] obvious crush. [name2] seems oblivious, tending to the plants, while [name1] hovers, caught between hope and nerves.
 
 [name1] steals another look at [name2], then quickly turns away, flustered. [He2] hums to [himself2], unaware of the longing aimed [his2] way. You watch from the path, the moment tugging at you.""",
 	CHARRND_LOVE_OPT_HELP = "Help Them Become Lovers",
@@ -22075,8 +22397,10 @@ The air smells faintly of dust and polish, the broken vase glinting under the ch
 	CHARRND_LAYING_REPLY_STAY = "You do not leave. You stay close and keep the room quiet and do what is useful without making it strange: water, a folded cloth, your presence without commentary. [name] does not thank you in words. [He] doesn't have the composure for it at the time. But [he] watches you in the hours afterward with an attention that is different from before, and when [he] looks at you across a room [he] does it the way people look at things they have decided to keep.",
 	CHARRND_LAYING_REPLY_WORK = "You hear [name] out and tell [him] you need [him] on [his] feet. [He] straightens, says nothing further, and goes. [He] manages it, and you can see the effort it costs [him], a tightness in the way [he] moves that is gone by midday. [He] does not ask again.",
 	ANA_LETTER_1_1 = """Anastasia approaches you with a hesitant step, her hands clutching a crumpled letter. Her wide eyes shimmer with a mix of determination and uncertainty as she speaks.
+	
 {color=yellow|— Master, I received this... a letter from a rebel soldier's wife. She's desperate, begging me to find her husband. He's been lost since the fighting ended. Please, I know I'm in no position to ask favors, but will you take it? Help her look for him? I... I can't bear to ignore her plea. She included her name, Liora, and I'm sure she'd speak to you if you sought her out.}""",
 	ANA_LETTER_1_2 = """Anastasia blinks, caught off guard, then steadies herself, her voice trembling but resolute.
+	
 {color=yellow|— I... I'll do anything you ask of me, Master. Anything at all. Just please, help her. She's lost everything already.}""",
 	ANA_LETTER_1_OPTION_1_1 = "I can't reject your plea when asked with such a sad face. I'll take care of it.",
 	ANA_LETTER_1_OPTION_1 = "You're still clinging to your old causes? Fine, hand over the letter, I'll see what I can do.",
@@ -22084,13 +22408,18 @@ The air smells faintly of dust and polish, the broken vase glinting under the ch
 	ANA_LETTER_1_OPTION_3 = "A missing husband, huh? What's in it for me if I waste my time on this?",
 	ANA_LETTER_1_OPTION_4 = "Anything, you say? Alright, give me the letter, but you'll owe me something big later.",
 	ANA_LETTER_END = """Anastasia flinches at your words, her shoulders slumping slightly, though a flicker of defiance lingers in her gaze.
+	
 {color=yellow|— I... I know my place now, Master. I just thought... the common folk still suffer. I'll keep it, as you wish.}""",
 	ANA_LETTER_2_1 = """Anastasia's face lights up with tentative relief as she presses the letter into your hands.
+	
 {color=yellow|— Thank you, Master! Please, read it, she'll explain everything. I know you'll find her if you try.}""",
 	ANA_LETTER_2_2 = """Anastasia nods quickly, a flush creeping up her cheeks as she lowers her gaze and hands you the letter.
+	
 {color=yellow|— Yes, Master. Whatever you want, I'll do it. Thank you... truly. Please, read it, she needs you.}""",
 	ANA_LETTER_3 = """You unfold the crumpled letter Anastasia gave you, the ink smudged in places from what might have been tears. The handwriting is shaky but legible, and it reads:
+		
 “To Lady Anastasia, I'm Liora, wife of Gavril, one of your Uncle's old rebels. He went to war with your cause and never came back after the battle at Ashen Ridge. I beg you, find him, or just tell me he's gone. I wait every day by the broken fountain in the lower district, praying someone will help. Please, you're my last hope.”
+
 The words carry a raw, quiet desperation, and the name “Liora” is scrawled at the bottom.""",
 	MEET_LIORA = "Find Liora",
 	LIORA_1_1 = """You find the woman exactly where Anastasia said, huddled near the cracked remains of a fountain in the lower district. Her face is gaunt, etched with worry, and her hands twist nervously as she speaks.
@@ -22103,6 +22432,7 @@ The words carry a raw, quiet desperation, and the name “Liora” is scrawled a
 	LIORA_1_OPTION_2 = "The Ashen Ridge, huh? I'll track him down, don't waste my time with tears.",
 	LIORA_1_OPTION_3 = "Forget searching, I'll make you tell Anastasia I've already brought him back. Lie, and we're done here.",
 	LIORA_2_1 = """The woman stiffens at your tone but nods quickly.
+	
 {color=yellow|— Yes, sir. The Ashen Ridge, it's where the rebels made their stand. He was a fighter, strong... I just hope he's still out there. Thank you... thank you for this.}""",
 	LIORA_2_2 = "{color=yellow|— Thank you... even that means something. I'll be here, hoping.}",
 	LIORA_3 = "Lie? To the princess? But... but I, please, no, I can't do that! She'd find out, and—",
@@ -22531,7 +22861,7 @@ You explain that you've only been exploring surroundings but as you prepare to t
 	METEOR_LOUNGE_START_OPT_ANOTHER = "Maybe another time",
 	METEOR_LOUNGE_BRIEF = """Lorien offers you a cup of warm herbal tea before he starts explaining.
 
-{color=yellow|— The druids are not only spiritual guides but also natural observers. One of my tasks is to watch over the night sky and stars. Three moons ago I saw a star falling not too far from our forests. However as I delivered that information to the High Priestess she found that information... insignificant. }
+{color=yellow|— The druids are not only spiritual guides but also natural observers. One of my tasks is to watch over the night sky and stars. Three moons ago I saw a star falling not too far from the Ambervale forests. However as I delivered that information to the High Priestess she found that information... insignificant. }
 
 His voice sounds bitter when he addressed the High Priestess but its clear her authority invokes respect into him.
 
@@ -22573,7 +22903,7 @@ He studies the meteorite, hesitant to touch it, then shakes his head.
 As you take it with you, it makes you wonder if you know anyone who can figure out a good use for it...""",
 	METEOR_SIGMUND_START_OPT_FOUND = "I've found one strange rock which has fallen from the skies...",
 	METEOR_SIGMUND_START_OPT_PAYMENT = "I've got the payment for the pass (200 gold)",
-	METEOR_SIGMUND_START_OPT_ACCESS = "I've gained access to dwarf capital",
+	METEOR_SIGMUND_START_OPT_ACCESS = "I've gained access to Stonegate",
 	METEOR_SIGMUND_START = """His eyes, sharp beneath bushy brows, lock onto the meteorite as you present it. The stone's faint glow reflects in his intrigued gaze.
 
 {color=yellow|— This ain't no common stone. Fell from da sky, ye say? It's a fine metal, but me 'fraid I'm no help with something like dis. Ya'd need to find someone from dwarf lands. But they don't let strangers inside usually.}""",
@@ -22588,7 +22918,7 @@ As you take it with you, it makes you wonder if you know anyone who can figure o
 {color=yellow|— Alright, take dis piece. It'll get ya through guards. Da man you are looking for is called Durim, he works with stuff like this.}
 
 """,
-	METEOR_SIGMUND_LEAVE = "Getting all the necessary information you leave preparing to venture to the mountains.",
+	METEOR_SIGMUND_LEAVE = "Getting all the necessary information you leave preparing to venture to the Iron Mountains.",
 	METEOR_SIGMUND_ACCESS = """{color=yellow|— Ya did? Great to hear. Da man you are looking for is called Durim, he works with stuff like this.}
 
 """,
@@ -22627,10 +22957,10 @@ The dwarf grunts, pointing to a shelf. She snatches a glowing bottle of liquid, 
 {color=yellow|— New around here, eh? Word of advice, don't linger in this fume-pit too long. Vapors will turn your brain to mush, like this guy here.}
 
 She leaves before you can answer but her uncharacteristic appearance makes you think you'll meet her in future.""",
-	ACT_4_CONTINUE = "Follow up on the leads you've uncovered in the Empire.",
-	ACT_4_CAPITAL_SUMMARY = "You've been invited to the Grand Empire's Capital. This feels like the artifact chasing quest is coming to its conclusion.",
+	ACT_4_CONTINUE = "Follow up on the leads you've uncovered in the Grand Empire.",
+	ACT_4_CAPITAL_SUMMARY = "You've been invited to Palatine. This feels like the artifact chasing quest is coming to its conclusion.",
 	ACT_4_CAPITAL_NAME = "Each against all",
-	ACT_4_CAPITAL_ENTER = "Go to the Empire's capital",
+	ACT_4_CAPITAL_ENTER = "Go to Palatine",
 	ACT_4_CAPITAL_WAIT1 = "Wait until tomorrow",
 	ACT_4_CAPITAL_CEREMONY = "Attend the Ceremony",
 	ACT_4_CAPITAL_WAIT2 = "Wait until tomorrow",
@@ -22640,16 +22970,16 @@ She leaves before you can answer but her uncharacteristic appearance makes you t
 	EMP_CITY_INIT = """A new letter arrives today, its envelope adorned with intricate patterns that suggest a far more influential sender than you're accustomed to.
 
 “Dear [name], Mayor of Aliron,
-I've heard much about you and your recent deeds, and I believe it's time we met in person. I invite you to the Grand Empire's capital, the one and only. I assure you, it will be quite a sight for someone like you — and an opportunity to acquire that artifact you seek.”
+I've heard much about you and your recent deeds, and I believe it's time we met in person. I invite you to Palatine, the Grand Empire's capital, the one and only. I assure you, it will be quite a sight for someone like you — and an opportunity to acquire that artifact you seek.”
 
 Your admirer,
 Rouge""",
-	EMP_CITY_ENTER_0 = """You stand before the towering gates of the Grand Imperial City. A long line of travelers, traders, and all manner of strangers waits to be inspected and admitted inside. After waiting just over an hour, you edge closer, only to be halted by the guards. Their gleaming armor, worth a fortune compared to Aliron's, marks them as elite.
+	EMP_CITY_ENTER_0 = """You stand before the towering gates of Palatine. A long line of travelers, traders, and all manner of strangers waits to be inspected and admitted inside. After waiting just over an hour, you edge closer, only to be halted by the guards. Their gleaming armor, worth a fortune compared to Aliron's, marks them as elite.
 	
 """,
-	EMP_CITY_ENTER_0_BAD1 = "{color=yellow|— Hold it! You're not a citizen, not even of the Great Empire. The capital is closed to foreigners. Get lost.}",
-	EMP_CITY_ENTER_0_BAD2 = "{color=yellow|— Hold it! You're not a citizen, not even of the Great Empire. Your papers say you're the Mayor of Aliron? Nobody cares about that backwater town. The capital is closed to foreigners. Get lost.}",
-	EMP_CITY_ENTER_0_GOOD = "{color=yellow|— Hold it! You're not a citizen, not even of the Great Empire. Your papers say you're the Mayor of Aliron? Nobody cares about that backwater town. The capital is closed to foreigners...}",
+	EMP_CITY_ENTER_0_BAD1 = "{color=yellow|— Hold it! You're not a citizen, not even of the Grand Empire. The capital is closed to foreigners. Get lost.}",
+	EMP_CITY_ENTER_0_BAD2 = "{color=yellow|— Hold it! You're not a citizen, not even of the Grand Empire. Your papers say you're the Mayor of Aliron? Nobody cares about that backwater town. The capital is closed to foreigners. Get lost.}",
+	EMP_CITY_ENTER_0_GOOD = "{color=yellow|— Hold it! You're not a citizen, not even of the Grand Empire. Your papers say you're the Mayor of Aliron? Nobody cares about that backwater town. The capital is closed to foreigners...}",
 	EMP_CITY_ENTER_1 = """Before the guard can finish, a short man in rich but rumpled clothing appears, his looks and coarse manners highly contrast his status.
 
 {color=yellow|— Hey, you! Royal order! Let this [man] pass. I've got the papers for [him]!}
@@ -23257,7 +23587,7 @@ Heleviel looks slightly unsettled at being recognized, but she still shows no si
 
 {color=yellow|Heleviel: — T-this is only a temporary penance before Freya guides me back to an even greater role! But an uncivilized buffoon like you likely won't understand it.}
 
-{color=aqua|Elf: — Shut it. You're the reason I left the forests and have to serve humans. Your hatred for men and your rules drove us into being disempowered, low-class people.}""",
+{color=aqua|Elf: — Shut it. You're the reason I left the Ambervale forests and have to serve humans. Your hatred for men and your rules drove us into being disempowered, low-class people.}""",
 	HELEVIEL_SLAVE_CHURCH_ARGUMENT_TEXT3 = """{color=yellow|Heleviel: — How dare you! I only followed Freya's vision and served her order! Even if our rules were strict, they were entirely justified.}
 
 {color=aqua|Elf: — Justified, you say? I like it. Then your demotion into a slave is also justified. Now you serve not only your owners but one of your own kind—someone you always looked down on.}
@@ -23275,7 +23605,7 @@ The former High Priestess is practically shaking in place but well aware she's u
 	HELEVIEL_SLAVE_CHURCH_AFTER_FOOT = "After being sufficiently humiliated by the task, the elf soldier leaves with a chuckle. You give Heleviel some time to rest before the next patient.",
 	HELEVIEL_SLAVE_CHURCH_POISON_TEXT = """After some time Heleviel comes out of the infirmary and approaches you.
 
-{color=yellow|Heleviel: — The last patient is poisoned by silverleaf. I'm afraid there's nothing I can do with my magic, but... I believe there might be a way in the forests.}
+{color=yellow|Heleviel: — The last patient is poisoned by silverleaf. I'm afraid there's nothing I can do with my magic, but... I believe there might be a way in the Ambervale forests.}
 
 You feel like Heleviel is being evasive about the issue, but you let her continue.""",
 	HELEVIEL_SLAVE_CHURCH_POISON_OPTION_1 = "Is something bothering you?",
@@ -23537,7 +23867,7 @@ Heleviel raises a brow, but it's too late to back out.""",
 
 Judging by Mae's tone, she still isn't quite used to the luxury of a city mansion after all that happened.""",
 	MAE_QUEST_INITIATE_REPLY_2 = "{color=yellow|Mae: — Y-yeah, sorry, I was not sure how to start...}",
-	MAE_QUEST_INITIATE_FAVOR = "{color=yellow|Mae: — Anyway, there's a favor I want to ask. Well, you see, I... can't get used to the food around here after living in the forests... It... doesn't quite taste right to me.}",
+	MAE_QUEST_INITIATE_FAVOR = "{color=yellow|Mae: — Anyway, there's a favor I want to ask. Well, you see, I... can't get used to the food around here after living in the Ambervale forests... It... doesn't quite taste right to me.}",
 	MAE_QUEST_INITIATE_FAVOR_OPTION_1 = "I remember you eating rather happily with others",
 	MAE_QUEST_INITIATE_FAVOR_OPTION_2 = "So what do you want?",
 	MAE_QUEST_INITIATE_FAVOR_RETURN = """Mae's face blushes slightly and she starts stammering, speaking faster.
@@ -23712,7 +24042,7 @@ It doesn't seem like Mae buys your lie, but it comforts her that you choose to p
 	MAE_CITY_QUEST_SUMMARY = "Mae asks for help adjusting to the city.",
 	MAE_CITY_QUEST_STAGE_0 = "Take Mae to the market in Aliron.",
 	MAE_CITY_QUEST_STAGE_1 = "Visit Shelia's home with Mae.",
-	MAE_CITY_QUEST_STAGE_2 = "Speak with Mae after crafting potion she requested.",
+	MAE_CITY_QUEST_STAGE_2 = "Speak with Mae after crafting Spirit Potion she requested.",
 	MAE_CITY_QUEST_STAGE_3 = "Return to Shelia's home with Mae.",
 	MAE_CITY_QUEST_STAGE_4 = "Search for Mae in Aliron.",
 	MAE_MARKET_OPTION = "Food Market",
@@ -24205,14 +24535,14 @@ She quickly waves her hand, clearly trying to move past that.
 	JEAN_SIDEQUEST_REQUEST_OPTION_3 = "Ugh. Can you stop bothering me with such meager problems?",
 	JEAN_SIDEQUEST_RESPONSE_12 = """Jean exhales quietly, clearly relieved - though she immediately tries to hide it.
 
-{color=yellow|Jean: — Okay, so... I'm doing some magical research, and I really need one specific tome for it. I've heard the Grand Library in the Empire Capital has a copy.}
+{color=yellow|Jean: — Okay, so... I'm doing some magical research, and I really need one specific tome for it. I've heard the Grand Library in Palatine has a copy.}
 
 She crosses her arms.
 
 {color=yellow|Jean: — Just a quick trip there and back. I wouldn't dream of taking more than the necessary time from our renowned mayor.}""",
 	JEAN_SIDEQUEST_RESPONSE_3 = """Jean purses her lips in indignation but, surprisingly, does not snap back.
 
-{color=yellow|Jean: — I need a book. For my research. From the Grand Library in the Empire Capital. Can you help?}
+{color=yellow|Jean: — I need a book. For my research. From the Grand Library in Palatine. Can you help?}
 
 She pauses briefly before adding, her tone dripping with sarcasm:
 
@@ -24240,7 +24570,7 @@ She scoffs.
 
 She leaves quickly, before you can comment.""",
 	JEAN_SIDEQUEST_CLOSE_2 = "Jean's expression turns sour for a brief moment - then she schools her face and turns away. As she leaves, the determination in her posture is unmistakable. You get the distinct feeling that if this matter isn't addressed soon, her patience will run out far quicker than you might expect.",
-	JEAN_SIDEQUEST_CAPITAL_START = """The Empire Capital greets you as it always does: noise, crowds, and a suffocating sense of arrogance. Merchants shout from every corner, guards eye you with suspicion, and robed scholars glide past, treating everyone beneath their station as invisible.
+	JEAN_SIDEQUEST_CAPITAL_START = """Palatine greets you as it always does: noise, crowds, and a suffocating sense of arrogance. Merchants shout from every corner, guards eye you with suspicion, and robed scholars glide past, treating everyone beneath their station as invisible.
 
 Jean attempts to ask for directions to the library, but no one even slows their step. After several such attempts, she begrudgingly buys a map from a peddler who clearly makes a living off lost newcomers.""",
 	JEAN_SIDEQUEST_CAPITAL_LIBRARY = """{color=yellow|Jean: — Alright, looks like the library should be next to that giant tower... Let's go!}
@@ -24376,7 +24706,7 @@ You exchange a glance with Jean before both of you head toward the noise.""",
 	JEAN_SIDEQUEST_MANSION_WINDOW_NOISE_2 = """Before you, several guardian golems are steadily cornering a woman wielding an axe. She fights back stubbornly, but her movements are growing increasingly desperate. Jean gives you a worried look.
 
 {color=yellow|Jean: — What should we do? Looks like she triggered a defensive trap. They won't just leave her alone.}""",
-	JEAN_SIDEQUEST_MANSION_HELP_OPTION = "Let's help her.",
+	JEAN_SIDEQUEST_MANSION_HELP_OPTION = "Let's help her. *Attack*",
 	JEAN_SIDEQUEST_MANSION_WAIT_OPTION = "Let's wait a bit more.",
 	JEAN_SIDEQUEST_MANSION_WAIT_FIGHT = """You pull back slightly, watching. The stranger ducks and weaves, narrowly avoiding crushing blows, but her movements gradually get frantic and inefficient. It's clear that without help, she won't last much longer.
 
@@ -24418,7 +24748,7 @@ You notice Rynn's expression darken.""",
 {color=yellow|Jean: — Now, you didn't have to mention that! Though you're not wrong... Anyway.}""",
 	JEAN_SIDEQUEST_RYNN_BROTHER_1 = """Rynn sighs.
 
-{color=aqua|Rynn: — I wish I had more to tell. We came here, to the Empire's capital, looking for mercenary work. However, since the jobs didn't pay that much, he became an arena fighter instead. And a good one at that.}
+{color=aqua|Rynn: — I wish I had more to tell. We came here, to Palatine, looking for mercenary work. However, since the jobs didn't pay that much, he became an arena fighter instead. And a good one at that.}
 
 {color=aqua|Rynn: — Recently, he caught the attention of some “wealthy sponsor,” as he called him. Said he was going to get a great deal, that we'd be swimming in gold... And then he disappeared.}""",
 	JEAN_SIDEQUEST_RYNN_BROTHER_2 = """She drops her gaze. A silence settles over the room for a moment before she continues.
@@ -24973,8 +25303,8 @@ You nod in agreement, thank Ginny once more, and leave Rynn in her care. Togethe
 Tears fill her eyes as she helplessly looks back at Rynn's unconscious body while you walk away, leaving her alone in the wilderness.""",
 	JEAN_Q2_LEAVE_RYNN_2 = "Once inside the mansion, Jean goes straight to her room and locks the door behind her. You think you can hear sobbing coming from that side.",
 	JEAN_SIDEQUEST_NAME = "Jean: A Bookish Request",
-	JEAN_SIDEQUEST_SUMMARY = "Jean needs a rare tome from the Grand Library in the Empire Capital.",
-	JEAN_SIDEQUEST_CAPITAL = "Visit the Grand Library in the Empire Capital.",
+	JEAN_SIDEQUEST_SUMMARY = "Jean needs a rare tome from the Grand Library in Palatine.",
+	JEAN_SIDEQUEST_CAPITAL = "Visit the Grand Library in Palatine.",
 	JEAN_SIDEQUEST_CAPITAL_1 = "Find a way into the Grand Library.",
 	JEAN_SIDEQUEST_MANSION = "Search the book owner's mansion in the capital.",
 	JEAN_SIDEQUEST_MANSION_1 = "Convince the beggar to cooperate",
@@ -24989,7 +25319,7 @@ Tears fill her eyes as she helplessly looks back at Rynn's unconscious body whil
 	JEAN_SYLAS_QUEST_NAME = "Jean: The Demon in the Sphere",
 	JEAN_SYLAS_QUEST_SUMMARY = "Jean needs help tracking down the mastermind behind the cursed artifact.",
 	JEAN_SYLAS_QUEST_STAGE_1 = "Visit chosen guild",
-	JEAN_SYLAS_QUEST_STAGE_2 = "Search for leads in Empire Capital",
+	JEAN_SYLAS_QUEST_STAGE_2 = "Search for leads in Palatine",
 	JEAN_SYLAS_QUEST_STAGE_3 = "Visit Arena",
 	JEAN_SYLAS_QUEST_STAGE_4 = "Ask merchants",
 	JEAN_SYLAS_QUEST_STAGE_5 = "Seek for a lost cart",
@@ -25057,7 +25387,7 @@ She returns her gaze to the scattered notes.
 	JEAN_SYLAS_HELP_RESPONSE_FAVOR = """Jean blinks. Then straightens a little.
 	
 {color=yellow|Jean: — Fair enough. Help me finish this, and I'll be in your debt.}""",
-	JEAN_SYLAS_GUILD_SUGGESTION = """After a brief discussion, it becomes clear that the only place with fresh leads on the mastermind is the Empire's capital. But before you head there, Jean brings up a suggestion.
+	JEAN_SYLAS_GUILD_SUGGESTION = """After a brief discussion, it becomes clear that the only place with fresh leads on the mastermind is Palatine. But before you head there, Jean brings up a suggestion.
 	
 {color=yellow|Jean: — As much as I hate to admit it, we could use support from one of the guild leaders. Someone with actual reach and power. Which leaves us with two options.}
 
@@ -25114,7 +25444,7 @@ Jean scoffs.
 {color=aqua|Myr: — I can see that you've retained at least some knowledge from your studies at the Academy. And yes, that is exactly what I expect to happen. Now, if you have no further questions, please leave my office. And if you do have questions I won't be answering them anyway.}""",
 	JEAN_SYLAS_AFTER_GUILD_RYNN_ALIVE = "After settling the matter with the guild, you and Jean head for the church to check on Rynn. Her condition remains stable, but Ginny reminds you that this won't be the case forever and if you want to save her you should bring back the artifact.",
 	JEAN_SYLAS_AFTER_GUILD_RYNN_LEFT = "After settling the matter with the guild, you and Jean head back to the mansion, preparing for the journey.",
-	JEAN_SYLAS_CAPITAL_MEET = """The Empire's capital greets you with its usual indifference and crowded streets. After a brief discussion, you decide to split your efforts: you'll check the building you last entered, while Jean returns to the library to fish for more information.
+	JEAN_SYLAS_CAPITAL_MEET = """Palatine greets you with its usual indifference and crowded streets. After a brief discussion, you decide to split your efforts: you'll check the building you last entered, while Jean returns to the library to fish for more information.
 	
 You diligently do your part and visit the abandoned house, yet see no signs of anyone visiting it since the last time you were here. Done with your part, you go back to the central square and wait for Jean. About an hour later, she finally shows up.""",
 	JEAN_SYLAS_CAPITAL_OPTION_DELAY = "What took you so long?",
@@ -25669,7 +25999,7 @@ She looks at you with deep concern in her eyes.""",
 {color=yellow|Jean: — ...And what are you saying? Why wouldn't Myr congratulate me when I deserved it? I mean, it's true that we started on the wrong note and didn't see eye to eye at first, but we reconciled after I presented my thesis... my thesis on... what?}
 
 She begins to look more and more confused, unable to properly retrieve the nonexistent chain of events that would lead her to this moment.""",
-	JEAN_SYLAS_DREAM_BREAK_OPTION_REMEMBER = "Jean, listen to me. Remember. Your research, the old house, Rynn, the monastery ruins, the monsters, the Empire's capital, Sylas, our fight with him",
+	JEAN_SYLAS_DREAM_BREAK_OPTION_REMEMBER = "Jean, listen to me. Remember. Your research, the old house, Rynn, the monastery ruins, the monsters, Palatine, Sylas, our fight with him",
 	JEAN_SYLAS_DREAM_BREAK_OPTION_ILLUSION = "This is all just an illusion, Jean. The demon trapped your mind here while using your body as a tool for his own gain",
 	JEAN_SYLAS_DREAM_BREAK_RESPONSE = """{color=yellow|Jean: — W-what? That's nonsense! We've dealt with that case ages ago! And after that I... it's been years... wait, why can't I remember what I was doing all that time? ...Ah, why does my head suddenly hurt? ...Could it really be? ...All of that is just an illusion?...}
 
@@ -26355,7 +26685,7 @@ Rouge's smile thins for a moment.
 	ROUGE_QUEST_STAGE_FURNITURE_GET = "Get requested furniture one way or another.",
 	ROUGE_QUEST_STAGE_LETTER = "Wait for Rouge's next request.",
 	ROUGE_QUEST_STAGE_MELCHOR = "Deliver Rouge's letter to Melchor.",
-	ROUGE_QUEST_STAGE_WAREHOUSE = "Search the Empire capital for the cult's warehouse.",
+	ROUGE_QUEST_STAGE_WAREHOUSE = "Search Palatine for the cult's warehouse.",
 	ROUGE_QUEST_STAGE_RAID = "Report the warehouse to Melchor.",
 	ROUGE_QUEST_STAGE_REWARD = "Return to Melchor.",
 	ROUGE_QUEST_STAGE_ROUGE = "Return to Rouge.",
@@ -26566,7 +26896,7 @@ Her body is a landscape of pleasure for you to explore. Your hands roam over her
 {color=yellow|Rouge: — AAaaaaah!... [name]!... Yes... }
 
 You collapse against her, your body spent, your breathing ragged. Her tails wrap around you, holding you close, a possessive, protective embrace.""",
-	
+
 	LIRA_QUEST_1_INTRO = """Over the past few days, Lira has slowly begun to settle into life at the mansion. You occasionally see her helping with small chores or assisting in the kitchen, slowly making connections with other servants during shared labor.
 
 The only person she hasn't been able to connect with appears to be her new master: you. Whenever you're in the same space, she just watches you from afar, shielding herself with formality and politeness during your short exchanges.
@@ -27673,11 +28003,11 @@ Lira approaches you with a warm smile on her face and a clear determination in h
 	ACT4_QUEST_CATACOMB_DESC = "A concealed entrance outside the imperial walls leads toward the sealed catacombs beneath the capital.",
 	ACT4_ERDYNA_QUEST_SUMMARY = "Erdyna has gotten involved in your search for the Empire's artifact and pointed you toward people and places hidden beneath the capital.",
 	ACT4_ERDYNA_QUEST_NAME = "Erdyna: The Bandit King",
-	ACT4_ERDYNA_QUEST_STAGE_FOLLOWUP = "Meet with Erdyna again in the Empire capital.",
+	ACT4_ERDYNA_QUEST_STAGE_FOLLOWUP = "Meet with Erdyna again in Palatine.",
 	ACT4_ERDYNA_QUEST_STAGE_SENERUS = "Visit Senerus with Erdyna and learn what he knows about the artifact.",
-	ACT4_ERDYNA_QUEST_STAGE_CATACOMBS = "Visit catacomb entrance in Empire region.",
+	ACT4_ERDYNA_QUEST_STAGE_CATACOMBS = "Visit catacomb entrance in the Grand Empire region.",
 	ACT4_ERDYNA_QUEST_STAGE_MYR = "Show the copied catacomb writing to Myr.",
-	ACT4_ERDYNA_QUEST_STAGE_DRAGONHUNTERS = "Visit the elven capital to search for the dragon hunters.",
+	ACT4_ERDYNA_QUEST_STAGE_DRAGONHUNTERS = "Visit Eldewyn to search for the dragon hunters.",
 	ACT4_ERDYNA_QUEST_STAGE_THALENDIR_VISIT = "Visit House Thalendir estate.",
 	ACT4_ERDYNA_FOLLOWUP_1 = """{color=yellow|Erdyna: — Alright, so about that artifact. Hope you didn't take me for an expert on these things, but worry not. I happen to know just the right person for something like that. But first I need to stop by my crew's base. Will you follow?}""",
 	ACT4_ERDYNA_FOLLOWUP_1_OPTION_GO = "Alright, let's go.",
@@ -27819,11 +28149,11 @@ Senerus pauses, seemingly dissatisfied with how much he had to leave unsaid.
 	ACT4_SENERUS_GODS_3 = """{color=aqua|Senerus: — Ah, Elisia, almost forgot about her. Partly because her existence was almost entirely bound to the First One. Her cults vanished almost completely after his death, and it is hard to say much about her on her own. She was one of the first deities to emerge after the First One, and she was essentially his life partner, giving birth to a few other divine beings before disappearing. Some First One cults believed she died alongside him, others say she tried to protect him but failed.}
 
 {color=aqua|Senerus: — Beyond that, she was connected to animals. Her image was often associated with doves and foxes. The beastkin race has been tied to her, at least in part.}""",
-	ACT4_SENERUS_GODS_4 = "{color=aqua|Senerus: — Our collective mother, of course. I mean the elves, obviously. She is somewhat more... feral than I would personally appreciate, but she is deeply in tune with her people, the forests, and all life within them. Naturally, she was among the first gods, and her strength and pride reflect that.}",
+	ACT4_SENERUS_GODS_4 = "{color=aqua|Senerus: — Our collective mother, of course. I mean the elves, obviously. She is somewhat more... feral than I would personally appreciate, but she is deeply in tune with her people, the Ambervale forests, and all life within them. Naturally, she was among the first gods, and her strength and pride reflect that.}",
 	ACT4_SENERUS_GODS_5 = "{color=aqua|Senerus: — That is not going to happen tomorrow. Nor do we have any real idea whether it can be prevented, or whether it is even possible for mortals to do so. Don't worry yourself over it, it will take centuries or even millennia before any noticeable decline occurs.}",
 	ACT4_SENERUS_GODS_6 = "{color=aqua|Senerus: — Ask what you still need, or we can return to the artifacts.}",
 	ACT4_SENERUS_GODS_OPTION_EREBUS = "There's shrines made of stone that I come across sometimes.",
-	ACT4_SENERUS_GODS_OPTION_CELENA = "Aliron kingdom seems to have a prominent Celena temple.",
+	ACT4_SENERUS_GODS_OPTION_CELENA = "The Kingdom of Aliron seems to have a prominent Celena temple.",
 	ACT4_SENERUS_GODS_OPTION_ELISIA = "Celena's mother?",
 	ACT4_SENERUS_GODS_OPTION_FREYA = "What can you tell me about Freya?",
 	ACT4_SENERUS_GODS_OPTION_MAGIC = "Wait, are you saying all magic will eventually degrade? Why isn't anyone doing anything about it?",
@@ -27979,10 +28309,10 @@ You present the copied symbols and describe the doors as best as you can. Myr ta
 	ACT4_ERDYNA_EMPIRE_CAPITAL_OPT_MELCHOR = "Ask Melchor about imperial archive records",
 	ACT4_ERDYNA_EMPIRE_CAPITAL_OPT_GROTUS = "Find Grotus about the archive records",
 	ACT4_ERDYNA_THALENDIR_HOUSE_NAME = "House Thalendir Estate",
-	ACT4_ERDYNA_THALENDIR_HOUSE_DESC = "The guarded estate of House Thalendir in the elven capital",
+	ACT4_ERDYNA_THALENDIR_HOUSE_DESC = "The guarded estate of House Thalendir in Eldewyn",
 	ACT4_ERDYNA_ARCHIVE_HIDEOUT_NAME = "Archive Thieves' Hideout",
 	ACT4_ERDYNA_ARCHIVE_HIDEOUT_DESC = "An abandoned hideout near the imperial roads where thieves may have left a stolen archive copy.",
-	ACT4_ERDYNA_LINEAGE_1 = """You spend some time asking around the elven capital about the old dragon hunters lineage. The name still carries enough weight to make people cautious, though most of those you question answer with polite evasions rather than open refusal.
+	ACT4_ERDYNA_LINEAGE_1 = """You spend some time asking around Eldewyn about the old dragon hunters lineage. The name still carries enough weight to make people cautious, though most of those you question answer with polite evasions rather than open refusal.
 
 {color=yellow|Erdyna: — I can't see anyone but elves through here. And they live on the trees, huh?}
 

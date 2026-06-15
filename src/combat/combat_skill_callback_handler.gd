@@ -309,6 +309,26 @@ func refine_target(skill, caster, ttarget): #s_skill, caster, target
 			if avtargets.empty():
 				return null
 			return input_handler.random_from_array(avtargets)
+		variables.NT_STRONG:
+			var avtargets = combatnode.get_enemy_targets_all(caster)
+			if avtargets.empty(): 
+				avtargets = combatnode.get_enemy_targets_all(caster, true)
+				if avtargets.empty():
+					return null
+			var t = 0
+			for i in range(avtargets.size()):
+				if avtargets[i].hp > avtargets[t].hp: t = i
+			return avtargets[t]
+		variables.NT_STRONG_MELEE:
+			var avtargets = combatnode.get_enemy_targets_melee(caster)
+			if avtargets.empty(): 
+				avtargets = combatnode.get_enemy_targets_melee(caster, true)
+				if avtargets.empty():
+					return null
+			var t = 0
+			for i in range(avtargets.size()):
+				if avtargets[i].hp > avtargets[t].hp: t = i
+			return avtargets[t]
 
 #real queue part
 func invoke():
@@ -386,7 +406,7 @@ func invoke_animations_1():
 		caster.displaynode.process_sound(template.sounddata.initiate)
 	for i in animationdict.windup:
 		var sfxtarget = globals.ProcessSfxTarget(i.target, caster, target)
-		queuenode.add_sfx(sfxtarget, i.code)
+		queuenode.add_sfx(sfxtarget, i.code, globals.make_sfx_params(i))
 	
 	combatnode.turns += 1
 	step += 1

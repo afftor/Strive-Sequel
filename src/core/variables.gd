@@ -50,7 +50,7 @@ enum {TR_CAST,TR_CAST_TARGET, TR_PREHIT, TR_PREDEF, TR_HIT, TR_DEF, TR_TURN_S, T
 enum {SKILL_BASE, SKILL_ITEM, SKILL_COPY, SKILL_FA, SKILL_AUTO, SKILL_EFFECT}
 
 enum {TARGET_FORCED, TARGET_KEEP, TARGET_KEEPFIRST, TARGET_NOKEEP, TARGET_MOVEFIRST};
-enum {NT_MELEE, NT_ANY, NT_ANY_NOREPEAT, NT_WEAK, NT_WEAK_MELEE, NT_BACK, NT_CASTER, NT_WEAPON, NT_INDISCRIMINATE};
+enum {NT_MELEE, NT_ANY, NT_ANY_NOREPEAT, NT_WEAK, NT_WEAK_MELEE, NT_BACK, NT_CASTER, NT_WEAPON, NT_INDISCRIMINATE, NT_STRONG, NT_STRONG_MELEE};
 
 enum {TE_RES_INACTIVE, TE_RES_NOACT, TE_RES_TICK, TE_RES_UPGRADE, TE_RES_DGRADE, TE_RES_REMOVE}
 enum {DYN_STATS_REBUILD, DYN_STATS_FACTORS, DYN_STATS_PREAREA, DYN_STATS_FULL}
@@ -257,6 +257,7 @@ var item_sell_multiplier = 0.75
 #Heroes
 var all_races_array = []
 var starting_races_array = ['Human','Elf','TribalElf','Orc','BeastkinCat', 'BeastkinFox', 'BeastkinWolf', 'BeastkinBunny','HalfkinCat', 'HalfkinFox', 'HalfkinWolf', 'HalfkinBunny']
+var player_starting_races_array = ['Human', 'Elf', 'TribalElf', 'Orc', 'Dwarf', 'BeastkinCat', 'BeastkinFox', 'BeastkinWolf', 'BeastkinBunny', 'BeastkinTanuki', 'HalfkinCat', 'HalfkinFox', 'HalfkinWolf', 'HalfkinBunny', 'HalfkinTanuki']
 
 var master_starting_classes = ['fighter','archer','worker','rogue','apprentice','scholar','hunter','acolyte']
 var slave_starting_classes = ['attendant', 'fighter', 'archer', 'worker', 'harlot', 'apprentice','hunter','acolyte']
@@ -273,6 +274,7 @@ var slave_starting_stats = 15
 
 var minimum_factor_value = 1
 var maximum_factor_value = 6
+var body_upgrade_points_per_growth_factor = 25
 
 var basic_character_atk = 15
 var basic_character_matk = 15

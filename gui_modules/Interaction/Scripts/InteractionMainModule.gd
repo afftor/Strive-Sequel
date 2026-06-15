@@ -17,7 +17,7 @@ var npcs = []
 var aiobserve = false #True - player will not be picked by AI
 
 var takercategories = ['cunnilingus','rimjob','handjob','titjob','tailjob','blowjob']
-var analcategories = ['assfingering','rimjob','missionaryanal','doggyanal','lotusanal','revlotusanal','doubledildoass','inerttaila','analvibrator','enemaplug','insertinturnsass']
+var analcategories = ['assfingering','rimjob','missionaryanal','doggyanal','lotusanal','revlotusanal','ontopanal','doubledildoass','inserttaila','analvibrator','enemaplug','insertinturnsass']
 var punishcategories = []#globals.punishcategories
 var penetratecategories = ['missionary','missionaryanal','doggy','doggyanal','lotus','lotusanal','revlotus','revlotusanal','doubledildo','doubledildoass','inserttailv','inserttaila','tribadism','frottage']
 
@@ -28,13 +28,28 @@ var statuseffects = ['tied', 'subdued', 'drunk', 'tipsy', 'resist', 'sexcrazed',
 
 var selectedcategory = 'caress'
 var categories = {caress = [], fucking = [], tools = [], SM = [], humiliation = [], other = []}
+const ACTION_CATEGORY_TOOLTIPS = {
+	"caress": {name = "INTERACTION_CATEGORY_CARESS", description = "INTERACTION_CATEGORY_CARESS_TOOLTIP"},
+	"fucking": {name = "INTERACTION_CATEGORY_FUCKING", description = "INTERACTION_CATEGORY_FUCKING_TOOLTIP"},
+	"tools": {name = "INTERACTION_CATEGORY_TOOLS", description = "INTERACTION_CATEGORY_TOOLS_TOOLTIP"},
+	"SM": {name = "INTERACTION_CATEGORY_SM", description = "INTERACTION_CATEGORY_SM_TOOLTIP"},
+	"humiliation": {name = "INTERACTION_CATEGORY_HUMILIATION", description = "INTERACTION_CATEGORY_HUMILIATION_TOOLTIP"},
+	"other": {name = "INTERACTION_CATEGORY_OTHER", description = "INTERACTION_CATEGORY_OTHER_TOOLTIP"},
+}
 
 var secondactorcounter = {}
 
 var submodules = []
 
 var last_action_dict_id = 0
-
+var sex_minigame_points = 0
+var sex_minigame_orgasm_points_awarded = []
+var enthusiasm_mark_wrong_used = 0
+var enthusiasm_all_options_correct = false
+var enthusiasm_revealed_wrong_choices = []
+var enthusiasm_choice_buttons = []
+const ENTHUSIASM_MARK_WRONG_COSTS = [1, 1, 2]
+const ENTHUSIASM_ALL_CORRECT_COST = 5
 
 #not used
 #func dog():
@@ -92,17 +107,24 @@ func _ready():
 	$blacklist/closeblacklist.text = tr("DIALOGUECLOSE")
 	$blacklist/RichTextLabel.bbcode_text = tr("INTERACTION_HIDE_ACTIONS_HINT")
 	$ItemSelectSex/Label.text = tr("SELECTITEM")
+	globals.connecttexttooltip($TextureFrame, tr("INTERACTION_CONNECTION_POINTS_TOOLTIP"))
+	globals.connecttexttooltip($TextureFrame/Label, tr("INTERACTION_CONNECTION_POINTS_TOOLTIP"))
+	globals.connecttexttooltip($EnthusiasmSelect/Tooltip_enthusiasm, _build_enthusiasm_tooltip())
 	$Panel/sceneeffects1.connect("meta_clicked", self, '_on_sceneeffects1_meta_clicked')
+	_refresh_sex_actions_dict()
 	for i in globals.sex_actions_dict.values():
 		categories[i.category].append(i)
 	for i in get_node("Panel/HBoxContainer").get_children():
 		i.connect("pressed",self,'changecategory',[i.get_name()])
+		_connect_action_category_tooltip(i)
 
 	filter = []#globals.state.actionblacklist
 
 	$OrgasmDenial/ScrollContainer/VBoxContainer/Cum.connect('pressed', self, "OrgasmDenialCum")
 	$OrgasmDenial/ScrollContainer/VBoxContainer/Beg.connect('pressed', self, "OrgasmDenialBeg")
 	$OrgasmDenial/ScrollContainer/VBoxContainer/Deny.connect('pressed', self, "OrgasmDenialDeny")
+	$EnthusiasmSelect/MarkWrongButton.connect("pressed", self, "EnthusiasmMarkWrong")
+	$EnthusiasmSelect/AllCorrectButton.connect("pressed", self, "EnthusiasmAllCorrect")
 
 	var i = 4
 	if input_handler.CurrentScene == null:
@@ -116,6 +138,7 @@ func _ready():
 			i -= 1
 			createtestdummy()
 		# createtestdummy('resist')
+		sex_minigame_points = 10
 		changecategory('caress')
 		clearstate()
 
@@ -135,6 +158,8 @@ var enthusiasm_pending_takers = []
 var enthusiasm_pending_scene = null
 var enthusiasm_pending_data = null
 var enthusiasm_pending_upgrades = []
+var enthusiasm_pending_action_ids = null
+var enthusiasm_pending_consents = {}
 
 var OrgasmDenyTextButtons = {
 	cum = 'INTERACTION_ORGASM_DENY_BTN_CUM',
@@ -152,6 +177,57 @@ var OrgasmDenyText = {
 	beg_failure = "INTERACTION_ORGASM_DENY_BEG_FAILURE",
 	deny = "INTERACTION_ORGASM_DENY_DENY",
 }
+
+const SEX_ACTION_SPELL_COLOR = Color(0.55, 0.85, 1.0)
+
+func _build_enthusiasm_tooltip():
+	return tr("INTERACTION_ENTHUSIASM_TOOLTIP")
+
+func _connect_action_category_tooltip(button):
+	var category = button.get_name()
+	if !ACTION_CATEGORY_TOOLTIPS.has(category):
+		return
+	button.hint_tooltip = ""
+	globals.connecttexttooltip(button, _build_action_category_tooltip(category))
+
+func _build_action_category_tooltip(category):
+	var data = ACTION_CATEGORY_TOOLTIPS[category]
+	return "[center]%s[/center]\n\n%s" % [tr(data.name), tr(data.description)]
+
+func _refresh_sex_actions_dict():
+	for path in input_handler.dir_contents('res://src/actions'):
+		if !path.ends_with('.gd'):
+			continue
+		var newaction = load(path).new()
+		globals.sex_actions_dict[newaction.code] = newaction
+
+func _get_action_mana_cost(action):
+	var mana_cost = action.get("mana_cost")
+	if mana_cost == null:
+		return 0
+	return mana_cost
+
+func _is_spell_action(action):
+	if _get_action_mana_cost(action) > 0:
+		return true
+	if action.get("givertags") != null && action.givertags.has("magic"):
+		return true
+	if action.get("takertags") != null && action.takertags.has("magic"):
+		return true
+	return false
+
+func _setup_action_button_text(button, action, text):
+	var label = button.get_node("ActionName")
+	label.text = text
+	if _is_spell_action(action):
+		label.set("custom_colors/font_color", SEX_ACTION_SPELL_COLOR)
+	input_handler.font_size_adjust(label)
+
+func _append_action_tooltip_details(action, tooltiptext):
+	var mana_cost = _get_action_mana_cost(action)
+	if mana_cost > 0:
+		tooltiptext += "\n" + tr("INTERACTION_MANA_COST") % str(mana_cost)
+	return tooltiptext
 
 func OrgasmDenyInitiate(player, victim):
 	OrgasmDenyPlayer = player
@@ -291,11 +367,41 @@ func EnthusiasmInitiate():
 	$EnthusiasmSelect.show()
 	$EnthusiasmSelect/RichTextLabel.bbcode_text = decoder(tr("INTERACTION_ENTHUSIASM_SELECT_TEXT"), [enthusiasm_pending_member], enthusiasm_pending_takers)
 	input_handler.ClearContainer($EnthusiasmSelect/ScrollContainer/VBoxContainer)
+	enthusiasm_mark_wrong_used = 0
+	enthusiasm_all_options_correct = false
+	enthusiasm_revealed_wrong_choices.clear()
+	enthusiasm_choice_buttons.clear()
 	var choices = enthusiasm_pending_data.choices
 	for i in choices.size():
 		var btn = input_handler.DuplicateContainerTemplate($EnthusiasmSelect/ScrollContainer/VBoxContainer)
 		btn.text = decoder(tr(choices[i].name_key), [enthusiasm_pending_member], enthusiasm_pending_takers)
+		_apply_enthusiasm_choice_color(btn, choices[i].personality)
 		btn.connect("pressed", self, "EnthusiasmChoose", [i])
+		enthusiasm_choice_buttons.append(btn)
+	_update_enthusiasm_meta_buttons()
+
+func EnthusiasmMarkWrong():
+	var cost = _get_enthusiasm_mark_wrong_cost()
+	if cost <= 0 || sex_minigame_points < cost:
+		return
+	var options = _get_enthusiasm_unrevealed_wrong_choices()
+	if options.size() == 0:
+		return
+	_spend_sex_minigame_points(cost)
+	enthusiasm_mark_wrong_used += 1
+	var choice_idx = options[randi() % options.size()]
+	enthusiasm_revealed_wrong_choices.append(choice_idx)
+	_apply_enthusiasm_wrong_choice_color(enthusiasm_choice_buttons[choice_idx])
+	_update_enthusiasm_meta_buttons()
+
+func EnthusiasmAllCorrect():
+	if enthusiasm_all_options_correct || !_spend_sex_minigame_points(ENTHUSIASM_ALL_CORRECT_COST):
+		return
+	enthusiasm_all_options_correct = true
+	enthusiasm_revealed_wrong_choices.clear()
+	for btn in enthusiasm_choice_buttons:
+		_apply_enthusiasm_corrected_choice_color(btn)
+	_update_enthusiasm_meta_buttons()
 
 func EnthusiasmChoose(choice_idx):
 	$EnthusiasmSelect.hide()
@@ -304,8 +410,11 @@ func EnthusiasmChoose(choice_idx):
 		result = enthusiasm_pending_scene.enthusiasm_check_choice(enthusiasm_pending_member, choice_idx)
 	else:
 		result = _enthusiasm_default_check_choice(enthusiasm_pending_data, enthusiasm_pending_member, choice_idx)
+	if enthusiasm_all_options_correct:
+		result = _enthusiasm_get_loved_choice_result(choice_idx)
 	var text = decoder(tr(result.text_key), [enthusiasm_pending_member], enthusiasm_pending_takers)
 	if result.loves_it:
+		text = globals.TextEncoder("{color=green|" + text + "}")
 		var improvement_lines = []
 		for training_entry in enthusiasm_pending_upgrades:
 			var key = 'sex_training_' + training_entry.skill
@@ -316,17 +425,44 @@ func EnthusiasmChoose(choice_idx):
 			if target_idx > current_idx:
 				enthusiasm_pending_member.person.statlist.sex_training[key] = training_entry.target
 				enthusiasm_pending_member.person.statlist.sex_mastery_progress[training_entry.skill] = []
+				var skill_label = tr("CHARINFO_SEX_TRAINING_" + training_entry.skill.to_upper())
 				if training_entry.target == 'skilled':
 					enthusiasm_pending_member.skill_xp_bonus += 25
+					_add_sex_minigame_points(1, tr("INTERACTION_CONNECTION_POINTS_REASON_SKILLED") % skill_label)
 				elif training_entry.target == 'mastered':
 					enthusiasm_pending_member.skill_xp_bonus += 50
-				var skill_label = tr("CHARINFO_SEX_TRAINING_" + training_entry.skill.to_upper())
 				var line = decoder(tr("INTERACTION_ENTHUSIASM_SKILL_IMPROVED") % skill_label, [enthusiasm_pending_member], enthusiasm_pending_takers)
 				improvement_lines.append(line)
-		enthusiasm_pending_takers[0].orgasm(text)
+		$Panel/sceneeffects.bbcode_text += '\n' + text
+		var orgasm_member = _get_enthusiasm_orgasm_member()
+		if enthusiasm_pending_action_ids != null:
+			orgasm_member.set_lastaction(enthusiasm_pending_action_ids)
+		_ensure_late_enthusiasm_impregnation(orgasm_member)
+		var action_ref = null
+		if enthusiasm_pending_action_ids != null:
+			action_ref = make_ref_dict(enthusiasm_pending_action_ids)
+		if action_ref == null:
+			var member_is_giver = enthusiasm_pending_scene.givers.has(orgasm_member)
+			action_ref = {
+				scene = enthusiasm_pending_scene,
+				givers = [orgasm_member] if member_is_giver else enthusiasm_pending_takers,
+				takers = enthusiasm_pending_takers if member_is_giver else [orgasm_member],
+				consents = enthusiasm_pending_consents
+			}
+		orgasm_member.orgasm(null, false)
+		var orgasm_text = _get_enthusiasm_orgasm_followup(orgasm_member)
+		if orgasm_text != "":
+			$Panel/sceneeffects.bbcode_text += '\n[color=#ff5df8]' + orgasm_text + '[/color]'
+		var charspeech = characterspeech(action_ref)
+		if charspeech.text != '':
+			$Panel/sceneeffects.bbcode_text += '\n' + charspeech.character.name + ': ' + decoder(charspeech.text, [charspeech.character], [charspeech.partner])
+		_record_late_enthusiasm_orgasm(orgasm_member, action_ref)
+		if $Panel/sceneeffects.bbcode_text.length() > 0 && !$Panel/sceneeffects.bbcode_text.ends_with("\n"):
+			$Panel/sceneeffects.bbcode_text += "\n"
 		for line in improvement_lines:
 			$Panel/sceneeffects.bbcode_text += '\n' + line
 	else:
+		text = globals.TextEncoder("{color=red|" + text + "}")
 		enthusiasm_pending_member.sens /= 2
 		$Panel/sceneeffects.bbcode_text += '\n' + text
 	enthusiasm_pending_member = null
@@ -334,6 +470,11 @@ func EnthusiasmChoose(choice_idx):
 	enthusiasm_pending_scene = null
 	enthusiasm_pending_data = null
 	enthusiasm_pending_upgrades = []
+	enthusiasm_pending_action_ids = null
+	enthusiasm_pending_consents = {}
+	enthusiasm_all_options_correct = false
+	enthusiasm_revealed_wrong_choices.clear()
+	enthusiasm_choice_buttons.clear()
 	rebuildparticipantslist()
 
 
@@ -344,10 +485,289 @@ func _enthusiasm_get_threshold(member):
 		threshold -= 1
 	return threshold
 
-func _enthusiasm_default_check_trigger(scenescript, giver, taker):
-	if giver.actionshad.actions.get(scenescript.code, 0) >= _enthusiasm_get_threshold(giver):
-		return giver
-	return null
+func _enthusiasm_get_counter_key(scenescript, member, consents = {}):
+	var consent_gap = consents.get(member.id, 0)
+	if consent_gap <= 2 || member.sex_traits.has("pushover"):
+		return scenescript.code
+	return _enthusiasm_get_skill_counter_key(scenescript, member)
+
+func _enthusiasm_get_skill_counter_key(scenescript, member):
+	var skills = []
+	if scenescript.givers.has(member):
+		skills = scenescript.get('giver_skill')
+	elif scenescript.takers.has(member):
+		skills = scenescript.get('taker_skill')
+	if skills != null && skills.size() > 0:
+		return "skill:" + PoolStringArray(skills).join('+')
+	return "category:" + scenescript.category
+
+func _enthusiasm_get_count(member, scenescript, consents = {}):
+	return member.actionshad.actions.get(_enthusiasm_get_counter_key(scenescript, member, consents), 0)
+
+func _apply_enthusiasm_choice_color(btn, personality):
+	var color = _enthusiasm_get_personality_color(personality)
+	btn.set("custom_colors/font_color", color)
+	btn.set("custom_colors/font_color_hover", color.lightened(0.25))
+	btn.set("custom_colors/font_color_pressed", color.darkened(0.15))
+
+func _enthusiasm_get_personality_color(personality):
+	match personality:
+		'bold':
+			return Color(1.0, 0.25, 0.25)
+		'kind':
+			return Color(0.35, 1.0, 0.35)
+		'serious':
+			return Color(0.75, 0.45, 1.0)
+		'shy':
+			return Color(0.35, 1.0, 1.0)
+	return Color(0.96, 0.87, 0.49)
+
+func _apply_enthusiasm_wrong_choice_color(btn):
+	var color = Color(0.45, 0.45, 0.45)
+	btn.set("custom_colors/font_color", color)
+	btn.set("custom_colors/font_color_hover", color.lightened(0.2))
+	btn.set("custom_colors/font_color_pressed", color.darkened(0.15))
+	#globals.connecttexttooltip(btn, tr("INTERACTION_ENTHUSIASM_INCORRECT_TOOLTIP"))
+
+func _apply_enthusiasm_corrected_choice_color(btn):
+	var color = Color(1.0, 0.9, 0.25)
+	btn.set("custom_colors/font_color", color)
+	btn.set("custom_colors/font_color_hover", color.lightened(0.15))
+	btn.set("custom_colors/font_color_pressed", color.darkened(0.15))
+	#globals.connecttexttooltip(btn, tr("INTERACTION_ENTHUSIASM_CORRECT_TOOLTIP"))
+
+func _get_enthusiasm_mark_wrong_cost():
+	if enthusiasm_mark_wrong_used >= ENTHUSIASM_MARK_WRONG_COSTS.size():
+		return -1
+	return ENTHUSIASM_MARK_WRONG_COSTS[enthusiasm_mark_wrong_used]
+
+func _spend_sex_minigame_points(value):
+	if value <= 0:
+		return false
+	if sex_minigame_points < value:
+		return false
+	sex_minigame_points -= value
+	_update_sex_minigame_points_label()
+	return true
+
+func _update_enthusiasm_meta_buttons():
+	var cost = _get_enthusiasm_mark_wrong_cost()
+	var btn = $EnthusiasmSelect/MarkWrongButton
+	if cost <= 0 || enthusiasm_all_options_correct:
+		btn.text = tr("INTERACTION_ENTHUSIASM_MARK_WRONG_USED")
+		btn.disabled = true
+	else:
+		btn.text = tr("INTERACTION_ENTHUSIASM_MARK_WRONG_BTN") % cost
+		btn.disabled = sex_minigame_points < cost || _get_enthusiasm_unrevealed_wrong_choices().size() == 0
+	var all_correct_btn = $EnthusiasmSelect/AllCorrectButton
+	if enthusiasm_all_options_correct:
+		all_correct_btn.text = tr("INTERACTION_ENTHUSIASM_ALL_CORRECT_USED")
+		all_correct_btn.disabled = true
+	else:
+		all_correct_btn.text = tr("INTERACTION_ENTHUSIASM_ALL_CORRECT_BTN") % ENTHUSIASM_ALL_CORRECT_COST
+		all_correct_btn.disabled = sex_minigame_points < ENTHUSIASM_ALL_CORRECT_COST
+
+func _get_enthusiasm_unrevealed_wrong_choices():
+	var result = []
+	if enthusiasm_pending_data == null || enthusiasm_pending_member == null:
+		return result
+	var choices = enthusiasm_pending_data.choices
+	for i in choices.size():
+		if enthusiasm_revealed_wrong_choices.has(i):
+			continue
+		if !_enthusiasm_choice_is_liked(choices[i], enthusiasm_pending_member):
+			result.append(i)
+	return result
+
+func _enthusiasm_choice_is_liked(choice, member):
+	if enthusiasm_all_options_correct:
+		return true
+	return member.person.statlist.get_personality() == choice.personality
+
+func _enthusiasm_get_loved_choice_result(choice_idx):
+	var choices = enthusiasm_pending_data.choices
+	if choice_idx >= choices.size():
+		return {loves_it = false, text_key = ""}
+	var keys = choices[choice_idx].love_keys
+	return {loves_it = true, text_key = keys[randi() % keys.size()]}
+
+func _get_enthusiasm_orgasm_member():
+	var target = enthusiasm_pending_data.get('orgasm_target', 'self')
+	if target == 'partner' && enthusiasm_pending_takers.size() > 0:
+		return enthusiasm_pending_takers[0]
+	return enthusiasm_pending_member
+
+func _get_enthusiasm_orgasm_followup(member):
+	if enthusiasm_pending_scene == null:
+		return ""
+	var scene = enthusiasm_pending_scene
+	var text = ""
+	if scene.givers.has(member):
+		if member.person.get_stat('penis_size') != '':
+			text = _get_enthusiasm_orgasm_intro("INTERACTION_ORGASM_PENIS_GIVER_FEEL", "INTERACTION_ORGASM_PENIS_GIVER_THRUST")
+			if ['anus','vagina','mouth'].has(scene.takerpart):
+				text += tr("INTERACTION_ORGASM_PENIS_GIVER_INTO") % scene.takerpart.replace('anus', '[anus2]').replace('vagina','[pussy2]')
+			elif scene.takerpart == 'nipples':
+				text += tr("INTERACTION_ORGASM_PENIS_GIVER_NIPPLES")
+			elif scene.takerpart == 'penis':
+				text += tr("INTERACTION_ORGASM_PENIS_GIVER_ON_PENIS")
+			else:
+				text += tr("INTERACTION_ORGASM_PENIS_GIVER_FLOOR")
+			return decoder(text, scene.givers, scene.takers)
+		if member.person.get_stat('has_pussy') && scene.giverpart == 'vagina':
+			text = _get_enthusiasm_orgasm_intro("INTERACTION_ORGASM_PUSSY_GIVER_FEEL", "INTERACTION_ORGASM_GIVER_NAME")
+			if scene.takerpart == 'penis':
+				text += tr("INTERACTION_ORGASM_PUSSY_GIVER_PENIS")
+			else:
+				text += tr("INTERACTION_ORGASM_PUSSY_GIVER_BODY")
+			return decoder(text, scene.givers, scene.takers)
+		text = _get_enthusiasm_orgasm_intro("INTERACTION_ORGASM_BODY_GIVER_FEEL", "INTERACTION_ORGASM_GIVER_NAME") + tr("INTERACTION_ORGASM_BODY_GIVER_RELEASE")
+		return decoder(text, scene.givers, scene.takers)
+	if member.person.get_stat('penis_size') != '' && !scene.takertags.has('vagina') && !scene.takertags.has('anal'):
+		text = _get_enthusiasm_orgasm_intro("INTERACTION_ORGASM_PENIS_TAKER_FEEL", "INTERACTION_ORGASM_PENIS_TAKER_THRUST")
+		match scene.code:
+			'tailjob':
+				text += tr("INTERACTION_ORGASM_PENIS_TAKER_TAIL")
+			'handjob', 'titjob':
+				text += tr("INTERACTION_ORGASM_PENIS_TAKER_FACE")
+			_:
+				if ['anus','vagina','mouth'].has(scene.giverpart):
+					text += tr("INTERACTION_ORGASM_PENIS_TAKER_INTO") % scene.giverpart.replace('anus', '[anus1]').replace('vagina','[pussy1]')
+				elif scene.giverpart == 'penis':
+					text += tr("INTERACTION_ORGASM_PENIS_TAKER_ON_PENIS")
+				else:
+					text += tr("INTERACTION_ORGASM_PENIS_TAKER_FLOOR")
+		return decoder(text, scene.givers, scene.takers)
+	if scene.takertags.has('vagina') || scene.takerpart == 'vagina' || scene.takerpart == 'clit':
+		text = _get_enthusiasm_orgasm_intro("INTERACTION_ORGASM_PUSSY_TAKER_FEEL", "INTERACTION_ORGASM_TAKER_NAME")
+		if scene.giverpart == 'penis':
+			text += tr("INTERACTION_ORGASM_PUSSY_TAKER_PENIS")
+		else:
+			text += tr("INTERACTION_ORGASM_PUSSY_TAKER_BODY")
+		return decoder(text, scene.givers, scene.takers)
+	if scene.takertags.has('anal') || scene.takerpart == 'anus':
+		text = _get_enthusiasm_orgasm_intro("INTERACTION_ORGASM_ANUS_TAKER_FEEL", "INTERACTION_ORGASM_TAKER_NAME")
+		if scene.giverpart == 'penis':
+			text += tr("INTERACTION_ORGASM_ANUS_TAKER_PENIS")
+		else:
+			text += tr("INTERACTION_ORGASM_ANUS_TAKER_BODY")
+		return decoder(text, scene.givers, scene.takers)
+	text = _get_enthusiasm_orgasm_intro("INTERACTION_ORGASM_BODY_FEEL", "INTERACTION_ORGASM_TAKER_NAME") + tr("INTERACTION_ORGASM_BODY_RELEASE")
+	return decoder(text, scene.givers, scene.takers)
+
+func _get_enthusiasm_orgasm_intro(feel_key, name_key):
+	if randf() < 0.4:
+		return tr(feel_key)
+	return tr(name_key)
+
+func _ensure_late_enthusiasm_impregnation(member):
+	if enthusiasm_pending_scene == null || member.person.get_stat('penis_size') == '':
+		return
+	if member.get_part_id_dict('penis') != null:
+		return
+	var scene = enthusiasm_pending_scene
+	if scene.givers.has(member) && scene.giverpart == 'penis' && scene.takerpart == 'vagina':
+		for taker in scene.takers:
+			if impregnationcheck(member.person, taker.person):
+				globals.impregnate(member.person, taker.person)
+	elif scene.takers.has(member) && scene.takerpart == 'penis' && scene.giverpart == 'vagina':
+		for giver in scene.givers:
+			if impregnationcheck(member.person, giver.person):
+				globals.impregnate(member.person, giver.person)
+
+func _record_late_enthusiasm_orgasm(member, action_ref):
+	if enthusiasm_pending_scene == null:
+		return
+	var scenescript = action_ref.scene
+	var action_givers = action_ref.givers
+	var action_takers = action_ref.takers
+	var consents = action_ref.consents
+	_award_first_orgasm_points(member)
+	member.orgasm_actions.append(scenescript.code)
+	if member.effects.has("aphrodisiac") && !scenescript.code in member.aphrodisiac_orgasms:
+		member.aphrodisiac_orgasms.append(scenescript.code)
+	for watcher in participants:
+		if action_givers.has(watcher) || action_takers.has(watcher):
+			continue
+		watcher.orgasm_with_watcher += 1
+		if !member in watcher.seen_orgasms:
+			watcher.seen_orgasms.append(member)
+	if action_takers.has(member):
+		for giver in action_givers:
+			if giver.person.check_trait("undead") || giver.person.check_trait("animal"):
+				member.deviant_orgasms += 1
+			if member.person.get_stat('body_shape') != giver.person.get_stat('body_shape'):
+				member.diff_body_orgasm += 1
+			for tag in scenescript.takertags:
+				if !tag in member.orgasm_tags:
+					member.orgasm_tags.append(tag)
+			for effect in member.effects:
+				if effect in ["tipsy", "drunk"]:
+					member.drunk_orgasm += 1
+				if !effect in member.orgasm_effects:
+					member.orgasm_effects.append(effect)
+			if !giver in member.orgasm_partners:
+				member.orgasm_partners.append(giver)
+			if !giver in member.diff_partners_orgasms:
+				member.diff_partners_orgasms.append(giver)
+			if !member in giver.satisfied_partners:
+				giver.satisfied_partners.append(member)
+			if consents.get(member.id, 0) > 0:
+				member.unconsented_orgasm += 1
+		for giver in action_givers:
+			giver.gave_orgasm = true
+			for skill in scenescript.giver_skill:
+				if giver.person.statlist.sex_training.get('sex_training_' + skill, 'novice') == 'skilled':
+					var progress = giver.person.statlist.sex_mastery_progress
+					if progress.has(skill) && !scenescript.code in progress[skill]:
+						progress[skill].append(scenescript.code)
+	elif action_givers.has(member):
+		for taker in action_takers:
+			if scenescript.givertags.has("dom"):
+				member.dominant += 1
+			if taker.person.check_trait("undead") || taker.person.check_trait("animal"):
+				member.deviant_orgasms += 1
+			if member.person.get_stat('body_shape') != taker.person.get_stat('body_shape'):
+				member.diff_body_orgasm += 1
+			if consents.get(member.id, 0) > 0:
+				member.unconsented_orgasm += 1
+			for tag in scenescript.givertags:
+				if !tag in member.orgasm_tags:
+					member.orgasm_tags.append(tag)
+			for effect in member.effects:
+				if effect in ["tipsy", "drunk"]:
+					member.drunk_orgasm += 1
+				if !effect in member.orgasm_effects:
+					member.orgasm_effects.append(effect)
+		for taker in action_takers:
+			taker.gave_orgasm = true
+			for skill in scenescript.taker_skill:
+				if taker.person.statlist.sex_training.get('sex_training_' + skill, 'novice') == 'skilled':
+					var progress = taker.person.statlist.sex_mastery_progress
+					if progress.has(skill) && !scenescript.code in progress[skill]:
+						progress[skill].append(scenescript.code)
+
+func _add_sex_minigame_points(value, reason):
+	if value <= 0:
+		return
+	sex_minigame_points += value
+	_update_sex_minigame_points_label()
+	$Panel/sceneeffects.bbcode_text += tr("INTERACTION_SEX_MINIGAME_POINTS_GAINED") % [str(value), reason, str(sex_minigame_points)] + "\n"
+
+func _update_sex_minigame_points_label():
+	get_node("TextureFrame/Label").set_text("x" + str(sex_minigame_points))
+
+func _award_first_orgasm_points(member):
+	if member.orgasms <= 0 || sex_minigame_orgasm_points_awarded.has(member.id):
+		return
+	sex_minigame_orgasm_points_awarded.append(member.id)
+	_add_sex_minigame_points(1, decoder(tr("INTERACTION_CONNECTION_POINTS_REASON_FIRST_ORGASM"), [member], [member]))
+
+func _has_available_taker(excluded_member = null):
+	for member in participants:
+		if member != excluded_member && !givers.has(member) && member.actions_remaining > 0:
+			return true
+	return false
 
 func _enthusiasm_default_check_choice(data, member, choice_idx):
 	var choices = data.choices
@@ -392,6 +812,7 @@ func createtestdummy(type = 'normal'):
 	person.set_stat('consent', globals.rng.randi_range(2,5))
 	for i in Statlist_init.sex_skills:
 		person.add_stat(i, 100)
+	_add_max_test_masteries(person)
 #	if type == 'resist':
 #		person.set_stat('consent', false)
 		#globals.connectrelatives(participants[0].person, person, 'father')
@@ -410,12 +831,27 @@ func createtestdummy(type = 'normal'):
 	test_dummy_ids.append(person.id)
 	participants.append(newmember)
 
+func _add_max_test_masteries(person):
+	person.add_stat_bonuses({"enabled_masteries": Skilldata.masteries.keys()})
+	for mastery_id in Skilldata.masteries:
+		var maxlevel = Skilldata.masteries[mastery_id].maxlevel
+		person.dyn_stats.add_mastery_point_passive(mastery_id, maxlevel)
+		person.dyn_stats._add_mastery_as_bonuses(mastery_id, maxlevel, 1.0)
+	person.dyn_stats.generate_data(variables.DYN_STATS_FULL, true)
 
 func startsequence(actors):
 	set_process_input(true)
 	gui_controller.clock.visible = false
 	hidebody()
 	participants.clear()
+	sex_minigame_points = 1
+	sex_minigame_orgasm_points_awarded.clear()
+	enthusiasm_all_options_correct = false
+	enthusiasm_pending_action_ids = null
+	enthusiasm_pending_consents = {}
+	enthusiasm_revealed_wrong_choices.clear()
+	enthusiasm_choice_buttons.clear()
+	_update_sex_minigame_points_label()
 	show()
 	secondactorcounter.clear()
 	$Panel/sceneeffects.clear()
@@ -471,13 +907,49 @@ func changecategory(name):
 		else: i.set_pressed(true)
 	rebuildparticipantslist()
 
+func _update_character_resource_bars(node, member):
+	var container = node.get_node("Panel/HBoxContainer")
+	if container.has_node("mana"):
+		var mana_node = container.get_node("mana")
+		var mana_tooltip = tr("STATMP") + ": " + str(round(member.person.mp)) + "/" + str(round(member.person.get_stat('mpmax')))
+		mana_node.visible = true
+		mana_node.get_node("Label").text = str(round(member.person.mp))
+		globals.connecttexttooltip(mana_node, mana_tooltip)
+		globals.connecttexttooltip(mana_node.get_node("Label"), mana_tooltip)
+	if container.has_node("lust"):
+		var lust_node = container.get_node("lust")
+		if member.person.check_trait("succubus"):
+			var lust_tooltip = tr("STATLUST") + ": " + str(round(member.person.get_stat('lust'))) + "/" + str(round(member.person.get_stat('lustmax')))
+			lust_node.visible = true
+			lust_node.get_node("Label").text = str(round(member.person.get_stat('lust')))
+			globals.connecttexttooltip(lust_node, lust_tooltip)
+			globals.connecttexttooltip(lust_node.get_node("Label"), lust_tooltip)
+		else:
+			lust_node.visible = false
+
+func _get_final_lack_consent(member):
+	if member.lack_consent <= 0 || member.person.get_stat('unique') == 'rouge':
+		return 0.0
+	var final_lack = float(member.lack_consent)
+	if member.horny >= 75:
+		final_lack *= 0.66
+	final_lack -= (member.orgasms * 3) + member.requestsdone
+	return max(final_lack, 0.0)
+
+func _apply_lack_consent_name_color(label, member):
+	var final_lack = _get_final_lack_consent(member)
+	if final_lack <= 5:
+		return
+	var ratio = clamp((final_lack - 6.0) / 14.0, 0.0, 1.0)
+	var color = Color(1.0, 0.95, 0.45).linear_interpolate(Color(1.0, 0.05, 0.05), ratio)
+	label.set('custom_colors/font_color', color)
+
 func rebuildparticipantslist():
 	var newnode
 	var effects
 	for _m in participants:
 		if _m.actions_remaining <= 0:
 			givers.erase(_m)
-			takers.erase(_m)
 	if selectmode == 'ai':
 		clearstate()
 	for i in get_node("Panel/CharList/ScrollContainer/VBoxContainer").get_children() + get_node("Panel/GridContainer/GridContainer").get_children() + get_node("Panel/givetakepanel/givercontainer").get_children() + get_node("Panel/givetakepanel/receivercontainer").get_children() + $Panel/GridContainer2/GridContainer.get_children():
@@ -500,6 +972,7 @@ func rebuildparticipantslist():
 		newnode.get_node("Panel/sex").set_tooltip(tr(sex_tooltip))
 		newnode.get_node("Panel/HBoxContainer/arousal").value = i.horny
 		globals.connecttexttooltip(newnode.get_node("Panel/HBoxContainer/arousal"), i.person.translate(tr("TOOLTIPHORNY")))
+		_update_character_resource_bars(newnode, i)
 		newnode.get_node("arousal").value = i.sens
 		globals.connecttexttooltip(newnode.get_node("arousal"), i.person.translate(tr("TOOLTIPAROUSAL")))
 		newnode.get_node("Panel").connect("mouse_entered", self, 'showbody', [i])
@@ -516,6 +989,7 @@ func rebuildparticipantslist():
 		if ai.has(i):
 			newnode.get_node("Panel/name").set('custom_colors/font_color', Color(1,0.2,0.8))
 			newnode.get_node("Panel/name").hint_tooltip = tr("INTERACTION_LEADS")
+		_apply_lack_consent_name_color(newnode.get_node("Panel/name"), i)
 
 		var bonus_container = newnode.get_node("BonusActions")
 		var others = participants.duplicate()
@@ -598,16 +1072,18 @@ func rebuildparticipantslist():
 				continue
 
 			#find lowest consent possible for each participant
-			var giver_consent
+			var giver_consent = 100
 			var giver_name
 			var giver_text
-			var taker_consent
+			var taker_consent = 100
 			var taker_name
 			var taker_text
 			for j in givers:
+				giver_name = j.name
+				giver_text = tr("INTERACTION_CONSENT_NOT_REQUIRED")
 				for k in takers:
 					var consent = count_action_consent(i, j, k)
-					if giver_consent == null:
+					if giver_consent == 100:
 						giver_consent = consent.giver_consent
 						giver_name = j.name
 						giver_text = consent.giver_text
@@ -616,7 +1092,7 @@ func rebuildparticipantslist():
 						giver_consent = consent.giver_consent
 						giver_text = consent.giver_text
 
-					if taker_consent == null:
+					if taker_consent == 100:
 						taker_consent = consent.taker_consent
 						taker_name = k.name
 						taker_text = consent.taker_text
@@ -632,7 +1108,7 @@ func rebuildparticipantslist():
 			newnode = get_node("Panel/GridContainer/GridContainer/Button").duplicate()
 			get_node("Panel/GridContainer/GridContainer").add_child(newnode)
 			newnode.visible = true
-			newnode.get_node("ActionName").set_text(i.getname())
+			_setup_action_button_text(newnode, i, i.getname())
 			var missing_consent = max(i.consent_giver - giver_consent, i.consent_taker - taker_consent)
 			if missing_consent > 0:
 				if missing_consent == 1:
@@ -650,14 +1126,14 @@ func rebuildparticipantslist():
 				else:
 					tooltiptext += tr("INTERACTION_CONSENT_REFUSING")
 				
-				tooltiptext +=  "\n" + giver_text + "\n" + taker_name + ": "
-				
-				if i.consent_taker <= taker_consent:
-					tooltiptext += tr("INTERACTION_CONSENT_WILLING")
-				else:
-					tooltiptext += tr("INTERACTION_CONSENT_REFUSING")
-				
-				tooltiptext +=  "\n" + taker_text
+				tooltiptext +=  "\n" + giver_text
+				if takers.size() > 0 && !_is_spell_action(i):
+					tooltiptext += "\n" + taker_name + ": "
+					if i.consent_taker <= taker_consent:
+						tooltiptext += tr("INTERACTION_CONSENT_WILLING")
+					else:
+						tooltiptext += tr("INTERACTION_CONSENT_REFUSING")
+					tooltiptext +=  "\n" + taker_text
 				
 				#tooltiptext = giver_name + "\n" + giver_text + taker_name + "\n" + taker_text
 				
@@ -669,8 +1145,9 @@ func rebuildparticipantslist():
 				tooltiptext = i.getname()
 				if giver_consent < i.consent_giver:
 					tooltiptext += "\n{color=red|" + giver_name + " does not wish to engage into this action}"
-				if taker_consent < i.consent_taker:
+				if takers.size() > 0 && !_is_spell_action(i) && taker_consent < i.consent_taker:
 					tooltiptext += "\n{color=red|" + taker_name + " does not wish to engage into this action}"
+			tooltiptext = _append_action_tooltip_details(i, tooltiptext)
 			globals.connecttexttooltip(newnode, tooltiptext)
 			if result[0] == 'disabled':
 				newnode.disabled = true
@@ -690,9 +1167,9 @@ func rebuildparticipantslist():
 			get_node("Panel/GridContainer/GridContainer").add_child(newnode)
 			newnode.visible = true
 			if givers.size() < 2:
-				newnode.get_node("ActionName").text = (givers[0].person.translate(tr("INTERACTION_LET_NAME_LEAD")))
+				_setup_action_button_text(newnode, globals.sex_actions_dict.wait, givers[0].person.translate(tr("INTERACTION_LET_NAME_LEAD")))
 			else:
-				newnode.get_node("ActionName").set_text(tr("INTERACTION_LET_SELECTED_LEAD"))
+				_setup_action_button_text(newnode, globals.sex_actions_dict.wait, tr("INTERACTION_LET_SELECTED_LEAD"))
 			newnode.connect("pressed",self,'activateai')
 		elif selectmode == 'ai':
 			newnode = get_node("Panel/GridContainer/GridContainer/Button").duplicate()
@@ -733,7 +1210,7 @@ func rebuildparticipantslist():
 	else:
 		$Panel/passbutton.set_text(tr("INTERACTION_PASS"))
 
-	get_node("TextureFrame/Label").set_text("")
+	_update_sex_minigame_points_label()
 
 	get_node("Panel/sceneeffects1").set_bbcode(text)
 
@@ -1016,6 +1493,7 @@ func open_item_list(member):
 		newbutton.get_node("icon").texture = load(item.icon)
 		newbutton.get_node("name").text = tr(item.name)
 		newbutton.get_node("Percent").text = str(ResourceScripts.game_res.items[item.id].amount)
+		globals.connectitemtooltip_v2(newbutton, item)
 		newbutton.connect("pressed", self, "use_item", [item])
 	# globals.ItemSelect(self, 'sex_use', 'use_item')
 
@@ -1135,9 +1613,10 @@ func checkrequest(member):
 	if conditionsatisfied == true:
 		member.request = null
 		member.requestsdone += 1
+		_add_sex_minigame_points(2, decoder(tr("INTERACTION_CONNECTION_POINTS_REASON_DESIRE"), [member], [member]))
 		member.actions_remaining += 2
 		#$Panel/sceneeffects.bbcode_text += '[color=green]Wish satisfied.[/color]\n'
-		member.sens += 350
+		member.sens += 125
 	return conditionsatisfied
 
 var ai = []
@@ -1231,31 +1710,31 @@ func showbody(i):
 	if nude_image != null:
 		$Panel/bodyimage.texture = nude_image
 		$Panel/bodyimage.visible = true
-		$Panel/ragdoll.visible = false
+		$Panel/BodyDisplay.visible = false
 		return
 	var stored_image = i.person.get_stored_body_image()
 	if stored_image != null:
 		$Panel/bodyimage.texture = stored_image
 		$Panel/bodyimage.visible = true
-		$Panel/ragdoll.visible = false
+		$Panel/BodyDisplay.visible = false
 	elif !input_handler.globalsettings.disable_paperdoll:
 		$Panel/bodyimage.visible = false
-		$Panel/ragdoll.visible = true
-		$Panel/ragdoll.test_mode = false
-		$Panel/ragdoll.rebuild(i.person)
-		$Panel/ragdoll.rebuild_cloth(false)
-#		$Panel/ragdoll.rebuild_underwear()
+		$Panel/BodyDisplay.visible = true
+		$Panel/BodyDisplay/ragdoll.test_mode = false
+		$Panel/BodyDisplay/ragdoll.rebuild(i.person)
+		$Panel/BodyDisplay/ragdoll.rebuild_cloth(false)
+#		$Panel/BodyDisplay/ragdoll.rebuild_underwear()
 	else:
 		$Panel/bodyimage.texture = i.person.get_body_image()
 		$Panel/bodyimage.visible = true
-		$Panel/ragdoll.visible = false
+		$Panel/BodyDisplay.visible = false
 #	if i.person.get_body_image() != null:
 #		$Panel/bodyimage.visible = true
 #		$Panel/bodyimage.texture = i.person.get_body_image()
 
 func hidebody():
 	$Panel/bodyimage.visible = false
-	$Panel/ragdoll.visible = false
+	$Panel/BodyDisplay.visible = false
 
 
 func switchsides(panel, side):
@@ -1264,8 +1743,12 @@ func switchsides(panel, side):
 	takers.erase(person)
 	if person.role == side:
 		person.role = 'none'
-	elif person.actions_remaining > 0:
-		person.role = side
+	elif person.actions_remaining > 0 || side == 'take':
+		if side == 'take' && person.actions_remaining <= 0 && _has_available_taker(person):
+			person.role = 'none'
+			$Panel/sceneeffects.bbcode_text += '\n[color=gray]' + person.name + ': ' + tr("INTERACTION_NO_ACTIONS_LEFT") + '[/color]'
+		else:
+			person.role = side
 	else:
 		person.role = 'none'
 		$Panel/sceneeffects.bbcode_text += '\n[color=gray]' + person.name + ': ' + tr("INTERACTION_NO_ACTIONS_LEFT") + '[/color]'
@@ -1283,11 +1766,17 @@ func startscene(scenescript, cont = false, pretext = ''):
 	enthusiasm_pending_scene = null
 	enthusiasm_pending_data = null
 	enthusiasm_pending_upgrades = []
+	enthusiasm_pending_action_ids = null
+	enthusiasm_pending_consents = {}
 
 	var mandatoryspeech = false
 	var mandatoryspeechdict
 	scenescript.givers = givers
 	scenescript.takers = takers
+	var exhausted_takers = []
+	for _m in takers:
+		if _m.actions_remaining <= 0:
+			exhausted_takers.append(_m)
 	for _m in givers + takers:
 		if _m.actions_remaining > 0:
 			_m.actions_remaining -= 1
@@ -1298,11 +1787,13 @@ func startscene(scenescript, cont = false, pretext = ''):
 		takers = [] + takers,
 		givers = [] + givers,
 		consents = {}}
+	var enthusiasm_consents = {}
 	var resists = []
 	
 	
 	for i in givers:
 		dict.consents[i.id] = 0
+		enthusiasm_consents[i.id] = 0
 		var lowest_consent = 10
 		for j in takers:
 			var consent = count_action_consent(scenescript, i, j)
@@ -1313,6 +1804,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 		if lowest_consent < scenescript.consent_giver:
 			var resist = scenescript.consent_giver - lowest_consent
 			dict.consents[i.id] = resist
+			enthusiasm_consents[i.id] = resist
 			i.lack_consent += resist
 			if resist == 1:
 				i.low_actions_resisted += 1
@@ -1320,6 +1812,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 
 	for j in takers:
 		dict.consents[j.id] = 0
+		enthusiasm_consents[j.id] = 0
 		var lowest_consent = 10
 		for i in givers:
 			var consent = count_action_consent(scenescript, i, j)
@@ -1331,9 +1824,13 @@ func startscene(scenescript, cont = false, pretext = ''):
 		if lowest_consent < scenescript.consent_taker:
 			var resist = scenescript.consent_taker - lowest_consent
 			dict.consents[j.id] = resist
+			enthusiasm_consents[j.id] = resist
 			j.lack_consent += resist
 			if resist == 1:
 				j.low_actions_resisted += 1
+		if exhausted_takers.has(j):
+			dict.consents[j.id] += 1
+			j.lack_consent += 1
 	
 	
 	
@@ -1416,6 +1913,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 		for i in givers:
 			if scenescript.giverpart == 'vagina' && i.person.get_stat('vaginal_virgin') == true:
 				i.person.take_virginity("vaginal",takers[0].person.id, true)
+				_add_sex_minigame_points(1, decoder(tr("INTERACTION_CONNECTION_POINTS_REASON_VAGINAL_VIRGINITY"), [i], [i]))
 				virgin.type = 'vaginal'
 				virgin.character = i
 				i.lack_consent += 5
@@ -1423,6 +1921,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 #					i.person.add_stat('loyalty', 20)
 			elif scenescript.giverpart == 'anus' && i.person.get_stat('anal_virgin') == true:
 				i.person.take_virginity("anal",takers[0].person.id, true)
+				_add_sex_minigame_points(1, decoder(tr("INTERACTION_CONNECTION_POINTS_REASON_ANAL_VIRGINITY"), [i], [i]))
 				virgin.type = 'anal'
 				virgin.character = i
 #				if takers.size() == 1 && takers[0].person.has_profession('master'):
@@ -1430,6 +1929,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 		for i in takers:
 			if scenescript.takerpart == 'vagina' && i.person.get_stat('vaginal_virgin') == true:
 				i.person.take_virginity("vaginal",givers[0].person.id, true)
+				_add_sex_minigame_points(1, decoder(tr("INTERACTION_CONNECTION_POINTS_REASON_VAGINAL_VIRGINITY"), [i], [i]))
 				virgin.type = 'vaginal'
 				virgin.character = i
 				i.lack_consent += 5
@@ -1437,6 +1937,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 #					i.person.add_stat('loyalty', 20)
 			elif scenescript.takerpart == 'anus' && i.person.get_stat('anal_virgin') == true:
 				i.person.take_virginity("anal",givers[0].person.id, true)
+				_add_sex_minigame_points(1, decoder(tr("INTERACTION_CONNECTION_POINTS_REASON_ANAL_VIRGINITY"), [i], [i]))
 				virgin.type = 'anal'
 				virgin.character = i
 #				if givers.size() == 1 && givers[0].person.has_profession('master'):
@@ -1477,6 +1978,11 @@ func startscene(scenescript, cont = false, pretext = ''):
 		if scenescript.has_method('takereffect'):
 			effects = scenescript.takereffect(i)
 			i.actioneffect(effects, id_dict)
+
+	if scenescript.has_method('apply_action'):
+		var extra_text = scenescript.apply_action(self, id_dict)
+		if extra_text != null && extra_text != "":
+			textdict.mainevent += "\n" + decoder(extra_text, givers, takers)
 
 	if scenescript.code in ['rope', 'subdue']:
 		cont = true
@@ -1522,10 +2028,11 @@ func startscene(scenescript, cont = false, pretext = ''):
 		OrgasmDenyInitiate(givers[0], takers[0])
 	if scenescript.code == 'cum_select':
 		SelectCum(givers[0], takers[0])
-	for i in givers:
+	for i in givers + takers:
 		i.actionshad.actions[scenescript.code] = i.actionshad.actions.get(scenescript.code, 0) + 1
-	for i in takers:
-		i.actionshad.actions[scenescript.code] = i.actionshad.actions.get(scenescript.code, 0) + 1
+		var enthusiasm_key = _enthusiasm_get_counter_key(scenescript, i, enthusiasm_consents)
+		if enthusiasm_key != scenescript.code:
+			i.actionshad.actions[enthusiasm_key] = i.actionshad.actions.get(enthusiasm_key, 0) + 1
 	var _enth_giver_data = scenescript.get('enthusiasm_giver')
 	if _enth_giver_data == null:
 		_enth_giver_data = scenescript.get('enthusiasm')
@@ -1538,8 +2045,8 @@ func startscene(scenescript, cont = false, pretext = ''):
 			if enth_member != null:
 				enth_data = _enth_giver_data if givers.has(enth_member) else _enth_taker_data
 		else:
-			var giver_ready = _enth_giver_data != null && givers[0].actionshad.actions.get(scenescript.code, 0) >= _enthusiasm_get_threshold(givers[0])
-			var taker_ready = _enth_taker_data != null && takers[0].actionshad.actions.get(scenescript.code, 0) >= _enthusiasm_get_threshold(takers[0])
+			var giver_ready = _enth_giver_data != null && _enthusiasm_get_count(givers[0], scenescript, enthusiasm_consents) >= _enthusiasm_get_threshold(givers[0])
+			var taker_ready = _enth_taker_data != null && _enthusiasm_get_count(takers[0], scenescript, enthusiasm_consents) >= _enthusiasm_get_threshold(takers[0])
 			if giver_ready && taker_ready:
 				if randf() < 0.5:
 					enth_member = givers[0]; enth_data = _enth_giver_data
@@ -1612,6 +2119,9 @@ func startscene(scenescript, cont = false, pretext = ''):
 	var request
 
 	id_dict = make_id_dict(dict)#update just in case
+	if enthusiasm_pending_member != null && enthusiasm_pending_scene == scenescript:
+		enthusiasm_pending_action_ids = id_dict
+		enthusiasm_pending_consents = dict.consents.duplicate()
 	for i in participants:
 		if i in givers+takers:
 			if !scenescript.code == 'deny_orgasm':
@@ -1680,7 +2190,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 		generaterequest(temparray[randi()%temparray.size()])
 
 	for _m in participants:
-		if _m.actions_remaining == 0:
+		if _m.actions_remaining == 0 && !exhausted_takers.has(_m):
 			for _act in ongoingactions.duplicate():
 				if (_act.givers.has(_m) || _act.takers.has(_m)) && !_act.scene.code in ['rope', 'subdue']:
 					stopongoingaction(_act)
@@ -1925,12 +2435,24 @@ func output(scenescript, valid_lines, givers, takers):
 		taker_skill_level = t
 
 	var giver_tail_type = 'none'
+	var giver_tits_size = 'default'
 	if givers.size() > 0:
 		var _tail = givers[0].person.get_stat('tail')
 		if _tail in ['fox', 'cat', 'wolf', 'tanuki']:
 			giver_tail_type = 'furry'
 		elif _tail in ['dragon', 'demon', 'fish', 'lizard', 'kobold', 'rat']:
 			giver_tail_type = 'scaly'
+		var has_small_tits = false
+		for giver in givers:
+			match giver.person.get_stat('tits_size'):
+				'small':
+					has_small_tits = true
+				'flat', 'masculine':
+					pass
+				_:
+					giver_tits_size = 'default'
+					break
+			giver_tits_size = 'small' if has_small_tits else 'flat'
 
 	var checks = {
 		code = scenescript.code,
@@ -1949,6 +2471,7 @@ func output(scenescript, valid_lines, givers, takers):
 		taker_fingering_ongoing = false,
 		taker_vaginal_ongoing = false,
 		giver_tail_type = giver_tail_type,
+		giver_tits_size = giver_tits_size,
 	}
 
 	#link with ongoingactions
@@ -2050,8 +2573,15 @@ func output(scenescript, valid_lines, givers, takers):
 	for i in valid_lines:
 		linearray = []
 		if i in act_lines:
+			var has_matching_giver_tits_size = false
+			for j in act_lines[i]:
+				if act_lines[i][j].conditions.has('giver_tits_size') && act_lines[i][j].conditions.giver_tits_size.has(checks.giver_tits_size):
+					has_matching_giver_tits_size = true
+					break
 			for j in act_lines[i]:
 				drop = false
+				if has_matching_giver_tits_size && !act_lines[i][j].conditions.has('giver_tits_size'):
+					drop = true
 				for k in act_lines[i][j].conditions:
 					if checks.has(k) && !act_lines[i][j].conditions[k].has(checks[k]):
 						drop = true
@@ -2174,7 +2704,7 @@ func endencounter():
 		penetration = [["missionary", "missionaryanal"], ["doggy", "doggyanal"], ["lotus", "lotusanal"], ["revlotus", "revlotusanal"], ["ontop", "ontopanal"]],
 		pussy = [["missionary"], ["doggy"], ["lotus"], ["revlotus"], ["ontop"]],
 		anal = [["missionaryanal"], ["doggyanal"], ["lotusanal"], ["revlotusanal"], ["ontopanal"]],
-		petting = [["caress"], ["fingering", "assfingering"], ["fondletits"], ["footjob"], ["titjob"], ["handjob"], ["massagefoot"], ["fisting", "analfisting"]],
+		petting = [["fondletits", "titjob"], ["handjob", "fingering", "assfingering"], ["footjob", "massagefoot"], ["fisting", "analfisting"]],
 		oral = [["rimjob"], ["cunnilingus", "blowjob"], ["kiss"], ["sucknipples"]],
 		tail = [["tailjob"], ["inserttailv"], ["inserttaila"]],
 	}
@@ -2208,13 +2738,12 @@ func endencounter():
 			i.skill_xp_bonus += 20
 			text += i.person.translate(tr("INTERACTION_END_CONSENT_GAIN")) % tr(variables.consent_dict[int(i.person.get_stat('consent'))])
 
-		if i.lack_consent > 0:
-			var final_lack = float(i.lack_consent)
-			if i.horny >= 75:
-				final_lack *= 0.66
-			final_lack -= (i.orgasms * 3) + i.requestsdone
+		if i.lack_consent > 0 && i.person.get_stat('unique') != 'rouge':
+			var final_lack = _get_final_lack_consent(i)
 			var hate_chance = 0.0
-			if final_lack >= 20:
+			if final_lack <= 5:
+				hate_chance = 0.0
+			elif final_lack >= 20:
 				hate_chance = 1.0
 			else:
 				hate_chance = clamp(final_lack * 0.03, 0.01, 1.0)
@@ -2353,9 +2882,10 @@ func askslaveforaction(chosen):
 
 	debug += 'Chosing targets... \n'
 
+	var has_available_taker = _has_available_taker(chosen)
 	for i in participants:
 		if i != chosen:
-			if i.actions_remaining <= 0:
+			if i.actions_remaining <= 0 && has_available_taker:
 				continue
 			if i.person.has_profession("master") && aiobserve == true:
 				continue
@@ -2745,6 +3275,7 @@ func record_actions(scenescript, consents):
 	for p in participants:
 		p.max_ongoing_actions = max(p.max_ongoing_actions, ongoingactions.size())
 		if p.orgasm:
+			_award_first_orgasm_points(p)
 			p.orgasm_actions.append(scenescript.code)
 		if p.orgasm && !scenescript.code in p.aphrodisiac_orgasms && p.effects.has("aphrodisiac"):
 			p.aphrodisiac_orgasms.append(scenescript.code)

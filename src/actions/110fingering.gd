@@ -59,6 +59,27 @@ func requirements():
 			valid = false
 	return valid
 
+const enthusiasm = {
+	trigger_text = "INTERACTION_ENTHUSIASM_TRIGGER_FINGERING",
+	btn_text = "INTERACTION_ENTHUSIASM_BTN",
+	orgasm_target = 'partner',
+	choices = [
+		{name_key = "INTERACTION_ENTHUSIASM_FINGERING_CHOICE_PRESSURE", personality = 'bold',
+			love_keys = ["INTERACTION_ENTHUSIASM_FINGERING_PRESSURE_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_FINGERING_PRESSURE_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_FINGERING_CHOICE_RHYTHM", personality = 'serious',
+			love_keys = ["INTERACTION_ENTHUSIASM_FINGERING_RHYTHM_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_FINGERING_RHYTHM_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_FINGERING_CHOICE_GUIDE", personality = 'shy',
+			love_keys = ["INTERACTION_ENTHUSIASM_FINGERING_GUIDE_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_FINGERING_GUIDE_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_FINGERING_CHOICE_PRAISE", personality = 'kind',
+			love_keys = ["INTERACTION_ENTHUSIASM_FINGERING_PRAISE_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_FINGERING_PRAISE_HATE_1"]},
+	],
+	training_upgrades = [{skill = 'petting', target = 'skilled'}],
+}
+
 func givereffect(member):
 	var effects = {sens = 100}
 	return effects

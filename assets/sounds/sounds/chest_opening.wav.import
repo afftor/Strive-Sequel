@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/chest_opening.wav-d023963d4a578ebd2f172c979294635a.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sounds/chest_opening.wav"
+dest_files=[ "res://.import/chest_opening.wav-d023963d4a578ebd2f172c979294635a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

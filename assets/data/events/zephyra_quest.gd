@@ -456,7 +456,7 @@ var data = {
 
 		],
 		character = "zephyra",
-		unique_character2 = "daisy",
+		character2 = "$daisy",
 		custom_background = "church_event",
 		text = [
 			{
@@ -488,7 +488,7 @@ var data = {
 
 		],
 		character = "zephyra",
-		unique_character2 = "daisy",
+		character2 = "$daisy",
 		custom_background = "church_event",
 		text = [
 			{

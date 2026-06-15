@@ -48,7 +48,7 @@ func _ready():
 	$TabContainer/Gameplay/Scroll/Box/enable_tutorials.connect("toggled", self, "enable_tutorials")
 
 
-	$TabContainer/Cheats/EnterCodeMenu/GetCode.connect("pressed", self, "get_code")
+	$TabContainer/Cheats/EnterCodeMenu/GetCode.connect("pressed", self, "go_for_code")
 	$TabContainer/Cheats/EnterCodeMenu/LineEdit.connect("text_changed", self, "text_changed")
 	$TabContainer/Cheats/EnterCodeMenu/Activate.connect("pressed", self, "go_for_code")
 	$TabContainer/Cheats/OpenCheatsMenu/CheatsMenu.connect("pressed", self, "open_cheats_menu")

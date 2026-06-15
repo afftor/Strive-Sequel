@@ -450,18 +450,16 @@ __meta__ = {
 }
 
 [node name="Buffs" type="HBoxContainer" parent="Panel/PlayerGroup/Back/left/Template"]
-margin_left = 9.0
+margin_left = 10.0
 margin_top = 97.0
-margin_right = 173.0
-margin_bottom = 152.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_right = 10.0
+margin_bottom = 147.0
+mouse_filter = 0
 
 [node name="Button" type="TextureRect" parent="Panel/PlayerGroup/Back/left/Template/Buffs"]
 visible = false
 margin_right = 50.0
-margin_bottom = 55.0
+margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 texture = ExtResource( 24 )
 expand = true
@@ -478,6 +476,9 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 5 )
 text = "555"
 align = 1
+
+[node name="Timer" type="Timer" parent="Panel/PlayerGroup/Back/left/Template/Buffs"]
+wait_time = 3.0
 
 [node name="bars" type="VBoxContainer" parent="Panel/PlayerGroup/Back/left/Template"]
 margin_left = 10.0
@@ -1684,3 +1685,8 @@ text = "Wood"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="screen_block" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0

@@ -54,6 +54,7 @@ var backgrounds = {
 	crypt5 = "res://assets/images/backgrounds/crypt5.png",
 
 	fort1 = "res://assets/images/backgrounds/fort1.png",
+	fort_1 = "res://assets/images/backgrounds/fort1.png", #stub to remove later
 	fort2 = "res://assets/images/backgrounds/fort2.png",
 	fort3 = "res://assets/images/backgrounds/fort3.png",
 	
@@ -725,7 +726,7 @@ var scenes = {
 	rest = "res://assets/images/scenes/rest.png",
 	restoraunt_quarrel = "res://assets/images/scenes/restoraunt_quarrel.png",
 	scarhand = "res://assets/images/scenes/scarhand.png",
-	slave_love = "res://assets/images/scenes/slave_love.png",
+	slave_love = "res://assets/images/scenes/slave love.png",
 	table_sleep = "res://assets/images/scenes/table_sleep.png",
 	trap_rnd = "res://assets/images/scenes/trap_rnd.png",
 	treasure = "res://assets/images/scenes/treasure.png",
@@ -806,6 +807,7 @@ var sprites = {
 	
 	bandits = load("res://assets/images/sprites/bandits.png"),
 	rakar = load("res://assets/images/sprites/rakar.png"),
+	ramont = load("res://assets/images/sprites/ramont.png"),
 	
 	cali_halloween = load("res://assets/images/sprites/cali_halloween.png"),
 	cali_halloween_body = load("res://assets/images/sprites/cali_halloween_body.png"),
@@ -1113,6 +1115,9 @@ var icons = {
 	frame_trait = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_ellipse.png",
 	frame_trait_1 = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_gold_ellipse.png",
 	frame_trait_mask = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_ellipse_mask.png",
+	frame_sex_skill = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_heart.png",
+	frame_sex_skill_1 = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_gold_heart.png",
+	frame_sex_skill_mask = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_heart_mask.png",
 	
 	#masteries
 	mastery_air = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/air.png",
@@ -1400,6 +1405,7 @@ var GFX_sprites = {
 	trap_snare = "res://assets/sfx/hit_animation/trap_snare.tscn",
 	dark_swril = "res://assets/sfx/hit_animation/dark_swirl.tscn",
 	shadow_spike = "res://assets/sfx/hit_animation/shadow_spike.tscn",
+	meteor = "res://assets/sfx/hit_animation/meteor.tscn",
 	}
 
 var GFX_particles = {

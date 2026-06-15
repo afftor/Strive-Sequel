@@ -179,7 +179,7 @@ func open(scene):
 		else:
 			new_background.modulate.a = 1
 	if scene.has("common_effects"):
-		globals.common_effects(scene.common_effects)
+		globals.common_effects(scene.common_effects, true)
 	clear_character_images()
 	$BackgroundT1/ImagePanel.hide()
 	handle_scene_backgrounds(scene)
@@ -831,6 +831,7 @@ func set_baby_name(text):
 
 func open_chest():
 	hold_selection = true
+	input_handler.PlaySound("chest_opening")
 	var loot_win = input_handler.get_spec_node(input_handler.ANIM_LOOT)
 	if !gui_controller.windows_opened.has(loot_win):
 		gui_controller.windows_opened.append(loot_win)
@@ -972,6 +973,26 @@ func get_spouse_sprite():
 			#2add
 			_: return null
 
+func get_unique_character_from_sprite_code(sprite_code):
+	if sprite_code == null or !sprite_code.begins_with("$"):
+		return null
+	var unique_code = sprite_code.substr(1, sprite_code.length() - 1)
+	return ResourceScripts.game_party.get_unique_slave(unique_code)
+
+func apply_unique_character_sprite(image_node, person):
+	image_node.show()
+	var non_body = person.get_stat('body_image').replace("_body", "")
+	var image
+	if images.sprites.has(non_body):
+		image = input_handler.loadimage(images.sprites[non_body], 'shades')
+	else:
+		image = person.get_body_image()
+	if image_node.texture != image:
+		ResourceScripts.core_animations.UnfadeAnimation(image_node, type_trans_time)
+	image_node.texture = image
+	image_node.material.set_shader_param('opacity', 0.0)
+	return person.get_stat("unique").to_lower()
+
 func handle_characters_sprites(scene):
 	#--i do not understand conditions and sequencing of most of code in cases of characters do exist
 	#--so i think that there are some logical errors here
@@ -1009,7 +1030,15 @@ func handle_characters_sprites(scene):
 				char_shade = false
 				if scene_char == 'spouse':
 					scene_char = get_spouse_sprite()
-			if scene_char != null and ch1 != scene_char:
+			var unique_person = get_unique_character_from_sprite_code(scene_char)
+			if unique_person != null:
+				ch1 = apply_unique_character_sprite($CharacterImage, unique_person)
+				ch1_shade = false
+			elif scene_char != null and scene_char.begins_with("$"):
+				$CharacterImage.hide()
+				ch1 = null
+				ch1_shade = false
+			elif scene_char != null and ch1 != scene_char:
 				# test if it's a different char and not just a variation
 				var unique_name_char: String = "unique_char"
 				var unique_name_ch1: String = "ch1"
@@ -1047,7 +1076,15 @@ func handle_characters_sprites(scene):
 				char_shade = false
 				if scene_char == 'spouse':
 					scene_char = get_spouse_sprite()
-			if scene_char != null and ch2 != scene_char:
+			var unique_person2 = get_unique_character_from_sprite_code(scene_char)
+			if unique_person2 != null:
+				ch2 = apply_unique_character_sprite($CharacterImage2, unique_person2)
+				ch2_shade = false
+			elif scene_char != null and scene_char.begins_with("$"):
+				$CharacterImage2.hide()
+				ch2 = null
+				ch2_shade = false
+			elif scene_char != null and ch2 != scene_char:
 				ResourceScripts.core_animations.UnfadeAnimation($CharacterImage2, type_trans_time)
 				$CharacterImage2.texture = images.get_sprite(scene_char)
 				for_gallery2 = scene_char
@@ -1120,43 +1157,6 @@ func handle_characters_sprites(scene):
 				var image_name = worlddata.pregen_character_sprites[scene_char].wed.path
 				$CharacterImage.texture = images.get_sprite(image_name)
 				for_gallery = image_name
-	
-	
-	#handle unique character script
-	if scene.has("unique_character"):
-		for i in ResourceScripts.game_party.characters: 
-			var person = ResourceScripts.game_party.characters[i]
-			if person.get_stat("unique") == scene.unique_character:
-				$CharacterImage.show()
-				var non_body = person.get_stat('body_image').replace("_body", "")
-				var image = input_handler.loadimage(images.sprites[non_body], 'shades') #needs testing, idk if this is still in use
-				if $CharacterImage.texture != image:
-					ResourceScripts.core_animations.UnfadeAnimation($CharacterImage, type_trans_time)
-				if images.sprites.has(non_body):
-					$CharacterImage.texture = image
-				else:
-					$CharacterImage.texture = person.get_body_image()
-				$CharacterImage.material.set_shader_param('opacity', 0.0)
-				ch1_shade = false
-				ch1 = person.get_stat("unique").to_lower()
-				return
-	if scene.has("unique_character2"):
-		for i in ResourceScripts.game_party.characters: 
-			var person = ResourceScripts.game_party.characters[i]
-			if person.get_stat("unique") == scene.unique_character2:
-				$CharacterImage2.show()
-				var non_body = person.get_stat('body_image').replace("_body", "")
-				var image = input_handler.loadimage(images.sprites[non_body], 'shades') #the same as above
-				if $CharacterImage2.texture != image:
-					ResourceScripts.core_animations.UnfadeAnimation($CharacterImage2, type_trans_time)
-				if images.sprites.has(non_body):
-					$CharacterImage2.texture = image
-				else:
-					$CharacterImage2.texture = person.get_body_image()
-				$CharacterImage2.material.set_shader_param('opacity', 0.0)
-				ch2_shade = false
-				ch2 = person.get_stat("unique")
-				return
 	
 	if for_gallery != null:
 		input_handler.update_progress_data("characters", for_gallery)
@@ -1241,12 +1241,12 @@ func generate_scene_text(scene):
 		if input_handler.if_translation_key(i.text):
 			ResourceScripts.game_progress.seen_dialogues.append(i.text)
 		if i.has("bonus_effects"):
-			globals.common_effects(i.bonus_effects)
+			globals.common_effects(i.bonus_effects, true)
 		newtext += tr(i.text)
 	scenetext = newtext
 	scenetext = tr(scenetext)
 	if scene.has('bonus_effects'):
-		globals.common_effects(scene.bonus_effects)
+		globals.common_effects(scene.bonus_effects, true)
 
 	if scenetext.find("[locationname]") >= 0:
 		var data = ResourceScripts.world_gen.get_location_from_code(input_handler.selected_location)
@@ -1423,7 +1423,7 @@ func select_option(number):
 		ResourceScripts.game_progress.selected_dialogues.append(option.text_key)
 	
 	if option.has('bonus_effects'):
-		globals.common_effects(option.bonus_effects)
+		globals.common_effects(option.bonus_effects, true)
 	
 	if option.has('select_person'):
 		select_person_for_next_event(option)

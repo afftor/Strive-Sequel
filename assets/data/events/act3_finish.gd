@@ -178,7 +178,7 @@ var data = {
 			{
 				code = "quest_fight",
 				args = "dwarf_ceremony_cult",
-				text = "DWARF_CEREMONY_OPT_FIGHT",
+				text = "DIALOGUEFIGHTOPTION",
 				type = "next_dialogue",
 				reqs = [
 					{
@@ -191,7 +191,7 @@ var data = {
 			{
 				code = "quest_fight",
 				args = "dwarf_ceremony_guards",
-				text = "DWARF_CEREMONY_OPT_FIGHT",
+				text = "DIALOGUEFIGHTOPTION",
 				type = "next_dialogue",
 				reqs = [
 					{
@@ -362,7 +362,7 @@ var data = {
 				code = "quest_fight",
 				args = "dwarf_ceremony_coal",
 				dialogue_argument = 0,
-				text = "DWARF_CEREMONY_OPT_FIGHT",
+				text = "DIALOGUEFIGHTOPTION",
 				type = "next_dialogue",
 				reqs = [
 					{
@@ -376,7 +376,7 @@ var data = {
 				code = "quest_fight",
 				args = "dwarf_ceremony_cult2",
 				dialogue_argument = 0,
-				text = "DWARF_CEREMONY_OPT_FIGHT",
+				text = "DIALOGUEFIGHTOPTION",
 				type = "next_dialogue",
 				reqs = [
 					{
@@ -1006,6 +1006,7 @@ var data = {
 					{
 						code = "add_timed_event",
 						value = "emp_city_init",
+						skip_existing = true,
 						args = [
 							{
 								type = "add_to_date",
@@ -1043,6 +1044,7 @@ var data = {
 					{
 						code = "add_timed_event",
 						value = "emp_city_init",
+						skip_existing = true,
 						args = [
 							{
 								type = "add_to_date",
@@ -1428,6 +1430,7 @@ var data = {
 					{
 						code = "add_timed_event",
 						value = "emp_city_init",
+						skip_existing = true,
 						args = [
 							{
 								type = "add_to_date",

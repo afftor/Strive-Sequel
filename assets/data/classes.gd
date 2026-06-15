@@ -541,7 +541,7 @@ var professions = {
 		reqs = [
 			{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 4},
 			{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 2},
-			{code = 'has_any_profession', value = ['apprentice', 'scholar']}
+			{code = 'has_any_profession', value = ['apprentice', 'scholar', 'priest']}
 			],
 		statchanges = {mp_reg_add_part = 2, mpmax = 15, mastery_point_magic = 3},
 		traits = ['caster'],
@@ -558,14 +558,14 @@ var professions = {
 		categories = ['combat','magic'],
 		showupreqs = [],
 		reqs = [
-#			{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 4},
-#			{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 2},
+			{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 4},
+			{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 2},
 			{code = 'has_profession', profession = 'scholar', check = true}
 			],
 		statchanges = {hpmax = 10, physics_bonus = 10, evasion = 5, mastery_point_combat = 1, mastery_point_magic = 1, mastery_point_universal = 1}, 
 		traits = ['spellsword'],
 		skills = [],
-		combatskills = ['spellsword_aura'], #temp
+		combatskills = ['spellsword_aura'],
 		conflict_classes = ['caster'],
 	},
 	arcane_blade = {
@@ -576,15 +576,14 @@ var professions = {
 		tags = ['arcane_blade'],
 		categories = ['combat','magic'],
 		showupreqs = [],
-		reqs = [ #fix
-#			{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 4},
-#			{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 2},
+		reqs = [
+			{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 3},
 			{code = 'has_profession', profession = 'spellsword', check = true}
 			],
 		statchanges = {hpmax = 15, mdef = 10, armor = 5, mastery_point_combat = 1, mastery_point_magic = 1, mastery_point_universal = 1},
 		traits = [],
 		skills = [],
-		combatskills = ['arcaneblade_aura'], #temp
+		combatskills = ['arcaneblade_aura'],
 		conflict_classes = [],
 	},
 	dominator = {
@@ -1191,7 +1190,7 @@ var professions = {
 		code = 'nixx_champion',
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsclasses/nixx_champion.png"),
+		icon = load("res://assets/images/iconsclasses/nixx_champion2.png"),
 		tags = ['permanent'],
 		categories = ['magic','combat'],
 		showupreqs = [{code = 'disabled', check = true}],

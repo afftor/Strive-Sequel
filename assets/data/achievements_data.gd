@@ -661,16 +661,24 @@ var bonuses = {
 		preparation = "prep_rooms",
 		cost = 5
 	},
-	literate = {
-		name = "ACHIBONUS_LITERATE",
-		description = "ACHIBONUS_LITERATE_DESC",
+#	literate = {
+#		name = "ACHIBONUS_LITERATE",
+#		description = "ACHIBONUS_LITERATE_DESC",
+#		hint = "",
+#		icon = "res://assets/images/minor_training/literacy.png",
+#		preparation = "prep_literate",
+#		cost = 5
+#	},
+	all_starting_races = {
+		name = "ACHIBONUS_ALL_RACES",
+		description = "ACHIBONUS_ALL_RACES_DESC",
 		hint = "",
-		icon = "res://assets/images/minor_training/literacy.png",
-		preparation = "prep_literate",
-		cost = 5
+		icon = "res://assets/images/iconsraces/human.png",
+		preparation = "prep_all_starting_races",
+		cost = 20
 	},
 }
-var always_ulocked_bonuses = ["exp_scrolls", "talent_points", "master_factor_points", "craftsman", "rooms", "literate"]
+var always_ulocked_bonuses = ["exp_scrolls", "talent_points", "master_factor_points", "craftsman", "rooms", "all_starting_races"]
 
 func prepare_data():
 	#infinite_levels group

@@ -13,7 +13,8 @@ var data = {
 				text = "ANA_LETTER_1_1",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 0
 			},
 			{
 				text = "ANA_LETTER_1_2",
@@ -274,6 +275,9 @@ var data = {
 					{
 						code = "make_quest_location",
 						value = "quest_ashen_ridge"
+					},
+					{
+						code = "update_city"
 					}
 				]
 			}
@@ -345,6 +349,9 @@ var data = {
 					{
 						code = "decision",
 						value = "ana_liora_lie"
+					},
+					{
+						code = "update_city"
 					}
 				]
 			}
@@ -610,6 +617,9 @@ var data = {
 							{
 								code = "decision",
 								value = "ana_liora_good"
+							},
+							{
+								code = "update_city"
 							}
 						]
 					}
@@ -653,6 +663,9 @@ var data = {
 							{
 								code = "decision",
 								value = "ana_liora_bad"
+							},
+							{
+								code = "update_city"
 							}
 						]
 					}
@@ -696,6 +709,9 @@ var data = {
 							{
 								code = "decision",
 								value = "ana_liora_bad"
+							},
+							{
+								code = "update_city"
 							}
 						]
 					}
@@ -811,7 +827,7 @@ var data = {
 				type = "next_dialogue",
 				bonus_effects = [
 					{
-						code = "comlete_quest",
+						code = "complete_quest",
 						value = "anastasia_quest"
 					},
 					{

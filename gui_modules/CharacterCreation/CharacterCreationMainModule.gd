@@ -242,7 +242,7 @@ func reroll_name():
 func reroll_race():
 	if mode == 'freemode':
 		return
-	var available_races = races.racelist.keys()
+	var available_races = get_available_races()
 	if available_races.empty():
 		return
 	var current_race = person.get_stat('race')
@@ -256,6 +256,16 @@ func reroll_race():
 		preservedsettings.erase('surname')
 		rebuild_slave()
 	build_race()
+
+
+func get_available_races():
+	if mode == 'freemode' or ResourceScripts.game_globals.all_starting_races:
+		return races.racelist.keys()
+	var res = []
+	for race_id in variables.player_starting_races_array:
+		if races.racelist.has(race_id):
+			res.append(race_id)
+	return res
 
 
 func reroll_appearance():

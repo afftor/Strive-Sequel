@@ -42,7 +42,7 @@ var mastery_required = {
 	penetration = [["missionary", "missionaryanal"], ["doggy", "doggyanal"], ["lotus", "lotusanal"], ["revlotus", "revlotusanal"], ["ontop", "ontopanal"]],
 	pussy = [["missionary"], ["doggy"], ["lotus"], ["revlotus"], ["ontop"]],
 	anal = [["missionaryanal"], ["doggyanal"], ["lotusanal"], ["revlotusanal"], ["ontopanal"]],
-	petting = [["caress"], ["fondletits"], ["titjob"], ["handjob"], ["massagefoot"], ["footjob"], ["fingering", "assfingering"], ["fisting", "analfisting"]],
+	petting = [["fondletits", "titjob"], ["handjob", "fingering", "assfingering"], ["footjob", "massagefoot"], ["fisting", "analfisting"]],
 	oral = [["kiss"], ["sucknipples"], ["rimjob"], ["cunnilingus", "blowjob"]],
 	tail = [["tailjob"], ["inserttailv"], ["inserttaila"]],
 }
@@ -108,6 +108,8 @@ func update():
 			if ii == 'sex_training_tail' and state == 'novice':
 				continue
 			if ii == 'sex_training_penetration' and state == 'novice' and active_person.get_stat('penis_size') == '':
+				continue
+			if ii == 'sex_training_pussy' and state == 'novice' and active_person.get_stat('sex') == 'male':
 				continue
 			var newbutton = input_handler.DuplicateContainerTemplate($SlaveInfoModule/SexSkillsContainer/VBoxContainer)
 			var state_label = get_sex_training_label(state)
@@ -238,6 +240,5 @@ func open_gear():
 	gui_controller.current_screen = gui_controller.inventory
 	gui_controller.inventory.set_active_hero(active_person)
 	gui_controller.emit_signal("screen_changed")
-
 
 

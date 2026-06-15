@@ -44,6 +44,47 @@ func requirements():
 				valid = false
 	return valid
 
+const enthusiasm_giver = {
+	trigger_text = "INTERACTION_ENTHUSIASM_TRIGGER_INSERTTAILV_GIVER",
+	btn_text = "INTERACTION_ENTHUSIASM_BTN",
+	orgasm_target = 'partner',
+	choices = [
+		{name_key = "INTERACTION_ENTHUSIASM_INSERTTAIL_G_CHOICE_DEEPER", personality = 'bold',
+			love_keys = ["INTERACTION_ENTHUSIASM_INSERTTAIL_G_DEEPER_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_INSERTTAIL_G_DEEPER_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_INSERTTAIL_G_CHOICE_RHYTHM", personality = 'serious',
+			love_keys = ["INTERACTION_ENTHUSIASM_INSERTTAIL_G_RHYTHM_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_INSERTTAIL_G_RHYTHM_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_INSERTTAIL_G_CHOICE_TOUCH", personality = 'shy',
+			love_keys = ["INTERACTION_ENTHUSIASM_INSERTTAIL_G_TOUCH_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_INSERTTAIL_G_TOUCH_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_INSERTTAIL_G_CHOICE_PRAISE", personality = 'kind',
+			love_keys = ["INTERACTION_ENTHUSIASM_INSERTTAIL_G_PRAISE_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_INSERTTAIL_G_PRAISE_HATE_1"]},
+	],
+	training_upgrades = [{skill = 'tail', target = 'skilled'}],
+}
+
+const enthusiasm_taker = {
+	trigger_text = "INTERACTION_ENTHUSIASM_TRIGGER_INSERTTAILV_TAKER",
+	btn_text = "INTERACTION_ENTHUSIASM_BTN",
+	choices = [
+		{name_key = "INTERACTION_ENTHUSIASM_INSERTTAIL_T_CHOICE_PRESS", personality = 'bold',
+			love_keys = ["INTERACTION_ENTHUSIASM_INSERTTAIL_T_PRESS_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_INSERTTAIL_T_PRESS_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_INSERTTAIL_T_CHOICE_STEADY", personality = 'serious',
+			love_keys = ["INTERACTION_ENTHUSIASM_INSERTTAIL_T_STEADY_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_INSERTTAIL_T_STEADY_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_INSERTTAIL_T_CHOICE_HAND", personality = 'shy',
+			love_keys = ["INTERACTION_ENTHUSIASM_INSERTTAIL_T_HAND_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_INSERTTAIL_T_HAND_HATE_1"]},
+		{name_key = "INTERACTION_ENTHUSIASM_INSERTTAIL_T_CHOICE_PRAISE", personality = 'kind',
+			love_keys = ["INTERACTION_ENTHUSIASM_INSERTTAIL_T_PRAISE_LOVE_1"],
+			hate_keys = ["INTERACTION_ENTHUSIASM_INSERTTAIL_T_PRAISE_HATE_1"]},
+	],
+	training_upgrades = [{skill = 'pussy', target = 'skilled'}],
+}
+
 func givereffect(member):
 	var effects = {sens = 100}
 	return effects

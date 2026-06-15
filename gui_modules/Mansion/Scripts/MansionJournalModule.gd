@@ -80,9 +80,10 @@ func open():
 func make_active_quest_button(quest):
 	var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 	if scenedata.quests[quest.code].stages.has(quest.stage):
-		newbutton.text = scenedata.quests[quest.code].stages[quest.stage].name
+		newbutton.text = tr(scenedata.quests[quest.code].stages[quest.stage].name)
 	else:
-		newbutton.text = scenedata.error_stage.name
+		newbutton.text = tr(scenedata.error_stage.name)
+	input_handler.font_size_adjust(newbutton)
 	newbutton.connect("pressed", self, "show_quest_info", [quest])
 	newbutton.set_meta("quest", quest)
 	newbutton.set_meta("type", "main")
@@ -91,7 +92,8 @@ func make_active_quest_button(quest):
 
 func make_quest_button(quest):
 	var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-	newbutton.text = quest.name
+	newbutton.text = tr(quest.name)
+	input_handler.font_size_adjust(newbutton)
 	newbutton.connect("pressed", self, "show_quest_info", [quest])
 	newbutton.set_meta("quest", quest)
 	newbutton.set_meta("type", "minor")
@@ -232,8 +234,8 @@ func Reward():
 	var suspended_rep = globals.Reward(selectedquest, true)
 	open()
 	input_handler.play_animation("repeatable_quest_completed")
-	yield(get_tree().create_timer(3.5), 'timeout')
 	if suspended_rep != null:
+#		yield(get_tree().create_timer(3.5), 'timeout')
 		globals.common_effects([{code = 'reputation', name = suspended_rep.guild, value = suspended_rep.value, operant = '+'}])
 
 func CancelQuest():
@@ -243,7 +245,11 @@ func CancelQuest():
 
 func cancel_quest_confirm():
 	for ch in ResourceScripts.game_party.characters.values():
-		if ch.is_on_quest() and ch.get_work() != 'disabled' and selectedquest.id == ch.get_selected_quest():
+		if (ch.is_on_quest()
+				and ch.get_work() != 'disabled'
+				#probably need to do something with slaves' quest's int ids
+				and typeof(selectedquest.id) == typeof(ch.get_selected_quest())
+				and selectedquest.id == ch.get_selected_quest()):
 			ch.remove_from_work_quest()
 	ResourceScripts.game_world.complete_quest(selectedquest, "failed")
 	open()

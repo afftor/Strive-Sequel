@@ -1392,8 +1392,10 @@ func tits(group):
 				if not array2.has(j):
 					marray2.erase(j)
 	#30% of time do not use descriptors
-	if  randf() < 0.3 || marray1.empty():
+	if randf() < 0.3 || marray1.empty():
 		return getrandomfromarray(marray2, true)
+	elif  marray2.empty():
+		return getrandomfromarray(marray1, true)
 	else:
 		return getrandomfromarray(marray1) + " " + getrandomfromarray(marray2)
 
@@ -1435,7 +1437,7 @@ func getrandomfromarray(array, shouldpassempty = false):
 	if !array.empty():
 		return tr(array[randi()%array.size()])
 	elif shouldpassempty == false:
-		print("empty array passed to getrandomfromarray(array)")
+		print("empty array passed to getrandomfromarray" + array)
 		return ""
 	else:
 		return ""

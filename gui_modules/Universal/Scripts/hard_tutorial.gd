@@ -487,6 +487,7 @@ var tut_menu
 var listeners = [
 	#{source, sig, fun}
 ]
+var remembered_soft_tutorial_state = false
 signal close_by_RMB
 
 func _init():
@@ -608,8 +609,6 @@ func next_tut_step():
 	if step_info.has('listen'):
 		for sig_btn_name in step_info.listen:
 			set_listener(get_btns()[sig_btn_name].source.get_ref(), get_btns_signal(sig_btn_name), "btn_truly_pressed")
-	if step_info.has("ban_mass_select"):
-		input_handler.stop_mass_select()
 	if step_info.has("tut_func"):
 		self.call(step_info.tut_func)
 
@@ -638,6 +637,7 @@ func tutorial_menu():
 	temp_active_btns = active_btns.duplicate()
 	temp_cur_dont_listen = cur_dont_listen
 	active_btns.clear()
+	free_listeners()
 	var menu_btns = ['tut_menu_yes', 'tut_menu_no', "tut_menu_training", "tut_menu_work",
 		"tut_menu_leveling", "tut_menu_quest", "tut_menu_abort", "tut_menu_back"]
 	cur_dont_listen = menu_btns
@@ -646,18 +646,29 @@ func tutorial_menu():
 
 func abort_tutorial():
 	stop_tut()
+	yield(prepare_save_exit(), "completed")
 	globals.return_to_main_menu()
 	input_handler.deactivate_hard_tutorial()
 
-func on_tutorial_menu_hide():
-	if temp_active_btns != null:
-		active_btns = temp_active_btns
+func on_tutorial_menu_hide(got_back = false):
+	active_btns.clear()
+	free_listeners()
+	cur_dont_listen = null
+	if temp_active_btns != null and got_back:
 		cur_dont_listen = temp_cur_dont_listen
+		for btn in temp_active_btns:
+			activate_btn(btn)
 	temp_active_btns = null
 	temp_cur_dont_listen = null
+	
 
-func is_in_menu():
-	return tut_menu != null and tut_menu.visible
+func can_open_menu():
+	if tut_menu != null and tut_menu.visible:
+		return false
+	if ("alert_panel_yes" in active_btns.keys()
+			or "alert_panel_no" in active_btns.keys()):
+		return false
+	return true
 
 #tutorial prepare funcs
 func prepare_general_tut():
@@ -733,6 +744,7 @@ func prepare_tutorial(tut_name):
 	if !input_handler.globalsettings.tutorial_prompt_seen:
 		input_handler.globalsettings.tutorial_prompt_seen = true
 	if input_handler.CurrentScene.name == "MansionMainModule":#should remake it somehow
+		yield(prepare_save_exit(), "completed")
 		globals.preexit_clear_up()
 	ResourceScripts.game_world.make_world()
 	ResourceScripts.game_globals.original_version = globals.gameversion
@@ -762,6 +774,19 @@ func is_RMB_pass():
 func stop_use_state():
 	if gui_controller.exploration != null:
 		gui_controller.exploration.try_stop_use_state()
-
-
 #--------------
+
+
+func prepare_save_exit():
+	yield(input_handler.get_tree(), "idle_frame")
+	if input_handler.event_is_active:
+		gui_controller.dialogue.close()
+		yield(input_handler, "EventFinished")
+	if input_handler.combat_node != null:
+		input_handler.combat_node.run()
+		yield(input_handler.combat_node, "combat_cleaned_up")
+
+func is_mass_select_banned():
+	var step_info = tutorials[cur_tut][cur_step]
+	return step_info.has("ban_mass_select")
+

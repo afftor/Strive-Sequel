@@ -88,9 +88,12 @@ var dummy = {
 signal skill_use_finshed
 signal rewards_anim_finished
 signal combat_finished
+signal combat_cleaned_up
 signal turn_started
 
 var queue_size_max
+
+onready var screen_block = $screen_block
 
 func _ready():
 	if gui_controller.mansion != null:
@@ -223,6 +226,7 @@ func reset_combat_data():
 func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', t_combat_data = {}):
 	ClearSkillPanel()
 	ClearItemPanel()
+	screen_block.hide()
 	if images.backgrounds.has(background):
 		$Background.texture = images.get_background(background)
 	else:
@@ -235,7 +239,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	external_rewardchars = null
 	hide()
 	
-	$ItemPanel/debugvictory.visible = debug
+	$ItemPanel/debugvictory.visible = OS.has_feature('editor')
 	# if variables.combat_tests == false:
 	# 	ResourceScripts.core_animations.BlackScreenTransition(0.5)
 	# 	yield(get_tree().create_timer(0.5), 'timeout')
@@ -1102,7 +1106,23 @@ func summon(montype, limit, combatgroup, incombat = false): #reworked
 		tchar.process_event(variables.TR_COMBAT_S)
 		ActionQueue.add_rebuildbuffs(tchar.displaynode)
 
-
+func get_group_amount(combatgroup, alive = true): #First made to make a skill for Dwarf king that only be use if there aint space to summon. 
+	var amount = 0
+	var search_array
+	match combatgroup:
+		'enemy':
+			search_array = [7, 8, 9, 10, 11, 12] 
+		'ally':
+			if alive:
+				return playergroupcounter
+			else:
+				search_array = [1, 2, 3, 4, 5, 6]
+	for i in search_array:
+		if battlefield[i] == null:
+			continue
+		if !alive or !get_char_by_pos(i).defeated:
+			amount += 1
+	return amount
 
 func use_skill(skill_code, caster, target, mode = variables.SKILL_BASE):
 	if !ActionQueue.is_empty():
@@ -1264,6 +1284,25 @@ func CalculateTargets(skill, target, finale = false):
 						if tchar.defeated: continue
 						if !tchar.can_be_damaged(skill) and !finale: continue
 						array.append(tchar)
+		'wave': #this is basically a better line.
+			var i = 3
+			if targetgroup == 'player': i = 1
+			if variables.lines[i].has(target.position):
+				for j in variables.lines[i]:
+					var tchar
+					if battlefield[j] == null :
+						if battlefield[j + 3] == null:
+							continue
+						tchar = get_char_by_pos(j + 3)
+					else:
+						tchar = get_char_by_pos(j)
+					if tchar.defeated:
+						if battlefield[j + 3] == null:
+							continue
+						tchar = get_char_by_pos(j+3)
+						if tchar.defeated: continue
+					if !tchar.can_be_damaged(skill) and !finale: continue
+					array.append(tchar)
 		'all':
 			for j in range(1, 13):
 				if j in range(1,7) && targetgroup == 'player':
@@ -1798,6 +1837,7 @@ func FinishCombat(victory = true):
 	gui_controller.current_screen = gui_controller.previous_screen
 	gui_controller.combat = null
 	characters_pool.cleanup()
+	emit_signal("combat_cleaned_up")
 
 
 #to check next functions
@@ -1973,6 +2013,7 @@ func defeat(runaway = false): #runaway is a temporary variable until run() metho
 			t_p.is_active = false
 			playergroup.erase(p)
 			summons.erase(p)
+	screen_block.show()
 	if runaway:
 		input_handler.play_animation_noq("runaway")
 		yield(get_tree().create_timer(4), 'timeout')
@@ -1983,6 +2024,7 @@ func defeat(runaway = false): #runaway is a temporary variable until run() metho
 		yield(get_tree().create_timer(3), 'timeout')
 		ResourceScripts.core_animations.BlackScreenTransition(1.5)
 		yield(get_tree().create_timer(1.5), 'timeout')
+	screen_block.hide()
 	
 	CombatAnimations.force_end()
 	Input.set_custom_mouse_cursor(images.cursors.default)

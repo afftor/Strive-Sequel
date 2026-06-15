@@ -18,6 +18,13 @@ var buffs = []
 
 var is_active = true
 
+var buff_scroll_max_page = 0
+var buff_scroll_page = 0
+
+var buffs_timer
+var buffs_cont
+var buffs_on_pause = false
+
 #data format: node, time, type, slot, params
 
 #func _process(delta):
@@ -50,7 +57,14 @@ var is_active = true
 
 func _ready():
 	connect("gui_input", self, "_on_Button_gui_input")
-	
+	if has_node("Buffs"):
+		buffs_timer = $Buffs/Timer
+		buffs_cont = $Buffs
+		buffs_timer.connect("timeout", self, "show_next_buff_page")
+		buffs_cont.connect("mouse_entered", self, "mouse_in_buffs")
+		buffs_cont.connect("mouse_exited", self, "try_mouse_out_buffs")
+		buffs_cont.connect("gui_input", self, "_on_buffs_gui_input")
+		buffs_cont.connect("resized", self, "_on_buffs_cont_resized")
 
 func _on_Button_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
@@ -148,10 +162,11 @@ func process_critical():
 #control visuals
 func noq_rebuildbuffs():
 	if !visible: return
-	var oldbuff = 0
-	var newbuffs = fighter.get_combat_buffs()
-	if fighter.hp <= 0:
-		newbuffs.clear()
+	#all that legacy stuff should be deleted probably
+#	var oldbuff = 0
+#	var newbuffs = fighter.get_combat_buffs()
+#	if fighter.hp <= 0:
+#		newbuffs.clear()
 #	for b in newbuffs:
 #		if buffs.has(b.template_name): oldbuff += 1
 ##	if oldbuff == buffs.size():
@@ -160,14 +175,53 @@ func noq_rebuildbuffs():
 #			if buffs.has(i.template_name): update_buff(i)
 #			else: add_buff(i)
 #	else:
-	input_handler.ClearContainer($Buffs)
-	buffs.clear()
-	for i in newbuffs:
-		add_buff(i)
+#	input_handler.ClearContainer(buffs_cont)
+#	buffs.clear()
+#	for i in newbuffs:
+#		add_buff(i)
+#	switch_buff_scroll(newbuffs.size())
+	
+	buffs = fighter.get_combat_buffs()
+	if fighter.hp <= 0:
+		buffs.clear()
+	if buffs.empty():
+		buff_scroll_max_page = 0
+	else:
+		buff_scroll_max_page = int(ceil(float(buffs.size())/3.0)) - 1
+	if buff_scroll_page > buff_scroll_max_page:
+		buff_scroll_page = 0
+	show_buff_page(false)
+	if buff_scroll_max_page > 0:
+		if buffs_timer.is_stopped():
+			buffs_timer.start()
+	elif !buffs_timer.is_stopped():
+		buffs_timer.stop()
+
+func show_next_buff_page():
+	buff_scroll_page += 1
+	if buff_scroll_page > buff_scroll_max_page:
+		buff_scroll_page = 0
+	show_buff_page()
+
+var buffs_in_fade = false
+func show_buff_page(make_fade = true):
+	if buffs_in_fade: return
+	var fade_time = 0.1
+	if make_fade:
+		ResourceScripts.core_animations.FadeAnimation(buffs_cont, fade_time)
+		buffs_in_fade = true
+		yield(get_tree().create_timer(fade_time), "timeout")
+		buffs_in_fade = false
+	input_handler.ClearContainer(buffs_cont)
+	var max_pos = min((buff_scroll_page+1) * 3, buffs.size())
+	for i in range(buff_scroll_page * 3, max_pos):
+		add_buff(buffs[i])
+	if make_fade:
+		ResourceScripts.core_animations.UnfadeAnimation(buffs_cont, fade_time)
 
 func add_buff(i):
 	if !visible: return
-	var newbuff = input_handler.DuplicateContainerTemplate($Buffs)
+	var newbuff = input_handler.DuplicateContainerTemplate(buffs_cont)
 	var text = i.description
 	newbuff.texture = i.icon
 #	buffs.push_back(i.template_name)
@@ -202,6 +256,37 @@ func add_buff(i):
 				'attacks':
 					newbuff.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
 			newbuff.get_node("Label").show()
+
+func mouse_in_buffs():
+	if buffs_on_pause: return
+	buffs_on_pause = true
+	buffs_timer.paused = true
+
+func try_mouse_out_buffs():
+	if !buffs_on_pause or is_mouse_on_buffs(): return
+	buffs_on_pause = false
+	buffs_timer.paused = false
+	if !buffs_timer.is_stopped():
+		buffs_timer.start()
+
+func _on_buffs_gui_input(event):
+	if !buffs_on_pause or buff_scroll_max_page == 0: return
+	if event.is_action_released("LMB"):
+		show_next_buff_page()
+#	elif event.is_action_released("RMB"):
+#		buff_scroll_page -= 1
+#		if buff_scroll_page < 0:
+#			buff_scroll_page = buff_scroll_max_page
+#		show_buff_page()
+
+func _on_buffs_cont_resized():
+	if buffs_on_pause:
+		try_mouse_out_buffs()
+	elif !buffs_on_pause and is_mouse_on_buffs():
+		mouse_in_buffs()
+
+func is_mouse_on_buffs():
+	return buffs_cont.get_rect().has_point(buffs_cont.get_parent().get_local_mouse_position())
 
 #not used
 #func update_buff(i): 

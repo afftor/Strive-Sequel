@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.14.3'
+const gameversion = '0.14.3b'
 
 #time
 signal hour_tick
@@ -104,11 +104,11 @@ func _ready():
 	modding_core.load_mods()
 	Effectdata.fix_eff_data()
 	
-#	if OS.has_feature('editor'):
-#		for loc_path in input_handler.scanfolder(variables.LocalizationFolder):
-#			var loc_code = loc_path.replace(variables.LocalizationFolder, '')
-#			if loc_code != "en":
-#				update_localization_file(loc_code)
+	if OS.has_feature('editor'):
+		for loc_path in input_handler.scanfolder(variables.LocalizationFolder):
+			var loc_code = loc_path.replace(variables.LocalizationFolder, '')
+			if loc_code != "en":
+				update_localization_file(loc_code)
 	
 	#console
 	var console = load("res://gui_modules/Console/console.tscn").instance()
@@ -2074,7 +2074,8 @@ func roll_hirelings(loc, recruiter = null):
 
 var yes
 var no
-func common_effects(effects):
+
+func common_effects(effects, from_event = false):
 	for i in effects:
 		match i.code:
 			'money_change':
@@ -2100,6 +2101,12 @@ func common_effects(effects):
 				#newslave.set_slave_category(newslave.slave_class)
 				ResourceScripts.game_party.add_slave(newslave)
 				ResourceScripts.game_party.build_starting_relations(newslave.id)
+				if from_event:
+					var unique_code = newslave.get_stat("unique")
+					if unique_code != null:
+						var recruited_decision = "%s_recruited" % str(unique_code).to_lower()
+						if !ResourceScripts.game_progress.decisions.has(recruited_decision):
+							ResourceScripts.game_progress.decisions.append(recruited_decision)
 			'add_timed_event':
 				if i.has('skip_existing') and i.skip_existing and ResourceScripts.game_progress.timed_event_exists(i.value):
 					continue
@@ -2267,6 +2274,9 @@ func common_effects(effects):
 					gui_controller.exploration.build_location_group()
 				if gui_controller.exploration_dungeon != null:
 					gui_controller.exploration_dungeon.build_location_group()
+			'update_prts':
+				for ch in ResourceScripts.game_party.characters.values():
+					ch.update_prt()
 			'rewrite_save': #obsolete
 				pass
 #				if (int(ResourceScripts.game_globals.date) % input_handler.globalsettings.autosave_frequency == 0) and int(ResourceScripts.game_globals.hour) == 1:
@@ -2766,6 +2776,8 @@ func common_effects(effects):
 				ResourceScripts.slave_quests.set_faction_factor(i.faction, i.value)
 			'achievement':
 				input_handler.achievements.try_add_achimnt(i.value)
+			_:
+				push_error("Unknown common_effects code: %s in effect %s" % [str(i.code), str(i)])
 
 func after_wedding_event(character):
 	if character == null:
@@ -2811,6 +2823,8 @@ func valuecheck(dict):
 		'false':
 			return false
 		"has_money":
+			if dict.has('check'):
+				return ResourceScripts.game_res.if_has_money(dict['value']) == dict.check
 			return ResourceScripts.game_res.if_has_money(dict['value'])
 		"has_loan_money":
 			return ResourceScripts.game_res.if_has_money(get_loan_sum(dict.stage - 1))
@@ -3030,6 +3044,9 @@ func valuecheck(dict):
 			return or_check
 		'has_item_with_tag':
 			return ResourceScripts.game_res.if_has_item_with_tag(dict.value)
+		_:
+			push_error("Unknown requirement type: %s in req %s" % [str(dict.type), str(dict)])
+			return false
 
 
 func apply_starting_preset():
@@ -3120,6 +3137,10 @@ func update_localization_file(update_loc: String, primary_loc = "en"):
 	var TranslationData = {}
 	for i in input_handler.scanfolder(variables.LocalizationFolder):
 		TranslationData[i.replace(variables.LocalizationFolder, '')] = {data = (i + "/main.gd"), info = i + "/info.gd"}
+	if !TranslationData.has(primary_loc):
+		return
+	if !TranslationData.has(update_loc):
+		return
 	
 	# load english translation from file
 	var primary_dict = load(TranslationData[primary_loc].data).new().TranslationDict
@@ -3146,7 +3167,9 @@ func update_localization_file(update_loc: String, primary_loc = "en"):
 
 		# open localization file to add keys into it
 		var loc_file = File.new()
-		loc_file.open(TranslationData[update_loc].data, File.READ)
+		var open_result = loc_file.open(TranslationData[update_loc].data, File.READ)
+		if open_result != OK:
+			return
 		
 		# look for keys in text lines (full word that's followed by = symbol)
 		var regex = RegEx.new()
@@ -3154,23 +3177,32 @@ func update_localization_file(update_loc: String, primary_loc = "en"):
 		
 		# create new temporary file named main2.gd
 		var tmp_file = File.new()
-		tmp_file.open(TranslationData[update_loc].data.replace("main.gd", "main2.gd"), File.WRITE)
+		var tmp_path = TranslationData[update_loc].data.replace("main.gd", "main2.gd")
+		var tmp_open_result = tmp_file.open(tmp_path, File.WRITE)
+		if tmp_open_result != OK:
+			loc_file.close()
+			return
 		
 		# iterate through main.gd file
 		var key = ""
+		var inserted_anchors = {}
 		while loc_file.get_position() < loc_file.get_len():
 			var line = loc_file.get_line()
 			var cleared_line = line.replace(" ", "").replace("	", "")
+			var is_commented_line = cleared_line.length() > 0 and cleared_line[0] == "#"
 			var regex_result = regex.search(line)
 			tmp_file.store_line(line)
 			
 			# if found a key in a line and it's not commented out
-			if regex_result and cleared_line[0] != "#": 
+			if regex_result and cleared_line.length() > 0 and !is_commented_line: 
 				key = regex_result.get_string()
 			
 			# if it's a missing key, insert keys
 			if key in missing_keys.keys():
-				if cleared_line.length() > 0 and cleared_line[cleared_line.length() - 1] == ',': 
+				if !is_commented_line and cleared_line.length() > 0 and cleared_line[cleared_line.length() - 1] == ',': 
+					if inserted_anchors.has(key):
+						continue
+					inserted_anchors[key] = true
 					for i in missing_keys[key].size():
 						var insert_line = "	%s = \"\"\"%s\"\"\", # MISSING TRANSLATION"
 						tmp_file.store_line(insert_line % [missing_keys[key][i].key, missing_keys[key][i].text])
@@ -3179,8 +3211,12 @@ func update_localization_file(update_loc: String, primary_loc = "en"):
 		
 		# remove old localization and rename our temporary main2.gd into main.gd
 		var dir = Directory.new()
-		dir.remove(TranslationData[update_loc].data)
-		dir.rename(TranslationData[update_loc].data.replace("main.gd", "main2.gd"), TranslationData[update_loc].data)
+		var remove_result = dir.remove(TranslationData[update_loc].data)
+		if remove_result != OK:
+			return
+		var rename_result = dir.rename(tmp_path, TranslationData[update_loc].data)
+		if rename_result != OK:
+			return
 
 
 func get_sex_action(code):
@@ -3329,4 +3365,6 @@ func make_sfx_params(anim_dict, last_iteration = false):
 	if anim_dict.has('no_delays'): params.no_delays = anim_dict.no_delays
 	if anim_dict.has('no_repeat_delays') and anim_dict.no_repeat_delays and !last_iteration:
 		params.no_delays = true
+	if anim_dict.has('alt_slot'): params.alt_slot = anim_dict.alt_slot
+	if anim_dict.has('force_flip'): params.force_flip = anim_dict.force_flip
 	return params

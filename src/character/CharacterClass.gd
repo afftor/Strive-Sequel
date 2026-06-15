@@ -381,7 +381,13 @@ func check_trait(trait):
 	if is_master() and trait.begins_with('loyalty_'): 
 		return true
 	
-	return (dyn_stats.traits_real.has(trait) or dyn_stats.traits_stored.has(trait) or statlist.sex_traits.has(trait) or statlist.negative_sex_traits.has(trait))
+	return (
+		dyn_stats.traits_real.has(trait)
+		or dyn_stats.traits_2_real.has(trait)
+		or dyn_stats.traits_stored.has(trait)
+		or statlist.sex_traits.has(trait)
+		or statlist.negative_sex_traits.has(trait)
+	)
 
 func predict_preg_time():
 	return statlist.predict_preg_time()
@@ -1094,7 +1100,7 @@ func get_combat_buffs():
 func can_act():
 	if is_koed(): 
 		return false
-	return !has_status('disable')
+	return !has_status('disable') or has_status('ignore_disable')
 
 func can_evade():
 	var res = can_act()
@@ -1865,6 +1871,15 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 				if char_behind != null: 
 					char_alive = !char_behind.is_koed()
 				check = char_alive == i.check
+		'group_amount':
+			if input_handler.combat_node == null:
+				return false
+			var amount = 0
+			if i.has("alive"):
+				amount = input_handler.combat_node.get_group_amount(combatgroup, i.alive)
+			else:
+				amount = input_handler.combat_node.get_group_amount(combatgroup)
+			check = input_handler.operate(i.operant, amount, i.value)
 	return check
 
 
@@ -1885,6 +1900,8 @@ func decipher_reqs(reqs, colorcode = false, purestat = false):
 			var passed = checkreqs([i], purestat)
 			if i.code == 'has_profession' and i.check == false:
 				passed = !has_profession(i.profession)
+			if i.code == 'race' and i.check == false:
+				passed = get_stat('race') != i.race
 			if passed:
 				text2 = '{color=green|' + text2 + '}'
 			else:
@@ -1936,7 +1953,7 @@ func decipher_single(ch):
 			if i.check:
 				text2 += tr("REQRACE") + ': ' + races.racelist[i.race].name
 			else:
-				continue
+				text2 += tr("REQCONFLICTRACE") + ': ' + races.racelist[i.race].name
 		'race_is_beast':
 			if i.check == true:
 				text2 += tr("REQRACEISBEAST") + ''
@@ -1953,7 +1970,7 @@ func decipher_single(ch):
 			else:
 				text2 += Items.itemlist[i.value].name + "."
 		'has_skill':
-			var skill_name = Skilldata.get_template(i.skill, self).name
+			var skill_name = Skilldata.get_template(i.value, self).name
 			if i.check:
 				text2 += "%s: %s." % [tr("REQHASSKILL"), skill_name]
 			else:

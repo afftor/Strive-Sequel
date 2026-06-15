@@ -132,7 +132,7 @@ var tattoo_text = {
 
 
 var breakdown_images = {
-	0: load("res://assets/Textures_v2/MANSION/Tutorial/icon_tutorial_introduction.png"),
+	0: load("res://assets/images/scenes/abuse.png"),
 }
 
 var breakdown_text = {

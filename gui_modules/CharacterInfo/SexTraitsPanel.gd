@@ -31,8 +31,8 @@ func build_sex_traits():
 		for i in array:
 			var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.pressed = person.check_trait(i)
-			newbutton.text = Traitdata.sex_traits[i].name
-			globals.connecttexttooltip(newbutton, person.translate(Traitdata.sex_traits[i].descript))
+			newbutton.text = tr(Traitdata.sex_traits[i].name)
+			globals.connecttexttooltip(newbutton, person.translate(tr(Traitdata.sex_traits[i].descript)))
 			newbutton.connect("toggled", self, 'toggle_trait', [i])
 	#$SexTraitsPanel/TraitsNotLearned.visible = !all_traits_known
 	
@@ -59,8 +59,8 @@ func rebuild_traits():
 		newnode.set_meta("always_disabled", true)
 		$ScrollContainer/VBoxContainer.move_child(newnode, 0)
 		if traits[i] == true:#trait is known
-			newnode.text = trait.name
-			var traittext = person.translate(trait.descript)
+			newnode.text = tr(trait.name)
+			var traittext = person.translate(tr(trait.descript))
 			for j in trait.reqs:
 				if j.has('code') && j.code == 'action_type':
 					traittext += "\n\n" + tr("DISLIKED_ACTIONS_LABEL") + ":[color=aqua] "
@@ -70,7 +70,7 @@ func rebuild_traits():
 						traittext += globals.sex_actions_dict[k].getname() + ", "
 					traittext = traittext.substr(0, traittext.length() - 2) + ".[/color]"
 			globals.connecttexttooltip(newnode, traittext)
-			if !all_traits_known and !("Dislike" in trait.name):
+			if !all_traits_known and !("Dislike" in tr(trait.name)):
 				newnode.disabled = false
 			else:
 				newnode.disabled = true

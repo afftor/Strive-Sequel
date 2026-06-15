@@ -28,7 +28,7 @@ var skills = {
 	flight = {
 		code = 'flight',
 		descript = '',
-		icon = load("res://assets/images/iconsskills/Fear.png"),
+		icon = load("res://assets/images/iconsskills/wing.png"),
 		type = 'combat',
 		ability_type = 'spell',
 		tags = ['buff', 'support', 'instant', 'selfbuf'],
@@ -86,7 +86,7 @@ var skills = {
 	fly_evasion = {
 		code = 'fly_evasion',
 		descript = '',
-		icon = load('res://assets/images/iconsraces/angel.png'),
+		icon = load('res://assets/images/iconsskills/wing.png'),
 		learn_reqs = [{code = 'stat', stat = 'wings', operant = 'neq', value = ''}],
 		learn_cost = 500,
 		type = 'combat', 
@@ -149,7 +149,7 @@ var effects = {
 		statchanges = {hitrate = 25, resist_earth = 50},
 		sub_effects = ['e_tr_flight_dodge'],
 		buffs = [{
-			icon = "res://assets/images/iconsskills/Fear.png",
+			icon = "res://assets/images/iconsskills/wing.png",
 			description = "TRAITEFFECTFLIGHT",
 			tags = ['combat_only'],
 		}],
@@ -209,7 +209,7 @@ var effects = {
 		tick_event = variables.TR_TURN_GET,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
-		tags = ['buff'],
+		tags = ['buff','fly'],
 		statchanges = {evasion = 90},
 		buffs = [
 			{

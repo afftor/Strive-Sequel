@@ -130,7 +130,6 @@ func _ready():
 	slave_list_manager()
 	globals.log_node = $MansionLogModule
 	input_handler.SetMusicRandom("mansion")
-	$TestButton.connect('pressed',self,'test')
 	SlaveListModule.update_dislocations()
 	SlaveListModule.rebuild()
 #	SlaveListModule.build_locations_list()
@@ -548,7 +547,7 @@ func remove_hovered_person():
 
 func _on_TestButton_pressed():
 	# print(ResourceScripts.game_progress.seen_dialogues)
-	print(active_person.is_on_quest())
+	input_handler.PlaySound("avalanche")
 	# print(Traitdata.get_tat_list_for_slot("arms"))
 #	get_node("DisassembleModule").build_list()
 #	get_node("DisassembleModule").show()

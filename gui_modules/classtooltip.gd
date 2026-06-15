@@ -110,11 +110,21 @@ func _get_total_mastery_points(mastery_id, invested_points):
 	return invested_points + _get_bonus_mastery_points(mastery_id, invested_points)
 
 
+func _build_passive_mastery_bonus_tooltip(bonusstats, mul = 1):
+	var lines = globals.build_desc_for_bonusstats(bonusstats, mul).strip_edges().split("\n")
+	var result = []
+	for line in lines:
+		line = line.strip_edges()
+		if line != "":
+			result.append("Passive: " + line)
+	return PoolStringArray(result).join("\n")
+
+
 func _build_mastery_tooltip_text(mastery_id):
 	var mastery_data = Skilldata.masteries[mastery_id]
 	var text = "[center]" + tr("MASTERY" + mastery_id.to_upper()) + "[/center]\n"
 	text += tr("LVLBONUSPERPOINT") + ":\n"
-	text += globals.build_desc_for_bonusstats(mastery_data.passive).strip_edges() + "\n"
+	text += _build_passive_mastery_bonus_tooltip(mastery_data.passive) + "\n"
 	var pools = _get_mastery_pools(mastery_data)
 	var invested_points = _get_invested_mastery_points(mastery_id, pools)
 	var total_points = _get_total_mastery_points(mastery_id, invested_points)

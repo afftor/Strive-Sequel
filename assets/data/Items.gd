@@ -1248,7 +1248,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		basestats = {resistance_red = 0.1, training_spirit = 1, mod_service = 0.05, sexuals_bonus = 5},
+		basestats = {resistance_red = 0.1, training_spirit = 1, mod_service = 0.05},
 	},
 	steel_collar = {
 		code = 'steel_collar',
@@ -1299,7 +1299,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = ['no_random'],
-		basestats = {trainer_loyalty_bonus = 0.2, physics_bonus = 5, wits_bonus = 5, charm_bonus = 5, sexuals_bonus = 5},
+		basestats = {trainer_loyalty_bonus = 0.2, physics_bonus = 5, wits_bonus = 5, charm_bonus = 5},
 	},
 	animal_ears = {#
 		code = 'animal_ears',
@@ -1404,7 +1404,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],#'e_worker_outfit_effect'],
 		tags = [],
-		basestats = {physics_bonus = 10, sexuals_bonus = -15, mod_hunt = 0.25, mod_fish = 0.25, mod_collect = 0.25, mod_farm = 0.25},
+		basestats = {physics_bonus = 10, mod_hunt = 0.25, mod_fish = 0.25, mod_collect = 0.25, mod_farm = 0.25},
 	},
 	craftsman_suit = {
 		code = 'craftsman_suit',
@@ -1455,7 +1455,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		basestats = {sexuals_bonus = 10, lusttick = 0.1},
+		basestats = {mod_pros = 0.15, lusttick = 0.1},
 	},
 	maid_headband = {
 		code = 'maid_headband',
@@ -1489,7 +1489,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		basestats = {sexuals_bonus = 15},
+		basestats = {mod_prost = 0.2},
 	},
 	service_suit = {
 		code = 'service_suit',
@@ -1506,7 +1506,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		basestats = {sexuals_bonus = 15, charm_bonus = 15, mod_pros = 0.15, mod_service = 0.15},
+		basestats = {charm_bonus = 15, mod_pros = 0.15, mod_service = 0.15},
 	},
 	shackles = {
 		code = 'shackles',
@@ -1559,7 +1559,7 @@ var itemlist = {
 		tags = [],
 		basestats = {},
 	},
-	chastity_belt = {#prevents all penetrations except for mouth. must have normal lower body, -25 sexuals, +10 hp/mp
+	chastity_belt = {#prevents all penetrations except for mouth. must have normal lower body
 		code = 'chastity_belt',
 		name = "",
 		descript = "",
@@ -1574,7 +1574,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		basestats = {sexuals_bonus = -25},
+		basestats = {},
 	},
 	stimulative_underwear = {#+25% lust per day, must have normal lower body
 		code = 'stimulative_underwear',
@@ -1749,7 +1749,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'daisy'}],
 		effects = [],#'e_maid_dress_effect'],
 		tags = ['no_random'],
-		basestats = {lusttick = 0.35, sexuals_bonus = 20, training_loyalty = 2, training_spirit = 1},
+		basestats = {lusttick = 0.35, mod_pros = 0.2, training_loyalty = 2, training_spirit = 1},
 	},
 	jacket = {
 		code = 'jacket',
@@ -1954,7 +1954,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],#'e_maid_dress_effect'],
 		tags = ['no_random'],
-		basestats = {training_loyalty = 4, training_spirit = -2, sexuals_bonus = 10},
+		basestats = {training_loyalty = 4, training_spirit = -2, mod_service = 0.1},
 	},
 	cali_collar_enchanted_2 = {
 		code = 'cali_collar_enchanted_2',
@@ -1971,7 +1971,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],#'e_maid_dress_effect'],
 		tags = ['no_random'],
-		basestats = {training_loyalty = 5, sexuals_bonus = 15},
+		basestats = {training_loyalty = 5, mod_serivce = 0.15},
 	},
 	enslaving_collar = {
 		code = 'enslaving_collar',
@@ -2148,7 +2148,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = ['no_random'],
-		basestats = {sexuals_bonus = 10, charm_bonus = 20, mod_pros = 0.10, mod_service = 0.10},
+		basestats = {charm_bonus = 20, mod_pros = 0.10, mod_service = 0.10},
 	},
 	
 	

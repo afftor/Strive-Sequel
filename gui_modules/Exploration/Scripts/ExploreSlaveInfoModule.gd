@@ -11,7 +11,7 @@ var mastery_required = {
 	penetration = [["missionary", "missionaryanal"], ["doggy", "doggyanal"], ["lotus", "lotusanal"], ["revlotus", "revlotusanal"], ["ontop", "ontopanal"]],
 	pussy = [["missionary"], ["doggy"], ["lotus"], ["revlotus"], ["ontop"]],
 	anal = [["missionaryanal"], ["doggyanal"], ["lotusanal"], ["revlotusanal"], ["ontopanal"]],
-	petting = [["caress"], ["fingering", "assfingering"], ["fondletits"], ["footjob"], ["titjob"], ["handjob"], ["massagefoot"], ["fisting", "analfisting"]],
+	petting = [["fondletits", "titjob"], ["handjob", "fingering", "assfingering"], ["footjob", "massagefoot"], ["fisting", "analfisting"]],
 	oral = [["rimjob"], ["cunnilingus", "blowjob"], ["kiss"], ["sucknipples"]],
 	tail = [["tailjob"], ["inserttailv"], ["inserttaila"]],
 }
@@ -199,8 +199,8 @@ func rebuild_traits():
 		var trait = Traitdata.sex_traits[i]
 		var newnode = input_handler.DuplicateContainerTemplate($ScrollContainer/traits)
 		if traits[i] == true:#trait is known
-			newnode.text = trait.name
-			var traittext = current_person.translate(trait.descript)
+			newnode.text = tr(trait.name)
+			var traittext = current_person.translate(tr(trait.descript))
 			for j in trait.reqs:
 				if j.has('code') && j.code == 'action_type':
 					traittext += "\n\n" + tr("DISLIKED_ACTIONS_LABEL") + ":[color=aqua] "

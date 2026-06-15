@@ -426,7 +426,7 @@ func _input(event):
 	if hard_tutorial_active:
 		var pass_event = false
 		if !hard_tutorial.active_btns.empty():
-			if event.is_action_pressed("ESC") and !hard_tutorial.is_in_menu():
+			if event.is_action_pressed("ESC") and hard_tutorial.can_open_menu():
 				hard_tutorial.tutorial_menu()
 			pass_event = event is InputEventMouseMotion
 			if event.is_action_released("RMB"):
@@ -559,7 +559,9 @@ func _input(event):
 						gui_controller.clock.hotkey_pressed(int(num))
 
 	if mass_select_client != null:
-		if mass_select_client.get_ref() == null or !mass_select_client.get_ref().is_visible_in_tree():
+		if (mass_select_client.get_ref() == null
+				or !mass_select_client.get_ref().is_visible_in_tree()
+				or (hard_tutorial_active and hard_tutorial.is_mass_select_banned())):
 			stop_mass_select()
 		elif event is InputEventMouseButton:
 			if event.is_action_pressed("LMB"):
@@ -700,6 +702,9 @@ func SetMusicRandom(category):
 	SetMusic(track)
 
 func SetMusic(name, store = false, delay = 0):
+	if name == "stop":
+		StopMusic()
+		return
 	if !audio.music.has(name):
 		print("can't find track: " + name)
 		return
@@ -744,6 +749,10 @@ func PlaySound(name, delay = 0):
 	yield(get_tree().create_timer(delay), 'timeout')
 	var soundnode = get_spec_node(self.NODE_SOUND) #GetSoundNode()
 	soundnode.stream = audio.sounds[name]
+	soundnode.pitch_scale = 1.0
+	if audio.random_pitch_sounds.has(name):
+		var pitch_randomness = audio.random_pitch_sounds[name]
+		soundnode.pitch_scale = rand_range(1.0 - pitch_randomness, 1.0 + pitch_randomness)
 	soundnode.seek(0)
 	soundnode.play(0)
 	yield(soundnode, 'finished')
@@ -940,7 +949,7 @@ func open_shell(string):
 		'Discord':
 			path = "https://discord.gg/VXSx9Zk"
 		'Wiki':
-			path = "https://strive-conquest.fandom.com/wiki/Strive:_Conquest_Wiki"
+			path = "https://strivegames.miraheze.org/wiki/Main_Page"
 		'Subscribestar':
 			path = "https://subscribestar.adult/maverik"
 		'X':
@@ -1989,9 +1998,13 @@ func activate_hard_tutorial():
 		return
 	hard_tutorial_active = true
 	hard_tutorial = ResourceScripts.scriptdict.hard_tutorial.new()
+	hard_tutorial.remembered_soft_tutorial_state = ResourceScripts.game_progress.show_tutorial
+	ResourceScripts.game_progress.show_tutorial = false
 
 func deactivate_hard_tutorial():
 	hard_tutorial_active = false
+	if hard_tutorial != null:
+		ResourceScripts.game_progress.show_tutorial = hard_tutorial.remembered_soft_tutorial_state
 	hard_tutorial = null
 
 func register_btn_source(btn_name, source, get_btn_func, rect_obj = null, rect_func = null, conf_signal = null):

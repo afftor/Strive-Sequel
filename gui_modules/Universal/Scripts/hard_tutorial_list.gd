@@ -21,7 +21,7 @@ func _ready():
 	menu_abort.connect("pressed", self, "on_abort")
 	ask_yes_btn.connect("pressed", self, "ask_confirm")
 	ask_no_btn.connect("pressed", $ask_panel, "hide")
-	menu_back.connect("pressed", self, "hide_menu")
+	menu_back.connect("pressed", self, "go_back")
 
 func show():
 	if input_handler.hard_tutorial == null:#in menu
@@ -84,9 +84,12 @@ func on_abort():
 func abort_tutorial():
 	input_handler.hard_tutorial.abort_tutorial()
 
-func hide_menu():
+func go_back():
+	hide_menu(true)
+
+func hide_menu(got_back = false):
 	if input_handler.hard_tutorial != null:
-		input_handler.hard_tutorial.on_tutorial_menu_hide()
+		input_handler.hard_tutorial.on_tutorial_menu_hide(got_back)
 	else:
 		queue_free()
 	hide()

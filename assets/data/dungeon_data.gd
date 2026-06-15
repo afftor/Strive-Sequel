@@ -2808,7 +2808,7 @@ var dungeons = {
 		affiliation = 'local', 
 		events = [],
 		tags = ['quest'],
-		area = 'mountains',
+		area = 'plains',
 		travel_time = [1,1],
 		scripteventdata = []
 	},
@@ -2844,7 +2844,7 @@ var dungeons = {
 		classname = '',
 		descript = "ACT4_QUEST_CATACOMB_DESC",
 		difficulty = 'easy',
-		background = 'fort_1',
+		background = 'fort1',
 		custom_background = 'combat_cave',
 		enemyarray = [],
 		eventarray = [],

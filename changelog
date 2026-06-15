@@ -1,10 +1,34 @@
+Added handling for act 2 transition in case when you refuse Zephyra at the end of act 1 and prevented church being blocked by it
+Renamed multiple key locations and areas to have less abstract names
+Fixed sexuals_bonus mod still existing on some items and effects
+0.14.3b
+Sex minigame:
+	Added 5 new minigame spells
+	Added new mechanic - connection points which can be used to improve training chances
+	Improved various aspects of it, added more ways to increase character skills, more descriptions and so on
+	Aphrodisiac will now also invoke hypersensitive trait behavior
+Added a save repair for old saves that missed Rouge's initial Act 4 event
+Restricted normal character creation to a dedicated player starting race list
+Added New Game+ Cosmopolitan bonus to unlock all character creation races
+Merged Literate New Game+ bonus into Scribe
+Revenge damage from Berserk class nerfed 
+Wind Whispers is a tier 2 spell now
+Updated Daisy's event with some additional illustrations for Ramont
+Updated some of the boss fights
+Fixed act 4 event storing multiple times
+Fixed a few issues related to Anastasia's quest
+Fixed pussy sex skill being shown for males by default
+Fixed multiple issues with quests not working as intended
 0.14.3a
+Caster class requirement now also takes Priest as alternative to apprentice/scholar 
 Slightly nerfed dragon knight class, some of its bonuses moved to dragonkin race
+Presumably fixed blurriness for windows size scaling/higher resolution monitors
 Fixed some cases when autotarget skills could result in combat bugs
 Fixed double stone weapons having weird element
 Fixed Empyrian passive causing burn on friendly targets
 Fixed some location tasks causing errors
-Fixed aire recruiting option being visible after she was already recruited	
+Fixed aire recruiting option being visible after she was already recruited
+Fixed a bug preventing charcters with factors 6 from being generated
 0.14.3
 Fully reworked sex skills related mechanics and some of the scene and text.
 Added continuation of act 4 storyline focused on Erdyna's path.

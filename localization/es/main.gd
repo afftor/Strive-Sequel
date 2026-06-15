@@ -370,6 +370,7 @@ pero conservarás todos tus personajes, objetos e inventario. Usa este modo para
 	REQCONFLICTCLASS = "Clase en conflicto",
 	REQHASANYCLASS = "¿Tiene alguna de las clases?",
 	REQRACE = "Raza",
+	REQCONFLICTRACE = """Conflicting Race""", # MISSING TRANSLATION
 	REQRACEISBEAST = "Solo para razas bestiales",
 	REQMUSTHAVEGEAR = "Debe tener",
 	REQMUSTHAVEGEAR_FALSE = """Must not have""", # MISSING TRANSLATION
@@ -1041,6 +1042,8 @@ Reducido por la evasión del enemigo""",
 	TOOLTIPEVASION = "Reduce la probabilidad de golpear al enemigo en este valor",
 	TOOLTIPSPEED = "Mejora tus posibilidades de actuar antes que otros personajes.",
 	TOOLTIPRESISTS = "Reduce el daño elemental mediante resistencia relativa.",
+	TOOLTIPAROUSAL = """Sensitivity: [name] will be able to experience orgasm once Sensitivity is filled. Sensitivity gain is heavily reduced when character performance a reluctant action AND is not [color=aqua]Aroused[/color].""", # MISSING TRANSLATION
+	TOOLTIPHORNY = """Arousal: Will allow refusing characters to earn Sensitivity even from actions they are reluctant to perform. Improves from caress actions or some times.""", # MISSING TRANSLATION
 	TOOLTIPSTAMINA = "La Tolerancia se agota al realizar acciones con las que el personaje no está de acuerdo. Al agotarlas por completo, dichas acciones reducirán la Obediencia. Además, al agotarlas por completo, el personaje no podrá mejorar su Consentimiento. La Tolerancia se repone con Orgasmos, pero esto se ve afectado por rendimientos decrecientes.",
 	TOOLTIPSTAMINADUNGEON = "La resistencia de exploración se agota cada vez que realizas una acción de exploración. Tu grupo generará cierta cantidad en cada turno.",
 	TOOLTIP_SHOW_HIDE_RESOURCES = """Show/hide local resources""", # MISSING TRANSLATION
@@ -2236,6 +2239,20 @@ Servicio es un modificador global para esta asignación.""",
 	STATSEX_SKILLS_ORAL = "Habilidad para el sexo oral",
 	STATSEX_SKILLS_ANAL = "Habilidad para el sexo anal",
 	STATSEX_SKILLS_TAIL = "Habilidad sexual con la cola",
+	STATSEX_STAMINA = """Sex Stamina""", # MISSING TRANSLATION
+	STATSEX_STAMINADESCRIPT = """Increases number of turns during sexual encounters by this value. Improved from performing sexual activities in Sex Encounter minigame. Maximum: 10. """, # MISSING TRANSLATION
+	STATSEX_TRAINING_PETTING = """Petting Training""", # MISSING TRANSLATION
+	STATSEX_TRAINING_PETTINGDESCRIPT = """Training progress for petting actions.""", # MISSING TRANSLATION
+	STATSEX_TRAINING_PENETRATION = """Penetration Training""", # MISSING TRANSLATION
+	STATSEX_TRAINING_PENETRATIONDESCRIPT = """Training progress for penetrative actions.""", # MISSING TRANSLATION
+	STATSEX_TRAINING_PUSSY = """Vaginal Training""", # MISSING TRANSLATION
+	STATSEX_TRAINING_PUSSYDESCRIPT = """Training progress for vaginal actions.""", # MISSING TRANSLATION
+	STATSEX_TRAINING_ORAL = """Oral Training""", # MISSING TRANSLATION
+	STATSEX_TRAINING_ORALDESCRIPT = """Training progress for oral actions.""", # MISSING TRANSLATION
+	STATSEX_TRAINING_ANAL = """Anal Training""", # MISSING TRANSLATION
+	STATSEX_TRAINING_ANALDESCRIPT = """Training progress for anal actions.""", # MISSING TRANSLATION
+	STATSEX_TRAINING_TAIL = """Tail Training""", # MISSING TRANSLATION
+	STATSEX_TRAINING_TAILDESCRIPT = """Training progress for tail actions.""", # MISSING TRANSLATION
 	STATSEXEXP_PARTNERS = "",
 	STATSEXEXP_WATCHERS = "",
 	STATSEXEXP_ACTIONS = "",
@@ -2533,6 +2550,8 @@ Daño +15%, Salud +20.""",
 	STATENCHCAP = "Capacidad de encantamiento",
 	STATQUALITY = "Calidad",
 	STATPRICE = "Valor",
+	STATCOUNTERATTACKS = """Counterattacks remained""", # MISSING TRANSLATION
+	STATCOUNTERATTACKS_MAX = """Counterattacks per turn""", # MISSING TRANSLATION
 	STATCHG_STRENGTH = "Cargas de fuerza",
 	STATCHG_STRENGTH_MAX = "Fuerza Máxima. Cargas",
 	STATCHG_PERSUASION = "Cargos de persuasión",
@@ -4478,6 +4497,11 @@ Las acciones positivas, sociales, físicas y de humillación proporcionan más l
 	SEXTRAITDESIRED = "Deseado",
 	SEXTRAITCURIOUS = "Curioso",
 	SEXTRAITLIFE_POWER = "Poder vital",
+	TRAITCALMING_TOUCH = """Calming Touch""", # MISSING TRANSLATION
+	TRAITEMPATHIC_INSIGHT = """Empathic Insight""", # MISSING TRANSLATION
+	TRAITREFRESHING_PULSE = """Refreshing Pulse""", # MISSING TRANSLATION
+	TRAITTEASING_WINDS = """Teasing Winds""", # MISSING TRANSLATION
+	TRAITDARK_RAPTURE = """Dark Rapture""", # MISSING TRANSLATION
 	SEXSKILLSDESCRIPT = """Las habilidades sexuales mejoran el rendimiento del personaje al interactuar y afectan la estadística de Sexualidad. Una habilidad sexual más alta hará que la pareja se sienta más excitada por las acciones del personaje.
 
 Las habilidades sexuales aumentan al realizar acciones relacionadas y su crecimiento depende del Factor Sexual.""",
@@ -4540,6 +4564,21 @@ Las habilidades sexuales aumentan al realizar acciones relacionadas y su crecimi
 	SEXTRAITDESIREDDESCRIPT = "[name] es extremadamente atractivo, lo que excita aún más a [sus] parejas. La excitación de las parejas aumenta un 25%.",
 	SEXTRAITCURIOUSDESCRIPT = "Aunque [name] está interesado en el sexo, en realidad está aprendiendo más que eso. Los encuentros sexuales otorgan un 25% más de experiencia.",
 	SEXTRAITLIFE_POWERDESCRIPT = "El sexo es refrescante para [name]. Recupera 10 de salud por orgasmo después de la interacción sexual.",
+	TRAITCALMING_TOUCHDESCRIPT = """Sex Interaction Spell: Calming Touch
+
+Reduces target's accumulated stress over non-consensual actions. 3 mana. Can only be cast once.""", # MISSING TRANSLATION
+	TRAITEMPATHIC_INSIGHTDESCRIPT = """Sex Interaction Spell: Empathic Insight
+
+Look inside everyone's hearts to Gain 3 Connection points. 6 Mana. Can only be cast once.""", # MISSING TRANSLATION
+	TRAITREFRESHING_PULSEDESCRIPT = """Sex Interaction Spell: Refreshing Pulse
+
+Restore 2 turns for all participants. 8 Mana, can only be cast once.""", # MISSING TRANSLATION
+	TRAITTEASING_WINDSDESCRIPT = """Sex Interaction Spell: Teasing Winds
+
+Greatly improves hornyness and arousal without making target orgasm. 5 Mana.""", # MISSING TRANSLATION
+	TRAITDARK_RAPTUREDESCRIPT = """Sex Interaction Spell: Dark Rapture
+
+Forces target to orgasm against their will with slight impact over consent. 7 Mana.""", # MISSING TRANSLATION
 	DIALOGUEESCAPETEXT = "[name] se ha escapado de tu custodia. Quizás deberías haberte centrado más en su lealtad o comportamiento.",
 	DIALOGUEESCAPECLOSE = "Esto es lamentable",
 	LOSE_MESSAGE = "Desafortunadamente, parece que tu reinado ha terminado.",
@@ -5770,6 +5809,7 @@ La mujer desaparece tan rápido como apareció ante ti, dejándote frente a la m
 	ENEMYOGRE_MAGE = "Mago ogro",
 	ENEMYGRYPHON = "Grifo",
 	ENEMYELDER_GRYPHON_BOSS = "Grifo anciano",
+	ENEMYTORNADO = """Tornado""", # MISSING TRANSLATION
 	ENEMYWOLF = "Lobo",
 	ENEMYRAT = "Rata",
 	ENEMYSPIDER_WEAK = "Tractor",
@@ -5812,11 +5852,19 @@ La mujer desaparece tan rápido como apareció ante ti, dejándote frente a la m
 	ENEMYLILITH_BOSS_2 = """Ashmedai""", # MISSING TRANSLATION
 	ENEMYWHITE_STAG = "Ciervo blanco",
 	ENEMYWHITE_STAG_HUMAN = "Persona misteriosa",
+	ENEMYSMOTHERING_KUDZU = """Smothering Kudzu""", # MISSING TRANSLATION
+	ENEMYTHE_STRIDE = """The Stride""", # MISSING TRANSLATION
+	ENEMYTHE_SHELL = """The Shell""", # MISSING TRANSLATION
+	ENEMYTHE_TALON = """The Talon""", # MISSING TRANSLATION
 	ENEMYELF_SPECTER = "Espectro elfo",
 	ENEMYELF_SOLDIER = "Soldado elfo",
 	ENEMYDWARF_FIGHTER = "Luchador enano",
 	ENEMYDWARF_FIGHTER_ELITE = "Soldado enano de élite",
 	ENEMYDWARF_RANGED = "Ballestero enano",
+	ENEMYDWARF_KING = """Dwarf King""", # MISSING TRANSLATION
+	ENEMYDWARVEN_SKIRMISHER = """Dwarf Skirmisher""", # MISSING TRANSLATION
+	ENEMYDWARVEN_SHIELDER = """Dwarf Shielder""", # MISSING TRANSLATION
+	ENEMYOBSIDIAN_GOLEM = """Obsidian Golem""", # MISSING TRANSLATION
 	ENEMYKURO = "Kuro",
 	ENEMYERDYNA = """Erdyna""", # MISSING TRANSLATION
 	ENEMYNIXX = """Nixx""", # MISSING TRANSLATION
@@ -9430,6 +9478,8 @@ Empujas a Anastasia al suelo y ella abre bien las piernas para ti. La montas y e
 	ITEMXARI_AMULETDESCRIPT = "Obra personal de Xari que te obsequiamos por tu ayuda. Brilla con el poder imbuido por su creador.",
 	ITEMAMELIA_DRESS = "Vestido de sirvienta Amelia",
 	ITEMAMELIA_DRESSDESCRIPT = "Antiguo vestido perteneciente a uno de los líderes de los Siervos. Su excepcional trabajo artesanal no muestra ningún signo de desgaste.",	
+	ITEMNIXX_HEADGEAR = """Void Cape""", # MISSING TRANSLATION
+	ITEMNIXX_HEADGEARDESCRIPT = """An ethereal cape greatly improving waerer's magic resistance by redirecting the hostile magic into the other dimension.""", # MISSING TRANSLATION
 	ITEMAMENIXX_HEADGEAR = """Void Cape""", # MISSING TRANSLATION
 	ITEMAMENIXX_HEADGEARDESCRIPT = """An ethereal cape greatly improving waerer's magic resistance by redirecting the hostile magic into the other dimension.""", # MISSING TRANSLATION
 	SCENEWIP = "Lo sentimos, esta escena está en proceso. ",
@@ -10563,6 +10613,13 @@ Zephyra: — ¿Sabes qué es un artefacto? Es un objeto recibido de una deidad, 
 Zephyra: — Si me lo dices, no te molestaré más.}""",
 	ZEPHYRA_RECRUITMENT_3_3_OPTION_1 = "Sí, quiero que me dejes en paz.",
 	ZEPHYRA_RECRUITMENT_3_3_OPTION_2 = "He cambiado de opinión.",
+	ZEPHYRA_RECRUITMENT_NOTE = """Zephyra leaves without another word. Only after she is gone do you notice a folded note left where she had been standing, as if she expected this outcome and prepared for it.
+
+The note is brief, but unusually direct for her. It warns that divine Artifacts can hold dangerous power even when they seem dormant, and that the sword once tied to the royal line was only one of them. If such relics are connected to the gods, then leaving them scattered for enemies to claim may be a mistake.
+
+One line mentions that the next closest lead points toward the elven lands.
+
+You are not sure how much of Zephyra's warning you trust. Still, powerful relics rarely stay irrelevant for long. It may be worth looking into them before someone worse does.""", # MISSING TRANSLATION
 	ZEPHYRA_RECRUITMENT_3_OPTION_1 = "Podría haber un problema con esto...",
 	ZEPHYRA_RECRUITMENT_3_OPTION_2 = "Esta espada ya no está en nuestra posesión.",
 	ZEPHYRA_RECRUITMENT_4 = """Le explicas a Zephyra lo que ha sucedido durante los primeros días de la guerra civil.
@@ -11961,6 +12018,9 @@ Notas cómo Cali baja ligeramente la voz, sus manos se deslizan detrás de su es
 	CALI_SEX_5_1 = """Cali te hace un pequeño puchero pero se abstiene de protestar.
 
 — Ya veo, bueno, en otra ocasión.""",
+	CALI_SEX_5_2 = """Cali gives a quiet nod, the excitement gone from her face. She seems to understand this time that the answer won't change.
+
+{color=yellow|— ...I see. I'm sorry for bothering you, [Master]. I won't bring it up again.}""", # MISSING TRANSLATION
 	CALI_SEX_6 = """Le entregas el dinero a Cali y, después de unos momentos, ella regresa con una bandeja de albóndigas. El olor es exactamente el que mencionó. Se las pasa a los otros sirvientes y pronto se sienta a tu lado después de entregarte una también.
 
 Los dos comen en silencio mientras reflexionan sobre la delicia. Cálida, suave y expertamente cocinada, reflexionas por unos momentos sobre salir y ver si tú y el comerciante pueden llegar a un acuerdo sobre las entregas de estas delicias.""",
@@ -16777,6 +16837,14 @@ Al escuchar la inocente propuesta de Zephyra, Kuro sonríe con frialdad.
 Kuro: — Esa es una razón más fuerte para que me ocupe de él aquí mismo.
 
 Zephyra: — ... Cierto, no lo pensé. Lo siento, [name], supongo que tendremos que darle una lección a Kuro.""",
+	KURO_BOSSFIGHT_BANTER_1 = """
+Zephyra: Let's not be hasty now, sis~
+""", # MISSING TRANSLATION
+	KURO_BOSSFIGHT_BANTER_2 = """
+Kuro loses Fading Light due to Zephyra's prank!
+""", # MISSING TRANSLATION
+	KURO_BOSSFIGHT_BANTER_3 = """
+Kuro: Stop. That.""", # MISSING TRANSLATION
 	COALBASE_ATTACK_AFTER_FIGHT = """Mientras el último soldado enano es noqueado, Kuro sigue de pie, aunque visiblemente exhausto.
 
 Kuro: — Ja-ah... Eres tan molesto. Bien, has ganado esta batalla, yo no soy apto para este tipo de pelea...
@@ -17079,6 +17147,15 @@ Mientras se da la vuelta, de repente, numerosos cultistas irrumpen en la habitac
 Sin embargo, Kuro no se ve obstaculizado por esto. Un destello azul cegador estalla desde la máquina dejando a todos aturdidos mientras Kuro se protege con sus poderes. Rápidamente recupera las escamas ahora restauradas de la máquina y se dirige a la salida.
 
 El Rey: — Ustedes dos... ¡Traidores! ¡Guardias! ¡Maten a todos!""",
+	DWARF_CEREMONY_PEAK_COAL_BOSS = """The charging of scales reaches its peak as the ring you've gotten from Bolthar starts vibrating. At the crucial moment, coalition forces flood the room through the amplified portal technique, blades drawn and banners raised against the throne.
+
+The blue flash erupts before anyone can seize the machine. Kuro shields herself with her powers, snatches the restored scales from the sliding section, and slips toward the exit while the hall reels around her.
+
+{color=yellow|The King: — You... You brought them into my own hall? After everything I offered you?}
+
+The King shoves past his guards, the restored machine still crackling behind him. Rage burns through his voice as the old royal authority settles over the room like a hammer about to fall.
+
+{color=yellow|The King: — Then let every traitor see the price of raising a hand against dwarven royalty. I will break this coalition myself!}""", # MISSING TRANSLATION
 	DWARF_CEREMONY_OPT_CHASE = "[Dexterity challenge] Persigue a Kuro",
 	DWARF_CEREMONY_OPT_FIGHT = "Luchar",
 	DWARF_CEREMONY_REPLY_CHASE = """{color=green|Éxito}
@@ -19721,6 +19798,8 @@ Tecla de acceso rápido: 3""",
 	REQUIREMENTS_TOOLTIP = "Requisitos",
 	LOCKED_LABEL = "Bloqueado",
 	CUR_LEVEL_LABEL = "Nivel actual",
+	MASTERY_HINT_NOVICE = """Improves during sex encounters by responding correctly to encouragement.""", # MISSING TRANSLATION
+	MASTERY_HINT_SKILLED = """Reach mastery by bringing a partner to orgasm with each of the following actions:""", # MISSING TRANSLATION
 	MAX_WORKERS_LABEL = "Trabajadores maximos",
 	CURRENT_WORKERS_LABEL = "Trabajadores actuales",
 	SELECT_WORKERS_LABEL = """Select Workers""", # MISSING TRANSLATION

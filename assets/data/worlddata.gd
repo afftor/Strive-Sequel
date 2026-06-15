@@ -769,7 +769,6 @@ var fixed_location_options = { #override serialized data
 			reqs = [
 				{type = 'decision', value = 'ginny_visit', check = true}, 
 				{type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHFIRSTCOME'},
-				{type = 'active_quest_stage', value = 'pre_sword_artifact_quest', stage = 'stage1', state = false},
 				{type = 'active_quest_stage', value = 'jean_ruins_quest', stage = 'stage1', state = false},
 				{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage13', state = false},
 			], 
@@ -793,7 +792,6 @@ var fixed_location_options = { #override serialized data
 			text = tr("ALIRON6"), 
 			reqs = [
 				{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHFIRSTCOME'},
-				{type = 'active_quest_stage', value = 'pre_sword_artifact_quest', stage = 'stage1', state = false},
 				{type = 'active_quest_stage', value = 'jean_ruins_quest', stage = 'stage1', state = false},
 				{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage13', state = false},
 			], 

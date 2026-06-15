@@ -38,7 +38,8 @@ var data = {
 	lilia_finale_2 = {
 		image = null,
 		tags = [
-			"dialogue_scene"
+			"dialogue_scene",
+			"master_translate"
 		],
 		reqs = [
 
@@ -80,7 +81,8 @@ var data = {
 	lilia_finale_3 = {
 		image = null,
 		tags = [
-			"dialogue_scene"
+			"dialogue_scene",
+			"master_translate"
 		],
 		reqs = [
 
@@ -1784,7 +1786,7 @@ var data = {
 			},
 			{
 				code = "quest_fight",
-				text = "DIALOGUEFIGHT",
+				text = "DIALOGUEFIGHTOPTION",
 				reqs = [
 					{
 						type = "master_check",

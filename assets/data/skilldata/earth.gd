@@ -21,7 +21,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'earth',#not sure but not matters
 		sfx = [{code = 'earth_shield', target = 'target', period = 'predamage'}],
-		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
 		value = [['caster.matk']],
 		damagestat = ['no_stat'],
 		variations = [
@@ -148,7 +148,9 @@ var skills = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'earth',
-		sfx = [{code = 'earthquake', target = 'target_group', period = 'windup'}], 
+		sfx = [
+			{code = 'shake_target', target = 'target_group', period = 'windup', alt_slot = 'SFX_BG'},
+			{code = 'earthquake', target = 'target_group', period = 'windup'}],
 		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
 		value = 0.4,
 		follow_up = 'eq_setup',
@@ -281,7 +283,7 @@ var effects = {
 		tick_event = variables.TR_TURN_S,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 5,
-		tags = ['buff', 'shield'],
+		tags = ['buff', 'shield','earthshield'],
 		args = {value = {obj = 'skill', func = 'get', arg = 'process_value'}},
 		statchanges = {armor = [['arg', 'value'], '*', 0.5],},
 		buffs = [
@@ -298,7 +300,7 @@ var effects = {
 		tick_event = variables.TR_TURN_S,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 5,
-		tags = ['buff', 'shield'],
+		tags = ['buff', 'shield','earthshield'],
 		args = {value = {obj = 'skill', func = 'get', arg = 'process_value'}},
 		statchanges = {
 			armor = [['arg', 'value'], '*', 0.5],

@@ -1973,7 +1973,7 @@ var data = {
 		]
 	},
 	training_complete_serve_1 = {
-		music = "daisy_intimate",
+		music = "intimate",
 		image = null,
 		tags = [
 			"dialogue_scene",
@@ -3748,6 +3748,7 @@ var data = {
 		reqs = [
 
 		],
+		character = "ramont",
 		text = [
 			{
 				text = "DAISY_LOST_APPROACH_REPLY_0_2",
@@ -3794,6 +3795,7 @@ var data = {
 		reqs = [
 
 		],
+		character = "ramont",
 		text = [
 			{
 				text = "DAISY_LOST_APPROACH_REPLY_1",
@@ -3822,6 +3824,7 @@ var data = {
 		reqs = [
 
 		],
+		character = "ramont",
 		text = [
 			{
 				text = "DAISY_LOST_APPROACH_REPLY_2",
@@ -3868,6 +3871,7 @@ var data = {
 		reqs = [
 
 		],
+		character = "ramont",
 		text = [
 			{
 				text = "DAISY_LOST_APPROACH_REPLY_FIGHT_1",
@@ -4126,6 +4130,7 @@ var data = {
 
 		],
 		character = "daisy_maid",
+		character2 = "ramont",
 		text = [
 			{
 				text = "DAISY_LOST_APPROACH_REPLY_3_2",
@@ -4226,6 +4231,7 @@ var data = {
 		reqs = [
 
 		],
+		character = "ramont",
 		text = [
 			{
 				text = "DAISY_LOST_APPROACH_REPLY_3_3_1",
@@ -4315,7 +4321,7 @@ var data = {
 		reqs = [
 
 		],
-		unique_character = "daisy",
+		character = "$daisy",
 		text = [
 			{
 				text = "DAISY_CONSENSUAL_1",
@@ -4346,7 +4352,7 @@ var data = {
 		reqs = [
 
 		],
-		unique_character = "daisy",
+		character = "$daisy",
 		text = [
 			{
 				text = "DAISY_CONSENSUAL_2",

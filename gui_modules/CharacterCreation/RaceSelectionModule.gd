@@ -16,7 +16,7 @@ func select_race():
 	var person = get_parent().person
 	selected_race = person.get_stat("race")
 	input_handler.ClearContainer($RaceSelection/ScrollContainer/VBoxContainer)
-	for id in races.racelist:
+	for id in get_parent().get_available_races():
 		var i = races.racelist[id]
 		var newbutton = input_handler.DuplicateContainerTemplate($RaceSelection/ScrollContainer/VBoxContainer)
 		if person.get_stat('race') == i.code: newbutton.pressed = true
