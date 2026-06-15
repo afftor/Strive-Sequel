@@ -26610,7 +26610,7 @@ Seeing that you silently wait, she hesitantly continues.
 """,
 	LIRA_QUEST_1_WATCH_REASON_FOLLOWUP_3 = """{color=yellow|Lira: — Can you please tell me what you expect from me? Who am I supposed to be?}
 
-{color=redConsidering that she's here all alone and you're the only person she truly knows outside the elf kingdom, your answer will clearly carry significant weight in how she begins to see her future.}""",
+{color=red|Considering that she's here all alone and you're the only person she truly knows outside the elf kingdom, your answer will clearly carry significant weight in how she begins to see her future.}""",
 	LIRA_QUEST_1_OPTION_SERVE_AS_YOU_SERVED_FREYA = "You should serve me just as devotedly as you served Freya. That's the whole point of being a slave, isn't it?",
 	LIRA_QUEST_1_OPTION_WHAT_WOULD_YOU_WANT = "While formally you're my slave, I don't place strict restrictions. So I ask you what would you want?",
 	LIRA_QUEST_1_EXPECTATIONS_ANSWER_1 = """Lira takes a couple of moments to think silently, then nods.
@@ -26639,21 +26639,21 @@ Seeing that you silently wait, she hesitantly continues.
 Not long after entering the deeper woods, an elven patrol steps out from between the trees. They recognize you quickly enough and offer a polite nod, but when their eyes fall on Lira, the mood shifts immediately.
 
 One of the elves frowns.""",
-	LIRA_QUEST_1_PATROL_CONFRONTATION = """{color=yellow|Elf Patrol Leader: — What is a rebel priestess doing here? The terms of your exile were made clear! Or do you have a death wish?}
+	LIRA_QUEST_1_PATROL_CONFRONTATION = """{color=red|Elf Patrol Leader: — What is a rebel priestess doing here? The terms of your exile were made clear! Or do you have a death wish?}
 
 Lira lowers her gaze.""",
 	LIRA_QUEST_1_OPTION_EXILED_MEANS = "\"Exiled\" means she can no longer live among you. It doesn't mean she cannot pass through the forest as a traveler. We're only here briefly.",
 	LIRA_QUEST_1_OPTION_SHE_IS_NOT_A_PRIESTESS = "She is not a priestess anymore. She's my slave, my personal property. There's no rules forbidding me from bringing my belongings into the forest.",
 	LIRA_QUEST_1_PATROL_DEPENDENCY = """After a tense moment, the patrol leader nods and takes his hand from the hilt of his sword. The rest of the elves also step aside, casting disdainful glances at Lira.
 
-{color=yellow|Elf Patrol Leader: — So be it. Guess being a human plaything is already punishment enough for this rebel scum. You can go now.}
+{color=red|Elf Patrol Leader: — So be it. Guess being a human plaything is already punishment enough for this rebel scum. You can go now.}
 
 Once you're out of earshot, Lira exhales quietly. She glances back toward the trees where the patrol disappeared.
 
 {color=yellow|Lira: — The way they looked at me... it was terrifying. It's nice that I now have someone who can protect me like that...}""",
 	LIRA_QUEST_1_PATROL_FREEDOM = """The patrol leader squints at you for a couple of intense moments, then snorts and turns away. The rest of the elves also step aside, casting disdainful glances at Lira.
 
-{color=yellow|Elf Patrol Leader: — Since Freya's Priestess tolerates you, I won't argue. Just make sure this "traveler" leaves the forest as soon as possible. You can go now.}
+{color=red|Elf Patrol Leader: — Since Freya's Priestess tolerates you, I won't argue. Just make sure this "traveler" leaves the forest as soon as possible. You can go now.}
 
 Once you're out of earshot, Lira exhales quietly. She glances back toward the trees where the patrol disappeared.
 
@@ -27377,8 +27377,8 @@ You nod to the trader and step away from his wares, beginning to walk towards th
 She looks down at her hands.
 
 {color=yellow|Lira: — Yet I feel sad knowing others aren't as lucky. Do you think I'm wrong for thinking like this?}""",
-	LIRA_QUEST3_TRADER_OPTION_6 = "You aren't wrong, it's not fair but we could be worse without it. (+1F)",
-	LIRA_QUEST3_TRADER_OPTION_7 = "That's just how the world works. The strong rise, the weak are used (+1D)",
+	LIRA_QUEST3_TRADER_OPTION_6 = "You aren't wrong, it's not fair but we could be worse without it.",
+	LIRA_QUEST3_TRADER_OPTION_7 = "That's just how the world works. The strong rise, the weak are used",
 	LIRA_QUEST3_TRADER_11 = """{color=yellow|Lira: — I guess you are right. Now that I think about it, back in the forests elves didn't really hold any slaves, but because of that many have simply been exiled or killed... Still though, I hope one day things can get better.}""",
 	LIRA_QUEST3_TRADER_12 = """{color=yellow|Lira: — I suppose you are right, [master]. I should thank you for taking good care of me.}""",
 	LIRA_QUEST3_TRADER_13 = """In the end, Lira has no choice but to accept your answer and move on to more pressing matters.

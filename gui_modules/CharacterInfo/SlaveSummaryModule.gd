@@ -375,7 +375,8 @@ var unique_dict = { #shows available talk characters. Scenes go in order from hi
 		scenes = [
 			{code = 'lira_quest_1_talk_to_lira', reqs = [{type = 'active_quest_stage', value = 'lira_quest_1', stage = 'start'}]},
 			{code = 'lira_quest2_find_lira_front_garden_tends', reqs = [{type = 'active_quest_stage', value = 'lira_quest_2', stage = 'start'}]},
-			{code = 'lira_quest_3_intro', reqs = [{type = 'active_quest_stage', value = 'lira_quest_3', stage = 'start'}]},
+			{code = 'lira_quest3_start_1', reqs = [{type = 'active_quest_stage', value = 'lira_quest_3', stage = 'start'}]},
+			{code = 'lira_quest3_report_lira_1', reqs = [{type = 'active_quest_stage', value = 'lira_quest_3', stage = 'report_lira'}]},
 			{code = 'lira_dialogue_start', reqs = []},
 		]
 	},

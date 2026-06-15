@@ -3,7 +3,7 @@ var data = {
 	lira_quest2_day_usual_step_outside_mansion = {
 		image = null,
 		tags = ['dialogue_scene'],
-		reqs = [],
+		reqs = [{type = "decision", value = "canVisitFair", check = true}],
 		text = "LIRA_QUEST2_DAY_USUAL_STEP_OUTSIDE_MANSION",
 		options = [
 			{
@@ -63,7 +63,7 @@ var data = {
 		reqs = [],
 		text = [
 			{text = "LIRA_QUEST2_AGREE_DEP", reqs = [], previous_dialogue_option = 1},
-			{text = "LIRA_QULIRA_QUEST2_AGREE_FREE", reqs = [], previous_dialogue_option = 1},
+			{text = "LIRA_QUEST2_AGREE_FREE", reqs = [], previous_dialogue_option = 1},
 		],
 		options = [
 			{
@@ -921,7 +921,7 @@ var data = {
 				bonus_effects = [
 					{code = 'complete_quest', value = 'lira_quest_2'}, 
 #					{code = 'progress_quest', value = 'lira_quest_3', stage = 'start'}, 
-					{code = 'add_timed_event', value = "lira_quest_3_intro", args = [{type = 'add_to_date', date = [3,3], hour = 1}]},
+					{code = 'add_timed_event', value = "lira_quest3_intro_1", args = [{type = 'add_to_date', date = [1,1], hour = 1}]},
 					{code = 'update_city'}
 				]
 			},

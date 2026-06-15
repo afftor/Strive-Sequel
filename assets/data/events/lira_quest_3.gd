@@ -76,7 +76,10 @@ var data = {
 				reqs = [], 
 				dialogue_argument = 1, 
 				type = 'next_dialogue',
-				bonus_effects = [{code = 'progress_quest', value = 'lira_quest_3', stage = 'temple'}] #actually not. need replace with event planning
+				bonus_effects = [
+					{code = 'progress_quest', value = 'lira_quest_3', stage = 'temple'},
+					{code = "plan_loc_event", loc = "elf_capital", event = "lira_quest3_temple_intro_1"},
+				] 
 			}
 		],
 	},
@@ -92,7 +95,11 @@ var data = {
 				reqs = [], 
 				dialogue_argument = 1, 
 				type = 'next_dialogue',
-				bonus_effects = [{code = 'progress_quest', value = 'lira_quest_3', stage = 'temple'}]
+				bonus_effects = [
+					{code = 'decision', value = 'lira3canVisitTemple'},
+					{code = "update_city"}
+#					{code = 'progress_quest', value = 'lira_quest_3', stage = 'temple'}
+				]
 			}
 		],
 	},
@@ -100,7 +107,7 @@ var data = {
 		image = null,
 		reqs = [], tags = ["dialogue_scene"],
 		text = [
-			{text = "LIRA_QUEST3_TEMPLE_0", reqs = [], previous_dialogue_option = 0},
+			{text = "LIRA_QUEST3_TEMPLE_INTRO_2", reqs = [], previous_dialogue_option = 0},
 			{text = "LIRA_QUEST3_TEMPLE_1", reqs = [], previous_dialogue_option = 1},
 			{text = "LIRA_QUEST3_TEMPLE_2", reqs = [], previous_dialogue_option = 2},
 		],
@@ -273,6 +280,7 @@ var data = {
 				type = 'next_dialogue',
 				bonus_effects = [
 					{code = 'progress_quest', value = 'lira_quest_3', stage = 'empire'},
+					{code = "plan_loc_event", loc = "empire_capital", event = "lira_quest3_empire_1"},
 					{code = 'update_city'}
 				]
 			}
@@ -638,6 +646,7 @@ var data = {
 				type = 'next_dialogue',
 				bonus_effects = [
 					{code = 'progress_quest', value = 'lira_quest_3', stage = 'follow_leader'},
+					{code = "plan_loc_event", loc = "empire_capital", event = "lira_quest3_follow_leader_1"},
 					{code = "remove_quest_location", value = "quest_lira_bandits_den"},
 					{code = 'update_city'}
 				]
@@ -803,6 +812,7 @@ var data = {
 				dialogue_argument = 1, 
 				type = 'next_dialogue',
 				bonus_effects = [
+					{code = 'add_timed_event', value = "lira_quest3_return", args = [{type = 'add_to_date', date = [1,1], hour = 1}]},
 					{code = 'progress_quest', value = 'lira_quest_3', stage = 'return'},
 					{code = 'update_city'}
 				]
@@ -854,6 +864,7 @@ var data = {
 				dialogue_argument = 1, 
 				type = 'next_dialogue',
 				bonus_effects = [
+					{code = 'add_timed_event', value = "lira_quest3_return", args = [{type = 'add_to_date', date = [1,1], hour = 1}]},
 					{code = 'progress_quest', value = 'lira_quest_3', stage = 'return'},
 					{code = 'update_city'}
 				]
@@ -872,6 +883,7 @@ var data = {
 				dialogue_argument = 1, 
 				type = 'next_dialogue',
 				bonus_effects = [
+					{code = 'add_timed_event', value = "lira_quest3_return", args = [{type = 'add_to_date', date = [1,1], hour = 1}]},
 					{code = 'progress_quest', value = 'lira_quest_3', stage = 'return'},
 					{code = 'update_city'}
 				]
