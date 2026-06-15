@@ -27720,7 +27720,7 @@ She looks down at her hands.
 
 {color=yellow|Lira: — Then I will be waiting for your orders, [master].}""",
 	
-		LIRA_QUEST3_EMPIRE_1 = """Following the lead, you soon arrive at the Empire's capital. The city greets you with its usual indifference: crowded streets, hurried footsteps, and faces that don't linger on strangers.
+		LIRA_QUEST3_EMPIRE_1 = """Following the lead, you soon arrive at Palatine. The city greets you with its usual indifference: crowded streets, hurried footsteps, and faces that don't linger on strangers.
 Lira, who has never been here before, seems both surprised and slightly overwhelmed by the scale of it all. She sticks close to your side, her eyes darting across the endless crowds.
 {color=yellow|Lira: — [master], how do we even begin to look for that man? There are so many people here, but they don't look like they'd want to answer our questions...}""",
 	LIRA_QUEST3_EMPIRE_OPTION_1 = "There are many ways to loosen their tongues when we need to. But that can wait.",
@@ -27970,10 +27970,10 @@ Lira approaches you with a warm smile on her face and a clear determination in h
 	LIRA_QUEST3_QUEST_NAME = "Lira: Origins",
 	LIRA_QUEST3_QUEST_SUMMARY = "Lira wants to learn where she came from, and the trail leads you to her past.",
 	LIRA_QUEST3_QUEST_STAGE_START = "Talk to Lira at the mansion.",
-	LIRA_QUEST3_QUEST_STAGE_TEMPLE = "Visit the temple in the elven capital.",
+	LIRA_QUEST3_QUEST_STAGE_TEMPLE = "Visit the temple in Eldewyn.",
 	LIRA_QUEST3_QUEST_STAGE_REPORT_LIRA = "Talk to Lira",
 	LIRA_QUEST3_QUEST_STAGE_TRADER = "Question the Aliron slave trader.",
-	LIRA_QUEST3_QUEST_STAGE_EMPIRE = "Travel to the Empire Capital and look for the bandit leader.",
+	LIRA_QUEST3_QUEST_STAGE_EMPIRE = "Travel to Palatine and look for the bandit leader.",
 	LIRA_QUEST3_QUEST_STAGE_ROAD = "Visit ambush spot.",
 	LIRA_QUEST3_QUEST_STAGE_DEN = "Follow the directions to the bandits' den and rescue Lira.",
 	LIRA_QUEST3_QUEST_STAGE_CARAVAN_PREPARE = "Find the caravan master and arrange the bait caravan.",
@@ -28297,11 +28297,11 @@ You present the copied symbols and describe the doors as best as you can. Myr ta
 	ACT4_MYR_CATACOMB_REPLY_1 = "{color=aqua|Erdyna: — Hell, yeah, what do you think? Those doors must have something rich behind them, don't they? I'm sure you gonna be generous enough to spare it with me as we finish, haha.}",
 	ACT4_MYR_CATACOMB_REPLY_2 = "{color=aqua|Erdyna: — Not surprised, you are a big shot, aren't ya? Well, I'll be right behind you.}",
 	ACT4_ERDYNA_QUEST_STAGE_ARCHIVES = "Get the Empire's archive records about the underground structures beneath the capital.",
-	ACT4_ERDYNA_QUEST_STAGE_ARCHIVE_SEARCH = "Search the imperial capital for a lead on the archive records.",
-	ACT4_ERDYNA_QUEST_STAGE_ARCHIVE_DUNGEON = "Clear the thieves' hideout near the imperial capital and recover the archive records.",
+	ACT4_ERDYNA_QUEST_STAGE_ARCHIVE_SEARCH = "Search the Palatine for a lead on the archive records.",
+	ACT4_ERDYNA_QUEST_STAGE_ARCHIVE_DUNGEON = "Clear the thieves' hideout near Palatine  and recover the archive records.",
 	ACT4_ERDYNA_QUEST_STAGE_RECORDS = "Return to House Thalendir with the archive records.",
-	ACT4_ERDYNA_QUEST_STAGE_ERDYNA_RETURN = "Check on Erdyna in the imperial capital.",
-	ACT4_ERDYNA_ARCHIVE_SEARCH_TASK_NAME = "*Search the imperial capital*",
+	ACT4_ERDYNA_QUEST_STAGE_ERDYNA_RETURN = "Check on Erdyna in Palatine .",
+	ACT4_ERDYNA_ARCHIVE_SEARCH_TASK_NAME = "*Search Palatine*",
 	ACT4_ERDYNA_ARCHIVE_SEARCH_TASK_DESC = "*Send a group to look for traces of the missing archive records in the capital.*",
 	ACT4_ERDYNA_ELF_CAPITAL_OPT_LINEAGE = "Search for dragon hunters",
 	ACT4_ERDYNA_ELF_CAPITAL_OPT_VISIT = "Visit House Thalendir",
@@ -28317,7 +28317,7 @@ You present the copied symbols and describe the doors as best as you can. Myr ta
 {color=yellow|Erdyna: — I can't see anyone but elves through here. And they live on the trees, huh?}
 
 Erdyna follows close by, unusually meek for once. She keeps glancing at the carved signs, old family emblems, and distant guarded estates with a tense look she tries to hide badly. Whenever you ask what is bothering her, she only shrugs it off and tells you to keep looking.""",
-	ACT4_ERDYNA_LINEAGE_2 = """By late afternoon, persistence finally earns you more than vague directions. One of the local officials, after hearing about the sealed doors beneath the imperial capital, agrees that your matter may concern House Thalendir.
+	ACT4_ERDYNA_LINEAGE_2 = """By late afternoon, persistence finally earns you more than vague directions. One of the local officials, after hearing about the sealed doors beneath Palatine, agrees that your matter may concern House Thalendir.
 
 {color=aqua|Official: — Their estate is not within the common districts. Follow the northern road past the old terraces. If your business is truly tied to their ancient charge, they will decide whether to hear you.}
 
@@ -28389,7 +28389,7 @@ Erdyna goes still for a moment, the words striking harder than the chains.""",
 	ACT4_ERDYNA_NEGOTIATE_OPTION_GATES = "We have found some underground gates...",
 	ACT4_ERDYNA_NEGOTIATE_OPTION_FREE = "You should free her.",
 	ACT4_ERDYNA_NEGOTIATE_OPTION_LEAVE = "Leave for now.",
-	ACT4_ERDYNA_ARCHIVE_REQUEST_1 = """You tell Vaeloria about the sealed doors beneath the imperial capital grounds, and about the ancient letters carved across them. This finally makes her silence sharpen into something more focused.
+	ACT4_ERDYNA_ARCHIVE_REQUEST_1 = """You tell Vaeloria about the sealed doors beneath Palatine grounds, and about the ancient letters carved across them. This finally makes her silence sharpen into something more focused.
 
 {color=yellow|Vaeloria: — So that seal still stands. My clan has fought dragons since before your Empire drew its first breath. The place you describe was sealed nearly five hundred years ago, when there was no imperial capital above it.}""",
 	ACT4_ERDYNA_ARCHIVE_REQUEST_2 = """{color=yellow|Vaeloria: — A dragon tyrant was slain there. Mighty enough that even in death, the residue of his magic could not be left for scavengers, cultists, or ambitious fools. The chamber was sealed to keep that power from being claimed by those who would turn it toward evil. After so many centuries, it may be safe to open, however I will not hand you the tablet on that assumption alone.}
@@ -28402,7 +28402,7 @@ Erdyna goes still for a moment, the words striking harder than the chains.""",
 	ACT4_ERDYNA_FIGHT_WIN_1 = "The last standing elf drops to one knee, one hand pressed against a bleeding wound while the rest of the hall lies scattered around you.",
 	ACT4_ERDYNA_FIGHT_WIN_2 = """You seize the wounded elf before he can crawl away and force him to look at you.
 
-The question does not need much explanation. The sealed doors beneath the imperial capital. The key they were keeping from you.
+The question does not need much explanation. The sealed doors beneath Palatine. The key they were keeping from you.
 
 {color=yellow|Guard: — The tablet... in the side chamber. Stone case, beneath the hunting mural. It is not a key like you think, but it will answer the seal.}""",
 	ACT4_ERDYNA_FIGHT_WIN_3 = """You find the chamber where he said it would be. Behind a carved panel rests a flat stone tablet no larger than a book, dark and heavy, with the same severe ancient script etched across its surface.
@@ -28590,7 +28590,7 @@ If the archive copy is still anywhere, it should be in that dungeon, buried amon
 	ACT4_ERDYNA_ARCHIVE_DUNGEON_COMPLETE = """With the dungeon cleared, you search through the thieves' abandoned loot and soon find a sealed imperial document case. The archive records inside are worn but still readable enough for Vaeloria's request.
 
 You secure the case and leave the dungeon behind. With the archive records in hand, it is time to bring them back to House Thalendir.""",
-	ACT4_3_ERDYNA_QUEST_STAGE_HIDEOUT = "Go to Erdyna's old hideout in the imperial capital.",
+	ACT4_3_ERDYNA_QUEST_STAGE_HIDEOUT = "Go to Erdyna's old hideout in Palatine.",
 	ACT4_3_ERDYNA_QUEST_STAGE_RED_ROOKS_FORT = "Clear the Red Rooks' old fort and rescue Erdyna's captured people.",
 	ACT4_3_ERDYNA_QUEST_STAGE_CATACOMBS_OPENED = "Return to the sealed doors beneath the imperial capital and use the Thalendir tablet.",
 	ACT4_3_EMPIRE_CAPITAL_OPT_ERDYNA_RETURN = "Look for Erdyna in the capital.",
