@@ -1132,12 +1132,14 @@ func LoadCharacter(updated_char_to_load = null):
 	else:
 		character_to_load = updated_char_to_load
 	
+	if character_to_load == null:
+		return
 	# Load availability checking
-	if character_to_load != null && character_to_load.type != mode:
+	if  character_to_load.type != mode:
 		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'hideSaveLoadPanel', tr("TEMPLATETYPENOTMATCH")])
 		return
 	if guild != "none":
-		if character_to_load != null && character_to_load.professions != '' && !character_to_load.professions in variables.get(guild+'_starting_classes'):
+		if character_to_load.has('professions') and character_to_load.professions != '' and !(character_to_load.professions in variables.get(guild + '_starting_classes')):
 			input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'reset_profession', tr("RESETLOADCHARPROFESSION")])
 			return
 	
