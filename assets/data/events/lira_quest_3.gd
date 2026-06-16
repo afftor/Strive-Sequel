@@ -104,7 +104,7 @@ var data = {
 		],
 	},
 	lira_quest3_temple_1 = {
-		image = null,
+		image = 'lira_elven_orphanage',
 		reqs = [], tags = ["dialogue_scene"],
 		text = [
 			{text = "LIRA_QUEST3_TEMPLE_INTRO_2", reqs = [], previous_dialogue_option = 0},
@@ -118,19 +118,19 @@ var data = {
 		],
 	},
 	lira_quest3_temple_2 = {
-		image = null,
+		image = 'lira_elven_orphanage',
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_TEMPLE_3",
 		options = [{code = "lira_quest3_temple_3", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_temple_3 = {
-		image = null,
+		image = 'lira_elven_orphanage',
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_TEMPLE_4",
 		options = [{code = "lira_quest3_temple_4", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_temple_4 = {
-		image = null,
+		image = 'lira_elven_orphanage',
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_TEMPLE_5",
 		options = [
@@ -154,7 +154,7 @@ var data = {
 		text = "LIRA_QUEST3_REPORT_LIRA_1",
 		options = [
 			{code = "lira_quest3_report_lira_2", text = "LIRA_QUEST3_REPORT_LIRA_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'dialogue_counter', name = 'df_balance', op = '-'}]},
-			{code = "", text = "LIRA_QUEST3_REPORT_LIRA_OPTION_2", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'dialogue_counter', name = 'df_balance', op = '+'}]},
+			{code = "lira_quest3_report_lira_2", text = "LIRA_QUEST3_REPORT_LIRA_OPTION_2", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'dialogue_counter', name = 'df_balance', op = '+'}]},
 		],
 	},
 	lira_quest3_report_lira_2 = {
@@ -680,7 +680,7 @@ var data = {
 	},
 	
 	lira_quest3_merchant_1 = {
-		image = null, character = "lira",
+		image = "lira_gnome_medallion",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_MERCHANT_1",
 		options = [
@@ -689,13 +689,13 @@ var data = {
 		],
 	},
 	lira_quest3_merchant_2 = {
-		image = null, character = "lira",
+		image = "lira_gnome_medallion",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_MERCHANT_2",
 		options = [{code = "lira_quest3_merchant_3", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_merchant_3 = {
-		image = null, character = "lira",
+		image = "lira_gnome_medallion",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_MERCHANT_3",
 		options = [
@@ -704,37 +704,37 @@ var data = {
 		],
 	},
 	lira_quest3_merchant_4 = {
-		image = null, character = "lira",
+		image = "lira_gnome_medallion",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_MERCHANT_4",
 		options = [{code = "lira_quest3_merchant_5", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_merchant_5 = {
-		image = null, character = "lira",
+		image = "lira_gnome_medallion",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_MERCHANT_5",
 		options = [{code = "lira_quest3_merchant_6", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_merchant_6 = {
-		image = null, character = "lira",
+		image = "lira_gnome_medallion",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_MERCHANT_6",
 		options = [{code = "lira_quest3_merchant_7", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_merchant_7 = {
-		image = null, character = "lira",
+		image = "lira_gnome_medallion",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_MERCHANT_7",
 		options = [{code = "lira_quest3_merchant_8", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_merchant_8 = {
-		image = null, character = "lira",
+		image = "lira_gnome_medallion",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_MERCHANT_8",
 		options = [{code = "lira_quest3_merchant_9", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_merchant_9 = {
-		image = null, character = "lira",
+		image = "lira_gnome_medallion",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_MERCHANT_9",
 		options = [
@@ -743,13 +743,13 @@ var data = {
 		],
 	},
 	lira_quest3_merchant_10 = {
-		image = null, character = "lira",
+		image = "lira_gnome_medallion",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_MERCHANT_10",
 		options = [{code = "lira_quest3_merchant_11", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_merchant_11 = {
-		image = null, character = "lira",
+		image = "lira_gnome_medallion",
 		reqs = [], tags = ["dialogue_scene", "master_translate",],
 		text = [
 			{text = "LIRA_QUEST3_MERCHANT_11", reqs = [], previous_dialogue_option = 1},
@@ -813,7 +813,7 @@ var data = {
 				type = 'next_dialogue',
 				bonus_effects = [
 					{code = 'add_timed_event', value = "lira_quest3_return", args = [{type = 'add_to_date', date = [1,1], hour = 1}]},
-					{code = 'progress_quest', value = 'lira_quest_3', stage = 'return'},
+					{code = 'progress_quest', value = 'lira_quest_3', stage = 'return_home'},
 					{code = 'update_city'}
 				]
 			}
@@ -865,7 +865,7 @@ var data = {
 				type = 'next_dialogue',
 				bonus_effects = [
 					{code = 'add_timed_event', value = "lira_quest3_return", args = [{type = 'add_to_date', date = [1,1], hour = 1}]},
-					{code = 'progress_quest', value = 'lira_quest_3', stage = 'return'},
+					{code = 'progress_quest', value = 'lira_quest_3', stage = 'return_home'},
 					{code = 'update_city'}
 				]
 			}
@@ -884,7 +884,7 @@ var data = {
 				type = 'next_dialogue',
 				bonus_effects = [
 					{code = 'add_timed_event', value = "lira_quest3_return", args = [{type = 'add_to_date', date = [1,1], hour = 1}]},
-					{code = 'progress_quest', value = 'lira_quest_3', stage = 'return'},
+					{code = 'progress_quest', value = 'lira_quest_3', stage = 'return_home'},
 					{code = 'update_city'}
 				]
 			}
@@ -895,15 +895,10 @@ var data = {
 		image = null, character = "lira",
 		reqs = [], tags = ["dialogue_scene", "master_translate",],
 		text = "LIRA_QUEST3_RETURN",
+		common_effects = [{code = 'complete_quest', value = 'lira_quest_3'}],
 		options = [
-			{
-				code = "lira_mansion_1", 
-				text = "DIALOGUECONTINUE", 
-				reqs = [], 
-				dialogue_argument = 1, 
-				type = 'next_dialogue',
-				bonus_effects = [{code = 'complete_quest', value = 'lira_quest_3'},]
-			}
+			{code = "lira_mansion_1", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',},
+			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',},
 		],
 	},
 }

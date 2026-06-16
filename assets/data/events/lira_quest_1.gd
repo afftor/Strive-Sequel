@@ -229,7 +229,7 @@ var data = {
 		image = null, character = 'lira',
 		tags = ['dialogue_scene'],
 		reqs = [],
-		text = [{text = "LIRA_QUEST_1_DIARY_PART_1", reqs = []}],
+		text = "LIRA_QUEST_1_DIARY_PART_1", 
 		options = [
 			{code = 'lira_quest_1_belongings_root', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
 		],
@@ -238,7 +238,7 @@ var data = {
 		image = null, character = 'lira',
 		tags = ['dialogue_scene'],
 		reqs = [],
-		text = [{text = "LIRA_QUEST_1_HIDDEN_BELONGINGS_1", reqs = []}],
+		text = "LIRA_QUEST_1_HIDDEN_BELONGINGS_1", 
 		options = [
 			{code = 'lira_quest_1_belongings_root', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 3, type = 'next_dialogue'},
 		],
@@ -247,7 +247,7 @@ var data = {
 		image = null, character = 'lira',
 		tags = ['dialogue_scene'],
 		reqs = [],
-		text = [{text = "LIRA_QUEST_1_FEEL_BETTER_1", reqs = []}],
+		text = "LIRA_QUEST_1_FEEL_BETTER_1", 
 		options = [
 			{code = 'lira_quest_1_belongings_root', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 4, type = 'next_dialogue'},
 		],
@@ -256,19 +256,17 @@ var data = {
 		image = null, character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
-		text = [{text = "LIRA_QUEST_1_HEAD_BACK", reqs = []}],
-		options = [
-			{
-				code = 'lira_bonus1_1', text = "DIALOGUECONTINUE", 
-				reqs = [], dialogue_argument = 1, 
-				bonus_effects = [
-					{code = 'complete_quest', value = 'lira_quest_1'}, 
-					{code = "plan_loc_event", loc = "aliron", event = "lira_quest2_day_usual_step_outside_mansion"},
-					{code = "add_timed_event", value = "canVisitFair", args = [{type = "action_to_date", date = [1, 1], hour = 1, action = "decision"}]},
+		text = "LIRA_QUEST_1_HEAD_BACK", 
+		common_effects = [
+			{code = 'complete_quest', value = 'lira_quest_1'}, 
+			{code = "plan_loc_event", loc = "aliron", event = "lira_quest2_day_usual_step_outside_mansion"},
+			{code = "add_timed_event", value = "canVisitFair", args = [{type = "action_to_date", date = [1, 1], hour = 1, action = "decision"}]},
 #					{code = 'progress_quest', value = 'lira_quest_2', stage = 'start'}, #need adding a timed planned event instead
-					{code = 'update_location'}
-				]
-			},
+			{code = 'update_location'}
+		],
+		options = [
+			{code = 'lira_bonus1_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,},
+			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,},
 		],
 	},
 }

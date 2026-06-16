@@ -104,8 +104,8 @@ var encounters = {
 
 	lira_grove_centipedes = {unittype = 'randomgroup', unitcode = 'lira_grove_enemy', bg = 'combat_forest', bgm = 'default', win_effects = [{code = 'start_event', data = 'lira_quest_1_fight_aftermath_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	lira_quest3_bait = {unittype = 'randomgroup', unitcode = 'bandits_easy_boss', bg = 'combat_forest', bgm = 'default', win_effects = [{code = 'start_event', data = 'lira_quest3_road_postfight_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
-	lira_quest3_den_boss = {unittype = 'randomgroup', unitcode = 'bandits_medium_boss', bg = 'combat_forest', bgm = 'default', win_effects = [{code = 'start_event', data = 'lira_quest_3_den_fight_aftermath', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
-	lira_quest3_caravan = {unittype = 'randomgroup', unitcode = 'bandits_medium_boss', bg = 'combat_forest', bgm = 'default', win_effects = [{code = 'start_event', data = 'lira_quest_3_caravan_fight_aftermath', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	lira_quest3_den_boss = {unittype = 'randomgroup', unitcode = 'bandits_medium_boss', bg = 'combat_forest', bgm = 'default', win_effects = [{code = 'start_event', data = 'lira_quest3_bandit_leader_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	lira_quest3_caravan = {unittype = 'randomgroup', unitcode = 'bandits_medium_boss', bg = 'combat_forest', bgm = 'default', win_effects = [{code = 'start_event', data = 'lira_quest3_caravan_ambush_2', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 }
 
 var enemygroups = {
