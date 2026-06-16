@@ -381,6 +381,17 @@ func find_all_relationship(char1):
 	return array
 
 
+func find_relationships_in_same_location(char1, status_arr):
+	var array = []
+	for rec in find_all_relationship(char1):
+		if !status_arr.has(rec.relationship):
+			continue
+		if !_in_same_location(char1, rec.char):
+			continue
+		array.append(rec)
+	return array
+
+
 func clear_relations(char1):
 	var cleanup = []
 	for key in relationship_data.keys():

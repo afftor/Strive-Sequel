@@ -665,6 +665,7 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 	$SlaveMarket/HireMode.visible = market_mode != "guild_slaves"
 	$SlaveMarket/SellMode.visible = market_mode != "guild_slaves"
 	$SlaveMarket/HBoxContainer/UpgradeButton.visible = market_mode != "guild_slaves"
+	$SlaveMarket/HBoxContainer/UpgradeButton2.visible = market_mode != "guild_slaves"
 	hiremode = 'hire'
 	$SlaveMarket/RichTextLabel.bbcode_text = ""
 	input_handler.ClearContainer($SlaveMarket/SlaveList/ScrollContainer/VBoxContainer)
@@ -781,7 +782,7 @@ func sell_slave():
 
 
 func show_slave_info(person):
-	$SlaveMarket/HBoxContainer/UpgradeButton2.visible = true #add correct condition here
+	$SlaveMarket/HBoxContainer/UpgradeButton2.visible = $SlaveMarket/HBoxContainer/UpgradeButton.visible
 	person_to_hire = person
 	for button in SlaveMarketList.get_children():
 		if button.name == "Button":

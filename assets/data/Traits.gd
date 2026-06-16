@@ -1986,6 +1986,42 @@ var traits = {
 		effects = ['dual_blade_mastery','tr_dual_blade_mastery'],
 		tags = [],
 	},
+	self_preservation = {
+		code = 'self_preservation',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['self_preservation_desc','self_preservation_on_death',],
+		tags = [],
+	},
+	moderately_fearsome_stature = {
+		code = 'moderately_fearsome_stature',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['moderately_fearsome_stature_desc','moderately_fearsome_stature_atk','moderately_fearsome_stature_def'],
+		tags = [],
+	},
+	redhead_boss_trait = {
+		code = 'redhead_boss_trait',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['redhead_boss_trait'],
+		tags = [],
+	},
+	swifty_guy_trait = {
+		code = 'swifty_guy_trait',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['swifty_guy_trait'],
+		tags = [],
+	},
 	#exploration related traits
 	#needs to hardcode most of traits
 	medium_armor = {#removes penalty from medium armor

@@ -159,6 +159,34 @@ ma manterrà comunque tutti i tuoi personaggi, oggetti e inventario. Usa questa 
 	PRONOUNBOYFUTA = """futanari""", # MISSING TRANSLATION
 	PRONOUNHIMSELFL = "se stesso",
 	PRONOUNHIMSELFLF = "se stessa",
+	SEXDESC_PRONOUN_YOU = """you""", # MISSING TRANSLATION
+	SEXDESC_PRONOUN_YOU_BOTH_ALT = """{^you both:you}""", # MISSING TRANSLATION
+	SEXDESC_PRONOUN_YOU_ALL_ALT = """{^you all:you}""", # MISSING TRANSLATION
+	SEXDESC_PRONOUN_YOURSELF = """yourself""", # MISSING TRANSLATION
+	SEXDESC_PRONOUN_YOURSELVES = """yourselves""", # MISSING TRANSLATION
+	SEXDESC_PRONOUN_THEY_BOTH_ALT = """{^they both:they}""", # MISSING TRANSLATION
+	SEXDESC_PRONOUN_THEY = """they""", # MISSING TRANSLATION
+	SEXDESC_PRONOUN_THEMSELVES = """themselves""", # MISSING TRANSLATION
+	SEXDESC_PRONOUN_YOUR = """your""", # MISSING TRANSLATION
+	SEXDESC_PRONOUN_BOTH_OF_YOUR_ALT = """{^both of your:your}""", # MISSING TRANSLATION
+	SEXDESC_PRONOUN_ALL_OF_YOUR_ALT = """{^all of your:your}""", # MISSING TRANSLATION
+	SEXDESC_PRONOUN_THEIR = """their""", # MISSING TRANSLATION
+	SEXDESC_PRONOUN_YOURS = """yours""", # MISSING TRANSLATION
+	SEXDESC_PRONOUN_HERS = """hers""", # MISSING TRANSLATION
+	SEXDESC_PRONOUN_THEIRS = """theirs""", # MISSING TRANSLATION
+	SEXDESC_PRONOUN_YOU_BOTH_OBJECT_ALT = """{^you both:both of you}""", # MISSING TRANSLATION
+	SEXDESC_PRONOUN_YOU_ALL_OBJECT_ALT = """{^you all:all of you}""", # MISSING TRANSLATION
+	SEXDESC_PRONOUN_THEM_BOTH_ALT = """{^them both:them}""", # MISSING TRANSLATION
+	SEXDESC_PRONOUN_THEM = """them""", # MISSING TRANSLATION
+	SEXDESC_PRONOUN_IT = """it""", # MISSING TRANSLATION
+	SEXDESC_PARTNER_NEET = """child""", # MISSING TRANSLATION
+	SEXDESC_PARTNER_NEETS = """children""", # MISSING TRANSLATION
+	SEXDESC_PARTNER_TEEN = """teen""", # MISSING TRANSLATION
+	SEXDESC_PARTNER_TEENS = """teens""", # MISSING TRANSLATION
+	SEXDESC_PARTNER_MEN = """men""", # MISSING TRANSLATION
+	SEXDESC_PARTNER_WOMEN = """women""", # MISSING TRANSLATION
+	SEXDESC_PARTNER_BOYS = """boys""", # MISSING TRANSLATION
+	SEXDESC_PARTNER_GIRLS = """girls""", # MISSING TRANSLATION
 	BUTTONMENU = "Menù",
 	FINISHTURNBUTTON = "Fine Turno",
 	EXPLORESHOP = "Mercato",
@@ -4045,6 +4073,7 @@ Richiede il Consenso 'Disponibile' o superiore.}""",
 	TRAITEFFECTRIVAL = "Rivale presente: +5%% produttività",
 	TRAITEFFECTFRIENDS = """Amico presente: +10%% Rigenerazione Salute""",
 	TRAITEFFECTLOVERS = """Amante presente: +10%% Rigenerazione Mana""",
+	TRAITEFFECTRELATIONCHARACTERS = """{color=yellow|Caused by: %s}""", # MISSING TRANSLATION
 	TRAITEFFECTRARESTURDY = """Raro: Robusto
 Aumento della Salute e della Penetrazione dell'Armatura""",
 	TRAITEFFECTRARENIMBLE = """Raro: Agile
@@ -25604,6 +25633,419 @@ Crolli contro di lei, il tuo corpo esausto, il tuo respiro affannoso. Le sue cod
 	LIRA_QUEST2_QUEST_SUMMARY = "Lira vuole vedere la fiera di Aliron e saperne di più sulla vita fuori dal tempio.",
 	LIRA_QUEST2_QUEST_STAGE_START = "Parla con Lira alla villa.",
 	LIRA_QUEST2_QUEST_STAGE_FAIR = "Porta Lira alla fiera della città.",
+	LIRA_QUEST2_CITY_OPTION = """City Fair""", # MISSING TRANSLATION
+	LIRA_QUEST3_INTRO_1 = """A couple of days have passed since the fair. Lira seems even more accustomed to her new life now, as she handles chores with ease, and also smiles and greets you warmly whenever your paths cross.
+
+Still, you've noticed her a few times standing by a window or near the gates, watching people pass by with a thoughtful look in her eyes. Curious about what's on her mind, you decide to speak with her the next time you see her.""", # MISSING TRANSLATION
+	LIRA_QUEST3_START_1 = """You find her in the corner of the kitchen, resting after helping with the cooking. She sits on a low stool, wiping her hands on a cloth. As you approach, she looks up and immediately rises, a light smile spreading across her face.
+
+{color=yellow|Lira: — Greetings, [master]! Is there anything I could help you with?}""", # MISSING TRANSLATION
+	LIRA_QUEST3_START_OPTION_1 = """How have you been doing lately? It seems that something is on your mind.""", # MISSING TRANSLATION
+	LIRA_QUEST3_START_OPTION_2 = """You've seemed distracted lately. What's troubling you?""", # MISSING TRANSLATION
+	LIRA_QUEST3_START_2 = """{color=yellow|Lira: — Oh... was it that noticeable?}
+
+She chuckles softly, looking down at her hands for a moment.""", # MISSING TRANSLATION
+	LIRA_QUEST3_START_3 = """{color=yellow|Lira: — Ah, sorry, [master]. It's nothing serious, really. I was just... wondering about my origins.}
+
+She glances toward the window, where the soft light filters through.
+
+{color=yellow|Lira: — After everything that happened at the fair, after seeing how the elves treated me and how easily they turned their backs on me... it really made me realise that I was always an outsider to them, someone to tolerate, but not consider one of their own.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_START_OPTION_3 = """People could be rather cruel sometimes""", # MISSING TRANSLATION
+	LIRA_QUEST3_START_OPTION_4 = """You didn't deserve such treatment""", # MISSING TRANSLATION
+	LIRA_QUEST3_START_4 = """She folds her hands in her lap, looking down at them.
+
+{color=yellow|Lira: — That's true, and that's why I started thinking... there should be someone for whom I am 'their own', right? It's not like I'm one of a kind. Somewhere there are those 'wildlings', 'tribal elves', whatever they are called, from whom I came to this world. I just don't know where or who they are... or why I was separated from them to begin with}...""", # MISSING TRANSLATION
+	LIRA_QUEST3_START_5 = """She straightens slightly, as if catching herself in something improper.
+
+{color=yellow|Lira: — Ah, sorry, [master], I didn't mean to waste your time with this. I'm sure you have better things to do than listen to my rambling...}""", # MISSING TRANSLATION
+	LIRA_QUEST3_START_6 = """She gives a small smile, her voice softens.
+
+{color=yellow|Lira: — Thank you for listening, [master]... It's nice having someone who actually does. Back in the temple, no one would have bothered.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_START_7 = """She shakes her head lightly, as if dismissing her own thoughts.
+
+{color=yellow|Lira: — All in all, that's just some thoughts. The past is something long gone, so it doesn't really matter}...""", # MISSING TRANSLATION
+	LIRA_QUEST3_START_OPTION_5 = """That's the right way to look at it. The present matters more than the past""", # MISSING TRANSLATION
+	LIRA_QUEST3_START_OPTION_6 = """Life is unpredictable. You might find your answers when you least expect it""", # MISSING TRANSLATION
+	LIRA_QUEST3_START_OPTION_7 = """I could try to look into it, if I get the chance""", # MISSING TRANSLATION
+	LIRA_QUEST3_START_8 = """{color=yellow|Lira: — I agree, [master]. There's no point in dwelling on things that can't be changed.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_START_9 = """{color=yellow|Lira: — That... sounds comforting, actually. Leaving it to chance might be the best way.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_START_10 = """She blinks, clearly not expecting that answer.
+
+{color=yellow|Lira: — You would...? I didn't expect that... I didn't want to burden you, but if you do learn something about that, it would mean a lot to me. Thank you, [master].}""", # MISSING TRANSLATION
+	LIRA_QUEST3_START_11 = """After that Lira gets back to her duties, while you contemplate the ways you could learn more about her, as her origin seems to be a question worth your curiosity.
+
+The first and most obvious way to start your investigation would be to just visit the place Lira used to live for most of her life, the temple in the elven capital, and so that is exactly what you plan to do.""", # MISSING TRANSLATION
+	LIRA_QUEST3_TEMPLE_INTRO_1 = """The journey is quite familiar by now, so you don't waste too much time on it and soon step under the shadow of the elven great tree. Elves move through the avenues with measured steps, their conversations low, their gazes flicking toward you only briefly before sliding away.""", # MISSING TRANSLATION
+	LIRA_QUEST3_TEMPLE_INTRO_2 = """Inside the temple, the air feels still, almost heavy with ritual and tradition. Incense lingers in the corridors, and the soft echo of distant chanting filters through the walls.
+
+It doesn't take long to arrange an audience, though the priestesses don't seem particularly pleased to see you. You're tolerated, but not welcomed. Eventually, you're led into the headmistress's chamber, who regards you with a measured, slightly tired expression.
+
+{color=aqua|Headmistress: — I assume you have a solid reason for asking for this audience. You don't strike me as someone who visits for the scenery.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_TEMPLE_OPTION_1 = """I thought the temple would welcome someone who was in contact with you goddess""", # MISSING TRANSLATION
+	LIRA_QUEST3_TEMPLE_OPTION_2 = """Are you not going to ask how's the Lira doing? You basically raised her, didn't you?""", # MISSING TRANSLATION
+	LIRA_QUEST3_TEMPLE_OPTION_3 = """Straight to the business then. I want to know about Lira's origin""", # MISSING TRANSLATION
+	LIRA_QUEST3_TEMPLE_1 = """The headmistress grimaces at your question.
+
+{color=aqua|Headmistress: — Tsk. The fact that you were granted this audience should already be considered a warm welcome. And about that time... Of course, we cannot refute the will and the choice of the Goddess, but we do consider that to be an... extreme measure she had to use at the moment, and not a sign of your holiness. So don't ask for more than you already got.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_TEMPLE_2 = """The headmistress frowns and crosses her arms on her chest.
+
+{color=aqua|Headmistress: — Why would I ask about someone who was instigating a rebellion and was sentenced to exile? I raised a lot of girls here, and the fact that one of them turned out to be like that is an unwashable stain on my reputation. So no, I do not care about her whereabouts or wellbeing, and I'd rather not mention her more than necessary.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_TEMPLE_3 = """She listens in silence as you explain the purpose of your visit. A heavy sigh escapes from her lips.
+
+{color=aqua|Headmistress: — I could only assume that someone with your reputation won't take a refusal for an answer. Fine then. I will speak of it briefly, only in the hopes of never going back to this topic ever again.}
+
+She turns slightly in her chair, as if recalling something from a distant corner of her memory.""", # MISSING TRANSLATION
+	LIRA_QUEST3_TEMPLE_4 = """{color=aqua|Headmistress: — It should be obvious that the child was not born within the bounds of our forest. It was brought to the temple by a group of young elves, who decided to rescue some of their brethren from the unfortunate fate of being slaves to human masters.}
+
+You remain silent, letting her continue.
+
+{color=aqua|Headmistress: — And so, they visited Aliron and bought every elven slave they saw on the streets. One of the vendors sold them the entire group, and the child was part of it. Only after returning here did they notice its... otherness, and thus decided to give it to the temple in hopes that the Goddess would acknowledge and protect it. And she did...}
+
+There's a hint of annoyance in her tone.""", # MISSING TRANSLATION
+	LIRA_QUEST3_TEMPLE_5 = """{color=aqua|Headmistress: — ... so the child was taken care of and raised as one of the priestesses, with no... with barely any difference in treatment. Yet, apparently the kindness of a goddess was not enough for her to stay loyal to her new home...}
+
+She uncrosses her arms, signaling the conversation is over.
+
+{color=aqua|Headmistress: — And this is all there is to know. Now, if you have no further questions, I have other matters to attend to.}
+
+After getting what little information they had to offer, you leave the temple. The journey back gives you just enough time to think of how to present your findings to Lira, as it seems to be time to let her join your investigation.""", # MISSING TRANSLATION
+	LIRA_QUEST3_REPORT_LIRA_1 = """You find Lira in the garden this time, a half‑finished basket of herbs at her feet. As you approach she turns to you and politely stands up, readying herself to be of service.
+
+{color=yellow|Lira: — Greetings, [master]! Is there anything I could help you with?}""", # MISSING TRANSLATION
+	LIRA_QUEST3_REPORT_LIRA_OPTION_1 = """*Tell her what you learned*""", # MISSING TRANSLATION
+	LIRA_QUEST3_REPORT_LIRA_OPTION_2 = """Just come with me. I'll explain on the way""", # MISSING TRANSLATION
+	LIRA_QUEST3_REPORT_LIRA_2 = """You recount everything the headmistress told you. Lira listens in silence, her expression gradually shifting. At the end she sighs quietly.
+
+{color=yellow|Lira: — I see. I guess that confirms the suspicions I've had. I mean, where else would an unknown child of a different race come from, except from the slave trade?}
+
+She lowers her gaze slightly, her hands resting in her lap.
+
+{color=yellow|Lira: — It's just that at the time, you know, I didn't want to feel different from others, so I didn't delve into this. It would feel weird to know that I was a slave once...}""", # MISSING TRANSLATION
+	LIRA_QUEST3_REPORT_LIRA_3 = """She smirks suddenly.
+
+{color=yellow|Lira: — Though I guess now it doesn't matter as much, huh.}
+
+Then she looks back at you, more focused now.
+
+{color=yellow|Lira: — [master], are you going to follow that trail? If so, I would be glad to escort you. May I?}""", # MISSING TRANSLATION
+	LIRA_QUEST3_REPORT_LIRA_OPTION_3 = """That's why I came to you. Time to check the next clue""", # MISSING TRANSLATION
+	LIRA_QUEST3_REPORT_LIRA_OPTION_4 = """I am. Let's start with the local slave trader""", # MISSING TRANSLATION
+	LIRA_QUEST3_REPORT_LIRA_4 = """You don't answer her question directly. Instead, you turn and gesture for her to follow.
+
+{color=yellow|Lira: [Master]? What are you-}
+
+She hesitates for a moment, clearly confused, but her training, or perhaps her trust, wins out.""", # MISSING TRANSLATION
+	LIRA_QUEST3_REPORT_LIRA_5 = """She rises, brushing the dirt from her skirt, and falls into step behind you.
+
+{color=yellow|Lira: — O-okay... I'll follow.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_1 = """The familiar noise of the marketplace greets you as usual. Merchants shouting, coins clinking, the endless shuffle of feet on worn cobblestones doesn't distract you in the slightest at this point, and so you quickly find the man you're looking for.
+
+The local slave trader operates openly near the edge of the square, his wares displayed with the same care as any other merchant. Chains and collars hang from hooks, and a handful of slaves sit quietly in a pen behind him, their eyes lowered.
+
+He glances up as you approach, his expression shifting quickly into a practiced smile.
+
+{color=aqua|Trader: — Well now... what can I do for you today? Looking for something specific? I just got a new shipment in, so you've got plenty of choice!}""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_OPTION_1 = """Not today. I'm here to inquire about a deal you made in the past""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_OPTION_2 = """Do you remember the tribal elven child you sold to other elves fifteen years ago?""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_2 = """The trader raises his eyebrows as you explain your request, but years of experience taught him not to question clients, so he simply asks you to wait for a bit.
+
+{color=aqua|Trader: — One moment, one moment... My memory isn't that great to remember every deal I ever had, but the paper remembers everything. Fifteen years, you say? Then it should be this ledger... Let's see...}
+
+He pulls the thick ledger from beneath the counter and begins to flip through the pages, his finger tracing faded ink. After a couple of minutes it finally stops on a small line of text.""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_3 = """{color=aqua|Trader: — Huh. Well, would you look at that, you were correct, I did have such a deal... Oh, right, right, I remember now! Some elves decided to play heroes and were throwing gold at anyone with long ears, so I sold an entire stock that day, even including the defective ones!}
+
+Lira, who was quietly listening, couldn't stop herself from bursting with questions.
+
+{color=yellow|Lira: — D-defective? What do you mean, defective?}
+
+{color=aqua|Trader: — Eh, you know, the ones who aren't exactly in prime condition. The crippled, the elderly, or simply sick, just like that child. I had it for a month or two, and for the entire duration it was burning with a fever. I had to put another slave just to watch over it, which meant she couldn't do the actual work and I was losing money!}""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_4 = """He shrugs.
+
+{color=aqua|Trader: — Gods know how that kid survived for so long, but before I sold it to the elves it was barely more than skin and bones, I'm telling ya. Good thing those elves didn't even look properly. No idea how long it lived within their care, but at least I got back my investment and also learned not to deal with kids — too much of a nuisance they are.}
+
+Lira stiffens slightly beside you, but says nothing.""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_OPTION_3 = """Why didn't you try to cure the kid? Medicine aren't that expensive""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_OPTION_4 = """Well, she lived long enough to come and ask questions""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_OPTION_5 = """So where did you get that kid from?""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_5 = """{color=aqua|Trader: — Hey, hey, who said I didn't? You think I want to lose my goods? I bought the damn medicine, it just didn't work! And asking for help from guilds would be a totally different sum, so that was out of the question.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_6 = """The trader blinks and then shifts his gaze from you to Lira, who gets closer to you under the trader's calculating stare.
+
+{color=aqua|Trader: — Well, I'll be damned! You, young lady, are either incredibly resilient or incredibly lucky to have survived that.}
+
+He looks her up and down.
+
+{color=aqua|Trader: — And also turned out to be quite a charming little thing, eh? Oh well, who knew it would turn out like that... Not that I'd be willing to wait fifteen years just to turn profit.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_7 = """The trader smirks slightly.
+
+{color=aqua|Trader: — Ah, that part's a bit more interesting.}
+
+He leans in just a little, lowering his voice.
+
+{color=aqua|Trader: — See, there was a raid near the border. The guards intercepted a bandit caravan with illegal goods, of course. Slaves, contraband, the usual. The goods were supposed to go to auction, but... let's just say I had certain arrangements with the local authorities.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_8 = """{color=aqua|Trader: — So, a bit of persuasion and I bought the whole lot for dirt cheap. Then sold them later for a proper profit. Simple business.}
+
+{color=aqua|Trader: — As for where the bandits got her? No idea. Not my concern back then. Could have been a village raid, a passing caravan, a family who couldn't afford to feed her... The world's a messy place. You might as well ask the bandits' leader himself. He didn't stay in prison for too long and now seems to still be raiding in the empire's wasteland.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_9 = """He closes the ledger with a thud.
+
+{color=aqua|Trader: — That's all I've got, folks.}
+
+You nod to the trader and step away from his wares, beginning to walk towards the mansion. Lira follows you, yet her thoughts seem to be elsewhere, as the conversation with the trader leaves a lingering weight behind. After you return home, she finally breaks the silence.""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_10 = """{color=yellow|Lira: — This feels so weird seeing all those people in cages... And to think I was spared such fate.}
+
+She looks down at her hands.
+
+{color=yellow|Lira: — Yet I feel sad knowing others aren't as lucky. Do you think I'm wrong for thinking like this?}""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_OPTION_6 = """You aren't wrong, it's not fair but we could be worse without it.""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_OPTION_7 = """That's just how the world works. The strong rise, the weak are used""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_11 = """{color=yellow|Lira: — I guess you are right. Now that I think about it, back in the forests elves didn't really hold any slaves, but because of that many have simply been exiled or killed... Still though, I hope one day things can get better.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_12 = """{color=yellow|Lira: — I suppose you are right, [master]. I should thank you for taking good care of me.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_13 = """In the end, Lira has no choice but to accept your answer and move on to more pressing matters.
+
+{color=yellow|Lira: — [master], are we going to look for that bandit leader? He's the only one left who might know the answer, but he's somewhere in a different country, so it doesn't look like an easy task...}""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_OPTION_8 = """Of course. I want to get to the bottom of this story.""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_OPTION_9 = """It doesn't matter if it's easy or not. If I want something, I get it done.""", # MISSING TRANSLATION
+	LIRA_QUEST3_TRADER_14 = """Inspired by your words, Lira flashes you a smile.
+
+{color=yellow|Lira: — Then I will be waiting for your orders, [master].}""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_1 = """Following the lead, you soon arrive at Palatine. The city greets you with its usual indifference: crowded streets, hurried footsteps, and faces that don't linger on strangers.
+Lira, who has never been here before, seems both surprised and slightly overwhelmed by the scale of it all. She sticks close to your side, her eyes darting across the endless crowds.
+{color=yellow|Lira: — [master], how do we even begin to look for that man? There are so many people here, but they don't look like they'd want to answer our questions...}""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_OPTION_1 = """There are many ways to loosen their tongues when we need to. But that can wait.""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_OPTION_2 = """Let's just check the notice board first.""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_2 = """You point to one of the notice boards and step closer. The wood is weathered, the papers pinned to it fluttering in the breeze. Most are faded, illegible. But one stands out. 
+A worn sheet bearing the crude likeness of a man with a jagged scar across his face. The writings on top state the following:""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_3 = """“WANTED: Renown bandit group
+Charges: Caravan raids, illegal slave trade, multiple counts of murder”
+At the bottom, a list of locations where he was last seen. The general direction points to the hills to the east, exactly where caravans have been known to vanish.""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_4 = """Lira studies the paper beside you, her brow furrowed.
+{color=yellow|Lira: — This must be him...}
+She looks at the description again, comparing it to what you've heard from the trader. Her expression tightens.""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_5 = """{color=yellow|Lira: — So how do we find him? It's not like we can just walk up to his camp. And we can't just roam those hills for months.}
+
+As you stand there thinking, a slow caravan rumbles past on the main road: three wagons, guards with bored expressions, and in the middle, a cage wagon with slumped figures visible behind iron bars.""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_OPTION_3 = """I think I have an idea. We'll use the caravan to lure them in.""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_OPTION_4 = """We wouldn't need to look for the bandits if they came looking for us first.""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_6 = """Lira follows your gaze. As she notices the figures in the cage, her eyebrows furrow.
+{color=yellow|Lira: — [master], I have no doubt your plan would work, but maybe we can try something else? It... it feels wrong to risk someone else's lives for my benefit. So what if I play the role of the bait? A lonely woman on the road would surely draw their attention too. They'd probably want to capture me and bring me right into their lair. And then...}
+She looks up at you with trust and confidence in her eyes.
+{color=yellow|Lira: — ... I believe that you would come to my rescue, [master]. What do you think?}""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_OPTION_5 = """I don't want to risk your life, but if that's how you want to handle it, I'll allow it""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_OPTION_6 = """That's a sound plan, but the caravan is still a much more prominent target. Besides, I'd rather risk someone else's life than yours""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_7 = """Lira's face lights up with a genuine smile. There's determination in her eyes.
+{color=yellow|Lira: — Thank you, [master]. I won't let you down. I'll prove that I can do this.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_8 = """She straightens her back, and though her hands tremble slightly, her voice is steady.
+{color=yellow|Lira: — Thank you for believing in me, [master]. I'll try to do my best.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_9 = """After agreeing to her plan, you briefly discuss the details. The best place for an ambush seems to be the stretch of road near the hills, where the trees grow close to the path. That is where you head next.""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_10 = """Lira's face falls the moment you refuse her offer. Her hands curl at her sides.
+{color=yellow|Lira: — [master], please... I can do this. I'm not afraid!}
+She steps closer, her voice more insistent.
+{color=yellow|Lira: — Those slaves don't have a choice. But I do. I can choose to be there. Let me prove myself. Just one chance?}""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_OPTION_7 = """Fine. We'll do it your way""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_OPTION_8 = """I don't want to risk it. We're using the caravan""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_11 = """Lira lets out a deep sigh but doesn't argue any further.
+{color=yellow|Lira: — As you wish, [master]...}""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_12 = """After settling on the plan, you briefly discuss the details and begin looking for the caravan.""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_13 = """Lira listens to your decision, then nods slowly.
+{color=yellow|Lira: — I understand, [master]. You're way more experienced with these things than I am.}
+She looks toward the road where the caravan disappeared.
+{color=yellow|Lira: — So if you think this is the best way... then I trust you. We'll use the caravan. But... may I ask for a small favor? I don't doubt your strength, but I would feel much calmer if we could hire some extra guards just so they can focus on protecting everyone else while you deal with the main force.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_OPTION_9 = """That's a valid point""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_OPTION_10 = """I'll think about it""", # MISSING TRANSLATION
+	LIRA_QUEST3_EMPIRE_14 = """{color=yellow|Lira: — Thank you, [master].}""", # MISSING TRANSLATION
+	LIRA_QUEST3_CARAVAN_PREPARE_1 = """You find the caravan master at a local tavern, a grizzled man with a scarred face and tired eyes who was just complaining openly about how he has to change the routes because of the bandit threat. You swiftly introduce yourself to him and offer help in dealing with that problem, explaining your plan. He's skeptical of your proposal initially, but hearing that you would cover potential losses, he quickly agrees and leaves the tavern to prepare for the new route.
+Now you only need to decide whether you wish to follow Lira's advice and hire some additional guards.""", # MISSING TRANSLATION
+	LIRA_QUEST3_CARAVAN_PREPARE_OPTION_1 = """Hire extra guards (-500 gold)""", # MISSING TRANSLATION
+	LIRA_QUEST3_CARAVAN_PREPARE_OPTION_2 = """Ignore her advice""", # MISSING TRANSLATION
+	LIRA_QUEST3_CARAVAN_PREPARE_2 = """You find a group of mercenaries near the city gate who look rough but professional. After a quick negotiation, they agree to join the caravan. Lira gives you an approving nod, her shoulders relaxing slightly.""", # MISSING TRANSLATION
+	LIRA_QUEST3_CARAVAN_PREPARE_3 = """Lira sighs quietly but doesn't argue. Instead, you see her walk over to the slave wagon and speak softly to the figures inside. She says something you can't quite hear, whether it's reassurance or maybe an apology. Her expression is heavy.""", # MISSING TRANSLATION
+	LIRA_QUEST3_CARAVAN_PREPARE_4 = """The caravan is finally ready to set off.""", # MISSING TRANSLATION
+	LIRA_QUEST3_CARAVAN_AMBUSH_1 = """The journey is tense. A couple of days pass without incident. The hills grow closer, the trees thicker. You begin to wonder if the bandits have moved on.
+Then it finally happens. Just as the first wagon passes a narrow stretch of road flanked by dense forest, a massive tree crashes down ahead, its trunk blocking the road.
+{color=yellow|Lira: — [master]! There!}
+Shouts erupt from both sides. Bandits pour out of the treeline, weapons raised. Their faces twist with greed as they think they've found easy prey, unaware of the fact that they were the ones walking into a trap.""", # MISSING TRANSLATION
+	LIRA_QUEST3_CARAVAN_AMBUSH_2 = """The element of surprise works in your favor. You leap from the wagon and crash into the bandit's main force.""", # MISSING TRANSLATION
+	LIRA_QUEST3_CARAVAN_AMBUSH_3 = """The mercenaries you hired also prove their worth. They form a shield wall around the wagons, cutting down anyone who gets too close. The bandits barely manage to touch the caravan. Within minutes, the attack crumbles.""", # MISSING TRANSLATION
+	LIRA_QUEST3_CARAVAN_AMBUSH_4 = """The battle is fiercer than you've anticipated. You cut down bandits one by one, but some of them still get to the wagons and try to get inside. Wood splinters, slaves cries out. By the time the last bandit falls, the caravan is damaged, and several slaves are wounded.
+Lira rushes to them immediately, tearing strips from her own clothes to bind their wounds. She doesn't say anything to you, just sighs deeply as she works.""", # MISSING TRANSLATION
+	LIRA_QUEST3_CARAVAN_AMBUSH_5 = """When the dust settles, you find the bandit leader, who is bloodied and dazed but alive. You tie him up and wait for Lira to come closer. You both turn towards the bandit leader.""", # MISSING TRANSLATION
+	LIRA_QUEST3_ROAD_1 = """You hide among the thick bushes and overgrown trees, ready to act at the first sign of danger. Lira stands on the road, pretending to rest, then slowly begins to walk along the route just as you discussed. You follow her, still hiding your presence.
+Time passes, and soon the sun begins to fall when you finally hear hoofbeats. Five riders appear around the bend, all rough-looking men with worn leather armour and hands resting on their hilts. They spot Lira immediately and gallop to circle her, grinning in their saddles.
+{color=aqua|Bandit: — Well, well. What's a pretty little thing like you doing all alone out here?}""", # MISSING TRANSLATION
+	LIRA_QUEST3_ROAD_2 = """Lira says nothing. She takes a step back, feigning fear, which only makes the riders laugh.
+{color=aqua|Bandit: — No need to be scared. We'll take care of you. Just be ready to return the favour, heh...}
+Unaware of your approach, the bandits keep spouting nonsense until you manage to get right next to them. The moment you see someone trying to grab Lira, you rush into attack.""", # MISSING TRANSLATION
+	LIRA_QUEST3_ROAD_POSTFIGHT_1 = """Within a moment, three bandits are down. But as you are fighting the fourth, the last one manages to grab Lira and pull her onto his horse.
+{color=yellow|Lira: — [master]!}
+The rider kicks his heels into the horse's flanks, and the beast bolts down the road, kicking up dust and leaving you far behind.""", # MISSING TRANSLATION
+	LIRA_QUEST3_ROAD_POSTFIGHT_2 = """You turn back to the bandits lying on the ground. Two are unconscious. One is groaning, clutching his arm. He glares at you but doesn't try to run.""", # MISSING TRANSLATION
+	LIRA_QUEST3_ROAD_POSTFIGHT_OPTION_1 = """Ask him about their hideout""", # MISSING TRANSLATION
+	LIRA_QUEST3_ROAD_POSTFIGHT_OPTION_2 = """Put your blade to his throat""", # MISSING TRANSLATION
+	LIRA_QUEST3_ROAD_POSTFIGHT_3 = """{color=aqua|Bandit: — What, you gonna try and get your girl back? Heh, the boss will show you why you shouldn't have messed with us!}
+He spits at your feet and glares.""", # MISSING TRANSLATION
+	LIRA_QUEST3_ROAD_POSTFIGHT_4 = """The cold steel pressing against his skin quickly clears his mind of arrogant delusions.
+{color=aqua|Bandit: — ...Alright, alright! I'll talk! What do you want to know?}""", # MISSING TRANSLATION
+	LIRA_QUEST3_ROAD_POSTFIGHT_OPTION_3 = """How many of you are there?""", # MISSING TRANSLATION
+	LIRA_QUEST3_ROAD_POSTFIGHT_OPTION_4 = """Why are you focusing on slave trade specifically?""", # MISSING TRANSLATION
+	LIRA_QUEST3_ROAD_POSTFIGHT_OPTION_5 = """Where is your hideout?""", # MISSING TRANSLATION
+	LIRA_QUEST3_ROAD_POSTFIGHT_5 = """{color=aqua|Bandit: — A couple of dozens. Maybe a few more. We lost some lately, but the boss keeps hiring. I don't know the exact number, never thought to count!}""", # MISSING TRANSLATION
+	LIRA_QUEST3_ROAD_POSTFIGHT_6 = """{color=aqua|Bandit: — Boss got some connections to sell the goods fast. Also, he started with it, so it's kind of his thing... And most don't really care what we do as long as the boss pays good coin.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_ROAD_POSTFIGHT_7 = """The bandit hesitates. You press the blade just a fraction deeper.
+{color=aqua|Bandit: — Shit, fine, fine! Guess I'll be leaving the band anyway... It's to the east! Old cave system, hidden deep in the forest. About two hours from here. Follow the dry creek bed.}
+He gives you a rough description between shaky breaths. You commit it to memory.
+You tell him that he'd better not be lying, then tie him up and leave him on the road. You mount one of the remaining horses and get ready to bring Lira back.""", # MISSING TRANSLATION
+	LIRA_QUEST3_DEN_INTRO_1 = """The trail leads you off the road and into the forest. Eventually, you spot the entrance to a hidden cave, half-concealed by overhanging brush. Voices echo faintly from within, and the tracking device points directly ahead. Time to step inside.""", # MISSING TRANSLATION
+	LIRA_QUEST3_DEN_1 = """Despite your previous clashes, inside the leader's lair the bandit leader and a couple of his guards are sitting relaxed, passing around a flask and laughing, unaware of what's coming.
+
+You peek around the corner and notice Lira in the corner of the cave: restrained, but conscious. Her eyes meet yours across the dim space, and her face immediately lights up. You step into the light.""", # MISSING TRANSLATION
+	LIRA_QUEST3_DEN_OPTION_1 = """Everyone else in the cave is already dead. I'll give you one chance to make it easier for you and surrender""", # MISSING TRANSLATION
+	LIRA_QUEST3_DEN_OPTION_2 = """Time to finish this.""", # MISSING TRANSLATION
+	LIRA_QUEST3_DEN_2 = """Completely caught off guard by your sudden arrival, the bandits go pale. Your imposing figure and the blood dripping from your blade signify that you are telling the truth. After a brief exchange of looks, they drop their weapons and surrender.
+
+You quickly tie them up and then release Lira from her bonds. She gives you a tight hug.""", # MISSING TRANSLATION
+	LIRA_QUEST3_DEN_3 = """The element of surprise works in your favor, and soon the bandits are defeated. You tie up the bloodied, yet conscious leader, then release Lira from her bonds. She gives you a tight hug.""", # MISSING TRANSLATION
+	LIRA_QUEST3_DEN_4 = """{color=yellow|Lira: — [master], I'm so glad to see you! And... we did it!}
+
+You both turn towards the bandit leader.""", # MISSING TRANSLATION
+	LIRA_QUEST3_BANDIT_LEADER_1 = """The bandit leader spits to the side and looks at you with a mixture of confusion and grudging respect.
+{color=aqua|Bandit Leader: — Since I'm still alive, does it mean you went through all this just for me? Damn. I've had bounty hunters after me before, but none fought like that.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_BANDIT_LEADER_OPTION_1 = """We're not here for your head""", # MISSING TRANSLATION
+	LIRA_QUEST3_BANDIT_LEADER_OPTION_2 = """We're here to ask questions""", # MISSING TRANSLATION
+	LIRA_QUEST3_BANDIT_LEADER_2 = """He blinks, genuinely puzzled.
+{color=aqua|Bandit Leader: — Then what the hell do you want?}
+You briefly explain the situation. At first, he looks annoyed. Then, after a moment, something clicks. His eyes narrow.""", # MISSING TRANSLATION
+	LIRA_QUEST3_BANDIT_LEADER_3 = """{color=aqua|Bandit Leader: — ...Hah. You're kidding me.}
+A rough laugh escapes him, quickly turning into a cough.
+{color=aqua|Bandit Leader: — That was years ago. A lifetime. And somehow it bit me in the ass after all this time.}
+He shakes his head.""", # MISSING TRANSLATION
+	LIRA_QUEST3_BANDIT_LEADER_4 = """{color=aqua|Bandit Leader: — Yeah, sure... I remember. Barely.}
+He looks at Lira more closely now, and you can almost see the gears turn in his brain, adding two and two together.
+{color=aqua|Bandit Leader: — So it's you, eh? That sickly little thing... Thought you wouldn't last long. Looked half-dead when I passed you along.}
+Lira frowns a bit, but doesn't say anything. The bandit continues.""", # MISSING TRANSLATION
+	LIRA_QUEST3_BANDIT_LEADER_5 = """{color=aqua|Bandit Leader: — I didn't get her myself. Bought her off some merchant I worked with back then. Shady type. Dealt in all kinds of goods.}
+He shrugs.
+{color=aqua|Bandit Leader: — Guy told me the kid was given to him by her own mother. Said she told him to take the brat away or something along those lines.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_BANDIT_LEADER_6 = """Lira blinks, her eyes wide open as she comes closer to the bandit.
+{color=yellow|Lira: — My... mother? Did you say it was my own mother who gave me away?}
+{color=aqua|Bandit Leader: — Hey, that's what that guy told me.}
+{color=yellow|Lira: — But why would she do that...? What kind of mother would give away her child...?}""", # MISSING TRANSLATION
+	LIRA_QUEST3_BANDIT_LEADER_OPTION_3 = """Maybe she had her reasons. Not everything is as simple as it sounds""", # MISSING TRANSLATION
+	LIRA_QUEST3_BANDIT_LEADER_OPTION_4 = """Sounds like your family wasn't worth looking for in the first place""", # MISSING TRANSLATION
+	LIRA_QUEST3_BANDIT_LEADER_7 = """Lira lowers her gaze, her brow furrowing.
+{color=yellow|Lira: — ...Maybe. I suppose I don't know what kind of situation she was in.}
+She exhales quietly, her shoulders dropping slightly.
+{color=yellow|Lira: — I want to believe there was a reason. Something more than just... getting rid of me.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_BANDIT_LEADER_8 = """Lira pauses, her ears twitching faintly before lowering.
+{color=yellow|Lira: — ...Maybe you're right.}
+A long breath.
+{color=yellow|Lira: — It's just... hard to accept that without even knowing the full story. Hard to let go of something I never really had.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_BANDIT_LEADER_9 = """{color=aqua|Bandit Leader: — Hey, since you want all the details, why don't you ask that merchant himself? He's still kicking, lives in the capital, same shop as before. I can take you right to his doorstep.}
+You exchange a glance with Lira and then nod. """, # MISSING TRANSLATION
+	LIRA_QUEST3_BANDIT_LEADER_10 = """You make sure the binds on the bandit let him walk, but not run, then step out of the hideout and begin the journey back to the capital.""", # MISSING TRANSLATION
+	LIRA_QUEST3_BANDIT_LEADER_11 = """Before heading back to the capital, you escort the caravan to the closest city, from where it would go on its own. Then, you begin the journey back to the capital.""", # MISSING TRANSLATION
+	LIRA_QUEST3_FOLLOW_LEADER_1 = """The journey back took some time, but eventually you returned to the capital, the bandit leader tugging behind you on a leash.
+After getting past the gates, he takes a more active role and guides you through unfamiliar streets, past markets and residential quarters, until you reach a quieter district.
+{color=aqua|Bandit Leader: — There. That corner shop. Green shutters, no sign.}
+He points to a modest two-story building wedged between a bakery and a tailor's workshop. The windows are clean, the brass handle polished. It looks respectable.
+{color=yellow|Lira: — This is the place? It looks kind of... respectable. Who'd think the guy living there would be so shady.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_FOLLOW_LEADER_2 = """{color=aqua|Bandit Leader: — Yep. Sometimes appearance can be deceiving, heh. But who am I to preach?}
+Done with the bandit, you spot a pair of city guards and call them over. After explaining the situation, you hand the bandit over to them. As soon as they recognise the face from the notice board, they put him in irons and lead him away.
+One of the guards tips his helmet.
+{color=aqua|Guard: — You've saved us a lot of trouble, stranger. The reward will be waiting at the garrison.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_1 = """You push the door open, and a small bell chimes somewhere above your head. The air inside smells of old paper and dust. The shop is cramped but tidy. Shelves line the walls, filled with trinkets, faded books, and oddities from distant lands.
+In the corner, an elderly man sits in a worn armchair, half-hidden behind a stack of old ledgers. He's neatly dressed, spectacles balanced on his nose. As you enter, he stirs and rises to his feet, a practiced smile forming on his lips.
+{color=aqua|Merchant: — Ah, greetings. Welcome to my humble shop. Anything you're looking for?}""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_OPTION_1 = """Yeah, do you sell tribal elven children?""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_OPTION_2 = """I'm looking to uncover some of your shady deals from the past.""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_2 = """He blinks, clearly caught off guard. His smile falters. His eyes dart from you to Lira, then stop on her. Recognition flickers across his face, and he goes pale.
+{color=aqua|Merchant: — W-wait...}
+{color=yellow|Lira: — Looks like you remember me.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_3 = """He hesitates, his mouth opening and closing like a fish gasping for air. Then he exhales, and his shoulders slump. The fight drains out of him.
+{color=aqua|Merchant: — ...Yeah. I do. I... I never thought I'd see you again... how did you even find me?}
+You ignore his question and step closer, looming over him.""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_OPTION_3 = """Why don't you tell us what happened back then?""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_OPTION_4 = """You'd better explain yourself, old man.""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_4 = """He flinches at your tone, but then begins to talk.
+{color=aqua|Merchant: — I was on a trip overseas when one day a tribal elf woman brought you to me herself. She came at night, hooded, nervous. Said she wanted you... gone. Far away. Somewhere safe.}
+Lira freezes for a moment, then raises an eyebrow.
+{color=yellow|Lira: — Safe?}""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_5 = """{color=aqua|Merchant: — Yeah. I don't remember all the details, but she said that their clan had some rituals. Sacrifices. That weak children didn't survive for long. And at the time...}
+He glances at Lira, then quickly looks away.
+{color=aqua|Merchant: — ... you were a weak child. She told me that her time was limited as well, and since she wouldn't be able to protect you any longer after she was gone, she'd rather you went somewhere else.}
+He pauses for a moment to cough, then carries on.""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_6 = """{color=aqua|Merchant: — So she gave you to me. Paid some money — not much, but she didn't look like she had much. Then told me to take you somewhere safe. Even gave you an amulet. Said it would protect you.}
+{color=yellow|Lira: — Huh? But I didn't have any amulet on me.}
+The merchant bites his tongue and tries to avert his gaze, but realising that it's too late, he sighs and confesses.""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_7 = """{color=aqua|Merchant: — I... I kept it. Tribal craftsmanship is quite valuable, so I've had it with me all these years. Still have it.}
+He stands up, walks to the shelf, and takes a small bronze pendant with a dark gemstone inside from the deep within. Then brings it to Lira. She slowly reaches out her hand to touch it, and with noticeable hesitation, the merchant lets the charm fall into her hands.
+{color=yellow|Lira: — It's... beautiful.}
+{color=aqua|Merchant: — And it seems to bring luck. Or at least that's what I believe. Though now that I've met you, it seems its luck has run out...}""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_8 = """{color=yellow|Lira: — So what happened next? What else did my mother say?}
+{color=aqua|Merchant: — Next? She left. Did some hand gestures over your head, put the amulet on you, and left. I got back to my ship and brought you here. And then...}
+{color=yellow|Lira: — Sold me to some bandit.}
+The merchant tries to shrug but barely manages, as if losing his nerve halfway.""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_9 = """{color=aqua|Merchant: — The money was good, so... I'm not proud of it. But... it is what it is.}
+Lira stands in silence, her fingers wrapped around the pendant. The merchant shifts uncomfortably, avoiding her gaze. He turn to you, his voice shaking.
+
+{color=aqua|Merchant: — I told you everything I knew, so... w-what is going to happen to me?}
+You look at the man who took a desperate mother's plea, her money, her child's only heirloom, and then sold the girl for profit.""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_OPTION_5 = """You are right to be afraid. It's high time karma caught up to you.""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_OPTION_6 = """You are not even worth dirtying my hands. Just live whatever small time you have left, knowing what you did.""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_10 = """The merchant's eyes widen, and he tries to scream, but your blade quickly silences him forever.
+His body slumps against the chair, then slides to the floor. The spectacles fall from his nose and clatter on the wooden planks.
+Lira flinches but doesn't look away. She watches the body for a moment, then looks down at the amulet in her hand.""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_11 = """{color=yellow|Lira: — ...Let's go home, [master].}
+Her voice sounds tired.""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_12 = """The merchant seems to shrink under your gaze, but that's all there is to it. You carefully take Lira by the shoulder, and you leave the shop.""", # MISSING TRANSLATION
+	LIRA_QUEST3_MERCHANT_13 = """You step out of the shop. The bell chimes one last time as the door closes behind you.
+The street is ordinary: people walking, children laughing, a dog barking somewhere in the distance. No one knows what just happened inside that modest building with the green shutters.
+Lira walks beside you in silence. She's still holding the amulet the merchant kept all those years. Her fingers trace its edges as you leave the old district behind and head toward the city gates.
+As you step outside the city, you stop to rest by the side of the road for a while. Lira sits on a fallen log, turning the amulet over in her hands for a moment before finally breaking the silence.""", # MISSING TRANSLATION
+	LIRA_QUEST3_AFTERMATH_1 = """{color=yellow|Lira: — So... looks like this is the story of my past.}
+She says it calmly, though there's a trace of sadness underneath.
+{color=yellow|Lira: — I was born in some barbaric tribe overseas that had a tradition of sacrificing weak children for their rituals, and I was next in line. My mother, who apparently also wasn't in great health, decided to save me by giving me to a random merchant, hoping I would get a better life far away.}
+She clutches the amulet in her hand.""", # MISSING TRANSLATION
+	LIRA_QUEST3_AFTERMATH_2 = """{color=yellow|Lira: — Which means she didn't just abandon me like I thought. She tried to save me in the only way she could. I wish I could thank her for that, even though it didn't work out as she intended.}
+She shakes her head.
+{color=yellow|Lira: — That greedy man didn't even try to look for a new family for me. Just dumped me with the first buyer for a few coins and even took the amulet. Then I changed hands a couple of times, like some second-hand relic. It's a miracle I even survived all of that, considering how all of them described my state at the time.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_AFTERMATH_OPTION_1 = """But you did. And that's what matters""", # MISSING TRANSLATION
+	LIRA_QUEST3_AFTERMATH_OPTION_2 = """It seems the gods were merciful for once""", # MISSING TRANSLATION
+	LIRA_QUEST3_AFTERMATH_3 = """{color=yellow|Lira: — That's true... And everything we learned only confirms what I already knew: I never had a place to belong to in the past. So it's time for me to stop looking at the past, once and for all. I should focus on my present and my future. And in both, I can only see myself in one place...}
+She turns to you and places her hand on yours. A smile appears on her face.
+{color=yellow|Lira: — ... next to you, [master].}""", # MISSING TRANSLATION
+	LIRA_QUEST3_AFTERMATH_4 = """{color=yellow|Lira: — You took me in when no one else was willing to even look at me... And you treated me well. You treated me like a person, for the first time in my life. And you've been on that path with me to the end.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_AFTERMATH_5 = """{color=yellow|Lira: — You gave me purpose. A place to belong. Someone to follow... someone to believe in.}
+A faint, warm smile appears.
+{color=yellow|Lira: — So... if you'll have me, I want to stay by your side. As your slave and as your companion. Your... everything.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_AFTERMATH_OPTION_3 = """Stay as you are. You already belong here""", # MISSING TRANSLATION
+	LIRA_QUEST3_AFTERMATH_OPTION_4 = """What if I set you free?""", # MISSING TRANSLATION
+	LIRA_QUEST3_AFTERMATH_6 = """She smiles, visibly relieved, her shoulders relaxing.
+{color=yellow|Lira: — Thank you... [master].}""", # MISSING TRANSLATION
+	LIRA_QUEST3_AFTERMATH_7 = """{color=yellow|Lira: — F-free...?}
+For a moment, she looks at you with confusion, but then the smile returns to her face. She leans forward and presses her head to your chest.
+{color=yellow|Lira: — There's no need for that, [master]. I don't want to be free. I want to be yours.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_AFTERMATH_8 = """{color=yellow|Lira: — You took me in and you treated me well, treated me like a person, even though you didn't have to. You were the one who taught me not to fear and how to be myself. Next to you I am no longer afraid to voice my real thoughts, probably for the first time in my life.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_AFTERMATH_9 = """She looks down at the amulet she clutches in her hand.
+{color=yellow|Lira: — The more I looked at my past, the more I realized how little freedom I really had: first sold as a barely conscious child, and then put into the temple, where every step was dictated by rituals and rules... Huh.}
+She suddenly lets out a quiet laugh and looks up at the sky.""", # MISSING TRANSLATION
+	LIRA_QUEST3_AFTERMATH_10 = """{color=yellow|Lira: — Looking at it that way, maybe when Freya didn't choose me as her priestess, it was her mercy that I mistook for wrath. Only because of that I was able to become your companion, isn't it?}
+She moves closer to you.
+{color=yellow|Lira: — What I'm saying is that you gave me more than anyone else ever did. And while I don't want to be a possession anymore, if fate decided that I have to, then I wish to at least be yours.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_AFTERMATH_OPTION_5 = """Screw fate. If it means putting a genuine smile on your face, I'll free you from slavery. You can be my servant, not my property""", # MISSING TRANSLATION
+	LIRA_QUEST3_AFTERMATH_OPTION_6 = """I'm glad I was able to give you what you've been looking for. Don't worry, I'll keep treating you well""", # MISSING TRANSLATION
+	LIRA_QUEST3_AFTERMATH_11 = """For a moment, she just stares at you, as if she can't believe what she just heard.
+{color=yellow|Lira: — You... you mean it?}
+Her lips tremble. Then she smiles, tears well in her eyes, but she doesn't wipe them away.""", # MISSING TRANSLATION
+	LIRA_QUEST3_AFTERMATH_12 = """{color=yellow|Lira: — I don't even know what to say... Thank you. I won't forget this, [master]. You've changed my life the way I couldn't even dream about... I am so glad I met you, and I'll stay by your side, not because I have to, but because I want to!}
+She reaches out for a hug and embraces you, whispering in your ear.
+{color=yellow|Lira: — That truly means the world to me. Thank you, [master].}""", # MISSING TRANSLATION
+	LIRA_QUEST3_AFTERMATH_13 = """Lira looks at you with a small, genuine smile on her lips.
+{color=yellow|Lira: — Then I have nothing to fear. If you promise to keep treating me like this... I don't need a piece of paper to tell me I'm free.}
+She takes your hand and holds it between both of hers.
+{color=yellow|Lira: — Being with you, knowing that you see me as a person... that's enough. Thank you, [master]. For everything.}""", # MISSING TRANSLATION
+	LIRA_QUEST3_RETURN = """The journey back was quiet but comfortable. Lira walked close to you, and her smile never left her face for the entire journey.
+When you finally reach the mansion, the familiar sight of its gates brings a sense of closure.
+You take a couple of hours to rest from the journey, but then get back to work, dealing with the piled-up responsibilities. Time flows by, but as the evening comes, you are distracted by the sound of a door opening.
+Lira approaches you with a warm smile on her face and a clear determination in her eyes. She gently pushes the documents you've been signing to the side and puts her face close to yours, showing no hesitation this time and taking the whole initiative.""", # MISSING TRANSLATION
 	LIRA_QUEST2_QUEST_STAGE_RETURN = "Torna alla villa con Lira.",
 
 	LIRA_QUEST3_QUEST_NAME = "Lira: Origini",
@@ -26376,18 +26818,115 @@ She lifts her gaze, and her eyes are bright.
 	LIRA_QUEST2_OPTION_PROBLEM_ALLOWED_GOOD_THINGS_CONSIDER_GIFT = "Nessun problema, hai diritto a cose belle. Consideralo un regalo",
 	LIRA_QUEST2_OPTION_PAY_HAIRPIN = "Paga la forcina (-300g)",
 	LIRA_QUEST2_OPTION_STEAL_HAIRPIN = "Ruba la forcina",
+	LIRA_QUEST2_TURN_POINT_PIN_1 = """When it's your turn, you point out the leaf‑shaped pin. The merchant nods, names a price, and you hand over the coins without haggling. A moment later, the small package is yours.""", # MISSING TRANSLATION
+	LIRA_QUEST2_TURN_POINT_PIN_2 = """You decide to keep your coins. When your turn comes, you ask the merchant to show you several items from the higher shelves, pointing and gesturing with your free hand while the other, hidden from sight, nimbly slips the leaf‑shaped pin from its display. In the noise and bustle of the fair, no one notices the quick sleight of hand.
+
+You make a few vague comments about the quality, then thank the merchant and step away.""", # MISSING TRANSLATION
+	LIRA_QUEST2_TURN_POINT_PIN_3 = """You return to Lira and present the hairpin to her. She accepts it with both hands, her eyes bright.
+
+{color=yellow|Lira: — Thank you, [master]! I will cherish it...}
+
+She admires the pin and turns it over a couple of times, then carefully fixes it in her hair. Her fingers are uncertain at first, adjusting it once, twice, before she finally lets her hands drop. A shy smile forms on her lips.
+
+{color=yellow|Lira: — Does it... does it look good?}
+
+She looks up at you expectantly, the silver leaf catching the afternoon light.""", # MISSING TRANSLATION
 	LIRA_QUEST2_OPTION_SUITS_PERFECTLY = "Ti sta perfettamente",
 	LIRA_QUEST2_OPTION_COURSE_LIKE_SLAVES_PRETTY = "Certo che lo è, mi piacciono le mie schiave belle",
 	LIRA_QUEST2_OPTION_JOIN_COMPETITION_YOURSELF = "Partecipa alla competizione tu stesso",
 	LIRA_QUEST2_OPTION_LIRA_JOIN_COMPETITION = "Fai partecipare Lira alla competizione",
+	LIRA_QUEST2_SHOOTING_SELF = """You make your way to the vendor. After you cover the entrance fee, he gives you a bow, then explains the rules: ten shots, with the score for each hit increasing every round, and better rewards for higher scores. It seems that most participants don't make it past the seventh target, so you're curious how you will do.
+
+As the vendor hands you the bow, you confidently take your position.
+
+The draw is heavier than you expected. You manage to keep your aim steady for the first few shots, but by the fourth arrow, your muscles are already burning, your hand beginning to tremble.""", # MISSING TRANSLATION
 	LIRA_QUEST2_OPTION_KEEP_SHOOTING = "Continua a tirare",
 	LIRA_QUEST2_OPTION_PUSH_TRAINED_MUSCLES_DRAW_FULL_STRING = "Usa i tuoi muscoli allenati per tendere la corda al massimo",
+	LIRA_QUEST2_SHOOTING_1 = """You grit your teeth and keep going, but your arms give out. The fifth arrow flies wide. The sixth barely grazes the target. By the seventh, you miss entirely. The vendor comes to you after you shoot your last arrow.
+
+{color=aqua|Vendor: — Ah, that was pretty close, but alas! Better luck next time!}
+
+You step back, shaking out your aching arms, and return to Lira's side. She watches you with a mix of concern and curiosity. Seeing that your mood was not soured much she gives you a reassuring smile.
+
+{color=yellow|Lira: — I think you did good, [master]. The challenge must be quite hard on purpose.}""", # MISSING TRANSLATION
+	LIRA_QUEST2_SHOOTING_2 = """You adjust your stance, plant your feet, and call on the strength you've built through your own training. Then draw the string fully. The arrow flies straight. Bullseye.
+
+You shoot again. Another bullseye. By the sixth shot, people are watching you with genuine interest, while the vendor's fake smile is barely holding.
+
+You keep shooting, and when the tenth shot lands dead center, the crowd erupts into applause.""", # MISSING TRANSLATION
+	LIRA_QUEST2_SHOOTING_3 = """The vendor forces his lips into a wider smile, though his eyes betray his less than welcoming gaze..
+
+{color=aqua|Vendor: — Well, well, well, looks like we've got a winner!}
+
+He waves you over, and you approach the booth, coming inside right after him. The vendor rummaging noisily through his stock, his face is clearly sour. Yet, when he emerges with the prize bow, he has the fake smile back on his face once again.
+
+{color=aqua|Vendor: — Ghm... right. Congratulations! A well-earned victory.}""", # MISSING TRANSLATION
+	LIRA_QUEST2_SHOOTING_4 = """He hands over the prize bow, polished and elegant, clearly worth the effort. You accept it with a nod, then leave the booth, feeling the burning gaze of the vendor drilling holes in your back.
+
+You return to Lira, who is watching you with wide, shining eyes.
+
+{color=yellow|Lira: — [master]... that was incredible! I didn't know you could shoot like that! Congratulations on your victory!}
+
+You take the compliments and thank her for rooting for you. Having won the grand prize, theres not reason for you to stay at the shooting range any longer, so soon you return to the central area.""", # MISSING TRANSLATION
+	LIRA_QUEST2_SHOOTING_LIRA_1 = """You look at Lira and notice her interest in the competition, as she watches intently while the current shooters try to score a decent result.""", # MISSING TRANSLATION
 	LIRA_QUEST2_OPTION_HEY_TRY_WIN_SOMETHING = "Ehi, perché non provi tu? Vinci qualcosa per il tuo [master].",
 	LIRA_QUEST2_OPTION_INTERESTED_AHEAD_MAYBE_YOULL_ENJOY = "Se ti interessa, vai pure. Magari ti divertirai.",
+	LIRA_QUEST2_SHOOTING_LIRA_2 = """{color=yellow|Lira: — Oh? You want me to participate, [master]?}
+
+She seems a bit shy at the request, but curiosity is written all over her face, so she quickly nods.
+
+{color=yellow|Lira: — Alright then, I'll try to do my best and make you proud of me, [master]!}""", # MISSING TRANSLATION
+	LIRA_QUEST2_SHOOTING_LIRA_3 = """{color=yellow|Lira: — I was just going to ask... It's like you can read my mind, [master]!}
+
+She looks at the struggling shooters, nods to herself, and turns back to you.
+
+{color=yellow|Lira: — I think I can do better than them... I'll make you proud of me, [master]!}""", # MISSING TRANSLATION
+	LIRA_QUEST2_SHOOTING_LIRA_4 = """You make your way to the vendor. After you cover the entrance fee, he gives Lira a bow, then explains the rules: ten shots, with the score for each hit increasing every round, and better rewards for higher scores. It seems that most participants don't make it past the seventh target, so you're curious how Lira will do.
+
+The first shot is a miss, the second one barely hits, scoring the lowest possible result.
+
+You watch Lira glance at her bow and think about something briefly. Then she draws it again, and you notice that her stance has changed a bit, now having more emphasis on her back muscles. The third shot is a hit. The fourth is a bullseye.""", # MISSING TRANSLATION
+	LIRA_QUEST2_SHOOTING_LIRA_5 = """As she hits the fifth, sixth, and seventh shots right into the bullseye, you look at the vendor and see that his smile begins to falter. It's clear to you that he's barely containing his anger as Lira beats his rigged game.
+
+She scores bullseyes with her eighth, ninth, and tenth shot, getting the highest score on the board and crossing the threshold for the grand prize. The crowd begins to loudly cheer her, putting a surprised expression on Lira's face.
+
+The vendor's eye is twitching, yet, after a momentary hesitation, he forces himself to plaster an even wider smile and steps out to the crowd.""", # MISSING TRANSLATION
+	LIRA_QUEST2_SHOOTING_LIRA_6 = """{color=aqua|Vendor: — C-c-congratulations to our winner! Ghm... See, people? Even an untrained slave girl can manage it! Come try your luck!}
+
+The stream of contenders seems to grow after the shout, and the vendor spends a couple of moments handling their payments.
+
+Lira comes back to your side, winded and sweaty, but with the biggest smile on her face.
+
+{color=yellow|Lira: — I-I did it, [master]! I hope I made you proud!}""", # MISSING TRANSLATION
 	LIRA_QUEST2_OPTION_PROUD_DID_GREAT = "Sono orgoglioso di te. Sei stata bravissima.",
 	LIRA_QUEST2_OPTION_SURE_DID_PRIZE = "Certo che sì. Ora andiamo a prendere quel premio.",
 	LIRA_QUEST2_OPTION_LOOKS_LIKE_SOMEONE_SORE_LOSER_FORGET = "Sembra che qualcuno non sappia perdere. Dimenticalo, Lira. Andiamo.",
 	LIRA_QUEST2_OPTION_MAYOR_ALIRON_LET_TELL_SOMETHING = "In quanto sindaco di Aliron, lascia che ti dica una cosa...",
+	LIRA_QUEST2_LIRA_VENDOR_IGNORE_1 = """You pat Lira on the shoulder and tell her to ignore the scammer, then leave the range behind. She nods, clutching the prize bow to her chest, still a little shaken.
+
+{color=yellow|Lira: — I just wanted to... I didn't mean to make him angry...}
+
+You explain to her that she did nothing wrong and how the game was rigged from the start.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_VENDOR_IGNORE_2 = """{color=yellow|Lira: — Oh... I see now. I knew I didn't break any rules, but was afraid to argue... I just don't like it when people are angry at me... Thank you for supporting me, [master]!}
+
+She manages a small smile, and the two of you walk away from the shooting range, soon returning to the central area.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_VENDOR_PUNISH_1 = """While putting your hand on Lira's shoulder to calm her down, you inform the vendor that while he may be banning Lira from the shooting range, you, as the Mayor of Aliron, are banning him from participating in any further fairs. Additionally, you will make sure that if anyone else organizes a shooting range, especially any associated with him, it will be thoroughly checked, including the real draw weight of the bows.
+
+The vendor at first seemed like he was going to argue, yet hearing your title made him finally take a closer look at you, after which he closed his mouth and went pale, the only thing showing his emotions were his fury-filled eyes.
+
+After giving him a piece of your mind, you and Lira walk out of the booth.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_VENDOR_PUNISH_2 = """{color=yellow|Lira: — I haven't seen you so angry before, [master]... But I'm kinda... kinda glad you protected me... Thank you, [master].}
+
+The small smile returned to her face. The two of you walk away from the shooting range, soon returning to the central area.""", # MISSING TRANSLATION
+	LIRA_QUEST2_FAIR_ELVEN = """You follow the signs marking the guest section and soon step into the elven territory.
+
+The stalls here seem to be built in a different way, and the vendors aren't shouting their invitations every minute, but overall there isn't much difference between this and the regular part. The crowd here is no thinner than before, and no one pays much attention to the two of you.
+
+Lira, who was a bit tense upon stepping into this part, seems to relax. As you walk next to the stalls, she even begins to point out things that are familiar to her.
+
+{color=yellow|Lira: — Oh, I know these herbs... We used to gather similar ones in the temple. They were used in some rituals... It feels kind of nostalgic to see them here...}
+
+She moves to the next stall.""", # MISSING TRANSLATION
 	LIRA_QUEST2_OPTION_EXCUSE_COMPANION_ASKED_QUESTION = "Mi scusi. La mia compagna ha fatto una domanda.",
 	LIRA_QUEST2_OPTION_MUCH_DOLL = "Quanto costa quella bambola?",
 	LIRA_QUEST2_OPTION_MEANING = "Che significa tutto questo?",
@@ -26402,10 +26941,50 @@ She lifts her gaze, and her eyes are bright.
 	LIRA_QUEST2_OPTION_NAH_STAY_HANDLE = "No, resta qui, me ne occupo io",
 	LIRA_QUEST2_OPTION_SLAVE_DOESNT_NEED_MONEY_PROVIDE_EVERYTHING = "Una schiava non ha bisogno di soldi. Provvedo io a tutto ciò di cui hai bisogno",
 	LIRA_QUEST2_OPTION_EARNED_YOURS = "Te la sei guadagnata. È tua",
+	LIRA_QUEST2_LIRA_BRAWL_5 = """She nods immediately and presents the pouch to you.
+
+{color=yellow|Lira: — Of course... I understand, [master].}""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_BRAWL_6 = """She looks at the coins again, then back at you. Her brow furrows slightly.
+
+{color=yellow|Lira: — Mine...? Thank you, [master]. I'll try to use them wisely.}
+
+She closes her fingers around the coins, tucking them into her robe carefully, like something precious.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_BRAWL_RETURN = """Done with the sudden event, you get back to the bench as rest for a short while, before returning back to the central area of the fair.""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_FAIR_FINISH = """Between all the wandering and wondering, the day slipped away without you noticing. The fair is winding down. The crowd has thinned, and the vendors are packing their wares. The music has faded to a distant melody, the lanterns casting long shadows across the cobblestones.
+
+You're about to turn toward the mansion when something catches your eye near a half‑packed stall. Most of the wares are just the usual garments: simple maid dresses, tavern‑girl skirts, nothing you haven't seen a dozen times before, but at the very end of the rack hangs something different.""", # MISSING TRANSLATION
 	LIRA_QUEST2_OPTION_THINK_MIGHT_ABLE_HELP = "Penso che potremmo essere in grado di aiutare",
 	LIRA_QUEST2_OPTION_DON_WEAR_LIRA = "Perché non la indossi tu, Lira?",
 	LIRA_QUEST2_OPTION_WORRY_SOMEONE_ELSES_OPINION_SHOULDNT_FOCUS = "Perché ti preoccupi dell'opinione degli altri? Non dovresti concentrarti su quello che pensa il tuo [master]? E perché dovresti nascondere il tuo corpo? Lascia che vedano ciò che sono orgoglioso di possedere!",
 	LIRA_QUEST2_OPTION_SAY_DISLIKE_MEANING_YOUD_WEAR_OPINION = "Non hai detto che non ti piace, il che significa che la indosseresti se non fosse per l'opinione degli altri. Ma perché te ne importa? Se vuoi sentirti libera, dovresti smettere di temere quello che gli altri potrebbero pensare o dire!",
+	LIRA_QUEST2_LIRA_OUTFIT_1_1 = """Lira blinks.
+
+{color=yellow|Lira: — Proud?... For wearing it?... But... Well...}
+
+She looks at the costume again, and besides hesitation you notice that there is both acceptance and curiocity in her expression.
+
+{color=yellow|Lira: — I'd never thought I would wear something like that in public... But I can't pretend I haven't been thinking about it ever since you pointed it out. And knowing that you like it... maybe that's enough. Maybe my worries truly are outdated.}""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_OUTFIT_2_1 = """She looks at her current clothing, then pulls down her old hood.
+
+{color=yellow|Lira: — I'm not a priestess anymore. I'm not even welcome among the elves. Why should I worry about keeping a pure appearance or abide by the elven rules? If [master] likes my body and wants me to show more of it...}
+
+She meets your eyes, and a small, genuine smile touches her lips.
+
+{color=yellow|Lira: — Then I want to wear it. For you, [master]. And maybe... for me, too.}""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_OUTFIT_1_2 = """Lira stares at you for a moment, the words sinking in.
+
+{color=yellow|Lira: — Stop fearing... to be free?... Huh... If only it was that easy...}
+
+She looks down at her hands, then back at the costume, then up at you.
+
+{color=yellow|Lira: — But then again, maybe this moment is exactly what I needed... With you pushing me forward, I shall forget all the dogmas and taboos that were forced on me and do what I want to... At the end of the day, what is there even to lose for me?}""", # MISSING TRANSLATION
+	LIRA_QUEST2_LIRA_OUTFIT_2_2 = """Her hand reaches out to brush the feathers.
+
+{color=yellow|Lira: — I'd be lying if I said I didn't want to try it on... Ever since I saw it, I keep imagining what it would feel like to be this bold... Imagining myself in it somehow gives me that rebellious, freeing feeling I used to feel whenever I sneaked out of my room after curfew... And when I think about others seeing me in it, there's a strange feeling in my stomach...}
+
+She looks up at you, and there's a fire in her eyes that wasn't there before.
+
+{color=yellow|Lira: — So maybe it's time for me to stop imagining and start acting on my desires. Thank you for opening my eyes, [master]! You were right, I do want to wear it! Not just for your pleasure, but also for my own.}""", # MISSING TRANSLATION
 	LIRA_QUEST2_OPTION_LOOK_INCREDIBLE = "Sei incredibile.",
 	LIRA_QUEST2_OPTION_LIKE_MEANT_WEAR = "È come se fossi nata per indossarla.",
 	LIRA_QUEST2_OPTION_COURSE = "Certo.",

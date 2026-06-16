@@ -271,17 +271,15 @@ __meta__ = {
 }
 
 [node name="name" type="Label" parent="SellBlock/ScrollContainer/VBoxContainer/Button"]
-margin_left = 69.0
+margin_left = 65.0
 margin_top = 6.0
-margin_right = 279.0
+margin_right = 346.0
 margin_bottom = 41.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 8 )
 text = "Test"
+valign = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="price" type="Label" parent="SellBlock/ScrollContainer/VBoxContainer/Button"]
 anchor_left = 1.0
@@ -388,13 +386,14 @@ __meta__ = {
 }
 
 [node name="name" type="Label" parent="BuyBlock/ScrollContainer/VBoxContainer/Button"]
-margin_left = 69.0
+margin_left = 63.0
 margin_top = 5.0
-margin_right = 279.0
+margin_right = 343.0
 margin_bottom = 40.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 8 )
 text = "Test"
+valign = 1
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false

@@ -329,6 +329,12 @@ func refine_target(skill, caster, ttarget): #s_skill, caster, target
 			for i in range(avtargets.size()):
 				if avtargets[i].hp > avtargets[t].hp: t = i
 			return avtargets[t]
+		variables.NT_OTHER_ALLY:
+			var avtargets = combatnode.get_allied_targets(caster)
+			avtargets.erase(caster)
+			if avtargets.empty():
+				return null
+			return input_handler.random_from_array(avtargets)
 
 #real queue part
 func invoke():

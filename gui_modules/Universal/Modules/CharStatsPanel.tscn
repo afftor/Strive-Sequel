@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
@@ -11,6 +11,20 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=9]
 [ext_resource path="res://gui_modules/Universal/Scripts/CharSmallStatsPanel.gd" type="Script" id=10]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_charinfo_l.png" type="Texture" id=11]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HScrollBarElegant.tres" type="Theme" id=12]
+[ext_resource path="res://assets/images/iconstraits/cross.png" type="Texture" id=13]
+[ext_resource path="res://gui_modules/Universal/Scripts/CharStatsPanelEntry.gd" type="Script" id=14]
+[ext_resource path="res://assets/images/iconstraits/grey.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/traitpanel/button_traits_universal.png" type="Texture" id=16]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Buttons/buttonskill_prof.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gui/universal/skill_frame.png" type="Texture" id=18]
+[ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=19]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=20]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_big.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats_hover.png" type="Texture" id=22]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats.png" type="Texture" id=23]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats_pressed.png" type="Texture" id=24]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=25]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -31,9 +45,6 @@ show_behind_parent = true
 margin_right = 694.0
 margin_bottom = 504.0
 texture = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 visible = false
@@ -46,33 +57,30 @@ margin_bottom = 898.0
 margin_left = 188.0
 margin_top = 123.0
 margin_right = 679.0
-margin_bottom = 202.0
+margin_bottom = 161.0
 columns = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 119.0
-margin_bottom = 35.0
+margin_right = 120.0
+margin_bottom = 33.0
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
 text = "Health: "
 align = 2
 
 [node name="hp" type="Label" parent="VBoxContainer"]
-margin_left = 123.0
-margin_right = 242.0
-margin_bottom = 35.0
+margin_left = 124.0
+margin_right = 244.0
+margin_bottom = 33.0
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
 text = "100/100"
 
 [node name="Label3" type="Label" parent="VBoxContainer"]
 visible = false
-margin_left = 264.0
-margin_right = 392.0
-margin_bottom = 24.0
+margin_left = 248.0
+margin_right = 368.0
+margin_bottom = 33.0
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
 text = "Energy:"
@@ -80,26 +88,26 @@ align = 2
 
 [node name="energy" type="Label" parent="VBoxContainer"]
 visible = false
-margin_left = 264.0
-margin_right = 392.0
-margin_bottom = 24.0
+margin_left = 372.0
+margin_right = 491.0
+margin_bottom = 33.0
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
 text = "100/100"
 
 [node name="Label6" type="Label" parent="VBoxContainer"]
-margin_left = 246.0
-margin_right = 365.0
-margin_bottom = 35.0
+margin_left = 248.0
+margin_right = 368.0
+margin_bottom = 33.0
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
 text = "Mana:"
 align = 2
 
 [node name="mp" type="Label" parent="VBoxContainer"]
-margin_left = 369.0
-margin_right = 488.0
-margin_bottom = 35.0
+margin_left = 372.0
+margin_right = 491.0
+margin_bottom = 33.0
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
 text = "100/100"
@@ -112,13 +120,10 @@ margin_bottom = 427.993
 custom_constants/vseparation = 7
 custom_constants/hseparation = 0
 columns = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="label_atk" type="Label" parent="base stats"]
-margin_right = 163.0
-margin_bottom = 35.0
+margin_right = 166.0
+margin_bottom = 33.0
 mouse_filter = 1
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
@@ -126,17 +131,17 @@ text = "ATK:"
 align = 2
 
 [node name="atk" type="Label" parent="base stats"]
-margin_left = 163.0
-margin_right = 189.0
-margin_bottom = 35.0
+margin_left = 166.0
+margin_right = 190.0
+margin_bottom = 33.0
 mouse_filter = 1
 theme = ExtResource( 1 )
 text = "25"
 
 [node name="label_matk" type="Label" parent="base stats"]
-margin_left = 189.0
-margin_right = 352.0
-margin_bottom = 35.0
+margin_left = 190.0
+margin_right = 355.0
+margin_bottom = 33.0
 mouse_filter = 1
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
@@ -144,17 +149,17 @@ text = "MATK:"
 align = 2
 
 [node name="matk" type="Label" parent="base stats"]
-margin_left = 352.0
-margin_right = 378.0
-margin_bottom = 35.0
+margin_left = 355.0
+margin_right = 379.0
+margin_bottom = 33.0
 mouse_filter = 1
 theme = ExtResource( 1 )
 text = "20"
 
 [node name="label_armor" type="Label" parent="base stats"]
-margin_top = 42.0
-margin_right = 163.0
-margin_bottom = 77.0
+margin_top = 40.0
+margin_right = 166.0
+margin_bottom = 73.0
 mouse_filter = 1
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
@@ -162,19 +167,19 @@ text = "DEF:"
 align = 2
 
 [node name="armor" type="Label" parent="base stats"]
-margin_left = 163.0
-margin_top = 42.0
-margin_right = 189.0
-margin_bottom = 77.0
+margin_left = 166.0
+margin_top = 40.0
+margin_right = 190.0
+margin_bottom = 73.0
 mouse_filter = 1
 theme = ExtResource( 1 )
 text = "15"
 
 [node name="label_mdef" type="Label" parent="base stats"]
-margin_left = 189.0
-margin_top = 42.0
-margin_right = 352.0
-margin_bottom = 77.0
+margin_left = 190.0
+margin_top = 40.0
+margin_right = 355.0
+margin_bottom = 73.0
 mouse_filter = 1
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
@@ -182,18 +187,18 @@ text = "MDEF:"
 align = 2
 
 [node name="mdef" type="Label" parent="base stats"]
-margin_left = 352.0
-margin_top = 42.0
-margin_right = 378.0
-margin_bottom = 77.0
+margin_left = 355.0
+margin_top = 40.0
+margin_right = 379.0
+margin_bottom = 73.0
 mouse_filter = 1
 theme = ExtResource( 1 )
 text = "20"
 
 [node name="label_hitrate" type="Label" parent="base stats"]
-margin_top = 84.0
-margin_right = 163.0
-margin_bottom = 119.0
+margin_top = 80.0
+margin_right = 166.0
+margin_bottom = 113.0
 mouse_filter = 1
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
@@ -201,19 +206,19 @@ text = "Hit Rate:"
 align = 2
 
 [node name="hitrate" type="Label" parent="base stats"]
-margin_left = 163.0
-margin_top = 84.0
-margin_right = 189.0
-margin_bottom = 119.0
+margin_left = 166.0
+margin_top = 80.0
+margin_right = 190.0
+margin_bottom = 113.0
 mouse_filter = 1
 theme = ExtResource( 1 )
 text = "15"
 
 [node name="label_evasion" type="Label" parent="base stats"]
-margin_left = 189.0
-margin_top = 84.0
-margin_right = 352.0
-margin_bottom = 119.0
+margin_left = 190.0
+margin_top = 80.0
+margin_right = 355.0
+margin_bottom = 113.0
 mouse_filter = 1
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
@@ -221,18 +226,18 @@ text = "Evasion:"
 align = 2
 
 [node name="evasion" type="Label" parent="base stats"]
-margin_left = 352.0
-margin_top = 84.0
-margin_right = 378.0
-margin_bottom = 119.0
+margin_left = 355.0
+margin_top = 80.0
+margin_right = 379.0
+margin_bottom = 113.0
 mouse_filter = 1
 theme = ExtResource( 1 )
 text = "20"
 
 [node name="label_speed" type="Label" parent="base stats"]
-margin_top = 126.0
-margin_right = 163.0
-margin_bottom = 161.0
+margin_top = 120.0
+margin_right = 166.0
+margin_bottom = 153.0
 mouse_filter = 1
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
@@ -240,19 +245,19 @@ text = "Speed:"
 align = 2
 
 [node name="speed" type="Label" parent="base stats"]
-margin_left = 163.0
-margin_top = 126.0
-margin_right = 189.0
-margin_bottom = 161.0
+margin_left = 166.0
+margin_top = 120.0
+margin_right = 190.0
+margin_bottom = 153.0
 mouse_filter = 1
 theme = ExtResource( 1 )
 text = "15"
 
 [node name="label_armorpenetration" type="Label" parent="base stats"]
-margin_left = 189.0
-margin_top = 126.0
-margin_right = 352.0
-margin_bottom = 161.0
+margin_left = 190.0
+margin_top = 120.0
+margin_right = 355.0
+margin_bottom = 153.0
 mouse_filter = 1
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
@@ -260,18 +265,18 @@ text = "Armor Pen.:"
 align = 2
 
 [node name="armorpenetration" type="Label" parent="base stats"]
-margin_left = 352.0
-margin_top = 126.0
-margin_right = 378.0
-margin_bottom = 161.0
+margin_left = 355.0
+margin_top = 120.0
+margin_right = 379.0
+margin_bottom = 153.0
 mouse_filter = 1
 theme = ExtResource( 1 )
 text = "20"
 
 [node name="label_critchance" type="Label" parent="base stats"]
-margin_top = 168.0
-margin_right = 163.0
-margin_bottom = 203.0
+margin_top = 160.0
+margin_right = 166.0
+margin_bottom = 193.0
 mouse_filter = 1
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
@@ -279,19 +284,19 @@ text = "Critical:"
 align = 2
 
 [node name="critchance" type="Label" parent="base stats"]
-margin_left = 163.0
-margin_top = 168.0
-margin_right = 189.0
-margin_bottom = 203.0
+margin_left = 166.0
+margin_top = 160.0
+margin_right = 190.0
+margin_bottom = 193.0
 mouse_filter = 1
 theme = ExtResource( 1 )
 text = "15"
 
 [node name="label_critmod" type="Label" parent="base stats"]
-margin_left = 189.0
-margin_top = 168.0
-margin_right = 352.0
-margin_bottom = 203.0
+margin_left = 190.0
+margin_top = 160.0
+margin_right = 355.0
+margin_bottom = 193.0
 mouse_filter = 1
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
@@ -299,10 +304,10 @@ text = "Critical Mod:"
 align = 2
 
 [node name="critmod" type="Label" parent="base stats"]
-margin_left = 352.0
-margin_top = 168.0
-margin_right = 378.0
-margin_bottom = 203.0
+margin_left = 355.0
+margin_top = 160.0
+margin_right = 379.0
+margin_bottom = 193.0
 mouse_filter = 1
 theme = ExtResource( 1 )
 text = "20"
@@ -315,17 +320,14 @@ margin_bottom = 421.0
 custom_constants/vseparation = 7
 custom_constants/hseparation = 0
 columns = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="resists"]
 visible = false
-margin_right = 88.0
+margin_right = 61.0
 margin_bottom = 27.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "Attack:"
 align = 2
 
@@ -333,8 +335,8 @@ align = 2
 visible = false
 margin_right = 22.0
 margin_bottom = 27.0
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "25"
 
 [node name="Label" type="Label" parent="."]
@@ -349,23 +351,15 @@ valign = 1
 
 [node name="name" type="Label" parent="."]
 margin_left = 288.153
-margin_top = 12.0734
+margin_top = 46.0734
 margin_right = 568.153
-margin_bottom = 47.0734
+margin_bottom = 81.0734
 theme = ExtResource( 1 )
 text = "Name"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="CloseButton" type="TextureButton" parent="."]
-margin_left = 665.071
-margin_right = 694.071
-margin_bottom = 29.0
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 7 )
-texture_hover = ExtResource( 6 )
 
 [node name="buffscontainer" type="HBoxContainer" parent="."]
 modulate = Color( 1, 1, 1, 0.823529 )
@@ -377,9 +371,6 @@ margin_top = 440.0
 margin_right = 686.0
 margin_bottom = 496.0
 custom_constants/separation = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Button" type="TextureRect" parent="buffscontainer"]
 visible = false
@@ -396,8 +387,8 @@ margin_left = 2.0
 margin_top = 23.7062
 margin_right = 50.9999
 margin_bottom = 50.7062
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "5"
 align = 1
 __meta__ = {
@@ -417,8 +408,233 @@ __meta__ = {
 
 [node name="Portrait" type="TextureRect" parent="."]
 margin_left = 36.0
-margin_top = 19.0
+margin_top = 18.0
 margin_right = 206.0
-margin_bottom = 189.0
+margin_bottom = 208.0
 expand = true
 stretch_mode = 6
+
+[node name="abilities" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="bg" type="TextureRect" parent="abilities"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 19 )
+expand = true
+
+[node name="TextureRect" type="NinePatchRect" parent="abilities"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 21 )
+patch_margin_left = 73
+patch_margin_top = 78
+patch_margin_right = 73
+patch_margin_bottom = 26
+
+[node name="name" type="Label" parent="abilities"]
+anchor_right = 1.0
+margin_top = 49.0
+margin_bottom = 87.0
+theme = ExtResource( 1 )
+text = "Name"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="abilities"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 13.0
+margin_top = 84.0
+margin_right = -13.0
+margin_bottom = -40.0
+theme = ExtResource( 20 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="abilities/ScrollContainer"]
+margin_right = 668.0
+margin_bottom = 53.0
+size_flags_horizontal = 3
+
+[node name="class_scroll" type="ScrollContainer" parent="abilities/ScrollContainer/VBoxContainer"]
+margin_right = 668.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 0, 53 )
+theme = ExtResource( 12 )
+
+[node name="class_container" type="HBoxContainer" parent="abilities/ScrollContainer/VBoxContainer/class_scroll"]
+modulate = Color( 1, 1, 1, 0.823529 )
+self_modulate = Color( 1, 1, 1, 0.823529 )
+show_behind_parent = true
+light_mask = 0
+custom_constants/separation = 5
+
+[node name="icon" type="TextureRect" parent="abilities/ScrollContainer/VBoxContainer/class_scroll/class_container"]
+visible = false
+show_behind_parent = true
+margin_right = 53.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 53, 53 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+
+[node name="bg" type="TextureRect" parent="abilities/ScrollContainer/VBoxContainer/class_scroll/class_container/icon"]
+show_behind_parent = true
+margin_right = 53.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 53, 53 )
+texture = ExtResource( 4 )
+expand = true
+
+[node name="class_frame" type="TextureRect" parent="abilities/ScrollContainer/VBoxContainer/class_scroll/class_container/icon"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 17 )
+expand = true
+
+[node name="entry" type="Control" parent="abilities/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 57.0
+margin_right = 668.0
+margin_bottom = 117.0
+rect_min_size = Vector2( 0, 60 )
+script = ExtResource( 14 )
+
+[node name="icon" type="TextureRect" parent="abilities/ScrollContainer/VBoxContainer/entry"]
+show_behind_parent = true
+margin_right = 53.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 53, 53 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+
+[node name="bg" type="TextureRect" parent="abilities/ScrollContainer/VBoxContainer/entry/icon"]
+show_behind_parent = true
+margin_right = 53.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 53, 53 )
+texture = ExtResource( 4 )
+expand = true
+
+[node name="simple_icon_bg" type="TextureRect" parent="abilities/ScrollContainer/VBoxContainer/entry/icon"]
+visible = false
+show_behind_parent = true
+margin_right = 53.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 53, 53 )
+texture = ExtResource( 15 )
+expand = true
+
+[node name="cross" type="TextureRect" parent="abilities/ScrollContainer/VBoxContainer/entry/icon"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -16.5
+margin_top = -16.5
+margin_right = 16.5
+margin_bottom = 16.5
+mouse_filter = 2
+texture = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="skill_frame" type="TextureRect" parent="abilities/ScrollContainer/VBoxContainer/entry/icon"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 18 )
+expand = true
+
+[node name="simple_icon_frame" type="TextureRect" parent="abilities/ScrollContainer/VBoxContainer/entry/icon"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 16 )
+expand = true
+
+[node name="name" type="Label" parent="abilities/ScrollContainer/VBoxContainer/entry"]
+anchor_right = 1.0
+margin_left = 64.0
+margin_bottom = 29.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Skill name"
+
+[node name="desc" type="RichTextLabel" parent="abilities/ScrollContainer/VBoxContainer/entry"]
+margin_left = 64.0
+margin_top = 24.0
+margin_right = 669.0
+margin_bottom = 54.0
+custom_fonts/normal_font = ExtResource( 3 )
+bbcode_enabled = true
+bbcode_text = "Description"
+text = "Description"
+fit_content_height = true
+
+[node name="CloseButton" type="TextureButton" parent="."]
+margin_left = 665.071
+margin_right = 694.071
+margin_bottom = 29.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
+
+[node name="general_tab" type="TextureButton" parent="."]
+margin_left = 340.0
+margin_top = 10.0
+margin_right = 468.0
+margin_bottom = 43.0
+rect_scale = Vector2( -1, 1 )
+toggle_mode = true
+texture_normal = ExtResource( 23 )
+texture_pressed = ExtResource( 24 )
+texture_hover = ExtResource( 22 )
+expand = true
+
+[node name="Label" type="Label" parent="general_tab"]
+margin_left = 112.0
+margin_top = -1.0
+margin_right = 223.0
+margin_bottom = 32.0
+rect_scale = Vector2( -1, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 25 )
+text = "CHARSMALLTAB_GEN"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="abilities_tab" type="TextureButton" parent="."]
+margin_left = 340.0
+margin_top = 10.0
+margin_right = 468.0
+margin_bottom = 43.0
+toggle_mode = true
+texture_normal = ExtResource( 23 )
+texture_pressed = ExtResource( 24 )
+texture_hover = ExtResource( 22 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="abilities_tab"]
+margin_left = 4.0
+margin_top = -1.0
+margin_right = 106.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 25 )
+text = "CHARSMALLTAB_ABIL"
+align = 1
+valign = 1
+clip_text = true
