@@ -1291,8 +1291,6 @@ func count_action_consent(action, giver, taker):
 
 	if participants.size() > 2 && action.givers.size() + action.takers.size() < participants.size() && !action.code in ['subdue','rope','orgasm_denial']:
 		if giver.sex_traits.has("shameless"):
-			pass
-		elif giver.sex_traits.has("exhibitionist"):
 			giver_consent += 1
 			giver_text += tr("INTERACTION_CONSENT_OBSERVED_EXHIBITIONIST")
 		else:
@@ -1300,8 +1298,6 @@ func count_action_consent(action, giver, taker):
 			giver_text += tr("INTERACTION_CONSENT_OBSERVED")
 
 		if taker.sex_traits.has("shameless"):
-			pass
-		elif taker.sex_traits.has("exhibitionist"):
 			taker_consent += 1
 			taker_text += tr("INTERACTION_CONSENT_OBSERVED_EXHIBITIONIST")
 		else:
@@ -1334,8 +1330,6 @@ func count_action_consent(action, giver, taker):
 
 	if action.givertags.has("anal"):
 		if giver.sex_traits.has("anal"):
-			pass
-		elif giver.sex_traits.has('anal_like'):
 			giver_consent += 1
 			giver_text += tr("INTERACTION_CONSENT_ANAL_LIKES")
 		else:
@@ -1344,8 +1338,6 @@ func count_action_consent(action, giver, taker):
 
 	if action.takertags.has("anal"):
 		if taker.sex_traits.has("anal"):
-			pass
-		elif taker.sex_traits.has('anal_like'):
 			taker_consent += 1
 			taker_text += tr("INTERACTION_CONSENT_ANAL_LIKES")
 		else:

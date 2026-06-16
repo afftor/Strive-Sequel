@@ -134,6 +134,7 @@ var effect_table = {
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png",
 			description = "TRAITEFFECTLOVERS",
+			relationship_statuses = ['lovers', 'freelovers'],
 			tags = ['show_in_traits', 'mansion_only']
 		}
 		],
@@ -148,6 +149,7 @@ var effect_table = {
 			{
 			icon = "res://assets/images/iconstraits/trait_friends.png",
 			description = "TRAITEFFECTFRIENDS",
+			relationship_statuses = ['friends'],
 			tags = ['show_in_traits', 'mansion_only']
 		}
 		],
@@ -162,6 +164,7 @@ var effect_table = {
 			{
 			icon = "res://assets/images/iconstraits/trait_rivals.png",
 			description = "TRAITEFFECTRIVAL",
+			relationship_statuses = ['rivals'],
 			tags = ['show_in_traits', 'mansion_only']
 		}
 		],
@@ -383,7 +386,7 @@ var effect_table = {
 		duration = 'arg',
 		sub_effects = [],
 		tags = ['addition_rest_tick', 'no_combat', 'on_dead', 'injury'],# need to implement person.has_status('no_combat') check in exploration interface
-		statchanges = {productivity = -0.25, sexuals_bonus = -50},
+		statchanges = {productivity = -0.25},
 		buffs = [
 			{#to fix
 				icon = "res://assets/images/iconsskills/icon_blood_explosion.png",

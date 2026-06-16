@@ -703,7 +703,7 @@ var data = {
 		reqs = [
 
 		],
-		unique_character = "daisy",
+		character = "$daisy",
 		text = [
 			{
 				text = "DIALOGUEDAISYINITIATEL",
@@ -794,7 +794,7 @@ var data = {
 		reqs = [
 
 		],
-		unique_character = "daisy",
+		character = "$daisy",
 		text = [
 			{
 				text = "DAISY_EXTRA_REPLY_1_1_NO",
@@ -857,7 +857,7 @@ var data = {
 		reqs = [
 
 		],
-		unique_character = "daisy",
+		character = "$daisy",
 		text = [
 			{
 				text = "DAISY_EXTRA_REPLY_1_2_NO",
@@ -920,7 +920,7 @@ var data = {
 		reqs = [
 
 		],
-		unique_character = "daisy",
+		character = "$daisy",
 		text = [
 			{
 				text = "DAISY_SERVE_START_1",
@@ -1277,7 +1277,7 @@ var data = {
 		reqs = [
 
 		],
-		unique_character = "mae",
+		character = "$mae",
 		text = [
 			{
 				text = "MAE_EXTRA_GREET",
@@ -1466,7 +1466,7 @@ var data = {
 		reqs = [
 
 		],
-		unique_character = "cali",
+		character = "$cali",
 		text = [
 			{
 				text = "DIALOGUECALIINITIATELP",
@@ -1645,7 +1645,7 @@ var data = {
 		reqs = [
 
 		],
-		unique_character = "cali",
+		character = "$cali",
 		scene_type = "unlocked_gallery_seq",
 		unlocked_gallery_seq = "cali_riding",
 		save_scene_to_gallery = true,

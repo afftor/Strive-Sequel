@@ -410,6 +410,7 @@ var TranslationDict = {
 	REQCONFLICTCLASS = "Classe conflictuelle",
 	REQHASANYCLASS = "A n'importe quelle classe",
 	REQRACE = "Race",
+	REQCONFLICTRACE = """Conflicting Race""", # MISSING TRANSLATION
 	REQRACEISBEAST = "Uniquement pour les races bestiales",
 	REQMUSTHAVEGEAR = "Doit avoir",
 	REQMUSTHAVEGEAR_FALSE = """Must not have""", # MISSING TRANSLATION
@@ -2663,6 +2664,8 @@ Damage +15%, Health +20.""", # MISSING TRANSLATION
 	STATENCHCAP = "Capacité d'enchantement", 
 	STATQUALITY = "Qualité",
 	STATPRICE = "Valeur",
+	STATCOUNTERATTACKS = """Counterattacks remained""", # MISSING TRANSLATION
+	STATCOUNTERATTACKS_MAX = """Counterattacks per turn""", # MISSING TRANSLATION
 	STATCHG_STRENGTH = """Strength Charges""", # MISSING TRANSLATION
 	STATCHG_STRENGTH_MAX = """Strength Max. Charges""", # MISSING TRANSLATION
 	STATCHG_PERSUASION = """Persuasion Charges""", # MISSING TRANSLATION
@@ -2947,6 +2950,24 @@ Damage +15%, Health +20.""", # MISSING TRANSLATION
 	
 	RACERATKIN = "Ratkin",
 	RACERATKINADJ = "Ratkin",
+	SHORT_RACE_GREEN_SKIN = """greenskin""", # MISSING TRANSLATION
+	SHORT_RACE_HORSE = """horse""", # MISSING TRANSLATION
+	SHORT_RACE_SPIDER = """spider""", # MISSING TRANSLATION
+	SHORT_RACE_DRAGON = """dragon""", # MISSING TRANSLATION
+	SHORT_RACE_ANGEL = """angel""", # MISSING TRANSLATION
+	SHORT_RACE_COW = """cow""", # MISSING TRANSLATION
+	SHORT_RACE_SQUID = """squid""", # MISSING TRANSLATION
+	SHORT_RACE_SCYLA = """scyla""", # MISSING TRANSLATION
+	SHORT_RACE_FISH = """fish""", # MISSING TRANSLATION
+	SHORT_RACE_SNAKE = """snake""", # MISSING TRANSLATION
+	SHORT_RACE_WOLF = """wolf""", # MISSING TRANSLATION
+	SHORT_RACE_FOX = """fox""", # MISSING TRANSLATION
+	SHORT_RACE_BUNNY = """bunny""", # MISSING TRANSLATION
+	SHORT_RACE_TANUKI = """tanuki""", # MISSING TRANSLATION
+	SHORT_RACE_CAT = """cat""", # MISSING TRANSLATION
+	SHORT_RACE_FELINE = """feline""", # MISSING TRANSLATION
+	SHORT_RACE_RACCOON = """raccoon""", # MISSING TRANSLATION
+	SHORT_RACE_RAT = """rat""", # MISSING TRANSLATION
 	
 	
 	RACEHUMANDESCRIPT = "Les humains sont l'une des races les plus communes. Leur force réside dans leur nombre et leur flexibilité, mais ils sont généralement assez faibles en magie et ont un faible potentiel de croissance. Seuls quelques humains exceptionnels ont accompli des exploits remarquables. \nLa société humaine est plutôt ouverte aux autres, mais aussi prompte à se mettre en colère et à déclencher des guerres, même entre eux. Bien que certains puissent se montrer pudibonds, surtout en public, les humains sont en général très actifs sexuellement et ne s'éloignent pas des autres races humanoïdes. ",
@@ -4549,6 +4570,11 @@ Next application of Freeze is guaranteed.""", # MISSING TRANSLATION
 	SEXTRAITDESIRED = "Désiré",
 	SEXTRAITCURIOUS = "Curieux",
 	SEXTRAITLIFE_POWER = "Puissance vitale",
+	TRAITCALMING_TOUCH = """Calming Touch""", # MISSING TRANSLATION
+	TRAITEMPATHIC_INSIGHT = """Empathic Insight""", # MISSING TRANSLATION
+	TRAITREFRESHING_PULSE = """Refreshing Pulse""", # MISSING TRANSLATION
+	TRAITTEASING_WINDS = """Teasing Winds""", # MISSING TRANSLATION
+	TRAITDARK_RAPTURE = """Dark Rapture""", # MISSING TRANSLATION
 
 	SEXSKILLSDESCRIPT = "Les compétences sexuelles améliorent les performances du personnage lors des interactions et affectent la stat Sexuals. Une compétence sexuelle plus élevée rendra le partenaire plus excité par les actions du personnage. \nLes compétences sexuelles sont augmentées lors de l'exécution d'une action connexe et leur croissance dépend du facteur sexuel",
 	SEXSKILLORAL = "Oral",
@@ -4615,6 +4641,21 @@ Next application of Freeze is guaranteed.""", # MISSING TRANSLATION
 	SEXTRAITDESIREDDESCRIPT = "[name] est extrêmement séduisant, ce qui rend [ses] partenaires plus excités. L'excitation des partenaires est augmentée de 25%",
 	SEXTRAITCURIOUSDESCRIPT = "Bien que [name] soit intéressé par le sexe, [il] apprend bien plus que cela. Les rencontres sexuelles augmentent l'expérience de 25 %.",
 	SEXTRAITLIFE_POWERDESCRIPT = "Le sexe est rafraîchissant pour [name]. Récupère 10 points de vie par orgasme après une interaction sexuelle. ",
+	TRAITCALMING_TOUCHDESCRIPT = """Sex Interaction Spell: Calming Touch
+
+Reduces target's accumulated stress over non-consensual actions. 3 mana. Can only be cast once.""", # MISSING TRANSLATION
+	TRAITEMPATHIC_INSIGHTDESCRIPT = """Sex Interaction Spell: Empathic Insight
+
+Look inside everyone's hearts to Gain 3 Connection points. 6 Mana. Can only be cast once.""", # MISSING TRANSLATION
+	TRAITREFRESHING_PULSEDESCRIPT = """Sex Interaction Spell: Refreshing Pulse
+
+Restore 2 turns for all participants. 8 Mana, can only be cast once.""", # MISSING TRANSLATION
+	TRAITTEASING_WINDSDESCRIPT = """Sex Interaction Spell: Teasing Winds
+
+Greatly improves hornyness and arousal without making target orgasm. 5 Mana.""", # MISSING TRANSLATION
+	TRAITDARK_RAPTUREDESCRIPT = """Sex Interaction Spell: Dark Rapture
+
+Forces target to orgasm against their will with slight impact over consent. 7 Mana.""", # MISSING TRANSLATION
 
 
 # SEXTRAITGROUPDESCRIPT = "[name] aime s'occuper de plusieurs partenaires à la fois. Les actions de groupe donnent à 33% plus de désir et d'excitation. ",
@@ -5829,6 +5870,7 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYOGRE_MAGE = "Mage ogre",
 	ENEMYGRYPHON = "Gryphon",
 	ENEMYELDER_GRYPHON_BOSS = "Gryphon Ancien",
+	ENEMYTORNADO = """Tornado""", # MISSING TRANSLATION
 	ENEMYWOLF = "Loup",
 	ENEMYRAT = "Rat",
 	ENEMYSPIDER_WEAK = """Crawler""", # MISSING TRANSLATION
@@ -5874,6 +5916,10 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYLILITH_BOSS_2 = """Ashmedai""", # MISSING TRANSLATION
 	ENEMYWHITE_STAG = "Cerf blanc",
 	ENEMYWHITE_STAG_HUMAN = "Personne mystérieuse",
+	ENEMYSMOTHERING_KUDZU = """Smothering Kudzu""", # MISSING TRANSLATION
+	ENEMYTHE_STRIDE = """The Stride""", # MISSING TRANSLATION
+	ENEMYTHE_SHELL = """The Shell""", # MISSING TRANSLATION
+	ENEMYTHE_TALON = """The Talon""", # MISSING TRANSLATION
 	ENEMYELF_SPECTER = "Spectre Elfe",
 	ENEMYELF_SOLDIER = "Soldat elfique",
 	ENEMYDWARF_FIGHTER = """Dwarf Fighter""", # MISSING TRANSLATION
@@ -10804,6 +10850,13 @@ Zephyra : - Sais-tu ce qu'est un artefact ? C'est un objet reçu de la divinité
 Zephyra : - Si tu me le dis, je ne te dérangerai plus alors...}""",
 	ZEPHYRA_RECRUITMENT_3_3_OPTION_1 = """Oui, je veux que vous me laissiez tranquille.""",
 	ZEPHYRA_RECRUITMENT_3_3_OPTION_2 = """J'ai changé d'avis.""",
+	ZEPHYRA_RECRUITMENT_NOTE = """Zephyra leaves without another word. Only after she is gone do you notice a folded note left where she had been standing, as if she expected this outcome and prepared for it.
+
+The note is brief, but unusually direct for her. It warns that divine Artifacts can hold dangerous power even when they seem dormant, and that the sword once tied to the royal line was only one of them. If such relics are connected to the gods, then leaving them scattered for enemies to claim may be a mistake.
+
+One line mentions that the next closest lead points toward the elven lands.
+
+You are not sure how much of Zephyra's warning you trust. Still, powerful relics rarely stay irrelevant for long. It may be worth looking into them before someone worse does.""", # MISSING TRANSLATION
 	ZEPHYRA_RECRUITMENT_3_OPTION_1 = "Il pourrait y avoir un problème avec ceci...",
 	ZEPHYRA_RECRUITMENT_3_OPTION_2 = "Cette épée n'est plus en notre possession",
 	ZEPHYRA_RECRUITMENT_4 = """Vous expliquez à Zephyra ce qui s'est passé pendant les premiers jours de la guerre civile.
@@ -12212,6 +12265,9 @@ Vous remarquez que Cali a légèrement baissé la voix, ses mains se glissant da
 	CALI_SEX_5_1 = """Cali fait une petite moue mais se retient de protester.
 
 - Je vois, eh bien, une autre fois alors.""",
+	CALI_SEX_5_2 = """Cali gives a quiet nod, the excitement gone from her face. She seems to understand this time that the answer won't change.
+
+{color=yellow|— ...I see. I'm sorry for bothering you, [Master]. I won't bring it up again.}""", # MISSING TRANSLATION
 	CALI_SEX_6 = """Vous donnez l'argent à Cali et après quelques instants, elle revient avec un plateau de boulettes. L'odeur est exactement celle qu'elle a mentionnée. Elle les distribue aux autres serviteurs et s'assoit bientôt à côté de vous après vous en avoir tendu une. 
 
 Vous mangez tous les deux en silence, tout en réfléchissant à ce que vous avez mangé. Chaud, moelleux et bien cuisiné, vous songez quelques instants à sortir vous-même et à voir si vous et le marchand pouvez parvenir à un accord sur les livraisons de ces friandises.""",
@@ -20228,6 +20284,8 @@ Touche de raccourci : 3""",
 	REQUIREMENTS_TOOLTIP = "Exigences",
 	LOCKED_LABEL = "Verrouillé",
 	CUR_LEVEL_LABEL = "Niveau actuel",
+	MASTERY_HINT_NOVICE = """Improves during sex encounters by responding correctly to encouragement.""", # MISSING TRANSLATION
+	MASTERY_HINT_SKILLED = """Reach mastery by bringing a partner to orgasm with each of the following actions:""", # MISSING TRANSLATION
 	MAX_WORKERS_LABEL = "Nombre maximum de travailleurs",
 	CURRENT_WORKERS_LABEL = "Travailleurs actuels",
 	SELECT_WORKERS_LABEL = """Select Workers""", # MISSING TRANSLATION

@@ -4321,7 +4321,7 @@ var data = {
 		reqs = [
 
 		],
-		unique_character = "daisy",
+		character = "$daisy",
 		text = [
 			{
 				text = "DAISY_CONSENSUAL_1",
@@ -4352,7 +4352,7 @@ var data = {
 		reqs = [
 
 		],
-		unique_character = "daisy",
+		character = "$daisy",
 		text = [
 			{
 				text = "DAISY_CONSENSUAL_2",

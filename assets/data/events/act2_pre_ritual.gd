@@ -9,12 +9,14 @@ var data = {
 			{
 				type = "unique_available",
 				name = "zephyra",
-				check = false
+				check = false,
+				negative = "cancel"
 			},
 			{
 				type = "decision",
 				value = "ZephyraRefused",
-				check = false
+				check = false,
+				negative = "cancel"
 			}
 		],
 		text = [
@@ -154,13 +156,20 @@ var data = {
 		],
 		options = [
 			{
-				code = "close",
+				code = "zephyra_recruitment_note",
 				text = "ZEPHYRA_RECRUITMENT_3_3_OPTION_1",
 				reqs = [
 
 				],
 				dialogue_argument = 1,
-				type = "next_dialogue"
+				type = "next_dialogue",
+				change_dialogue_type = 2,
+				bonus_effects = [
+					{
+						code = "decision",
+						value = "ZephyraRefused"
+					}
+				]
 			},
 			{
 				code = "zephyra_recruitment_2",
@@ -170,6 +179,35 @@ var data = {
 				],
 				dialogue_argument = 1,
 				type = "next_dialogue"
+			}
+		]
+	},
+	zephyra_recruitment_note = {
+		image = "letter",
+		tags = [
+			"dialogue_scene"
+		],
+		reqs = [
+
+		],
+		text = [
+			{
+				text = "ZEPHYRA_RECRUITMENT_NOTE",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "act2_scene",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				change_dialogue_type = 2
 			}
 		]
 	},
@@ -363,13 +401,14 @@ var data = {
 		],
 		options = [
 			{
-				code = "close",
-				text = "DIALOGUECLOSE",
+				code = "act2_scene",
+				text = "DIALOGUECONTINUE",
 				reqs = [
 
 				],
 				dialogue_argument = 1,
-				type = "next_dialogue"
+				type = "next_dialogue",
+				change_dialogue_type = 2
 			}
 		]
 	},
@@ -384,7 +423,8 @@ var data = {
 			{
 				type = "unique_available",
 				name = "zephyra",
-				check = true
+				check = true,
+				negative = "cancel"
 			}
 		],
 		character = "zephyra",

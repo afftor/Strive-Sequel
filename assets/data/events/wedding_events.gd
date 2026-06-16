@@ -819,7 +819,7 @@ var data = {
 		options = [ {code = 'erdyna_wedding_11', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, ],
 	},
 	erdyna_wedding_11 = {
-		image = null, tags = ['dialogue_scene'],
+		image = null, tags = ['dialogue_scene', 'master_translate'],
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		reqs = [], character = "erdyna",

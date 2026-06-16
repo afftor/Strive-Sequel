@@ -111,7 +111,8 @@ var data = {
 	mae_spirit_follow_start = {
 		image = null,
 		tags = [
-			"dialogue_scene"
+			"dialogue_scene",
+			"master_translate"
 		],
 		reqs = [
 
@@ -1156,7 +1157,8 @@ var data = {
 		save_scene_to_gallery = true,
 		image = null,
 		tags = [
-			"dialogue_scene"
+			"dialogue_scene",
+			"master_translate"
 		],
 		reqs = [
 

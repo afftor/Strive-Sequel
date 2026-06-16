@@ -783,6 +783,7 @@ func build_from_locations():
 				group_cont.set_meta('group', group_name)
 				group_cont.get_node('Button').connect('pressed', self, 'group_press', [group_name, loc_data.id])
 				group_cont.get_node('Button/menu').connect("pressed", self, "open_group_menu", [group_name, loc_data.id])
+				globals.connecttexttooltip(group_cont.get_node('Button/menu'), tr("TRAVEL_GROUP_RENAME"))
 				group_cont.visible = true
 				make_panel_for_group(group_cont.get_node('Button'), group_name)
 				for ch_id in loc_char_groups[group_name]:
@@ -791,6 +792,7 @@ func build_from_locations():
 					loc_button.set_meta('character', ch_id)
 					loc_button.connect('pressed', self, 'char_loc_press', [ch_id, loc_data.id])
 					loc_button.get_node('group').connect('pressed', self, 'open_char_menu', [ch_id, loc_data.id])
+					globals.connecttexttooltip(loc_button.get_node('group'), tr("TRAVEL_RENAME"))
 	#				loc_button.connect('pressed', self, 'location_press', [loc_data.id, 'from'])
 	#				loc_button.connect('mouse_entered', self, 'build_info', [loc_data.id])
 	#				loc_button.connect('mouse_exited', self, 'build_info')
@@ -1383,7 +1385,7 @@ func open_char_menu(ch_id, loc_id):
 func open_group_menu(group_name, loc_id):
 	var actions = [
 		{
-			"label": tr("TRAVEL_RENAME"),
+			"label": tr("TRAVEL_GROUP_RENAME"),
 			"callback": funcref(self, "rename_group"),
 			"args": [group_name, loc_id]
 		}

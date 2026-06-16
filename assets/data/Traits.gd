@@ -1959,6 +1959,33 @@ var traits = {
 		effects = ['turbulence_air','turbulence_air_trait'],
 		tags = [],
 	},
+	reyan_antagonism = {
+		code = 'antagonism',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['reyan_antagonism'],
+		tags = [],
+	},
+	second_wind = {
+		code = 'second_wind',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['second_wind'],
+		tags = [],
+	},
+	dual_blade_mastery = {
+		code = 'dual_blade_mastery',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['dual_blade_mastery','tr_dual_blade_mastery'],
+		tags = [],
+	},
 	#exploration related traits
 	#needs to hardcode most of traits
 	medium_armor = {#removes penalty from medium armor

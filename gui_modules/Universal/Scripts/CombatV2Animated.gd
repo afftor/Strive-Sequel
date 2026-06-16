@@ -93,6 +93,8 @@ signal turn_started
 
 var queue_size_max
 
+onready var screen_block = $screen_block
+
 func _ready():
 	if gui_controller.mansion != null:
 		debug = gui_controller.mansion.in_test_mode
@@ -224,6 +226,7 @@ func reset_combat_data():
 func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', t_combat_data = {}):
 	ClearSkillPanel()
 	ClearItemPanel()
+	screen_block.hide()
 	if images.backgrounds.has(background):
 		$Background.texture = images.get_background(background)
 	else:
@@ -2012,6 +2015,7 @@ func defeat(runaway = false): #runaway is a temporary variable until run() metho
 			t_p.is_active = false
 			playergroup.erase(p)
 			summons.erase(p)
+	screen_block.show()
 	if runaway:
 		input_handler.play_animation_noq("runaway")
 		yield(get_tree().create_timer(4), 'timeout')
@@ -2022,6 +2026,7 @@ func defeat(runaway = false): #runaway is a temporary variable until run() metho
 		yield(get_tree().create_timer(3), 'timeout')
 		ResourceScripts.core_animations.BlackScreenTransition(1.5)
 		yield(get_tree().create_timer(1.5), 'timeout')
+	screen_block.hide()
 	
 	CombatAnimations.force_end()
 	Input.set_custom_mouse_cursor(images.cursors.default)

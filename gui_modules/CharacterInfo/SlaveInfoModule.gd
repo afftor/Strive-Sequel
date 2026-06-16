@@ -96,9 +96,16 @@ func update():
 		$Panel/maininfo/type/icon.texture = person.get_class_icon()
 		$Panel/maininfo/type/label.text = tr(slavename)
 		
+		var character_tax = 0
+		if person.is_active and person.get_stat('slave_class') == 'servant':
+			character_tax = person.get_upkeep()
 		$Panel/maininfo/price/label.text = str(person.calculate_price(false, false, true))
-		globals.connecttexttooltip($Panel/maininfo/price,
-			tr("TOOLTIPVALUE") + '\n\n' + person.get_price_composition())
+		if character_tax > 0:
+			$Panel/maininfo/price/label.text += " (%d)" % character_tax
+		var value_tooltip = tr("TOOLTIPVALUE") + '\n\n' + person.get_price_composition()
+		if character_tax > 0:
+			value_tooltip += "\n%s: {color=yellow|%d}" % [tr("FAMEDESC_UPKEEP"), character_tax]
+		globals.connecttexttooltip($Panel/maininfo/price, value_tooltip)
 		$Panel/maininfo/fame/label.text = tr(person.get_fame_bonus('name'))
 		globals.connecttexttooltip($Panel/maininfo/fame,
 			person.translate(

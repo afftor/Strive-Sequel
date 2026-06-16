@@ -1,0 +1,122 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes_converter_tools.gd" type="Script" id=1]
+
+[node name="Panel" type="Panel"]
+margin_right = 1837.0
+margin_bottom = 1015.0
+script = ExtResource( 1 )
+
+[node name="TextEdit" type="TextEdit" parent="."]
+margin_left = 22.0
+margin_top = 16.0
+margin_right = 1500.0
+margin_bottom = 984.0
+show_line_numbers = true
+draw_tabs = true
+deselect_on_focus_loss_enabled = false
+wrap_enabled = true
+
+[node name="LineEdit" type="LineEdit" parent="."]
+margin_left = 1522.0
+margin_top = 38.0
+margin_right = 1810.0
+margin_bottom = 82.0
+text = "TEMPTEXT"
+
+[node name="LineEdit2" type="LineEdit" parent="."]
+margin_left = 1522.0
+margin_top = 102.0
+margin_right = 1810.0
+margin_bottom = 146.0
+
+[node name="LineEdit3" type="LineEdit" parent="."]
+margin_left = 1522.0
+margin_top = 168.0
+margin_right = 1810.0
+margin_bottom = 212.0
+text = "yellow"
+
+[node name="b1" type="Button" parent="."]
+margin_left = 1525.0
+margin_top = 231.0
+margin_right = 1668.0
+margin_bottom = 264.0
+text = "swap keqword"
+
+[node name="b2" type="Button" parent="."]
+margin_left = 1525.0
+margin_top = 282.0
+margin_right = 1668.0
+margin_bottom = 315.0
+text = "make text"
+
+[node name="b3" type="Button" parent="."]
+margin_left = 1525.0
+margin_top = 322.0
+margin_right = 1668.0
+margin_bottom = 355.0
+text = "make option text"
+
+[node name="b4" type="Button" parent="."]
+margin_left = 1525.0
+margin_top = 443.0
+margin_right = 1668.0
+margin_bottom = 476.0
+text = "wrap simple text"
+
+[node name="b5" type="Button" parent="."]
+margin_left = 1525.0
+margin_top = 481.0
+margin_right = 1668.0
+margin_bottom = 514.0
+text = "wrap multiline text"
+
+[node name="b6" type="Button" parent="."]
+margin_left = 1525.0
+margin_top = 539.0
+margin_right = 1668.0
+margin_bottom = 572.0
+text = "wrap options"
+
+[node name="b7" type="Button" parent="."]
+margin_left = 1525.0
+margin_top = 578.0
+margin_right = 1668.0
+margin_bottom = 611.0
+text = "add continue"
+
+[node name="b8" type="Button" parent="."]
+margin_left = 1525.0
+margin_top = 631.0
+margin_right = 1668.0
+margin_bottom = 664.0
+text = "wrap scene"
+
+[node name="b9" type="Button" parent="."]
+margin_left = 1525.0
+margin_top = 363.0
+margin_right = 1668.0
+margin_bottom = 396.0
+text = "wrap char replicae"
+
+[node name="b10" type="Button" parent="."]
+margin_left = 1707.0
+margin_top = 231.0
+margin_right = 1796.0
+margin_bottom = 264.0
+text = "duplicate"
+
+[node name="b12" type="Button" parent="."]
+margin_left = 1707.0
+margin_top = 283.0
+margin_right = 1796.0
+margin_bottom = 316.0
+text = "master_tr"
+
+[node name="b11" type="Button" parent="."]
+margin_left = 1525.0
+margin_top = 670.0
+margin_right = 1668.0
+margin_bottom = 703.0
+text = "wrap data"

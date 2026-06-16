@@ -110,6 +110,12 @@ func filter_changed(_text := ""):
 	update_buy_list()
 
 
+func set_item_button_name(button: Button, item_name: String):
+	var name_label = button.get_node("name")
+	name_label.text = item_name
+	input_handler.font_size_adjust(name_label)
+
+
 func update_sell_list():
 	input_handler.ClearContainer($SellBlock/ScrollContainer/VBoxContainer)
 	tempitems.clear()
@@ -120,7 +126,7 @@ func update_sell_list():
 		var item = Items.materiallist[i]
 		var type = get_item_category(item)
 		var newbutton = input_handler.DuplicateContainerTemplate($SellBlock/ScrollContainer/VBoxContainer)
-		newbutton.get_node("name").text = tr(item.name)
+		set_item_button_name(newbutton, tr(item.name))
 		newbutton.get_node("icon").texture = item.icon
 		newbutton.get_node("price").text = str(ceil(item.price * variables.material_sell_multiplier))
 		newbutton.get_node("amount").visible = true
@@ -140,7 +146,7 @@ func update_sell_list():
 		var newbutton = input_handler.DuplicateContainerTemplate(
 			$SellBlock/ScrollContainer/VBoxContainer
 		)
-		newbutton.get_node("name").text = tr(item.name)
+		set_item_button_name(newbutton, tr(item.name))
 		item.set_icon(newbutton.get_node("icon"))  #.texture = item.get_icon()
 		if item.quality != "":
 			newbutton.get_node("quality_color").show()
@@ -179,7 +185,7 @@ func update_buy_list():
 		var amount = active_shop[i]
 		var type = get_item_category(item)
 		var newbutton = input_handler.DuplicateContainerTemplate($BuyBlock/ScrollContainer/VBoxContainer)
-		newbutton.get_node("name").text = item.name
+		set_item_button_name(newbutton, item.name)
 		newbutton.get_node("icon").texture = item.icon
 		if item.has("quality") and item.quality != "":
 			newbutton.get_node("quality_color").show()
@@ -225,7 +231,7 @@ func update_buy_list():
 					newbutton.get_node("quality_color").texture = variables.quality_colors[newitem.quality]
 				else:
 					newbutton.get_node("quality_color").hide()
-				newbutton.get_node("name").text = newitem.name
+				set_item_button_name(newbutton, newitem.name)
 				tempitems.append(newitem)
 				globals.connectitemtooltip_v2(newbutton, newitem)
 				newbutton.get_node("price").text = str(newitem.calculateprice())
@@ -240,7 +246,7 @@ func update_buy_list():
 				continue
 			var type = get_item_category(item)
 			var newbutton = input_handler.DuplicateContainerTemplate($BuyBlock/ScrollContainer/VBoxContainer)
-			newbutton.get_node("name").text = item.name
+			set_item_button_name(newbutton, item.name)
 			newbutton.get_node("icon").texture = item.icon
 			if item.has("quality") and item.quality != "":
 				newbutton.get_node("quality_color").show()

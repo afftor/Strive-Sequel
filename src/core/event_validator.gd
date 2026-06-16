@@ -1,6 +1,14 @@
 extends Node
 
 const MAX_ISSUES_IN_SUMMARY = 200
+const TRANSLATE_TAGS = [
+	"master_translate",
+	"active_character_translate",
+	"scene_character_translate",
+	"few_scene_characters_translate",
+]
+
+var _bracket_variable_regex = null
 
 var dialogue_builtin_codes = {
 	"close": true,
@@ -274,6 +282,7 @@ func _validate_direct_resource_path(path, context, label, issues):
 func _validate_event(event_id, event, issues):
 	var context = "event '%s'" % str(event_id)
 	_validate_event_assets(event, context, issues)
+	_validate_event_text_translation(event, context, issues)
 	if event.has("reqs"):
 		_validate_reqs(event.reqs, context + ".reqs", issues)
 	if event.has("common_effects"):
@@ -298,7 +307,81 @@ func _validate_event(event_id, event, issues):
 				if !(option is Dictionary):
 					_add_issue(issues, "%s.options[%d] is not a Dictionary." % [context, idx])
 					continue
+				_validate_option_text_translation(event, option, "%s.options[%d]" % [context, idx], issues)
 				_validate_option(event_id, option, idx, issues)
+
+
+func _validate_event_text_translation(event, context, issues):
+	var has_translate_tag = _has_translate_tag(event)
+	if !event.has("text"):
+		return
+	if event.text is String:
+		_validate_text_value_translation(event.text, context + ".text", has_translate_tag, issues)
+	elif event.text is Array:
+		for idx in range(event.text.size()):
+			var line = event.text[idx]
+			if line is Dictionary and line.has("text"):
+				_validate_text_value_translation(line.text, "%s.text[%d].text" % [context, idx], has_translate_tag, issues)
+			elif line is String:
+				_validate_text_value_translation(line, "%s.text[%d]" % [context, idx], has_translate_tag, issues)
+
+
+func _validate_option_text_translation(event, option, context, issues):
+	if !option.has("text"):
+		return
+	var has_translate_tag = _has_option_translate_tag(event, option)
+	_validate_text_value_translation(option.text, context + ".text", has_translate_tag, issues)
+
+
+func _validate_text_value_translation(text_value, context, has_translate_tag, issues):
+	if !(text_value is String):
+		return
+	var variable = _find_character_text_variable(text_value)
+	if variable == "":
+		var translated_text = tr(text_value)
+		if translated_text != text_value:
+			variable = _find_character_text_variable(translated_text)
+	if variable != "" and !has_translate_tag:
+		_add_issue(issues, "%s contains character variable %s but has no translate tag." % [context, variable])
+
+
+func _has_option_translate_tag(event, option):
+	if _has_translate_tag(option):
+		return true
+	# The option renderer applies this event tag to option text with numbered scene-character variables.
+	return _has_tag(event, "few_scene_characters_translate")
+
+
+func _has_translate_tag(value):
+	if !(value is Dictionary):
+		return false
+	for tag in TRANSLATE_TAGS:
+		if _has_tag(value, tag):
+			return true
+	for tag in ["master_translate", "active_char_translate"]:
+		if value.has(tag) and value[tag]:
+			return true
+	return false
+
+
+func _has_tag(value, tag):
+	return value.has("tags") and value.tags is Array and value.tags.has(tag)
+
+
+func _find_character_text_variable(text):
+	var regex = _get_bracket_variable_regex()
+	for result in regex.search_all(text):
+		var variable_name = result.get_string("variable")
+		if variables.text_pronouns.has(variable_name):
+			return result.get_string()
+	return ""
+
+
+func _get_bracket_variable_regex():
+	if _bracket_variable_regex == null:
+		_bracket_variable_regex = RegEx.new()
+		_bracket_variable_regex.compile("\\[(?<variable>[A-Za-z_]+)([0-9]*)\\]")
+	return _bracket_variable_regex
 
 
 func _validate_option(event_id, option, idx, issues):

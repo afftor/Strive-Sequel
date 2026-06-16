@@ -1489,7 +1489,7 @@ func get_pronoun_value(pronoun):
 		"gentleman": return globals.fastif(statlist.sex == 'male', tr('PRONOUNGENTLEMAN'), tr("PRONOUNGENTLEMANF"))
 		"raceadj": return races.racelist[statlist.race].adjective if statlist.race != "" else ""
 		"race": return races.racelist[statlist.race].name if statlist.race != "" else ""
-		"race_short": return input_handler.random_from_array(races.short_race_names[races.racelist[statlist.race].code]) if statlist.race != "" else ""
+		"race_short": return races.get_short_race_name(statlist.race)
 		"name": return get_short_name()
 		"surname": return globals.fastif(statlist.surname != '', statlist.surname, get_short_name())
 		"age": return statlist.age.capitalize()
