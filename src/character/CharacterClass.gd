@@ -2184,6 +2184,8 @@ func get_price_composition():
 	return price_compo_text
 
 func apply_atomic(template):
+	if npc_reference == 'combat_global':
+		return
 	if input_handler.combat_node != null and input_handler.combat_node.ActionQueue != null and template.type != 'remove_all_effects':
 		input_handler.combat_node.ActionQueue.add_atomic(template, id)
 	else:
