@@ -3251,8 +3251,21 @@ func is_capital_closed(capital):
 			return false
 		return true
 
+func make_full_screen_sfx_node():
+	var screen_node = Control.new()
+	screen_node.rect_size = get_viewport().get_visible_rect().size
+#	get_tree().get_root().add_child(screen_node)
+	get_viewport().add_child(screen_node)
+	screen_node.mouse_filter = screen_node.MOUSE_FILTER_IGNORE
+	var timer = Timer.new()
+	screen_node.add_child(timer)
+	timer.connect("timeout", screen_node, "queue_free")
+	timer.start(10.0)#supposed all anims be finished by the time
+	return screen_node
 
 func ProcessSfxTarget(sfxtarget, caster, target):
+	if sfxtarget == "full_screen":
+		return make_full_screen_sfx_node()
 	match sfxtarget:
 		'caster':
 			return caster.displaynode

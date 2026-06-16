@@ -1393,6 +1393,7 @@ var GFX_sprites = {
 	dark_swril = "res://assets/sfx/hit_animation/dark_swirl.tscn",
 	shadow_spike = "res://assets/sfx/hit_animation/shadow_spike.tscn",
 	meteor = "res://assets/sfx/hit_animation/meteor.tscn",
+	magic_vortex = "res://assets/sfx/hit_animation/magic_vortex.tscn",
 	}
 
 var GFX_particles = {

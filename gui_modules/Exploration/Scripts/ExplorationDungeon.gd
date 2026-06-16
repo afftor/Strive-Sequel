@@ -1447,7 +1447,9 @@ func highlight_spelltar_rooms_true(value):
 func animate(target_node, skill, dedicated_sfx = false):
 	sfx_is_dedicated = sfx_is_dedicated or dedicated_sfx
 	for sfx_dict in skill.sfx:
-		#ignore sfx_dict.period and sfx_dict.target for now
+		#ignore sfx_dict.period for now
+		if sfx_dict.has("target") and sfx_dict.target == "full_screen":
+			target_node = globals.make_full_screen_sfx_node()
 		animations.add_new_data({
 			node = target_node,
 			time = 0,
