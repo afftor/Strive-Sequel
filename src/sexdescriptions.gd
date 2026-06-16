@@ -23,7 +23,7 @@ func decoder(text, tempgivers = null, temptakers = null):
 	#dictionary of replacements
 	var replacements = {
 		#state verbs
-		'[their]' : 'your' if givers[0].person.has_profession("master") || takers[0].person.has_profession("master") else 'their',
+		'[their]' : tr("SEXDESC_PRONOUN_YOUR") if givers[0].person.has_profession("master") || takers[0].person.has_profession("master") else tr("SEXDESC_PRONOUN_THEIR"),
 		'[is1]' : 'are' if givers.size() >= 2 or givers[0].person.has_profession("master") else 'is',
 		'[is2]' : 'are' if takers.size() >= 2 or takers[0].person.has_profession("master") else 'is',
 		'[has1]' : 'have' if givers.size() >= 2 or givers[0].person.has_profession("master") else 'has',
@@ -57,8 +57,8 @@ func decoder(text, tempgivers = null, temptakers = null):
 		'[an /1]' : '' if givers.size() >= 2 else 'an ',
 		'[an /2]' : '' if takers.size() >= 2 else 'an ',
 		#pronouns
-		'[it1]' : 'them' if givers.size() >= 2 else 'it',
-		'[it2]' : 'them' if takers.size() >= 2 else 'it',
+		'[it1]' : tr("SEXDESC_PRONOUN_THEM") if givers.size() >= 2 else tr("SEXDESC_PRONOUN_IT"),
+		'[it2]' : tr("SEXDESC_PRONOUN_THEM") if takers.size() >= 2 else tr("SEXDESC_PRONOUN_IT"),
 		'[he1]' : he(givers),
 		'[he2]' : he(takers),
 		'[he3]' : he(givers + takers),
@@ -172,9 +172,32 @@ func decoder(text, tempgivers = null, temptakers = null):
 #	return text
 
 func splitrand(text):
-	while text.find("{^") >= 0:
-		var temptext = text.substr(text.find("{^"), text.find("}", text.find("{^"))+1 - text.find("{^"))
+	var rand_start = text.find("{^")
+	while rand_start >= 0:
+		var rand_end = text.find("}", rand_start)
+		var next_block_start = text.find("{", rand_start + 2)
+		var line_end = text.find("\n", rand_start)
+		var malformed = rand_end == -1
+		if next_block_start != -1 && next_block_start < rand_end:
+			malformed = true
+		if line_end != -1 && (rand_end == -1 || line_end < rand_end):
+			malformed = true
+		if malformed:
+			print ("error in random formatted text - } not found in string:")
+			print (text.substr(rand_start, min(60, text.length() - rand_start)) + "...")
+			rand_end = text.length()
+			if next_block_start != -1:
+				rand_end = min(rand_end, next_block_start)
+			if line_end != -1:
+				rand_end = min(rand_end, line_end)
+			var badtext = text.substr(rand_start, rand_end - rand_start)
+			text = text.replace(badtext, badtext.replace("{^", "").replace("}",""))
+			break
+		else:
+			rand_end += 1
+		var temptext = text.substr(rand_start, rand_end - rand_start)
 		text = text.replace(temptext, temptext.split(":")[randi()%temptext.split(":").size()].replace("{^", "").replace("}",""))
+		rand_start = text.find("{^")
 	return text
 
 #capitalize the first letter in text and those after strings in the array clookfor
@@ -198,13 +221,13 @@ func capitallogic(text):
 
 func dictionary(member, text):
 	if member.person.has_profession("master"):
-		text = text.replace('[name]', '[color=yellow]' + 'you' + '[/color]' if givers.find(member) >= 0 else '[color=aqua]' + 'you' + '[/color]')
+		text = text.replace('[name]', '[color=yellow]' + tr("SEXDESC_PRONOUN_YOU") + '[/color]' if givers.find(member) >= 0 else '[color=aqua]' + tr("SEXDESC_PRONOUN_YOU") + '[/color]')
 	else:
 		text = text.replace('[name]', '[color=yellow]' + member.name + '[/color]' if givers.find(member) >= 0 else '[color=aqua]' + member.name + '[/color]')
 	if member.person.has_profession("master"):
-		text = text.replace('[his]', 'you')
+		text = text.replace('[his]', tr("SEXDESC_PRONOUN_YOU"))
 	else:
-		text = text.replace('[his]', 'his' if member.person.get_stat('sex') == 'male' else 'her')
+		text = text.replace('[his]', tr('PRONOUNHISL') if member.person.get_stat('sex') == 'male' else tr('PRONOUNHISLF'))
 	text = text.replace('[body]', body(member))
 	return text
 
@@ -212,83 +235,83 @@ func he(group):
 	for i in group:
 		if i.person.has_profession("master"):
 			if group.size() == 1:
-				return 'you'
+				return tr("SEXDESC_PRONOUN_YOU")
 			elif group.size() == 2:
-				return '{^you both:you}'
+				return tr("SEXDESC_PRONOUN_YOU_BOTH_ALT")
 			else:
-				return '{^you all:you}'
+				return tr("SEXDESC_PRONOUN_YOU_ALL_ALT")
 	if group.size() == 1:
 		if group[0].sex == 'male':
-			return 'he'
+			return tr('PRONOUNHEL')
 		else:
-			return 'she'
+			return tr('PRONOUNHELF')
 	elif group.size() == 2:
-		return '{^they both:they}'
+		return tr("SEXDESC_PRONOUN_THEY_BOTH_ALT")
 	else:
-		return 'they'
+		return tr("SEXDESC_PRONOUN_THEY")
 
 func himself(group):
 	for i in group:
 		if i.person.has_profession("master"):
 			if group.size() == 1:
-				return 'yourself'
+				return tr("SEXDESC_PRONOUN_YOURSELF")
 			else:
-				return 'yourselves'
+				return tr("SEXDESC_PRONOUN_YOURSELVES")
 	if group.size() == 1:
 		if group[0].sex == 'male':
-			return 'himself'
+			return tr('PRONOUNHIMSELFL')
 		else:
-			return 'herself'
+			return tr('PRONOUNHIMSELFLF')
 	else:
-		return 'themselves'
+		return tr("SEXDESC_PRONOUN_THEMSELVES")
 
 func his(group):
 	for i in group:
 		if i.person.has_profession("master"):
 			if group.size() == 1:
-				return 'your'
+				return tr("SEXDESC_PRONOUN_YOUR")
 			elif group.size() == 2:
-				return '{^both of your:your}'
+				return tr("SEXDESC_PRONOUN_BOTH_OF_YOUR_ALT")
 			else:
-				return '{^all of your:your}'
+				return tr("SEXDESC_PRONOUN_ALL_OF_YOUR_ALT")
 	if group.size() == 1:
 		if group[0].sex == 'male':
-			return 'his'
+			return tr('PRONOUNHISL')
 		else:
-			return 'her'
+			return tr('PRONOUNHISLF')
 	else:
-		return 'their'
+		return tr("SEXDESC_PRONOUN_THEIR")
 
 func his_(group):
 	for i in group:
 		if i.person.has_profession("master"):
-			return 'yours'
+			return tr("SEXDESC_PRONOUN_YOURS")
 	if group.size() == 1:
 		if group[0].sex == 'male':
-			return 'his'
+			return tr('PRONOUNHISL')
 		else:
-			return 'hers'
+			return tr("SEXDESC_PRONOUN_HERS")
 	else:
-		return 'theirs'
+		return tr("SEXDESC_PRONOUN_THEIRS")
 
 func him(group):
 	for i in group:
 		if i.person.has_profession("master"):
 			if group.size() == 1:
-				return 'you'
+				return tr("SEXDESC_PRONOUN_YOU")
 			elif group.size() == 2:
-				return '{^you both:both of you}'
+				return tr("SEXDESC_PRONOUN_YOU_BOTH_OBJECT_ALT")
 			else:
-				return '{^you all:all of you}'
+				return tr("SEXDESC_PRONOUN_YOU_ALL_OBJECT_ALT")
 	if group.size() == 1:
 		if group[0].sex == 'male':
-			return 'him'
+			return tr('PRONOUNHIML')
 		else:
-			return 'her'
+			return tr('PRONOUNHIMLF')
 	elif group.size() == 2:
-		return '{^them both:them}'
+		return tr("SEXDESC_PRONOUN_THEM_BOTH_ALT")
 	else:
-		return 'them'
+		return tr("SEXDESC_PRONOUN_THEM")
 
 func name(group):
 	var text = ''
@@ -298,7 +321,7 @@ func name(group):
 		if group == givers:
 			text += '[color=yellow]'
 			if i.person.has_profession("master"):
-				text += 'you'
+				text += tr("SEXDESC_PRONOUN_YOU")
 			else:
 				text += i.name
 			text += '[/color]'
@@ -309,11 +332,11 @@ func name(group):
 		else:
 			text += '[color=aqua]'
 			if i.person.has_profession("master"):
-				text += 'you'
+				text += tr("SEXDESC_PRONOUN_YOU")
 			else:
 				if globals.getrelativename(givers[0].person, i.person) != null && randf() >= 0.5:
 					if givers[0].person.has_profession("master"):
-						text += givers[0].person.translate('your ')
+						text += tr("SEXDESC_PRONOUN_YOUR") + ' '
 					else:
 						text += givers[0].person.translate('[his] ')
 					text += globals.getrelativename(givers[0].person ,i.person)
@@ -334,9 +357,9 @@ func names(group):
 			text += '[color=yellow]'
 			if i.person.has_profession("master"):
 				if group.size() == 1:
-					text += 'your'
+					text += tr("SEXDESC_PRONOUN_YOUR")
 				else:
-					text += 'you'
+					text += tr("SEXDESC_PRONOUN_YOU")
 			else:
 				text += i.name
 			text += '[/color]'
@@ -348,9 +371,9 @@ func names(group):
 			text += '[color=aqua]'
 			if i.person.has_profession("master"):
 				if group.size() == 1:
-					text += 'your'
+					text += tr("SEXDESC_PRONOUN_YOUR")
 				else:
-					text += 'you'
+					text += tr("SEXDESC_PRONOUN_YOU")
 			else:
 				text += i.name
 			text += '[/color]'
@@ -764,7 +787,7 @@ func partner(group):
 	var boygirl = ''
 	for i in group:
 		if i.person.has_profession("master") && group.size() == 1:
-			return "you"
+			return tr("SEXDESC_PRONOUN_YOU")
 		array1 = []
 		array2 = []
 		var thick = thickness(i.person)
@@ -786,10 +809,10 @@ func partner(group):
 		match i.person.get_stat('age'):
 			'child':
 				array1 += ["SEXDESC_PARTNER_NEET_1","SEXDESC_PARTNER_NEET_2"]
-				array2 += ["child"] if group.size() == 1 else ["children"]
+				array2 += ["SEXDESC_PARTNER_NEET"] if group.size() == 1 else ["SEXDESC_PARTNER_NEETS"]
 			'teen':
 				array1 += ['SEXDESC_PARTNER_TEEN_1']
-				array2 += ["teen"] if group.size() == 1 else ["teens"]
+				array2 += ["SEXDESC_PARTNER_TEEN"] if group.size() == 1 else ["SEXDESC_PARTNER_TEENS"]
 			_:
 				array1 += ['SEXDESC_PARTNER_ADULT_1', 'SEXDESC_PARTNER_ADULT_2']
 		#beauty
@@ -826,25 +849,25 @@ func partner(group):
 		#boy/girl
 		if i.person.get_stat('sex') == 'male':
 			if i.person.get_stat('age') == 'mature':
-				boygirl = 'man' if group.size() == 1 else 'men'
+				boygirl = tr('PRONOUNMAN') if group.size() == 1 else tr("SEXDESC_PARTNER_MEN")
 				if group.size() >= 2:
-					boygirl = 'boy' if group.size() == 1 else 'boys'
+					boygirl = tr('PRONOUNBOY') if group.size() == 1 else tr("SEXDESC_PARTNER_BOYS")
 			else:
-				boygirl = 'boy' if group.size() == 1 else 'boys'
+				boygirl = tr('PRONOUNBOY') if group.size() == 1 else tr("SEXDESC_PARTNER_BOYS")
 		else:
 			if i.person.get_stat('age') == 'mature':
-				boygirl = 'woman' if group.size() == 1 else 'women'
+				boygirl = tr('PRONOUNMANF') if group.size() == 1 else tr("SEXDESC_PARTNER_WOMEN")
 				if group.size() >= 2:
-					boygirl = 'girl' if group.size() == 1 else 'girls'
+					boygirl = tr('PRONOUNBOYF') if group.size() == 1 else tr("SEXDESC_PARTNER_GIRLS")
 			else:
-				boygirl = 'girl' if group.size() == 1 else 'girls'
+				boygirl = tr('PRONOUNBOYF') if group.size() == 1 else tr("SEXDESC_PARTNER_GIRLS")
 		array2 += [boygirl]
 		#race
 		for k in racenames:
 			if k == i.person.get_stat('race'):
-				array2 += [racenames[k].single + ' ' + boygirl]
+				array2 += [tr(racenames[k].single) + ' ' + boygirl]
 				if group.size() >= 2:
-					array2 += [racenames[k].plural]
+					array2 += [tr(racenames[k].plural)]
 		#for multiple people, only incude shared
 		if marray1 == null:
 			marray1 = array1
@@ -1164,12 +1187,18 @@ func pussy(group):
 func race(group):
 	for i in group:
 		# return i.person.translate('[race_short]')
-		return input_handler.random_from_array(races.short_race_names[races.racelist[i.person.get_stat('race')].code]) if i.person.get_stat('race') != "" else ""
+		return races.get_short_race_name(i.person.get_stat('race'))
 
 func boy(group):
 	for i in group:
 		# return i.person.translate('[boy]')
-		return globals.fastif(i.person.get_stat('sex') == 'male', 'boy', 'girl')
+		match i.person.get_stat('sex'):
+			'male':
+				return tr('PRONOUNBOY')
+			'futanari':
+				return tr('PRONOUNBOYFUTA')
+			_:
+				return tr('PRONOUNBOYF')
 
 func labia(member):
 	var array = ["SEXDESC_LABIA_1","SEXDESC_LABIA_2","SEXDESC_LABIA_3","SEXDESC_LABIA_4"]

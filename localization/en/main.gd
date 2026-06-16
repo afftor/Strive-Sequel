@@ -163,6 +163,34 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	PRONOUNBOYFUTA = "futanari",
 	PRONOUNHIMSELFL = "himself",
 	PRONOUNHIMSELFLF = "herself",
+	SEXDESC_PRONOUN_YOU = "you",
+	SEXDESC_PRONOUN_YOU_BOTH_ALT = "{^you both:you}",
+	SEXDESC_PRONOUN_YOU_ALL_ALT = "{^you all:you}",
+	SEXDESC_PRONOUN_YOURSELF = "yourself",
+	SEXDESC_PRONOUN_YOURSELVES = "yourselves",
+	SEXDESC_PRONOUN_THEY_BOTH_ALT = "{^they both:they}",
+	SEXDESC_PRONOUN_THEY = "they",
+	SEXDESC_PRONOUN_THEMSELVES = "themselves",
+	SEXDESC_PRONOUN_YOUR = "your",
+	SEXDESC_PRONOUN_BOTH_OF_YOUR_ALT = "{^both of your:your}",
+	SEXDESC_PRONOUN_ALL_OF_YOUR_ALT = "{^all of your:your}",
+	SEXDESC_PRONOUN_THEIR = "their",
+	SEXDESC_PRONOUN_YOURS = "yours",
+	SEXDESC_PRONOUN_HERS = "hers",
+	SEXDESC_PRONOUN_THEIRS = "theirs",
+	SEXDESC_PRONOUN_YOU_BOTH_OBJECT_ALT = "{^you both:both of you}",
+	SEXDESC_PRONOUN_YOU_ALL_OBJECT_ALT = "{^you all:all of you}",
+	SEXDESC_PRONOUN_THEM_BOTH_ALT = "{^them both:them}",
+	SEXDESC_PRONOUN_THEM = "them",
+	SEXDESC_PRONOUN_IT = "it",
+	SEXDESC_PARTNER_NEET = "child",
+	SEXDESC_PARTNER_NEETS = "children",
+	SEXDESC_PARTNER_TEEN = "teen",
+	SEXDESC_PARTNER_TEENS = "teens",
+	SEXDESC_PARTNER_MEN = "men",
+	SEXDESC_PARTNER_WOMEN = "women",
+	SEXDESC_PARTNER_BOYS = "boys",
+	SEXDESC_PARTNER_GIRLS = "girls",
 	BUTTONMENU = "Menu",
 	FINISHTURNBUTTON = "Finish turn",
 	EXPLORESHOP = "Market",
@@ -2906,6 +2934,24 @@ Spell Mana cost reduced by 15%
 	RACEHALFKINTANUKIADJ = "Half-Breed Tanuki",
 	RACERATKIN = "Ratkin",
 	RACERATKINADJ = "Ratkin",
+	SHORT_RACE_GREEN_SKIN = "greenskin",
+	SHORT_RACE_HORSE = "horse",
+	SHORT_RACE_SPIDER = "spider",
+	SHORT_RACE_DRAGON = "dragon",
+	SHORT_RACE_ANGEL = "angel",
+	SHORT_RACE_COW = "cow",
+	SHORT_RACE_SQUID = "squid",
+	SHORT_RACE_SCYLA = "scyla",
+	SHORT_RACE_FISH = "fish",
+	SHORT_RACE_SNAKE = "snake",
+	SHORT_RACE_WOLF = "wolf",
+	SHORT_RACE_FOX = "fox",
+	SHORT_RACE_BUNNY = "bunny",
+	SHORT_RACE_TANUKI = "tanuki",
+	SHORT_RACE_CAT = "cat",
+	SHORT_RACE_FELINE = "feline",
+	SHORT_RACE_RACCOON = "raccoon",
+	SHORT_RACE_RAT = "rat",
 	RACEHUMANDESCRIPT = """Humans are one of the most common races. Their strength comes in their numbers and flexibility, but they generally are rather weak in magic and have low potential growth. Only a few exceptional humans have shown outstanding feats.
 
 Human society is rather open to others but also quick to anger and start wars even among themselves. While some might act prudish, especially in public, humans in general are very sexually active and do not stray from other humanoid races. """,
@@ -26940,7 +26986,7 @@ Seeing that you silently wait, she hesitantly continues.
 """,
 	LIRA_QUEST_1_WATCH_REASON_FOLLOWUP_3 = """{color=yellow|Lira: — Can you please tell me what you expect from me? Who am I supposed to be?}
 
-{color=red|Considering that she's here all alone and you're the only person she truly knows outside the elf kingdom, your answer will clearly carry significant weight in how she begins to see her future.}""",
+Considering that she's here all alone and you're the only person she truly knows outside the elf kingdom, your answer will clearly carry significant weight in how she begins to see her future.""",
 	LIRA_QUEST_1_OPTION_SERVE_AS_YOU_SERVED_FREYA = "You should serve me just as devotedly as you served Freya. That's the whole point of being a slave, isn't it?",
 	LIRA_QUEST_1_OPTION_WHAT_WOULD_YOU_WANT = "While formally you're my slave, I don't place strict restrictions. So I ask you what would you want?",
 	LIRA_QUEST_1_EXPECTATIONS_ANSWER_1 = """Lira takes a couple of moments to think silently, then nods.
@@ -26969,21 +27015,21 @@ Seeing that you silently wait, she hesitantly continues.
 Not long after entering the deeper woods, an elven patrol steps out from between the trees. They recognize you quickly enough and offer a polite nod, but when their eyes fall on Lira, the mood shifts immediately.
 
 One of the elves frowns.""",
-	LIRA_QUEST_1_PATROL_CONFRONTATION = """{color=red|Elf Patrol Leader: — What is a rebel priestess doing here? The terms of your exile were made clear! Or do you have a death wish?}
+	LIRA_QUEST_1_PATROL_CONFRONTATION = """{color=aqua|Elf Patrol Leader: — What is a rebel priestess doing here? The terms of your exile were made clear! Or do you have a death wish?}
 
 Lira lowers her gaze.""",
 	LIRA_QUEST_1_OPTION_EXILED_MEANS = "\"Exiled\" means she can no longer live among you. It doesn't mean she cannot pass through the forest as a traveler. We're only here briefly.",
 	LIRA_QUEST_1_OPTION_SHE_IS_NOT_A_PRIESTESS = "She is not a priestess anymore. She's my slave, my personal property. There's no rules forbidding me from bringing my belongings into the forest.",
 	LIRA_QUEST_1_PATROL_DEPENDENCY = """After a tense moment, the patrol leader nods and takes his hand from the hilt of his sword. The rest of the elves also step aside, casting disdainful glances at Lira.
 
-{color=red|Elf Patrol Leader: — So be it. Guess being a human plaything is already punishment enough for this rebel scum. You can go now.}
+{color=aqua|Elf Patrol Leader: — So be it. Guess being a human plaything is already punishment enough for this rebel scum. You can go now.}
 
 Once you're out of earshot, Lira exhales quietly. She glances back toward the trees where the patrol disappeared.
 
 {color=yellow|Lira: — The way they looked at me... it was terrifying. It's nice that I now have someone who can protect me like that...}""",
 	LIRA_QUEST_1_PATROL_FREEDOM = """The patrol leader squints at you for a couple of intense moments, then snorts and turns away. The rest of the elves also step aside, casting disdainful glances at Lira.
 
-{color=red|Elf Patrol Leader: — Since Freya's Priestess tolerates you, I won't argue. Just make sure this "traveler" leaves the forest as soon as possible. You can go now.}
+{color=aqua|Elf Patrol Leader: — Since Freya's Priestess tolerates you, I won't argue. Just make sure this "traveler" leaves the forest as soon as possible. You can go now.}
 
 Once you're out of earshot, Lira exhales quietly. She glances back toward the trees where the patrol disappeared.
 
@@ -27183,7 +27229,7 @@ The two of you move away from the stall and soon return to the central area.""",
 
 	LIRA_QUEST2_FAIR_SHOOTING = """You reach a more open area where a shooting range has been set up. Colorful targets line the far end, and a small crowd has gathered to watch.
 
-{color=red|Vendor: — Step right up! Test your aim! Best bows in the city, even a child could handle them! Score enough points and win a special prize!}
+{color=aqua|Vendor: — Step right up! Test your aim! Best bows in the city, even a child could handle them! Score enough points and win a special prize!}
 
 A steady stream of people comes to the stall, drawn by the vendor's shouts, yet most join the crowd of onlookers. Only a handful attempt shots, and most start missing by the fifth or sixth arrow, losing any chance at a decent score. So far, no one has claimed the grand prize.""",
 	LIRA_QUEST2_OPTION_JOIN_COMPETITION_YOURSELF = "Join the competition yourself",
@@ -27197,7 +27243,7 @@ The draw is heavier than you expected. You manage to keep your aim steady for th
 	LIRA_QUEST2_OPTION_PUSH_TRAINED_MUSCLES_DRAW_FULL_STRING = "Push your trained muscles to draw the full string",
 	LIRA_QUEST2_SHOOTING_1 = """You grit your teeth and keep going, but your arms give out. The fifth arrow flies wide. The sixth barely grazes the target. By the seventh, you miss entirely. The vendor comes to you after you shoot your last arrow.
 
-{color=red|Vendor: — Ah, that was pretty close, but alas! Better luck next time!}
+{color=aqua|Vendor: — Ah, that was pretty close, but alas! Better luck next time!}
 
 You step back, shaking out your aching arms, and return to Lira's side. She watches you with a mix of concern and curiosity. Seeing that your mood was not soured much she gives you a reassuring smile.
 
@@ -27209,11 +27255,11 @@ You shoot again. Another bullseye. By the sixth shot, people are watching you wi
 You keep shooting, and when the tenth shot lands dead center, the crowd erupts into applause.""",
 	LIRA_QUEST2_SHOOTING_3 = """The vendor forces his lips into a wider smile, though his eyes betray his less than welcoming gaze..
 
-{color=red|Vendor: — Well, well, well, looks like we've got a winner!}
+{color=aqua|Vendor: — Well, well, well, looks like we've got a winner!}
 
 He waves you over, and you approach the booth, coming inside right after him. The vendor rummaging noisily through his stock, his face is clearly sour. Yet, when he emerges with the prize bow, he has the fake smile back on his face once again.
 
-{color=red|Vendor: — Ghm... right. Congratulations! A well-earned victory.}""",
+{color=aqua|Vendor: — Ghm... right. Congratulations! A well-earned victory.}""",
 	LIRA_QUEST2_SHOOTING_4 = """He hands over the prize bow, polished and elegant, clearly worth the effort. You accept it with a nod, then leave the booth, feeling the burning gaze of the vendor drilling holes in your back.
 
 You return to Lira, who is watching you with wide, shining eyes.
@@ -27244,7 +27290,7 @@ You watch Lira glance at her bow and think about something briefly. Then she dra
 She scores bullseyes with her eighth, ninth, and tenth shot, getting the highest score on the board and crossing the threshold for the grand prize. The crowd begins to loudly cheer her, putting a surprised expression on Lira's face.
 
 The vendor's eye is twitching, yet, after a momentary hesitation, he forces himself to plaster an even wider smile and steps out to the crowd.""",
-	LIRA_QUEST2_SHOOTING_LIRA_6 = """{color=red|Vendor: — C-c-congratulations to our winner! Ghm... See, people? Even an untrained slave girl can manage it! Come try your luck!}
+	LIRA_QUEST2_SHOOTING_LIRA_6 = """{color=aqua|Vendor: — C-c-congratulations to our winner! Ghm... See, people? Even an untrained slave girl can manage it! Come try your luck!}
 
 The stream of contenders seems to grow after the shout, and the vendor spends a couple of moments handling their payments.
 
@@ -27255,14 +27301,14 @@ Lira comes back to your side, winded and sweaty, but with the biggest smile on h
 	LIRA_QUEST2_OPTION_SURE_DID_PRIZE = "Sure did. Now let's go get that prize.",
 	LIRA_QUEST2_FINALLY_RUSH_PEOPLE_SUBSIDES_LIRA = """Finally, when the rush of people subsides, you and Lira approach the vendor for the reward. He tells you to follow him inside the booth, and the moment the door closes, his smile finally drops. He gives Lira a scorching look, then turns away and starts rummaging through his possessions, grumbling quietly, yet audibly enough.
 
-{color=red|Vendor: — Tsk. Had to be an elven girl in the crowd. Ruined a perfectly good business for me...}
+{color=aqua|Vendor: — Tsk. Had to be an elven girl in the crowd. Ruined a perfectly good business for me...}
 
 Lira, who a moment ago was the happiest she'd been in a while, quickly drops her smile and blinks in surprise.""",
 	LIRA_QUEST2_LIRA_HUH_DID_VENDOR_FINALLY = """{color=yellow|Lira: — H-huh? B-but what did I do?...}
 
 As the vendor finally digs out the prize bow, he rudely pushes it into Lira's chest, making her take a step back.
 
-{color=red|Vendor: — There. You got your prize. Now get out of here and don't even think of coming back again.}
+{color=aqua|Vendor: — There. You got your prize. Now get out of here and don't even think of coming back again.}
 
 {color=yellow|Lira: — O-okay...}""",
 	LIRA_QUEST2_OPTION_LOOKS_LIKE_SOMEONE_SORE_LOSER_FORGET = "Looks like someone is a sore loser. Forget about him, Lira. Let's go.",
@@ -27313,14 +27359,14 @@ The vendor gives no reaction to the question, instead busying himself rearrangin
 	LIRA_QUEST2_OPTION_MUCH_DOLL = "How much is for that doll?",
 	LIRA_QUEST2_ELVEN_VENDOR_COMPANION = """The vendor gives you a side eye.
 
-{color=green|Vendor: — What is your question, dear customer?}
+{color=aqua|Vendor: — What is your question, dear customer?}
 
 You repeat Lira's question and point at the doll. The elf takes the doll and hides it under the desk.
 
-{color=green|Vendor: — Unfortunately, we seem to run out of stock.}""",
+{color=aqua|Vendor: — Unfortunately, we seem to run out of stock.}""",
 	LIRA_QUEST2_ELVEN_VENDOR_DIRECT = """The vendor turns to you and gives you a scrutinizing look, then takes the doll and hides it under the desk.
 
-{color=green|Vendor: — Unfortunately, we seem to run out of stock.}""",
+{color=aqua|Vendor: — Unfortunately, we seem to run out of stock.}""",
 	LIRA_QUEST2_OPTION_MEANING = "What is the meaning of this?",
 	LIRA_QUEST2_OPTION_LITERALLY_SAW_HIDE_DOLL = "I literally saw you hide the doll!",
 	LIRA_QUEST2_ELVEN_VENDOR_SEEMS_IGNORE_QUESTIONS = """The elven vendor now seems to ignore your questions as well. You and Lira exchange equally puzzled glances, but seeing that further conversation is impossible, you decide to move on.
@@ -27334,7 +27380,7 @@ The vendor, an older elf with a weathered face, doesn't look up. His hands conti
 
 After a long pause, the vendor finally speaks, addressing no one in particular, his gaze fixed somewhere to the side.
 
-{color=green|Vendor: — The one who asks already knows the answer. Exiles are not welcome among the elves, no matter what land they stand on.}
+{color=aqua|Vendor: — The one who asks already knows the answer. Exiles are not welcome among the elves, no matter what land they stand on.}
 
 Around you, the other vendors seem to look everywhere but at her. A deliberate and highlighted avoidance.""",
 	LIRA_QUEST2_LIRA_LOOKS_AROUND_DESPERATELY_SEARCHING = """Lira looks around as if desperately searching for someone willing to break the silence, but then her gaze drops to the ground, her hands curling at her sides.
@@ -27414,7 +27460,7 @@ The drunk turns toward her, sneering.
 You step in.""",
 	LIRA_QUEST2_OPTION_SHES_SLAVE_GRATEFUL_LET_DEAL_INSTEAD = "She's my slave, and what of it? You should be grateful I let her deal with you instead of calling the guards.",
 	LIRA_QUEST2_OPTION_SHES_SOMEONE_EASILY_BEAT_ASS_WANT = "She's someone who can easily beat your ass. Want me to ask her to do it again, or should we just call the guards?",
-	LIRA_QUEST2_DRUNK_MAN_FUCK_LIRA_LOOKS = """{color=yellow|Drunk Man: — And who the fuck you are...?}
+	LIRA_QUEST2_DRUNK_MAN_FUCK_LIRA_LOOKS = """{color=aqua|Drunk Man: — And who the fuck you are...?}
 """,
 	LIRA_QUEST2_LIRA_BRAWL_2 = """Lira looks at you first.
 
@@ -27435,10 +27481,10 @@ He scrambles to his feet, nearly tripping over himself.
 He doesn't wait for a response. He disappears into the crowd without another word, leaving everyone staring after him.""",
 	LIRA_QUEST2_TAVERN_OWNER_EXHALES_LOUDLY_WIPING = """The tavern owner exhales loudly, wiping his forehead with the back of his hand.
 
-{color=green|Owner: — Gods... thank you. That could've ended badly.}""",
+{color=aqua|Owner: — Gods... thank you. That could've ended badly.}""",
 	LIRA_QUEST2_LIRA_BRAWL_4 = """He looks at Lira for a moment, then lets out a short laugh.
 
-{color=green|Owner: — Didn't expect the girl to deal with him like that! Nicely done. Here. For saving me the trouble.}
+{color=aqua|Owner: — Didn't expect the girl to deal with him like that! Nicely done. Here. For saving me the trouble.}
 
 He tosses her a small pouch. Lira looks down at it, then up at you. There's a silent question in her eyes.""",
 	LIRA_QUEST2_OPTION_SLAVE_DOESNT_NEED_MONEY_PROVIDE_EVERYTHING = "A slave doesn't need money. I provide everything you need",
@@ -27786,9 +27832,9 @@ Lira rushes to them immediately, tearing strips from her own clothes to bind the
 	
 	LIRA_QUEST3_ROAD_1 = """You hide among the thick bushes and overgrown trees, ready to act at the first sign of danger. Lira stands on the road, pretending to rest, then slowly begins to walk along the route just as you discussed. You follow her, still hiding your presence.
 Time passes, and soon the sun begins to fall when you finally hear hoofbeats. Five riders appear around the bend, all rough-looking men with worn leather armour and hands resting on their hilts. They spot Lira immediately and gallop to circle her, grinning in their saddles.
-{color=red|Bandit: — Well, well. What's a pretty little thing like you doing all alone out here?}""",
+{color=aqua|Bandit: — Well, well. What's a pretty little thing like you doing all alone out here?}""",
 	LIRA_QUEST3_ROAD_2 = """Lira says nothing. She takes a step back, feigning fear, which only makes the riders laugh.
-{color=red|Bandit: — No need to be scared. We'll take care of you. Just be ready to return the favour, heh...}
+{color=aqua|Bandit: — No need to be scared. We'll take care of you. Just be ready to return the favour, heh...}
 Unaware of your approach, the bandits keep spouting nonsense until you manage to get right next to them. The moment you see someone trying to grab Lira, you rush into attack.""",
 	LIRA_QUEST3_ROAD_POSTFIGHT_1 = """Within a moment, three bandits are down. But as you are fighting the fourth, the last one manages to grab Lira and pull her onto his horse.
 {color=yellow|Lira: — [master]!}
@@ -27796,17 +27842,17 @@ The rider kicks his heels into the horse's flanks, and the beast bolts down the 
 	LIRA_QUEST3_ROAD_POSTFIGHT_2 = """You turn back to the bandits lying on the ground. Two are unconscious. One is groaning, clutching his arm. He glares at you but doesn't try to run.""",
 	LIRA_QUEST3_ROAD_POSTFIGHT_OPTION_1 = "Ask him about their hideout",
 	LIRA_QUEST3_ROAD_POSTFIGHT_OPTION_2 = "Put your blade to his throat",
-	LIRA_QUEST3_ROAD_POSTFIGHT_3 = """{color=red|Bandit: — What, you gonna try and get your girl back? Heh, the boss will show you why you shouldn't have messed with us!}
+	LIRA_QUEST3_ROAD_POSTFIGHT_3 = """{color=aqua|Bandit: — What, you gonna try and get your girl back? Heh, the boss will show you why you shouldn't have messed with us!}
 He spits at your feet and glares.""",
 	LIRA_QUEST3_ROAD_POSTFIGHT_4 = """The cold steel pressing against his skin quickly clears his mind of arrogant delusions.
-{color=red|Bandit: — ...Alright, alright! I'll talk! What do you want to know?}""",
+{color=aqua|Bandit: — ...Alright, alright! I'll talk! What do you want to know?}""",
 	LIRA_QUEST3_ROAD_POSTFIGHT_OPTION_3 = "How many of you are there?",
 	LIRA_QUEST3_ROAD_POSTFIGHT_OPTION_4 = "Why are you focusing on slave trade specifically?",
 	LIRA_QUEST3_ROAD_POSTFIGHT_OPTION_5 = "Where is your hideout?",
-	LIRA_QUEST3_ROAD_POSTFIGHT_5 = """{color=red|Bandit: — A couple of dozens. Maybe a few more. We lost some lately, but the boss keeps hiring. I don't know the exact number, never thought to count!}""",
-	LIRA_QUEST3_ROAD_POSTFIGHT_6 = """{color=red|Bandit: — Boss got some connections to sell the goods fast. Also, he started with it, so it's kind of his thing... And most don't really care what we do as long as the boss pays good coin.}""",
+	LIRA_QUEST3_ROAD_POSTFIGHT_5 = """{color=aqua|Bandit: — A couple of dozens. Maybe a few more. We lost some lately, but the boss keeps hiring. I don't know the exact number, never thought to count!}""",
+	LIRA_QUEST3_ROAD_POSTFIGHT_6 = """{color=aqua|Bandit: — Boss got some connections to sell the goods fast. Also, he started with it, so it's kind of his thing... And most don't really care what we do as long as the boss pays good coin.}""",
 	LIRA_QUEST3_ROAD_POSTFIGHT_7 = """The bandit hesitates. You press the blade just a fraction deeper.
-{color=red|Bandit: — Shit, fine, fine! Guess I'll be leaving the band anyway... It's to the east! Old cave system, hidden deep in the forest. About two hours from here. Follow the dry creek bed.}
+{color=aqua|Bandit: — Shit, fine, fine! Guess I'll be leaving the band anyway... It's to the east! Old cave system, hidden deep in the forest. About two hours from here. Follow the dry creek bed.}
 He gives you a rough description between shaky breaths. You commit it to memory.
 You tell him that he'd better not be lying, then tie him up and leave him on the road. You mount one of the remaining horses and get ready to bring Lira back.""",
 	
@@ -27825,26 +27871,26 @@ You quickly tie them up and then release Lira from her bonds. She gives you a ti
 You both turn towards the bandit leader.""",
 	
 	LIRA_QUEST3_BANDIT_LEADER_1 = """The bandit leader spits to the side and looks at you with a mixture of confusion and grudging respect.
-{color=red|Bandit Leader: — Since I'm still alive, does it mean you went through all this just for me? Damn. I've had bounty hunters after me before, but none fought like that.}""",
+{color=aqua|Bandit Leader: — Since I'm still alive, does it mean you went through all this just for me? Damn. I've had bounty hunters after me before, but none fought like that.}""",
 	LIRA_QUEST3_BANDIT_LEADER_OPTION_1 = "We're not here for your head",
 	LIRA_QUEST3_BANDIT_LEADER_OPTION_2 = "We're here to ask questions",
 	LIRA_QUEST3_BANDIT_LEADER_2 = """He blinks, genuinely puzzled.
-{color=red|Bandit Leader: — Then what the hell do you want?}
+{color=aqua|Bandit Leader: — Then what the hell do you want?}
 You briefly explain the situation. At first, he looks annoyed. Then, after a moment, something clicks. His eyes narrow.""",
-	LIRA_QUEST3_BANDIT_LEADER_3 = """{color=red|Bandit Leader: — ...Hah. You're kidding me.}
+	LIRA_QUEST3_BANDIT_LEADER_3 = """{color=aqua|Bandit Leader: — ...Hah. You're kidding me.}
 A rough laugh escapes him, quickly turning into a cough.
-{color=red|Bandit Leader: — That was years ago. A lifetime. And somehow it bit me in the ass after all this time.}
+{color=aqua|Bandit Leader: — That was years ago. A lifetime. And somehow it bit me in the ass after all this time.}
 He shakes his head.""",
-	LIRA_QUEST3_BANDIT_LEADER_4 = """{color=red|Bandit Leader: — Yeah, sure... I remember. Barely.}
+	LIRA_QUEST3_BANDIT_LEADER_4 = """{color=aqua|Bandit Leader: — Yeah, sure... I remember. Barely.}
 He looks at Lira more closely now, and you can almost see the gears turn in his brain, adding two and two together.
-{color=red|Bandit Leader: — So it's you, eh? That sickly little thing... Thought you wouldn't last long. Looked half-dead when I passed you along.}
+{color=aqua|Bandit Leader: — So it's you, eh? That sickly little thing... Thought you wouldn't last long. Looked half-dead when I passed you along.}
 Lira frowns a bit, but doesn't say anything. The bandit continues.""",
-	LIRA_QUEST3_BANDIT_LEADER_5 = """{color=red|Bandit Leader: — I didn't get her myself. Bought her off some merchant I worked with back then. Shady type. Dealt in all kinds of goods.}
+	LIRA_QUEST3_BANDIT_LEADER_5 = """{color=aqua|Bandit Leader: — I didn't get her myself. Bought her off some merchant I worked with back then. Shady type. Dealt in all kinds of goods.}
 He shrugs.
-{color=red|Bandit Leader: — Guy told me the kid was given to him by her own mother. Said she told him to take the brat away or something along those lines.}""",
+{color=aqua|Bandit Leader: — Guy told me the kid was given to him by her own mother. Said she told him to take the brat away or something along those lines.}""",
 	LIRA_QUEST3_BANDIT_LEADER_6 = """Lira blinks, her eyes wide open as she comes closer to the bandit.
 {color=yellow|Lira: — My... mother? Did you say it was my own mother who gave me away?}
-{color=red|Bandit Leader: — Hey, that's what that guy told me.}
+{color=aqua|Bandit Leader: — Hey, that's what that guy told me.}
 {color=yellow|Lira: — But why would she do that...? What kind of mother would give away her child...?}""",
 	LIRA_QUEST3_BANDIT_LEADER_OPTION_3 = "Maybe she had her reasons. Not everything is as simple as it sounds",
 	LIRA_QUEST3_BANDIT_LEADER_OPTION_4 = "Sounds like your family wasn't worth looking for in the first place",
@@ -27856,56 +27902,56 @@ She exhales quietly, her shoulders dropping slightly.
 {color=yellow|Lira: — ...Maybe you're right.}
 A long breath.
 {color=yellow|Lira: — It's just... hard to accept that without even knowing the full story. Hard to let go of something I never really had.}""",
-	LIRA_QUEST3_BANDIT_LEADER_9 = """{color=red|Bandit Leader: — Hey, since you want all the details, why don't you ask that merchant himself? He's still kicking, lives in the capital, same shop as before. I can take you right to his doorstep.}
+	LIRA_QUEST3_BANDIT_LEADER_9 = """{color=aqua|Bandit Leader: — Hey, since you want all the details, why don't you ask that merchant himself? He's still kicking, lives in the capital, same shop as before. I can take you right to his doorstep.}
 You exchange a glance with Lira and then nod. """,
 	LIRA_QUEST3_BANDIT_LEADER_10 = """You make sure the binds on the bandit let him walk, but not run, then step out of the hideout and begin the journey back to the capital.""",
 	LIRA_QUEST3_BANDIT_LEADER_11 = """Before heading back to the capital, you escort the caravan to the closest city, from where it would go on its own. Then, you begin the journey back to the capital.""",
 	
 	LIRA_QUEST3_FOLLOW_LEADER_1 = """The journey back took some time, but eventually you returned to the capital, the bandit leader tugging behind you on a leash.
 After getting past the gates, he takes a more active role and guides you through unfamiliar streets, past markets and residential quarters, until you reach a quieter district.
-{color=red|Bandit Leader: — There. That corner shop. Green shutters, no sign.}
+{color=aqua|Bandit Leader: — There. That corner shop. Green shutters, no sign.}
 He points to a modest two-story building wedged between a bakery and a tailor's workshop. The windows are clean, the brass handle polished. It looks respectable.
 {color=yellow|Lira: — This is the place? It looks kind of... respectable. Who'd think the guy living there would be so shady.}""",
-	LIRA_QUEST3_FOLLOW_LEADER_2 = """{color=red|Bandit Leader: — Yep. Sometimes appearance can be deceiving, heh. But who am I to preach?}
+	LIRA_QUEST3_FOLLOW_LEADER_2 = """{color=aqua|Bandit Leader: — Yep. Sometimes appearance can be deceiving, heh. But who am I to preach?}
 Done with the bandit, you spot a pair of city guards and call them over. After explaining the situation, you hand the bandit over to them. As soon as they recognise the face from the notice board, they put him in irons and lead him away.
 One of the guards tips his helmet.
 {color=aqua|Guard: — You've saved us a lot of trouble, stranger. The reward will be waiting at the garrison.}""",
 	LIRA_QUEST3_MERCHANT_1 = """You push the door open, and a small bell chimes somewhere above your head. The air inside smells of old paper and dust. The shop is cramped but tidy. Shelves line the walls, filled with trinkets, faded books, and oddities from distant lands.
 In the corner, an elderly man sits in a worn armchair, half-hidden behind a stack of old ledgers. He's neatly dressed, spectacles balanced on his nose. As you enter, he stirs and rises to his feet, a practiced smile forming on his lips.
-{color=green|Merchant: — Ah, greetings. Welcome to my humble shop. Anything you're looking for?}""",
+{color=aqua|Merchant: — Ah, greetings. Welcome to my humble shop. Anything you're looking for?}""",
 	LIRA_QUEST3_MERCHANT_OPTION_1 = "Yeah, do you sell tribal elven children?",
 	LIRA_QUEST3_MERCHANT_OPTION_2 = "I'm looking to uncover some of your shady deals from the past.",
 	LIRA_QUEST3_MERCHANT_2 = """He blinks, clearly caught off guard. His smile falters. His eyes dart from you to Lira, then stop on her. Recognition flickers across his face, and he goes pale.
-{color=green|Merchant: — W-wait...}
+{color=aqua|Merchant: — W-wait...}
 {color=yellow|Lira: — Looks like you remember me.}""",
 	LIRA_QUEST3_MERCHANT_3 = """He hesitates, his mouth opening and closing like a fish gasping for air. Then he exhales, and his shoulders slump. The fight drains out of him.
-{color=green|Merchant: — ...Yeah. I do. I... I never thought I'd see you again... how did you even find me?}
+{color=aqua|Merchant: — ...Yeah. I do. I... I never thought I'd see you again... how did you even find me?}
 You ignore his question and step closer, looming over him.""",
 	LIRA_QUEST3_MERCHANT_OPTION_3 = "Why don't you tell us what happened back then?",
 	LIRA_QUEST3_MERCHANT_OPTION_4 = "You'd better explain yourself, old man.",
 	LIRA_QUEST3_MERCHANT_4 = """He flinches at your tone, but then begins to talk.
-{color=green|Merchant: — I was on a trip overseas when one day a tribal elf woman brought you to me herself. She came at night, hooded, nervous. Said she wanted you... gone. Far away. Somewhere safe.}
+{color=aqua|Merchant: — I was on a trip overseas when one day a tribal elf woman brought you to me herself. She came at night, hooded, nervous. Said she wanted you... gone. Far away. Somewhere safe.}
 Lira freezes for a moment, then raises an eyebrow.
 {color=yellow|Lira: — Safe?}""",
-	LIRA_QUEST3_MERCHANT_5 = """{color=green|Merchant: — Yeah. I don't remember all the details, but she said that their clan had some rituals. Sacrifices. That weak children didn't survive for long. And at the time...}
+	LIRA_QUEST3_MERCHANT_5 = """{color=aqua|Merchant: — Yeah. I don't remember all the details, but she said that their clan had some rituals. Sacrifices. That weak children didn't survive for long. And at the time...}
 He glances at Lira, then quickly looks away.
-{color=green|Merchant: — ... you were a weak child. She told me that her time was limited as well, and since she wouldn't be able to protect you any longer after she was gone, she'd rather you went somewhere else.}
+{color=aqua|Merchant: — ... you were a weak child. She told me that her time was limited as well, and since she wouldn't be able to protect you any longer after she was gone, she'd rather you went somewhere else.}
 He pauses for a moment to cough, then carries on.""",
-	LIRA_QUEST3_MERCHANT_6 = """{color=green|Merchant: — So she gave you to me. Paid some money — not much, but she didn't look like she had much. Then told me to take you somewhere safe. Even gave you an amulet. Said it would protect you.}
+	LIRA_QUEST3_MERCHANT_6 = """{color=aqua|Merchant: — So she gave you to me. Paid some money — not much, but she didn't look like she had much. Then told me to take you somewhere safe. Even gave you an amulet. Said it would protect you.}
 {color=yellow|Lira: — Huh? But I didn't have any amulet on me.}
 The merchant bites his tongue and tries to avert his gaze, but realising that it's too late, he sighs and confesses.""",
-	LIRA_QUEST3_MERCHANT_7 = """{color=green|Merchant: — I... I kept it. Tribal craftsmanship is quite valuable, so I've had it with me all these years. Still have it.}
+	LIRA_QUEST3_MERCHANT_7 = """{color=aqua|Merchant: — I... I kept it. Tribal craftsmanship is quite valuable, so I've had it with me all these years. Still have it.}
 He stands up, walks to the shelf, and takes a small bronze pendant with a dark gemstone inside from the deep within. Then brings it to Lira. She slowly reaches out her hand to touch it, and with noticeable hesitation, the merchant lets the charm fall into her hands.
 {color=yellow|Lira: — It's... beautiful.}
-{color=green|Merchant: — And it seems to bring luck. Or at least that's what I believe. Though now that I've met you, it seems its luck has run out...}""",
+{color=aqua|Merchant: — And it seems to bring luck. Or at least that's what I believe. Though now that I've met you, it seems its luck has run out...}""",
 	LIRA_QUEST3_MERCHANT_8 = """{color=yellow|Lira: — So what happened next? What else did my mother say?}
-{color=green|Merchant: — Next? She left. Did some hand gestures over your head, put the amulet on you, and left. I got back to my ship and brought you here. And then...}
+{color=aqua|Merchant: — Next? She left. Did some hand gestures over your head, put the amulet on you, and left. I got back to my ship and brought you here. And then...}
 {color=yellow|Lira: — Sold me to some bandit.}
 The merchant tries to shrug but barely manages, as if losing his nerve halfway.""",
-	LIRA_QUEST3_MERCHANT_9 = """{color=green|Merchant: — The money was good, so... I'm not proud of it. But... it is what it is.}
+	LIRA_QUEST3_MERCHANT_9 = """{color=aqua|Merchant: — The money was good, so... I'm not proud of it. But... it is what it is.}
 Lira stands in silence, her fingers wrapped around the pendant. The merchant shifts uncomfortably, avoiding her gaze. He turn to you, his voice shaking.
 
-{color=green|Merchant: — I told you everything I knew, so... w-what is going to happen to me?}
+{color=aqua|Merchant: — I told you everything I knew, so... w-what is going to happen to me?}
 You look at the man who took a desperate mother's plea, her money, her child's only heirloom, and then sold the girl for profit.""",
 	LIRA_QUEST3_MERCHANT_OPTION_5 = "You are right to be afraid. It's high time karma caught up to you.",
 	LIRA_QUEST3_MERCHANT_OPTION_6 = "You are not even worth dirtying my hands. Just live whatever small time you have left, knowing what you did.",

@@ -2950,6 +2950,24 @@ Damage +15%, Health +20.""", # MISSING TRANSLATION
 	
 	RACERATKIN = "Ratkin",
 	RACERATKINADJ = "Ratkin",
+	SHORT_RACE_GREEN_SKIN = """greenskin""", # MISSING TRANSLATION
+	SHORT_RACE_HORSE = """horse""", # MISSING TRANSLATION
+	SHORT_RACE_SPIDER = """spider""", # MISSING TRANSLATION
+	SHORT_RACE_DRAGON = """dragon""", # MISSING TRANSLATION
+	SHORT_RACE_ANGEL = """angel""", # MISSING TRANSLATION
+	SHORT_RACE_COW = """cow""", # MISSING TRANSLATION
+	SHORT_RACE_SQUID = """squid""", # MISSING TRANSLATION
+	SHORT_RACE_SCYLA = """scyla""", # MISSING TRANSLATION
+	SHORT_RACE_FISH = """fish""", # MISSING TRANSLATION
+	SHORT_RACE_SNAKE = """snake""", # MISSING TRANSLATION
+	SHORT_RACE_WOLF = """wolf""", # MISSING TRANSLATION
+	SHORT_RACE_FOX = """fox""", # MISSING TRANSLATION
+	SHORT_RACE_BUNNY = """bunny""", # MISSING TRANSLATION
+	SHORT_RACE_TANUKI = """tanuki""", # MISSING TRANSLATION
+	SHORT_RACE_CAT = """cat""", # MISSING TRANSLATION
+	SHORT_RACE_FELINE = """feline""", # MISSING TRANSLATION
+	SHORT_RACE_RACCOON = """raccoon""", # MISSING TRANSLATION
+	SHORT_RACE_RAT = """rat""", # MISSING TRANSLATION
 	
 	
 	RACEHUMANDESCRIPT = "Les humains sont l'une des races les plus communes. Leur force réside dans leur nombre et leur flexibilité, mais ils sont généralement assez faibles en magie et ont un faible potentiel de croissance. Seuls quelques humains exceptionnels ont accompli des exploits remarquables. \nLa société humaine est plutôt ouverte aux autres, mais aussi prompte à se mettre en colère et à déclencher des guerres, même entre eux. Bien que certains puissent se montrer pudibonds, surtout en public, les humains sont en général très actifs sexuellement et ne s'éloignent pas des autres races humanoïdes. ",

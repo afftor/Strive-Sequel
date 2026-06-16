@@ -2273,7 +2273,8 @@ var data = {
 	lilith_proposal_1 = {
 		image = null,
 		tags = [
-			"dialogue_scene"
+			"dialogue_scene",
+			"master_translate"
 		],
 		reqs = [
 
@@ -2349,7 +2350,8 @@ var data = {
 	lilith_proposal_2 = {
 		image = null,
 		tags = [
-			"dialogue_scene"
+			"dialogue_scene",
+			"master_translate"
 		],
 		reqs = [
 

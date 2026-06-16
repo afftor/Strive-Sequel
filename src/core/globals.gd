@@ -788,9 +788,32 @@ func build_oneline_desc_for_bonusstats(bonusstats, mul = 1):
 func TextEncoder(text, node = null):
 	var tooltiparray = []
 	var counter = 0
-	while text.find("{^") >= 0:
-		var temptext = text.substr(text.find("{^"), text.find("}")+1 - text.find("{^"))
+	var rand_start = text.find("{^")
+	while rand_start >= 0:
+		var rand_end = text.find("}", rand_start)
+		var next_block_start = text.find("{", rand_start + 2)
+		var line_end = text.find("\n", rand_start)
+		var malformed = rand_end == -1
+		if next_block_start != -1 && next_block_start < rand_end:
+			malformed = true
+		if line_end != -1 && (rand_end == -1 || line_end < rand_end):
+			malformed = true
+		if malformed:
+			print ("error in random formatted text - } not found in string:")
+			print (text.substr(rand_start, min(60, text.length() - rand_start)) + "...")
+			rand_end = text.length()
+			if next_block_start != -1:
+				rand_end = min(rand_end, next_block_start)
+			if line_end != -1:
+				rand_end = min(rand_end, line_end)
+			var badtext = text.substr(rand_start, rand_end - rand_start)
+			text = text.replace(badtext, badtext.replace("{^", "").replace("}",""))
+			break
+		else:
+			rand_end += 1
+		var temptext = text.substr(rand_start, rand_end - rand_start)
 		text = text.replace(temptext, temptext.split(":")[randi()%temptext.split(":").size()].replace("{^", "").replace("}",""))
+		rand_start = text.find("{^")
 	#return text
 
 	while text.find("{") != -1:

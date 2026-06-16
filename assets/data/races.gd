@@ -1278,41 +1278,48 @@ var racelist = {
 }
 
 var short_race_names = {
-	Human = ['human'],
-	Elf = ['elf'],
-	TribalElf = ['elf', 'tribal elf'],
-	DarkElf = ['elf', 'dark elf'],
-	Orc = ['orc','greenskin'],
-	Goblin = ['goblin','greenskin'],
-	Gnome = ['gnome'],
-	Dwarf = ['dwarf'],
-	Fairy = ['fairy'],
-	Kobold = ['kobold'],
-	Dryad = ['dryad'],
-	Centaur = ['centaur','horse'],
-	Arachna = ['spider'],
-	Slime = ['slime'],
-	Dragonkin = ['dragon'],
-	Demon = ['demon'],
-	Seraph = ['angel'],
-	Taurus = ['cow'],
-	Harpy = ['harpy'],
-	Scylla = ['squid','scyla'],
-	Nereid = ['fish', 'nereid'],
-	Lamia = ['snake','lamia'],
-	BeastkinWolf = ['wolf'],
-	BeastkinFox = ['fox'],
-	BeastkinBunny = ['bunny'],
-	BeastkinTanuki = ['tanuki'],
-	BeastkinCat = ['cat','feline'],
-	HalfkinWolf = ['wolf'],
-	HalfkinFox = ['fox'],
-	HalfkinBunny = ['bunny'],
-	HalfkinTanuki = ['tanuki','raccoon'],
-	HalfkinCat = ['cat','feline'],
-	Ratkin = ['rat']
+	Human = ['RACEHUMAN'],
+	Elf = ['RACEELF'],
+	TribalElf = ['RACEELF', 'RACETRIBALELF'],
+	DarkElf = ['RACEELF', 'RACEDARKELF'],
+	Orc = ['RACEORC','SHORT_RACE_GREEN_SKIN'],
+	Goblin = ['RACEGOBLIN','SHORT_RACE_GREEN_SKIN'],
+	Gnome = ['RACEGNOME'],
+	Dwarf = ['RACEDWARF'],
+	Fairy = ['RACEFAIRY'],
+	Kobold = ['RACEKOBOLD'],
+	Dryad = ['RACEDRYAD'],
+	Centaur = ['RACECENTAUR','SHORT_RACE_HORSE'],
+	Arachna = ['SHORT_RACE_SPIDER'],
+	Slime = ['RACESLIME'],
+	Dragonkin = ['SHORT_RACE_DRAGON'],
+	Demon = ['RACEDEMONADJ'],
+	Seraph = ['SHORT_RACE_ANGEL'],
+	Taurus = ['SHORT_RACE_COW'],
+	Harpy = ['RACEHARPY'],
+	Scylla = ['SHORT_RACE_SQUID','SHORT_RACE_SCYLA'],
+	Nereid = ['SHORT_RACE_FISH', 'RACENEREID'],
+	Lamia = ['SHORT_RACE_SNAKE','RACELAMIA'],
+	BeastkinWolf = ['SHORT_RACE_WOLF'],
+	BeastkinFox = ['SHORT_RACE_FOX'],
+	BeastkinBunny = ['SHORT_RACE_BUNNY'],
+	BeastkinTanuki = ['SHORT_RACE_TANUKI'],
+	BeastkinCat = ['SHORT_RACE_CAT','SHORT_RACE_FELINE'],
+	HalfkinWolf = ['SHORT_RACE_WOLF'],
+	HalfkinFox = ['SHORT_RACE_FOX'],
+	HalfkinBunny = ['SHORT_RACE_BUNNY'],
+	HalfkinTanuki = ['SHORT_RACE_TANUKI','SHORT_RACE_RACCOON'],
+	HalfkinCat = ['SHORT_RACE_CAT','SHORT_RACE_FELINE'],
+	Ratkin = ['SHORT_RACE_RAT']
 
 }
+
+func get_short_race_name(race_code):
+	if race_code == "" or !racelist.has(race_code):
+		return ""
+	var short_name = input_handler.random_from_array(short_race_names[racelist[race_code].code])
+	var translated_name = tr(short_name)
+	return translated_name.to_lower() if translated_name != short_name else short_name
 
 
 func get_random_race():
