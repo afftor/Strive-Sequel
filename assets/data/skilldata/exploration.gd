@@ -143,7 +143,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'mind',
-		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'magic_vortex', target = 'full_screen', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],

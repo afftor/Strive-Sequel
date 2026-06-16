@@ -505,49 +505,72 @@ func mattooltip(targetnode, material, bonustext = '', type = 'materialowned'):
 #	node.showup(targetnode, data, type)
 
 
-
-func build_traitlist_for_char(person, node):
-	input_handler.ClearContainer(node, ['Button', 'Button2'])
+func get_traitlist_for_char(person):
+	var traitlist = []
 	for b in person.get_all_buffs():
 		if !b.tags.has('show_in_traits'): continue
-		var button = input_handler.DuplicateContainerTemplate(node, 'Button2')
-		button.texture = b.icon
-		button.get_node("Label").hide()
 		var text = person.translate(b.description)
 		text += build_relationship_buff_names_text(person, b)
-		connecttexttooltip(button, text)
+		traitlist.append({
+			icon = b.icon,
+			text = text
+		})
 	var trlist = person.get_traits_by_arg('visible', true)
 	for tr in trlist:
 		var trdata = Traitdata.traits[tr]
-		if !trdata.has('tags'): continue
-		if !trdata.tags.has('simple_icon'): continue
-		var button = input_handler.DuplicateContainerTemplate(node, 'Button2')
-		if trdata.icon is String:
-			button.texture = load(trdata.icon)
+		var entry = {
+			name = tr(trdata.name),
+			text_with_name = "[center]{color=yellow|" + tr(trdata.name) + '}[/center]\n' + person.translate(trdata.descript),
+			text = person.translate(trdata.descript)
+		}
+		if trdata.has('tags') and trdata.tags.has('simple_icon'):
+			entry.icon = trdata.icon
 		else:
-			button.texture = trdata.icon
-		button.get_node("Label").hide()
-		var text = "[center]{color=yellow|" + tr(trdata.name) + '}[/center]\n' + person.translate(trdata.descript)
-		connecttexttooltip(button, text)
-	for tr in trlist:
-		var trdata = Traitdata.traits[tr]
-		if trdata.has('tags') and trdata.tags.has('simple_icon'): continue
-		var button = input_handler.DuplicateContainerTemplate(node, 'Button')
-		var text = "[center]{color=yellow|" + tr(trdata.name) + '}[/center]\n' + person.translate(trdata.descript)
-		connecttexttooltip(button, text)
-		if trdata.has('icon') and trdata.icon != null:
-			if trdata.icon is String:
-				button.get_node('icon').texture = load(trdata.icon)
+			entry.complex_icon = true
+			if trdata.has('icon') and trdata.icon != null:
+				entry.icon = trdata.icon
+			if trdata.has('cross') and trdata.cross:
+				entry.cross = true
 			else:
-				button.get_node('icon').texture = trdata.icon
-		if trdata.has('cross') and trdata.cross:
-			button.get_node('cross').visible = true
+				if trdata.tags.has('positive'):
+					entry.positive = true
+				if trdata.tags.has('negative'):
+					entry.negative = true
+		traitlist.append(entry)
+	return traitlist
+
+
+func build_traitlist_for_char(person, node):
+	var traitlist = get_traitlist_for_char(person)
+	input_handler.ClearContainer(node, ['Button', 'Button2'])
+	for entry in traitlist:
+		var tooltip_text = entry.text
+		if entry.has("text_with_name"):
+			tooltip_text = entry.text_with_name
+		if !entry.has("complex_icon"):
+			var button = input_handler.DuplicateContainerTemplate(node, 'Button2')
+			if entry.icon is String:
+				button.texture = load(entry.icon)
+			else:
+				button.texture = entry.icon
+			button.get_node("Label").hide()
+			connecttexttooltip(button, tooltip_text)
 		else:
-			button.get_node('cross').visible = false
-			if trdata.tags.has('positive'):
-				button.texture_normal = load("res://assets/images/iconstraits/green.png")
-			if trdata.tags.has('negative'):
-				button.texture_normal = load("res://assets/images/iconstraits/red.png")
+			var button = input_handler.DuplicateContainerTemplate(node, 'Button')
+			connecttexttooltip(button, tooltip_text)
+			if entry.has('icon'):
+				if entry.icon is String:
+					button.get_node('icon').texture = load(entry.icon)
+				else:
+					button.get_node('icon').texture = entry.icon
+			if entry.has('cross'):
+				button.get_node('cross').visible = true
+			else:
+				button.get_node('cross').visible = false
+				if entry.has('positive'):
+					button.texture_normal = load("res://assets/images/iconstraits/green.png")
+				if entry.has('negative'):
+					button.texture_normal = load("res://assets/images/iconstraits/red.png")
 
 
 func build_relationship_buff_names_text(person, buff):
@@ -3292,8 +3315,21 @@ func is_capital_closed(capital):
 			return false
 		return true
 
+func make_full_screen_sfx_node():
+	var screen_node = Control.new()
+	screen_node.rect_size = get_viewport().get_visible_rect().size
+#	get_tree().get_root().add_child(screen_node)
+	get_viewport().add_child(screen_node)
+	screen_node.mouse_filter = screen_node.MOUSE_FILTER_IGNORE
+	var timer = Timer.new()
+	screen_node.add_child(timer)
+	timer.connect("timeout", screen_node, "queue_free")
+	timer.start(10.0)#supposed all anims be finished by the time
+	return screen_node
 
 func ProcessSfxTarget(sfxtarget, caster, target):
+	if sfxtarget == "full_screen":
+		return make_full_screen_sfx_node()
 	match sfxtarget:
 		'caster':
 			return caster.displaynode
