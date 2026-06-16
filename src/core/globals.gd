@@ -514,6 +514,7 @@ func build_traitlist_for_char(person, node):
 		button.texture = b.icon
 		button.get_node("Label").hide()
 		var text = person.translate(b.description)
+		text += build_relationship_buff_names_text(person, b)
 		connecttexttooltip(button, text)
 	var trlist = person.get_traits_by_arg('visible', true)
 	for tr in trlist:
@@ -547,6 +548,19 @@ func build_traitlist_for_char(person, node):
 				button.texture_normal = load("res://assets/images/iconstraits/green.png")
 			if trdata.tags.has('negative'):
 				button.texture_normal = load("res://assets/images/iconstraits/red.png")
+
+
+func build_relationship_buff_names_text(person, buff):
+	if buff.template == null or !buff.template.has('relationship_statuses'):
+		return ''
+	var names = []
+	for rec in ResourceScripts.game_party.find_relationships_in_same_location(person.id, buff.template.relationship_statuses):
+		var ch = characters_pool.get_char_by_id(rec.char)
+		if ch != null:
+			names.append(ch.get_short_name())
+	if names.empty():
+		return ''
+	return "\n" + tr("TRAITEFFECTRELATIONCHARACTERS") % PoolStringArray(names).join(", ")
 
 
 func build_training_traitlist(person, node):

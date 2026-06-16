@@ -4149,6 +4149,7 @@ As [name] has a observable virginity, this makes [him] more desirable for certai
 	TRAITEFFECTRIVAL = "Rival Present: +5%% Productivity",
 	TRAITEFFECTFRIENDS = "Friend Present: +10%% Health Regeneration",
 	TRAITEFFECTLOVERS = "Lover Present: +10%% Mana Regeneration",
+	TRAITEFFECTRELATIONCHARACTERS = "{color=yellow|Caused by: %s}",
 	TRAITEFFECTRARESTURDY = """Rare: Sturdy
 Increased Health and Armor Penetration""",
 	TRAITEFFECTRARENIMBLE = """Rare: Nimble
@@ -5943,7 +5944,7 @@ and can only act on [him]. """,
 	INTERACTION_INTERRUPT = "Interrupt",
 	INTERACTION_OBSERVE = "Observe",
 	INTERACTION_PASS = "Pass",
-	INTERACTION_CONSENT_OBSERVED_EXHIBITIONIST = """{color=green|Is being observed (Exhibitionist)}
+	INTERACTION_CONSENT_OBSERVED_EXHIBITIONIST = """{color=green|Is being observed (Shameless)}
 """,
 	INTERACTION_CONSENT_OBSERVED = """{color=red|Is being observed}
 """,

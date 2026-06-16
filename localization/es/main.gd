@@ -3570,6 +3570,7 @@ Como [name] tiene una virginidad observable, esto lo hace que [him] sea más des
 	TRAITEFFECTRIVAL = "Rival Presente: +5%% Productividad",
 	TRAITEFFECTFRIENDS = "Amigo presente: +10%% Regeneración de la salud",
 	TRAITEFFECTLOVERS = "Amante presente: +10%% Regeneración de maná",
+	TRAITEFFECTRELATIONCHARACTERS = """{color=yellow|Caused by: %s}""", # MISSING TRANSLATION
 	TRAITEFFECTRARESTURDY = """Raro: Corpulento
 Mayor salud y penetración de armadura""",
 	TRAITEFFECTRARENIMBLE = """Raro: Ágil

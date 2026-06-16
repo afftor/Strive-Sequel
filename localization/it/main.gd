@@ -4073,6 +4073,7 @@ Richiede il Consenso 'Disponibile' o superiore.}""",
 	TRAITEFFECTRIVAL = "Rivale presente: +5%% produttività",
 	TRAITEFFECTFRIENDS = """Amico presente: +10%% Rigenerazione Salute""",
 	TRAITEFFECTLOVERS = """Amante presente: +10%% Rigenerazione Mana""",
+	TRAITEFFECTRELATIONCHARACTERS = """{color=yellow|Caused by: %s}""", # MISSING TRANSLATION
 	TRAITEFFECTRARESTURDY = """Raro: Robusto
 Aumento della Salute e della Penetrazione dell'Armatura""",
 	TRAITEFFECTRARENIMBLE = """Raro: Agile
