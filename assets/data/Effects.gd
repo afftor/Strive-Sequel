@@ -134,7 +134,7 @@ var effect_table = {
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png",
 			description = "TRAITEFFECTLOVERS",
-			relationship_statuses = ['lovers', 'freelovers'],
+#			relationship_statuses = ['lovers', 'freelovers'],
 			tags = ['show_in_traits', 'mansion_only']
 		}
 		],
@@ -149,7 +149,7 @@ var effect_table = {
 			{
 			icon = "res://assets/images/iconstraits/trait_friends.png",
 			description = "TRAITEFFECTFRIENDS",
-			relationship_statuses = ['friends'],
+#			relationship_statuses = ['friends'],
 			tags = ['show_in_traits', 'mansion_only']
 		}
 		],
@@ -164,7 +164,7 @@ var effect_table = {
 			{
 			icon = "res://assets/images/iconstraits/trait_rivals.png",
 			description = "TRAITEFFECTRIVAL",
-			relationship_statuses = ['rivals'],
+#			relationship_statuses = ['rivals'],
 			tags = ['show_in_traits', 'mansion_only']
 		}
 		],

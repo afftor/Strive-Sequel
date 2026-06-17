@@ -4174,9 +4174,9 @@ Only one attunement can be taken""",
 	TRAITEFFECTVIRGIN = """[center]{color=yellow|Virginity}[/center]
 As [name] has a observable virginity, this makes [him] more desirable for certain individuals.
 {color=yellow|Sell price is increased by 25%%}""",
-	TRAITEFFECTRIVAL = "Rival Present: +5%% Productivity",
-	TRAITEFFECTFRIENDS = "Friend Present: +10%% Health Regeneration",
-	TRAITEFFECTLOVERS = "Lover Present: +10%% Mana Regeneration",
+	TRAITEFFECTRIVAL = "Rival Present: +5%% Productivity\n[rivals_list]",
+	TRAITEFFECTFRIENDS = "Friend Present: +10%% Health Regeneration\n[friends_list]",
+	TRAITEFFECTLOVERS = "Lover Present: +10%% Mana Regeneration\n[lovers_list]",
 	TRAITEFFECTRELATIONCHARACTERS = "{color=yellow|Caused by: %s}",
 	TRAITEFFECTRARESTURDY = """Rare: Sturdy
 Increased Health and Armor Penetration""",
