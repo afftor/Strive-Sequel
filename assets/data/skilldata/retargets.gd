@@ -29,7 +29,6 @@ var skills = {
 	
 	protect_me = {
 		code = 'protect_me',
-		name = '',
 		descript = '',
 		icon = "res://assets/images/iconsskills/light_spell_aoe.png",
 		type = 'combat', 
