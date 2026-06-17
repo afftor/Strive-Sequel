@@ -7,7 +7,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/icon_eyes.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['buff','support', 'selfbuf', 'stealth_casting', 'instant'],
+		tags = ['buff','support', 'selfbuf', 'stealth_casting', 'instant', 'recognizable'],
 		reqs = [
 			{code = 'gear_equiped', param = 'geartype', value = 'heavy', check = false},
 			],

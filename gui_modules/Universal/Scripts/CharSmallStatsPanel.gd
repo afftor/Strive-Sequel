@@ -88,7 +88,7 @@ func open(character = ResourceScripts.scriptdict.class_slave.new("temp_char_stat
 				text = skill.descript
 			}
 			if (skill.has("tags")
-					and skill.tags.has("need_to_see")
+					and !skill.tags.has("recognizable")
 					and !ResourceScripts.game_progress.have_seen_skill(i)):
 				entry.icon = load("res://assets/Textures_v2/icon_question_small.png")
 				entry.text = tr("NEEDTOSEESKILL")
