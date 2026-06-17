@@ -568,7 +568,7 @@ var skills = {
 		value = 1.1,
 	},
 	graze_the_grass = {
-		code = 'grass_graze_back',
+		code = 'graze_the_grass',
 		descript = '',
 		icon = load("res://assets/images/iconsskills/icon_plant.png"),
 		type = 'combat', 

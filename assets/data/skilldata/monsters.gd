@@ -315,163 +315,6 @@ var effects = {
 		target = 'target',
 		atomic = [{type = 'remove_all_effects', value = 'atkpass'}],
 	},
-	ramont_parry_n_riposte_stance = {
-		type = 'trigger',
-		trigger = [variables.TR_TURN_S],
-		conditions = [
-			{type = 'owner', value = [{code = 'has_status', status = 'ramont_parry_n_riposte', check = false}]},
-		],
-		atomic = [],
-		buffs = [],
-		req_skill = false,
-		tags = ['ramont_riposte_stance'],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'owner',
-				atomic = [{type = 'use_combat_skill', skill = 'ramont_riposte_stance_skill'}]
-			},
-		],
-	},
-	ramont_parry_n_riposte = {
-		type = 'temp_s',
-		target = 'target',
-		stack = 'ramont_parry_n_riposte',
-		rem_event = [variables.TR_COMBAT_F],
-		tick_event = [variables.TR_NONE],
-		tags = ['stance', 'ramont_parry_n_riposte', 'defensive', 'counterattack'],
-		duration = 1,
-		statchanges = {},
-		sub_effects = ['ramont_parry','ramont_riposte','ramont_parry_remove'],
-		buffs = ['b_ramont_parry_n_riposte'],
-	},
-	ramont_parry = {
-		type = 'trigger',
-		target = 'target',
-		trigger = [variables.TR_DEF],
-		req_skill = false,
-		conditions = [
-			{type = 'skill', value = ['tags', 'has', 'damage'] },
-			{type = 'skill', value = ['ability_type', 'neq', 'spell']},
-		],
-		atomic = [],
-		buffs = [],
-		args = {
-			skill = {obj = 'skill', func = 'eq'},
-			caster = {obj = 'caster', func = 'eq'},
-			target = {obj = 'target', func = 'eq'},
-			receiver = {obj = 'receiver', func = 'eq'},
-		},
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'skill',
-				atomic = [{type = 'stat_set', stat = 'hit_res', value = variables.RES_MISS},],
-			},
-		]
-	},
-	ramont_riposte = {
-		type = 'trigger',
-		trigger = [variables.TR_DEF],
-		req_skill = true,
-		conditions = [
-			{type = 'skill', value = ['tags', 'has', 'damage'] },
-			{type = 'skill', value = ['target_range', 'eq', 'melee']},
-			{type = 'skill', value = ['ability_type', 'eq', 'skill']},
-		],
-		args = {
-			skill = {obj = 'skill', func = 'eq'},
-			caster = {obj = 'caster', func = 'eq'},
-			target = {obj = 'target', func = 'eq'},
-		},
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'owner',
-				args = {targetValue = {obj = 'parent', func = 'arg', arg = 'caster'}},
-				atomic = [{type = 'use_combat_skill', skill = 'attack', target = ['parent_args', 'targetValue']}],
-			},
-		]
-	},
-	ramont_parry_remove = {
-		type = 'trigger',
-		trigger = [variables.TR_POST_TARG],
-		req_skill = true,
-		conditions = [
-			{type = 'skill', value = ['tags', 'has', 'damage'] },
-		],
-		args = {
-			skill = {obj = 'skill', func = 'eq'},
-			caster = {obj = 'caster', func = 'eq'},
-			target = {obj = 'target', func = 'eq'},
-		},
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'owner',
-				conditions = [],
-				atomic = [{type = 'remove_all_effects', value = 'ramont_parry_n_riposte'}],
-			},
-		]
-	},
-	eviction_notice = {
-		type = 'temp_s',
-		duration = 2,
-		stack = 'eviction_notice',
-		tick_event = [variables.TR_TURN_S],
-		remove_event = [variables.TR_DEATH,variables.TR_COMBAT_F],
-		tags = ['eviction_notice',],
-		statchanges = {},
-		args = {
-			skill = {obj = 'skill', func = 'eq'},
-			caster = {obj = 'caster', func = 'eq'},
-			target = {obj = 'target', func = 'eq'},
-		},
-		sub_effects = [
-			'ramont_eviction_bonus','ramont_remove_notice',
-		],
-		buffs = [{
-			icon = "res://assets/images/iconsskills/abuse.png",
-			description = "EFFECT_EVICTION_NOTICE",
-		}]
-	},
-	ramont_eviction_bonus = {
-		type = 'trigger',
-		trigger = [variables.TR_DEF],
-		req_skill = true,
-		conditions = [
-			{type = 'skill', value = ['tags', 'has', 'piercing_obsidian'] },
-			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}
-		],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'skill',
-				conditions = [],
-				atomic = [{type = 'stat_mul', stat = 'value', value = 1.2},],
-			},
-		]
-	},
-	ramont_remove_notice = {
-		type = 'trigger',
-		trigger = [variables.TR_POST_TARG],
-		req_skill = true,
-		conditions = [{type = 'skill', value = ['tags', 'has', 'piercing_obsidian'] },],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'target',
-				conditions = [],
-				atomic = [{type = 'remove_all_effects', value = 'eviction_notice'}],
-			},
-		]
-	},
-	ramont_embargo_order = {
-		type = 'oneshot',
-		target = 'target',
-		tags = [],
-		atomic = [{type = 'use_combat_skill', skill = 'ramont_embrago'},]
-	},
 }
 var atomic_effects = {}
 var buffs = {
@@ -504,10 +347,6 @@ var buffs = {
 		description = "BUFFDESCRIPTATTACKPASSSRC",
 		tags = ['combat_only']
 	},
-	b_ramont_parry_n_riposte = {
-		icon = "res://assets/images/iconsskills/strongattack.png",
-		description = "EFFECT_RAMONTPARRY",
-	},
 }
 
 var stacks = {
@@ -523,9 +362,5 @@ var stacks = {
 		ramont_parry_n_riposte = {
 		type = 'stack_s',
 		stack = 1,
-	},
-	eviction_notice = {
-		type = 'stack_s',
-		stack = 2,
 	},
 }
