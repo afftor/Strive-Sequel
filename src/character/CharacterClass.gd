@@ -2084,6 +2084,12 @@ func translate(text, number = -1):
 	text = statlist.translate(text, number)
 	if text.find('[price]') != -1:
 		text = text.replace("[price]", str(calculate_price(true))) #need another placeholder for a non-shop value. for now it is not used, but may be handy 
+	if text.find("[lovers_list]") != -1:
+		text = text.replace("[lovers_list]", ResourceScripts.game_party.build_relationship_buff_names_text(self, ['lovers', 'freelovers']))
+	if text.find("[friends_list]") != -1:
+		text = text.replace("[friends_list]", ResourceScripts.game_party.build_relationship_buff_names_text(self, ['friends']))
+	if text.find("[rivals_list]") != -1:
+		text = text.replace("[rivals_list]", ResourceScripts.game_party.build_relationship_buff_names_text(self, ['rivals']))
 	if text.find('[spouse') != -1:
 		if !has_profession('master'):
 			print ("active char is not master")
@@ -2184,6 +2190,8 @@ func get_price_composition():
 	return price_compo_text
 
 func apply_atomic(template):
+	if npc_reference == 'combat_global':
+		return
 	if input_handler.combat_node != null and input_handler.combat_node.ActionQueue != null and template.type != 'remove_all_effects':
 		input_handler.combat_node.ActionQueue.add_atomic(template, id)
 	else:

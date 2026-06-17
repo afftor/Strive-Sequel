@@ -188,6 +188,12 @@ func attempt_romance(char1, char2):
 		return 
 	if characters[char2].is_master(): 
 		return 
+	if worlddata.fixed_relations.has(char1):
+		if worlddata.fixed_relations[char1].has(char2):
+			return
+	if worlddata.fixed_relations.has(char2):
+		if worlddata.fixed_relations[char2].has(char1):
+			return
 	var relationship = _get_data(char1, char2)
 	var chance = 0
 	
@@ -980,3 +986,13 @@ func check_masters_story_fame(manifest = true):
 	if manifest:
 		chara.log_me(chara.translate(tr("FAME_RISE_MANIFEST")) % tr(chara.get_fame_bonus('name')))
 
+
+func build_relationship_buff_names_text(person, statuses):
+	var names = []
+	for rec in find_relationships_in_same_location(person.id, statuses):
+		var ch = characters_pool.get_char_by_id(rec.char)
+		if ch != null:
+			names.append(ch.get_short_name())
+	if names.empty():
+		return ''
+	return "\n" + tr("TRAITEFFECTRELATIONCHARACTERS") % PoolStringArray(names).join(", ")

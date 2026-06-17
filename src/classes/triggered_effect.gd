@@ -116,6 +116,7 @@ func e_apply(): #temporal solution until proper rework via apply_status
 		if eff is Dictionary and eff.has('status'):
 			if eff.has('overload_target'):
 				t1 = eff.overload_target
+			e = eff.status
 			eff = eff.status
 		if eff is String:
 			eff = Effectdata.get_effect_for_status(eff)
