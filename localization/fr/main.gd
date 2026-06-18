@@ -3542,6 +3542,7 @@ Only one attunement can be taken""", # MISSING TRANSLATION
 	TRAITEFFECTRAREDEADLY = "Rare : Mortel Augmentation des dégâts et de la vitesse",
 	TRAITEFFECTRAREPRECISE = "Rare : Précision : Evasion, Hitrate et MDEF accrus",
 	TRAITEFFECTRARETOUGH = "Rare : Rugosité : Augmentation des points de vie, de la DEF et de la MDEF",
+	TRAITMONSTER_MASTERY_WARFARE = """Warfare Mastery""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_WARFAREDESCRIPT = """Warfare Mastery""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_PROTECTIONDESCRIPT = """Protection Mastery""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_STEALTHDESCRIPT = """Stealth Mastery""", # MISSING TRANSLATION
@@ -5912,6 +5913,9 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYKURDAN = "Kurdan",
 	
 	ENEMYLEON = "Léon",
+	ENEMYFAT_BANDIT = """Fat Bandit""", # MISSING TRANSLATION
+	ENEMYREDHEAD_BOSS_BANDIT = """Bandit Leader""", # MISSING TRANSLATION
+	ENEMYSMALL_BANDIT = """Small Bandit""", # MISSING TRANSLATION
 	ENEMYLILITH_BOSS_1 = """Ashmedai""", # MISSING TRANSLATION
 	ENEMYLILITH_BOSS_2 = """Ashmedai""", # MISSING TRANSLATION
 	ENEMYWHITE_STAG = "Cerf blanc",

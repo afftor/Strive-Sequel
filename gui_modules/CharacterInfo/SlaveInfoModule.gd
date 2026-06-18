@@ -9,6 +9,8 @@ onready var traitlist = $TraitContainer/HBoxContainer
 onready var upgrades = $UpgradesPanel
 onready var sextraits = $SexTraitsPanel
 onready var trainings_selector = $tr_selector
+onready var race_label = $Panel/maininfo/Race/label
+onready var race_label_font = race_label.get_font("font")
 var curr_tab
 
 
@@ -85,7 +87,9 @@ func update():
 		$ConsentLabel.text = text
 		
 		$Panel/maininfo/Race/icon.texture = races.racelist[person.get_stat('race')].icon
-		$Panel/maininfo/Race/label.text = races.racelist[person.get_stat('race')].name
+		race_label.text = races.racelist[person.get_stat('race')].name
+		race_label.set("custom_fonts/font", race_label_font)
+		input_handler.font_size_adjust(race_label)
 		globals.connecttexttooltip($Panel/maininfo/Race, "[center]{color=green|"+ races.racelist[person.get_stat('race')].name +"}[/center]\n\n"+ person.show_race_description())
 		
 		var slavename = "CHARTYPE" + person.get_stat('slave_class').to_upper()
@@ -96,15 +100,18 @@ func update():
 		$Panel/maininfo/type/icon.texture = person.get_class_icon()
 		$Panel/maininfo/type/label.text = tr(slavename)
 		
-		var character_tax = 0
-		if person.is_active and person.get_stat('slave_class') == 'servant':
-			character_tax = person.get_upkeep()
 		$Panel/maininfo/price/label.text = str(person.calculate_price(false, false, true))
+		var character_tax = person.get_weekly_tax()
 		if character_tax > 0:
 			$Panel/maininfo/price/label.text += " (%d)" % character_tax
 		var value_tooltip = tr("TOOLTIPVALUE") + '\n\n' + person.get_price_composition()
 		if character_tax > 0:
-			value_tooltip += "\n%s: {color=yellow|%d}" % [tr("FAMEDESC_UPKEEP"), character_tax]
+			value_tooltip += "\n%s: {color=yellow|%d} (%d + %d)" % [
+				tr("FAMEDESC_UPKEEP"),
+				character_tax,
+				person.get_upkeep(),
+				person.get_value_upkeep()
+			]
 		globals.connecttexttooltip($Panel/maininfo/price, value_tooltip)
 		$Panel/maininfo/fame/label.text = tr(person.get_fame_bonus('name'))
 		globals.connecttexttooltip($Panel/maininfo/fame,

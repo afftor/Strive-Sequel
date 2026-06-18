@@ -624,6 +624,8 @@ var level_stat_upg_bonuses = {
 	6 : 1.0,
 }
 
+var value_upkeep_rate = 0.1
+
 var fame_tiers = {
 	0 : {
 		name = "FAME0_NAME",

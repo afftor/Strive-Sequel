@@ -1313,6 +1313,9 @@ Tasto di scelta rapida: 3""",
 	QUESTCOMPLETEMESSAGE = "Missione completata",
 	QUESTDAYSLEFT = "Giorni rimasti",
 	QUESTLOCATION = "Posizione della missione",
+	NEEDTOSEESKILL = """You have not yet seen this skill in action.""", # MISSING TRANSLATION
+	CHARSMALLTAB_ABIL = """Abilities""", # MISSING TRANSLATION
+	CHARSMALLTAB_GEN = """Stats""", # MISSING TRANSLATION
 	SKILLATTACK = "Attacco",
 	SKILLATTACKDESCRIPT = "Attacca il bersaglio con l'arma equipaggiata.",
 	SKILLRANGED_ATTACK = "Attacco (a distanza)",
@@ -4086,17 +4089,29 @@ Aumento dei Danni e della Frequenza dei Colpi""",
 Aumento dell'Evasione, dell Frequenza dei Colpi e MDEF""",
 	TRAITEFFECTRARETOUGH = """Raro: Duro
 Aumento della Salute, DEF e MDEF""",
+	TRAITMONSTER_MASTERY_WARFARE = """Warfare Mastery""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_WARFAREDESCRIPT = "Maestria della Guerra",
+	TRAITMONSTER_MASTERY_PROTECTION = """Protection Mastery""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_PROTECTIONDESCRIPT = "Maestria della Protezione",
+	TRAITMONSTER_MASTERY_STEALTH = """Stealth Mastery""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_STEALTHDESCRIPT = "Maestria della Furtività",
+	TRAITMONSTER_MASTERY_MARKSMANSHIP = """Marksmanship Mastery""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_MARKSMANSHIPDESCRIPT = "Maestria nel Tiro con l'Arco",
+	TRAITMONSTER_MASTERY_LEADERSHIP = """Leadershp Mastery""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_LEADERSHIPDESCRIPT = "Maestria della Leadership",
+	TRAITMONSTER_MASTERY_FIRE = """Fire Mastery""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_FIREDESCRIPT = "Maestria del Fuoco",
+	TRAITMONSTER_MASTERY_WATER = """Water Mastery""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_WATERDESCRIPT = "Maestria dell'Acqua",
+	TRAITMONSTER_MASTERY_AIR = """Air Mastery""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_AIRDESCRIPT = "Maestria dell'Aria",
+	TRAITMONSTER_MASTERY_EARTH = """Earth Mastery""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_EARTHDESCRIPT = "Maestria della Terra",
+	TRAITMONSTER_MASTERY_LIGHT = """Light Mastery""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_LIGHTDESCRIPT = "Maestria della Luce",
+	TRAITMONSTER_MASTERY_DARK = """Dark Mastery""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_DARKDESCRIPT = "Maestria Oscura",
+	TRAITMONSTER_MASTERY_MIND = """Mind Mastery""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_MINDDESCRIPT = "Maestria della Mente",
 	TRAITEFFECTHARDWORK = "Duro lavoro: +50%% di produttività",
 	TRAITEFFECTPHYSBUF = "Elisir della Forza dell'Orco: +80 Fisica",

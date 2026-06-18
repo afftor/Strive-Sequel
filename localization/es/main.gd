@@ -1297,6 +1297,9 @@ Tecla de acceso rápido: 3""",
 	QUESTCOMPLETEMESSAGE = "Misión completada",
 	QUESTDAYSLEFT = "días restantes",
 	QUESTLOCATION = "Ubicación de la misión",
+	NEEDTOSEESKILL = """You have not yet seen this skill in action.""", # MISSING TRANSLATION
+	CHARSMALLTAB_ABIL = """Abilities""", # MISSING TRANSLATION
+	CHARSMALLTAB_GEN = """Stats""", # MISSING TRANSLATION
 	SKILLATTACK = "Ataque",
 	SKILLATTACKDESCRIPT = "Ataca al objetivo con el arma equipada.",
 	SKILLRANGED_ATTACK = "Ataque (a distancia)",
@@ -3583,6 +3586,7 @@ Mayor daño y tasa de impacto""",
 Mayor evasión, tasa de impacto y MAG DEF""",
 	TRAITEFFECTRARETOUGH = """Raro: Duro
 Mayor salud, DEF y MAG DEF""",
+	TRAITMONSTER_MASTERY_WARFARE = """Warfare Mastery""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_WARFAREDESCRIPT = """Warfare Mastery""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_PROTECTIONDESCRIPT = """Protection Mastery""", # MISSING TRANSLATION
 	TRAITMONSTER_MASTERY_STEALTHDESCRIPT = """Stealth Mastery""", # MISSING TRANSLATION
@@ -5895,6 +5899,9 @@ La mujer desaparece tan rápido como apareció ante ti, dejándote frente a la m
 	ENEMYAIRE = "Aire",
 	ENEMYKURDAN = "Kurdan",
 	ENEMYLEON = "Leon",
+	ENEMYFAT_BANDIT = """Fat Bandit""", # MISSING TRANSLATION
+	ENEMYREDHEAD_BOSS_BANDIT = """Bandit Leader""", # MISSING TRANSLATION
+	ENEMYSMALL_BANDIT = """Small Bandit""", # MISSING TRANSLATION
 	ENEMYLILITH_BOSS_1 = """Ashmedai""", # MISSING TRANSLATION
 	ENEMYLILITH_BOSS_2 = """Ashmedai""", # MISSING TRANSLATION
 	ENEMYWHITE_STAG = "Ciervo blanco",

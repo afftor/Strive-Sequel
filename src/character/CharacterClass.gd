@@ -2773,6 +2773,16 @@ func get_stat_upgrade_price(stat_level):
 func get_upkeep():
 	return int(get_fame_bonus('upkeep'))
 
+func get_value_upkeep():
+	return int(calculate_price(false, false, false) * variables.value_upkeep_rate)
+
+func get_weekly_tax():
+	if !is_active:
+		return 0
+	if get_stat('slave_class') != 'servant':
+		return 0
+	return get_upkeep() + get_value_upkeep()
+
 func get_fame_bonus(bonus_name):
 	var fame_tier = variables.fame_tiers[get_stat('fame')]
 	if !fame_tier.has(bonus_name):

@@ -565,17 +565,13 @@ func clear_heroes():
 func subtract_taxes():
 	var tax = 0
 	for ch in characters.values():
-		if !ch.is_active:
-			continue
-		if !ch.get_stat('slave_class') == 'servant':
-			continue
 		#old math
 #		var tres = ch.calculate_price()
 #		tres *= 1.0 - 0.05 * ch.get_stat('tame_factor')
 #		if ch.get_stat('personality') == 'shy':
 #			tres *= 0.9
 #		tax += tres
-		tax += ch.get_upkeep()
+		tax += ch.get_weekly_tax()
 #	ResourceScripts.game_res.money -= int (3 * tax / 100)#old math
 	ResourceScripts.game_res.money -= tax
 
