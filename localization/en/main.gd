@@ -3205,6 +3205,10 @@ Loyalty: +10 (half for viewers), Lust: +15, Maxes Obedience.""",
 Executes selected character. Greatly improves obedience of everyone involved.
 Basic Effects:
 Loyalty: +25, Maxes Obedience.""",
+	SKILLCLASS_COPY = "Copy class",
+	SKILLCLASS_COPYDESCRIPT = "Select a character to get it's specific racial class.",
+	DIALOGUECLASS_COPYREPORT = "Select a class for [name] to learn from [targetname].",
+	DIALOGUECLASS_COPYREPORT_FAILED = "No class for [name] to learn from [targetname].",
 	SKILLENTHRALL = "Enthrall",
 	SKILLENTHRALLDESCRIPT = "Select a character to make them into a Thrall of a caster. Each Thrall increases maximum Lust, Lust regeneration and provides unlock ponts.",
 	DIALOGUEENTHRALLREPORT = "[targetname] has been successfully enthralled by [name]. [targetname] feels completely enarmoured with [him].",

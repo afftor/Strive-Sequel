@@ -233,3 +233,47 @@ func map(dungeon_code):
 
 func skill_grant(character, skill):
 	character.learn_c_skill(skill)
+
+
+func class_copy(character, target):
+	var data = {text = '', tags = ['skill_report_event'], options = []}
+	var text
+	var has_option = false
+	for prof in target.get_professions():
+		if character.has_profession(prof):
+			continue
+		if prof in ['master', 'spouse']:
+			continue
+		if !classesdata.professions.has(prof):
+			continue
+		var profdata = classesdata.professions[prof]
+		var is_racial = false
+		var can_obtain = true
+		for req in profdata.reqs:
+			if req.code in ['race', 'one_of_races']:
+				is_racial = true
+				continue
+			if !character.valuecheck(req):
+				can_obtain = false
+				break
+				pass
+		if is_racial and can_obtain:
+			has_option = true
+			var op_text = tr(ResourceScripts.descriptions.get_class_name(profdata, character))
+			var op_bonus = []
+			op_bonus.push_back({code = 'affect_active_character', type = 'remove_soc_skill', skill = 'class_copy'})
+			op_bonus.push_back({code = 'affect_active_character', type = 'add_class', class = prof})
+			data.options.append({code = 'close', text = op_text, reqs = [], bonus_effects = op_bonus})
+	
+	data.options.append({code = 'close', text = tr("DIALOGUECLOSE"), reqs = []})
+	if has_option:
+		text = tr("DIALOGUECLASS_COPYREPORT")
+	else:
+		text = tr("DIALOGUECLASS_COPYREPORT_FAILED")
+	
+	text = character.translate(text)
+	text = target.translate(text.replace("[target", "["))
+	data.text = text
+	input_handler.active_character = character
+	input_handler.interactive_message_custom(data)
+	
