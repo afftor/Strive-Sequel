@@ -518,6 +518,9 @@ ma manterrà comunque tutti i tuoi personaggi, oggetti e inventario. Usa questa 
 	QBACCEPT = "Accettare",
 	MONEYTOOLTIP = "Soldi Posseduti",
 	MONEYTOOLTIP2 = "Tasse Settimanali",
+	UPGRADETAXTOOLTIP = """Upgrade Taxes""", # MISSING TRANSLATION
+	CHARACTERUPKEEPTOOLTIP = """Character Upkeep""", # MISSING TRANSLATION
+	TOTALUPKEEPTOOLTIP = """Total Upkeep""", # MISSING TRANSLATION
 	PAUSEMENUSAVE = "Salva",
 	PAUSEMENULOAD = "Carica",
 	PAUSEMENUOPT = "Opzioni",
@@ -1673,9 +1676,12 @@ Non richiede il turno per essere attivato. """,
 	SKILLNECRO_AURADESCRIPT = "Evocazione Passiva: Scheletri. Il numero di scheletri è definito dal Fattore Magico.",
 	SKILLRAMONT_RIPOSTE_STANCE_SKILL = 'Posizione di Parata e Risposta',
 	SKILLCOMMAND_EMBARGO = 'Comando: Embargo',
+	SKILLCOMMAND_EMBARGODESCRIPT = """Target another ally in the melee zone. Command them to attack a random enemy, dealing 70% ATK damage and inflicting Provoke.""", # MISSING TRANSLATION
 	SKILLRAMONT_EMBRAGO = 'Embargo in Vigore',
 	SKILLRAMONT_EVICTION_NOTICE = 'Avviso di Sfratto',
+	SKILLRAMONT_EVICTION_NOTICEDESCRIPT = """Deal 85% ATK damage and inflict {color=aqua|Eviction Notice}.""", # MISSING TRANSLATION
 	SKILLRAMONT_PIERCING_OBSIDIAN = 'Ossidiana Perforante',
+	SKILLRAMONT_PIERCING_OBSIDIANDESCRIPT = """Deal 135% ATK damage to a row and inflict Bleed. Deal +20% damage against enemies affected by '{color=aqua|Eviction Notice}'.""", # MISSING TRANSLATION
 	SKILLPROTECT_ME = """Protect Me!""", # MISSING TRANSLATION
 	SKILLENRAGING_BELITTLEMENT = """Enraging Belittlement""", # MISSING TRANSLATION
 	SKILLENRAGING_BELITTLEMENT_CALI = """Enraging Belittlement""", # MISSING TRANSLATION
@@ -3021,6 +3027,10 @@ Lealtà: +10 (metà per gli spettatori), Lussuria: +15, Max Obbedienza.""",
 Esegue il carattere selezionato. Migliora notevolmente l'obbedienza di tutte le persone coinvolte. 
 Effetti di base: 
 Lealtà: +25, massima obbedienza.""",
+	SKILLCLASS_COPY = """Universal Aptitude""", # MISSING TRANSLATION
+	SKILLCLASS_COPYDESCRIPT = """Select a character to get it's specific racial class.""", # MISSING TRANSLATION
+	DIALOGUECLASS_COPYREPORT = """Select a class for [name] to learn from [targetname].""", # MISSING TRANSLATION
+	DIALOGUECLASS_COPYREPORT_FAILED = """No class for [name] to learn from [targetname].""", # MISSING TRANSLATION
 	SKILLENTHRALL = "Affascinare",
 	SKILLENTHRALLDESCRIPT = "Seleziona un personaggio per trasformarlo in uno Schiavo dell'incantatore. Ogni Schiavo aumenta il desiderio massimo, la rigenerazione del desiderio e fornisce punti sblocco.",
 	DIALOGUEENTHRALLREPORT = "[targetname] è stata conquistata da [name]. [targetname] si sente completamente innamorata di [him].",

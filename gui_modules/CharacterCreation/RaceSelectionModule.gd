@@ -97,6 +97,7 @@ func _update_race_exclusive_entries(race_id):
 	for skill_id in _get_race_exclusive_skills(race_id):
 		var skill = Skilldata.get_template(skill_id, person)
 		var newbutton = input_handler.DuplicateContainerTemplate(container)
+		newbutton.set_meta('display_only', true)
 		newbutton.get_node('Label').text = tr("RACE_EXCLUSIVE_SKILL_LABEL") % skill.name
 		newbutton.get_node('Icon').texture = _get_entry_icon(skill.icon)
 		if skill.has('container'):
@@ -114,7 +115,7 @@ func _update_race_exclusive_entries(race_id):
 func _get_race_exclusive_skills(race_id):
 	var race = races.racelist[race_id]
 	var skill_list = []
-	for group in ['skills', 'combat_skills', 'explore_skills']:
+	for group in ['social_skills', 'combat_skills', 'explore_skills']:
 		if !race.has(group):
 			continue
 		for skill_id in race[group]:

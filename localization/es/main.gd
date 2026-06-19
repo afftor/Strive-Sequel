@@ -511,6 +511,9 @@ pero conservarás todos tus personajes, objetos e inventario. Usa este modo para
 	QBACCEPT = "Aceptar",
 	MONEYTOOLTIP = "Dinero en posesión",
 	MONEYTOOLTIP2 = "Impuestos semanales",
+	UPGRADETAXTOOLTIP = """Upgrade Taxes""", # MISSING TRANSLATION
+	CHARACTERUPKEEPTOOLTIP = """Character Upkeep""", # MISSING TRANSLATION
+	TOTALUPKEEPTOOLTIP = """Total Upkeep""", # MISSING TRANSLATION
 	PAUSEMENUSAVE = "Guardar",
 	PAUSEMENULOAD = "Cargar",
 	PAUSEMENUOPT = "Opciones",
@@ -3039,6 +3042,10 @@ Lealtad: +10 (la mitad para los espectadores), Lujuria: +15, Obediencia máxima.
 Ejecuta al personaje seleccionado. Mejora considerablemente la obediencia de todos los involucrados.
 Efectos básicos:
 Lealtad: +25, Obediencia máxima.""",	
+	SKILLCLASS_COPY = """Universal Aptitude""", # MISSING TRANSLATION
+	SKILLCLASS_COPYDESCRIPT = """Select a character to get it's specific racial class.""", # MISSING TRANSLATION
+	DIALOGUECLASS_COPYREPORT = """Select a class for [name] to learn from [targetname].""", # MISSING TRANSLATION
+	DIALOGUECLASS_COPYREPORT_FAILED = """No class for [name] to learn from [targetname].""", # MISSING TRANSLATION
 	
 	SKILLENTHRALL = "Cautivar",
 	SKILLENTHRALLDESCRIPT = """Selecciona un personaje para convertirlo en esclavo de un lanzador. Cada esclavo aumenta la Lujuria máxima y su regeneración, y proporciona puntos de desbloqueo.""",

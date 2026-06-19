@@ -530,6 +530,9 @@ var TranslationDict = {
 	
 	MONEYTOOLTIP = "Argent en possession",
 	MONEYTOOLTIP2 = "Impôts hebdomadaires",
+	UPGRADETAXTOOLTIP = """Upgrade Taxes""", # MISSING TRANSLATION
+	CHARACTERUPKEEPTOOLTIP = """Character Upkeep""", # MISSING TRANSLATION
+	TOTALUPKEEPTOOLTIP = """Total Upkeep""", # MISSING TRANSLATION
 	
 	PAUSEMENUSAVE = "Sauvegarder",
 	PAUSEMENULOAD = "Charger",
@@ -3059,6 +3062,10 @@ Damage +15%, Health +20.""", # MISSING TRANSLATION
 	SKILLPUBLICSEXHUMILIATIONDESCRIPT = "Catégorie : {color=pink|Lewd}\nMise en place d'une humiliation sexuelle publique pour la cible sélectionnée, améliorant le comportement de la cible et des spectateurs et procurant un peu de Lust à tous les observateurs. \nEffets de base : \nLoyauté : +10 (la moitié pour les spectateurs), Volupté : +15, Obéissance maximale",
 	SKILLPUBLICEXECUTION = "Exécution publique",
 	SKILLPUBLICEXECUTIONDESCRIPT = "Catégorie : {color=red|Mean}\nExécute le personnage sélectionné. Améliore grandement l'obéissance de toutes les personnes impliquées. \nEffets de base : \nLoyauté : +25, Améliore l'obéissance",
+	SKILLCLASS_COPY = """Universal Aptitude""", # MISSING TRANSLATION
+	SKILLCLASS_COPYDESCRIPT = """Select a character to get it's specific racial class.""", # MISSING TRANSLATION
+	DIALOGUECLASS_COPYREPORT = """Select a class for [name] to learn from [targetname].""", # MISSING TRANSLATION
+	DIALOGUECLASS_COPYREPORT_FAILED = """No class for [name] to learn from [targetname].""", # MISSING TRANSLATION
 	SKILLENTHRALL = """Enthrall""", # MISSING TRANSLATION
 	SKILLENTHRALLDESCRIPT = """Select a character to make them into a Thrall of a caster. Each Thrall increases maximum Lust, Lust regeneration and provides unlock ponts.""", # MISSING TRANSLATION
 	DIALOGUEENTHRALLREPORT = """[targetname] has been successfully enthralled by [name]. [targetname] feels completely enarmoured with [him].""", # MISSING TRANSLATION

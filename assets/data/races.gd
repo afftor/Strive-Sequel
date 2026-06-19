@@ -33,6 +33,7 @@ var racelist = {
 			wits_factor = [1,4],
 		},
 		race_bonus = {hpmax_mul2 = 1.15, mod_collect = 0.1, price = 100, mastery_point_universal = 1, manhunt = 1},
+		social_skills = ['class_copy'],
 		personality = {kind = 1, bold = 1, shy = 1, serious = 1},
 		diet_love = {vege = 1, meat = 1, fish = 1, grain = 1}, #weight for 1 random prefered food type
 		diet_hate = {vege = 10, meat = 10, fish = 10, grain = 10},#%chance for each food type to be refused

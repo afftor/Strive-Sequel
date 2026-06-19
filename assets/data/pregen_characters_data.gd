@@ -1300,6 +1300,13 @@ var unique_sprites = {
 			face_path = "mae_nude",
 			unlocked = true
 			},
+		wed = {
+			name = "Wedding",
+			descript = "",
+			path = "mae_wed_body",
+			face_path = "mae_wed",
+			unlocked = true
+			},
 	},
 	lilia = {
 		default = {

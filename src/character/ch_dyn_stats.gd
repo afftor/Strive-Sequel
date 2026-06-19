@@ -196,6 +196,10 @@ func process_race_data(id, process_skills = true):
 	if data.has('traits'):
 		for tr in data.traits:
 			process_trait_add(tr, 0)
+	if data.has("social_skills") and process_skills:
+		for id in data.social_skills:
+			if !skills_real.has(id):
+				skills_real.push_back(id)
 	if data.has("combat_skills") and process_skills:
 		for id in data.combat_skills:
 			if !c_skills_real.has(id):

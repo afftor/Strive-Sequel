@@ -1,10 +1,13 @@
 Added Lira's questline
 Added handling for act 2 transition in case when you refuse Zephyra at the end of act 1 and prevented church being blocked by it
+Added Universal Aptitude racial skill to Humans. Allows to copy one race restricted class from a selected character
+Added multiple new dungeon background variations
 Improved handling of other languages and incorrect syntax
 Renamed multiple key locations and areas to have less abstract names
 Multiple combat fixes
 Fixed sexuals_bonus mod still existing on some items and effects
 Fixed character upkeep values being too low 
+Fixed Rouge and Mae wedding dress sprites
 0.14.3b
 Sex minigame:
 	Added 5 new minigame spells

@@ -1,7 +1,7 @@
 extends Node
 var infinite_dungeon_biomes = {
 	biome_bandit_den = {
-		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
+		background_pool = ['cave_1', 'cave_2', 'cave_3', 'cave_4', 'cave_5', 'cave_6', 'cave_7', 'cave_8', 'cave_9', 'cave_10'],
 		enemyarray = [["rats_easy", 0.5],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
 		character_data = {
 			chance_mod = 1.5,#increases base chance to get slave after combat by this if its not guaranteed
@@ -16,7 +16,7 @@ var infinite_dungeon_biomes = {
 		gatherable_resources = 'biome_bandit_den_res',
 	},
 	biome_bandit_fort = {
-		background_pool = ['fort1', 'fort2', 'fort3'],
+		background_pool = ['fort1', 'fort2', 'fort3', 'fort4', 'fort5', 'fort6', 'fort7', 'fort8'],
 		enemyarray =  [["bandits_assassin", 1],['bandits_medium', 1],['bandits_medium2', 1],['bandits_golem', 0.5],['bandits_ballista', 0.5]],
 		character_data = {
 			chance_mod = 1.5,
@@ -32,7 +32,7 @@ var infinite_dungeon_biomes = {
 		gatherable_resources = 'biome_bandit_fort_res'
 	},
 	biome_rebel_redoubt = {
-		background_pool = ['fort1', 'fort2', 'fort3'],
+		background_pool = ['fort1', 'fort2', 'fort3', 'fort4', 'fort5', 'fort6', 'fort7', 'fort8'],
 		enemyarray =  [['event_rebels_1', 1],['event_rebels_2', 1],['rebels_small', 0.5]],
 		character_data = {
 			chance_mod = 1.2,
@@ -47,7 +47,7 @@ var infinite_dungeon_biomes = {
 		gatherable_resources = 'biome_bandit_fort_res',
 	},
 	biome_undead_crypt = {
-		background_pool = ['crypt1', 'crypt2', 'crypt3', 'crypt4', 'crypt5'],
+		background_pool = ['crypt1', 'crypt2', 'crypt3', 'crypt4', 'crypt5', 'crypt6', 'crypt7'],
 		enemyarray =  [["skeletons_easy", 1],['skeletons_easy2', 1],['skeletons_zombies', 1],['skeletons_zombies2', 1],['skeletons_lich', 0.5]],
 		character_data = {
 			chance_mod = 0.7,
@@ -62,7 +62,7 @@ var infinite_dungeon_biomes = {
 		gatherable_resources = 'biome_undead_crypt_res',
 	},
 	biome_goblin_cave = {
-		background_pool = ['cave_1', 'cave_2', 'cave_3', 'cave_4', 'cave_5'],
+		background_pool = ['cave_1', 'cave_2', 'cave_3', 'cave_4', 'cave_5', 'cave_6', 'cave_7', 'cave_8', 'cave_9', 'cave_10'],
 		enemyarray =  [["rats_easy", 0.5],['spiders', 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
 		character_data = {
 			chance_mod = 1.4,
@@ -77,7 +77,7 @@ var infinite_dungeon_biomes = {
 		gatherable_resources = 'biome_goblin_cave_res',
 	},
 	biome_grove = {
-		background_pool = ['forest1','forest2', 'forest3', 'forest4'],
+		background_pool = ['forest1', 'forest2', 'forest3', 'forest4', 'forest5', 'forest6'],
 		enemyarray = [["rats_easy", 0.5],['wolves_easy1', 1],['wolves_easy2', 1],['spiders', 1]],
 		character_data = {
 			chance_mod = 0.8,
@@ -92,7 +92,7 @@ var infinite_dungeon_biomes = {
 		gatherable_resources = 'biome_grove_res',
 	},
 	biome_ancient_jungles = {
-		background_pool = ['jungle1','jungle2','jungle3','jungle4'],
+		background_pool = ['jungle1', 'jungle2', 'jungle3', 'jungle4', 'jungle5', 'jungle6', 'jungle7'],
 		enemyarray = [['jungle_easy1', 1],['jungle_easy2', 1],['jungle_medium1', 1],['jungle_medium2', 1]],
 		character_data = {
 			chance_mod = 1.1,
@@ -107,7 +107,7 @@ var infinite_dungeon_biomes = {
 		gatherable_resources = 'biome_ancient_jungles_res',
 	},
 	biome_fire_depths = {
-		background_pool = ['fire_depths1', 'fire_depths2', 'fire_depths3', 'fire_depths4'],
+		background_pool = ['fire_depths1', 'fire_depths2', 'fire_depths3', 'fire_depths4', 'fire_depths5', 'fire_depths6', 'fire_depths7', 'fire_depths8'],
 		enemyarray = [['firedepths_easy1', 1],['firedepths_easy2', 1],['firedepths_medium1', 1],['firedepths_medium2', 1]],
 		character_data = {
 			chance_mod = 1.0,
@@ -243,7 +243,7 @@ var dungeons = {
 			races = [['local', 3], ['common',1]]
 		},
 		difficulty = 'easy',
-		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
+		background_pool = ['cave_1', 'cave_2', 'cave_3', 'cave_4', 'cave_5', 'cave_6', 'cave_7', 'cave_8', 'cave_9', 'cave_10'],
 		custom_background = 'combat_cave',
 		enemyarray = [["rats_easy", 0.5],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
 		final_enemy = [['bandits_easy_boss',1], ['bandits_easy_boss2',1],['bandits_easy_boss3',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
@@ -335,7 +335,7 @@ var dungeons = {
 			races = [['local', 3], ['common',5], ['uncommon',1]]
 		},
 		difficulty = 'medium',
-		background_pool = ['fort1', 'fort2', 'fort3'],
+		background_pool = ['fort1', 'fort2', 'fort3', 'fort4', 'fort5', 'fort6', 'fort7', 'fort8'],
 		custom_background = 'combat_fort',
 		enemyarray =  [["bandits_assassin", 1],['bandits_medium', 1],['bandits_medium2', 1],['bandits_golem', 0.5],['bandits_ballista', 0.5]],
 		final_enemy = [['bandits_jarl_boss',0.7], ['bandits_hunter_boss',1], ['bandits_warlock_boss',0.5]], final_enemy_type = 'character', final_enemy_class = ['combat'],
@@ -438,7 +438,7 @@ var dungeons = {
 			races = [['local', 6], ['common',1]]
 		},
 		difficulty = 'medium',
-		background_pool = ['fort1', 'fort2', 'fort3'],
+		background_pool = ['fort1', 'fort2', 'fort3', 'fort4', 'fort5', 'fort6', 'fort7', 'fort8'],
 		custom_background = 'combat_fort',
 		enemyarray =  [['event_rebels_1', 1],['event_rebels_2', 1],['rebels_small', 0.5]],
 		final_enemy = [['rebels_boss',1], ['rebels_sergeant_boss',1], ['rebels_castellan_boss',0.5]], final_enemy_type = 'character', final_enemy_class = ['combat'],
@@ -554,7 +554,7 @@ var dungeons = {
 			chance_mod = 0.7,
 			races = [['common', 6], ['uncommon', 1]]
 		},
-		background_pool = ['crypt1', 'crypt2', 'crypt3', 'crypt4', 'crypt5'],
+		background_pool = ['crypt1', 'crypt2', 'crypt3', 'crypt4', 'crypt5', 'crypt6', 'crypt7'],
 		custom_background = 'combat_crypt',
 		enemyarray =  [["skeletons_easy", 1],['skeletons_easy2', 1],['skeletons_zombies', 1],['skeletons_zombies2', 1],['skeletons_lich', 0.5]],
 		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
@@ -642,7 +642,7 @@ var dungeons = {
 			chance_mod = 1.1,
 			races = [["common", 1], ['local', 4], ['Goblin',5]]
 		},
-		background_pool = ['cave_1', 'cave_2', 'cave_3', 'cave_4', 'cave_5'],
+		background_pool = ['cave_1', 'cave_2', 'cave_3', 'cave_4', 'cave_5', 'cave_6', 'cave_7', 'cave_8', 'cave_9', 'cave_10'],
 		custom_background = 'combat_cave',
 		bgm = "dungeon",
 		enemyarray =  [["rats_easy", 0.5],['spiders', 0.2],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
@@ -721,7 +721,7 @@ var dungeons = {
 			races = [["common", 2], ['local', 4],['uncommon',1]]
 		},
 		purchase_area = 'forests',
-		background_pool = ['forest1','forest2', 'forest3', 'forest4'],
+		background_pool = ['forest1', 'forest2', 'forest3', 'forest4', 'forest5', 'forest6'],
 		custom_background = 'combat_forest',
 		bgm = "dungeon",
 		enemyarray = [["rats_easy", 0.3],['wolves_easy1', 1],['grove_1', 1],['grove_2', 1],['spiders', 0.5]],
@@ -815,7 +815,7 @@ var dungeons = {
 			races = [["common", 2], ['local', 4],['uncommon',1]]
 		},
 		purchase_area = 'forests',
-		background_pool = ['spider_lair1', 'spider_lair2', 'spider_lair3', 'spider_lair4'],
+		background_pool = ['spider_lair1', 'spider_lair2', 'spider_lair3', 'spider_lair4', 'spider_lair5', 'spider_lair6'],
 		custom_background = 'combat_forest',
 		bgm = "dungeon",
 		enemyarray = [['spiders2', 1],['spiders3', 0.8],['spiders_many', 0.4],['spiders_many2', 0.5]],
@@ -974,7 +974,7 @@ var dungeons = {
 			races = [["common", 2], ['uncommon', 4],['TribalElf',6], ['rare',1]]
 		},
 		purchase_area = 'forests',
-		background_pool = ['jungle1','jungle2','jungle3','jungle4'],
+		background_pool = ['jungle1', 'jungle2', 'jungle3', 'jungle4', 'jungle5', 'jungle6', 'jungle7'],
 		custom_background = 'combat_jungle',
 		bgm = "dungeon",
 		enemyarray = [['jungle_easy1', 1],['jungle_easy2', 1],['jungle_medium1', 1],['jungle_medium2', 1]],
@@ -1087,7 +1087,7 @@ var dungeons = {
 			races = [["common", 2], ['uncommon', 4],['rare',1]]
 		},
 		purchase_area = 'mountains',
-		background_pool = ['fire_depths1', 'fire_depths2', 'fire_depths3', 'fire_depths4'],
+		background_pool = ['fire_depths1', 'fire_depths2', 'fire_depths3', 'fire_depths4', 'fire_depths5', 'fire_depths6', 'fire_depths7', 'fire_depths8'],
 		custom_background = 'combat_volcano',
 		bgm = "dungeon",
 		enemyarray = [['firedepths_easy1', 1],['firedepths_easy2', 1],['firedepths_medium1', 1],['firedepths_medium2', 1]],

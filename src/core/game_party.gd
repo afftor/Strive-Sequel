@@ -562,16 +562,15 @@ func clear_heroes():
 	characters_pool.cleanup()
 
 
-func subtract_taxes():
+func get_weekly_tax():
 	var tax = 0
 	for ch in characters.values():
-		#old math
-#		var tres = ch.calculate_price()
-#		tres *= 1.0 - 0.05 * ch.get_stat('tame_factor')
-#		if ch.get_stat('personality') == 'shy':
-#			tres *= 0.9
-#		tax += tres
 		tax += ch.get_weekly_tax()
+	return tax
+
+
+func subtract_taxes():
+	var tax = get_weekly_tax()
 #	ResourceScripts.game_res.money -= int (3 * tax / 100)#old math
 	ResourceScripts.game_res.money -= tax
 
