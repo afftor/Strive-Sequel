@@ -2361,6 +2361,8 @@ func affect_char(template, manifest = false):
 				dyn_stats.counters[template.index] += template.value
 		'add_soc_skill':
 			learn_skill(template.skill)
+		'remove_soc_skill':
+			unlearn_skill(template.skill)
 		'add_combat_skill':
 			learn_c_skill(template.skill)
 		'make_relative_of':

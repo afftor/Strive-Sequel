@@ -183,8 +183,10 @@ func unlearn_skill(skill):
 	daily_cooldowns.erase(skill)
 	social_skills_charges.erase(skill)
 	for i in range(1,12):
-		if social_skill_panel.has(i) and social_skill_panel[i] == skill: social_skill_panel.erase(i)
-		parent.get_ref().reset_rebuild()
+		if social_skill_panel.has(i) and social_skill_panel[i] == skill: 
+			social_skill_panel.erase(i)
+	parent.get_ref().reset_rebuild()
+	gui_controller.mansion.SkillModule.build_skill_panel()
 
 
 func unlearn_c_skill(skill):
@@ -192,8 +194,10 @@ func unlearn_c_skill(skill):
 	combat_cooldowns.erase(skill)
 	daily_cooldowns.erase(skill)
 	for i in range(1,22):
-		if combat_skill_panel.has(i) and combat_skill_panel[i] == skill: combat_skill_panel.erase(i)
-		parent.get_ref().reset_rebuild()
+		if combat_skill_panel.has(i) and combat_skill_panel[i] == skill: 
+			combat_skill_panel.erase(i)
+	parent.get_ref().reset_rebuild()
+	gui_controller.mansion.SkillModule.build_skill_panel()
 
 
 func unlearn_e_skill(skill):
@@ -266,11 +270,14 @@ func restore_skill_charge(code):
 func use_social_skill(s_code, target, item):
 	var template = Skilldata.get_template(s_code, parent.get_ref())
 	if template.has('special'):
-		item = Items.itemlist[item.itembase]
+		if item != null:
+			item = Items.itemlist[item.itembase]
 		if s_code == 'map':
 			ResourceScripts.custom_effects.call(template.special, item.map)
 		elif s_code == 'skill_granting':
 			ResourceScripts.custom_effects.call(template.special, parent.get_ref(), item.skill)
+		elif s_code == 'class_copy':
+			ResourceScripts.custom_effects.call(template.special, parent.get_ref(), target)
 		else:
 			ResourceScripts.custom_effects.call(template.special, parent.get_ref())
 		return
