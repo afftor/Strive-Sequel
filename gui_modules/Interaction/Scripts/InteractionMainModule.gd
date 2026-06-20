@@ -2794,6 +2794,8 @@ func endencounter():
 #						i.consentgain = input_handler.math(j.operant, i.consentgain, j.value)
 					else: call(j.effect, i)
 
+		if i.person.has_status('standing_love_pest'):
+			bonus *= 1.25
 		expgain = round(expgain * bonus)
 
 		i.person.add_stat('base_exp', expgain)

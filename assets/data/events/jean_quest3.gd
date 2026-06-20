@@ -1890,7 +1890,7 @@ var data = {
 			{
 				code = "jean_sylas_brothel_amelia_intro",
 				text = "JEAN_SYLAS_BROTHEL_CRYING_OPTION_AMELIA",
-				rreqs = [
+				reqs = [
 					{
 						type = "unique_character_checks",
 						name = "amelia",

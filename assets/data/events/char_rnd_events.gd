@@ -52,7 +52,8 @@ var data = {
 						type = "stat",
 						stat = "base_exp",
 						value = "var_injury_exp"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -80,7 +81,8 @@ var data = {
 						type = "stat",
 						stat = "physics",
 						value = "var_injury_physics"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
 				]
 			},
 			{
@@ -102,7 +104,8 @@ var data = {
 								operant = "+"
 							}
 						]
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = -20},
 				]
 			}
 		]
@@ -199,7 +202,8 @@ var data = {
 						type = "stat",
 						stat = "loyalty",
 						value = "var_asleep_loyalty"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = 20},
 				]
 			},
 			{
@@ -232,7 +236,8 @@ var data = {
 						type = "stat",
 						stat = "consent",
 						value = "var_asleep_consent"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
 				]
 			},
 			{
@@ -259,7 +264,8 @@ var data = {
 						type = "stat",
 						stat = "lust",
 						value = "var_asleep_lust"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -372,7 +378,8 @@ var data = {
 						type = "stat",
 						stat = "loyalty",
 						value = "var_bullying_loyalty"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -389,7 +396,8 @@ var data = {
 						type = "stat",
 						stat = "base_exp",
 						value = "var_bullying_exp_char"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
 				]
 			},
 			{
@@ -411,7 +419,9 @@ var data = {
 								operant = "+"
 							}
 						]
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = -20},
 				]
 			}
 		]
@@ -502,7 +512,8 @@ var data = {
 						type = "stat",
 						stat = "charm",
 						value = "var_misbehave_charm"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -519,7 +530,8 @@ var data = {
 						type = "stat",
 						stat = "physics",
 						value = "var_misbehave_physics"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
 				]
 			}
 		]
@@ -588,6 +600,7 @@ var data = {
 				],
 				bonus_effects = [
 
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
 				]
 			},
 			{
@@ -609,7 +622,8 @@ var data = {
 						type = "stat",
 						stat = "loyalty",
 						value = "var_lost_loyalty"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -637,7 +651,8 @@ var data = {
 						type = "stat",
 						stat = "wits",
 						value = "var_lost_wits"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = 20},
 				]
 			}
 		]
@@ -717,7 +732,8 @@ var data = {
 						type = "stat",
 						stat = "base_exp",
 						value = "var_unwell_exp"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -739,7 +755,8 @@ var data = {
 								operant = "+"
 							}
 						]
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -762,7 +779,8 @@ var data = {
 						type = "stat",
 						stat = "hp",
 						value = "var_unwell_hp"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
 				]
 			}
 		]
@@ -852,7 +870,8 @@ var data = {
 						type = "stat",
 						stat = "charm",
 						value = "var_attention_charm"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -885,7 +904,8 @@ var data = {
 						type = "stat",
 						stat = "consent",
 						value = "var_attention_consent"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
 				]
 			},
 			{
@@ -923,7 +943,8 @@ var data = {
 						type = "stat",
 						stat = "charm",
 						value = "var_attention_charm"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
 				]
 			},
 			{
@@ -957,7 +978,8 @@ var data = {
 								operant = "+"
 							}
 						]
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			}
 		]
@@ -1036,7 +1058,8 @@ var data = {
 						code = "money_change",
 						value = "var_treasure_money",
 						operant = "+"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
 				]
 			},
 			{
@@ -1070,7 +1093,8 @@ var data = {
 						type = "stat",
 						stat = "loyalty",
 						value = "var_treasure_loyalty"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -1098,7 +1122,8 @@ var data = {
 								operant = "+"
 							}
 						]
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = 20},
 				]
 			}
 		]
@@ -1189,7 +1214,8 @@ var data = {
 						type = "stat",
 						stat = "loyalty",
 						value = "var_nightmare_loyalty"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -1211,7 +1237,8 @@ var data = {
 								operant = "+"
 							}
 						]
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
 				]
 			}
 		]
@@ -1282,7 +1309,8 @@ var data = {
 					{
 						code = "change_relationship_precise",
 						value = "var_hated_food_relation_up"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = 20},
 				]
 			},
 			{
@@ -1297,7 +1325,8 @@ var data = {
 					{
 						code = "change_relationship_precise",
 						value = "var_hated_food_relation_down"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = -20},
 				]
 			},
 			{
@@ -1407,7 +1436,9 @@ var data = {
 						type = "stat",
 						stat = "base_exp",
 						value = "var_quarrel_exp"
-					}
+					},
+					{code = "affect_one_scene_character", char_num = 1, type = "stat", stat = "affection", value = 20},
+					{code = "affect_one_scene_character", char_num = 2, type = "stat", stat = "affection", value = -20},
 				]
 			},
 			{
@@ -1432,7 +1463,9 @@ var data = {
 						type = "stat",
 						stat = "base_exp",
 						value = "var_quarrel_exp"
-					}
+					},
+					{code = "affect_one_scene_character", char_num = 1, type = "stat", stat = "affection", value = -20},
+					{code = "affect_one_scene_character", char_num = 2, type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -1449,7 +1482,8 @@ var data = {
 						type = "stat",
 						stat = "physics",
 						value = "var_quarrel_physics"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = 20},
 				]
 			}
 		]
@@ -1527,7 +1561,8 @@ var data = {
 					{
 						code = "change_relationship",
 						value = "lovers"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = 20},
 				]
 			},
 			{
@@ -1560,7 +1595,9 @@ var data = {
 								operant = "+"
 							}
 						]
-					}
+					},
+					{code = "affect_one_scene_character", char_num = 1, type = "stat", stat = "affection", value = -20},
+					{code = "affect_one_scene_character", char_num = 2, type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -1671,7 +1708,9 @@ var data = {
 					{
 						code = "change_relationship_precise",
 						value = "var_discustomer_relation_down"
-					}
+					},
+					{code = "affect_one_scene_character", char_num = 1, type = "stat", stat = "affection", value = -20},
+					{code = "affect_one_scene_character", char_num = 2, type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -1693,7 +1732,9 @@ var data = {
 					{
 						code = "change_relationship_precise",
 						value = "var_discustomer_relation_down"
-					}
+					},
+					{code = "affect_one_scene_character", char_num = 1, type = "stat", stat = "affection", value = 20},
+					{code = "affect_one_scene_character", char_num = 2, type = "stat", stat = "affection", value = -20},
 				]
 			},
 			{
@@ -1721,7 +1762,8 @@ var data = {
 						type = "stat",
 						stat = "loyalty",
 						value = "var_discustomer_loyalty"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -1742,7 +1784,8 @@ var data = {
 					{
 						code = "change_relationship_precise",
 						value = "var_discustomer_relation_up"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = 20},
 				]
 			}
 		]
@@ -1823,7 +1866,9 @@ var data = {
 						type = "stat",
 						stat = "charm",
 						value = "var_likecustomer_charm"
-					}
+					},
+					{code = "affect_one_scene_character", char_num = 1, type = "stat", stat = "affection", value = 20},
+					{code = "affect_one_scene_character", char_num = 2, type = "stat", stat = "affection", value = -20},
 				]
 			},
 			{
@@ -1839,7 +1884,8 @@ var data = {
 						code = "money_change",
 						value = "var_likecustomer_money",
 						operant = "+"
-					}
+					},
+					{code = "affect_one_scene_character", char_num = 1, type = "stat", stat = "affection", value = -20},
 				]
 			},
 			{
@@ -1857,7 +1903,8 @@ var data = {
 						type = "stat",
 						stat = "base_exp",
 						value = "var_likecustomer_exp"
-					}
+					},
+					{code = "affect_one_scene_character", char_num = 1, type = "stat", stat = "affection", value = 20},
 				]
 			}
 		]
@@ -1937,7 +1984,8 @@ var data = {
 						type = "location_effect",
 						value = "pay_stamina",
 						cost = "var_trap_stamina"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -1954,7 +2002,8 @@ var data = {
 						type = "set_availability",
 						value = false,
 						duration = "var_trap_injury_dur"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
 				]
 			}
 		]
@@ -2044,7 +2093,8 @@ var data = {
 						type = "stat",
 						stat = "charm",
 						value = "var_skirmish_charm"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -2070,7 +2120,8 @@ var data = {
 						type = "stat",
 						stat = "physics",
 						value = "var_skirmish_physics"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = 20},
 				]
 			},
 			{
@@ -2093,7 +2144,8 @@ var data = {
 						type = "stat",
 						stat = "base_exp",
 						value = "var_skirmish_exp"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
 				]
 			}
 		]
@@ -2171,7 +2223,8 @@ var data = {
 						type = "stat",
 						stat = "resistance",
 						value = "var_pray_resistance"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -2199,7 +2252,8 @@ var data = {
 								operant = "+"
 							}
 						]
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
 				]
 			}
 		],
@@ -2294,7 +2348,9 @@ var data = {
 								operant = "+"
 							}
 						]
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = 20},
 				]
 			},
 			{
@@ -2322,7 +2378,9 @@ var data = {
 								operant = "+"
 							}
 						]
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = -20},
 				]
 			}
 		],
@@ -2400,7 +2458,8 @@ var data = {
 						type = "stat",
 						stat = "base_exp",
 						value = "var_brokenvase_exp_repair"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -2427,7 +2486,8 @@ var data = {
 						code = "money_change",
 						value = "var_brokenvase_money",
 						operant = "+"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
 				]
 			},
 			{
@@ -2455,7 +2515,8 @@ var data = {
 						type = "stat",
 						stat = "base_exp",
 						value = "var_brokenvase_exp_punish"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
 				]
 			}
 		],
@@ -2537,7 +2598,8 @@ var data = {
 						type = "stat",
 						stat = "loyalty",
 						value = "var_hunt_loyalty_accept"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -2560,7 +2622,8 @@ var data = {
 						type = "stat",
 						stat = "loyalty",
 						value = "var_hunt_loyalty_explain"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = 20},
 				]
 			},
 			{
@@ -2583,7 +2646,8 @@ var data = {
 								operant = "+"
 							}
 						]
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
 				]
 			}
 		]
@@ -2663,7 +2727,8 @@ var data = {
 						type = "stat",
 						stat = "base_exp",
 						value = "var_late_knock_exp_dismiss"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
 				]
 			},
 			{
@@ -2681,7 +2746,8 @@ var data = {
 						type = "stat",
 						stat = "charm",
 						value = "var_late_knock_charm_invite"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -2705,7 +2771,8 @@ var data = {
 						type = "stat",
 						stat = "base_exp",
 						value = "var_late_knock_exp_pull"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			}
 		]
@@ -2785,7 +2852,8 @@ var data = {
 						type = "stat",
 						stat = "base_exp",
 						value = "var_caught_xp"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = 20},
 				]
 			},
 			{
@@ -2802,7 +2870,8 @@ var data = {
 						type = "stat",
 						stat = "base_exp",
 						value = "var_caught_xp"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = 20},
 				]
 			},
 			{
@@ -2819,7 +2888,8 @@ var data = {
 						type = "stat",
 						stat = "base_exp",
 						value = "var_caught_xp"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = 20},
 				]
 			}
 		]
@@ -2906,7 +2976,8 @@ var data = {
 						type = "stat",
 						stat = "base_exp",
 						value = "var_admirer_exp_send"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
 				]
 			},
 			{
@@ -2930,7 +3001,8 @@ var data = {
 						type = "stat",
 						stat = "base_exp",
 						value = "var_admirer_exp_negotiate"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
 				]
 			},
 			{
@@ -2953,7 +3025,9 @@ var data = {
 						type = "stat",
 						stat = "loyalty",
 						value = "var_admirer_loyalty_refuse"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = 20},
 				]
 			}
 		]
@@ -3044,7 +3118,8 @@ var data = {
 								operant = "+"
 							}
 						]
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -3062,7 +3137,8 @@ var data = {
 						type = "stat",
 						stat = "loyalty",
 						value = "var_bath_loyalty_pullin"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -3085,7 +3161,8 @@ var data = {
 								operant = "+"
 							}
 						]
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
 				]
 			}
 		]
@@ -3166,7 +3243,8 @@ var data = {
 						type = "stat",
 						stat = "base_exp",
 						value = "var_theft_exp_punish"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = 20},
 				]
 			},
 			{
@@ -3184,7 +3262,8 @@ var data = {
 						type = "stat",
 						stat = "loyalty",
 						value = "var_theft_loyalty_explain"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = 20},
 				]
 			},
 			{
@@ -3211,7 +3290,8 @@ var data = {
 								operant = "+"
 							}
 						]
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = -20},
 				]
 			}
 		]
@@ -3297,7 +3377,8 @@ var data = {
 						type = "stat",
 						stat = "base_exp",
 						value = "var_sparring_exp_move"
-					}
+					},
+					{code = "affect_one_scene_character", char_num = 1, type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -3318,7 +3399,9 @@ var data = {
 						type = "stat",
 						stat = "base_exp",
 						value = "var_sparring_exp_care"
-					}
+					},
+					{code = "affect_one_scene_character", char_num = 1, type = "stat", stat = "respect", value = 20},
+					{code = "affect_one_scene_character", char_num = 2, type = "stat", stat = "respect", value = 20},
 				]
 			},
 			{
@@ -3344,7 +3427,9 @@ var data = {
 								operant = "+"
 							}
 						]
-					}
+					},
+					{code = "affect_one_scene_character", char_num = 1, type = "stat", stat = "respect", value = 20},
+					{code = "affect_one_scene_character", char_num = 2, type = "stat", stat = "respect", value = 20},
 				]
 			}
 		]
@@ -3437,7 +3522,8 @@ var data = {
 						type = "stat",
 						stat = "loyalty",
 						value = "var_laying_loyalty_time"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -3471,7 +3557,8 @@ var data = {
 						type = "stat",
 						stat = "loyalty",
 						value = "var_laying_loyalty_stay"
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
 				]
 			},
 			{
@@ -3494,7 +3581,8 @@ var data = {
 								operant = "+"
 							}
 						]
-					}
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = -20},
 				]
 			}
 		]

@@ -76,6 +76,7 @@ func update():
 	if person != null:
 		#$Panel/character_class.visible = !person.has_profession("master")
 		$Panel/maininfo/price.visible = !person.has_profession("master")
+		$Panel/maininfo/standing.visible = !person.is_master()
 		#$Panel/MasterIcon.visible = person.has_profession("master")
 		var text = ""
 		if person.is_master():
@@ -122,6 +123,8 @@ func update():
 		
 		$Panel/maininfo/personality/label.text = tr("PERSONALITYNAME" + person.get_stat("personality").to_upper())
 		$Panel/maininfo/personality/icon.texture = personality_icons[person.get_stat('personality')]
+		$Panel/maininfo/standing/label.text = person.get_character_standing()
+		globals.connecttexttooltip($Panel/maininfo/standing, build_standing_tooltip())
 		
 		globals.connecttexttooltip($Panel/maininfo/personality, globals.get_character_personality_tooltip(person.get_stat('personality')))
 		$Panel/maininfo/food/foodlikedicon.texture = foodicons[person.food.food_love]
@@ -139,6 +142,22 @@ func update():
 		
 		for i in [$UpgradesPanel, $tr_selector, $Label2]:
 			i.visible = !person.is_on_quest()
+
+
+func build_standing_tooltip():
+	var text = person.translate(tr("TOOLTIPCHARACTERSTANDING"))
+	var standing_code = person.get_character_standing_code()
+	var effect_code = 'e_' + standing_code
+	if person.has_status(standing_code) and Effectdata.effect_table.has(effect_code):
+		var effect = Effectdata.effect_table[effect_code]
+		text += "\n\n[center]{color=yellow|%s}[/center]\n%s" % [
+			tr('TRAIT' + standing_code.to_upper()),
+			person.translate(tr('TRAIT' + standing_code.to_upper() + 'DESCRIPT')),
+		]
+		var bonus_text = person.translate(globals.build_desc_for_bonusstats(effect.statchanges).strip_edges())
+		if bonus_text != "":
+			text += "\n" + bonus_text
+	return text
 
 var personality_icons = {
 	bold = load("res://assets/Textures_v2/MANSION/personality_bold.png"),

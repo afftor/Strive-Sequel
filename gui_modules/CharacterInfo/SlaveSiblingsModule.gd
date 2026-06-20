@@ -22,6 +22,8 @@ func _ready():
 	globals.connecttexttooltip($personality/shy, tr("INFOPERSONALITYSHY"))
 	globals.connecttexttooltip($personality/kind, tr("INFOPERSONALITYKIND"))
 	globals.connecttexttooltip($personality/serious, tr("INFOPERSONALITYSERIOUS"))
+	globals.connecttexttooltip($RelationshipStats/Affection, tr("STATAFFECTIONDESCRIPT"))
+	globals.connecttexttooltip($RelationshipStats/Respect, tr("STATRESPECTDESCRIPT"))
 	
 	$Button.connect('pressed', self, 'show_stats')
 	
@@ -42,6 +44,16 @@ func update():
 
 
 func build_personality():
+	var show_relationship_stats = person.get_stat('slave_class') != 'master'
+	$RelationshipStats.visible = show_relationship_stats
+	if show_relationship_stats:
+		var affection = person.get_stat('affection')
+		var respect = person.get_stat('respect')
+		$RelationshipStats/Affection.value = affection
+		$RelationshipStats/AffectionLabel.text = tr("STATAFFECTION")
+		$RelationshipStats/Respect.value = respect
+		$RelationshipStats/RespectLabel.text = tr("STATRESPECT")
+
 	var limit = 100
 	limit = max(limit, abs(person.get_stat('personality_bold')))
 	limit = max(limit, abs(person.get_stat('personality_kind')))

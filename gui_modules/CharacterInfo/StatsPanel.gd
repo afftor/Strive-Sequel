@@ -138,6 +138,10 @@ func select_stat(stat, btn):
 			for rec in compo_dict.bonuses[bonus_type]:
 				if rec.value == 0:
 					continue
+				if rec.src_type == 'effect' and Effectdata.effect_table.has(rec.src_value):
+					var effect_data = Effectdata.effect_table[rec.src_value]
+					if effect_data.tags.has('hide_from_stat_breakdown'):
+						continue
 				add_to_temp_dict(dict_to_add, bonus_type, rec.src_type, rec.src_value, rec.value)
 			for src_type in dict_to_add:
 				for src_value in dict_to_add[src_type]:

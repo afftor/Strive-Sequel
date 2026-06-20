@@ -42,6 +42,12 @@ var stat_compo_dict
 #debug, 2remove later
 var src = ""
 
+const CHARACTER_STANDING_MAP = [
+	['standing_antipathy', 'standing_friend', 'standing_love_pest'],
+	['standing_minion', 'standing_housemate', 'standing_infatuated'],
+	['standing_sworn_servant', 'standing_companion', 'standing_beloved'],
+]
+
 
 func _init(source = null):
 	src = source
@@ -232,6 +238,13 @@ func set_stat(stat, value):
 	if stat == 'base_exp':
 		xp_module.base_exp = value
 		return
+	if stat in variables.training_stat_list:
+		if stat == 'resistance':
+			training.set_resistance(value)
+		else:
+			training.set(stat, value)
+		dyn_stats.reset_rebuild()
+		return
 	if stat == 'thrall_master':
 		enthrall.set_thrall_master(value)
 		dyn_stats.reset_rebuild()
@@ -388,6 +401,25 @@ func check_trait(trait):
 		or statlist.sex_traits.has(trait)
 		or statlist.negative_sex_traits.has(trait)
 	)
+
+
+func get_character_standing_tier(value):
+	if value <= -50:
+		return 0
+	elif value >= 50:
+		return 2
+	return 1
+
+
+func get_character_standing_code():
+	var respect_tier = get_character_standing_tier(get_stat('respect'))
+	var affection_tier = get_character_standing_tier(get_stat('affection'))
+	return CHARACTER_STANDING_MAP[respect_tier][affection_tier]
+
+
+func get_character_standing():
+	return tr('CHARACTER_' + get_character_standing_code().to_upper())
+
 
 func predict_preg_time():
 	return statlist.predict_preg_time()
@@ -580,14 +612,13 @@ func turn_into_unique(code):
 	statlist.update_chardata(data)
 	dyn_stats.process_chardata(data)
 	food.process_chardata(data)
+	training.process_chardata(data)
 	tags = data.tags.duplicate() #or not
 	skills.setup_skills(data)
 	if data.has('service_boosters'):
 		xp_module.set_service_boost(data.service_boosters)
 	else:
 		xp_module.set_service_boost()
-	if data.has('training_disposition'):
-		process_disposition_data(data.training_disposition, true)
 	update_prt()
 	input_handler.achievements.try_add_char_achimnt(get_stat('unique'))
 	globals.emit_signal("slave_added")
@@ -2773,10 +2804,15 @@ func get_stat_upgrade_price(stat_level):
 	return upg_price
 
 func get_upkeep():
-	return int(get_fame_bonus('upkeep'))
+	return int(get_fame_bonus('upkeep') * get_upkeep_multiplier())
 
 func get_value_upkeep():
-	return int(calculate_price(false, false, false) * variables.value_upkeep_rate)
+	return int(calculate_price(false, false, false) * variables.value_upkeep_rate * get_upkeep_multiplier())
+
+func get_upkeep_multiplier():
+	if has_status('standing_beloved'):
+		return 0.5
+	return 1.0
 
 func get_weekly_tax():
 	if !is_active:

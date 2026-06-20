@@ -56,6 +56,24 @@ var statdata = {
 		type = 'mental_stat',
 		tags = ['numeric', 'integer']
 	},
+	affection = {
+		code = 'affection',
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
+		tags = ['numeric', 'integer', 'custom_setter', 'update_state'],
+		default_bonus = 'set',
+	},
+	respect = {
+		code = 'respect',
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
+		tags = ['numeric', 'integer', 'custom_setter', 'update_state'],
+		default_bonus = 'set',
+	},
 	spirit = {
 		code = 'spirit',
 		name = '',

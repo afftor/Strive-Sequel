@@ -37,6 +37,8 @@ var template_direct = {
 	physics = 0.0,
 	wits = 0.0,
 	charm = 0.0,
+	affection = 0,
+	respect = 0,
 	
 	consent = 0,
 	lastsexday = 0,

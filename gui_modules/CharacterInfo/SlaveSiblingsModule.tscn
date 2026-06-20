@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=2]
+[gd_scene load_steps=93 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSiblingsModule.gd" type="Script" id=2]
@@ -77,6 +77,11 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/statistic_normal.png" type="Texture" id=75]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/statistic_pressed.png" type="Texture" id=76]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/statistic_hover.png" type="Texture" id=77]
+[ext_resource path="res://gui_modules/CharacterInfo/SignedTextureBar.tscn" type="PackedScene" id=78]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/relationship/affection_low.png" type="Texture" id=79]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/relationship/affection_high.png" type="Texture" id=80]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/relationship/respect_low.png" type="Texture" id=81]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/relationship/respect_high.png" type="Texture" id=82]
 
 [sub_resource type="DynamicFont" id=20]
 size = 36
@@ -1031,6 +1036,80 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
 text = "Current Personality"
 align = 1
+
+[node name="RelationshipStats" type="VBoxContainer" parent="."]
+margin_left = 408.0
+margin_top = 790.0
+margin_right = 708.0
+margin_bottom = 920.0
+custom_constants/separation = 6
+
+[node name="AffectionLabel" type="Label" parent="RelationshipStats"]
+margin_right = 300.0
+margin_bottom = 33.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
+text = "STATAFFECTION"
+align = 1
+
+[node name="Affection" parent="RelationshipStats" instance=ExtResource( 78 )]
+margin_top = 39.0
+margin_right = 300.0
+margin_bottom = 57.0
+
+[node name="LowIcon" type="TextureRect" parent="RelationshipStats/Affection"]
+margin_left = -50.0
+margin_top = -16.0
+margin_bottom = 34.0
+mouse_filter = 2
+texture = ExtResource( 79 )
+expand = true
+stretch_mode = 5
+
+[node name="HighIcon" type="TextureRect" parent="RelationshipStats/Affection"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_top = -16.0
+margin_right = 50.0
+margin_bottom = 34.0
+mouse_filter = 2
+texture = ExtResource( 80 )
+expand = true
+stretch_mode = 5
+
+[node name="RespectLabel" type="Label" parent="RelationshipStats"]
+margin_top = 63.0
+margin_right = 300.0
+margin_bottom = 96.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
+text = "STATRESPECT"
+align = 1
+
+[node name="Respect" parent="RelationshipStats" instance=ExtResource( 78 )]
+margin_top = 102.0
+margin_right = 300.0
+margin_bottom = 120.0
+
+[node name="LowIcon" type="TextureRect" parent="RelationshipStats/Respect"]
+margin_left = -50.0
+margin_top = -16.0
+margin_bottom = 34.0
+mouse_filter = 2
+texture = ExtResource( 81 )
+expand = true
+stretch_mode = 5
+
+[node name="HighIcon" type="TextureRect" parent="RelationshipStats/Respect"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_top = -16.0
+margin_right = 50.0
+margin_bottom = 34.0
+mouse_filter = 2
+texture = ExtResource( 82 )
+expand = true
+stretch_mode = 5
 
 [node name="SexSkillsTooltip" type="TextureRect" parent="."]
 margin_left = 242.048

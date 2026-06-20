@@ -134,6 +134,15 @@ func _on_TextEdit_text_entered(new_text):
 		if not scenedata.scenedict.has(event_name):
 			add_text("Unknown event: " + event_name + "\n")
 			return
+		if ResourceScripts.char_events.events_data.list.has(event_name):
+			var error = _start_random_character_event(event_name)
+			var output_text = new_text + "\n"
+			if error != "":
+				output_text += error + "\n"
+			else:
+				output_text += "Started character event: " + event_name + "\n"
+			add_text(output_text)
+			return
 		var command = [{code = 'start_event', data = event_name, args = {}}]
 		var a = globals.common_effects(command)
 		var output_text = new_text + "\n"
@@ -181,13 +190,72 @@ func _on_TextEdit_text_entered(new_text):
 	else:
 		add_text(new_text + "\nUnknown command: " + splitstring[0] + "\nType /help for available commands.\n")
 
+
+func _start_random_character_event(event_id):
+	var party = ResourceScripts.game_party
+	var event_entry = ResourceScripts.char_events.events_data.list[event_id]
+	var event_reqs = null
+	if event_entry.has("special_reqs"):
+		event_reqs = event_entry.special_reqs
+
+	if event_reqs and event_reqs.has('global_reqs'):
+		for req in event_reqs.global_reqs:
+			if req.type == 'has_upgrade' and !ResourceScripts.game_res.if_has_upgrade(req.name, req.value):
+				return "Global requirements are not met for event: " + event_id
+
+	var list_by_loc = {}
+	if event_reqs and event_reqs.has('get_romance_pair'):
+		var true_pairs = []
+		for pair in party.get_all_possible_love_pairs():
+			if ResourceScripts.char_events.is_same_location(pair[0], pair[1]):
+				true_pairs.append(pair)
+		if !true_pairs.empty():
+			list_by_loc.romance = input_handler.random_from_array(true_pairs)
+	elif event_reqs and event_reqs.has('get_lovers_pair'):
+		var true_pairs = []
+		for pair in party.get_all_lovers_pairs():
+			if ResourceScripts.char_events.is_same_location(pair[0], pair[1]):
+				true_pairs.append(pair)
+		if !true_pairs.empty():
+			list_by_loc.lovers = input_handler.random_from_array(true_pairs)
+	else:
+		for id in party.characters:
+			var party_char = party.characters[id]
+			if !party_char.has_profession("master") and (!event_reqs or !event_reqs.has('char_reqs') or party_char.checkreqs(event_reqs.char_reqs)):
+				var loc = party_char.get_location()
+				if !list_by_loc.has(loc):
+					list_by_loc[loc] = []
+				list_by_loc[loc].append(id)
+
+	var char_count = 1
+	if event_reqs and event_reqs.has('char_count'):
+		char_count = event_reqs.char_count
+	var useable_locs = []
+	for loc_id in list_by_loc:
+		if list_by_loc[loc_id].size() >= char_count:
+			useable_locs.append(loc_id)
+	if useable_locs.empty():
+		return "No eligible character group found for event: " + event_id
+
+	var list = list_by_loc[input_handler.random_from_array(useable_locs)]
+	var args = {scene_chars = []}
+	for i in range(char_count):
+		var list_id = randi() % list.size()
+		var chara = party.characters[list[list_id]]
+		if i == 0:
+			args.set_active_character = chara.id
+		args.scene_chars.push_back(chara.id)
+		list.remove(list_id)
+	input_handler.interactive_message(event_id, 'char_event', args)
+	return ""
+
 func _get_help_text():
 	return PoolStringArray([
 		"Available commands:",
 		"/help - List console commands.",
 		"/do {json} - Run one common_effect command from JSON.",
 		"/add_item <code> [count] [quality] - Add an item or material.",
-		"/start_event <event_id> - Start a story event.",
+		"/start_event <event_id> - Start an event; random character events pick eligible participants.",
 		"/decision <decision_id> [add/remove] - Add or remove a decision flag.",
 		"/validate_events - Validate event, quest, task, location, combat, audio, and image references.",
 		"/validate_effects - Validate trait, effect, buff, stack, skill, and timed-effect references.",

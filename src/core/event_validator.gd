@@ -386,7 +386,9 @@ func _get_bracket_variable_regex():
 
 func _validate_option(event_id, option, idx, issues):
 	var context = "event '%s'.options[%d]" % [str(event_id), idx]
-	if option.has("reqs"):
+	if !option.has("reqs"):
+		_add_issue(issues, "%s has no reqs Array." % context)
+	else:
 		_validate_reqs(option.reqs, context + ".reqs", issues)
 	if option.has("bonus_effects"):
 		_validate_effects(option.bonus_effects, context + ".bonus_effects", issues)

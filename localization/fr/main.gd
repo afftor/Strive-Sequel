@@ -2553,6 +2553,10 @@ Damage +15%, Health +20.""", # MISSING TRANSLATION
 	STATOBEDIENCEDESCRIPT = "L'obéissance est la volonté d'un personnage d'obéir à vos ordres. L'obéissance s'acquiert en utilisant les compétences sociales. Lorsqu'elle est épuisée, le personnage peut s'échapper et sera perdu dans ce cas. ",
 	STATLOYALTY = "Loyauté",
 	STATLOYALTYDESCRIPT = "Les points de loyauté vous permettent de débloquer de nouvelles capacités pour vos serviteurs. La loyauté est acquise passivement en fonction du facteur d'apprivoisement du personnage, mais peut également être améliorée par des rendez-vous et l'utilisation de compétences sociales.",
+	STATAFFECTION = """Affection""", # MISSING TRANSLATION
+	STATAFFECTIONDESCRIPT = """Affection represents how positively or negatively this character feels about you.""", # MISSING TRANSLATION
+	STATRESPECT = """Respect""", # MISSING TRANSLATION
+	STATRESPECTDESCRIPT = """Respect represents how highly or poorly this character regards you.""", # MISSING TRANSLATION
 	STATRESISTANCE = """Resistance""", # MISSING TRANSLATION
 	STATRESISTANCEDESCRIPT = """Resistance DESCRIPT PLACEHOLDER.""", # MISSING TRANSLATION
 	STATSUBMISSION = "Soumission",#Obsolete

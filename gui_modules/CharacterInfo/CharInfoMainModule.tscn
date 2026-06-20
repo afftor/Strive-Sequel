@@ -1,4 +1,4 @@
-[gd_scene load_steps=215 format=2]
+[gd_scene load_steps=220 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=2]
@@ -185,6 +185,11 @@
 [ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_default.png" type="Texture" id=212]
 [ext_resource path="res://assets/Textures_v2/icon_question_small_alt.png" type="Texture" id=213]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttonsquare_pressed2.png" type="Texture" id=214]
+[ext_resource path="res://gui_modules/CharacterInfo/SignedTextureBar.tscn" type="PackedScene" id=215]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/relationship/affection_low.png" type="Texture" id=216]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/relationship/affection_high.png" type="Texture" id=217]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/relationship/respect_low.png" type="Texture" id=218]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/relationship/respect_high.png" type="Texture" id=219]
 
 [sub_resource type="StyleBoxTexture" id=13]
 texture = ExtResource( 111 )
@@ -585,7 +590,7 @@ margin_right = 70.0
 margin_bottom = 44.0
 texture = ExtResource( 26 )
 expand = true
-stretch_mode = 7
+stretch_mode = 6
 
 [node name="label" type="Label" parent="SlaveInfoModule/Panel/maininfo/type"]
 light_mask = 0
@@ -658,38 +663,10 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="personality" type="Control" parent="SlaveInfoModule/Panel/maininfo"]
+[node name="price" type="Control" parent="SlaveInfoModule/Panel/maininfo" groups=["hide_master"]]
 margin_top = 177.0
 margin_right = 268.0
 margin_bottom = 221.0
-rect_min_size = Vector2( 0, 44 )
-
-[node name="label" type="Label" parent="SlaveInfoModule/Panel/maininfo/personality"]
-light_mask = 0
-margin_left = 74.0
-margin_right = 271.0
-margin_bottom = 42.0
-mouse_filter = 1
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 11 )
-text = "Type"
-align = 1
-valign = 1
-clip_text = true
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="icon" type="TextureRect" parent="SlaveInfoModule/Panel/maininfo/personality"]
-margin_left = 14.869
-margin_right = 58.8691
-margin_bottom = 44.001
-texture = ExtResource( 166 )
-
-[node name="price" type="Control" parent="SlaveInfoModule/Panel/maininfo" groups=["hide_master"]]
-margin_top = 236.0
-margin_right = 268.0
-margin_bottom = 280.0
 rect_min_size = Vector2( 0, 44 )
 
 [node name="label" type="Label" parent="SlaveInfoModule/Panel/maininfo/price"]
@@ -714,7 +691,66 @@ margin_right = 60.8691
 margin_bottom = 44.001
 texture = ExtResource( 20 )
 
+[node name="standing" type="Control" parent="SlaveInfoModule/Panel/maininfo" groups=["hide_master"]]
+margin_top = 236.0
+margin_right = 268.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 0, 44 )
+
+[node name="label" type="Label" parent="SlaveInfoModule/Panel/maininfo/standing"]
+light_mask = 0
+margin_left = 74.0
+margin_right = 271.0
+margin_bottom = 42.0
+mouse_filter = 1
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 11 )
+text = "Type"
+align = 1
+valign = 1
+clip_text = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="icon" type="TextureRect" parent="SlaveInfoModule/Panel/maininfo/standing"]
+margin_left = 16.869
+margin_right = 60.8691
+margin_bottom = 44.001
+texture = ExtResource( 24 )
+expand = true
+stretch_mode = 6
+
+[node name="personality" type="Control" parent="SlaveInfoModule/Panel/maininfo"]
+margin_top = 295.0
+margin_right = 268.0
+margin_bottom = 339.0
+rect_min_size = Vector2( 0, 44 )
+
+[node name="label" type="Label" parent="SlaveInfoModule/Panel/maininfo/personality"]
+light_mask = 0
+margin_left = 74.0
+margin_right = 271.0
+margin_bottom = 42.0
+mouse_filter = 1
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 11 )
+text = "Type"
+align = 1
+valign = 1
+clip_text = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="icon" type="TextureRect" parent="SlaveInfoModule/Panel/maininfo/personality"]
+margin_left = 14.869
+margin_right = 58.8691
+margin_bottom = 44.001
+texture = ExtResource( 166 )
+
 [node name="food" type="Control" parent="SlaveInfoModule/Panel/maininfo" groups=["hide_master"]]
+visible = false
 margin_top = 295.0
 margin_right = 268.0
 margin_bottom = 339.0
@@ -3701,7 +3737,6 @@ align = 1
 valign = 1
 
 [node name="SlaveSiblingsModule" type="TextureRect" parent="."]
-visible = false
 light_mask = 0
 margin_left = 239.0
 margin_top = 105.0
@@ -3994,6 +4029,84 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 10 )
 text = "PERSONALITYCURRENT"
 align = 1
+
+[node name="RelationshipStats" type="VBoxContainer" parent="SlaveSiblingsModule"]
+margin_left = 42.0
+margin_top = 400.0
+margin_right = 282.0
+margin_bottom = 540.0
+custom_constants/separation = 6
+
+[node name="AffectionLabel" type="Label" parent="SlaveSiblingsModule/RelationshipStats"]
+margin_right = 240.0
+margin_bottom = 33.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "STATAFFECTION"
+align = 1
+
+[node name="Affection" parent="SlaveSiblingsModule/RelationshipStats" instance=ExtResource( 215 )]
+margin_top = 39.0
+margin_right = 240.0
+margin_bottom = 57.0
+
+[node name="LowIcon" type="TextureRect" parent="SlaveSiblingsModule/RelationshipStats/Affection"]
+margin_left = -40.0
+margin_top = -10.0
+margin_right = -5.0
+margin_bottom = 25.0
+mouse_filter = 2
+texture = ExtResource( 216 )
+expand = true
+stretch_mode = 6
+
+[node name="HighIcon" type="TextureRect" parent="SlaveSiblingsModule/RelationshipStats/Affection"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = -10.0
+margin_right = 45.0
+margin_bottom = 25.0
+mouse_filter = 2
+texture = ExtResource( 217 )
+expand = true
+stretch_mode = 6
+
+[node name="RespectLabel" type="Label" parent="SlaveSiblingsModule/RelationshipStats"]
+margin_top = 63.0
+margin_right = 240.0
+margin_bottom = 96.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "STATRESPECT"
+align = 1
+
+[node name="Respect" parent="SlaveSiblingsModule/RelationshipStats" instance=ExtResource( 215 )]
+margin_top = 102.0
+margin_right = 240.0
+margin_bottom = 120.0
+
+[node name="LowIcon" type="TextureRect" parent="SlaveSiblingsModule/RelationshipStats/Respect"]
+margin_left = -40.0
+margin_top = -10.0
+margin_right = -5.0
+margin_bottom = 25.0
+mouse_filter = 2
+texture = ExtResource( 218 )
+expand = true
+stretch_mode = 6
+
+[node name="HighIcon" type="TextureRect" parent="SlaveSiblingsModule/RelationshipStats/Respect"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = -10.0
+margin_right = 45.0
+margin_bottom = 25.0
+mouse_filter = 2
+texture = ExtResource( 219 )
+expand = true
+stretch_mode = 6
 
 [node name="Button" type="Button" parent="SlaveSiblingsModule"]
 margin_left = 5.0

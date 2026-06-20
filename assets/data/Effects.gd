@@ -170,6 +170,56 @@ var effect_table = {
 		],
 		sub_effects = [],
 	},
+	e_standing_love_pest = {
+		type = 'simple',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'affection', operant = 'gte', value = 50},
+			{code = 'stat', stat = 'respect', operant = 'lte', value = -50},
+		],
+		statchanges = {},
+		tags = ['standing_love_pest', 'hide_from_stat_breakdown'],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_standing_housemate = {
+		type = 'simple',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'affection', operant = 'gt', value = -50},
+			{code = 'stat', stat = 'affection', operant = 'lt', value = 50},
+			{code = 'stat', stat = 'respect', operant = 'gt', value = -50},
+			{code = 'stat', stat = 'respect', operant = 'lt', value = 50},
+		],
+		statchanges = {hp_reg_add_part = 0.1, mp_reg_add_part = 0.1},
+		tags = ['standing_housemate', 'hide_from_stat_breakdown'],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_standing_sworn_servant = {
+		type = 'simple',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'affection', operant = 'lte', value = -50},
+			{code = 'stat', stat = 'respect', operant = 'gte', value = 50},
+		],
+		statchanges = {productivity = 0.1},
+		tags = ['standing_sworn_servant', 'hide_from_stat_breakdown'],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_standing_beloved = {
+		type = 'simple',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'affection', operant = 'gte', value = 50},
+			{code = 'stat', stat = 'respect', operant = 'gte', value = 50},
+		],
+		statchanges = {},
+		tags = ['standing_beloved', 'hide_from_stat_breakdown'],
+		buffs = [],
+		sub_effects = [],
+	},
 	
 	e_virgin = {
 		type = 'simple',

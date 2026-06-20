@@ -2609,6 +2609,24 @@ You won't be able to finish turn if your total number of characters is bigger th
 	STATTRAINEE_AMOUNTDESCRIPT = "Maximal number of trainee",
 	TRAITTRAINER = "Trainer",
 	TRAITTRAINERDESCRIPT = "Can oversee slaves",
+	CHARACTER_STANDING_ANTIPATHY = "Antipathy",
+	CHARACTER_STANDING_FRIEND = "Friend",
+	CHARACTER_STANDING_LOVE_PEST = "Love Pest",
+	CHARACTER_STANDING_MINION = "Minion",
+	CHARACTER_STANDING_HOUSEMATE = "Housemate",
+	CHARACTER_STANDING_INFATUATED = "Infatuated",
+	CHARACTER_STANDING_SWORN_SERVANT = "Sworn Servant",
+	CHARACTER_STANDING_COMPANION = "Companion",
+	CHARACTER_STANDING_BELOVED = "Beloved",
+	TOOLTIPCHARACTERSTANDING = "Character's treatment of [master] will depend on their respect and affection. When both are very low character might attempt to escape. Certain bonuses might come up under specific combinations.",
+	TRAITSTANDING_LOVE_PEST = "Love Pest",
+	TRAITSTANDING_LOVE_PESTDESCRIPT = "Experience gained from the sex minigame is increased by 25%.",
+	TRAITSTANDING_HOUSEMATE = "Housemate",
+	TRAITSTANDING_HOUSEMATEDESCRIPT = "Health and Mana regeneration are increased by 10%.",
+	TRAITSTANDING_SWORN_SERVANT = "Sworn Servant",
+	TRAITSTANDING_SWORN_SERVANTDESCRIPT = "Productivity is increased by 10%.",
+	TRAITSTANDING_BELOVED = "Beloved",
+	TRAITSTANDING_BELOVEDDESCRIPT = "Character upkeep is reduced by 50%.",
 	STATSPIRIT = "Spirit",
 	TRAITTRAINING_WORKFORCE = "Training: Workforce",
 	TRAITTRAINING_WORKFORCEDESCRIPT = """Set for labor slavery.
@@ -2627,6 +2645,10 @@ Damage +15%, Health +20.""",
 	STATOBEDIENCEDESCRIPT = "Obedience is a character's willingness to obey your orders. Obedience is gained by using social skills. When depleted character can escape and will be lost in case that happens. ",
 	STATLOYALTY = "Loyalty",
 	STATLOYALTYDESCRIPT = "Loyalty points allow you to unlock new abilities for your servants. Loyalty is gained passively based on character's Tame Factor but can also be improved on dates and usage of social skills.",
+	STATAFFECTION = "Affection",
+	STATAFFECTIONDESCRIPT = "Affection represents how positively or negatively this character feels about you.",
+	STATRESPECT = "Respect",
+	STATRESPECTDESCRIPT = "Respect represents how highly or poorly this character regards you.",
 	STATRESISTANCE = "Resistance",
 	STATRESISTANCEDESCRIPT = "Resistance DESCRIPT PLACEHOLDER.",
 	STATSUBMISSION = "Submission",
@@ -25889,7 +25911,7 @@ When she notices you approaching, she startles and tries to cover her face. Jean
 	JEAN_SYLAS_BROTHEL_CRYING_OPTION_AMELIA = "Let Amelia calm the girl down",
 	JEAN_SYLAS_BROTHEL_GIRL_TRUST = "The girl looks up at you through tears. After some hesitation, she speaks in a quiet whisper.",
 	JEAN_SYLAS_BROTHEL_GIRL_KNOWS = "{color=aqua|Girl: — S-so you already know? I knew I wasn't crazy...}",
-	JEAN_SYLAS_BROTHEL_GIRL_BAD = """{color=aqua|Girl: — Something... something bad is going on here. I don't know why, but after that guy in all black showed up, people... people suddenly started disappearing... And one of them...}
+	JEAN_SYLAS_BROTHEL_GIRL_BAD = """\n\n{color=aqua|Girl: — Something... something bad is going on here. I don't know why, but after that guy in all black showed up, people... people suddenly started disappearing... And one of them...}
 	
 She begins to sob again.""",
 	JEAN_SYLAS_BROTHEL_GIRL_DAREN = """{color=aqua|Girl: — ...one of them was my Daren. He was a regular at first, but then we fell for each other... He was a mage, and he promised that after finishing his studies he would get me out of here... and now he's gone...}
@@ -26008,7 +26030,7 @@ You stay silent but it's obvious she needs to look convincing for the job.
 	
 {color=yellow|Jean: — Did you mean that as a compliment, but too dumb to understand why it isn't or did you actually want to say I look like a whore right now?}
 
-{color=yellow|Jean: — Nevermind, it's best you don't answer it.}""",
+{color=yellow|Jean: — Nevermind, it's best you don't answer it.}\n\n""",
 	JEAN_SYLAS_GIRL_PLAN_GO = """{color=yellow|Jean: — Alright, no point in postponing this any longer... Let's do it!}
 	
 She sighs, then puts on a fake smile and goes inside. You stealthily follow her from a distance.""",
@@ -26065,9 +26087,9 @@ Covered in dark clothes, just as the girl described, Sylas confidently walks tow
 	JEAN_SYLAS_SYLAS_OPTION_MISTAKE = "If you knew we were waiting, coming here was your biggest mistake.",
 	JEAN_SYLAS_SYLAS_OPTION_FIGHT = "Less talk, more fight!",
 	JEAN_SYLAS_SYLAS_REPLY_MISTAKE = "{color=aqua|Sylas: — Oh? And why is that? Or do you think I came unprepared?}",
-	JEAN_SYLAS_SYLAS_REPLY_FIGHT = "{color=aqua|Sylas: — You're itching for a fight that much? Fine, so be it.}",
-	JEAN_SYLAS_SYLAS_MONSTERS = "He snaps his fingers, and suddenly a bunch of monsters rush from the sides. Another bunch comes from behind, rushing in from the brothel's cellar.",
-	JEAN_SYLAS_SYLAS_MONSTERS_2 = "{color=aqua|Sylas: — Hope this setup satisfies your violent nature. But in the end, I'll personally put you to rest.}",
+	JEAN_SYLAS_SYLAS_REPLY_FIGHT = "{color=aqua|Sylas: — You're itching for a fight that much? Fine, so be it.}\n\n",
+	JEAN_SYLAS_SYLAS_MONSTERS = "He snaps his fingers, and suddenly a bunch of monsters rush from the sides. Another bunch comes from behind, rushing in from the brothel's cellar.\n\n",
+	JEAN_SYLAS_SYLAS_MONSTERS_2 = "{color=aqua|Sylas: — Hope this setup satisfies your violent nature. But in the end, I'll personally put you to rest.}\n\n",
 	JEAN_SYLAS_SYLAS_SERVANT_KILLED = "One of them has familiar features, and soon you realize it was his servant from the ruins that joined the fray.",
 	JEAN_SYLAS_SYLAS_SERVANT_FREED = "Behind the monsters you notice a familiar figure of the servant from the ruins, who skittishly hides in the back.",
 	JEAN_SYLAS_SYLAS_DEVICE = """While your enemy gloats, you feel the magical device Myr gave you in your pocket and press the activation button. Suddenly, a wave of energy emanates from your location. The monsters it hits become confused and sluggish, their movements turn frantic, then aimless. The army of battle monsters turns into a crowd of barely functioning imbeciles.
@@ -26095,7 +26117,7 @@ Jean freezes mid-sentence as the dark fog begins circling her face and the spher
 {color=aqua|Jean: — Now if you'll excuse me... this body has places to be. Ta-ta, fools.}
 
 Jean's body suddenly rises into the air and then flies into the night, leaving you alone with the collapsed Sylas... and the couple dozen guards who were summoned by the sounds of your fight and are now eager for an explanation.""",
-	JEAN_SYLAS_RETURN_ALIRON = "You return to Aliron with more questions than answers. The situation has clearly gotten out of hand. There's only one person that can make sense of what just happened. Time to talk to Myr.",
+	JEAN_SYLAS_RETURN_ALIRON = "The situation has clearly gotten out of hand. There's only one person that can make sense of what just happened. Time to talk to Myr.",
 	JEAN_SYLAS_MYR_OPTION_2 = "There's an issue with Jean...",
 	JEAN_SYLAS_MYR_ISSUE_INTRO = """{color=aqua|Myr: — Oh? I assumed that insolent girl was missing just because she didn't want to show herself to my eyes, but your tone suggests something went very wrong. Go on, tell me.}
 	

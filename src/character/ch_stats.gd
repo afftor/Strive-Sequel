@@ -409,6 +409,31 @@ func update_stat(stat, value, operant = 'set'):
 		parent.get_ref().reset_rebuild()
 
 
+func update_affection(value, operant = 'set'):
+	update_relationship_stat('affection', value, operant)
+
+
+func update_respect(value, operant = 'set'):
+	update_relationship_stat('respect', value, operant)
+
+
+func update_relationship_stat(stat, value, operant):
+	var result = statlist[stat]
+	match operant:
+		'set':
+			result = value
+		'add':
+			result += value
+		'mul':
+			result *= value
+		'add_part':
+			result *= 1.0 + value
+	var min_value = -100
+	if stat == 'respect' and parent.get_ref().get_stat('unique') == 'zephyra':
+		min_value = 80
+	statlist[stat] = clamp(result, min_value, 100)
+
+
 func update_personality(value, operant = 'set'):
 	match value:
 		'neutral':
@@ -1195,7 +1220,7 @@ func update_chardata(chardata):
 	#possible 2do remove of innate effects
 	statlist.unique = chardata.code
 	for i in chardata:
-		if !(i in variables.personal_stats):
+		if !(i in variables.personal_stats) and !(i in ['affection', 'respect']):
 			continue
 		update_stat(i, chardata[i], 'set')
 #	if chardata.has("traits"):
