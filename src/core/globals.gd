@@ -2382,10 +2382,8 @@ func common_effects(effects, from_event = false):
 					input_handler.exploration_node = gui_controller.exploration
 				input_handler.exploration_node.open_city(i.city)
 			'create_character':
-				#temporal solution
-				if ResourceScripts.game_globals.diff_solo:
-					continue
-				input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave', i.type])
+				if !ResourceScripts.game_globals.diff_solo:
+					input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave', i.type])
 			'progress_quest':
 				var quest_exists = false
 				for k in ResourceScripts.game_progress.active_quests:
