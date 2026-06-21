@@ -23,7 +23,7 @@ func calculate_duration():
 		if !(res is int):
 			print("error in duration template")
 	if skill != null:
-		if template.tags.has('negative') and skill.target.get_stat('personality') == 'serious' and res > 1:
+		if template.tags.has('negative') and skill.target.get_stat('personality') == 'bold' and res > 1:
 			res -= 1
 		if template.tags.has('positive') and skill.caster.get_stat('personality') == 'kind' and res > 0:
 			res += 1
