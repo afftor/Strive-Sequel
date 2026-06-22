@@ -1147,8 +1147,9 @@ func use_skill(skill_code, caster, target, mode = variables.SKILL_BASE):
 	ActionQueue.invoke()
 	if (caster.combatgroup == 'enemy'
 			and template.has("tags")
-			and !template.tags.has("recognizable")):
-		ResourceScripts.game_progress.try_append_seen_skill(skill_code)
+			and !template.tags.has("recognizable")
+			and !template.tags.has("descript_hidden")):
+		input_handler.update_progress_data("seen_skills", skill_code)
 
 
 func get_char_by_pos(pos):

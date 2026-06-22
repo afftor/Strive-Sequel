@@ -78,10 +78,23 @@ func open(character = ResourceScripts.scriptdict.class_slave.new("temp_char_stat
 	var abilities_empty = true
 	if character.combatgroup == 'enemy':
 		var abilities = globals.get_traitlist_for_char(character)
+		var hidden_abilities = []
+		for ability in abilities:
+			if ability.has("trait_code") and character.has_info_bonus_mastery(ability.trait_code):
+				var info_bonus = character.get_info_bonus_mastery(ability.trait_code)
+				var mas_data = Skilldata.masteries[info_bonus.category]
+				for i in range(info_bonus.lvl):
+#					for stat in mas_data.passive:
+#						process_bonus_record(stat, mas_data.passive[stat] * mul, 'innate', category, 0) 
+					if i < mas_data.maxlevel:
+						var lvdata = mas_data['level%d' % (i + 1)]
+						hidden_abilities.append_array(lvdata.traits)
+						hidden_abilities.append_array(lvdata.combat_skills)
 		#skills
 		for i in character.get_combat_skills():
-			if i in ["attack", "ranged_attack"]: continue
+			if i in hidden_abilities: continue
 			var skill = Skilldata.get_template_combat(i, character)
+			if skill.has("tags") and skill.tags.has("descript_hidden"): continue
 			var entry = {
 				is_skill = true,
 				name = tr(skill.name),
@@ -89,7 +102,7 @@ func open(character = ResourceScripts.scriptdict.class_slave.new("temp_char_stat
 			}
 			if (skill.has("tags")
 					and !skill.tags.has("recognizable")
-					and !ResourceScripts.game_progress.have_seen_skill(i)):
+					and !input_handler.progress_data['seen_skills'].has(i)):
 				entry.icon = load("res://assets/Textures_v2/icon_question_small.png")
 				entry.text = tr("NEEDTOSEESKILL")
 				entry.name = tr("TRAITUNKNOWN")
@@ -100,6 +113,7 @@ func open(character = ResourceScripts.scriptdict.class_slave.new("temp_char_stat
 				entry.character = weakref(character)
 			abilities.append(entry)
 		for entry in abilities:
+			if entry.has("trait_code") and (entry.trait_code in hidden_abilities): continue
 			var newnode = input_handler.DuplicateContainerTemplate(abilities_cont, 'entry')
 			newnode.set_entry(entry)
 		abilities_empty = abilities.empty()

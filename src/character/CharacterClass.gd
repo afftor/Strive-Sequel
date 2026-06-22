@@ -2879,3 +2879,12 @@ func minor_training_tick():
 	minor_training_timer -= 1
 	if minor_training_timer <= 0:
 		finish_minor_training()
+
+func has_info_bonus_mastery(mastery):
+	return dyn_stats.has_info_bonus_mastery(mastery)
+
+func get_info_bonus_mastery(mastery):
+	return dyn_stats.get_info_bonus_mastery(mastery)
+
+func try_get_bonus_mastery_desc(mastery):
+	return dyn_stats.try_get_bonus_mastery_desc(mastery)

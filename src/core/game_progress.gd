@@ -109,7 +109,6 @@ var slave_quests = {
 	quest_pool = {}
 }
 
-var seen_skills = []
 
 func _init():
 	globals.connect("hour_tick", self, 'check_timed_events')
@@ -479,9 +478,3 @@ func can_gather_item(mat_id):
 		return true
 	return tmp.has(mat_id)
 
-func have_seen_skill(code):
-	return seen_skills.has(code)
-
-func try_append_seen_skill(code):
-	if !have_seen_skill(code):
-		seen_skills.append(code)

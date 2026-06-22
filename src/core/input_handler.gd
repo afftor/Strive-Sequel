@@ -225,7 +225,8 @@ var progress_data = {
 	unique_sprites = {},#daisy = [], cali = []
 	achievements = [],
 	achi_bonuses = [],
-	achi_points = 0
+	achi_points = 0,
+	seen_skills = []
 } setget save_progress_data
 
 #var combat_advance = false #if any result in combat cause advance
