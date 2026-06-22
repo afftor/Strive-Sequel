@@ -518,10 +518,19 @@ func get_traitlist_for_char(person):
 	var trlist = person.get_traits_by_arg('visible', true)
 	for tr in trlist:
 		var trdata = Traitdata.traits[tr]
+		var desc = person.translate(trdata.descript)
+		var bonus_desc = person.try_get_bonus_mastery_desc(tr)
+		if !bonus_desc.empty():
+#			desc += "\n" + bonus_desc
+			#it's a crude patch for monster_mastery descriptions, as they are same as names
+			#at the moment. Ideally there should be some systematic solution for traits, wich are
+			#also buffs, and therefore needs name in description
+			desc = bonus_desc
 		var entry = {
+			trait_code = tr,
 			name = tr(trdata.name),
-			text_with_name = "[center]{color=yellow|" + tr(trdata.name) + '}[/center]\n' + person.translate(trdata.descript),
-			text = person.translate(trdata.descript)
+			text_with_name = "[center]{color=yellow|" + tr(trdata.name) + '}[/center]\n' + desc,
+			text = desc
 		}
 		if trdata.has('tags') and trdata.tags.has('simple_icon'):
 			entry.icon = trdata.icon
@@ -671,13 +680,17 @@ func build_desc_for_bonusstats(bonusstats, mul = 1):
 						bonus = suffix
 						break
 			
-			if bonus != 'set':
-				if data.has('container') and data.container == 'resists' and !(value is bool or value is Array) and value >= 100:
-					text += get_resist_effect_name(data.code).capitalize() + ': '
-				else:
-					text += data.name + ': '
+			text += get_bonus_name_string(bonus, data, value)
 			text += make_bonus_value_string(bonus, data, value) + '\n'
 	return text
+
+func get_bonus_name_string(bonus_type, data, value):
+	if bonus_type == 'set':
+		return ""
+	if data.has('container') and data.container == 'resists' and !(value is bool or value is Array) and value >= 100:
+		return get_resist_effect_name(data.code).capitalize() + ': '
+	else:
+		return data.name + ': '
 
 func make_bonus_value_string(bonus_type, data, value):
 	var text = ''
