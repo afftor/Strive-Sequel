@@ -307,7 +307,7 @@ var effects = {
 		tick_event = variables.TR_TURN_F,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
-		tags = ['buff'],
+		tags = ['buff','shield'],
 		statchanges = {resist_fire = 40},
 		buffs = [
 			{

@@ -200,7 +200,7 @@ var effects = {
 		tick_event = variables.TR_TURN_S,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
-		tags = ['buff', 'veil'],
+		tags = ['buff', 'veil', 'shield'],
 		args = {value = {obj = 'skill', func = 'get', arg = 'process_value'}},
 		statchanges = {mdef = ['arg', 'value'], resist_light = 30, resist_dark = 30},
 		buffs = [
