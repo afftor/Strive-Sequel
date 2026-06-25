@@ -2,7 +2,7 @@ extends Reference
 var data = {
 	gryphon_aire_start = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = "aire",
+		reqs = [], character = "$aire",
 		text = [{text = "GRYPHON_AIRE_START", reqs = []}],
 		options = [ {
 			code = 'gryphon_aire_1', text = "GRYPHON_AIRE_START_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -13,7 +13,7 @@ var data = {
 	
 	gryphon_aire_1 = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = "aire",
+		reqs = [], character = "$aire",
 		text = [{text = "GRYPHON_AIRE_1_1", reqs = [], previous_dialogue_option = 1},
 		{text = "GRYPHON_AIRE_1_2", reqs = [], previous_dialogue_option = 2}],
 		options = [ {
@@ -25,7 +25,7 @@ var data = {
 	
 	gryphon_aire_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "aire",
+		reqs = [], character = "$aire",
 		text = [{text = "GRYPHON_AIRE_2", reqs = []}],
 		options = [ {
 			code = 'gryphon_aire_3', text = "GRYPHON_AIRE_2_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -38,7 +38,7 @@ var data = {
 	
 	gryphon_aire_3 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "aire",
+		reqs = [], character = "$aire",
 		text = [{text = "GRYPHON_AIRE_3_1", reqs = [], previous_dialogue_option = 1},
 		{text = "GRYPHON_AIRE_3_2", reqs = [], previous_dialogue_option = 2},
 		{text = "GRYPHON_AIRE_3_3", reqs = [], previous_dialogue_option = 3}],
@@ -51,7 +51,7 @@ var data = {
 	
 	gryphon_aire_4 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "aire",
+		reqs = [], character = "$aire",
 		text = [{text = "GRYPHON_AIRE_4_1", reqs = [], previous_dialogue_option = 1},
 		{text = "GRYPHON_AIRE_4_2", reqs = [], previous_dialogue_option = 2}],
 		options = [ {
@@ -65,7 +65,7 @@ var data = {
 	
 	gryphon_aire_5 = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = "aire",
+		reqs = [], character = "$aire",
 		text = [{text = "GRYPHON_AIRE_5", reqs = []}],
 		options = [ {
 			code = 'gryphon_aire_6', text = "GRYPHON_AIRE_5_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -76,7 +76,7 @@ var data = {
 	
 	gryphon_aire_6 = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = "aire",
+		reqs = [], character = "$aire",
 		text = [{text = "GRYPHON_AIRE_6", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
@@ -131,7 +131,7 @@ var data = {
 	
 	gryphon_forest_1 = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = 'aire',
+		reqs = [], character = '$aire',
 		text = [{text = "GRYPHON_FOREST_1", reqs = []}],
 #		common_effects = [{code = 'make_quest_location', value = 'quest_gryphon_cave_location'}],
 		options = [ {
@@ -194,7 +194,7 @@ var data = {
 	
 	gryphon_cave_4 = {
 		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
-		reqs = [], character = 'aire',
+		reqs = [], character = '$aire',
 		text = [{text = "GRYPHON_CAVE_4", reqs = []}],
 		options = [ {
 			code = 'gryphon_cave_5', text = "GRYPHON_CAVE_4_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -207,7 +207,7 @@ var data = {
 	
 	gryphon_cave_5 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = 'aire',
+		reqs = [], character = '$aire',
 		text = [{text = "GRYPHON_CAVE_5", reqs = []}],
 		options = [ {
 			code = 'close', text = "GRYPHON_CAVE_5_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -230,7 +230,7 @@ var data = {
 	},
 	
 	aire_gryphon_sex_start = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'aire',
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = '$aire',
 		text = [
 			{text = "GRYPHON_AIRE_SEX_START", reqs = []},
 		], 
@@ -241,7 +241,7 @@ var data = {
 	},
 	
 	aire_gryphon_sex_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'aire',
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = '$aire',
 		text = [
 			{text = "GRYPHON_AIRE_SEX_1", reqs = []},
 		], 
@@ -252,7 +252,7 @@ var data = {
 	},
 	
 	aire_gryphon_sex_2 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'aire',
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = '$aire',
 		text = [
 			{text = "GRYPHON_AIRE_SEX_2", reqs = []},
 		], 
@@ -263,7 +263,7 @@ var data = {
 	},
 	
 	ana_gryphon_sex_start = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character2 = 'aire', character = 'anastasia',
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character2 = '$aire', character = '$anastasia',
 		text = [
 			{text = "GRYPHON_ANA_SEX_START", reqs = []},
 		], 
@@ -273,7 +273,7 @@ var data = {
 	},
 	
 	ana_gryphon_sex_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character2 = 'aire', character = 'anastasia',
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character2 = '$aire', character = '$anastasia',
 		scene_type = "unlocked_gallery_seq",
 		unlocked_gallery_seq = "aire_gryphon",
 		save_scene_to_gallery = true,
@@ -286,7 +286,7 @@ var data = {
 	},
 	
 	ana_gryphon_sex_2 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character2 = 'aire', character = 'anastasia',
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character2 = '$aire', character = '$anastasia',
 		text = [
 			{text = "GRYPHON_ANA_SEX_2", reqs = []},
 		], 

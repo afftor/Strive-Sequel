@@ -7,7 +7,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "ANA_LETTER_1_1",
@@ -80,7 +80,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "ANA_LETTER_END",
@@ -109,7 +109,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "ANA_LETTER_2_1",
@@ -727,7 +727,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "ANASTASIA_RETURN_1",
@@ -774,7 +774,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "ANASTASIA_RETURN_2_1",
@@ -857,7 +857,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "ANASTASIA_RETURN_3_1",
@@ -910,7 +910,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "ANASTASIA_RETURN_4",
@@ -965,7 +965,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "ANASTASIA_RETURN_5",
@@ -1003,7 +1003,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "ANASTASIA_PT2_1_1",
@@ -1065,7 +1065,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "ANASTASIA_PT2_2",
@@ -1355,7 +1355,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "ANA_TRAVEL_INITIATE",
@@ -1462,7 +1462,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "ANA_FORT_3",
@@ -1491,7 +1491,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "ANA_FORT_4",
@@ -1521,7 +1521,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "ANA_FORT_5",
@@ -1560,7 +1560,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "ANA_FORT_6",
@@ -1596,7 +1596,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "ANA_FORT_7",
@@ -1627,7 +1627,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "ANA_FORT_8",
@@ -1725,7 +1725,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "ANA_FORT_11",
@@ -1763,7 +1763,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "ANA_FORT_12",
@@ -1808,7 +1808,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		character2 = "duncan",
 		text = [
 			{
@@ -1840,7 +1840,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		character2 = "duncan",
 		text = [
 			{
@@ -1891,7 +1891,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "ANA_FINAL_3",

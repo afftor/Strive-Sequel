@@ -93,7 +93,7 @@ var data = {
 	},
 	
 	guilds_meeting_2 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan', character2 = 'amelia',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan', character2 = '$amelia',
 		text = [{text = "PRE_ANASTASIA_EXECUTION_13", reqs = []}],
 		options = [ {
 			code = 'guilds_meeting_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -101,7 +101,7 @@ var data = {
 	},
 	
 	guilds_meeting_3 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan', character2 = 'amelia',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan', character2 = '$amelia',
 		text = [{text = "PRE_ANASTASIA_EXECUTION_14", reqs = []}],
 		options = [ {
 			code = 'guilds_meeting_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -117,7 +117,7 @@ var data = {
 	},
 	
 	guilds_meeting_5 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan', character2 = 'amelia',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan', character2 = '$amelia',
 		text = [{text = "PRE_ANASTASIA_EXECUTION_16", reqs = []}],
 		options = [ {
 			code = 'guilds_meeting_6', text = "PRE_ANASTASIA_EXECUTION_OPTION_9", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -127,7 +127,7 @@ var data = {
 	},
 	
 	guilds_meeting_6 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan', character2 = 'amelia',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan', character2 = '$amelia',
 		text = [{text = "PRE_ANASTASIA_EXECUTION_19", reqs = []}],
 		options = [ {
 			code = 'guilds_meeting_7', text = "PRE_ANASTASIA_EXECUTION_OPTION_11", reqs = [{type = 'master_check', value = [{code = 'sex', operant = 'neq', value = 'female'}]}], dialogue_argument = 1, type = 'next_dialogue',
@@ -147,7 +147,7 @@ var data = {
 	},
 	
 	guilds_meeting_8 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'duncan', character2 = 'amelia',
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'duncan', character2 = '$amelia',
 		text = [{text = "PRE_ANASTASIA_EXECUTION_21", reqs = []}],
 		options = [ {
 			code = 'guilds_meeting_9', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -155,7 +155,7 @@ var data = {
 	},
 	
 	guilds_meeting_9 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan', character2 = 'amelia',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan', character2 = '$amelia',
 		text = [{text = "PRE_ANASTASIA_EXECUTION_22", reqs = []}],
 		options = [ {
 			code = 'guilds_meeting_10', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -171,7 +171,7 @@ var data = {
 	},
 	
 	guilds_meeting_11 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'duncan', character2 = 'amelia',
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'duncan', character2 = '$amelia',
 		text = [{text = "PRE_ANASTASIA_EXECUTION_24", reqs = []}],
 		common_effects = [{code = 'decision', value = 'AnastasiaMarryAttempt'}],
 		options = [ {
@@ -181,7 +181,7 @@ var data = {
 	
 	# =I want to make her my slave
 	guilds_meeting_12 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'duncan', character2 = 'amelia',
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'duncan', character2 = '$amelia',
 		text = [{text = "PRE_ANASTASIA_EXECUTION_25", reqs = []}],
 		options = [ {
 			code = 'guilds_meeting_13', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -207,7 +207,7 @@ var data = {
 	},
 	
 	guilds_meeting_15 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan', character2 = 'amelia',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan', character2 = '$amelia',
 		text = [{text = "PRE_ANASTASIA_EXECUTION_28", reqs = []}],
 		options = [ {
 			code = 'anastasia_execution_start', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = "close_guild_window"}],
@@ -215,7 +215,7 @@ var data = {
 	},
 	
 	amelia_intermission_start = {
-		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'amelia',
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = '$amelia',
 		text = [{text = "MIND_CONTROL_1", reqs = []}],
 		options = [ {
 			code = 'amelia_intermission_1', text = "MIND_CONTROL_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -225,7 +225,7 @@ var data = {
 	},
 	
 	amelia_intermission_1 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'amelia',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = '$amelia',
 		text = [{text = "MIND_CONTROL_2", reqs = [], previous_dialogue_option = 2},
 		{text = "MIND_CONTROL_3", reqs = []}],
 		options = [ {
@@ -236,7 +236,7 @@ var data = {
 	},
 	
 	amelia_intermission_2 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'amelia',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = '$amelia',
 		text = [{text = "MIND_CONTROL_4", reqs = [], previous_dialogue_option = 1},
 		{text = "MIND_CONTROL_5", reqs = [], previous_dialogue_option = 2}],
 		options = [ {
@@ -362,7 +362,7 @@ var data = {
 	
 	#Close guild window before so that Aliron is on the screen
 	anastasia_execution_start = {
-		image = null,  music = 'intimate_dark', tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'amelia',
+		image = null,  music = 'intimate_dark', tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = '$amelia',
 		scene_type = "unlocked_gallery_seq",
 		unlocked_gallery_seq = "anastasia_execution",
 		save_scene_to_gallery = true,
@@ -375,7 +375,7 @@ var data = {
 	},
 	
 	anastasia_execution_1 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'amelia',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = '$amelia',
 		text = [{text = "ANASTASIA_EXECUTION_2", reqs = [], previous_dialogue_option = 1},
 		{text = "ANASTASIA_EXECUTION_3", reqs = [], previous_dialogue_option = 2},
 		{text = "ANASTASIA_EXECUTION_4", reqs = []}],

@@ -17,7 +17,7 @@ var data = {
 	},
 	
 	lira_quest3_start_1 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene", "master_translate"],
 		text = "LIRA_QUEST3_START_1",
 		options = [
@@ -26,13 +26,13 @@ var data = {
 		],
 	},
 	lira_quest3_start_2 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_START_2",
 		options = [{code = "lira_quest3_start_3", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_start_3 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene", "master_translate"],
 		text = "LIRA_QUEST3_START_3",
 		options = [
@@ -41,7 +41,7 @@ var data = {
 		],
 	},
 	lira_quest3_start_4 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "LIRA_QUEST3_START_4", reqs = []},
@@ -51,7 +51,7 @@ var data = {
 		options = [{code = "lira_quest3_start_5", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_start_5 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_START_7",
 		options = [
@@ -61,7 +61,7 @@ var data = {
 		],
 	},
 	lira_quest3_start_6 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "LIRA_QUEST3_START_8", reqs = [], previous_dialogue_option = 1},
@@ -149,7 +149,7 @@ var data = {
 	},
 	
 	lira_quest3_report_lira_1 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene", "master_translate"],
 		text = "LIRA_QUEST3_REPORT_LIRA_1",
 		options = [
@@ -158,13 +158,13 @@ var data = {
 		],
 	},
 	lira_quest3_report_lira_2 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_REPORT_LIRA_2",
 		options = [{code = "lira_quest3_report_lira_3", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_report_lira_3 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene", "master_translate"],
 		text = "LIRA_QUEST3_REPORT_LIRA_3",
 		options = [
@@ -173,7 +173,7 @@ var data = {
 		],
 	},
 	lira_quest3_report_lira_4 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "LIRA_QUEST3_REPORT_LIRA_4", reqs = [], previous_dialogue_option = 1},
@@ -192,7 +192,7 @@ var data = {
 	},
 	
 	lira_quest3_trader_1 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_TRADER_1",
 		options = [
@@ -201,19 +201,19 @@ var data = {
 		],
 	},
 	lira_quest3_trader_2 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_TRADER_2",
 		options = [{code = "lira_quest3_trader_3", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_trader_3 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_TRADER_3",
 		options = [{code = "lira_quest3_trader_4", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_trader_4 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = [
 			{text = "LIRA_QUEST3_TRADER_4", reqs = [], previous_dialogue_option = 1},
@@ -227,25 +227,25 @@ var data = {
 		],
 	},
 	lira_quest3_trader_5 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_TRADER_7",
 		options = [{code = "lira_quest3_trader_6", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_trader_6 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_TRADER_8",
 		options = [{code = "lira_quest3_trader_7", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_trader_7 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_TRADER_9",
 		options = [{code = "lira_quest3_trader_8", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_trader_8 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_TRADER_10",
 		options = [
@@ -254,7 +254,7 @@ var data = {
 		],
 	},
 	lira_quest3_trader_9 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene", "master_translate",],
 		text = [
 			{text = "LIRA_QUEST3_TRADER_11", reqs = [], previous_dialogue_option = 1},
@@ -268,7 +268,7 @@ var data = {
 	},
 	
 	lira_quest3_trader_10 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene", "master_translate",],
 		text = "LIRA_QUEST3_TRADER_14",
 		options = [
@@ -288,7 +288,7 @@ var data = {
 	},
 	
 	lira_quest3_empire_1 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene", "master_translate",],
 		text = "LIRA_QUEST3_EMPIRE_1",
 		options = [
@@ -297,25 +297,25 @@ var data = {
 		],
 	},
 	lira_quest3_empire_2 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_EMPIRE_2",
 		options = [{code = "lira_quest3_empire_3", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_empire_3 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_EMPIRE_3",
 		options = [{code = "lira_quest3_empire_4", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_empire_4 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_EMPIRE_4",
 		options = [{code = "lira_quest3_empire_5", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_empire_5 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_EMPIRE_5",
 		options = [
@@ -324,7 +324,7 @@ var data = {
 		],
 	},
 	lira_quest3_empire_6 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene", "master_translate",],
 		text = "LIRA_QUEST3_EMPIRE_6",
 		options = [
@@ -350,7 +350,7 @@ var data = {
 		],
 	},
 	lira_quest3_empire_7 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene", "master_translate",],
 		text = [
 			{text = "LIRA_QUEST3_EMPIRE_7", reqs = [{type = 'local_counter', name = 'df_balance', operant = 'gte', value = 0, check = true}]},
@@ -359,7 +359,7 @@ var data = {
 		options = [{code = "lira_quest3_empire_8", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_empire_8 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_EMPIRE_9",
 		options = [
@@ -379,7 +379,7 @@ var data = {
 		],
 	},
 	lira_quest3_empire_9 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene", "master_translate",],
 		text = "LIRA_QUEST3_EMPIRE_10",
 		options = [
@@ -388,7 +388,7 @@ var data = {
 		],
 	},
 	lira_quest3_empire_10 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene", "master_translate",],
 		text = [
 			{text = "LIRA_QUEST3_EMPIRE_11", reqs = [], previous_dialogue_option = 1},
@@ -411,7 +411,7 @@ var data = {
 		],
 	},
 	lira_quest3_empire_11 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene", "master_translate",],
 		text = "LIRA_QUEST3_EMPIRE_13",
 		options = [
@@ -421,7 +421,7 @@ var data = {
 	},
 	
 	lira_quest3_caravan_prepare_1 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_CARAVAN_PREPARE_1",
 		options = [
@@ -439,7 +439,7 @@ var data = {
 		],
 	},
 	lira_quest3_caravan_prepare_2 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = [
 			{text = "LIRA_QUEST3_CARAVAN_PREPARE_2", reqs = [], previous_dialogue_option = 1},
@@ -462,7 +462,7 @@ var data = {
 	},
 	
 	lira_quest3_caravan_ambush_1 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene", "master_translate",],
 		text = "LIRA_QUEST3_CARAVAN_AMBUSH_1",
 		options = [
@@ -470,7 +470,7 @@ var data = {
 		],
 	},
 	lira_quest3_caravan_ambush_2 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = [
 			{text = "LIRA_QUEST3_CARAVAN_AMBUSH_2", reqs = []},
@@ -482,13 +482,13 @@ var data = {
 	},
 	
 	lira_quest3_road_1 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_ROAD_1",
 		options = [{code = "lira_quest3_road_2", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_road_2 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_ROAD_2",
 		options = [
@@ -579,7 +579,7 @@ var data = {
 	},
 	
 	lira_quest3_bandit_leader_1 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_BANDIT_LEADER_1",
 		options = [
@@ -588,31 +588,31 @@ var data = {
 		],
 	},
 	lira_quest3_bandit_leader_2 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_BANDIT_LEADER_2",
 		options = [{code = "lira_quest3_bandit_leader_3", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_bandit_leader_3 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_BANDIT_LEADER_3",
 		options = [{code = "lira_quest3_bandit_leader_4", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_bandit_leader_4 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_BANDIT_LEADER_4",
 		options = [{code = "lira_quest3_bandit_leader_5", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_bandit_leader_5 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_BANDIT_LEADER_5",
 		options = [{code = "lira_quest3_bandit_leader_6", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_bandit_leader_6 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_BANDIT_LEADER_6",
 		options = [
@@ -621,7 +621,7 @@ var data = {
 		],
 	},
 	lira_quest3_bandit_leader_7 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = [
 			{text = "LIRA_QUEST3_BANDIT_LEADER_7", reqs = [], previous_dialogue_option = 1},
@@ -630,7 +630,7 @@ var data = {
 		options = [{code = "lira_quest3_bandit_leader_8", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_bandit_leader_8 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = [
 			{text = "LIRA_QUEST3_BANDIT_LEADER_9", reqs = []},
@@ -655,13 +655,13 @@ var data = {
 	},
 	
 	lira_quest3_follow_leader_1 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_FOLLOW_LEADER_1",
 		options = [{code = "lira_quest3_follow_leader_2", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_follow_leader_2 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_FOLLOW_LEADER_2",
 		options = [
@@ -759,13 +759,13 @@ var data = {
 		options = [{code = "lira_quest3_aftermath_1", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_aftermath_1 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_AFTERMATH_1",
 		options = [{code = "lira_quest3_aftermath_2", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_aftermath_2 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_AFTERMATH_2",
 		options = [
@@ -774,7 +774,7 @@ var data = {
 		],
 	},
 	lira_quest3_aftermath_3 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene", "master_translate",],
 		text = "LIRA_QUEST3_AFTERMATH_3",
 		options = [
@@ -783,13 +783,13 @@ var data = {
 		],
 	},
 	lira_quest3_aftermath_4 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_AFTERMATH_4",
 		options = [{code = "lira_quest3_aftermath_5", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_aftermath_5 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_AFTERMATH_5",
 		options = [
@@ -798,7 +798,7 @@ var data = {
 		],
 	},
 	lira_quest3_aftermath_6 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene", "master_translate",],
 		text = [
 			{text = "LIRA_QUEST3_AFTERMATH_6", reqs = [], previous_dialogue_option = 1},
@@ -821,19 +821,19 @@ var data = {
 	},
 	
 	lira_quest3_aftermath_7 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_AFTERMATH_8",
 		options = [{code = "lira_quest3_aftermath_8", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_aftermath_8 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_AFTERMATH_9",
 		options = [{code = "lira_quest3_aftermath_9", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_aftermath_9 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_AFTERMATH_10",
 		options = [
@@ -847,13 +847,13 @@ var data = {
 		],
 	},
 	lira_quest3_aftermath_10 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene"],
 		text = "LIRA_QUEST3_AFTERMATH_11",
 		options = [{code = "lira_quest3_aftermath_11", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_aftermath_11 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene", "master_translate",],
 		text = "LIRA_QUEST3_AFTERMATH_12",
 		options = [
@@ -872,7 +872,7 @@ var data = {
 		],
 	},
 	lira_quest3_aftermath_12 = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene", "master_translate",],
 		text = "LIRA_QUEST3_AFTERMATH_13",
 		options = [
@@ -892,7 +892,7 @@ var data = {
 	},
 	
 	lira_quest3_return = {
-		image = null, character = "lira",
+		image = null, character = "$lira",
 		reqs = [], tags = ["dialogue_scene", "master_translate",],
 		text = "LIRA_QUEST3_RETURN",
 		common_effects = [{code = 'complete_quest', value = 'lira_quest_3'}],

@@ -783,7 +783,7 @@ var data = {
 		reqs = [
 
 		],
-		character2 = "zephyra",
+		character2 = "$zephyra",
 		character = "white_stag",
 		text = [
 			{
@@ -1036,7 +1036,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "PRIESTESS_TALK_1",
@@ -1083,7 +1083,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "PRIESTESS_TALK_2_1",
@@ -1153,7 +1153,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "PRIESTESS_TALK_3_2",
@@ -1753,7 +1753,7 @@ var data = {
 						]
 					}
 				],
-				character = "aire",
+				character = "$aire",
 				text = [
 					{
 						text = "TEMPLE_6_2",
@@ -1794,7 +1794,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "aire",
+		character = "$aire",
 		text = [
 			{
 				text = "TEMPLE_7_1",
@@ -1877,7 +1877,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "AFTER_TEMPLE_PRIESTESS_1",
@@ -1906,7 +1906,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "AFTER_TEMPLE_PRIESTESS_2",
@@ -1936,7 +1936,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "AFTER_TEMPLE_PRIESTESS_3",
@@ -1981,7 +1981,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "AFTER_TEMPLE_PRIESTESS_4",
@@ -2040,7 +2040,7 @@ var data = {
 						]
 					}
 				],
-				character = "heleviel",
+				character = "$heleviel",
 				text = [
 					{
 						text = "AFTER_TEMPLE_PRIESTESS_5_1_1_BAD",
@@ -2079,7 +2079,7 @@ var data = {
 				reqs = [
 
 				],
-				character = "heleviel",
+				character = "$heleviel",
 				text = [
 					{
 						text = "AFTER_TEMPLE_PRIESTESS_5_1_1",
@@ -2111,7 +2111,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "AFTER_TEMPLE_PRIESTESS_5_1_2",
@@ -2530,7 +2530,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "lira",
+		character = "$lira",
 		text = [
 			{
 				text = "LIRA_ENCOUNTER_1",
@@ -2569,7 +2569,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "lira",
+		character = "$lira",
 		text = [
 			{
 				text = "LIRA_ENCOUNTER_2",
@@ -2625,7 +2625,7 @@ var data = {
 						]
 					}
 				],
-				character = "lira",
+				character = "$lira",
 				text = [
 					{
 						text = "LIRA_ENCOUNTER_3_1_GOOD",
@@ -2675,7 +2675,7 @@ var data = {
 						]
 					}
 				],
-				character = "lira",
+				character = "$lira",
 				text = [
 					{
 						text = "LIRA_ENCOUNTER_3_1_BAD",
@@ -2712,7 +2712,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "lira",
+		character = "$lira",
 		text = [
 			{
 				text = "LIRA_ENCOUNTER_4",
@@ -2772,7 +2772,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "lira",
+		character = "$lira",
 		text = [
 			{
 				text = "LIRA_ENCOUNTER_5_1_1",
@@ -2842,7 +2842,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "lira",
+		character = "$lira",
 		text = [
 			{
 				text = "LIRA_ENCOUNTER_5_2_1",
@@ -2948,7 +2948,7 @@ var data = {
 
 		],
 		character = "erlen",
-		character2 = "lira",
+		character2 = "$lira",
 		text = [
 			{
 				text = "ERLEN_LIRA_2",
@@ -2997,7 +2997,7 @@ var data = {
 
 		],
 		character = "erlen",
-		character2 = "lira",
+		character2 = "$lira",
 		text = [
 			{
 				text = "ERLEN_LIRA_3_1",
@@ -3043,7 +3043,7 @@ var data = {
 
 		],
 		character = "erlen",
-		character2 = "lira",
+		character2 = "$lira",
 		text = [
 			{
 				text = "ERLEN_LIRA_4",
@@ -3118,7 +3118,7 @@ var data = {
 
 		],
 		character = "erlen",
-		character2 = "lira",
+		character2 = "$lira",
 		text = [
 			{
 				text = "ERLEN_LIRA_5_2",
@@ -3158,7 +3158,7 @@ var data = {
 
 		],
 		character = "erlen",
-		character2 = "lira",
+		character2 = "$lira",
 		text = [
 			{
 				text = "ERLEN_LIRA_5_3",
@@ -3217,7 +3217,7 @@ var data = {
 
 		],
 		character = "erlen",
-		character2 = "lira",
+		character2 = "$lira",
 		text = [
 			{
 				text = "ERLEN_LIRA_6_1",
@@ -3272,7 +3272,7 @@ var data = {
 
 		],
 		character = "erlen",
-		character2 = "lira",
+		character2 = "$lira",
 		text = [
 			{
 				text = "ERLEN_LIRA_7_1",
@@ -3327,7 +3327,7 @@ var data = {
 
 		],
 		character = "erlen",
-		character2 = "lira",
+		character2 = "$lira",
 		text = [
 			{
 				text = "ERLEN_LIRA_8_1_1",
@@ -3358,7 +3358,7 @@ var data = {
 
 		],
 		character = "erlen",
-		character2 = "lira",
+		character2 = "$lira",
 		text = [
 			{
 				text = "ERLEN_LIRA_8_2",
@@ -3398,7 +3398,7 @@ var data = {
 
 		],
 		character = "erlen",
-		character2 = "lira",
+		character2 = "$lira",
 		text = [
 			{
 				text = "ERLEN_LIRA_9_1",
@@ -3590,7 +3590,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "CEREMONY_1",
@@ -3666,9 +3666,9 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		character_alpha = 180,
-		character2 = "lira",
+		character2 = "$lira",
 		character2_alpha = 180,
 		custom_background = "whitescreen",
 		scene_type = "technical_scene",
@@ -3726,7 +3726,7 @@ var data = {
 
 		],
 		character = "erlen",
-		character2 = "heleviel",
+		character2 = "$heleviel",
 		text = "CEREMONY_HELEVIEL_1",
 		options = [
 			{
@@ -3760,7 +3760,7 @@ var data = {
 
 		],
 		character = "erlen",
-		character2 = "heleviel",
+		character2 = "$heleviel",
 		text = [
 			{
 				text = "CEREMONY_HELEVIEL_2",
@@ -3800,7 +3800,7 @@ var data = {
 
 		],
 		character = "erlen",
-		character2 = "heleviel",
+		character2 = "$heleviel",
 		text = [
 			{
 				text = "CEREMONY_HELEVIEL_3_1",
@@ -3849,7 +3849,7 @@ var data = {
 
 		],
 		character = "erlen",
-		character2 = "heleviel",
+		character2 = "$heleviel",
 		text = [
 			{
 				text = "CEREMONY_HELEVIEL_3_1_1",
@@ -3926,7 +3926,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "CEREMONY_HELEVIEL_4",
@@ -4067,7 +4067,7 @@ var data = {
 
 		],
 		character = "erlen",
-		character2 = "heleviel",
+		character2 = "$heleviel",
 		text = "CEREMONY_LIRA_1",
 		options = [
 			{
@@ -4338,7 +4338,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		character2 = "demon_female",
 		text = [
 			{
@@ -4368,7 +4368,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		character2 = "demon_female",
 		text = [
 			{
@@ -4398,7 +4398,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "DEMON_PRIESTESS_3",

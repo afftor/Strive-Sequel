@@ -8,7 +8,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_TOME_START",
@@ -45,7 +45,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_TOME_REPLY_RUDE",
@@ -97,7 +97,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_TOME_OFFER",
@@ -150,7 +150,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_TOME_REPLY_FORSURE",
@@ -200,7 +200,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		character2 = "myr",
 		text = "MAGESINTRODUCTION3_2",
 		options = [
@@ -222,7 +222,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		character2 = "myr",
 		text = "KURO_LIB_START",
 		options = [
@@ -263,7 +263,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		character2 = "myr",
 		text = [
 			{
@@ -344,7 +344,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		character2 = "myr",
 		text = "MAGESINTRODUCTION3_2",
 		options = [
@@ -386,7 +386,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		character2 = "myr",
 		text = "KURO_LIB_ACCESS",
 		options = [
@@ -408,7 +408,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		character2 = "myr",
 		text = "KURO_LIB_ACCESS2",
 		options = [
@@ -430,7 +430,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_LIB_ACCESS3",
@@ -530,7 +530,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_WHISKEY_MARKET2",
@@ -604,7 +604,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_WHISKEY_CRASH",
@@ -633,7 +633,7 @@ var data = {
 			"dialogue_scene",
 			"blackscreen_transition_common"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_WHISKEY_CRASH2",
@@ -669,7 +669,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = "KURO_WHISKEY_REPLY_HAND",
 		options = [
 			{
@@ -710,7 +710,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_WHISKEY_REPLY_MEAN",
@@ -738,7 +738,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_WHISKEY_REPLY_FEELWASTE",
@@ -767,7 +767,7 @@ var data = {
 			"dialogue_scene",
 			"blackscreen_transition_common"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_WHISKEY_DIG",
@@ -795,7 +795,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		character2 = "bandits",
 		text = [
 			{
@@ -824,7 +824,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		character2 = "bandits",
 		text = [
 			{
@@ -853,7 +853,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		character2 = "bandits",
 		text = [
 			{
@@ -888,7 +888,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_WHISKEY_DIG5",
@@ -934,7 +934,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_WHISKEY_REPLY_BLAME",
@@ -995,7 +995,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_WHISKEY_HOMEBREW",
@@ -1031,7 +1031,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_WHISKEY_REPLY_AUTHENTIC",
@@ -1067,7 +1067,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_WHISKEY_REPLY_POISON",
@@ -1106,7 +1106,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		character2 = "myr",
 		text = "MAGESINTRODUCTION3_2",
 		options = [
@@ -1128,7 +1128,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		character2 = "myr",
 		text = "KURO_LIB_WHISKEY2",
 		options = [
@@ -1150,7 +1150,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		character2 = "myr",
 		text = "KURO_LIB_WHISKEY3",
 		options = [
@@ -1173,7 +1173,7 @@ var data = {
 			"dialogue_scene",
 			"blackscreen_transition_common"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_LIB_WHISKEY4",
@@ -1219,7 +1219,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_LIB_REPLY_WORK",
@@ -1573,7 +1573,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		start_dialogue_option = 9,
 		text = [
 			{
@@ -1625,7 +1625,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_AFTER_TOME2",
@@ -1666,7 +1666,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_AFTER_TOME3",

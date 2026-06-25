@@ -3,7 +3,7 @@ var data = {
 	princess_declaration_1 = {
 		image = null,
 		music = 'tragic',
-		character = "anastasia",
+		character = "$anastasia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -31,7 +31,7 @@ var data = {
 	},
 	princess_declaration_2 = {
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -58,7 +58,7 @@ var data = {
 	},
 	princess_declaration_3 = {
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -94,7 +94,7 @@ var data = {
 	},
 	princess_declaration_4 = {
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -460,7 +460,7 @@ var data = {
 				],
 				music = "intimate",
 				image = null,
-				character = "anastasia",
+				character = "$anastasia",
 				tags = [
 					"dialogue_scene",
 					"master_translate"
@@ -567,7 +567,7 @@ var data = {
 				],
 				image = null,
 				music = "intimate_dark",
-				character = "anastasia",
+				character = "$anastasia",
 				tags = [
 					"dialogue_scene",
 					"master_translate"
@@ -613,7 +613,7 @@ var data = {
 		scene_type = "unlocked_gallery_seq",
 		unlocked_gallery_seq = "anastasia_rape",
 		save_scene_to_gallery = true,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -640,7 +640,7 @@ var data = {
 	},
 	princess_cutscene_mindbreak_2 = {
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -869,7 +869,7 @@ var data = {
 		scene_type = "unlocked_gallery_seq",
 		unlocked_gallery_seq = "anastasia_sex",
 		save_scene_to_gallery = true,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = [
 			"dialogue_scene"
 		],
@@ -909,7 +909,7 @@ var data = {
 	},
 	princess_cutscene_good_2 = {
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -936,7 +936,7 @@ var data = {
 	},
 	princess_cutscene_pre_sex_good_1 = {
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -963,7 +963,7 @@ var data = {
 	},
 	princess_sex_good_1 = {
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = [
 			"dialogue_scene"
 		],
@@ -989,7 +989,7 @@ var data = {
 	},
 	princess_sex_good_2 = {
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1015,7 +1015,7 @@ var data = {
 	},
 	princess_sex_good_3 = {
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1041,7 +1041,7 @@ var data = {
 	},
 	princess_sex_good_4 = {
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1237,7 +1237,7 @@ var data = {
 	},
 	princess_cutscene_exit_1 = {
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1272,7 +1272,7 @@ var data = {
 	},
 	princess_cutscene_exit_2 = {
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1307,7 +1307,7 @@ var data = {
 	},
 	princess_cutscene_bad_1 = {
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1347,7 +1347,7 @@ var data = {
 	},
 	princess_cutscene_bad_pre_2 = {
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1374,7 +1374,7 @@ var data = {
 	},
 	princess_cutscene_bad_2 = {
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1406,7 +1406,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "AFTER_ELECTION_PRINCESS_15",
@@ -1433,7 +1433,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "AFTER_ELECTION_PRINCESS_16",

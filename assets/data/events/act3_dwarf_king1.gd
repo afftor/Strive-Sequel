@@ -649,7 +649,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character2 = "kuro",
+		character2 = "$kuro",
 		text = [
 			{
 				text = "KURO_FIRST_START1",
@@ -712,7 +712,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character2 = "kuro",
+		character2 = "$kuro",
 		text = [
 			{
 				text = "KURO_FIRST_REPLY_GIRL",
@@ -2243,13 +2243,13 @@ var data = {
 				dialogue_argument = 0
 			}
 		],
-		character = "hara"
+		character = "$hara"
 	},
 	bolthar_hara_intro = {
 		reqs = [
 
 		],
-		character = "hara",
+		character = "$hara",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2373,7 +2373,7 @@ var data = {
 				dialogue_argument = 9
 			}
 		],
-		character = "hara",
+		character = "$hara",
 		character2 = "bolthar"
 	},
 	bolthar_return_recruit = {
@@ -2560,7 +2560,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "kuro",
+		character = "$kuro",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2588,7 +2588,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "kuro",
+		character = "$kuro",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2706,8 +2706,8 @@ var data = {
 		reqs = [
 
 		],
-		character = "kuro",
-		character2 = "zephyra",
+		character = "$kuro",
+		character2 = "$zephyra",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2735,8 +2735,8 @@ var data = {
 		reqs = [
 
 		],
-		character = "kuro",
-		character2 = "zephyra",
+		character = "$kuro",
+		character2 = "$zephyra",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2765,7 +2765,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "kuro",
+		character = "$kuro",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2793,7 +2793,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "kuro",
+		character = "$kuro",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2874,7 +2874,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "hara",
+		character = "$hara",
 		tags = [
 			"dialogue_scene",
 			"blackscreen_transition_common"
@@ -2903,7 +2903,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "hara",
+		character = "$hara",
 		tags = [
 			"dialogue_scene",
 			"blackscreen_transition_common"

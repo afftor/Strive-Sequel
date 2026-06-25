@@ -497,7 +497,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{
 				text = "AFTER_RITUAL_2",
@@ -550,7 +550,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{
 				text = "AFTER_RITUAL_3",
@@ -611,7 +611,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{
 				text = "AFTER_RITUAL_4",
@@ -684,7 +684,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{
 				text = "AFTER_RITUAL_5_1",
@@ -741,7 +741,7 @@ var data = {
 						check = true
 					}
 				],
-				character = "mae",
+				character = "$mae",
 				text = [
 					{
 						text = "AFTER_RITUAL_GROUP_1",
@@ -821,7 +821,7 @@ var data = {
 						check = false
 					}
 				],
-				character = "mae",
+				character = "$mae",
 				text = [
 					{
 						text = "AFTER_RITUAL_POWDER_1",
@@ -892,7 +892,7 @@ var data = {
 				reqs = [
 
 				],
-				character = "mae",
+				character = "$mae",
 				text = [
 					{
 						text = "AFTER_RITUAL_6",
@@ -958,7 +958,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{
 				text = "AFTER_RITUAL_GROUP_2_1",
@@ -1019,7 +1019,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{
 				text = "AFTER_RITUAL_GROUP_3_1",
@@ -1063,7 +1063,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{
 				text = "AFTER_RITUAL_POWDER_2_1AND2AND4",
@@ -1120,7 +1120,7 @@ var data = {
 						check = true
 					}
 				],
-				character = "mae",
+				character = "$mae",
 				text = [
 					{
 						text = "AFTER_RITUAL_GOOD_1",
@@ -1166,7 +1166,7 @@ var data = {
 						check = true
 					}
 				],
-				character = "mae",
+				character = "$mae",
 				text = [
 					{
 						text = "AFTER_RITUAL_BAD_1_1",
@@ -1237,7 +1237,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{
 				text = "AFTER_RITUAL_GOOD_2_1_1",
@@ -1267,7 +1267,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		character2 = "savra",
 		text = [
 			{
@@ -1371,7 +1371,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{
 				text = "AFTER_RITUAL_GOOD_2_2",

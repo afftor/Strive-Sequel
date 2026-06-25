@@ -2,7 +2,7 @@ extends Reference
 var data = {
 	jean_sylas_next_day_start = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		music = 'jean_theme',
 		tags = [
 			"dialogue_scene"
@@ -34,7 +34,7 @@ var data = {
 	},
 	jean_sylas_next_day_followup = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -74,7 +74,7 @@ var data = {
 	},
 	jean_sylas_origin_full_1 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -96,7 +96,7 @@ var data = {
 	},
 	jean_sylas_origin_full_2 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -118,7 +118,7 @@ var data = {
 	},
 	jean_sylas_origin_short = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -140,7 +140,7 @@ var data = {
 	},
 	jean_sylas_origin_repeat = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -162,7 +162,7 @@ var data = {
 	},
 	jean_sylas_help_prompt = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -193,7 +193,7 @@ var data = {
 	},
 	jean_sylas_help_response = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -236,7 +236,7 @@ var data = {
 	},
 	jean_sylas_guild_options_intro = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -279,7 +279,7 @@ var data = {
 	},
 	jean_sylas_guild_choice_response = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -323,7 +323,7 @@ var data = {
 	},
 	jean_sylas_duncan_help_1 = {
 		image = null,
-		character2 = "jean",
+		character2 = "$jean",
 		character = "duncan",
 		tags = [
 			"dialogue_scene"
@@ -353,7 +353,7 @@ var data = {
 
 		],
 		character = "duncan",
-		character2 = "jean",
+		character2 = "$jean",
 		text = [
 			{
 				text = "JEAN_SYLAS_DUNCAN_HELP_2",
@@ -383,7 +383,7 @@ var data = {
 
 		],
 		character = "myr",
-		character2 = "jean",
+		character2 = "$jean",
 		text = "JEAN_SYLAS_MYR_HELP_1",
 		options = [
 			{
@@ -406,7 +406,7 @@ var data = {
 
 		],
 		character = "myr",
-		character2 = "jean",
+		character2 = "$jean",
 		text = "JEAN_SYLAS_MYR_HELP_2",
 		options = [
 			{
@@ -429,7 +429,7 @@ var data = {
 
 		],
 		character = "myr",
-		character2 = "jean",
+		character2 = "$jean",
 		text = "JEAN_SYLAS_MYR_HELP_DEVICE",
 		options = [
 			{
@@ -461,7 +461,7 @@ var data = {
 
 		],
 		character = "myr",
-		character2 = "jean",
+		character2 = "$jean",
 		text = [
 			{
 				text = "JEAN_SYLAS_MYR_HELP_RESPONSE_THANKS",
@@ -492,7 +492,7 @@ var data = {
 	},
 	jean_sylas_after_guild = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -545,7 +545,7 @@ var data = {
 	},
 	jean_sylas_capital_meet = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		music = 'jean_theme',
 		tags = [
 			"dialogue_scene"
@@ -577,7 +577,7 @@ var data = {
 	},
 	jean_sylas_capital_reply = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -620,7 +620,7 @@ var data = {
 	},
 	jean_sylas_capital_lead = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -705,7 +705,7 @@ var data = {
 	},
 	jean_sylas_arena_intro = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		character2 = "chancellor",
 		music = 'jean_theme',
 		tags = [
@@ -735,7 +735,7 @@ var data = {
 		]
 	},
 	jean_sylas_arena_melchor = {
-		character = "jean",
+		character = "$jean",
 		character2 = "chancellor",
 		tags = [
 			"dialogue_scene"
@@ -814,7 +814,7 @@ var data = {
 	},
 	jean_sylas_arena_reply_dangerous = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		character2 = "chancellor",
 		tags = [
 			"dialogue_scene"
@@ -1122,7 +1122,7 @@ var data = {
 	},
 	jean_sylas_arena_fighter_end = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1154,7 +1154,7 @@ var data = {
 	},
 	jean_sylas_merchants_intro = {
 		image = "jean_trader",
-		character = "jean",
+		character = "$jean",
 		music = 'jean_theme',
 		tags = [
 			"dialogue_scene"
@@ -1177,7 +1177,7 @@ var data = {
 	},
 	jean_sylas_merchants_talk_1 = {
 		image = "jean_trader",
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1199,7 +1199,7 @@ var data = {
 	},
 	jean_sylas_merchants_talk_2 = {
 		image = "jean_trader",
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1221,7 +1221,7 @@ var data = {
 	},
 	jean_sylas_merchants_talk_21 = {
 		image = "jean_trader",
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1243,7 +1243,7 @@ var data = {
 	},
 	jean_sylas_merchants_talk_3 = {
 		image = "jean_trader",
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1305,7 +1305,7 @@ var data = {
 	},
 	jean_sylas_merchants_deal = {
 		image = "jean_trader",
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1345,7 +1345,7 @@ var data = {
 	jean_sylas_carriage_search = {
 		image = null,
 		music = 'jean_theme',
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1367,7 +1367,7 @@ var data = {
 	},
 	jean_sylas_carriage_approach = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1459,7 +1459,7 @@ var data = {
 		]
 	},
 	jean_sylas_carriage_erdyna_1 = {
-		character = "erdyna",
+		character = "$erdyna",
 		music = 'erdyna_theme',
 		tags = [
 			"dialogue_scene"
@@ -1481,7 +1481,7 @@ var data = {
 		]
 	},
 	jean_sylas_carriage_erdyna_2 = {
-		character = "erdyna",
+		character = "$erdyna",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1503,7 +1503,7 @@ var data = {
 	},
 	jean_sylas_carriage_diplomacy = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1543,7 +1543,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "jean",
+		character = "$jean",
 		reqs = [
 
 		],
@@ -1562,7 +1562,7 @@ var data = {
 	},
 	jean_sylas_carriage_intimidate_1 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1584,7 +1584,7 @@ var data = {
 	},
 	jean_sylas_carriage_intimidate_2 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1606,7 +1606,7 @@ var data = {
 	},
 	jean_sylas_carriage_fight_intro = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1665,7 +1665,7 @@ var data = {
 	},
 	jean_sylas_carriage_return_merchant = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene",
 			"blackscreen_transition_common"
@@ -1688,7 +1688,7 @@ var data = {
 	},
 	jean_sylas_carriage_routes = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1838,7 +1838,7 @@ var data = {
 	},
 	jean_sylas_brothel_madam_dismiss_2 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1860,7 +1860,7 @@ var data = {
 	},
 	jean_sylas_brothel_crying = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1978,7 +1978,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = "JEAN_SYLAS_BROTHEL_AMELIA_INTRO",
 		options = [
 			{
@@ -2000,7 +2000,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = "JEAN_SYLAS_BROTHEL_AMELIA_DETAILS",
 		options = [
 			{
@@ -2022,7 +2022,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = "JEAN_SYLAS_BROTHEL_AMELIA_DAREN",
 		options = [
 			{
@@ -2038,7 +2038,7 @@ var data = {
 	},
 	jean_sylas_brothel_plan_intro = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2069,7 +2069,7 @@ var data = {
 	},
 	jean_sylas_client_plan = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2330,7 +2330,7 @@ var data = {
 	},
 	jean_sylas_client_after = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene",
 			"blackscreen_transition_common"
@@ -2362,7 +2362,7 @@ var data = {
 	},
 	jean_sylas_client_after_info = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2393,7 +2393,7 @@ var data = {
 	},
 	jean_sylas_client_after_followup = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2436,7 +2436,7 @@ var data = {
 	},
 	jean_sylas_girl_plan_shock = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2467,7 +2467,7 @@ var data = {
 	},
 	jean_sylas_girl_plan_objection = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2498,7 +2498,7 @@ var data = {
 	},
 	jean_sylas_girl_plan_no_clothes = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2550,7 +2550,7 @@ var data = {
 	},
 	jean_sylas_girl_plan_return = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		music = 'jean_theme',
 		tags = [
 			"dialogue_scene"
@@ -2593,7 +2593,7 @@ var data = {
 	},
 	jean_sylas_girl_plan_gold = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		music = 'jean_theme',
 		tags = [
 			"dialogue_scene"
@@ -2625,7 +2625,7 @@ var data = {
 	},
 	jean_sylas_girl_plan_gold_reply = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2916,7 +2916,7 @@ var data = {
 	},
 	jean_sylas_girl_plan_after_response = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2938,7 +2938,7 @@ var data = {
 	},
 	jean_sylas_ambush_wait = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -3108,7 +3108,7 @@ var data = {
 	},
 	jean_sylas_sylas_win_2 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -3130,7 +3130,7 @@ var data = {
 	},
 	jean_sylas_sylas_win_3 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -3704,7 +3704,7 @@ var data = {
 	jean_sylas_dream_start = {
 		image = null,
 		music = 'jean_theme',
-		character = "jean",
+		character = "$jean",
 		character2 = "myr",
 		tags = [
 			"dialogue_scene",
@@ -3728,7 +3728,7 @@ var data = {
 	},
 	jean_sylas_dream_praise = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		character2 = "myr",
 		tags = [
 			"dialogue_scene"
@@ -3760,7 +3760,7 @@ var data = {
 	},
 	jean_sylas_dream_reply = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -3807,7 +3807,7 @@ var data = {
 	},
 	jean_sylas_dream_break_response = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -3904,7 +3904,7 @@ var data = {
 	},
 	jean_sylas_sphere_choice = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -3982,7 +3982,7 @@ var data = {
 	},
 	jean_sylas_sphere_church = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		music = 'jean_theme',
 		tags = [
 			"dialogue_scene"
@@ -4038,7 +4038,7 @@ var data = {
 	},
 	jean_sylas_sphere_research = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -4086,7 +4086,7 @@ var data = {
 	},
 	jean_sylas_sphere_research_alive = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -4117,7 +4117,7 @@ var data = {
 	},
 	jean_sylas_sphere_destroy_dead = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -4159,7 +4159,7 @@ var data = {
 	},
 	jean_sylas_church_event_1 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -4181,7 +4181,7 @@ var data = {
 	},
 	jean_sylas_church_event_2 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -4203,7 +4203,7 @@ var data = {
 	},
 	jean_sylas_church_event_3 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -4294,7 +4294,7 @@ var data = {
 	},
 	jean_sylas_keep_sphere_1 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		character2 = "myr",
 		tags = [
 			"dialogue_scene"
@@ -4317,7 +4317,7 @@ var data = {
 	},
 	jean_sylas_keep_sphere_2 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		character2 = "myr",
 		tags = [
 			"dialogue_scene"
@@ -4340,7 +4340,7 @@ var data = {
 	},
 	jean_sylas_keep_sphere_3 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		character2 = "myr",
 		tags = [
 			"dialogue_scene"
@@ -4363,7 +4363,7 @@ var data = {
 	},
 	jean_sylas_keep_sphere_31 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		character2 = "myr",
 		tags = [
 			"dialogue_scene"
@@ -4386,7 +4386,7 @@ var data = {
 	},
 	jean_sylas_keep_sphere_4 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -4408,7 +4408,7 @@ var data = {
 	},
 	jean_sylas_keep_sphere_5 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -4430,7 +4430,7 @@ var data = {
 	},
 	jean_sylas_keep_sphere_51 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -4452,7 +4452,7 @@ var data = {
 	},
 	jean_sylas_keep_sphere_52 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -4480,7 +4480,7 @@ var data = {
 	},
 	jean_sylas_destroy_epilogue_1 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -4502,7 +4502,7 @@ var data = {
 	},
 	jean_sylas_destroy_epilogue_2 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -4524,7 +4524,7 @@ var data = {
 	},
 	jean_sylas_destroy_epilogue_3 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -4546,7 +4546,7 @@ var data = {
 	},
 	jean_sylas_destroy_epilogue_4 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],

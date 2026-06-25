@@ -30,7 +30,7 @@ var data = {
 				]
 			}
 		],
-		character = "heleviel"
+		character = "$heleviel"
 	},
 	heleviel_mansion_2 = {
 		reqs = [
@@ -52,7 +52,7 @@ var data = {
 				dialogue_argument = 1
 			}
 		],
-		character = "heleviel"
+		character = "$heleviel"
 	},
 	heleviel_mansion_3 = {
 		reqs = [
@@ -245,7 +245,7 @@ var data = {
 	
 	heleviel_snowset_start = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		character = 'heleviel',
+		character = '$heleviel',
 		unlocked_char_sprites = {heleviel = ["christmass"]},
 		reqs = [],
 		text = [ {text = "HELEVIEL_SNOWSET_EVENT_1", reqs = []} ],
@@ -256,7 +256,7 @@ var data = {
 
 	heleviel_snowset_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		character = 'heleviel',
+		character = '$heleviel',
 		character2 = 'sigmund',
 		reqs = [],
 		text = [ {text = "HELEVIEL_SNOWSET_EVENT_2", reqs = []} ],
@@ -267,7 +267,7 @@ var data = {
 
 	heleviel_snowset_3 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		character = 'heleviel',
+		character = '$heleviel',
 		character2 = 'sigmund',
 		reqs = [],
 		text = [ {text = "HELEVIEL_SNOWSET_EVENT_3", reqs = []} ],

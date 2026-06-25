@@ -9,7 +9,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		text = [
 			{
 				text = "ZEPHYRA_QUEST_1",
@@ -54,7 +54,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		text = [
 			{
 				text = "ZEPHYRA_QUEST_2",
@@ -84,7 +84,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		character2 = "ginny",
 		custom_background = "church_event",
 		text = [
@@ -115,7 +115,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		character2 = "ginny",
 		custom_background = "church_event",
 		text = [
@@ -156,7 +156,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		character2 = "ginny",
 		custom_background = "church_event",
 		text = [
@@ -196,7 +196,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		custom_background = "church_event",
 		text = [
 			{
@@ -226,7 +226,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		custom_background = "church_event",
 		text = [
 			{
@@ -289,7 +289,7 @@ var data = {
 						]
 					}
 				],
-				character = "zephyra",
+				character = "$zephyra",
 				custom_background = "church_event",
 				text = [
 					{
@@ -371,7 +371,7 @@ var data = {
 				reqs = [
 
 				],
-				character = "zephyra",
+				character = "$zephyra",
 				custom_background = "church_event",
 				text = [
 					{
@@ -455,7 +455,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		character2 = "$daisy",
 		custom_background = "church_event",
 		text = [
@@ -487,7 +487,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		character2 = "$daisy",
 		custom_background = "church_event",
 		text = [
@@ -538,7 +538,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		custom_background = "church_event",
 		text = [
 			{
@@ -569,7 +569,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		custom_background = "church_event",
 		text = [
 			{
@@ -608,7 +608,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		custom_background = "church_event",
 		text = [
 			{
@@ -646,7 +646,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		custom_background = "church_event",
 		text = [
 			{
@@ -676,7 +676,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		custom_background = "church_event",
 		text = [
 			{
@@ -706,7 +706,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		custom_background = "church_event",
 		text = [
 			{
@@ -737,7 +737,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		custom_background = "church_event",
 		text = [
 			{
@@ -777,7 +777,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		custom_background = "church_event",
 		text = [
 			{
@@ -833,7 +833,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		custom_background = "church_event",
 		text = [
 			{
@@ -892,7 +892,7 @@ var data = {
 						value = 1
 					}
 				],
-				character = "zephyra",
+				character = "$zephyra",
 				character2 = "ginny",
 				custom_background = "church_event",
 				text = [
@@ -945,7 +945,7 @@ var data = {
 				reqs = [
 
 				],
-				character = "zephyra",
+				character = "$zephyra",
 				character2 = "ginny",
 				custom_background = "church_event",
 				text = [
@@ -1203,7 +1203,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		text = [
 			{
 				text = "ZEPHYRA_BATH_6",
@@ -1308,8 +1308,8 @@ var data = {
 				negative = "repeat_next_day"
 			}
 		],
-		character = "zephyra",
-		character2 = "lilia",
+		character = "$zephyra",
+		character2 = "$lilia",
 		text = [
 			{
 				text = "ZEPHYRA_LILIA_1",
@@ -1352,8 +1352,8 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
-		character2 = "lilia",
+		character = "$zephyra",
+		character2 = "$lilia",
 		text = [
 			{
 				text = "ZEPHYRA_LILIA_2",
@@ -1383,8 +1383,8 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
-		character2 = "lilia",
+		character = "$zephyra",
+		character2 = "$lilia",
 		text = [
 			{
 				text = "ZEPHYRA_LILIA_3",
@@ -1435,8 +1435,8 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
-		character2 = "lilia",
+		character = "$zephyra",
+		character2 = "$lilia",
 		text = [
 			{
 				text = "ZEPHYRA_LILIA_4_1",
@@ -1476,8 +1476,8 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
-		character2 = "lilia",
+		character = "$zephyra",
+		character2 = "$lilia",
 		text = [
 			{
 				text = "ZEPHYRA_LILIA_4_2",
@@ -1510,8 +1510,8 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
-		character2 = "lilia",
+		character = "$zephyra",
+		character2 = "$lilia",
 		text = [
 			{
 				text = "ZEPHYRA_LILIA_4_3",
@@ -1545,8 +1545,8 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
-		character2 = "lilia",
+		character = "$zephyra",
+		character2 = "$lilia",
 		text = [
 			{
 				text = "ZEPHYRA_LILIA_5",

@@ -2,7 +2,7 @@ extends Reference
 var data = {
 	cali_sidequest_1 = {
 		image = null, music = "cali_theme", tags = ['dialogue_scene', 'master_translate'], 
-		reqs = [{type = 'unique_character_checks', name = 'cali', value = [{code = 'true'}], negative = 'repeat_next_day'}], character = "cali",
+		reqs = [{type = 'unique_character_checks', name = 'cali', value = [{code = 'true'}], negative = 'repeat_next_day'}], character = "$cali",
 		text = [ {text = "CALI_SIDEQUEST_1", reqs = []} ], 
 		options = [ {
 			code = 'cali_sidequest_2', text = "CALI_SIDEQUEST_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -14,7 +14,7 @@ var data = {
 	},
 	
 	cali_sidequest_2 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = "cali",
+		image = null, tags = ['dialogue_scene'], reqs = [], character = "$cali",
 		text = [ {text = "CALI_SIDEQUEST_1_1", reqs = [], previous_dialogue_option = 1},
 			{text = "CALI_SIDEQUEST_1_2", reqs = [], previous_dialogue_option = 2},
 			{text = "CALI_SIDEQUEST_1_3", reqs = [], previous_dialogue_option = 3}, 
@@ -31,7 +31,7 @@ var data = {
 	}, 
 	
 	cali_sidequest_2_1 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = "cali",
+		image = null, tags = ['dialogue_scene'], reqs = [], character = "$cali",
 		text = [ {text = "CALI_SIDEQUEST_2_2", reqs = [], previous_dialogue_option = 2},
 			{text = "CALI_SIDEQUEST_2_3", reqs = [], previous_dialogue_option = 3}, 
 			{text = "CALI_SIDEQUEST_2_4", reqs = [], previous_dialogue_option = 4}, ], 
@@ -47,7 +47,7 @@ var data = {
 	},
 	
 	cali_sidequest_3 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = "cali",
+		image = null, tags = ['dialogue_scene'], reqs = [], character = "$cali",
 		text = [ {text = "CALI_SIDEQUEST_3_1", reqs = []} ],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -56,7 +56,7 @@ var data = {
 	}, 
 	
 	cali_fighters_1 = {
-		image = null, music = "cali_theme", tags = ['dialogue_scene', 'master_translate'], reqs = [], character = "cali",
+		image = null, music = "cali_theme", tags = ['dialogue_scene', 'master_translate'], reqs = [], character = "$cali",
 		text = [ {text = "CALI_FIGHTERS_1", reqs = []} ],
 		options = [ {
 			code = 'cali_fighters_2', text = "CALI_FIGHTERS_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', master_translate = true
@@ -82,7 +82,7 @@ var data = {
 	}, 
 	
 	cali_fighters_2 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = "cali",
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = "$cali",
 		text = [ {text = "CALI_FIGHTERS_2_1AND3", reqs = [], previous_dialogue_option = [1,3]},
 		{text = "CALI_FIGHTERS_2_2", reqs = [], previous_dialogue_option = 2},
 		{text = "CALI_FIGHTERS_2_ADDITIONAL", reqs = []} ],
@@ -92,7 +92,7 @@ var data = {
 	}, 
 	
 	cali_fighters_3 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = "cali",
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = "$cali",
 		text = [ {text = "CALI_FIGHTERS_3", reqs = []} ],
 		options = [ {
 			code = 'cali_fighters_4', text = "CALI_FIGHTERS_3_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -102,7 +102,7 @@ var data = {
 	}, 
 	
 	cali_fighters_4 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = "cali",
+		image = null, tags = ['dialogue_scene'], reqs = [], character = "$cali",
 		text = [ {text = "CALI_FIGHTERS_4", reqs = []} ],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -122,7 +122,7 @@ var data = {
 			} ]
 		}, {
 			image = null, music = "cali_theme", tags = ['dialogue_scene', 'master_translate'], reqs = [{type = "location_has_specific_slaves", check = true, location = 'quest_cali_goblins_location', reqs = [
-					{code = 'unique', value = 'cali'}]}], character = "cali",
+					{code = 'unique', value = 'cali'}]}], character = "$cali",
 			text = [ {text = "CALI_GOBLINS_1", reqs = []} ],
 			options = [ {
 				code = 'quest_fight', args = 'cali_goblins_first',
@@ -161,7 +161,7 @@ var data = {
 	}, 
 	
 	cali_goblins_5 = {
-		image = null, music = "cali_theme", tags = ['dialogue_scene'], reqs = [], character = "cali",
+		image = null, music = "cali_theme", tags = ['dialogue_scene'], reqs = [], character = "$cali",
 		text = [ {text = "CALI_GOBLINS_5", reqs = []} ],
 		options = [ {
 			code = 'cali_goblins_6', text = "CALI_GOBLINS_5_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -173,7 +173,7 @@ var data = {
 	}, 
 	
 	cali_goblins_6 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = "cali",
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = "$cali",
 		text = [ {text = "CALI_GOBLINS_6_1", reqs = [], previous_dialogue_option = 1},
 		{text = "CALI_GOBLINS_6_2AND3", reqs = [], previous_dialogue_option = [2,3]} ],
 		options = [ {
@@ -182,7 +182,7 @@ var data = {
 	},
 	
 	cali_goblins_7 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = "cali",
+		image = null, tags = ['dialogue_scene'], reqs = [], character = "$cali",
 		text = [ {text = "CALI_GOBLINS_7", reqs = []} ],
 		options = [ {
 			code = 'cali_goblins_8', text = "CALI_GOBLINS_7_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -194,7 +194,7 @@ var data = {
 	}, 
 	
 	cali_goblins_8 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = "cali",
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = "$cali",
 		text = [ {text = "CALI_GOBLINS_8_1", reqs = [], previous_dialogue_option = 1},
 		{text = "CALI_GOBLINS_8_2", reqs = [], previous_dialogue_option = 2}, 
 		{text = "CALI_GOBLINS_8_3", reqs = [], previous_dialogue_option = 3},
@@ -279,7 +279,7 @@ var data = {
 	},
 	
 	cali_sex_4 = {
-		image = null,  music = "cali_theme", tags = ['dialogue_scene', 'master_translate'], reqs = [],character = "cali",
+		image = null,  music = "cali_theme", tags = ['dialogue_scene', 'master_translate'], reqs = [],character = "$cali",
 		text = [ {text = "CALI_SEX_4_1", reqs = [], previous_dialogue_option = 1},
 		{text = "CALI_SEX_4_2", reqs = [], previous_dialogue_option = 2}, 
 		{text = "CALI_SEX_4_ADDITIONAL", reqs = []},],

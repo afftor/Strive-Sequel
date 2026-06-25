@@ -1925,7 +1925,7 @@ var data = {
 		]
 	},
 	amelia_trial_6 = {
-		character = "amelia",
+		character = "$amelia",
 		music = "amelia_theme", 
 		tags = [
 			"dialogue_scene",
@@ -1962,7 +1962,7 @@ var data = {
 		]
 	},
 	amelia_trial_7 = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1998,7 +1998,7 @@ var data = {
 		]
 	},
 	amelia_trial_8 = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2055,7 +2055,7 @@ var data = {
 		]
 	},
 	amelia_trial_9 = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2097,7 +2097,7 @@ var data = {
 		]
 	},
 	amelia_trial_9_ = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2133,7 +2133,7 @@ var data = {
 		]
 	},
 	amelia_trial_10 = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2161,7 +2161,7 @@ var data = {
 		]
 	},
 	amelia_trial_10_ = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2205,7 +2205,7 @@ var data = {
 		]
 	},
 	amelia_trial_11 = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2274,7 +2274,7 @@ var data = {
 		]
 	},
 	amelia_trial_12 = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2302,7 +2302,7 @@ var data = {
 		]
 	},
 	amelia_trial_12_ = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2330,7 +2330,7 @@ var data = {
 		]
 	},
 	amelia_trial_13 = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2358,7 +2358,7 @@ var data = {
 		]
 	},
 	amelia_trial_13_ = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2394,7 +2394,7 @@ var data = {
 		]
 	},
 	amelia_trial_14 = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2444,7 +2444,7 @@ var data = {
 		]
 	},
 	amelia_trial_15 = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2479,7 +2479,7 @@ var data = {
 		]
 	},
 	amelia_trial_15_ = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2507,7 +2507,7 @@ var data = {
 		]
 	},
 	amelia_trial_16 = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2535,7 +2535,7 @@ var data = {
 		]
 	},
 	amelia_trial_16_ = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2596,7 +2596,7 @@ var data = {
 		]
 	},
 	amelia_trial_17 = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2632,7 +2632,7 @@ var data = {
 		]
 	},
 	amelia_trial_18 = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2668,7 +2668,7 @@ var data = {
 		]
 	},
 	amelia_trial_19 = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2697,7 +2697,7 @@ var data = {
 		]
 	},
 	amelia_trial_normal_1 = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2725,7 +2725,7 @@ var data = {
 		]
 	},
 	amelia_trial_normal_1_ = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2753,7 +2753,7 @@ var data = {
 		]
 	},
 	amelia_trial_normal_1__ = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2806,7 +2806,7 @@ var data = {
 		]
 	},
 	amelia_trial_normal_2 = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2835,7 +2835,7 @@ var data = {
 		]
 	},
 	amelia_trial_normal_3 = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2863,7 +2863,7 @@ var data = {
 		]
 	},
 	amelia_trial_normal_3_ = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2892,7 +2892,7 @@ var data = {
 		]
 	},
 	amelia_trial_normal_4 = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2921,7 +2921,7 @@ var data = {
 		]
 	},
 	amelia_trial_normal_5 = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2965,7 +2965,7 @@ var data = {
 		]
 	},
 	amelia_trial_normal_6 = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -3001,7 +3001,7 @@ var data = {
 		]
 	},
 	amelia_trial_normal_7 = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -3029,7 +3029,7 @@ var data = {
 		]
 	},
 	amelia_trial_normal_7_ = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -3057,7 +3057,7 @@ var data = {
 		]
 	},
 	amelia_trial_normal_7__ = {
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -3185,7 +3185,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = [
 			{
 				text = "AMELIA_TRIAL_NORMAL_9_1",
@@ -3227,7 +3227,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = [
 			{
 				text = "AMELIA_TRIAL_NORMAL_9_",
@@ -3255,7 +3255,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = [
 			{
 				text = "AMELIA_TRIAL_NORMAL_10",
@@ -3283,7 +3283,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = [
 			{
 				text = "AMELIA_TRIAL_NORMAL_10_",
@@ -3812,7 +3812,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = [
 			{
 				text = "AMELIA_FINAL_1",
@@ -3868,7 +3868,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = [
 			{
 				text = "AMELIA_FINAL_2_1",
@@ -3927,7 +3927,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = [
 			{
 				text = "AMELIA_FINAL_3_1",
@@ -3981,7 +3981,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = [
 			{
 				text = "AMELIA_FINAL_4_1",
@@ -4040,7 +4040,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = [
 			{
 				text = "AMELIA_FINAL_5_1",
@@ -4098,7 +4098,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = [
 			{
 				text = "AMELIA_FINAL_6",
@@ -4128,7 +4128,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = [
 			{
 				text = "AMELIA_FINAL_7",

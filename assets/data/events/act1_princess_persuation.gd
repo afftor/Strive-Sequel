@@ -22,7 +22,7 @@ var data = {
 		custom_background = "jail",
 		image = null,
 		music = "intimate_dark",
-		character = "anastasia",
+		character = "$anastasia",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_1", reqs = [], previous_dialogue_option = 0},
@@ -54,7 +54,7 @@ var data = {
 	princess_mindbreak_1 = {
 		custom_background = "jail",
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_2", reqs = [], previous_dialogue_option = 1},
@@ -72,7 +72,7 @@ var data = {
 	princess_mindbreak_2 = {
 		custom_background = "jail",
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_3", reqs = [{type = 'decision', value = 'enslave_bracelet', check = true}], previous_dialogue_option = 1},#stub req
@@ -93,7 +93,7 @@ var data = {
 	princess_recriut_early_1 = {
 		custom_background = "jail",
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = ['dialogue_scene'],
 		text = [],#no text here for some reason
 		options = [
@@ -123,7 +123,7 @@ var data = {
 	princess_recriut_early_2 = {
 		custom_background = "jail",
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_6", reqs = [], previous_dialogue_option = 1},
@@ -158,7 +158,7 @@ var data = {
 	princess_recriut_early_3 = {
 		custom_background = "jail",
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_10", reqs = [], previous_dialogue_option = 1},
@@ -185,7 +185,7 @@ var data = {
 	princess_recriut_early_4 = {
 		custom_background = "jail",
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_13", reqs = []},
@@ -210,7 +210,7 @@ var data = {
 	princess_recriut_1st_persuation_1 = {
 		custom_background = "jail",
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_14", reqs = [], bonus_effects = [{code = 'dialogue_counter', name = 'sympathy', op = 0}]},
@@ -253,7 +253,7 @@ var data = {
 	princess_recriut_1st_persuation_marry = {
 		custom_background = "jail",
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_15", reqs = []},
@@ -285,7 +285,7 @@ var data = {
 	princess_recriut_1st_persuation_enslave = {
 		custom_background = "jail",
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_19", reqs = []},
@@ -318,7 +318,7 @@ var data = {
 	princess_recriut_1st_persuation_3 = {
 		custom_background = "jail",
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_16", reqs = [], previous_dialogue_option = 1},
@@ -356,7 +356,7 @@ var data = {
 	princess_recriut_1st_persuation_4 = {
 		custom_background = "jail",
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_23", reqs = [], previous_dialogue_option = 1},
@@ -377,8 +377,8 @@ var data = {
 	princess_recriut_amelia_1 = {
 		custom_background = "jail",
 		image = null,
-		character = "anastasia",
-		character2 = "amelia",
+		character = "$anastasia",
+		character2 = "$amelia",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_27", reqs = []},
@@ -396,8 +396,8 @@ var data = {
 	princess_recriut_amelia_2 = {
 		custom_background = "jail",
 		image = null,
-		character = "anastasia",
-		character2 = "amelia",
+		character = "$anastasia",
+		character2 = "$amelia",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_28", reqs = []},
@@ -415,8 +415,8 @@ var data = {
 	princess_recriut_1st_persuation_7 = {
 		custom_background = "jail",
 		image = null,
-		character = "anastasia",
-		character2 = "amelia",
+		character = "$anastasia",
+		character2 = "$amelia",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_29", reqs = []},
@@ -453,8 +453,8 @@ var data = {
 	princess_recriut_1st_persuation_8 = {
 		custom_background = "jail",
 		image = null,
-		character = "anastasia",
-		character2 = "amelia",
+		character = "$anastasia",
+		character2 = "$amelia",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_30", reqs = []},
@@ -491,8 +491,8 @@ var data = {
 	princess_recriut_1st_persuation_9 = {
 		custom_background = "jail",
 		image = null,
-		character = "anastasia",
-		character2 = "amelia",
+		character = "$anastasia",
+		character2 = "$amelia",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_31", reqs = []},
@@ -518,7 +518,7 @@ var data = {
 	princess_recriut_intermission_1 = {
 		custom_background = "jail",
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_32", reqs = []},
@@ -549,7 +549,7 @@ var data = {
 				],
 				image = null,
 				custom_background = "jail",
-				character = "amelia",
+				character = "$amelia",
 				tags = ['dialogue_scene'],
 				text = [
 					{text = "ANASTASIA_PERSUASION_33", reqs = [], previous_dialogue_option = 1},
@@ -580,7 +580,7 @@ var data = {
 					{type = 'decision', value = 'persuade_1_completed', check = true},
 				],
 				image = null,
-				character = "amelia",
+				character = "$amelia",
 				custom_background = "jail",
 				tags = ['dialogue_scene'],
 				text = [
@@ -604,7 +604,7 @@ var data = {
 					{type = 'decision', value = 'persuade_1_completed', check = false},
 				],
 				image = null,
-				character = "amelia",
+				character = "$amelia",
 				custom_background = "jail",
 				tags = ['dialogue_scene'],
 				text = [
@@ -627,7 +627,7 @@ var data = {
 	},
 	princess_recriut_intermission_3 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		custom_background = "jail",
 		tags = ['dialogue_scene'],
 		text = [
@@ -677,7 +677,7 @@ var data = {
 			{
 				reqs = [{type = 'decision', value = 'persuade_1_completed', check = true}],
 				image = null,
-				character = "anastasia",
+				character = "$anastasia",
 				custom_background = "jail",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
@@ -737,7 +737,7 @@ var data = {
 			{
 				reqs = [{type = 'decision', value = 'persuade_1_completed', check = false}],
 				image = null,
-				character = "anastasia",
+				character = "$anastasia",
 				custom_background = "jail",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
@@ -768,7 +768,7 @@ var data = {
 	},
 	princess_persuation_2_fail = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		custom_background = "jail",
 		tags = ['dialogue_scene'],
 		text = [
@@ -787,8 +787,8 @@ var data = {
 	},
 	princess_persuation_2_aire_1 = {
 		image = null,
-		character = "anastasia",
-		character2 = "aire",
+		character = "$anastasia",
+		character2 = "$aire",
 		custom_background = "jail",
 		tags = ['dialogue_scene'],
 		text = [
@@ -809,8 +809,8 @@ var data = {
 			{
 				reqs = [{type = 'decision', value = 'aire_raped', check = true}],
 				image = null,
-				character = "anastasia",
-				character2 = "aire",
+				character = "$anastasia",
+				character2 = "$aire",
 				custom_background = "jail",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
@@ -833,8 +833,8 @@ var data = {
 			{
 				reqs = [{type = 'decision', value = 'aire_raped', check = false}],
 				image = null,
-				character = "anastasia",
-				character2 = "aire",
+				character = "$anastasia",
+				character2 = "$aire",
 				custom_background = "jail",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
@@ -865,7 +865,7 @@ var data = {
 	},
 	princess_persuation_2_2 = {
 		image = null,
-		character = "anastasia",
+		character = "$anastasia",
 		custom_background = "jail",
 		tags = ['dialogue_scene'],
 		text = [
@@ -901,7 +901,7 @@ var data = {
 		variations = [{
 			reqs = [{type = 'decision', value = 'marry_option', check = true}],
 			image = null,
-			character = "anastasia",
+			character = "$anastasia",
 			custom_background = "jail",
 			tags = ['dialogue_scene'],
 			text = [
@@ -942,7 +942,7 @@ var data = {
 		{
 			reqs = [{type = 'decision', value = 'enslave_option', check = true}],
 			image = null,
-			character = "anastasia",
+			character = "$anastasia",
 			custom_background = "jail",
 			tags = ['dialogue_scene'],
 			text = [
@@ -988,7 +988,7 @@ var data = {
 		variations = [{
 			reqs = [{type = 'decision', value = 'marry_option', check = true}],
 			image = null,
-			character = "anastasia",
+			character = "$anastasia",
 			custom_background = "jail",
 			tags = ['dialogue_scene'],
 			text = [
@@ -1033,7 +1033,7 @@ var data = {
 		{
 			reqs = [{type = 'decision', value = 'enslave_option', check = true}],
 			image = null,
-			character = "anastasia",
+			character = "$anastasia",
 			custom_background = "jail",
 			tags = ['dialogue_scene'],
 			text = [
@@ -1082,7 +1082,7 @@ var data = {
 		variations = [{
 			reqs = [{type = 'decision', value = 'marry_option', check = true}],
 			image = null,
-			character = "anastasia",
+			character = "$anastasia",
 			custom_background = "jail",
 			tags = ['dialogue_scene'],
 			text = [
@@ -1105,7 +1105,7 @@ var data = {
 		{
 			reqs = [{type = 'decision', value = 'enslave_option', check = true}],
 			image = null,
-			character = "anastasia",
+			character = "$anastasia",
 			custom_background = "jail",
 			tags = ['dialogue_scene'],
 			text = [
@@ -1136,7 +1136,7 @@ var data = {
 				reqs = [{type = 'local_counter', name = 'sympathy2', add_stat = 'sexuals_factor', operant = 'gte', value = 11, check = true},
 				{type = 'decision', value = 'marry_option', check = true}],
 				image = null,
-				character = "anastasia",
+				character = "$anastasia",
 				custom_background = "jail",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
@@ -1168,7 +1168,7 @@ var data = {
 					{type = 'local_counter', name = 'sympathy2', add_stat = 'charm_factor', operant = 'gte', value = 8, check = true},
 					{type = 'decision', value = 'enslave_option', check = true}],
 				image = null,
-				character = "anastasia",
+				character = "$anastasia",
 				custom_background = "jail",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
@@ -1198,7 +1198,7 @@ var data = {
 			{
 				reqs = [], #failcase, abusing current variation selection in imm. should be last variation!
 				image = null,
-				character = "anastasia",
+				character = "$anastasia",
 				custom_background = "jail",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
@@ -1221,8 +1221,8 @@ var data = {
 	princess_persuation_2_amelia = {
 		image = null,
 		custom_background = "jail",
-		character = "anastasia",
-		character2 = "amelia",
+		character = "$anastasia",
+		character2 = "$amelia",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_58", reqs = []},
@@ -1240,7 +1240,7 @@ var data = {
 	princess_recriut_finish_1 = {
 		image = null,
 		custom_background = "jail",
-		character = "amelia",
+		character = "$amelia",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_59", reqs = []},
@@ -1272,7 +1272,7 @@ var data = {
 	princess_recriut_finish_2 = {
 		image = null,
 		custom_background = "jail",
-		character = "amelia",
+		character = "$amelia",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_60", reqs = [], previous_dialogue_option = 1},

@@ -13,7 +13,7 @@ var data = {
 	},
 	final_operation_servants_1 = {
 		image = null,
-		character = 'amelia',
+		character = '$amelia',
 		tags = ['master_translate'],
 		text = [
 			{text = "FINAL_OPERATON_SERVANTS_1", reqs = []},

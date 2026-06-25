@@ -17,7 +17,7 @@ var data = {
 	after_election_line2 = {
 		image = null,
 		character = "sigmund",
-		character2 = "amelia",
+		character2 = "$amelia",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "ALIRONELECTIONSFINISH_LINE2", reqs = []}
@@ -55,7 +55,7 @@ var data = {
 	
 	after_election_line5 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "ALIRONELECTIONSFINISH_LINE5", reqs = []}
@@ -71,7 +71,7 @@ var data = {
 	
 	after_election_answer1 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "ALIRONELECTIONSFINISH_ANSWER1", reqs = []}
@@ -85,7 +85,7 @@ var data = {
 	
 	after_election_answer2 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "ALIRONELECTIONSFINISH_ANSWER2", reqs = []}
@@ -100,7 +100,7 @@ var data = {
 	
 	after_election_answer3 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "ALIRONELECTIONSFINISH_ANSWER3", reqs = []}
@@ -112,7 +112,7 @@ var data = {
 	
 	after_election_answer4 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "ALIRONELECTIONSFINISH_ANSWER4", reqs = []}
@@ -124,7 +124,7 @@ var data = {
 	
 	after_election_answer5 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "ALIRONELECTIONSFINISH_ANSWER5", reqs = []}

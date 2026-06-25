@@ -67,7 +67,7 @@ var data = {
 		tags = ["dialogue_scene", 'master_translate'],
 		music = "amelia_theme", 
 		reqs = [],
-		character = "amelia",
+		character = "$amelia",
 		text = [{text = "AMELIA_BONUS", reqs = [], bonus_effects = []},],
 		options = [
 			{code = "servants_introduction", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue", previous_dialogue_option = 10},

@@ -143,7 +143,7 @@ var data = {
 
 	lich_enc_initiate = {
 		image = null,
-		character = 'aire',
+		character = '$aire',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = tr("LICHENCINITIATE"), reqs = []}
@@ -287,7 +287,7 @@ var data = {
 		variations = [
 		{reqs = [{type = 'decision', value = 'aire_is_dead', check = false}],
 		image = null,
-		character = 'aire',
+		character = '$aire',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "LICHENCWINAIRE", reqs = [],
@@ -317,7 +317,7 @@ var data = {
 
 	lich_aire_talk1 = {
 		image = null,
-		character = 'aire',
+		character = '$aire',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "LICHAIRETALK1", reqs = [{type = 'decision', value = 'deal_with_lich', check = false}]},
@@ -334,7 +334,7 @@ var data = {
 
 	lich_aire_talk2 = {
 		image = null,
-		character = 'aire',
+		character = '$aire',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "LICHAIRETALK2", reqs = []},
@@ -350,7 +350,7 @@ var data = {
 		image = null,
 		unlocked_gallery_seq = "lich_aire_talkk",
 		save_scene_to_gallery = true,
-		character = 'aire',
+		character = '$aire',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "LICHAIRETALK3", reqs = []},
@@ -371,7 +371,7 @@ var data = {
 #		scene_type = "ero_scene",
 #		save_scene_to_gallery = true,
 		image = null,
-		character = 'aire',
+		character = '$aire',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "LICHAIRETALK4", reqs = []},
@@ -386,7 +386,7 @@ var data = {
 		},
 		{reqs = [],
 		image = null,
-		character = 'aire',
+		character = '$aire',
 		tags  = ['dialogue_scene'],
 		text = [
 		{text = "LICHAIRETALK4_BAD", reqs = []},
@@ -401,7 +401,7 @@ var data = {
 
 	lich_aire_talk4_1 = {
 		image = null,
-		character = 'aire',
+		character = '$aire',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "LICHAIRETALK4_1", reqs = []},
@@ -413,7 +413,7 @@ var data = {
 
 	lich_aire_talk4_2 = {
 		image = null,
-		character = 'aire',
+		character = '$aire',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "LICHAIRETALK4_2", reqs = []},
@@ -459,7 +459,7 @@ var data = {
 		image = null,
 		unlocked_gallery_seq = "lich_aire_talk",
 		save_scene_to_gallery = true,
-		character = 'aire',
+		character = '$aire',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "LICHAIRETALK5", reqs = []},
@@ -473,7 +473,7 @@ var data = {
 
 	lich_aire_talk6_1 = {
 		image = null,
-		character = 'aire',
+		character = '$aire',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "LICHAIRETALK6_1", reqs = []},

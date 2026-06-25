@@ -605,7 +605,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "cali",
+		character = "$cali",
 		text = [
 			{
 				text = "CALI_SERVANTS_NEW_LEADER_1",
@@ -645,7 +645,7 @@ var data = {
 		]
 	},
 	cali_servants_new_leader_2 = {
-		character = "cali",
+		character = "$cali",
 		image = null,
 		tags = [
 			"dialogue_scene"
@@ -674,7 +674,7 @@ var data = {
 		]
 	},
 	cali_servants_new_leader_3 = {
-		character = "cali",
+		character = "$cali",
 		image = null,
 		tags = [
 			"dialogue_scene",
@@ -712,7 +712,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "cali",
+		character = "$cali",
 		common_effects = [
 			{
 				code = "money_change",
@@ -752,7 +752,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "cali",
+		character = "$cali",
 		text = [
 			{
 				text = "CALI_SERVANTS_NEW_LEADER_5",
@@ -790,7 +790,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "cali",
+		character = "$cali",
 		text = "CALI_SERVANTS_NEW_LEADER_END_DIALOGUE",
 		options = [
 			{
@@ -854,8 +854,8 @@ var data = {
 
 		],
 		music = "cali_theme",
-		character = "cali",
-		character2 = "amelia",
+		character = "$cali",
+		character2 = "$amelia",
 		text = [
 			{
 				text = "CALI_SERVANTS_NEW_LEADER_6",
@@ -884,8 +884,8 @@ var data = {
 		reqs = [
 
 		],
-		character = "cali",
-		character2 = "amelia",
+		character = "$cali",
+		character2 = "$amelia",
 		text = [
 			{
 				text = "CALI_SERVANTS_NEW_LEADER_7",
@@ -916,8 +916,8 @@ var data = {
 		reqs = [
 
 		],
-		character = "cali",
-		character2 = "amelia",
+		character = "$cali",
+		character2 = "$amelia",
 		text = [
 			{
 				text = "CALI_SERVANTS_NEW_LEADER_8",
@@ -964,13 +964,31 @@ var data = {
 		reqs = [
 
 		],
-		character = "cali",
-		character2 = "amelia",
+		character = "$cali",
+		character2 = "$amelia",
 		text = [
 			{
 				text = "CALI_SERVANTS_NEW_LEADER_9",
 				reqs = [
 
+				]
+			}
+		],
+		common_effects = [
+			{
+				code = "unique_character_changes",
+				value = "cali",
+				args = [
+					{
+						code = "charm",
+						operant = "+",
+						value = 10
+					},
+					{
+						code = "charm_factor",
+						operant = "+",
+						value = 1
+					}
 				]
 			}
 		],
@@ -981,25 +999,7 @@ var data = {
 				reqs = [
 
 				],
-				dialogue_argument = 1,
-				bonus_effects = [
-					{
-						code = "unique_character_changes",
-						value = "cali",
-						args = [
-							{
-								code = "charm",
-								operant = "+",
-								value = 10
-							},
-							{
-								code = "charm_factor",
-								operant = "+",
-								value = 1
-							}
-						]
-					}
-				]
+				dialogue_argument = 1
 			}
 		]
 	},

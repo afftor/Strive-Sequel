@@ -2584,9 +2584,9 @@ You won't be able to finish turn if your total number of characters is bigger th
 	STATWITSDESCRIPT = "{color=yellow|Wits} represent character's quickness of mind and intelligence. High Wits is mandatory for stronger Mage classes and crafters. Grows with some crafting labors and by using Spell type abilities in combat.",
 	STATCHARMDESCRIPT = "{color=yellow|Charm} represents character's appeal and appearance. High Charm makes social oriented works and skills a lot more effective. Grows from using social abilities.",
 	STATSEXUALSDESCRIPT = "{color=yellow|Sexual} proficiency represents character's skills in body pleasures. It is calculated by sum of 3 highest sexual skills and affects certain tasks and abilities.",
-	STATGROWTH_FACTOR = "Growth",
+	STATGROWTH_FACTOR = "Growth Factor",
 	STATGROWTH_FACTOR_FULLNAME = "Growth Factor",
-	STATMAGIC_FACTOR = "Magic Affinity",
+	STATMAGIC_FACTOR = "Magic Factor",
 	STATPHYSICS_FACTOR = "Physics Factor",
 	STATWITS_FACTOR = "Wits Factor",
 	STATCHARM_FACTOR = "Charm Factor",
@@ -2651,6 +2651,15 @@ Damage +15%, Health +20.""",
 	STATAFFECTIONDESCRIPT = "Affection represents how positively or negatively this character feels about you.",
 	STATRESPECT = "Respect",
 	STATRESPECTDESCRIPT = "Respect represents how highly or poorly this character regards you.",
+	EVENT_EFFECT_INCREASED = "%s increased",
+	EVENT_EFFECT_DECREASED = "%s decreased",
+	EVENT_EFFECT_VALUE = "%s %s",
+	EVENT_EFFECT_SET = "%s set to %s",
+	EVENT_EFFECT_CHARACTER = "%s: %s",
+	EVENT_EFFECT_REPUTATION = "%s Reputation",
+	EVENT_EFFECT_RELATIONSHIP = "%s and %s: Relationship %s",
+	EVENT_EFFECT_TRAIT_GAINED = "%s Trait gained",
+	EVENT_EFFECT_TRAIT_LOST = "%s Trait lost",
 	STATRESISTANCE = "Resistance",
 	STATRESISTANCEDESCRIPT = "Resistance DESCRIPT PLACEHOLDER.",
 	STATSUBMISSION = "Submission",
@@ -4598,7 +4607,7 @@ All damage dealt is reduced by 15%%, additional shock has a chance to stun.""",
 	EFFECTNAME_FIREARROWS = "enchanted arrows",
 	EFFECTNAME_VEIL = "veil",
 	EFFECTNAME_EARTH_SHIELD = "earth shield",
-	EFFECTNAME_IMPALE = "inpale",
+	EFFECTNAME_IMPALE = "Impale",
 	EFFECTNAME_SPELL_MASTERY = "spell mastery",
 	EFFECTNAME_THORNS = "thorns",
 	EFFECTNAME_VAMPIRISM = "vampirism",
@@ -9521,9 +9530,7 @@ Fred's room is rather small and unclean with thin walls letting you hear the nei
 After asking around with the other residents, you decide it's the most likely place to find him.""",
 	VISITFREDSHOME_IF_BRIBE = """You return to Fred's room. After a few minutes of searching you discover the hidden stash, proving Fred didn't lie to you. The sum makes you wonder how quickly Fred would be burgled by his neighbors if they knew about it.
 
-After securing the money you leave the dormitory.
-
-{color=green|Earned 500 Gold}""",
+After securing the money you leave the dormitory.""",
 	FINDFRED1 = """You find the rendezvous point from the letter in Fred's room easily enough. It's marked by a large oak tree standing just off of a muddy farm road. No Fred here, but there are many presumably human footprints left in the soft earth and signs that someone was dragged away into a copse of trees a short distance away.
 
 The men didn't make any effort to hide their tracks and you soon find a cave's mouth on the side of a rocky outcrop hidden in the trees.
@@ -10162,9 +10169,7 @@ You take the foreman's reward and head back to Aliron.""",
 	AFTER_MINES_WORKERS_OPTION_1 = "I've solved the issue with the mines.",
 	AFTER_MINES_SIGMUND_START = """{color=yellow|— That's great news. I've already made da preparations so we will resume da work as soon as possible. Ya've earned yar reward.}
 
-Sigmund passes you the pouch with some gold in it.
-
-{color=green|Received 300 gold}""",
+Sigmund passes you the pouch with some gold in it.""",
 	AFTER_MINES_SIGMUND_OPTION_1 = "Thanks, if there's nothing else I'll be going.",
 	AFTER_MINES_SIGMUND_OPTION_2 = "There was somebody unusual among the rebels.",
 	AFTER_MINES_SIGMUND_1 = "{color=yellow|— Go on, I think Duncan will be interested to hear dat ya done.}",
@@ -12044,10 +12049,7 @@ Daisy bows to you with all the respect she's able to demonstrate. You make a not
 	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_3_250 = "You pass 250 gold to Alise and arrange Daisy's meeting with the tailor, after which you make your way out.",
 	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_0 = """Daisy stands before you in her new dress, shining with happiness. Her clothes can't be compared to her old rags and she has begun to feel even more dedicated to you.
 
-{color=yellow|— You've really done it, [Master]. I never imagined this dress would be so nice.}
-
-{color=green|Daisy: Growth Factor +1
-Daisy: Coward Trait Lost}""",
+{color=yellow|— You've really done it, [Master]. I never imagined this dress would be so nice.}""",
 	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_1 = "I'm glad you like it.",
 	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2 = "[Sexuals Factor] I think you should express your gratitude in a way that fits your position.",
 	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_3 = "It's not for you, I can't have you walking around my mansion in rags.",
@@ -12091,10 +12093,7 @@ Your orgasm arrives like a steam train, spraying thick strings of cum over Daisy
 You buckle your pants and look down at her cum-smeared face, her eyes still gazing obediently up at you. You order her to clean herself up and give her an hour of free time as a reward.""",
 	DAISY_DRESS_ACQUIRED_LEWD_REPLY_0 = """Daisy stands before you in her new dress. While appearing normal at a glance, both of you know her dress is not as simple as it appears. Daisy nervously tries to avoid eye contact, but you can easily see her blush.
 
-{color=yellow|— T-thank you for the gift, [Master]. I hope you like my new look.}
-
-{color=green|Daisy:Growth Factor +1
-Daisy:Coward Trait Lost}""",
+{color=yellow|— T-thank you for the gift, [Master]. I hope you like my new look.}""",
 	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_1 = "You look great.",
 	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2 = "Not quite, but we can fix it. *Reveal her body*",
 	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_1 = "Daisy lightly smiles at your words.",
@@ -14447,10 +14446,7 @@ You notice how Cali now looks at Amelia with respect. In the end, encouraged wit
 
 {color=yellow|Amelia: — She's a good girl, you better not betray her trust in you.}
 
-Not waiting for your reply she disappears from sight as nonchalantly as she appeared.
-
-{color=green|Cali: Charm Factor +1
-Cali: Charm +10}""",
+Not waiting for your reply she disappears from sight as nonchalantly as she appeared.""",
 	CALI_SEX_5 = """Near midday, you're engrossed in one form or another in the main hall. Cali trots up to you, the energy in her step identifying her long before she comes into view. Stopping short of you a respectful distance, she looked to you intently awaiting you to acknowledge her. After you look up at her she finally blurts out in an excited tone.
 
 {color=yellow|— [Master]! Hey, [Master] that food cart is back in front of the mansion. Their meat dumplings smell so good! A-and I was wondering if you could buy us some...}
@@ -17665,10 +17661,7 @@ You notice how Cali now looks at Amelia with respect. In the end, encouraged wit
 
 {color=yellow|Amelia: — She's a good girl, you better not betray her trust in you.}
 
-Not waiting for your reply she disappears from sight as nonchalantly as she appeared.
-
-{color=green|Cali: Charm Factor +1
-Cali: Charm +10}""",
+Not waiting for your reply she disappears from sight as nonchalantly as she appeared.""",
 	SERVANTS_NEW_LEADER_CLOSE = "SERVANTSCLOSE2",
 	ZEPHYRA_COSTUME_1_OPTION_1 = "Check elven houses",
 	ZEPHYRA_COSTUME_1_1 = """As you walk through the settlement, you come across an agitated elf woman.

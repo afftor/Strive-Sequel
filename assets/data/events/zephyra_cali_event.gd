@@ -3,8 +3,8 @@ var data = {
 	ZCEvent_1 = {
 		image = null, 
 		music = "zephyra_theme", tags = ['dialogue_scene','master_translate'],
-		character = 'cali',
-		character2 = 'zephyra',
+		character = '$cali',
+		character2 = '$zephyra',
 		reqs = [{type = 'unique_character_at_mansion', name = 'zephyra', check = true, negative = 'repeat_next_day'},
 		{type = 'unique_character_at_mansion', name = 'cali', check = true, negative = 'repeat_next_day'},
 		{type = 'dialogue_seen', check = false, value = 'ZCEVENT_2'}],
@@ -16,8 +16,8 @@ var data = {
 	
 	ZCEvent_2 = {
 		image = null, tags = ['dialogue_scene','master_translate'],
-		character = 'cali',
-		character2 = 'zephyra',
+		character = '$cali',
+		character2 = '$zephyra',
 		reqs = [],
 		text = [ {text = "ZCEVENT_2", reqs = []} ],
 		options = [ {
@@ -29,8 +29,8 @@ var data = {
 	
 	ZCEvent_3 = { # to town
 		image = null, tags = ['dialogue_scene','master_translate', 'blackscreen_transition_common'],
-		character = 'cali',
-		character2 = 'zephyra',
+		character = '$cali',
+		character2 = '$zephyra',
 		reqs = [],
 		text = [ {text = "ZCEVENT_3", reqs = []} ],
 		options = [ {
@@ -40,8 +40,8 @@ var data = {
 	
 	ZCEvent_4 = {
 		image = null, tags = ['dialogue_scene','master_translate'],
-		character = 'cali',
-		character2 = 'zephyra',
+		character = '$cali',
+		character2 = '$zephyra',
 		reqs = [],
 		text = [ {text = "ZCEVENT_4", reqs = []} ],
 		options = [ {
@@ -51,8 +51,8 @@ var data = {
 	
 	ZCEvent_5 = {
 		image = null, tags = ['dialogue_scene','master_translate'],
-		character = 'cali',
-		character2 = 'zephyra',
+		character = '$cali',
+		character2 = '$zephyra',
 		reqs = [],
 		text = [ {text = "ZCEVENT_5", reqs = []} ],
 		options = [ {
@@ -71,8 +71,8 @@ var data = {
 	
 	ZCEvent_7 = {
 		image = null, tags = ['dialogue_scene','master_translate', 'blackscreen_transition_common'],
-		character = 'cali',
-		character2 = 'zephyra',
+		character = '$cali',
+		character2 = '$zephyra',
 		reqs = [],
 		text = [ {text = "ZCEVENT_7", reqs = []} ],
 		options = [ {
@@ -82,8 +82,8 @@ var data = {
 	
 	ZCEvent_8 = {
 		image = null, tags = ['dialogue_scene','master_translate'],
-		character = 'cali',
-		character2 = 'zephyra',
+		character = '$cali',
+		character2 = '$zephyra',
 		reqs = [],
 		text = [ {text = "ZCEVENT_8", reqs = []} ],
 		options = [ {

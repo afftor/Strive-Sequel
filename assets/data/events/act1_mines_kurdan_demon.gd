@@ -77,7 +77,7 @@ var data = {
 				reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'paladin', check = true}]},
 				{type = 'master_check', value = [{code = 'has_profession', profession = 'knight', check = true}], orflag = true},
 				{type = 'decision', value = 'KurdanFollowing', check = true}],
-				image = null, tags = ['dialogue_scene', 'master_translate'], character = "demon_female", character2 = "kurdan",
+				image = null, tags = ['dialogue_scene', 'master_translate'], character = "demon_female", character2 = "$kurdan",
 				text = [{text = "PRE_FINAL_BOSS_PALADIN_KNIGHT", reqs = []}],
 				options = [ {
 				code = 'quest_fight', args = 'demon', type = 'next_dialogue', bonus_effects = [{code = 'decision', value = 'SaveRebels'}, {code = 'decision', value = 'KurdanKnightPaladinRoute'}],
@@ -85,7 +85,7 @@ var data = {
 				} ],
 			}, { #has Kurdan, NOT paladin = fight demon_kurdan
 				reqs = [{type = 'decision', value = 'KurdanFollowing', check = true}],
-				image = null, tags = ['dialogue_scene', 'master_translate'], character = "demon_female", character2 = "kurdan",
+				image = null, tags = ['dialogue_scene', 'master_translate'], character = "demon_female", character2 = "$kurdan",
 				text = [{text = "PRE_FINAL_BOSS_8", reqs = []}],
 				options = [ {
 				code = 'pre_final_boss_5', bonus_effects = [{code = 'decision', value = 'SaveRebels'}], #We didn't kill nor let demon take rebels
@@ -135,7 +135,7 @@ var data = {
 
 	# Kurdan leaves
 	pre_final_boss_4 = {
-		image = null, character = "kurdan", tags = ['dialogue_scene', 'master_translate'],
+		image = null, character = "$kurdan", tags = ['dialogue_scene', 'master_translate'],
 		text = [{text = "PRE_FINAL_BOSS_6", reqs = []}],
 		options = [ {
 			code = 'pre_final_boss_3',
@@ -146,7 +146,7 @@ var data = {
 	pre_final_boss_refuse = {
 		variations = [ {
 				reqs = [{type = 'decision', value = 'KurdanFollowing', check = true}],
-				image = null, tags = ['dialogue_scene', 'master_translate'], character = "demon_female", character2 = "kurdan",
+				image = null, tags = ['dialogue_scene', 'master_translate'], character = "demon_female", character2 = "$kurdan",
 				text = [{text = "PRE_FINAL_BOSS_8", reqs = []}],
 				options = [ {
 				code = 'pre_final_boss_5', bonus_effects = [{code = 'decision', value = 'SaveRebels'}], #We didn't kill nor let demon take rebels
@@ -204,7 +204,7 @@ var data = {
 	},
 
 	demon_kurdan_win_2 = {
-		image = null, character = "kurdan", tags = ['dialogue_scene'],
+		image = null, character = "$kurdan", tags = ['dialogue_scene'],
 		text = [ {text = "PRE_FINAL_BOSS_13", reqs = [{type = 'decision', value = 'KurdanKnightPaladinRoute', check = false}]},
 		 {text = "PRE_FINAL_BOSS_PALADIN_KNIGHT_WIN_KURDAN", reqs = [{type = 'decision', value = 'KurdanKnightPaladinRoute', check = true}]}, ],
 		options = [ {
@@ -221,7 +221,7 @@ var data = {
 	},
 
 	pre_final_boss_6 = {
-		image = null, character = "kurdan", tags = ['dialogue_scene'],
+		image = null, character = "$kurdan", tags = ['dialogue_scene'],
 		text = [ {text = "PRE_FINAL_BOSS_14", reqs = []} ],
 		common_effects = [{code = 'make_story_character', value = 'Kurdan', recruit_from_location = true, send_to_mansion = true}],
 		options = [ {
@@ -231,7 +231,7 @@ var data = {
 	},
 
 	pre_final_boss_7 = {
-		image = null, character = "kurdan", tags = ['dialogue_scene'],
+		image = null, character = "$kurdan", tags = ['dialogue_scene'],
 		text = [ {text = "PRE_FINAL_BOSS_15", reqs = [], previous_dialogue_option = 7},
 		 {text = "PRE_FINAL_BOSS_16", reqs = [], previous_dialogue_option = 8} ],
 		options = [ {

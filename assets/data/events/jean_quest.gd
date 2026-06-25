@@ -2,7 +2,7 @@ extends Reference
 var data = {
 	jean_sidequest_start = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -25,7 +25,7 @@ var data = {
 	},
 	jean_sidequest_start_2 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -47,7 +47,7 @@ var data = {
 	},
 	jean_sidequest_start_3 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -86,7 +86,7 @@ var data = {
 		]
 	},
 	jean_sidequest_response = {
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -163,7 +163,7 @@ var data = {
 	},
 	jean_sidequest_question = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -185,7 +185,7 @@ var data = {
 	},
 	jean_sidequest_accept = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -229,7 +229,7 @@ var data = {
 	},
 	jean_sidequest_capital_start = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		music = 'jean_theme',
 		tags = [
 			"dialogue_scene"
@@ -252,7 +252,7 @@ var data = {
 	},
 	jean_sidequest_capital_library = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -273,7 +273,7 @@ var data = {
 		]
 	},
 	jean_sidequest_capital_guard = {
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -361,7 +361,7 @@ var data = {
 	},
 	jean_sidequest_capital_refuse_1 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -383,7 +383,7 @@ var data = {
 	},
 	jean_sidequest_capital_refuse_2 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -405,7 +405,7 @@ var data = {
 	},
 	jean_sidequest_capital_refuse_3 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -427,7 +427,7 @@ var data = {
 	},
 	jean_sidequest_capital_refuse_4 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -449,7 +449,7 @@ var data = {
 	},
 	jean_sidequest_capital_entry = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -855,7 +855,7 @@ var data = {
 		]
 	},
 	jean_sidequest_mansion_front = {
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -882,7 +882,7 @@ var data = {
 		]
 	},
 	jean_sidequest_mansion_window = {
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -910,7 +910,7 @@ var data = {
 	},
 	jean_sidequest_mansion_enter_1 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -932,7 +932,7 @@ var data = {
 	},
 	jean_sidequest_mansion_enter_2 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -971,7 +971,7 @@ var data = {
 	},
 	jean_sidequest_mansion_golems_start = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		music = 'threat',
 		tags = [
 			"dialogue_scene"
@@ -994,7 +994,7 @@ var data = {
 	},
 	jean_sidequest_mansion_golems_15 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1017,7 +1017,7 @@ var data = {
 	},
 	jean_sidequest_mansion_golems_2 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1040,7 +1040,7 @@ var data = {
 	},
 	jean_sidequest_mansion_window_noise = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1062,7 +1062,7 @@ var data = {
 	},
 	jean_sidequest_mansion_window_noise_2 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1106,7 +1106,7 @@ var data = {
 	},
 	jean_sidequest_mansion_wait_fight = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1545,7 +1545,7 @@ var data = {
 		]
 	},
 	jean_sidequest_underground_book_1 = {
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1566,7 +1566,7 @@ var data = {
 		]
 	},
 	jean_sidequest_underground_book_2 = {
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1587,7 +1587,7 @@ var data = {
 		]
 	},
 	jean_sidequest_underground_shelf = {
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1729,7 +1729,7 @@ var data = {
 		]
 	},
 	jean_sidequest_underground_shelf_jean = {
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1750,7 +1750,7 @@ var data = {
 		]
 	},
 	jean_sidequest_underground_shelf_success = {
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1857,7 +1857,7 @@ var data = {
 	},
 	jean_sidequest_underground_tunnel_2 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1880,7 +1880,7 @@ var data = {
 	},
 	jean_sidequest_underground_tunnel_3 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1902,7 +1902,7 @@ var data = {
 	},
 	jean_sidequest_underground_tunnel_4 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1924,7 +1924,7 @@ var data = {
 	},
 	jean_sidequest_underground_tunnel_5 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1956,7 +1956,7 @@ var data = {
 	},
 	jean_sidequest_underground_leave_1 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1985,7 +1985,7 @@ var data = {
 	},
 	jean_sidequest_underground_leave_2 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2036,7 +2036,7 @@ var data = {
 				type = "next_dialogue"
 			}
 		],
-		character = "jean"
+		character = "$jean"
 	},
 	jean_sidequest_return_librarian = {
 		tags = [
@@ -2117,7 +2117,7 @@ var data = {
 	},
 	jean_sidequest_return_end_1 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2146,7 +2146,7 @@ var data = {
 	},
 	jean_sidequest_return_end_2 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2184,7 +2184,7 @@ var data = {
 	},
 	jean_sidequest_return_thanks = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2236,7 +2236,7 @@ var data = {
 	},
 	jean_sidequest_return_question_1 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2274,7 +2274,7 @@ var data = {
 	},
 	jean_sidequest_return_tease = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2312,7 +2312,7 @@ var data = {
 	},
 	jean_sidequest_return_question_2 = {
 		image = null,
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],

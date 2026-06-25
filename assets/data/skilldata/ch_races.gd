@@ -100,7 +100,7 @@ var skills = {
 		],
 		cost = {},
 		charges = 0,
-		combatcooldown = 4, #i think this is right
+		combatcooldown = 4,
 		cooldown = 0,
 		catalysts = {},
 		target = 'self',

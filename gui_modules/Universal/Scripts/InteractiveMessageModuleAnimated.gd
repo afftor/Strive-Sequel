@@ -15,6 +15,16 @@ var next_dialogue_type = 1
 var dialogue_window_type = 1
 var is_just_started = true
 var saved_music = ""
+var pending_effect_feedback = []
+
+const EFFECT_FEEDBACK_DIRECTION_ONLY_STATS = ["affection", "respect"]
+const EFFECT_FEEDBACK_CHARACTER_CODES = [
+	"real_affect_scene_characters",
+	"affect_one_scene_character",
+	"affect_active_character",
+	"affect_master",
+	"affect_unique_character",
+]
 
 onready var bg_T1 = $BackgroundT1
 onready var bg_T2 = $BackgroundT2
@@ -179,6 +189,7 @@ func open(scene):
 		else:
 			new_background.modulate.a = 1
 	if scene.has("common_effects"):
+		collect_effect_feedback(scene.common_effects, false)
 		globals.common_effects(scene.common_effects, true)
 	clear_character_images()
 	$BackgroundT1/ImagePanel.hide()
@@ -279,6 +290,160 @@ func dialogue_next(code, argument, args = {}):
 	hold_selection = true
 	previous_dialogue_option = argument
 	input_handler.interactive_message_follow(code, '', args)
+
+
+func format_effect_value(value):
+	if typeof(value) == TYPE_REAL and value == int(value):
+		return str(int(value))
+	return str(value)
+
+
+func color_effect_feedback(text, change = 0):
+	var color = variables.hexcolordict.yellow
+	if change > 0:
+		color = variables.hexcolordict.green
+	elif change < 0:
+		color = variables.hexcolordict.red
+	return "[color=%s]%s[/color]" % [color, text]
+
+
+func format_effect_change(label, value, operant = ""):
+	if !(typeof(value) in [TYPE_INT, TYPE_REAL]):
+		return ""
+	var stat_name = tr(globals.get_stat_name(label))
+	var change = value
+	if operant == "-":
+		change = -abs(value)
+	elif operant == "=":
+		return color_effect_feedback(tr("EVENT_EFFECT_SET") % [stat_name, format_effect_value(value)])
+	if change == 0:
+		return ""
+	if label in EFFECT_FEEDBACK_DIRECTION_ONLY_STATS:
+		if change > 0:
+			return color_effect_feedback(tr("EVENT_EFFECT_INCREASED") % stat_name, change)
+		return color_effect_feedback(tr("EVENT_EFFECT_DECREASED") % stat_name, change)
+	var sign_text = "+" if change > 0 else ""
+	return color_effect_feedback(tr("EVENT_EFFECT_VALUE") % [stat_name, sign_text + format_effect_value(change)], change)
+
+
+func add_character_effect_feedback(character, stat, value, operant = ""):
+	if character == null:
+		return
+	var change_text = format_effect_change(stat, value, operant)
+	if change_text == "":
+		return
+	var feedback = tr("EVENT_EFFECT_CHARACTER") % [character.get_short_name(), change_text]
+	input_handler.append_not_duplicate(pending_effect_feedback, feedback)
+
+
+func add_character_trait_feedback(character, trait_code, added):
+	if character == null or !Traitdata.traits.has(trait_code):
+		return
+	var message_key = "EVENT_EFFECT_TRAIT_GAINED" if added else "EVENT_EFFECT_TRAIT_LOST"
+	var trait_text = tr(message_key) % tr(Traitdata.traits[trait_code].name)
+	var feedback = tr("EVENT_EFFECT_CHARACTER") % [character.get_short_name(), color_effect_feedback(trait_text)]
+	input_handler.append_not_duplicate(pending_effect_feedback, feedback)
+
+
+func collect_character_effect_feedback(effect):
+	if effect.has("type") and effect.type in ["add_trait", "remove_trait"] and effect.has("trait"):
+		var added = effect.type == "add_trait"
+		match effect.code:
+			"real_affect_scene_characters":
+				for character in input_handler.scene_characters:
+					add_character_trait_feedback(character, effect.trait, added)
+			"affect_one_scene_character":
+				if effect.has("char_num") and input_handler.scene_characters.size() >= effect.char_num:
+					add_character_trait_feedback(input_handler.scene_characters[effect.char_num - 1], effect.trait, added)
+			"affect_active_character":
+				add_character_trait_feedback(input_handler.active_character, effect.trait, added)
+			"affect_master":
+				add_character_trait_feedback(ResourceScripts.game_party.get_master(), effect.trait, added)
+			"affect_unique_character":
+				if effect.has("name"):
+					add_character_trait_feedback(ResourceScripts.game_party.get_unique_slave(str(effect.name).to_lower()), effect.trait, added)
+		return
+	if !effect.has("stat") or !effect.has("value"):
+		return
+	if effect.has("type") and effect.type != "stat":
+		return
+	var operant = effect.operant if effect.has("operant") else ""
+	match effect.code:
+		"real_affect_scene_characters":
+			for character in input_handler.scene_characters:
+				add_character_effect_feedback(character, effect.stat, effect.value, operant)
+		"affect_one_scene_character":
+			if effect.has("char_num") and input_handler.scene_characters.size() >= effect.char_num:
+				add_character_effect_feedback(input_handler.scene_characters[effect.char_num - 1], effect.stat, effect.value, operant)
+		"affect_active_character":
+			add_character_effect_feedback(input_handler.active_character, effect.stat, effect.value, operant)
+		"affect_master":
+			add_character_effect_feedback(ResourceScripts.game_party.get_master(), effect.stat, effect.value, operant)
+		"affect_unique_character":
+			if effect.has("name"):
+				add_character_effect_feedback(ResourceScripts.game_party.get_unique_slave(str(effect.name).to_lower()), effect.stat, effect.value, operant)
+
+
+func collect_effect_feedback(effects, clear_existing = true):
+	if clear_existing:
+		pending_effect_feedback.clear()
+	for effect in effects:
+		if !effect.has("code"):
+			continue
+		if effect.code in EFFECT_FEEDBACK_CHARACTER_CODES:
+			collect_character_effect_feedback(effect)
+		elif effect.code == "unique_character_changes" and effect.has("args"):
+			var character
+			if effect.value == "master":
+				character = ResourceScripts.game_party.get_master()
+			else:
+				character = ResourceScripts.game_party.get_unique_slave(str(effect.value).to_lower())
+			for change in effect.args:
+				if character != null and change.has("reqs") and !character.checkreqs(change.reqs):
+					continue
+				if change.has("code") and change.code == "add_trait" and change.has("trait"):
+					add_character_trait_feedback(character, change.trait, true)
+				elif change.has("code") and change.has("value") and statdata.statdata.has(change.code):
+					add_character_effect_feedback(character, change.code, change.value, change.operant if change.has("operant") else "")
+		elif effect.code == "money_change" and effect.has("value"):
+			var feedback = format_effect_change("money", effect.value, effect.operant if effect.has("operant") else "")
+			input_handler.append_not_duplicate(pending_effect_feedback, feedback)
+		elif effect.code == "material_change" and effect.has("material") and effect.has("value") and Items.materiallist.has(effect.material):
+			var material_name = tr(Items.materiallist[effect.material].name)
+			var change = effect.value
+			if effect.has("operant") and effect.operant == "-":
+				change = -abs(effect.value)
+			var sign_text = "+" if change > 0 else ""
+			var feedback = color_effect_feedback(tr("EVENT_EFFECT_VALUE") % [material_name, sign_text + format_effect_value(change)], change)
+			input_handler.append_not_duplicate(pending_effect_feedback, feedback)
+		elif effect.code == "reputation" and effect.has("name") and effect.has("value"):
+			var faction = ResourceScripts.world_gen.get_faction_from_code(effect.name)
+			var reputation_name = tr("EVENT_EFFECT_REPUTATION") % tr(faction.name)
+			var change = effect.value
+			if effect.has("operant") and effect.operant == "-":
+				change = -abs(effect.value)
+			var sign_text = "+" if change > 0 else ""
+			var feedback = color_effect_feedback(tr("EVENT_EFFECT_VALUE") % [reputation_name, sign_text + format_effect_value(change)], change)
+			input_handler.append_not_duplicate(pending_effect_feedback, feedback)
+		elif effect.code == "change_relationship_precise" and effect.has("value") and input_handler.scene_characters.size() == 2:
+			if typeof(effect.value) in [TYPE_INT, TYPE_REAL] and effect.value != 0:
+				var sign_text = "+" if effect.value > 0 else ""
+				var feedback = color_effect_feedback(tr("EVENT_EFFECT_RELATIONSHIP") % [
+					input_handler.scene_characters[0].get_short_name(),
+					input_handler.scene_characters[1].get_short_name(),
+					sign_text + format_effect_value(effect.value),
+				], effect.value)
+				input_handler.append_not_duplicate(pending_effect_feedback, feedback)
+
+
+func show_pending_effect_feedback():
+	var feedback_lines = []
+	for feedback in pending_effect_feedback:
+		if feedback != "":
+			feedback_lines.append(feedback)
+	if !feedback_lines.empty():
+		cur_text_label.bbcode_text += "\n\n" + PoolStringArray(feedback_lines).join("\n")
+	pending_effect_feedback.clear()
 
 
 func chest_mimic_force_open():
@@ -696,6 +861,7 @@ func event_person_selected(person):
 
 func close(args = {}):
 	hold_selection = true
+	pending_effect_feedback.clear()
 	if !args.has('transition'):
 		args.transition = false 
 	if !args.has('finish_scene'):
@@ -1031,12 +1197,10 @@ func handle_characters_sprites(scene):
 				if scene_char == 'spouse':
 					scene_char = get_spouse_sprite()
 			var unique_person = get_unique_character_from_sprite_code(scene_char)
+			if unique_person == null and scene_char != null and scene_char.begins_with("$"):
+				scene_char = scene_char.trim_prefix("$")
 			if unique_person != null:
 				ch1 = apply_unique_character_sprite($CharacterImage, unique_person)
-				ch1_shade = false
-			elif scene_char != null and scene_char.begins_with("$"):
-				$CharacterImage.hide()
-				ch1 = null
 				ch1_shade = false
 			elif scene_char != null and ch1 != scene_char:
 				# test if it's a different char and not just a variation
@@ -1077,12 +1241,10 @@ func handle_characters_sprites(scene):
 				if scene_char == 'spouse':
 					scene_char = get_spouse_sprite()
 			var unique_person2 = get_unique_character_from_sprite_code(scene_char)
+			if unique_person2 == null and scene_char != null and scene_char.begins_with("$"):
+				scene_char = scene_char.trim_prefix("$")
 			if unique_person2 != null:
 				ch2 = apply_unique_character_sprite($CharacterImage2, unique_person2)
-				ch2_shade = false
-			elif scene_char != null and scene_char.begins_with("$"):
-				$CharacterImage2.hide()
-				ch2 = null
 				ch2_shade = false
 			elif scene_char != null and ch2 != scene_char:
 				ResourceScripts.core_animations.UnfadeAnimation($CharacterImage2, type_trans_time)
@@ -1241,11 +1403,13 @@ func generate_scene_text(scene):
 		if input_handler.if_translation_key(i.text):
 			ResourceScripts.game_progress.seen_dialogues.append(i.text)
 		if i.has("bonus_effects"):
+			collect_effect_feedback(i.bonus_effects, false)
 			globals.common_effects(i.bonus_effects, true)
 		newtext += tr(i.text)
 	scenetext = newtext
 	scenetext = tr(scenetext)
 	if scene.has('bonus_effects'):
+		collect_effect_feedback(scene.bonus_effects, false)
 		globals.common_effects(scene.bonus_effects, true)
 
 	if scenetext.find("[locationname]") >= 0:
@@ -1286,6 +1450,7 @@ func generate_scene_text(scene):
 		cur_text_label.bbcode_text += "\n\n" +  globals.TextEncoder("{color=gray_text_dialogue|"+previous_text+"}") + "\n\n" +  globals.TextEncoder(scenetext)
 	else:
 		cur_text_label.bbcode_text = globals.TextEncoder(scenetext)
+	show_pending_effect_feedback()
 
 
 func set_enemy(scene):
@@ -1423,7 +1588,10 @@ func select_option(number):
 		ResourceScripts.game_progress.selected_dialogues.append(option.text_key)
 	
 	if option.has('bonus_effects'):
+		collect_effect_feedback(option.bonus_effects)
 		globals.common_effects(option.bonus_effects, true)
+	else:
+		pending_effect_feedback.clear()
 	
 	if option.has('select_person'):
 		select_person_for_next_event(option)

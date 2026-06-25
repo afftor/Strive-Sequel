@@ -181,7 +181,7 @@ var data = {
 					{type = 'decision', value = 'aire_is_dead', check = false},
 				],
 				image = null,
-				character = "amelia",
+				character = "$amelia",
 				tags = [],
 				text = [{text = "SEARCH_SERVANTS_1", reqs = []}],
 				options = [
@@ -196,7 +196,7 @@ var data = {
 			{
 				reqs = [],
 				image = null,
-				character = "amelia",
+				character = "$amelia",
 				tags = [],
 				text = [{text = "SEARCH_SERVANTS_2", reqs = []}],
 				options = [
@@ -232,7 +232,7 @@ var data = {
 	princess_search_dungeon_2 = {
 		custom_background = "jail",
 		image = null,
-		character = 'amelia',
+		character = '$amelia',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "SEARCH_DUNGEON_2_1", reqs = [{type = 'decision', value = 'search_advice_2', check = true}]},
@@ -260,7 +260,7 @@ var data = {
 				reqs = [{type = 'decision', value = 'aire_raped', check = true}],
 				custom_background = "jail",
 				image = null,
-				character = "aire",
+				character = "$aire",
 				tags = ['dialogue_scene'],
 				text = [{text = "SEARCH_DUNGEON_3_1", reqs = []}],
 				options = [
@@ -288,7 +288,7 @@ var data = {
 				reqs = [{type = 'decision', value = 'aire_raped', check = false}],
 				image = null,
 				custom_background = "jail",
-				character = "aire",
+				character = "$aire",
 				tags = ['dialogue_scene'],
 				text = [{text = "SEARCH_DUNGEON_3_2", reqs = [], bonus_effects = [{code = 'dialogue_counter', name = 'sympathy', op = 0}]}],
 				options = [
@@ -313,7 +313,7 @@ var data = {
 		reqs = [],
 		image = null,
 		custom_background = "jail",
-		character = "aire",
+		character = "$aire",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "SEARCH_DUNGEON_4_1", reqs = [], previous_dialogue_option = 1},
@@ -345,7 +345,7 @@ var data = {
 		reqs = [],
 		image = null,
 		custom_background = "jail",
-		character = "aire",
+		character = "$aire",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "SEARCH_DUNGEON_5_1", reqs = [], previous_dialogue_option = 1},
@@ -387,7 +387,7 @@ var data = {
 		reqs = [],
 		image = null,
 		custom_background = "jail",
-		character = "aire",
+		character = "$aire",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "SEARCH_DUNGEON_6_1", reqs = [], previous_dialogue_option = 1},
@@ -430,7 +430,7 @@ var data = {
 		reqs = [],
 		image = null,
 		custom_background = "jail",
-		character = "aire",
+		character = "$aire",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "SEARCH_DUNGEON_7_1", reqs = [], previous_dialogue_option = 1},
@@ -469,7 +469,7 @@ var data = {
 		reqs = [],
 		image = null,
 		custom_background = "jail",
-		character = "aire",
+		character = "$aire",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "SEARCH_DUNGEON_8_1", reqs = [{type = 'decision', value = 'aire_is_saved', check = false}], previous_dialogue_option = 1},
@@ -516,7 +516,7 @@ var data = {
 		reqs = [],
 		image = null,
 		custom_background = "jail",
-		character = "aire",
+		character = "$aire",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "SEARCH_DUNGEON_9", reqs = [], previous_dialogue_option = 1},
@@ -547,7 +547,7 @@ var data = {
 		reqs = [],
 		image = null,
 		custom_background = "jail",
-		character = "aire",
+		character = "$aire",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "SEARCH_DUNGEON_10", reqs = [], previous_dialogue_option = 1},
@@ -571,7 +571,7 @@ var data = {
 		reqs = [],
 		image = null,
 		custom_background = "jail",
-		character = "aire",
+		character = "$aire",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "SEARCH_DUNGEON_11", reqs = [], previous_dialogue_option = 1},
@@ -607,7 +607,7 @@ var data = {
 	princess_search_dungeon_12 = {
 		reqs = [],
 		image = null,
-		character = "aire",
+		character = "$aire",
 		custom_background = "jail",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
@@ -647,7 +647,7 @@ var data = {
 	princess_search_dungeon_13 = {
 		reqs = [],
 		image = null,
-		character = "aire",
+		character = "$aire",
 		custom_background = "jail",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
@@ -684,7 +684,7 @@ var data = {
 	princess_search_dungeon_14 = {
 		reqs = [],
 		image = null,
-		character = "aire",
+		character = "$aire",
 		custom_background = "jail",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
@@ -734,7 +734,7 @@ var data = {
 	},
 	princess_search_dungeon_15 = {
 		image = null,
-		character = "aire",
+		character = "$aire",
 		custom_background = "jail",
 		tags = ['dialogue_scene'],
 		text = [{text = "SEARCH_DUNGEON_15", reqs = [], bonus_effects = [{code = 'decision', value = 'interrogation_success'}]}],
@@ -750,7 +750,7 @@ var data = {
 	},
 	princess_search_dungeon_16 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		custom_background = "jail",
 		tags = ['dialogue_scene'],
 		text = [{text = "SEARCH_DUNGEON_16", reqs = []}],
@@ -777,7 +777,7 @@ var data = {
 	},
 	princess_search_dungeon_17 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		custom_background = "jail",
 		tags = [],
 		text = [{text = "SEARCH_DUNGEON_17", reqs = []}],
@@ -791,7 +791,7 @@ var data = {
 	},
 	princess_search_dungeon_18 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		custom_background = "jail",
 		tags = ['dialogue_scene'],
 		text = [{text = "SEARCH_DUNGEON_18", reqs = []}],
@@ -821,7 +821,7 @@ var data = {
 	},
 	princess_search_dungeon_19 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		custom_background = "jail",
 		tags = ['dialogue_scene'],
 		text = [
@@ -846,8 +846,8 @@ var data = {
 		scene_type = "unlocked_gallery_seq",
 		unlocked_gallery_seq = "aire_amelia1",
 		save_scene_to_gallery = true,
-		character = "aire",
-		character2 = "amelia",
+		character = "$aire",
+		character2 = "$amelia",
 		tags = ['dialogue_scene'],
 		reqs = [{type = 'quest_completed', name = 'princess_search', check = false}],
 		common_effects = [{code = 'unique_character_changes', value = 'aire', args = [
@@ -949,7 +949,7 @@ var data = {
 	},
 
 	amelia_ask_location = {
-		character = 'amelia',
+		character = '$amelia',
 		image = null,
 		tags = ['dialogue_scene'],
 		text = [
@@ -961,7 +961,7 @@ var data = {
 		]
 	},
 	amelia_ask_location1 = {
-		character = 'amelia',
+		character = '$amelia',
 		image = null,
 		tags = ['dialogue_scene'],
 		text = [
@@ -972,7 +972,7 @@ var data = {
 		]
 	},
 	amelia_ask_location2 = {
-		character = 'amelia',
+		character = '$amelia',
 		image = null,
 		tags = ['dialogue_scene'],
 		text = [
@@ -984,7 +984,7 @@ var data = {
 	},
 
 	amelia_princess_advice = {
-		character = 'amelia',
+		character = '$amelia',
 		image = null,
 		tags = ['dialogue_scene'],
 		text = [
@@ -1000,7 +1000,7 @@ var data = {
 		]
 	},
 	amelia_princess_advice1 = {
-		character = 'amelia',
+		character = '$amelia',
 		image = null,
 		tags = ['dialogue_scene'],
 		text = [

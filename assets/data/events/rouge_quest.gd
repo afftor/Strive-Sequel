@@ -13,7 +13,7 @@ var data = {
 	rouge_demoness_intermission_mhyrana_1 = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		character2 = "demon_female",
 		tags = ["dialogue_scene", "master_translate"],
 		text = "ROUGE_DEMONESS_INTERMISSION_MHYRANA_1",
@@ -22,7 +22,7 @@ var data = {
 	rouge_demoness_intermission_mhyrana_2 = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		character2 = "demon_female",
 		tags = ["dialogue_scene"],
 		text = "ROUGE_DEMONESS_INTERMISSION_MHYRANA_2",
@@ -31,7 +31,7 @@ var data = {
 	rouge_demoness_intermission_grotus_1 = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		character2 = "demon_female",
 		tags = ["dialogue_scene"],
 		text = "ROUGE_DEMONESS_INTERMISSION_GROTUS_1",
@@ -40,18 +40,18 @@ var data = {
 	rouge_demoness_intermission_grotus_2 = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		character2 = "demon_female",
 		tags = ["dialogue_scene"],
 		text = "ROUGE_DEMONESS_INTERMISSION_GROTUS_2",
 		options = [{code = "close", text = "DIALOGUECLOSE", reqs = [], type = "next_dialogue"}]
 	},
-	
+
 	rouge_melchor_confrontation_start = {
 		reqs = [],
 		image = null,
 		music = 'rouge_theme',
-		character = "rouge",
+		character = "$rouge",
 		character2 = "chancellor",
 		tags = ["dialogue_scene", "master_translate"],
 		text = "ROUGE_MELCHOR_CONFRONTATION_START",
@@ -64,7 +64,7 @@ var data = {
 	rouge_melchor_confrontation_response_1 = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		character2 = "chancellor",
 		tags = ["dialogue_scene"],
 		text = "ROUGE_MELCHOR_CONFRONTATION_RESPONSE_1",
@@ -73,7 +73,7 @@ var data = {
 	rouge_melchor_confrontation_response_2 = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		character2 = "chancellor",
 		tags = ["dialogue_scene", "master_translate"],
 		text = "ROUGE_MELCHOR_CONFRONTATION_RESPONSE_2",
@@ -82,7 +82,7 @@ var data = {
 	rouge_melchor_confrontation_response_3 = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		character2 = "chancellor",
 		tags = ["dialogue_scene"],
 		text = "ROUGE_MELCHOR_CONFRONTATION_RESPONSE_3",
@@ -95,15 +95,15 @@ var data = {
 	rouge_melchor_confrontation_accept = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		character2 = "chancellor",
 		tags = ["dialogue_scene"],
 		text = "ROUGE_MELCHOR_CONFRONTATION_ACCEPT",
 		options = [
 			{
-				code = "close", 
-				text = "DIALOGUECLOSE", 
-				reqs = [], 
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
 				type = "next_dialogue",
 				bonus_effects = [
 					{code = "decision", value = "rouge_accepted"},
@@ -118,7 +118,7 @@ var data = {
 	rouge_melchor_confrontation_refuse_1 = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		character2 = "chancellor",
 		tags = ["dialogue_scene"],
 		text = "ROUGE_MELCHOR_CONFRONTATION_REFUSE_1",
@@ -127,15 +127,15 @@ var data = {
 	rouge_melchor_confrontation_refuse_2 = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		character2 = "chancellor",
 		tags = ["dialogue_scene"],
 		text = "ROUGE_MELCHOR_CONFRONTATION_REFUSE_2",
 		options = [
 			{
-				code = "close", 
-				text = "DIALOGUECLOSE", 
-				reqs = [], 
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
 				type = "next_dialogue",
 				bonus_effects = [
 					{code = "decision", value = "rouge_refused"},
@@ -146,12 +146,12 @@ var data = {
 			}
 		]
 	},
-	
+
 	rouge_mansion_arrival = {
 		reqs = [{type = "unique_character_at_mansion", name = "rouge", check = true}],
 		image = null,
 		music = 'rouge_theme',
-		character = "rouge",
+		character = "$rouge",
 		tags = ["dialogue_scene", "master_translate"],
 		text = "ROUGE_MANSION_ARRIVAL",
 		options = [
@@ -162,7 +162,7 @@ var data = {
 	rouge_mansion_arrival_2 = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "ROUGE_MANSION_REASON", reqs = [], previous_dialogue_option = 1},
@@ -177,17 +177,17 @@ var data = {
 		]
 	},
 	rouge_mansion_lead = {
-		reqs = [], 
-		image = null, 
-		character = "rouge", 
-		tags = ["dialogue_scene"], 
-		text = "ROUGE_MANSION_LEAD", 
+		reqs = [],
+		image = null,
+		character = "$rouge",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_MANSION_LEAD",
 		options = [{code = "rouge_mansion_show_quarters", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
 	},
 	rouge_mansion_slave_status = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		tags = ["dialogue_scene"],
 		text = "ROUGE_MANSION_SLAVE_STATUS",
 		options = [
@@ -196,11 +196,11 @@ var data = {
 		]
 	},
 	rouge_mansion_slave_confirm = {
-		reqs = [], 
-		image = null, 
-		character = "rouge", 
-		tags = ["dialogue_scene", "blackscreen_transition_common"], 
-		text = "ROUGE_MANSION_SLAVE_CONFIRM", 
+		reqs = [],
+		image = null,
+		character = "$rouge",
+		tags = ["dialogue_scene", "blackscreen_transition_common"],
+		text = "ROUGE_MANSION_SLAVE_CONFIRM",
 		options = [{
 			code = "rouge_mansion_show_quarters",
 			text = "DIALOGUECONTINUE",
@@ -215,31 +215,31 @@ var data = {
 	rouge_mansion_show_quarters = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		tags = ["dialogue_scene", "blackscreen_transition_common"],
 		text = "ROUGE_MANSION_SHOW_QUARTERS",
 		options = [
 			{
-				code = "close", 
-				text = "DIALOGUECLOSE", 
-				reqs = [], 
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
 				type = "next_dialogue",
 				 bonus_effects = [
 					{
-						code = "add_timed_event", 
-						value = "rouge_room_complaint_start", 
+						code = "add_timed_event",
+						value = "rouge_room_complaint_start",
 						args = [{type = "add_to_hour", hour = [1, 1]}]
 					}
 				]
 			}
 		]
 	},
-	
+
 	rouge_room_complaint_start = {
 		reqs = [],
 		image = null,
 		music = 'rouge_theme',
-		character = "rouge",
+		character = "$rouge",
 		tags = ["dialogue_scene", "master_translate"],
 		text = "ROUGE_ROOM_COMPLAINT_START",
 		options = [
@@ -251,7 +251,7 @@ var data = {
 	rouge_room_complaint_demands = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		tags = ["dialogue_scene"],
 		text = [
 			{text = "ROUGE_ROOM_COMPLAINT_DEMANDS", reqs = [], previous_dialogue_option = 1},
@@ -265,16 +265,16 @@ var data = {
 		]
 	},
 	rouge_room_complaint_accept = {
-		reqs = [], 
-		image = null, 
-		character = "rouge", 
-		tags = ["dialogue_scene"], 
-		text = "ROUGE_ROOM_COMPLAINT_ACCEPT", 
+		reqs = [],
+		image = null,
+		character = "$rouge",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_ROOM_COMPLAINT_ACCEPT",
 		options = [
 			{
-				code = "close", 
-				text = "DIALOGUECLOSE", 
-				reqs = [], 
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
 				type = "next_dialogue",
 				bonus_effects = [{code = "progress_quest", value = "rouge_quest", stage = "furniture"}]
 			}
@@ -285,16 +285,16 @@ var data = {
 		reqs = [],
 		image = null,
 		music = 'rouge_theme',
-		character = "rouge",
+		character = "$rouge",
 		character2 = "sigmund",
 		tags = ["dialogue_scene", "master_translate"],
 		text = "ROUGE_WORKERS_FURNITURE_START",
 		options = [
 			{
-				code = "rouge_workers_furniture_terms", 
-				text = "DIALOGUECONTINUE", 
-				reqs = [], 
-				type = "next_dialogue", 
+				code = "rouge_workers_furniture_terms",
+				text = "DIALOGUECONTINUE",
+				reqs = [],
+				type = "next_dialogue",
 				dialogue_argument = 1,
 				bonus_effects = [{code = "screen_black_transition", value = 1}]
 			}
@@ -303,7 +303,7 @@ var data = {
 	rouge_workers_furniture_terms = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		character2 = "sigmund",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
@@ -314,35 +314,35 @@ var data = {
 		],
 		options = [
 			{
-				code = "rouge_workers_furniture_paid", 
-				text = "ROUGE_WORKERS_OPTION_PAY_GOLD", 
-				reqs = [{type = "has_money", value = 10000}], 
-				type = "next_dialogue", 
+				code = "rouge_workers_furniture_paid",
+				text = "ROUGE_WORKERS_OPTION_PAY_GOLD",
+				reqs = [{type = "has_money", value = 10000}],
+				type = "next_dialogue",
 				not_hide = true,
 				dialogue_argument = 1,
 				bonus_effects = [
-					{code = "money_change", operant = "-", value = 10000}, 
+					{code = "money_change", operant = "-", value = 10000},
 #					{code = "progress_quest", value = "rouge_quest", stage = "letter"},
 				]
 			},
 			{code = "rouge_workers_furniture_cannot_afford", text = "ROUGE_WORKERS_OPTION_CANNOT_AFFORD", reqs = [], type = "next_dialogue", remove_after_first_use = true},
 			{
-				code = "rouge_workers_furniture_terms", 
-				text = "ROUGE_WORKERS_OPTION_DISCUSS", 
-				reqs = [], 
-				type = "next_dialogue", 
+				code = "rouge_workers_furniture_terms",
+				text = "ROUGE_WORKERS_OPTION_DISCUSS",
+				reqs = [],
+				type = "next_dialogue",
 				dialogue_argument = 2,
 				bonus_effects = [{code = "decision", value = "rouge_furniture_bargained"}]
 			},
 			{
-				code = "rouge_workers_furniture_paid", 
-				text = "ROUGE_WORKERS_OPTION_MATERIALS", 
+				code = "rouge_workers_furniture_paid",
+				text = "ROUGE_WORKERS_OPTION_MATERIALS",
 				reqs = [
 					{type = "decision", value = "rouge_furniture_bargained", check = true},
 					{type = "has_material", material = "leatherthick", operant = "gte", value = 150},
 					{type = "has_material", material = "woodiron", operant = "gte", value = 100},
-				], 
-				type = "next_dialogue", 
+				],
+				type = "next_dialogue",
 				dialogue_argument = 2,
 				bonus_effects = [
 					{code = "material_change", operant = "-", material = "leatherthick", value = 150},
@@ -350,9 +350,9 @@ var data = {
 				]
 			},
 			{
-				code = "close", 
-				text = "ROUGE_WORKERS_OPTION_NEED_TIME", 
-				reqs = [], 
+				code = "close",
+				text = "ROUGE_WORKERS_OPTION_NEED_TIME",
+				reqs = [],
 				type = "next_dialogue",
 				bonus_effects = [
 					{code = "progress_quest", value = "rouge_quest", stage = "furniture_get"},
@@ -361,32 +361,32 @@ var data = {
 		]
 	},
 	rouge_workers_furniture_paid = {
-		reqs = [], 
-		image = null, 
-		character = "rouge", 
+		reqs = [],
+		image = null,
+		character = "$rouge",
 		character2 = "sigmund",
-		tags = ["dialogue_scene",'master_translate'], 
+		tags = ["dialogue_scene",'master_translate'],
 		text = [
 			{text = "ROUGE_WORKERS_FURNITURE_PAID_GOLD", reqs = [], previous_dialogue_option = 1},
 			{text = "ROUGE_WORKERS_FURNITURE_PAID_MATERIALS", reqs = [], previous_dialogue_option = 2},
-		], 
+		],
+		common_effects = [{code = "unique_character_changes", value = "rouge", args = [
+			{code = "add_trait", trait = "training_s_combat", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
+			{code = "add_trait", trait = "training_s_relation", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
+			{code = "add_trait", trait = "training_s_sexservice", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
+			{code = "add_trait", trait = "training_obedience", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
+			{code = "add_trait", trait = "training_relation", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
+			{code = "add_trait", trait = "training_sexservice", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
+		]}],
 		options = [
 			{
-				code = "close", 
-				text = "DIALOGUECLOSE", 
-				reqs = [], 
-				type = "next_dialogue", 
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
 				bonus_effects = [
-					{code = "unique_character_changes", value = "rouge", args = [
-						{code = "add_trait", trait = "training_s_combat", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
-						{code = "add_trait", trait = "training_s_relation", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
-						{code = "add_trait", trait = "training_s_sexservice", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
-						{code = "add_trait", trait = "training_obedience", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
-						{code = "add_trait", trait = "training_relation", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
-						{code = "add_trait", trait = "training_sexservice", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
-					]},
 					{code = "progress_quest", value = "rouge_quest", stage = "letter"},
-					{code = "add_timed_event", value = "rouge_letter_request", args = [{type = "add_to_date", date = [2,2], hour = 3}]}, 
+					{code = "add_timed_event", value = "rouge_letter_request", args = [{type = "add_to_date", date = [2,2], hour = 3}]},
 					{code = "plan_mansion_event", value = "rouge_furniture_reward"},
 					{code = "update_city"}
 				]
@@ -396,88 +396,88 @@ var data = {
 	rouge_workers_furniture_cannot_afford = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		tags = ["dialogue_scene"],
 		text = "ROUGE_WORKERS_FURNITURE_CANNOT_AFFORD",
 		options = [
 			{code = "rouge_workers_furniture_terms", text = "ROUGE_WORKERS_OPTION_RECONSIDER", reqs = [], type = "next_dialogue", dialogue_argument = 3},
 			{
-				code = "rouge_workers_furniture_charm_success", 
-				text = "ROUGE_WORKERS_OPTION_NO_INDULGE", 
+				code = "rouge_workers_furniture_charm_success",
+				text = "ROUGE_WORKERS_OPTION_NO_INDULGE",
 				reqs = [
 					{
-						type = "master_check", 
+						type = "master_check",
 						value = [{code = "stat", stat = "charm_factor", operant = "gte", value = 5}]
 					}
-				], 
+				],
 				type = "next_dialogue"},
 			{
-				code = "rouge_workers_furniture_charm_fail", 
-				text = "ROUGE_WORKERS_OPTION_NO_INDULGE", 
+				code = "rouge_workers_furniture_charm_fail",
+				text = "ROUGE_WORKERS_OPTION_NO_INDULGE",
 				reqs = [
 					{
-						type = "master_check", 
+						type = "master_check",
 						value = [{code = "stat", stat = "charm_factor", operant = "lt", value = 5}]
 					}
-				], 
+				],
 				type = "next_dialogue"
 			}
 		]
 	},
 	rouge_workers_furniture_charm_success = {
-		reqs = [], 
-		image = null, 
-		character = "rouge", 
-		tags = ["dialogue_scene", "master_translate"], 
-		text = "ROUGE_WORKERS_FURNITURE_CHARM_SUCCESS", 
+		reqs = [],
+		image = null,
+		character = "$rouge",
+		tags = ["dialogue_scene", "master_translate"],
+		text = "ROUGE_WORKERS_FURNITURE_CHARM_SUCCESS",
+		common_effects = [{code = "unique_character_changes", value = "rouge", args = [
+			{code = "add_trait", trait = "training_s_combat", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
+			{code = "add_trait", trait = "training_s_relation", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
+			{code = "add_trait", trait = "training_obedience", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
+			{code = "add_trait", trait = "training_relation", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
+		]}],
 		options = [
 			{
-				code = "close", 
-				text = "DIALOGUECLOSE", 
-				reqs = [], 
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
 				type = "next_dialogue",
 				bonus_effects = [
 					{code = "decision", value = "rouge_furniture_paid"},
-					{code = "unique_character_changes", value = "rouge", args = [
-						{code = "add_trait", trait = "training_s_combat", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
-						{code = "add_trait", trait = "training_s_relation", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
-						{code = "add_trait", trait = "training_obedience", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
-						{code = "add_trait", trait = "training_relation", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
-					]},
-					{code = "progress_quest", value = "rouge_quest", stage = "letter"}, 
-					{code = "add_timed_event", value = "rouge_letter_request", args = [{type = "add_to_date", date = [2,2], hour = 3}]}, 
+					{code = "progress_quest", value = "rouge_quest", stage = "letter"},
+					{code = "add_timed_event", value = "rouge_letter_request", args = [{type = "add_to_date", date = [2,2], hour = 3}]},
 					{code = "update_city"},
-					
+
 				]
 			}
 		]
 	},
 	rouge_workers_furniture_charm_fail = {
-		reqs = [], 
-		image = null, 
-		character = "rouge", 
-		tags = ["dialogue_scene", "master_translate"], 
-		text = "ROUGE_WORKERS_FURNITURE_CHARM_FAIL", 
+		reqs = [],
+		image = null,
+		character = "$rouge",
+		tags = ["dialogue_scene", "master_translate"],
+		text = "ROUGE_WORKERS_FURNITURE_CHARM_FAIL",
 		options = [
 			{
-				code = "close", 
-				text = "DIALOGUECLOSE", 
-				reqs = [], 
-				type = "next_dialogue", 
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
 				bonus_effects = [
 					{code = "decision", value = "rouge_furniture_paid"},
 					{code = "decision", value = "rouge_furniture_paid_disdain"},
-					{code = "complete_quest", value = "rouge_quest"}, 
+					{code = "complete_quest", value = "rouge_quest"},
 					{code = "update_city"}
 				]
 			}
 		]
 	},
-	
+
 	rouge_letter_request = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		music = 'rouge_theme',
 		tags = ["dialogue_scene"],
 		text = "ROUGE_LETTER_REQUEST",
@@ -489,7 +489,7 @@ var data = {
 	rouge_letter_request_details = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		tags = ["dialogue_scene"],
 		text = [
 			{text = "ROUGE_LETTER_REQUEST_DETAILS", reqs = [], previous_dialogue_option = 1},
@@ -505,29 +505,29 @@ var data = {
 		]
 	},
 	rouge_letter_request_accept = {
-		reqs = [], 
-		image = null, 
-		character = "rouge", 
-		tags = ["dialogue_scene"], 
-		text = "ROUGE_LETTER_REQUEST_ACCEPT", 
+		reqs = [],
+		image = null,
+		character = "$rouge",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_LETTER_REQUEST_ACCEPT",
 		options = [
 			{
-				code = "close", 
-				text = "DIALOGUECLOSE", 
-				reqs = [], 
-				type = "next_dialogue", 
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
 				bonus_effects = [
-					{code = "progress_quest", value = "rouge_quest", stage = "melchor"}, 
+					{code = "progress_quest", value = "rouge_quest", stage = "melchor"},
 					{code = "update_city"}
 				]
 			}
 		]
 	},
-	
+
 	#not from here mostly
-	
+
 	#end
-	
+
 	rouge_melchor_visit = {
 		reqs = [],
 		image = null,
@@ -611,25 +611,25 @@ var data = {
 		]
 	},
 	rouge_meet_melchor_finish = {
-		reqs = [], 
-		image = null, 
-		tags = ["dialogue_scene"], 
+		reqs = [],
+		image = null,
+		tags = ["dialogue_scene"],
 		text = [
 			{text = "ROUGE_MEET_MELCHOR_MUTUAL_INTEREST", reqs = [], previous_dialogue_option = 1},
 			{text = "ROUGE_MEET_MELCHOR_REWARD", reqs = [], previous_dialogue_option = 2},
 		],
 		options = [{code = "close", text = "DIALOGUECLOSE", reqs = [], type = "next_dialogue", bonus_effects = [
-			{code = "progress_quest", value = "rouge_quest", stage = "warehouse"}, 
+			{code = "progress_quest", value = "rouge_quest", stage = "warehouse"},
 			{code = "update_city"}]}
 		]
 	},
-	
+
 	rouge_warehouse_search = {
 		reqs = [],
 		image = "rouge_warehouse_1",
 		music = 'intimate_dark',
-		tags = ["dialogue_scene"], 
-		text = "ROUGE_WAREHOUSE_SEARCH", 
+		tags = ["dialogue_scene"],
+		text = "ROUGE_WAREHOUSE_SEARCH",
 		options = [{code = "rouge_warehouse_approach", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
 	},
 	rouge_warehouse_approach = {
@@ -679,7 +679,7 @@ var data = {
 			{code = "rouge_interrogation_henchman_start", text = "DIALOGUECONTINUE", reqs = [{type = "decision", value = "KetchKilled", check = true}], type = "next_dialogue"}
 		]
 	},
-	
+
 	rouge_interrogation_ketch_start = {
 		reqs = [],
 		image = null,
@@ -693,11 +693,11 @@ var data = {
 		]
 	},
 	rouge_interrogation_ketch_tough = {
-		reqs = [], 
-		image = null, 
-		character = "ketch", 
-		tags = ["dialogue_scene"], 
-		text = "ROUGE_INTERROGATION_KETCH_TOUGH", 
+		reqs = [],
+		image = null,
+		character = "ketch",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_INTERROGATION_KETCH_TOUGH",
 		common_effects = [{code = 'play_sound', value = 'punch'}, {code = 'screen_shake', strength = 3, length = 0.3}],
 		options = [
 			{code = "rouge_interrogation_ketch_rouge", text = "ROUGE_INTERROGATION_OPTION_ROUGE_SENT", reqs = [], type = "next_dialogue", bonus_effects = [{code = "decision", value = "KetchWarnedAboutRouge"}]},
@@ -705,120 +705,120 @@ var data = {
 		]
 	},
 	rouge_interrogation_ketch_rouge = {
-		reqs = [], 
-		image = null, 
-		character = "ketch", 
-		tags = ["dialogue_scene"], 
-		text = "ROUGE_INTERROGATION_KETCH_ROUGE", 
+		reqs = [],
+		image = null,
+		character = "ketch",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_INTERROGATION_KETCH_ROUGE",
 		options = [{code = "rouge_interrogation_over_ketch", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
 	},
 	rouge_interrogation_ketch_bitch = {
-		reqs = [], 
-		image = null, 
-		character = "ketch", 
-		tags = ["dialogue_scene"], 
-		text = "ROUGE_INTERROGATION_KETCH_BITCH", 
+		reqs = [],
+		image = null,
+		character = "ketch",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_INTERROGATION_KETCH_BITCH",
 		common_effects = [{code = 'play_sound', value = 'punch'}, {code = 'screen_shake', strength = 3, length = 0.3}, {code = 'affect_master', type = 'effect', value = 'e_quest_injury'}],
 		options = [{code = "rouge_interrogation_over_ketch", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
 	},
 	rouge_interrogation_henchman_start = {
-		reqs = [], 
-		image = null, 
-		tags = ["dialogue_scene", "master_translate"], 
-		text = "ROUGE_INTERROGATION_HENCHMAN_START", 
+		reqs = [],
+		image = null,
+		tags = ["dialogue_scene", "master_translate"],
+		text = "ROUGE_INTERROGATION_HENCHMAN_START",
 		options = [{code = "rouge_interrogation_henchman_question_1", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
 	},
 	rouge_interrogation_henchman_question_1 = {
-		reqs = [], 
-		image = null, 
-		tags = ["dialogue_scene"], 
-		text = "ROUGE_INTERROGATION_HENCHMAN_QUESTION_1", 
+		reqs = [],
+		image = null,
+		tags = ["dialogue_scene"],
+		text = "ROUGE_INTERROGATION_HENCHMAN_QUESTION_1",
 		options = [
-			{code = "rouge_interrogation_henchman_question_2", text = "ROUGE_INTERROGATION_OPTION_BUSINESS", reqs = [], type = "next_dialogue"}, 
+			{code = "rouge_interrogation_henchman_question_2", text = "ROUGE_INTERROGATION_OPTION_BUSINESS", reqs = [], type = "next_dialogue"},
 			{code = "rouge_interrogation_henchman_question_2", text = "ROUGE_INTERROGATION_OPTION_SQUAD", reqs = [], type = "next_dialogue"}
 		]
 	},
 	rouge_interrogation_henchman_question_2 = {
-		reqs = [], 
-		image = null, 
-		tags = ["dialogue_scene"], 
-		text = "ROUGE_INTERROGATION_HENCHMAN_QUESTION_2", 
+		reqs = [],
+		image = null,
+		tags = ["dialogue_scene"],
+		text = "ROUGE_INTERROGATION_HENCHMAN_QUESTION_2",
 		common_effects = [{code = 'play_sound', value = 'punch'}, {code = 'screen_shake', strength = 3, length = 0.3}],
 		options = [{code = "rouge_interrogation_over_henchman", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
 	},
 	rouge_interrogation_over_ketch = {
-		reqs = [], 
-		image = null, 
-		character = "ketch", 
-		tags = ["dialogue_scene"], 
-		text = "ROUGE_INTERROGATION_OVER_KETCH", 
+		reqs = [],
+		image = null,
+		character = "ketch",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_INTERROGATION_OVER_KETCH",
 		options = [{code = "rouge_grotus_rescue", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
 	},
 	rouge_interrogation_over_henchman = {
-		reqs = [], 
-		image = null, 
-		tags = ["dialogue_scene"], 
-		text = "ROUGE_INTERROGATION_OVER_HENCHMAN", 
+		reqs = [],
+		image = null,
+		tags = ["dialogue_scene"],
+		text = "ROUGE_INTERROGATION_OVER_HENCHMAN",
 		options = [{code = "rouge_grotus_rescue", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
 	},
 	rouge_grotus_rescue = {
-		reqs = [], 
-		image = null, 
-		character = "grotus", 
-		tags = ["dialogue_scene"], 
-		text = "ROUGE_GROTUS_RESCUE", 
+		reqs = [],
+		image = null,
+		character = "grotus",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_GROTUS_RESCUE",
 		options = [{code = "rouge_warehouse_escape_1", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
 	},
 	rouge_warehouse_escape_1 = {
-		reqs = [], 
-		image = null, 
-		tags = ["dialogue_scene"], 
-		text = "ROUGE_WAREHOUSE_ESCAPE_1", 
+		reqs = [],
+		image = null,
+		tags = ["dialogue_scene"],
+		text = "ROUGE_WAREHOUSE_ESCAPE_1",
 		options = [{code = "rouge_warehouse_escape_2", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
 	},
 	rouge_warehouse_escape_2 = {
-		reqs = [], 
-		image = null, 
-		tags = ["dialogue_scene"], 
-		text = "ROUGE_WAREHOUSE_ESCAPE_2", 
+		reqs = [],
+		image = null,
+		tags = ["dialogue_scene"],
+		text = "ROUGE_WAREHOUSE_ESCAPE_2",
 		options = [{code = "quest_fight_duel", args = "rouge_warehouse_escape", text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 0, type = "next_dialogue"}]
 	},
-	
+
 	rouge_warehouse_escape_win = {
-		reqs = [], 
-		image = null, 
+		reqs = [],
+		image = null,
 		music = 'threat',
-		character = "grotus", 
-		tags = ["dialogue_scene"], 
+		character = "grotus",
+		tags = ["dialogue_scene"],
 		text = [
 			{text = "ROUGE_WAREHOUSE_ESCAPE_WIN", reqs = [], previous_dialogue_option = 0},
 			{text = "ROUGE_WAREHOUSE_GROTUS_REPRIMAND", reqs = [], previous_dialogue_option = 2},
-		], 
+		],
 		options = [
 			{code = "rouge_warehouse_escape_win", text = "ROUGE_WAREHOUSE_OPTION_FULL_OF_YOURSELF", reqs = [], dialogue_argument = 2, remove_after_first_use = true},
 			{code = "rouge_warehouse_grotus_what_now", text = "ROUGE_WAREHOUSE_OPTION_WHAT_NOW", reqs = [], type = "next_dialogue"}
 		]
 	},
 	rouge_warehouse_grotus_what_now = {
-		reqs = [], 
-		image = null, 
-		character = "grotus", 
-		tags = ["dialogue_scene"], 
-		text = "ROUGE_WAREHOUSE_GROTUS_WHAT_NOW", 
+		reqs = [],
+		image = null,
+		character = "grotus",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_WAREHOUSE_GROTUS_WHAT_NOW",
 		options = [
 			{
-				code = "close", 
-				text = "DIALOGUECLOSE", 
-				reqs = [], 
-				type = "next_dialogue", 
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
 				bonus_effects = [
-					{code = "progress_quest", value = "rouge_quest", stage = "raid"}, 
+					{code = "progress_quest", value = "rouge_quest", stage = "raid"},
 					{code = "update_city"}
 				]
 			}
 		]
 	},
-	
+
 	rouge_report_melchor_start = {
 		reqs = [],
 		image = null,
@@ -829,9 +829,9 @@ var data = {
 			{text = "ROUGE_REPORT_MELCHOR_NO_KETCH", reqs = [{type = "decision", value = "KetchKilled", check = true}]}
 		],
 		options = [{
-			code = "rouge_report_melchor_raid", 
-			text = "DIALOGUECONTINUE", 
-			reqs = [], 
+			code = "rouge_report_melchor_raid",
+			text = "DIALOGUECONTINUE",
+			reqs = [],
 			type = "next_dialogue",
 			}
 			]
@@ -861,42 +861,42 @@ var data = {
 			}
 		]
 	},
-	
+
 	rouge_report_melchor_ketch_escape_1 = {
-		reqs = [], 
-		image = null, 
+		reqs = [],
+		image = null,
 		music = 'threat',
-		character = "ketch", 
-		tags = ["dialogue_scene", "master_translate", "blackscreen_transition_common"], 
-		text = "ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_1", 
+		character = "ketch",
+		tags = ["dialogue_scene", "master_translate", "blackscreen_transition_common"],
+		text = "ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_1",
 		options = [{code = "rouge_report_melchor_ketch_escape_2", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
 	},
 	rouge_report_melchor_ketch_escape_2 = {
-		reqs = [], 
-		image = null, 
+		reqs = [],
+		image = null,
 		music = 'rouge_theme',
-		character = "ketch", 
-		character2 = "rouge", 
-		tags = ["dialogue_scene"], 
-		text = "ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2", 
+		character = "ketch",
+		character2 = "$rouge",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2",
 		options = [{code = "rouge_report_melchor_ketch_dead", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
 	},
 	rouge_report_melchor_ketch_dead = {
-		reqs = [], 
-		image = null, 
-		character = "rouge", 
-		tags = ["dialogue_scene"], 
-		text = "ROUGE_REPORT_MELCHOR_KETCH_DEAD", 
+		reqs = [],
+		image = null,
+		character = "$rouge",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_REPORT_MELCHOR_KETCH_DEAD",
 		options = [
 			{
-				code = "rouge_report_ketch_basement_intro", 
-				text = "DIALOGUECONTINUE", 
-				reqs = [], 
-				type = "next_dialogue", 
+				code = "rouge_report_ketch_basement_intro",
+				text = "DIALOGUECONTINUE",
+				reqs = [],
+				type = "next_dialogue",
 				bonus_effects = [
 					{code = "decision", value = "RougeKetchKilled"},
 					{code = "screen_black_transition", value = 1}
-				], 
+				],
 				dialogue_argument = 1
 			}
 		]
@@ -915,7 +915,7 @@ var data = {
 		image = null,
 		music = 'rouge_theme',
 		character = "ketch",
-		character2 = "rouge",
+		character2 = "$rouge",
 		tags = ["dialogue_scene"],
 		text = "ROUGE_REPORT_MELCHOR_KETCH_WARNED_ESCAPE_2",
 		options = [{code = "rouge_report_melchor_ketch_warned_escape_3", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
@@ -923,7 +923,7 @@ var data = {
 	rouge_report_melchor_ketch_warned_escape_3 = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		tags = ["dialogue_scene"],
 		text = "ROUGE_REPORT_MELCHOR_KETCH_WARNED_ESCAPE_3",
 		options = [
@@ -944,7 +944,7 @@ var data = {
 			{
 				reqs = [{type = "decision", value = "KetchWarnedAboutRouge", check = true}],
 				image = null,
-				character = "rouge",
+				character = "$rouge",
 				tags = ["dialogue_scene", "master_translate"],
 				text = [
 					{text = "ROUGE_REPORT_KETCH_ESCAPED_BASEMENT_INTRO", reqs = [], previous_dialogue_option = 1},
@@ -962,7 +962,7 @@ var data = {
 			{
 				reqs = [],
 				image = null,
-				character = "rouge",
+				character = "$rouge",
 				tags = ["dialogue_scene", "master_translate"],
 				text = [
 					{text = "ROUGE_REPORT_KETCH_BASEMENT_INTRO", reqs = [], previous_dialogue_option = 1},
@@ -980,17 +980,17 @@ var data = {
 		]
 	},
 	rouge_report_ketch_basement_1 = {
-		reqs = [], 
-		image = null, 
-		character = "rouge", 
-		tags = ["dialogue_scene"], 
-		text = "ROUGE_REPORT_KETCH_BASEMENT_1", 
+		reqs = [],
+		image = null,
+		character = "$rouge",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_REPORT_KETCH_BASEMENT_1",
 		options = [{code = "rouge_report_ketch_basement_2", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
 	},
 	rouge_report_ketch_basement_2 = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		tags = ["dialogue_scene"],
 		text = "ROUGE_REPORT_KETCH_BASEMENT_2",
 		options = [
@@ -999,10 +999,10 @@ var data = {
 		]
 	},
 	rouge_report_ketch_basement_3 = {
-		reqs = [], 
-		image = null, 
-		character = "rouge", 
-		tags = ["dialogue_scene"], 
+		reqs = [],
+		image = null,
+		character = "$rouge",
+		tags = ["dialogue_scene"],
 		text = [
 			{text = "ROUGE_REPORT_KETCH_BASEMENT_3", reqs = [], previous_dialogue_option = 1},
 			{text = "ROUGE_REPORT_KETCH_BASEMENT_4", reqs = [], previous_dialogue_option = 2},
@@ -1013,7 +1013,7 @@ var data = {
 	rouge_report_henchman_basement_intro = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "ROUGE_REPORT_HENCHMAN_BASEMENT_INTRO", reqs = [], previous_dialogue_option = 1},
@@ -1031,7 +1031,7 @@ var data = {
 	rouge_report_henchman_basement_1 = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "ROUGE_REPORT_HENCHMAN_BASEMENT_1", reqs = [], previous_dialogue_option = 1},
@@ -1047,15 +1047,15 @@ var data = {
 		]
 	},
 	rouge_report_henchman_basement_2 = {
-		reqs = [], 
-		image = null, 
-		character = "rouge", 
-		tags = ["dialogue_scene"], 
+		reqs = [],
+		image = null,
+		character = "$rouge",
+		tags = ["dialogue_scene"],
 		text = "ROUGE_REPORT_HENCHMAN_BASEMENT_4",
 		options = [{code = "close", text = "DIALOGUECLOSE", reqs = [], type = "next_dialogue", bonus_effects = [{code = "progress_quest", value = "rouge_quest", stage = "reward"},{code = "update_city"}]}]
-			
+
 	},
-	
+
 	rouge_report_melchor_return = {
 		variations = [
 			{
@@ -1064,6 +1064,7 @@ var data = {
 				character = 'chancellor',
 				tags = ["dialogue_scene"],
 				text = "ROUGE_REPORT_MELCHOR_RETURN_KETCH_ESCAPED",
+				common_effects = [{code = "money_change", operant = "+", value = 1000}],
 				options = [
 					{
 						code = "close",
@@ -1071,7 +1072,6 @@ var data = {
 						reqs = [],
 						type = "next_dialogue",
 						bonus_effects = [
-							{code = "money_change", operant = "+", value = 1000},
 							{code = "progress_quest", value = "rouge_quest", stage = "rouge"},
 							{code = "update_city"}
 						]
@@ -1092,23 +1092,23 @@ var data = {
 		]
 	},
 	rouge_report_melchor_reward = {
-		reqs = [], 
-		image = null, 
+		reqs = [],
+		image = null,
 		character = 'chancellor',
-		tags = ["dialogue_scene"], 
+		tags = ["dialogue_scene"],
 		text = [
 			{text = "ROUGE_REPORT_MELCHOR_REWARD_ROUGE", reqs = [], previous_dialogue_option = 1},
 			{text = "ROUGE_REPORT_MELCHOR_REWARD_SELF", reqs = [], previous_dialogue_option = 2},
 		],
+		common_effects = [{code = "money_change", operant = "+", value = 1000}],
 		options = [
 			{
-				code = "close", 
-				text = "DIALOGUECLOSE", 
-				reqs = [], 
-				type = "next_dialogue", 
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
 				bonus_effects = [
-					{code = "money_change", operant = "+", value = 1000}, 
-					{code = "progress_quest", value = "rouge_quest", stage = "rouge"}, 
+					{code = "progress_quest", value = "rouge_quest", stage = "rouge"},
 					{code = "update_city"}
 				]
 			}
@@ -1120,29 +1120,33 @@ var data = {
 		character = 'chancellor',
 		tags = ["dialogue_scene"],
 		text = "ROUGE_REPORT_MELCHOR_RETURN_2",
+		common_effects = [{code = "money_change", operant = "+", value = 1000}],
 		options = [
 			{
-				code = "close", 
-				text = "DIALOGUECLOSE", 
-				reqs = [], 
-				type = "next_dialogue", 
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				type = "next_dialogue",
 				bonus_effects = [
-					{code = "money_change", operant = "+", value = 1000}, 
-					{code = "progress_quest", value = "rouge_quest", stage = "rouge"}, 
+					{code = "progress_quest", value = "rouge_quest", stage = "rouge"},
 					{code = "update_city"}
 				]
 			}
 		]
 	},
-	
+
 	rouge_return_to_rouge = {
 		variations = [
 			{
 				reqs = [{type = "decision", value = "KetchWarnedAboutRouge", check = true}],
 				image = null,
-				character = "rouge",
+				character = "$rouge",
 				tags = ["dialogue_scene"],
 				text = "ROUGE_RETURN_TO_ROUGE_KETCH_ESCAPED",
+				common_effects = [{code = "unique_character_changes", value = "rouge", args = [
+					{code = "add_trait", trait = "training_s_working", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
+					{code = "add_trait", trait = "training_callmaster", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
+				]}],
 				options = [
 					{
 						code = "close",
@@ -1150,10 +1154,6 @@ var data = {
 						reqs = [],
 						type = "next_dialogue",
 						bonus_effects = [
-							{code = "unique_character_changes", value = "rouge", args = [
-								{code = "add_trait", trait = "training_s_working", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
-								{code = "add_trait", trait = "training_callmaster", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
-							]},
 							{code = "complete_quest", value = "rouge_quest"},
 						]
 					}
@@ -1162,9 +1162,13 @@ var data = {
 			{
 				reqs = [],
 				image = null,
-				character = "rouge",
+				character = "$rouge",
 				tags = ["dialogue_scene"],
 				text = "ROUGE_RETURN_TO_ROUGE",
+				common_effects = [{code = "unique_character_changes", value = "rouge", args = [
+					{code = "add_trait", trait = "training_s_working", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
+					{code = "add_trait", trait = "training_callmaster", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
+				]}],
 				options = [
 					{
 						code = "close",
@@ -1172,10 +1176,6 @@ var data = {
 						reqs = [],
 						type = "next_dialogue",
 						bonus_effects = [
-							{code = "unique_character_changes", value = "rouge", args = [
-								{code = "add_trait", trait = "training_s_working", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
-								{code = "add_trait", trait = "training_callmaster", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
-							]},
 							{code = "complete_quest", value = "rouge_quest"},
 						]
 					}
@@ -1183,11 +1183,11 @@ var data = {
 			},
 		]
 	},
-	
+
 	rouge_furniture_reward = {
 		image = null,
 		reqs = [{type = "unique_character_at_mansion", name = "rouge", check = true}],
-		character = "rouge",
+		character = "$rouge",
 		tags = ["dialogue_scene", "master_translate"],
 		text = "ROUGE_FURNITURE_REWARD",
 		options = [
@@ -1198,12 +1198,12 @@ var data = {
 	rouge_furniture_reward_refuse = {
 		image = null,
 		reqs = [],
-		character = "rouge",
+		character = "$rouge",
 		tags = ["dialogue_scene", "master_translate"],
 		text = "ROUGE_FURNITURE_REWARD_REFUSE",
 		options = [{code = "close", text = "DIALOGUECLOSE", type = "next_dialogue", reqs = [], dialogue_argument = 1}]
 	},
-	
+
 	rouge_sex_1 = {
 		image = null,
 		reqs = [],
@@ -1510,6 +1510,7 @@ var data = {
 		character = "drukar",
 		tags = ["dialogue_scene", "master_translate"],
 		text = "ROUGE_TAX_DRUKAR_PAY",
+		common_effects = [{code = "money_change", operant = "-", value = 6000}],
 		options = [
 			{
 				code = "close",
@@ -1517,7 +1518,6 @@ var data = {
 				reqs = [],
 				type = "next_dialogue",
 				bonus_effects = [
-					{code = "money_change", operant = "-", value = 6000},
 					{code = "progress_quest", value = "rouge_quest", stage = "tax_done"},
 					{code = "remove_quest_location", value = "quest_tax_settlement"},
 					{code = "update_city"},
@@ -1582,7 +1582,7 @@ var data = {
 		reqs = [],
 		image = null,
 		music = "empire_capital",
-		character = "rouge",
+		character = "$rouge",
 		tags = ["dialogue_scene"],
 		text = "ROUGE_TAX_CAPITAL_MEET_1",
 		options = [
@@ -1595,7 +1595,7 @@ var data = {
 		reqs = [],
 		image = null,
 		music = "empire_capital",
-		character = "rouge",
+		character = "$rouge",
 		tags = ["dialogue_scene"],
 		text = "ROUGE_TAX_CAPITAL_MEET_2",
 		options = [
@@ -1604,6 +1604,7 @@ var data = {
 				text = "ROUGE_TAX_CAPITAL_MEET_2_OPTION_ACCEPT",
 				reqs = [],
 				type = "next_dialogue",
+				bonus_effects = [{code = "make_story_character", value = "Rouge", recruit_from_location = true}],
 			},
 			{
 				code = "rouge_tax_capital_refuse",
@@ -1618,9 +1619,15 @@ var data = {
 		reqs = [],
 		image = null,
 		music = "empire_capital",
-		character = "rouge",
+		character = "$rouge",
 		tags = ["dialogue_scene"],
 		text = "ROUGE_TAX_CAPITAL_ACCEPT",
+		common_effects = [{code = "unique_character_changes", value = "rouge", args = [
+			{code = "add_trait", trait = "training_s_combat", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
+			{code = "add_trait", trait = "training_s_relation", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
+			{code = "add_trait", trait = "training_obedience", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
+			{code = "add_trait", trait = "training_relation", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
+		]}],
 		options = [
 			{
 				code = "close",
@@ -1629,14 +1636,7 @@ var data = {
 				type = "next_dialogue",
 				bonus_effects = [
 					{code = "decision", value = "rouge_accepted_late"},
-					{code = "make_story_character", value = "Rouge", recruit_from_location = true},
 					{code = "plan_mansion_event", value = "rouge_mansion_arrival"},
-					{code = "unique_character_changes", value = "rouge", args = [
-						{code = "add_trait", trait = "training_s_combat", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
-						{code = "add_trait", trait = "training_s_relation", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
-						{code = "add_trait", trait = "training_obedience", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
-						{code = "add_trait", trait = "training_relation", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
-					]},
 					{code = "progress_quest", value = "rouge_quest", stage = "melchor"},
 					{code = "update_city"},
 				]
@@ -1648,7 +1648,7 @@ var data = {
 		reqs = [],
 		image = null,
 		music = "empire_capital",
-		character = "rouge",
+		character = "$rouge",
 		tags = ["dialogue_scene"],
 		text = "ROUGE_TAX_CAPITAL_REFUSE",
 		options = [

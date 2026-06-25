@@ -9,8 +9,8 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		character = "kuro",
-		character2 = "zephyra",
+		character = "$kuro",
+		character2 = "$zephyra",
 		text = [
 			{
 				text = "KURO_ZEPH_START",
@@ -39,8 +39,8 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		character = "kuro",
-		character2 = "zephyra",
+		character = "$kuro",
+		character2 = "$zephyra",
 		text = [
 			{
 				text = "KURO_ZEPH_START2",
@@ -69,8 +69,8 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		character = "kuro",
-		character2 = "zephyra",
+		character = "$kuro",
+		character2 = "$zephyra",
 		text = [
 			{
 				text = "KURO_ZEPH_START3",
@@ -129,8 +129,8 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		character = "kuro",
-		character2 = "zephyra",
+		character = "$kuro",
+		character2 = "$zephyra",
 		text = [
 			{
 				text = "KURO_ZEPH_TAILJOB",
@@ -159,8 +159,8 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		character = "kuro",
-		character2 = "zephyra",
+		character = "$kuro",
+		character2 = "$zephyra",
 		text = [
 			{
 				text = "KURO_ZEPH_TAILJOB2",
@@ -190,8 +190,8 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		character = "kuro",
-		character2 = "zephyra",
+		character = "$kuro",
+		character2 = "$zephyra",
 		save_scene_to_gallery = true,
 		unlocked_gallery_seq = "kuro_zeph_tailjob",
 		text = [

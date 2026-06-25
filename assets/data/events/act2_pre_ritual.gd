@@ -95,7 +95,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		character2 = "ginny",
 		text = [
 			{
@@ -144,7 +144,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		character2 = "ginny",
 		text = [
 			{
@@ -220,7 +220,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		text = [
 			{
 				text = "ZEPHYRA_RECRUITMENT_3_1",
@@ -266,7 +266,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		text = [
 			{
 				text = "ZEPHYRA_RECRUITMENT_4",
@@ -305,7 +305,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		text = [
 			{
 				text = "ZEPHYRA_RECRUITMENT_5_1",
@@ -351,7 +351,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		text = [
 			{
 				text = "ZEPHYRA_RECRUITMENT_6_GOOD",
@@ -384,7 +384,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		text = [
 			{
 				text = "ZEPHYRA_RECRUITMENT_6_BAD",
@@ -427,7 +427,7 @@ var data = {
 				negative = "cancel"
 			}
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		text = [
 			{
 				text = "ZEPHYRA_SWORD_1",
@@ -472,7 +472,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		text = [
 			{
 				text = "ZEPHYRA_SWORD_2",
@@ -511,7 +511,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		text = [
 			{
 				text = "ZEPHYRA_SWORD_3_1",
@@ -588,7 +588,7 @@ var data = {
 						]
 					}
 				],
-				character = "zephyra",
+				character = "$zephyra",
 				text = [
 					{
 						text = "ZEPHYRA_SWORD_3_3_1",
@@ -627,7 +627,7 @@ var data = {
 				reqs = [
 
 				],
-				character = "zephyra",
+				character = "$zephyra",
 				text = [
 					{
 						text = "ZEPHYRA_SWORD_3_3_2",
@@ -689,7 +689,7 @@ var data = {
 						]
 					}
 				],
-				character = "zephyra",
+				character = "$zephyra",
 				text = [
 					{
 						text = "ZEPHYRA_SWORD_3_3_1",
@@ -728,7 +728,7 @@ var data = {
 				reqs = [
 
 				],
-				character = "zephyra",
+				character = "$zephyra",
 				text = [
 					{
 						text = "ZEPHYRA_SWORD_3_3_2",
@@ -778,7 +778,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		text = [
 			{
 				text = "ZEPHYRA_SWORD_3_3_2_1",
@@ -822,7 +822,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		text = [
 			{
 				text = "ZEPHYRA_SWORD_3_3_2_2",
@@ -866,7 +866,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		text = [
 			{
 				text = "ZEPHYRA_SWORD_3_3_1_1",
@@ -905,7 +905,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		text = [
 			{
 				text = "ZEPHYRA_SWORD_3_3_1_1_1",
@@ -944,7 +944,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		text = [
 			{
 				text = "ZEPHYRA_SWORD_3_4",
@@ -983,7 +983,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		text = [
 			{
 				text = "ZEPHYRA_SWORD_3_2_FINISH",
@@ -1015,7 +1015,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "PRIESTESS_SWORD_TALK_1_1",
@@ -1060,7 +1060,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "PRIESTESS_SWORD_TALK_2",
@@ -1117,7 +1117,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "PRIESTESS_SWORD_TALK_3_123",
@@ -1736,7 +1736,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{
 				text = "MAE_MEETING_1_1",
@@ -2164,6 +2164,10 @@ var data = {
 				]
 			}
 		],
+		common_effects = [
+			{code = "material_change", operant = "-", material = "meat", value = 2000},
+			{code = "material_change", operant = "-", material = "fish", value = 2000}
+		],
 		options = [
 			{
 				code = "close",
@@ -2181,18 +2185,6 @@ var data = {
 					},
 					{
 						code = "update_city"
-					},
-					{
-						code = "material_change",
-						operant = "-",
-						material = "meat",
-						value = 2000
-					},
-					{
-						code = "material_change",
-						operant = "-",
-						material = "fish",
-						value = 2000
 					},
 					{
 						code = "add_timed_event",
@@ -2727,7 +2719,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{
 				text = "PRE_RITUAL_6",
@@ -2813,7 +2805,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{
 				text = "PRE_RITUAL_7_1AND2AND4",
@@ -2855,7 +2847,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{
 				text = "PRE_RITUAL_7_3_1",
@@ -2898,7 +2890,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{
 				text = "PRE_RITUAL_BLOW_1",
@@ -3027,7 +3019,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{
 				text = "PRE_RITUAL_7_3_3",
@@ -3056,7 +3048,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{
 				text = "PRE_RITUAL_8",
@@ -3119,7 +3111,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{
 				text = "PRE_RITUAL_10",

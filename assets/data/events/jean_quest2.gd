@@ -9,7 +9,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_RUINS_SQ_1",
 		options = [
 			{
@@ -31,7 +31,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_RUINS_SQ_2",
 		options = [
 			{
@@ -53,7 +53,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_RUINS_SQ_21",
 		options = [
 			{
@@ -84,7 +84,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_RUINS_SQ_22",
 		options = [
 			{
@@ -115,7 +115,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = [
 			{
 				text = "JEAN_RUINS_SQ_3_KIND",
@@ -162,7 +162,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = [
 			{
 				text = "JEAN_RUINS_SQ_4_KIND",
@@ -217,7 +217,7 @@ var data = {
 
 		],
 		music = 'jean_theme',
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_RUINS_SQ_5",
 		common_effects = [
 			{
@@ -249,7 +249,7 @@ var data = {
 
 		],
 		character = "ginny",
-		character2 = "jean",
+		character2 = "$jean",
 		text = "JEAN_Q2_CHURCH_ENTER",
 		options = [
 			{
@@ -272,7 +272,7 @@ var data = {
 
 		],
 		character = "ginny",
-		character2 = "jean",
+		character2 = "$jean",
 		text = "JEAN_Q2_CHURCH_2",
 		options = [
 			{
@@ -295,7 +295,7 @@ var data = {
 
 		],
 		character = "ginny",
-		character2 = "jean",
+		character2 = "$jean",
 		text = [
 			{
 				text = "JEAN_Q2_CHURCH_3_ARTIFACT",
@@ -360,7 +360,7 @@ var data = {
 
 		],
 		character = "ginny",
-		character2 = "jean",
+		character2 = "$jean",
 		text = "JEAN_Q2_CROSSREF_1",
 		options = [
 			{
@@ -383,7 +383,7 @@ var data = {
 
 		],
 		character = "ginny",
-		character2 = "jean",
+		character2 = "$jean",
 		text = "JEAN_Q2_CROSSREF_2",
 		options = [
 			{
@@ -406,7 +406,7 @@ var data = {
 
 		],
 		character = "ginny",
-		character2 = "jean",
+		character2 = "$jean",
 		text = "JEAN_Q2_LIBRARY",
 		options = [
 			{
@@ -507,7 +507,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_Q2_CENTRAL_HALL",
 		options = [
 			{
@@ -595,7 +595,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_Q2_FREE_RYNN_1",
 		options = [
 			{
@@ -626,7 +626,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = [
 			{
 				text = "JEAN_Q2_RYNN_REPRIMAND",
@@ -663,7 +663,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_Q2_RYNN_HOW_FOUND",
 		options = [
 			{
@@ -685,7 +685,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_Q2_RYNN_HOW_FOUND_3",
 		options = [
 			{
@@ -707,7 +707,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_Q2_RYNN_CAMP_SETUP",
 		options = [
 			{
@@ -729,7 +729,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_Q2_PURSUE_PAST_RYNN",
 		options = [
 			{
@@ -751,7 +751,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_Q2_PURSUE_JEAN_DOUBTS",
 		options = [
 			{
@@ -779,7 +779,7 @@ var data = {
 						check = true
 					}
 				],
-				character = "jean",
+				character = "$jean",
 				text = "JEAN_Q2_LAB_ESCAPED",
 				options = [
 					{
@@ -850,7 +850,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_Q2_CAPTURE_FIGURE_1",
 		options = [
 			{
@@ -872,7 +872,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_Q2_CAPTURE_FIGURE_2",
 		options = [
 			{
@@ -978,7 +978,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = [
 			{
 				text = "JEAN_Q2_LAB_SEARCH",
@@ -1030,7 +1030,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_Q2_LAB_REACT_PRESS_1",
 		options = [
 			{
@@ -1052,7 +1052,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_Q2_LAB_REACT_PRESS_2",
 		options = [
 			{
@@ -1074,7 +1074,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = [
 			{
 				text = "JEAN_Q2_LAB_REACT_LET",
@@ -1117,7 +1117,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_Q2_LAB_FINISH",
 		options = [
 			{
@@ -1148,7 +1148,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = [
 			{
 				text = "JEAN_Q2_BURN_LAB",
@@ -1641,7 +1641,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_Q2_CAPTIVE_FREE_1",
 		options = [
 			{
@@ -1671,7 +1671,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_Q2_CAPTIVE_FREE_2",
 		common_effects = [
 			{
@@ -1698,7 +1698,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_Q2_CAPTIVE_JAIL",
 		common_effects = [
 			{
@@ -1725,7 +1725,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_Q2_CAPTIVE_KILL_1",
 		options = [
 			{
@@ -1755,7 +1755,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_Q2_CAPTIVE_KILL_2",
 		common_effects = [
 			{
@@ -1782,7 +1782,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_Q2_CAPTIVE_FINAL",
 		options = [
 			{
@@ -1838,7 +1838,7 @@ var data = {
 				type = "next_dialogue"
 			}
 		],
-		character = "jean"
+		character = "$jean"
 	},
 	jean_q2_save_rynn_1 = {
 		tags = [
@@ -1847,7 +1847,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		common_effects = [
 			{
 				code = "decision",
@@ -1874,7 +1874,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_Q2_SAVE_RYNN_2",
 		options = [
 			{
@@ -1896,7 +1896,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		character2 = "ginny",
 		text = "JEAN_Q2_CHURCH_RYNN_ARRIVE",
 		options = [
@@ -1927,7 +1927,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		character2 = "ginny",
 		text = "JEAN_Q2_CHURCH_RYNN_2",
 		options = [
@@ -1977,7 +1977,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		common_effects = [
 			{
 				code = "decision",
@@ -2006,7 +2006,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_Q2_LEAVE_RYNN_2",
 		options = [
 			{

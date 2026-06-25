@@ -5,7 +5,7 @@ var data = {
 		tags = ["dialogue_scene"],
 		music = 'mae_theme',
 		reqs = [],
-		character = "mae",
+		character = "$mae",
 		text = "MAE_QUEST_INITIATE_START",
 		options = [
 			{
@@ -28,7 +28,7 @@ var data = {
 		image = null,
 		tags = ["dialogue_scene"],
 		reqs = [],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{text = "MAE_QUEST_INITIATE_REPLY_1", reqs = [], previous_dialogue_option = 1},
 			{text = "MAE_QUEST_INITIATE_REPLY_2", reqs = [], previous_dialogue_option = 2},
@@ -56,7 +56,7 @@ var data = {
 		image = null,
 		tags = ["dialogue_scene"],
 		reqs = [],
-		character = "mae",
+		character = "$mae",
 		text = "MAE_QUEST_INITIATE_REQUEST",
 		options = [
 			{
@@ -79,7 +79,7 @@ var data = {
 		image = null,
 		tags = ["dialogue_scene"],
 		reqs = [],
-		character = "mae",
+		character = "$mae",
 		text = "MAE_QUEST_INITIATE_CLOSE",
 		options = [
 			{
@@ -233,7 +233,7 @@ var data = {
 		image = 'mae_friend',
 		tags = ["dialogue_scene"],
 		reqs = [],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{text = "MAE_MARKET_SHELIA_RESPONSE_1", reqs = [], previous_dialogue_option = 1},
 			{text = "MAE_MARKET_SHELIA_RESPONSE_2", reqs = [], previous_dialogue_option = 2},
@@ -258,7 +258,7 @@ var data = {
 		music = 'mae_theme',
 		tags = ["dialogue_scene", "master_translate"],
 		reqs = [],
-		character = "mae",
+		character = "$mae",
 		text = "MAE_FRIEND_VISIT_1",
 		options = [
 			{code = "mae_friend_visit_1_after", text = "MAE_FRIEND_VISIT_1_OPTION_1", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
@@ -269,7 +269,7 @@ var data = {
 		image = null,
 		tags = ["dialogue_scene"],
 		reqs = [],
-		character = "mae",
+		character = "$mae",
 		text = "MAE_FRIEND_VISIT_1_AFTER",
 		options = [
 			{
@@ -304,7 +304,7 @@ var data = {
 		image = null,
 		tags = ["dialogue_scene"],
 		reqs = [],
-		character = "mae",
+		character = "$mae",
 		text = "MAE_POTION_READY",
 		options = [
 			{
@@ -322,7 +322,7 @@ var data = {
 		music = 'mae_theme',
 		tags = ["dialogue_scene"],
 		reqs = [],
-		character = "mae",
+		character = "$mae",
 		text = "MAE_FRIEND_VISIT_2_START",
 		options = [
 			{code = "mae_friend_visit_2_wait", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue"}
@@ -493,7 +493,7 @@ var data = {
 		image = 'mae_debuff',
 		tags = ["dialogue_scene"],
 		reqs = [],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{text = "MAE_SEARCH_COMPLETE_HELP", reqs = [], previous_dialogue_option = 1},
 			{text = "MAE_SEARCH_COMPLETE_STAND", reqs = [], previous_dialogue_option = 2},
@@ -506,7 +506,7 @@ var data = {
 		image = null,
 		tags = ["dialogue_scene"],
 		reqs = [],
-		character = "mae",
+		character = "$mae",
 		text = "MAE_SEARCH_COMPLETE_HOME",
 		options = [
 			{code = "mae_search_complete_response_1", text = "MAE_SEARCH_COMPLETE_HOME_OPTION_1", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
@@ -518,7 +518,7 @@ var data = {
 		image = null,
 		tags = ["dialogue_scene"],
 		reqs = [],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{text = "MAE_SEARCH_COMPLETE_RESPONSE_1", reqs = [], previous_dialogue_option = 1},
 			{text = "MAE_SEARCH_COMPLETE_RESPONSE_2", reqs = [], previous_dialogue_option = 2},
@@ -545,7 +545,7 @@ var data = {
 		image = null,
 		tags = ["dialogue_scene", "master_translate"],
 		reqs = [],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{text = "MAE_SEARCH_COMPLETE_FINAL_1", reqs = [], previous_dialogue_option = 1},
 			{text = "MAE_SEARCH_COMPLETE_FINAL_2", reqs = [], previous_dialogue_option = 2},

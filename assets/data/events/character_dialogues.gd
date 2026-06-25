@@ -9,7 +9,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		text = [
 			{
 				text = "DIALOGUEZEPHINITIATEL",
@@ -204,7 +204,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		text = [
 			{
 				text = "",
@@ -296,7 +296,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		text = [
 			{
 				text = "ZEPHYRA_EXTRA_REPLY2_1",
@@ -345,7 +345,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		text = [
 			{
 				text = "ZEPHYRA_EXTRA_REPLY3",
@@ -374,7 +374,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "kurdan",
+		character = "$kurdan",
 		text = [
 			{
 				text = "KURDAN_EXTRA_GREET",
@@ -452,7 +452,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = [
 			{
 				text = "DIALOGUEAMELIAINITIATE",
@@ -518,7 +518,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "anastasia",
+		character = "$anastasia",
 		text = [
 			{
 				text = "DIALOGUEANAINITIATELP",
@@ -1326,7 +1326,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "aire",
+		character = "$aire",
 		text = [
 			{
 				text = "DIALOGUEAIREINITIATELP",
@@ -1992,7 +1992,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "lilia",
+		character = "$lilia",
 		text = [
 			{
 				text = "DIALOGUELILIAINITIATEL",
@@ -2070,7 +2070,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "lilith",
+		character = "$lilith",
 		text = [
 			{
 				text = "DIALOGUELILITHINIT",
@@ -2111,7 +2111,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		text = [
 			{
 				text = "DIALOGUEJEANINITIATEM",
@@ -2177,12 +2177,12 @@ var data = {
 			}
 		]
 	},
-	
+
 	rouge_dialogue_start = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'rouge',
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = '$rouge',
 		text = [
 			{
-				text = "DIALOGUEROUGEINITIATEM", 
+				text = "DIALOGUEROUGEINITIATEM",
 				reqs = [
 					{type = 'active_character_checks', value = [
 						{code = 'trait', trait = 'training_s_relation', check = false},
@@ -2190,15 +2190,15 @@ var data = {
 						]
 					}],
 			},
-		], 
+		],
 		options = [
 			{code = 'rouge_chat_cult', text = "ROUGE_CHAT_OPTION_CULT", reqs = [], dialogue_argument = 1, type = 'next_dialogue', remove_after_first_use = true,},
 			{code = 'rouge_chat_melchor', text = "ROUGE_CHAT_OPTION_MELCHOR", reqs = [], dialogue_argument = 1, type = 'next_dialogue', remove_after_first_use = true,},
 			{
 				code = 'rouge_return_to_rouge',
-				text = "ROUGE_CHAT_OPTION_REPORT", 
-				reqs = [{type = 'active_quest_stage', value = 'rouge_quest', stage = 'rouge'}], 
-				dialogue_argument = 1, 
+				text = "ROUGE_CHAT_OPTION_REPORT",
+				reqs = [{type = 'active_quest_stage', value = 'rouge_quest', stage = 'rouge'}],
+				dialogue_argument = 1,
 				type = 'next_dialogue',
 			},
 			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1}
@@ -2218,24 +2218,24 @@ var data = {
 	rouge_chat_cult = {
 		reqs = [],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		tags = ["dialogue_scene"],
 		text = [
 			{text = "ROUGE_CHAT_CULT", reqs = [], previous_dialogue_option = 1},
 			{text = "ROUGE_CHAT_CULT_ALLY", reqs = [], previous_dialogue_option = 2},
 			{text = "ROUGE_CHAT_CULT_KURO", reqs = [], previous_dialogue_option = 3},
 			{text = "ROUGE_CHAT_CULT_GOAL", reqs = [], previous_dialogue_option = 4},
-		], 
+		],
 		options = [
 			{code = "rouge_chat_cult", text = "ROUGE_CHAT_OPTION_CULT_ALLY", reqs = [], type = "next_dialogue", dialogue_argument = 2},
 			{
-				code = "rouge_chat_cult", 
-				text = "ROUGE_CHAT_OPTION_KURO", 
+				code = "rouge_chat_cult",
+				text = "ROUGE_CHAT_OPTION_KURO",
 				reqs = [ #i'm very disappointed with lack of proper decision bound to kuro recruiting
 					{type = "event_seen", check = true, value = "kuro_recruit_end_zeph"},
 					{orflag = true, type = "event_seen", check = true, value = "kuro_recruit_end"},
-				], 
-				type = "next_dialogue", 
+				],
+				type = "next_dialogue",
 				dialogue_argument = 3
 			},
 			{code = "rouge_chat_cult", text = "ROUGE_CHAT_OPTION_CULT_GOAL", reqs = [], type = "next_dialogue", dialogue_argument = 4},
@@ -2243,14 +2243,14 @@ var data = {
 		]
 	},
 	rouge_chat_melchor = {
-		reqs = [], 
-		image = null, 
-		character = "rouge", 
-		tags = ["dialogue_scene"], 
-		text = "ROUGE_CHAT_MELCHOR", 
+		reqs = [],
+		image = null,
+		character = "$rouge",
+		tags = ["dialogue_scene"],
+		text = "ROUGE_CHAT_MELCHOR",
 		options = [{code = "rouge_dialogue_start", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
 	},
-	
+
 	kuro_dialogue_start = {
 		tags = [
 			"dialogue_scene"
@@ -2258,7 +2258,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "DIALOGUEKUROINIT",

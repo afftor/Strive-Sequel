@@ -1,7 +1,7 @@
 extends Reference
 var data = {
 	lira_dialogue_start = {
-		image = null, character = 'lira',
+		image = null, character = '$lira',
 		music = "lira_theme",
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
@@ -95,7 +95,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "lira",
+		character = "$lira",
 		text = [
 			{
 				text = "LIRA_LOST_START2",
@@ -132,7 +132,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "lira",
+		character = "$lira",
 		text = [
 			{
 				text = "LIRA_LOST_REPLY_SURE",
@@ -172,7 +172,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "lira",
+		character = "$lira",
 		text = [
 			{
 				text = "LIRA_LOST_REPLY_PRICE",
@@ -216,7 +216,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "lira",
+		character = "$lira",
 		text = [
 			{
 				text = "LIRA_LOST_REPLY_SOMETHING",
@@ -257,7 +257,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		character = "lira",
+		character = "$lira",
 		text = [
 			{
 				text = "LIRA_LOST_CAPITAL",

@@ -2,7 +2,7 @@ extends Reference
 var data = {
 	servants_join = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene"
 		],
@@ -61,7 +61,7 @@ var data = {
 	},
 	servants_leader_close = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene"
 		],
@@ -105,7 +105,7 @@ var data = {
 	},
 	servants_questions = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene"
 		],
@@ -179,7 +179,7 @@ var data = {
 	},
 	servants_election = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -210,7 +210,7 @@ var data = {
 	},
 	elections_start1 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -258,7 +258,7 @@ var data = {
 	},
 	elections_start2 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -294,7 +294,7 @@ var data = {
 	},
 	elections_start3 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -329,7 +329,7 @@ var data = {
 	},
 	elections_persuade = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -403,7 +403,7 @@ var data = {
 	},
 	elections_start4 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -462,7 +462,7 @@ var data = {
 	},
 	elections_start5 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -500,7 +500,7 @@ var data = {
 	},
 	servants_election_finish1 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -588,7 +588,7 @@ var data = {
 	},
 	servants_election_finish2 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene"
 		],
@@ -639,7 +639,7 @@ var data = {
 	},
 	servants_election_finish3 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -675,7 +675,7 @@ var data = {
 	},
 	servants_election_finish4 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene"
 		],
@@ -718,7 +718,7 @@ var data = {
 	},
 	servants_election_finish5 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene"
 		],
@@ -752,7 +752,7 @@ var data = {
 	},
 	servants_election_finish6 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene",
 			"blackscreen_transition_common",
@@ -798,7 +798,7 @@ var data = {
 	},
 	servants_election_finish7 = {
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		tags = [
 			"dialogue_scene"
 		],

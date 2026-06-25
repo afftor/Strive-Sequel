@@ -105,7 +105,7 @@ var data = {
 				tags = [
 					"dialogue_scene"
 				],
-				character = "aire",
+				character = "$aire",
 				text = [
 					{
 						text = "AIRE_RECRUITMENT_REPLY_BAD_START",
@@ -162,7 +162,7 @@ var data = {
 				tags = [
 					"dialogue_scene"
 				],
-				character = "aire",
+				character = "$aire",
 				text = [
 					{
 						text = "AIRE_RECRUITMENT_REPLY_GOOD_START",
@@ -211,7 +211,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "aire",
+		character = "$aire",
 		text = [
 			{
 				text = "AIRE_RECRUITMENT_REPLY_BAD_1",
@@ -268,7 +268,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "aire",
+		character = "$aire",
 		text = [
 			{
 				text = "AIRE_RECRUITMENT_REPLY_GOOD_1",
@@ -344,7 +344,7 @@ var data = {
 
 		],
 		character = "myr",
-		character2 = "jean",
+		character2 = "$jean",
 		text = [
 			{
 				text = "JEAN_INTRO_1",
@@ -375,7 +375,7 @@ var data = {
 
 		],
 		character = "myr",
-		character2 = "jean",
+		character2 = "$jean",
 		text = [
 			{
 				text = "JEAN_INTRO_2",
@@ -414,7 +414,7 @@ var data = {
 
 		],
 		character = "myr",
-		character2 = "jean",
+		character2 = "$jean",
 		text = [
 			{
 				text = "JEAN_INTRO_BAD",
@@ -450,7 +450,7 @@ var data = {
 
 		],
 		character = "myr",
-		character2 = "jean",
+		character2 = "$jean",
 		text = [
 			{
 				text = "JEAN_INTRO_3",
@@ -480,7 +480,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		common_effects = [
 			{code = "make_story_character", value = "Jean", recruit_from_location = true},
 			{
@@ -541,7 +541,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		common_effects = [
 			{code = "make_story_character", value = "Jean", recruit_from_location = true},
 			{
@@ -969,7 +969,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "cali",
+		character = "$cali",
 		text = [
 			{
 				text = "GOT_CALI_1_2",
@@ -1007,7 +1007,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "cali",
+		character = "$cali",
 		text = [
 			{
 				text = "GOT_CALI_2_1",
@@ -1263,7 +1263,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "cali",
+		character = "$cali",
 		text = [
 			{
 				text = "GOT_CALI_2_2",
@@ -1318,7 +1318,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "cali",
+		character = "$cali",
 		text = [
 			{
 				text = "GOT_CALI_3_2",
@@ -1675,7 +1675,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = [
 			{
 				text = "AMELIA_BONUS_QUESTION",
@@ -1733,7 +1733,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		common_effects = [
 			{
 				code = "update_guild"

@@ -20,7 +20,7 @@ var data = {
 				check = false
 			}
 		],
-		character = "mae",
+		character = "$mae",
 		text = "MAE_SPIRIT_QUEST_INITIATE",
 		options = [
 			{
@@ -61,7 +61,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{
 				text = "MAE_SPIRIT_QUEST_INITIATE_RESPONSE_1",
@@ -136,7 +136,7 @@ var data = {
 			"dialogue_scene",
 			"blackscreen_transition_common"
 		],
-		character = "mae",
+		character = "$mae",
 		character2 = "savra",
 		reqs = [
 
@@ -159,7 +159,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "mae",
+		character = "$mae",
 		character2 = "savra",
 		reqs = [
 
@@ -186,7 +186,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = "MAE_SPIRIT_FOLLOW_MIDNIGHT",
 		options = [
 			{
@@ -226,7 +226,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{
 				text = "MAE_SPIRIT_FOLLOW_RESPONSE_1",
@@ -304,7 +304,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "mae",
+		character = "$mae",
 		character2 = "white_stag",
 		reqs = [
 
@@ -326,7 +326,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "mae",
+		character = "$mae",
 		character2 = "white_stag",
 		reqs = [
 
@@ -375,7 +375,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "mae",
+		character = "$mae",
 		character2 = "white_stag",
 		reqs = [
 
@@ -398,7 +398,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "mae",
+		character = "$mae",
 		character2 = "white_stag",
 		reqs = [
 
@@ -421,7 +421,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "mae",
+		character = "$mae",
 		reqs = [
 
 		],
@@ -457,7 +457,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "mae",
+		character = "$mae",
 		character2 = "white_stag",
 		reqs = [
 
@@ -488,7 +488,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "mae",
+		character = "$mae",
 		character2 = "white_stag",
 		reqs = [
 
@@ -706,7 +706,7 @@ var data = {
 	},
 	mae_spirit_choice_result = {
 		image = null,
-		character = "mae",
+		character = "$mae",
 		character2 = "white_stag",
 		tags = [
 			"dialogue_scene"
@@ -732,7 +732,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "mae",
+		character = "$mae",
 		reqs = [
 
 		],
@@ -776,7 +776,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{
 				text = "MAE_SPIRIT_AFTER_CHOICE_RESPONSE_1",
@@ -863,7 +863,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = "MAE_ANCIENT_JUNGLE_RITUAL_CHOICE",
 		options = [
 			{
@@ -894,7 +894,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = "MAE_ANCIENT_JUNGLE_RITUAL_LEWD",
 		options = [
 			{
@@ -925,7 +925,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = [
 			{
 				text = "MAE_ANCIENT_JUNGLE_RITUAL_LEWD_RESPONSE_1",
@@ -1276,7 +1276,7 @@ var data = {
 	mae_spirit_visit_savra = {
 		image = null,
 		music = 'mae_theme',
-		character = "mae",
+		character = "$mae",
 		character2 = "savra",
 		tags = [
 			"dialogue_scene"
@@ -1314,7 +1314,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = "MAE_SPIRIT_VISIT_SAVRA_RESPONSE",
 		options = [
 			{
@@ -1362,7 +1362,7 @@ var data = {
 				type = "next_dialogue"
 			}
 		],
-		character = "mae"
+		character = "$mae"
 	},
 	mae_spirit_northern_directions = {
 		tags = [
@@ -1383,7 +1383,7 @@ var data = {
 				type = "next_dialogue"
 			}
 		],
-		character = "mae"
+		character = "$mae"
 	},
 	mae_spirit_northern_shaman = {
 		tags = [
@@ -1392,7 +1392,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = "MAE_NORTHERN_TRIBE_SHAMAN",
 		options = [
 			{
@@ -1414,7 +1414,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = "MAE_NORTHERN_TRIBE_REQUEST",
 		options = [
 			{
@@ -1436,7 +1436,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = "MAE_NORTHERN_TRIBE_REQUEST_2",
 		options = [
 			{
@@ -1458,7 +1458,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = "MAE_NORTHERN_TRIBE_REQUEST_3",
 		options = [
 			{
@@ -1489,7 +1489,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = "MAE_NORTHERN_TRIBE_OFFER",
 		options = [
 			{
@@ -1512,7 +1512,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "mae",
+		character = "$mae",
 		text = "MAE_NORTHERN_TRIBE_OFFER_2",
 		options = [
 			{
@@ -1566,7 +1566,7 @@ var data = {
 				tags = [
 					"dialogue_scene"
 				],
-				character = "mae",
+				character = "$mae",
 				text = "MAE_NORTHERN_RITUAL_ACCEPT",
 				options = [
 					{
@@ -1590,7 +1590,7 @@ var data = {
 				tags = [
 					"dialogue_scene"
 				],
-				character = "mae",
+				character = "$mae",
 				text = "MAE_NORTHERN_RITUAL_REFUSE",
 				options = [
 					{
@@ -1760,7 +1760,7 @@ var data = {
 			"dialogue_scene",
 			"blackscreen_transition_common"
 		],
-		character = "mae",
+		character = "$mae",
 		reqs = [
 
 		],
@@ -1783,7 +1783,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		character = "mae",
+		character = "$mae",
 		reqs = [
 
 		],
@@ -1836,7 +1836,7 @@ var data = {
 			}
 		],
 		character2 = "rakar",
-		character = "mae"
+		character = "$mae"
 	},
 	mae_spirit_northern_decline_2 = {
 		tags = [
@@ -1857,7 +1857,7 @@ var data = {
 				type = "next_dialogue"
 			}
 		],
-		character = "mae"
+		character = "$mae"
 	},
 	mae_spirit_northern_decline_fade = {
 		image = null,
@@ -1902,7 +1902,7 @@ var data = {
 			}
 		],
 		character2 = "rakar",
-		character = "mae"
+		character = "$mae"
 	},
 	mae_spirit_northern_missed = {
 		tags = [
@@ -1923,7 +1923,7 @@ var data = {
 				type = "next_dialogue"
 			}
 		],
-		character = "mae",
+		character = "$mae",
 		character2 = "rakar"
 	},
 	mae_spirit_northern_missed_fade = {
@@ -1946,7 +1946,7 @@ var data = {
 				type = "next_dialogue"
 			}
 		],
-		character = "mae",
+		character = "$mae",
 		character2 = "rakar"
 	}
 }

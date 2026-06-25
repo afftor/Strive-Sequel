@@ -2,7 +2,7 @@ extends Reference
 var data = {
 	lira_bonus1_1 = {
 		image = null,
-		character = "lira",
+		character = "$lira",
 		music = "lira_theme",
 		tags = ["dialogue_scene", 'master_translate'],
 		reqs = [],

@@ -660,7 +660,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "hara",
+		character = "$hara",
 		tags = [
 			"dialogue_scene"
 		],

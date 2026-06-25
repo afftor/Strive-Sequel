@@ -156,7 +156,7 @@ var data = {
 	},
 	lira_mansion_9 = {
 		image = null,
-		character = 'lira',
+		character = '$lira',
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = "LIRA_MANSION_9", 

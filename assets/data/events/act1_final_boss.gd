@@ -13,7 +13,7 @@ var data = {
 			},
 			{
 				reqs = [{type = 'decision', value = 'aire_is_saved', check = false}],
-				image = null, character = "aire",
+				image = null, character = "$aire",
 				tags = ['master_translate'],
 				text = [{text = "FINAL_BOSS_2", reqs = []}],
 				options = [
@@ -22,7 +22,7 @@ var data = {
 			},
 			{
 				reqs = [{type = 'decision', value = 'aire_raped', check = true}],
-				image = null, character = "aire",
+				image = null, character = "$aire",
 				tags = ['master_translate'],
 				text = [{text = "FINAL_BOSS_3", reqs = []}],
 				options = [
@@ -37,7 +37,7 @@ var data = {
 			},
 			{
 				reqs = [{type = 'decision', value = 'aire_raped', check = false}],
-				image = null, character = "aire",
+				image = null, character = "$aire",
 				tags = ['master_translate'],
 				text = [{text = "FINAL_BOSS_4", reqs = []}],
 				options = [
@@ -53,7 +53,7 @@ var data = {
 		]
 	},
 	aire_combat_on_win_2 = {
-		image = null, character = "duncan", character2 = "aire",
+		image = null, character = "duncan", character2 = "$aire",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "AIRE_COMBAT_ON_WIN_2", reqs = []},
@@ -70,7 +70,7 @@ var data = {
 	},
 	aire_combat_on_win_3 = {
 			reqs = [],
-			image = null, character = "duncan", character2 = "aire",
+			image = null, character = "duncan", character2 = "$aire",
 			tags = ['dialogue_scene', 'master_translate'],
 			text = [{text = "AIRE_COMBAT_ON_WIN_3", reqs = []}],
 			options = [

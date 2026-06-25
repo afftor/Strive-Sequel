@@ -128,7 +128,7 @@ var data = {
 			reqs = [{type = 'decision', value = 'aire_is_dead', check = false}],
 			image = null,
 			music = 'threat',
-			character = "greg", character2 = "anastasia",
+			character = "greg", character2 = "$anastasia",
 			tags = ['dialogue_scene', 'master_translate'],
 			text = [
 				{text = "GUILD_ATTACK_ON_HIDEOUT_1", reqs = []},
@@ -147,7 +147,7 @@ var data = {
 			reqs = [{type = 'decision', value = 'aire_is_dead', check = true}],
 			image = null,
 			music = 'threat',
-			character = "greg", character2 = "anastasia",
+			character = "greg", character2 = "$anastasia",
 			tags = ['dialogue_scene', 'master_translate'],
 			text = [
 				{text = "GUILD_ATTACK_ON_HIDEOUT_4_2", reqs = []},
@@ -166,7 +166,7 @@ var data = {
 	
 	guild_attack_on_hideout_2 = {
 		image = null,
-		character = "greg", character2 = "anastasia",
+		character = "greg", character2 = "$anastasia",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "GUILD_ATTACK_ON_HIDEOUT_2", reqs = []},
@@ -184,7 +184,7 @@ var data = {
 	
 	guild_attack_on_hideout_3 = {
 		image = null,
-		character = "anastasia", character2 = "aire",
+		character = "$anastasia", character2 = "$aire",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "GUILD_ATTACK_ON_HIDEOUT_3", reqs = []},
@@ -202,7 +202,7 @@ var data = {
 	
 	guild_attack_on_hideout_4 = {
 		image = null,
-		character = "greg", character2 = "aire",
+		character = "greg", character2 = "$aire",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "GUILD_ATTACK_ON_HIDEOUT_4_1", reqs = []},
@@ -220,7 +220,7 @@ var data = {
 	
 	guild_attack_on_hideout_5 = {
 		image = null,
-		character = "greg", character2 = "anastasia",
+		character = "greg", character2 = "$anastasia",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "GUILD_ATTACK_ON_HIDEOUT_4_3", reqs = []},

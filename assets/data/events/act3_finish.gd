@@ -47,7 +47,7 @@ var data = {
 			"dialogue_scene"
 		],
 		character = "dwarf_king",
-		character2 = "kuro",
+		character2 = "$kuro",
 		text = [
 			{
 				text = "DWARF_CEREMONY_REPLY_PAYMENT",
@@ -110,7 +110,7 @@ var data = {
 			"dialogue_scene"
 		],
 		character = "dwarf_king",
-		character2 = "kuro",
+		character2 = "$kuro",
 		text = [
 			{
 				text = "DWARF_CEREMONY_INTRO3",
@@ -140,7 +140,7 @@ var data = {
 			"dialogue_scene"
 		],
 		character = "dwarf_king",
-		character2 = "kuro",
+		character2 = "$kuro",
 		text = [
 			{
 				text = "DWARF_CEREMONY_PEAK_KING",
@@ -238,7 +238,7 @@ var data = {
 			"dialogue_scene",
 			"blackscreen_transition_common"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "DWARF_CEREMONY_KURO",
@@ -284,7 +284,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "DWARF_CEREMONY_REPLY_BETRAYAL",
@@ -327,7 +327,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		character2 = "dwarf_king",
 		text = [
 			{
@@ -429,7 +429,7 @@ var data = {
 					"dialogue_scene"
 				],
 				music = 'threat',
-				character = "kuro",
+				character = "$kuro",
 				character2 = "demon_female",
 				text = [
 					{
@@ -463,7 +463,7 @@ var data = {
 					"dialogue_scene",
 					"master_translate"
 				],
-				character = "kuro",
+				character = "$kuro",
 				character2 = "ketch",
 				text = [
 					{
@@ -495,7 +495,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		character = "kuro",
+		character = "$kuro",
 		character2 = "demon_female",
 		text = [
 			{
@@ -526,7 +526,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		character = "kuro",
+		character = "$kuro",
 		character2 = "ketch",
 		text = [
 			{
@@ -555,7 +555,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		character2 = "ketch",
 		text = [
 			{
@@ -596,7 +596,7 @@ var data = {
 				tags = [
 					"dialogue_scene"
 				],
-				character = "kuro",
+				character = "$kuro",
 				character2 = "ketch",
 				text = [
 					{
@@ -645,7 +645,7 @@ var data = {
 				tags = [
 					"dialogue_scene"
 				],
-				character = "kuro",
+				character = "$kuro",
 				character2 = "ketch",
 				text = [
 					{
@@ -692,7 +692,7 @@ var data = {
 			"dialogue_scene"
 		],
 		music = 'tragic',
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURORES_FINALE_HELPKURO",
@@ -721,7 +721,7 @@ var data = {
 			"dialogue_scene",
 			"blackscreen_transition_common"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURORES_FINALE_HELPKURO2",
@@ -751,8 +751,8 @@ var data = {
 			"master_translate"
 		],
 		music = 'tragic',
-		character = "kuro",
-		character2 = "zephyra",
+		character = "$kuro",
+		character2 = "$zephyra",
 		text = [
 			{
 				text = "KURORES_FINALE_HELPZEPH",
@@ -844,7 +844,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURORES_FINALE_REPLY_CANT",
@@ -2024,7 +2024,7 @@ var data = {
 					"dialogue_scene",
 					"master_translate"
 				],
-				character = "jean",
+				character = "$jean",
 				text = [
 					{
 						text = "JEAN_RECRUIT_START_HELP",
@@ -2071,7 +2071,7 @@ var data = {
 				tags = [
 					"dialogue_scene"
 				],
-				character = "jean",
+				character = "$jean",
 				text = [
 					{
 						text = "JEAN_RECRUIT_START_REPORT",
@@ -2113,7 +2113,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "jean",
+		character = "$jean",
 		text = [
 			{
 				text = "JEAN_RECRUIT_REPLY_JOIN",
@@ -2183,7 +2183,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "jean",
+		character = "$jean",
 		text = "JEAN_RECRUIT_GO",
 		options = [
 			{
@@ -2218,7 +2218,7 @@ var data = {
 				args = [{type = "add_to_date", date = [3,4], hour = 1}]
 			}
 		],
-		character = "jean",
+		character = "$jean",
 		text = [
 			{
 				text = "JEAN_RECRUIT_REPLY_ASAP",
@@ -2266,7 +2266,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "hara",
+		character = "$hara",
 		music = 'hara_theme',
 		text = [
 			{
@@ -2323,7 +2323,7 @@ var data = {
 				code = "update_city"
 			}
 		],
-		character = "hara",
+		character = "$hara",
 		text = [
 			{
 				text = "HARA_RECRUIT_REPLY_PRO",
@@ -2359,7 +2359,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "hara",
+		character = "$hara",
 		text = [
 			{
 				text = "HARA_RECRUIT_FLIRTY",
@@ -2396,7 +2396,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_RECRUIT_START",
@@ -2449,7 +2449,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "",
@@ -2553,7 +2553,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_RECRUIT_REPLY_CULTPLAN",
@@ -2614,7 +2614,7 @@ var data = {
 				tags = [
 					"dialogue_scene"
 				],
-				character = "kuro",
+				character = "$kuro",
 				text = [
 					{
 						text = "KURO_RECRUIT_JOIN_ZEPH",
@@ -2642,7 +2642,7 @@ var data = {
 				tags = [
 					"dialogue_scene"
 				],
-				character = "kuro",
+				character = "$kuro",
 				text = [
 					{
 						text = "KURO_RECRUIT_JOIN_NOZEPH",
@@ -2727,7 +2727,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		character = "zephyra",
+		character = "$zephyra",
 		text = [
 			{
 				text = "KURO_RECRUIT_JOIN_ZEPH2",
@@ -2770,8 +2770,8 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
-		character2 = "zephyra",
+		character = "$kuro",
+		character2 = "$zephyra",
 		text = [
 			{
 				text = "KURO_RECRUIT_JOIN_ZEPH3",
@@ -2807,8 +2807,8 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
-		character2 = "zephyra",
+		character = "$kuro",
+		character2 = "$zephyra",
 		text = [
 			{
 				text = "KURO_RECRUIT_REPLY_NOWORRY",
@@ -2837,8 +2837,8 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		character = "kuro",
-		character2 = "zephyra",
+		character = "$kuro",
+		character2 = "$zephyra",
 		text = [
 			{
 				text = "KURO_RECRUIT_JOIN_ZEPH4",
@@ -2867,8 +2867,8 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		character = "kuro",
-		character2 = "zephyra",
+		character = "$kuro",
+		character2 = "$zephyra",
 		text = [
 			{
 				text = "KURO_RECRUIT_JOIN_ZEPH5",
@@ -2892,8 +2892,8 @@ var data = {
 	kuro_recruit_end_zeph = {
 		reqs = [],
 		tags = ["dialogue_scene", "master_translate"],
-		character = "kuro",
-		character2 = "zephyra",
+		character = "$kuro",
+		character2 = "$zephyra",
 		text = "KURO_RECRUIT_JOIN_ZEPH6",
 		options = [
 			{
@@ -2923,7 +2923,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_RECRUIT_Q_TRUST",
@@ -2969,7 +2969,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_RECRUIT_REPLY_A_BEST",
@@ -3005,7 +3005,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_RECRUIT_Q_REASON",
@@ -3051,7 +3051,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_RECRUIT_REPLY_A_SMART",
@@ -3080,7 +3080,7 @@ var data = {
 			"dialogue_scene"
 		],
 		custom_background = "blackscreen",
-		character = "kuro",
+		character = "$kuro",
 		text = "KURO_RECRUIT_Q_KILL",
 		options = [
 			{
@@ -3145,7 +3145,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_RECRUIT_REPLY_A_NOTRUST",
@@ -3211,7 +3211,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "kuro",
+		character = "$kuro",
 		text = [
 			{
 				text = "KURO_RECRUIT_RIGHT",
@@ -3235,7 +3235,7 @@ var data = {
 	kuro_recruit_end = {
 		reqs = [],
 		tags = ["dialogue_scene"],
-		character = "kuro",
+		character = "$kuro",
 		text = "KURO_RECRUIT_END",
 		options = [
 			{

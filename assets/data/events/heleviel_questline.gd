@@ -8,7 +8,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		music = "heleviel_theme", 
 		text = "HELEVIEL_QUEST_1",
 		options = [
@@ -96,7 +96,7 @@ var data = {
 				]
 			}
 		],
-		character = "heleviel"
+		character = "$heleviel"
 	},
 	heleviel_quest_3 = {
 		music = "heleviel_theme", 
@@ -505,7 +505,7 @@ var data = {
 	heleviel_slave_church_init = {
 		image = null,
 		reqs = [],
-		character = "heleviel",
+		character = "$heleviel",
 		tags = ["dialogue_scene", "master_translate"],
 		text = "HELEVIEL_SLAVE_CHURCH_INIT",
 		options = [
@@ -536,7 +536,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		character2 = "ginny",
 		text = [
 			{
@@ -584,7 +584,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		character2 = "ginny",
 		text = [
 			{
@@ -823,7 +823,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "HELEVIEL_SLAVE_CHURCH_POISON_TEXT",
@@ -861,7 +861,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "HELEVIEL_SLAVE_CHURCH_POISON_REPLY_1",
@@ -907,7 +907,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "HELEVIEL_SLAVE_CHURCH_POISON_REPLY",
@@ -942,7 +942,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		character2 = "savra",
 		text = [
 			{
@@ -981,7 +981,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		character2 = "savra",
 		text = [
 			{
@@ -1011,7 +1011,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "HELEVIEL_SLAVE_BEASTKIN_CHILD_TEXT",
@@ -1040,7 +1040,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "HELEVIEL_SLAVE_BEASTKIN_CHILD_TEXT_2",
@@ -1203,7 +1203,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "HELEVIEL_SLAVE_BEASTKIN_RETURN_TEXT",
@@ -1240,7 +1240,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "HELEVIEL_SLAVE_BEASTKIN_RETURN_TEXT_2",
@@ -1249,6 +1249,7 @@ var data = {
 				]
 			}
 		],
+		common_effects = [{code = "affect_unique_character", name = "heleviel", type = "remove_trait", trait = "crude"}],
 		options = [
 			{
 				code = "close",
@@ -1257,12 +1258,6 @@ var data = {
 
 				],
 				bonus_effects = [
-					{
-						code = "affect_unique_character",
-						name = "heleviel",
-						type = "remove_trait",
-						trait = "crude"
-					},
 					{
 						code = "complete_quest",
 						value = "heleviel_quest2",
@@ -1294,7 +1289,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "HELEVIEL_SLAVE_RITUAL_REQUEST_TEXT",
@@ -1348,7 +1343,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "HELEVIEL_SLAVE_RITUAL_REPLY_2",
@@ -1607,6 +1602,7 @@ var data = {
 		],
 		character = "lira_priestess",
 		text = "HELEVIEL_SLAVE_RITUAL_PAY_TEXT",
+		common_effects = [{code = "money_change", operant = "-", value = 2500}],
 		options = [
 			{
 				code = "close",
@@ -1617,11 +1613,6 @@ var data = {
 				dialogue_argument = 1,
 				type = "next_dialogue",
 				bonus_effects = [
-					{
-						code = "money_change",
-						operant = "-",
-						value = 2500
-					},
 					{
 						code = "add_timed_event",
 						args = [
@@ -1687,7 +1678,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "HELEVIEL_SLAVE_RITUAL_CEREMONY_MID",
@@ -1716,7 +1707,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = "HELEVIEL_SLAVE_RITUAL_CEREMONY_FREYA",
 		options = [
 			{
@@ -1739,7 +1730,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = "HELEVIEL_SLAVE_RITUAL_CEREMONY_FREYA_2",
 		options = [
 			{
@@ -1762,7 +1753,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = "HELEVIEL_SLAVE_RITUAL_CEREMONY_FREYA_3",
 		options = [
 			{
@@ -1785,7 +1776,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = "HELEVIEL_SLAVE_RITUAL_CEREMONY_FREYA_4",
 		options = [
 			{
@@ -1808,7 +1799,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = "HELEVIEL_SLAVE_RITUAL_CEREMONY_ORDER",
 		options = [
 			{
@@ -1831,7 +1822,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = "HELEVIEL_SLAVE_RITUAL_CEREMONY_ORDER_2",
 		options = [
 			{
@@ -1854,7 +1845,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = "HELEVIEL_SLAVE_RITUAL_CEREMONY_ORDER_3",
 		options = [
 			{
@@ -1877,7 +1868,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = "HELEVIEL_SLAVE_RITUAL_CEREMONY_CONCLUSION",
 		options = [
 			{
@@ -1899,7 +1890,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = "HELEVIEL_SLAVE_RITUAL_INTERLUDE",
 		options = [
 			{
@@ -1942,7 +1933,7 @@ var data = {
 						]
 					}
 				],
-				character = "heleviel",
+				character = "$heleviel",
 				text = [
 					{
 						text = "HELEVIEL_SLAVE_RITUAL_SEX_ATTEMPT_1",
@@ -1972,7 +1963,7 @@ var data = {
 				reqs = [
 
 				],
-				character = "heleviel",
+				character = "$heleviel",
 				text = [
 					{
 						text = "HELEVIEL_SLAVE_RITUAL_SEX_ATTEMPT_2",
@@ -2004,7 +1995,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "HELEVIEL_SLAVE_RITUAL_END_TEXT",
@@ -2044,7 +2035,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		text = [
 			{
 				text = "HELEVIEL_SLAVE_RITUAL_END_2",
@@ -2053,6 +2044,9 @@ var data = {
 				]
 			}
 		],
+		common_effects = [{code = "unique_character_changes", value = "heleviel", args = [
+			{code = "add_trait", trait = "training_s_combat"}
+		]}],
 		options = [
 			{
 				code = "close",
@@ -2064,16 +2058,6 @@ var data = {
 					{
 						code = "decision",
 						value = "HelevielTrainingFinished"
-					},
-					{
-						code = "unique_character_changes",
-						value = "heleviel",
-						args = [
-							{
-								code = "add_trait",
-								trait = "training_s_combat"
-							}
-						]
 					},
 					{
 						code = "complete_quest",
@@ -2474,7 +2458,7 @@ var data = {
 				change_dialogue_type = 2
 			}
 		],
-		character = "heleviel"
+		character = "$heleviel"
 	},
 	heleviel_wedding_2 = {
 		reqs = [

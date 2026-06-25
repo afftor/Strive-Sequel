@@ -5,22 +5,22 @@ var data = {
 		reqs = [],
 		text = [{text = "LILIA_PRELUDE1", reqs = []}],
 		options = [ {
-			code = 'lilia_search_start_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			code = 'lilia_search_start_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		} ]
 	},
 	lilia_search_start_1 = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], 
+		reqs = [],
 		text = [{text = "LILIA_PRELUDE2", reqs = []}],
 		options = [{
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 			bonus_effects = [{code = 'progress_quest', value = 'lilia_meet_quest', stage = 'stage1'},{code = 'update_city'}]
 		},]
 	},
-	
+
 	lilia_startring_1 = {
 		image = null, music = "lilia_theme",tags = ['dialogue_scene'],
-		reqs = [], character = "lilia", 
+		reqs = [], character = "$lilia",
 		text = [
 			{text = "LILIA_STARTING_1_FAIRY", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "Fairy"}]}]},
 			{text = "LILIA_STARTING_1_SMALL", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'neq', value = "Fairy"}, {code = 'stat', stat = 'height', operant = 'in', value = ['tiny','petite']}]}]},
@@ -30,15 +30,15 @@ var data = {
 		options = [ {
 			code = 'lilia_starting_2', text = "LILIA_STARTING_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', master_translate = true,
 		}, {
-			code = 'lilia_starting_2', text = "LILIA_STARTING_1_OPTION_2", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			code = 'lilia_starting_2', text = "LILIA_STARTING_1_OPTION_2", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, {
-			code = 'lilia_starting_2', text = "LILIA_STARTING_1_OPTION_3", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			code = 'lilia_starting_2', text = "LILIA_STARTING_1_OPTION_3", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ]
 	},
-	
+
 	lilia_starting_2 = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = "lilia", 
+		reqs = [], character = "$lilia",
 		text = [{text = "LILIA_STARTING_2_1", reqs = [], previous_dialogue_option = 1},
 		{text = "LILIA_STARTING_2_2", reqs = [], previous_dialogue_option = [0, 12]},
 		{text = "LILIA_RECRUIT_NO", reqs = [], previous_dialogue_option = 6},
@@ -53,62 +53,62 @@ var data = {
 		}, {
 			code = 'lilia_starting_2', text = "LILIA_STARTING_2_OPTION_3", reqs = [], dialogue_argument = 3
 		}, {
-			code = 'close', text = "LILIA_STARTING_2_OPTION_4", reqs = [], dialogue_argument = 4, 
+			code = 'close', text = "LILIA_STARTING_2_OPTION_4", reqs = [], dialogue_argument = 4,
 			bonus_effects = [{code = 'update_location'}]
 		}, ]
 	},
-	
+
 	lilia_sex_scene_0 = {
 		variations = [ {
 			image = null, tags = ['dialogue_scene', 'master_translate'],
-			reqs = [{type = 'decision', value = 'seduced_lilia', check = true}], character = "lilia", 
+			reqs = [{type = 'decision', value = 'seduced_lilia', check = true}], character = "$lilia",
 			music = "intimate_funny",
 			text = [{text = "LILIA_SEX_SCENE_0", reqs = []}],
 			options = [ {
-				code = 'lilia_sex_scene_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+				code = 'lilia_sex_scene_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 				change_dialogue_type = 2
 			} ]
-		}, { 
+		}, {
 			image = null, tags = ['dialogue_scene'],
-			reqs = [{type = 'decision', value = 'seduced_lilia', check = false}], character = "lilia", 
+			reqs = [{type = 'decision', value = 'seduced_lilia', check = false}], character = "$lilia",
 			music = "intimate_funny",
 			text = [{text = "LILIA_SEDUCTION_1", reqs = []},],
 			options = [ {
 				code = 'lilia_sex_scene_1', text = "LILIA_SEDUCTION_1_OPTION_1", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 4}]}], dialogue_argument = 10, type = 'next_dialogue',
 			}, {
-				code = 'lilia_starting_2', text = "LILIA_SEDUCTION_1_OPTION_2", reqs = [], dialogue_argument = 7, type = 'next_dialogue', 
+				code = 'lilia_starting_2', text = "LILIA_SEDUCTION_1_OPTION_2", reqs = [], dialogue_argument = 7, type = 'next_dialogue',
 			}, {
-				code = 'lilia_starting_2', text = "LILIA_SEDUCTION_1_OPTION_3", reqs = [], dialogue_argument = 7, type = 'next_dialogue', 
+				code = 'lilia_starting_2', text = "LILIA_SEDUCTION_1_OPTION_3", reqs = [], dialogue_argument = 7, type = 'next_dialogue',
 			}, {
-				code = 'lilia_seduction_2_4', text = "LILIA_SEDUCTION_1_OPTION_4", reqs = [], dialogue_argument = 4, type = 'next_dialogue', 
+				code = 'lilia_seduction_2_4', text = "LILIA_SEDUCTION_1_OPTION_4", reqs = [], dialogue_argument = 4, type = 'next_dialogue',
 			}, ]
 		} ]
 	},
-	
+
 	lilia_seduction_2_4 = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = "lilia", 
+		reqs = [], character = "$lilia",
 		text = [{text = "LILIA_SEDUCTION_2_4", reqs = [], previous_dialogue_option = 4},
 		],
 		options = [ {
 			code = 'lilia_sex_scene_1', text = "LILIA_SEDUCTION_2_4_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, {
-			code = 'lilia_starting_2', text = "LILIA_SEDUCTION_2_4_OPTION_2", reqs = [], dialogue_argument = 8, type = 'next_dialogue', 
+			code = 'lilia_starting_2', text = "LILIA_SEDUCTION_2_4_OPTION_2", reqs = [], dialogue_argument = 8, type = 'next_dialogue',
 		}, {
-			code = 'lilia_starting_2', text = "LILIA_SEDUCTION_2_4_OPTION_3", reqs = [], dialogue_argument = 8, type = 'next_dialogue', 
+			code = 'lilia_starting_2', text = "LILIA_SEDUCTION_2_4_OPTION_3", reqs = [], dialogue_argument = 8, type = 'next_dialogue',
 		}, ]
 	},
-	
+
 	lilia_sex_scene_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		scene_type = "unlocked_gallery_seq",
 		unlocked_gallery_seq = "lilia_sex",
 		save_scene_to_gallery = true,
-		reqs = [], character = "lilia", 
+		reqs = [], character = "$lilia",
 		text = [{text = "LILIA_SEX_SCENE_1", reqs = []}],
 		common_effects = [{code = 'decision', value = 'seduced_lilia'}],
 		options = [ {
-			code = 'lilia_sex_scene_1_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			code = 'lilia_sex_scene_1_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			change_dialogue_type = 2
 		} ]
 	},
@@ -122,7 +122,7 @@ var data = {
 		common_effects = [{code = 'unique_character_changes', value = 'lilia', args = [
 			{code = 'tag', operant = 'remove', value = 'no_sex'}]},],
 		options = [ {
-			code = 'lilia_sex_scene_1_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			code = 'lilia_sex_scene_1_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		} ]
 	},
 	lilia_sex_scene_1_2 = {
@@ -134,37 +134,37 @@ var data = {
 		text = [{text = "LILIA_SEX_SCENE_1_2", reqs = []}],
 		common_effects = [],
 		options = [ {
-			code = 'lilia_sex_scene_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			code = 'lilia_sex_scene_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		} ]
 	},
 	lilia_sex_scene_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], 
+		reqs = [],
 		text = [{text = "LILIA_SEX_SCENE_2", reqs = []}],
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		custom_background = "lilia_sex_1_3",
 		options = [ {
-			code = 'lilia_sex_scene_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			code = 'lilia_sex_scene_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		} ]
 	},
-	
+
 	lilia_sex_scene_3 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], 
+		reqs = [],
 		text = [{text = "LILIA_SEX_SCENE_3", reqs = []}],
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		custom_background = "lilia_sex_1_4",
 		options = [ {
-			code = 'lilia_starting_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 12, type = 'next_dialogue', 
+			code = 'lilia_starting_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 12, type = 'next_dialogue',
 			change_dialogue_type = 1
 		} ]
 	},
-	
-	lilia_recruit_1 = { 
+
+	lilia_recruit_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "lilia", 
+		reqs = [], character = "$lilia",
 		text = [{text = "LILIA_RECRUIT_1_1", reqs = [{type = 'decision', value = 'seduced_lilia', check = false}]},
 		{text = "LILIA_RECRUIT_1_2", reqs = [{type = 'decision', value = 'seduced_lilia', check = true}]}],
 		options = [ {
@@ -172,17 +172,17 @@ var data = {
 		}, {
 			code = 'lilia_starting_2', text = "LILIA_RECRUIT_1_OPTION_1", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm_factor', operant = 'lt', value = 5}]}], dialogue_argument = 66, type = 'next_dialogue'
 		}, {
-			code = 'lilia_starting_2', text = "LILIA_RECRUIT_1_OPTION_2", reqs = [], dialogue_argument = 6, type = 'next_dialogue', 
+			code = 'lilia_starting_2', text = "LILIA_RECRUIT_1_OPTION_2", reqs = [], dialogue_argument = 6, type = 'next_dialogue',
 		}, {
-			code = 'lilia_starting_2', text = "LILIA_RECRUIT_1_OPTION_3", reqs = [], dialogue_argument = 6, type = 'next_dialogue', 
+			code = 'lilia_starting_2', text = "LILIA_RECRUIT_1_OPTION_3", reqs = [], dialogue_argument = 6, type = 'next_dialogue',
 		}, {
-			code = 'lilia_recruit_1_4', text = "LILIA_RECRUIT_1_OPTION_4", reqs = [], dialogue_argument = 4, type = 'next_dialogue', 
+			code = 'lilia_recruit_1_4', text = "LILIA_RECRUIT_1_OPTION_4", reqs = [], dialogue_argument = 4, type = 'next_dialogue',
 		}, ]
 	},
-	
+
 	lilia_recruited = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = "lilia", 
+		reqs = [], character = "$lilia",
 		text = [{text = "LILIA_RECRUITED", reqs = [], previous_dialogue_option = 1},
 		{text = "LILIA_RECRUITED_GREEN", reqs = [], previous_dialogue_option = 11},],
 		common_effects = [{code = 'make_story_character', value = 'Lilia', recruit_from_location = true},
@@ -198,10 +198,10 @@ var data = {
 			]
 		}, ]
 	},
-	
-	lilia_recruit_1_4 = { 
+
+	lilia_recruit_1_4 = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = "lilia", 
+		reqs = [], character = "$lilia",
 		text = [{text = "LILIA_RECRUIT_1_4", reqs = []}],
 		options = [ {
 			code = 'lilia_starting_2', text = "LILIA_RECRUIT_1_4_OPTION_1", reqs = [], dialogue_argument = 6, type = 'next_dialogue'
@@ -211,10 +211,10 @@ var data = {
 			code = 'lilia_starting_2', text = "LILIA_RECRUIT_1_4_OPTION_3", reqs = [], dialogue_argument = 6, type = 'next_dialogue'
 		}, ]
 	},
-	
-	sick_lilia_start = { 
+
+	sick_lilia_start = {
 		image = 'lilia_sick', tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], #character = "lilia", 
+		reqs = [], # character = "lilia",
 		text = [{text = "SICK_LILIA_START", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -223,10 +223,10 @@ var data = {
 			{code = 'update_mansion'}]
 		}, ]
 	},
-	
-	sick_lilia_1 = { 
+
+	sick_lilia_1 = {
 		image = null, music = 'tragic', tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "myr", 
+		reqs = [], character = "myr",
 		text = [{text = "SICK_LILIA_1", reqs = []}],
 		options = [ {
 			code = 'sick_lilia_2', text = "SICK_LILIA_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -234,10 +234,10 @@ var data = {
 			code = 'sick_lilia_2', text = "SICK_LILIA_1_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
 		}, ]
 	},
-	
-	sick_lilia_2 = { 
+
+	sick_lilia_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "myr", 
+		reqs = [], character = "myr",
 		text = [{text = "SICK_LILIA_2_1", reqs = [], previous_dialogue_option = 1},
 		{text = "SICK_LILIA_2_2", reqs = [], previous_dialogue_option = 2}],
 		options = [ {
@@ -246,10 +246,10 @@ var data = {
 			code = 'sick_lilia_3', text = "SICK_LILIA_2_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
 		}, ]
 	},
-	
-	sick_lilia_3 = { 
+
+	sick_lilia_3 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "myr", 
+		reqs = [], character = "myr",
 		text = [{text = "SICK_LILIA_3_1", reqs = [], previous_dialogue_option = 1},
 		{text = "SICK_LILIA_3_2", reqs = [], previous_dialogue_option = 2}],
 		common_effects = [{code = 'make_quest_location', value = 'quest_mages_xari'}],
@@ -259,20 +259,20 @@ var data = {
 			code = 'sick_lilia_4_2', text = "SICK_LILIA_3_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
 		}, ]
 	},
-	
-	sick_lilia_4_1 = { 
+
+	sick_lilia_4_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "myr", 
+		reqs = [], character = "myr",
 		text = [{text = "SICK_LILIA_4_1", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'progress_quest', value = 'sick_lilia_quest', stage = 'stage2'}],
 		}, ]
 	},
-	
-	sick_lilia_4_2 = { 
+
+	sick_lilia_4_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "myr", 
+		reqs = [], character = "myr",
 		text = [{text = "SICK_LILIA_4_2", reqs = []}],
 		options = [ {
 			code = 'sick_lilia_5', text = "SICK_LILIA_4_2_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -280,29 +280,29 @@ var data = {
 			code = 'sick_lilia_5', text = "SICK_LILIA_4_2_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', master_translate = true
 		}, ]
 	},
-	
-	sick_lilia_5 = { 
+
+	sick_lilia_5 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "myr", 
+		reqs = [], character = "myr",
 		text = [{text = "SICK_LILIA_5", reqs = []}],
 		options = [ {
 			code = 'sick_lilia_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ]
 	},
-	
-	sick_lilia_6 = { 
+
+	sick_lilia_6 = {
 		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
-		reqs = [], character = "myr", 
+		reqs = [], character = "myr",
 		text = [{text = "SICK_LILIA_6", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'progress_quest', value = 'sick_lilia_quest', stage = 'stage2'}],
 		}, ]
 	},
-	
+
 	xari_clothes_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "xari", 
+		reqs = [], character = "xari",
 		text = [{text = "XARI_CLOTHES_1", reqs = []}],
 		options = [ {
 			code = 'xari_clothes_2', text = "XARI_CLOTHES_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -310,10 +310,10 @@ var data = {
 			code = 'xari_clothes_2', text = "XARI_CLOTHES_1_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
 		}, ]
 	},
-	
+
 	xari_clothes_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "xari", 
+		reqs = [], character = "xari",
 		text = [{text = "XARI_CLOTHES_2", reqs = []}],
 		options = [ {
 			code = 'xari_clothes_3_1', text = "XARI_CLOTHES_2_OPTION_1", reqs = [{type = 'has_money', value = 500}], dialogue_argument = 1, type = 'next_dialogue',
@@ -321,29 +321,29 @@ var data = {
 			code = 'xari_clothes_3_2', text = "XARI_CLOTHES_2_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
 		}, ]
 	},
-	
+
 	xari_clothes_3_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "xari", 
+		reqs = [], character = "xari",
 		text = [{text = "XARI_CLOTHES_3_1", reqs = []}],
 		options = [ {
 			code = 'xari_clothes_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'money_change', operant = '-', value = 500}]
 		}, ]
 	},
-	
+
 	xari_clothes_3_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "xari", 
+		reqs = [], character = "xari",
 		text = [{text = "XARI_CLOTHES_3_2", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ]
 	},
-	
+
 	xari_clothes_4 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "xari", 
+		reqs = [], character = "xari",
 		text = [{text = "XARI_CLOTHES_4", reqs = []}],
 		options = [ {
 			code = 'xari_clothes_5_1', text = "XARI_CLOTHES_4_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -355,19 +355,19 @@ var data = {
 			code = 'xari_clothes_5_234', text = "XARI_CLOTHES_4_OPTION_4", reqs = [], dialogue_argument = 4, type = 'next_dialogue',
 		}, ]
 	},
-	
+
 	xari_clothes_5_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "xari", 
+		reqs = [], character = "xari",
 		text = [{text = "XARI_CLOTHES_5_1", reqs = []}],
 		options = [ {
 			code = 'xari_clothes_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ]
 	},
-	
-	xari_clothes_6 = { 
+
+	xari_clothes_6 = {
 		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
-		reqs = [], character = "xari", 
+		reqs = [], character = "xari",
 		text = [{text = "XARI_CLOTHES_6", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -379,10 +379,10 @@ var data = {
 			]
 		}, ]
 	},
-	
-	xari_clothes_5_234 = { 
+
+	xari_clothes_5_234 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "xari", 
+		reqs = [], character = "xari",
 		text = [{text = "XARI_CLOTHES_5_2AND3AND4", reqs = []},
 		{text = "", reqs = [], previous_dialogue_option = 2, bonus_effects = [{code = 'decision', value = 'potion_wit_magic'}]},
 		{text = "", reqs = [], previous_dialogue_option = 3, bonus_effects = [{code = 'decision', value = 'potion_tame'}]},
@@ -393,10 +393,10 @@ var data = {
 			{code = 'make_quest_location', value = 'quest_troll_cave_location'}]
 		}, ]
 	},
-	
-	troll_clothes_1 = { 
+
+	troll_clothes_1 = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], 
+		reqs = [],
 		text = [{text = "TROLL_CLOTHES_1", reqs = []}],
 		options = [ {
 			code = 'troll_clothes_2', text = "TROLL_CLOTHES_1_OPTION_1", reqs = [{type = 'has_material', material = 'meat', operant = 'gte', value = 50}], dialogue_argument = 1, type = 'next_dialogue',
@@ -414,10 +414,10 @@ var data = {
 			]
 		}, ]
 	},
-	
-	troll_clothes_2 = { 
+
+	troll_clothes_2 = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], 
+		reqs = [],
 		text = [{text = "TROLL_CLOTHES_2_1", reqs = [], previous_dialogue_option = 1},
 		{text = "TROLL_CLOTHES_2_2", reqs = [], previous_dialogue_option = 2}],
 		options = [ {
@@ -428,10 +428,10 @@ var data = {
 			]
 		}, ]
 	},
-	
-	troll_clothes_win = { 
+
+	troll_clothes_win = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], 
+		reqs = [],
 		text = [{text = "TROLL_CLOTHES_2_3", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -441,10 +441,10 @@ var data = {
 			]
 		}, ]
 	},
-	
-	xari_clothes_7 = { 
+
+	xari_clothes_7 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "xari", 
+		reqs = [], character = "xari",
 		text = [{text = "XARI_CLOTHES_7", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -457,10 +457,10 @@ var data = {
 			]
 		}, ]
 	},
-	
+
 	lilia_mansion_1 = {
 		image = null, music = "lilia_theme", tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
-		reqs = [], 
+		reqs = [],
 		text = [
 			{text = "LILIA_MANSION_1", reqs = [], bonus_effects = [{code = 'affect_unique_character', name = 'lilia', type = 'set_availability', value = true},] },
 			{text = "", reqs = [{type = 'decision', value = 'potion_tame', check = true}], bonus_effects = [{code = 'affect_unique_character', name = 'lilia', type = 'stat', stat = 'tame_factor', value = 1}]},
@@ -471,17 +471,17 @@ var data = {
 			code = 'lilia_mansion_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ]
 	},
-	
+
 	lilia_mansion_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'	],
-		reqs = [], character = "lilia", 
+		reqs = [], character = "$lilia",
 		text = [{text = "LILIA_MANSION_2", reqs = []}],
 		options = [ {
-			code = 'lilia_mansion_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			code = 'lilia_mansion_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			change_dialogue_type = 2
 		}, ]
 	},
-	
+
 	lilia_mansion_3 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
@@ -497,7 +497,7 @@ var data = {
 			code = 'lilia_mansion_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ]
 	},
-	
+
 	lilia_mansion_4 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
@@ -510,10 +510,10 @@ var data = {
 			change_dialogue_type = 1
 		}, ]
 	},
-	
+
 	lilia_mansion_5 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], 
+		reqs = [],
 		text = [{text = "LILIA_MANSION_5", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',

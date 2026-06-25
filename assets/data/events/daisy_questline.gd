@@ -464,7 +464,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = [
 			{
 				text = "DAISY_CLOTHES_AMELIA_REPLY_1",
@@ -509,7 +509,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = [
 			{
 				text = "DAISY_CLOTHES_AMELIA_REPLY_2_1",
@@ -549,7 +549,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = [
 			{
 				text = "DAISY_CLOTHES_AMELIA_REPLY_2_2",
@@ -589,7 +589,7 @@ var data = {
 			"dialogue_scene"
 		],
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		text = [
 			{
 				text = "DAISY_CLOTHES_AMELIA_REPLY_3_150",
@@ -649,7 +649,7 @@ var data = {
 			"dialogue_scene"
 		],
 		image = null,
-		character = "amelia",
+		character = "$amelia",
 		text = [
 			{
 				text = "DAISY_CLOTHES_AMELIA_REPLY_3_250",
@@ -1482,7 +1482,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = [
 			{
 				text = "DAISY_TRAINING_REPLY_1",
@@ -1671,7 +1671,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = [
 			{
 				text = "DAISY_TRAINING_REPLY_2_1",
@@ -3633,7 +3633,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = [
 			{
 				text = "DAISY_LOST_AMELIA_REPLY_0",
@@ -3671,7 +3671,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "amelia",
+		character = "$amelia",
 		text = [
 			{
 				text = "DAISY_LOST_AMELIA_REPLY_1_1",

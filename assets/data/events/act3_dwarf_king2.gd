@@ -193,7 +193,7 @@ var data = {
 			"dialogue_scene"
 		],
 		music = 'hara_theme',
-		character = "hara",
+		character = "$hara",
 		reqs = [
 
 		],
@@ -321,7 +321,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "hara",
+		character = "$hara",
 		reqs = [
 
 		],
@@ -472,7 +472,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		character = "hara",
+		character = "$hara",
 		reqs = [
 
 		],
@@ -531,8 +531,8 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "hara",
-		character2 = "kuro",
+		character = "$hara",
+		character2 = "$kuro",
 		reqs = [
 
 		],
@@ -560,7 +560,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "hara",
+		character = "$hara",
 		reqs = [
 
 		],
@@ -596,7 +596,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		music = 'heleviel_theme',
 		reqs = [
 
@@ -626,7 +626,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		reqs = [
 
 		],
@@ -670,7 +670,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "heleviel",
+		character = "$heleviel",
 		reqs = [
 
 		],
@@ -1069,7 +1069,7 @@ var data = {
 			"master_translate"
 		],
 		custom_background = "elf_capital",
-		character = "heleviel",
+		character = "$heleviel",
 		reqs = [
 
 		],
@@ -1347,7 +1347,7 @@ var data = {
 
 		],
 		character = "demon_female",
-		character2 = "rouge",
+		character2 = "$rouge",
 		text = [
 			{
 				text = "SACRED_SAP_INTERMISSION_START",
@@ -1376,7 +1376,7 @@ var data = {
 
 		],
 		character = "demon_female",
-		character2 = "rouge",
+		character2 = "$rouge",
 		text = [
 			{
 				text = "SACRED_SAP_INTERMISSION_1",
@@ -1407,7 +1407,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "hara",
+		character = "$hara",
 		reqs = [
 
 		],
@@ -1434,8 +1434,8 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "hara",
-		character2 = "kuro",
+		character = "$hara",
+		character2 = "$kuro",
 		reqs = [
 
 		],
@@ -1477,7 +1477,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "rouge",
+		character = "$rouge",
 		text = [
 			{
 				text = "CAPACITOR_MOLTEN_START",
@@ -1525,8 +1525,8 @@ var data = {
 		reqs = [
 
 		],
-		character = "rouge",
-		character2 = "zephyra",
+		character = "$rouge",
+		character2 = "$zephyra",
 		text = [
 			{
 				text = "CAPACITOR_MOLTEN_Z_1",
@@ -1554,8 +1554,8 @@ var data = {
 		reqs = [
 
 		],
-		character = "rouge",
-		character2 = "zephyra",
+		character = "$rouge",
+		character2 = "$zephyra",
 		text = [
 			{
 				text = "CAPACITOR_MOLTEN_Z_2",
@@ -1592,7 +1592,7 @@ var data = {
 		reqs = [
 
 		],
-		character2 = "zephyra",
+		character2 = "$zephyra",
 		text = [
 			{
 				text = "CAPACITOR_MOLTEN_Z_3",
@@ -1634,8 +1634,8 @@ var data = {
 		reqs = [
 
 		],
-		character = "rouge",
-		character2 = "kuro",
+		character = "$rouge",
+		character2 = "$kuro",
 		text = [
 			{
 				text = "CAPACITOR_MOLTEN_K_1",
@@ -1663,8 +1663,8 @@ var data = {
 		reqs = [
 
 		],
-		character = "rouge",
-		character2 = "kuro",
+		character = "$rouge",
+		character2 = "$kuro",
 		text = [
 			{
 				text = "CAPACITOR_MOLTEN_K_2",
@@ -1710,7 +1710,7 @@ var data = {
 		reqs = [
 
 		],
-		character2 = "kuro",
+		character2 = "$kuro",
 		text = [
 			{
 				text = "CAPACITOR_MOLTEN_K_3_REPLY1",
@@ -1771,7 +1771,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "hara",
+		character = "$hara",
 		text = [
 			{
 				text = "DKING2TASK_HARA_10",

@@ -42,7 +42,7 @@ var data = {
 				]
 			},
 			{
-				character = "zephyra",
+				character = "$zephyra",
 				reqs = [
 					{
 						type = "unique_available",
@@ -1135,7 +1135,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1163,7 +1163,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1400,7 +1400,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1429,7 +1429,7 @@ var data = {
 
 		],
 		music = 'jean_theme',
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1502,7 +1502,7 @@ var data = {
 
 		],
 		music = 'jean_theme',
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1530,7 +1530,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1588,7 +1588,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1658,7 +1658,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -1912,7 +1912,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		music = 'jean_theme',
 		tags = [
 			"dialogue_scene"
@@ -1947,7 +1947,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2048,7 +2048,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2076,7 +2076,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2177,7 +2177,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene",
 			"blackscreen_transition_common"
@@ -2206,7 +2206,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2234,7 +2234,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2263,7 +2263,7 @@ var data = {
 
 		],
 		music = 'threat',
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2338,7 +2338,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2367,7 +2367,7 @@ var data = {
 
 		],
 		music = 'threat',
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2403,7 +2403,7 @@ var data = {
 
 		],
 		music = 'threat',
-		character = "jean",
+		character = "$jean",
 		tags = [
 			"dialogue_scene"
 		],
@@ -2466,7 +2466,7 @@ var data = {
 				dialogue_argument = 0
 			}
 		],
-		character = "jean"
+		character = "$jean"
 	},
 	jean_dungeon_guard = {
 		music = 'dungeon',
@@ -2565,7 +2565,7 @@ var data = {
 				dialogue_argument = 0
 			}
 		],
-		character = "jean"
+		character = "$jean"
 	},
 	jean_dungeon_obey = {
 		reqs = [

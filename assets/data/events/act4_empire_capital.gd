@@ -291,7 +291,7 @@ var data = {
 		],
 		image = null,
 		character = "grotus",
-		character2 = "rouge",
+		character2 = "$rouge",
 		tags = [
 			"dialogue_scene"
 		],
@@ -348,7 +348,7 @@ var data = {
 
 		],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		tags = [
 			"dialogue_scene",
 			"blackscreen_transition_common"
@@ -560,7 +560,7 @@ var data = {
 				],
 				music = "rouge_theme",
 				image = null,
-				character = "rouge",
+				character = "$rouge",
 				tags = [
 					"dialogue_scene",
 					"master_translate",
@@ -597,7 +597,7 @@ var data = {
 				],
 				image = null,
 				music = "rouge_theme",
-				character = "rouge",
+				character = "$rouge",
 				tags = [
 					"dialogue_scene",
 					"master_translate",
@@ -637,8 +637,8 @@ var data = {
 
 		],
 		image = null,
-		character = "zephyra",
-		character2 = "kuro",
+		character = "$zephyra",
+		character2 = "$kuro",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -667,8 +667,8 @@ var data = {
 
 		],
 		image = null,
-		character = "rouge",
-		character2 = "kuro",
+		character = "$rouge",
+		character2 = "$kuro",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -697,8 +697,8 @@ var data = {
 
 		],
 		image = null,
-		character = "rouge",
-		character2 = "zephyra",
+		character = "$rouge",
+		character2 = "$zephyra",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -727,8 +727,8 @@ var data = {
 
 		],
 		image = null,
-		character = "rouge",
-		character2 = "kuro",
+		character = "$rouge",
+		character2 = "$kuro",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -757,7 +757,7 @@ var data = {
 
 		],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -800,7 +800,7 @@ var data = {
 
 		],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		tags = [
 			"dialogue_scene"
 		],
@@ -978,7 +978,7 @@ var data = {
 
 		],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		tags = [
 			"dialogue_scene",
 			"master_translate",
@@ -1010,7 +1010,7 @@ var data = {
 
 		],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		music = "rouge_theme",
 		tags = [
 			"dialogue_scene",
@@ -1040,7 +1040,7 @@ var data = {
 
 		],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		character2 = "greg",
 		tags = [
 			"dialogue_scene",
@@ -1070,7 +1070,7 @@ var data = {
 
 		],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		character2 = "greg",
 		tags = [
 			"dialogue_scene",
@@ -1102,7 +1102,7 @@ var data = {
 
 		],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		music = "rouge_theme",
 		tags = [
 			"dialogue_scene",
@@ -1151,7 +1151,7 @@ var data = {
 
 		],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1225,7 +1225,7 @@ var data = {
 
 		],
 		image = null,
-		character = "rouge",
+		character = "$rouge",
 		tags = [
 			"dialogue_scene", 'master_translate'
 		],
@@ -1327,7 +1327,7 @@ var data = {
 
 		],
 		image = null,
-		character = "erdyna",
+		character = "$erdyna",
 		music = "erdyna_theme",
 		tags = [
 			"dialogue_scene",
@@ -1376,7 +1376,7 @@ var data = {
 
 		],
 		image = null,
-		character = "erdyna",
+		character = "$erdyna",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1415,7 +1415,7 @@ var data = {
 
 		],
 		image = null,
-		character = "erdyna",
+		character = "$erdyna",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1447,7 +1447,7 @@ var data = {
 		],
 		image = null,
 		music = "erdyna_theme",
-		character = "erdyna",
+		character = "$erdyna",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1496,7 +1496,7 @@ var data = {
 		],
 		image = null,
 		music = "erdyna_theme",
-		character = "erdyna",
+		character = "$erdyna",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1558,7 +1558,7 @@ var data = {
 
 		],
 		image = null,
-		character = "erdyna",
+		character = "$erdyna",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1587,7 +1587,7 @@ var data = {
 
 		],
 		image = null,
-		character = "erdyna",
+		character = "$erdyna",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1617,7 +1617,7 @@ var data = {
 
 		],
 		image = null,
-		character = "erdyna",
+		character = "$erdyna",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1665,7 +1665,7 @@ var data = {
 
 		],
 		image = null,
-		character = "erdyna",
+		character = "$erdyna",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1729,7 +1729,7 @@ var data = {
 
 		],
 		image = null,
-		character = "erdyna",
+		character = "$erdyna",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1766,7 +1766,7 @@ var data = {
 
 		],
 		image = null,
-		character = "erdyna",
+		character = "$erdyna",
 		tags = [
 			"dialogue_scene"
 		],

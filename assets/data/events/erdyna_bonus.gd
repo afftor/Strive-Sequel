@@ -2,7 +2,7 @@ extends Reference
 var data = {
 	erdyna_campfire_1 = {
 		image = null,
-		character = "erdyna",
+		character = "$erdyna",
 		music = "intimate",
 		tags = ["dialogue_scene"],
 		reqs = [],
@@ -75,7 +75,7 @@ var data = {
 	},
 	erdyna_campfire_epilogue = {
 		image = null,
-		character = "erdyna",
+		character = "$erdyna",
 		tags = ["dialogue_scene", "master_translate"],
 		reqs = [],
 		text = "ERDYNA_CAMPFIRE_EPILOGUE",
