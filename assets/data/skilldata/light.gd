@@ -316,7 +316,7 @@ var effects = {
 		tick_event = variables.TR_TURN_S,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 5,
-		tags = ['buff'],
+		tags = ['buff','blessed'],
 		statchanges = {hitrate = 35, evasion = 35},
 		buffs = [
 			{

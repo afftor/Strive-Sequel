@@ -2022,6 +2022,34 @@ var traits = {
 		effects = ['swifty_guy_trait'],
 		tags = [],
 	},
+	tantalising_tentacle = {
+		code = 'tantalising_tentacle',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['tantalising_tentacle_desc','tantalising_tentacle_tr','tantalising_tentacle_tr_2'],
+		tags = [],
+	},
+	demon_god_mastery_lust = {
+		code = 'demon_god_mastery_lust',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['demon_god_mastery_lust'],
+		tags = [],
+	},
+	slippery_thick_skin = {
+		code = 'slippery_thick_skin',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['slippery_thick_skin_desc','slippery_thick_skin_tr'],
+		tags = [],
+	},
+	
 	#exploration related traits
 	#needs to hardcode most of traits
 	medium_armor = {#removes penalty from medium armor
