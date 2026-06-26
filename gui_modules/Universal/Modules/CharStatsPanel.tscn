@@ -572,7 +572,7 @@ text = "Skill name"
 [node name="desc" type="RichTextLabel" parent="abilities/ScrollContainer/VBoxContainer/entry"]
 margin_left = 64.0
 margin_top = 24.0
-margin_right = 669.0
+margin_right = 654.0
 margin_bottom = 54.0
 custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
@@ -623,9 +623,6 @@ texture_normal = ExtResource( 23 )
 texture_pressed = ExtResource( 24 )
 texture_hover = ExtResource( 22 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="abilities_tab"]
 margin_left = 4.0
