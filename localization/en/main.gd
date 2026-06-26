@@ -8335,7 +8335,7 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYFAT_BANDIT = 'Fat Bandit',
 	ENEMYREDHEAD_BOSS_BANDIT = 'Bandit Leader',
 	ENEMYSMALL_BANDIT = 'Small Bandit',
-	ENEMYLILITH_BOSS_1 = "Ashmedai",
+	ENEMYLILITH_BOSS = "Ashmedai",
 	ENEMYLILITH_BOSS_2 = "Ashmedai",
 	ENEMYASHMEDAI_TENTACLE = "Tentacle Appendage",
 	ENEMYWHITE_STAG = "White Stag",
