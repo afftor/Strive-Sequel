@@ -2047,7 +2047,7 @@ var traits = {
 		icon = null,
 		visible = false,
 		effects = ['slippery_thick_skin_desc','slippery_thick_skin_tr'],
-		tags = [],
+		tags = ['slippery_thick_skin'],
 	},
 	
 	#exploration related traits

@@ -221,7 +221,7 @@ var skills = {
 		ability_type = 'spell',
 		tags = ['resurrect', 'noevade','noreduce','support'],
 		reqs = [{code = 'stat', stat = 'hp', operant = 'gte', value = ['self.hpmax','*0.2']}],
-		targetreqs = [],
+		targetreqs = [{code = 'trait', trait = 'slippery_thick_skin', check = true}],
 		effects = [Effectdata.rebuild_template({effect = 'e_res', push_value = true})], 
 		cost = {hp = 200},
 		charges = 0,
@@ -317,7 +317,22 @@ var skills = {
 		tags = ['resurrect', 'noevade','noreduce','support', 'aoe',],
 		reqs = [{code = 'group_amount', alive = true, operant = 'lte', value = 1}],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_res', push_value = true})],
+		effects = [
+			{
+				type = 'trigger',
+				req_skill = true,
+				trigger = [variables.TR_POSTDAMAGE],
+				conditions = [{type = 'target', value = [{code = 'trait', trait = 'slippery_thick_skin', check = true}]},],
+				sub_effects = ['e_res'],
+				args = {
+					skill = {obj = 'skill', func = 'eq'},
+					caster = {obj = 'caster', func = 'eq'},
+					target = {obj = 'target', func = 'eq'},
+					receiver = {obj = 'receiver', func = 'eq'},
+					process_value = {obj = 'parent', func = 'get', arg = 'process_value'}
+				}
+			},
+		],
 		cost = {},
 		charges = 0,
 		combatcooldown = 5,
