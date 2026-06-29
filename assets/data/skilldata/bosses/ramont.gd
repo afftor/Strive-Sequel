@@ -219,6 +219,7 @@ var effects = {
 			{type = 'skill', value = ['tags', 'has', 'damage'] },
 			{type = 'skill', value = ['target_range', 'eq', 'melee']},
 			{type = 'skill', value = ['ability_type', 'eq', 'skill']},
+			{type = 'skill', value = ['mode', 'eq', variables.SKILL_BASE]},
 		],
 		args = {
 			skill = {obj = 'skill', func = 'eq'},

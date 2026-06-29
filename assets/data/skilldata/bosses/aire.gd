@@ -245,6 +245,7 @@ var effects = {
 		req_skill = true,
 		conditions = [
 			{type = 'skill', value = ['tags', 'has', 'damage'] },
+			{type = 'skill', value = ['mode', 'eq', variables.SKILL_BASE]},
 			{type = 'target', value = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}] },
 			{type = 'target', value = [{code = 'trait', trait = 'aire_overwatch_assignment', check = false}] },
 			{type = 'caster', value = [{code = 'stat', stat = 'hp', operant = 'gt', value = 0}]},
