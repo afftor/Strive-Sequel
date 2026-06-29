@@ -1,6 +1,7 @@
 extends tooltip_main
 
 var skill
+var no_advanced = false
 onready var sec_node = $Panel
 onready var sec_cont = $Panel/cont
 onready var sec_cont_margins = sec_cont.margin_top * 2
@@ -52,9 +53,12 @@ var tips = {
 func showup(node, skillcode, ch):
 	if _setup(node):
 		skill = Skilldata.get_template(skillcode, ch)
+		no_advanced = skill.has("type") and skill.type == 'social'
+		$ScrollContainer/VBoxContainer/HSeparator.visible = !no_advanced
+		$ScrollContainer/VBoxContainer/HoldShift.visible = !no_advanced
 
 func _input(event):
-	if state != STATE_OPEN:
+	if state != STATE_OPEN or no_advanced:
 		return
 	if event.is_action_pressed("shift"):
 		mode = MODE_ADVANCED
