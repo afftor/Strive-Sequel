@@ -1,6 +1,7 @@
 extends Reference
 
 var parent: WeakRef
+var cast_weapon = null
 
 #gear
 var gear = {
@@ -22,6 +23,18 @@ var gear = {
 	ass = null,
 	crotch = null,
 	underwear = null,
+}
+
+var cast_animations = {
+	sword = "at_sword",
+	spear = "at_lance",
+	bow = "at_arch",
+	axe = "at_axe",
+	dagger = "at_dagger",
+	mace = "at_mace",
+	staff = "at_stuff",
+	crossbow = "at_arbalester",
+	greatsword = "at_dualsword",
 }
 
 
@@ -155,6 +168,20 @@ func get_weapon_animation():
 				res = 'ranged_attack'
 	return res
 
+func get_weapon_cast_animation():
+	if cast_weapon != null:
+		return cast_weapon
+	var weapon = gear.rhand
+	if weapon != null:
+		var item = ResourceScripts.game_res.items[weapon]
+		if item.gearsubtype != null:
+			if cast_animations.has(item.gearsubtype):
+				return cast_animations[item.gearsubtype]
+		else:
+			if cast_animations.has(item.geartype):
+				return cast_animations[item.geartype]
+	return 'at_sword'
+
 
 func get_weapon_sound():
 	var item = gear.rhand
@@ -193,3 +220,7 @@ func get_equiped_items():
 		if !res.has(item):
 			res.push_back(item)
 	return res
+
+func generate_simple_fighter(data):
+	if data.has("cast_weapon"):
+		cast_weapon = data.cast_weapon

@@ -46,7 +46,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'weapon',
 		damage_type = 'weapon',
-		sfx = [{code = 'dip_poison', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'dip_poison', target = 'target', period = 'predamage'},
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.0,
 	},
@@ -69,7 +71,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'melee',
 		damage_type = 'weapon',
-		sfx = [{code = 'back_kick', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'back_kick', target = 'target', period = 'predamage'},
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.3,
 	},
@@ -92,7 +96,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'assassinate', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'assassinate', target = 'target', period = 'predamage'},
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 2.0,
 	},
@@ -123,7 +129,8 @@ var skills = {
 		sfx = [{code = '', code_repeat = {
 				1 : "devastation_1", 2 : "devastation_2", 3 : "devastation_3",
 				4 : "devastation_4", 5 : "devastation_5", 6 : "devastation_6",
-			}, target = 'target', period = 'predamage', duration = 0.2, no_repeat_delays = true}],
+			}, target = 'target', period = 'predamage', duration = 0.2, no_repeat_delays = true},
+			{code = 'cast_weapon', target = 'caster', period = 'windup', no_delays = true, is_cast = true}],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.75,
 		random_factor_p = 0.1,
@@ -148,7 +155,9 @@ var skills = {
 		target_number = 'line',
 		target_range = 'melee',
 		damage_type = 'weapon',
-		sfx = [{code = 'trap_snare', target = 'target', period = 'predamage'}],
+		sfx = [
+			{code = 'trap_snare', target = 'target', period = 'predamage'},
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}],
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -173,7 +182,9 @@ var skills = {
 		target_number = 'line',
 		target_range = 'melee',
 		damage_type = 'weapon',
-		sfx = [{code = 'trap_cast', target = 'target', period = 'predamage'}],
+		sfx = [
+			{code = 'trap_cast', target = 'target', period = 'predamage'},
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}],
 		sound = [],
 		value = [['caster.atk', '*1.1']],
 		damagestat = 'no_stat'

@@ -20,7 +20,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'light',
-		sfx = [{code = 'fairy_grace', target = 'target', period = 'predamage'}],
+		sfx = [
+			{code = 'fairy_grace', target = 'target', period = 'predamage'},
+			{code = 'cast_light', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['target.hpmax','*0.5']],
 		damagestat = ['-damage_hp']
@@ -48,7 +50,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'air',
-		sfx = [{code = 'air_shield', target = 'target', period = 'predamage'}],
+		sfx = [
+			{code = 'air_shield', target = 'target', period = 'predamage'},
+			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],
@@ -79,7 +83,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'melee',
 		damage_type = 'earth',
-		sfx = [{code = 'entangle', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'entangle', target = 'target', period = 'predamage'},
+			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.3
 	},

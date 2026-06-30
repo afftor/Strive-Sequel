@@ -21,7 +21,9 @@ var skills = {
 		target_number = 'nontarget_group',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [{code = 'flame', target = 'target', period = 'predamage'}],
+		sfx = [
+			{code = 'flame', target = 'target', period = 'predamage'},
+			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = 'firehit', strike = null, hit = null, hittype = 'bodyarmor'},
 		value = 0.3,
 		not_final = true

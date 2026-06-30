@@ -56,7 +56,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'melee',
 		damage_type = 'weapon',
-		sfx = [{code = 'disarm', target = 'target', period = 'predamage'}],#? 
+		sfx = [
+			{code = 'disarm', target = 'target', period = 'predamage'},
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.3,
 		variations = [
@@ -86,7 +88,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'weapon',
 		damage_type = 'weapon',
-		sfx = [{code = 'provocation', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'provocation', target = 'target', period = 'predamage'},
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}], 
 		sound = [],
 		value = 0.7,
 		variations = [
@@ -115,7 +119,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'earth',#not sure but not matters #It matter now! -Garden
-		sfx = [{code = 'stonewall', target = 'target', period = 'predamage'}],
+		sfx = [
+			{code = 'stonewall', target = 'target', period = 'predamage'},
+			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['caster.hpmax', '*0.15']],
 		damagestat = ['-damage_hp'],

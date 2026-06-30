@@ -49,7 +49,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'air',
-		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
+		sfx = [
+			{code = 'heal', target = 'target', period = 'predamage'},
+			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['caster.hpmax', '*0.125'],],
 		damagestat = ['no_stat',],

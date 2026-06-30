@@ -303,11 +303,15 @@ func gfx_particles(node, args):
 func get_flip_for_node(node, args):
 	if args != null and args.has("force_flip"):
 		return args.force_flip
+	var flip = false
 	if node.has_method("get_flip"):
-		return node.get_flip()
-	if node.has_meta("anim_flip"):
-		return node.get_meta("anim_flip")
-	return false
+		flip = node.get_flip()
+	elif node.has_meta("anim_flip"):
+		flip = node.get_meta("anim_flip")
+	if args != null and args.has("reverse_flip"):
+		flip = !flip
+	return flip
+	
 
 func targetfire(node, args = null):
 	var tween = input_handler.GetTweenNode(node)

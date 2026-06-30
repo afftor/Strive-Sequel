@@ -22,7 +22,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'dark',
-		sfx = [{code = 'darkness', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'darkness', target = 'target', period = 'predamage'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'spell_dark', hit = null},
 		value = 0.75,
 		variations = [
@@ -56,7 +58,9 @@ var skills = {
 		allowedtargets = ['enemy'],
 		value = 0.3,
 		random_factor_p = 0.1,
-		sfx = [{code = 'black_tendrils', target = 'target_group', period = 'windup'}], 
+		sfx = [
+			{code = 'black_tendrils', target = 'target_group', period = 'windup'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'spell_break', hit = null},
 		variations = [
 			{
@@ -84,7 +88,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'dark',
-		sfx = [{code = 'malediction', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'malediction', target = 'target', period = 'predamage'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'spell_explosion', hit = null},
 		value = 0.6,
 		variations = [
@@ -113,7 +119,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'dark',
-		sfx = [{code = 'devour_magic', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'devour_magic', target = 'target', period = 'predamage'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'spell2', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],
@@ -146,7 +154,9 @@ var skills = {
 		target_number = 'line',
 		target_range = 'any',
 		damage_type = 'dark',#not sure but not matters
-		sfx = [{code = 'shadow_veil', target = 'target', period = 'predamage'}],
+		sfx = [
+			{code = 'shadow_veil', target = 'target', period = 'predamage'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['caster.matk', '*0.5']],
 		damagestat = ['no_stat'],
@@ -175,7 +185,9 @@ var skills = {
 		allowedtargets = ['enemy'],
 		value = 1.5,
 		random_factor_p = 0.1,
-		sfx = [{code = 'skill_void', target = 'target_group', period = 'windup'}], 
+		sfx = [
+			{code = 'skill_void', target = 'target_group', period = 'windup'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = 'spell_void', strike = null, hit = null},
 	},
 }

@@ -131,7 +131,9 @@ var skills = {
 		target_number = 'nontarget_group',
 		target_range = 'any',
 		damage_type = 'air',
-		sfx = [{code = 'inspire', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'inspire', target = 'target', period = 'predamage'},
+			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = null, hit = null},
 		value = [['0']],
 		damagestat = 'no_stat',

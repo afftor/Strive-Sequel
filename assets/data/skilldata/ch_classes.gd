@@ -68,7 +68,9 @@ var skills = {
 		target_number = 'line',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'targetattack', target = 'target', period = 'predamage'},
+			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['caster.matk','*0.5'],2],
 		damagestat = ['no_stat', '+damage_hp']
@@ -121,7 +123,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'debuff', target = 'target', period = 'predamage'},
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}], 
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -147,7 +151,9 @@ var skills = {
 		damage_type = 'fire',
 		value = ['0'],
 		damagestat = 'no_stat',
-		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'buff', target = 'target', period = 'predamage'},
+			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = null, hit = null},
 	},
 	revenge = {
@@ -169,7 +175,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'melee',
 		damage_type = 'weapon',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'targetattack', target = 'target', period = 'predamage'},
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.6
 	},
@@ -292,7 +300,8 @@ var skills = {
 		damage_type = 'fire',
 		sfx = [
 #			{code = 'flame', target = 'target', period = 'postdamage'},
-			{code = 'righteous_fire', target = 'target', period = 'predamage'}],
+			{code = 'righteous_fire', target = 'target', period = 'predamage'},
+			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.75,
 	},
@@ -483,7 +492,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'melee',
 		damage_type = 'earth',
-		sfx = [{code = 'earth_spike', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'earth_spike', target = 'target', period = 'predamage'},
+			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
 		value = 1.5
 	},
@@ -584,9 +595,12 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'dark',
-		#for now duration, no_delays and no_repeat_delays params works only for predamage period
+		#for now duration, no_delays and no_repeat_delays params doesn't works for postdamage period
 		#with caster or target and only with gfx_animsprite!
-		sfx = [{code = 'void_barrage', target = 'target', period = 'predamage', duration = 0.2, no_repeat_delays = true}],
+		sfx = [
+			{code = 'void_barrage', target = 'target', period = 'predamage', duration = 0.2, no_repeat_delays = true},
+			{code = 'cast_dark', target = 'caster', period = 'windup', no_delays = true, is_cast = true}
+			],
 		sounddata = {initiate = null, strike = 'spell_dark', hit = null},
 		value = 0.85,
 	},
@@ -611,7 +625,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'dark',
-		sfx = [{code = 'blood_explosion', target = 'target', period = 'predamage'}], #fix
+		sfx = [
+			{code = 'blood_explosion', target = 'target', period = 'predamage'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], #fix
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1,
 		not_final = true

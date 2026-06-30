@@ -34,7 +34,9 @@ var Skilllist = {
 		allowedtargets = ['enemy'],
 		value = 0.8,
 		random_factor_p = 0.1,
-		sfx = [{code = 'weapon', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'weapon', target = 'target', period = 'predamage'},
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true},],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		variations = [
 			{
@@ -65,7 +67,9 @@ var Skilllist = {
 		aipatterns = ['attack'],
 		allowedtargets = ['enemy'],
 		value = 0.8,
-		sfx = [{code = 'ranged_attack', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'ranged_attack', target = 'target', period = 'predamage'},
+			{code = 'at_arch', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 	},
 	
@@ -139,7 +143,9 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'weapon',
 		damage_type = 'earth',
-		sfx = [{code = 'earth_spike', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'earth_spike', target = 'target', period = 'predamage'},
+			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
 		value = 1.25
 	},
@@ -169,7 +175,9 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'weapon',
 		damage_type = 'air',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'targetattack', target = 'target', period = 'predamage'},
+			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.8,
 	},
@@ -196,7 +204,8 @@ var Skilllist = {
 		damage_type = 'fire',
 		sfx = [
 			{code = 'cleave', target = 'target_line', period = 'windup'},
-			{code = 'flame', target = 'target', period = 'postdamage'}],
+			{code = 'flame', target = 'target', period = 'postdamage'},
+			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['caster.atk','*0.2'], 0.7],
 		damagestat = ['no_stat', '+damage_hp']
@@ -222,7 +231,10 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [{code = 'firebolt', target = 'target', period = 'predamage'},{code = 'flame', target = 'target', period = 'postdamage'}], 
+		sfx = [
+			{code = 'firebolt', target = 'target', period = 'predamage'},
+			{code = 'flame', target = 'target', period = 'postdamage'},
+			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		value = 0.50
 	},
@@ -270,7 +282,9 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'targetattack', target = 'target', period = 'predamage'},
+			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['caster.atk','*0.25'],1.3],
 		damagestat = ['no_stat', '+damage_hp']
@@ -295,7 +309,9 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'dark',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'targetattack', target = 'target', period = 'predamage'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.3
 	},
@@ -318,7 +334,9 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'dark',
-		sfx = [{code = 'decay', target = 'target_frame', period = 'predamage'}], 
+		sfx = [
+			{code = 'decay', target = 'target_frame', period = 'predamage'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = null, hit = null},
 		value = 0.65
 	},
@@ -365,7 +383,9 @@ var Skilllist = {
 		target_number = 'single',#?
 		target_range = 'any',
 		damage_type = 'earth',
-		sfx = [{code = 'earth_spike', target = 'target', period = 'predamage'}],#? 
+		sfx = [
+			{code = 'earth_spike', target = 'target', period = 'predamage'},
+			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}],#? 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1
 	},
@@ -388,7 +408,9 @@ var Skilllist = {
 		target_number = 'single',#?
 		target_range = 'any',
 		damage_type = 'earth',
-		sfx = [{code = 'earth_spike', target = 'target', period = 'predamage'}],#? 
+		sfx = [
+			{code = 'earth_spike', target = 'target', period = 'predamage'},
+			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}],#? 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1
 	},
@@ -457,7 +479,9 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'melee',
 		damage_type = 'dark',
-		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'water_attack', target = 'target', period = 'predamage'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.5,
 	},
@@ -480,7 +504,9 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'melee',
 		damage_type = 'dark',
-		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'water_attack', target = 'target', period = 'predamage'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.2,
 	},
@@ -530,7 +556,9 @@ var Skilllist = {
 		number_rnd_targets = 3,
 		target_range = 'any',
 		damage_type = 'earth',
-		sfx = [{code = 'earth_spike', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'earth_spike', target = 'target', period = 'predamage'},
+			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.4,
 	},
@@ -556,7 +584,9 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'earth',
-		sfx = [{code = 'earth_spike', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'earth_spike', target = 'target', period = 'predamage'},
+			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.4,
 	},
@@ -629,7 +659,9 @@ var Skilllist = {
 		number_rnd_targets = 3,
 		target_range = 'any',
 		damage_type = 'air',
-		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'water_attack', target = 'target', period = 'predamage'},
+			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.5,
 	},
@@ -677,7 +709,9 @@ var Skilllist = {
 		number_rnd_targets = 3,
 		target_range = 'any',
 		damage_type = 'air',
-		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'debuff', target = 'target', period = 'predamage'},
+			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.1,
 	},
@@ -725,7 +759,9 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'dark',
-		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'debuff', target = 'target', period = 'predamage'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.0,
 	},
@@ -749,7 +785,9 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'light',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'targetattack', target = 'target', period = 'predamage'},
+			{code = 'cast_light', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.3
 	},
@@ -798,7 +836,9 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'light',
-		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
+		sfx = [
+			{code = 'heal', target = 'target', period = 'predamage'},
+			{code = 'cast_light', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['caster.matk', '*1.3']],
 		damagestat = ['-damage_hp']
@@ -895,7 +935,9 @@ var Skilllist = {
 		aipatterns = ['attack'],
 		allowedtargets = ['enemy'],
 		value = 1,
-		sfx = [{code = 'weapon', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'weapon', target = 'target', period = 'predamage'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'fleshhit', hit = null},
 	},
 	leadersmark_s = { 
@@ -920,7 +962,9 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'debuff', target = 'target', period = 'predamage'},
+			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.7,
 	},
@@ -943,7 +987,9 @@ var Skilllist = {
 		target_number = 'row',
 		target_range = 'weapon',
 		damage_type = 'fire',
-		sfx = [{code = 'flame', target = 'target', period = 'postdamage'}], 
+		sfx = [
+			{code = 'flame', target = 'target', period = 'postdamage'},
+			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.1
 	},
@@ -1144,7 +1190,9 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'mind',
-		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'debuff', target = 'target', period = 'predamage'},
+			{code = 'cast_mind', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.8,
 	},
@@ -1168,7 +1216,9 @@ var Skilllist = {
 		number_rnd_targets = 2,
 		target_range = 'any',
 		damage_type = 'mind',
-		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'debuff', target = 'target', period = 'predamage'},
+			{code = 'cast_mind', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1,
 	},
@@ -1240,7 +1290,9 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [{code = 'flame', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'flame', target = 'target', period = 'predamage'},
+			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		value = 1,
 	},
@@ -1439,7 +1491,9 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'light',
-		sfx = [{code = 'weapon', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'weapon', target = 'target', period = 'predamage'},
+			{code = 'cast_light', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.6,
 	},
@@ -1465,7 +1519,9 @@ var Skilllist = {
 		target_number = 'row',
 		target_range = 'any',
 		damage_type = 'air',
-		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'water_attack', target = 'target', period = 'predamage'},
+			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1,
 	},
