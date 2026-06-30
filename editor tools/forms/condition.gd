@@ -11,7 +11,7 @@ var condtypes = [
 	'stat','stat_index','has_profession','has_any_profession','race_is_beast','gear_equiped','global_profession_limit','race','one_of_races','is_free','long_tail','long_ears','is_humanoid','is_dead','is_master','trait','has_status','population','random']
 var types_desc = [
 	'stat','index of stat','has profession','has any profession','race is beast','gear equiped','global profession limit','race','one of races','is free','long tail','long ears','is humanoid','is dead','is master','trait','has status','population','random'] 
-var itemparams = ['name', 'itembase', 'code', 'itemtype', 'toolcategory', 'geartype', 'subtype', 'weaponrange', 'interaction_use']
+var itemparams = ['name', 'itembase', 'code', 'itemtype', 'toolcategory', 'geartype', 'gearsubtype', 'subtype', 'weaponrange', 'interaction_use']
 
 
 func _init():

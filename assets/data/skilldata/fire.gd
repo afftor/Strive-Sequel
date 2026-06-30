@@ -22,7 +22,10 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [{code = 'firebolt', target = 'target', period = 'predamage'},{code = 'flame', target = 'target', period = 'postdamage'}], 
+		sfx = [
+			{code = 'firebolt', target = 'target', period = 'predamage'},
+			{code = 'flame', target = 'target', period = 'postdamage'},
+			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		value = 1.0,
 		variations = [
@@ -60,7 +63,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'fire',#not sure but not matters
-		sfx = [{code = 'blood_boil', target = 'target', period = 'predamage'}],
+		sfx = [
+			{code = 'blood_boil', target = 'target', period = 'predamage'},
+			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],
@@ -94,7 +99,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'fire',#not sure but not matters
-		sfx = [{code = 'fire_shield', target = 'target', period = 'predamage'}],
+		sfx = [
+			{code = 'fire_shield', target = 'target', period = 'predamage'},
+			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],
@@ -136,7 +143,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [{code = 'magma_blast', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'magma_blast', target = 'target', period = 'predamage'},
+			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'absolute'},
 		value = 1.5,
 		variations = [
@@ -165,7 +174,9 @@ var skills = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [{code = 'flame', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'flame', target = 'target', period = 'predamage'},
+			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'absolute'},
 		value = 1.6,
 	},
@@ -192,7 +203,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [{code = 'flame', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'flame', target = 'target', period = 'predamage'},
+			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'absolute'},
 		value = 2.0,
 	},
@@ -221,7 +234,9 @@ var skills = {
 		target_number = 'all_allowed',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [{code = 'flame', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'flame', target = 'target', period = 'predamage'},
+			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'absolute'},
 		value = [['0']],
 		damagestat = ['no_stat'],

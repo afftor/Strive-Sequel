@@ -27,7 +27,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'melee',
 		damage_type = 'air',
-		sfx = [{code = 'fairy_grace', target = 'caster', period = 'predamage'}], 
+		sfx = [
+			{code = 'fairy_grace', target = 'caster', period = 'predamage'},
+			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['0']],
 		damagestat = 'no_stat',
@@ -58,7 +60,10 @@ var skills = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'air',
-		sfx = [{code = 'tauntwave', target = 'target', period = 'windup'}, {code = 'wind_blade', target = 'target', period = 'predamage', duration = 0.2,}], 
+		sfx = [
+			{code = 'tauntwave', target = 'target', period = 'windup'},
+			{code = 'wind_blade', target = 'target', period = 'predamage', duration = 0.2},
+			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = 'firebolt', strike = null, hit = null, hittype = 'bodyarmor'},
 		value = 1.65,
 	},
@@ -107,7 +112,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'air',
-		sfx = [{code = 'haste', target = 'caster', period = 'predamage'}], 
+		sfx = [
+			{code = 'haste', target = 'caster', period = 'predamage'},
+			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'dodge', hit = null},
 		value = [['0']],
 		damagestat = 'no_stat',
@@ -207,7 +214,9 @@ var skills = {
 		target_number = 'wave',
 		target_range = 'any',
 		damage_type = 'air',
-		sfx = [{code = 'wind_blade', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'wind_blade', target = 'target', period = 'predamage'},
+			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'spell_lightning', hit = null},
 		value = 1.2,
 	},
@@ -350,7 +359,9 @@ var skills = {
 		damage_type = 'weapon',
 		value = 1.3,
 		random_factor_p = 0.1,
-		sfx = [{code = 'wind_blade', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'wind_blade', target = 'target', period = 'predamage'},
+			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 	},
 }

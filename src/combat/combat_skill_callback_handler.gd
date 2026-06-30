@@ -405,6 +405,8 @@ func invoke_animations_1():
 	for i in animations:
 		if i.code == 'weapon':
 			i.code = caster.get_weapon_animation()
+		elif i.code == 'cast_weapon':
+			i.code = caster.get_weapon_cast_animation()
 		animationdict[i.period].append(i)
 	#casteranimations
 	#for sure at windup there should not be real_target-related animations

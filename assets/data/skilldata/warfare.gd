@@ -20,7 +20,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'weapon',
 		damage_type = 'weapon',
-		sfx = [{code = 'draw_blood', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'draw_blood', target = 'target', period = 'predamage'},
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'fleshhit', hit = null},
 		value = 1.1,
 		variations = [
@@ -49,7 +51,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'melee',
 		damage_type = 'weapon',
-		sfx = [{code = 'sunder', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'sunder', target = 'target', period = 'predamage'},
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.85,
 		variations = [
@@ -86,7 +90,9 @@ var skills = {
 		allowedtargets = ['enemy'],
 		value = 0.9,
 		random_factor_p = 0.1,
-		sfx = [{code = 'cleave', target = 'target_line', period = 'windup'}], 
+		sfx = [
+			{code = 'cleave', target = 'target_line', period = 'windup'},
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 #		variations = [
 #			{
@@ -118,7 +124,9 @@ var skills = {
 		allowedtargets = ['enemy'],
 		value = 1.1,
 		random_factor_p = 0.1,
-		sfx = [{code = 'strike_through', target = 'target_row', period = 'windup'}], 
+		sfx = [
+			{code = 'strike_through', target = 'target_row', period = 'windup'},
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 #		variations = [
 #			{
@@ -147,7 +155,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'weapon',
 		damage_type = 'weapon',
-		sfx = [{code = 'execution', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'execution', target = 'target', period = 'predamage'},
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 2.25,
 		variations = [
@@ -211,7 +221,9 @@ var skills = {
 		target_number = 'row',
 		target_range = 'any',
 		damage_type = 'light',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'targetattack', target = 'target', period = 'predamage'},
+			{code = 'cast_light', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.0,
 #		variations = [

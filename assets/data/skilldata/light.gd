@@ -27,7 +27,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'light',
-		sfx = [{code = 'healing_light', target = 'target', period = 'predamage'}],
+		sfx = [
+			{code = 'healing_light', target = 'target', period = 'predamage'},
+			{code = 'cast_light', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [1.3, 1.3],
 		damagestat = ['-damage_hp', 'damage_hp'],
@@ -65,7 +67,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'light',#not sure but not matters
-		sfx = [{code = 'blessing', target = 'target', period = 'predamage'}],
+		sfx = [
+			{code = 'blessing', target = 'target', period = 'predamage'},
+			{code = 'cast_light', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],
@@ -103,7 +107,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'dead',
 		damage_type = 'light',
-		sfx = [{code = 'resurrect', target = 'target', period = 'predamage'}],
+		sfx = [
+			{code = 'resurrect', target = 'target', period = 'predamage'},
+			{code = 'cast_light', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = null, hit = null},
 		value = [['40']],
 		damagestat = 'no_stat'
@@ -127,7 +133,9 @@ var skills = {
 		target_number = 'single',#'line'
 		target_range = 'any',
 		damage_type = 'light',
-		sfx = [{code = 'elemental_protection', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'elemental_protection', target = 'target', period = 'predamage'},
+			{code = 'cast_light', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['0']],
 		damagestat = 'no_stat',
@@ -157,7 +165,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'light',
-		sfx = [{code = 'pacify', target = 'target', period = 'predamage'}],#? 
+		sfx = [
+			{code = 'pacify', target = 'target', period = 'predamage'},
+			{code = 'cast_light', target = 'caster', period = 'windup', is_cast = true}],#? 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.3
 	},
@@ -180,7 +190,9 @@ var skills = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'light',#not sure but not matters
-		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
+		sfx = [
+			{code = 'heal', target = 'target', period = 'predamage'},
+			{code = 'cast_light', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['caster.matk', '*1.2'], ['caster.matk', '*0.8']],
 		damagestat = ['no_stat','-damage_hp']
@@ -211,7 +223,9 @@ var skills = {
 		allowedtargets = ['enemy'],
 		value = 0.8,
 		random_factor_p = 0.1,
-		sfx = [{code = 'radiance', target = 'target_group', period = 'windup'}], 
+		sfx = [
+			{code = 'radiance', target = 'target_group', period = 'windup'},
+			{code = 'cast_light', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		variations = [
 			{
@@ -240,7 +254,9 @@ var skills = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'light',
-		sfx = [{code = 'mass_resurrection', target = 'target_group', period = 'windup'}],
+		sfx = [
+			{code = 'mass_resurrection', target = 'target_group', period = 'windup'},
+			{code = 'cast_light', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['target.hpmax','*0.80']],
 		damagestat = ['-damage_hp'],

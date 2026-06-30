@@ -20,6 +20,7 @@ var type
 var itemtype
 var toolcategory
 var geartype
+var gearsubtype#should subtype be used instead?
 var subtype
 var durability
 var maxdurability
@@ -181,6 +182,8 @@ func CreateGear(ItemName = '', dictparts = {}, diffdata = {boost = 0, prof = fal
 	var tempname = itemtemplate.name
 
 	geartype = itemtemplate.geartype
+	if itemtemplate.has('gearsubtype'):
+		gearsubtype = itemtemplate.gearsubtype
 	if itemtemplate.has('weaponrange'):
 		weaponrange = itemtemplate.weaponrange
 	itemtype = itemtemplate.itemtype

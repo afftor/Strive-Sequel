@@ -20,7 +20,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'mind',
-		sfx = [{code = 'devour_spirit', target = 'target', period = 'predamage'}],
+		sfx = [
+			{code = 'devour_spirit', target = 'target', period = 'predamage'},
+			{code = 'cast_mind', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat']
@@ -45,7 +47,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'mind',
-		sfx = [{code = 'mind_blast', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'mind_blast', target = 'target', period = 'predamage'},
+			{code = 'cast_mind', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.2,
 		random_factor_p = 0.1
@@ -70,7 +74,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'mind',
-		sfx = [{code = 'mind_shatter', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'mind_shatter', target = 'target', period = 'predamage'},
+			{code = 'cast_mind', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.6,
 		random_factor_p = 0.1
@@ -98,7 +104,9 @@ var skills = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'mind',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'targetattack', target = 'target', period = 'predamage'},
+			{code = 'cast_mind', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.25,
 		random_factor_p = 0.1

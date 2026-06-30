@@ -23,7 +23,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'air',
-		sfx = [{code = 'wind_blade', target = 'target', period = 'predamage', duration = 0.2, no_repeat_delays = true}],
+		sfx = [
+			{code = 'wind_blade', target = 'target', period = 'predamage', duration = 0.2, no_repeat_delays = true},
+			{code = 'cast_air', target = 'caster', period = 'windup', no_delays = true, is_cast = true}],
 		sounddata = {initiate = null, strike = 'spell_break', hit = null},
 		value = 0.6,
 		random_factor_p = 0.1,
@@ -49,7 +51,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'air',
-		sfx = [{code = 'lightning', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'lightning', target = 'target', period = 'predamage'},
+			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'spell_lightning', hit = null},
 		value = 1.25
 	},
@@ -72,7 +76,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'air',#not sure but not matters
-		sfx = [{code = 'haste', target = 'target', period = 'predamage'}],
+		sfx = [
+			{code = 'haste', target = 'target', period = 'predamage'},
+			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],
@@ -97,7 +103,9 @@ var skills = {
 		number_rnd_targets = [4, 6],
 		target_range = 'any',
 		damage_type = 'air',
-		sfx = [{code = 'chain_lightning', target = 'target_group', period = 'windup'}], 
+		sfx = [
+			{code = 'chain_lightning', target = 'target_group', period = 'windup'},
+			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'spell_lightning', hit = null},
 		value = 0.8,
 		random_factor_p = 0.1,
@@ -124,7 +132,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'air',#not sure but not matters
-		sfx = [{code = 'air_shield', target = 'target', period = 'predamage'}],
+		sfx = [
+			{code = 'air_shield', target = 'target', period = 'predamage'},
+			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],
@@ -166,7 +176,9 @@ var skills = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'air',
-		sfx = [{code = 'tempest', target = 'target_group', period = 'windup'}], 
+		sfx = [
+			{code = 'tempest', target = 'target_group', period = 'windup'},
+			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'spell_lightning', hit = null},
 		value = 1.2,
 		variations = [
@@ -195,7 +207,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'air',#not sure but not matters
-		sfx = [{code = 'eye_of_the_storm', target = 'target', period = 'predamage'}],
+		sfx = [
+			{code = 'eye_of_the_storm', target = 'target', period = 'predamage'},
+			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['caster.matk', '*0.35']],
 		damagestat = ['no_stat'],

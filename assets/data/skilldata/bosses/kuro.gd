@@ -75,7 +75,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'air',
-		sfx = [{code = 'wind_blade', target = 'target', period = 'predamage',}],
+		sfx = [
+			{code = 'wind_blade', target = 'target', period = 'predamage'},
+			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'spell_break', hit = null},
 		value = ['target.hpmax','*0.15'],
 	},
@@ -98,7 +100,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'dark',
-		sfx = [{code = 'darkness', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'darkness', target = 'target', period = 'predamage'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'spell_dark', hit = null},
 		value = ['target.hpmax','*0.2'],
 	},
@@ -125,7 +129,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'dark',
-		sfx = [{code = 'devour_magic', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'devour_magic', target = 'target', period = 'predamage'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'spell_dark', hit = null},
 		value = 0.75,
 	},
@@ -149,7 +155,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'dark',
-		sfx = [{code = 'dark_swril', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'dark_swril', target = 'target', period = 'predamage'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'spell_break', hit = null},
 		value = [['0']],
 		damagestat = 'no_stat',
@@ -188,7 +196,10 @@ var skills = {
 		allowedtargets = ['enemy'],
 		value = 0.1,
 		random_factor_p = 0.1,
-		sfx = [{code = 'black_tendrils', target = 'target_group', period = 'windup'}, {code = 'dark_swril', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'black_tendrils', target = 'target_group', period = 'windup'},
+			{code = 'dark_swril', target = 'target', period = 'predamage'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'spell_break', hit = null},
 	},
 	silent_night = {
@@ -213,7 +224,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'dark',
-		sfx = [{code = 'last_stand', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'last_stand', target = 'target', period = 'predamage'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sound = [{initiate = null, strike = 'skill_scene', hit = null}],
 		value = [['0']],
 		damagestat = 'no_stat',
@@ -239,7 +252,9 @@ var skills = {
 		damage_type = 'dark',
 		value = 0.9,
 		random_factor_p = 0.1,
-		sfx = [{code = 'dark_swril', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'dark_swril', target = 'target', period = 'predamage'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'spell_void', hit = null},
 	},
 	bump_in_the_night = {
@@ -268,7 +283,10 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'dark',
-		sfx = [{code = 'shadow_spike', target = 'target', period = 'predamage'},{code = 'assassinate', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'shadow_spike', target = 'target', period = 'predamage'},
+			{code = 'assassinate', target = 'target', period = 'predamage'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'spell_dark', hit = null},
 		value = 1.3,
 	},
@@ -295,7 +313,9 @@ var skills = {
 		allowedtargets = ['enemy'],
 		value = 0.7,
 		random_factor_p = 0.1,
-		sfx = [{code = 'black_tendrils', target = 'target_group', period = 'windup'}], 
+		sfx = [
+			{code = 'black_tendrils', target = 'target_group', period = 'windup'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = 'spell_break', strike = 'blade', hit = null},
 	},
 }

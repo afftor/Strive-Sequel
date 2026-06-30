@@ -25,7 +25,9 @@ var skills = {
 		damage_type = 'weapon',
 		random_target = true,
 		not_final = true,
-		sfx = [{code = 'ranged_attack', target = 'target', period = 'predamage', duration = 0.2, no_repeat_delays = true}],#strafe
+		sfx = [
+			{code = 'ranged_attack', target = 'target', period = 'predamage', duration = 0.2, no_repeat_delays = true},#strafe
+			{code = 'cast_weapon', target = 'caster', period = 'windup', no_delays = true, is_cast = true}],
 		sounddata = {initiate = null, strike = 'bow', hit = null},
 		value = 0.45,
 		random_factor_p = 0.1,
@@ -55,7 +57,9 @@ var skills = {
 		target_number = 'line',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'ensnare', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'ensnare', target = 'target', period = 'predamage'},
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'bow', hit = null},
 		value = 0.5,
 		variations = [
@@ -89,7 +93,9 @@ var skills = {
 		allowedtargets = ['enemy'],
 		value = 1.2,
 		random_factor_p = 0.1,
-		sfx = [{code = 'arrowhail', target = 'target_group', period = 'windup'}], 
+		sfx = [
+			{code = 'arrowhail', target = 'target_group', period = 'windup'},
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'bow', hit = null},
 		variations = [
 			{

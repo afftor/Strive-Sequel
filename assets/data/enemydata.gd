@@ -1510,6 +1510,7 @@ var enemies = {
 		ai_position = ['melee'],
 		xpreward = 5,
 		allowed_mastery = ['warfare','stealth'],
+		cast_weapon = "bite"
 	},
 	gryphon = {
 		code = 'gryphon',

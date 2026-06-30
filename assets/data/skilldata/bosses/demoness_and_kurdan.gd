@@ -20,7 +20,10 @@ var skills = {
 		target_number = 'single',
 		target_range = 'not_caster',
 		damage_type = 'dark',
-		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}, {code = 'provocation', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'debuff', target = 'target', period = 'predamage'},
+			{code = 'provocation', target = 'target', period = 'predamage'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -47,7 +50,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'not_caster',
 		damage_type = 'dark',
-		sfx = [{code = 'ensnare', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'ensnare', target = 'target', period = 'predamage'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'bow', hit = null},
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -100,7 +105,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'not_caster',
 		damage_type = 'dark',
-		sfx = [{code = 'inspire', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'inspire', target = 'target', period = 'predamage'},
+			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'spell2', hit = null},
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -179,7 +186,10 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [{code = 'fire_shield', target = 'target', period = 'windup'},{code = 'flame',target = 'target',period = 'predamage'},], 
+		sfx = [
+			{code = 'fire_shield', target = 'target', period = 'windup'},
+			{code = 'flame',target = 'target',period = 'predamage'},
+			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		value = [['caster.matk','*1.6'],],
 	},
@@ -228,7 +238,9 @@ var skills = {
 		damage_type = 'fire',
 		keep_target = variables.TARGET_NOKEEP,
 		next_target = variables.NT_ANY,
-		sfx = [{code = 'flame', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'flame', target = 'target', period = 'predamage'},
+			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'absolute'},
 		value = 1.6,
 	},

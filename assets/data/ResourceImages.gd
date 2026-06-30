@@ -1442,6 +1442,21 @@ var GFX_sprites = {
 	shadow_spike = "res://assets/sfx/hit_animation/shadow_spike.tscn",
 	meteor = "res://assets/sfx/hit_animation/meteor.tscn",
 	magic_vortex = "res://assets/sfx/hit_animation/magic_vortex.tscn",
+	at_arbalester = "res://assets/sfx/hit_animation/at_arbalester.tscn",
+	at_arch = "res://assets/sfx/hit_animation/at_arch.tscn",
+	at_axe = "res://assets/sfx/hit_animation/at_axe.tscn",
+	at_dagger = "res://assets/sfx/hit_animation/at_dagger.tscn",
+	at_dualsword = "res://assets/sfx/hit_animation/at_dualsword.tscn",
+	at_lance = "res://assets/sfx/hit_animation/at_lance.tscn",
+	at_mace = "res://assets/sfx/hit_animation/at_mace.tscn",
+	at_stuff = "res://assets/sfx/hit_animation/at_stuff.tscn",
+	at_sword = "res://assets/sfx/hit_animation/at_sword.tscn",
+	cast_air = "res://assets/sfx/hit_animation/cast_air.tscn",
+	cast_dark = "res://assets/sfx/hit_animation/cast_dark.tscn",
+	cast_earth = "res://assets/sfx/hit_animation/cast_earth.tscn",
+	cast_fire = "res://assets/sfx/hit_animation/cast_fire.tscn",
+	cast_light = "res://assets/sfx/hit_animation/cast_light.tscn",
+	cast_mind = "res://assets/sfx/hit_animation/cast_mind.tscn",
 	}
 
 var GFX_particles = {

@@ -242,6 +242,7 @@ func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = f
 	if !node.is_inside_tree(): return
 	var x = load(images.GFX_sprites[effect]).instance()
 	node.add_child(x)
+	x.z_index = 1#test, remove if gluckish
 	x.position = node.rect_size/2
 	if flip:
 		x.set_flip_h(true)

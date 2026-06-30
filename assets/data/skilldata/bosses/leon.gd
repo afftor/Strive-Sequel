@@ -181,6 +181,7 @@ var skills = {
 		damage_type = 'mind',
 		sfx = [
 			{code = 'tauntwave', target = 'target_group', period = 'windup'},
+			{code = 'cast_mind', target = 'caster', period = 'windup', is_cast = true}
 		],
 		sounddata = {initiate = null, strike = 'spell2', hit = null},
 		value = 0.4,
