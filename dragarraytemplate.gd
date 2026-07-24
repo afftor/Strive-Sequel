@@ -10,19 +10,19 @@ signal mouse_exited_custom
 
 func get_drag_data(position):
 	set_drag_preview(self.duplicate())
-	return arraydata
+	return {data = arraydata, arr = parentnodearray}
 
 func can_drop_data(position, data):
-	return true
+	return data.arr == parentnodearray
 
 func drop_data(position, data):
-	if str(data) == str(arraydata):
+	if str(data.data) == str(arraydata):
 		return
-	var order1 = parentnodearray.find(data)
+	var order1 = parentnodearray.find(data.data)
 	var order2 = parentnodearray.find(arraydata)
 
-	parentnodearray.erase(data)
-	parentnodearray.insert(order2, data)
+	parentnodearray.erase(data.data)
+	parentnodearray.insert(order2, data.data)
 	target_node.call(target_function)
 	#get_parent().get_parent().get_parent().get_parent().change_order()
 
