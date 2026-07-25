@@ -1,4 +1,4 @@
-[gd_scene load_steps=283 format=2]
+[gd_scene load_steps=295 format=2]
 
 [ext_resource path="res://Character_generator/images/03_ears/ears_human.png" type="Texture" id=1]
 [ext_resource path="res://Character_generator/images/00_body_nude/pregnancy_belly_mid.png" type="Texture" id=2]
@@ -394,6 +394,70 @@ shader_param/lmod = 0.6
 shader_param/midpoint = 0.5
 shader_param/steepness = 2.0
 
+[sub_resource type="ShaderMaterial" id=208]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
+
+[sub_resource type="ShaderMaterial" id=209]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
+
 [sub_resource type="ShaderMaterial" id=85]
 shader = ExtResource( 27 )
 shader_param/anchor1 = Vector2( 436, 590 )
@@ -665,6 +729,70 @@ shader_param/overlay = 0.999
 shader_param/part3 = ExtResource( 19 )
 
 [sub_resource type="ShaderMaterial" id=57]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
+
+[sub_resource type="ShaderMaterial" id=210]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
+
+[sub_resource type="ShaderMaterial" id=211]
 shader = ExtResource( 103 )
 shader_param/anchor1 = Vector2( 437.574, 570.999 )
 shader_param/anchor2 = Vector2( 363.573, 503.999 )
@@ -2532,6 +2660,38 @@ shader_param/lmod = 0.6
 shader_param/midpoint = 0.5
 shader_param/steepness = 2.0
 
+[sub_resource type="ShaderMaterial" id=212]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
+
 [sub_resource type="ShaderMaterial" id=198]
 shader = ExtResource( 103 )
 shader_param/anchor1 = Vector2( 437.574, 570.999 )
@@ -2835,6 +2995,102 @@ shader_param/lmod = 0.6
 shader_param/midpoint = 0.5
 shader_param/steepness = 2.0
 
+[sub_resource type="ShaderMaterial" id=213]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
+
+[sub_resource type="ShaderMaterial" id=214]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
+
+[sub_resource type="ShaderMaterial" id=215]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
+
 [sub_resource type="ShaderMaterial" id=115]
 shader = ExtResource( 27 )
 shader_param/anchor1 = Vector2( 436, 590 )
@@ -3106,6 +3362,102 @@ shader_param/overlay = 0.999
 shader_param/part3 = ExtResource( 19 )
 
 [sub_resource type="ShaderMaterial" id=68]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
+
+[sub_resource type="ShaderMaterial" id=216]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
+
+[sub_resource type="ShaderMaterial" id=217]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
+
+[sub_resource type="ShaderMaterial" id=218]
 shader = ExtResource( 103 )
 shader_param/anchor1 = Vector2( 437.574, 570.999 )
 shader_param/anchor2 = Vector2( 363.573, 503.999 )
@@ -5305,6 +5657,38 @@ shader_param/lmod = 0.6
 shader_param/midpoint = 0.5
 shader_param/steepness = 2.0
 
+[sub_resource type="ShaderMaterial" id=219]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
+
 [sub_resource type="ShaderMaterial" id=200]
 shader = ExtResource( 103 )
 shader_param/anchor1 = Vector2( 437.574, 570.999 )
@@ -5359,7 +5743,6 @@ render_target_update_mode = 3
 gui_disable_input = true
 
 [node name="male_pose" type="Node2D" parent="VPC/VP" groups=["sex"]]
-visible = false
 light_mask = 4
 position = Vector2( 500, 500 )
 
@@ -5464,6 +5847,14 @@ rotation = -1.5708
 z_index = 2
 texture = ExtResource( 98 )
 
+[node name="HandR_armor2" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR" groups=["collar"]]
+light_mask = 4
+material = SubResource( 208 )
+position = Vector2( -94.2105, 190.287 )
+rotation = -1.5708
+z_index = 2
+texture = ExtResource( 98 )
+
 [node name="HandR2" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["hand_r"]]
 position = Vector2( 178.784, -35.0601 )
 rest = Transform2D( 1, 0, 0, 1, 178.784, -35.0601 )
@@ -5479,6 +5870,14 @@ texture = ExtResource( 75 )
 [node name="HandR_armor" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2" groups=["cloth", "cloth_top"]]
 light_mask = 4
 material = SubResource( 54 )
+position = Vector2( -94.2105, 190.287 )
+rotation = -1.5708
+z_index = 2
+texture = ExtResource( 98 )
+
+[node name="HandR_armor2" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2" groups=["collar"]]
+light_mask = 4
+material = SubResource( 209 )
 position = Vector2( -94.2105, 190.287 )
 rotation = -1.5708
 z_index = 2
@@ -5575,6 +5974,14 @@ rotation = -1.5708
 z_index = 2
 texture = ExtResource( 67 )
 
+[node name="HandL_armor2" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL" groups=["collar"]]
+light_mask = 4
+material = SubResource( 210 )
+position = Vector2( -108.852, -164.122 )
+rotation = -1.5708
+z_index = 2
+texture = ExtResource( 67 )
+
 [node name="HandL2" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["hand_l"]]
 position = Vector2( 188.756, 27.4087 )
 rest = Transform2D( 1, 0, 0, 1, 188.756, 27.4087 )
@@ -5591,6 +5998,15 @@ texture = ExtResource( 76 )
 visible = false
 light_mask = 4
 material = SubResource( 57 )
+position = Vector2( -108.852, -164.122 )
+rotation = -1.5708
+z_index = 2
+texture = ExtResource( 67 )
+
+[node name="HandL_armor2" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2" groups=["collar"]]
+visible = false
+light_mask = 4
+material = SubResource( 211 )
 position = Vector2( -108.852, -164.122 )
 rotation = -1.5708
 z_index = 2
@@ -6087,6 +6503,13 @@ position = Vector2( 590, -12 )
 rotation = -1.5708
 z_index = 1
 
+[node name="Head_armor_tex2" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["collar"]]
+light_mask = 4
+material = SubResource( 212 )
+position = Vector2( 590, -12 )
+rotation = -1.5708
+z_index = 1
+
 [node name="Head_armor_tex_cloth" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["cloth", "cloth_top"]]
 light_mask = 4
 material = SubResource( 63 )
@@ -6210,6 +6633,14 @@ rotation = -1.5708
 z_index = 1
 texture = ExtResource( 33 )
 
+[node name="HandR_armor2" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR" groups=["collar"]]
+light_mask = 4
+material = SubResource( 213 )
+position = Vector2( -39.9886, 146.074 )
+rotation = -1.5708
+z_index = 1
+texture = ExtResource( 33 )
+
 [node name="HandR2" type="Bone2D" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["hand_r"]]
 position = Vector2( 147, -34.0005 )
 rest = Transform2D( 1, 0, 0, 1, 147, -34.0005 )
@@ -6231,6 +6662,14 @@ rotation = -1.5708
 z_index = 1
 texture = ExtResource( 33 )
 
+[node name="HandR_armor2" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2" groups=["collar"]]
+light_mask = 4
+material = SubResource( 214 )
+position = Vector2( -39.9886, 146.074 )
+rotation = -1.5708
+z_index = 1
+texture = ExtResource( 33 )
+
 [node name="HandR3" type="Bone2D" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["hand_r"]]
 position = Vector2( 147, -34.0005 )
 rest = Transform2D( 1, 0, 0, 1, 147, -34.0005 )
@@ -6247,6 +6686,14 @@ texture = ExtResource( 11 )
 visible = false
 light_mask = 4
 material = SubResource( 65 )
+position = Vector2( -39.9886, 146.074 )
+rotation = -1.5708
+z_index = 1
+texture = ExtResource( 33 )
+
+[node name="HandR_armor2" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3" groups=["collar"]]
+light_mask = 4
+material = SubResource( 215 )
 position = Vector2( -39.9886, 146.074 )
 rotation = -1.5708
 z_index = 1
@@ -6346,6 +6793,14 @@ rotation = -1.5708
 z_index = 1
 texture = ExtResource( 14 )
 
+[node name="HandL_armor2" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL" groups=["collar"]]
+light_mask = 4
+material = SubResource( 216 )
+position = Vector2( -41.1053, -119.684 )
+rotation = -1.5708
+z_index = 1
+texture = ExtResource( 14 )
+
 [node name="HandL2" type="Bone2D" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["hand_l"]]
 position = Vector2( 136.842, 21.0521 )
 rest = Transform2D( 1, 0, 0, 1, 136.842, 21.0521 )
@@ -6367,6 +6822,14 @@ rotation = -1.5708
 z_index = 1
 texture = ExtResource( 14 )
 
+[node name="HandL_armor2" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2" groups=["collar"]]
+light_mask = 4
+material = SubResource( 217 )
+position = Vector2( -41.1053, -119.684 )
+rotation = -1.5708
+z_index = 1
+texture = ExtResource( 14 )
+
 [node name="HandL3" type="Bone2D" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["hand_l"]]
 position = Vector2( 136.842, 21.0521 )
 rest = Transform2D( 1, 0, 0, 1, 136.842, 21.0521 )
@@ -6383,6 +6846,14 @@ texture = ExtResource( 10 )
 visible = false
 light_mask = 4
 material = SubResource( 68 )
+position = Vector2( -41.1053, -119.684 )
+rotation = -1.5708
+z_index = 1
+texture = ExtResource( 14 )
+
+[node name="HandL_armor2" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3" groups=["collar"]]
+light_mask = 4
+material = SubResource( 218 )
 position = Vector2( -41.1053, -119.684 )
 rotation = -1.5708
 z_index = 1
@@ -7121,6 +7592,14 @@ texture = ExtResource( 1 )
 visible = false
 light_mask = 4
 material = SubResource( 81 )
+position = Vector2( 587.11, -12 )
+rotation = -1.5708
+z_index = 1
+texture = ExtResource( 32 )
+
+[node name="Head_armor_tex2" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head" groups=["collar"]]
+light_mask = 4
+material = SubResource( 219 )
 position = Vector2( 587.11, -12 )
 rotation = -1.5708
 z_index = 1
