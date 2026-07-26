@@ -893,7 +893,7 @@ func test_mode():
 		ResourceScripts.game_progress.decisions.append("act1_finish")
 		ResourceScripts.game_progress.decisions.append("act4_start")
 		globals.common_effects([{code = 'progress_quest', value = 'act_4_capital', stage = 'enter_capital'}])
-		#input_handler.interactive_message('purchased_cali', '', {})
+		input_handler.interactive_message('comic_test_1', '', {})
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		

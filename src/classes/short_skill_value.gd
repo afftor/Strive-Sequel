@@ -120,7 +120,7 @@ func calculate_reduction(defvalue):
 		return defvalue/200.0
 	if defvalue > 250:
 		return 0.9
-	return -320.0/27.0 + defvalue * (13.0/18.0 - defvalue * (1.0/1125.0 + defvalue / 675000.0))
+	return -320.0/2700.0 + defvalue * (13.0/1800.0 - defvalue * (1.0/112500.0 + defvalue / 67500000.0))
 
 
 func calculate_dmg():
