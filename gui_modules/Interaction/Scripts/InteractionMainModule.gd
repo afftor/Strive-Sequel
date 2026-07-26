@@ -1719,7 +1719,7 @@ func showbody(i):
 		$Panel/BodyDisplay/ragdoll.test_mode = false
 		$Panel/BodyDisplay/ragdoll.rebuild(i.person)
 		$Panel/BodyDisplay/ragdoll.rebuild_cloth(false)
-		$Panel/BodyDisplay/ragdoll.rebuild_underwear()
+#		$Panel/BodyDisplay/ragdoll.rebuild_underwear()
 	else:
 		$Panel/bodyimage.texture = i.person.get_body_image()
 		$Panel/bodyimage.visible = true
