@@ -36,6 +36,29 @@ var comic_events = {
 		{type = 'frame', image = "res://assets/images/backgrounds/cave5.png", position = Vector2(300, 200), size = Vector2(1000, 600)},
 		{type = 'close'}
 	],
+	rouge_1 = [
+		[
+			{type = 'frame', image = "res://assets/images/comic scenes/rouge_1/1.png", position = Vector2(0, -20), size = Vector2(1920, 1080), delay = 0.1},
+			{type = 'text', text = "TESTTEST1"},
+		],
+		[
+			{type = 'frame', image = "res://assets/images/comic scenes/rouge_1/2.png", position = Vector2(0, -20), size = Vector2(1920, 1080), delay = 0.1},
+			{type = 'text', text = "TESTTEST2"},
+		],
+		[
+			{type = 'frame', image = "res://assets/images/comic scenes/rouge_1/3.png", position = Vector2(0, -20), size = Vector2(1920, 1080), delay = 0.1},
+			{type = 'text', text = "TESTTEST3"},
+		],
+		[
+			{type = 'frame', image = "res://assets/images/comic scenes/rouge_1/4.png", position = Vector2(0, -20), size = Vector2(1920, 1080), delay = 0.1},
+			{type = 'text', text = "TESTTEST4"},
+		],
+		[
+			{type = 'frame', image = "res://assets/images/comic scenes/rouge_1/5.png", position = Vector2(0, -20), size = Vector2(1920, 1080), delay = 0.1},
+			{type = 'text', text = "TESTTEST5"},
+		],
+		{type = 'close'}
+	],
 }
 
 
@@ -45,7 +68,7 @@ var scenedict = {
 		text = "",
 		image = null,
 		tags = [],
-		comic_scene = 'test1',
+		comic_scene = 'rouge_1',
 		options = []
 	},
 	comic_test_2 = {
