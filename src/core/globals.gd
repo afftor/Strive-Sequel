@@ -3339,7 +3339,7 @@ func make_sfx_params(anim_dict, last_iteration = false):
 	if anim_dict.has('duration'):
 		params.duration = anim_dict.duration
 	elif anim_dict.has("is_cast") and anim_dict.is_cast:
-		params.duration = 0.3
+		params.duration = 0.0
 	if anim_dict.has('no_delays'): params.no_delays = anim_dict.no_delays
 	if anim_dict.has('no_repeat_delays') and anim_dict.no_repeat_delays and !last_iteration:
 		params.no_delays = true
