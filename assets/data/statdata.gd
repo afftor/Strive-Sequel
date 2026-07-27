@@ -308,7 +308,7 @@ var statdata = {
 	},
 	skin_coverage = {
 		code = 'skin_coverage',
-		tags = [],
+		tags = ['custom_setter'],
 		default_bonus = 'set',
 	},
 	facial_hair = {
@@ -348,7 +348,7 @@ var statdata = {
 	},
 	body_color_tail = {
 		code = 'body_color_tail',
-		tags = [],
+		tags = ['custom_getter'],
 		default_bonus = 'set',
 	},
 	body_color_horns = {
