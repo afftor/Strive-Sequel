@@ -266,6 +266,42 @@ func get_hair_facial_color():
 		return get_stat('hair_base_color_1')
 
 
+func get_body_color_tail():
+	if statlist.body_color_tail != '':
+		return statlist.body_color_tail 
+	match statlist.tail:
+		'cat', 'fox', 'wolf', 'tanuki':
+			var res = get_hairs_data().hair_base_color_1
+			if statlist.hair_base_color_1 != "":
+				res = statlist.hair_base_color_1
+			res = res.replace('_', '')
+			if statlist.skin_coverage.begins_with('fur'):
+				match statlist.skin_coverage:
+					'fur_orange':
+						return 'orange3'
+					'fur_orange_white':
+						return 'orange2'
+					'fur_striped':
+						return 'orange3'
+					'fur_white':
+						return 'white2'
+					'fur_grey':
+						return 'white3'
+					'fur_brown':
+						return 'brown3'
+					'fur_black':
+						return 'dark3'
+			return res
+		'demon', 'cow', 'rat', 'fish':
+			var res = get_hairs_data().hair_base_color_1
+			if statlist.hair_base_color_1 != "":
+				res = statlist.hair_base_color_1
+			res = res.replace('_', '')
+			return res
+		'dragon', 'dragon2', 'kobold':
+			return statlist.body_color_skin
+
+
 func get_body_color_ears():
 	match statlist.ears: 
 		'cat', 'fox', 'tanuki', 'wolf', 'mouse', 'bunny', 'bunny_standing', 'bunny_dropping', 'cow':
@@ -488,6 +524,10 @@ func update_skin(value, operant = 'set'):
 			statlist.body_color_skin = 'blue2'
 		_:
 			statlist.body_color_skin = 'human2'
+
+
+func update_skin_coverage(value, operant = 'set'):
+	apply_custom_bodychange('skin_coverage', value, false)
 
 
 func update_name(value, operant = 'set'):
@@ -1339,8 +1379,11 @@ func get_racial_features(race):
 		update_personality(input_handler.weightedrandom(array))
 
 
-func apply_custom_bodychange(target, part):
-	update_stat(target, part, 'set')
+func apply_custom_bodychange(target, part, update = true):
+	if update:
+		update_stat(target, part, 'set')
+	else:
+		statlist[target] = part
 	for i in ResourceScripts.descriptions.bodypartsdata[target][part].bodychanges:
 		if parent.get_ref().checkreqs(i.reqs) == true:
 			var newvalue = i.value
