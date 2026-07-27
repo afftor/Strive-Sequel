@@ -16,6 +16,11 @@ var TranslationDict = {
 	MENUQUIT = "Quit",
 	MENUCHANGELOG = "Change log",
 	MENUMODLISTSAFETY = "Mod List Reset",
+	UPDATENOTICETITLE = "Update Available",
+	UPDATENOTICEDOWNLOAD = "Get it",
+	UPDATENOTICEAVAILABLE = "A new version (%s) is available.\nYou are currently on %s.",
+	UPDATENOTICEUNKNOWN = "Could not determine the latest version.\nCheck itch.io to see if an update is available.",
+	UPDATECHECKCONSENT = "Allow the game to check itch.io for new versions on startup? This only sends a request to itch.io - no personal data is collected.",
 	GALLERYNAME = "Gallery",
 	GALLERYSTORY = "Story",
 	GALLERYERO = "Ero",
@@ -4214,7 +4219,7 @@ Physical and Sexual training actions are 25% more impactful.""",
 	TRAITCOWARDDESCRIPT = "Hit Rate -50.",
 	TRAITFRIGIDDESCRIPT = "Can't acquire new sex traits. Maximum lust is reduced by 50%.",
 	TRAITBAWDYDESCRIPT = "Service Mod +25%.",
-	TRAITFORAGERDESCRIPT = "30% Chance to not consume any food on day end.",
+	TRAITFORAGERDESCRIPT = "Does not consume any food.",
 	TRAITTALENTEDDESCRIPT = "Task Crit chance +15%.",
 	TRAITMENIALDESCRIPT = "Task Crit chance is set to 0.",
 	TRAITSTURDYDESCRIPT = "+10 DEF.",
@@ -4337,7 +4342,7 @@ Requires: Sex:Basics""",
 
 Requires: Sex:Advanced""",
 	TRAITMASTER_MENTOR = "Mentor",
-	TRAITMASTER_MENTORDESCRIPT = "Training actions have lower impact on spirit.",
+	TRAITMASTER_MENTORDESCRIPT = "Training sessions you conduct grant 25% more Training Points.",
 	TRAITUNTRAINED = "Rebellious",
 	TRAITUNTRAINEDDESCRIPT = """[name] has not been subjected to any training yet. [His] resisting attitude makes it hard to make [him] do any work, or sell him. Perform at least one successful training to break [him].
 -50% Productivity, -30% Damage, Sell value -66%, Can't be submitted to quests.'""",
@@ -4561,6 +4566,7 @@ Social skills effect: +10%.""",
 	EFFECTCOFFIBLESS = "Increased Experience gain by 20%%",
 	EUPHORIABUFF = "Euphoria: Damage Increased",
 	FIREARROWBUFF = "Fire Arrows: your attacks burn your enemies.",
+	POISONARROWBUFF = "Poison Arrows: your attacks poison your enemies.",
 	EFFECTNAME_E_LOVE = "Lover present",
 	EFFECTNAME_E_FRIEND = "Friend present",
 	EFFECTNAME_E_RIVAL = "Rival present",
@@ -8249,7 +8255,7 @@ If you got the coin for it...""",
 
 Surprised by the fact [he] knows common speech and is civilized unlike others you consider what to do with [him].""",
 	DIALOGUEEVENTGOBLINRECRUIT = "[Persuasion Challenge] Attempt to recruit",
-	DIALOGUEEVENTGOBLINBRINGTOLEADER = "[Persuasion Challenge] Request getting you to the leader",
+	DIALOGUEEVENTGOBLINBRINGTOLEADER = "[Persuasion Challenge] Request a map of the area",
 	DIALOGUEEVENTGOBLINKILL = "Kill",
 	DIALOGUEEVENTGOBLINCAPTURE = "[Strength Challenge] Capture",
 	DIALOGUEEVENTGOBLINLEAVE = "Let go",
@@ -8262,13 +8268,13 @@ After [scncharname] received instructions, [scncharhe] quickly disappeared in th
 
 Before you can react, the goblin [boy] disappears from sight in one of the tunnels you didn't notice on entrance.""",
 	DIALOGUEEVENTGOBLINBRINGTOLEADERSUCCESS = """[center]{color=green|Success!}[/center]
-{color=yellow|— You actually serious?! I-I guess someone like you can do that... Okay, fine, I'll show you the way, but after this you won't see me anywhere close to it. You got me? }
+{color=yellow|— You actually serious?! I-I guess someone like you can use this... Okay, fine, I'll mark what I know, but after this you won't see me anywhere close to it. You got me? }
 
-According to your agreement, the goblin retells you the layout of the dungeon which you carefully write down. Before you can notice, the goblin is already disapparead from sight.""",
+According to your agreement, the goblin sketches a rough map of the area and points out the safer passages. Before you can notice, the goblin has already disappeared from sight.""",
 	DIALOGUEEVENTGOBLINBRINGTOLEADERFAILURE = """[center]{color=red|Failure!}[/center]
-{color=yellow|— This... This is unreasonable ya know, I'm not out of my mind yet. If you are so willing to die, don't drag me in. }
+{color=yellow|— This... This is unreasonable ya know, I'm not out of my mind yet. If you are so willing to wander deeper, don't drag me in. }
 
-As [he] was talking [he] moved to the position and darted from the room before you could react. """,
+As [he] was talking [he] moved into position and darted from the room before you could react. """,
 	DIALOGUEEVENTGOBLINCAPTUREREPLY = """You figure that civilized goblin can be a useful tool or net some profit on the market. Without giving [scncharhim] a second chance, you seize [scncharhim].
 
 {color=yellow|— Hey, what the {^fuck:hell} are you {^doing:thinking}?! Let me go!.. You bastards!}""",
@@ -8335,6 +8341,7 @@ As the [scncharboy] is made your slave, [scncharhe] can be a very useful additio
 	CHARLOVERS = "[name] and [scncharname] have approached you and asked to let them become lovers.",
 	CHARFREELOVERS = "[name] and [scncharname] have approached you and asked to let them become paramour.",
 	REVEAL_MAP = "[name] casts Wind Whispers, grasping the layout of surrounding areas. ",
+	DUNGEON_INTIMIDATE = "The enemy group flees from the spot abandoning their position.",
 	CHARLOVERSALLOW = "*Allow*",
 	CHARFREELOVERSALLOW = "*Allow*",
 	CHARLOVERSFORBID = "*Forbid*",
@@ -8639,6 +8646,14 @@ At the bottom left you can select items, unlock new classes and configure additi
 	ITEMMAJORUS_POTIONDESCRIPT = "A special potion, which can be used to grow a person's specific body part size. Can be used on Breasts, Butts, Penises and Balls.",
 	ITEMEXP_SCROLL = "Scroll of Knowledge",
 	ITEMEXP_SCROLLDESCRIPT = "Grants 100 points of experience to the user. Requires Literacy.",
+	ITEMBOUQUET = "Bouquet",
+	ITEMBOUQUETDESCRIPT = "A bouquet of fresh flowers. Gifting it raises Affection towards the giver.",
+	ITEMGEM = "Gem",
+	ITEMGEMDESCRIPT = "A polished, valuable gemstone. Gifting it raises Respect towards the giver.",
+	ITEMBROOCH = "Brooch",
+	ITEMBROOCHDESCRIPT = "An ornate, expensive brooch. Gifting it greatly raises Affection towards the giver, and raises Respect as well.",
+	ITEMRITUAL_DAGGER = "Ritual Dagger",
+	ITEMRITUAL_DAGGERDESCRIPT = "A ceremonial dagger of fine craftsmanship. Gifting it greatly raises Respect towards the giver, and raises Affection as well.",
 	ITEMSEXSWAP_POTION = "Sex Swap Potion",
 	ITEMSEXSWAP_POTIONDESCRIPT = "Changes character's sex to the opposite. Won't work on unique characters.",
 	ITEMUSECONFIRM = "You sure want to use {color=yellow|%s}?",
@@ -22287,7 +22302,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	ALIRON10 = "Meet princess in jail",
 	ALIRON11 = "Meet Hunter Veteran",
 	ALIRON12 = "Aliron Church",
-	ALIRON13 = "Search for collectioner",
+	ALIRON13 = "Search for collector",
 	ALIRON14 = "William's mansion",
 	ALIRON15 = "William's mansion",
 	ALIRON16 = "Merchant Stalls",
@@ -23117,7 +23132,9 @@ Anastasia wraps her delicate fingers around your shaft, the contrast between her
 {color=yellow|— Sorry, I've never done it before, but I heard this way you please a man...}
 
 Leaning forward, she places a gentle kiss on the tip of your cock, her plump lips pressing against your sensitive skin. Her blond hair falls forward, tickling your thighs as she grows bolder, running her tongue along the underside of your shaft. The wet warmth of her mouth sends waves of pleasure through your body.""",
-	ANA_BLOW_3 = """{color=yellow|— I never thought you would taste like this, but it's not terrible...}
+	ANA_BLOW_3 = """Anastasia pauses only long enough to gather her courage, then slips the thin nightgown from her shoulders and lets it fall aside before leaning back toward you.
+
+{color=yellow|— I never thought you would taste like this, but it's not terrible...}
 
 Though clearly new to this act, the princess approaches her task with determination. Her lips stretch around your girth as she attempts to take more of you into her mouth. Occasionally, she pulls back, catching her breath before diving forward again with renewed enthusiasm.
 

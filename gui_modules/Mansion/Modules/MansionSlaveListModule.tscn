@@ -473,7 +473,8 @@ margin_right = 508.0
 margin_bottom = 49.0
 theme = ExtResource( 11 )
 
-[node name="rule_constrain" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
+[node name="rule_constrain" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button"]
+visible = false
 margin_left = 530.0
 margin_top = 1.0
 margin_right = 578.0
@@ -515,7 +516,8 @@ margin_right = 928.0
 margin_bottom = 49.0
 theme = ExtResource( 11 )
 
-[node name="rule_masturbation" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
+[node name="rule_masturbation" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button"]
+visible = false
 margin_left = 950.0
 margin_top = 1.0
 margin_right = 998.0
@@ -1140,7 +1142,8 @@ custom_fonts/font = ExtResource( 47 )
 text = "WORKRULESHIFTS"
 align = 1
 
-[node name="rule_constrain" type="Label" parent="HBoxContainer" groups=["rules"]]
+[node name="rule_constrain" type="Label" parent="HBoxContainer"]
+visible = false
 margin_left = 458.0
 margin_top = 66.0
 margin_right = 642.0
@@ -1218,7 +1221,8 @@ custom_fonts/font = ExtResource( 47 )
 text = "WORKRULERELATIONSHIP"
 align = 1
 
-[node name="rule_masturbation" type="Label" parent="HBoxContainer" groups=["rules"]]
+[node name="rule_masturbation" type="Label" parent="HBoxContainer"]
+visible = false
 margin_left = 867.0
 margin_top = 67.0
 margin_right = 1087.0

@@ -9,7 +9,7 @@ onready var LeftSide = $LeftSide/VBoxContainer
 var cheat_dict = {
 	"max_factors": "Maximize all factors",
 	"max_stats": "Maximize all stats",
-	"max_loyal_auth": "Maximize loyal, auth",
+	"max_loyal_auth": "Maximize affection, respect",
 	"max_sex_skills": "Maximize sex skills",
 	"unlock_all_sex_traits": "Unlock all sex traits",
 	"unlock_classes": "Unlock classes",
@@ -76,6 +76,7 @@ func set_cheat(cheat = null, btn = null):
 		ResourceScripts.game_globals[cheat] = btn.is_pressed()
 	match cheat:
 		"instant_upgrades":
+			ResourceScripts.game_globals.instant_upgrades = true
 			max_all_upgrades()
 		"plus_100k_of_gold":
 			plus_100k_of_gold()
@@ -162,15 +163,17 @@ func add_mastery():
 	gui_controller.mansion.SlaveModule.show_slave_info()
 
 
-func max_loyal_auth(): #2REWORK
-#	selected_person.set_stat("loyalty", 100)
-#	selected_person.set_stat("authority", 201)
-	input_handler.SystemMessage("Authority and loyalty set to maximum")
+func max_loyal_auth():
+	selected_person.set_stat("affection", 100)
+	selected_person.set_stat("respect", 100)
+	input_handler.SystemMessage("Affection and respect set to maximum")
 	gui_controller.mansion.SlaveModule.show_slave_info()
 
 
 func unlock_all_sex_traits():
 	for trait in Traitdata.sex_traits:
+		if Traitdata.sex_traits[trait].get('negative', false):
+			continue
 		selected_person.add_sex_trait(str(trait), true)
 	input_handler.SystemMessage("All sex traits unlocked")
 	gui_controller.mansion.SlaveModule.show_slave_info()

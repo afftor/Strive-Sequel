@@ -221,11 +221,11 @@ func build_location_description():
 	var text = ''
 	match active_location.type:
 		'settlement':
-			text = tr(active_location.classname) + ": " + active_location.name
+			text = tr(active_location.classname) + ": " + tr(active_location.name)
 		'skirmish':
 			pass
 		'quest_location':
-			text = active_location.name #+ "\n" + active_location.descript
+			text = tr(active_location.name) #+ "\n" + active_location.descript
 	$LocationGui/DungeonInfo/RichTextLabel.bbcode_text = (
 		'[center]'
 		+ globals.TextEncoder(text)

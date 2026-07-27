@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.15.0a'
+const gameversion = '0.15.0c'
 
 #time
 signal hour_tick
@@ -2662,12 +2662,12 @@ func common_effects(effects, from_event = false):
 					else:
 						res = gui_controller.exploration_dungeon.pay_stamina(i.value)
 					manifest_and_log("dungeon", "%s stamina spent in %s" %
-						[res, gui_controller.exploration_dungeon.active_location.name])
+						[res, tr(gui_controller.exploration_dungeon.active_location.name)])
 			'add_stamina':
 				if gui_controller.exploration_dungeon != null:
 					gui_controller.exploration_dungeon.add_stamina(i.value)
 					manifest_and_log("dungeon", "%s stamina replenished in %s" %
-						[i.value, gui_controller.exploration_dungeon.active_location.name])
+						[i.value, tr(gui_controller.exploration_dungeon.active_location.name)])
 					
 			'clear_subroom':
 				if gui_controller.exploration_dungeon != null:

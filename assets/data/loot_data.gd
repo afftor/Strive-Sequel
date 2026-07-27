@@ -219,7 +219,9 @@ var loot_tables = {
 		{random = 'material', min = 3, max = 5, tier = 't1'},
 		{random = 'material', min = 3, max = 5, from_location = true},
 		{random = 'usable', min = 2, max = 4, tiers = ['easy', 'medium']},
-		{random = 'usable', min = 0, max = 1, tiers = ['easy', 'medium']}]},
+		{random = 'usable', min = 0, max = 1, tiers = ['easy', 'medium']},
+		{item = 'brooch', chance = 0.15},
+		{item = 'ritual_dagger', chance = 0.1}]},
 	medium_chest_gear = {list = [
 		{random = 'material', min = 4, max = 8, from_location = true},
 		{random = 'gear', amount = 1, material_tiers = [['t1', 3], ['t1', 10], ['t1', 1]], tiers = ['easy']}]},
@@ -262,6 +264,8 @@ var loot_tables = {
 		{item = 'soul_stone', min = 0, max = 1},
 		{gold = true, min = 400, max = 600},
 		{item = 'corruptive_essence', chance = 0.3},
+		{item = 'brooch', chance = 0.2},
+		{item = 'ritual_dagger', chance = 0.25},
 		{selector = [
 			{loot_table = "medium_maps", weight = 2},
 			{loot_table = "hard_maps", weight = 3},
@@ -348,6 +352,7 @@ var loot_tables = {
 	zephyra_bribe_2 = {item = 'zephyra_underwear', amount = 1},
 	ramont_axe_reward = {item = 'ramont_axe', amount = 1, autoassign_quality = true},
 	nixx_reward = {item = 'nixx_headgear', amount = 1},#autoassign_quality = true
+	ornate_leather_headdress_reward = {item = 'ornate_leather_headdress', amount = 1},
 	hector_armor_reward = {item = 'hector_armor', amount = 1, no_enchant = true, autoassign_quality = true},#autoassign_quality = true
 	erlen_sword_reward = {list = [
 		{item = 'erlen_sword', amount = 1, autoassign_quality = true},
@@ -426,6 +431,8 @@ var loot_tables = {
 			{item = 'alcohol'},
 			{item = 'aphrodisiac'},
 			{item = 'hairdye'}]},
+		{min = 1, max = 2, chance = 0.5, item = 'bouquet'},
+		{min = 1, max = 2, chance = 0.5, item = 'gem'},
 		{repeat_min = 1, repeat_max = 2, selector = [
 			{item = 'map_goblin_cave'},
 			{item = 'map_bandit_den'}]},

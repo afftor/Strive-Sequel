@@ -1799,9 +1799,13 @@ var data = {
 				type = "next_dialogue",
 				bonus_effects = [
 					{
-						code = "add_item",
-						item = "ornate_leather_headdress",
-						number = 1
+						code = "make_loot",
+						pool = [
+							["ornate_leather_headdress_reward", 1]
+						]
+					},
+					{
+						code = "open_loot"
 					},
 					{
 						code = "complete_quest",

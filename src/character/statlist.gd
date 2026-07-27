@@ -333,6 +333,7 @@ var template_dynamic = {
 	training_loyalty = 0,
 	training_points_bonus = 0,
 	trainer_loyalty_bonus = 0.0,
+	trainer_training_points_bonus = 0.0,
 #	resistance_red = 0,
 	
 	#helpers

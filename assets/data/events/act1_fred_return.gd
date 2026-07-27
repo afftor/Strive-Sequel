@@ -7,6 +7,7 @@ var data = {
 			image = null,
 			character = "myr",
 			tags = ['dialogue_scene'],
+			common_effects = [{code = 'money_change', operant = '+', value = 200}],
 			text = [{text = "RETURNTOMYR_IF_FRED", reqs = []}],
 			options = [
 			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [
@@ -17,6 +18,7 @@ var data = {
 			image = null,
 			character = "myr",
 			tags = ['dialogue_scene'],
+			common_effects = [{code = 'money_change', operant = '+', value = 200}],
 			text = [{text = "RETURNTOMYR_IF_NOT_FRED", reqs = []}],
 			options = [
 			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [

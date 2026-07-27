@@ -480,7 +480,7 @@ var data = {
 	cali_amelia_4_1 = {
 		image = null,
 		music = "intimate",
-		custom_background = "amelia_cali_2",
+		custom_background = "amelia_cali_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		unlocked_gallery_seq = "amelia_cali",
@@ -500,7 +500,7 @@ var data = {
 	},
 	cali_amelia_5 = {
 		image = null,
-		custom_background = "amelia_cali_3",
+		custom_background = "amelia_cali_2",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene', 'master_translate',],

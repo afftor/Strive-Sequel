@@ -1,7 +1,21 @@
+Master's Mentor trait now boosts Training Points gained instead of trainee capacity
+Amelia is now recruited with proper training and points
+Changed dungeon goblin event 'take to the leader' option to map reveal
+Fixed enemies taking too little damage when def/mdef > 100
+Fixed a couple ragdoll issues
+Fixed gallery having some inconsistensies
+Fixed Anastasia's first quest having wrong enemy types in it
+Fixed some quest rewards not displaying properly
+Multiple missing localization fixes
+0.15.0b
 Added minor affection bonus to master's social skill
+Added new items to raise affection and respect
+Removed some obsolete character rules
+Updated Zephyra's sprite
+Added functionality to check for new version updates from launching the game
 Fixed Lira's quest not triggering
 Fixed story characters not preventing sex unlocks before progressing their story
-0.15.1a
+0.15.0a
 Fixed some key localization issues which should make other localizations more stable with missing translations
 Fixed some missing events keys
 Fixed wave skill type not working correctly in some cases

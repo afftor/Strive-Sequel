@@ -472,6 +472,7 @@ func apply_training(code):
 			result_data.loyalty = 0
 	if result_data.training_points != 0:
 		result_data.training_points += parent.get_ref().get_stat('training_points_bonus')
+		result_data.training_points += result_data.training_points * ch_trainer.get_stat('trainer_training_points_bonus')
 		if result_data.training_points < 0:
 			result_data.training_points = 0
 		if !is_broke_in():
@@ -738,6 +739,8 @@ func process_chardata(chardata):
 		process_disposition_data(chardata.training_disposition, true)
 	if chardata.has('blocked_training_traits'):
 		process_traits_availability_data(chardata.blocked_training_traits)
+	if chardata.has('training_points'):
+		training_points = chardata.training_points
 
 #needed only for old saves. Remove with time
 func fix_old_save():

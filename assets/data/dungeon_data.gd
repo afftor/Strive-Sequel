@@ -3436,10 +3436,10 @@ var dungeons = {
 			races = [['local', 3], ['common',5], ['uncommon',1]]
 		},
 		difficulty = 'easy',
-		background_pool = ['fort3'],
-		custom_background = 'combat_fort',
-		enemyarray =  [['event_rebels_1', 1],['event_rebels_2', 1],['rebels_small', 0.5]],
-		final_enemy = [['rebels_boss',1], ['rebels_sergeant_boss',1], ['rebels_castellan_boss',0.5]], final_enemy_type = 'character', final_enemy_class = ['combat'],
+		background_pool = ['cave_1', 'cave_2', 'cave_3', 'cave_4'],
+		custom_background = 'combat_cave',
+		enemyarray =  [['goblin_stronghold_easy', 1],['goblin_stronghold_easy1', 1],['goblin_stronghold_tormentor', 0.5],['goblin_stronghold_tormentor1', 0.5]],
+		final_enemy = [['goblin_stronghold_warlord_boss',1], ['goblin_stronghold_alchemist_boss',0.7]], final_enemy_type = 'character', final_enemy_class = ['combat'],
 		event_data = {
 			dungeon_find_chest_medium = {
 				limit = 0,

@@ -2028,7 +2028,7 @@ var data = {
 			"master_translate"
 		],
 		scene_type = "ero_scene",
-		custom_background = "ana_blow_3",
+		custom_background = "ana_blow_4",
 		save_scene_to_gallery = true,
 		reqs = [
 

@@ -284,9 +284,9 @@ func open_location(data): #2fix
 func build_location_description():
 	var text = ''
 	if active_location.has('altname'):
-		text = active_location.altname
+		text = tr(active_location.altname)
 	else:
-		text = active_location.name
+		text = tr(active_location.name)
 	if active_location.tags.has("infinite"):
 		text += ""
 	elif !active_location.tags.has("quest"):

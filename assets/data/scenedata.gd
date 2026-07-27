@@ -1855,7 +1855,7 @@ var scenedict = {
 	dungeon_intimidate = {
 		text = tr("DUNGEON_INTIMIDATE"),
 		tags = [],
-		image = 'dungeon_magic_barrier',
+		image = null,
 		bonus_effects = [],
 		options = [
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = []}

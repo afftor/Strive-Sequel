@@ -16,6 +16,13 @@ var TranslationDict = {
 	MENUQUIT = "Salir",
 	MENUCHANGELOG = "Registro de cambios",
 	MENUMODLISTSAFETY = """Mod List Reset""", # MISSING TRANSLATION
+	UPDATENOTICETITLE = """Update Available""", # MISSING TRANSLATION
+	UPDATENOTICEDOWNLOAD = """Get it""", # MISSING TRANSLATION
+	UPDATENOTICEAVAILABLE = """A new version (%s) is available.
+You are currently on %s.""", # MISSING TRANSLATION
+	UPDATENOTICEUNKNOWN = """Could not determine the latest version.
+Check itch.io to see if an update is available.""", # MISSING TRANSLATION
+	UPDATECHECKCONSENT = """Allow the game to check itch.io for new versions on startup? This only sends a request to itch.io - no personal data is collected.""", # MISSING TRANSLATION
 	GALLERYNAME = "Galeria",
 	GALLERYSTORY = "Historia",
 	GALLERYERO = "Ero",
@@ -7891,6 +7898,7 @@ Como el [boy] se convierte en tu esclavo, [he] puede ser una adición muy útil 
 	CHARLOVERS = "[name] y [scncharname] se han acercado a ti y te han pedido que les permitas ser amantes.",
 	CHARFREELOVERS = "[name] y [scncharname] se han acercado a ti y te han pedido que les permitas convertirse en amantes.",
 	REVEAL_MAP = "[name] lanza Susurros de viento, captando la disposición de las áreas circundantes. ",
+	DUNGEON_INTIMIDATE = """The enemy group flees from the spot abandoning their position.""", # MISSING TRANSLATION
 	CHARLOVERSALLOW = "*Permitir*",
 	CHARFREELOVERSALLOW = "*Permitir*",
 	CHARLOVERSFORBID = "*Prohibir*",
@@ -8196,6 +8204,14 @@ El menú 'Viajes' te permite seleccionar otras ubicaciones y hacer que tus perso
 	ITEMMAJORUS_POTIONDESCRIPT = "Una poción especial que permite aumentar el tamaño de una parte específica del cuerpo. Se puede usar en pechos, glúteos, penes y testículos.",
 	ITEMEXP_SCROLL = "Pergamino del experiensa",
 	ITEMEXP_SCROLLDESCRIPT = "Otorga 100 puntos de experiencia al usuario.",
+	ITEMBOUQUET = """Bouquet""", # MISSING TRANSLATION
+	ITEMBOUQUETDESCRIPT = """A bouquet of fresh flowers. Gifting it raises Affection towards the giver.""", # MISSING TRANSLATION
+	ITEMGEM = """Gem""", # MISSING TRANSLATION
+	ITEMGEMDESCRIPT = """A polished, valuable gemstone. Gifting it raises Respect towards the giver.""", # MISSING TRANSLATION
+	ITEMBROOCH = """Brooch""", # MISSING TRANSLATION
+	ITEMBROOCHDESCRIPT = """An ornate, expensive brooch. Gifting it greatly raises Affection towards the giver, and raises Respect as well.""", # MISSING TRANSLATION
+	ITEMRITUAL_DAGGER = """Ritual Dagger""", # MISSING TRANSLATION
+	ITEMRITUAL_DAGGERDESCRIPT = """A ceremonial dagger of fine craftsmanship. Gifting it greatly raises Respect towards the giver, and raises Affection as well.""", # MISSING TRANSLATION
 	ITEMSEXSWAP_POTION = "Poción de intercambio sexual",
 	ITEMSEXSWAP_POTIONDESCRIPT = "Cambia el sexo del personaje al opuesto. No funciona con personajes únicos.",
 	ITEMUSECONFIRM = "¿Seguro que quieres usarlo? {color=yellow|%s}?",
@@ -9161,6 +9177,23 @@ Sin embargo, puedes actualizar el archivo.
 	TUTORIAL_WORK18 = """Close craft window.""", # MISSING TRANSLATION
 	TUTORIAL_WORK19 = """Select crafting task.""", # MISSING TRANSLATION
 	TUTORIAL_WORK20 = """Assign Daisy to the crafting task by selecting her.""", # MISSING TRANSLATION
+	TUTORIAL_WORK21 = """Lets try few crafting tasks.""", # MISSING TRANSLATION
+	TUTORIAL_WORK22 = """Select smith category.""", # MISSING TRANSLATION
+	TUTORIAL_WORK23 = """When list is too long you can use filters.""", # MISSING TRANSLATION
+	TUTORIAL_WORK24 = """Choose steel.""", # MISSING TRANSLATION
+	TUTORIAL_WORK24_1 = """Confirm.""", # MISSING TRANSLATION
+	TUTORIAL_WORK24_2 = """Confirm.""", # MISSING TRANSLATION
+	TUTORIAL_WORK24_3 = """Go to crafting tasks for Daisy again.""", # MISSING TRANSLATION
+	TUTORIAL_WORK25 = """Go to crafting tasks for Daisy again.""", # MISSING TRANSLATION
+	TUTORIAL_WORK25_1 = """Go to crafting tasks for Daisy again.""", # MISSING TRANSLATION
+	TUTORIAL_WORK25_2 = """Go to crafting tasks for Daisy again.""", # MISSING TRANSLATION
+	TUTORIAL_WORK26 = """Here you can change crafting priorities. Daisy will bake bread while task is active and cooking priority is higher then smith's. Now drag smith button to higher priority.""", # MISSING TRANSLATION
+	TUTORIAL_WORK26_1 = """You can see that Daisy produceing steel now.
+Close this menu.""", # MISSING TRANSLATION
+	TUTORIAL_WORK27 = """You also can cancel crafting task outright. Go back to cooking menu.""", # MISSING TRANSLATION
+	TUTORIAL_WORK27_1 = """Go back to cooking menu.""", # MISSING TRANSLATION
+	TUTORIAL_WORK28 = """Cancel bread baking.""", # MISSING TRANSLATION
+	TUTORIAL_WORK29 = """And confirm it.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING0 = """Speaking of experience, let's look at another way to gain it.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING1 = """Select Inventory to view your possessions.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING2 = """Select your Master as the active character to manage.""", # MISSING TRANSLATION

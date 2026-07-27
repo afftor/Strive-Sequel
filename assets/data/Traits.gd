@@ -1213,7 +1213,7 @@ var traits = {
 		visible = false,
 		icon = "res://assets/images/iconstraits/l_mentorship.png",
 		effects = [],
-		bonusstats = {trainee_amount = 2},
+		bonusstats = {trainer_training_points_bonus = 0.25},
 		reqs = [],
 		l_cost = 1,
 		tree_position = {tab = 3, x = 1, y = 0.5},

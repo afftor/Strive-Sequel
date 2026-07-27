@@ -58,6 +58,7 @@ func _ready():
 	newgame_node.get_node("NGPButton").connect("pressed", self, 'switch_ng_bonuses')
 	$Credits/Background/RichTextLabel.bbcode_text = tr("MENUCREDITSDESC")
 	call_deferred("show_mod_list_safety_message")
+	$UpdateNotice.start_update_check()
 	cycle_backgrounds()
 
 func show_mod_list_safety_message():

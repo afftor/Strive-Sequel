@@ -2504,7 +2504,7 @@ func affect_char(template, manifest = false):
 					var data = ResourceScripts.world_gen.get_location_from_code(get_location())
 					data.stamina -= template.cost
 					if manifest:
-						globals.manifest_and_log("dungeon", "%s stamina spent in %s" % [template.cost, data.name])
+						globals.manifest_and_log("dungeon", "%s stamina spent in %s" % [template.cost, tr(data.name)])
 		'add_combat_log': #until we got proper midfight dialogue system, this will have to do.
 			if input_handler.combat_node == null: 
 				return

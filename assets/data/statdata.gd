@@ -784,6 +784,16 @@ var statdata = {
 		tags = [],
 		show_info = {category = 'non_combat'}
 	},
+	trainer_training_points_bonus = {
+		code = 'trainer_training_points_bonus',
+		percent = true,
+		direct = false,
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		tags = [],
+		show_info = {category = 'non_combat'}
+	},
 	#personality
 	personality_bold = {
 		code = 'personality_bold',

@@ -226,7 +226,8 @@ var progress_data = {
 	achievements = [],
 	achi_bonuses = [],
 	achi_points = 0,
-	seen_skills = []
+	seen_skills = [],
+	update_check_consent = null # null = not asked yet, true/false = player's answer
 } setget save_progress_data
 
 #var combat_advance = false #if any result in combat cause advance
