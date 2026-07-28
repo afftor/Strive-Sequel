@@ -3336,10 +3336,11 @@ func calculate_lux_rooms():
 
 func make_sfx_params(anim_dict, last_iteration = false):
 	var params = {}
-	if anim_dict.has('duration'):
-		params.duration = anim_dict.duration
+	if anim_dict.has('duration'): params.duration = anim_dict.duration
+	if anim_dict.has('queue_duration'):
+		params.queue_duration = anim_dict.queue_duration
 	elif anim_dict.has("is_cast") and anim_dict.is_cast:
-		params.duration = 0.0
+		params.queue_duration = 0.0
 	if anim_dict.has('no_delays'): params.no_delays = anim_dict.no_delays
 	if anim_dict.has('no_repeat_delays') and anim_dict.no_repeat_delays and !last_iteration:
 		params.no_delays = true

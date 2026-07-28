@@ -184,11 +184,15 @@ func targetattack(node, args = null):
 
 func ranged_attack(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
-	var nextanimationtime = 0.2
+	var nextanimationtime = 0.3
 	var duration = 0.4
-	if args != null and args.has('duration'):
-		duration = args.duration
-		nextanimationtime = duration - 0.1
+	if args != null:
+		if args.has('duration'):
+			duration = args.duration
+			nextanimationtime = duration
+		if args.has('queue_duration'):
+			nextanimationtime = args.queue_duration
+	nextanimationtime -= 0.1
 	if args != null and args.has("no_delays") and args.no_delays:
 		custom_delays[node] = {delay = 0.2, cur_timer = cur_timer, time = 7}
 	else:
@@ -250,7 +254,10 @@ func shake_target(node, args):
 	var duration = 0.5
 	if args.has('duration'):
 		duration = args.duration
-	var nextanimationtime = duration - 0.1
+	var nextanimationtime = duration
+	if args.has('queue_duration'):
+		nextanimationtime = args.queue_duration
+	nextanimationtime -= 0.1
 	if !args.has("no_delays"):
 		hp_update_delays[node] = 0.5
 		log_update_delay = max(log_update_delay, 0.5)
@@ -277,7 +284,10 @@ func gfx_animsprite(node, args):
 		duration = args.duration
 	else:
 		duration = ResourceScripts.core_animations.get_gfx_sprite_time(args.sprite_name)
-	var nextanimationtime = duration - 0.1
+	var nextanimationtime = duration
+	if args.has('queue_duration'):
+		nextanimationtime = args.queue_duration
+	nextanimationtime -= 0.1
 	if !args.has("no_delays"):
 		hp_update_delays[node] = 0.5
 		log_update_delay = max(log_update_delay, 0.5)
@@ -345,9 +355,12 @@ func heal(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
 	var nextanimationtime = 0.5
 	var duration = 1
-	if args != null and args.has('duration'):
-		duration = args.duration
-		nextanimationtime = duration*2
+	if args != null:
+		if args.has('duration'):
+			duration = args.duration
+			nextanimationtime = duration*2
+		if args.has('queue_duration'):
+			nextanimationtime = args.queue_duration
 	hp_update_delays[node] = 0 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0)
 	buffs_update_delays[node] = 0.5
