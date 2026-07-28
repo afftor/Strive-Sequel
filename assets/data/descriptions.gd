@@ -507,6 +507,7 @@ var bodypartsdata = {
 		scale = {code = 'scale', name = '', chardescript = '', bodychanges = []},
 		scale2 = {code = 'scale2', name = '', chardescript = '', bodychanges = []},
 		scale3 = {code = 'scale3', name = '', chardescript = '', bodychanges = []},
+		kobold = {code = 'kobold', name = '', chardescript = '', bodychanges = []},
 		feathers = {code = 'feathers', name = '', chardescript = '', bodychanges = []},
 		fur_white = {code = 'fur_white', name = '', chardescript = '', bodychanges = [
 			{code = 'body_color_tail', value = [['white2', 1]], reqs = []},
@@ -528,6 +529,9 @@ var bodypartsdata = {
 		]},
 		fur_orange_white = {code = 'fur_orange_white', name = '', chardescript = '', bodychanges = [
 			{code = 'body_color_tail', value = [['orange2', 1]], reqs = []},
+		]},
+		fur_tricolor = {code = 'fur_tricolor', name = '', chardescript = '', bodychanges = [
+			{code = 'body_color_tail', value = [['dark3', 1]], reqs = []},
 		]},
 	},
 	wings = {

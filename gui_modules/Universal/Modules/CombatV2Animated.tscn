@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=2]
+[gd_scene load_steps=90 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/Universal/Modules/CharStatsPanel.tscn" type="PackedScene" id=2]
@@ -77,6 +77,7 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle2.tres" type="DynamicFont" id=75]
 [ext_resource path="res://assets/Textures_v2/MANSION/arrow_navigator-up.png" type="Texture" id=76]
 [ext_resource path="res://assets/images/gui/panels/panelsmall.png" type="Texture" id=77]
+[ext_resource path="res://assets/images/portraits/cali_prt/cali_default_prt_bold.png" type="Texture" id=78]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -382,9 +383,12 @@ stretch_mode = 4
 
 [node name="Icon" type="TextureRect" parent="Panel/PlayerGroup/Back/left/Template"]
 show_behind_parent = true
-margin_right = 181.0
-margin_bottom = 183.0
+margin_left = 7.0
+margin_top = 27.0
+margin_right = 175.0
+margin_bottom = 170.0
 mouse_filter = 2
+texture = ExtResource( 78 )
 expand = true
 stretch_mode = 6
 

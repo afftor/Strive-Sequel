@@ -98,6 +98,7 @@ A new empty mods.ini has been created. Please re-enable compatible mods from the
 	OPTGAMEPLAYFUTA = "Futas con palle",
 	OPTGAMEPLAYSHOWDETAILES = "Mostra i dettagli del consenso",
 	OPTGAMEPLAYTUTOR = "Abilita tutorial",
+	OPTGAMEPLAYDISABLEMODSONUPDATE = """Disable mods when game updates to a new version""", # MISSING TRANSLATION
 	OPTGAMEPLAYMALERATE = "Tasso Maschile",
 	OPTGAMEPLAYFUTARATE = "Tasso Futa",
 	OPTFAMEPLAYAUTOSAVEAMOUNT = "Importo del salvataggio automatico",
@@ -4595,6 +4596,7 @@ Effetto abilità sociali: +10%.""",
 	EFFECTCOFFIBLESS = "Aumenta l'esperienza guadagnata del 20%%",
 	EUPHORIABUFF = "Euforia: Danni aumentati",
 	FIREARROWBUFF = "Frecce infuocate: i tuoi attacchi bruciano i nemici.",
+	POISONARROWBUFF = """Poison Arrows: your attacks poison your enemies.""", # MISSING TRANSLATION
 	EFFECTNAME_E_LOVE = "Amante presente",
 	EFFECTNAME_E_FRIEND = "Amico presente",
 	EFFECTNAME_E_RIVAL = "Rivale presente",

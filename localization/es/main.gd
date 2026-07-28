@@ -93,6 +93,7 @@ A new empty mods.ini has been created. Please re-enable compatible mods from the
 	OPTGAMEPLAYFUTA = "Futas con pelotas",
 	OPTGAMEPLAYSHOWDETAILES = "Mostrar detalles de consentimiento",
 	OPTGAMEPLAYTUTOR = "Habilitar tutoriales",
+	OPTGAMEPLAYDISABLEMODSONUPDATE = """Disable mods when game updates to a new version""", # MISSING TRANSLATION
 	OPTGAMEPLAYMALERATE = "Tasa de hombres",
 	OPTGAMEPLAYFUTARATE = "Tasa de Futanari",
 	OPTFAMEPLAYAUTOSAVEAMOUNT = "Cantidad de autoguardados",
@@ -4114,6 +4115,7 @@ Efecto de habilidades sociales: +10%.""",
 	EFFECTCOFFIBLESS = "Aumento de la ganancia de experiencia en un 20%%",
 	EUPHORIABUFF = "Euforia: daño aumentado",
 	FIREARROWBUFF = """Fire Arrows: your attacks burn your enemies.""", # MISSING TRANSLATION
+	POISONARROWBUFF = """Poison Arrows: your attacks poison your enemies.""", # MISSING TRANSLATION
 	EFFECTNAME_E_LOVE = """Lover present""", # MISSING TRANSLATION
 	EFFECTNAME_E_FRIEND = """Friend present""", # MISSING TRANSLATION
 	EFFECTNAME_E_RIVAL = """Rival present""", # MISSING TRANSLATION

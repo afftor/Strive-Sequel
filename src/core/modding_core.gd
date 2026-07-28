@@ -227,7 +227,7 @@ func get_mods_from_config(parsed_config):
 		delete_old_mod_config()
 		save_mod_config([])
 		return []
-	if str(parsed_config[MOD_CONFIG_VERSION_KEY]) != globals.gameversion:
+	if str(parsed_config[MOD_CONFIG_VERSION_KEY]) != globals.gameversion and input_handler.globalsettings.get("disable_mods_on_update", true):
 		var mods = []
 		if parsed_config.has(MOD_CONFIG_MODS_KEY) and typeof(parsed_config[MOD_CONFIG_MODS_KEY]) == TYPE_ARRAY:
 			mods = parsed_config[MOD_CONFIG_MODS_KEY]
