@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://gui_modules/Universal/Modules/NavigationModule.tscn" type="PackedScene" id=2]
@@ -43,6 +43,8 @@
 [ext_resource path="res://gui_modules/Exploration/Modules/AvailableSlaves.tscn" type="PackedScene" id=41]
 [ext_resource path="res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_gold_polygon.png" type="Texture" id=42]
 [ext_resource path="res://assets/images/iconsskills/Fear.png" type="Texture" id=43]
+[ext_resource path="res://assets/images/portraits/cali_prt/cali_default_prt_bold.png" type="Texture" id=44]
+[ext_resource path="res://assets/Textures_v2/border_panel_splitter.png" type="Texture" id=45]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type.png" type="Texture" id=62]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type_pressed.png" type="Texture" id=63]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type_hover.png" type="Texture" id=64]
@@ -60,6 +62,10 @@
 [ext_resource path="res://gui_modules/Universal/Modules/CapturedSlavesButton.gd" type="Script" id=76]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24.tres" type="DynamicFont" id=77]
 [ext_resource path="res://assets/Textures_v2/DUNGEON/Icons/steps.png" type="Texture" id=78]
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 45 )
+region_rect = Rect2( 0, 0, 53, 7 )
 
 [sub_resource type="ImageTexture" id=1]
 
@@ -96,9 +102,6 @@ margin_top = 109.0
 margin_right = 295.0
 margin_bottom = 629.0
 custom_constants/separation = 8
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="backrow" type="VBoxContainer" parent="Positions/HBoxContainer"]
 margin_right = 135.0
@@ -114,6 +117,9 @@ texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 stretch_mode = 3
 script = ExtResource( 17 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="mark" type="TextureRect" parent="Positions/HBoxContainer/backrow/4"]
 visible = false
@@ -127,18 +133,19 @@ expand = true
 
 [node name="Image" type="TextureRect" parent="Positions/HBoxContainer/backrow/4"]
 margin_left = 11.0
-margin_top = 6.0
+margin_top = 9.0
 margin_right = 126.0
-margin_bottom = 156.0
+margin_bottom = 126.0
 mouse_default_cursor_shape = 2
+texture = ExtResource( 44 )
 expand = true
 stretch_mode = 6
 script = ExtResource( 15 )
 
 [node name="Label" type="Label" parent="Positions/HBoxContainer/backrow/4/Image"]
-margin_top = 3.0
+margin_top = -5.0
 margin_right = 115.0
-margin_bottom = 27.0
+margin_bottom = 24.0
 custom_fonts/font = ExtResource( 4 )
 text = "Name"
 align = 1
@@ -153,10 +160,10 @@ __meta__ = {
 }
 
 [node name="hp" type="TextureProgress" parent="Positions/HBoxContainer/backrow/4/Image/TextureRect"]
-margin_left = -4.0
-margin_top = -13.561
-margin_right = 110.0
-margin_bottom = 6.43896
+margin_left = -5.0
+margin_top = -1.0
+margin_right = 109.0
+margin_bottom = 12.0
 mouse_filter = 2
 value = 50.0
 texture_progress = ExtResource( 29 )
@@ -170,19 +177,21 @@ __meta__ = {
 }
 
 [node name="Labelhp" type="Label" parent="Positions/HBoxContainer/backrow/4/Image/TextureRect/hp"]
-margin_top = -5.0
-margin_right = 114.0
-margin_bottom = 19.0
+margin_left = -2.0
+margin_top = -6.0
+margin_right = 112.0
+margin_bottom = 16.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+text = "100/100"
 align = 1
 valign = 1
 
 [node name="mp" type="TextureProgress" parent="Positions/HBoxContainer/backrow/4/Image/TextureRect"]
-margin_left = -4.0
-margin_top = 8.0
-margin_right = 110.0
-margin_bottom = 28.0
+margin_left = -5.0
+margin_top = 12.0
+margin_right = 109.0
+margin_bottom = 26.0
 mouse_filter = 2
 value = 50.0
 texture_progress = ExtResource( 28 )
@@ -193,16 +202,15 @@ stretch_margin_right = 5
 stretch_margin_bottom = 5
 
 [node name="Labelmp" type="Label" parent="Positions/HBoxContainer/backrow/4/Image/TextureRect/mp"]
-margin_top = -3.0
-margin_right = 114.0
-margin_bottom = 21.0
+margin_left = -2.0
+margin_top = -6.0
+margin_right = 112.0
+margin_bottom = 18.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+text = "100/100"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="caster" type="TextureRect" parent="Positions/HBoxContainer/backrow/4/Image"]
 visible = false
@@ -212,6 +220,13 @@ margin_right = 28.0
 margin_bottom = 153.0
 texture = ExtResource( 37 )
 expand = true
+
+[node name="HSeparator" type="HSeparator" parent="Positions/HBoxContainer/backrow/4"]
+margin_left = 10.0
+margin_top = 126.0
+margin_right = 125.0
+margin_bottom = 131.0
+custom_styles/separator = SubResource( 3 )
 
 [node name="5" type="TextureButton" parent="Positions/HBoxContainer/backrow"]
 margin_top = 176.0
@@ -223,6 +238,9 @@ texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 stretch_mode = 3
 script = ExtResource( 17 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="mark" type="TextureRect" parent="Positions/HBoxContainer/backrow/5"]
 visible = false
@@ -236,18 +254,19 @@ expand = true
 
 [node name="Image" type="TextureRect" parent="Positions/HBoxContainer/backrow/5"]
 margin_left = 11.0
-margin_top = 6.0
+margin_top = 9.0
 margin_right = 126.0
-margin_bottom = 156.0
+margin_bottom = 126.0
 mouse_default_cursor_shape = 2
+texture = ExtResource( 44 )
 expand = true
 stretch_mode = 6
 script = ExtResource( 15 )
 
 [node name="Label" type="Label" parent="Positions/HBoxContainer/backrow/5/Image"]
-margin_top = 3.0
+margin_top = -5.0
 margin_right = 115.0
-margin_bottom = 27.0
+margin_bottom = 24.0
 custom_fonts/font = ExtResource( 4 )
 text = "Name"
 align = 1
@@ -262,10 +281,10 @@ __meta__ = {
 }
 
 [node name="hp" type="TextureProgress" parent="Positions/HBoxContainer/backrow/5/Image/TextureRect"]
-margin_left = -4.0
-margin_top = -13.561
-margin_right = 110.0
-margin_bottom = 6.43896
+margin_left = -5.0
+margin_top = -1.0
+margin_right = 109.0
+margin_bottom = 12.0
 mouse_filter = 2
 value = 50.0
 texture_progress = ExtResource( 29 )
@@ -279,19 +298,21 @@ __meta__ = {
 }
 
 [node name="Labelhp" type="Label" parent="Positions/HBoxContainer/backrow/5/Image/TextureRect/hp"]
-margin_top = -5.0
-margin_right = 114.0
-margin_bottom = 19.0
+margin_left = -2.0
+margin_top = -6.0
+margin_right = 112.0
+margin_bottom = 16.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+text = "100/100"
 align = 1
 valign = 1
 
 [node name="mp" type="TextureProgress" parent="Positions/HBoxContainer/backrow/5/Image/TextureRect"]
-margin_left = -4.0
-margin_top = 8.0
-margin_right = 110.0
-margin_bottom = 28.0
+margin_left = -5.0
+margin_top = 12.0
+margin_right = 109.0
+margin_bottom = 26.0
 mouse_filter = 2
 value = 50.0
 texture_progress = ExtResource( 28 )
@@ -302,16 +323,15 @@ stretch_margin_right = 5
 stretch_margin_bottom = 5
 
 [node name="Labelmp" type="Label" parent="Positions/HBoxContainer/backrow/5/Image/TextureRect/mp"]
-margin_top = -3.0
-margin_right = 114.0
-margin_bottom = 21.0
+margin_left = -2.0
+margin_top = -6.0
+margin_right = 112.0
+margin_bottom = 18.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+text = "100/100"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="caster" type="TextureRect" parent="Positions/HBoxContainer/backrow/5/Image"]
 visible = false
@@ -321,6 +341,13 @@ margin_right = 28.0
 margin_bottom = 153.0
 texture = ExtResource( 37 )
 expand = true
+
+[node name="HSeparator" type="HSeparator" parent="Positions/HBoxContainer/backrow/5"]
+margin_left = 10.0
+margin_top = 126.0
+margin_right = 125.0
+margin_bottom = 131.0
+custom_styles/separator = SubResource( 3 )
 
 [node name="6" type="TextureButton" parent="Positions/HBoxContainer/backrow"]
 margin_top = 352.0
@@ -332,6 +359,9 @@ texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 stretch_mode = 3
 script = ExtResource( 17 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="mark" type="TextureRect" parent="Positions/HBoxContainer/backrow/6"]
 visible = false
@@ -345,18 +375,19 @@ expand = true
 
 [node name="Image" type="TextureRect" parent="Positions/HBoxContainer/backrow/6"]
 margin_left = 11.0
-margin_top = 6.0
+margin_top = 9.0
 margin_right = 126.0
-margin_bottom = 156.0
+margin_bottom = 126.0
 mouse_default_cursor_shape = 2
+texture = ExtResource( 44 )
 expand = true
 stretch_mode = 6
 script = ExtResource( 15 )
 
 [node name="Label" type="Label" parent="Positions/HBoxContainer/backrow/6/Image"]
-margin_top = 3.0
+margin_top = -5.0
 margin_right = 115.0
-margin_bottom = 27.0
+margin_bottom = 24.0
 custom_fonts/font = ExtResource( 4 )
 text = "Name"
 align = 1
@@ -371,10 +402,10 @@ __meta__ = {
 }
 
 [node name="hp" type="TextureProgress" parent="Positions/HBoxContainer/backrow/6/Image/TextureRect"]
-margin_left = -4.0
-margin_top = -13.561
-margin_right = 110.0
-margin_bottom = 6.43896
+margin_left = -5.0
+margin_top = -1.0
+margin_right = 109.0
+margin_bottom = 12.0
 mouse_filter = 2
 value = 50.0
 texture_progress = ExtResource( 29 )
@@ -388,22 +419,21 @@ __meta__ = {
 }
 
 [node name="Labelhp" type="Label" parent="Positions/HBoxContainer/backrow/6/Image/TextureRect/hp"]
-margin_top = -5.0
-margin_right = 114.0
-margin_bottom = 19.0
+margin_left = -2.0
+margin_top = -6.0
+margin_right = 112.0
+margin_bottom = 16.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+text = "100/100"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="mp" type="TextureProgress" parent="Positions/HBoxContainer/backrow/6/Image/TextureRect"]
-margin_left = -4.0
-margin_top = 8.0
-margin_right = 110.0
-margin_bottom = 28.0
+margin_left = -5.0
+margin_top = 12.0
+margin_right = 109.0
+margin_bottom = 26.0
 mouse_filter = 2
 value = 50.0
 texture_progress = ExtResource( 28 )
@@ -414,16 +444,15 @@ stretch_margin_right = 5
 stretch_margin_bottom = 5
 
 [node name="Labelmp" type="Label" parent="Positions/HBoxContainer/backrow/6/Image/TextureRect/mp"]
-margin_top = -3.0
-margin_right = 114.0
-margin_bottom = 21.0
+margin_left = -2.0
+margin_top = -6.0
+margin_right = 112.0
+margin_bottom = 18.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+text = "100/100"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="caster" type="TextureRect" parent="Positions/HBoxContainer/backrow/6/Image"]
 visible = false
@@ -433,6 +462,13 @@ margin_right = 28.0
 margin_bottom = 153.0
 texture = ExtResource( 37 )
 expand = true
+
+[node name="HSeparator" type="HSeparator" parent="Positions/HBoxContainer/backrow/6"]
+margin_left = 10.0
+margin_top = 126.0
+margin_right = 125.0
+margin_bottom = 131.0
+custom_styles/separator = SubResource( 3 )
 
 [node name="frontrow" type="VBoxContainer" parent="Positions/HBoxContainer"]
 margin_left = 143.0
@@ -449,6 +485,9 @@ texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 stretch_mode = 3
 script = ExtResource( 17 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="mark" type="TextureRect" parent="Positions/HBoxContainer/frontrow/1"]
 visible = false
@@ -462,36 +501,37 @@ expand = true
 
 [node name="Image" type="TextureRect" parent="Positions/HBoxContainer/frontrow/1"]
 margin_left = 11.0
-margin_top = 6.0
+margin_top = 9.0
 margin_right = 126.0
-margin_bottom = 156.0
+margin_bottom = 126.0
 mouse_default_cursor_shape = 2
+texture = ExtResource( 44 )
 expand = true
 stretch_mode = 6
 script = ExtResource( 15 )
 
 [node name="Label" type="Label" parent="Positions/HBoxContainer/frontrow/1/Image"]
-margin_top = 3.0
+margin_top = -5.0
 margin_right = 115.0
-margin_bottom = 27.0
+margin_bottom = 24.0
 custom_fonts/font = ExtResource( 4 )
 text = "Name"
 align = 1
 
 [node name="TextureRect" type="Control" parent="Positions/HBoxContainer/frontrow/1/Image"]
-margin_left = 4.0
+margin_left = 5.0
 margin_top = 123.0
-margin_right = 81.0
+margin_right = 82.0
 margin_bottom = 141.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="hp" type="TextureProgress" parent="Positions/HBoxContainer/frontrow/1/Image/TextureRect"]
-margin_left = -4.0
-margin_top = -13.561
-margin_right = 110.0
-margin_bottom = 6.43896
+margin_left = -5.0
+margin_top = -1.0
+margin_right = 109.0
+margin_bottom = 12.0
 mouse_filter = 2
 value = 50.0
 texture_progress = ExtResource( 29 )
@@ -506,19 +546,20 @@ __meta__ = {
 
 [node name="Labelhp" type="Label" parent="Positions/HBoxContainer/frontrow/1/Image/TextureRect/hp"]
 margin_left = -2.0
-margin_top = -4.0
+margin_top = -6.0
 margin_right = 112.0
-margin_bottom = 20.0
+margin_bottom = 16.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+text = "100/100"
 align = 1
 valign = 1
 
 [node name="mp" type="TextureProgress" parent="Positions/HBoxContainer/frontrow/1/Image/TextureRect"]
-margin_left = -4.0
-margin_top = 8.0
-margin_right = 110.0
-margin_bottom = 28.0
+margin_left = -5.0
+margin_top = 12.0
+margin_right = 109.0
+margin_bottom = 26.0
 mouse_filter = 2
 value = 50.0
 texture_progress = ExtResource( 28 )
@@ -530,16 +571,14 @@ stretch_margin_bottom = 5
 
 [node name="Labelmp" type="Label" parent="Positions/HBoxContainer/frontrow/1/Image/TextureRect/mp"]
 margin_left = -2.0
-margin_top = -2.0
+margin_top = -6.0
 margin_right = 112.0
-margin_bottom = 22.0
+margin_bottom = 18.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+text = "100/100"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="caster" type="TextureRect" parent="Positions/HBoxContainer/frontrow/1/Image"]
 visible = false
@@ -549,6 +588,13 @@ margin_right = 28.0
 margin_bottom = 153.0
 texture = ExtResource( 37 )
 expand = true
+
+[node name="HSeparator" type="HSeparator" parent="Positions/HBoxContainer/frontrow/1"]
+margin_left = 10.0
+margin_top = 126.0
+margin_right = 125.0
+margin_bottom = 131.0
+custom_styles/separator = SubResource( 3 )
 
 [node name="2" type="TextureButton" parent="Positions/HBoxContainer/frontrow"]
 margin_top = 176.0
@@ -560,6 +606,9 @@ texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 stretch_mode = 3
 script = ExtResource( 17 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="mark" type="TextureRect" parent="Positions/HBoxContainer/frontrow/2"]
 visible = false
@@ -573,36 +622,37 @@ expand = true
 
 [node name="Image" type="TextureRect" parent="Positions/HBoxContainer/frontrow/2"]
 margin_left = 11.0
-margin_top = 6.0
+margin_top = 9.0
 margin_right = 126.0
-margin_bottom = 156.0
+margin_bottom = 126.0
 mouse_default_cursor_shape = 2
+texture = ExtResource( 44 )
 expand = true
 stretch_mode = 6
 script = ExtResource( 15 )
 
 [node name="Label" type="Label" parent="Positions/HBoxContainer/frontrow/2/Image"]
-margin_top = 3.0
+margin_top = -5.0
 margin_right = 115.0
-margin_bottom = 27.0
+margin_bottom = 24.0
 custom_fonts/font = ExtResource( 4 )
 text = "Name"
 align = 1
 
 [node name="TextureRect" type="Control" parent="Positions/HBoxContainer/frontrow/2/Image"]
-margin_left = 4.0
+margin_left = 5.0
 margin_top = 123.0
-margin_right = 81.0
+margin_right = 82.0
 margin_bottom = 141.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="hp" type="TextureProgress" parent="Positions/HBoxContainer/frontrow/2/Image/TextureRect"]
-margin_left = -4.0
-margin_top = -13.561
-margin_right = 110.0
-margin_bottom = 6.43896
+margin_left = -5.0
+margin_top = -1.0
+margin_right = 109.0
+margin_bottom = 12.0
 mouse_filter = 2
 value = 50.0
 texture_progress = ExtResource( 29 )
@@ -617,22 +667,20 @@ __meta__ = {
 
 [node name="Labelhp" type="Label" parent="Positions/HBoxContainer/frontrow/2/Image/TextureRect/hp"]
 margin_left = -2.0
-margin_top = -4.0
+margin_top = -6.0
 margin_right = 112.0
-margin_bottom = 20.0
+margin_bottom = 16.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+text = "100/100"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="mp" type="TextureProgress" parent="Positions/HBoxContainer/frontrow/2/Image/TextureRect"]
-margin_left = -4.0
-margin_top = 8.0
-margin_right = 110.0
-margin_bottom = 28.0
+margin_left = -5.0
+margin_top = 12.0
+margin_right = 109.0
+margin_bottom = 26.0
 mouse_filter = 2
 value = 50.0
 texture_progress = ExtResource( 28 )
@@ -644,16 +692,14 @@ stretch_margin_bottom = 5
 
 [node name="Labelmp" type="Label" parent="Positions/HBoxContainer/frontrow/2/Image/TextureRect/mp"]
 margin_left = -2.0
-margin_top = -2.0
+margin_top = -6.0
 margin_right = 112.0
-margin_bottom = 22.0
+margin_bottom = 18.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+text = "100/100"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="caster" type="TextureRect" parent="Positions/HBoxContainer/frontrow/2/Image"]
 visible = false
@@ -663,6 +709,13 @@ margin_right = 28.0
 margin_bottom = 153.0
 texture = ExtResource( 37 )
 expand = true
+
+[node name="HSeparator" type="HSeparator" parent="Positions/HBoxContainer/frontrow/2"]
+margin_left = 10.0
+margin_top = 126.0
+margin_right = 125.0
+margin_bottom = 131.0
+custom_styles/separator = SubResource( 3 )
 
 [node name="3" type="TextureButton" parent="Positions/HBoxContainer/frontrow"]
 margin_top = 352.0
@@ -674,6 +727,9 @@ texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 stretch_mode = 3
 script = ExtResource( 17 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="mark" type="TextureRect" parent="Positions/HBoxContainer/frontrow/3"]
 visible = false
@@ -687,36 +743,37 @@ expand = true
 
 [node name="Image" type="TextureRect" parent="Positions/HBoxContainer/frontrow/3"]
 margin_left = 11.0
-margin_top = 6.0
+margin_top = 9.0
 margin_right = 126.0
-margin_bottom = 156.0
+margin_bottom = 126.0
 mouse_default_cursor_shape = 2
+texture = ExtResource( 44 )
 expand = true
 stretch_mode = 6
 script = ExtResource( 15 )
 
 [node name="Label" type="Label" parent="Positions/HBoxContainer/frontrow/3/Image"]
-margin_top = 3.0
+margin_top = -5.0
 margin_right = 115.0
-margin_bottom = 27.0
+margin_bottom = 24.0
 custom_fonts/font = ExtResource( 4 )
 text = "Name"
 align = 1
 
 [node name="TextureRect" type="Control" parent="Positions/HBoxContainer/frontrow/3/Image"]
-margin_left = 4.0
+margin_left = 5.0
 margin_top = 123.0
-margin_right = 81.0
+margin_right = 82.0
 margin_bottom = 141.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="hp" type="TextureProgress" parent="Positions/HBoxContainer/frontrow/3/Image/TextureRect"]
-margin_left = -4.0
-margin_top = -13.561
-margin_right = 110.0
-margin_bottom = 6.43896
+margin_left = -5.0
+margin_top = -1.0
+margin_right = 109.0
+margin_bottom = 12.0
 mouse_filter = 2
 value = 50.0
 texture_progress = ExtResource( 29 )
@@ -731,22 +788,20 @@ __meta__ = {
 
 [node name="Labelhp" type="Label" parent="Positions/HBoxContainer/frontrow/3/Image/TextureRect/hp"]
 margin_left = -2.0
-margin_top = -5.0
+margin_top = -6.0
 margin_right = 112.0
-margin_bottom = 19.0
+margin_bottom = 16.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+text = "100/100"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="mp" type="TextureProgress" parent="Positions/HBoxContainer/frontrow/3/Image/TextureRect"]
-margin_left = -4.0
-margin_top = 8.0
-margin_right = 110.0
-margin_bottom = 28.0
+margin_left = -5.0
+margin_top = 12.0
+margin_right = 109.0
+margin_bottom = 26.0
 mouse_filter = 2
 value = 50.0
 texture_progress = ExtResource( 28 )
@@ -758,16 +813,14 @@ stretch_margin_bottom = 5
 
 [node name="Labelmp" type="Label" parent="Positions/HBoxContainer/frontrow/3/Image/TextureRect/mp"]
 margin_left = -2.0
-margin_top = -3.0
+margin_top = -6.0
 margin_right = 112.0
-margin_bottom = 21.0
+margin_bottom = 18.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+text = "100/100"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="caster" type="TextureRect" parent="Positions/HBoxContainer/frontrow/3/Image"]
 visible = false
@@ -777,6 +830,13 @@ margin_right = 28.0
 margin_bottom = 153.0
 texture = ExtResource( 37 )
 expand = true
+
+[node name="HSeparator" type="HSeparator" parent="Positions/HBoxContainer/frontrow/3"]
+margin_left = 10.0
+margin_top = 126.0
+margin_right = 125.0
+margin_bottom = 131.0
+custom_styles/separator = SubResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="Positions"]
 visible = false

@@ -34,7 +34,7 @@ func _ready():
 	$ReloadGameLanguage/Button.connect('pressed', self, 'language_restart')
 
 
-	for i in ['furry','furry_multiple_nipples', 'futa_balls', 'show_full_consent']:
+	for i in ['furry','furry_multiple_nipples', 'futa_balls', 'show_full_consent', 'disable_mods_on_update']:
 		get_node("TabContainer/Gameplay/Scroll/Box/" + i).connect("pressed", self, "gameplay_rule", ['Gameplay/Scroll/Box', i])
 		get_node("TabContainer/Gameplay/Scroll/Box/" + i).pressed = input_handler.globalsettings[i]
 	for i in ['diff_gf_only_upg','diff_permadeath', 'diff_bonus_taskmod', 'diff_bonus_loot', 'diff_stop_loan', 'diff_free_gather','easytrain']:

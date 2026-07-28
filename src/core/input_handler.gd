@@ -193,7 +193,8 @@ var globalsettings = {
 	portrait_folder = 'user://portraits/',
 	body_folder = 'user://bodies/',
 	#mod_folder = 'user://mods/',
-	
+	disable_mods_on_update = true,
+
 	
 	grid_inventory = true,
 	

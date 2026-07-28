@@ -104,6 +104,7 @@ A new empty mods.ini has been created. Please re-enable compatible mods from the
 	OPTGAMEPLAYFUTA = "Futas avec des boules",
 	OPTGAMEPLAYSHOWDETAILES = "Afficher les détails du consentement",
 	OPTGAMEPLAYTUTOR = "Activer les tutoriels",
+	OPTGAMEPLAYDISABLEMODSONUPDATE = """Disable mods when game updates to a new version""", # MISSING TRANSLATION
 	OPTGAMEPLAYMALERATE = "Taux de masculinité",
 	OPTGAMEPLAYFUTARATE = "Taux de Futa",
 	OPTFAMEPLAYAUTOSAVEAMOUNT = "Quantité de sauvegardes automatiques",
@@ -4136,6 +4137,7 @@ Only one attunement can be taken""", # MISSING TRANSLATION
 	EFFECTCOFFIBLESS = """Increased Experience gain by 20%%""", # MISSING TRANSLATION
 	EUPHORIABUFF = """Euphoria: Damage Increased""", # MISSING TRANSLATION
 	FIREARROWBUFF = """Fire Arrows: your attacks burn your enemies.""", # MISSING TRANSLATION
+	POISONARROWBUFF = """Poison Arrows: your attacks poison your enemies.""", # MISSING TRANSLATION
 	EFFECTNAME_E_LOVE = """Lover present""", # MISSING TRANSLATION
 	EFFECTNAME_E_FRIEND = """Friend present""", # MISSING TRANSLATION
 	EFFECTNAME_E_RIVAL = """Rival present""", # MISSING TRANSLATION

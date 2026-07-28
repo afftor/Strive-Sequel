@@ -95,6 +95,7 @@ A new empty mods.ini has been created. Please re-enable compatible mods from the
 	OPTGAMEPLAYFUTA = """Фута с яйцами""",
 	OPTGAMEPLAYSHOWDETAILES = """Показать детали согласия""",
 	OPTGAMEPLAYTUTOR = """Включить обучение""",
+	OPTGAMEPLAYDISABLEMODSONUPDATE = """Disable mods when game updates to a new version""", # MISSING TRANSLATION
 	OPTGAMEPLAYMALERATE = """Процент мужчин""",
 	OPTGAMEPLAYFUTARATE = """Процент фута""",
 	OPTFAMEPLAYAUTOSAVEAMOUNT = """Количество автосохранений""",
@@ -4774,6 +4775,7 @@ Requires: Базовый рабский труд""",
 	EFFECTCOFFIBLESS = "Увеличение получаемого опыта на 20%%",
 	EUPHORIABUFF = """Эйфория: Урон увеличен""",
 	FIREARROWBUFF = "Огненные стрелы: ваши атаки поджигают врагов.",
+	POISONARROWBUFF = """Poison Arrows: your attacks poison your enemies.""", # MISSING TRANSLATION
 	EFFECTNAME_E_LOVE = "Присутствие возлюбленного",
 	EFFECTNAME_E_FRIEND = "Присутствие друга",
 	EFFECTNAME_E_RIVAL = "Присутствие соперника",
