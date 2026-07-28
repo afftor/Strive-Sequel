@@ -650,6 +650,13 @@ func calculateorder():
 	update_order()
 
 
+func add_char_to_order(tchar):
+	var speed_list = tchar.get_stat('speed')
+	for i in range(speed_list.size()):
+		var dice = randf() * 5
+		next_turnorder.append({speed = speed_list[i] + dice, dice = dice, pos = tchar.position, id = make_order_id()})
+
+
 func update_order():
 #	for order_cont in [turnorder, next_turnorder]:
 	var list_by_pos = {}
@@ -1007,6 +1014,7 @@ func setup_autoskill(data, person):
 	autoskill_dummy.combatgroup = "_" + person.combatgroup
 	autoskill_dummy.set_stat('atk', person.get_stat('atk'))
 	autoskill_dummy.set_stat('matk', person.get_stat('matk'))
+	next_turnorder.append({pos = 0, speed = 100, id = make_order_id()})
 
 
 var fighterhighlighted = false
@@ -1104,6 +1112,10 @@ func transform_unit(position, id):
 		enemygroup.erase(position)
 	else:
 		playergroup.erase(position)
+	for order_cont in [next_turnorder, turnorder]:
+		for j in range(order_cont.size() - 1, -1, -1):
+			if order_cont[j].pos == position:
+				order_cont.remove(j)
 	
 	tchar = ResourceScripts.scriptdict.class_slave.new("combat_transform");
 #	tchar.createfromenemy(montype);
@@ -1127,6 +1139,7 @@ func transform_unit(position, id):
 	make_fighter_panel(tchar, position)
 	tchar.process_event(variables.TR_COMBAT_S)
 	ActionQueue.add_rebuildbuffs(tchar.displaynode)
+	add_char_to_order(tchar)
 
 
 func summon(montype, limit, combatgroup, incombat = false): #reworked
@@ -1203,6 +1216,8 @@ func summon(montype, limit, combatgroup, incombat = false): #reworked
 	if incombat:
 		tchar.process_event(variables.TR_COMBAT_S)
 		ActionQueue.add_rebuildbuffs(tchar.displaynode)
+		add_char_to_order(tchar)
+
 
 func get_group_amount(combatgroup, alive = true): #First made to make a skill for Dwarf king that only be use if there aint space to summon. 
 	var amount = 0
