@@ -302,6 +302,33 @@ func get_body_color_tail():
 			return statlist.body_color_skin
 
 
+func get_body_color_lips():
+	if statlist.body_color_lips != '':
+		return statlist.body_color_lips 
+	match statlist.body_color_skin:
+		'blue3', 'blue4', 'blue5':
+			return 'blue'
+		'blue1', 'blue2':
+			return 'cyan'
+		'green5', 'human5', 'human6', 'red4', 'yellow4', 'yellow5':
+			return 'brown'
+		'green1', 'green2', 'green3', 'green4':
+			return 'green'
+		'pink1', 'pink2', 'pink3':
+			return 'pink'
+		'pink4', 'pink5', 'purple1', 'purple2', 'purple3', 'purple4', 'purple5', 'red5':
+			return 'purple'
+		'human3', 'human4', 'red1', 'red2', 'red3':
+			return 'red'
+		'yellow1', 'yellow2', 'yellow3':
+			return 'yellow'
+		'human1', 'human2', 'grey1', 'grey2', 'grey3', 'grey4':
+			return 'grey'
+		'human7', 'grey5':
+			return 'black'
+	return 'purple'
+
+
 func get_body_color_ears():
 	match statlist.ears: 
 		'cat', 'fox', 'tanuki', 'wolf', 'mouse', 'bunny', 'bunny_standing', 'bunny_dropping', 'cow':

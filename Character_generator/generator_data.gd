@@ -17,7 +17,7 @@ var stats_to_look = [
 
 var stats_links = {
 	height = ['full'],
-	body_color_skin = ['body_color_skin', 'skin_coverage'],
+	body_color_skin = ['body_color_skin', 'skin_coverage', 'body_color_lips'],
 	hair_base_color_1 = ['hair_base_color_1', 'hair_fringe_color_1', 'body_color_ears', 'body_color_tail'],
 	hair_base_color_2 = ['hair_base_color_2', 'hair_fringe_color_2'],
 	personality = ['pose'],
@@ -806,8 +806,8 @@ var transforms = {
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_grey.tres"},
 		],
 		black = [
-			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark_3.tres", ids = [2]},
-			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark_3.tres", ids = [2]},
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark_3.tres", ids = [1]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark_3.tres", ids = [1]},
 		],
 	},
 	

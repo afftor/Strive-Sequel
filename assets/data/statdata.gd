@@ -338,7 +338,7 @@ var statdata = {
 	},
 	body_color_lips = {
 		code = 'body_color_lips',
-		tags = [],
+		tags = ['custom_getter'],
 		default_bonus = 'set',
 	},
 	body_color_wings = {
