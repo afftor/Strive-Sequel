@@ -22,6 +22,7 @@ var buff_scroll_max_page = 0
 var buff_scroll_page = 0
 
 var buffs_timer
+var buffs_fade_timer
 var buffs_cont
 var buffs_on_pause = false
 
@@ -59,8 +60,10 @@ func _ready():
 	connect("gui_input", self, "_on_Button_gui_input")
 	if has_node("Buffs"):
 		buffs_timer = $Buffs/Timer
+		buffs_fade_timer = $Buffs/fade_timer
 		buffs_cont = $Buffs
 		buffs_timer.connect("timeout", self, "show_next_buff_page")
+		buffs_fade_timer.connect("timeout", self, "show_buff_page_true")
 		buffs_cont.connect("mouse_entered", self, "mouse_in_buffs")
 		buffs_cont.connect("mouse_exited", self, "try_mouse_out_buffs")
 		buffs_cont.connect("gui_input", self, "_on_buffs_gui_input")
@@ -206,18 +209,20 @@ func show_next_buff_page():
 var buffs_in_fade = false
 func show_buff_page(make_fade = true):
 	if buffs_in_fade: return
-	var fade_time = 0.1
 	if make_fade:
-		ResourceScripts.core_animations.FadeAnimation(buffs_cont, fade_time)
+		ResourceScripts.core_animations.FadeAnimation(buffs_cont, buffs_fade_timer.wait_time)
 		buffs_in_fade = true
-		yield(get_tree().create_timer(fade_time), "timeout")
-		buffs_in_fade = false
+		buffs_fade_timer.start()
+	else:
+		show_buff_page_true()
+func show_buff_page_true():
 	input_handler.ClearContainer(buffs_cont)
 	var max_pos = min((buff_scroll_page+1) * 3, buffs.size())
 	for i in range(buff_scroll_page * 3, max_pos):
 		add_buff(buffs[i])
-	if make_fade:
-		ResourceScripts.core_animations.UnfadeAnimation(buffs_cont, fade_time)
+	if buffs_in_fade:
+		buffs_in_fade = false
+		ResourceScripts.core_animations.UnfadeAnimation(buffs_cont, buffs_fade_timer.wait_time)
 
 func add_buff(i):
 	if !visible: return
