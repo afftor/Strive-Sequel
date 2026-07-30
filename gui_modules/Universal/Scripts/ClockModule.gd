@@ -15,6 +15,7 @@ var atlas_pos = {
 	4: 828,
 }
 
+
 func _ready():
 	$TimeNode/HBoxContainer/finish_turn.connect("pressed", self, "advance_turn", [1])
 	$TimeNode/HBoxContainer/x2.connect("pressed", self, "advance_turn", [2])
@@ -31,8 +32,10 @@ func _ready():
 #	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
 	input_handler.register_btn_source('finish_turn', self, 'tut_get_finish_turn')
 
+
 func tut_get_finish_turn():
 	return $TimeNode/HBoxContainer/finish_turn
+
 
 func hotkey_pressed(number):
 	if input_handler.combat_node != null:
@@ -41,6 +44,7 @@ func hotkey_pressed(number):
 		1: advance_turn(1)
 		2: advance_turn(2)
 		3: advance_turn(4)
+
 
 func update_food_tooltip():
 	var resources = ResourceScripts.game_party.calculate_food_consumption()
@@ -74,7 +78,6 @@ func set_sky_pos():
 
 func move_sky(from, to, init_delay):
 	locked = true
-	tw.interpolate_callback(self, variables.SecndsPerTransition, 'check_resume')
 	var v1 = sky.texture.region
 	v1.position.x = atlas_pos[from]
 	var v2 = sky.texture.region
@@ -134,7 +137,6 @@ func _process(delta): #nearly obsolete
 
 
 var continue_timer = false
-var amount_resume
 func advance_turn(amount = 1):
 	if ResourceScripts.game_party.characters.size() > ResourceScripts.game_res.get_pop_cap() and ResourceScripts.game_party.has_nonunics():
 		if ResourceScripts.game_res.get_pop_cap() < ResourceScripts.game_res.get_pop_cap_limit():
@@ -144,15 +146,12 @@ func advance_turn(amount = 1):
 		return
 	if globals.log_node != null && weakref(globals.log_node).get_ref():
 		globals.log_node.clear_log()
-	#lookforward part
-	amount_resume = amount
-	var trem = ResourceScripts.game_progress.get_next_event_time()
-	if trem > 0 and trem < amount:
-		amount = trem
-	trem = ResourceScripts.game_party.predict_char_event()
-	if trem > 0 and trem < amount:
-		amount = trem
-	#main part
+	
+	#synch setup
+	var cur_time = ResourceScripts.game_globals.hour
+	if cur_time == 4: 
+		cur_time = 0
+	
 	var init_delay = 0.0
 	if locked: 
 #		return
@@ -161,38 +160,31 @@ func advance_turn(amount = 1):
 		set_sky_pos()
 		init_delay = 0.2
 	input_handler.PlaySound("button_click")
-	#synch setup
-	amount_resume -= amount
-	var cur_time = ResourceScripts.game_globals.hour
-	if cur_time == 4: cur_time = 0
-	var ntime = cur_time + amount
-	if ntime > 4: 
-		ntime -= 4
-	move_sky(cur_time, ntime, init_delay)
-	
-	#asynch part
+	#reworked
+	continue_timer = false
+	var tmp = amount
 	while amount > 0:
 		ResourceScripts.game_globals.advance_hour()
 		amount -= 1
 		globals.emit_signal("hour_tick")
-	update_labels()
-#	rotate_sky()
+		if continue_timer:
+			break
+#	update_labels()
+	tmp -= amount
+#	print(tmp)
+	
+	var ntime = cur_time + tmp
+	if ntime > 4: 
+		ntime -= 4
+#	print(ntime)
+	move_sky(cur_time, ntime, init_delay)
+	
 	gui_controller.mansion.SlaveListModule.rebuild()
 	gui_controller.mansion.SkillModule.build_skill_panel()
 	update_labels()
 	update_food_tooltip()
 	update_gold_tooltip()
 #	set_sky_pos()
-
-
-func check_resume():
-	if !continue_timer:
-		return
-	if amount_resume <= 0:
-		return
-	locked = false
-	advance_turn(amount_resume)
-
 
 
 func update_labels():
