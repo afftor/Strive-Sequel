@@ -870,20 +870,21 @@ var data = {
 		options = [{code = "rouge_report_melchor_ketch_escape_2", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
 	},
 	rouge_report_melchor_ketch_escape_2 = {
+		comic_scene = 'rouge_report_melchor_ketch_escape',
 		reqs = [],
 		image = null,
 		music = 'rouge_theme',
 		character = "ketch",
-		character2 = "$rouge",
+#		character2 = "$rouge",
 		tags = ["dialogue_scene"],
-		text = "ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2",
-		options = [{code = "rouge_report_melchor_ketch_dead", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
+		text = "",# "ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2",
+		options = [],# [{code = "rouge_report_melchor_ketch_dead", text = "DIALOGUECONTINUE", reqs = [], type = "next_dialogue"}]
 	},
 	rouge_report_melchor_ketch_dead = {
 		reqs = [],
 		image = null,
 		character = "$rouge",
-		tags = ["dialogue_scene"],
+		tags = ["dialogue_scene", "blackscreen_transition_common"],
 		text = "ROUGE_REPORT_MELCHOR_KETCH_DEAD",
 		options = [
 			{
@@ -1662,4 +1663,39 @@ var data = {
 			}
 		]
 	},
+}
+
+var comic_events = {
+	rouge_report_melchor_ketch_escape = [
+		[
+			{type = 'frame', image = "res://assets/images/comic scenes/rouge_1/1.png", position = Vector2(0, -20), size = Vector2(1920, 1080)},
+			{type = 'text', text = "ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_0", tags = ["master_translate"],},
+		],
+		[
+			{type = 'frame', image = "res://assets/images/comic scenes/rouge_1/2.png", position = Vector2(0, -20), size = Vector2(1920, 1080)},
+			{type = 'text', text = "ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2"},
+			{type = 'sound', value = 'speech'},
+		],
+		[
+			{type = 'frame', image = "res://assets/images/comic scenes/rouge_1/3.png", position = Vector2(0, -20), size = Vector2(1920, 1080)},
+			{type = 'text', text = "ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_2"},
+			{type = 'sound', value = 'speech'},
+		],
+		[
+			{type = 'text', text = "ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_3"},
+			{type = 'sound', value = 'speech'},
+		],
+		[
+			{type = 'frame', image = "res://assets/images/comic scenes/rouge_1/4.png", position = Vector2(0, -20), size = Vector2(1920, 1080)},
+			{type = 'text', text = "ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_4"},
+			{type = 'sound', value = 'speech'},
+		],
+		[
+			{type = 'frame', image = "res://assets/images/comic scenes/rouge_1/5.png", position = Vector2(0, -20), size = Vector2(1920, 1080), delay = 0.5},
+			{type = 'text', text = "ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_5"},
+			{type = 'shake_frame'},
+			{type = 'sound', value = 'punch'},
+		],
+		{type = 'continue', scene = 'rouge_report_melchor_ketch_dead'}
+	],
 }

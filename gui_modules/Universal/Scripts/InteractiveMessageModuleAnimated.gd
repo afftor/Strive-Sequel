@@ -25,6 +25,7 @@ const EFFECT_FEEDBACK_CHARACTER_CODES = [
 	"affect_master",
 	"affect_unique_character",
 ]
+const UNFADE_COMIC_PANEL_TIME = 0.5
 
 onready var bg_T1 = $BackgroundT1
 onready var bg_T2 = $BackgroundT2
@@ -35,13 +36,14 @@ onready var opt_cont_T1 = $BackgroundT1/ScrollContainer/VBoxContainer
 onready var opt_cont_T2 = $BackgroundT2/ScrollContainer/VBoxContainer
 var cur_opt_cont
 var select_blocking_nodes = []
+onready var comic_panel = $ComicPanel
 
 var dialogue_type_exceptions = ["church_event"]
 
 func _ready():
 	$BackgroundT2/BackgroundT2/HideButton.connect("pressed", self, "hide_dialogue")
 	$ShowPanel/ShowButton.connect("pressed", self, "hide_dialogue", ["show"])
-	$ComicPanel/NextButton.connect('pressed', self, 'advanve_comic')
+	comic_panel.get_node("NextButton").connect('pressed', self, 'advanve_comic')
 	$CharacterImage.material = load("res://assets/silouette_shader.tres").duplicate()
 	if get_node_or_null("CharacterImage2") != null:
 		$CharacterImage2.material = load("res://assets/silouette_shader.tres").duplicate()
@@ -98,8 +100,6 @@ func open(scene):
 		save_scene_to_gallery(scene)
 	if scene.has("unlocked_char_sprites"):
 		input_handler.update_progress_data("unique_sprites", scene.unlocked_char_sprites)
-	if scene.has('comic_scene'):
-		run_comic_scene(scene.comic_scene)
 	
 	if !is_just_started:
 		determine_dialogue_type(scene)
@@ -191,6 +191,13 @@ func open(scene):
 	if scene.has("common_effects"):
 		collect_effect_feedback(scene.common_effects, false)
 		globals.common_effects(scene.common_effects, true)
+	
+	if scene.has('comic_scene'):
+		run_comic_scene(scene.comic_scene)
+#		yield(get_tree().create_timer(UNFADE_COMIC_PANEL_TIME), "timeout")
+	elif comic_panel.visible:
+		comic_panel.hide()
+	
 	clear_character_images()
 	$BackgroundT1/ImagePanel.hide()
 	handle_scene_backgrounds(scene)
@@ -1452,11 +1459,14 @@ func generate_scene_text(scene):
 			counter += 1
 		scenetext += "\n\n" + text
 
-	if cur_text_label.bbcode_text != '':
-		cur_text_label.bbcode_text += "\n\n" +  globals.TextEncoder("{color=gray_text_dialogue|"+previous_text+"}") + "\n\n" +  globals.TextEncoder(scenetext)
-	else:
-		cur_text_label.bbcode_text = globals.TextEncoder(scenetext)
+	var result_text = globals.TextEncoder(scenetext)
+	if !scene.has("comic_scene") or !scenetext.empty():
+		if cur_text_label.bbcode_text != '':
+			cur_text_label.bbcode_text += "\n\n" +  globals.TextEncoder("{color=gray_text_dialogue|"+previous_text+"}") + "\n\n" + result_text
+		else:
+			cur_text_label.bbcode_text = result_text
 	show_pending_effect_feedback()
+	return result_text
 
 
 func set_enemy(scene):
@@ -1654,8 +1664,11 @@ func is_select_blocked_by_node():
 var comic_data = []
 var comic_pos = 0
 func run_comic_scene(scene_id):
-	$ComicPanel.reset()
-	ResourceScripts.core_animations.UnfadeAnimation($ComicPanel, 0.2)
+	var was_visible = comic_panel.visible
+	comic_panel.reset()
+	if !was_visible:
+		ResourceScripts.core_animations.UnfadeAnimation(comic_panel, UNFADE_COMIC_PANEL_TIME)
+		yield(get_tree().create_timer(UNFADE_COMIC_PANEL_TIME), "timeout")
 	comic_data = scenedata.comic_events[scene_id]
 	comic_pos = 0
 	run_comic_line()
@@ -1681,20 +1694,26 @@ func run_comic_operation(dict):
 		return 
 	match dict.type:
 		'close':
-			$ComicPanel.hide()
+			comic_panel.hide()
 			close()
 		'continue':
-			$ComicPanel.hide()
+#			comic_panel.hide()
 			dialogue_next(dict.scene, 1)
 		'text':
-			$ComicPanel.show_text(dict.text)
+			var quasi_scene = {
+				text = [{text = dict.text, reqs = []}],
+				tags = []
+			}
+			if dict.has("tags"):
+				quasi_scene.tags = dict.tags
+			comic_panel.show_text(generate_scene_text(quasi_scene))
 		'frame':
 			if dict.has('delay'):
-				$ComicPanel.show_frame(dict.image, dict.position, dict.size, dict.delay)
+				comic_panel.show_frame(dict.image, dict.position, dict.size, dict.delay)
 			else:
-				$ComicPanel.show_frame(dict.image, dict.position, dict.size)
+				comic_panel.show_frame(dict.image, dict.position, dict.size)
 		'reset':
-			$ComicPanel.reset()
+			comic_panel.reset()
 		'sound':
 			input_handler.PlaySound(dict.value)
 		'play_noise':
@@ -1703,5 +1722,10 @@ func run_comic_operation(dict):
 			input_handler.StopBackgroundSound()
 		'resume_noise':
 			input_handler.ResumeBackgroundSound()
+		'shake_frame':
+			if dict.has('time'):
+				comic_panel.shake_last_frame(dict.time)
+			else:
+				comic_panel.shake_last_frame()
 
 

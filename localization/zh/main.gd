@@ -26753,19 +26753,14 @@ Heleviel没有作声；然而，她脸上的怒火却在不断积聚。""",
 {color=aqua|士兵队长：— 我们已确认这就是那群危险的邪教徒，他们拒绝投降。进攻。}
 
 一小队战斗法师开始吟唱强力的火系咒语，迅速将路障点燃，而其他人则将旁观者驱赶到远处。建筑物内开始传出痛苦的哀嚎声。""",
-	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_1 = """当邪教徒的追随者们拖住士兵时，凯奇溜进了一条专门为逃跑准备的小型地下通道。他在追随者们设法建立后卫防线之前，拼死杀出重围，但这场战斗让他疲惫不堪且受了伤。
-
-{color=yellow|凯奇：— 他妈的，怎么会变成这样？如果让我抓住那个[name]，我发誓[name]永远别想——}""",
-	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2 = """一个身影从前方的阴影中走出。凯奇的表情转为震惊——不是因为来者出乎意料，而是因为这意味着什么。
-
-{color=yellow|凯奇：— 你……你策划了这一切，你这婊子！}
-
-{color=aqua|露琪：— 你以为你可以侮辱和威胁我而不付出代价吗？攻击我的姐妹们？}
-
-{color=yellow|凯奇：— 邪教组织会知道这件事的——}""",
-	ROUGE_REPORT_MELCHOR_KETCH_DEAD = """攻击来得如此之快，凯奇甚至没看清。他胸口中招，当场毙命，鲜血喷溅在墙上。
-
-{color=yellow|露琪：— 呵呵，希望亲爱的不会因为这件事对我太严厉。}""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_1 = """当邪教徒的追随者们拖住士兵时，凯奇溜进了一条专门为逃跑准备的小型地下通道。他在追随者们设法建立后卫防线之前，拼死杀出重围，但这场战斗让他疲惫不堪且受了伤。""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_0 = """{color=yellow|凯奇：— 他妈的，怎么会变成这样？如果让我抓住那个[name]，我发誓[name]永远别想——}""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2 = """一个身影从前方的阴影中走出。凯奇的表情转为震惊——不是因为来者出乎意料，而是因为这意味着什么。""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_2 = """{color=yellow|凯奇：— 你……你策划了这一切，你这婊子！}""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_3 = """{color=aqua|露琪：— 你以为你可以侮辱和威胁我而不付出代价吗？攻击我的姐妹们？}""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_4 = """{color=yellow|凯奇：— 邪教组织会知道这件事的——}""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_5 = """攻击来得如此之快，凯奇甚至没看清。他胸口中招，当场毙命，鲜血喷溅在墙上。""",
+	ROUGE_REPORT_MELCHOR_KETCH_DEAD = """{color=yellow|露琪：— 呵呵，希望亲爱的不会因为这件事对我太严厉。}""",
 	ROUGE_REPORT_MELCHOR_KETCH_WARNED_ESCAPE_1 = """当邪教徒的追随者们拖住士兵时，凯奇溜进了一条专门为逃跑准备的小型地下通道。他在追随者们设法建立后卫防线之前，拼死杀出重围，但这场战斗让他疲惫不堪且受了伤。
 
 前方的通道本应是安全的，但随着你的话语回响在脑海，他的脚步慢了下来。
