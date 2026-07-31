@@ -1920,6 +1920,32 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""",
 	SKILLSMOTHER_THE_FLAMEDESCRIPT = 'Can only target an Unlit Brazier. Heal for 100% of this unit\'s ATK and remove Burn.',
 	SKILLBUMP_IN_THE_MIDNIGHT = 'Bump in the Midnight',
 	SKILLBUMP_IN_THE_MIDNIGHTDESCRIPT = 'Deal {color=yellow|Dark} physical damage to a target. Inflict Bleed, Shred, and Fear.',
+	SKILLGLINT_OF_THE_SWORD = 'Glint of the Sword',
+	SKILLGLINT_OF_THE_SWORDDESCRIPT = """Stealth-casting skill.
+Deal physical damage to a target and inflict {color=aqua|Blind}.
+If the target is already {color=aqua|Blind}, gain {color=aqua|In the Shadow}.""",
+	SKILLLACERATING_DANCE = 'Lacerating Dance',
+	SKILLLACERATING_DANCEDESCRIPT = """Stealth-casting skill.
+Deal low physical damage to random targets and inflict {color=aqua|Bleed}.
+If a target is {color=aqua|Blind}, also inflict {color=aqua|Shred}.
+If the user is {color=aqua|In the Shadow}, deal increased damage.""",
+	SKILLISOLATE = 'Isolate',
+	SKILLISOLATEDESCRIPT = """Stealth-casting skill.
+Deal physical damage to a backline target and inflict {color=aqua|Blind} on all enemies other than the target.
+If the user is {color=aqua|In the Shadow}, inflict {color=aqua|Close Confrontation} on the main target.""",
+	SKILLDISENGAGE = 'Disengage',
+	SKILLDISENGAGEDESCRIPT = """Deal low physical damage to a melee target.
+Remove {color=aqua|Disarm}, {color=aqua|Taunt}, {color=aqua|Blind}, {color=aqua|Ensnare}, {color=aqua|Burn}, and {color=aqua|Wet} from self.
+Heal self for a small portion of Max HP.
+Gain {color=aqua|In the Shadow} and {color=aqua|Tightened Grip}.""",
+	SKILLWAKE_OF_BLACKENED_BLADE = 'Wake of Blackened Blade',
+	SKILLWAKE_OF_BLACKENED_BLADEDESCRIPT = """Deal {color=yellow|Dark} damage to the front-most enemies in each row and inflict {color=aqua|Blind}.
+Gain {color=aqua|Blackened Blade}.""",
+	SKILLGREG_LAST_BARK = 'I Hate... All of You... All of THIS!!',
+	SKILLGREG_LAST_BARKDESCRIPT = """Repeatedly deal physical damage to a target.
+Sequentially inflict {color=aqua|Ensnare}, {color=aqua|Disarm}, {color=aqua|Blind}, and {color=aqua|Shred}.
+The last hit deals increased damage.
+{color=red|On Kill: Reset cooldown.}""",
 	STATUSDESC_BLEED = "Bleeding: Take 10% of Maximum HP as neutral damage per turn.",
 	STATUSDESC_POISON = "Poisoned: Take 10% of Maximum HP as neutral damage per turn.",
 	STATUSDESC_BURN = "Burning: Take 8% of Maximum HP as Fire damage per turn.",
@@ -4971,6 +4997,48 @@ Remove if Brazier were put out.""",
  - gain immunity to burn and silence.
  - Gain a stack of Festering Terror at the end of each turn.
 When the Brazier is lit, lose 16% of Max HP at the end of their turn.""",
+	ACT4_GREG_HALF_HP = """
+Greg: All these gazes... Begone!
+Greg let loose a smokebomb!""",
+	GREG_CLOSE_CONFRONTATION_TRIGGERED = """
+Greg: Can you really affort to look somewhere else when I'm right in front of you? """,
+	EFFECT_GREG_TRAIT_DESCRIPT = """Black Knight - Greg:
+At the start of each round, Attempt to Read Movement of 2 random enemies.
+At less than 50% HP, Attempt to Read Movement of 4 random enemies instead.
+This effect is disabled if this unit is taunted, blinded, or immobilised.""",
+	EFFECT_LONESOME_RAGE_BYGONE_GLORY_TRAIT_DESCRIPT = """Lonesome Rage, Bygone Glory:
+If there's no other allies, gain 20 Armor pen, 30 Armor, 30 MDEF, and 15 Speed. 
+When this unit recovers from an immobilising effect, immediately use attack a random enemy and gain 'In the Shadow'.""",
+	EFFECTNAME_GREG_LAST_STAND = 'Greg\'s Final Stand',
+	EFFECT_GREG_FINAL_STAND_DESCRIPT = """Greg\'s Final Stand:
+Take further reduced damage from DoT effects.
+Hp does not drop below 10%.
+When hp reach 10%, gain Ridiculous Grit for 5 turns.""",
+	EFFECT_DEMONNESS_GIFT_NULL_CLOAK_DESCRIPT = 'Demoness\' Gift - Null Cloak: When this unit is affected by \'In the Shadow\', Reduce Spell damage taken by 75%.',
+	EFFECTNAME_RIDICLUOUS_GRIT = 'Ridiculous Grit',
+	EFFECT_RIDICLUOUS_GRIT_DESCRIPT = """Become immune to all immobilising effects.
+Gain +25 ATK and Hit rate.
+Reduce this buff duration by 1 when struck with a critical hit.
+When this effect expires, die.""",
+	EFFECTNAME_IM_SORRY_UNCLE = 'I\'m sorry uncle...',
+	EFFECT_IM_SORRY_UNCLE_DESCRIPT = 'Deal 10% less damage to Greg. Take 10% more damage from Greg',
+	EFFECTNAME_PITIFUL_ARE_WE_NOT = 'Pitiful, are we not?',
+	EFFECT_PITIFUL_ARE_WE_NOT_DESCRIPT = 'Immune to Movement Readed. -10 Hit Rate.',
+	EFFECTNAME_MOVEMENT_READED = 'Movement Readed',
+	EFFECT_MOVEMENT_READED_DESCRIPT = """When Greg is not blind or immobilised:
+- Deal 90% less damage against Greg.
+- Attacking Greg will cause him to counterattack and inflicts stun.""",
+	EFFECTNAME_CLOSE_CONFRONTATION = 'Close Confrontation',
+	EFFECT_CLOSE_CONFRONTATION_DESCRIPT = """Range attacks deal 50% less damage.
+Melee attacks deal 50% more damage against the applier.
+If this unit doesn't attack the applier on their turn, provoke an opportunity attack from the applier.
+This effect is removed if the applier fell for a taunt or is immobilised.""",
+	EFFECTNAME_CLOSE_CONFRONTATION_CANCEL = 'being right in front of the target.',
+	EFFECTNAME_TIGHTENED_GRIP = 'Tightened Grip',
+	EFFECT_TIGHTENED_GRIP_DESCRIPT = 'Immune to Disarm. +20 Hit Rate.',
+	EFFECTNAME_BLACKEN_BLADE = 'Blacken Blade',
+	EFFECT_BLACKEN_BLADE_DESCRIPT = """Deals additional 50% of caster's MATK as {color=yellow|Dark} damage on every hit
+All attacks have a 20% chance to inflict Bleed.""",
 	RESETTRAINREQ = "Reset training and all purchased perks. Requires Oblivion potion.",
 	RESETTRAINING = "All training progress will be discarded. Are you sure?",
 	BUFFDESCRIPTDEFENDER = "Defender: Will shield allies from attacks unless stunned.",
