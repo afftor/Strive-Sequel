@@ -64,7 +64,7 @@ var chardata = {
 			items = [['chest_base_metal', 'chest_adv_metal'], ['legs_base_metal', 'legs_adv_metal'], 'shield', ['sword', 'mace', 'battleaxe', 'swordadv', 'spearadv', 'maceadv', 'battleaxeadv', 'club', 'spear']]
 		},
 		4 : {
-			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 5, physics = 100, wits = 100},
+			stats = {physics_factor = 6, wits_factor = 3, growth_factor = 5, physics = 120, wits = 100},
 			classes1 = ['fighter', 'rogue', 'archer'],
 			classes2 = [['knight', 'deathknight','spellsword','arcane_blade',], ['paladin','shieldbearer','templar','monk']],
 			optional_classes_amount = 1,
@@ -101,7 +101,7 @@ var chardata = {
 			items = [['chest_base_metal', 'chest_adv_metal'], ['legs_base_metal', 'legs_adv_metal'], 'shield', ['sword', 'mace', 'battleaxe', 'swordadv', 'spearadv', 'maceadv', 'battleaxeadv', 'club', 'spear']]
 		},
 		4 : {
-			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 5, physics = 100, wits = 100},
+			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 5, physics = 120, wits = 100},
 			classes1 = ['fighter', 'berserker', 'rogue', 'archer'],
 			classes2 = [['knight', 'deathknight','spellsword','arcane_blade',], ['paladin','shieldbearer','templar','monk']],
 			optional_classes_amount = 1,
@@ -138,7 +138,7 @@ var chardata = {
 			items = [['chest_base_metal', 'chest_adv_metal'], ['legs_base_metal', 'legs_adv_metal'], 'shield', ['sword', 'mace', 'battleaxe', 'swordadv', 'spearadv', 'maceadv', 'battleaxeadv', 'club', 'spear']]
 		},
 		4 : {
-			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 5, physics = 100, wits = 100},
+			stats = {physics_factor = 6, wits_factor = 3, growth_factor = 5, physics = 120, wits = 100},
 			classes1 = ['fighter', 'dragonknight', 'rogue', 'archer'],
 			classes2 = [['knight', 'deathknight','spellsword','arcane_blade',], ['paladin','shieldbearer','templar','monk']],
 			optional_classes_amount = 1,
@@ -175,7 +175,7 @@ var chardata = {
 			items = [['chest_base_metal', 'chest_adv_metal'], ['legs_base_metal', 'legs_adv_metal'], 'shield', ['sword', 'mace', 'battleaxe', 'swordadv', 'spearadv', 'maceadv', 'battleaxeadv', 'club', 'spear']]
 		},
 		4 : {
-			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 5, physics = 100, wits = 100},
+			stats = {physics_factor = 6, wits_factor = 3, growth_factor = 5, physics = 120, wits = 100},
 			classes1 = ['fighter', 'valkyrie', 'rogue', 'archer'],
 			classes2 = [['knight', 'deathknight','spellsword','arcane_blade',], ['paladin','shieldbearer','templar','monk']],
 			optional_classes_amount = 1,
@@ -211,8 +211,8 @@ var chardata = {
 			items = [['chest_base_leather', 'chest_adv_leather'], ['legs_base_leather', 'legs_adv_leather'], ['sword', 'dagger', 'swordadv']]
 		},
 		4 : {
-			stats = {physics_factor = 4, wits_factor = 4, growth_factor = 5, physics = 100, wits = 100},
-			classes1 = ['rogue', 'assassin', 'ninja'],
+			stats = {physics_factor = 5, wits_factor = 4, growth_factor = 5, physics = 120, wits = 100},
+			classes1 = ['rogue', 'assassin', 'ninja','fighter'],
 			classes2 = [],
 			optional_classes_amount = 0,
 			mastery_levels = 6,
@@ -247,7 +247,7 @@ var chardata = {
 			items = [['chest_base_leather', 'chest_adv_leather'], ['legs_base_leather', 'legs_adv_leather'], ['bow', 'bowadv', 'crossbow', 'crossbowadv']]
 		},
 		4 : {
-			stats = {physics_factor = 4, wits_factor = 4, growth_factor = 5, physics = 100, wits = 100},
+			stats = {physics_factor = 5, wits_factor = 4, growth_factor = 5, physics = 120, wits = 100},
 			classes1 = ['archer', 'sniper', 'ranger','rogue'],
 			classes2 = [],
 			optional_classes_amount = 0,
