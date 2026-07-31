@@ -111,7 +111,7 @@ var template_direct = {
 	body_color_tail = '', 
 	body_color_horns = 'yellow3', 
 	body_color_animal = '', 
-	body_color_lips = 'purple',
+	body_color_lips = '',
 	#new hair, empty values SHOULD be set in remade char generating function or kept empty to indicate derivative nature
 	hair_base = '', 
 	hair_assist = '', 

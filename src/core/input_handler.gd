@@ -1040,6 +1040,8 @@ func event_finished():
 	start_event_attempt()
 
 func start_event_attempt():
+	if gui_controller.clock != null:
+		gui_controller.clock.continue_timer = true
 	if dialogue_array.size() > 0:
 		if event_is_active == true:
 #			yield(self, "EventFinished")

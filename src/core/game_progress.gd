@@ -332,7 +332,8 @@ func check_timed_events():
 								'cancel':
 									deleting_events.append(i)
 			if failed:
-				gui_controller.clock.continue_timer = true
+				pass
+#				gui_controller.clock.continue_timer = true
 			else:
 				input_handler.interactive_message(i.code, 'story_event', {})
 				deleting_events.append(i)
