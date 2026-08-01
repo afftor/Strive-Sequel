@@ -220,6 +220,7 @@ var effects = {
 				conditions = [
 					{type = 'skill', value = ['tags', 'hasno', 'aoe'] },
 					{type = 'skill', value = ['tags', 'has', 'damage'] },
+					{type = 'skill', value = ['ability_type', 'eq', 'spell'] },
 					],
 				trigger = [variables.TR_PREDEF],
 				req_skill = true,
