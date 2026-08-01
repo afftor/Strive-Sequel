@@ -1185,6 +1185,30 @@ var icons = {
 	mastery_point_combat = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/combat.png",
 	mastery_point_magic = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/magic.png",
 	mastery_point_universal = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/universe.png",
+
+	#fighter stat icons
+	stat_atk = "res://assets/images/iconsstats/atk.png",
+	stat_matk = "res://assets/images/iconsstats/matk.png",
+	stat_def = "res://assets/images/iconsstats/def.png",
+	stat_mdef = "res://assets/images/iconsstats/mdef.png",
+	stat_hp = "res://assets/images/iconsstats/hp.png",
+	stat_mp = "res://assets/images/iconsstats/mp.png",
+	stat_crt = "res://assets/images/iconsstats/crt.png",
+	stat_cmod = "res://assets/images/iconsstats/critmod.png",
+	stat_hit = "res://assets/images/iconsstats/hit.png",
+	stat_evas = "res://assets/images/iconsstats/evas.png",
+	stat_speed = "res://assets/images/iconsstats/speed.png",
+	stat_apen = "res://assets/images/iconsstats/armorpen.png",
+
+	#resist icons
+	resist_normal = "res://assets/images/iconsstats/normal.png",
+	resist_fire = "res://assets/images/iconsstats/fire.png",
+	resist_earth = "res://assets/images/iconsstats/earth.png",
+	resist_air = "res://assets/images/iconsstats/air.png",
+	resist_water = "res://assets/images/iconsstats/water.png",
+	resist_light = "res://assets/images/iconsstats/light.png",
+	resist_dark = "res://assets/images/iconsstats/dark.png",
+	resist_mind = "res://assets/images/iconsstats/mind.png",
 #	TO COMPLETE AND USE IN DATA TABLES
 #	NEED TO GET RID OF ALL LOAD FUNCTIONS
 #	skill_abuse = "res://assets/images/iconsskills/abuse.png",

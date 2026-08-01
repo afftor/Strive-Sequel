@@ -9,21 +9,39 @@ const abilities_node_short_y = 220
 enum {TAB_GEN, TAB_ABIL}
 var cur_tab = TAB_GEN
 
+var stat_tooltip_keys = {
+	atk = 'SIMATK_DESC',
+	matk = 'SIMMATK_DESC',
+	armor = 'SIMDEF_DESC',
+	mdef = 'SIMMDEF_DESC',
+	hitrate = 'SIMHITRATE_DESC',
+	evasion = 'SIMEVASION_DESC',
+	speed = 'SIMSPEED_DESC',
+	armorpenetration = 'SIMARMORPEN_DESC',
+	critchance = 'SIMCRITICAL_DESC',
+	critmod = 'SIMCRITICALMOD_DESC',
+}
+
 func _ready():
 	$CloseButton.connect("pressed", self, "hide")
+	$VBoxContainer/Label.texture = images.get_icon('stat_hp')
+	$VBoxContainer/Label6.texture = images.get_icon('stat_mp')
 	for i in variables.resists_list:
 		if i == 'all': continue
-		var newlabel = $resists/Label.duplicate()
+		var newicon = $resists/Icon.duplicate()
 		var newvalue = $resists/Value.duplicate()
-		$resists.add_child(newlabel)
+		$resists.add_child(newicon)
 		$resists.add_child(newvalue)
-		newlabel.text = i.capitalize() + ":"
+		newicon.texture = images.get_icon('resist_' + i)
 		newvalue.name = i
-		newlabel.show()
+		newicon.show()
 		newvalue.show()
-	for i in $"base stats".get_children():
-		if statdata.statdata.has(i.name.replace("label_","")):
-			globals.connecttexttooltip(i, statdata.statdata[i.name.replace("label_", "")].descript)
+		globals.connecttexttooltip(newicon, tr(i.to_upper() + "RESIST_DESC"))
+	for stat in stat_tooltip_keys:
+		var icon_node = $"base stats".get_node_or_null("label_" + stat)
+		if icon_node:
+			icon_node.texture = images.get_icon(variables.fighter_stat_icons[stat])
+			globals.connecttexttooltip(icon_node, tr(stat_tooltip_keys[stat]))
 	$abilities_tab.connect("pressed", self, "abilities_node_on")
 	$general_tab.connect("pressed", self, "abilities_node_off")
 

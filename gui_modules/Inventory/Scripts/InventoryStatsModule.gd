@@ -1,35 +1,42 @@
 extends Panel
 
 
-var stat_index = 0
-var stats = ["base_stats", "resists"]
+var stat_tooltip_keys = {
+	atk = 'SIMATK_DESC',
+	matk = 'SIMMATK_DESC',
+	armor = 'SIMDEF_DESC',
+	mdef = 'SIMMDEF_DESC',
+	hitrate = 'SIMHITRATE_DESC',
+	evasion = 'SIMEVASION_DESC',
+	speed = 'SIMSPEED_DESC',
+	armorpenetration = 'SIMARMORPEN_DESC',
+	critchance = 'SIMCRITICAL_DESC',
+	critmod = 'SIMCRITICALMOD_DESC',
+}
 
 
 func _ready():
-	$StatsButton.connect("pressed", self, "open_base_stats")
-	$ResistsButton.connect("pressed", self, "open_resists")
 	for i in variables.resists_list:
 		if i == 'all': continue
-		var newlabel = $resists/Label.duplicate()
+		var newicon = $resists/Icon.duplicate()
 		var newvalue = $resists/Value.duplicate()
-		$resists.add_child(newlabel)
+		$resists.add_child(newicon)
 		$resists.add_child(newvalue)
-		newlabel.text = tr(i.to_upper() + "RESIST") + ":"
+		newicon.texture = images.get_icon('resist_' + i)
 		newvalue.name = i
-		newlabel.show()
+		newicon.show()
 		newvalue.show()
-	for i in $base_stats.get_children():
-		if statdata.statdata.has(i.name.replace("label_","")):
-			globals.connecttexttooltip(i, statdata.statdata[i.name.replace("label_", "")].descript)
+		globals.connecttexttooltip(newicon, tr(i.to_upper() + "RESIST_DESC"))
+	for stat in stat_tooltip_keys:
+		var icon_node = $base_stats.get_node_or_null("label_" + stat)
+		if icon_node:
+			icon_node.texture = images.get_icon(variables.fighter_stat_icons[stat])
+			globals.connecttexttooltip(icon_node, tr(stat_tooltip_keys[stat]))
 
 			
 func open_base_stats():
-	$resists.hide()
-	$base_stats.show()
-	$StatsButton.pressed = true
-	$ResistsButton.pressed = false
 	var character = input_handler.interacted_character
-	
+
 	for i in variables.fighter_stats_list:
 		if !i in ['hpmax', 'mpmax','critmod', 'speed']:
 			$base_stats.get_node(i).text = str(floor(character.get_stat(i)))
@@ -37,15 +44,7 @@ func open_base_stats():
 			$base_stats.get_node(i).text = str(floor(character.get_stat(i)*100))  + '%'
 		elif i == 'speed':
 			$base_stats.get_node(i).text = str(floor(character.get_stat(i)[0]))
-	
 
-
-func open_resists():
-	$resists.show()
-	$base_stats.hide()
-	$StatsButton.pressed = false
-	$ResistsButton.pressed = true
-	var character = input_handler.interacted_character
 	for i in $resists.get_children():
 		if !statdata.statdata.has('resist_' + i.name):
 			continue
@@ -57,16 +56,4 @@ func open_resists():
 			i.set("custom_colors/font_color", variables.hexcolordict.green)
 		else:
 			i.set("custom_colors/font_color", variables.hexcolordict.white)
-
-
-func switch_stats():
-	if stat_index == stats.size() - 1:
-		stat_index = 0
-	else:
-		stat_index += 1
-	match stats[stat_index]:
-		"base_stats":
-			open_base_stats()
-		"resists":
-			open_resists()
 

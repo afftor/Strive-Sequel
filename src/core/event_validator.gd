@@ -704,6 +704,8 @@ func _validate_quest_stage_ref(quest_id, stage_id, context, issues):
 
 
 func _validate_worlddata(issues):
+	if worlddata.get("fixed_location_options") != null:
+		_validate_data_tree(worlddata.fixed_location_options, "worlddata.fixed_location_options", issues)
 	if worlddata.get("fixed_location_events") != null:
 		_validate_data_tree(worlddata.fixed_location_events, "worlddata.fixed_location_events", issues)
 	if worlddata.get("lands") != null:
