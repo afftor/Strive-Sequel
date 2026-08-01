@@ -52,6 +52,18 @@ var skills = {
 		value = 0.625,
 		sfx = [{code = 'ranged_attack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
+		variations = [ #Due to order of thing...5 goddamn counter attack will still be fire even if Aire only have 1 counter attack left
+			{# Using variation seem to be the only way to enforce correct number of counter attack
+				reqs = [{code = 'stat', stat = 'counterattacks', operant = 'lt', value = 1.0}],
+				set = {
+					value = [['0']],
+					damagestat = ['no_stat'],
+					critchance = 0,
+					sfx = [], 
+					sounddata = {initiate = null, strike = null, hit = null, hittype = null},
+				},
+			},
+		]
 	},
 	aire_eye_for_an_eye = {
 		code = 'aire_eye_for_an_eye',
@@ -78,6 +90,18 @@ var skills = {
 		armor_p = [['target.armor','*0.3']],
 		sfx = [{code = 'provocation', target = 'caster', period = 'windup'},{code = 'ranged_attack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
+		variations = [
+			{
+				reqs = [{code = 'stat', stat = 'counterattacks', operant = 'lt', value = 1.0}],
+				set = {
+					value = [['0']],
+					damagestat = ['no_stat'],
+					critchance = 0,
+					sfx = [], 
+					sounddata = {initiate = null, strike = null, hit = null, hittype = null},
+				},
+			},
+		]
 	},
 	#Actual skill zone.
 	for_the_princess = {
@@ -191,11 +215,13 @@ var skills = {
 var effects = {
 	overwatch_assignment = {
 		type = 'simple',
-		statchanges = {},
+		statchanges = {counterattacks_max = 4},
 		tags = ['overwatch_assignment'],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/takeposition.png",
 			description = "TRAIT_OVERWATCH_ASSIGNMENT",
+			tags = ['combat_only'],
+			bonuseffect = 'counterattacks'
 		}]
 	},
 	overwatch_apply = {
@@ -255,6 +281,7 @@ var effects = {
 			{type = 'watcher', value = [{code = 'has_status', status = 'disable', check = false},]},
 			{type = 'watcher', value = [{code = 'has_status', status = 'disarm', check = false},]},
 			{type = 'watcher', value = [{code = 'has_status', status = 'blind', check = false},]},
+			{type = 'watcher', value = [{code = 'stat', stat = 'counterattacks', operant = 'gte', value = 1.0},]},
 		],
 		args = {
 			skill = {obj = 'skill', func = 'eq'},
@@ -267,7 +294,11 @@ var effects = {
 				type = 'oneshot',
 				target = 'watcher',
 				args = {caster = {obj = 'parent', func = 'arg', arg = 'caster'}},
-				atomic = [{type = 'use_combat_skill', skill = 'aire_cover_fire', target = ['parent_args', 'caster']}],
+				conditions = [{code = 'stat', stat = 'counterattacks', operant = 'gte', value = 1.0}],
+				atomic = [
+					{type = 'use_combat_skill', skill = 'aire_cover_fire', target = ['parent_args', 'caster']},
+					{type = 'stat_add', stat = 'counterattacks', value = -1},
+				],
 			},
 		]
 	},
@@ -282,6 +313,7 @@ var effects = {
 			{type = 'watcher', value = [{code = 'has_status', status = 'disable', check = false},]},
 			{type = 'watcher', value = [{code = 'has_status', status = 'disarm', check = false},]},
 			{type = 'watcher', value = [{code = 'has_status', status = 'blind', check = false},]},
+			{type = 'watcher', value = [{code = 'stat', stat = 'counterattacks', operant = 'gte', value = 1.0},]},
 		],
 		args = {
 			skill = {obj = 'skill', func = 'eq'},
@@ -294,7 +326,11 @@ var effects = {
 				type = 'oneshot',
 				target = 'watcher',
 				args = {targetValue = {obj = 'parent', func = 'arg', arg = 'caster'}},
-				atomic = [{type = 'use_combat_skill', skill = 'aire_eye_for_an_eye', target = ['parent_args', 'targetValue']},],
+				conditions = [{code = 'stat', stat = 'counterattacks', operant = 'gte', value = 1.0}],
+				atomic = [
+					{type = 'use_combat_skill', skill = 'aire_eye_for_an_eye', target = ['parent_args', 'targetValue']},
+					{type = 'stat_add', stat = 'counterattacks', value = -1},
+				],
 			},
 		]
 	},
