@@ -171,7 +171,7 @@ func wrap_scene():
 	editor.cut()
 	var newtext = '%s = {\n' % newkey
 	if newkeyword.text != "":
-		newtext += '\timage = null, character = "%s",\n' % newkeyword.text
+		newtext += '\timage = null, character = "$%s",\n' % newkeyword.text
 	else:
 		newtext += '\timage = null,\n'
 	newtext += '\treqs = [], tags = ["dialogue_scene"],\n'

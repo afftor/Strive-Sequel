@@ -244,6 +244,41 @@ var effects = {
 		],
 		buffs = []
 	},
+	e_tr_ratkin = {
+		type = 'temp_s',
+		target = 'target',
+		tick_event = variables.TR_TURN_GET,
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		stack = 'hide',
+		tags = ['buff', 'hide'],
+		buffs = ['b_hide'],
+		statchanges = {armorpenetration = 20}, 
+		sub_effects = [
+			{
+				type = 'trigger',
+				conditions = [
+					{type = 'target', value = [{code = 'has_status', status = 'hide', check = true},]},
+					{type = 'skill', value = ['tags', 'hasno', 'aoe'] },
+					{type = 'skill', value = ['tags', 'has', 'damage'] },
+					{type = 'skill', value = ['ability_type', 'eq', 'skill'] },
+					],
+				trigger = [variables.TR_PREDEF],
+				req_skill = true,
+				args = {
+					skill = {obj = 'skill', func = 'eq'},
+					caster = {obj = 'caster', func = 'eq'},
+					target = {obj = 'target', func = 'eq'},
+				},
+				sub_effects = [
+					{
+						type = 'oneshot',
+						target = 'skill',
+						atomic = [{type = 'stat_add', stat = 'chance', value = -30}],
+					}
+				],
+			},
+		],
+	},
 }
 var atomic_effects = {}
 var buffs = {}

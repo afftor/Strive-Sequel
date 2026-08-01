@@ -647,7 +647,7 @@ var data = {
 				bonus_effects = [
 					{code = 'progress_quest', value = 'lira_quest_3', stage = 'follow_leader'},
 					{code = "plan_loc_event", loc = "empire_capital", event = "lira_quest3_follow_leader_1"},
-					{code = "remove_quest_location", value = "quest_lira_bandits_den"},
+					{code = "remove_quest_location", value = "quest_lira_road_location"},
 					{code = 'update_city'}
 				]
 			}
@@ -673,6 +673,7 @@ var data = {
 				type = 'next_dialogue',
 				bonus_effects = [
 					{code = 'progress_quest', value = 'lira_quest_3', stage = 'merchant'},
+					{code = "remove_quest_location", value = "quest_lira_bandits_den"},
 					{code = 'update_city'}
 				]
 			}

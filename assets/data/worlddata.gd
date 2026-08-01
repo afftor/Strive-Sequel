@@ -1870,7 +1870,7 @@ var fixed_location_options = { #override serialized data
 		{
 			text = tr("LIRA_QUEST3_ROAD_AMBUSH_OPTION"),
 			reqs = [{type = 'active_quest_stage', value = 'lira_quest_3', stage = 'road', state = true}],
-			args = [{code = 'start_event', data = 'lira_quest_3_road_ambush', args = []}]
+			args = [{code = 'start_event', data = 'lira_quest3_road_1', args = []}]
 		},
 	],
 	quest_ritual_location = [

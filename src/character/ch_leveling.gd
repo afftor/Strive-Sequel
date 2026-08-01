@@ -980,9 +980,9 @@ func fill_task_mods(task):
 	if task.has('worktool'):
 		var item = task.worktool
 		task_mods.eff = parent.get_ref().get_stat('task_efficiency_' + item)
-		task_mods.diff += 0.1 * parent.get_ref().get_stat('task_efficiency_' + item)
+		task_mods.diff += 10 * parent.get_ref().get_stat('task_efficiency_' + item)
 		task_mods.crit += parent.get_ref().get_stat('task_crit_' + item)
-		task_mods.diff += 0.4 * parent.get_ref().get_stat('task_crit_' + item)
+		task_mods.diff += 40 * parent.get_ref().get_stat('task_crit_' + item)
 	
 	if parent.get_ref().has_status('no_task_crit'):
 		task_mods.crit = 0
