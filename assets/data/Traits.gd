@@ -227,6 +227,16 @@ var traits = {
 		reqs = [],  
 		tags = ['silksecretion']
 	},
+	ratkin_hide = {
+		code = 'ratkin_hide',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		show_in_parent_stats = true,
+		effects = ['e_tr_ratkin'],
+		bonusstats = {}
+	},
 	#main characters
 	#slave class
 	'master' : {

@@ -1276,6 +1276,7 @@ var racelist = {
 			positive = [['resist', 5],['neutral', 10],['weak',3],['kink',1]],
 			magic = [['neutral', 3],['weak',8],['kink',3]],
 		},
+		traits = ['ratkin_hide']
 	},
 	
 }
