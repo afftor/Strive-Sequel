@@ -646,6 +646,7 @@ Current Progress: %d/%d""", # MISSING TRANSLATION
 	#Time
 
 	OPTIONSWITCHLANGUAGE = "Changer de langue",
+	OPTIONSWITCHLANGUAGECONFIRM = """Change language to %s?""", # MISSING TRANSLATION
 	
 	TIPLABEL = "Conseil",
 	LOADINGTIP1 = "Certaines races peuvent obtenir des classes exclusives",
@@ -1247,6 +1248,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	CHARCREATE_MASTER_RELATION_BLOCKED_NO_MASTER = """No master character is available for relationship selection.""", # MISSING TRANSLATION
 	CHARCREATE_MASTER_RELATION_BLOCKED_CHILD = """Child is unavailable because the master must be the same age or older.""", # MISSING TRANSLATION
 	CHARCREATE_MASTER_RELATION_BLOCKED_PARENT = """Parent is unavailable because the master must be the same age or younger.""", # MISSING TRANSLATION
+	RACE_LOCKED_NGPLUS = """Requires the '%s' NG+ bonus to select as a starting race.""", # MISSING TRANSLATION
 	TOOLTIPIMPROVESCREEN = """Improve your gear by sacrificing similar gear of same quality. Sacrificed gear will be lost.""", # MISSING TRANSLATION
 
 	#Item Parts

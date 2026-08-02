@@ -16,15 +16,29 @@ func select_race():
 	var person = get_parent().person
 	selected_race = person.get_stat("race")
 	input_handler.ClearContainer($RaceSelection/ScrollContainer/VBoxContainer)
-	for id in get_parent().get_available_races():
+	var available_races = get_parent().get_available_races()
+	var locked_races = []
+	var ordered_races = []
+	for id in races.racelist:
+		if available_races.has(id):
+			ordered_races.append(id)
+		else:
+			locked_races.append(id)
+	ordered_races.append_array(locked_races)
+	for id in ordered_races:
 		var i = races.racelist[id]
 		var newbutton = input_handler.DuplicateContainerTemplate($RaceSelection/ScrollContainer/VBoxContainer)
 		if person.get_stat('race') == i.code: newbutton.pressed = true
 		newbutton.get_node('name').text = i.name
 		newbutton.get_node('icon').texture = i.icon
 		newbutton.set_meta('race', id)
-		# newbutton.connect("mouse_entered", self, 'show_race_info',[i.code])
-		newbutton.connect("pressed", self, "show_race_info", [id])
+		if available_races.has(id):
+			# newbutton.connect("mouse_entered", self, 'show_race_info',[i.code])
+			newbutton.connect("pressed", self, "show_race_info", [id])
+		else:
+			newbutton.disabled = true
+			newbutton.modulate = Color(1, 1, 1, 0.5)
+			globals.connecttexttooltip(newbutton, tr("RACE_LOCKED_NGPLUS") % tr("ACHIBONUS_ALL_RACES"))
 	show_race_info(person.get_stat("race"))
 
 
@@ -34,6 +48,8 @@ func roll_random_race():
 		if button.name == "Button":
 			continue
 		if !button.visible:
+			continue
+		if button.disabled:
 			continue
 		available_races.append(button.get_meta('race'))
 	if available_races.empty():

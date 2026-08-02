@@ -30,7 +30,6 @@ func _ready():
 	SwitchLanguage = $TabContainer/Visuals/SwitchLanguage
 	SwitchLanguage.OkPanel = ReloadPanel
 
-	$TabContainer/Visuals/SwitchLanguage.text = tr("OPTIONSWITCHLANGUAGE") + ": " + input_handler.globalsettings.ActiveLocalization
 	$ReloadGameLanguage/Button.connect('pressed', self, 'language_restart')
 
 

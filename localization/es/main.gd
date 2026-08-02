@@ -586,6 +586,7 @@ Current Progress: %d/%d""", # MISSING TRANSLATION
 	UPGRADEAVAILABLECHARACTERS = """Available Characters""", # MISSING TRANSLATION
 	UPGRADEBONUSES = """Bonuses""", # MISSING TRANSLATION
 	OPTIONSWITCHLANGUAGE = "Cambiar idioma",
+	OPTIONSWITCHLANGUAGECONFIRM = """Change language to %s?""", # MISSING TRANSLATION
 	TIPLABEL = "Consejo",
 	LOADINGTIP1 = "Algunas razas pueden lograr clases exclusivas.",
 	LOADINGTIP2 = "Las estadísticas iniciales posibles del personaje están definidas por su raza.",
@@ -1169,6 +1170,7 @@ Reducido por la evasión del enemigo""",
 	CHARCREATE_MASTER_RELATION_BLOCKED_NO_MASTER = """No master character is available for relationship selection.""", # MISSING TRANSLATION
 	CHARCREATE_MASTER_RELATION_BLOCKED_CHILD = """Child is unavailable because the master must be the same age or older.""", # MISSING TRANSLATION
 	CHARCREATE_MASTER_RELATION_BLOCKED_PARENT = """Parent is unavailable because the master must be the same age or younger.""", # MISSING TRANSLATION
+	RACE_LOCKED_NGPLUS = """Requires the '%s' NG+ bonus to select as a starting race.""", # MISSING TRANSLATION
 	TOOLTIPIMPROVESCREEN = "Mejora tu equipo sacrificando equipo similar de la misma calidad. El equipo sacrificado se perderá.",
 	TOOLHANDLE = "Empuñadura",
 	WEAPONHANDLE = "Empuñadura",

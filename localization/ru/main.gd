@@ -598,6 +598,7 @@ A new empty mods.ini has been created. Please re-enable compatible mods from the
 	UPGRADEAVAILABLECHARACTERS = "Доступные персонажи",
 	UPGRADEBONUSES = "Бонусы",
 	OPTIONSWITCHLANGUAGE = """Изменить язык""",
+	OPTIONSWITCHLANGUAGECONFIRM = """Change language to %s?""", # MISSING TRANSLATION
 	TIPLABEL = """Советы""",
 	LOADINGTIP1 = """Некоторые расы могут получить эксклюзивные классы""",
 	LOADINGTIP2 = """Начальные возможные статы персонажа определяются его расой""",
@@ -1204,6 +1205,7 @@ A new empty mods.ini has been created. Please re-enable compatible mods from the
 	CHARCREATE_MASTER_RELATION_BLOCKED_NO_MASTER = "Нет доступного персонажа-хозяина для выбора отношений.",
 	CHARCREATE_MASTER_RELATION_BLOCKED_CHILD = "Ребёнок недоступен, так как хозяин должен быть того же возраста или старше.",
 	CHARCREATE_MASTER_RELATION_BLOCKED_PARENT = "Родитель недоступен, так как хозяин должен быть того же возраста или младше.",
+	RACE_LOCKED_NGPLUS = """Requires the '%s' NG+ bonus to select as a starting race.""", # MISSING TRANSLATION
 	TOOLTIPIMPROVESCREEN = """Улучшите свое снаряжение, пожертвовав аналогичным снаряжением того же качества. Пожертвованное снаряжение будет утеряно""",
 	#Item Parts
 	TOOLHANDLE = """Рукоятка инструмента""",
