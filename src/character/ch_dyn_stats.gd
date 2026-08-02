@@ -586,9 +586,9 @@ func fix_stat_data(stat, data):
 			data.base_value = variables.basic_max_mp + variables.max_mp_per_magic_factor * get_stat('magic_factor')
 			data.bonuses.add.push_back({value = min(get_stat('growth_factor') - 1, get_prof_number()) * 5, src_type = 'factor', src_value = 'growth', timestamp = 0})
 		'mp_reg':
-			if !data.bonuses.has('add2'):
-				data.bonuses.add2 = []
-			data.bonuses.add2.push_back({value = get_stat('magic_factor') * variables.mp_regen_per_magic, src_type = 'factor', src_value = 'magic', timestamp = 0})
+			if !data.bonuses.has('add'):
+				data.bonuses.add = []
+			data.bonuses.add.push_back({value = get_stat('magic_factor') * variables.mp_regen_per_magic, src_type = 'factor', src_value = 'magic', timestamp = 0})
 			if ResourceScripts.game_res.upgrades.has('resting') and ResourceScripts.game_res.upgrades.resting > 0:
 				if !data.bonuses.has('mul2'):
 					data.bonuses.mul2 = []
