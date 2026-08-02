@@ -926,7 +926,7 @@ var statdata = {
 		tags = ['integer', 'custom_bonuses'],
 		direct = false,
 		innate_bonuses = {mincap = 0},
-		custom_order = ['add2','add_part', 'mul', 'add', 'mul2'],
+#		custom_order = ['add','add_part', 'mul', 'add2', 'mul2'],
 		show_info = {category = 'non_combat'}
 	},
 #	hpmax_add_part = {
