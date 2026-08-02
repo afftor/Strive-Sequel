@@ -62,8 +62,23 @@ var dmg_mod_list = ['+damage_hp', "+hp", '+restore_mana', '+lust', '+consent', '
 #list for values modified by random_mod
 var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mp', 'lust']
 
-var resists_list = ['normal','fire','earth','air','water','light','dark','mind'] 
+var resists_list = ['normal','fire','earth','air','water','light','dark','mind']
 var fighter_stats_list = ['hpmax','mpmax','atk','matk','armor','mdef','hitrate','evasion','armorpenetration','speed', 'critchance','critmod']
+
+var fighter_stat_icons = {
+	hpmax = 'stat_hp',
+	mpmax = 'stat_mp',
+	atk = 'stat_atk',
+	matk = 'stat_matk',
+	armor = 'stat_def',
+	mdef = 'stat_mdef',
+	hitrate = 'stat_hit',
+	evasion = 'stat_evas',
+	armorpenetration = 'stat_apen',
+	speed = 'stat_speed',
+	critchance = 'stat_crt',
+	critmod = 'stat_cmod',
+}
 
 var skill_args_checking_list_1 = ['target_range', 'target_number', 'ability_type', 'damage_type', 'tags', 'mode', 'follow_up', 'is_qualified_for_spellsword_followup']
 var skill_args_checking_list_2 = ['damage_type']

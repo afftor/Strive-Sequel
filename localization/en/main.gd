@@ -488,6 +488,7 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	CHARINFO_UPGRADE_LABEL = "Upgrade",
 	CHARINFO_SET_ABILITIES_TOOLTIP = "Set Abilities for combat",
 	SIMRESIST = "Resists",
+	SIMSTATS = "Stats",
 	SIMLOYALTYGAIN = "Loyalty Gain",
 	SIMATK = "ATK:",
 	SIMDEF = "DEF:",
@@ -507,6 +508,24 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	LIGHTRESIST = "Light",
 	DARKRESIST = "Dark",
 	MINDRESIST = "Mind",
+	SIMATK_DESC = "[color=yellow]Attack.[/color] Increases damage dealt with physical skills.",
+	SIMMATK_DESC = "[color=yellow]Magic Attack.[/color] Increases damage dealt by magic spells and potency of healing spells.",
+	SIMDEF_DESC = "[color=yellow]Defense.[/color] Reduces physical damage taken from attacks.",
+	SIMMDEF_DESC = "[color=yellow]Magic Defense.[/color] Reduces damage taken from magic attacks.",
+	SIMHITRATE_DESC = "[color=yellow]Hit Rate.[/color] Increases the chance to hit the target in combat with physical attacks. Value is compared against target's evasion stat.",
+	SIMEVASION_DESC = "[color=yellow]Evasion.[/color] Increases the chance to dodge incoming physical attacks.",
+	SIMSPEED_DESC = "[color=yellow]Speed.[/color] Determines turn order in combat; higher speed acts first.",
+	SIMARMORPEN_DESC = "[color=yellow]Armor Penetration.[/color] Reduces the effectiveness of the target's Defense.",
+	SIMCRITICAL_DESC = "[color=yellow]Critical Chance.[/color] Increases the chance to land a critical hit.",
+	SIMCRITICALMOD_DESC = "[color=yellow]Critical Modifier.[/color] Multiplies damage dealt on a critical hit.",
+	NORMALRESIST_DESC = "[color=yellow]Normal Resist.[/color] Reduces damage taken from non-elemental attacks.",
+	FIRERESIST_DESC = "[color=yellow]Fire Resist.[/color] Reduces damage taken from fire attacks.",
+	EARTHRESIST_DESC = "[color=yellow]Earth Resist.[/color] Reduces damage taken from earth attacks.",
+	AIRRESIST_DESC = "[color=yellow]Air Resist.[/color] Reduces damage taken from air attacks.",
+	WATERRESIST_DESC = "[color=yellow]Water Resist.[/color] Reduces damage taken from water attacks.",
+	LIGHTRESIST_DESC = "[color=yellow]Light Resist.[/color] Reduces damage taken from light attacks.",
+	DARKRESIST_DESC = "[color=yellow]Dark Resist.[/color] Reduces damage taken from dark attacks.",
+	MINDRESIST_DESC = "[color=yellow]Mind Resist.[/color] Reduces damage taken from mind attacks.",
 	DAMAGETYPENORMAL = "Normal",
 	DAMAGETYPEFIRE = "Fire",
 	DAMAGETYPEEARTH = "Earth",
@@ -1121,6 +1140,7 @@ Reduced by enemy's evasion""",
 	CHARCREATE_FOOD_STATE_NEUTRAL = "Neutral",
 	CHARCREATE_FOOD_STATE_HATE = "Hate",
 	CHARCREATE_DIET_HELP = "Select 1 Liked and at least 1 Hated food types.",
+	CHARCREATE_DIET_HELP_TOO_MANY_LIKED = "[color=red]You can only select 1 Liked food type.[/color]",
 	CHARCREATE_SYS_FOOD_REQUIRED = "You must select one liked and at least one hated food type.",
 	CHARCREATE_SYS_CLASS_REQUIRED = "You must select a correct starting Class",
 	CHARCREATE_SYS_PERSONALITY_REQUIRED = "You must select a Personality",
@@ -1920,6 +1940,32 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""",
 	SKILLSMOTHER_THE_FLAMEDESCRIPT = 'Can only target an Unlit Brazier. Heal for 100% of this unit\'s ATK and remove Burn.',
 	SKILLBUMP_IN_THE_MIDNIGHT = 'Bump in the Midnight',
 	SKILLBUMP_IN_THE_MIDNIGHTDESCRIPT = 'Deal {color=yellow|Dark} physical damage to a target. Inflict Bleed, Shred, and Fear.',
+	SKILLGLINT_OF_THE_SWORD = 'Glint of the Sword',
+	SKILLGLINT_OF_THE_SWORDDESCRIPT = """Stealth-casting skill.
+Deal physical damage to a target and inflict {color=aqua|Blind}.
+If the target is already {color=aqua|Blind}, gain {color=aqua|In the Shadow}.""",
+	SKILLLACERATING_DANCE = 'Lacerating Dance',
+	SKILLLACERATING_DANCEDESCRIPT = """Stealth-casting skill.
+Deal low physical damage to random targets and inflict {color=aqua|Bleed}.
+If a target is {color=aqua|Blind}, also inflict {color=aqua|Shred}.
+If the user is {color=aqua|In the Shadow}, deal increased damage.""",
+	SKILLISOLATE = 'Isolate',
+	SKILLISOLATEDESCRIPT = """Stealth-casting skill.
+Deal physical damage to a backline target and inflict {color=aqua|Blind} on all enemies other than the target.
+If the user is {color=aqua|In the Shadow}, inflict {color=aqua|Close Confrontation} on the main target.""",
+	SKILLDISENGAGE = 'Disengage',
+	SKILLDISENGAGEDESCRIPT = """Deal low physical damage to a melee target.
+Remove {color=aqua|Disarm}, {color=aqua|Taunt}, {color=aqua|Blind}, {color=aqua|Ensnare}, {color=aqua|Burn}, and {color=aqua|Wet} from self.
+Heal self for a small portion of Max HP.
+Gain {color=aqua|In the Shadow} and {color=aqua|Tightened Grip}.""",
+	SKILLWAKE_OF_BLACKENED_BLADE = 'Wake of Blackened Blade',
+	SKILLWAKE_OF_BLACKENED_BLADEDESCRIPT = """Deal {color=yellow|Dark} damage to the front-most enemies in each row and inflict {color=aqua|Blind}.
+Gain {color=aqua|Blackened Blade}.""",
+	SKILLGREG_LAST_BARK = 'I Hate... All of You... All of THIS!!',
+	SKILLGREG_LAST_BARKDESCRIPT = """Repeatedly deal physical damage to a target.
+Sequentially inflict {color=aqua|Ensnare}, {color=aqua|Disarm}, {color=aqua|Blind}, and {color=aqua|Shred}.
+The last hit deals increased damage.
+{color=red|On Kill: Reset cooldown.}""",
 	STATUSDESC_BLEED = "Bleeding: Take 10% of Maximum HP as neutral damage per turn.",
 	STATUSDESC_POISON = "Poisoned: Take 10% of Maximum HP as neutral damage per turn.",
 	STATUSDESC_BURN = "Burning: Take 8% of Maximum HP as Fire damage per turn.",
@@ -2677,7 +2723,7 @@ You won't be able to finish turn if your total number of characters is bigger th
 	STATHITRATE = "Hit chance",
 	STATHITRATEDESCRIPT = "Chance to hit enemy. Reduced by target's evasion.",
 	STATEVASION = "Evasion",
-	STATEVASIONDESCRIPT = "Chance to dodge enemy attacks.",
+	STATEVASIONDESCRIPT = "Chance to dodge enemy physical type attacks.",
 	STATSPEED = "Speed",
 	STATSPEEDDESCRIPT = "Increases chance to attack before others.",
 	STATARMOR = "DEF",
@@ -2741,10 +2787,12 @@ You won't be able to finish turn if your total number of characters is bigger th
 	STATTRAINING_POINTS_BONUS = "Training Points from Training",
 	STATRESISTANCE_RED = "Resistance Drop Speed",
 	STATTRAINER_LOYALTY_BONUS = "Loyalty for trainee",
+	STATTRAINER_TRAINING_POINTS_BONUS = "Training Points bonus for trainee",
 	STATTRAINING_LOYALTYDESCRIPT = "Loyalty bonus gained by this character from Training",
 	STATTRAINING_POINTS_BONUSDESCRIPT = "Adjustment for Training Points gained during Training",
 	STATRESISTANCE_REDDESCRIPT = "Speed of slave's Resistance dropping with time",
 	STATTRAINER_LOYALTY_BONUSDESCRIPT = "Loyalty bonus received by this character's trainee",
+	STATTRAINER_TRAINING_POINTS_BONUSDESCRIPT = "Training Points bonus received by this character's trainee",
 	STATTRAINEE_AMOUNTDESCRIPT = "Maximal number of trainee",
 	TRAITTRAINER = "Trainer",
 	TRAITTRAINERDESCRIPT = "Can oversee slaves",
@@ -4787,8 +4835,9 @@ All damage dealt is reduced by 15%%, additional shock has a chance to stun.""",
 	EFFECT_DARK_GIFT = '+20 ATK & MATK, -20 DEF & MDEF.',
 	TRAIT_KURDAN_MIND_CONTROLLED = '-50 Mind resist. Devour Magic spell also deal 150% MATK damage when cast on this unit',
 	EFFECTNAME_UNDERWATCHED = 'Aire\'s Overwatch',
-	TRAIT_OVERWATCH_ASSIGNMENT = """On ally hit, fire an arrow at the attacker.
-On ally death, fire stronger attack at the killer.
+	TRAIT_OVERWATCH_ASSIGNMENT = """Up to 5 times per turns:
+- On ally hit, fire an arrow at the attacker.
+- On ally death, fire stronger attack at the killer.
 The effects disable if this unit is either immobilised, blind or disarmed.
 """,
 	EFFECTNAME_BEHIND_COVER = 'Behind Cover',
@@ -4971,6 +5020,48 @@ Remove if Brazier were put out.""",
  - gain immunity to burn and silence.
  - Gain a stack of Festering Terror at the end of each turn.
 When the Brazier is lit, lose 16% of Max HP at the end of their turn.""",
+	ACT4_GREG_HALF_HP = """
+Greg: All these gazes... Begone!
+Greg let loose a smokebomb!""",
+	GREG_CLOSE_CONFRONTATION_TRIGGERED = """
+Greg: Can you really affort to look somewhere else when I'm right in front of you? """,
+	EFFECT_GREG_TRAIT_DESCRIPT = """Black Knight - Greg:
+At the start of each round, Attempt to Read Movement of 2 random enemies.
+At less than 50% HP, Attempt to Read Movement of 4 random enemies instead.
+This effect is disabled if this unit is taunted, blinded, or immobilised.""",
+	EFFECT_LONESOME_RAGE_BYGONE_GLORY_TRAIT_DESCRIPT = """Lonesome Rage, Bygone Glory:
+If there's no other allies, gain 20 Armor pen, 30 Armor, 30 MDEF, and 15 Speed. 
+When this unit recovers from an immobilising effect, immediately use attack a random enemy and gain 'In the Shadow'.""",
+	EFFECTNAME_GREG_LAST_STAND = 'Greg\'s Final Stand',
+	EFFECT_GREG_FINAL_STAND_DESCRIPT = """Greg\'s Final Stand:
+Take further reduced damage from DoT effects.
+Hp does not drop below 10%.
+When hp reach 10%, gain Ridiculous Grit for 5 turns.""",
+	EFFECT_DEMONNESS_GIFT_NULL_CLOAK_DESCRIPT = 'Demoness\' Gift - Null Cloak: When this unit is affected by \'In the Shadow\', Reduce Spell damage taken by 75%.',
+	EFFECTNAME_RIDICLUOUS_GRIT = 'Ridiculous Grit',
+	EFFECT_RIDICLUOUS_GRIT_DESCRIPT = """Become immune to all immobilising effects.
+Gain +25 ATK and Hit rate.
+Reduce this buff duration by 1 when struck with a critical hit.
+When this effect expires, die.""",
+	EFFECTNAME_IM_SORRY_UNCLE = 'I\'m sorry uncle...',
+	EFFECT_IM_SORRY_UNCLE_DESCRIPT = 'Deal 10% less damage to Greg. Take 10% more damage from Greg',
+	EFFECTNAME_PITIFUL_ARE_WE_NOT = 'Pitiful, are we not?',
+	EFFECT_PITIFUL_ARE_WE_NOT_DESCRIPT = 'Immune to Movement Readed. -10 Hit Rate.',
+	EFFECTNAME_MOVEMENT_READED = 'Movement Readed',
+	EFFECT_MOVEMENT_READED_DESCRIPT = """When Greg is not blind or immobilised:
+- Deal 90% less damage against Greg.
+- Attacking Greg will cause him to counterattack and inflicts stun.""",
+	EFFECTNAME_CLOSE_CONFRONTATION = 'Close Confrontation',
+	EFFECT_CLOSE_CONFRONTATION_DESCRIPT = """Range attacks deal 50% less damage.
+Melee attacks deal 50% more damage against the applier.
+If this unit doesn't attack the applier on their turn, provoke an opportunity attack from the applier.
+This effect is removed if the applier fell for a taunt or is immobilised.""",
+	EFFECTNAME_CLOSE_CONFRONTATION_CANCEL = 'being right in front of the target.',
+	EFFECTNAME_TIGHTENED_GRIP = 'Tightened Grip',
+	EFFECT_TIGHTENED_GRIP_DESCRIPT = 'Immune to Disarm. +20 Hit Rate.',
+	EFFECTNAME_BLACKEN_BLADE = 'Blacken Blade',
+	EFFECT_BLACKEN_BLADE_DESCRIPT = """Deals additional 50% of caster's MATK as {color=yellow|Dark} damage on every hit
+All attacks have a 20% chance to inflict Bleed.""",
 	RESETTRAINREQ = "Reset training and all purchased perks. Requires Oblivion potion.",
 	RESETTRAINING = "All training progress will be discarded. Are you sure?",
 	BUFFDESCRIPTDEFENDER = "Defender: Will shield allies from attacks unless stunned.",
@@ -24502,7 +24593,7 @@ It doesn't seem like Mae buys your lie, but it comforts her that you choose to p
 	MAE_CITY_QUEST_STAGE_1 = "Visit Shelia's home with Mae.",
 	MAE_CITY_QUEST_STAGE_2 = "Speak with Mae after crafting Spirit Potion she requested.",
 	MAE_CITY_QUEST_STAGE_3 = "Return to Shelia's home with Mae.",
-	MAE_CITY_QUEST_STAGE_4 = "Search for Mae in Aliron.",
+	MAE_CITY_QUEST_STAGE_4 = "Complete search task for Mae in Aliron.",
 	MAE_MARKET_OPTION = "Food Market",
 	MAE_SHELIA_OPTION = "Shelia's home",
 	MAE_POTION_OPTION = "Shelia's home",

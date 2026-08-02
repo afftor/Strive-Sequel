@@ -492,6 +492,7 @@ pero conservarás todos tus personajes, objetos e inventario. Usa este modo para
 	CHARINFO_UPGRADE_LABEL = """Upgrade""", # MISSING TRANSLATION
 	CHARINFO_SET_ABILITIES_TOOLTIP = """Set Abilities for combat""", # MISSING TRANSLATION
 	SIMRESIST = "Resiste",
+	SIMSTATS = """Stats""", # MISSING TRANSLATION
 	SIMLOYALTYGAIN = "Ganancia de lealtad",
 	SIMOBEDIENCEDRAIN = "Drenaje de obediencia",
 	SIMATK = "ATK:",
@@ -512,6 +513,24 @@ pero conservarás todos tus personajes, objetos e inventario. Usa este modo para
 	LIGHTRESIST = "Luz",
 	DARKRESIST = "Sombra",
 	MINDRESIST = "Mente",
+	SIMATK_DESC = """Attack. Increases physical damage dealt with weapon attacks.""", # MISSING TRANSLATION
+	SIMMATK_DESC = """Magic Attack. Increases damage dealt by magic spells and abilities.""", # MISSING TRANSLATION
+	SIMDEF_DESC = """Defense. Reduces physical damage taken from attacks.""", # MISSING TRANSLATION
+	SIMMDEF_DESC = """Magic Defense. Reduces damage taken from magic attacks and spells.""", # MISSING TRANSLATION
+	SIMHITRATE_DESC = """Hit Rate. Increases the chance to hit the target in combat.""", # MISSING TRANSLATION
+	SIMEVASION_DESC = """Evasion. Increases the chance to dodge incoming attacks.""", # MISSING TRANSLATION
+	SIMSPEED_DESC = """Speed. Determines turn order in combat; higher speed acts first.""", # MISSING TRANSLATION
+	SIMARMORPEN_DESC = """Armor Penetration. Reduces the effectiveness of the target's Defense.""", # MISSING TRANSLATION
+	SIMCRITICAL_DESC = """Critical Chance. Increases the chance to land a critical hit.""", # MISSING TRANSLATION
+	SIMCRITICALMOD_DESC = """Critical Modifier. Multiplies damage dealt on a critical hit.""", # MISSING TRANSLATION
+	NORMALRESIST_DESC = """Normal Resist. Reduces damage taken from physical, non-elemental attacks.""", # MISSING TRANSLATION
+	FIRERESIST_DESC = """Fire Resist. Reduces damage taken from fire attacks.""", # MISSING TRANSLATION
+	EARTHRESIST_DESC = """Earth Resist. Reduces damage taken from earth attacks.""", # MISSING TRANSLATION
+	AIRRESIST_DESC = """Air Resist. Reduces damage taken from air attacks.""", # MISSING TRANSLATION
+	WATERRESIST_DESC = """Water Resist. Reduces damage taken from water attacks.""", # MISSING TRANSLATION
+	LIGHTRESIST_DESC = """Light Resist. Reduces damage taken from light attacks.""", # MISSING TRANSLATION
+	DARKRESIST_DESC = """Dark Resist. Reduces damage taken from dark attacks.""", # MISSING TRANSLATION
+	MINDRESIST_DESC = """Mind Resist. Reduces damage taken from mind attacks.""", # MISSING TRANSLATION
 	DAMAGETYPENORMAL = """Normal""", # MISSING TRANSLATION
 	DAMAGETYPEFIRE = """Fire""", # MISSING TRANSLATION
 	DAMAGETYPEEARTH = """Earth""", # MISSING TRANSLATION
@@ -1128,6 +1147,7 @@ Reducido por la evasión del enemigo""",
 	CHARCREATE_FOOD_STATE_NEUTRAL = """Neutral""", # MISSING TRANSLATION
 	CHARCREATE_FOOD_STATE_HATE = """Hate""", # MISSING TRANSLATION
 	CHARCREATE_DIET_HELP = """Select 1 Liked and at least 1 Hated food types.""", # MISSING TRANSLATION
+	CHARCREATE_DIET_HELP_TOO_MANY_LIKED = """You can only select 1 Liked food type.""", # MISSING TRANSLATION
 	CHARCREATE_SYS_FOOD_REQUIRED = """You must select one liked and at least one hated food type.""", # MISSING TRANSLATION
 	CHARCREATE_SYS_CLASS_REQUIRED = """You must select a correct starting Class""", # MISSING TRANSLATION
 	CHARCREATE_SYS_PERSONALITY_REQUIRED = """You must select a Personality""", # MISSING TRANSLATION
@@ -1981,6 +2001,32 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	SKILLSMOTHER_THE_FLAMEDESCRIPT = """Can only target an Unlit Brazier. Heal for 100% of this unit's ATK and remove Burn.""", # MISSING TRANSLATION
 	SKILLBUMP_IN_THE_MIDNIGHT = """Bump in the Midnight""", # MISSING TRANSLATION
 	SKILLBUMP_IN_THE_MIDNIGHTDESCRIPT = """Deal {color=yellow|Dark} physical damage to a target. Inflict Bleed, Shred, and Fear.""", # MISSING TRANSLATION
+	SKILLGLINT_OF_THE_SWORD = """Glint of the Sword""", # MISSING TRANSLATION
+	SKILLGLINT_OF_THE_SWORDDESCRIPT = """Stealth-casting skill.
+Deal physical damage to a target and inflict {color=aqua|Blind}.
+If the target is already {color=aqua|Blind}, gain {color=aqua|In the Shadow}.""", # MISSING TRANSLATION
+	SKILLLACERATING_DANCE = """Lacerating Dance""", # MISSING TRANSLATION
+	SKILLLACERATING_DANCEDESCRIPT = """Stealth-casting skill.
+Deal low physical damage to random targets and inflict {color=aqua|Bleed}.
+If a target is {color=aqua|Blind}, also inflict {color=aqua|Shred}.
+If the user is {color=aqua|In the Shadow}, deal increased damage.""", # MISSING TRANSLATION
+	SKILLISOLATE = """Isolate""", # MISSING TRANSLATION
+	SKILLISOLATEDESCRIPT = """Stealth-casting skill.
+Deal physical damage to a backline target and inflict {color=aqua|Blind} on all enemies other than the target.
+If the user is {color=aqua|In the Shadow}, inflict {color=aqua|Close Confrontation} on the main target.""", # MISSING TRANSLATION
+	SKILLDISENGAGE = """Disengage""", # MISSING TRANSLATION
+	SKILLDISENGAGEDESCRIPT = """Deal low physical damage to a melee target.
+Remove {color=aqua|Disarm}, {color=aqua|Taunt}, {color=aqua|Blind}, {color=aqua|Ensnare}, {color=aqua|Burn}, and {color=aqua|Wet} from self.
+Heal self for a small portion of Max HP.
+Gain {color=aqua|In the Shadow} and {color=aqua|Tightened Grip}.""", # MISSING TRANSLATION
+	SKILLWAKE_OF_BLACKENED_BLADE = """Wake of Blackened Blade""", # MISSING TRANSLATION
+	SKILLWAKE_OF_BLACKENED_BLADEDESCRIPT = """Deal {color=yellow|Dark} damage to the front-most enemies in each row and inflict {color=aqua|Blind}.
+Gain {color=aqua|Blackened Blade}.""", # MISSING TRANSLATION
+	SKILLGREG_LAST_BARK = """I Hate... All of You... All of THIS!!""", # MISSING TRANSLATION
+	SKILLGREG_LAST_BARKDESCRIPT = """Repeatedly deal physical damage to a target.
+Sequentially inflict {color=aqua|Ensnare}, {color=aqua|Disarm}, {color=aqua|Blind}, and {color=aqua|Shred}.
+The last hit deals increased damage.
+{color=red|On Kill: Reset cooldown.}""", # MISSING TRANSLATION
 	STATUSDESC_BLEED = """Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANSLATION
 	STATUSDESC_POISON = """Poisoned: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANSLATION
 	STATUSDESC_BURN = """Burning: Take 8% of Maximum HP as Fire damage per turn.""", # MISSING TRANSLATION
@@ -2806,11 +2852,13 @@ Servicio es un modificador global para esta asignación.""",
 	STATTRAINING_SPIRIT = "Espiritu de formación",
 	STATRESISTANCE_RED = "Velocidad de caída de la resistencia",
 	STATTRAINER_LOYALTY_BONUS = "Fidelización del aprendiz",
+	STATTRAINER_TRAINING_POINTS_BONUS = """Training Points bonus for trainee""", # MISSING TRANSLATION
 	STATTRAINING_LOYALTYDESCRIPT = """Loyalty bonus gained by this character from Training""", # MISSING TRANSLATION
 	STATTRAINING_POINTS_BONUSDESCRIPT = """Adjustment for Training Points gained during Training""", # MISSING TRANSLATION
 	STATTRAINING_SPIRITDESCRIPT = """Adjustment for Spirit decline during Training""", # MISSING TRANSLATION
 	STATRESISTANCE_REDDESCRIPT = """Speed of slave's Resistance dropping with time""", # MISSING TRANSLATION
 	STATTRAINER_LOYALTY_BONUSDESCRIPT = """Loyalty bonus received by this character's trainee""", # MISSING TRANSLATION
+	STATTRAINER_TRAINING_POINTS_BONUSDESCRIPT = """Training Points bonus received by this character's trainee""", # MISSING TRANSLATION
 	STATTRAINEE_AMOUNTDESCRIPT = """Maximal number of trainee""", # MISSING TRANSLATION
 	TRAITTRAINER = "Entrenador",
 	TRAITTRAINERDESCRIPT = "Puede supervisar a los esclavos",
@@ -4520,6 +4568,48 @@ Remove if Brazier were put out.""", # MISSING TRANSLATION
  - gain immunity to burn and silence.
  - Gain a stack of Festering Terror at the end of each turn.
 When the Brazier is lit, lose 16% of Max HP at the end of their turn.""", # MISSING TRANSLATION
+	ACT4_GREG_HALF_HP = """
+Greg: All these gazes... Begone!
+Greg let loose a smokebomb!""", # MISSING TRANSLATION
+	GREG_CLOSE_CONFRONTATION_TRIGGERED = """
+Greg: Can you really affort to look somewhere else when I'm right in front of you? """, # MISSING TRANSLATION
+	EFFECT_GREG_TRAIT_DESCRIPT = """Black Knight - Greg:
+At the start of each round, Attempt to Read Movement of 2 random enemies.
+At less than 50% HP, Attempt to Read Movement of 4 random enemies instead.
+This effect is disabled if this unit is taunted, blinded, or immobilised.""", # MISSING TRANSLATION
+	EFFECT_LONESOME_RAGE_BYGONE_GLORY_TRAIT_DESCRIPT = """Lonesome Rage, Bygone Glory:
+If there's no other allies, gain 20 Armor pen, 30 Armor, 30 MDEF, and 15 Speed. 
+When this unit recovers from an immobilising effect, immediately use attack a random enemy and gain 'In the Shadow'.""", # MISSING TRANSLATION
+	EFFECTNAME_GREG_LAST_STAND = """Greg's Final Stand""", # MISSING TRANSLATION
+	EFFECT_GREG_FINAL_STAND_DESCRIPT = """Greg's Final Stand:
+Take further reduced damage from DoT effects.
+Hp does not drop below 10%.
+When hp reach 10%, gain Ridiculous Grit for 5 turns.""", # MISSING TRANSLATION
+	EFFECT_DEMONNESS_GIFT_NULL_CLOAK_DESCRIPT = """Demoness' Gift - Null Cloak: When this unit is affected by 'In the Shadow', Reduce Spell damage taken by 75%.""", # MISSING TRANSLATION
+	EFFECTNAME_RIDICLUOUS_GRIT = """Ridiculous Grit""", # MISSING TRANSLATION
+	EFFECT_RIDICLUOUS_GRIT_DESCRIPT = """Become immune to all immobilising effects.
+Gain +25 ATK and Hit rate.
+Reduce this buff duration by 1 when struck with a critical hit.
+When this effect expires, die.""", # MISSING TRANSLATION
+	EFFECTNAME_IM_SORRY_UNCLE = """I'm sorry uncle...""", # MISSING TRANSLATION
+	EFFECT_IM_SORRY_UNCLE_DESCRIPT = """Deal 10% less damage to Greg. Take 10% more damage from Greg""", # MISSING TRANSLATION
+	EFFECTNAME_PITIFUL_ARE_WE_NOT = """Pitiful, are we not?""", # MISSING TRANSLATION
+	EFFECT_PITIFUL_ARE_WE_NOT_DESCRIPT = """Immune to Movement Readed. -10 Hit Rate.""", # MISSING TRANSLATION
+	EFFECTNAME_MOVEMENT_READED = """Movement Readed""", # MISSING TRANSLATION
+	EFFECT_MOVEMENT_READED_DESCRIPT = """When Greg is not blind or immobilised:
+- Deal 90% less damage against Greg.
+- Attacking Greg will cause him to counterattack and inflicts stun.""", # MISSING TRANSLATION
+	EFFECTNAME_CLOSE_CONFRONTATION = """Close Confrontation""", # MISSING TRANSLATION
+	EFFECT_CLOSE_CONFRONTATION_DESCRIPT = """Range attacks deal 50% less damage.
+Melee attacks deal 50% more damage against the applier.
+If this unit doesn't attack the applier on their turn, provoke an opportunity attack from the applier.
+This effect is removed if the applier fell for a taunt or is immobilised.""", # MISSING TRANSLATION
+	EFFECTNAME_CLOSE_CONFRONTATION_CANCEL = """being right in front of the target.""", # MISSING TRANSLATION
+	EFFECTNAME_TIGHTENED_GRIP = """Tightened Grip""", # MISSING TRANSLATION
+	EFFECT_TIGHTENED_GRIP_DESCRIPT = """Immune to Disarm. +20 Hit Rate.""", # MISSING TRANSLATION
+	EFFECTNAME_BLACKEN_BLADE = """Blacken Blade""", # MISSING TRANSLATION
+	EFFECT_BLACKEN_BLADE_DESCRIPT = """Deals additional 50% of caster's MATK as {color=yellow|Dark} damage on every hit
+All attacks have a 20% chance to inflict Bleed.""", # MISSING TRANSLATION
 	RESETTRAINREQ = "Reinicia el entrenamiento al nivel 0 y recupera el espíritu. Requiere la poción de olvido.",
 	RESETTRAINING = "Se descartará todo el progreso del entrenamiento. ¿Estás seguro?",
 	BUFFDESCRIPTDEFENDER = "Defensor: Protegerá a los aliados de los ataques a menos que esté aturdido.",

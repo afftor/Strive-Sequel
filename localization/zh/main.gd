@@ -16,13 +16,13 @@ var TranslationDict = {
 	MENUQUIT = """退出""",
 	MENUCHANGELOG = """更新日志""",
 	MENUMODLISTSAFETY = """模组列表重置""",
-	UPDATENOTICETITLE = """Update Available""", # MISSING TRANSLATION
-	UPDATENOTICEDOWNLOAD = """Get it""", # MISSING TRANSLATION
-	UPDATENOTICEAVAILABLE = """A new version (%s) is available.
-You are currently on %s.""", # MISSING TRANSLATION
-	UPDATENOTICEUNKNOWN = """Could not determine the latest version.
-Check itch.io to see if an update is available.""", # MISSING TRANSLATION
-	UPDATECHECKCONSENT = """Allow the game to check itch.io for new versions on startup? This only sends a request to itch.io - no personal data is collected.""", # MISSING TRANSLATION
+	UPDATENOTICETITLE = """更新可用""", 
+	UPDATENOTICEDOWNLOAD = """立即获取""", 
+	UPDATENOTICEAVAILABLE = """新版本 (%s) 已可用。
+	你当前使用的版本是 %s。""", 
+	UPDATENOTICEUNKNOWN = """无法获取最新版本信息。
+	请前往 itch.io 查看是否有更新。""", 
+	UPDATECHECKCONSENT = """是否允许游戏在启动时连接 itch.io 检查新版本？这只会向 itch.io 发送请求 —— 绝对不会收集你的任何私密数据。""",
 	GALLERYNAME = """画廊""",
 	GALLERYSTORY = """剧情""",
 	GALLERYERO = """涩情""",
@@ -498,6 +498,7 @@ TUTORIALINFOQUESTION = """这是你第一次游玩《Strive: Conquest》吗？""
 	CHARINFO_UPGRADE_LABEL = """升级""",
 	CHARINFO_SET_ABILITIES_TOOLTIP = """设置战斗技能""",
 	SIMRESIST = """抵抗""",
+	SIMSTATS = """Stats""", # MISSING TRANSLATION
 	SIMLOYALTYGAIN = """忠诚增长""",
 	SIMOBEDIENCEDRAIN = """服从流失""",
 	SIMATK = """攻击:""",
@@ -505,8 +506,8 @@ TUTORIALINFOQUESTION = """这是你第一次游玩《Strive: Conquest》吗？""
 	SIMHITRATE = """命中:""",
 	SIMSPEED = """速度:""",
 	SIMCRITICAL = """暴击:""",
-	SIMMATK = """魔攻:""",
-	SIMMDEF = """法防:""",
+	SIMMATK = """魔力:""",
+	SIMMDEF = """魔防:""",
 	SIMEVASION = """闪避:""",
 	SIMARMORPEN = """破甲:""",
 	SIMCRITICALMOD = """暴伤:""",
@@ -518,6 +519,24 @@ TUTORIALINFOQUESTION = """这是你第一次游玩《Strive: Conquest》吗？""
 	LIGHTRESIST = """光""",
 	DARKRESIST = """暗""",
 	MINDRESIST = """精神""",
+	SIMATK_DESC = """Attack. Increases damage dealt with physical skills.""", # MISSING TRANSLATION
+	SIMMATK_DESC = """Magic Attack. Increases damage dealt by magic spells and potency of healing spells.""", # MISSING TRANSLATION
+	SIMDEF_DESC = """Defense. Reduces physical damage taken from attacks.""", # MISSING TRANSLATION
+	SIMMDEF_DESC = """Magic Defense. Reduces damage taken from magic attacks.""", # MISSING TRANSLATION
+	SIMHITRATE_DESC = """Hit Rate. Increases the chance to hit the target in combat with physical attacks. Value is compared against target's evasion stat.""", # MISSING TRANSLATION
+	SIMEVASION_DESC = """Evasion. Increases the chance to dodge incoming physical attacks.""", # MISSING TRANSLATION
+	SIMSPEED_DESC = """Speed. Determines turn order in combat; higher speed acts first.""", # MISSING TRANSLATION
+	SIMARMORPEN_DESC = """Armor Penetration. Reduces the effectiveness of the target's Defense.""", # MISSING TRANSLATION
+	SIMCRITICAL_DESC = """Critical Chance. Increases the chance to land a critical hit.""", # MISSING TRANSLATION
+	SIMCRITICALMOD_DESC = """Critical Modifier. Multiplies damage dealt on a critical hit.""", # MISSING TRANSLATION
+	NORMALRESIST_DESC = """Normal Resist. Reduces damage taken from non-elemental attacks.""", # MISSING TRANSLATION
+	FIRERESIST_DESC = """Fire Resist. Reduces damage taken from fire attacks.""", # MISSING TRANSLATION
+	EARTHRESIST_DESC = """Earth Resist. Reduces damage taken from earth attacks.""", # MISSING TRANSLATION
+	AIRRESIST_DESC = """Air Resist. Reduces damage taken from air attacks.""", # MISSING TRANSLATION
+	WATERRESIST_DESC = """Water Resist. Reduces damage taken from water attacks.""", # MISSING TRANSLATION
+	LIGHTRESIST_DESC = """Light Resist. Reduces damage taken from light attacks.""", # MISSING TRANSLATION
+	DARKRESIST_DESC = """Dark Resist. Reduces damage taken from dark attacks.""", # MISSING TRANSLATION
+	MINDRESIST_DESC = """Mind Resist. Reduces damage taken from mind attacks.""", # MISSING TRANSLATION
 	DAMAGETYPENORMAL = """普通""",
 	DAMAGETYPEFIRE = """火焰""",
 	DAMAGETYPEEARTH = """大地""",
@@ -1131,6 +1150,7 @@ MATERIALMEATSOUP = """肉汤""",
 	CHARCREATE_FOOD_STATE_NEUTRAL = """中立""",
 	CHARCREATE_FOOD_STATE_HATE = """讨厌""",
 	CHARCREATE_DIET_HELP = """请选择 1 种喜欢的食物类型和至少 1 种讨厌的食物类型。""",
+	CHARCREATE_DIET_HELP_TOO_MANY_LIKED = """You can only select 1 Liked food type.""", # MISSING TRANSLATION
 	CHARCREATE_SYS_FOOD_REQUIRED = """你必须选择一种喜欢的食物类型和至少一种讨厌的食物类型。""",
 	CHARCREATE_SYS_CLASS_REQUIRED = """你必须选择一个正确的初始职业""",
 	CHARCREATE_SYS_PERSONALITY_REQUIRED = """你必须选择一个性格""",
@@ -1344,28 +1364,28 @@ MATERIALMEATSOUP = """肉汤""",
 	NEEDTOSEESKILL = """你还未曾见识过这项技能的实战威力。""",
 	CHARSMALLTAB_ABIL = """技能""",
 	CHARSMALLTAB_GEN = """属性""",
-	MASTERYLEVEL = """Mastery level %s""", # MISSING TRANSLATION
-	MASTERYGRANTS = """Grants skills and traits:""", # MISSING TRANSLATION
+	MASTERYLEVEL = """精通等级 %s""", 
+    MASTERYGRANTS = """赋予技能与特质：""",
 	SKILLATTACK = """攻击""",
 	SKILLATTACKDESCRIPT = """用装备的武器攻击目标。""",
 	SKILLRANGED_ATTACK = """远程攻击""",
 	SKILLCOMMAND = """指挥""",
 	SKILLCOMMANDDESCRIPT = """使目标的攻击力和魔法攻击力提升 50%，持续 3 回合。""",
 	SKILLRESTORATION = """恢复""",
-	SKILLRESTORATIONDESCRIPT = """治疗目标，恢复量为魔法攻击力的 250%。受到的伤害减少 20%，持续 2 回合。""",
+	SKILLRESTORATIONDESCRIPT = """治疗目标，恢复量为的魔法 250%。受到的伤害减少 20%，持续 2 回合。""",
 	SKILLREJUVENATION = """复苏""",
-	SKILLREJUVENATIONDESCRIPT = """治疗盟友，恢复量为魔法攻击力的 100%。每回合恢复魔法攻击力的 60%，持续 2 回合。移除灼烧和中毒状态。""",
-	SKILLREJUVENATIONDESCRIPT_2 = """治疗一排目标，恢复量为魔法攻击力的 100%。每回合恢复魔法攻击力的 60%，持续 2 回合。""",
+	SKILLREJUVENATIONDESCRIPT = """治疗盟友，恢复量为的魔法 100%。每回合恢复的魔法 60%，持续 2 回合。移除灼烧和中毒状态。""",
+	SKILLREJUVENATIONDESCRIPT_2 = """治疗一排目标，恢复量为的魔法 100%。每回合恢复的魔法 60%，持续 2 回合。""",
 	SKILLSANCTUARY = """圣所""",
-	SKILLSANCTUARYDESCRIPT = """治疗所有盟友，恢复量为魔法攻击力的 80%。每回合恢复魔法攻击力的 120%，持续 3 回合。""",
+	SKILLSANCTUARYDESCRIPT = """治疗所有盟友，恢复量为的魔法 80%。每回合恢复的魔法 120%，持续 3 回合。""",
 	SKILLTRAP = """陷阱""",
 	SKILLTRAPDESCRIPT = """在目标列下方设置陷阱，使敌人眩晕 2 回合。""",
 	SKILLWEAPON_REFINE = """武器精炼""",
 	SKILLWEAPON_REFINEDESCRIPT = """使目标的攻击力提升 30%，持续至战斗结束。""",
 	SKILLACIDBOMB = """酸液炸弹""",
-	SKILLACIDBOMBDESCRIPT = """造成 250% 魔法攻击力的 {color=yellow|土系} 伤害，并对目标施加“粉碎”效果，持续 3 回合。""",
+	SKILLACIDBOMBDESCRIPT = """造成 250% 的魔法 {color=yellow|土系} 伤害，并对目标施加“粉碎”效果，持续 3 回合。""",
 	SKILLFIREBOMB = """火焰炸弹""",
-	SKILLFIREBOMBDESCRIPT = """向一列敌人投掷火焰炸弹，造成 200% 魔法攻击力的 {color=yellow|火系} 伤害。灼烧目标 2 回合。""",
+	SKILLFIREBOMBDESCRIPT = """向一列敌人投掷火焰炸弹，造成 200% 的魔法 {color=yellow|火系} 伤害。灼烧目标 2 回合。""",
 	SKILLDISTRACT = """扰乱""",
 	SKILLDISTRACTDESCRIPT = """使目标的命中率和闪避值降低 30，持续 2 回合。""",
 	SKILLATTRACT = """吸引""",
@@ -1373,90 +1393,90 @@ MATERIALMEATSOUP = """肉汤""",
 	SKILLENTHRAL = """迷魂""",
 	SKILLENTHRALDESCRIPT = """使目标和你自己眩晕 3 回合，或直到任意一方受到伤害。仅对类人生物有效。""",
 	SKILLFIRE_ATTACK = """火焰攻击""",
-	SKILLFIRE_ATTACKDESCRIPT = """造成 120% 攻击力的 {color=yellow|火系} 伤害。""",
+	SKILLFIRE_ATTACKDESCRIPT = """造成 120% 的物理 {color=yellow|火系} 伤害。""",
 	SKILLDRAGONMIGHT = """龙威""",
 	SKILLDRAGONMIGHTDESCRIPT = """提升 25% 的伤害和防御力，持续至战斗结束。""",
 	SKILLLESSER_HEAL = """初级治疗""",
-	SKILLLESSER_HEALDESCRIPT = """治疗盟友，恢复量为魔法攻击力的 130%。""",
+	SKILLLESSER_HEALDESCRIPT = """治疗盟友，恢复量为的魔法 130%。""",
 	SKILLFAIRY_HEAL = """妖精恩泽""",
 	SKILLFAIRY_HEALDESCRIPT = """治疗目标，恢复其最大生命值的 50%。""",
 	SKILLENTANGLE = """纠缠""",
-	SKILLENTANGLEDESCRIPT = """造成 130% 魔法攻击力的 {color=yellow|土系} 伤害，并使目标眩晕 1 回合。""",
+	SKILLENTANGLEDESCRIPT = """造成 130% 的魔法 {color=yellow|土系} 伤害，并使目标眩晕 1 回合。""",
 	SKILLSERRATED_SHOT = """锯齿射击""",
-	SKILLSERRATED_SHOTDESCRIPT = """造成 90% 攻击力的 {color=yellow|武器} 伤害。使目标流血 3 回合。""",
+	SKILLSERRATED_SHOTDESCRIPT = """造成 90% 的物理 {color=yellow|武器} 伤害。使目标流血 3 回合。""",
 	SKILLMASS_LESSER_HEAL = """群体初级治疗""",
-	SKILLMASS_LESSER_HEALDESCRIPT = """治疗一列目标，恢复量为魔法攻击力的 100%。""",
+	SKILLMASS_LESSER_HEALDESCRIPT = """治疗一列目标，恢复量为的魔法 100%。""",
 	SKILLBLESS = """祝福""",
-	SKILLBLESSDESCRIPT = """使目标的攻击力提升 25%，持续 3 回合。""",
+	SKILLBLESSDESCRIPT = """使目标的攻击提升 25%，持续 3 回合。""",
 	SKILLMENTAL_BLESS = """精神祝福""",
-	SKILLMENTAL_BLESSDESCRIPT = """使目标的魔法攻击力提升 25%，持续 3 回合。""",
+	SKILLMENTAL_BLESSDESCRIPT = """使目标的魔力提升 25%，持续 3 回合。""",
 	SKILLBLOOD_MAGIC = """血魔法""",
 	SKILLBLOOD_MAGICDESCRIPT = """牺牲 10% 的自身生命值将其转化为法力值。""",
 	SKILLBLOOD_EXPLOSION = """血之爆炸""",
-	SKILLBLOOD_EXPLOSIONDESCRIPT = """对目标造成 300% 魔法攻击力的伤害，并对其他敌人造成 50% 魔法攻击力的伤害。仅可对生物释放。""",
+	SKILLBLOOD_EXPLOSIONDESCRIPT = """对目标造成 300% 的魔法伤害，并对其他敌人造成 50% 的魔法伤害。仅可对生物释放。""",
 	SKILLEARTH_ATK = """大地打击""",
-	SKILLEARTH_ATKDESCRIPT = """造成 125% 攻击力的 {color=yellow|土系} 伤害。有 30% 的几率使目标眩晕 1 回合。""",
+	SKILLEARTH_ATKDESCRIPT = """造成 125% 的物理 {color=yellow|土系} 伤害。有 30% 的几率使目标眩晕 1 回合。""",
 	SKILLWIND_ATK = """风之刃""",
-	SKILLWIND_ATKDESCRIPT = """对单一目标和随机敌人造成 80% 攻击力的 {color=yellow|风系} 伤害。""",
+	SKILLWIND_ATKDESCRIPT = """对单一目标和随机敌人造成 80% 的物理 {color=yellow|风系} 伤害。""",
 	SKILLWATER_EDGE = """水之刃""",
-	SKILLWATER_EDGEDESCRIPT = """造成 100% 魔法攻击力的 {color=yellow|水系} 伤害。施加“湿润”状态。""",
+	SKILLWATER_EDGEDESCRIPT = """造成 100% 的魔法 {color=yellow|水系} 伤害。施加“湿润”状态。""",
 	SKILLHOLY_ATK = """圣光打击""",
-	SKILLHOLY_ATKDESCRIPT = """造成 120% 攻击力的 {color=yellow|光系} 伤害。有 20% 几率使目标混乱。""",
+	SKILLHOLY_ATKDESCRIPT = """造成 120% 的物理 {color=yellow|光系} 伤害。有 20% 几率使目标混乱。""",
 	SKILLFIRE_CLEAVE = """烈焰劈砍""",
-	SKILLFIRE_CLEAVEDESCRIPT = """对一列敌人造成 70% 攻击力的 {color=yellow|火系} 伤害。有 20% 几率灼烧目标 2 回合。""",
+	SKILLFIRE_CLEAVEDESCRIPT = """对一列敌人造成 70% 的物理 {color=yellow|火系} 伤害。有 20% 几率灼烧目标 2 回合。""",
 	SKILLEARTH_SHATTER = """大地粉碎""",
-	SKILLEARTH_SHATTERDESCRIPT = """对所有敌人造成 60% 攻击力的 {color=yellow|土系} 伤害。使目标的闪避值降低 25，持续 2 回合。""",
+	SKILLEARTH_SHATTERDESCRIPT = """对所有敌人造成 60% 的物理 {color=yellow|土系} 伤害。使目标的闪避值降低 25，持续 2 回合。""",
 	SKILLREVENGE = """复仇""",
 	SKILLREVENGEDESCRIPT = """根据已损失的生命值造成高额 {color=yellow|物理} 伤害。""",
 	SKILLFIRE_BURST = """烈焰爆发""",
-	SKILLFIRE_BURSTDESCRIPT = """对所有敌人造成 50% 魔法攻击力的 {color=yellow|火系} 伤害。使目标的命中率降低 20，持续 3 回合。""",
+	SKILLFIRE_BURSTDESCRIPT = """对所有敌人造成 50% 的魔法 {color=yellow|火系} 伤害。使目标的命中率降低 20，持续 3 回合。""",
 	SKILLAIR_CUTTER = """风刃""",
-	SKILLAIR_CUTTERDESCRIPT = """对一个目标造成 85% 攻击力的 {color=yellow|风系} 伤害，并对 2 个随机敌人造成 70% 攻击力的伤害。有 50% 几率使目标流血 2 回合。""",
+	SKILLAIR_CUTTERDESCRIPT = """对一个目标造成 85% 的物理 {color=yellow|风系} 伤害，并对 2 个随机敌人造成 70% 的物理伤害。有 50% 几率使目标流血 2 回合。""",
 	SKILLHOLY_LANCE = """圣枪""",
-	SKILLHOLY_LANCEDESCRIPT = """对一排敌人造成 100% 攻击力的 {color=yellow|光系} 伤害。""",
+	SKILLHOLY_LANCEDESCRIPT = """对一排敌人造成 100% 的物理 {color=yellow|光系} 伤害。""",
 	SKILLSWIPE = """横扫""",
 	SKILLSWIPE_EN = """横扫""",
-	SKILLSWIPEDESCRIPT = """对一列敌人造成 70% 攻击力的 {color=yellow|风系} 伤害。有 30% 几率使目标的防御力降低 20，持续 2 回合。""",
+	SKILLSWIPEDESCRIPT = """对一列敌人造成 70% 的物理 {color=yellow|风系} 伤害。有 30% 几率使目标的防御力降低 20，持续 2 回合。""",
 	SKILLARROWRAIN = """箭雨""",
-	SKILLARROWRAINDESCRIPT = """对一列敌人造成 65% 攻击力的 {color=yellow|水系} 伤害。有 30% 几率使目标的魔防降低 20，持续 2 回合。""",
+	SKILLARROWRAINDESCRIPT = """对一列敌人造成 65% 的物理 {color=yellow|水系} 伤害。有 30% 几率使目标的魔防降低 20，持续 2 回合。""",
 	SKILLEXPLOSIVEARR = """爆炸箭""",
-	SKILLEXPLOSIVEARRDESCRIPT = """对目标造成 130% 攻击力的 {color=yellow|火系} 伤害。使目标灼烧 2 回合。""",
+	SKILLEXPLOSIVEARRDESCRIPT = """对目标造成 130% 的物理 {color=yellow|火系} 伤害。使目标灼烧 2 回合。""",
 	SKILLSHADOWSTRIKE = """暗影打击""",
-	SKILLSHADOWSTRIKEDESCRIPT = """对目标造成 130% 攻击力的 {color=yellow|暗系} 伤害。使目标的攻击力和魔法攻击力降低 20，持续 2 回合。""",
+	SKILLSHADOWSTRIKEDESCRIPT = """对目标造成 130% 的物理 {color=yellow|暗系} 伤害。使目标的攻击力和魔法攻击力降低 20，持续 2 回合。""",
 	SKILLFIREARR = """火箭""",
-	SKILLFIREARRDESCRIPT = """造成 100% 魔法攻击力的 {color=yellow|火系} 伤害。有 20% 几率施加灼烧效果，持续 2 回合。几率随火焰精通等级提升。""",
-	SKILLFIREARRDESCRIPT_1 = """造成 100% 魔法攻击力的 {color=yellow|火系} 伤害。有 60% 几率施加灼烧效果，持续 2 回合。几率随火焰精通等级提升。""",
-	SKILLFIREARRDESCRIPT_2 = """造成 100% 魔法攻击力的 {color=yellow|火系} 伤害。有 100% 几率施加灼烧效果，持续 2 回合。""",
+	SKILLFIREARRDESCRIPT = """造成 100% 的魔法 {color=yellow|火系} 伤害。有 20% 几率施加灼烧效果，持续 2 回合。几率随火焰精通等级提升。""",
+	SKILLFIREARRDESCRIPT_1 = """造成 100% 的魔法 {color=yellow|火系} 伤害。有 60% 几率施加灼烧效果，持续 2 回合。几率随火焰精通等级提升。""",
+	SKILLFIREARRDESCRIPT_2 = """造成 100% 的魔法 {color=yellow|火系} 伤害。有 100% 几率施加灼烧效果，持续 2 回合。""",
 	SKILLMINDBLAST = """心灵冲击""",
-	SKILLMINDBLASTDESCRIPT = """造成 120% 魔法攻击力的 {color=yellow|精神} 伤害。""",
+	SKILLMINDBLASTDESCRIPT = """造成 120% 的魔法 {color=yellow|精神} 伤害。""",
 	SKILLSLEEP = """睡眠""",
 	SKILLSLEEPDESCRIPT = """使目标陷入 {color=yellow|睡眠} 状态 3 回合。受到伤害时睡眠效果移除。""",
 	SKILLPSYCHICBLAST = """心灵冲击""",
-	SKILLPSYCHICBLASTDESCRIPT = """对一列敌人造成 65% 魔法攻击力的 {color=yellow|心灵} 伤害。""",
+	SKILLPSYCHICBLASTDESCRIPT = """对一列敌人造成 65% 的魔法 {color=yellow|心灵} 伤害。""",
 	SKILLRESURRECT = """复活""",
 	SKILLRESURRECTDESCRIPT = """复活盟友，并恢复其 40% 的最大生命值。""",
 	SKILLDECAY = """腐朽""",
-	SKILLDECAYDESCRIPT = """对所有敌人造成 65% 魔法攻击力的 {color=yellow|暗系} 伤害。""",
+	SKILLDECAYDESCRIPT = """对所有敌人造成 65% 的魔法 {color=yellow|暗系} 伤害。""",
 	SKILLFIRST_AID = """急救""",
 	SKILLFIRST_AIDDESCRIPT = """治疗盟友，恢复其 30% 的最大生命值。移除流血和中毒状态。""",
 	SKILLLIGHT_SPELL = """圣光术""",
-	SKILLLIGHT_SPELLDESCRIPT = """对一个目标造成 100% 魔法攻击力的 {color=yellow|光系} 伤害。""",
+	SKILLLIGHT_SPELLDESCRIPT = """对一个目标造成 100% 的魔法 {color=yellow|光系} 伤害。""",
 	SKILLLIGHT_SPELL_AOE = """神圣光辉""",
-	SKILLLIGHT_SPELL_AOEDESCRIPT = """对所有敌人造成 30% 魔法攻击力的 {color=yellow|光系} 伤害。使目标的魔法防御力降低 20，持续 3 回合。""",
+	SKILLLIGHT_SPELL_AOEDESCRIPT = """对所有敌人造成 30% 的魔法 {color=yellow|光系} 伤害。使目标的魔魔防御力降低 20，持续 3 回合。""",
 	SKILLENDURE = """忍耐""",
 	SKILLENDUREDESCRIPT = """提升所有抗性 20%，持续 2 回合。""",
 	SKILLMIRROR_IMAGE = """镜像术""",
 	SKILLMIRROR_IMAGEDESCRIPT = """强化所有盟友：获得 25% 几率规避任何技能伤害，持续 2 回合（心灵伤害除外）。替换能量立场。""",
 	SKILLENERGY_FIELD = """能量立场""",
-	SKILLENERGY_FIELDDESCRIPT = """强化所有盟友：受到伤害时，对攻击者造成施法者 40% 魔法攻击力的 {color=yellow|风系} 伤害。替换镜像术。""",
+	SKILLENERGY_FIELDDESCRIPT = """强化所有盟友：受到伤害时，对攻击者造成施法者 40% 的魔法 {color=yellow|风系} 伤害。替换镜像术。""",
 	SKILLPROTECTIVE_SHELL = """保护壳""",
 	SKILLPROTECTIVE_SHELLDESCRIPT = """强化一列盟友：接下来的 3 次攻击中，受到的伤害减少 35%。""",
 	SKILLHAMMERFALL = """铁锤坠击""",
-	SKILLHAMMERFALLDESCRIPT = """对目标造成 150% 攻击力的 {color=yellow|土系} 伤害。使目标眩晕 2 回合。""",
+	SKILLHAMMERFALLDESCRIPT = """对目标造成 150% 的物理 {color=yellow|土系} 伤害。使目标眩晕 2 回合。""",
 	SKILLPURGE = """净化""",
 	SKILLPURGEDESCRIPT = """移除目标身上的所有负面增益效果。""",
 	SKILLRIGHTEOUS_FIRE = """正义之火""",
-	SKILLRIGHTEOUS_FIREDESCRIPT = """造成 75% 魔法攻击力的 {color=yellow|火系} 伤害。使目标沉默 2 回合。""",
+	SKILLRIGHTEOUS_FIREDESCRIPT = """造成 75% 的魔法 {color=yellow|火系} 伤害。使目标沉默 2 回合。""",
 	SKILLELEMENTAL_WEAKNESS = """元素虚弱""",
 	SKILLELEMENTAL_WEAKNESSDESCRIPT = """使目标的火、风、土、水抗性降低 40，持续 3 回合。""",
 	SKILLELEMENTAL_PROTECTION = """元素保护""",
@@ -1472,7 +1492,7 @@ MATERIALMEATSOUP = """肉汤""",
 	SKILLBARD1 = """圣歌""",
 	SKILLBARD1DESCRIPT = """强化一列盟友：命中率、闪避值和速度提升 20，持续 4 回合。取消其他歌曲效果。""",
 	SKILLBARD2 = """抚慰""",
-	SKILLBARD2DESCRIPT = """强化一列盟友：防御力和魔法防御力提升 15，且每回合驱散 1 个负面效果。持续 4 回合。取消其他歌曲效果。""",
+	SKILLBARD2DESCRIPT = """强化一列盟友：防御力和魔魔防御力提升 15，且每回合驱散 1 个负面效果。持续 4 回合。取消其他歌曲效果。""",
 	SKILLBARD3 = """战歌""",
 	SKILLBARD3DESCRIPT = """强化一列盟友：攻击力和魔法攻击力提升 20%，持续 4 回合。取消其他歌曲效果。""",
 	SKILLSPIRIT1 = """灵魂：野兔""",
@@ -1484,12 +1504,12 @@ MATERIALMEATSOUP = """肉汤""",
 	SKILLDEVOUR = """吞噬灵魂""",
 	SKILLDEVOURDESCRIPT = """削弱敌方目标：当目标死亡时，施法者恢复 20% 的最大法力值。""",
 	SKILLEARTHQUAKE = """地震""",
-	SKILLEARTHQUAKEDESCRIPT = """对所有敌人造成 40% 魔法攻击力的 {color=yellow|土系} 伤害，持续 3 回合。""",
+	SKILLEARTHQUAKEDESCRIPT = """对所有敌人造成 40% 的魔法 {color=yellow|土系} 伤害，持续 3 回合。""",
 	SKILLEARTHQUAKE_GLOB = """地震""",
 	SKILLL_ORB = """闪电宝珠""",
-	SKILLL_ORBDESCRIPT = """造成 250% 魔法攻击力的 {color=yellow|风系} 伤害。如果目标存活，对随机敌人造成一半伤害。""",
+	SKILLL_ORBDESCRIPT = """造成 250% 的魔法 {color=yellow|风系} 伤害。如果目标存活，对随机敌人造成一半伤害。""",
 	SKILLSNIPER_SHOT = """陷阱射击""",
-	SKILLSNIPER_SHOTDESCRIPT = """造成 110% 攻击力的 {color=yellow|土系} 伤害。对目标施加“纠缠”效果，持续 5 回合。""",
+	SKILLSNIPER_SHOTDESCRIPT = """造成 110% 的物理 {color=yellow|土系} 伤害。对目标施加“纠缠”效果，持续 5 回合。""",
 	SKILLSOUL_BIND = """灵魂束缚""",
 	SKILLSOUL_BINDDESCRIPT = """扭曲一个人的思想使其屈服于你的意志。休息一天后，他们将服从你的大部分命令。""",
 	SKILLFLY_EVASION = """飞翼冲刺""",
@@ -1505,112 +1525,112 @@ MATERIALMEATSOUP = """肉汤""",
 	SKILLASSASSINATE_EN = """刺杀""",
 	SKILLMIMIC_ATTACK = """粘性抓取""",
 	SKILLVOID_BARRAGE = """虚空弹幕""",
-	SKILLVOID_BARRAGEDESCRIPT = """对随机目标造成 85% 魔法攻击力的 {color=yellow|暗系} 伤害，共 4 次。""",
+	SKILLVOID_BARRAGEDESCRIPT = """对随机目标造成 85% 的魔法 {color=yellow|暗系} 伤害，共 4 次。""",
 	SKILLVOIDSLAM = """虚空重击""",
 	SKILLDRAW_BLOOD = """抽血""",
-	SKILLDRAW_BLOODDESCRIPT = """打击目标造成 110% 攻击力的伤害并使其流血 2 回合。""",
+	SKILLDRAW_BLOODDESCRIPT = """打击目标造成 110% 的物理伤害并使其流血 2 回合。""",
 	SKILLSUNDER = """破甲""",
-	SKILLSUNDERDESCRIPT = """打击目标造成 85% 攻击力的伤害并使其防御力降低 25%，持续 5 回合。""",
+	SKILLSUNDERDESCRIPT = """打击目标造成 85% 的物理伤害并使其防御力降低 25%，持续 5 回合。""",
 	SKILLCLEAVE = """顺劈""",
-	SKILLCLEAVEDESCRIPT = """打击目标所在列，造成 90% 攻击力的伤害。""",
+	SKILLCLEAVEDESCRIPT = """打击目标所在列，造成 90% 的物理伤害。""",
 	SKILLSTRIKE_THROUGH = """贯穿打击""",
-	SKILLSTRIKE_THROUGHDESCRIPT = """打击目标所在行，造成 110% 攻击力的伤害。""",
+	SKILLSTRIKE_THROUGHDESCRIPT = """打击目标所在行，造成 110% 的物理伤害。""",
 	SKILLEXECUTION = """处决""",
-	SKILLEXECUTIONDESCRIPT = """打击目标造成 225% 攻击力的伤害。如果目标死亡，对所有敌人施加“恐惧”效果，持续 1 回合。""",
+	SKILLEXECUTIONDESCRIPT = """打击目标造成 225% 的物理伤害。如果目标死亡，对所有敌人施加“恐惧”效果，持续 1 回合。""",
 	SKILLDISARM_ENEMY = """缴械""",
-	SKILLDISARM_ENEMYDESCRIPT = """打击目标造成 130% 攻击力的伤害并使其缴械 3 回合。""",
+	SKILLDISARM_ENEMYDESCRIPT = """打击目标造成 130% 的物理伤害并使其缴械 3 回合。""",
 	SKILLPROVOCATION = """挑衅""",
-	SKILLPROVOCATIONDESCRIPT = """打击目标造成 70% 攻击力的伤害并挑衅目标 2 回合。""",
+	SKILLPROVOCATIONDESCRIPT = """打击目标造成 70% 的物理伤害并挑衅目标 2 回合。""",
 	SKILLSTONEWALL = """石墙""",
 	SKILLSTONEWALLDESCRIPT = """恢复 15% 的最大生命值并施加“加固”效果，持续 5 回合。""",
 	SKILLDIP_POISON = """淬毒""",
-	SKILLDIP_POISONDESCRIPT = """打击目标造成 100% 攻击力的伤害并使其中毒 4 回合。""",
+	SKILLDIP_POISONDESCRIPT = """打击目标造成 100% 的物理伤害并使其中毒 4 回合。""",
 	SKILLBACKKICK = """回旋踢""",
-	SKILLBACKKICKDESCRIPT = """近战打击目标造成 130% 攻击力的伤害并使其沉默 4 回合。""",
+	SKILLBACKKICKDESCRIPT = """近战打击目标造成 130% 的物理伤害并使其沉默 4 回合。""",
 	SKILLDEVASTATION = """毁灭""",
-	SKILLDEVASTATIONDESCRIPT = """打击目标 6 次，每次造成 75% 攻击力的伤害。如果目标死亡，剩余攻击将转向随机目标。""",
+	SKILLDEVASTATIONDESCRIPT = """打击目标 6 次，每次造成 75% 的物理伤害。如果目标死亡，剩余攻击将转向随机目标。""",
 	SKILLSTRAFE = """扫射""",
-	SKILLSTRAFEDESCRIPT = """射击目标 3 次，每次造成 45% 攻击力的伤害。如果目标死亡，剩余射击将转向随机目标。""",
+	SKILLSTRAFEDESCRIPT = """射击目标 3 次，每次造成 45% 的物理伤害。如果目标死亡，剩余射击将转向随机目标。""",
 	SKILLENSNARE = """陷阱捕获""",
-	SKILLENSNAREDESCRIPT = """打击目标所在列，造成 50% 攻击力的伤害并将其“纠缠”。""",
+	SKILLENSNAREDESCRIPT = """打击目标所在列，造成 50% 的物理伤害并将其“纠缠”。""",
 	SKILLBOLT_TRAP = """弩箭陷阱""",
-	SKILLBOLT_TRAPDESCRIPT = """在敌方所在列下方设置陷阱。如果他们使用技能，将受到等同于 110% 攻击力的伤害。""",
+	SKILLBOLT_TRAPDESCRIPT = """在敌方所在列下方设置陷阱。如果他们使用技能，将受到等同于 110% 的物理伤害。""",
 	SKILLARROW_HAIL = """箭雨""",
-	SKILLARROW_HAILDESCRIPT = """射击所有敌人，造成 120% 攻击力的伤害。""",
+	SKILLARROW_HAILDESCRIPT = """射击所有敌人，造成 120% 的物理伤害。""",
 	SKILLRALLY = """集结""",
 	SKILLRALLYDESCRIPT = """重置所有冷却时间（集结除外）并为选定盟友恢复 30% 的生命值。""",
 	SKILLBLOODBOIL = """血沸""",
 	SKILLBLOODBOILDESCRIPT = """提升 25% 攻击力，移除眩晕、潮湿和恐惧状态，并获得持续 4 回合的这些负面效果免疫。""",
 	SKILLFIRE_SHIELD = """火焰护盾""",
-	SKILLFIRE_SHIELDDESCRIPT = """使目标盟友获得 40 点水抗性，持续 5 回合。拥有火系精通时增加目标数量。""",
-	SKILLFIRE_SHIELDDESCRIPT_1 = """使目标盟友列获得 40 点水抗性，持续 5 回合。拥有火系精通时增加目标数量。""",
+	SKILLFIRE_SHIELDDESCRIPT = """使目标队友获得 40 点水抗性，持续 5 回合。拥有火系精通时增加目标数量。""",
+	SKILLFIRE_SHIELDDESCRIPT_1 = """使目标队友列获得 40 点水抗性，持续 5 回合。拥有火系精通时增加目标数量。""",
 	SKILLFIRE_SHIELDDESCRIPT_2 = """使所有盟友获得 40 点水抗性，持续 5 回合。""",
 	SKILLMAGMA_BLAST = """岩浆爆裂""",
-	SKILLMAGMA_BLASTDESCRIPT = """造成 150% 魔法攻击力的 {color=yellow|火系} 伤害，并对目标施加“粉碎”效果，持续 5 回合。""",
+	SKILLMAGMA_BLASTDESCRIPT = """造成 150% 的魔法 {color=yellow|火系} 伤害，并对目标施加“粉碎”效果，持续 5 回合。""",
 	SKILLWATER_SHIELD = """水流护盾""",
-	SKILLWATER_SHIELDDESCRIPT = """使目标盟友获得 40 点火抗性，持续 5 回合。拥有水系精通时增加目标数量。""",
-	SKILLWATER_SHIELDDESCRIPT_1 = """使目标盟友列获得 40 点火抗性，持续 5 回合。拥有水系精通时增加目标数量。""",
+	SKILLWATER_SHIELDDESCRIPT = """使目标队友获得 40 点火抗性，持续 5 回合。拥有水系精通时增加目标数量。""",
+	SKILLWATER_SHIELDDESCRIPT_1 = """使目标队友列获得 40 点火抗性，持续 5 回合。拥有水系精通时增加目标数量。""",
 	SKILLWATER_SHIELDDESCRIPT_2 = """使所有盟友获得 40 点火抗性，持续 5 回合。""",
 	SKILLFROST_PRISON = """冰霜囚笼""",
-	SKILLFROST_PRISONDESCRIPT = """造成 130% 魔法攻击力的 {color=yellow|水系} 伤害。有 50% 几率使目标冻结 1 回合。""",
+	SKILLFROST_PRISONDESCRIPT = """造成 130% 的魔法 {color=yellow|水系} 伤害。有 50% 几率使目标冻结 1 回合。""",
 	SKILLCLARITY = """澄明""",
 	SKILLCLARITYDESCRIPT = """提升 25% 魔法攻击力，移除致盲、睡眠和魅惑状态，并获得持续 4 回合的这些负面效果免疫。""",
 	SKILLBLIZZARD = """暴风雪""",
-	SKILLBLIZZARDDESCRIPT = """发射冰锥攻击敌人，有 60% 几率造成 90% 魔法攻击力的 {color=yellow|水系} 伤害。有 25% 几率使受击目标冻结 1 回合。潮湿和冻结状态的目标会被必定命中。""",
+	SKILLBLIZZARDDESCRIPT = """发射冰锥攻击敌人，有 60% 几率造成 90% 的魔法 {color=yellow|水系} 伤害。有 25% 几率使受击目标冻结 1 回合。潮湿和冻结状态的目标会被必定命中。""",
 	SKILLHAILSTORM = """冰雹""",
-	SKILLHAILSTORMDESCRIPT = """对所有敌人造成 150% 魔法攻击力的 {color=yellow|水系} 伤害。潮湿和冻结状态的目标受到的伤害增加。施加“潮湿”效果。""",
+	SKILLHAILSTORMDESCRIPT = """对所有敌人造成 150% 的魔法 {color=yellow|水系} 伤害。潮湿和冻结状态的目标受到的伤害增加。施加“潮湿”效果。""",
 	SKILLEARTH_SHIELD = """大地护盾""",
-	SKILLEARTH_SHIELDDESCRIPT = """为盟友施加防御外壳，持续 5 回合，根据施法者的魔法攻击力提升其防御力。同时移除粉碎、震碎和陷阱状态。效果随大地精通升级。""",
-	SKILLEARTH_SHIELDDESCRIPT_1 = """为盟友施加防御外壳，持续 5 回合，根据施法者的魔法攻击力提升其防御力和魔防。同时移除粉碎、震碎和陷阱状态。""",
+	SKILLEARTH_SHIELDDESCRIPT = """为队友施加防御外壳，持续 5 回合，根据施法者的魔法攻击力提升其防御力。同时移除粉碎、震碎和陷阱状态。效果随大地精通升级。""",
+	SKILLEARTH_SHIELDDESCRIPT_1 = """为队友施加防御外壳，持续 5 回合，根据施法者的魔法攻击力提升其防御力和魔防。同时移除粉碎、震碎和陷阱状态。""",
 	SKILLACID_BOMB = """酸液炸弹""",
-	SKILLACID_BOMBDESCRIPT = """造成 250% 魔法攻击力的 {color=yellow|土系} 伤害，并对目标施加“粉碎”效果，持续 3 回合。""",
+	SKILLACID_BOMBDESCRIPT = """造成 250% 的魔法 {color=yellow|土系} 伤害，并对目标施加“粉碎”效果，持续 3 回合。""",
 	SKILLIMPALE = """穿刺""",
-	SKILLIMPALEDESCRIPT = """造成 85% 魔法攻击力的 {color=yellow|土系} 伤害。降低 75% 的受治疗量，持续 3 回合，并有几率施加流血效果。""",
+	SKILLIMPALEDESCRIPT = """造成 85% 的魔法 {color=yellow|土系} 伤害。降低 75% 的受治疗量，持续 3 回合，并有几率施加流血效果。""",
 	SKILLOVERGROWTH = """植被疯长""",
-	SKILLOVERGROWTHDESCRIPT = """对所有敌人造成 50% 魔法攻击力的 {color=yellow|土系} 伤害，并有 50% 几率使其“纠缠” 2 回合。""",
+	SKILLOVERGROWTHDESCRIPT = """对所有敌人造成 50% 的魔法 {color=yellow|土系} 伤害，并有 50% 几率使其“纠缠” 2 回合。""",
 	SKILLDISINTEGRATE = """瓦解""",
-	SKILLDISINTEGRATEDESCRIPT = """对单体目标造成 165% 魔法攻击力的 {color=yellow|土系} 伤害并眩晕 3 回合。对魔像和机械敌人造成 275% 伤害。如果目标无法被眩晕，则施加“粉碎”效果。""",
+	SKILLDISINTEGRATEDESCRIPT = """对单体目标造成 165% 的魔法 {color=yellow|土系} 伤害并眩晕 3 回合。对魔像和机械敌人造成 275% 伤害。如果目标无法被眩晕，则施加“粉碎”效果。""",
 	SKILLWIND_BLADE = """风刃""",
-	SKILLWIND_BLADEDESCRIPT = """对一个目标和一名随机敌人造成 60% 魔法攻击力的 {color=yellow|风系} 伤害。""",
+	SKILLWIND_BLADEDESCRIPT = """对一个目标和一名随机敌人造成 60% 的魔法 {color=yellow|风系} 伤害。""",
 	SKILLLIGHTNING = """闪电""",
-	SKILLLIGHTNINGDESCRIPT = """造成 125% 魔法攻击力的 {color=yellow|风系} 伤害。有 50% 几率施加“触电”状态，持续 2 回合。""",
+	SKILLLIGHTNINGDESCRIPT = """造成 125% 的魔法 {color=yellow|风系} 伤害。有 50% 几率施加“触电”状态，持续 2 回合。""",
 	SKILLHASTE = """急速""",
-	SKILLHASTEDESCRIPT = """使盟友的速度增加 25，持续 4 回合。""",
+	SKILLHASTEDESCRIPT = """使队友的速度增加 25，持续 4 回合。""",
 	SKILLCHAIN_LIGHTNING = """连锁闪电""",
-	SKILLCHAIN_LIGHTNINGDESCRIPT = """对 4-6 个目标造成 80% 魔法攻击力的 {color=yellow|风系} 伤害。""",
+	SKILLCHAIN_LIGHTNINGDESCRIPT = """对 4-6 个目标造成 80% 的魔法 {color=yellow|风系} 伤害。""",
 	SKILLAIR_SHIELD = """空气护盾""",
-	SKILLAIR_SHIELDDESCRIPT = """使目标盟友获得 40 点土抗性和 10 点远程伤害抗性，持续 5 回合。拥有风系精通时增加目标数量。""",
-	SKILLAIR_SHIELDDESCRIPT_1 = """使目标盟友列获得 40 点土抗性和 10 点远程伤害抗性，持续 5 回合。驱散陷阱状态。拥有风系精通时增加目标数量。""",
+	SKILLAIR_SHIELDDESCRIPT = """使目标队友获得 40 点土抗性和 10 点远程伤害抗性，持续 5 回合。拥有风系精通时增加目标数量。""",
+	SKILLAIR_SHIELDDESCRIPT_1 = """使目标队友列获得 40 点土抗性和 10 点远程伤害抗性，持续 5 回合。驱散陷阱状态。拥有风系精通时增加目标数量。""",
 	SKILLAIR_SHIELDDESCRIPT_2 = """使所有盟友获得 40 点土抗性和 10 点远程伤害抗性，持续 5 回合。驱散陷阱状态。""",
 	SKILLTEMPEST = """暴风""",
-	SKILLTEMPESTDESCRIPT = """对所有敌人造成 120% 魔法攻击力的 {color=yellow|风系} 伤害。施加“触电”状态，持续 2 回合。""",
+	SKILLTEMPESTDESCRIPT = """对所有敌人造成 120% 的魔法 {color=yellow|风系} 伤害。施加“触电”状态，持续 2 回合。""",
 	SKILLEYEOFTHESTORM = """风暴之眼""",
-	SKILLEYEOFTHESTORMDESCRIPT = """目标盟友在每次命中时额外造成施法者 35% 魔法攻击力的 {color=yellow|风系} 伤害，持续 6 回合。瞬发。""",
+	SKILLEYEOFTHESTORMDESCRIPT = """目标队友在每次命中时额外造成施法者 35% 的魔法 {color=yellow|风系} 伤害，持续 6 回合。瞬发。""",
 	SKILLHEALING = """治愈之光""",
 	SKILLHEALINGDESCRIPT = """治疗目标，恢复量为 130% 魔法攻击力，并治愈流血状态，或对亡灵敌人造成光系伤害。""",
 	SKILLBLESSING = """祝福""",
 	SKILLBLESSINGDESCRIPT = """移除恐惧、纠缠、致盲和诅咒状态。命中率和闪避值提升 35%，持续 6 回合。""",
 	SKILLPACIFY = """安抚""",
-	SKILLPACIFYDESCRIPT = """造成 130% 魔法攻击力的 {color=yellow|光系} 伤害，并施加“缴械”效果，持续 2 回合。""",
+	SKILLPACIFYDESCRIPT = """造成 130% 的魔法 {color=yellow|光系} 伤害，并施加“缴械”效果，持续 2 回合。""",
 	SKILLRADIANCE = """光辉""",
-	SKILLRADIANCEDESCRIPT = """对所有敌人造成 80% 魔法攻击力的 {color=yellow|光系} 伤害，并使其“粉碎” 3 回合。""",
+	SKILLRADIANCEDESCRIPT = """对所有敌人造成 80% 的魔法 {color=yellow|光系} 伤害，并使其“粉碎” 3 回合。""",
 	SKILLE_RES = """群体复活""",
-	SKILLE_RESDESCRIPT = """复活所有盟友（亡灵除外），并恢复其 80% 的最大生命值。""",
+	SKILLE_RESDESCRIPT = """复活所有队友（亡灵除外），并恢复其 80% 的最大生命值。""",
    SKILLDARKNESS = """黑暗""",
-	SKILLDARKNESSDESCRIPT = """造成 75% 魔法攻击力的 {color=yellow|暗系} 伤害并施加“致盲”效果，持续 1 回合。持续时间随暗系精通提升。""",
-	SKILLDARKNESSDESCRIPT_1 = """造成 75% 魔法攻击力的 {color=yellow|暗系} 伤害并施加“致盲”效果，持续 2 回合。""",
+	SKILLDARKNESSDESCRIPT = """造成 75% 的魔法 {color=yellow|暗系} 伤害并施加“致盲”效果，持续 1 回合。持续时间随暗系精通提升。""",
+	SKILLDARKNESSDESCRIPT_1 = """造成 75% 的魔法 {color=yellow|暗系} 伤害并施加“致盲”效果，持续 2 回合。""",
 	SKILLBLACK_TENDRILS = """黑色触手""",
-	SKILLBLACK_TENDRILSDESCRIPT = """对所有敌人造成 30% 魔法攻击力的 {color=yellow|暗系} 伤害并施加“纠缠”效果，持续 1 回合。""",
+	SKILLBLACK_TENDRILSDESCRIPT = """对所有敌人造成 30% 的魔法 {color=yellow|暗系} 伤害并施加“纠缠”效果，持续 1 回合。""",
 	SKILLMALEDICTION = """诅咒""",
-	SKILLMALEDICTIONDESCRIPT = """造成 60% 魔法攻击力的 {color=yellow|暗系} 伤害并诅咒目标，持续 5 回合。""",
+	SKILLMALEDICTIONDESCRIPT = """造成 60% 的魔法 {color=yellow|暗系} 伤害并诅咒目标，持续 5 回合。""",
 	SKILLDEVOUR_MAGIC = """吞噬魔法""",
 	SKILLDEVOUR_MAGICDESCRIPT = """移除单个敌人身上的所有正面增益效果，并施加“沉默”效果，持续 3 回合。""",
 	SKILLVEIL = """暗影帷幕""",
-	SKILLVEILDESCRIPT = """强化盟友列，持续 5 回合：光系和暗系抗性提升 30，魔防根据施法者的魔法攻击力提升。并施加“处于暗影中”效果，持续 5 回合。""",
+	SKILLVEILDESCRIPT = """强化队友列，持续 5 回合：光系和暗系抗性提升 30，魔防根据施法者的魔力提升。并施加“处于暗影中”效果，持续 5 回合。""",
 	SKILLSKILL_VOID = """虚空""",
-	SKILLSKILL_VOIDDESCRIPT = """对所有敌人造成 150% 魔法攻击力的 {color=yellow|暗系} 伤害。被命中的敌人会被随机施加沉默、致盲或缴械效果。""",
+	SKILLSKILL_VOIDDESCRIPT = """对所有敌人造成 150% 的魔法 {color=yellow|暗系} 伤害。被命中的敌人会被随机施加沉默、致盲或缴械效果。""",
 	SKILLMINDSHATTER = """心灵粉碎""",
-	SKILLMINDSHATTERDESCRIPT = """造成 160% 魔法攻击力的 {color=yellow|心灵} 伤害并眩晕目标 3 回合。""",
+	SKILLMINDSHATTERDESCRIPT = """造成 160% 的魔法 {color=yellow|心灵} 伤害并眩晕目标 3 回合。""",
 	SKILLLAST_STAND = """背水一战""",
 	SKILLLAST_STANDDESCRIPT = """1 回合内生命值不会降至 10% 以下。施放不占用回合。""",
 	SKILLINTIMIDATING_PRESENCE = """威慑气场""",
@@ -1618,7 +1638,7 @@ MATERIALMEATSOUP = """肉汤""",
 	SKILLFLAME_SPHERE = """烈焰球""",
 	SKILLFLAME_SPHEREDESCRIPT = """对自己施加增益：在下次战斗开始时，向敌人发射烈焰球，造成其最大生命值 25% 的火系伤害。""",
 	SKILLINFERNO = """地狱火""",
-	SKILLINFERNODESCRIPT = """对所有敌人造成 160% 魔法攻击力的 {color=yellow|火系} 伤害。施加“灼烧”效果，持续 3 回合。""",
+	SKILLINFERNODESCRIPT = """对所有敌人造成 160% 的魔法 {color=yellow|火系} 伤害。施加“灼烧”效果，持续 3 回合。""",
 	SKILLNATURES_GIFT = """自然恩赐""",
 	SKILLNATURES_GIFTDESCRIPT = """根据魔法攻击力即时从位置获取现有资源。""",
 	SKILLTELEPORT = """传送""",
@@ -1630,13 +1650,13 @@ MATERIALMEATSOUP = """肉汤""",
 	SKILLINVIGORATE = """振奋""",
 	SKILLINVIGORATEDESCRIPT = """为选定盟友恢复 1 点每种挑战充能。""",
 	SKILLHYPERBOREA = """海波里亚之风""",
-	SKILLHYPERBOREADESCRIPT = """对所有敌人造成 210% 魔法攻击力的 {color=yellow|水系} 伤害。为所有盟友施加“澄明”效果，持续 3 回合。""",
+	SKILLHYPERBOREADESCRIPT = """对所有敌人造成 210% 的魔法 {color=yellow|水系} 伤害。为所有盟友施加“澄明”效果，持续 3 回合。""",
 	SKILLPOISON_VAPORS = """剧毒蒸汽""",
-	SKILLPOISON_VAPORSDESCRIPT = """对敌方所在列造成 25% 魔法攻击力的 {color=yellow|水系} 伤害。施加“中毒”效果，持续 3 回合。""",
+	SKILLPOISON_VAPORSDESCRIPT = """对敌方所在列造成 25% 的魔法 {color=yellow|水系} 伤害。施加“中毒”效果，持续 3 回合。""",
 	SKILLMETEOR = """陨石术""",
-	SKILLMETEORDESCRIPT = """造成 200% 魔法攻击力的 {color=yellow|火系} 伤害，并对目标施加“灼烧”效果，持续 4 回合。""",
+	SKILLMETEORDESCRIPT = """造成 200% 的魔法 {color=yellow|火系} 伤害，并对目标施加“灼烧”效果，持续 4 回合。""",
 	SKILLABYSS_GAZE = """深渊凝视""",
-	SKILLABYSS_GAZEDESCRIPT = """对所有敌人造成 125% 魔法攻击力的 {color=yellow|心灵} 伤害。眩晕 2 回合。""",
+	SKILLABYSS_GAZEDESCRIPT = """对所有敌人造成 125% 的魔法 {color=yellow|心灵} 伤害。眩晕 2 回合。""",
 	SKILLDARK_FLAME = """暗黑烈焰""",
 	SKILLDARK_FLAMEDESCRIPT = """将敌人身上所有的“灼烧”效果转化为“暗黑烈焰”效果。它们造成真实伤害，无法被水系伤害熄灭，且持续 4 回合。""",
 	SKILLFIREARROWS_APPLY = """火焰箭""",
@@ -1703,12 +1723,12 @@ SKILLARCANE_MASTERYDESCRIPT = """激活后，下一次施放的法术变为瞬�
 	SKILLNECRO_AURADESCRIPT = """被动召唤：骷髅。骷髅数量由魔法潜力决定。""",
 	SKILLRAMONT_RIPOSTE_STANCE_SKILL = """招架与反击姿态""",
 	SKILLCOMMAND_EMBARGO = """命令：禁运""",
-    SKILLCOMMAND_EMBARGODESCRIPT = """锁定近战区的另一名盟友。命令其攻击一名随机敌人，造成70%攻击力的伤害并施加挑衅。""",
+    SKILLCOMMAND_EMBARGODESCRIPT = """锁定近战区的另一名盟友。命令其攻击一名随机敌人，造成70%的物理伤害并施加挑衅。""",
     SKILLRAMONT_EMBRAGO = """强制禁运""",
     SKILLRAMONT_EVICTION_NOTICE = """驱逐通知""",
-    SKILLRAMONT_EVICTION_NOTICEDESCRIPT = """造成85%攻击力的伤害并施加{color=aqua|驱逐通知}。""",
+    SKILLRAMONT_EVICTION_NOTICEDESCRIPT = """造成85%的物理伤害并施加{color=aqua|驱逐通知}。""",
     SKILLRAMONT_PIERCING_OBSIDIAN = """黑曜石穿刺""",
-    SKILLRAMONT_PIERCING_OBSIDIANDESCRIPT = """对一排敌人造成135%攻击力的伤害并施加流血。对受'{color=aqua|驱逐通知}'影响的敌人额外造成20%伤害。""",
+    SKILLRAMONT_PIERCING_OBSIDIANDESCRIPT = """对一排敌人造成135%的物理伤害并施加流血。对受'{color=aqua|驱逐通知}'影响的敌人额外造成20%伤害。""",
     SKILLPROTECT_ME = """保护我！""",
     SKILLPROTECT_MEDESCRIPT = """目标不能处于后排。强制目标为该单位承受单体伤害。""",
     SKILLENRAGING_BELITTLEMENT = """愤怒蔑视""",
@@ -1720,45 +1740,45 @@ SKILLARCANE_MASTERYDESCRIPT = """激活后，下一次施放的法术变为瞬�
 对目标施加挑衅和致盲。
 当{color=aqua|虚妄之傲}达到3层或以上时，额外施加恐惧。""",
     SKILLOUT_OF_MY_WAY = """滚开！""",
-    SKILLOUT_OF_MY_WAYDESCRIPT = """对一排敌人造成40%攻击力的伤害，并对后排单位额外造成60%攻击力的伤害。""",
+    SKILLOUT_OF_MY_WAYDESCRIPT = """对一排敌人造成40%的物理伤害，并对后排单位额外造成60%的物理伤害。""",
     SKILLYOU_UNGRATFUL_MUTT = """你这忘恩负义的杂种！！""",
-    SKILLYOU_UNGRATFUL_MUTTDESCRIPT = """仅在{color=aqua|虚妄之傲}达到5层及以上时可用。对一列敌人造成185%攻击力的伤害并施加破甲与流血。""",
+    SKILLYOU_UNGRATFUL_MUTTDESCRIPT = """仅在{color=aqua|虚妄之傲}达到5层及以上时可用。对一列敌人造成185%的物理伤害并施加破甲与流血。""",
     SKILLSUPPRESIVE_FIRE = """压制射击""",
-    SKILLSUPPRESIVE_FIREDESCRIPT = """对一列敌人造成70%攻击力的伤害。有几率施加致盲与束缚。""",
+    SKILLSUPPRESIVE_FIREDESCRIPT = """对一列敌人造成70%的物理伤害。有几率施加致盲与束缚。""",
     SKILLDARK_GIFT = """黑暗赠礼""",
     SKILLDARK_GIFTDESCRIPT = """对其造成相当于其当前生命值30%的伤害，并赋予他们{color=aqua|黑暗赠礼}。""",
     SKILLPUPPET_ON_A_STRING = """提线木偶""",
-    SKILLPUPPET_ON_A_STRINGDESCRIPT = """强制其对一名随机敌人造成150%攻击力的伤害，并承受相当于其50%魔法攻击力的反冲伤害。如果该盟友是库尔丹，则强制他改为使用{color=aqua|炼狱}，并承受相当于其当前生命值30%的伤害。""",
+    SKILLPUPPET_ON_A_STRINGDESCRIPT = """强制其对一名随机敌人造成150%的物理伤害，并承受相当于其50%的魔法反冲伤害。如果该盟友是库尔丹，则强制他改为使用{color=aqua|炼狱}，并承受相当于其当前生命值30%的伤害。""",
     SKILLPUPPET_ATTACK = """牵线拉扯""",
     SKILLFORCE_MARTYRDOM = """强制殉道""",
     SKILLFORCE_MARTYRDOMDESCRIPT = """锁定一名生命值低于30%的盟友，使其自爆身亡。对所有敌人造成相当于目标150%攻击力与魔法攻击力总和的伤害，并施加恐惧。""",
     SKILLOVERLOADED_SOUL = """灵魂超载""",
     SKILLI_VE_SEEN_ENOUGH = """我已经看够了……""",
     SKILLOVERWHELMING_FLAME = """压倒性烈焰""",
-    SKILLOVERWHELMING_FLAMEDESCRIPT = """造成160%魔法攻击力的火焰伤害并施加破甲。""",
+    SKILLOVERWHELMING_FLAMEDESCRIPT = """造成160%的魔法火焰伤害并施加破甲。""",
 	SKILLI_MUST_RESIST = """我……必须抵抗……""",
     SKILLI_MUST_RESISTDESCRIPT = """什么也不做。""",
     SKILLFOR_THE_PRINCESS = """为了公主！""",
-    SKILLFOR_THE_PRINCESSDESCRIPT = """对目标造成110%攻击力的伤害。移除所有盟友身上的恐惧、嘲讽、沉默和睡眠状态。""",
+    SKILLFOR_THE_PRINCESSDESCRIPT = """对目标造成110%的物理伤害。移除所有盟友身上的恐惧、嘲讽、沉默和睡眠状态。""",
     SKILLRICOCHET_SHOT = """跳弹射击""",
-    SKILLRICOCHET_SHOTDESCRIPT = """对少量敌人造成50%攻击力的伤害。""",
+    SKILLRICOCHET_SHOTDESCRIPT = """对少量敌人造成50%的物理伤害。""",
     SKILLLION_SWIPE = """雄狮横扫""",
-    SKILLLION_SWIPEDESCRIPT = """对一列敌人造成85%攻击力的伤害并施加流血。""",
+    SKILLLION_SWIPEDESCRIPT = """对一列敌人造成85%的物理伤害并施加流血。""",
     SKILLBRAMBLE_TRAP = """荆棘陷阱""",
-    SKILLBRAMBLE_TRAPDESCRIPT = """在随机目标脚下放置陷阱。当目标使用技能时陷阱触发，造成相当于施法者80%攻击力的伤害，并施加束缚与流血。""",
+    SKILLBRAMBLE_TRAPDESCRIPT = """在随机目标脚下放置陷阱。当目标使用技能时陷阱触发，造成相当于施法者80%的物理伤害，并施加束缚与流血。""",
     SKILLJAW_OF_LIFE = """生命之颚""",
-    SKILLJAW_OF_LIFEDESCRIPT = """对一名敌人造成100%攻击力的伤害。如果目标处于流血状态，恢复相当于造成伤害85%的生命值。否则，施加流血。""",
+    SKILLJAW_OF_LIFEDESCRIPT = """对一名敌人造成100%的物理伤害。如果目标处于流血状态，恢复相当于造成伤害85%的生命值。否则，施加流血。""",
     SKILLPRIMAL_ROAR = """原始咆哮""",
-    SKILLPRIMAL_ROARDESCRIPT = """对所有敌人造成40%魔法攻击力的精神伤害。有几率施加恐惧与沉默。为使用者恢复相当于施法者235%攻击力的生命值。""",
+    SKILLPRIMAL_ROARDESCRIPT = """对所有敌人造成40%的魔法精神伤害。有几率施加恐惧与沉默。为使用者恢复相当于施法者235%的物理生命值。""",
     SKILLMAD_DASH = """狂野冲刺""",
-    SKILLMAD_DASHDESCRIPT = """对一排敌人造成110%攻击力的伤害。有几率施加流血。当{color=aqua|嗜血}达到3层或以上时，消耗1层对一名随机敌人再次使用此技能。""",
+    SKILLMAD_DASHDESCRIPT = """对一排敌人造成110%的物理伤害。有几率施加流血。当{color=aqua|嗜血}达到3层或以上时，消耗1层对一名随机敌人再次使用此技能。""",
     SKILLREGRESSION_CURSE_RUN_AMOK = '退化诅咒：失控',
     SKILLREGRESSION_CURSE_RUN_AMOKDESCRIPT = """对单一目标造成110%伤害。
 对处于流血状态的敌人额外造成30%伤害。
 如果目标没有流血状态，莱昂获得1层脆弱。
 消耗1层{color=aqua|嗜血}对一名随机目标再次使用此技能，直到该单位不再拥有{color=aqua|嗜血}。""",
     SKILLMANCHINEEL_APPLE = '毒番石榴之果',
-    SKILLMANCHINEEL_APPLEDESCRIPT = """对所有敌人造成120%魔法攻击力的土属性魔法伤害并施加中毒。""",
+    SKILLMANCHINEEL_APPLEDESCRIPT = """对所有敌人造成120%的魔法土属性魔法伤害并施加中毒。""",
     SKILLSMOTHERING_KUDZU = '窒息葛藤',
     SKILLSMOTHERING_KUDZUDESCRIPT = """召唤一株{color=aqua|葛藤}吞噬并让一名近战范围内的随机敌人窒息，大幅降低其速度并使其无法行动，直到{color=aqua|葛藤}被击杀。""",
     SKILLENGULF_BY_EVERGREEN = '常青藤吞噬',
@@ -1768,38 +1788,38 @@ SKILLARCANE_MASTERYDESCRIPT = """激活后，下一次施放的法术变为瞬�
     SKILLSENSING_NUTRIENT = '藤蔓正在寻找新的猎物……',
     SKILLSENSING_NUTRIENTDESCRIPT = """允许在下一回合使用{color=aqua|常青藤吞噬}。""",
 	SKILLGRASS_GRAZE_BACK = '反击之草',
-    SKILLGRASS_GRAZE_BACKDESCRIPT = """造成100%攻击力的{color=yellow|土属性}伤害，并恢复相当于造成伤害90%的生命值。""",
+    SKILLGRASS_GRAZE_BACKDESCRIPT = """造成100%的物理{color=yellow|土属性}伤害，并恢复相当于造成伤害90%的生命值。""",
     SKILLCURSE_PRIMEVAL_REGRESSION = '诅咒：原始退化',
     SKILLCURSE_PRIMEVAL_REGRESSIONDESCRIPT = """施加{color=aqua|原始退化诅咒}，使目标无差别地攻击随机单位。""",
     SKILLPRIMEVAL_MADNESS = '原始疯狂',
     SKILLLIANA_FLOGGING = '藤鞭抽打',
-    SKILLLIANA_FLOGGINGDESCRIPT = """对3个随机目标造成65%攻击力的伤害。每次命中都有几率施加眩晕。""",
+    SKILLLIANA_FLOGGINGDESCRIPT = """对3个随机目标造成65%的物理伤害。每次命中都有几率施加眩晕。""",
     SKILLIMPOSING_PRESSURE = '威压',
-    SKILLIMPOSING_PRESSUREDESCRIPT = """对所有敌人造成40%魔法攻击力的光属性伤害。减少所有敌人相当于施法者20%魔法攻击力的法力值。有几率施加恐惧。""",
+    SKILLIMPOSING_PRESSUREDESCRIPT = """对所有敌人造成40%的魔法光属性伤害。减少所有敌人相当于施法者20%的魔法法力值。有几率施加恐惧。""",
     SKILLGORING_RUSH = '冲锋顶撞',
-    SKILLGORING_RUSHDESCRIPT = """造成100%攻击力的{color=yellow|土属性}伤害并施加1回合的眩晕。如果未命中：对着首个目标身后的单位再次使用此技能。""",
+    SKILLGORING_RUSHDESCRIPT = """造成100%的物理{color=yellow|土属性}伤害并施加1回合的眩晕。如果未命中：对着首个目标身后的单位再次使用此技能。""",
     SKILLGRAZE_THE_GRASS = '啃食草地',
-    SKILLGRAZE_THE_GRASSDESCRIPT = """对一名目标造成110%攻击力的{color=yellow|土属性}伤害。如果目标拥有再生状态，则将其窃取。""",
+    SKILLGRAZE_THE_GRASSDESCRIPT = """对一名目标造成110%的物理{color=yellow|土属性}伤害。如果目标拥有再生状态，则将其窃取。""",
     SKILLGRAZE_THE_GRASS_PRIORITY = '啃食草地',
-    SKILLGRAZE_THE_GRASS_PRIORITYDESCRIPT = """(优先锁定拥有再生的目标) 对一名目标造成110%攻击力的{color=yellow|土属性}伤害。如果目标拥有再生状态，则将其窃取。""",
+    SKILLGRAZE_THE_GRASS_PRIORITYDESCRIPT = """(优先锁定拥有再生的目标) 对一名目标造成110%的物理{color=yellow|土属性}伤害。如果目标拥有再生状态，则将其窃取。""",
     SKILLWILD_TRAMPLING = '狂野践踏',
-    SKILLWILD_TRAMPLINGDESCRIPT = """对3个随机目标造成65%攻击力的伤害。每次命中都有几率施加眩晕。""",
+    SKILLWILD_TRAMPLINGDESCRIPT = """对3个随机目标造成65%的物理伤害。每次命中都有几率施加眩晕。""",
     SKILLHOW_DISSAPOINTING = '真是令人失望……',
-    SKILLHOW_DISSAPOINTINGDESCRIPT = """对所有敌人造成120%魔法攻击力的{color=yellow|土属性}伤害。有几率施加眩晕与束缚。""",
+    SKILLHOW_DISSAPOINTINGDESCRIPT = """对所有敌人造成120%的魔法{color=yellow|土属性}伤害。有几率施加眩晕与束缚。""",
     SKILLMUDDY_WATER = '浑浊之水',
-    SKILLMUDDY_WATERDESCRIPT = """对所有目标造成130%魔法攻击力的{color=yellow|水属性}伤害。施加潮湿。有几率施加致盲与束缚。""",
+    SKILLMUDDY_WATERDESCRIPT = """对所有目标造成130%的魔法{color=yellow|水属性}伤害。施加潮湿。有几率施加致盲与束缚。""",
     SKILLENCROACHING_DUSK = '夜幕降临',
     SKILLENCROACHING_DUSKDESCRIPT = """获得{color=aqua|暗淡之光}。""",
     SKILLNIGHT_NIGHT = '晚安',
-    SKILLNIGHT_NIGHTDESCRIPT = """对所有敌人造成10%魔法攻击力的{color=yellow|暗属性}伤害。对所有敌人施加{color=aqua|束缚之影}、{color=aqua|阴影之中}与致盲。""",
+    SKILLNIGHT_NIGHTDESCRIPT = """对所有敌人造成10%的魔法{color=yellow|暗属性}伤害。对所有敌人施加{color=aqua|束缚之影}、{color=aqua|阴影之中}与致盲。""",
     SKILLSILENT_NIGHT = '静谧之夜',
     SKILLSILENT_NIGHTDESCRIPT = """移除自身的沉默状态。获得{color=aqua|不洁之夜}。""",
     SKILLRAZE_THE_LIGHT = '毁灭之光',
-    SKILLRAZE_THE_LIGHTDESCRIPT = """对一列敌人造成90%魔法攻击力的{color=yellow|暗属性}伤害。施加{color=aqua|阴影之中}与致盲。如果目标已经处于{color=aqua|阴影之中}，则施加{color=aqua|束缚之影}。""",
+    SKILLRAZE_THE_LIGHTDESCRIPT = """对一列敌人造成90%的魔法{color=yellow|暗属性}伤害。施加{color=aqua|阴影之中}与致盲。如果目标已经处于{color=aqua|阴影之中}，则施加{color=aqua|束缚之影}。""",
     SKILLBUMP_IN_THE_NIGHT = '夜半惊魂',
-    SKILLBUMP_IN_THE_NIGHTDESCRIPT = """对一名目标造成130%魔法攻击力的{color=yellow|暗属性}伤害。施加流血、破甲与眩晕。""",
+    SKILLBUMP_IN_THE_NIGHTDESCRIPT = """对一名目标造成130%的魔法{color=yellow|暗属性}伤害。施加流血、破甲与眩晕。""",
 	SKILLSKEWING_SHADOW = """扭曲之影""",
-    SKILLSKEWING_SHADOWDESCRIPT = """对所有敌人造成70%魔法攻击力的{color=yellow|暗属性}伤害。对受{color=aqua|束缚之影}影响的目标额外造成250%的伤害。""",
+    SKILLSKEWING_SHADOWDESCRIPT = """对所有敌人造成70%的魔法{color=yellow|暗属性}伤害。对受{color=aqua|束缚之影}影响的目标额外造成250%的伤害。""",
     SKILLSUMMON_RANDOM_DK_GUARD = """呼唤援军""", 
     SKILLSUMMON_RANDOM_DK_GUARDDESCRIPT = """召唤一名矮人散兵、矮人盾卫或黑曜石魔像。""",
     SKILLKILL_THEM_NOW = """立刻杀了他们！""", 
@@ -1809,127 +1829,153 @@ SKILLARCANE_MASTERYDESCRIPT = """激活后，下一次施放的法术变为瞬�
     SKILLREGAL_INCENTIVE = """余将赐予汝等帝王的恩赏""", 
     SKILLFORCE_OVERLOAD = """让你的核心过载，就是现在！""", 
     SKILLCROSSBOWMEN_ON_MY_COMMAND = """弩兵听令！预备——！""", 
-    SKILLCROSSBOWMEN_ON_MY_COMMANDDESCRIPT = """呼叫箭雨打击一列敌人，造成65%攻击力的伤害。生命值越低，可使用次数越多。""",
+    SKILLCROSSBOWMEN_ON_MY_COMMANDDESCRIPT = """呼叫箭雨打击一列敌人，造成65%的物理伤害。生命值越低，可使用次数越多。""",
     SKILLDK_BLOW_EM_UP = """把他们全炸飞！！修理费本王亲自报销。""", 
     SKILLDK_BLOW_EM_UPDESCRIPT = """呼叫炮击轰炸他的敌人。
-对2-3个随机目标造成110%魔法攻击力的火焰伤害，有几率施加击倒。
+对2-3个随机目标造成110%的魔法火焰伤害，有几率施加击倒。
 重复2次。生命值越低，重复次数越多。""",
     SKILLEMPEROR_HAMMERFALL = """帝王天谴锤""", 
-    SKILLEMPEROR_HAMMERFALLDESCRIPT = """造成150%攻击力的{color=yellow|土属性}伤害并施加眩晕，随后释放冲击波对所有敌人造成30%攻击力的伤害，有几率施加击倒。""",
+    SKILLEMPEROR_HAMMERFALLDESCRIPT = """造成150%的物理{color=yellow|土属性}伤害并施加眩晕，随后释放冲击波对所有敌人造成30%的物理伤害，有几率施加击倒。""",
     SKILLOPEN_THE_MAGMA_CHAMBER = """够了！给老子把熔岩室的大门轰开！！！""", 
     SKILLOPEN_THE_MAGMA_CHAMBERDESCRIPT = """对所有敌人造成（190%魔法攻击力 + 34%目标最大生命值）的火焰魔法伤害。
 所有人（包括盟友和施法者本身）都会被施加燃烧状态。""",
     SKILLTREMOR_WAVE = """裂地碎震波""", 
-    SKILLTREMOR_WAVEDESCRIPT = """对所有敌人造成40%攻击力的{color=yellow|土属性}伤害。有几率施加击倒。""",
+    SKILLTREMOR_WAVEDESCRIPT = """对所有敌人造成40%的物理{color=yellow|土属性}伤害。有几率施加击倒。""",
     SKILLDOUBLE_BITTED_AXE = """双刃战斧""", 
-    SKILLDOUBLE_BITTED_AXEDESCRIPT = """攻击目标两次，每次命中造成60%攻击力的伤害。施加流血。""",
+    SKILLDOUBLE_BITTED_AXEDESCRIPT = """攻击目标两次，每次命中造成60%的物理伤害。施加流血。""",
     SKILLPRISMATIC_BEAM = """棱光折射激流""", 
-    SKILLPRISMATIC_BEAMDESCRIPT = """对单一目标造成130%魔法攻击力的光属性伤害。施加致盲。""",
+    SKILLPRISMATIC_BEAMDESCRIPT = """对单一目标造成130%的魔法光属性伤害。施加致盲。""",
     SKILROCK_SLIDE = """山崩落石""", 
-    SKILLROCK_SLIDEDESCRIPT = """向敌人投掷飞石，有几率造成90%魔法攻击力的{color=yellow|土属性}伤害。有几率使被击中的目标眩晕。""",
+    SKILLROCK_SLIDEDESCRIPT = """向敌人投掷飞石，有几率造成90%的魔法{color=yellow|土属性}伤害。有几率使被击中的目标眩晕。""",
     SKILLACCELERATING_PLUNGE = """极速坠击""", 
     SKILLACCELERATING_PLUNGEDESCRIPT = """如果该单位没有受到定身效果影响，则获得1层[{color=aqua|灾难动能}]。
 否则，净化所有定身效果。""",
     SKILLCOMET_DIVE = """彗星陨落""", 
-    SKILLCOMET_DIVEDESCRIPT = """对带有[{color=aqua|猛禽猎物}]的目标造成140%攻击力的伤害。
-当拥有2层及以上[{color=aqua|灾难动能}]时，引发冲击波，对所有敌人造成165%魔法攻击力的{color=yellow|风属性}伤害并施加击倒。该冲击波可被部分效果（如{color=aqua|大地护盾}）格挡。""",
+    SKILLCOMET_DIVEDESCRIPT = """对带有[{color=aqua|猛禽猎物}]的目标造成140%的物理伤害。
+当拥有2层及以上[{color=aqua|灾难动能}]时，引发冲击波，对所有敌人造成165%的魔法{color=yellow|风属性}伤害并施加击倒。该冲击波可被部分效果（如{color=aqua|大地护盾}）格挡。""",
     SKILLTORNADO = """撕裂龙卷""", 
     SKILLTORNADODESCRIPT = """召唤一道龙卷风。""",
     SKILLDOWNBURST_GUST = """强袭暴风""", 
-    SKILLDOWNBURST_GUSTDESCRIPT = """对每一排最前方的敌人造成120%魔法攻击力的{color=yellow|风属性}伤害。有几率施加击倒与致盲。""",
+    SKILLDOWNBURST_GUSTDESCRIPT = """对每一排最前方的敌人造成120%的魔法{color=yellow|风属性}伤害。有几率施加击倒与致盲。""",
     SKILLDEAFENING_SHRIEK = """刺耳尖叫""", 
-    SKILLDEAFENING_SHRIEKDESCRIPT = """造成40%魔法攻击力的{color=yellow|风属性}伤害。有几率施加眩晕与沉默。""",
+    SKILLDEAFENING_SHRIEKDESCRIPT = """造成40%的魔法{color=yellow|风属性}伤害。有几率施加眩晕与沉默。""",
     SKILLMULTILATE_PREY = """撕碎猎物""", 
-    SKILLMULTILATE_PREYDESCRIPT = """对目标造成3次60%攻击力的伤害，有几率施加流血。对被击倒及被定身的目标造成额外伤害。""",
+    SKILLMULTILATE_PREYDESCRIPT = """对目标造成3次60%的物理伤害，有几率施加流血。对被击倒及被定身的目标造成额外伤害。""",
     SKILLCHARGE_THROUGH = """强行突阵""", 
-    SKILLCHARGE_THROUGHDESCRIPT = """对一排敌人造成100%攻击力的伤害，有几率施加击倒。""",
+    SKILLCHARGE_THROUGHDESCRIPT = """对一排敌人造成100%的物理伤害，有几率施加击倒。""",
     SKILLSTORM_PATH = """风暴之径""", 
-    SKILLSTORM_PATHDESCRIPT = """对一排敌人造成130%魔法攻击力的{color=yellow|风属性}伤害。随机施加致盲、击倒或眩晕。对飞行中的敌人额外造成50%伤害并移除{color=aqua|飞行}状态。技能结束时：自身死亡。""",
+    SKILLSTORM_PATHDESCRIPT = """对一排敌人造成130%的魔法{color=yellow|风属性}伤害。随机施加致盲、击倒或眩晕。对飞行中的敌人额外造成50%伤害并移除{color=aqua|飞行}状态。技能结束时：自身死亡。""",
     SKILLSPLIT_ARMOR_SPILL_BLOOD = """碎甲沥血""",
-    SKILLSPLIT_ARMOR_SPILL_BLOODDESCRIPT = """攻击两次，每次命中造成45%攻击力的伤害。第一击施加破甲；第二击施加流血并附带50%的治疗削减。""",
+    SKILLSPLIT_ARMOR_SPILL_BLOODDESCRIPT = """攻击两次，每次命中造成45%的物理伤害。第一击施加破甲；第二击施加流血并附带50%的治疗削减。""",
     SKILLDUSTY_WHIRLWIND = """尘土旋风""",
-    SKILLDUSTY_WHIRLWINDDESCRIPT = """对近战列敌人造成85%攻击力的伤害，有几率施加致盲。""",
+    SKILLDUSTY_WHIRLWINDDESCRIPT = """对近战列敌人造成85%的物理伤害，有几率施加致盲。""",
     SKILLBLURRING_FLURRY_OF_BLADE = """幻影狂刃""",
-    SKILLBLURRING_FLURRY_OF_BLADEDESCRIPT = """命中敌人3次，每次造成35%攻击力的伤害。每次命中都有几率施加流血。获得{color=aqua|阴影之中}。""",
+    SKILLBLURRING_FLURRY_OF_BLADEDESCRIPT = """命中敌人3次，每次造成35%的物理伤害。每次命中都有几率施加流血。获得{color=aqua|阴影之中}。""",
     SKILLBLINDING_CROSS_SLASH = """致盲十字斩""",
-    SKILLBLINDING_CROSS_SLASHDESCRIPT = """对一排和一列的敌人造成25%攻击力的伤害。每次命中都有几率施加致盲。""",
+    SKILLBLINDING_CROSS_SLASHDESCRIPT = """对一排和一列的敌人造成25%的物理伤害。每次命中都有几率施加致盲。""",
     SKILLDISPOSAL = """肃清处理""",
-    SKILLDISPOSALDESCRIPT = """造成150%攻击力的伤害。对处于致盲和流血状态的敌人造成额外伤害。""",
+    SKILLDISPOSALDESCRIPT = """造成150%的物理伤害。对处于致盲和流血状态的敌人造成额外伤害。""",
     RUNNING_AWAY_TEXT = """%s：我得赶紧离开这个鬼地方！""",
     SKILLHOWLING_RISING_AXE = """战吼高举之斧""",
     SKILLHOWLING_RISING_AXEDESCRIPT = """高举战斧对敌人发出咆哮，试图恐吓他们。获得{color=aqua|巨斧高举}。有几率施加恐惧。""",
     SKILLCLUMSY_LOG_SPLITTER = """笨拙裂木斩""",
-    SKILLCLUMSY_LOG_SPLITTERDESCRIPT = """对目标造成155%攻击力的伤害……但这招的准头实在太差了。""",
+    SKILLCLUMSY_LOG_SPLITTERDESCRIPT = """对目标造成155%的物理伤害……但这招的准头实在太差了。""",
 	SKILLBRUTAL_AXE_SWING = """野蛮狂斧！""",
-    SKILLBRUTAL_AXE_SWINGDESCRIPT = """对一列上的所有敌人造成90%攻击力的伤害，但有时候也会砍到你的盟友。""",
+    SKILLBRUTAL_AXE_SWINGDESCRIPT = """对一列上的所有敌人造成90%的物理伤害，但有时候也会砍到你的盟友。""",
     SKILLFAT_BANDIT_CHARGE = """冲锋！！！""",
-    SKILLFAT_BANDIT_CHARGEDESCRIPT = """对一名目标造成110%攻击力的伤害。无论命中与否……自身都会受到反冲伤害。""",
+    SKILLFAT_BANDIT_CHARGEDESCRIPT = """对一名目标造成110%的物理伤害。无论命中与否……自身都会受到反冲伤害。""",
     SKILLCONFUSING_ORDER = """迷惑指令？""",
     SKILLCONFUSING_ORDERDESCRIPT = """赋予一名盟友{color=aqua|天才计划……？}增益！……但同时也会使其眩晕……""",
     SKILLREDHEAD_MASTERFUL_SWORDMANSHIP = """看好了！本大爷精湛的剑术！""",
-    SKILLREDHEAD_MASTERFUL_SWORDMANSHIPDESCRIPT = """攻击一名敌人3次，每次造成45%攻击力的伤害……不过准头极差。这基本上就是他拿着剑在乱挥。""",
+    SKILLREDHEAD_MASTERFUL_SWORDMANSHIPDESCRIPT = """攻击一名敌人3次，每次造成45%的物理伤害……不过准头极差。这基本上就是他拿着剑在乱挥。""",
     SKILLBEAT_EM_UP = """干碎他们！""",
-    SKILLBEAT_EM_UPDESCRIPT = """命令包括施法者在内的所有盟友攻击近战范围内的一名随机敌人，造成100%攻击力的伤害。不过他们有几率会不小心打到彼此。""",
+    SKILLBEAT_EM_UPDESCRIPT = """命令包括施法者在内的所有盟友攻击近战范围内的一名随机敌人，造成100%的物理伤害。不过他们有几率会不小心打到彼此。""",
     SKILLREDHEAD_MAGIC = """巫术秘法：地狱火弹！！""",
     SKILLREDHEAD_MAGICDESCRIPT = """老大的最强魔法大招！！绝对能造成成吨的火焰伤害！（紧张地干笑）……做好准备吧！""",
     SKILLSTRAIGHT_FORWARD_SLASH = """平平无奇的挥砍""",
-    SKILLSTRAIGHT_FORWARD_SLASHDESCRIPT = """造成相当于85%攻击力的物理伤害。这招最特别的地方就在于它毫无特别之处！""",
+    SKILLSTRAIGHT_FORWARD_SLASHDESCRIPT = """造成相当于85%的物理物理伤害。这招最特别的地方就在于它毫无特别之处！""",
     SKILLGOD_THIS_IS_EMBARRASSING = """天哪，这太尴尬了……""",
     SKILLGOD_THIS_IS_EMBARRASSINGDESCRIPT = """什么也不做。""",
     SKILLFLIMSY_DAGGER_TOSS = """软弱无力的飞匕""",
-    SKILLFLIMSY_DAGGER_TOSSDESCRIPT = """对一名敌人进行远程攻击，造成65%攻击力的伤害……前提是能打中。""",
+    SKILLFLIMSY_DAGGER_TOSSDESCRIPT = """对一名敌人进行远程攻击，造成65%的物理伤害……前提是能打中。""",
     SKILLDONT_MIND_ME = """……别管我""",
     SKILLDONT_MIND_MEDESCRIPT = """获得'{color=aqua|阴影之中}'。""",
-	SKILL_ASMEDAI_LUST_DRAIN = """Ashmedai drain %s's lust to empower himself!
-""", # MISSING TRANSLATION
-	SKILLBAD_TOUCH = """Bad Touch""", # MISSING TRANSLATION
-	SKILLBAD_TOUCHDESCRIPT = """Deal 90% ATK damage to a target. Inflict {color=aqua|Arousal} on hit.""", # MISSING TRANSLATION
-	SKILLAMBUSHING_TENDRILS = """Ambushing Tendrils""", # MISSING TRANSLATION
-	SKILLAMBUSHING_TENDRILSDESCRIPT = """Apply Tendril Trap to random enemies. The trap activates when the target uses a spell.""", # MISSING TRANSLATION
-	SKILLVILE_PHEROMONE = """Vile Pheromone""", # MISSING TRANSLATION
-	SKILLVILE_PHEROMONEDESCRIPT = """Deal {color=yellow|Mind} damage to all enemies. Inflict 1–5 {color=aqua|Arousal}.""", # MISSING TRANSLATION
-	SKILLAPHRODISIAC_BOMBARDMENT = """Aphrodisiac Bombardment""", # MISSING TRANSLATION
-	SKILLAPHRODISIAC_BOMBARDMENTDESCRIPT = """Deal 65% MATK {color=yellow|Dark} damage to random enemies. Inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
-	SKILLTIDE_OF_TENTACLES = """Tide of Tentacles""", # MISSING TRANSLATION
-	SKILLTIDE_OF_TENTACLESDESCRIPT = """Deal 85% ATK {color=yellow|Dark} damage to the front-most enemy in each row. Inflict {color=aqua|Ensnared}.""", # MISSING TRANSLATION
-	SKILLASHMEDAI_WWBOP = """Welcome to My Belly, the Bed of Pleasure""", # MISSING TRANSLATION
-	SKILLASHMEDAI_WWBOPDESCRIPT = """Can only be used on a {color=aqua|Stunned} target.
-{color=aqua|Swallow} a target. A {color=aqua|Swallowed} target cannot act, cannot be healed by allies, and loses 20% HP at the start of its turn.""", # MISSING TRANSLATION
-	SKILLASHMEDAI_REGEN_APPENDAGE = """Regenerate Appendage""", # MISSING TRANSLATION
-	SKILLASHMEDAI_REGEN_APPENDAGEDESCRIPT = """Revive a Tentacle Appendage at the cost of the user's HP.""", # MISSING TRANSLATION
-	SKILLTENTACLE_LASSO = """Tentacle Lasso""", # MISSING TRANSLATION
-	SKILLTENTACLE_LASSODESCRIPT = """Deal damage and inflict {color=aqua|Ensnared} for 3 turns.""", # MISSING TRANSLATION
-	SKILLSTICKY_FLUIDS = """Sticky Fluids""", # MISSING TRANSLATION
-	SKILLSTICKY_FLUIDSDESCRIPT = """Deal 65% MATK {color=yellow|Water} damage to 1–3 random enemies with a chance to inflict {color=aqua|Ensnared} for 2 turns.""", # MISSING TRANSLATION
-	SKILLCONSTRICTING_BIND = """Constricting Bind""", # MISSING TRANSLATION
-	SKILLCONSTRICTING_BINDDESCRIPT = """Can only be used on {color=aqua|Ensnared} targets.
-Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
-	SKILLBURST_FORTH_MY_PULSING_FLESH = """Burst Forth My Pulsing Flesh!""", # MISSING TRANSLATION
-	SKILLBURST_FORTH_MY_PULSING_FLESHDESCRIPT = """Revive all Tentacle Appendages. Deal {color=yellow|Dark} damage to all enemies with a chance to inflict {color=aqua|Stunned}.""", # MISSING TRANSLATION
-	SKILLUMBRAL_REIGN = """Umbral Reign""", # MISSING TRANSLATION
-	SKILLUMBRAL_REIGNDESCRIPT = """Inflict In the Shadow, Blind, and Lost in Darkness.""", # MISSING TRANSLATION
-	SKILLSHADOW_MADE_MANIFEST = """Shadow Made Manifest""", # MISSING TRANSLATION
-	SKILLSHADOW_MADE_MANIFESTDESCRIPT = """Summon a Shadow Monstrosity.""", # MISSING TRANSLATION
-	SKILLSTYGIAN_WAILING = """Stygian Wailing""", # MISSING TRANSLATION
-	SKILLSTYGIAN_WAILINGDESCRIPT = """Deal low {color=yellow|Dark} magic damage to all enemies. Chance to inflict Silence and Fear.""", # MISSING TRANSLATION
-	SKILLTENEBROUS_RAKE = """Tenebrous Rake""", # MISSING TRANSLATION
-	SKILLTENEBROUS_RAKEDESCRIPT = """Deal {color=yellow|Dark} physical damage to enemies in the melee line and inflict Bleed.""", # MISSING TRANSLATION
-	SKILLVOID_DELUGE = """Void Deluge""", # MISSING TRANSLATION
-	SKILLVOID_DELUGEDESCRIPT = """Deal {color=yellow|Dark} magic damage to random targets. Chance to inflict Blind.""", # MISSING TRANSLATION
-	SKILLCALIGINOUS_UNDULATION = """Caliginous Undulation""", # MISSING TRANSLATION
-	SKILLCALIGINOUS_UNDULATIONDESCRIPT = """Deal {color=yellow|Dark} damage to the front-most enemies in each row and inflict Blind.
-	Stun blinded targets.""", # MISSING TRANSLATION
-	SKILLNIXX_ULT = """Pulvis et Umbra Estis!""", # MISSING TRANSLATION
-	SKILLNIXX_ULTDESCRIPT = """Deal {color=yellow|Dark} magic damage to all enemies.
-	Deal increased damage to Blind enemies.
-	Inflict healing reduction on all enemies.
-	Put out Brazier afterward.""", # MISSING TRANSLATION
-	SKILLNOTHING = """Nothing""", # MISSING TRANSLATION
-	SKILLNOTHINGDESCRIPT = """Do nothing.""", # MISSING TRANSLATION
-	SKILLSMOTHER_THE_FLAME = """Smother the Flame""", # MISSING TRANSLATION
-	SKILLSMOTHER_THE_FLAMEDESCRIPT = """Can only target an Unlit Brazier. Heal for 100% of this unit's ATK and remove Burn.""", # MISSING TRANSLATION
-	SKILLBUMP_IN_THE_MIDNIGHT = """Bump in the Midnight""", # MISSING TRANSLATION
-	SKILLBUMP_IN_THE_MIDNIGHTDESCRIPT = """Deal {color=yellow|Dark} physical damage to a target. Inflict Bleed, Shred, and Fear.""", # MISSING TRANSLATION
+	SKILL_ASMEDAI_LUST_DRAIN = """阿什梅代榨取了%s的情欲来强化自己！
+""", 
+    SKILLBAD_TOUCH = """猥亵触碰""", 
+    SKILLBAD_TOUCHDESCRIPT = """对目标造成90%的攻击伤害。命中时施加{color=aqua|发情}。""", 
+    SKILLAMBUSHING_TENDRILS = """伏击触须""", 
+    SKILLAMBUSHING_TENDRILSDESCRIPT = """对随机敌人施加触须陷阱。陷阱会在目标使用法术时触发。""", 
+    SKILLVILE_PHEROMONE = """淫靡费洛蒙""", 
+    SKILLVILE_PHEROMONEDESCRIPT = """对所有敌人造成{color=yellow|精神}伤害。施加1–5层{color=aqua|发情}。""", 
+    SKILLAPHRODISIAC_BOMBARDMENT = """催情轰炸""", 
+    SKILLAPHRODISIAC_BOMBARDMENTDESCRIPT = """对随机敌人造成65% 的魔法{color=yellow|暗属性}伤害。施加{color=aqua|发情}。""", 
+    SKILLTIDE_OF_TENTACLES = """触手狂潮""", 
+    SKILLTIDE_OF_TENTACLESDESCRIPT = """对每排最前方的敌人造成85% 的物理{color=yellow|暗属性}伤害。施加{color=aqua|束缚}。""", 
+    SKILLASHMEDAI_WWBOP = """欢迎来到我的胃袋，这欢愉的温床""", 
+    SKILLASHMEDAI_WWBOPDESCRIPT = """只能对{color=aqua|眩晕}的目标使用。
+{color=aqua|吞噬}一名目标。被{color=aqua|吞噬}的目标无法行动，无法被队友治疗，并在回合开始时损失20%的HP。""", 
+    SKILLASHMEDAI_REGEN_APPENDAGE = """肢体再生""", 
+    SKILLASHMEDAI_REGEN_APPENDAGEDESCRIPT = """消耗自身HP，复活一条触手肢体。""", 
+    SKILLTENTACLE_LASSO = """触手套索""", 
+    SKILLTENTACLE_LASSODESCRIPT = """造成伤害并施加{color=aqua|束缚}，持续3回合。""", 
+    SKILLSTICKY_FLUIDS = """黏稠淫液""", 
+    SKILLSTICKY_FLUIDSDESCRIPT = """对1–3名随机敌人造成65% 魔力的{color=yellow|水属性}伤害，有几率施加{color=aqua|束缚}，持续2回合。""", 
+    SKILLCONSTRICTING_BIND = """窒息紧缚""", 
+    SKILLCONSTRICTING_BINDDESCRIPT = """只能对{color=aqua|束缚}的目标使用。
+造成130% 攻击力伤害并施加{color=aqua|发情}。""", 
+    SKILLBURST_FORTH_MY_PULSING_FLESH = """勃发吧，我悸动的欲肉！""", 
+    SKILLBURST_FORTH_MY_PULSING_FLESHDESCRIPT = """复活所有触手肢体。对所有敌人造成{color=yellow|暗属性}伤害，有几率施加{color=aqua|眩晕}。""", 
+    SKILLUMBRAL_REIGN = """暗影统治""", 
+    SKILLUMBRAL_REIGNDESCRIPT = """施加阴影笼罩、致盲与迷失黑暗。""", 
+    SKILLSHADOW_MADE_MANIFEST = """具象之影""", 
+    SKILLSHADOW_MADE_MANIFESTDESCRIPT = """召唤一只暗影畸变体。""", 
+    SKILLSTYGIAN_WAILING = """幽冥恸哭""",
+	SKILLSTYGIAN_WAILINGDESCRIPT = """对所有敌人造成少量的{color=yellow|暗属性}魔法伤害。有几率施加沉默与恐惧。""", 
+    SKILLTENEBROUS_RAKE = """幽暗撕裂""", 
+    SKILLTENEBROUS_RAKEDESCRIPT = """对近战范围的敌人造成{color=yellow|暗属性}物理伤害并施加流血。""", 
+    SKILLVOID_DELUGE = """虚空狂潮""", 
+    SKILLVOID_DELUGEDESCRIPT = """对随机目标造成{color=yellow|暗属性}魔法伤害。有几率施加致盲。""", 
+    SKILLCALIGINOUS_UNDULATION = """冥暗波动""", 
+    SKILLCALIGINOUS_UNDULATIONDESCRIPT = """对每排最前方的敌人造成{color=yellow|暗属性}伤害并施加致盲。
+    眩晕被致盲的目标。""", 
+    SKILLNIXX_ULT = """尔等皆为尘与影！""", 
+    SKILLNIXX_ULTDESCRIPT = """对所有敌人造成{color=yellow|暗属性}魔法伤害。
+    对被致盲的敌人造成额外伤害。
+    对所有敌人施加治疗削减效果。
+    随后熄灭火盆。""", 
+    SKILLNOTHING = """无""", 
+    SKILLNOTHINGDESCRIPT = """什么也不做。""", 
+    SKILLSMOTHER_THE_FLAME = """闷熄火焰""", 
+    SKILLSMOTHER_THE_FLAMEDESCRIPT = """只能以未点燃的火盆为目标。恢复相当于该单位100% 的物理生命值并移除燃烧状态。""", 
+    SKILLBUMP_IN_THE_MIDNIGHT = """子夜惊魂""", 
+    SKILLBUMP_IN_THE_MIDNIGHTDESCRIPT = """对一名目标造成{color=yellow|暗属性}物理伤害。施加流血、破甲与恐惧。""",
+	SKILLGLINT_OF_THE_SWORD = """Glint of the Sword""", # MISSING TRANSLATION
+	SKILLGLINT_OF_THE_SWORDDESCRIPT = """Stealth-casting skill.
+Deal physical damage to a target and inflict {color=aqua|Blind}.
+If the target is already {color=aqua|Blind}, gain {color=aqua|In the Shadow}.""", # MISSING TRANSLATION
+	SKILLLACERATING_DANCE = """Lacerating Dance""", # MISSING TRANSLATION
+	SKILLLACERATING_DANCEDESCRIPT = """Stealth-casting skill.
+Deal low physical damage to random targets and inflict {color=aqua|Bleed}.
+If a target is {color=aqua|Blind}, also inflict {color=aqua|Shred}.
+If the user is {color=aqua|In the Shadow}, deal increased damage.""", # MISSING TRANSLATION
+	SKILLISOLATE = """Isolate""", # MISSING TRANSLATION
+	SKILLISOLATEDESCRIPT = """Stealth-casting skill.
+Deal physical damage to a backline target and inflict {color=aqua|Blind} on all enemies other than the target.
+If the user is {color=aqua|In the Shadow}, inflict {color=aqua|Close Confrontation} on the main target.""", # MISSING TRANSLATION
+	SKILLDISENGAGE = """Disengage""", # MISSING TRANSLATION
+	SKILLDISENGAGEDESCRIPT = """Deal low physical damage to a melee target.
+Remove {color=aqua|Disarm}, {color=aqua|Taunt}, {color=aqua|Blind}, {color=aqua|Ensnare}, {color=aqua|Burn}, and {color=aqua|Wet} from self.
+Heal self for a small portion of Max HP.
+Gain {color=aqua|In the Shadow} and {color=aqua|Tightened Grip}.""", # MISSING TRANSLATION
+	SKILLWAKE_OF_BLACKENED_BLADE = """Wake of Blackened Blade""", # MISSING TRANSLATION
+	SKILLWAKE_OF_BLACKENED_BLADEDESCRIPT = """Deal {color=yellow|Dark} damage to the front-most enemies in each row and inflict {color=aqua|Blind}.
+Gain {color=aqua|Blackened Blade}.""", # MISSING TRANSLATION
+	SKILLGREG_LAST_BARK = """I Hate... All of You... All of THIS!!""", # MISSING TRANSLATION
+	SKILLGREG_LAST_BARKDESCRIPT = """Repeatedly deal physical damage to a target.
+Sequentially inflict {color=aqua|Ensnare}, {color=aqua|Disarm}, {color=aqua|Blind}, and {color=aqua|Shred}.
+The last hit deals increased damage.
+{color=red|On Kill: Reset cooldown.}""", # MISSING TRANSLATION
 	STATUSDESC_BLEED = """流血：每回合受到 10% 最大生命值的真实伤害。""",
 	STATUSDESC_POISON = """中毒：每回合受到 10% 最大生命值的真实伤害。""",
 	STATUSDESC_BURN = """灼烧：每回合受到 8% 最大生命值的火系伤害。""",
@@ -1949,7 +1995,7 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	STATUSDESC_BLIND = """致盲：命中率降低 50。""",
 	STATUSDESC_CURSED = """诅咒：除真实伤害外，所有抗性降低 40。""",
 	STATUSDESC_STUN = """眩晕：无法行动。""",
-	STATUSDESC_SHATTER = """粉碎：魔法防御力降低 50%。最多可叠加 2 层。""",
+	STATUSDESC_SHATTER = """粉碎：魔魔防御力降低 50%。最多可叠加 2 层。""",
 	TRAITVIGORDESCRIPT = """生命恢复速度提升 30%。""",
 	TRAITMEDITATIONDESCRIPT = """法力恢复速度提升 30%。""",
 	MASTERYBLOCKSRC = """被 %s 阻挡：%s""",
@@ -2095,72 +2141,72 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	SERVANTUNLOCK_UNLOCKED = """解锁""",
 	SERVANTUNLOCK_LOCKED = """锁定""",
 	SERVANTUNLOCK_TALK_BUTTON = """交谈""",
-	SERVANTUNLOCK_TALK_BUTTON_COOLDOWN = """Negotiate (%d days)""", # MISSING TRANSLATION
-	SERVANTUNLOCK_LEAVE = """Leave""", # MISSING TRANSLATION
-	SERVANTUNLOCK_DIALOGUE_TEXT = """你想要 %s 学什么?""",
-	SERVANTUNLOCK_REQ_AFFECTION = """needs 25+ Affection""", # MISSING TRANSLATION
-	SERVANTUNLOCK_REQ_CONSENT = """needs 2+ Consent""", # MISSING TRANSLATION
-	SERVANTUNLOCK_REQ_SEX_ACCESS = """[name] isn't ready to engage with these topics at this moment""", # MISSING TRANSLATION
-	CHARLOG_SEX_ACCESS_UNLOCKED = """has opened to more intimate options.""", # MISSING TRANSLATION
-	NEGOTIATION_PAY = """Offer %d gold for this""", # MISSING TRANSLATION
-	NEGOTIATION_PERSUADE_CHARGE = """[Persuasion Challenge] Try to convince [him]""", # MISSING TRANSLATION
-	NEGOTIATION_PERSUADE_BREAK = """Offer [him] a couple days off first""", # MISSING TRANSLATION
-	NEGOTIATION_CANCEL = """Never mind""", # MISSING TRANSLATION
-	NEGOTIATION_HESITATION_BREAK = """%s complains [he] already has too much on [his] hands and could use a break.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_BREAK = """[He] agreed to your proposal, and will follow through once [his] break is over.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_FORCE_BREAKDOWN = """The ordeal was too much, and [he] needs some time alone to recover.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_INSTANT = """[He] doesn't even hesitate — [his] trust in you makes this an easy yes.""", # MISSING TRANSLATION
-	NEGOTIATION_UNLOCKED_TEXT = """%s has accepted [his] new duty: %s.""", # MISSING TRANSLATION
-	NEGOTIATION_HESITATION_WORKING_CHARGE = """%s hesitates, unsure about taking on more responsibility.""", # MISSING TRANSLATION
-	NEGOTIATION_HESITATION_WORKING_FORCE = """%s flatly refuses, arguing with a hint of entitlement that [he] already does enough for you.""", # MISSING TRANSLATION
-	NEGOTIATION_PERSUADE_FORCE_WORKING = """Remind [him] who's in charge""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_PAID_WORKING = """Slip [him] %d gold as a bonus. [His] resolve crumbles, and [he] caves in, agreeing to take on more work.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_CHARGE_WORKING = """Won [him] over with a Persuasion Challenge. [He] agreed to take on more work.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_FORCE_WORKING = """Made it clear this wasn't a request, browbeating [him] until [he] reluctantly gives in and agrees to work harder. [His] respect for you falls by %d and [his] affection by %d.""", # MISSING TRANSLATION
-	NEGOTIATION_HESITATION_COMBAT_CHARGE = """%s hesitates, unsure about taking on the danger of fighting for you.""", # MISSING TRANSLATION
-	NEGOTIATION_HESITATION_COMBAT_FORCE = """%s flatly refuses, arguing with a hint of entitlement that risking [his] life isn't part of the deal.""", # MISSING TRANSLATION
-	NEGOTIATION_PERSUADE_FORCE_COMBAT = """Remind [him] that refusal isn't an option""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_PAID_COMBAT = """Slip [him] %d gold as a bonus. [His] resolve crumbles, and [he] caves in, agreeing to fight for you.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_CHARGE_COMBAT = """Won [him] over with a Persuasion Challenge. [He] agreed to fight for you.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_FORCE_COMBAT = """Made it clear refusal wasn't an option, intimidating [him] until [he] reluctantly gives in and agrees to fight. [His] respect for you falls by %d and [his] affection by %d.""", # MISSING TRANSLATION
-	NEGOTIATION_HESITATION_DATING_CHARGE = """%s hesitates, unsure about taking on that kind of closeness with you.""", # MISSING TRANSLATION
-	NEGOTIATION_HESITATION_DATING_FORCE = """%s flatly refuses, arguing with a hint of entitlement that [he] shouldn't be rushed into that kind of closeness.""", # MISSING TRANSLATION
-	NEGOTIATION_PERSUADE_FORCE_DATING = """Insist that [he] stop being so shy about it""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_PAID_DATING = """Slip [him] %d gold as a gift. [His] resolve crumbles, and [he] caves in, agreeing to date you.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_CHARGE_DATING = """Won [him] over with a Persuasion Challenge. [He] agreed to date you.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_FORCE_DATING = """Brushed aside [his] hesitation with a firm hand, forcing [him] to reluctantly agree to date you. [His] respect for you falls by %d and [his] affection by %d.""", # MISSING TRANSLATION
-	NEGOTIATION_HESITATION_SEX_CHARGE = """%s hesitates, unsure about taking on that responsibility.""", # MISSING TRANSLATION
-	NEGOTIATION_HESITATION_SEX_FORCE = """%s flatly refuses, arguing with a hint of entitlement that [his] body isn't part of the arrangement.""", # MISSING TRANSLATION
-	NEGOTIATION_PERSUADE_FORCE_SEX = """Remind [him] that [his] body belongs to you now""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_PAID_SEX = """Slip [him] %d gold as a bonus. [His] resolve crumbles, and [he] caves in, agreeing to serve this way.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_CHARGE_SEX = """Won [him] over with a Persuasion Challenge. [He] agreed to serve this way.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_FORCE_SEX = """Made it clear [his] body belongs to you, forcing [him] to reluctantly agree to serve this way. [His] respect for you falls by %d and [his] affection by %d.""", # MISSING TRANSLATION
-	NEGOTIATION_HESITATION_SEXSERVICE_CHARGE = """%s hesitates, unsure about taking on that kind of responsibility.""", # MISSING TRANSLATION
-	NEGOTIATION_HESITATION_SEXSERVICE_FORCE = """%s flatly refuses, arguing with a hint of entitlement that being sold to strangers was never part of the deal.""", # MISSING TRANSLATION
-	NEGOTIATION_PERSUADE_FORCE_SEXSERVICE = """Remind [him] that [his] consent was never really needed""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_PAID_SEXSERVICE = """Slip [him] %d gold as a bonus. [His] resolve crumbles, and [he] caves in, accepting [his] new role.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_CHARGE_SEXSERVICE = """Won [him] over with a Persuasion Challenge. [He] agreed to it.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_FORCE_SEXSERVICE = """Made it clear [his] consent was never needed, forcing [him] to reluctantly accept [his] new role. [His] respect for you falls by %d and [his] affection by %d.""", # MISSING TRANSLATION
-	TRAININGRESULT_FAIL = """失败""",
-	TRAININGRESULT_RESIST = """抵抗""",
-	TRAININGRESULT_SUCCESS = """成功""",
-	TRAININGRESULT_CRIT_SUCCESS = """大-成功""",
-	CHANCELOG_DEBUG_NOTE = """[Debug Info - disposition not actually known]""", # MISSING TRANSLATION
-	CHANCELOG_BASE = """Base (%s): Fail %.0f, Resist %.0f, Success %.0f, Crit %.0f""", # MISSING TRANSLATION
-	CHANCELOG_TAMEFACTOR = """Tame Factor (%.0f): %s""", # MISSING TRANSLATION
-	CHANCELOG_SRC_TRAINERCLASS = """Trainer (%s)""", # MISSING TRANSLATION
-	CHANCELOG_SRC_DISPOSITION = """Disposition (%s)""", # MISSING TRANSLATION
-	CHANCELOG_FINAL = """Final: Fail %.0f%%, Resist %.0f%%, Success %.0f%%, Crit %.0f%%""", # MISSING TRANSLATION
-	CHANCELOG_FAIL = """Fail""", # MISSING TRANSLATION
-	CHANCELOG_RESIST = """Resist""", # MISSING TRANSLATION
-	CHANCELOG_SUCCESS = """Success""", # MISSING TRANSLATION
-	CHANCELOG_CRIT_SUCCESS = """Crit""", # MISSING TRANSLATION
+    SERVANTUNLOCK_TALK_BUTTON_COOLDOWN = """交谈（%d天）""",
+    SERVANTUNLOCK_LEAVE = """离开""",
+    SERVANTUNLOCK_DIALOGUE_TEXT = """你想要 %s 学什么?""",
+    SERVANTUNLOCK_REQ_AFFECTION = """需要25+好感度""",
+    SERVANTUNLOCK_REQ_CONSENT = """需要2+同意度""",
+    SERVANTUNLOCK_REQ_SEX_ACCESS = """[name]此刻还没准备好接触这些话题""",
+    CHARLOG_SEX_ACCESS_UNLOCKED = """已经开放了更亲密的选项。""",
+    NEGOTIATION_PAY = """为此提供%d金币""",
+    NEGOTIATION_PERSUADE_CHARGE = """[说服判定] 尝试说服[him]""",
+    NEGOTIATION_PERSUADE_BREAK = """先给[him]放几天假作为条件""",
+    NEGOTIATION_CANCEL = """算了""",
+    NEGOTIATION_HESITATION_BREAK = """%s抱怨说[he]手头的事情已经太多了，需要休息一下。""",
+    NEGOTIATION_LOG_BREAK = """[He]同意了你的提议，并在[his]休息结束后开始执行。""",
+    NEGOTIATION_LOG_FORCE_BREAKDOWN = """这折磨实在太过分了，[he]需要独处一段时间来恢复。""",
+    NEGOTIATION_LOG_INSTANT = """[He]甚至没有丝毫犹豫——[his]对你的信任让[he]爽快地答应了。""",
+    NEGOTIATION_UNLOCKED_TEXT = """%s接受了[his]的新职责：%s。""",
+    NEGOTIATION_HESITATION_WORKING_CHARGE = """%s犹豫了，不确定是否要承担更多的责任。""",
+    NEGOTIATION_HESITATION_WORKING_FORCE = """%s断然拒绝，带着一丝理直气壮争辩说，[he]为你做的已经够多了。""",
+    NEGOTIATION_PERSUADE_FORCE_WORKING = """提醒[him]谁才是这里的主人""",
+    NEGOTIATION_LOG_PAID_WORKING = """塞给[him]%d金币作为奖赏。[His]防线瞬间崩溃，只能乖乖屈服，同意承担更多工作。""",
+    NEGOTIATION_LOG_CHARGE_WORKING = """通过说服判定赢得了[his]的同意。[He]答应接下更多工作。""",
+    NEGOTIATION_LOG_FORCE_WORKING = """让[he]清楚这根本不是请求，通过威逼利诱直到[he]勉强屈服并同意更加卖力地干活。[His]对你的尊重下降了%d，好感度下降了%d。""",
+    NEGOTIATION_HESITATION_COMBAT_CHARGE = """%s犹豫了，不确定是否要为你承担战斗的危险。""",
+    NEGOTIATION_HESITATION_COMBAT_FORCE = """%s断然拒绝，带着一丝理直气壮争辩说，冒着生命危险可不在这笔交易的范围内。""",
+    NEGOTIATION_PERSUADE_FORCE_COMBAT = """提醒[him]拒绝根本不是一个选项""",
+    NEGOTIATION_LOG_PAID_COMBAT = """塞给[him]%d金币作为奖赏。[His]防线瞬间崩溃，只能乖乖屈服，同意为你战斗。""",
+    NEGOTIATION_LOG_CHARGE_COMBAT = """通过说服判定赢得了[his]的同意。[He]答应为你战斗。""",
+    NEGOTIATION_LOG_FORCE_COMBAT = """让[he]清楚拒绝根本不是选项，通过恐吓直到[he]勉强屈服并同意为你战斗。[His]对你的尊重下降了%d，好感度下降了%d。""",
+    NEGOTIATION_HESITATION_DATING_CHARGE = """%s犹豫了，不确定是否要和你建立那种亲密的关系。""",
+    NEGOTIATION_HESITATION_DATING_FORCE = """%s断然拒绝，带着一丝理直气壮争辩说，不该强迫[him]这么快建立那种亲密关系。""",
+    NEGOTIATION_PERSUADE_FORCE_DATING = """强硬要求[he]别再这么害羞了""",
+	NEGOTIATION_LOG_PAID_DATING = """塞给[him]%d金币作为礼物。[His]心理防线崩塌，只能乖乖屈服，同意和你约会。""", 
+    NEGOTIATION_LOG_CHARGE_DATING = """通过说服判定赢得了[his]的同意。[He]答应和你约会。""", 
+    NEGOTIATION_LOG_FORCE_DATING = """用强势的手段扫清了[his]的犹豫，强迫[him]半推半就地同意和你约会。[His]对你的尊重下降了%d，好感度下降了%d。""", 
+    NEGOTIATION_HESITATION_SEX_CHARGE = """%s犹豫了，不确定是否要承担这种侍奉的责任。""", 
+    NEGOTIATION_HESITATION_SEX_FORCE = """%s断然拒绝，带着一丝理直气壮争辩说，[his]的身体可不在协议的范围内。""", 
+    NEGOTIATION_PERSUADE_FORCE_SEX = """提醒[him][his]的肉体现在属于你""", 
+    NEGOTIATION_LOG_PAID_SEX = """塞给[him]%d金币作为奖赏。[His]防线瞬间崩溃，只能乖乖屈服，同意以这种方式侍奉你。""", 
+    NEGOTIATION_LOG_CHARGE_SEX = """通过说服判定赢得了[his]的同意。[He]答应以这种方式侍奉你。""", 
+    NEGOTIATION_LOG_FORCE_SEX = """让[he]清楚[his]的肉体属于你，强迫[him]勉强同意以这种方式侍奉你。[His]对你的尊重下降了%d，好感度下降了%d。""", 
+    NEGOTIATION_HESITATION_SEXSERVICE_CHARGE = """%s犹豫了，不确定是否要承担那种性质的责任。""", 
+    NEGOTIATION_HESITATION_SEXSERVICE_FORCE = """%s断然拒绝，带着一丝理直气壮争辩说，被卖给陌生人欢愉可从来不在交易范围内。""", 
+    NEGOTIATION_PERSUADE_FORCE_SEXSERVICE = """提醒[him][his]的许可根本就不重要""", 
+    NEGOTIATION_LOG_PAID_SEXSERVICE = """塞给[him]%d金币作为奖赏。[His]防线瞬间崩溃，只能屈服接受[his]的新角色。""", 
+    NEGOTIATION_LOG_CHARGE_SEXSERVICE = """通过说服判定赢得了[his]的同意。[He]答应了此事。""", 
+    NEGOTIATION_LOG_FORCE_SEXSERVICE = """强硬地表明根本不需要[his]的同意，迫使[him]不得不接受[his]的新角色。[His]对你的尊重下降了%d，好感度下降了%d。""", 
+    TRAININGRESULT_FAIL = """失败""",
+    TRAININGRESULT_RESIST = """抵抗""",
+    TRAININGRESULT_SUCCESS = """成功""",
+    TRAININGRESULT_CRIT_SUCCESS = """大-成功""",
+    CHANCELOG_DEBUG_NOTE = """[调试信息 - 实际性情未知]""", 
+    CHANCELOG_BASE = """基础 (%s)：失败 %.0f，抵抗 %.0f，成功 %.0f，大成功 %.0f""", 
+    CHANCELOG_TAMEFACTOR = """驯化系数 (%.0f)：%s""", 
+    CHANCELOG_SRC_TRAINERCLASS = """调教师 (%s)""", 
+    CHANCELOG_SRC_DISPOSITION = """性情 (%s)""", 
+    CHANCELOG_FINAL = """最终：失败 %.0f%%，抵抗 %.0f%%，成功 %.0f%%，大成功 %.0f%%""", 
+    CHANCELOG_FAIL = """失败""", 
+    CHANCELOG_RESIST = """抵抗""", 
+    CHANCELOG_SUCCESS = """成功""", 
+    CHANCELOG_CRIT_SUCCESS = """大成功""",
 	TRAININGCOMPLETEDANNOUNCE = """%s 的修炼结束.""",
-	TRAININGBROKENINANNOUNCE = """%s is broken in.""", # MISSING TRANSLATION
-	TRAININGNEGATIVETRAITGAINED = """%s's resistance to training has left a mark: acquired %s.""", # MISSING TRANSLATION
-	TRAININGDECAYSIN = """Loyalty decays in %d day(s) (-%.0f/day)""", # MISSING TRANSLATION
-	TRAININGDECAYING = """Loyalty is decaying: -%.0f/day""", # MISSING TRANSLATION
-	LOYALTYDECAYTOOLTIP = """Loyalty decays if the slave goes too long without training. Decay speed and grace period depend on Authority Factor.""", # MISSING TRANSLATION
+	TRAININGBROKENINANNOUNCE = """%s已经被彻底调教顺服。""", 
+    TRAININGNEGATIVETRAITGAINED = """%s对调教的顽抗留下了烙印：获得了%s。""", 
+    TRAININGDECAYSIN = """忠诚度将在 %d 天后开始衰减（-%.0f/天）""", 
+    TRAININGDECAYING = """忠诚度正在衰减：-%.0f/天""", 
+    LOYALTYDECAYTOOLTIP = """如果奴隶太久没有接受调教，忠诚度就会下降。衰减速度与宽限期取决于威严系数。""",
 	TRAININGSTATUS1 = """精神状态：崩溃""",
 	TRAININGSTATUS2 = """精神状态：受损""",
 	TRAININGSTATUS3 = """精神状态：保留""",
@@ -2260,7 +2306,7 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	TASKRESTSERVICE = """服务""",
 	TASKRESTDESCRIPT = """选择角色在当地设施提供的服务，或者在必要时切换为休息。""",
 	TASKCRAFT = """制作""",
-	TASKCRAFTNAME = """Crafting""", # MISSING TRANSLATION
+	TASKCRAFTNAME = """制作""", 
     TASKCRAFTDESCRIPT = """设置角色制作活动的优先级。""",
     TASKRESTINFO = """休息会使角色的伤口愈合得更快，并停止顺从度的流失，但他们也无法获得忠诚度。""",
     CRAFTRULES2TITLE = """制作规则 - %s""",
@@ -2317,9 +2363,9 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	SERVICEPREGNANT = """[name] 可能会失去贞操，并因性交而怀孕。""",
 	SERVICESEXUALNONPENETRATIVE = """[name] 将通过服侍客户并提供不涉及性交的轻度性服务来招待他们。""",
 	SERVICENOSEX = """[name] 会服侍和招待客户，但会拒绝任何性服务。""",
-	SERVICEESTVALUE = """Estimated income: %s gold""", # MISSING TRANSLATION
-	SERVICEDESIRABILITY = """Desirability: %s%%""", # MISSING TRANSLATION
-	SERVICEDESIRABILITYVALUE = """Desirability: %s""", # MISSING TRANSLATION
+	SERVICEESTVALUE = """预计收入：%s 金币""", 
+    SERVICEDESIRABILITY = """吸引力：%s%%""", 
+    SERVICEDESIRABILITYVALUE = """吸引力：%s""",
 	TASKMAINSTAT = """主要属性""",
 	JOBPROSTITUTEGOLDDESCRIPT = """通过卖淫赚取金币。""",
 	JOBCOOKINGCRAFTDESCRIPT = """在厨房烹饪食物。""",
@@ -2333,7 +2379,7 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	LOGCHARTOOLTIP = """角色事件""",
 	LOGQUESTTOOLTIP = """任务事件""",
 	BROTHELLOGSEX = """%s 通过与一名 %s 客户进行 %s 服务，赚取了 %s 金币。""",
-	BROTHELLOGSEXPARTIAL = """%s failed to fully attract a customer and earned only %s gold performing %s with a %s customer.""", # MISSING TRANSLATION
+	BROTHELLOGSEXPARTIAL = """%s 未能完全吸引客户，仅通过与 %s 客户进行 %s 服务赚取了 %s 金币。""", 
 	BROTHELLOGNO_SEX = """%s 作为 %s 工作，赚取了 %s 金币。""",
 	BROTHELTOOLTIP = """你可以选择角色在妓院工作时允许执行的任务。通过切换特定任务，仅允许被选中的任务。客户性别仅影响性任务。
 较高的角色价值会增加收入，较高的魅力值会增加被要求提供性服务的可能性。
@@ -2706,7 +2752,7 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	STATMDEFDESCRIPT = """减少受到的魔法伤害。""",
 	STATATK = """攻击""",
 	STATATKDESCRIPT = """决定物理伤害数值。""",
-	STATMATK = """魔攻""",
+	STATMATK = """魔力""",
 	STATMATKDESCRIPT = """决定魔法伤害数值。""",
 	STATCRITCHANCE = """暴击率""",
 	STATCRITCHANCEDESCRIPT = """定义造成暴击的几率。""",
@@ -2755,18 +2801,20 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	STATWITS_BONUS = """智力""",
 	STATCHARM_BONUS = """魅力""",
 	STATSEXUALS_BONUS = """性技巧""",
-	STATDESIRABILITY_BONUS = """Desirability""", # MISSING TRANSLATION
+	STATDESIRABILITY_BONUS = """吸引力""",
 	STATTRAINEE_AMOUNT = """训练槽位""",
 	STATTRAINING_LOYALTY = """训练忠诚度""",
 	STATTRAINING_POINTS_BONUS = """训练点数收益""",
     STATTRAINING_SPIRIT = """训练精神度""",
     STATRESISTANCE_RED = """抗性下降速度""",
     STATTRAINER_LOYALTY_BONUS = """学员忠诚度奖励""",
+	STATTRAINER_TRAINING_POINTS_BONUS = """Training Points bonus for trainee""", # MISSING TRANSLATION
     STATTRAINING_LOYALTYDESCRIPT = """该角色通过训练获得的忠诚度加成""",
     STATTRAINING_POINTS_BONUSDESCRIPT = """训练期间获取的训练点数调整值""",
     STATTRAINING_SPIRITDESCRIPT = """训练期间精神度下降的调整值""",
     STATRESISTANCE_REDDESCRIPT = """奴隶抗性随时间下降的速度""",
     STATTRAINER_LOYALTY_BONUSDESCRIPT = """该角色培训的学员所获得的忠诚度加成""",
+	STATTRAINER_TRAINING_POINTS_BONUSDESCRIPT = """Training Points bonus received by this character's trainee""", # MISSING TRANSLATION
     STATTRAINEE_AMOUNTDESCRIPT = """最大学员数量""",
     TRAITTRAINER = """训练师""",
     TRAITTRAINERDESCRIPT = """可以监管奴隶""",
@@ -2779,15 +2827,15 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
     CHARACTER_STANDING_SWORN_SERVANT = """誓约之仆""",
     CHARACTER_STANDING_COMPANION = """伴侣""",
     CHARACTER_STANDING_BELOVED = """挚爱""",
-	TOOLTIPCHARACTERSTANDING = """Character's treatment of [master] will depend on their respect and affection. When both are very low character might attempt to escape. Certain bonuses might come up under specific combinations.""", # MISSING TRANSLATION
+	TOOLTIPCHARACTERSTANDING = """角色对[master]的态度取决于其尊重度与好感度。当两者都极低时，角色可能会尝试逃跑。在特定组合下可能会产生特殊加成。""", 
     TRAITSTANDING_LOVE_PEST = """榨汁小妖精""",
     TRAITSTANDING_LOVE_PESTDESCRIPT = """在性爱小游戏中获得的经验值增加25%。""",
     TRAITSTANDING_HOUSEMATE = """同居室友""",
     TRAITSTANDING_HOUSEMATEDESCRIPT = """生命值与法力值恢复速度增加10%。""",
     TRAITSTANDING_SWORN_SERVANT = """誓约之仆""",
     TRAITSTANDING_SWORN_SERVANTDESCRIPT = """生产力提升10%。""",
-	TRAITSTANDING_BELOVED = """Beloved""", # MISSING TRANSLATION
-	TRAITSTANDING_BELOVEDDESCRIPT = """Character upkeep is reduced by 50%.""", # MISSING TRANSLATION
+    TRAITSTANDING_BELOVED = """心爱挚爱""", 
+    TRAITSTANDING_BELOVEDDESCRIPT = """角色的日常维护费用降低50%。""",
     STATSPIRIT = """精神""",
     STATTRAINING_POINTS = """训练点数""",
     STATTRAINING_POINTSDESCRIPT = """训练点数可通过训练行为获得，并用于解锁训练特质。""",
@@ -2812,28 +2860,28 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	STATAFFECTIONDESCRIPT = """好感度代表这个角色对你的感受是积极还是消极。""",
 	STATRESPECT = """尊重""",
 	STATRESPECTDESCRIPT = """尊重代表这个角色对你的看法是高度还是低劣。""",
-	EVENT_EFFECT_INCREASED = """%s increased""", # MISSING TRANSLATION
-	EVENT_EFFECT_DECREASED = """%s decreased""", # MISSING TRANSLATION
-	EVENT_EFFECT_VALUE = """%s %s""", # MISSING TRANSLATION
-	EVENT_EFFECT_SET = """%s set to %s""", # MISSING TRANSLATION
-	EVENT_EFFECT_CHARACTER = """%s: %s""", # MISSING TRANSLATION
-	EVENT_EFFECT_REPUTATION = """%s Reputation""", # MISSING TRANSLATION
-	EVENT_EFFECT_RELATIONSHIP = """%s and %s: Relationship %s""", # MISSING TRANSLATION
-	EVENT_EFFECT_TRAIT_GAINED = """%s Trait gained""", # MISSING TRANSLATION
-	EVENT_EFFECT_TRAIT_LOST = """%s Trait lost""", # MISSING TRANSLATION
-	STATRESISTANCE = """抗性""",
-	STATRESISTANCEDESCRIPT = """抗性描述占位符。""",
-	STATSUBMISSION = """顺从度""",
-	STATSUBMISSIONDESCRIPT = """顺从度是通过惩罚技能建立的。除非达到上限，否则它会随时间下降。达到顺从度上限后，工作将不再需要服从度，并能阻止逃跑。""",
-	STATAUTHORITY = """权威""",
-	STATAUTHORITYDESCRIPT = """权威代表角色对你的尊重。权威通过惩罚和约会建立，决定了忠诚度增长的速度。较低的权威和服从度可能导致角色尝试逃跑。""",
-	STATLUST = """欲望""",
-	STATLUSTDESCRIPT = """欲望随时间增加，并允许使用特定技能。当利用得当时，欲望可以成为一种强大的控制和资源工具。""",
-	STATPRODUCTIVITY = """生产力""",
-	STATPRODUCTIVITYDESCRIPT = """影响所有生产性任务。总生产力适用于所有职业，而效率将提升特定任务的效果。""",
-	STATDESIRABILITY = """Desirability""", # MISSING TRANSLATION
-	STATDESIRABILITYDESCRIPT = """{color=yellow|Desirability} affects how likely a character is to earn full gold from sex service instead of a reduced amount, and boosts non-sex service income once it rises above 50. Grows from Charm Factor, Charm, fame, and certain clothes or traits.""", # MISSING TRANSLATION
-	STATCONSENT = """同意""",
+	EVENT_EFFECT_INCREASED = """%s 提升""", 
+    EVENT_EFFECT_DECREASED = """%s 降低""", 
+    EVENT_EFFECT_VALUE = """%s %s""", 
+    EVENT_EFFECT_SET = """%s 变更为 %s""", 
+    EVENT_EFFECT_CHARACTER = """%s：%s""", 
+    EVENT_EFFECT_REPUTATION = """%s 声望""", 
+    EVENT_EFFECT_RELATIONSHIP = """%s 与 %s：关系 %s""", 
+    EVENT_EFFECT_TRAIT_GAINED = """获得了 %s 特质""", 
+    EVENT_EFFECT_TRAIT_LOST = """失去了 %s 特质""", 
+    STATRESISTANCE = """抗性""",
+    STATRESISTANCEDESCRIPT = """抗性描述占位符。""",
+    STATSUBMISSION = """顺从度""",
+    STATSUBMISSIONDESCRIPT = """顺从度是通过惩罚技能建立的。除非达到上限，否则它会随时间下降。达到顺从度上限后，工作将不再需要服从度，并能阻止逃跑。""",
+    STATAUTHORITY = """权威""",
+    STATAUTHORITYDESCRIPT = """权威代表角色对你的尊重。权威通过惩罚和约会建立，决定了忠诚度增长的速度。较低的权威和服从度可能导致角色尝试逃跑。""",
+    STATLUST = """欲望""",
+    STATLUSTDESCRIPT = """欲望随时间增加，并允许使用特定技能。当利用得当时，欲望可以成为一种强大的控制和资源工具。""",
+    STATPRODUCTIVITY = """生产力""",
+    STATPRODUCTIVITYDESCRIPT = """影响所有生产性任务。总生产力适用于所有职业，而效率将提升特定任务的效果。""",
+    STATDESIRABILITY = """吸引力""", 
+    STATDESIRABILITYDESCRIPT = """{color=yellow|吸引力}会影响角色在侍寝性服务中获得全额赏金（而非被压价打折）的几率；当其超过50点时，还能额外提升非性服务类工作的收益。吸引力可通过魅力系数、魅力值、名声以及特定服饰或特质来提升。""", 
+    STATCONSENT = """同意""",
 	STAMINA_LABEL = """体力""",
 	STATCONSENTDESCRIPT = """影响性互动中行动的同意度。根据特质、伴侣和其他因素，每个行动都有不同的同意度要求。此数值仅代表未受影响的基准值。基本同意度会随着获得积极结果、尝试新动作和新伴侣而增长。此外，通过纪律技能也会有少量增加。""",
 	STATEXP_GAIN_MOD = """经验值加成""",
@@ -2934,7 +2982,7 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	STATPRICE = """价值""",
 	STATCOUNTERATTACKS = """剩余反击次数""",
 	STATCOUNTERATTACKS_MAX = """每回合反击次数""",
-	STATCOUNTERATTACKS_MAXDESCRIPT = """Maximal number of counterattacks this character can perform per turn.""", # MISSING TRANSLATION
+	STATCOUNTERATTACKS_MAXDESCRIPT = """该角色每回合可进行的最大反击次数。""",
 	STATCHG_STRENGTH = """力量充能""",
 	STATCHG_STRENGTH_MAX = """最大力量充能""",
 	STATCHG_PERSUASION = """说服充能""",
@@ -2990,7 +3038,7 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	FAMEDESC_UPKEEP = """下属每周维护费""",
 	FAMEDESC_LOYALTY_BONUS = """学员忠诚度""",
 	FAMEDESC_MANHUNT_BONUS = """追捕奖励""",
-	FAMEDESC_DESIRABILITY_BONUS = """Desirability bonus""", # MISSING TRANSLATION
+	FAMEDESC_DESIRABILITY_BONUS = """吸引力加成""",
 	PRICEDESC_TRAITS_POS = """正面特征""",
 	PRICEDESC_TRAITS_NEG = """负面特征""",
 	PRICEDESC_CUMULATIVE = """累计加成 %s""",
@@ -3115,12 +3163,12 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	INFOHOLDSHIFT = """按住 Shift 查看详情""",
 	STATGROWTH_FACTORDESCRIPT = """成长是角色变强的亲和力。随着角色获得更多职业，其所有属性都会提升。非奴隶角色还将获得通用精通点数。每一点成长都会增加会提升其属性的职业数量。它也极大地影响角色的价值。
 
-{color=green|受影响的属性包括：生产力、体质、智力、魅力、最大生命值、最大法力值、速度、命中率、闪避、攻击、魔攻、防御、魔防。} """,
+{color=green|受影响的属性包括：生产力、体质、智力、魅力、最大生命值、最大法力值、速度、命中率、闪避、攻击、魔力、防御、魔防。} """,
 	STATPHYSICS_FACTORDESCRIPT = """{color=yellow|体质潜力} 代表角色的身体潜力。它会增加 [color=aqua]体质[/color] 的成长，并影响近战能力。
 
 {color=green|满级体质潜力可增加自然生命回复。}""",
 	STATMAGIC_FACTORDESCRIPT = """{color=yellow|魔法潜力} 代表角色的魔法亲和力。数值越高，法力值越多，且能解锁更强大的法师职业。同时影响法力回复。
-{color=green|满级魔法潜力可提供魔攻加成。}""",
+{color=green|满级魔法潜力可提供魔力加成。}""",
 	STATTAME_FACTORDESCRIPT = """{color=yellow|驯化潜力} 代表与角色交友的难易程度。它降低了为下属解锁忠诚特质的代价。
 
 {color=green|满级驯化潜力可增加忠诚度获取。}""",
@@ -3140,7 +3188,7 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	WITS_FACTORBONUSDESCRIPT = """智力潜力：经验获取：+20%""",
 	CHARM_FACTORBONUSDESCRIPT = """魅力潜力：社交技能效率：+20%""",
 	SEXUALS_FACTORBONUSDESCRIPT = """性潜力：速度：+10""",
-	MAGIC_FACTORBONUSDESCRIPT = """魔法潜力：魔攻：+10%""",
+	MAGIC_FACTORBONUSDESCRIPT = """魔法潜力：魔力：+10%""",
 	TAME_FACTORBONUSDESCRIPT = """驯化潜力：训练造成的精神伤害减半""",
 	TIMID_FACTORBONUSDESCRIPT = """权威潜力：受到的伤害：-15%""",
 	STATFOOD_LOVE = """喜爱的食物""",
@@ -3472,7 +3520,7 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	TOOLTIP_TYPE_SKILL = """技能
 （受攻击和体质加成，会被缴械禁用）""",
 	TOOLTIP_TYPE_SPELL = """法术
-（受魔攻和智力加成，会被沉默禁用）""",
+（受魔力和智力加成，会被沉默禁用）""",
 	TOOLTIP_TARGET = """目标类型""",
 	TOOLTIP_TARGET_ALL = """任意""",
 	TOOLTIP_TARGET_ALLY = """友方""",
@@ -4010,7 +4058,7 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 1. 转化为经验
 2. 恢复生命值和法力值，提高权威和服从度
 3. 消耗 50 点欲望，提高生产力 20%，持续 3 天
-4. 消耗 50 点欲望，提高攻击和魔攻 15%，持续 2 天。""",
+4. 消耗 50 点欲望，提高攻击和魔力 15%，持续 2 天。""",
 	DIALOGUEMASTER_LUST_EXPREPORT = """你使用 [targetname] 的欲望来为 [targethim] 提供经验。""",
 	DIALOGUEMASTER_LUST_BUFFREPORT = """你使用 [targetname] 的欲望来提升 [targethim] 的生产力。""",
 	DIALOGUEMASTER_LUST_HPREPORT = """你使用 [targetname] 的欲望来恢复 [targethis] 的生命值和法力值。""",
@@ -4027,7 +4075,7 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 1. 转化为经验
 2. 恢复生命值和法力值
 3. 获得伤害加成
-4. 消耗 50 点欲望，提高攻击和魔攻 25%，持续 2 天。""",
+4. 消耗 50 点欲望，提高攻击和魔力 25%，持续 2 天。""",
 	DIALOGUEPUBLICHUMILIATIONREPORT = """[name] 将 [targetname] 带到了聚集了所有人的大厅。在随后的表演中，[targethe] 遭到了惩罚，观众们听到了 [targethis] 的哭喊声。到最后，[targetname] 不仅吸取了 [targethis] 的教训，观察者们似乎也变得更加温顺了。""",
 	DIALOGUEPUBLICSEXHUMILIATIONREPORT = """[name] 将 [targetname] 带到了聚集了所有人的大厅。在随后的展示中，[targethe] 的性惩罚清晰地暴露在观众面前。到最后，观察者们不仅变得更加温顺，而且还表现出了一些兴奋的迹象。""",
 	DIALOGUEPUBLICEXECUTIONTEXT = """当 [targetname] 听到你的决定时，[name] 迅速倒在地上乞求你饶 [targethis] 一命，承诺会做任何事且再也不会让你失望。""",
@@ -4123,10 +4171,10 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 怀孕减益效果较弱。
 后代将仅继承此家长的属性。""",
 	TRAITHARLOTDESCRIPT = """卖淫效率提高 50%。""",
-	TRAITCOURTESAN = """Courtesan""", # MISSING TRANSLATION
-	TRAITCOURTESANDESCRIPT = """Fame can rise up to level 5 from service tasks instead of the usual cap, and the desirability bonus granted by fame is doubled.""", # MISSING TRANSLATION
-	TRAITPETBEAST = """Fan Favorite""", # MISSING TRANSLATION
-	TRAITPETBEASTDESCRIPT = """Tame factor provides bigger benefits for service jobs and desirability.""", # MISSING TRANSLATION
+	TRAITCOURTESAN = """妓女""", 
+	TRAITCOURTESANDESCRIPT = """名声可以从中获得最多 5 级的提升，而不是通常的上限，且名声提供的吸引力加成翻倍。""", 
+	TRAITPETBEAST = """粉丝最爱""",
+	TRAITPETBEASTDESCRIPT = """驯服因子为服务工作和吸引力提供更大的好处。""", 
 	TRAITSUCCUBUSDESCRIPT = """性行为经验获取提高 50%。
 可以通过消耗欲望必定招募随机角色。
 性训练动作失败几率降低。""",
@@ -4172,7 +4220,7 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 无法被训练或获得忠诚点数。""",
 	TRAITASSASSINDESCRIPT = """单体战争和保护类技能不会打破“阴影之中”效果。""",
 	TRAITASNIPERDESCRIPT = """射击类技能不会打破“阴影之中”效果。""",
-	TRAITBLOODMAGEDESCRIPT = """{color=brown|血之精通}：对流血目标造成伤害时恢复生命值和法力值，并增加魔攻，持续至战斗结束。""",
+	TRAITBLOODMAGEDESCRIPT = """{color=brown|血之精通}：对流血目标造成伤害时恢复生命值和法力值，并增加魔力，持续至战斗结束。""",
 	TRAITALIOSDESCRIPT = """{color=brown|无拘无束}：当队伍中只有此角色存活时：战斗结束前获得 +50 闪避，+20 速度。""",
 	TRAITMIXX_CHAMPIONDESCRIPT = """{color=brown|沸腾之暗}：暗属性攻击无视所有防御/魔抗，并获得 +30 命中率。""",
 	TRAITSADISTDESCRIPT = """{color=brown|切开血管}：近战物理攻击有 25% 几率造成流血，持续 2 回合。
@@ -4250,7 +4298,7 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	TRAITMVORTEXDESCRIPT = """+1 法力值恢复""",
 	TRAITGIFTEDDESCRIPT = """最大法力值 +50%。""",
 	TRAITBELLIGERENTDESCRIPT = """攻击力 +15%。""",
-	TRAITHIDDENPOWERSDESCRIPT = """魔攻 +10%。""",
+	TRAITHIDDENPOWERSDESCRIPT = """魔力 +10%。""",
 	TRAITHEALTHYDESCRIPT = """+10 最大生命值。""",
 	TRAITDIMDESCRIPT = """获得的经验值减少 25%。""",
 	TRAITREBELDESCRIPT = """忠诚度获取 -2。""",
@@ -4264,7 +4312,7 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	TRAITCHASTEDESCRIPT = """卖淫任务效率 -80%。""",
 	TRAITPACIFISTDESCRIPT = """攻击力 -50%。""",
 	TRAITWHIMPDESCRIPT = """最大生命值 -40%。""",
-	TRAITM_INEPTDESCRIPT = """魔攻 -50%。""",
+	TRAITM_INEPTDESCRIPT = """魔力 -50%。""",
 	TRAITSELFISHDESCRIPT = """无法使用战斗辅助技能。""",
 	TRAITCOWARDDESCRIPT = """命中率 -50。""",
 	TRAITFRIGIDDESCRIPT = """无法获得新的性特征。最大欲望值减少 50%。""",
@@ -4458,7 +4506,7 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	TRAITMASTER_SORCERY = """巫术""",
 	TRAITMASTER_SORCERYDESCRIPT = """ """,
 	TRAITSUCCUBUS_MAGIC = """魔法调和""",
-	TRAITSUCCUBUS_MAGICDESCRIPT = """魔攻：+10；最大法力值：+25；法力值恢复：+50%
+	TRAITSUCCUBUS_MAGICDESCRIPT = """魔力：+10；最大法力值：+25；法力值恢复：+50%
 每人仅能选择一种调和。""",
 	TRAITSUCCUBUS_COMBAT = """战斗调和""",
 	TRAITSUCCUBUS_COMBATDESCRIPT = """生命值潜力：+20%；生命值恢复：+100%；受到伤害时获得欲望。
@@ -4475,7 +4523,7 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	TRAITTRAINING_ATK = """进阶特长""",
 	TRAITTRAINING_ATKDESCRIPT = """+10 攻击力""",
 	TRAITTRAINING_MATK = """进阶特长""",
-	TRAITTRAINING_MATKDESCRIPT = """+10 魔攻""",
+	TRAITTRAINING_MATKDESCRIPT = """+10 魔力""",
 	TRAITTRAINING_DEF = """进阶特长""",
 	TRAITTRAINING_DEFDESCRIPT = """+10 防御""",
 	TRAITTRAINING_MDEF = """进阶特长""",
@@ -4544,7 +4592,7 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	TRAITEFFECTFEAR = """恐惧：-6 服从度损耗，-1 忠诚度获取""",
 	TRAITEFFECTMINDCONTROLLED = """精神控制""",
 	TRAITEFFECTINSPIRED = """激励：+20%% 伤害、防御和魔抗""",
-	TRAITEFFECTCOMMANDED = """号令：+50%% 攻击力和魔攻""",
+	TRAITEFFECTCOMMANDED = """号令：+50%% 攻击力和魔力""",
 	TRAITEFFECTSERVING = """服侍：+1 忠诚度获取""",
 	TRAITEFFECTREFINE = """武器精炼：+30%% 攻击力""",
 	TRAITEFFECTACID = """酸蚀：-25 防御""",
@@ -4555,18 +4603,18 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	TRAITEFFECTBARRIER = """伤害吸收护盾，阻挡 100 点伤害（剩余 %d 点）""",
 	TRAITEFFECTBLIZZARD = """暴风雪：-20 速度""",
 	TRAITEFFECTBLESSED = """祝福：+25%% 攻击力""",
-	TRAITEFFECTMENTALBLESS = """精神祝福：+25%% 魔攻""",
+	TRAITEFFECTMENTALBLESS = """精神祝福：+25%% 魔力""",
 	TRAITEFFECTFLY = """翼冲：+90 闪避""",
 	TRAITEFFECTFLIGHT = """飞行：对近战闪避 +80%，+25 命中几率，+50 大地抗性""",
 	TRAITEFFECTSHATTERED = """破碎：-25 魔抗""",
 	TRAITEFFECTFIREBURST = """火焰爆发：-20 命中率""",
 	TRAITEFFECTSWIPE = """挥扫：-20 防御""",
 	TRAITEFFECTARROWRAIN = """箭雨：-20 魔抗""",
-	TRAITEFFECTSSTRIKE = """-20 攻击力和魔攻""",
+	TRAITEFFECTSSTRIKE = """-20 攻击力和魔力""",
 	TRAITEFFECTENDURE = """忍耐：+20 所有抗性""",
 	TRAITEFFECTBARD1 = """赞美诗：+20 命中率、闪避和速度""",
 	TRAITEFFECTBARD2 = """安抚：+15 防御和魔抗，每回合驱散 1 个负面效果""",
-	TRAITEFFECTBARD3 = """战歌：+20%% 攻击力和魔攻""",
+	TRAITEFFECTBARD3 = """战歌：+20%% 攻击力和魔力""",
 	TRAITEFFECTELEMENTALWEAK = """元素虚弱：-40 火、土、水、风抗性""",
 	TRAITEFFECTELEMENTALPROTECT = """元素保护：+40 火、土、水、风抗性""",
 	TRAITEFFECTCAMO = """伪装：+20 闪避""",
@@ -4598,11 +4646,11 @@ Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	TRAITEFFECTUNDERWEAR = """欲望增长增加 25%。""",
 	TRAITEFFECTTENTACLESUIT = """欲望增长增加 100%%。""",
 	TRAITEFFECTTENTACLESUB = """如果角色性潜力低于 5 且没有“离经叛道”特质，则体质和智力降低 25。""",
-	TRAITEFFECTMASTERCOMBAT = """攻击力和魔攻增加 15%%""",
+	TRAITEFFECTMASTERCOMBAT = """攻击力和魔力增加 15%%""",
 	TRAITEFFECTMASTERPRODUCT = """+20%% 生产力。""",
 	TRAITEFFECTSATISFIED = """满足：+10%% 生产力。""",
 	TRAITEFFECTSATISFIED2 = """满足：+20%% 生产力。""",
-TRAITEFFECTSUCCOMBAT = """欲望消耗：+25%% 攻击力和魔攻。""",
+TRAITEFFECTSUCCOMBAT = """欲望消耗：+25%% 攻击力和魔力。""",
 	TRAITEFFECTCELENABLESS = """塞琳娜的祝福：+30%% 全抗性。""",
 	TRAITEFFECTFREYABLESS = """弗蕾亚的祝福：+30 护甲穿透，+25 命中率。""",
 	TRAITEFFECTCELENACURSE = """塞琳娜的诅咒：-50%% 最大生命值。""",
@@ -4615,7 +4663,7 @@ TRAITEFFECTSUCCOMBAT = """欲望消耗：+25%% 攻击力和魔攻。""",
 	TRAITSTUNIMMUNITYDESCRIPT = """战斗中不会被眩晕。""",
 	TRAITEFFECTCURSE = """所有抗性降低。""",
 	TRAITEFFECTHASTE = """速度增加。""",
-	TRAITEFFECTVEIL = """Shadow Veil: +30 Light and Dark Resist, MDEF increased based on caster's MATK""", # MISSING TRANSLATION
+	TRAITEFFECTVEIL = """暗影面纱：+30光与暗属性抗性，魔法抗性基于施法者的魔力提升""",
 	EFFECTCOFFIBLESS = """经验值获取增加 20%%。""",
 	EUPHORIABUFF = """欣快：伤害增加。""",
 	FIREARROWBUFF = """火焰箭：你的攻击会灼烧敌人。""",
@@ -4687,7 +4735,7 @@ TRAITEFFECTSUCCOMBAT = """欲望消耗：+25%% 攻击力和魔攻。""",
 	BUFFDESCRIPTDISTRACT = """分心：-30 命中率和闪避""",
 	BUFFDESCRIPTSILENCE = """沉默：无法使用法术类技能""",
 	BUFFDESCRIPTDISARM = """缴械：无法使用技能类能力""",
-	BUFFDESCRIPTBLOODATTACK = """血之魔法：魔攻增加""",
+	BUFFDESCRIPTBLOODATTACK = """血之魔法：魔力增加""",
 	BUFFDESCRIPTBANISH = """放逐""",
 	BUFFDESCRIPTVOID = """虚空""",
 	BUFFDESCRIPTDEFEND = """防御""",
@@ -4708,7 +4756,7 @@ TRAITEFFECTSUCCOMBAT = """欲望消耗：+25%% 攻击力和魔攻。""",
 	BUFFDESCRIPTSLAM = """治疗效果降低""",
 	BUFFDESCRIPTFIRESHIELD = """火焰护盾""",
 	BUFFDESCRIPTATKPAS = """伤害增加""",
-	BUFFDESCRIPTATTACKPASSSRC = """每隔一回合增加盟友 10 点攻击力和魔攻。被击败时效果清除。""",
+	BUFFDESCRIPTATTACKPASSSRC = """每隔一回合增加盟友 10 点攻击力和魔力。被击败时效果清除。""",
 	BUFFDESCRIPTRESTO = """休息：物理抗性增加 20%%""",
 	BUFFDESCRIPTDEATHKNIGHT = """命中率、攻击力和无属性抗性增加""",
 	BUFFDESCRIPTTEMPLAR = """魔抗增加""",
@@ -4836,8 +4884,8 @@ TRAITEFFECTSUCCOMBAT = """欲望消耗：+25%% 攻击力和魔攻。""",
 	EFFECTNAME_HECTOR_VAIN_PRIDE_S = """虚荣之心""",
 	TRAIT_HECTOR_VAIN_PRIDE_S = """虚荣之心：+10 攻击力 & +10 命中率。某些技能所需。最多可叠加 10 层。""",
 	EFFECTNAME_DARK_GIFT = """黑暗馈赠""",
-	EFFECT_DARK_GIFT = """+20 攻击力和魔攻，-20 防御和魔抗。""",
-	TRAIT_KURDAN_MIND_CONTROLLED = """-50 心智抗性。当对该单位施放“吞噬魔法”时，额外造成 150% 魔攻伤害。""",
+	EFFECT_DARK_GIFT = """+20 攻击力和魔力，-20 防御和魔抗。""",
+	TRAIT_KURDAN_MIND_CONTROLLED = """-50 心智抗性。当对该单位施放“吞噬魔法”时，额外造成 150% 魔力伤害。""",
 	EFFECTNAME_UNDERWATCHED = """爱蕊的监视""",
 	TRAIT_OVERWATCH_ASSIGNMENT = """当盟友被击中时，向攻击者发射一支箭。
 当盟友死亡时，向杀手发射更强的攻击。
@@ -4857,7 +4905,7 @@ TRAITEFFECTSUCCOMBAT = """欲望消耗：+25%% 攻击力和魔攻。""",
 	EFFECTNAME_FRAGILE = """脆弱""",
 	EFFECT_FRAGILE = """每层受到的伤害 +10%（最大 10 层）。""",
 	EFFECTNAME_BRAMBLE_TRAP = """荆棘陷阱""",
-	EFFECT_BRAMBLETRAP = """使用技能时触发：受到相当于施法者 80% 魔攻的伤害，获得“流血”，并“诱捕” 2 回合。""",
+	EFFECT_BRAMBLETRAP = """使用技能时触发：受到相当于施法者 80% 魔力的伤害，获得“流血”，并“诱捕” 2 回合。""",
 	EFFECTNAME_WHITE_FOG = """白雾""",
 	EFFECT_WHITE_FOG = """白雾：法力消耗加倍。
 所有伤害性技能最少有 30% 几率未命中。
@@ -4868,13 +4916,13 @@ TRAITEFFECTSUCCOMBAT = """欲望消耗：+25%% 攻击力和魔攻。""",
 	EFFECTNAME_DROWN_IN_KUDZU = """淹没在葛藤中""",
 	EFFECT_DROWN_IN_KUDZU = """-100 速度。无法行动。当“窒息葛藤”被击败后移除。""",
 	EFFECTNAME_WILD_FIRE = """野火""",
-	EFFECT_WILD_FIRE = """+15 攻击力和魔攻。所有攻击额外造成火属性伤害。""",
+	EFFECT_WILD_FIRE = """+15 攻击力和魔力。所有攻击额外造成火属性伤害。""",
 	TRAIT_EVER_ADAPTING_NATURE_DESC = """若该单位处于燃烧状态，获得“野火”。
 若该单位处于中毒状态，解锁“毒番石榴果”技能。
 若该单位处于潮湿状态，每回合恢复 6.25% 的最大生命值。""",
 	TRAIT_CYCLE_OF_LIFE_DESC = """当盟友单位死亡时，该单位治疗自身 20% 已故盟友的最大生命值。""",
 	EFFECTNAME_TEST_OF_THE_FOREST_SPIRIT = """森林之灵的试炼""",
-	EFFECT_TEST_OF_THE_FOREST_SPIRIT = """-50% 攻击力和魔攻。
+	EFFECT_TEST_OF_THE_FOREST_SPIRIT = """-50% 攻击力和魔力。
 结束后，白鹿可以使用 [真令人失望……] 技能。
 每当一名盟友被击败，持续时间增加 1 回合。""",
 	EFFECTNAME_HELLO_SIS = """姐姐好~！""",
@@ -4890,7 +4938,7 @@ TRAITEFFECTSUCCOMBAT = """欲望消耗：+25%% 攻击力和魔攻。""",
 抵消 [身处阴影] 效果的正面增益。
 受到或使用光属性/火属性技能时移除。""",
 	EFFECTNAME_UNHOLY_NIGHT = """邪恶之夜""",
-	EFFECT_UNHOLY_NIGHT = """免疫 [沉默]。+30 魔攻。""",
+	EFFECT_UNHOLY_NIGHT = """免疫 [沉默]。+30 魔力。""",
 	TRAIT_SNUFF_CANDLE_DESC = """当受到光属性或火属性招式攻击时，对攻击者使用 [熄灭]。
 若使用者处于沉默或被禁锢状态，此效果失效。""",
 	EFFECTNAME_DK_SECURITY_CONCERN_DESC = "国家安全隐患", 
@@ -4955,72 +5003,113 @@ TRAITEFFECTSUCCOMBAT = """欲望消耗：+25%% 攻击力和魔攻。""",
 而且那个所谓的强力技能，实际上可能真的很垃圾。""",
     EFFECTNAME_GENIUS_PLAN = """天才计划……？""",
     EFFECT_GENIUS_PLAN = """攻击力+100%……但这个单位似乎处于眩晕状态。""",
-	TRAIT_TANTALISING_TENTACLE = """When this unit attack enemy affected by Ensnare with a physical move, inflict a stack of Arousal.
-When this unit is being attacked by a melee skill and the attacker does not have Blessing or 'Elemental Shield' effect, 
-50% chances to inflict Ensnared onto the attacker.""", # MISSING TRANSLATION
-	EFFECTNAME_AROUSAL = """Arousal""", # MISSING TRANSLATION
-	EFFECT_AROUSAL = """Reduce Hitrate and Evasion by 5 per stack.
-At +10 stack, become Stun for 2 turns and remove all stack of Arousal.""", # MISSING TRANSLATION
-	EFFECTNAME_EMPOWERMENT = """Empowerment""", # MISSING TRANSLATION
-	EFFECT_EMPOWERMENT = """+10% ATK & MATK per stack.""", # MISSING TRANSLATION
-	EFFECTNAME_TENDRIL_TRAP = """Tendril Trap""", # MISSING TRANSLATION
-	EFFECT_TENDRIL_TRAP = """Activated on spell usage. Dealing 100% MATK Dark damage and inflicting Ensnared for 2 turns. If the target is already Ensnared, inflict 3 Arousal instead.""", # MISSING TRANSLATION
-	EFFECTNAME_BUTTERFLY_IN_THE_STOMACH_COUNTER = """Butterfly in the Stomach Count""", # MISSING TRANSLATION
-	EFFECTNAME_BUTTERFLY_IN_THE_STOMACH = """Butterfly in the Stomach""", # MISSING TRANSLATION
-	EFFECT_BUTTERFLY_IN_STOMACH = """+50 DEF and MDEF. Regenerate 8% of Max HP each turn. After being hit by 6 physical attack, remove this buff and spit out the Swallowed Victim!""", # MISSING TRANSLATION
-	EFFECTNAME_SWALLOWED = """Swallowed""", # MISSING TRANSLATION
-	EFFECT_SWALLOWED_DESCRIPT = """Cannot Act. Cannot be Healed. Lose 20% HP on their turn.
-Last until this Ashmedai is hit by physical attack 6 times.""", # MISSING TRANSLATION
-	TRAIT_SLIPPERY_THICK_SKIN = """Reduce Ranged damage taken by 20%. If Wet, ranged attacks including spells have 30% to miss this unit.""", # MISSING TRANSLATION
-	EFFECT_NIXX_TRAIT_DESCRIPT = """Take further reduced damage from DoT effects.
-Enemy gains no benefit from 'In the Shadow' effect.
-Always hit against targets affected by 'In the Shadow'.
-Enemies affected with 'In the Shadow' take 20% of current HP as dark damage every turn.""", # MISSING TRANSLATION
-	EFFECTNAME_INTANGIBLE_OPPRESSIVE_DARKNESS = """Intangible and Oppressive Darkness""", # MISSING TRANSLATION
-	EFFECT_INTANGIBLE_OPPRESSIVE_DARKNESS_DESCRIPT = """While the Brazier is unlit:
-Gain immunity to burn and silence.
-Take -50% damage from all attacks except fire and light damage.
-All units do not lose 'In the Shadow' buff when using move unless it's a fire or light move.""", # MISSING TRANSLATION
-	EFFECTNAME_NIXX_WRATH_TRAIT = """Ire Against the Light""", # MISSING TRANSLATION
-	EFFECT_NIXX_WRATH_TRAIT_DESCRIPT = """While the Brazier is lighted, gain a stack of Nixx's Wrath at the end of each Nixx's turn.
-At 4+ stack: Cleanse and Gain immunity to Silence.""", # MISSING TRANSLATION
-	EFFECTNAME_NIXX_WRATH = """Nixx's Wrath""", # MISSING TRANSLATION
-	EFFECT_NIXX_WRATH_DESCRIPT = """Gain + 7.5% ATK and MATK per stack (Max 4)
-At 4+ stack: Become immune to Silence, clear Silence on self, and allow Pulvis et Umbra Estis! to be used.
-Remove if Brazier were put out.""", # MISSING TRANSLATION
-	NIXX_ULT_WARNING = """
-...The shadow casted by the brazier grow restless.""", # MISSING TRANSLATION
-	EFFECTNAME_KURO_NIXX_STANDOFF = """Champion's Defiance""", # MISSING TRANSLATION
-	EFFECT_KURO_NIXX_STANDOFF_DESCRIPT = """Deal and take +10% damage to Nixx. Kuro is immune to the negative effects of 'In the Shadow'.""", # MISSING TRANSLATION
-	EFFECTNAME_ENVIRONMENTAL_OBJECT = """Environmental Object""", # MISSING TRANSLATION
-	EFFECT_ENVIRONMENTAL_OBJECT_DESCRIPT = """HP cannot drop below 10%. Does not need to be defeated for the fight to be concluded.""", # MISSING TRANSLATION
-	EFFECTNAME_FESTERING_TERROR = """Festering Terror""", # MISSING TRANSLATION
-	EFFECT_FESTERING_TERROR_DESCRIPT = """Deal 10% more damage and gain +10% Crit Chance for every stack. (Max 5)""", # MISSING TRANSLATION
-	EFFECTNAME_BLACK_MIRROR = """Black Mirror""", # MISSING TRANSLATION
-	EFFECT_BLACK_MIRROR_DESCRIPT = """Reflect single-target spell casted on this unit back at the attacker at half the strength.""", # MISSING TRANSLATION
-	EFFECTNAME_BLACK_THORN = """Black Thorn""", # MISSING TRANSLATION
-	EFFECT_BLACK_THORN_DESCRIPT = """When hit by melee attack, deal 50 Dark damage back to the attacker.""", # MISSING TRANSLATION
-	EFFECTNAME_BLACK_GROWTH = """Black Growth""", # MISSING TRANSLATION
-	EFFECT_BLACK_GROWTH_DESCRIPT = """Regen 16% of HP at the end of each turn.""", # MISSING TRANSLATION
-	EFFECTNAME_BLACK_BIND = """Black Bind""", # MISSING TRANSLATION
-	EFFECT_BLACK_BIND_DESCRIPT = """Attacks from this unit have a 50% chance to inflict Ensnared for 2 turns""", # MISSING TRANSLATION
-	EFFECTNAME_LOST_IN_DARKNESS = """Lost in Darkness""", # MISSING TRANSLATION
-	EFFECT_LOST_IN_DARKNESS_DESCRIPT = """Take additional dark damage when hit by enemies.""", # MISSING TRANSLATION
-	EFFECT_UNLIT_BRAZIER_DESCRIPT = """When this unit HP drops to 10%:
- - Remove 'In the Shadow' from ALL unit.
- - Remove Festering Terror from all allies.
- - Convert 'Intangible and Oppressive Darkness' into 'Ire Against the Light'.
- - Transform into Lighted Brazier.""", # MISSING TRANSLATION
-	EFFECT_LIGTHED_BRAZIER_DESCRIPT = """When this unit HP drops to 10%:
- - Apply 'In the Shadow' to ALL unit.
- - Apply a stack of Lost in Darkness to all enemies.
- - Convert 'Ire Against the Light' into 'Intangible and Oppressive Darkness'.
- - Transform into Unlit Brazier.""", # MISSING TRANSLATION
-	EFFECT_INTANGIBLE_SHADOW_DESCRIPT = """While the Brazier is unlit:
- - all attacks against this unit have -50 hit rate
- - gain immunity to burn and silence.
- - Gain a stack of Festering Terror at the end of each turn.
-When the Brazier is lit, lose 16% of Max HP at the end of their turn.""", # MISSING TRANSLATION
+	TRAIT_TANTALISING_TENTACLE = """当该单位用物理招式攻击处于【束缚】状态的敌人时，施加一层【发情】。
+当该单位受到近战技能攻击，且攻击者没有“祝福”或“元素护盾”效果时，有50%几率对攻击者施加【束缚】。""", 
+    EFFECTNAME_AROUSAL = """发情""", 
+    EFFECT_AROUSAL = """每层降低5点命中率与回避率。
+达到10层时，陷入【眩晕】2回合并移除所有【发情】层数。""", 
+    EFFECTNAME_EMPOWERMENT = """增幅""", 
+    EFFECT_EMPOWERMENT = """每层+10% 攻击力 与 魔力。""", 
+    EFFECTNAME_TENDRIL_TRAP = """触丝陷阱""", 
+    EFFECT_TENDRIL_TRAP = """在施放法术时触发。造成100% 魔法的暗属性伤害并施加【束缚】，持续2回合。若目标已被【束缚】，则改为施加3层【发情】。""", 
+    EFFECTNAME_BUTTERFLY_IN_THE_STOMACH_COUNTER = """腹中蠢动计数""", 
+    EFFECTNAME_BUTTERFLY_IN_THE_STOMACH = """腹中蠢动""", 
+    EFFECT_BUTTERFLY_IN_STOMACH = """+50 DEF 与 MDEF。每回合恢复8%最大生命值。受到6次物理攻击后，移除此增益并吐出被【吞噬】的受害者！""", 
+    EFFECTNAME_SWALLOWED = """被吞噬""", 
+    EFFECT_SWALLOWED_DESCRIPT = """无法行动。无法被治疗。在自身回合损失20% HP。
+持续直到此阿什梅代被物理攻击命中6次为止。""", 
+    TRAIT_SLIPPERY_THICK_SKIN = """受到的远程伤害降低20%。若处于【湿透】状态，包括法术在内的远程攻击有30%几率对该单位脱靶。""", 
+    EFFECT_NIXX_TRAIT_DESCRIPT = """进一步降低受到的持续伤害（DoT）。
+敌人无法从“阴影笼罩”效果中获得任何受益。
+攻击受“阴影笼罩”影响的目标时必定命中。
+受“阴影笼罩”影响的敌人每回合受到相当于当前HP 20%的暗属性伤害。""", 
+    EFFECTNAME_INTANGIBLE_OPPRESSIVE_DARKNESS = """无形压迫之暗""", 
+    EFFECT_INTANGIBLE_OPPRESSIVE_DARKNESS_DESCRIPT = """当火盆未被点燃时：
+免疫燃烧与沉默。
+受到的所有伤害降低50%（火焰与光明属性伤害除外）。
+所有单位在释放招式时不会失去“阴影笼罩”增益，除非使用的是火焰或光明属性招式。""", 
+    EFFECTNAME_NIXX_WRATH_TRAIT = """对光之怒""", 
+    EFFECT_NIXX_WRATH_TRAIT_DESCRIPT = """当火盆被点燃时，在尼克斯的每个回合结束时获得一层“尼克斯之怒”。
+达到4层或以上时：净化并免疫沉默。""", 
+    EFFECTNAME_NIXX_WRATH = """尼克斯之怒""",
+	EFFECT_NIXX_WRATH_DESCRIPT = """每层获得 +7.5% 攻击力 与 魔力（最高4层）
+达到4层或以上时：免疫沉默，移除自身沉默状态，并允许使用【尔等皆为尘与影！】。
+若火盆被熄灭则移除此效果。""", 
+    NIXX_ULT_WARNING = """
+……火盆投下的阴影开始骚动不安。""", 
+    EFFECTNAME_KURO_NIXX_STANDOFF = """勇士之傲抗""", 
+    EFFECT_KURO_NIXX_STANDOFF_DESCRIPT = """对尼克斯造成的伤害与受到的伤害均增加10%。黑王免疫“阴影笼罩”的负面效果。""", 
+    EFFECTNAME_ENVIRONMENTAL_OBJECT = """环境物件""", 
+    EFFECT_ENVIRONMENTAL_OBJECT_DESCRIPT = """生命值不会低于10%。无需将其击败即可结束战斗。""", 
+    EFFECTNAME_FESTERING_TERROR = """溃烂恐惧""", 
+    EFFECT_FESTERING_TERROR_DESCRIPT = """每层增加10%伤害与+10%暴击率。（最高5层）""", 
+    EFFECTNAME_BLACK_MIRROR = """漆黑之镜""", 
+    EFFECT_BLACK_MIRROR_DESCRIPT = """将施加在该单位身上的单体法术以一半威力反弹给攻击者。""", 
+    EFFECTNAME_BLACK_THORN = """黑棘""", 
+    EFFECT_BLACK_THORN_DESCRIPT = """受到近战攻击时，对攻击者反弹50点暗属性伤害。""", 
+    EFFECTNAME_BLACK_GROWTH = """黑生长""", 
+    EFFECT_BLACK_GROWTH_DESCRIPT = """每回合结束时恢复16%的HP。""", 
+    EFFECTNAME_BLACK_BIND = """黑之紧缚""", 
+    EFFECT_BLACK_BIND_DESCRIPT = """该单位的攻击有50%几率施加【束缚】，持续2回合。""", 
+    EFFECTNAME_LOST_IN_DARKNESS = """迷失黑暗""", 
+    EFFECT_LOST_IN_DARKNESS_DESCRIPT = """被敌人命中时受到额外的暗属性伤害。""", 
+    EFFECT_UNLIT_BRAZIER_DESCRIPT = """当该单位生命值降至10%时：
+ - 移除【所有】单位的“阴影笼罩”效果。
+ - 移除所有盟友的“溃烂恐惧”效果。
+ - 将“无形压迫之暗”转化为“对光之怒”。
+ - 转化为点燃的火盆。""", 
+    EFFECT_LIGTHED_BRAZIER_DESCRIPT = """当该单位生命值降至10%时：
+ - 对【所有】单位施加“阴影笼罩”效果。
+ - 对所有敌人施加一层“迷失黑暗”。
+ - 将“对光之怒”转化为“无形压迫之暗”。
+ - 转化为未点燃的火盆。""",
+	EFFECT_INTANGIBLE_SHADOW_DESCRIPT = """当火盆未被点燃时：
+ - 所有针对该单位的攻击命中率 -50
+ - 免疫燃烧与沉默。
+ - 每回合结束时获得一层“溃烂恐惧”。
+当火盆被点燃时，在自身回合结束时损失16%最大生命值。""",
+	ACT4_GREG_HALF_HP = """
+Greg: All these gazes... Begone!
+Greg let loose a smokebomb!""", # MISSING TRANSLATION
+	GREG_CLOSE_CONFRONTATION_TRIGGERED = """
+Greg: Can you really affort to look somewhere else when I'm right in front of you? """, # MISSING TRANSLATION
+	EFFECT_GREG_TRAIT_DESCRIPT = """Black Knight - Greg:
+At the start of each round, Attempt to Read Movement of 2 random enemies.
+At less than 50% HP, Attempt to Read Movement of 4 random enemies instead.
+This effect is disabled if this unit is taunted, blinded, or immobilised.""", # MISSING TRANSLATION
+	EFFECT_LONESOME_RAGE_BYGONE_GLORY_TRAIT_DESCRIPT = """Lonesome Rage, Bygone Glory:
+If there's no other allies, gain 20 Armor pen, 30 Armor, 30 MDEF, and 15 Speed. 
+When this unit recovers from an immobilising effect, immediately use attack a random enemy and gain 'In the Shadow'.""", # MISSING TRANSLATION
+	EFFECTNAME_GREG_LAST_STAND = """Greg's Final Stand""", # MISSING TRANSLATION
+	EFFECT_GREG_FINAL_STAND_DESCRIPT = """Greg's Final Stand:
+Take further reduced damage from DoT effects.
+Hp does not drop below 10%.
+When hp reach 10%, gain Ridiculous Grit for 5 turns.""", # MISSING TRANSLATION
+	EFFECT_DEMONNESS_GIFT_NULL_CLOAK_DESCRIPT = """Demoness' Gift - Null Cloak: When this unit is affected by 'In the Shadow', Reduce Spell damage taken by 75%.""", # MISSING TRANSLATION
+	EFFECTNAME_RIDICLUOUS_GRIT = """Ridiculous Grit""", # MISSING TRANSLATION
+	EFFECT_RIDICLUOUS_GRIT_DESCRIPT = """Become immune to all immobilising effects.
+Gain +25 ATK and Hit rate.
+Reduce this buff duration by 1 when struck with a critical hit.
+When this effect expires, die.""", # MISSING TRANSLATION
+	EFFECTNAME_IM_SORRY_UNCLE = """I'm sorry uncle...""", # MISSING TRANSLATION
+	EFFECT_IM_SORRY_UNCLE_DESCRIPT = """Deal 10% less damage to Greg. Take 10% more damage from Greg""", # MISSING TRANSLATION
+	EFFECTNAME_PITIFUL_ARE_WE_NOT = """Pitiful, are we not?""", # MISSING TRANSLATION
+	EFFECT_PITIFUL_ARE_WE_NOT_DESCRIPT = """Immune to Movement Readed. -10 Hit Rate.""", # MISSING TRANSLATION
+	EFFECTNAME_MOVEMENT_READED = """Movement Readed""", # MISSING TRANSLATION
+	EFFECT_MOVEMENT_READED_DESCRIPT = """When Greg is not blind or immobilised:
+- Deal 90% less damage against Greg.
+- Attacking Greg will cause him to counterattack and inflicts stun.""", # MISSING TRANSLATION
+	EFFECTNAME_CLOSE_CONFRONTATION = """Close Confrontation""", # MISSING TRANSLATION
+	EFFECT_CLOSE_CONFRONTATION_DESCRIPT = """Range attacks deal 50% less damage.
+Melee attacks deal 50% more damage against the applier.
+If this unit doesn't attack the applier on their turn, provoke an opportunity attack from the applier.
+This effect is removed if the applier fell for a taunt or is immobilised.""", # MISSING TRANSLATION
+	EFFECTNAME_CLOSE_CONFRONTATION_CANCEL = """being right in front of the target.""", # MISSING TRANSLATION
+	EFFECTNAME_TIGHTENED_GRIP = """Tightened Grip""", # MISSING TRANSLATION
+	EFFECT_TIGHTENED_GRIP_DESCRIPT = """Immune to Disarm. +20 Hit Rate.""", # MISSING TRANSLATION
+	EFFECTNAME_BLACKEN_BLADE = """Blacken Blade""", # MISSING TRANSLATION
+	EFFECT_BLACKEN_BLADE_DESCRIPT = """Deals additional 50% of caster's MATK as {color=yellow|Dark} damage on every hit
+All attacks have a 20% chance to inflict Bleed.""", # MISSING TRANSLATION
     RESETTRAINREQ = "将训练重置为第 0 步并恢复精神点数。需要“遗忘药水”。",
 	RESETTRAINING = """所有训练进度将被丢弃。确定吗？""",
 	BUFFDESCRIPTDEFENDER = """防御者：除非处于眩晕状态，否则将为盟友抵挡攻击。""",
@@ -8398,7 +8487,7 @@ SEXACTION_TAILJOB_REACTION_1 = """[name2]对{^这种刺激:[names1]的努力:[na
 	CHARLOVERS = """[name]和[scncharname]走上前来，请求你允许他们成为恋人。""",
 	CHARFREELOVERS = """[name]和[scncharname]走上前来，请求你允许他们成为露水情缘。""",
 	REVEAL_MAP = """[name]施展了风之低语，洞悉了周围地区的地图布局。""",
-	DUNGEON_INTIMIDATE = """The enemy group flees from the spot abandoning their position.""", # MISSING TRANSLATION
+	DUNGEON_INTIMIDATE = """敌方队伍仓皇逃离了现场，放弃了他们的阵地。""",
 	CHARLOVERSALLOW = """*允许*""",
 	CHARFREELOVERSALLOW = """*允许*""",
 	CHARLOVERSFORBID = """*禁止*""",
@@ -8559,9 +8648,9 @@ SEXACTION_TAILJOB_REACTION_1 = """[name2]对{^这种刺激:[names1]的努力:[na
 	ENEMYFAT_BANDIT = """胖强盗""",
 	ENEMYREDHEAD_BOSS_BANDIT = """强盗头子""",
 	ENEMYSMALL_BANDIT = """小强盗""",
-	ENEMYLILITH_BOSS = """Ashmedai""", # MISSING TRANSLATION
-	ENEMYLILITH_BOSS_1 = """阿什米代""",
-	ENEMYLILITH_BOSS_2 = """阿什米代""",
+	ENEMYLILITH_BOSS = """阿什莫代""", 
+	ENEMYLILITH_BOSS_1 = """阿什莫代""",
+	ENEMYLILITH_BOSS_2 = """阿什莫代""",
 	ENEMYASHMEDAI_TENTACLE = """触手附属""",
 	ENEMYWHITE_STAG = """白鹿""",
 	ENEMYWHITE_STAG_HUMAN = """神秘人""",
@@ -8581,9 +8670,9 @@ SEXACTION_TAILJOB_REACTION_1 = """[name2]对{^这种刺激:[names1]的努力:[na
 	ENEMYKURO = """珂洛""",
 	ENEMYERDYNA = """厄尔迪娜""",
 	ENEMYNIXX = """尼克斯""",
-	ENEMYUNLIT_BRAZIER = """Unlit Brazier""", # MISSING TRANSLATION
-	ENEMYLIGHTED_BRAZIER = """Lighted Brazier""", # MISSING TRANSLATION
-	ENEMYSHADOW_MONSTROSITY = """Shadow Monstrosity""", # MISSING TRANSLATION
+	ENEMYUNLIT_BRAZIER = """未点燃的火盆""", 
+    ENEMYLIGHTED_BRAZIER = """点燃的火盆""", 
+    ENEMYSHADOW_MONSTROSITY = """阴影巨兽""",
 	ENEMYMUTANT = """变异体""",
 	ENEMYMUTANT2 = """畸变体""",
 	ENEMYSYLAS = """塞拉斯""",
@@ -8704,15 +8793,15 @@ SEXACTION_TAILJOB_REACTION_1 = """[name2]对{^这种刺激:[names1]的努力:[na
 	ITEMMAJORUS_POTIONDESCRIPT = """一种特效药水，可用于增大某人特定的身体部位。可作用于乳房、臀部、阴茎和睾丸。""",
 	ITEMEXP_SCROLL = """知识卷轴""",
 	ITEMEXP_SCROLLDESCRIPT = """为使用者提供100点经验值。使用者需要具备读写能力。""",
-	ITEMBOUQUET = """Bouquet""", # MISSING TRANSLATION
-	ITEMBOUQUETDESCRIPT = """A bouquet of fresh flowers. Gifting it raises Affection towards the giver.""", # MISSING TRANSLATION
-	ITEMGEM = """Gem""", # MISSING TRANSLATION
-	ITEMGEMDESCRIPT = """A polished, valuable gemstone. Gifting it raises Respect towards the giver.""", # MISSING TRANSLATION
-	ITEMBROOCH = """Brooch""", # MISSING TRANSLATION
-	ITEMBROOCHDESCRIPT = """An ornate, expensive brooch. Gifting it greatly raises Affection towards the giver, and raises Respect as well.""", # MISSING TRANSLATION
-	ITEMRITUAL_DAGGER = """Ritual Dagger""", # MISSING TRANSLATION
-	ITEMRITUAL_DAGGERDESCRIPT = """A ceremonial dagger of fine craftsmanship. Gifting it greatly raises Respect towards the giver, and raises Affection as well.""", # MISSING TRANSLATION
-	ITEMSEXSWAP_POTION = """性别转换药水""",
+	ITEMBOUQUET = """花束""", 
+    ITEMBOUQUETDESCRIPT = """一束鲜花。将其作为礼物赠送可提升对赠送者的好感度。""", 
+    ITEMGEM = """宝石""", 
+    ITEMGEMDESCRIPT = """一颗打磨光亮、价值不菲的宝石。将其作为礼物赠送可提升对赠送者的尊重度。""", 
+    ITEMBROOCH = """胸针""", 
+    ITEMBROOCHDESCRIPT = """一枚华丽昂贵的胸针。将其作为礼物赠送可大幅提升对赠送者的好感度，同时也会提升尊重度。""", 
+    ITEMRITUAL_DAGGER = """仪式匕首""", 
+    ITEMRITUAL_DAGGERDESCRIPT = """一把工艺精湛的仪式匕首。将其作为礼物赠送可大幅提升对赠送者的尊重度，同时也会提升好感度。""", 
+    ITEMSEXSWAP_POTION = """性别转换药水""",
 	ITEMSEXSWAP_POTIONDESCRIPT = """将角色的性别改变为异性。对特殊角色无效。""",
 	ITEMUSECONFIRM = """你确定要使用{color=yellow|%s}吗？""",
 	DIALOGUEEVENTMINORUSSELECT = """选择要缩小[name]的哪个身体部位。""",
@@ -9649,7 +9738,7 @@ ACHIBONUS_HELEVIEL_START_DESC = """在拥有赫蕾维尔的情况下开始新游
 	TUTORIAL_TRAINING12 = """选择你的主人，将其指定为她的训练师。""",
 	TUTORIAL_TRAINING13 = """要下达训练指令，请选择“赞美（Praise）”行动。""",
 	TUTORIAL_TRAINING14 = """不同的奴隶对训练行动有不同的偏好，这会影响训练的效果。试着在训练结束前让他们的精神保持在高水平。""",
-	TUTORIAL_TRAINING14_1 = """Daisy has finished her training.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING14_1 = """黛西已经完成了她的训练。""",
 	TUTORIAL_TRAINING15 = """黛西已经累积了足够的忠诚度点数来解锁服从度训练。这项基础训练是某些涉及转交角色的任务和工作所必需的。""",
 	TUTORIAL_TRAINING16 = """确认解锁。""",
 	TUTORIAL_TRAINING17 = """在第二个标签页中，你可以找到能为角色提供额外加成的特殊专长。""",
@@ -9670,31 +9759,31 @@ ACHIBONUS_HELEVIEL_START_DESC = """在拥有赫蕾维尔的情况下开始新游
 	TUTORIAL_WORK12 = """返回“工作”菜单。""",
 	TUTORIAL_WORK13 = """虽然你选了她当服务生，但你必须先将她从制造调配到服务工作上来。""",
 	TUTORIAL_WORK14 = """在这里你可以查看服务工作的额外规则和收益。在工作时，角色每回合都会产生经验值以及与任务相关的属性。""",
-	TUTORIAL_WORK15 = """Open craft menu.""", # MISSING TRANSLATION
-	TUTORIAL_WORK16 = """Choose bread.""", # MISSING TRANSLATION
-	TUTORIAL_WORK16_1 = """Confirm.""", # MISSING TRANSLATION
-	TUTORIAL_WORK17 = """You can adjust quantity. Add 10 more units.""", # MISSING TRANSLATION
-	TUTORIAL_WORK17_1 = """Confirm.""", # MISSING TRANSLATION
-	TUTORIAL_WORK18 = """Close craft window.""", # MISSING TRANSLATION
-	TUTORIAL_WORK19 = """Select crafting task.""", # MISSING TRANSLATION
-	TUTORIAL_WORK20 = """Assign Daisy to the crafting task by selecting her.""", # MISSING TRANSLATION
-	TUTORIAL_WORK21 = """Lets try few crafting tasks.""", # MISSING TRANSLATION
-	TUTORIAL_WORK22 = """Select smith category.""", # MISSING TRANSLATION
-	TUTORIAL_WORK23 = """When list is too long you can use filters.""", # MISSING TRANSLATION
-	TUTORIAL_WORK24 = """Choose steel.""", # MISSING TRANSLATION
-	TUTORIAL_WORK24_1 = """Confirm.""", # MISSING TRANSLATION
-	TUTORIAL_WORK24_2 = """Confirm.""", # MISSING TRANSLATION
-	TUTORIAL_WORK24_3 = """Go to crafting tasks for Daisy again.""", # MISSING TRANSLATION
-	TUTORIAL_WORK25 = """Go to crafting tasks for Daisy again.""", # MISSING TRANSLATION
-	TUTORIAL_WORK25_1 = """Go to crafting tasks for Daisy again.""", # MISSING TRANSLATION
-	TUTORIAL_WORK25_2 = """Go to crafting tasks for Daisy again.""", # MISSING TRANSLATION
-	TUTORIAL_WORK26 = """Here you can change crafting priorities. Daisy will bake bread while task is active and cooking priority is higher then smith's. Now drag smith button to higher priority.""", # MISSING TRANSLATION
-	TUTORIAL_WORK26_1 = """You can see that Daisy produceing steel now.
-Close this menu.""", # MISSING TRANSLATION
-	TUTORIAL_WORK27 = """You also can cancel crafting task outright. Go back to cooking menu.""", # MISSING TRANSLATION
-	TUTORIAL_WORK27_1 = """Go back to cooking menu.""", # MISSING TRANSLATION
-	TUTORIAL_WORK28 = """Cancel bread baking.""", # MISSING TRANSLATION
-	TUTORIAL_WORK29 = """And confirm it.""", # MISSING TRANSLATION
+	TUTORIAL_WORK15 = """打开制造菜单。""", 
+    TUTORIAL_WORK16 = """选择面包。""", 
+    TUTORIAL_WORK16_1 = """确认。""", 
+    TUTORIAL_WORK17 = """你可以调整数量。再增加10份。""", 
+    TUTORIAL_WORK17_1 = """确认。""", 
+    TUTORIAL_WORK18 = """关闭制造窗口。""", 
+    TUTORIAL_WORK19 = """选择制造任务。""", 
+    TUTORIAL_WORK20 = """选中黛西，将她分配到该制造任务。""", 
+    TUTORIAL_WORK21 = """让我们尝试几个制造任务。""", 
+    TUTORIAL_WORK22 = """选择锻造分类。""", 
+    TUTORIAL_WORK23 = """列表过长时，你可以使用筛选器。""", 
+    TUTORIAL_WORK24 = """选择钢材。""", 
+    TUTORIAL_WORK24_1 = """确认。""", 
+    TUTORIAL_WORK24_2 = """确认。""", 
+    TUTORIAL_WORK24_3 = """再次前往黛西的制造任务界面。""", 
+    TUTORIAL_WORK25 = """再次前往黛西的制造任务界面。""", 
+    TUTORIAL_WORK25_1 = """再次前往黛西的制造任务界面。""", 
+    TUTORIAL_WORK25_2 = """再次前往黛西的制造任务界面。""", 
+    TUTORIAL_WORK26 = """在此你可以更改制造优先级。只要任务处于开启状态且烹饪优先级高于锻造，黛西就会优先烘焙面包。现在将锻造按钮拖至更高的优先级。""", 
+    TUTORIAL_WORK26_1 = """可以看到黛西现在正在生产钢材了。
+关闭此菜单。""", 
+    TUTORIAL_WORK27 = """你也可以直接彻底取消制造任务。返回烹饪菜单。""", 
+    TUTORIAL_WORK27_1 = """返回烹饪菜单。""", 
+    TUTORIAL_WORK28 = """取消面包烘焙。""", 
+    TUTORIAL_WORK29 = """并确认。""",
 	TUTORIAL_LEVELING0 = """说到经验值，让我们来看看另一种获取它的方法。""",
 	TUTORIAL_LEVELING1 = """选择“背包”来查看你的财产。""",
 	TUTORIAL_LEVELING2 = """选择你的“主人”作为当前需要管理的角色。""",
@@ -10064,8 +10153,8 @@ ALIRONELECTIONSFINISH_LINE4 = """{color=yellow|Myr: — 哼，所以你现在是
 {color=red|[name] 缺乏卖淫特训，无法指派此项服务}""",
 	LACKSEXTRAININGSLAVE = """
 {color=red|[name] 缺乏卖淫特训，只能赚取潜在金币收益的 2/3。}""",
-	BROTHELMINCONSENT = """Consent Level: {color=aqua|%s}""", # MISSING TRANSLATION
-	BROTHELSKILLLEVEL = """Skill level: {color=aqua|%s}""", # MISSING TRANSLATION
+	BROTHELMINCONSENT = """同意等级：{color=aqua|%s}""", 
+    BROTHELSKILLLEVEL = """技能等级：{color=aqua|%s}""",
 	STATOBDRAINREDUCTION = """服从度流失减缓""",
 	STATOBDRAININCREASE = """服从度流失加剧""",
 	ITEMCHEST_ADV_CLOTH = """高级魔法外套""",
@@ -17560,11 +17649,11 @@ AMELIA_TRIAL_NORMAL_5_OPTION_3 = """我没有其他异议了。""",
 {color=yellow|— 对不起，不知为什么，让我表现得像普通女孩子真的太难了。而且必须穿成这样也太折磨人了……也许我还是放弃这件事吧。}""",
 	CALI_SERVANTS_NEW_LEADER_5_OPTION_1 = """你现在还不该轻言放弃。""",
 	CALI_SERVANTS_NEW_LEADER_5_OPTION_2 = """也许这行确实不适合你。""",
-	CALI_SERVANTS_NEW_LEADER_END_DIALOGUE = """Cali fidgets with the torn hem of her dress, ears drooping as she searches for something to say. In the end she just gives you an awkward little nod, still clearly unsure of herself.
+	CALI_SERVANTS_NEW_LEADER_END_DIALOGUE = """卡莉局促地揉捏着裙子破损的裙摆，耷拉着耳朵，搜肠刮肚地想找点话说。到头来，她只是尴尬地对你微微点了点头，显然对自己依然没什么把握。
 
-{color=aqua|Cali: — I'll... keep trying, I guess. Just don't expect too much, okay?}
+{color=aqua|卡莉：—— 我会……继续努力的，大概吧。只是别对我期望太高，好吗？}
 
-Without waiting for a reply, she hurries off to change back into her usual clothes.""", # MISSING TRANSLATION
+还没等你回答，她就匆忙离开，换回了自己平时的衣服。""",
 	CALI_SERVANTS_NEW_LEADER_6 = """{color=yellow|Amelia: — 我看到你的培训了，你叫卡莉对吧？很高兴认识你。}
 
 {color=aqua|卡莉: — 你好……你又是谁？}
@@ -18218,7 +18307,7 @@ Without waiting for a reply, she hurries off to change back into her usual cloth
 你意识到她指的肯定是她的姐妹，看来是时候再去拜访一下扎瑞（Xari）了。""",
 	LILITH_XARI_LOCATION = """你谦卑地向扎瑞讲述了从莉莉娅发生异变以来的所有经过。正如她姐妹所暗示的那样，扎瑞不仅没有流露出丝毫厌恶，反而对这个话题表现出了比任何事都要浓厚的兴趣。
 
-{color=yellow|—— 所以，这就是你之前一直在调教的那个小妖精？看来你这个[guy]骨子里真是个无可救药的堕落之徒啊。你说那个恶魔的名字叫阿斯莫德（Ashmedai）？我想我曾经在书里读到过。我敢肯定，他把那个女孩当成了某种输送管道，好窃取她的能量为己所用。她从你这里汲取能量，但因为这种扭曲的连接，能量很快就会流失殆尽，所以她才会变得如此淫荡又贪婪，总处于那种饥渴难耐的状态。}
+{color=yellow|—— 所以，这就是你之前一直在调教的那个小妖精？看来你这个[guy]骨子里真是个无可救药的堕落之徒啊。你说那个恶魔的名字叫阿什莫代（Ashmedai）？我想我曾经在书里读到过。我敢肯定，他把那个女孩当成了某种输送管道，好窃取她的能量为己所用。她从你这里汲取能量，但因为这种扭曲的连接，能量很快就会流失殆尽，所以她才会变得如此淫荡又贪婪，总处于那种饥渴难耐的状态。}
 
 {color=yellow|—— 除非你打算彻底干掉她，否则你必须得想办法处理掉她背后那个主人。他无法直接控制她，所以你甚至有机会策反她来反抗那个恶魔，但别指望能撤销她的异变或者把她的灵魂变回原样。只要她能留住从你身上得到的全部能量，她未来可是会变得非常强大的。}""",
 	LILITH_THANK_XARI_OPTION = """谢谢你，你对这些事情确实了如指掌""",
@@ -24695,11 +24784,11 @@ Heleviel没有作声；然而，她脸上的怒火却在不断积聚。""",
 	TRAITSPIRIT_BOARDESCRIPT = """物理潜力 +1，最大生命值 +15，防御 +10
 同列盟友在全局回合结束时恢复 10 点生命值。""",
 	TRAITSPIRIT_SATYR = """守护之灵：维尔霍恩""",
-	TRAITSPIRIT_SATYRDESCRIPT = """性爱潜力 +1，权威潜力 +1，魔法攻击 +3，魔法防御 +5
+	TRAITSPIRIT_SATYRDESCRIPT = """性爱潜力 +1，权威潜力 +1，魔法攻击 +3，魔魔防御 +5
 对自己或盟友施放法术后恢复 4 点法力值。""",
 	TRAITSPIRIT_OWL = """守护之灵：诺克塔拉""",
 	TRAITSPIRIT_OWLDESCRIPT = """智慧潜力 +1，智慧加成 +10，经验值加成 +20%""",
-	TRAITHARLOT = """Harlot""", # MISSING TRANSLATION
+	TRAITHARLOT = """荡妇""",
 	JEAN_SIDEQUEST_START_1 = """琴搬进你的宅邸几天过去了。她大多时间都独自待着，长时间把自己锁在房间里，或者在履行职责时带着令人捉摸不透的表情发呆。和其他人不同，她并不公开寻求你的关注——或者说，在今天晚上之前是这样。
 
 午夜过后，当宅邸大部分地方都陷入沉寂时，琴走向了你。她假装很放松，但姿势僵硬，肩膀微微耸起，仿佛做好了被拒绝的准备。
@@ -29022,7 +29111,7 @@ you 警告他最好别耍什么花样，随后将他结结实实地绑好扔在�
 	ACT4_SENERUS_CHAMPIONS_4 = """{color=aqua|塞内鲁斯：— 问你还需要知道什么，或者我们可以回到神器的话题上。}""",
 	ACT4_SENERUS_CHAMPIONS_OPTION_ALIOS = """阿里奥斯""",
 	ACT4_SENERUS_CHAMPIONS_OPTION_NIXX = """尼克斯""",
-	ACT4_SENERUS_CHAMPIONS_OPTION_ASHMEDAI = """阿斯莫代""",
+	ACT4_SENERUS_CHAMPIONS_OPTION_ASHMEDAI = """阿什莫代""",
 	ACT4_SENERUS_CHAMPIONS_OPTION_RETURN = """我们回到神器的话题上吧。""",
 	ACT4_SENERUS_ARTIFACT_LEAD = """{color=aqua|塞内鲁斯：— 帝国不会公开其魔法资产，但我们谈论的不是一件普通的神器，如果他们拥有这样的东西，现在早该家喻户晓了。我相信它就藏在这座城市的围墙内，很可能是被这里富集的人口和财富所吸引。城市下方有巨大的地下墓穴，我建议从那里开始搜寻。我可以为你指点一个仍然可以通行的入口。在此期间，我会去调查一下你具体要寻找的东西。}
 
@@ -29809,8 +29898,8 @@ you 警告他最好别耍什么花样，随后将他结结实实地绑好扔在�
 	ACT4_SEBASTIAN_DWARF_CAPITAL_OPTION_TECHNICIAN = """与铁路技师交谈""",
     ACT4_SEBASTIAN_DWARF_CAPITAL_OPTION_KHARZUG = """深入探查卡尔祖格深渊""",
     ACT4_SEBASTIAN_DWARF_CAPITAL_OPTION_TOMB = """搜寻下层陵墓""",
-	QUEST_KHARZUG_DEEP_TEXT = """Kharzug Deep""", # MISSING TRANSLATION
-	QUEST_KHARZUG_DEEP_DESC = """A dwarven settlement along the railroad line, overrun by undead.""", # MISSING TRANSLATION
+	QUEST_KHARZUG_DEEP_TEXT = """卡祖格深渊""", 
+    QUEST_KHARZUG_DEEP_DESC = """位于铁路线沿线的矮人定居点，现已被亡灵占领。""",
     ACT4_SEBASTIAN_EMPIRE_CAPITAL_OPTION_PROPOSAL = """观察铁路提案""",
     ACT4_SEBASTIAN_EMPIRE_CAPITAL_OPTION_REPORT_TECHNICIAN = """向塞巴斯蒂安报告技师的情况""",
     ACT4_SEBASTIAN_PARISHIONER_TASK_NAME = """说服教区居民""",
@@ -30249,7 +30338,7 @@ you 警告他最好别耍什么花样，随后将他结结实实地绑好扔在�
 仓库老板此时正在里面清点着打包好的存货。看到你进来，他抬起头，显然十分惊讶于来拜访自己的居然是镇长大人，而不是别的供货商。
 
 {color=yellow|仓库老板：——[name]镇长？如果又是为了那条松动的排水沟的事，我已经花钱找人来修了。他只是到现在还没摸到这儿来而已。}""",
-	ACT4_SEBASTIAN_FIND_WAREHOUSE_OWNER_1B = """He sets his ledger aside, giving you his full attention, waiting to hear why the mayor is really here.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_FIND_WAREHOUSE_OWNER_1B = """他把账本放在一边，全神贯注地看着你，等着听你说明来意。""",
 	ACT4_SEBASTIAN_FIND_WAREHOUSE_OWNER_2 = """{color=yellow|仓库老板：——贸易公会？没听过。我还是头一回听说他们对这儿感兴趣。不过，我最近确实在盘算着把这里卖掉。现在买卖都渐渐往东边货场那边靠了，这地方对我来说空间太大了。三千金币，只要您掏钱，我立刻签字转让，咱们谁也别把时间浪费在磨磨唧唧地讨价还价上。}""",
     ACT4_SEBASTIAN_WAREHOUSE_PURCHASE = """老板仔细清点了货款，然后从账本下方那个上了锁的抽屉里，拿出一份折叠好的地契。
 
@@ -30326,116 +30415,116 @@ you 警告他最好别耍什么花样，随后将他结结实实地绑好扔在�
     ACT4_SEBASTIAN_REPORT_WAREHOUSE_OPTION_2 = """贸易公会可以在不占用教堂的情况下获得你们想要的产业。""",
     ACT4_SEBASTIAN_REPORT_WAREHOUSE_OPTION_3 = """那座仓库符合你们的要求。用那个吧，别动教堂了。""",
     ACT4_SEBASTIAN_REPORT_WAREHOUSE_OPTION_4 = """你让我解决这个问题，我做到了。把仓库拿去吧。""",
-	KURO_SEASIDE_START = """The afternoon has dragged itself into a kind of punishment. By now the ink has started drying too quickly on the page, your wrist aches from signatures, and every completed document seems to uncover two more beneath it. The heat sits heavily in the office, turning the still air between the shelves and your desk into something almost solid.
+	KURO_SEASIDE_START = """下午漫长得简直像是一种折磨。此时墨水在纸上干得飞快，你的手腕因不停签署文件而隐隐作痛，而每处理完一份文件，下面似乎又会露出两份新的。沉闷的酷热充斥着办公室，将书架与书桌之间凝滞的空气凝结得近乎沉重。
 
-You have just reached for the next ledger when the shadow beside the bookshelf thickens. A familiar black tail slips out of it first, followed by Kuro, who steps into the room.
+你刚伸出手准备拿下一本账簿，书架旁边的阴影便浓郁起来。一条熟悉的黑色尾巴率先溜了出来，紧接着珂洛走进了房间。
 
-{color=yellow|Kuro: — Still sitting here? I expected as much.}
+{color=yellow|珂洛：—— 还坐在这一动不动？我就知道。}
 
-She looks over the desk with an unreadable expression.
+她带着令人琢磨不透的表情扫视了一圈书桌。
 
-{color=yellow|Kuro: — You are overworking. Again. Also, this time of season is really hot.}""", # MISSING TRANSLATION
-	KURO_SEASIDE_OPTION_BUSY = """I'm busy because someone has to keep this place running.""", # MISSING TRANSLATION
-	KURO_SEASIDE_OPTION_WEATHER = """If you came here to complain about the weather, you picked a strange time.""", # MISSING TRANSLATION
-	KURO_SEASIDE_OPTION_WORRIED = """You sound almost worried about me.""", # MISSING TRANSLATION
-	KURO_SEASIDE_OFFICE_2_1 = """Kuro gives the documents another brief glance.
+{color=yellow|珂洛：—— 你又在过度工作了。而且，这个时节天气真的很热。}""", 
+    KURO_SEASIDE_OPTION_BUSY = """我很忙是因为总得有人让这地方维持运转。""", 
+    KURO_SEASIDE_OPTION_WEATHER = """如果你是专门来挑剔天气的，那可真选了个古怪的时机。""", 
+    KURO_SEASIDE_OPTION_WORRIED = """听起来你好像在担心我似的。""", 
+    KURO_SEASIDE_OFFICE_2_1 = """珂洛再次扫了一眼那些文件。
 
-{color=yellow|Kuro: — Yes, and if you collapse into them, I am sure they will become much more obedient.}
+{color=yellow|珂洛：—— 昂，要是你累垮倒在它们上面，我敢保证它们肯定会变得顺从得多。}
 
-{color=yellow|Kuro: — A new seaside leisure resort has opened near the coast. Fresh facilities, private rooms, enough distance from Aliron that most people here can't reach you with another stack of demands. I thought it might be an efficient place to spend a few days. The sea breeze should make the heat less obnoxious, and a temporary rest would give your subordinates a chance to prove they are not decorative furniture.}""", # MISSING TRANSLATION
-	KURO_SEASIDE_OFFICE_2_2 = """{color=yellow|Kuro: — I did not come to complain. I am merely noting an obvious seasonal inconvenience before presenting a solution to it.}
+{color=yellow|珂洛：—— 海边新开了一家海滨休养度假村。设施很新，有独立包间，距离阿利隆也足够远，这里的大多数人都没法拿着一堆新诉求找上你。我觉得那里是个度过几天的效率之选。海风能减弱酷热的烦人程度，而暂时的休息也能让你的下属有机会证明自己不是摆设。}""", 
+    KURO_SEASIDE_OFFICE_2_2 = """{color=yellow|珂洛：—— 我不是来抱怨的。我只是在提出解决方案之前，陈述一个显而易见的时令不便之处。}
 
-{color=yellow|Kuro: — A new seaside leisure resort has opened near the coast. Fresh facilities, private rooms, enough distance from Aliron that most people here can't reach you with another stack of demands. I thought it might be an efficient place to spend a few days. The sea breeze should make the heat less obnoxious, and a temporary rest would give your subordinates a chance to prove they are not decorative furniture.}""", # MISSING TRANSLATION
-	KURO_SEASIDE_OFFICE_2_3 = """Kuro's eyes roll dismissively.
+{color=yellow|珂洛：—— 海边新开了一家海滨休养度假村。设施很新，有独立包间，距离阿利隆也足够远，这里的大多数人都没法拿着一堆新诉求找上你。我觉得那里是个度过几天的效率之选。海风能减弱酷热的烦人程度，而暂时的休息也能让你的下属有机会证明自己不是摆设。}""", 
+    KURO_SEASIDE_OFFICE_2_3 = """珂洛不以为意地翻了个白眼。
 
-{color=yellow|Kuro: — Sure, be snarky all you want.}
+{color=yellow|珂洛：—— 行，你想怎么阴阳怪气都随你。}
 
-{color=yellow|Kuro: — A new seaside leisure resort has opened near the coast. Fresh facilities, private rooms, enough distance from Aliron that most people here can't reach you with another stack of demands. I thought it might be an efficient place to spend a few days. The sea breeze should make the heat less obnoxious, and a temporary rest would give your subordinates a chance to prove they are not decorative furniture.}""", # MISSING TRANSLATION
-	KURO_SEASIDE_OPTION_ACCEPT = """Fine, I guess we could have a vacation.""", # MISSING TRANSLATION
-	KURO_SEASIDE_OPTION_REFUSE = """I'd rather continue with my tasks.""", # MISSING TRANSLATION
-	KURO_SEASIDE_ACCEPT_1 = """For a brief moment, Kuro smiles. It is small, controlled, and gone almost quickly enough to deny.
+{color=yellow|珂洛：—— 海边新开了一家海滨休养度假村。设施很新，有独立包间，距离阿利隆也足够远，这里的大多数人都没法拿着一堆新诉求找上你。我觉得那里是个度过几天的效率之选。海风能减弱酷热的烦人程度，而暂时的休息也能让你的下属有机会证明自己不是摆设。}""", 
+    KURO_SEASIDE_OPTION_ACCEPT = """好吧，我想我们可以休个假。""", 
+    KURO_SEASIDE_OPTION_REFUSE = """我宁愿继续做我的工作。""",
+	KURO_SEASIDE_ACCEPT_1 = """有那么一瞬间，珂洛露出了微笑。那笑容很小、很克制，转瞬即逝得仿佛从未发生过一样。
 
-{color=yellow|Kuro: — Good. That is a sensible approach.}
+{color=yellow|珂洛：—— 很好。这是个明智的选择。}
 
-She turns slightly toward the shadow she came from, already treating the decision as finalized.
+她稍微转向自己刚刚走出的那片阴影，显然已经将这个决定视为了既定事实。
 
-{color=yellow|Kuro: — I have almost finished all preparations already. Transport, lodging, appropriate excuses, and a few measures to keep the more persistent petitioners occupied. You can ready yourself for it without worrying.}""", # MISSING TRANSLATION
-	KURO_SEASIDE_ACCEPT_2 = """{color=yellow|Kuro: — Hope you are looking forward to my bathing costume, I took time selecting it after all.}
+{color=yellow|珂洛：—— 我几乎把所有的准备工作都做好了。交通、住宿、合适的借口，还有一些能让那些死缠烂打的请愿者有事可做的措施。你可以毫无后顾之忧地去收拾行装了。}""", 
+    KURO_SEASIDE_ACCEPT_2 = """{color=yellow|珂洛：—— 希望你会期待我的泳装，毕竟我可是花了不少时间挑选的。}
 
-She steps back into the shadow, leaving the office cooler by absence alone and the top ledger still crooked on your desk.""", # MISSING TRANSLATION
-	KURO_SEASIDE_REFUSE_1 = """{color=yellow|Kuro: — Too bad.}
+她退回了阴影之中。仅凭她的离去就让办公室清凉了几分，而那本最上面的账簿依然歪歪扭扭地躺在你的桌上。""", 
+    KURO_SEASIDE_REFUSE_1 = """{color=yellow|珂洛：—— 太遗憾了。}
 
-She says it without any visible disappointment, which somehow makes it worse.
+她语气平淡，没有流露出丝毫不悦，但这反而让情况变得更糟了。
 
-{color=yellow|Kuro: — The other girls have already been begging for something like this. Several of them have begun making preparations, and I doubt they will take no for an answer now.}
+{color=yellow|珂洛：—— 其他女孩们早就苦苦央求过类似的活动了。她们当中有几个人已经开始做准备了，我可不觉得她们现在会接受拒绝。}
 
-You look down at the paperwork. It remains exactly as tall, exactly as dry, and suddenly much less persuasive.""", # MISSING TRANSLATION
-	KURO_SEASIDE_REFUSE_2 = """{color=yellow|Kuro: — Consider this a consequence of poor time management. If you had intended to refuse a vacation, you should have done so before I arranged one.}
+你低头看了看那些公文。它们依然堆得那么高，依然那么枯燥乏味，而且突然之间变得毫无说服力。""", 
+    KURO_SEASIDE_REFUSE_2 = """{color=yellow|珂洛：—— 把这当成时间管理不善的后果吧。如果你打算拒绝休假，就应该在我安排好之前提出来。}
 
-With that, she fades back into the office shadows, leaving you alone with the unavoidable realization that the day's work has just lost a battle.""", # MISSING TRANSLATION
-	KURO_SEASIDE_RESORT_ARRIVAL = """The resort stands a short distance from the shore, new enough that its pale wood still looks freshly cut. A few other guests linger near the water at first, but the arrival of your group quickly changes the balance of the place. Some retreat toward the resort buildings, some scatter down the beach, and soon the stretch of sand ahead is mostly yours.
+说完，她便隐没回办公室的阴影之中，只留下你独自一人面对一个无法回避的现实：今天的工作刚刚败下阵来。""", 
+    KURO_SEASIDE_RESORT_ARRIVAL = """度假村立于离海岸不远的地方，新得连浅色的木材都像是刚切割下来似的。起初还有几位游客在水边逗留，但你们这群人的到来迅速打破了这里的平衡。有人退回度假村的建筑内，有人散落到沙滩远端，没过多久，前方的这片沙滩大半就归你们所有了。
 
-The girls waste little time spreading out. Their voices overlap with the waves as they rush toward the water, argue over towels, compare bathing outfits, and call for you.""", # MISSING TRANSLATION
-	KURO_SEASIDE_REVEAL = """Kuro appears a few steps away from the darker shade beneath the resort walkway, already dressed for the beach. Her sea outfit is obviously selected with care: a dark bathing top, a loose wrap at her hips, and tinted glasses resting above her eyes. She looks slightly exhausted and calm in a way contrasting with others. She does not seem exactly in her element here. The bright sun, open space, and excited crowd of girls all work against her. Even so, the unfamiliar attire draws the eye, framing her dark hair, pale skin, and black tail in a way that makes her presence difficult to ignore.
+女孩们毫不浪费时间地散开来。她们冲向水边，争论着毛巾归属，互相攀比泳装，并高声呼唤着你，声音与浪涛声交织在一起。""", 
+    KURO_SEASIDE_REVEAL = """珂洛从度假村步道下较深的阴影中走了出来，离你只有几步远，她已经换上了海滩装束。她的海滨衣装显然经过精心挑选：一件深色泳衣上衣，臀部系着一块宽松的围裙，墨镜架在额头上。她看起来有些疲惫，又带着一种与其他女孩截然不同的从容。在这里，她似乎并不是如鱼得水。明亮的阳光、开阔的空间以及兴奋的女孩人群都与她的气质有些格格不入。即便如此，这身罕见的装束依然引人瞩目，勾勒出她的黑发、苍白的肌肤以及黑色的尾巴，让人根本无法忽视她的存在。
 
-{color=yellow|Kuro: — This place is quite something.}
+{color=yellow|珂洛：—— 这地方还真是不简单。}
 
-Before you can answer, several of the girls call for you at once. One catches your arm, another insists you need to see the water first. Kuro watches you get dragged away with a faint smile.""", # MISSING TRANSLATION
-	KURO_SEASIDE_THANKS = """By the time the sun has moved lower, you have been pulled through enough swimming, games, food, and aimless beach wandering to make the stress from earlier seem almost stationary by comparison. The girls gather around you with bright, tired faces, their earlier excitement softened into sincere gratitude.
+还没等你回答，好几个女孩就同时高呼起你的名字。一个挽住你的手臂，另一个硬拉着你说一定要先去看看海水。珂洛带着一丝淡淡的微笑，看着你被强行拉走。""", 
+    KURO_SEASIDE_THANKS = """当太阳逐渐西斜时，你已经被强拉着经历了游泳、游戏、美食以及漫无目的的海滩闲逛，先前的压力与此刻相比显得微不足道。女孩们围聚在你的身边，脸上带着明媚而倦怠的神情，先前的兴奋化作了真挚的感激。
 
-— Thank you for bringing us here, [master] [name]. This trip is wonderful.""", # MISSING TRANSLATION
-	KURO_SEASIDE_OPTION_GLAD = """I am glad you are enjoying yourselves.""", # MISSING TRANSLATION
-	KURO_SEASIDE_OPTION_SATISFY = """I had to satisfy your request, didn't I?""", # MISSING TRANSLATION
-	KURO_SEASIDE_THANKS_GLAD = """The answer earns a chorus of smiles and a few overlapping thanks. Even the quieter girls seem pleased, standing close together with the relaxed ease of people who have briefly forgotten their usual duties.""", # MISSING TRANSLATION
-	KURO_SEASIDE_THANKS_REFUSED = """The girls exchange confused looks.
+—— 谢谢你带我们来这里，[master] [name]。这次旅行真是太棒了。""", 
+    KURO_SEASIDE_OPTION_GLAD = """我很开心你们玩得尽兴。""",
+	KURO_SEASIDE_OPTION_SATISFY = """我必须满足你的要求，不是吗？""", 
+    KURO_SEASIDE_THANKS_GLAD = """这个回答换来了一阵阵笑容和连声的道谢。即使是性格文静的女孩们似乎也很开心，她们并肩站在一起，流露出短暂抛开日常职责后的轻松与自在。""", 
+    KURO_SEASIDE_THANKS_REFUSED = """女孩们困惑地对视着。
 
-— Our request? We didn't think we could request something like this from you.
+—— 我们的请求？我们没想到还能向您提出这种请求。
 
-Another girl nods quickly.
+另一个女孩连忙点头。
 
-— When Kuro told us about the trip, we all said it sounded wonderful, but none of us thought we could ask our master to do such a thing for us.
+—— 当珂洛把旅行的事告诉我们时，我们都觉得听起来棒极了，但我们谁也没想到居然能请求主人为我们做这种事。
 
-Their gratitude becomes a little more earnest after that, and you realize Kuro's version of events may have been arranged with the same care as the vacation itself.""", # MISSING TRANSLATION
-	KURO_SEASIDE_EVENING = """Eventually the group disperses again, some returning to the water and others chasing the last snacks left beneath the resort awnings. That leaves you with a moment to look for Kuro.
+在那之后，她们的感激之情变得更加真挚，而你也意识到，珂洛版本的说辞或许和这次度假本身一样，都是经过精心安排的。""", 
+    KURO_SEASIDE_EVENING = """最终，人群再次散开，有的重新回到水中，有的去争抢度假村遮阳棚下剩下的最后一点零食。这让你有时间去找珂洛。
 
-You find her resting in the shadow of a beach tent, one knee drawn up, tail curled neatly beside her. She appears relaxed at first glance, but her red eyes follow you the entire time you approach. She responds to your questioning look.
+你发现她正在沙滩帐篷的阴影下休息，一条腿微微蜷起，尾巴整齐地盘在身边。乍一看她显得很放松，但随着你靠近，那双红色的眼睛自始至终都在看着你。面对你询问的眼神，她做出了回应。
 
-{color=yellow|Kuro: — I am not particularly good with crowds and heat. But it's a nice break of pace after all.}
+{color=yellow|珂洛：—— 我不是很擅长应对人群和酷热。不过话说回来，这倒是个不错的新鲜体验。}
 
-She shifts slightly deeper into the shade, watching the others play in the distance.""", # MISSING TRANSLATION
-	KURO_SEASIDE_OPTION_COMPANY = """I am not great with crowds either. Let me keep you company.""", # MISSING TRANSLATION
-	KURO_SEASIDE_OPTION_LEAVE = """Then I'll leave you to rest and go back to the others.""", # MISSING TRANSLATION
-	KURO_SEASIDE_OPTION_WITS = """[Wits Check] You just wanted me to get some rest, didn't you?""", # MISSING TRANSLATION
-	KURO_SEASIDE_WITS_HIDDEN = """???""", # MISSING TRANSLATION
-	KURO_SEASIDE_WITS_1 = """Kuro's expression softens into something teasing.
+她微微向阴影深处退了退，看着远方嬉戏的其他女孩。""", 
+    KURO_SEASIDE_OPTION_COMPANY = """我也不怎么擅长应对人群。让我陪陪你吧。""", 
+    KURO_SEASIDE_OPTION_LEAVE = """那我就不打扰你休息了，先回其他人那边去。""", 
+    KURO_SEASIDE_OPTION_WITS = """[才智检定] 你只是想让我好好休息一下，不是吗？""", 
+    KURO_SEASIDE_WITS_HIDDEN = """???""", 
+    KURO_SEASIDE_WITS_1 = """珂洛的表情软化下来，带上了几分调侃。
 
-{color=yellow|Kuro: — Perhaps. But if you are clever enough to notice that, you should also be clever enough to answer something for me.}
+{color=yellow|珂洛：—— 也许吧。但如果你聪明到了能察觉这一步，你也应该聪明到能回答我一个问题。}
 
-She adjusts the edge of her bathing top with deliberate care.
+她刻意且细致地理了理泳衣上衣的边缘。
 
-{color=yellow|Kuro: — Do you enjoy my bathing costume?}""", # MISSING TRANSLATION
-	KURO_SEASIDE_OPTION_PLEASURE = """It's a pleasure to look at.""", # MISSING TRANSLATION
-	KURO_SEASIDE_OPTION_USUAL = """Your usual attire fits you more.""", # MISSING TRANSLATION
-	KURO_SEASIDE_WITS_PLEASURE = """Kuro's tail moves once against the sand.
+{color=yellow|珂洛：—— 你喜欢我的泳装吗？}""", 
+    KURO_SEASIDE_OPTION_PLEASURE = """赏心悦目。""", 
+    KURO_SEASIDE_OPTION_USUAL = """你平时的装扮更适合你。""",
+	KURO_SEASIDE_WITS_PLEASURE = """珂洛的尾巴在沙地上扫了一下。
 
-{color=yellow|Kuro: — So it was worth the hassle then.}""", # MISSING TRANSLATION
-	KURO_SEASIDE_WITS_USUAL = """Kuro gives a quiet, amused breath.
+{color=yellow|珂洛：—— 看来这番折腾倒是值得了。}""", 
+    KURO_SEASIDE_WITS_USUAL = """珂洛轻声笑了笑，显得颇受用。
 
-{color=yellow|Kuro: — I suspected you might say that. Unfortunately, my usual attire is poorly suited for sand and seawater, so you will have to endure this version for today.}""", # MISSING TRANSLATION
-	KURO_SEASIDE_WITS_CONVERGE = """For a moment, she looks past you toward the rest of the beach. The girls are already waving again.""", # MISSING TRANSLATION
-	KURO_SEASIDE_END_COMPANY = """Kuro looks up at you for a moment, searching for mockery and finding none.
+{color=yellow|珂洛：—— 我就知道你可能会这么说。可惜的是，我平时那身装扮不太适合沙滩和海水，所以今天你只能忍受这个版本了。}""", 
+    KURO_SEASIDE_WITS_CONVERGE = """有那么一瞬间，她越过你的肩膀看向沙滩的其他地方。女孩们已经在再次向这边挥手了。""", 
+    KURO_SEASIDE_END_COMPANY = """珂洛抬头看了你一会儿，想寻出几分嘲弄，却一无所获。
 
-{color=yellow|Kuro: — And I thought you are far more social than this. Or you are doing your best to please me too? One awful womanizer you are.}
+{color=yellow|珂洛：—— 我还以为你远比这要合群呢。还是说你也在尽力讨好我？你真是个糟糕的花花公子。}
 
-You settle beside her beneath the tent. For a while neither of you says much. The noise of the beach remains at a comfortable distance, the shade cools your skin, and Kuro's shoulder eventually rests against yours with deliberate casualness.
+你在帐篷下在她身边坐了下来。有那么一小会儿，你们谁也没说话。沙滩的喧嚣保持在舒适的距离外，阴影抚凉了肌肤，珂洛的肩膀最终带着几分故作随意的轻巧倚上了你的手臂。
 
-It is not the kind of intimacy that announces itself loudly, but it stays with you all the same.""", # MISSING TRANSLATION
-	KURO_SEASIDE_END_LEAVE = """Kuro gives a small nod, her gaze already moving back toward the water.
+这并非那种轰轰烈烈的亲昵，却同样深植于心。""", 
+    KURO_SEASIDE_END_LEAVE = """珂洛微微点了下头，目光已经收回到了水面上。
 
-{color=yellow|Kuro: — Go on. They will start competing for your attention again if you make them wait too long.}
+{color=yellow|珂洛：—— 去吧。要是让他们等太久，她们又该争着吸引你的注意力了。}
 
-You leave her in the shade and return to the others, carrying with you the strange certainty that Kuro is still watching.""", # MISSING TRANSLATION
-	ENEMYRILU_MADDENED = """Strange girl""", # MISSING TRANSLATION
+你留她在阴影中休息，转身回到了其他人身边，心中带着一种奇妙的笃定——珂洛仍在注视着你。""", 
+    ENEMYRILU_MADDENED = """发狂的少女""",
 
 
 

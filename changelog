@@ -1,3 +1,7 @@
+Added new trait for Ratkin: In the shadows reduces ranged physical hit chance by 30%.
+Fixed Lira's quest 3rd part
+Fixed in the shadows giving evasion against physical attacks
+0.15.0c
 Master's Mentor trait now boosts Training Points gained instead of trainee capacity
 Amelia is now recruited with proper training and points
 Changed dungeon goblin event 'take to the leader' option to map reveal

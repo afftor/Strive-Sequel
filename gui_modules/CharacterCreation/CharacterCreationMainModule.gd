@@ -750,7 +750,6 @@ func check_food_filter():
 
 func build_food_filter():
 	var val = {}
-	$DietPanel/RichTextLabel.bbcode_text = tr("CHARCREATE_DIET_HELP")
 	if mode == 'freemode':
 		preservedsettings.food_filter = {}
 		for food in foods:
@@ -766,7 +765,16 @@ func build_food_filter():
 			val[food] = 'neutral'
 			if preservedsettings.has('food_filter') and preservedsettings.food_filter.has(food):
 				val[food] = preservedsettings.food_filter[food]
-	
+
+	var liked_count = 0
+	for food in foods:
+		if val[food] == 'like':
+			liked_count += 1
+	if liked_count > 1:
+		$DietPanel/RichTextLabel.bbcode_text = tr("CHARCREATE_DIET_HELP_TOO_MANY_LIKED")
+	else:
+		$DietPanel/RichTextLabel.bbcode_text = tr("CHARCREATE_DIET_HELP")
+
 	for food in foods:
 		var node = find_node_for_stat('food_filter_' + food)
 		if !node.has_meta('signals_built'):

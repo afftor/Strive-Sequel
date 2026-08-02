@@ -1221,7 +1221,10 @@ func get_buff_number(status):
 		if ef_stack.template['type'] == 'stack_a':
 			if ef_stack.buffs.empty():
 				continue
-			result += ef_stack.buffs[0].get_stacks()
+			if ef_stack.buffs[0].tags.has('show_amount'):
+				result += ef_stack.buffs[0].get_stacks()
+			else:
+				result += ef_stack.get_duration().count
 		else:
 			result += ef_stack.get_duration().count
 	return result
