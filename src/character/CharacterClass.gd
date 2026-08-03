@@ -257,6 +257,13 @@ func get_stat_composition_dict():
 	#or get_stat() currently can't find them
 	return stat_compo_dict
 
+#metrics_* are bookkeeping counters - nothing derives a bonus from them, so writing one
+#must not throw away the dyn-stat cache. Doing so used to force a full rebuild on the next
+#get_stat, which is what made brothel/work ticks scale so badly with party size.
+func stat_affects_dyn_stats(statname):
+	return !statname.begins_with('metrics_')
+
+
 func set_stat(stat, value):
 	if stat in ['hp', 'mp', 'shield', 'taunt']:
 		set(stat, value)
@@ -291,7 +298,8 @@ func set_stat(stat, value):
 	else:
 #		print ("warning - direct setting of dynamic stat %s" % stat)
 		dyn_stats.set_default_value(stat, value)
-	dyn_stats.reset_rebuild()
+	if stat_affects_dyn_stats(stat):
+		dyn_stats.reset_rebuild()
 
 
 func add_stat_bonuses(ls:Dictionary):
@@ -331,7 +339,8 @@ func add_stat(statname, value, force_store = false): #only oneshots
 				dyn_stats.add_stat_stored(statname, value)
 			else:
 				dyn_stats.add_stat_bonuses({statname + '_add': value})
-	dyn_stats.reset_rebuild()
+	if stat_affects_dyn_stats(statname):
+		dyn_stats.reset_rebuild()
 
 
 func mul_stat(statname, value): #only oneshots

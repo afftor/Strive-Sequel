@@ -376,7 +376,9 @@ func add_special_job(effect):
 
 
 #tasks main
-func tick():
+func tick(managed = false):
+	if managed: #always a coroutine when managed, so the caller can yield on it
+		yield(globals.get_tree(), 'idle_frame')
 	tasks_cleanup()
 	process_gathering()
 	process_farm()
@@ -386,8 +388,11 @@ func tick():
 		_process_recruit_task(t_id)
 	for t_id in active_tasks.special.duplicate():
 		_process_spec_task(t_id)
-	
-	process_service()
+
+	if managed:
+		yield(process_service(true), 'completed')
+	else:
+		process_service()
 	tasks_cleanup()
 
 
@@ -537,14 +542,24 @@ func process_farm():
 			_add_farming_value(res, value)
 
 
-func process_service():
+func process_service(managed = false):
+	if managed: #always a coroutine when managed, so the caller can yield on it
+		yield(globals.get_tree(), 'idle_frame')
 	_add_service_job()
 	var currenttask = tasks_progresses.service
-	for ch_id in ResourceScripts.game_party.character_order:
+	var slice = OS.get_ticks_msec()
+	#iterate a copy: a character dying mid-turn erases itself from character_order, and with
+	#the tick spread over frames a deferred cleanup can land in the middle of this loop
+	for ch_id in ResourceScripts.game_party.character_order.duplicate():
 		if !(ch_id in currenttask.workers):
 			continue
 		var character = characters_pool.get_char_by_id(ch_id)
-		character.select_brothel_activity() 
+		if character == null or !character.is_active:
+			continue
+		character.select_brothel_activity()
+		if managed and OS.get_ticks_msec() - slice >= variables.turn_frame_budget_msec:
+			yield(globals.get_tree(), 'idle_frame')
+			slice = OS.get_ticks_msec()
 
 
 func process_craft(firstpass = true):

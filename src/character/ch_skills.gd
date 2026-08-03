@@ -210,8 +210,11 @@ func cooldown_tick():
 	items_used_today.clear()
 	skills_received_today.clear()
 	
+	#set_stat() invalidates the whole dyn-stat cache and these stats read a dynamic cap
+	#on write, so a pointless "reset 0 to 0" costs a full stat rebuild per character
 	for i in ['chg_strength','chg_dexterity','chg_persuasion','chg_wisdom']:
-		parent.get_ref().set_stat(i, 0)
+		if parent.get_ref().get_stat(i) != 0:
+			parent.get_ref().set_stat(i, 0)
 	
 	var cleararray = []
 	for i in social_cooldowns:

@@ -7,6 +7,17 @@ var ext_blockers = []#{ref, act}
 
 var locked = false
 
+#turn processing is spread over several frames, so a heavy turn animates instead of freezing
+var turn_in_progress = false
+var input_locked = false
+var labels_dirty = false
+var turn_started_at = 0
+var sky_anim_token = 0
+#only escape if the turn coroutine ever dies mid-way (input is blocked while it runs).
+#a 60-character turn measures ~2s, so this is ~13x the realistic worst case
+const TURN_WATCHDOG_MSEC = 30000
+const BUSY_MODULATE = Color(0.65, 0.65, 0.65, 1.0)
+
 var atlas_pos = {
 	0: 28,
 	1: 228,
@@ -23,10 +34,10 @@ func _ready():
 	
 	set_sky_pos()
 	update_labels()
-	update_food_tooltip()
-	update_gold_tooltip()
+	$TimeNode/food.connect("mouse_entered", self, "show_food_tooltip")
+	$TimeNode/gold.connect("mouse_entered", self, "show_gold_tooltip")
 	globals.connecttexttooltip($TimeNode/timetooltip, tr("TIME_TOOLTIP"))
-	globals.connect("update_clock", self, 'update_labels')
+	globals.connect("update_clock", self, 'request_labels_update')
 	ext_block.connect("pressed", self, "on_ext_block_press")
 #	$TimeNode/Date.text = "D: " + str(ResourceScripts.game_globals.date)
 #	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
@@ -46,23 +57,25 @@ func hotkey_pressed(number):
 		3: advance_turn(4)
 
 
-func update_food_tooltip():
+#both of these walk every character, so they are built when the player actually hovers
+#rather than on every clock update - the text is only ever read from the tooltip
+func show_food_tooltip():
 	var resources = ResourceScripts.game_party.calculate_food_consumption()
 	var text = "\n\n" + tr('CURRENT_PREFERRED_FOOD_CONSUMPTION') + ":"
 	for i in resources.keys():
 		text +=  "\n" + tr('FOODTYPE' + i.to_upper()) + ": " + str(resources[i])
-	globals.connecttexttooltip($TimeNode/food, tr("TOOLTIPFOOD") + text)
+	globals.showtexttooltip($TimeNode/food, tr("TOOLTIPFOOD") + text, false)
 
 
-func update_gold_tooltip():
+func show_gold_tooltip():
 	var text = tr("TOOLTIPGOLD") + "\n\n" + tr("MONEYTOOLTIP") + ": " + str(ResourceScripts.game_res.money)
 	var character_upkeep = ResourceScripts.game_party.get_weekly_tax()
 	var total_upkeep = ResourceScripts.game_res.tax + character_upkeep
 	text += "\n" + tr("UPGRADETAXTOOLTIP") + ": " + str(ResourceScripts.game_res.tax)
 	text += "\n" + tr("CHARACTERUPKEEPTOOLTIP") + ": " + str(character_upkeep)
 	text += "\n" + tr("TOTALUPKEEPTOOLTIP") + ": " + str(total_upkeep)
-		
-	globals.connecttexttooltip($TimeNode/gold, text) 
+
+	globals.showtexttooltip($TimeNode/gold, text, false)
 
 
 func set_sky_pos():
@@ -121,12 +134,41 @@ func move_sky(from, to, init_delay):
 				tw.interpolate_property(bghold.get_child(b1 + 1), 'modulate', Color(1.0,1.0,1.0,0.0), Color(1.0,1.0,1.0,1.0), speed, 0, 2, init_delay + (b1 + t1) * speed)
 			
 	tw.start()
-	yield(tw, "tween_all_completed")
-	locked = false
+	#a timer instead of "tween_all_completed": remove_all() never fires that signal,
+	#so an interrupted transition used to leave this coroutine (and 'locked') hanging
+	sky_anim_token += 1
+	var token = sky_anim_token
+	yield(get_tree().create_timer(variables.SecndsPerTransition + 0.05), 'timeout')
+	if token == sky_anim_token:
+		locked = false
 #	check_resume()
 
 
+func stop_sky_anim():
+	sky_anim_token += 1
+	tw.remove_all()
+	locked = false
+	set_sky_pos()
+
+
+#a single tick mutates gold/materials dozens of times and each one used to rebuild both
+#tooltips (which walk every character). Coalesce to one refresh per frame instead
+func request_labels_update():
+	if turn_in_progress: #advance_turn refreshes the labels itself once the tick is done
+		return
+	labels_dirty = true
+
+
 func _process(delta): #nearly obsolete
+	if labels_dirty:
+		labels_dirty = false
+		update_labels()
+	#failsafe - never leave the viewport with input disabled if the turn coroutine died
+	if turn_in_progress and OS.get_ticks_msec() - turn_started_at > TURN_WATCHDOG_MSEC:
+		print("ERROR - turn processing watchdog fired, releasing input lock")
+		turn_in_progress = false
+	if input_locked and !turn_in_progress:
+		set_input_lock(false)
 	if self.visible == false:
 		return
 #	update_labels()
@@ -136,8 +178,23 @@ func _process(delta): #nearly obsolete
 		input_handler.globalsettings.turn_based_time_flow = true
 
 
+func set_input_lock(state):
+	if input_locked == state:
+		return
+	input_locked = state
+	var vp = get_viewport()
+	if vp != null:
+		vp.gui_disable_input = state
+	if state:
+		$TimeNode/HBoxContainer.modulate = BUSY_MODULATE
+	else:
+		$TimeNode/HBoxContainer.modulate = Color(1.0, 1.0, 1.0, 1.0)
+
+
 var continue_timer = false
 func advance_turn(amount = 1):
+	if turn_in_progress: #ignore spam clicks instead of stacking whole turns
+		return
 	if ResourceScripts.game_party.characters.size() > ResourceScripts.game_res.get_pop_cap() and ResourceScripts.game_party.has_nonunics():
 		if ResourceScripts.game_res.get_pop_cap() < ResourceScripts.game_res.get_pop_cap_limit():
 			input_handler.SystemMessage("You don't have enough rooms")
@@ -146,44 +203,64 @@ func advance_turn(amount = 1):
 		return
 	if globals.log_node != null && weakref(globals.log_node).get_ref():
 		globals.log_node.clear_log()
-	
+
+	turn_in_progress = true
+	turn_started_at = OS.get_ticks_msec()
+	set_input_lock(true)
+	input_handler.PlaySound("button_click")
+
 	#synch setup
 	var cur_time = ResourceScripts.game_globals.hour
-	if cur_time == 4: 
+	if cur_time == 4:
 		cur_time = 0
-	
+	var start_date = ResourceScripts.game_globals.date
+
 	var init_delay = 0.0
-	if locked: 
+	if locked:
 #		return
 		#test variant
-		tw.remove_all()
-		set_sky_pos()
+		stop_sky_anim()
 		init_delay = 0.2
-	input_handler.PlaySound("button_click")
+
+	#the transition starts before the simulation, so the wait is filled by the animation
+	#instead of a frozen frame. amount is only wrong when an event cuts the turn short,
+	#which is corrected below
+	var ntime = cur_time + amount
+	if ntime > 4:
+		ntime -= 4
+	move_sky(cur_time, ntime, init_delay)
+	yield(get_tree(), 'idle_frame') #let the first animated frame render before working
+
 	#reworked
 	continue_timer = false
+	var requested = amount
 	var tmp = amount
 	while amount > 0:
-		ResourceScripts.game_globals.advance_hour()
+		if ResourceScripts.game_globals.autosave_due():
+			yield(globals.autosave(false, true), 'completed')
+		yield(ResourceScripts.game_globals.advance_hour(true), 'completed')
 		amount -= 1
+		yield(get_tree(), 'idle_frame') #the tick and the gui listeners it wakes get a frame each
 		globals.emit_signal("hour_tick")
 		if continue_timer:
 			break
+		if amount > 0:
+			yield(get_tree(), 'idle_frame')
 #	update_labels()
 	tmp -= amount
 #	print(tmp)
-	
-	var ntime = cur_time + tmp
-	if ntime > 4: 
-		ntime -= 4
-#	print(ntime)
-	move_sky(cur_time, ntime, init_delay)
-	
-	gui_controller.mansion.SlaveListModule.rebuild()
-	gui_controller.mansion.SkillModule.build_skill_panel()
+
+	if tmp != requested: #event interrupted the turn, the predicted transition is wrong now
+		stop_sky_anim()
+
+	yield(get_tree(), 'idle_frame')
 	update_labels()
-	update_food_tooltip()
-	update_gold_tooltip()
+	yield(get_tree(), 'idle_frame')
+	if gui_controller.mansion != null and is_instance_valid(gui_controller.mansion) and !gui_controller.mansion.is_queued_for_deletion():
+		var day_passed = ResourceScripts.game_globals.date != start_date
+		yield(gui_controller.mansion.rebuild_after_turn(day_passed), 'completed')
+	turn_in_progress = false
+	set_input_lock(false)
 #	set_sky_pos()
 
 
@@ -192,8 +269,6 @@ func update_labels():
 	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
 	$TimeNode/food.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.get_food())
 	$TimeNode/gold.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)
-	update_food_tooltip()
-	update_gold_tooltip()
 #	rotate_sky()
 
 #VERY ugly patch. Thing is: clock is a separate module, that can raise above all

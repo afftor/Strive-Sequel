@@ -17,6 +17,16 @@ var visible_persons = []
 
 const BUTTON_HEIGHT = 64
 
+const TEX_ROW_NORMAL = preload("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars.png")
+const TEX_ROW_HOVER = preload("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_hover.png")
+const TEX_ROW_HOVER2 = preload("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_hover2.png")
+const TEX_ROW_PRESSED = preload("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_pressed.png")
+const TEX_ROW_DISABLED = preload("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_disabled.png")
+const TEX_ROW_AVAIL = preload("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_avail.png")
+const TEX_TRAVEL_SMALL = preload("res://assets/Textures_v2/MANSION/icon_travel_small.png")
+const TEX_NO = preload("res://assets/Textures_v2/MANSION/no.png")
+const TEX_YES = preload("res://assets/Textures_v2/MANSION/yes.png")
+
 var mode = 'default'
 #var mode = 'food'
 
@@ -219,16 +229,7 @@ func rebuild():
 #		newbutton.get_node("SpellIcon").visible = !list.empty()
 		newbutton.get_node("SpellIcon").visible = false
 		
-		if person.is_on_quest():
-			newbutton.disabled = true
-			newbutton.get_node("rhand").set_disabled(true)
-			newbutton.get_node("lhand").set_disabled(true)
-			newbutton.get_node("chest").set_disabled(true)
-			newbutton.get_node("legs").set_disabled(true)
-		else:
-			newbutton.disabled = false
-			newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars.png")
-			newbutton.texture_hover = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_hover.png")
+		update_row_availability(newbutton, person)
 
 		newbutton.pressed = (get_parent().active_person == person)
 		newbutton.set_meta('slave', person)
@@ -261,6 +262,63 @@ func rebuild():
 		var pos = self.rect_size
 		$TravelsContainerPanel.rect_position.y = pos.y - 50
 		update_button(newbutton)
+	rows_signature = build_rows_signature()
+	show_location_characters()
+	update_description()
+	update_header()
+
+
+func update_row_availability(newbutton, person):
+	if person.is_on_quest():
+		newbutton.disabled = true
+		newbutton.get_node("rhand").set_disabled(true)
+		newbutton.get_node("lhand").set_disabled(true)
+		newbutton.get_node("chest").set_disabled(true)
+		newbutton.get_node("legs").set_disabled(true)
+	else:
+		newbutton.disabled = false
+		newbutton.texture_normal = TEX_ROW_NORMAL
+		newbutton.texture_hover = TEX_ROW_HOVER
+		newbutton.get_node("rhand").set_disabled(false)
+		newbutton.get_node("lhand").set_disabled(false)
+		newbutton.get_node("chest").set_disabled(false)
+		newbutton.get_node("legs").set_disabled(false)
+
+
+var rows_signature = ""
+
+func build_rows_signature():
+	var res = str(get_parent().mansion_state)
+	for id in ResourceScripts.game_party.character_order:
+		res += "|" + str(id)
+	return res
+
+
+#post-turn refresh: a full rebuild recreates ~40 nodes and dozens of tooltips per character,
+#which is the bulk of the finish turn cost. Rows only need recreating when the roster
+#(or the panel mode that changes how a row is built) actually changed
+func refresh_after_turn(spread = false):
+	if spread: #always a coroutine when asked for, so callers can yield on 'completed'
+		yield(get_tree(), 'idle_frame')
+	if get_parent().mansion_state != "default" or build_rows_signature() != rows_signature:
+		rebuild()
+		return
+	luxury_rooms_taken = globals.calculate_lux_rooms()
+	update_dislocations()
+	if spread:
+		yield(get_tree(), 'idle_frame')
+	var slice = OS.get_ticks_msec()
+	for i in SlaveContainer.get_children():
+		#a rebuild landing between chunks frees these nodes out from under us
+		if !is_instance_valid(i) or i.is_queued_for_deletion() or !i.has_meta('slave'):
+			continue
+		update_row_availability(i, i.get_meta('slave'))
+		update_button(i)
+		if spread and OS.get_ticks_msec() - slice >= variables.turn_frame_budget_msec:
+			yield(get_tree(), 'idle_frame')
+			slice = OS.get_ticks_msec()
+	if spread:
+		yield(get_tree(), 'idle_frame')
 	show_location_characters()
 	update_description()
 	update_header()
@@ -315,18 +373,32 @@ func _context_open_with_inventory(person):
 	OpenInventory(person)
 
 
+var locations_signature = ""
+
+#runs on every hour_tick. The button list only has to be rebuilt when the set of populated
+#locations actually changed, which is rare - otherwise just resync the pressed state
 func update_dislocations():
 	var temparray = []
+	var has_training = false
 	for i in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[i]
 		if !person.travel.location in ['mansion','travel'] && !temparray.has(person.travel.location):
 			temparray.append(person.travel.location)
+		if !has_training and person.get_work() == 'learning':
+			has_training = true
 	temparray.sort()
 	populatedlocations = temparray
-	build_locations_list()
+	var new_signature = str(has_training)
+	for loca in temparray:
+		new_signature += "|" + str(loca)
+	if new_signature == locations_signature and LocationsList.get_child_count() > 1:
+		update_location_buttons()
+		return
+	locations_signature = new_signature
+	build_locations_list(has_training)
 
 
-func build_locations_list():
+func build_locations_list(has_training = null):
 	input_handler.ClearContainer(LocationsList)
 	var newbutton = input_handler.DuplicateContainerTemplate(LocationsList)
 	newbutton.set_meta("location", "show_all")
@@ -352,13 +424,15 @@ func build_locations_list():
 		newseparator.visible = true
 		newseparator.rect_position.y = 100
 	
-	var f = false
-	for i in ResourceScripts.game_party.character_order:
-		var person = ResourceScripts.game_party.characters[i]
-		if person.get_work() == 'learning':
-			f = true
-			break
-	
+	var f = has_training
+	if f == null: #called directly - work it out ourselves
+		f = false
+		for i in ResourceScripts.game_party.character_order:
+			var person = ResourceScripts.game_party.characters[i]
+			if person.get_work() == 'learning':
+				f = true
+				break
+
 	if f:
 		newbutton = input_handler.DuplicateContainerTemplate(LocationsList)
 		newbutton.text = "Training"
@@ -397,7 +471,7 @@ func build_for_sex(person, newbutton):
 	var limit = calculate_sex_limits()
 	var sex_participants = get_parent().sex_participants
 	
-	newbutton.texture_disabled = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_disabled.png")
+	newbutton.texture_disabled = TEX_ROW_DISABLED
 	
 	if sex_participants.has(person):
 		newbutton.pressed = true
@@ -480,14 +554,14 @@ func update_location_buttons():
 
 func build_for_skills(person, newbutton):
 	if person == get_parent().skill_source:
-		newbutton.texture_disabled = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_pressed.png")
+		newbutton.texture_disabled = TEX_ROW_PRESSED
 		newbutton.disabled = true
 	if !person in get_parent().chars_for_skill:
-		newbutton.texture_disabled = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_disabled.png")
+		newbutton.texture_disabled = TEX_ROW_DISABLED
 		newbutton.disabled = true
 	else:
-		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_avail.png")
-		newbutton.texture_hover = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_hover2.png")
+		newbutton.texture_normal = TEX_ROW_AVAIL
+		newbutton.texture_hover = TEX_ROW_HOVER2
 	newbutton.get_node("job").disabled = true
 
 
@@ -604,7 +678,7 @@ func update_button(newbutton, t_mode = mode):
 		newbutton.get_node('LocIcon').texture = null
 		person_location = null
 	elif person.check_location('travel'):
-		newbutton.get_node('LocIcon').texture = load("res://assets/Textures_v2/MANSION/icon_travel_small.png")
+		newbutton.get_node('LocIcon').texture = TEX_TRAVEL_SMALL
 		newbutton.get_node('LocIcon').hint_tooltip = tr("MSLMRELOC") + ": " + tr("MSLMRE") + " " + str(ceil(person.travel.travel_time / person.travel_per_tick())) + tr("MSLMTURN") + ". "
 		person_location = null
 		
@@ -663,23 +737,23 @@ func update_button(newbutton, t_mode = mode):
 	
 	#checks
 	if ResourceScripts.game_globals.weekly_dates_left <= 0:
-		newbutton.get_node("DateIcon").texture = load("res://assets/Textures_v2/MANSION/no.png")
+		newbutton.get_node("DateIcon").texture = TEX_NO
 	elif !person.has_status('relation'):
-		newbutton.get_node("DateIcon").texture = load("res://assets/Textures_v2/MANSION/no.png")
+		newbutton.get_node("DateIcon").texture = TEX_NO
 	elif person.tags.has("no_date_day"):
-		newbutton.get_node("DateIcon").texture = load("res://assets/Textures_v2/MANSION/no.png")
+		newbutton.get_node("DateIcon").texture = TEX_NO
 	else:
-		newbutton.get_node("DateIcon").texture = load("res://assets/Textures_v2/MANSION/yes.png")
+		newbutton.get_node("DateIcon").texture = TEX_YES
 	if ResourceScripts.game_globals.weekly_sex_left <= 0:
-		newbutton.get_node("SexIcon").texture = load("res://assets/Textures_v2/MANSION/no.png")
+		newbutton.get_node("SexIcon").texture = TEX_NO
 	elif person.has_status('no_sex'):
-		newbutton.get_node("SexIcon").texture = load("res://assets/Textures_v2/MANSION/no.png")
+		newbutton.get_node("SexIcon").texture = TEX_NO
 	else:
-		newbutton.get_node("SexIcon").texture = load("res://assets/Textures_v2/MANSION/yes.png")
+		newbutton.get_node("SexIcon").texture = TEX_YES
 	if !person.can_be_trained():
-		newbutton.get_node("TrainIcon").texture = load("res://assets/Textures_v2/MANSION/no.png")
+		newbutton.get_node("TrainIcon").texture = TEX_NO
 	else:
-		newbutton.get_node("TrainIcon").texture = load("res://assets/Textures_v2/MANSION/yes.png")
+		newbutton.get_node("TrainIcon").texture = TEX_YES
 	
 	#rules
 	for rl in ['lock', 'ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'nudity', 'personality_lock', 'relationship', 'masturbation']:

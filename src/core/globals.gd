@@ -1022,7 +1022,11 @@ func ItemSelect(targetscript, type, function, requirements = null):
 func QuickSave():
 	SaveGame('QuickSave')
 
-func autosave(overwrite = false):
+#spread = serialize over several frames instead of one blocking call. Only safe while the
+#caller guarantees the game state is not changing in between (turn processing, input locked)
+func autosave(overwrite = false, spread = false):
+	if spread: #always a coroutine when asked for, so callers can yield on 'completed'
+		yield(get_tree(), 'idle_frame')
 	if input_handler.hard_tutorial_active:
 		return
 	if input_handler.globalsettings.autosave_number <= 0:
@@ -1046,15 +1050,28 @@ func autosave(overwrite = false):
 				savedir.rename('autosave_%d.sav' % i, 'autosave_%d.sav' % (i + 1))
 			if savedir.file_exists('autosave_%d.dat' % i):
 				savedir.rename('autosave_%d.dat' % i, 'autosave_%d.dat' % (i + 1))
-	SaveGame('autosave_1')
+	if spread:
+		yield(SaveGame('autosave_1', true), 'completed')
+	else:
+		SaveGame('autosave_1')
 
-func SaveGame(name):
+const SAVE_SERIALIZE_CHUNK = 10
+
+func SaveGame(name, spread = false):
 	var savedict = {}#state.serialize();
-	savedict.charpool = characters_pool.serialize()
+	if spread:
+		savedict.charpool = yield(characters_pool.serialize_chunked(SAVE_SERIALIZE_CHUNK), 'completed')
+	else:
+		savedict.charpool = characters_pool.serialize()
 	savedict.effpool = effects_pool.serialize()
 
 #	ResourceScripts.game_res.fix_items_inventory(true)
 	for p in ResourceScripts.gamestate:
+		if spread:
+			yield(get_tree(), 'idle_frame')
+			if p == 'game_party':
+				savedict[p] = yield(_serialize_party_chunked(SAVE_SERIALIZE_CHUNK), 'completed')
+				continue
 		savedict[p] = ResourceScripts.get(p).serialize()
 #	ResourceScripts.game_res.fix_items_inventory(false)
 
@@ -1079,6 +1096,25 @@ func _save_thread_write(args):
 
 func _save_complete(name):
 	input_handler.SystemMessage("Game saved as " + name + ".sav")
+
+
+#game_party is a Reference and has no access to the tree, so its chunked variant lives here
+func _serialize_party_chunked(chunk):
+	yield(get_tree(), 'idle_frame')
+	var party = ResourceScripts.game_party
+	var res = party.serialize_base()
+	var counter = 0
+	for p in party.characters:
+		res.characters[p] = party.characters[p].serialize()
+		counter += 1
+		if counter % chunk == 0:
+			yield(get_tree(), 'idle_frame')
+	for p in party.babies:
+		res.babies[p] = party.babies[p].serialize()
+		counter += 1
+		if counter % chunk == 0:
+			yield(get_tree(), 'idle_frame')
+	return res
 
 
 func LoadGame(filename):

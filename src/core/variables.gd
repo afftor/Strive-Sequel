@@ -21,6 +21,9 @@ var timeword = {
 
 var SecndsPerTransition = 1.0
 var SecondsPerHour = 3
+#how much turn processing may run in a single frame while the clock advances time.
+#lower = smoother day-passing animation but a longer turn, higher = the reverse
+var turn_frame_budget_msec = 18
 var NoScenes = false
 var CombatAllyHpAlwaysVisible = true
 

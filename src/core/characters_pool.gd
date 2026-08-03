@@ -104,6 +104,20 @@ func serialize():
 #		characters[hid].fix_serialize(tmp[hid])
 	return tmp
 
+
+#same as serialize(), but yields every 'chunk' characters so a save does not stall a frame
+func serialize_chunked(chunk):
+	yield(get_tree(), 'idle_frame') #always a coroutine, callers yield on 'completed'
+	cleanup()
+	var tmp = {}
+	var counter = 0
+	for hid in characters.keys():
+		tmp[hid] = characters[hid].serialize()
+		counter += 1
+		if counter % chunk == 0:
+			yield(get_tree(), 'idle_frame')
+	return tmp
+
 func deserialize(tmp):
 	characters.clear()
 	for hid in tmp.keys():

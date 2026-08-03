@@ -426,6 +426,12 @@ func gather_skills_effects():
 
 #func _unhandled_input(event):
 func _input(event):
+	#a turn is processed across several frames now, so gameplay input has to stay out until
+	#it finishes. gui_disable_input only covers Control input - ESC (menu -> save/load) and
+	#the dialogue number keys arrive here, and would otherwise run against a half-ticked party
+	if gui_controller.clock != null and is_instance_valid(gui_controller.clock) and gui_controller.clock.turn_in_progress:
+		get_tree().set_input_as_handled()
+		return
 	if hard_tutorial_active:
 		var pass_event = false
 		if !hard_tutorial.active_btns.empty():

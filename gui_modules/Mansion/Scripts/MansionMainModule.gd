@@ -323,6 +323,21 @@ func rebuild_mansion():
 	SlaveModule.show_slave_info()
 	$TutorialButton.show()
 
+#same work as rebuild_mansion, but split over frames so a turn does not stall the game.
+#day_extras covers what advance_day used to rebuild on a day change
+func rebuild_after_turn(day_extras):
+	yield(get_tree(), 'idle_frame') #always a coroutine, callers yield on 'completed'
+	yield(SlaveListModule.refresh_after_turn(true), 'completed')
+	yield(get_tree(), 'idle_frame')
+	$MansionSkillsModule.build_skill_panel()
+	if !day_extras:
+		return
+	yield(get_tree(), 'idle_frame')
+	CraftModule.rebuild_scheldue()
+	yield(get_tree(), 'idle_frame')
+	SlaveModule.show_slave_info()
+	$TutorialButton.show()
+
 func try_rebuild_slave_list():
 	if gui_controller.current_screen != self: return
 	SlaveListModule.rebuild()

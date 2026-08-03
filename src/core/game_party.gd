@@ -432,8 +432,11 @@ func has_love_status(char1):
 #	for p in combatparty:
 #		if combatparty[p] == null: continue
 
-func advance_day():
+func advance_day(managed = false):
+	if managed: #always a coroutine when managed, so the caller can yield on it
+		yield(globals.get_tree(), 'idle_frame')
 	update_global_cooldowns()
+	var slice = OS.get_ticks_msec()
 	for i in characters.values():
 		i.tags.erase("no_date_day")
 		i.cooldown_tick()
@@ -441,6 +444,9 @@ func advance_day():
 		i.quest_day_tick()
 		i.fame_degrade_tick()
 		i.training_day_tick()
+		if managed and OS.get_ticks_msec() - slice >= variables.turn_frame_budget_msec:
+			yield(globals.get_tree(), 'idle_frame')
+			slice = OS.get_ticks_msec()
 	relationship_decay()
 	for i in range(character_order.size() - 1):
 		if characters[character_order[i]].is_master() == true:
@@ -448,10 +454,15 @@ func advance_day():
 		for j in range(i + 1, character_order.size()):
 			if _in_same_location(character_order[i],character_order[j]): relation_daily_change_same_loc(character_order[i],character_order[j])
 
-func serialize():
+func serialize_base(): #everything but the characters, shared with globals._serialize_party_chunked
 	var res = inst2dict(self).duplicate(true)
 	res.characters = {}
 	res.babies = {}
+	return res
+
+
+func serialize():
+	var res = serialize_base()
 	for p in characters:
 		res.characters[p] = characters[p].serialize()
 	for p in babies:
