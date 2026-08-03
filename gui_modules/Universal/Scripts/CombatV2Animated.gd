@@ -1659,16 +1659,16 @@ func setup_skill_button(newbutton, skill_id):
 	if !activecharacter.checkreqs(skill.reqs):
 		newbutton.disabled = true
 		newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-	if activecharacter.has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('default'):
+	if activecharacter.has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('disable_immunity'):
 		newbutton.disabled = true
 		newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-	if activecharacter.has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('default'):
+	if activecharacter.has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('disable_immunity'):
 		newbutton.disabled = true
 		newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-	if activecharacter.has_status('no_combat_skills') and skill.ability_type == 'skill' and !skill.tags.has('default'):
+	if activecharacter.has_status('no_combat_skills') and skill.ability_type == 'skill':
 		newbutton.disabled = true
 		newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-	if activecharacter.has_status('no_combat_spells') and skill.ability_type == 'spell' and !skill.tags.has('default'):
+	if activecharacter.has_status('no_combat_spells') and skill.ability_type == 'spell':
 		newbutton.disabled = true
 		newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 	if activecharacter.has_status('no_combat_support') and skill.tags.has('support'):

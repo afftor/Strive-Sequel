@@ -1621,6 +1621,8 @@ Hotkey: 3""",
 	SKILLARROW_HAILDESCRIPT = """Подстрелить всех врагов на 120 % урона от АТК.""",
 	SKILLRALLY = """Рывок""",
 	SKILLRALLYDESCRIPT = """Сбросить все кулдауны (кроме Рывка) и восстановить 30% здоровья выбранному союзнику.""",
+	SKILLWARCRY = """Warcry""", # MISSING TRANSLATION
+	SKILLWARCRYDESCRIPT = """Remove Silence and Fear from self.""", # MISSING TRANSLATION
 	SKILLBLOODBOIL = """Кипение крови""",
 	SKILLBLOODBOILDESCRIPT = """Наложить бафф: Увеличивает ATK на 25%, снять оглушение, влажность и страх и получить иммунитет к ним на 4 хода.""",
 	SKILLFIRE_SHIELD = """Огненный щит""",
@@ -1637,6 +1639,9 @@ Hotkey: 3""",
 	SKILLFROST_PRISONDESCRIPT = """Наносит 130% от MATK как урон {color=yellow|Водой} и с 50 % шансом накладывает 'Заморозка' на 1 ход.""",
 	SKILLCLARITY = """Ясность""",
 	SKILLCLARITYDESCRIPT = """Накладывает бафф: Увеличивает MATK на 25%, снимает  Слепоту, Сон и Очарование м дает иммунитет к ним на 4 хода.""",
+	SKILLHARDENED_GRIP = """Hardened Grip""", # MISSING TRANSLATION
+	SKILLHARDENED_GRIPDESCRIPT = """Remove Disarm from target ally and grant immunity to Disarm for 3 turns.""", # MISSING TRANSLATION
+	EFFECT_HARDENED_GRIP = """Immune to Disarm.""", # MISSING TRANSLATION
 	SKILLBLIZZARD = """Метель""",
 	SKILLBLIZZARDDESCRIPT = """Послать сосульки, летящие во врагов, с шансом 60% нанося 90% от MATK как урон {color=yellow|Водой} и с низким шансом наложить 'Заморозка' на 1 ход.""",
 	SKILLHAILSTORM = """Град""",

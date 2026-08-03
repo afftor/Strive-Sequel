@@ -1212,9 +1212,9 @@ func can_use_skill(skill):
 		return false
 	if skills.combat_cooldowns.has(skill.code): 
 		return false
-	if has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('default'):
+	if has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('disable_immunity'):
 		 return false
-	if has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('default'):
+	if has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('disable_immunity'):
 		 return false
 	return true
 

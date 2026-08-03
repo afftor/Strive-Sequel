@@ -1586,6 +1586,8 @@ Atrapado: la evasión se reduce en 75.""",
 	SKILLARROW_HAILDESCRIPT = "Dispara a todos los enemigos por el 120% del ATK.",
 	SKILLRALLY = "Reunión",
 	SKILLRALLYDESCRIPT = "Restablece todos los tiempos de reutilización (excepto Rally) y restaura el 30 % de la salud del aliado seleccionado.",
+	SKILLWARCRY = """Warcry""", # MISSING TRANSLATION
+	SKILLWARCRYDESCRIPT = """Remove Silence and Fear from self.""", # MISSING TRANSLATION
 	SKILLBLOODBOIL = "Hervir la sangre",
 	SKILLBLOODBOILDESCRIPT = "Aumenta el ATK en un 25%, elimina Aturdimiento, Mojado y Miedo, y obtiene inmunidad a ellos durante 4 turnos.",
 	SKILLFIRE_SHIELD = "Escudo de fuego",
@@ -1606,6 +1608,9 @@ Destrozado: MAG DEF se reduce en un 50%.""",
 Congelado: El siguiente ataque inflige 125% de daño. Los ataques aéreos infligen 200% y los ataques de fuego, 50% del daño.""",
 	SKILLCLARITY = "Claridad",
 	SKILLCLARITYDESCRIPT = "Aumenta MATK en un 25%, elimina Ceguera, Sueño y Encanto, y obtiene inmunidad a ellos durante 4 turnos.",
+	SKILLHARDENED_GRIP = """Hardened Grip""", # MISSING TRANSLATION
+	SKILLHARDENED_GRIPDESCRIPT = """Remove Disarm from target ally and grant immunity to Disarm for 3 turns.""", # MISSING TRANSLATION
+	EFFECT_HARDENED_GRIP = """Immune to Disarm.""", # MISSING TRANSLATION
 	SKILLBLIZZARD = "Ventisca",
 	SKILLBLIZZARDDESCRIPT = "Envía carámbanos volando hacia los enemigos, con un 60 % de probabilidad de infligir el 90 % de MAG ATK como daño de {color=yellow|Agua}. Tiene un 25% de probabilidad de congelar a los objetivos durante 1 turno. Los objetivos húmedos y congelados siempre reciben el impacto.",
 	SKILLHAILSTORM = "Granizada",

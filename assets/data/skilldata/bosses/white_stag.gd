@@ -320,7 +320,7 @@ var skills = {
 		icon = load("res://assets/images/iconsskills/icon_plant.png"),
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['damage','noreduce','noevade', 'default'],
+		tags = ['damage','noreduce','noevade', 'disable_immunity'],
 		reqs = [],
 		targetreqs = [{code = 'has_status', status = 'drown_in_kudzu', check = true},],
 		effects = [Effectdata.rebuild_template({effect = 'poison', duration = 2}),],

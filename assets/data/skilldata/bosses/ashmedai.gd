@@ -63,7 +63,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/Discipline2.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['damage','ads','default','debuff'],
+		tags = ['damage','ads','disable_immunity','debuff'],
 		reqs = [],
 		targetreqs = [],
 		effects = ['evade_pierce_ensanre', Effectdata.rebuild_template({effect = 'arousal'}),Effectdata.rebuild_template({effect = 'arousal'})], 

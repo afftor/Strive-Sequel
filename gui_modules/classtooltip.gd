@@ -116,7 +116,7 @@ func _build_passive_mastery_bonus_tooltip(bonusstats, mul = 1):
 	for line in lines:
 		line = line.strip_edges()
 		if line != "":
-			result.append("Passive: " + line)
+			result.append(line)
 	return PoolStringArray(result).join("\n")
 
 

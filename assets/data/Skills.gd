@@ -17,7 +17,7 @@ var Skilllist = {
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['damage', 'default', 'basic', 'stealth_casting', 'descript_hidden'],
+		tags = ['damage', 'disable_immunity', 'basic', 'stealth_casting', 'descript_hidden'],
 		reqs = [],
 		targetreqs = [],
 		effects = [], 
@@ -43,6 +43,15 @@ var Skilllist = {
 				reqs = [{code = 'gear_equiped', param = 'geartype', value = 'bow', check = true}],
 				set = {icon = load("res://assets/images/iconsskills/heavyshot.png")}, #2fix
 			},
+			{
+				reqs = [
+					{code = 'has_status', status = 'disarm', check = true},
+				],
+				set = {
+					target_range = 'melee',
+					sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}],
+				},
+			},
 		]
 	},
 	ranged_attack = {
@@ -51,7 +60,7 @@ var Skilllist = {
 		icon = load("res://assets/images/iconsskills/heavyshot.png"),
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['damage', 'default', 'basic', 'stealth_casting', 'descript_hidden'],
+		tags = ['damage', 'basic', 'stealth_casting', 'descript_hidden'],
 		reqs = [],#need req 
 		targetreqs = [],
 		effects = [], 
@@ -71,6 +80,15 @@ var Skilllist = {
 			{code = 'ranged_attack', target = 'target', period = 'predamage'},
 			{code = 'at_arch', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
+		variations = [
+			{
+				reqs = [
+					{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'},
+					{code = 'has_status', status = 'disarm', check = true},
+				],
+				replace = 'attack',
+			},
+		],
 	},
 	
 	enemy_slash = {#melee attack vs all enemeis in row
@@ -2135,7 +2153,7 @@ var masteries = {
 		passive = {atk = 1, hitrate = 3, damage_mod_melee = 0.03, counterattacks_max = 1.0/7.0},
 		level1 = {combat_skills = ["draw_blood"], explore_skills = [], traits = [], action = []},
 		level2 = {combat_skills = ["sunder"], explore_skills = [], traits = [], action = []},
-		level3 = {combat_skills = ["cleave"], explore_skills = [], traits = [], action = []},
+		level3 = {combat_skills = ["cleave", "warcry"], explore_skills = [], traits = [], action = []},
 		level4 = {combat_skills = ["strike_through"], explore_skills = [], traits = [], action = []},
 		level5 = {combat_skills = ["execution"], explore_skills = [], traits = [], action = []},
 	},
@@ -2287,7 +2305,7 @@ var masteries = {
 		level2 = {combat_skills = ["mindblast"], explore_skills = [], traits = [], action = ["influence"], },
 		level3 = {combat_skills = [], explore_skills = ["invigorate"], traits = ['meditation'], action = []},
 		level4 = {combat_skills = [], explore_skills = [], traits = ["empathic_insight"], action = ["stronginfluence"]},
-		level5 = {combat_skills = ["mindshatter"], explore_skills = [], traits = [], action = []},
+		level5 = {combat_skills = ["mindshatter", "hardened_grip"], explore_skills = [], traits = [], action = []},
 		level6 = {combat_skills = [], explore_skills = [], traits = [], action = ["mindcontrol"]},
 	},
 }

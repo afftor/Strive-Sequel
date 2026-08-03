@@ -169,8 +169,8 @@ func _get_weight_for_skill(s_name):
 #	#checks if skill can be used
 	var app_obj = get_obj()
 	var data = Skilldata.get_template(s_name, app_obj)
-#	if data.ability_type == 'skill' and app_obj.has_status('disarm') and !data.tags.has('default'): return 0
-#	if data.ability_type == 'spell' and app_obj.has_status('silence') and !data.tags.has('default'): return 0
+#	if data.ability_type == 'skill' and app_obj.has_status('disarm') and !data.tags.has('disable_immunity'): return 0
+#	if data.ability_type == 'spell' and app_obj.has_status('silence') and !data.tags.has('disable_immunity'): return 0
 	if !get_obj().can_use_skill(data): 
 		return 0
 	#no targets check

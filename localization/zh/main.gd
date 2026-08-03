@@ -1561,6 +1561,8 @@ MATERIALMEATSOUP = """肉汤""",
 	SKILLARROW_HAILDESCRIPT = """射击所有敌人，造成 120% 的物理伤害。""",
 	SKILLRALLY = """集结""",
 	SKILLRALLYDESCRIPT = """重置所有冷却时间（集结除外）并为选定盟友恢复 30% 的生命值。""",
+	SKILLWARCRY = """Warcry""", # MISSING TRANSLATION
+	SKILLWARCRYDESCRIPT = """Remove Silence and Fear from self.""", # MISSING TRANSLATION
 	SKILLBLOODBOIL = """血沸""",
 	SKILLBLOODBOILDESCRIPT = """提升 25% 攻击力，移除眩晕、潮湿和恐惧状态，并获得持续 4 回合的这些负面效果免疫。""",
 	SKILLFIRE_SHIELD = """火焰护盾""",
@@ -1577,6 +1579,9 @@ MATERIALMEATSOUP = """肉汤""",
 	SKILLFROST_PRISONDESCRIPT = """造成 130% 的魔法 {color=yellow|水系} 伤害。有 50% 几率使目标冻结 1 回合。""",
 	SKILLCLARITY = """澄明""",
 	SKILLCLARITYDESCRIPT = """提升 25% 魔法攻击力，移除致盲、睡眠和魅惑状态，并获得持续 4 回合的这些负面效果免疫。""",
+	SKILLHARDENED_GRIP = """Hardened Grip""", # MISSING TRANSLATION
+	SKILLHARDENED_GRIPDESCRIPT = """Remove Disarm from target ally and grant immunity to Disarm for 3 turns.""", # MISSING TRANSLATION
+	EFFECT_HARDENED_GRIP = """Immune to Disarm.""", # MISSING TRANSLATION
 	SKILLBLIZZARD = """暴风雪""",
 	SKILLBLIZZARDDESCRIPT = """发射冰锥攻击敌人，有 60% 几率造成 90% 的魔法 {color=yellow|水系} 伤害。有 25% 几率使受击目标冻结 1 回合。潮湿和冻结状态的目标会被必定命中。""",
 	SKILLHAILSTORM = """冰雹""",

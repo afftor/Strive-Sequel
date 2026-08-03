@@ -2384,6 +2384,8 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""", # 
 	SKILLARROW_HAILDESCRIPT = """Shoot all enemies for 120% of ATK.""", # MISSING TRANSLATION
 	SKILLRALLY = """Rally""", # MISSING TRANSLATION
 	SKILLRALLYDESCRIPT = """Reset all cooldowns (except Rally) and restore 30% of health to selected ally.""", # MISSING TRANSLATION
+	SKILLWARCRY = """Warcry""", # MISSING TRANSLATION
+	SKILLWARCRYDESCRIPT = """Remove Silence and Fear from self.""", # MISSING TRANSLATION
 	SKILLBLOODBOIL = """Blood Boil""", # MISSING TRANSLATION
 	SKILLBLOODBOILDESCRIPT = """Increase ATK by 25%, remove Stun, Wet and Fear, gain immunity to these effects for 4 turns.""", # MISSING TRANSLATION
 	SKILLFIRE_SHIELD = """Fire Shield""", # MISSING TRANSLATION
@@ -2400,6 +2402,9 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""", # 
 	SKILLFROST_PRISONDESCRIPT = """Deals 130% of MATK as {color=yellow|Water} damage. Has 50% chance to Freeze target for 1 turn.""", # MISSING TRANSLATION
 	SKILLCLARITY = """Clarity""", # MISSING TRANSLATION
 	SKILLCLARITYDESCRIPT = """Increase MATK by 25%, remove Blind, Sleep and Charm, gain immunity to these effects for 4 turns.""", # MISSING TRANSLATION
+	SKILLHARDENED_GRIP = """Hardened Grip""", # MISSING TRANSLATION
+	SKILLHARDENED_GRIPDESCRIPT = """Remove Disarm from target ally and grant immunity to Disarm for 3 turns.""", # MISSING TRANSLATION
+	EFFECT_HARDENED_GRIP = """Immune to Disarm.""", # MISSING TRANSLATION
 
 	WORKTOOL = "Outil de travail",
 	WORKTOOLAXE = "Hache à bois",

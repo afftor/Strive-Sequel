@@ -101,6 +101,33 @@ var skills = {
 #			}
 #		]
 	},
+	warcry = {
+		code = 'warcry',
+		descript = '',
+		icon = "res://assets/images/iconsskills/warcry.png",
+		type = 'combat',
+		ability_type = 'skill',
+		tags = ['support', 'instant', 'disable_immunity'],
+		reqs = [],
+		targetreqs = [],
+		effects = [
+			Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('silence')}),
+			Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('fear')}),
+		],
+		cost = {mp = 5},
+		charges = 0,
+		combatcooldown = 2,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
+		sfx = [{code = 'inspire', target = 'target', period = 'predamage'}],
+		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
+		value = [['0']],
+		damagestat = ['no_stat'],
+	},
 	strike_through = {
 		code = 'strike_through',
 		descript = '',

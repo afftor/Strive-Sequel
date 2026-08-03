@@ -1560,6 +1560,8 @@ Tasto di scelta rapida: 3""",
 	SKILLARROW_HAILDESCRIPT = "Spara a tutti i nemici per il 120% dell'ATT.",
 	SKILLRALLY = "Radunare",
 	SKILLRALLYDESCRIPT = "Azzera tutti i tempi di recupero (tranne Adunata) e ripristina il 30% della salute dell'alleato selezionato.",
+	SKILLWARCRY = """Warcry""", # MISSING TRANSLATION
+	SKILLWARCRYDESCRIPT = """Remove Silence and Fear from self.""", # MISSING TRANSLATION
 	SKILLBLOODBOIL = "Ebollizione del sangue",
 	SKILLBLOODBOILDESCRIPT = "Aumenta l'ATK del 25%, rimuovi Stordimento, Bagnato e Paura, ottieni immunità a loro per 4 turni.",
 	SKILLFIRE_SHIELD = "Scudo antincendio",
@@ -1576,6 +1578,9 @@ Tasto di scelta rapida: 3""",
 	SKILLFROST_PRISONDESCRIPT = "Distribuisce il 130% di MATK come {color=yellow|Danni da Acqua}. Ha il 50% di possibilità di congelare il bersaglio per 1 turno.\nCongelato: il prossimo attacco infligge il 125% di danno. Gli attacchi aerei infliggono il 200%% e gli attacchi di fuoco infliggono invece il 50%% di danni.",
 	SKILLCLARITY = "Chiarezza",
 	SKILLCLARITYDESCRIPT = "Aumenta il MATK del 25%, rimuovi Accecamento, Sonno e Incanto, ottieni immunità a loro per 4 turni.",
+	SKILLHARDENED_GRIP = """Hardened Grip""", # MISSING TRANSLATION
+	SKILLHARDENED_GRIPDESCRIPT = """Remove Disarm from target ally and grant immunity to Disarm for 3 turns.""", # MISSING TRANSLATION
+	EFFECT_HARDENED_GRIP = """Immune to Disarm.""", # MISSING TRANSLATION
 	SKILLBLIZZARD = "Tormenta",
 	SKILLBLIZZARDDESCRIPT = "Fai volare ghiaccioli contro i nemici, con il 60% di probabilità di infliggere il 90% di MATK come {color=yellow|Danni da Acqua}. Ha 25% di possibilità di congelare i bersagli colpiti per 1 turno. I bersagli bagnati e congelati vengono sempre colpiti.",
 	SKILLHAILSTORM = "Grandinata",

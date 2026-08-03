@@ -321,7 +321,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/skill_veil.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['damage','ads', 'default', 'damage_spot', 'stealth_casting'],
+		tags = ['damage','ads', 'disable_immunity', 'damage_spot', 'stealth_casting'],
 		reqs = [{code = 'has_status', status = 'ridicluous_grit', check = false}],
 		targetreqs = [],
 		effects = [

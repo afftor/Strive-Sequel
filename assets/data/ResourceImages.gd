@@ -1041,10 +1041,7 @@ func get_portrait(id):
 		res = load(res)
 	return res
 
-#var gui = {
-#	norm_back = load("res://assets/images/gui/text scene/textfieldpanel.png"),
-#	alt_back = load("res://assets/images/gui/text scene/textfieldpanel.png"), #stub
-#};
+
 
 
 var icons = {

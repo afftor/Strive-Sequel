@@ -99,7 +99,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/wing.png",
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['buff','default','ignore_taunt'],
+		tags = ['buff','disable_immunity','ignore_taunt'],
 		reqs = [],
 		targetreqs = [{code = 'has_status', status = 'height_beyond_mortal_reach', check = true}],
 		effects = [Effectdata.rebuild_template({effect = 'catastrophic_momentum',}), ],
@@ -134,7 +134,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/skill_meteor.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['damage','ads','default','ignore_taunt','ultimate'],
+		tags = ['damage','ads','disable_immunity','ignore_taunt','ultimate'],
 		reqs = [
 			{code = 'has_status', status = 'boss_secret', check = true},
 			{code = 'has_status', status = 'height_beyond_mortal_reach', check = false},
@@ -196,7 +196,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/windblade.png",
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['damage','ads', 'aoe', 'air','default'],
+		tags = ['damage','ads', 'aoe', 'air','disable_immunity'],
 		reqs = [{code = 'has_status', status = 'height_beyond_mortal_reach', check = false}],
 		targetreqs = [],
 		effects = [
@@ -337,7 +337,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/windwall.png",
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['damage', 'aoe', 'air','default'],
+		tags = ['damage', 'aoe', 'air','disable_immunity'],
 		reqs = [],
 		targetreqs = [],
 		effects = [

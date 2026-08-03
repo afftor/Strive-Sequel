@@ -81,6 +81,33 @@ var skills = {
 		value = 1.6,
 		random_factor_p = 0.1
 	},
+	hardened_grip = {
+		code = 'hardened_grip',
+		descript = '',
+		icon = "res://assets/images/iconsskills/Discipline.png",
+		type = 'combat',
+		ability_type = 'spell',
+		tags = ['support', 'buff'],
+		reqs = [],
+		targetreqs = [],
+		effects = [
+			Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('disarm')}),
+			Effectdata.rebuild_template({effect = 'e_t_hardened_grip', duration = 3}),
+		],
+		cost = {mp = 7},
+		charges = 0,
+		combatcooldown = 1,
+		cooldown = 0,
+		catalysts = {},
+		target = 'ally',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'mind',
+		sfx = [{code = 'heal', target = 'target', period = 'predamage'}, {code = 'cast_mind', target = 'caster', period = 'windup', is_cast = true}],
+		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
+		value = [['0']],
+		damagestat = ['no_stat'],
+	},
 	
 	abyss_gaze = {
 		code = 'abyss_gaze',
@@ -112,8 +139,20 @@ var skills = {
 		random_factor_p = 0.1
 	},
 }
-var effects = {}
+var effects = {
+	e_t_hardened_grip = {
+		type = 'temp_s',
+		target = 'target',
+		stack = 'hardened_grip',
+		tick_event = variables.TR_TURN_F,
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'arg',
+		tags = ['buff'],
+		statchanges = {resist_disarm = 200},
+		buffs = [{icon = "res://assets/images/iconsskills/Discipline.png", description = "EFFECT_HARDENED_GRIP"}],
+	},
+}
 var atomic_effects = {}
 var buffs = {}
 
-var stacks = {}
+var stacks = {hardened_grip = {}}
