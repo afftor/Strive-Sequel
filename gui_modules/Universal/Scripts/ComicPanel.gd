@@ -30,4 +30,7 @@ func show_text(text):
 func shake_last_frame(time = 0.5):
 	ResourceScripts.core_animations.ShakeAnimation(last_frame, time)
 
+func shake_screen(time = 0.5):
+	ResourceScripts.core_animations.ShakeAnimation(self, time)
+
 #2add more commands

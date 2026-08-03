@@ -1727,5 +1727,10 @@ func run_comic_operation(dict):
 				comic_panel.shake_last_frame(dict.time)
 			else:
 				comic_panel.shake_last_frame()
+		'shake_screen':
+			if dict.has('time'):
+				comic_panel.shake_screen(dict.time)
+			else:
+				comic_panel.shake_screen()
 
 

@@ -1681,10 +1681,7 @@ var comic_events = {
 			{type = 'text', text = "ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_2"},
 			{type = 'sound', value = 'speech'},
 		],
-		[
-			{type = 'text', text = "ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_3"},
-			{type = 'sound', value = 'speech'},
-		],
+		{type = 'text', text = "ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_3"},
 		[
 			{type = 'frame', image = "res://assets/images/comic scenes/rouge_1/4.png", position = Vector2(0, -20), size = Vector2(1920, 1080)},
 			{type = 'text', text = "ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_4"},
@@ -1693,8 +1690,8 @@ var comic_events = {
 		[
 			{type = 'frame', image = "res://assets/images/comic scenes/rouge_1/5.png", position = Vector2(0, -20), size = Vector2(1920, 1080), delay = 0.5},
 			{type = 'text', text = "ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_5"},
-			{type = 'shake_frame'},
-			{type = 'sound', value = 'punch'},
+			{type = 'shake_screen'},
+			{type = 'sound', value = 'fleshhit'},
 		],
 		{type = 'continue', scene = 'rouge_report_melchor_ketch_dead'}
 	],
