@@ -2197,6 +2197,24 @@ var traits = {
 		effects = ['greg_relation'],
 		tags = [],
 	},
+	cursed_girl = {
+		code = 'cursed_girl',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['cursed_girl_display','cursed_girl','cursed_girl_1'],
+		tags = [],
+	},
+	guardian_spirit_protection_frenzied = {
+		code = 'guardian_spirit_protection_frenzied',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['guardian_spirit_protection_frenzied_display','guardian_spirit_protection_frenzied','guardian_spirit_protection_frenzied_1'],
+		tags = [],
+	},
 	#exploration related traits
 	#needs to hardcode most of traits
 	medium_armor = {#removes penalty from medium armor

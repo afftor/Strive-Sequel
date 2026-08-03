@@ -186,6 +186,11 @@ func get_stat(statname, nobonus = false, desc_ready = false):
 			return 'early'
 		else:
 			return 'no'
+	if statname == 'downed_opponent_amount':
+		if input_handler.combat_node == null:
+			return 0
+		else:
+			return input_handler.combat_node.get_downed_opponent_amount(combatgroup)
 	if statname.begins_with('armor_'):
 		match statname:
 			'armor_base':

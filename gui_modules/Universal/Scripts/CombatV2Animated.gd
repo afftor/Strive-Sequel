@@ -2272,3 +2272,17 @@ func make_order_id():
 		last_order_id = 0
 	return last_order_id
 
+func get_downed_opponent_amount(combatgroup):
+	var num = 0
+	var list_by_pos
+	if combatgroup == 'ally':
+		list_by_pos = enemygroup.keys()
+	else:
+		list_by_pos = playergroup.keys()
+	for pos in list_by_pos:
+		var tchar = get_char_by_pos(pos)
+		if tchar == null:
+			continue
+		if tchar.defeated == true: 
+			num += 1
+	return num
