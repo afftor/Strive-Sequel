@@ -621,6 +621,17 @@ func build_buffs_for_char(person, node, mode):
 				newnode.get_node("Label").text = str(tmp.count)
 			else:
 				newnode.get_node("Label").hide()
+		if i.template.has('bonuseffect'):
+			match i.template.bonuseffect:
+				'barrier':
+					newnode.get_node("Label").show()
+					newnode.get_node("Label").text = str(person.shield)
+				'lust':
+					newnode.get_node("Label").show()
+					newnode.get_node("Label").text = str(person.get_stat('lust'))
+				'counterattacks':
+					newnode.get_node("Label").show()
+					newnode.get_node("Label").text = str(person.get_stat('counterattacks'))
 #			match tmp.event:
 #				'hours':
 #					newnode.get_node("Label").set("custom_colors/font_color",Color(0,0,1))
