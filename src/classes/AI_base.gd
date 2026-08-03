@@ -217,7 +217,7 @@ func _get_action(hide_ignore = false):
 	#=== Skill rotation zone ===
 	if actions.size() == 0:
 #		print ('ERROR IN AI TEMPLATE')
-		return app_obj.get_skill_by_tag('default')
+		return app_obj.get_skill_by_tag('basic')
 	var res = input_handler.weightedrandom(actions)
 	return res
 

@@ -382,7 +382,7 @@ func invoke_init():
 			queuenode.add_combatlog(tr("LOG_COMBAT_USE_ITEM") % [caster.get_short_name(), combatnode.activeitem.name])
 			combatnode.activeitem.amount -= 1
 			combatnode.activeitem = null
-			caster.selectedskill = caster.get_skill_by_tag('default')
+			caster.selectedskill = caster.get_skill_by_tag('basic')
 		
 		variables.SKILL_AUTO:
 			queuenode.add_combatlog(tr("LOG_COMBAT_AUTO_SKILL") % template.name)

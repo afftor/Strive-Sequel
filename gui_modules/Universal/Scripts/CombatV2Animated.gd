@@ -775,7 +775,7 @@ func player_turn(char_changed = true):
 		call_deferred('select_actor')
 		return
 	if selected_character.has_status('confuse'):
-		activeaction = selected_character.get_skill_by_tag('default')
+		activeaction = selected_character.get_skill_by_tag('basic')
 		var activeaction_data = Skilldata.get_template_combat(activeaction, selected_character)
 		UpdateSkillTargets(selected_character, activeaction_data, true)
 		var targ = get_random_target()
@@ -785,7 +785,7 @@ func player_turn(char_changed = true):
 		var tchar = characters_pool.get_char_by_id(selected_character.get_stat('taunt'))
 #		selected_character.taunt = null
 		if can_be_taunted(selected_character, tchar):
-			use_skill(selected_character.get_skill_by_tag('default'), selected_character, tchar)
+			use_skill(selected_character.get_skill_by_tag('basic'), selected_character, tchar)
 			return
 		else:
 			selected_character.process_event(variables.TR_TAUNT_FAIL)
@@ -848,7 +848,7 @@ func enemy_turn(char_changed = true):
 	target = get_char_by_pos(target)
 
 	if fighter.has_status('confuse'):
-		castskill = fighter.get_skill_by_tag('default')
+		castskill = fighter.get_skill_by_tag('basic')
 		activeaction = castskill
 		var activeaction_data = Skilldata.get_template_combat(activeaction, fighter)
 		UpdateSkillTargets(fighter, activeaction_data, true)
@@ -858,7 +858,7 @@ func enemy_turn(char_changed = true):
 #		fighter.taunt = null
 		if can_be_taunted(fighter, targ):
 			target = targ;
-			castskill = fighter.get_skill_by_tag('default')
+			castskill = fighter.get_skill_by_tag('basic')
 		else:
 			fighter.process_event(variables.TR_TAUNT_FAIL)
 	if target == null:
@@ -994,7 +994,7 @@ func can_be_taunted(caster, target):
 		'enemy':
 			if target.position < 10: return true
 			if !CheckMeleeRange('enemy'): return true
-	var s_code = caster.get_skill_by_tag('default')
+	var s_code = caster.get_skill_by_tag('basic')
 	var skill = Skilldata.get_template_combat(s_code, caster)
 	return (skill.target_range == 'any')
 
@@ -1130,7 +1130,7 @@ func transform_unit(position, id):
 			tchar.combatgroup = 'ally'
 			playergroup[position] = characters_pool.add_char(tchar)
 			battlefield[position] = playergroup[position]
-			tchar.selectedskill = tchar.get_skill_by_tag('default')
+			tchar.selectedskill = tchar.get_skill_by_tag('basic')
 	tchar.position = position
 	tchar.hp = tchar.get_stat("hpmax")
 	tchar.mp = tchar.get_stat("mpmax")
@@ -1206,7 +1206,7 @@ func summon(montype, limit, combatgroup, incombat = false): #reworked
 			tchar.combatgroup = 'ally'
 			tchar.is_players_character = true
 			battlefield[sum_pos] = playergroup[sum_pos]
-			tchar.selectedskill = tchar.get_skill_by_tag('default')
+			tchar.selectedskill = tchar.get_skill_by_tag('basic')
 	tchar.position = sum_pos
 	tchar.hp = tchar.get_stat("hpmax")
 	tchar.mp = tchar.get_stat("mpmax")
@@ -1730,17 +1730,17 @@ func SelectSkill(skill, user_act = true):
 	#need to add daily restriction check
 	if !activecharacter.can_use_skill(skill)  :
 		#SelectSkill('attack')
-		call_deferred('SelectSkill', activecharacter.get_skill_by_tag('default'))
+		call_deferred('SelectSkill', activecharacter.get_skill_by_tag('basic'))
 		return
 	if !activecharacter.has_status('ignore_catalysts_for_%s' % skill.code):
 		for i in skill.catalysts:
 			if ResourceScripts.game_res.materials[i] < skill.catalysts[i]:
 				input_handler.SystemMessage("Missing catalyst: " + Items.materiallist[i].name)
-				call_deferred('SelectSkill', activecharacter.get_skill_by_tag('default'));
+				call_deferred('SelectSkill', activecharacter.get_skill_by_tag('basic'));
 				break
 	if skill.charges > 0 && activecharacter.skills.combat_skill_charges.has(skill.code) && activecharacter.skills.combat_skill_charges[skill.code] >= skill.charges:
 		#input_handler.SystemMessage("No charges left: " + skill.name)
-		call_deferred('SelectSkill', activecharacter.get_skill_by_tag('default'))
+		call_deferred('SelectSkill', activecharacter.get_skill_by_tag('basic'))
 		return
 	activecharacter.selectedskill = skill.code
 	activeaction = skill.code
@@ -1757,7 +1757,7 @@ func SelectSkill(skill, user_act = true):
 					return
 				else:
 					input_handler.SystemMessage(tr("NO_TARGETS"))
-					call_deferred('SelectSkill', activecharacter.get_skill_by_tag('default'))
+					call_deferred('SelectSkill', activecharacter.get_skill_by_tag('basic'))
 					return
 	if skill.has('cursor'): 
 		customcursor = skill.cursor
@@ -1765,10 +1765,10 @@ func SelectSkill(skill, user_act = true):
 		customcursor = null
 	if skill.target == 'self':
 		if !user_act:
-			call_deferred('SelectSkill', activecharacter.get_skill_by_tag('default'))
+			call_deferred('SelectSkill', activecharacter.get_skill_by_tag('basic'))
 			return
 		globals.closeskilltooltip()
-		activecharacter.selectedskill = activecharacter.get_skill_by_tag('default')
+		activecharacter.selectedskill = activecharacter.get_skill_by_tag('basic')
 		ClearSkillTargets()
 		ClearItemPanel()
 		ClearSkillPanel()

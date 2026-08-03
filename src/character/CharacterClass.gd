@@ -914,7 +914,7 @@ func unlearn_skill(skill):
 func unlearn_c_skill(skill):
 	skills.unlearn_c_skill(skill)
 	if selectedskill == skill:
-		selectedskill = get_skill_by_tag('default')
+		selectedskill = get_skill_by_tag('basic')
 
 func unlearn_e_skill(skill):
 	skills.unlearn_e_skill(skill)
@@ -1081,7 +1081,7 @@ func remove_from_work_quest():
 
 func get_skill_by_tag(tg):
 	var res = skills.get_skill_by_tag(tg)
-	if res == null: print ("ERROR in skill config - no default skill")
+	if res == null: print ("ERROR in skill config - no basic skill")
 	return res
 
 func baby_transform(mother):
