@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/panel_questdialogue2.png" type="Texture" id=3]
 [ext_resource path="res://gui_modules/Universal/Modules/TextButton.gd" type="Script" id=4]
-[ext_resource path="res://assets/images/gui/scene/hersoframe.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/hersoframe.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_event_lower_high.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/frameclass.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/scenes/noevent.png" type="Texture" id=8]
@@ -25,6 +25,7 @@
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=23]
 [ext_resource path="res://gui_modules/Universal/ShowPanel.tscn" type="PackedScene" id=24]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=25]
+
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 9 )

@@ -415,9 +415,6 @@ custom_constants/minimum_spaces = 3
 custom_fonts/font = ExtResource( 12 )
 custom_styles/normal = ExtResource( 41 )
 placeholder_text = "INVENTORYFILTER"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ItemsListTitle" type="Label" parent="."]
 light_mask = 0

@@ -592,20 +592,25 @@ var quests = {
 			},
 			[
 				{
-					reqs = {code = 'trait', trait = 'etiquette', check = true},
-					chance = 0.5,
+					generate_func = "getreq_random_from_array",
+					generate_args = [[
+						{code = 'trait', trait = 'etiquette', check = true},
+						{code = 'trait', trait = 'table_manners', check = true},
+						{code = 'trait', trait = 'mentorship', check = true},
+						{code = 'trait', trait = 'gardening', check = true}
+					], 2],
+					chance = 0.3,
+					stop_on_me = true
 				},
 				{
-					reqs = {code = 'trait', trait = 'table_manners', check = true},
-					chance = 0.5,
-				},
-				{
-					reqs = {code = 'trait', trait = 'mentorship', check = true},
-					chance = 0.25,
-				},
-				{
-					reqs = {code = 'trait', trait = 'gardening', check = true},
-					chance = 0.5,
+					generate_func = "getreq_random_from_array",
+					generate_args = [[
+						{code = 'trait', trait = 'etiquette', check = true},
+						{code = 'trait', trait = 'table_manners', check = true},
+						{code = 'trait', trait = 'mentorship', check = true},
+						{code = 'trait', trait = 'gardening', check = true}
+					], 1],
+					chance = 1.0,
 				},
 			],
 			{

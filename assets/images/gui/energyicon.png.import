@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/button.png-db096b773df03c4872a88a387102ea3b.stex"
+path="res://.import/energyicon.png-802488c269776f15a5d32987154cc5a4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/buildings/button.png"
-dest_files=[ "res://.import/button.png-db096b773df03c4872a88a387102ea3b.stex" ]
+source_file="res://assets/images/gui/energyicon.png"
+dest_files=[ "res://.import/energyicon.png-802488c269776f15a5d32987154cc5a4.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
