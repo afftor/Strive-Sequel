@@ -1642,6 +1642,7 @@ margin_right = 135.0
 margin_bottom = 35.0
 custom_fonts/font = ExtResource( 44 )
 text = "Items order"
+align = 1
 
 [node name="Button" type="TextureButton" parent="CraftRules2/filters/order2"]
 visible = false

@@ -366,7 +366,7 @@ var professions = {
 		code = 'petbeast',
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsclasses/Pet.png"),
+		icon = load("res://assets/images/iconsclasses/natural_pet.png"),
 		tags = [],
 		categories = ['social', 'sexual'],
 		showupreqs = [{code = 'race_is_beast',check = true}],

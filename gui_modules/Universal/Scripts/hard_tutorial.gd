@@ -827,6 +827,7 @@ func prepare_general_tut():
 	character = ResourceScripts.game_party.get_unique_slave('daisy')
 	character.remove_trait('training_obedience')
 	character.add_trait('untrained')#Rebellious
+	character.training.acquired_turn = -1 #tutorial trains her right away, skip the settling in block
 	character.add_stat('loyalty', 99)
 	character.add_stat('training_points', 40)
 	character.set_brothel_rule('waitress', false)

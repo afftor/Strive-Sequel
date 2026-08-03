@@ -1091,7 +1091,7 @@ func rebuild_orders():
 	for job in temporder1:
 		var newnode = input_handler.DuplicateContainerTemplate($CraftRules2/filters/order1, 'Button')
 		var taskdata = tasks.tasklist[job]
-		newnode.get_node('Label').text = tr(taskdata.name)
+		newnode.get_node('Label').text = tr("CRAFTCATEGORYWORKUNITS") % [tr(taskdata.name), person.get_job_value(job)]
 		if enabled_list_1.has(job):
 			newnode.get_node('Label').set("custom_colors/font_color", variables.hexcolordict['green'])
 		else:
@@ -1103,7 +1103,7 @@ func rebuild_orders():
 	for job in temporder2:
 		var newnode = input_handler.DuplicateContainerTemplate($CraftRules2/filters/order2, 'Button')
 		var taskdata = tasks.tasklist[job]
-		newnode.get_node('Label').text = tr(taskdata.name)
+		newnode.get_node('Label').text = tr("CRAFTCATEGORYWORKUNITS") % [tr(taskdata.name), person.get_job_value(job)]
 		if enabled_list_2.has(job):
 			newnode.get_node('Label').set("custom_colors/font_color", variables.hexcolordict['green'])
 		else:

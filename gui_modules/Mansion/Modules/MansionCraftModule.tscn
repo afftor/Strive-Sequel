@@ -604,9 +604,6 @@ margin_top = 799.438
 margin_right = 912.298
 margin_bottom = 988.438
 custom_styles/panel = SubResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="NumberConfirm" type="TextureButton" parent="NumberSelect"]
 margin_left = 198.519
@@ -701,19 +698,19 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="NumberSelect"]
-visible = false
-margin_left = 8.72845
-margin_top = 7.34161
-margin_right = 52.7285
-margin_bottom = 51.3416
+margin_left = 744.729
+margin_top = 135.342
+margin_right = 788.729
+margin_bottom = 179.342
 texture = ExtResource( 76 )
+expand = true
+stretch_mode = 6
 
 [node name="workunits" type="Label" parent="NumberSelect"]
-visible = false
-margin_left = 57.0
-margin_top = 17.0
-margin_right = 89.0
-margin_bottom = 49.0
+margin_left = 793.0
+margin_top = 145.0
+margin_right = 825.0
+margin_bottom = 177.0
 custom_fonts/font = ExtResource( 75 )
 text = "50"
 
@@ -913,7 +910,7 @@ autowrap = true
 [node name="EndItemDescript" type="RichTextLabel" parent="MaterialSetupPanel"]
 margin_left = 201.0
 margin_top = 43.0
-margin_right = 851.0
+margin_right = 894.0
 margin_bottom = 180.0
 theme = ExtResource( 3 )
 custom_fonts/normal_font = ExtResource( 12 )

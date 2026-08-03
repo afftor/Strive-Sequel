@@ -372,6 +372,12 @@ func build_training_list():
 				text = "{color=red|"+tr('ACTIONTRAINERREQSNOTMET') +"}\n\n"+ text
 				globals.connecttexttooltip(panel, text)
 				panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
+			#rebellious slave refuses training right after being acquired
+			elif !gui_controller.mansion.in_test_mode and person.training.is_rebel_blocked():
+				panel.disabled = true
+				text = "{color=red|"+tr('ACTIONREBELBLOCKED') +"}\n\n"+ text
+				globals.connecttexttooltip(panel, text)
+				panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.gray))
 			#avail check
 			elif !gui_controller.mansion.in_test_mode and ((tr == 'mindread' and person.training.cooldown.mindread > 0)
 					or person.training.cooldown.positive > 0):

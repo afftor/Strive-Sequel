@@ -2370,6 +2370,8 @@ The last hit deals increased damage.
 	TASKRESTINFO = """Отдых ускоряет заживление ран и не заставляет персонажа терять Повиновение, но также не увеличивает Верность""",
 	CRAFTRULES2TITLE = """Craft Rules - %s""", # MISSING TRANSLATION
 	PREDICTEDTASKLABEL = """Predicted task:""", # MISSING TRANSLATION
+	CRAFTCATEGORYWORKUNITS = """%s (%.1f WU)""", # MISSING TRANSLATION
+	CRAFTWORKUNITSPERTURN = """Work units: %.1f per turn""", # MISSING TRANSLATION
 	MATERIALSORDERLABEL = """Materials order""", # MISSING TRANSLATION
 	ITEMSORDERLABEL = """Items order""", # MISSING TRANSLATION
 	CRAFTRULES2TOOLTIP = """Toggle which crafting tasks the character is allowed to perform. Enabled tasks (green) are attempted in the priority order shown; drag entries in the order lists to rearrange priority. Disabled tasks (grey) will be skipped. Predicted task shows which job the character will perform next.""", # MISSING TRANSLATION
@@ -3251,6 +3253,7 @@ The last hit deals increased damage.
 	ACTIONCATEGORYMAGIC = """Магические""",
 	ACTIONTRAINERREQSNOTMET = """Тренер не соответствует требованиям для этого действия""",
 	ACTIONALREADYDONETODAY = """Уже было обучение сегодня""",
+	ACTIONREBELBLOCKED = """Fresh recruits need a turn before they can be trained.""", # MISSING TRANSLATION
 	NOTENOUGHGOLDACTION = """Недостаточно золота для этого действия""",
 	NOTENOUGHTRAINERMANA = """У тренера недостаточно маны для этого действия""",
 	PERSONALITYNAMEBOLD = """Решительный""",

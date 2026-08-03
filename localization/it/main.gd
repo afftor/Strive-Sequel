@@ -2312,6 +2312,8 @@ La resistenza di %s diminuisce di %.0f per turno.""",
 	TASKRESTINFO = "Il riposo farà guarire le ferite del personaggio più velocemente e fermerà il prosciugamento dell'obbedienza, ma non farà guadagnare nemmeno lealtà.",
 	CRAFTRULES2TITLE = """Craft Rules - %s""", # MISSING TRANSLATION
 	PREDICTEDTASKLABEL = """Predicted task:""", # MISSING TRANSLATION
+	CRAFTCATEGORYWORKUNITS = """%s (%.1f WU)""", # MISSING TRANSLATION
+	CRAFTWORKUNITSPERTURN = """Work units: %.1f per turn""", # MISSING TRANSLATION
 	MATERIALSORDERLABEL = """Materials order""", # MISSING TRANSLATION
 	ITEMSORDERLABEL = """Items order""", # MISSING TRANSLATION
 	CRAFTRULES2TOOLTIP = """Toggle which crafting tasks the character is allowed to perform. Enabled tasks are attempted in the priority order shown; drag entries in the order lists to rearrange priority. Top is high priority, bottom is low. Disabled tasks will be skipped. 
@@ -3134,6 +3136,7 @@ Costo di Mana per gli Incantesimi ridotto del 15%
 	ACTIONCATEGORYMAGIC = "Magia",
 	ACTIONTRAINERREQSNOTMET = "Il trainer non soddisfa i requisiti per questa azione",
 	ACTIONALREADYDONETODAY = "Già è stato addestrato oggi",
+	ACTIONREBELBLOCKED = """Fresh recruits need a turn before they can be trained.""", # MISSING TRANSLATION
 	NOTENOUGHGOLDACTION = "Non c'è abbastanza oro per questa azione",
 	NOTENOUGHTRAINERMANA = "L'allenatore non ha abbastanza mana per questa azione",
 	PERSONALITYNAMEBOLD = "Audace",

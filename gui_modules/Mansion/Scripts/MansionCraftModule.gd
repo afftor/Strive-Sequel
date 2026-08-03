@@ -25,6 +25,7 @@ func _ready():
 	# input_handler.AddPanelOpenCloseAnimation($NumberSelect)
 	$NumberSelect/NumberConfirm.connect("pressed", self, "open_number_select")
 	$NumberSelect/NumberConfirm2.connect("pressed", self, "confirm_unique")
+	globals.connecttexttooltip($NumberSelect/TextureRect, tr("TOOLTIPPROGRESSREQUIRED"))
 	$CraftSelect/BackButton.connect("pressed", get_parent(), "mansion_state_set", ["default"])
 	# input_handler.AddPanelOpenCloseAnimation($MaterialSelect)
 	
@@ -398,6 +399,10 @@ func selectcraftitem(item):
 	# $SelectCharacters.disabled = true
 	selected_item = item
 	itemtemplate = item.resultitem
+	$NumberSelect/TextureRect.texture = images.get_icon(item.worktype)
+	$NumberSelect/TextureRect.show()
+	$NumberSelect/workunits.text = str(item.workunits)
+	$NumberSelect/workunits.show()
 	if item.resultamount > 1:
 		$MaterialSetupPanel/EndItemFrame/Label.text = str(item.resultamount)
 		$MaterialSetupPanel/EndItemFrame/Label.visible = true

@@ -1,5 +1,8 @@
 extends Reference
 
+#turns a freshly acquired rebellious (untrained) slave refuses any training
+const REBEL_BLOCK_TURNS = 1
+
 var parent: WeakRef
 
 var trainer = null
@@ -13,6 +16,7 @@ var training_points = 0
 var training_metrics = {}
 var days_since_training = 0
 var resist_fail_counter = 0
+var acquired_turn = -1 #absolute turn the character joined the party, -1 for old saves
 
 var stored_reqs = {}
 
@@ -34,6 +38,13 @@ func cooldown_tick():
 		cooldown.mindread -= 1
 	if cooldown.negotiation > 0:
 		cooldown.negotiation -= 1
+
+#a rebellious slave refuses training until a turn has passed since being brought in
+func is_rebel_blocked():
+	if acquired_turn < 0 or !parent.get_ref().check_trait('untrained'):
+		return false
+	return ResourceScripts.game_globals.get_turn() - acquired_turn < REBEL_BLOCK_TURNS
+
 
 func can_negotiate():
 	return cooldown.negotiation <= 0
@@ -156,7 +167,7 @@ func has_category_not_in_cd():
 
 func can_be_trained():
 #	return enable and trainer != null and cooldown.main < 1
-	return is_in_training() and has_category_not_in_cd()
+	return is_in_training() and has_category_not_in_cd() and !is_rebel_blocked()
 
 func get_disposition_name(value):
 	return tr('DISPOSITION' + value.to_upper())

@@ -2363,6 +2363,8 @@ Mejora la disposición hacia acciones de {color=yellow|Aleatorio}. Costs 5 Mana.
 	TASKRESTINFO = "Descansar hará que las heridas se curen más rápido y no hará que el personaje pierda Obediencia, pero tampoco ganará Lealtad.",
 	CRAFTRULES2TITLE = """Craft Rules - %s""", # MISSING TRANSLATION
 	PREDICTEDTASKLABEL = """Predicted task:""", # MISSING TRANSLATION
+	CRAFTCATEGORYWORKUNITS = """%s (%.1f WU)""", # MISSING TRANSLATION
+	CRAFTWORKUNITSPERTURN = """Work units: %.1f per turn""", # MISSING TRANSLATION
 	MATERIALSORDERLABEL = """Materials order""", # MISSING TRANSLATION
 	ITEMSORDERLABEL = """Items order""", # MISSING TRANSLATION
 	CRAFTRULES2TOOLTIP = """Toggle which crafting tasks the character is allowed to perform. Enabled tasks (green) are attempted in the priority order shown; drag entries in the order lists to rearrange priority. Disabled tasks (grey) will be skipped. Predicted task shows which job the character will perform next.""", # MISSING TRANSLATION
@@ -3167,6 +3169,7 @@ El coste de maná del hechizo se redujo en un 15 %.
 	ACTIONCATEGORYMAGIC = "Magico",
 	ACTIONTRAINERREQSNOTMET = "El entrenador no cumple los requisitos para esta acción",
 	ACTIONALREADYDONETODAY = "Ya ha sido entrenado hoy",
+	ACTIONREBELBLOCKED = """Fresh recruits need a turn before they can be trained.""", # MISSING TRANSLATION
 	NOTENOUGHGOLDACTION = "No hay suficiente oro para esta acción",
 	NOTENOUGHTRAINERMANA = "El entrenador no tiene suficiente maná para esta acción.",
 	PERSONALITYNAMEBOLD = "Audaz",

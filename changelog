@@ -1,4 +1,6 @@
 Added new trait for Ratkin: In the shadows reduces ranged physical hit chance by 30%.
+Slaves now can only be trained after 1 turn to prevent them being sold for better price instantly
+Added workunits display as well as how much work characters make per turn
 Fixed Lira's quest 3rd part
 Fixed in the shadows giving evasion against physical attacks
 0.15.0c

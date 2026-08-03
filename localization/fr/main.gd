@@ -2449,6 +2449,8 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""", # 
 	TASKRESTINFO = "Le repos permet aux blessures de guérir plus vite et ne fait pas perdre d'Obédience au personnage, mais il ne lui fait pas non plus gagner de Loyauté",
 	CRAFTRULES2TITLE = """Craft Rules - %s""", # MISSING TRANSLATION
 	PREDICTEDTASKLABEL = """Predicted task:""", # MISSING TRANSLATION
+	CRAFTCATEGORYWORKUNITS = """%s (%.1f WU)""", # MISSING TRANSLATION
+	CRAFTWORKUNITSPERTURN = """Work units: %.1f per turn""", # MISSING TRANSLATION
 	MATERIALSORDERLABEL = """Materials order""", # MISSING TRANSLATION
 	ITEMSORDERLABEL = """Items order""", # MISSING TRANSLATION
 	CRAFTRULES2TOOLTIP = """Toggle which crafting tasks the character is allowed to perform. Enabled tasks (green) are attempted in the priority order shown; drag entries in the order lists to rearrange priority. Disabled tasks (grey) will be skipped. Predicted task shows which job the character will perform next.""", # MISSING TRANSLATION
@@ -3305,6 +3307,7 @@ Damage +15%, Health +20.""", # MISSING TRANSLATION
 	ACTIONCATEGORYMAGIC = """Magic""", # MISSING TRANSLATION
 	ACTIONTRAINERREQSNOTMET = """Trainer does not meet requirements for this action""", # MISSING TRANSLATION
 	ACTIONALREADYDONETODAY = """Has already been trained today""", # MISSING TRANSLATION
+	ACTIONREBELBLOCKED = """Fresh recruits need a turn before they can be trained.""", # MISSING TRANSLATION
 	NOTENOUGHGOLDACTION = """Not enough gold for this action""", # MISSING TRANSLATION
 	NOTENOUGHTRAINERMANA = """Trainer does not have enough mana for this action""", # MISSING TRANSLATION
 	PERSONALITYNAMEBOLD = "Gras",

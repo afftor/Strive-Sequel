@@ -2313,6 +2313,8 @@ The last hit deals increased damage.
     TASKRESTINFO = """休息会使角色的伤口愈合得更快，并停止顺从度的流失，但他们也无法获得忠诚度。""",
     CRAFTRULES2TITLE = """制作规则 - %s""",
     PREDICTEDTASKLABEL = """预计任务：""",
+	CRAFTCATEGORYWORKUNITS = """%s (%.1f WU)""", # MISSING TRANSLATION
+	CRAFTWORKUNITSPERTURN = """Work units: %.1f per turn""", # MISSING TRANSLATION
     MATERIALSORDERLABEL = """材料顺序""",
     ITEMSORDERLABEL = """物品顺序""",
     CRAFTRULES2TOOLTIP = """切换允许角色执行的制作任务。启用的任务（绿色）将按显示的优先级顺序尝试进行；在顺序列表中拖动条目以重新排列优先级。禁用的任务（灰色）将被跳过。预计任务会显示角色接下来将执行的工作。""",
@@ -3132,6 +3134,7 @@ The last hit deals increased damage.
 	ACTIONCATEGORYMAGIC = """魔法""",
 	ACTIONTRAINERREQSNOTMET = """训练师不满足此行动的要求""",
 	ACTIONALREADYDONETODAY = """今天已经训练过了""",
+	ACTIONREBELBLOCKED = """Fresh recruits need a turn before they can be trained.""", # MISSING TRANSLATION
 	NOTENOUGHGOLDACTION = """金币不足，无法执行此行动""",
 	NOTENOUGHTRAINERMANA = """训练师法力不足，无法执行此行动""",
 	PERSONALITYNAMEBOLD = """大胆""",

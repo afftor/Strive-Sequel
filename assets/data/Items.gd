@@ -4257,7 +4257,7 @@ var recipes = {
 		resultamount = 2,
 		resultitemtype = 'material',
 		resultitem = 'steel',
-		workunits = 0.3,
+		workunits = 2,
 		worktype = 'smith'
 	},
 	ancientwood = {
@@ -4293,7 +4293,7 @@ var recipes = {
 		resultamount = 2,
 		resultitemtype = 'material',
 		resultitem = 'clothmagic',
-		workunits = 1.6,
+		workunits = 4,
 		worktype = 'tailor'
 	},
 	clothethereal = {
@@ -4305,7 +4305,7 @@ var recipes = {
 		resultamount = 2,
 		resultitemtype = 'material',
 		resultitem = 'clothethereal',
-		workunits = 2.5,
+		workunits = 6,
 		worktype = 'tailor'
 	},
 	rope = {
@@ -4317,7 +4317,7 @@ var recipes = {
 		resultamount = 2,
 		resultitemtype = 'material',
 		resultitem = 'rope',
-		workunits = 0.5,
+		workunits = 1,
 		worktype = 'tailor'
 	},
 	#smith
@@ -4330,7 +4330,7 @@ var recipes = {
 		resultamount = 4,
 		resultitemtype = 'material',
 		resultitem = 'trap',
-		workunits = 0.5,
+		workunits = 1,
 		worktype = 'smith'
 	},
 	unstable_concoction = {
@@ -4342,7 +4342,7 @@ var recipes = {
 		resultamount = 4,
 		resultitemtype = 'material',
 		resultitem = 'unstable_concoction',
-		workunits = 0.5,
+		workunits = 3,
 		worktype = 'alchemy'
 	},
 	aphrodisiac = {
@@ -4354,7 +4354,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'aphrodisiac',
-		workunits = 2,
+		workunits = 6,
 		worktype = 'alchemy'
 	},
 	alcohol = {
@@ -4366,7 +4366,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'alcohol',
-		workunits = 1,
+		workunits = 4,
 		worktype = 'cooking'
 	},
 	beer = {
@@ -4378,7 +4378,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'beer',
-		workunits = 1,
+		workunits = 2,
 		worktype = 'cooking'
 	},
 	bandage = {
@@ -4402,7 +4402,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'lifegem',
-		workunits = 1,
+		workunits = 5,
 		worktype = 'alchemy'
 	},
 	energygem = {
@@ -4414,7 +4414,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'energygem',
-		workunits = 1,
+		workunits = 6,
 		worktype = 'alchemy'
 	},
 	revitalizer = {
@@ -4426,7 +4426,7 @@ var recipes = {
 		resultamount = 2,
 		resultitemtype = 'item',
 		resultitem = 'revitalizer',
-		workunits = 3,
+		workunits = 6,
 		worktype = 'alchemy'
 	},
 	tamedrug = {
@@ -4540,7 +4540,7 @@ var recipes = {
 	},
 	leather_collar = {
 		code = 'leather_collar',
-		materials = {leather = 4},
+		materials = {leather = 6, iron = 1},
 		items = {},
 		unlockreqs = [],
 		crafttype = 'basic',
@@ -4571,7 +4571,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'ribbon',
-		workunits = 2,
+		workunits = 5,
 		worktype = 'tailor'
 	},
 	elegant_choker = {
@@ -4607,7 +4607,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'shackles',
-		workunits = 3,
+		workunits = 5,
 		worktype = 'smith'
 	},
 	animal_ears = {
@@ -4619,7 +4619,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'animal_ears',
-		workunits = 2,
+		workunits = 4,
 		worktype = 'tailor'
 	},
 	tail_plug = {

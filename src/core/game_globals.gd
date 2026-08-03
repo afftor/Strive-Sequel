@@ -75,6 +75,9 @@ var cheat_code = "fkfynroh"
 func get_date():
 	return [date, hour]
 
+func get_turn(): #date and hour flattened into a single ever-growing turn number
+	return (date - 1) * variables.HoursPerDay + hour
+
 func get_week_and_day():
 	return [((date - 1) / 7 + 1), int((date - 1) % 7 + 1)]
 

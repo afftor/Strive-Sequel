@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Pet.png-374abee4d0ea99d828c38449a1fc200a.stex"
+path="res://.import/natural_pet.png-3cab2624064cd234abad1f71ba72756b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/iconsclasses/Pet.png"
-dest_files=[ "res://.import/Pet.png-374abee4d0ea99d828c38449a1fc200a.stex" ]
+source_file="res://assets/images/iconsclasses/natural_pet.png"
+dest_files=[ "res://.import/natural_pet.png-3cab2624064cd234abad1f71ba72756b.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
