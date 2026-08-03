@@ -1584,7 +1584,7 @@ var statdata = {
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
-		tags = ['integer', 'cap_up', 'cap_low'],
+		tags = ['integer', 'cap_up', 'cap_low', 'update_state'],
 		cap_up = 'counterattacks_max',
 		cap_low = 0,
 	},
