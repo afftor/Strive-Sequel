@@ -70,8 +70,13 @@ func get_duration():
 		return null
 	var res = {}
 	res.count = 0
-	res.event = effects_pool.get_effect_by_id(effects.keys()[0]).get_duration().event
+	res.event = null
+	var duration = effects_pool.get_effect_by_id(effects.keys()[0]).get_duration()
+	if duration != null:# and duration.has("event")?
+		res.event = duration.event
 	for eff in effects:
-		res.count = max(res.count, effects_pool.get_effect_by_id(eff).get_duration().count)
+		duration = effects_pool.get_effect_by_id(eff).get_duration()
+		if duration != null:# and duration.has("count")?
+			res.count = max(res.count, duration.count)
 	return res
 

@@ -484,6 +484,10 @@ align = 1
 [node name="Timer" type="Timer" parent="Panel/PlayerGroup/Back/left/Template/Buffs"]
 wait_time = 3.0
 
+[node name="fade_timer" type="Timer" parent="Panel/PlayerGroup/Back/left/Template/Buffs"]
+wait_time = 0.1
+one_shot = true
+
 [node name="bars" type="VBoxContainer" parent="Panel/PlayerGroup/Back/left/Template"]
 margin_left = 10.0
 margin_top = 179.0

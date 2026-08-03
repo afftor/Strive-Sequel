@@ -27127,19 +27127,14 @@ Saying that he left you to yourself. Perhaps now you can report back to Melchor.
 {color=aqua|Soldier Leader: — We've confirmed these are the dangerous cultists and they're not surrendering. Move in.}
 
 A small group of combat mages began chanting potent fire spells, quickly setting the barricades ablaze while others kept bystanders at a distance. Agonized cries began echoing from inside the building.""",
-	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_1 = """As the cult's followers kept the soldiers occupied, Ketch slipped into a small underground tunnel prepared specifically for an escape. He fought his way past a couple of soldiers before his followers managed to set up a rearguard, but the fighting left him tired and wounded.
-
-{color=yellow|Ketch: — Fucking hell, how did it go this wrong? If I get my hands on that [name] I swear [he]'ll never—}""",
-	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2 = """A figure stepped out of the shadows ahead. Ketch's expression shifted to shock — not because it was someone unexpected, but because of what it meant.
-
-{color=yellow|Ketch: — You... You set this whole thing up, you bitch!}
-
-{color=aqua|Rouge: — And you thought you could insult and threaten me without it coming back around? Attack my sisters?}
-
-{color=yellow|Ketch: — The cult will hear about this—}""",
-	ROUGE_REPORT_MELCHOR_KETCH_DEAD = """The strike comes before Ketch can see it. A wound to his chest kills him on the spot, blood spraying across the walls.
-
-{color=yellow|Rouge: — Fufu, I hope darling won't be too strict with me about this.}""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_1 = """As the cult's followers kept the soldiers occupied, Ketch slipped into a small underground tunnel prepared specifically for an escape. He fought his way past a couple of soldiers before his followers managed to set up a rearguard, but the fighting left him tired and wounded.""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_0 = """{color=yellow|Ketch: — Fucking hell, how did it go this wrong? If I get my hands on that [name] I swear [he]'ll never—}""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2 = """A figure stepped out of the shadows ahead. Ketch's expression shifted to shock — not because it was someone unexpected, but because of what it meant.""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_2 = """{color=yellow|Ketch: — You... You set this whole thing up, you bitch!}""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_3 = """{color=aqua|Rouge: — And you thought you could insult and threaten me without it coming back around? Attack my sisters?}""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_4 = """{color=yellow|Ketch: — The cult will hear about this—}""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_5 = """The strike comes before Ketch can see it. A wound to his chest kills him on the spot, blood spraying across the walls.""",
+	ROUGE_REPORT_MELCHOR_KETCH_DEAD = """{color=yellow|Rouge: — Fufu, I hope darling won't be too strict with me about this.}""",
 	ROUGE_REPORT_MELCHOR_KETCH_WARNED_ESCAPE_1 = """As the cult's followers kept the soldiers occupied, Ketch slipped into a small underground tunnel prepared specifically for an escape. He fought his way past a couple of soldiers before his followers managed to set up a rearguard, but the fighting left him tired and wounded.
 
 The tunnel ahead should have been clear, but his pace slowed as your words came back to him.

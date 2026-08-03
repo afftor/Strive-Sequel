@@ -27159,19 +27159,14 @@ Detto ciò, ti ha lasciato a te stesso. Forse ora puoi riferire a Melchor.""",
 {color=aqua|Capo Soldati: — Abbiamo confermato che questi sono i cultisti pericolosi e non si arrendono. Avanzate.}
 
 Un piccolo gruppo di maghi da combattimento ha iniziato a recitare potenti incantesimi di fuoco, incendiando rapidamente le barricate mentre altri tenevano i curiosi a distanza. Grida agonizzanti hanno cominciato a echeggiare dall'interno dell'edificio.""",
-	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_1 = """Mentre i seguaci del culto tenevano occupati i soldati, Ketch è scivolato in un piccolo tunnel sotterraneo preparato appositamente per una fuga. Ha combattuto oltre un paio di soldati prima che i suoi seguaci riuscissero a organizzare una retroguardia, ma il combattimento lo ha lasciato stanco e ferito.
-
-{color=yellow|Ketch: — Maledizione, come è potuto andare così storto? Se metto le mani su quel [name] giuro che non—}""",
-	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2 = """Una figura è emersa dalle ombre davanti a lui. L'espressione di Ketch è cambiata in shock — non perché fosse qualcuno di inaspettato, ma per quello che significava.
-
-{color=yellow|Ketch: — Tu... Hai organizzato tutto questo, maledetta stronza!}
-
-{color=aqua|Rouge: — E tu pensavi di potermi insultare e minacciare senza conseguenze? Attaccare le mie sorelle?}
-
-{color=yellow|Ketch: — Il culto saprà di questo—}""",
-	ROUGE_REPORT_MELCHOR_KETCH_DEAD = """Il colpo arriva prima che Ketch possa vederlo. Una ferita al petto lo uccide sul colpo, il sangue schizza sulle pareti.
-
-{color=yellow|Rouge: — Fufu, spero che il mio caro non sarà troppo severo con me per questo.}""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_1 = """Mentre i seguaci del culto tenevano occupati i soldati, Ketch è scivolato in un piccolo tunnel sotterraneo preparato appositamente per una fuga. Ha combattuto oltre un paio di soldati prima che i suoi seguaci riuscissero a organizzare una retroguardia, ma il combattimento lo ha lasciato stanco e ferito.""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_0 = """{color=yellow|Ketch: — Maledizione, come è potuto andare così storto? Se metto le mani su quel [name] giuro che non—}""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2 = """Una figura è emersa dalle ombre davanti a lui. L'espressione di Ketch è cambiata in shock — non perché fosse qualcuno di inaspettato, ma per quello che significava.""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_2 = """{color=yellow|Ketch: — Tu... Hai organizzato tutto questo, maledetta stronza!}""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_3 = """{color=aqua|Rouge: — E tu pensavi di potermi insultare e minacciare senza conseguenze? Attaccare le mie sorelle?}""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_4 = """{color=yellow|Ketch: — Il culto saprà di questo—}""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_5 = """Il colpo arriva prima che Ketch possa vederlo. Una ferita al petto lo uccide sul colpo, il sangue schizza sulle pareti.""",
+	ROUGE_REPORT_MELCHOR_KETCH_DEAD = """{color=yellow|Rouge: — Fufu, spero che il mio caro non sarà troppo severo con me per questo.}""",
 	ROUGE_REPORT_MELCHOR_KETCH_WARNED_ESCAPE_1 = """Mentre i seguaci del culto tenevano occupati i soldati, Ketch si infilò in un piccolo tunnel sotterraneo preparato apposta per una fuga. Si aprì la strada a colpi di spada oltre un paio di soldati prima che i suoi seguaci riuscissero a organizzare una retroguardia, ma lo scontro lo lasciò stanco e ferito.
 
 Il tunnel davanti a lui sarebbe dovuto essere libero, ma il suo passo rallentò quando le tue parole gli tornarono in mente.
