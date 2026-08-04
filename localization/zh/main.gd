@@ -22,6 +22,9 @@ var TranslationDict = {
 	你当前使用的版本是 %s。""", 
 	UPDATENOTICEUNKNOWN = """无法获取最新版本信息。
 	请前往 itch.io 查看是否有更新。""", 
+	UPDATENOTICEEXPERIMENTALTITLE = """Experimental Build""", # MISSING TRANSLATION
+	UPDATENOTICEEXPERIMENTAL = """You are running an experimental version (%s).
+Newer experimental or stable builds may already be out - check itch.io.""", # MISSING TRANSLATION
 	UPDATECHECKCONSENT = """是否允许游戏在启动时连接 itch.io 检查新版本？这只会向 itch.io 发送请求 —— 绝对不会收集你的任何私密数据。""",
 	GALLERYNAME = """画廊""",
 	GALLERYSTORY = """剧情""",
@@ -1983,6 +1986,16 @@ Gain {color=aqua|Blackened Blade}.""", # MISSING TRANSLATION
 Sequentially inflict {color=aqua|Ensnare}, {color=aqua|Disarm}, {color=aqua|Blind}, and {color=aqua|Shred}.
 The last hit deals increased damage.
 {color=red|On Kill: Reset cooldown.}""", # MISSING TRANSLATION
+	SKILLOMINOUS_WHISPERS = """Ominous Whispers""", # MISSING TRANSLATION
+	SKILLOMINOUS_WHISPERSDESCRIPT = """Deal low {color=yellow|Mind} magical damage to all enemies and inflict {color=aqua|Fear}. If target HP is below 50%, also inflict {color=aqua|Shattered}.""", # MISSING TRANSLATION
+	SKILLHEXED_COFFIN_NAIL = """Hexed Coffin Nail""", # MISSING TRANSLATION
+	SKILLHEXED_COFFIN_NAILDESCRIPT = """Deal {color=yellow|Dark} physical damage to an enemy. Inflict {color=aqua|Bleed}. Moderate chance to inflict {color=aqua|Cursed}""", # MISSING TRANSLATION
+	SKILLCRAZED_SPIRIT_POSSESSION = """Crazed Spirit Possession""", # MISSING TRANSLATION
+	SKILLCRAZED_SPIRIT_POSSESSIONDESCRIPT = """Deal physical damage to 2 random rows of enemies. If target is affected by {color=aqua|Fear}, deal additional {color=yellow|Dark} magical damage and inflict {color=aqua|Cursed}.""", # MISSING TRANSLATION
+	SKILLFORCED_EXORCISM = """Forced Exorcism""", # MISSING TRANSLATION
+	SKILLFORCED_EXORCISMDESCRIPT = """Prioritize Cursed enemy. Deal heavy {color=yellow|Light} magical damage to a single target. If the target is {color=aqua|Cursed}, damage the target mana and deal {color=yellow|Dark} magical damage to all their allies. Remove {color=aqua|Cursed} from target.""", # MISSING TRANSLATION
+	SKILLUNDYING_SPIRIT = """Undying Spirit""", # MISSING TRANSLATION
+	SKILLUNDYING_SPIRITDESCRIPT = """Heal self for a small portion of Max HP. Heal more for every enemy that have {color=aqua|Fear} or Defeated.""", # MISSING TRANSLATION
 	STATUSDESC_BLEED = """流血：每回合受到 10% 最大生命值的真实伤害。""",
 	STATUSDESC_POISON = """中毒：每回合受到 10% 最大生命值的真实伤害。""",
 	STATUSDESC_BURN = """灼烧：每回合受到 8% 最大生命值的火系伤害。""",
@@ -5120,6 +5133,8 @@ This effect is removed if the applier fell for a taunt or is immobilised.""", # 
 	EFFECTNAME_BLACKEN_BLADE = """Blacken Blade""", # MISSING TRANSLATION
 	EFFECT_BLACKEN_BLADE_DESCRIPT = """Deals additional 50% of caster's MATK as {color=yellow|Dark} damage on every hit
 All attacks have a 20% chance to inflict Bleed.""", # MISSING TRANSLATION
+	EFFECT_CURSED_GIRL_DESCRIPT = """Cursed Girl: When hit by Devour magic spell, gain shock and 3 fragiles. When hit by Light damage, there is a 20% chance to become stunned.""", # MISSING TRANSLATION
+	EFFECT_GUARDIAN_SPIRIT_PROTECTION_FRENZIED_DESCRIPT = """Guardian Spirit Protection [Frenzied]: When being hit by non-light damage, 30% chance to inflict Cursed to the attacker. When being hit by a Cursed enemy, reduce damage taken by 30% and inflict Dark damage back to the attacker.""", # MISSING TRANSLATION
     RESETTRAINREQ = "将训练重置为第 0 步并恢复精神点数。需要“遗忘药水”。",
 	RESETTRAINING = """所有训练进度将被丢弃。确定吗？""",
 	BUFFDESCRIPTDEFENDER = """防御者：除非处于眩晕状态，否则将为盟友抵挡攻击。""",

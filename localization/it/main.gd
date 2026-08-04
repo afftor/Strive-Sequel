@@ -22,6 +22,9 @@ var TranslationDict = {
 You are currently on %s.""", # MISSING TRANSLATION
 	UPDATENOTICEUNKNOWN = """Could not determine the latest version.
 Check itch.io to see if an update is available.""", # MISSING TRANSLATION
+	UPDATENOTICEEXPERIMENTALTITLE = """Experimental Build""", # MISSING TRANSLATION
+	UPDATENOTICEEXPERIMENTAL = """You are running an experimental version (%s).
+Newer experimental or stable builds may already be out - check itch.io.""", # MISSING TRANSLATION
 	UPDATECHECKCONSENT = """Allow the game to check itch.io for new versions on startup? This only sends a request to itch.io - no personal data is collected.""", # MISSING TRANSLATION
 	GALLERYNAME = "Galleria",
 	GALLERYSTORY = "Storia",
@@ -1982,6 +1985,16 @@ Gain {color=aqua|Blackened Blade}.""", # MISSING TRANSLATION
 Sequentially inflict {color=aqua|Ensnare}, {color=aqua|Disarm}, {color=aqua|Blind}, and {color=aqua|Shred}.
 The last hit deals increased damage.
 {color=red|On Kill: Reset cooldown.}""", # MISSING TRANSLATION
+	SKILLOMINOUS_WHISPERS = """Ominous Whispers""", # MISSING TRANSLATION
+	SKILLOMINOUS_WHISPERSDESCRIPT = """Deal low {color=yellow|Mind} magical damage to all enemies and inflict {color=aqua|Fear}. If target HP is below 50%, also inflict {color=aqua|Shattered}.""", # MISSING TRANSLATION
+	SKILLHEXED_COFFIN_NAIL = """Hexed Coffin Nail""", # MISSING TRANSLATION
+	SKILLHEXED_COFFIN_NAILDESCRIPT = """Deal {color=yellow|Dark} physical damage to an enemy. Inflict {color=aqua|Bleed}. Moderate chance to inflict {color=aqua|Cursed}""", # MISSING TRANSLATION
+	SKILLCRAZED_SPIRIT_POSSESSION = """Crazed Spirit Possession""", # MISSING TRANSLATION
+	SKILLCRAZED_SPIRIT_POSSESSIONDESCRIPT = """Deal physical damage to 2 random rows of enemies. If target is affected by {color=aqua|Fear}, deal additional {color=yellow|Dark} magical damage and inflict {color=aqua|Cursed}.""", # MISSING TRANSLATION
+	SKILLFORCED_EXORCISM = """Forced Exorcism""", # MISSING TRANSLATION
+	SKILLFORCED_EXORCISMDESCRIPT = """Prioritize Cursed enemy. Deal heavy {color=yellow|Light} magical damage to a single target. If the target is {color=aqua|Cursed}, damage the target mana and deal {color=yellow|Dark} magical damage to all their allies. Remove {color=aqua|Cursed} from target.""", # MISSING TRANSLATION
+	SKILLUNDYING_SPIRIT = """Undying Spirit""", # MISSING TRANSLATION
+	SKILLUNDYING_SPIRITDESCRIPT = """Heal self for a small portion of Max HP. Heal more for every enemy that have {color=aqua|Fear} or Defeated.""", # MISSING TRANSLATION
 	STATUSDESC_BLEED = "Sanguinamento: Subisci il 10% degli HP massimi come danno neutro per turno.",
 	STATUSDESC_POISON = "Avvelenamento: Subisci il 10% degli HP massimi come danno neutro per turno.",
 	STATUSDESC_BURN = "Bruciatura: Subisci l'8% degli HP massimi come danno da Fuoco per turno.",
@@ -5100,6 +5113,8 @@ This effect is removed if the applier fell for a taunt or is immobilised.""", # 
 	EFFECTNAME_BLACKEN_BLADE = """Blacken Blade""", # MISSING TRANSLATION
 	EFFECT_BLACKEN_BLADE_DESCRIPT = """Deals additional 50% of caster's MATK as {color=yellow|Dark} damage on every hit
 All attacks have a 20% chance to inflict Bleed.""", # MISSING TRANSLATION
+	EFFECT_CURSED_GIRL_DESCRIPT = """Cursed Girl: When hit by Devour magic spell, gain shock and 3 fragiles. When hit by Light damage, there is a 20% chance to become stunned.""", # MISSING TRANSLATION
+	EFFECT_GUARDIAN_SPIRIT_PROTECTION_FRENZIED_DESCRIPT = """Guardian Spirit Protection [Frenzied]: When being hit by non-light damage, 30% chance to inflict Cursed to the attacker. When being hit by a Cursed enemy, reduce damage taken by 30% and inflict Dark damage back to the attacker.""", # MISSING TRANSLATION
 	RESETTRAINREQ = "Ripristina l'allenamento al passaggio 0 e ripristina lo Spirito. Richiede la pozione dell'oblio.",
 	RESETTRAINING = "Tutti i progressi dell'addestramento verranno scartati. Sei sicuro?",
 	BUFFDESCRIPTDEFENDER = "Difensore: Proteggerà gli alleati dagli attacchi a meno che non siano storditi.",

@@ -9,3 +9,6 @@ export_presets.cfg
 .aider*
 AGENTS.md
 .agents/
+
+# Personal AI asset-pipeline tooling and credentials. Never commit this directory.
+tools/ai_assets/
