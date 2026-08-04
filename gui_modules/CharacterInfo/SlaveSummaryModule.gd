@@ -23,10 +23,12 @@ func _ready():
 	for i in actions:
 		var newbutton = input_handler.DuplicateContainerTemplate($Actions/GridContainer)
 		newbutton.get_node("Label").text = tr('BTN' + i.to_upper())
-		if i in ['inventory','occupation','date','chat']:
+		if i in ['inventory','occupation','date','chat', 'expel']:
 			newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet.png")
 			newbutton.texture_pressed = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_pressed.png")
 			newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_hover.png")
+		else:
+			newbutton.toggle_mode = true
 		newbutton.connect('pressed',self,i)
 		self[i+'_button'] = newbutton
 	#$Actions/GridContainer/Buttonleveling.connect("pressed", self, 'open_skills')
@@ -117,6 +119,21 @@ func open_skills():
 
 func relations():
 	get_parent().set_state("siblings")
+
+func switch_off_all_buttons():
+	leveling_button.pressed = false
+	relations_button.pressed = false
+	customization_button.pressed = false
+
+func set_buttons_pressed(type):
+	switch_off_all_buttons()
+	match type:
+		"details":
+			customization_button.pressed = true
+		"skills":
+			leveling_button.pressed = true
+		"siblings":
+			relations_button.pressed = true
 
 func occupation():
 	input_handler.ActivateTutorial('TUTORIALLIST4')
