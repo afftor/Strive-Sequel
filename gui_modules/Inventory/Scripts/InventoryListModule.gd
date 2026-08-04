@@ -306,6 +306,10 @@ func equip_confirm():
 	var equiped_item = tempitem.clone()
 	globals.AddItemToInventory(equiped_item, false)
 	selectedhero.equip(equiped_item, item_prev_id)
+	if equiped_item.owner == selectedhero.id:
+		var equip_sound = audio.get_equip_sound(equiped_item)
+		if equip_sound != null:
+			input_handler.PlaySound(equip_sound)
 	input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
 	get_parent().emit_signal("item_equipped")
 	tempitem.amount -= 1

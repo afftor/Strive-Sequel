@@ -95,7 +95,7 @@ func build_reputation():
 		if !i in ['servants','fighters','mages','workers']:
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($QuestDetails/VBoxContainer)
-		var text = ResourceScripts.game_world.areas.plains.factions[i].name + ": " + str(ResourceScripts.game_world.areas.plains.factions[i].reputation)
+		var text = tr(ResourceScripts.game_world.areas.plains.factions[i].name) + ": " + str(ResourceScripts.game_world.areas.plains.factions[i].reputation)
 		newbutton.get_node('Label').text = text
 		newbutton.get_node("TextureRect").texture = images.get_icon("guilds_" + i)
 

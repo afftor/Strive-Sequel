@@ -207,7 +207,7 @@ func advance_turn(amount = 1):
 	turn_in_progress = true
 	turn_started_at = OS.get_ticks_msec()
 	set_input_lock(true)
-	input_handler.PlaySound("button_click")
+	input_handler.PlaySound("mansion_turn_end")
 
 	#synch setup
 	var cur_time = ResourceScripts.game_globals.hour

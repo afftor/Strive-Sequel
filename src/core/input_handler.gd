@@ -1689,9 +1689,9 @@ func play_animation_noq(animation, args = {}):
 			anim_scene.play("task_completed")
 		"repeatable_quest_completed":
 			anim_scene = get_spec_node(ANIM_TASK_COMPLETED)
-			var name =  selectedquest.name
+			var name =  tr(selectedquest.name)
 			if selectedquest.has("source"):
-				name += " (" + worlddata.factiondata[selectedquest.source].name + ")"
+				name += " (" + tr(worlddata.factiondata[selectedquest.source].name) + ")"
 			anim_scene.get_node("Label3").text = name
 			anim_scene.play("task_completed")
 		"skill_unlocked":

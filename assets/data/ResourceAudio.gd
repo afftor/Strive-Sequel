@@ -85,6 +85,10 @@ var sounds = {
 	menu_open = load("res://assets/sounds/sounds/menu open.wav"),
 	menu_close = load("res://assets/sounds/sounds/menu close.wav"),
 	button_click = load("res://assets/sounds/sounds/menu button.wav"),
+	mansion_turn_end = load("res://assets/sounds/sounds/mansion_turn_end.wav"),
+	inventory_equip_armor = load("res://assets/sounds/sounds/inventory_equip_armor.wav"),
+	inventory_equip_cloth = load("res://assets/sounds/sounds/inventory_equip_cloth.wav"),
+	inventory_equip_weapon_tool = load("res://assets/sounds/sounds/inventory_equip_weapon_tool.wav"),
 	knocking = load("res://assets/sounds/sounds/knocking.wav"),
 	doorlocked = load("res://assets/sounds/sounds/lockeddoor.wav"),
 	doorsmash = load("res://assets/sounds/sounds/doorsmash.wav"),
@@ -174,3 +178,45 @@ var random_pitch_sounds = {
 	speech = 0.2,
 	avalanche = 0.3
 }
+
+# Centralized equip-SFX routing. Per-item entries take priority, then gear and item
+# types; no sound is returned for an unknown category. This avoids adding fields to
+# serialized Item instances, so existing saves safely fall back to current item data.
+var equip_sound_rules = {
+	items = {},
+	geartypes = {
+		cloth = 'inventory_equip_cloth',
+		costume = 'inventory_equip_cloth',
+		medium = 'inventory_equip_armor',
+		heavy = 'inventory_equip_armor',
+		shield = 'inventory_equip_armor',
+	},
+	itemtypes = {
+		armor = 'inventory_equip_armor',
+		weapon = 'inventory_equip_weapon_tool',
+		tool = 'inventory_equip_weapon_tool',
+	},
+}
+
+func get_equip_sound(item):
+	if item == null:
+		return null
+	var item_template = null
+	if Items.itemlist.has(item.itembase):
+		item_template = Items.itemlist[item.itembase]
+	var geartype = item.geartype
+	var itemtype = item.itemtype
+	# Old saves can contain Item instances that predate one of these fields. Read the
+	# live template only as a fallback, without changing the saved item instance.
+	if item_template != null:
+		if geartype == null and item_template.has('geartype'):
+			geartype = item_template.geartype
+		if itemtype == null and item_template.has('itemtype'):
+			itemtype = item_template.itemtype
+	if equip_sound_rules.items.has(item.itembase):
+		return equip_sound_rules.items[item.itembase]
+	if equip_sound_rules.geartypes.has(geartype):
+		return equip_sound_rules.geartypes[geartype]
+	if equip_sound_rules.itemtypes.has(itemtype):
+		return equip_sound_rules.itemtypes[itemtype]
+	return null
