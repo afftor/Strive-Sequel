@@ -127,19 +127,27 @@ var statdata = {
 		tags = ['integer'],
 		default_bonus = 'set' #no setter actually
 	},
-	food_hate = {
-		code = 'food_hate',
-		name = '',
-		descript = '',
-		baseicon = 'food_hate',
-		type = 'misc',
-	},
 	food_love = {
 		code = 'food_love',
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
 		type = 'misc',
+	},
+	food_demand = {
+		code = 'food_demand',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		type = 'misc',
+	},
+	fed = {
+		code = 'fed',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		type = 'misc',
+		tags = ['integer'],
 	},
 	#exterior
 	beard = {

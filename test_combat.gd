@@ -475,7 +475,6 @@ func setup_player_test():
 	character.set_stat('sexuals_factor', 6)
 	#character.set_stat('wits_factor', 5)
 	character.set_stat('food_love', "meat")
-	character.set_stat('food_hate', ["grain"])
 	character.set_stat('charm', 100)
 	character.set_stat('wits', 100)
 #	character.add_stat('wits', 100)

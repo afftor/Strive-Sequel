@@ -175,7 +175,9 @@ func get_stat(statname, nobonus = false, desc_ready = false):
 		return enthrall.get_thrall_max_count()
 	if statname == 'price':
 		return calculate_price()
-	if statname.begins_with('food_') and statname != 'food_consumption':
+	if statname == 'food_demand':
+		return food.get_demand()
+	if (statname.begins_with('food_') and statname != 'food_consumption') or statname == 'fed':
 		return food.get(statname)
 	if statname in variables.training_stat_list:
 		return training.get(statname)
@@ -283,7 +285,7 @@ func set_stat(stat, value):
 		enthrall.set_alt_form(value)
 		dyn_stats.reset_rebuild()
 		return
-	if stat.begins_with('food_') and stat != 'food_consumption':
+	if (stat.begins_with('food_') and stat != 'food_consumption') or stat == 'fed':
 		food.set(stat, value)
 		return
 	if stat.ends_with('_virgin'):
@@ -327,7 +329,9 @@ func add_stat(statname, value, force_store = false): #only oneshots
 		xp_module.base_exp += value
 	elif statname in variables.training_stat_list:
 		training.add_stat(statname, value)
-	else: 
+	elif statname == 'fed':
+		food.fed = int(max(food.fed + value, 0))
+	else:
 		if statname.ends_with('_direct'):
 			statname = statname.trim_suffix('_direct')
 		var st_data = statdata.statdata[statname]
@@ -1173,6 +1177,9 @@ func remove_temp_effect_tag(eff_tag):#function for non-direct temps removing, li
 	dyn_stats.remove_temp_effect_tag(eff_tag)
 
 func remove_all_temp_effects_tag(eff_tag):#function for non-direct temps removing, like heal or dispel
+	#the tag lookup reads the rebuilt effect containers, same as find_temp_effect_tag
+	if dyn_stats.rebuild < variables.DYN_STATS_PREAREA:
+		dyn_stats.generate_data(variables.DYN_STATS_PREAREA)
 	dyn_stats.remove_all_temp_effects_tag(eff_tag)
 
 
@@ -1669,6 +1676,7 @@ func fix_serialization():
 	xp_module.fix_rules()
 	travel.fix_infinite_travel()
 	training.fix_old_save()
+	food.fix_old_save()
 
 
 
@@ -2148,11 +2156,14 @@ func escape_actions():
 func predict_food():
 	return food.predict_food()
 
-func change_food_category(foodcode):
-	food.change_food_category(foodcode)
+func toggle_food(foodcode):
+	food.toggle_food(foodcode)
 
 func get_filter_for_food(code):
 	return food.get_filter_for_food(code)
+
+func get_food_demand():
+	return food.get_demand()
 
 func pretick():
 	process_event(variables.TR_TICK)
@@ -2161,11 +2172,12 @@ func pretick():
 func tick(): #work ticks are not here - as they are called in tasks order, not in character
 	if is_on_quest():
 		xp_module.quest_tick()
-	
+
+	#food runs before the regen, so a character that starves this turn loses this turn's
+	#health and half of this turn's mana rather than the next one's
+	food.tick()
 	self.hp += get_stat('hp_reg')
 	self.mp += get_stat('mp_reg')
-	if ResourceScripts.game_globals.hour == 2:
-		food.get_food()
 	#yet again workaround for effects, that should already be in action, but they don't
 	call_deferred('deferred_brk_check_food')
 	
@@ -2862,7 +2874,7 @@ func try_breakdown_on_char_loss(lost_char):
 		try_breakdown('brk_lose_relative')
 
 func deferred_brk_check_food():
-	if has_status('food_dislike'):
+	if has_status('food_demand_unmet'):
 		try_breakdown('brk_dislike_food')
 
 func try_breakdown_on_enthrall():

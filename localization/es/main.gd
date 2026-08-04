@@ -393,6 +393,7 @@ pero conservarás todos tus personajes, objetos e inventario. Usa este modo para
 	MSLMLOC = "Ubicación",
 	MSLMTYPE = "Tipo",
 	MSLMINV = "Equipo",
+	MSLMFOOD = """Food""", # MISSING TRANSLATION
 	LVLBONUSPERPOINT = """Bonus per point""", # MISSING TRANSLATION
 	LVLCURRENT = """Current""", # MISSING TRANSLATION
 	LVLTOTALPOINTS = """Total Points""", # MISSING TRANSLATION
@@ -674,6 +675,29 @@ Sin embargo, aunque parezca que los terratenientes no sienten más que desprecio
 	FOODTYPEFISH = "Pescado",
 	FOODTYPEGRAIN = "Granos",
 	FOODTYPEVEGE = "Vegetales",
+	FOODDEMAND = """Food Demand""", # MISSING TRANSLATION
+	FOODDEMANDDESCRIPT = """The quality of food this character expects. Fame 3 or a value above 500 raises it to Refined, Fame 5 or a value above 1500 to Premium. Slaves never mind eating below their demand.""", # MISSING TRANSLATION
+	FOODDEMANDBASIC = """Basic""", # MISSING TRANSLATION
+	FOODDEMANDREFINED = """Refined""", # MISSING TRANSLATION
+	FOODDEMANDPREMIUM = """Premium""", # MISSING TRANSLATION
+	FOODDEMANDBASICDESCRIPT = """Eats anything without complaint.""", # MISSING TRANSLATION
+	FOODDEMANDREFINEDDESCRIPT = """Expects cooked meals. Raw produce costs Respect, Productivity and Experience Gain until the next meal.""", # MISSING TRANSLATION
+	FOODDEMANDPREMIUMDESCRIPT = """Expects elaborate dishes. Anything lesser costs Respect, Productivity and Experience Gain until the next meal.""", # MISSING TRANSLATION
+	FOODLIKEDTYPE = """Liked Food""", # MISSING TRANSLATION
+	FOODVALUE = """Turns of Food""", # MISSING TRANSLATION
+	FOODTOOLTIPLIKED = """A liked type: keeps this character fed 50% longer.""", # MISSING TRANSLATION
+	FOODTOOLTIPBELOWDEMAND = """Below this character's demand: costs Respect, -20% Productivity and -20% Experience Gain until their next meal.""", # MISSING TRANSLATION
+	FOODSTATEHEADER = """Last Meal""", # MISSING TRANSLATION
+	FOODSTATEHEADERDESCRIPT = """What each character is currently running on. A red tint means the meal was below their demand. Hover a character's icon for the details.""", # MISSING TRANSLATION
+	FOODSTATELASTMEAL = """Last Meal: %s""", # MISSING TRANSLATION
+	FOODSTATEFEDFOR = """Fed for %d more turn(s).""", # MISSING TRANSLATION
+	FOODSTATESTARVING = """Starving""", # MISSING TRANSLATION
+	FOODSTATENONE = """No Meal""", # MISSING TRANSLATION
+	FOODSTATENONEDESCRIPT = """Has not eaten yet. They will take the best allowed food in store on their next turn.""", # MISSING TRANSLATION
+	FOODSTATEUNDEAD = """Does Not Eat""", # MISSING TRANSLATION
+	FOODSTATEUNDEADDESCRIPT = """The undead need no food and are never affected by hunger.""", # MISSING TRANSLATION
+	FOODLOGSTARVE = """%s: could not eat. Respect and Affection reduced.""", # MISSING TRANSLATION
+	FOODLOGBELOWDEMAND = """%s: was served %s, which is below their standards. Respect reduced.""", # MISSING TRANSLATION
 	CURRENTLYINPOSSESSION = "Actualmente en posesión",
 	MATERIALCATEGORYFOOD = "Comida",
 	MATERIALCATEGORYSTONE = "Piedra",
@@ -1152,6 +1176,7 @@ Reducido por la evasión del enemigo""",
 	CHARCREATE_FOOD_STATE_HATE = """Hate""", # MISSING TRANSLATION
 	CHARCREATE_DIET_HELP = """Select 1 Liked and at least 1 Hated food types.""", # MISSING TRANSLATION
 	CHARCREATE_DIET_HELP_TOO_MANY_LIKED = """You can only select 1 Liked food type.""", # MISSING TRANSLATION
+	CHARCREATE_DIET_HELP_NO_LIKED = """[color=red]Select 1 Liked food type.[/color]""", # MISSING TRANSLATION
 	CHARCREATE_SYS_FOOD_REQUIRED = """You must select one liked and at least one hated food type.""", # MISSING TRANSLATION
 	CHARCREATE_SYS_CLASS_REQUIRED = """You must select a correct starting Class""", # MISSING TRANSLATION
 	CHARCREATE_SYS_PERSONALITY_REQUIRED = """You must select a Personality""", # MISSING TRANSLATION
@@ -3253,6 +3278,10 @@ El coste de maná del hechizo se redujo en un 15 %.
 	STATFOOD_HATE = "Comida odiada",
 	STATFOOD_LOVEDESCRIPT = "Comer una comida favorita aumenta ligeramente la productividad y la obediencia para el día siguiente. La comida preparada con ingredientes tanto favoritos como odiados se considerará neutral y no generará ninguna bonificación ni penalización.",
 	STATFOOD_HATEDESCRIPT = "Comer comida que no te gusta reducirá la productividad al día siguiente. La comida hecha con ingredientes que tanto te gustan como que no te gustan se considerará neutral y no generará ninguna bonificación ni penalización.",
+	STATFOOD_DEMAND = """Food Demand""", # MISSING TRANSLATION
+	STATFOOD_DEMANDDESCRIPT = """The quality of food a character expects. Eating below it costs Respect, Productivity and Experience Gain until their next meal.""", # MISSING TRANSLATION
+	STATFED = """Fed""", # MISSING TRANSLATION
+	STATFEDDESCRIPT = """Turns of food a character has left. It drops by one every turn and is topped up whenever they eat.""", # MISSING TRANSLATION
 	STATTASK_EFFICIENCY_TOOL = "Bono por eficiencia de tareas",
 	STATTASK_EFFICIENCY_AXE = """Task Efficiency - Axe""", # MISSING TRANSLATION
 	STATTASK_EFFICIENCY_AXEDESCRIPT = """Task Efficiency Bonus with Axe""", # MISSING TRANSLATION
@@ -4101,6 +4130,11 @@ Mayor salud, DEF y MAG DEF""",
 	TRAITEFFECTFAVFOOD = "Comida favorita: +5%% Productividad, +5%% Ganancia de experiencia",
 	TRAITEFFECTHATEDFOOD = "Comida odiada: -10%% Productividad.",
 	TRAITEFFECTSTARVE = "Starvation: -50%% Productividad, -50%% Damage.",
+	TRAITEFFECTCHEAPFOOD = """Poor Meal: -20%% Productivity, -20%% Experience Gain until the next meal""", # MISSING TRANSLATION
+	TRAITEFFECTFOODMEAT = """Well Fed (Meat): +5%% Damage, +5%% Max Health""", # MISSING TRANSLATION
+	TRAITEFFECTFOODFISH = """Well Fed (Fish): +10%% Max Mana, +5%% Experience Gain""", # MISSING TRANSLATION
+	TRAITEFFECTFOODVEGE = """Well Fed (Vegetables): +25%% Health Regeneration, +10 Poison Resistance""", # MISSING TRANSLATION
+	TRAITEFFECTFOODGRAIN = """Well Fed (Grains): +5%% Productivity""", # MISSING TRANSLATION
 	TRAITEFFECTGRAVEINJ = "Lesión grave: -25%% Productividad, -50 Sexuales. No pueden participar en combate.",
 	TRAITEFFECTINJ = """Injury: -30%% Max HP, -20 Hitrate.""", # MISSING TRANSLATION
 	TRAITEFFECTDISCIPLINE = "Disciplina: +50%% Eficiencias laborales y artesanales.",
@@ -8213,6 +8247,8 @@ La mujer desaparece tan rápido como apareció ante ti, dejándote frente a la m
 	FOODFILTERMED = "Medio",
 	FOODFILTERLOW = "Bajo",
 	FOODFILTERDISABLE = "Prohibir",
+	FOODFILTERALLOWED = """Allow""", # MISSING TRANSLATION
+	FOODFILTERFORBIDDEN = """Forbid""", # MISSING TRANSLATION
 	USABLE = "Utilizable",
 	SWITCHSTATS = "Estadísticas individuales",
 	SWITCHLIST = "Lista de personajes",

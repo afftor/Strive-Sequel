@@ -759,8 +759,23 @@ var damage_shake = [#order matters! Low max_damage first. No max_damage means in
 	{time = 0.15, magnitude = 5},
 ]
 
-var category_order = ['high','med','low','disable']
-var categorycolors = {high = "green", med = 'yellow', low = 'red', disable = 'gray'}
+#food mechanic
+var food_types = ['meat', 'fish', 'vege', 'grain']
+#worst to best - index is used as the rank when comparing a meal against a demand
+var food_demand_order = ['basic', 'refined', 'premium']
+var food_demand_colors = {basic = 'k_gray', refined = 'aqua', premium = 'unique'}
+#a demand tier is claimed once either condition is met, the highest one wins
+var food_demand_by_fame = {refined = 3, premium = 5}
+var food_demand_by_value = {refined = 500, premium = 1500}
+#eating a liked food type stretches the meal by this much (rounded up)
+var food_liked_value_mod = 1.5
+#failing to eat
+var food_starve_respect = -10
+var food_starve_affection = -5
+#eating below the demanded tier
+var food_demand_respect = [-5, -3]
+#the extra rations work rule burns through food faster
+var food_ration_drain = 2
 
 var minor_trainings_base = 3
 var minor_trainings_per_growth = 0.5

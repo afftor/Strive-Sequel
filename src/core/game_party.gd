@@ -579,11 +579,14 @@ func update_global_cooldowns():
 		if global_skills_used[i] <= 0:
 			global_skills_used.erase(i)
 
+#food items the party is expected to get through in a day, assuming everyone keeps
+#eating their current first choice
 func get_food_consumption():
-	var counter = 0
+	var counter = 0.0
 	for i in characters.values():
-		counter += i.get_stat("food_consumption")
-	return counter
+		for food in i.predict_food().values():
+			counter += food
+	return int(ceil(counter))
 
 
 func predict_char_event():
@@ -670,6 +673,7 @@ func get_characters_for_task(tsk):
 	return res
 
 
+#per food item, keyed by item code
 func calculate_food_consumption():
 	var res = {}
 	for i in characters.values():

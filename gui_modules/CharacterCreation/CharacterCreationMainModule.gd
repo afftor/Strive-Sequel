@@ -720,8 +720,9 @@ func reset_points():
 
 
 #food_filter
-var foods = ['meat', 'fish', 'vege', 'grain']
-var food_vals = ['like', 'neutral', 'hate']
+onready var foods = variables.food_types
+#disliked food no longer exists - a character just picks the one type they like
+var food_vals = ['like', 'neutral']
 
 var reverse_filter = {}
 
@@ -741,9 +742,7 @@ func check_food_filter():
 					preservedsettings.food_filter.erase(food)
 					continue
 				reverse_filter[preservedsettings.food_filter[food]].push_back(food)
-	if reverse_filter.like.size() != 1: 
-		return false
-	if reverse_filter.hate.size() < 1:
+	if reverse_filter.like.size() != 1:
 		return false
 	return true
 
@@ -757,9 +756,6 @@ func build_food_filter():
 			preservedsettings.food_filter[food] = 'neutral'
 		val[person.food.food_love] = 'like'
 		preservedsettings.food_filter[person.food.food_love] = 'like'
-		for food in person.food.food_hate:
-			val[food] = 'hate'
-			preservedsettings.food_filter[food] = 'hate'
 	else: #read from preservedsettings
 		for food in foods:
 			val[food] = 'neutral'
@@ -772,6 +768,8 @@ func build_food_filter():
 			liked_count += 1
 	if liked_count > 1:
 		$DietPanel/RichTextLabel.bbcode_text = tr("CHARCREATE_DIET_HELP_TOO_MANY_LIKED")
+	elif liked_count < 1:
+		$DietPanel/RichTextLabel.bbcode_text = tr("CHARCREATE_DIET_HELP_NO_LIKED")
 	else:
 		$DietPanel/RichTextLabel.bbcode_text = tr("CHARCREATE_DIET_HELP")
 
@@ -793,7 +791,6 @@ func build_food_filter():
 func apply_food_filter():
 	if !check_food_filter():
 		return
-	person.food.food_hate = reverse_filter.hate.duplicate()
 	person.food.food_love = reverse_filter.like[0]
 
 
@@ -804,19 +801,20 @@ func change_food_filter_value(food, value):
 	var id
 	if !preservedsettings.has('food_filter'):
 		preservedsettings.food_filter = {}
-		id = 1 #food_vals.find('neutral')
+		id = food_vals.find('neutral')
 	elif preservedsettings.food_filter.has(food):
 		id = food_vals.find(preservedsettings.food_filter[food])
 	else:
-		id = 1 #food_vals.find('neutral')
-	
-	id += value
-	if id < 0:
-		id = 2
-	if id >= 3:
-		id = 0
-	
+		id = food_vals.find('neutral')
+
+	id = wrapi(id + value, 0, food_vals.size())
+
 	preservedsettings.food_filter[food] = food_vals[id]
+	#only one type can be liked at a time
+	if food_vals[id] == 'like':
+		for other in foods:
+			if other != food and preservedsettings.food_filter.get(other, 'neutral') == 'like':
+				preservedsettings.food_filter[other] = 'neutral'
 	build_food_filter()
 
 

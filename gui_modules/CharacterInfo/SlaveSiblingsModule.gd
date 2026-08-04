@@ -30,7 +30,6 @@ func _ready():
 	globals.connecttexttooltip($personality/kind, tr("INFOPERSONALITYKIND"))
 	globals.connecttexttooltip($personality/serious, tr("INFOPERSONALITYSERIOUS"))
 
-	globals.connecttexttooltip($food/fooddisliked, "[center]"+ tr("STATFOOD_HATE") + "[/center]\n"+tr("STATFOOD_HATEDESCRIPT"))
 	globals.connecttexttooltip($food/foodliked,"[center]"+ tr("STATFOOD_LOVE") + "[/center]\n"+tr("STATFOOD_LOVEDESCRIPT"))
 
 	$Button.connect('pressed', self, 'show_stats')
@@ -71,13 +70,16 @@ func build_personality():
 
 
 func build_food():
+	var demand = person.get_food_demand()
+	var text = "[center]" + tr("STATFOOD_LOVE") + "[/center]\n" + tr("FOODTYPE" + person.food.food_love.to_upper())
+	text += "\n\n%s: {color=%s|%s}" % [tr("FOODDEMAND"),
+		variables.food_demand_colors[demand], tr("FOODDEMAND" + demand.to_upper())]
+	text += "\n" + tr("FOODDEMAND" + demand.to_upper() + "DESCRIPT")
 	$food/foodlikedicon.texture = foodicons[person.food.food_love]
-	globals.connecttexttooltip($food/foodlikedicon, tr("FOODTYPE" + person.food.food_love.to_upper()))
-	input_handler.ClearContainer($food/fooddislikedicons)
-	for i in person.food.food_hate:
-		var newicon = input_handler.DuplicateContainerTemplate($food/fooddislikedicons)
-		newicon.texture = foodicons[i]
-		globals.connecttexttooltip(newicon, tr("FOODTYPE" + i.to_upper()))
+	globals.connecttexttooltip($food/foodlikedicon, text)
+	#disliked food no longer exists
+	$food/fooddisliked.visible = false
+	$food/fooddislikedicons.visible = false
 
 
 func build_relations():

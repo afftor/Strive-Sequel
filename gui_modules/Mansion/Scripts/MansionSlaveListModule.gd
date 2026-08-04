@@ -26,6 +26,7 @@ const TEX_ROW_AVAIL = preload("res://assets/Textures_v2/MANSION/CharacterList/Bu
 const TEX_TRAVEL_SMALL = preload("res://assets/Textures_v2/MANSION/icon_travel_small.png")
 const TEX_NO = preload("res://assets/Textures_v2/MANSION/no.png")
 const TEX_YES = preload("res://assets/Textures_v2/MANSION/yes.png")
+const TEX_FOOD_STARVING = preload("res://assets/images/iconsitems/food_old.png")
 
 var mode = 'default'
 #var mode = 'food'
@@ -79,7 +80,10 @@ func _ready():
 #	for rl in ['waitress', 'hostess', 'dancer', 'stripper', 'males', 'females', 'futa', 'petting', 'oral', 'anal', 'pussy', 'group', 'sextoy']:
 #		globals.connecttexttooltip(header.get_node('brothel_' + rl), tr('BROTHEL%sDESCRIPT' % rl.to_upper()))
 	for rl in ['meat', 'fish', 'grain', 'vegetables', 'bread', 'meatsoup', 'curry', 'friedfish', 'fishcakes']:
-		globals.connecttexttooltip(header.get_node('food_' + rl), tr('MATERIAL%sDESCRIPT' % rl.to_upper()))
+		globals.connecttexttooltip(header.get_node('food_' + rl),
+			tr('MATERIAL%sDESCRIPT' % rl.to_upper()) + globals.get_food_info_text(Items.materiallist[rl]))
+	globals.connecttexttooltip(header.get_node('food_state'),
+		"[center]" + tr("FOODSTATEHEADER") + "[/center]\n" + tr("FOODSTATEHEADERDESCRIPT"))
 	input_handler.connect("mass_select_in_act", self, "off_mass_select_effect")
 	input_handler.register_btn_source("slave_2_line", self, "tut_get_slave_line", self, 'tut_get_slave_line_rect')
 	input_handler.register_btn_source("daisy_line", self, "tut_get_daisy_line", self, 'tut_get_daisy_line_rect')
@@ -777,11 +781,18 @@ func update_button(newbutton, t_mode = mode):
 					newbutton.get_node('rule_' + rl).disabled = true
 	for rl in ['waitress', 'hostess', 'dancer', 'stripper', 'males', 'females', 'futa']:
 		newbutton.get_node('rule_' + rl).pressed = person.check_brothel_rule(rl)
-	#food
+	#food. the per-character tooltips need a fresh demand, which is expensive, so they are
+	#only built while the food column is actually on screen
+	if t_mode == 'food':
+		person.get_food_demand()
 	for f_id in ['meat', 'fish', 'grain', 'vegetables', 'bread', 'meatsoup', 'curry', 'friedfish', 'fishcakes']:
-		var k = person.get_filter_for_food(f_id)
-		newbutton.get_node('ff_%s/Label' % f_id).text = tr("FOODFILTER" + k.to_upper())
-		newbutton.get_node('ff_%s/Label' % f_id).set("custom_colors/font_color", Color(variables.hexcolordict[variables.categorycolors[k]]))
+		var allowed = person.get_filter_for_food(f_id)
+		var label = newbutton.get_node('ff_%s/Label' % f_id)
+		label.text = tr("FOODFILTERALLOWED" if allowed else "FOODFILTERFORBIDDEN")
+		label.set("custom_colors/font_color", Color(variables.hexcolordict['green' if allowed else 'gray']))
+		if t_mode == 'food':
+			globals.connectmaterialtooltip(newbutton.get_node('ff_' + f_id), Items.materiallist[f_id],
+				globals.get_food_char_text(Items.materiallist[f_id], person))
 	#filter columns
 	for nd in newbutton.get_children():
 		nd.visible = nd.is_in_group(t_mode)
@@ -795,6 +806,31 @@ func update_button(newbutton, t_mode = mode):
 	if person.check_trait('undead'):
 		newbutton.get_node('rule_contraceptive').visible = false
 		newbutton.get_node('rule_ration').visible = false
+	update_food_icon(newbutton, person)
+
+
+#the food column shows what the character is running on right now - the item they last ate,
+#tinted red when it was below their demand, or the starvation icon when they went without.
+#the cell frame always keeps its place in the row; states with no meal leave it empty
+func update_food_icon(newbutton, person):
+	var node = newbutton.get_node('FoodIcon')
+	if !node.visible:
+		return
+	var icon = node.get_node('icon')
+	var state = person.food.get_state()
+	icon.visible = true
+	icon.modulate = Color(1, 1, 1)
+	match state.state:
+		'undead', 'none':
+			icon.visible = false
+		'starving':
+			icon.texture = TEX_FOOD_STARVING
+		'poor':
+			icon.texture = Items.materiallist[state.meal].icon
+			icon.modulate = Color(1, 0.5, 0.5)
+		_:
+			icon.texture = Items.materiallist[state.meal].icon
+	globals.connecttexttooltip(node, globals.get_food_state_tooltip(person))
 
 
 func set_mode(newmode):
@@ -848,8 +884,7 @@ func toggle_service_mass(newbutton_ref, code):
 
 func press_food(newbutton, code):
 	var person = newbutton.get_meta('slave')
-	person.change_food_category(code)
-	pass
+	person.toggle_food(code)
 	update_button(newbutton)
 
 

@@ -1454,13 +1454,9 @@ func usefood(food):
 		var state = 'neutral'
 		if food.tags.has(person.food.food_love):
 			state = 'like'
-			for i in food.tags:
-				if person.food.food_hate.has(i):
-					state = 'neutral'
-		else:
-			for i in food.tags:
-				if person.food.food_hate.has(i):
-					state = 'hate'
+		#a meal below what they expect out of you goes down badly
+		elif person.food.is_below_demand(food.code):
+			state = 'hate'
 
 		if state == 'like':
 			text += "{color=green|"

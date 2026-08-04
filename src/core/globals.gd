@@ -473,11 +473,63 @@ func slavetooltip(targetnode, person):
 	var node = input_handler.get_spec_node(input_handler.NODE_SLAVETOOLTIP) #input_handler.GetSlaveTooltip()
 	node.showup(targetnode, person)
 
+#what a food item is worth to anyone: its demand tier, how long it keeps a character fed
+#and the buff it leaves behind. used by every material tooltip and by the food column header
+func get_food_info_text(item):
+	if item.type != 'food':
+		return ''
+	var res = "\n\n%s: {color=%s|%s}" % [tr("FOODDEMAND"),
+		variables.food_demand_colors[item.demand], tr("FOODDEMAND" + item.demand.to_upper())]
+	res += "\n%s: %d" % [tr("FOODVALUE"), item.food_value]
+	if item.has('food_buff') and Effectdata.effect_table.has(item.food_buff):
+		for buff in Effectdata.effect_table[item.food_buff].get('buffs', []):
+			#buff descriptions escape their percent signs for Buff.get_tooltip()
+			res += "\n{color=green|%s}" % tr(buff.description).replace("%%", "%")
+	return res
+
+
+#the part of a food tooltip that only makes sense for one character. reads the cached
+#demand rather than recomputing it - call person.get_food_demand() once first if the
+#value may be stale
+func get_food_char_text(item, person):
+	if item.type != 'food':
+		return ''
+	var res = ''
+	if person.food.is_liked(item.code):
+		res += "\n{color=green|%s}" % tr("FOODTOOLTIPLIKED")
+	if !person.food.ignores_demand() and person.food.get_food_rank(item.code) < person.food.get_demand_rank():
+		res += "\n{color=red|%s}" % tr("FOODTOOLTIPBELOWDEMAND")
+	return res
+
+
+#tooltip for the food column of the slave list: what they last ate, how long it holds and
+#what it is doing to them
+func get_food_state_tooltip(person):
+	var st = person.food.get_state()
+	if st.state == 'starving':
+		return ("[center]{color=red|%s}[/center]\n%s" %
+			[tr("FOODSTATESTARVING"), tr("TRAITEFFECTSTARVE").replace("%%", "%")])
+	if st.state == 'undead':
+		return "[center]%s[/center]\n%s" % [tr("FOODSTATEUNDEAD"), tr("FOODSTATEUNDEADDESCRIPT")]
+	if st.state == 'none':
+		return "[center]%s[/center]\n%s" % [tr("FOODSTATENONE"), tr("FOODSTATENONEDESCRIPT")]
+	var item = Items.materiallist[st.meal]
+	var res = "[center]%s[/center]" % (tr("FOODSTATELASTMEAL") % item.name)
+	res += "\n" + tr("FOODSTATEFEDFOR") % st.fed
+	if item.has('food_buff') and Effectdata.effect_table.has(item.food_buff):
+		for buff in Effectdata.effect_table[item.food_buff].get('buffs', []):
+			res += "\n{color=green|%s}" % tr(buff.description).replace("%%", "%")
+	if st.state == 'poor':
+		res += "\n{color=red|%s}" % tr("TRAITEFFECTCHEAPFOOD").replace("%%", "%")
+	return res
+
+
 func mattooltip(targetnode, material, bonustext = '', type = 'materialowned'):
 	var image
 	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP) #input_handler.GetItemTooltip()
 	var data = {}
 	var text = material.descript #'[center]' + material.name + '[/center]\n' + material.descript
+	text += get_food_info_text(material)
 	data.text = text + bonustext
 	data.item = material
 	data.icon = material.icon

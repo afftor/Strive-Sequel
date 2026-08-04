@@ -281,6 +281,10 @@ var materiallist = {
 		workmod = 'mod_hunt',
 		type = 'food',
 		tags = ['meat'],
+		food_type = 'meat',
+		demand = 'basic',
+		food_value = 3,
+		food_buff = 'e_food_meat',
 	},
 	fish = {
 		code = 'fish',
@@ -295,6 +299,10 @@ var materiallist = {
 		workmod = 'mod_fish',
 		type = 'food',
 		tags = ['fish'],
+		food_type = 'fish',
+		demand = 'basic',
+		food_value = 3,
+		food_buff = 'e_food_fish',
 	},
 	grain = {
 		code = 'grain',
@@ -308,7 +316,11 @@ var materiallist = {
 		workstat = 'physics',
 		workmod = 'mod_farm',
 		type = 'food',
-		tags = [],
+		tags = ['grain'],
+		food_type = 'grain',
+		demand = 'basic',
+		food_value = 2,
+		food_buff = 'e_food_grain',
 	},
 	vegetables = {
 		code = 'vegetables',
@@ -323,6 +335,10 @@ var materiallist = {
 		workmod = 'mod_farm',
 		type = 'food',
 		tags = ['vege'],
+		food_type = 'vege',
+		demand = 'basic',
+		food_value = 2,
+		food_buff = 'e_food_vege',
 	},
 	bread = {
 		code = 'bread',
@@ -332,6 +348,10 @@ var materiallist = {
 		price = 2,
 		type = 'food',
 		tags = ['grain','cooked'],
+		food_type = 'grain',
+		demand = 'refined',
+		food_value = 3,
+		food_buff = 'e_food_grain',
 	},
 	meatsoup = {
 		code = 'meatsoup',
@@ -341,8 +361,12 @@ var materiallist = {
 		price = 3, #6->9 gold profit per craft
 		type = 'food',
 		tags = ['vege', 'meat','cooked'],
+		food_type = 'meat',
+		demand = 'refined',
+		food_value = 4,
+		food_buff = 'e_food_meat',
 	},
-	
+
 	curry = {
 		code = 'curry',
 		name = '',
@@ -351,6 +375,10 @@ var materiallist = {
 		price = 3,
 		type = 'food',
 		tags = ['grain', 'meat','cooked'],
+		food_type = 'meat',
+		demand = 'premium',
+		food_value = 5,
+		food_buff = 'e_food_meat',
 	},
 	friedfish = {
 		code = 'friedfish',
@@ -360,6 +388,10 @@ var materiallist = {
 		price = 3,
 		type = 'food',
 		tags = ['vege', 'fish','cooked'],
+		food_type = 'fish',
+		demand = 'premium',
+		food_value = 5,
+		food_buff = 'e_food_fish',
 	},
 
 	divine_symbol = {
@@ -466,6 +498,10 @@ var materiallist = {
 		price = 3, #7->9 gold profit per craft
 		type = 'food',
 		tags = ['grain', 'fish'],
+		food_type = 'fish',
+		demand = 'refined',
+		food_value = 4,
+		food_buff = 'e_food_fish',
 	},
 	stone = {
 		code = 'stone',

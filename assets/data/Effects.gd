@@ -305,10 +305,12 @@ var effect_table = {
 		statchanges = {exp_gain_mod = 0.05, productivity = 0.05},
 		sub_effects = [rebuild_simple_dot(['loyalty'], [0.5], variables.TR_DAY),],
 	},
+	#the extra food itself is handled by ch_food.get_drain(), which burns through 'fed'
+	#twice as fast while this rule is on
 	work_rule_ration = {
 		type = 'simple',
 		conditions = [{code = 'workrule', check = true, value = 'ration'}],
-		statchanges = {food_consumption = 3, productivity = 0.15},
+		statchanges = {productivity = 0.15},
 	},
 	work_rule_shifts = {
 		type = 'simple',
@@ -355,46 +357,102 @@ var effect_table = {
 		tags = ['no_job', 'no_combat'],
 		buffs = ['b_dayoff'],
 	},
-	e_food_like = {
+	#food buffs. they run out exactly when 'fed' does, so their duration is always
+	#passed in as the amount of turns the meal is worth
+	e_food_meat = {
 		type = 'temp_s',
 		stack = 'food',
 		tick_event = variables.TR_TICK,
-		duration = 4,
-		statchanges = {productivity = 0.05, exp_gain_mod = 0.05},
+		duration = 3,
+		args = {duration = {obj = 'duration', func = 'eq'}},
+		statchanges = {damage_mod_all = 0.05, hpmax_add_part = 0.05},
+		tags = ['food_buff'],
 		buffs = [
 			{
-				icon = "res://assets/images/gui/gui icons/food_love.png",
-				description = "TRAITEFFECTFAVFOOD",
-				tags = ['mansion_only'],#mb remove
+				icon = "res://assets/images/iconsitems/item_meat.png",
+				description = "TRAITEFFECTFOODMEAT",
+				tags = ['mansion_only'],
 			}
 		],
 	},
-	e_food_dislike = {
+	e_food_fish = {
 		type = 'temp_s',
 		stack = 'food',
 		tick_event = variables.TR_TICK,
-		duration = 4,
-		statchanges = {productivity = -0.1},
-		tags = ['food_dislike'],
+		duration = 3,
+		args = {duration = {obj = 'duration', func = 'eq'}},
+		statchanges = {mpmax_add_part = 0.1, exp_gain_mod = 0.05},
+		tags = ['food_buff'],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsitems/item_fish.png",
+				description = "TRAITEFFECTFOODFISH",
+				tags = ['mansion_only'],
+			}
+		],
+	},
+	e_food_vege = {
+		type = 'temp_s',
+		stack = 'food',
+		tick_event = variables.TR_TICK,
+		duration = 3,
+		args = {duration = {obj = 'duration', func = 'eq'}},
+		statchanges = {hp_reg_add_part = 0.25, resist_poison = 10},
+		tags = ['food_buff'],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsitems/item_vege.png",
+				description = "TRAITEFFECTFOODVEGE",
+				tags = ['mansion_only'],
+			}
+		],
+	},
+	e_food_grain = {
+		type = 'temp_s',
+		stack = 'food',
+		tick_event = variables.TR_TICK,
+		duration = 3,
+		args = {duration = {obj = 'duration', func = 'eq'}},
+		statchanges = {productivity = 0.05},
+		tags = ['food_buff'],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsitems/item_grain.png",
+				description = "TRAITEFFECTFOODGRAIN",
+				tags = ['mansion_only'],
+			}
+		],
+	},
+	#the last meal was below what the character demands - lasts until they eat again
+	e_food_demand = {
+		type = 'temp_s',
+		stack = 'food',
+		tick_event = variables.TR_TICK,
+		duration = 3,
+		args = {duration = {obj = 'duration', func = 'eq'}},
+		statchanges = {productivity = -0.2, exp_gain_mod = -0.2},
+		tags = ['food_demand_unmet'],
 		buffs = [
 			{
 				icon = "res://assets/images/gui/gui icons/food_hate.png",
-				description = "TRAITEFFECTHATEDFOOD",
-				tags = ['mansion_only'],#mb remove
+				description = "TRAITEFFECTCHEAPFOOD",
+				tags = ['mansion_only'],
 			}
 		],
 	},
+	#reapplied every turn the character fails to eat
 	e_starve = {
 		type = 'temp_s',
 		stack = 'food',
 		tick_event = variables.TR_TICK,
-		duration = 4,
-		statchanges = {productivity = -0.5, damage_mod_all = -0.5},
-		tags = ['starvation'],#['addition_rest_tick'], 
+		duration = 1,
+		statchanges = {hp_reg_mul = 0, mp_reg_mul = 0.5},
+		tags = ['starvation'],#['addition_rest_tick'],
 		buffs = [
 			{
 				icon = "res://assets/images/iconsitems/food_old.png",
-				description = "TRAITEFFECTSTARVE", 
+				description = "TRAITEFFECTSTARVE",
+				tags = ['mansion_only'],
 			}
 		],
 	},

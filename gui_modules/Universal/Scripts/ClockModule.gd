@@ -63,7 +63,7 @@ func show_food_tooltip():
 	var resources = ResourceScripts.game_party.calculate_food_consumption()
 	var text = "\n\n" + tr('CURRENT_PREFERRED_FOOD_CONSUMPTION') + ":"
 	for i in resources.keys():
-		text +=  "\n" + tr('FOODTYPE' + i.to_upper()) + ": " + str(resources[i])
+		text +=  "\n" + Items.materiallist[i].name + ": " + str(stepify(resources[i], 0.1))
 	globals.showtexttooltip($TimeNode/food, tr("TOOLTIPFOOD") + text, false)
 
 
