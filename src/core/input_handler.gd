@@ -46,6 +46,7 @@ signal survival_advance
 signal fighter_changed
 signal clear_cashed
 signal SpellUsed
+signal animatedbackground_changed
 
 #animations queue
 signal animation_finished

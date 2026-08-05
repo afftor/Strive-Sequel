@@ -226,7 +226,7 @@ func match_state():
 #			SlaveSiblingsModule.DietModule.open_diet_window()
 			SlaveSiblingsModule.update()
 			#BodyModule.hide()
-	
+	SummaryModule.set_buttons_pressed(char_module_state)
 	update()
 
 

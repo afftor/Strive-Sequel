@@ -149,6 +149,7 @@ func close():
 # 	variables.set(i,button.pressed)
 func disable_animations_backgrounds(value):
 	input_handler.globalsettings["animatedbackground"] = value
+	input_handler.emit_signal("animatedbackground_changed")
 
 func male_rate_change(value):
 	$TabContainer/Gameplay/Scroll/Box/VBoxContainer/malerate.value = value
