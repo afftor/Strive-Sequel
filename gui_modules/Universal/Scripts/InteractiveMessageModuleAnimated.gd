@@ -74,6 +74,10 @@ func determine_dialogue_type(scene):
 		next_dialogue_type = scene.dialogue_type
 
 func open(scene):
+	if globals.gameover_process:
+		input_handler.emit_signal("EventFinished")
+		input_handler.event_finished()
+		return
 	if gui_controller.dialogue == null:
 		gui_controller.dialogue = self
 	if scene.has("variations"):

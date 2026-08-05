@@ -112,6 +112,7 @@ func check_last_save():
 		$VBoxContainer/continuebutton.visible = true
 
 func continueb(pressed, some_node):
+	globals.gameover_process = false
 	globals.LoadGame(lastsave.get_file().get_basename());
 
 
@@ -121,6 +122,7 @@ func CloseDemoWarn():
 
 
 func loadwindow(pressed, pressed_button):
+	globals.gameover_process = false
 	gui_controller.win_btn_connections_handler(pressed, $saveloadpanel, pressed_button)
 	self.current_pressed_btn = pressed_button
 	$saveloadpanel.visible = pressed
@@ -135,6 +137,7 @@ func options(pressed, pressed_button):
 
 
 func gallery():
+	globals.gameover_process = false
 	$Gallery.close_state = false
 	$Gallery.set_state("story")
 	$Gallery.open_gallery()
@@ -177,6 +180,7 @@ var settingarray2 = ['skip_prologue','diff_gf_only_upg','diff_permadeath', 'diff
 var settingarray3 = ['diff_money','diff_materials'] #'diff_free_chars'
 
 func newgame(pressed, pressed_button):
+	globals.gameover_process = false
 	gui_controller.win_btn_connections_handler(pressed, $NewOrTutorial, pressed_button)
 	self.current_pressed_btn = pressed_button
 	$NewOrTutorial.visible = pressed
@@ -364,6 +368,7 @@ func start_preset_update():
 
 
 func start_game():
+	globals.gameover_process = false
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'start_game_confirm', tr('STARTTHISGAME')])
 
 

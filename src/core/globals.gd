@@ -20,6 +20,7 @@ var log_node
 var log_storage = []
 
 var start_new_game = false
+var gameover_process = false
 
 #var SpriteDict = {}
 var EventList
@@ -2501,7 +2502,7 @@ func common_effects(effects, from_event = false):
 				input_handler.PlaySound(i.value)
 			'lose_game':
 				input_handler.PlaySound('transition_sound')
-				
+				gameover_process = true
 				ResourceScripts.core_animations.GameOverScreen()
 				yield(get_tree().create_timer(7.5), "timeout")
 				return_to_main_menu()
