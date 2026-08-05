@@ -20,6 +20,7 @@ var log_node
 var log_storage = []
 
 var start_new_game = false
+var gameover_process = false
 
 #var SpriteDict = {}
 var EventList
@@ -684,6 +685,9 @@ func build_buffs_for_char(person, node, mode):
 				'counterattacks':
 					newnode.get_node("Label").show()
 					newnode.get_node("Label").text = str(person.get_stat('counterattacks'))
+				'fed':
+					newnode.get_node("Label").show()
+					newnode.get_node("Label").text = str(person.get_stat('fed'))
 #			match tmp.event:
 #				'hours':
 #					newnode.get_node("Label").set("custom_colors/font_color",Color(0,0,1))
@@ -2553,7 +2557,7 @@ func common_effects(effects, from_event = false):
 				input_handler.PlaySound(i.value)
 			'lose_game':
 				input_handler.PlaySound('transition_sound')
-				
+				gameover_process = true
 				ResourceScripts.core_animations.GameOverScreen()
 				yield(get_tree().create_timer(7.5), "timeout")
 				return_to_main_menu()

@@ -16,6 +16,7 @@ var food_filter = {}
 var starvation = false
 #code of the last meal and whether it fell short of the demand, used by the tooltips
 var last_meal = ''
+var last_meal_type = ''
 var last_meal_poor = false
 
 
@@ -183,6 +184,7 @@ func tick():
 		return
 	fed = 0
 	get_food()
+	person.reset_rebuild()
 
 
 func get_food():
@@ -218,18 +220,21 @@ func consume(code):
 	starvation = false
 	#effects tick once per turn while 'fed' drops by get_drain(), so the meal is worth
 	#fewer turns than its food_value whenever the character is on extra rations
-	var turns = int(ceil(float(value) / float(get_drain())))
+#	var turns = int(ceil(float(value) / float(get_drain())))
 	#a meal replaces whatever the previous one left behind
-	person.remove_all_temp_effects_tag('starvation')
-	person.remove_all_temp_effects_tag('food_buff')
-	person.remove_all_temp_effects_tag('food_demand_unmet')
+#	person.remove_all_temp_effects_tag('starvation')
+#	person.remove_all_temp_effects_tag('food_buff')
+#	person.remove_all_temp_effects_tag('food_demand_unmet')
 
 	if item.has('food_buff'):
-		person.apply_effect_code(item.food_buff, {duration = turns})
+		last_meal_type = item.food_buff
+#		person.apply_effect_code(item.food_buff, {duration = turns})
+	else:
+		last_meal_type = ''
 
 	if last_meal_poor:
 		#get_food() already refreshed the demand, so no need for is_below_demand() here
-		person.apply_effect_code('e_food_demand', {duration = turns})
+#		person.apply_effect_code('e_food_demand', {duration = turns})
 		person.add_stat('respect', globals.rng.randi_range(
 			variables.food_demand_respect[0], variables.food_demand_respect[1]))
 		globals.text_log_add('char', tr("FOODLOGBELOWDEMAND") % [person.get_short_name(), item.name])
@@ -238,8 +243,8 @@ func consume(code):
 func starve():
 	var person = parent.get_ref()
 	starvation = true
-	person.remove_all_temp_effects_tag('starvation')
-	person.apply_effect_code('e_starve')
+#	person.remove_all_temp_effects_tag('starvation')
+#	person.apply_effect_code('e_starve')
 	person.add_stat('respect', variables.food_starve_respect)
 	person.add_stat('affection', variables.food_starve_affection)
 	globals.text_log_add('char', tr("FOODLOGSTARVE") % person.get_short_name())
