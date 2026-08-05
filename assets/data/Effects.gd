@@ -357,14 +357,15 @@ var effect_table = {
 		tags = ['no_job', 'no_combat'],
 		buffs = ['b_dayoff'],
 	},
-	#food buffs. they run out exactly when 'fed' does, so their duration is always
-	#passed in as the amount of turns the meal is worth
+	#food buffs. 
 	e_food_meat = {
-		type = 'temp_s',
+		type = 'base',
 		stack = 'food',
-		tick_event = variables.TR_TICK,
-		duration = 3,
-		args = {duration = {obj = 'duration', func = 'eq'}},
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'fed', operant = 'gt', value = 0},
+			{code = 'stat', stat = 'last_meal_type', operant = 'eq', value = 'e_food_meat'},
+			],
 		statchanges = {damage_mod_all = 0.05, hpmax_add_part = 0.05},
 		tags = ['food_buff'],
 		buffs = [
@@ -372,15 +373,18 @@ var effect_table = {
 				icon = "res://assets/images/iconsitems/item_meat.png",
 				description = "TRAITEFFECTFOODMEAT",
 				tags = ['mansion_only'],
+				bonuseffect = 'fed',
 			}
 		],
 	},
 	e_food_fish = {
-		type = 'temp_s',
+		type = 'base',
 		stack = 'food',
-		tick_event = variables.TR_TICK,
-		duration = 3,
-		args = {duration = {obj = 'duration', func = 'eq'}},
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'fed', operant = 'gt', value = 0},
+			{code = 'stat', stat = 'last_meal_type', operant = 'eq', value = 'e_food_fish'},
+			],
 		statchanges = {mpmax_add_part = 0.1, exp_gain_mod = 0.05},
 		tags = ['food_buff'],
 		buffs = [
@@ -388,15 +392,18 @@ var effect_table = {
 				icon = "res://assets/images/iconsitems/item_fish.png",
 				description = "TRAITEFFECTFOODFISH",
 				tags = ['mansion_only'],
+				bonuseffect = 'fed',
 			}
 		],
 	},
 	e_food_vege = {
-		type = 'temp_s',
+		type = 'base',
 		stack = 'food',
-		tick_event = variables.TR_TICK,
-		duration = 3,
-		args = {duration = {obj = 'duration', func = 'eq'}},
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'fed', operant = 'gt', value = 0},
+			{code = 'stat', stat = 'last_meal_type', operant = 'eq', value = 'e_food_vege'},
+			],
 		statchanges = {hp_reg_add_part = 0.25, resist_poison = 10},
 		tags = ['food_buff'],
 		buffs = [
@@ -404,15 +411,18 @@ var effect_table = {
 				icon = "res://assets/images/iconsitems/item_vege.png",
 				description = "TRAITEFFECTFOODVEGE",
 				tags = ['mansion_only'],
+				bonuseffect = 'fed',
 			}
 		],
 	},
 	e_food_grain = {
-		type = 'temp_s',
+		type = 'base',
 		stack = 'food',
-		tick_event = variables.TR_TICK,
-		duration = 3,
-		args = {duration = {obj = 'duration', func = 'eq'}},
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'fed', operant = 'gt', value = 0},
+			{code = 'stat', stat = 'last_meal_type', operant = 'eq', value = 'e_food_grain'},
+			],
 		statchanges = {productivity = 0.05},
 		tags = ['food_buff'],
 		buffs = [
@@ -420,16 +430,19 @@ var effect_table = {
 				icon = "res://assets/images/iconsitems/item_grain.png",
 				description = "TRAITEFFECTFOODGRAIN",
 				tags = ['mansion_only'],
+				bonuseffect = 'fed',
 			}
 		],
 	},
 	#the last meal was below what the character demands - lasts until they eat again
 	e_food_demand = {
-		type = 'temp_s',
+		type = 'base',
 		stack = 'food',
-		tick_event = variables.TR_TICK,
-		duration = 3,
-		args = {duration = {obj = 'duration', func = 'eq'}},
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'fed', operant = 'gt', value = 0},
+			{code = 'stat', stat = 'last_meal_poor', operant = 'eq', value = true},
+			],
 		statchanges = {productivity = -0.2, exp_gain_mod = -0.2},
 		tags = ['food_demand_unmet'],
 		buffs = [
@@ -437,15 +450,18 @@ var effect_table = {
 				icon = "res://assets/images/gui/gui icons/food_hate.png",
 				description = "TRAITEFFECTCHEAPFOOD",
 				tags = ['mansion_only'],
+				bonuseffect = 'fed',
 			}
 		],
 	},
 	#reapplied every turn the character fails to eat
 	e_starve = {
-		type = 'temp_s',
+		type = 'base',
 		stack = 'food',
-		tick_event = variables.TR_TICK,
-		duration = 1,
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'starvation', operant = 'eq', value = true},
+			],
 		statchanges = {hp_reg_mul = 0, mp_reg_mul = 0.5},
 		tags = ['starvation'],#['addition_rest_tick'],
 		buffs = [

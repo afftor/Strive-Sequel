@@ -177,7 +177,7 @@ func get_stat(statname, nobonus = false, desc_ready = false):
 		return calculate_price()
 	if statname == 'food_demand':
 		return food.get_demand()
-	if (statname.begins_with('food_') and statname != 'food_consumption') or statname == 'fed':
+	if (statname.begins_with('food_') and statname != 'food_consumption') or statname in ['fed', 'last_meal_type', 'last_meal_poor', 'starvation']:
 		return food.get(statname)
 	if statname in variables.training_stat_list:
 		return training.get(statname)
@@ -2172,7 +2172,6 @@ func pretick():
 func tick(): #work ticks are not here - as they are called in tasks order, not in character
 	if is_on_quest():
 		xp_module.quest_tick()
-
 	#food runs before the regen, so a character that starves this turn loses this turn's
 	#health and half of this turn's mana rather than the next one's
 	food.tick()

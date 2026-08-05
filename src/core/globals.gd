@@ -685,6 +685,9 @@ func build_buffs_for_char(person, node, mode):
 				'counterattacks':
 					newnode.get_node("Label").show()
 					newnode.get_node("Label").text = str(person.get_stat('counterattacks'))
+				'fed':
+					newnode.get_node("Label").show()
+					newnode.get_node("Label").text = str(person.get_stat('fed'))
 #			match tmp.event:
 #				'hours':
 #					newnode.get_node("Label").set("custom_colors/font_color",Color(0,0,1))

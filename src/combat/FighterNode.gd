@@ -241,6 +241,9 @@ func add_buff(i):
 			'counterattacks':
 				newbuff.get_node("Label").show()
 				newbuff.get_node("Label").text = str(fighter.get_stat('counterattacks'))
+			'fed':
+				newbuff.get_node("Label").show()
+				newbuff.get_node("Label").text = str(fighter.get_stat('fed'))
 	newbuff.hint_tooltip = text
 	
 	if i.tags.has('show_amount'):
