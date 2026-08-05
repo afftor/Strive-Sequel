@@ -594,7 +594,6 @@ func test_mode():
 		character.set_stat('authority_factor', 5)
 		#character.set_stat('wits_factor', 5)
 		character.set_stat('food_love', "meat")
-		character.set_stat('food_hate', ["grain"])
 		character.set_stat('lactation', true)
 		#character.unlock_class("worker")
 #		character.unlock_class("necromancer")

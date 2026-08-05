@@ -95,7 +95,7 @@ func update(person = null, from_dialogue = false):
 #			$Panel/authoritylabel3.visible = expnode.hiremode != "hire"
 
 		globals.connecttexttooltip($food_love,"[center]" +statdata.statdata.food_love.name + "[/center]\n"+  statdata.statdata.food_love.descript)
-		globals.connecttexttooltip($food_hate,"[center]" +statdata.statdata.food_hate.name + "[/center]\n"+ statdata.statdata.food_hate.descript)
+		globals.connecttexttooltip($food_consumption,"[center]" + tr("FOODDEMAND") + "[/center]\n"+ tr("FOODDEMANDDESCRIPT"))
 		
 		for i in $BaseStatsPanel/resists.get_children():
 			if !statdata.statdata.has('resist_' + i.name):
@@ -127,18 +127,16 @@ func update(person = null, from_dialogue = false):
 		# if person.travel.location != 'mansion':
 		# 	$RichTextLabel.bbcode_text += "\n\n" + person.translate(make_location_description())
 	
-		$food_consumption/Label.text = str(floor(person.get_stat("food_consumption")))
+		var demand = person.get_food_demand()
+		$food_consumption/Label.text = tr("FOODDEMAND" + demand.to_upper())
+		$food_consumption/Label.set("custom_colors/font_color",
+			Color(variables.hexcolordict[variables.food_demand_colors[demand]]))
 		if person.food.food_love != null:
 			$food_love/Button.texture = images.get_icon(person.food.food_love)
 			$food_love/Button.hint_tooltip = tr("FOODTYPE" +person.food.food_love.to_upper())
 		$food_love/Button.visible =  person.food.food_love != null
-		input_handler.ClearContainer($food_hate/Container)
-		if person.food.food_hate != null:
-			for i in person.food.food_hate:
-				var newnode = input_handler.DuplicateContainerTemplate($food_hate/Container)
-				newnode.texture = images.get_icon(i)
-				newnode.hint_tooltip =  tr("FOODTYPE" +i.to_upper())
-		$food_hate/Container.visible = person.food.food_hate != null
+		#disliked food no longer exists
+		$food_hate.visible = false
 
 		input_handler.ClearContainer($SexSkills/VBoxContainer)
 		var s_skills = person.get_sex_training()

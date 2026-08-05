@@ -86,7 +86,10 @@ func show_info(quest):
 				#globals.connecttexttooltip(newbutton, subtext)#subtext here is hint_tooltip content
 			'complete_location':
 				newbutton.get_node("TextureRect").texture = images.get_icon(i.code)
-				globals.connecttexttooltip(newbutton, "%s: %s" % [tr("QUESTCOMPLETEQUESTLOC"), tr(DungeonData.dungeons[i.type].name)])
+				var loctext = "QUESTCOMPLETEQUESTLOC"
+				if DungeonData.dungeons[i.type].type == 'encounter':
+					loctext = "QUESTCOMPLETEQUESTENC"
+				globals.connecttexttooltip(newbutton, "%s: %s" % [tr(loctext), tr(DungeonData.dungeons[i.type].name)])
 				quest_descript += ("\n%s: %s" % [#?
 					tr(DungeonData.dungeons[i.type].name),
 					tr(DungeonData.dungeons[i.type].descript)])

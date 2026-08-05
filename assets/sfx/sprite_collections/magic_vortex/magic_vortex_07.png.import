@@ -2,19 +2,21 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/magic_vortex_07.png-3c859f4f664ed178119ced7348777d4b.stex"
+path.s3tc="res://.import/magic_vortex_07.png-3c859f4f664ed178119ced7348777d4b.s3tc.stex"
+path.etc="res://.import/magic_vortex_07.png-3c859f4f664ed178119ced7348777d4b.etc.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/sfx/sprite_collections/magic_vortex/magic_vortex_07.png"
-dest_files=[ "res://.import/magic_vortex_07.png-3c859f4f664ed178119ced7348777d4b.stex" ]
+dest_files=[ "res://.import/magic_vortex_07.png-3c859f4f664ed178119ced7348777d4b.s3tc.stex", "res://.import/magic_vortex_07.png-3c859f4f664ed178119ced7348777d4b.etc.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

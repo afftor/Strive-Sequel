@@ -398,6 +398,7 @@ ma manterrà comunque tutti i tuoi personaggi, oggetti e inventario. Usa questa 
 	MSLMLOC = "Ubicazione",
 	MSLMTYPE = "Tipo",
 	MSLMINV = "Equip",
+	MSLMFOOD = """Food""", # MISSING TRANSLATION
 	LVLBONUSPERPOINT = "Bonus per punto",
 	LVLCURRENT = "Corrente",
 	LVLTOTALPOINTS = "Punti Totali",
@@ -678,6 +679,29 @@ Tuttavia, mentre potrebbe sembrare che i proprietari terrieri non abbiano altro 
 	FOODTYPEFISH = "Pesce",
 	FOODTYPEGRAIN = "Grano",
 	FOODTYPEVEGE = "Verdura",
+	FOODDEMAND = """Food Demand""", # MISSING TRANSLATION
+	FOODDEMANDDESCRIPT = """The quality of food this character expects. Fame 3 or a value above 500 raises it to Refined, Fame 5 or a value above 1500 to Premium. Slaves never mind eating below their demand.""", # MISSING TRANSLATION
+	FOODDEMANDBASIC = """Basic""", # MISSING TRANSLATION
+	FOODDEMANDREFINED = """Refined""", # MISSING TRANSLATION
+	FOODDEMANDPREMIUM = """Premium""", # MISSING TRANSLATION
+	FOODDEMANDBASICDESCRIPT = """Eats anything without complaint.""", # MISSING TRANSLATION
+	FOODDEMANDREFINEDDESCRIPT = """Expects cooked meals. Raw produce costs Respect, Productivity and Experience Gain until the next meal.""", # MISSING TRANSLATION
+	FOODDEMANDPREMIUMDESCRIPT = """Expects elaborate dishes. Anything lesser costs Respect, Productivity and Experience Gain until the next meal.""", # MISSING TRANSLATION
+	FOODLIKEDTYPE = """Liked Food""", # MISSING TRANSLATION
+	FOODVALUE = """Turns of Food""", # MISSING TRANSLATION
+	FOODTOOLTIPLIKED = """A liked type: keeps this character fed 50% longer.""", # MISSING TRANSLATION
+	FOODTOOLTIPBELOWDEMAND = """Below this character's demand: costs Respect, -20% Productivity and -20% Experience Gain until their next meal.""", # MISSING TRANSLATION
+	FOODSTATEHEADER = """Last Meal""", # MISSING TRANSLATION
+	FOODSTATEHEADERDESCRIPT = """What each character is currently running on. A red tint means the meal was below their demand. Hover a character's icon for the details.""", # MISSING TRANSLATION
+	FOODSTATELASTMEAL = """Last Meal: %s""", # MISSING TRANSLATION
+	FOODSTATEFEDFOR = """Fed for %d more turn(s).""", # MISSING TRANSLATION
+	FOODSTATESTARVING = """Starving""", # MISSING TRANSLATION
+	FOODSTATENONE = """No Meal""", # MISSING TRANSLATION
+	FOODSTATENONEDESCRIPT = """Has not eaten yet. They will take the best allowed food in store on their next turn.""", # MISSING TRANSLATION
+	FOODSTATEUNDEAD = """Does Not Eat""", # MISSING TRANSLATION
+	FOODSTATEUNDEADDESCRIPT = """The undead need no food and are never affected by hunger.""", # MISSING TRANSLATION
+	FOODLOGSTARVE = """%s: could not eat. Respect and Affection reduced.""", # MISSING TRANSLATION
+	FOODLOGBELOWDEMAND = """%s: was served %s, which is below their standards. Respect reduced.""", # MISSING TRANSLATION
 	CURRENTLYINPOSSESSION = "Attualmente in possesso",
 	MATERIALCATEGORYFOOD = "Cibo",
 	MATERIALCATEGORYSTONE = "Pietra",
@@ -1154,6 +1178,7 @@ Ridotto dall'evasione del nemico""",
 	CHARCREATE_FOOD_STATE_HATE = "Odia",
 	CHARCREATE_DIET_HELP = "Seleziona 1 cibo Gradito e almeno 1 cibo Odiato.",
 	CHARCREATE_DIET_HELP_TOO_MANY_LIKED = """You can only select 1 Liked food type.""", # MISSING TRANSLATION
+	CHARCREATE_DIET_HELP_NO_LIKED = """[color=red]Select 1 Liked food type.[/color]""", # MISSING TRANSLATION
 	CHARCREATE_SYS_FOOD_REQUIRED = "Devi selezionare un cibo gradito e almeno un cibo odiato.",
 	CHARCREATE_SYS_CLASS_REQUIRED = "Devi selezionare una Classe iniziale corretta",
 	CHARCREATE_SYS_PERSONALITY_REQUIRED = "Devi selezionare una Personalità",
@@ -3220,6 +3245,10 @@ Costo di Mana per gli Incantesimi ridotto del 15%
 	STATFOOD_HATE = "Cibo Odiato",
 	STATFOOD_LOVEDESCRIPT = "Quando si mangia il proprio cibo preferito, si dà una piccola spinta alla produttività e all'obbedienza per il giorno successivo. Il cibo composto da ingredienti amati e odiati sarà considerato neutro e non darà alcun bonus o penalità. ",
 	STATFOOD_HATEDESCRIPT = "Quando si mangia il cibo odiato, si riduce la produttività per il giorno successivo. Il cibo composto da ingredienti amati e odiati sarà considerato neutro e non darà alcun bonus o penalità.",
+	STATFOOD_DEMAND = """Food Demand""", # MISSING TRANSLATION
+	STATFOOD_DEMANDDESCRIPT = """The quality of food a character expects. Eating below it costs Respect, Productivity and Experience Gain until their next meal.""", # MISSING TRANSLATION
+	STATFED = """Fed""", # MISSING TRANSLATION
+	STATFEDDESCRIPT = """Turns of food a character has left. It drops by one every turn and is topped up whenever they eat.""", # MISSING TRANSLATION
 	STATTASK_EFFICIENCY_TOOL = "Bonus Efficienza Incarico",
 	STATTASK_EFFICIENCY_AXE = "Efficienza Compito - Ascia",
 	STATTASK_EFFICIENCY_AXEDESCRIPT = "Bonus Efficienza Compito con l'Ascia",
@@ -4582,6 +4611,11 @@ Aumento della Salute, DEF e MDEF""",
 	TRAITEFFECTFAVFOOD = "Cibo preferito: +5%% produttività, +5%% guadagno esperienza",
 	TRAITEFFECTHATEDFOOD = "Cibo odiato: -10%% di produttività.",
 	TRAITEFFECTSTARVE = "Fame: -50%% Produttività, -50%% Danno.",
+	TRAITEFFECTCHEAPFOOD = """Poor Meal: -20%% Productivity, -20%% Experience Gain until the next meal""", # MISSING TRANSLATION
+	TRAITEFFECTFOODMEAT = """Well Fed (Meat): +5%% Damage, +5%% Max Health""", # MISSING TRANSLATION
+	TRAITEFFECTFOODFISH = """Well Fed (Fish): +10%% Max Mana, +5%% Experience Gain""", # MISSING TRANSLATION
+	TRAITEFFECTFOODVEGE = """Well Fed (Vegetables): +25%% Health Regeneration, +10 Poison Resistance""", # MISSING TRANSLATION
+	TRAITEFFECTFOODGRAIN = """Well Fed (Grains): +5%% Productivity""", # MISSING TRANSLATION
 	TRAITEFFECTGRAVEINJ = "Grave infortunio: -25%% di produttività, -50 sessuali. Non può partecipare al combattimento.",
 	TRAITEFFECTINJ = "Ferita: -30%% PV Max, -20 Precisione.",
 	TRAITEFFECTDISCIPLINE = "Disciplina: +50%% di efficienza lavorativa e artigianale.",
@@ -8676,6 +8710,8 @@ La donna scompare con la stessa rapidità con cui è apparsa davanti a te, lasci
 	FOODFILTERMED = "Med", #
 	FOODFILTERLOW = "Basso",
 	FOODFILTERDISABLE = "Vietato",
+	FOODFILTERALLOWED = """Allow""", # MISSING TRANSLATION
+	FOODFILTERFORBIDDEN = """Forbid""", # MISSING TRANSLATION
 	USABLE = "Usabile",
 	SWITCHSTATS = "Statistiche individuali",
 	SWITCHLIST = "Personaggi",
