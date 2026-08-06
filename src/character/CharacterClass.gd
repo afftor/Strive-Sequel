@@ -1994,6 +1994,15 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 				if char_behind != null: 
 					char_alive = !char_behind.is_koed()
 				check = char_alive == i.check
+		'char_in_front_has_status':
+			if input_handler.combat_node == null:
+				return !i.check
+			if !(position in range(4,7) || position in range(10,13)):
+				return !i.check #frontrow has no one in front of it
+			var char_in_front = input_handler.combat_node.get_char_by_pos(position - 3)
+			if char_in_front == null:
+				return !i.check
+			check = char_in_front.has_status(i.status) == i.check
 		'group_amount':
 			if input_handler.combat_node == null:
 				return false

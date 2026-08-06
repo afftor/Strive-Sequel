@@ -1973,11 +1973,14 @@ func rebuild_template(args):
 		res.trigger.push_back(args.trigger) #for simplicity only one trigger type can be passed
 	else: 
 		res.trigger.push_back(variables.TR_POSTDAMAGE)
-		if args.has('res_condition'): 
+		if args.has('res_condition'):
 			res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', args.res_condition]})
-		else: 
+		else:
 			res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]})
-	
+
+	if args.has('target_reqs'): #arbitrary checks on the instance target, ex. state of its neighbours
+		res.conditions.push_back({type = 'target', value = args.target_reqs.duplicate(true)})
+
 	if args.has('checkres'):
 		res.conditions.push_back({type = 'checkres', value = args.chance, resist = args.checkres})
 	elif args.has('chance'):

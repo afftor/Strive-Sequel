@@ -110,9 +110,17 @@ func _ready():
 			newgame_bonuses = null
 		
 		ResourceScripts.game_globals.reset_limits()
+		#the onready init ran before the starting sequence, when the party was still empty
+		active_person = ResourceScripts.game_party.get_master()
 		SlaveListModule.rebuild()
 #		SlaveListModule.build_locations_list()
-		mansion_state_set("default")
+		#a window closing during the starting sequence can already have pushed the mansion
+		#into 'default' (gui_controller.close_window does), and the setter bails out on an
+		#unchanged state - so lay the panels out directly in that case
+		if mansion_state == "default":
+			match_state()
+		else:
+			mansion_state_set("default")
 #		remove_child(newgame_node)
 	
 	input_handler.CurrentScreen = 'mansion'
@@ -243,14 +251,14 @@ func match_state():
 	match mansion_state:
 		"default":
 			reset_vars()
-			if active_person == null:
-				return
 			SlaveListModule.show()
 			SlaveListModule.mode = 'default'
 			$MansionSlaveListModule.set_size(Vector2(1100, 805))
 			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 640))
 			# SlaveListModule.get_node("Background").set_size(Vector2(1100, 845))
 			$MansionSkillsModule.show()
+			if active_person == null:
+				return
 			if mansion_state != mansion_prev_state && mansion_prev_state != "skill":
 				ResourceScripts.core_animations.UnfadeAnimation($MansionSkillsModule, 0.3)
 				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)

@@ -203,7 +203,9 @@ func update_buttons():
 			i.pressed = (get_parent().active_person == i.get_meta('slave'))
 
 func rebuild():
-
+	#update_button reads this for the luxury rule, and rebuild can run before the first
+	#update()/refresh_after_turn() - on a fresh game the queued rebuild is the very first call
+	luxury_rooms_taken = globals.calculate_lux_rooms()
 	update_dislocations()
 #	build_locations_list()
 	#LocationsPanel.visible = (get_parent().mansion_state != "sex")
@@ -640,7 +642,7 @@ func remove_from_travel(person):
 	get_parent().persons_for_travel.erase(person)
 	rebuild()
 
-var luxury_rooms_taken
+var luxury_rooms_taken = 0
 func update():
 	luxury_rooms_taken = globals.calculate_lux_rooms()
 	update_dislocations()
