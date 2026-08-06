@@ -62,6 +62,7 @@ var req_codes = {
 	"stat": true,
 	"trait": true,
 	"has_status": true,
+	"char_in_front_has_status": true,
 	"tags": true,
 	"is_master": true,
 	"skill": true,
@@ -902,7 +903,7 @@ func _validate_reqs(reqs, context, issues):
 				_validate_stat_ref(req.get("stat", null), req_context + ".stat", issues)
 			"trait":
 				_validate_trait_or_sex_trait_ref(req.get("trait", null), req_context + ".trait", issues)
-			"has_status":
+			"has_status", "char_in_front_has_status":
 				_validate_status_ref(req.get("status", null), req_context + ".status", issues)
 			"skill":
 				if req.has("skill"):
