@@ -947,6 +947,8 @@ var sprites = {
 	erdyna_nude_body = load("res://assets/images/sprites/dragongirl_nude_body.png"),
 	senerus = load("res://assets/images/sprites/senerus.png"),
 	vaeloria = load("res://assets/images/sprites/vaeloria.png"),
+	
+	tutorial_master = load("res://assets/images/sprites/tutorial_master.png"),
 	}
 
 func get_sprite(id):
@@ -1029,7 +1031,8 @@ var portraits = {
 	erdyna_nude = "res://assets/images/portraits/dragongirl_nude_prt.png",
 	erdyna_wed = "res://assets/images/portraits/dragongirl_wed_prt.png",
 	
-	
+	tutorial_master = "res://assets/images/portraits/tutorial_master_prt.png",
+	tutorial_servant = "res://assets/images/portraits/tutorial_servant_prt.png",
 	
 }
 
