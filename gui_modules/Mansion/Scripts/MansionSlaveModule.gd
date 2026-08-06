@@ -33,6 +33,8 @@ func open_char_class_info():
 
 
 func show_slave_info():
+	if globals.gameover_process:
+		return
 	var hovered_person = get_parent().hovered_person
 	if hovered_person != null:
 		person = hovered_person
