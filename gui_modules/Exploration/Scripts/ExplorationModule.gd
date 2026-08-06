@@ -475,6 +475,8 @@ func clear_dungeon_confirm():
 
 
 func build_location_group():
+	if globals.gameover_process:
+		return
 	#clear_groups()
 	if active_location == null || !active_location.has("group"):
 		return
@@ -739,6 +741,8 @@ func build_item_panel():
 
 
 func open_location_actions():
+	if globals.gameover_process:
+		return
 	if active_location == null:
 		return
 	input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)

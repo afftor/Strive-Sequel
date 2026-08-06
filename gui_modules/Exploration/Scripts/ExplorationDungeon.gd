@@ -594,6 +594,8 @@ func clear_dungeon_confirm():
 
 
 func build_location_group():
+	if globals.gameover_process:
+		return
 	#clear_groups()
 	if active_location == null || !active_location.has("group"):
 		return

@@ -210,8 +210,10 @@ func reset_vars():
 		selected_upgrade = null
 		chars_for_upgrades.clear()
 		submodules.clear()
-	if active_person == null:
+	if active_person == null or !active_person.is_active:
 		active_person = ResourceScripts.game_party.get_master()
+	if active_person == null or !active_person.is_active:
+		active_person = null
 	Journal.hide()
 
 # Handles Resizing and visibility
@@ -241,6 +243,8 @@ func match_state():
 	match mansion_state:
 		"default":
 			reset_vars()
+			if active_person == null:
+				return
 			SlaveListModule.show()
 			SlaveListModule.mode = 'default'
 			$MansionSlaveListModule.set_size(Vector2(1100, 805))
@@ -394,8 +398,10 @@ func slave_list_manager():
 				SlaveListModule.rebuild()
 			else:
 				skill_source = active_person
-			SkillModule.build_skill_panel()
 			SlaveListModule.update_buttons()
+			if active_person == null:
+				return
+			SkillModule.build_skill_panel()
 			SlaveModule.show_slave_info()
 		'skill':
 			if active_person.is_on_quest():
