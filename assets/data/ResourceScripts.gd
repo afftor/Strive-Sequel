@@ -118,6 +118,7 @@ onready var node_data = {
 	input_handler.ANIM_SKILL_UNLOCKED : {name = 'ANIMSkillUnlocked', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_ability_unlocked.tscn") },
 	input_handler.ANIM_GROWTHF : {name = 'ANIMGrowthFactor', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_growth_factor.tscn") },
 	input_handler.ANIM_MASTER_POINT: {name = 'ANIMMasterPoint', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_master_point.tscn") },
+	input_handler.ANIM_ITEM_FLIGHT: {name = 'ANIMItemFlight', mode = 'node', node = preload("res://src/core/item_flight.gd") },
 }
 
 

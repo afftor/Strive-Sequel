@@ -304,7 +304,10 @@ func item_purchase(button: Button, item, amount):
 
 func item_purchase_confirm(value):
 	input_handler.PlaySound("money_spend")
+	#the selection panel is still up at this point, so its icon is where the goods fly from
+	var flight_source = $NumberSelection/ItemIcon
 	if typeof(purchase_item) == TYPE_OBJECT:
+		ResourceScripts.core_animations.ItemFlight(purchase_item, flight_source)
 		globals.AddItemToInventory(purchase_item)
 		ResourceScripts.game_res.money -= purchase_item.calculateprice()
 		input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
@@ -335,6 +338,8 @@ func item_purchase_confirm(value):
 						globals.AddItemToInventory(globals.CreateUsableItem(purchase_item.code))
 					"gear":
 						globals.AddItemToInventory(globals.CreateGearItemShop(purchase_item.code, {}))
+		#one call for the whole stack, not one per unit bought
+		ResourceScripts.core_animations.ItemFlight(purchase_item, flight_source, {amount = value})
 		ResourceScripts.game_res.money -= purchase_item.price * value
 		update_sell_list()
 		update_buy_list()
@@ -376,6 +381,8 @@ func item_sell_confirm(value):
 		price = ceil(purchase_item.calculateprice() * variables.item_sell_multiplier)
 		purchase_item.amount -= value
 	ResourceScripts.game_res.money += price * value
+	#gold heads for this screen's own counter rather than the clock bar behind it
+	ResourceScripts.core_animations.ItemFlightGold($NumberSelection/ItemIcon, {target = $Label2, amount = value})
 	update_sell_list()
 	update_buy_list()
 

@@ -397,7 +397,8 @@ var data = {
 		reqs = [],
 		text = [{text = "TROLL_CLOTHES_1", reqs = []}],
 		options = [ {
-			code = 'troll_clothes_2', text = "TROLL_CLOTHES_1_OPTION_1", reqs = [{type = 'has_material', material = 'meat', operant = 'gte', value = 50}], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'troll_clothes_2', text = "TROLL_CLOTHES_1_OPTION_1", reqs = [{type = 'has_material', material = 'meat', operant = 'gte', value = 15}], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [{code = 'material_change', operant = '-', material = 'meat', value = 15}],
 		}, {
 			code = 'troll_clothes_2', text = "TROLL_CLOTHES_1_OPTION_2", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'hunter', check = true}]}], dialogue_argument = 2, type = 'next_dialogue',
 		}, {

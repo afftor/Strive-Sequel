@@ -45,8 +45,10 @@ func mining_mithril():
 	return variables.base_work_increment + (variables.stat_work_increment * (parent.get_ref().get_stat('physics')/30.0))
 
 
-func whoring_gold():
-	return (1 + parent.get_ref().get_stat('charm')/80.0)
+# Legacy formula for the old progress-based brothel production task.
+# Current service income uses the gold_* formulas below via tasks.gold_tasks_data.
+#func whoring_gold():
+#	return (1 + parent.get_ref().get_stat('charm')/80.0)
 
  
 func _non_sex_service_base_income():

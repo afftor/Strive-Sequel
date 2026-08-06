@@ -9,7 +9,7 @@ var preset_data = {
 		start = 'default',
 		descript = "PRESETDATADEBUGEASYDIS",
 		gold = 750,
-		materials = {meat = 50,fish = 50,bread = 50,vegetables = 50},
+		materials = {meat = 15,fish = 15,bread = 12,vegetables = 15},
 		items = {},
 		upgrades = {},
 		decisions = [],
@@ -38,7 +38,7 @@ var preset_data = {
 		start = 'default',
 		descript = "PRESETDATADEBUGNORMALDIS",
 		gold = 500,
-		materials = {meat = 25,fish = 25,bread = 25,vegetables = 25},
+		materials = {meat = 12,fish = 12, bread = 8,vegetables = 12},
 		items = {},
 		upgrades = {},
 		decisions = [],
@@ -66,8 +66,8 @@ var preset_data = {
 		mc = 'custom',
 		start = 'default',
 		descript = "PRESETDATADEBUGHARDDIS",
-		gold = 500,
-		materials = {meat = 20,fish = 20,bread = 20, vegetables = 20},
+		gold = 300,
+		materials = {meat = 8,fish = 8,bread = 4, vegetables = 8},
 		items = {},
 		upgrades = {},
 		decisions = [],
@@ -92,7 +92,7 @@ var preset_data = {
 }
 var import_preset = { #don't remove, for import purpose
 		gold = 500,
-		materials = {meat = 25,fish = 25,bread = 25,vegetables = 25},
+		materials = {meat = 15,fish = 15,bread = 15,vegetables = 15},
 		items = {},
 		upgrades = {},
 		decisions = [],
@@ -102,7 +102,7 @@ var import_preset = { #don't remove, for import purpose
 	}
 var advanced_preset = { #don't remove
 		gold = 3000,
-		materials = {meat = 100, fish = 100, bread = 100, vegetables = 100},
+		materials = {meat = 50, fish = 50, bread = 50, vegetables = 50},
 		items = {writ_of_exemption = 1},
 		upgrades = {forge = 1, tailor = 1},
 		decisions = ['aire_is_saved','ginny_visit'],

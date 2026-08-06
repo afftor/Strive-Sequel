@@ -5,16 +5,21 @@ var arraydata
 var parentnodearray
 var target_node
 var target_function
+#lists that reorder their rows for display turn this off: a drop would write the visual
+#position back into the array and no longer match what is on screen
+var drag_enabled = true
 
 signal mouse_exited_custom
 signal dropped
 
 func get_drag_data(position):
+	if !drag_enabled:
+		return null
 	set_drag_preview(self.duplicate())
 	return {data = arraydata, arr = parentnodearray}
 
 func can_drop_data(position, data):
-	return data.arr == parentnodearray
+	return drag_enabled and data.arr == parentnodearray
 
 func drop_data(position, data):
 	if str(data.data) == str(arraydata):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://gui_modules/upgrades_new/upgrades_new.gd" type="Script" id=1]
 [ext_resource path="res://assets/Themes_v2/BasePanelFlat.tres" type="StyleBox" id=2]
@@ -38,6 +38,7 @@
 [ext_resource path="res://assets/Textures_v2/Gallery/buttongallery.png" type="Texture" id=36]
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_gather.png" type="Texture" id=37]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_disabled.png" type="Texture" id=38]
+[ext_resource path="res://assets/images/gui/game1bg3.png" type="Texture" id=39]
 
 [node name="upgrades" type="Panel"]
 anchor_right = 1.0
@@ -48,6 +49,16 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0.25098 )
+margin_left = -5.0
+margin_top = -7.0
+margin_right = 1918.0
+margin_bottom = 1081.0
+texture = ExtResource( 39 )
+expand = true
+stretch_mode = 6
 
 [node name="frame" type="TextureRect" parent="."]
 margin_right = 1920.0
@@ -72,9 +83,6 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "UPGRADEINFO"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Modes" type="HBoxContainer" parent="."]
 margin_left = 109.0
@@ -206,6 +214,7 @@ clip_text = true
 
 [node name="QueueList" type="Panel" parent="."]
 visible = false
+self_modulate = Color( 1, 1, 1, 0.607843 )
 margin_left = 283.0
 margin_top = 258.0
 margin_right = 883.0

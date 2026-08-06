@@ -1091,18 +1091,29 @@ mouse_filter = 2
 expand = true
 stretch_mode = 6
 
-[node name="stats" type="Label" parent="HBoxContainer" groups=["default", "training"]]
-visible = false
-margin_left = 196.0
+[node name="sex_sort" type="Label" parent="HBoxContainer" groups=["brothel", "default", "food", "rules", "training"]]
+margin_left = 36.0
 margin_top = 46.0
-margin_right = 342.0
+margin_right = 116.0
 margin_bottom = 88.0
-rect_min_size = Vector2( 100, 0 )
-mouse_filter = 0
-size_flags_horizontal = 0
+rect_min_size = Vector2( 80, 0 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 26 )
-text = "MSLMSTAT"
+text = "MSLMSex"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name_sort" type="Label" parent="HBoxContainer" groups=["brothel", "default", "food", "rules", "training"]]
+margin_left = 109.0
+margin_top = 46.0
+margin_right = 234.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 125, 0 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 26 )
+text = "MSLMNNAME"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1689,19 +1700,6 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="food_state" type="Label" parent="HBoxContainer" groups=["default"]]
-visible = false
-margin_left = 875.0
-margin_top = 46.0
-margin_right = 945.0
-margin_bottom = 88.0
-rect_min_size = Vector2( 50, 0 )
-mouse_filter = 1
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 26 )
-text = "MSLMFOOD"
-align = 1
-
 [node name="icon4" type="TextureRect" parent="HBoxContainer" groups=["default"]]
 visible = false
 margin_left = 838.0
@@ -1820,31 +1818,6 @@ anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 27 )
 text = "service"
-align = 1
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="food" type="TextureButton" parent="modes"]
-margin_left = 367.0
-margin_top = 27.0
-margin_right = 450.0
-margin_bottom = 67.0
-size_flags_horizontal = 0
-toggle_mode = true
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 5 )
-texture_hover = ExtResource( 5 )
-texture_disabled = ExtResource( 29 )
-expand = true
-
-[node name="Label" type="Label" parent="modes/food"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 27 )
-text = "food"
 align = 1
 clip_text = true
 __meta__ = {

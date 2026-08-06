@@ -79,7 +79,7 @@ func tick():
 			area = travel_target.area
 			location = travel_target.location
 			globals.emit_signal("slave_arrived", parent.get_ref())
-			input_handler.PlaySound("ding")
+			globals.emit_signal("travel_completed")
 			parent.get_ref().remove_from_task(true)
 			input_handler.update_slave_list()
 			if location == ResourceScripts.game_world.mansion_location:

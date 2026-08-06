@@ -3,7 +3,9 @@ extends Control
 var person
 
 func _ready():
-	pass
+	if has_node("close"):
+		$close.connect("pressed", self, "close_diet_window")
+		input_handler.register_btn_source("food_preference_meat", self, "tut_get_food_preference_meat")
 	 
 
 func open_diet_window():
@@ -21,7 +23,10 @@ func open_diet_window():
 	array.sort_custom(self, 'sort_food')
 	for i in array:
 		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		newbutton.name = i.code
 		newbutton.get_node("Label").text = i.name
+		if newbutton.has_node("Icon"):
+			newbutton.get_node("Icon").texture = i.icon
 		newbutton.get_node("Label").set("custom_colors/font_color",
 			Color(variables.hexcolordict[variables.food_demand_colors[i.demand]]))
 		#build_demand_header() already refreshed the demand this frame
@@ -60,6 +65,8 @@ func build_demand_header():
 		if has_love:
 			$food_love/Button.texture = images.get_icon(person.food.food_love)
 			$food_love/Button.visible = true
+			if has_node("food_love/Label"):
+				$food_love/Label.text = tr("FOODLIKEDTYPE") + ": " + tr("FOODTYPE" + person.food.food_love.to_upper())
 			globals.connecttexttooltip($food_love, "[center]" + tr("FOODLIKEDTYPE") + "[/center]\n"
 				+ tr("FOODTYPE" + person.food.food_love.to_upper()))
 	#disliked food no longer exists
@@ -77,6 +84,21 @@ func toggle_food(foodcode):
 	open_diet_window()
 
 
+func close_diet_window():
+	hide()
+
+
+func tut_get_food_preference_meat():
+	return $ScrollContainer/VBoxContainer.get_node_or_null("meat")
+
+
 func sort_food(first, second):
-#	return first.name >= second.name
-	return first.name > second.name
+	var first_demand = variables.food_demand_order.find(first.demand)
+	var second_demand = variables.food_demand_order.find(second.demand)
+	if first_demand == -1:
+		first_demand = variables.food_demand_order.size()
+	if second_demand == -1:
+		second_demand = variables.food_demand_order.size()
+	if first_demand == second_demand:
+		return first.name < second.name
+	return first_demand < second_demand

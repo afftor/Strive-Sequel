@@ -14,7 +14,21 @@ func _ready():
 	globals.connect("task_removed", self, "update_progresses")
 
 
+var refresh_queued = false
+
+
+#same burst as the slave list: task_removed fires once per deleted task, and each one
+#used to clear and refill the whole task container. Coalesce to one refresh per frame via
+#the deferred message queue, which still flushes before the frame is drawn.
 func update_progresses():
+	if refresh_queued:
+		return
+	refresh_queued = true
+	call_deferred("flush_queued_refresh")
+
+
+func flush_queued_refresh():
+	refresh_queued = false
 	show_task_info()
 
 

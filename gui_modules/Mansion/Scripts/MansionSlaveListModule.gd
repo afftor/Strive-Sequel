@@ -47,6 +47,28 @@ var mass_rule_list = []
 var mass_service_list = []
 var mass_select_press_effect = false
 
+#sorting is a view-only reorder: character_order keeps the manual (drag) order, so dropping the
+#sort - or coming back to the mansion screen - puts every row back where the player left it.
+#name and sex sit in every mode, the rest only exist while the default columns are on screen
+const SORT_COLUMNS = {
+	sex = {node = 'sex_sort', icon = false},
+	name = {node = 'name_sort', icon = false},
+	occupation = {node = 'job', icon = false},
+	exp = {node = 'explabel', icon = false},
+	date = {node = 'icon2', icon = true},
+	sexact = {node = 'icon3', icon = true},
+	train = {node = 'icon4', icon = true},
+	type = {node = 'state2', icon = false},
+}
+const SORT_SEX_ORDER = ['male', 'female', 'futa']
+const SORT_CLASS_ORDER = ['master', 'spouse', 'heir', 'servant', 'servant_notax', 'slave_trained', 'slave']
+const SORT_COLOR_IDLE = Color(0.878431, 0.878431, 0.878431)
+const SORT_COLOR_HOVER = Color(1, 1, 1)
+
+var sort_key = ''
+var sort_desc = false
+var sort_hovered = ''
+
 func _apply_task_color(job_label, mod_value):
 	if typeof(mod_value) != TYPE_STRING or mod_value == "":
 		return
@@ -67,8 +89,8 @@ func _set_job_label_color_from_key(job_label, color_key):
 
 func _ready():
 	input_handler.slave_list_node = self
-	globals.connect("slave_added", self, "rebuild")
-	globals.connect("task_removed", self, "rebuild")
+	globals.connect("slave_added", self, "queue_rebuild")
+	globals.connect("task_removed", self, "queue_rebuild")
 	globals.connect("hour_tick", self, "update_dislocations")
 	globals.connecttexttooltip($BedroomIcon, tr("BEDROOMTOOLTIP"))
 	globals.connecttexttooltip($DateIcon, tr("DATETOOLTIP"))
@@ -82,17 +104,25 @@ func _ready():
 	for rl in ['meat', 'fish', 'grain', 'vegetables', 'bread', 'meatsoup', 'curry', 'friedfish', 'fishcakes']:
 		globals.connecttexttooltip(header.get_node('food_' + rl),
 			tr('MATERIAL%sDESCRIPT' % rl.to_upper()) + globals.get_food_info_text(Items.materiallist[rl]))
-	globals.connecttexttooltip(header.get_node('food_state'),
-		"[center]" + tr("FOODSTATEHEADER") + "[/center]\n" + tr("FOODSTATEHEADERDESCRIPT"))
+#	globals.connecttexttooltip(header.get_node('food_state'),
+#		"[center]" + tr("FOODSTATEHEADER") + "[/center]\n" + tr("FOODSTATEHEADERDESCRIPT"))
 	input_handler.connect("mass_select_in_act", self, "off_mass_select_effect")
 	input_handler.register_btn_source("slave_2_line", self, "tut_get_slave_line", self, 'tut_get_slave_line_rect')
 	input_handler.register_btn_source("daisy_line", self, "tut_get_daisy_line", self, 'tut_get_daisy_line_rect')
 	input_handler.register_btn_source("ff_meat", self, "tut_get_ff_meat")
 #	input_handler.register_btn_source("ff_vegetables", self, "tut_get_ff_vegetables")#delete with time(29.01.26)
 	input_handler.register_btn_source("daisy_waitress", self, "tut_get_daisy_waitress")
-	input_handler.register_btn_source("food_mode", self, "tut_get_food_mode")
 	input_handler.register_btn_source("default_mode", self, "tut_get_default_mode")
 	input_handler.register_btn_source("service_mode", self, "tut_get_service_mode")
+	build_sort_headers()
+	get_parent().connect("visibility_changed", self, "on_mansion_shown")
+
+
+#the mansion screen coming back (from a character panel, the city, a scene) is a fresh start
+#for the list, so it always reappears in the order the player arranged themselves
+func on_mansion_shown():
+	if get_parent().visible:
+		reset_sorting()
 
 func tut_get_slave_line():
 	for line in SlaveContainer.get_children():
@@ -127,8 +157,6 @@ func tut_get_daisy_waitress():
 	var line = tut_get_daisy_line()
 	return line.get_node("rule_waitress")
 
-func tut_get_food_mode():
-	return modes.get_node("food")
 func tut_get_default_mode():
 	return modes.get_node("default")
 func tut_get_service_mode():
@@ -175,7 +203,7 @@ func update_buttons():
 			i.pressed = (get_parent().active_person == i.get_meta('slave'))
 
 func rebuild():
-	
+
 	update_dislocations()
 #	build_locations_list()
 	#LocationsPanel.visible = (get_parent().mansion_state != "sex")
@@ -266,6 +294,7 @@ func rebuild():
 		var pos = self.rect_size
 		$TravelsContainerPanel.rect_position.y = pos.y - 50
 		update_button(newbutton)
+	apply_sorting()
 	rows_signature = build_rows_signature()
 	show_location_characters()
 	update_description()
@@ -290,9 +319,32 @@ func update_row_availability(newbutton, person):
 
 
 var rows_signature = ""
+var rebuild_queued = false
 
+
+#task_removed is emitted once per deleted task, and ending a turn from the job panel
+#deletes every unstaffed temporal job in one go - a dozen signals, a dozen full rebuilds,
+#all inside the same frame. Fold a burst into a single rebuild.
+#call_deferred is the engine's own batching primitive for this: the message queue is
+#flushed once at the end of the frame, so the guard collapses N signals into one rebuild
+#that still lands before anything is drawn, and there is no per-frame cost while idle.
+#Direct rebuild() callers are untouched and stay synchronous.
+func queue_rebuild():
+	if rebuild_queued:
+		return
+	rebuild_queued = true
+	call_deferred("flush_queued_rebuild")
+
+
+func flush_queued_rebuild():
+	rebuild_queued = false
+	rebuild()
+
+
+#covers everything that changes how a row is built: the roster, the mansion state, and
+#the list mode - which mansion_state does not always imply, since set_mode changes it alone
 func build_rows_signature():
-	var res = str(get_parent().mansion_state)
+	var res = str(get_parent().mansion_state) + "/" + str(mode)
 	for id in ResourceScripts.game_party.character_order:
 		res += "|" + str(id)
 	return res
@@ -304,7 +356,10 @@ func build_rows_signature():
 func refresh_after_turn(spread = false):
 	if spread: #always a coroutine when asked for, so callers can yield on 'completed'
 		yield(get_tree(), 'idle_frame')
-	if get_parent().mansion_state != "default" or build_rows_signature() != rows_signature:
+	#the signature already encodes mansion_state and mode, so testing it alone is strictly
+	#stronger than the old "not in default mode -> always rebuild" clause, which forced a
+	#full unsliced rebuild every single turn ended from the job or craft panel
+	if build_rows_signature() != rows_signature:
 		rebuild()
 		return
 	luxury_rooms_taken = globals.calculate_lux_rooms()
@@ -323,6 +378,7 @@ func refresh_after_turn(spread = false):
 			slice = OS.get_ticks_msec()
 	if spread:
 		yield(get_tree(), 'idle_frame')
+	apply_sorting() #occupations and exp moved on, so the sorted view has to follow
 	show_location_characters()
 	update_description()
 	update_header()
@@ -591,6 +647,7 @@ func update():
 #	get_parent().NavModule.build_accessible_locations()
 	for i in $ScrollContainer/VBoxContainer.get_children():
 		update_button(i)
+	apply_sorting()
 	update_description()
 	update_header()
 	match_mode()
@@ -841,6 +898,143 @@ func set_mode(newmode):
 func update_header ():
 	for nd in header.get_children():
 		nd.visible = nd.is_in_group(mode)
+
+
+### Sorting ###
+
+func build_sort_headers():
+	for key in SORT_COLUMNS:
+		var nd = header.get_node(SORT_COLUMNS[key].node)
+		nd.mouse_filter = MOUSE_FILTER_STOP
+		nd.mouse_default_cursor_shape = CURSOR_POINTING_HAND
+		nd.connect('gui_input', self, 'sort_header_input', [key])
+		nd.connect('mouse_entered', self, 'sort_header_hover', [key, true])
+		nd.connect('mouse_exited', self, 'sort_header_hover', [key, false])
+		if SORT_COLUMNS[key].icon: #those already carry a tooltip explaining the column
+			nd.hint_tooltip = tr(nd.hint_tooltip) + "\n" + tr("MSLMSORTHINT")
+		else:
+			globals.connecttexttooltip(nd, tr("MSLMSORTHINT"))
+	update_sort_headers()
+
+
+#a column cycles through ascending, descending and back to the order the player set by hand
+func sort_header_input(event, key):
+	if !(event is InputEventMouseButton) or event.button_index != BUTTON_LEFT or !event.pressed:
+		return
+	if sort_key != key:
+		sort_key = key
+		sort_desc = false
+	elif !sort_desc:
+		sort_desc = true
+	else:
+		sort_key = ''
+		sort_desc = false
+	apply_sorting()
+	update_sort_headers()
+
+
+func sort_header_hover(key, hovered):
+	if hovered:
+		sort_hovered = key
+	elif sort_hovered == key:
+		sort_hovered = ''
+	update_sort_header(key)
+
+
+func update_sort_headers():
+	if header == null:
+		return
+	for key in SORT_COLUMNS:
+		update_sort_header(key)
+
+
+func update_sort_header(key):
+	var nd = header.get_node(SORT_COLUMNS[key].node)
+	var color = SORT_COLOR_IDLE
+	if sort_key == key:
+		color = Color(variables.hexcolordict['factor2' if sort_desc else 'k_yellow'])
+	elif sort_hovered == key:
+		color = SORT_COLOR_HOVER
+	if SORT_COLUMNS[key].icon:
+		nd.modulate = color
+	else:
+		nd.set("custom_colors/font_color", color)
+
+
+#rows are only moved around, never the array behind them. dragging a row would write the visual
+#position back into character_order, so it stays off while a column is sorted
+func apply_sorting():
+	if SlaveContainer == null:
+		return
+	var entries = []
+	for nd in SlaveContainer.get_children():
+		if !nd.has_meta('slave'):
+			continue
+		nd.drag_enabled = sort_key == ''
+		entries.append({row = nd, base = get_row_base_index(nd), value = null})
+	if sort_key == '':
+		entries.sort_custom(self, 'compare_base_rows')
+	else:
+		for e in entries:
+			e.value = get_sort_value(e.row, sort_key)
+		entries.sort_custom(self, 'compare_sort_rows')
+	for i in entries.size():
+		SlaveContainer.move_child(entries[i].row, i)
+
+
+func reset_sorting():
+	sort_key = ''
+	sort_desc = false
+	sort_hovered = ''
+	apply_sorting()
+	update_sort_headers()
+
+
+func get_row_base_index(row):
+	var idx = ResourceScripts.game_party.character_order.find(row.arraydata)
+	return idx if idx >= 0 else ResourceScripts.game_party.character_order.size()
+
+
+func compare_base_rows(a, b):
+	return a.base < b.base
+
+
+#ties keep the manual order, so rows with the same value never shuffle between sorts
+func compare_sort_rows(a, b):
+	if a.value != b.value:
+		if sort_desc:
+			return a.value > b.value
+		return a.value < b.value
+	return a.base < b.base
+
+
+#occupation and the availability marks are read back from the row: they are the strings and
+#icons update_button just worked out, and recomputing them here would only duplicate that logic
+func get_sort_value(row, key):
+	var person = row.get_meta('slave')
+	match key:
+		'sex':
+			return get_sort_rank(SORT_SEX_ORDER, person.get_stat('sex'))
+		'name':
+			return person.get_short_name().to_lower()
+		'occupation':
+			return row.get_node("job/Label").text.to_lower()
+		'exp':
+			return floor(person.get_stat('base_exp'))
+		'date':
+			return 0 if row.get_node("DateIcon").texture == TEX_YES else 1
+		'sexact':
+			return 0 if row.get_node("SexIcon").texture == TEX_YES else 1
+		'train':
+			return 0 if row.get_node("TrainIcon").texture == TEX_YES else 1
+		'type':
+			return get_sort_rank(SORT_CLASS_ORDER, person.get_stat('slave_class'))
+	return 0
+
+
+func get_sort_rank(order, value):
+	var idx = order.find(value)
+	return idx if idx >= 0 else order.size()
 
 
 func toggle_rules(newbutton, code):

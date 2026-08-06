@@ -84,7 +84,7 @@ var skills = {
 	hardened_grip = {
 		code = 'hardened_grip',
 		descript = '',
-		icon = "res://assets/images/iconsskills/Discipline.png",
+		icon = "res://assets/images/iconsskills/HardenedGrip.png",
 		type = 'combat',
 		ability_type = 'spell',
 		tags = ['support', 'buff'],
@@ -149,7 +149,7 @@ var effects = {
 		duration = 'arg',
 		tags = ['buff'],
 		statchanges = {resist_disarm = 200},
-		buffs = [{icon = "res://assets/images/iconsskills/Discipline.png", description = "EFFECT_HARDENED_GRIP"}],
+		buffs = [{icon = "res://assets/images/iconsskills/HardenedGrip.png", description = "EFFECT_HARDENED_GRIP"}],
 	},
 }
 var atomic_effects = {}

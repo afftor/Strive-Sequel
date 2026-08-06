@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=2]
+[gd_scene load_steps=101 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Textures_v2/CLASS_INFO/Panels/divider_2.png" type="Texture" id=2]
@@ -91,6 +91,7 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset_training_hover.png" type="Texture" id=89]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset_training_pressed.png" type="Texture" id=90]
 [ext_resource path="res://assets/Textures_v2/panel_slave_splitter.png" type="Texture" id=91]
+[ext_resource path="res://assets/images/gui/game1bg.png" type="Texture" id=92]
 
 [sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 91 )
@@ -131,6 +132,16 @@ anchor_bottom = 1.0
 texture = ExtResource( 22 )
 expand = true
 script = ExtResource( 47 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0.47451 )
+margin_left = 12.0
+margin_top = 10.0
+margin_right = 1913.0
+margin_bottom = 1075.0
+texture = ExtResource( 92 )
+expand = true
+stretch_mode = 6
 
 [node name="frame" type="NinePatchRect" parent="."]
 anchor_right = 1.0

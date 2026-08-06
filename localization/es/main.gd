@@ -113,6 +113,7 @@ A new empty mods.ini has been created. Please re-enable compatible mods from the
 	OPTGRAPHICDISABLEANIMATIONBACKGROUNDS = "Deshabilitar fondos de animación",
 	OPTDISABLEPAPERDOLL = "Deshabilitar sprites generados",
 	OPTDISABLEDAMAGESHAKE = """Disable damage shake""", # MISSING TRANSLATION
+	OPTDISABLEITEMFLIGHT = """Disable item pickup animation""", # MISSING TRANSLATION
 	OPTCHEATENTERCODE = "Introducir código",
 	OPTCHEATACTIVATE = "Activar",
 	OPTCHEATGETCODE = "Obtener código",
@@ -394,6 +395,7 @@ pero conservarás todos tus personajes, objetos e inventario. Usa este modo para
 	MSLMTYPE = "Tipo",
 	MSLMINV = "Equipo",
 	MSLMFOOD = """Food""", # MISSING TRANSLATION
+	MSLMSORTHINT = """Click to sort by this column, click again to reverse it, once more to go back to your own order.""", # MISSING TRANSLATION
 	LVLBONUSPERPOINT = """Bonus per point""", # MISSING TRANSLATION
 	LVLCURRENT = """Current""", # MISSING TRANSLATION
 	LVLTOTALPOINTS = """Total Points""", # MISSING TRANSLATION
@@ -730,9 +732,33 @@ Tipo de alimento: Pescado, Granos.""",
 	MATERIALCURRY = "Curry",
 	MATERIALCURRYDESCRIPT = """Un plato de cereales y carne rico con un sabor distintivo.
 Tipo de alimento: Carne, Granos.""",
+	MATERIALVEGETABLE_STIRFRY = """Vegetable Stir-Fry""", # MISSING TRANSLATION
+	MATERIALVEGETABLE_STIRFRYDESCRIPT = """Fresh vegetables seared with fragrant seasonings. Produced by cooking.
+Food type: Vegetables.""", # MISSING TRANSLATION
+	MATERIALROASTED_FEAST = """Roasted Feast""", # MISSING TRANSLATION
+	MATERIALROASTED_FEASTDESCRIPT = """A generous platter of roasted meat with hearty sides. Produced by cooking.
+Food type: Meat.""", # MISSING TRANSLATION
+	MATERIALMINERS_LUNCH = """Miner's Lunch""", # MISSING TRANSLATION
+	MATERIALMINERS_LUNCHDESCRIPT = """A filling grain-based lunch made for long shifts underground. Produced by cooking.
+Food type: Grains.""", # MISSING TRANSLATION
+	MATERIALVEGETABLESTIRFRY = """Vegetable Stir-Fry""", # MISSING TRANSLATION
+	MATERIALVEGETABLESTIRFRYDESCRIPT = """Fresh vegetables seared with fragrant seasonings. Produced by cooking.
+Food type: Vegetables.""", # MISSING TRANSLATION
+	MATERIALROASTEDFEAST = """Roasted Feast""", # MISSING TRANSLATION
+	MATERIALROASTEDFEASTDESCRIPT = """A generous platter of roasted meat with hearty sides. Produced by cooking.
+Food type: Meat.""", # MISSING TRANSLATION
+	MATERIALMINERSLUNCH = """Miner's Lunch""", # MISSING TRANSLATION
+	MATERIALMINERSLUNCHDESCRIPT = """A filling grain-based lunch made for long shifts underground. Produced by cooking.
+Food type: Grains.""", # MISSING TRANSLATION
 	MATERIALFRIEDFISH = "Pescado frito",
 	MATERIALFRIEDFISHDESCRIPT = """Un plato de pescado frito con verduras inventado para nutrir a las chicas más quisquillosas con la comida.
 Tipo de comida: Pescado, Verduras.""",
+	MATERIALDEFENDERS_MEAL = """Defender's Meal""", # MISSING TRANSLATION
+	MATERIALDEFENDERS_MEALDESCRIPT = """A substantial vegetable meal prepared for those holding the line. Produced by cooking.
+Food type: Vegetables.""", # MISSING TRANSLATION
+	MATERIALDEFENDERSMEAL = """Defender's Meal""", # MISSING TRANSLATION
+	MATERIALDEFENDERSMEALDESCRIPT = """A substantial vegetable meal prepared for those holding the line. Produced by cooking.
+Food type: Vegetables.""", # MISSING TRANSLATION
 	MATERIALSTONE = "Piedra dura",
 	MATERIALSTONEADJ = "Piedra",
 	MATERIALSTONEDESCRIPT = "La piedra se presenta en diversas formas y tamaños. Puede servir como buen material de construcción o incluso como herramienta de baja calidad. Se obtiene de la minería.",
@@ -1367,6 +1393,7 @@ Tecla de acceso rápido: 3""",
 	QUESTPARTREQUIREMENTS = "Requisitos de la pieza",
 	QUESTCOMPLETEQUESTLOC = "Completa la mazmorra de misiones",
 	QUESTCOMPLETEQUESTLOC2 = "Completa la misión de mazmorra en",
+	QUESTCOMPLETEQUESTENC = """Complete quest encounter""", # MISSING TRANSLATION
 	QUESTREQUIRED = "Requerido",
 	QUESTSLAVEREQUIRED = "Se requiere esclavo",
 	QUESTSTATS = "Stast",
@@ -4134,6 +4161,14 @@ Mayor salud, DEF y MAG DEF""",
 	TRAITEFFECTFOODMEAT = """Well Fed (Meat): +5%% Damage, +5%% Max Health""", # MISSING TRANSLATION
 	TRAITEFFECTFOODFISH = """Well Fed (Fish): +10%% Max Mana, +5%% Experience Gain""", # MISSING TRANSLATION
 	TRAITEFFECTFOODVEGE = """Well Fed (Vegetables): +25%% Health Regeneration, +10 Poison Resistance""", # MISSING TRANSLATION
+	TRAITEFFECTFOODFISHCAKES = """Well Fed (Fish Cakes): +2 Mana Regeneration, +5 Magic Attack""", # MISSING TRANSLATION
+	TRAITEFFECTFOODMEATSOUP = """Well Fed (Meat Soup): +5%% Max Health, +5%% Productivity""", # MISSING TRANSLATION
+	TRAITEFFECTFOODCURRY = """Well Fed (Curry): +3 Attack, +3 Magic Attack""", # MISSING TRANSLATION
+	TRAITEFFECTFOODVEGETABLESTIRFRY = """Well Fed (Vegetable Stir-Fry): +5%% Experience Gain, +5 Armor""", # MISSING TRANSLATION
+	TRAITEFFECTFOODROASTEDFEAST = """Well Fed (Roasted Feast): +6 Attack, +3%% Critical Chance""", # MISSING TRANSLATION
+	TRAITEFFECTFOODMINERSLUNCH = """Well Fed (Miner's Lunch): +10%% Productivity, +5%% Experience Gain""", # MISSING TRANSLATION
+	TRAITEFFECTFOODFRIEDSALMON = """Well Fed (Fried Salmon): +5 Magic Attack, +25%% Mana Regeneration""", # MISSING TRANSLATION
+	TRAITEFFECTFOODDEFENDERSMEAL = """Well Fed (Defender's Meal): +15 Health, +5%% Damage Reduction, +1 Counterattack""", # MISSING TRANSLATION
 	TRAITEFFECTFOODGRAIN = """Well Fed (Grains): +5%% Productivity""", # MISSING TRANSLATION
 	TRAITEFFECTGRAVEINJ = "Lesión grave: -25%% Productividad, -50 Sexuales. No pueden participar en combate.",
 	TRAITEFFECTINJ = """Injury: -30%% Max HP, -20 Hitrate.""", # MISSING TRANSLATION
@@ -9294,6 +9329,7 @@ Sin embargo, puedes actualizar el archivo.
 	TUTORIAL_TRAINING4 = """The skill you used will go on cooldown, and you will receive a short report, as with many similar actions.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING5 = """Another important feature is the character settings at the top of the character list. You can customize various behaviors and tasks here, but for now we will set up some basic food rules.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING6 = """By default, characters will have their food rules set to their preferences, but you can customize them further. Clicking on a food option will cycle its priority for that character.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING7 = """Click a food to allow or forbid it for this character.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING8 = """Now that this is done, let's switch back to the default menu.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING9 = """Select Daisy to access her details and information.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING10 = """You can open a character window with a double-click, or by using the Character Info button.""", # MISSING TRANSLATION

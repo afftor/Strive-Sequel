@@ -1,10 +1,14 @@
+Revamped food mechanic. Now characters eat 1 food item per attempt and it lasts multiple turns based on the food eaten. Better food provides various bonuses. Characters also can be demanding higher quality food if they have higher fame or value.
 Added new trait for Ratkin: In the shadows reduces ranged physical hit chance by 30%.
+Added character sorting behavior to main character list
+Added some new sound effects to time equipment and turn pass 
 Slaves now can only be trained after 1 turn to prevent them being sold for better price instantly
 Added workunits display as well as how much work characters make per turn
 Added 2 new skills: 
 Warcry - Warfare skill removing fear and silence from caster
 Hardened Grip - Mind spell, providing disarm immunity to target
 Disarm now forces ranged attackers to use melee attack with its inherent penalty
+Fixed Mae having wrong default portrait
 Fixed Lira's quest 3rd part
 Fixed in the shadows giving evasion against physical attacks
 0.15.0c

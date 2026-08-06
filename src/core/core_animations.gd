@@ -304,6 +304,34 @@ func gfx_video(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = fa
 	if wr.get_ref(): x.queue_free()
 
 
+#Acquired items/materials/gold flying into the inventory. 'start' is a Control to launch
+#from or a Vector2 in screen coordinates, 'params' overrides any key of item_flight.defaults
+#(time, arc, spread, count, target, ...). See src/core/item_flight.gd.
+func ItemFlight(icon, start, params = {}):
+	var overlay = get_flight_overlay()
+	if overlay != null:
+		overlay.fly(icon, start, params)
+
+
+func ItemFlightMaterial(material_code, start, params = {}):
+	var overlay = get_flight_overlay()
+	if overlay != null:
+		overlay.fly_material(material_code, start, params)
+
+
+func ItemFlightGold(start, params = {}):
+	var overlay = get_flight_overlay()
+	if overlay != null:
+		overlay.fly_gold(start, params)
+
+
+#null while the player has the effect switched off, so callers never build the overlay
+func get_flight_overlay():
+	if input_handler.globalsettings.get("no_item_flight", false):
+		return null
+	return input_handler.get_spec_node(input_handler.ANIM_ITEM_FLIGHT)
+
+
 func ResourceGetAnimation(node, startpoint, endpoint, time = 0.5, delay = 0.2):
 	if !node.is_inside_tree(): return
 	var tweennode = input_handler.GetTweenNode(node)

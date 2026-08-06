@@ -2123,13 +2123,13 @@ var data = {
 						type = "has_material",
 						material = "fish",
 						operant = "gte",
-						value = 2000
+						value = 500
 					},
 					{
 						type = "has_material",
 						material = "meat",
 						operant = "gte",
-						value = 2000
+						value = 500
 					}
 				],
 				dialogue_argument = 1,
@@ -2165,8 +2165,8 @@ var data = {
 			}
 		],
 		common_effects = [
-			{code = "material_change", operant = "-", material = "meat", value = 2000},
-			{code = "material_change", operant = "-", material = "fish", value = 2000}
+			{code = "material_change", operant = "-", material = "meat", value = 500},
+			{code = "material_change", operant = "-", material = "fish", value = 500}
 		],
 		options = [
 			{

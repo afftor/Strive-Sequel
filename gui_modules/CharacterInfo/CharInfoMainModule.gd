@@ -9,11 +9,13 @@ onready var SummaryModule = $SlaveSummaryModule
 onready var SlaveSiblingsModule = $SlaveSiblingsModule
 onready var BodyModule = $SlaveBodyModule
 onready var SlaveInfo = $SlaveInfoModule
+onready var DietModule = $FoodPreferencesPanel
 onready var submodules = []
 var inventory_scene
 
 func _ready():
-	gui_controller.add_close_button(self, "add_offset")
+	var close_button = gui_controller.add_close_button(self, "add_offset")
+	close_button.connect("pressed", DietModule, "hide")
 #	for module in self.get_children():
 #		module.update()
 #	update()
@@ -21,7 +23,25 @@ func _ready():
 	#$RemoveButton.connect('pressed',self,'remove',[])
 	input_handler.connect('PortraitUpdate', self, 'update')
 	input_handler.connect('SpellUsed', self, 'update')
+	connect("visibility_changed", self, "close_food_preferences_when_hidden")
 	input_handler.register_btn_source('char_close_button', self, 'tut_get_close_button')
+	input_handler.register_btn_source('food_preferences', self, 'tut_get_food_preferences_button')
+	$SlaveInfoModule/FoodPreferencesButton.connect("pressed", self, "open_food_preferences")
+	globals.connecttexttooltip($SlaveInfoModule/FoodPreferencesButton, tr("INFOFOODFILTER"))
+
+
+func open_food_preferences():
+	DietModule.open_diet_window()
+	DietModule.raise()
+
+
+func close_food_preferences_when_hidden():
+	if !visible:
+		DietModule.hide()
+
+
+func tut_get_food_preferences_button():
+	return $SlaveInfoModule/FoodPreferencesButton
 
 func tut_get_close_button():
 	return $CloseButton
@@ -99,6 +119,8 @@ func update():
 	BodyModule.update()
 	ClassesModule.update()
 	SlaveSiblingsModule.update()
+	if DietModule.visible:
+		DietModule.open_diet_window()
 	
 	if active_person != null:
 		input_handler.ClearContainer($SlaveInfoModule/SexSkillsContainer/VBoxContainer)
@@ -155,6 +177,8 @@ func set_state(state):
 	match_state()
 
 func match_state():
+	if char_module_state != "default":
+		DietModule.hide()
 #	var tooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP)
 #	globals.disconnect_text_tooltip(tooltip.parentnode)
 #	tooltip.turnoff()

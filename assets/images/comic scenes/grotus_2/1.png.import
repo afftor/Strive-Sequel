@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mae_prt.png-72e5ecafbe3c70e829f15bf754c519d9.stex"
+path="res://.import/1.png-274231f343dbbff8f3e290c7155af8b4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/mae_prt.png"
-dest_files=[ "res://.import/mae_prt.png-72e5ecafbe3c70e829f15bf754c519d9.stex" ]
+source_file="res://assets/images/comic scenes/grotus_2/1.png"
+dest_files=[ "res://.import/1.png-274231f343dbbff8f3e290c7155af8b4.stex" ]
 
 [params]
 

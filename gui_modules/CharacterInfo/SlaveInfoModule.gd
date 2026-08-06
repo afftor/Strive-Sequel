@@ -4,6 +4,7 @@ extends Control
 var person
 
 var universal_skills = ['oral','anal','petting']
+const TEX_FOOD_STARVING = preload("res://assets/images/iconsitems/food_old.png")
 
 onready var traitlist = $TraitContainer/HBoxContainer
 onready var traitlist2 = $TraitContainer2/HBoxContainer
@@ -120,12 +121,47 @@ func update():
 		globals.connecttexttooltip($Panel/maininfo/personality, globals.get_character_personality_tooltip(person.get_stat('personality')))
 		$Description/RichTextLabel.bbcode_text = person.make_description()
 		
+		update_food_panel()
 		update_traitlist()
 		update_trainings_selector()
 		open_upgrade_tab()
 		
 		for i in [$UpgradesPanel, $tr_selector, $Label2]:
 			i.visible = !person.is_on_quest()
+
+
+func update_food_panel():
+	var love = person.food.food_love
+	var has_love = love != null and love != ''
+	$FoodPreference/Icon.visible = has_love
+	$FoodPreference/Value.text = tr("FOODTYPE" + love.to_upper()) if has_love else ''
+	if has_love:
+		$FoodPreference/Icon.texture = images.get_icon(love)
+	var preference_tooltip = "[center]" + tr("STATFOOD_LOVE") + "[/center]"
+	if has_love:
+		preference_tooltip += "\n" + tr("FOODTYPE" + love.to_upper())
+	preference_tooltip += "\n\n" + tr("STATFOOD_LOVEDESCRIPT")
+	globals.connecttexttooltip($FoodPreference, preference_tooltip)
+
+	var state = person.food.get_state()
+	$LastMeal/Icon.visible = false
+	$LastMeal/Icon.modulate = Color(1, 1, 1)
+	match state.state:
+		'undead':
+			$LastMeal/Value.text = tr("FOODSTATEUNDEAD")
+		'starving':
+			$LastMeal/Icon.visible = true
+			$LastMeal/Icon.texture = TEX_FOOD_STARVING
+			$LastMeal/Value.text = tr("FOODSTATESTARVING")
+		'none':
+			$LastMeal/Value.text = tr("FOODSTATENONE")
+		_:
+			var item = Items.materiallist[state.meal]
+			$LastMeal/Icon.visible = true
+			$LastMeal/Icon.texture = item.icon
+			$LastMeal/Icon.modulate = Color(1, 0.5, 0.5) if state.state == 'poor' else Color(1, 1, 1)
+			$LastMeal/Value.text = "%s (%d)" % [item.name, state.fed]
+	globals.connecttexttooltip($LastMeal, globals.get_food_state_tooltip(person))
 
 
 func build_standing_tooltip():

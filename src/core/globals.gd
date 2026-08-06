@@ -6,6 +6,7 @@ signal hour_tick
 signal task_added
 signal slave_added
 signal slave_arrived
+signal travel_completed
 signal slave_departed
 signal update_clock
 signal task_removed

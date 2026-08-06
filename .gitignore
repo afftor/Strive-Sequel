@@ -10,5 +10,5 @@ export_presets.cfg
 AGENTS.md
 .agents/
 
-# Personal AI asset-pipeline tooling and credentials. Never commit this directory.
-tools/ai_assets/
+# Local development tooling. Never commit or import this directory.
+tools/

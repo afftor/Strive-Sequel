@@ -176,6 +176,9 @@ var random_pitch_sounds = {
 	firehit = 0.4,
 	skill_scene = 0.2,
 	speech = 0.2,
+	#these fire on every pickup and sale, so a fixed pitch turns mechanical fast
+	itemget = 0.12,
+	money_spend = 0.12,
 	avalanche = 0.3
 }
 

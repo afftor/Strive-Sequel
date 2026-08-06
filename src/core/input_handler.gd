@@ -154,6 +154,7 @@ enum {
 	ANIM_SKILL_UNLOCKED,
 	ANIM_GROWTHF,
 	ANIM_MASTER_POINT,
+	ANIM_ITEM_FLIGHT,
 } #, NODE_TWEEN, NODE_REPEATTWEEN}
 
 
@@ -176,6 +177,7 @@ var globalsettings = {
 	show_full_consent = false,
 	disable_paperdoll = false,
 	no_damage_shake = false,
+	no_item_flight = false,
 
 	textspeed = 60,
 	skipread = false,

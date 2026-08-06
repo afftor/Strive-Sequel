@@ -1021,25 +1021,25 @@ var data = {
 					{
 						type = "has_material",
 						operant = "gte",
-						value = 200,
+						value = 50,
 						material = "fish"
 					},
 					{
 						type = "has_material",
 						operant = "gte",
-						value = 200,
+						value = 50,
 						material = "meat"
 					},
 					{
 						type = "has_material",
 						operant = "gte",
-						value = 200,
+						value = 50,
 						material = "vegetables"
 					},
 					{
 						type = "has_material",
 						operant = "gte",
-						value = 200,
+						value = 50,
 						material = "grain"
 					},
 					{
@@ -1208,25 +1208,25 @@ var data = {
 					{
 						type = "has_material",
 						operant = "gte",
-						value = 200,
+						value = 50,
 						material = "fish"
 					},
 					{
 						type = "has_material",
 						operant = "gte",
-						value = 200,
+						value = 50,
 						material = "meat"
 					},
 					{
 						type = "has_material",
 						operant = "gte",
-						value = 200,
+						value = 50,
 						material = "vegetables"
 					},
 					{
 						type = "has_material",
 						operant = "gte",
-						value = 200,
+						value = 50,
 						material = "grain"
 					},
 					{

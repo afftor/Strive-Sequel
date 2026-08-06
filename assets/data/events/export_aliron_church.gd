@@ -118,11 +118,11 @@ var data = {
 			{code = 'aliron_church_quest_start', reqs = [{type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHQUESTSTART'}], text = "ALIRONCHURCHENTERREPLY1", dialogue_argument = 2, type = 'next_dialogue', remove_after_first_use = true},
 			{code = 'aliron_church_quest_complete', reqs = [
 				{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHQUESTSTART'},
-				{type = 'has_material', material = 'meatsoup', operant = 'gte', value = 25},
+				{type = 'has_material', material = 'meatsoup', operant = 'gte', value = 5},
 			], text = "ALIRONCHURCHENTERREPLY2", dialogue_argument = 3, type = 'next_dialogue', previous_dialogue_option = 0, remove_after_first_use = true},
 			{code = 'aliron_church_quest_complete', reqs = [
 				{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHQUESTCOMPLETE1'},
-				{type = 'has_material', material = 'meatsoup', operant = 'gte', value = 25},
+				{type = 'has_material', material = 'meatsoup', operant = 'gte', value = 5},
 				{type = 'timed_option', value = 7, quest = "aliron_church"},
 			], text = "ALIRONCHURCHENTERREPLY2", dialogue_argument = 3, type = 'next_dialogue', previous_dialogue_option = 0},
 			
@@ -208,7 +208,7 @@ var data = {
 					type = 'next_dialogue',
 					bonus_effects = [
 						# {code = 'complete_quest', value = 'aliron_church_quest'},
-						{code = "material_change", material = "meatsoup", operant = '-', value = 25},
+						{code = "material_change", material = "meatsoup", operant = '-', value = 5},
 						{code = 'make_loot', pool = [['aliron_church_bonus',5]]}, {code = 'open_loot'},
 						{code = "unlock_class", name = "priest"},
 						{code = 'reset_day_count', quest = "aliron_church"},
@@ -227,7 +227,7 @@ var data = {
 				options = [
 					{code = 'aliron_church_enter', reqs = [], text = "DIALOGUECONTINUE", dialogue_argument = 5, type = 'next_dialogue',
 					bonus_effects = [
-						{code = "material_change", material = "meatsoup", operant = '-', value = 25},
+						{code = "material_change", material = "meatsoup", operant = '-', value = 5},
 						{code = 'make_loot', pool = [['aliron_church_bonus',5]]}, {code = 'open_loot'},
 						{code = 'reset_day_count', quest = "aliron_church"},
 				],	

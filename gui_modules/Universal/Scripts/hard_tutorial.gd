@@ -44,17 +44,21 @@ var tutorials = {
 		},
 		#2
 		{
-			buttons = ['food_mode'],
+			buttons = ['char_info'],
 			text = "TUTORIAL_TRAINING5",
 			panel_pos = Vector2(850,50)
 		},{
-			buttons = ['ff_meat'],
+			buttons = ['food_preferences'],
 			text = "TUTORIAL_TRAINING6",
 			panel_pos = Vector2(850,50)
 		},
 		#3
 		{
-			buttons = ['default_mode'],
+			buttons = ['food_preference_meat'],
+			text = "TUTORIAL_TRAINING7",
+			panel_pos = Vector2(850,50)
+		},{
+			buttons = ['char_close_button'],
 			text = "TUTORIAL_TRAINING8",
 			panel_pos = Vector2(733,50)
 		},{
@@ -835,11 +839,11 @@ func prepare_general_tut():
 	ResourceScripts.game_res.materials['wood'] = 30
 	ResourceScripts.game_res.materials['stone'] = 25
 	ResourceScripts.game_res.materials['iron'] = 20
-	ResourceScripts.game_res.materials['meat'] = 50
-	ResourceScripts.game_res.materials['fish'] = 50
-	ResourceScripts.game_res.materials['bread'] = 50
-	ResourceScripts.game_res.materials['vegetables'] = 50
-	ResourceScripts.game_res.materials['grain'] = 50
+	ResourceScripts.game_res.materials['meat'] = 20
+	ResourceScripts.game_res.materials['fish'] = 20
+	ResourceScripts.game_res.materials['bread'] = 20
+	ResourceScripts.game_res.materials['vegetables'] = 20
+	ResourceScripts.game_res.materials['grain'] = 20
 	ResourceScripts.game_res.upgrades.forge = 1
 	globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 1))
 #	var has_tut_quest = false

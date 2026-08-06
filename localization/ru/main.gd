@@ -115,6 +115,7 @@ A new empty mods.ini has been created. Please re-enable compatible mods from the
 	OPTGRAPHICDISABLEANIMATIONBACKGROUNDS = """Отключить анимационные фоны""",
 	OPTDISABLEPAPERDOLL = """Отключить гененерируемые спрайты""",
 	OPTDISABLEDAMAGESHAKE = "Отключить тряску при получении урона",
+	OPTDISABLEITEMFLIGHT = """Disable item pickup animation""", # MISSING TRANSLATION
 	OPTCHEATENTERCODE = """Ввести код""",
 	OPTCHEATACTIVATE = """Активировать""",
 	OPTCHEATGETCODE = """Получить код""",
@@ -403,6 +404,7 @@ A new empty mods.ini has been created. Please re-enable compatible mods from the
 	MSLMTYPE = """Тип""",
 	MSLMINV = """Надето""",
 	MSLMFOOD = """Food""", # MISSING TRANSLATION
+	MSLMSORTHINT = """Click to sort by this column, click again to reverse it, once more to go back to your own order.""", # MISSING TRANSLATION
 	LVLBONUSPERPOINT = "Бонус за очко",
 	LVLCURRENT = "Текущий",
 	LVLTOTALPOINTS = "Всего очков",
@@ -744,9 +746,33 @@ A new empty mods.ini has been created. Please re-enable compatible mods from the
 	MATERIALCURRY = """Карри""",
 	MATERIALCURRYDESCRIPT = """Блюдо из крупы с мясом. Имеет насыщенный вкус.
 Тип еды: Мясо, Злаки.""",
+	MATERIALVEGETABLE_STIRFRY = """Vegetable Stir-Fry""", # MISSING TRANSLATION
+	MATERIALVEGETABLE_STIRFRYDESCRIPT = """Fresh vegetables seared with fragrant seasonings. Produced by cooking.
+Food type: Vegetables.""", # MISSING TRANSLATION
+	MATERIALROASTED_FEAST = """Roasted Feast""", # MISSING TRANSLATION
+	MATERIALROASTED_FEASTDESCRIPT = """A generous platter of roasted meat with hearty sides. Produced by cooking.
+Food type: Meat.""", # MISSING TRANSLATION
+	MATERIALMINERS_LUNCH = """Miner's Lunch""", # MISSING TRANSLATION
+	MATERIALMINERS_LUNCHDESCRIPT = """A filling grain-based lunch made for long shifts underground. Produced by cooking.
+Food type: Grains.""", # MISSING TRANSLATION
+	MATERIALVEGETABLESTIRFRY = """Vegetable Stir-Fry""", # MISSING TRANSLATION
+	MATERIALVEGETABLESTIRFRYDESCRIPT = """Fresh vegetables seared with fragrant seasonings. Produced by cooking.
+Food type: Vegetables.""", # MISSING TRANSLATION
+	MATERIALROASTEDFEAST = """Roasted Feast""", # MISSING TRANSLATION
+	MATERIALROASTEDFEASTDESCRIPT = """A generous platter of roasted meat with hearty sides. Produced by cooking.
+Food type: Meat.""", # MISSING TRANSLATION
+	MATERIALMINERSLUNCH = """Miner's Lunch""", # MISSING TRANSLATION
+	MATERIALMINERSLUNCHDESCRIPT = """A filling grain-based lunch made for long shifts underground. Produced by cooking.
+Food type: Grains.""", # MISSING TRANSLATION
 	MATERIALFRIEDFISH = """Жареная рыба""",
 	MATERIALFRIEDFISHDESCRIPT = """Блюдо из жареной рыбы с овощами, придуманное для того, чтобы насытить привередливых зверолюдей.
 Тип еды: Рыба, Овощи.""",
+	MATERIALDEFENDERS_MEAL = """Defender's Meal""", # MISSING TRANSLATION
+	MATERIALDEFENDERS_MEALDESCRIPT = """A substantial vegetable meal prepared for those holding the line. Produced by cooking.
+Food type: Vegetables.""", # MISSING TRANSLATION
+	MATERIALDEFENDERSMEAL = """Defender's Meal""", # MISSING TRANSLATION
+	MATERIALDEFENDERSMEALDESCRIPT = """A substantial vegetable meal prepared for those holding the line. Produced by cooking.
+Food type: Vegetables.""", # MISSING TRANSLATION
 	MATERIALSTONE = """Грубый камень""",
 	MATERIALSTONEADJ = """Из камня""",
 	MATERIALSTONEDESCRIPT = """Камень бывает разных форм и видов. Он может служить хорошим строительным материалом или даже низкокачественным инструментом. Добывается при добыче полезных ископаемых.""",
@@ -1424,6 +1450,7 @@ Hotkey: 3""",
 	QUESTPARTREQUIREMENTS = """Требования к частям""",
 	QUESTCOMPLETEQUESTLOC = """Завершить квестовое подземелье""",
 	QUESTCOMPLETEQUESTLOC2 = """Завершить квестовое подземелье в""",
+	QUESTCOMPLETEQUESTENC = """Complete quest encounter""", # MISSING TRANSLATION
 	QUESTREQUIRED = """Требуется""",
 	QUESTSLAVEREQUIRED = """Требуется раб""",
 	QUESTSTATS = """Статистика""",
@@ -4794,6 +4821,14 @@ Requires: Базовый рабский труд""",
 	TRAITEFFECTFOODMEAT = """Well Fed (Meat): +5%% Damage, +5%% Max Health""", # MISSING TRANSLATION
 	TRAITEFFECTFOODFISH = """Well Fed (Fish): +10%% Max Mana, +5%% Experience Gain""", # MISSING TRANSLATION
 	TRAITEFFECTFOODVEGE = """Well Fed (Vegetables): +25%% Health Regeneration, +10 Poison Resistance""", # MISSING TRANSLATION
+	TRAITEFFECTFOODFISHCAKES = """Well Fed (Fish Cakes): +2 Mana Regeneration, +5 Magic Attack""", # MISSING TRANSLATION
+	TRAITEFFECTFOODMEATSOUP = """Well Fed (Meat Soup): +5%% Max Health, +5%% Productivity""", # MISSING TRANSLATION
+	TRAITEFFECTFOODCURRY = """Well Fed (Curry): +3 Attack, +3 Magic Attack""", # MISSING TRANSLATION
+	TRAITEFFECTFOODVEGETABLESTIRFRY = """Well Fed (Vegetable Stir-Fry): +5%% Experience Gain, +5 Armor""", # MISSING TRANSLATION
+	TRAITEFFECTFOODROASTEDFEAST = """Well Fed (Roasted Feast): +6 Attack, +3%% Critical Chance""", # MISSING TRANSLATION
+	TRAITEFFECTFOODMINERSLUNCH = """Well Fed (Miner's Lunch): +10%% Productivity, +5%% Experience Gain""", # MISSING TRANSLATION
+	TRAITEFFECTFOODFRIEDSALMON = """Well Fed (Fried Salmon): +5 Magic Attack, +25%% Mana Regeneration""", # MISSING TRANSLATION
+	TRAITEFFECTFOODDEFENDERSMEAL = """Well Fed (Defender's Meal): +15 Health, +5%% Damage Reduction, +1 Counterattack""", # MISSING TRANSLATION
 	TRAITEFFECTFOODGRAIN = """Well Fed (Grains): +5%% Productivity""", # MISSING TRANSLATION
 	TRAITEFFECTGRAVEINJ = """Тяжелое ранение: -25%% Производительность, -50%% Сексуальность. Не может участвовать в бою""",
 	TRAITEFFECTINJ = "Травма: -30%% к макс. HP, -20 к точности.",
@@ -10172,6 +10207,7 @@ LICHAIRETALK6_5 = """Борьба Эйры постепенно ослабева
 	TUTORIAL_TRAINING4 = "Использованный навык уйдёт в перезарядку, и вы получите краткий отчёт, как и при многих подобных действиях.",
 	TUTORIAL_TRAINING5 = "Ещё одна важная функция — настройки персонажа в верхней части списка персонажей. Здесь можно настроить различное поведение и задачи, но пока мы установим несколько базовых правил питания.",
 	TUTORIAL_TRAINING6 = "По умолчанию правила питания персонажей будут соответствовать их предпочтениям, но вы можете изменить их. Нажатие на опцию еды будет циклически менять её приоритет для этого персонажа.",
+	TUTORIAL_TRAINING7 = """Click a food to allow or forbid it for this character.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING8 = "Теперь, когда это сделано, давайте вернёмся в главное меню.",
 	TUTORIAL_TRAINING9 = "Выберите Дейзи, чтобы получить доступ к её деталям и информации.",
 	TUTORIAL_TRAINING10 = "Вы можете открыть окно персонажа двойным щелчком или с помощью кнопки Информация о персонаже.",

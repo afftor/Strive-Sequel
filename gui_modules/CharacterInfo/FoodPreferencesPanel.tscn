@@ -1,0 +1,178 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://gui_modules/CharacterInfo/SlaveDietModule.gd" type="Script" id=1]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/food_filter/bg_food_filter.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/food_filter/panel_food_filter.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/food_filter/button_close_default.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/food_filter/button_close_hover.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/food_filter/button_close_pressed.png" type="Texture" id=6]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=7]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=8]
+[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=9]
+[ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 22
+use_filter = true
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+use_filter = true
+font_data = ExtResource( 9 )
+
+[node name="FoodPreferencesPanel" type="TextureRect"]
+visible = false
+margin_left = 757.0
+margin_top = 246.0
+margin_right = 1163.0
+margin_bottom = 834.0
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+
+[node name="Frame" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+
+[node name="Title" type="Label" parent="."]
+margin_right = 406.0
+margin_bottom = 78.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "SIBLINGMODULEFOODFILTER"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="FoodFilterTooltip" type="TextureRect" parent="."]
+margin_left = 337.0
+margin_top = 17.0
+margin_right = 387.0
+margin_bottom = 64.0
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 36.0
+margin_top = 80.0
+margin_right = 372.0
+margin_bottom = 405.0
+theme = ExtResource( 8 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 336.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 336.0
+margin_bottom = 45.0
+theme = ExtResource( 7 )
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 9.0
+margin_top = 5.0
+margin_right = 42.0
+margin_bottom = 40.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
+anchor_top = 0.18
+anchor_right = 0.6
+anchor_bottom = 0.5
+margin_left = 44.0
+margin_top = -6.99472
+margin_right = 110.0
+margin_bottom = 13.1653
+mouse_filter = 2
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Food Name"
+clip_text = true
+
+[node name="filter" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 235.0
+margin_top = 5.0
+margin_right = 327.0
+margin_bottom = 40.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "FOODFILTERALLOWED"
+align = 1
+
+[node name="food_love" type="Control" parent="."]
+margin_left = 32.0
+margin_top = 413.0
+margin_right = 67.0
+margin_bottom = 448.0
+rect_min_size = Vector2( 35, 35 )
+
+[node name="Button" type="TextureRect" parent="food_love"]
+visible = false
+margin_left = 0.0
+margin_top = 2.0
+margin_right = 35.0
+margin_bottom = 37.0
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="food_love"]
+margin_left = 45.0
+margin_top = 1.0
+margin_right = 264.0
+margin_bottom = 35.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "FOODLIKEDTYPE"
+
+[node name="food_consumption" type="Label" parent="."]
+margin_left = 32.0
+margin_top = 454.0
+margin_right = 296.0
+margin_bottom = 489.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "FOODDEMAND"
+clip_text = true
+
+[node name="Label" type="Label" parent="food_consumption"]
+margin_left = 180.0
+margin_right = 264.0
+margin_bottom = 35.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "FOODDEMANDBASIC"
+align = 1
+
+[node name="close" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -178.0
+margin_top = -85.0
+margin_right = 182.0
+margin_bottom = -27.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="close"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "OPTCLOSE"
+align = 1
+valign = 1
+clip_text = true

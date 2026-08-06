@@ -72,7 +72,38 @@ func fix_serialization():
 		if !ResourceScripts.game_res.materials.keys().has(item):
 			ResourceScripts.game_res.materials[item] = 0
 			print_debug("Added res on load: " + item)
+	fix_food_task_limits()
 #	fix_items_inventory(false)
+
+
+#Task progress limits are serialized. Refresh food tasks so existing saves adopt economy
+#changes while keeping the same completion percentage for work already performed.
+func fix_food_task_limits():
+	for task_id in tasks_progresses:
+		var task_progress = tasks_progresses[task_id]
+		var new_limit = null
+		match task_progress.type:
+			'gather':
+				if Items.materiallist.has(task_progress.job) and Items.materiallist[task_progress.job].type == 'food':
+					var template_id = tasks.find_task_for_res(task_progress.job)
+					if template_id != null:
+						new_limit = tasks.tasklist[template_id].progress_per_item
+			'gather_simple', 'gather_limited':
+				if Items.materiallist.has(task_progress.job) and Items.materiallist[task_progress.job].type == 'food':
+					new_limit = Items.materiallist[task_progress.job].progress_per_item
+			'progress_item':
+				if Items.recipes.has(task_progress.id):
+					var recipe = Items.recipes[task_progress.id]
+					if recipe.resultitemtype == 'material' and Items.materiallist.has(recipe.resultitem) and Items.materiallist[recipe.resultitem].type == 'food':
+						new_limit = recipe.workunits
+		if new_limit == null or !task_progress.has('progress_limit'):
+			continue
+		var old_limit = float(task_progress.progress_limit)
+		if is_equal_approx(old_limit, float(new_limit)):
+			continue
+		if old_limit > 0.0 and task_progress.has('progress'):
+			task_progress.progress = float(task_progress.progress) * float(new_limit) / old_limit
+		task_progress.progress_limit = new_limit
 
 func serialize():
 #	fix_items_inventory(true)
@@ -454,17 +485,24 @@ func _active_task_find(list):
 
 func clean_task(id):
 	var val = tasks_progresses[id]
+	var was_on_screen = false
 	if val.has('workers'):
+		was_on_screen = !val.workers.empty()
 		for ch_id in val.workers.duplicate():
 			var tchar = characters_pool.get_char_by_id(ch_id)
 			tchar.remove_from_task()
 	match val.type:
 		'progress_item':
 			crafting_lists[val.job].erase(id)
+			was_on_screen = true #craft orders are listed whether or not anyone is on them
 	if active_tasks.has(val.id):
 		active_tasks[val.id].erase(id)
 	tasks_progresses.erase(id)
-	globals.emit_signal("task_removed")
+	#An unstaffed task changed nobody's work and was never drawn - every section of the task
+	#info panel skips tasks with an empty worker list. Staying quiet for those is what keeps
+	#opening a job panel from costing a full slave list rebuild per scaffolding task.
+	if was_on_screen:
+		globals.emit_signal("task_removed")
 
 
 func tasks_cleanup():
@@ -475,6 +513,22 @@ func tasks_cleanup():
 				val.status = 'active'
 		if val.status in ['completed', 'temporal']:
 			clean_task(id)
+
+
+#Temporal tasks are scaffolding: the job and location panels create one per selectable job
+#so their buttons have something to bind to. Whatever the player staffed becomes a real
+#task, the rest are dead weight. Dropping them when the panel closes keeps a dozen throwaway
+#tasks from riding along to the next turn and being culled in the middle of the tick.
+#Same rules as the temporal half of tasks_cleanup, without touching completed tasks.
+func drop_unused_temp_tasks():
+	for id in tasks_progresses.keys().duplicate():
+		var val = tasks_progresses[id]
+		if val.status != 'temporal':
+			continue
+		if val.has('workers') and !val.workers.empty():
+			val.status = 'active'
+			continue
+		clean_task(id)
 
 
 func remove_tasks_for_location(location):
@@ -886,7 +940,7 @@ func set_material(material, operant, value):
 func get_food():
 	var counter = 0
 	for i in materials:
-		if Items.materiallist[i].type == 'food' && i != 'grain':
+		if Items.materiallist[i].type == 'food':
 			counter += materials[i]
 	return counter
 

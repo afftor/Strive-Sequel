@@ -13,6 +13,7 @@ var input_locked = false
 var labels_dirty = false
 var turn_started_at = 0
 var sky_anim_token = 0
+var travel_arrival_sound_pending = false
 #only escape if the turn coroutine ever dies mid-way (input is blocked while it runs).
 #a 60-character turn measures ~2s, so this is ~13x the realistic worst case
 const TURN_WATCHDOG_MSEC = 30000
@@ -38,6 +39,7 @@ func _ready():
 	$TimeNode/gold.connect("mouse_entered", self, "show_gold_tooltip")
 	globals.connecttexttooltip($TimeNode/timetooltip, tr("TIME_TOOLTIP"))
 	globals.connect("update_clock", self, 'request_labels_update')
+	globals.connect("travel_completed", self, 'queue_travel_arrival_sound')
 	ext_block.connect("pressed", self, "on_ext_block_press")
 #	$TimeNode/Date.text = "D: " + str(ResourceScripts.game_globals.date)
 #	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
@@ -159,6 +161,13 @@ func request_labels_update():
 	labels_dirty = true
 
 
+func queue_travel_arrival_sound():
+	#Travel completion is processed once per character. Defer its shared cue until the
+	#whole turn is done so simultaneous arrivals do not create overlapping sounds.
+	if turn_in_progress:
+		travel_arrival_sound_pending = true
+
+
 func _process(delta): #nearly obsolete
 	if labels_dirty:
 		labels_dirty = false
@@ -206,6 +215,7 @@ func advance_turn(amount = 1):
 
 	turn_in_progress = true
 	turn_started_at = OS.get_ticks_msec()
+	travel_arrival_sound_pending = false
 	set_input_lock(true)
 	input_handler.PlaySound("mansion_turn_end")
 
@@ -231,6 +241,12 @@ func advance_turn(amount = 1):
 	move_sky(cur_time, ntime, init_delay)
 	yield(get_tree(), 'idle_frame') #let the first animated frame render before working
 
+	#gathering/farming/crafting all land as plain += on the resource pool during the tick,
+	#so the only reliable way to show what came in is to diff it across the whole turn
+	#TEMP disabled for freeze testing - restore together with the show_turn_gains call below
+#	var materials_before = ResourceScripts.game_res.materials.duplicate()
+#	var gold_before = ResourceScripts.game_res.money
+
 	#reworked
 	continue_timer = false
 	var requested = amount
@@ -255,13 +271,46 @@ func advance_turn(amount = 1):
 
 	yield(get_tree(), 'idle_frame')
 	update_labels()
+#	show_turn_gains(materials_before, gold_before) #TEMP disabled for freeze testing
 	yield(get_tree(), 'idle_frame')
 	if gui_controller.mansion != null and is_instance_valid(gui_controller.mansion) and !gui_controller.mansion.is_queued_for_deletion():
 		var day_passed = ResourceScripts.game_globals.date != start_date
 		yield(gui_controller.mansion.rebuild_after_turn(day_passed), 'completed')
 	turn_in_progress = false
 	set_input_lock(false)
+	if travel_arrival_sound_pending:
+		travel_arrival_sound_pending = false
+		input_handler.PlaySound("ding")
 #	set_sky_pos()
+
+
+#A turn can touch a dozen resources. Show only the biggest few so the end of every turn
+#stays a glance-sized "something came in" and not an itemised receipt flying across the screen.
+const TURN_GAIN_ICONS = 3
+
+func show_turn_gains(materials_before, gold_before):
+	if ResourceScripts.core_animations.get_flight_overlay() == null:
+		return
+	var source = $TimeNode/HBoxContainer/finish_turn
+	var gained = []
+	var current = ResourceScripts.game_res.materials
+	for res in current:
+		var diff = current[res] - materials_before.get(res, 0)
+		if diff > 0:
+			gained.append({code = res, diff = diff})
+	gained.sort_custom(self, "sort_gains_desc")
+
+	var delay = 0.0
+	for i in range(min(gained.size(), TURN_GAIN_ICONS)):
+		ResourceScripts.core_animations.ItemFlightMaterial(gained[i].code, source,
+			{delay = delay, amount = gained[i].diff})
+		delay += 0.12
+	if ResourceScripts.game_res.money > gold_before:
+		ResourceScripts.core_animations.ItemFlightGold(source, {delay = delay})
+
+
+func sort_gains_desc(first, second):
+	return first.diff > second.diff
 
 
 func update_labels():

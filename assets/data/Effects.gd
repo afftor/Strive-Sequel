@@ -366,7 +366,7 @@ var effect_table = {
 			{code = 'stat', stat = 'fed', operant = 'gt', value = 0},
 			{code = 'stat', stat = 'last_meal_type', operant = 'eq', value = 'e_food_meat'},
 			],
-		statchanges = {damage_mod_all = 0.05, hpmax_add_part = 0.05},
+		statchanges = {hpmax_add_part = 0.03},
 		tags = ['food_buff'],
 		buffs = [
 			{
@@ -385,7 +385,7 @@ var effect_table = {
 			{code = 'stat', stat = 'fed', operant = 'gt', value = 0},
 			{code = 'stat', stat = 'last_meal_type', operant = 'eq', value = 'e_food_fish'},
 			],
-		statchanges = {mpmax_add_part = 0.1, exp_gain_mod = 0.05},
+		statchanges = {mp_reg_add = 0.5},
 		tags = ['food_buff'],
 		buffs = [
 			{
@@ -404,7 +404,7 @@ var effect_table = {
 			{code = 'stat', stat = 'fed', operant = 'gt', value = 0},
 			{code = 'stat', stat = 'last_meal_type', operant = 'eq', value = 'e_food_vege'},
 			],
-		statchanges = {hp_reg_add_part = 0.25, resist_poison = 10},
+		statchanges = {exp_gain_mod = 0.01},
 		tags = ['food_buff'],
 		buffs = [
 			{
@@ -423,12 +423,156 @@ var effect_table = {
 			{code = 'stat', stat = 'fed', operant = 'gt', value = 0},
 			{code = 'stat', stat = 'last_meal_type', operant = 'eq', value = 'e_food_grain'},
 			],
-		statchanges = {productivity = 0.05},
+		tags = ['food_buff'],
+		buffs = [],
+	},
+	e_food_fishcakes = {
+		type = 'base',
+		stack = 'food',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'fed', operant = 'gt', value = 0},
+			{code = 'stat', stat = 'last_meal_type', operant = 'eq', value = 'e_food_fishcakes'},
+			],
+		statchanges = {mp_reg_add = 2, matk = 5},
 		tags = ['food_buff'],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsitems/item_grain.png",
-				description = "TRAITEFFECTFOODGRAIN",
+				icon = "res://assets/images/iconsitems/item_cake.png",
+				description = "TRAITEFFECTFOODFISHCAKES",
+				tags = ['mansion_only'],
+				bonuseffect = 'fed',
+			}
+		],
+	},
+	e_food_meatsoup = {
+		type = 'base',
+		stack = 'food',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'fed', operant = 'gt', value = 0},
+			{code = 'stat', stat = 'last_meal_type', operant = 'eq', value = 'e_food_meatsoup'},
+			],
+		statchanges = {hpmax_add_part = 0.05, productivity = 0.05},
+		tags = ['food_buff'],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsitems/item_soup.png",
+				description = "TRAITEFFECTFOODMEATSOUP",
+				tags = ['mansion_only'],
+				bonuseffect = 'fed',
+			}
+		],
+	},
+	e_food_curry = {
+		type = 'base',
+		stack = 'food',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'fed', operant = 'gt', value = 0},
+			{code = 'stat', stat = 'last_meal_type', operant = 'eq', value = 'e_food_curry'},
+			],
+		statchanges = {atk = 3, matk = 3},
+		tags = ['food_buff'],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsitems/item_curry.png",
+				description = "TRAITEFFECTFOODCURRY",
+				tags = ['mansion_only'],
+				bonuseffect = 'fed',
+			}
+		],
+	},
+	e_food_vegetable_stirfry = {
+		type = 'base',
+		stack = 'food',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'fed', operant = 'gt', value = 0},
+			{code = 'stat', stat = 'last_meal_type', operant = 'eq', value = 'e_food_vegetable_stirfry'},
+			],
+		statchanges = {exp_gain_mod = 0.05, armor = 5},
+		tags = ['food_buff'],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsitems/item_curry.png",
+				description = "TRAITEFFECTFOODVEGETABLESTIRFRY",
+				tags = ['mansion_only'],
+				bonuseffect = 'fed',
+			}
+		],
+	},
+	e_food_roasted_feast = {
+		type = 'base',
+		stack = 'food',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'fed', operant = 'gt', value = 0},
+			{code = 'stat', stat = 'last_meal_type', operant = 'eq', value = 'e_food_roasted_feast'},
+			],
+		statchanges = {atk = 6, critchance = 3},
+		tags = ['food_buff'],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsitems/item_meat.png",
+				description = "TRAITEFFECTFOODROASTEDFEAST",
+				tags = ['mansion_only'],
+				bonuseffect = 'fed',
+			}
+		],
+	},
+	e_food_miners_lunch = {
+		type = 'base',
+		stack = 'food',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'fed', operant = 'gt', value = 0},
+			{code = 'stat', stat = 'last_meal_type', operant = 'eq', value = 'e_food_miners_lunch'},
+			],
+		statchanges = {productivity = 0.1, exp_gain_mod = 0.05},
+		tags = ['food_buff'],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsitems/item_bread.png",
+				description = "TRAITEFFECTFOODMINERSLUNCH",
+				tags = ['mansion_only'],
+				bonuseffect = 'fed',
+			}
+		],
+	},
+	e_food_fried_salmon = {
+		type = 'base',
+		stack = 'food',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'fed', operant = 'gt', value = 0},
+			{code = 'stat', stat = 'last_meal_type', operant = 'eq', value = 'e_food_fried_salmon'},
+			],
+		statchanges = {matk = 5, mp_reg_add_part = 0.25},
+		tags = ['food_buff'],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsitems/item_friedfish.png",
+				description = "TRAITEFFECTFOODFRIEDSALMON",
+				tags = ['mansion_only'],
+				bonuseffect = 'fed',
+			}
+		],
+	},
+	e_food_defenders_meal = {
+		type = 'base',
+		stack = 'food',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'fed', operant = 'gt', value = 0},
+			{code = 'stat', stat = 'last_meal_type', operant = 'eq', value = 'e_food_defenders_meal'},
+			],
+		statchanges = {hpmax = 15, damage_reduction = 5, counterattacks_max = 1},
+		tags = ['food_buff'],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsitems/item_vege.png",
+				description = "TRAITEFFECTFOODDEFENDERSMEAL",
 				tags = ['mansion_only'],
 				bonuseffect = 'fed',
 			}

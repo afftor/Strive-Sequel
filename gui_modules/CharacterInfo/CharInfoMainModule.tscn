@@ -1,8 +1,9 @@
-[gd_scene load_steps=215 format=2]
+[gd_scene load_steps=216 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=2]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSummaryModule.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gui_modules/CharacterInfo/FoodPreferencesPanel.tscn" type="PackedScene" id=250]
 [ext_resource path="res://gui_modules/CharacterInfo/CharInfoMainModule.gd" type="Script" id=4]
 [ext_resource path="res://assets/Themes_v2/MANSION/CharInfoMainPanel.tres" type="StyleBox" id=5]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_32.tres" type="DynamicFont" id=6]
@@ -365,6 +366,8 @@ margin_left = 15.0
 margin_top = 15.0
 margin_right = 235.0
 margin_bottom = 1065.0
+
+[node name="FoodPreferencesPanel" parent="." instance=ExtResource( 250 )]
 
 [node name="SlaveBodyModule" type="Panel" parent="."]
 light_mask = 0
@@ -779,7 +782,7 @@ text = "Lorem Ipsum
 anchor_top = 0.889
 anchor_right = 1.102
 anchor_bottom = 1.0
-margin_left = 284.0
+margin_left = 435.0
 margin_top = -18.188
 margin_right = 9.17798
 margin_bottom = -45.0
@@ -787,7 +790,7 @@ theme = ExtResource( 19 )
 scroll_vertical_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SlaveInfoModule/TraitContainer"]
-margin_right = 674.0
+margin_right = 523.0
 size_flags_horizontal = 3
 custom_constants/separation = 5
 alignment = 1
@@ -873,7 +876,7 @@ __meta__ = {
 anchor_top = 0.889
 anchor_right = 1.102
 anchor_bottom = 1.0
-margin_left = 284.0
+margin_left = 435.0
 margin_top = 40.812
 margin_right = 9.17798
 margin_bottom = 14.0
@@ -881,7 +884,7 @@ theme = ExtResource( 19 )
 scroll_vertical_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SlaveInfoModule/TraitContainer2"]
-margin_right = 674.0
+margin_right = 523.0
 size_flags_horizontal = 3
 custom_constants/separation = 5
 
@@ -1586,12 +1589,86 @@ align = 1
 clip_text = true
 
 [node name="TraitsLabel" type="Label" parent="SlaveInfoModule"]
-margin_left = 288.0
+margin_left = 435.0
 margin_top = 568.0
 margin_right = 944.0
 margin_bottom = 600.0
 text = "TRAITS"
 align = 1
+
+[node name="FoodPanelDivider" type="TextureRect" parent="SlaveInfoModule"]
+margin_left = 425.0
+margin_top = 568.0
+margin_right = 431.0
+margin_bottom = 692.0
+mouse_filter = 2
+texture = ExtResource( 110 )
+expand = true
+stretch_mode = 1
+
+[node name="FoodPreference" type="Control" parent="SlaveInfoModule"]
+margin_left = 288.0
+margin_top = 568.0
+margin_right = 421.0
+margin_bottom = 603.0
+
+[node name="Icon" type="TextureRect" parent="SlaveInfoModule/FoodPreference"]
+margin_right = 35.0
+margin_bottom = 35.0
+mouse_filter = 2
+texture = ExtResource( 24 )
+expand = true
+stretch_mode = 6
+
+[node name="Value" type="Label" parent="SlaveInfoModule/FoodPreference"]
+margin_left = 38.0
+margin_right = 133.0
+margin_bottom = 35.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 14 )
+text = ""
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="LastMeal" type="Control" parent="SlaveInfoModule"]
+margin_left = 288.0
+margin_top = 605.0
+margin_right = 421.0
+margin_bottom = 640.0
+
+[node name="FoodPreferencesButton" type="Button" parent="SlaveInfoModule"]
+margin_left = 288.0
+margin_top = 646.0
+margin_right = 421.0
+margin_bottom = 690.0
+theme = ExtResource( 127 )
+custom_fonts/font = ExtResource( 14 )
+text = "MSLMFOOD"
+clip_text = true
+
+[node name="Icon" type="TextureRect" parent="SlaveInfoModule/LastMeal"]
+margin_right = 35.0
+margin_bottom = 35.0
+mouse_filter = 2
+texture = ExtResource( 24 )
+expand = true
+stretch_mode = 6
+
+[node name="Value" type="Label" parent="SlaveInfoModule/LastMeal"]
+margin_left = 38.0
+margin_right = 133.0
+margin_bottom = 35.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 14 )
+text = ""
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
 
 [node name="SexTraitsPanel" type="Panel" parent="SlaveInfoModule"]
 visible = false

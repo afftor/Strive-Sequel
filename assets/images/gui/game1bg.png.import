@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon_grain.png-c596a1ac08b0604a1d2eba42da9e02e9.stex"
+path="res://.import/game1bg.png-eb757d735c82e91adfae2c5e20c3ec5e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/gui icons/icon_grain.png"
-dest_files=[ "res://.import/icon_grain.png-c596a1ac08b0604a1d2eba42da9e02e9.stex" ]
+source_file="res://assets/images/gui/game1bg.png"
+dest_files=[ "res://.import/game1bg.png-eb757d735c82e91adfae2c5e20c3ec5e.stex" ]
 
 [params]
 

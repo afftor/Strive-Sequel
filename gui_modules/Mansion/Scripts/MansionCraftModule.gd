@@ -717,6 +717,8 @@ func CreateItem():
 	yield(get_tree().create_timer(time), 'timeout')
 	$NumberSelect/CraftProgress.value = 0
 	input_handler.SystemMessage(tr("ITEMCREATED") +": " + enditem.name)
+	#before the item is added: merging into an existing stack zeroes enditem.amount
+	ResourceScripts.core_animations.ItemFlight(enditem, $NumberSelect, {amount = enditem.amount})
 	globals.AddItemToInventory(enditem)
 	selectcraftitem(Items.itemlist[itemtemplate])
 	$NumberSelect.hide()

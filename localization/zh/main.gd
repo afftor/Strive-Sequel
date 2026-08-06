@@ -118,6 +118,7 @@ https://freesound.org/people/pfranzen/sounds/192072/""",
 	OPTGRAPHICDISABLEANIMATIONBACKGROUNDS = """禁用动画背景""",
 	OPTDISABLEPAPERDOLL = """禁用人物肖像""",
 	OPTDISABLEDAMAGESHAKE = """禁用受击抖动""",
+	OPTDISABLEITEMFLIGHT = """Disable item pickup animation""", # MISSING TRANSLATION
 	OPTCHEATENTERCODE = """输入代码""",
 	OPTCHEATACTIVATE = """激活""",
 	OPTCHEATGETCODE = """获取代码""",
@@ -401,6 +402,7 @@ TUTORIALINFOQUESTION = """这是你第一次游玩《Strive: Conquest》吗？""
 	MSLMTYPE = """类型""",
 	MSLMINV = """装备""",
 	MSLMFOOD = """Food""", # MISSING TRANSLATION
+	MSLMSORTHINT = """Click to sort by this column, click again to reverse it, once more to go back to your own order.""", # MISSING TRANSLATION
 	LVLBONUSPERPOINT = """每点加成""",
 	LVLCURRENT = """当前""",
 	LVLTOTALPOINTS = """总点数""",
@@ -735,9 +737,33 @@ MATERIALMEATSOUP = """肉汤""",
 	MATERIALCURRY = """咖喱""",
 	MATERIALCURRYDESCRIPT = """一碗风味浓郁的谷物与肉类料理。
 食物类型：肉类、谷物""",
+	MATERIALVEGETABLE_STIRFRY = """Vegetable Stir-Fry""", # MISSING TRANSLATION
+	MATERIALVEGETABLE_STIRFRYDESCRIPT = """Fresh vegetables seared with fragrant seasonings. Produced by cooking.
+Food type: Vegetables.""", # MISSING TRANSLATION
+	MATERIALROASTED_FEAST = """Roasted Feast""", # MISSING TRANSLATION
+	MATERIALROASTED_FEASTDESCRIPT = """A generous platter of roasted meat with hearty sides. Produced by cooking.
+Food type: Meat.""", # MISSING TRANSLATION
+	MATERIALMINERS_LUNCH = """Miner's Lunch""", # MISSING TRANSLATION
+	MATERIALMINERS_LUNCHDESCRIPT = """A filling grain-based lunch made for long shifts underground. Produced by cooking.
+Food type: Grains.""", # MISSING TRANSLATION
+	MATERIALVEGETABLESTIRFRY = """Vegetable Stir-Fry""", # MISSING TRANSLATION
+	MATERIALVEGETABLESTIRFRYDESCRIPT = """Fresh vegetables seared with fragrant seasonings. Produced by cooking.
+Food type: Vegetables.""", # MISSING TRANSLATION
+	MATERIALROASTEDFEAST = """Roasted Feast""", # MISSING TRANSLATION
+	MATERIALROASTEDFEASTDESCRIPT = """A generous platter of roasted meat with hearty sides. Produced by cooking.
+Food type: Meat.""", # MISSING TRANSLATION
+	MATERIALMINERSLUNCH = """Miner's Lunch""", # MISSING TRANSLATION
+	MATERIALMINERSLUNCHDESCRIPT = """A filling grain-based lunch made for long shifts underground. Produced by cooking.
+Food type: Grains.""", # MISSING TRANSLATION
 	MATERIALFRIEDFISH = """炸鱼""",
 	MATERIALFRIEDFISHDESCRIPT = """搭配蔬菜的煎鱼料理，专为挑食的兽娘设计。
 食物类型：鱼类、蔬菜""",
+	MATERIALDEFENDERS_MEAL = """Defender's Meal""", # MISSING TRANSLATION
+	MATERIALDEFENDERS_MEALDESCRIPT = """A substantial vegetable meal prepared for those holding the line. Produced by cooking.
+Food type: Vegetables.""", # MISSING TRANSLATION
+	MATERIALDEFENDERSMEAL = """Defender's Meal""", # MISSING TRANSLATION
+	MATERIALDEFENDERSMEALDESCRIPT = """A substantial vegetable meal prepared for those holding the line. Produced by cooking.
+Food type: Vegetables.""", # MISSING TRANSLATION
 	MATERIALSTONE = """粗石""",
 	MATERIALSTONEADJ = """石材""",
 	MATERIALSTONEDESCRIPT = """石材有多种形态，可用作建筑材料或低品质工具。通过采矿获得。""",
@@ -1370,6 +1396,7 @@ MATERIALMEATSOUP = """肉汤""",
 	QUESTPARTREQUIREMENTS = """部件需求""",
 	QUESTCOMPLETEQUESTLOC = """完成任务地牢""",
 	QUESTCOMPLETEQUESTLOC2 = """完成任务地牢于""",
+	QUESTCOMPLETEQUESTENC = """Complete quest encounter""", # MISSING TRANSLATION
 	QUESTREQUIRED = """需求""",
 	QUESTSLAVEREQUIRED = """需求奴隶""",
 	QUESTSTATS = """属性""",
@@ -4638,6 +4665,14 @@ The last hit deals increased damage.
 	TRAITEFFECTFOODMEAT = """Well Fed (Meat): +5%% Damage, +5%% Max Health""", # MISSING TRANSLATION
 	TRAITEFFECTFOODFISH = """Well Fed (Fish): +10%% Max Mana, +5%% Experience Gain""", # MISSING TRANSLATION
 	TRAITEFFECTFOODVEGE = """Well Fed (Vegetables): +25%% Health Regeneration, +10 Poison Resistance""", # MISSING TRANSLATION
+	TRAITEFFECTFOODFISHCAKES = """Well Fed (Fish Cakes): +2 Mana Regeneration, +5 Magic Attack""", # MISSING TRANSLATION
+	TRAITEFFECTFOODMEATSOUP = """Well Fed (Meat Soup): +5%% Max Health, +5%% Productivity""", # MISSING TRANSLATION
+	TRAITEFFECTFOODCURRY = """Well Fed (Curry): +3 Attack, +3 Magic Attack""", # MISSING TRANSLATION
+	TRAITEFFECTFOODVEGETABLESTIRFRY = """Well Fed (Vegetable Stir-Fry): +5%% Experience Gain, +5 Armor""", # MISSING TRANSLATION
+	TRAITEFFECTFOODROASTEDFEAST = """Well Fed (Roasted Feast): +6 Attack, +3%% Critical Chance""", # MISSING TRANSLATION
+	TRAITEFFECTFOODMINERSLUNCH = """Well Fed (Miner's Lunch): +10%% Productivity, +5%% Experience Gain""", # MISSING TRANSLATION
+	TRAITEFFECTFOODFRIEDSALMON = """Well Fed (Fried Salmon): +5 Magic Attack, +25%% Mana Regeneration""", # MISSING TRANSLATION
+	TRAITEFFECTFOODDEFENDERSMEAL = """Well Fed (Defender's Meal): +15 Health, +5%% Damage Reduction, +1 Counterattack""", # MISSING TRANSLATION
 	TRAITEFFECTFOODGRAIN = """Well Fed (Grains): +5%% Productivity""", # MISSING TRANSLATION
 	TRAITEFFECTGRAVEINJ = """重伤：-25%% 生产力，-50%% 性能力。无法参加战斗""",
 	TRAITEFFECTINJ = """受伤：-30%% 最大生命值，-20 命中率。""",
@@ -9792,6 +9827,7 @@ ACHIBONUS_HELEVIEL_START_DESC = """在拥有赫蕾维尔的情况下开始新游
 	TUTORIAL_TRAINING4 = """你使用的技能将进入冷却时间，并且你会收到一份简短的报告，许多类似的操作也是如此。""",
 	TUTORIAL_TRAINING5 = """另一个重要的功能是角色列表顶部的角色设置。你可以在这里自定义各种行为和任务，但现在我们将先设置一些基本的饮食规则。""",
 	TUTORIAL_TRAINING6 = """默认情况下，角色的饮食规则会根据其喜好进行设置，但你也可以对其进行进一步自定义。点击某个食物选项将循环切换该角色对它的优先度。""",
+	TUTORIAL_TRAINING7 = """Click a food to allow or forbid it for this character.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING8 = """完成设置后，让我们切换回默认菜单。""",
 	TUTORIAL_TRAINING9 = """选择黛西（Daisy）以查看她的详细信息。""",
 	TUTORIAL_TRAINING10 = """你可以通过双击或使用“角色信息”按钮来打开角色窗口。""",

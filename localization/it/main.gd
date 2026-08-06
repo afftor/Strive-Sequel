@@ -118,6 +118,7 @@ A new empty mods.ini has been created. Please re-enable compatible mods from the
 	OPTGRAPHICDISABLEANIMATIONBACKGROUNDS = "Disabilita gli sfondi delle animazioni",
 	OPTDISABLEPAPERDOLL = "Disabilita gli sprite generati",
 	OPTDISABLEDAMAGESHAKE = "Disabilita il tremolio da danno",
+	OPTDISABLEITEMFLIGHT = """Disable item pickup animation""", # MISSING TRANSLATION
 	OPTCHEATENTERCODE = "Inserisci il codice",
 	OPTCHEATACTIVATE = "Attivare",
 	OPTCHEATGETCODE = "Ottieni codice",
@@ -399,6 +400,7 @@ ma manterrà comunque tutti i tuoi personaggi, oggetti e inventario. Usa questa 
 	MSLMTYPE = "Tipo",
 	MSLMINV = "Equip",
 	MSLMFOOD = """Food""", # MISSING TRANSLATION
+	MSLMSORTHINT = """Click to sort by this column, click again to reverse it, once more to go back to your own order.""", # MISSING TRANSLATION
 	LVLBONUSPERPOINT = "Bonus per punto",
 	LVLCURRENT = "Corrente",
 	LVLTOTALPOINTS = "Punti Totali",
@@ -734,9 +736,33 @@ Tipo di cibo: Pesce, Cereali.""",
 	MATERIALCURRY = "Curry", #
 	MATERIALCURRYDESCRIPT = """Una ciotola di cereali e carne ricca di un sapore deciso.
 Tipo di alimento: Carne, Cereali.""",
+	MATERIALVEGETABLE_STIRFRY = """Vegetable Stir-Fry""", # MISSING TRANSLATION
+	MATERIALVEGETABLE_STIRFRYDESCRIPT = """Fresh vegetables seared with fragrant seasonings. Produced by cooking.
+Food type: Vegetables.""", # MISSING TRANSLATION
+	MATERIALROASTED_FEAST = """Roasted Feast""", # MISSING TRANSLATION
+	MATERIALROASTED_FEASTDESCRIPT = """A generous platter of roasted meat with hearty sides. Produced by cooking.
+Food type: Meat.""", # MISSING TRANSLATION
+	MATERIALMINERS_LUNCH = """Miner's Lunch""", # MISSING TRANSLATION
+	MATERIALMINERS_LUNCHDESCRIPT = """A filling grain-based lunch made for long shifts underground. Produced by cooking.
+Food type: Grains.""", # MISSING TRANSLATION
+	MATERIALVEGETABLESTIRFRY = """Vegetable Stir-Fry""", # MISSING TRANSLATION
+	MATERIALVEGETABLESTIRFRYDESCRIPT = """Fresh vegetables seared with fragrant seasonings. Produced by cooking.
+Food type: Vegetables.""", # MISSING TRANSLATION
+	MATERIALROASTEDFEAST = """Roasted Feast""", # MISSING TRANSLATION
+	MATERIALROASTEDFEASTDESCRIPT = """A generous platter of roasted meat with hearty sides. Produced by cooking.
+Food type: Meat.""", # MISSING TRANSLATION
+	MATERIALMINERSLUNCH = """Miner's Lunch""", # MISSING TRANSLATION
+	MATERIALMINERSLUNCHDESCRIPT = """A filling grain-based lunch made for long shifts underground. Produced by cooking.
+Food type: Grains.""", # MISSING TRANSLATION
 	MATERIALFRIEDFISH = "Frittura di pesce",
 	MATERIALFRIEDFISHDESCRIPT = """Un piatto di pesce fritto con verdure inventato per sfamare le schizzinose mangiatrici bestiali.
 Tipo di cibo: Pesce, Verdure.""",
+	MATERIALDEFENDERS_MEAL = """Defender's Meal""", # MISSING TRANSLATION
+	MATERIALDEFENDERS_MEALDESCRIPT = """A substantial vegetable meal prepared for those holding the line. Produced by cooking.
+Food type: Vegetables.""", # MISSING TRANSLATION
+	MATERIALDEFENDERSMEAL = """Defender's Meal""", # MISSING TRANSLATION
+	MATERIALDEFENDERSMEALDESCRIPT = """A substantial vegetable meal prepared for those holding the line. Produced by cooking.
+Food type: Vegetables.""", # MISSING TRANSLATION
 	MATERIALSTONE = "Pietra grezza",
 	MATERIALSTONEADJ = "Pietra",
 	MATERIALSTONEDESCRIPT = "La pietra si presenta in molte forme e dimensioni. Può servire come buon materiale da costruzione o anche per strumenti di bassa qualità. Ottenuta dall'estrazione mineraria. ",
@@ -1369,6 +1395,7 @@ Tasto di scelta rapida: 3""",
 	QUESTPARTREQUIREMENTS = "Requisiti delle parti",
 	QUESTCOMPLETEQUESTLOC = "Completa il dungeon della missione",
 	QUESTCOMPLETEQUESTLOC2 = "Completa il dungeon della missione a",
+	QUESTCOMPLETEQUESTENC = """Complete quest encounter""", # MISSING TRANSLATION
 	QUESTREQUIRED = "Obbligatorio",
 	QUESTSLAVEREQUIRED = "Slave richiesto",
 	QUESTSTATS = "Statistiche",
@@ -4615,6 +4642,14 @@ Aumento della Salute, DEF e MDEF""",
 	TRAITEFFECTFOODMEAT = """Well Fed (Meat): +5%% Damage, +5%% Max Health""", # MISSING TRANSLATION
 	TRAITEFFECTFOODFISH = """Well Fed (Fish): +10%% Max Mana, +5%% Experience Gain""", # MISSING TRANSLATION
 	TRAITEFFECTFOODVEGE = """Well Fed (Vegetables): +25%% Health Regeneration, +10 Poison Resistance""", # MISSING TRANSLATION
+	TRAITEFFECTFOODFISHCAKES = """Well Fed (Fish Cakes): +2 Mana Regeneration, +5 Magic Attack""", # MISSING TRANSLATION
+	TRAITEFFECTFOODMEATSOUP = """Well Fed (Meat Soup): +5%% Max Health, +5%% Productivity""", # MISSING TRANSLATION
+	TRAITEFFECTFOODCURRY = """Well Fed (Curry): +3 Attack, +3 Magic Attack""", # MISSING TRANSLATION
+	TRAITEFFECTFOODVEGETABLESTIRFRY = """Well Fed (Vegetable Stir-Fry): +5%% Experience Gain, +5 Armor""", # MISSING TRANSLATION
+	TRAITEFFECTFOODROASTEDFEAST = """Well Fed (Roasted Feast): +6 Attack, +3%% Critical Chance""", # MISSING TRANSLATION
+	TRAITEFFECTFOODMINERSLUNCH = """Well Fed (Miner's Lunch): +10%% Productivity, +5%% Experience Gain""", # MISSING TRANSLATION
+	TRAITEFFECTFOODFRIEDSALMON = """Well Fed (Fried Salmon): +5 Magic Attack, +25%% Mana Regeneration""", # MISSING TRANSLATION
+	TRAITEFFECTFOODDEFENDERSMEAL = """Well Fed (Defender's Meal): +15 Health, +5%% Damage Reduction, +1 Counterattack""", # MISSING TRANSLATION
 	TRAITEFFECTFOODGRAIN = """Well Fed (Grains): +5%% Productivity""", # MISSING TRANSLATION
 	TRAITEFFECTGRAVEINJ = "Grave infortunio: -25%% di produttività, -50 sessuali. Non può partecipare al combattimento.",
 	TRAITEFFECTINJ = "Ferita: -30%% PV Max, -20 Precisione.",
@@ -9758,6 +9793,7 @@ Procedere? (il file di salvataggio originale rimarrà inalterato, ma non funzion
 	TUTORIAL_TRAINING4 = "L'abilità che hai usato andrà in ricarica, e riceverai un breve resoconto, come per molte azioni simili.",
 	TUTORIAL_TRAINING5 = "Un'altra funzione importante sono le impostazioni dei personaggi nella parte superiore dell'elenco. Puoi personalizzare vari comportamenti e compiti qui, ma per ora imposteremo alcune regole alimentari di base.",
 	TUTORIAL_TRAINING6 = "Di default, i personaggi avranno le regole alimentari impostate sulle loro preferenze, ma puoi personalizzarle ulteriormente. Cliccare su un'opzione alimentare cambierà la sua priorità per quel personaggio.",
+	TUTORIAL_TRAINING7 = """Click a food to allow or forbid it for this character.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING8 = "Ora che abbiamo finito, torniamo al menu predefinito.",
 	TUTORIAL_TRAINING9 = "Seleziona Daisy per accedere ai suoi dettagli e informazioni.",
 	TUTORIAL_TRAINING10 = "Puoi aprire la finestra di un personaggio con un doppio clic, o usando il pulsante Info Personaggio.",

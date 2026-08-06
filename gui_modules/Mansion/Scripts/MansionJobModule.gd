@@ -324,6 +324,8 @@ func select_location(location):
 
 func close_job_pannel():
 	selected_job = null
+	#the panel built a temporal task per selectable job; retire the ones nobody took
+	ResourceScripts.game_res.drop_unused_temp_tasks()
 	get_parent().SlaveListModule.update()
 	get_parent().TaskModule.update_progresses()
 #	ResourceScripts.core_animations.UnfadeAnimation(get_parent(), 0.3)

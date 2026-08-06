@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=2]
+[gd_scene load_steps=82 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=2]
@@ -67,6 +67,7 @@
 [ext_resource path="res://gui_modules/Mansion/Scripts/dragprioritytemplate.gd" type="Script" id=65]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/icon_question_small.png" type="Texture" id=66]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/arrow_navigator.png" type="Texture" id=67]
+[ext_resource path="res://assets/images/gui/game1bg2.png" type="Texture" id=68]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -114,6 +115,14 @@ margin_right = 1920.0
 margin_bottom = 1080.0
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 13 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.305882 )
+margin_right = 1916.0
+margin_bottom = 1077.0
+texture = ExtResource( 68 )
+expand = true
+stretch_mode = 6
 
 [node name="Frame" type="TextureRect" parent="."]
 margin_left = 30.0
@@ -440,6 +449,7 @@ text = "Mansion"
 
 [node name="Landscape" type="TextureRect" parent="."]
 visible = false
+self_modulate = Color( 1, 1, 1, 0.819608 )
 margin_left = 68.0
 margin_top = 270.0
 margin_right = 868.0
@@ -777,6 +787,7 @@ __meta__ = {
 
 [node name="BrothelRules" type="Panel" parent="."]
 visible = false
+self_modulate = Color( 1, 1, 1, 0.823529 )
 margin_left = 78.0
 margin_top = 274.0
 margin_right = 860.0
@@ -926,6 +937,7 @@ text = "add description"
 
 [node name="CraftRules" type="Panel" parent="."]
 visible = false
+self_modulate = Color( 1, 1, 1, 0.823529 )
 margin_left = 78.0
 margin_top = 274.0
 margin_right = 860.0
@@ -1511,6 +1523,7 @@ texture = ExtResource( 66 )
 expand = true
 
 [node name="CraftRules2" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0.823529 )
 margin_left = 78.0
 margin_top = 274.0
 margin_right = 860.0

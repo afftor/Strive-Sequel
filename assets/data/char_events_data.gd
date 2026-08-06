@@ -247,7 +247,7 @@ var list = {
 			]
 		},
 		vars = {
-			var_letter_grain = 20,
+			var_letter_grain = 5,
 			var_letter_loyalty = 5,
 			var_letter_resistance = -50,
 			var_letter_exp = 35,

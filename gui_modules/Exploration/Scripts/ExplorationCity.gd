@@ -556,6 +556,8 @@ func confirm_buy_item():
 					globals.AddItemToInventory(globals.CreateUsableItem(item_to_buy.code, items_amount))
 				'gear':
 					globals.AddItemToInventory(globals.CreateGearItemShop(item_to_buy.code, {}))
+	#the selection panel is torn down by faction_guild_shop below, so launch from it first
+	ResourceScripts.core_animations.ItemFlight(item_to_buy, $GuildShop/NumberSelection2/ItemIcon, {amount = items_amount})
 	active_faction.reputation -= active_faction.reputation_shop.items[item_to_buy.code][1] * items_amount
 	faction_guild_shop(true, current_pressed_area_btn, active_faction)
 
