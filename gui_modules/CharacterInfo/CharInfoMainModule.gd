@@ -183,7 +183,7 @@ func match_state():
 #	globals.disconnect_text_tooltip(tooltip.parentnode)
 #	tooltip.turnoff()
 #	tooltip.hide()
-	$CloseButton.visible = !ClassesModule.get_node("ClassPanel").is_visible_in_tree() #currently this is not required at all - due to similar effect of both closebuttons
+#	$CloseButton.visible = !ClassesModule.get_node("ClassPanel").is_visible_in_tree() #currently this is not required at all - due to similar effect of both closebuttons
 #	for b in SummaryModule.get_node("GridContainer").get_children():
 #		b.set_pressed(false)
 	match char_module_state:
