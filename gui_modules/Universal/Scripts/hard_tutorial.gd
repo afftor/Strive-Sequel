@@ -455,7 +455,8 @@ var tutorials = {
 		},{
 			buttons = ['quest_loc_nav_btn'],
 			text = 'TUTORIAL_COMBAT12',
-			panel_pos = Vector2(733,150)
+			panel_pos = Vector2(733,150),
+			delay = 0.5
 		},{
 			buttons = ['location_master', 'location_front_pos1', 'location_front_pos2', 'location_front_pos3'],
 			dont_listen = ['location_master'],
