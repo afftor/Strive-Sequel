@@ -1243,6 +1243,10 @@ func has_status(status):
 	var res = dyn_stats.has_status(status) or statlist.has_status(status) or tags.has(status)
 	return res
 
+func has_stored_status(status):
+	var res = dyn_stats.has_stored_status(status)
+	return res
+
 func is_combatant():
 	if get_stat('slave_class') != 'slave':
 		return has_status('combatant')
@@ -2002,7 +2006,7 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			var char_in_front = input_handler.combat_node.get_char_by_pos(position - 3)
 			if char_in_front == null:
 				return !i.check
-			check = char_in_front.has_status(i.status) == i.check
+			check = char_in_front.has_stored_status(i.status) == i.check
 		'group_amount':
 			if input_handler.combat_node == null:
 				return false

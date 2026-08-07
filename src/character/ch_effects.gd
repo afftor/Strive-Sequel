@@ -241,6 +241,10 @@ func has_status(status):
 	return false
 
 
+func has_stored_status(status):
+	return effects_temp_stored.has(status)
+
+
 func find_temp_effect_tag(eff_tag, all_flag = false):
 	var res = []
 	for rec in effects_temp_globals_real:
