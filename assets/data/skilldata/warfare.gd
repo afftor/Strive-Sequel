@@ -137,11 +137,7 @@ var skills = {
 		tags = ['damage', 'aoe'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({ #backrow target is blinded if the one shielding it is shredded
-			effect = 'blind',
-			duration = 2,
-			target_reqs = [{code = 'char_in_front_has_status', status = 'shred', check = true}],
-			})],
+		effects = ['e_s_strike_setup', 'e_s_strike_apply'],
 		cost = {mp = 3},
 		charges = 0,
 		combatcooldown = 0,
@@ -277,6 +273,40 @@ var effects = {
 				atomic = [{type = 'use_combat_skill', skill = 'execution_1'}],
 			}
 		]
+	},
+	e_s_strike_setup = {
+		type = 'trigger',
+		trigger = [variables.TR_CAST_TARGET],
+		conditions = [
+			{type = 'target', value = [{code = 'has_status', status = 'shred', check = true}]}
+		],
+		req_skill = true,
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				atomic = [{type = 'add_tag', value = 'frontline_shred'}],
+			}
+		]
+	},
+	e_s_strike_apply = {
+		type = 'trigger',
+		req_skill = true,
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'skill', value = ['tags', 'has', 'frontline_shred']},
+			{type = 'target', value = [{code = 'is_in_ranged_zone', check = true}]},
+		],
+		buffs = [],
+		sub_effects = ['blind'],
+		args = {
+			skill = {obj = 'skill', func = 'eq'},
+			caster = {obj = 'caster', func = 'eq'},
+			target = {obj = 'target', func = 'eq'},
+			receiver = {obj = 'receiver', func = 'eq'},
+			duration = {obj = 'self', func = 'dur', dur = 2}
+		},
 	},
 }
 var atomic_effects = {}
