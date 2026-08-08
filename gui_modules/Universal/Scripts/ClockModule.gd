@@ -2,6 +2,7 @@ extends Control
 
 onready var sky = $Sky
 onready var tw = $Tween
+onready var turn_gain_tw = $TurnGainTween
 onready var ext_block = $TimeNode/external_block
 var ext_blockers = []#{ref, act}
 
@@ -18,6 +19,10 @@ var travel_arrival_sound_pending = false
 #a 60-character turn measures ~2s, so this is ~13x the realistic worst case
 const TURN_WATCHDOG_MSEC = 30000
 const BUSY_MODULATE = Color(0.65, 0.65, 0.65, 1.0)
+const TURN_GAIN_DURATION = 1.35
+const TURN_GAIN_HOLD = 1.5
+const TURN_GAIN_COUNTER_RATIO = 0.72
+const TURN_GAIN_LABEL_RATIO = 0.82
 
 var atlas_pos = {
 	0: 28,
@@ -243,9 +248,8 @@ func advance_turn(amount = 1):
 
 	#gathering/farming/crafting all land as plain += on the resource pool during the tick,
 	#so the only reliable way to show what came in is to diff it across the whole turn
-	#TEMP disabled for freeze testing - restore together with the show_turn_gains call below
-#	var materials_before = ResourceScripts.game_res.materials.duplicate()
-#	var gold_before = ResourceScripts.game_res.money
+	var food_before = ResourceScripts.game_res.get_food()
+	var gold_before = ResourceScripts.game_res.money
 
 	#reworked
 	continue_timer = false
@@ -271,7 +275,7 @@ func advance_turn(amount = 1):
 
 	yield(get_tree(), 'idle_frame')
 	update_labels()
-#	show_turn_gains(materials_before, gold_before) #TEMP disabled for freeze testing
+	show_turn_gains(food_before, gold_before)
 	yield(get_tree(), 'idle_frame')
 	if gui_controller.mansion != null and is_instance_valid(gui_controller.mansion) and !gui_controller.mansion.is_queued_for_deletion():
 		var day_passed = ResourceScripts.game_globals.date != start_date
@@ -284,33 +288,82 @@ func advance_turn(amount = 1):
 #	set_sky_pos()
 
 
-#A turn can touch a dozen resources. Show only the biggest few so the end of every turn
-#stays a glance-sized "something came in" and not an itemised receipt flying across the screen.
-const TURN_GAIN_ICONS = 3
-
-func show_turn_gains(materials_before, gold_before):
-	if ResourceScripts.core_animations.get_flight_overlay() == null:
-		return
-	var source = $TimeNode/HBoxContainer/finish_turn
-	var gained = []
-	var current = ResourceScripts.game_res.materials
-	for res in current:
-		var diff = current[res] - materials_before.get(res, 0)
-		if diff > 0:
-			gained.append({code = res, diff = diff})
-	gained.sort_custom(self, "sort_gains_desc")
-
-	var delay = 0.0
-	for i in range(min(gained.size(), TURN_GAIN_ICONS)):
-		ResourceScripts.core_animations.ItemFlightMaterial(gained[i].code, source,
-			{delay = delay, amount = gained[i].diff})
-		delay += 0.12
-	if ResourceScripts.game_res.money > gold_before:
-		ResourceScripts.core_animations.ItemFlightGold(source, {delay = delay})
+#The final value already exists by this point. Briefly restore the old value and roll it
+#forward so the player can read the gain without delaying the turn simulation itself.
+func show_turn_gains(food_before, gold_before):
+	turn_gain_tw.remove_all()
+	_reset_turn_gain_nodes()
+	var food_after = ResourceScripts.game_res.get_food()
+	var gold_after = ResourceScripts.game_res.money
+	var has_gain = false
+	if gold_after > gold_before:
+		_animate_gain_counter($TimeNode/gold, "_set_gold_counter", gold_before, gold_after, 0.21)
+		_animate_gain_label($TimeNode/GoldGain, gold_after - gold_before, 0.12)
+		has_gain = true
+	if food_after > food_before:
+		_animate_gain_counter($TimeNode/food, "_set_food_counter", food_before, food_after, 0.30)
+		_animate_gain_label($TimeNode/FoodGain, food_after - food_before, 0.21)
+		has_gain = true
+	if has_gain:
+		turn_gain_tw.start()
 
 
-func sort_gains_desc(first, second):
-	return first.diff > second.diff
+func _reset_turn_gain_nodes():
+	$TimeNode/gold.rect_scale = Vector2.ONE
+	$TimeNode/food.rect_scale = Vector2.ONE
+	for label in [$TimeNode/GoldGain, $TimeNode/FoodGain]:
+		label.hide()
+		label.modulate = Color(1.0, 1.0, 1.0, 0.0)
+		label.rect_position.y = 12.0
+		label.rect_scale = Vector2(0.78, 0.78)
+
+
+func _animate_gain_counter(label, setter, from_value, to_value, delay):
+	call(setter, from_value)
+	var count_duration = TURN_GAIN_DURATION * TURN_GAIN_COUNTER_RATIO
+	turn_gain_tw.interpolate_method(self, setter, float(from_value), float(to_value),
+		count_duration, Tween.TRANS_CUBIC, Tween.EASE_OUT, delay)
+	turn_gain_tw.interpolate_property(label, "rect_scale", Vector2.ONE, Vector2(1.18, 1.18),
+		0.14, Tween.TRANS_QUAD, Tween.EASE_OUT, delay + count_duration)
+	turn_gain_tw.interpolate_property(label, "rect_scale", Vector2(1.18, 1.18), Vector2.ONE,
+		0.18, Tween.TRANS_QUAD, Tween.EASE_IN, delay + count_duration + 0.14)
+
+
+func _animate_gain_label(label, amount, delay):
+	var motion_duration = TURN_GAIN_DURATION * TURN_GAIN_LABEL_RATIO
+	var enter_duration = motion_duration * 0.28
+	var travel_duration = motion_duration * 0.78
+	var fade_duration = motion_duration * 0.22
+	var start_pos = Vector2(label.rect_position.x, 12.0)
+	var hold_pos = Vector2(label.rect_position.x, -22.0)
+	var exit_pos = Vector2(label.rect_position.x, -34.0)
+	label.text = "+" + ResourceScripts.custom_text.transform_number(amount)
+	label.rect_position = start_pos
+	label.rect_scale = Vector2(0.78, 0.78)
+	label.modulate = Color(1.0, 1.0, 1.0, 0.0)
+	label.show()
+	turn_gain_tw.interpolate_property(label, "modulate", Color(1.0, 1.0, 1.0, 0.0),
+		Color(1.0, 1.0, 1.0, 1.0), enter_duration, Tween.TRANS_CUBIC, Tween.EASE_OUT, delay)
+	turn_gain_tw.interpolate_property(label, "rect_position", start_pos, hold_pos,
+		travel_duration, Tween.TRANS_CUBIC, Tween.EASE_OUT, delay)
+	turn_gain_tw.interpolate_property(label, "rect_scale", Vector2(0.78, 0.78), Vector2(1.12, 1.12),
+		enter_duration, Tween.TRANS_BACK, Tween.EASE_OUT, delay)
+	turn_gain_tw.interpolate_property(label, "rect_scale", Vector2(1.12, 1.12), Vector2.ONE,
+		motion_duration * 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT, delay + enter_duration)
+	var fade_delay = delay + travel_duration + TURN_GAIN_HOLD
+	turn_gain_tw.interpolate_property(label, "modulate", Color(1.0, 1.0, 1.0, 1.0),
+		Color(1.0, 1.0, 1.0, 0.0), fade_duration, Tween.TRANS_QUAD, Tween.EASE_IN, fade_delay)
+	turn_gain_tw.interpolate_property(label, "rect_position", hold_pos, exit_pos,
+		fade_duration, Tween.TRANS_QUAD, Tween.EASE_IN, fade_delay)
+	turn_gain_tw.interpolate_callback(label, fade_delay + fade_duration, "hide")
+
+
+func _set_gold_counter(value):
+	$TimeNode/gold.text = ResourceScripts.custom_text.transform_number(value)
+
+
+func _set_food_counter(value):
+	$TimeNode/food.text = ResourceScripts.custom_text.transform_number(value)
 
 
 func update_labels():

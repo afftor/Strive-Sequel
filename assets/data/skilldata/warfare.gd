@@ -21,7 +21,7 @@ var skills = {
 		target_range = 'weapon',
 		damage_type = 'weapon',
 		sfx = [
-			{code = 'draw_blood', target = 'target', period = 'predamage', sync_to_hit = true},
+			{code = 'draw_blood', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'squash'},
 			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'fleshhit', hit = null},
 		value = 1.1,
@@ -52,7 +52,7 @@ var skills = {
 		target_range = 'melee',
 		damage_type = 'weapon',
 		sfx = [
-			{code = 'sunder', target = 'target', period = 'predamage', sync_to_hit = true},
+			{code = 'sunder', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'tilt'},
 			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.85,
@@ -91,7 +91,7 @@ var skills = {
 		value = 0.9,
 		random_factor_p = 0.1,
 		sfx = [
-			{code = 'cleave', target = 'target_line', period = 'predamage', sync_to_hit = true},
+			{code = 'cleave', target = 'target_line', period = 'predamage', sync_to_hit = true, hit_motion = 'push'},
 			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 #		variations = [
@@ -152,7 +152,7 @@ var skills = {
 		value = 1.1,
 		random_factor_p = 0.1,
 		sfx = [
-			{code = 'strike_through', target = 'target_row', period = 'predamage', sync_to_hit = true},
+			{code = 'strike_through', target = 'target_row', period = 'predamage', sync_to_hit = true, hit_motion = 'push'},
 			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 #		variations = [
@@ -183,7 +183,7 @@ var skills = {
 		target_range = 'weapon',
 		damage_type = 'weapon',
 		sfx = [
-			{code = 'execution', target = 'target', period = 'predamage', sync_to_hit = true},
+			{code = 'execution', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'tilt'},
 			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 2.25,

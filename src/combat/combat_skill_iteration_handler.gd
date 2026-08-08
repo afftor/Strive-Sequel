@@ -39,6 +39,12 @@ var state_map = [
 	'invoke_cleanup'
 ]
 
+const AREA_SFX_TARGETS = [
+	'target_group', 'target_line', 'target_row',
+	'caster_group', 'caster_line', 'caster_row',
+	'full_screen',
+]
+
 
 func _callerror(value):
 	print('error - wrong tags set')
@@ -204,8 +210,18 @@ func invoke_init():
 
 func invoke_animations_2():
 	for i in animationdict.predamage:
-		if i.target in ['target_frame']:
-			queuenode.add_sfx(target.displaynode, get_true_code(i))
+		if i.target == 'target_frame':
+			queuenode.add_sfx(target.displaynode, get_true_code(i), globals.make_sfx_params(i, last_iteration))
+		elif i.target in AREA_SFX_TARGETS:
+			var sfxtarget = globals.ProcessSfxTarget(i.target, caster, target)
+			if sfxtarget != null:
+				var params = globals.make_sfx_params(i, last_iteration)
+				if params.has('sync_to_hit') and params.sync_to_hit:
+					params.hit_nodes = []
+					for affected in affected_targets:
+						if affected.displaynode != null:
+							params.hit_nodes.append(affected.displaynode)
+				queuenode.add_sfx(sfxtarget, get_true_code(i), params)
 	for i in affected_targets:
 		if template.has('sounddata') and !template.sounddata.empty() and template.sounddata.strike != null:
 			if template.sounddata.strike == 'weapon':
@@ -291,6 +307,7 @@ func invoke_def_hit():
 
 
 func invoke_damage():
+	var use_default_hit_reaction = parent.tags.has('damage') and !parent.tags.has('passive') and !has_predamage_hit_reaction()
 	for s_skill2 in instances:
 		#check miss
 		if s_skill2.hit_res == variables.RES_MISS:
@@ -298,6 +315,9 @@ func invoke_damage():
 			queuenode.add_combatlog(tr("LOG_COMBAT_EVADE_DAMAGE") % target.get_short_name())
 		else:
 			#hit landed animation
+			if use_default_hit_reaction:
+				queuenode.add_sfx(s_skill2.target.displaynode, 'default_hit_reaction',
+					{alt_slot = 'hit_reaction'})
 			if template.has('sounddata') and !template.sounddata.empty() and template.sounddata.hit != null:
 				if template.sounddata.hittype == 'absolute':
 					s_skill2.target.displaynode.process_sound(template.sounddata.hit)
@@ -362,6 +382,17 @@ func get_true_code(anim_dict):
 	if anim_dict.has('code_repeat') and anim_dict.code_repeat.has(parent.iterations_played):
 		return anim_dict.code_repeat[parent.iterations_played]
 	return anim_dict.code
+
+
+func has_predamage_hit_reaction():
+	for anim_dict in animationdict.predamage:
+		if anim_dict.has('hit_motion'):
+			return true
+		if anim_dict.has('sync_to_hit') and anim_dict.sync_to_hit:
+			return true
+		if get_true_code(anim_dict) in ['targetattack', 'ranged_attack', 'assassinate']:
+			return true
+	return false
 
 
 

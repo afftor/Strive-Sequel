@@ -272,6 +272,13 @@ const SQUASH_IN = 0.05
 const SQUASH_OUT = 0.31
 const SQUASH_SCALE = 0.94
 const SQUASH_SHAKE = 7
+const TILT_IN = 0.11
+const TILT_OUT = 0.26
+const TILT_SHARE = 0.35
+const TILT_ANGLE = 7.0
+const TILT_LIFT = 9.0
+const TILT_SCALE_X = 0.975
+const TILT_SCALE_Y = 1.02
 
 var pending_shot_delay = 0.0 #set by the cast animation, consumed by the predamage one
 var pending_shot_timer = -1 #which slot set it, so a stale value cannot leak to a later skill
@@ -435,21 +442,39 @@ func assassinate(node, args = null):
 
 	return shot + HIT_TAIL
 
-#target takes the hit: tips over and swings back
+#target takes the hit: eases into a pronounced lean, then swings back
 func target_tilt(node, delay = 0.0):
 	if !node.is_inside_tree(): return
 	if !node.has_method('get_attack_vector'): return
 	node.rect_pivot_offset = node.rect_size/2
+	node.rect_scale = Vector2(1,1)
 	node.rect_rotation = 0
 	var tween = input_handler.GetTweenNode(node)
 	var p = node.rect_position
-	var v = node.get_attack_vector().normalized() * -MOTION_DIST * 0.30
-	var tilt = 5.0 * (1 if node.get_attack_vector().x < 0 else -1)
-	tween.interpolate_property(node, 'rect_rotation', 0, tilt, 0.05, Tween.TRANS_QUAD, Tween.EASE_OUT, delay)
-	tween.interpolate_property(node, 'rect_rotation', tilt, 0, ASSASS_BACK*0.6, Tween.TRANS_ELASTIC, Tween.EASE_OUT, delay + 0.05)
-	tween.interpolate_property(node, 'rect_position', p, p + v - Vector2(0,6), 0.05, Tween.TRANS_QUAD, Tween.EASE_OUT, delay)
-	tween.interpolate_property(node, 'rect_position', p + v - Vector2(0,6), p, ASSASS_BACK*0.6, Tween.TRANS_BACK, Tween.EASE_OUT, delay + 0.05)
+	var v = node.get_attack_vector().normalized() * -MOTION_DIST * TILT_SHARE
+	var tilt = TILT_ANGLE * (1 if node.get_attack_vector().x < 0 else -1)
+	var peak_position = p + v - Vector2(0,TILT_LIFT)
+	var peak_scale = Vector2(TILT_SCALE_X, TILT_SCALE_Y)
+	tween.interpolate_property(node, 'rect_rotation', 0, tilt, TILT_IN,
+		Tween.TRANS_CUBIC, Tween.EASE_IN_OUT, delay)
+	tween.interpolate_property(node, 'rect_rotation', tilt, 0, TILT_OUT,
+		Tween.TRANS_ELASTIC, Tween.EASE_OUT, delay + TILT_IN)
+	tween.interpolate_property(node, 'rect_position', p, peak_position, TILT_IN,
+		Tween.TRANS_CUBIC, Tween.EASE_IN_OUT, delay)
+	tween.interpolate_property(node, 'rect_position', peak_position, p, TILT_OUT,
+		Tween.TRANS_BACK, Tween.EASE_OUT, delay + TILT_IN)
+	tween.interpolate_property(node, 'rect_scale', Vector2(1,1), peak_scale, TILT_IN,
+		Tween.TRANS_CUBIC, Tween.EASE_IN_OUT, delay)
+	tween.interpolate_property(node, 'rect_scale', peak_scale, Vector2(1,1), TILT_OUT,
+		Tween.TRANS_ELASTIC, Tween.EASE_OUT, delay + TILT_IN)
+	tween.interpolate_callback(self, delay + TILT_IN + TILT_OUT, 'target_motion_cleanup', node, p)
 	tween.start()
+
+func target_motion_cleanup(node, origin):
+	if !is_instance_valid(node): return
+	node.rect_position = origin
+	node.rect_rotation = 0
+	node.rect_scale = Vector2(1,1)
 
 #melee: pull back, drive through the blow, hold the follow through, settle
 func caster_cut(node, contact):
@@ -531,6 +556,23 @@ func target_squash(node, duration = 0.4, delay = 0.0):
 	tween.interpolate_callback(ResourceScripts.core_animations, delay, 'ShakeAnimation',
 		node, min(0.25, out_time), SQUASH_SHAKE)
 	tween.start()
+
+#Custom hit sheets opt into a reaction; unassigned damaging hits fall back to push.
+func play_target_hit_motion(node, motion = 'push', duration = 0.4, delay = 0.0):
+	match motion:
+		'squash':
+			target_squash(node, duration, delay)
+		'tilt':
+			target_tilt(node, delay)
+		'none':
+			pass
+		_:
+			target_push(node, delay)
+
+#Fallback used at the damage step when a skill has no dedicated hit reaction.
+func default_hit_reaction(node, args = null):
+	target_push(node)
+	return HIT_TAIL
 
 func firebolt(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
@@ -634,9 +676,12 @@ func gfx_animsprite(node, args):
 	nextanimationtime -= 0.1
 	if !args.has("no_delays"):
 		if sync_to_hit:
-			hp_update_delays[node] = 0.3
+			var hit_nodes = args.hit_nodes if args.has('hit_nodes') else [node]
+			for hit_node in hit_nodes:
+				if hit_node != null and is_instance_valid(hit_node):
+					hp_update_delays[hit_node] = 0.3
+					buffs_update_delays[hit_node] = 0.4
 			log_update_delay = max(log_update_delay, 0.3)
-			buffs_update_delays[node] = 0.4
 		else:
 			hp_update_delays[node] = 0.5
 			log_update_delay = max(log_update_delay, 0.5)
@@ -644,6 +689,12 @@ func gfx_animsprite(node, args):
 	else:
 		#for now it seems thet 7 turns is repeat loop duration
 		custom_delays[node] = {delay = 0.2, cur_timer = cur_timer, time = 7}
+	if sync_to_hit:
+		var hit_motion = args.hit_motion if args.has('hit_motion') else 'push'
+		var motion_nodes = args.hit_nodes if args.has('hit_nodes') else [node]
+		for hit_node in motion_nodes:
+			if hit_node != null and is_instance_valid(hit_node):
+				play_target_hit_motion(hit_node, hit_motion, duration, shot)
 	if sync_to_hit and shot > 0:
 		var tween = input_handler.GetTweenNode(node)
 		tween.interpolate_callback(ResourceScripts.core_animations, shot, 'gfx_sprite',

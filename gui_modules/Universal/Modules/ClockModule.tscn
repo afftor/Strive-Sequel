@@ -97,6 +97,7 @@ margin_left = 202.604
 margin_top = 6.56123
 margin_right = 286.604
 margin_bottom = 51.5612
+rect_pivot_offset = Vector2( 42, 22.5 )
 mouse_filter = 1
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
@@ -124,6 +125,7 @@ margin_left = 56.804
 margin_top = 5.2077
 margin_right = 140.804
 margin_bottom = 50.2077
+rect_pivot_offset = Vector2( 42, 22.5 )
 mouse_filter = 1
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
@@ -134,6 +136,40 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="GoldGain" type="Label" parent="TimeNode"]
+visible = false
+margin_left = 56.804
+margin_top = 12.0
+margin_right = 140.804
+margin_bottom = 57.0
+rect_pivot_offset = Vector2( 42, 22.5 )
+mouse_filter = 2
+custom_colors/font_color = Color( 1, 0.839216, 0.427451, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+custom_fonts/font = ExtResource( 11 )
+text = "+42"
+align = 1
+valign = 1
+
+[node name="FoodGain" type="Label" parent="TimeNode"]
+visible = false
+margin_left = 202.604
+margin_top = 12.0
+margin_right = 286.604
+margin_bottom = 57.0
+rect_pivot_offset = Vector2( 42, 22.5 )
+mouse_filter = 2
+custom_colors/font_color = Color( 0.87451, 0.952941, 0.658824, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+custom_fonts/font = ExtResource( 11 )
+text = "+18"
+align = 1
+valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TimeNode"]
 anchor_top = 1.0
@@ -228,3 +264,5 @@ anchor_bottom = 1.0
 mouse_filter = 1
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="TurnGainTween" type="Tween" parent="."]
