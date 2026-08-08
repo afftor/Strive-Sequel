@@ -414,7 +414,12 @@ func invoke_animations_1():
 		caster.displaynode.process_sound(template.sounddata.initiate)
 	for i in animationdict.windup:
 		var sfxtarget = globals.ProcessSfxTarget(i.target, caster, target)
-		queuenode.add_sfx(sfxtarget, i.code, globals.make_sfx_params(i))
+		var params = globals.make_sfx_params(i)
+		#animations on the caster cannot reach the target otherwise - they only ever
+		#get one node, and the two sit in different containers
+		if i.target == 'caster' and target != null and target.displaynode != null:
+			params.foe_node = target.displaynode
+		queuenode.add_sfx(sfxtarget, i.code, params)
 	
 	combatnode.turns += 1
 	step += 1

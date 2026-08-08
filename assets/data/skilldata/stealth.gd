@@ -98,8 +98,8 @@ var skills = {
 		damage_type = 'weapon',
 		sfx = [
 			{code = 'assassinate', target = 'target', period = 'predamage'},
-			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+			{code = 'assassinate_step', target = 'caster', period = 'windup', is_cast = true}], 
+		sounddata = {initiate = null, strike = 'melee_attack', hit = null},
 		value = 2.0,
 	},
 	devastation = {

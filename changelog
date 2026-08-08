@@ -1,4 +1,5 @@
 Revamped food mechanic. Now characters eat 1 food item per attempt and it lasts multiple turns based on the food eaten. Better food provides various bonuses. Characters also can be demanding higher quality food if they have higher fame or value.
+Cleave and Strike Through now had additional effects when certain conditions met
 Added new trait for Ratkin: In the shadows reduces ranged physical hit chance by 30%.
 Added character sorting behavior to main character list
 Added some new sound effects to time equipment and turn pass 

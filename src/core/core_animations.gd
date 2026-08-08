@@ -238,12 +238,14 @@ func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = false,  
 
 	if wr.get_ref(): x.queue_free()
 
-func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = false):
+func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = false, speed = 1.0):
 	if !node.is_inside_tree(): return
 	var x = load(images.GFX_sprites[effect]).instance()
 	node.add_child(x)
 	x.z_index = 1#test, remove if gluckish
 	x.position = node.rect_size/2
+	if speed != 1.0:
+		x.speed_scale = x.speed_scale * speed
 	if flip:
 		x.set_flip_h(true)
 		if x.get("offset"):

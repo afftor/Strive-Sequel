@@ -37,11 +37,14 @@ var Skilllist = {
 		sfx = [
 			{code = 'weapon', target = 'target', period = 'predamage'},
 			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true},],
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = null, strike = 'melee_attack', hit = null},
 		variations = [
 			{
 				reqs = [{code = 'gear_equiped', param = 'geartype', value = 'bow', check = true}],
-				set = {icon = load("res://assets/images/iconsskills/heavyshot.png")}, #2fix
+				set = {
+					icon = load("res://assets/images/iconsskills/heavyshot.png"),
+					sounddata = {initiate = null, strike = 'blade', hit = null},
+				}, #2fix
 			},
 			{
 				reqs = [
@@ -79,7 +82,7 @@ var Skilllist = {
 		sfx = [
 			{code = 'ranged_attack', target = 'target', period = 'predamage'},
 			{code = 'at_arch', target = 'caster', period = 'windup', is_cast = true}],
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = null, strike = 'weapon', hit = null},
 		variations = [
 			{
 				reqs = [
@@ -135,8 +138,10 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'assassinate', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sfx = [
+			{code = 'assassinate', target = 'target', period = 'predamage'},
+			{code = 'assassinate_step', target = 'caster', period = 'windup', is_cast = true}], 
+		sounddata = {initiate = null, strike = 'melee_attack', hit = null},
 		value = ['caster.atk', '*1.5']
 	},
 	earth_atk = {

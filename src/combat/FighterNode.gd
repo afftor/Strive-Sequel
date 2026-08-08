@@ -56,7 +56,29 @@ var buffs_on_pause = false
 #		emit_signal("signal_RMB_release")
 #		RMBpressed = false
 
+#Парение активного бойца: карточка мягко поднимается и опускается, под ногами
+#дышит тень. Точку покоя не запоминаем с живого узла, а знаем наверняка: каждый
+#слот - Container ровно по размеру карточки, и make_fighter_panel ставит её в
+#ноль. Снимок текущей позиции цементировал бы любой чужой недоигранный сдвиг.
+const FLOAT_RISE = 8.0
+const FLOAT_PERIOD = 1.6
+const FLOAT_SHADOW_ALPHA = 0.45
+const FLOAT_HOME = Vector2(0, 0)
+
+var float_on = false
+var float_shadow = null
+var float_shadow_y = 0.0
+var float_time = 0.0
+var float_shifted = false
+
+const STEALTH_DESAT = 0.7
+const STEALTH_TINT = Color(0.62, 0.74, 1.0)
+
+var stealth_on = false
+
+
 func _ready():
+	set_process(false)
 	connect("gui_input", self, "_on_Button_gui_input")
 	if has_node("Buffs"):
 		buffs_timer = $Buffs/Timer
@@ -187,6 +209,7 @@ func noq_rebuildbuffs():
 	buffs = fighter.get_combat_buffs()
 	if fighter.hp <= 0:
 		buffs.clear()
+	set_stealth(fighter.hp > 0 and fighter.has_status('hide'))
 	if buffs.empty():
 		buff_scroll_max_page = 0
 	else:
@@ -340,7 +363,8 @@ func update_mp_label(newmp, newmpp):
 		$bars/MP/mplabel.text = str(floor(newmpp)) + '%%'
 
 func noq_defeat():
-	if !visible: 
+	set_floating(false)
+	if !visible:
 		return
 	if fighter.is_active:
 		turn_overlay(true)
@@ -362,6 +386,9 @@ func check_active():
 #		if fighter != null:
 		fighter.displaynode = null
 		fighter = null
+		#переименовываем перед удалением, как в transform_fighter: queue_free
+		#отложенный, а слот должен считаться пустым сразу
+		name = 'temp'
 		queue_free()
 
 
@@ -426,11 +453,102 @@ func setup_overlay(type):
 				nd.queue_free()
 		_:
 			print("no damage type - %s" % type)
+	#материал Icon только что подменили на свежий - возвращаем обесцвечивание
+	refresh_icon_desat()
 
 
 func turn_overlay(val):
 	$overlay.visible = val
-	if val:
+	refresh_icon_desat()
+
+
+#Статус «В тенях» (e_t_hide2, тег hide): портрет выцветает и уходит в холодный
+#лунный тон. Обесцвечивание берём у того же desaturate.shader, который и так
+#висит на Icon, а оттенок даёт modulate самого портрета - лишних узлов не надо.
+func set_stealth(val):
+	if stealth_on == val: return
+	stealth_on = val
+	$Icon.modulate = STEALTH_TINT if val else Color(1, 1, 1, 1)
+	refresh_icon_desat()
+
+
+#Смерть показывается тем же percent, и у неё приоритет. При типе урона 'mind' на
+#Icon висит swirl_shader со своим одноимённым параметром - туда не лезем.
+func refresh_icon_desat():
+	if $Icon.material == null or $Icon.material.shader == null: return
+	if !$Icon.material.shader.resource_path.ends_with('desaturate.shader'): return
+	if $overlay.visible:
 		$Icon.material.set_shader_param('percent', 1.0)
+	elif stealth_on:
+		$Icon.material.set_shader_param('percent', STEALTH_DESAT)
 	else:
 		$Icon.material.set_shader_param('percent', 0.0)
+
+
+#Тень заводим лениво и только тому, чей ход: остальным карточкам она не нужна.
+func make_float_shadow():
+	if float_shadow != null: return
+	var t = TextureRect.new()
+	t.name = 'FloatShadow'
+	t.texture = load("res://assets/sfx/float_shadow.png")
+	t.expand = true
+	t.stretch_mode = TextureRect.STRETCH_SCALE
+	t.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	#Портреты почти всегда непрозрачные, так что за карточку класть нечего -
+	#тень рисуем поверх и уводим под нижнюю кромку, там её ничто не перекрывает.
+	t.rect_position = Vector2(26, 196)
+	t.rect_size = Vector2(130, 26)
+	t.rect_pivot_offset = t.rect_size / 2
+	t.modulate.a = 0.0
+	add_child(t)
+	float_shadow = t
+	float_shadow_y = t.rect_position.y
+
+
+func set_floating(val):
+	if float_on == val: return
+	float_on = val
+	if val:
+		make_float_shadow()
+		float_time = 0.0
+	else:
+		float_stop()
+	set_process(val)
+
+
+#Снимаем сдвиг, но не сам режим: парение возобновится, когда карточка
+#освободится.
+func float_stop():
+	if float_shifted:
+		rect_position = FLOAT_HOME
+		float_shifted = false
+	if float_shadow != null:
+		float_shadow.modulate.a = 0.0
+		float_shadow.rect_position.y = float_shadow_y
+		float_shadow.rect_scale = Vector2(1, 1)
+
+
+#Пока по карточке идёт своя анимация, парение уступает: rect_position у узла
+#один, и тюин с _process за него дерутся.
+func float_busy():
+	if has_node('tween') and $tween.is_active(): return true
+	if animation_node != null and animation_node.animation_delays.has(self): return true
+	for i in ResourceScripts.core_animations.ShakingNodes:
+		if i.node == self: return true
+	return false
+
+
+func _process(delta):
+	if !float_on: return
+	if float_busy():
+		float_stop()
+		return
+	float_shifted = true
+	float_time += delta
+	var k = 0.5 - 0.5 * cos(float_time / FLOAT_PERIOD * TAU)
+	var rise = FLOAT_RISE * k
+	rect_position = FLOAT_HOME + Vector2(0, -rise)
+	if float_shadow != null:
+		float_shadow.rect_position.y = float_shadow_y + rise
+		float_shadow.rect_scale = Vector2(1.0 - 0.18 * k, 1.0 - 0.18 * k)
+		float_shadow.modulate.a = FLOAT_SHADOW_ALPHA * (1.0 - 0.25 * k)

@@ -467,6 +467,23 @@ func make_fighter_panel(fighter, spot):
 	panel.material.set_shader_param('modulate', g_color);
 	panel.turn_overlay(false)
 	panel.noq_rebuildbuffs()
+	update_slot_frames()
+
+
+#Пустая клетка слота вылезает из-под карточки, когда та поднимается при парении,
+#поэтому у занятого слота рамку прячем. Карточки уничтожаются из нескольких мест
+#(смерть призыва, превращение, конец боя), так что каждое не отслеживаем -
+#сверяем все двенадцать слотов разом.
+func update_slot_frames():
+	for slot in battlefieldpositions.values():
+		if slot.has_node('Frame'):
+			slot.get_node('Frame').visible = !slot.has_node('Character')
+
+
+func stop_floating():
+	for slot in battlefieldpositions.values():
+		if slot.has_node('Character'):
+			slot.get_node('Character').set_floating(false)
 
 
 func checkdeaths():
@@ -600,6 +617,7 @@ func select_actor():
 func current_turn(char_changed = true):
 	if checkwinlose() == true:
 		return
+	update_slot_frames()
 	emit_signal('turn_started')
 	if currentactor <= 0:
 		env_turn(char_changed)
@@ -749,6 +767,8 @@ func player_turn(char_changed = true):
 	for position in battlefieldpositions.values():
 		if position.get_node_or_null("Character"):
 			position.get_node("Character/Active").visible = battlefieldpositions[pos] == position
+			#парение включим ниже, когда ход действительно упрётся в игрока
+			position.get_node("Character").set_floating(false)
 	turns += 1
 	var selected_character = get_char_by_pos(pos)
 	activecharacter = selected_character
@@ -798,6 +818,10 @@ func player_turn(char_changed = true):
 	RebuildSkillPanel()
 	RebuildItemPanel()
 	SelectSkill(selected_character.selectedskill)
+	#Только теперь ход стоит и ждёт решения - до этого шли эффекты начала хода,
+	#и парение ловило бы их анимации своим же rect_position.
+	if selected_character.displaynode != null:
+		selected_character.displaynode.set_floating(true)
 
 
 
@@ -806,6 +830,8 @@ func enemy_turn(char_changed = true):
 	for position in battlefieldpositions.values():
 		if position.get_node_or_null("Character"):
 			position.get_node("Character/Active").visible = battlefieldpositions[pos] == position
+			#парение - только для своих: ход врага ничего не ждёт, качать его незачем
+			position.get_node("Character").set_floating(false)
 	$Menu/Run.disabled = true
 	turns += 1
 	var fighter = get_char_by_pos(pos)
@@ -1244,6 +1270,9 @@ func use_skill(skill_code, caster, target, mode = variables.SKILL_BASE):
 	$ItemPanel.hide()
 	hide_popup_skill()
 	$Menu/Items.pressed = false
+	#Парение отмечает «ждём решения этого бойца». Решение принято - снимаем сразу,
+	#иначе карточка ещё качается в паузах между анимациями своей же атаки.
+	stop_floating()
 	if activeaction != skill_code:
 		activeaction = skill_code
 	allowaction = false
