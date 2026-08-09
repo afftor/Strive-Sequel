@@ -88,6 +88,13 @@ var encounters = {
 	nixx_group = {unittype = 'randomgroup', unitcode = 'nixx_boss', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'kuro3_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
 	act4_sebastian_kharzug_undead = {unittype = 'randomgroup', unitcode = 'skeletons_zombies2', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'act4_sebastian_kharzug_after_undead_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	act4_sebastian_kharzug_tomb_woman = {unittype = 'randomgroup', unitcode = 'rilu_maddened_boss', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'act4_sebastian_kharzug_tomb_victory_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	act4_road_tunnel_undead = {unittype = 'randomgroup', unitcode = 'skeletons_zombies2', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'act4_road_after_ambush_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	act4_road_guild_undead = {unittype = 'randomgroup', unitcode = 'skeletons_lich', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'act4_road_guild_deeper_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	act4_road_sebastian_lich = {unittype = 'randomgroup', unitcode = 'act4_road_sebastian_lich_group', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'act4_road_rilu_sacrifice_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	act4_road_cave_fight_rouge = {unittype = 'randomgroup', unitcode = 'bandits_assassin2', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'act4_road_mhyrana_ritual_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	act4_road_cave_fight_alone = {unittype = 'randomgroup', unitcode = 'act4_road_cave_alone_group', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'act4_road_mhyrana_ritual_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	act4_road_grotus_phase1 = {unittype = 'randomgroup', unitcode = 'act4_road_grotus_phase1_group', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'act4_road_barrier_break', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	act4_road_grotus_phase2 = {unittype = 'randomgroup', unitcode = 'act4_road_grotus_phase2_group', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'act4_road_grotus_defeat_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 
 	jean_golems_door = {unittype = 'randomgroup', unitcode = 'jean_golems_door', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_sidequest_mansion_golems_2', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
 	jean_golems_door_2 = {unittype = 'randomgroup', unitcode = 'jean_golems_door_2', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_sidequest_mansion_rynn_intro_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
@@ -186,6 +193,10 @@ var enemygroups = {
 	skeletons_lich = {reqs = [], units = {skeleton_melee = [2,3], skeleton_archer = [1,2], undead_lich = [1,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
 	skeletons_lich_boss = {maxunits = 6, reqs = [], units = {undead_lich = [1,1], skeleton_archer = [2,2], zombie = [3,3]}},
 	rilu_maddened_boss = {reqs = [], units = {rilu_maddened = [1,1]}},
+	act4_road_sebastian_lich_group = {maxunits = 6, reqs = [], units = {lich_quest = [1,1], skeleton_shield_melee = [2,2], skeleton_archer_quest = [1,2]}},
+	act4_road_cave_alone_group = {maxunits = 6, reqs = [], units = {rebel_knight = [1,2], rebel_recruit = [1,2], bandit_assassin = [1,2], bandit_mage = [1,1]}},
+	act4_road_grotus_phase1_group = {maxunits = 6, reqs = [], units = {warlock_boss = [1,1], bandit_mage = [1,2]}},
+	act4_road_grotus_phase2_group = {maxunits = 6, reqs = [], units = {warlock_boss = [1,1], undead_lich = [1,1], guardian_golem = [1,2]}},
 
 	rebel_group_mines = {reqs = [], units = {rebel_recruit = [3,3], rebel_mage = [1,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_charm_avoid',0.8]], challenge_chance = 0.4},
 	demon_kurdan = {reqs = [], units = {demoness = [1,1],kurdan = [1,1], rebel_recruit = [2,2]}},

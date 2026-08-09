@@ -1,4 +1,4 @@
-[gd_scene load_steps=295 format=2]
+[gd_scene load_steps=296 format=2]
 
 [ext_resource path="res://Character_generator/images/03_ears/ears_human.png" type="Texture" id=1]
 [ext_resource path="res://Character_generator/images/00_body_nude/pregnancy_belly_mid.png" type="Texture" id=2]
@@ -118,6 +118,7 @@
 [ext_resource path="res://Character_generator/images/03_ears/ears_rabbit2.png" type="Texture" id=116]
 [ext_resource path="res://Character_generator/images/109_armory_set_waitress_female/taz_armor_waitress.png" type="Texture" id=117]
 [ext_resource path="res://Character_generator/images/06_hairs_back/hair_back_ponytail_long.png" type="Texture" id=118]
+[ext_resource path="res://Character_generator/tits_hit_area.gd" type="Script" id=119]
 
 [sub_resource type="ShaderMaterial" id=1]
 
@@ -7630,3 +7631,9 @@ position = Vector2( 175, -22.0006 )
 rotation = -1.5708
 z_index = 10
 texture = ExtResource( 114 )
+
+[node name="TitsHitArea" type="Control" parent="."]
+margin_right = 1920.0
+margin_bottom = 1500.0
+mouse_default_cursor_shape = 2
+script = ExtResource( 119 )

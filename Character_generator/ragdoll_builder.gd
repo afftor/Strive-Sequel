@@ -2,8 +2,17 @@ extends Node2D
 
 export var clothes = true
 export var test_mode = false
+export var tits_interaction = true
 
 onready var _root = $VPC/VP
+
+#tits wobble, driven through the deform shader so it fades out at the mesh border
+#and never drags the tits meshes away from the torso and the rest of an outfit
+const TITS_JIGGLE_TIME = 0.9
+const TITS_JIGGLE_FREQ = 3.4
+const TITS_JIGGLE_DECAY = 4.0
+const TITS_JIGGLE_SHIFT = 16.0 #texture pixels the nipple area travels on the first swing
+const TITS_JIGGLE_RANGE = 110.0 #radius the shift fades out over, matches the shipped deform presets
 
 var _scale_x
 var _scale_y
@@ -13,6 +22,13 @@ var __scale_y
 
 var _position
 var _offset
+
+var _tits_node
+var _tits_outline
+var _tits_searched = false
+var _jiggle_mats = []
+var _jiggle_time = 0.0
+var _jiggle_power = 1.0
 
 var character
 var test_template = {
@@ -82,6 +98,7 @@ var test_template = {
 
 func _ready():
 #	var shader = load("res://assets/ItemShader.tres").duplicate()
+	set_process(false)
 	_position = position
 	if test_mode:
 		_position = Vector2(400, 300)
@@ -106,6 +123,7 @@ func _get_stat(stat):
 
 
 func rebuild(character_to_build):
+	stop_tits_jiggle()
 	if !is_visible_in_tree():
 		return
 	#setup
@@ -158,6 +176,7 @@ func rebuild(character_to_build):
 
 
 func rebuild_stat(statname):
+	stop_tits_jiggle()
 	if !is_visible_in_tree():
 		return
 	
@@ -200,6 +219,7 @@ func rebuild_stat(statname):
 
 
 func rebuild_cloth(value):
+	stop_tits_jiggle()
 	if !is_visible_in_tree():
 		return
 	if value == null:
@@ -256,6 +276,7 @@ func rebuild_cloth(value):
 
 
 func rebuild_underwear():
+	stop_tits_jiggle()
 	if !is_visible_in_tree():
 		return
 	#first pass - textures
@@ -471,6 +492,116 @@ func save_portrait(name):
 #		image.resize(variables.portrait_width, variables.portrait_height)
 		image.save_png(path)
 	input_handler.emit_signal("PortraitUpdate")
+
+
+func get_tits_node(): #currently shown female tits bone, null when there is nothing to wobble
+	if !_tits_searched:
+		_tits_searched = true
+		_tits_node = null
+		_tits_outline = null
+		if _root.get_node('Female_pose').visible:
+			for nd in get_tree().get_nodes_in_group('tits'):
+				if !is_a_parent_of(nd) or !nd.visible:
+					continue
+				if nd.get_node_or_null('Tits_mesh') == null: #flat chest has no mesh of its own
+					continue
+				_tits_node = nd
+				break
+	return _tits_node
+
+
+func get_tits_mesh():
+	var nd = get_tits_node()
+	if nd == null:
+		return null
+	return nd.get_node('Tits_mesh')
+
+
+func get_tits_outline(): #border of the tits polygon, without its inner deform vertices
+	if _tits_outline == null:
+		_tits_outline = PoolVector2Array()
+		var mesh = get_tits_mesh()
+		if mesh != null:
+			var points = mesh.polygon
+			for i in max(points.size() - mesh.internal_vertex_count, 0):
+				_tits_outline.append(points[i])
+	return _tits_outline
+
+
+func jiggle_tits(power = 1.0):
+	if !is_visible_in_tree():
+		return
+	var nd = get_tits_node()
+	if nd == null:
+		return
+	stop_tits_jiggle()
+	var seen = []
+	for mesh in nd.get_children():
+		if !(mesh is CanvasItem):
+			continue
+		var mat = mesh.material
+		if !(mat is ShaderMaterial) or mat in seen: #huge and big share an armor material
+			continue
+		if mat.get_shader_param('anchor2') == null:
+			continue
+		seen.append(mat)
+		#null means the parameter was never imported, the shader defaults are zero
+		var base2 = mat.get_shader_param('move2')
+		var base3 = mat.get_shader_param('move3')
+		var range2 = mat.get_shader_param('range2')
+		var range3 = mat.get_shader_param('range3')
+		if base2 == null:
+			base2 = Vector2(0, 0)
+		if base3 == null:
+			base3 = Vector2(0, 0)
+		if range2 == null:
+			range2 = 0.0
+		if range3 == null:
+			range3 = 0.0
+		_jiggle_mats.append({mat = mat, move2 = base2, move3 = base3, range2 = range2, range3 = range3})
+	if _jiggle_mats.empty():
+		return
+	#some presets ship with a zero range, which would swallow the shift entirely
+	for entry in _jiggle_mats:
+		entry.mat.set_shader_param('range2', max(entry.range2, TITS_JIGGLE_RANGE))
+		entry.mat.set_shader_param('range3', max(entry.range3, TITS_JIGGLE_RANGE))
+	_jiggle_time = 0.0
+	_jiggle_power = clamp(power, 0.1, 2.0)
+	_root.render_target_clear_mode = Viewport.CLEAR_MODE_ALWAYS
+	_root.render_target_update_mode = Viewport.UPDATE_ALWAYS
+	set_process(true)
+
+
+func stop_tits_jiggle(): #also drops the cached lookup, rebuilds may swap the tits node
+	_tits_searched = false
+	if _jiggle_mats.empty():
+		return
+	for entry in _jiggle_mats:
+		entry.mat.set_shader_param('move2', entry.move2)
+		entry.mat.set_shader_param('move3', entry.move3)
+		entry.mat.set_shader_param('range2', entry.range2)
+		entry.mat.set_shader_param('range3', entry.range3)
+	_jiggle_mats = []
+	set_process(false)
+	_root.render_target_clear_mode = Viewport.CLEAR_MODE_ONLY_NEXT_FRAME
+	_root.render_target_update_mode = Viewport.UPDATE_ONCE
+
+
+func _process(delta):
+	if _jiggle_mats.empty() or !is_visible_in_tree():
+		stop_tits_jiggle()
+		return
+	_jiggle_time += delta
+	if _jiggle_time >= TITS_JIGGLE_TIME:
+		stop_tits_jiggle()
+		return
+	var wave = sin(_jiggle_time * TAU * TITS_JIGGLE_FREQ) * TITS_JIGGLE_SHIFT * _jiggle_power
+	wave *= exp(-_jiggle_time * TITS_JIGGLE_DECAY)
+	#mesh space is axis aligned with the screen here, positive y pulls the nipples down
+	var shift = Vector2(0, wave)
+	for entry in _jiggle_mats:
+		entry.mat.set_shader_param('move2', entry.move2 + shift)
+		entry.mat.set_shader_param('move3', entry.move3 + shift)
 
 
 func apply_settings():

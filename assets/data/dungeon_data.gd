@@ -2,7 +2,8 @@ extends Node
 var infinite_dungeon_biomes = {
 	biome_bandit_den = {
 		background_pool = ['cave_1', 'cave_2', 'cave_3', 'cave_4', 'cave_5', 'cave_6', 'cave_7', 'cave_8', 'cave_9', 'cave_10'],
-		enemyarray = [["rats_easy", 0.5],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
+		enemyarray = [['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
+		max_floor = 8, #biome stops appearing in infinite dungeons past this floor
 		character_data = {
 			chance_mod = 1.5,#increases base chance to get slave after combat by this if its not guaranteed
 			races = [['local', 3], ['common',1]]
@@ -34,6 +35,7 @@ var infinite_dungeon_biomes = {
 	biome_rebel_redoubt = {
 		background_pool = ['fort1', 'fort2', 'fort3', 'fort4', 'fort5', 'fort6', 'fort7', 'fort8'],
 		enemyarray =  [['event_rebels_1', 1],['event_rebels_2', 1],['rebels_small', 0.5]],
+		max_floor = 12,
 		character_data = {
 			chance_mod = 1.2,
 			races = [['local', 6], ['common',1]]
@@ -49,6 +51,7 @@ var infinite_dungeon_biomes = {
 	biome_undead_crypt = {
 		background_pool = ['crypt1', 'crypt2', 'crypt3', 'crypt4', 'crypt5', 'crypt6', 'crypt7'],
 		enemyarray =  [["skeletons_easy", 1],['skeletons_easy2', 1],['skeletons_zombies', 1],['skeletons_zombies2', 1],['skeletons_lich', 0.5]],
+		max_floor = 15,
 		character_data = {
 			chance_mod = 0.7,
 			races = [['common', 6], ['uncommon', 1]]
@@ -63,7 +66,8 @@ var infinite_dungeon_biomes = {
 	},
 	biome_goblin_cave = {
 		background_pool = ['cave_1', 'cave_2', 'cave_3', 'cave_4', 'cave_5', 'cave_6', 'cave_7', 'cave_8', 'cave_9', 'cave_10'],
-		enemyarray =  [["rats_easy", 0.5],['spiders', 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
+		enemyarray =  [['spiders', 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
+		max_floor = 5,
 		character_data = {
 			chance_mod = 1.4,
 			races = [["common", 1], ['local', 4], ['Goblin',5]]
@@ -78,7 +82,8 @@ var infinite_dungeon_biomes = {
 	},
 	biome_grove = {
 		background_pool = ['forest1', 'forest2', 'forest3', 'forest4', 'forest5', 'forest6'],
-		enemyarray = [["rats_easy", 0.5],['wolves_easy1', 1],['wolves_easy2', 1],['spiders', 1]],
+		enemyarray = [['wolves_easy1', 1],['wolves_easy2', 1],['spiders', 1]],
+		max_floor = 5,
 		character_data = {
 			chance_mod = 0.8,
 			races = [["common", 2], ['local', 4],['uncommon',1]]
@@ -122,7 +127,7 @@ var infinite_dungeon_biomes = {
 		gatherable_resources = 'biome_fire_depths_res',
 	},
 	biome_goblin_stronghold = {
-		background_pool = ['cave_1', 'cave_4', 'cave_5'],
+		background_pool = ['goblin_stronghold1', 'goblin_stronghold2', 'goblin_stronghold3', 'goblin_stronghold4'],
 		enemyarray =  [["goblin_stronghold_easy", 1],['goblin_stronghold_easy1', 1],['goblin_stronghold_tormentor', 0.5],['goblin_stronghold_tormentor1', 0.5],['goblin_stronghold_vulture', 0.5]],
 		character_data = {
 			chance_mod = 1.4,
@@ -132,9 +137,9 @@ var infinite_dungeon_biomes = {
 		material_room_number = [4,5],
 		main_route_length = [6,7],
 		bonus_rooms = [3,4],
-		base_room_stamina_cost = [7,10], 
+		base_room_stamina_cost = [7,10],
 		gather_settings = 'base',
-		gatherable_resources = 'biome_bandit_fort_res'
+		gatherable_resources = 'biome_goblin_stronghold_res'
 	},
 }
 var dungeons = {
@@ -227,7 +232,7 @@ var dungeons = {
 		area = 'plains',
 		tags = ['infinite'],
 		biomes = [],#['test_biome1', 'test_biome2', 'test_biome2', 'test_biome1'], #fixed order of first levels
-		avaliable_biomes = ['biome_bandit_den', 'biome_bandit_fort', 'biome_rebel_redoubt', 'biome_undead_crypt', 'biome_goblin_cave', 'biome_grove', 'biome_ancient_jungles', 'biome_fire_depths']
+		avaliable_biomes = ['biome_bandit_den', 'biome_bandit_fort', 'biome_rebel_redoubt', 'biome_undead_crypt', 'biome_goblin_cave', 'biome_grove', 'biome_ancient_jungles', 'biome_fire_depths', 'biome_goblin_stronghold']
 	},
 	
 	
@@ -2866,6 +2871,7 @@ var dungeons = {
 				reqs = [
 					{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'catacombs_opened', state = true},
 					{type = 'decision', value = 'ErdynaBetrayedRedRooks', check = false},
+					{type = 'decision', value = 'ErdynaLeftForRedRooksAlone', check = false},
 					{type = 'decision', value = 'ThalendirErdynaAbandoned', check = false}
 				],
 				args = [{code = 'start_event', data = 'act4_3_sealed_doors_erdyna_1', args = []}]
@@ -2875,6 +2881,14 @@ var dungeons = {
 				reqs = [
 					{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'catacombs_opened', state = true},
 					{type = 'decision', value = 'ErdynaBetrayedRedRooks', check = true}
+				],
+				args = [{code = 'start_event', data = 'act4_3_sealed_doors_alone_1', args = []}]
+			},
+			{
+				text = "ACT4_3_QUEST_CATACOMB_OPTION_RETURN",
+				reqs = [
+					{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'catacombs_opened', state = true},
+					{type = 'decision', value = 'ErdynaLeftForRedRooksAlone', check = true}
 				],
 				args = [{code = 'start_event', data = 'act4_3_sealed_doors_alone_1', args = []}]
 			},
@@ -3057,6 +3071,24 @@ var dungeons = {
 		descript = tr("QUEST_KHARZUG_DEEP_DESC"),
 		difficulty = 'easy',
 		background = 'crypt1',
+		enemyarray =  [],
+		eventarray = [],
+		levels = [1,1],
+		resources = '',
+		stages_per_level = [1,1],
+		events = [],
+		tags = ['quest'],
+		area = 'mountains',
+		travel_time = [1,1],
+	},
+	quest_dwarf_railroad = {
+		code = 'quest_dwarf_railroad',
+		type = 'encounter',
+		name = tr("QUEST_DWARF_RAILROAD_TEXT"),
+		classname = '',
+		descript = tr("QUEST_DWARF_RAILROAD_DESC"),
+		difficulty = 'easy',
+		background = 'cave_1',
 		enemyarray =  [],
 		eventarray = [],
 		levels = [1,1],

@@ -24,6 +24,7 @@ var popup_opened = null
 var debug = false
 
 var combat_data = {}
+var instant_mode = false #combat resolved without entering the battle
 var allowaction = false
 var highlightargets = false
 var allowedtargets = {}
@@ -230,6 +231,13 @@ func reset_combat_data():
 
 
 func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', t_combat_data = {}):
+	reset_combat_data()
+	for arg in combat_data:
+		if t_combat_data.has(arg):
+			combat_data[arg] = t_combat_data[arg]
+	if combat_data.instawin or ResourceScripts.game_globals.skip_combat:
+		resolve_without_combat(newplayergroup, newenemygroup)
+		return
 	ClearSkillPanel()
 	ClearItemPanel()
 	input_handler.ClearContainer(turnorder_cont)
@@ -274,10 +282,6 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	$Rewards.visible = false
 	allowaction = false
 	$Button.disabled = true
-	reset_combat_data()
-	for arg in combat_data:
-		if t_combat_data.has(arg):
-			combat_data[arg] = t_combat_data[arg]
 	enemygroup = newenemygroup
 	playergroup = newplayergroup
 	for i in range(1,13):
@@ -288,23 +292,83 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	#victory()
 	#start combat triggers
 	CombatAnimations.force_end()
-	if combat_data.instawin or ResourceScripts.game_globals.skip_combat:
-		victory()
-	else:
-		ActionQueue = queue_script.new()
-		ActionQueue.combatnode = self
-		ActionQueue.animationnode = CombatAnimations
-		for i in playergroup.values() + enemygroup.values():
-			var tchar = characters_pool.get_char_by_id(i)
-			tchar.process_event(variables.TR_COMBAT_S)
-			ActionQueue.add_rebuildbuffs(tchar.displaynode)
-		set_process_input(true)
-		ActionQueue.add_start_combat()
-		ActionQueue.invoke_resume()
+	ActionQueue = queue_script.new()
+	ActionQueue.combatnode = self
+	ActionQueue.animationnode = CombatAnimations
+	for i in playergroup.values() + enemygroup.values():
+		var tchar = characters_pool.get_char_by_id(i)
+		tchar.process_event(variables.TR_COMBAT_S)
+		ActionQueue.add_rebuildbuffs(tchar.displaynode)
+	set_process_input(true)
+	ActionQueue.add_start_combat()
+	ActionQueue.invoke_resume()
 
 
+#encounter won outside of combat (avoid/intimidate skills, events, skip_combat cheat)
+#no battle is entered - enemies are only built to roll rewards, and just the rewards panel is shown
+func resolve_without_combat(newplayergroup, newenemygroup):
+	instant_mode = true
+	no_material_reward = false
+	only_show_mat_reward = false
+	external_reward = null
+	external_rewardchars = null
+	turns = 0
+	global_turn = 0
+	fightover = true
+	summons.clear()
+	enemygroup.clear()
+	playergroup.clear()
+	turnorder.clear()
+	next_turnorder.clear()
+	input_handler.emit_signal("CombatStarted", encountercode)
+	input_handler.combat_node = self
+	gui_controller.combat = self
+	gui_controller.previous_screen = gui_controller.current_screen
+	gui_controller.current_screen = self
+	enemygroup = newenemygroup
+	playergroup = newplayergroup
+	buildenemygroup(enemygroup, true)
+	buildplayergroup_headless(playergroup)
+	#gives callers a frame to set external rewards, same as the yields inside victory() did
+	yield(get_tree(), 'idle_frame')
+	hide_combat_ui()
+	show()
+	get_tree().get_root().set_disable_input(true)
+	emit_signal("combat_finished")
+	give_rewards()
 
-func buildenemygroup(enemygroup):
+
+#hides everything but the rewards panel, so the screen behind (dungeon map) stays visible
+var hidden_combat_ui = []
+func hide_combat_ui():
+	hidden_combat_ui.clear()
+	for node in get_children():
+		if node == $Rewards or !(node is CanvasItem):
+			continue
+		if node.visible:
+			hidden_combat_ui.push_back(node)
+			node.hide()
+
+
+func restore_combat_ui():
+	for node in hidden_combat_ui:
+		if is_instance_valid(node):
+			node.show()
+	hidden_combat_ui.clear()
+
+
+func buildplayergroup_headless(group):
+	playergroup = {}
+	for i in group:
+		if int(i) > 6: break
+		if group[i] == null:
+			continue
+		var fighter = ResourceScripts.game_party.characters[group[i]]
+		fighter.combatgroup = 'ally'
+		playergroup[int(i)] = fighter.id
+
+
+func buildenemygroup(enemygroup, headless = false):
 	for i in range(1,7):
 		if enemygroup[i] != null:
 			enemygroup[i+6] = enemygroup[i]
@@ -369,6 +433,8 @@ func buildenemygroup(enemygroup):
 			tchar.mul_stat(stat, min(combat_data.enemy_stats_mod, variables.survival_cap_secondary))
 		tchar.hp = tchar.get_stat("hpmax") * combat_data.hpmod
 		tchar.mp = tchar.get_stat("mpmax")
+		if headless:
+			continue
 		battlefield[int(i)] = enemygroup[i]
 		make_fighter_panel(tchar, i)
 
@@ -2007,6 +2073,9 @@ func skill_selected(skill):
 
 func FinishCombat(victory = true):
 	victory_seq_run = false
+	if instant_mode:
+		finish_instant_combat()
+		return
 	HideFighterStats()
 	set_process_input(false)
 	if is_instance_valid(gui_controller.dialogue) && gui_controller.dialogue.is_visible():
@@ -2076,6 +2145,30 @@ func FinishCombat(victory = true):
 	emit_signal("combat_cleaned_up")
 
 
+#closes an encounter resolved by resolve_without_combat() - no battle state to unwind
+func finish_instant_combat():
+	instant_mode = false
+	$Rewards.hide()
+	if is_instance_valid(gui_controller.dialogue) && gui_controller.dialogue.is_visible():
+		gui_controller.dialogue.close()
+	for i in enemygroup.values():
+		if i == null:
+			continue
+		var tchar = characters_pool.get_char_by_id(i)
+		if tchar != null:
+			tchar.is_active = false
+	restore_combat_ui()
+	hide()
+	input_handler.finish_combat()
+	if input_handler.event_is_active:
+		yield(input_handler, "EventFinished")
+	input_handler.combat_node = null
+	gui_controller.current_screen = gui_controller.previous_screen
+	gui_controller.combat = null
+	characters_pool.cleanup()
+	emit_signal("combat_cleaned_up")
+
+
 #to check next functions
 var victory_seq_run = false
 func victory():
@@ -2095,7 +2188,6 @@ func victory():
 	Input.set_custom_mouse_cursor(images.cursors.default)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	fightover = true
-	$Rewards/CloseButton.disabled = true
 	input_handler.StopMusic()
 	#on combat ends triggers
 	for p in range(1, 7):
@@ -2110,9 +2202,14 @@ func victory():
 			t_p.process_event(variables.TR_VICTORY)
 	effects_pool.process_event(variables.TR_VICTORY)
 	#add permadeath check here
-	
+	give_rewards()
+
+
+#reward roll and rewards panel, shared by a normal victory and by resolve_without_combat()
+func give_rewards():
+	$Rewards/CloseButton.disabled = true
 	input_handler.PlaySound("battle_victory")
-	
+
 	var rewardsdict = {gold = 0, materials = {}, items = [], xp = 0}
 	for i in enemygroup.values():
 		if i == null: #not sure why was this check added

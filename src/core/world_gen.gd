@@ -1212,11 +1212,20 @@ func set_level_infinite(location, level):
 	location.current_level = level
 	location.max_level = max(level, location.max_level)
 	#set biome
-	if location.biomes.size() <= level:
+	while location.biomes.size() <= level:
 		var pool = location.avaliable_biomes.duplicate()
 		pool.shuffle()
+		var added = 0
 		for i in pool:
+			var b_data = DungeonData.infinite_dungeon_biomes[i]
+			#low tier biomes are dropped from the rotation once the floor gets high enough
+			if b_data.has('max_floor') and location.biomes.size() > b_data.max_floor:
+				continue
 			location.biomes.push_back(i)
+			added += 1
+		if added == 0: #safety net - every biome is capped, ignore the caps rather than loop forever
+			for i in pool:
+				location.biomes.push_back(i)
 	location.biome = location.biomes[level]
 	#setup biome attributes
 	var biome_data = DungeonData.infinite_dungeon_biomes[location.biome]

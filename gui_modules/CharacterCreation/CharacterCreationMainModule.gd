@@ -633,6 +633,8 @@ func rebuild_ragdoll(stat = null):
 		ragdoll.rebuild_cloth(true)
 	else:
 		ragdoll.rebuild_stat(stat)
+	if stat == 'tits_size':
+		ragdoll.jiggle_tits()
 
 
 func change_value_node(stat, value): #for scrollable nodes

@@ -531,12 +531,13 @@ func execute_skill(s_skill2):  #to update to exploration version
 				print('error in damagestat %s' % i.damagestat)  #obsolete in new format
 
 
-func StartCombat(data): 
-	if !data.has('instawin') or !data.instawin:
+func StartCombat(data):
+	var skipped = (data.has('instawin') and data.instawin) or (data.has('intimidate') and data.intimidate)
+	if !skipped: #no battle screen is entered on a skipped fight, so no transition into it either
 		input_handler.play_animation("fight")
 		yield(get_tree().create_timer(1), "timeout")
-	ResourceScripts.core_animations.BlackScreenTransition(0.5)
-	yield(get_tree().create_timer(0.5), "timeout")
+		ResourceScripts.core_animations.BlackScreenTransition(0.5)
+		yield(get_tree().create_timer(0.5), "timeout")
 #	globals.current_level = current_level
 #	globals.current_stage = current_stage
 	globals.StartFixedAreaCombat(data)

@@ -56,10 +56,11 @@ var buffs_on_pause = false
 #		emit_signal("signal_RMB_release")
 #		RMBpressed = false
 
-#Парение активного бойца: карточка мягко поднимается и опускается, под ногами
-#дышит тень. Точку покоя не запоминаем с живого узла, а знаем наверняка: каждый
-#слот - Container ровно по размеру карточки, и make_fighter_panel ставит её в
-#ноль. Снимок текущей позиции цементировал бы любой чужой недоигранный сдвиг.
+#Floating of the active fighter: the card gently rises and sinks while a shadow
+#breathes under it. The rest position is not captured from the live node, we know
+#it for sure: every slot is a Container exactly the size of the card, and
+#make_fighter_panel places it at zero. A snapshot of the current position would
+#cement any foreign shift that hasn't been played out yet.
 const FLOAT_RISE = 8.0
 const FLOAT_PERIOD = 1.6
 const FLOAT_SHADOW_ALPHA = 0.45
@@ -386,8 +387,8 @@ func check_active():
 #		if fighter != null:
 		fighter.displaynode = null
 		fighter = null
-		#переименовываем перед удалением, как в transform_fighter: queue_free
-		#отложенный, а слот должен считаться пустым сразу
+		#rename before deleting, same as in transform_fighter: queue_free is
+		#deferred, but the slot must count as empty right away
 		name = 'temp'
 		queue_free()
 
@@ -453,7 +454,7 @@ func setup_overlay(type):
 				nd.queue_free()
 		_:
 			print("no damage type - %s" % type)
-	#материал Icon только что подменили на свежий - возвращаем обесцвечивание
+	#the Icon material was just swapped for a fresh one - restore desaturation
 	refresh_icon_desat()
 
 
@@ -462,9 +463,10 @@ func turn_overlay(val):
 	refresh_icon_desat()
 
 
-#Статус «В тенях» (e_t_hide2, тег hide): портрет выцветает и уходит в холодный
-#лунный тон. Обесцвечивание берём у того же desaturate.shader, который и так
-#висит на Icon, а оттенок даёт modulate самого портрета - лишних узлов не надо.
+#"In the shadows" status (e_t_hide2, tag hide): the portrait fades out and shifts
+#to a cold moonlit tone. Desaturation comes from the same desaturate.shader that
+#already sits on Icon, and the tint from the portrait's own modulate - no extra
+#nodes needed.
 func set_stealth(val):
 	if stealth_on == val: return
 	stealth_on = val
@@ -472,8 +474,9 @@ func set_stealth(val):
 	refresh_icon_desat()
 
 
-#Смерть показывается тем же percent, и у неё приоритет. При типе урона 'mind' на
-#Icon висит swirl_shader со своим одноимённым параметром - туда не лезем.
+#Death is shown through the same percent and takes priority. For the 'mind'
+#damage type Icon carries swirl_shader with its own parameter of the same name -
+#we don't touch that one.
 func refresh_icon_desat():
 	if $Icon.material == null or $Icon.material.shader == null: return
 	if !$Icon.material.shader.resource_path.ends_with('desaturate.shader'): return
@@ -485,7 +488,8 @@ func refresh_icon_desat():
 		$Icon.material.set_shader_param('percent', 0.0)
 
 
-#Тень заводим лениво и только тому, чей ход: остальным карточкам она не нужна.
+#The shadow is created lazily and only for whoever's turn it is: other cards
+#don't need it.
 func make_float_shadow():
 	if float_shadow != null: return
 	var t = TextureRect.new()
@@ -494,8 +498,9 @@ func make_float_shadow():
 	t.expand = true
 	t.stretch_mode = TextureRect.STRETCH_SCALE
 	t.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	#Портреты почти всегда непрозрачные, так что за карточку класть нечего -
-	#тень рисуем поверх и уводим под нижнюю кромку, там её ничто не перекрывает.
+	#Portraits are almost always opaque, so there is nothing to put behind the
+	#card - we draw the shadow on top and push it below the bottom edge, where
+	#nothing overlaps it.
 	t.rect_position = Vector2(26, 196)
 	t.rect_size = Vector2(130, 26)
 	t.rect_pivot_offset = t.rect_size / 2
@@ -516,8 +521,8 @@ func set_floating(val):
 	set_process(val)
 
 
-#Снимаем сдвиг, но не сам режим: парение возобновится, когда карточка
-#освободится.
+#Clears the shift but not the mode itself: floating resumes once the card is
+#free again.
 func float_stop():
 	if float_shifted:
 		rect_position = FLOAT_HOME
@@ -528,8 +533,8 @@ func float_stop():
 		float_shadow.rect_scale = Vector2(1, 1)
 
 
-#Пока по карточке идёт своя анимация, парение уступает: rect_position у узла
-#один, и тюин с _process за него дерутся.
+#While the card is playing its own animation, floating yields: the node has a
+#single rect_position, and the tween and _process would fight over it.
 func float_busy():
 	if has_node('tween') and $tween.is_active(): return true
 	if animation_node != null and animation_node.animation_delays.has(self): return true

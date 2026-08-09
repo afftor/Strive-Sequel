@@ -655,6 +655,7 @@ stretch_mode = 6
 [node name="frame" type="TextureRect" parent="RagdollPanel"]
 margin_right = 40.0
 margin_bottom = 40.0
+mouse_filter = 2
 texture = ExtResource( 53 )
 
 [node name="TestButton" type="Button" parent="."]

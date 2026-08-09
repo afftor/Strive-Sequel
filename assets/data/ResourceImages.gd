@@ -843,6 +843,7 @@ var sprites = {
 	rakar = load("res://assets/images/sprites/rakar.png"),
 	ramont = load("res://assets/images/sprites/ramont.png"),
 	rilu = load("res://assets/images/sprites/rilu.png"),
+	rilu2 = load("res://assets/images/sprites/rilu_2.png"),
 	
 	cali_halloween = load("res://assets/images/sprites/cali_halloween.png"),
 	cali_halloween_body = load("res://assets/images/sprites/cali_halloween_body.png"),
@@ -934,10 +935,14 @@ var sprites = {
 	rouge_wed = load("res://assets/images/sprites/rouge_wed.png"),
 	rouge_wed_body = load("res://assets/images/sprites/rouge_wed_body.png"),
 	grotus = load("res://assets/images/sprites/grotus.png"),
+	grotus_evil = load("res://assets/images/sprites/grotus_evil.png"),
+	grotus_king = load("res://assets/images/sprites/grotus_king.png"),
+	grotus_fear = load("res://assets/images/sprites/grotus_fear.png"),
 	bolthar = load("res://assets/images/sprites/gnome.png"),
 	keeper = load("res://assets/images/sprites/keeper.png"),
 	alise = load("res://assets/images/sprites/alise.png"),
 	sebastian = load("res://assets/images/sprites/sebastian.png"),
+	sebastian2 = load("res://assets/images/sprites/sebastian_2.png"),
 	
 	emperor = load("res://assets/images/sprites/emperor.png"),
 	chancellor = load("res://assets/images/sprites/advisor.png"),

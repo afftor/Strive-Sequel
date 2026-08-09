@@ -1021,7 +1021,8 @@ var data = {
 				text = "PRIESTESS_SWORD_TALK_1_1",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 0
 			},
 			{
 				text = "PRIESTESS_SWORD_TALK_1_2",
