@@ -2,19 +2,42 @@ Added act 4 finale
 Revamped food mechanic. Now characters eat 1 food item per attempt and it lasts multiple turns based on the food eaten. Better food provides various bonuses. Characters also can be demanding higher quality food if they have higher fame or value.
 Cleave and Strike Through now had additional effects when certain conditions met
 Added new trait for Ratkin: In the shadows reduces ranged physical hit chance by 30%.
-Added character sorting behavior to main character list
+Added option to sort characters by category
 Added some new sound effects to time equipment and turn pass 
 Slaves now can only be trained after 1 turn to prevent them being sold for better price instantly
 Added hotkeys and settings for them, including new quicksave/load option
-Added option to sort characters by category
 Added workunits display as well as how much work characters make per turn
+Added stat icons to character and inventory interfaces
+Added flag buttons to language selection
+Added comic scene to Rouge's scene about Ketch's escape
+Added interactive breast animation to character paperdolls
+Added Goblin Stronghold biome to the infinite dungeon
+Added setting to control automatic disabling of mods after game updates
+Experimental builds now display a startup notice instead of checking for stable updates
 Added 2 new skills: 
 Warcry - Warfare skill removing fear and silence from caster
 Hardened Grip - Mind spell, providing disarm immunity to target
 Disarm now forces ranged attackers to use melee attack with its inherent penalty
+Low-level biomes stop appearing on deeper infinite dungeon floors
+Combat skip and intimidation victories now go directly to the rewards screen without opening combat
+Expanded combat animations 
+Reworked Greg boss fight
+Aire's Overwatch is now limited to 5 counterattacks per turn
+Rebalanced work requirements for multiple crafting recipes
+Radiance now removes In the Shadows from targets
+Improved end turn performance and reduced interface freezing
 Fixed Mae having wrong default portrait
 Fixed Lira's quest 3rd part
 Fixed in the shadows giving evasion against physical attacks
+Fixed multiple tutorial issues
+Fixed combat defeat and game over causing events and interfaces to continue processing
+Fixed animated backgrounds not disabling correctly and flickering after video restart
+Fixed MP regeneration scaling incorrectly
+Fixed errors caused by status stacks without duration and buff pages updating after combat
+Fixed resurrected, summoned and transformed units not being added to combat turn order in time
+Fixed NG+ race display for new game+
+Fixed task tool bonuses providing incorrect bonus modifiers
+Fixed some quest interface localization issues
 0.15.0c
 Master's Mentor trait now boosts Training Points gained instead of trainee capacity
 Amelia is now recruited with proper training and points

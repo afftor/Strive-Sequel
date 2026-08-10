@@ -62,15 +62,15 @@ func _make_rays():
 		if target == null or !is_instance_valid(target): continue
 		var branch_delay = 0.0 if index == 0 else 0.10 + float(index - 1) * branch_stagger
 		max_branch_delay = max(max_branch_delay, branch_delay)
-		var glow = _make_line(24.0 if index == 0 else 19.0,
+		var glow = _make_line(15.0 if index == 0 else 12.0,
 			Color(0.20, 0.58, 1.0, 0.46 if index == 0 else 0.38))
-		var core = _make_line(9.0 if index == 0 else 7.0,
+		var core = _make_line(5.5 if index == 0 else 4.2,
 			Color(0.30, 0.78, 1.0, 0.95))
-		var hot = _make_line(3.2 if index == 0 else 2.6,
+		var hot = _make_line(2.2 if index == 0 else 1.7,
 			Color(0.94, 0.99, 1.0, 1.0))
-		var fork_a = _make_line(3.0, Color(0.68, 0.93, 1.0, 0.88))
-		var fork_b = _make_line(3.0, Color(0.68, 0.93, 1.0, 0.88))
-		var impact = _make_line(4.0, Color(0.76, 0.95, 1.0, 0.95))
+		var fork_a = _make_line(2.0, Color(0.68, 0.93, 1.0, 0.88))
+		var fork_b = _make_line(2.0, Color(0.68, 0.93, 1.0, 0.88))
+		var impact = _make_line(3.0, Color(0.76, 0.95, 1.0, 0.95))
 		for line in [glow, core, hot, fork_a, fork_b, impact]: line.visible = false
 		rays.append({
 			branch = index > 0,

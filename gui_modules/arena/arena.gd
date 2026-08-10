@@ -306,6 +306,7 @@ func on_combat_ended(encounter_code, victory):
 		start_btn.disabled = true
 		finish_btn.text = tr('ARENA_FINISH_BTN')
 		clear_reward(next_reward_cont)
+		input_handler.achievements.try_add_achimnt('arena_champion')
 	else:
 		next_round()
 		make_next_reward()

@@ -69,7 +69,11 @@ func fix_old_save():
 	for code in food_filter.keys():
 		if !Items.materiallist.has(code) or Items.materiallist[code].type != 'food':
 			food_filter.erase(code)
-	if !(fed is int) or fed < 0:
+	#JSON restores every number as a float. Keep a valid saved ration count instead of
+	#mistaking its post-load type for corrupted data and clearing the active food buff.
+	if typeof(fed) in [TYPE_INT, TYPE_REAL]:
+		fed = max(int(fed), 0)
+	else:
 		fed = 0
 	#no update_demand() here - the stat containers are still mid-load. the first meal
 	#after loading recomputes it anyway

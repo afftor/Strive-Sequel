@@ -477,6 +477,13 @@ var achievements = {
 		icon = "res://assets/images/iconsskills/skill_meteor.png",
 		points = 3
 	},
+	arena_champion = {
+		name = "ACHIEVEMENT_ARENA_CHAMPION_NAME",
+		description = "ACHIEVEMENT_ARENA_CHAMPION_DESC",
+		hint = "ACHIEVEMENT_ARENA_CHAMPION_HINT",
+		icon = "res://assets/Textures_v2/Universal/Icons/icon_weapon.png",
+		points = 10
+	},
 }
 
 var achi_groups = {

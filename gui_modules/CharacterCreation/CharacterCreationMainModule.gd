@@ -780,21 +780,28 @@ func build_food_filter():
 	$DietPanel/Title.text = tr("CHARCREATE_DIET_TITLE")
 	$DietPanel/RichTextLabel.bbcode_text = "[center]" + help_text + "[/center]"
 
+	#the cards themselves never change, only which one is picked - so they are built
+	#from the template once and the rebuild just moves the highlight
+	if $DietPanel/Cards.get_child_count() <= 1: #only the template is there
+		build_food_cards()
 	for food in foods:
 		build_food_card(food, val[food] == 'like')
 
 
-#the card itself never changes, only which one is picked - so the icons and dishes are
-#filled in once and the rebuild just moves the highlight
-func build_food_card(food, is_liked):
-	var node = find_node_for_stat('food_filter_' + food)
-	if !node.has_meta('signals_built'):
+func build_food_cards():
+	var container = $DietPanel/Cards
+	input_handler.ClearContainer(container, ['Card'])
+	for food in foods:
+		var node = input_handler.DuplicateContainerTemplate(container, 'Card')
+		node.name = food
 		node.connect('pressed', self, 'change_food_filter_value', [food])
-		node.set_meta('signals_built', true)
 		node.get_node('Name').text = tr("FOODTYPE" + food.to_upper())
 		node.get_node('ExamplesLabel').text = tr("CHARCREATE_DIET_DISHES")
 		build_food_dishes(node, food)
 
+
+func build_food_card(food, is_liked):
+	var node = find_node_for_stat('food_filter_' + food)
 	node.pressed = is_liked
 	node.get_node('Mark').visible = is_liked
 

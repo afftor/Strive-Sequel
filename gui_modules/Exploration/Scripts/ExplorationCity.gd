@@ -891,6 +891,7 @@ func show_slave_info(person):
 	$SlaveMarket/SexSkillsLabel.text = tr('SLAVE_MARKET_SEX_SKILLS')
 	input_handler.ClearContainer($SlaveMarket/SexSkills, ['Skill'])
 	var sex_training = person.get_sex_training()
+	var has_visible_sex_skills = false
 	for skill in SEX_SKILLS:
 		if person.get_stat(skill.code) <= 0:
 			continue
@@ -903,9 +904,11 @@ func show_slave_info(person):
 		if skill.code == 'sex_skills_pussy' and training_state == 'novice' and person.get_stat('sex') == 'male':
 			continue
 		var newnode = input_handler.DuplicateContainerTemplate($SlaveMarket/SexSkills, 'Skill')
+		has_visible_sex_skills = true
 		var training_label = get_sex_training_label(training_state)
 		newnode.text = '%s\n%s' % [tr(skill.name), training_label]
 		globals.connecttexttooltip(newnode, '[center]' + tr(skill.name) + '[/center]\n' + tr(skill.descript) + '\n' + tr('CUR_LEVEL_LABEL') + ': ' + training_label)
+	$SlaveMarket/SexSkillsLabel.visible = has_visible_sex_skills
 
 	$SlaveMarket/PurchaseButton.disabled = false
 	#$PurchaseButton.disabled = person.calculate_price() > ResourceScripts.game_res.money

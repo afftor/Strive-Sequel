@@ -411,6 +411,7 @@ func class_copy(character, target):
 	var data = {text = '', tags = ['skill_report_event'], options = []}
 	var text
 	var has_option = false
+	var unavailable_classes = []
 	for prof in target.get_professions():
 		if character.has_profession(prof):
 			continue
@@ -421,14 +422,14 @@ func class_copy(character, target):
 		var profdata = classesdata.professions[prof]
 		var is_racial = false
 		var can_obtain = true
+		var unmet_reqs = []
 		for req in profdata.reqs:
 			if req.code in ['race', 'one_of_races']:
 				is_racial = true
 				continue
 			if !character.valuecheck(req):
 				can_obtain = false
-				break
-				pass
+				unmet_reqs.append(req)
 		if is_racial and can_obtain:
 			has_option = true
 			var op_text = tr(ResourceScripts.descriptions.get_class_name(profdata, character))
@@ -436,12 +437,19 @@ func class_copy(character, target):
 			op_bonus.push_back({code = 'affect_active_character', type = 'remove_soc_skill', skill = 'class_copy'})
 			op_bonus.push_back({code = 'affect_active_character', type = 'add_class', class = prof})
 			data.options.append({code = 'close', text = op_text, reqs = [], bonus_effects = op_bonus})
+		elif is_racial and !unmet_reqs.empty():
+			var unavailable_class_name = tr(ResourceScripts.descriptions.get_class_name(profdata, character))
+			var req_text = character.decipher_reqs(unmet_reqs, true)
+			unavailable_classes.append("{color=yellow|%s}\n%s" % [unavailable_class_name, req_text])
 	
 	data.options.append({code = 'close', text = tr("DIALOGUECLOSE"), reqs = []})
 	if has_option:
 		text = tr("DIALOGUECLASS_COPYREPORT")
 	else:
 		text = tr("DIALOGUECLASS_COPYREPORT_FAILED")
+	if !unavailable_classes.empty():
+		text += "\n\n" + tr("REQUIREMENTS_TOOLTIP") + ":\n"
+		text += PoolStringArray(unavailable_classes).join("\n\n")
 	
 	text = character.translate(text)
 	text = target.translate(text.replace("[target", "["))

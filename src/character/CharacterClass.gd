@@ -1230,13 +1230,16 @@ func can_evade():
 	return res
 
 func can_use_skill(skill):
-	if (is_players_character or need_req) and skill.has('reqs') and !checkreqs(skill.reqs): 
+	if skill.type == 'auto':
 		return false
-	if skill.type == 'auto': 
+	#in the sandbox reqs, cost and cooldown never block - anything is castable
+	if variables.anim_sandbox:
+		return true
+	if (is_players_character or need_req) and skill.has('reqs') and !checkreqs(skill.reqs):
 		return false
-	if is_players_character and !check_cost(skill.cost): 
+	if is_players_character and !check_cost(skill.cost):
 		return false
-	if skills.combat_cooldowns.has(skill.code): 
+	if skills.combat_cooldowns.has(skill.code):
 		return false
 	if has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('disable_immunity'):
 		 return false
@@ -2349,6 +2352,12 @@ func log_me(text):
 	globals.text_log_add("char", "%s: %s" % [get_short_name(), text])
 
 func affect_char(template, manifest = false):
+	#The sandbox lets any fighter cast any skill, so a value computed from state
+	#this caster does not have comes back null. Treat it as zero there so the
+	#animation still plays; in a normal game a null here is a real bug and must
+	#keep failing loudly.
+	if variables.anim_sandbox and template.type == 'damage' and template.value == null:
+		template.value = 0
 	match template.type:
 		'damage':
 			var tval = deal_damage(template.value, template.source)

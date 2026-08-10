@@ -8321,6 +8321,8 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYBANDIT_BOSS_MAGE = "Rogue Sorcerer",
 	ENEMYRAMONT_BOSS = "Ramont",
 	ENEMYHECTOR_BOSS = "Hector",
+	ENEMYGROTUS_ASCENDED = """Grotus the Ascended""", # MISSING TRANSLATION
+	ENEMYGROTUS_KING_BOSS = """Grotus, Crowned God""", # MISSING TRANSLATION
 	ENEMYREYAN_BOSS = """Reyan""", # MISSING TRANSLATION
 	ENEMYREBEL_RECRUIT = "Recrue rebelle",
 	ENEMYREBEL_KNIGHT = "Chevalier rebelle",
@@ -8708,6 +8710,9 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ACHIEVEMENT_METEORITE_NAME = """Meteorite quest""", # MISSING TRANSLATION
 	ACHIEVEMENT_METEORITE_DESC = """Meteorite quest completed""", # MISSING TRANSLATION
 	ACHIEVEMENT_METEORITE_HINT = """Complete meteorite quest""", # MISSING TRANSLATION
+	ACHIEVEMENT_ARENA_CHAMPION_NAME = """Arena Champion""", # MISSING TRANSLATION
+	ACHIEVEMENT_ARENA_CHAMPION_DESC = """Won all five arena rounds in a single run""", # MISSING TRANSLATION
+	ACHIEVEMENT_ARENA_CHAMPION_HINT = """Win the fifth arena round""", # MISSING TRANSLATION
 	ACHIEVEMENT_RESET_ASK = """Are you sure you want to reset ALL achievements progress?""", # MISSING TRANSLATION
 	ACHIGROUP_WEDDING_NAME = """Wedding""", # MISSING TRANSLATION
 	ACHIGROUP_WEDDING_DESC = """Marry each unique character""", # MISSING TRANSLATION

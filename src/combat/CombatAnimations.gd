@@ -35,6 +35,7 @@ var devastation_hp_delays = {}
 var lightning_effects = []
 var lightning_timing_plan = {}
 var lightning_hp_delays = {}
+var lightning_caster_states = {}
 
 func force_end():
 	for key in devastation_states.keys():
@@ -47,6 +48,8 @@ func force_end():
 	lightning_effects.clear()
 	lightning_timing_plan.clear()
 	lightning_hp_delays.clear()
+	for key in lightning_caster_states.keys():
+		lightning_caster_restore(key, true)
 	animation_delays.clear()
 	animations_queue.clear()
 	hp_update_delays.clear()
@@ -796,6 +799,7 @@ func devastation_dash(node, args = null):
 		visual = visual_node,
 		origin = origin,
 		visual_origin = p,
+		center_position = dest,
 	}
 	return DEVASTATION_DASH
 
@@ -833,6 +837,7 @@ func devastation_strike(node, args = null):
 
 	var iteration = int(args.iteration) if args.has('iteration') else 1
 	var weapon_sprite = args.weapon_sprite if args.has('weapon_sprite') else 'at_sword'
+	devastation_strike_motion(visual_node, state, caster_node, iteration)
 	ResourceScripts.core_animations.gfx_sprite(visual_node, weapon_sprite, 0.10,
 		DEVASTATION_STRIKE, !get_flip_for_node(caster_node, args), DEVASTATION_WEAPON_SPEED)
 	var tween = input_handler.GetTweenNode(visual_node)
@@ -843,6 +848,41 @@ func devastation_strike(node, args = null):
 	tween.interpolate_callback(self, 0.75, 'devastation_clear_hp_delay', node, iteration)
 	tween.start()
 	return DEVASTATION_QUEUE_LEAD
+
+func devastation_strike_motion(visual_node, state, caster_node, iteration):
+	if !is_instance_valid(visual_node): return
+	var center_position = state.center_position
+	var base_rotation = state.origin.rotation
+	var base_scale = state.origin.scale
+	var direction = caster_node.get_attack_vector().normalized() if caster_node.has_method('get_attack_vector') else Vector2.RIGHT
+	var vertical = Vector2(0.0, -7.0 if iteration % 2 == 0 else 7.0)
+	var brace = center_position - direction*12.0 - vertical*0.35
+	var impact = center_position + direction*20.0 + vertical
+	var sign_value = 1.0 if direction.x > 0 else -1.0
+	visual_node.rect_pivot_offset = visual_node.rect_size/2
+	var tween = Tween.new()
+	tween.name = 'DevastationStrikeMotion%d' % iteration
+	visual_node.add_child(tween)
+	tween.interpolate_property(visual_node, 'rect_position', center_position, brace,
+		0.035, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.interpolate_property(visual_node, 'rect_position', brace, impact,
+		0.050, Tween.TRANS_QUART, Tween.EASE_IN, 0.035)
+	tween.interpolate_property(visual_node, 'rect_position', impact, center_position,
+		0.055, Tween.TRANS_BACK, Tween.EASE_OUT, 0.085)
+	tween.interpolate_property(visual_node, 'rect_rotation', base_rotation, base_rotation - 4.0*sign_value,
+		0.035, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.interpolate_property(visual_node, 'rect_rotation', base_rotation - 4.0*sign_value, base_rotation + 6.0*sign_value,
+		0.050, Tween.TRANS_QUART, Tween.EASE_IN, 0.035)
+	tween.interpolate_property(visual_node, 'rect_rotation', base_rotation + 6.0*sign_value, base_rotation,
+		0.055, Tween.TRANS_BACK, Tween.EASE_OUT, 0.085)
+	tween.interpolate_property(visual_node, 'rect_scale', base_scale, Vector2(base_scale.x*0.97, base_scale.y*1.04),
+		0.035, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.interpolate_property(visual_node, 'rect_scale', Vector2(base_scale.x*0.97, base_scale.y*1.04), Vector2(base_scale.x*1.05, base_scale.y*0.96),
+		0.050, Tween.TRANS_QUART, Tween.EASE_IN, 0.035)
+	tween.interpolate_property(visual_node, 'rect_scale', Vector2(base_scale.x*1.05, base_scale.y*0.96), base_scale,
+		0.055, Tween.TRANS_BACK, Tween.EASE_OUT, 0.085)
+	tween.interpolate_callback(tween, 0.141, 'queue_free')
+	tween.start()
 
 func devastation_launch_arc(visual_node, target_node, iteration):
 	if !is_instance_valid(visual_node) or !is_instance_valid(target_node): return
@@ -1135,6 +1175,7 @@ func get_lightning_settings(args, chained):
 
 func start_lightning_effect(caster_node, hit_nodes, settings):
 	if caster_node == null or !is_instance_valid(caster_node) or hit_nodes.empty(): return
+	lightning_caster_charge(caster_node, settings.windup)
 	var effect = LightningEffect.new()
 	add_child(effect)
 	effect.setup(caster_node, hit_nodes, {
@@ -1145,6 +1186,64 @@ func start_lightning_effect(caster_node, hit_nodes, settings):
 	})
 	lightning_effects.append(effect)
 	effect.connect('tree_exited', self, '_on_lightning_effect_exited', [effect], CONNECT_ONESHOT)
+
+func lightning_caster_charge(node, windup):
+	if node == null or !is_instance_valid(node) or !node.is_inside_tree(): return
+	var key = node.get_instance_id()
+	if lightning_caster_states.has(key): lightning_caster_restore(key, true)
+	var origin = {
+		node = node,
+		position = node.rect_position,
+		rotation = node.rect_rotation,
+		scale = node.rect_scale,
+		pivot = node.rect_pivot_offset,
+	}
+	lightning_caster_states[key] = origin
+	node.rect_pivot_offset = node.rect_size/2
+	var direction = node.get_attack_vector().normalized() if node.has_method('get_attack_vector') else Vector2.RIGHT
+	var gather_time = max(0.12, windup*0.65)
+	var focus_time = max(0.06, windup - gather_time)
+	var gather_position = origin.position - direction*14.0 + Vector2(0.0, -6.0)
+	var focus_position = origin.position - direction*7.0 + Vector2(0.0, -12.0)
+	var release_position = origin.position + direction*11.0 + Vector2(0.0, -4.0)
+	var sign_value = 1.0 if direction.x > 0 else -1.0
+	var tween = input_handler.GetTweenNode(node)
+	tween.interpolate_property(node, 'rect_position', origin.position, gather_position,
+		gather_time, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	tween.interpolate_property(node, 'rect_position', gather_position, focus_position,
+		focus_time, Tween.TRANS_QUAD, Tween.EASE_IN, gather_time)
+	tween.interpolate_property(node, 'rect_position', focus_position, release_position,
+		0.06, Tween.TRANS_QUART, Tween.EASE_OUT, windup)
+	tween.interpolate_property(node, 'rect_position', release_position, origin.position,
+		0.12, Tween.TRANS_BACK, Tween.EASE_OUT, windup + 0.06)
+	tween.interpolate_property(node, 'rect_rotation', origin.rotation, origin.rotation - 3.0*sign_value,
+		gather_time, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	tween.interpolate_property(node, 'rect_rotation', origin.rotation - 3.0*sign_value, origin.rotation + 2.0*sign_value,
+		focus_time, Tween.TRANS_QUAD, Tween.EASE_IN, gather_time)
+	tween.interpolate_property(node, 'rect_rotation', origin.rotation + 2.0*sign_value, origin.rotation,
+		0.18, Tween.TRANS_BACK, Tween.EASE_OUT, windup)
+	tween.interpolate_property(node, 'rect_scale', origin.scale,
+		Vector2(origin.scale.x*0.97, origin.scale.y*1.04), gather_time,
+		Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	tween.interpolate_property(node, 'rect_scale', Vector2(origin.scale.x*0.97, origin.scale.y*1.04),
+		Vector2(origin.scale.x*1.03, origin.scale.y*0.98), focus_time,
+		Tween.TRANS_QUAD, Tween.EASE_IN, gather_time)
+	tween.interpolate_property(node, 'rect_scale', Vector2(origin.scale.x*1.03, origin.scale.y*0.98),
+		origin.scale, 0.18, Tween.TRANS_BACK, Tween.EASE_OUT, windup)
+	tween.interpolate_callback(self, windup + 0.18, 'lightning_caster_restore', key)
+	tween.start()
+
+func lightning_caster_restore(key, stop_tween = false):
+	if !lightning_caster_states.has(key): return
+	var origin = lightning_caster_states[key]
+	lightning_caster_states.erase(key)
+	var node = origin.node
+	if node == null or !is_instance_valid(node): return
+	if stop_tween and node.has_node('tween'): node.get_node('tween').stop_all()
+	node.rect_position = origin.position
+	node.rect_rotation = origin.rotation
+	node.rect_scale = origin.scale
+	node.rect_pivot_offset = origin.pivot
 
 func _on_lightning_effect_exited(effect):
 	lightning_effects.erase(effect)

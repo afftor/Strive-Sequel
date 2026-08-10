@@ -226,8 +226,12 @@ func process_event(ev, data = {}):
 func refine_target(skill, caster, ttarget): #s_skill, caster, target
 	var target = ttarget.position
 	var change = false
+	#The sandbox picks the target by hand, so honour it. Plenty of skills are
+	#TARGET_NOKEEP and would otherwise re-roll onto somebody else.
+	if variables.anim_sandbox and ttarget != null and !ttarget.defeated:
+		return ttarget
 	#var skill = Skillsdata.skilllist[s_code]
-	if skill.keep_target == variables.TARGET_FORCED: 
+	if skill.keep_target == variables.TARGET_FORCED:
 		change = false #intentional target lock
 	elif ttarget == null: 
 		change = true #forced change
@@ -357,9 +361,10 @@ func invoke_init():
 	match mode:
 		variables.SKILL_BASE:
 			queuenode.add_combatlog(tr("LOG_COMBAT_USE_SKILL") % [caster.get_short_name(), template.name])
-			caster.pay_cost(template.cost)
-			if template.combatcooldown != 0:
-				caster.skills.combat_cooldowns[code] = template.combatcooldown
+			if !variables.anim_sandbox:
+				caster.pay_cost(template.cost)
+				if template.combatcooldown != 0:
+					caster.skills.combat_cooldowns[code] = template.combatcooldown
 			if caster.combatgroup == 'ally':
 				if !caster.has_status('ignore_catalysts_for_%s' % code):
 					for i in template.catalysts:
@@ -481,7 +486,11 @@ func invoke_skillfinish():
 
 func invoke_finalize():
 	if !(mode in [variables.SKILL_FA, variables.SKILL_EFFECT, variables.SKILL_COPY]):
-		if !tags.has('instant') or caster.hp <= 0 or !caster.can_act():
+		#in the sandbox every skill behaves as instant: the turn comes back to the
+		#same fighter, the order never advances, and enemies never get one
+		if variables.anim_sandbox:
+			queuenode.add_end_action(caster, true)
+		elif !tags.has('instant') or caster.hp <= 0 or !caster.can_act():
 			queuenode.add_end_action(caster)
 		else:
 			queuenode.add_end_action(caster, true)

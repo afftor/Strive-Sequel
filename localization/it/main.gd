@@ -8712,6 +8712,8 @@ La donna scompare con la stessa rapidità con cui è apparsa davanti a te, lasci
 	ENEMYBANDIT_BOSS_MAGE = "Stregone canaglia",
 	ENEMYRAMONT_BOSS = "Ramont", #
 	ENEMYHECTOR_BOSS = "Hector",
+	ENEMYGROTUS_ASCENDED = """Grotus the Ascended""", # MISSING TRANSLATION
+	ENEMYGROTUS_KING_BOSS = """Grotus, Crowned God""", # MISSING TRANSLATION
 	ENEMYREYAN_BOSS = "Reyan", #
 	ENEMYREBEL_RECRUIT = "Recluta Ribelle",
 	ENEMYREBEL_KNIGHT = "Cavaliere Ribelle",
@@ -9112,6 +9114,9 @@ Flusso temporale""",
 	ACHIEVEMENT_METEORITE_NAME = "Missione meteorite",
 	ACHIEVEMENT_METEORITE_DESC = "Missione meteorite completata",
 	ACHIEVEMENT_METEORITE_HINT = "Completa la missione meteorite",
+	ACHIEVEMENT_ARENA_CHAMPION_NAME = """Arena Champion""", # MISSING TRANSLATION
+	ACHIEVEMENT_ARENA_CHAMPION_DESC = """Won all five arena rounds in a single run""", # MISSING TRANSLATION
+	ACHIEVEMENT_ARENA_CHAMPION_HINT = """Win the fifth arena round""", # MISSING TRANSLATION
 	ACHIEVEMENT_RESET_ASK = "Sei sicuro di voler azzerare TUTTI i progressi degli obiettivi?",
 	ACHIGROUP_WEDDING_NAME = "Matrimonio",
 	ACHIGROUP_WEDDING_DESC = "Sposa ogni personaggio unico",

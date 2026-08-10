@@ -522,6 +522,7 @@ func setup_player_test():
 
 
 func run_test():
+	variables.anim_sandbox = $sandbox.pressed
 	ResourceScripts.game_res.materials.trap = 50
 	ResourceScripts.game_res.materials.bandage = 50
 	ResourceScripts.game_res.materials.unstable_concoction = 50
