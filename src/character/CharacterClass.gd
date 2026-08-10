@@ -21,6 +21,10 @@ var is_active = true
 var is_players_character = false
 var is_known_to_player = false #for purpose of private parts
 var npc_reference = null
+# Optional metadata copied from an enemy template for dynamic combat impact sounds.
+# Supported values: body, body_wet, cloth, leather, armor, wood, and stone.
+# Null uses the body profile.
+var hit_sound_profile = null
 var tags = []
 #base combat stats
 var hp = 100 setget hp_set#, hp_get
@@ -539,6 +543,7 @@ func get_class_list(category, person):
 
 func generate_simple_fighter(tempname, setup_ai = true):
 	var data = Enemydata.enemies[tempname]
+	hit_sound_profile = data.get('hit_sound_profile', null)
 	for i in variables.fighter_stats_list:
 		if data.has(i):
 #			set_stat(i, 0)

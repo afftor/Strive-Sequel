@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=2]
+[gd_scene load_steps=96 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle3.tres" type="DynamicFont" id=2]
@@ -82,6 +82,7 @@
 [ext_resource path="res://assets/images/sexicons/futa.png" type="Texture" id=124]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/traitpanel/button_traits_universal.png" type="Texture" id=126]
 [ext_resource path="res://gui_modules/Exploration/Modules/AreaShop.tscn" type="PackedScene" id=128]
+[ext_resource path="res://assets/images/iconstraits/cross.png" type="Texture" id=129]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 28 )
@@ -93,6 +94,14 @@ font_data = ExtResource( 26 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 20
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 18
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 16
 font_data = ExtResource( 10 )
 
 [sub_resource type="StyleBoxTexture" id=7]
@@ -816,9 +825,9 @@ text = "25"
 
 [node name="scroll" type="ScrollContainer" parent="SlaveMarket"]
 margin_left = 720.957
-margin_top = 507.686
+margin_top = 321.0
 margin_right = 994.957
-margin_bottom = 572.686
+margin_bottom = 372.0
 theme = ExtResource( 19 )
 scroll_vertical_enabled = false
 
@@ -848,16 +857,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="traitslabel" type="Label" parent="SlaveMarket"]
+[node name="cross" type="TextureRect" parent="SlaveMarket/scroll/traitscontainer/Button"]
 visible = false
-margin_left = 722.0
-margin_top = 309.0
-margin_right = 995.0
-margin_bottom = 349.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 120 )
-text = "SIBLINGMODULESEXTRAITS"
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+mouse_filter = 2
+texture = ExtResource( 129 )
+expand = true
+
+[node name="Button2" type="TextureRect" parent="SlaveMarket/scroll/traitscontainer"]
+visible = false
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 126 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="SlaveMarket/scroll/traitscontainer/Button2"]
+margin_top = 24.0
+margin_right = 50.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 20 )
+text = "5"
 align = 1
+
+[node name="traitslabel" type="Label" parent="SlaveMarket"]
+margin_left = 722.0
+margin_top = 294.0
+margin_right = 995.0
+margin_bottom = 320.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "Traits"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -891,19 +927,58 @@ align = 1
 valign = 1
 
 [node name="ConsentLabel" type="Label" parent="SlaveMarket"]
-visible = false
 margin_left = 722.0
-margin_top = 346.0
+margin_top = 408.0
 margin_right = 997.0
-margin_bottom = 386.0
+margin_bottom = 430.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 8 )
-text = "STATCONSENT"
-align = 1
-valign = 1
+custom_fonts/font = SubResource( 14 )
+text = "Consent: 0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PersonalityLabel" type="Label" parent="SlaveMarket"]
+margin_left = 722.0
+margin_top = 386.0
+margin_right = 997.0
+margin_bottom = 408.0
+mouse_filter = 0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 14 )
+text = "Personality: Neutral"
+clip_text = true
+
+[node name="SexSkillsLabel" type="Label" parent="SlaveMarket"]
+margin_left = 722.0
+margin_top = 433.0
+margin_right = 997.0
+margin_bottom = 453.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "Sex Skills"
+
+[node name="SexSkills" type="GridContainer" parent="SlaveMarket"]
+margin_left = 722.0
+margin_top = 455.0
+margin_right = 997.0
+margin_bottom = 572.0
+custom_constants/hseparation = 4
+custom_constants/vseparation = 0
+columns = 2
+
+[node name="Skill" type="Label" parent="SlaveMarket/SexSkills"]
+visible = false
+margin_right = 135.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 135, 36 )
+mouse_filter = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "Petting\nNovice"
+align = 1
+valign = 1
+clip_text = true
 
 [node name="PurchaseButton" type="TextureButton" parent="SlaveMarket"]
 margin_left = 581.0

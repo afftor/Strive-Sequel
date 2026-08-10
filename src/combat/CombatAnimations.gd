@@ -1,5 +1,7 @@
 extends Node
 
+const LightningEffect = preload("res://src/combat/LightningEffect.gd")
+
 signal pass_next_animation
 signal cast_finished
 signal predamage_finished
@@ -27,8 +29,24 @@ var log_update_delay = 0
 var animation_delays = {}
 
 var is_busy = false
+var devastation_states = {}
+var devastation_arcs = []
+var devastation_hp_delays = {}
+var lightning_effects = []
+var lightning_timing_plan = {}
+var lightning_hp_delays = {}
 
 func force_end():
+	for key in devastation_states.keys():
+		devastation_restore(key)
+	for arc in devastation_arcs.duplicate():
+		devastation_arc_cleanup(arc)
+	devastation_hp_delays.clear()
+	for effect in lightning_effects.duplicate():
+		if is_instance_valid(effect): effect.queue_free()
+	lightning_effects.clear()
+	lightning_timing_plan.clear()
+	lightning_hp_delays.clear()
 	animation_delays.clear()
 	animations_queue.clear()
 	hp_update_delays.clear()
@@ -314,11 +332,15 @@ func cast_with_motion(node, args, sprite_name):
 
 	pending_shot_delay = release
 	pending_shot_timer = cur_timer
-	ResourceScripts.core_animations.gfx_sprite(node, sprite_name, 0.5, duration,
+	var motion = args.motion if args.has('motion') else CAST_MOTION[sprite_name]
+	var visual_node = node
+	if motion == 'execution_leap':
+		visual_node = caster_execution_leap(node, args, release)
+	ResourceScripts.core_animations.gfx_sprite(visual_node, sprite_name, 0.5, duration,
 		get_flip_for_node(node, args), speedup)
-	if CAST_MOTION[sprite_name] == 'cut':
+	if motion == 'cut':
 		caster_cut(node, release)
-	else:
+	elif motion != 'execution_leap':
 		caster_recoil(node, release)
 
 	return nextanimationtime + aftereffectdelay
@@ -329,7 +351,7 @@ func cast_with_motion(node, args, sprite_name):
 #by get_attack_vector(), and the destination is taken from the target's global position
 #because caster and target live in different containers.
 const ASSASS_LEAD = 0.95 #fade out, reposition, and reappear; the hit lands at the end
-const ASSASS_BACK = 0.70 #return to the original position
+const ASSASS_BACK = 1.15 #return to the original position
 const ASSASS_OFF = 94.0 #how far to move behind the target
 const ASSASS_Y = 26.0 #vertical offset while behind the target
 const ASSASS_DIST_BACK = 22.0 #step back before entering the shadows
@@ -501,6 +523,425 @@ func caster_cut(node, contact):
 	tween.interpolate_property(node, 'rect_rotation', 4, 0, MOTION_BACK, Tween.TRANS_QUAD, Tween.EASE_OUT, contact + CUT_HOLD)
 	tween.start()
 
+#Execution: leap into the target on the weapon sheet's contact frame, settle into
+#the landing, then ease out before returning. It shares the normal cast release,
+#so the existing synced target_tilt reaction starts on the exact same frame.
+const EXEC_LEAP_HOLD = 0.30
+const EXEC_LEAP_BACK = 0.44
+const EXEC_LEAP_OFFSET = 28.0
+
+func caster_execution_leap(node, args, contact):
+	if !node.is_inside_tree() or !node.has_method('get_attack_vector'): return node
+	var original_parent = node.get_parent()
+	var original_position = node.rect_position
+	var original_global_position = node.rect_global_position
+	var flight_parent = original_parent
+	if args.has('foe_node') and is_instance_valid(args.foe_node):
+		flight_parent = execution_flight_parent(node, args.foe_node)
+	var visual_node = node
+	var original_alpha = node.modulate.a
+	if flight_parent != null and flight_parent != original_parent:
+		#Keep the real card in its slot: target clearing and turn highlighting look it up
+		#there. Only its visual copy crosses into the shared top-level combat layer.
+		visual_node = node.duplicate()
+		visual_node.set_script(null)
+		visual_node.name = 'ExecutionFlight'
+		visual_node.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		flight_parent.add_child(visual_node)
+		visual_node.rect_global_position = original_global_position
+		node.modulate.a = 0.0
+	visual_node.rect_pivot_offset = visual_node.rect_size/2
+	visual_node.rect_scale = Vector2(1,1)
+	visual_node.rect_rotation = 0
+	visual_node.modulate.a = 1.0
+	assass_set_facing(visual_node, false)
+	var tween = input_handler.GetTweenNode(visual_node)
+	var p = visual_node.rect_position
+	var v = node.get_attack_vector().normalized()
+	var dest = p + v*MOTION_DIST
+	var distance = MOTION_DIST
+	if args.has('foe_node') and is_instance_valid(args.foe_node):
+		var delta = args.foe_node.rect_global_position - node.rect_global_position
+		dest = p + delta - v*EXEC_LEAP_OFFSET
+		distance = delta.length()
+	var air = max(contact, 0.10)
+	var apex = p.linear_interpolate(dest, 0.52) - Vector2(0, min(190.0, 105.0 + distance*0.07))
+
+	#The first two segments put the landing exactly at the weapon's contact frame.
+	tween.interpolate_property(visual_node, 'rect_position', p, apex, air*0.52,
+		Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.interpolate_property(visual_node, 'rect_position', apex, dest, air*0.48,
+		Tween.TRANS_QUAD, Tween.EASE_IN, air*0.52)
+	tween.interpolate_property(visual_node, 'rect_rotation', 0, -8, air*0.52,
+		Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.interpolate_property(visual_node, 'rect_rotation', -8, 0, air*0.48,
+		Tween.TRANS_QUAD, Tween.EASE_IN, air*0.52)
+
+	#Hold at the impact point, then return using the values from the animation lab.
+	tween.interpolate_property(visual_node, 'rect_position', dest, p, EXEC_LEAP_BACK,
+		Tween.TRANS_QUAD, Tween.EASE_OUT, air + EXEC_LEAP_HOLD)
+	tween.interpolate_property(visual_node, 'rect_rotation', 0, 0, EXEC_LEAP_BACK,
+		Tween.TRANS_QUAD, Tween.EASE_OUT, air + EXEC_LEAP_HOLD)
+	tween.interpolate_callback(self, air + EXEC_LEAP_HOLD + EXEC_LEAP_BACK,
+		'execution_leap_cleanup', node, visual_node, original_alpha, original_position)
+	tween.start()
+	return visual_node
+
+func execution_flight_parent(caster, foe):
+	var candidate = foe.get_parent()
+	while candidate != null:
+		var cursor = caster.get_parent()
+		while cursor != null:
+			if cursor == candidate: return candidate
+			cursor = cursor.get_parent()
+		candidate = candidate.get_parent()
+	return caster.get_parent()
+
+func execution_leap_cleanup(node, visual_node, original_alpha, original_position):
+	if is_instance_valid(visual_node) and visual_node != node:
+		visual_node.queue_free()
+	if !is_instance_valid(node): return
+	if visual_node == node:
+		node.rect_position = original_position
+	node.modulate.a = original_alpha
+	node.rect_rotation = 0
+	node.rect_scale = Vector2(1,1)
+
+# Holy Lance: orbit the spear, cross both cells in the selected row, hold the
+# piercing pose through the damage frame, and then restore the caster exactly.
+const HOLY_LANCE_SPIN = 0.72
+const HOLY_LANCE_DASH = 0.24
+const HOLY_LANCE_HOLD = 0.20
+const HOLY_LANCE_BACK = 0.42
+const HOLY_LANCE_ROW_STEP = 218.0
+const HOLY_LANCE_PIERCE = 42.0
+
+func holy_lance_step(node, args = null):
+	if args == null: args = {}
+	if !node.is_inside_tree() or !node.has_method('get_attack_vector'):
+		return 0.0
+
+	var origin = {
+		position = node.rect_position,
+		rotation = node.rect_rotation,
+		scale = node.rect_scale,
+		pivot = node.rect_pivot_offset,
+		modulate = node.modulate,
+	}
+	var visual_node = holy_lance_flight_copy(node, args)
+	visual_node.rect_pivot_offset = visual_node.rect_size/2
+	var p = visual_node.rect_position
+	var v = node.get_attack_vector().normalized()
+	var dest = p + v*(HOLY_LANCE_ROW_STEP*2.0)
+	if args.has('foe_node') and is_instance_valid(args.foe_node):
+		var delta = args.foe_node.rect_global_position - node.rect_global_position
+		if args.has('foe_position') and int(args.foe_position) in [1, 2, 3, 7, 8, 9]:
+			delta += v*HOLY_LANCE_ROW_STEP
+		dest = p + delta + v*HOLY_LANCE_PIERCE
+
+	var spear = holy_lance_spear(visual_node, v)
+	ResourceScripts.core_animations.gfx_sprite(visual_node, 'cast_light', 0.25,
+		HOLY_LANCE_SPIN + HOLY_LANCE_DASH, get_flip_for_node(node, args))
+
+	var tween = input_handler.GetTweenNode(visual_node)
+	var spin_end = HOLY_LANCE_SPIN
+	var contact = spin_end + HOLY_LANCE_DASH
+	var return_start = contact + HOLY_LANCE_HOLD
+	var finish = return_start + HOLY_LANCE_BACK
+
+	# The card only gathers momentum during the orbit; contact remains at the end
+	# of the dash so the row hit and damage numbers start on the same frame.
+	tween.interpolate_property(visual_node, 'rect_scale', origin.scale,
+		origin.scale*1.035, HOLY_LANCE_SPIN, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	tween.interpolate_property(visual_node, 'rect_rotation', origin.rotation,
+		origin.rotation - 2.0*(1 if v.x > 0 else -1), HOLY_LANCE_SPIN,
+		Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	tween.interpolate_property(visual_node, 'rect_position', p, dest,
+		HOLY_LANCE_DASH, Tween.TRANS_QUART, Tween.EASE_IN, spin_end)
+	tween.interpolate_property(visual_node, 'rect_rotation',
+		origin.rotation - 2.0*(1 if v.x > 0 else -1),
+		origin.rotation + 4.0*(1 if v.x > 0 else -1), HOLY_LANCE_DASH,
+		Tween.TRANS_QUART, Tween.EASE_IN, spin_end)
+	tween.interpolate_property(visual_node, 'rect_scale', origin.scale*1.035,
+		origin.scale*1.06, HOLY_LANCE_DASH, Tween.TRANS_QUART, Tween.EASE_IN, spin_end)
+
+	tween.interpolate_property(visual_node, 'rect_position', dest, p,
+		HOLY_LANCE_BACK, Tween.TRANS_QUAD, Tween.EASE_OUT, return_start)
+	tween.interpolate_property(visual_node, 'rect_rotation',
+		origin.rotation + 4.0*(1 if v.x > 0 else -1), origin.rotation,
+		HOLY_LANCE_BACK, Tween.TRANS_BACK, Tween.EASE_OUT, return_start)
+	tween.interpolate_property(visual_node, 'rect_scale', origin.scale*1.06,
+		origin.scale, HOLY_LANCE_BACK, Tween.TRANS_QUAD, Tween.EASE_OUT, return_start)
+	if is_instance_valid(spear):
+		var facing = 0.0 if v.x > 0 else 180.0
+		spear.rotation_degrees = facing
+		tween.interpolate_property(spear, 'rotation_degrees', facing, facing + 720.0,
+			HOLY_LANCE_SPIN, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+		tween.interpolate_property(spear, 'modulate:a', 1.0, 0.0, 0.14,
+			Tween.TRANS_QUAD, Tween.EASE_IN, contact + 0.06)
+	tween.interpolate_callback(self, finish, 'holy_lance_cleanup', node, visual_node, origin)
+	tween.start()
+	return contact
+
+func holy_lance_flight_copy(node, args):
+	var original_parent = node.get_parent()
+	var flight_parent = original_parent
+	if args.has('foe_node') and is_instance_valid(args.foe_node):
+		flight_parent = execution_flight_parent(node, args.foe_node)
+	if flight_parent == null or flight_parent == original_parent:
+		return node
+	var visual_node = node.duplicate()
+	visual_node.set_script(null)
+	visual_node.name = 'HolyLanceFlight'
+	visual_node.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	flight_parent.add_child(visual_node)
+	visual_node.rect_global_position = node.rect_global_position
+	node.modulate.a = 0.0
+	return visual_node
+
+func holy_lance_spear(visual_node, direction):
+	var hub = Node2D.new()
+	hub.name = 'HolyLanceSpear'
+	hub.position = visual_node.rect_size/2
+	hub.modulate = Color(1.0, 0.88, 0.32, 1.0)
+	visual_node.add_child(hub)
+	var spear_scene = load('res://assets/sfx/hit_animation/at_lance.tscn')
+	var glow = spear_scene.instance()
+	glow.stop()
+	glow.frame = 6
+	glow.scale = Vector2(1.7, 1.7)
+	glow.modulate = Color(1.0, 0.72, 0.16, 0.24)
+	glow.z_index = 1
+	hub.add_child(glow)
+	var blade = spear_scene.instance()
+	blade.stop()
+	blade.frame = 6
+	blade.scale = Vector2(1.35, 1.35)
+	blade.modulate = Color(1.0, 0.95, 0.64, 1.0)
+	blade.z_index = 2
+	hub.add_child(blade)
+	return hub
+
+func holy_lance_cleanup(node, visual_node, origin):
+	if is_instance_valid(visual_node) and visual_node != node:
+		visual_node.queue_free()
+	if !is_instance_valid(node): return
+	node.rect_position = origin.position
+	node.rect_rotation = origin.rotation
+	node.rect_scale = origin.scale
+	node.rect_pivot_offset = origin.pivot
+	node.modulate = origin.modulate
+
+# Devastation keeps a visual copy of the caster in the common combat layer while
+# the normal repeat pipeline continues to choose and damage a target per strike.
+const DEVASTATION_DASH = 0.34
+const DEVASTATION_STRIKE = 0.34
+const DEVASTATION_QUEUE_LEAD = 0.14
+const DEVASTATION_RELEASE = 0.116
+const DEVASTATION_ARC = 0.19
+const DEVASTATION_RETURN = 0.48
+const DEVASTATION_WEAPON_SPEED = 2.35
+
+func devastation_dash(node, args = null):
+	if args == null: args = {}
+	if !node.is_inside_tree() or !node.has_method('get_attack_vector'):
+		return 0.0
+	var key = node.get_instance_id()
+	if devastation_states.has(key):
+		devastation_restore(key)
+
+	var origin = {
+		position = node.rect_position,
+		rotation = node.rect_rotation,
+		scale = node.rect_scale,
+		pivot = node.rect_pivot_offset,
+		modulate = node.modulate,
+	}
+	var visual_node = devastation_flight_copy(node, args)
+	visual_node.rect_pivot_offset = visual_node.rect_size/2
+	visual_node.rect_rotation = origin.rotation
+	visual_node.rect_scale = origin.scale
+	var p = visual_node.rect_position
+	var flight_parent = visual_node.get_parent()
+	var dest = p
+	if flight_parent is Control:
+		dest = flight_parent.rect_size*0.5 - visual_node.rect_size*0.5
+	elif args.has('foe_node') and is_instance_valid(args.foe_node):
+		var midpoint = (node.rect_global_position + args.foe_node.rect_global_position)*0.5
+		dest = p + midpoint - node.rect_global_position
+
+	var direction = node.get_attack_vector().normalized()
+	var brace_time = DEVASTATION_DASH*0.18
+	var brace_position = p - direction*18.0
+	var brace_scale = Vector2(origin.scale.x*0.98, origin.scale.y*1.02)
+	var tween = input_handler.GetTweenNode(visual_node)
+	tween.interpolate_property(visual_node, 'rect_position', p, brace_position,
+		brace_time, Tween.TRANS_SINE, Tween.EASE_OUT)
+	tween.interpolate_property(visual_node, 'rect_scale', origin.scale, brace_scale,
+		brace_time, Tween.TRANS_SINE, Tween.EASE_OUT)
+	tween.interpolate_property(visual_node, 'rect_rotation', origin.rotation,
+		origin.rotation - 2.0*(1 if direction.x > 0 else -1), brace_time,
+		Tween.TRANS_SINE, Tween.EASE_OUT)
+	tween.interpolate_property(visual_node, 'rect_position', brace_position, dest,
+		DEVASTATION_DASH - brace_time, Tween.TRANS_QUART, Tween.EASE_IN, brace_time)
+	tween.interpolate_property(visual_node, 'rect_scale', brace_scale, origin.scale,
+		DEVASTATION_DASH - brace_time, Tween.TRANS_QUAD, Tween.EASE_OUT, brace_time)
+	tween.interpolate_property(visual_node, 'rect_rotation',
+		origin.rotation - 2.0*(1 if direction.x > 0 else -1), origin.rotation,
+		DEVASTATION_DASH - brace_time, Tween.TRANS_QUAD, Tween.EASE_OUT, brace_time)
+	tween.start()
+
+	devastation_states[key] = {
+		node = node,
+		visual = visual_node,
+		origin = origin,
+		visual_origin = p,
+	}
+	return DEVASTATION_DASH
+
+func devastation_flight_copy(node, args):
+	var original_parent = node.get_parent()
+	var flight_parent = original_parent
+	if args.has('foe_node') and is_instance_valid(args.foe_node):
+		flight_parent = execution_flight_parent(node, args.foe_node)
+	if flight_parent == null or flight_parent == original_parent:
+		return node
+	var visual_node = node.duplicate()
+	visual_node.set_script(null)
+	visual_node.name = 'DevastationFlight'
+	visual_node.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	flight_parent.add_child(visual_node)
+	visual_node.rect_global_position = node.rect_global_position
+	node.modulate.a = 0.0
+	return visual_node
+
+func devastation_strike(node, args = null):
+	if args == null: args = {}
+	var caster_node = args.caster_node if args.has('caster_node') else null
+	if caster_node == null or !is_instance_valid(caster_node):
+		target_squash(node, DEVASTATION_STRIKE)
+		return DEVASTATION_STRIKE
+	var key = caster_node.get_instance_id()
+	if !devastation_states.has(key):
+		target_squash(node, DEVASTATION_STRIKE)
+		return DEVASTATION_STRIKE
+	var state = devastation_states[key]
+	var visual_node = state.visual
+	if !is_instance_valid(visual_node):
+		target_squash(node, DEVASTATION_STRIKE)
+		return DEVASTATION_STRIKE
+
+	var iteration = int(args.iteration) if args.has('iteration') else 1
+	var weapon_sprite = args.weapon_sprite if args.has('weapon_sprite') else 'at_sword'
+	ResourceScripts.core_animations.gfx_sprite(visual_node, weapon_sprite, 0.10,
+		DEVASTATION_STRIKE, !get_flip_for_node(caster_node, args), DEVASTATION_WEAPON_SPEED)
+	var tween = input_handler.GetTweenNode(visual_node)
+	tween.interpolate_callback(self, DEVASTATION_RELEASE, 'devastation_launch_arc',
+		visual_node, node, iteration)
+	tween.interpolate_callback(self, DEVASTATION_RELEASE + DEVASTATION_ARC,
+		'target_squash', node, DEVASTATION_STRIKE, 0.0)
+	tween.interpolate_callback(self, 0.75, 'devastation_clear_hp_delay', node, iteration)
+	tween.start()
+	return DEVASTATION_QUEUE_LEAD
+
+func devastation_launch_arc(visual_node, target_node, iteration):
+	if !is_instance_valid(visual_node) or !is_instance_valid(target_node): return
+	var flight_parent = visual_node.get_parent()
+	if flight_parent == null: return
+	var start = visual_node.rect_position + visual_node.rect_size/2
+	start += Vector2(12.0 if iteration%2 == 0 else -12.0, (iteration%3 - 1)*18.0)
+	var finish = devastation_control_center_in_parent(flight_parent, target_node)
+	var direction = finish - start
+	if direction.length() < 1.0: direction = Vector2.RIGHT
+	var perpendicular = Vector2(-direction.y, direction.x).normalized()
+	var curve = (55.0 + (iteration%3)*14.0) * (1.0 if iteration%2 == 0 else -1.0)
+	var midpoint = start.linear_interpolate(finish, 0.5) + perpendicular*curve
+
+	var carrier = Node2D.new()
+	carrier.name = 'DevastationArc'
+	carrier.position = start
+	carrier.rotation = direction.angle()
+	carrier.z_index = 25
+	flight_parent.add_child(carrier)
+	devastation_arcs.append(carrier)
+	var effect = 'devastation_%d' % clamp(iteration, 1, 6)
+	var arc = load(images.GFX_sprites[effect]).instance()
+	arc.scale = Vector2(0.44, 0.44)
+	arc.speed_scale = 10.0/(30.0*DEVASTATION_ARC)
+	carrier.add_child(arc)
+	arc.play()
+
+	var tween = input_handler.GetTweenNode(carrier)
+	var half = DEVASTATION_ARC*0.5
+	tween.interpolate_property(carrier, 'position', start, midpoint, half,
+		Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.interpolate_property(carrier, 'position', midpoint, finish, half,
+		Tween.TRANS_QUAD, Tween.EASE_IN, half)
+	tween.interpolate_property(arc, 'scale', Vector2(0.44, 0.44), Vector2(0.54, 0.42),
+		0.04, Tween.TRANS_QUAD, Tween.EASE_OUT, DEVASTATION_ARC - 0.04)
+	tween.interpolate_property(arc, 'modulate:a', 1.0, 0.0, 0.10,
+		Tween.TRANS_QUAD, Tween.EASE_IN, DEVASTATION_ARC)
+	tween.interpolate_callback(self, DEVASTATION_ARC + 0.10,
+		'devastation_arc_cleanup', carrier)
+	tween.start()
+
+func devastation_control_center_in_parent(parent, control):
+	var global_center = control.rect_global_position + control.rect_size/2
+	if parent is Control:
+		return global_center - parent.rect_global_position
+	return parent.get_global_transform_with_canvas().affine_inverse().xform(global_center)
+
+func devastation_arc_cleanup(arc):
+	devastation_arcs.erase(arc)
+	if is_instance_valid(arc): arc.queue_free()
+
+func prepare_devastation_hp_update(node, iteration):
+	devastation_hp_delays[node] = {
+		delay = DEVASTATION_RELEASE + DEVASTATION_ARC - DEVASTATION_QUEUE_LEAD,
+		iteration = iteration,
+	}
+
+func devastation_clear_hp_delay(node, iteration):
+	if devastation_hp_delays.has(node) and devastation_hp_delays[node].iteration == iteration:
+		devastation_hp_delays.erase(node)
+
+func devastation_return(node, args = null):
+	if !is_instance_valid(node): return 0.0
+	var key = node.get_instance_id()
+	if !devastation_states.has(key): return 0.0
+	var state = devastation_states[key]
+	var visual_node = state.visual
+	if !is_instance_valid(visual_node):
+		devastation_restore(key)
+		return 0.0
+	var tween = input_handler.GetTweenNode(visual_node)
+	tween.interpolate_property(visual_node, 'rect_position', visual_node.rect_position,
+		state.visual_origin, DEVASTATION_RETURN, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.interpolate_property(visual_node, 'rect_rotation', visual_node.rect_rotation,
+		state.origin.rotation, DEVASTATION_RETURN, Tween.TRANS_BACK, Tween.EASE_OUT)
+	tween.interpolate_property(visual_node, 'rect_scale', visual_node.rect_scale,
+		state.origin.scale, DEVASTATION_RETURN, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.interpolate_callback(self, DEVASTATION_RETURN, 'devastation_restore', key)
+	tween.start()
+	return DEVASTATION_RETURN
+
+func devastation_restore(key):
+	if !devastation_states.has(key): return
+	var state = devastation_states[key]
+	devastation_states.erase(key)
+	var visual_node = state.visual
+	if is_instance_valid(visual_node) and visual_node.has_node('tween'):
+		visual_node.get_node('tween').stop_all()
+	if is_instance_valid(visual_node) and visual_node != state.node:
+		visual_node.queue_free()
+	var node = state.node
+	if !is_instance_valid(node): return
+	node.rect_position = state.origin.position
+	node.rect_rotation = state.origin.rotation
+	node.rect_scale = state.origin.scale
+	node.rect_pivot_offset = state.origin.pivot
+	node.modulate = state.origin.modulate
+
 #target takes the hit: knocked away and springs back past its spot
 #no ShakeAnimation here - it writes rect_position every frame in _process and would
 #both fight this tween and snap the node back to the position it captured at its start
@@ -657,6 +1098,81 @@ const MAX_SFX_LOCK = 0.7
 #the damage number, HP-bar change, and red tint. The hit sprite remains attached to the
 #card and continues fading independently.
 const HIT_TAIL = 0.2
+
+const LIGHTNING_WINDUP = 0.58
+const LIGHTNING_DURATION = 0.76
+const LIGHTNING_JITTER = 25.0
+const CHAIN_LIGHTNING_STAGGER = 0.10
+const LIGHTNING_IMPACT_DELAY = 0.055
+const LIGHTNING_SHAKE = 8
+
+func lightning(node, args = null):
+	if args == null: args = {}
+	var caster_node = args.caster_node if args.has('caster_node') else null
+	var settings = get_lightning_settings(args, false)
+	start_lightning_effect(caster_node, [node], settings)
+	prepare_lightning_impacts([node], settings)
+	return settings.windup + HIT_TAIL
+
+func chain_lightning(node, args = null):
+	if args == null: args = {}
+	var caster_node = args.caster_node if args.has('caster_node') else null
+	var hit_nodes = args.hit_nodes if args.has('hit_nodes') else []
+	if hit_nodes.empty() and args.has('primary_node'): hit_nodes = [args.primary_node]
+	var settings = get_lightning_settings(args, true)
+	start_lightning_effect(caster_node, hit_nodes, settings)
+	prepare_lightning_impacts(hit_nodes, settings)
+	return settings.windup + HIT_TAIL
+
+func get_lightning_settings(args, chained):
+	return {
+		windup = float(args.windup) if args.has('windup') else LIGHTNING_WINDUP,
+		duration = float(args.duration) if args.has('duration') else LIGHTNING_DURATION,
+		jitter = float(args.jitter) if args.has('jitter') else LIGHTNING_JITTER,
+		branch_stagger = float(args.branch_stagger) if chained and args.has('branch_stagger') else (CHAIN_LIGHTNING_STAGGER if chained else 0.0),
+		chained = chained,
+	}
+
+func start_lightning_effect(caster_node, hit_nodes, settings):
+	if caster_node == null or !is_instance_valid(caster_node) or hit_nodes.empty(): return
+	var effect = LightningEffect.new()
+	add_child(effect)
+	effect.setup(caster_node, hit_nodes, {
+		windup = settings.windup,
+		duration = settings.duration,
+		jitter = settings.jitter,
+		branch_stagger = settings.branch_stagger,
+	})
+	lightning_effects.append(effect)
+	effect.connect('tree_exited', self, '_on_lightning_effect_exited', [effect], CONNECT_ONESHOT)
+
+func _on_lightning_effect_exited(effect):
+	lightning_effects.erase(effect)
+
+func prepare_lightning_impacts(hit_nodes, settings):
+	var queue_release = settings.windup + HIT_TAIL
+	var tween = input_handler.GetTweenNode(self)
+	for index in range(hit_nodes.size()):
+		var hit_node = hit_nodes[index]
+		if hit_node == null or !is_instance_valid(hit_node): continue
+		var branch_delay = 0.0 if index == 0 or !settings.chained else 0.10 + float(index - 1) * settings.branch_stagger
+		var impact_time = settings.windup + branch_delay + LIGHTNING_IMPACT_DELAY
+		lightning_timing_plan[hit_node] = max(0.0, impact_time - queue_release)
+		tween.interpolate_callback(self, impact_time, 'lightning_target_hit', hit_node)
+	tween.start()
+
+func lightning_target_hit(node):
+	if node == null or !is_instance_valid(node) or !node.is_inside_tree(): return
+	target_push(node)
+	if node.has_node('Icon'):
+		ResourceScripts.core_animations.ShakeAnimation(node.get_node('Icon'), 0.22, LIGHTNING_SHAKE)
+
+func prepare_lightning_hp_update(node):
+	if lightning_timing_plan.has(node):
+		lightning_hp_delays[node] = lightning_timing_plan[node]
+
+func clear_lightning_timing():
+	lightning_timing_plan.clear()
 
 func gfx_animsprite(node, args):
 	var duration
@@ -929,8 +1445,16 @@ func damage_flash(node, delay = 0.0):
 
 func hp_update(node, args):
 	var delay = 0
+	var nonblocking_delay = false
 	if hp_update_delays.has(node): delay = hp_update_delays[node]
 	hp_update_delays.erase(node)
+	if lightning_hp_delays.has(node):
+		delay = max(delay, lightning_hp_delays[node])
+		lightning_hp_delays.erase(node)
+	if devastation_hp_delays.has(node):
+		delay = devastation_hp_delays[node].delay
+		devastation_hp_delays.erase(node)
+		nonblocking_delay = true
 	#Every HP decrease passes through FighterNode.update_hp, including direct hits,
 	#poison, and bleeding.
 	if args.has('type') and (args.type == 'damageally' or args.type == 'damageenemy'):
@@ -955,7 +1479,7 @@ func hp_update(node, args):
 	if args.has("res"):
 		tween.interpolate_callback (node, delay, 'resurrect')
 	tween.start()
-	return delaytime + delay
+	return delaytime if nonblocking_delay else delaytime + delay
 
 func mp_update(node, args):
 	var delaytime = 0.1
@@ -1002,6 +1526,3 @@ func try_clear_custom_delays():
 		var val = custom_delays[node]
 		if cur_timer > val.cur_timer + val.time:
 			custom_delays.erase(node)
-
-
-

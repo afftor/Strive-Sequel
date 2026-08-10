@@ -18,6 +18,13 @@ func _ready():
 	globals.connect("hour_tick", self, "show_slave_info")
 	input_handler.connect("EventFinished", self, "show_slave_info")
 	input_handler.register_btn_source("char_info", self, "tut_get_info_btn")
+	hotkeys.connect("bindings_changed", self, "build_info_btn_tooltip")
+	build_info_btn_tooltip()
+
+
+func build_info_btn_tooltip():
+	globals.connecttexttooltip($CharacterInfoButton, hotkeys.get_tooltip_text("MSMNAME", 'mansion_char_info'))
+
 
 func tut_get_info_btn():
 	return $CharacterInfoButton

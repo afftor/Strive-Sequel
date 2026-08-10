@@ -91,8 +91,51 @@ A new empty mods.ini has been created. Please re-enable compatible mods from the
 	OPTNAME3 = "Audio", #
 	OPTNAME4 = "Trucchi",
 	OPTNAME5 = "Difficoltà",
+	OPTNAMEHOTKEYS = """Hotkeys""", # MISSING TRANSLATION
 	OPTOPT = "Opzioni",
 	OPTCLOSE = "Esci",
+	HOTKEYGROUP_GLOBAL = """General""", # MISSING TRANSLATION
+	HOTKEYGROUP_MANSION = """Mansion""", # MISSING TRANSLATION
+	HOTKEYGROUP_COMBAT = """Combat""", # MISSING TRANSLATION
+	HOTKEY_UNBOUND = """- none -""", # MISSING TRANSLATION
+	HOTKEY_PRESSKEY = """Press a key...""", # MISSING TRANSLATION
+	HOTKEY_RESET = """Restore defaults""", # MISSING TRANSLATION
+	HOTKEY_CONFLICT = """%s was taken from "%s".""", # MISSING TRANSLATION
+	HOTKEY_HINT = """Click a key to rebind it. Esc cancels, Delete clears the binding.
+Mansion and combat keys are independent - the same key may be used by both.""", # MISSING TRANSLATION
+	HOTKEY_QUICKSAVE = """Quick save""", # MISSING TRANSLATION
+	HOTKEY_QUICKLOAD = """Quick load""", # MISSING TRANSLATION
+	HOTKEY_FULLSCREEN = """Toggle fullscreen""", # MISSING TRANSLATION
+	HOTKEY_MANSION_TIME_1 = """Pass 1 hour""", # MISSING TRANSLATION
+	HOTKEY_MANSION_TIME_2 = """Pass 2 hours""", # MISSING TRANSLATION
+	HOTKEY_MANSION_TIME_3 = """Pass 4 hours""", # MISSING TRANSLATION
+	HOTKEY_MANSION_WORK = """Work""", # MISSING TRANSLATION
+	HOTKEY_MANSION_TRAVELS = """Travels""", # MISSING TRANSLATION
+	HOTKEY_MANSION_UPGRADES = """Mansion""", # MISSING TRANSLATION
+	HOTKEY_MANSION_SEX = """Sex""", # MISSING TRANSLATION
+	HOTKEY_MANSION_INVENTORY = """Inventory""", # MISSING TRANSLATION
+	HOTKEY_MANSION_CRAFT = """Craft""", # MISSING TRANSLATION
+	HOTKEY_MANSION_JOURNAL = """Journal""", # MISSING TRANSLATION
+	HOTKEY_MANSION_MENU = """Game menu""", # MISSING TRANSLATION
+	HOTKEY_MANSION_CHAR_INFO = """Character info""", # MISSING TRANSLATION
+	HOTKEY_MANSION_TUTORIAL = """Tutorial panel""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_SKILL_1 = """Use skill 1""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_SKILL_2 = """Use skill 2""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_SKILL_3 = """Use skill 3""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_SKILL_4 = """Use skill 4""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_SKILL_5 = """Use skill 5""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_SKILL_6 = """Use skill 6""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_SKILL_7 = """Use skill 7""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_SKILL_8 = """Use skill 8""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_SKILL_9 = """Use skill 9""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_ROW_UP = """Previous skill row""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_ROW_DOWN = """Next skill row""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_SKILLBOOK = """Skill book""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_ITEMS = """Items panel""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_RUN = """Retreat""", # MISSING TRANSLATION
+	QUICKSAVE_BLOCKED = """Can't quick save during combat.""", # MISSING TRANSLATION
+	QUICKLOAD_BLOCKED = """Can't quick load during combat.""", # MISSING TRANSLATION
+	QUICKLOAD_MISSING = """No quick save found.""", # MISSING TRANSLATION
 	TUTORIALS = "Tutorial",
 	LOCATIONLIST = "Lista Posizioni",
 	BUTTONTRAVEL = "Mappa",
@@ -676,6 +719,9 @@ Tuttavia, mentre potrebbe sembrare che i proprietari terrieri non abbiano altro 
 	LABELDISLOCATION = "Dislocazione",
 	LABELDESTINATION = "Destinazione",
 	LABELSEXSKILLS = "Abilità Sessuali",
+	SLAVE_MARKET_SEX_SKILLS = """Sex Skills""", # MISSING TRANSLATION
+	SLAVE_TOOLTIP_SEX_SKILLS = """Sex Skills""", # MISSING TRANSLATION
+	MANSION_SEX_SKILLS = """Sex Skills""", # MISSING TRANSLATION
 	STARTINGADJ = "Avviamento",
 	FOODTYPEMEAT = "Carne",
 	FOODTYPEFISH = "Pesce",
@@ -1205,6 +1251,16 @@ Ridotto dall'evasione del nemico""",
 	CHARCREATE_DIET_HELP = "Seleziona 1 cibo Gradito e almeno 1 cibo Odiato.",
 	CHARCREATE_DIET_HELP_TOO_MANY_LIKED = """You can only select 1 Liked food type.""", # MISSING TRANSLATION
 	CHARCREATE_DIET_HELP_NO_LIKED = """[color=red]Select 1 Liked food type.[/color]""", # MISSING TRANSLATION
+	CHARCREATE_DIET_TITLE = """Select 1 Liked Food Type""", # MISSING TRANSLATION
+	CHARCREATE_DIET_DISHES = """Dishes:""", # MISSING TRANSLATION
+	CHARCREATE_DIET_DESCRIPT_MEAT = """Hunted. The most filling raw food.""", # MISSING TRANSLATION
+	CHARCREATE_DIET_DESCRIPT_FISH = """Caught by fishing. Needs no farm.""", # MISSING TRANSLATION
+	CHARCREATE_DIET_DESCRIPT_VEGE = """Farmed. Appears in the most dishes.""", # MISSING TRANSLATION
+	CHARCREATE_DIET_DESCRIPT_GRAIN = """Farmed. Only eaten cooked.""", # MISSING TRANSLATION
+	CHARCREATE_DIET_TOOLTIP = """Meals tagged with this type feed %s%% longer, and the character reaches for them before anything else they are allowed to eat.
+
+Nothing is forbidden by this choice - it only sets a preference.""", # MISSING TRANSLATION
+	CHARCREATE_DIET_FOOD_VALUE = """Feeds for %s turns (%s if liked)""", # MISSING TRANSLATION
 	CHARCREATE_SYS_FOOD_REQUIRED = "Devi selezionare un cibo gradito e almeno un cibo odiato.",
 	CHARCREATE_SYS_CLASS_REQUIRED = "Devi selezionare una Classe iniziale corretta",
 	CHARCREATE_SYS_PERSONALITY_REQUIRED = "Devi selezionare una Personalità",
@@ -3563,12 +3619,10 @@ Intelligenza: -10; Guadagno EXP: -10%; Il prezzo di vendita è notevolmente rido
 	EFFECTNAME_INSPIRE = "Ispira",
 	EFFECTNAME_FLIGHT_UPKEEP = "Volo",
 	EFFECTNAME_FLY = "Scatto Alato",
-	TOOLTIP_CLOCK1 = """Avanza il Tempo
-Tasto di scelta rapida: 1""",
-	TOOLTIP_CLOCK2 = """Avanza il Tempo di 12h
-Tasto di scelta rapida: 2""",
-	TOOLTIP_CLOCK3 = """Anticipo Orario per un'intera giornata
-Tasto di scelta rapida: 3""",
+	HOTKEY_TOOLTIP = "Tasto di scelta rapida: %s",
+	TOOLTIP_CLOCK1 = """Avanza il Tempo""",
+	TOOLTIP_CLOCK2 = """Avanza il Tempo di 12h""",
+	TOOLTIP_CLOCK3 = """Anticipo Orario per un'intera giornata""",
 	TIME_TOOLTIP = "Settimana, giorno e ora correnti. Alcune missioni potrebbero avere limiti di tempo.",
 	USAGE_COST = "Costo di utilizzo",
 	TOOLTIP_NONE = "Nessuno",
@@ -30837,6 +30891,566 @@ Sebastian leaves, although you can feel his steps are heavier than usual.
 	ACT4_SEBASTIAN_REPORT_WAREHOUSE_OPTION_2 = """The Trading Guild can have its property without taking the church.""", # MISSING TRANSLATION
 	ACT4_SEBASTIAN_REPORT_WAREHOUSE_OPTION_3 = """The warehouse meets your requirements. Use it and leave the church alone.""", # MISSING TRANSLATION
 	ACT4_SEBASTIAN_REPORT_WAREHOUSE_OPTION_4 = """You asked me to solve this. I did. Take the warehouse.""", # MISSING TRANSLATION
+	ERDYNA_ROUGE_AFTER_CAMPFIRE_1 = """Erdyna finds Rouge waiting with the kind of calm expression that makes the silence around her feel deliberate. The lizard girl stops a few steps away, shoulders tense, her usual swagger nowhere to be seen.
+
+{color=yellow|Erdyna: — Listen, about what happened... I'm sorry.}
+
+Rouge tilts her head slightly, neither offended nor amused enough to make her thoughts clear.
+
+{color=aqua|Rouge: — Are you?}
+
+Erdyna swallows, then forces herself to continue.
+
+{color=yellow|Erdyna: — Yeah. I mean it. I didn't mean to... get in your way or anything.}
+
+Rouge gives a small shrug, as if the matter barely deserves the effort of moving her shoulders.
+
+{color=aqua|Rouge: — How considerate.}""", # MISSING TRANSLATION
+	ERDYNA_ROUGE_AFTER_CAMPFIRE_2 = """Erdyna shifts under that unreadable look, growing more uneasy rather than less.
+
+{color=yellow|Erdyna: — So... you really don't mind?}
+
+Rouge steps closer without hurry. Before Erdyna can retreat, Rouge lifts a hand and catches her by the chin, guiding her face up with a touch too gentle to be comforting.
+
+{color=aqua|Rouge: — Tell me, do you think I would care about a stud being stolen from me like some third-rate woman?}
+
+Erdyna's breath catches, but Rouge only smiles.
+
+{color=aqua|Rouge: — I am far beyond men who can be swayed by some silly affair. My man would climb on top of every woman who catches his eye if the mood strikes him. He is a predator, not some tame creature trained to pass by every chance placed before him.}
+
+Her thumb brushes lightly along Erdyna's jaw as her smile deepens.
+
+{color=aqua|Rouge: — I would hate it far more if he were a chaste fool. Unless, of course, you were planning to keep him all to yourself?}""", # MISSING TRANSLATION
+	ERDYNA_ROUGE_AFTER_CAMPFIRE_3 = """Erdyna's eyes widen at once.
+
+{color=yellow|Erdyna: — N-no! Hell no, I wasn't thinking anything like that!}
+
+Rouge studies her for another moment, then releases her chin with a soft laugh.
+
+{color=aqua|Rouge: — Good.}
+
+The single word is enough to make Erdyna's shoulders loosen. She lets out a breath she had clearly been holding, relief washing over her face despite her best effort to hide it.
+
+Rouge turns away, her smile still present and still impossible to read.
+
+{color=aqua|Rouge: — Then we understand each other.}""", # MISSING TRANSLATION
+	ACT4_ROAD_PROJECT_NAME = """End of the Line""", # MISSING TRANSLATION
+	ACT4_ROAD_PROJECT_SUMMARY = """Sebastian's courier brought an urgent summons to the dwarven road project. Whatever went wrong there, he wants it handled before it becomes public.""", # MISSING TRANSLATION
+	ACT4_ROAD_STAGE_VISIT_ROAD_PROJECT = """Travel to the dwarven road project in the mountains and find Sebastian.""", # MISSING TRANSLATION
+	ACT4_ROAD_STAGE_GUILD_QUARTERS = """Search the trade guilds quarters in the Empire Capital.""", # MISSING TRANSLATION
+	ACT4_ROAD_STAGE_MEET_MELCHOR = """Find Chancellor Melchor's hiding place in the Empire Capital.""", # MISSING TRANSLATION
+	ACT4_ROAD_STAGE_ASK_SENERUS = """Ask Senerus how to break the divine barrier protecting Grotus.""", # MISSING TRANSLATION
+	ACT4_ROAD_STAGE_IMBUE_ARROW = """Bring Senerus' arrow to Freya's priestess in Eldewyn.""", # MISSING TRANSLATION
+	ACT4_ROAD_STAGE_RETURN_TO_MELCHOR = """Return to Melchor with the means to break Grotus' barrier.""", # MISSING TRANSLATION
+	ACT4_ROAD_STAGE_CHARGE_PALACE = """Storm the imperial palace and put an end to Grotus.""", # MISSING TRANSLATION
+	QUEST_DWARF_RAILROAD_TEXT = """Dwarven Road Project""", # MISSING TRANSLATION
+	QUEST_DWARF_RAILROAD_DESC = """The Trading Guild's railroad works, cut deep into the dwarven mountains.""", # MISSING TRANSLATION
+	ACT4_ROAD_COURIER_1 = """As Sebastian left Aliron quite some time ago, one of his couriers finds you with a sealed note and the kind of urgency that has been trained to look polite.
+
+The note is brief. Something has happened at the dwarven road project. Sebastian claims the matter requires your particular assistance and asks you to come before the situation becomes expensive in public.""", # MISSING TRANSLATION
+	ACT4_ROAD_LOCATION_OPTION_ARRIVE = """Look for Sebastian""", # MISSING TRANSLATION
+	ACT4_ROAD_ARRIVE_1 = """The road project looks much further along than Sebastian's note suggested. Fresh supports brace the cut stone, and a short work cart rattles along the finished track.""", # MISSING TRANSLATION
+	ACT4_ROAD_ARRIVE_2 = """A man in a dust-streaked coat hurries toward you as soon as you arrive.
+
+{color=yellow|Project Worker: — Mayor [name]? Good. Master Sebastian is waiting at one of the junctions.}""", # MISSING TRANSLATION
+	ACT4_ROAD_ARRIVE_OPTION_TAKE_ME = """Take me to Sebastian.""", # MISSING TRANSLATION
+	ACT4_ROAD_ARRIVE_OPTION_URGENT = """If this is urgent, I am going now.""", # MISSING TRANSLATION
+	ACT4_ROAD_TUNNEL_1 = """The worker points you toward a tunnel branch lit by fresh lamps and steps aside.""", # MISSING TRANSLATION
+	ACT4_ROAD_TUNNEL_2 = """The tunnel branch begins as finished work: clean rails, numbered supports, and lamp chains fixed neatly into the stone. The farther you go, the fewer workers you hear behind you.
+
+At the first junction, the lamps turn blue. The left branch slopes downward, away from the sound of carts and hammers.""", # MISSING TRANSLATION
+	ACT4_ROAD_TUNNEL_3 = """The clean construction gives way to older stone. The rails end before the tunnel does, and the last lamp swings gently even though the air is still.
+
+Something scrapes in the dark ahead. Then another sound answers it from behind.""", # MISSING TRANSLATION
+	ACT4_ROAD_TUNNEL_4 = """Undead shapes pull themselves from side cracks and unfinished alcoves, blocking the way back as the tunnel fills with the smell of damp earth and old rot.
+
+When you move to retreat, blue light snaps across the rails and walls behind you. The branch has sealed itself into an enclosed magic trap, tight enough that forcing your way out would take time you do not have.""", # MISSING TRANSLATION
+	ACT4_ROAD_AFTER_AMBUSH_1 = """The last undead falls, but the tunnel does not open. The blue seal still burns across the rails and walls, humming softly each time you come near it.
+
+More shapes drag themselves from the dark branch ahead. The trap has not failed. It is only waiting to wear you down.""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_REVEAL_1 = """The seal cracks from the outside.
+
+An explosion tears through the far side of the trap. Blue light shatters across the stone, and the undead nearest the blast are thrown apart like dry sticks.
+
+When the smoke thins, a girl stands beyond the broken bodies.
+
+You know her face. You killed her in the lower tomb beneath Kharzug Deep. You were certain she was dead.
+
+She steps over a twitching corpse and looks past you, toward the deeper tunnel.
+
+{color=yellow|Girl: — The necromancers are close.}""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_REVEAL_2 = """The girl moves through the branch without haste. When the necromancers try to raise another wave, she breaks the spell before it finishes forming, and the remaining undead collapse into loose bone and spoiled flesh.
+
+One necromancer survives long enough to be dragged against the tunnel wall. The girl crouches in front of him, her expression unchanged.
+
+{color=yellow|Girl: — Who sent you?}
+
+{color=aqua|Necromancer: — Sebastian. Sebastian ordered it. We were to keep the line open, feed the network, and remove anyone who interfered.}""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_HUB = """The necromancer dies before he can say more. The girl watches him for a moment, then rises.""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_OPTION_WHO = """Who are you?""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_OPTION_HELPED = """You've helped me after what happened?""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_OPTION_WHAT = """What's going on?""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_OPTION_DEAD = """Weren't you dead? I could've sworn I've killed you.""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_Q1 = """{color=yellow|Rilu: — My name is Rilu. I'm afraid that's as much as I can give you given my poor state of memory.}""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_Q2 = """{color=yellow|Rilu: — It's you or Sebastian. You don't feel like you are behind this whole ordeal, and you are his enemy.}""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_Q3 = """{color=yellow|Rilu: — You know Sebastian, don't you? The necromancer said his name, as he's behind this.}
+
+She looks toward the rails, then at the lamp chains fixed neatly along the stone.
+
+{color=yellow|Rilu: — They were guarding this branch and feeding the network. I can feel power of the undeath moving through it.}
+
+Now that she has said it, you can spot a very dim glow surrounding the metal.""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_Q4 = """{color=yellow|Rilu: — ...I'm more durable than I look.}
+
+She slowly sighs, trying to look away.
+
+{color=yellow|Rilu: — All I remember is the excavation opened a way out. The necromancers found me first. They could not kill me, so they pushed magic into my head until I stopped knowing what I was doing. That is why I attacked you. Then you stopped me.}""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_EXIT_1 = """You tell Rilu about Sebastian: the road project, the message that brought you here, and the worker who sent you into this branch to meet him.
+
+{color=yellow|Rilu: — So it was a trap, was it not? You've been helping him out with this thing.}""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_EXIT_2 = """The thought comes cold and immediate: distant rituals, hidden sacrifices, power drawn from places no one in the capital would ever see. Sebastian has been building a road for power, not travel.
+
+{color=yellow|Rilu: — The dead are not the purpose. They are guards. Fuel. Waste. Sebastian knows what the road is for.}
+
+She turns toward the branch that leads back to the active worksite.
+
+{color=yellow|Rilu: — He must be stopped. If he decided to take you out, it must mean his goal is close.}""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_OPTION_CAPITAL = """Then we go to the capital.""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_OPTION_ANSWERS = """Sebastian answers for this.""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_EXIT_3 = """{color=yellow|Rilu: — Yes. I shall come along. After all, I don't think I know much about this region.}""", # MISSING TRANSLATION
+	ACT4_ROAD_CAPITAL_OPTION_GUILD = """Trade guilds quarters""", # MISSING TRANSLATION
+	ACT4_ROAD_GUILD_QUARTERS_1 = """The enclosed guild quarters look calm from outside. The gates are shut, the lamps are lit, and the guards visible beyond the bars stand at their posts without moving.
+
+Rilu stops before the gate and studies the air.
+
+{color=yellow|Rilu: — It is camouflaged with magic.}""", # MISSING TRANSLATION
+	ACT4_ROAD_GUILD_QUARTERS_2 = """When you push through the gate, the illusion tears like thin cloth. The clean courtyard becomes a place of overturned carts, dead clerks, and bodies hidden where they fell. The guards at the gate were never guards at all, only shapes held in place by simple magic.
+
+The dead begin to move.""", # MISSING TRANSLATION
+	ACT4_ROAD_GUILD_DEEPER_1 = """You push deeper through the quarters, past offices stripped of useful papers and storage rooms marked with fresh chalk symbols. The magic aura grows denser near the back of the compound.
+
+Behind a locked records hall, a stairway descends into old stone that was never part of any guild building.""", # MISSING TRANSLATION
+	ACT4_ROAD_GUILD_DEEPER_2 = """The stairs lead into a tunnel network older than the buildings above it. Rails have been laid through parts of it, then bound into the stone with silver clamps and dark resin that pulses faintly when Rilu passes near.
+
+The deeper passages feel familiar in the wrong way. You realize this place cannot be far from the enormous catacombs you saw behind the gates.""", # MISSING TRANSLATION
+	ACT4_ROAD_GUILD_DEEPER_3 = """The tunnel opens into a vast cave room. A large magic circle burns across the floor, drawing light from rail lines, corpse-laden carts, and channels carved into the rock.
+
+Sebastian stands at the center, protected by layered magic. Mhyrana waits beside him, calm and unworried.""", # MISSING TRANSLATION
+	ACT4_ROAD_RITUAL_CHAMBER_1 = """Sebastian spreads his hands over the circle as another pulse of stolen mana rolls through the rails.
+
+{color=yellow|Sebastian: — There. Dwarven stone, imperial greed, local politics, one cooperative mayor, and a thousand little deaths no one important stopped to count. All of it arrives exactly where I promised it would.}
+
+Mhyrana watches the magic gather without sharing his pleasure.
+
+{color=aqua|Mhyrana: — Celebrate later. Send the remaining flow to my mark before the network tears itself apart.}
+
+{color=yellow|Sebastian: — Of course. I am sentimental, not careless.}""", # MISSING TRANSLATION
+	ACT4_ROAD_LICH_REVEAL = """Sebastian turns as you arrive. For once, his smile is not polished enough to pass as human.
+
+{color=yellow|Sebastian: — Mayor [name]. You outlived my little surprise. I should be irritated, but at this stage even surprises are beginning to feel ceremonial.}
+
+The skin along one side of his face splits and thins, revealing old bone and dead magic beneath. His laugh rolls through the cave as the circle brightens around him.""", # MISSING TRANSLATION
+	ACT4_ROAD_LICH_OPTION_SOMETHING_ELSE = """I knew you were something else.""", # MISSING TRANSLATION
+	ACT4_ROAD_LICH_OPTION_LICH = """So you are a lich.""", # MISSING TRANSLATION
+	ACT4_ROAD_LICH_OPTION_REGRET = """You will regret living this long.""", # MISSING TRANSLATION
+	ACT4_ROAD_MHYRANA_LEAVES = """{color=yellow|Sebastian: — Hahah, don't you feel it? You might be a capable fighter, but you think you can take me on now?}
+
+{color=aqua|Mhyrana: — I have what I came for. Keep them busy.}
+
+{color=yellow|Sebastian: — With pleasure.}
+
+Mhyrana leaves through the far passage. The barrier around Sebastian flares, blocking the way after her.""", # MISSING TRANSLATION
+	ACT4_ROAD_LICH_MONOLOGUE_1 = """{color=yellow|Sebastian: — The railroad was never only about trade. Every line, every junction, every little local arrangement brought mana and corpses from the regions toward this chamber. A clean delivery system for a master plan.}
+
+{color=yellow|Sebastian: — It took years to infiltrate the empire and the trading guilds themselves, and I couldn't have done it without the cult. And now I can reap all of this hard work.}""", # MISSING TRANSLATION
+	ACT4_ROAD_LICH_OPTION_RITUAL = """This was all for a ritual?""", # MISSING TRANSLATION
+	ACT4_ROAD_LICH_OPTION_HIDDEN = """You've learned to hide it really well.""", # MISSING TRANSLATION
+	ACT4_ROAD_LICH_MONOLOGUE_2 = """{color=yellow|Sebastian: — It's really amazing how much you can achieve when all you need to do is to give away your humanity. Humans have such a rich magic energy after all.}""", # MISSING TRANSLATION
+	ACT4_ROAD_LICH_PREFIGHT = """Rilu steps forward, watching the circle more than Sebastian.
+
+{color=yellow|Rilu: — The barrier is tied to him. We cannot follow her while it's active. Try to keep him busy for a while.}""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_SACRIFICE_1 = """The final blow lands, but Sebastian does not fall. The magic circle surges beneath him, pouring light through the exposed bone and dead flesh as if the ritual is simply replacing whatever you damage.
+
+Sebastian laughs again, lower this time, almost delighted.
+
+{color=yellow|Sebastian: — Do you understand now? You are not fighting a man. I'm eternal!}""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_SACRIFICE_2 = """Rilu steps between you and Sebastian. You notice her glowing with some magic markings, you never saw anything like that.
+
+{color=yellow|Rilu: — That's enough. I'm finished my preparation.}
+
+Sebastian's smile falters. This clearly put fear into his undead image.""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_SACRIFICE_3 = """{color=yellow|Rilu: — Go after Mhyrana.}
+
+She walks into the light before Sebastian can retreat. The circle folds inward around them both, bright enough to erase the shape of the cave.""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_SACRIFICE_4 = """The explosion makes no sound at first. Then the whole underground network answers at once: stone cracking, rails screaming loose, distant chambers collapsing one after another.
+
+When your sight returns, Sebastian and Rilu are gone. The barrier has broken, but the tunnel Mhyrana used has collapsed beneath a wall of shattered rock.
+
+With the passage buried and the network coming apart around you, the only path left leads back toward the city.""", # MISSING TRANSLATION
+	ACT4_ROAD_CAPITAL_CHAOS_1 = """You climb through the ruined guild quarters into chaos. The capital is in panic. People run through streets split by tremors, bells ring over one another, and smoke rises from places where hidden tunnels have broken under stone and brick.
+
+Another quake rolls beneath the city as you force your way onward.""", # MISSING TRANSLATION
+	ACT4_ROAD_CAPITAL_CHAOS_2 = """At last, you reach the giant doors you opened beneath the capital. The ground still shakes beneath them, but they stand ahead like the only fixed thing left around.""", # MISSING TRANSLATION
+	ACT4_ROAD_GIANT_DOORS_1 = """You pass through the giant doors again and descend past the old seal. The tremors have cracked parts of the passage, but the ancient stone still holds better than the imperial tunnels above.
+
+The corridor opens into an enormous cave. Ahead, cultists block the descent in a rough line, weapons ready. Rouge stands before them with one hand on her hip, looking more amused than threatened.""", # MISSING TRANSLATION
+	ACT4_ROAD_GIANT_DOORS_2 = """{color=yellow|Rouge: — Well. This became noisy. Sebastian's little construction has done more than move carts, hasn't it? There is enough power gathering under the city to make every court magician in the palace go nuts.}
+
+She looks past the cultists, toward the deeper cave and the massive stone ring you saw beyond the seal before.
+
+{color=yellow|Rouge: — I am going through.}
+
+{color=aqua|Cultist: — Mhyrana knows about your betrayal. You will not pass.}""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_ARRIVES = """{color=yellow|Rouge: — How dramatic. I guess I shouldn't expect any self-preservance from you, guys.}
+
+Before the cultists can answer, Melchor enters from a side passage with imperial soldiers at his back. His face is pale with fury, but his voice stays clipped and controlled.
+
+{color=aqua|Melchor: — No one is taking that power. Not her. Not you. Not the cult.}""", # MISSING TRANSLATION
+	ACT4_ROAD_SIDE_CHOICE = """Rouge turns her smile toward him.
+
+{color=yellow|Rouge: — And what will you do with it, Chancellor? Seal it for the good of the Empire? Or hold it yourself?}
+
+{color=aqua|Melchor: — If imperial hands must control it to prevent worse hands from doing so, then that may be necessary.}
+
+Rouge laughs softly and glances at you.
+
+{color=yellow|Rouge: — Hear that, darling? Such a noble way to say he wants the prize. Help me put down Melchor and his little honor guard. They won't let us through otherwise.}""", # MISSING TRANSLATION
+	ACT4_ROAD_SIDE_OPTION_ROUGE = """*Side with Rouge*""", # MISSING TRANSLATION
+	ACT4_ROAD_SIDE_OPTION_NEITHER = """*Reject siding with either*""", # MISSING TRANSLATION
+	ACT4_ROAD_SIDE_ROUGE = """Rouge's smile sharpens as you move beside her.
+
+{color=yellow|Rouge: — Good choice.}
+
+{color=aqua|Melchor: — Traitorous fool.}""", # MISSING TRANSLATION
+	ACT4_ROAD_SIDE_ALONE = """Rouge gives you a look of delighted offense.
+
+{color=yellow|Rouge: — You gonna fight us both? Fufu. I do like confidence when it is nearly stupid.}
+
+Melchor raises one hand, and his soldiers spread into formation while the cultists close from the passage.""", # MISSING TRANSLATION
+	ACT4_ROAD_MHYRANA_RITUAL_1 = """With the passage cleared, you push deeper into the cave. The air grows hot and heavy, and each step makes the pressure behind your eyes worse.
+
+At the heart of the chamber, Mhyrana stands before the gigantic stone ring. Magic pours through its inner edge and gathers behind her, folding into a single point bright enough to feel solid.""", # MISSING TRANSLATION
+	ACT4_ROAD_MHYRANA_RITUAL_ROUGE = """{color=aqua|Rouge: — You really caused some ruckus. And all of this behind my back.}
+
+{color=yellow|Mhyrana: — Your little courtly machinations aren't to my interest. You betrayed us first, but it was already taken into account. After all, your sister is none the wiser.}
+
+{color=aqua|Rouge: — Hmph, that's fair. Let's see if you can back up your courage with actual strength.}""", # MISSING TRANSLATION
+	ACT4_ROAD_MHYRANA_RITUAL_2 = """Mhyrana does not take her eyes off the forming point of power.
+
+{color=yellow|Mhyrana: — This ring has carried divine energy from age to age. Empires rise near it and call themselves blessed. The capital's prosperity, the wealth beneath its streets, even older nations before this one... all of it was fed by what resides here.}""", # MISSING TRANSLATION
+	ACT4_ROAD_MHYRANA_RITUAL_3 = """{color=yellow|Mhyrana: — Sebastian's network woke it properly. The railroad brought mana, death, and worshipful fear from every region it touched. Now the stored divine power is being drawn out at last...}
+
+You prepare your weapon to face Mhyrana after all this time as the catastrophe is merging right in front of you.""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_POWER_1 = """Grotus crawls through a narrow side path above the ritual chamber, shaking dust from his sleeves and trying not to breathe too loudly.
+
+{color=yellow|Grotus: — Mistress Rouge came this way... This place is really something!}""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_COMIC_1 = """Below, the ritual holds. Mhyrana stands over the gathering point of power, and the cave answers her without hesitation.""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_COMIC_2 = """The light thickens until it stops looking like light at all.""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_COMIC_3 = """Grotus stares at the single point of gathered power until his nervous smile goes slack. The light calls to something small and hungry inside him.
+
+{color=yellow|Grotus: — Mine?}""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_COMIC_4 = """He reaches down through the broken stone.""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_COMIC_5 = """The gathered power floods into him. His body arches, veins glowing beneath his skin as divine force burns through every hunched part of him.
+
+Magic blasts tear across the chamber.""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_ASCENDED_1 = """Broken stone lies scattered beneath the fading light. The ritual circle is ruined. Mhyrana is nowhere to be seen.
+
+Grotus stands near the shattered focus, staring at his own hands. Light pulses through his veins in slow, golden lines.""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_ASCENDED_2 = """{color=yellow|Grotus: — I... I can feel it. All of it. The city. The palace. All those little bastards running in circles above us.}
+
+His laugh starts as a nervous twitch and grows into something bright and ugly.
+
+{color=yellow|Grotus: — Oh. Oh, this is what it feels like.}""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_PALACE_1 = """Grotus walks back into the capital through streets still broken by tremors. At the palace gate, a captain steps in front of him with two guards and a drawn sword.
+
+{color=aqua|Palace Captain: — Stop there. No one enters the palace until the city is secured.}
+
+Grotus looks down at the blade, then at the captain's face.
+
+{color=yellow|Grotus: — You giving orders to me now?}""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_PALACE_2 = """The captain glances at the glowing veins under Grotus' skin and tightens his grip.
+
+{color=aqua|Palace Captain: — I am ordering a servant to stand down before he makes his last mistake.}
+
+Grotus laughs and flicks one glowing hand without slowing. The captain disappears in a burst of light and blood.""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_PALACE_3 = """More guards gather at the palace steps. Some raise shields. Others look to the dead captain, then to the doors behind them.
+
+{color=yellow|Grotus: — Move your asses, worms.}
+
+{color=aqua|Guard: — Formation! Protect the inner hall!}
+
+One guard sets his boot wrong in Grotus' path. Another lifts his shield an inch too high. Grotus laughs harder, like these small insults are the funniest things in the world. They both die without even realizing it.
+
+The rest do not wait to move. Shields drop, swords clatter, and the guards run from the steps as Grotus walks through the palace doors.""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_PALACE_4 = """By the time Grotus reaches the inner hall, the palace behind him is full of screams and scattered weapons. Officials and clerks crowd against the walls, trapped between fleeing and being noticed.
+
+{color=aqua|Senior Official: — Grotus? What madness is this? Where is Lady Rouge?}
+
+{color=yellow|Grotus: — Rouge? Who cares about Rouge when I can kill you all with a move of my finger!}
+
+{color=aqua|Senior Official: — No, wait! You don't have to do this!}
+
+{color=yellow|Grotus: — Hehehehaha, right, beg for your life, worms, but before that...}""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_EMPEROR_1 = """Grotus tears open the Emperor's chamber doors. The Emperor waits within, seated calmly as if the city has not cracked beneath his feet. He looks Grotus over with mild annoyance.
+
+{color=aqua|Emperor: — You. I wondered whether the noise was something important. I see I was optimistic.}
+
+{color=yellow|Grotus: — Important? I am very important now you see. Killed a few dozen of those stupid guards who always were looking down on me. And you... Always sitting your big throne like you are straining to take a shit.}
+
+{color=aqua|Emperor: — Is that the best your small brain could come up with?}
+
+Grotus' grin twitches.""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_EMPEROR_2 = """Grotus attacks with a gleeful shout. Divine power tears through the throne and the man seated upon it. The Emperor dissolves into thin air.
+
+For a moment, Grotus only stares at the empty space.
+
+{color=yellow|Grotus: — Oh. Oh, he wasn't even here.}
+
+His surprise breaks into laughter before it can become anger.
+
+{color=yellow|Grotus: — That smell... Was that Misstres- No, Rouge's doing? No way she did it...}""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_HALL_1 = """After half an hour Grotus comes out to the main hall, everyone freezes in place, all eyes glued to him.
+
+{color=yellow|Grotus: — Bring me the council records. Seal the palace gates. Send runners to every barracks and tell them the Emperor speaks through me now.}
+
+In the main hall, surviving guards and officials gather in stunned silence.""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_HALL_2 = """Grotus points at one clerk near the stairs.
+
+{color=yellow|Grotus: — You. I remember you kick my rear at the dinning ceremony.}
+
+The clerk dies in a flash of divine light. The rest of the hall drops into terrified motion at once. People start dropping on their knees begging for mercy.
+
+Grotus raises his glowing hands, pleased by the sound of panic obeying him.
+
+{color=yellow|Grotus: — Hahaha, that's it. You better fear me now. And serve me, as your new emperor.}""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_THRONE_1 = """Grotus has dressed himself like a king by the time the throne room is forced back into order. The crown sits crooked on his head, imperial robes hang badly from his narrow shoulders, and golden light still pulses beneath his skin in a way no tailor could make noble.
+
+The Emperor's family did not all escape. Those who were caught lie dead near the steps of the throne, half-covered by torn banners because no servant dares decide whether hiding them would offend the new ruler.""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_THRONE_2 = """Palace guards stand along the walls with weapons lowered. They watch Grotus carefully, not with loyalty, but with the obedience of men who have seen what happens when he feels mocked.
+
+Grotus notices one guard staring at the bodies and leans forward on the throne.
+
+{color=yellow|Grotus: — What are you staring at?}
+
+{color=aqua|Palace Guard: — Nothing, Your Majesty.}
+
+{color=yellow|Grotus: — Good. Then stop looking like you swallowed a nail. You do as I say.}""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_THRONE_3 = """{color=aqua|Senior Official: — The palace gates are sealed. Messages have been sent to the barracks. The council chambers are being gathered under guard.}
+
+Grotus beams, pleased enough to look foolish and dangerous at once.
+
+{color=yellow|Grotus: — See? You can learn. Everyone learns when the lesson burns hot enough.}
+
+{color=aqua|Senior Official: — Is there anything else, Your Majesty?}""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_THRONE_4 = """Grotus settles deeper into the throne, touching the crooked crown as if expecting it to become comfortable.
+
+{color=yellow|Grotus: — Yes. Bring me one of the pretty women from the court. Noble ones first. The ones who used to look past me like I was dirt.}
+
+The official goes still.
+
+{color=aqua|Senior Official: — Your Majesty... the city is still in panic. Perhaps matters of succession and military command should come first.}
+
+Grotus' smile thins.
+
+{color=yellow|Grotus: — I didn't ask what should come first. I asked for a woman.}""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_THRONE_5 = """A guard returns with a court woman between them. She stops before the throne, pale and rigid.
+
+Grotus looks her over slowly, smiling at her fear.
+
+{color=yellow|Grotus: — There. Much better. You will serve me. Wine first. Then you will serve my bedroom later.}
+
+The guards do not look at one another. That is how afraid they are.
+
+{color=yellow|Grotus: — Tell the others their new Emperor wants company. There are many like you, aren't there? Tell them refusing would be stupid.}
+
+He laughs, delighted by his own gentleness.
+
+{color=yellow|Grotus: — And if they act proud, I will make the court smaller until the rest remember how to smile.}""", # MISSING TRANSLATION
+	ACT4_ROAD_WAKE_1 = """You wake beneath a low shelf of cracked stone, dust coating your tongue and a dull ache pulsing behind your eyes. Around you, the cave has collapsed into broken walls, split rails, and dead magic seeping through the floor like cooling blood.
+
+Rouge is nearby, brushing dust from her sleeve with more care than the situation deserves.""", # MISSING TRANSLATION
+	ACT4_ROAD_WAKE_2_ALLY = """{color=yellow|Rouge: — There you are. I was beginning to wonder whether I had saved a corpse with good timing.}
+
+{color=yellow|Rouge: — The cavern came down when the ritual has finished. Not quite sure what happened. You have been out for quite a while.}""", # MISSING TRANSLATION
+	ACT4_ROAD_WAKE_2_HOSTILE = """{color=yellow|Rouge: — Oh, finally. Took you long enough. Don't bother looking grateful; I still remember you tried to kill me.}
+
+{color=yellow|Rouge: — The cavern came down when the ritual has finished. Not quite sure what happened. You have been out for quite a while.}""", # MISSING TRANSLATION
+	ACT4_ROAD_WAKE_HUB = """She waits, in no apparent hurry to be anywhere the ceiling is still falling.""", # MISSING TRANSLATION
+	ACT4_ROAD_WAKE_OPTION_STAY = """Why did you stay?""", # MISSING TRANSLATION
+	ACT4_ROAD_WAKE_OPTION_LEFT = """You could have left me here.""", # MISSING TRANSLATION
+	ACT4_ROAD_WAKE_OPTION_MHYRANA = """What happened to Mhyrana?""", # MISSING TRANSLATION
+	ACT4_ROAD_WAKE_Q1 = """Rouge gives you a thin smile.
+
+{color=yellow|Rouge: — What do you think? You are a valuable... Asset, to just abandon you here to the mercy of survived cultists.}""", # MISSING TRANSLATION
+	ACT4_ROAD_WAKE_Q2 = """Rouge merely played coy, letting a teasing little smile hover on her lips as she looked away just enough to keep her answer out of reach.""", # MISSING TRANSLATION
+	ACT4_ROAD_WAKE_Q3 = """Rouge glances toward the buried center of the ritual chamber.
+
+{color=yellow|Rouge: — Gone. Not dead, I think. Mhyrana is annoyingly good at leaving before consequences become educational.}
+
+You and Rouge linger for a moment, taking in the quiet around you. There is nothing more to gain by staying here.""", # MISSING TRANSLATION
+	ACT4_ROAD_CITY_RETURN_1 = """You and Rouge climb out through a broken side passage and back toward the city. By the time you reach open streets, the news has already outrun you.
+
+Grotus has taken the throne. The Emperor is gone, the palace is sealed, and the Empire is not ruling the capital so much as shaking apart around it.
+
+{color=yellow|Rouge: — Unbelievable. He's the last person on the earth who should've gotten it.}""", # MISSING TRANSLATION
+	ACT4_ROAD_ROUGE_FORK = """Rouge watches the panic with a faintly amused expression, but her eyes keep returning to the palace.""", # MISSING TRANSLATION
+	ACT4_ROAD_ROUGE_OPTION_DISMISS = """Stay out of this. I don't want you near me again.""", # MISSING TRANSLATION
+	ACT4_ROAD_ROUGE_OPTION_DEAL = """So, we need to deal with Grotus.""", # MISSING TRANSLATION
+	ACT4_ROAD_ROUGE_DISMISSED = """Rouge's smile stays in place, but something behind it cools.
+
+{color=yellow|Rouge: — How firm. Very well, darling. This is where it ends, then.}
+
+She turns away and vanishes into the fleeing crowd.""", # MISSING TRANSLATION
+	ACT4_ROAD_ROUGE_STAYS = """{color=yellow|Rouge: — Very well. I suppose it is also my fault for letting Grotus become this. I'm not going to shy away from fixing my mistakes.}""", # MISSING TRANSLATION
+	ACT4_ROAD_ROUGE_STAYS_ALLY = """Rouge's earlier amusement has gone thin. She watches the palace with open irritation, as if Grotus has personally insulted her by surviving this long.
+
+{color=yellow|Rouge: — I suppose it is also my fault for letting Grotus become this. I'm not going to shy away from fixing my mistakes. Come along, darling.}""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_MESSENGER_1 = """A man in a torn imperial coat finds you in a side street near the damaged palace district. He is bleeding from one temple, but he still checks both ends of the street before approaching.
+
+{color=yellow|Melchor's Man: — Mayor [name]. Chancellor Melchor sent me.}
+
+He presses a sealed letter into your hand.""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_MESSENGER_2 = """{color=yellow|Melchor's Man: — Grotus has ordered half of the palace to find him. The Chancellor has gone to ground. The letter has the details.}
+
+The man casts a quick look over his shoulder, then slips away at once, vanishing down the corridor before you can ask anything more.""", # MISSING TRANSLATION
+	ACT4_ROAD_CAPITAL_OPTION_MELCHOR = """Find Melchor's hiding place""", # MISSING TRANSLATION
+	ACT4_ROAD_CAPITAL_OPTION_SENERUS = """Visit Senerus""", # MISSING TRANSLATION
+	ACT4_ROAD_CAPITAL_OPTION_MELCHOR_RETURN = """Return to Melchor""", # MISSING TRANSLATION
+	ACT4_ROAD_CAPITAL_OPTION_PALACE = """Charge at the palace""", # MISSING TRANSLATION
+	ACT4_ROAD_ELF_OPTION_ARROW = """Bring the arrow to Freya's priestess""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_HIDING_1 = """Melchor's hiding place is a cramped archive cellar beneath a shuttered counting house. Two exhausted soldiers guard the stairs, and Melchor himself stands over a table covered with city maps, his hands clenched into fists.
+
+{color=yellow|Melchor: — So of all people you've made it. I suppose we have to work together now. Grotus is not merely dangerous. He is nearly untouchable while that stolen power remains around him.}""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_HIDING_2 = """{color=yellow|Melchor: — He seized my family's estates, burned the vineyards that have been ours for generations, all to spite me. He thinks he can break me by destroying everything I hold dear.}
+
+He takes a deep breath, forcing his hands to unclench.
+
+{color=yellow|Melchor: — But rage will not serve us now. According to the information I've received, his body is not made to hold divine force. The strain will tear him apart eventually, but waiting for that can lead to the Empire's complete demise.}""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_HIDING_ROUGE = """Melchor notices Rouge near the cellar stairs and his expression tightens again.
+
+{color=yellow|Melchor: — And you brought her.}
+
+{color=aqua|Rouge: — You make it sound like a plague followed him in.}
+
+{color=yellow|Melchor: — A plague at least has the courtesy to be accidental.}
+
+{color=aqua|Rouge: — Keep snarling, Chancellor. It is almost comforting to know one part of the Empire still works as expected.}
+
+{color=yellow|Melchor: — Enough. I will tolerate your presence because Grotus is worse. Do not mistake that for forgiveness.}""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_HIDING_3 = """He looks wearily over you and back to the map.
+
+{color=yellow|Melchor: — Grotus maintains control through intimidation alone. The people do not trust him, and this presents our greatest opportunity. You need a way to pierce the divine barrier around him before you confront him, but my sources on this subject are really limited.}""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_OPTION_INDIVIDUAL = """I've met an individual like this.""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_OPTION_SENERUS = """Senerus should know something.""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_HIDING_4 = """{color=yellow|Melchor: — Then I leave this to you. We are still searching for opportunities to weaken his position.}""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_1 = """Senerus listens without interrupting. By the time you finish describing the stone ring, Sebastian's network, Mhyrana's ritual, and Grotus absorbing the divine power, he has already covered half his desk in notes.
+
+{color=yellow|Senerus: — That is terrifying. But it is rather exciting to watch actual divine power emerge in front of my eyes.}""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_2 = """{color=yellow|Senerus: — Divine energy rejects ordinary force. You need an aligned disruption: something equally fearsome to negate it.}
+
+He looks at you, then at the notes.
+
+{color=yellow|Senerus: — We need some exceedingly strong concentration of divine energy. Just chosen individuals won't be enough.}""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_HUB = """He sets the pen down and waits, entirely willing to let you supply the impossible part.""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_OPTION_ASURA = """I should be able to do this.""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_OPTION_SATORI = """Kuro might handle it.""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_OPTION_HELEVIEL = """I'll try asking former Freya's priestess.""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_OPTION_ARTIFACT = """I have some artifacts left from my hunting.""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_OPTION_NOTHING = """I really don't have anything...""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_ASURA = """You tell Senerus about the powers you've obtained from Nixx.
+
+{color=yellow|Senerus: — You... are a far more curious individual than I imagined. Yes, with powers of the night goddess herself, it's certainly possible. In that case, let me teach you what exactly needs to be done.}""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_SATORI = """You tell Senerus about Kuro's powers that she obtained from Nixx.
+
+{color=yellow|Senerus: — You... are a far more curious individual than I imagined. Yes, with powers of the night goddess herself, it's certainly possible. In that case, let me teach you what exactly needs to be done.}""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_HELEVIEL = """You tell Senerus about Heleviel's powers.
+
+{color=yellow|Senerus: — Yes, Freya's High Priestess could do it. Freya's blessing is close enough to divine force to open a path. But I'm afraid this will be extremely taxing on her, it will put her in weakened state for days.}
+
+{color=aqua|Heleviel: — I will do it. I trust you can take it from there without my help, [name].}""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_ARTIFACT_HUB = """{color=yellow|Senerus: — An artifact can be emptied and shaped into a single strike. It will be destroyed, but it will break the barrier.}
+
+He spreads his hands, leaving the cost of the choice entirely to you.""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_ARTIFACT_SCALES = """*Sacrifice the sacred scales*""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_ARTIFACT_BOWL = """*Sacrifice the sacred bowl*""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_ARTIFACT_SWORD = """*Sacrifice the holy sword*""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_ARTIFACT_SPEAR = """*Sacrifice the holy spear*""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_ARTIFACT_BACK = """*Change your mind*""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_ARTIFACT_DONE = """{color=yellow|Senerus: — It's a shame we must use it. But I'll prepare it for the task.}
+
+After a few hours Senerus finally passes you a small vial of shimmering fluid, nothing like you've seen before. You can feel strong power just from looking at it.
+
+{color=yellow|Senerus: — Take it. You only get one shot at this, so you better not waste it.}""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_ARROW = """Senerus walks to the basement, letting you into what looks more like an antique storeroom. He fetches a long object from one of the shelves and presents it to you.
+
+{color=yellow|Senerus: — Here is an ancient arrow capable of holding divine energy. Take it to Eldewyn. The elves' connection to Freya is your best bet in this grim situation. Since you have already been there, you should be able to get help from them.}""", # MISSING TRANSLATION
+	ACT4_ROAD_PRIESTESS_ARROW_LIRA = """You bring Senerus' arrow to Freya's priestess and explain only what matters: Grotus stole divine power, ordinary weapons cannot reach him, and this arrow needs to open the first wound.
+
+She takes the arrow without ceremony.
+
+{color=yellow|Lira: — Freya's blessing was never meant to be used this way. But neither was divine power meant to sit inside a frightened tyrant.}
+
+Light gathers along the arrowhead, clean and pale, until the metal hums softly in your hand.""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_PLAN_1 = """Melchor waits over the same map, but several palace passages have now been marked in red.
+
+{color=yellow|Melchor: — You have the means?}""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_PLAN_OPTION_BREAK = """It should break the barrier.""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_PLAN_OPTION_OPENING = """It will give me one opening.""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_PLAN_2 = """{color=yellow|Melchor: — Then we use it before Grotus grows worse or collapses loudly enough to take the palace district with him.}
+
+He points to a service route running beneath the western wing.
+
+{color=yellow|Melchor: — My people still control this passage. It will get you close to the throne room. After that, subtlety is dead.}""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_PLAN_ROUGE = """{color=aqua|Rouge: — How tragic. I was so looking forward to watching you attempt it.}
+
+{color=yellow|Melchor: — If you are coming, try to make yourself useful before you make yourself insufferable.}
+
+{color=aqua|Rouge: — I can do both.}""", # MISSING TRANSLATION
+	ACT4_ROAD_PALACE_1 = """You manage to make your way through palace's backrooms with the help of Melchor's people. Guards open doors before you reach them. Officials vanish into side halls.
+
+You find Grotus in the throne room, still wearing the crooked crown. The stolen power around him is brighter now, but his skin has gone waxy beneath it, and his hands shake when he grips the armrests.""", # MISSING TRANSLATION
+	ACT4_ROAD_PALACE_2 = """{color=yellow|Grotus: — You. Of course it's you. These fools have let you in. Do they really think you can take me on? Because once I'm done with you, I'll skin each of them alive on the square!}""", # MISSING TRANSLATION
+	ACT4_ROAD_BARRIER_ASURA = """You drive Nixx's power into the barrier like a black wound. The divine shell resists for a heartbeat, then splits around the impact.""", # MISSING TRANSLATION
+	ACT4_ROAD_BARRIER_SATORI = """Kuro's power slips through the barrier before it understands what to reject. The shell shivers, confused by a cut made through intent instead of force.""", # MISSING TRANSLATION
+	ACT4_ROAD_BARRIER_HELEVIEL = """Heleviel's blessing burns pale across your strike. The barrier opens just enough, then snaps apart with a sound like breaking glass.""", # MISSING TRANSLATION
+	ACT4_ROAD_BARRIER_ARTIFACT = """The prepared artifact shatters in your hand, releasing its stored force into a single focused rupture. The barrier takes the blow and cracks.""", # MISSING TRANSLATION
+	ACT4_ROAD_BARRIER_ARROW = """The blessed arrow hits the barrier and sinks into the light. For a moment it hangs there, trembling, then Freya's blessing tears the shell open from within.""", # MISSING TRANSLATION
+	ACT4_ROAD_BARRIER_TAIL = """
+
+Grotus screams, not in pain alone but in outrage that anything still has permission to touch him.
+
+{color=yellow|Grotus: — You CHEATING BASTARD! You dare to challenge GOD!?}""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_DEFEAT_1 = """Grotus crashes down at the foot of the throne, glowing veins splitting open beneath his skin. The power does not fade. It churns inside him, too large for the body it stole.
+
+{color=yellow|Grotus: — No. No, no, no. Mine. It is mine.}""", # MISSING TRANSLATION
+	ACT4_ROAD_MHYRANA_RETURNS_1 = """The energy burst pushes you back, but another entity appears through the tear in the air behind him.
+
+Mhyrana steps through the broken light, calm despite the ruin around her. She looks at Grotus the way one might at a nasty bug.
+
+{color=yellow|Mhyrana: — You held it longer than I expected.}
+
+Grotus reaches toward her, suddenly small again.
+
+{color=aqua|Grotus: — Mistress Rouge...?}
+
+{color=yellow|Mhyrana: — Wrong.}""", # MISSING TRANSLATION
+	ACT4_ROAD_MHYRANA_RETURNS_2 = """She places one hand over the glowing wound in his chest and pulls.
+
+The stolen divine power tears free from Grotus and pours into the ritual pattern Mhyrana draws in the air. The palace floor buckles. Walls split. Somewhere deep beneath the city, the enormous stone ring answers.
+
+Everything goes black.""", # MISSING TRANSLATION
+	ACT4_ROAD_FIRST_GOD_1 = """When the dust thins, the imperial palace is no longer whole. Towers lean in broken angles, streets have vanished beneath collapsed stone, and a gigantic figure rises from the ruins where the throne room used to be.
+
+It is large enough to block the sun if it wasn't hidden by the dust clouds.
+
+{color=yellow|Mhyrana: — Behold the body of the First God. With it, this world will open. The demons will arrive, the old order will end, and every nation will learn what waits beyond its little sky.}""", # MISSING TRANSLATION
+	ACT4_ROAD_PRIESTESS_ARROW_HELEVIEL = """You bring Senerus' arrow to Freya's priestess and explain only what matters: Grotus stole divine power, ordinary weapons cannot reach him, and this arrow needs to open the first wound.
+
+She takes the arrow without ceremony.
+
+{color=yellow|Heleviel: — I can give it the shape it needs. Not enough to defeat him for you, but enough to make him reachable.}
+
+Light gathers along the arrowhead, clean and pale, until the metal hums softly in your hand.""", # MISSING TRANSLATION
 	KURO_SEASIDE_START = """The afternoon has dragged itself into a kind of punishment. By now the ink has started drying too quickly on the page, your wrist aches from signatures, and every completed document seems to uncover two more beneath it. The heat sits heavily in the office, turning the still air between the shelves and your desk into something almost solid.
 
 You have just reached for the next ledger when the shadow beside the bookshelf thickens. A familiar black tail slips out of it first, followed by Kuro, who steps into the room.

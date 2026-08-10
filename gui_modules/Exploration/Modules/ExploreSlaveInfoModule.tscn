@@ -216,15 +216,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="label_atk" type="Label" parent="BaseStatsPanel/base_stats"]
-margin_right = 96.0
+[node name="label_atk" type="TextureRect" parent="BaseStatsPanel/base_stats"]
+margin_right = 35.0
 margin_bottom = 35.0
-mouse_filter = 1
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 2 )
-text = "ATK:"
-align = 2
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 0
+expand = true
+stretch_mode = 6
 
 [node name="atk" type="Label" parent="BaseStatsPanel/base_stats"]
 margin_left = 110.0
@@ -235,16 +233,14 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "25"
 
-[node name="label_matk" type="Label" parent="BaseStatsPanel/base_stats"]
+[node name="label_matk" type="TextureRect" parent="BaseStatsPanel/base_stats"]
 margin_left = 150.0
-margin_right = 291.0
+margin_right = 185.0
 margin_bottom = 35.0
-mouse_filter = 1
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 2 )
-text = "MATK:"
-align = 2
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 0
+expand = true
+stretch_mode = 6
 
 [node name="matk" type="Label" parent="BaseStatsPanel/base_stats"]
 margin_left = 305.0
@@ -255,16 +251,14 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "20"
 
-[node name="label_armor" type="Label" parent="BaseStatsPanel/base_stats"]
+[node name="label_armor" type="TextureRect" parent="BaseStatsPanel/base_stats"]
 margin_top = 36.0
-margin_right = 96.0
+margin_right = 35.0
 margin_bottom = 71.0
-mouse_filter = 1
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 2 )
-text = "DEF:"
-align = 2
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 0
+expand = true
+stretch_mode = 6
 
 [node name="armor" type="Label" parent="BaseStatsPanel/base_stats"]
 margin_left = 110.0
@@ -276,17 +270,15 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "15"
 
-[node name="label_mdef" type="Label" parent="BaseStatsPanel/base_stats"]
+[node name="label_mdef" type="TextureRect" parent="BaseStatsPanel/base_stats"]
 margin_left = 150.0
 margin_top = 36.0
-margin_right = 291.0
+margin_right = 185.0
 margin_bottom = 71.0
-mouse_filter = 1
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 2 )
-text = "MDEF:"
-align = 2
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 0
+expand = true
+stretch_mode = 6
 
 [node name="mdef" type="Label" parent="BaseStatsPanel/base_stats"]
 margin_left = 305.0
@@ -298,16 +290,14 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "20"
 
-[node name="label_hitrate" type="Label" parent="BaseStatsPanel/base_stats"]
+[node name="label_hitrate" type="TextureRect" parent="BaseStatsPanel/base_stats"]
 margin_top = 72.0
-margin_right = 96.0
+margin_right = 35.0
 margin_bottom = 107.0
-mouse_filter = 1
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 2 )
-text = "Hit Rate:"
-align = 2
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 0
+expand = true
+stretch_mode = 6
 
 [node name="hitrate" type="Label" parent="BaseStatsPanel/base_stats"]
 margin_left = 110.0
@@ -319,17 +309,15 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "15"
 
-[node name="label_evasion" type="Label" parent="BaseStatsPanel/base_stats"]
+[node name="label_evasion" type="TextureRect" parent="BaseStatsPanel/base_stats"]
 margin_left = 150.0
 margin_top = 72.0
-margin_right = 291.0
+margin_right = 185.0
 margin_bottom = 107.0
-mouse_filter = 1
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 2 )
-text = "Evasion:"
-align = 2
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 0
+expand = true
+stretch_mode = 6
 
 [node name="evasion" type="Label" parent="BaseStatsPanel/base_stats"]
 margin_left = 305.0
@@ -341,16 +329,14 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "20"
 
-[node name="label_speed" type="Label" parent="BaseStatsPanel/base_stats"]
+[node name="label_speed" type="TextureRect" parent="BaseStatsPanel/base_stats"]
 margin_top = 108.0
-margin_right = 96.0
+margin_right = 35.0
 margin_bottom = 143.0
-mouse_filter = 1
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 2 )
-text = "Speed:"
-align = 2
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 0
+expand = true
+stretch_mode = 6
 
 [node name="speed" type="Label" parent="BaseStatsPanel/base_stats"]
 margin_left = 110.0
@@ -362,17 +348,15 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "15"
 
-[node name="label_armorpenetration" type="Label" parent="BaseStatsPanel/base_stats"]
+[node name="label_armorpenetration" type="TextureRect" parent="BaseStatsPanel/base_stats"]
 margin_left = 150.0
 margin_top = 108.0
-margin_right = 291.0
+margin_right = 185.0
 margin_bottom = 143.0
-mouse_filter = 1
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 2 )
-text = "Armor Pen.:"
-align = 2
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 0
+expand = true
+stretch_mode = 6
 
 [node name="armorpenetration" type="Label" parent="BaseStatsPanel/base_stats"]
 margin_left = 305.0
@@ -384,16 +368,14 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "20"
 
-[node name="label_critchance" type="Label" parent="BaseStatsPanel/base_stats"]
+[node name="label_critchance" type="TextureRect" parent="BaseStatsPanel/base_stats"]
 margin_top = 144.0
-margin_right = 96.0
+margin_right = 35.0
 margin_bottom = 179.0
-mouse_filter = 1
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 2 )
-text = "Critical:"
-align = 2
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 0
+expand = true
+stretch_mode = 6
 
 [node name="critchance" type="Label" parent="BaseStatsPanel/base_stats"]
 margin_left = 110.0
@@ -405,17 +387,15 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "15"
 
-[node name="label_critmod" type="Label" parent="BaseStatsPanel/base_stats"]
+[node name="label_critmod" type="TextureRect" parent="BaseStatsPanel/base_stats"]
 margin_left = 150.0
 margin_top = 144.0
-margin_right = 291.0
+margin_right = 185.0
 margin_bottom = 179.0
-mouse_filter = 1
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 2 )
-text = "Critical Mod:"
-align = 2
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 0
+expand = true
+stretch_mode = 6
 
 [node name="critmod" type="Label" parent="BaseStatsPanel/base_stats"]
 margin_left = 305.0
@@ -439,23 +419,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="BaseStatsPanel/resists"]
+[node name="Icon" type="TextureRect" parent="BaseStatsPanel/resists"]
 visible = false
-margin_right = 81.0
-margin_bottom = 24.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 2 )
-text = "Attack:"
-align = 2
+margin_right = 30.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+size_flags_horizontal = 6
+expand = true
+stretch_mode = 6
 
 [node name="Value" type="Label" parent="BaseStatsPanel/resists"]
 visible = false
 margin_right = 28.0
-margin_bottom = 24.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 28, 30 )
+size_flags_horizontal = 6
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "25"
+align = 1
 
 [node name="ResistsLabel" type="Label" parent="BaseStatsPanel"]
 margin_left = 372.0

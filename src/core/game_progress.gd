@@ -180,6 +180,8 @@ func fix_serialization():
 		])
 	if !seen_events.has("jean_sidequest_start") and ResourceScripts.game_party.get_unique_slave('jean') != null:
 		globals.common_effects([{code = 'plan_mansion_event', value = "jean_sidequest_start"}])
+	if !seen_events.has("act4_road_courier_1") && !timed_event_exists("act4_road_courier_1") && globals.valuecheck({type = 'any_quest_stage', value = 'sebastian_railroad_quest', stages = ['sebastian_route_complete', 'church_protected_complete']}):
+		globals.common_effects([{code = "add_timed_event", value = "act4_road_courier_1", args = [{type = "add_to_date", date = [2, 2], hour = 1}]}])
 	
 	
 	

@@ -88,8 +88,51 @@ A new empty mods.ini has been created. Please re-enable compatible mods from the
 	OPTNAME3 = """Аудио""",
 	OPTNAME4 = """Читы""",
 	OPTNAME5 = "Сложность",
+	OPTNAMEHOTKEYS = """Hotkeys""", # MISSING TRANSLATION
 	OPTOPT = """Опции""",
 	OPTCLOSE = """Закрыть""",
+	HOTKEYGROUP_GLOBAL = """General""", # MISSING TRANSLATION
+	HOTKEYGROUP_MANSION = """Mansion""", # MISSING TRANSLATION
+	HOTKEYGROUP_COMBAT = """Combat""", # MISSING TRANSLATION
+	HOTKEY_UNBOUND = """- none -""", # MISSING TRANSLATION
+	HOTKEY_PRESSKEY = """Press a key...""", # MISSING TRANSLATION
+	HOTKEY_RESET = """Restore defaults""", # MISSING TRANSLATION
+	HOTKEY_CONFLICT = """%s was taken from "%s".""", # MISSING TRANSLATION
+	HOTKEY_HINT = """Click a key to rebind it. Esc cancels, Delete clears the binding.
+Mansion and combat keys are independent - the same key may be used by both.""", # MISSING TRANSLATION
+	HOTKEY_QUICKSAVE = """Quick save""", # MISSING TRANSLATION
+	HOTKEY_QUICKLOAD = """Quick load""", # MISSING TRANSLATION
+	HOTKEY_FULLSCREEN = """Toggle fullscreen""", # MISSING TRANSLATION
+	HOTKEY_MANSION_TIME_1 = """Pass 1 hour""", # MISSING TRANSLATION
+	HOTKEY_MANSION_TIME_2 = """Pass 2 hours""", # MISSING TRANSLATION
+	HOTKEY_MANSION_TIME_3 = """Pass 4 hours""", # MISSING TRANSLATION
+	HOTKEY_MANSION_WORK = """Work""", # MISSING TRANSLATION
+	HOTKEY_MANSION_TRAVELS = """Travels""", # MISSING TRANSLATION
+	HOTKEY_MANSION_UPGRADES = """Mansion""", # MISSING TRANSLATION
+	HOTKEY_MANSION_SEX = """Sex""", # MISSING TRANSLATION
+	HOTKEY_MANSION_INVENTORY = """Inventory""", # MISSING TRANSLATION
+	HOTKEY_MANSION_CRAFT = """Craft""", # MISSING TRANSLATION
+	HOTKEY_MANSION_JOURNAL = """Journal""", # MISSING TRANSLATION
+	HOTKEY_MANSION_MENU = """Game menu""", # MISSING TRANSLATION
+	HOTKEY_MANSION_CHAR_INFO = """Character info""", # MISSING TRANSLATION
+	HOTKEY_MANSION_TUTORIAL = """Tutorial panel""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_SKILL_1 = """Use skill 1""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_SKILL_2 = """Use skill 2""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_SKILL_3 = """Use skill 3""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_SKILL_4 = """Use skill 4""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_SKILL_5 = """Use skill 5""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_SKILL_6 = """Use skill 6""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_SKILL_7 = """Use skill 7""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_SKILL_8 = """Use skill 8""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_SKILL_9 = """Use skill 9""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_ROW_UP = """Previous skill row""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_ROW_DOWN = """Next skill row""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_SKILLBOOK = """Skill book""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_ITEMS = """Items panel""", # MISSING TRANSLATION
+	HOTKEY_COMBAT_RUN = """Retreat""", # MISSING TRANSLATION
+	QUICKSAVE_BLOCKED = """Can't quick save during combat.""", # MISSING TRANSLATION
+	QUICKLOAD_BLOCKED = """Can't quick load during combat.""", # MISSING TRANSLATION
+	QUICKLOAD_MISSING = """No quick save found.""", # MISSING TRANSLATION
 	TUTORIALS = """Туториалы""",
 	LOCATIONLIST = "Локации",
 	BUTTONTRAVEL = "Карта",
@@ -686,6 +729,9 @@ A new empty mods.ini has been created. Please re-enable compatible mods from the
 	LABELDISLOCATION = """Пункт отбытия""",
 	LABELDESTINATION = """Пункт назначения""",
 	LABELSEXSKILLS = "Секс навыки",
+	SLAVE_MARKET_SEX_SKILLS = """Sex Skills""", # MISSING TRANSLATION
+	SLAVE_TOOLTIP_SEX_SKILLS = """Sex Skills""", # MISSING TRANSLATION
+	MANSION_SEX_SKILLS = """Sex Skills""", # MISSING TRANSLATION
 	STARTINGADJ = """Начало""",
 	FOODTYPEMEAT = """Мясо""",
 	FOODTYPEFISH = """Рыба""",
@@ -1238,6 +1284,16 @@ Food type: Vegetables.""", # MISSING TRANSLATION
 	CHARCREATE_DIET_HELP = "Выберите 1 тип еды, который 'Нравится', и хотя бы 1 — который 'Не нравится'.",
 	CHARCREATE_DIET_HELP_TOO_MANY_LIKED = """You can only select 1 Liked food type.""", # MISSING TRANSLATION
 	CHARCREATE_DIET_HELP_NO_LIKED = """[color=red]Select 1 Liked food type.[/color]""", # MISSING TRANSLATION
+	CHARCREATE_DIET_TITLE = """Select 1 Liked Food Type""", # MISSING TRANSLATION
+	CHARCREATE_DIET_DISHES = """Dishes:""", # MISSING TRANSLATION
+	CHARCREATE_DIET_DESCRIPT_MEAT = """Hunted. The most filling raw food.""", # MISSING TRANSLATION
+	CHARCREATE_DIET_DESCRIPT_FISH = """Caught by fishing. Needs no farm.""", # MISSING TRANSLATION
+	CHARCREATE_DIET_DESCRIPT_VEGE = """Farmed. Appears in the most dishes.""", # MISSING TRANSLATION
+	CHARCREATE_DIET_DESCRIPT_GRAIN = """Farmed. Only eaten cooked.""", # MISSING TRANSLATION
+	CHARCREATE_DIET_TOOLTIP = """Meals tagged with this type feed %s%% longer, and the character reaches for them before anything else they are allowed to eat.
+
+Nothing is forbidden by this choice - it only sets a preference.""", # MISSING TRANSLATION
+	CHARCREATE_DIET_FOOD_VALUE = """Feeds for %s turns (%s if liked)""", # MISSING TRANSLATION
 	CHARCREATE_SYS_FOOD_REQUIRED = "Вы должны выбрать один тип еды, который нравится, и хотя бы один, который не нравится.",
 	CHARCREATE_SYS_CLASS_REQUIRED = "Вы должны выбрать корректный начальный класс",
 	CHARCREATE_SYS_PERSONALITY_REQUIRED = "Вы должны выбрать личность",
@@ -3721,12 +3777,10 @@ The last hit deals increased damage.
 	EFFECTNAME_INSPIRE = "Вдохновение",
 	EFFECTNAME_FLIGHT_UPKEEP = "Полёт",
 	EFFECTNAME_FLY = "Воздушный рывок",
-	TOOLTIP_CLOCK1 = """Продвинуть время вперёд
-Горячая клавиша: 1""",
-	TOOLTIP_CLOCK2 = """Продвинуть время вперёд на 12 часов
-Горячая клавиша: 2""",
-	TOOLTIP_CLOCK3 = """Продвинуть время вперёд на полный день
-Горячая клавиша: 3""",
+	HOTKEY_TOOLTIP = "Горячая клавиша: %s",
+	TOOLTIP_CLOCK1 = """Продвинуть время вперёд""",
+	TOOLTIP_CLOCK2 = """Продвинуть время вперёд на 12 часов""",
+	TOOLTIP_CLOCK3 = """Продвинуть время вперёд на полный день""",
 	TIME_TOOLTIP = "Текущая неделя, день и время. Некоторые задания могут иметь ограничения по времени.",
 USAGE_COST = "Стоимость использования",
 	TOOLTIP_NONE = "Нет",
@@ -31550,7 +31604,1226 @@ ACT4_ERDYNA_AFTER_LEAVE_HUB_4_SUCCESS = """Эрдина моргает, заст
 
 	LIRA_BONUS2_6 = """Когда вы вышли, струйка вашей смешанной разрядки вытекла из неё, жемчужно-белая полоса на тёмной коже её внутренней стороны бедра.
 
-{color=yellow|Лира: — Мы сделали это... Как животные, правда? Я никогда не думала, что получу удовольствие от чего-то подобного с тобой, [master].}"""
+{color=yellow|Лира: — Мы сделали это... Как животные, правда? Я никогда не думала, что получу удовольствие от чего-то подобного с тобой, [master].}""",
+	ACT4_SEBASTIAN_RAILROAD_NAME = """Strictly Business""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_RAILROAD_SUMMARY = """Sebastian of the Trading Guilds of Empire seeks to expand their influence onto other lands.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_STAGE_FIND_TECHNICIAN = """Find a dwarven technician who can advise Sebastian on the railroad route. Perhaps one goblin engineer would be interested too...""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_STAGE_REPORT_TECHNICIAN = """Report the selected dwarven technician to Sebastian in the Empire Capital.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_STAGE_WAIT_PREPARATION = """Wait while Sebastian prepares the railroad survey materials.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_STAGE_INVESTIGATE_TROUBLE = """Speak with the selected technician in the Dwarven Capital about the railroad trouble.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_STAGE_INVESTIGATE_KHARZUG = """Investigate Kharzug Deep for the missing railroad surveyors.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_STAGE_CLEAR_LOWER_TOMB = """Search the lower tomb beneath Kharzug Deep and remove the danger there.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_STAGE_RETURN_TO_TECHNICIAN = """Return to the selected technician in the Dwarven Capital with news from Kharzug Deep.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_STAGE_REPORT_KHARZUG = """Report the outcome at Kharzug Deep to Sebastian in Aliron.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_STAGE_SPEAK_TO_CHURCH = """Visit Celena's church in Aliron about Sebastian's offer.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_STAGE_RETURN_GINNY_REFUSAL = """Return to Sebastian after Ginny refuses to surrender Celena's church.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_STAGE_OFFER_ALTERNATIVE_SITE = """Offer Ginny Sebastian's alternative site for Celena's church.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_STAGE_PERSUADE_PARISHIONERS = """Assign workers in Aliron to convince parishioners to support the church relocation.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_STAGE_PARISHIONERS_PERSUADED = """Visit Ginny after the parishioners have been persuaded.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_STAGE_NEW_CHURCH_SITE = """Visit Celena's church at the new location.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_STAGE_FIND_WAREHOUSE_OWNER = """Find the owner of the warehouse near Celena's church.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_STAGE_BUY_WAREHOUSE = """Return to the warehouse owner and buy the alternative property.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_STAGE_REPORT_WAREHOUSE_SOLUTION = """Report the warehouse solution to Ginny at Celena's church.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_STAGE_WAIT_CONTINUATION = """Wait for Sebastian to contact you again.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_ALIRON_OPTION_REPORT_KHARZUG = """Find Sebastian""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_ALIRON_OPTION_CHURCH = """Visit Celena's church""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_CHURCH_ENTER_OPTION = """About Sebastian's business...""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_ALIRON_OPTION_SEBASTIAN = """Return to Sebastian""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_ALIRON_OPTION_NEW_CHURCH = """Visit the new church""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_ALIRON_OPTION_WAREHOUSE = """Visit the warehouse""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_DWARF_CAPITAL_OPTION_HARA = """Ask Hara about the railroad""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_DWARF_CAPITAL_OPTION_KARGUN = """Find a technician""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_DWARF_CAPITAL_OPTION_KARGUN_RETURN = """Return to Kargun""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_DWARF_CAPITAL_OPTION_TECHNICIAN = """Speak with the technician""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_DWARF_CAPITAL_OPTION_KHARZUG = """Investigate Kharzug Deep""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_DWARF_CAPITAL_OPTION_TOMB = """Search the lower tomb""", # MISSING TRANSLATION
+	QUEST_KHARZUG_DEEP_TEXT = """Kharzug Deep""", # MISSING TRANSLATION
+	QUEST_KHARZUG_DEEP_DESC = """A dwarven settlement along the railroad line, overrun by undead.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_EMPIRE_CAPITAL_OPTION_PROPOSAL = """Visit Central Square""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_EMPIRE_CAPITAL_OPTION_REPORT_TECHNICIAN = """Report to Sebastian""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PARISHIONER_TASK_NAME = """Convince Parishioners""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PARISHIONER_TASK_DESC = """Assign workers to convince Celena's parishioners to support moving the church.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PROPOSAL_DKING_1 = """As you pass through one of the broader streets of the imperial capital, you notice an eccentric, rich-looking man in a tophat leading a small party along the avenue. The familiar look of the dwarf officials with him makes you slow your steps.
+
+The Dwarf King walks beside him, accompanied by two armored guards and a court scribe carrying a case of documents.
+
+The man gestures toward the warehouses, paved roads, and busy loading yards around them as if every stone had been placed there to support his argument.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PROPOSAL_DKING_2 = """You slow down just as the man stops near a newly built cargo office. A few imperial clerks wait nearby with rolled maps, ready to present them when called upon.
+
+{color=yellow|The man: — Your Majesty, I assure you, the Trading Guild does not bring you here for fantasy, but for planning. The Empire has already shown what proper roadwork, logistics, and centralized labor can accomplish. What we propose now is simply the next stage.}
+
+The Dwarf King folds his arms, his beard bound with the same royal metal clasps you remember from his court.
+
+{color=aqua|Dwarf King: — A road above ground is one thing. A steel path into my mountains is another.}
+
+The man gives a practiced nod, as if the objection had arrived exactly where he expected it.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PROPOSAL_DKING_3 = """{color=yellow|The man: — Precisely why it deserves attention. A railroad is not merely a road. It is a pinnacle of technological advancement, a fixed promise between two lands. Ore, machinery, grain, timber, passengers, soldiers if required, relief supplies if needed... all moved faster than carts, safer than caravans, and with schedules that can be written months in advance.}
+
+The word soldiers makes the king's guards exchange a look, though the man moves past it without changing tone.
+
+{color=yellow|The man: — Your kingdom has engineers with talents the Empire respects. The Empire has capital, legal reach, and industrial capacity. Together, we could make the mountain route the greatest commercial artery on the continent.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PROPOSAL_DKING_4 = """The Dwarf King notices you watching from nearby. Recognition sharpens his expression. Whether he is pleased to see you is much less clear.
+
+{color=aqua|Dwarf King: — [name] of Aliron. Convenient. You have already dealt with my court and seen enough of this Empire's habits. What is your opinion on this proposal?}
+
+The man turns toward you as well, his smile brightening with polite curiosity.
+
+{color=yellow|The man: — Ah, the mayor of Aliron. Sebastian, representative of the Trading Guild. Your reputation travels almost as well as our future trains might.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PROPOSAL_DKING_SUPPORT = """Sebastian's smile widens, but he is professional enough not to look triumphant.
+
+{color=yellow|Sebastian: — Sensible and admirably forward-looking. Naturally, every clause would need proper review, but history favors those willing to build before others finish arguing over old walls.}
+
+The Dwarf King studies you for a moment, then gives a low grunt.
+
+{color=aqua|Dwarf King: — Hmph. Consideration is not agreement. But if there is profit, leverage, and respect in it, I will hear it.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PROPOSAL_DKING_CAUTION = """Sebastian accepts the criticism with an elegant nod, though the slight pause before his answer shows that he felt it.
+
+{color=yellow|Sebastian: — A fair concern. Every advancement frightens people before it serves them. That is why the Trading Guild prefers surveys, controlled routes, proper maintenance, and visible accounting. Caution is healthy, so long as it does not become paralysis.}
+
+The Dwarf King's eyes narrow, but his expression suggests that your warning has only sharpened his interest rather than ended it.
+
+{color=aqua|Dwarf King: — Then your engineers had better be as steady as your speech is charming. My mountains are not a place for careless experiments.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PROPOSAL_DKING_MERGE = """Sebastian claps his hands once, not loudly enough to seem crude, but enough to reclaim the rhythm of the meeting.
+
+{color=yellow|Sebastian: — Excellent. Then let us proceed from slogans to numbers. Your Majesty, I have prepared route estimates, projected toll schedules, and several models of shared oversight. I promise at least one of them is less terrifying than it sounds.}
+
+The joke earns nothing from the Dwarf King, but Sebastian does not seem discouraged. The clerks begin unrolling maps across a portable table, pinning the corners down against the wind while the king, his scribe, and his guards gather closer.
+
+For now, no agreement is made. Still, as you continue through the capital, the idea lingers behind you: a steel road from the Empire into the mountains, presented as progress, profit, and peace all at once.
+
+Whether it will become any of those things remains much less certain.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PROPOSAL_BOLTHAR_1 = """As you pass through one of the broader streets of the imperial capital, you notice an eccentric, rich-looking man in a tophat leading a small party along the avenue. The familiar look of the dwarf officials with him makes you slow your steps.
+
+Bolthar walks beside him, accompanied by two coalition veterans and a younger dwarf carrying a folder of stamped documents.
+
+The man gestures toward the warehouses, paved roads, and busy loading yards around them as if every stone had been placed there to support his argument.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PROPOSAL_BOLTHAR_2 = """You slow down just as the man stops near a newly built cargo office. A few imperial clerks wait nearby with rolled maps, ready to present them when called upon.
+
+{color=yellow|The man: — Lord Bolthar, the Trading Guild understands that your people have undergone a necessary transition. New governments need stability, revenue, and visible proof that tomorrow will not simply be yesterday with a different seal stamped on the orders. That is exactly why our proposal is timely.}
+
+Bolthar studies him with open caution. One of his escorts watches the imperial clerks more than the man, as if expecting the real threat to come from the paperwork.
+
+{color=aqua|Bolthar: — You speak as if laying iron into our mountains is charity.}
+
+The man gives a light laugh, friendly enough to avoid insult.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PROPOSAL_BOLTHAR_3 = """{color=yellow|The man: — I would never insult you by pretending commerce is charity. A railroad is profit disciplined into progress. It is the pinnacle of technological advancement the Empire can offer: reliable movement of goods, citizens, soldiers if required, relief supplies if needed...}
+
+At the mention of soldiers, Bolthar grows visibly colder. The man seems to notice, but does not retreat from the point.
+
+{color=yellow|The man: — Trade binds more firmly than treaties when done properly. Your mines and workshops need buyers. The Empire needs metal, machinery, and secure passage through the mountains. Everyone gains something tangible.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PROPOSAL_BOLTHAR_4 = """Bolthar notices you watching from nearby. For a moment the stiffness in his expression gives way to recognition.
+
+{color=aqua|Bolthar: — [name], you are more familiar with the human world than us. What do you think of this?}
+
+The man turns toward you as well, his smile brightening with polite curiosity.
+
+{color=yellow|The man: — Ah, the mayor of Aliron. Sebastian, representative of the Trading Guild. Your reputation travels almost as well as our future business might.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PROPOSAL_BOLTHAR_SUPPORT = """Sebastian's smile widens, but he is professional enough not to look triumphant.
+
+{color=yellow|Sebastian: — Sensible and admirably forward-looking. Naturally, every clause would need proper review, but history favors those willing to build before others finish arguing over old walls.}
+
+Bolthar glances toward his escort. The younger dwarf with the documents looks tempted by the argument, while the veterans remain harder to read.
+
+{color=aqua|Bolthar: — Consideration is not agreement. But our people need routes that do not belong to the old palace families. We will hear the terms in full.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PROPOSAL_BOLTHAR_CAUTION = """Sebastian accepts the criticism with an elegant nod, though the slight pause before his answer shows that he felt it.
+
+{color=yellow|Sebastian: — A fair concern. Every advancement frightens people before it serves them. Caution is healthy, so long as it does not become paralysis.}
+
+Bolthar's expression hardens. This time, his escort seems to agree with him before he speaks.
+
+{color=aqua|Bolthar: — We did not survive one disaster just to invite another. If your offer is honest, your engineers had better prove it.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PROPOSAL_BOLTHAR_MERGE = """Sebastian claps his hands once, not loudly enough to seem crude, but enough to reclaim the rhythm of the meeting.
+
+{color=yellow|Sebastian: — Excellent. Then let us proceed from slogans to numbers. Lord Bolthar, I have prepared route estimates, projected toll schedules, and several models of shared oversight. I promise at least one of them is less terrifying than it sounds.}
+
+The joke earns little from Bolthar, but Sebastian does not seem discouraged. The clerks begin unrolling maps across a portable table, pinning the corners down against the wind while Bolthar and his escort gather closer.
+
+For now, no agreement is made. Still, as you continue through the capital, the idea lingers behind you: a steel road from the Empire into the mountains, presented as progress, profit, and peace all at once.
+
+Whether it will become any of those things remains much less certain.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PROJECT_OFFER_1 = """As the dwarven party leaves with the clerks and their maps, Sebastian lingers behind. For a moment he watches them go, tapping one gloved finger against the head of his cane.
+
+Then he turns back to you with a smile that looks far too ready to be accidental.
+
+{color=yellow|Sebastian: — Mayor [name]. A fortunate coincidence, or perhaps simply good timing. Either way, I was hoping to speak with you without official ears listening to every breath.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PROJECT_OFFER_2 = """{color=yellow|Sebastian: — You heard the proposal. A railroad into the dwarven lands. An idea large enough to frighten cautious men and enrich practical ones.}
+
+He steps closer, lowering his voice just enough to make the offer feel private.
+
+{color=yellow|Sebastian: — If you lend your name and effort to this project, there will be profit. Considerable profit.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PROJECT_OFFER_3 = """{color=yellow|Sebastian: — For now, something simple. The Trading Guild can provide capital and imperial technicians, but this line cannot be built by outsiders alone. We need someone from the dwarven side who understands stone, pressure and old tunnels. A suitable technician. Preferably one talented enough to be useful and independent enough not to be buried under procedure.}
+
+{color=yellow|Sebastian: — Scout the Dwarven Capital. Ask around the workshops, guild yards, and palace-adjacent offices. Find me someone who knows the right people and places.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_HARA_MANSION_1 = """You explain Sebastian's proposal to Hara: an imperial Trading Guild project to build a railroad into the dwarven lands.
+
+Hara listens without interrupting. The longer you speak, the more her expression shifts from caution to interest.
+
+{color=yellow|Hara: — A railroad? Into the mountains?}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_HARA_MANSION_2 = """Hara folds her arms, thinking through the problem faster than she bothers to speak.
+
+{color=yellow|Hara: — That is not just laying metal on the ground. The stone shifts. Old tunnels breathe strangely. Some passages were sealed for good reason, and some foundations look solid until you put weight on them for a year.}
+
+She looks up at you.
+
+{color=yellow|Hara: — Which means they absolutely need someone who knows what not to trust.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_HARA_MANSION_ACCEPT = """{color=yellow|Hara: — Of course I will help. If some imperial merchant is going to bring engines near our halls, I would rather be there before someone clever makes a stupid mistake.}
+
+She gives a short, confident nod.
+
+{color=yellow|Hara: — Tell Sebastian I will inspect his route. And tell him that if he argues with me about stonework, I will charge extra.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_HARA_CAPITAL_1 = """In the Dwarven Capital, you ask after Hara among the workshops and trade offices. It does not take long before someone points you toward a noisy work yard near one of the older stone lifts.
+
+You find her arguing with two workers over a cracked support bracket. By the time you approach, she has already taken the tool from one of them and started fixing it herself.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_HARA_CAPITAL_2 = """{color=yellow|Hara: — If you tighten it like that, it will hold just long enough to fail when someone important is standing under it. Give me that.}
+
+The workers notice you first. Hara follows their gaze, then stops with the bracket still in her hand.
+
+{color=yellow|Hara: — [name]? What brought you here?}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_HARA_CAPITAL_3 = """You explain Sebastian's proposal and the need for a dwarven technician who can scout possible routes into the mountains.
+
+Hara listens, frowning at first, but the frown turns thoughtful before you finish.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_HARA_CAPITAL_4 = """{color=yellow|Hara: — A railroad into the mountains... That's not a piece of tech that I've dealt with yet, sounds fun!}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_HARA_CAPITAL_ACCEPT = """{color=yellow|Hara: — Tell your Trading Guild man that I will hear the details. }""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KARGUN_INTRO_1 = """You spend time asking through the Dwarven Capital's workshops for someone willing to speak about a possible railroad route.
+
+Most engineers refuse the moment they hear the Empire is involved. Others become very busy, very deaf, or suddenly offended by your questions.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KARGUN_INTRO_2 = """Eventually, a workshop foreman sends you to an older dwarf working beside a half-disassembled drilling rig. His beard is streaked with metal dust, and several younger workers keep a careful distance while he adjusts a cracked pressure valve.
+
+{color=yellow|Older Dwarf: — If you loosen it there, the whole rig will spit steam into your face. Turn the lower wheel first, then complain if it still hates you.}
+
+One of the workers notices you and murmurs something to him. The older dwarf looks over, measuring you with a blunt, unfamiliar stare.
+
+{color=yellow|Older Dwarf: — You need something, outsider?}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KARGUN_INTRO_3 = """The older dwarf gives you a short, impatient nod.
+
+{color=yellow|Older Dwarf: — Name is Kargun. Watcha want?}
+
+You explain Sebastian's proposal and the need for a dwarven technician who can scout possible routes into the mountains.
+
+Kargun listens with a heavy frown. At first it looks like another refusal, but the longer you speak, the more his attention shifts from you to the problem itself.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KARGUN_INTRO_4 = """{color=yellow|Kargun: — A railroad into the mountains... Hmph. That's not just carts with iron manners. Engines mean weight, heat, vibration, smoke, pressure. Put that near old stone without sense and the mountain will answer.}
+
+For a moment, you think the problem has caught him.
+
+Then he snorts and turns back toward the drilling rig.
+
+{color=yellow|Kargun: — Interesting way to ruin a mountain, maybe. Still not my problem. I have work that already pays me and machinery that already knows how to disappoint me.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KARGUN_OFFER_HUB = """Kargun keeps one hand on the cracked pressure valve, but he does not tell you to leave. Not quite.
+
+{color=yellow|Kargun: — If your tophat merchant wants a dwarf to babysit imperial ambition, he can find someone easier to impress.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KARGUN_WITS = """You tell him that this is exactly why Sebastian needs someone difficult to impress. A railroad into the mountains is not ordinary imperial construction. It is weight, heat, pressure, old stone, sealed passages, unstable grades, and machinery forced to obey terrain that was never designed for it.
+
+Anyone can reject it from a doorway. Very few people could look at the plan and know whether it is impossible, brilliant, or merely stupid in a way that can be fixed.
+
+Kargun goes still.
+
+{color=yellow|Kargun: — Hmph.}
+
+He says it like an objection, but his eyes have already moved away from you and toward something only he can see: lines, loads, pressure points, tunnels, engines, and arguments waiting to happen.
+
+{color=yellow|Kargun: — New engine weight against old mountain cuts... Heat control in narrow stone... Vibration through deep supports...}
+
+He grimaces, annoyed at his own interest.
+
+{color=yellow|Kargun: — Damn it.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KARGUN_PAY = """You point out that no one is asking him to work for imperial gratitude. If Sebastian wants a proper assessment, then Sebastian can afford proper compensation, and you are willing to guarantee the first payment yourself.
+
+Kargun eyes the offered gold with open suspicion, then with less suspicion.
+
+{color=yellow|Kargun: — Five hundred just to hear the details?}
+
+You confirm it.
+
+He takes the payment and tucks it away with the careful speed of a man who dislikes waste more than pride.
+
+{color=yellow|Kargun: — Expensive nonsense is still nonsense. But paid nonsense gets an hour.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KARGUN_LATER = """You decide not to press him further right now.
+
+Kargun gives a short grunt and turns back to the drilling rig.
+
+{color=yellow|Kargun: — Good. Come back if your merchant learns how to make this worth my time.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KARGUN_RETURN = """You return to the workshop yard where Kargun is still working beside the drilling rig. Either the machine has broken again, or he has found new things to hate about it.
+
+He notices you before you speak.
+
+{color=yellow|Kargun: — Back again? Either stubborn or paid by the hour.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KARGUN_ACCEPT = """Kargun wipes his hands on a stained cloth and gives the drilling rig one last irritated glance.
+
+{color=yellow|Kargun: — I will hear the details. Not because I trust your merchant, and not because I like imperial toys. If someone is going to drag engines toward our halls, I want to know how stupid the plan is before the stone does.}
+
+He picks up a roll of plans from the workbench and tucks it under one arm.
+
+{color=yellow|Kargun: — Tell your Trading Guild man I will hear him out once. If he wastes my time, I will bill him for that too.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REPORT_TECHNICIAN_1 = """You find Sebastian in one of the Trading Guild's temporary offices near the imperial capital's cargo yards. The room is crowded with ledgers, sealed letters, and route sketches, though Sebastian himself looks as composed as ever.
+
+He glances up from a stack of correspondence the moment you enter.
+
+{color=yellow|Sebastian: — Mayor [name]. I was beginning to suspect the mountains had decided to keep you.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REPORT_TECHNICIAN_2 = """You tell him that you found a dwarven technician willing to hear the details of the railroad project.
+
+Sebastian's smile brightens with immediate satisfaction.
+
+{color=yellow|Sebastian: — Excellent. That is precisely the kind of progress I hoped you would bring me. The Trading Guild can purchase tools, hire surveyors, and drown half the Empire in paperwork, but local expertise is much harder to acquire honestly.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REPORT_TECHNICIAN_3 = """{color=yellow|Sebastian: — Please accept my thanks. I will need some time to prepare the proper materials before bringing your technician into a formal meeting. Maps, estimates, access rights, liability clauses... all the little details that make great ideas survivable.}
+
+He taps the end of his cane lightly against the floor, already thinking several steps ahead.
+
+{color=yellow|Sebastian: — For now, consider your part handled. I will send word once the project is ready to move forward.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_MANSION_VISIT_1 = """A servant announces an unexpected visitor shortly after morning business begins. When you come to receive him, Sebastian is already waiting in the hall, hat in one hand and cane tucked neatly beneath the other.
+
+He looks as polished as ever, though the easy confidence in his smile sits a little tighter than before.
+
+{color=yellow|Sebastian: — Mayor [name]. I hope my arrival has not disrupted anything important.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_MANSION_VISIT_2 = """Sebastian settles his hat beneath one arm and lowers his voice.
+
+{color=yellow|Sebastian: — I usually prefer to let letters suffer the indignity of travel on my behalf, but speed seemed worth the expense this time. A mages guild teleportation service brought me most of the way. Horribly priced, aggressively punctual, and still preferable to spending days in a carriage.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_MANSION_VISIT_3 = """{color=yellow|Sebastian: — In any case, this is a business trip rather than a social call. I received a letter from our technician.}
+
+For the first time since arriving, his practiced smile falters into something more openly troubled.
+
+{color=yellow|Sebastian: — The letter is brief, and rather deliberately so. Our technician writes that complications have appeared around the excavation work.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_MANSION_VISIT_4 = """{color=yellow|Sebastian: — I would like to ask for your help. My hands are rather full keeping the traders side from turning nervous. Besides, whatever is happening there is likely better suited to you given your experience with the... underground.}
+
+He offers you the folded letter, still marked by travel creases and a faint smell of dust.
+
+{color=yellow|Sebastian: — Go to the dwarven kingdom, speak with our technician, and find out what kind of trouble has found its way into my otherwise beautifully organized project.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_TROUBLE_HARA_1 = """You find Hara near one of the administrative workshops, half-buried in rolled maps, loose survey notes, and a dismantled measuring device that looks far too delicate for the way she is handling it.
+
+She spots you before you can call her name and immediately waves you closer with a wrench.
+
+{color=yellow|Hara: — Hey! Good, you're here. I was wondering whether Sebastian's fancy letter would actually reach you, or whether some courier would drop it into a hole and call that delivery.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_TROUBLE_HARA_2 = """Hara kicks a stool out from under the table and climbs onto it so she can point at one of the route sketches properly.
+
+{color=yellow|Hara: — This is where the mess started. Kharzug Deep. Small settlement, old mining roads, some abandoned lower works nearby. Good place for early excavation if you like dust, bad lighting, and stone that makes interesting noises when you hit it.}
+
+She taps the mark with the wrench.
+
+{color=yellow|Hara: — A survey group went there to check the ground and old passages. Then nothing. No proper report, no runner, no message through the local offices. Nobody has come back.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_TROUBLE_HARA_3 = """{color=yellow|Hara: — And before you ask, yes, I would love to go poke at it myself. But if I disappear too, then nobody left here knows enough to tell the officials which tunnels are safe, which ones are lies, and which ones are waiting to become expensive graves.}
+
+She lowers her voice.
+
+{color=yellow|Hara: — Also, some of Sebastian's people already went after them. Not the clerk sort. Shady sort. They have not come back either.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_TROUBLE_HARA_4 = """{color=yellow|Hara: — I think something down there is making people vanish, and I think sending more engineers before we know what it is would be stupid.}
+
+She folds the map and presses it into your hands.
+
+{color=yellow|Hara: — Find the survey group if you can, find out what happened if you cannot. Shouldn't be too hard for you, right?}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_TROUBLE_KARGUN_1 = """You find Kargun in a stone records room near the workshop yards. Several maps lie open across the table before him, weighed down by tools, stone samples, and one cup of cold tea he does not seem to remember making.
+
+{color=yellow|Kargun: — Took you long enough. }""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_TROUBLE_KARGUN_2 = """{color=yellow|Kargun: — Kharzug Deep. Old settlement past the regular trade roads. Miners, stonecutters, a few stubborn families who never learned when to move somewhere sensible. The route survey needed the lower approaches checked, so a group went there.}
+
+Kargun jabs one thick finger against a marked point on the map.
+
+{color=yellow|Kargun: — Nobody came back. No runner. No bird. No message through the offices. Settlement has gone quiet too.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_TROUBLE_KARGUN_3 = """{color=yellow|Kargun: — I am not going there myself. If something is wrong with the route, I am the one who knows enough to keep every other fool from digging into wrong stone while you are gone.}
+
+Kargun folds his arms, glowering at the map as if the lines personally offended him.
+
+{color=yellow|Kargun: — Besides, Sebastian already sent some of his own men after the first group. Quiet types. They have not returned either.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_TROUBLE_KARGUN_4 = """{color=yellow|Kargun: — I think people who go there stop reporting back. That is enough thinking for now.}
+
+He rolls a copy of the map and holds it out to you.
+
+{color=yellow|Kargun: — Go to Kharzug Deep. Find out what happened to the survey group.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KHARZUG_ARRIVE_1 = """By the time you reach Kharzug Deep, the settlement appears lifeless.
+
+The outer lamps are dark. Only a few scattered windows still show light, and even those burn low behind shutters that have been barred from the inside. """, # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KHARZUG_ARRIVE_2 = """You move deeper into the settlement, passing abandoned tools, overturned crates, and doors marked by fresh scratches. Somewhere ahead, something scrapes against stone, then goes quiet before you can place it.
+
+Just as you reach the central road, a dwarf stumbles out from a side alley behind you.
+
+{color=yellow|Survivor: — Run! The dead are coming through again!}
+
+Before you can question him, shapes lurch from the gloom between the houses.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KHARZUG_AFTER_UNDEAD_1 = """The last undead body collapses in the road, twitching once before going still. The surviving dwarf remains pressed against a wall, breathing hard, his weapon shaking in both hands.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KHARZUG_AFTER_UNDEAD_2 = """{color=yellow|Survivor: — You are not with the survey group... damn it. Thought maybe someone came back.}
+
+He wipes dust and blood from his face, forcing himself to speak before panic can take him again.
+
+{color=yellow|Survivor: — It started after the excavation team arrived. They found something under the old lower works. Not a vein, not a passage. A tomb. Sealed stone, old carvings, and a cave beast nest dug right through part of it.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KHARZUG_AFTER_UNDEAD_3 = """{color=yellow|Survivor: — First we heard the beasts. Then the dead came out. The settlement broke before we understood what was happening.}
+
+He points toward the dark mountain road beyond the settlement.
+
+{color=yellow|Survivor: — The entrance is past the lower works. If anyone from the first group is still alive, they are there.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KHARZUG_TOMB_1 = """You push deeper into the lower tomb, past broken stone seals and clawed passages where the cave beasts had torn through old masonry. The air is cold enough to sting your lungs, and every sound carries too far.
+
+Ahead, the undead gathered in the chamber suddenly recoil. One by one they scatter into side passages, dragging weapons and broken limbs away from you as if something stronger than hunger has taught them fear.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KHARZUG_TOMB_2 = """At the center of the chamber, one of Sebastian's men lies against a cracked pillar. His clothes are too plain for a merchant guard and too well cut for a hired miner. Blood darkens one side of his coat, and one hand still grips a knife he no longer has the strength to use.
+
+Beyond him stands a woman in torn dark clothing, pale, unsteady, and surrounded by the remains of disturbed burial stones. Dark veins of magic pulse beneath her skin in uneven flashes, as if something inside her is pulling her body by invisible strings. Her face is twisted with anger, and a low, ragged groan crawls from her throat as she turns toward you.
+
+The wounded man raises a shaking hand toward her.
+
+{color=aqua|Shady Agent: — Her... it was her...}
+
+He coughs, fighting for one last breath.
+
+{color=aqua|Shady Agent: — She did this...}
+
+His hand drops.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KHARZUG_TOMB_3 = """The woman bares her teeth and answers with another broken groan. For a moment, her eyes flare with a light that does not look like her own. The air around her twists cold, and the anger in her face becomes something violently focused.
+
+She gives you no chance to speak.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KHARZUG_TOMB_VICTORY_1 = """The woman collapses among the broken burial stones and does not rise again.
+
+For a time, you wait with your weapon ready, listening for the scrape of returning undead. None comes. The tomb remains cold and foul, but the restless movement that filled it before the fight seems to have vanished with her death.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KHARZUG_TOMB_VICTORY_2 = """The dead agent offers no more answers, and the woman cannot explain herself now. Still, the pieces fit well enough on the surface: a hidden tomb, undead swarming from below, and an evil-looking stranger at the center of it all.
+
+If she was not the necromancer behind this, then whatever truth remains has buried itself deeper than the bodies around you.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_RETURN_HARA = """You return to the Dwarven Capital with the news from Kharzug Deep. The technician listens carefully as you explain the dark settlement, the lower tomb, Sebastian's dead agent, and the hostile woman you defeated beneath the old works.
+
+Hara goes quiet for several seconds, which may be the strongest sign that she understands how bad the situation was.
+
+{color=yellow|Hara: — So the excavation punched into a tomb, cave beasts made the hole worse, and then undead started crawling through. Great. Terrible, but great. I mean terrible. Mostly terrible. You probably saved the whole route from becoming a graveyard with rail ties, so go back to Sebastian directly, all right? He will want the report, and I need time to make this route less stupid before anyone else touches it.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_RETURN_KARGUN = """You return to the Dwarven Capital with the news from Kharzug Deep. The technician listens carefully as you explain the dark settlement, the lower tomb, Sebastian's dead agent, and the hostile woman you defeated beneath the old works.
+
+Kargun listens without interrupting, his expression growing harder with every detail.
+
+{color=yellow|Kargun: — Tomb under the lower works. Beast breach through old stone. Undead after that. Hmph.}
+
+He looks down at the maps, then slowly marks Kharzug Deep with a heavy black cross.
+
+{color=yellow|Kargun: — You did good work. Better than sending another pack of surveyors to die. I will tell Sebastian the immediate danger is handled. Go back to him directly. He will want the report, and I need time to make this route less stupid before anyone else touches it.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REPORT_KHARZUG_1 = """You find Sebastian in Aliron, standing near the town hall steps with a travel cloak over one arm and a small folder tucked beneath the other. He looks as if he has been waiting just long enough to make waiting seem intentional.
+
+{color=yellow|Sebastian: — Mayor [name]. Good. I was beginning to wonder whether the dwarven roads had taken offense to you personally.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REPORT_KHARZUG_2 = """Sebastian glances past you toward the street, then lowers his voice to something fit for business that should not become public gossip.
+
+{color=yellow|Sebastian: — Our personnel has been more informative than cheerful. Yet, you've taken care of it. Admirable!}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REPORT_KHARZUG_RESPONSE_1 = """{color=yellow|Sebastian: — Admirable modesty, or alarming confidence. Either way, I am grateful the distinction did not prevent results.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REPORT_KHARZUG_RESPONSE_2 = """{color=yellow|Sebastian: — I believe you. Official reports have a talent for making terror sound like poor scheduling.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REPORT_KHARZUG_RESPONSE_3 = """{color=yellow|Sebastian: — Ah, of course, you have certainly performed quite a task for our benefit.}
+
+He opens the folder beneath his arm, removes a sealed purse, and offers it to you without ceremony.
+
+{color=yellow|Sebastian: — Five hundred gold. Consider it hazard pay, discretion pay, and a small encouragement to continue making my problems shorter.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REPORT_KHARZUG_3 = """{color=yellow|Sebastian: — The affected families will be compensated, the route precautions will be revised, and in public we will call this a regrettable excavation hazard with unusually hostile symptoms.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_CHURCH_OFFER_1 = """Sebastian tucks the folder beneath his arm, but does not leave.
+
+{color=yellow|Sebastian: — Since we are already speaking plainly, there is another matter. Aliron has been more cooperative than I dared hope, which is always a pleasant surprise in a town with this many locked doors and family claims.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_CHURCH_OFFER_2 = """{color=yellow|Sebastian: — A few of your local nobles and wealthier citizens have proven willing to discuss practical arrangements. Storage rights, workshop leases, transfer yards, respectable little properties that can become useful without frightening anyone too quickly. Some of it serves immediate Trading Guild needs. Some of it may become important if the railroad expands in this direction later. }""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_CHURCH_OFFER_3 = """Sebastian's pleasant expression does not change, but his answer comes a little more carefully than before.
+
+{color=yellow|Sebastian: — There is one local property I would like your help with. Celena's church. Placement, mostly. It sits too cleanly between several routes that matter now and several more that may matter later. }""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_CHURCH_OFFER_4 = """{color=yellow|Sebastian: — Naturally, I am not suggesting anything crude. My associates prefer tidy arrangements, compensation, alternative premises if needed, and signatures from everyone who must later claim they were never pressured. But the church is just ideal.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_CHURCH_OFFER_ACCEPT = """{color=yellow|Sebastian: — Excellent. I trust you to sort this out quickly and efficiently. You have more local weight than I do, and considerably less imperial smell.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_CHURCH_VISIT = """As you enter the church, Ginny hurries toward you before you have crossed half the nave. Her usual welcome never comes. A severe-looking man waits near the front pews with a leather document case open beside him.
+
+{color=yellow|Ginny: — Mayor [name], I'm glad you're here. These people want us to surrender the church. They keep calling it an arrangement, but every new paper sounds less like a request than the last one. They say we can move elsewhere, but they cannot tell me what happens to the people who come here while they decide. I know this building isn't grand, but it is ours, and people know where to find us.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_CHURCH_PROTECT_1 = """Relief breaks through Ginny's worried expression.
+
+{color=yellow|Ginny: — Thank you. I didn't know whether being mayor meant you would have to support them. I should have trusted you.}
+
+The man by the pews closes his document case and approaches.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_CHURCH_PROTECT_2 = """{color=aqua|Trading Guild Representative: — No one is attempting to deprive Aliron of religious services. My associates require a structure with reliable street access, sufficient floor space, sound masonry, a loading approach, and room that can be adapted without rebuilding from the foundations. This property happens to satisfy those demands.}
+
+He offers you a prepared list of requirements, complete with measurements and access notes.
+
+As you study it, another property comes to mind: a warehouse only a few streets from the church. It is less prominent, but its size, construction, and road access appear to satisfy nearly every point on the page.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_CHURCH_PROTECT_4 = """{color=aqua|Trading Guild Representative: — If you can provide an equivalent property with a willing owner and a clean title, I am authorized to present it for consideration. Until then, the temple remains the strongest candidate.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_CHURCH_PRESSURE_1 = """Ginny's worry hardens into something steadier when she realizes you are not here to protect the church from Sebastian's offer.
+
+{color=yellow|Ginny: — No, this isn't right, we shouldn't put material needs above our spirit.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_CHURCH_PRESSURE_3 = """{color=yellow|Ginny: — I'm sorry, I will not sign it, this church is all that I... we, as followers have.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_RETURN_GINNY_REFUSAL_1 = """Sebastian receives the news with the expression of a man listening to rain against a window: faintly inconvenienced, not remotely surprised.
+
+{color=yellow|Sebastian: — She declined. How principled of her. Unfortunately, we came at a stall.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_RETURN_GINNY_REFUSAL_2 = """{color=yellow|Sebastian: — You are mayor, [name]. Find something to do about it. Persuade, redirect, make the alternative look less like a defeat. }""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_RETURN_GINNY_REFUSAL_3 = """{color=yellow|Sebastian: — A quieter district has an unused assembly hall with enough rooms for services, storage, and charitable work. We got it pretty cheaply and this should convince Ginny to move. Present it to her and persuade by whatever means.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_OFFER_ALTERNATIVE_SITE_1 = """{color=yellow|Ginny: — Prepared by Sebastian? Then it was never only a possibility. He expected us to be moved from the beginning.}
+
+She takes the address and reads it twice.
+
+{color=yellow|Ginny: — I know it, it's not a bad building it's a lot more secluded... This place is where people come when they are looking for help. You are a mayor, should be on the side of locals.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_GINNY_DOMINATOR = """The spell catches in the quiet from stranger eyes. Ginny's eyes lose their focus for a moment, and the paper lowers in her hand.
+
+{color=yellow|Ginny: — Yes. The new location will serve. I will tell the others that Celena's work can continue there.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_GINNY_INSIST_FAIL_1 = """Ginny opens her mouth to answer, but the worshipers behind her step forward before she can speak.
+
+{color=aqua|Parishioner: — Mayor or not, you don't get to order her out of here while the rest of us stand quiet.}
+
+Another parishioner takes the paper from Ginny and looks it over with open suspicion.
+
+{color=yellow|Ginny: — I cannot agree while everyone who depends on this church believes I abandoned them.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_GINNY_INSIST_FAIL_2 = """You retreat for now. Perhaps you should wait for a better opportunity to continue.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PARISHIONERS_READY = """The church's issue has been on your mind for the last day. Then you realize there's only one way to deal with it: if Ginny refuses to move, then her flock should join your cause. It's time to work on it.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PARISHIONER_TASK_DONE = """Your work over the minds of the citizens has beared its fruits. Many parishioners have been persuaded, coecered or bribed to your side. Now it's time to present it to Ginny.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_GINNY_PARISHIONERS_PERSUADED = """Ginny looks exhausted when you find her. Several parishioners stand nearby, and none of them interrupt when she steps forward.
+
+{color=yellow|Ginny: — I don't know what happened, but the visitors... have been suggesting to move out for last few days. I suppose if people ask me to do it, I'll have to accept it. I've signed the papers but so you know, it's all the same to me, I'll continue to worship Celena at the new place. }""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_NEW_CHURCH_OPENING_1 = """The new church is already being arranged when Ginny arrives. Fresh benches line the main room, the side chambers have been cleared for supplies and sleeping mats, and two unfamiliar nuns move between crates with practiced calm.
+
+Sebastian stands near the entrance with his travel cloak over one arm, looking pleased enough that he almost remembers to hide it.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_NEW_CHURCH_OPENING_2 = """Ginny slows just inside the doorway, clutching a small bundle of prayer cloths to her chest.
+
+{color=yellow|Ginny: — Oh. It is... bigger than I thought. Cleaner, too. I don't know why that makes me nervous. It shouldn't, should it?}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_NEW_CHURCH_OPENING_3 = """{color=yellow|Ginny: — I think so. I mean, I hope so. People are already coming in, and if they need me to smile first, then I can do that.}
+
+{color=yellow|Sebastian: — There. A church with shelves, beds, breathing room, and fewer arguments over wagon access. Everyone improves their position if they stop staring at the door they came through.}
+
+Ginny looks toward the two unfamiliar nuns. One of them gives her a quick little bow before returning to the supplies.
+
+{color=yellow|Ginny: — Sebastian said they will help with the poor and the sick. That is good, isn't it? I know I should be grateful. I am grateful. I just... need a little time.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_NEW_CHURCH_OPENING_4 = """{color=yellow|Sebastian: — I am pleased when a plan stops being a plan and becomes furniture. And yes, this is finished. I am leaving Aliron for now.}
+
+He adjusts his gloves, still smiling.
+
+{color=yellow|Sebastian: — My thanks, Mayor [name]. You have made matters easier than they might have been.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_FIND_WAREHOUSE_OWNER_1 = """You find the warehouse a few streets from the church, set back from the main road behind a broad loading yard. The brickwork is weathered but sound, and two carts could reach its doors without blocking the street.
+
+Its owner is inside counting bundled inventory. He looks up as you enter, surprised to receive the mayor rather than another supplier.
+
+{color=yellow|Warehouse Owner: — Mayor [name]? If this is about the loose gutter, I already paid someone to fix it. He has merely chosen not to arrive yet.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_FIND_WAREHOUSE_OWNER_1B = """He sets his ledger aside, giving you his full attention, waiting to hear why the mayor is really here.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_FIND_WAREHOUSE_OWNER_2 = """{color=yellow|Warehouse Owner: — Trading Guild? No. First I've heard of any interest from them. I have been considering selling, though. Business has been moving closer to the eastern yards, and this place is more space than I need now. Three thousand gold, and I will sign it over without making either of us spend a month pretending to bargain.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_WAREHOUSE_PURCHASE = """The owner checks the payment carefully, then produces a folded deed from a locked drawer beneath his accounts.
+
+{color=yellow|Warehouse Owner: — Then it is yours. I will clear the remaining stock and have the keys delivered before the end of the day.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_WAREHOUSE_LATER = """{color=yellow|Warehouse Owner: — Fair enough. I am not advertising it yet, so the price will remain three thousand when you return. After that, I make no promises.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REVISIT_WAREHOUSE_OWNER = """The warehouse owner is at the same desk, working through another stack of accounts. He recognizes you and sets his pen aside.
+
+{color=yellow|Warehouse Owner: — Back about the warehouse? My price is still three thousand gold.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_WAREHOUSE_PURCHASE_RETURN = """The owner counts the payment, retrieves the deed from his locked drawer, and signs the transfer.
+
+{color=yellow|Warehouse Owner: — It is yours. I will clear the remaining stock and have the keys delivered before the end of the day.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REPORT_WAREHOUSE_SOLUTION_1 = """Ginny is reorganizing donation baskets when you return. She puts them aside as soon as she sees you, searching your expression for an answer.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REPORT_WAREHOUSE_SOLUTION_2 = """{color=yellow|Ginny: — You bought it? For us? I mean, not for us, but so we can stay... Thank you, Mayor. Truly. I was afraid every solution they offered would begin with us leaving.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REPORT_WAREHOUSE_SOLUTION_3 = """After the news reached Sebastian, he doesn't waste time arriving to meet you with his negotiator a step behind him, already carrying a fresh set of papers.
+
+{color=yellow|Sebastian: — Mayor [name]. Ginny. I was told there had been progress, though I confess I expected fewer property purchases made without me.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REPORT_WAREHOUSE_SOLUTION_4 = """Sebastian reviews the warehouse deed and the negotiator's requirement sheet. His smile tightens when he realizes how closely they match.
+
+{color=yellow|Sebastian: — It is less visible, farther from the central road, and notably absent from several plans I had already begun to enjoy.}
+
+{color=aqua|Trading Guild Negotiator: — It satisfies every requirement we submitted, sir. The loading yard is larger than the church approach.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REPORT_WAREHOUSE_SOLUTION_5 = """{color=yellow|Sebastian: — Yes, thank you. I had reached that regrettable conclusion myself. Very well, Mayor [name]. My associates will use the warehouse, and Celena's church will remain exactly where it is.}
+
+Sebastian leaves, although you can feel his steps are heavier than usual.
+
+{color=yellow|Ginny: — Thank you, mayor [name]. I hope it didn't cause you too much trouble, I'll be praying for your safety.}""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_OPTION_CONSIDER = """It sounds like an opportunity both sides should consider.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_OPTION_CAREFUL = """I would be careful. Unknown technology can bring dangers no one understands yet.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PROJECT_OFFER_OPTION_1 = """What exactly do you want from me?""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PROJECT_OFFER_OPTION_2 = """You move quickly from proposal to business.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_PROJECT_OFFER_OPTION_3 = """I am listening.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_HARA_OPTION_HELP = """Would you be willing to help?""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_HARA_OPTION_PROBLEMS = """It sounds like you already know the problems.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_TECHNICIAN_OPTION_1 = """I came looking for a technician.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_HARA_CAPITAL_OPTION_2 = """There is a railroad project I wanted to ask you about.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_HARA_CAPITAL_OPTION_3 = """That was easier than expected.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_HARA_CAPITAL_OPTION_4 = """So you will help?""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KARGUN_OPTION_RAILROAD = """There is a railroad project I wanted to ask about.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KARGUN_OPTION_WITS = """[Wits Factor 5] This could be a new engineering challenge, not just imperial ambition.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KARGUN_OPTION_PAY = """[Pay 500 gold] Would proper compensation make it worth your time?""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_KARGUN_OPTION_LATER = """I will come back later.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_MANSION_VISIT_OPTION_1 = """Trouble?""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_MANSION_VISIT_OPTION_2 = """You came all the way here for that?""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_TROUBLE_OPTION_THINK = """What do you think happened?""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_TROUBLE_OPTION_INVESTIGATE = """So you want me to investigate Kharzug Deep.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REPORT_KHARZUG_OPTION_1 = """It was nothing difficult.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REPORT_KHARZUG_OPTION_2 = """This made me sweat.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REPORT_KHARZUG_OPTION_3 = """You should pay me for taking care of your problems.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_CHURCH_OFFER_OPTION_1 = """What do you need from me?""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_CHURCH_OFFER_OPTION_2 = """This sounds like more than ordinary business.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_CHURCH_OFFER_OPTION_3 = """I'll see what can be done.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_CHURCH_OFFER_OPTION_4 = """I guess I better ask Ginny first.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_CHURCH_VISIT_OPTION_1 = """This church is staying where it is. I'll protect it.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_CHURCH_VISIT_OPTION_2 = """You should consider their offer if it benefits the city.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_CHURCH_PROTECT_OPTION_1 = """There is another property nearby that meets these terms.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_CHURCH_PROTECT_OPTION_2 = """No one signs anything until I review the alternative.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_CHURCH_PRESSURE_OPTION_1 = """Sebastian's offer is the best arrangement you are going to get.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_CHURCH_PRESSURE_OPTION_2 = """The city needs you to be practical about this.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_RETURN_GINNY_OPTION_1 = """Then give me somewhere else to send her.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_RETURN_GINNY_OPTION_2 = """You already had another site in mind, didn't you?""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_GINNY_DOMINATOR_OPTION = """[Dominator] There's on point wasting time.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_GINNY_INSIST_OPTION = """As a mayor I demand you to accept it, there's no way around it.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_NEW_CHURCH_OPTION_1 = """Will this be enough?""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_NEW_CHURCH_OPTION_2 = """I hope Celena's work can continue here.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_NEW_CHURCH_OPTION_3 = """You seem pleased with yourself.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_NEW_CHURCH_OPTION_4 = """So this is finished?""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_WAREHOUSE_OWNER_OPTION_1 = """Has anyone from the Trading Guild approached you about this place?""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_WAREHOUSE_OWNER_OPTION_2 = """Are you interested in selling the warehouse?""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_WAREHOUSE_OWNER_OPTION_PAY = """[Pay 3000 gold] I'll buy the warehouse.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_WAREHOUSE_OWNER_OPTION_LATER = """I need time to consider it.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REVISIT_WAREHOUSE_OPTION_PAY = """[Pay 3000 gold] I'll buy it.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REVISIT_WAREHOUSE_OPTION_LATER = """I still need more time.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REPORT_WAREHOUSE_OPTION_1 = """I bought another warehouse that meets every requirement.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REPORT_WAREHOUSE_OPTION_2 = """The Trading Guild can have its property without taking the church.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REPORT_WAREHOUSE_OPTION_3 = """The warehouse meets your requirements. Use it and leave the church alone.""", # MISSING TRANSLATION
+	ACT4_SEBASTIAN_REPORT_WAREHOUSE_OPTION_4 = """You asked me to solve this. I did. Take the warehouse.""", # MISSING TRANSLATION
+	ERDYNA_ROUGE_AFTER_CAMPFIRE_1 = """Erdyna finds Rouge waiting with the kind of calm expression that makes the silence around her feel deliberate. The lizard girl stops a few steps away, shoulders tense, her usual swagger nowhere to be seen.
+
+{color=yellow|Erdyna: — Listen, about what happened... I'm sorry.}
+
+Rouge tilts her head slightly, neither offended nor amused enough to make her thoughts clear.
+
+{color=aqua|Rouge: — Are you?}
+
+Erdyna swallows, then forces herself to continue.
+
+{color=yellow|Erdyna: — Yeah. I mean it. I didn't mean to... get in your way or anything.}
+
+Rouge gives a small shrug, as if the matter barely deserves the effort of moving her shoulders.
+
+{color=aqua|Rouge: — How considerate.}""", # MISSING TRANSLATION
+	ERDYNA_ROUGE_AFTER_CAMPFIRE_2 = """Erdyna shifts under that unreadable look, growing more uneasy rather than less.
+
+{color=yellow|Erdyna: — So... you really don't mind?}
+
+Rouge steps closer without hurry. Before Erdyna can retreat, Rouge lifts a hand and catches her by the chin, guiding her face up with a touch too gentle to be comforting.
+
+{color=aqua|Rouge: — Tell me, do you think I would care about a stud being stolen from me like some third-rate woman?}
+
+Erdyna's breath catches, but Rouge only smiles.
+
+{color=aqua|Rouge: — I am far beyond men who can be swayed by some silly affair. My man would climb on top of every woman who catches his eye if the mood strikes him. He is a predator, not some tame creature trained to pass by every chance placed before him.}
+
+Her thumb brushes lightly along Erdyna's jaw as her smile deepens.
+
+{color=aqua|Rouge: — I would hate it far more if he were a chaste fool. Unless, of course, you were planning to keep him all to yourself?}""", # MISSING TRANSLATION
+	ERDYNA_ROUGE_AFTER_CAMPFIRE_3 = """Erdyna's eyes widen at once.
+
+{color=yellow|Erdyna: — N-no! Hell no, I wasn't thinking anything like that!}
+
+Rouge studies her for another moment, then releases her chin with a soft laugh.
+
+{color=aqua|Rouge: — Good.}
+
+The single word is enough to make Erdyna's shoulders loosen. She lets out a breath she had clearly been holding, relief washing over her face despite her best effort to hide it.
+
+Rouge turns away, her smile still present and still impossible to read.
+
+{color=aqua|Rouge: — Then we understand each other.}""", # MISSING TRANSLATION
+	ACT4_ROAD_PROJECT_NAME = """End of the Line""", # MISSING TRANSLATION
+	ACT4_ROAD_PROJECT_SUMMARY = """Sebastian's courier brought an urgent summons to the dwarven road project. Whatever went wrong there, he wants it handled before it becomes public.""", # MISSING TRANSLATION
+	ACT4_ROAD_STAGE_VISIT_ROAD_PROJECT = """Travel to the dwarven road project in the mountains and find Sebastian.""", # MISSING TRANSLATION
+	ACT4_ROAD_STAGE_GUILD_QUARTERS = """Search the trade guilds quarters in the Empire Capital.""", # MISSING TRANSLATION
+	ACT4_ROAD_STAGE_MEET_MELCHOR = """Find Chancellor Melchor's hiding place in the Empire Capital.""", # MISSING TRANSLATION
+	ACT4_ROAD_STAGE_ASK_SENERUS = """Ask Senerus how to break the divine barrier protecting Grotus.""", # MISSING TRANSLATION
+	ACT4_ROAD_STAGE_IMBUE_ARROW = """Bring Senerus' arrow to Freya's priestess in Eldewyn.""", # MISSING TRANSLATION
+	ACT4_ROAD_STAGE_RETURN_TO_MELCHOR = """Return to Melchor with the means to break Grotus' barrier.""", # MISSING TRANSLATION
+	ACT4_ROAD_STAGE_CHARGE_PALACE = """Storm the imperial palace and put an end to Grotus.""", # MISSING TRANSLATION
+	QUEST_DWARF_RAILROAD_TEXT = """Dwarven Road Project""", # MISSING TRANSLATION
+	QUEST_DWARF_RAILROAD_DESC = """The Trading Guild's railroad works, cut deep into the dwarven mountains.""", # MISSING TRANSLATION
+	ACT4_ROAD_COURIER_1 = """As Sebastian left Aliron quite some time ago, one of his couriers finds you with a sealed note and the kind of urgency that has been trained to look polite.
+
+The note is brief. Something has happened at the dwarven road project. Sebastian claims the matter requires your particular assistance and asks you to come before the situation becomes expensive in public.""", # MISSING TRANSLATION
+	ACT4_ROAD_LOCATION_OPTION_ARRIVE = """Look for Sebastian""", # MISSING TRANSLATION
+	ACT4_ROAD_ARRIVE_1 = """The road project looks much further along than Sebastian's note suggested. Fresh supports brace the cut stone, and a short work cart rattles along the finished track.""", # MISSING TRANSLATION
+	ACT4_ROAD_ARRIVE_2 = """A man in a dust-streaked coat hurries toward you as soon as you arrive.
+
+{color=yellow|Project Worker: — Mayor [name]? Good. Master Sebastian is waiting at one of the junctions.}""", # MISSING TRANSLATION
+	ACT4_ROAD_ARRIVE_OPTION_TAKE_ME = """Take me to Sebastian.""", # MISSING TRANSLATION
+	ACT4_ROAD_ARRIVE_OPTION_URGENT = """If this is urgent, I am going now.""", # MISSING TRANSLATION
+	ACT4_ROAD_TUNNEL_1 = """The worker points you toward a tunnel branch lit by fresh lamps and steps aside.""", # MISSING TRANSLATION
+	ACT4_ROAD_TUNNEL_2 = """The tunnel branch begins as finished work: clean rails, numbered supports, and lamp chains fixed neatly into the stone. The farther you go, the fewer workers you hear behind you.
+
+At the first junction, the lamps turn blue. The left branch slopes downward, away from the sound of carts and hammers.""", # MISSING TRANSLATION
+	ACT4_ROAD_TUNNEL_3 = """The clean construction gives way to older stone. The rails end before the tunnel does, and the last lamp swings gently even though the air is still.
+
+Something scrapes in the dark ahead. Then another sound answers it from behind.""", # MISSING TRANSLATION
+	ACT4_ROAD_TUNNEL_4 = """Undead shapes pull themselves from side cracks and unfinished alcoves, blocking the way back as the tunnel fills with the smell of damp earth and old rot.
+
+When you move to retreat, blue light snaps across the rails and walls behind you. The branch has sealed itself into an enclosed magic trap, tight enough that forcing your way out would take time you do not have.""", # MISSING TRANSLATION
+	ACT4_ROAD_AFTER_AMBUSH_1 = """The last undead falls, but the tunnel does not open. The blue seal still burns across the rails and walls, humming softly each time you come near it.
+
+More shapes drag themselves from the dark branch ahead. The trap has not failed. It is only waiting to wear you down.""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_REVEAL_1 = """The seal cracks from the outside.
+
+An explosion tears through the far side of the trap. Blue light shatters across the stone, and the undead nearest the blast are thrown apart like dry sticks.
+
+When the smoke thins, a girl stands beyond the broken bodies.
+
+You know her face. You killed her in the lower tomb beneath Kharzug Deep. You were certain she was dead.
+
+She steps over a twitching corpse and looks past you, toward the deeper tunnel.
+
+{color=yellow|Girl: — The necromancers are close.}""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_REVEAL_2 = """The girl moves through the branch without haste. When the necromancers try to raise another wave, she breaks the spell before it finishes forming, and the remaining undead collapse into loose bone and spoiled flesh.
+
+One necromancer survives long enough to be dragged against the tunnel wall. The girl crouches in front of him, her expression unchanged.
+
+{color=yellow|Girl: — Who sent you?}
+
+{color=aqua|Necromancer: — Sebastian. Sebastian ordered it. We were to keep the line open, feed the network, and remove anyone who interfered.}""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_HUB = """The necromancer dies before he can say more. The girl watches him for a moment, then rises.""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_OPTION_WHO = """Who are you?""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_OPTION_HELPED = """You've helped me after what happened?""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_OPTION_WHAT = """What's going on?""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_OPTION_DEAD = """Weren't you dead? I could've sworn I've killed you.""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_Q1 = """{color=yellow|Rilu: — My name is Rilu. I'm afraid that's as much as I can give you given my poor state of memory.}""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_Q2 = """{color=yellow|Rilu: — It's you or Sebastian. You don't feel like you are behind this whole ordeal, and you are his enemy.}""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_Q3 = """{color=yellow|Rilu: — You know Sebastian, don't you? The necromancer said his name, as he's behind this.}
+
+She looks toward the rails, then at the lamp chains fixed neatly along the stone.
+
+{color=yellow|Rilu: — They were guarding this branch and feeding the network. I can feel power of the undeath moving through it.}
+
+Now that she has said it, you can spot a very dim glow surrounding the metal.""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_Q4 = """{color=yellow|Rilu: — ...I'm more durable than I look.}
+
+She slowly sighs, trying to look away.
+
+{color=yellow|Rilu: — All I remember is the excavation opened a way out. The necromancers found me first. They could not kill me, so they pushed magic into my head until I stopped knowing what I was doing. That is why I attacked you. Then you stopped me.}""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_EXIT_1 = """You tell Rilu about Sebastian: the road project, the message that brought you here, and the worker who sent you into this branch to meet him.
+
+{color=yellow|Rilu: — So it was a trap, was it not? You've been helping him out with this thing.}""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_EXIT_2 = """The thought comes cold and immediate: distant rituals, hidden sacrifices, power drawn from places no one in the capital would ever see. Sebastian has been building a road for power, not travel.
+
+{color=yellow|Rilu: — The dead are not the purpose. They are guards. Fuel. Waste. Sebastian knows what the road is for.}
+
+She turns toward the branch that leads back to the active worksite.
+
+{color=yellow|Rilu: — He must be stopped. If he decided to take you out, it must mean his goal is close.}""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_OPTION_CAPITAL = """Then we go to the capital.""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_OPTION_ANSWERS = """Sebastian answers for this.""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_EXIT_3 = """{color=yellow|Rilu: — Yes. I shall come along. After all, I don't think I know much about this region.}""", # MISSING TRANSLATION
+	ACT4_ROAD_CAPITAL_OPTION_GUILD = """Trade guilds quarters""", # MISSING TRANSLATION
+	ACT4_ROAD_GUILD_QUARTERS_1 = """The enclosed guild quarters look calm from outside. The gates are shut, the lamps are lit, and the guards visible beyond the bars stand at their posts without moving.
+
+Rilu stops before the gate and studies the air.
+
+{color=yellow|Rilu: — It is camouflaged with magic.}""", # MISSING TRANSLATION
+	ACT4_ROAD_GUILD_QUARTERS_2 = """When you push through the gate, the illusion tears like thin cloth. The clean courtyard becomes a place of overturned carts, dead clerks, and bodies hidden where they fell. The guards at the gate were never guards at all, only shapes held in place by simple magic.
+
+The dead begin to move.""", # MISSING TRANSLATION
+	ACT4_ROAD_GUILD_DEEPER_1 = """You push deeper through the quarters, past offices stripped of useful papers and storage rooms marked with fresh chalk symbols. The magic aura grows denser near the back of the compound.
+
+Behind a locked records hall, a stairway descends into old stone that was never part of any guild building.""", # MISSING TRANSLATION
+	ACT4_ROAD_GUILD_DEEPER_2 = """The stairs lead into a tunnel network older than the buildings above it. Rails have been laid through parts of it, then bound into the stone with silver clamps and dark resin that pulses faintly when Rilu passes near.
+
+The deeper passages feel familiar in the wrong way. You realize this place cannot be far from the enormous catacombs you saw behind the gates.""", # MISSING TRANSLATION
+	ACT4_ROAD_GUILD_DEEPER_3 = """The tunnel opens into a vast cave room. A large magic circle burns across the floor, drawing light from rail lines, corpse-laden carts, and channels carved into the rock.
+
+Sebastian stands at the center, protected by layered magic. Mhyrana waits beside him, calm and unworried.""", # MISSING TRANSLATION
+	ACT4_ROAD_RITUAL_CHAMBER_1 = """Sebastian spreads his hands over the circle as another pulse of stolen mana rolls through the rails.
+
+{color=yellow|Sebastian: — There. Dwarven stone, imperial greed, local politics, one cooperative mayor, and a thousand little deaths no one important stopped to count. All of it arrives exactly where I promised it would.}
+
+Mhyrana watches the magic gather without sharing his pleasure.
+
+{color=aqua|Mhyrana: — Celebrate later. Send the remaining flow to my mark before the network tears itself apart.}
+
+{color=yellow|Sebastian: — Of course. I am sentimental, not careless.}""", # MISSING TRANSLATION
+	ACT4_ROAD_LICH_REVEAL = """Sebastian turns as you arrive. For once, his smile is not polished enough to pass as human.
+
+{color=yellow|Sebastian: — Mayor [name]. You outlived my little surprise. I should be irritated, but at this stage even surprises are beginning to feel ceremonial.}
+
+The skin along one side of his face splits and thins, revealing old bone and dead magic beneath. His laugh rolls through the cave as the circle brightens around him.""", # MISSING TRANSLATION
+	ACT4_ROAD_LICH_OPTION_SOMETHING_ELSE = """I knew you were something else.""", # MISSING TRANSLATION
+	ACT4_ROAD_LICH_OPTION_LICH = """So you are a lich.""", # MISSING TRANSLATION
+	ACT4_ROAD_LICH_OPTION_REGRET = """You will regret living this long.""", # MISSING TRANSLATION
+	ACT4_ROAD_MHYRANA_LEAVES = """{color=yellow|Sebastian: — Hahah, don't you feel it? You might be a capable fighter, but you think you can take me on now?}
+
+{color=aqua|Mhyrana: — I have what I came for. Keep them busy.}
+
+{color=yellow|Sebastian: — With pleasure.}
+
+Mhyrana leaves through the far passage. The barrier around Sebastian flares, blocking the way after her.""", # MISSING TRANSLATION
+	ACT4_ROAD_LICH_MONOLOGUE_1 = """{color=yellow|Sebastian: — The railroad was never only about trade. Every line, every junction, every little local arrangement brought mana and corpses from the regions toward this chamber. A clean delivery system for a master plan.}
+
+{color=yellow|Sebastian: — It took years to infiltrate the empire and the trading guilds themselves, and I couldn't have done it without the cult. And now I can reap all of this hard work.}""", # MISSING TRANSLATION
+	ACT4_ROAD_LICH_OPTION_RITUAL = """This was all for a ritual?""", # MISSING TRANSLATION
+	ACT4_ROAD_LICH_OPTION_HIDDEN = """You've learned to hide it really well.""", # MISSING TRANSLATION
+	ACT4_ROAD_LICH_MONOLOGUE_2 = """{color=yellow|Sebastian: — It's really amazing how much you can achieve when all you need to do is to give away your humanity. Humans have such a rich magic energy after all.}""", # MISSING TRANSLATION
+	ACT4_ROAD_LICH_PREFIGHT = """Rilu steps forward, watching the circle more than Sebastian.
+
+{color=yellow|Rilu: — The barrier is tied to him. We cannot follow her while it's active. Try to keep him busy for a while.}""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_SACRIFICE_1 = """The final blow lands, but Sebastian does not fall. The magic circle surges beneath him, pouring light through the exposed bone and dead flesh as if the ritual is simply replacing whatever you damage.
+
+Sebastian laughs again, lower this time, almost delighted.
+
+{color=yellow|Sebastian: — Do you understand now? You are not fighting a man. I'm eternal!}""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_SACRIFICE_2 = """Rilu steps between you and Sebastian. You notice her glowing with some magic markings, you never saw anything like that.
+
+{color=yellow|Rilu: — That's enough. I'm finished my preparation.}
+
+Sebastian's smile falters. This clearly put fear into his undead image.""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_SACRIFICE_3 = """{color=yellow|Rilu: — Go after Mhyrana.}
+
+She walks into the light before Sebastian can retreat. The circle folds inward around them both, bright enough to erase the shape of the cave.""", # MISSING TRANSLATION
+	ACT4_ROAD_RILU_SACRIFICE_4 = """The explosion makes no sound at first. Then the whole underground network answers at once: stone cracking, rails screaming loose, distant chambers collapsing one after another.
+
+When your sight returns, Sebastian and Rilu are gone. The barrier has broken, but the tunnel Mhyrana used has collapsed beneath a wall of shattered rock.
+
+With the passage buried and the network coming apart around you, the only path left leads back toward the city.""", # MISSING TRANSLATION
+	ACT4_ROAD_CAPITAL_CHAOS_1 = """You climb through the ruined guild quarters into chaos. The capital is in panic. People run through streets split by tremors, bells ring over one another, and smoke rises from places where hidden tunnels have broken under stone and brick.
+
+Another quake rolls beneath the city as you force your way onward.""", # MISSING TRANSLATION
+	ACT4_ROAD_CAPITAL_CHAOS_2 = """At last, you reach the giant doors you opened beneath the capital. The ground still shakes beneath them, but they stand ahead like the only fixed thing left around.""", # MISSING TRANSLATION
+	ACT4_ROAD_GIANT_DOORS_1 = """You pass through the giant doors again and descend past the old seal. The tremors have cracked parts of the passage, but the ancient stone still holds better than the imperial tunnels above.
+
+The corridor opens into an enormous cave. Ahead, cultists block the descent in a rough line, weapons ready. Rouge stands before them with one hand on her hip, looking more amused than threatened.""", # MISSING TRANSLATION
+	ACT4_ROAD_GIANT_DOORS_2 = """{color=yellow|Rouge: — Well. This became noisy. Sebastian's little construction has done more than move carts, hasn't it? There is enough power gathering under the city to make every court magician in the palace go nuts.}
+
+She looks past the cultists, toward the deeper cave and the massive stone ring you saw beyond the seal before.
+
+{color=yellow|Rouge: — I am going through.}
+
+{color=aqua|Cultist: — Mhyrana knows about your betrayal. You will not pass.}""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_ARRIVES = """{color=yellow|Rouge: — How dramatic. I guess I shouldn't expect any self-preservance from you, guys.}
+
+Before the cultists can answer, Melchor enters from a side passage with imperial soldiers at his back. His face is pale with fury, but his voice stays clipped and controlled.
+
+{color=aqua|Melchor: — No one is taking that power. Not her. Not you. Not the cult.}""", # MISSING TRANSLATION
+	ACT4_ROAD_SIDE_CHOICE = """Rouge turns her smile toward him.
+
+{color=yellow|Rouge: — And what will you do with it, Chancellor? Seal it for the good of the Empire? Or hold it yourself?}
+
+{color=aqua|Melchor: — If imperial hands must control it to prevent worse hands from doing so, then that may be necessary.}
+
+Rouge laughs softly and glances at you.
+
+{color=yellow|Rouge: — Hear that, darling? Such a noble way to say he wants the prize. Help me put down Melchor and his little honor guard. They won't let us through otherwise.}""", # MISSING TRANSLATION
+	ACT4_ROAD_SIDE_OPTION_ROUGE = """*Side with Rouge*""", # MISSING TRANSLATION
+	ACT4_ROAD_SIDE_OPTION_NEITHER = """*Reject siding with either*""", # MISSING TRANSLATION
+	ACT4_ROAD_SIDE_ROUGE = """Rouge's smile sharpens as you move beside her.
+
+{color=yellow|Rouge: — Good choice.}
+
+{color=aqua|Melchor: — Traitorous fool.}""", # MISSING TRANSLATION
+	ACT4_ROAD_SIDE_ALONE = """Rouge gives you a look of delighted offense.
+
+{color=yellow|Rouge: — You gonna fight us both? Fufu. I do like confidence when it is nearly stupid.}
+
+Melchor raises one hand, and his soldiers spread into formation while the cultists close from the passage.""", # MISSING TRANSLATION
+	ACT4_ROAD_MHYRANA_RITUAL_1 = """With the passage cleared, you push deeper into the cave. The air grows hot and heavy, and each step makes the pressure behind your eyes worse.
+
+At the heart of the chamber, Mhyrana stands before the gigantic stone ring. Magic pours through its inner edge and gathers behind her, folding into a single point bright enough to feel solid.""", # MISSING TRANSLATION
+	ACT4_ROAD_MHYRANA_RITUAL_ROUGE = """{color=aqua|Rouge: — You really caused some ruckus. And all of this behind my back.}
+
+{color=yellow|Mhyrana: — Your little courtly machinations aren't to my interest. You betrayed us first, but it was already taken into account. After all, your sister is none the wiser.}
+
+{color=aqua|Rouge: — Hmph, that's fair. Let's see if you can back up your courage with actual strength.}""", # MISSING TRANSLATION
+	ACT4_ROAD_MHYRANA_RITUAL_2 = """Mhyrana does not take her eyes off the forming point of power.
+
+{color=yellow|Mhyrana: — This ring has carried divine energy from age to age. Empires rise near it and call themselves blessed. The capital's prosperity, the wealth beneath its streets, even older nations before this one... all of it was fed by what resides here.}""", # MISSING TRANSLATION
+	ACT4_ROAD_MHYRANA_RITUAL_3 = """{color=yellow|Mhyrana: — Sebastian's network woke it properly. The railroad brought mana, death, and worshipful fear from every region it touched. Now the stored divine power is being drawn out at last...}
+
+You prepare your weapon to face Mhyrana after all this time as the catastrophe is merging right in front of you.""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_POWER_1 = """Grotus crawls through a narrow side path above the ritual chamber, shaking dust from his sleeves and trying not to breathe too loudly.
+
+{color=yellow|Grotus: — Mistress Rouge came this way... This place is really something!}""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_COMIC_1 = """Below, the ritual holds. Mhyrana stands over the gathering point of power, and the cave answers her without hesitation.""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_COMIC_2 = """The light thickens until it stops looking like light at all.""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_COMIC_3 = """Grotus stares at the single point of gathered power until his nervous smile goes slack. The light calls to something small and hungry inside him.
+
+{color=yellow|Grotus: — Mine?}""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_COMIC_4 = """He reaches down through the broken stone.""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_COMIC_5 = """The gathered power floods into him. His body arches, veins glowing beneath his skin as divine force burns through every hunched part of him.
+
+Magic blasts tear across the chamber.""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_ASCENDED_1 = """Broken stone lies scattered beneath the fading light. The ritual circle is ruined. Mhyrana is nowhere to be seen.
+
+Grotus stands near the shattered focus, staring at his own hands. Light pulses through his veins in slow, golden lines.""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_ASCENDED_2 = """{color=yellow|Grotus: — I... I can feel it. All of it. The city. The palace. All those little bastards running in circles above us.}
+
+His laugh starts as a nervous twitch and grows into something bright and ugly.
+
+{color=yellow|Grotus: — Oh. Oh, this is what it feels like.}""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_PALACE_1 = """Grotus walks back into the capital through streets still broken by tremors. At the palace gate, a captain steps in front of him with two guards and a drawn sword.
+
+{color=aqua|Palace Captain: — Stop there. No one enters the palace until the city is secured.}
+
+Grotus looks down at the blade, then at the captain's face.
+
+{color=yellow|Grotus: — You giving orders to me now?}""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_PALACE_2 = """The captain glances at the glowing veins under Grotus' skin and tightens his grip.
+
+{color=aqua|Palace Captain: — I am ordering a servant to stand down before he makes his last mistake.}
+
+Grotus laughs and flicks one glowing hand without slowing. The captain disappears in a burst of light and blood.""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_PALACE_3 = """More guards gather at the palace steps. Some raise shields. Others look to the dead captain, then to the doors behind them.
+
+{color=yellow|Grotus: — Move your asses, worms.}
+
+{color=aqua|Guard: — Formation! Protect the inner hall!}
+
+One guard sets his boot wrong in Grotus' path. Another lifts his shield an inch too high. Grotus laughs harder, like these small insults are the funniest things in the world. They both die without even realizing it.
+
+The rest do not wait to move. Shields drop, swords clatter, and the guards run from the steps as Grotus walks through the palace doors.""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_PALACE_4 = """By the time Grotus reaches the inner hall, the palace behind him is full of screams and scattered weapons. Officials and clerks crowd against the walls, trapped between fleeing and being noticed.
+
+{color=aqua|Senior Official: — Grotus? What madness is this? Where is Lady Rouge?}
+
+{color=yellow|Grotus: — Rouge? Who cares about Rouge when I can kill you all with a move of my finger!}
+
+{color=aqua|Senior Official: — No, wait! You don't have to do this!}
+
+{color=yellow|Grotus: — Hehehehaha, right, beg for your life, worms, but before that...}""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_EMPEROR_1 = """Grotus tears open the Emperor's chamber doors. The Emperor waits within, seated calmly as if the city has not cracked beneath his feet. He looks Grotus over with mild annoyance.
+
+{color=aqua|Emperor: — You. I wondered whether the noise was something important. I see I was optimistic.}
+
+{color=yellow|Grotus: — Important? I am very important now you see. Killed a few dozen of those stupid guards who always were looking down on me. And you... Always sitting your big throne like you are straining to take a shit.}
+
+{color=aqua|Emperor: — Is that the best your small brain could come up with?}
+
+Grotus' grin twitches.""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_EMPEROR_2 = """Grotus attacks with a gleeful shout. Divine power tears through the throne and the man seated upon it. The Emperor dissolves into thin air.
+
+For a moment, Grotus only stares at the empty space.
+
+{color=yellow|Grotus: — Oh. Oh, he wasn't even here.}
+
+His surprise breaks into laughter before it can become anger.
+
+{color=yellow|Grotus: — That smell... Was that Misstres- No, Rouge's doing? No way she did it...}""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_HALL_1 = """After half an hour Grotus comes out to the main hall, everyone freezes in place, all eyes glued to him.
+
+{color=yellow|Grotus: — Bring me the council records. Seal the palace gates. Send runners to every barracks and tell them the Emperor speaks through me now.}
+
+In the main hall, surviving guards and officials gather in stunned silence.""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_HALL_2 = """Grotus points at one clerk near the stairs.
+
+{color=yellow|Grotus: — You. I remember you kick my rear at the dinning ceremony.}
+
+The clerk dies in a flash of divine light. The rest of the hall drops into terrified motion at once. People start dropping on their knees begging for mercy.
+
+Grotus raises his glowing hands, pleased by the sound of panic obeying him.
+
+{color=yellow|Grotus: — Hahaha, that's it. You better fear me now. And serve me, as your new emperor.}""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_THRONE_1 = """Grotus has dressed himself like a king by the time the throne room is forced back into order. The crown sits crooked on his head, imperial robes hang badly from his narrow shoulders, and golden light still pulses beneath his skin in a way no tailor could make noble.
+
+The Emperor's family did not all escape. Those who were caught lie dead near the steps of the throne, half-covered by torn banners because no servant dares decide whether hiding them would offend the new ruler.""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_THRONE_2 = """Palace guards stand along the walls with weapons lowered. They watch Grotus carefully, not with loyalty, but with the obedience of men who have seen what happens when he feels mocked.
+
+Grotus notices one guard staring at the bodies and leans forward on the throne.
+
+{color=yellow|Grotus: — What are you staring at?}
+
+{color=aqua|Palace Guard: — Nothing, Your Majesty.}
+
+{color=yellow|Grotus: — Good. Then stop looking like you swallowed a nail. You do as I say.}""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_THRONE_3 = """{color=aqua|Senior Official: — The palace gates are sealed. Messages have been sent to the barracks. The council chambers are being gathered under guard.}
+
+Grotus beams, pleased enough to look foolish and dangerous at once.
+
+{color=yellow|Grotus: — See? You can learn. Everyone learns when the lesson burns hot enough.}
+
+{color=aqua|Senior Official: — Is there anything else, Your Majesty?}""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_THRONE_4 = """Grotus settles deeper into the throne, touching the crooked crown as if expecting it to become comfortable.
+
+{color=yellow|Grotus: — Yes. Bring me one of the pretty women from the court. Noble ones first. The ones who used to look past me like I was dirt.}
+
+The official goes still.
+
+{color=aqua|Senior Official: — Your Majesty... the city is still in panic. Perhaps matters of succession and military command should come first.}
+
+Grotus' smile thins.
+
+{color=yellow|Grotus: — I didn't ask what should come first. I asked for a woman.}""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_THRONE_5 = """A guard returns with a court woman between them. She stops before the throne, pale and rigid.
+
+Grotus looks her over slowly, smiling at her fear.
+
+{color=yellow|Grotus: — There. Much better. You will serve me. Wine first. Then you will serve my bedroom later.}
+
+The guards do not look at one another. That is how afraid they are.
+
+{color=yellow|Grotus: — Tell the others their new Emperor wants company. There are many like you, aren't there? Tell them refusing would be stupid.}
+
+He laughs, delighted by his own gentleness.
+
+{color=yellow|Grotus: — And if they act proud, I will make the court smaller until the rest remember how to smile.}""", # MISSING TRANSLATION
+	ACT4_ROAD_WAKE_1 = """You wake beneath a low shelf of cracked stone, dust coating your tongue and a dull ache pulsing behind your eyes. Around you, the cave has collapsed into broken walls, split rails, and dead magic seeping through the floor like cooling blood.
+
+Rouge is nearby, brushing dust from her sleeve with more care than the situation deserves.""", # MISSING TRANSLATION
+	ACT4_ROAD_WAKE_2_ALLY = """{color=yellow|Rouge: — There you are. I was beginning to wonder whether I had saved a corpse with good timing.}
+
+{color=yellow|Rouge: — The cavern came down when the ritual has finished. Not quite sure what happened. You have been out for quite a while.}""", # MISSING TRANSLATION
+	ACT4_ROAD_WAKE_2_HOSTILE = """{color=yellow|Rouge: — Oh, finally. Took you long enough. Don't bother looking grateful; I still remember you tried to kill me.}
+
+{color=yellow|Rouge: — The cavern came down when the ritual has finished. Not quite sure what happened. You have been out for quite a while.}""", # MISSING TRANSLATION
+	ACT4_ROAD_WAKE_HUB = """She waits, in no apparent hurry to be anywhere the ceiling is still falling.""", # MISSING TRANSLATION
+	ACT4_ROAD_WAKE_OPTION_STAY = """Why did you stay?""", # MISSING TRANSLATION
+	ACT4_ROAD_WAKE_OPTION_LEFT = """You could have left me here.""", # MISSING TRANSLATION
+	ACT4_ROAD_WAKE_OPTION_MHYRANA = """What happened to Mhyrana?""", # MISSING TRANSLATION
+	ACT4_ROAD_WAKE_Q1 = """Rouge gives you a thin smile.
+
+{color=yellow|Rouge: — What do you think? You are a valuable... Asset, to just abandon you here to the mercy of survived cultists.}""", # MISSING TRANSLATION
+	ACT4_ROAD_WAKE_Q2 = """Rouge merely played coy, letting a teasing little smile hover on her lips as she looked away just enough to keep her answer out of reach.""", # MISSING TRANSLATION
+	ACT4_ROAD_WAKE_Q3 = """Rouge glances toward the buried center of the ritual chamber.
+
+{color=yellow|Rouge: — Gone. Not dead, I think. Mhyrana is annoyingly good at leaving before consequences become educational.}
+
+You and Rouge linger for a moment, taking in the quiet around you. There is nothing more to gain by staying here.""", # MISSING TRANSLATION
+	ACT4_ROAD_CITY_RETURN_1 = """You and Rouge climb out through a broken side passage and back toward the city. By the time you reach open streets, the news has already outrun you.
+
+Grotus has taken the throne. The Emperor is gone, the palace is sealed, and the Empire is not ruling the capital so much as shaking apart around it.
+
+{color=yellow|Rouge: — Unbelievable. He's the last person on the earth who should've gotten it.}""", # MISSING TRANSLATION
+	ACT4_ROAD_ROUGE_FORK = """Rouge watches the panic with a faintly amused expression, but her eyes keep returning to the palace.""", # MISSING TRANSLATION
+	ACT4_ROAD_ROUGE_OPTION_DISMISS = """Stay out of this. I don't want you near me again.""", # MISSING TRANSLATION
+	ACT4_ROAD_ROUGE_OPTION_DEAL = """So, we need to deal with Grotus.""", # MISSING TRANSLATION
+	ACT4_ROAD_ROUGE_DISMISSED = """Rouge's smile stays in place, but something behind it cools.
+
+{color=yellow|Rouge: — How firm. Very well, darling. This is where it ends, then.}
+
+She turns away and vanishes into the fleeing crowd.""", # MISSING TRANSLATION
+	ACT4_ROAD_ROUGE_STAYS = """{color=yellow|Rouge: — Very well. I suppose it is also my fault for letting Grotus become this. I'm not going to shy away from fixing my mistakes.}""", # MISSING TRANSLATION
+	ACT4_ROAD_ROUGE_STAYS_ALLY = """Rouge's earlier amusement has gone thin. She watches the palace with open irritation, as if Grotus has personally insulted her by surviving this long.
+
+{color=yellow|Rouge: — I suppose it is also my fault for letting Grotus become this. I'm not going to shy away from fixing my mistakes. Come along, darling.}""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_MESSENGER_1 = """A man in a torn imperial coat finds you in a side street near the damaged palace district. He is bleeding from one temple, but he still checks both ends of the street before approaching.
+
+{color=yellow|Melchor's Man: — Mayor [name]. Chancellor Melchor sent me.}
+
+He presses a sealed letter into your hand.""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_MESSENGER_2 = """{color=yellow|Melchor's Man: — Grotus has ordered half of the palace to find him. The Chancellor has gone to ground. The letter has the details.}
+
+The man casts a quick look over his shoulder, then slips away at once, vanishing down the corridor before you can ask anything more.""", # MISSING TRANSLATION
+	ACT4_ROAD_CAPITAL_OPTION_MELCHOR = """Find Melchor's hiding place""", # MISSING TRANSLATION
+	ACT4_ROAD_CAPITAL_OPTION_SENERUS = """Visit Senerus""", # MISSING TRANSLATION
+	ACT4_ROAD_CAPITAL_OPTION_MELCHOR_RETURN = """Return to Melchor""", # MISSING TRANSLATION
+	ACT4_ROAD_CAPITAL_OPTION_PALACE = """Charge at the palace""", # MISSING TRANSLATION
+	ACT4_ROAD_ELF_OPTION_ARROW = """Bring the arrow to Freya's priestess""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_HIDING_1 = """Melchor's hiding place is a cramped archive cellar beneath a shuttered counting house. Two exhausted soldiers guard the stairs, and Melchor himself stands over a table covered with city maps, his hands clenched into fists.
+
+{color=yellow|Melchor: — So of all people you've made it. I suppose we have to work together now. Grotus is not merely dangerous. He is nearly untouchable while that stolen power remains around him.}""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_HIDING_2 = """{color=yellow|Melchor: — He seized my family's estates, burned the vineyards that have been ours for generations, all to spite me. He thinks he can break me by destroying everything I hold dear.}
+
+He takes a deep breath, forcing his hands to unclench.
+
+{color=yellow|Melchor: — But rage will not serve us now. According to the information I've received, his body is not made to hold divine force. The strain will tear him apart eventually, but waiting for that can lead to the Empire's complete demise.}""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_HIDING_ROUGE = """Melchor notices Rouge near the cellar stairs and his expression tightens again.
+
+{color=yellow|Melchor: — And you brought her.}
+
+{color=aqua|Rouge: — You make it sound like a plague followed him in.}
+
+{color=yellow|Melchor: — A plague at least has the courtesy to be accidental.}
+
+{color=aqua|Rouge: — Keep snarling, Chancellor. It is almost comforting to know one part of the Empire still works as expected.}
+
+{color=yellow|Melchor: — Enough. I will tolerate your presence because Grotus is worse. Do not mistake that for forgiveness.}""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_HIDING_3 = """He looks wearily over you and back to the map.
+
+{color=yellow|Melchor: — Grotus maintains control through intimidation alone. The people do not trust him, and this presents our greatest opportunity. You need a way to pierce the divine barrier around him before you confront him, but my sources on this subject are really limited.}""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_OPTION_INDIVIDUAL = """I've met an individual like this.""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_OPTION_SENERUS = """Senerus should know something.""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_HIDING_4 = """{color=yellow|Melchor: — Then I leave this to you. We are still searching for opportunities to weaken his position.}""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_1 = """Senerus listens without interrupting. By the time you finish describing the stone ring, Sebastian's network, Mhyrana's ritual, and Grotus absorbing the divine power, he has already covered half his desk in notes.
+
+{color=yellow|Senerus: — That is terrifying. But it is rather exciting to watch actual divine power emerge in front of my eyes.}""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_2 = """{color=yellow|Senerus: — Divine energy rejects ordinary force. You need an aligned disruption: something equally fearsome to negate it.}
+
+He looks at you, then at the notes.
+
+{color=yellow|Senerus: — We need some exceedingly strong concentration of divine energy. Just chosen individuals won't be enough.}""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_HUB = """He sets the pen down and waits, entirely willing to let you supply the impossible part.""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_OPTION_ASURA = """I should be able to do this.""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_OPTION_SATORI = """Kuro might handle it.""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_OPTION_HELEVIEL = """I'll try asking former Freya's priestess.""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_OPTION_ARTIFACT = """I have some artifacts left from my hunting.""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_OPTION_NOTHING = """I really don't have anything...""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_ASURA = """You tell Senerus about the powers you've obtained from Nixx.
+
+{color=yellow|Senerus: — You... are a far more curious individual than I imagined. Yes, with powers of the night goddess herself, it's certainly possible. In that case, let me teach you what exactly needs to be done.}""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_SATORI = """You tell Senerus about Kuro's powers that she obtained from Nixx.
+
+{color=yellow|Senerus: — You... are a far more curious individual than I imagined. Yes, with powers of the night goddess herself, it's certainly possible. In that case, let me teach you what exactly needs to be done.}""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_HELEVIEL = """You tell Senerus about Heleviel's powers.
+
+{color=yellow|Senerus: — Yes, Freya's High Priestess could do it. Freya's blessing is close enough to divine force to open a path. But I'm afraid this will be extremely taxing on her, it will put her in weakened state for days.}
+
+{color=aqua|Heleviel: — I will do it. I trust you can take it from there without my help, [name].}""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_ARTIFACT_HUB = """{color=yellow|Senerus: — An artifact can be emptied and shaped into a single strike. It will be destroyed, but it will break the barrier.}
+
+He spreads his hands, leaving the cost of the choice entirely to you.""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_ARTIFACT_SCALES = """*Sacrifice the sacred scales*""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_ARTIFACT_BOWL = """*Sacrifice the sacred bowl*""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_ARTIFACT_SWORD = """*Sacrifice the holy sword*""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_ARTIFACT_SPEAR = """*Sacrifice the holy spear*""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_ARTIFACT_BACK = """*Change your mind*""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_ARTIFACT_DONE = """{color=yellow|Senerus: — It's a shame we must use it. But I'll prepare it for the task.}
+
+After a few hours Senerus finally passes you a small vial of shimmering fluid, nothing like you've seen before. You can feel strong power just from looking at it.
+
+{color=yellow|Senerus: — Take it. You only get one shot at this, so you better not waste it.}""", # MISSING TRANSLATION
+	ACT4_ROAD_SENERUS_ARROW = """Senerus walks to the basement, letting you into what looks more like an antique storeroom. He fetches a long object from one of the shelves and presents it to you.
+
+{color=yellow|Senerus: — Here is an ancient arrow capable of holding divine energy. Take it to Eldewyn. The elves' connection to Freya is your best bet in this grim situation. Since you have already been there, you should be able to get help from them.}""", # MISSING TRANSLATION
+	ACT4_ROAD_PRIESTESS_ARROW_LIRA = """You bring Senerus' arrow to Freya's priestess and explain only what matters: Grotus stole divine power, ordinary weapons cannot reach him, and this arrow needs to open the first wound.
+
+She takes the arrow without ceremony.
+
+{color=yellow|Lira: — Freya's blessing was never meant to be used this way. But neither was divine power meant to sit inside a frightened tyrant.}
+
+Light gathers along the arrowhead, clean and pale, until the metal hums softly in your hand.""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_PLAN_1 = """Melchor waits over the same map, but several palace passages have now been marked in red.
+
+{color=yellow|Melchor: — You have the means?}""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_PLAN_OPTION_BREAK = """It should break the barrier.""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_PLAN_OPTION_OPENING = """It will give me one opening.""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_PLAN_2 = """{color=yellow|Melchor: — Then we use it before Grotus grows worse or collapses loudly enough to take the palace district with him.}
+
+He points to a service route running beneath the western wing.
+
+{color=yellow|Melchor: — My people still control this passage. It will get you close to the throne room. After that, subtlety is dead.}""", # MISSING TRANSLATION
+	ACT4_ROAD_MELCHOR_PLAN_ROUGE = """{color=aqua|Rouge: — How tragic. I was so looking forward to watching you attempt it.}
+
+{color=yellow|Melchor: — If you are coming, try to make yourself useful before you make yourself insufferable.}
+
+{color=aqua|Rouge: — I can do both.}""", # MISSING TRANSLATION
+	ACT4_ROAD_PALACE_1 = """You manage to make your way through palace's backrooms with the help of Melchor's people. Guards open doors before you reach them. Officials vanish into side halls.
+
+You find Grotus in the throne room, still wearing the crooked crown. The stolen power around him is brighter now, but his skin has gone waxy beneath it, and his hands shake when he grips the armrests.""", # MISSING TRANSLATION
+	ACT4_ROAD_PALACE_2 = """{color=yellow|Grotus: — You. Of course it's you. These fools have let you in. Do they really think you can take me on? Because once I'm done with you, I'll skin each of them alive on the square!}""", # MISSING TRANSLATION
+	ACT4_ROAD_BARRIER_ASURA = """You drive Nixx's power into the barrier like a black wound. The divine shell resists for a heartbeat, then splits around the impact.""", # MISSING TRANSLATION
+	ACT4_ROAD_BARRIER_SATORI = """Kuro's power slips through the barrier before it understands what to reject. The shell shivers, confused by a cut made through intent instead of force.""", # MISSING TRANSLATION
+	ACT4_ROAD_BARRIER_HELEVIEL = """Heleviel's blessing burns pale across your strike. The barrier opens just enough, then snaps apart with a sound like breaking glass.""", # MISSING TRANSLATION
+	ACT4_ROAD_BARRIER_ARTIFACT = """The prepared artifact shatters in your hand, releasing its stored force into a single focused rupture. The barrier takes the blow and cracks.""", # MISSING TRANSLATION
+	ACT4_ROAD_BARRIER_ARROW = """The blessed arrow hits the barrier and sinks into the light. For a moment it hangs there, trembling, then Freya's blessing tears the shell open from within.""", # MISSING TRANSLATION
+	ACT4_ROAD_BARRIER_TAIL = """
+
+Grotus screams, not in pain alone but in outrage that anything still has permission to touch him.
+
+{color=yellow|Grotus: — You CHEATING BASTARD! You dare to challenge GOD!?}""", # MISSING TRANSLATION
+	ACT4_ROAD_GROTUS_DEFEAT_1 = """Grotus crashes down at the foot of the throne, glowing veins splitting open beneath his skin. The power does not fade. It churns inside him, too large for the body it stole.
+
+{color=yellow|Grotus: — No. No, no, no. Mine. It is mine.}""", # MISSING TRANSLATION
+	ACT4_ROAD_MHYRANA_RETURNS_1 = """The energy burst pushes you back, but another entity appears through the tear in the air behind him.
+
+Mhyrana steps through the broken light, calm despite the ruin around her. She looks at Grotus the way one might at a nasty bug.
+
+{color=yellow|Mhyrana: — You held it longer than I expected.}
+
+Grotus reaches toward her, suddenly small again.
+
+{color=aqua|Grotus: — Mistress Rouge...?}
+
+{color=yellow|Mhyrana: — Wrong.}""", # MISSING TRANSLATION
+	ACT4_ROAD_MHYRANA_RETURNS_2 = """She places one hand over the glowing wound in his chest and pulls.
+
+The stolen divine power tears free from Grotus and pours into the ritual pattern Mhyrana draws in the air. The palace floor buckles. Walls split. Somewhere deep beneath the city, the enormous stone ring answers.
+
+Everything goes black.""", # MISSING TRANSLATION
+	ACT4_ROAD_FIRST_GOD_1 = """When the dust thins, the imperial palace is no longer whole. Towers lean in broken angles, streets have vanished beneath collapsed stone, and a gigantic figure rises from the ruins where the throne room used to be.
+
+It is large enough to block the sun if it wasn't hidden by the dust clouds.
+
+{color=yellow|Mhyrana: — Behold the body of the First God. With it, this world will open. The demons will arrive, the old order will end, and every nation will learn what waits beyond its little sky.}""", # MISSING TRANSLATION
+	ACT4_ROAD_PRIESTESS_ARROW_HELEVIEL = """You bring Senerus' arrow to Freya's priestess and explain only what matters: Grotus stole divine power, ordinary weapons cannot reach him, and this arrow needs to open the first wound.
+
+She takes the arrow without ceremony.
+
+{color=yellow|Heleviel: — I can give it the shape it needs. Not enough to defeat him for you, but enough to make him reachable.}
+
+Light gathers along the arrowhead, clean and pale, until the metal hums softly in your hand.""", # MISSING TRANSLATION
+	KURO_SEASIDE_START = """The afternoon has dragged itself into a kind of punishment. By now the ink has started drying too quickly on the page, your wrist aches from signatures, and every completed document seems to uncover two more beneath it. The heat sits heavily in the office, turning the still air between the shelves and your desk into something almost solid.
+
+You have just reached for the next ledger when the shadow beside the bookshelf thickens. A familiar black tail slips out of it first, followed by Kuro, who steps into the room.
+
+{color=yellow|Kuro: — Still sitting here? I expected as much.}
+
+She looks over the desk with an unreadable expression.
+
+{color=yellow|Kuro: — You are overworking. Again. Also, this time of season is really hot.}""", # MISSING TRANSLATION
+	KURO_SEASIDE_OPTION_BUSY = """I'm busy because someone has to keep this place running.""", # MISSING TRANSLATION
+	KURO_SEASIDE_OPTION_WEATHER = """If you came here to complain about the weather, you picked a strange time.""", # MISSING TRANSLATION
+	KURO_SEASIDE_OPTION_WORRIED = """You sound almost worried about me.""", # MISSING TRANSLATION
+	KURO_SEASIDE_OFFICE_2_1 = """Kuro gives the documents another brief glance.
+
+{color=yellow|Kuro: — Yes, and if you collapse into them, I am sure they will become much more obedient.}
+
+{color=yellow|Kuro: — A new seaside leisure resort has opened near the coast. Fresh facilities, private rooms, enough distance from Aliron that most people here can't reach you with another stack of demands. I thought it might be an efficient place to spend a few days. The sea breeze should make the heat less obnoxious, and a temporary rest would give your subordinates a chance to prove they are not decorative furniture.}""", # MISSING TRANSLATION
+	KURO_SEASIDE_OFFICE_2_2 = """{color=yellow|Kuro: — I did not come to complain. I am merely noting an obvious seasonal inconvenience before presenting a solution to it.}
+
+{color=yellow|Kuro: — A new seaside leisure resort has opened near the coast. Fresh facilities, private rooms, enough distance from Aliron that most people here can't reach you with another stack of demands. I thought it might be an efficient place to spend a few days. The sea breeze should make the heat less obnoxious, and a temporary rest would give your subordinates a chance to prove they are not decorative furniture.}""", # MISSING TRANSLATION
+	KURO_SEASIDE_OFFICE_2_3 = """Kuro's eyes roll dismissively.
+
+{color=yellow|Kuro: — Sure, be snarky all you want.}
+
+{color=yellow|Kuro: — A new seaside leisure resort has opened near the coast. Fresh facilities, private rooms, enough distance from Aliron that most people here can't reach you with another stack of demands. I thought it might be an efficient place to spend a few days. The sea breeze should make the heat less obnoxious, and a temporary rest would give your subordinates a chance to prove they are not decorative furniture.}""", # MISSING TRANSLATION
+	KURO_SEASIDE_OPTION_ACCEPT = """Fine, I guess we could have a vacation.""", # MISSING TRANSLATION
+	KURO_SEASIDE_OPTION_REFUSE = """I'd rather continue with my tasks.""", # MISSING TRANSLATION
+	KURO_SEASIDE_ACCEPT_1 = """For a brief moment, Kuro smiles. It is small, controlled, and gone almost quickly enough to deny.
+
+{color=yellow|Kuro: — Good. That is a sensible approach.}
+
+She turns slightly toward the shadow she came from, already treating the decision as finalized.
+
+{color=yellow|Kuro: — I have almost finished all preparations already. Transport, lodging, appropriate excuses, and a few measures to keep the more persistent petitioners occupied. You can ready yourself for it without worrying.}""", # MISSING TRANSLATION
+	KURO_SEASIDE_ACCEPT_2 = """{color=yellow|Kuro: — Hope you are looking forward to my bathing costume, I took time selecting it after all.}
+
+She steps back into the shadow, leaving the office cooler by absence alone and the top ledger still crooked on your desk.""", # MISSING TRANSLATION
+	KURO_SEASIDE_REFUSE_1 = """{color=yellow|Kuro: — Too bad.}
+
+She says it without any visible disappointment, which somehow makes it worse.
+
+{color=yellow|Kuro: — The other girls have already been begging for something like this. Several of them have begun making preparations, and I doubt they will take no for an answer now.}
+
+You look down at the paperwork. It remains exactly as tall, exactly as dry, and suddenly much less persuasive.""", # MISSING TRANSLATION
+	KURO_SEASIDE_REFUSE_2 = """{color=yellow|Kuro: — Consider this a consequence of poor time management. If you had intended to refuse a vacation, you should have done so before I arranged one.}
+
+With that, she fades back into the office shadows, leaving you alone with the unavoidable realization that the day's work has just lost a battle.""", # MISSING TRANSLATION
+	KURO_SEASIDE_RESORT_ARRIVAL = """The resort stands a short distance from the shore, new enough that its pale wood still looks freshly cut. A few other guests linger near the water at first, but the arrival of your group quickly changes the balance of the place. Some retreat toward the resort buildings, some scatter down the beach, and soon the stretch of sand ahead is mostly yours.
+
+The girls waste little time spreading out. Their voices overlap with the waves as they rush toward the water, argue over towels, compare bathing outfits, and call for you.""", # MISSING TRANSLATION
+	KURO_SEASIDE_REVEAL = """Kuro appears a few steps away from the darker shade beneath the resort walkway, already dressed for the beach. Her sea outfit is obviously selected with care: a dark bathing top, a loose wrap at her hips, and tinted glasses resting above her eyes. She looks slightly exhausted and calm in a way contrasting with others. She does not seem exactly in her element here. The bright sun, open space, and excited crowd of girls all work against her. Even so, the unfamiliar attire draws the eye, framing her dark hair, pale skin, and black tail in a way that makes her presence difficult to ignore.
+
+{color=yellow|Kuro: — This place is quite something.}
+
+Before you can answer, several of the girls call for you at once. One catches your arm, another insists you need to see the water first. Kuro watches you get dragged away with a faint smile.""", # MISSING TRANSLATION
+	KURO_SEASIDE_THANKS = """By the time the sun has moved lower, you have been pulled through enough swimming, games, food, and aimless beach wandering to make the stress from earlier seem almost stationary by comparison. The girls gather around you with bright, tired faces, their earlier excitement softened into sincere gratitude.
+
+— Thank you for bringing us here, [master] [name]. This trip is wonderful.""", # MISSING TRANSLATION
+	KURO_SEASIDE_OPTION_GLAD = """I am glad you are enjoying yourselves.""", # MISSING TRANSLATION
+	KURO_SEASIDE_OPTION_SATISFY = """I had to satisfy your request, didn't I?""", # MISSING TRANSLATION
+	KURO_SEASIDE_THANKS_GLAD = """The answer earns a chorus of smiles and a few overlapping thanks. Even the quieter girls seem pleased, standing close together with the relaxed ease of people who have briefly forgotten their usual duties.""", # MISSING TRANSLATION
+	KURO_SEASIDE_THANKS_REFUSED = """The girls exchange confused looks.
+
+— Our request? We didn't think we could request something like this from you.
+
+Another girl nods quickly.
+
+— When Kuro told us about the trip, we all said it sounded wonderful, but none of us thought we could ask our master to do such a thing for us.
+
+Their gratitude becomes a little more earnest after that, and you realize Kuro's version of events may have been arranged with the same care as the vacation itself.""", # MISSING TRANSLATION
+	KURO_SEASIDE_EVENING = """Eventually the group disperses again, some returning to the water and others chasing the last snacks left beneath the resort awnings. That leaves you with a moment to look for Kuro.
+
+You find her resting in the shadow of a beach tent, one knee drawn up, tail curled neatly beside her. She appears relaxed at first glance, but her red eyes follow you the entire time you approach. She responds to your questioning look.
+
+{color=yellow|Kuro: — I am not particularly good with crowds and heat. But it's a nice break of pace after all.}
+
+She shifts slightly deeper into the shade, watching the others play in the distance.""", # MISSING TRANSLATION
+	KURO_SEASIDE_OPTION_COMPANY = """I am not great with crowds either. Let me keep you company.""", # MISSING TRANSLATION
+	KURO_SEASIDE_OPTION_LEAVE = """Then I'll leave you to rest and go back to the others.""", # MISSING TRANSLATION
+	KURO_SEASIDE_OPTION_WITS = """[Wits Check] You just wanted me to get some rest, didn't you?""", # MISSING TRANSLATION
+	KURO_SEASIDE_WITS_HIDDEN = """???""", # MISSING TRANSLATION
+	KURO_SEASIDE_WITS_1 = """Kuro's expression softens into something teasing.
+
+{color=yellow|Kuro: — Perhaps. But if you are clever enough to notice that, you should also be clever enough to answer something for me.}
+
+She adjusts the edge of her bathing top with deliberate care.
+
+{color=yellow|Kuro: — Do you enjoy my bathing costume?}""", # MISSING TRANSLATION
+	KURO_SEASIDE_OPTION_PLEASURE = """It's a pleasure to look at.""", # MISSING TRANSLATION
+	KURO_SEASIDE_OPTION_USUAL = """Your usual attire fits you more.""", # MISSING TRANSLATION
+	KURO_SEASIDE_WITS_PLEASURE = """Kuro's tail moves once against the sand.
+
+{color=yellow|Kuro: — So it was worth the hassle then.}""", # MISSING TRANSLATION
+	KURO_SEASIDE_WITS_USUAL = """Kuro gives a quiet, amused breath.
+
+{color=yellow|Kuro: — I suspected you might say that. Unfortunately, my usual attire is poorly suited for sand and seawater, so you will have to endure this version for today.}""", # MISSING TRANSLATION
+	KURO_SEASIDE_WITS_CONVERGE = """For a moment, she looks past you toward the rest of the beach. The girls are already waving again.""", # MISSING TRANSLATION
+	KURO_SEASIDE_END_COMPANY = """Kuro looks up at you for a moment, searching for mockery and finding none.
+
+{color=yellow|Kuro: — And I thought you are far more social than this. Or you are doing your best to please me too? One awful womanizer you are.}
+
+You settle beside her beneath the tent. For a while neither of you says much. The noise of the beach remains at a comfortable distance, the shade cools your skin, and Kuro's shoulder eventually rests against yours with deliberate casualness.
+
+It is not the kind of intimacy that announces itself loudly, but it stays with you all the same.""", # MISSING TRANSLATION
+	KURO_SEASIDE_END_LEAVE = """Kuro gives a small nod, her gaze already moving back toward the water.
+
+{color=yellow|Kuro: — Go on. They will start competing for your attention again if you make them wait too long.}
+
+You leave her in the shade and return to the others, carrying with you the strange certainty that Kuro is still watching.""", # MISSING TRANSLATION
+	ENEMYRILU_MADDENED = """Strange girl""", # MISSING TRANSLATION
 
 
 

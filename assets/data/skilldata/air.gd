@@ -52,7 +52,8 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'air',
 		sfx = [
-			{code = 'lightning', target = 'target', period = 'predamage'},
+			{code = 'lightning', target = 'target', period = 'predamage',
+				windup = 0.58, duration = 0.76, jitter = 25.0, hit_motion = 'push'},
 			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'spell_lightning', hit = null},
 		value = 1.25
@@ -100,11 +101,13 @@ var skills = {
 		catalysts = {},
 		target = 'enemy',
 		target_number = 'x_random',
-		number_rnd_targets = [4, 6],
+		number_rnd_targets = 5,
 		target_range = 'any',
 		damage_type = 'air',
 		sfx = [
-			{code = 'chain_lightning', target = 'target_group', period = 'windup'},
+			{code = 'chain_lightning', target = 'target_group', period = 'predamage',
+				windup = 0.58, duration = 0.76, jitter = 25.0,
+				branch_stagger = 0.10, hit_motion = 'push'},
 			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'spell_lightning', hit = null},
 		value = 0.8,

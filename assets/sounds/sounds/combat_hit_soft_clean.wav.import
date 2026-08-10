@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/combat_hit_soft_clean.wav-4145ccf45d00546b53911551c3b3f380.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sounds/combat_hit_soft_clean.wav"
+dest_files=[ "res://.import/combat_hit_soft_clean.wav-4145ccf45d00546b53911551c3b3f380.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

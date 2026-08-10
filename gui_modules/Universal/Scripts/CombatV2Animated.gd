@@ -178,27 +178,51 @@ func on_skillbook_click():
 	RebuildSkillPanel()
 
 
-func _input(event):
-	#simple version based on legacy code and without proper keybinding
-	if !allowaction: return
-	if str(event.as_text().replace("Kp ",'')) in str(range(1,9)):
-		var skill_index = int(event.as_text().replace("Kp ",''))
-		if activecharacter == null: 
-			return
-		var src = activecharacter.skills.combat_skill_panel
-		var offset = activecharacter.skills.get_combat_panel_row_offset()
-		var pos = offset + skill_index
-		if !src.has(pos): 
-			return
-		var skill = src[pos]
-		var skill_data = Skilldata.get_template_combat(skill, activecharacter)
-		if !activecharacter.can_use_skill(skill_data): return
-		#possible not reqired
-		if !activecharacter.has_status('ignore_catalysts_for_%s' % skill):
-			for i in skill_data.catalysts:
-				if ResourceScripts.game_res.materials[i] < skill_data.catalysts[i]: return
-		if skill_data.charges > 0 and activecharacter.skills.combat_skill_charges.has(skill) and activecharacter.skills.combat_skill_charges[skill] >= skill_data.charges: return
-		SelectSkill(skill)
+#called by the hotkeys singleton while the combat context is the active one
+func hotkey_action(code):
+	if !allowaction:
+		return false
+	if code.begins_with('combat_skill_'):
+		return use_skill_by_index(int(code.trim_prefix('combat_skill_')))
+	match code:
+		'combat_row_up':
+			change_skill_panel_row(-1)
+			return true
+		'combat_row_down':
+			change_skill_panel_row(1)
+			return true
+		'combat_skillbook':
+			on_skillbook_click()
+			return true
+		'combat_items':
+			if $Menu/Items.disabled: return false
+			$Menu/Items.pressed = !$Menu/Items.pressed
+			return true
+		'combat_run':
+			if $Menu/Run.disabled: return false
+			run()
+			return true
+	return false
+
+
+func use_skill_by_index(skill_index):
+	if activecharacter == null:
+		return false
+	var src = activecharacter.skills.combat_skill_panel
+	var offset = activecharacter.skills.get_combat_panel_row_offset()
+	var pos = offset + skill_index
+	if !src.has(pos):
+		return false
+	var skill = src[pos]
+	var skill_data = Skilldata.get_template_combat(skill, activecharacter)
+	if !activecharacter.can_use_skill(skill_data): return false
+	#possible not reqired
+	if !activecharacter.has_status('ignore_catalysts_for_%s' % skill):
+		for i in skill_data.catalysts:
+			if ResourceScripts.game_res.materials[i] < skill_data.catalysts[i]: return false
+	if skill_data.charges > 0 and activecharacter.skills.combat_skill_charges.has(skill) and activecharacter.skills.combat_skill_charges[skill] >= skill_data.charges: return false
+	SelectSkill(skill)
+	return true
 
 
 func run():
@@ -299,7 +323,6 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 		var tchar = characters_pool.get_char_by_id(i)
 		tchar.process_event(variables.TR_COMBAT_S)
 		ActionQueue.add_rebuildbuffs(tchar.displaynode)
-	set_process_input(true)
 	ActionQueue.add_start_combat()
 	ActionQueue.invoke_resume()
 
@@ -2077,7 +2100,6 @@ func FinishCombat(victory = true):
 		finish_instant_combat()
 		return
 	HideFighterStats()
-	set_process_input(false)
 	if is_instance_valid(gui_controller.dialogue) && gui_controller.dialogue.is_visible():
 		gui_controller.dialogue.close() #for test
 	autoskill_dummy.is_active = false

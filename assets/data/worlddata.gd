@@ -1001,6 +1001,11 @@ var fixed_location_options = { #override serialized data
 	],
 	elf_capital = [
 		{
+			text = tr("ACT4_ROAD_ELF_OPTION_ARROW"),
+			reqs = [{type = 'active_quest_stage', value = 'act4_road_project_quest', stage = 'imbue_arrow'}],
+			args = [{code = 'start_event', data = 'act4_road_priestess_arrow', args = []}]
+		},
+		{
 			text = tr("LIRA_QUEST3_ELF_TEMPLE_OPTION"),
 			reqs = [
 				{type = 'active_quest_stage', value = 'lira_quest_3', stage = 'temple', state = true},
@@ -1317,6 +1322,13 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'meteor_durim_start', args = []}]
 		}
 	],
+	quest_dwarf_railroad = [
+		{
+			text = tr("ACT4_ROAD_LOCATION_OPTION_ARRIVE"),
+			reqs = [{type = 'active_quest_stage', value = 'act4_road_project_quest', stage = 'visit_road_project'}],
+			args = [{code = 'start_event', data = 'act4_road_arrive_1', args = []}]
+		}
+	],
 	quest_kharzug_deep = [
 		{
 			text = tr("ACT4_SEBASTIAN_DWARF_CAPITAL_OPTION_KHARZUG"),
@@ -1429,32 +1441,57 @@ var fixed_location_options = { #override serialized data
 	],
 	
 	empire_capital = [
-#		{
-#			text = tr("ACT4_SEBASTIAN_EMPIRE_CAPITAL_OPTION_PROPOSAL"),
-#			reqs = [
-#				{type = 'decision', value = 'JoinCoalition', check = false},
-#				{type = 'has_active_quest', name = 'sebastian_railroad_quest', check = false},
-#				{type = 'quest_completed', name = 'sebastian_railroad_quest', check = false},
-#				{type = 'event_seen', value = 'act4_sebastian_proposal_dwarf_king_1', check = false},
-#				{type = 'event_seen', value = 'act4_sebastian_proposal_bolthar_1', check = false}
-#			],
-#			args = [{code = 'start_event', data = 'act4_sebastian_proposal_dwarf_king_1', args = []}]
-#		},
-#		{
-#			text = tr("ACT4_SEBASTIAN_EMPIRE_CAPITAL_OPTION_PROPOSAL"),
-#			reqs = [
-#				{type = 'decision', value = 'JoinCoalition', check = true},
-#				{type = 'has_active_quest', name = 'sebastian_railroad_quest', check = false},
-#				{type = 'quest_completed', name = 'sebastian_railroad_quest', check = false},
-#				{type = 'event_seen', value = 'act4_sebastian_proposal_dwarf_king_1', check = false},
-#				{type = 'event_seen', value = 'act4_sebastian_proposal_bolthar_1', check = false}
-#			],
-#			args = [{code = 'start_event', data = 'act4_sebastian_proposal_bolthar_1', args = []}]
-#		},
+		{
+			text = tr("ACT4_SEBASTIAN_EMPIRE_CAPITAL_OPTION_PROPOSAL"),
+			reqs = [
+				{type = 'decision', value = 'JoinCoalition', check = false},
+				{type = 'has_active_quest', name = 'sebastian_railroad_quest', check = false},
+				{type = 'quest_completed', name = 'sebastian_railroad_quest', check = false},
+				{type = 'event_seen', value = 'act4_sebastian_proposal_dwarf_king_1', check = false},
+				{type = 'event_seen', value = 'act4_sebastian_proposal_bolthar_1', check = false}
+			],
+			args = [{code = 'start_event', data = 'act4_sebastian_proposal_dwarf_king_1', args = []}]
+		},
+		{
+			text = tr("ACT4_SEBASTIAN_EMPIRE_CAPITAL_OPTION_PROPOSAL"),
+			reqs = [
+				{type = 'decision', value = 'JoinCoalition', check = true},
+				{type = 'has_active_quest', name = 'sebastian_railroad_quest', check = false},
+				{type = 'quest_completed', name = 'sebastian_railroad_quest', check = false},
+				{type = 'event_seen', value = 'act4_sebastian_proposal_dwarf_king_1', check = false},
+				{type = 'event_seen', value = 'act4_sebastian_proposal_bolthar_1', check = false}
+			],
+			args = [{code = 'start_event', data = 'act4_sebastian_proposal_bolthar_1', args = []}]
+		},
 		{
 			text = tr("ACT4_SEBASTIAN_EMPIRE_CAPITAL_OPTION_REPORT_TECHNICIAN"),
 			reqs = [{type = 'active_quest_stage', value = 'sebastian_railroad_quest', stage = 'report_technician'}],
 			args = [{code = 'start_event', data = 'act4_sebastian_report_technician_1', args = []}]
+		},
+		{
+			text = tr("ACT4_ROAD_CAPITAL_OPTION_GUILD"),
+			reqs = [{type = 'active_quest_stage', value = 'act4_road_project_quest', stage = 'guild_quarters'}],
+			args = [{code = 'start_event', data = 'act4_road_guild_quarters_1', args = []}]
+		},
+		{
+			text = tr("ACT4_ROAD_CAPITAL_OPTION_MELCHOR"),
+			reqs = [{type = 'active_quest_stage', value = 'act4_road_project_quest', stage = 'meet_melchor'}],
+			args = [{code = 'start_event', data = 'act4_road_melchor_hiding_1', args = []}]
+		},
+		{
+			text = tr("ACT4_ROAD_CAPITAL_OPTION_SENERUS"),
+			reqs = [{type = 'active_quest_stage', value = 'act4_road_project_quest', stage = 'ask_senerus'}],
+			args = [{code = 'start_event', data = 'act4_road_senerus_1', args = []}]
+		},
+		{
+			text = tr("ACT4_ROAD_CAPITAL_OPTION_MELCHOR_RETURN"),
+			reqs = [{type = 'active_quest_stage', value = 'act4_road_project_quest', stage = 'return_to_melchor'}],
+			args = [{code = 'start_event', data = 'act4_road_melchor_plan_1', args = []}]
+		},
+		{
+			text = tr("ACT4_ROAD_CAPITAL_OPTION_PALACE"),
+			reqs = [{type = 'active_quest_stage', value = 'act4_road_project_quest', stage = 'charge_palace'}],
+			args = [{code = 'start_event', data = 'act4_road_palace_1', args = []}]
 		},
 #		{
 #			text = tr("LIRA_QUEST3_EMPIRE_NOTICE_OPTION"),

@@ -126,11 +126,10 @@ var skills = {
 		damage_type = 'weapon',
 		random_target = true,
 		not_final = true,
-		sfx = [{code = '', code_repeat = {
-				1 : "devastation_1", 2 : "devastation_2", 3 : "devastation_3",
-				4 : "devastation_4", 5 : "devastation_5", 6 : "devastation_6",
-			}, target = 'target', period = 'predamage', duration = 0.2, no_repeat_delays = true},
-			{code = 'cast_weapon', target = 'caster', period = 'windup', no_delays = true, is_cast = true}],
+		sfx = [
+			{code = 'devastation_strike', target = 'target', period = 'predamage', hit_motion = 'squash'},
+			{code = 'devastation_dash', target = 'caster', period = 'windup'},
+		],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.75,
 		random_factor_p = 0.1,

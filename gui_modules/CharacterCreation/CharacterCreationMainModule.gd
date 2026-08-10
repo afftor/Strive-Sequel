@@ -205,7 +205,8 @@ func _ready():
 	globals.connecttexttooltip($SaveButton, tr("TOOLTIPSAVECHARACTER"))
 	globals.connecttexttooltip($LoadButton, tr("TOOLTIPLOADCHARACTER"))
 	globals.connecttexttooltip($MasterRelationPanel/TooltipRelations, tr("CHARCREATE_MASTER_RELATION_TOOLTIP"))
-	$DietPanel/RichTextLabel.bbcode_text = tr("CHARCREATE_DIET_HELP")
+	$DietPanel/Title.text = tr("CHARCREATE_DIET_TITLE")
+	$DietPanel/RichTextLabel.bbcode_text = "[center]" + tr("CHARCREATE_DIET_HELP") + "[/center]"
 	$RaceReroll.connect("pressed", self, "reroll_race")
 	
 	$modes/Stats.connect("pressed", self, 'build_stats')
@@ -500,7 +501,7 @@ func find_node_for_stat(stat):
 	if stat.ends_with('_factor'):
 		par_node = $StatsModule/StatsContainer
 	if stat.begins_with('food_filter_'):
-		par_node = $DietPanel/VBoxContainer
+		par_node = $DietPanel/Cards
 		stat = stat.trim_prefix('food_filter_')
 	if stat.find('color') != -1:
 		par_node = $VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2
@@ -725,6 +726,8 @@ func reset_points():
 onready var foods = variables.food_types
 #disliked food no longer exists - a character just picks the one type they like
 var food_vals = ['like', 'neutral']
+#the grid under the staple dish is 3x2
+const food_examples_shown = 6
 
 var reverse_filter = {}
 
@@ -756,8 +759,9 @@ func build_food_filter():
 		for food in foods:
 			val[food] = 'neutral'
 			preservedsettings.food_filter[food] = 'neutral'
-		val[person.food.food_love] = 'like'
-		preservedsettings.food_filter[person.food.food_love] = 'like'
+		if foods.has(person.food.food_love):
+			val[person.food.food_love] = 'like'
+			preservedsettings.food_filter[person.food.food_love] = 'like'
 	else: #read from preservedsettings
 		for food in foods:
 			val[food] = 'neutral'
@@ -768,26 +772,74 @@ func build_food_filter():
 	for food in foods:
 		if val[food] == 'like':
 			liked_count += 1
+	var help_text = tr("CHARCREATE_DIET_HELP")
 	if liked_count > 1:
-		$DietPanel/RichTextLabel.bbcode_text = tr("CHARCREATE_DIET_HELP_TOO_MANY_LIKED")
+		help_text = tr("CHARCREATE_DIET_HELP_TOO_MANY_LIKED")
 	elif liked_count < 1:
-		$DietPanel/RichTextLabel.bbcode_text = tr("CHARCREATE_DIET_HELP_NO_LIKED")
-	else:
-		$DietPanel/RichTextLabel.bbcode_text = tr("CHARCREATE_DIET_HELP")
+		help_text = tr("CHARCREATE_DIET_HELP_NO_LIKED")
+	$DietPanel/Title.text = tr("CHARCREATE_DIET_TITLE")
+	$DietPanel/RichTextLabel.bbcode_text = "[center]" + help_text + "[/center]"
 
 	for food in foods:
-		var node = find_node_for_stat('food_filter_' + food)
-		if !node.has_meta('signals_built'):
-			node.get_node('button/LArr').connect('pressed', self, 'change_food_filter_value', [food, -1])
-			node.get_node('button/RArr').connect('pressed', self, 'change_food_filter_value', [food, 1])
-			node.get_node('button').connect('pressed', self, 'change_food_filter_value', [food, 1])
-			node.set_meta('signals_built', true)
-		
-		node.get_node('button/LArr').visible = (mode != 'freemode')
-		node.get_node('button/RArr').visible = (mode != 'freemode')
-		
-		node.get_node('button/Label').text = tr("CHARCREATE_FOOD_STATE_" + val[food].to_upper())
-	
+		build_food_card(food, val[food] == 'like')
+
+
+#the card itself never changes, only which one is picked - so the icons and dishes are
+#filled in once and the rebuild just moves the highlight
+func build_food_card(food, is_liked):
+	var node = find_node_for_stat('food_filter_' + food)
+	if !node.has_meta('signals_built'):
+		node.connect('pressed', self, 'change_food_filter_value', [food])
+		node.set_meta('signals_built', true)
+		node.get_node('Name').text = tr("FOODTYPE" + food.to_upper())
+		node.get_node('ExamplesLabel').text = tr("CHARCREATE_DIET_DISHES")
+		build_food_dishes(node, food)
+
+	node.pressed = is_liked
+	node.get_node('Mark').visible = is_liked
+
+
+#the dishes a character with this liked type actually benefits from - ch_food.is_liked()
+#matches the item tags, so a mixed dish counts for every type it is tagged with
+func get_foods_of_type(food):
+	var res = []
+	for item in Items.materiallist.values():
+		if item.type == 'food' and item.tags.has(food):
+			res.push_back(item.code)
+	res.sort_custom(self, 'sort_foods_by_demand')
+	return res
+
+
+#cheapest of the lowest demand tier first - that is the staple the type is known by, and
+#the one the card shows big. grains have no edible raw form, so theirs comes out as bread
+func sort_foods_by_demand(first, second):
+	var first_item = Items.materiallist[first]
+	var second_item = Items.materiallist[second]
+	var first_rank = variables.food_demand_order.find(first_item.demand)
+	var second_rank = variables.food_demand_order.find(second_item.demand)
+	if first_rank != second_rank:
+		return first_rank < second_rank
+	if first_item.price != second_item.price:
+		return first_item.price < second_item.price
+	return first < second
+
+
+func build_food_dishes(card, food):
+	var container = card.get_node('Examples')
+	input_handler.ClearContainer(container, ['Slot'])
+	var codes = get_foods_of_type(food)
+	if codes.empty():
+		return
+	#the staple gets the big frame, the rest go into the grid below it
+	var staple = codes.pop_front()
+	card.get_node('IconFrame/Icon').texture = Items.materiallist[staple].icon
+	globals.connectmaterialtooltip(card.get_node('IconFrame'), Items.materiallist[staple])
+	if codes.size() > food_examples_shown:
+		codes.resize(food_examples_shown)
+	for code in codes:
+		var slot = input_handler.DuplicateContainerTemplate(container, 'Slot')
+		slot.get_node('Icon').texture = Items.materiallist[code].icon
+		globals.connectmaterialtooltip(slot, Items.materiallist[code])
 
 
 func apply_food_filter():
@@ -796,27 +848,20 @@ func apply_food_filter():
 	person.food.food_love = reverse_filter.like[0]
 
 
-func change_food_filter_value(food, value):
+func change_food_filter_value(food):
+	#in freemode the liked type is whatever the character already has
+	if mode == 'freemode':
+		build_food_filter()
+		return
 	if !foods.has(food):
 		print ('error - unknown food %s' % food)
 		return
-	var id
 	if !preservedsettings.has('food_filter'):
 		preservedsettings.food_filter = {}
-		id = food_vals.find('neutral')
-	elif preservedsettings.food_filter.has(food):
-		id = food_vals.find(preservedsettings.food_filter[food])
-	else:
-		id = food_vals.find('neutral')
-
-	id = wrapi(id + value, 0, food_vals.size())
-
-	preservedsettings.food_filter[food] = food_vals[id]
 	#only one type can be liked at a time
-	if food_vals[id] == 'like':
-		for other in foods:
-			if other != food and preservedsettings.food_filter.get(other, 'neutral') == 'like':
-				preservedsettings.food_filter[other] = 'neutral'
+	for other in foods:
+		preservedsettings.food_filter[other] = 'neutral'
+	preservedsettings.food_filter[food] = 'like'
 	build_food_filter()
 
 

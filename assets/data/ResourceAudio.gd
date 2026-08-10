@@ -110,6 +110,11 @@ var sounds = {
 	blade = load("res://assets/sounds/sounds/fx knife body hit.wav"),
 	blunt_hit = load("res://assets/sounds/sounds/blunt_hit.wav"),
 	fleshhit = load("res://assets/sounds/sounds/fx knife body hit.wav"),
+	combat_hit_soft_contact = load("res://assets/sounds/sounds/combat_hit_soft_contact.wav"),
+	combat_hit_soft_clean = load("res://assets/sounds/sounds/combat_hit_soft_clean.wav"),
+	combat_hit_body_subtle = load("res://assets/sounds/sounds/combat_hit_body_subtle.wav"),
+	combat_hit_body_warm = load("res://assets/sounds/sounds/combat_hit_body_warm.wav"),
+	combat_hit_body_soft_wet = load("res://assets/sounds/sounds/combat_hit_body_soft_wet.wav"),
 	bow = load("res://assets/sounds/sounds/ArrowShot.wav"),
 	arrow = load("res://assets/sounds/sounds/arrow_shot.wav"),
 	skill_scene = load("res://assets/sounds/sounds/healeffect.wav"),
@@ -170,6 +175,11 @@ var random_pitch_sounds = {
 	blade = 0.4,
 	blunt_hit = 0.4,
 	fleshhit = 0.4,
+	combat_hit_soft_contact = 0.08,
+	combat_hit_soft_clean = 0.08,
+	combat_hit_body_subtle = 0.2,
+	combat_hit_body_warm = 0.08,
+	combat_hit_body_soft_wet = 0.08,
 	bow = 0.4,
 	arrow = 0.4,
 	punch = 0.4,
@@ -227,3 +237,72 @@ func get_equip_sound(item):
 	if equip_sound_rules.itemtypes.has(itemtype):
 		return equip_sound_rules.itemtypes[itemtype]
 	return null
+
+
+# Combat hit-sound data uses one of three policies:
+# {hit_mode = 'none'}: no impact sound.
+# {hit_mode = 'dynamic'}: choose from the target's hit_sound_profile metadata.
+# Targets without that metadata use the body profile.
+# {hit_mode = 'static', hit = 'sound_id'}: always use that sound.
+# Legacy sounddata.hittype values remain supported: bodyarmor is dynamic and
+# absolute is static.
+var combat_hit_sound_profiles = {
+	# The selected subtle-body impact is the fallback for targets with no explicit
+	# hit_sound_profile metadata. Other profiles remain material-specific.
+	body = 'combat_hit_body_subtle',
+	body_wet = 'combat_hit_body_soft_wet',
+	cloth = 'combat_hit_soft_contact',
+	leather = 'combat_hit_soft_clean',
+	armor = 'blunt_hit',
+	wood = 'hitwood',
+	stone = 'blunt_hit',
+}
+
+
+func get_combat_hit_sound(sounddata, target):
+	if sounddata == null or sounddata.empty():
+		return null
+	var hit_mode = 'none'
+	if sounddata.has('hit_mode'):
+		hit_mode = sounddata.hit_mode
+	elif sounddata.has('hittype'):
+		match sounddata.hittype:
+			'bodyarmor':
+				hit_mode = 'dynamic'
+			'absolute':
+				hit_mode = 'static'
+	match hit_mode:
+		'dynamic':
+			return get_dynamic_combat_hit_sound(target)
+		'static':
+			var sound = sounddata.get('hit', null)
+			if sound != null and sounds.has(sound):
+				return sound
+	return null
+
+
+func uses_default_combat_hit_sound(sounddata):
+	if sounddata == null or sounddata.empty():
+		return true
+	# Explicit hit modes and legacy hittype values own their behavior. A regular
+	# damage skill with neither resolves through the target's dynamic profile.
+	return !sounddata.has('hit_mode') and !sounddata.has('hittype')
+
+
+func get_default_combat_hit_sound(target):
+	return get_dynamic_combat_hit_sound(target)
+
+
+func get_dynamic_combat_hit_sound(target):
+	var profile = get_dynamic_combat_hit_profile(target)
+	if combat_hit_sound_profiles.has(profile):
+		return combat_hit_sound_profiles[profile]
+	return null
+
+
+func get_dynamic_combat_hit_profile(target):
+	if target == null:
+		return 'body'
+	if target.hit_sound_profile != null:
+		return target.hit_sound_profile
+	return 'body'

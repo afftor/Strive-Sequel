@@ -131,6 +131,8 @@ func _ready():
 	gui_controller.clock.show()
 	gui_controller.clock.update_labels()
 	$TutorialButton.connect('pressed', self, 'show_tutorial')
+	hotkeys.connect("bindings_changed", self, "build_tutorial_tooltip")
+	build_tutorial_tooltip()
 #	$tutorialpanel/Button.connect('pressed',$tutorialpanel,'hide')
 	slave_list_manager()
 	globals.log_node = $MansionLogModule
@@ -169,6 +171,10 @@ func add_season_events():
 		
 		if !ResourceScripts.game_progress.seen_events.has(i.event) && date >= i.start[0] + i.start[1]*30 && date <= i.end[0] + i.end[1]*30:
 			globals.common_effects([{code = 'add_timed_event', value = i.event, args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
+
+func build_tutorial_tooltip():
+	globals.connecttexttooltip($TutorialButton, hotkeys.get_tooltip_text("TUTORIALS", 'mansion_tutorial'))
+
 
 func show_tutorial():
 	if gui_controller.mansion_tutorial_panel == null:

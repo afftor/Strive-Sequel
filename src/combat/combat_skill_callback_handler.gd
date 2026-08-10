@@ -419,6 +419,8 @@ func invoke_animations_1():
 		#get one node, and the two sit in different containers
 		if i.target == 'caster' and target != null and target.displaynode != null:
 			params.foe_node = target.displaynode
+			if i.code == 'holy_lance_step':
+				params.foe_position = target.position
 		queuenode.add_sfx(sfxtarget, i.code, params)
 	
 	combatnode.turns += 1
@@ -455,6 +457,10 @@ func invoke_instancing():
 
 
 func invoke_skillfinish():
+	if code == 'devastation' and caster != null and caster.displaynode != null:
+		queuenode.add_sfx(caster.displaynode, 'devastation_return', {})
+	if code in ['lightning', 'chain_lightning']:
+		queuenode.animationnode.clear_lightning_timing()
 	if mode != variables.SKILL_AUTO and !tags.has('passive'):
 		process_event(variables.TR_SKILL_FINISH, {skill = self})
 		caster.process_event(variables.TR_SKILL_FINISH, {skill = self})

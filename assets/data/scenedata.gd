@@ -3055,6 +3055,19 @@ var quests = {
 			church_protected_complete = {code = 'church_protected_complete', name = 'ACT4_SEBASTIAN_RAILROAD_NAME', descript = 'ACT4_SEBASTIAN_STAGE_WAIT_CONTINUATION'},
 		}
 	},
+	act4_road_project_quest = {
+		code = 'act4_road_project_quest',
+		summary = 'ACT4_ROAD_PROJECT_SUMMARY',
+		stages = {
+			visit_road_project = {code = 'visit_road_project', name = 'ACT4_ROAD_PROJECT_NAME', descript = 'ACT4_ROAD_STAGE_VISIT_ROAD_PROJECT'},
+			guild_quarters = {code = 'guild_quarters', name = 'ACT4_ROAD_PROJECT_NAME', descript = 'ACT4_ROAD_STAGE_GUILD_QUARTERS'},
+			meet_melchor = {code = 'meet_melchor', name = 'ACT4_ROAD_PROJECT_NAME', descript = 'ACT4_ROAD_STAGE_MEET_MELCHOR'},
+			ask_senerus = {code = 'ask_senerus', name = 'ACT4_ROAD_PROJECT_NAME', descript = 'ACT4_ROAD_STAGE_ASK_SENERUS'},
+			imbue_arrow = {code = 'imbue_arrow', name = 'ACT4_ROAD_PROJECT_NAME', descript = 'ACT4_ROAD_STAGE_IMBUE_ARROW'},
+			return_to_melchor = {code = 'return_to_melchor', name = 'ACT4_ROAD_PROJECT_NAME', descript = 'ACT4_ROAD_STAGE_RETURN_TO_MELCHOR'},
+			charge_palace = {code = 'charge_palace', name = 'ACT4_ROAD_PROJECT_NAME', descript = 'ACT4_ROAD_STAGE_CHARGE_PALACE'},
+		}
+	},
 	erdyna_quest = {
 		code = 'erdyna_quest',
 		summary = 'ACT4_ERDYNA_QUEST_SUMMARY',

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://assets/Themes_v2/MAIN_MENU/Menu_Options_Panel.tres" type="Theme" id=1]
 [ext_resource path="res://src/scenes/Options.gd" type="Script" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_24.tres" type="DynamicFont" id=22]
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Medium.otf" type="DynamicFontData" id=23]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=24]
+[ext_resource path="res://src/scenes/HotkeyOptions.gd" type="Script" id=25]
 
 [sub_resource type="DynamicFont" id=1]
 size = 19
@@ -612,6 +613,105 @@ margin_bottom = 64.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "OPTAUDIOMUTE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hotkeys" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 45.0
+script = ExtResource( 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Scroll" type="ScrollContainer" parent="TabContainer/Hotkeys"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 14.0
+margin_top = 6.0
+margin_right = -14.0
+margin_bottom = -104.0
+theme = ExtResource( 24 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Box" type="VBoxContainer" parent="TabContainer/Hotkeys/Scroll"]
+margin_right = 640.0
+custom_constants/separation = 4
+
+[node name="Header" type="Label" parent="TabContainer/Hotkeys/Scroll/Box"]
+visible = false
+margin_right = 640.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "HOTKEYGROUP_GLOBAL"
+valign = 2
+
+[node name="Entry" type="HBoxContainer" parent="TabContainer/Hotkeys/Scroll/Box"]
+visible = false
+margin_right = 640.0
+margin_bottom = 38.0
+custom_constants/separation = 8
+
+[node name="Label" type="Label" parent="TabContainer/Hotkeys/Scroll/Box/Entry"]
+margin_right = 380.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 380, 38 )
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "HOTKEY"
+valign = 1
+clip_text = true
+
+[node name="Key" type="Button" parent="TabContainer/Hotkeys/Scroll/Box/Entry"]
+margin_left = 388.0
+margin_right = 618.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 230, 38 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 0.607843 )
+custom_fonts/font = ExtResource( 4 )
+text = "..."
+clip_text = true
+
+[node name="Reset" type="Button" parent="TabContainer/Hotkeys"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 14.0
+margin_top = -96.0
+margin_right = 244.0
+margin_bottom = -50.0
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "HOTKEY_RESET"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hint" type="Label" parent="TabContainer/Hotkeys"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 258.0
+margin_top = -100.0
+margin_right = -14.0
+margin_bottom = -6.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 22 )
+text = "HOTKEY_HINT"
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -5,6 +5,19 @@ extends Panel
 
 var current_person
 
+var stat_tooltip_keys = {
+	atk = 'SIMATK_DESC',
+	matk = 'SIMMATK_DESC',
+	armor = 'SIMDEF_DESC',
+	mdef = 'SIMMDEF_DESC',
+	hitrate = 'SIMHITRATE_DESC',
+	evasion = 'SIMEVASION_DESC',
+	speed = 'SIMSPEED_DESC',
+	armorpenetration = 'SIMARMORPEN_DESC',
+	critchance = 'SIMCRITICAL_DESC',
+	critmod = 'SIMCRITICALMOD_DESC',
+}
+
 var sex_training_progress = {novice = 0, skilled = 50, mastered = 100}
 
 var mastery_required = {
@@ -50,14 +63,19 @@ func _ready():
 	$Panel/authoritylabel3.visible = false
 	for i in variables.resists_list:
 		if i == 'all': continue
-		var newlabel = $BaseStatsPanel/resists/Label.duplicate()
+		var newicon = $BaseStatsPanel/resists/Icon.duplicate()
 		var newvalue = $BaseStatsPanel/resists/Value.duplicate()
-		$BaseStatsPanel/resists.add_child(newlabel)
+		$BaseStatsPanel/resists.add_child(newicon)
 		$BaseStatsPanel/resists.add_child(newvalue)
-		newlabel.text = i.capitalize() + ":"
+		newicon.texture = images.get_icon('resist_' + i)
 		newvalue.name = i
-		newlabel.show()
+		newicon.show()
 		newvalue.show()
+		globals.connecttexttooltip(newicon, tr(i.to_upper() + "RESIST_DESC"))
+	for stat in stat_tooltip_keys:
+		var icon_node = $"BaseStatsPanel/base_stats".get_node_or_null("label_" + stat)
+		if icon_node:
+			icon_node.texture = images.get_icon(variables.fighter_stat_icons[stat])
 #	update()
 
 
@@ -119,8 +137,9 @@ func update(person = null, from_dialogue = false):
 	
 	
 		for i in $"BaseStatsPanel/base_stats".get_children():
-			if statdata.statdata.has(i.name.replace("label_","")):
-				globals.connecttexttooltip(i, statdata.statdata[i.name.replace("label_", "")].descript)
+			var stat_key = i.name.replace("label_", "")
+			if stat_tooltip_keys.has(stat_key):
+				globals.connecttexttooltip(i, tr(stat_tooltip_keys[stat_key]))
 	
 		$RichTextLabel.bbcode_text =  ResourceScripts.descriptions.trim_tag(person.make_description(), 'url', 'hair')
 		

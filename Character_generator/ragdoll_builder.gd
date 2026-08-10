@@ -13,6 +13,14 @@ const TITS_JIGGLE_FREQ = 3.4
 const TITS_JIGGLE_DECAY = 4.0
 const TITS_JIGGLE_SHIFT = 16.0 #texture pixels the nipple area travels on the first swing
 const TITS_JIGGLE_RANGE = 110.0 #radius the shift fades out over, matches the shipped deform presets
+const ZOOM_STEP = 0.1
+const ZOOM_MIN = 0.75
+const ZOOM_MAX = 1.5
+const ZOOM_HOVER_HALF_WIDTH = 275.0
+const ZOOM_HOVER_HALF_HEIGHT = 500.0
+const DRAG_THRESHOLD = 6.0
+const PAN_LIMIT_X = 220.0
+const PAN_LIMIT_Y = 320.0
 
 var _scale_x
 var _scale_y
@@ -29,6 +37,11 @@ var _tits_searched = false
 var _jiggle_mats = []
 var _jiggle_time = 0.0
 var _jiggle_power = 1.0
+var zoom_multiplier = 1.0
+var _drag_candidate = false
+var _dragging = false
+var _drag_start_mouse_position = Vector2.ZERO
+var _drag_start_offset = Vector2.ZERO
 
 var character
 var test_template = {
@@ -110,6 +123,9 @@ func _ready():
 	else:
 		_scale_x = scale.x
 		_scale_y = scale.y
+	__scale_x = _scale_x
+	__scale_y = _scale_y
+	configure_zoom_area()
 
 
 func _get_stat(stat):
@@ -164,15 +180,106 @@ func rebuild(character_to_build):
 	scale = Vector2(1, 1)
 #	_root.get_node('male_pose').scale = Vector2(__scale_x, __scale_y)
 #	_root.get_node('Female_pose').scale = Vector2(__scale_x, __scale_y)
-	_root.get_node('male_pose').position = _position + _offset
-	_root.get_node('Female_pose').position = _position + _offset
-	_root.get_node('male_pose').scale = Vector2(__scale_x, __scale_y)
-	_root.get_node('Female_pose').scale = Vector2(__scale_x, __scale_y)
+	_apply_pose_transform()
 
 	_root.render_target_clear_mode = Viewport.CLEAR_MODE_ONLY_NEXT_FRAME
 	_root.render_target_update_mode = Viewport.UPDATE_ONCE
 	if character != null:
 		character.update_portrait(self)
+
+
+func configure_zoom_area():
+	var zoom_area = get_node_or_null('ZoomArea')
+	if zoom_area == null:
+		return
+	zoom_area.rect_position = _position - Vector2(ZOOM_HOVER_HALF_WIDTH, ZOOM_HOVER_HALF_HEIGHT)
+	zoom_area.rect_size = Vector2(ZOOM_HOVER_HALF_WIDTH * 2.0, ZOOM_HOVER_HALF_HEIGHT * 2.0)
+
+
+func change_zoom(direction):
+	var new_zoom = clamp(zoom_multiplier + direction * ZOOM_STEP, ZOOM_MIN, ZOOM_MAX)
+	if is_equal_approx(new_zoom, zoom_multiplier):
+		return
+	zoom_multiplier = new_zoom
+	_apply_pose_transform()
+	_root.render_target_clear_mode = Viewport.CLEAR_MODE_ONLY_NEXT_FRAME
+	_root.render_target_update_mode = Viewport.UPDATE_ONCE
+
+
+func _input(event):
+	if !is_visible_in_tree():
+		return
+	if event is InputEventMouseMotion:
+		_update_drag(event.position)
+		return
+	if !(event is InputEventMouseButton):
+		return
+	if event.button_index == BUTTON_LEFT:
+		if event.pressed:
+			_start_drag(event.position)
+		else:
+			_finish_drag()
+		return
+	if !event.pressed or !(event.button_index in [BUTTON_WHEEL_UP, BUTTON_WHEEL_DOWN]):
+		return
+	if !_is_in_zoom_area(event.position):
+		return
+	change_zoom(1 if event.button_index == BUTTON_WHEEL_UP else -1)
+	get_tree().set_input_as_handled()
+
+
+func _is_in_zoom_area(screen_position):
+	var zoom_area = get_node_or_null('ZoomArea')
+	if zoom_area == null:
+		return false
+	var mouse_position = zoom_area.get_global_transform_with_canvas().affine_inverse().xform(screen_position)
+	return Rect2(Vector2.ZERO, zoom_area.rect_size).has_point(mouse_position)
+
+
+func _get_zoom_area_position(screen_position):
+	var zoom_area = get_node_or_null('ZoomArea')
+	return zoom_area.get_global_transform_with_canvas().affine_inverse().xform(screen_position)
+
+
+func _start_drag(screen_position):
+	_drag_candidate = _is_in_zoom_area(screen_position)
+	_dragging = false
+	if !_drag_candidate:
+		return
+	_drag_start_mouse_position = _get_zoom_area_position(screen_position)
+	_drag_start_offset = _offset
+
+
+func _update_drag(screen_position):
+	if !_drag_candidate:
+		return
+	var drag_offset = _get_zoom_area_position(screen_position) - _drag_start_mouse_position
+	if !_dragging and drag_offset.length_squared() < DRAG_THRESHOLD * DRAG_THRESHOLD:
+		return
+	_dragging = true
+	_offset = Vector2(
+		clamp(_drag_start_offset.x + drag_offset.x, -PAN_LIMIT_X, PAN_LIMIT_X),
+		clamp(_drag_start_offset.y + drag_offset.y, -PAN_LIMIT_Y, PAN_LIMIT_Y)
+	)
+	_apply_pose_transform()
+	_root.render_target_clear_mode = Viewport.CLEAR_MODE_ONLY_NEXT_FRAME
+	_root.render_target_update_mode = Viewport.UPDATE_ONCE
+	get_tree().set_input_as_handled()
+
+
+func _finish_drag():
+	if _dragging:
+		get_tree().set_input_as_handled()
+	_drag_candidate = false
+	_dragging = false
+
+
+func _apply_pose_transform():
+	var pose_scale = Vector2(__scale_x, __scale_y) * zoom_multiplier
+	for pose_name in ['male_pose', 'Female_pose']:
+		var pose = _root.get_node(pose_name)
+		pose.position = _position + _offset
+		pose.scale = pose_scale
 
 
 func rebuild_stat(statname):

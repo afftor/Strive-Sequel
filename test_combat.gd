@@ -947,6 +947,11 @@ func make_hero_from_data(type, level, position = 1, first = false):
 		if lv is Array:
 			lv = globals.rng.randi_range(lv[0], lv[1])
 		masteries[mas] = lv
+	# Temporary preview setup: every test-combat melee hero must meet Holy Lance's
+	# mastery requirements at every selectable test level.
+	if data.name == 'melee':
+		masteries.warfare = max(masteries.get('warfare', 0), 4)
+		masteries.light = max(masteries.get('light', 0), 3)
 	
 	for st in ldata.stats:
 		character.set_stat(st, ldata.stats[st])
@@ -972,6 +977,8 @@ func make_hero_from_data(type, level, position = 1, first = false):
 	for mas in masteries:
 		for i in range(masteries[mas]):
 			character.upgrade_mastery(mas, true)
+	if data.name == 'melee':
+		character.learn_c_skill('holy_lance')
 	
 	character.set_stat('name', nm)
 	input_handler.active_location.group['pos' + str(position)] = character.id
@@ -982,6 +989,9 @@ func make_hero_from_data(type, level, position = 1, first = false):
 			i_id = input_handler.random_from_array(i_id)
 		var item = make_item(i_id, level)
 		character.equip(item)
+	if data.name == 'melee':
+		var spear_id = 'spearadv' if level >= 3 else 'spear'
+		character.equip(make_item(spear_id, level))
 	
 	character.hp = character.get_stat("hpmax")
 	character.mp = character.get_stat("mpmax")

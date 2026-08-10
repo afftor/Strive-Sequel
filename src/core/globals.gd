@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.15.0c'
+const gameversion = '0.15.1'
 
 #time
 signal hour_tick
@@ -1076,8 +1076,30 @@ func ItemSelect(targetscript, type, function, requirements = null):
 		newnode.connect('pressed', targetscript, function, [i])
 		newnode.connect('pressed',input_handler,'CloseSelection', [node])
 
+const QUICKSAVE_NAME = 'QuickSave'
+
+#both report whether they acted, so the hotkey dispatcher knows if the press was consumed
 func QuickSave():
-	SaveGame('QuickSave')
+	if input_handler.combat_node != null:
+		input_handler.SystemMessage(tr("QUICKSAVE_BLOCKED"))
+		return false
+	if ResourceScripts.game_party.get_master() == null:
+		return false
+	SaveGame(QUICKSAVE_NAME)
+	return true
+
+
+func QuickLoad():
+	if !file.file_exists(variables.userfolder + 'saves/' + QUICKSAVE_NAME + '.sav'):
+		input_handler.SystemMessage(tr("QUICKLOAD_MISSING"))
+		return false
+	if input_handler.combat_node != null:
+		input_handler.SystemMessage(tr("QUICKLOAD_BLOCKED"))
+		return false
+	gui_controller.close_all_closeable_windows()
+	gui_controller.windows_opened.clear()
+	LoadGame(QUICKSAVE_NAME)
+	return true
 
 #spread = serialize over several frames instead of one blocking call. Only safe while the
 #caller guarantees the game state is not changing in between (turn processing, input locked)
@@ -1235,6 +1257,16 @@ func LoadGame(filename):
 	if !compare_version(ResourceScripts.game_globals.original_version, '0.9.1'):
 		if !globals.valuecheck({type = 'location_exists', location = 'quest_mages_xari'}):
 			globals.common_effects([{code = 'make_quest_location', value = 'quest_mages_xari'}])
+	#older saves ended erdyna_quest outright on the betrayal/leave routes, locking the catacombs away for good
+	if (ResourceScripts.game_progress.completed_quests.has('erdyna_quest')
+			and !ResourceScripts.game_progress.seen_events.has('act4_3_opened_seal_after_fight')
+			and (ResourceScripts.game_progress.decisions.has('ErdynaBetrayedRedRooks')
+				or ResourceScripts.game_progress.decisions.has('ErdynaLeftForRedRooksAlone'))):
+		ResourceScripts.game_progress.completed_quests.erase('erdyna_quest')
+		globals.common_effects([
+			{code = 'progress_quest', value = 'erdyna_quest', stage = 'catacombs_opened'},
+			{code = 'make_quest_location', value = 'quest_empire_catacomb_entry'}
+		])
 
 
 func compare_version(v1:String, v2:String):
@@ -3254,24 +3286,28 @@ func update_localization_file(update_loc: String, primary_loc = "en"):
 			var cleared_line = line.replace(" ", "").replace("	", "")
 			var is_commented_line = cleared_line.length() > 0 and cleared_line[0] == "#"
 			var regex_result = regex.search(line)
-			tmp_file.store_line(line)
-			
+
 			# if found a key in a line and it's not commented out
-			if regex_result and cleared_line.length() > 0 and !is_commented_line: 
+			if regex_result and cleared_line.length() > 0 and !is_commented_line:
 				key = regex_result.get_string()
-			
+
 			# if it's a missing key, insert keys
-			if key in missing_keys.keys():
+			if key in missing_keys.keys() and !inserted_anchors.has(key):
 				var check_line = cleared_line
 				if check_line.ends_with("#MISSINGTRANSLATION"):
 					check_line = check_line.substr(0, check_line.length() - "#MISSINGTRANSLATION".length())
+				# last entry of a file may have no trailing comma, add it or nothing gets inserted after it
+				if !is_commented_line and check_line.ends_with('"""'):
+					line += ","
+					check_line += ","
 				if !is_commented_line and check_line.length() > 0 and check_line[check_line.length() - 1] == ',':
-					if inserted_anchors.has(key):
-						continue
+					tmp_file.store_line(line)
 					inserted_anchors[key] = true
 					for i in missing_keys[key].size():
 						var insert_line = "	%s = \"\"\"%s\"\"\", # MISSING TRANSLATION"
 						tmp_file.store_line(insert_line % [missing_keys[key][i].key, missing_keys[key][i].text])
+					continue
+			tmp_file.store_line(line)
 		tmp_file.close()
 		loc_file.close()
 		
@@ -3359,27 +3395,7 @@ func ProcessSfxTarget(sfxtarget, caster, target):
 
 
 func calculate_hit_sound(skill, caster, target):
-	var rval
-	var hitsound
-	if skill.sounddata.strike == 'weapon':
-		hitsound = caster.get_weapon_sound()
-	else:
-		hitsound = skill.sounddata.strike
-	
-	match hitsound:
-		'dodge':
-			match target.bodyhitsound:
-				'flesh':pass
-				'wood':pass
-				'stone':pass
-		'blade':
-			match target.bodyhitsound:
-				'flesh':pass
-				'wood':pass
-				'stone':pass
-	rval = 'fleshhit'
-	
-	return rval
+	return audio.get_combat_hit_sound(skill.sounddata, target)
 
 
 func show_buttons(container):
@@ -3441,6 +3457,9 @@ func calculate_lux_rooms():
 func make_sfx_params(anim_dict, last_iteration = false):
 	var params = {}
 	if anim_dict.has('duration'): params.duration = anim_dict.duration
+	if anim_dict.has('windup'): params.windup = anim_dict.windup
+	if anim_dict.has('jitter'): params.jitter = anim_dict.jitter
+	if anim_dict.has('branch_stagger'): params.branch_stagger = anim_dict.branch_stagger
 	if anim_dict.has('queue_duration'):
 		params.queue_duration = anim_dict.queue_duration
 	elif anim_dict.has("is_cast") and anim_dict.is_cast:
@@ -3450,6 +3469,7 @@ func make_sfx_params(anim_dict, last_iteration = false):
 		params.no_delays = true
 	if anim_dict.has('sync_to_hit'): params.sync_to_hit = anim_dict.sync_to_hit
 	if anim_dict.has('hit_motion'): params.hit_motion = anim_dict.hit_motion
+	if anim_dict.has('motion'): params.motion = anim_dict.motion
 	if anim_dict.has('alt_slot'): params.alt_slot = anim_dict.alt_slot
 	if anim_dict.has('force_flip'): params.force_flip = anim_dict.force_flip
 	if anim_dict.has("target") and anim_dict.target == 'caster': params.reverse_flip = true

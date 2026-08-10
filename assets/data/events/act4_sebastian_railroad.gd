@@ -1042,6 +1042,7 @@ var data = {
 			type = "next_dialogue",
 			bonus_effects = [
 				{code = "progress_quest", value = "sebastian_railroad_quest", stage = "sebastian_route_complete"},
+				{code = "add_timed_event", value = "act4_road_courier_1", skip_existing = true, args = [{type = "add_to_date", date = [2, 2], hour = 1}]},
 				{code = "update_city"}
 			]
 		}]
@@ -1200,6 +1201,7 @@ var data = {
 			type = "next_dialogue",
 			bonus_effects = [
 				{code = "progress_quest", value = "sebastian_railroad_quest", stage = "church_protected_complete"},
+				{code = "add_timed_event", value = "act4_road_courier_1", skip_existing = true, args = [{type = "add_to_date", date = [2, 2], hour = 1}]},
 				{code = "update_city"}
 			]
 		}]

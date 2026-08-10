@@ -10,7 +10,8 @@ func _ready():
 	$TabContainer.set_tab_title(1, tr("OPTNAME2"))
 	$TabContainer.set_tab_title(2, tr("OPTNAME5"))
 	$TabContainer.set_tab_title(3, tr("OPTNAME3"))
-	$TabContainer.set_tab_title(4, tr("OPTNAME4"))
+	$TabContainer.set_tab_title(4, tr("OPTNAMEHOTKEYS"))
+	$TabContainer.set_tab_title(5, tr("OPTNAME4"))
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
 		i.connect("value_changed", self, 'soundsliderchange',[i.name])
 		i.get_node("CheckBox").connect('pressed', self, 'mutepressed', [i.get_node("CheckBox")])
@@ -93,6 +94,7 @@ func go_for_code():
 
 
 func open():
+	$TabContainer/Hotkeys.update_labels()
 	$TabContainer/Gameplay/Scroll/Box/enable_tutorials.pressed = ResourceScripts.game_progress.show_tutorial
 	# $TabContainer/Cheats/EnterCodeMenu/Activate.disabled = true
 	$TabContainer/Cheats/EnterCodeMenu.visible = !ResourceScripts.game_globals.cheats_active

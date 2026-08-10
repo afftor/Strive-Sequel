@@ -176,7 +176,6 @@ margin_left = 1849.89
 margin_top = 61.1109
 margin_right = 1900.89
 margin_bottom = 113.111
-hint_tooltip = "TUTORIALS"
 theme = ExtResource( 3 )
 texture_normal = ExtResource( 23 )
 texture_pressed = ExtResource( 32 )

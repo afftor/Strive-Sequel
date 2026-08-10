@@ -408,6 +408,9 @@ var enemygroups = {
 #Ai patterns: basic - basic attack/ranged attack or pass (if exist), ads - advanced single target skill, aoe - aoe skill, buff - buffing skill
 #ai_hard is selected when difficulty set to hard mode (if exists)
 #[['basic', 0], ['damage_spread', 0], ['damage_spot', 0], ['ads', 0], ['support', 0], ['aoe', 0], ['instant', 0], ['heal', 0], ['resurrect', 0], ['selfbuf', 0], ['taunt', 0], ['trap', 0]],
+# Optional per-enemy dynamic hit-sound metadata: hit_sound_profile = 'body',
+# 'body_wet', 'cloth', 'leather', 'armor', 'wood', or 'stone'. Omit it to use
+# the default body profile.
 var enemies = {
 	bandit_melee = {
 		code = 'bandit_melee',

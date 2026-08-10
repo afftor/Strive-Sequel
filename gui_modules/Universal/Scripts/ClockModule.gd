@@ -43,6 +43,8 @@ func _ready():
 	$TimeNode/food.connect("mouse_entered", self, "show_food_tooltip")
 	$TimeNode/gold.connect("mouse_entered", self, "show_gold_tooltip")
 	globals.connecttexttooltip($TimeNode/timetooltip, tr("TIME_TOOLTIP"))
+	hotkeys.connect("bindings_changed", self, "build_turn_tooltips")
+	build_turn_tooltips()
 	globals.connect("update_clock", self, 'request_labels_update')
 	globals.connect("travel_completed", self, 'queue_travel_arrival_sound')
 	ext_block.connect("pressed", self, "on_ext_block_press")
@@ -55,13 +57,15 @@ func tut_get_finish_turn():
 	return $TimeNode/HBoxContainer/finish_turn
 
 
-func hotkey_pressed(number):
-	if input_handler.combat_node != null:
-		return
-	match number:
-		1: advance_turn(1)
-		2: advance_turn(2)
-		3: advance_turn(4)
+#the key is printed in the tooltip, so it has to be read from the binding rather than
+#baked into the translation
+func build_turn_tooltips():
+	var buttons = {finish_turn = ['mansion_time_1', 'TOOLTIP_CLOCK1'],
+		x2 = ['mansion_time_2', 'TOOLTIP_CLOCK2'],
+		x4 = ['mansion_time_3', 'TOOLTIP_CLOCK3']}
+	for btn_name in buttons:
+		var data = buttons[btn_name]
+		globals.connecttexttooltip($TimeNode/HBoxContainer.get_node(btn_name), hotkeys.get_tooltip_text(data[1], data[0]))
 
 
 #both of these walk every character, so they are built when the player actually hovers

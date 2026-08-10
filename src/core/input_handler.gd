@@ -429,6 +429,9 @@ func gather_skills_effects():
 
 #func _unhandled_input(event):
 func _input(event):
+	#the options panel is waiting for a key to bind - let it through untouched
+	if hotkeys.capturing:
+		return
 	#a turn is processed across several frames now, so gameplay input has to stay out until
 	#it finishes. gui_disable_input only covers Control input - ESC (menu -> save/load) and
 	#the dialogue number keys arrive here, and would otherwise run against a half-ticked party
@@ -460,6 +463,12 @@ func _input(event):
 			return
 	if event.is_echo() == true && !event.is_action_type():
 		return
+	#rebindable keys (quicksave, mansion categories, combat skills, ...) all go through the
+	#hotkeys singleton, which picks the handler by the active context. Runs ahead of the
+	#current_screen guard so the global ones still work outside a loaded game
+	if hotkeys.dispatch(event):
+		get_tree().set_input_as_handled()
+		return
 	if gui_controller.current_screen == null:
 		return
 	for action in ['ui_accept', 'ui_left', 'ui_right']:
@@ -468,17 +477,7 @@ func _input(event):
 	for action in ['ui_cancel', 'ui_up', 'ui_down']:
 		if event.is_action(action):
 			get_tree().set_input_as_handled()
-	if event.is_action_released("F1") \
-		&& gui_controller.current_screen == gui_controller.mansion:
-		if gui_controller.mansion_tutorial_panel == null || !gui_controller.mansion_tutorial_panel.is_visible():
-			gui_controller.mansion.show_tutorial()
-		else:
-			gui_controller.mansion_tutorial_panel.hide()
-	if event.is_action_released("F9"):
-		OS.window_fullscreen = !OS.window_fullscreen
-		input_handler.globalsettings.fullscreen = OS.window_fullscreen
-		if input_handler.globalsettings.fullscreen == false:
-			OS.window_position = Vector2(0,0)
+	#ESC/RMB are not rebindable - they are the generic 'close whatever is on top'
 	if (event.is_action_pressed("ESC") || event.is_action_released("RMB")):
 #		get_tree().get_root().print_tree_pretty()
 		for i in get_tree().get_nodes_in_group("disable_rmb_esc"):
@@ -558,6 +557,8 @@ func _input(event):
 					gui_controller.clock.show()
 		gui_controller.update_modules()
 #	if !text_field_input:
+	#dialogue options are positional ("the Nth answer"), not commands, so they stay on the
+	#plain number row instead of going through the rebindable hotkey table
 	if  CurrentScene is Control and !(CurrentScene.get_focus_owner() is LineEdit or CurrentScene.get_focus_owner() is TextEdit):
 		if str(event.as_text().replace("Kp ",'')) in str(range(1,9)):
 			var num = event.as_text().replace("Kp ",'')
@@ -565,10 +566,6 @@ func _input(event):
 			var tnode = gui_controller.dialogue
 			if tnode != null and tnode.visible:
 				tnode.select_option(int(num) - 1)
-			else:
-				if gui_controller.clock != null and gui_controller.clock.is_visible_in_tree():
-					if str(int(event.as_text())) in str(range(1,4)) && !event.is_pressed():
-						gui_controller.clock.hotkey_pressed(int(num))
 
 	if mass_select_client != null:
 		if (mass_select_client.get_ref() == null

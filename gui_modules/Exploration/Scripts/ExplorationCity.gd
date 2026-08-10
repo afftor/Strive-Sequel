@@ -18,6 +18,22 @@ var hiremode
 var person_to_hire
 var selectedquest
 
+const SEX_SKILLS = [
+	{code = 'sex_skills_petting', name = 'SEXSKILLPETTING', descript = 'SEXSKILLPETTINGDESCRIPT'},
+	{code = 'sex_skills_penetration', name = 'SEXSKILLPENETRATION', descript = 'SEXSKILLPENETRATIONDESCRIPT'},
+	{code = 'sex_skills_pussy', name = 'SEXSKILLPUSSY', descript = 'SEXSKILLPUSSYDESCRIPT'},
+	{code = 'sex_skills_oral', name = 'SEXSKILLORAL', descript = 'SEXSKILLORALDESCRIPT'},
+	{code = 'sex_skills_anal', name = 'SEXSKILLANAL', descript = 'SEXSKILLANALDESCRIPT'},
+	{code = 'sex_skills_tail', name = 'SEXSKILLTAIL', descript = 'SEXSKILLTAILDESCRIPT'},
+]
+
+func get_sex_training_label(state):
+	match state:
+		'novice': return tr('SEX_TRAINING_LEVEL_NOVICE')
+		'skilled': return tr('SEX_TRAINING_LEVEL_SKILLED')
+		'mastered': return tr('SEX_TRAINING_LEVEL_MASTERED')
+	return str(state).capitalize()
+
 var city_options = {
 	#location_purchase = "EXPLORBUYDUNGEON",
 	quest_board = "EXPLORENOTICEBOARD",
@@ -684,7 +700,6 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 		newbutton.connect("pressed", self, 'show_slave_info', [tchar])  #, self, "select_slave_in_guild", [tchar])
 		newbutton.connect('gui_input', self, 'double_clicked')
 		newbutton.set_meta("person", tchar)
-		globals.connectslavetooltip(newbutton, tchar)
 	var person_id
 	var person
 	if !active_faction.slaves.empty():
@@ -776,7 +791,6 @@ func sell_slave():
 		newbutton.connect('gui_input', self, 'double_clicked')
 		newbutton.set_meta("person", tchar)
 		newbutton.get_node('icon').texture = tchar.get_icon_small()
-		globals.connectslavetooltip(newbutton, tchar)
 	if !char_list.empty():
 		var person = char_list[0]
 		show_slave_info(person)
@@ -862,9 +876,37 @@ func show_slave_info(person):
 			i.get_node("Label").text = str(floor(person.get_stat(i.name)))
 			i.get_node("Label").set("custom_colors/font_color", Color(1, 1, 1))
 	
-#	globals.build_loyalty_traitlist(person, $SlaveMarket/scroll/traitscontainer)
-	
-	$SlaveMarket/ConsentLabel.text = tr("STATCONSENT") + ": " + str(floor(person.get_stat('consent')))
+	$SlaveMarket/traitslabel.visible = true
+	$SlaveMarket/traitslabel.text = tr('TRAITS')
+	globals.build_traitlist_for_char(person, $SlaveMarket/scroll/traitscontainer)
+
+	$SlaveMarket/PersonalityLabel.text = tr('SIBLINGMODULEPERSONALITY') + ': ' + tr('PERSONALITYNAME' + person.get_stat('personality').to_upper())
+	globals.connecttexttooltip($SlaveMarket/PersonalityLabel, globals.get_character_personality_tooltip(person.get_stat('personality')))
+
+	var consent_value = int(person.get_stat('consent'))
+	$SlaveMarket/ConsentLabel.text = tr('SIBLINGMODULECONSENT') + str(tr(variables.consent_dict[consent_value])) + ' (' + str(consent_value) + ')'
+	globals.connecttexttooltip($SlaveMarket/ConsentLabel, tr('INFOCONSENT'))
+	$SlaveMarket/ConsentLabel.visible = true
+
+	$SlaveMarket/SexSkillsLabel.text = tr('SLAVE_MARKET_SEX_SKILLS')
+	input_handler.ClearContainer($SlaveMarket/SexSkills, ['Skill'])
+	var sex_training = person.get_sex_training()
+	for skill in SEX_SKILLS:
+		if person.get_stat(skill.code) <= 0:
+			continue
+		var training_code = skill.code.replace('sex_skills_', 'sex_training_')
+		var training_state = sex_training.get(training_code, 'novice')
+		if skill.code == 'sex_skills_tail' and training_state == 'novice':
+			continue
+		if skill.code == 'sex_skills_penetration' and training_state == 'novice' and person.get_stat('penis_size') == '':
+			continue
+		if skill.code == 'sex_skills_pussy' and training_state == 'novice' and person.get_stat('sex') == 'male':
+			continue
+		var newnode = input_handler.DuplicateContainerTemplate($SlaveMarket/SexSkills, 'Skill')
+		var training_label = get_sex_training_label(training_state)
+		newnode.text = '%s\n%s' % [tr(skill.name), training_label]
+		globals.connecttexttooltip(newnode, '[center]' + tr(skill.name) + '[/center]\n' + tr(skill.descript) + '\n' + tr('CUR_LEVEL_LABEL') + ': ' + training_label)
+
 	$SlaveMarket/PurchaseButton.disabled = false
 	#$PurchaseButton.disabled = person.calculate_price() > ResourceScripts.game_res.money
 	# rebuild_traits(person)

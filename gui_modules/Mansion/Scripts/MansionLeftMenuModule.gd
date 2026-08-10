@@ -1,5 +1,18 @@
 extends Control
 
+#button node -> [hotkey action, name translation key], used to build the tooltips.
+#TravelsButton is hidden in the scene - the visible travel button lives in the
+#navigation panel and carries that tooltip instead
+const BUTTON_DATA = {
+	WorkButton = ['mansion_work', 'LMMWORK'],
+	UpgradesButton = ['mansion_upgrades', 'LMMUPGRADES'],
+	SexButton = ['mansion_sex', 'LMMDATE'],
+	InventoryButton = ['mansion_inventory', 'LMMINVENTORY'],
+	CraftButton = ['mansion_craft', 'LMMCRAFT'],
+	Journal = ['mansion_journal', 'LMMJOURNAL'],
+	options = ['mansion_menu', 'LMMOPTIONS'],
+}
+
 
 func _ready():
 	$VBoxContainer/WorkButton.connect("pressed", self, "_button_clicked", ["occupation", $VBoxContainer/WorkButton])
@@ -16,6 +29,15 @@ func _ready():
 	input_handler.register_btn_source('craft_button', self, 'tut_get_CraftButton')
 	input_handler.register_btn_source('inventory_button', self, 'tut_get_InventoryButton')
 	input_handler.register_btn_source('journal_button', self, 'tut_get_Journal')
+	hotkeys.connect("bindings_changed", self, "build_tooltips")
+	build_tooltips()
+
+
+func build_tooltips():
+	for btn_name in BUTTON_DATA:
+		var data = BUTTON_DATA[btn_name]
+		globals.connecttexttooltip($VBoxContainer.get_node(btn_name), hotkeys.get_tooltip_text(data[1], data[0]))
+
 
 func tut_get_UpgradesButton():
 	return $VBoxContainer/UpgradesButton
@@ -27,6 +49,52 @@ func tut_get_CraftButton():
 	return $VBoxContainer/CraftButton
 func tut_get_Journal():
 	return $VBoxContainer/Journal
+
+#hotkey entry point - drives the same buttons a click would, so every side effect
+#(toggle state, panel fades, gui_controller bookkeeping) happens the usual way.
+#Pressing the key of the category already open returns the mansion to its default view.
+func activate_category(code):
+	match code:
+		'work': return toggle_category("occupation", $VBoxContainer/WorkButton)
+		'travels':
+			#the navigation panel's travel button sets this before opening; from the mansion
+			#the map always returns here, so clear any context left by another screen
+			var map = get_parent().get_node_or_null("map")
+			if map != null:
+				map.set_return_context(null, null, null)
+			return toggle_category("travels", $VBoxContainer/TravelsButton)
+		'upgrades': return toggle_category("upgrades", $VBoxContainer/UpgradesButton)
+		'craft': return toggle_category("craft", $VBoxContainer/CraftButton)
+		'sex':
+			#SexButton and Journal listen to 'toggled', so flipping pressed is the whole call.
+			#Neither owns a mansion_state, so their own button is what tracks them
+			if $VBoxContainer/SexButton.disabled: return false
+			$VBoxContainer/SexButton.pressed = !$VBoxContainer/SexButton.pressed
+			return true
+		'journal':
+			if $VBoxContainer/Journal.disabled: return false
+			$VBoxContainer/Journal.pressed = !$VBoxContainer/Journal.pressed
+			return true
+		'inventory':
+			if $VBoxContainer/InventoryButton.disabled: return false
+			open_inventory()
+			return true
+		'menu':
+			if $VBoxContainer/options.disabled: return false
+			open_menu()
+			return true
+	return false
+
+
+func toggle_category(state, button):
+	if button.disabled:
+		return false
+	#these buttons are wired to 'pressed', which set_pressed() does not emit - so the
+	#handler is called by hand once the button reflects the state we are switching to
+	button.pressed = get_parent().mansion_state != state
+	_button_clicked(state, button)
+	return true
+
 
 func open_menu():
 	gui_controller.game_menu = input_handler.get_spec_node(input_handler.NODE_GAMEMENU)

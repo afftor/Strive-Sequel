@@ -216,12 +216,20 @@ func invoke_animations_2():
 			var sfxtarget = globals.ProcessSfxTarget(i.target, caster, target)
 			if sfxtarget != null:
 				var params = globals.make_sfx_params(i, last_iteration)
+				var true_code = get_true_code(i)
 				if params.has('sync_to_hit') and params.sync_to_hit:
 					params.hit_nodes = []
 					for affected in affected_targets:
 						if affected.displaynode != null:
 							params.hit_nodes.append(affected.displaynode)
-				queuenode.add_sfx(sfxtarget, get_true_code(i), params)
+				if true_code == 'chain_lightning':
+					params.caster_node = caster.displaynode
+					params.primary_node = target.displaynode
+					params.hit_nodes = [target.displaynode]
+					for affected in affected_targets:
+						if affected.displaynode != null and affected.displaynode != target.displaynode:
+							params.hit_nodes.append(affected.displaynode)
+				queuenode.add_sfx(sfxtarget, true_code, params)
 	for i in affected_targets:
 		if template.has('sounddata') and !template.sounddata.empty() and template.sounddata.strike != null:
 			if template.sounddata.strike == 'weapon':
@@ -232,7 +240,15 @@ func invoke_animations_2():
 			if j.target in ['caster','target']:
 				var sfxtarget = globals.ProcessSfxTarget(j.target, caster, i)
 				if sfxtarget != null:
-					queuenode.add_sfx(sfxtarget, get_true_code(j), globals.make_sfx_params(j, last_iteration))
+					var true_code = get_true_code(j)
+					var params = globals.make_sfx_params(j, last_iteration)
+					if true_code == 'devastation_strike':
+						params.caster_node = caster.displaynode
+						params.weapon_sprite = caster.get_weapon_cast_animation()
+						params.iteration = parent.iterations_played
+					elif true_code == 'lightning':
+						params.caster_node = caster.displaynode
+					queuenode.add_sfx(sfxtarget, true_code, params)
 	
 	combatnode.turns += 1
 	step += 1
@@ -274,6 +290,7 @@ func invoke_instancing():
 			
 			s_skill2.hit_roll()
 			s_skill2.resolve_value(combatnode.CheckMeleeRange(caster.combatgroup))
+			queue_default_hit_sound(s_skill2)
 			instances.push_back(s_skill2)
 	
 	combatnode.turns += 1
@@ -318,11 +335,15 @@ func invoke_damage():
 			if use_default_hit_reaction:
 				queuenode.add_sfx(s_skill2.target.displaynode, 'default_hit_reaction',
 					{alt_slot = 'hit_reaction'})
-			if template.has('sounddata') and !template.sounddata.empty() and template.sounddata.hit != null:
-				if template.sounddata.hittype == 'absolute':
-					s_skill2.target.displaynode.process_sound(template.sounddata.hit)
-				elif template.sounddata.hittype == 'bodyarmor':
-					s_skill2.target.displaynode.process_sound(globals.calculate_hit_sound(template, caster, s_skill2.target))
+			if template.code == 'devastation':
+				queuenode.animationnode.prepare_devastation_hp_update(
+					s_skill2.target.displaynode, parent.iterations_played)
+			if template.code in ['lightning', 'chain_lightning']:
+				queuenode.animationnode.prepare_lightning_hp_update(s_skill2.target.displaynode)
+			var sounddata = template.sounddata if template.has('sounddata') else {}
+			var hit_sound = audio.get_combat_hit_sound(sounddata, s_skill2.target)
+			if hit_sound != null:
+				s_skill2.target.displaynode.process_sound(hit_sound)
 			for j in animationdict.postdamage:
 				var sfxtarget = globals.ProcessSfxTarget(j.target, caster, s_skill2.target)
 				if sfxtarget.has_method("process_sfx"):
@@ -335,6 +356,21 @@ func invoke_damage():
 	combatnode.turns += 1
 	step += 1
 	queuenode.call_deferred('invoke_resume')
+
+
+# The hit roll becomes known during instancing, several queue stages before damage
+# application. Queue the ordinary impact here so it follows the attack animation
+# more closely while still remaining silent on misses. Explicit dynamic and static
+# effects keep their existing timing in invoke_damage().
+func queue_default_hit_sound(s_skill2):
+	if s_skill2.hit_res == variables.RES_MISS or !parent.tags.has('damage'):
+		return
+	var sounddata = template.sounddata if template.has('sounddata') else {}
+	if !audio.uses_default_combat_hit_sound(sounddata):
+		return
+	var hit_sound = audio.get_default_combat_hit_sound(s_skill2.target)
+	if hit_sound != null:
+		s_skill2.target.displaynode.process_sound(hit_sound)
 
 
 func invoke_postdamage():

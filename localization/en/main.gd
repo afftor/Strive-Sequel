@@ -18,10 +18,13 @@ var TranslationDict = {
 	MENUMODLISTSAFETY = "Mod List Reset",
 	UPDATENOTICETITLE = "Update Available",
 	UPDATENOTICEDOWNLOAD = "Get it",
-	UPDATENOTICEAVAILABLE = "A new version (%s) is available.\nYou are currently on %s.",
-	UPDATENOTICEUNKNOWN = "Could not determine the latest version.\nCheck itch.io to see if an update is available.",
+	UPDATENOTICEAVAILABLE = """A new version (%s) is available.
+You are currently on %s.""",
+	UPDATENOTICEUNKNOWN = """Could not determine the latest version.
+Check itch.io to see if an update is available.""",
 	UPDATENOTICEEXPERIMENTALTITLE = "Experimental Build",
-	UPDATENOTICEEXPERIMENTAL = "You are running an experimental version (%s).\nNewer experimental or stable builds may already be out - check itch.io.",
+	UPDATENOTICEEXPERIMENTAL = """You are running an experimental version (%s).
+Newer experimental or stable builds may already be out - check itch.io.""",
 	UPDATECHECKCONSENT = "Allow the game to check itch.io for new versions on startup? This only sends a request to itch.io - no personal data is collected.",
 	GALLERYNAME = "Gallery",
 	GALLERYSTORY = "Story",
@@ -44,7 +47,12 @@ var TranslationDict = {
 	MODCLOSE = "Close",
 	MODSORT = "Sort",
 	MODOPENEDITOR = "Open Editor (Alpha Version)",
-	MODLISTGAMEVERSIONRESET = "The enabled mod list was made for game version %s, but the current game version is %s.\n\nFor safety, the old mods.ini was backed up to:\n%s\n\nA new empty mods.ini has been created. Please re-enable compatible mods from the Mods menu.",
+	MODLISTGAMEVERSIONRESET = """The enabled mod list was made for game version %s, but the current game version is %s.
+
+For safety, the old mods.ini was backed up to:
+%s
+
+A new empty mods.ini has been created. Please re-enable compatible mods from the Mods menu.""",
 	MENUCREDITSNAME = "Credits",
 	MENUCREDITSDESC = """Game design, writing, programming: Maverik 
 
@@ -83,8 +91,51 @@ https://freesound.org/people/pfranzen/sounds/192072/""",
 	OPTNAME3 = "Audio",
 	OPTNAME4 = "Cheats",
 	OPTNAME5 = "Difficulty",
+	OPTNAMEHOTKEYS = "Hotkeys",
 	OPTOPT = "Options",
 	OPTCLOSE = "Close",
+	HOTKEYGROUP_GLOBAL = "General",
+	HOTKEYGROUP_MANSION = "Mansion",
+	HOTKEYGROUP_COMBAT = "Combat",
+	HOTKEY_UNBOUND = "- none -",
+	HOTKEY_PRESSKEY = "Press a key...",
+	HOTKEY_RESET = "Restore defaults",
+	HOTKEY_CONFLICT = "%s was taken from \"%s\".",
+	HOTKEY_HINT = """Click a key to rebind it. Esc cancels, Delete clears the binding.
+Mansion and combat keys are independent - the same key may be used by both.""",
+	HOTKEY_QUICKSAVE = "Quick save",
+	HOTKEY_QUICKLOAD = "Quick load",
+	HOTKEY_FULLSCREEN = "Toggle fullscreen",
+	HOTKEY_MANSION_TIME_1 = "Pass 1 hour",
+	HOTKEY_MANSION_TIME_2 = "Pass 2 hours",
+	HOTKEY_MANSION_TIME_3 = "Pass 4 hours",
+	HOTKEY_MANSION_WORK = "Work",
+	HOTKEY_MANSION_TRAVELS = "Travels",
+	HOTKEY_MANSION_UPGRADES = "Mansion",
+	HOTKEY_MANSION_SEX = "Sex",
+	HOTKEY_MANSION_INVENTORY = "Inventory",
+	HOTKEY_MANSION_CRAFT = "Craft",
+	HOTKEY_MANSION_JOURNAL = "Journal",
+	HOTKEY_MANSION_MENU = "Game menu",
+	HOTKEY_MANSION_CHAR_INFO = "Character info",
+	HOTKEY_MANSION_TUTORIAL = "Tutorial panel",
+	HOTKEY_COMBAT_SKILL_1 = "Use skill 1",
+	HOTKEY_COMBAT_SKILL_2 = "Use skill 2",
+	HOTKEY_COMBAT_SKILL_3 = "Use skill 3",
+	HOTKEY_COMBAT_SKILL_4 = "Use skill 4",
+	HOTKEY_COMBAT_SKILL_5 = "Use skill 5",
+	HOTKEY_COMBAT_SKILL_6 = "Use skill 6",
+	HOTKEY_COMBAT_SKILL_7 = "Use skill 7",
+	HOTKEY_COMBAT_SKILL_8 = "Use skill 8",
+	HOTKEY_COMBAT_SKILL_9 = "Use skill 9",
+	HOTKEY_COMBAT_ROW_UP = "Previous skill row",
+	HOTKEY_COMBAT_ROW_DOWN = "Next skill row",
+	HOTKEY_COMBAT_SKILLBOOK = "Skill book",
+	HOTKEY_COMBAT_ITEMS = "Items panel",
+	HOTKEY_COMBAT_RUN = "Retreat",
+	QUICKSAVE_BLOCKED = "Can't quick save during combat.",
+	QUICKLOAD_BLOCKED = "Can't quick load during combat.",
+	QUICKLOAD_MISSING = "No quick save found.",
 	TUTORIALS = "Tutorials",
 	LOCATIONLIST = "Location List",
 	BUTTONTRAVEL = "Travel Map",
@@ -479,7 +530,8 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	CHARINFO_SELECTED_FOLDER_HELP = "Selected folder and all subfolders in it will provide images to the required area and will be saved upon exit",
 	CHARINFO_OPEN_DIRECTORY_TITLE = "Open a Directory",
 	CHARINFO_SELECT_DEFAULT_FOLDER_DIALOG = "Select default path folder",
-	CHARINFO_NO_IMAGES_HELP = "[center]You have no images with fitting criterias available.[/center]\n[center]Put your images into portrait folder and hit 'Reload Portraits' button[/center]",
+	CHARINFO_NO_IMAGES_HELP = """[center]You have no images with fitting criterias available.[/center]
+[center]Put your images into portrait folder and hit 'Reload Portraits' button[/center]""",
 	CHARINFO_STATS_BUTTON = "Stats",
 	CHARINFO_SEX_TRAINING_PETTING = "Petting",
 	CHARINFO_SEX_TRAINING_PENETRATION = "Penetration",
@@ -666,6 +718,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	LABELDISLOCATION = "Dislocation",
 	LABELDESTINATION = "Destination",
 	LABELSEXSKILLS = "Sex Training Skills",
+	SLAVE_MARKET_SEX_SKILLS = "Sex Skills",
 	STARTINGADJ = "Starting",
 	FOODTYPEMEAT = "Meat",
 	FOODTYPEFISH = "Fish",
@@ -1183,6 +1236,8 @@ Reduced by enemy's evasion""",
 	CHARCREATE_DIET_HELP = "Meals made of a liked food type last 50% longer.",
 	CHARCREATE_DIET_HELP_TOO_MANY_LIKED = "[color=red]You can only select 1 Liked food type.[/color]",
 	CHARCREATE_DIET_HELP_NO_LIKED = "[color=red]Select 1 Liked food type.[/color]",
+	CHARCREATE_DIET_TITLE = "Select 1 Liked Food Type",
+	CHARCREATE_DIET_DISHES = "Dishes:",
 	CHARCREATE_SYS_FOOD_REQUIRED = "You must select one liked food type.",
 	CHARCREATE_SYS_CLASS_REQUIRED = "You must select a correct starting Class",
 	CHARCREATE_SYS_PERSONALITY_REQUIRED = "You must select a Personality",
@@ -1760,271 +1815,271 @@ Does not take turn to activate. """,
 	SKILLNECRO_AURA = "Mastery of the Dead",
 	SKILLNECRO_AURA_REMOVE = "Turn off Mastery of the Dead",
 	SKILLNECRO_AURADESCRIPT = "Passive Summon: Skeletons. Number skeletons is defined by Magic Factor.",
-	SKILLRAMONT_RIPOSTE_STANCE_SKILL = 'Parry & Riposte Stance',
-	SKILLCOMMAND_EMBARGO = 'Command: Embargo',
-	SKILLCOMMAND_EMBARGODESCRIPT = 'Target another ally in the melee zone. Command them to attack a random enemy, dealing 70% ATK damage and inflicting Provoke.',
-	SKILLRAMONT_EMBRAGO = 'Enforcing Embargo',
-	SKILLRAMONT_EVICTION_NOTICE = 'Eviction Notice',
-	SKILLRAMONT_EVICTION_NOTICEDESCRIPT = 'Deal 85% ATK damage and inflict {color=aqua|Eviction Notice}.',
-	SKILLRAMONT_PIERCING_OBSIDIAN = 'Piercing Obsidian',
-	SKILLRAMONT_PIERCING_OBSIDIANDESCRIPT = 'Deal 135% ATK damage to a row and inflict Bleed. Deal +20% damage against enemies affected by \'{color=aqua|Eviction Notice}\'.',
-	SKILLPROTECT_ME = 'Protect Me!',
-	SKILLPROTECT_MEDESCRIPT = 'The target must not be in the backline. Force the target to take single-target damage for this unit.',
-	SKILLENRAGING_BELITTLEMENT = 'Enraging Belittlement',
+	SKILLRAMONT_RIPOSTE_STANCE_SKILL = "Parry & Riposte Stance",
+	SKILLCOMMAND_EMBARGO = "Command: Embargo",
+	SKILLCOMMAND_EMBARGODESCRIPT = "Target another ally in the melee zone. Command them to attack a random enemy, dealing 70% ATK damage and inflicting Provoke.",
+	SKILLRAMONT_EMBRAGO = "Enforcing Embargo",
+	SKILLRAMONT_EVICTION_NOTICE = "Eviction Notice",
+	SKILLRAMONT_EVICTION_NOTICEDESCRIPT = "Deal 85% ATK damage and inflict {color=aqua|Eviction Notice}.",
+	SKILLRAMONT_PIERCING_OBSIDIAN = "Piercing Obsidian",
+	SKILLRAMONT_PIERCING_OBSIDIANDESCRIPT = "Deal 135% ATK damage to a row and inflict Bleed. Deal +20% damage against enemies affected by '{color=aqua|Eviction Notice}'.",
+	SKILLPROTECT_ME = "Protect Me!",
+	SKILLPROTECT_MEDESCRIPT = "The target must not be in the backline. Force the target to take single-target damage for this unit.",
+	SKILLENRAGING_BELITTLEMENT = "Enraging Belittlement",
 	SKILLENRAGING_BELITTLEMENTDESCRIPT = """(Prioritize Cali) Requires {color=aqua|Vain Pride}.
 Inflict Provoke and Blind on the target.
 At 3+ stacks of {color=aqua|Vain Pride}, also inflict Fear.""",
-	SKILLENRAGING_BELITTLEMENT_CALI = 'Enraging Belittlement',
+	SKILLENRAGING_BELITTLEMENT_CALI = "Enraging Belittlement",
 	SKILLENRAGING_BELITTLEMENT_CALIDESCRIPT = """Requires {color=aqua|Vain Pride}.
 Inflict Provoke and Blind on the target.
 At 3+ stacks of {color=aqua|Vain Pride}, also inflict Fear.""",
-	SKILLOUT_OF_MY_WAY = 'Out of my Way!',
-	SKILLOUT_OF_MY_WAYDESCRIPT = 'Deal 40% ATK damage to the row and another 60% ATK damage to the backline unit.',
-	SKILLYOU_UNGRATFUL_MUTT = 'YOU UNGRATFUL MUTT!!',
-	SKILLYOU_UNGRATFUL_MUTTDESCRIPT = 'Can only be used at 5+ stacks of {color=aqua|Vain Pride}. Deal 185% ATK damage to a line and inflict Shred and Bleed.',
-	SKILLSUPPRESIVE_FIRE = 'Suppressive Fire',
-	SKILLSUPPRESIVE_FIREDESCRIPT = 'Deal 70% ATK damage to a line. Chance to inflict Blind and Ensnare.',
-	SKILLDARK_GIFT = 'Dark Gift',
-	SKILLDARK_GIFTDESCRIPT = 'Deal damage equal to 30% of their Current HP to give them {color=aqua|Dark Gift}.',
-	SKILLPUPPET_ON_A_STRING = 'Puppet on a String',
-	SKILLPUPPET_ON_A_STRINGDESCRIPT = 'Force them to deal 150% ATK damage to a random enemy and take recoil damage equal to 50% of their MATK. If that ally is Kurdan, make him use {color=aqua|Inferno} instead and take damage equal to 30% of his Current HP.',
-	SKILLPUPPET_ATTACK = 'Tug of the Thread',
-	SKILLFORCE_MARTYRDOM = 'Force Martyrdom',
-	SKILLFORCE_MARTYRDOMDESCRIPT = 'Target an ally with less than 30% HP, causing them to explode and die. Deal damage equal to 150% of the target\'s ATK + MATK to all enemies and inflict Fear.',
-	SKILLOVERLOADED_SOUL = 'Overloaded Soul',
-	SKILLI_VE_SEEN_ENOUGH = 'I\'ve seen enough...',
-	SKILLOVERWHELMING_FLAME = 'Overwhelming Flame',
-	SKILLOVERWHELMING_FLAMEDESCRIPT = 'Deal 160% MATK Fire damage and inflict Shred.',
-	SKILLI_MUST_RESIST = 'I...must resist...',
-	SKILLI_MUST_RESISTDESCRIPT = 'Does nothing.',
-	SKILLFOR_THE_PRINCESS = 'For the Princess!',
-	SKILLFOR_THE_PRINCESSDESCRIPT = 'Deal 110% ATK damage to a target. Remove Fear, Taunt, Silence, and Sleep from all allies.',
-	SKILLRICOCHET_SHOT = 'Ricochet Shot',
-	SKILLRICOCHET_SHOTDESCRIPT = 'Deal 50% ATK damage to few enemies.',
-	SKILLLION_SWIPE = 'Lion Swipe',
-	SKILLLION_SWIPEDESCRIPT = 'Deal 85% ATK damage to a line of enemies and inflict Bleed.',
-	SKILLBRAMBLE_TRAP = 'Bramble Trap',
-	SKILLBRAMBLE_TRAPDESCRIPT = 'Place a trap on random targets. The trap triggers when a target uses a skill, dealing 80% of the caster\'s ATK as damage and inflicting Ensnare and Bleed.',
-	SKILLJAW_OF_LIFE = 'Jaw of Life',
-	SKILLJAW_OF_LIFEDESCRIPT = 'Deal 100% ATK damage to an enemy. If the target is Bleeding, heal for 85% of the damage dealt. Otherwise, inflict Bleed.',
-	SKILLPRIMAL_ROAR = 'Primal Roar',
-	SKILLPRIMAL_ROARDESCRIPT = 'Deal 40% MATK Mind damage to all enemies. Chance to inflict Fear and Silence. Heal the user for 235% of the caster\'s ATK.',
-	SKILLMAD_DASH = 'Mad Dash',
-	SKILLMAD_DASHDESCRIPT = 'Deal 110% ATK damage to a row. Chance to inflict Bleed. At 3+ stacks of {color=aqua|Bloodthirst}, consume 1 stack to reuse this move on a random enemy.',
-	SKILLREGRESSION_CURSE_RUN_AMOK = 'Regression Curse: Run Amok',
+	SKILLOUT_OF_MY_WAY = "Out of my Way!",
+	SKILLOUT_OF_MY_WAYDESCRIPT = "Deal 40% ATK damage to the row and another 60% ATK damage to the backline unit.",
+	SKILLYOU_UNGRATFUL_MUTT = "YOU UNGRATFUL MUTT!!",
+	SKILLYOU_UNGRATFUL_MUTTDESCRIPT = "Can only be used at 5+ stacks of {color=aqua|Vain Pride}. Deal 185% ATK damage to a line and inflict Shred and Bleed.",
+	SKILLSUPPRESIVE_FIRE = "Suppressive Fire",
+	SKILLSUPPRESIVE_FIREDESCRIPT = "Deal 70% ATK damage to a line. Chance to inflict Blind and Ensnare.",
+	SKILLDARK_GIFT = "Dark Gift",
+	SKILLDARK_GIFTDESCRIPT = "Deal damage equal to 30% of their Current HP to give them {color=aqua|Dark Gift}.",
+	SKILLPUPPET_ON_A_STRING = "Puppet on a String",
+	SKILLPUPPET_ON_A_STRINGDESCRIPT = "Force them to deal 150% ATK damage to a random enemy and take recoil damage equal to 50% of their MATK. If that ally is Kurdan, make him use {color=aqua|Inferno} instead and take damage equal to 30% of his Current HP.",
+	SKILLPUPPET_ATTACK = "Tug of the Thread",
+	SKILLFORCE_MARTYRDOM = "Force Martyrdom",
+	SKILLFORCE_MARTYRDOMDESCRIPT = "Target an ally with less than 30% HP, causing them to explode and die. Deal damage equal to 150% of the target's ATK + MATK to all enemies and inflict Fear.",
+	SKILLOVERLOADED_SOUL = "Overloaded Soul",
+	SKILLI_VE_SEEN_ENOUGH = "I've seen enough...",
+	SKILLOVERWHELMING_FLAME = "Overwhelming Flame",
+	SKILLOVERWHELMING_FLAMEDESCRIPT = "Deal 160% MATK Fire damage and inflict Shred.",
+	SKILLI_MUST_RESIST = "I...must resist...",
+	SKILLI_MUST_RESISTDESCRIPT = "Does nothing.",
+	SKILLFOR_THE_PRINCESS = "For the Princess!",
+	SKILLFOR_THE_PRINCESSDESCRIPT = "Deal 110% ATK damage to a target. Remove Fear, Taunt, Silence, and Sleep from all allies.",
+	SKILLRICOCHET_SHOT = "Ricochet Shot",
+	SKILLRICOCHET_SHOTDESCRIPT = "Deal 50% ATK damage to few enemies.",
+	SKILLLION_SWIPE = "Lion Swipe",
+	SKILLLION_SWIPEDESCRIPT = "Deal 85% ATK damage to a line of enemies and inflict Bleed.",
+	SKILLBRAMBLE_TRAP = "Bramble Trap",
+	SKILLBRAMBLE_TRAPDESCRIPT = "Place a trap on random targets. The trap triggers when a target uses a skill, dealing 80% of the caster's ATK as damage and inflicting Ensnare and Bleed.",
+	SKILLJAW_OF_LIFE = "Jaw of Life",
+	SKILLJAW_OF_LIFEDESCRIPT = "Deal 100% ATK damage to an enemy. If the target is Bleeding, heal for 85% of the damage dealt. Otherwise, inflict Bleed.",
+	SKILLPRIMAL_ROAR = "Primal Roar",
+	SKILLPRIMAL_ROARDESCRIPT = "Deal 40% MATK Mind damage to all enemies. Chance to inflict Fear and Silence. Heal the user for 235% of the caster's ATK.",
+	SKILLMAD_DASH = "Mad Dash",
+	SKILLMAD_DASHDESCRIPT = "Deal 110% ATK damage to a row. Chance to inflict Bleed. At 3+ stacks of {color=aqua|Bloodthirst}, consume 1 stack to reuse this move on a random enemy.",
+	SKILLREGRESSION_CURSE_RUN_AMOK = "Regression Curse: Run Amok",
 	SKILLREGRESSION_CURSE_RUN_AMOKDESCRIPT = """Deal 110% damage to a single target
 Deal +30% damage against an enemy that has Bleed.
-If the target doesn\'t have Bleed, Leon gains 1 stack of Fragile.
+If the target doesn't have Bleed, Leon gains 1 stack of Fragile.
 Consume 1 stack of {color=aqua|Bloodthirst} to reuse this move against a random target until this unit no longer has {color=aqua|Bloodthirst}.""",
-	SKILLMANCHINEEL_APPLE = 'Manchineel\'s Apple',
-	SKILLMANCHINEEL_APPLEDESCRIPT = 'Deal 120% MATK Earth magic damage to all enemies and inflict Poison.',
-	SKILLSMOTHERING_KUDZU = 'Smothering Kudzu',
-	SKILLSMOTHERING_KUDZUDESCRIPT = """Summon a {color=aqua|Kudzu} plant that engulfs and suffocates a random enemy in melee range, massively reducing their Speed and rendering them unable to act until the {color=aqua|Kudzu} plant is killed.""",
-	SKILLENGULF_BY_EVERGREEN = 'Engulf by Evergreen',
-	SKILLENGULF_BY_EVERGREENDESCRIPT = 'Engulf the target, preventing them from acting until the user is defeated.',
-	SKILLSUFFOCATING_GREENERY = 'Suffocating Greenery',
-	SKILLSUFFOCATING_GREENERYDESCRIPT = 'Inflict Poison. Deal 15% Max HP damage. If the caster is Burning, deal 25% Max HP damage instead.',
-	SKILLSENSING_NUTRIENT = 'its vine searching for new victim...',
-	SKILLSENSING_NUTRIENTDESCRIPT = 'Allow {color=aqua|Engulf by Evergreen} to be used next turn.',
-	SKILLGRASS_GRAZE_BACK = 'The Grass that Graze Back',
-	SKILLGRASS_GRAZE_BACKDESCRIPT = 'Deal 100% ATK {color=yellow|Earth} damage and restore HP equal to 90% of the damage dealt.',
-	SKILLCURSE_PRIMEVAL_REGRESSION = 'Curse: Primeval Regression',
-	SKILLCURSE_PRIMEVAL_REGRESSIONDESCRIPT = 'Inflict {color=aqua|Primeval Regression Curse}, causing the target to attack random units indiscriminately.',
-	SKILLPRIMEVAL_MADNESS = 'Primeval Madness',
-	SKILLLIANA_FLOGGING = 'Liana Flogging',
-	SKILLLIANA_FLOGGINGDESCRIPT = 'Deal 65% ATK damage to 3 random targets. Each hit has a Chance to inflict Stun.',
-	SKILLIMPOSING_PRESSURE = 'Imposing Pressure',
-	SKILLIMPOSING_PRESSUREDESCRIPT = 'Deal 40% MATK Light damage to all enemies. Reduce all enemies\' mana by 20% of the caster\'s MATK. Chance to inflict Fear.',
-	SKILLGORING_RUSH = 'Goring Rush',
-	SKILLGORING_RUSHDESCRIPT = 'Deal 100% ATK {color=yellow|Earth} damage and inflict 1 turn of stun. On miss: On miss: Reuse this skill to the one behind the first target.',
-	SKILLGRAZE_THE_GRASS = 'Graze the Grass',
-	SKILLGRAZE_THE_GRASSDESCRIPT = 'Deal 110% ATK {color=yellow|Earth} damage to a target. If the target has Regen, steal it.',
-	SKILLGRAZE_THE_GRASS_PRIORITY = 'Graze the Grass',
-	SKILLGRAZE_THE_GRASS_PRIORITYDESCRIPT = '(Prioritize targets with Regen) Deal 110% ATK {color=yellow|Earth} damage to a target. If the target has Regen, steal it.',
-	SKILLWILD_TRAMPLING = 'Wild Trampling',
-	SKILLWILD_TRAMPLINGDESCRIPT = 'Deal 65% ATK damage to 3 random targets. Each hit has a Chance to inflict Stun.',
-	SKILLHOW_DISSAPOINTING = 'How dissapointing...',
-	SKILLHOW_DISSAPOINTINGDESCRIPT = 'Deal 120% MATK {color=yellow|Earth} damage to all enemies. Chance to inflict Stun and Ensnare.',
-	SKILLMUDDY_WATER = 'Muddy Water',
-	SKILLMUDDY_WATERDESCRIPT = 'Deal 130% MATK {color=yellow|Water} damage to all targets. Inflict Wet. Chance to inflict Blind and Ensnare.',
-	SKILLENCROACHING_DUSK = 'Encroaching Dusk',
-	SKILLENCROACHING_DUSKDESCRIPT = 'Gain {color=aqua|Fading Light}.',
-	SKILLNIGHT_NIGHT = 'Night Night',
-	SKILLNIGHT_NIGHTDESCRIPT = 'Deal 10% MATK {color=yellow|Dark} damage to all enemies. Inflict {color=aqua|Binding Shadow}, {color=aqua|In the Shadow}, and Blind on all enemies.',
-	SKILLSILENT_NIGHT = 'Silent Night',
-	SKILLSILENT_NIGHTDESCRIPT = 'Remove Silence from self. Gain {color=aqua|Unholy Night}.',
-	SKILLRAZE_THE_LIGHT = 'Raze the Light',
-	SKILLRAZE_THE_LIGHTDESCRIPT = 'Deal 90% MATK {color=yellow|Dark} damage to a line. Inflict {color=aqua|In the Shadow} and Blind. If the target already has {color=aqua|In the Shadow}, inflict {color=aqua|Binding Shadow}.',
-	SKILLBUMP_IN_THE_NIGHT = 'Bump in the Night',
-	SKILLBUMP_IN_THE_NIGHTDESCRIPT = 'Deal 130% MATK {color=yellow|Dark} damage to a target. Inflict Bleed, Shred and Stun.',
-	SKILLSKEWING_SHADOW = 'Skewing Shadow',
-	SKILLSKEWING_SHADOWDESCRIPT = 'Deal 70% MATK {color=yellow|Dark} damage to all enemies. Deal +250% extra damage to targets affected by {color=aqua|Binding Shadow}.',
-	SKILLSUMMON_RANDOM_DK_GUARD = 'Call Reinforcement',
-	SKILLSUMMON_RANDOM_DK_GUARDDESCRIPT = 'Summon a Dwarven Skirmisher, Dwarven Shielder, or Obsidian Golem.',
-	SKILLKILL_THEM_NOW = 'Kill them NOW!',
-	SKILLKILL_THEM_NOWDESCRIPT = 'Apply {color=aqua|Execution Order} to a target in melee range and Taunt all allies to that unit.',
-	SKILLDK_BUFF_ALLY = 'You..',
-	SKILLDK_BUFF_ALLYDESCRIPT = 'Imbues your allies with power.',
-	SKILLREGAL_INCENTIVE = 'I shall grant you Regal Incentive',
-	SKILLFORCE_OVERLOAD = 'Overload your Core, Now!',
-	SKILLCROSSBOWMEN_ON_MY_COMMAND = 'Crossbowmen! On my Command!',
-	SKILLCROSSBOWMEN_ON_MY_COMMANDDESCRIPT = """Call down a rain of arrows on a line, dealing 65% ATK damage. Gains more uses with lower Health""",
-	SKILLDK_BLOW_EM_UP = 'Blow \'em Up!! I\'ll cover the repair cost personally.',
+	SKILLMANCHINEEL_APPLE = "Manchineel's Apple",
+	SKILLMANCHINEEL_APPLEDESCRIPT = "Deal 120% MATK Earth magic damage to all enemies and inflict Poison.",
+	SKILLSMOTHERING_KUDZU = "Smothering Kudzu",
+	SKILLSMOTHERING_KUDZUDESCRIPT = "Summon a {color=aqua|Kudzu} plant that engulfs and suffocates a random enemy in melee range, massively reducing their Speed and rendering them unable to act until the {color=aqua|Kudzu} plant is killed.",
+	SKILLENGULF_BY_EVERGREEN = "Engulf by Evergreen",
+	SKILLENGULF_BY_EVERGREENDESCRIPT = "Engulf the target, preventing them from acting until the user is defeated.",
+	SKILLSUFFOCATING_GREENERY = "Suffocating Greenery",
+	SKILLSUFFOCATING_GREENERYDESCRIPT = "Inflict Poison. Deal 15% Max HP damage. If the caster is Burning, deal 25% Max HP damage instead.",
+	SKILLSENSING_NUTRIENT = "its vine searching for new victim...",
+	SKILLSENSING_NUTRIENTDESCRIPT = "Allow {color=aqua|Engulf by Evergreen} to be used next turn.",
+	SKILLGRASS_GRAZE_BACK = "The Grass that Graze Back",
+	SKILLGRASS_GRAZE_BACKDESCRIPT = "Deal 100% ATK {color=yellow|Earth} damage and restore HP equal to 90% of the damage dealt.",
+	SKILLCURSE_PRIMEVAL_REGRESSION = "Curse: Primeval Regression",
+	SKILLCURSE_PRIMEVAL_REGRESSIONDESCRIPT = "Inflict {color=aqua|Primeval Regression Curse}, causing the target to attack random units indiscriminately.",
+	SKILLPRIMEVAL_MADNESS = "Primeval Madness",
+	SKILLLIANA_FLOGGING = "Liana Flogging",
+	SKILLLIANA_FLOGGINGDESCRIPT = "Deal 65% ATK damage to 3 random targets. Each hit has a Chance to inflict Stun.",
+	SKILLIMPOSING_PRESSURE = "Imposing Pressure",
+	SKILLIMPOSING_PRESSUREDESCRIPT = "Deal 40% MATK Light damage to all enemies. Reduce all enemies' mana by 20% of the caster's MATK. Chance to inflict Fear.",
+	SKILLGORING_RUSH = "Goring Rush",
+	SKILLGORING_RUSHDESCRIPT = "Deal 100% ATK {color=yellow|Earth} damage and inflict 1 turn of stun. On miss: On miss: Reuse this skill to the one behind the first target.",
+	SKILLGRAZE_THE_GRASS = "Graze the Grass",
+	SKILLGRAZE_THE_GRASSDESCRIPT = "Deal 110% ATK {color=yellow|Earth} damage to a target. If the target has Regen, steal it.",
+	SKILLGRAZE_THE_GRASS_PRIORITY = "Graze the Grass",
+	SKILLGRAZE_THE_GRASS_PRIORITYDESCRIPT = "(Prioritize targets with Regen) Deal 110% ATK {color=yellow|Earth} damage to a target. If the target has Regen, steal it.",
+	SKILLWILD_TRAMPLING = "Wild Trampling",
+	SKILLWILD_TRAMPLINGDESCRIPT = "Deal 65% ATK damage to 3 random targets. Each hit has a Chance to inflict Stun.",
+	SKILLHOW_DISSAPOINTING = "How dissapointing...",
+	SKILLHOW_DISSAPOINTINGDESCRIPT = "Deal 120% MATK {color=yellow|Earth} damage to all enemies. Chance to inflict Stun and Ensnare.",
+	SKILLMUDDY_WATER = "Muddy Water",
+	SKILLMUDDY_WATERDESCRIPT = "Deal 130% MATK {color=yellow|Water} damage to all targets. Inflict Wet. Chance to inflict Blind and Ensnare.",
+	SKILLENCROACHING_DUSK = "Encroaching Dusk",
+	SKILLENCROACHING_DUSKDESCRIPT = "Gain {color=aqua|Fading Light}.",
+	SKILLNIGHT_NIGHT = "Night Night",
+	SKILLNIGHT_NIGHTDESCRIPT = "Deal 10% MATK {color=yellow|Dark} damage to all enemies. Inflict {color=aqua|Binding Shadow}, {color=aqua|In the Shadow}, and Blind on all enemies.",
+	SKILLSILENT_NIGHT = "Silent Night",
+	SKILLSILENT_NIGHTDESCRIPT = "Remove Silence from self. Gain {color=aqua|Unholy Night}.",
+	SKILLRAZE_THE_LIGHT = "Raze the Light",
+	SKILLRAZE_THE_LIGHTDESCRIPT = "Deal 90% MATK {color=yellow|Dark} damage to a line. Inflict {color=aqua|In the Shadow} and Blind. If the target already has {color=aqua|In the Shadow}, inflict {color=aqua|Binding Shadow}.",
+	SKILLBUMP_IN_THE_NIGHT = "Bump in the Night",
+	SKILLBUMP_IN_THE_NIGHTDESCRIPT = "Deal 130% MATK {color=yellow|Dark} damage to a target. Inflict Bleed, Shred and Stun.",
+	SKILLSKEWING_SHADOW = "Skewing Shadow",
+	SKILLSKEWING_SHADOWDESCRIPT = "Deal 70% MATK {color=yellow|Dark} damage to all enemies. Deal +250% extra damage to targets affected by {color=aqua|Binding Shadow}.",
+	SKILLSUMMON_RANDOM_DK_GUARD = "Call Reinforcement",
+	SKILLSUMMON_RANDOM_DK_GUARDDESCRIPT = "Summon a Dwarven Skirmisher, Dwarven Shielder, or Obsidian Golem.",
+	SKILLKILL_THEM_NOW = "Kill them NOW!",
+	SKILLKILL_THEM_NOWDESCRIPT = "Apply {color=aqua|Execution Order} to a target in melee range and Taunt all allies to that unit.",
+	SKILLDK_BUFF_ALLY = "You..",
+	SKILLDK_BUFF_ALLYDESCRIPT = "Imbues your allies with power.",
+	SKILLREGAL_INCENTIVE = "I shall grant you Regal Incentive",
+	SKILLFORCE_OVERLOAD = "Overload your Core, Now!",
+	SKILLCROSSBOWMEN_ON_MY_COMMAND = "Crossbowmen! On my Command!",
+	SKILLCROSSBOWMEN_ON_MY_COMMANDDESCRIPT = "Call down a rain of arrows on a line, dealing 65% ATK damage. Gains more uses with lower Health",
+	SKILLDK_BLOW_EM_UP = "Blow 'em Up!! I'll cover the repair cost personally.",
 	SKILLDK_BLOW_EM_UPDESCRIPT = """Call for a bombardment against his enemy.
 Deal 110% MATK Fire damage to 2-3 random targets with a Chance to inflict Knock Prone.
 Repeat 2 times. Repeats more times with lower health""",
-	SKILLEMPEROR_HAMMERFALL = 'Emperor\'s Hammerfall',
-	SKILLEMPEROR_HAMMERFALLDESCRIPT = 'Deal 150% ATK {color=yellow|Earth} damage and inflict Stun, followed by a shockwave that deals 30% ATK damage to all enemies and has a chance to inflict Knock Prone.',
-	SKILLOPEN_THE_MAGMA_CHAMBER = 'That\'s it! Open the Magma Chamber Gate!!!',
+	SKILLEMPEROR_HAMMERFALL = "Emperor's Hammerfall",
+	SKILLEMPEROR_HAMMERFALLDESCRIPT = "Deal 150% ATK {color=yellow|Earth} damage and inflict Stun, followed by a shockwave that deals 30% ATK damage to all enemies and has a chance to inflict Knock Prone.",
+	SKILLOPEN_THE_MAGMA_CHAMBER = "That's it! Open the Magma Chamber Gate!!!",
 	SKILLOPEN_THE_MAGMA_CHAMBERDESCRIPT = """Deal (190% MATK + 34% target Max HP) fire magic damage to all enemies.
 EVERYONE including allies and caster gain burn.""",
-	SKILLTREMOR_WAVE = 'Tremor Wave',
-	SKILLTREMOR_WAVEDESCRIPT = 'Deal 40% ATK {color=yellow|Earth} damage to all enemies. Chance to inflict Knock Prone.',
-	SKILLDOUBLE_BITTED_AXE = 'Double-bitted axe',
-	SKILLDOUBLE_BITTED_AXEDESCRIPT = 'Hit the target twice, dealing 60% ATK damage per hit. Inflicts Bleed.',
-	SKILLPRISMATIC_BEAM = 'Prismatic Beam',
-	SKILLPRISMATIC_BEAMDESCRIPT = 'Deal 130% MATK Light damage to a single target. Inflicts Blind.',
-	SKILROCK_SLIDE = 'Rock Slide',
-	SKILLROCK_SLIDEDESCRIPT = 'Send rocks flying at enemies, with a chance to deal 90% MATK {color=yellow|Earth} damage. Chance to Stun targets hit.',
-	SKILLACCELERATING_PLUNGE = 'Accelerating Plunge',
+	SKILLTREMOR_WAVE = "Tremor Wave",
+	SKILLTREMOR_WAVEDESCRIPT = "Deal 40% ATK {color=yellow|Earth} damage to all enemies. Chance to inflict Knock Prone.",
+	SKILLDOUBLE_BITTED_AXE = "Double-bitted axe",
+	SKILLDOUBLE_BITTED_AXEDESCRIPT = "Hit the target twice, dealing 60% ATK damage per hit. Inflicts Bleed.",
+	SKILLPRISMATIC_BEAM = "Prismatic Beam",
+	SKILLPRISMATIC_BEAMDESCRIPT = "Deal 130% MATK Light damage to a single target. Inflicts Blind.",
+	SKILROCK_SLIDE = "Rock Slide",
+	SKILLROCK_SLIDEDESCRIPT = "Send rocks flying at enemies, with a chance to deal 90% MATK {color=yellow|Earth} damage. Chance to Stun targets hit.",
+	SKILLACCELERATING_PLUNGE = "Accelerating Plunge",
 	SKILLACCELERATING_PLUNGEDESCRIPT = """If this unit does not have an immobilizing effect, gain a stack of [{color=aqua|Catastrophic Momentum}].
 Otherwise, cleanse all immobilizing effects.""",
-	SKILLCOMET_DIVE = 'Comet Dive',
+	SKILLCOMET_DIVE = "Comet Dive",
 	SKILLCOMET_DIVEDESCRIPT = """Deal 140% ATK damage to the target with [{color=aqua|Prey of Bird}].
 At 2+ stacks of [{color=aqua|Catastrophic Momentum}], cause a shockwave that deals 165% MATK {color=yellow|Air} damage to all enemies and inflicts Knock Prone. The shockwave can be blocked by some effects like {color=aqua|Earth Shield}.""",
-	SKILLTORNADO = 'Tornado',
-	SKILLTORNADODESCRIPT = 'Summon a Tornado.',
-	SKILLDOWNBURST_GUST = 'Downburst Gust',
-	SKILLDOWNBURST_GUSTDESCRIPT = 'Deal 120% MATK {color=yellow|Air} damage to the frontmost enemy in each row. Chancet to inflict Knock Prone and Blind.',
-	SKILLDEAFENING_SHRIEK = 'Deafening Shriek',
-	SKILLDEAFENING_SHRIEKDESCRIPT = 'Deal 40% MATK {color=yellow|Air} damage. Chance to inflict Stun and Silence.',
-	SKILLMULTILATE_PREY = 'Multilate Prey',
-	SKILLMULTILATE_PREYDESCRIPT = 'Deal 60% ATK damage to the target 3 times, with a chance to inflict Bleed. Deal more damage against Knocked Prone and immobilized targets.',
-	SKILLCHARGE_THROUGH = 'Charge Through',
-	SKILLCHARGE_THROUGHDESCRIPT = 'Deal 100% ATK damage to a row with Chance of inflicting Knock Prone.',
-	SKILLSTORM_PATH = 'Storm Path',
-	SKILLSTORM_PATHDESCRIPT = 'Deal 130% MATK {color=yellow|Air} damage to a row. Randomly inflict Blind, Knock Prone, or Stun. Deal +50% extra damage against flying enemies and remove {color=aqua|Flight}. On skill end: Die.',
-	SKILLSPLIT_ARMOR_SPILL_BLOOD = 'Split the Armor, Spill the blood',
-	SKILLSPLIT_ARMOR_SPILL_BLOODDESCRIPT = 'Attack twice, dealing 45% ATK damage per hit. The first hit inflicts Shred; the second inflicts Bleed and 50% healing reduction.',
-	SKILLDUSTY_WHIRLWIND = 'Dusty Whirlwind',
-	SKILLDUSTY_WHIRLWINDDESCRIPT = 'Deal 85% ATK damage to the melee line, with a Chance to inflict Blind.',
-	SKILLBLURRING_FLURRY_OF_BLADE = 'Blurring Flurry of Blade',
-	SKILLBLURRING_FLURRY_OF_BLADEDESCRIPT = 'Hit the enemy 3 times for 35% ATK damage. Each hit has a Chance to inflict Bleed. Gain {color=aqua|In the Shadow}.',
-	SKILLBLINDING_CROSS_SLASH = 'Blinding Cross Slash',
-	SKILLBLINDING_CROSS_SLASHDESCRIPT = 'Deal 25% ATK damage to enemies in a row and a line. Each hit has a Chance to inflict Blind.',
-	SKILLDISPOSAL = 'Disposal',
-	SKILLDISPOSALDESCRIPT = """Deal 150% ATK damage. Deals extra damage to Blinded and Bleeding enemies""",
-	RUNNING_AWAY_TEXT = '%s: I gotta get out of here!',
-	SKILLHOWLING_RISING_AXE = 'Howling Rising Axe',
-	SKILLHOWLING_RISING_AXEDESCRIPT = 'Hold up the axe and scream at enemies in an attempt to intimidate them. Gain {color=aqua|Axe Raised}. Chance to inflict Fear.',
-	SKILLCLUMSY_LOG_SPLITTER = 'Clumsy Log Splitter',
-	SKILLCLUMSY_LOG_SPLITTERDESCRIPT = 'Deal 155% ATK damage to the target... But it\'s very inaccurate.',
-	SKILLBRUTAL_AXE_SWING = 'Brutal Axe Swing!',
-	SKILLBRUTAL_AXE_SWINGDESCRIPT = 'Hit all enemies in a line for 90% ATK damage, but hits your allies sometimes.',
-	SKILLFAT_BANDIT_CHARGE = 'CHARGE!!!',
-	SKILLFAT_BANDIT_CHARGEDESCRIPT = 'Deal 110% ATK damage to a target. Hit or miss... take recoil damage.',
-	SKILLCONFUSING_ORDER = 'Confusing Order?',
-	SKILLCONFUSING_ORDERDESCRIPT = 'Grant an ally the {color=aqua|Genius Plan...?} buff! ...but also Stun them...',
-	SKILLREDHEAD_MASTERFUL_SWORDMANSHIP = 'Behold! My Masterful Swordmanship!',
-	SKILLREDHEAD_MASTERFUL_SWORDMANSHIPDESCRIPT = 'Attack an enemy 3 times, dealing 45% ATK damage per hit... with a poor precision, though. It\'s just him flailing his sword.',
-	SKILLBEAT_EM_UP = 'Beat \'em up!',
-	SKILLBEAT_EM_UPDESCRIPT = 'Order all allies, including the caster, to attack a random enemy in melee range, dealing 100% ATK damage. There is a Chance they might accidentally hit each other instead.',
-	SKILLREDHEAD_MAGIC = 'Sorcerer Art: Hellfire Bullet!!',
-	SKILLREDHEAD_MAGICDESCRIPT = 'The boss\'s strongest magical move!! Definitely gonna deal a lot of Fire damage! (nervous chuckle)... Prepare yourself!',
-	SKILLSTRAIGHT_FORWARD_SLASH = 'Straight-forward Slash',
-	SKILLSTRAIGHT_FORWARD_SLASHDESCRIPT = 'Deal 85% of ATK as physical damage. The special thing about it is there\'s nothing special about it!',
-	SKILLGOD_THIS_IS_EMBARRASSING = 'God, this is embarrassing...',
-	SKILLGOD_THIS_IS_EMBARRASSINGDESCRIPT = 'Does nothing.',
-	SKILLFLIMSY_DAGGER_TOSS = 'Flimsy Dagger Toss',
-	SKILLFLIMSY_DAGGER_TOSSDESCRIPT = 'Make a ranged attack against an enemy, dealing 65% ATK damage... If it hits.',
-	SKILLDONT_MIND_ME = '...Don\'t Mind me',
-	SKILLDONT_MIND_MEDESCRIPT = 'Gain \'{color=aqua|In the Shadows}\'.',
+	SKILLTORNADO = "Tornado",
+	SKILLTORNADODESCRIPT = "Summon a Tornado.",
+	SKILLDOWNBURST_GUST = "Downburst Gust",
+	SKILLDOWNBURST_GUSTDESCRIPT = "Deal 120% MATK {color=yellow|Air} damage to the frontmost enemy in each row. Chancet to inflict Knock Prone and Blind.",
+	SKILLDEAFENING_SHRIEK = "Deafening Shriek",
+	SKILLDEAFENING_SHRIEKDESCRIPT = "Deal 40% MATK {color=yellow|Air} damage. Chance to inflict Stun and Silence.",
+	SKILLMULTILATE_PREY = "Multilate Prey",
+	SKILLMULTILATE_PREYDESCRIPT = "Deal 60% ATK damage to the target 3 times, with a chance to inflict Bleed. Deal more damage against Knocked Prone and immobilized targets.",
+	SKILLCHARGE_THROUGH = "Charge Through",
+	SKILLCHARGE_THROUGHDESCRIPT = "Deal 100% ATK damage to a row with Chance of inflicting Knock Prone.",
+	SKILLSTORM_PATH = "Storm Path",
+	SKILLSTORM_PATHDESCRIPT = "Deal 130% MATK {color=yellow|Air} damage to a row. Randomly inflict Blind, Knock Prone, or Stun. Deal +50% extra damage against flying enemies and remove {color=aqua|Flight}. On skill end: Die.",
+	SKILLSPLIT_ARMOR_SPILL_BLOOD = "Split the Armor, Spill the blood",
+	SKILLSPLIT_ARMOR_SPILL_BLOODDESCRIPT = "Attack twice, dealing 45% ATK damage per hit. The first hit inflicts Shred; the second inflicts Bleed and 50% healing reduction.",
+	SKILLDUSTY_WHIRLWIND = "Dusty Whirlwind",
+	SKILLDUSTY_WHIRLWINDDESCRIPT = "Deal 85% ATK damage to the melee line, with a Chance to inflict Blind.",
+	SKILLBLURRING_FLURRY_OF_BLADE = "Blurring Flurry of Blade",
+	SKILLBLURRING_FLURRY_OF_BLADEDESCRIPT = "Hit the enemy 3 times for 35% ATK damage. Each hit has a Chance to inflict Bleed. Gain {color=aqua|In the Shadow}.",
+	SKILLBLINDING_CROSS_SLASH = "Blinding Cross Slash",
+	SKILLBLINDING_CROSS_SLASHDESCRIPT = "Deal 25% ATK damage to enemies in a row and a line. Each hit has a Chance to inflict Blind.",
+	SKILLDISPOSAL = "Disposal",
+	SKILLDISPOSALDESCRIPT = "Deal 150% ATK damage. Deals extra damage to Blinded and Bleeding enemies",
+	RUNNING_AWAY_TEXT = "%s: I gotta get out of here!",
+	SKILLHOWLING_RISING_AXE = "Howling Rising Axe",
+	SKILLHOWLING_RISING_AXEDESCRIPT = "Hold up the axe and scream at enemies in an attempt to intimidate them. Gain {color=aqua|Axe Raised}. Chance to inflict Fear.",
+	SKILLCLUMSY_LOG_SPLITTER = "Clumsy Log Splitter",
+	SKILLCLUMSY_LOG_SPLITTERDESCRIPT = "Deal 155% ATK damage to the target... But it's very inaccurate.",
+	SKILLBRUTAL_AXE_SWING = "Brutal Axe Swing!",
+	SKILLBRUTAL_AXE_SWINGDESCRIPT = "Hit all enemies in a line for 90% ATK damage, but hits your allies sometimes.",
+	SKILLFAT_BANDIT_CHARGE = "CHARGE!!!",
+	SKILLFAT_BANDIT_CHARGEDESCRIPT = "Deal 110% ATK damage to a target. Hit or miss... take recoil damage.",
+	SKILLCONFUSING_ORDER = "Confusing Order?",
+	SKILLCONFUSING_ORDERDESCRIPT = "Grant an ally the {color=aqua|Genius Plan...?} buff! ...but also Stun them...",
+	SKILLREDHEAD_MASTERFUL_SWORDMANSHIP = "Behold! My Masterful Swordmanship!",
+	SKILLREDHEAD_MASTERFUL_SWORDMANSHIPDESCRIPT = "Attack an enemy 3 times, dealing 45% ATK damage per hit... with a poor precision, though. It's just him flailing his sword.",
+	SKILLBEAT_EM_UP = "Beat 'em up!",
+	SKILLBEAT_EM_UPDESCRIPT = "Order all allies, including the caster, to attack a random enemy in melee range, dealing 100% ATK damage. There is a Chance they might accidentally hit each other instead.",
+	SKILLREDHEAD_MAGIC = "Sorcerer Art: Hellfire Bullet!!",
+	SKILLREDHEAD_MAGICDESCRIPT = "The boss's strongest magical move!! Definitely gonna deal a lot of Fire damage! (nervous chuckle)... Prepare yourself!",
+	SKILLSTRAIGHT_FORWARD_SLASH = "Straight-forward Slash",
+	SKILLSTRAIGHT_FORWARD_SLASHDESCRIPT = "Deal 85% of ATK as physical damage. The special thing about it is there's nothing special about it!",
+	SKILLGOD_THIS_IS_EMBARRASSING = "God, this is embarrassing...",
+	SKILLGOD_THIS_IS_EMBARRASSINGDESCRIPT = "Does nothing.",
+	SKILLFLIMSY_DAGGER_TOSS = "Flimsy Dagger Toss",
+	SKILLFLIMSY_DAGGER_TOSSDESCRIPT = "Make a ranged attack against an enemy, dealing 65% ATK damage... If it hits.",
+	SKILLDONT_MIND_ME = "...Don't Mind me",
+	SKILLDONT_MIND_MEDESCRIPT = "Gain '{color=aqua|In the Shadows}'.",
 	SKILL_ASMEDAI_LUST_DRAIN = """Ashmedai drain %s's lust to empower himself!
 """,
-	SKILLBAD_TOUCH = 'Bad Touch',
-	SKILLBAD_TOUCHDESCRIPT = 'Deal 90% ATK damage to a target. Inflict {color=aqua|Arousal} on hit.',
-	SKILLAMBUSHING_TENDRILS = 'Ambushing Tendrils',
-	SKILLAMBUSHING_TENDRILSDESCRIPT = 'Apply Tendril Trap to random enemies. The trap activates when the target uses a spell.',
-	SKILLVILE_PHEROMONE = 'Vile Pheromone',
-	SKILLVILE_PHEROMONEDESCRIPT = 'Deal {color=yellow|Mind} damage to all enemies. Inflict 1–5 {color=aqua|Arousal}.',
-	SKILLAPHRODISIAC_BOMBARDMENT = 'Aphrodisiac Bombardment',
-	SKILLAPHRODISIAC_BOMBARDMENTDESCRIPT = 'Deal 65% MATK {color=yellow|Dark} damage to random enemies. Inflict {color=aqua|Arousal}.',
-	SKILLTIDE_OF_TENTACLES = 'Tide of Tentacles',
-	SKILLTIDE_OF_TENTACLESDESCRIPT = 'Deal 85% ATK {color=yellow|Dark} damage to the front-most enemy in each row. Inflict {color=aqua|Ensnared}.',
-	SKILLASHMEDAI_WWBOP = 'Welcome to My Belly, the Bed of Pleasure',
+	SKILLBAD_TOUCH = "Bad Touch",
+	SKILLBAD_TOUCHDESCRIPT = "Deal 90% ATK damage to a target. Inflict {color=aqua|Arousal} on hit.",
+	SKILLAMBUSHING_TENDRILS = "Ambushing Tendrils",
+	SKILLAMBUSHING_TENDRILSDESCRIPT = "Apply Tendril Trap to random enemies. The trap activates when the target uses a spell.",
+	SKILLVILE_PHEROMONE = "Vile Pheromone",
+	SKILLVILE_PHEROMONEDESCRIPT = "Deal {color=yellow|Mind} damage to all enemies. Inflict 1–5 {color=aqua|Arousal}.",
+	SKILLAPHRODISIAC_BOMBARDMENT = "Aphrodisiac Bombardment",
+	SKILLAPHRODISIAC_BOMBARDMENTDESCRIPT = "Deal 65% MATK {color=yellow|Dark} damage to random enemies. Inflict {color=aqua|Arousal}.",
+	SKILLTIDE_OF_TENTACLES = "Tide of Tentacles",
+	SKILLTIDE_OF_TENTACLESDESCRIPT = "Deal 85% ATK {color=yellow|Dark} damage to the front-most enemy in each row. Inflict {color=aqua|Ensnared}.",
+	SKILLASHMEDAI_WWBOP = "Welcome to My Belly, the Bed of Pleasure",
 	SKILLASHMEDAI_WWBOPDESCRIPT = """Can only be used on a {color=aqua|Stunned} target.
 {color=aqua|Swallow} a target. A {color=aqua|Swallowed} target cannot act, cannot be healed by allies, and loses 20% HP at the start of its turn.""",
-	SKILLASHMEDAI_REGEN_APPENDAGE = 'Regenerate Appendage',
-	SKILLASHMEDAI_REGEN_APPENDAGEDESCRIPT = 'Revive a Tentacle Appendage at the cost of the user\'s HP.',
-	SKILLTENTACLE_LASSO = 'Tentacle Lasso',
-	SKILLTENTACLE_LASSODESCRIPT = 'Deal damage and inflict {color=aqua|Ensnared} for 3 turns.',
-	SKILLSTICKY_FLUIDS = 'Sticky Fluids',
-	SKILLSTICKY_FLUIDSDESCRIPT = 'Deal 65% MATK {color=yellow|Water} damage to 1–3 random enemies with a chance to inflict {color=aqua|Ensnared} for 2 turns.',
-	SKILLCONSTRICTING_BIND = 'Constricting Bind',
+	SKILLASHMEDAI_REGEN_APPENDAGE = "Regenerate Appendage",
+	SKILLASHMEDAI_REGEN_APPENDAGEDESCRIPT = "Revive a Tentacle Appendage at the cost of the user's HP.",
+	SKILLTENTACLE_LASSO = "Tentacle Lasso",
+	SKILLTENTACLE_LASSODESCRIPT = "Deal damage and inflict {color=aqua|Ensnared} for 3 turns.",
+	SKILLSTICKY_FLUIDS = "Sticky Fluids",
+	SKILLSTICKY_FLUIDSDESCRIPT = "Deal 65% MATK {color=yellow|Water} damage to 1–3 random enemies with a chance to inflict {color=aqua|Ensnared} for 2 turns.",
+	SKILLCONSTRICTING_BIND = "Constricting Bind",
 	SKILLCONSTRICTING_BINDDESCRIPT = """Can only be used on {color=aqua|Ensnared} targets.
 Deal 130% ATK damage and inflict {color=aqua|Arousal}.""",
-	SKILLBURST_FORTH_MY_PULSING_FLESH = 'Burst Forth My Pulsing Flesh!',
-	SKILLBURST_FORTH_MY_PULSING_FLESHDESCRIPT = """Revive all Tentacle Appendages. Deal {color=yellow|Dark} damage to all enemies with a chance to inflict {color=aqua|Stunned}.""",
-	SKILLUMBRAL_REIGN = 'Umbral Reign',
-	SKILLUMBRAL_REIGNDESCRIPT = 'Inflict In the Shadow, Blind, and Lost in Darkness.',
-	SKILLSHADOW_MADE_MANIFEST = 'Shadow Made Manifest',
-	SKILLSHADOW_MADE_MANIFESTDESCRIPT = 'Summon a Shadow Monstrosity.',
-	SKILLSTYGIAN_WAILING = 'Stygian Wailing',
-	SKILLSTYGIAN_WAILINGDESCRIPT = 'Deal low {color=yellow|Dark} magic damage to all enemies. Chance to inflict Silence and Fear.',
-	SKILLTENEBROUS_RAKE = 'Tenebrous Rake',
-	SKILLTENEBROUS_RAKEDESCRIPT = 'Deal {color=yellow|Dark} physical damage to enemies in the melee line and inflict Bleed.',
-	SKILLVOID_DELUGE = 'Void Deluge',
-	SKILLVOID_DELUGEDESCRIPT = 'Deal {color=yellow|Dark} magic damage to random targets. Chance to inflict Blind.',
-	SKILLCALIGINOUS_UNDULATION = 'Caliginous Undulation',
+	SKILLBURST_FORTH_MY_PULSING_FLESH = "Burst Forth My Pulsing Flesh!",
+	SKILLBURST_FORTH_MY_PULSING_FLESHDESCRIPT = "Revive all Tentacle Appendages. Deal {color=yellow|Dark} damage to all enemies with a chance to inflict {color=aqua|Stunned}.",
+	SKILLUMBRAL_REIGN = "Umbral Reign",
+	SKILLUMBRAL_REIGNDESCRIPT = "Inflict In the Shadow, Blind, and Lost in Darkness.",
+	SKILLSHADOW_MADE_MANIFEST = "Shadow Made Manifest",
+	SKILLSHADOW_MADE_MANIFESTDESCRIPT = "Summon a Shadow Monstrosity.",
+	SKILLSTYGIAN_WAILING = "Stygian Wailing",
+	SKILLSTYGIAN_WAILINGDESCRIPT = "Deal low {color=yellow|Dark} magic damage to all enemies. Chance to inflict Silence and Fear.",
+	SKILLTENEBROUS_RAKE = "Tenebrous Rake",
+	SKILLTENEBROUS_RAKEDESCRIPT = "Deal {color=yellow|Dark} physical damage to enemies in the melee line and inflict Bleed.",
+	SKILLVOID_DELUGE = "Void Deluge",
+	SKILLVOID_DELUGEDESCRIPT = "Deal {color=yellow|Dark} magic damage to random targets. Chance to inflict Blind.",
+	SKILLCALIGINOUS_UNDULATION = "Caliginous Undulation",
 	SKILLCALIGINOUS_UNDULATIONDESCRIPT = """Deal {color=yellow|Dark} damage to the front-most enemies in each row and inflict Blind.
 	Stun blinded targets.""",
-	SKILLNIXX_ULT = 'Pulvis et Umbra Estis!',
+	SKILLNIXX_ULT = "Pulvis et Umbra Estis!",
 	SKILLNIXX_ULTDESCRIPT = """Deal {color=yellow|Dark} magic damage to all enemies.
 	Deal increased damage to Blind enemies.
 	Inflict healing reduction on all enemies.
 	Put out Brazier afterward.""",
-	SKILLNOTHING = 'Nothing',
-	SKILLNOTHINGDESCRIPT = 'Do nothing.',
-	SKILLSMOTHER_THE_FLAME = 'Smother the Flame',
-	SKILLSMOTHER_THE_FLAMEDESCRIPT = 'Can only target an Unlit Brazier. Heal for 100% of this unit\'s ATK and remove Burn.',
-	SKILLBUMP_IN_THE_MIDNIGHT = 'Bump in the Midnight',
-	SKILLBUMP_IN_THE_MIDNIGHTDESCRIPT = 'Deal {color=yellow|Dark} physical damage to a target. Inflict Bleed, Shred, and Fear.',
-	SKILLGLINT_OF_THE_SWORD = 'Glint of the Sword',
+	SKILLNOTHING = "Nothing",
+	SKILLNOTHINGDESCRIPT = "Do nothing.",
+	SKILLSMOTHER_THE_FLAME = "Smother the Flame",
+	SKILLSMOTHER_THE_FLAMEDESCRIPT = "Can only target an Unlit Brazier. Heal for 100% of this unit's ATK and remove Burn.",
+	SKILLBUMP_IN_THE_MIDNIGHT = "Bump in the Midnight",
+	SKILLBUMP_IN_THE_MIDNIGHTDESCRIPT = "Deal {color=yellow|Dark} physical damage to a target. Inflict Bleed, Shred, and Fear.",
+	SKILLGLINT_OF_THE_SWORD = "Glint of the Sword",
 	SKILLGLINT_OF_THE_SWORDDESCRIPT = """Stealth-casting skill.
 Deal physical damage to a target and inflict {color=aqua|Blind}.
 If the target is already {color=aqua|Blind}, gain {color=aqua|In the Shadow}.""",
-	SKILLLACERATING_DANCE = 'Lacerating Dance',
+	SKILLLACERATING_DANCE = "Lacerating Dance",
 	SKILLLACERATING_DANCEDESCRIPT = """Stealth-casting skill.
 Deal low physical damage to random targets and inflict {color=aqua|Bleed}.
 If a target is {color=aqua|Blind}, also inflict {color=aqua|Shred}.
 If the user is {color=aqua|In the Shadow}, deal increased damage.""",
-	SKILLISOLATE = 'Isolate',
+	SKILLISOLATE = "Isolate",
 	SKILLISOLATEDESCRIPT = """Stealth-casting skill.
 Deal physical damage to a backline target and inflict {color=aqua|Blind} on all enemies other than the target.
 If the user is {color=aqua|In the Shadow}, inflict {color=aqua|Close Confrontation} on the main target.""",
-	SKILLDISENGAGE = 'Disengage',
+	SKILLDISENGAGE = "Disengage",
 	SKILLDISENGAGEDESCRIPT = """Deal low physical damage to a melee target.
 Remove {color=aqua|Disarm}, {color=aqua|Taunt}, {color=aqua|Blind}, {color=aqua|Ensnare}, {color=aqua|Burn}, and {color=aqua|Wet} from self.
 Heal self for a small portion of Max HP.
 Gain {color=aqua|In the Shadow} and {color=aqua|Tightened Grip}.""",
-	SKILLWAKE_OF_BLACKENED_BLADE = 'Wake of Blackened Blade',
+	SKILLWAKE_OF_BLACKENED_BLADE = "Wake of Blackened Blade",
 	SKILLWAKE_OF_BLACKENED_BLADEDESCRIPT = """Deal {color=yellow|Dark} damage to the front-most enemies in each row and inflict {color=aqua|Blind}.
 Gain {color=aqua|Blackened Blade}.""",
-	SKILLGREG_LAST_BARK = 'I Hate... All of You... All of THIS!!',
+	SKILLGREG_LAST_BARK = "I Hate... All of You... All of THIS!!",
 	SKILLGREG_LAST_BARKDESCRIPT = """Repeatedly deal physical damage to a target.
 Sequentially inflict {color=aqua|Ensnare}, {color=aqua|Disarm}, {color=aqua|Blind}, and {color=aqua|Shred}.
 The last hit deals increased damage.
 {color=red|On Kill: Reset cooldown.}""",
-	SKILLOMINOUS_WHISPERS = 'Ominous Whispers',
-	SKILLOMINOUS_WHISPERSDESCRIPT = 'Deal low {color=yellow|Mind} magical damage to all enemies and inflict {color=aqua|Fear}. If target HP is below 50%, also inflict {color=aqua|Shattered}.',
-	SKILLHEXED_COFFIN_NAIL = 'Hexed Coffin Nail',
-	SKILLHEXED_COFFIN_NAILDESCRIPT = 'Deal {color=yellow|Dark} physical damage to an enemy. Inflict {color=aqua|Bleed}. Moderate chance to inflict {color=aqua|Cursed}',
-	SKILLCRAZED_SPIRIT_POSSESSION = 'Crazed Spirit Possession',
-	SKILLCRAZED_SPIRIT_POSSESSIONDESCRIPT = 'Deal physical damage to 2 random rows of enemies. If target is affected by {color=aqua|Fear}, deal additional {color=yellow|Dark} magical damage and inflict {color=aqua|Cursed}.',
-	SKILLFORCED_EXORCISM = 'Forced Exorcism',
-	SKILLFORCED_EXORCISMDESCRIPT = 'Prioritize Cursed enemy. Deal heavy {color=yellow|Light} magical damage to a single target. If the target is {color=aqua|Cursed}, damage the target mana and deal {color=yellow|Dark} magical damage to all their allies. Remove {color=aqua|Cursed} from target.',
-	SKILLUNDYING_SPIRIT = 'Undying Spirit',
-	SKILLUNDYING_SPIRITDESCRIPT = 'Heal self for a small portion of Max HP. Heal more for every enemy that have {color=aqua|Fear} or Defeated.',
+	SKILLOMINOUS_WHISPERS = "Ominous Whispers",
+	SKILLOMINOUS_WHISPERSDESCRIPT = "Deal low {color=yellow|Mind} magical damage to all enemies and inflict {color=aqua|Fear}. If target HP is below 50%, also inflict {color=aqua|Shattered}.",
+	SKILLHEXED_COFFIN_NAIL = "Hexed Coffin Nail",
+	SKILLHEXED_COFFIN_NAILDESCRIPT = "Deal {color=yellow|Dark} physical damage to an enemy. Inflict {color=aqua|Bleed}. Moderate chance to inflict {color=aqua|Cursed}",
+	SKILLCRAZED_SPIRIT_POSSESSION = "Crazed Spirit Possession",
+	SKILLCRAZED_SPIRIT_POSSESSIONDESCRIPT = "Deal physical damage to 2 random rows of enemies. If target is affected by {color=aqua|Fear}, deal additional {color=yellow|Dark} magical damage and inflict {color=aqua|Cursed}.",
+	SKILLFORCED_EXORCISM = "Forced Exorcism",
+	SKILLFORCED_EXORCISMDESCRIPT = "Prioritize Cursed enemy. Deal heavy {color=yellow|Light} magical damage to a single target. If the target is {color=aqua|Cursed}, damage the target mana and deal {color=yellow|Dark} magical damage to all their allies. Remove {color=aqua|Cursed} from target.",
+	SKILLUNDYING_SPIRIT = "Undying Spirit",
+	SKILLUNDYING_SPIRITDESCRIPT = "Heal self for a small portion of Max HP. Heal more for every enemy that have {color=aqua|Fear} or Defeated.",
 	STATUSDESC_BLEED = "Bleeding: Take 10% of Maximum HP as neutral damage per turn.",
 	STATUSDESC_POISON = "Poisoned: Take 10% of Maximum HP as neutral damage per turn.",
 	STATUSDESC_BURN = "Burning: Take 8% of Maximum HP as Fire damage per turn.",
@@ -2206,35 +2261,30 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""",
 	NEGOTIATION_LOG_FORCE_BREAKDOWN = "The ordeal was too much, and [he] needs some time alone to recover.",
 	NEGOTIATION_LOG_INSTANT = "[He] doesn't even hesitate — [his] trust in you makes this an easy yes.",
 	NEGOTIATION_UNLOCKED_TEXT = "%s has accepted [his] new duty: %s.",
-
 	NEGOTIATION_HESITATION_WORKING_CHARGE = "%s hesitates, unsure about taking on more responsibility.",
 	NEGOTIATION_HESITATION_WORKING_FORCE = "%s flatly refuses, arguing with a hint of entitlement that [he] already does enough for you.",
 	NEGOTIATION_PERSUADE_FORCE_WORKING = "Remind [him] who's in charge",
 	NEGOTIATION_LOG_PAID_WORKING = "Slip [him] %d gold as a bonus. [His] resolve crumbles, and [he] caves in, agreeing to take on more work.",
 	NEGOTIATION_LOG_CHARGE_WORKING = "Won [him] over with a Persuasion Challenge. [He] agreed to take on more work.",
 	NEGOTIATION_LOG_FORCE_WORKING = "Made it clear this wasn't a request, browbeating [him] until [he] reluctantly gives in and agrees to work harder. [His] respect for you falls by %d and [his] affection by %d.",
-
 	NEGOTIATION_HESITATION_COMBAT_CHARGE = "%s hesitates, unsure about taking on the danger of fighting for you.",
 	NEGOTIATION_HESITATION_COMBAT_FORCE = "%s flatly refuses, arguing with a hint of entitlement that risking [his] life isn't part of the deal.",
 	NEGOTIATION_PERSUADE_FORCE_COMBAT = "Remind [him] that refusal isn't an option",
 	NEGOTIATION_LOG_PAID_COMBAT = "Slip [him] %d gold as a bonus. [His] resolve crumbles, and [he] caves in, agreeing to fight for you.",
 	NEGOTIATION_LOG_CHARGE_COMBAT = "Won [him] over with a Persuasion Challenge. [He] agreed to fight for you.",
 	NEGOTIATION_LOG_FORCE_COMBAT = "Made it clear refusal wasn't an option, intimidating [him] until [he] reluctantly gives in and agrees to fight. [His] respect for you falls by %d and [his] affection by %d.",
-
 	NEGOTIATION_HESITATION_DATING_CHARGE = "%s hesitates, unsure about taking on that kind of closeness with you.",
 	NEGOTIATION_HESITATION_DATING_FORCE = "%s flatly refuses, arguing with a hint of entitlement that [he] shouldn't be rushed into that kind of closeness.",
 	NEGOTIATION_PERSUADE_FORCE_DATING = "Insist that [he] stop being so shy about it",
 	NEGOTIATION_LOG_PAID_DATING = "Slip [him] %d gold as a gift. [His] resolve crumbles, and [he] caves in, agreeing to date you.",
 	NEGOTIATION_LOG_CHARGE_DATING = "Won [him] over with a Persuasion Challenge. [He] agreed to date you.",
 	NEGOTIATION_LOG_FORCE_DATING = "Brushed aside [his] hesitation with a firm hand, forcing [him] to reluctantly agree to date you. [His] respect for you falls by %d and [his] affection by %d.",
-
 	NEGOTIATION_HESITATION_SEX_CHARGE = "%s hesitates, unsure about taking on that responsibility.",
 	NEGOTIATION_HESITATION_SEX_FORCE = "%s flatly refuses, arguing with a hint of entitlement that [his] body isn't part of the arrangement.",
 	NEGOTIATION_PERSUADE_FORCE_SEX = "Remind [him] that [his] body belongs to you now",
 	NEGOTIATION_LOG_PAID_SEX = "Slip [him] %d gold as a bonus. [His] resolve crumbles, and [he] caves in, agreeing to serve this way.",
 	NEGOTIATION_LOG_CHARGE_SEX = "Won [him] over with a Persuasion Challenge. [He] agreed to serve this way.",
 	NEGOTIATION_LOG_FORCE_SEX = "Made it clear [his] body belongs to you, forcing [him] to reluctantly agree to serve this way. [His] respect for you falls by %d and [his] affection by %d.",
-
 	NEGOTIATION_HESITATION_SEXSERVICE_CHARGE = "%s hesitates, unsure about taking on that kind of responsibility.",
 	NEGOTIATION_HESITATION_SEXSERVICE_FORCE = "%s flatly refuses, arguing with a hint of entitlement that being sold to strangers was never part of the deal.",
 	NEGOTIATION_PERSUADE_FORCE_SEXSERVICE = "Remind [him] that [his] consent was never really needed",
@@ -2352,7 +2402,11 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""",
 	CRAFTCATEGORYWORKUNITS = "%s (%.1f)",
 	MATERIALSORDERLABEL = "Materials order",
 	ITEMSORDERLABEL = "Items order",
-	CRAFTRULES2TOOLTIP = """Toggle which crafting tasks the character is allowed to perform. Enabled tasks are attempted in the priority order shown; drag entries in the order lists to rearrange priority. Top is high priority, bottom is low. Disabled tasks will be skipped.\n\nMaterials include food items which can't be used as well as crafting materials. Items include gear and usables. Value in brackets indicates number of work units produced by character per turn. \n\nPredicted task shows which job the character will perform next. Materials are always crafted before Items.""",
+	CRAFTRULES2TOOLTIP = """Toggle which crafting tasks the character is allowed to perform. Enabled tasks are attempted in the priority order shown; drag entries in the order lists to rearrange priority. Top is high priority, bottom is low. Disabled tasks will be skipped.
+
+Materials include food items which can't be used as well as crafting materials. Items include gear and usables. Value in brackets indicates number of work units produced by character per turn. 
+
+Predicted task shows which job the character will perform next. Materials are always crafted before Items.""",
 	NOSERVICECAPITAL = "Can't provide services outside of cities!",
 	TASKFARMING_VEGES = "Vegetables",
 	TASKFARMING_VEGESDESCRIPT = "Work at farm, raising vegetables. Vegetables are a food staple for many races.",
@@ -3533,12 +3587,10 @@ Wits: -10; EXP Gain: -10%; Sell price is greatly lowered.""",
 	EFFECTNAME_INSPIRE = "Inspire",
 	EFFECTNAME_FLIGHT_UPKEEP = "Flight",
 	EFFECTNAME_FLY = "Wing Dash",
-	TOOLTIP_CLOCK1 = """Advance Time
-Hotkey: 1""",
-	TOOLTIP_CLOCK2 = """Advance Time for 12h
-Hotkey: 2""",
-	TOOLTIP_CLOCK3 = """Advance Time for a full day
-Hotkey: 3""",
+	HOTKEY_TOOLTIP = "Hotkey: %s",
+	TOOLTIP_CLOCK1 = "Advance Time",
+	TOOLTIP_CLOCK2 = "Advance Time for 12h",
+	TOOLTIP_CLOCK3 = "Advance Time for a full day",
 	TIME_TOOLTIP = "Current Week, Day and time. Some quests may have time limits.",
 	USAGE_COST = "Usage Cost",
 	TOOLTIP_NONE = "None",
@@ -3753,11 +3805,14 @@ Hotkey: 3""",
 	FARMSERVICERULES = "Service Rules: %s",
 	FARMPROGRESSTURN = "Progress: %.1f per turn",
 	FARMGROWTHFACTORLOW = "Growth factor is too low",
-	FARMDETAILS = "[center]Details[/center]\nNumber of items produced per character is based on their Growth Factor.\nItem Limit: %s/%s",
+	FARMDETAILS = """[center]Details[/center]
+Number of items produced per character is based on their Growth Factor.
+Item Limit: %s/%s""",
 	FARMACTIVATED = "Activated",
 	JOBWORKTOOLTOOLTIP = "Effective Tool: Will increase work speed when equipped",
 	JOBWORKUNITTOOLTIP = "Progress required per item",
-	JOBSTATTOOLTIP = "Job Stat: %s\nThis stat will grow by attending to this job.",
+	JOBSTATTOOLTIP = """Job Stat: %s
+This stat will grow by attending to this job.""",
 	JOBSTATBROTHELDESCRIPT = "Growing stat will depend on what task will be performed by character when servicing customers.",
 	JOBMODTOOLTIP = "Task Efficiency Modifier",
 	LACKS_BASIC_SERV_LABEL = "lacks Training: Basic Servitude",
@@ -4230,11 +4285,14 @@ Single target magic spells have 100% chance to be followed up with a basic melee
 {color=brown|Luminance}: Single target Light abilities make target receive more Light and Dark damage.""",
 	TRAITDRUIDDESCRIPT = "Earth Spell damage: +20%",
 	TRAITBERSERKERDESCRIPT = "{color=brown|Frenzy}: After killing an enemy, gain an extra turn (once per combat).",
-	TRAITSNIPERDESCRIPT = "Single Target Physical damage: +25%\nMarksmanship skills won't break In The Shadows effect.",
+	TRAITSNIPERDESCRIPT = """Single Target Physical damage: +25%
+Marksmanship skills won't break In The Shadows effect.""",
 	TRAITSHIELDBEARERDESCRIPT = "{color=brown|Shield Counter}: If equipped with a shield that grants Evasion, counter enemy attacks in melee range.",
 	TRAITPALADINDESCRIPT = "{color=brown|Smite}: Deal 25% more damage and take 15% less damage from Undead and Demon type enemies.",
 	TRAITROUGE = "Ruthless",
-	TRAITROUGEDESCRIPT = "Restore some health and mana when deals killing blow.\nWhen in front row: +35% Damage, +10% Crit Chance.\nCan't be Trained or receive Loyalty.",
+	TRAITROUGEDESCRIPT = """Restore some health and mana when deals killing blow.
+When in front row: +35% Damage, +10% Crit Chance.
+Can't be Trained or receive Loyalty.""",
 	TRAITASSASSINDESCRIPT = "Single target Warfare and Protection skills won't break In The Shadows effect.",
 	TRAITBLOODMAGEDESCRIPT = "{color=brown|Blood Mastery}: Dealing damage to bleeding targets recovers HP and MP and increases MATK until end of fight.",
 	TRAITALIOSDESCRIPT = "{color=brown|Unbound}: When only character is alive in party: gain +50 evasion, +20 speed until end of battle.",
@@ -4549,9 +4607,12 @@ Only one attunement can be taken""",
 	TRAITEFFECTVIRGIN = """[center]{color=yellow|Virginity}[/center]
 As [name] has a observable virginity, this makes [him] more desirable for certain individuals.
 {color=yellow|Sell price is increased by 25%%}""",
-	TRAITEFFECTRIVAL = "Rival Present: +5%% Productivity\n[rivals_list]",
-	TRAITEFFECTFRIENDS = "Friend Present: +10%% Health Regeneration\n[friends_list]",
-	TRAITEFFECTLOVERS = "Lover Present: +10%% Mana Regeneration\n[lovers_list]",
+	TRAITEFFECTRIVAL = """Rival Present: +5%% Productivity
+[rivals_list]""",
+	TRAITEFFECTFRIENDS = """Friend Present: +10%% Health Regeneration
+[friends_list]""",
+	TRAITEFFECTLOVERS = """Lover Present: +10%% Mana Regeneration
+[lovers_list]""",
 	TRAITEFFECTRELATIONCHARACTERS = "{color=yellow|Caused by: %s}",
 	TRAITEFFECTRARESTURDY = """Rare: Sturdy
 Increased Health and Armor Penetration""",
@@ -4899,196 +4960,196 @@ All damage dealt is reduced by 15%%, additional shock has a chance to stun.""",
 	EFFECTNAME_WARD_D = "curse ward",
 	EFFECTNAME_WATERSHIELD = "water shield",
 	EFFECTNAME_CLARITY = "clarity",
-	EFFECTNAME_RAMONT_PARRY_N_RIPOSTE = 'Parry & Riposte',
-	EFFECT_RAMONTPARRY = 'Dodge and counterattack next enemy skill.',
-	EFFECTNAME_EVICTION_NOTICE = 'Eviction Notice',
-	EFFECT_EVICTION_NOTICE = 'Ramont will use powerful move against this unit.',
-	EFFECTNAME_CALI_VENGEFUL_WRATH = 'Vengeful Wrath',
-	EFFECT_CALI_VENGEFUL_WRATH = '+30 ATK. +20 Armor Pen. Deal +20% damage against Hector. On attack hit against Hector, remove all Vain Pride on Hector.',
-	TRAIT_HECTOR_VAIN_PRIDE = 'On attack hit and evade, gain 1 Vain Pride stack. On being hit, remove 1 Vain Pride stack.',
-	EFFECTNAME_HECTOR_VAIN_PRIDE_S = 'Vain Pride',
-	TRAIT_HECTOR_VAIN_PRIDE_S = 'Vain Pride: +10 Atk & +10 Hit rate. Require for certain skills. Can stack up to 10 times.',
-	EFFECTNAME_DARK_GIFT = 'Dark Gift',
-	EFFECT_DARK_GIFT = '+20 ATK & MATK, -20 DEF & MDEF.',
-	TRAIT_KURDAN_MIND_CONTROLLED = '-50 Mind resist. Devour Magic spell also deal 150% MATK damage when cast on this unit',
-	EFFECTNAME_UNDERWATCHED = 'Aire\'s Overwatch',
+	EFFECTNAME_RAMONT_PARRY_N_RIPOSTE = "Parry & Riposte",
+	EFFECT_RAMONTPARRY = "Dodge and counterattack next enemy skill.",
+	EFFECTNAME_EVICTION_NOTICE = "Eviction Notice",
+	EFFECT_EVICTION_NOTICE = "Ramont will use powerful move against this unit.",
+	EFFECTNAME_CALI_VENGEFUL_WRATH = "Vengeful Wrath",
+	EFFECT_CALI_VENGEFUL_WRATH = "+30 ATK. +20 Armor Pen. Deal +20% damage against Hector. On attack hit against Hector, remove all Vain Pride on Hector.",
+	TRAIT_HECTOR_VAIN_PRIDE = "On attack hit and evade, gain 1 Vain Pride stack. On being hit, remove 1 Vain Pride stack.",
+	EFFECTNAME_HECTOR_VAIN_PRIDE_S = "Vain Pride",
+	TRAIT_HECTOR_VAIN_PRIDE_S = "Vain Pride: +10 Atk & +10 Hit rate. Require for certain skills. Can stack up to 10 times.",
+	EFFECTNAME_DARK_GIFT = "Dark Gift",
+	EFFECT_DARK_GIFT = "+20 ATK & MATK, -20 DEF & MDEF.",
+	TRAIT_KURDAN_MIND_CONTROLLED = "-50 Mind resist. Devour Magic spell also deal 150% MATK damage when cast on this unit",
+	EFFECTNAME_UNDERWATCHED = "Aire's Overwatch",
 	TRAIT_OVERWATCH_ASSIGNMENT = """Up to 5 times per turns:
 - On ally hit, fire an arrow at the attacker.
 - On ally death, fire stronger attack at the killer.
 The effects disable if this unit is either immobilised, blind or disarmed.
 """,
-	EFFECTNAME_BEHIND_COVER = 'Behind Cover',
-	EFFECT_BEHIND_COVER = 'Evade a range or AoE move for 1 time. Removed if Overwatch Assignment is triggered.',
-	EFFECTNAME_AIM_ADJUSTMENT = 'Aim Adjustment',
-	EFFECT_AIM_ADJUSTMENT = 'When using single-target range attack, gain 1 stack. At 3+ stack, the next attack always hit AND crit.',
+	EFFECTNAME_BEHIND_COVER = "Behind Cover",
+	EFFECT_BEHIND_COVER = "Evade a range or AoE move for 1 time. Removed if Overwatch Assignment is triggered.",
+	EFFECTNAME_AIM_ADJUSTMENT = "Aim Adjustment",
+	EFFECT_AIM_ADJUSTMENT = "When using single-target range attack, gain 1 stack. At 3+ stack, the next attack always hit AND crit.",
 	TRAIT_SANGUINE_INSTINCT_DESC = """Anytime bleed damage is triggered on ANYONE, gain 1 stack of Bloodthirst.
 When using [Regression Curse - Run Amok], gain Fragile if target does not have Bleed.""",
-	EFFECTNAME_BLOODTHRIST = 'Bloodthrist',
+	EFFECTNAME_BLOODTHRIST = "Bloodthrist",
 	EFFECT_BLOODTHRIST = """+5 ATK, +5 Speed per stack (Max 10)
 [Regression Curse - Run Amok] consume a stack of this effect to recast itself.
 At 3+ stack: Deal +20% damage against targets that have Bleed.
 [Mad Dash] can consume a stack of this effect to recast itself one time.
 At 5+ stack: Increase healing receive by 50%""",
-	EFFECTNAME_FRAGILE = 'Fragile',
-	EFFECT_FRAGILE = '+10% Damage Taken per stack (Max 10).',
-	EFFECTNAME_BRAMBLE_TRAP = 'Bramble Trap',
-	EFFECT_BRAMBLETRAP = 'Trigger on skill use: Take 80% of Caster\'s MATK as damage, gain Bleed, and Ensnare for 2 turn.',
-	EFFECTNAME_WHITE_FOG = 'White Fog',
+	EFFECTNAME_FRAGILE = "Fragile",
+	EFFECT_FRAGILE = "+10% Damage Taken per stack (Max 10).",
+	EFFECTNAME_BRAMBLE_TRAP = "Bramble Trap",
+	EFFECT_BRAMBLETRAP = "Trigger on skill use: Take 80% of Caster's MATK as damage, gain Bleed, and Ensnare for 2 turn.",
+	EFFECTNAME_WHITE_FOG = "White Fog",
 	EFFECT_WHITE_FOG = """White Fog: Double mana cost. 
 All damaging move have the minimum 30% chance to miss.
 Remove when affected by or use Wind skill or spell.""",
-	EFFECTNAME_CURSE_PRIMEVAL_REGRESSION = 'Primeval Regression Curse',
+	EFFECTNAME_CURSE_PRIMEVAL_REGRESSION = "Primeval Regression Curse",
 	EFFECT_CURSE_PRIMEVAL_MADNESS = """Lose control of their senses and randomly attack anyone on their turn. 
 Can be cured by Clarity, Blessing, Rally, and any of the Bard or Shaman spells.""",
-	EFFECTNAME_DROWN_IN_KUDZU = 'Drown in Kudzu',
-	EFFECT_DROWN_IN_KUDZU = '-100 speed. Cannot Act. Remove once Smothering Kudzu is defeated.',
-	EFFECTNAME_WILD_FIRE = 'Wild Fire',
-	EFFECT_WILD_FIRE = '+15 ATK & MATK. All attack deal additional fire damage.',
+	EFFECTNAME_DROWN_IN_KUDZU = "Drown in Kudzu",
+	EFFECT_DROWN_IN_KUDZU = "-100 speed. Cannot Act. Remove once Smothering Kudzu is defeated.",
+	EFFECTNAME_WILD_FIRE = "Wild Fire",
+	EFFECT_WILD_FIRE = "+15 ATK & MATK. All attack deal additional fire damage.",
 	TRAIT_EVER_ADAPTING_NATURE_DESC = """If this unit is burning, gain Wild Fire.
-If this unit is poisoned, unlock Manchineel\'s Apple skill.
+If this unit is poisoned, unlock Manchineel's Apple skill.
 If this unit is wet, regenerate 6.25% of maxHp each turn.""",
-	TRAIT_CYCLE_OF_LIFE_DESC = 'When an ally unit dies, this unit heals for 20% of the deceased max HP.',
-	EFFECTNAME_TEST_OF_THE_FOREST_SPIRIT = 'Test of the Forest Spirit',
+	TRAIT_CYCLE_OF_LIFE_DESC = "When an ally unit dies, this unit heals for 20% of the deceased max HP.",
+	EFFECTNAME_TEST_OF_THE_FOREST_SPIRIT = "Test of the Forest Spirit",
 	EFFECT_TEST_OF_THE_FOREST_SPIRIT = """-50% ATK & MATK.
 Once expired, White Stag can use 
 [How disappointing...] skill.
 Duration is extended by 1 when an ally is defeated.""",
-	EFFECTNAME_HELLO_SIS = 'Hello, sister~!',
-	EFFECT_HELLO_SIS = 'Deal +10% damage against Kuro.',
-	EFFECTNAME_DONT_TALK_TO_ME = '...Don\'t talk to Me',
-	EFFECT_DONT_TALK_TO_ME = 'Deal +10% damage against Zephyra.',
-	EFFECTNAME_NYCTOPHOBIA = 'Nyctophobia',
-	EFFECT_NYCTOPHOBIA = 'If this unit is affected by [In the Shadow]: Kuro cannot miss her attack against this unit & Take 15% of current HP as Dark damage each turn.',
-	EFFECTNAME_FADING_LIGHT = 'Fading Light',
-	EFFECT_FADING_LIGHT = 'Allow usage of [Night Night] spell. Can be removed by silence, disabling effect or hit by fire or light attack.',
-	EFFECTNAME_BINDING_SHADOW = 'Binding Shadow',
+	EFFECTNAME_HELLO_SIS = "Hello, sister~!",
+	EFFECT_HELLO_SIS = "Deal +10% damage against Kuro.",
+	EFFECTNAME_DONT_TALK_TO_ME = "...Don't talk to Me",
+	EFFECT_DONT_TALK_TO_ME = "Deal +10% damage against Zephyra.",
+	EFFECTNAME_NYCTOPHOBIA = "Nyctophobia",
+	EFFECT_NYCTOPHOBIA = "If this unit is affected by [In the Shadow]: Kuro cannot miss her attack against this unit & Take 15% of current HP as Dark damage each turn.",
+	EFFECTNAME_FADING_LIGHT = "Fading Light",
+	EFFECT_FADING_LIGHT = "Allow usage of [Night Night] spell. Can be removed by silence, disabling effect or hit by fire or light attack.",
+	EFFECTNAME_BINDING_SHADOW = "Binding Shadow",
 	EFFECT_BINDING_SHADOW = """-50% speed. Shadow damage has a 50% chance to inflict Disarm for 1 turn.
 Negate the positive effects of [In the Shadow] effect.
 Remove once being hit by or use a light or fire move.""",
-	EFFECTNAME_UNHOLY_NIGHT = 'Unholy Night',
-	EFFECT_UNHOLY_NIGHT = 'Immune to Silence. +30 MATK.',
+	EFFECTNAME_UNHOLY_NIGHT = "Unholy Night",
+	EFFECT_UNHOLY_NIGHT = "Immune to Silence. +30 MATK.",
 	TRAIT_SNUFF_CANDLE_DESC = """When hit by a Light or Fire move, use Stuff Out against the attacker.
 Can be disabled if the user is silenced or immobilised.""",
-	EFFECTNAME_DK_SECURITY_CONCERN_DESC = 'National Security\'s Concern',
+	EFFECTNAME_DK_SECURITY_CONCERN_DESC = "National Security's Concern",
 	TRAIT_DK_SECURITY_CONCERN_DESC = """When HP drops below 50% for the first time, randomly summon his soldier until the field is full but gain stun for 1 turn.
 At the end of his next turn, gain Unstoppable.""",
-	EFFECTNAME_KING_GUARD_B = 'King\'s Guard: Blade',
-	EFFECTNAME_KING_GUARD_BLADE = 'skirmisher\'s protection',
-	EFFECT_KING_GUARD_BLADE = 'Dwarf King take 30% less damage from melee attack and have +25% Disarm & Silence resist while this unit is alive',
-	EFFECTNAME_KING_GUARD_S = 'King\'s Guard: Shield',
-	EFFECTNAME_KING_GUARD_SHIELD = 'shielder\'s protection',
-	EFFECT_KING_GUARD_SHIELD = 'Dwarf King take 30% less damage from physical ranged attack and have +25% Disarm & Silence resist while this unit is alive',
-	EFFECTNAME_KING_GUARD_A = 'King\'s Guard: Automaton',
-	EFFECTNAME_KING_GUARD_AUTOMATION = 'golem\'s protection',
-	EFFECT_KING_GUARD_AUTOMATION = 'Dwarf King gain +80 MDEF and have +25% Disarm & Silence resist while this unit is alive',
-	EFFECTNAME_KNOCK_PRONE = 'Knock Prone',
-	EFFECT_KNOCKPRONE = '-40 Earth Resistant, -50% Evasion and Hitrate, Spell cast by this unit have 30% chance to miss.',
-	EFFECTNAME_UNSTOPPABLE = 'Unstoppable',
-	EFFECT_UNSTOPPABLE = 'Immune to Stun, Sleep, and Freeze',
-	EFFECTNAME_EXECUTION_ORDER = 'Execution Order',
+	EFFECTNAME_KING_GUARD_B = "King's Guard: Blade",
+	EFFECTNAME_KING_GUARD_BLADE = "skirmisher's protection",
+	EFFECT_KING_GUARD_BLADE = "Dwarf King take 30% less damage from melee attack and have +25% Disarm & Silence resist while this unit is alive",
+	EFFECTNAME_KING_GUARD_S = "King's Guard: Shield",
+	EFFECTNAME_KING_GUARD_SHIELD = "shielder's protection",
+	EFFECT_KING_GUARD_SHIELD = "Dwarf King take 30% less damage from physical ranged attack and have +25% Disarm & Silence resist while this unit is alive",
+	EFFECTNAME_KING_GUARD_A = "King's Guard: Automaton",
+	EFFECTNAME_KING_GUARD_AUTOMATION = "golem's protection",
+	EFFECT_KING_GUARD_AUTOMATION = "Dwarf King gain +80 MDEF and have +25% Disarm & Silence resist while this unit is alive",
+	EFFECTNAME_KNOCK_PRONE = "Knock Prone",
+	EFFECT_KNOCKPRONE = "-40 Earth Resistant, -50% Evasion and Hitrate, Spell cast by this unit have 30% chance to miss.",
+	EFFECTNAME_UNSTOPPABLE = "Unstoppable",
+	EFFECT_UNSTOPPABLE = "Immune to Stun, Sleep, and Freeze",
+	EFFECTNAME_EXECUTION_ORDER = "Execution Order",
 	EFFECT_EXECUTION_ORDER = """Gain 1 stack of Fragile whenever this unit is hit.
 On being kill: If the killer is a dwarf, they gain Promotion""",
-	EFFECTNAME_DWARF_PROMOTION = 'Promotion',
-	EFFECT_DWARF_PROMOTION = '+20% Damage dealt. +50 Hitrate. +30% Critical Chance. +10 Speed.',
-	EFFECTNAME_OVERLOADED_GOLEM_CORE = 'Overloaded Golem Core',
+	EFFECTNAME_DWARF_PROMOTION = "Promotion",
+	EFFECT_DWARF_PROMOTION = "+20% Damage dealt. +50 Hitrate. +30% Critical Chance. +10 Speed.",
+	EFFECTNAME_OVERLOADED_GOLEM_CORE = "Overloaded Golem Core",
 	EFFECT_OVERLOADED_GOLEM_CORE = """All attacks now have a 70% chance of inflicting burn.
 On turn end: Deal chip fire damage to all enemies.
 Demerit: Lose 15% of max hp every turn.
 Can be removed by being frozen.""",
-	EFFECTNAME_PREY_OF_BIRD = 'Prey of Bird',
-	EFFECT_PREY_OF_BIRD = """Unavoidable target of Elder Gryphon\'s Comet Dive skill. 
+	EFFECTNAME_PREY_OF_BIRD = "Prey of Bird",
+	EFFECT_PREY_OF_BIRD = """Unavoidable target of Elder Gryphon's Comet Dive skill. 
 Prepare to receive a lot of damage.""",
-	EFFECTNAME_HEIGHT_BEYOND_MORTAL_REACH = 'Height Beyond Mortal Reach',
+	EFFECTNAME_HEIGHT_BEYOND_MORTAL_REACH = "Height Beyond Mortal Reach",
 	EFFECT_HEIGHT_BEYOND_MORTAL_REACH = """Always evade melee attacks.
 50% chance to evade spells. Reduce ranged damage taken by 40%.
 +125 Evasion and Earth resist is set to 100.
 Can use skill even under immobilizing effects.
 Will use [Comet Dive] skill once expired.""",
-	EFFECTNAME_CATASTROPHIC_MOMENTUM = 'Catastrophic Momentum',
+	EFFECTNAME_CATASTROPHIC_MOMENTUM = "Catastrophic Momentum",
 	EFFECT_CATASTROPHIC_MOMENTUM = """+50% ATK and +150 Hit rate per stack (Max 2 stack).
 At 2 stack: Comet Dive now cause a damaging shockwave which can be resist by Stonewall and Earth Shield.
 Lose 1 stack when struck by a critical hit.
 Automatically consume 1 stack of this effect to clear immobilising effects.""",
-	EFFECTNAME_TURBULENCE_AIR = 'Turbulence Air',
-	EFFECT_TURBULENCE_AIR_TRAIT = """Reduce hit rate of all enemy\'s single-target ranged attack (including spell) by 40.
+	EFFECTNAME_TURBULENCE_AIR = "Turbulence Air",
+	EFFECT_TURBULENCE_AIR_TRAIT = """Reduce hit rate of all enemy's single-target ranged attack (including spell) by 40.
 Mind, Light, and Dark resist of this unit cannot be alter.""",
-	TRAIT_DUAL_BLADE_MASTERY_DESC = 'Disarm immunity. Every attack deals additional physical damage.',
-	EFFECTNAME_ANTAGONIZED = 'Antagonized',
-	EFFECTNAME_DUTY_TO_PROTECT = 'Duty to Protect',
-	EFFECT_ANTAGONIZED = 'Deal and Take +10% more damage.',
-	EFFECT_DUTY_TO_PROTECT = '+20 ATK nd Hit rate.',
-	TRAIT_SELF_PRESERVATION_DESC = 'Self-preservation: Gain Fear for 1 turn when ally dies. If this unit is the only one left on the field, try to run away next turn.',
-	TRAIT_MODERATELY_FEARSOME_STATURE_DESC = 'Moderately Fearsome Stature: Enemy attacked by this unit or attacking this unit might just gain fear for 1 turn, maybe.',
-	TRAIT_REDHEAD_BOSS = 'Fiery Grand Strategist (Self-Proclaim): Hold total mastery over fire and the flow of battle! ...or so he claims.',
+	TRAIT_DUAL_BLADE_MASTERY_DESC = "Disarm immunity. Every attack deals additional physical damage.",
+	EFFECTNAME_ANTAGONIZED = "Antagonized",
+	EFFECTNAME_DUTY_TO_PROTECT = "Duty to Protect",
+	EFFECT_ANTAGONIZED = "Deal and Take +10% more damage.",
+	EFFECT_DUTY_TO_PROTECT = "+20 ATK nd Hit rate.",
+	TRAIT_SELF_PRESERVATION_DESC = "Self-preservation: Gain Fear for 1 turn when ally dies. If this unit is the only one left on the field, try to run away next turn.",
+	TRAIT_MODERATELY_FEARSOME_STATURE_DESC = "Moderately Fearsome Stature: Enemy attacked by this unit or attacking this unit might just gain fear for 1 turn, maybe.",
+	TRAIT_REDHEAD_BOSS = "Fiery Grand Strategist (Self-Proclaim): Hold total mastery over fire and the flow of battle! ...or so he claims.",
 	TRAIT_SWIFTY_GUY = """Relatively Swifty Guy: Uhhhh... sorry, I don't have anything fancy like the other two. I run quite fast tho.
 Bandit Leader: Have some more confidence, ya' dumbass.
 Y-yes, boss!""",
-	EFFECTNAME_RUNNING_AWAY = 'Running Away',
-	EFFECT_RUNNING_AWAY = 'Will escape the fight on their next turn.',
-	EFFECTNAME_AXE_RAISED = 'Axe Raised',
+	EFFECTNAME_RUNNING_AWAY = "Running Away",
+	EFFECT_RUNNING_AWAY = "Will escape the fight on their next turn.",
+	EFFECTNAME_AXE_RAISED = "Axe Raised",
 	EFFECT_AXE_RAISED = """Will use what he believes is a powerful skill next turn.
 Can be removed by... any attack hitting this unit... even if it's just 1 damage...
 And the powerful skill might actually just suck in reality.""",
-	EFFECTNAME_GENIUS_PLAN = 'Genius plan...?',
-	EFFECT_GENIUS_PLAN = '+100% ATK... but it seems this unit is stunned.',
+	EFFECTNAME_GENIUS_PLAN = "Genius plan...?",
+	EFFECT_GENIUS_PLAN = "+100% ATK... but it seems this unit is stunned.",
 	TRAIT_TANTALISING_TENTACLE = """When this unit attack enemy affected by Ensnare with a physical move, inflict a stack of Arousal.
 When this unit is being attacked by a melee skill and the attacker does not have Blessing or 'Elemental Shield' effect, 
 50% chances to inflict Ensnared onto the attacker.""",
-	EFFECTNAME_AROUSAL = 'Arousal',
+	EFFECTNAME_AROUSAL = "Arousal",
 	EFFECT_AROUSAL = """Reduce Hitrate and Evasion by 5 per stack.
 At +10 stack, become Stun for 2 turns and remove all stack of Arousal.""",
-	EFFECTNAME_EMPOWERMENT = 'Empowerment',
-	EFFECT_EMPOWERMENT = '+10% ATK & MATK per stack.',
-	EFFECTNAME_TENDRIL_TRAP = 'Tendril Trap',
-	EFFECT_TENDRIL_TRAP = 'Activated on spell usage. Dealing 100% MATK Dark damage and inflicting Ensnared for 2 turns. If the target is already Ensnared, inflict 3 Arousal instead.',
-	EFFECTNAME_BUTTERFLY_IN_THE_STOMACH_COUNTER = 'Butterfly in the Stomach Count',
-	EFFECTNAME_BUTTERFLY_IN_THE_STOMACH = 'Butterfly in the Stomach',
-	EFFECT_BUTTERFLY_IN_STOMACH = '+50 DEF and MDEF. Regenerate 8% of Max HP each turn. After being hit by 6 physical attack, remove this buff and spit out the Swallowed Victim!',
-	EFFECTNAME_SWALLOWED = 'Swallowed',
+	EFFECTNAME_EMPOWERMENT = "Empowerment",
+	EFFECT_EMPOWERMENT = "+10% ATK & MATK per stack.",
+	EFFECTNAME_TENDRIL_TRAP = "Tendril Trap",
+	EFFECT_TENDRIL_TRAP = "Activated on spell usage. Dealing 100% MATK Dark damage and inflicting Ensnared for 2 turns. If the target is already Ensnared, inflict 3 Arousal instead.",
+	EFFECTNAME_BUTTERFLY_IN_THE_STOMACH_COUNTER = "Butterfly in the Stomach Count",
+	EFFECTNAME_BUTTERFLY_IN_THE_STOMACH = "Butterfly in the Stomach",
+	EFFECT_BUTTERFLY_IN_STOMACH = "+50 DEF and MDEF. Regenerate 8% of Max HP each turn. After being hit by 6 physical attack, remove this buff and spit out the Swallowed Victim!",
+	EFFECTNAME_SWALLOWED = "Swallowed",
 	EFFECT_SWALLOWED_DESCRIPT = """Cannot Act. Cannot be Healed. Lose 20% HP on their turn.
 Last until this Ashmedai is hit by physical attack 6 times.""",
-	TRAIT_SLIPPERY_THICK_SKIN = 'Reduce Ranged damage taken by 20%. If Wet, ranged attacks including spells have 30% to miss this unit.',
+	TRAIT_SLIPPERY_THICK_SKIN = "Reduce Ranged damage taken by 20%. If Wet, ranged attacks including spells have 30% to miss this unit.",
 	EFFECT_NIXX_TRAIT_DESCRIPT = """Take further reduced damage from DoT effects.
 Enemy gains no benefit from 'In the Shadow' effect.
 Always hit against targets affected by 'In the Shadow'.
 Enemies affected with 'In the Shadow' take 20% of current HP as dark damage every turn.""",
-	EFFECTNAME_INTANGIBLE_OPPRESSIVE_DARKNESS = 'Intangible and Oppressive Darkness',
+	EFFECTNAME_INTANGIBLE_OPPRESSIVE_DARKNESS = "Intangible and Oppressive Darkness",
 	EFFECT_INTANGIBLE_OPPRESSIVE_DARKNESS_DESCRIPT = """While the Brazier is unlit:
 Gain immunity to burn and silence.
 Take -50% damage from all attacks except fire and light damage.
-All units do not lose 'In the Shadow' buff when using move unless it\'s a fire or light move.""",
-	EFFECTNAME_NIXX_WRATH_TRAIT = 'Ire Against the Light',
-	EFFECT_NIXX_WRATH_TRAIT_DESCRIPT = """While the Brazier is lighted, gain a stack of Nixx\'s Wrath at the end of each Nixx's turn.
+All units do not lose 'In the Shadow' buff when using move unless it's a fire or light move.""",
+	EFFECTNAME_NIXX_WRATH_TRAIT = "Ire Against the Light",
+	EFFECT_NIXX_WRATH_TRAIT_DESCRIPT = """While the Brazier is lighted, gain a stack of Nixx's Wrath at the end of each Nixx's turn.
 At 4+ stack: Cleanse and Gain immunity to Silence.""",
-	EFFECTNAME_NIXX_WRATH = 'Nixx\'s Wrath',
+	EFFECTNAME_NIXX_WRATH = "Nixx's Wrath",
 	EFFECT_NIXX_WRATH_DESCRIPT = """Gain + 7.5% ATK and MATK per stack (Max 4)
 At 4+ stack: Become immune to Silence, clear Silence on self, and allow Pulvis et Umbra Estis! to be used.
 Remove if Brazier were put out.""",
 	NIXX_ULT_WARNING = """
 ...The shadow casted by the brazier grow restless.""",
-	EFFECTNAME_KURO_NIXX_STANDOFF = 'Champion\'s Defiance',
-	EFFECT_KURO_NIXX_STANDOFF_DESCRIPT = 'Deal and take +10% damage to Nixx. Kuro is immune to the negative effects of \'In the Shadow\'.',
-	EFFECTNAME_ENVIRONMENTAL_OBJECT = 'Environmental Object',
-	EFFECT_ENVIRONMENTAL_OBJECT_DESCRIPT = 'HP cannot drop below 10%. Does not need to be defeated for the fight to be concluded.',
-	EFFECTNAME_FESTERING_TERROR = 'Festering Terror',
-	EFFECT_FESTERING_TERROR_DESCRIPT = 'Deal 10% more damage and gain +10% Crit Chance for every stack. (Max 5)',
-	EFFECTNAME_BLACK_MIRROR = 'Black Mirror',
-	EFFECT_BLACK_MIRROR_DESCRIPT = 'Reflect single-target spell casted on this unit back at the attacker at half the strength.',
-	EFFECTNAME_BLACK_THORN = 'Black Thorn',
-	EFFECT_BLACK_THORN_DESCRIPT = 'When hit by melee attack, deal 50 Dark damage back to the attacker.',
-	EFFECTNAME_BLACK_GROWTH = 'Black Growth',
-	EFFECT_BLACK_GROWTH_DESCRIPT = 'Regen 16% of HP at the end of each turn.',
-	EFFECTNAME_BLACK_BIND = 'Black Bind',
-	EFFECT_BLACK_BIND_DESCRIPT = 'Attacks from this unit have a 50% chance to inflict Ensnared for 2 turns',
-	EFFECTNAME_LOST_IN_DARKNESS = 'Lost in Darkness',
-	EFFECT_LOST_IN_DARKNESS_DESCRIPT = 'Take additional dark damage when hit by enemies.',
+	EFFECTNAME_KURO_NIXX_STANDOFF = "Champion's Defiance",
+	EFFECT_KURO_NIXX_STANDOFF_DESCRIPT = "Deal and take +10% damage to Nixx. Kuro is immune to the negative effects of 'In the Shadow'.",
+	EFFECTNAME_ENVIRONMENTAL_OBJECT = "Environmental Object",
+	EFFECT_ENVIRONMENTAL_OBJECT_DESCRIPT = "HP cannot drop below 10%. Does not need to be defeated for the fight to be concluded.",
+	EFFECTNAME_FESTERING_TERROR = "Festering Terror",
+	EFFECT_FESTERING_TERROR_DESCRIPT = "Deal 10% more damage and gain +10% Crit Chance for every stack. (Max 5)",
+	EFFECTNAME_BLACK_MIRROR = "Black Mirror",
+	EFFECT_BLACK_MIRROR_DESCRIPT = "Reflect single-target spell casted on this unit back at the attacker at half the strength.",
+	EFFECTNAME_BLACK_THORN = "Black Thorn",
+	EFFECT_BLACK_THORN_DESCRIPT = "When hit by melee attack, deal 50 Dark damage back to the attacker.",
+	EFFECTNAME_BLACK_GROWTH = "Black Growth",
+	EFFECT_BLACK_GROWTH_DESCRIPT = "Regen 16% of HP at the end of each turn.",
+	EFFECTNAME_BLACK_BIND = "Black Bind",
+	EFFECT_BLACK_BIND_DESCRIPT = "Attacks from this unit have a 50% chance to inflict Ensnared for 2 turns",
+	EFFECTNAME_LOST_IN_DARKNESS = "Lost in Darkness",
+	EFFECT_LOST_IN_DARKNESS_DESCRIPT = "Take additional dark damage when hit by enemies.",
 	EFFECT_UNLIT_BRAZIER_DESCRIPT = """When this unit HP drops to 10%:
- - Remove \'In the Shadow\' from ALL unit.
+ - Remove 'In the Shadow' from ALL unit.
  - Remove Festering Terror from all allies.
  - Convert 'Intangible and Oppressive Darkness' into 'Ire Against the Light'.
  - Transform into Lighted Brazier.""",
 	EFFECT_LIGTHED_BRAZIER_DESCRIPT = """When this unit HP drops to 10%:
- - Apply \'In the Shadow\' to ALL unit.
+ - Apply 'In the Shadow' to ALL unit.
  - Apply a stack of Lost in Darkness to all enemies.
  - Convert 'Ire Against the Light' into 'Intangible and Oppressive Darkness'.
  - Transform into Unlit Brazier.""",
@@ -5109,38 +5170,38 @@ This effect is disabled if this unit is taunted, blinded, or immobilised.""",
 	EFFECT_LONESOME_RAGE_BYGONE_GLORY_TRAIT_DESCRIPT = """Lonesome Rage, Bygone Glory:
 If there's no other allies, gain 20 Armor pen, 30 Armor, 30 MDEF, and 15 Speed. 
 When this unit recovers from an immobilising effect, immediately use attack a random enemy and gain 'In the Shadow'.""",
-	EFFECTNAME_GREG_LAST_STAND = 'Greg\'s Final Stand',
-	EFFECT_GREG_FINAL_STAND_DESCRIPT = """Greg\'s Final Stand:
+	EFFECTNAME_GREG_LAST_STAND = "Greg's Final Stand",
+	EFFECT_GREG_FINAL_STAND_DESCRIPT = """Greg's Final Stand:
 Take further reduced damage from DoT effects.
 Hp does not drop below 10%.
 When hp reach 10%, gain Ridiculous Grit for 5 turns.""",
-	EFFECT_DEMONNESS_GIFT_NULL_CLOAK_DESCRIPT = 'Demoness\' Gift - Null Cloak: When this unit is affected by \'In the Shadow\', Reduce Spell damage taken by 75%.',
-	EFFECTNAME_RIDICLUOUS_GRIT = 'Ridiculous Grit',
+	EFFECT_DEMONNESS_GIFT_NULL_CLOAK_DESCRIPT = "Demoness' Gift - Null Cloak: When this unit is affected by 'In the Shadow', Reduce Spell damage taken by 75%.",
+	EFFECTNAME_RIDICLUOUS_GRIT = "Ridiculous Grit",
 	EFFECT_RIDICLUOUS_GRIT_DESCRIPT = """Become immune to all immobilising effects.
 Gain +25 ATK and Hit rate.
 Reduce this buff duration by 1 when struck with a critical hit.
 When this effect expires, die.""",
-	EFFECTNAME_IM_SORRY_UNCLE = 'I\'m sorry uncle...',
-	EFFECT_IM_SORRY_UNCLE_DESCRIPT = 'Deal 10% less damage to Greg. Take 10% more damage from Greg',
-	EFFECTNAME_PITIFUL_ARE_WE_NOT = 'Pitiful, are we not?',
-	EFFECT_PITIFUL_ARE_WE_NOT_DESCRIPT = 'Immune to Movement Readed. -10 Hit Rate.',
-	EFFECTNAME_MOVEMENT_READED = 'Movement Readed',
+	EFFECTNAME_IM_SORRY_UNCLE = "I'm sorry uncle...",
+	EFFECT_IM_SORRY_UNCLE_DESCRIPT = "Deal 10% less damage to Greg. Take 10% more damage from Greg",
+	EFFECTNAME_PITIFUL_ARE_WE_NOT = "Pitiful, are we not?",
+	EFFECT_PITIFUL_ARE_WE_NOT_DESCRIPT = "Immune to Movement Readed. -10 Hit Rate.",
+	EFFECTNAME_MOVEMENT_READED = "Movement Readed",
 	EFFECT_MOVEMENT_READED_DESCRIPT = """When Greg is not blind or immobilised:
 - Deal 90% less damage against Greg.
 - Attacking Greg will cause him to counterattack and inflicts stun.""",
-	EFFECTNAME_CLOSE_CONFRONTATION = 'Close Confrontation',
+	EFFECTNAME_CLOSE_CONFRONTATION = "Close Confrontation",
 	EFFECT_CLOSE_CONFRONTATION_DESCRIPT = """Range attacks deal 50% less damage.
 Melee attacks deal 50% more damage against the applier.
 If this unit doesn't attack the applier on their turn, provoke an opportunity attack from the applier.
 This effect is removed if the applier fell for a taunt or is immobilised.""",
-	EFFECTNAME_CLOSE_CONFRONTATION_CANCEL = 'being right in front of the target.',
-	EFFECTNAME_TIGHTENED_GRIP = 'Tightened Grip',
-	EFFECT_TIGHTENED_GRIP_DESCRIPT = 'Immune to Disarm. +20 Hit Rate.',
-	EFFECTNAME_BLACKEN_BLADE = 'Blacken Blade',
+	EFFECTNAME_CLOSE_CONFRONTATION_CANCEL = "being right in front of the target.",
+	EFFECTNAME_TIGHTENED_GRIP = "Tightened Grip",
+	EFFECT_TIGHTENED_GRIP_DESCRIPT = "Immune to Disarm. +20 Hit Rate.",
+	EFFECTNAME_BLACKEN_BLADE = "Blacken Blade",
 	EFFECT_BLACKEN_BLADE_DESCRIPT = """Deals additional 50% of caster's MATK as {color=yellow|Dark} damage on every hit
 All attacks have a 20% chance to inflict Bleed.""",
-	EFFECT_CURSED_GIRL_DESCRIPT = 'Cursed Girl: When hit by Devour magic spell, gain shock and 3 fragiles. When hit by Light damage, there is a 20% chance to become stunned.',
-	EFFECT_GUARDIAN_SPIRIT_PROTECTION_FRENZIED_DESCRIPT = 'Guardian Spirit Protection [Frenzied]: When being hit by non-light damage, 30% chance to inflict Cursed to the attacker. When being hit by a Cursed enemy, reduce damage taken by 30% and inflict Dark damage back to the attacker.',
+	EFFECT_CURSED_GIRL_DESCRIPT = "Cursed Girl: When hit by Devour magic spell, gain shock and 3 fragiles. When hit by Light damage, there is a 20% chance to become stunned.",
+	EFFECT_GUARDIAN_SPIRIT_PROTECTION_FRENZIED_DESCRIPT = "Guardian Spirit Protection [Frenzied]: When being hit by non-light damage, 30% chance to inflict Cursed to the attacker. When being hit by a Cursed enemy, reduce damage taken by 30% and inflict Dark damage back to the attacker.",
 	RESETTRAINREQ = "Reset training and all purchased perks. Requires Oblivion potion.",
 	RESETTRAINING = "All training progress will be discarded. Are you sure?",
 	BUFFDESCRIPTDEFENDER = "Defender: Will shield allies from attacks unless stunned.",
@@ -5237,11 +5298,11 @@ Positive, Social, Physical and Humilation actions provide more Loyalty.""",
 	PROFDRUID = "Druid",
 	PROFDRUIDDESCRIPT = "Druids embrace and study the nature's magic, allowing them to heal and neutralize enemies.",
 	PROFOCCULTIST = "Occultist",
-	PROFOCCULTISTDESCRIPT = "occultist.",#fix
+	PROFOCCULTISTDESCRIPT = "occultist.",
 	PROFVALKYRIE = "Valkyrie",
 	PROFVALKYRIEDESCRIPT = "Female winged warriors excelling in swift and deadly combat.",
 	PROFEMPYRIAN = "Empyrian",
-	PROFEMPYRIANDESCRIPT = "Male winged warriors excelling in swift and deadly combat.", #fix
+	PROFEMPYRIANDESCRIPT = "Male winged warriors excelling in swift and deadly combat.",
 	PROFSOULEATER = "Soul Eater",
 	PROFSOULEATERDESCRIPT = "Sometimes magic proficiency can get you so far you are not only able to control others, but consume their souls to obtain their knowledge.",
 	PROFNECROMANCER = "Necromancer",
@@ -6155,7 +6216,12 @@ Forces target to orgasm against their will with slight impact over consent. 7 Ma
 	INTERACTION_ENTHUSIASM_ALL_CORRECT_USED = "Enforce success (complete)",
 	INTERACTION_ENTHUSIASM_INCORRECT_TOOLTIP = "This option is incorrect.",
 	INTERACTION_ENTHUSIASM_CORRECT_TOOLTIP = "All of the options will result in success",
-	INTERACTION_ENTHUSIASM_TOOLTIP = "[center]Training Opportunity[/center]\n\nPick the response that matches the character's personality. A correct choice makes the moment succeed and can improve sex-skill training; a wrong choice breaks the moment and reduces sensitivity.\n\nMark wrong option spends connection points to reveal one bad choice.\nEnforce success spends connection points and makes every option count as correct.",
+	INTERACTION_ENTHUSIASM_TOOLTIP = """[center]Training Opportunity[/center]
+
+Pick the response that matches the character's personality. A correct choice makes the moment succeed and can improve sex-skill training; a wrong choice breaks the moment and reduces sensitivity.
+
+Mark wrong option spends connection points to reveal one bad choice.
+Enforce success spends connection points and makes every option count as correct.""",
 	INTERACTION_CATEGORY_CARESS = "Petting",
 	INTERACTION_CATEGORY_CARESS_TOOLTIP = "Basic contact and stimulation actions.",
 	INTERACTION_CATEGORY_FUCKING = "Penetration",
@@ -6705,7 +6771,7 @@ Pheromones were used on %s, but they had no effect on [him]. """,
 	SEXACTION_KISS_ONGOING_DESC_1 = "[name1] and [name2] {^passionately :eagerly :}{^press together:exchange saliva:kiss}, {^showing no sign of separating from each others lips:coiling each others tongues together:biting and sucking each other's lips}.",
 	SEXACTION_KISS_ONGOING_DESC_2 = "[name1] {^passionately :eagerly :}{^exchange[s/1] saliva with:kiss[es/1]:make[s/1] out with} [name2], {^savoring the taste of [his2] lips:trying [his1] best to share}.",
 	SEXACTION_KISS_ONGOING_DESC_3 = "[name1] {^passionately :eagerly :}{^exchange[s/1] saliva with:kiss[es/1]:make[s/1] out with} [name2], {^savoring the taste of [his2] lips:trying [his1] best keep both satisfied}.",
-SEXACTION_FONDLETITS_ONGOING_1 = "[name1] fondle[s/1] [names2] chest.",
+	SEXACTION_FONDLETITS_ONGOING_1 = "[name1] fondle[s/1] [names2] chest.",
 	SEXACTION_FONDLETITS_ONGOING_DESC_1 = "[name1] continue[s/1] {^fondling:caressing:rubbing:squeezing} [names2] [tits2].",
 	SEXACTION_SUCKNIPPLES_ONGOING_1 = "[name1] suck[s/1] on [names2] nipples.",
 	SEXACTION_SUCKNIPPLES_ONGOING_DESC_1 = "[name1] continue[s/1] {^licking:teasing} and {^kissing:sucking on} [names2] nipples",
@@ -6723,10 +6789,10 @@ SEXACTION_FONDLETITS_ONGOING_1 = "[name1] fondle[s/1] [names2] chest.",
 	SEXACTION_HANDJOB_ONGOING_1 = "[name1] give[s/1] [a /1]handjob[/s1] to [name2].",
 	SEXACTION_HANDJOB_ONGOING_DESC_1 = "[name1] {^steadily :rhythmically :carefully :}{^massage:stroke:rub:jerk}[s/1] [names2] [penis2]{^, trying to maintain eye contact:, studying [his2] reactions:}.",
 	SEXACTION_HANDJOB_ONGOING_DESC_2 = "[name1] {^massage:work:stroke:rub}[s/1] {^up and down the length of:all along:the shaft[/s2] of} [names2] [penis2] with [his1] hands.",
-SEXACTION_BLOWJOB_ONGOING_1 = "[name1] give[s/1] [a /1]blowjob[/s1] to [name2].",
+	SEXACTION_BLOWJOB_ONGOING_1 = "[name1] give[s/1] [a /1]blowjob[/s1] to [name2].",
 	SEXACTION_BLOWJOB_ONGOING_DESC_1 = "[name1] {^steadily :rhythmically :carefully :}{^suck:blow}[s/1] [names2] [penis2]{^, trying to maintain eye contact:, studying [his2] reactions:}.",
 	SEXACTION_BLOWJOB_ONGOING_DESC_2 = "[name1] {^work:nurse:serve}[s/1] {^the length of :the shaft[/s2] of :the tip[/s2] of :}[names2] [penis2] with [his1] mouth[/s1].",
-SEXACTION_TITJOB_ONGOING_1 = "[name1] give[s/1] [a /2]titjob[/s2] to [name2].",
+	SEXACTION_TITJOB_ONGOING_1 = "[name1] give[s/1] [a /2]titjob[/s2] to [name2].",
 	SEXACTION_TITJOB_ONGOING_DESC_1 = "[name1] continue[s/1] {^rubbing:massaging:squeezing} [names2] [penis2] with [his1] [tits1].",
 	SEXACTION_TAILJOB_ONGOING_1 = "[name1] give[s/1] [a /2]tailjob[/s2] to [name2].",
 	SEXACTION_EARJOB_ONGOING_1 = "[name1] rub[s/1] [his1] penis[/s1] on [name2]'s ears.",
@@ -6888,8 +6954,6 @@ SEXACTION_TITJOB_ONGOING_1 = "[name1] give[s/1] [a /2]titjob[/s2] to [name2].",
 	SEXDESC_VAGINAL_INSERT_FINGERING_TRANSITION_3 = ", {^shoving:pushing} the fingers up to [names2] clit as [he1] {^drives:forces} [his1] [penis1] inside [names2] [pussy2]. ",
 	SEXDESC_VAGINAL_INSERT_FINGERING_TRANSITION_4 = ", the fingers {^pulling out:slipping free} and finding [names2] clit just as [name1] {^presses:pushes} [his1] [penis1] {^inside:into} [him2]. ",
 	SEXDESC_VAGINAL_INSERT_FINGERING_TRANSITION_5 = ", [name1] {^eases:slides} [his1] [penis1] into [names2] [pussy2] while the fingers {^relocate to:settle onto} [his2] clit. ",
-
-	#sexdictionary
 	SEXDICT_START_1_MISSIONARY_REPEAT_NICE_1 = "[name2] {^wraps:hooks}[s/2] [his2] legs around [name1]",
 	SEXDICT_START_1_MISSIONARY_REPEAT_NICE_2 = "[name2] {^pulls:draws}[s/2] [name1] {^closer:in}",
 	SEXDICT_START_1_MISSIONARY_REPEAT_NICE_3 = "[name2] {^arches:lifts}[s/2] [his2] hips to meet [name1]",
@@ -7181,8 +7245,6 @@ SEXACTION_TITJOB_ONGOING_1 = "[name1] give[s/1] [a /2]titjob[/s2] to [name2].",
 	SEXDICT_REACT_3_FSEXA_DEFAULT_1 = " as [names2] [penis2] {^filll[s/#2]:slide[s/#2] in and out of} [his1] [anus1].",
 	SEXDICT_REACT_3_FSEXA_DEFAULT_2 = " as [names1] [penis2] {^massage[s/#2]:scrape[s/#2] against:rub[s/#2] against} the walls of [his1] [anus1].",
 	SEXDICT_REACT_3_FSEXA_DEFAULT_3 = " as [his1] [anus1] get[s/1] {^stretched:churned:massaged} by [names2] [penis2].",
-
-	#sexdescriptions
 	SEXDESC_FUCK_BASE_1 = "fuck",
 	SEXDESC_FUCK_BASE_2 = "plow",
 	SEXDESC_FUCK_BASE_3 = "screw",
@@ -7647,7 +7709,6 @@ SEXACTION_TITJOB_ONGOING_1 = "[name1] give[s/1] [a /2]titjob[/s2] to [name2].",
 	SEXDESC_PARTNER_BOLD_2 = "haughty",
 	SEXDESC_PARTNER_HORNY_1 = "horny",
 	SEXDESC_PARTNER_HORNY_2 = "excited",
-
 	SEXACTION_ASSFINGERING_ONGOING_DESC_2 = "[name1] {^work[s/1]:pump[s/1]} [his1] fingers {^steadily:rhythmically} inside [names2] [anus2].",
 	SEXACTION_ASSFINGERING_FROM_FRONT_NICE_1 = "[name1] reach[es/1] {^down:between} [names2] thighs and {^carefully:gently} {^works:eases} [his1] fingers into [names2] [anus2].",
 	SEXACTION_ASSFINGERING_FROM_FRONT_NICE_2 = "[name1] slide[s/1] [his1] hand between [names2] legs and {^work[s/1]:ease[s/1]} [his1] fingers into [names2] [anus2].",
@@ -8021,7 +8082,7 @@ SEXACTION_TITJOB_ONGOING_1 = "[name1] give[s/1] [a /2]titjob[/s2] to [name2].",
 	SEXACTION_ENEMAPLUG_INITIATE_1 = "[name1] {^put:place:shove:stick}[s/1] enema liquid into [names2] anus then insert plug[/s1] to make sure it holds in.",
 	SEXACTION_ENEMAPLUG_REACTION_UNCONSCIOUS = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] anus {^respond:react} to {^the liquid} trying to flow out but still restricted by the plug.",
 	SEXACTION_MISSIONARY_ONGOING_1 = "[name1] fuck[s/1] [name2] in the missionary position.",
-	SEXACTION_MISSIONARY_ACT_1 =", {^enjoying:relishing in} the closeness of [partners2] [body2]. ",
+	SEXACTION_MISSIONARY_ACT_1 = ", {^enjoying:relishing in} the closeness of [partners2] [body2]. ",
 	SEXACTION_MISSIONARY_ACT_2 = ", {^spreading:parting:pulling apart:holding apart} [his2] thighs to expose [his2] [pussy2]. ",
 	SEXACTION_MISSIONARY_ACT_4 = " from above. ",
 	SEXACTION_MISSIONARY_ACT_5 = " as [name1] [fucks1] [partner2].",
@@ -8631,7 +8692,7 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYOGRE_MAGE = "Ogre Mage",
 	ENEMYGRYPHON = "Gryphon",
 	ENEMYELDER_GRYPHON_BOSS = "Elder Gryphon",
-	ENEMYTORNADO = 'Tornado',
+	ENEMYTORNADO = "Tornado",
 	ENEMYWOLF = "Wolf",
 	ENEMYRAT = "Rat",
 	ENEMYSPIDER_WEAK = "Crawler",
@@ -8670,33 +8731,33 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYAIRE = "Aire",
 	ENEMYKURDAN = "Kurdan",
 	ENEMYLEON = "Leon",
-	ENEMYFAT_BANDIT = 'Fat Bandit',
-	ENEMYREDHEAD_BOSS_BANDIT = 'Bandit Leader',
-	ENEMYSMALL_BANDIT = 'Small Bandit',
+	ENEMYFAT_BANDIT = "Fat Bandit",
+	ENEMYREDHEAD_BOSS_BANDIT = "Bandit Leader",
+	ENEMYSMALL_BANDIT = "Small Bandit",
 	ENEMYLILITH_BOSS = "Ashmedai",
 	ENEMYLILITH_BOSS_2 = "Ashmedai",
 	ENEMYASHMEDAI_TENTACLE = "Tentacle Appendage",
 	ENEMYWHITE_STAG = "White Stag",
 	ENEMYWHITE_STAG_HUMAN = "Mysterious Person",
-	ENEMYSMOTHERING_KUDZU = 'Smothering Kudzu',
-	ENEMYTHE_STRIDE = 'The Stride',
-	ENEMYTHE_SHELL = 'The Shell',
-	ENEMYTHE_TALON = 'The Talon',
+	ENEMYSMOTHERING_KUDZU = "Smothering Kudzu",
+	ENEMYTHE_STRIDE = "The Stride",
+	ENEMYTHE_SHELL = "The Shell",
+	ENEMYTHE_TALON = "The Talon",
 	ENEMYELF_SPECTER = "Elf Specter",
 	ENEMYELF_SOLDIER = "Elven Soldier",
 	ENEMYDWARF_FIGHTER = "Dwarf Fighter",
 	ENEMYDWARF_FIGHTER_ELITE = "Elite Dwarf Soldier",
 	ENEMYDWARF_RANGED = "Dwarf Crossbowman",
-	ENEMYDWARF_KING = 'Dwarf King',
-	ENEMYDWARVEN_SKIRMISHER = 'Dwarf Skirmisher',
-	ENEMYDWARVEN_SHIELDER = 'Dwarf Shielder',
-	ENEMYOBSIDIAN_GOLEM = 'Obsidian Golem',
+	ENEMYDWARF_KING = "Dwarf King",
+	ENEMYDWARVEN_SKIRMISHER = "Dwarf Skirmisher",
+	ENEMYDWARVEN_SHIELDER = "Dwarf Shielder",
+	ENEMYOBSIDIAN_GOLEM = "Obsidian Golem",
 	ENEMYKURO = "Kuro",
 	ENEMYERDYNA = "Erdyna",
 	ENEMYNIXX = "Nixx",
-	ENEMYUNLIT_BRAZIER = 'Unlit Brazier',
-	ENEMYLIGHTED_BRAZIER = 'Lighted Brazier',
-	ENEMYSHADOW_MONSTROSITY = 'Shadow Monstrosity',
+	ENEMYUNLIT_BRAZIER = "Unlit Brazier",
+	ENEMYLIGHTED_BRAZIER = "Lighted Brazier",
+	ENEMYSHADOW_MONSTROSITY = "Shadow Monstrosity",
 	ENEMYMUTANT = "Mutant",
 	ENEMYMUTANT2 = "Deformed",
 	ENEMYSYLAS = "Sylas",
@@ -9805,7 +9866,8 @@ Proceed? (original save file will stay untouched, but won't work with the curren
 	TUTORIAL_WORK25_1 = "Go to crafting tasks for Daisy again.",
 	TUTORIAL_WORK25_2 = "Go to crafting tasks for Daisy again.",
 	TUTORIAL_WORK26 = "Here you can change crafting priorities. Daisy will bake bread while task is active and cooking priority is higher then smith's. Now drag smith button to higher priority.",
-	TUTORIAL_WORK26_1 = "You can see that Daisy produceing steel now.\nClose this menu.",
+	TUTORIAL_WORK26_1 = """You can see that Daisy produceing steel now.
+Close this menu.""",
 	TUTORIAL_WORK27 = "You also can cancel crafting task outright. Go back to cooking menu.",
 	TUTORIAL_WORK27_1 = "Go back to cooking menu.",
 	TUTORIAL_WORK28 = "Cancel bread baking.",
@@ -10861,7 +10923,6 @@ The miniature girl reacted to your appearance unexpectedly nonchalantly.
 {color=yellow|— Zephyra.}
 
 Zephyra briefly bowed down to you after she introduced herself.""",
-
 	DIVINE_SYMBOL_23_FOX = """You enter a sumptuous though dimly lit room. A small figure on the other side turns at you.
 
 For a moment Zephyra simply stares. Then her eyes widen and she suddenly darts forward in a blur, circling around you with restless energy. Before you can say anything she leans in close, sniffing at your clothes, your legs and your tail, hardly containing her excitement.
@@ -19702,7 +19763,6 @@ Upon hearing Zephyra's innocent proposal, Kuro gives a cold smirk.
 {color=yellow|Kuro: — That's just a stronger reason for me to take care of him right here.}
 
 {color=yellow|Zephyra: — ...Right, I didn't think about it. Sorry, [name], I guess we'll have to teach Kuro a lesson.}""",
-
 	KURO_BOSSFIGHT_BANTER_1 = """
 Zephyra: Let's not be hasty now, sis~
 """,
@@ -19711,7 +19771,6 @@ Kuro loses Fading Light due to Zephyra's prank!
 """,
 	KURO_BOSSFIGHT_BANTER_3 = """
 Kuro: Stop. That.""",
-
 	COALBASE_ATTACK_AFTER_FIGHT = """As the last dwarven soldier is knocked out, Kuro is still standing, albeit visibly exhausted.
 
 {color=yellow|Kuro: — Ha-ah... You are so annoying. Fine, you've won this battle, I'm not fit for this kind of brawl...}
@@ -21258,7 +21317,7 @@ You feel like she almost has to force herself from hiding from you.""",
 
 {color=yellow|— [Master], you've been missing Lilia? Let's go to bed already!}""",
 	DIALOGUEJEANINITIATEM = "{color=yellow|— Yes? Don't just give me that oogling look, if you don't have anything serious I have business to do.}",
-	DIALOGUEROUGEINITIATEM = "{color=yellow|— Yes? Don't just give me that oogling look, if you don't have anything serious I have business to do.}", #2fix!!
+	DIALOGUEROUGEINITIATEM = "{color=yellow|— Yes? Don't just give me that oogling look, if you don't have anything serious I have business to do.}",
 	DIALOGUELILITHINIT = "{color=yellow|— [Master], you wanna play? I'm always ready to play.}",
 	DIALOGUEZEPHYRA_UNDERWEAR = "In your hands you hold a piece of clothing which was surrendered to you by Zephyra. Pondering on what actual benefit it can have, one thought is stuck in your mind... What if you wear it on your head? Surely, this is a terrible idea...",
 	DIALOGUEZEPHYRA_UNDERWEAROPTION = "Do it",
@@ -25145,7 +25204,8 @@ Restore 4 mana after casting a spell on an ally or yourself.""",
 	TRAITSPIRIT_OWL = "Guardian Spirit: Noctara",
 	TRAITSPIRIT_OWLDESCRIPT = "Wits Factor +1, Wits bonus +10, XP bonus +20%",
 	TRAITHARLOT = "Harlot",
-	TRAITHARLOTDESCRIPT = "Desirability can never rise above 75. When performing a service action [he] is at least skilled in, there is a 50% chance to double the gold earned; if mastered, that chance instead triples it.\nProstitution is 50% more efficient.",
+	TRAITHARLOTDESCRIPT = """Desirability can never rise above 75. When performing a service action [he] is at least skilled in, there is a 50% chance to double the gold earned; if mastered, that chance instead triples it.
+Prostitution is 50% more efficient.""",
 	TRAITCOURTESAN = "Courtesan",
 	TRAITCOURTESANDESCRIPT = "Fame can rise up to level 5 from service tasks instead of the usual cap, and the desirability bonus granted by fame is doubled.",
 	TRAITPETBEAST = "Fan Favorite",
@@ -26336,7 +26396,9 @@ When she notices you approaching, she startles and tries to cover her face. Jean
 	JEAN_SYLAS_BROTHEL_CRYING_OPTION_AMELIA = "Let Amelia calm the girl down",
 	JEAN_SYLAS_BROTHEL_GIRL_TRUST = "The girl looks up at you through tears. After some hesitation, she speaks in a quiet whisper.",
 	JEAN_SYLAS_BROTHEL_GIRL_KNOWS = "{color=aqua|Girl: — S-so you already know? I knew I wasn't crazy...}",
-	JEAN_SYLAS_BROTHEL_GIRL_BAD = """\n\n{color=aqua|Girl: — Something... something bad is going on here. I don't know why, but after that guy in all black showed up, people... people suddenly started disappearing... And one of them...}
+	JEAN_SYLAS_BROTHEL_GIRL_BAD = """
+
+{color=aqua|Girl: — Something... something bad is going on here. I don't know why, but after that guy in all black showed up, people... people suddenly started disappearing... And one of them...}
 	
 She begins to sob again.""",
 	JEAN_SYLAS_BROTHEL_GIRL_DAREN = """{color=aqua|Girl: — ...one of them was my Daren. He was a regular at first, but then we fell for each other... He was a mage, and he promised that after finishing his studies he would get me out of here... and now he's gone...}
@@ -26455,7 +26517,9 @@ You stay silent but it's obvious she needs to look convincing for the job.
 	
 {color=yellow|Jean: — Did you mean that as a compliment, but too dumb to understand why it isn't or did you actually want to say I look like a whore right now?}
 
-{color=yellow|Jean: — Nevermind, it's best you don't answer it.}\n\n""",
+{color=yellow|Jean: — Nevermind, it's best you don't answer it.}
+
+""",
 	JEAN_SYLAS_GIRL_PLAN_GO = """{color=yellow|Jean: — Alright, no point in postponing this any longer... Let's do it!}
 	
 She sighs, then puts on a fake smile and goes inside. You stealthily follow her from a distance.""",
@@ -26512,9 +26576,15 @@ Covered in dark clothes, just as the girl described, Sylas confidently walks tow
 	JEAN_SYLAS_SYLAS_OPTION_MISTAKE = "If you knew we were waiting, coming here was your biggest mistake.",
 	JEAN_SYLAS_SYLAS_OPTION_FIGHT = "Less talk, more fight!",
 	JEAN_SYLAS_SYLAS_REPLY_MISTAKE = "{color=aqua|Sylas: — Oh? And why is that? Or do you think I came unprepared?}",
-	JEAN_SYLAS_SYLAS_REPLY_FIGHT = "{color=aqua|Sylas: — You're itching for a fight that much? Fine, so be it.}\n\n",
-	JEAN_SYLAS_SYLAS_MONSTERS = "He snaps his fingers, and suddenly a bunch of monsters rush from the sides. Another bunch comes from behind, rushing in from the brothel's cellar.\n\n",
-	JEAN_SYLAS_SYLAS_MONSTERS_2 = "{color=aqua|Sylas: — Hope this setup satisfies your violent nature. But in the end, I'll personally put you to rest.}\n\n",
+	JEAN_SYLAS_SYLAS_REPLY_FIGHT = """{color=aqua|Sylas: — You're itching for a fight that much? Fine, so be it.}
+
+""",
+	JEAN_SYLAS_SYLAS_MONSTERS = """He snaps his fingers, and suddenly a bunch of monsters rush from the sides. Another bunch comes from behind, rushing in from the brothel's cellar.
+
+""",
+	JEAN_SYLAS_SYLAS_MONSTERS_2 = """{color=aqua|Sylas: — Hope this setup satisfies your violent nature. But in the end, I'll personally put you to rest.}
+
+""",
 	JEAN_SYLAS_SYLAS_SERVANT_KILLED = "One of them has familiar features, and soon you realize it was his servant from the ruins that joined the fray.",
 	JEAN_SYLAS_SYLAS_SERVANT_FREED = "Behind the monsters you notice a familiar figure of the servant from the ruins, who skittishly hides in the back.",
 	JEAN_SYLAS_SYLAS_DEVICE = """While your enemy gloats, you feel the magical device Myr gave you in your pocket and press the activation button. Suddenly, a wave of energy emanates from your location. The monsters it hits become confused and sluggish, their movements turn frantic, then aimless. The army of battle monsters turns into a crowd of barely functioning imbeciles.
@@ -26851,7 +26921,6 @@ You can feel your climax building, a tightening in your groin. You can feel hers
 	JEAN_WED_6 = """You follow her over the edge a few strokes later, burying yourself deep inside her as your release hits. A groan rips from your throat as you pulse, filling her with your seed. You collapse against her, your breath coming in ragged gasps, your bodies slick with sweat. For a long moment, you lie there, your heart hammering against your ribs, her body still trembling beneath yours.
 
 {color=yellow| — AAah... This felt too good... Hey, you aren't planning to just stop here?}""",
-	
 	ROUGE_DEMONESS_INTERMISSION_START = """At the rich bedroom of the imperial palace Rouge finds a visitor - Mhyrana was waiting for her there. As Rouge looked around she found her servant cowering in the corner, looking relieved at her arrival.
 
 {color=green|Grotus: — Miss Rouge, you have a vis...!}
@@ -26910,7 +26979,6 @@ He turns fully toward Rouge, his expression hardening.
 {color=aqua|Melchor: — As for you... this is the last straw. A stranger with no standing, yet somehow you slither closer to the Emperor with every passing day.}
 
 {color=yellow|Rouge: — You make it sound so flattering when you say it like that.}""",
-
 	ROUGE_MELCHOR_CONFRONTATION_RESPONSE_2 = """{color=aqua|Melchor: — You manipulate and embed yourself where you do not belong. I will not tolerate this any longer.}
 
 Rouge raises her hands lightly, mock-placating.
@@ -26920,7 +26988,6 @@ Rouge raises her hands lightly, mock-placating.
 She glances at you sideways.
 
 {color=yellow|Rouge: — That is, if [name] wishes to take me into [his] custody.}""",
-
 	ROUGE_MELCHOR_CONFRONTATION_RESPONSE_3 = """Melchor freezes, clearly caught off guard. After a long pause, he looks at you, jaw tight.
 
 {color=aqua|Melchor: — ...Absurd. Yet preferable. Will you take responsibility for her and keep her away from here?}""",
@@ -26946,7 +27013,6 @@ She turns back to Melchor.
 {color=yellow|Rouge: — Of course, just don't keep me waiting. Until then...}
 
 Rouge turns around and leaves without letting either of you respond.""",
-
 	ROUGE_MANSION_ARRIVAL = """You arrive at your mansion with Rouge walking a half step ahead of you, inspecting the halls with open curiosity.
 
 {color=yellow|Rouge: — Well, this place isn't too shabby. I guess that's a given for the mayor of Aliron [him]self.}""",
@@ -26973,7 +27039,6 @@ Rouge's playful demeanor makes it impossible to tell whenever she's joking or se
 {color=yellow|Rouge: — Very well. My luggage will be arriving soon, don't worry, it's just a few personal things. Now if you'll excuse me...}
 
 She rudely closes the door, leaving you standing outside. Feels like you'll be hearing more from her soon.""",
-
 	ROUGE_ROOM_COMPLAINT_START = """Not long after you've left for your own business, Rouge comes to your office with a less than pleasant expression.
 
 {color=yellow|Rouge: — [name], I need your attention. This is completely inexcusable! I know this place isn't up to the empire's standards but the room you've given me is just insulting.}""",
@@ -26987,11 +27052,10 @@ She rudely closes the door, leaving you standing outside. Feels like you'll be h
 	ROUGE_ROOM_COMPLAINT_DEMANDING = "{color=yellow|Rouge: — I may be demanding, but so what? I know what I deserve, and if you expect me to stay on your side you should make my time worth it.}",
 	ROUGE_ROOM_COMPLAINT_REFUSE = "{color=yellow|Rouge: — Oh? I thought better of you. You might not recognize the fortune of having me by your side. Let it be known that you should not disappoint me like that.}",
 	ROUGE_ROOM_COMPLAINT_ACCEPT = "{color=yellow|Rouge: — Now that's what I like to hear. I don't expect this poor countryside to have the best service I could get back there, but it's the thought that counts after all.}",
-
 	ROUGE_WORKERS_FURNITURE_START = """{color=aqua|Sigmund: — Furnitcha ya say..? Well, it would be an honor to do dat for a mayor's guest.}
 
 {color=yellow|Rouge: — What a pleasant thing to hear. Let me have a look at your catalogs.}""",
-	ROUGE_WORKERS_FURNITURE_REENTER = """{color=aqua|Sigmund: — Yah, I remember. Ya've got da payment?}""",
+	ROUGE_WORKERS_FURNITURE_REENTER = "{color=aqua|Sigmund: — Yah, I remember. Ya've got da payment?}",
 	ROUGE_WORKERS_FURNITURE_TERMS = """After some time passes, Rouge returns to you with Sigmund.
 
 {color=aqua|Sigmund: — Yah, ya have quite the demands, lass.}
@@ -27040,7 +27104,6 @@ Rouge leaves to seal the contract as you wait for her to return. Mildly surprise
 {color=yellow|Rouge: — I can't believe it. You really said that? I'm starting to think you might not be the right [man] for me to follow after all. Fine, I'll pay for the necessities with my own money, it's a beggar's wage to me anyway.}
 
 Rouge leaves to seal the contract as you wait for her to return. Mildly surprised, you leave the workers' guild with Rouge walking slightly behind — it seems her attitude has grown colder.""",
-
 	ROUGE_LETTER_REQUEST = """In the afternoon Rouge approaches you with a request. She seems to have grown quite accustomed to being your resident.
 
 {color=yellow|Rouge: — Darling, it's been a while since we left the capital. While I'm not in any particular hurry to return, I've been picking up some rumors from there. And since I've still promised Melchor not to show my face there, maybe you could do me a favor?}""",
@@ -27059,8 +27122,7 @@ She pauses as if remembering something.
 {color=yellow|Rouge: — I suppose there's one more reason. I can probably trust you more than any of my friends in the empire with something like this.}""",
 	ROUGE_LETTER_REQUEST_RIVALS = "{color=yellow|Rouge: — Even bitter rivals can share a common interest once in a while, fufu. Don't fret about it, and we'll all benefit.}",
 	ROUGE_LETTER_REQUEST_ACCEPT = "{color=yellow|Rouge: — Very good. I'll be watching from somewhere nearby. Just so he won't spot me and get angry about it, fufu.}",
-
-	ROUGE_CHAT_ROOT = " ",#fix
+	ROUGE_CHAT_ROOT = " ",
 	ROUGE_CHAT_OPTION_CULT = "Tell me about the cult.",
 	ROUGE_CHAT_OPTION_MELCHOR = "What's your deal with Melchor?",
 	ROUGE_CHAT_CULT = "{color=yellow|Rouge: — Mostly they are weaklings who found some comfort in the madness of going to war with reality. I suppose I got dragged into it a bit as well, but you can't blame me. Mhyrana as their leader can be a fearsome adversary.}",
@@ -27072,7 +27134,6 @@ She pauses as if remembering something.
 	ROUGE_CHAT_CULT_KURO = "{color=yellow|Rouge: — She always was a strange one, so I'm hardly surprised. That's on her though. Besides, haven't you already given her a piece of your mind? Might need a few more lessons to make sure her head stays on straight, fufu.}",
 	ROUGE_CHAT_CULT_GOAL = "{color=yellow|Rouge: — Hell if I know. Mhyrana has been plotting something like a grand revolution across the empire, or maybe it's some sort of cataclysm. Her followers are little more than fanatics and I can't say whether she has a real plan or is just acting on a whim.}",
 	ROUGE_CHAT_MELCHOR = "{color=yellow|Rouge: — Ah, he's just an old fool clinging to power long past his time. He doesn't like me, the feeling is mutual. He thinks he's so great simply because he was born into high society as part of an ancient clan. He really believes that makes him untouchable and important — what a laugh.}",
-
 	ROUGE_MEET_MELCHOR_START = """You find Melchor at his office. The rich decoration makes even you feel a twinge of envy. After getting the meeting approved, you make your way inside as he observes you with a skeptical look.
 
 {color=yellow|Melchor: — You again. [name], if I'm not mistaken. Mayor of Aliron, been hunting down artifacts and got dragged into business with the elves and the dwarven kingdom.}""",
@@ -27101,7 +27162,6 @@ The contents of the letter name a few locations in the city likely used by the c
 	ROUGE_MEET_OPTION_REWARD = "What will I get out of it?",
 	ROUGE_MEET_MELCHOR_MUTUAL_INTEREST = "{color=yellow|Melchor: — Yeah, yeah, now get to it. I seethe just thinking about those fanatics plotting behind our backs at this very moment.}",
 	ROUGE_MEET_MELCHOR_REWARD = "{color=yellow|Melchor: — You came here on that vixen's behalf, didn't you? Ask her for your reward for being a good errand boy. Well, if this operation yields results you might get some recognition from the empire. Now go, you can't afford to waste time here.}",
-	
 	ROUGE_WAREHOUSE_SEARCH = "After going through various storage districts and finding little more than empty buildings with traces of questionable activity, you finally come across a multistory warehouse showing signs of recent use. Avoiding some suspicious-looking guards you make your way to the back entrance.",
 	ROUGE_WAREHOUSE_APPROACH_KETCH = "You hear a familiar voice as your curiosity draws you closer to the door.",
 	ROUGE_WAREHOUSE_APPROACH_HENCHMAN = "You hear a loud argument coming through the door which catches your attention.",
@@ -27127,7 +27187,6 @@ Before you can get back out, you hear footsteps behind you — your presence has
 	ROUGE_WAREHOUSE_CAPTURE_2 = """{color=aqua|— Hey, who's there!? We've got a snitch here!}
 
 A powerful security spell you hadn't noticed activates and catches you in its grip. You feel your consciousness slipping...""",
-
 	ROUGE_INTERROGATION_KETCH_START = """You wake up in a dark room, your hands tied to a chair. Your head is splitting with a headache but your limbs seem to be intact.
 
 {color=yellow|Ketch: — Well, our sleeping princess is finally awake.}
@@ -27163,7 +27222,7 @@ As he reaches for his blade, a sudden banging at the door stops him.""",
 {color=aqua|Henchman: — So, our unlucky guest, let's hear it — who knows you're here?}""",
 	ROUGE_INTERROGATION_OPTION_BUSINESS = "None of your business.",
 	ROUGE_INTERROGATION_OPTION_SQUAD = "I have a squad ready to storm this place.",
-	ROUGE_INTERROGATION_HENCHMAN_QUESTION_2 = """{color=aqua|Henchman: —Hah, looks like you want it the hard way. Can't complain...}""",
+	ROUGE_INTERROGATION_HENCHMAN_QUESTION_2 = "{color=aqua|Henchman: —Hah, looks like you want it the hard way. Can't complain...}",
 	ROUGE_INTERROGATION_OVER_KETCH = """{color=aqua|Goon: — Master Ketch, there's a group of people outside the building, looks like some kind of mob — could be officials...}
 
 {color=yellow|Ketch: — Huh, what the hell?!}
@@ -27185,8 +27244,8 @@ As he reaches for his blade, a sudden banging at the door stops him.""",
 As he finishes freeing you, you finally manage to stand and thank him.
 
 {color=yellow|Grotus: — Forget it, I'm out of here. Don't you dare mention who helped you if they catch you again! The western side of the building should have only a few watchers. I'm gone!}""",
-	ROUGE_WAREHOUSE_ESCAPE_1 = """The small man retreats so quickly you can barely track him — until another cultist steps into his path. The shouts from outside are getting louder, so you decide it's better to move.""",
-	ROUGE_WAREHOUSE_ESCAPE_2 = """Making it out of the building you reach the small back gate, but two men are blocking the way, weapons drawn and ready to stop you.""",
+	ROUGE_WAREHOUSE_ESCAPE_1 = "The small man retreats so quickly you can barely track him — until another cultist steps into his path. The shouts from outside are getting louder, so you decide it's better to move.",
+	ROUGE_WAREHOUSE_ESCAPE_2 = "Making it out of the building you reach the small back gate, but two men are blocking the way, weapons drawn and ready to stop you.",
 	ROUGE_WAREHOUSE_ESCAPE_WIN = """As you deal with the two cultists and put distance between yourself and the warehouse, Grotus appears before you unexpectedly.
 
 {color=yellow|Grotus: — Not too bad for a moron like you. Remember to be grateful for my help when you report back to mistress Rouge!}""",
@@ -27207,14 +27266,14 @@ Saying that he left you to yourself. Perhaps now you can report back to Melchor.
 {color=aqua|Soldier Leader: — We've confirmed these are the dangerous cultists and they're not surrendering. Move in.}
 
 A small group of combat mages began chanting potent fire spells, quickly setting the barricades ablaze while others kept bystanders at a distance. Agonized cries began echoing from inside the building.""",
-	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_1 = """As the cult's followers kept the soldiers occupied, Ketch slipped into a small underground tunnel prepared specifically for an escape. He fought his way past a couple of soldiers before his followers managed to set up a rearguard, but the fighting left him tired and wounded.""",
-	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_0 = """{color=yellow|Ketch: — Fucking hell, how did it go this wrong? If I get my hands on that [name] I swear [he]'ll never—}""",
-	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2 = """A figure stepped out of the shadows ahead. Ketch's expression shifted to shock — not because it was someone unexpected, but because of what it meant.""",
-	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_2 = """{color=yellow|Ketch: — You... You set this whole thing up, you bitch!}""",
-	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_3 = """{color=aqua|Rouge: — And you thought you could insult and threaten me without it coming back around? Attack my sisters?}""",
-	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_4 = """{color=yellow|Ketch: — The cult will hear about this—}""",
-	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_5 = """The strike comes before Ketch can see it. A wound to his chest kills him on the spot, blood spraying across the walls.""",
-	ROUGE_REPORT_MELCHOR_KETCH_DEAD = """{color=yellow|Rouge: — Fufu, I hope darling won't be too strict with me about this.}""",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_1 = "As the cult's followers kept the soldiers occupied, Ketch slipped into a small underground tunnel prepared specifically for an escape. He fought his way past a couple of soldiers before his followers managed to set up a rearguard, but the fighting left him tired and wounded.",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_0 = "{color=yellow|Ketch: — Fucking hell, how did it go this wrong? If I get my hands on that [name] I swear [he]'ll never—}",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2 = "A figure stepped out of the shadows ahead. Ketch's expression shifted to shock — not because it was someone unexpected, but because of what it meant.",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_2 = "{color=yellow|Ketch: — You... You set this whole thing up, you bitch!}",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_3 = "{color=aqua|Rouge: — And you thought you could insult and threaten me without it coming back around? Attack my sisters?}",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_4 = "{color=yellow|Ketch: — The cult will hear about this—}",
+	ROUGE_REPORT_MELCHOR_KETCH_ESCAPE_2_5 = "The strike comes before Ketch can see it. A wound to his chest kills him on the spot, blood spraying across the walls.",
+	ROUGE_REPORT_MELCHOR_KETCH_DEAD = "{color=yellow|Rouge: — Fufu, I hope darling won't be too strict with me about this.}",
 	ROUGE_REPORT_MELCHOR_KETCH_WARNED_ESCAPE_1 = """As the cult's followers kept the soldiers occupied, Ketch slipped into a small underground tunnel prepared specifically for an escape. He fought his way past a couple of soldiers before his followers managed to set up a rearguard, but the fighting left him tired and wounded.
 
 The tunnel ahead should have been clear, but his pace slowed as your words came back to him.
@@ -27245,31 +27304,27 @@ Rouge stood in the middle of the tunnel, perfectly still, her smile thin and har
 
 {color=yellow|Rouge: — Ah, [name]. You missed a very ugly little chase.}""",
 	ROUGE_REPORT_KETCH_ESCAPED_WHAT_HAPPENED = "{color=yellow|Rouge: — Ketch got away. He was wounded, frightened, and much better prepared than he should have been. He'll likely lay lay for a few weeks from now on.}",
-	ROUGE_REPORT_KETCH_BASEMENT_1 = """{color=yellow|Rouge: — There's a hidden cult basement just around the corner. I imagine you'd like to take a look before Melchor's men sweep the place.}""",
+	ROUGE_REPORT_KETCH_BASEMENT_1 = "{color=yellow|Rouge: — There's a hidden cult basement just around the corner. I imagine you'd like to take a look before Melchor's men sweep the place.}",
 	ROUGE_REPORT_KETCH_BASEMENT_2 = """While the upper level of the warehouse mostly held weapons and various tools, the underground was a different story. Cramped rooms were filled with refuse and dirty rags. You couldn't quite make sense of it until one of the rooms revealed a grim sight: many human bodies and parts piled together, gutted, drained of blood. The stench made your stomach turn.
 
 {color=yellow|Rouge: — They used this place to sacrifice people. Mostly the poor and immigrants who wouldn't be looked for. Looks like they were building toward something big.}""",
 	ROUGE_REPORT_OPTION_OTHER_PLACES = "How many other places like this are there across the empire?",
 	ROUGE_REPORT_OPTION_CLEAR_OUT = "So you wanted me to help clear this out?",
-	ROUGE_REPORT_KETCH_BASEMENT_3 = """{color=yellow|Rouge: —  I'm sure more than a few. Why do you think the empire is fighting them? Though I don't think they're doing a particularly good job. Regardless, I have my own agenda and it's time for me to leave.}""",
-	ROUGE_REPORT_KETCH_BASEMENT_4 = """{color=yellow|Rouge: — No, I was mostly after that bastard. But it's good that we both got something out of it, isn't it? Not to mention we made Melchor do something useful for once. Well, it's time for me to leave now.}""",
-	
+	ROUGE_REPORT_KETCH_BASEMENT_3 = "{color=yellow|Rouge: —  I'm sure more than a few. Why do you think the empire is fighting them? Though I don't think they're doing a particularly good job. Regardless, I have my own agenda and it's time for me to leave.}",
+	ROUGE_REPORT_KETCH_BASEMENT_4 = "{color=yellow|Rouge: — No, I was mostly after that bastard. But it's good that we both got something out of it, isn't it? Not to mention we made Melchor do something useful for once. Well, it's time for me to leave now.}",
 	ROUGE_REPORT_HENCHMAN_BASEMENT_INTRO = """It doesn't take long for the imperial mages to finish off the remaining cultists and extinguish the fires. You make your way into the building, which is miraculously not too badly damaged. A small open cellar trapdoor catches your eye. You descend into the underground passage and find Rouge already there, standing amidst the cramped halls as if she had been expecting you.
 
 {color=yellow|Rouge: — Ah, [name], there you are. I thought you'd notice the trapdoor sooner or later.}""",
 	ROUGE_REPORT_OPTION_WHAT_DOING = "What are you doing here?",
-#	ROUGE_REPORT_OPTION_CAPITAL = "Aren't you supposed to stay away from the capital?",
-	ROUGE_REPORT_HENCHMAN_WHAT_HAPPENED = """{color=yellow|Rouge: — Looking around, of course. These fanatics had more than one secret tucked away beneath their feet, and I was curious what exactly they'd been hiding down here.}""",
-#	ROUGE_REPORT_KETCH_CAPITAL = """Rouge: — Fufu, I suppose I may have bent one little promise — you won't tell on me though, will you? I'll stay well clear of this from now on.""",
+	ROUGE_REPORT_HENCHMAN_WHAT_HAPPENED = "{color=yellow|Rouge: — Looking around, of course. These fanatics had more than one secret tucked away beneath their feet, and I was curious what exactly they'd been hiding down here.}",
 	ROUGE_REPORT_HENCHMAN_BASEMENT_1 = """Rouge gestures for you to follow. She leads you deeper into the underground, through cramped rooms filled with refuse and dirty rags. You couldn't quite make sense of it until one of the rooms revealed a grim sight: many human bodies and parts piled together, gutted, drained of blood. A strange thought of familiarity towards the victims fills you. You feel like you can't take a single breath in that room. 
 
 Rouge's face turns grim, this is the first time you can see her being this serious.
 
 {color=yellow|Rouge: — They used this place to sacrifice people. Mostly the poor and immigrants who wouldn't be looked for. Looks like they were building toward something big.}""",
-#	ROUGE_REPORT_OPTION_OTHER_PLACES = "How many other places like this are there across the empire?",
 	ROUGE_REPORT_OPTION_SHOW = "So you came down here just to show me this?",
-	ROUGE_REPORT_HENCHMAN_BASEMENT_2 = """{color=yellow|Rouge: — I'm sure more than a few. Why do you think the empire is fighting them? Though I don't think they're doing a particularly good job.}""",
-	ROUGE_REPORT_HENCHMAN_BASEMENT_3 = """{color=yellow|Rouge: — Not just this. Come along, darling. There's one more thing worth seeing before Melchor's men start trampling through the place.}""",
+	ROUGE_REPORT_HENCHMAN_BASEMENT_2 = "{color=yellow|Rouge: — I'm sure more than a few. Why do you think the empire is fighting them? Though I don't think they're doing a particularly good job.}",
+	ROUGE_REPORT_HENCHMAN_BASEMENT_3 = "{color=yellow|Rouge: — Not just this. Come along, darling. There's one more thing worth seeing before Melchor's men start trampling through the place.}",
 	ROUGE_REPORT_HENCHMAN_BASEMENT_4 = """Rouge leads you back up from the cellar and through the warehouse proper. The upper level is cluttered with crates, weapons, and various tools, though now that the fighting has ended it all feels strangely hollow. What looked at first like a simple stockpile now carried a more deliberate purpose: staging supplies for raids, rituals, and whatever the cult had been preparing next.
 
 {color=yellow|Rouge: — This is what they wanted to keep close at hand. Steel above, butcher's work below. Efficient, in its own ugly way.}
@@ -27279,7 +27334,6 @@ You glance back toward the cellar entrance, the foul air still drifting up from 
 {color=yellow|Rouge: — Well, you've seen enough. The empire will pick through the remains soon enough, and I have no desire to linger around soldiers longer than necessary.}
 
 Before you can say anything else, Rouge steps away toward a side exit with that same unhurried confidence. By the time you move after her, she is already gone.""",
-	
 	ROUGE_REPORT_MELCHOR_RETURN = """You find Melchor at his office, seemingly satisfied with the raid.
 
 {color=yellow|Melchor: — Ah, you again. Good work leading us to the cult. We even recovered that bastard's body, though it seems someone else did the killing. Was that you?}""",
@@ -27309,7 +27363,6 @@ He passes you some gold and has the soldiers escort you from the scene before de
 Rouge's smile thins for a moment.
 
 {color=yellow|Rouge: — Ketch will likely crawl back into our lives sooner or later. Men like him hate surviving a humiliation almost as much as they hate losing. Still, he's wounded, hunted, and busy hiding from Melchor's people. We have time now, so let's take it easy for a bit.}""",
-	
 	ROUGE_QUEST_NAME = "Rouge: Imperial games",
 	ROUGE_QUEST_SUMMARY = "Rouge's rivalry in the Empire has drawn you into her affairs.",
 	ROUGE_QUEST_STAGE_MANSION = "Bring Rouge to the mansion.",
@@ -27321,14 +27374,12 @@ Rouge's smile thins for a moment.
 	ROUGE_QUEST_STAGE_RAID = "Report the warehouse to Melchor.",
 	ROUGE_QUEST_STAGE_REWARD = "Return to Melchor.",
 	ROUGE_QUEST_STAGE_ROUGE = "Return to Rouge.",
-	
-	ROUGE_MELCHOR_VISIT_OFFICE = """You come to visit Melchor's office, but the clerks at the door make it clear that he has little patience for unplanned guests. It would be better not to bother him without a good reason.""",
+	ROUGE_MELCHOR_VISIT_OFFICE = "You come to visit Melchor's office, but the clerks at the door make it clear that he has little patience for unplanned guests. It would be better not to bother him without a good reason.",
 	ROUGE_MELCHOR_VISIT_OPTION_LETTER = "*Deliver Rouge's letter.*",
 	ROUGE_MELCHOR_VISIT_OPTION_RAID = "*Report the warehouse.*",
 	ROUGE_MELCHOR_VISIT_OPTION_REWARD = "*Consult on the warehouse task.*",
 	ROUGE_MELCHOR_VISIT_OPTION_TAX_INTRO = "*Visit Melchor's office.*",
 	ROUGE_MELCHOR_VISIT_OPTION_TAX_RETURN = "*Return with the tax records.*",
-
 	ROUGE_CAPITAL_OPTION_FIND = "Find Rouge",
 	ROUGE_CAPITAL_OPTION_MELCHOR = "Visit Melchor",
 	ROUGE_CAPITAL_OPTION_LETTER = "Meet Melchor",
@@ -27338,12 +27389,10 @@ Rouge's smile thins for a moment.
 	ROUGE_TAX_SETTLEMENT_NAME = "Remote Settlement",
 	ROUGE_TAX_SETTLEMENT_DESC = "A remote emperila settlement with outstanding tax obligations.",
 	ROUGE_TAX_SETTLEMENT_VISIT = "Investigate the settlement.",
-
 	ROUGE_QUEST_STAGE_TAX_INTRO = "Visit the Chancellor's office in the capital.",
 	ROUGE_QUEST_STAGE_TAX_ERRAND = "Travel to the administrative region and settle the unpaid taxes.",
 	ROUGE_QUEST_STAGE_TAX_DONE = "Return to Melchor with the signed records.",
-
-	ROUGE_MELCHOR_TAX_INTRO_START = """{color=yellow|Melchor: — You again. [name], if I'm not mistaken. Mayor of Aliron, hunting down artifacts and already involved with the elves and the dwarven kingdom.}""",
+	ROUGE_MELCHOR_TAX_INTRO_START = "{color=yellow|Melchor: — You again. [name], if I'm not mistaken. Mayor of Aliron, hunting down artifacts and already involved with the elves and the dwarven kingdom.}",
 	ROUGE_MELCHOR_TAX_OPTION_INFORMED = "You are quite well informed.",
 	ROUGE_MELCHOR_TAX_OPTION_SPIES = "I didn't take you for someone who follows foreign mayors.",
 	ROUGE_MELCHOR_TAX_OPTION_DIRECT = "Then you already know why I came to the capital.",
@@ -27360,15 +27409,14 @@ He presses his seal against the topmost document with more force than necessary.
 {color=yellow|Melchor: — You may have earned some reputation beyond our borders, but reputation is not jurisdiction.}""",
 	ROUGE_MELCHOR_TAX_OPTION_EARN = "Surely there's some way I can earn it?",
 	ROUGE_MELCHOR_TAX_OPTION_PRICE = "I need this information, name your price.",
-	ROUGE_MELCHOR_TAX_ASSIGNED = """{color=yellow|Melchor: — If you insist on being useful to the Empire, then prove you can handle imperial work without turning it into another spectacle. There is a remote administrative region that has fallen behind on its tax obligations. You will go there, collect what is owed, and return with the proper records.}""",
+	ROUGE_MELCHOR_TAX_ASSIGNED = "{color=yellow|Melchor: — If you insist on being useful to the Empire, then prove you can handle imperial work without turning it into another spectacle. There is a remote administrative region that has fallen behind on its tax obligations. You will go there, collect what is owed, and return with the proper records.}",
 	ROUGE_MELCHOR_TAX_OPTION_COMPLAIN_TAXES = "You're sending me to collect taxes?",
 	ROUGE_MELCHOR_TAX_OPTION_COMPLAIN_MUNDANE = "What the hell kind of mundane task is that?",
 	ROUGE_MELCHOR_TAX_OPTION_ACCEPT = "Fine. Give me the location.",
-	ROUGE_MELCHOR_TAX_COMPLAINT_RESPONSE = """{color=yellow|Melchor: — Yes. The machinery that keeps cities fed, soldiers paid, and roads maintained. Did you expect a glorious trial? This is how it works for capital clerks. They earn it through boring, mundane work that proves discipline, patience, and obedience to procedure. It is a tradition meant to test one's loyalty and responsibility.}""",
+	ROUGE_MELCHOR_TAX_COMPLAINT_RESPONSE = "{color=yellow|Melchor: — Yes. The machinery that keeps cities fed, soldiers paid, and roads maintained. Did you expect a glorious trial? This is how it works for capital clerks. They earn it through boring, mundane work that proves discipline, patience, and obedience to procedure. It is a tradition meant to test one's loyalty and responsibility.}",
 	ROUGE_MELCHOR_TAX_CLOSED = """{color=yellow|Melchor: — You'll get the details on the spot. Now you better not waste my time.}
 
 He writes a short authorization, seals it, and slides it across the desk. You take the document and the marked location.""",
-
 	ROUGE_TAX_REGION_ARRIVAL = """You arrive at the administrative region marked on Melchor's document. The place is far from the capital's polished streets, with scattered farms, rough roads, and a handful of settlements grouped around old imperial offices.
 
 After presenting Melchor's authorization, you spend some time checking the ledgers and asking around. Most settlements have paid late but eventually settled their obligations. One name, however, appears again and again in the unpaid records — a settlement that has not paid any standard taxes for several periods in a row.""",
@@ -27395,7 +27443,7 @@ You explain that Melchor sent you to investigate the unpaid taxes and return wit
 You explain that Melchor sent you to investigate the unpaid taxes and return with the proper records.
 
 {color=yellow|Drukar: — So they found one of our own to dress their demands in a friendlier face. Doesn't change what you came for. Our money and our obedience.}""",
-	ROUGE_TAX_DRUKAR_REFUSE = """{color=yellow|Drukar: — We refuse. Go back and tell your Chancellor that this settlement is done feeding the Empire.}""",
+	ROUGE_TAX_DRUKAR_REFUSE = "{color=yellow|Drukar: — We refuse. Go back and tell your Chancellor that this settlement is done feeding the Empire.}",
 	ROUGE_TAX_OPTION_FORCE = "Then I'll make you pay by force.",
 	ROUGE_TAX_OPTION_PERSUADE_PAY = "[Persuasion Challenge] You better forget about your rebellion — you are too weak against the Empire.",
 	ROUGE_TAX_OPTION_PERSUADE_COVERUP = "[Persuasion Challenge] Keep your rebellion quiet and pay for now. Let the records say nothing happened.",
@@ -27404,7 +27452,7 @@ You explain that Melchor sent you to investigate the unpaid taxes and return wit
 	ROUGE_TAX_DRUKAR_COMBAT_START = """{color=yellow|Drukar: — Then come take them.}
 
 Several orcs draw their weapons around him.""",
-	ROUGE_TAX_DRUKAR_VICTORY = """With Drukar and his supporters defeated, the remaining orcs lose the will to resist. The settlement's leaders surrender the overdue taxes and sign the necessary records with sullen obedience.""",
+	ROUGE_TAX_DRUKAR_VICTORY = "With Drukar and his supporters defeated, the remaining orcs lose the will to resist. The settlement's leaders surrender the overdue taxes and sign the necessary records with sullen obedience.",
 	ROUGE_TAX_DRUKAR_PERSUADE_PAY = """You tell Drukar that whatever anger he feels, an open refusal only gives the Empire an excuse to crush the settlement. If he wants to protect his people, he needs to choose a battle they can survive.
 
 For a while, the hall stays tense. Then Drukar spits to the side and lowers his hand from his weapon.
@@ -27428,8 +27476,7 @@ Drukar looks at you in open suspicion.
 {color=yellow|Drukar: — Fine. If you want to waste your gold, we won't stop you.}
 
 You pay the overdue amount and secure the proper records from the local office.""",
-	ROUGE_TAX_REGION_RETURN = """{color=yellow|Drukar: — Back again? Did the Empire give you better threats, or did you come up with them yourself?}""",
-
+	ROUGE_TAX_REGION_RETURN = "{color=yellow|Drukar: — Back again? Did the Empire give you better threats, or did you come up with them yourself?}",
 	ROUGE_MELCHOR_TAX_RETURN = """You return to Melchor's office with the signed records and proof that the overdue taxes have been settled. He reads through the documents carefully, lingering on every seal and signature before setting them aside.
 
 {color=yellow|Melchor: — Hmph. Adequate. The payments are accounted for, the records are clean, and the region has been reminded that imperial obligations are not optional.}
@@ -27443,7 +27490,7 @@ He leans back, his severe expression easing only slightly.
 	ROUGE_CAPITAL_OPTION_MEET_ROUGE = "Meet with Rouge",
 	ROUGE_TAX_LETTER_ARRIVE = """A letter arrives bearing a familiar seal. The handwriting is Rouge's.
 
-"I heard Melchor kept you busy. Congratulations on surviving his paperwork.
+\"I heard Melchor kept you busy. Congratulations on surviving his paperwork.
 
 There is something I need to discuss with you before I leave the capital. It concerns Melchor, and it might be worth your while to hear it in person rather than through a courier.
 
@@ -27475,7 +27522,6 @@ She hands you the sealed envelope.
 
 She hands you the sealed envelope without further comment.""",
 	ROUGE_CHAT_OPTION_REPORT = "Your task is done.",
-	
 	ROUGE_FURNITURE_REWARD = """{color=yellow|Rouge: — So you really did it. My room finally gonna look like it belongs to someone with taste.}
 
 She leans back with a satisfied smile, then gives you a slow, appraising look.
@@ -27490,7 +27536,6 @@ She leans back with a satisfied smile, then gives you a slow, appraising look.
 Her tails flick once, sharp with irritation, but she exhales and looks away before her annoyance can fully settle into anger.
 
 {color=yellow|Rouge: — Fine. I suppose even you are allowed to be difficult sometimes. Don't think this offer will be up since you decided to test my patience today.}""",
-	
 	ROUGE_SEX_1 = """Rouge lounges on the white silk sheets. Her body is a masterpiece of generous curves, her skin seems to glow in the dim light. Her hair, a cascade of fiery red, fans out around her head like a halo. Her fox ears, a darker shade of red, twitch with interest as you approach. Her eyes, the color of molten gold, gleam with a predatory light that promises both pleasure and possession. Two sleek, red tails, tipped with white, swish slowly behind her, a hypnotic, mesmerizing dance. She pats the space between her breasts, an invitation that is both a challenge and a command.
 
 {color=yellow|Rouge: — Come on here, I'm in the mood to make our first time... special. Unless it's too cheeky for you.}""",
@@ -27528,7 +27573,6 @@ Her body is a landscape of pleasure for you to explore. Your hands roam over her
 {color=yellow|Rouge: — AAaaaaah!... [name]!... Yes... }
 
 You collapse against her, your body spent, your breathing ragged. Her tails wrap around you, holding you close, a possessive, protective embrace.""",
-
 	LIRA_QUEST_1_INTRO = """Over the past few days, Lira has slowly begun to settle into life at the mansion. You occasionally see her helping with small chores or assisting in the kitchen, slowly making connections with other servants during shared labor.
 
 The only person she hasn't been able to connect with appears to be her new master: you. Whenever you're in the same space, she just watches you from afar, shielding herself with formality and politeness during your short exchanges.
@@ -27541,7 +27585,7 @@ You decide it's time to talk to her about that matter.""",
 	""",
 	LIRA_QUEST_1_ROOM_ENTRY_2 = """You barge in unannounced, making Lira jump up from her seat. She quickly hides a small elven prayer bead and stands up, facing you briefly before bowing her head.
 	""",
-	LIRA_QUEST_1_ROOM_ENTRY_3 = """{color=yellow|Lira: — Ah, greeting, [master]! Apologies, I was not expecting you... I mean, how can I be of service?}""",
+	LIRA_QUEST_1_ROOM_ENTRY_3 = "{color=yellow|Lira: — Ah, greeting, [master]! Apologies, I was not expecting you... I mean, how can I be of service?}",
 	LIRA_QUEST_1_OPTION_ARE_YOU_BUSY = "Are you busy? What were you doing?",
 	LIRA_QUEST_1_OPTION_HOW_DO_SERVANTS_TREAT_YOU = "How does other servants treat you?",
 	LIRA_QUEST_1_OPTION_YOU_SEEM_TO_WATCH_ME = "You seem to watch me closely, yet never strike up a conversation. Why? What's on your mind?",
@@ -27594,7 +27638,6 @@ Considering that she's here all alone and you're the only person she truly knows
 	LIRA_QUEST_1_FAVOR_ACCEPT = """She bows her head and flashes you a grateful smile.
 
 {color=yellow|Lira: — Thank you, [master]!}""",
-
 	LIRA_QUEST_1_OPTION_SEARCH_FOR_THE_GROVE = "Search for the grove",
 	LIRA_QUEST_1_SEARCH_GROVE = """The deeper you walk beneath the tall trees, the more familiar the surroundings seem to Lira. She moves with slightly more confidence here, occasionally glancing around as if recognizing distant landmarks.
 
@@ -27615,7 +27658,7 @@ Once you're out of earshot, Lira exhales quietly. She glances back toward the tr
 {color=yellow|Lira: — The way they looked at me... it was terrifying. It's nice that I now have someone who can protect me like that...}""",
 	LIRA_QUEST_1_PATROL_FREEDOM = """The patrol leader squints at you for a couple of intense moments, then snorts and turns away. The rest of the elves also step aside, casting disdainful glances at Lira.
 
-{color=aqua|Elf Patrol Leader: — Since Freya's Priestess tolerates you, I won't argue. Just make sure this "traveler" leaves the forest as soon as possible. You can go now.}
+{color=aqua|Elf Patrol Leader: — Since Freya's Priestess tolerates you, I won't argue. Just make sure this \"traveler\" leaves the forest as soon as possible. You can go now.}
 
 Once you're out of earshot, Lira exhales quietly. She glances back toward the trees where the patrol disappeared.
 
@@ -27634,9 +27677,7 @@ She forcefully shakes her head.
 {color=yellow|Lira: — Ah, it doesn't matter now! I saw you fight before, you can deal with them, right? I'll help!}""",
 	LIRA_QUEST_1_OPTION_STAY_BACK_AND_HELP = "Just stay back and help with what you can. Leave the fighting to me.",
 	LIRA_QUEST_1_OPTION_WE_FIGHT_TOGETHER = "We fight together, side by side. You're capable of more than just standing behind.",
-#	LIRA_QUEST_1_FIGHT_PLAN = """The centipedes keep circling closer while Lira steadies herself beside you, waiting to hear how you want to handle the fight.""",
 	LIRA_QUEST_1_FIGHT_READY = "{color=yellow|Lira: — Got it!}",
-	
 	LIRA_QUEST_1_FIGHT_AFTERMATH = """Together you slay the aggressive beasts.
 """,
 	LIRA_QUEST_1_DEPENDENCY_FIGHT_AFTERMATH = """
@@ -27663,8 +27704,7 @@ She flexes her fingers slowly, then looks at you.
 
 {color=yellow|Lira: — I... I don't know, honestly. Though now that I think about it... I was always better with physical tasks. Magic never came as easily. The elders used to say I had more 'fire in my blood' than was proper for someone of my calling.}
 """,
-	LIRA_QUEST_1_FIGHT_AFTERMATH_2 = """{color=yellow|Lira: — Anyway, let's hope there won't be any unpleasant surprises today.}""",
-	
+	LIRA_QUEST_1_FIGHT_AFTERMATH_2 = "{color=yellow|Lira: — Anyway, let's hope there won't be any unpleasant surprises today.}",
 	LIRA_QUEST_1_BELONGINGS_ROOT = """Lira goes back to the hollow tree and finally retrieves her hidden belongings. She doesn't try to hide any of them, so you have a good look.
 
 They consist of just a few things: a worn leather diary, a few simple wooden toys carved by hand, a small cloth doll with uneven stitching, and a worn-out brush with a few strands of hair still caught between its teeth.
@@ -27713,12 +27753,10 @@ She sets it down carefully. Her hand hovers over the wooden brush.
 {color=yellow|Lira: — Yes, [master]. Thank you for bringing me here. It means a lot.}
 
 The two of you make your way back to the road, leaving the quiet grove behind.""",
-	
 	LIRA_QUEST_1_NAME = "Lira: Remnants of the Past",
 	LIRA_QUEST_1_SUMMARY = "A recently acquired elven slave, Lira has been quietly observing you since her arrival at the mansion. Getting to know her may help her find her place.",
 	LIRA_QUEST_1_JOURNAL_START = "Talk to Lira.",
 	LIRA_QUEST_1_JOURNAL_GROVE = "Visit a special place Lira has told you about.",
-	
 	LIRA_QUEST2_DAY_USUAL_STEP_OUTSIDE_MANSION = """You go about your day as usual, but as you step outside the mansion, you realize the streets of Alliron are more crowded and noisier than they were just yesterday. A steady stream of people flows along the main road toward the central square. From there, despite the distance, you can already hear merchants shouting, the faint lilt of music, and the low, constant hum of a crowd.
 
 You stop one of the passersby, and they point toward a nearby wooden post covered in flashy flyers. You walk over and pull one loose.
@@ -27749,7 +27787,6 @@ She looks down for a moment, reminiscing. When she looks up again, there is a si
 	LIRA_QUEST2_AGREE_FREE = """Her expression brightens before she can catch herself, and you see a big smile on her face.
 
 {color=yellow|Lira: — Y-yes! Thank you, [master]!}""",
-
 	LIRA_QUEST2_FAIR_ARRIVAL = """By the time you reach the central square, the fair is already in full swing. Colorful banners stretch between buildings, performers occupy every free corner, and the air is thick with competing smells: roasted nuts, honey cakes, spiced cider, some game grilling on a spit.
 
 Guests of all races move through the crowd with joy on their faces and an easygoing attitude you wouldn't see any other day.
@@ -27780,7 +27817,7 @@ She eats with visible enjoyment, her earlier restraint forgotten. The rest of th
 	LIRA_QUEST2_FAIR_ACCESSORIES_1 = """You turn toward the accessories area. As you approach, you slow your pace, letting Lira look around. She admires the huge variety of goods put on display by traveling merchants with an almost childlike wonder on her face.
 
 It takes some time, but finally you notice her focus on something for longer than usual, and as you follow her gaze you see a small silver hairpin shaped like a leaf, its edges delicately curved.""",
-	LIRA_QUEST2_FAIR_ACCESSORIES_2 = """Noticing you watching her, Lira gets a bit flustered and averts her gaze, trying to pretend the hairpin wasn't that interesting to her.""",
+	LIRA_QUEST2_FAIR_ACCESSORIES_2 = "Noticing you watching her, Lira gets a bit flustered and averts her gaze, trying to pretend the hairpin wasn't that interesting to her.",
 	LIRA_QUEST2_OPTION_DID_WANT_HAIRPIN = "Did you want that hairpin?",
 	LIRA_QUEST2_OPTION_SOMETHING_CAUGHT_EYE = "Is there something that caught your eye?",
 	LIRA_QUEST2_ACC_DEP_CONFIRM = """After a brief hesitation, she nods and points at the hairpin.
@@ -27794,7 +27831,7 @@ It takes some time, but finally you notice her focus on something for longer tha
 	LIRA_QUEST2_WALK_STALL_TAKE_PLACE_SMALL = "You walk to the stall and take your place in the small queue. While you wait for your turn, you have a moment to consider your options.",
 	LIRA_QUEST2_OPTION_PAY_HAIRPIN = "Pay for the hairpin (-300g)",
 	LIRA_QUEST2_OPTION_STEAL_HAIRPIN = "Steal the hairpin",
-	LIRA_QUEST2_TURN_POINT_PIN_1 = """When it's your turn, you point out the leaf‑shaped pin. The merchant nods, names a price, and you hand over the coins without haggling. A moment later, the small package is yours.""",
+	LIRA_QUEST2_TURN_POINT_PIN_1 = "When it's your turn, you point out the leaf‑shaped pin. The merchant nods, names a price, and you hand over the coins without haggling. A moment later, the small package is yours.",
 	LIRA_QUEST2_TURN_POINT_PIN_2 = """You decide to keep your coins. When your turn comes, you ask the merchant to show you several items from the higher shelves, pointing and gesturing with your free hand while the other, hidden from sight, nimbly slips the leaf‑shaped pin from its display. In the noise and bustle of the fair, no one notices the quick sleight of hand.
 
 You make a few vague comments about the quality, then thank the merchant and step away.""",
@@ -27812,7 +27849,6 @@ She looks up at you expectantly, the silver leaf catching the afternoon light.""
 	LIRA_QUEST2_ACC_HAIRPIN_CONCLUSION = """The smile on her face grows a little warmer.
 
 The two of you move away from the stall and soon return to the central area.""",
-
 	LIRA_QUEST2_FAIR_SHOOTING = """You reach a more open area where a shooting range has been set up. Colorful targets line the far end, and a small crowd has gathered to watch.
 
 {color=aqua|Vendor: — Step right up! Test your aim! Best bows in the city, even a child could handle them! Score enough points and win a special prize!}
@@ -27853,7 +27889,7 @@ You return to Lira, who is watching you with wide, shining eyes.
 {color=yellow|Lira: — [master]... that was incredible! I didn't know you could shoot like that! Congratulations on your victory!}
 
 You take the compliments and thank her for rooting for you. Having won the grand prize, theres not reason for you to stay at the shooting range any longer, so soon you return to the central area.""",
-	LIRA_QUEST2_SHOOTING_LIRA_1 = """You look at Lira and notice her interest in the competition, as she watches intently while the current shooters try to score a decent result.""",
+	LIRA_QUEST2_SHOOTING_LIRA_1 = "You look at Lira and notice her interest in the competition, as she watches intently while the current shooters try to score a decent result.",
 	LIRA_QUEST2_OPTION_HEY_TRY_WIN_SOMETHING = "Hey, why don't you try? Win something for your [master].",
 	LIRA_QUEST2_OPTION_INTERESTED_AHEAD_MAYBE_YOULL_ENJOY = "If you're interested, go ahead. Maybe you'll enjoy it.",
 	LIRA_QUEST2_SHOOTING_LIRA_2 = """{color=yellow|Lira: — Oh? You want me to participate, [master]?}
@@ -28057,7 +28093,7 @@ You step in.""",
 
 {color=aqua|Drunk Man: — How dare you touch me?! Do you even know who I am?! And who the fuck are you...?}
 """,
-	LIRA_QUEST2_LIRA_BRAWL_3 = """Suddenly, recognition hits. His eyes widened. The anger drains out of his face, replaced by fear.""",
+	LIRA_QUEST2_LIRA_BRAWL_3 = "Suddenly, recognition hits. His eyes widened. The anger drains out of his face, replaced by fear.",
 	LIRA_QUEST2_DRUNK_MAN_MAYOR_REALIZE_SCRAMBLES = """{color=aqua|Drunk Man: — M‑mayor?!... I didn't realize...}
 
 He scrambles to his feet, nearly tripping over himself.
@@ -28083,7 +28119,7 @@ He tosses her a small pouch. Lira looks down at it, then up at you. There's a si
 {color=yellow|Lira: — Mine...? Thank you, [master]. I'll try to use them wisely.}
 
 She closes her fingers around the coins, tucking them into her robe carefully, like something precious.""",
-	LIRA_QUEST2_LIRA_BRAWL_RETURN = """Done with the sudden event, you get back to the bench as rest for a short while, before returning back to the central area of the fair.""",
+	LIRA_QUEST2_LIRA_BRAWL_RETURN = "Done with the sudden event, you get back to the bench as rest for a short while, before returning back to the central area of the fair.",
 	LIRA_QUEST2_LIRA_FAIR_FINISH = """Between all the wandering and wondering, the day slipped away without you noticing. The fair is winding down. The crowd has thinned, and the vendors are packing their wares. The music has faded to a distant melody, the lanterns casting long shadows across the cobblestones.
 
 You're about to turn toward the mansion when something catches your eye near a half‑packed stall. Most of the wares are just the usual garments: simple maid dresses, tavern‑girl skirts, nothing you haven't seen a dozen times before, but at the very end of the rack hangs something different.""",
@@ -28167,15 +28203,11 @@ Her voice is soft.""",
 She lifts her gaze, and her eyes are bright.
 
 {color=yellow|Lira: — So I just wanted to say thank you. For today. For everything. I... I never thought I would say it, but whenever I'm with you, I can't help but think that I'm glad I was exiled. Just wanted you to know that. Goodnight, [master]!}""",
-
-#	LIRA_QUEST2_OPTION_RETURN_TO_FAIR = "Return to the fair",
-	
 	LIRA_QUEST2_QUEST_NAME = "Lira: Fair",
 	LIRA_QUEST2_QUEST_SUMMARY = "Lira wants to see the fair in Aliron and learn more about life outside the temple.",
 	LIRA_QUEST2_QUEST_STAGE_START = "Talk to Lira at the mansion.",
 	LIRA_QUEST2_QUEST_STAGE_FAIR = "Take Lira to the city fair.",
 	LIRA_QUEST2_CITY_OPTION = "City Fair",
-	
 	LIRA_QUEST3_INTRO_1 = """A couple of days have passed since the fair. Lira seems even more accustomed to her new life now, as she handles chores with ease, and also smiles and greets you warmly whenever your paths cross.
 
 Still, you've noticed her a few times standing by a window or near the gates, watching people pass by with a thoughtful look in her eyes. Curious about what's on her mind, you decide to speak with her the next time you see her.""",
@@ -28209,16 +28241,15 @@ She glances toward the window, where the soft light filters through.
 	LIRA_QUEST3_START_OPTION_5 = "That's the right way to look at it. The present matters more than the past",
 	LIRA_QUEST3_START_OPTION_6 = "Life is unpredictable. You might find your answers when you least expect it",
 	LIRA_QUEST3_START_OPTION_7 = "I could try to look into it, if I get the chance",
-	LIRA_QUEST3_START_8 = """{color=yellow|Lira: — I agree, [master]. There's no point in dwelling on things that can't be changed.}""",
-	LIRA_QUEST3_START_9 = """{color=yellow|Lira: — That... sounds comforting, actually. Leaving it to chance might be the best way.}""",
+	LIRA_QUEST3_START_8 = "{color=yellow|Lira: — I agree, [master]. There's no point in dwelling on things that can't be changed.}",
+	LIRA_QUEST3_START_9 = "{color=yellow|Lira: — That... sounds comforting, actually. Leaving it to chance might be the best way.}",
 	LIRA_QUEST3_START_10 = """She blinks, clearly not expecting that answer.
 
 {color=yellow|Lira: — You would...? I didn't expect that... I didn't want to burden you, but if you do learn something about that, it would mean a lot to me. Thank you, [master].}""",
 	LIRA_QUEST3_START_11 = """After that Lira gets back to her duties, while you contemplate the ways you could learn more about her, as her origin seems to be a question worth your curiosity.
 
 The first and most obvious way to start your investigation would be to just visit the place Lira used to live for most of her life, the temple in the elven capital, and so that is exactly what you plan to do.""",
-	
-	LIRA_QUEST3_TEMPLE_INTRO_1 = """The journey is quite familiar by now, so you don't waste too much time on it and soon step under the shadow of the elven great tree. Elves move through the avenues with measured steps, their conversations low, their gazes flicking toward you only briefly before sliding away.""",
+	LIRA_QUEST3_TEMPLE_INTRO_1 = "The journey is quite familiar by now, so you don't waste too much time on it and soon step under the shadow of the elven great tree. Elves move through the avenues with measured steps, their conversations low, their gazes flicking toward you only briefly before sliding away.",
 	LIRA_QUEST3_TEMPLE_INTRO_2 = """Inside the temple, the air feels still, almost heavy with ritual and tradition. Incense lingers in the corridors, and the soft echo of distant chanting filters through the walls.
 
 It doesn't take long to arrange an audience, though the priestesses don't seem particularly pleased to see you. You're tolerated, but not welcomed. Eventually, you're led into the headmistress's chamber, who regards you with a measured, slightly tired expression.
@@ -28252,7 +28283,6 @@ She uncrosses her arms, signaling the conversation is over.
 {color=aqua|Headmistress: — And this is all there is to know. Now, if you have no further questions, I have other matters to attend to.}
 
 After getting what little information they had to offer, you leave the temple. The journey back gives you just enough time to think of how to present your findings to Lira, as it seems to be time to let her join your investigation.""",
-	
 	LIRA_QUEST3_REPORT_LIRA_1 = """You find Lira in the garden this time, a half‑finished basket of herbs at her feet. As you approach she turns to you and politely stands up, readying herself to be of service.
 
 {color=yellow|Lira: — Greetings, [master]! Is there anything I could help you with?}""",
@@ -28311,7 +28341,7 @@ Lira stiffens slightly beside you, but says nothing.""",
 	LIRA_QUEST3_TRADER_OPTION_3 = "Why didn't you try to cure the kid? Medicine aren't that expensive",
 	LIRA_QUEST3_TRADER_OPTION_4 = "Well, she lived long enough to come and ask questions",
 	LIRA_QUEST3_TRADER_OPTION_5 = "So where did you get that kid from?",
-	LIRA_QUEST3_TRADER_5 = """{color=aqua|Trader: — Hey, hey, who said I didn't? You think I want to lose my goods? I bought the damn medicine, it just didn't work! And asking for help from guilds would be a totally different sum, so that was out of the question.}""",
+	LIRA_QUEST3_TRADER_5 = "{color=aqua|Trader: — Hey, hey, who said I didn't? You think I want to lose my goods? I bought the damn medicine, it just didn't work! And asking for help from guilds would be a totally different sum, so that was out of the question.}",
 	LIRA_QUEST3_TRADER_6 = """The trader blinks and then shifts his gaze from you to Lira, who gets closer to you under the trader's calculating stare.
 
 {color=aqua|Trader: — Well, I'll be damned! You, young lady, are either incredibly resilient or incredibly lucky to have survived that.}
@@ -28341,8 +28371,8 @@ She looks down at her hands.
 {color=yellow|Lira: — Yet I feel sad knowing others aren't as lucky. Do you think I'm wrong for thinking like this?}""",
 	LIRA_QUEST3_TRADER_OPTION_6 = "You aren't wrong, it's not fair but we could be worse without it.",
 	LIRA_QUEST3_TRADER_OPTION_7 = "That's just how the world works. The strong rise, the weak are used",
-	LIRA_QUEST3_TRADER_11 = """{color=yellow|Lira: — I guess you are right. Now that I think about it, back in the forests elves didn't really hold any slaves, but because of that many have simply been exiled or killed... Still though, I hope one day things can get better.}""",
-	LIRA_QUEST3_TRADER_12 = """{color=yellow|Lira: — I suppose you are right, [master]. I should thank you for taking good care of me.}""",
+	LIRA_QUEST3_TRADER_11 = "{color=yellow|Lira: — I guess you are right. Now that I think about it, back in the forests elves didn't really hold any slaves, but because of that many have simply been exiled or killed... Still though, I hope one day things can get better.}",
+	LIRA_QUEST3_TRADER_12 = "{color=yellow|Lira: — I suppose you are right, [master]. I should thank you for taking good care of me.}",
 	LIRA_QUEST3_TRADER_13 = """In the end, Lira has no choice but to accept your answer and move on to more pressing matters.
 
 {color=yellow|Lira: — [master], are we going to look for that bandit leader? He's the only one left who might know the answer, but he's somewhere in a different country, so it doesn't look like an easy task...}""",
@@ -28351,8 +28381,7 @@ She looks down at her hands.
 	LIRA_QUEST3_TRADER_14 = """Inspired by your words, Lira flashes you a smile.
 
 {color=yellow|Lira: — Then I will be waiting for your orders, [master].}""",
-	
-		LIRA_QUEST3_EMPIRE_1 = """Following the lead, you soon arrive at Palatine. The city greets you with its usual indifference: crowded streets, hurried footsteps, and faces that don't linger on strangers.
+	LIRA_QUEST3_EMPIRE_1 = """Following the lead, you soon arrive at Palatine. The city greets you with its usual indifference: crowded streets, hurried footsteps, and faces that don't linger on strangers.
 Lira, who has never been here before, seems both surprised and slightly overwhelmed by the scale of it all. She sticks close to your side, her eyes darting across the endless crowds.
 {color=yellow|Lira: — [master], how do we even begin to look for that man? There are so many people here, but they don't look like they'd want to answer our questions...}""",
 	LIRA_QUEST3_EMPIRE_OPTION_1 = "There are many ways to loosen their tongues when we need to. But that can wait.",
@@ -28380,7 +28409,7 @@ She looks up at you with trust and confidence in her eyes.
 {color=yellow|Lira: — Thank you, [master]. I won't let you down. I'll prove that I can do this.}""",
 	LIRA_QUEST3_EMPIRE_8 = """She straightens her back, and though her hands tremble slightly, her voice is steady.
 {color=yellow|Lira: — Thank you for believing in me, [master]. I'll try to do my best.}""",
-	LIRA_QUEST3_EMPIRE_9 = """After agreeing to her plan, you briefly discuss the details. The best place for an ambush seems to be the stretch of road near the hills, where the trees grow close to the path. That is where you head next.""",
+	LIRA_QUEST3_EMPIRE_9 = "After agreeing to her plan, you briefly discuss the details. The best place for an ambush seems to be the stretch of road near the hills, where the trees grow close to the path. That is where you head next.",
 	LIRA_QUEST3_EMPIRE_10 = """Lira's face falls the moment you refuse her offer. Her hands curl at her sides.
 {color=yellow|Lira: — [master], please... I can do this. I'm not afraid!}
 She steps closer, her voice more insistent.
@@ -28389,33 +28418,30 @@ She steps closer, her voice more insistent.
 	LIRA_QUEST3_EMPIRE_OPTION_8 = "I don't want to risk it. We're using the caravan",
 	LIRA_QUEST3_EMPIRE_11 = """Lira lets out a deep sigh but doesn't argue any further.
 {color=yellow|Lira: — As you wish, [master]...}""",
-	LIRA_QUEST3_EMPIRE_12 = """After settling on the plan, you briefly discuss the details and begin looking for the caravan.""",
+	LIRA_QUEST3_EMPIRE_12 = "After settling on the plan, you briefly discuss the details and begin looking for the caravan.",
 	LIRA_QUEST3_EMPIRE_13 = """Lira listens to your decision, then nods slowly.
 {color=yellow|Lira: — I understand, [master]. You're way more experienced with these things than I am.}
 She looks toward the road where the caravan disappeared.
 {color=yellow|Lira: — So if you think this is the best way... then I trust you. We'll use the caravan. But... may I ask for a small favor? I don't doubt your strength, but I would feel much calmer if we could hire some extra guards just so they can focus on protecting everyone else while you deal with the main force.}""",
 	LIRA_QUEST3_EMPIRE_OPTION_9 = "That's a valid point",
 	LIRA_QUEST3_EMPIRE_OPTION_10 = "I'll think about it",
-	LIRA_QUEST3_EMPIRE_14 = """{color=yellow|Lira: — Thank you, [master].}""",
-	
+	LIRA_QUEST3_EMPIRE_14 = "{color=yellow|Lira: — Thank you, [master].}",
 	LIRA_QUEST3_CARAVAN_PREPARE_1 = """You find the caravan master at a local tavern, a grizzled man with a scarred face and tired eyes who was just complaining openly about how he has to change the routes because of the bandit threat. You swiftly introduce yourself to him and offer help in dealing with that problem, explaining your plan. He's skeptical of your proposal initially, but hearing that you would cover potential losses, he quickly agrees and leaves the tavern to prepare for the new route.
 Now you only need to decide whether you wish to follow Lira's advice and hire some additional guards.""",
 	LIRA_QUEST3_CARAVAN_PREPARE_OPTION_1 = "Hire extra guards (-500 gold)",
 	LIRA_QUEST3_CARAVAN_PREPARE_OPTION_2 = "Ignore her advice",
-	LIRA_QUEST3_CARAVAN_PREPARE_2 = """You find a group of mercenaries near the city gate who look rough but professional. After a quick negotiation, they agree to join the caravan. Lira gives you an approving nod, her shoulders relaxing slightly.""",
-	LIRA_QUEST3_CARAVAN_PREPARE_3 = """Lira sighs quietly but doesn't argue. Instead, you see her walk over to the slave wagon and speak softly to the figures inside. She says something you can't quite hear, whether it's reassurance or maybe an apology. Her expression is heavy.""",
-	LIRA_QUEST3_CARAVAN_PREPARE_4 = """The caravan is finally ready to set off.""",
-	
+	LIRA_QUEST3_CARAVAN_PREPARE_2 = "You find a group of mercenaries near the city gate who look rough but professional. After a quick negotiation, they agree to join the caravan. Lira gives you an approving nod, her shoulders relaxing slightly.",
+	LIRA_QUEST3_CARAVAN_PREPARE_3 = "Lira sighs quietly but doesn't argue. Instead, you see her walk over to the slave wagon and speak softly to the figures inside. She says something you can't quite hear, whether it's reassurance or maybe an apology. Her expression is heavy.",
+	LIRA_QUEST3_CARAVAN_PREPARE_4 = "The caravan is finally ready to set off.",
 	LIRA_QUEST3_CARAVAN_AMBUSH_1 = """The journey is tense. A couple of days pass without incident. The hills grow closer, the trees thicker. You begin to wonder if the bandits have moved on.
 Then it finally happens. Just as the first wagon passes a narrow stretch of road flanked by dense forest, a massive tree crashes down ahead, its trunk blocking the road.
 {color=yellow|Lira: — [master]! There!}
 Shouts erupt from both sides. Bandits pour out of the treeline, weapons raised. Their faces twist with greed as they think they've found easy prey, unaware of the fact that they were the ones walking into a trap.""",
-	LIRA_QUEST3_CARAVAN_AMBUSH_2 = """The element of surprise works in your favor. You leap from the wagon and crash into the bandit's main force.""",
-	LIRA_QUEST3_CARAVAN_AMBUSH_3 = """The mercenaries you hired also prove their worth. They form a shield wall around the wagons, cutting down anyone who gets too close. The bandits barely manage to touch the caravan. Within minutes, the attack crumbles.""",
+	LIRA_QUEST3_CARAVAN_AMBUSH_2 = "The element of surprise works in your favor. You leap from the wagon and crash into the bandit's main force.",
+	LIRA_QUEST3_CARAVAN_AMBUSH_3 = "The mercenaries you hired also prove their worth. They form a shield wall around the wagons, cutting down anyone who gets too close. The bandits barely manage to touch the caravan. Within minutes, the attack crumbles.",
 	LIRA_QUEST3_CARAVAN_AMBUSH_4 = """The battle is fiercer than you've anticipated. You cut down bandits one by one, but some of them still get to the wagons and try to get inside. Wood splinters, slaves cries out. By the time the last bandit falls, the caravan is damaged, and several slaves are wounded.
 Lira rushes to them immediately, tearing strips from her own clothes to bind their wounds. She doesn't say anything to you, just sighs deeply as she works.""",
-	LIRA_QUEST3_CARAVAN_AMBUSH_5 = """When the dust settles, you find the bandit leader, who is bloodied and dazed but alive. You tie him up and wait for Lira to come closer. You both turn towards the bandit leader.""",
-	
+	LIRA_QUEST3_CARAVAN_AMBUSH_5 = "When the dust settles, you find the bandit leader, who is bloodied and dazed but alive. You tie him up and wait for Lira to come closer. You both turn towards the bandit leader.",
 	LIRA_QUEST3_ROAD_1 = """You hide among the thick bushes and overgrown trees, ready to act at the first sign of danger. Lira stands on the road, pretending to rest, then slowly begins to walk along the route just as you discussed. You follow her, still hiding your presence.
 Time passes, and soon the sun begins to fall when you finally hear hoofbeats. Five riders appear around the bend, all rough-looking men with worn leather armour and hands resting on their hilts. They spot Lira immediately and gallop to circle her, grinning in their saddles.
 {color=aqua|Bandit: — Well, well. What's a pretty little thing like you doing all alone out here?}""",
@@ -28425,7 +28451,7 @@ Unaware of your approach, the bandits keep spouting nonsense until you manage to
 	LIRA_QUEST3_ROAD_POSTFIGHT_1 = """Within a moment, three bandits are down. But as you are fighting the fourth, the last one manages to grab Lira and pull her onto his horse.
 {color=yellow|Lira: — [master]!}
 The rider kicks his heels into the horse's flanks, and the beast bolts down the road, kicking up dust and leaving you far behind.""",
-	LIRA_QUEST3_ROAD_POSTFIGHT_2 = """You turn back to the bandits lying on the ground. Two are unconscious. One is groaning, clutching his arm. He glares at you but doesn't try to run.""",
+	LIRA_QUEST3_ROAD_POSTFIGHT_2 = "You turn back to the bandits lying on the ground. Two are unconscious. One is groaning, clutching his arm. He glares at you but doesn't try to run.",
 	LIRA_QUEST3_ROAD_POSTFIGHT_OPTION_1 = "Ask him about their hideout",
 	LIRA_QUEST3_ROAD_POSTFIGHT_OPTION_2 = "Put your blade to his throat",
 	LIRA_QUEST3_ROAD_POSTFIGHT_3 = """{color=aqua|Bandit: — What, you gonna try and get your girl back? Heh, the boss will show you why you shouldn't have messed with us!}
@@ -28435,14 +28461,13 @@ He spits at your feet and glares.""",
 	LIRA_QUEST3_ROAD_POSTFIGHT_OPTION_3 = "How many of you are there?",
 	LIRA_QUEST3_ROAD_POSTFIGHT_OPTION_4 = "Why are you focusing on slave trade specifically?",
 	LIRA_QUEST3_ROAD_POSTFIGHT_OPTION_5 = "Where is your hideout?",
-	LIRA_QUEST3_ROAD_POSTFIGHT_5 = """{color=aqua|Bandit: — A couple of dozens. Maybe a few more. We lost some lately, but the boss keeps hiring. I don't know the exact number, never thought to count!}""",
-	LIRA_QUEST3_ROAD_POSTFIGHT_6 = """{color=aqua|Bandit: — Boss got some connections to sell the goods fast. Also, he started with it, so it's kind of his thing... And most don't really care what we do as long as the boss pays good coin.}""",
+	LIRA_QUEST3_ROAD_POSTFIGHT_5 = "{color=aqua|Bandit: — A couple of dozens. Maybe a few more. We lost some lately, but the boss keeps hiring. I don't know the exact number, never thought to count!}",
+	LIRA_QUEST3_ROAD_POSTFIGHT_6 = "{color=aqua|Bandit: — Boss got some connections to sell the goods fast. Also, he started with it, so it's kind of his thing... And most don't really care what we do as long as the boss pays good coin.}",
 	LIRA_QUEST3_ROAD_POSTFIGHT_7 = """The bandit hesitates. You press the blade just a fraction deeper.
 {color=aqua|Bandit: — Shit, fine, fine! Guess I'll be leaving the band anyway... It's to the east! Old cave system, hidden deep in the forest. About two hours from here. Follow the dry creek bed.}
 He gives you a rough description between shaky breaths. You commit it to memory.
 You tell him that he'd better not be lying, then tie him up and leave him on the road. You mount one of the remaining horses and get ready to bring Lira back.""",
-	
-	LIRA_QUEST3_DEN_INTRO_1 = """The trail leads you off the road and into the forest. Eventually, you spot the entrance to a hidden cave, half-concealed by overhanging brush. Voices echo faintly from within, and the tracking device points directly ahead. Time to step inside.""",
+	LIRA_QUEST3_DEN_INTRO_1 = "The trail leads you off the road and into the forest. Eventually, you spot the entrance to a hidden cave, half-concealed by overhanging brush. Voices echo faintly from within, and the tracking device points directly ahead. Time to step inside.",
 	LIRA_QUEST3_DEN_1 = """Despite your previous clashes, inside the leader's lair the bandit leader and a couple of his guards are sitting relaxed, passing around a flask and laughing, unaware of what's coming.
 
 You peek around the corner and notice Lira in the corner of the cave: restrained, but conscious. Her eyes meet yours across the dim space, and her face immediately lights up. You step into the light.""",
@@ -28451,11 +28476,10 @@ You peek around the corner and notice Lira in the corner of the cave: restrained
 	LIRA_QUEST3_DEN_2 = """Completely caught off guard by your sudden arrival, the bandits go pale. Your imposing figure and the blood dripping from your blade signify that you are telling the truth. After a brief exchange of looks, they drop their weapons and surrender.
 
 You quickly tie them up and then release Lira from her bonds. She gives you a tight hug.""",
-	LIRA_QUEST3_DEN_3 = """The element of surprise works in your favor, and soon the bandits are defeated. You tie up the bloodied, yet conscious leader, then release Lira from her bonds. She gives you a tight hug.""",
+	LIRA_QUEST3_DEN_3 = "The element of surprise works in your favor, and soon the bandits are defeated. You tie up the bloodied, yet conscious leader, then release Lira from her bonds. She gives you a tight hug.",
 	LIRA_QUEST3_DEN_4 = """{color=yellow|Lira: — [master], I'm so glad to see you! And... we did it!}
 
 You both turn towards the bandit leader.""",
-	
 	LIRA_QUEST3_BANDIT_LEADER_1 = """The bandit leader spits to the side and looks at you with a mixture of confusion and grudging respect.
 {color=aqua|Bandit Leader: — Since I'm still alive, does it mean you went through all this just for me? Damn. I've had bounty hunters after me before, but none fought like that.}""",
 	LIRA_QUEST3_BANDIT_LEADER_OPTION_1 = "We're not here for your head",
@@ -28490,9 +28514,8 @@ A long breath.
 {color=yellow|Lira: — It's just... hard to accept that without even knowing the full story. Hard to let go of something I never really had.}""",
 	LIRA_QUEST3_BANDIT_LEADER_9 = """{color=aqua|Bandit Leader: — Hey, since you want all the details, why don't you ask that merchant himself? He's still kicking, lives in the capital, same shop as before. I can take you right to his doorstep.}
 You exchange a glance with Lira and then nod. """,
-	LIRA_QUEST3_BANDIT_LEADER_10 = """You make sure the binds on the bandit let him walk, but not run, then step out of the hideout and begin the journey back to the capital.""",
-	LIRA_QUEST3_BANDIT_LEADER_11 = """Before heading back to the capital, you escort the caravan to the closest city, from where it would go on its own. Then, you begin the journey back to the capital.""",
-	
+	LIRA_QUEST3_BANDIT_LEADER_10 = "You make sure the binds on the bandit let him walk, but not run, then step out of the hideout and begin the journey back to the capital.",
+	LIRA_QUEST3_BANDIT_LEADER_11 = "Before heading back to the capital, you escort the caravan to the closest city, from where it would go on its own. Then, you begin the journey back to the capital.",
 	LIRA_QUEST3_FOLLOW_LEADER_1 = """The journey back took some time, but eventually you returned to the capital, the bandit leader tugging behind you on a leash.
 After getting past the gates, he takes a more active role and guides you through unfamiliar streets, past markets and residential quarters, until you reach a quieter district.
 {color=aqua|Bandit Leader: — There. That corner shop. Green shutters, no sign.}
@@ -28546,7 +28569,7 @@ His body slumps against the chair, then slides to the floor. The spectacles fall
 Lira flinches but doesn't look away. She watches the body for a moment, then looks down at the amulet in her hand.""",
 	LIRA_QUEST3_MERCHANT_11 = """{color=yellow|Lira: — ...Let's go home, [master].}
 Her voice sounds tired.""",
-	LIRA_QUEST3_MERCHANT_12 = """The merchant seems to shrink under your gaze, but that's all there is to it. You carefully take Lira by the shoulder, and you leave the shop.""",
+	LIRA_QUEST3_MERCHANT_12 = "The merchant seems to shrink under your gaze, but that's all there is to it. You carefully take Lira by the shoulder, and you leave the shop.",
 	LIRA_QUEST3_MERCHANT_13 = """You step out of the shop. The bell chimes one last time as the door closes behind you.
 The street is ordinary: people walking, children laughing, a dog barking somewhere in the distance. No one knows what just happened inside that modest building with the green shutters.
 Lira walks beside you in silence. She's still holding the amulet the merchant kept all those years. Her fingers trace its edges as you leave the old district behind and head toward the city gates.
@@ -28563,7 +28586,7 @@ She shakes her head.
 	LIRA_QUEST3_AFTERMATH_3 = """{color=yellow|Lira: — That's true... And everything we learned only confirms what I already knew: I never had a place to belong to in the past. So it's time for me to stop looking at the past, once and for all. I should focus on my present and my future. And in both, I can only see myself in one place...}
 She turns to you and places her hand on yours. A smile appears on her face.
 {color=yellow|Lira: — ... next to you, [master].}""",
-	LIRA_QUEST3_AFTERMATH_4 = """{color=yellow|Lira: — You took me in when no one else was willing to even look at me... And you treated me well. You treated me like a person, for the first time in my life. And you've been on that path with me to the end.}""",
+	LIRA_QUEST3_AFTERMATH_4 = "{color=yellow|Lira: — You took me in when no one else was willing to even look at me... And you treated me well. You treated me like a person, for the first time in my life. And you've been on that path with me to the end.}",
 	LIRA_QUEST3_AFTERMATH_5 = """{color=yellow|Lira: — You gave me purpose. A place to belong. Someone to follow... someone to believe in.}
 A faint, warm smile appears.
 {color=yellow|Lira: — So... if you'll have me, I want to stay by your side. As your slave and as your companion. Your... everything.}""",
@@ -28574,7 +28597,7 @@ A faint, warm smile appears.
 	LIRA_QUEST3_AFTERMATH_7 = """{color=yellow|Lira: — F-free...?}
 For a moment, she looks at you with confusion, but then the smile returns to her face. She leans forward and presses her head to your chest.
 {color=yellow|Lira: — There's no need for that, [master]. I don't want to be free. I want to be yours.}""",
-	LIRA_QUEST3_AFTERMATH_8 = """{color=yellow|Lira: — You took me in and you treated me well, treated me like a person, even though you didn't have to. You were the one who taught me not to fear and how to be myself. Next to you I am no longer afraid to voice my real thoughts, probably for the first time in my life.}""",
+	LIRA_QUEST3_AFTERMATH_8 = "{color=yellow|Lira: — You took me in and you treated me well, treated me like a person, even though you didn't have to. You were the one who taught me not to fear and how to be myself. Next to you I am no longer afraid to voice my real thoughts, probably for the first time in my life.}",
 	LIRA_QUEST3_AFTERMATH_9 = """She looks down at the amulet she clutches in her hand.
 {color=yellow|Lira: — The more I looked at my past, the more I realized how little freedom I really had: first sold as a barely conscious child, and then put into the temple, where every step was dictated by rituals and rules... Huh.}
 She suddenly lets out a quiet laugh and looks up at the sky.""",
@@ -28593,12 +28616,10 @@ She reaches out for a hug and embraces you, whispering in your ear.
 {color=yellow|Lira: — Then I have nothing to fear. If you promise to keep treating me like this... I don't need a piece of paper to tell me I'm free.}
 She takes your hand and holds it between both of hers.
 {color=yellow|Lira: — Being with you, knowing that you see me as a person... that's enough. Thank you, [master]. For everything.}""",
-
 	LIRA_QUEST3_RETURN = """The journey back was quiet but comfortable. Lira walked close to you, and her smile never left her face for the entire journey.
 When you finally reach the mansion, the familiar sight of its gates brings a sense of closure.
 You take a couple of hours to rest from the journey, but then get back to work, dealing with the piled-up responsibilities. Time flows by, but as the evening comes, you are distracted by the sound of a door opening.
 Lira approaches you with a warm smile on her face and a clear determination in her eyes. She gently pushes the documents you've been signing to the side and puts her face close to yours, showing no hesitation this time and taking the whole initiative.""",
-	
 	LIRA_QUEST3_QUEST_NAME = "Lira: Origins",
 	LIRA_QUEST3_QUEST_SUMMARY = "Lira wants to learn where she came from, and the trail leads you to her past.",
 	LIRA_QUEST3_QUEST_STAGE_START = "Talk to Lira at the mansion.",
@@ -28626,7 +28647,6 @@ Lira approaches you with a warm smile on her face and a clear determination in h
 	LIRA_QUEST3_ROAD_LOCATION_DESC = "A lonely road near the eastern hills, where caravans and travelers make tempting targets for bandits.",
 	LIRA_QUEST3_DEN_LOCATION_NAME = "Bandits' Den",
 	LIRA_QUEST3_DEN_LOCATION_DESC = "A hidden cave system deep in the forest, used by the bandits who once carried Lira toward Aliron.",
-	
 	ACT4_MYR_GUILD_OPTION_SHOW_WRITING = "Show the catacomb writing",
 	ACT4_EMPIRE_CAPITAL_OPTION_ERDYNA = "Talk to Erdyna",
 	ACT4_EMPIRE_CAPITAL_OPTION_SENERUS = "Visit Senerus's home",
@@ -28641,7 +28661,7 @@ Lira approaches you with a warm smile on her face and a clear determination in h
 	ACT4_ERDYNA_QUEST_STAGE_MYR = "Show the copied catacomb writing to Myr.",
 	ACT4_ERDYNA_QUEST_STAGE_DRAGONHUNTERS = "Visit Eldewyn to search for the dragon hunters.",
 	ACT4_ERDYNA_QUEST_STAGE_THALENDIR_VISIT = "Visit House Thalendir estate.",
-	ACT4_ERDYNA_FOLLOWUP_1 = """{color=yellow|Erdyna: — Alright, so about that artifact. Hope you didn't take me for an expert on these things, but worry not. I happen to know just the right person for something like that. But first I need to stop by my crew's base. Will you follow?}""",
+	ACT4_ERDYNA_FOLLOWUP_1 = "{color=yellow|Erdyna: — Alright, so about that artifact. Hope you didn't take me for an expert on these things, but worry not. I happen to know just the right person for something like that. But first I need to stop by my crew's base. Will you follow?}",
 	ACT4_ERDYNA_FOLLOWUP_1_OPTION_GO = "Alright, let's go.",
 	ACT4_ERDYNA_FOLLOWUP_1_OPTION_LATER = "I'll drop by when I have time.",
 	ACT4_ERDYNA_FOLLOWUP_LATER = """{color=yellow|Erdyna: — Hmph, fine, but don't keep me waiting.}
@@ -28699,7 +28719,7 @@ Paul sighs and starts scrambling through some notes lying around him.""",
 Erdyna doesn't listen to his complaints, turning around and leading you back outside.
 
 {color=yellow|Erdyna: — I might not remember his address that well, but that elven guy is a specialist on religious subjects. Let's go pay him a visit.}""",
-	ACT4_SENERUS_HOME_1 = """Erdyna takes you to one of the less miserable looking houses deep in the slums. After a couple minutes of banging on the door, an elven man finally opens it, keeping it half-closed and talking through the gap.""",
+	ACT4_SENERUS_HOME_1 = "Erdyna takes you to one of the less miserable looking houses deep in the slums. After a couple minutes of banging on the door, an elven man finally opens it, keeping it half-closed and talking through the gap.",
 	ACT4_SENERUS_HOME_2 = """{color=aqua|Man: — You... I told you not to come here again, and certainly not to bring anyone.}
 
 {color=yellow|Erdyna: — Nah, don't remember that. Come on, I really need a smart guy like you to help my friend here.}
@@ -29139,7 +29159,6 @@ Two long scars run beneath her shoulder blades, old and pale against her skin. T
 	ACT4_ERDYNA_AFTER_LEAVE_REVEAL_ANY_1B = """{color=yellow|Erdyna: — I sold them off when I was younger. Needed the money to survive, and after a while I realized it was safer that way too. If anyone had seen them and guessed what I was, that's it. Dragonkin are worth too much. Someone would've slapped a collar on me sooner or later and called it a rare prize.}
 
 The image comes across your mind before you can ignore it: Erdyna younger, smaller, held down somewhere out of sight while a saw bites through the living wings she was desperate enough to trade away.""",
-
 	ACT4_ERDYNA_AFTER_LEAVE_REVEAL_ANY_2 = """She lets the shirt fall back into place, but she does not turn around immediately.
 
 {color=yellow|Erdyna: — So yeah. I kept pretending. Better to be a loud-mouthed kobold from the streets than someone's expensive property.}""",
@@ -29205,7 +29224,6 @@ You have a strong feeling he greatly overcharges you, but there is no obvious wa
 	ACT4_ERDYNA_GROTUS_DELIVERY_1 = """Grotus bows so quickly it almost looks painful.
 
 {color=yellow|Grotus: — Wonderful, wonderful! You will not regret this. I shall return once the matter is handled.}""",
-
 	ACT4_ERDYNA_GROTUS_DELIVERY_2 = """About an hour later, Grotus finds you in one of the capital's quieter backstreets. He looks even more nervous than before, but there is a sealed document case clutched tightly in his hands.
 
 {color=yellow|Grotus: — Here, here... exactly as promised. I was never here, you never saw me, and I most certainly did not touch anything important. Please, don't mention this to Miss Rouge as well.}
@@ -29414,33 +29432,26 @@ Something tells you this structure is an artifact... the one of size you never e
 {color=yellow|Erdyna: — Hell, this thing is huge...}
 
 Something tells you this structure is an artifact... the one of size you never expected before. However, at this point you don't have much of a clue what to do about it, perhaps you'll figure it out soon.""",
-
 	ERDYNA_CAMPFIRE_OPTION = "Invite her to sit by the fire for the evening.",
-
 	ERDYNA_CAMPFIRE_1 = """That evening, the campfire painted flickering patterns across her scales, making the green of her hair gleam like polished jade. The flirtation in the silence between you had grown heavier. Her yellow eyes, usually narrowed with suspicion, were wide and fixed on your lips. Without another word, she closed the distance.
 
 Her kiss was a clash, all teeth and desperate pressure. It was unskilled but fiercely earnest. When you didn't pull away, a sound rumbled in her chest, something between a purr and a growl. The fabric gave way with a slight tear she didn't seem to notice. The firelight caught the emerald cascade of her hair as she threw her head back, her small, bent horns catching the light. Her breasts, free from her roughspun shirt, were capped with hardened nipples.
 
 {color=yellow|Erdyna: — This is the first time I feel so... hot...}""",
-
-	ERDYNA_CAMPFIRE_2 = """She pushed you back, her strength unsurprising, her lizard tail thrashing against the ground. She straddled your hips, her scaled knees digging into the ground on either side of you. Her gaze was locked onto your erection, her lips parted. There was no hesitation, only a raw, driving need she'd never been allowed to feel before. Taking your cock in hand, she guided you to her entrance. Her folds already slick, parting easily.""",
-
+	ERDYNA_CAMPFIRE_2 = "She pushed you back, her strength unsurprising, her lizard tail thrashing against the ground. She straddled your hips, her scaled knees digging into the ground on either side of you. Her gaze was locked onto your erection, her lips parted. There was no hesitation, only a raw, driving need she'd never been allowed to feel before. Taking your cock in hand, she guided you to her entrance. Her folds already slick, parting easily.",
 	ERDYNA_CAMPFIRE_3 = """{color=yellow|Erdyna: — Aaah!.. Hah... You are bigger than I thought... But I'm no weakling.}
 
 She sank down. A sharp gasp tore from her throat, her claws pricking your chest. The stretch was intense for her virgin slit, a burn that quickly morphed into a deep, satisfying ache. Her inner walls clamped down, a tight, wet heat gripping every inch. Her body trembled, not from pain, but from the sheer, overwhelming novelty of being filled. After a moment, she began to move.""",
-
 	ERDYNA_CAMPFIRE_4 = """Her rhythm was clumsy at first, an awkward grinding of her hips. She was chasing a feeling she couldn't name. She quickly found a better angle, lifting herself up before slamming back down, a wet slap echoing in the quiet woods. The lewd sight of your cock disappearing into her wet cunt, emerging glistening with her juices, made her inner muscles spasm. Her tail whipped back and forth. She leaned forward, her hair falling like a curtain around your faces, the scent of pine and smoke filling your lungs.
 
 {color=yellow|Erdyna: — Fuck... I had no idea... It gonna feel this good...}
 
 Her hips began to piston faster, driving you deeper.""",
-
 	ERDYNA_CAMPFIRE_5 = """The sight of her, this fierce, abrasive rogue dragonkin now so desperately chasing her own pleasure on top of you, was intoxicating. Her slit eyes squeezed shut, her mouth opening in a silent cry as her entire body went rigid. Her walls convulsed around you, pulling you deeper as a wave of her release washed through her.
 
 {color=yellow|Erdyna: — AAAAAHHHH! FUCK!..}
 
 The shuddering grip of her orgasm milked you, pulling your own release from you in a hot, sudden rush. You came deep inside her, and her body answered with another wave of spasms, her pussy clenching around you as if to keep every drop. For a long moment, the only sounds were the crackling fire, the pounding of blood in your ears, and her ragged, panting breaths.""",
-
 	ERDYNA_CAMPFIRE_6 = """Erdyna collapsed onto you, her full weight pressing down. Her green hair spilled across your chest, smelling of woodsmoke and sweat. The points of her small horns rested against your shoulder. Her body was limp, utterly spent. The ferocious energy that had driven her vanished, replaced by a boneless languidity. You felt the rapid beat of her heart against your ribs, a frantic drum that slowly, gradually, began to settle.
 
 {color=yellow|Erdyna: — Mind... If I stay a bit like this?}
@@ -29458,79 +29469,63 @@ She glanced at you sidelong, a look that made clear she did not intend to explai
 {color=yellow|Erdyna: — Before we head back down into those catacombs... I want to stop by the capital first. There's something I need to sort out there.}
 
 She glanced at you sidelong, a look that made clear she did not intend to explain further right now.""",
-
-	ERDYNA_WEDDING_1 = """The ceremony was brief, practical, and nothing like what either of you expected. Erdyna did not look at the officiant. She looked at you. When the words were spoken she did not flinch, and her jaw had that particular set she got when she had already decided something and was waiting for the rest of the world to catch up. The doors closed behind you both.""",
-
+	ERDYNA_WEDDING_1 = "The ceremony was brief, practical, and nothing like what either of you expected. Erdyna did not look at the officiant. She looked at you. When the words were spoken she did not flinch, and her jaw had that particular set she got when she had already decided something and was waiting for the rest of the world to catch up. The doors closed behind you both.",
 	ERDYNA_WEDDING_2 = """The heavy chamber door clicked shut. Moonlight streamed through the high window, catching the dust motes dancing in the air. Erdyna was already on the bed, full of tension and anticipation in the dim light. Her verdant hair spilled across the pillows, a stark contrast to the pale linen. She didn't look at you. Instead, she shifted, her back arching as she settled onto her stomach, presenting her naked back with the scars she had spent her life hiding.
 
 Her bare ass rose in the moonlight, a silent, demanding invitation. Her lizard tail, thick and scaled at the base, tapered to a finer point, twitching with a feverish energy.
 
 {color=yellow|Erdyna: — Well, darling, for choosing me, today I'd like you to give all that I can.}""",
-
 	ERDYNA_WEDDING_3 = """You approached the bed. Her tail lifted, sinuous and deliberate. The tapered tip, covered in smoother, finer scales, brushed against your ready cock. It was a strange, electrifying sensation. The point of her tail traced the ridge, the texture a tantalizing friction against it. She moved with an experimental grace, learning your shape, your reactions. A slight pressure, a curling motion, and she began to stroke.
 
 {color=yellow|Erdyna: — This feels special, isn't it? Dragon's tail to be used like that... Heh, I like how it feels.}""",
-
 	ERDYNA_WEDDING_4 = """The scale-smooth tip glided up and down your shaft, smearing your leaking cum over her own scaly hide. Her movements grew bolder, faster, a rhythmic pumping that milked you with relentless precision. The tight coil in your groin snapped. Hot, thick seed erupted, painting her pale buttocks with pearly white streams that stood out starkly in the gloom.
 
 {color=yellow|Erdyna: — Mhm, done already? I hope you don't think you can take it easy with a demanding dragon wife like me?}
 
 However you didn't feel any tiredness just yet, your cock just as ready despite the recent orgasm.""",
-
 	ERDYNA_WEDDING_5 = """Your hands were on her, gripping her hips. You spread her open. Her cheeks parted, revealing the tight, pink rosebud of her ass and the glistening folds of her pussy below. Her scent rose to meet you, a musky, primal aroma that promised heat and yielding flesh. Your thumbs pressed into the soft skin, opening her further, exposing her completely to your gaze.
 
 {color=yellow|Erdyna: — Come on, claim me again... This time as your legal wife.}""",
-
 	ERDYNA_WEDDING_6 = """You guided yourself to her entrance. The heat radiating from her core was intense. You pressed forward, and her body gave way, enveloping the head of your cock in a wet, tight embrace. Her inner walls were ridged with subtle texture that gripped and pulled as you sank deeper. You sheathed yourself in one slow, relentless push until your hips were flush against her ass. Her back arched, a silent gasp in her taut posture.
 
 {color=yellow|Erdyna: — Oh... Yes, like that... Come on, fuck me like a brothel whore!}
 
 You began to move, withdrawing until only the tip remained inside, then thrusting back in, filling her completely. The room filled with the wet, rhythmic slap of skin on skin and her moans. Her pussy clung to you, a molten fist that milked your cock with every stroke. You felt her internal muscles flutter and contract around you as her pleasure built.""",
-
 	ERDYNA_WEDDING_7 = """{color=yellow|Erdyna: — Aah... I'm close now...}
 
 The pressure became unbearable. Her pussy tightened like a vise, her body demanding your release. With a final, forceful thrust, you buried yourself to the hilt. A raw groan tore from your throat as you came deep inside her. Pulse after pulse of your heat flooded her core, painting her inner walls with your essence. You felt her shudder beneath you, her entire body going taut as a bowstring. You stayed locked within her, her channel twitching and milking you for every last drop, until the last tremor subsided.
 
 {color=yellow|Erdyna: — AAhhhh... Fuck, this is too good...}""",
-
 	ERDYNA_WEDDING_8 = """Slowly, you withdrew. A torrent of your mixed fluids followed, glistening in the moonlight as it trailed down her thighs. Her body was limp beneath you, but her tail rose again — not to stroke, but to curl around your waist, pulling you down, keeping you close. Its scaly length was a cool pressure against your heated skin. You followed its silent guidance, your semi-hard cock sliding into the cleft of her ass, resting against the tight, small hole you had yet to claim.
 
 {color=yellow|Erdyna: — We both thinking the same? Claim me entirely.}""",
-
-	ERDYNA_WEDDING_9 = """You gathered the slickness leaking from her, coating your length and her forbidden entrance. Your fingers pressed against the tight ring, testing its resistance. You pushed. The muscle gave way with a slow, yielding stretch. The head of your cock breached her, and the sensation was overwhelming. You paused, letting her adjust, feeling the minute tremors that ran through her body. You pressed deeper, inch by agonizing inch, until you were fully sheathed in her tight heat. The pressure was exquisite, a brand new kind of paradise.""",
-
+	ERDYNA_WEDDING_9 = "You gathered the slickness leaking from her, coating your length and her forbidden entrance. Your fingers pressed against the tight ring, testing its resistance. You pushed. The muscle gave way with a slow, yielding stretch. The head of your cock breached her, and the sensation was overwhelming. You paused, letting her adjust, feeling the minute tremors that ran through her body. You pressed deeper, inch by agonizing inch, until you were fully sheathed in her tight heat. The pressure was exquisite, a brand new kind of paradise.",
 	ERDYNA_WEDDING_10 = """You began to move, your strokes shallow at first, then longer, more confident. Her ass was a molten furnace, clenching around you with every retreat, sucking you back in with every advance. Her body rocked to meet your rhythm, her hands digging into the mattress. The pleasure built again, impossibly fast.
 
 {color=yellow|Erdyna: — Aahh... Yes, my ass... Ruin it!}
 
 Her whole body convulsed, a silent, violent orgasm that wracked her frame. The convulsive clenching of her anal passage around your thrusting cock was your undoing. You drove in one last, brutal time, grinding your hips against her ass as you spilled yourself into her depths, filling her with a second serving. You collapsed onto her back, your breath ragged against her scaled nape, your bodies joined and slick in the aftermath.""",
-
 	ERDYNA_WEDDING_11 = """You collapsed onto her, your full weight pressing her into the mattress. Your cock was still buried deep in her ass, her inner muscles still pulsing with the aftershocks of her release. Her tail remained locked around your leg. The room was silent again, but the silence was different now — heavier, saturated with the scent of sweat, musk, and your fluids. You could feel her breathing, a deep and ragged rhythm beneath you.
 
 {color=yellow|Erdyna: — [mastername], I love you...}""",
-
 	LIRA_BONUS1_1 = """The dim light spilling through tall windows painted stripes across the silk sheets. Lira lay beneath you, her pale pink hair a stark contrast to the dark skin of her shoulder. Her amber eyes, wide and glistening, were locked on yours. A faint tremor ran through her as you lowered your head, your lips finding hers. Her own lips were soft, parting with a gasp as your tongue traced their seam, seeking entry.
 
 {color=yellow|Lira: — [master], you'll be gentle?}
 
 You deepened the kiss, one hand sliding up her side, thumb brushing the curve of her breast. Her body arched into the touch. The thin fabric of her robe did little to hide the heat radiating from her skin, the hardening peak of her nipple against your palm. You broke the kiss, a string of saliva connecting your mouths for a moment.""",
-
 	LIRA_BONUS1_2 = """Your gaze traveled down her body as you settled between her thighs. You pushed the simple robe up, baring her to the cool night air. Her breasts were moderate, fitting perfectly in your hands, the dark areolas tightening into pebbled points as your thumbs circled them. Her stomach was taut, her hips flaring out to a round, firm butt that you could feel pressed against your thighs.
 
 {color=yellow|Lira: — [master], I've never done this before, but I thought about it...}
 
 Your fingers traced a path down her stomach. She shivered, her legs falling open further in invitation. Her virgin pussy was already slick, glistening in the dim light. You parted her folds with your thumbs, revealing the swollen bud of her clit and the dark, wet entrance waiting to be taken.""",
-
 	LIRA_BONUS1_3 = """You aligned yourself with her entrance, the head of your cock nudging against her slick pussy. Her hips bucked up involuntarily, a desperate motion. With one smooth thrust, you sank into her, sheathing yourself to the hilt. A choked moan escaped her lips, her back arching off the bed. She was impossibly tight, her walls clenching around you. You paused, letting her adjust, feeling her pulse around your cock.
 
 {color=yellow|Lira: — Aaah... I'm yours now...}""",
-
 	LIRA_BONUS1_4 = """You began to move, a slow, deliberate rhythm. Each thrust was deep, hitting that spot inside her that made her whole body tense with pleasure. Her hands, once clenched in the sheets, now flew up to grip your shoulders. Her moans were quiet, almost swallowed by the sound of skin slapping against skin.
 
 {color=yellow|Lira: — Ah... [master], harder... please...}
 
 You picked up the pace, your hips snapping forward harder, faster. The bed creaked in protest. Her breasts bounced with each thrust, the sight making your own arousal spike. You leaned down, capturing one nipple in your mouth, sucking hard. Her back bowed, a sharp cry tearing from her throat as you bit down gently.""",
-
 	LIRA_BONUS1_5 = """Her pussy walls began to flutter around you, a sign of her impending orgasm. You reached between your bodies, your thumb finding her clit. You rubbed it in circles, matching the rhythm of your thrusts. It was too much for her. Her whole body went rigid, clamping down on you as she came with a loud scream. Waves of pleasure racked her body, her legs shaking uncontrollably.
 
 {color=yellow|Lira: — Aaah!...}
@@ -29538,38 +29533,28 @@ You picked up the pace, your hips snapping forward harder, faster. The bed creak
 The sight of her cumming beneath you pushed you over the edge. With a final, deep thrust, you buried yourself inside her and spilled your seed, coating her insides with your warmth. You collapsed onto her, your weight pinning her to the bed as you both rode out the aftershocks.
 
 For a long moment, the only sound in the room was your ragged breathing.""",
-
 	LIRA_BONUS2_1 = """Lira dropped on the ground under your pressure.
 
 {color=yellow|Lira: — You wanna go for it like this, [master]?}
 
 Her leather and feather outfit did little to conceal her form. The small triangular patches over her breasts were straining. Her knees were bent, feet planted flat on the ground, holding her thighs open in a posture of blatant invitation. The amber of her eyes was wide, fixed on you, a flicker of apprehension warring with a deeper, more desperate devotion.""",
-
 	LIRA_BONUS2_2 = """You stepped into the space between her splayed legs. Your gaze roamed over the expanse of dark, exposed skin, from the gentle curve of her stomach to the glistening folds of her pussy. She was ready, her body betraying the meekness in her eyes.
 
 Taking hold of your cock, you guided it to her entrance. The initial contact drew a sharp gasp from her, her back arching off the ground. You pushed forward slowly, watching her stretch to accommodate your girth. The way her body swallowed your length was mesmerizing, a tight, wet sheath of muscle and flesh clinging to every inch.
 
 {color=yellow|Lira: — Aah... This feeling... Too good...}""",
-
 	LIRA_BONUS2_3 = """Lira's hands, which had been clenched at her sides, flew up to grip your forearms. You set a steady, deep rhythm, your hips rolling in a primal motion. Each thrust drove a soft cry from her throat, her body rocking with the force of your possession.
 
 {color=yellow|Lira: — Ah... I feel... So obscene... But good...}
 
 You watched her face, the way her features contorted in a mask of blissful agony. Her amber eyes were glazed over, unfocused, lost in the sensation. Her lips were parted, her breath coming in ragged pants. The sight of her, so open, so vulnerable, so utterly yours, sent a surge of possessive heat through you.""",
-
-	LIRA_BONUS2_4 = """You increased your pace, driving into her with harder, faster strokes. Your hands roamed her body, tracing the curve of her hips, the dip of her waist, the swell of her breasts. You pinched a peaked nipple through the thin leather, earning a sharp cry and a clenching of her inner walls. Her body was a taut bowstring, vibrating with a tension that begged for release. You could feel it building in her, the coiling heat in her core that was about to snap.""",
-
+	LIRA_BONUS2_4 = "You increased your pace, driving into her with harder, faster strokes. Your hands roamed her body, tracing the curve of her hips, the dip of her waist, the swell of her breasts. You pinched a peaked nipple through the thin leather, earning a sharp cry and a clenching of her inner walls. Her body was a taut bowstring, vibrating with a tension that begged for release. You could feel it building in her, the coiling heat in her core that was about to snap.",
 	LIRA_BONUS2_5 = """{color=yellow|Lira: — AAah! I'm about to... Nh...}
 
 With one final, deep thrust, you buried yourself to the hilt inside her. Her body convulsed, a silent scream tearing from her throat as her orgasm ripped through her. Her pussy spasmed around you, a milking, clenching sensation that pulled your own release from you. You spilled into her, a hot, thick flood that filled her to the brim. For a long moment, you stayed locked together, the only sounds your mingled, ragged breaths.""",
-
 	LIRA_BONUS2_6 = """As you withdrew, a trickle of your mingled release escaped her, a pearly white streak against the dark skin of her inner thigh.
 
 {color=yellow|Lira: — We did it... Like animals, aren't we? I never thought I'd find pleasure in something like this with you, [master].}""",
-
-
-
-
 	ACT4_SEBASTIAN_RAILROAD_NAME = "Strictly Business",
 	ACT4_SEBASTIAN_RAILROAD_SUMMARY = "Sebastian of the Trading Guilds of Empire seeks to expand their influence onto other lands.",
 	ACT4_SEBASTIAN_STAGE_FIND_TECHNICIAN = "Find a dwarven technician who can advise Sebastian on the railroad route. Perhaps one goblin engineer would be interested too...",
@@ -30119,7 +30104,566 @@ Sebastian leaves, although you can feel his steps are heavier than usual.
 	ACT4_SEBASTIAN_REPORT_WAREHOUSE_OPTION_2 = "The Trading Guild can have its property without taking the church.",
 	ACT4_SEBASTIAN_REPORT_WAREHOUSE_OPTION_3 = "The warehouse meets your requirements. Use it and leave the church alone.",
 	ACT4_SEBASTIAN_REPORT_WAREHOUSE_OPTION_4 = "You asked me to solve this. I did. Take the warehouse.",
+	ERDYNA_ROUGE_AFTER_CAMPFIRE_1 = """Erdyna finds Rouge waiting with the kind of calm expression that makes the silence around her feel deliberate. The lizard girl stops a few steps away, shoulders tense, her usual swagger nowhere to be seen.
 
+{color=yellow|Erdyna: — Listen, about what happened... I'm sorry.}
+
+Rouge tilts her head slightly, neither offended nor amused enough to make her thoughts clear.
+
+{color=aqua|Rouge: — Are you?}
+
+Erdyna swallows, then forces herself to continue.
+
+{color=yellow|Erdyna: — Yeah. I mean it. I didn't mean to... get in your way or anything.}
+
+Rouge gives a small shrug, as if the matter barely deserves the effort of moving her shoulders.
+
+{color=aqua|Rouge: — How considerate.}""",
+	ERDYNA_ROUGE_AFTER_CAMPFIRE_2 = """Erdyna shifts under that unreadable look, growing more uneasy rather than less.
+
+{color=yellow|Erdyna: — So... you really don't mind?}
+
+Rouge steps closer without hurry. Before Erdyna can retreat, Rouge lifts a hand and catches her by the chin, guiding her face up with a touch too gentle to be comforting.
+
+{color=aqua|Rouge: — Tell me, do you think I would care about a stud being stolen from me like some third-rate woman?}
+
+Erdyna's breath catches, but Rouge only smiles.
+
+{color=aqua|Rouge: — I am far beyond men who can be swayed by some silly affair. My man would climb on top of every woman who catches his eye if the mood strikes him. He is a predator, not some tame creature trained to pass by every chance placed before him.}
+
+Her thumb brushes lightly along Erdyna's jaw as her smile deepens.
+
+{color=aqua|Rouge: — I would hate it far more if he were a chaste fool. Unless, of course, you were planning to keep him all to yourself?}""",
+	ERDYNA_ROUGE_AFTER_CAMPFIRE_3 = """Erdyna's eyes widen at once.
+
+{color=yellow|Erdyna: — N-no! Hell no, I wasn't thinking anything like that!}
+
+Rouge studies her for another moment, then releases her chin with a soft laugh.
+
+{color=aqua|Rouge: — Good.}
+
+The single word is enough to make Erdyna's shoulders loosen. She lets out a breath she had clearly been holding, relief washing over her face despite her best effort to hide it.
+
+Rouge turns away, her smile still present and still impossible to read.
+
+{color=aqua|Rouge: — Then we understand each other.}""",
+	ACT4_ROAD_PROJECT_NAME = "End of the Line",
+	ACT4_ROAD_PROJECT_SUMMARY = "Sebastian's courier brought an urgent summons to the dwarven road project. Whatever went wrong there, he wants it handled before it becomes public.",
+	ACT4_ROAD_STAGE_VISIT_ROAD_PROJECT = "Travel to the dwarven road project in the mountains and find Sebastian.",
+	ACT4_ROAD_STAGE_GUILD_QUARTERS = "Search the trade guilds quarters in the Empire Capital.",
+	ACT4_ROAD_STAGE_MEET_MELCHOR = "Find Chancellor Melchor's hiding place in the Empire Capital.",
+	ACT4_ROAD_STAGE_ASK_SENERUS = "Ask Senerus how to break the divine barrier protecting Grotus.",
+	ACT4_ROAD_STAGE_IMBUE_ARROW = "Bring Senerus' arrow to Freya's priestess in Eldewyn.",
+	ACT4_ROAD_STAGE_RETURN_TO_MELCHOR = "Return to Melchor with the means to break Grotus' barrier.",
+	ACT4_ROAD_STAGE_CHARGE_PALACE = "Storm the imperial palace and put an end to Grotus.",
+	QUEST_DWARF_RAILROAD_TEXT = "Dwarven Road Project",
+	QUEST_DWARF_RAILROAD_DESC = "The Trading Guild's railroad works, cut deep into the dwarven mountains.",
+	ACT4_ROAD_COURIER_1 = """As Sebastian left Aliron quite some time ago, one of his couriers finds you with a sealed note and the kind of urgency that has been trained to look polite.
+
+The note is brief. Something has happened at the dwarven road project. Sebastian claims the matter requires your particular assistance and asks you to come before the situation becomes expensive in public.""",
+	ACT4_ROAD_LOCATION_OPTION_ARRIVE = "Look for Sebastian",
+	ACT4_ROAD_ARRIVE_1 = "The road project looks much further along than Sebastian's note suggested. Fresh supports brace the cut stone, and a short work cart rattles along the finished track.",
+	ACT4_ROAD_ARRIVE_2 = """A man in a dust-streaked coat hurries toward you as soon as you arrive.
+
+{color=yellow|Project Worker: — Mayor [name]? Good. Master Sebastian is waiting at one of the junctions.}""",
+	ACT4_ROAD_ARRIVE_OPTION_TAKE_ME = "Take me to Sebastian.",
+	ACT4_ROAD_ARRIVE_OPTION_URGENT = "If this is urgent, I am going now.",
+	ACT4_ROAD_TUNNEL_1 = "The worker points you toward a tunnel branch lit by fresh lamps and steps aside.",
+	ACT4_ROAD_TUNNEL_2 = """The tunnel branch begins as finished work: clean rails, numbered supports, and lamp chains fixed neatly into the stone. The farther you go, the fewer workers you hear behind you.
+
+At the first junction, the lamps turn blue. The left branch slopes downward, away from the sound of carts and hammers.""",
+	ACT4_ROAD_TUNNEL_3 = """The clean construction gives way to older stone. The rails end before the tunnel does, and the last lamp swings gently even though the air is still.
+
+Something scrapes in the dark ahead. Then another sound answers it from behind.""",
+	ACT4_ROAD_TUNNEL_4 = """Undead shapes pull themselves from side cracks and unfinished alcoves, blocking the way back as the tunnel fills with the smell of damp earth and old rot.
+
+When you move to retreat, blue light snaps across the rails and walls behind you. The branch has sealed itself into an enclosed magic trap, tight enough that forcing your way out would take time you do not have.""",
+	ACT4_ROAD_AFTER_AMBUSH_1 = """The last undead falls, but the tunnel does not open. The blue seal still burns across the rails and walls, humming softly each time you come near it.
+
+More shapes drag themselves from the dark branch ahead. The trap has not failed. It is only waiting to wear you down.""",
+	ACT4_ROAD_RILU_REVEAL_1 = """The seal cracks from the outside.
+
+An explosion tears through the far side of the trap. Blue light shatters across the stone, and the undead nearest the blast are thrown apart like dry sticks.
+
+When the smoke thins, a girl stands beyond the broken bodies.
+
+You know her face. You killed her in the lower tomb beneath Kharzug Deep. You were certain she was dead.
+
+She steps over a twitching corpse and looks past you, toward the deeper tunnel.
+
+{color=yellow|Girl: — The necromancers are close.}""",
+	ACT4_ROAD_RILU_REVEAL_2 = """The girl moves through the branch without haste. When the necromancers try to raise another wave, she breaks the spell before it finishes forming, and the remaining undead collapse into loose bone and spoiled flesh.
+
+One necromancer survives long enough to be dragged against the tunnel wall. The girl crouches in front of him, her expression unchanged.
+
+{color=yellow|Girl: — Who sent you?}
+
+{color=aqua|Necromancer: — Sebastian. Sebastian ordered it. We were to keep the line open, feed the network, and remove anyone who interfered.}""",
+	ACT4_ROAD_RILU_HUB = "The necromancer dies before he can say more. The girl watches him for a moment, then rises.",
+	ACT4_ROAD_RILU_OPTION_WHO = "Who are you?",
+	ACT4_ROAD_RILU_OPTION_HELPED = "You've helped me after what happened?",
+	ACT4_ROAD_RILU_OPTION_WHAT = "What's going on?",
+	ACT4_ROAD_RILU_OPTION_DEAD = "Weren't you dead? I could've sworn I've killed you.",
+	ACT4_ROAD_RILU_Q1 = "{color=yellow|Rilu: — My name is Rilu. I'm afraid that's as much as I can give you given my poor state of memory.}",
+	ACT4_ROAD_RILU_Q2 = "{color=yellow|Rilu: — It's you or Sebastian. You don't feel like you are behind this whole ordeal, and you are his enemy.}",
+	ACT4_ROAD_RILU_Q3 = """{color=yellow|Rilu: — You know Sebastian, don't you? The necromancer said his name, as he's behind this.}
+
+She looks toward the rails, then at the lamp chains fixed neatly along the stone.
+
+{color=yellow|Rilu: — They were guarding this branch and feeding the network. I can feel power of the undeath moving through it.}
+
+Now that she has said it, you can spot a very dim glow surrounding the metal.""",
+	ACT4_ROAD_RILU_Q4 = """{color=yellow|Rilu: — ...I'm more durable than I look.}
+
+She slowly sighs, trying to look away.
+
+{color=yellow|Rilu: — All I remember is the excavation opened a way out. The necromancers found me first. They could not kill me, so they pushed magic into my head until I stopped knowing what I was doing. That is why I attacked you. Then you stopped me.}""",
+	ACT4_ROAD_RILU_EXIT_1 = """You tell Rilu about Sebastian: the road project, the message that brought you here, and the worker who sent you into this branch to meet him.
+
+{color=yellow|Rilu: — So it was a trap, was it not? You've been helping him out with this thing.}""",
+	ACT4_ROAD_RILU_EXIT_2 = """The thought comes cold and immediate: distant rituals, hidden sacrifices, power drawn from places no one in the capital would ever see. Sebastian has been building a road for power, not travel.
+
+{color=yellow|Rilu: — The dead are not the purpose. They are guards. Fuel. Waste. Sebastian knows what the road is for.}
+
+She turns toward the branch that leads back to the active worksite.
+
+{color=yellow|Rilu: — He must be stopped. If he decided to take you out, it must mean his goal is close.}""",
+	ACT4_ROAD_RILU_OPTION_CAPITAL = "Then we go to the capital.",
+	ACT4_ROAD_RILU_OPTION_ANSWERS = "Sebastian answers for this.",
+	ACT4_ROAD_RILU_EXIT_3 = "{color=yellow|Rilu: — Yes. I shall come along. After all, I don't think I know much about this region.}",
+	ACT4_ROAD_CAPITAL_OPTION_GUILD = "Trade guilds quarters",
+	ACT4_ROAD_GUILD_QUARTERS_1 = """The enclosed guild quarters look calm from outside. The gates are shut, the lamps are lit, and the guards visible beyond the bars stand at their posts without moving.
+
+Rilu stops before the gate and studies the air.
+
+{color=yellow|Rilu: — It is camouflaged with magic.}""",
+	ACT4_ROAD_GUILD_QUARTERS_2 = """When you push through the gate, the illusion tears like thin cloth. The clean courtyard becomes a place of overturned carts, dead clerks, and bodies hidden where they fell. The guards at the gate were never guards at all, only shapes held in place by simple magic.
+
+The dead begin to move.""",
+	ACT4_ROAD_GUILD_DEEPER_1 = """You push deeper through the quarters, past offices stripped of useful papers and storage rooms marked with fresh chalk symbols. The magic aura grows denser near the back of the compound.
+
+Behind a locked records hall, a stairway descends into old stone that was never part of any guild building.""",
+	ACT4_ROAD_GUILD_DEEPER_2 = """The stairs lead into a tunnel network older than the buildings above it. Rails have been laid through parts of it, then bound into the stone with silver clamps and dark resin that pulses faintly when Rilu passes near.
+
+The deeper passages feel familiar in the wrong way. You realize this place cannot be far from the enormous catacombs you saw behind the gates.""",
+	ACT4_ROAD_GUILD_DEEPER_3 = """The tunnel opens into a vast cave room. A large magic circle burns across the floor, drawing light from rail lines, corpse-laden carts, and channels carved into the rock.
+
+Sebastian stands at the center, protected by layered magic. Mhyrana waits beside him, calm and unworried.""",
+	ACT4_ROAD_RITUAL_CHAMBER_1 = """Sebastian spreads his hands over the circle as another pulse of stolen mana rolls through the rails.
+
+{color=yellow|Sebastian: — There. Dwarven stone, imperial greed, local politics, one cooperative mayor, and a thousand little deaths no one important stopped to count. All of it arrives exactly where I promised it would.}
+
+Mhyrana watches the magic gather without sharing his pleasure.
+
+{color=aqua|Mhyrana: — Celebrate later. Send the remaining flow to my mark before the network tears itself apart.}
+
+{color=yellow|Sebastian: — Of course. I am sentimental, not careless.}""",
+	ACT4_ROAD_LICH_REVEAL = """Sebastian turns as you arrive. For once, his smile is not polished enough to pass as human.
+
+{color=yellow|Sebastian: — Mayor [name]. You outlived my little surprise. I should be irritated, but at this stage even surprises are beginning to feel ceremonial.}
+
+The skin along one side of his face splits and thins, revealing old bone and dead magic beneath. His laugh rolls through the cave as the circle brightens around him.""",
+	ACT4_ROAD_LICH_OPTION_SOMETHING_ELSE = "I knew you were something else.",
+	ACT4_ROAD_LICH_OPTION_LICH = "So you are a lich.",
+	ACT4_ROAD_LICH_OPTION_REGRET = "You will regret living this long.",
+	ACT4_ROAD_MHYRANA_LEAVES = """{color=yellow|Sebastian: — Hahah, don't you feel it? You might be a capable fighter, but you think you can take me on now?}
+
+{color=aqua|Mhyrana: — I have what I came for. Keep them busy.}
+
+{color=yellow|Sebastian: — With pleasure.}
+
+Mhyrana leaves through the far passage. The barrier around Sebastian flares, blocking the way after her.""",
+	ACT4_ROAD_LICH_MONOLOGUE_1 = """{color=yellow|Sebastian: — The railroad was never only about trade. Every line, every junction, every little local arrangement brought mana and corpses from the regions toward this chamber. A clean delivery system for a master plan.}
+
+{color=yellow|Sebastian: — It took years to infiltrate the empire and the trading guilds themselves, and I couldn't have done it without the cult. And now I can reap all of this hard work.}""",
+	ACT4_ROAD_LICH_OPTION_RITUAL = "This was all for a ritual?",
+	ACT4_ROAD_LICH_OPTION_HIDDEN = "You've learned to hide it really well.",
+	ACT4_ROAD_LICH_MONOLOGUE_2 = "{color=yellow|Sebastian: — It's really amazing how much you can achieve when all you need to do is to give away your humanity. Humans have such a rich magic energy after all.}",
+	ACT4_ROAD_LICH_PREFIGHT = """Rilu steps forward, watching the circle more than Sebastian.
+
+{color=yellow|Rilu: — The barrier is tied to him. We cannot follow her while it's active. Try to keep him busy for a while.}""",
+	ACT4_ROAD_RILU_SACRIFICE_1 = """The final blow lands, but Sebastian does not fall. The magic circle surges beneath him, pouring light through the exposed bone and dead flesh as if the ritual is simply replacing whatever you damage.
+
+Sebastian laughs again, lower this time, almost delighted.
+
+{color=yellow|Sebastian: — Do you understand now? You are not fighting a man. I'm eternal!}""",
+	ACT4_ROAD_RILU_SACRIFICE_2 = """Rilu steps between you and Sebastian. You notice her glowing with some magic markings, you never saw anything like that.
+
+{color=yellow|Rilu: — That's enough. I'm finished my preparation.}
+
+Sebastian's smile falters. This clearly put fear into his undead image.""",
+	ACT4_ROAD_RILU_SACRIFICE_3 = """{color=yellow|Rilu: — Go after Mhyrana.}
+
+She walks into the light before Sebastian can retreat. The circle folds inward around them both, bright enough to erase the shape of the cave.""",
+	ACT4_ROAD_RILU_SACRIFICE_4 = """The explosion makes no sound at first. Then the whole underground network answers at once: stone cracking, rails screaming loose, distant chambers collapsing one after another.
+
+When your sight returns, Sebastian and Rilu are gone. The barrier has broken, but the tunnel Mhyrana used has collapsed beneath a wall of shattered rock.
+
+With the passage buried and the network coming apart around you, the only path left leads back toward the city.""",
+	ACT4_ROAD_CAPITAL_CHAOS_1 = """You climb through the ruined guild quarters into chaos. The capital is in panic. People run through streets split by tremors, bells ring over one another, and smoke rises from places where hidden tunnels have broken under stone and brick.
+
+Another quake rolls beneath the city as you force your way onward.""",
+	ACT4_ROAD_CAPITAL_CHAOS_2 = "At last, you reach the giant doors you opened beneath the capital. The ground still shakes beneath them, but they stand ahead like the only fixed thing left around.",
+	ACT4_ROAD_GIANT_DOORS_1 = """You pass through the giant doors again and descend past the old seal. The tremors have cracked parts of the passage, but the ancient stone still holds better than the imperial tunnels above.
+
+The corridor opens into an enormous cave. Ahead, cultists block the descent in a rough line, weapons ready. Rouge stands before them with one hand on her hip, looking more amused than threatened.""",
+	ACT4_ROAD_GIANT_DOORS_2 = """{color=yellow|Rouge: — Well. This became noisy. Sebastian's little construction has done more than move carts, hasn't it? There is enough power gathering under the city to make every court magician in the palace go nuts.}
+
+She looks past the cultists, toward the deeper cave and the massive stone ring you saw beyond the seal before.
+
+{color=yellow|Rouge: — I am going through.}
+
+{color=aqua|Cultist: — Mhyrana knows about your betrayal. You will not pass.}""",
+	ACT4_ROAD_MELCHOR_ARRIVES = """{color=yellow|Rouge: — How dramatic. I guess I shouldn't expect any self-preservance from you, guys.}
+
+Before the cultists can answer, Melchor enters from a side passage with imperial soldiers at his back. His face is pale with fury, but his voice stays clipped and controlled.
+
+{color=aqua|Melchor: — No one is taking that power. Not her. Not you. Not the cult.}""",
+	ACT4_ROAD_SIDE_CHOICE = """Rouge turns her smile toward him.
+
+{color=yellow|Rouge: — And what will you do with it, Chancellor? Seal it for the good of the Empire? Or hold it yourself?}
+
+{color=aqua|Melchor: — If imperial hands must control it to prevent worse hands from doing so, then that may be necessary.}
+
+Rouge laughs softly and glances at you.
+
+{color=yellow|Rouge: — Hear that, darling? Such a noble way to say he wants the prize. Help me put down Melchor and his little honor guard. They won't let us through otherwise.}""",
+	ACT4_ROAD_SIDE_OPTION_ROUGE = "*Side with Rouge*",
+	ACT4_ROAD_SIDE_OPTION_NEITHER = "*Reject siding with either*",
+	ACT4_ROAD_SIDE_ROUGE = """Rouge's smile sharpens as you move beside her.
+
+{color=yellow|Rouge: — Good choice.}
+
+{color=aqua|Melchor: — Traitorous fool.}""",
+	ACT4_ROAD_SIDE_ALONE = """Rouge gives you a look of delighted offense.
+
+{color=yellow|Rouge: — You gonna fight us both? Fufu. I do like confidence when it is nearly stupid.}
+
+Melchor raises one hand, and his soldiers spread into formation while the cultists close from the passage.""",
+	ACT4_ROAD_MHYRANA_RITUAL_1 = """With the passage cleared, you push deeper into the cave. The air grows hot and heavy, and each step makes the pressure behind your eyes worse.
+
+At the heart of the chamber, Mhyrana stands before the gigantic stone ring. Magic pours through its inner edge and gathers behind her, folding into a single point bright enough to feel solid.""",
+	ACT4_ROAD_MHYRANA_RITUAL_ROUGE = """{color=aqua|Rouge: — You really caused some ruckus. And all of this behind my back.}
+
+{color=yellow|Mhyrana: — Your little courtly machinations aren't to my interest. You betrayed us first, but it was already taken into account. After all, your sister is none the wiser.}
+
+{color=aqua|Rouge: — Hmph, that's fair. Let's see if you can back up your courage with actual strength.}""",
+	ACT4_ROAD_MHYRANA_RITUAL_2 = """Mhyrana does not take her eyes off the forming point of power.
+
+{color=yellow|Mhyrana: — This ring has carried divine energy from age to age. Empires rise near it and call themselves blessed. The capital's prosperity, the wealth beneath its streets, even older nations before this one... all of it was fed by what resides here.}""",
+	ACT4_ROAD_MHYRANA_RITUAL_3 = """{color=yellow|Mhyrana: — Sebastian's network woke it properly. The railroad brought mana, death, and worshipful fear from every region it touched. Now the stored divine power is being drawn out at last...}
+
+You prepare your weapon to face Mhyrana after all this time as the catastrophe is merging right in front of you.""",
+	ACT4_ROAD_GROTUS_POWER_1 = """Grotus crawls through a narrow side path above the ritual chamber, shaking dust from his sleeves and trying not to breathe too loudly.
+
+{color=yellow|Grotus: — Mistress Rouge came this way... This place is really something!}""",
+	ACT4_ROAD_GROTUS_COMIC_1 = "Below, the ritual holds. Mhyrana stands over the gathering point of power, and the cave answers her without hesitation.",
+	ACT4_ROAD_GROTUS_COMIC_2 = "The light thickens until it stops looking like light at all.",
+	ACT4_ROAD_GROTUS_COMIC_3 = """Grotus stares at the single point of gathered power until his nervous smile goes slack. The light calls to something small and hungry inside him.
+
+{color=yellow|Grotus: — Mine?}""",
+	ACT4_ROAD_GROTUS_COMIC_4 = "He reaches down through the broken stone.",
+	ACT4_ROAD_GROTUS_COMIC_5 = """The gathered power floods into him. His body arches, veins glowing beneath his skin as divine force burns through every hunched part of him.
+
+Magic blasts tear across the chamber.""",
+	ACT4_ROAD_GROTUS_ASCENDED_1 = """Broken stone lies scattered beneath the fading light. The ritual circle is ruined. Mhyrana is nowhere to be seen.
+
+Grotus stands near the shattered focus, staring at his own hands. Light pulses through his veins in slow, golden lines.""",
+	ACT4_ROAD_GROTUS_ASCENDED_2 = """{color=yellow|Grotus: — I... I can feel it. All of it. The city. The palace. All those little bastards running in circles above us.}
+
+His laugh starts as a nervous twitch and grows into something bright and ugly.
+
+{color=yellow|Grotus: — Oh. Oh, this is what it feels like.}""",
+	ACT4_ROAD_GROTUS_PALACE_1 = """Grotus walks back into the capital through streets still broken by tremors. At the palace gate, a captain steps in front of him with two guards and a drawn sword.
+
+{color=aqua|Palace Captain: — Stop there. No one enters the palace until the city is secured.}
+
+Grotus looks down at the blade, then at the captain's face.
+
+{color=yellow|Grotus: — You giving orders to me now?}""",
+	ACT4_ROAD_GROTUS_PALACE_2 = """The captain glances at the glowing veins under Grotus' skin and tightens his grip.
+
+{color=aqua|Palace Captain: — I am ordering a servant to stand down before he makes his last mistake.}
+
+Grotus laughs and flicks one glowing hand without slowing. The captain disappears in a burst of light and blood.""",
+	ACT4_ROAD_GROTUS_PALACE_3 = """More guards gather at the palace steps. Some raise shields. Others look to the dead captain, then to the doors behind them.
+
+{color=yellow|Grotus: — Move your asses, worms.}
+
+{color=aqua|Guard: — Formation! Protect the inner hall!}
+
+One guard sets his boot wrong in Grotus' path. Another lifts his shield an inch too high. Grotus laughs harder, like these small insults are the funniest things in the world. They both die without even realizing it.
+
+The rest do not wait to move. Shields drop, swords clatter, and the guards run from the steps as Grotus walks through the palace doors.""",
+	ACT4_ROAD_GROTUS_PALACE_4 = """By the time Grotus reaches the inner hall, the palace behind him is full of screams and scattered weapons. Officials and clerks crowd against the walls, trapped between fleeing and being noticed.
+
+{color=aqua|Senior Official: — Grotus? What madness is this? Where is Lady Rouge?}
+
+{color=yellow|Grotus: — Rouge? Who cares about Rouge when I can kill you all with a move of my finger!}
+
+{color=aqua|Senior Official: — No, wait! You don't have to do this!}
+
+{color=yellow|Grotus: — Hehehehaha, right, beg for your life, worms, but before that...}""",
+	ACT4_ROAD_GROTUS_EMPEROR_1 = """Grotus tears open the Emperor's chamber doors. The Emperor waits within, seated calmly as if the city has not cracked beneath his feet. He looks Grotus over with mild annoyance.
+
+{color=aqua|Emperor: — You. I wondered whether the noise was something important. I see I was optimistic.}
+
+{color=yellow|Grotus: — Important? I am very important now you see. Killed a few dozen of those stupid guards who always were looking down on me. And you... Always sitting your big throne like you are straining to take a shit.}
+
+{color=aqua|Emperor: — Is that the best your small brain could come up with?}
+
+Grotus' grin twitches.""",
+	ACT4_ROAD_GROTUS_EMPEROR_2 = """Grotus attacks with a gleeful shout. Divine power tears through the throne and the man seated upon it. The Emperor dissolves into thin air.
+
+For a moment, Grotus only stares at the empty space.
+
+{color=yellow|Grotus: — Oh. Oh, he wasn't even here.}
+
+His surprise breaks into laughter before it can become anger.
+
+{color=yellow|Grotus: — That smell... Was that Misstres- No, Rouge's doing? No way she did it...}""",
+	ACT4_ROAD_GROTUS_HALL_1 = """After half an hour Grotus comes out to the main hall, everyone freezes in place, all eyes glued to him.
+
+{color=yellow|Grotus: — Bring me the council records. Seal the palace gates. Send runners to every barracks and tell them the Emperor speaks through me now.}
+
+In the main hall, surviving guards and officials gather in stunned silence.""",
+	ACT4_ROAD_GROTUS_HALL_2 = """Grotus points at one clerk near the stairs.
+
+{color=yellow|Grotus: — You. I remember you kick my rear at the dinning ceremony.}
+
+The clerk dies in a flash of divine light. The rest of the hall drops into terrified motion at once. People start dropping on their knees begging for mercy.
+
+Grotus raises his glowing hands, pleased by the sound of panic obeying him.
+
+{color=yellow|Grotus: — Hahaha, that's it. You better fear me now. And serve me, as your new emperor.}""",
+	ACT4_ROAD_GROTUS_THRONE_1 = """Grotus has dressed himself like a king by the time the throne room is forced back into order. The crown sits crooked on his head, imperial robes hang badly from his narrow shoulders, and golden light still pulses beneath his skin in a way no tailor could make noble.
+
+The Emperor's family did not all escape. Those who were caught lie dead near the steps of the throne, half-covered by torn banners because no servant dares decide whether hiding them would offend the new ruler.""",
+	ACT4_ROAD_GROTUS_THRONE_2 = """Palace guards stand along the walls with weapons lowered. They watch Grotus carefully, not with loyalty, but with the obedience of men who have seen what happens when he feels mocked.
+
+Grotus notices one guard staring at the bodies and leans forward on the throne.
+
+{color=yellow|Grotus: — What are you staring at?}
+
+{color=aqua|Palace Guard: — Nothing, Your Majesty.}
+
+{color=yellow|Grotus: — Good. Then stop looking like you swallowed a nail. You do as I say.}""",
+	ACT4_ROAD_GROTUS_THRONE_3 = """{color=aqua|Senior Official: — The palace gates are sealed. Messages have been sent to the barracks. The council chambers are being gathered under guard.}
+
+Grotus beams, pleased enough to look foolish and dangerous at once.
+
+{color=yellow|Grotus: — See? You can learn. Everyone learns when the lesson burns hot enough.}
+
+{color=aqua|Senior Official: — Is there anything else, Your Majesty?}""",
+	ACT4_ROAD_GROTUS_THRONE_4 = """Grotus settles deeper into the throne, touching the crooked crown as if expecting it to become comfortable.
+
+{color=yellow|Grotus: — Yes. Bring me one of the pretty women from the court. Noble ones first. The ones who used to look past me like I was dirt.}
+
+The official goes still.
+
+{color=aqua|Senior Official: — Your Majesty... the city is still in panic. Perhaps matters of succession and military command should come first.}
+
+Grotus' smile thins.
+
+{color=yellow|Grotus: — I didn't ask what should come first. I asked for a woman.}""",
+	ACT4_ROAD_GROTUS_THRONE_5 = """A guard returns with a court woman between them. She stops before the throne, pale and rigid.
+
+Grotus looks her over slowly, smiling at her fear.
+
+{color=yellow|Grotus: — There. Much better. You will serve me. Wine first. Then you will serve my bedroom later.}
+
+The guards do not look at one another. That is how afraid they are.
+
+{color=yellow|Grotus: — Tell the others their new Emperor wants company. There are many like you, aren't there? Tell them refusing would be stupid.}
+
+He laughs, delighted by his own gentleness.
+
+{color=yellow|Grotus: — And if they act proud, I will make the court smaller until the rest remember how to smile.}""",
+	ACT4_ROAD_WAKE_1 = """You wake beneath a low shelf of cracked stone, dust coating your tongue and a dull ache pulsing behind your eyes. Around you, the cave has collapsed into broken walls, split rails, and dead magic seeping through the floor like cooling blood.
+
+Rouge is nearby, brushing dust from her sleeve with more care than the situation deserves.""",
+	ACT4_ROAD_WAKE_2_ALLY = """{color=yellow|Rouge: — There you are. I was beginning to wonder whether I had saved a corpse with good timing.}
+
+{color=yellow|Rouge: — The cavern came down when the ritual has finished. Not quite sure what happened. You have been out for quite a while.}""",
+	ACT4_ROAD_WAKE_2_HOSTILE = """{color=yellow|Rouge: — Oh, finally. Took you long enough. Don't bother looking grateful; I still remember you tried to kill me.}
+
+{color=yellow|Rouge: — The cavern came down when the ritual has finished. Not quite sure what happened. You have been out for quite a while.}""",
+	ACT4_ROAD_WAKE_HUB = "She waits, in no apparent hurry to be anywhere the ceiling is still falling.",
+	ACT4_ROAD_WAKE_OPTION_STAY = "Why did you stay?",
+	ACT4_ROAD_WAKE_OPTION_LEFT = "You could have left me here.",
+	ACT4_ROAD_WAKE_OPTION_MHYRANA = "What happened to Mhyrana?",
+	ACT4_ROAD_WAKE_Q1 = """Rouge gives you a thin smile.
+
+{color=yellow|Rouge: — What do you think? You are a valuable... Asset, to just abandon you here to the mercy of survived cultists.}""",
+	ACT4_ROAD_WAKE_Q2 = "Rouge merely played coy, letting a teasing little smile hover on her lips as she looked away just enough to keep her answer out of reach.",
+	ACT4_ROAD_WAKE_Q3 = """Rouge glances toward the buried center of the ritual chamber.
+
+{color=yellow|Rouge: — Gone. Not dead, I think. Mhyrana is annoyingly good at leaving before consequences become educational.}
+
+You and Rouge linger for a moment, taking in the quiet around you. There is nothing more to gain by staying here.""",
+	ACT4_ROAD_CITY_RETURN_1 = """You and Rouge climb out through a broken side passage and back toward the city. By the time you reach open streets, the news has already outrun you.
+
+Grotus has taken the throne. The Emperor is gone, the palace is sealed, and the Empire is not ruling the capital so much as shaking apart around it.
+
+{color=yellow|Rouge: — Unbelievable. He's the last person on the earth who should've gotten it.}""",
+	ACT4_ROAD_ROUGE_FORK = "Rouge watches the panic with a faintly amused expression, but her eyes keep returning to the palace.",
+	ACT4_ROAD_ROUGE_OPTION_DISMISS = "Stay out of this. I don't want you near me again.",
+	ACT4_ROAD_ROUGE_OPTION_DEAL = "So, we need to deal with Grotus.",
+	ACT4_ROAD_ROUGE_DISMISSED = """Rouge's smile stays in place, but something behind it cools.
+
+{color=yellow|Rouge: — How firm. Very well, darling. This is where it ends, then.}
+
+She turns away and vanishes into the fleeing crowd.""",
+	ACT4_ROAD_ROUGE_STAYS = "{color=yellow|Rouge: — Very well. I suppose it is also my fault for letting Grotus become this. I'm not going to shy away from fixing my mistakes.}",
+	ACT4_ROAD_ROUGE_STAYS_ALLY = """Rouge's earlier amusement has gone thin. She watches the palace with open irritation, as if Grotus has personally insulted her by surviving this long.
+
+{color=yellow|Rouge: — I suppose it is also my fault for letting Grotus become this. I'm not going to shy away from fixing my mistakes. Come along, darling.}""",
+	ACT4_ROAD_MELCHOR_MESSENGER_1 = """A man in a torn imperial coat finds you in a side street near the damaged palace district. He is bleeding from one temple, but he still checks both ends of the street before approaching.
+
+{color=yellow|Melchor's Man: — Mayor [name]. Chancellor Melchor sent me.}
+
+He presses a sealed letter into your hand.""",
+	ACT4_ROAD_MELCHOR_MESSENGER_2 = """{color=yellow|Melchor's Man: — Grotus has ordered half of the palace to find him. The Chancellor has gone to ground. The letter has the details.}
+
+The man casts a quick look over his shoulder, then slips away at once, vanishing down the corridor before you can ask anything more.""",
+	ACT4_ROAD_CAPITAL_OPTION_MELCHOR = "Find Melchor's hiding place",
+	ACT4_ROAD_CAPITAL_OPTION_SENERUS = "Visit Senerus",
+	ACT4_ROAD_CAPITAL_OPTION_MELCHOR_RETURN = "Return to Melchor",
+	ACT4_ROAD_CAPITAL_OPTION_PALACE = "Charge at the palace",
+	ACT4_ROAD_ELF_OPTION_ARROW = "Bring the arrow to Freya's priestess",
+	ACT4_ROAD_MELCHOR_HIDING_1 = """Melchor's hiding place is a cramped archive cellar beneath a shuttered counting house. Two exhausted soldiers guard the stairs, and Melchor himself stands over a table covered with city maps, his hands clenched into fists.
+
+{color=yellow|Melchor: — So of all people you've made it. I suppose we have to work together now. Grotus is not merely dangerous. He is nearly untouchable while that stolen power remains around him.}""",
+	ACT4_ROAD_MELCHOR_HIDING_2 = """{color=yellow|Melchor: — He seized my family's estates, burned the vineyards that have been ours for generations, all to spite me. He thinks he can break me by destroying everything I hold dear.}
+
+He takes a deep breath, forcing his hands to unclench.
+
+{color=yellow|Melchor: — But rage will not serve us now. According to the information I've received, his body is not made to hold divine force. The strain will tear him apart eventually, but waiting for that can lead to the Empire's complete demise.}""",
+	ACT4_ROAD_MELCHOR_HIDING_ROUGE = """Melchor notices Rouge near the cellar stairs and his expression tightens again.
+
+{color=yellow|Melchor: — And you brought her.}
+
+{color=aqua|Rouge: — You make it sound like a plague followed him in.}
+
+{color=yellow|Melchor: — A plague at least has the courtesy to be accidental.}
+
+{color=aqua|Rouge: — Keep snarling, Chancellor. It is almost comforting to know one part of the Empire still works as expected.}
+
+{color=yellow|Melchor: — Enough. I will tolerate your presence because Grotus is worse. Do not mistake that for forgiveness.}""",
+	ACT4_ROAD_MELCHOR_HIDING_3 = """He looks wearily over you and back to the map.
+
+{color=yellow|Melchor: — Grotus maintains control through intimidation alone. The people do not trust him, and this presents our greatest opportunity. You need a way to pierce the divine barrier around him before you confront him, but my sources on this subject are really limited.}""",
+	ACT4_ROAD_MELCHOR_OPTION_INDIVIDUAL = "I've met an individual like this.",
+	ACT4_ROAD_MELCHOR_OPTION_SENERUS = "Senerus should know something.",
+	ACT4_ROAD_MELCHOR_HIDING_4 = "{color=yellow|Melchor: — Then I leave this to you. We are still searching for opportunities to weaken his position.}",
+	ACT4_ROAD_SENERUS_1 = """Senerus listens without interrupting. By the time you finish describing the stone ring, Sebastian's network, Mhyrana's ritual, and Grotus absorbing the divine power, he has already covered half his desk in notes.
+
+{color=yellow|Senerus: — That is terrifying. But it is rather exciting to watch actual divine power emerge in front of my eyes.}""",
+	ACT4_ROAD_SENERUS_2 = """{color=yellow|Senerus: — Divine energy rejects ordinary force. You need an aligned disruption: something equally fearsome to negate it.}
+
+He looks at you, then at the notes.
+
+{color=yellow|Senerus: — We need some exceedingly strong concentration of divine energy. Just chosen individuals won't be enough.}""",
+	ACT4_ROAD_SENERUS_HUB = "He sets the pen down and waits, entirely willing to let you supply the impossible part.",
+	ACT4_ROAD_SENERUS_OPTION_ASURA = "I should be able to do this.",
+	ACT4_ROAD_SENERUS_OPTION_SATORI = "Kuro might handle it.",
+	ACT4_ROAD_SENERUS_OPTION_HELEVIEL = "I'll try asking former Freya's priestess.",
+	ACT4_ROAD_SENERUS_OPTION_ARTIFACT = "I have some artifacts left from my hunting.",
+	ACT4_ROAD_SENERUS_OPTION_NOTHING = "I really don't have anything...",
+	ACT4_ROAD_SENERUS_ASURA = """You tell Senerus about the powers you've obtained from Nixx.
+
+{color=yellow|Senerus: — You... are a far more curious individual than I imagined. Yes, with powers of the night goddess herself, it's certainly possible. In that case, let me teach you what exactly needs to be done.}""",
+	ACT4_ROAD_SENERUS_SATORI = """You tell Senerus about Kuro's powers that she obtained from Nixx.
+
+{color=yellow|Senerus: — You... are a far more curious individual than I imagined. Yes, with powers of the night goddess herself, it's certainly possible. In that case, let me teach you what exactly needs to be done.}""",
+	ACT4_ROAD_SENERUS_HELEVIEL = """You tell Senerus about Heleviel's powers.
+
+{color=yellow|Senerus: — Yes, Freya's High Priestess could do it. Freya's blessing is close enough to divine force to open a path. But I'm afraid this will be extremely taxing on her, it will put her in weakened state for days.}
+
+{color=aqua|Heleviel: — I will do it. I trust you can take it from there without my help, [name].}""",
+	ACT4_ROAD_SENERUS_ARTIFACT_HUB = """{color=yellow|Senerus: — An artifact can be emptied and shaped into a single strike. It will be destroyed, but it will break the barrier.}
+
+He spreads his hands, leaving the cost of the choice entirely to you.""",
+	ACT4_ROAD_SENERUS_ARTIFACT_SCALES = "*Sacrifice the sacred scales*",
+	ACT4_ROAD_SENERUS_ARTIFACT_BOWL = "*Sacrifice the sacred bowl*",
+	ACT4_ROAD_SENERUS_ARTIFACT_SWORD = "*Sacrifice the holy sword*",
+	ACT4_ROAD_SENERUS_ARTIFACT_SPEAR = "*Sacrifice the holy spear*",
+	ACT4_ROAD_SENERUS_ARTIFACT_BACK = "*Change your mind*",
+	ACT4_ROAD_SENERUS_ARTIFACT_DONE = """{color=yellow|Senerus: — It's a shame we must use it. But I'll prepare it for the task.}
+
+After a few hours Senerus finally passes you a small vial of shimmering fluid, nothing like you've seen before. You can feel strong power just from looking at it.
+
+{color=yellow|Senerus: — Take it. You only get one shot at this, so you better not waste it.}""",
+	ACT4_ROAD_SENERUS_ARROW = """Senerus walks to the basement, letting you into what looks more like an antique storeroom. He fetches a long object from one of the shelves and presents it to you.
+
+{color=yellow|Senerus: — Here is an ancient arrow capable of holding divine energy. Take it to Eldewyn. The elves' connection to Freya is your best bet in this grim situation. Since you have already been there, you should be able to get help from them.}""",
+	ACT4_ROAD_PRIESTESS_ARROW_LIRA = """You bring Senerus' arrow to Freya's priestess and explain only what matters: Grotus stole divine power, ordinary weapons cannot reach him, and this arrow needs to open the first wound.
+
+She takes the arrow without ceremony.
+
+{color=yellow|Lira: — Freya's blessing was never meant to be used this way. But neither was divine power meant to sit inside a frightened tyrant.}
+
+Light gathers along the arrowhead, clean and pale, until the metal hums softly in your hand.""",
+	ACT4_ROAD_MELCHOR_PLAN_1 = """Melchor waits over the same map, but several palace passages have now been marked in red.
+
+{color=yellow|Melchor: — You have the means?}""",
+	ACT4_ROAD_MELCHOR_PLAN_OPTION_BREAK = "It should break the barrier.",
+	ACT4_ROAD_MELCHOR_PLAN_OPTION_OPENING = "It will give me one opening.",
+	ACT4_ROAD_MELCHOR_PLAN_2 = """{color=yellow|Melchor: — Then we use it before Grotus grows worse or collapses loudly enough to take the palace district with him.}
+
+He points to a service route running beneath the western wing.
+
+{color=yellow|Melchor: — My people still control this passage. It will get you close to the throne room. After that, subtlety is dead.}""",
+	ACT4_ROAD_MELCHOR_PLAN_ROUGE = """{color=aqua|Rouge: — How tragic. I was so looking forward to watching you attempt it.}
+
+{color=yellow|Melchor: — If you are coming, try to make yourself useful before you make yourself insufferable.}
+
+{color=aqua|Rouge: — I can do both.}""",
+	ACT4_ROAD_PALACE_1 = """You manage to make your way through palace's backrooms with the help of Melchor's people. Guards open doors before you reach them. Officials vanish into side halls.
+
+You find Grotus in the throne room, still wearing the crooked crown. The stolen power around him is brighter now, but his skin has gone waxy beneath it, and his hands shake when he grips the armrests.""",
+	ACT4_ROAD_PALACE_2 = "{color=yellow|Grotus: — You. Of course it's you. These fools have let you in. Do they really think you can take me on? Because once I'm done with you, I'll skin each of them alive on the square!}",
+	ACT4_ROAD_BARRIER_ASURA = "You drive Nixx's power into the barrier like a black wound. The divine shell resists for a heartbeat, then splits around the impact.",
+	ACT4_ROAD_BARRIER_SATORI = "Kuro's power slips through the barrier before it understands what to reject. The shell shivers, confused by a cut made through intent instead of force.",
+	ACT4_ROAD_BARRIER_HELEVIEL = "Heleviel's blessing burns pale across your strike. The barrier opens just enough, then snaps apart with a sound like breaking glass.",
+	ACT4_ROAD_BARRIER_ARTIFACT = "The prepared artifact shatters in your hand, releasing its stored force into a single focused rupture. The barrier takes the blow and cracks.",
+	ACT4_ROAD_BARRIER_ARROW = "The blessed arrow hits the barrier and sinks into the light. For a moment it hangs there, trembling, then Freya's blessing tears the shell open from within.",
+	ACT4_ROAD_BARRIER_TAIL = """
+
+Grotus screams, not in pain alone but in outrage that anything still has permission to touch him.
+
+{color=yellow|Grotus: — You CHEATING BASTARD! You dare to challenge GOD!?}""",
+	ACT4_ROAD_GROTUS_DEFEAT_1 = """Grotus crashes down at the foot of the throne, glowing veins splitting open beneath his skin. The power does not fade. It churns inside him, too large for the body it stole.
+
+{color=yellow|Grotus: — No. No, no, no. Mine. It is mine.}""",
+	ACT4_ROAD_MHYRANA_RETURNS_1 = """The energy burst pushes you back, but another entity appears through the tear in the air behind him.
+
+Mhyrana steps through the broken light, calm despite the ruin around her. She looks at Grotus the way one might at a nasty bug.
+
+{color=yellow|Mhyrana: — You held it longer than I expected.}
+
+Grotus reaches toward her, suddenly small again.
+
+{color=aqua|Grotus: — Mistress Rouge...?}
+
+{color=yellow|Mhyrana: — Wrong.}""",
+	ACT4_ROAD_MHYRANA_RETURNS_2 = """She places one hand over the glowing wound in his chest and pulls.
+
+The stolen divine power tears free from Grotus and pours into the ritual pattern Mhyrana draws in the air. The palace floor buckles. Walls split. Somewhere deep beneath the city, the enormous stone ring answers.
+
+Everything goes black.""",
+	ACT4_ROAD_FIRST_GOD_1 = """When the dust thins, the imperial palace is no longer whole. Towers lean in broken angles, streets have vanished beneath collapsed stone, and a gigantic figure rises from the ruins where the throne room used to be.
+
+It is large enough to block the sun if it wasn't hidden by the dust clouds.
+
+{color=yellow|Mhyrana: — Behold the body of the First God. With it, this world will open. The demons will arrive, the old order will end, and every nation will learn what waits beyond its little sky.}""",
+	ACT4_ROAD_PRIESTESS_ARROW_HELEVIEL = """You bring Senerus' arrow to Freya's priestess and explain only what matters: Grotus stole divine power, ordinary weapons cannot reach him, and this arrow needs to open the first wound.
+
+She takes the arrow without ceremony.
+
+{color=yellow|Heleviel: — I can give it the shape it needs. Not enough to defeat him for you, but enough to make him reachable.}
+
+Light gathers along the arrowhead, clean and pale, until the metal hums softly in your hand.""",
 	KURO_SEASIDE_START = """The afternoon has dragged itself into a kind of punishment. By now the ink has started drying too quickly on the page, your wrist aches from signatures, and every completed document seems to uncover two more beneath it. The heat sits heavily in the office, turning the still air between the shelves and your desk into something almost solid.
 
 You have just reached for the next ledger when the shadow beside the bookshelf thickens. A familiar black tail slips out of it first, followed by Kuro, who steps into the room.
@@ -30180,7 +30724,7 @@ Before you can answer, several of the girls call for you at once. One catches yo
 — Thank you for bringing us here, [master] [name]. This trip is wonderful.""",
 	KURO_SEASIDE_OPTION_GLAD = "I am glad you are enjoying yourselves.",
 	KURO_SEASIDE_OPTION_SATISFY = "I had to satisfy your request, didn't I?",
-	KURO_SEASIDE_THANKS_GLAD = """The answer earns a chorus of smiles and a few overlapping thanks. Even the quieter girls seem pleased, standing close together with the relaxed ease of people who have briefly forgotten their usual duties.""",
+	KURO_SEASIDE_THANKS_GLAD = "The answer earns a chorus of smiles and a few overlapping thanks. Even the quieter girls seem pleased, standing close together with the relaxed ease of people who have briefly forgotten their usual duties.",
 	KURO_SEASIDE_THANKS_REFUSED = """The girls exchange confused looks.
 
 — Our request? We didn't think we could request something like this from you.
@@ -30216,7 +30760,7 @@ She adjusts the edge of her bathing top with deliberate care.
 	KURO_SEASIDE_WITS_USUAL = """Kuro gives a quiet, amused breath.
 
 {color=yellow|Kuro: — I suspected you might say that. Unfortunately, my usual attire is poorly suited for sand and seawater, so you will have to endure this version for today.}""",
-	KURO_SEASIDE_WITS_CONVERGE = """For a moment, she looks past you toward the rest of the beach. The girls are already waving again.""",
+	KURO_SEASIDE_WITS_CONVERGE = "For a moment, she looks past you toward the rest of the beach. The girls are already waving again.",
 	KURO_SEASIDE_END_COMPANY = """Kuro looks up at you for a moment, searching for mockery and finding none.
 
 {color=yellow|Kuro: — And I thought you are far more social than this. Or you are doing your best to please me too? One awful womanizer you are.}
@@ -30229,7 +30773,5 @@ It is not the kind of intimacy that announces itself loudly, but it stays with y
 {color=yellow|Kuro: — Go on. They will start competing for your attention again if you make them wait too long.}
 
 You leave her in the shade and return to the others, carrying with you the strange certainty that Kuro is still watching.""",
-
-	ENEMYRILU_MADDENED = "Strange girl",
-
+	ENEMYRILU_MADDENED = "Strange girl"
 }

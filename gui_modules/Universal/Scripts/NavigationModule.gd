@@ -13,6 +13,12 @@ func _ready():
 	$drop_list.connect('pressed', self, 'toggle_drop_list', [true])
 	$travelbutton.connect('pressed', self, 'open_travel')
 	screen.connect('pressed', self, 'toggle_drop_list', [false])
+	hotkeys.connect("bindings_changed", self, "build_travel_tooltip")
+	build_travel_tooltip()
+
+
+func build_travel_tooltip():
+	globals.connecttexttooltip($travelbutton, hotkeys.get_tooltip_text("BUTTONTRAVEL", 'mansion_travels'))
 
 func tut_register_aliron_btn():
 	input_handler.register_btn_source('aliron_btn', self, 'tut_get_aliron')

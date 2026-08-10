@@ -1,9 +1,12 @@
+Added act 4 finale
 Revamped food mechanic. Now characters eat 1 food item per attempt and it lasts multiple turns based on the food eaten. Better food provides various bonuses. Characters also can be demanding higher quality food if they have higher fame or value.
 Cleave and Strike Through now had additional effects when certain conditions met
 Added new trait for Ratkin: In the shadows reduces ranged physical hit chance by 30%.
 Added character sorting behavior to main character list
 Added some new sound effects to time equipment and turn pass 
 Slaves now can only be trained after 1 turn to prevent them being sold for better price instantly
+Added hotkeys and settings for them, including new quicksave/load option
+Added option to sort characters by category
 Added workunits display as well as how much work characters make per turn
 Added 2 new skills: 
 Warcry - Warfare skill removing fear and silence from caster
