@@ -357,6 +357,38 @@ var effect_table = {
 		tags = ['no_job', 'no_combat'],
 		buffs = ['b_dayoff'],
 	},
+	# Legacy food effects are kept as load-time compatibility templates. Current food
+	# logic does not apply them; effects_pool retires saved instances after deserializing
+	# them so old saves can migrate to the meal-specific effects below.
+	e_food_like = {
+		type = 'temp_s',
+		stack = 'food',
+		tick_event = variables.TR_TICK,
+		duration = 4,
+		statchanges = {productivity = 0.05, exp_gain_mod = 0.05},
+		buffs = [
+			{
+				icon = "res://assets/images/gui/gui icons/food_love.png",
+				description = "TRAITEFFECTFAVFOOD",
+				tags = ['mansion_only'],
+			}
+		],
+	},
+	e_food_dislike = {
+		type = 'temp_s',
+		stack = 'food',
+		tick_event = variables.TR_TICK,
+		duration = 4,
+		statchanges = {productivity = -0.1},
+		tags = ['food_dislike'],
+		buffs = [
+			{
+				icon = "res://assets/images/gui/gui icons/food_hate.png",
+				description = "TRAITEFFECTHATEDFOOD",
+				tags = ['mansion_only'],
+			}
+		],
+	},
 	#food buffs. 
 	e_food_meat = {
 		type = 'base',

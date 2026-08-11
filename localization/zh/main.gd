@@ -30618,6 +30618,13 @@ Rouge turns away, her smile still present and still impossible to read.
 	ACT4_ROAD_STAGE_IMBUE_ARROW = """Bring Senerus' arrow to Freya's priestess in Eldewyn.""", # MISSING TRANSLATION
 	ACT4_ROAD_STAGE_RETURN_TO_MELCHOR = """Return to Melchor with the means to break Grotus' barrier.""", # MISSING TRANSLATION
 	ACT4_ROAD_STAGE_CHARGE_PALACE = """Storm the imperial palace and put an end to Grotus.""", # MISSING TRANSLATION
+	ACT4_ROAD_STORY_END_NAME = """To Be Continued""", # MISSING TRANSLATION
+	ACT4_ROAD_STORY_END_DESC = """Act 4 is over, and with it the story content available so far. Aliron still stands, your household still needs running, and everything outside the main story remains open to you. The road to whatever the First God brings will continue in a later update.""", # MISSING TRANSLATION
+	ACT4_ROAD_ACT4_END = """[center]Act 4 end.[/center]
+
+This is the end of the current story content. Watch out for the final chapter and consider supporting the game if you enjoyed it.
+
+[center]Thank you for playing.[/center]""", # MISSING TRANSLATION
 	QUEST_DWARF_RAILROAD_TEXT = """Dwarven Road Project""", # MISSING TRANSLATION
 	QUEST_DWARF_RAILROAD_DESC = """The Trading Guild's railroad works, cut deep into the dwarven mountains.""", # MISSING TRANSLATION
 	ACT4_ROAD_COURIER_1 = """As Sebastian left Aliron quite some time ago, one of his couriers finds you with a sealed note and the kind of urgency that has been trained to look polite.

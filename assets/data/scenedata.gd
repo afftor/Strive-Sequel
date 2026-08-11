@@ -3066,6 +3066,7 @@ var quests = {
 			imbue_arrow = {code = 'imbue_arrow', name = 'ACT4_ROAD_PROJECT_NAME', descript = 'ACT4_ROAD_STAGE_IMBUE_ARROW'},
 			return_to_melchor = {code = 'return_to_melchor', name = 'ACT4_ROAD_PROJECT_NAME', descript = 'ACT4_ROAD_STAGE_RETURN_TO_MELCHOR'},
 			charge_palace = {code = 'charge_palace', name = 'ACT4_ROAD_PROJECT_NAME', descript = 'ACT4_ROAD_STAGE_CHARGE_PALACE'},
+			story_end = {code = 'story_end', name = 'ACT4_ROAD_STORY_END_NAME', descript = 'ACT4_ROAD_STORY_END_DESC'},
 		}
 	},
 	erdyna_quest = {

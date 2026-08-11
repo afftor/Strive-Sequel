@@ -453,6 +453,10 @@ var ignore_quest_requirements = false
 #and skills cost nothing and never go on cooldown. Set by the checkbox in
 #test_combat; always false in a normal game.
 var anim_sandbox = false
+#Animation trace: dumps the queue and every card's transform, frame by frame, to
+#stdout. Read the log to check timings as numbers instead of by eye. Noisy, so
+#it is its own checkbox in test_combat rather than part of the sandbox.
+var anim_trace = false
 
 var generate_test_chars = true
 var combat_tests = false #for combat testing

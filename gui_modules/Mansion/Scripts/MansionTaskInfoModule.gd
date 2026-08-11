@@ -91,6 +91,30 @@ func show_workers(task, button): #obsolete
 
 
 func show_resources_info():
+	#service
+	if ResourceScripts.game_res.tasks_progresses.has('service'):
+		var progress_data = ResourceScripts.game_res.tasks_progresses.service
+		for worker in progress_data.workers.duplicate():
+			if !ResourceScripts.game_party.characters.has(worker):
+				progress_data.workers.erase(worker)
+		if !progress_data.workers.empty():
+			var newtask = input_handler.DuplicateContainerTemplate(TaskContainer)
+			var text = tr("TASKINFOWORKERS") + "\n"
+			var value = 0.0
+			for worker in progress_data.workers:
+				var ch = ResourceScripts.game_party.characters[worker]
+				var worker_value = ch.get_estimated_current_service_value()
+				text += "%s: + ~%.1f\n" % [ch.get_short_name(), worker_value]
+				value += worker_value
+			text += tr("TASKINFOINVENTORY") + " " + ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)
+			newtask.get_node("progress").text = "+ ~" + str(stepify(value, 0.1))
+			newtask.get_node("ProgressBar").visible = false
+			newtask.get_node("progress").visible = true
+			newtask.get_node("Task/TaskIcon").texture = load("res://assets/images/iconsitems/gold.png")
+			newtask.get_node("Task").text = tr("QUESTGOLD")
+			newtask.get_node("Task").show()
+			globals.connecttexttooltip(newtask.get_node("Task/TaskIcon"), tr("TOOLTIPGOLD"))
+			globals.connecttexttooltip(newtask, text)
 	#special
 	for task_id in ResourceScripts.game_res.active_tasks.special:
 		var progress_data = ResourceScripts.game_res.tasks_progresses[task_id]

@@ -60,6 +60,7 @@ func deserialize(savedict):
 
 func fix_serialize():
 	.fix_serialize()
+	_repair_core_trait_effects()
 	if !(statlist.speed is Array):
 		statlist.speed = [statlist.speed]
 	for tr in traits_stored.duplicate():
@@ -78,6 +79,28 @@ func fix_serialize():
 		else:
 			professions.erase(prof)
 	generate_data(variables.DYN_STATS_FULL, true)
+
+
+func _repair_core_trait_effects():
+	if !traits_stored.has('core_trait'):
+		return
+	var person = parent.get_ref()
+	if person == null:
+		return
+	var present = {}
+	for effect_record in effects_stored:
+		if effect_record is Dictionary and effect_record.has('id'):
+			present[effect_record.id] = true
+	for effect in effects_pool.get_effects_for_char(person.id, true):
+		if effect.template_id != null:
+			present[effect.template_id] = true
+	for effect_id in Traitdata.traits.core_trait.effects:
+		if present.has(effect_id):
+			continue
+		if !Effectdata.effect_table.has(effect_id):
+			print("core trait effect %s is missing from effect data" % effect_id)
+			continue
+		add_stored_effect(effect_id)
 
 
 #dyn_bonuses

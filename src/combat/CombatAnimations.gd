@@ -61,7 +61,62 @@ func force_end():
 	pending_shot_timer = -1
 	is_busy = false
 
+#---------------------------------------------------------------------------
+#Trace mode. Prints the queue and the per-frame transforms of every card to
+#stdout so timings can be read as numbers instead of guessed at by eye.
+#Switched on by the checkbox in test_combat; costs nothing while off.
+const TRACE_TAIL = 3.0 #seconds of sampling after the queue drains
+var trace_clock = 0.0
+var trace_tail = 0.0
+
+func tracing():
+	return variables.anim_trace
+
+func trace(text):
+	if variables.anim_trace:
+		print('[anim %7.3f] %s' % [trace_clock, text])
+
+func node_label(node):
+	if node == null or !is_instance_valid(node): return 'null'
+	if node.get('fighter') != null and node.fighter != null:
+		return '%s@%s' % [node.fighter.get_short_name(), str(node.fighter.position)]
+	return node.name
+
+func trace_frame():
+	var combat = input_handler.combat_node
+	if combat == null or combat.get('battlefieldpositions') == null: return
+	for pos in combat.battlefieldpositions:
+		var slot = combat.battlefieldpositions[pos]
+		if !slot.has_node('Character'): continue
+		trace_node(slot.get_node('Character'))
+	#the execution leap animates a duplicate that lives outside the slots
+	trace_flight(combat)
+
+func trace_flight(root):
+	for child in root.get_children():
+		if child is Control and child.name == 'ExecutionFlight':
+			trace_node(child)
+		if child.get_child_count() > 0:
+			trace_flight(child)
+
+func trace_node(node):
+	if node.rect_position == Vector2(0,0) and node.rect_rotation == 0 \
+			and node.rect_scale == Vector2(1,1) and node.modulate.a == 1.0:
+		return #resting card, nothing worth a line
+	trace('%s pos=(%6.1f,%6.1f) rot=%6.2f scale=(%.3f,%.3f) a=%.2f' % [
+		node_label(node), node.rect_position.x, node.rect_position.y,
+		node.rect_rotation, node.rect_scale.x, node.rect_scale.y, node.modulate.a])
+
 func _process(delta):
+	#Tweens outlive the queue - the execution return runs for two seconds after
+	#the last slot drains - so keep sampling for a while past the end.
+	if variables.anim_trace:
+		if is_busy:
+			trace_tail = TRACE_TAIL
+		if is_busy or trace_tail > 0:
+			if !is_busy: trace_tail -= delta
+			trace_clock += delta
+			trace_frame()
 	for node in animation_delays:
 		animation_delays[node] -= delta
 		if animation_delays[node] <= 0:
@@ -95,17 +150,20 @@ func add_new_data(data):
 		start_animation(data.node)
 
 func check_start():
-	if is_busy: 
+	if is_busy:
 		return
-	if animations_queue.empty(): 
+	if animations_queue.empty():
 		return
 	is_busy = true
+	trace_clock = 0.0
+	trace('=== queue start, %d slot(s)' % animations_queue.size())
 	advance_timer()
 
 func advance_timer():
 	hp_update_delays.clear()
 	if animations_queue.empty(): return
 	cur_timer = animations_queue.keys().min()
+	trace('--- slot %s, %d node(s)' % [str(cur_timer), animations_queue[cur_timer].size()])
 	try_clear_custom_delays()
 	#print (cur_timer)
 	for node in animations_queue[cur_timer]:
@@ -120,6 +178,7 @@ func finish_animation(node):
 			animations_queue.erase(cur_timer)
 			if animations_queue.empty():
 				is_busy = false
+				trace('=== queue drained')
 				emit_signal("alleffectsfinished")
 			else: 
 				advance_timer()
@@ -145,8 +204,12 @@ func start_animation(node):
 		elif images.GFX_particles.keys().has(data.type):#those with no own method
 			true_type = 'gfx_particles'
 			data.params.sprite_name = data.type
-		delay = max(delay, call(true_type, data.node, data.params))
+		var lock = call(true_type, data.node, data.params)
+		trace('  play %-18s on %-18s slot=%-10s lock=%.3f' % [
+			str(data.type), node_label(node), str(data.slot), float(lock)])
+		delay = max(delay, lock)
 	animation_delays[node] = delay
+	trace('  -> %s holds the slot for %.3f' % [node_label(node), float(delay)])
 
 #not used 
 func nextanimation():
@@ -326,7 +389,12 @@ func at_arbalester(node, args = null): return cast_with_motion(node, args, 'at_a
 
 func cast_with_motion(node, args, sprite_name):
 	if args == null: args = {}
+	var motion = args.motion if args.has('motion') else CAST_MOTION[sprite_name]
 	var speedup = CAST_SPEEDUP[sprite_name]
+	#Execution is a finisher, so it plays its weapon sheet slower than a plain
+	#swing. Everything downstream reads off the release, so the landing and the
+	#target's reaction stretch with it and stay in sync.
+	if motion == 'execution_leap': speedup *= EXEC_CAST_SLOW
 	var release = CAST_RELEASE[sprite_name] / speedup
 	var duration = ResourceScripts.core_animations.get_gfx_sprite_time(sprite_name) / speedup
 	var nextanimationtime = duration
@@ -335,7 +403,6 @@ func cast_with_motion(node, args, sprite_name):
 
 	pending_shot_delay = release
 	pending_shot_timer = cur_timer
-	var motion = args.motion if args.has('motion') else CAST_MOTION[sprite_name]
 	var visual_node = node
 	if motion == 'execution_leap':
 		visual_node = caster_execution_leap(node, args, release)
@@ -347,6 +414,60 @@ func cast_with_motion(node, args, sprite_name):
 		caster_recoil(node, release)
 
 	return nextanimationtime + aftereffectdelay
+
+#FIELD-WIDE WEATHER
+#These scenes emit in a 1000 px ring, so a single instance centred on the
+#battlefield covers the whole screen. It is parented to the combat node, not to a
+#fighter card: the effect belongs to the scene, not to anybody's portrait, and a
+#card can move or be freed while it plays.
+const FIELD_SCENES = {
+	rainfall_field = "res://assets/sfx/rainfall_particle_effect.tscn",
+}
+#Emission is a 1000 px disc, so the origin sits in the top-left corner and the
+#gravity of (180, 100) carries everything down and across the field.
+const FIELD_ORIGIN = Vector2(0, 0)
+#Emission window. The "played twice" look came from explosiveness 0.4 releasing
+#in pulses, not from the length itself - with even emission the stream simply
+#refreshes and can run as long as we like.
+const FIELD_HOLD = 1.4
+const FIELD_DENSITY = 1.6 #more particles, so the flow reads as steady rain
+const FIELD_FADE = 0.9 #then stops emitting and fades what is still in the air
+#How long the windup slot is held. Everything after it - predamage, the damage
+#numbers, the HP bars - waits this out, so this is the knob that decides how long
+#the weather builds before it bites. The particles themselves outlive the lock.
+const FIELD_LOCK = 1.3
+
+#one interceptor per scene; add a line here and to FIELD_SCENES for the others
+func rainfall_field(node, args = null):
+	return field_particles('rainfall_field')
+
+func field_particles(key):
+	if !FIELD_SCENES.has(key): return 0.0
+	var combat = input_handler.combat_node
+	if combat == null or !is_instance_valid(combat): return 0.0
+	var scene = load(FIELD_SCENES[key])
+	if scene == null: return 0.0
+	var fx = scene.instance()
+	combat.add_child(fx)
+	fx.position = FIELD_ORIGIN
+	fx.z_index = 90
+	var tween = input_handler.GetTweenNode(fx)
+	#stop emitting first, then fade what is left, so nothing pops out mid-air
+	for child in fx.get_children():
+		if child is Particles2D:
+			#The scene ships with explosiveness 0.4, which releases in pulses - that
+			#is what read as the effect playing twice. Even emission removes the
+			#seam between cycles, so the length is free to choose.
+			child.explosiveness = 0.0
+			child.amount = int(child.amount * FIELD_DENSITY)
+			child.emitting = true
+			tween.interpolate_callback(child, FIELD_HOLD, 'set_emitting', false)
+	tween.interpolate_property(fx, 'modulate:a', 1.0, 0.0, FIELD_FADE,
+		Tween.TRANS_SINE, Tween.EASE_IN, FIELD_HOLD)
+	tween.interpolate_callback(fx, FIELD_HOLD + FIELD_FADE, 'queue_free')
+	tween.start()
+	return FIELD_LOCK
+
 
 #SHADOW STEP FOR ASSASSINATE
 #Choreography picked in tools/anim_lab. Phases are fractions of ASSASS_LEAD, so the
@@ -529,9 +650,21 @@ func caster_cut(node, contact):
 #Execution: leap into the target on the weapon sheet's contact frame, settle into
 #the landing, then ease out before returning. It shares the normal cast release,
 #so the existing synced target_tilt reaction starts on the exact same frame.
-const EXEC_LEAP_HOLD = 0.30
-const EXEC_LEAP_BACK = 0.44
+const EXEC_LEAP_HOLD = 0.40 #beat held at the impact point before pulling out
+const EXEC_LEAP_BACK = 0.70
 const EXEC_LEAP_OFFSET = 28.0
+const EXEC_CAST_SLOW = 0.35 #weapon sheet plays at this fraction of the usual speedup
+#The flight is three explicit phases whose shares add up to 1: climb, hang, drop.
+#The apex sits almost over the target, so the drop is nearly vertical.
+const EXEC_LEAP_RISE = 0.52
+const EXEC_LEAP_HANG = 0.26
+const EXEC_LEAP_APEX_X = 0.88 #how far along the way the apex sits
+#Landing: the card drives into the ground, squashes and springs back out.
+const EXEC_LAND_SQUASH = Vector2(1.16, 0.84)
+const EXEC_LAND_IN = 0.05 #compression on contact
+const EXEC_LAND_OUT = 0.22 #elastic recovery
+const EXEC_LAND_DIP = 10.0 #how far it drives past the landing point
+const EXEC_LAND_TILT = 4.0 #forward jolt on impact
 
 func caster_execution_leap(node, args, contact):
 	if !node.is_inside_tree() or !node.has_method('get_attack_vector'): return node
@@ -568,17 +701,41 @@ func caster_execution_leap(node, args, contact):
 		dest = p + delta - v*EXEC_LEAP_OFFSET
 		distance = delta.length()
 	var air = max(contact, 0.10)
-	var apex = p.linear_interpolate(dest, 0.52) - Vector2(0, min(190.0, 105.0 + distance*0.07))
+	var rise = air*EXEC_LEAP_RISE
+	var hang = air*EXEC_LEAP_HANG
+	var drop = air - rise - hang
+	var apex = p.linear_interpolate(dest, EXEC_LEAP_APEX_X) - Vector2(0, min(190.0, 105.0 + distance*0.07))
 
-	#The first two segments put the landing exactly at the weapon's contact frame.
-	tween.interpolate_property(visual_node, 'rect_position', p, apex, air*0.52,
+	#Climb almost the whole way across and up, decelerating into the apex. Sine
+	#rather than quad: quad left at full speed on frame one, which read as light
+	#and flicky. Sine ramps in and carries more weight.
+	tween.interpolate_property(visual_node, 'rect_position', p, apex, rise,
+		Tween.TRANS_SINE, Tween.EASE_OUT)
+	#Nothing is tweened during `hang` - the card simply holds the apex.
+	#Then it drops. The apex is nearly over the target, so this is close to a
+	#straight fall, and the landing still lands on the weapon's contact frame.
+	tween.interpolate_property(visual_node, 'rect_position', apex, dest, drop,
+		Tween.TRANS_QUART, Tween.EASE_IN, rise + hang)
+	tween.interpolate_property(visual_node, 'rect_rotation', 0, -8, rise,
 		Tween.TRANS_QUAD, Tween.EASE_OUT)
-	tween.interpolate_property(visual_node, 'rect_position', apex, dest, air*0.48,
-		Tween.TRANS_QUAD, Tween.EASE_IN, air*0.52)
-	tween.interpolate_property(visual_node, 'rect_rotation', 0, -8, air*0.52,
-		Tween.TRANS_QUAD, Tween.EASE_OUT)
-	tween.interpolate_property(visual_node, 'rect_rotation', -8, 0, air*0.48,
-		Tween.TRANS_QUAD, Tween.EASE_IN, air*0.52)
+	tween.interpolate_property(visual_node, 'rect_rotation', -8, 0, drop,
+		Tween.TRANS_QUART, Tween.EASE_IN, rise + hang)
+
+	#Impact: drive past the landing point, compress, then spring back. Scaling is
+	#centred on the card, so the dip keeps the feet on the ground while it squashes.
+	var landed = dest + Vector2(0, EXEC_LAND_DIP)
+	tween.interpolate_property(visual_node, 'rect_position', dest, landed, EXEC_LAND_IN,
+		Tween.TRANS_QUAD, Tween.EASE_OUT, air)
+	tween.interpolate_property(visual_node, 'rect_position', landed, dest, EXEC_LAND_OUT,
+		Tween.TRANS_BACK, Tween.EASE_OUT, air + EXEC_LAND_IN)
+	tween.interpolate_property(visual_node, 'rect_scale', Vector2(1,1), EXEC_LAND_SQUASH,
+		EXEC_LAND_IN, Tween.TRANS_QUAD, Tween.EASE_OUT, air)
+	tween.interpolate_property(visual_node, 'rect_scale', EXEC_LAND_SQUASH, Vector2(1,1),
+		EXEC_LAND_OUT, Tween.TRANS_ELASTIC, Tween.EASE_OUT, air + EXEC_LAND_IN)
+	tween.interpolate_property(visual_node, 'rect_rotation', 0, EXEC_LAND_TILT,
+		EXEC_LAND_IN, Tween.TRANS_QUAD, Tween.EASE_OUT, air)
+	tween.interpolate_property(visual_node, 'rect_rotation', EXEC_LAND_TILT, 0,
+		EXEC_LAND_OUT, Tween.TRANS_BACK, Tween.EASE_OUT, air + EXEC_LAND_IN)
 
 	#Hold at the impact point, then return using the values from the animation lab.
 	tween.interpolate_property(visual_node, 'rect_position', dest, p, EXEC_LEAP_BACK,
@@ -608,6 +765,8 @@ func execution_leap_cleanup(node, visual_node, original_alpha, original_position
 		node.rect_position = original_position
 	node.modulate.a = original_alpha
 	node.rect_rotation = 0
+	#insurance: an interrupted landing must not leave the card squashed
+	node.rect_scale = Vector2(1,1)
 	node.rect_scale = Vector2(1,1)
 
 # Holy Lance: orbit the spear, cross both cells in the selected row, hold the
@@ -1555,15 +1714,21 @@ func hp_update(node, args):
 		devastation_hp_delays.erase(node)
 		nonblocking_delay = true
 	#Every HP decrease passes through FighterNode.update_hp, including direct hits,
-	#poison, and bleeding.
-	if args.has('type') and (args.type == 'damageally' or args.type == 'damageenemy'):
+	#poison, and bleeding. A follow-up that lands for nothing - hyperborea_1 only
+	#applies a status - still queues an hp_update, and flashing the card for it
+	#reads as the whole animation playing a second time.
+	#damage arrives signed - a hit is negative, healing positive - so the test is
+	#on the magnitude. Comparing the raw value against zero silently swallowed
+	#every real hit.
+	var real_damage = !args.has('damage') or abs(ceil(args.damage)) > 0
+	if args.has('type') and (args.type == 'damageally' or args.type == 'damageenemy') and real_damage:
 		damage_flash(node, delay)
 	
 	var delaytime = 0.2
 	var tween = input_handler.GetTweenNode(node)
 	var hpnode = node.get_node("bars/HP")
 	#float damage
-	if args.damage_float:
+	if args.damage_float and real_damage:
 		if crit_display.has(node):
 			args.color = Color(1,0.8,0)
 			crit_display.erase(node)

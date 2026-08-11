@@ -882,6 +882,13 @@ func get_estimated_non_sex_service_value():#best-case gold per tick for the curr
 	return best
 
 
+func get_estimated_current_service_value():
+	var has_clients = brothel_rules.males || brothel_rules.females || brothel_rules.futa
+	if has_clients && !get_enabled_sex_actions().empty():
+		return get_estimated_service_value()
+	return get_estimated_non_sex_service_value()
+
+
 func quest_tick():
 	if !is_on_quest():
 		return

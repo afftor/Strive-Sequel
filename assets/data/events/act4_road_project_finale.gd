@@ -2634,19 +2634,16 @@ var data = {
 		text = "ACT4_ROAD_FIRST_GOD_1",
 		options = [
 			{
-				code = "close",
-				text = "DIALOGUECLOSE",
+				code = "act4_road_act4_end",
+				text = "DIALOGUECONTINUE",
 				reqs = [
 
 				],
 				type = "next_dialogue",
 				bonus_effects = [
 					{
-						code = "complete_quest",
-						value = "act4_road_project_quest"
-					},
-					{
-						code = "update_city"
+						code = "screen_black_transition",
+						value = 1
 					}
 				]
 			}
@@ -2655,6 +2652,38 @@ var data = {
 			{
 				code = "play_sound",
 				value = "explosion"
+			}
+		]
+	},
+	act4_road_act4_end = {
+		image = null,
+		character = null,
+		character2 = null,
+		music = "stop",
+		custom_background = "blackscreen",
+		tags = [
+			"dialogue_scene",
+			"blackscreen_transition_common"
+		],
+		text = "ACT4_ROAD_ACT4_END",
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [
+
+				],
+				type = "next_dialogue",
+				bonus_effects = [
+					{
+						code = "progress_quest",
+						value = "act4_road_project_quest",
+						stage = "story_end"
+					},
+					{
+						code = "update_city"
+					}
+				]
 			}
 		]
 	}

@@ -237,10 +237,12 @@ var skills = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'water',
-		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
+		#the field-wide weather replaces the red debuff burst that used to sit on
+		#each enemy portrait
+		sfx = [{code = 'rainfall_field', target = 'caster', period = 'windup'}],
 		sound = [],
 		value = 2.1,
-		follow_up = 'hyperborea_1' 
+		follow_up = 'hyperborea_1'
 	},
 	hyperborea_1 = {
 		code = 'hyperborea_1',

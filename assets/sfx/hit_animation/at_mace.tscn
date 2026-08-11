@@ -107,3 +107,4 @@ animations = [ {
 
 [node name="Node2D" type="AnimatedSprite"]
 frames = SubResource( 20 )
+offset = Vector2( 70, 0 )

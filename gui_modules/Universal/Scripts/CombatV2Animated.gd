@@ -259,7 +259,7 @@ func reset_combat_data():
 	combat_data.enemy_stats_mod = 1.0
 
 
-func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', t_combat_data = {}):
+func start_combat(newplayergroup, newenemygroup, background, music = 'combattheme', t_combat_data = {}):
 	reset_combat_data()
 	for arg in combat_data:
 		if t_combat_data.has(arg):
@@ -276,7 +276,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	else:
 		$Background.texture = images.get_background('dungeon')
 	if music == "default":
-		music = 'battle1'
+		music = 'combattheme'
 	no_material_reward = false
 	only_show_mat_reward = false
 	external_reward = null
@@ -304,7 +304,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	turnorder.clear()
 	next_turnorder.clear()
 	if music == 'combattheme':
-		var temparray = ['battle1','battle2','battle3','battle4']
+		var temparray = ['battle1','battle2','battle3','battle4','arena_combat']
 		music = temparray[randi()%temparray.size()]
 	input_handler.SetMusic(music)
 	fightover = false

@@ -4,6 +4,8 @@ extends Node
 var effects: = {}
 var stacks: = {}
 
+const LEGACY_EFFECTS_TO_RETIRE = ['e_food_like', 'e_food_dislike']
+
 
 func get_new_id():
 	var s := "eid%d"
@@ -133,6 +135,8 @@ func remove_id(id):
 			eff.parent = null
 		if eff.sub_effects.has(id):
 			eff.sub_effects.erase(id)
+	for stack in stacks.values():
+		stack.effects.erase(id)
 	effects.erase(id)
 
 
@@ -177,6 +181,16 @@ func serialize():
 
 
 func deserialize_effect(tmp, id, caller = null):
+	if !tmp.has('type'):
+		print("effect %s is missing its saved type and was not loaded" % id)
+		return null
+	if tmp.has('template') and tmp.template is String:
+		if !Effectdata.effect_table.has(tmp.template):
+			print("effect %s uses missing template %s and was not loaded" % [id, tmp.template])
+			return null
+		if Effectdata.effect_table[tmp.template].type != tmp.type:
+			print("effect %s changed type from %s to %s and was not loaded" % [id, tmp.type, Effectdata.effect_table[tmp.template].type])
+			return null
 	var eff
 	match tmp.type:
 		'base': 
@@ -187,6 +201,9 @@ func deserialize_effect(tmp, id, caller = null):
 			eff = temp_e_simple.new(caller)
 		'temp_global': 
 			eff = temp_e_global.new(caller)
+		_:
+			print("effect %s has unsupported saved type %s and was not loaded" % [id, tmp.type])
+			return null
 	eff.id = id
 	eff.deserialize(tmp)
 	return eff
@@ -223,10 +240,29 @@ func deserialize(tmp):
 	for k in tmp.keys():
 		if k.begins_with('eid'):
 			var eff = deserialize_effect(tmp[k], k)
-			effects[k] = eff
+			if eff != null:
+				effects[k] = eff
 		elif k.begins_with('sid'):
 			var eff = deserialize_stack(tmp[k], k)
 			stacks[k] = eff
+	_retire_legacy_effects()
+	_prune_missing_stack_effects()
+
+
+func _retire_legacy_effects():
+	for id in effects.keys().duplicate():
+		var effect = effects[id]
+		if effect.template_id in LEGACY_EFFECTS_TO_RETIRE:
+			remove_id(id)
+
+
+func _prune_missing_stack_effects():
+	for stack in stacks.values():
+		for effect_id in stack.effects.keys().duplicate():
+			if effects.has(effect_id):
+				continue
+			print("effect %s is missing from stack %s and was removed" % [effect_id, stack.id])
+			stack.effects.erase(effect_id)
 
 
 func clean_effects_for_char(id):

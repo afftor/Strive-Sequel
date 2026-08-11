@@ -43,10 +43,7 @@ var picked_button = null
 func setup(node):
 	combatnode = node
 	font = load(FONT)
-	#The skill tooltip is a plain Control that get_spec_node raises to the top of
-	#the root viewport, so it lives on the default canvas layer. Anything above
-	#layer 0 here would draw over it.
-	layer = 0
+	layer = 10
 	build()
 	collect_skills()
 	refresh_fighters()
@@ -387,30 +384,24 @@ func make_cell(id):
 		cell = f(Button.new())
 		cell.text = id.substr(0, 3)
 	cell.rect_min_size = Vector2(ICON, ICON)
+	cell.hint_tooltip = skill_tooltip(id)
 	cell.self_modulate = Color(1, 1, 1, 0.55)
 	cell.connect('pressed', self, 'pick', [id, cell])
 	cell.connect('gui_input', self, 'on_cell_input', [id, cell])
-	#the game's own skill tooltip, same one the combat skill panel uses. Resolved
-	#on hover rather than bound here, so it follows the currently picked caster.
-	cell.connect('mouse_entered', self, 'on_cell_hover', [id, cell])
 	if id == picked_id:
 		mark_picked(cell)
 	return cell
 
 
-func on_cell_hover(id, cell):
-	var ch = caster_char()
-	if ch == null: return
-	globals.showskilltooltip(id, cell, ch)
-
-
-#whoever is picked as the caster, falling back to whoever holds the turn
-func caster_char():
-	var pos = current_pos(caster_pick, caster_pos)
-	if pos != null:
-		var ch = combatnode.get_char_by_pos(pos)
-		if ch != null: return ch
-	return combatnode.activecharacter
+func skill_tooltip(id):
+	var data = Skilldata.Skilllist[id]
+	var text = '%s\n%s' % [id, skill_name(id)]
+	#most skills carry a description; the ones that do not just show code and name
+	if data.has('descript') and data.descript != null:
+		var d = tr(str(data.descript)).strip_edges()
+		if d != '':
+			text += '\n\n' + d
+	return text
 
 
 func on_cell_input(event, id, cell):

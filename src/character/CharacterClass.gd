@@ -993,6 +993,9 @@ func get_estimated_service_value():
 func get_estimated_non_sex_service_value():
 	return xp_module.get_estimated_non_sex_service_value()
 
+func get_estimated_current_service_value():
+	return xp_module.get_estimated_current_service_value()
+
 func get_farming_rules():
 	return xp_module.get_farming_rules()
 

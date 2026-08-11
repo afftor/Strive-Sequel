@@ -410,6 +410,19 @@ func _ready():
 	connect("animation_finished", self, "animation_queue_start_force")
 	achievements = load("res://src/core/achievements.gd").new()
 	achievements.prepare_data()
+	start_anim_autopilot()
+
+
+#Scripted animation run, only when --anim-plan is on the command line. See
+#src/combat/anim_autopilot.gd; does nothing in a normal launch.
+func start_anim_autopilot():
+	var script = load("res://src/combat/anim_autopilot.gd")
+	var path = script.plan_path()
+	if path == null: return
+	var pilot = script.new()
+	pilot.name = 'anim_autopilot'
+	add_child(pilot)
+	pilot.setup(path)
 
 
 func gather_skills_effects():
