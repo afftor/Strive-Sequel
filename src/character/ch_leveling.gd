@@ -992,12 +992,12 @@ func fill_task_mods(task):
 	task_mods.diff = int(task_mods.diff)
 
 
-func fill_task_mods_res(task):
+func fill_task_mods_res(task): 
 	task_mods.crit = parent.get_ref().get_stat('base_task_crit_chance')
 	task_mods.diff = 0
 	task_mods.eff = 0
-	if task.has('worktool'):
-		var item = task.worktool
+	if task.has('tool_type'): #!!! change to worktool in case of proper rework to passing taskdata
+		var item = task.tool_type
 		task_mods.eff = parent.get_ref().get_stat('task_efficiency_' + item)
 		task_mods.crit += parent.get_ref().get_stat('task_crit_' + item)
 	
@@ -1024,7 +1024,7 @@ func get_job_value(temptask, count_crit = false):
 	return value
 
 
-func get_progress_resource(tempresource, count_crit = false):
+func get_progress_resource(tempresource, count_crit = false): #do not like this method for operating not a task but material data
 	var resource = Items.materiallist[tempresource]
 	var location = ResourceScripts.world_gen.get_location_from_code(parent.get_ref().get_location())
 	# var subtask = task.production[tempsubtask]
