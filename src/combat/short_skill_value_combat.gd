@@ -141,18 +141,20 @@ func calculate_dmg():
 	
 #	if parent.ability_type == 'skill':
 	#current formulae add ap to spell damage cap
-	cap += parent.armor_p * 0.5
+#	cap += parent.armor_p * 0.5
+	var ap = parent.armor_p
 	var reduction = 0
 	if parent.target.is_players_character:
 		if parent.ability_type == 'skill':
-			reduction = max(0, parent.target.get_stat('armor') - parent.armor_p)
+			reduction = max(0, parent.target.get_stat('armor') - ap)
 		else:
 			reduction = max(0, parent.target.get_stat('mdef'))
 		if !template.nodef and !template.nomod and !parent.tags.has('nodef'):
 			value -= reduction
 	else:
 		if parent.ability_type == 'skill':
-			reduction = calculate_reduction(parent.target.get_stat('armor') * (1.0 - 0.01 * parent.armor_p))
+			ap = clamp(ap, 0.0, 100.0)
+			reduction = calculate_reduction(parent.target.get_stat('armor') * (1.0 - 0.01 * ap))
 		else:
 			reduction = calculate_reduction(parent.target.get_stat('mdef'))
 		if !template.nodef and !template.nomod and !parent.tags.has('nodef'):
@@ -172,6 +174,7 @@ func calculate_dmg():
 #		value *= (float(100 - reduction)/100.0)
 		
 	#damage resists
+	#those are applied after capping - not sure if this is correct
 	reduction = 0
 	if parent.get_tags().has('aoe'):
 		reduction = parent.target.get_stat('resist_aoe')
@@ -180,11 +183,16 @@ func calculate_dmg():
 	elif parent.target_range == 'melee': #or add tags for this
 		reduction = parent.target.get_stat('resist_melee')
 	if !template.nodef and !template.nomod and !parent.get_tags().has('nodef'):
+		if reduction > 100:
+			reduction = 100 #i'm sure healing from damage resist unlike from damage srs resist is not intended
 		value *= (float(100 - reduction)/100.0)
 	if parent.get_tags().has('heal'):
 		reduction = parent.target.get_stat('resist_heal')
-	if !template.nomod: #there may be errors due to damagestat templating
-		value *= (float(100 - reduction)/100.0)
+		#it was critical error before - for reduction applies second time
+		if !template.nomod: #there may be errors due to damagestat templating
+			if reduction > 100:
+				reduction = 100 #i think damaging from healing resist is not intended. may be wrong
+			value *= (float(100 - reduction)/100.0)
 	
 	value = round(value)
 
