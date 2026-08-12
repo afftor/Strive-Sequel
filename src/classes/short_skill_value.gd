@@ -175,6 +175,7 @@ func calculate_dmg():
 #		value *= (float(100 - reduction)/100.0)
 		
 	#damage resists
+	#those are applied after capping - not sure if this is correct
 	reduction = 0
 	if parent.tags.has('aoe'):
 		reduction = parent.target.get_stat('resist_aoe')
@@ -183,11 +184,16 @@ func calculate_dmg():
 	elif parent.target_range == 'melee': #or add tags for this
 		reduction = parent.target.get_stat('resist_melee')
 	if !template.nodef and !template.nomod and !parent.tags.has('nodef'):
+		if reduction > 100:
+			reduction = 100 #i'm sure healing from damage resist unlike from damage srs resist is not intended
 		value *= (float(100 - reduction)/100.0)
 	if parent.tags.has('heal'):
 		reduction = parent.target.get_stat('resist_heal')
-	if !template.nomod: #there may be errors due to damagestat templating
-		value *= (float(100 - reduction)/100.0)
+		#it was critical error before - for reduction applies second time
+		if !template.nomod: #there may be errors due to damagestat templating
+			if reduction > 100:
+				reduction = 100 #i think damaging from healing resist is not intended. may be wrong
+			value *= (float(100 - reduction)/100.0)
 	
 	value = round(value)
 
