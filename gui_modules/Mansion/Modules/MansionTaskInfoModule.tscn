@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionTaskInfoModule.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://MainFont_Small.tres" type="DynamicFont" id=10]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=11]
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=12]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_population.png" type="Texture" id=13]
 
 [node name="MansionTaskInfoModule" type="Control"]
 margin_right = 290.0
@@ -20,6 +21,7 @@ rect_min_size = Vector2( 0, 365 )
 script = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 show_behind_parent = true
 margin_top = 26.3158
 margin_right = 292.0
@@ -30,10 +32,12 @@ __meta__ = {
 }
 
 [node name="Button" type="TextureButton" parent="."]
+visible = false
 margin_left = 56.0
 margin_top = 26.3158
 margin_right = 236.0
 margin_bottom = 78.3158
+mouse_filter = 2
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 9 )
 texture_hover = ExtResource( 6 )
@@ -60,10 +64,12 @@ margin_right = 174.0
 margin_bottom = 46.0
 
 [node name="TaskList" type="TextureRect" parent="."]
-margin_top = 81.0
+margin_top = 11.0
 margin_right = 290.0
 margin_bottom = 364.0
 texture = ExtResource( 3 )
+expand = true
+flip_h = true
 
 [node name="TaskListBG" type="Panel" parent="TaskList"]
 self_modulate = Color( 0, 0, 0, 0.705882 )
@@ -78,37 +84,40 @@ __meta__ = {
 margin_left = 14.0
 margin_top = 6.0
 margin_right = 276.0
-margin_bottom = 271.0
+margin_bottom = 339.0
 theme = ExtResource( 11 )
 scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TaskList/ScrollContainer"]
+[node name="GridContainer" type="GridContainer" parent="TaskList/ScrollContainer"]
 margin_right = 262.0
 rect_min_size = Vector2( 262, 0 )
+size_flags_horizontal = 3
+custom_constants/vseparation = 5
+custom_constants/hseparation = 5
+columns = 3
 
-[node name="Button" type="TextureButton" parent="TaskList/ScrollContainer/VBoxContainer"]
+[node name="Button" type="TextureButton" parent="TaskList/ScrollContainer/GridContainer"]
 visible = false
-margin_right = 262.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
+margin_right = 84.0
+margin_bottom = 82.0
+rect_min_size = Vector2( 84, 82 )
+mouse_default_cursor_shape = 2
 
-[node name="Task" type="Label" parent="TaskList/ScrollContainer/VBoxContainer/Button"]
-margin_right = 262.0
-margin_bottom = 32.0
+[node name="Task" type="Label" parent="TaskList/ScrollContainer/GridContainer/Button"]
+margin_left = 14.0
+margin_right = 70.0
+margin_bottom = 56.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 1 )
-text = "Active Task"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TaskIcon" type="TextureRect" parent="TaskList/ScrollContainer/VBoxContainer/Button/Task"]
-margin_left = 228.0
-margin_right = 263.0
-margin_bottom = 35.0
+[node name="TaskIcon" type="TextureRect" parent="TaskList/ScrollContainer/GridContainer/Button/Task"]
+margin_right = 56.0
+margin_bottom = 56.0
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
@@ -116,77 +125,90 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="TaskList/ScrollContainer/VBoxContainer/Button/Task/TaskIcon"]
+[node name="Label" type="Label" parent="TaskList/ScrollContainer/GridContainer/Button/Task/TaskIcon"]
 visible = false
-margin_left = 1.0
-margin_top = 19.0
-margin_right = 33.0
-margin_bottom = 33.0
+anchor_left = 0.45
+anchor_top = 0.65
+anchor_right = 1.0
+anchor_bottom = 1.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
 text = "5"
-align = 1
+align = 2
+valign = 2
 
-[node name="progress" type="Label" parent="TaskList/ScrollContainer/VBoxContainer/Button"]
-margin_left = 1.41422
-margin_top = 32.0
-margin_right = 245.414
-margin_bottom = 48.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 10 )
-text = "+10(20)/100"
-align = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="TaskList/ScrollContainer/VBoxContainer/Button"]
-margin_left = 1.41422
-margin_top = 32.0
-margin_right = 245.414
-margin_bottom = 48.0
+[node name="ProgressBar" type="ProgressBar" parent="TaskList/ScrollContainer/GridContainer/Button"]
+visible = false
+margin_left = 6.0
+margin_top = 54.0
+margin_right = 78.0
+margin_bottom = 58.0
+mouse_filter = 2
 custom_styles/fg = ExtResource( 4 )
 custom_styles/bg = ExtResource( 5 )
 value = 50.0
+percent_visible = false
 
-[node name="NoResources" type="Label" parent="TaskList/ScrollContainer/VBoxContainer/Button"]
+[node name="Stats" type="HBoxContainer" parent="TaskList/ScrollContainer/GridContainer/Button"]
+margin_left = 3.0
+margin_top = 59.0
+margin_right = 81.0
+margin_bottom = 81.0
+custom_constants/separation = 4
+alignment = 1
+
+[node name="WorkerStat" type="HBoxContainer" parent="TaskList/ScrollContainer/GridContainer/Button/Stats"]
+margin_right = 37.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 37, 22 )
+custom_constants/separation = 1
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="TaskList/ScrollContainer/GridContainer/Button/Stats/WorkerStat"]
+margin_right = 16.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 16, 16 )
+mouse_filter = 2
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 5
+
+[node name="Workers" type="Label" parent="TaskList/ScrollContainer/GridContainer/Button/Stats/WorkerStat"]
+margin_left = 17.0
+margin_top = 3.0
+margin_right = 37.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 20, 0 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "2"
+align = 1
+valign = 1
+
+[node name="Production" type="Label" parent="TaskList/ScrollContainer/GridContainer/Button/Stats"]
+margin_left = 41.0
+margin_top = 3.0
+margin_right = 78.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 37, 0 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "+10"
+align = 1
+valign = 1
+
+[node name="NoResources" type="Label" parent="TaskList/ScrollContainer/GridContainer/Button"]
 visible = false
-margin_left = 1.41422
-margin_top = 55.8615
-margin_right = 245.414
-margin_bottom = 71.8615
+margin_left = 5.0
+margin_top = 2.0
+margin_right = 22.0
+margin_bottom = 24.0
 custom_colors/font_color = Color( 0.768627, 0.0588235, 0.0588235, 1 )
 custom_fonts/font = ExtResource( 10 )
-text = "TASKINFONORESOURCES"
+text = "!"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Tooltip" type="Panel" parent="."]
-visible = false
-margin_right = 290.0
-margin_bottom = 363.0
-rect_min_size = Vector2( 290, 0 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Workers" type="Label" parent="Tooltip"]
-margin_right = 276.0
-margin_bottom = 24.0
-custom_fonts/font = ExtResource( 1 )
-text = "Workers"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Tooltip"]
-margin_top = 24.0
-margin_right = 290.0
-margin_bottom = 48.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="Label" parent="Tooltip/VBoxContainer"]
-visible = false
-margin_right = 290.0
-margin_bottom = 27.0
-custom_fonts/font = ExtResource( 1 )
-text = "Worker Name"

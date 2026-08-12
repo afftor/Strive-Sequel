@@ -46,29 +46,26 @@ func update():
 	if !weakref(parentnode).get_ref():
 		emit_signal("update_completed")
 		return
-	rect_size.y = $RichTextLabel.get_v_scroll().get_max() + pos_fix
-	$Panel.rect_size.y = $RichTextLabel.get_v_scroll().get_max() + pos_fix
-	$RichTextLabel.rect_size.y = rect_size.y
+	#The scrollbar maximum keeps the label's previous viewport height in its range. Using
+	#it here made short tooltips (notably gold) inherit a very tall black background.
+	var screen = get_viewport().get_visible_rect()
+	var content_height = ceil($RichTextLabel.get_content_height())
+	var tooltip_height = clamp(content_height + pos_fix, 48, max(screen.size.y - 20, 48))
+	rect_size.y = tooltip_height
+	$Panel.rect_size.y = tooltip_height
+	$RichTextLabel.rect_size.y = tooltip_height - pos_fix + 2
 	
 	var pos = input_handler.get_real_global_rect(parentnode, true)
-	
-	var screen = get_viewport().get_visible_rect()
 	if move_right:
 		pos = Vector2(pos.end.x + 10, pos.position.y)
-		set_global_position(pos)
 	else:
 		pos = Vector2(pos.position.x, pos.end.y + 10)
-		set_global_position(pos)
-		if get_rect().end.x >= screen.size.x:
-			rect_global_position.x -= get_rect().end.x - screen.size.x
-		if get_rect().end.y >= screen.size.y:
-			rect_global_position.y = parentnode.get_global_rect().position.y - (get_rect().size.y+10)
-		if get_rect().position.y < 0:
-			if gui_controller.current_screen == gui_controller.mansion:
-				rect_global_position.y = screen.size.y - get_rect().size.y
-				rect_global_position.x -= 485
-			else:
-				rect_global_position.y = 0
-				rect_global_position.x -= get_rect().end.x - get_rect().size.x - 350
+		if pos.y + rect_size.y > screen.end.y:
+			pos.y = input_handler.get_real_global_rect(parentnode, true).position.y - rect_size.y - 10
+	var max_x = max(screen.position.x, screen.end.x - rect_size.x)
+	var max_y = max(screen.position.y, screen.end.y - rect_size.y)
+	pos.x = clamp(pos.x, screen.position.x, max_x)
+	pos.y = clamp(pos.y, screen.position.y, max_y)
+	set_global_position(pos)
 	emit_signal("update_completed")
 

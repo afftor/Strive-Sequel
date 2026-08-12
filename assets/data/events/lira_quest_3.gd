@@ -898,7 +898,6 @@ var data = {
 		text = "LIRA_QUEST3_RETURN",
 		common_effects = [{code = 'complete_quest', value = 'lira_quest_3'}],
 		options = [
-			{code = "lira_mansion_1", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',},
 			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',},
 		],
 	},

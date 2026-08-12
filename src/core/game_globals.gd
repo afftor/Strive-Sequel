@@ -37,7 +37,7 @@ var weekly_sex_left = 2
 var weekly_sex_max = 1
 var weekly_dates_left = 3
 var weekly_dates_max = 1
-var log_btns = ['travel']
+var mansion_activity_log = []
 
 #not used
 #var votelinksseen = false
@@ -92,6 +92,10 @@ func fix_serialization():
 	weekly_sex_max = int(weekly_sex_max)
 	weekly_dates_left = int(weekly_dates_left)
 	weekly_dates_max = int(weekly_dates_max)
+	if mansion_activity_log == null:
+		mansion_activity_log = []
+	while mansion_activity_log.size() > 50:
+		mansion_activity_log.pop_front()
 	if original_version == null: #stub, technically not correct
 		original_version = globals.gameversion
 	if difficulty == 'normal':

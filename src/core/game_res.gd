@@ -695,7 +695,7 @@ func _process_spec_task(id):
 				tprogress.status = 'completed'
 				globals.common_effects(tprogress.args)
 				globals.emit_signal("work_produced", tchar.id, id, tprogress.icon)
-				globals.text_log_add('mansion', tr("SPECTASKCOMPLETED") + " - " + tr(tprogress.name))
+				globals.mansion_activity_log_add("quest_task", tr("MANSION_ACTIVITY_QUEST_TASK_COMPLETE") % [tchar.get_short_name(), tr(tprogress.name)])
 				input_handler.PlaySound("ding")
 		else:
 			tchar.rest_tick()
@@ -712,9 +712,14 @@ func _process_recruit_task(id):
 		tprogress.progress += tchar.recruit_tick(tprogress)
 		while tprogress.progress >= tprogress.progress_limit:
 			tprogress.progress -= tprogress.progress_limit
-			globals.roll_hirelings(tprogress.location, tchar)
+			var found_character = globals.roll_hirelings(tprogress.location, tchar)
 			globals.emit_signal("work_produced", tchar.id, id, tprogress.icon)
-			globals.text_log_add('mansion', tr("HIRELINGFOUND"))
+			var location_data = ResourceScripts.world_gen.get_location_from_code(tprogress.location)
+			globals.mansion_activity_log_add("character_found", tr("MANSION_ACTIVITY_CHARACTER_FOUND") % [
+				tchar.get_short_name(),
+				found_character.get_short_name(),
+				tr(location_data.name),
+			])
 			input_handler.PlaySound("ding")
 
 
@@ -736,7 +741,7 @@ func _add_build_value(curupgrade, value, character, tres = false):
 				tax += tdata.levels[int(tprogress.level)].tax
 			
 			input_handler.emit_signal("UpgradeUnlocked", upgradedata.upgradelist[curupgrade])
-			globals.text_log_add('work',"Upgrade finished: " + tdata.name)
+			globals.mansion_activity_log_add("upgrade", tr("MANSION_ACTIVITY_UPGRADE_COMPLETE") % [character.get_short_name(), tr(tdata.name)])
 			if curupgrade == "tattoo_set":
 				input_handler.ActivateTutorial("TUTORIALLIST8")
 			tprogress.status = 'completed'
@@ -1070,11 +1075,13 @@ func make_item(temp, character):
 	var temprecipe = tasks_progresses[temp]
 	var recipe = Items.recipes[temprecipe.id]
 	temprecipe.resources_taken = false
+	var product_name
 	if recipe.resultitemtype == 'material':
 		materials[recipe.resultitem] += recipe.resultamount
+		product_name = tr(Items.materiallist[recipe.resultitem].name)
 	else:
 		var item = Items.itemlist[recipe.resultitem]
-		globals.text_log_add("work", "Item created: " + item.name)
+		product_name = tr(item.name)
 		if randf() < 0.25:
 			input_handler.get_person_for_chat([character.id], 'item_created')
 		if item.type == 'usable':
@@ -1090,6 +1097,7 @@ func make_item(temp, character):
 			elif true_item.quality == 'epic':
 				character.try_rise_fame('craft_epic')
 			globals.AddItemToInventory(true_item)
+	globals.mansion_activity_log_add("craft", tr("MANSION_ACTIVITY_CRAFT_COMPLETE") % [character.get_short_name(), product_name])
 	var product_icon = Items.materiallist[recipe.resultitem].icon if recipe.resultitemtype == 'material' else Items.itemlist[recipe.resultitem].icon
 	globals.emit_signal("work_produced", character.id, temp, product_icon)
 

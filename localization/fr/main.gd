@@ -2712,6 +2712,24 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""", # 
 	LOGMANSIONTOOLTIP = """Mansion events""", # MISSING TRANSLATION
 	LOGCHARTOOLTIP = """Character events""", # MISSING TRANSLATION
 	LOGQUESTTOOLTIP = """Quests events""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TITLE = """Activity""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_EMPTY = """No recent activity yet.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TIME = """W%d · D%d · %s""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_ARRIVAL = """Arrival""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_CRAFT = """Crafting""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_UPGRADE = """Upgrade""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_FOOD = """Food""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_RECOVERY = """Recovery""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_QUEST_TASK = """Quest task""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_CHARACTER_FOUND = """Character found""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_ARRIVAL_MANSION = """%s returned to the mansion.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_ARRIVAL_LOCATION = """%s arrived at %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_CRAFT_COMPLETE = """%s finished crafting %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_UPGRADE_COMPLETE = """%s completed the %s upgrade.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_FOOD_DISSATISFIED = """Wasn't satisfied by the food quality""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_INJURY_RECOVERED = """%s recovered from their injuries.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_QUEST_TASK_COMPLETE = """%s completed the quest task: %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_CHARACTER_FOUND = """%s found %s at %s.""", # MISSING TRANSLATION
 	
 	LOGLEFTLABEL = "Main",
 	LOGLEFTTTOOLTIP = "Affiche les événements principaux",
@@ -3468,7 +3486,7 @@ Damage +15%, Health +20.""", # MISSING TRANSLATION
 	INFOSEX_SKILLS = "Les compétences sexuelles font référence aux performances du personnage lors des rapports sexuels. Plus elles sont élevées, plus vite elles peuvent amener leur partenaire à l'orgasme par des actions connexes. La compétence sexuelle du personnage est basée sur la moyenne des 3 compétences les plus élevées.\nLe consentement représente l'acceptation générale du personnage des différentes actions sexuelles, mais il est également fortement influencé par les partenaires et la situation.",
 	INFOSEX_TRAITS = "Les Traits sexuels fournissent des effets supplémentaires pendant l'interaction sexuelle. Ils peuvent être appris, activés et désactivés. Le nombre maximum de traits activables est basé sur le facteur de sexe.",
 	INFORULES_CONDS = "Des conditions et des règles peuvent être activées sur le personnage, affectant certaines de ses statistiques et son comportement",
-	INFOPERSONALITY = "La personnalité du personnage affectera son badinage et lui donnera accès à certains traits et bonus. La personnalité sera affectée par les compétences sociales utilisées sur le personnage.",
+	INFOPERSONALITY = "La personnalité du personnage affectera son badinage et lui donnera accès à certains traits et bonus. La personnalité repose sur deux axes, Audacieux-Timide et Gentil-Sérieux, et peut être modifiée en offrant des boissons alcoolisées au personnage.",
 	INFOPERSONALITYBOLD = "Bold\n+25% de dégâts de compétence ; -25% de MATK",
 	INFOPERSONALITYKIND = "Kind\n+50% d'efficacité des sorts de guérison",
 	INFOPERSONALITYSERIOUS = "Serious\n+20% de réduction des dégâts",
@@ -8657,14 +8675,14 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	WORKRULENUDITY = "Nudité",
 	WORKRULENUDITYDESCRIPT = "Oblige [name] à rester nu lorsqu'il est au manoir (s'il a le sprite correspondant). Cet effet est cosmétique",
 	
-	WORKRULEPERSONALITY_LOCK = "Verrouiller la personnalité",
-	WORKRULEPERSONALITY_LOCKDESCRIPT = "[name] ne verra plus sa personnalité affectée par les actions sociales",
 	WORKRULERELATIONSHIP = """Allow Romance""", # MISSING TRANSLATION
 	WORKRULERELATIONSHIPDESCRIPT = """[name] will be allowed to establish romantic relationship with other characters besides [master].""", # MISSING TRANSLATION
 	WORKRULEMASTURBATION = """Forbid Masturbation""", # MISSING TRANSLATION
 	WORKRULEMASTURBATIONDESCRIPT = """[name] will not be allowed to relieve [him]self, leading to increased stress but higher libido. Resistance Drop Speed: +20%; Productivity: -10%""", # MISSING TRANSLATION
 	WORKRULELOCK = """Lock Character""", # MISSING TRANSLATION
 	WORKRULELOCKDESCRIPT = """Locks character from showing [him] in the list of tasks and activites which permanently remove or sell [him].""", # MISSING TRANSLATION
+	WORKRULEHIDE = """Hide""", # MISSING TRANSLATION
+	WORKRULEHIDEDESCRIPT = """Places [name] at the end of the character list and only shows [him] while Show All locations is selected.""", # MISSING TRANSLATION
 	
 	SERVICEENSLAVE = "Asservir",
 	SERVICEENSLAVEDESCRIPT = "Fait du personnage choisi un esclave.\n[color=aqua]Les esclaves subissent une réduction des dégâts de 10% mais gagnent divers bonus de collecte et leur Loyauté peut être augmentée par des compétences punitives.[/color]",

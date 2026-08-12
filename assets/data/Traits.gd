@@ -38,7 +38,7 @@ var traits = {
 		visible = true,
 		icon = "res://assets/images/iconsskills/icon_eyes.png",
 		effects = [],
-		tags = ['simple_icon', ],
+		tags = ['simple_icon', 'trait_only'],
 		bonusstats = {mod_hunt = 0.25, physics = 15, chg_dexterity_max = 1, mastery_stealth = 1}
 	},
 	spirit_boar = {
@@ -3352,9 +3352,12 @@ var b_template = {
 
 func make_buff_for_trait(tr_id):
 	var trdata = traits[tr_id]
-	if trdata.has('visible') and !trdata.visible: 
+	if trdata.has('visible') and !trdata.visible:
 		return null
-	if !trdata.has('icon'): 
+	#shown in the traits row only, no duplicate icon in the buffs row
+	if trdata.tags.has('trait_only'):
+		return null
+	if !trdata.has('icon'):
 		return null
 	if trdata.icon == null: 
 		return null

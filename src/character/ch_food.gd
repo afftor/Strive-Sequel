@@ -241,7 +241,7 @@ func consume(code):
 #		person.apply_effect_code('e_food_demand', {duration = turns})
 		person.add_stat('respect', globals.rng.randi_range(
 			variables.food_demand_respect[0], variables.food_demand_respect[1]))
-		globals.text_log_add('char', tr("FOODLOGBELOWDEMAND") % [person.get_short_name(), item.name])
+		globals.mansion_activity_log_add("food", tr("MANSION_ACTIVITY_FOOD_DISSATISFIED") % person.get_short_name())
 
 
 func starve():

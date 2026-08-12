@@ -84,13 +84,13 @@ func tick():
 			input_handler.update_slave_list()
 			if location == ResourceScripts.game_world.mansion_location:
 				# parent.get_ref().return_to_task()
-				globals.text_log_add('travel', parent.get_ref().get_short_name() + " " + tr("RETURNED_TO_MANSION_LABEL") + ". ")
+				globals.mansion_activity_log_add("arrival", tr("MANSION_ACTIVITY_ARRIVAL_MANSION") % parent.get_ref().get_short_name())
 			else:
 #					if state.capitals.has(location):
 #						state.text_log_add("travel", get_short_name() + " arrived at location: " + state.areas[state.capitals[location].area].capital_name)
 #					else:
 				var loc_data = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[location].area][ResourceScripts.game_world.location_links[location].category][location]
-				globals.text_log_add('travel', parent.get_ref().get_short_name() + " " + tr("ARRIVED_AT_LOC_LABEL") + ": " + tr(loc_data.name))
+				globals.mansion_activity_log_add("arrival", tr("MANSION_ACTIVITY_ARRIVAL_LOCATION") % [parent.get_ref().get_short_name(), tr(loc_data.name)])
 			parent.get_ref().return_to_task()
 
 func make_location_description():

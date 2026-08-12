@@ -82,10 +82,34 @@ func build_turn_tooltips():
 #both of these walk every character, so they are built when the player actually hovers
 #rather than on every clock update - the text is only ever read from the tooltip
 func show_food_tooltip():
-	var resources = ResourceScripts.game_party.calculate_food_consumption()
+	var stock = {}
+	var requirements = {}
+	for tier in variables.food_demand_order:
+		stock[tier] = 0
+		requirements[tier] = 0.0
+
+	for code in ResourceScripts.game_res.materials:
+		if !Items.materiallist.has(code):
+			continue
+		var item = Items.materiallist[code]
+		if item.type == 'food' and stock.has(item.demand):
+			stock[item.demand] += ResourceScripts.game_res.materials[code]
+
+	#calculate_food_consumption() predicts items used per day. Convert it to one turn,
+	#then collect the preferred items under their demand tiers.
+	var consumption = ResourceScripts.game_party.calculate_food_consumption()
+	for code in consumption:
+		if !Items.materiallist.has(code):
+			continue
+		var item_demand = Items.materiallist[code].demand
+		if requirements.has(item_demand):
+			requirements[item_demand] += consumption[code] / float(variables.HoursPerDay)
+
 	var text = "\n\n" + tr('CURRENT_PREFERRED_FOOD_CONSUMPTION') + ":"
-	for i in resources.keys():
-		text +=  "\n" + Items.materiallist[i].name + ": " + str(stepify(resources[i], 0.1))
+	for tier in variables.food_demand_order:
+		text += "\n%s: %s / %s" % [tr("FOODDEMAND" + tier.to_upper()),
+			ResourceScripts.custom_text.transform_number(stock[tier]),
+			str(stepify(requirements[tier], 0.1))]
 	globals.showtexttooltip($TimeNode/food, tr("TOOLTIPFOOD") + text, false)
 
 
@@ -264,9 +288,6 @@ func advance_turn(amount = 1):
 		else:
 			input_handler.SystemMessage("Population limit reached")
 		return
-	if globals.log_node != null && weakref(globals.log_node).get_ref():
-		globals.log_node.clear_log()
-
 	turn_in_progress = true
 	turn_started_at = OS.get_ticks_msec()
 	travel_arrival_sound_pending = false

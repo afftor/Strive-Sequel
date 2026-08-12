@@ -2636,6 +2636,24 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	LOGMANSIONTOOLTIP = """События в поместье""",
 	LOGCHARTOOLTIP = """События персонажей""",
 	LOGQUESTTOOLTIP = """События заданий""",
+	MANSION_ACTIVITY_TITLE = """Activity""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_EMPTY = """No recent activity yet.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TIME = """W%d · D%d · %s""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_ARRIVAL = """Arrival""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_CRAFT = """Crafting""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_UPGRADE = """Upgrade""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_FOOD = """Food""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_RECOVERY = """Recovery""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_QUEST_TASK = """Quest task""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_CHARACTER_FOUND = """Character found""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_ARRIVAL_MANSION = """%s returned to the mansion.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_ARRIVAL_LOCATION = """%s arrived at %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_CRAFT_COMPLETE = """%s finished crafting %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_UPGRADE_COMPLETE = """%s completed the %s upgrade.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_FOOD_DISSATISFIED = """Wasn't satisfied by the food quality""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_INJURY_RECOVERED = """%s recovered from their injuries.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_QUEST_TASK_COMPLETE = """%s completed the quest task: %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_CHARACTER_FOUND = """%s found %s at %s.""", # MISSING TRANSLATION
 	BROTHELLOGSEX = """%s заработал/а %s золота, выполняя %s с %s клиентами.""",
 	BROTHELLOGSEXPARTIAL = """%s failed to fully attract a customer and earned only %s gold performing %s with a %s customer.""", # MISSING TRANSLATION
 	BROTHELLOGNO_SEX = """%s заработал/а %s золота, работая как %s.""",
@@ -9418,8 +9436,6 @@ SEXDESC_TITS_CHARM_ADULT_1 = "соблазнительная",
 	WORKRULENUDITY = """Нагота""",
 	WORKRULENUDITYDESCRIPT = """Заставляет [name] оставаться голым в особняке (если есть соответствующий спрайт). Этот эффект является косметическим. Требуется тренировка 'Секс-услуги'.""",
 	
-	WORKRULEPERSONALITY_LOCK = """Блок личности""",
-	WORKRULEPERSONALITY_LOCKDESCRIPT = """[name] больше не будет изменять [his] личность благодаря социальным действиям.""",
 	WORKRULERELATIONSHIP = """Разрешить роман""",
 	WORKRULERELATIONSHIPDESCRIPT = """[name] будет позволено завязать романтические отношения с другими персонажами, кроме [master].""",
 
@@ -9428,6 +9444,8 @@ SEXDESC_TITS_CHARM_ADULT_1 = "соблазнительная",
 
 	WORKRULELOCK = """Блок персонажа""",
 	WORKRULELOCKDESCRIPT = """Блокирует персонажа от отображения [him] в списке заданий и действий, которые навсегда удаляют или продают [him].""",
+	WORKRULEHIDE = """Hide""", # MISSING TRANSLATION
+	WORKRULEHIDEDESCRIPT = """Places [name] at the end of the character list and only shows [him] while Show All locations is selected.""", # MISSING TRANSLATION
 
 	SERVICEENSLAVE = """Поработить""",
 	SERVICEENSLAVEDESCRIPT = """Превращает выбранного персонажа в раба.

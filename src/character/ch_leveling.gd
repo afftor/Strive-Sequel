@@ -8,7 +8,7 @@ var previous_work = ''
 #var workproduct = null
 #var previous_workproduct = null
 var previous_location = ResourceScripts.game_world.mansion_location
-var work_rules = {lock = false, ration = false, shifts = false, constrain = false, luxury = false, contraceptive = false, bindings = false, nudity = false, personality_lock = false, relationship = true, masturbation = false}
+var work_rules = {lock = false, hide = false, ration = false, shifts = false, constrain = false, luxury = false, contraceptive = false, bindings = false, nudity = false, relationship = true, masturbation = false}
 
 var priority_materials = {
 	cooking = 4,

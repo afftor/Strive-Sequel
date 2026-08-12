@@ -331,6 +331,7 @@ func remove_effect(eff_id, internal = false):
 	else:
 		rebuild = variables.DYN_STATS_REBUILD
 	var obj = effects_pool.get_effect_by_id(eff_id)
+	var removed_injury = obj != null && obj.has_status("injury")
 	if obj is temp_e_global:
 		remove_t_global(eff_id)
 	else:
@@ -344,6 +345,10 @@ func remove_effect(eff_id, internal = false):
 			return
 		var stack = effects_temp_stored[stid]
 		effects_pool.get_stack_by_id(stack).remove_effect(eff_id)
+	if removed_injury && !has_status("injury"):
+		var character = parent.get_ref()
+		if character != null:
+			globals.mansion_activity_log_add("recovery", tr("MANSION_ACTIVITY_INJURY_RECOVERED") % character.get_short_name())
 	
 	#move to another place
 #	var nd = parent.get_ref().displaynode

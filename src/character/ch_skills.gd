@@ -444,8 +444,6 @@ func use_social_skill(s_code, target, item):
 						effect_text += "\n" + h.get_short_name() + tr("PERSONALITYCHANGE") + tr("PERSONALITYNAME" + next_personality.to_upper())
 					parent.get_ref().update_prt()
 				elif stat.begins_with('personality'):
-					if h.check_work_rule("personality_lock"):
-						continue
 					var cur_personality = h.get_stat('personality')
 					var tres = {personality_bold = 0, personality_shy = 0, personality_kind = 0,personality_serious = 0} #2 per stat
 					if mod == 1:

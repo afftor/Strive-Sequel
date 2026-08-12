@@ -119,8 +119,12 @@ func forge_progress():
 func alchemy_progress():
 	return variables.base_work_increment + (variables.stat_work_increment * (parent.get_ref().get_stat('wits')/50.0))
 
+const buildertools_speed_bonus = [0.0, 0.25, 0.5, 1.0]
+
 func building_progress():
-	return (1 + parent.get_ref().get_stat('wits')/100.0 + parent.get_ref().get_stat('physics')/50.0) * (1 + 0.25 * ResourceScripts.game_res.upgrades.forgeworkshop)
+	var level = ResourceScripts.game_res.findupgradelevel('buildertools')
+	level = clamp(level, 0, buildertools_speed_bonus.size() - 1)
+	return (1 + parent.get_ref().get_stat('wits')/100.0 + parent.get_ref().get_stat('physics')/50.0) * (1 + buildertools_speed_bonus[level])
 
 
 

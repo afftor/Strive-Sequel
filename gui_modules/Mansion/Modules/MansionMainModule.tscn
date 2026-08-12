@@ -77,7 +77,6 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_vertical_guides_": [ 0.575684 ]
 }
-test_mode = true
 
 [node name="BGHolder" type="Control" parent="."]
 anchor_right = 1.0
@@ -108,28 +107,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 38 )
 
+[node name="MansionLogModule" parent="." instance=ExtResource( 10 )]
+margin_left = 1595.0
+margin_top = 136.0
+margin_right = 1905.0
+margin_bottom = 1063.0
+rect_min_size = Vector2( 310, 400 )
+
 [node name="MansionBottomLeftModule" parent="." instance=ExtResource( 9 )]
 material = SubResource( 1 )
 margin_left = 15.0
 margin_top = 625.0
-margin_right = 305.0
+margin_right = 89.0
 margin_bottom = 1068.0
-rect_min_size = Vector2( 290, 385 )
 theme = ExtResource( 12 )
 
 [node name="MansionSlaveListModule" parent="." instance=ExtResource( 5 )]
-margin_left = 311.0
+margin_left = 320.0
 margin_top = 137.0
-margin_right = 1577.0
+margin_right = 1586.0
 margin_bottom = 1063.0
-
-[node name="MansionLogModule" parent="." instance=ExtResource( 10 )]
-visible = false
-margin_left = 1435.0
-margin_top = 136.0
-margin_right = 1905.0
-margin_bottom = 385.0
-rect_min_size = Vector2( 470, 220 )
 
 [node name="MansionSlaveModule" parent="." instance=ExtResource( 11 )]
 visible = false

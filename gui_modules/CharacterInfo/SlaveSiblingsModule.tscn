@@ -528,29 +528,6 @@ custom_icons/unchecked = ExtResource( 9 )
 custom_styles/focus = SubResource( 29 )
 text = "WORKRULECONTRACEPTIVE"
 
-[node name="personality_lock" type="CheckBox" parent="work_rules"]
-visible = false
-margin_left = 372.0
-margin_top = 104.0
-margin_right = 783.0
-margin_bottom = 152.0
-custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
-custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 20 )
-custom_icons/radio_checked_disabled = ExtResource( 17 )
-custom_icons/radio_checked = ExtResource( 17 )
-custom_icons/checked_disabled = ExtResource( 9 )
-custom_icons/radio_unchecked_disabled = ExtResource( 9 )
-custom_icons/checked = ExtResource( 17 )
-custom_icons/radio_unchecked = ExtResource( 9 )
-custom_icons/unchecked_disabled = ExtResource( 9 )
-custom_icons/unchecked = ExtResource( 9 )
-custom_styles/focus = SubResource( 29 )
-text = "WORKRULEPERSONALITY_LOCK"
-
 [node name="nudity" type="CheckBox" parent="work_rules"]
 margin_left = 346.0
 margin_top = 104.0

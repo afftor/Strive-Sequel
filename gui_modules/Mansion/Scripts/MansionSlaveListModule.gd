@@ -19,14 +19,24 @@ onready var ExpandedCharacter = $ExpandedCharacter
 onready var ExpandedTween = $ExpandedCharacter/Tween
 onready var ExpandedCardSlot = $ExpandedCharacter/CardSlot
 onready var ExpandedExtra = $ExpandedCharacter/Extra
+onready var ExpandedInfoButton = $ExpandedCharacter/Extra/CharacterInfoButton
 onready var ExpandedDetails = $ExpandedCharacter/Extra/Details
 onready var ExpandedSocialPanel = $ExpandedCharacter/Extra/SocialPanel
 onready var ExpandedSocialSkills = $ExpandedCharacter/Extra/SocialPanel/Margin/Content/SocialSkills
 onready var ExpandedRuleButtons = $ExpandedCharacter/Extra/RulesPanel/Margin/Content/Rules
+onready var ExpandedFoodPreferences = $ExpandedCharacter/FoodPreferencesPanel
+onready var ExpandedNameEditButton = $ExpandedCharacter/Extra/NameEditButton
+onready var ExpandedNameEditor = $ExpandedCharacter/NameEditor
+onready var ExpandedFirstName = $ExpandedCharacter/NameEditor/Margin/Content/Identity/NameValue
+onready var ExpandedSurname = $ExpandedCharacter/NameEditor/Margin/Content/Identity/SurnameValue
+onready var ExpandedNicknameEdit = $ExpandedCharacter/NameEditor/Margin/Content/NicknameEdit
 onready var ExpandedBodyPreview = $ExpandedBodyPreview
 onready var ExpandedBodyImage = $ExpandedBodyPreview/StoredImage
 onready var ExpandedPaperdoll = $ExpandedBodyPreview/Paperdoll
+onready var ExpandedCloseButton = $ExpandedBodyPreview/CloseButton
 onready var ExpandedBodyTween = $ExpandedBodyPreview/Tween
+
+var pending_date_person
 
 var populatedlocations = []
 var default_locations = ["show_all", "mansion"]
@@ -50,6 +60,7 @@ const CARD_STATUS = CARD_ROOT + "/Header/SlaveType"
 const CARD_INFO_STRIPS = CARD_BODY + "/InfoStrips"
 const CARD_WORK_STRIP = CARD_INFO_STRIPS + "/Work"
 const CARD_WORK_TYPE = CARD_WORK_STRIP + "/Content/Icon"
+const CARD_WORK_HIGHLIGHT = CARD_WORK_STRIP + "/Content/Highlight"
 const CARD_WORK_LABEL = CARD_WORK_STRIP + "/Content/Label"
 const CARD_LOCATION_STRIP = CARD_INFO_STRIPS + "/Location"
 const CARD_LOCATION_ICON = CARD_LOCATION_STRIP + "/Content/Icon"
@@ -65,6 +76,11 @@ const TEX_TRAVEL_SMALL = preload("res://assets/Textures_v2/MANSION/icon_travel_s
 const TEX_NO = preload("res://assets/Textures_v2/MANSION/no.png")
 const TEX_YES = preload("res://assets/Textures_v2/MANSION/yes.png")
 const TEX_FOOD_STARVING = preload("res://assets/images/iconsitems/food_old.png")
+const TEX_WORK_REST = preload("res://assets/images/gui/icon_bed.png")
+const TEX_WORK_TRAINING = preload("res://assets/Textures_v2/MANSION/Dating/Icons/icon_discipline.png")
+const TEX_WORK_CRAFT = preload("res://assets/images/gui/icon_craft64x64.png")
+const TEX_WORK_SERVICE = preload("res://assets/images/gui/service.png")
+const TEX_WORK_QUEST = preload("res://assets/Textures_v2/DUNGEON/Icons/exclaim.png")
 const CARD_ACTION_DISABLED_MATERIAL = preload("res://assets/sfx/bw_shader.tres")
 const SKILL_EMPTY_TEXTURE = preload("res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_empty.png")
 const SKILL_NO_IMAGE_TEXTURE = preload("res://assets/images/gui/panels/noimage.png")
@@ -73,14 +89,15 @@ const LIST_FOLD_ANIMATION_TIME = 0.18
 const LIST_FOLDED_HEIGHT = 60.0
 const EXPANDED_WORK_RULES = [
 	"lock",
+	"hide",
 	"ration",
 	"shifts",
 	"luxury",
 	"contraceptive",
 	"nudity",
-	"personality_lock",
 	"relationship",
 ]
+const HIDDEN_CHARACTER_ALPHA = 0.68
 
 var expanded_card
 var expanded_card_visual
@@ -102,6 +119,11 @@ var expanded_paperdoll_cache_person_id = ""
 var expanded_paperdoll_cache_clothed = true
 var list_folded = false
 var list_unfolded_size = Vector2()
+
+const EXPANDED_BODY_PREVIEW_PAPERDOLL_WIDTH = 626.0
+const EXPANDED_BODY_PREVIEW_FRAME_PADDING = 4.0
+const EXPANDED_BODY_PREVIEW_SCREEN_MARGIN = 15.0
+const EXPANDED_BODY_PREVIEW_MIN_WIDTH = 46.0
 
 var mode = 'default'
 #var mode = 'food'
@@ -172,8 +194,22 @@ func _ready():
 	_clear_expanded_body_preview()
 	ExpandedTween.connect("tween_all_completed", self, "_on_expanded_animation_finished")
 	ListFoldTween.connect("tween_all_completed", self, "_on_list_fold_animation_finished")
-	ExpandedDetails.connect("info_requested", self, "_open_character_info")
 	ExpandedDetails.connect("inventory_requested", self, "OpenInventory")
+	ExpandedDetails.connect("food_filter_requested", self, "_open_expanded_food_filter")
+	ExpandedInfoButton.connect("pressed", self, "_open_expanded_character_info")
+	ExpandedNameEditButton.connect("pressed", self, "_open_expanded_name_editor")
+	ExpandedNameEditor.get_node("Margin/Content/Buttons/Cancel").connect(
+		"pressed", ExpandedNameEditor, "hide"
+	)
+	ExpandedNameEditor.get_node("Margin/Content/Buttons/Confirm").connect(
+		"pressed", self, "_confirm_expanded_nickname"
+	)
+	ExpandedNicknameEdit.connect("text_entered", self, "_confirm_expanded_nickname")
+	ExpandedCloseButton.connect("pressed", self, "close_expanded_character")
+	ExpandedFoodPreferences.add_to_group("ignore_rightclicks")
+	globals.connecttexttooltip(ExpandedNameEditButton, tr("NICKNAME_BUTTON_TEXT"))
+	hotkeys.connect("bindings_changed", self, "_build_expanded_info_tooltip")
+	_build_expanded_info_tooltip()
 	set_process_input(false)
 	set_process(false)
 	_initialize_entry_templates()
@@ -188,7 +224,7 @@ func _ready():
 	globals.connecttexttooltip($SexIcon, tr("SEXTOOLTIP"))
 	for nd in modes.get_children():
 		nd.connect('pressed', self, 'set_mode', [nd.name])
-#	for rl in ['lock', 'ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'nudity', 'personality_lock', 'relationship', 'masturbation']:
+#	for rl in ['lock', 'ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'nudity', 'relationship', 'masturbation']:
 #		globals.connecttexttooltip(header.get_node('rule_' + rl), tr('WORKRULE%sDESCRIPT' % rl.to_upper()))
 #	for rl in ['waitress', 'hostess', 'dancer', 'stripper', 'males', 'females', 'futa', 'petting', 'oral', 'anal', 'pussy', 'group', 'sextoy']:
 #		globals.connecttexttooltip(header.get_node('brothel_' + rl), tr('BROTHEL%sDESCRIPT' % rl.to_upper()))
@@ -216,8 +252,32 @@ func _input(event):
 	if expanded_card == null or !(event is InputEventMouseButton):
 		return
 	if event.button_index == BUTTON_RIGHT and event.pressed:
+		var target = _get_expanded_right_click_target()
+		if target != null:
+			if target.has_meta("expanded_social_position"):
+				_select_expanded_social_position(target.get_meta("expanded_social_position"))
+				get_viewport().set_input_as_handled()
+			return
 		close_expanded_character()
 		get_viewport().set_input_as_handled()
+
+
+func _get_expanded_right_click_target():
+	for node in get_tree().get_nodes_in_group("ignore_rightclicks"):
+		if !(node is Control) or !is_instance_valid(node) or !node.is_visible_in_tree():
+			continue
+		if node != ExpandedCharacter and !ExpandedCharacter.is_a_parent_of(node):
+			continue
+		if node.get_global_rect().has_point(get_global_mouse_position()):
+			return node
+	return null
+
+
+func _build_expanded_info_tooltip():
+	globals.connecttexttooltip(
+		ExpandedInfoButton,
+		hotkeys.get_tooltip_text("MSMNAME", "mansion_char_info")
+	)
 
 
 #the mansion screen coming back (from a character panel, the city, a scene) is a fresh start
@@ -271,6 +331,8 @@ func open_expanded_character(card):
 	#Keep the transparent detail tree active so its containers finish layout during the
 	#staged build instead of all recalculating on the reveal frame.
 	ExpandedExtra.show()
+	ExpandedFoodPreferences.hide()
+	ExpandedNameEditor.hide()
 	ExpandedSocialPanel.hide()
 	ExpandedBodyPreview.show()
 	ExpandedBodyPreview.modulate.a = 0.0
@@ -301,6 +363,8 @@ func close_expanded_character():
 	expanded_build_stage = -1
 	expanded_build_person = null
 	_cancel_expanded_body_preview_build()
+	ExpandedFoodPreferences.hide()
+	ExpandedNameEditor.hide()
 	set_process(false)
 	ExpandedExtra.hide()
 	ExpandedBodyPreview.hide()
@@ -311,6 +375,8 @@ func close_expanded_character():
 func _close_expanded_character_immediate():
 	expanded_pending_card = null
 	_cancel_expanded_body_preview_build()
+	ExpandedFoodPreferences.hide()
+	ExpandedNameEditor.hide()
 	if expanded_card == null:
 		return
 	ExpandedTween.stop_all()
@@ -393,12 +459,14 @@ func _process(_delta):
 		6:
 			ExpandedDetails.build_buffs()
 		7:
+			ExpandedDetails.build_combat_stats()
+		8:
 			#The ragdoll is intentionally assembled after the geometry tween. Its full material
 			#pass is too expensive to share a frame with the opening animation.
 			expanded_body_pending_person = expanded_build_person
-		8:
-			build_expanded_social_skills(expanded_build_person)
 		9:
+			build_expanded_social_skills(expanded_build_person)
+		10:
 			build_expanded_rules(expanded_build_person)
 			expanded_build_stage = -1
 			expanded_details_ready = true
@@ -431,6 +499,44 @@ func _clear_expanded_body_preview():
 	ExpandedBodyImage.texture = null
 	ExpandedBodyImage.hide()
 	ExpandedPaperdoll.modulate.a = 1.0
+	ExpandedPaperdoll.hide()
+	var viewport = ExpandedPaperdoll.get_node_or_null("VPC/VP")
+	if viewport != null:
+		viewport.render_target_update_mode = Viewport.UPDATE_DISABLED
+
+
+func _set_expanded_body_preview_width(desired_width):
+	var viewport_right = get_viewport().get_visible_rect().end.x
+	var available_width = viewport_right - ExpandedBodyPreview.rect_global_position.x \
+		- EXPANDED_BODY_PREVIEW_SCREEN_MARGIN
+	ExpandedBodyPreview.rect_size.x = clamp(
+		ceil(desired_width),
+		EXPANDED_BODY_PREVIEW_MIN_WIDTH,
+		max(available_width, EXPANDED_BODY_PREVIEW_MIN_WIDTH)
+	)
+
+
+func _fit_expanded_body_preview_to_texture(texture):
+	var texture_size = texture.get_size()
+	if texture_size.y <= 0:
+		_set_expanded_body_preview_width(EXPANDED_BODY_PREVIEW_PAPERDOLL_WIDTH)
+		return
+	var content_height = max(
+		ExpandedBodyPreview.rect_size.y - EXPANDED_BODY_PREVIEW_FRAME_PADDING * 2.0,
+		1.0
+	)
+	var portrait_width = content_height * texture_size.x / texture_size.y
+	_set_expanded_body_preview_width(
+		portrait_width + EXPANDED_BODY_PREVIEW_FRAME_PADDING * 2.0
+	)
+
+
+func _show_expanded_body_image(texture):
+	if texture == null:
+		return
+	_fit_expanded_body_preview_to_texture(texture)
+	ExpandedBodyImage.texture = texture
+	ExpandedBodyImage.show()
 	ExpandedPaperdoll.hide()
 	var viewport = ExpandedPaperdoll.get_node_or_null("VPC/VP")
 	if viewport != null:
@@ -492,9 +598,9 @@ func _build_expanded_body_preview(person, force_paperdoll = false):
 		return
 	var stored_image = person.get_stored_body_image()
 	if stored_image != null:
-		ExpandedBodyImage.texture = stored_image
-		ExpandedBodyImage.show()
+		_show_expanded_body_image(stored_image)
 	elif !input_handler.globalsettings.disable_paperdoll:
+		_set_expanded_body_preview_width(EXPANDED_BODY_PREVIEW_PAPERDOLL_WIDTH)
 		ExpandedPaperdoll.show()
 		ExpandedPaperdoll.test_mode = false
 		var clothed = !person.has_work_rule("nudity")
@@ -513,20 +619,22 @@ func _build_expanded_body_preview(person, force_paperdoll = false):
 	else:
 		var silhouette = person.get_body_image()
 		if silhouette != null:
-			ExpandedBodyImage.texture = silhouette
-			ExpandedBodyImage.show()
+			_show_expanded_body_image(silhouette)
 	# Keep the same sprite-selection order as CharacterInfo: a unique nude sprite
 	# replaces the stored body image when the nudity rule is active, while the
 	# marriage sprite (when applicable) has final priority.
 	var unique_code = person.get_stat("unique")
 	if unique_code != null and worlddata.pregen_character_sprites.has(unique_code):
 		var sprite_data = worlddata.pregen_character_sprites[unique_code]
+		var unique_texture
 		if person.has_work_rule("nudity") and sprite_data.has("nude"):
-			ExpandedBodyImage.texture = images.get_sprite(sprite_data.nude.path)
+			unique_texture = images.get_sprite(sprite_data.nude.path)
 		if ResourceScripts.game_progress.spouse != null and globals.valuecheck({type = "has_spouse", check = true}) and !ResourceScripts.game_progress.marriage_completed:
 			var spouse_person = characters_pool.get_char_by_id(ResourceScripts.game_progress.spouse)
 			if spouse_person != null and spouse_person.get_stat("unique") == unique_code and sprite_data.has("wed"):
-				ExpandedBodyImage.texture = images.get_sprite(sprite_data.wed.path)
+				unique_texture = images.get_sprite(sprite_data.wed.path)
+		if unique_texture != null:
+			_show_expanded_body_image(unique_texture)
 
 
 func _create_expanded_card_visual():
@@ -624,6 +732,8 @@ func build_expanded_social_skills(person):
 		return
 	for position in range(1, 7):
 		var button = input_handler.DuplicateContainerTemplate(ExpandedSocialSkills)
+		button.add_to_group("ignore_rightclicks")
+		button.set_meta("expanded_social_position", position)
 		button.get_node("icon").texture = SKILL_EMPTY_TEXTURE
 		button.get_node("icon").material = null
 		button.get_node("charges").hide()
@@ -723,15 +833,19 @@ func _toggle_expanded_rule(person, code):
 	build_expanded_rules(person)
 	if is_instance_valid(expanded_card):
 		update_entry_availability(expanded_card, person)
+	if code == "hide":
+		if is_instance_valid(expanded_card_visual) and is_instance_valid(expanded_card):
+			var source_layout = expanded_card.get_node("CardLayout")
+			expanded_card_visual.self_modulate = source_layout.self_modulate
+			expanded_card_visual.modulate = source_layout.modulate
+		apply_sorting()
+		show_location_characters()
+		if selected_location != "show_all":
+			_close_expanded_character_immediate()
+		return
 	if code == "nudity":
-		if ExpandedPaperdoll.visible:
-			var clothed = !person.has_work_rule("nudity")
-			ExpandedPaperdoll.rebuild_cloth(clothed)
-			expanded_paperdoll_cache_person_id = str(person.id)
-			expanded_paperdoll_cache_clothed = clothed
-		else:
-			_build_expanded_body_preview(person, true)
-			ExpandedBodyPreview.visible = ExpandedBodyImage.visible or ExpandedPaperdoll.visible
+		_build_expanded_body_preview(person, true)
+		ExpandedBodyPreview.visible = ExpandedBodyImage.visible or ExpandedPaperdoll.visible
 
 
 func _select_expanded_social_skill(skill_code):
@@ -766,6 +880,54 @@ func _expanded_social_skill_selected(skill):
 	else:
 		person.skills.social_skill_panel[expanded_skill_position] = skill
 	build_expanded_social_skills(person)
+
+
+func _open_expanded_character_info():
+	if !is_instance_valid(expanded_card):
+		return
+	var person = expanded_card.get_meta("slave", null)
+	if person != null:
+		_open_character_info(person)
+
+
+func _open_expanded_food_filter(person):
+	if person == null or expanded_card == null:
+		return
+	ExpandedNameEditor.hide()
+	ExpandedFoodPreferences.open_diet_window(person)
+	ExpandedFoodPreferences.raise()
+
+
+func _open_expanded_name_editor():
+	if !is_instance_valid(expanded_card):
+		return
+	var person = expanded_card.get_meta("slave", null)
+	if person == null:
+		return
+	ExpandedFoodPreferences.hide()
+	ExpandedFirstName.text = tr(str(person.get_stat("name")))
+	var surname = str(person.get_stat("surname"))
+	ExpandedSurname.text = surname if surname != "" else "—"
+	ExpandedNicknameEdit.text = str(person.get_stat("nickname"))
+	ExpandedNameEditor.show()
+	ExpandedNameEditor.raise()
+	ExpandedNicknameEdit.grab_focus()
+	ExpandedNicknameEdit.select_all()
+
+
+func _confirm_expanded_nickname(_submitted_text = ""):
+	if !is_instance_valid(expanded_card):
+		ExpandedNameEditor.hide()
+		return
+	var person = expanded_card.get_meta("slave", null)
+	if person == null:
+		ExpandedNameEditor.hide()
+		return
+	person.set_stat("nickname", ExpandedNicknameEdit.text.strip_edges())
+	update_button(expanded_card)
+	_create_expanded_card_visual()
+	apply_sorting()
+	ExpandedNameEditor.hide()
 
 
 func _setup_sort_menu():
@@ -922,10 +1084,33 @@ func OpenTraining(person):
 		gui_controller.slavepanel.SlaveInfo.open_upgrade_tab(_get_training_tab(person))
 
 
+#The card date button starts the date straight from the mansion list, so the character
+#panel never has to be opened just to reach its date action.
 func OpenDate(person):
-	_open_character_info(person)
-	if gui_controller.slavepanel != null:
-		gui_controller.slavepanel.SummaryModule.date()
+	_close_expanded_character_immediate()
+	get_parent().remove_hovered_person()
+	pending_date_person = person
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'date_confirmed', person.translate(tr("DATECONFIRM"))])
+
+
+func date_confirmed():
+	var person = pending_date_person
+	pending_date_person = null
+	if person == null:
+		return
+	person.add_stat('metrics_dates', 1)
+	if !ResourceScripts.game_globals.unlimited_date_sex:
+		ResourceScripts.game_globals.weekly_dates_left -= 1
+	person.tags.push_back("no_date_day")
+	ResourceScripts.core_animations.BlackScreenTransition()
+	yield(get_tree().create_timer(0.5), "timeout")
+	update()
+	gui_controller.date_panel = input_handler.get_spec_node(input_handler.NODE_DATE)
+	gui_controller.previous_screen = gui_controller.current_screen
+	gui_controller.current_screen = gui_controller.date_panel
+	gui_controller.date_panel.raise()
+	gui_controller.date_panel.initiate(person)
+	gui_controller.date_panel.show()
 
 
 func _open_character_info(person):
@@ -1153,18 +1338,53 @@ func _get_card_work_output(person, job_text):
 	return result
 
 
-func _update_card_work_type(newbutton, person, job_text):
+func _get_card_work_icon(person, output):
+	if output.texture != null:
+		return output.texture
+	if person.is_on_quest() or person.get_work() == "disabled":
+		return TEX_WORK_QUEST
+	match person.get_work():
+		"", "rest":
+			return TEX_WORK_REST
+		"travel":
+			return TEX_TRAVEL_SMALL
+		"learning":
+			return TEX_WORK_TRAINING
+		"service":
+			return TEX_WORK_SERVICE
+		"crafting":
+			return TEX_WORK_CRAFT
+	var task = person.find_worktask()
+	if task != null:
+		if task.has("production_icon") and task.production_icon != null:
+			return _work_icon_texture(task.production_icon)
+		if task.has("icon") and task.icon != null:
+			return _work_icon_texture(task.icon)
+	return TEX_WORK_REST
+
+
+func _set_card_work_highlight(newbutton, color_key):
+	var highlight = newbutton.get_node(CARD_WORK_HIGHLIGHT)
+	var color = Color(variables.hexcolordict[JOB_COLOR_DEFAULT])
+	if variables.hexcolordict.has(color_key):
+		color = Color(variables.hexcolordict[color_key])
+	color.a = 0.9
+	highlight.self_modulate = color
+
+
+func _update_card_work_type(newbutton, person, job_text, color_key = ""):
 	var work_icon = newbutton.get_node(CARD_WORK_TYPE)
 	var work_label = newbutton.get_node(CARD_WORK_LABEL)
 	var work_strip = newbutton.get_node(CARD_WORK_STRIP)
 	var output = _get_card_work_output(person, job_text)
-	work_icon.texture = output.texture
-	work_icon.visible = output.texture != null
+	work_icon.texture = _get_card_work_icon(person, output)
+	work_icon.visible = work_icon.texture != null
 	work_label.text = job_text
-	var tooltip = output.tooltip
-	if tooltip == "":
-		tooltip = "[center]" + job_text + "[/center]"
-	_set_card_text_tooltip(work_strip, tooltip)
+	work_label.hide()
+	if color_key == "":
+		color_key = _get_card_job_display(person).color
+	_set_card_work_highlight(newbutton, color_key)
+	_set_card_text_tooltip(work_strip, job_text)
 
 
 func _reset_card_location_strip(newbutton):
@@ -1248,6 +1468,13 @@ func _set_card_action_available(button, available):
 
 func _update_card_action_states(newbutton, person):
 	newbutton.get_node(CARD_LEVELUP_INDICATOR).visible = person.get_stat('base_exp') >= person.get_next_class_exp()
+	var progression_button = newbutton.get_node(CARD_ACTIONS + "/Progression")
+	var progression_available = person.is_avaliable()
+	_set_card_action_available(progression_button, progression_available)
+	var progression_tooltip = tr("BTNLEVELING")
+	if !progression_available:
+		progression_tooltip += "\n" + person.get_unaval_string()
+	_set_card_text_tooltip(progression_button, progression_tooltip)
 	var training_availability = _get_training_availability(person)
 	var training_button = newbutton.get_node(CARD_ACTIONS + "/Training")
 	_set_card_action_available(training_button, training_availability[0])
@@ -1261,7 +1488,7 @@ func _update_card_action_states(newbutton, person):
 	var date_button = newbutton.get_node(CARD_ACTIONS + "/Date")
 	date_button.visible = !person.is_master()
 	_set_card_action_available(date_button, date_availability[0])
-	var date_tooltip = tr("BTNDATE")
+	var date_tooltip = tr("BTNDATE") + " (%d/%d)" % [ResourceScripts.game_globals.weekly_dates_left, ResourceScripts.game_globals.weekly_dates_max]
 	if !date_availability[0]:
 		date_tooltip += "\n" + person.translate(tr(date_availability[1]))
 	_set_card_text_tooltip(date_button, date_tooltip)
@@ -1405,7 +1632,7 @@ func _update_card_button(newbutton, person):
 		_update_card_progress(lust_bar, tr("STATLUST"), person.get_stat('lust'), person.get_stat('lustmax'))
 	var job_display = _get_card_job_display(person)
 	newbutton.set_meta("card_job_text", job_display.text)
-	_update_card_work_type(newbutton, person, job_display.text)
+	_update_card_work_type(newbutton, person, job_display.text, job_display.color)
 	_set_job_label_color_from_key(newbutton.get_node(CARD_WORK_LABEL), job_display.color)
 	_update_card_location(newbutton, person)
 	var card_work = newbutton.get_node(CARD_ACTIONS + "/Work")
@@ -1452,7 +1679,11 @@ func _on_card_toggled(pressed, newbutton):
 
 
 func _refresh_card_visual(newbutton):
+	var card_person = newbutton.get_meta("slave", null)
+	var card_alpha = HIDDEN_CHARACTER_ALPHA \
+		if card_person != null and card_person.check_work_rule("hide") else 1.0
 	if !newbutton.has_node("CardLayout"):
+		newbutton.modulate.a = card_alpha
 		return
 	var color = Color(1, 1, 1)
 	if newbutton.disabled:
@@ -1461,9 +1692,32 @@ func _refresh_card_visual(newbutton):
 		color = Color(1.18, 1.06, 0.72)
 	elif newbutton.get_meta("card_hovered", false):
 		color = Color(1.12, 1.08, 1.02)
-	newbutton.get_node("CardLayout").self_modulate = color
+	var card_layout = newbutton.get_node("CardLayout")
+	card_layout.self_modulate = color
+	card_layout.modulate.a = card_alpha
 
 func rebuild():
+	_prepare_rebuild()
+	_ensure_selected_container_entries()
+	_finish_rebuild()
+
+
+func rebuild_for_loading(progress_node, progress_start, progress_end):
+	# This path is only used while a save is opening. Build a frame-budgeted batch so
+	# large rosters advance the loading bar instead of freezing it on one percentage.
+	yield(get_tree(), "idle_frame")
+	_prepare_rebuild()
+	yield(_ensure_selected_container_entries_for_loading(
+		progress_node,
+		progress_start,
+		progress_end
+	), "completed")
+	_finish_rebuild()
+	if is_instance_valid(progress_node):
+		progress_node.set_progress(progress_end)
+
+
+func _prepare_rebuild():
 	task_refresh_queued = false
 	_close_expanded_character_immediate()
 	_select_slave_container()
@@ -1491,12 +1745,41 @@ func rebuild():
 	mass_rule_list.clear()
 	mass_service_list.clear()
 	_select_slave_container()
-	_ensure_selected_container_entries()
+
+
+func _finish_rebuild():
 	apply_sorting()
 	rows_signature = build_rows_signature()
 	show_location_characters()
 	update_description()
 	update_header()
+
+
+func _ensure_selected_container_entries_for_loading(progress_node, progress_start, progress_end):
+	# Always yield once so rebuild_for_loading() can safely await this even for an empty roster.
+	yield(get_tree(), "idle_frame")
+	var signature = build_rows_signature()
+	if SlaveContainer.get_meta("built_rows_signature", "") == signature:
+		if is_instance_valid(progress_node):
+			progress_node.set_progress(progress_end)
+		return
+	var character_ids = ResourceScripts.game_party.character_order
+	var total = max(character_ids.size(), 1)
+	var completed = 0
+	var slice_start = OS.get_ticks_msec()
+	for person_id in character_ids:
+		var person = ResourceScripts.game_party.characters[person_id]
+		if SlaveContainer == CardContainer:
+			_build_card_entry(person, person_id)
+		else:
+			_build_row_entry(person, person_id)
+		completed += 1
+		if is_instance_valid(progress_node):
+			progress_node.set_progress(lerp(progress_start, progress_end, float(completed) / total))
+		if OS.get_ticks_msec() - slice_start >= variables.turn_frame_budget_msec:
+			yield(get_tree(), "idle_frame")
+			slice_start = OS.get_ticks_msec()
+	SlaveContainer.set_meta("built_rows_signature", signature)
 
 
 func _setup_entry_common(newbutton, person, person_id):
@@ -1545,7 +1828,7 @@ func _build_row_entry(person, person_id):
 	newbutton.get_node("SpellIcon").connect("pressed", self, 'OpenSpells', [person])
 	newbutton.get_node("SpellIcon").visible = false
 	newbutton.get_node("job").connect("pressed", self, 'OpenJobModule', [person])
-	for rl in ['lock', 'ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'nudity', 'personality_lock', 'relationship', 'masturbation']:
+	for rl in ['lock', 'ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'nudity', 'relationship', 'masturbation']:
 		var true_btn = newbutton.get_node('rule_' + rl)
 		true_btn.connect('pressed', self, 'toggle_rules', [newbutton, rl])
 		if rl != 'luxury':
@@ -1915,6 +2198,8 @@ func show_location_characters(button = null):
 					get_parent().set_active_person(visible_persons[0].get_meta("slave"))
 		if get_parent().mansion_state == "sex":
 			person.visible = person_reference.travel.location == ResourceScripts.game_world.mansion_location
+		if person_reference.check_work_rule("hide"):
+			person.visible = selected_location == "show_all"
 	
 	if visible_persons.size() < 1 and selected_location != "show_all":
 		selected_location = "show_all"
@@ -2171,7 +2456,7 @@ func update_button(newbutton, t_mode = mode):
 	_update_card_action_states(newbutton, person)
 	
 	#rules
-	for rl in ['lock', 'ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'nudity', 'personality_lock', 'relationship', 'masturbation']:
+	for rl in ['lock', 'ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'nudity', 'relationship', 'masturbation']:
 		newbutton.get_node('rule_' + rl).pressed = person.check_work_rule(rl)
 #	newbutton.get_node('rule_luxury').visible = !person.is_master()
 	newbutton.get_node('rule_luxury').disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) and !person.check_work_rule("luxury") or person.is_master()
@@ -2372,7 +2657,12 @@ func apply_sorting():
 		if !nd.has_meta('slave'):
 			continue
 		nd.drag_enabled = sort_key == ''
-		entries.append({row = nd, base = get_row_base_index(nd), value = null})
+		entries.append({
+			row = nd,
+			base = get_row_base_index(nd),
+			value = null,
+			hidden = nd.get_meta("slave").check_work_rule("hide"),
+		})
 	if sort_key == '':
 		entries.sort_custom(self, 'compare_base_rows')
 	else:
@@ -2404,11 +2694,15 @@ func get_row_base_index(row):
 
 
 func compare_base_rows(a, b):
+	if a.hidden != b.hidden:
+		return !a.hidden
 	return a.base < b.base
 
 
 #ties keep the manual order, so rows with the same value never shuffle between sorts
 func compare_sort_rows(a, b):
+	if a.hidden != b.hidden:
+		return !a.hidden
 	if a.value != b.value:
 		if sort_desc:
 			return a.value > b.value

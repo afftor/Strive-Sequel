@@ -20,6 +20,7 @@ var CurrentScreen
 var CurrentLine = 0
 var log_node
 var log_storage = []
+var mansion_activity_log_node
 
 var start_new_game = false
 var gameover_process = false
@@ -1203,87 +1204,85 @@ func LoadGame(filename):
 		print("no file %s" % (variables.userfolder+'saves/'+ filename + '.sav'))
 		return
 
-	# Put the loading screen into the tree before doing any save parsing or state repair.
-	# Two idle frames guarantee that it has actually been drawn before synchronous work starts.
-	var loadscreen = input_handler.ShowLoadScreen()
-	loadscreen.prepare_loading(0)
-	yield(get_tree(), 'idle_frame')
+	# Fade the current UI to black, install the loading screen at the opaque midpoint,
+	# then reveal it before doing any save parsing or state repair.
+	var loadscreen = yield(input_handler.ShowLoadScreenWithTransition(0.3), "completed")
 	yield(get_tree(), 'idle_frame')
 #	input_handler.CloseableWindowsArray.clear()
 	gui_controller.revert_scenes_data()
 	ResourceScripts.revert_gamestate()
 	input_handler.emit_signal("clear_cashed")
-	loadscreen.set_progress(10)
+	loadscreen.set_progress(3)
 	yield(get_tree(), 'idle_frame')
 
 	file.open(variables.userfolder+'saves/'+ filename + '.sav', File.READ)
 	var save_text = file.get_as_text()
 	file.close()
-	loadscreen.set_progress(20)
+	loadscreen.set_progress(8)
 	yield(get_tree(), 'idle_frame')
 
 	var savedict = parse_json(save_text)
-	loadscreen.set_progress(30)
+	loadscreen.set_progress(14)
 	yield(get_tree(), 'idle_frame')
 
 	for faction in savedict.game_world.areas.plains.factions:
 		var current_faction = savedict.game_world.areas.plains.factions[faction]
 		if !current_faction.has("bonus_actions"):
 			savedict.game_world.areas.plains.factions[faction]["bonus_actions"] = worlddata.factiondata[faction].bonus_actions
-	loadscreen.set_progress(35)
+	loadscreen.set_progress(16)
 	yield(get_tree(), 'idle_frame')
 
 #	state.deserialize(savedict)
 	effects_pool.deserialize(savedict.effpool)
-	loadscreen.set_progress(43)
+	loadscreen.set_progress(20)
 	yield(get_tree(), 'idle_frame')
 	characters_pool.deserialize(savedict.charpool)
-	loadscreen.set_progress(52)
+	loadscreen.set_progress(25)
 	yield(get_tree(), 'idle_frame')
 	var gamestate_index = 0
 	for p in ResourceScripts.gamestate:
 		ResourceScripts.set(p, dict2inst(savedict[p]))
 		gamestate_index += 1
-		loadscreen.set_progress(52 + 20.0 * gamestate_index / ResourceScripts.gamestate.size())
+		loadscreen.set_progress(25 + 10.0 * gamestate_index / ResourceScripts.gamestate.size())
 		yield(get_tree(), 'idle_frame')
 	input_handler.connect("EnemyKilled", ResourceScripts.game_world, "quest_kill_receiver")
 	ResourceScripts.game_globals.fix_serialization()
-	loadscreen.set_progress(75)
+	loadscreen.set_progress(36)
 	yield(get_tree(), 'idle_frame')
 	ResourceScripts.game_res.fix_serialization()
-	loadscreen.set_progress(78)
+	loadscreen.set_progress(37)
 	yield(get_tree(), 'idle_frame')
 #	ResourceScripts.game_res.fix_items_inventory(false)
 	ResourceScripts.game_party.fix_serialization()
-	loadscreen.set_progress(81)
+	loadscreen.set_progress(38.5)
 	yield(get_tree(), 'idle_frame')
 	ResourceScripts.game_world.fix_serialization()
-	loadscreen.set_progress(84)
+	loadscreen.set_progress(40)
 	yield(get_tree(), 'idle_frame')
 	ResourceScripts.game_progress.fix_serialization()
-	loadscreen.set_progress(86)
+	loadscreen.set_progress(41)
 	yield(get_tree(), 'idle_frame')
 	characters_pool.cleanup()
 	characters_pool.postload()
-	loadscreen.set_progress(88)
+	loadscreen.set_progress(42)
 	yield(get_tree(), 'idle_frame')
 	effects_pool.cleanup()
 	effects_pool.postload()
-	loadscreen.set_progress(90)
+	loadscreen.set_progress(43)
 	yield(get_tree(), 'idle_frame')
 #	print(effects_pool.serialize())
 	#mind! that characters_pool's fix_serialization_postload is inside game_party's
 	ResourceScripts.game_party.fix_serialization_postload()
 	input_handler.clear_portrait_cache() #cached shots belong to the session that took them
 	ResourceScripts.game_party.force_update_portraits()
-	loadscreen.set_progress(94)
+	loadscreen.set_progress(45)
 	yield(get_tree(), 'idle_frame')
 
 	if is_instance_valid(gui_controller.mansion):
 		gui_controller.mansion.queue_free()
 	if is_instance_valid(gui_controller.current_screen):
 		gui_controller.current_screen.queue_free()
-	loadscreen.goto_scene(ResourceScripts.scenedict.mansion, 94, 100)
+	loadscreen.goto_scene(ResourceScripts.scenedict.mansion, 45, 100, true, 60)
 	yield(self, "scene_changed")
 	if is_instance_valid(gui_controller.clock):
 		gui_controller.clock.update_labels()
@@ -1570,6 +1569,25 @@ func text_log_add(label, text):
 	log_storage.append(message)
 	if log_node != null && weakref(log_node).get_ref():
 		log_node.add_log_message(message)
+
+
+func mansion_activity_log_add(event_type, text):
+	var date = ResourceScripts.game_globals.date
+	var hour = ResourceScripts.game_globals.hour
+	#Turn results are produced before game_globals advances its clock. Store the time the
+	#player will see after the turn instead of the hour that has just ended.
+	if gui_controller.clock != null && is_instance_valid(gui_controller.clock):
+		if gui_controller.clock.get("turn_in_progress"):
+			hour += 1
+			if hour > variables.HoursPerDay:
+				hour = 1
+				date += 1
+	var message = {type = event_type, text = text, date = date, hour = hour}
+	ResourceScripts.game_globals.mansion_activity_log.append(message)
+	while ResourceScripts.game_globals.mansion_activity_log.size() > 50:
+		ResourceScripts.game_globals.mansion_activity_log.pop_front()
+	if mansion_activity_log_node != null && weakref(mansion_activity_log_node).get_ref():
+		mansion_activity_log_node.add_log_message(message)
 
 #quite ugly method to stop manifest befor main viewport is ready
 #it's probably useful only for test, but still seems "normal" problem for get_spec_node()
@@ -2266,6 +2284,7 @@ func roll_hirelings(loc, recruiter = null):
 		locdata.captured_characters = []
 	locdata.captured_characters.push_back(newslave.id)
 	input_handler.emit_signal("LocationSlavesUpdate")
+	return newslave
 
 
 var yes

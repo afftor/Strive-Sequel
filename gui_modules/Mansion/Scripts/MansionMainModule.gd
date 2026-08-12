@@ -22,6 +22,7 @@ export(bool) var show_legacy_character_panels = false
 
 
 signal tut_option_selected
+signal initialization_finished
 
 #Skills
 var skill_source
@@ -75,7 +76,6 @@ var always_show = [
 
 const LEGACY_CHARACTER_PANELS = [
 	"MansionSkillsModule",
-	"MansionLogModule",
 	"MansionSlaveModule",
 ]
 
@@ -86,11 +86,12 @@ const TURN_PRODUCT_MAX_STAGGER = 0.35
 var newgame_bonuses
 
 var in_test_mode = false
+var loading_progress_node
+var loading_progress_range = [70.0, 90.0]
 
 func _ready():
 	if !show_legacy_character_panels:
 		$MansionSkillsModule.hide()
-		$MansionLogModule.hide()
 		$MansionSlaveModule.hide()
 #	input_handler.CurrentScene = self
 	if test_mode && OS.has_feature('editor'):
@@ -145,17 +146,28 @@ func _ready():
 	gui_controller.current_screen = self
 	yield(get_tree(),'idle_frame')
 	gui_controller.clock = input_handler.get_spec_node(input_handler.NODE_CLOCK)
-	gui_controller.clock.show()
+	if is_instance_valid(loading_progress_node):
+		gui_controller.clock.hide()
+	else:
+		gui_controller.clock.show()
 	gui_controller.clock.update_labels()
 	$TutorialButton.connect('pressed', self, 'show_tutorial')
 	hotkeys.connect("bindings_changed", self, "build_tutorial_tooltip")
 	build_tutorial_tooltip()
 #	$tutorialpanel/Button.connect('pressed',$tutorialpanel,'hide')
 	slave_list_manager()
-	globals.log_node = $MansionLogModule
+	globals.mansion_activity_log_node = $MansionLogModule
 	input_handler.SetMusicRandom("mansion")
 	SlaveListModule.update_dislocations()
-	SlaveListModule.rebuild()
+	if is_instance_valid(loading_progress_node):
+		yield(SlaveListModule.rebuild_for_loading(
+			loading_progress_node,
+			loading_progress_range[0],
+			loading_progress_range[1]
+		), "completed")
+		loading_progress_node = null
+	else:
+		SlaveListModule.rebuild()
 #	SlaveListModule.build_locations_list()
 	if !ResourceScripts.game_progress.intro_tutorial_seen:
 		$TutorialIntro.show()
@@ -164,6 +176,12 @@ func _ready():
 	Journal.tut_register_minor()
 	Journal.tut_register_first_quest()
 	Journal.tut_register_complete()
+	emit_signal("initialization_finished")
+
+
+func loading_screen_finished():
+	if is_instance_valid(gui_controller.clock):
+		gui_controller.clock.show()
 
 
 

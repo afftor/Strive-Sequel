@@ -1,7 +1,7 @@
 extends PanelContainer
 
-signal info_requested(person)
 signal inventory_requested(person)
+signal food_filter_requested(person)
 
 var person
 
@@ -16,6 +16,30 @@ const OVERVIEW_FACTORS = [
 	"authority_factor",
 ]
 const OVERVIEW_STATS = ["physics", "wits", "charm", "productivity"]
+const COMBAT_STATS = [
+	"atk",
+	"matk",
+	"armor",
+	"mdef",
+	"hitrate",
+	"evasion",
+	"speed",
+	"armorpenetration",
+	"critchance",
+	"critmod",
+]
+const COMBAT_STAT_TOOLTIPS = {
+	"atk": "SIMATK_DESC",
+	"matk": "SIMMATK_DESC",
+	"armor": "SIMDEF_DESC",
+	"mdef": "SIMMDEF_DESC",
+	"hitrate": "SIMHITRATE_DESC",
+	"evasion": "SIMEVASION_DESC",
+	"speed": "SIMSPEED_DESC",
+	"armorpenetration": "SIMARMORPEN_DESC",
+	"critchance": "SIMCRITICAL_DESC",
+	"critmod": "SIMCRITICALMOD_DESC",
+}
 const PERSONALITY_ICONS = {
 	"bold": preload("res://assets/Textures_v2/MANSION/personality_bold.png"),
 	"kind": preload("res://assets/Textures_v2/MANSION/personality_kind.png"),
@@ -46,21 +70,28 @@ onready var Relationships = $Sections/Overview/Right/Relationships
 onready var Equipment = $Sections/Equipment/Content/Scroll/Items
 onready var Traits = $Sections/Traits/Content/Scroll/Items
 onready var Buffs = $Sections/Buffs/Content/Scroll/Items
+onready var CombatStatItems = $Sections/CombatStats/Content/Stats/Items
+onready var ResistItems = $Sections/CombatStats/Content/Resists/Items
 
 
 func _ready():
-	$Sections/Footer/CharacterInfo.connect("pressed", self, "_request_character_info")
-	globals.connecttexttooltip($Sections/Footer/CharacterInfo, tr("MSMNAME"))
-
-
-func _request_character_info():
-	if person != null:
-		emit_signal("info_requested", person)
+	$Sections/Overview/Right/Food/Content/Filter.connect(
+		"pressed", self, "_request_food_filter"
+	)
+	globals.connecttexttooltip(
+		$Sections/Overview/Right/Food/Content/Filter,
+		tr("INFOFOODFILTER")
+	)
 
 
 func _request_inventory():
 	if person != null:
 		emit_signal("inventory_requested", person)
+
+
+func _request_food_filter():
+	if person != null:
+		emit_signal("food_filter_requested", person)
 
 
 func prepare_expanded_person(value):
@@ -76,6 +107,7 @@ func set_person(value):
 	build_equipment()
 	build_traits()
 	build_buffs()
+	build_combat_stats()
 
 
 func build_professions():
@@ -120,8 +152,28 @@ func _setup_overview_row(row, code, value, factor):
 		row.get_node("Value").set("custom_colors/font_color", variables.hexcolordict["factor" + str(factor_index)])
 	else:
 		row.get_node("Value").set("custom_colors/font_color", variables.hexcolordict["k_yellow"])
-	var tooltip = "[center]{color=yellow|" + tr("STAT" + code.to_upper()) + "}[/center]\n" + person.translate(statdata.statdata[code].descript)
+	var tooltip
+	if code == "productivity":
+		tooltip = _build_productivity_tooltip()
+	else:
+		tooltip = "[center]{color=yellow|" + tr("STAT" + code.to_upper()) + "}[/center]\n" + person.translate(statdata.statdata[code].descript)
 	globals.connecttexttooltip(row, tooltip)
+
+
+func _build_productivity_tooltip():
+	var text = "[center]" + statdata.statdata.productivity.name + "[/center]\n"
+	text += person.translate(statdata.statdata.productivity.descript)
+	text += "\n" + tr("TOTALPRODUCTIVITY") + ": " + str(floor(person.get_stat("productivity")))
+	for mod_code in variables.productivity_mods:
+		var mod_value = person.get_stat(mod_code)
+		var line = str(round(mod_value * 100)) + " - " + statdata.statdata[mod_code].name
+		if mod_value > 1:
+			text += "\n{color=green|" + line + "}"
+		elif mod_value < 1:
+			text += "\n{color=red|" + line + "}"
+		else:
+			text += "\n" + line
+	return text
 
 
 func build_expanded_character_info():
@@ -148,7 +200,7 @@ func build_expanded_character_info():
 			]
 		globals.connecttexttooltip(price_row, value_tooltip)
 
-	var standing_row = CharacterRows.get_node("Standing")
+	var standing_row = Relationships.get_node("Content/Standing")
 	standing_row.visible = !person.is_master()
 	if standing_row.visible:
 		standing_row.get_node("Value").text = person.get_character_standing()
@@ -160,7 +212,8 @@ func build_expanded_character_info():
 	personality_row.get_node("Value").text = tr("PERSONALITYNAME" + personality.to_upper())
 	globals.connecttexttooltip(personality_row, globals.get_character_personality_tooltip(personality))
 
-	var preferred_food = $Sections/Overview/Right/CharacterInfo/Content/Preferences/PreferredFood
+	var food_row = $Sections/Overview/Right/Food/Content
+	var preferred_food = food_row.get_node("PreferredFood")
 	var food_love = person.food.food_love
 	preferred_food.visible = food_love != null and food_love != ""
 	globals.disconnect_text_tooltip(preferred_food)
@@ -168,8 +221,14 @@ func build_expanded_character_info():
 		preferred_food.get_node("Icon").texture = images.get_icon(food_love)
 		globals.connecttexttooltip(preferred_food,
 			"[center]" + tr("FOODLIKEDTYPE") + "[/center]\n" + tr("FOODTYPE" + food_love.to_upper()))
+	var demand = person.get_food_demand()
+	var demand_label = food_row.get_node("Demand")
+	demand_label.text = tr("FOODDEMAND" + demand.to_upper())
+	demand_label.set("custom_colors/font_color", Color(variables.hexcolordict[variables.food_demand_colors[demand]]))
+	globals.connecttexttooltip(demand_label,
+		"[center]" + tr("FOODDEMAND") + "[/center]\n" + tr("FOODDEMAND" + demand.to_upper() + "DESCRIPT"))
 
-	var consent_label = $Sections/Overview/Right/CharacterInfo/Content/Preferences/Consent
+	var consent_label = $Sections/Overview/Right/Consent/Value
 	if person.is_master():
 		consent_label.text = tr("SIBLINGMODULECONSENT") + tr("MASTER")
 		globals.connecttexttooltip(consent_label, person.translate(tr("INFOCONSENTMASTER")))
@@ -187,7 +246,6 @@ func build_relationships():
 	for code in ["affection", "respect"]:
 		var row = Relationships.get_node("Content/Bars/" + code.capitalize())
 		row.get_node("Bar").value = person.get_stat(code)
-		row.get_node("Value").text = str(int(round(person.get_stat(code))))
 		var tooltip = "[center]{color=yellow|" + tr("STAT" + code.to_upper()) + "}[/center]\n" + person.translate(statdata.statdata[code].descript)
 		globals.connecttexttooltip(row, tooltip)
 
@@ -216,6 +274,41 @@ func build_traits():
 func build_buffs():
 	if person != null:
 		globals.build_buffs_for_char(person, Buffs, "mansion")
+
+
+func build_combat_stats():
+	input_handler.ClearContainer(CombatStatItems)
+	input_handler.ClearContainer(ResistItems)
+	if person == null:
+		return
+	for code in COMBAT_STATS:
+		var entry = input_handler.DuplicateContainerTemplate(CombatStatItems)
+		entry.name = code
+		entry.get_node("Icon").texture = images.get_icon(variables.fighter_stat_icons[code])
+		entry.get_node("Value").text = _format_combat_stat(code)
+		globals.connecttexttooltip(entry, tr(COMBAT_STAT_TOOLTIPS[code]))
+	for code in variables.resists_list:
+		var entry = input_handler.DuplicateContainerTemplate(ResistItems)
+		entry.name = code
+		entry.get_node("Icon").texture = images.get_icon("resist_" + code)
+		var value = person.get_stat("resist_" + code)
+		var value_label = entry.get_node("Value")
+		value_label.text = str(value)
+		if value > 0:
+			value_label.set("custom_colors/font_color", variables.hexcolordict.yellow)
+		elif value < 0:
+			value_label.set("custom_colors/font_color", variables.hexcolordict.green)
+		else:
+			value_label.set("custom_colors/font_color", variables.hexcolordict.white)
+		globals.connecttexttooltip(entry, tr(code.to_upper() + "RESIST_DESC"))
+
+
+func _format_combat_stat(code):
+	if code == "critmod":
+		return str(floor(person.get_stat(code) * 100)) + "%"
+	if code == "speed":
+		return str(floor(person.get_stat(code)[0]))
+	return str(floor(person.get_stat(code)))
 
 
 func _build_standing_tooltip():

@@ -2568,6 +2568,24 @@ Predicted task shows which job the character will perform next. Materials are al
 	LOGMANSIONTOOLTIP = "Eventi Villa",
 	LOGCHARTOOLTIP = "Eventi Personaggio",
 	LOGQUESTTOOLTIP = "Eventi Missioni",
+	MANSION_ACTIVITY_TITLE = """Activity""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_EMPTY = """No recent activity yet.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TIME = """W%d · D%d · %s""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_ARRIVAL = """Arrival""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_CRAFT = """Crafting""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_UPGRADE = """Upgrade""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_FOOD = """Food""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_RECOVERY = """Recovery""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_QUEST_TASK = """Quest task""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_CHARACTER_FOUND = """Character found""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_ARRIVAL_MANSION = """%s returned to the mansion.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_ARRIVAL_LOCATION = """%s arrived at %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_CRAFT_COMPLETE = """%s finished crafting %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_UPGRADE_COMPLETE = """%s completed the %s upgrade.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_FOOD_DISSATISFIED = """Wasn't satisfied by the food quality""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_INJURY_RECOVERED = """%s recovered from their injuries.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_QUEST_TASK_COMPLETE = """%s completed the quest task: %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_CHARACTER_FOUND = """%s found %s at %s.""", # MISSING TRANSLATION
 	BROTHELLOGSEX = "%s ha guadagnato %s oro eseguendo %s con un cliente %s.",
 	BROTHELLOGSEXPARTIAL = """%s failed to fully attract a customer and earned only %s gold performing %s with a %s customer.""", # MISSING TRANSLATION
 	BROTHELLOGNO_SEX = "%s ha guadagnato %s oro lavorando come %s.",
@@ -3242,7 +3260,7 @@ Danno +15%, Salute +20.""",
 	TOOLTIPSIMPLEBEHAVIOR = "Mentre il comportamento semplice è attivo, il personaggio lavorerà fino a quando non esaurirà l'energia, riposerà fino a quando l'energia non sarà piena e cercherà la gioia fino a quando la stanchezza non sarà scomparsa. Consigliato per i principianti.",
 	TOOLTIPPBASEPRODUCTIVITY = "Produttività di base. Ridotto dalla stanchezza e dall'esaurimento.",
 	TOOLTIPGOLD = "Oro posseduto. L'oro viene utilizzato per l'acquisto di schiavi e oggetti e può essere ottenuto vendendo oggetti, completando missioni e alcuni compiti.",
-	TOOLTIPFOOD = "Prodotti alimentari di proprietà / cibo consumato al giorno. Il cibo è usato da ogni personaggio e può essere ottenuto da alcuni compiti e aumentato con la cottura. La mancanza di cibo porterà all'esaurimento e alla fine alla morte. ",
+	TOOLTIPFOOD = "I personaggi mangiano un alimento alla volta e ogni alimento li mantiene sazi per un determinato numero di turni. La fame riduce Rispetto e Affetto, interrompe la rigenerazione della Salute e dimezza la rigenerazione del Mana.",
 	TOOLTIPENCHANTSCREEN = "Puoi applicare incantesimi e maledizioni a un oggetto. L'applicazione della maledizione aumenterà la capacità di incantesimo dell'oggetto, ma la maledizione sarà casuale e verrà rivelata solo quando si equipaggia l'oggetto. ",
 	ENCHANTBACK = "Torna alla Creazione",
 	ENCHANTIMPROVE = "Migliora Equipaggiamento",
@@ -5609,10 +5627,10 @@ Azioni positive, sociali, fisiche e di umiliazione forniscono maggiore lealtà."
 	UPGRADEFORGEWORKBONUS1 = "Migliora la velocità del 25%",
 	UPGRADEFORGEWORKBONUS2 = "Migliora la velocità del 50%",
 	UPGRADEBUILDERTOOLS = "Strumenti per la creazione",
-	UPGRADEBUILDERTOOLSDESCRIPT = "Aumenta il numero di personaggi che possono essere assegnati all'aggiornamento contemporaneamente.",
-	UPGRADEBUILDERTOOLSBONUS1 = "Numero massimo di slot di aggiornamento: 2",
-	UPGRADEBUILDERTOOLSBONUS2 = "Numero massimo di slot di potenziamento: 3",
-	UPGRADEBUILDERTOOLSBONUS3 = "Numero massimo di slot di aggiornamento: 4",
+	UPGRADEBUILDERTOOLSDESCRIPT = "Aumenta la velocità di tutti i lavori di potenziamento.",
+	UPGRADEBUILDERTOOLSBONUS1 = "Velocità di potenziamento +25%",
+	UPGRADEBUILDERTOOLSBONUS2 = "Velocità di potenziamento +50%",
+	UPGRADEBUILDERTOOLSBONUS3 = "Velocità di potenziamento +100%",
 	INTERACTIONSNOSEXTAG = "La storia personale di [name] non è progredita al punto da permettere a [him] di partecipare a questo tipo di azioni.",
 	NOSEXDETAILSDESCRIPT = "{color=green|Purtroppo, non è possibile controllare le sue parti intime.}",
 	UPGRADEEXOTIC_TRADER = "Mercante esotico",
@@ -9061,14 +9079,14 @@ Aumenta la produttività del 25%.
 	WORKRULECONTRACEPTIVEDESCRIPT = "Previene la gravidanza e l'impregnazione per il personaggio selezionato.",
 	WORKRULENUDITY = "Nudità",
 	WORKRULENUDITYDESCRIPT = "Costringe [name] a rimanere nuda mentre si trova nella villa (se ha uno sprite corrispondente). Questo effetto è cosmetico. Richiede l'addestramento al Servizio Sessuale.",
-	WORKRULEPERSONALITY_LOCK = "Blocca personalità",
-	WORKRULEPERSONALITY_LOCKDESCRIPT = "[name] non avrà più la sua personalità influenzata dalle azioni sociali.",
 	WORKRULERELATIONSHIP = "Consenti Relazione",
 	WORKRULERELATIONSHIPDESCRIPT = "A [name] sarà permesso di stabilire una relazione romantica con altri personaggi oltre a [master].",
 	WORKRULEMASTURBATION = "No masturbazione",
 	WORKRULEMASTURBATIONDESCRIPT = "A [name] non gli sarà permesso di masturbarsi, il che porterà a un aumento dello stress ma anche della libido. Velocità di Riduzione della Resistenza: +20%; Produttività: -10%",
 	WORKRULELOCK = "Blocca",
 	WORKRULELOCKDESCRIPT = "Blocca la visualizzazione del personaggio nell'elenco dei compiti e delle attività che lo rimuovono o lo vendono permanentemente.",
+	WORKRULEHIDE = """Hide""", # MISSING TRANSLATION
+	WORKRULEHIDEDESCRIPT = """Places [name] at the end of the character list and only shows [him] while Show All locations is selected.""", # MISSING TRANSLATION
 	SERVICEENSLAVE = "Asservire",
 	SERVICEENSLAVEDESCRIPT = """Trasforma il personaggio scelto in uno schiavo.
 
@@ -22778,7 +22796,7 @@ Zephyra si blocca quando vede il tuo gesto. Il suo volto segna il tuo destino. I
 	QUEST_WHISKY_CRASH_LOCATION = "Cerca in giro",
 	QUEST_CULT_HIDEOUT_LOCATION = "Cerca l'edificio",
 	QUEST_STAR_CRATER_LOCATION = "Cerca in giro",
-	CURRENT_PREFERRED_FOOD_CONSUMPTION = "Consumo alimentare preferito attuale",
+	CURRENT_PREFERRED_FOOD_CONSUMPTION = "Scorte alimentari totali / Fabbisogno per turno",
 	ALTAR_ITEM_1 = "[name] mette un'offerta sull'altare. ",
 	ALTAR_ITEM_GOOD = """
 
@@ -26171,7 +26189,7 @@ Le lacrime le riempiono gli occhi mentre guarda impotente il corpo privo di sens
 	JEANSYLASMYROPTION = "Ho bisogno di assistenza per un certo caso...",
 	JEANSYLASMYROPTION2 = "C'è un problema con Jean...",
 	JEANSYLASMYROPTION3 = "Ho trovato quello che stavamo cercando...",
-	JEANCHURCHESEARCHTASKNAME = "*Cerca negli archivi della chiesa*",
+	JEANCHURCHESEARCHTASKNAME = "Cerca negli archivi della chiesa",
 	JEANCHURCHESEARCHTASKDESCRIPT = "Jean deve trovare la posizione delle rovine",
 	JEAN_SYLAS_NEXT_DAY_START = "Gli eventi accaduti in quelle rovine hanno chiaramente lasciato il segno su Jean. La mattina seguente, sali al piano di sopra per vedere come sta e la trovi a fissare la pila di appunti sul tavolo con un'espressione un po' persa.",
 	JEAN_SYLAS_NEXT_DAY_OPTION_CHECK = "Come stai?",

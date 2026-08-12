@@ -1,16 +1,15 @@
 extends Control
 
-#button node -> [hotkey action, name translation key], used to build the tooltips.
-#TravelsButton is hidden in the scene - the visible travel button lives in the
-#navigation panel and carries that tooltip instead
-const BUTTON_DATA = {
-	WorkButton = ['mansion_work', 'LMMWORK'],
-	UpgradesButton = ['mansion_upgrades', 'LMMUPGRADES'],
-	SexButton = ['mansion_sex', 'LMMDATE'],
-	InventoryButton = ['mansion_inventory', 'LMMINVENTORY'],
-	CraftButton = ['mansion_craft', 'LMMCRAFT'],
-	Journal = ['mansion_journal', 'LMMJOURNAL'],
-	options = ['mansion_menu', 'LMMOPTIONS'],
+#Button node -> label child shown beside its icon on hover.
+const BUTTON_LABELS = {
+	WorkButton = 'Label',
+	TravelsButton = 'Label',
+	UpgradesButton = 'Label2',
+	SexButton = 'Label3',
+	InventoryButton = 'Label4',
+	CraftButton = 'Label5',
+	Journal = 'Label5',
+	options = 'Label5',
 }
 
 
@@ -29,14 +28,23 @@ func _ready():
 	input_handler.register_btn_source('craft_button', self, 'tut_get_CraftButton')
 	input_handler.register_btn_source('inventory_button', self, 'tut_get_InventoryButton')
 	input_handler.register_btn_source('journal_button', self, 'tut_get_Journal')
-	hotkeys.connect("bindings_changed", self, "build_tooltips")
-	build_tooltips()
+	for button_name in BUTTON_LABELS:
+		var button = $VBoxContainer.get_node(button_name)
+		var label = button.get_node(BUTTON_LABELS[button_name])
+		button.connect("mouse_entered", self, "_set_button_label_visible", [label, true])
+		button.connect("mouse_exited", self, "_set_button_label_visible", [label, false])
+	connect("visibility_changed", self, "_hide_button_labels")
 
 
-func build_tooltips():
-	for btn_name in BUTTON_DATA:
-		var data = BUTTON_DATA[btn_name]
-		globals.connecttexttooltip($VBoxContainer.get_node(btn_name), hotkeys.get_tooltip_text(data[1], data[0]))
+func _set_button_label_visible(label, value):
+	label.visible = value
+
+
+func _hide_button_labels():
+	if is_visible_in_tree():
+		return
+	for button_name in BUTTON_LABELS:
+		$VBoxContainer.get_node(button_name).get_node(BUTTON_LABELS[button_name]).hide()
 
 
 func tut_get_UpgradesButton():

@@ -687,9 +687,24 @@ func ShowLoadScreen():
 	return loadscreen
 
 
-func ChangeScene(name):
-	ResourceScripts.core_animations.BlackScreenTransition(0.3)
+func ShowLoadScreenWithTransition(duration = 0.3):
+	# Swap screens at the opaque midpoint. Adding LoadScreen immediately after the old
+	# BlackScreenTransition() put it above the black overlay and made the fade invisible.
+	var blackscreen = load(ResourceScripts.scenedict.black).instance()
+	var root = get_tree().get_root()
+	root.add_child(blackscreen)
+	yield(ResourceScripts.core_animations.UnfadeAnimation(blackscreen, duration), "completed")
 	var loadscreen = ShowLoadScreen()
+	loadscreen.prepare_loading(0)
+	root.move_child(blackscreen, root.get_child_count() - 1)
+	ResourceScripts.core_animations.FadeAnimation(blackscreen, duration)
+	yield(get_tree().create_timer(duration + 0.05), "timeout")
+	blackscreen.queue_free()
+	return loadscreen
+
+
+func ChangeScene(name):
+	var loadscreen = yield(ShowLoadScreenWithTransition(0.3), "completed")
 	loadscreen.goto_scene(ResourceScripts.scenedict[name])
 
 func GetTweenNode(node): #not compartible with get_spec_node due to not linking new node to root
