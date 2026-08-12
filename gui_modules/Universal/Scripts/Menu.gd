@@ -60,7 +60,6 @@ func _ready():
 	call_deferred("show_mod_list_safety_message")
 	$UpdateNotice.start_update_check()
 	cycle_backgrounds()
-
 func show_mod_list_safety_message():
 	if modding_core.mod_list_safety_message == "":
 		return

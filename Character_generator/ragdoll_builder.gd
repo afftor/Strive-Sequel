@@ -3,6 +3,7 @@ extends Node2D
 export var clothes = true
 export var test_mode = false
 export var tits_interaction = true
+export var update_character_portrait = true
 
 onready var _root = $VPC/VP
 
@@ -18,6 +19,11 @@ const ZOOM_MIN = 0.75
 const ZOOM_MAX = 1.5
 const ZOOM_HOVER_HALF_WIDTH = 275.0
 const ZOOM_HOVER_HALF_HEIGHT = 500.0
+const PORTRAIT_MIN_VISIBLE = 0.9 #share of the crop frame that has to be on canvas to shoot
+const PORTRAIT_ZOOM = 0.8 #share of the authored frame that is kept - lower crops closer
+const PORTRAIT_FOCUS = Vector2(0.5, 0.55) #where in the frame the crop centres, 0..1.
+#slightly below the middle: the frame carries the hair above the face, so centering on it
+#would aim at the hairline rather than at the face
 const DRAG_THRESHOLD = 6.0
 const PAN_LIMIT_X = 220.0
 const PAN_LIMIT_Y = 320.0
@@ -184,7 +190,7 @@ func rebuild(character_to_build):
 
 	_root.render_target_clear_mode = Viewport.CLEAR_MODE_ONLY_NEXT_FRAME
 	_root.render_target_update_mode = Viewport.UPDATE_ONCE
-	if character != null:
+	if update_character_portrait and character != null and can_shoot_portrait():
 		character.update_portrait(self)
 
 
@@ -321,7 +327,7 @@ func rebuild_stat(statname):
 	
 	_root.render_target_clear_mode = Viewport.CLEAR_MODE_ONLY_NEXT_FRAME
 	_root.render_target_update_mode = Viewport.UPDATE_ONCE
-	if character != null:
+	if update_character_portrait and character != null and can_shoot_portrait():
 		character.update_portrait(self)
 
 
@@ -573,31 +579,115 @@ func apply_transform(transform):
 				mat.set_shader_param(transform.part, transform.color)
 
 
-func save_portrait(name):
+func get_portrait_frame(): #authored crop frame, rides the head bone of the shown pose
+	for nd in get_tree().get_nodes_in_group('portrait'):
+		if !self.is_a_parent_of(nd) or !nd.is_visible_in_tree():
+			continue
+		return nd
+	return null
+
+
+func get_portrait_rect(frame):
+	#box the four corners rather than origin + basis_xform(size): that shortcut only holds
+	#while every rotation in the chain (Spine, the frame itself) stays a multiple of 90
+	var transform = frame.get_global_transform()
+	var size = frame.rect_size
+	var rect = Rect2(transform.xform(Vector2(0, 0)), Vector2(0, 0))
+	rect = rect.expand(transform.xform(Vector2(size.x, 0)))
+	rect = rect.expand(transform.xform(Vector2(0, size.y)))
+	rect = rect.expand(transform.xform(size))
+	var focus = rect.position + rect.size * PORTRAIT_FOCUS
+	rect.size *= PORTRAIT_ZOOM
+	rect.position = focus - rect.size * 0.5
+	rect.position = rect.position.floor()
+	rect.size = rect.size.ceil()
+	return rect
+
+
+func can_shoot_portrait():
+	#the head sits near the top of the canvas, so zoom, panning and the taller heights push
+	#the crop frame past the edge. get_rect would silently trim it and the portrait would
+	#come out both cut and undersized, then stretched by whatever shows it. Skipping keeps
+	#the old portrait, and portrait_update stays raised so the next rebuild tries again.
+	var frame = get_portrait_frame()
+	if frame == null:
+		return false
+	var rect = get_portrait_rect(frame)
+	if rect.get_area() <= 0:
+		return false
+	return rect.clip(Rect2(Vector2.ZERO, _root.size)).get_area() >= rect.get_area() * PORTRAIT_MIN_VISIBLE
+
+
+func unpremultiply(image):
+	#the canvas composites onto transparent black, so a half transparent pixel comes back
+	#already multiplied by its own alpha, i.e. darkened. Over the dark card that went
+	#unnoticed, over a location backdrop it would draw a dark rim around hair and ears
+	image.lock()
+	for y in image.get_height():
+		for x in image.get_width():
+			var c = image.get_pixel(x, y)
+			if c.a <= 0.0 or c.a >= 1.0: #fully clear or fully opaque pixels are untouched
+				continue
+			image.set_pixel(x, y, Color(
+				min(c.r / c.a, 1.0), min(c.g / c.a, 1.0), min(c.b / c.a, 1.0), c.a))
+	image.unlock()
+
+
+func center_portrait_frame(anchor):
+	#booth use: slide the whole pose so the crop frame lands on the anchor. Framing then
+	#stops depending on where a screen happened to place the ragdoll, and the frame cannot
+	#run off the canvas the way it does for tall characters on the busier screens
+	var frame = get_portrait_frame()
+	if frame == null:
+		return false
+	var rect = get_portrait_rect(frame)
+	_offset += anchor - (rect.position + rect.size * 0.5)
+	_apply_pose_transform()
+	_root.render_target_clear_mode = Viewport.CLEAR_MODE_ONLY_NEXT_FRAME
+	_root.render_target_update_mode = Viewport.UPDATE_ONCE
+	return true
+
+
+func save_portrait(name, char_ref = null):
 	var dir = Directory.new()
 	if !dir.dir_exists(variables.portraits_folder):
 		dir.make_dir(variables.portraits_folder)
 	var path = variables.portraits_folder + name + '.png'
-	
-	yield(get_tree(), 'idle_frame')
-	yield(get_tree(), 'idle_frame')
-#	yield(get_tree().create_timer(0.3), "timeout")
-	var texture = $VPC/VP.get_texture()
-#	var texture = get_tree().get_root().get_texture()
-	var image = texture.get_data()
-#	image.resize(ProjectSettings.get("display/window/size/width"), ProjectSettings.get("display/window/size/height"), 3)
-	image.flip_y()
-#	image.save_png(path)
 
-	for nd in get_tree().get_nodes_in_group('portrait'):
-		if !self.is_a_parent_of(nd) or !nd.is_visible_in_tree():
-			continue
-#		print(input_handler.get_real_global_rect(nd))
-		image = image.get_rect(input_handler.get_real_global_rect(nd))
-#		nd.texture = texture
-#		image.flip_y()
-#		image.resize(variables.portrait_width, variables.portrait_height)
-		image.save_png(path)
+	yield(get_tree(), 'idle_frame')
+	yield(get_tree(), 'idle_frame')
+	if !is_inside_tree(): #the screen can be closed while the shot waits for the render
+		if char_ref != null:
+			char_ref.portrait_failed()
+		return
+	var frame = get_portrait_frame()
+	if frame == null:
+		if char_ref != null:
+			char_ref.portrait_failed()
+		return
+	var texture = _root.get_texture()
+	var image = texture.get_data()
+	image.flip_y()
+	#slide a slightly overhanging frame back onto the canvas instead of letting get_rect
+	#trim it - keeps the portrait the size the frame asks for
+	var image_size = image.get_size()
+	var rect = get_portrait_rect(frame)
+	rect.size.x = min(rect.size.x, image_size.x)
+	rect.size.y = min(rect.size.y, image_size.y)
+	rect.position.x = clamp(rect.position.x, 0, image_size.x - rect.size.x)
+	rect.position.y = clamp(rect.position.y, 0, image_size.y - rect.size.y)
+	if rect.size.x < 1 or rect.size.y < 1:
+		if char_ref != null:
+			char_ref.portrait_failed()
+		return
+	image = image.get_rect(rect)
+	unpremultiply(image)
+	#hand the picture over in memory - the png is only there to survive a restart, nobody
+	#has to read it back to show the fresh portrait
+	input_handler.store_portrait(path, image)
+	if char_ref != null:
+		char_ref.portrait_ready(path)
+	image.save_png(path)
 	input_handler.emit_signal("PortraitUpdate")
 
 

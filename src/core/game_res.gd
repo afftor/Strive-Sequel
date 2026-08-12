@@ -124,8 +124,10 @@ func fix_tax():
 		if udata.has('tax'): #not used but may be needed later
 			tax += udata.tax
 		if udata.has('levels'):
-			for lv in range(upgrades[upgrade]):
-				var ldata = udata.levels[lv + 1]
+			for level_key in udata.levels:
+				if int(level_key) > upgrades[upgrade]:
+					continue
+				var ldata = udata.levels[level_key]
 				if ldata.has('tax'):
 					tax += ldata.tax
 
@@ -565,8 +567,14 @@ func process_gathering():
 			continue
 		
 		var tprogress = tasks_progresses[t_id]
+		var worker_lookup = {}
+		for worker_id in tprogress.workers:
+			worker_lookup[worker_id] = true
+		var task_code = null
+		if !tprogress.type in ['gather_limited', 'gather_simple']:
+			task_code = tasks.find_task_for_res(tprogress.job)
 		for ch_id in ResourceScripts.game_party.character_order:
-			if !(ch_id in tprogress.workers):
+			if !worker_lookup.has(ch_id):
 				continue
 			var character = characters_pool.get_char_by_id(ch_id)
 			if tprogress.status == 'completed':
@@ -576,8 +584,8 @@ func process_gathering():
 				if tprogress.type in ['gather_limited', 'gather_simple']:
 					val = character.get_progress_resource(tprogress.job, true)
 				else:
-					val = character.get_job_value(tasks.find_task_for_res(tprogress.job), true)
-				_add_gather_value(tprogress, val, character)
+					val = character.get_job_value(task_code, true)
+				_add_gather_value(t_id, tprogress, val, character)
 				character.work_tick_values(tprogress.workstat)
 				if tprogress.status == 'completed':
 					globals.text_log_add('char', character.get_short_name() + ": " + "No more resources to gather.")
@@ -593,7 +601,7 @@ func process_farm():
 		var reslist = character.get_farming_rules() 
 		for res in reslist:
 			var value = character.get_progress_farm(res) 
-			_add_farming_value(res, value)
+			_add_farming_value(res, value, character)
 
 
 func process_service(managed = false):
@@ -602,10 +610,13 @@ func process_service(managed = false):
 	_add_service_job()
 	var currenttask = tasks_progresses.service
 	var slice = OS.get_ticks_msec()
+	var worker_lookup = {}
+	for worker_id in currenttask.workers:
+		worker_lookup[worker_id] = true
 	#iterate a copy: a character dying mid-turn erases itself from character_order, and with
 	#the tick spread over frames a deferred cleanup can land in the middle of this loop
 	for ch_id in ResourceScripts.game_party.character_order.duplicate():
-		if !(ch_id in currenttask.workers):
+		if !worker_lookup.has(ch_id):
 			continue
 		var character = characters_pool.get_char_by_id(ch_id)
 		if character == null or !character.is_active:
@@ -683,6 +694,7 @@ func _process_spec_task(id):
 			if tprogress.progress >= tprogress.progress_limit:
 				tprogress.status = 'completed'
 				globals.common_effects(tprogress.args)
+				globals.emit_signal("work_produced", tchar.id, id, tprogress.icon)
 				globals.text_log_add('mansion', tr("SPECTASKCOMPLETED") + " - " + tr(tprogress.name))
 				input_handler.PlaySound("ding")
 		else:
@@ -701,6 +713,7 @@ func _process_recruit_task(id):
 		while tprogress.progress >= tprogress.progress_limit:
 			tprogress.progress -= tprogress.progress_limit
 			globals.roll_hirelings(tprogress.location, tchar)
+			globals.emit_signal("work_produced", tchar.id, id, tprogress.icon)
 			globals.text_log_add('mansion', tr("HIRELINGFOUND"))
 			input_handler.PlaySound("ding")
 
@@ -717,6 +730,7 @@ func _add_build_value(curupgrade, value, character, tres = false):
 		if tprogress.progress >= tprogress.progress_limit:
 			var newval = tprogress.progress - tprogress.progress_limit
 			level_up_upgrade(curupgrade)
+			globals.emit_signal("work_produced", character.id, curupgrade, "res://assets/Textures_v2/MANSION/icon_upgrade_64.png")
 			
 			if tdata.levels[int(tprogress.level)].has('tax'):
 				tax += tdata.levels[int(tprogress.level)].tax
@@ -802,7 +816,7 @@ func _add_craft_value(curupgrade, value, character):
 			return 0
 
 
-func _add_gather_value(tprogress, value, character):
+func _add_gather_value(task_id, tprogress, value, character):
 #	var tprogress = tasks_progresses[curupgrade]
 	#batch limits
 	var limit1 = 0
@@ -824,6 +838,8 @@ func _add_gather_value(tprogress, value, character):
 		else:
 			materials[tprogress.job] += limit
 		character.add_metric_for_outcome(tprogress.job, limit)
+		var product_icon = "res://assets/images/iconsitems/gold.png" if tprogress.job == 'gold' else Items.materiallist[tprogress.job].icon
+		globals.emit_signal("work_produced", character.id, task_id, product_icon)
 	
 	if tprogress.type == 'gather_limited':
 		var locdata = ResourceScripts.world_gen.get_location_from_code(tprogress.location)
@@ -838,14 +854,18 @@ func _add_gather_value(tprogress, value, character):
 	return value
 
 
-func _add_farming_value(res, value):
+func _add_farming_value(res, value, character):
 	if !tasks_progresses.has('farming_' + res):
 		_add_farming_task(res)
 	var tprogress = tasks_progresses['farming_' + res]
 	tprogress.progress += value
+	var produced = 0
 	while tprogress.progress > tprogress.progress_limit:
 		materials[res] += 1
+		produced += 1
 		tprogress.progress -= tprogress.progress_limit
+	if produced > 0:
+		globals.emit_signal("work_produced", character.id, "farming", Items.materiallist[res].icon)
 
 
 #tasks helpers
@@ -1070,6 +1090,8 @@ func make_item(temp, character):
 			elif true_item.quality == 'epic':
 				character.try_rise_fame('craft_epic')
 			globals.AddItemToInventory(true_item)
+	var product_icon = Items.materiallist[recipe.resultitem].icon if recipe.resultitemtype == 'material' else Items.itemlist[recipe.resultitem].icon
+	globals.emit_signal("work_produced", character.id, temp, product_icon)
 
 
 #func make_item_sequence(currenttask, craftingitem, character):

@@ -21,7 +21,7 @@ func _ready():
 		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
 	globals.connecttexttooltip(SummaryModule.get_node("VBoxContainer2/TextureRect2/Exp"), statdata.statdata["base_exp"].descript)
 	SummaryModule.get_node("VBoxContainer2/TextureRect4/NextClassExp").hint_tooltip = tr("NEXTCLASSEXP")# + str(person.get_next_class_exp())
-	input_handler.connect('PortraitUpdate', self, 'show_summary')
+	input_handler.connect('PortraitUpdate', self, 'refresh_portrait')
 
 	for i in base_stats_container.get_children():
 		if i.name == "Exp":
@@ -46,6 +46,12 @@ func hire_sell():
 		hire_character()
 	else:
 		sell_slave()
+
+
+func refresh_portrait(): #see CharInfoMainModule - swap the picture, do not redraw the screen
+	if !is_visible_in_tree() or selected_char == null:
+		return
+	SummaryModule.get_node('Portrait').texture = selected_char.get_icon()
 
 
 func show_summary(person = selected_char):

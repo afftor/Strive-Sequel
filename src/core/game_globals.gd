@@ -117,34 +117,53 @@ func autosave_due():
 
 #managed = the caller (clock module) drives the autosave and the mansion rebuild itself,
 #spreading the tick over frames instead of doing everything inside a single one.
-#in managed mode this is a coroutine - yield on 'completed'
-func advance_hour(managed = false):
+#in managed mode this is a coroutine - yield on 'completed'. The optional clock target
+#receives one cumulative fraction for the whole simulation without exposing its stages.
+func advance_hour(managed = false, progress_target = null):
 	if managed: #always a coroutine when managed, so the caller can yield on it
 		yield(globals.get_tree(), 'idle_frame')
+	_report_turn_progress(progress_target, 0.01)
 	if !managed and autosave_due():
 		globals.autosave()
 	#slices are cut by elapsed time rather than character count, so one frame costs the same
 	#whether a character is cheap or expensive and the transition animates at a steady rate
 	var slice = OS.get_ticks_msec()
-	for i in ResourceScripts.game_party.characters.values():
+	var turn_characters = ResourceScripts.game_party.characters.values()
+	var character_count = max(turn_characters.size(), 1)
+	var character_index = 0
+	for i in turn_characters:
 		i.pretick()
+		character_index += 1
+		_report_turn_progress(progress_target, 0.02 + 0.16 * float(character_index) / character_count)
 		if managed and OS.get_ticks_msec() - slice >= variables.turn_frame_budget_msec:
 			yield(globals.get_tree(), 'idle_frame')
 			slice = OS.get_ticks_msec()
-	for i in ResourceScripts.game_party.characters.values():
+	turn_characters = ResourceScripts.game_party.characters.values()
+	character_count = max(turn_characters.size(), 1)
+	character_index = 0
+	for i in turn_characters:
 		i.act_prepared()
+		character_index += 1
+		_report_turn_progress(progress_target, 0.18 + 0.10 * float(character_index) / character_count)
 	slice = OS.get_ticks_msec()
-	for i in ResourceScripts.game_party.characters.values():
+	turn_characters = ResourceScripts.game_party.characters.values()
+	character_count = max(turn_characters.size(), 1)
+	character_index = 0
+	for i in turn_characters:
 		i.tick()
+		character_index += 1
+		_report_turn_progress(progress_target, 0.28 + 0.50 * float(character_index) / character_count)
 		if managed and OS.get_ticks_msec() - slice >= variables.turn_frame_budget_msec:
 			yield(globals.get_tree(), 'idle_frame')
 			slice = OS.get_ticks_msec()
 	if managed:
 		yield(globals.get_tree(), 'idle_frame')
+	_report_turn_progress(progress_target, 0.80)
 	if managed:
 		yield(ResourceScripts.game_res.tick(true), 'completed')
 	else:
 		ResourceScripts.game_res.tick()
+	_report_turn_progress(progress_target, 0.88)
 	if managed:
 		yield(globals.get_tree(), 'idle_frame')
 	hour += 1
@@ -156,6 +175,12 @@ func advance_hour(managed = false):
 			yield(advance_day(true), 'completed')
 		else:
 			advance_day()
+	_report_turn_progress(progress_target, 1.0)
+
+
+func _report_turn_progress(progress_target, value):
+	if progress_target != null and progress_target.has_method("set_turn_simulation_progress"):
+		progress_target.set_turn_simulation_progress(value)
 
 
 func advance_day(managed = false):

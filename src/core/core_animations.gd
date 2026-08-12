@@ -329,7 +329,7 @@ func ItemFlightGold(start, params = {}):
 
 #null while the player has the effect switched off, so callers never build the overlay
 func get_flight_overlay():
-	if input_handler.globalsettings.get("no_item_flight", false):
+	if !input_handler.globalsettings.get("item_flight_animation", false):
 		return null
 	return input_handler.get_spec_node(input_handler.ANIM_ITEM_FLIGHT)
 

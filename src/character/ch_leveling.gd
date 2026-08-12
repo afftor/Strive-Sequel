@@ -653,16 +653,20 @@ func select_brothel_activity():
 			parent.get_ref().take_virginity('vaginal', 'brothel_customer')
 			bonus_gold += parent.get_ref().calculate_price(false, true) * 0.01
 		if sex_rules.has('pussy') && penis_check:
-			var tmpchar = ResourceScripts.scriptdict.class_slave.new("test_main")
-			tmpchar.create('random', 'male', 'random')
 			if randf() < variables.brothel_pregnancy_chance:
+				var tmpchar = ResourceScripts.scriptdict.class_slave.new("test_main")
+				tmpchar.create('random', 'male', 'random')
 				globals.impregnate(tmpchar, parent.get_ref())
-			tmpchar.is_active = false
+				tmpchar.is_active = false
 		if sex_rules.has('anal') && penis_check:
 			parent.get_ref().take_virginity('anal', 'brothel_customer')
 
+		var selected_workstat = null
 		if data.workstats.size() > 0:
-			work_tick_values(input_handler.random_from_array(data.workstats))
+			#Pick at the original point in the RNG sequence, but apply the stat gain
+			#after payout calculations so it cannot invalidate and rebuild every
+			#dynamic stat halfway through the same service action.
+			selected_workstat = input_handler.random_from_array(data.workstats)
 		parent.get_ref().try_rise_fame('service')
 
 		parent.get_ref().add_stat('metrics_randompartners', globals.fastif(sex_rules.has('group'), 2, 1))
@@ -685,11 +689,15 @@ func select_brothel_activity():
 
 		goldearned = apply_boosters(goldearned)
 		goldearned = round(goldearned)
+		if selected_workstat != null:
+			work_tick_values(selected_workstat)
 
 
 		parent.get_ref().add_stat('metrics_goldearn', goldearned)
 
 		ResourceScripts.game_res.money += goldearned
+		if goldearned > 0:
+			globals.emit_signal("work_produced", parent.get_ref().id, "service", "res://assets/images/iconsitems/gold.png")
 
 
 		#TODO add decriptions and impregnation
@@ -703,8 +711,9 @@ func select_brothel_activity():
 		var highest_value = get_highest_value(non_sex_rules)
 		
 		var data = tasks.gold_tasks_data[highest_value.code]
+		var selected_workstat = null
 		if data.workstats.size() > 0:
-			work_tick_values(input_handler.random_from_array(data.workstats))
+			selected_workstat = input_handler.random_from_array(data.workstats)
 		parent.get_ref().try_rise_fame('service')
 		
 		var goldearned = highest_value.value
@@ -717,10 +726,14 @@ func select_brothel_activity():
 
 		goldearned = apply_boosters(goldearned)
 		goldearned = round(goldearned)
+		if selected_workstat != null:
+			work_tick_values(selected_workstat)
 		
 		parent.get_ref().add_stat('metrics_goldearn', goldearned)
 		
 		ResourceScripts.game_res.money += goldearned
+		if goldearned > 0:
+			globals.emit_signal("work_produced", parent.get_ref().id, "service", "res://assets/images/iconsitems/gold.png")
 		update_brothel_log(parent.get_ref().get_stat('name'), goldearned, data)
 	else:
 		remove_from_task()
@@ -934,10 +947,14 @@ func add_metric_for_outcome(res_id, amount = 1):
 
 
 func work_tick_values(workstat):
-	if !parent.get_ref().has_status('no_working_bonuses'):
+	var person = parent.get_ref()
+	if !person.has_status('no_working_bonuses'):
+		#Read the multiplier and award experience while the dynamic-stat cache is
+		#still valid. The work-stat gain intentionally invalidates it last, for the
+		#next consumer, instead of forcing a full rebuild inside every work action.
+		person.add_stat('base_exp', 5)
 		if workstat.findn("sex_skills") < 0:
-			parent.get_ref().add_stat(workstat, 0.36)
-		parent.get_ref().add_stat('base_exp', 5)
+			person.add_stat(workstat, 0.36)
 
 
 func predict_active_task():

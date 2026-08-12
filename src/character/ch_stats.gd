@@ -1476,6 +1476,8 @@ func get_icon():
 	if statlist.icon_image in ['', null]:
 		return null
 	if statlist.icon_image is String:
+		if statlist.icon_image.begins_with(variables.portraits_folder):
+			return input_handler.get_portrait(statlist.icon_image)
 		return input_handler.loadimage(statlist.icon_image, 'portraits')
 	else:
 		return statlist.icon_image

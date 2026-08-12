@@ -91,20 +91,12 @@ func select_skill_target(skillcode):
 		use_skill(person)
 		return
 	input_handler.SystemMessage("Select target for Ability", 3)
-	get_parent().chars_for_skill.clear()
-	var skill_source = get_parent().skill_source
 	for i in $SkillPanel.get_children():
 		if i.has_meta('skill'):
 			i.pressed = i.get_meta("skill") == skillcode
-	# input_handler.ShowSlaveSelectPanel(self, 'use_skill', [{code = 'is_free', check = true}, {code = 'is_id', operant = 'neq', value = person.id}] + Skilldata.Skilllist[skillcode].targetreqs)
 	var reqs = [{code = 'is_id', operant = 'neq', value = person.id}] + template.targetreqs
-	for i in ResourceScripts.game_party.characters.values():
-		if !i.checkreqs(reqs) || !i.same_location_with(skill_source):
-			continue
-		if i.is_on_quest():
-			continue
-		get_parent().chars_for_skill.append(i)
-	get_parent().skill_manager()
+	reqs.append({code = 'is_at_location', value = person.get_location(), check = true})
+	input_handler.ShowSlaveSelectPanel(self, 'use_skill', reqs)
 
 func use_skill(target):
 	get_tree().get_root().get_node("skilltooltip").hide()

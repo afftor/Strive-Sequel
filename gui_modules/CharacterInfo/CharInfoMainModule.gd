@@ -21,7 +21,7 @@ func _ready():
 #	update()
 	#$TalkButton.connect("pressed", self, 'talk', [])
 	#$RemoveButton.connect('pressed',self,'remove',[])
-	input_handler.connect('PortraitUpdate', self, 'update')
+	input_handler.connect('PortraitUpdate', self, 'refresh_portrait')
 	input_handler.connect('SpellUsed', self, 'update')
 	connect("visibility_changed", self, "close_food_preferences_when_hidden")
 	input_handler.register_btn_source('char_close_button', self, 'tut_get_close_button')
@@ -105,6 +105,15 @@ func get_sex_training_label(state):
 		'skilled': return tr("SEX_TRAINING_LEVEL_SKILLED")
 		'mastered': return tr("SEX_TRAINING_LEVEL_MASTERED")
 	return str(state).capitalize()
+
+func refresh_portrait():
+	#a finished shot only needs the picture swapped. update() rebuilds the whole screen,
+	#ragdoll included, which is a full pass over every generator transform - far too much
+	#for one texture, and it is what made the new portrait show up half a second late
+	if !is_visible_in_tree() or active_person == null:
+		return
+	SummaryModule.get_node('Portrait').texture = active_person.get_icon()
+
 
 func update():
 	if !is_visible_in_tree():

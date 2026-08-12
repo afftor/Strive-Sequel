@@ -2247,6 +2247,7 @@ func victory():
 func give_rewards():
 	$Rewards/CloseButton.disabled = true
 	input_handler.PlaySound("battle_victory")
+	update_defeated_enemy_icons()
 
 	var rewardsdict = {gold = 0, materials = {}, items = [], xp = 0}
 	for i in enemygroup.values():
@@ -2372,6 +2373,26 @@ func give_rewards():
 	get_tree().get_root().set_disable_input(false)
 	$Rewards/CloseButton.grab_click_focus()
 	emit_signal('rewards_anim_finished')
+
+
+func update_defeated_enemy_icons():
+	var icons_container = $Rewards/DefeatedEnemies/HBoxContainer
+	input_handler.ClearContainer(icons_container)
+	$Rewards/DefeatedEnemies.visible = instant_mode
+	if !instant_mode:
+		return
+	for id in enemygroup.values():
+		if id == null:
+			continue
+		var enemy = characters_pool.get_char_by_id(id)
+		if enemy == null:
+			continue
+		var icon = enemy.get_icon()
+		if icon == null:
+			continue
+		var icon_panel = input_handler.DuplicateContainerTemplate(icons_container)
+		icon_panel.get_node("Icon").texture = icon
+		globals.connecttexttooltip(icon_panel, enemy.get_short_name())
 
 
 func defeat(runaway = false): #runaway is a temporary variable until run() method not fully implemented

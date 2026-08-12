@@ -263,11 +263,12 @@ func get_stat_composition_dict():
 	#or get_stat() currently can't find them
 	return stat_compo_dict
 
-#metrics_* are bookkeeping counters - nothing derives a bonus from them, so writing one
-#must not throw away the dyn-stat cache. Doing so used to force a full rebuild on the next
-#get_stat, which is what made brothel/work ticks scale so badly with party size.
+#metrics_*, the experience progress and the fame timer are bookkeeping values - nothing
+#derives a dynamic bonus from them, so writing one must not throw away the dyn-stat cache.
+#Doing so used to force a full rebuild on the next get_stat, which is what made brothel/work
+#ticks scale so badly with party size.
 func stat_affects_dyn_stats(statname):
-	return !statname.begins_with('metrics_')
+	return !statname.begins_with('metrics_') and !statname in ['base_exp', 'fame_degrade_timer']
 
 
 func set_stat(stat, value):
@@ -2815,11 +2816,32 @@ func update_portrait(ragdoll): # for ragdolls
 		return
 	if !get_stat('portrait_update'):
 		return
-	
-	var path = 'portrait_' + id
+
+	#the shot needs two frames to land. icon_image only moves once it did - pointing it at a
+	#file that does not exist yet is what made the portrait blink to the race icon meanwhile
 	set_stat('portrait_update', false)
-	set_stat('icon_image', variables.portraits_folder + path + '.png')
-	ragdoll.save_portrait(path)
+	ragdoll.save_portrait('portrait_' + id, self)
+
+
+func needs_portrait(): #never had one taken, or the file behind it is gone
+	if !get_stat('dynamic_portrait'):
+		return false
+	var path = get_stat('icon_image')
+	if !(path is String) or path == '':
+		return true
+	if !path.begins_with(variables.portraits_folder): #hand picked or story artwork
+		return false
+	if input_handler.portrait_cache.has(path): #asked once per card build, keep it off the disk
+		return false
+	return !File.new().file_exists(path)
+
+
+func portrait_ready(path): #called back by the ragdoll, the image is in the cache by then
+	set_stat('icon_image', path)
+
+
+func portrait_failed(): #nothing was written, ask again on the next rebuild
+	set_stat('portrait_update', true)
 
 
 func check_portrait():

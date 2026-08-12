@@ -59,7 +59,7 @@ func _ready():
 
 
 func is_enabled():
-	return !input_handler.globalsettings.get("no_item_flight", false)
+	return input_handler.globalsettings.get("item_flight_animation", false)
 
 
 #icon accepts a Texture, a resource path, a material code or an Item; start accepts a

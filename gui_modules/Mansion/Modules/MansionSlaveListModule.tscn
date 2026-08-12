@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=2]
@@ -50,6 +50,18 @@
 [ext_resource path="res://gui_modules/Universal/Scripts/ContextDropdown.gd" type="Script" id=48]
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=49]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_traits_hover.png" type="Texture" id=50]
+[ext_resource path="res://gui_modules/Mansion/Modules/MansionSlaveCardPortrait.tscn" type="PackedScene" id=67]
+[ext_resource path="res://gui_modules/Mansion/Modules/MansionSlaveExpandedDetails.tscn" type="PackedScene" id=68]
+[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill.png" type="Texture" id=69]
+[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_dark.png" type="Texture" id=70]
+[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_light.png" type="Texture" id=71]
+[ext_resource path="res://assets/images/gui/universal/skill_frame_diabled.png" type="Texture" id=72]
+[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_empty.png" type="Texture" id=73]
+[ext_resource path="res://ragdoll.tscn" type="PackedScene" id=74]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/tick.png" type="Texture" id=75]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/tick_chosen.png" type="Texture" id=76]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/tick_disabled.png" type="Texture" id=77]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/tick_chosen_disabled.png" type="Texture" id=78]
 
 [sub_resource type="DynamicFont" id=6]
 size = 30
@@ -66,9 +78,23 @@ fallback/0 = ExtResource( 37 )
 
 [sub_resource type="StyleBoxTexture" id=5]
 
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.0470588, 0.027451, 0.0196078, 0.985 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.611765, 0.384314, 0.231373, 1 )
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
 [node name="MansionSlaveListModule" type="Panel"]
-margin_right = 1100.0
-margin_bottom = 856.0
+margin_right = 1266.0
+margin_bottom = 926.0
+rect_min_size = Vector2( 1266, 60 )
+rect_clip_content = true
 theme = ExtResource( 9 )
 custom_styles/panel = ExtResource( 25 )
 script = ExtResource( 13 )
@@ -104,39 +130,38 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 11.0
-margin_top = 100.0
-margin_right = 1089.0
-margin_bottom = 792.0
+margin_top = 60.0
+margin_right = -11.0
+margin_bottom = -11.0
 rect_min_size = Vector2( 996, 10 )
 theme = ExtResource( 2 )
 scroll_horizontal_enabled = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-margin_right = 1078.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 996, 45 )
-size_flags_horizontal = 3
-custom_constants/separation = 1
+[node name="VBoxContainer" type="Control" parent="ScrollContainer"]
+margin_right = 244.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 244, 350 )
 
 [node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer" groups=["default"]]
-visible = false
-margin_right = 1078.0
-margin_bottom = 52.0
-rect_min_size = Vector2( 1004, 52 )
+margin_right = 244.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 244, 350 )
+rect_clip_content = true
 mouse_default_cursor_shape = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 10 )
 toggle_mode = true
-texture_normal = ExtResource( 15 )
-texture_pressed = ExtResource( 16 )
-texture_hover = ExtResource( 20 )
-texture_disabled = ExtResource( 36 )
+expand = true
 stretch_mode = 6
 script = ExtResource( 12 )
 
+[node name="CardLayout" parent="ScrollContainer/VBoxContainer/Button" instance=ExtResource( 67 )]
+
 [node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button" groups=["brothel", "default", "food", "rules", "training"]]
+visible = false
 margin_left = 7.0
 margin_top = 5.0
 margin_right = 47.0
@@ -147,6 +172,7 @@ expand = true
 stretch_mode = 6
 
 [node name="sex" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button" groups=["brothel", "default", "food", "rules", "training"]]
+visible = false
 margin_left = 54.0
 margin_top = 5.0
 margin_right = 93.0
@@ -158,6 +184,7 @@ expand = true
 stretch_mode = 6
 
 [node name="name" type="Label" parent="ScrollContainer/VBoxContainer/Button" groups=["brothel", "default", "food", "rules", "training"]]
+visible = false
 margin_left = 107.0
 margin_top = 5.0
 margin_right = 232.0
@@ -170,6 +197,7 @@ valign = 1
 clip_text = true
 
 [node name="stats" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button" groups=["default", "rules", "training"]]
+visible = false
 margin_left = 250.0
 margin_top = 6.0
 margin_right = 290.0
@@ -410,6 +438,7 @@ texture = ExtResource( 21 )
 stretch_mode = 4
 
 [node name="FoodIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button" groups=["default"]]
+visible = false
 margin_left = 890.0
 margin_top = 5.0
 margin_right = 930.0
@@ -473,6 +502,7 @@ texture_under = ExtResource( 33 )
 texture_progress = ExtResource( 34 )
 
 [node name="rule_lock" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
+visible = false
 margin_left = 320.0
 margin_top = 1.0
 margin_right = 368.0
@@ -480,6 +510,7 @@ margin_bottom = 49.0
 theme = ExtResource( 11 )
 
 [node name="rule_ration" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
+visible = false
 margin_left = 390.0
 margin_top = 1.0
 margin_right = 438.0
@@ -487,6 +518,7 @@ margin_bottom = 49.0
 theme = ExtResource( 11 )
 
 [node name="rule_shifts" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
+visible = false
 margin_left = 460.0
 margin_top = 1.0
 margin_right = 508.0
@@ -502,6 +534,7 @@ margin_bottom = 49.0
 theme = ExtResource( 11 )
 
 [node name="rule_luxury" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["lux_rooms", "rules"]]
+visible = false
 margin_left = 600.0
 margin_top = 1.0
 margin_right = 648.0
@@ -509,6 +542,7 @@ margin_bottom = 49.0
 theme = ExtResource( 11 )
 
 [node name="rule_contraceptive" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
+visible = false
 margin_left = 670.0
 margin_top = 1.0
 margin_right = 718.0
@@ -516,6 +550,7 @@ margin_bottom = 49.0
 theme = ExtResource( 11 )
 
 [node name="rule_nudity" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
+visible = false
 margin_left = 740.0
 margin_top = 1.0
 margin_right = 788.0
@@ -523,6 +558,7 @@ margin_bottom = 49.0
 theme = ExtResource( 11 )
 
 [node name="rule_personality_lock" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
+visible = false
 margin_left = 810.0
 margin_top = 1.0
 margin_right = 858.0
@@ -874,6 +910,56 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CardContainer" type="GridContainer" parent="ScrollContainer"]
+margin_right = 1240.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 1240, 350 )
+size_flags_horizontal = 3
+custom_constants/vseparation = 8
+custom_constants/hseparation = 5
+columns = 5
+
+[node name="Button" type="TextureButton" parent="ScrollContainer/CardContainer"]
+visible = false
+margin_right = 244.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 244, 350 )
+rect_clip_content = true
+mouse_default_cursor_shape = 2
+size_flags_vertical = 3
+theme = ExtResource( 10 )
+toggle_mode = true
+stretch_mode = 6
+script = ExtResource( 12 )
+drag_preview_source = NodePath("CardLayout/Margin/Rows/Body/Portrait/Image")
+drag_preview_size = Vector2( 96, 128 )
+
+[node name="RowContainer" type="VBoxContainer" parent="ScrollContainer"]
+visible = false
+margin_right = 1240.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 1240, 52 )
+size_flags_horizontal = 3
+custom_constants/separation = 1
+
+[node name="Button" type="TextureButton" parent="ScrollContainer/RowContainer"]
+visible = false
+margin_right = 1004.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 1004, 52 )
+rect_clip_content = true
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 10 )
+toggle_mode = true
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 20 )
+texture_disabled = ExtResource( 36 )
+stretch_mode = 6
+script = ExtResource( 12 )
+
 [node name="VBoxContainer" type="HBoxContainer" parent="."]
 visible = false
 margin_left = 30.0
@@ -892,13 +978,11 @@ text = "Sex"
 
 [node name="food_consumption" type="Label" parent="."]
 anchor_left = 1.0
-anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
 margin_left = -101.0
-margin_top = -44.0001
+margin_top = 21.0
 margin_right = -54.0002
-margin_bottom = -14.0001
+margin_bottom = 51.0
 hint_tooltip = "TOOLTIPFOODCONSUMPTION"
 mouse_filter = 0
 theme = ExtResource( 6 )
@@ -919,13 +1003,11 @@ texture = ExtResource( 14 )
 
 [node name="population" type="Label" parent="."]
 anchor_left = 1.0
-anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
 margin_left = -222.0
-margin_top = -46.0
+margin_top = 21.0
 margin_right = -176.0
-margin_bottom = -16.0
+margin_bottom = 51.0
 hint_tooltip = "TOOLTIPPOPULATION"
 mouse_filter = 0
 theme = ExtResource( 6 )
@@ -947,17 +1029,18 @@ __meta__ = {
 }
 
 [node name="TravelsContainerPanel" type="Panel" parent="."]
-margin_left = 25.0
-margin_top = 526.0
-margin_right = 796.0
-margin_bottom = 569.0
+margin_left = 225.0
+margin_top = 5.0
+margin_right = 830.0
+margin_bottom = 57.0
 custom_styles/panel = ExtResource( 7 )
 
 [node name="TravelsContainer" type="ScrollContainer" parent="TravelsContainerPanel"]
-margin_left = 2.0
-margin_right = 806.0
-margin_bottom = 55.0
-rect_min_size = Vector2( 0, 55 )
+margin_left = 61.0
+margin_top = 4.0
+margin_right = 756.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 0, 52 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TravelsContainerPanel/TravelsContainer"]
 custom_constants/separation = 18
@@ -1078,6 +1161,7 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="Control" parent="."]
+visible = false
 margin_left = 9.0
 margin_top = 11.0
 margin_right = 1066.0
@@ -1744,7 +1828,72 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SortMenu" type="PopupMenu" parent="."]
+margin_right = 220.0
+margin_bottom = 160.0
+theme = ExtResource( 49 )
+
+[node name="SortButton" type="TextureButton" parent="."]
+margin_left = 12.0
+margin_top = 9.0
+margin_right = 211.0
+margin_bottom = 52.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 29 )
+expand = true
+
+[node name="Label" type="Label" parent="SortButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_right = -26.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "MSLMSORTDEFAULT"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="Arrow" type="Label" parent="SortButton"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -27.0
+margin_right = -7.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "▼"
+align = 1
+valign = 1
+
+[node name="ListFoldButton" type="TextureButton" parent="."]
+margin_left = 219.0
+margin_top = 9.0
+margin_right = 266.0
+margin_bottom = 52.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 29 )
+expand = true
+
+[node name="Label" type="Label" parent="ListFoldButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "^"
+align = 1
+valign = 1
+
+[node name="ListFoldTween" type="Tween" parent="."]
+
 [node name="modes" type="Control" parent="."]
+visible = false
 margin_top = -10.0
 margin_right = 40.0
 margin_bottom = 30.0
@@ -1823,3 +1972,301 @@ clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ExpandedCharacter" type="Panel" parent="."]
+visible = false
+margin_left = 11.0
+margin_top = 60.0
+margin_right = 741.0
+margin_bottom = 915.0
+rect_clip_content = true
+mouse_filter = 1
+custom_styles/panel = SubResource( 7 )
+
+[node name="Tween" type="Tween" parent="ExpandedCharacter"]
+
+[node name="CardSlot" type="MarginContainer" parent="ExpandedCharacter"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 251.0
+margin_bottom = 357.0
+rect_min_size = Vector2( 244, 350 )
+mouse_filter = 2
+
+[node name="Extra" type="Control" parent="ExpandedCharacter"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="SocialPanel" type="PanelContainer" parent="ExpandedCharacter/Extra"]
+margin_left = 7.0
+margin_top = 363.0
+margin_right = 251.0
+margin_bottom = 540.0
+custom_styles/panel = SubResource( 7 )
+
+[node name="Margin" type="MarginContainer" parent="ExpandedCharacter/Extra/SocialPanel"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 242.0
+margin_bottom = 175.0
+custom_constants/margin_right = 12
+custom_constants/margin_top = 5
+custom_constants/margin_left = 12
+custom_constants/margin_bottom = 5
+
+[node name="Content" type="VBoxContainer" parent="ExpandedCharacter/Extra/SocialPanel/Margin"]
+margin_left = 12.0
+margin_top = 5.0
+margin_right = 228.0
+margin_bottom = 168.0
+mouse_filter = 2
+custom_constants/separation = 4
+
+[node name="SocialTitle" type="Label" parent="ExpandedCharacter/Extra/SocialPanel/Margin/Content"]
+margin_right = 216.0
+margin_bottom = 33.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "SOCIAL_SKILLS"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="SocialSkills" type="GridContainer" parent="ExpandedCharacter/Extra/SocialPanel/Margin/Content"]
+margin_top = 37.0
+margin_right = 216.0
+margin_bottom = 37.0
+custom_constants/vseparation = 5
+custom_constants/hseparation = 5
+columns = 3
+
+[node name="Button" type="TextureButton" parent="ExpandedCharacter/Extra/SocialPanel/Margin/Content/SocialSkills"]
+visible = false
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+toggle_mode = true
+texture_normal = ExtResource( 69 )
+texture_pressed = ExtResource( 70 )
+texture_hover = ExtResource( 71 )
+texture_disabled = ExtResource( 72 )
+expand = true
+stretch_mode = 6
+
+[node name="icon" type="TextureRect" parent="ExpandedCharacter/Extra/SocialPanel/Margin/Content/SocialSkills/Button"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+mouse_filter = 2
+texture = ExtResource( 73 )
+expand = true
+stretch_mode = 7
+
+[node name="charges" type="Label" parent="ExpandedCharacter/Extra/SocialPanel/Margin/Content/SocialSkills/Button"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -39.0
+margin_top = 1.0
+margin_right = -3.0
+margin_bottom = 21.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 28 )
+text = "1/1"
+align = 2
+
+[node name="cooldown" type="Label" parent="ExpandedCharacter/Extra/SocialPanel/Margin/Content/SocialSkills/Button"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+custom_colors/font_color = Color( 0.968627, 1, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="manacost" type="Label" parent="ExpandedCharacter/Extra/SocialPanel/Margin/Content/SocialSkills/Button"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -22.0
+margin_right = 38.0
+margin_bottom = -2.0
+custom_colors/font_color = Color( 0.2, 0.85, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 28 )
+text = "1"
+
+[node name="energycost" type="Label" parent="ExpandedCharacter/Extra/SocialPanel/Margin/Content/SocialSkills/Button"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -38.0
+margin_top = -22.0
+margin_right = -4.0
+margin_bottom = -2.0
+custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 28 )
+text = "1"
+align = 2
+
+[node name="RulesPanel" type="PanelContainer" parent="ExpandedCharacter/Extra"]
+margin_left = 7.0
+margin_top = 544.0
+margin_right = 251.0
+margin_bottom = 848.0
+custom_styles/panel = SubResource( 7 )
+
+[node name="Margin" type="MarginContainer" parent="ExpandedCharacter/Extra/RulesPanel"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 242.0
+margin_bottom = 302.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 4
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 4
+
+[node name="Content" type="VBoxContainer" parent="ExpandedCharacter/Extra/RulesPanel/Margin"]
+margin_left = 10.0
+margin_top = 4.0
+margin_right = 230.0
+margin_bottom = 296.0
+mouse_filter = 2
+custom_constants/separation = 2
+
+[node name="Title" type="Label" parent="ExpandedCharacter/Extra/RulesPanel/Margin/Content"]
+margin_right = 220.0
+margin_bottom = 33.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "SIBLINGMODULERULES"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="Rules" type="GridContainer" parent="ExpandedCharacter/Extra/RulesPanel/Margin/Content"]
+margin_top = 35.0
+margin_right = 220.0
+margin_bottom = 35.0
+mouse_filter = 2
+custom_constants/vseparation = 1
+
+[node name="Button" type="Button" parent="ExpandedCharacter/Extra/RulesPanel/Margin/Content/Rules"]
+visible = false
+margin_right = 220.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 220, 26 )
+mouse_default_cursor_shape = 2
+toggle_mode = true
+flat = true
+
+[node name="Mark" type="TextureRect" parent="ExpandedCharacter/Extra/RulesPanel/Margin/Content/Rules/Button"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 1.0
+margin_top = -12.0
+margin_right = 25.0
+margin_bottom = 12.0
+mouse_filter = 2
+texture = ExtResource( 75 )
+expand = true
+stretch_mode = 5
+
+[node name="Checked" type="TextureRect" parent="ExpandedCharacter/Extra/RulesPanel/Margin/Content/Rules/Button"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 1.0
+margin_top = -12.0
+margin_right = 25.0
+margin_bottom = 12.0
+mouse_filter = 2
+texture = ExtResource( 76 )
+expand = true
+stretch_mode = 5
+
+[node name="Disabled" type="TextureRect" parent="ExpandedCharacter/Extra/RulesPanel/Margin/Content/Rules/Button"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 1.0
+margin_top = -12.0
+margin_right = 25.0
+margin_bottom = 12.0
+mouse_filter = 2
+texture = ExtResource( 77 )
+expand = true
+stretch_mode = 5
+
+[node name="CheckedDisabled" type="TextureRect" parent="ExpandedCharacter/Extra/RulesPanel/Margin/Content/Rules/Button"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 1.0
+margin_top = -12.0
+margin_right = 25.0
+margin_bottom = 12.0
+mouse_filter = 2
+texture = ExtResource( 78 )
+expand = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ExpandedCharacter/Extra/RulesPanel/Margin/Content/Rules/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 29.0
+margin_right = -2.0
+custom_fonts/font = ExtResource( 28 )
+text = "WORKRULELOCK"
+valign = 1
+clip_text = true
+
+[node name="Details" parent="ExpandedCharacter/Extra" instance=ExtResource( 68 )]
+margin_left = 253.0
+margin_top = 7.0
+margin_right = 723.0
+margin_bottom = 672.0
+
+[node name="ExpandedBodyPreview" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -83.9382
+margin_top = 85.102
+margin_right = 366.062
+margin_bottom = 865.102
+rect_clip_content = true
+mouse_filter = 2
+
+[node name="StoredImage" type="TextureRect" parent="ExpandedBodyPreview"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Paperdoll" parent="ExpandedBodyPreview" instance=ExtResource( 74 )]
+visible = false
+position = Vector2( 225, 400 )
+scale = Vector2( 0.65, 0.65 )
+update_character_portrait = false
+
+[node name="Tween" type="Tween" parent="ExpandedBodyPreview"]

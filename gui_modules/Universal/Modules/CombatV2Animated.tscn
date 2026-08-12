@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=2]
+[gd_scene load_steps=91 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/Universal/Modules/CharStatsPanel.tscn" type="PackedScene" id=2]
@@ -141,6 +141,22 @@ font_data = ExtResource( 8 )
 size = 55
 use_filter = true
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+content_margin_left = 3.0
+content_margin_right = 3.0
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color( 0.0352941, 0.0352941, 0.0470588, 0.941176 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.756863, 0.611765, 0.321569, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="Animation" id=10]
 length = 2.5
@@ -312,6 +328,18 @@ tracks/13/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("DefeatedEnemies:self_modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 1.1, 1.43333 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="combat_v2" type="Control" groups=["pauseprocess"]]
@@ -1439,6 +1467,40 @@ stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DefeatedEnemies" type="CenterContainer" parent="Rewards"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 520.0
+margin_top = 10.0
+margin_right = 1400.0
+margin_bottom = 74.0
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Rewards/DefeatedEnemies"]
+margin_left = 408.0
+margin_right = 472.0
+margin_bottom = 64.0
+custom_constants/separation = 8
+
+[node name="Button" type="PanelContainer" parent="Rewards/DefeatedEnemies/HBoxContainer"]
+visible = false
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+custom_styles/panel = SubResource( 12 )
+
+[node name="Icon" type="TextureRect" parent="Rewards/DefeatedEnemies/HBoxContainer/Button"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 61.0
+margin_bottom = 61.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
 
 [node name="Panel" type="Panel" parent="Rewards/TextureRect2"]
 self_modulate = Color( 0, 0, 0, 0.823529 )

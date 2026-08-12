@@ -709,6 +709,8 @@ func show_brothel_options():
 #		if person.get_work() == '':
 #			newbutton.disabled = true
 	for i in brothel_rules.sexual:
+		if i == 'sextoy' and !person.has_profession('sextoy'):
+			continue
 		if (i == 'pussy' && person.get_stat('has_womb') == false) || i == 'penetration' && person.get_stat('penis_size') == '':
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
@@ -742,9 +744,6 @@ func show_brothel_options():
 		elif !person.has_status('sexservice'):
 			newbutton.disabled = true
 			text += tr("LACKSEXTRAINING")
-		elif i == 'sextoy' and !person.has_profession('sextoy'):
-			newbutton.hide()
-			continue
 		if person.get_stat('consent') < tasks.gold_tasks_data[i].min_consent:
 			newbutton.set("custom_colors/font_color", variables.hexcolordict['red'])
 			newbutton.set("custom_colors/font_color_pressed", variables.hexcolordict['red'])

@@ -529,6 +529,39 @@ func get_background(id, cash = false):
 	return res
 
 
+#location art is screen sized (2-4 MB a piece). A slave list can show a dozen different
+#locations at once, so the card backdrops get their own centre cropped, shrunk copies and
+#the full sized originals are let go again
+const CARD_BACKGROUND_SIZE = Vector2(226, 160)
+var card_backgrounds = {}
+
+
+func get_card_background(id):
+	if card_backgrounds.has(id):
+		return card_backgrounds[id]
+	card_backgrounds[id] = null #a missing or unreadable background is remembered too
+	var full = get_background(id)
+	if full == null:
+		return null
+	var img = full.get_data()
+	if img == null:
+		return null
+	if img.is_compressed():
+		if img.decompress() != OK:
+			return null
+	var size = img.get_size()
+	var aspect = CARD_BACKGROUND_SIZE.x / CARD_BACKGROUND_SIZE.y
+	var crop = Vector2(min(size.x, size.y * aspect), min(size.y, size.x / aspect)).floor()
+	if crop.x < 1 or crop.y < 1:
+		return null
+	img = img.get_rect(Rect2(((size - crop) * 0.5).floor(), crop))
+	img.resize(int(CARD_BACKGROUND_SIZE.x), int(CARD_BACKGROUND_SIZE.y), Image.INTERPOLATE_BILINEAR)
+	var tex = ImageTexture.new()
+	tex.create_from_image(img)
+	card_backgrounds[id] = tex
+	return tex
+
+
 var scenes = {
 	no_image = load("res://assets/images/scenes/image_wip.png"),
 	abuse = load("res://assets/images/scenes/abuse.png"),

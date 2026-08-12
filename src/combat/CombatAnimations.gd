@@ -258,7 +258,9 @@ func casterattack(node, args = null):
 #	cast_timer = effectdelay
 
 func targetattack(node, args = null):
+	if args == null: args = {}
 	var tween = input_handler.GetTweenNode(node)
+	var speed = max(0.01, float(args.speed)) if args.has('speed') else 1.0
 	var nextanimationtime = 0.4
 	#the blow only lands partway into the cast sprite - see take_pending_shot().
 	#Only this function's own lock carries `shot`. Do NOT add it to buffs_update_delays
@@ -272,23 +274,27 @@ func targetattack(node, args = null):
 	if shot > 0:
 		target_push(node, shot)
 		tween.interpolate_callback(ResourceScripts.core_animations, shot, 'gfx_sprite',
-			node, 'strike', 0.3, 0.1, get_flip_for_node(node, args))
+			node, 'strike', 0.3, 0.1 / speed, get_flip_for_node(node, args), speed)
 	else:
-		ResourceScripts.core_animations.gfx_sprite(node, 'strike', 0.3, 0.1, get_flip_for_node(node, args))
+		ResourceScripts.core_animations.gfx_sprite(node, 'strike', 0.3, 0.1 / speed,
+			get_flip_for_node(node, args), speed)
 	tween.start()
 
 	return shot + HIT_TAIL
 
 func ranged_attack(node, args = null):
+	if args == null: args = {}
 	var tween = input_handler.GetTweenNode(node)
+	var speed = max(0.01, float(args.speed)) if args.has('speed') else 1.0
 	var nextanimationtime = 0.3
 	var duration = 0.4
-	if args != null:
-		if args.has('duration'):
-			duration = args.duration
-			nextanimationtime = duration
-		if args.has('queue_duration'):
-			nextanimationtime = args.queue_duration
+	if args.has('duration'):
+		duration = args.duration
+		nextanimationtime = duration
+	if args.has('queue_duration'):
+		nextanimationtime = args.queue_duration
+	duration /= speed
+	nextanimationtime /= speed
 	nextanimationtime -= 0.1
 	#the shot only leaves the bow partway into the cast sprite, so everything the
 	#target does waits for it: arrow, squash, hp and buffs all shift by this much
@@ -303,9 +309,10 @@ func ranged_attack(node, args = null):
 		target_squash(node, duration, shot)
 	if shot > 0:
 		tween.interpolate_callback(ResourceScripts.core_animations, shot, 'gfx_sprite',
-			node, 'arrow', 0.3, duration, get_flip_for_node(node, args))
+			node, 'arrow', 0.3, duration, get_flip_for_node(node, args), speed)
 	else:
-		ResourceScripts.core_animations.gfx_sprite(node, 'arrow', 0.3, duration, get_flip_for_node(node, args))
+		ResourceScripts.core_animations.gfx_sprite(node, 'arrow', 0.3, duration,
+			get_flip_for_node(node, args), speed)
 	tween.start()
 
 	return shot + HIT_TAIL
@@ -390,7 +397,8 @@ func at_arbalester(node, args = null): return cast_with_motion(node, args, 'at_a
 func cast_with_motion(node, args, sprite_name):
 	if args == null: args = {}
 	var motion = args.motion if args.has('motion') else CAST_MOTION[sprite_name]
-	var speedup = CAST_SPEEDUP[sprite_name]
+	var followup_speed = max(0.01, float(args.speed)) if args.has('speed') else 1.0
+	var speedup = CAST_SPEEDUP[sprite_name] * followup_speed
 	#Execution is a finisher, so it plays its weapon sheet slower than a plain
 	#swing. Everything downstream reads off the release, so the landing and the
 	#target's reaction stretch with it and stay in sync.
@@ -409,9 +417,9 @@ func cast_with_motion(node, args, sprite_name):
 	ResourceScripts.core_animations.gfx_sprite(visual_node, sprite_name, 0.5, duration,
 		get_flip_for_node(node, args), speedup)
 	if motion == 'cut':
-		caster_cut(node, release)
+		caster_cut(node, release, followup_speed)
 	elif motion != 'execution_leap':
-		caster_recoil(node, release)
+		caster_recoil(node, release, followup_speed)
 
 	return nextanimationtime + aftereffectdelay
 
@@ -623,7 +631,7 @@ func target_motion_cleanup(node, origin):
 	node.rect_scale = Vector2(1,1)
 
 #melee: pull back, drive through the blow, hold the follow through, settle
-func caster_cut(node, contact):
+func caster_cut(node, contact, speed = 1.0):
 	if !node.is_inside_tree(): return
 	if !node.has_method('get_attack_vector'): return
 	node.rect_pivot_offset = node.rect_size/2 #without this rotation pulls to the corner
@@ -643,8 +651,10 @@ func caster_cut(node, contact):
 	tween.interpolate_property(node, 'rect_position', p - v*0.18, p + v, drive, Tween.TRANS_QUAD, Tween.EASE_IN, draw)
 	tween.interpolate_property(node, 'rect_rotation', -3, 4, drive, Tween.TRANS_QUAD, Tween.EASE_IN, draw)
 
-	tween.interpolate_property(node, 'rect_position', p + v, p, MOTION_BACK, Tween.TRANS_QUAD, Tween.EASE_OUT, contact + CUT_HOLD)
-	tween.interpolate_property(node, 'rect_rotation', 4, 0, MOTION_BACK, Tween.TRANS_QUAD, Tween.EASE_OUT, contact + CUT_HOLD)
+	var hold = CUT_HOLD / speed
+	var back = MOTION_BACK / speed
+	tween.interpolate_property(node, 'rect_position', p + v, p, back, Tween.TRANS_QUAD, Tween.EASE_OUT, contact + hold)
+	tween.interpolate_property(node, 'rect_rotation', 4, 0, back, Tween.TRANS_QUAD, Tween.EASE_OUT, contact + hold)
 	tween.start()
 
 #Execution: leap into the target on the weapon sheet's contact frame, settle into
@@ -1156,7 +1166,7 @@ func target_push(node, delay = 0.0):
 	tween.start()
 
 #bows: caster sinks into the draw and straightens out into the shot
-func caster_recoil(node, contact):
+func caster_recoil(node, contact, speed = 1.0):
 	if !node.is_inside_tree(): return
 	if !node.has_method('get_attack_vector'): return
 	node.rect_pivot_offset = node.rect_size/2 #without this scale and rotation pull to the corner
@@ -1167,19 +1177,21 @@ func caster_recoil(node, contact):
 	var tween = input_handler.GetTweenNode(node)
 	var p = node.rect_position
 	var v = node.get_attack_vector().normalized() * MOTION_DIST
-	var draw = max(contact - RECOIL_EXT, 0.05)
+	var recoil_ext = RECOIL_EXT / speed
+	var back = MOTION_BACK / speed
+	var draw = max(contact - recoil_ext, 0.05)
 
 	tween.interpolate_property(node, 'rect_position', p, p - v*0.10, draw, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	tween.interpolate_property(node, 'rect_scale', Vector2(1,1), Vector2(0.97,1.05), draw, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	tween.interpolate_property(node, 'rect_rotation', 0, -2.5, draw, Tween.TRANS_QUAD, Tween.EASE_OUT)
 
-	tween.interpolate_property(node, 'rect_position', p - v*0.10, p + v*0.38, RECOIL_EXT, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, draw)
-	tween.interpolate_property(node, 'rect_scale', Vector2(0.97,1.05), Vector2(1.04,0.96), RECOIL_EXT, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, draw)
-	tween.interpolate_property(node, 'rect_rotation', -2.5, 3.0, RECOIL_EXT, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, draw)
+	tween.interpolate_property(node, 'rect_position', p - v*0.10, p + v*0.38, recoil_ext, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, draw)
+	tween.interpolate_property(node, 'rect_scale', Vector2(0.97,1.05), Vector2(1.04,0.96), recoil_ext, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, draw)
+	tween.interpolate_property(node, 'rect_rotation', -2.5, 3.0, recoil_ext, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, draw)
 
-	tween.interpolate_property(node, 'rect_position', p + v*0.38, p, MOTION_BACK, Tween.TRANS_QUAD, Tween.EASE_OUT, contact)
-	tween.interpolate_property(node, 'rect_scale', Vector2(1.04,0.96), Vector2(1,1), MOTION_BACK, Tween.TRANS_QUAD, Tween.EASE_OUT, contact)
-	tween.interpolate_property(node, 'rect_rotation', 3.0, 0, MOTION_BACK, Tween.TRANS_QUAD, Tween.EASE_OUT, contact)
+	tween.interpolate_property(node, 'rect_position', p + v*0.38, p, back, Tween.TRANS_QUAD, Tween.EASE_OUT, contact)
+	tween.interpolate_property(node, 'rect_scale', Vector2(1.04,0.96), Vector2(1,1), back, Tween.TRANS_QUAD, Tween.EASE_OUT, contact)
+	tween.interpolate_property(node, 'rect_rotation', 3.0, 0, back, Tween.TRANS_QUAD, Tween.EASE_OUT, contact)
 	tween.start()
 
 #target takes the hit: sinks by scale and springs back, plus a short shake
@@ -1215,14 +1227,27 @@ func default_hit_reaction(node, args = null):
 	return HIT_TAIL
 
 func firebolt(node, args = null):
+	if args == null: args = {}
 	var tween = input_handler.GetTweenNode(node)
-	var nextanimationtime = 0.2
+	var speed = max(0.01, float(args.speed)) if args.has('speed') else 1.0
+	var duration = 0.4 / speed
+	var nextanimationtime = 0.2 / speed
+	var sync_to_hit = args.has('sync_to_hit') and args.sync_to_hit
+	var shot = take_pending_shot() if sync_to_hit else 0.0
 	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.3)
 	buffs_update_delays[node] = 0.2
-	ResourceScripts.core_animations.gfx_sprite(node, 'firebolt', 0.3, 0.4, get_flip_for_node(node, args))
+	if shot > 0:
+		target_push(node, shot)
+		tween.interpolate_callback(ResourceScripts.core_animations, shot, 'gfx_sprite',
+			node, 'firebolt', 0.3, duration, get_flip_for_node(node, args), speed)
+	else:
+		ResourceScripts.core_animations.gfx_sprite(node, 'firebolt', 0.3, duration,
+			get_flip_for_node(node, args), speed)
 	tween.start()
 	
+	if sync_to_hit:
+		return shot + HIT_TAIL
 	return nextanimationtime + aftereffectdelay
 
 func water_attack(node, args = null):
@@ -1237,26 +1262,43 @@ func water_attack(node, args = null):
 	return nextanimationtime + aftereffectdelay
 
 func flame(node, args = null):
+	if args == null: args = {}
 	var tween = input_handler.GetTweenNode(node)
-	var nextanimationtime = 0.4
+	var speed = max(0.01, float(args.speed)) if args.has('speed') else 1.0
+	var duration = 0.5 / speed
+	var nextanimationtime = 0.4 / speed
 	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.3)
 	buffs_update_delays[node] = 0.4
-	ResourceScripts.core_animations.gfx_sprite(node, 'flame', 0.3, 0.5, get_flip_for_node(node, args))
+	ResourceScripts.core_animations.gfx_sprite(node, 'flame', 0.3, duration,
+		get_flip_for_node(node, args), speed)
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay
 
 func earth_spike(node, args = null):
+	if args == null: args = {}
 	var tween = input_handler.GetTweenNode(node)
-	var nextanimationtime = 0.8
+	var speed = max(0.01, float(args.speed)) if args.has('speed') else 1.0
+	var duration = 1.0 / speed
+	var nextanimationtime = 0.8 / speed
+	var sync_to_hit = args.has('sync_to_hit') and args.sync_to_hit
+	var shot = take_pending_shot() if sync_to_hit else 0.0
 	hp_update_delays[node] = 0.5 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.5)
 	buffs_update_delays[node] = 0.5
-	ResourceScripts.core_animations.gfx_sprite(node, 'earth_spike', 0.7, 1, get_flip_for_node(node, args))
+	if shot > 0:
+		target_push(node, shot)
+		tween.interpolate_callback(ResourceScripts.core_animations, shot, 'gfx_sprite',
+			node, 'earth_spike', 0.7, duration, get_flip_for_node(node, args), speed)
+	else:
+		ResourceScripts.core_animations.gfx_sprite(node, 'earth_spike', 0.7, duration,
+			get_flip_for_node(node, args), speed)
 	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
 	tween.start()
 	
+	if sync_to_hit:
+		return shot + HIT_TAIL
 	return nextanimationtime + aftereffectdelay
 	#aftereffecttimer = nextanimationtime + aftereffectdelay
 
@@ -1309,6 +1351,9 @@ func lightning(node, args = null):
 	if args == null: args = {}
 	var caster_node = args.caster_node if args.has('caster_node') else null
 	var settings = get_lightning_settings(args, false)
+	if args.has('sync_to_hit') and args.sync_to_hit:
+		var shot = take_pending_shot()
+		if shot > 0: settings.windup = shot
 	start_lightning_effect(caster_node, [node], settings)
 	prepare_lightning_impacts([node], settings)
 	return settings.windup + HIT_TAIL
@@ -1324,11 +1369,12 @@ func chain_lightning(node, args = null):
 	return settings.windup + HIT_TAIL
 
 func get_lightning_settings(args, chained):
+	var speed = max(0.01, float(args.speed)) if args.has('speed') else 1.0
 	return {
-		windup = float(args.windup) if args.has('windup') else LIGHTNING_WINDUP,
-		duration = float(args.duration) if args.has('duration') else LIGHTNING_DURATION,
+		windup = (float(args.windup) if args.has('windup') else LIGHTNING_WINDUP) / speed,
+		duration = (float(args.duration) if args.has('duration') else LIGHTNING_DURATION) / speed,
 		jitter = float(args.jitter) if args.has('jitter') else LIGHTNING_JITTER,
-		branch_stagger = float(args.branch_stagger) if chained and args.has('branch_stagger') else (CHAIN_LIGHTNING_STAGGER if chained else 0.0),
+		branch_stagger = (float(args.branch_stagger) if chained and args.has('branch_stagger') else (CHAIN_LIGHTNING_STAGGER if chained else 0.0)) / speed,
 		chained = chained,
 	}
 
@@ -1433,11 +1479,12 @@ func clear_lightning_timing():
 	lightning_timing_plan.clear()
 
 func gfx_animsprite(node, args):
+	var speed = max(0.01, float(args.speed)) if args.has('speed') else 1.0
 	var duration
 	if args.has('duration'):
-		duration = args.duration
+		duration = args.duration / speed
 	else:
-		duration = ResourceScripts.core_animations.get_gfx_sprite_time(args.sprite_name)
+		duration = ResourceScripts.core_animations.get_gfx_sprite_time(args.sprite_name) / speed
 	# Warfare hit sheets use the same cadence as a normal weapon attack: the sheet
 	# appears on the cast weapon's contact frame and hp_update follows HIT_TAIL later.
 	var sync_to_hit = args.has('sync_to_hit') and args.sync_to_hit
@@ -1472,10 +1519,11 @@ func gfx_animsprite(node, args):
 	if sync_to_hit and shot > 0:
 		var tween = input_handler.GetTweenNode(node)
 		tween.interpolate_callback(ResourceScripts.core_animations, shot, 'gfx_sprite',
-			node, args.sprite_name, 0.5, duration, get_flip_for_node(node, args))
+			node, args.sprite_name, 0.5, duration, get_flip_for_node(node, args), speed)
 		tween.start()
 	else:
-		ResourceScripts.core_animations.gfx_sprite(node, args.sprite_name, 0.5, duration, get_flip_for_node(node, args))
+		ResourceScripts.core_animations.gfx_sprite(node, args.sprite_name, 0.5, duration,
+			get_flip_for_node(node, args), speed)
 	
 	if sync_to_hit:
 		return shot + HIT_TAIL

@@ -14,9 +14,11 @@ onready var CraftModule = $MansionCraftModule
 onready var JobModule = $MansionJobModule2
 onready var SexSelect = $SexSelectMenu
 onready var Journal = $MansionJournalModule
+onready var TurnProductionOverlay = $TurnProductionOverlay
 onready var submodules = []
 
 export var test_mode = false
+export(bool) var show_legacy_character_panels = false
 
 
 signal tut_option_selected
@@ -67,14 +69,29 @@ var always_show = [
 	"MansionSlaveListModule",
 	"MansionLogModule",
 	"NavigationModule",
+	"TurnProductionOverlay",
 	"map_test"
 ]
+
+const LEGACY_CHARACTER_PANELS = [
+	"MansionSkillsModule",
+	"MansionLogModule",
+	"MansionSlaveModule",
+]
+
+const TURN_PRODUCT_FLY_TIME = 0.46
+const TURN_PRODUCT_STAGGER = 0.035
+const TURN_PRODUCT_MAX_STAGGER = 0.35
 
 var newgame_bonuses
 
 var in_test_mode = false
 
 func _ready():
+	if !show_legacy_character_panels:
+		$MansionSkillsModule.hide()
+		$MansionLogModule.hide()
+		$MansionSlaveModule.hide()
 #	input_handler.CurrentScene = self
 	if test_mode && OS.has_feature('editor'):
 		modding_core.handle_test_mode()
@@ -230,7 +247,7 @@ func reset_vars():
 		active_person = null
 	Journal.hide()
 
-# Handles Resizing and visibility
+# Handles state visibility
 func handle_test():
 	for nd in get_tree().get_nodes_in_group('test'):
 		nd.visible = in_test_mode
@@ -249,6 +266,9 @@ func match_state():
 	for node in get_children():
 		if node.get_class() == "Tween":
 			continue
+		if !show_legacy_character_panels and node.name in LEGACY_CHARACTER_PANELS:
+			node.hide()
+			continue
 		if node.name.findn(mansion_state) == -1 and ! node.name in always_show:
 			node.hide()
 	var menu_buttons = MenuModule.get_node("VBoxContainer")
@@ -259,26 +279,23 @@ func match_state():
 			reset_vars()
 			SlaveListModule.show()
 			SlaveListModule.mode = 'default'
-			$MansionSlaveListModule.set_size(Vector2(1100, 805))
-			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 640))
-			# SlaveListModule.get_node("Background").set_size(Vector2(1100, 845))
-			$MansionSkillsModule.show()
+			if show_legacy_character_panels:
+				$MansionSkillsModule.show()
 			if active_person == null:
 				return
 			if mansion_state != mansion_prev_state && mansion_prev_state != "skill":
-				ResourceScripts.core_animations.UnfadeAnimation($MansionSkillsModule, 0.3)
+				if show_legacy_character_panels:
+					ResourceScripts.core_animations.UnfadeAnimation($MansionSkillsModule, 0.3)
 				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
 				$MansionJobModule2.close_job_pannel()
 				
 				
 		"skill":
 			$MansionSlaveListModule.show()
-			$MansionSlaveListModule.set_size(Vector2(1100, 805))
-			# SlaveListModule.get_node("Background").set_size(Vector2(1100, 845))
-			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 640))
 			$MansionSlaveListModule.rebuild()
 			if mansion_state != mansion_prev_state:
-				ResourceScripts.core_animations.UnfadeAnimation($MansionSkillsModule, 0.3)
+				if show_legacy_character_panels:
+					ResourceScripts.core_animations.UnfadeAnimation($MansionSkillsModule, 0.3)
 				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
 				$MansionJobModule2.close_job_pannel()
 		"travels":
@@ -307,9 +324,6 @@ func match_state():
 			menu_buttons.get_node("CraftButton").pressed = true
 		"sex":
 			SlaveListModule.show()
-			$MansionSlaveListModule.set_size(Vector2(1100, 780))
-			SlaveListModule.get_node("Background").set_size(Vector2(1100, 780))
-			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 550))
 			if mansion_state != mansion_prev_state:
 				ResourceScripts.core_animations.UnfadeAnimation(SexSelect, 0.3)
 				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
@@ -335,10 +349,11 @@ func open_char_info():
 
 func rebuild_mansion():
 	$MansionSlaveListModule.update()
-	$MansionSkillsModule.build_skill_panel()
+	if show_legacy_character_panels:
+		$MansionSkillsModule.build_skill_panel()
 	CraftModule.rebuild_scheldue()
 	#UpgradesModule.open_queue()
-	SlaveModule.show_slave_info()
+	update_legacy_slave_panel()
 	$TutorialButton.show()
 
 #same work as rebuild_mansion, but split over frames so a turn does not stall the game.
@@ -347,14 +362,94 @@ func rebuild_after_turn(day_extras):
 	yield(get_tree(), 'idle_frame') #always a coroutine, callers yield on 'completed'
 	yield(SlaveListModule.refresh_after_turn(true), 'completed')
 	yield(get_tree(), 'idle_frame')
-	$MansionSkillsModule.build_skill_panel()
+	if show_legacy_character_panels:
+		$MansionSkillsModule.build_skill_panel()
 	if !day_extras:
 		return
 	yield(get_tree(), 'idle_frame')
 	CraftModule.rebuild_scheldue()
 	yield(get_tree(), 'idle_frame')
-	SlaveModule.show_slave_info()
+	update_legacy_slave_panel()
 	$TutorialButton.show()
+
+
+func _turn_product_texture(value):
+	if value is String:
+		return load(value)
+	return value
+
+
+#Capture coordinates before the simulation. Completed tasks can remove and rebuild their
+#rows during managed tick yields; retaining positions keeps every icon aimed at its own row.
+func capture_turn_production_layout():
+	var layout = {sources = {}, targets = {}}
+	if !is_visible_in_tree() or !TaskModule.is_visible_in_tree():
+		return layout
+	layout.targets = TaskModule.get_turn_animation_targets()
+	for person_id in ResourceScripts.game_party.character_order:
+		var source = SlaveListModule.get_turn_animation_source(person_id)
+		if source != null:
+			layout.sources[str(person_id)] = source.get_global_rect().get_center()
+	return layout
+
+
+func play_turn_production_animations(layout, production_events):
+	#Always yield once so ClockModule can safely await this even when no route is visible.
+	yield(get_tree(), "idle_frame")
+	if production_events.empty() or !is_visible_in_tree():
+		return
+	var routes = []
+	for event in production_events:
+		var person_id = str(event.person_id)
+		var task_id = str(event.task_id)
+		if !layout.sources.has(person_id) or !layout.targets.has(task_id):
+			continue
+		var texture = _turn_product_texture(event.texture)
+		if texture == null:
+			continue
+		routes.append({
+			texture = texture,
+			start = layout.sources[person_id],
+			target = layout.targets[task_id],
+		})
+	if routes.empty():
+		return
+	input_handler.ClearContainer(TurnProductionOverlay)
+	TurnProductionOverlay.raise()
+	var inverse_canvas = TurnProductionOverlay.get_global_transform_with_canvas().affine_inverse()
+	var max_delay = 0.0
+	var index = 0
+	for route in routes:
+		if route.texture == null:
+			continue
+		var fly_icon = input_handler.DuplicateContainerTemplate(TurnProductionOverlay)
+		fly_icon.get_node("Icon").texture = route.texture
+		var half_size = fly_icon.rect_size * 0.5
+		var start_position = inverse_canvas.xform(route.start) - half_size
+		var target_position = inverse_canvas.xform(route.target) - half_size
+		var delay = min(index * TURN_PRODUCT_STAGGER, TURN_PRODUCT_MAX_STAGGER)
+		max_delay = max(max_delay, delay)
+		fly_icon.rect_position = start_position
+		fly_icon.rect_scale = Vector2(0.72, 0.72)
+		fly_icon.modulate = Color(1, 1, 1, 0)
+		var tween = fly_icon.get_node("Tween")
+		tween.interpolate_property(fly_icon, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1),
+			0.08, Tween.TRANS_QUAD, Tween.EASE_OUT, delay)
+		tween.interpolate_property(fly_icon, "rect_position", start_position, target_position,
+			TURN_PRODUCT_FLY_TIME, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT, delay)
+		tween.interpolate_property(fly_icon, "rect_scale", Vector2(0.72, 0.72), Vector2(1.08, 1.08),
+			TURN_PRODUCT_FLY_TIME * 0.55, Tween.TRANS_BACK, Tween.EASE_OUT, delay)
+		tween.interpolate_property(fly_icon, "rect_scale", Vector2(1.08, 1.08), Vector2(0.45, 0.45),
+			TURN_PRODUCT_FLY_TIME * 0.45, Tween.TRANS_QUAD, Tween.EASE_IN, delay + TURN_PRODUCT_FLY_TIME * 0.55)
+		tween.interpolate_property(fly_icon, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0),
+			0.12, Tween.TRANS_QUAD, Tween.EASE_IN, delay + TURN_PRODUCT_FLY_TIME - 0.12)
+		tween.interpolate_callback(fly_icon, delay + TURN_PRODUCT_FLY_TIME, "hide")
+		tween.start()
+		index += 1
+	if index == 0:
+		return
+	yield(get_tree().create_timer(max_delay + TURN_PRODUCT_FLY_TIME + 0.02), "timeout")
+	input_handler.ClearContainer(TurnProductionOverlay)
 
 func try_rebuild_slave_list():
 	if gui_controller.current_screen != self: return
@@ -415,15 +510,17 @@ func slave_list_manager():
 			SlaveListModule.update_buttons()
 			if active_person == null:
 				return
-			SkillModule.build_skill_panel()
-			SlaveModule.show_slave_info()
+			if show_legacy_character_panels:
+				SkillModule.build_skill_panel()
+			update_legacy_slave_panel()
 		'skill':
 			if active_person.is_on_quest():
 				return
 			if active_person in chars_for_skill:
 				SkillModule.use_skill(active_person)
 			set_active_person(skill_source)
-			SkillModule.build_skill_panel()
+			if show_legacy_character_panels:
+				SkillModule.build_skill_panel()
 			SlaveListModule.rebuild()
 		'travels':
 			if is_travel_selected:
@@ -436,7 +533,7 @@ func slave_list_manager():
 #			TravelsModule.update_buttons()
 		'upgrades':
 			if !select_chars_mode:
-				SlaveModule.show_slave_info()
+				update_legacy_slave_panel()
 				SlaveListModule.rebuild()
 				return
 			if chars_for_upgrades.has(active_person):
@@ -456,7 +553,12 @@ func slave_list_manager():
 				sex_participants.erase(active_person)
 			SlaveListModule.rebuild()
 			update_sex_date_buttons()
-	SlaveModule.show_slave_info()
+	update_legacy_slave_panel()
+
+
+func update_legacy_slave_panel():
+	if show_legacy_character_panels:
+		SlaveModule.show_slave_info()
 
 func update_sex_date_buttons():
 	SexSelect.get_node("SexButton").hint_tooltip = ""
@@ -496,13 +598,13 @@ func update_sex_date_buttons():
 
 func set_hovered_person(node, person):
 	hovered_person = person
-	SlaveModule.show_slave_info()
+	update_legacy_slave_panel()
 
 func remove_hovered_person():
 #	if SlaveListModule.is_in_area():
 #		return
 	hovered_person = null
-	SlaveModule.show_slave_info()
+	update_legacy_slave_panel()
 
 
 func _on_TestButton_pressed():

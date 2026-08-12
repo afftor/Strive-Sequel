@@ -154,7 +154,7 @@ custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "OPTDISABLEDAMAGESHAKE"
 
-[node name="no_item_flight" type="CheckBox" parent="TabContainer/Visuals"]
+[node name="item_flight_animation" type="CheckBox" parent="TabContainer/Visuals"]
 margin_left = 26.0
 margin_top = 266.0
 margin_right = 518.0
@@ -165,7 +165,7 @@ custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "OPTDISABLEITEMFLIGHT"
+text = "OPTITEMFLIGHT"
 
 [node name="Gameplay" type="Tabs" parent="TabContainer"]
 visible = false

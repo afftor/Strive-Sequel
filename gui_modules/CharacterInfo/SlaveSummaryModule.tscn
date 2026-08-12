@@ -94,9 +94,6 @@ margin_bottom = 46.4972
 texture = ExtResource( 24 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="age" type="TextureRect" parent="."]
 margin_left = 6.15825

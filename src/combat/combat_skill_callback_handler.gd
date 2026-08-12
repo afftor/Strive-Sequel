@@ -45,6 +45,10 @@ var state_map = [
 	'invoke_cleanup'
 ]
 
+const SPELLSWORD_FOLLOWUP_SPEED = 1.3
+const SPELLTRACE_SPELL_FOLLOWUP_TAG = 'spelltrace_spell_followup'
+const SPELLSWORD_FAST_ATTACK_FOLLOWUP_TAG = 'spellsword_fast_attack_followup'
+
 
 func _init(md = variables.SKILL_BASE):
 	caster = null
@@ -404,8 +408,32 @@ func invoke_init():
 	queuenode.call_deferred('invoke_resume')
 
 
+func prepare_spellsword_followup_animations(animations):
+	if mode != variables.SKILL_FA or parent == null:
+		return
+	var traced_spell = parent.tags.has(SPELLTRACE_SPELL_FOLLOWUP_TAG)
+	var fast_attack = parent.tags.has(SPELLSWORD_FAST_ATTACK_FOLLOWUP_TAG)
+	if !traced_spell and !fast_attack:
+		return
+	for animation in animations:
+		var base_speed = float(animation.speed) if animation.has('speed') else 1.0
+		animation.speed = base_speed * SPELLSWORD_FOLLOWUP_SPEED
+		if traced_spell and animation.period == 'predamage' and animation.target != 'caster':
+			animation.sync_to_hit = true
+	if traced_spell:
+		animations.append({
+			code = 'cast_weapon',
+			target = 'caster',
+			period = 'windup',
+			is_cast = true,
+			speed = SPELLSWORD_FOLLOWUP_SPEED,
+			alt_slot = 'spelltrace_weapon',
+		})
+
+
 func invoke_animations_1():
 	var animations = template.sfx.duplicate(true)
+	prepare_spellsword_followup_animations(animations)
 	#sort animations
 	for i in animations:
 		if i.code == 'weapon':

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -56,6 +56,18 @@ margin_right = 8.21347
 margin_top = 9.7535
 margin_bottom = 9.7535
 
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.0470588, 0.027451, 0.0196078, 0.92 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.768627, 0.521569, 0.258824, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [node name="MansionMainModule" type="Panel"]
 margin_right = 1920.0
 margin_bottom = 1080.0
@@ -106,13 +118,13 @@ rect_min_size = Vector2( 290, 385 )
 theme = ExtResource( 12 )
 
 [node name="MansionSlaveListModule" parent="." instance=ExtResource( 5 )]
-margin_left = 319.0
+margin_left = 311.0
 margin_top = 137.0
-margin_right = 1419.0
-margin_bottom = 937.0
-rect_min_size = Vector2( 1100, 580 )
+margin_right = 1577.0
+margin_bottom = 1063.0
 
 [node name="MansionLogModule" parent="." instance=ExtResource( 10 )]
+visible = false
 margin_left = 1435.0
 margin_top = 136.0
 margin_right = 1905.0
@@ -120,12 +132,14 @@ margin_bottom = 385.0
 rect_min_size = Vector2( 470, 220 )
 
 [node name="MansionSlaveModule" parent="." instance=ExtResource( 11 )]
+visible = false
 margin_left = 1435.0
 margin_top = 398.0
 margin_right = 1905.0
 margin_bottom = 1063.0
 
 [node name="MansionSkillsModule" parent="." instance=ExtResource( 6 )]
+visible = false
 margin_left = 320.0
 margin_top = 948.0
 margin_right = 319.84
@@ -217,5 +231,37 @@ visible = false
 
 [node name="SexSelectMenu" parent="." instance=ExtResource( 8 )]
 visible = false
+
+[node name="TurnProductionOverlay" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Button" type="Control" parent="TurnProductionOverlay"]
+visible = false
+margin_right = 44.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 44, 44 )
+rect_pivot_offset = Vector2( 22, 22 )
+mouse_filter = 2
+
+[node name="Background" type="Panel" parent="TurnProductionOverlay/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 5 )
+
+[node name="Icon" type="TextureRect" parent="TurnProductionOverlay/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+mouse_filter = 2
+expand = true
+stretch_mode = 5
+
+[node name="Tween" type="Tween" parent="TurnProductionOverlay/Button"]
 
 [connection signal="pressed" from="TestButton" to="." method="_on_TestButton_pressed"]

@@ -4,6 +4,8 @@ onready var sky = $Sky
 onready var tw = $Tween
 onready var turn_gain_tw = $TurnGainTween
 onready var ext_block = $TimeNode/external_block
+onready var turn_shine_clip = $TimeNode/TurnShineClip
+onready var turn_shine = $TimeNode/TurnShineClip/Shine
 var ext_blockers = []#{ref, act}
 
 var locked = false
@@ -15,6 +17,11 @@ var labels_dirty = false
 var turn_started_at = 0
 var sky_anim_token = 0
 var travel_arrival_sound_pending = false
+var turn_production_events = []
+var turn_production_layout_locked = false
+var turn_shine_progress = 0.0
+var turn_progress_hour_index = 0
+var turn_progress_hour_total = 1
 #only escape if the turn coroutine ever dies mid-way (input is blocked while it runs).
 #a 60-character turn measures ~2s, so this is ~13x the realistic worst case
 const TURN_WATCHDOG_MSEC = 30000
@@ -23,6 +30,9 @@ const TURN_GAIN_DURATION = 1.35
 const TURN_GAIN_HOLD = 1.5
 const TURN_GAIN_COUNTER_RATIO = 0.72
 const TURN_GAIN_LABEL_RATIO = 0.82
+const TURN_SHINE_START_X = -36.0
+const TURN_SHINE_END_X = 144.0
+const TURN_SIMULATION_PROGRESS_SHARE = 0.94
 
 var atlas_pos = {
 	0: 28,
@@ -47,6 +57,7 @@ func _ready():
 	build_turn_tooltips()
 	globals.connect("update_clock", self, 'request_labels_update')
 	globals.connect("travel_completed", self, 'queue_travel_arrival_sound')
+	globals.connect("work_produced", self, "queue_turn_production_event")
 	ext_block.connect("pressed", self, "on_ext_block_press")
 #	$TimeNode/Date.text = "D: " + str(ResourceScripts.game_globals.date)
 #	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
@@ -177,6 +188,15 @@ func queue_travel_arrival_sound():
 		travel_arrival_sound_pending = true
 
 
+func queue_turn_production_event(person_id, task_id, texture):
+	if !turn_in_progress or texture == null or !input_handler.globalsettings.get("item_flight_animation", false):
+		return
+	for event in turn_production_events:
+		if str(event.person_id) == str(person_id) and str(event.task_id) == str(task_id) and event.texture == texture:
+			return
+	turn_production_events.append({person_id = person_id, task_id = task_id, texture = texture})
+
+
 func _process(delta): #nearly obsolete
 	if labels_dirty:
 		labels_dirty = false
@@ -185,6 +205,8 @@ func _process(delta): #nearly obsolete
 	if turn_in_progress and OS.get_ticks_msec() - turn_started_at > TURN_WATCHDOG_MSEC:
 		print("ERROR - turn processing watchdog fired, releasing input lock")
 		turn_in_progress = false
+		turn_production_layout_locked = false
+		hide_turn_shine()
 	if input_locked and !turn_in_progress:
 		set_input_lock(false)
 	if self.visible == false:
@@ -209,6 +231,29 @@ func set_input_lock(state):
 		$TimeNode/HBoxContainer.modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 
+func show_turn_shine(turn_count):
+	turn_progress_hour_index = 0
+	turn_progress_hour_total = max(int(turn_count), 1)
+	turn_shine_progress = 0.0
+	turn_shine.rect_position.x = TURN_SHINE_START_X
+	turn_shine_clip.show()
+
+
+func set_turn_simulation_progress(hour_fraction):
+	var completed = turn_progress_hour_index + clamp(float(hour_fraction), 0.0, 1.0)
+	set_turn_shine_progress(100.0 * TURN_SIMULATION_PROGRESS_SHARE * completed / turn_progress_hour_total)
+
+
+func set_turn_shine_progress(value):
+	turn_shine_progress = max(turn_shine_progress, clamp(float(value), 0.0, 100.0))
+	turn_shine.rect_position.x = lerp(TURN_SHINE_START_X, TURN_SHINE_END_X, turn_shine_progress / 100.0)
+
+
+func hide_turn_shine():
+	turn_shine_clip.hide()
+	turn_shine_progress = 0.0
+
+
 var continue_timer = false
 func advance_turn(amount = 1):
 	if turn_in_progress: #ignore spam clicks instead of stacking whole turns
@@ -225,6 +270,7 @@ func advance_turn(amount = 1):
 	turn_in_progress = true
 	turn_started_at = OS.get_ticks_msec()
 	travel_arrival_sound_pending = false
+	show_turn_shine(amount)
 	set_input_lock(true)
 	input_handler.PlaySound("mansion_turn_end")
 
@@ -260,9 +306,20 @@ func advance_turn(amount = 1):
 	var requested = amount
 	var tmp = amount
 	while amount > 0:
+		turn_progress_hour_index = requested - amount
+		set_turn_simulation_progress(0.01)
 		if ResourceScripts.game_globals.autosave_due():
 			yield(globals.autosave(false, true), 'completed')
-		yield(ResourceScripts.game_globals.advance_hour(true), 'completed')
+		turn_production_events.clear()
+		var production_animation_enabled = input_handler.globalsettings.get("item_flight_animation", false)
+		turn_production_layout_locked = production_animation_enabled
+		var production_layout = {sources = {}, targets = {}}
+		if production_animation_enabled and gui_controller.mansion != null and is_instance_valid(gui_controller.mansion) and gui_controller.mansion.has_method("capture_turn_production_layout"):
+			production_layout = gui_controller.mansion.capture_turn_production_layout()
+		yield(ResourceScripts.game_globals.advance_hour(true, self), 'completed')
+		if production_animation_enabled and gui_controller.mansion != null and is_instance_valid(gui_controller.mansion) and gui_controller.mansion.has_method("play_turn_production_animations"):
+			yield(gui_controller.mansion.play_turn_production_animations(production_layout, turn_production_events.duplicate()), 'completed')
+		turn_production_layout_locked = false
 		amount -= 1
 		yield(get_tree(), 'idle_frame') #the tick and the gui listeners it wakes get a frame each
 		globals.emit_signal("hour_tick")
@@ -277,13 +334,19 @@ func advance_turn(amount = 1):
 	if tmp != requested: #event interrupted the turn, the predicted transition is wrong now
 		stop_sky_anim()
 
+	set_turn_shine_progress(94.0)
 	yield(get_tree(), 'idle_frame')
 	update_labels()
 	show_turn_gains(food_before, gold_before)
+	set_turn_shine_progress(96.0)
 	yield(get_tree(), 'idle_frame')
+	var day_passed = ResourceScripts.game_globals.date != start_date
 	if gui_controller.mansion != null and is_instance_valid(gui_controller.mansion) and !gui_controller.mansion.is_queued_for_deletion():
-		var day_passed = ResourceScripts.game_globals.date != start_date
 		yield(gui_controller.mansion.rebuild_after_turn(day_passed), 'completed')
+	set_turn_shine_progress(100.0)
+	yield(get_tree(), 'idle_frame')
+	hide_turn_shine()
+	turn_production_layout_locked = false
 	turn_in_progress = false
 	set_input_lock(false)
 	if travel_arrival_sound_pending:

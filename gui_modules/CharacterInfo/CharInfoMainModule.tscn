@@ -3,7 +3,6 @@
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=2]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSummaryModule.tscn" type="PackedScene" id=3]
-[ext_resource path="res://gui_modules/CharacterInfo/FoodPreferencesPanel.tscn" type="PackedScene" id=250]
 [ext_resource path="res://gui_modules/CharacterInfo/CharInfoMainModule.gd" type="Script" id=4]
 [ext_resource path="res://assets/Themes_v2/MANSION/CharInfoMainPanel.tres" type="StyleBox" id=5]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_32.tres" type="DynamicFont" id=6]
@@ -186,6 +185,7 @@
 [ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_default.png" type="Texture" id=212]
 [ext_resource path="res://assets/Textures_v2/icon_question_small_alt.png" type="Texture" id=213]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttonsquare_pressed2.png" type="Texture" id=214]
+[ext_resource path="res://gui_modules/CharacterInfo/FoodPreferencesPanel.tscn" type="PackedScene" id=250]
 
 [sub_resource type="StyleBoxTexture" id=13]
 texture = ExtResource( 111 )
@@ -1624,10 +1624,8 @@ stretch_mode = 6
 margin_left = 38.0
 margin_right = 133.0
 margin_bottom = 35.0
-mouse_filter = 2
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 14 )
-text = ""
 align = 1
 valign = 1
 autowrap = true
@@ -1638,16 +1636,6 @@ margin_left = 288.0
 margin_top = 605.0
 margin_right = 421.0
 margin_bottom = 640.0
-
-[node name="FoodPreferencesButton" type="Button" parent="SlaveInfoModule"]
-margin_left = 288.0
-margin_top = 646.0
-margin_right = 421.0
-margin_bottom = 690.0
-theme = ExtResource( 127 )
-custom_fonts/font = ExtResource( 14 )
-text = "MSLMFOOD"
-clip_text = true
 
 [node name="Icon" type="TextureRect" parent="SlaveInfoModule/LastMeal"]
 margin_right = 35.0
@@ -1661,13 +1649,21 @@ stretch_mode = 6
 margin_left = 38.0
 margin_right = 133.0
 margin_bottom = 35.0
-mouse_filter = 2
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 14 )
-text = ""
 align = 1
 valign = 1
 autowrap = true
+clip_text = true
+
+[node name="FoodPreferencesButton" type="Button" parent="SlaveInfoModule"]
+margin_left = 288.0
+margin_top = 646.0
+margin_right = 421.0
+margin_bottom = 690.0
+theme = ExtResource( 127 )
+custom_fonts/font = ExtResource( 14 )
+text = "MSLMFOOD"
 clip_text = true
 
 [node name="SexTraitsPanel" type="Panel" parent="SlaveInfoModule"]

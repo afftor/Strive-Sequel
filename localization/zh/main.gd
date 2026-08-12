@@ -162,6 +162,7 @@ Mansion and combat keys are independent - the same key may be used by both.""", 
 	OPTDISABLEPAPERDOLL = """禁用人物肖像""",
 	OPTDISABLEDAMAGESHAKE = """禁用受击抖动""",
 	OPTDISABLEITEMFLIGHT = """Disable item pickup animation""", # MISSING TRANSLATION
+	OPTITEMFLIGHT = """Item collection animations""", # MISSING TRANSLATION
 	OPTCHEATENTERCODE = """输入代码""",
 	OPTCHEATACTIVATE = """激活""",
 	OPTCHEATGETCODE = """获取代码""",
@@ -446,6 +447,22 @@ TUTORIALINFOQUESTION = """这是你第一次游玩《Strive: Conquest》吗？""
 	MSLMINV = """装备""",
 	MSLMFOOD = """Food""", # MISSING TRANSLATION
 	MSLMSORTHINT = """Click to sort by this column, click again to reverse it, once more to go back to your own order.""", # MISSING TRANSLATION
+	MSLMSORTDEFAULT = """Default order""", # MISSING TRANSLATION
+	MSLMSORTNAME = """Name""", # MISSING TRANSLATION
+	MSLMSORTWORK = """Work""", # MISSING TRANSLATION
+	MSLMSORTTRAINABLE = """Can train""", # MISSING TRANSLATION
+	MSLMSORTDATEABLE = """Can date""", # MISSING TRANSLATION
+	MSLMSORTLEVELUP = """Can upgrade""", # MISSING TRANSLATION
+	MSLMFOLDLIST = """Collapse character list""", # MISSING TRANSLATION
+	MSLMUNFOLDLIST = """Expand character list""", # MISSING TRANSLATION
+	MSLMFOLDMENU = """Hide side menu""", # MISSING TRANSLATION
+	MSLMUNFOLDMENU = """Show side menu""", # MISSING TRANSLATION
+	MSLMEXPANDEDFACTORS = """Factors""", # MISSING TRANSLATION
+	MSLMEXPANDEDSTATS = """Base Stats""", # MISSING TRANSLATION
+	MSLMEXPANDEDEQUIPMENT = """Equipped""", # MISSING TRANSLATION
+	MSLMEXPANDEDRELATIONSHIP = """Relationship""", # MISSING TRANSLATION
+	MSLMEXPANDEDBUFFS = """Buffs""", # MISSING TRANSLATION
+	MSLMROOMSUSED = """Rooms used: %d/%d""", # MISSING TRANSLATION
 	LVLBONUSPERPOINT = """每点加成""",
 	LVLCURRENT = """当前""",
 	LVLTOTALPOINTS = """总点数""",
@@ -2104,6 +2121,48 @@ The last hit deals increased damage.
 	SKILLFORCED_EXORCISMDESCRIPT = """Prioritize Cursed enemy. Deal heavy {color=yellow|Light} magical damage to a single target. If the target is {color=aqua|Cursed}, damage the target mana and deal {color=yellow|Dark} magical damage to all their allies. Remove {color=aqua|Cursed} from target.""", # MISSING TRANSLATION
 	SKILLUNDYING_SPIRIT = """Undying Spirit""", # MISSING TRANSLATION
 	SKILLUNDYING_SPIRITDESCRIPT = """Heal self for a small portion of Max HP. Heal more for every enemy that have {color=aqua|Fear} or Defeated.""", # MISSING TRANSLATION
+	SKILLARRIVAL_OF_THE_DEPARTED = """Arrival of the Departed""", # MISSING TRANSLATION
+	SKILLARRIVAL_OF_THE_DEPARTEDDESCRIPT = """Revive all allies and summon Zombies until the team is full.""", # MISSING TRANSLATION
+	SKILLTICKET_PLEASE = """Ticket, Please""", # MISSING TRANSLATION
+	SKILLTICKET_PLEASEDESCRIPT = """Deal {color=yellow|Dark} magical damage to an enemy.
+If the target does not have {color=aqua|One-Way Ticket to Hell}, inflict {color=aqua|One-Way Ticket to Hell}.
+If the target has {color=aqua|One-Way Ticket to Hell}, deal more damage and remove {color=aqua|One-Way Ticket to Hell}.""", # MISSING TRANSLATION
+	SKILLAFTERLIFE_AMENITIES = """Afterlife Amenities""", # MISSING TRANSLATION
+	SKILLAFTERLIFE_AMENITIESDESCRIPT = """Remove {color=aqua|Silence} on self.
+Heal 3 random allies other than self and apply {color=aqua|Dark Gift} to them.""", # MISSING TRANSLATION
+	SKILLDEAD_RUNNING = """Dead Running""", # MISSING TRANSLATION
+	SKILLDEAD_RUNNINGDESCRIPT = """Command all undead minions to randomly attack enemies.""", # MISSING TRANSLATION
+	SKILLEND_OF_THE_LINE = """End of the Line""", # MISSING TRANSLATION
+	SKILLEND_OF_THE_LINEDESCRIPT = """{color=red|Usable only when there's more than 1 ally.}
+Order his minions to explode, each dealing {color=yellow|Dark} magical damage to 2 random melee targets and die afterward.""", # MISSING TRANSLATION
+	SKILLNO_LIGHT_TUNNEL_END = """There's no light at the end of the Tunnel!""", # MISSING TRANSLATION
+	SKILLNO_LIGHT_TUNNEL_ENDDESCRIPT = """Usable only when there's no other ally standing.
+Inflict {color=aqua|Blind} and {color=aqua|In the Dark} to all enemies.
+Summon 2 random Zombies.""", # MISSING TRANSLATION
+	SKILLTALISMAN_DISGUISED_AS_TICKET = """Talisman disguised as Ticket""", # MISSING TRANSLATION
+	SKILLTALISMAN_DISGUISED_AS_TICKETDESCRIPT = """Can only target without {color=aqua|One-Way Ticket to Hell}.
+Deal {color=yellow|Dark} magical damage to an enemy and inflict {color=aqua|One-Way Ticket to Hell}.""", # MISSING TRANSLATION
+	SKILLCUMULATING_CURSE = """Cumulating Curse""", # MISSING TRANSLATION
+	SKILLCUMULATING_CURSEDESCRIPT = """Deal {color=yellow|Dark} magical damage to all enemies.""", # MISSING TRANSLATION
+	SKILLTALISMAN_GUIDED_PUNCH = """Talisman-Guided Punch""", # MISSING TRANSLATION
+	SKILLTALISMAN_GUIDED_PUNCHDESCRIPT = """Can only target unit with {color=aqua|One-Way Ticket to Hell}.
+Deal large {color=yellow|Dark} physical damage to an enemy and remove {color=aqua|One-Way Ticket to Hell}.""", # MISSING TRANSLATION
+	SKILLBONEMEAL_SPRAY = """Bonemeal Spray""", # MISSING TRANSLATION
+	SKILLBONEMEAL_SPRAYDESCRIPT = """Deal physical damage to a row and inflict {color=aqua|Blind}.""", # MISSING TRANSLATION
+	SKILLWEIGHTY_COLISION = """Weighty Collision""", # MISSING TRANSLATION
+	SKILLWEIGHTY_COLISIONDESCRIPT = """Deal physical damage to an enemy and inflict {color=aqua|Stun}.""", # MISSING TRANSLATION
+	SKILLWASTE_DISCHARGE = """Discharge Waste""", # MISSING TRANSLATION
+	SKILLWASTE_DISCHARGEDESCRIPT = """Deal {color=yellow|Water} magical damage to a row.
+Inflict {color=aqua|Blind}, {color=aqua|Poison}, and chance to inflict {color=aqua|Silence}.""", # MISSING TRANSLATION
+	SKILLQUICK_DEATH = """Quick Death""", # MISSING TRANSLATION
+	SKILLQUICK_DEATHDESCRIPT = """Deal physical damage to an enemy. Damage also increases with user speed.""", # MISSING TRANSLATION
+	SKILLSWELLING_MUSCLE = """Swelling Muscle""", # MISSING TRANSLATION
+	SKILLSWELLING_MUSCLEDESCRIPT = """Can only be used while having less than 3 {color=aqua|Heaping Mass}.
+Gain a stack of {color=aqua|Heaping Mass}.""", # MISSING TRANSLATION
+	SKILLHYSTERICAL_STRENGTH = """Hysterical Strength""", # MISSING TRANSLATION
+	SKILLHYSTERICAL_STRENGTHDESCRIPT = """Can only be used while affected by {color=aqua|Heaping Mass}.
+Deal physical damage to the line of enemy and inflict {color=aqua|Ensnared}.
+Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	STATUSDESC_BLEED = """流血：每回合受到 10% 最大生命值的真实伤害。""",
 	STATUSDESC_POISON = """中毒：每回合受到 10% 最大生命值的真实伤害。""",
 	STATUSDESC_BURN = """灼烧：每回合受到 8% 最大生命值的火系伤害。""",
@@ -5258,6 +5317,39 @@ This effect is removed if the applier fell for a taunt or is immobilised.""", # 
 All attacks have a 20% chance to inflict Bleed.""", # MISSING TRANSLATION
 	EFFECT_CURSED_GIRL_DESCRIPT = """Cursed Girl: When hit by Devour magic spell, gain shock and 3 fragiles. When hit by Light damage, there is a 20% chance to become stunned.""", # MISSING TRANSLATION
 	EFFECT_GUARDIAN_SPIRIT_PROTECTION_FRENZIED_DESCRIPT = """Guardian Spirit Protection [Frenzied]: When being hit by non-light damage, 30% chance to inflict Cursed to the attacker. When being hit by a Cursed enemy, reduce damage taken by 30% and inflict Dark damage back to the attacker.""", # MISSING TRANSLATION
+	SEB_RILU_ATTACK = """
+Rilu cast Soul Nail. """, # MISSING TRANSLATION
+	SEB_RILU_DEBUFF = """
+Rilu cast Mass Malediction. """, # MISSING TRANSLATION
+	SEB_RILU_HEAL = """
+Rilu cast Soothe the Soul. """, # MISSING TRANSLATION
+	SEB_RILU_EXORCISE = """
+Rilu cast Exorcism. """, # MISSING TRANSLATION
+	SEB_BONEMEAL_EASTEREGG = """
+%s got fertilized by the bonemeal! """, # MISSING TRANSLATION
+	EFFECT_CEASELESS_HARVEST_DESCRIPT = """Forbidden Ritual: Ceaseless Harvest -
+Further Reduce DoT damage taken.
+At the end of each round, regenerate 8% of Max HP.
+The Regen effect will not activate if affected by Luminance.""", # MISSING TRANSLATION
+	EFFECTNAME_DEATH_AND_TAXES = """Death & Taxes""", # MISSING TRANSLATION
+	EFFECT_DEATH_AND_TAXES_DESCRIPT = """When using healing ability, reduce mana.
+When using resurrection type ability, harshly reduce mana.
+Disable this effect if Sebastian is silenced.""", # MISSING TRANSLATION
+	EFFECTNAME_ONE_WAY_TICKET_TO_HELL = """One-way Ticket to Hell""", # MISSING TRANSLATION
+	EFFECT_ONE_WAY_TICKET_TO_HELL_DESCRIPT = """One-way Ticket to Hell: -25% Armor, MDEF, and Healing Received.""", # MISSING TRANSLATION
+	EFFECT_IN_THE_DARK_DESCRIPT = """Reduce light damage dealt and Outgoing Healing by 100%""", # MISSING TRANSLATION
+	EFFECT_YOU_WANT_TICKET_DESCRIPT = """Counter-curse: When hit, 50% chance to apply One-Way Ticket to Hell to the attacker.""", # MISSING TRANSLATION
+	EFFECT_GIANT_RIBCAGE_DESCRIPT = """Giant Ribcage: At the start of this unit turn, apply 'Wide Guard' to all allies for 1 turn.""", # MISSING TRANSLATION
+	EFFECTNAME_WIDE_GUARD = """Wide Guard""", # MISSING TRANSLATION
+	EFFECT_WIDE_GUARD_DESCRIPT = """Reduce AoE damage taken by 50%. Remove if the applier is defeated.""", # MISSING TRANSLATION
+	EFFECT_BLOATED_WITH_NOXIOUS_GAS_DESCRIPT = """Bloated with Noxious Gas:
+On Death, inflict water damage, blind, and poison to the melee line.
+On Death while affected by burn, explode. Dealing Fire damage to the front-most enemy of each row.""", # MISSING TRANSLATION
+	EFFECT_ADRENAL_GLANDS_OVERDRIVE_DESCRIPT = """Adrenal glands overdrive: Gain more speed the less HP this unit has.""", # MISSING TRANSLATION
+	EFFECTNAME_ADRENAL_GLANDS_OVERDRIVE_SPEED_BUFF = """Adrenaline""", # MISSING TRANSLATION
+	EFFECT_GO_POSTAL_DESCRIPT = """Go Postal: Counterattack any attack in melee range and Taunt itself to the attacker.""", # MISSING TRANSLATION
+	EFFECT_HEAPING_MASS_DESCRIPT = """For every stack (Max 3): +15 ATK, Armor, MDEF. - 20 Evasion and Speed.""", # MISSING TRANSLATION
+	EFFECT_FIRST_CLASS_SERVICE_DESCRIPT = """First-Class Service: At the start of each round, order a random ally to protect this unit for the round.""", # MISSING TRANSLATION
     RESETTRAINREQ = "将训练重置为第 0 步并恢复精神点数。需要“遗忘药水”。",
 	RESETTRAINING = """所有训练进度将被丢弃。确定吗？""",
 	BUFFDESCRIPTDEFENDER = """防御者：除非处于眩晕状态，否则将为盟友抵挡攻击。""",
@@ -31243,6 +31335,12 @@ Light gathers along the arrowhead, clean and pale, until the metal hums softly i
 
 你留她在阴影中休息，转身回到了其他人身边，心中带着一种奇妙的笃定——珂洛仍在注视着你。""", 
     ENEMYRILU_MADDENED = """发狂的少女""",
+	ENEMYSEBASTIAN = """Sebastian""", # MISSING TRANSLATION
+	ENEMYTALISMAN_WRAPPED_UNDEAD = """Talisman-Wrapped Undead""", # MISSING TRANSLATION
+	ENEMYGIANT_SKELETON_GOLEM = """Giant Skeleton Golem""", # MISSING TRANSLATION
+	ENEMYBILEFUL_ZOMBIE = """Bileful Zombies""", # MISSING TRANSLATION
+	ENEMYRABID_ZOMBIE = """Rabid Zombies""", # MISSING TRANSLATION
+	ENEMYMUSCULAR_ZOMBIE = """Muscular Zombies""", # MISSING TRANSLATION
 
 
 

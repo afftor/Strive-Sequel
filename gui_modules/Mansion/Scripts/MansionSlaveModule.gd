@@ -1,12 +1,57 @@
 extends Panel
 
 
-onready var MansionMainModule = get_parent()
+onready var MansionMainModule = _find_mansion_main()
 var person
+var pinned_person
+export(bool) var embedded = false
+
+const OVERVIEW_FACTORS = [
+	"growth_factor",
+	"physics_factor",
+	"magic_factor",
+	"wits_factor",
+	"charm_factor",
+	"sexuals_factor",
+	"tame_factor",
+	"authority_factor",
+]
+const OVERVIEW_STATS = ["physics", "wits", "charm", "productivity"]
+const PERSONALITY_ICONS = {
+	"bold": preload("res://assets/Textures_v2/MANSION/personality_bold.png"),
+	"kind": preload("res://assets/Textures_v2/MANSION/personality_kind.png"),
+	"shy": preload("res://assets/Textures_v2/MANSION/personality_shy.png"),
+	"serious": preload("res://assets/Textures_v2/MANSION/personality_serious.png"),
+	"neutral": preload("res://assets/Textures_v2/MANSION/personality_neutral.png"),
+}
+const OVERVIEW_ICONS = {
+	"growth_factor": preload("res://assets/images/gui/gui icons/growth_factor.png"),
+	"physics_factor": preload("res://assets/images/gui/gui icons/physics_factor.png"),
+	"magic_factor": preload("res://assets/images/gui/gui icons/magic_factor.png"),
+	"wits_factor": preload("res://assets/images/gui/gui icons/wit_factor.png"),
+	"charm_factor": preload("res://assets/images/gui/gui icons/charm_factor.png"),
+	"sexuals_factor": preload("res://assets/images/gui/gui icons/sex_factor.png"),
+	"tame_factor": preload("res://assets/images/gui/gui icons/tame_factor.png"),
+	"authority_factor": preload("res://assets/images/gui/gui icons/timid_factor.png"),
+	"physics": preload("res://assets/images/gui/gui icons/icon_physics.png"),
+	"wits": preload("res://assets/images/gui/gui icons/icon_wits.png"),
+	"charm": preload("res://assets/images/gui/gui icons/icon_charm.png"),
+	"productivity": preload("res://assets/images/gui/inventory/icon_craft1.png"),
+}
+
+
+func _find_mansion_main():
+	var node = get_parent()
+	while node != null:
+		if node.has_method("mansion_state_set") and node.has_method("set_active_person"):
+			return node
+		node = node.get_parent()
+	return null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$CharacterInfoButton.connect("pressed", get_parent(), "mansion_state_set", ["char_info"])
+	if MansionMainModule != null:
+		$CharacterInfoButton.connect("pressed", MansionMainModule, "mansion_state_set", ["char_info"])
 	$TextureRect2/Exp.connect("pressed", self, "open_char_class_info")
 	for i in $base_stats.get_children():
 		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
@@ -15,9 +60,11 @@ func _ready():
 		if i.name == "Exp":
 			continue
 		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
-	globals.connect("hour_tick", self, "show_slave_info")
-	input_handler.connect("EventFinished", self, "show_slave_info")
-	input_handler.register_btn_source("char_info", self, "tut_get_info_btn")
+	var legacy_panel_enabled = MansionMainModule == null or MansionMainModule.get("show_legacy_character_panels")
+	if !embedded and legacy_panel_enabled:
+		globals.connect("hour_tick", self, "show_slave_info")
+		input_handler.connect("EventFinished", self, "show_slave_info")
+		input_handler.register_btn_source("char_info", self, "tut_get_info_btn")
 	hotkeys.connect("bindings_changed", self, "build_info_btn_tooltip")
 	build_info_btn_tooltip()
 
@@ -42,95 +89,189 @@ func open_char_class_info():
 func show_slave_info():
 	if globals.gameover_process:
 		return
-	var hovered_person = get_parent().hovered_person
-	if hovered_person != null:
-		person = hovered_person
+	if pinned_person != null:
+		person = pinned_person
+	elif MansionMainModule != null and MansionMainModule.hovered_person != null:
+		person = MansionMainModule.hovered_person
 	else:
 		person = input_handler.interacted_character
-#	if person.get_stat("unique") == "lilith":
-#		print(1)
-	if person != null:
-#		$Panel.visible = !person.has_profession('master')
-		$Panel.visible = false
-		#globals.connecttexttooltip($RichTextLabel, person.show_race_description())
-		$exp.text = str(floor(person.get_stat('base_exp')))
-		$productivity/Label.text = str(round(person.get_stat('productivity'))) + "%"
-		var text = "[center]" + person.get_full_name() + "[/center]"# + person.translate(" [race] [age]")
-		input_handler.ClearContainer($TextureRect/ScrollContainer/professions)
-		if person.get_prof_number() > 5:
-			$TextureRect/ScrollContainer/professions.columns = 10 #or 9 - idk what is lesser evil
-			$TextureRect/ScrollContainer/professions.set("custom_constants/hseparation", 1)
-			$TextureRect/ScrollContainer/professions/Button.rect_min_size = Vector2(45,45)
-			$TextureRect/ScrollContainer/professions/Button/ProfIcon.rect_size = Vector2(34,34)
-			$TextureRect/ScrollContainer/professions/Button/Label.hide()
+	if person == null:
+		return
+	$Panel.visible = false
+	build_professions()
+	if !embedded:
+		build_legacy_info()
+	if $ExpandedStats.visible:
+		build_overview()
+		build_expanded_character_info()
+	build_traits()
+	build_buffs()
+
+
+func prepare_expanded_person(value):
+	pinned_person = value
+	person = value
+	$Panel.visible = false
+
+
+func build_professions():
+	input_handler.ClearContainer($TextureRect/ScrollContainer/professions)
+	for profession_code in person.get_professions():
+		var newnode = input_handler.DuplicateContainerTemplate($TextureRect/ScrollContainer/professions)
+		var profession = classesdata.professions[profession_code]
+		newnode.get_node("Label").text = ResourceScripts.descriptions.get_class_name(profession, person)
+		newnode.get_node("ProfIcon").texture = profession.icon
+		newnode.connect('signal_RMB_release', gui_controller, 'show_class_info', [profession_code, person])
+		globals.connectclasstooltip(newnode, person, profession_code)
+
+
+
+#The embedded version hides this old portrait/stat block. Keeping it separate lets the
+#expanded panel distribute its own sections over several frames.
+func build_legacy_info():
+	globals.build_attrs_for_char(self, person)
+	$exp.text = str(floor(person.get_stat('base_exp')))
+	$productivity/Label.text = str(round(person.get_stat('productivity'))) + "%"
+	if person.is_master() or person.is_unique():
+		$RichTextLabel.set("custom_colors/default_color", variables.hexcolordict.unique)
+	else:
+		$RichTextLabel.set("custom_colors/default_color", variables.hexcolordict.white)
+	$RichTextLabel.bbcode_text = "[center]" + person.get_full_name() + "[/center]"
+	for stat_code in ['hp', 'mp', 'lust']:
+		get_node("base_stats/" + stat_code).max_value = person.get_stat(stat_code + 'max')
+		get_node("base_stats/" + stat_code).value = person.get_stat(stat_code)
+		get_node("base_stats/" + stat_code + '/Label').text = str(floor(person.get_stat(stat_code))) + "/" + str(floor(person.get_stat(stat_code + 'max')))
+	$base_stats/lust.visible = person.check_trait('succubus')
+	$growth.text = tr(ResourceScripts.descriptions.factor_descripts[int(floor(person.get_stat('growth_factor')))])
+	$growth.set("custom_colors/font_color", variables.hexcolordict['factor' + str(int(floor(person.get_stat('growth_factor'))))])
+	for stat_code in ['physics', 'wits', 'charm']:
+		var bonus = person.get_stat(stat_code + "_bonus")
+		var color = set_color(bonus)
+		get_node(stat_code).text = str(floor(person.get_stat(stat_code)))
+		get_node(stat_code).set("custom_colors/font_color", color)
+		get_node(stat_code + '2').text = str(person.get_stat(stat_code + '_cap') + bonus)
+		get_node(stat_code + '2').set("custom_colors/font_color", color)
+	var productivity_text = "[center]" + statdata.statdata.productivity.name + "[/center]\n" + statdata.statdata.productivity.descript + "\n" + tr("TOTALPRODUCTIVITY") + ": " + str(floor(person.get_stat('productivity')))
+	for mod_code in variables.productivity_mods:
+		var mod_value = person.get_stat(mod_code)
+		if mod_value > 1:
+			productivity_text += "\n{color=green|" + str(round(mod_value * 100)) + " - " + statdata.statdata[mod_code].name + "}"
+		elif mod_value < 1:
+			productivity_text += "\n{color=red|" + str(round(mod_value * 100)) + " - " + statdata.statdata[mod_code].name + "}"
 		else:
-			$TextureRect/ScrollContainer/professions.columns = 5
-			$TextureRect/ScrollContainer/professions.set("custom_constants/hseparation", 2)
-			$TextureRect/ScrollContainer/professions/Button.rect_min_size = Vector2(90,90)
-			$TextureRect/ScrollContainer/professions/Button/ProfIcon.rect_size = Vector2(78,78)
-#			$TextureRect/professions/Button/Label.show()
+			productivity_text += "\n" + str(round(mod_value * 100)) + " - " + statdata.statdata[mod_code].name
+	globals.connecttexttooltip($productivity, globals.TextEncoder(productivity_text))
 
-		for i in person.get_professions():
-			var newnode = input_handler.DuplicateContainerTemplate($TextureRect/ScrollContainer/professions)
-			var prof = classesdata.professions[i]
-			var name = ResourceScripts.descriptions.get_class_name(prof, person)
-			newnode.get_node("Label").text = name
-			newnode.get_node("ProfIcon").texture = prof.icon
-			newnode.connect('signal_RMB_release', gui_controller, 'show_class_info', [i, person])
-#			var temptext = "[center]"+ResourceScripts.descriptions.get_class_name(prof,person) + "[/center]\n"+ResourceScripts.descriptions.get_class_bonuses(person, prof) + ResourceScripts.descriptions.get_class_traits(person, prof)
-#			var social_skills = ''
-#			var combat_skills = ''
-#			if classesdata.professions[i].has("skills") && !classesdata.professions[i].skills.empty():
-#				temptext += "\n" + tr("SOCIAL_SKILLS") + " - "
-#				for skill in classesdata.professions[i].skills:
-#					social_skills += Skilldata.Skilllist[skill].name + ", "
-#				social_skills = social_skills.substr(0, social_skills.length() - 2)
-#			temptext += social_skills
-#			if classesdata.professions[i].has("combatskills") && !classesdata.professions[i].combatskills.empty():
-#				temptext += "\n" + tr("COMBAT_SKILLS") + " - "
-#				for skill in classesdata.professions[i].combatskills:
-#					combat_skills += Skilldata.Skilllist[skill].name + ", "
-#				combat_skills = combat_skills.trim_suffix(', ')
-#			temptext += combat_skills
-#			temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
-#			globals.connecttexttooltip(newnode, temptext)
-			globals.connectclasstooltip(newnode, person, i)
-		globals.build_attrs_for_char(self, person)
-		if person.is_master() or person.is_unique():
-			$RichTextLabel.set("custom_colors/default_color", variables.hexcolordict.unique)
+
+func build_traits():
+	globals.build_traitlist_for_char(person, $scroll/traitscontainer)
+
+
+func build_buffs():
+	globals.build_buffs_for_char(person, $buffscontainer, 'mansion')
+
+
+func set_person(value):
+	pinned_person = value
+	show_slave_info()
+
+
+func build_overview():
+	input_handler.ClearContainer($ExpandedStats/Factors/Rows)
+	input_handler.ClearContainer($ExpandedStats/BaseStats/Rows)
+	for code in OVERVIEW_FACTORS:
+		if person.is_master() and code in ["tame_factor", "authority_factor"]:
+			continue
+		var row = input_handler.DuplicateContainerTemplate($ExpandedStats/Factors/Rows)
+		setup_overview_row(row, code, str(int(floor(person.get_stat(code)))), true)
+	for code in OVERVIEW_STATS:
+		var value
+		if code == "productivity":
+			value = str(int(floor(person.get_stat(code)))) + "%"
 		else:
-			$RichTextLabel.set("custom_colors/default_color", variables.hexcolordict.white)
-		$RichTextLabel.bbcode_text = text
+			var current_value = int(floor(person.get_stat(code)))
+			var maximum_value = int(floor(person.get_stat(code + "_cap") + person.get_stat(code + "_bonus")))
+			value = str(current_value) + " / " + str(maximum_value)
+		var row = input_handler.DuplicateContainerTemplate($ExpandedStats/BaseStats/Rows)
+		setup_overview_row(row, code, value, false)
 
-		for i in ['hp','mp','lust']:
-			get_node("base_stats/"+ i ).max_value = person.get_stat(i+'max')
-			get_node("base_stats/"+ i ).value = person.get_stat(i)
-			get_node("base_stats/"+ i + '/Label').text = str(floor(person.get_stat(i))) + "/" + str(floor(person.get_stat(i+'max')))
-		get_node("base_stats/lust").visible = person.check_trait('succubus')
-		#text = "Type: [color=yellow]" + person.translate(statdata.slave_class_names[person.get_stat('slave_class')]) + "[/color]\n"
-		
-		$growth.text = tr(ResourceScripts.descriptions.factor_descripts[int(floor(person.get_stat('growth_factor')))])
-		$growth.set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(person.get_stat('growth_factor'))))])
-		for i in ['physics','wits','charm']:
-			var bonus = person.get_stat(i + "_bonus")
-			var color = set_color(bonus)
-			get_node(i).text = str(floor(person.get_stat(i)))
-			get_node(i).set("custom_colors/font_color", color)
-			get_node(i+'2').text = str(person.get_stat(i+'_cap') + bonus)
-			get_node(i+'2').set("custom_colors/font_color", color)
 
-		text = "[center]" + statdata.statdata.productivity.name + "[/center]\n" + statdata.statdata.productivity.descript + "\n"+tr("TOTALPRODUCTIVITY")+": " + str(floor(person.get_stat('productivity')))
-		for i in variables.productivity_mods:
-			if person.get_stat(i) > 1:
-				text += "\n{color=green|" + str(round(person.get_stat(i)*100)) + " - " + statdata.statdata[i].name + "}"
-			elif person.get_stat(i) < 1:
-				text += "\n{color=red|" + str(round(person.get_stat(i)*100)) + " - " + statdata.statdata[i].name + "}"
-			else:
-				text += "\n" + str(round(person.get_stat(i)*100)) + " - " + statdata.statdata[i].name
-		globals.connecttexttooltip($productivity, globals.TextEncoder(text))
-		
-		globals.build_traitlist_for_char(person, $scroll/traitscontainer)
-		globals.build_buffs_for_char(person, $buffscontainer, 'mansion')
+func setup_overview_row(row, code, value, factor):
+	row.get_node("Icon").texture = OVERVIEW_ICONS[code]
+	row.get_node("Value").text = value
+	if factor:
+		var factor_index = int(clamp(floor(person.get_stat(code)), 1, 6))
+		row.get_node("Value").set("custom_colors/font_color", variables.hexcolordict["factor" + str(factor_index)])
+	else:
+		row.get_node("Value").set("custom_colors/font_color", variables.hexcolordict["k_yellow"])
+	var tooltip = "[center]{color=yellow|" + tr("STAT" + code.to_upper()) + "}[/center]\n" + person.translate(statdata.statdata[code].descript)
+	globals.connecttexttooltip(row, tooltip)
+
+
+func get_body_preview_texture():
+	var body_texture = person.get_stored_body_image()
+	if body_texture == null:
+		body_texture = person.get_body_image()
+	return body_texture
+
+
+func build_expanded_character_info():
+	var fame_row = $ExpandedStats/CharacterInfo/Rows/Fame
+	fame_row.get_node("Value").text = tr(person.get_fame_bonus('name'))
+	globals.connecttexttooltip(fame_row,
+		person.translate(tr("TOOLTIPFAME") + "\n\n{color=yellow|" + tr(person.get_fame_bonus('desc')) + "}")
+		+ "\n" + person.get_fame_bonus_desc())
+
+	var price_row = $ExpandedStats/CharacterInfo/Rows/Price
+	price_row.visible = !person.has_profession("master")
+	if price_row.visible:
+		var price = person.calculate_price(false, false, true)
+		var character_tax = person.get_weekly_tax()
+		price_row.get_node("Value").text = str(price)
+		if character_tax > 0:
+			price_row.get_node("Value").text += " (%d)" % character_tax
+		var value_tooltip = tr("TOOLTIPVALUE") + "\n\n" + person.get_price_composition()
+		if character_tax > 0:
+			value_tooltip += "\n%s: {color=yellow|%d} (%d + %d)" % [
+				tr("FAMEDESC_UPKEEP"), character_tax, person.get_upkeep(), person.get_value_upkeep()
+			]
+		globals.connecttexttooltip(price_row, value_tooltip)
+
+	var standing_row = $ExpandedStats/CharacterInfo/Rows/Standing
+	standing_row.visible = !person.is_master()
+	if standing_row.visible:
+		standing_row.get_node("Value").text = person.get_character_standing()
+		globals.connecttexttooltip(standing_row, build_standing_tooltip())
+
+	var personality_row = $ExpandedStats/CharacterInfo/Rows/Personality
+	var personality = person.get_stat("personality")
+	personality_row.get_node("Icon").texture = PERSONALITY_ICONS.get(personality, PERSONALITY_ICONS.neutral)
+	personality_row.get_node("Value").text = tr("PERSONALITYNAME" + personality.to_upper())
+	globals.connecttexttooltip(personality_row, globals.get_character_personality_tooltip(personality))
+
+	var consent_label = $ExpandedStats/CharacterInfo/Consent
+	if person.is_master():
+		consent_label.text = tr("SIBLINGMODULECONSENT") + tr("MASTER")
+		globals.connecttexttooltip(consent_label, person.translate(tr("INFOCONSENTMASTER")))
+	else:
+		consent_label.text = tr("SIBLINGMODULECONSENT") + tr(variables.consent_dict[int(person.get_stat('consent'))])
+		globals.connecttexttooltip(consent_label, tr("INFOCONSENT"))
+
+
+func build_standing_tooltip():
+	var text = person.translate(tr("TOOLTIPCHARACTERSTANDING"))
+	var standing_code = person.get_character_standing_code()
+	var effect_code = 'e_' + standing_code
+	if person.has_status(standing_code) and Effectdata.effect_table.has(effect_code):
+		var effect = Effectdata.effect_table[effect_code]
+		text += "\n\n[center]{color=yellow|%s}[/center]\n%s" % [
+			tr('TRAIT' + standing_code.to_upper()),
+			person.translate(tr('TRAIT' + standing_code.to_upper() + 'DESCRIPT')),
+		]
+		var bonus_text = person.translate(globals.build_desc_for_bonusstats(effect.statchanges).strip_edges())
+		if bonus_text != "":
+			text += "\n" + bonus_text
+	return text
 
 
 func set_color(value):

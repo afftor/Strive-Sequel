@@ -177,7 +177,7 @@ var globalsettings = {
 	show_full_consent = false,
 	disable_paperdoll = false,
 	no_damage_shake = false,
-	no_item_flight = false,
+	item_flight_animation = false,
 
 	textspeed = 60,
 	skipread = false,
@@ -678,13 +678,18 @@ func Open(node):
 	ResourceScripts.core_animations.OpenAnimation(node)
 	CloseableWindowsArray.append(node)
 
-func ChangeScene(name):
-	ResourceScripts.core_animations.BlackScreenTransition(0.3)
+func ShowLoadScreen():
 	CloseableWindowsArray.clear()
 	dialogue_array.clear()
 	var loadscreen = load(ResourceScripts.scenedict.loadscreen).instance()
 	get_tree().get_root().add_child(loadscreen)
 	CurrentScene = loadscreen
+	return loadscreen
+
+
+func ChangeScene(name):
+	ResourceScripts.core_animations.BlackScreenTransition(0.3)
+	var loadscreen = ShowLoadScreen()
 	loadscreen.goto_scene(ResourceScripts.scenedict[name])
 
 func GetTweenNode(node): #not compartible with get_spec_node due to not linking new node to root
@@ -1225,7 +1230,10 @@ func repeat_social_skill():
 
 func update_slave_list():
 	slave_list_node.update()
-	gui_controller.mansion.SlaveModule.show_slave_info()
+	if gui_controller.mansion.has_method("update_legacy_slave_panel"):
+		gui_controller.mansion.update_legacy_slave_panel()
+	else:
+		gui_controller.mansion.SlaveModule.show_slave_info()
 
 func rebuild_slave_list():
 	slave_list_node.rebuild()
@@ -1412,6 +1420,45 @@ func load_image_from_path(path:String):
 	var prew = ImageTexture.new()
 	prew.create_from_image(temp)
 	return prew
+
+
+#generated portraits live outside res://, so every reader used to hit the disk and decode
+#the png again - lists ask for one per character per rebuild. Keyed by path rather than by
+#character, so a hand picked or story portrait simply looks up a different entry
+var portrait_cache = {}
+
+
+func store_portrait(path:String, image:Image): #hands the fresh shot over without a disk round trip
+	var tex = ImageTexture.new()
+	tex.create_from_image(image)
+	portrait_cache[path] = tex
+	return tex
+
+
+func get_portrait(path:String):
+	if portrait_cache.has(path):
+		return portrait_cache[path]
+	var tex = load_image_from_path(path)
+	if tex != null:
+		portrait_cache[path] = tex
+	return tex
+
+
+func clear_portrait_cache(): #the files behind these paths belong to the session that wrote them
+	portrait_cache.clear()
+
+
+var portrait_booth = null
+
+
+func queue_portrait(person): #generate a portrait for someone whose ragdoll nobody opened
+	if person == null:
+		return
+	if portrait_booth == null:
+		portrait_booth = load("res://src/core/portrait_booth.gd").new()
+		portrait_booth.name = "PortraitBooth"
+		add_child(portrait_booth)
+	portrait_booth.enqueue(person)
 
 func load_sound_from_path(path:String): #not sure if works, needs testing
 	if !(path.is_abs_path() or path.is_rel_path()): return null

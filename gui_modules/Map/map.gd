@@ -213,6 +213,9 @@ var selected_chars = []
 var selected_area
 
 var sorted_locations = []
+var lists_signature = ""
+var cached_mass_select = []
+const LAZY_CHARACTER_LIST_LIMIT = 30
 var lands_order = ['plains', 'forests', 'mountains', 'empire', 'steppe', 'seas']
 var lands_count = {}
 var locs_order = ['capital', 'settlement', 'quest_location', 'dungeon', 'encounter']
@@ -273,6 +276,7 @@ func _ready():#2add button connections
 	info_btn_forget.connect("pressed", self, "forget_location")
 #	match_state()
 	input_handler.connect("mass_select_in_act", self, "off_mass_select_effect")
+	input_handler.connect("clear_cashed", self, "clear_cached_lists")
 	input_handler.register_btn_source('travel_master', self, 'tut_get_master')
 	input_handler.register_btn_source('travel_servant', self, 'tut_get_servant')
 	input_handler.register_btn_source('travel_chars_highlight', self, null, self, 'tut_get_chars_highlight')
@@ -281,6 +285,11 @@ func _ready():#2add button connections
 	input_handler.register_btn_source('travel_confirm', self, 'tut_get_send_confirm')
 	input_handler.register_btn_source('travel_back', self, 'tut_get_back_btn')
 	$map_control.connect("mouse_exited", self, "map_all_mouse_exited")
+
+
+func clear_cached_lists():
+	lists_signature = ""
+	cached_mass_select.clear()
 
 func tut_get_master():
 	return tut_get_chara(ResourceScripts.game_party.get_unique_slave('tutorial_master'))
@@ -404,9 +413,15 @@ func open():
 	selected_loc = null
 	selected_area = null
 	build_locations_list()
-	build_from_locations()
+	var new_lists_signature = build_lists_signature()
+	if new_lists_signature != lists_signature:
+		build_from_locations()
+		build_to_locations()
+		#build_from_locations can repair duplicate group names, so capture the final state.
+		lists_signature = build_lists_signature()
+	elif !cached_mass_select.empty():
+		input_handler.start_mass_select(self, cached_mass_select)
 	update_location_chars()
-	build_to_locations()
 #	selected_area = 'plains'
 	update_selected_area()
 	match_state()
@@ -481,12 +496,47 @@ func build_locations_list():
 			continue
 		else:
 			temp_locations[loc].heroes.push_back(character.id)
-			if !locs_chosen.has(loc):
+			#Large rosters build their character rows only after the player expands a
+			#location. Creating every portrait button before the map becomes visible
+			#is the dominant first-open cost on long saves.
+			if ResourceScripts.game_party.character_order.size() <= LAZY_CHARACTER_LIST_LIMIT and !locs_chosen.has(loc):
 				locs_chosen.push_back(loc)
 	
 	sorted_locations = temp_locations.values().duplicate()
 	sorted_locations.sort_custom(self, 'sort_locations')
 	sorted_locations.push_back(temp)
+
+
+#The map nodes survive close(), so reopening an unchanged world should only reset selection.
+#This signature covers every value that changes the location/group/character tree.
+func build_lists_signature():
+	var parts = PoolStringArray()
+	for loc_data in sorted_locations:
+		parts.append("L:%s:%s:%s:%s:%s:%s:%s" % [
+			str(loc_data.get('id', '')),
+			str(loc_data.get('area', '')),
+			str(loc_data.get('type', '')),
+			str(loc_data.get('quest', false)),
+			str(loc_data.get('captured', false)),
+			str(loc_data.get('locked', false)),
+			str(loc_data.get('icon', '')),
+		])
+		for ch_id in loc_data.heroes:
+			var person = characters_pool.get_char_by_id(ch_id)
+			if person == null:
+				continue
+			parts.append("C:%s:%s:%s:%s" % [
+				str(ch_id),
+				str(person.get_loc_group()),
+				str(person.get_full_name()),
+				str(person.get_icon(true)),
+			])
+	var group_names = ResourceScripts.game_party.travel_groups_ref.keys()
+	group_names.sort()
+	for group_name in group_names:
+		var group_data = ResourceScripts.game_party.travel_groups_ref[group_name]
+		parts.append("G:%s:%s" % [str(group_name), str(group_data.get('priority', 10))])
+	return parts.join("|")
 
 
 func sort_locations(first, second):
@@ -721,6 +771,28 @@ func make_panel_for_group(panel, group_name):
 	set_loc_text(panel, group_name)
 
 
+func _populate_group_character_buttons(group_cont):
+	if group_cont.get_meta("characters_built", false):
+		return false
+	group_cont.set_meta("characters_built", true)
+	var loc_id = group_cont.get_meta("location")
+	for ch_id in group_cont.get_meta("character_ids", []):
+		var loc_button = input_handler.DuplicateContainerTemplate(group_cont.get_node('offset/LocList'), 'Button')
+		loc_button.set_meta('location', loc_id)
+		loc_button.set_meta('character', ch_id)
+		loc_button.connect('pressed', self, 'char_loc_press', [ch_id, loc_id])
+		loc_button.get_node('group').connect('pressed', self, 'open_char_menu', [ch_id, loc_id])
+		globals.connecttexttooltip(loc_button.get_node('group'), tr("TRAVEL_RENAME"))
+		loc_button.visible = true
+		make_panel_for_character(loc_button, ch_id)
+		cached_mass_select.append({
+			btn_node = loc_button,
+			act_func = 'char_loc_press_mass',
+			act_args = [weakref(loc_button)]
+		})
+	return true
+
+
 func build_from_locations():
 	#filter locations
 	var areas = {}
@@ -745,7 +817,8 @@ func build_from_locations():
 	if travel_data != null:
 		areas.travel_data = [travel_data]
 		sorted_keys.append('travel_data')
-	var mass_select = []
+	cached_mass_select.clear()
+	var lazy_character_lists = ResourceScripts.game_party.character_order.size() > LAZY_CHARACTER_LIST_LIMIT
 	for area in sorted_keys:
 		#no need to clear container
 		for loc_data in areas[area]:
@@ -782,30 +855,17 @@ func build_from_locations():
 				var group_cont = input_handler.DuplicateContainerTemplate(category.get_node('offset/LocGroupList'), 'LocGroup')
 				group_cont.set_meta('location', loc_data.id)
 				group_cont.set_meta('group', group_name)
+				group_cont.set_meta('character_ids', loc_char_groups[group_name].duplicate())
+				group_cont.set_meta('characters_built', false)
 				group_cont.get_node('Button').connect('pressed', self, 'group_press', [group_name, loc_data.id])
 				group_cont.get_node('Button/menu').connect("pressed", self, "open_group_menu", [group_name, loc_data.id])
 				globals.connecttexttooltip(group_cont.get_node('Button/menu'), tr("TRAVEL_GROUP_RENAME"))
 				group_cont.visible = true
 				make_panel_for_group(group_cont.get_node('Button'), group_name)
-				for ch_id in loc_char_groups[group_name]:
-					var loc_button = input_handler.DuplicateContainerTemplate(group_cont.get_node('offset/LocList'), 'Button')
-					loc_button.set_meta('location', loc_data.id)
-					loc_button.set_meta('character', ch_id)
-					loc_button.connect('pressed', self, 'char_loc_press', [ch_id, loc_data.id])
-					loc_button.get_node('group').connect('pressed', self, 'open_char_menu', [ch_id, loc_data.id])
-					globals.connecttexttooltip(loc_button.get_node('group'), tr("TRAVEL_RENAME"))
-	#				loc_button.connect('pressed', self, 'location_press', [loc_data.id, 'from'])
-	#				loc_button.connect('mouse_entered', self, 'build_info', [loc_data.id])
-	#				loc_button.connect('mouse_exited', self, 'build_info')
-					loc_button.visible = true
-					make_panel_for_character(loc_button, ch_id)
-					mass_select.append({
-						btn_node = loc_button,
-						act_func = 'char_loc_press_mass',
-						act_args = [weakref(loc_button)]
-					})
+				if !lazy_character_lists:
+					_populate_group_character_buttons(group_cont)
 	update_groups_ref()
-	input_handler.start_mass_select(self, mass_select)
+	input_handler.start_mass_select(self, cached_mass_select)
 
 
 
@@ -1021,6 +1081,7 @@ func try_erase_selected_group(group_name):
 	return true
 
 func update_location_chars():
+	var mass_select_changed = false
 	for loc in $FromLocList/LocScroll/LocCatList.get_children():
 #		for loc in cat.get_node('offset/LocList').get_children():
 		if loc.is_queued_for_deletion() or !loc.has_meta('location'):
@@ -1036,6 +1097,8 @@ func update_location_chars():
 			if !group.has_meta('group'):
 				continue
 			group.visible = show_chars
+			if show_chars and _populate_group_character_buttons(group):
+				mass_select_changed = true
 			var loc_id = group.get_meta('location')
 			var group_btn = group.get_node('Button')
 			group_btn.pressed = selected_groups.has(group.get_meta('group'))
@@ -1057,6 +1120,8 @@ func update_location_chars():
 #				ch.get_node('group').disabled = ch.disabled
 #				if !person.is_controllable(): 
 #					ch.disabled = true
+	if mass_select_changed:
+		input_handler.start_mass_select(self, cached_mass_select)
 
 
 func location_press(location, mode):

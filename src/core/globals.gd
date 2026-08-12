@@ -10,6 +10,7 @@ signal travel_completed
 signal slave_departed
 signal update_clock
 signal task_removed
+signal work_produced(person_id, task_id, texture)
 
 var hour_turns_set = 1
 
@@ -1201,49 +1202,88 @@ func LoadGame(filename):
 	if !file.file_exists(variables.userfolder+'saves/'+ filename + '.sav') :
 		print("no file %s" % (variables.userfolder+'saves/'+ filename + '.sav'))
 		return
-	
-	ResourceScripts.core_animations.BlackScreenTransition(1)
-	yield(get_tree().create_timer(1), 'timeout')
+
+	# Put the loading screen into the tree before doing any save parsing or state repair.
+	# Two idle frames guarantee that it has actually been drawn before synchronous work starts.
+	var loadscreen = input_handler.ShowLoadScreen()
+	loadscreen.prepare_loading(0)
+	yield(get_tree(), 'idle_frame')
+	yield(get_tree(), 'idle_frame')
 #	input_handler.CloseableWindowsArray.clear()
 	gui_controller.revert_scenes_data()
 	ResourceScripts.revert_gamestate()
 	input_handler.emit_signal("clear_cashed")
-	
+	loadscreen.set_progress(10)
+	yield(get_tree(), 'idle_frame')
+
 	file.open(variables.userfolder+'saves/'+ filename + '.sav', File.READ)
-	var savedict = parse_json(file.get_as_text())
+	var save_text = file.get_as_text()
 	file.close()
+	loadscreen.set_progress(20)
+	yield(get_tree(), 'idle_frame')
+
+	var savedict = parse_json(save_text)
+	loadscreen.set_progress(30)
+	yield(get_tree(), 'idle_frame')
 
 	for faction in savedict.game_world.areas.plains.factions:
 		var current_faction = savedict.game_world.areas.plains.factions[faction]
 		if !current_faction.has("bonus_actions"):
 			savedict.game_world.areas.plains.factions[faction]["bonus_actions"] = worlddata.factiondata[faction].bonus_actions
-	
+	loadscreen.set_progress(35)
+	yield(get_tree(), 'idle_frame')
+
 #	state.deserialize(savedict)
 	effects_pool.deserialize(savedict.effpool)
+	loadscreen.set_progress(43)
+	yield(get_tree(), 'idle_frame')
 	characters_pool.deserialize(savedict.charpool)
+	loadscreen.set_progress(52)
+	yield(get_tree(), 'idle_frame')
+	var gamestate_index = 0
 	for p in ResourceScripts.gamestate:
 		ResourceScripts.set(p, dict2inst(savedict[p]))
+		gamestate_index += 1
+		loadscreen.set_progress(52 + 20.0 * gamestate_index / ResourceScripts.gamestate.size())
+		yield(get_tree(), 'idle_frame')
 	input_handler.connect("EnemyKilled", ResourceScripts.game_world, "quest_kill_receiver")
 	ResourceScripts.game_globals.fix_serialization()
+	loadscreen.set_progress(75)
+	yield(get_tree(), 'idle_frame')
 	ResourceScripts.game_res.fix_serialization()
+	loadscreen.set_progress(78)
+	yield(get_tree(), 'idle_frame')
 #	ResourceScripts.game_res.fix_items_inventory(false)
 	ResourceScripts.game_party.fix_serialization()
+	loadscreen.set_progress(81)
+	yield(get_tree(), 'idle_frame')
 	ResourceScripts.game_world.fix_serialization()
+	loadscreen.set_progress(84)
+	yield(get_tree(), 'idle_frame')
 	ResourceScripts.game_progress.fix_serialization()
+	loadscreen.set_progress(86)
+	yield(get_tree(), 'idle_frame')
 	characters_pool.cleanup()
 	characters_pool.postload()
+	loadscreen.set_progress(88)
+	yield(get_tree(), 'idle_frame')
 	effects_pool.cleanup()
 	effects_pool.postload()
+	loadscreen.set_progress(90)
+	yield(get_tree(), 'idle_frame')
 #	print(effects_pool.serialize())
 	#mind! that characters_pool's fix_serialization_postload is inside game_party's
 	ResourceScripts.game_party.fix_serialization_postload()
+	input_handler.clear_portrait_cache() #cached shots belong to the session that took them
 	ResourceScripts.game_party.force_update_portraits()
-	
+	loadscreen.set_progress(94)
+	yield(get_tree(), 'idle_frame')
+
 	if is_instance_valid(gui_controller.mansion):
 		gui_controller.mansion.queue_free()
 	if is_instance_valid(gui_controller.current_screen):
 		gui_controller.current_screen.queue_free()
-	input_handler.ChangeScene('mansion');
+	loadscreen.goto_scene(ResourceScripts.scenedict.mansion, 94, 100)
 	yield(self, "scene_changed")
 	if is_instance_valid(gui_controller.clock):
 		gui_controller.clock.update_labels()
@@ -3470,6 +3510,7 @@ func make_sfx_params(anim_dict, last_iteration = false):
 	if anim_dict.has('sync_to_hit'): params.sync_to_hit = anim_dict.sync_to_hit
 	if anim_dict.has('hit_motion'): params.hit_motion = anim_dict.hit_motion
 	if anim_dict.has('motion'): params.motion = anim_dict.motion
+	if anim_dict.has('speed'): params.speed = anim_dict.speed
 	if anim_dict.has('alt_slot'): params.alt_slot = anim_dict.alt_slot
 	if anim_dict.has('force_flip'): params.force_flip = anim_dict.force_flip
 	if anim_dict.has("target") and anim_dict.target == 'caster': params.reverse_flip = true

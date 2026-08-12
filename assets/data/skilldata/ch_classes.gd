@@ -1514,7 +1514,10 @@ var effects = {
 			{
 				type = 'oneshot',
 				target = 'skill',
-				atomic = [{type = 'stat_set', stat = 'follow_up', value = 'attack'}]
+				atomic = [
+					{type = 'stat_set', stat = 'follow_up', value = 'attack'},
+					{type = 'add_tag', value = 'spellsword_fast_attack_followup'},
+				]
 			}
 		],
 		buffs = []
@@ -2003,7 +2006,10 @@ var effects = {
 			{
 				type = 'oneshot',
 				target = 'skill',
-				atomic = [{type = 'stat_set', stat = 'follow_up', value = 'firearr'}]
+				atomic = [
+					{type = 'stat_set', stat = 'follow_up', value = 'firearr'},
+					{type = 'add_tag', value = 'spelltrace_spell_followup'},
+				]
 			}
 		],
 		buffs = [],
@@ -2035,7 +2041,10 @@ var effects = {
 			{
 				type = 'oneshot',
 				target = 'skill',
-				atomic = [{type = 'stat_set', stat = 'follow_up', value = 'impale'}]
+				atomic = [
+					{type = 'stat_set', stat = 'follow_up', value = 'impale'},
+					{type = 'add_tag', value = 'spelltrace_spell_followup'},
+				]
 			}
 		],
 		buffs = [],
@@ -2067,7 +2076,10 @@ var effects = {
 			{
 				type = 'oneshot',
 				target = 'skill',
-				atomic = [{type = 'stat_set', stat = 'follow_up', value = 'lightning'}]
+				atomic = [
+					{type = 'stat_set', stat = 'follow_up', value = 'lightning'},
+					{type = 'add_tag', value = 'spelltrace_spell_followup'},
+				]
 			}
 		],
 		buffs = [],
@@ -2099,7 +2111,10 @@ var effects = {
 			{
 				type = 'oneshot',
 				target = 'skill',
-				atomic = [{type = 'stat_set', stat = 'follow_up', value = 'darkness'}]
+				atomic = [
+					{type = 'stat_set', stat = 'follow_up', value = 'darkness'},
+					{type = 'add_tag', value = 'spelltrace_spell_followup'},
+				]
 			}
 		],
 		buffs = [],
