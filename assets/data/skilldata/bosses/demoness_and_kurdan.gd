@@ -138,7 +138,7 @@ var skills = {
 		next_target = variables.NT_ANY,
 		sfx = [{code = 'magma_blast', target = 'target', period = 'predamage'},{code = 'blood_boil', target = 'caster', period = 'postdamage'}], 
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'absolute'},
-		value = [['caster.atk','+caster.matk','*1.5']],
+		value = [['caster.atk','+','caster.matk','*1.5']],
 	},
 	i_ve_seen_enough = {
 		code = 'i_ve_seen_enough',

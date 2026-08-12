@@ -124,7 +124,7 @@ var skills = {
 		follow_up = 'brazier_light_on_1'
 	},
 	brazier_light_on_1 = {
-		code = '	brazier_light_on_1 = {',
+		code = 'brazier_light_on_1',
 		descript = '',
 		icon = load("res://assets/images/iconsskills/icon_earthquake.png"),
 		type = 'auto', 
