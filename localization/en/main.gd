@@ -2081,6 +2081,48 @@ The last hit deals increased damage.
 	SKILLFORCED_EXORCISMDESCRIPT = "Prioritize Cursed enemy. Deal heavy {color=yellow|Light} magical damage to a single target. If the target is {color=aqua|Cursed}, damage the target mana and deal {color=yellow|Dark} magical damage to all their allies. Remove {color=aqua|Cursed} from target.",
 	SKILLUNDYING_SPIRIT = "Undying Spirit",
 	SKILLUNDYING_SPIRITDESCRIPT = "Heal self for a small portion of Max HP. Heal more for every enemy that have {color=aqua|Fear} or Defeated.",
+	SKILLARRIVAL_OF_THE_DEPARTED = "Arrival of the Departed",
+	SKILLARRIVAL_OF_THE_DEPARTEDDESCRIPT = "Revive all allies and summon Zombies until the team is full.",
+	SKILLTICKET_PLEASE = "Ticket, Please",
+	SKILLTICKET_PLEASEDESCRIPT = """Deal {color=yellow|Dark} magical damage to an enemy.
+If the target does not have {color=aqua|One-Way Ticket to Hell}, inflict {color=aqua|One-Way Ticket to Hell}.
+If the target has {color=aqua|One-Way Ticket to Hell}, deal more damage and remove {color=aqua|One-Way Ticket to Hell}.""",
+	SKILLAFTERLIFE_AMENITIES = "Afterlife Amenities",
+	SKILLAFTERLIFE_AMENITIESDESCRIPT = """Remove {color=aqua|Silence} on self.
+Heal 3 random allies other than self and apply {color=aqua|Dark Gift} to them.""",
+	SKILLDEAD_RUNNING = "Dead Running",
+	SKILLDEAD_RUNNINGDESCRIPT = """Command all undead minions to randomly attack enemies.""",
+	SKILLEND_OF_THE_LINE = "End of the Line",
+	SKILLEND_OF_THE_LINEDESCRIPT = """{color=red|Usable only when there's more than 1 ally.}
+Order his minions to explode, each dealing {color=yellow|Dark} magical damage to 2 random melee targets and die afterward.""",
+	SKILLNO_LIGHT_TUNNEL_END = "There's no light at the end of the Tunnel!",
+	SKILLNO_LIGHT_TUNNEL_ENDDESCRIPT = """Usable only when there's no other ally standing.
+Inflict {color=aqua|Blind} and {color=aqua|In the Dark} to all enemies.
+Summon 2 random Zombies.""",
+	SKILLTALISMAN_DISGUISED_AS_TICKET = "Talisman disguised as Ticket",
+	SKILLTALISMAN_DISGUISED_AS_TICKETDESCRIPT = """Can only target without {color=aqua|One-Way Ticket to Hell}.
+Deal {color=yellow|Dark} magical damage to an enemy and inflict {color=aqua|One-Way Ticket to Hell}.""",
+	SKILLCUMULATING_CURSE = "Cumulating Curse",
+	SKILLCUMULATING_CURSEDESCRIPT = """Deal {color=yellow|Dark} magical damage to all enemies.""",
+	SKILLTALISMAN_GUIDED_PUNCH = "Talisman-Guided Punch",
+	SKILLTALISMAN_GUIDED_PUNCHDESCRIPT = """Can only target unit with {color=aqua|One-Way Ticket to Hell}.
+Deal large {color=yellow|Dark} physical damage to an enemy and remove {color=aqua|One-Way Ticket to Hell}.""",
+	SKILLBONEMEAL_SPRAY = "Bonemeal Spray",
+	SKILLBONEMEAL_SPRAYDESCRIPT = """Deal physical damage to a row and inflict {color=aqua|Blind}.""",
+	SKILLWEIGHTY_COLISION = "Weighty Collision",
+	SKILLWEIGHTY_COLISIONDESCRIPT = "Deal physical damage to an enemy and inflict {color=aqua|Stun}.",
+	SKILLWASTE_DISCHARGE = "Discharge Waste",
+	SKILLWASTE_DISCHARGEDESCRIPT = """Deal {color=yellow|Water} magical damage to a row.
+Inflict {color=aqua|Blind}, {color=aqua|Poison}, and chance to inflict {color=aqua|Silence}.""",
+	SKILLQUICK_DEATH = "Quick Death",
+	SKILLQUICK_DEATHDESCRIPT = "Deal physical damage to an enemy. Damage also increases with user speed.",
+	SKILLSWELLING_MUSCLE = "Swelling Muscle",
+	SKILLSWELLING_MUSCLEDESCRIPT = """Can only be used while having less than 3 {color=aqua|Heaping Mass}.
+Gain a stack of {color=aqua|Heaping Mass}.""",
+	SKILLHYSTERICAL_STRENGTH = "Hysterical Strength",
+	SKILLHYSTERICAL_STRENGTHDESCRIPT = """Can only be used while affected by {color=aqua|Heaping Mass}.
+Deal physical damage to the line of enemy and inflict {color=aqua|Ensnared}.
+Remove all {color=aqua|Heaping Mass} on self.""",
 	STATUSDESC_BLEED = "Bleeding: Take 10% of Maximum HP as neutral damage per turn.",
 	STATUSDESC_POISON = "Poisoned: Take 10% of Maximum HP as neutral damage per turn.",
 	STATUSDESC_BURN = "Burning: Take 8% of Maximum HP as Fire damage per turn.",
@@ -5203,6 +5245,39 @@ This effect is removed if the applier fell for a taunt or is immobilised.""",
 All attacks have a 20% chance to inflict Bleed.""",
 	EFFECT_CURSED_GIRL_DESCRIPT = "Cursed Girl: When hit by Devour magic spell, gain shock and 3 fragiles. When hit by Light damage, there is a 20% chance to become stunned.",
 	EFFECT_GUARDIAN_SPIRIT_PROTECTION_FRENZIED_DESCRIPT = "Guardian Spirit Protection [Frenzied]: When being hit by non-light damage, 30% chance to inflict Cursed to the attacker. When being hit by a Cursed enemy, reduce damage taken by 30% and inflict Dark damage back to the attacker.",
+	SEB_RILU_ATTACK = """
+Rilu cast Soul Nail. """,
+	SEB_RILU_DEBUFF = """
+Rilu cast Mass Malediction. """,
+	SEB_RILU_HEAL = """
+Rilu cast Soothe the Soul. """,
+	SEB_RILU_EXORCISE = """
+Rilu cast Exorcism. """,
+	SEB_BONEMEAL_EASTEREGG = """
+%s got fertilized by the bonemeal! """,
+	EFFECT_CEASELESS_HARVEST_DESCRIPT = """Forbidden Ritual: Ceaseless Harvest -
+Further Reduce DoT damage taken.
+At the end of each round, regenerate 8% of Max HP.
+The Regen effect will not activate if affected by Luminance.""",
+	EFFECTNAME_DEATH_AND_TAXES = "Death & Taxes",
+	EFFECT_DEATH_AND_TAXES_DESCRIPT = """When using healing ability, reduce mana.
+When using resurrection type ability, harshly reduce mana.
+Disable this effect if Sebastian is silenced.""",
+	EFFECTNAME_ONE_WAY_TICKET_TO_HELL = "One-way Ticket to Hell",
+	EFFECT_ONE_WAY_TICKET_TO_HELL_DESCRIPT = "One-way Ticket to Hell: -25% Armor, MDEF, and Healing Received.",
+	EFFECT_IN_THE_DARK_DESCRIPT = "Reduce light damage dealt and Outgoing Healing by 100%",
+	EFFECT_YOU_WANT_TICKET_DESCRIPT = "Counter-curse: When hit, 50% chance to apply One-Way Ticket to Hell to the attacker.",
+	EFFECT_GIANT_RIBCAGE_DESCRIPT = "Giant Ribcage: At the start of this unit turn, apply 'Wide Guard' to all allies for 1 turn.",
+	EFFECTNAME_WIDE_GUARD = "Wide Guard",
+	EFFECT_WIDE_GUARD_DESCRIPT = "Reduce AoE damage taken by 50%. Remove if the applier is defeated.",
+	EFFECT_BLOATED_WITH_NOXIOUS_GAS_DESCRIPT = """Bloated with Noxious Gas:
+On Death, inflict water damage, blind, and poison to the melee line.
+On Death while affected by burn, explode. Dealing Fire damage to the front-most enemy of each row.""",
+	EFFECT_ADRENAL_GLANDS_OVERDRIVE_DESCRIPT = "Adrenal glands overdrive: Gain more speed the less HP this unit has.",
+	EFFECTNAME_ADRENAL_GLANDS_OVERDRIVE_SPEED_BUFF = "Adrenaline",
+	EFFECT_GO_POSTAL_DESCRIPT = "Go Postal: Counterattack any attack in melee range and Taunt itself to the attacker.",
+	EFFECT_HEAPING_MASS_DESCRIPT = "For every stack (Max 3): +15 ATK, Armor, MDEF. - 20 Evasion and Speed.",
+	EFFECT_FIRST_CLASS_SERVICE_DESCRIPT = "First-Class Service: At the start of each round, order a random ally to protect this unit for the round.",
 	RESETTRAINREQ = "Reset training and all purchased perks. Requires Oblivion potion.",
 	RESETTRAINING = "All training progress will be discarded. Are you sure?",
 	BUFFDESCRIPTDEFENDER = "Defender: Will shield allies from attacks unless stunned.",
@@ -30786,5 +30861,11 @@ It is not the kind of intimacy that announces itself loudly, but it stays with y
 {color=yellow|Kuro: — Go on. They will start competing for your attention again if you make them wait too long.}
 
 You leave her in the shade and return to the others, carrying with you the strange certainty that Kuro is still watching.""",
-	ENEMYRILU_MADDENED = "Strange girl"
+	ENEMYRILU_MADDENED = "Strange girl",
+	ENEMYSEBASTIAN = "Sebastian",
+	ENEMYTALISMAN_WRAPPED_UNDEAD = "Talisman-Wrapped Undead",
+	ENEMYGIANT_SKELETON_GOLEM = "Giant Skeleton Golem",
+	ENEMYBILEFUL_ZOMBIE = "Bileful Zombies",
+	ENEMYRABID_ZOMBIE = "Rabid Zombies",
+	ENEMYMUSCULAR_ZOMBIE = "Muscular Zombies",
 }

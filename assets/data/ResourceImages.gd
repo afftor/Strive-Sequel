@@ -1500,6 +1500,8 @@ var GFX_sprites = {
 	cast_fire = "res://assets/sfx/hit_animation/cast_fire.tscn",
 	cast_light = "res://assets/sfx/hit_animation/cast_light.tscn",
 	cast_mind = "res://assets/sfx/hit_animation/cast_mind.tscn",
+	talisman_ticket_apply = "res://assets/sfx/hit_animation/talisman_ticket_apply.tscn",
+	talisman_ticket_burn = "res://assets/sfx/hit_animation/talisman_ticket_burn.tscn",
 	}
 
 var GFX_particles = {
@@ -1510,6 +1512,7 @@ var GFX_particles = {
 	snow = "res://assets/sfx/snow.tscn",
 	sparks = "res://assets/sfx/spark.tscn",
 	arrowhail = "res://assets/sfx/arrowhail.tscn",
+	bonemeal_spray = "res://assets/sfx/bonemeal_spray.tscn",
 }
 
 var GFX_video = {
