@@ -298,6 +298,18 @@ func _validate_event(event_id, event, issues):
 				_validate_reqs(line.reqs, "%s.text[%d].reqs" % [context, idx], issues)
 			if line.has("bonus_effects"):
 				_validate_effects(line.bonus_effects, "%s.text[%d].bonus_effects" % [context, idx], issues)
+	if event.has("variations") and event.variations is Array:
+		for idx in range(event.variations.size()):
+			var variation = event.variations[idx]
+			var variation_context = "%s.variations[%d]" % [context, idx]
+			if !(variation is Dictionary):
+				continue
+			if !variation.has("reqs") or !(variation.reqs is Array):
+				_add_issue(issues, "%s has no reqs Array." % variation_context)
+			else:
+				_validate_reqs(variation.reqs, variation_context + ".reqs", issues)
+			if variation.has("scene_code") and !scenedata.scenedict.has(variation.scene_code):
+				_add_issue(issues, "%s points to missing event '%s'." % [variation_context, str(variation.scene_code)])
 	if event.has("options"):
 		if !(event.options is Array):
 			_add_issue(issues, "%s.options is not an Array." % context)

@@ -29,13 +29,20 @@ var tutorials = {
 		},
 		#1
 		{
+			buttons = ['master_line'],
+			text = "TUTORIAL_TRAINING1_1",
+			panel_pos = Vector2(1100,250)
+		},{
+			#the expanded card is built over several frames and then tweened into place
 			buttons = ['mentor_skill_btn'],
 			text = "TUTORIAL_TRAINING2",
-			panel_pos = Vector2(733,150)
+			panel_pos = Vector2(1100,780),
+			delay = 1.0
 		},{
-			buttons = ['slave_2_line'],
+			#the target picker is a separate window over the mansion
+			buttons = ['slave_select'],
 			text = "TUTORIAL_TRAINING3",
-			panel_pos = Vector2(733,150)
+			panel_pos = Vector2(100,150)
 		},{
 			buttons = ['event_opt_1'],
 			text = "TUTORIAL_TRAINING4",
@@ -68,7 +75,8 @@ var tutorials = {
 		},{
 			buttons = ['char_info'],
 			text = "TUTORIAL_TRAINING10",
-			panel_pos = Vector2(733,50)
+			panel_pos = Vector2(1100,500),
+			delay = 1.0
 		},{
 			buttons = ['trainer_btn'],
 			text = "TUTORIAL_TRAINING11",
@@ -352,9 +360,15 @@ var tutorials = {
 			text = "TUTORIAL_LEVELING5",
 			panel_pos = Vector2(733,150)
 		},{
+			#returning to the mansion collapses the expanded card, so it has to be reopened
+			buttons = ['master_line'],
+			text = "TUTORIAL_LEVELING5_1",
+			panel_pos = Vector2(1100,250)
+		},{
 			buttons = ['char_info'],
 			text = "TUTORIAL_LEVELING6",
-			panel_pos = Vector2(733,150)
+			panel_pos = Vector2(1100,500),
+			delay = 1.0
 		},{
 			buttons = ['leveling_button'],
 			text = "TUTORIAL_LEVELING7",
@@ -642,27 +656,48 @@ func _notification(what):
 func get_btns():
 	return input_handler.hard_tutorial_btns
 
+#a button that cannot be resolved yet is kept as a null entry, so validate_btn retries it
+#every frame - the panel it lives in may still be building
 func activate_btn(btn_name):
-	var btn = get_btns()[btn_name]
-	active_btns[btn_name] = btn.source.get_ref().call(btn.get_btn_func)
+	var btns = get_btns()
+	if !btns.has(btn_name):
+		push_error("tutorial button %s is not registered" % btn_name)
+		active_btns[btn_name] = null
+		return false
+	var btn = btns[btn_name]
+	var source = btn.source.get_ref()
+	if source == null or !is_instance_valid(source):
+		push_error("tutorial button %s lost its source" % btn_name)
+		active_btns[btn_name] = null
+		return false
+	active_btns[btn_name] = source.call(btn.get_btn_func)
 	if active_btns[btn_name] == null:
 		push_error("no tutorial button %s" % btn_name)
-		return
+		return false
 	if cur_dont_listen == null or !(btn_name in cur_dont_listen):
 		set_listener(active_btns[btn_name], get_btns_signal(btn_name), "btn_truly_pressed")
+	return true
 
 func validate_btn(btn_name):
 	if !active_btns.has(btn_name) or !is_instance_valid(active_btns[btn_name]):
 		activate_btn(btn_name)
 
 func get_true_rect(btn_name):
-	var true_rect
-	var btn_info = get_btns()[btn_name]
+	var btns = get_btns()
+	if !btns.has(btn_name):
+		return Rect2()
+	var btn_info = btns[btn_name]
 	if btn_info.has('rect_obj'):
-		true_rect = btn_info.rect_obj.get_ref().call(btn_info.rect_func)
-	else:
-		true_rect = active_btns[btn_name].get_global_rect()
-		true_rect.size *= active_btns[btn_name].get_global_transform().get_scale()
+		var rect_source = btn_info.rect_obj.get_ref()
+		if rect_source == null or !is_instance_valid(rect_source):
+			return Rect2()
+		var custom_rect = rect_source.call(btn_info.rect_func)
+		return custom_rect if custom_rect != null else Rect2()
+	var node = active_btns.get(btn_name)
+	if node == null or !is_instance_valid(node):
+		return Rect2()
+	var true_rect = node.get_global_rect()
+	true_rect.size *= node.get_global_transform().get_scale()
 	return true_rect
 
 func get_btns_signal(btn_name):
@@ -734,7 +769,8 @@ func next_tut_step():
 	else:
 		tut_panel.next_btn_off()
 	for btn_name in btns_to_activate:
-		activate_btn(btn_name)
+		if !activate_btn(btn_name):
+			continue
 		if !has_custom_highlight and !has_no_highlight:
 			tut_panel.highlight_rects([get_true_rect(btn_name)])
 	if has_custom_highlight:

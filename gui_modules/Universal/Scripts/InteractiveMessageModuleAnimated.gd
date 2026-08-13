@@ -26,6 +26,14 @@ const EFFECT_FEEDBACK_CHARACTER_CODES = [
 	"affect_unique_character",
 ]
 const UNFADE_COMIC_PANEL_TIME = 0.5
+const TEXT_REVEAL_TIME = 1.4
+
+var text_reveal_effect = load("res://gui_modules/Universal/Scripts/TextRevealEffect.gd").new()
+#already shown text, kept without the [reveal] tags so that only the newest block is animated
+var shown_text_base = ''
+#amount of characters in shown_text_base, counted by the label itself - a new block starts right after them
+var shown_chars = 0
+var reveal_counter = 0
 
 onready var bg_T1 = $BackgroundT1
 onready var bg_T2 = $BackgroundT2
@@ -49,6 +57,8 @@ func _ready():
 		$CharacterImage2.material = load("res://assets/silouette_shader.tres").duplicate()
 	base_text_size = text_label_T1.rect_size
 	base_text_position = text_label_T1.rect_position
+	text_label_T1.install_effect(text_reveal_effect)
+	text_label_T2.install_effect(text_reveal_effect)
 	cur_text_label = text_label_T1
 	cur_opt_cont = opt_cont_T1
 	#$BackgroundT2/UnhideButton.connect('pressed', self, 'hide_dialogue', ['unhide'])
@@ -81,8 +91,9 @@ func open(scene):
 	if gui_controller.dialogue == null:
 		gui_controller.dialogue = self
 	if scene.has("variations"):
-		select_scene_variation_based_on_data(scene)
-		return
+		#a scene with no body of its own is a pure dispatcher - it relies on a reqs = [] catch-all
+		if select_scene_variation_based_on_data(scene) or !scene.has("text"):
+			return
 #	if get_tree().get_root().get_node_or_null("ANIMLoot") && get_tree().get_root().get_node("ANIMLoot").is_visible():
 #		get_tree().get_root().get_node("ANIMLoot").raise()
 	input_handler.PlaySound("speech")
@@ -91,6 +102,8 @@ func open(scene):
 		determine_dialogue_type(scene)
 		preset_dialogue_type(next_dialogue_type)
 		cur_text_label.bbcode_text = ''
+		shown_text_base = ''
+		shown_chars = 0
 		previous_text = ''
 		if scene.has("music"):
 			saved_music = input_handler.explore_sound
@@ -149,11 +162,11 @@ func open(scene):
 	
 	#handle transition
 	var opt_scroll = cur_opt_cont.get_parent()
+	#text label is not faded as a whole anymore - it gets a top-to-bottom reveal instead
+	cur_text_label.modulate.a = 1
 	if is_just_started:
-		cur_text_label.modulate.a = 0
 		opt_scroll.modulate.a = 0
 	else:
-		cur_text_label.modulate.a = 1
 		opt_scroll.modulate.a = 1
 	var no_screen_transition = false
 	if scene.tags.has("blackscreen_transition_common"):
@@ -447,14 +460,15 @@ func collect_effect_feedback(effects, clear_existing = true):
 				input_handler.append_not_duplicate(pending_effect_feedback, feedback)
 
 
-func show_pending_effect_feedback():
+func get_pending_effect_feedback():
 	var feedback_lines = []
 	for feedback in pending_effect_feedback:
 		if feedback != "":
 			feedback_lines.append(feedback)
-	if !feedback_lines.empty():
-		cur_text_label.bbcode_text += "\n\n" + PoolStringArray(feedback_lines).join("\n")
 	pending_effect_feedback.clear()
+	if feedback_lines.empty():
+		return ""
+	return "\n\n" + PoolStringArray(feedback_lines).join("\n")
 
 
 func chest_mimic_force_open():
@@ -899,6 +913,8 @@ func close(args = {}):
 			ResourceScripts.core_animations.BlackScreenTransition(screen_duration * 0.5)
 			yield(get_tree().create_timer(transition_duration + screen_duration * 0.25), "timeout")
 		cur_text_label.bbcode_text = ''
+		shown_text_base = ''
+		shown_chars = 0
 	else:
 		if !args.has("hold_scene"):
 			ResourceScripts.core_animations.FadeAnimation(self, 0.2)
@@ -965,6 +981,7 @@ func create_location_recruit(args):
 	var newchar = ResourceScripts.scriptdict.class_slave.new("location_recruit")
 	input_handler.active_character = newchar
 	newchar.generate_random_character_from_data(input_handler.active_location.races)
+	shown_text_base = newchar.translate(shown_text_base)
 	cur_text_label.bbcode_text = newchar.translate(cur_text_label.bbcode_text)
 
 func execute():
@@ -1087,11 +1104,22 @@ func save_scene_to_gallery(scene):
 					input_handler.update_progress_data(progress_field, addition)
 
 
+#returns whether a variation took over. scenes ending with a reqs = [] catch-all always do;
+#a scene whose variations are all conditional falls back to its own body instead.
 func select_scene_variation_based_on_data(scene):
 	for i in scene.variations:
 		if globals.checkreqs(i.reqs):
-			open(i)
-			break
+			#'scene_code' points at a named event instead of inlining its body, so a questline scene
+			#can stay in its own file and still replace this one - used for scenes written as
+			#'you enter X and Y happens', which can't be an option inside X
+			if i.has('scene_code'):
+				if !ResourceScripts.game_progress.seen_events.has(i.scene_code):
+					ResourceScripts.game_progress.seen_events.push_back(i.scene_code)
+				open(scenedata.scenedict[i.scene_code].duplicate(true))
+			else:
+				open(i)
+			return true
+	return false
 
 func clear_character_images():
 	$CharacterImage.hide()
@@ -1451,7 +1479,6 @@ func generate_scene_text(scene):
 	if scene.tags.has("location_resource_info"):
 		scenetext = add_location_resource_info()
 	if is_just_started:
-		ResourceScripts.core_animations.UnfadeAnimation(cur_text_label,1)
 		ResourceScripts.core_animations.UnfadeAnimation(cur_opt_cont.get_parent(),1)
 	input_handler.ClearContainer(cur_opt_cont)
 	if scene.tags.has("scene_characters_sell"):#
@@ -1464,13 +1491,38 @@ func generate_scene_text(scene):
 		scenetext += "\n\n" + text
 
 	var result_text = globals.TextEncoder(scenetext)
+	var new_text = ''
 	if !scene.has("comic_scene") or !scenetext.empty():
-		if cur_text_label.bbcode_text != '':
-			cur_text_label.bbcode_text += "\n\n" +  globals.TextEncoder("{color=gray_text_dialogue|"+previous_text+"}") + "\n\n" + result_text
+		if shown_text_base != '':
+			new_text = "\n\n" +  globals.TextEncoder("{color=gray_text_dialogue|"+previous_text+"}") + "\n\n" + result_text
 		else:
-			cur_text_label.bbcode_text = result_text
-	show_pending_effect_feedback()
+			new_text = result_text
+	new_text += get_pending_effect_feedback()
+	append_revealed_text(new_text)
 	return result_text
+
+
+#adds a new text block and makes it appear from top to bottom, leaving the previous one as is
+func append_revealed_text(new_text):
+	if new_text == '':
+		return
+	cur_text_label.modulate.a = 1
+	cur_text_label.bbcode_text = shown_text_base + "[reveal]" + new_text + "[/reveal]"
+	shown_text_base += new_text
+	#new_text still holds bbcode tags, so its length is only a starting guess for the block size
+	text_reveal_effect.start(shown_chars, new_text.length(), TEXT_REVEAL_TIME)
+	reveal_counter += 1
+	var this_reveal = reveal_counter
+	yield(get_tree(), 'idle_frame')
+	if this_reveal != reveal_counter:
+		return
+	var total_chars = cur_text_label.get_total_character_count()
+	text_reveal_effect.set_block_size(total_chars - shown_chars)
+	shown_chars = total_chars
+	yield(get_tree().create_timer(TEXT_REVEAL_TIME * 1.4 + 0.15), "timeout")
+	#an installed effect makes the label redraw itself every frame, so tags are dropped when it's over
+	if this_reveal == reveal_counter and cur_text_label.bbcode_text != shown_text_base:
+		cur_text_label.bbcode_text = shown_text_base
 
 
 func set_enemy(scene):

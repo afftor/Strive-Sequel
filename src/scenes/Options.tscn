@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/Themes_v2/MAIN_MENU/Menu_Options_Panel.tres" type="Theme" id=1]
 [ext_resource path="res://src/scenes/Options.gd" type="Script" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Medium.otf" type="DynamicFontData" id=23]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=24]
 [ext_resource path="res://src/scenes/HotkeyOptions.gd" type="Script" id=25]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=26]
 
 [sub_resource type="DynamicFont" id=1]
 size = 19
@@ -49,7 +50,7 @@ margin_right = 722.0
 margin_bottom = 668.0
 custom_colors/font_color_bg = Color( 1, 1, 1, 1 )
 custom_colors/font_color_fg = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 26 )
 
 [node name="Visuals" type="Tabs" parent="TabContainer"]
 anchor_right = 1.0

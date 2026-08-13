@@ -9,6 +9,9 @@ var items = {}
 var materials = {} setget materials_set
 var oldmaterials = {}
 var tax = 0
+#goods sold to shops, kept until the next turn so the player can undo a sale
+#{shop_key: [{kind, code, amount, price, data}]} - kind is material/usable/gear
+var buyback = {}
 
 #new tasks system
 var crafting_lists = {alchemy_material = [], alchemy_item = [], smith_material = [], smith_item = [], cooking_material = [], cooking_item = [], tailor_material = [], tailor_item = [], building = []}
@@ -40,6 +43,8 @@ func _init():
 
 
 func fix_serialization():
+	if !(buyback is Dictionary): #older saves have no buyback data at all
+		buyback = {}
 	var clear_array = []
 	for i in items:
 		if items[i].itembase == 'sensetivity_pot':
@@ -113,6 +118,36 @@ func serialize():
 		res.items[i] = inst2dict(items[i])
 #	fix_items_inventory(false)
 	return res
+
+
+#buyback lives for one turn only - everything sold is gone once time passes
+func clear_buyback():
+	buyback.clear()
+
+
+func get_buyback_list(shop_key):
+	if !buyback.has(shop_key):
+		return []
+	return buyback[shop_key]
+
+
+func add_buyback_record(shop_key, record):
+	if !buyback.has(shop_key):
+		buyback[shop_key] = []
+	if record.kind != 'gear': #gear pieces keep their own rolled stats, so they never merge
+		for i in buyback[shop_key]:
+			if i.kind == record.kind and i.code == record.code and i.price == record.price:
+				i.amount += record.amount
+				return
+	buyback[shop_key].append(record)
+
+
+func remove_buyback_record(shop_key, record):
+	if !buyback.has(shop_key):
+		return
+	buyback[shop_key].erase(record)
+	if buyback[shop_key].empty():
+		buyback.erase(shop_key)
 
 
 func fix_tax():

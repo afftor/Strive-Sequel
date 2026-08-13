@@ -17,9 +17,12 @@ func _ready():
 	input_handler.register_btn_source('slave_select', self, 'tut_get_slave_btn')
 
 func tut_get_slave_btn():
+	#entries failing the reqs are still listed, just greyed out - the tutorial has to point
+	#at one the player can actually press
 	for btn in slave_btn_cont.get_children():
-		if btn.has_signal("pressed"):
+		if btn.has_signal("pressed") and btn.visible and !btn.disabled:
 			return btn
+	return null
 
 func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = null, prompt = ''):
 	target_func = targetfunc

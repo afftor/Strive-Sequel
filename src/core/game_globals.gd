@@ -171,6 +171,7 @@ func advance_hour(managed = false, progress_target = null):
 	if managed:
 		yield(globals.get_tree(), 'idle_frame')
 	hour += 1
+	ResourceScripts.game_res.clear_buyback() #shops resell what they bought once the turn ends
 
 	ResourceScripts.game_world.advance_hour()
 	ResourceScripts.char_events.advance_hour()

@@ -109,6 +109,14 @@ var data = {
 		image = null,
 		character = 'ginny',
 		tags = ['dialogue_scene', 'master_translate'],
+		#these scenes are written as 'you enter the church and X happens', so they replace the entrance
+		#instead of being listed as options below. first passing reqs wins, so order matters.
+		variations = [
+			{scene_code = 'jean_q2_church', reqs = [{type = 'active_quest_stage', value = 'jean_ruins_quest', stage = 'stage1'}]},
+			{scene_code = 'jean_sylas_church_event_1', reqs = [{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage13'}]},
+			{scene_code = 'aliron_church_firstcome', reqs = [{type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHFIRSTCOME'}]},
+			{scene_code = 'kuro_church_note', reqs = [{type = 'active_quest_stage', value = 'kuro_errand_quest', stage = 'church'}]},
+		],
 		text = [
 			{text = "ALIRONCHURCHENTER2", reqs = [],  previous_dialogue_option = 5},
 			{text = "ALIRONCHURCHENTER1", reqs = [],  previous_dialogue_option = 0},
@@ -142,8 +150,7 @@ var data = {
 			{code = 'act4_sebastian_offer_alternative_site_1', text = "ACT4_SEBASTIAN_CHURCH_ENTER_OPTION", reqs = [{type = 'active_quest_stage', value = 'sebastian_railroad_quest', stage = 'offer_alternative_site'}], dialogue_argument = 0, type = 'next_dialogue'},
 			{code = 'act4_sebastian_ginny_parishioners_persuaded', text = "ACT4_SEBASTIAN_CHURCH_ENTER_OPTION", reqs = [{type = 'active_quest_stage', value = 'sebastian_railroad_quest', stage = 'parishioners_persuaded'}], dialogue_argument = 0, type = 'next_dialogue'},
 			{code = 'act4_sebastian_report_warehouse_solution_1', text = "ACT4_SEBASTIAN_CHURCH_ENTER_OPTION", reqs = [{type = 'active_quest_stage', value = 'sebastian_railroad_quest', stage = 'report_warehouse_solution'}], dialogue_argument = 0, type = 'next_dialogue'},
-#			{code = 'jean_q2_church', text = tr("HELEVIEL_CITY_OPTION"), reqs = [{type = 'active_quest_stage', value = 'heleviel_quest2', stage = 'stage3'}], dialogue_argument = 0, type = 'next_dialogue'},
-			
+
 			{code = 'aliron_church_leave', reqs = [], text = "DIALOGUELEAVE", dialogue_argument = 4},
 		],
 		

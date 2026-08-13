@@ -4,8 +4,12 @@ var item_category := "all"
 var active_shop := {}
 var tempitems := []
 var purchase_item
+var purchase_record #buyback record the purchase confirmation refers to
+var shop_key := "misc" #buyback is stored per shop
+var buyback_mode := false
 var current_pressed_area_btn setget set_area_btn_pressed
 onready var search_filter: LineEdit = $SearchFilter
+onready var buyback_button: Button = $BuyBackButton
 
 
 func _ready():
@@ -14,13 +18,14 @@ func _ready():
 #	for button in $BuyFilter.get_children():
 #		button.connect("pressed", self, "selectcategory", [button, "buy"])
 	search_filter.connect("text_changed", self, "filter_changed")
+	buyback_button.connect("toggled", self, "set_buyback_mode")
 	gui_controller.add_close_button(self)
 	globals.connect("update_clock", self, "update_gold")
 	input_handler.connect("update_itemlist", self, "update_sell_list")
 	update_gold()
 
 
-func open_shop(pressed: bool, pressed_button: Node, shop_data: Dictionary = {}):
+func open_shop(pressed: bool, pressed_button: Node, shop_data: Dictionary = {}, key = ""):
 	update_gold()
 	$NumberSelection.hide()
 	gui_controller.win_btn_connections_handler(pressed, self, pressed_button)
@@ -30,6 +35,9 @@ func open_shop(pressed: bool, pressed_button: Node, shop_data: Dictionary = {}):
 		active_shop = {}
 	else:
 		active_shop = shop_data
+	shop_key = str(key) if key != null and str(key) != "" else "misc"
+	buyback_mode = false
+	buyback_button.pressed = false
 	item_category = "all"
 	$ItemFilter.get_child(0).pressed = true
 	search_filter.text = ""
@@ -166,7 +174,67 @@ func update_sell_list():
 
 
 
+func set_buyback_mode(value):
+	buyback_mode = value
+	$NumberSelection.hide()
+	update_buy_list()
+
+
+#buyback records keep only plain data, so the list rebuilds the goods to show them
+func build_buyback_item(record):
+	match record.kind:
+		"material":
+			return Items.materiallist[record.code]
+		"usable":
+			return globals.CreateUsableItem(record.code, record.amount)
+		_:
+			var item = dict2inst(record.data.duplicate(true))
+			item.id = null
+			item.owner = null
+			item.amount = 1
+			item.fix_gear()
+			return item
+
+
+func update_buyback_list():
+	input_handler.ClearContainer($BuyBlock/ScrollContainer/VBoxContainer)
+	tempitems.clear()
+	var filter_text = search_filter.text
+	for record in ResourceScripts.game_res.get_buyback_list(shop_key):
+		var item = build_buyback_item(record)
+		if item == null:
+			continue
+		var type = get_item_category(item)
+		var newbutton = input_handler.DuplicateContainerTemplate($BuyBlock/ScrollContainer/VBoxContainer)
+		set_item_button_name(newbutton, tr(item.name))
+		newbutton.set_meta("type", type)
+		newbutton.set_meta("item", item.name)
+		newbutton.set_meta("exploration", true)
+		if record.kind == "material":
+			newbutton.get_node("icon").texture = item.icon
+			newbutton.get_node("quality_color").hide()
+			globals.connectmaterialtooltip(newbutton, item, "", "material")
+		else:
+			tempitems.append(item)
+			item.set_icon(newbutton.get_node("icon"))
+			if item.quality != "":
+				newbutton.get_node("quality_color").show()
+				newbutton.get_node("quality_color").texture = variables.quality_colors[item.quality]
+			else:
+				newbutton.get_node("quality_color").hide()
+			globals.connectitemtooltip_v2(newbutton, item)
+		newbutton.get_node("price").text = str(record.price)
+		newbutton.get_node("amount").text = str(record.amount)
+		newbutton.get_node("amount").show()
+		newbutton.connect("pressed", self, "item_buyback", [newbutton, item, record])
+		newbutton.visible = (((newbutton.get_meta("type") == item_category) || item_category == "all")
+			&& matches_filter(item, filter_text))
+
+
 func update_buy_list():
+	if buyback_mode:
+		update_buyback_list()
+		return
 	input_handler.ClearContainer($BuyBlock/ScrollContainer/VBoxContainer)
 	tempitems.clear()
 	var filter_text = search_filter.text
@@ -345,6 +413,64 @@ func item_purchase_confirm(value):
 		update_buy_list()
 
 
+func item_buyback(button: Button, item, record):
+	for btn in $SellBlock/ScrollContainer/VBoxContainer.get_children():
+		btn.pressed = false
+	for btn in $BuyBlock/ScrollContainer/VBoxContainer.get_children():
+		if !btn.has_meta("item"):
+			continue
+		btn.pressed = btn == button
+	purchase_item = item
+	purchase_record = record
+	var icon = item.icon
+	$NumberSelection.open(self, "item_buyback_confirm", tr("BUY") + " " + str(item.name),
+		record.price, 1, record.amount, true, icon, item)
+
+
+func item_buyback_confirm(value):
+	if purchase_record == null:
+		return
+	value = int(min(value, purchase_record.amount))
+	if value <= 0:
+		return
+	var price = purchase_record.price * value
+	if ResourceScripts.game_res.money < price:
+		return
+	input_handler.PlaySound("money_spend")
+	var flight_source = $NumberSelection/ItemIcon
+	match purchase_record.kind:
+		"material":
+			ResourceScripts.game_res.set_material(purchase_record.code, "+", value)
+		"usable":
+			globals.AddItemToInventory(globals.CreateUsableItem(purchase_record.code, value))
+		_:
+			for _i in range(value):
+				globals.AddItemToInventory(build_buyback_item(purchase_record))
+	ResourceScripts.core_animations.ItemFlight(purchase_item, flight_source, {amount = value})
+	ResourceScripts.game_res.money -= price
+	purchase_record.amount -= value
+	if purchase_record.amount <= 0:
+		ResourceScripts.game_res.remove_buyback_record(shop_key, purchase_record)
+	purchase_record = null
+	input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
+	update_sell_list()
+	update_buy_list()
+
+
+#remembers what was just sold, so the shop can sell it back for the same price this turn
+func register_buyback(item, amount, price):
+	var record
+	price = int(price)
+	if Items.materiallist.has(item.code):
+		record = {kind = "material", code = item.code, amount = amount, price = price, data = {}}
+	elif item.stackable:
+		record = {kind = "usable", code = item.code, amount = amount, price = price, data = {}}
+	else:
+		var clone = item.clone()
+		record = {kind = "gear", code = item.itembase, amount = amount, price = price, data = inst2dict(clone)}
+	ResourceScripts.game_res.add_buyback_record(shop_key, record)
+
+
 func item_sell(button: Button, item):
 	for btn in $BuyBlock/ScrollContainer/VBoxContainer.get_children():
 		btn.pressed = false
@@ -376,9 +502,11 @@ func item_sell_confirm(value):
 		price = ceil(purchase_item.calculateprice() * variables.item_sell_multiplier)
 
 	if Items.materiallist.has(purchase_item.code):
+		register_buyback(purchase_item, value, price) #while the goods are still intact
 		ResourceScripts.game_res.set_material(purchase_item.code, "-", value)
 	else:
 		price = ceil(purchase_item.calculateprice() * variables.item_sell_multiplier)
+		register_buyback(purchase_item, value, price)
 		purchase_item.amount -= value
 	ResourceScripts.game_res.money += price * value
 	#gold heads for this screen's own counter rather than the clock bar behind it

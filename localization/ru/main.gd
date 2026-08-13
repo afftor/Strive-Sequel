@@ -3986,6 +3986,8 @@ USAGE_COST = "Стоимость использования",
 	REPUTATION_SHOP_LABEL = "Магазин репутации",
 	UPGRADE_BODY_LABEL = "Улучшить тело",
 	MARKETPLACE_LABEL = "Рынок",
+	BUYBACK_LABEL = """Buyback""", # MISSING TRANSLATION
+	BUYBACK_TOOLTIP = """Shows goods you sold to this shop. They can be bought back for the same price until the turn ends.""", # MISSING TRANSLATION
 	COST_LABEL = "Цена",
 	NUMBER_LABEL = "Количество",
 	ITEM_LABEL = "Предмет",
@@ -10371,6 +10373,7 @@ LICHAIRETALK6_5 = """Борьба Эйры постепенно ослабева
 	ABORTTUTORIAL = "Прервать обучение",
 	PROMPTTUTORIAL = "Новичкам рекомендуется пройти обучение, чтобы освоить основные элементы управления и механики.",
 	TUTORIAL_TRAINING1 = "Это обучение объяснит базовые механики управления вашим особняком и персонажами. Ваш персонаж {color=yellow|Хозяин} представляет вас и отвечает за управление другими персонажами.",
+	TUTORIAL_TRAINING1_1 = """Click your Master's card to unfold it. The expanded card holds their details, work rules and social skills.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING2 = "Начнём с использования врождённого навыка Хозяина, Наставник, на одном из ваших подчинённых. Он увеличит количество получаемого ими опыта на один день.",
 	TUTORIAL_TRAINING3 = "Выберите персонажа из списка, чтобы завершить применение навыка.",
 	TUTORIAL_TRAINING4 = "Использованный навык уйдёт в перезарядку, и вы получите краткий отчёт, как и при многих подобных действиях.",
@@ -10436,6 +10439,7 @@ Close this menu.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING3 = "Используйте Свиток знаний, чтобы дать вашему Хозяину немного опыта. Это простой способ быстро увеличить силу нового персонажа.",
 	TUTORIAL_LEVELING4 = "Закройте панель.",
 	TUTORIAL_LEVELING5 = "Закройте инвентарь.",
+	TUTORIAL_LEVELING5_1 = """Click your Master's card again to unfold it.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING6 = "Откройте окно информации о персонаже Хозяина.",
 	TUTORIAL_LEVELING7 = "Теперь, когда у вас достаточно опыта, откройте вкладку Прокачка.",
 	TUTORIAL_LEVELING8 = "Опыт используется для открытия классов, каждый из которых даёт бонусы, пассивные способности и навыки. Откройте класс Боец.",

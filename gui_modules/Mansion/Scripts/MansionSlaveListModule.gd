@@ -234,8 +234,14 @@ func _ready():
 #	globals.connecttexttooltip(header.get_node('food_state'),
 #		"[center]" + tr("FOODSTATEHEADER") + "[/center]\n" + tr("FOODSTATEHEADERDESCRIPT"))
 	input_handler.connect("mass_select_in_act", self, "off_mass_select_effect")
-	input_handler.register_btn_source("slave_2_line", self, "tut_get_slave_line", self, 'tut_get_slave_line_rect')
-	input_handler.register_btn_source("daisy_line", self, "tut_get_daisy_line", self, 'tut_get_daisy_line_rect')
+	input_handler.register_btn_source("slave_2_line", self, "tut_get_slave_line")
+	input_handler.register_btn_source("daisy_line", self, "tut_get_daisy_line")
+	#the legacy skill/summary panels are hidden in the reworked mansion, so the hard tutorial
+	#drives their replacements on the expanded character card instead
+	if !get_parent().show_legacy_character_panels:
+		input_handler.register_btn_source("master_line", self, "tut_get_master_line")
+		input_handler.register_btn_source("char_info", self, "tut_get_char_info_btn")
+		input_handler.register_btn_source("mentor_skill_btn", self, "tut_get_mentor_skill_btn")
 	input_handler.register_btn_source("ff_meat", self, "tut_get_ff_meat")
 #	input_handler.register_btn_source("ff_vegetables", self, "tut_get_ff_vegetables")#delete with time(29.01.26)
 	input_handler.register_btn_source("daisy_waitress", self, "tut_get_daisy_waitress")
@@ -726,7 +732,9 @@ func build_expanded_social_skills(person):
 	input_handler.ClearContainer(ExpandedSocialSkills)
 	person.rebuild_skills()
 	var source = person.skills.social_skill_panel
-	var has_social_skills = !person.skills.social_skills.empty()
+	#skills.social_skills only holds explicitly learned ones - everything a class, trait or
+	#item grants (the master's Mentor among them) lives in the resolved list
+	var has_social_skills = !person.get_social_skills().empty()
 	ExpandedSocialPanel.visible = has_social_skills
 	if !has_social_skills:
 		return
@@ -999,46 +1007,55 @@ func set_slave_list_folded(folded, animated = true):
 func _on_list_fold_animation_finished():
 	rect_clip_content = list_folded
 
-func tut_get_slave_line():
+#entry lookups for the hard tutorial. The card view has no full-width rows to clamp, so the
+#highlight is the entry's own rect now
+func tut_get_entry_by(check_func, value):
 	for line in SlaveContainer.get_children():
 		if !line.has_meta("slave"):
 			continue
-		if line.get_meta('slave').get_stat('slave_class') == 'servant':
+		if call(check_func, line.get_meta('slave'), value):
 			return line
-func tut_get_slave_line_rect():
-	var check_rect
-	for line in SlaveContainer.get_children():
-		if !line.has_meta("slave"):
-			continue
-		if line.get_meta('slave').get_stat('slave_class') == 'servant':
-			check_rect = line.get_global_rect()
-			break
-	check_rect.size.x = 300
-	return check_rect
-func tut_get_daisy_line():
-	for line in SlaveContainer.get_children():
-		if !line.has_meta("slave"):
-			continue
-		if line.get_meta('slave').get_stat('unique') == 'daisy':
-			return line
-func tut_get_daisy_line_rect():
-	var check_rect
-	for line in SlaveContainer.get_children():
-		if !line.has_meta("slave"):
-			continue
-		if line.get_meta('slave').get_stat('unique') == 'daisy':
-			check_rect = line.get_global_rect()
-			break
-	check_rect.size.x = 300
-	return check_rect
+	return null
 
+func _tut_is_class(person, value):
+	return person.get_stat('slave_class') == value
+
+func _tut_is_unique(person, value):
+	return person.get_stat('unique') == value
+
+func _tut_is_master(person, _value):
+	return person.is_master()
+
+func tut_get_slave_line():
+	return tut_get_entry_by("_tut_is_class", 'servant')
+func tut_get_daisy_line():
+	return tut_get_entry_by("_tut_is_unique", 'daisy')
+func tut_get_master_line():
+	return tut_get_entry_by("_tut_is_master", null)
+
+#replacements for the hidden legacy panels: character info and the social skill bar both
+#live on the expanded card now, so the card has to be open before these resolve
+func tut_get_char_info_btn():
+	return ExpandedInfoButton
+func tut_get_mentor_skill_btn():
+	for button in ExpandedSocialSkills.get_children():
+		if button.get_meta("skill", "") == "mentor":
+			return button
+	return null
+
+#row-view widgets - only present while the list is in one of the non-default modes
 func tut_get_ff_meat():
-	return SlaveContainer.get_children()[0].get_node("ff_meat")
-#func tut_get_ff_vegetables():
-#	return SlaveContainer.get_children()[0].get_node("ff_vegetables")
+	for line in RowContainer.get_children():
+		if line.has_meta("slave") and line.has_node("ff_meat"):
+			return line.get_node("ff_meat")
+	return null
 func tut_get_daisy_waitress():
-	var line = tut_get_daisy_line()
-	return line.get_node("rule_waitress")
+	for line in RowContainer.get_children():
+		if !line.has_meta("slave") or !line.has_node("rule_waitress"):
+			continue
+		if line.get_meta('slave').get_stat('unique') == 'daisy':
+			return line.get_node("rule_waitress")
+	return null
 
 func tut_get_default_mode():
 	return modes.get_node("default")

@@ -7,7 +7,11 @@ var active_skill
 func _ready():
 	input_handler.skill_list_node = self
 	$skillpanelswitch.connect("pressed", self, "change_panel_type")
-	input_handler.register_btn_source('mentor_skill_btn', self, 'tut_get_mentor_skill_btn')
+	#this panel is hidden and never built in the reworked mansion - there the slave list
+	#registers the hook against the expanded card's social skill bar instead
+	var legacy_panel_enabled = get_parent() == null or get_parent().get("show_legacy_character_panels")
+	if legacy_panel_enabled:
+		input_handler.register_btn_source('mentor_skill_btn', self, 'tut_get_mentor_skill_btn')
 
 
 func build_skill_panel():
@@ -99,7 +103,10 @@ func select_skill_target(skillcode):
 	input_handler.ShowSlaveSelectPanel(self, 'use_skill', reqs)
 
 func use_skill(target):
-	get_tree().get_root().get_node("skilltooltip").hide()
+	#the tooltip node is created lazily by the first skill tooltip connection
+	var skilltooltip = get_tree().get_root().get_node_or_null("skilltooltip")
+	if skilltooltip != null:
+		skilltooltip.hide()
 	person.use_social_skill(active_skill, target)
 	# update()
 	get_parent().mansion_state = "default"

@@ -589,6 +589,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="BuyBackButton" type="Button" parent="."]
+margin_left = 1180.0
+margin_top = 159.894
+margin_right = 1360.0
+margin_bottom = 203.894
+hint_tooltip = "BUYBACK_TOOLTIP"
+theme = ExtResource( 42 )
+toggle_mode = true
+custom_fonts/font = ExtResource( 8 )
+text = "BUYBACK_LABEL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="SearchFilter" type="LineEdit" parent="."]
 margin_left = 166.033
 margin_top = 159.894

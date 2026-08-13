@@ -917,16 +917,19 @@ func show_slave_info(person):
 
 func open_shop(pressed, pressed_button, shop):
 	var shop_data = {}
+	var shop_key = '' #buyback is kept per shop
 	match shop:
 		'area':
 			if input_handler.active_area and input_handler.active_area.has('shop'):
 				shop_data = input_handler.active_area.shop
+				shop_key = input_handler.active_area.code
 		'location':
 			if pressed and active_location and active_location.has('shop'):
 				shop_data = active_location.shop
+				shop_key = active_location.id
 		_:
 			shop_data = shop
-	$AreaShop.open_shop(pressed, pressed_button, shop_data)
+	$AreaShop.open_shop(pressed, pressed_button, shop_data, shop_key)
 
 
 func update_gold():

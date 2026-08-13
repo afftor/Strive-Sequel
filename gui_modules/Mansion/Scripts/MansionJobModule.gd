@@ -48,8 +48,11 @@ func tut_get_craftbutton():
 	return craftbutton
 func tut_get_daisy_work():
 	for line in $CharacterList/GridContainer.get_children():
+		if !line.has_meta('slave'):
+			continue
 		if line.get_meta('slave').get_stat('unique') == 'daisy':
 			return line
+	return null
 func tut_get_CloseButton():
 	return $CloseButton
 func tut_get_mat_order_highlight():

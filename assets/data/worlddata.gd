@@ -789,37 +789,12 @@ var fixed_location_options = { #override serialized data
 			], 
 			args = [{code = 'start_event', data = 'fred_bribe_take', args = []}]
 		},
-		{
-			text = tr("ALIRON5"), 
+		{ #single entrance - first visit and quest scenes are variations of aliron_church_enter
+			text = tr("ALIRON6"),
 			reqs = [
-				{type = 'decision', value = 'ginny_visit', check = true}, 
-				{type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHFIRSTCOME'},
-				{type = 'active_quest_stage', value = 'jean_ruins_quest', stage = 'stage1', state = false},
-				{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage13', state = false},
-			], 
-			args = [{code = 'start_event', data = 'aliron_church_firstcome', args = []}]
-		},
-		{ #cause document's wording is 'trigger: enter church', not 'church option'
-			text = tr("ALIRON6"), 
-			reqs = [
-				{type = 'active_quest_stage', value = 'jean_ruins_quest', stage = 'stage1', state = true}
-			], 
-			args = [{code = 'start_event', data = 'jean_q2_church', args = []}]
-		},
-		{ #i think of this as the same as above 
-			text = tr("ALIRON6"), 
-			reqs = [
-				{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage13', state = true}
-			], 
-			args = [{code = 'start_event', data = 'jean_sylas_church_event_1', args = []}]
-		},
-		{
-			text = tr("ALIRON6"), 
-			reqs = [
-				{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHFIRSTCOME'},
-				{type = 'active_quest_stage', value = 'jean_ruins_quest', stage = 'stage1', state = false},
-				{type = 'active_quest_stage', value = 'jean_sylas_quest', stage = 'stage13', state = false},
-			], 
+				{type = 'decision', value = 'ginny_visit', check = true},
+				{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHFIRSTCOME', orflag = true},
+			],
 			args = [{code = 'start_event', data = 'aliron_church_enter', args = []}]
 		},
 		{
@@ -955,13 +930,6 @@ var fixed_location_options = { #override serialized data
 				{type = 'active_quest_stage', value = 'amelia_main_quest', stage = 'stage6', state = true}
 			], 
 			args = [{code = 'start_event', data = 'amelia_slave3_1', args = []}]
-		},
-		{
-			text = tr("ALIRON_KURO_CHURCH"),
-			reqs = [
-				{type = 'active_quest_stage', value = 'kuro_errand_quest', stage = 'church'}
-			], 
-			args = [{code = 'start_event', data = 'kuro_church_note', args = []}]
 		},
 		{
 			text = tr("MEET_LIORA"),

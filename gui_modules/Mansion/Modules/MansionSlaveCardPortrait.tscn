@@ -292,7 +292,6 @@ custom_constants/separation = 2
 margin_right = 112.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 112, 60 )
-texture = ExtResource( 71 )
 expand = true
 stretch_mode = 1
 

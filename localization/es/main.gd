@@ -9495,6 +9495,7 @@ Sin embargo, puedes actualizar el archivo.
 	ABORTTUTORIAL = """Abort tutorial""", # MISSING TRANSLATION
 	PROMPTTUTORIAL = """For first-time players, it is recommended to play through the tutorial section to learn the basic controls and mechanics.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING1 = """This tutorial will explain the basic mechanics of managing your mansion and characters. Your {color=yellow|Master} character represents you and is responsible for managing other characters.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING1_1 = """Click your Master's card to unfold it. The expanded card holds their details, work rules and social skills.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING2 = """Let's start by using the Master's default skill, Mentor, on one of your subordinates. It will increase the amount of experience they gain for one day.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING3 = """Select a character from the list to finish casting the skill.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING4 = """The skill you used will go on cooldown, and you will receive a short report, as with many similar actions.""", # MISSING TRANSLATION
@@ -9560,6 +9561,7 @@ Close this menu.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING3 = """Use a Scroll of Knowledge to grant your Master some experience. This is an easy way to quickly increase a new character's power.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING4 = """Close the panel.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING5 = """Close the inventory.""", # MISSING TRANSLATION
+	TUTORIAL_LEVELING5_1 = """Click your Master's card again to unfold it.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING6 = """Open the Master's character information window.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING7 = """Now that you have enough experience, open the Leveling tab.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING8 = """Experience is used to unlock classes, each granting bonuses, passives, and skills. Unlock the Fighter class.""", # MISSING TRANSLATION
@@ -22475,6 +22477,8 @@ AREASEAS = "Mares",
 	REPUTATION_SHOP_LABEL = """Reputation Shop""", # MISSING TRANSLATION
 	UPGRADE_BODY_LABEL = """Upgrade Body""", # MISSING TRANSLATION
 	MARKETPLACE_LABEL = "Mercado",
+	BUYBACK_LABEL = """Buyback""", # MISSING TRANSLATION
+	BUYBACK_TOOLTIP = """Shows goods you sold to this shop. They can be bought back for the same price until the turn ends.""", # MISSING TRANSLATION
 	COST_LABEL = "Costo",
 	NUMBER_LABEL = "Número",
 	ITEM_LABEL = "Artículo",

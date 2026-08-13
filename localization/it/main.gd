@@ -3828,6 +3828,8 @@ Intelligenza: -10; Guadagno EXP: -10%; Il prezzo di vendita è notevolmente rido
 	REPUTATION_SHOP_LABEL = "Negozio Reputazione",
 	UPGRADE_BODY_LABEL = "Migliora Corpo",
 	MARKETPLACE_LABEL = "Mercato",
+	BUYBACK_LABEL = """Buyback""", # MISSING TRANSLATION
+	BUYBACK_TOOLTIP = """Shows goods you sold to this shop. They can be bought back for the same price until the turn ends.""", # MISSING TRANSLATION
 	COST_LABEL = "Costo",
 	NUMBER_LABEL = "Numero",
 	ITEM_LABEL = "Articolo",
@@ -9957,6 +9959,7 @@ Procedere? (il file di salvataggio originale rimarrà inalterato, ma non funzion
 	ABORTTUTORIAL = "Annulla tutorial",
 	PROMPTTUTORIAL = "Per chi gioca per la prima volta, si consiglia di completare la sezione tutorial per apprendere i comandi e le meccaniche di base.",
 	TUTORIAL_TRAINING1 = "Questo tutorial spiegherà le meccaniche base della gestione della tua villa e dei personaggi. Il tuo personaggio {color=yellow|Master} rappresenta te ed è responsabile della gestione degli altri personaggi.",
+	TUTORIAL_TRAINING1_1 = """Click your Master's card to unfold it. The expanded card holds their details, work rules and social skills.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING2 = "Iniziamo usando l'abilità predefinita del Master, Mentore, su uno dei tuoi subordinati. Aumenterà la quantità di esperienza che guadagnano per un giorno.",
 	TUTORIAL_TRAINING3 = "Seleziona un personaggio dalla lista per completare il lancio dell'abilità.",
 	TUTORIAL_TRAINING4 = "L'abilità che hai usato andrà in ricarica, e riceverai un breve resoconto, come per molte azioni simili.",
@@ -10022,6 +10025,7 @@ Close this menu.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING3 = "Usa una Pergamena della Conoscenza per dare al tuo Master un po' di esperienza. È un modo facile per aumentare rapidamente la potenza di un nuovo personaggio.",
 	TUTORIAL_LEVELING4 = "Chiudi il pannello.",
 	TUTORIAL_LEVELING5 = "Chiudi l'inventario.",
+	TUTORIAL_LEVELING5_1 = """Click your Master's card again to unfold it.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING6 = "Apri la finestra informazioni del Master.",
 	TUTORIAL_LEVELING7 = "Ora che hai abbastanza esperienza, apri la scheda Livellamento.",
 	TUTORIAL_LEVELING8 = "L'esperienza serve per sbloccare classi, ognuna delle quali concede bonus, passivi e abilità. Sblocca la classe Guerriero.",
