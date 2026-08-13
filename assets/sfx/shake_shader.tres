@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+
+uniform float dist_y = 0.0;
+uniform float speed_y = 1.0;
+
+void vertex(){
+	vec2 offset = vec2(0.0);
+	offset.y += dist_y * (0.5 + 0.5 * sin(speed_y * TIME));
+	
+	VERTEX += offset;
+}"
+
+[resource]
+shader = SubResource( 7 )
+shader_param/dist_y = 0.0
+shader_param/speed_y = 2.0

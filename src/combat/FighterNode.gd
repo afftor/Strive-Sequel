@@ -67,8 +67,8 @@ const FLOAT_SHADOW_ALPHA = 0.45
 const FLOAT_HOME = Vector2(0, 0)
 
 var float_on = false
-var float_shadow = null
-var float_shadow_y = 0.0
+#var float_shadow = null
+#var float_shadow_y = 0.0
 var float_time = 0.0
 var float_shifted = false
 
@@ -490,31 +490,31 @@ func refresh_icon_desat():
 
 #The shadow is created lazily and only for whoever's turn it is: other cards
 #don't need it.
-func make_float_shadow():
-	if float_shadow != null: return
-	var t = TextureRect.new()
-	t.name = 'FloatShadow'
-	t.texture = load("res://assets/sfx/float_shadow.png")
-	t.expand = true
-	t.stretch_mode = TextureRect.STRETCH_SCALE
-	t.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	#Portraits are almost always opaque, so there is nothing to put behind the
-	#card - we draw the shadow on top and push it below the bottom edge, where
-	#nothing overlaps it.
-	t.rect_position = Vector2(26, 196)
-	t.rect_size = Vector2(130, 26)
-	t.rect_pivot_offset = t.rect_size / 2
-	t.modulate.a = 0.0
-	add_child(t)
-	float_shadow = t
-	float_shadow_y = t.rect_position.y
+#func make_float_shadow():
+#	if float_shadow != null: return
+#	var t = TextureRect.new()
+#	t.name = 'FloatShadow'
+#	t.texture = load("res://assets/sfx/float_shadow.png")
+#	t.expand = true
+#	t.stretch_mode = TextureRect.STRETCH_SCALE
+#	t.mouse_filter = Control.MOUSE_FILTER_IGNORE
+#	#Portraits are almost always opaque, so there is nothing to put behind the
+#	#card - we draw the shadow on top and push it below the bottom edge, where
+#	#nothing overlaps it.
+#	t.rect_position = Vector2(26, 196)
+#	t.rect_size = Vector2(130, 26)
+#	t.rect_pivot_offset = t.rect_size / 2
+#	t.modulate.a = 0.0
+#	add_child(t)
+#	float_shadow = t
+#	float_shadow_y = t.rect_position.y
 
 
 func set_floating(val):
 	if float_on == val: return
 	float_on = val
 	if val:
-		make_float_shadow()
+#		make_float_shadow()
 		float_time = 0.0
 	else:
 		float_stop()
@@ -527,10 +527,10 @@ func float_stop():
 	if float_shifted:
 		rect_position = FLOAT_HOME
 		float_shifted = false
-	if float_shadow != null:
-		float_shadow.modulate.a = 0.0
-		float_shadow.rect_position.y = float_shadow_y
-		float_shadow.rect_scale = Vector2(1, 1)
+#	if float_shadow != null:
+#		float_shadow.modulate.a = 0.0
+#		float_shadow.rect_position.y = float_shadow_y
+#		float_shadow.rect_scale = Vector2(1, 1)
 
 
 #While the card is playing its own animation, floating yields: the node has a
@@ -553,7 +553,7 @@ func _process(delta):
 	var k = 0.5 - 0.5 * cos(float_time / FLOAT_PERIOD * TAU)
 	var rise = FLOAT_RISE * k
 	rect_position = FLOAT_HOME + Vector2(0, -rise)
-	if float_shadow != null:
-		float_shadow.rect_position.y = float_shadow_y + rise
-		float_shadow.rect_scale = Vector2(1.0 - 0.18 * k, 1.0 - 0.18 * k)
-		float_shadow.modulate.a = FLOAT_SHADOW_ALPHA * (1.0 - 0.25 * k)
+#	if float_shadow != null:
+#		float_shadow.rect_position.y = float_shadow_y + rise
+#		float_shadow.rect_scale = Vector2(1.0 - 0.18 * k, 1.0 - 0.18 * k)
+#		float_shadow.modulate.a = FLOAT_SHADOW_ALPHA * (1.0 - 0.25 * k)
