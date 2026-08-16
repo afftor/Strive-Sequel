@@ -1973,6 +1973,9 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			return (input_handler.combat_node.playergroupcounter == 1) == i.check
 		'workrule':
 			return check_work_rule(i.value) == i.check
+		#sleeps in a mansion room tagged like this - see mansion_room_types.gd
+		'lives_in_room':
+			return ResourceScripts.game_res.character_room_has_tag(id, i.value) == i.check
 		'check_stored':
 			return training.check_stored_reqs(i.value)
 		'is_immune':
@@ -2560,7 +2563,7 @@ func affect_char(template, manifest = false):
 					var data = ResourceScripts.world_gen.get_location_from_code(get_location())
 					data.stamina -= template.cost
 					if manifest:
-						globals.manifest_and_log("dungeon", "%s stamina spent in %s" % [template.cost, tr(data.name)])
+						globals.text_log_add("dungeon", "%s stamina spent in %s" % [template.cost, tr(data.name)])
 		'add_combat_log': #until we got proper midfight dialogue system, this will have to do.
 			if input_handler.combat_node == null: 
 				return

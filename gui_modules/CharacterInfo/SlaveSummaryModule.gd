@@ -115,7 +115,12 @@ func customization():
 	get_parent().set_state("details")
 
 func open_skills():
-	get_parent().set_state("skills")
+	var progression_popup = gui_controller.mansion.get_node_or_null("CharacterProgressionPopup")
+	if progression_popup == null:
+		return
+	var progression_person = selected_person if selected_person != null else input_handler.interacted_character
+	gui_controller.close_scene(get_parent())
+	progression_popup.open(progression_person)
 
 func relations():
 	get_parent().set_state("siblings")
@@ -130,8 +135,6 @@ func set_buttons_pressed(type):
 	match type:
 		"details":
 			customization_button.pressed = true
-		"skills":
-			leveling_button.pressed = true
 		"siblings":
 			relations_button.pressed = true
 
@@ -165,7 +168,6 @@ func change_slave(param):
 	input_handler.interacted_character = selected_person
 	# CharMainModule.active_person = selected_person
 	CharMainModule.match_state()
-	CharMainModule.ClassesModule.get_node("ClassPanel").hide()
 	# CharMainModule.DetailsModule.person = selected_person
 	CharMainModule.DetailsModule.custom_description_open()
 	update_buttons()
@@ -181,7 +183,6 @@ func select_slave_from_menu(person):
 	selected_person = person
 	input_handler.interacted_character = selected_person
 	CharMainModule.match_state()
-	CharMainModule.ClassesModule.get_node("ClassPanel").hide()
 	CharMainModule.DetailsModule.custom_description_open()
 	update_buttons()
 

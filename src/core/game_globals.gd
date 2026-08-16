@@ -52,7 +52,7 @@ var mansion_activity_log = []
 #var log_storage = []
 
 #Cheats
-var cheats_active = false
+#cheats_active and cheat_code moved to input_handler.progress_data - they are account-wide, not per-save
 var instant_travel = false
 var skip_combat = false
 var free_upgrades = false
@@ -66,10 +66,6 @@ var unlimited_date_sex = false
 var unlock_all_classes = false
 var unlimited_popcap = false
 #var unlock_all_scenes = false
-
-# Cheat codes
-var cheat_code = "fkfynroh"
-# var cheat_code = "111"
 
 
 func get_date():

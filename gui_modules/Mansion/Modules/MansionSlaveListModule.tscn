@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=76 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=2]
@@ -562,7 +562,8 @@ margin_right = 578.0
 margin_bottom = 49.0
 theme = ExtResource( 11 )
 
-[node name="rule_luxury" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["lux_rooms", "rules"]]
+[node name="rule_luxury" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["lux_rooms", "rules"]
+visible = false]
 visible = false
 margin_left = 600.0
 margin_top = 1.0
@@ -1293,7 +1294,8 @@ custom_fonts/font = ExtResource( 47 )
 text = "WORKRULECONSTRAIN"
 align = 1
 
-[node name="rule_luxury" type="Label" parent="HBoxContainer" groups=["rules"]]
+[node name="rule_luxury" type="Label" parent="HBoxContainer" groups=["rules"]
+visible = false]
 margin_left = 540.0
 margin_top = 40.0
 margin_right = 696.0

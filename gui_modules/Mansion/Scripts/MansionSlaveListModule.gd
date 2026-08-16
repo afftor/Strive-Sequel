@@ -92,7 +92,6 @@ const EXPANDED_WORK_RULES = [
 	"hide",
 	"ration",
 	"shifts",
-	"luxury",
 	"contraceptive",
 	"nudity",
 	"relationship",
@@ -224,7 +223,7 @@ func _ready():
 	globals.connecttexttooltip($SexIcon, tr("SEXTOOLTIP"))
 	for nd in modes.get_children():
 		nd.connect('pressed', self, 'set_mode', [nd.name])
-#	for rl in ['lock', 'ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'nudity', 'relationship', 'masturbation']:
+#	for rl in ['lock', 'ration', 'shifts', 'constrain', 'contraceptive', 'nudity', 'relationship', 'masturbation']:
 #		globals.connecttexttooltip(header.get_node('rule_' + rl), tr('WORKRULE%sDESCRIPT' % rl.to_upper()))
 #	for rl in ['waitress', 'hostess', 'dancer', 'stripper', 'males', 'females', 'futa', 'petting', 'oral', 'anal', 'pussy', 'group', 'sextoy']:
 #		globals.connecttexttooltip(header.get_node('brothel_' + rl), tr('BROTHEL%sDESCRIPT' % rl.to_upper()))
@@ -242,6 +241,7 @@ func _ready():
 		input_handler.register_btn_source("master_line", self, "tut_get_master_line")
 		input_handler.register_btn_source("char_info", self, "tut_get_char_info_btn")
 		input_handler.register_btn_source("mentor_skill_btn", self, "tut_get_mentor_skill_btn")
+		input_handler.register_btn_source("progression_btn", self, "tut_get_progression_btn")
 	input_handler.register_btn_source("ff_meat", self, "tut_get_ff_meat")
 #	input_handler.register_btn_source("ff_vegetables", self, "tut_get_ff_vegetables")#delete with time(29.01.26)
 	input_handler.register_btn_source("daisy_waitress", self, "tut_get_daisy_waitress")
@@ -254,8 +254,19 @@ func _ready():
 	get_parent().connect("visibility_changed", self, "on_mansion_shown")
 
 
+#node input callbacks run before the singleton's, so the hard tutorial's own right click
+#gate never sees these events - closing the card mid-step would strand the tutorial
+func _tutorial_blocks_rmb():
+	if !input_handler.hard_tutorial_active or input_handler.hard_tutorial == null:
+		return false
+	return !input_handler.hard_tutorial.is_RMB_pass()
+
+
 func _input(event):
 	if expanded_card == null or !(event is InputEventMouseButton):
+		return
+	if event.button_index == BUTTON_RIGHT and _tutorial_blocks_rmb():
+		get_viewport().set_input_as_handled()
 		return
 	if event.button_index == BUTTON_RIGHT and event.pressed:
 		var target = _get_expanded_right_click_target()
@@ -783,7 +794,6 @@ func build_expanded_rules(person):
 	input_handler.ClearContainer(ExpandedRuleButtons)
 	if person == null:
 		return
-	luxury_rooms_taken = globals.calculate_lux_rooms()
 	for code in EXPANDED_WORK_RULES:
 		if !_expanded_rule_is_visible(person, code):
 			continue
@@ -795,11 +805,6 @@ func build_expanded_rules(person):
 		_refresh_expanded_rule_button(button)
 		var tooltip = "[center]" + tr("WORKRULE" + code.to_upper()) + "[/center]\n"
 		tooltip += person.translate(tr("WORKRULE" + code.to_upper() + "DESCRIPT"))
-		if code == "luxury":
-			tooltip += "\n" + tr("MSLMROOMSUSED") % [
-				luxury_rooms_taken,
-				ResourceScripts.game_res.upgrades.luxury_rooms + 1,
-			]
 		globals.connecttexttooltip(button, tooltip)
 		button.connect("pressed", self, "_toggle_expanded_rule", [person, code])
 
@@ -812,7 +817,7 @@ func _refresh_expanded_rule_button(button):
 
 
 func _expanded_rule_is_visible(person, code):
-	if person.is_master() and code in ["luxury", "relationship"]:
+	if person.is_master() and code == "relationship":
 		return false
 	if person.check_trait("undead") and code in ["contraceptive", "ration"]:
 		return false
@@ -821,9 +826,6 @@ func _expanded_rule_is_visible(person, code):
 
 func _expanded_rule_is_disabled(person, code):
 	match code:
-		"luxury":
-			return ((luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1)
-				and !person.check_work_rule("luxury")) or person.is_master()
 		"relationship":
 			return person.is_master()
 		"nudity":
@@ -1042,6 +1044,11 @@ func tut_get_mentor_skill_btn():
 		if button.get_meta("skill", "") == "mentor":
 			return button
 	return null
+#the card action row is a copy of the card layout, so it only resolves while a card is expanded
+func tut_get_progression_btn():
+	if !is_instance_valid(expanded_card_visual):
+		return null
+	return expanded_card_visual.get_node_or_null("Margin/Rows/Actions/Progression")
 
 #row-view widgets - only present while the list is in one of the non-default modes
 func tut_get_ff_meat():
@@ -1090,9 +1097,8 @@ func OpenInventory(person = null):
 
 
 func OpenProgression(person):
-	_open_character_info(person)
-	if gui_controller.slavepanel != null:
-		gui_controller.slavepanel.set_state("skills")
+	_close_expanded_character_immediate()
+	get_parent().get_node("CharacterProgressionPopup").open(person)
 
 
 func OpenTraining(person):
@@ -1738,9 +1744,6 @@ func _prepare_rebuild():
 	task_refresh_queued = false
 	_close_expanded_character_immediate()
 	_select_slave_container()
-	#update_button reads this for the luxury rule, and rebuild can run before the first
-	#update()/refresh_after_turn() - on a fresh game the queued rebuild is the very first call
-	luxury_rooms_taken = globals.calculate_lux_rooms()
 	update_dislocations()
 #	build_locations_list()
 	#LocationsPanel.visible = (get_parent().mansion_state != "sex")
@@ -1845,11 +1848,10 @@ func _build_row_entry(person, person_id):
 	newbutton.get_node("SpellIcon").connect("pressed", self, 'OpenSpells', [person])
 	newbutton.get_node("SpellIcon").visible = false
 	newbutton.get_node("job").connect("pressed", self, 'OpenJobModule', [person])
-	for rl in ['lock', 'ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'nudity', 'relationship', 'masturbation']:
+	for rl in ['lock', 'ration', 'shifts', 'constrain', 'contraceptive', 'nudity', 'relationship', 'masturbation']:
 		var true_btn = newbutton.get_node('rule_' + rl)
 		true_btn.connect('pressed', self, 'toggle_rules', [newbutton, rl])
-		if rl != 'luxury':
-			globals.connecttexttooltip(true_btn, "[center]" + tr("WORKRULE" + rl.to_upper()) + "[/center]\n" + person.translate(tr('WORKRULE%sDESCRIPT' % rl.to_upper())))
+		globals.connecttexttooltip(true_btn, "[center]" + tr("WORKRULE" + rl.to_upper()) + "[/center]\n" + person.translate(tr('WORKRULE%sDESCRIPT' % rl.to_upper())))
 		mass_rule_list.append({
 			btn_node = true_btn,
 			act_func = 'toggle_rules_mass',
@@ -1968,7 +1970,6 @@ func refresh_after_turn(spread = false):
 	if build_rows_signature() != rows_signature:
 		rebuild()
 		return
-	luxury_rooms_taken = globals.calculate_lux_rooms()
 	update_dislocations()
 	if spread:
 		yield(get_tree(), 'idle_frame')
@@ -2001,6 +2002,8 @@ func double_clicked(event, button):
 	if !(event is InputEventMouseButton):
 		return
 	if event.button_index == BUTTON_RIGHT and event.pressed and !event.doubleclick:
+		if _tutorial_blocks_rmb():
+			return
 		if expanded_card != null:
 			close_expanded_character()
 			return
@@ -2166,10 +2169,7 @@ func update_description():
 func calculate_sex_limits():
 	if get_parent() != null && get_parent().get("in_test_mode") == true:
 		return ResourceScripts.game_party.character_order.size()
-	var slavelimit = 2
-	if ResourceScripts.game_res.upgrades.has('master_bedroom'):
-		slavelimit += ResourceScripts.game_res.upgrades.master_bedroom
-	return slavelimit
+	return ResourceScripts.game_res.get_sex_limit()
 
 
 func show_location_characters(button = null):
@@ -2263,9 +2263,7 @@ func remove_from_travel(person):
 	get_parent().persons_for_travel.erase(person)
 	rebuild()
 
-var luxury_rooms_taken = 0
 func update():
-	luxury_rooms_taken = globals.calculate_lux_rooms()
 	update_dislocations()
 	_select_slave_container()
 	_ensure_selected_container_entries()
@@ -2473,14 +2471,8 @@ func update_button(newbutton, t_mode = mode):
 	_update_card_action_states(newbutton, person)
 	
 	#rules
-	for rl in ['lock', 'ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'nudity', 'relationship', 'masturbation']:
+	for rl in ['lock', 'ration', 'shifts', 'constrain', 'contraceptive', 'nudity', 'relationship', 'masturbation']:
 		newbutton.get_node('rule_' + rl).pressed = person.check_work_rule(rl)
-#	newbutton.get_node('rule_luxury').visible = !person.is_master()
-	newbutton.get_node('rule_luxury').disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) and !person.check_work_rule("luxury") or person.is_master()
-	var text = "[center]"+tr("WORKRULELUXURY") + "[/center]\n" + person.translate(tr('WORKRULELUXURYDESCRIPT'))
-	text += "\n"
-	text += "Rooms used %d/%d" % [luxury_rooms_taken, ResourceScripts.game_res.upgrades.luxury_rooms + 1]
-	globals.connecttexttooltip(newbutton.get_node('rule_luxury'), text)
 	newbutton.get_node('rule_relationship').disabled = person.is_master()
 	newbutton.get_node('rule_nudity').disabled = !person.has_status('sexservice')
 	newbutton.get_node('rule_contraceptive').disabled = person.check_trait('undead')
@@ -2518,7 +2510,6 @@ func update_button(newbutton, t_mode = mode):
 	#postprocess
 	if person.is_master():
 		newbutton.get_node('DateIcon').visible = false
-		newbutton.get_node('rule_luxury').visible = false
 		newbutton.get_node('rule_relationship').visible = false
 		newbutton.get_node('rule_constrain').visible = false
 	if person.check_trait('undead'):

@@ -3,6 +3,8 @@ extends Node
 #This script handles inputs, sounds, closes windows and plays animation
 #warning-ignore-all:unused_signal
 #warning-ignore-all:return_value_discarded
+const BuildValidator = preload("res://src/core/build_validator.gd")
+
 var file = File.new()
 var dir = Directory.new()
 
@@ -231,6 +233,8 @@ var progress_data = {
 	achi_bonuses = [],
 	achi_points = 0,
 	seen_skills = [],
+	cheat_password = "", # password entered by the player, unlocks cheats on every save
+	supporter_prompt_dismissed = false, # player pressed "Don't show again" on the main menu notice
 	update_check_consent = null # null = not asked yet, true/false = player's answer
 } setget save_progress_data
 
@@ -325,6 +329,12 @@ func update_progress_data(field, value):
 			return
 	elif field == 'achi_points':
 		progress_data[field] += value
+	elif typeof(progress_data[field]) == TYPE_STRING:
+		if typeof(value) != TYPE_STRING:
+			return
+		if progress_data[field] == value:
+			return
+		progress_data[field] = value
 	else:
 		if typeof(value) != TYPE_STRING:
 			return
@@ -341,6 +351,21 @@ func store_progress():
 	text = JSON.print(progress_data)
 	file.store_string(text)
 	file.close()
+
+func cheats_unlocked():
+	return progress_data.cheat_password == BuildValidator.CHECKSUM
+
+
+#stores the checksum if the password is correct, returns whether cheats are unlocked now
+func try_cheat_password(text):
+	if BuildValidator.validate(text):
+		unlock_cheats()
+	return cheats_unlocked()
+
+
+func unlock_cheats():
+	update_progress_data('cheat_password', BuildValidator.CHECKSUM)
+
 
 func is_unique_sprite_unlocked(chara, sprite):
 	return progress_data['unique_sprites'].has(chara) and progress_data['unique_sprites'][chara].has(sprite)
@@ -988,6 +1013,10 @@ func open_shell(string):
 			path = 'https://strive4power.itch.io/strive-conquest'
 		'Patreon':
 			path = 'https://www.patreon.com/maverik'
+		'PatreonCode':
+			path = 'https://www.patreon.com/posts/new-password-18830450'
+		'SubscribestarCode':
+			path = "https://subscribestar.adult/posts/1394420"
 		'Discord':
 			path = "https://discord.gg/VXSx9Zk"
 		'Wiki':

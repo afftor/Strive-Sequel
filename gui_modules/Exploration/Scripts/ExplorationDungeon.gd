@@ -953,6 +953,13 @@ func room_pressed(room_id, room_node):
 		if use_state.entity.target != "room": return
 		var data = ResourceScripts.game_world.rooms[room_id]
 		if data.status != "scouted" or data.type != 'combat': return
+		#room skills resolve the fight right away, so the room must be enterable
+		if data.challenge != null: return
+		if !ResourceScripts.game_world.can_enter_room(room_id): return
+		if selected_room != null: return
+		if get_current_stamina() < data.stamina_cost:
+			input_handler.SystemMessage(tr("NO_STAMINA_LABEL"))
+			return
 		use_skill_on_room(use_state.caster, room_id, room_node, use_state.entity)
 		return
 	reset_active_location()
@@ -1301,9 +1308,25 @@ func reveal_map(caster):
 #	active_location.intimidate = true
 
 func set_intimidate(room_id):
+	#deferred, so the skill cost is paid and the cast panel is closed before the fight resolves
+	call_deferred('start_intimidated_combat', room_id)
+
+
+func start_intimidated_combat(room_id):
 	var data = ResourceScripts.game_world.rooms[room_id]
+	if data.status != "scouted" or data.type != 'combat' or data.challenge != null:
+		return
 	data.intimidate = true
-	globals.start_fixed_event('dungeon_intimidate')
+	globals.reset_roll_data()
+	globals.char_roll_data.diff = active_location.difficulty
+	globals.char_roll_data.lvl = active_location.current_level
+	for ch_id in active_location.group.values():
+		globals.char_roll_data.mf += characters_pool.get_char_by_id(ch_id).get_stat('magic_find')
+	pay_stamina(data.stamina_cost)
+	update_stamina()
+	selected_room = room_id
+	StartCombat(data) #data.intimidate makes it an instant win and skips the battle screen
+
 
 func process_cast_use(port_node, with_return = false, bottom = false):
 	if !is_in_use_state():#open_cast_panel

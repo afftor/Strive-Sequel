@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=2]
+[gd_scene load_steps=94 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=2]
@@ -71,6 +71,7 @@
 [ext_resource path="res://assets/images/buttons/mainmenu/X1.png" type="Texture" id=69]
 [ext_resource path="res://assets/images/buttons/mainmenu/X.png" type="Texture" id=70]
 [ext_resource path="res://gui_modules/Universal/Modules/UpdateNotice.tscn" type="PackedScene" id=71]
+[ext_resource path="res://gui_modules/Universal/Modules/SupporterNotice.tscn" type="PackedScene" id=72]
 
 [sub_resource type="DynamicFont" id=5]
 size = 64
@@ -1200,3 +1201,5 @@ margin_left = 35.0
 margin_top = 65.0
 margin_right = 371.0
 margin_bottom = 321.0
+
+[node name="SupporterNotice" parent="." instance=ExtResource( 72 )]

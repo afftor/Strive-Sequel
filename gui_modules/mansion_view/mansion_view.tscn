@@ -1,0 +1,643 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://gui_modules/mansion_view/mansion_view.gd" type="Script" id=1]
+[ext_resource path="res://gui_modules/mansion_view/mansion_floor_grid.gd" type="Script" id=2]
+[ext_resource path="res://gui_modules/mansion_view/mansion_slot_node.gd" type="Script" id=3]
+[ext_resource path="res://gui_modules/mansion_view/mansion_char_slot.gd" type="Script" id=4]
+[ext_resource path="res://gui_modules/mansion_view/mansion_room_card.gd" type="Script" id=5]
+[ext_resource path="res://gui_modules/mansion_view/mansion_rest_panel.gd" type="Script" id=6]
+[ext_resource path="res://gui_modules/mansion_view/mansion_rest_cell.gd" type="Script" id=7]
+[ext_resource path="res://gui_modules/mansion_view/mansion_expel_zone.gd" type="Script" id=8]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_20_normal.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24.tres" type="DynamicFont" id=10]
+[ext_resource path="res://gui_modules/mansion_view/mansion_location_panel.gd" type="Script" id=11]
+[ext_resource path="res://gui_modules/mansion_view/mansion_task_room.gd" type="Script" id=12]
+
+[node name="MansionView" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+script = ExtResource( 1 )
+test_mode = true
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.101961, 0.098039, 0.113725, 1 )
+
+[node name="RestPanel" type="Panel" parent="."]
+margin_left = 40.0
+margin_top = 16.0
+margin_right = 1500.0
+margin_bottom = 136.0
+script = ExtResource( 6 )
+
+[node name="Title" type="Label" parent="RestPanel"]
+margin_left = 12.0
+margin_top = 4.0
+margin_right = 400.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 9 )
+text = "Rest"
+
+[node name="Warning" type="Label" parent="RestPanel"]
+visible = false
+margin_left = 420.0
+margin_top = 4.0
+margin_right = 1100.0
+margin_bottom = 30.0
+custom_colors/font_color = Color( 1, 0.368627, 0.368627, 1 )
+custom_fonts/font = ExtResource( 9 )
+text = "Everyone needs a bed before the turn can end."
+
+[node name="List" type="HBoxContainer" parent="RestPanel"]
+margin_left = 12.0
+margin_top = 34.0
+margin_right = 1448.0
+margin_bottom = 114.0
+custom_constants/separation = 6
+
+[node name="Button" type="Button" parent="RestPanel/List"]
+visible = false
+margin_right = 64.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 64, 80 )
+script = ExtResource( 7 )
+
+[node name="icon" type="TextureRect" parent="RestPanel/List/Button"]
+margin_left = 4.0
+margin_top = 2.0
+margin_right = 60.0
+margin_bottom = 58.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="name" type="Label" parent="RestPanel/List/Button"]
+margin_left = 2.0
+margin_top = 58.0
+margin_right = 62.0
+margin_bottom = 78.0
+text = "Name"
+align = 1
+clip_text = true
+
+[node name="ExpelZone" type="Panel" parent="."]
+visible = false
+margin_left = 1540.0
+margin_top = 16.0
+margin_right = 1880.0
+margin_bottom = 136.0
+script = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="ExpelZone"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 0.478431, 0.478431, 1 )
+custom_fonts/font = ExtResource( 9 )
+text = "Drag here to let go"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="PlaceBar" type="Control" parent="."]
+margin_left = 40.0
+margin_top = 144.0
+margin_right = 1880.0
+margin_bottom = 190.0
+mouse_filter = 2
+
+[node name="List" type="HBoxContainer" parent="PlaceBar"]
+margin_right = 1100.0
+margin_bottom = 40.0
+custom_constants/separation = 8
+
+[node name="Button" type="Button" parent="PlaceBar/List"]
+visible = false
+margin_right = 170.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 170, 40 )
+custom_fonts/font = ExtResource( 9 )
+toggle_mode = true
+text = "Place"
+
+[node name="TopBar" type="Control" parent="."]
+margin_left = 40.0
+margin_top = 196.0
+margin_right = 1880.0
+margin_bottom = 246.0
+mouse_filter = 2
+
+[node name="Counters" type="HBoxContainer" parent="TopBar"]
+margin_right = 1100.0
+margin_bottom = 44.0
+mouse_filter = 2
+custom_constants/separation = 36
+
+[node name="Rooms" type="Label" parent="TopBar/Counters"]
+margin_top = 8.0
+margin_right = 92.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 9 )
+text = "Rooms 0/0"
+valign = 1
+
+[node name="Beds" type="Label" parent="TopBar/Counters"]
+margin_left = 128.0
+margin_top = 8.0
+margin_right = 203.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 9 )
+text = "Beds 0/0"
+valign = 1
+
+[node name="Workplaces" type="Label" parent="TopBar/Counters"]
+margin_left = 239.0
+margin_top = 8.0
+margin_right = 372.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 9 )
+text = "Workplaces 0/0"
+valign = 1
+
+[node name="Upkeep" type="Label" parent="TopBar/Counters"]
+margin_left = 408.0
+margin_top = 8.0
+margin_right = 489.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 9 )
+text = "Upkeep 0"
+valign = 1
+
+[node name="Unhoused" type="Label" parent="TopBar/Counters"]
+visible = false
+margin_left = 744.0
+margin_top = 8.0
+margin_right = 904.0
+margin_bottom = 35.0
+custom_colors/font_color = Color( 1, 0.368627, 0.368627, 1 )
+custom_fonts/font = ExtResource( 9 )
+text = "Without a bed 0"
+valign = 1
+
+[node name="ModeWork" type="Button" parent="TopBar"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -580.0
+margin_right = -400.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 9 )
+toggle_mode = true
+pressed = true
+text = "Work"
+
+[node name="ModeSleep" type="Button" parent="TopBar"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -390.0
+margin_right = -210.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 9 )
+toggle_mode = true
+text = "Beds"
+
+[node name="ModeRearrange" type="Button" parent="TopBar"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -200.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 9 )
+toggle_mode = true
+text = "Rearrange"
+
+[node name="GridViewport" type="Control" parent="."]
+margin_left = 40.0
+margin_top = 256.0
+margin_right = 1500.0
+margin_bottom = 1030.0
+rect_clip_content = true
+mouse_filter = 1
+
+[node name="FloorGrid" type="Control" parent="GridViewport"]
+margin_right = 900.0
+margin_bottom = 900.0
+script = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="GridViewport/FloorGrid"]
+visible = false
+margin_right = 162.0
+margin_bottom = 162.0
+rect_min_size = Vector2( 162, 162 )
+flat = true
+script = ExtResource( 3 )
+
+[node name="bg" type="ColorRect" parent="GridViewport/FloorGrid/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.294118, 0.262745, 0.207843, 1 )
+
+[node name="icon" type="TextureRect" parent="GridViewport/FloorGrid/Button"]
+margin_left = 8.0
+margin_top = 6.0
+margin_right = 52.0
+margin_bottom = 50.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="name" type="Label" parent="GridViewport/FloorGrid/Button"]
+margin_left = 4.0
+margin_top = 54.0
+margin_right = 158.0
+margin_bottom = 80.0
+custom_fonts/font = ExtResource( 9 )
+text = "Room"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="People" type="GridContainer" parent="GridViewport/FloorGrid/Button"]
+margin_left = 8.0
+margin_top = 86.0
+margin_right = 154.0
+margin_bottom = 154.0
+columns = 4
+
+[node name="Button" type="Button" parent="GridViewport/FloorGrid/Button/People"]
+visible = false
+margin_right = 34.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 34, 34 )
+flat = true
+script = ExtResource( 4 )
+
+[node name="bg" type="ColorRect" parent="GridViewport/FloorGrid/Button/People/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 1, 1, 1, 0.117647 )
+
+[node name="icon" type="TextureRect" parent="GridViewport/FloorGrid/Button/People/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Progress" type="ProgressBar" parent="GridViewport/FloorGrid/Button"]
+visible = false
+margin_left = 8.0
+margin_top = 132.0
+margin_right = 154.0
+margin_bottom = 154.0
+mouse_filter = 2
+percent_visible = false
+
+[node name="Label" type="Label" parent="GridViewport/FloorGrid/Button/Progress"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "0%"
+align = 1
+valign = 1
+
+[node name="Highlight" type="ColorRect" parent="GridViewport/FloorGrid/Button"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.419608, 0.639216, 0.419608, 0.35 )
+
+[node name="FloorSelector" type="Control" parent="."]
+margin_left = 1540.0
+margin_top = 256.0
+margin_right = 1880.0
+margin_bottom = 316.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="FloorSelector"]
+margin_left = 110.0
+margin_right = 230.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 10 )
+text = "1F"
+align = 1
+valign = 1
+
+[node name="Down" type="Button" parent="FloorSelector"]
+margin_right = 100.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 9 )
+text = "-"
+
+[node name="Up" type="Button" parent="FloorSelector"]
+margin_left = 240.0
+margin_right = 340.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 9 )
+text = "+"
+
+[node name="ZoomControls" type="Control" parent="."]
+margin_left = 1540.0
+margin_top = 336.0
+margin_right = 1880.0
+margin_bottom = 396.0
+mouse_filter = 2
+
+[node name="Out" type="Button" parent="ZoomControls"]
+margin_right = 100.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 9 )
+text = "-"
+
+[node name="Label" type="Label" parent="ZoomControls"]
+margin_left = 110.0
+margin_right = 230.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 9 )
+text = "100%"
+align = 1
+valign = 1
+
+[node name="In" type="Button" parent="ZoomControls"]
+margin_left = 240.0
+margin_right = 340.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 9 )
+text = "+"
+
+[node name="LocationPanel" type="Control" parent="."]
+visible = false
+margin_left = 40.0
+margin_top = 256.0
+margin_right = 1880.0
+margin_bottom = 1030.0
+rect_clip_content = true
+script = ExtResource( 11 )
+
+[node name="Background" type="TextureRect" parent="LocationPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Title" type="Label" parent="LocationPanel"]
+margin_left = 16.0
+margin_top = 8.0
+margin_right = 800.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 10 )
+text = "Location"
+
+[node name="Empty" type="Label" parent="LocationPanel"]
+visible = false
+margin_left = 16.0
+margin_top = 56.0
+margin_right = 900.0
+margin_bottom = 92.0
+custom_fonts/font = ExtResource( 9 )
+text = "There is nothing to do here."
+
+[node name="Rooms" type="GridContainer" parent="LocationPanel"]
+margin_left = 16.0
+margin_top = 56.0
+margin_right = 1820.0
+margin_bottom = 760.0
+custom_constants/vseparation = 10
+columns = 8
+
+[node name="Button" type="Button" parent="LocationPanel/Rooms"]
+visible = false
+margin_right = 210.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 210, 170 )
+script = ExtResource( 12 )
+
+[node name="icon" type="TextureRect" parent="LocationPanel/Rooms/Button"]
+margin_left = 8.0
+margin_top = 6.0
+margin_right = 56.0
+margin_bottom = 54.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="name" type="Label" parent="LocationPanel/Rooms/Button"]
+margin_left = 62.0
+margin_top = 8.0
+margin_right = 204.0
+margin_bottom = 54.0
+custom_fonts/font = ExtResource( 9 )
+text = "Task"
+autowrap = true
+clip_text = true
+
+[node name="output" type="Label" parent="LocationPanel/Rooms/Button"]
+margin_left = 8.0
+margin_top = 58.0
+margin_right = 204.0
+margin_bottom = 84.0
+custom_colors/font_color = Color( 0.541176, 0.85098, 0.541176, 1 )
+custom_fonts/font = ExtResource( 9 )
+
+[node name="count" type="Label" parent="LocationPanel/Rooms/Button"]
+visible = false
+margin_left = 8.0
+margin_top = 88.0
+margin_right = 204.0
+margin_bottom = 114.0
+custom_fonts/font = ExtResource( 9 )
+text = "Left 0"
+
+[node name="People" type="GridContainer" parent="LocationPanel/Rooms/Button"]
+margin_left = 8.0
+margin_top = 88.0
+margin_right = 204.0
+margin_bottom = 162.0
+columns = 5
+
+[node name="Button" type="Button" parent="LocationPanel/Rooms/Button/People"]
+visible = false
+margin_right = 34.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 34, 34 )
+flat = true
+script = ExtResource( 4 )
+
+[node name="bg" type="ColorRect" parent="LocationPanel/Rooms/Button/People/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 1, 1, 1, 0.117647 )
+
+[node name="icon" type="TextureRect" parent="LocationPanel/Rooms/Button/People/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="TestButton" type="Button" parent="." groups=["test"]]
+margin_left = 40.0
+margin_top = 1040.0
+margin_right = 240.0
+margin_bottom = 1075.0
+custom_fonts/font = ExtResource( 9 )
+text = "Self test"
+
+[node name="SkipTurnButton" type="Button" parent="." groups=["test"]]
+margin_left = 260.0
+margin_top = 1040.0
+margin_right = 500.0
+margin_bottom = 1075.0
+custom_fonts/font = ExtResource( 9 )
+text = "Skip a day"
+
+[node name="CardCatcher" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="RoomCard" type="Panel" parent="."]
+visible = false
+margin_left = 600.0
+margin_top = 200.0
+margin_right = 1020.0
+margin_bottom = 820.0
+rect_min_size = Vector2( 420, 620 )
+script = ExtResource( 5 )
+
+[node name="Title" type="Label" parent="RoomCard"]
+margin_left = 12.0
+margin_top = 10.0
+margin_right = 372.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 10 )
+text = "Room"
+
+[node name="Subtitle" type="Label" parent="RoomCard"]
+margin_left = 12.0
+margin_top = 48.0
+margin_right = 408.0
+margin_bottom = 74.0
+custom_fonts/font = ExtResource( 9 )
+text = "Beds 0/0"
+
+[node name="Descript" type="Label" parent="RoomCard"]
+margin_left = 12.0
+margin_top = 80.0
+margin_right = 408.0
+margin_bottom = 156.0
+custom_fonts/font = ExtResource( 9 )
+autowrap = true
+
+[node name="Functions" type="Label" parent="RoomCard"]
+margin_left = 12.0
+margin_top = 160.0
+margin_right = 408.0
+margin_bottom = 232.0
+custom_fonts/font = ExtResource( 9 )
+autowrap = true
+
+[node name="Actions" type="HBoxContainer" parent="RoomCard"]
+margin_left = 12.0
+margin_top = 238.0
+margin_right = 408.0
+margin_bottom = 282.0
+custom_constants/separation = 8
+
+[node name="DemolishButton" type="Button" parent="RoomCard/Actions"]
+margin_right = 396.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 190, 44 )
+custom_fonts/font = ExtResource( 9 )
+text = "Demolish"
+
+[node name="Occupants" type="VBoxContainer" parent="RoomCard"]
+margin_left = 12.0
+margin_top = 292.0
+margin_right = 408.0
+margin_bottom = 604.0
+custom_constants/separation = 4
+
+[node name="Header" type="Label" parent="RoomCard/Occupants"]
+margin_right = 396.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 9 )
+text = "Beds 0/0"
+
+[node name="List" type="VBoxContainer" parent="RoomCard/Occupants"]
+margin_top = 32.0
+margin_right = 396.0
+margin_bottom = 312.0
+custom_constants/separation = 4
+
+[node name="Button" type="Button" parent="RoomCard/Occupants/List"]
+visible = false
+margin_right = 396.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 396, 34 )
+custom_fonts/font = ExtResource( 9 )
+text = "slot"
+
+[node name="BuildList" type="VBoxContainer" parent="RoomCard"]
+visible = false
+margin_left = 12.0
+margin_top = 60.0
+margin_right = 408.0
+margin_bottom = 604.0
+custom_constants/separation = 4
+
+[node name="Button" type="Button" parent="RoomCard/BuildList"]
+visible = false
+margin_right = 396.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 396, 34 )
+custom_fonts/font = ExtResource( 9 )
+text = "type"
+
+[node name="CandidateList" type="VBoxContainer" parent="RoomCard"]
+visible = false
+margin_left = 12.0
+margin_top = 292.0
+margin_right = 408.0
+margin_bottom = 604.0
+custom_constants/separation = 4
+
+[node name="Button" type="Button" parent="RoomCard/CandidateList"]
+visible = false
+margin_right = 396.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 396, 34 )
+custom_fonts/font = ExtResource( 9 )
+text = "candidate"
+
+[node name="RepairButton" type="Button" parent="RoomCard"]
+visible = false
+margin_left = 12.0
+margin_top = 238.0
+margin_right = 408.0
+margin_bottom = 282.0
+custom_fonts/font = ExtResource( 9 )
+text = "Clear out"
+
+[node name="CancelButton" type="Button" parent="RoomCard"]
+visible = false
+margin_left = 12.0
+margin_top = 238.0
+margin_right = 408.0
+margin_bottom = 282.0
+custom_fonts/font = ExtResource( 9 )
+text = "Cancel"
+
+[node name="CloseButton" type="Button" parent="RoomCard"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -42.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 9 )
+text = "X"

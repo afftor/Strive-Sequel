@@ -1,9 +1,14 @@
 extends Reference
 #extends Node
 
+const MansionLayout = preload("res://src/core/mansion_layout.gd")
+
 var itemcounter = 0
 var money = 0 setget set_money
 var upgrades = {}
+#spatial mansion floorplan used by gui_modules/mansion_view, built lazily by
+#ensure_mansion_layout(). Plain dictionary, so serialize() carries it for free.
+var mansion_layout = {}
 var selected_upgrade = {code = '', level = 0}#not sure
 var items = {}
 var materials = {} setget materials_set
@@ -78,7 +83,85 @@ func fix_serialization():
 			ResourceScripts.game_res.materials[item] = 0
 			print_debug("Added res on load: " + item)
 	fix_food_task_limits()
+	ensure_mansion_layout()
 #	fix_items_inventory(false)
+
+
+#Creates the mansion floorplan on first use and repairs one loaded from a save.
+#Idempotent - the mansion view calls it on open, fix_serialization() calls it on load.
+func ensure_mansion_layout(force = false):
+	if force or !(mansion_layout is Dictionary) or mansion_layout.empty():
+		mansion_layout = MansionLayout.build_default()
+	else:
+		MansionLayout.validate(mansion_layout, ResourceScripts.game_party.characters)
+	autohouse_household()
+	sync_room_tasks()
+
+
+#Seats anyone who has no bed but could have one. Called on load and whenever somebody
+#joins, so the player is never made to place an arrival by hand before the turn will end.
+func autohouse_household():
+	var masters = {}
+	for char_id in ResourceScripts.game_party.characters:
+		if ResourceScripts.game_party.characters[char_id].is_master():
+			masters[char_id] = true
+	return MansionLayout.autohouse_all(mansion_layout, ResourceScripts.game_party.characters, masters)
+
+
+func autohouse_character(person):
+	if person == null:
+		return false
+	return MansionLayout.autohouse(mansion_layout, person.id, person.is_master())
+
+
+#A bathhouse does what the old Bath upgrade did. Both answers funnel through here so a
+#reader never has to know which of the two the household actually has.
+func has_bath():
+	if upgrades.has('resting') and upgrades.resting > 0:
+		return true
+	return MansionLayout.count_rooms_of_type(mansion_layout, 'bathhouse') > 0
+
+
+#How many people fit into one scene: the shared upgrade, plus whatever the master bedroom
+#has been furnished up to.
+func get_sex_limit():
+	var res = 2
+	if upgrades.has('master_bedroom'):
+		res += int(upgrades.master_bedroom)
+	res += MansionLayout.effect_of_type(mansion_layout, 'master_bedroom', 'sex_slots')
+	return res
+
+
+#Who has no bed. Blocks the end of the turn, and drives the warning on the mansion
+#screen. Counts characters wherever they are in the world - being away is not an excuse
+#for not having a room.
+func unhoused_characters():
+	return MansionLayout.unhoused_characters(mansion_layout, ResourceScripts.game_party.characters)
+
+
+#True while the character sleeps in a room carrying the given tag - what drives the
+#private-room bonus that used to be the 'luxury' work rule.
+func character_room_has_tag(char_id, tag):
+	return MansionLayout.lives_in_room_with_tag(mansion_layout, char_id, tag)
+
+
+#Mirrors every work room into tasks_progresses and drops the records of rooms that are
+#gone, so a room worker is an ordinary worker to the rest of the game and assign_to_task()
+#can be used against a room without any special case.
+func sync_room_tasks():
+	var live = MansionLayout.ensure_all_room_tasks(mansion_layout, tasks_progresses)
+	#scaffolding gets a task of its own for exactly as long as it stands
+	for entry in MansionLayout.each_build(mansion_layout):
+		var build_id = MansionLayout.ensure_build_task(
+			MansionLayout.get_slot(MansionLayout.get_floor(mansion_layout, entry.floor), entry.slot),
+			tasks_progresses)
+		if build_id != null:
+			live[build_id] = true
+	for id in tasks_progresses.keys().duplicate():
+		if !(tasks_progresses[id].get('type', '') in ['room_work', 'room_build']):
+			continue
+		if !live.has(id):
+			clean_task(id) #releases its workers before the record goes
 
 
 #Task progress limits are serialized. Refresh food tasks so existing saves adopt economy
@@ -221,6 +304,8 @@ func add_recipe_task(recipe_id, parts = {}, amount = {fixed = 1}):
 	
 	if amount.has('fixed'):
 		template.repeat = amount.fixed
+	elif amount.has('continuous'):
+		template.continuous = true
 	else:
 		template.cap_up = amount.max
 		template.cap_low = amount.min
@@ -452,6 +537,7 @@ func tick(managed = false):
 	process_farm()
 	process_craft(true)
 	process_craft(false)
+	process_rooms()
 	for t_id in active_tasks.recruiting.duplicate():
 		_process_recruit_task(t_id)
 	for t_id in active_tasks.special.duplicate():
@@ -662,6 +748,25 @@ func process_service(managed = false):
 			slice = OS.get_ticks_msec()
 
 
+func _apply_craft_item_overflow(character, value, preferred_job, joborder):
+	#Material work keeps its matching item category first, but any unused work units must
+	#fall through to the character's other enabled item categories instead of disappearing.
+	var jobs = joborder.duplicate()
+	jobs.erase(preferred_job)
+	jobs.push_front(preferred_job)
+	for job in jobs:
+		if value <= 0:
+			break
+		if job == 'building':
+			continue
+		var real_job = job + '_item'
+		if !crafting_lists.has(real_job):
+			continue
+		var curupgrade = _active_task_find(crafting_lists[real_job])
+		value = _add_craft_value(curupgrade, value, character)
+	return value
+
+
 func process_craft(firstpass = true):
 	_add_craft_job()
 	var currenttask = tasks_progresses.crafting
@@ -683,11 +788,8 @@ func process_craft(firstpass = true):
 					break
 		else:
 			if currenttask.workers_handled.has(ch_id):
-				var job = currenttask.workers_handled[ch_id].job
-				var real_job = job + '_item'
-				var value = currenttask.workers_handled[ch_id].value
-				var curupgrade = _active_task_find(crafting_lists[real_job])
-				var new_value = _add_craft_value(curupgrade, value, character)
+				var handled = currenttask.workers_handled[ch_id]
+				_apply_craft_item_overflow(character, handled.value, handled.job, joborder)
 			else:
 				var applied = false
 				for job in joborder:
@@ -714,6 +816,81 @@ func process_craft(firstpass = true):
 					character.rest_tick()
 	if !firstpass:
 		currenttask.workers_handled.clear()
+
+
+#Work rooms own a task each, so neither process_craft (which walks only
+#tasks_progresses.crafting.workers) nor process_gathering (which walks only
+#active_tasks.gathering) would ever see their workers - without this pass a character
+#placed in a forge would simply stand idle all turn. The room decides who works and which
+#discipline they practise; the shared recipe queues still decide which recipe, exactly as
+#they do for the crafting task.
+func process_rooms():
+	sync_room_tasks()
+	for entry in MansionLayout.each_room(mansion_layout):
+		var room = entry.room
+		if room.task_id == null or !tasks_progresses.has(room.task_id):
+			continue
+		var tprogress = tasks_progresses[room.task_id]
+		if tprogress.workers.empty():
+			continue
+		#per-room modifier, so "better tools" really does apply to this room only
+		var modifier = MansionLayout.craft_modifier(room)
+		for ch_id in tprogress.workers.duplicate():
+			var character = characters_pool.get_char_by_id(ch_id)
+			if character == null:
+				continue
+			var value = character.get_job_value(tprogress.job, true) * modifier
+			if _spend_room_work(tprogress.job, value, character):
+				character.work_tick_values(tprogress.workstat)
+			else:
+				globals.text_log_add('work', character.get_short_name() + ": No available craft task.")
+				character.rest_tick()
+
+
+	process_room_builds()
+
+
+#Raising a room, clearing out a derelict one and upgrading one all run through here. The
+#existing building queue only ever advances its own head, so per-room scaffolding needs
+#its own accounting - which is also what lets several rooms go up at once.
+func process_room_builds():
+	for entry in MansionLayout.each_build(mansion_layout):
+		var build = entry.build
+		if !tasks_progresses.has(build.task_id):
+			continue
+		var tprogress = tasks_progresses[build.task_id]
+		var finished = false
+		for ch_id in tprogress.workers.duplicate():
+			var character = characters_pool.get_char_by_id(ch_id)
+			if character == null:
+				continue
+			var value = character.get_job_value('building', true)
+			if value <= 0:
+				character.rest_tick()
+				continue
+			character.work_tick_values(tprogress.workstat)
+			if MansionLayout.advance_build(build, value):
+				finished = true
+				break
+		if !finished:
+			continue
+		var task_id = MansionLayout.complete_build(mansion_layout, entry.floor, entry.slot)
+		if task_id != null and tasks_progresses.has(task_id):
+			clean_task(task_id)
+		#a finished room needs its work task before anyone can be put in it, and the sync
+		#at the top of process_rooms() has already been and gone by now
+		sync_room_tasks()
+		globals.emit_signal("task_removed")
+
+
+#Materials first, then items - the same order and the same helpers process_craft uses.
+#_add_craft_value returns the work it could not spend, so nothing was done when it hands
+#the whole value back.
+func _spend_room_work(job, value, character):
+	var left = _add_craft_value(_active_task_find(crafting_lists[job + '_material']), value, character)
+	if left == value:
+		left = _add_craft_value(_active_task_find(crafting_lists[job + '_item']), left, character)
+	return left < value
 
 
 func _process_spec_task(id):
@@ -801,7 +978,7 @@ func _add_craft_value(curupgrade, value, character):
 		var limit3 = 9999 #upper limit
 		if tprogress.has('repeat'):
 			limit3 = tprogress.repeat
-		else: #permanent task
+		elif tprogress.has('cap_up'):
 			var amount
 			if tprogress.job.ends_with('material'):
 				amount = materials[tprogress.id]

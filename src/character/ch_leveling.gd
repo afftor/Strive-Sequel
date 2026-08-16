@@ -8,7 +8,9 @@ var previous_work = ''
 #var workproduct = null
 #var previous_workproduct = null
 var previous_location = ResourceScripts.game_world.mansion_location
-var work_rules = {lock = false, hide = false, ration = false, shifts = false, constrain = false, luxury = false, contraceptive = false, bindings = false, nudity = false, relationship = true, masturbation = false}
+#'luxury' used to live here; the private-room bonus now follows where a character
+#sleeps, see the 'lives_in_room' condition and mansion_room_types.gd
+var work_rules = {lock = false, hide = false, ration = false, shifts = false, constrain = false, contraceptive = false, bindings = false, nudity = false, relationship = true, masturbation = false}
 
 var priority_materials = {
 	cooking = 4,

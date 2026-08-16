@@ -1,0 +1,980 @@
+﻿DOLL2_SPINE4.2_X - REPLACEABLE SLOT ELEMENTS
+FORMAT: attachment_name -> asset_path
+SKIN: default
+
+SLOT LIST
+
+[animal_body]
+setup: <none>
+count: 4
+- arachna_body -> 14_animals_body/arachna_body
+- kentaur_body -> 14_animals_body/kentaur_body
+- lamia_body -> 14_animals_body/lamia_body
+- scylla_body -> 14_animals_body/scylla_body
+
+[weapon_back]
+setup: <none>
+count: 11
+- weapon_back_axe1 -> 201_weapon_back/weapon_back_axe1
+- weapon_back_axe2 -> 201_weapon_back/weapon_back_axe2
+- weapon_back_bow -> 201_weapon_back/weapon_back_bow
+- weapon_back_bow2 -> 201_weapon_back/weapon_back_bow2
+- weapon_back_crossbow1 -> 201_weapon_back/weapon_back_crossbow1
+- weapon_back_crossbow2 -> 201_weapon_back/weapon_back_crossbow2
+- weapon_back_mace2 -> 201_weapon_back/weapon_back_mace2
+- weapon_back_spear -> 201_weapon_back/weapon_back_spear
+- weapon_back_spear2 -> 201_weapon_back/weapon_back_spear2
+- weapon_back_stick -> 201_weapon_back/weapon_back_stick
+- weapon_back_stick2 -> 201_weapon_back/weapon_back_stick2
+
+[wings]
+setup: <none>
+count: 5
+- wings_demon -> 09_wings/wings_demon
+- Wings_dragon -> 09_wings/Wings_dragon
+- Wings_fairy -> 09_wings/Wings_fairy
+- wings_harpia -> 09_wings/wings_harpia
+- Wings_seraph -> 09_wings/Wings_seraph
+
+[hairs_back]
+setup: hair_back_straight
+count: 9
+- hair_back_care -> 06_hairs_back/hair_back_care
+- hair_back_dishevel -> 06_hairs_back/hair_back_dishevel
+- hair_back_double_tail_long -> 06_hairs_back/hair_back_double_tail_long
+- hair_back_ponytail_long -> 06_hairs_back/hair_back_ponytail_long
+- hair_back_spiral -> 06_hairs_back/hair_back_spiral
+- hair_back_straight -> 06_hairs_back/hair_back_straight
+- hair_back_twin braids -> 06_hairs_back/hair_back_twin braids
+- hair_back_verylong1 -> 06_hairs_back/hair_back_verylong1
+- hair_back_wawe -> 06_hairs_back/hair_back_wawe
+
+[tails]
+setup: <none>
+count: 10
+- tail_cat -> 07_tails/tail_cat
+- tail_demon -> 07_tails/tail_demon
+- tail_dragon -> 07_tails/tail_dragon
+- tail_dragon2 -> 07_tails/tail_dragon2
+- tail_fox -> 07_tails/tail_fox
+- tail_kobold -> 07_tails/tail_kobold
+- tail_mouse -> 07_tails/tail_mouse
+- tail_nereid -> 07_tails/tail_nereid
+- tail_tanuk -> 07_tails/tail_tanuk
+- tail_wolf -> 07_tails/tail_wolf
+
+[equip_back]
+setup: <none>
+count: 7
+- equip_back -> 102_armory_set_leather_female/raincoat_cloth2
+- raincoat_cloth -> 101_armory_set_cloth3_female/raincoat_cloth
+- raincoat_cloth2 -> 101_armory_set_cloth_female/raincoat_cloth2
+- raincoat_cloth2__103_armory_set_plate_female -> 103_armory_set_plate_female/raincoat_cloth2
+- raincoat_leather2 -> 102_armory_set_leather2_female/raincoat_leather2
+- raincoat_plate2 -> 103_armory_set_plate2_female/raincoat_plate2
+- waitress_back -> 109_armory_set_waitress_female/waitress_back
+
+[hand_left]
+setup: HandL1
+count: 6
+- beastkin_HandL1 -> 15_beastkin_body_nude/beastkin_HandL1
+- beastkin_HandL2 -> 15_beastkin_body_nude/beastkin_HandL2
+- beastkin_HandL3 -> 15_beastkin_body_nude/beastkin_HandL3
+- HandL1 -> 00_body_nude_female/HandL1
+- HandL2 -> 00_body_nude_female/HandL2
+- HandL3 -> 00_body_nude_female/HandL3
+
+[equip_hand_left]
+setup: <none>
+count: 11
+- Hand1_armorL1 -> 99_armory_set_maidu/Hand1_armorL1
+- Hand2_armorL2 -> 99_armory_set_maidu/Hand2_armorL2
+- Hand2_petsuitL3 -> 151_armory_acces_petsuit/Hand2_petsuitL3
+- Hand3_armorL3 -> 99_armory_set_maidu/Hand3_armorL3
+- Hand_armorL3 -> 99_armory_set_maidu/Hand_armorL3
+- HandL1_armor_latex -> 108_armory_set_latex_female/HandL1_armor_latex
+- HandL1_playboy -> 112_armory_set_playboy_female/HandL1_playboy
+- HandL2_latex2 -> 108_armory_set_latex_female/HandL2_latex2
+- HandL2_playboy -> 112_armory_set_playboy_female/HandL2_playboy
+- HandL3_playboy -> 112_armory_set_playboy_female/HandL3_playboy
+- HandL_armor_latex3 -> 108_armory_set_latex_female/HandL_armor_latex3
+
+[arm_left]
+setup: ArmL1
+count: 2
+- ArmL1 -> 00_body_nude_female/ArmL1
+- beastkin_ArmL1 -> 15_beastkin_body_nude/beastkin_ArmL1
+
+[race_arm_left]
+setup: <none>
+count: 5
+- dragon_armL -> 23_dragon_female/dragon_armL
+- kobold_ArmL1 -> 24_kobold_female/kobold_ArmL1
+- kobold_ArmL2 -> 24_kobold_female/kobold_ArmL2
+- Nereid_armL -> 21_nereid/Nereid_armL
+- slime_armL -> 22_slime/slime_armL
+
+[equip_arm_left]
+setup: <none>
+count: 10
+- Arm_armorL1 -> 99_armory_set_maidu/Arm_armorL1
+- Arm_armorL_cloth -> 101_armory_set_cloth3_female/Arm_armorL_cloth
+- Arm_armorL_latex -> 108_armory_set_latex_female/Arm_armorL_latex
+- Arm_armorL_leather -> 102_armory_set_leather_female/Arm_armorL_leather
+- Arm_armorL_leather2 -> 102_armory_set_leather2_female/Arm_armorL_leather2
+- Arm_armorL_plate -> 103_armory_set_plate_female/Arm_armorL_plate
+- Arm_armorL_plate2 -> 103_armory_set_plate2_female/Arm_armorL_plate2
+- Arm_armorL_smith -> 110_armory_set_smith_female/Arm_armorL_smith
+- ArmL1_armorL_playboy -> 112_armory_set_playboy_female/ArmL1_armorL_playboy
+- ArmL_underwear2 -> 113_armory_set_underwear2/ArmL_underwear2
+
+[shoulder_left]
+setup: ShoulderL
+count: 2
+- beastkin_ShoulderL -> 15_beastkin_body_nude/beastkin_ShoulderL
+- ShoulderL -> 00_body_nude_female/ShoulderL
+
+[race_shoulder_left]
+setup: <none>
+count: 4
+- dragon_shoulderL -> 23_dragon_female/dragon_shoulderL
+- dryad_shoulderL -> 20_dryad/dryad_shoulderL
+- kobold_ShoulderL1 -> 24_kobold_female/kobold_ShoulderL1
+- kobold_ShoulderL2 -> 24_kobold_female/kobold_ShoulderL2
+
+[equip_shoulder_left]
+setup: <none>
+count: 9
+- Shoulder_armorL1 -> 99_armory_set_maidu/Shoulder_armorL1
+- Shoulder_armorL_cloth -> 101_armory_set_cloth3_female/Shoulder_armorL_cloth
+- Shoulder_armorL_cloth2 -> 101_armory_set_cloth_female/Shoulder_armorL_cloth
+- Shoulder_armorL_latex -> 108_armory_set_latex_female/Shoulder_armorL_latex
+- Shoulder_armorL_leather2 -> 102_armory_set_leather2_female/Shoulder_armorL_leather2
+- Shoulder_armorL_plate2 -> 103_armory_set_plate2_female/Shoulder_armorL_plate2
+- Shoulder_armorL_playboy -> 112_armory_set_playboy_female/Shoulder_armorL_playboy
+- Shoulder_armorL_waitress -> 109_armory_set_waitress_female/Shoulder_armorL_waitress
+- ShoulderL_underwear2 -> 113_armory_set_underwear2/ShoulderL_underwear2
+
+[hand_right]
+setup: HandR1
+count: 6
+- beastkin_HandR1 -> 15_beastkin_body_nude/beastkin_HandR1
+- beastkin_HandR2 -> 15_beastkin_body_nude/beastkin_HandR2
+- beastkin_HandR3 -> 15_beastkin_body_nude/beastkin_HandR3
+- HandR1 -> 00_body_nude_female/HandR1
+- HandR2 -> 00_body_nude_female/HandR2
+- HandR3 -> 00_body_nude_female/HandR3
+
+[equip_hand_right]
+setup: <none>
+count: 10
+- Hand1_armorR1 -> 99_armory_set_maidu/Hand1_armorR1
+- Hand2_armorR2 -> 99_armory_set_maidu/Hand2_armorR2
+- Hand2_petsuitR3 -> 151_armory_acces_petsuit/Hand2_petsuitR3
+- Hand_armorR3 -> 99_armory_set_maidu/Hand_armorR3
+- HandR1_latex -> 108_armory_set_latex_female/HandR1_latex
+- HandR1_playboy -> 112_armory_set_playboy_female/HandR1_playboy
+- HandR2_latex2 -> 108_armory_set_latex_female/HandR2_latex2
+- HandR2_playboy -> 112_armory_set_playboy_female/HandR2_playboy
+- HandR3_playboy -> 112_armory_set_playboy_female/HandR3_playboy
+- HandR_armor_latex3 -> 108_armory_set_latex_female/HandR_armor_latex3
+
+[arm_right]
+setup: ArmR1
+count: 2
+- ArmR1 -> 00_body_nude_female/ArmR1
+- beastkin_ArmR1 -> 15_beastkin_body_nude/beastkin_ArmR1
+
+[race_arm_right]
+setup: <none>
+count: 4
+- dragon_armR -> 23_dragon_female/dragon_armR
+- kobold_ArmR2 -> 24_kobold_female/kobold_ArmR2
+- nereid_armR -> 21_nereid/nereid_armR
+- slime_armR -> 22_slime/slime_armR
+
+[equip_arm_right]
+setup: <none>
+count: 10
+- Arm_armorR1 -> 99_armory_set_maidu/Arm_armorR1
+- Arm_armorR_cloth -> 101_armory_set_cloth3_female/Arm_armorR_cloth
+- Arm_armorR_latex -> 108_armory_set_latex_female/Arm_armorR_latex
+- Arm_armorR_leather -> 102_armory_set_leather_female/Arm_armorR_leather
+- Arm_armorR_leather2 -> 102_armory_set_leather2_female/Arm_armorR_leather2
+- Arm_armorR_plate -> 103_armory_set_plate_female/Arm_armorR_plate
+- Arm_armorR_plate2 -> 103_armory_set_plate2_female/Arm_armorR_plate2
+- Arm_armorR_smith -> 110_armory_set_smith_female/Arm_armorR_smith
+- ArmR1_armorR_playboy -> 112_armory_set_playboy_female/ArmR1_armorR_playboy
+- ArmR_underwear2 -> 113_armory_set_underwear2/ArmR_underwear2
+
+[shoulder_right]
+setup: ShoulderR
+count: 2
+- beastkin_ShoulderR -> 15_beastkin_body_nude/beastkin_ShoulderR
+- ShoulderR -> 00_body_nude_female/ShoulderR
+
+[race_shoulder_right]
+setup: <none>
+count: 4
+- dragon_shoulderR -> 23_dragon_female/dragon_shoulderR
+- dryad_shoulderR -> 20_dryad/dryad_shoulderR
+- kobold_ShoulderR1 -> 24_kobold_female/kobold_ShoulderR1
+- kobold_ShoulderR2 -> 24_kobold_female/kobold_ShoulderR2
+
+[equip_shoulder_right]
+setup: <none>
+count: 9
+- Shoulder_armorR1 -> 99_armory_set_maidu/Shoulder_armorR1
+- Shoulder_armorR_cloth -> 101_armory_set_cloth3_female/Shoulder_armorR_cloth
+- Shoulder_armorR_cloth2 -> 101_armory_set_cloth_female/Shoulder_armorR_cloth
+- Shoulder_armorR_latex -> 108_armory_set_latex_female/Shoulder_armorR_latex
+- Shoulder_armorR_leather2 -> 102_armory_set_leather2_female/Shoulder_armorR_leather2
+- Shoulder_armorR_plate2 -> 103_armory_set_plate2_female/Shoulder_armorR_plate2
+- Shoulder_armorR_playboy -> 112_armory_set_playboy_female/Shoulder_armorR_playboy
+- Shoulder_armorR_waitress -> 109_armory_set_waitress_female/Shoulder_armorR_waitress
+- ShoulderR_underwear2 -> 113_armory_set_underwear2/ShoulderR_underwear2
+
+[torso]
+setup: torso__body_female_base
+count: 5
+- beastkin_torso -> 15_beastkin_body_nude/beastkin_torso
+- beastkin_torso_many_nipples4 -> 15_beastkin_body_nude/beastkin_torso_many_nipples4
+- beastkin_torso_many_nipples6 -> 15_beastkin_body_nude/beastkin_torso_many_nipples6
+- torso -> 00_body_nude_female/torso
+- torso__body_female_base -> 00_body_nude_female/torso
+
+[equip_collar]
+setup: collar_playboy
+count: 6
+- collar_bell -> 150_armory_acces_collars/collar_bell
+- collar_heart -> 150_armory_acces_collars/collar_heart
+- collar_leather -> 150_armory_acces_collars/collar_leather
+- collar_metallic -> 150_armory_acces_collars/collar_metallic
+- collar_playboy -> 112_armory_set_playboy_female/collar_playboy
+- collar_steel -> 150_armory_acces_collars/collar_steel
+
+[torso_nipples_mask]
+setup: torso_nipples_mask
+count: 2
+- beastkin_torso_nipples_mask -> 15_beastkin_body_nude/beastkin_torso_nipples_mask
+- torso_nipples_mask -> 00_body_nude_female/torso_nipples_mask
+
+[leg_left]
+setup: LegL
+count: 2
+- beastkin_LegL1 -> 15_beastkin_body_nude/beastkin_LegL1
+- LegL -> 00_body_nude_female/LegL
+
+[race_leg_left]
+setup: <none>
+count: 6
+- dragon_LegL -> 23_dragon_female/dragon_LegL
+- dragon_LegL 2 -> 23_dragon_female/dragon_LegL 2
+- kobold_LegL -> 24_kobold_female/kobold_LegL
+- kobold_legL2 -> 24_kobold_female/kobold_legL2
+- nereid_LegL -> 21_nereid/nereid_LegL
+- slime_legL -> 22_slime/slime_legL
+
+[equip_leg_left]
+setup: <none>
+count: 12
+- LegL_armor1 -> 99_armory_set_maidu/LegL_armor1
+- LegL_armor_cloth -> 101_armory_set_cloth3_female/LegL_armor_cloth
+- LegL_armor_gipure1 -> 105_armory_set_gipure1_female/LegL_armor_gipure1
+- LegL_armor_jacket -> 107_armory_set_jacket_female/LegL_armor_jacket
+- LegL_armor_latex -> 108_armory_set_latex_female/LegL_armor_latex
+- LegL_armor_leather -> 102_armory_set_leather_female/LegL_armor_leather
+- LegL_armor_leather2 -> 102_armory_set_leather2_female/LegL_armor_leather2
+- LegL_armor_plate -> 103_armory_set_plate_female/LegL_armor_plate
+- LegL_armor_plate2 -> 103_armory_set_plate2_female/LegL_armor_plate2
+- LegL_armor_playboy -> 112_armory_set_playboy_female/LegL_armor_playboy
+- LegL_armor_smith -> 110_armory_set_smith_female/LegL_armor_smith
+- LegL_underwear2 -> 113_armory_set_underwear2/LegL_underwear2
+
+[leg_right]
+setup: LegR
+count: 2
+- beastkin_LegR1 -> 15_beastkin_body_nude/beastkin_LegR1
+- LegR -> 00_body_nude_female/LegR
+
+[race_leg_right]
+setup: <none>
+count: 7
+- dragon_LegR -> 23_dragon_female/dragon_LegR
+- dragon_LegR 2 -> 23_dragon_female/dragon_LegR 2
+- dryad_legR -> 20_dryad/dryad_legR
+- kobold_legR -> 24_kobold_female/kobold_legR
+- kobold_legR2 -> 24_kobold_female/kobold_legR2
+- nereid_LegR -> 21_nereid/nereid_LegR
+- slime_legR -> 22_slime/slime_legR
+
+[equip_leg_right]
+setup: <none>
+count: 12
+- LegR_armor1 -> 99_armory_set_maidu/LegR_armor1
+- LegR_armor_cloth -> 101_armory_set_cloth3_female/LegR_armor_cloth
+- LegR_armor_gipure1 -> 105_armory_set_gipure1_female/LegR_armor_gipure1
+- LegR_armor_jacket -> 107_armory_set_jacket_female/LegR_armor_jacket
+- LegR_armor_latex -> 108_armory_set_latex_female/LegR_armor_latex
+- LegR_armor_leather -> 102_armory_set_leather_female/LegR_armor_leather
+- LegR_armor_leather2 -> 102_armory_set_leather2_female/LegR_armor_leather2
+- LegR_armor_plate -> 103_armory_set_plate_female/LegR_armor_plate
+- LegR_armor_plate2 -> 103_armory_set_plate2_female/LegR_armor_plate2
+- LegR_armor_playboy -> 112_armory_set_playboy_female/LegR_armor_playboy
+- LegR_armor_smith -> 110_armory_set_smith_female/LegR_armor_smith
+- LegR_armor_underwear2 -> 113_armory_set_underwear2/LegR_armor_underwear2
+
+[pelvis]
+setup: pelvis
+count: 2
+- beastkin_pelvis1 -> 15_beastkin_body_nude/beastkin_taz1
+- pelvis -> 00_body_nude_female/taz
+
+[belly]
+setup: default_belly
+count: 2
+- beastkin_belly1 -> 15_beastkin_body_nude/beastkin_belly1
+- default_belly -> 00_body_nude_female/default_belly
+
+[equip_torso]
+setup: <none>
+count: 16
+- tirso_armor_gipure2 -> 106_armory_set_gipure2_female/tirso_armor_gipure2
+- torso_armor_cloth -> 101_armory_set_cloth3_female/torso_armor_cloth
+- torso_armor_cloth2 -> 101_armory_set_cloth_female/torso_armor_cloth
+- torso_armor_gipure1 -> 105_armory_set_gipure1_female/torso_armor_gipure1
+- torso_armor_jacket -> 107_armory_set_jacket_female/torso_armor_jacket
+- torso_armor_latex -> 108_armory_set_latex_female/torso_armor_latex
+- torso_armor_leather -> 102_armory_set_leather_female/torso_armor_leather
+- torso_armor_leather2 -> 102_armory_set_leather2_female/torso_armor_leather2
+- torso_armor_maidu -> 99_armory_set_maidu/torso_armor_maidu
+- torso_armor_plate -> 103_armory_set_plate_female/torso_armor_plate
+- torso_armor_plate2 -> 103_armory_set_plate2_female/torso_armor_plate2
+- torso_armor_playboy -> 112_armory_set_playboy_female/torso_armor_playboy
+- torso_armor_smith -> 110_armory_set_smith_female/torso_armor_smith
+- torso_armor_tentackle -> 111_armory_set_tentackle_female/torso_armor_tentackle
+- torso_armor_waitress -> 109_armory_set_waitress_female/torso_armor_waitress
+- torso_underwear2 -> 113_armory_set_underwear2/torso_underwear2
+
+[breasts_beastkin_many]
+setup: <none>
+count: 2
+- beastkin_titsmany_small4 -> 15_beastkin_body_nude/beastkin_titsmany_small4
+- beastkin_titsmany_small6 -> 15_beastkin_body_nude/beastkin_titsmany_small6
+
+[beastkin_torso_many_nipples]
+setup: <none>
+count: 2
+- beastkin_torso_many_nipples4 -> 15_beastkin_body_nude/beastkin_torso_many_nipples4
+- beastkin_torso_many_nipples6 -> 15_beastkin_body_nude/beastkin_torso_many_nipples6
+
+[race_pelvis]
+setup: <none>
+count: 4
+- dragon_pelvis -> 23_dragon_female/dragon_taz
+- dragon_pelvis 2 -> 23_dragon_female/dragon_taz 2
+- kobold_pelvis2 -> 24_kobold_female/kobold_taz2
+- slime_pelvis -> 22_slime/slime_taz
+
+[animal_frontbody]
+setup: <none>
+count: 1
+- arachna_helicere -> 14_animals_body/arachna_helicere
+
+[testicle]
+setup: <none>
+count: 4
+- Testicle_furry -> 13_dicks/Testicle_furry
+- Testicle_furry__body_female_beastkin -> 13_dicks/Testicle_furry
+- Testicle_human -> 13_dicks/Testicle_human
+- Testicle_human__body_female_base -> 13_dicks/Testicle_human
+
+[equip_pelvis]
+setup: pelvis_armor_cloth2
+count: 18
+- pelvis_armor_cloth -> 101_armory_set_cloth3_female/taz_armor_cloth
+- pelvis_armor_cloth2 -> 101_armory_set_cloth_female/taz_armor_cloth
+- pelvis_armor_gipure1 -> 105_armory_set_gipure1_female/taz_armor_gipure1
+- pelvis_armor_gipure2 -> 106_armory_set_gipure2_female/taz_armor_gipure2
+- pelvis_armor_jacket -> 107_armory_set_jacket_female/taz_armor_jacket
+- pelvis_armor_latex -> 108_armory_set_latex_female/taz_armor_latex
+- pelvis_armor_leather -> 102_armory_set_leather_female/taz_armor_leather
+- pelvis_armor_leather2 -> 102_armory_set_leather2_female/taz_armor_leather2
+- pelvis_armor_maidu -> 99_armory_set_maidu/pelvis_armor_maidu
+- pelvis_armor_plate -> 103_armory_set_plate_female/taz_armor_plate
+- pelvis_armor_plate2 -> 103_armory_set_plate2_female/taz_armor_plate2
+- pelvis_armor_playboy -> 112_armory_set_playboy_female/taz_armor_playboy
+- pelvis_armor_slave -> 104_armory_set_slave_female/taz_armor_slave
+- pelvis_armor_smith -> 110_armory_set_smith_female/taz_armor_smith
+- pelvis_armor_tentackle -> 111_armory_set_tentackle_female/taz_armor_tentackle
+- pelvis_armor_underwear1 -> 113_armory_set_underwear1/taz_armor_underwear1
+- pelvis_armor_underwear2 -> 113_armory_set_underwear2/taz_armor_underwear2
+- pelvis_armor_waitress -> 109_armory_set_waitress_female/taz_armor_waitress
+
+[equip_belly]
+setup: <none>
+count: 39
+- belly_armor_latex -> 108_armory_set_latex_female/belly_armor_latex
+- belly_armor_tentackle -> 111_armory_set_tentackle_female/belly_armor_tentackle
+- belly_maidu -> 99_armory_set_maidu/belly_maidu
+- pregnancy_belly_mid -> 111_armory_set_tentackle_female/pregnancy_belly_mid
+- pregnancy_cloth2_big -> 101_armory_set_cloth_female/Pregnancy_cloth_big
+- pregnancy_cloth2_small -> 101_armory_set_cloth_female/Pregnancy_cloth_small
+- Pregnancy_cloth_big -> 101_armory_set_cloth3_female/Pregnancy_cloth_big
+- Pregnancy_cloth_small -> 101_armory_set_cloth3_female/Pregnancy_cloth_small
+- Pregnancy_gipure1_big -> 105_armory_set_gipure1_female/Pregnancy_gipure1_big
+- Pregnancy_gipure1_small -> 105_armory_set_gipure1_female/Pregnancy_gipure1_small
+- Pregnancy_gipure2_big -> 106_armory_set_gipure2_female/Pregnancy_gipure2_big
+- Pregnancy_gipure2_small -> 106_armory_set_gipure2_female/Pregnancy_gipure2_small
+- Pregnancy_jacket_big -> 107_armory_set_jacket_female/Pregnancy_jacket_big
+- pregnancy_jacket_mid -> 107_armory_set_jacket_female/pregnancy_jacket_mid
+- pregnancy_latex_big -> 108_armory_set_latex_female/pregnancy_latex_big
+- pregnancy_latex_mid -> 108_armory_set_latex_female/pregnancy_latex_mid
+- Pregnancy_leather2_big -> 102_armory_set_leather2_female/Pregnancy_leather2_big
+- Pregnancy_leather2_small -> 102_armory_set_leather2_female/Pregnancy_leather2_small
+- Pregnancy_maidu_big -> 99_armory_set_maidu/Pregnancy_maidu_big
+- Pregnancy_maidu_small -> 99_armory_set_maidu/Pregnancy_maidu_small
+- Pregnancy_plate2_big -> 103_armory_set_plate2_female/Pregnancy_plate2_big
+- Pregnancy_plate2_small -> 103_armory_set_plate2_female/Pregnancy_plate2_small
+- Pregnancy_plate_big -> 103_armory_set_plate_female/Pregnancy_plate_big
+- Pregnancy_plate_small -> 103_armory_set_plate_female/Pregnancy_plate_small
+- pregnancy_playboy_big -> 112_armory_set_playboy_female/pregnancy_playboy_big
+- pregnancy_playboy_mid -> 112_armory_set_playboy_female/pregnancy_playboy_mid
+- Pregnancy_skin_leather -> 102_armory_set_leather_female/Pregnancy_skin_leather
+- Pregnancy_skin_small -> 102_armory_set_leather_female/Pregnancy_skin_small
+- Pregnancy_slave_big -> 104_armory_set_slave_female/Pregnancy_slave_big
+- pregnancy_slave_mid -> 104_armory_set_slave_female/pregnancy_slave_mid
+- pregnancy_smith_big -> 110_armory_set_smith_female/pregnancy_smith_big
+- pregnancy_smith_mid -> 110_armory_set_smith_female/pregnancy_smith_mid
+- pregnancy_tentackle_big -> 111_armory_set_tentackle_female/pregnancy_tentackle_big
+- Pregnancy_underwear1_big -> 113_armory_set_underwear1/Pregnancy_underwear1_big
+- Pregnancy_underwear1_small -> 113_armory_set_underwear1/Pregnancy_underwear1_small
+- Pregnancy_underwear2_big -> 113_armory_set_underwear2/Pregnancy_underwear2_big
+- Pregnancy_underwear2_small -> 113_armory_set_underwear2/Pregnancy_underwear2_small
+- pregnancy_waitress_big -> 109_armory_set_waitress_female/pregnancy_waitress_big
+- pregnancy_waitress_mid -> 109_armory_set_waitress_female/pregnancy_waitress_mid
+
+[pregnancy_belly]
+setup: <none>
+count: 4
+- beastkin_pregnancy_belly_big1 -> 15_beastkin_body_nude/beastkin_pregnancy_belly_big1
+- beastkin_pregnancy_belly_mid1 -> 15_beastkin_body_nude/beastkin_pregnancy_belly_mid1
+- pregnancy_belly_big -> 00_body_nude_female/pregnancy_belly_big
+- pregnancy_belly_mid -> 00_body_nude_female/pregnancy_belly_mid
+
+[race_torso_lower]
+setup: <none>
+count: 2
+- kobold_body2_1 -> 24_kobold_female/kobold_body2_1
+- kobold_body2_2 -> 24_kobold_female/kobold_body2_2
+
+[breasts_beastkin_pregnancy]
+setup: <none>
+count: 2
+- beastkin_pregnancy_tits_big -> 15_beastkin_body_nude/beastkin_pregnancy_tits_big
+- beastkin_pregnancy_tits_mid -> 15_beastkin_body_nude/beastkin_pregnancy_tits_mid
+
+[beastkin_pregnancy_nipple]
+setup: <none>
+count: 2
+- beastkin_pregnancy_nipple_big -> 15_beastkin_body_nude/beastkin_pregnancy_nipple_big
+- beastkin_pregnancy_nipple_mid -> 15_beastkin_body_nude/beastkin_pregnancy_nipple_mid
+
+[tatoos]
+setup: <none>
+count: 10
+- tatoo_womb1 -> 97_tatoos/tatoo_womb1
+- tatoo_womb10 -> 97_tatoos/tatoo_womb10
+- tatoo_womb2 -> 97_tatoos/tatoo_womb2
+- tatoo_womb3 -> 97_tatoos/tatoo_womb3
+- tatoo_womb4 -> 97_tatoos/tatoo_womb4
+- tatoo_womb5 -> 97_tatoos/tatoo_womb5
+- tatoo_womb6 -> 97_tatoos/tatoo_womb6
+- tatoo_womb7 -> 97_tatoos/tatoo_womb7
+- tatoo_womb8 -> 97_tatoos/tatoo_womb8
+- tatoo_womb9 -> 97_tatoos/tatoo_womb9
+
+[dick]
+setup: <none>
+count: 6
+- Dick_furry_up -> 13_dicks/Dick_furry_up
+- Dick_furry_up__body_female_beastkin -> 13_dicks/Dick_furry_up
+- Dick_horse_up -> 13_dicks/Dick_human_up
+- Dick_horse_up__body_female_beastkin -> 13_dicks/Dick_horse_up
+- Dick_human_up -> 13_dicks/Dick_human_up
+- Dick_human_up__body_female_base -> 13_dicks/Dick_human_up
+
+[equip_pregnancy_low]
+setup: pregnancy_cloth2_small
+count: 36
+- pregnancy_cloth2_big -> 101_armory_set_cloth_female/Pregnancy_cloth_big
+- pregnancy_cloth2_small -> 101_armory_set_cloth_female/Pregnancy_cloth_small
+- pregnancy_cloth3_big -> 101_armory_set_cloth3_female/Pregnancy_cloth_big
+- pregnancy_cloth3_small -> 101_armory_set_cloth3_female/Pregnancy_cloth_small
+- pregnancy_gipure1_big -> 105_armory_set_gipure1_female/Pregnancy_gipure1_big
+- pregnancy_gipure1_small -> 105_armory_set_gipure1_female/Pregnancy_gipure1_small
+- pregnancy_gipure2_big -> 106_armory_set_gipure2_female/Pregnancy_gipure2_big
+- pregnancy_gipure2_small -> 106_armory_set_gipure2_female/Pregnancy_gipure2_small
+- pregnancy_jacket_big -> 107_armory_set_jacket_female/Pregnancy_jacket_big
+- pregnancy_jacket_small -> 107_armory_set_jacket_female/pregnancy_jacket_mid
+- pregnancy_latex_big -> 108_armory_set_latex_female/pregnancy_latex_big
+- pregnancy_latex_small -> 108_armory_set_latex_female/pregnancy_latex_mid
+- pregnancy_leather2_big -> 102_armory_set_leather2_female/Pregnancy_leather2_big
+- pregnancy_leather2_small -> 102_armory_set_leather2_female/Pregnancy_leather2_small
+- pregnancy_leather_big -> 102_armory_set_leather_female/Pregnancy_skin_leather
+- pregnancy_leather_small -> 102_armory_set_leather_female/Pregnancy_skin_small
+- pregnancy_maidu_big -> 99_armory_set_maidu/Pregnancy_maidu_big
+- pregnancy_maidu_small -> 99_armory_set_maidu/Pregnancy_maidu_small
+- pregnancy_plate2_big -> 103_armory_set_plate2_female/Pregnancy_plate2_big
+- pregnancy_plate2_small -> 103_armory_set_plate2_female/Pregnancy_plate2_small
+- pregnancy_plate_big -> 103_armory_set_plate_female/Pregnancy_plate_big
+- pregnancy_plate_small -> 103_armory_set_plate_female/Pregnancy_plate_small
+- pregnancy_playboy_big -> 112_armory_set_playboy_female/pregnancy_playboy_big
+- pregnancy_playboy_small -> 112_armory_set_playboy_female/pregnancy_playboy_mid
+- pregnancy_slave_big -> 104_armory_set_slave_female/Pregnancy_slave_big
+- pregnancy_slave_small -> 104_armory_set_slave_female/pregnancy_slave_mid
+- pregnancy_smith_big -> 110_armory_set_smith_female/pregnancy_smith_big
+- pregnancy_smith_small -> 110_armory_set_smith_female/pregnancy_smith_mid
+- pregnancy_tentackle_big -> 111_armory_set_tentackle_female/pregnancy_tentackle_big
+- pregnancy_tentackle_small -> 111_armory_set_tentackle_female/pregnancy_belly_mid
+- pregnancy_underwear1_big -> 113_armory_set_underwear1/Pregnancy_underwear1_big
+- pregnancy_underwear1_small -> 113_armory_set_underwear1/Pregnancy_underwear1_small
+- pregnancy_underwear2_big -> 113_armory_set_underwear2/Pregnancy_underwear2_big
+- pregnancy_underwear2_small -> 113_armory_set_underwear2/Pregnancy_underwear2_small
+- pregnancy_waitress_big -> 109_armory_set_waitress_female/pregnancy_waitress_big
+- pregnancy_waitress_small -> 109_armory_set_waitress_female/pregnancy_waitress_mid
+
+[equip_pregnancy_up]
+setup: <none>
+count: 36
+- pregnancy_cloth2_big -> 101_armory_set_cloth_female/Pregnancy_cloth_big
+- pregnancy_cloth2_small -> 101_armory_set_cloth_female/Pregnancy_cloth_small
+- pregnancy_cloth3_big -> 101_armory_set_cloth3_female/Pregnancy_cloth_big
+- pregnancy_cloth3_small -> 101_armory_set_cloth3_female/Pregnancy_cloth_small
+- pregnancy_gipure1_big -> 105_armory_set_gipure1_female/Pregnancy_gipure1_big
+- pregnancy_gipure1_small -> 105_armory_set_gipure1_female/Pregnancy_gipure1_small
+- pregnancy_gipure2_big -> 106_armory_set_gipure2_female/Pregnancy_gipure2_big
+- pregnancy_gipure2_small -> 106_armory_set_gipure2_female/Pregnancy_gipure2_small
+- pregnancy_jacket_big -> 107_armory_set_jacket_female/Pregnancy_jacket_big
+- pregnancy_jacket_small -> 107_armory_set_jacket_female/pregnancy_jacket_mid
+- pregnancy_latex_big -> 108_armory_set_latex_female/pregnancy_latex_big
+- pregnancy_latex_small -> 108_armory_set_latex_female/pregnancy_latex_mid
+- pregnancy_leather2_big -> 102_armory_set_leather2_female/Pregnancy_leather2_big
+- pregnancy_leather2_small -> 102_armory_set_leather2_female/Pregnancy_leather2_small
+- pregnancy_leather_big -> 102_armory_set_leather_female/Pregnancy_skin_leather
+- pregnancy_leather_small -> 102_armory_set_leather_female/Pregnancy_skin_small
+- pregnancy_maidu_big -> 99_armory_set_maidu/Pregnancy_maidu_big
+- pregnancy_maidu_small -> 99_armory_set_maidu/Pregnancy_maidu_small
+- pregnancy_plate2_big -> 103_armory_set_plate2_female/Pregnancy_plate2_big
+- pregnancy_plate2_small -> 103_armory_set_plate2_female/Pregnancy_plate2_small
+- pregnancy_plate_big -> 103_armory_set_plate_female/Pregnancy_plate_big
+- pregnancy_plate_small -> 103_armory_set_plate_female/Pregnancy_plate_small
+- pregnancy_playboy_big -> 112_armory_set_playboy_female/pregnancy_playboy_big
+- pregnancy_playboy_small -> 112_armory_set_playboy_female/pregnancy_playboy_mid
+- pregnancy_slave_big -> 104_armory_set_slave_female/Pregnancy_slave_big
+- pregnancy_slave_small -> 104_armory_set_slave_female/pregnancy_slave_mid
+- pregnancy_smith_big -> 110_armory_set_smith_female/pregnancy_smith_big
+- pregnancy_smith_small -> 110_armory_set_smith_female/pregnancy_smith_mid
+- pregnancy_tentackle_big -> 111_armory_set_tentackle_female/pregnancy_tentackle_big
+- pregnancy_tentackle_small -> 111_armory_set_tentackle_female/pregnancy_belly_mid
+- pregnancy_underwear1_big -> 113_armory_set_underwear1/Pregnancy_underwear1_big
+- pregnancy_underwear1_small -> 113_armory_set_underwear1/Pregnancy_underwear1_small
+- pregnancy_underwear2_big -> 113_armory_set_underwear2/Pregnancy_underwear2_big
+- pregnancy_underwear2_small -> 113_armory_set_underwear2/Pregnancy_underwear2_small
+- pregnancy_waitress_big -> 109_armory_set_waitress_female/pregnancy_waitress_big
+- pregnancy_waitress_small -> 109_armory_set_waitress_female/pregnancy_waitress_mid
+
+[weapon_belt]
+setup: <none>
+count: 6
+- weapon_belt_bat -> 200_weapon_belt/weapon_belt_bat
+- weapon_belt_dagger -> 200_weapon_belt/weapon_belt_dagger
+- weapon_belt_dagger2 -> 200_weapon_belt/weapon_belt_dagger2
+- weapon_belt_mace -> 200_weapon_belt/weapon_belt_mace
+- weapon_belt_sword -> 200_weapon_belt/weapon_belt_sword
+- weapon_belt_sword2 -> 200_weapon_belt/weapon_belt_sword2
+
+[breasts]
+setup: tits_large
+count: 4
+- tits_big -> 00_body_nude_female/tits_big
+- tits_large -> 00_body_nude_female/tits_large
+- tits_normal -> 00_body_nude_female/tits_normal
+- tits_small -> 00_body_nude_female/tits_small
+
+[breasts_beastkin]
+setup: <none>
+count: 5
+- beastkin_tits1 -> 15_beastkin_body_nude/beastkin_tits1
+- beastkin_tits_big -> 15_beastkin_body_nude/beastkin_tits_big
+- beastkin_tits_large -> 15_beastkin_body_nude/beastkin_tits_large
+- beastkin_tits_normal -> 15_beastkin_body_nude/beastkin_tits_normal
+- beastkin_tits_small -> 15_beastkin_body_nude/beastkin_tits_small
+
+[breast_nipples]
+setup: tits_nipples_large
+count: 15
+- beastkin_nipples_large -> 15_beastkin_body_nude/beastkin_nipples_large
+- beastkin_tits_nipples -> 15_beastkin_body_nude/beastkin_tits_nipples
+- beastkin_tits_nipples__body_female_beastkin -> 15_beastkin_body_nude/beastkin_tits_nipples
+- beastkin_tits_nipples_big -> 15_beastkin_body_nude/beastkin_tits_nipples_big
+- beastkin_tits_nipples_big__body_female_beastkin -> 15_beastkin_body_nude/beastkin_tits_nipples_big
+- beastkin_tits_nipples_large -> 15_beastkin_body_nude/tits_nipples_large
+- beastkin_tits_nipples_small -> 00_body_nude_female/tits_nipples_normal
+- beastkin_tits_nipples_small__2 -> 15_beastkin_body_nude/beastkin_tits_nipples_small
+- beastkin_tits_nipples_small__body_female_beastkin -> 15_beastkin_body_nude/beastkin_tits_nipples_small
+- tits_nipples_big -> 00_body_nude_female/tits_nipples_big
+- tits_nipples_large -> 00_body_nude_female/tits_nipples_large
+- tits_nipples_normal -> 00_body_nude_female/tits_nipples_normal
+- tits_nipples_normal__body_female_base -> 00_body_nude_female/tits_nipples_normal
+- tits_nipples_small -> 00_body_nude_female/tits_nipples_small
+- torso_nipples_mask -> 103_armory_set_plate2_female/torso_nipples_mask
+
+[race_torso]
+setup: <none>
+count: 7
+- dragon_body -> 23_dragon_female/dragon_body
+- dragon_body 2 -> 23_dragon_female/dragon_body 2
+- dragon_body3 -> 23_dragon_female/dragon_body3
+- dryad_body -> 20_dryad/dryad_body
+- kobold_body1_1 -> 24_kobold_female/kobold_body1_1
+- kobold_body1_2 -> 24_kobold_female/kobold_body1_2
+- slime_body -> 22_slime/slime_body
+
+[equip_breasts]
+setup: <none>
+count: 84
+- flat -> 101_armory_set_cloth3_female/tits_cloth3_small
+- tits_armor1_big -> 99_armory_set_maidu/tits_armor1_big
+- tits_armor1_large -> 99_armory_set_maidu/tits_armor1_large
+- tits_armor1_normal -> 99_armory_set_maidu/tits_armor1_normal
+- tits_armor1_small -> 99_armory_set_maidu/tits_armor1_small
+- tits_cloth2_big -> 101_armory_set_cloth_female/tits_cloth_big
+- tits_cloth2_flat -> 101_armory_set_cloth_female/tits_cloth_0
+- tits_cloth2_large -> 101_armory_set_cloth_female/tits_cloth_large
+- tits_cloth2_normal -> 101_armory_set_cloth_female/tits_cloth_normal
+- tits_cloth2_small -> 101_armory_set_cloth_female/tits_cloth_small
+- tits_cloth3_small -> 101_armory_set_cloth3_female/tits_cloth3_small
+- tits_cloth_big -> 101_armory_set_cloth3_female/tits_cloth_big
+- tits_cloth_large -> 101_armory_set_cloth3_female/tits_cloth_large
+- tits_cloth_normal -> 101_armory_set_cloth3_female/tits_cloth_normal
+- tits_gipure1_0 -> 105_armory_set_gipure1_female/tits_gipure1_0
+- tits_gipure1_big -> 105_armory_set_gipure1_female/tits_gipure1_big
+- tits_gipure1_large -> 105_armory_set_gipure1_female/tits_gipure1_large
+- tits_gipure1_normal -> 105_armory_set_gipure1_female/tits_gipure1_normal
+- tits_gipure1_small -> 105_armory_set_gipure1_female/tits_gipure1_small
+- tits_gipure2_big -> 106_armory_set_gipure2_female/tits_gipure2_big
+- tits_gipure2_large -> 106_armory_set_gipure2_female/tits_gipure2_large
+- tits_gipure2_normal -> 106_armory_set_gipure2_female/tits_gipure2_normal
+- tits_gipure2_o -> 106_armory_set_gipure2_female/tits_gipure2_o
+- tits_gipure2_small -> 106_armory_set_gipure2_female/tits_gipure2_small
+- tits_jacket_big -> 107_armory_set_jacket_female/tits_jacket_big
+- tits_jacket_large -> 107_armory_set_jacket_female/tits_jacket_large
+- tits_jacket_normal -> 107_armory_set_jacket_female/tits_jacket_normal
+- tits_jacket_small -> 107_armory_set_jacket_female/tits_jacket_small
+- tits_jacket_small__107_armory_set_jacket_female -> 107_armory_set_jacket_female/tits_jacket_small
+- tits_large_latex -> 108_armory_set_latex_female/tits_large_latex
+- tits_latex_big -> 108_armory_set_latex_female/tits_latex_big
+- tits_leather2_big -> 102_armory_set_leather2_female/tits_leather2_big
+- tits_leather2_large -> 102_armory_set_leather2_female/tits_leather2_large
+- tits_leather2_normal -> 102_armory_set_leather2_female/tits_leather2_normal
+- tits_leather_0 -> 102_armory_set_leather_female/tits_leather_0
+- tits_leather_2 -> 102_armory_set_leather2_female/tits_leather_2
+- tits_leather_2 small -> 102_armory_set_leather2_female/tits_leather_2 small
+- tits_leather_big -> 102_armory_set_leather_female/tits_leather_big
+- tits_leather_large -> 102_armory_set_leather_female/tits_leather_large
+- tits_leather_normal -> 102_armory_set_leather_female/tits_leather_normal
+- tits_leather_small -> 102_armory_set_leather_female/tits_leather_small
+- tits_normal_latex -> 108_armory_set_latex_female/tits_normal_latex
+- tits_plate2_big -> 103_armory_set_plate2_female/tits_plate2_big
+- tits_plate2_large -> 103_armory_set_plate2_female/tits_plate2_large
+- tits_plate2_normal -> 103_armory_set_plate2_female/tits_plate2_normal
+- tits_plate2_small -> 103_armory_set_plate2_female/tits_plate2_small
+- tits_plate_0 -> 103_armory_set_plate_female/tits_plate_0
+- tits_plate_2 -> 103_armory_set_plate2_female/tits_plate_2
+- tits_plate_big -> 103_armory_set_plate_female/tits_plate_big
+- tits_plate_large -> 103_armory_set_plate_female/tits_plate_large
+- tits_plate_normal -> 103_armory_set_plate_female/tits_plate_normal
+- tits_plate_small -> 103_armory_set_plate_female/tits_plate_small
+- tits_playboy_big -> 112_armory_set_playboy_female/tits_playboy_big
+- tits_playboy_large -> 112_armory_set_playboy_female/tits_playboy_large
+- tits_playboy_normal -> 112_armory_set_playboy_female/tits_playboy_normal
+- tits_playboy_small -> 112_armory_set_playboy_female/tits_playboy_small
+- tits_slave_0 -> 104_armory_set_slave_female/tits_slave_0
+- tits_slave_big -> 104_armory_set_slave_female/tits_slave_big
+- tits_slave_large -> 104_armory_set_slave_female/tits_slave_large
+- tits_slave_normal -> 104_armory_set_slave_female/tits_slave_normal
+- tits_slave_small -> 104_armory_set_slave_female/tits_slave_small
+- tits_small_latex -> 108_armory_set_latex_female/tits_small_latex
+- tits_small_tentackle -> 111_armory_set_tentackle_female/tits_small_tentackle
+- tits_smith_big -> 110_armory_set_smith_female/tits_smith_big
+- tits_smith_large -> 110_armory_set_smith_female/tits_smith_large
+- tits_smith_normal -> 110_armory_set_smith_female/tits_smith_normal
+- tits_smith_small -> 110_armory_set_smith_female/tits_smith_small
+- tits_tentackle_large -> 111_armory_set_tentackle_female/tits_tentackle_large
+- tits_tentackle_normal -> 111_armory_set_tentackle_female/tits_tentackle_normal
+- tits_tentacle_big -> 111_armory_set_tentackle_female/tits_tentacle_big
+- tits_underwear1_0 -> 113_armory_set_underwear1/tits_underwear1_0
+- tits_underwear1_big -> 113_armory_set_underwear1/tits_underwear1_big
+- tits_underwear1_large -> 113_armory_set_underwear1/tits_underwear1_large
+- tits_underwear1_normal -> 113_armory_set_underwear1/tits_underwear1_normal
+- tits_underwear1_small -> 113_armory_set_underwear1/tits_underwear1_small
+- tits_underwear2_0 -> 113_armory_set_underwear2/tits_underwear2_0
+- tits_underwear2_big -> 113_armory_set_underwear2/tits_underwear2_big
+- tits_underwear2_large -> 113_armory_set_underwear2/tits_underwear2_large
+- tits_underwear2_normal -> 113_armory_set_underwear2/tits_underwear2_normal
+- tits_underwear2_small -> 113_armory_set_underwear2/tits_underwear2_small
+- tits_waitress_big -> 109_armory_set_waitress_female/tits_waitress_big
+- tits_waitress_large -> 109_armory_set_waitress_female/tits_waitress_large
+- tits_waitress_normal -> 109_armory_set_waitress_female/tits_waitress_normal
+- tits_waitress_small -> 109_armory_set_waitress_female/tits_waitress_small
+
+[hairs_assist]
+setup: <none>
+count: 16
+- braid -> 05_hairs_assist/braid
+- bun -> 05_hairs_assist/bun
+- hair_assist_braid -> 05_hairs_assist/hair_assist_braid
+- hair_assist_bun -> 05_hairs_assist/hair_assist_bun
+- hair_assist_pigtails -> 05_hairs_assist/hair_assist_pigtails
+- hair_assist_ponytail -> 05_hairs_assist/hair_assist_ponytail
+- hair_assist_twin_tails -> 05_hairs_assist/hair_assist_twin_tails
+- hair_assist_twin_tails 2 -> 05_hairs_assist/hair_assist_twin_tails 2
+- pigtails -> 05_hairs_assist/pigtails
+- ponytail -> 05_hairs_assist/ponytail
+- ponytail_2 -> 05_hairs_assist/ponytail_2
+- ponytail_3 -> 05_hairs_assist/ponytail_3
+- twin braids -> 05_hairs_assist/twin braids
+- twin_tails -> 05_hairs_assist/twin_tails
+- twin_tails 3 -> 05_hairs_assist/twin_tails 3
+- Twin_tails_2 -> 05_hairs_assist/Twin_tails_2
+
+[head_skull]
+setup: head_skull
+count: 2
+- beastkin_skull -> 16_beastkin_heads_new/beastkin_skull
+- head_skull -> 01_heads/head_skull
+
+[head]
+setup: head_chin_long_skinny
+count: 23
+- beastkin_chin_cat -> 16_beastkin_heads_new/beastkin_chin_cat
+- beastkin_chin_cat__2 -> 16_beastkin_heads_new/beastkin_chin_cat
+- beastkin_chin_cat__3 -> 16_beastkin_heads_new/beastkin_chin_cat
+- beastkin_chin_cat__4 -> 16_beastkin_heads_new/beastkin_chin_cat
+- beastkin_chin_cat__5 -> 16_beastkin_heads_new/beastkin_chin_cat
+- beastkin_chin_cat__6 -> 16_beastkin_heads_new/beastkin_chin_cat
+- beastkin_chin_cat__body_female_beastkin -> 16_beastkin_heads_new/beastkin_chin_cat
+- beastkin_chin_fox -> 16_beastkin_heads_new/beastkin_chin_fox
+- beastkin_chin_rabbit -> 16_beastkin_heads_new/beastkin_chin_rabbit
+- beastkin_chin_tanuki -> 16_beastkin_heads_new/beastkin_chin_tanuki
+- beastkin_chin_wolf -> 16_beastkin_heads_new/beastkin_chin_wolf
+- head_chin_curve -> 01_heads/head_chin_curve
+- head_chin_curve__scales -> 01_heads/head_chin_curve
+- head_chin_curve_kobold -> 01_heads/head_chin_curve_kobold
+- head_chin_default -> 01_heads/head_chin_default
+- head_chin_kobold2 -> 01_heads/head_chin_kobold2
+- head_chin_kobold2__spots -> 01_heads/head_chin_kobold2
+- head_chin_loli -> 01_heads/head_chin_loli
+- head_chin_long_skinny -> 01_heads/head_chin_long_skinny
+- head_chin_male -> 01_heads/head_chin_male
+- head_chin_muscle -> 01_heads/head_chin_muscle
+- head_chin_short -> 01_heads/head_chin_short
+- head_chin_small -> 01_heads/head_chin_small
+
+[sclera]
+setup: sklera
+count: 1
+- sklera -> 10_eyes/sklera
+
+[eyes]
+setup: eyes_m5
+count: 10
+- eyes1 -> 10_eyes/eyes1
+- eyes2 -> 10_eyes/eyes2
+- eyes3 -> 10_eyes/eyes3
+- eyes4 -> 10_eyes/eyes4
+- eyes5 -> 10_eyes/eyes5
+- eyes_m1 -> 10_eyes/eyes_m1
+- eyes_m2 -> 10_eyes/eyes_m2
+- eyes_m3 -> 10_eyes/eyes_m3
+- eyes_m4 -> 10_eyes/eyes_m4
+- eyes_m5 -> 10_eyes/eyes_m5
+
+[face]
+setup: face3
+count: 20
+- beastkin_face1 -> 17_beastkin_faces/beastkin_face1
+- beastkin_face2 -> 17_beastkin_faces/beastkin_face2
+- beastkin_face3 -> 17_beastkin_faces/beastkin_face3
+- beastkin_face4 -> 17_beastkin_faces/beastkin_face4
+- beastkin_face5 -> 17_beastkin_faces/beastkin_face5
+- beastkin_face_m1 -> 17_beastkin_faces/beastkin_face_m1
+- beastkin_face_m2 -> 17_beastkin_faces/beastkin_face_m2
+- beastkin_face_m3 -> 17_beastkin_faces/beastkin_face_m3
+- beastkin_face_m4 -> 17_beastkin_faces/beastkin_face_m4
+- beastkin_face_m5 -> 17_beastkin_faces/beastkin_face_m5
+- face1 -> 02_faces/face1
+- face2 -> 02_faces/face2
+- face3 -> 02_faces/face3
+- face4 -> 02_faces/face4
+- face5 -> 02_faces/face5
+- face_m1 -> 02_faces/face_m1
+- face_m2 -> 02_faces/face_m2
+- face_m3 -> 02_faces/face_m3
+- face_m4 -> 02_faces/face_m4
+- face_m5 -> 02_faces/face_m5
+
+[noses]
+setup: nose_default
+count: 7
+- nose_default -> 03_noses/nose_default
+- nose_dwarf -> 03_noses/nose_dwarf
+- nose_kobold -> 03_noses/nose_kobold
+- nose_kobold_2 -> 03_noses/nose_kobold_2
+- nose_kobold_2__spots -> 03_noses/nose_kobold_2
+- nose_small -> 03_noses/nose_small
+- nose_straight -> 03_noses/nose_straight
+
+[race_head]
+setup: <none>
+count: 4
+- head_dragon_mask -> 23_dragon_female/head_dragon_mask
+- head_dragon_mask 2 -> 23_dragon_female/head_dragon_mask 2
+- kobold_head_kobold -> 24_kobold_female/kobold_head_kobold
+- kobold_head_mask1 -> 24_kobold_female/kobold_head_mask1
+
+[lips]
+setup: lips1
+count: 27
+- beastkin_lips_cry -> 17_beastkin_lips/beastkin_lips_cry
+- beastkin_lips_open -> 12_lips/lips_m1
+- beastkin_lips_open__body_female_beastkin -> 17_beastkin_lips/beastkin_lips_open
+- beastkin_lips_smile -> 17_beastkin_lips/beastkin_lips_smile
+- beastkin_lips_smile__2 -> 17_beastkin_lips/beastkin_lips_smile
+- beastkin_lips_smile__3 -> 17_beastkin_lips/beastkin_lips_smile
+- beastkin_lips_smile__4 -> 17_beastkin_lips/beastkin_lips_smile
+- beastkin_lips_smile__5 -> 17_beastkin_lips/beastkin_lips_smile
+- beastkin_lips_smile__6 -> 17_beastkin_lips/beastkin_lips_smile
+- beastkin_lips_smile__7 -> 17_beastkin_lips/beastkin_lips_smile
+- beastkin_lips_smile__body_female_beastkin -> 17_beastkin_lips/beastkin_lips_smile
+- lips1 -> 12_lips/lips1
+- lips2 -> 12_lips/lips2
+- lips3 -> 12_lips/lips3
+- lips4 -> 12_lips/lips4
+- lips5 -> 12_lips/lips5
+- lips_beast -> 12_lips/lips_m1
+- lips_beast__body_female_beastkin -> 12_lips/lips_beast
+- lips_m1 -> 12_lips/lips_m1
+- lips_m1__body_female_base -> 12_lips/lips_m1
+- lips_m2 -> 12_lips/lips_m2
+- lips_m3 -> 12_lips/lips_m3
+- lips_m4 -> 12_lips/lips_m4
+- lips_orc -> 12_lips/lips_orc
+- lips_orc 1 -> 12_lips/lips_orc 1
+- lips_orc 2 -> 12_lips/lips_orc 2
+- lips_orc 3 -> 12_lips/lips_orc 3
+
+[eyebrows]
+setup: eyebrows1
+count: 8
+- eyebrows1 -> 11_eyebrows/eyebrows1
+- eyebrows2 -> 11_eyebrows/eyebrows2
+- eyebrows3 -> 11_eyebrows/eyebrows3
+- eyebrows4 -> 11_eyebrows/eyebrows4
+- eyebrows5 -> 11_eyebrows/eyebrows5
+- eyebrows_m1 -> 11_eyebrows/eyebrows_m1
+- eyebrows_m2 -> 11_eyebrows/eyebrows_m2
+- eyebrows_m3 -> 11_eyebrows/eyebrows_m3
+
+[hairs_base]
+setup: hair_base_fringe
+count: 19
+- hair_base_back -> 04_hairs_base/hair_base_back
+- hair_base_braids -> 04_hairs_base/hair_base_braids
+- hair_base_default -> 04_hairs_base/hair_base_default
+- hair_base_dopple -> 04_hairs_base/hair_base_dopple
+- hair_base_fringe -> 04_hairs_base/hair_base_fringe
+- hair_base_fringe 2 -> 04_hairs_base/hair_base_fringe 2
+- hair_base_irokez -> 04_hairs_base/hair_base_irokez
+- hair_base_kare -> 04_hairs_base/hair_base_kare
+- hair_base_lamb -> 04_hairs_base/hair_base_lamb
+- hair_base_parting -> 04_hairs_base/hair_base_parting
+- hair_base_slave -> 04_hairs_base/hair_base_slave
+- hair_base_straight -> 04_hairs_base/hair_base_straight
+- hair_base_undercut -> 04_hairs_base/hair_base_undercut
+- hairs_base_dopple -> 04_hairs_base/hairs_base_dopple
+- hairs_base_irokez -> 04_hairs_base/hairs_base_irokez
+- hairs_base_lion -> 04_hairs_base/hairs_base_lion
+- hairs_base_parting -> 04_hairs_base/hairs_base_parting
+- hairs_base_slave -> 04_hairs_base/hairs_base_slave
+- hairs_base_undercut -> 04_hairs_base/hairs_base_undercut
+
+[ears]
+setup: ears_human
+count: 14
+- ears_cat -> 03_ears/ears_cat
+- ears_elven -> 03_ears/ears_elven
+- ears_fox -> 03_ears/ears_fox
+- ears_goblin -> 03_ears/ears_goblin
+- ears_human -> 03_ears/ears_human
+- ears_mouse -> 03_ears/ears_mouse
+- ears_nereid -> 03_ears/ears_nereid
+- ears_orc -> 03_ears/ears_orc
+- ears_rabbit -> 03_ears/ears_rabbit
+- ears_rabbit2 -> 03_ears/ears_rabbit2
+- ears_rabbit3 -> 03_ears/ears_rabbit3
+- ears_tanuk -> 03_ears/ears_tanuk
+- ears_taurus -> 03_ears/ears_taurus
+- ears_wolf -> 03_ears/ears_wolf
+
+[hairs_fringe]
+setup: hair_fringe_fringe
+count: 13
+- hair_fringe_back -> 04_hairs_fringe/hair_fringe_back
+- hair_fringe_braids -> 04_hairs_fringe/hair_fringe_braids
+- hair_fringe_default -> 04_hairs_fringe/hair_fringe_default
+- hair_fringe_fringe -> 04_hairs_fringe/hair_fringe_fringe
+- hair_fringe_kare -> 04_hairs_fringe/hair_fringe_kare
+- hair_fringe_lamb -> 04_hairs_fringe/hair_fringe_lamb
+- hair_fringe_straight -> 04_hairs_fringe/hair_fringe_straight
+- hairs_fringe_dopple -> 04_hairs_fringe/hairs_fringe_dopple
+- hairs_fringe_irokez -> 04_hairs_fringe/hairs_fringe_irokez
+- hairs_fringe_lion -> 04_hairs_fringe/hairs_fringe_lion
+- hairs_fringe_parting -> 04_hairs_fringe/hairs_fringe_parting
+- hairs_fringe_slave -> 04_hairs_fringe/hairs_fringe_slave
+- hairs_fringe_undercut -> 04_hairs_fringe/hairs_fringe_undercut
+
+[equip_masks]
+setup: <none>
+count: 2
+- facemask1 -> 25_head_masks/facemask1
+- facemask2 -> 25_head_masks/facemask2
+
+[equip_head]
+setup: <none>
+count: 5
+- hair_armor_maid -> 99_armory_set_maidu/hair_armor_maid
+- hair_armor_playboy -> 112_armory_set_playboy_female/hair_armor_playboy
+- hair_armor_waitress -> 109_armory_set_waitress_female/hair_armor_waitress
+- Petsuit_cat -> 151_armory_acces_petsuit/Petsuit_cat
+- Petsuit_rabbit3 -> 151_armory_acces_petsuit/Petsuit_rabbit3
+
+[horns]
+setup: <none>
+count: 10
+- horn_curve_down -> 08_horns/horn_curve_down
+- horn_curve_top -> 08_horns/horn_curve_top
+- horn_curve_up -> 08_horns/horn_curve_up
+- horn_dragon2 -> 08_horns/horn_dragon2
+- horn_seraph_fibule -> 08_horns/horn_seraph_fibule
+- horn_seraph_fibule__seraph -> 08_horns/horn_seraph_fibule
+- horn_spiral 2 -> 08_horns/horn_spiral 2
+- Horn_straight_diagonal -> 08_horns/Horn_straight_diagonal
+- Horn_straight_top -> 08_horns/Horn_straight_top
+- horns -> 08_horns/horn_dragon2
+
+SUMMARY
+slots_total: 71
+slots_with_elements: 71
+replaceable_elements: 686

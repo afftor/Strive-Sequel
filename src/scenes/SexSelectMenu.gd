@@ -145,10 +145,7 @@ func update_sex_date_buttons():
 func calculate_sex_limits():
 	if get_parent() != null && get_parent().get("in_test_mode") == true:
 		return ResourceScripts.game_party.character_order.size()
-	var slavelimit = 2
-	if ResourceScripts.game_res.upgrades.has('master_bedroom'):
-		slavelimit += ResourceScripts.game_res.upgrades.master_bedroom
-	return slavelimit
+	return ResourceScripts.game_res.get_sex_limit()
 
 
 func _update_participant_label():

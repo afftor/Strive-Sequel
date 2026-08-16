@@ -68,7 +68,9 @@ func add_log_message(data, scroll_to_latest = true):
 		_format_date(data),
 	]
 	entry.get_node("Body/Content/Row/Text/Meta").add_color_override("font_color", config.color)
-	entry.get_node("Body/Content/Row/Text/Message").bbcode_text = data.text
+	var message = entry.get_node("Body/Content/Row/Text/Message")
+	message.bbcode_text = data.text
+	message.connect("meta_clicked", self, "_on_meta_clicked")
 	entry.show()
 	entries.add_child(entry)
 	entries.move_child(entry, 0)
@@ -76,6 +78,30 @@ func add_log_message(data, scroll_to_latest = true):
 	_update_empty_state()
 	if scroll_to_latest:
 		call_deferred("_scroll_to_latest")
+
+
+func _on_meta_clicked(meta):
+	var link = str(meta)
+	if link == "mansion":
+		gui_controller.nav_panel.return_to_mansion()
+		return
+	if !link.begins_with("loc:"):
+		return
+	var code = link.substr(4)
+	var loc_data = ResourceScripts.world_gen.get_location_from_code(code)
+	if loc_data == null:
+		input_handler.SystemMessage(tr("MANSION_ACTIVITY_LOCATION_GONE"))
+		return
+	if !ResourceScripts.game_world.capitals.has(code):
+		var someone_there = false
+		for id in ResourceScripts.game_party.character_order:
+			if ResourceScripts.game_party.characters[id].check_location(code, true):
+				someone_there = true
+				break
+		if !someone_there:
+			input_handler.SystemMessage(tr("MANSION_ACTIVITY_LOCATION_EMPTY") % tr(loc_data.name))
+			return
+	gui_controller.nav_panel.select_location(code)
 
 
 func _format_date(data):

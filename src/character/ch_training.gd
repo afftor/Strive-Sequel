@@ -454,7 +454,7 @@ func apply_training(code):
 				if input_handler.operate(eff.operant, parent.get_ref().get_stat(eff.stat), eff.check):
 					effects.push_back(eff.effect)
 	#modify result
-	if ResourceScripts.game_res.upgrades.has('resting') and ResourceScripts.game_res.upgrades.resting > 0:
+	if ResourceScripts.game_res.has_bath():
 		result_data.training_points += 1
 	for eff_dict in effects:
 		for eff in eff_dict:

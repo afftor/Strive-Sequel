@@ -37,6 +37,14 @@ var cast_animations = {
 	greatsword = "at_dualsword",
 }
 
+#Natural weapons. These have no gear behind them - a unit declares one through
+#`cast_weapon` in enemydata - so they are named by what the creature does rather
+#than by an equipment type. The short name is what the data says; the at_* name is
+#what CombatAnimations dispatches on.
+var natural_weapons = {
+	bite = "at_bite",
+}
+
 
 func get_weapon_range():
 	if gear.rhand == null:
@@ -170,6 +178,8 @@ func get_weapon_animation():
 
 func get_weapon_cast_animation():
 	if cast_weapon != null:
+		if natural_weapons.has(cast_weapon):
+			return natural_weapons[cast_weapon]
 		return cast_weapon
 	var weapon = gear.rhand
 	if weapon != null:

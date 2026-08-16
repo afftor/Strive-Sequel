@@ -15,17 +15,31 @@ var TranslationDict = {
 	MENUGALLERY = "Galleria",
 	MENUQUIT = "Esci",
 	MENUCHANGELOG = "Registro delle modifiche",
-	MENUMODLISTSAFETY = """Mod List Reset""", # MISSING TRANSLATION
-	UPDATENOTICETITLE = """Update Available""", # MISSING TRANSLATION
-	UPDATENOTICEDOWNLOAD = """Get it""", # MISSING TRANSLATION
-	UPDATENOTICEAVAILABLE = """A new version (%s) is available.
-You are currently on %s.""", # MISSING TRANSLATION
-	UPDATENOTICEUNKNOWN = """Could not determine the latest version.
-Check itch.io to see if an update is available.""", # MISSING TRANSLATION
-	UPDATENOTICEEXPERIMENTALTITLE = """Experimental Build""", # MISSING TRANSLATION
-	UPDATENOTICEEXPERIMENTAL = """You are running an experimental version (%s).
-Newer experimental or stable builds may already be out - check itch.io.""", # MISSING TRANSLATION
-	UPDATECHECKCONSENT = """Allow the game to check itch.io for new versions on startup? This only sends a request to itch.io - no personal data is collected.""", # MISSING TRANSLATION
+	MENUMODLISTSAFETY = """Ripristino elenco mod""",
+	UPDATENOTICETITLE = """Aggiornamento disponibile""",
+	UPDATENOTICEDOWNLOAD = """Scarica""",
+	UPDATENOTICEAVAILABLE = """È disponibile una nuova versione (%s).
+Attualmente hai la %s.""",
+	UPDATENOTICEUNKNOWN = """Impossibile determinare l'ultima versione.
+Controlla itch.io per vedere se è disponibile un aggiornamento.""",
+	UPDATENOTICEEXPERIMENTALTITLE = """Build sperimentale""",
+	UPDATENOTICEEXPERIMENTAL = """Stai usando una versione sperimentale (%s).
+Potrebbero essere già uscite build sperimentali o stabili più recenti: controlla itch.io.""",
+	UPDATECHECKCONSENT = """Consentire al gioco di verificare la presenza di nuove versioni su itch.io all'avvio? Viene inviata solo una richiesta a itch.io: non vengono raccolti dati personali.""",
+	SUPPORTERNOTICETITLE = """Sostieni il gioco""",
+	SUPPORTERNOTICETEXT = """Ti piace il gioco? È sempre stato gratuito e disponibile per tutti, e questo è possibile solo grazie ai tanti fan che lo sostengono. Valuta di sostenerlo anche tu. I sostenitori ottengono l'accesso al menu trucchi, con opzioni come la rimozione del limite di personaggi della villa e lo sblocco dell'intera galleria.""",
+	SUPPORTERNOTICEENTERCODE = """Inserisci il codice sostenitore""",
+	SUPPORTERNOTICEDISMISS = """Non mostrare più""",
+	SUPPORTERCODETITLE = """Codice sostenitore""",
+	SUPPORTERCODEPLACEHOLDER = """Code""", # MISSING TRANSLATION
+	SUPPORTERCODECONFIRM = """Confirm""", # MISSING TRANSLATION
+	SUPPORTERCODEGET = """Ottieni un codice""",
+	SUPPORTERLINKSTITLE = """Where do you want to support the game?""", # MISSING TRANSLATION
+	SUPPORTERLINKSHINT = """The current code is posted for supporters on both platforms.""", # MISSING TRANSLATION
+	SUPPORTERCODEWRONG = """Questo codice non è corretto.""",
+	SUPPORTERTHANKSTITLE = """Grazie!""",
+	SUPPORTERTHANKSTEXT = """Il tuo codice è stato accettato e le opzioni per i sostenitori sono sbloccate. Il menu trucchi si apre dalle Opzioni una volta in gioco. Grazie per aver sostenuto il gioco!""",
+	SUPPORTERTHANKSOK = """Close""", # MISSING TRANSLATION
 	GALLERYNAME = "Galleria",
 	GALLERYSTORY = "Storia",
 	GALLERYERO = "Ero", #
@@ -88,54 +102,54 @@ A new empty mods.ini has been created. Please re-enable compatible mods from the
 						https://freesound.org/people/pfranzen/sounds/192072/""", #
 	OPTNAME1 = "Grafica",
 	OPTNAME2 = "Gioco",
-	OPTNAME3 = "Audio", #
+	OPTNAME3 = """Audio""", #
 	OPTNAME4 = "Trucchi",
 	OPTNAME5 = "Difficoltà",
-	OPTNAMEHOTKEYS = """Hotkeys""", # MISSING TRANSLATION
+	OPTNAMEHOTKEYS = """Tasti di scelta rapida""",
 	OPTOPT = "Opzioni",
 	OPTCLOSE = "Esci",
-	HOTKEYGROUP_GLOBAL = """General""", # MISSING TRANSLATION
-	HOTKEYGROUP_MANSION = """Mansion""", # MISSING TRANSLATION
-	HOTKEYGROUP_COMBAT = """Combat""", # MISSING TRANSLATION
-	HOTKEY_UNBOUND = """- none -""", # MISSING TRANSLATION
-	HOTKEY_PRESSKEY = """Press a key...""", # MISSING TRANSLATION
-	HOTKEY_RESET = """Restore defaults""", # MISSING TRANSLATION
-	HOTKEY_CONFLICT = """%s was taken from "%s".""", # MISSING TRANSLATION
-	HOTKEY_HINT = """Click a key to rebind it. Esc cancels, Delete clears the binding.
-Mansion and combat keys are independent - the same key may be used by both.""", # MISSING TRANSLATION
-	HOTKEY_QUICKSAVE = """Quick save""", # MISSING TRANSLATION
-	HOTKEY_QUICKLOAD = """Quick load""", # MISSING TRANSLATION
-	HOTKEY_FULLSCREEN = """Toggle fullscreen""", # MISSING TRANSLATION
-	HOTKEY_MANSION_TIME_1 = """Pass 1 hour""", # MISSING TRANSLATION
-	HOTKEY_MANSION_TIME_2 = """Pass 2 hours""", # MISSING TRANSLATION
-	HOTKEY_MANSION_TIME_3 = """Pass 4 hours""", # MISSING TRANSLATION
-	HOTKEY_MANSION_WORK = """Work""", # MISSING TRANSLATION
-	HOTKEY_MANSION_TRAVELS = """Travels""", # MISSING TRANSLATION
-	HOTKEY_MANSION_UPGRADES = """Mansion""", # MISSING TRANSLATION
+	HOTKEYGROUP_GLOBAL = """Generale""",
+	HOTKEYGROUP_MANSION = """Villa""",
+	HOTKEYGROUP_COMBAT = """Combattimento""",
+	HOTKEY_UNBOUND = """- nessuno -""",
+	HOTKEY_PRESSKEY = """Premi un tasto...""",
+	HOTKEY_RESET = """Ripristina predefiniti""",
+	HOTKEY_CONFLICT = """%s è stato tolto a \"%s\".""",
+	HOTKEY_HINT = """Clicca su un tasto per riassegnarlo. Esc annulla, Canc cancella l'assegnazione.
+I tasti della villa e del combattimento sono indipendenti: lo stesso tasto può essere usato da entrambi.""",
+	HOTKEY_QUICKSAVE = """Salvataggio rapido""",
+	HOTKEY_QUICKLOAD = """Caricamento rapido""",
+	HOTKEY_FULLSCREEN = """Attiva/disattiva schermo intero""",
+	HOTKEY_MANSION_TIME_1 = """Salta 1 ora""",
+	HOTKEY_MANSION_TIME_2 = """Salta 2 ore""",
+	HOTKEY_MANSION_TIME_3 = """Salta 4 ore""",
+	HOTKEY_MANSION_WORK = """Lavoro""",
+	HOTKEY_MANSION_TRAVELS = """Viaggi""",
+	HOTKEY_MANSION_UPGRADES = """Villa""",
 	HOTKEY_MANSION_SEX = """Sex""", # MISSING TRANSLATION
-	HOTKEY_MANSION_INVENTORY = """Inventory""", # MISSING TRANSLATION
-	HOTKEY_MANSION_CRAFT = """Craft""", # MISSING TRANSLATION
-	HOTKEY_MANSION_JOURNAL = """Journal""", # MISSING TRANSLATION
-	HOTKEY_MANSION_MENU = """Game menu""", # MISSING TRANSLATION
-	HOTKEY_MANSION_CHAR_INFO = """Character info""", # MISSING TRANSLATION
-	HOTKEY_MANSION_TUTORIAL = """Tutorial panel""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_SKILL_1 = """Use skill 1""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_SKILL_2 = """Use skill 2""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_SKILL_3 = """Use skill 3""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_SKILL_4 = """Use skill 4""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_SKILL_5 = """Use skill 5""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_SKILL_6 = """Use skill 6""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_SKILL_7 = """Use skill 7""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_SKILL_8 = """Use skill 8""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_SKILL_9 = """Use skill 9""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_ROW_UP = """Previous skill row""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_ROW_DOWN = """Next skill row""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_SKILLBOOK = """Skill book""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_ITEMS = """Items panel""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_RUN = """Retreat""", # MISSING TRANSLATION
-	QUICKSAVE_BLOCKED = """Can't quick save during combat.""", # MISSING TRANSLATION
-	QUICKLOAD_BLOCKED = """Can't quick load during combat.""", # MISSING TRANSLATION
-	QUICKLOAD_MISSING = """No quick save found.""", # MISSING TRANSLATION
+	HOTKEY_MANSION_INVENTORY = """Inventario""",
+	HOTKEY_MANSION_CRAFT = """Artigianato""",
+	HOTKEY_MANSION_JOURNAL = """Diario""",
+	HOTKEY_MANSION_MENU = """Menu di gioco""",
+	HOTKEY_MANSION_CHAR_INFO = """Informazioni personaggio""",
+	HOTKEY_MANSION_TUTORIAL = """Pannello tutorial""",
+	HOTKEY_COMBAT_SKILL_1 = """Usa abilità 1""",
+	HOTKEY_COMBAT_SKILL_2 = """Usa abilità 2""",
+	HOTKEY_COMBAT_SKILL_3 = """Usa abilità 3""",
+	HOTKEY_COMBAT_SKILL_4 = """Usa abilità 4""",
+	HOTKEY_COMBAT_SKILL_5 = """Usa abilità 5""",
+	HOTKEY_COMBAT_SKILL_6 = """Usa abilità 6""",
+	HOTKEY_COMBAT_SKILL_7 = """Usa abilità 7""",
+	HOTKEY_COMBAT_SKILL_8 = """Usa abilità 8""",
+	HOTKEY_COMBAT_SKILL_9 = """Usa abilità 9""",
+	HOTKEY_COMBAT_ROW_UP = """Riga abilità precedente""",
+	HOTKEY_COMBAT_ROW_DOWN = """Riga abilità successiva""",
+	HOTKEY_COMBAT_SKILLBOOK = """Libro delle abilità""",
+	HOTKEY_COMBAT_ITEMS = """Pannello oggetti""",
+	HOTKEY_COMBAT_RUN = """Ritirata""",
+	QUICKSAVE_BLOCKED = """Salvataggio rapido non disponibile durante il combattimento.""",
+	QUICKLOAD_BLOCKED = """Caricamento rapido non disponibile durante il combattimento.""",
+	QUICKLOAD_MISSING = """Nessun salvataggio rapido trovato.""",
 	TUTORIALS = "Tutorial",
 	LOCATIONLIST = "Lista Posizioni",
 	BUTTONTRAVEL = "Mappa",
@@ -144,7 +158,7 @@ Mansion and combat keys are independent - the same key may be used by both.""", 
 	OPTGAMEPLAYFUTA = "Futas con palle",
 	OPTGAMEPLAYSHOWDETAILES = "Mostra i dettagli del consenso",
 	OPTGAMEPLAYTUTOR = "Abilita tutorial",
-	OPTGAMEPLAYDISABLEMODSONUPDATE = """Disable mods when game updates to a new version""", # MISSING TRANSLATION
+	OPTGAMEPLAYDISABLEMODSONUPDATE = """Disattiva i mod quando il gioco si aggiorna""",
 	OPTGAMEPLAYMALERATE = "Tasso Maschile",
 	OPTGAMEPLAYFUTARATE = "Tasso Futa",
 	OPTFAMEPLAYAUTOSAVEAMOUNT = "Importo del salvataggio automatico",
@@ -161,8 +175,8 @@ Mansion and combat keys are independent - the same key may be used by both.""", 
 	OPTGRAPHICDISABLEANIMATIONBACKGROUNDS = "Disabilita gli sfondi delle animazioni",
 	OPTDISABLEPAPERDOLL = "Disabilita gli sprite generati",
 	OPTDISABLEDAMAGESHAKE = "Disabilita il tremolio da danno",
-	OPTDISABLEITEMFLIGHT = """Disable item pickup animation""", # MISSING TRANSLATION
-	OPTITEMFLIGHT = """Item collection animations""", # MISSING TRANSLATION
+	OPTDISABLEITEMFLIGHT = """Disattiva l'animazione di raccolta oggetti""",
+	OPTITEMFLIGHT = """Animazioni di raccolta oggetti""",
 	OPTCHEATENTERCODE = "Inserisci il codice",
 	OPTCHEATACTIVATE = "Attivare",
 	OPTCHEATGETCODE = "Ottieni codice",
@@ -212,7 +226,7 @@ ma manterrà comunque tutti i tuoi personaggi, oggetti e inventario. Usa questa 
 	PRONOUNGENTLEMANF = "signora",
 	PRONOUNSEX = "maschio",
 	PRONOUNSEXF = "femmina",
-	PRONOUNSEXH = "futa", #
+	PRONOUNSEXH = """futa""", #
 	PRONOUNMAN = "uomo",
 	PRONOUNMANF = "donna",
 	PRONOUNGUY = "tizio",
@@ -223,7 +237,7 @@ ma manterrà comunque tutti i tuoi personaggi, oggetti e inventario. Usa questa 
 	PRONOUNGROOMF = "sposa",
 	PRONOUNBOY = "ragazzo",
 	PRONOUNBOYF = "ragazza",
-	PRONOUNBOYFUTA = "futanari",
+	PRONOUNBOYFUTA = """futanari""",
 	PRONOUNHIMSELFL = "se stesso",
 	PRONOUNHIMSELFLF = "se stessa",
 	SEXDESC_PRONOUN_YOU = """you""", # MISSING TRANSLATION
@@ -439,28 +453,28 @@ ma manterrà comunque tutti i tuoi personaggi, oggetti e inventario. Usa questa 
 	MSLMSTAT = "HP/MP", #
 	MSLMOCCU = "Incarico",
 	MSLMOB = "Obbed",
-	MSLMEXP = "Exp", #
+	MSLMEXP = """Exp""", #
 	MSLMLOC = "Ubicazione",
 	MSLMTYPE = "Tipo",
 	MSLMINV = "Equip",
-	MSLMFOOD = """Food""", # MISSING TRANSLATION
-	MSLMSORTHINT = """Click to sort by this column, click again to reverse it, once more to go back to your own order.""", # MISSING TRANSLATION
-	MSLMSORTDEFAULT = """Default order""", # MISSING TRANSLATION
-	MSLMSORTNAME = """Name""", # MISSING TRANSLATION
-	MSLMSORTWORK = """Work""", # MISSING TRANSLATION
-	MSLMSORTTRAINABLE = """Can train""", # MISSING TRANSLATION
-	MSLMSORTDATEABLE = """Can date""", # MISSING TRANSLATION
-	MSLMSORTLEVELUP = """Can upgrade""", # MISSING TRANSLATION
-	MSLMFOLDLIST = """Collapse character list""", # MISSING TRANSLATION
-	MSLMUNFOLDLIST = """Expand character list""", # MISSING TRANSLATION
+	MSLMFOOD = """Cibo""",
+	MSLMSORTHINT = """Clicca per ordinare secondo questa colonna, clicca di nuovo per invertire l'ordine, ancora una volta per tornare al tuo ordine.""",
+	MSLMSORTDEFAULT = """Ordinamento""",
+	MSLMSORTNAME = """Nome""",
+	MSLMSORTWORK = """Lavoro""",
+	MSLMSORTTRAINABLE = """Può essere addestrato""",
+	MSLMSORTDATEABLE = """Può uscire con te""",
+	MSLMSORTLEVELUP = """Può essere potenziato""",
+	MSLMFOLDLIST = """Comprimi l'elenco dei personaggi""",
+	MSLMUNFOLDLIST = """Espandi l'elenco dei personaggi""",
 	MSLMFOLDMENU = """Hide side menu""", # MISSING TRANSLATION
 	MSLMUNFOLDMENU = """Show side menu""", # MISSING TRANSLATION
-	MSLMEXPANDEDFACTORS = """Factors""", # MISSING TRANSLATION
-	MSLMEXPANDEDSTATS = """Base Stats""", # MISSING TRANSLATION
-	MSLMEXPANDEDEQUIPMENT = """Equipped""", # MISSING TRANSLATION
-	MSLMEXPANDEDRELATIONSHIP = """Relationship""", # MISSING TRANSLATION
-	MSLMEXPANDEDBUFFS = """Buffs""", # MISSING TRANSLATION
-	MSLMROOMSUSED = """Rooms used: %d/%d""", # MISSING TRANSLATION
+	MSLMEXPANDEDFACTORS = """Fattori""",
+	MSLMEXPANDEDSTATS = """Statistiche base""",
+	MSLMEXPANDEDEQUIPMENT = """Equipaggiato""",
+	MSLMEXPANDEDRELATIONSHIP = """Relazione""",
+	MSLMEXPANDEDBUFFS = """Potenziamenti""",
+	MSLMROOMSUSED = """Stanze usate: %d/%d""",
 	LVLBONUSPERPOINT = "Bonus per punto",
 	LVLCURRENT = "Corrente",
 	LVLTOTALPOINTS = "Punti Totali",
@@ -486,7 +500,7 @@ ma manterrà comunque tutti i tuoi personaggi, oggetti e inventario. Usa questa 
 	REQCONFLICTCLASS = "Classe in conflitto",
 	REQHASANYCLASS = "Ha una delle classi",
 	REQRACE = "Razza",
-	REQCONFLICTRACE = """Conflicting Race""", # MISSING TRANSLATION
+	REQCONFLICTRACE = """Razza in conflitto""",
 	REQRACEISBEAST = "Solo per le razze Bestiali",
 	REQMUSTHAVEGEAR = "Deve avere",
 	REQMUSTHAVEGEAR_FALSE = "Non deve avere",
@@ -565,14 +579,14 @@ ma manterrà comunque tutti i tuoi personaggi, oggetti e inventario. Usa questa 
 	SIMSTATS = """Stats""", # MISSING TRANSLATION
 	SIMLOYALTYGAIN = "Guadagno di Fedeltà",
 	SIMOBEDIENCEDRAIN = "Prosciugamento Obbedienza",
-	SIMATK = "ATK:", #
+	SIMATK = """ATT:""", #
 	SIMDEF = "DIF:",
 	SIMHITRATE = "Colp:",
 	SIMSPEED = "Vel:",
-	SIMCRITICAL = "Crt:", #
-	SIMMATK = "MATK:", #
-	SIMMDEF = "MDEF:", #
-	SIMEVASION = "Evas:", #
+	SIMCRITICAL = """Crit:""", #
+	SIMMATK = """ATTM:""", #
+	SIMMDEF = """DIFM:""", #
+	SIMEVASION = """Evas:""", #
 	SIMARMORPEN = "Pen.A.:",
 	SIMCRITICALMOD = "Mod Crt:",
 	NORMALRESIST = "Normale",
@@ -583,24 +597,24 @@ ma manterrà comunque tutti i tuoi personaggi, oggetti e inventario. Usa questa 
 	LIGHTRESIST = "Luce",
 	DARKRESIST = "Oscuro",
 	MINDRESIST = "Mente",
-	SIMATK_DESC = """Attack. Increases physical damage dealt with weapon attacks.""", # MISSING TRANSLATION
-	SIMMATK_DESC = """Magic Attack. Increases damage dealt by magic spells and abilities.""", # MISSING TRANSLATION
-	SIMDEF_DESC = """Defense. Reduces physical damage taken from attacks.""", # MISSING TRANSLATION
-	SIMMDEF_DESC = """Magic Defense. Reduces damage taken from magic attacks and spells.""", # MISSING TRANSLATION
-	SIMHITRATE_DESC = """Hit Rate. Increases the chance to hit the target in combat.""", # MISSING TRANSLATION
-	SIMEVASION_DESC = """Evasion. Increases the chance to dodge incoming attacks.""", # MISSING TRANSLATION
-	SIMSPEED_DESC = """Speed. Determines turn order in combat; higher speed acts first.""", # MISSING TRANSLATION
-	SIMARMORPEN_DESC = """Armor Penetration. Reduces the effectiveness of the target's Defense.""", # MISSING TRANSLATION
-	SIMCRITICAL_DESC = """Critical Chance. Increases the chance to land a critical hit.""", # MISSING TRANSLATION
-	SIMCRITICALMOD_DESC = """Critical Modifier. Multiplies damage dealt on a critical hit.""", # MISSING TRANSLATION
-	NORMALRESIST_DESC = """Normal Resist. Reduces damage taken from physical, non-elemental attacks.""", # MISSING TRANSLATION
-	FIRERESIST_DESC = """Fire Resist. Reduces damage taken from fire attacks.""", # MISSING TRANSLATION
-	EARTHRESIST_DESC = """Earth Resist. Reduces damage taken from earth attacks.""", # MISSING TRANSLATION
-	AIRRESIST_DESC = """Air Resist. Reduces damage taken from air attacks.""", # MISSING TRANSLATION
-	WATERRESIST_DESC = """Water Resist. Reduces damage taken from water attacks.""", # MISSING TRANSLATION
-	LIGHTRESIST_DESC = """Light Resist. Reduces damage taken from light attacks.""", # MISSING TRANSLATION
-	DARKRESIST_DESC = """Dark Resist. Reduces damage taken from dark attacks.""", # MISSING TRANSLATION
-	MINDRESIST_DESC = """Mind Resist. Reduces damage taken from mind attacks.""", # MISSING TRANSLATION
+	SIMATK_DESC = """[color=yellow]Attacco.[/color] Aumenta i danni inflitti dalle abilità fisiche.""",
+	SIMMATK_DESC = """[color=yellow]Attacco magico.[/color] Aumenta i danni degli incantesimi e la potenza delle cure.""",
+	SIMDEF_DESC = """[color=yellow]Difesa.[/color] Riduce i danni fisici subiti dagli attacchi.""",
+	SIMMDEF_DESC = """[color=yellow]Difesa magica.[/color] Riduce i danni subiti dagli attacchi magici.""",
+	SIMHITRATE_DESC = """[color=yellow]Precisione.[/color] Aumenta la probabilità di colpire il bersaglio con attacchi fisici. Il valore è confrontato con l'evasione del bersaglio.""",
+	SIMEVASION_DESC = """[color=yellow]Evasione.[/color] Aumenta la probabilità di schivare gli attacchi fisici in arrivo.""",
+	SIMSPEED_DESC = """[color=yellow]Velocità.[/color] Determina l'ordine dei turni in combattimento; chi ha più velocità agisce per primo.""",
+	SIMARMORPEN_DESC = """[color=yellow]Penetrazione dell'armatura.[/color] Riduce l'efficacia della Difesa del bersaglio.""",
+	SIMCRITICAL_DESC = """[color=yellow]Probabilità di critico.[/color] Aumenta la probabilità di mettere a segno un colpo critico.""",
+	SIMCRITICALMOD_DESC = """[color=yellow]Modificatore di critico.[/color] Moltiplica i danni inflitti con un colpo critico.""",
+	NORMALRESIST_DESC = """[color=yellow]Resistenza normale.[/color] Riduce i danni subiti dagli attacchi non elementali.""",
+	FIRERESIST_DESC = """[color=yellow]Resistenza al fuoco.[/color] Riduce i danni subiti dagli attacchi di fuoco.""",
+	EARTHRESIST_DESC = """[color=yellow]Resistenza alla terra.[/color] Riduce i danni subiti dagli attacchi di terra.""",
+	AIRRESIST_DESC = """[color=yellow]Resistenza all'aria.[/color] Riduce i danni subiti dagli attacchi d'aria.""",
+	WATERRESIST_DESC = """[color=yellow]Resistenza all'acqua.[/color] Riduce i danni subiti dagli attacchi d'acqua.""",
+	LIGHTRESIST_DESC = """[color=yellow]Resistenza alla luce.[/color] Riduce i danni subiti dagli attacchi di luce.""",
+	DARKRESIST_DESC = """[color=yellow]Resistenza all'oscurità.[/color] Riduce i danni subiti dagli attacchi di oscurità.""",
+	MINDRESIST_DESC = """[color=yellow]Resistenza alla mente.[/color] Riduce i danni subiti dagli attacchi di mente.""",
 	DAMAGETYPENORMAL = "Normale",
 	DAMAGETYPEFIRE = "Fuoco",
 	DAMAGETYPEEARTH = "Terra",
@@ -614,7 +628,7 @@ ma manterrà comunque tutti i tuoi personaggi, oggetti e inventario. Usa questa 
 	DAMAGETYPEITEM = "Oggetto",
 	ALLRESIST = "tutte",
 	HEALTHP = "Salute: ",
-	MANAP = "Mana:", #
+	MANAP = """Mana:""", #
 	JOURNALLABLE = "Richieste Schiavi",
 	JOURNALMAIN = "Principale",
 	JOURNALMINOR = "Minore",
@@ -626,9 +640,9 @@ ma manterrà comunque tutti i tuoi personaggi, oggetti e inventario. Usa questa 
 	QBACCEPT = "Accettare",
 	MONEYTOOLTIP = "Soldi Posseduti",
 	MONEYTOOLTIP2 = "Tasse Settimanali",
-	UPGRADETAXTOOLTIP = """Upgrade Taxes""", # MISSING TRANSLATION
-	CHARACTERUPKEEPTOOLTIP = """Character Upkeep""", # MISSING TRANSLATION
-	TOTALUPKEEPTOOLTIP = """Total Upkeep""", # MISSING TRANSLATION
+	UPGRADETAXTOOLTIP = """Tasse sui potenziamenti""",
+	CHARACTERUPKEEPTOOLTIP = """Mantenimento del personaggio""",
+	TOTALUPKEEPTOOLTIP = """Mantenimento totale""",
 	PAUSEMENUSAVE = "Salva",
 	PAUSEMENULOAD = "Carica",
 	PAUSEMENUOPT = "Opzioni",
@@ -656,7 +670,7 @@ Progresso Attuale: %d/%d""",
 	UPGRADEAVAILABLECHARACTERS = "Personaggi Disponibili",
 	UPGRADEBONUSES = "Bonus",
 	OPTIONSWITCHLANGUAGE = "Cambia lingua",
-	OPTIONSWITCHLANGUAGECONFIRM = """Change language to %s?""", # MISSING TRANSLATION
+	OPTIONSWITCHLANGUAGECONFIRM = """Cambiare la lingua in %s?""",
 	TIPLABEL = "Suggerimento",
 	LOADINGTIP1 = "Alcune razze possono ottenere classi esclusive",
 	LOADINGTIP2 = "Le possibili statistiche iniziali dei personaggi sono definite dalla loro razza",
@@ -744,29 +758,29 @@ Tuttavia, mentre potrebbe sembrare che i proprietari terrieri non abbiano altro 
 	FOODTYPEFISH = "Pesce",
 	FOODTYPEGRAIN = "Grano",
 	FOODTYPEVEGE = "Verdura",
-	FOODDEMAND = """Food Demand""", # MISSING TRANSLATION
-	FOODDEMANDDESCRIPT = """The quality of food this character expects. Fame 3 or a value above 500 raises it to Refined, Fame 5 or a value above 1500 to Premium. Slaves never mind eating below their demand.""", # MISSING TRANSLATION
+	FOODDEMAND = """Esigenza alimentare""",
+	FOODDEMANDDESCRIPT = """La qualità del cibo che questo personaggio si aspetta. Fama 3 o un valore superiore a 500 la alza a Raffinata, Fama 5 o un valore superiore a 1500 a Premium. Gli schiavi non hanno mai problemi a mangiare al di sotto della loro esigenza.""",
 	FOODDEMANDBASIC = """Basic""", # MISSING TRANSLATION
 	FOODDEMANDREFINED = """Refined""", # MISSING TRANSLATION
 	FOODDEMANDPREMIUM = """Premium""", # MISSING TRANSLATION
-	FOODDEMANDBASICDESCRIPT = """Eats anything without complaint.""", # MISSING TRANSLATION
-	FOODDEMANDREFINEDDESCRIPT = """Expects cooked meals. Raw produce costs Respect, Productivity and Experience Gain until the next meal.""", # MISSING TRANSLATION
-	FOODDEMANDPREMIUMDESCRIPT = """Expects elaborate dishes. Anything lesser costs Respect, Productivity and Experience Gain until the next meal.""", # MISSING TRANSLATION
-	FOODLIKEDTYPE = """Liked Food""", # MISSING TRANSLATION
-	FOODVALUE = """Turns of Food""", # MISSING TRANSLATION
-	FOODTOOLTIPLIKED = """A liked type: keeps this character fed 50% longer.""", # MISSING TRANSLATION
-	FOODTOOLTIPBELOWDEMAND = """Below this character's demand: costs Respect, -20% Productivity and -20% Experience Gain until their next meal.""", # MISSING TRANSLATION
-	FOODSTATEHEADER = """Last Meal""", # MISSING TRANSLATION
-	FOODSTATEHEADERDESCRIPT = """What each character is currently running on. A red tint means the meal was below their demand. Hover a character's icon for the details.""", # MISSING TRANSLATION
-	FOODSTATELASTMEAL = """Last Meal: %s""", # MISSING TRANSLATION
-	FOODSTATEFEDFOR = """Fed for %d more turn(s).""", # MISSING TRANSLATION
+	FOODDEMANDBASICDESCRIPT = """Mangia qualsiasi cosa senza lamentarsi.""",
+	FOODDEMANDREFINEDDESCRIPT = """Si aspetta pasti cucinati. I prodotti crudi costano Rispetto, Produttività e Guadagno di esperienza fino al pasto successivo.""",
+	FOODDEMANDPREMIUMDESCRIPT = """Si aspetta piatti elaborati. Qualcosa di inferiore costa Rispetto, Produttività e Guadagno di esperienza fino al pasto successivo.""",
+	FOODLIKEDTYPE = """Cibo gradito""",
+	FOODVALUE = """Turni di sazietà""",
+	FOODTOOLTIPLIKED = """Un tipo gradito: mantiene questo personaggio sazio il 50% più a lungo.""",
+	FOODTOOLTIPBELOWDEMAND = """Sotto l'esigenza di questo personaggio: costa Rispetto, -20% Produttività e -20% Guadagno di esperienza fino al pasto successivo.""",
+	FOODSTATEHEADER = """Ultimo pasto""",
+	FOODSTATEHEADERDESCRIPT = """Su cosa si regge attualmente ogni personaggio. Una tinta rossa indica che il pasto era sotto la sua esigenza. Passa sopra l'icona di un personaggio per i dettagli.""",
+	FOODSTATELASTMEAL = """Ultimo pasto: %s""",
+	FOODSTATEFEDFOR = """Sazio per altri %d turno/i.""",
 	FOODSTATESTARVING = """Starving""", # MISSING TRANSLATION
-	FOODSTATENONE = """No Meal""", # MISSING TRANSLATION
-	FOODSTATENONEDESCRIPT = """Has not eaten yet. They will take the best allowed food in store on their next turn.""", # MISSING TRANSLATION
-	FOODSTATEUNDEAD = """Does Not Eat""", # MISSING TRANSLATION
-	FOODSTATEUNDEADDESCRIPT = """The undead need no food and are never affected by hunger.""", # MISSING TRANSLATION
-	FOODLOGSTARVE = """%s: could not eat. Respect and Affection reduced.""", # MISSING TRANSLATION
-	FOODLOGBELOWDEMAND = """%s: was served %s, which is below their standards. Respect reduced.""", # MISSING TRANSLATION
+	FOODSTATENONE = """Nessun pasto""",
+	FOODSTATENONEDESCRIPT = """Non ha ancora mangiato. Al prossimo turno prenderà il miglior cibo consentito in magazzino.""",
+	FOODSTATEUNDEAD = """Non mangia""",
+	FOODSTATEUNDEADDESCRIPT = """I non morti non hanno bisogno di cibo e non soffrono mai la fame.""",
+	FOODLOGSTARVE = """%s: non ha potuto mangiare. Rispetto e Affetto ridotti.""",
+	FOODLOGBELOWDEMAND = """%s: ha ricevuto %s, che è sotto i suoi standard. Rispetto ridotto.""",
 	CURRENTLYINPOSSESSION = "Attualmente in possesso",
 	MATERIALCATEGORYFOOD = "Cibo",
 	MATERIALCATEGORYSTONE = "Pietra",
@@ -796,18 +810,18 @@ Tipo di alimento: Carne, Verdure.""",
 	MATERIALFISHCAKES = "Polpette di pesce",
 	MATERIALFISHCAKESDESCRIPT = """Un impasto al forno ripieno di pasta di pesce. Particolarmente apprezzato dal popolo felino. Prodotto dalla cottura.
 Tipo di cibo: Pesce, Cereali.""",
-	MATERIALCURRY = "Curry", #
+	MATERIALCURRY = """Curry""", #
 	MATERIALCURRYDESCRIPT = """Una ciotola di cereali e carne ricca di un sapore deciso.
 Tipo di alimento: Carne, Cereali.""",
-	MATERIALVEGETABLE_STIRFRY = """Vegetable Stir-Fry""", # MISSING TRANSLATION
-	MATERIALVEGETABLE_STIRFRYDESCRIPT = """Fresh vegetables seared with fragrant seasonings. Produced by cooking.
-Food type: Vegetables.""", # MISSING TRANSLATION
-	MATERIALROASTED_FEAST = """Roasted Feast""", # MISSING TRANSLATION
-	MATERIALROASTED_FEASTDESCRIPT = """A generous platter of roasted meat with hearty sides. Produced by cooking.
-Food type: Meat.""", # MISSING TRANSLATION
-	MATERIALMINERS_LUNCH = """Miner's Lunch""", # MISSING TRANSLATION
-	MATERIALMINERS_LUNCHDESCRIPT = """A filling grain-based lunch made for long shifts underground. Produced by cooking.
-Food type: Grains.""", # MISSING TRANSLATION
+	MATERIALVEGETABLE_STIRFRY = """Verdure saltate""",
+	MATERIALVEGETABLE_STIRFRYDESCRIPT = """Verdure fresche saltate con condimenti profumati. Prodotto cucinando.
+Tipo di cibo: Verdure.""",
+	MATERIALROASTED_FEAST = """Banchetto arrosto""",
+	MATERIALROASTED_FEASTDESCRIPT = """Un generoso vassoio di carne arrosto con contorni sostanziosi. Prodotto cucinando.
+Tipo di cibo: Carne.""",
+	MATERIALMINERS_LUNCH = """Pranzo del minatore""",
+	MATERIALMINERS_LUNCHDESCRIPT = """Un pranzo sostanzioso a base di cereali, pensato per i lunghi turni sottoterra. Prodotto cucinando.
+Tipo di cibo: Cereali.""",
 	MATERIALVEGETABLESTIRFRY = """Vegetable Stir-Fry""", # MISSING TRANSLATION
 	MATERIALVEGETABLESTIRFRYDESCRIPT = """Fresh vegetables seared with fragrant seasonings. Produced by cooking.
 Food type: Vegetables.""", # MISSING TRANSLATION
@@ -820,9 +834,9 @@ Food type: Grains.""", # MISSING TRANSLATION
 	MATERIALFRIEDFISH = "Frittura di pesce",
 	MATERIALFRIEDFISHDESCRIPT = """Un piatto di pesce fritto con verdure inventato per sfamare le schizzinose mangiatrici bestiali.
 Tipo di cibo: Pesce, Verdure.""",
-	MATERIALDEFENDERS_MEAL = """Defender's Meal""", # MISSING TRANSLATION
-	MATERIALDEFENDERS_MEALDESCRIPT = """A substantial vegetable meal prepared for those holding the line. Produced by cooking.
-Food type: Vegetables.""", # MISSING TRANSLATION
+	MATERIALDEFENDERS_MEAL = """Pasto del difensore""",
+	MATERIALDEFENDERS_MEALDESCRIPT = """Un sostanzioso pasto di verdure preparato per chi tiene la linea. Prodotto cucinando.
+Tipo di cibo: Verdure.""",
 	MATERIALDEFENDERSMEAL = """Defender's Meal""", # MISSING TRANSLATION
 	MATERIALDEFENDERSMEALDESCRIPT = """A substantial vegetable meal prepared for those holding the line. Produced by cooking.
 Food type: Vegetables.""", # MISSING TRANSLATION
@@ -894,7 +908,7 @@ Food type: Vegetables.""", # MISSING TRANSLATION
 	MATERIALMETEORITE_IRONDESCRIPT = "Una lega magica molto rara e resistente. ",
 	MATERIALBLUE_MOSS = "Muschio Blu",
 	MATERIALBLUE_MOSSDESCRIPT = "Una pianta rara dalle proprietà magiche.",
-	MATERIALSALVIA = "Salvia", #
+	MATERIALSALVIA = """Salvia""", #
 	MATERIALSALVIADESCRIPT = "Una pianta non comune con proprietà che influenzano la mente. ",
 	MATERIALTRAP = "Componente trappola",
 	MATERIALTRAPDESCRIPT = "Una trappola meccanica per tenere i bersagli in posizione. Richiesta per determinate abilità. ",
@@ -1201,7 +1215,7 @@ Quando lanci un incantesimo, hai il 25% di possibilità di lanciarlo una volta i
 	GEARBOW = "Archi",
 	GEARPICKAXE = "Picconi",
 	DAMAGE = "ATK", #
-	DAMAGEMOD = "ATK Mult.", #
+	DAMAGEMOD = """Molt. ATT""", #
 	ARMOR = "DEF", #
 	MDEF = "MDEF", #
 	EVASION = "Evasione",
@@ -1266,10 +1280,10 @@ Ridotto dall'evasione del nemico""",
 	CHARCREATE_FOOD_STATE_NEUTRAL = "Neutro",
 	CHARCREATE_FOOD_STATE_HATE = "Odia",
 	CHARCREATE_DIET_HELP = "Seleziona 1 cibo Gradito e almeno 1 cibo Odiato.",
-	CHARCREATE_DIET_HELP_TOO_MANY_LIKED = """You can only select 1 Liked food type.""", # MISSING TRANSLATION
-	CHARCREATE_DIET_HELP_NO_LIKED = """[color=red]Select 1 Liked food type.[/color]""", # MISSING TRANSLATION
-	CHARCREATE_DIET_TITLE = """Select 1 Liked Food Type""", # MISSING TRANSLATION
-	CHARCREATE_DIET_DISHES = """Dishes:""", # MISSING TRANSLATION
+	CHARCREATE_DIET_HELP_TOO_MANY_LIKED = """[color=red]Puoi selezionare solo 1 tipo di cibo gradito.[/color]""",
+	CHARCREATE_DIET_HELP_NO_LIKED = """[color=red]Seleziona 1 tipo di cibo gradito.[/color]""",
+	CHARCREATE_DIET_TITLE = """Seleziona 1 tipo di cibo gradito""",
+	CHARCREATE_DIET_DISHES = """Piatti:""",
 	CHARCREATE_DIET_DESCRIPT_MEAT = """Hunted. The most filling raw food.""", # MISSING TRANSLATION
 	CHARCREATE_DIET_DESCRIPT_FISH = """Caught by fishing. Needs no farm.""", # MISSING TRANSLATION
 	CHARCREATE_DIET_DESCRIPT_VEGE = """Farmed. Appears in the most dishes.""", # MISSING TRANSLATION
@@ -1299,7 +1313,7 @@ Nothing is forbidden by this choice - it only sets a preference.""", # MISSING T
 	CHARCREATE_MASTER_RELATION_BLOCKED_NO_MASTER = "Nessun personaggio master disponibile per la selezione della relazione.",
 	CHARCREATE_MASTER_RELATION_BLOCKED_CHILD = "Figlio/a non disponibile perché il master deve avere la stessa età o essere più vecchio.",
 	CHARCREATE_MASTER_RELATION_BLOCKED_PARENT = "Genitore non disponibile perché il master deve avere la stessa età o essere più giovane.",
-	RACE_LOCKED_NGPLUS = """Requires the '%s' NG+ bonus to select as a starting race.""", # MISSING TRANSLATION
+	RACE_LOCKED_NGPLUS = """Richiede il bonus NG+ «%s» per essere scelta come razza iniziale.""",
 	TOOLTIPIMPROVESCREEN = "Migliora il tuo equipaggiamento sacrificando equipaggiamento simile della stessa qualità. L'equipaggiamento sacrificato andrà perso.",
 	TOOLHANDLE = "Manico dell'utensile",
 	WEAPONHANDLE = "Impugnatura dell'arma",
@@ -1347,8 +1361,8 @@ Nothing is forbidden by this choice - it only sets a preference.""", # MISSING T
 	BLACKSMITH = "Fabbro",
 	CRAFTCHARACTERS = "Personaggi",
 	CRAFTORDER = "Ordine di Creazione",
-	CRAFTORDERMATERIALS = """Craft Order: Materials""", # MISSING TRANSLATION
-	CRAFTORDERITEMS = """Craft Order: Items""", # MISSING TRANSLATION
+	CRAFTORDERMATERIALS = """Ordine di fabbricazione: Materiali""",
+	CRAFTORDERITEMS = """Ordine di fabbricazione: Oggetti""",
 	CRAFTTAILORING = "Sartoria",
 	CRAFTENCHANT = "Incantamento",
 	CRAFTFILTERALL = "Tutti",
@@ -1361,6 +1375,12 @@ Nothing is forbidden by this choice - it only sets a preference.""", # MISSING T
 	CRAFTMATERIALSREQUIREDFOR = "Materiali necessari per: %s",
 	CRAFTINPOSSESSION = "In possesso",
 	CRAFTPARTEFFECTS = "Effetti Parte",
+	CRAFTQUANTITY = """Quantity""", # MISSING TRANSLATION
+	CRAFTCONTINUOUS = """Make Continuously""", # MISSING TRANSLATION
+	CRAFTSTOPAT = """Stop at""", # MISSING TRANSLATION
+	CRAFTRESTARTAT = """Restart at""", # MISSING TRANSLATION
+	CRAFTINDEFINITE = """Craft indefinitely""", # MISSING TRANSLATION
+	CRAFTINDEFINITETOOLTIP = """Keep crafting until this order is cancelled or its materials are unavailable.""", # MISSING TRANSLATION
 	PROGRESS = "Progresso",
 	LEVELS = "Livelli",
 	STAGE = "Fase",
@@ -1468,7 +1488,7 @@ Tasto di scelta rapida: 3""",
 	QUESTPARTREQUIREMENTS = "Requisiti delle parti",
 	QUESTCOMPLETEQUESTLOC = "Completa il dungeon della missione",
 	QUESTCOMPLETEQUESTLOC2 = "Completa il dungeon della missione a",
-	QUESTCOMPLETEQUESTENC = """Complete quest encounter""", # MISSING TRANSLATION
+	QUESTCOMPLETEQUESTENC = """Completa l'incontro della missione""",
 	QUESTREQUIRED = "Obbligatorio",
 	QUESTSLAVEREQUIRED = "Slave richiesto",
 	QUESTSTATS = "Statistiche",
@@ -1490,11 +1510,11 @@ Tasto di scelta rapida: 3""",
 	QUESTCOMPLETEMESSAGE = "Missione completata",
 	QUESTDAYSLEFT = "Giorni rimasti",
 	QUESTLOCATION = "Posizione della missione",
-	NEEDTOSEESKILL = """You have not yet seen this skill in action.""", # MISSING TRANSLATION
+	NEEDTOSEESKILL = """Non hai ancora visto questa abilità in azione.""",
 	CHARSMALLTAB_ABIL = """Abilities""", # MISSING TRANSLATION
 	CHARSMALLTAB_GEN = """Stats""", # MISSING TRANSLATION
-	MASTERYLEVEL = """Mastery level %s""", # MISSING TRANSLATION
-	MASTERYGRANTS = """Grants skills and traits:""", # MISSING TRANSLATION
+	MASTERYLEVEL = """Livello di maestria %s""",
+	MASTERYGRANTS = """Concede abilità e tratti:""",
 	SKILLATTACK = "Attacco",
 	SKILLATTACKDESCRIPT = "Attacca il bersaglio con l'arma equipaggiata.",
 	SKILLRANGED_ATTACK = "Attacco (a distanza)",
@@ -1689,7 +1709,7 @@ Tasto di scelta rapida: 3""",
 	SKILLRALLY = "Radunare",
 	SKILLRALLYDESCRIPT = "Azzera tutti i tempi di recupero (tranne Adunata) e ripristina il 30% della salute dell'alleato selezionato.",
 	SKILLWARCRY = """Warcry""", # MISSING TRANSLATION
-	SKILLWARCRYDESCRIPT = """Remove Silence and Fear from self.""", # MISSING TRANSLATION
+	SKILLWARCRYDESCRIPT = """Rimuove Silenzio e Paura da sé. Non consuma il turno per attivarsi.""",
 	SKILLBLOODBOIL = "Ebollizione del sangue",
 	SKILLBLOODBOILDESCRIPT = "Aumenta l'ATK del 25%, rimuovi Stordimento, Bagnato e Paura, ottieni immunità a loro per 4 turni.",
 	SKILLFIRE_SHIELD = "Scudo antincendio",
@@ -1706,9 +1726,9 @@ Tasto di scelta rapida: 3""",
 	SKILLFROST_PRISONDESCRIPT = "Distribuisce il 130% di MATK come {color=yellow|Danni da Acqua}. Ha il 50% di possibilità di congelare il bersaglio per 1 turno.\nCongelato: il prossimo attacco infligge il 125% di danno. Gli attacchi aerei infliggono il 200%% e gli attacchi di fuoco infliggono invece il 50%% di danni.",
 	SKILLCLARITY = "Chiarezza",
 	SKILLCLARITYDESCRIPT = "Aumenta il MATK del 25%, rimuovi Accecamento, Sonno e Incanto, ottieni immunità a loro per 4 turni.",
-	SKILLHARDENED_GRIP = """Hardened Grip""", # MISSING TRANSLATION
-	SKILLHARDENED_GRIPDESCRIPT = """Remove Disarm from target ally and grant immunity to Disarm for 3 turns.""", # MISSING TRANSLATION
-	EFFECT_HARDENED_GRIP = """Immune to Disarm.""", # MISSING TRANSLATION
+	SKILLHARDENED_GRIP = """Presa salda""",
+	SKILLHARDENED_GRIPDESCRIPT = """Rimuove Disarmo da un alleato bersaglio e concede immunità al Disarmo per 3 turni.""",
+	EFFECT_HARDENED_GRIP = """Immune al Disarmo.""",
 	SKILLBLIZZARD = "Tormenta",
 	SKILLBLIZZARDDESCRIPT = "Fai volare ghiaccioli contro i nemici, con il 60% di probabilità di infliggere il 90% di MATK come {color=yellow|Danni da Acqua}. Ha 25% di possibilità di congelare i bersagli colpiti per 1 turno. I bersagli bagnati e congelati vengono sempre colpiti.",
 	SKILLHAILSTORM = "Grandinata",
@@ -1771,7 +1791,7 @@ Tasto di scelta rapida: 3""",
 	SKILLINTIMIDATING_PRESENCEDESCRIPT = "Rimuovi il gruppo nemico generico dalla posizione di destinazione sulla mappa del dungeon.",
 	SKILLFLAME_SPHERE = "Sfera di Fiamma",
 	SKILLFLAME_SPHEREDESCRIPT = "Applica un buff a se stesso: al successivo inizio del combattimento lanci una sfera infuocata contro i nemici, infliggendo il 25% della loro salute massima come danni da fuoco.",
-	SKILLINFERNO = "Inferno", #
+	SKILLINFERNO = """Inferno""", #
 	SKILLINFERNODESCRIPT = "Infligge il 160% di MATK come {color=yellow|Danni da Fuoco} a tutti i nemici. Applica Bruciatura per 3 turni.",
 	SKILLNATURES_GIFT = "Il dono della natura",
 	SKILLNATURES_GIFTDESCRIPT = "Recupera istantaneamente le risorse esistenti dalla posizione in base a MATK. ",
@@ -1857,311 +1877,311 @@ Non richiede il turno per essere attivato. """,
 	SKILLNECRO_AURADESCRIPT = "Evocazione Passiva: Scheletri. Il numero di scheletri è definito dal Fattore Magico.",
 	SKILLRAMONT_RIPOSTE_STANCE_SKILL = 'Posizione di Parata e Risposta',
 	SKILLCOMMAND_EMBARGO = 'Comando: Embargo',
-	SKILLCOMMAND_EMBARGODESCRIPT = """Target another ally in the melee zone. Command them to attack a random enemy, dealing 70% ATK damage and inflicting Provoke.""", # MISSING TRANSLATION
+	SKILLCOMMAND_EMBARGODESCRIPT = """Bersaglia un altro alleato nella zona di mischia. Gli ordina di attaccare un nemico casuale infliggendo il 70% dei danni ATT e applicando Provocazione.""",
 	SKILLRAMONT_EMBRAGO = 'Embargo in Vigore',
 	SKILLRAMONT_EVICTION_NOTICE = 'Avviso di Sfratto',
-	SKILLRAMONT_EVICTION_NOTICEDESCRIPT = """Deal 85% ATK damage and inflict {color=aqua|Eviction Notice}.""", # MISSING TRANSLATION
+	SKILLRAMONT_EVICTION_NOTICEDESCRIPT = """Infligge l'85% dei danni ATT e applica {color=aqua|Avviso di sfratto}.""",
 	SKILLRAMONT_PIERCING_OBSIDIAN = 'Ossidiana Perforante',
-	SKILLRAMONT_PIERCING_OBSIDIANDESCRIPT = """Deal 135% ATK damage to a row and inflict Bleed. Deal +20% damage against enemies affected by '{color=aqua|Eviction Notice}'.""", # MISSING TRANSLATION
+	SKILLRAMONT_PIERCING_OBSIDIANDESCRIPT = """Infligge il 135% dei danni ATT a una fila e applica Sanguinamento. Infligge +20% di danni contro i nemici colpiti da «{color=aqua|Avviso di sfratto}».""",
 	SKILLPROTECT_ME = 'Proteggimi!',
-	SKILLPROTECT_MEDESCRIPT = """The target must not be in the backline. Force the target to take single-target damage for this unit.""", # MISSING TRANSLATION
+	SKILLPROTECT_MEDESCRIPT = """Il bersaglio non deve trovarsi nelle retrovie. Costringe il bersaglio a subire i danni a bersaglio singolo al posto di questa unità.""",
 	SKILLENRAGING_BELITTLEMENT = 'Umiliazione Rabbiosa',
-	SKILLENRAGING_BELITTLEMENTDESCRIPT = """(Prioritize Cali) Requires {color=aqua|Vain Pride}.
-Inflict Provoke and Blind on the target.
-At 3+ stacks of {color=aqua|Vain Pride}, also inflict Fear.""", # MISSING TRANSLATION
+	SKILLENRAGING_BELITTLEMENTDESCRIPT = """(Dà priorità a Cali) Richiede {color=aqua|Vana superbia}.
+Infligge Provocazione e Accecamento al bersaglio.
+Con 3+ cariche di {color=aqua|Vana superbia}, infligge anche Paura.""",
 	SKILLENRAGING_BELITTLEMENT_CALI = 'Umiliazione Rabbiosa',
-	SKILLENRAGING_BELITTLEMENT_CALIDESCRIPT = """Requires {color=aqua|Vain Pride}.
-Inflict Provoke and Blind on the target.
-At 3+ stacks of {color=aqua|Vain Pride}, also inflict Fear.""", # MISSING TRANSLATION
+	SKILLENRAGING_BELITTLEMENT_CALIDESCRIPT = """Richiede {color=aqua|Vana superbia}.
+Infligge Provocazione e Accecamento al bersaglio.
+Con 3+ cariche di {color=aqua|Vana superbia}, infligge anche Paura.""",
 	SKILLOUT_OF_MY_WAY = 'Fuori dai piedi!',
-	SKILLOUT_OF_MY_WAYDESCRIPT = """Deal 40% ATK damage to the row and another 60% ATK damage to the backline unit.""", # MISSING TRANSLATION
+	SKILLOUT_OF_MY_WAYDESCRIPT = """Infligge il 40% dei danni ATT alla fila e un ulteriore 60% dei danni ATT all'unità nelle retrovie.""",
 	SKILLYOU_UNGRATFUL_MUTT = 'CANE INGRATO!!',
-	SKILLYOU_UNGRATFUL_MUTTDESCRIPT = """Can only be used at 5+ stacks of {color=aqua|Vain Pride}. Deal 185% ATK damage to a line and inflict Shred and Bleed.""", # MISSING TRANSLATION
+	SKILLYOU_UNGRATFUL_MUTTDESCRIPT = """Utilizzabile solo con 5+ cariche di {color=aqua|Vana superbia}. Infligge il 185% dei danni ATT a una linea e applica Lacerazione e Sanguinamento.""",
 	SKILLSUPPRESIVE_FIRE = 'Fuoco di Soppressione',
-	SKILLSUPPRESIVE_FIREDESCRIPT = """Deal 70% ATK damage to a line. Chance to inflict Blind and Ensnare.""", # MISSING TRANSLATION
+	SKILLSUPPRESIVE_FIREDESCRIPT = """Infligge il 70% dei danni ATT a una linea. Può infliggere Accecamento e Intrappolamento.""",
 	SKILLDARK_GIFT = 'Dono Oscuro',
-	SKILLDARK_GIFTDESCRIPT = """Deal damage equal to 30% of their Current HP to give them {color=aqua|Dark Gift}.""", # MISSING TRANSLATION
+	SKILLDARK_GIFTDESCRIPT = """Infligge danni pari al 30% dei loro PS attuali per conferire {color=aqua|Dono oscuro}.""",
 	SKILLPUPPET_ON_A_STRING = 'Burattino sui Fili',
-	SKILLPUPPET_ON_A_STRINGDESCRIPT = """Force them to deal 150% ATK damage to a random enemy and take recoil damage equal to 50% of their MATK. If that ally is Kurdan, make him use {color=aqua|Inferno} instead and take damage equal to 30% of his Current HP.""", # MISSING TRANSLATION
+	SKILLPUPPET_ON_A_STRINGDESCRIPT = """Li costringe a infliggere il 150% dei danni ATT a un nemico casuale e a subire un contraccolpo pari al 50% del loro ATTM. Se quell'alleato è Kurdan, gli fa usare {color=aqua|Inferno} e subire danni pari al 30% dei suoi PS attuali.""",
 	SKILLPUPPET_ATTACK = 'Strattone del Filo',
 	SKILLFORCE_MARTYRDOM = 'Martirio Forzato',
-	SKILLFORCE_MARTYRDOMDESCRIPT = """Target an ally with less than 30% HP, causing them to explode and die. Deal damage equal to 150% of the target's ATK + MATK to all enemies and inflict Fear.""", # MISSING TRANSLATION
+	SKILLFORCE_MARTYRDOMDESCRIPT = """Bersaglia un alleato con meno del 30% dei PS, facendolo esplodere e morire. Infligge a tutti i nemici danni pari al 150% di ATT + ATTM del bersaglio e applica Paura.""",
 	SKILLOVERLOADED_SOUL = 'Anima Sovraccarica',
 	SKILLI_VE_SEEN_ENOUGH = 'Ho visto abbastanza...',
 	SKILLOVERWHELMING_FLAME = 'Fiamma Travolgente',
-	SKILLOVERWHELMING_FLAMEDESCRIPT = """Deal 160% MATK Fire damage and inflict Shred.""", # MISSING TRANSLATION
+	SKILLOVERWHELMING_FLAMEDESCRIPT = """Infligge il 160% dell'ATTM come danno da Fuoco e applica Lacerazione.""",
 	SKILLI_MUST_RESIST = 'Devo... resistere...',
-	SKILLI_MUST_RESISTDESCRIPT = """Does nothing.""", # MISSING TRANSLATION
+	SKILLI_MUST_RESISTDESCRIPT = """Non fa nulla.""",
 	SKILLFOR_THE_PRINCESS = 'Per la Principessa!',
-	SKILLFOR_THE_PRINCESSDESCRIPT = """Deal 110% ATK damage to a target. Remove Fear, Taunt, Silence, and Sleep from all allies.""", # MISSING TRANSLATION
+	SKILLFOR_THE_PRINCESSDESCRIPT = """Infligge il 110% dei danni ATT a un bersaglio. Rimuove Paura, Provocazione, Silenzio e Sonno da tutti gli alleati.""",
 	SKILLRICOCHET_SHOT = 'Colpo di Rimbalzo',
-	SKILLRICOCHET_SHOTDESCRIPT = """Deal 50% ATK damage to few enemies.""", # MISSING TRANSLATION
+	SKILLRICOCHET_SHOTDESCRIPT = """Infligge il 50% dei danni ATT a pochi nemici.""",
 	SKILLLION_SWIPE = 'Zampata del Leone',
-	SKILLLION_SWIPEDESCRIPT = """Deal 85% ATK damage to a line of enemies and inflict Bleed.""", # MISSING TRANSLATION
+	SKILLLION_SWIPEDESCRIPT = """Infligge l'85% dei danni ATT a una linea di nemici e applica Sanguinamento.""",
 	SKILLBRAMBLE_TRAP = 'Trappola di Rovi',
-	SKILLBRAMBLE_TRAPDESCRIPT = """Place a trap on random targets. The trap triggers when a target uses a skill, dealing 80% of the caster's ATK as damage and inflicting Ensnare and Bleed.""", # MISSING TRANSLATION
+	SKILLBRAMBLE_TRAPDESCRIPT = """Piazza una trappola su bersagli casuali. La trappola si attiva quando un bersaglio usa un'abilità, infliggendo l'80% dell'ATT del lanciatore come danno e applicando Intrappolamento e Sanguinamento.""",
 	SKILLJAW_OF_LIFE = 'Fauci della Vita',
-	SKILLJAW_OF_LIFEDESCRIPT = """Deal 100% ATK damage to an enemy. If the target is Bleeding, heal for 85% of the damage dealt. Otherwise, inflict Bleed.""", # MISSING TRANSLATION
+	SKILLJAW_OF_LIFEDESCRIPT = """Infligge il 100% dei danni ATT a un nemico. Se il bersaglio sanguina, cura dell'85% dei danni inflitti. Altrimenti applica Sanguinamento.""",
 	SKILLPRIMAL_ROAR = 'Ruggito Primordiale',
-	SKILLPRIMAL_ROARDESCRIPT = """Deal 40% MATK Mind damage to all enemies. Chance to inflict Fear and Silence. Heal the user for 235% of the caster's ATK.""", # MISSING TRANSLATION
+	SKILLPRIMAL_ROARDESCRIPT = """Infligge il 40% dell'ATTM come danno di Mente a tutti i nemici. Può infliggere Paura e Silenzio. Cura l'utilizzatore del 235% dell'ATT del lanciatore.""",
 	SKILLMAD_DASH = 'Scatto Folle',
-	SKILLMAD_DASHDESCRIPT = """Deal 110% ATK damage to a row. Chance to inflict Bleed. At 3+ stacks of {color=aqua|Bloodthirst}, consume 1 stack to reuse this move on a random enemy.""", # MISSING TRANSLATION
+	SKILLMAD_DASHDESCRIPT = """Infligge il 110% dei danni ATT a una fila. Può infliggere Sanguinamento. Con 3+ cariche di {color=aqua|Sete di sangue}, consuma 1 carica per riusare questa mossa su un nemico casuale.""",
 	SKILLREGRESSION_CURSE_RUN_AMOK = 'Maledizione della Regressione: Furia Cieca',
-	SKILLREGRESSION_CURSE_RUN_AMOKDESCRIPT = """Deal 110% damage to a single target
-Deal +30% damage against an enemy that has Bleed.
-If the target doesn't have Bleed, Leon gains 1 stack of Fragile.
-Consume 1 stack of {color=aqua|Bloodthirst} to reuse this move against a random target until this unit no longer has {color=aqua|Bloodthirst}.""", # MISSING TRANSLATION
+	SKILLREGRESSION_CURSE_RUN_AMOKDESCRIPT = """Infligge il 110% dei danni a un singolo bersaglio
+Infligge +30% di danni contro un nemico che ha Sanguinamento.
+Se il bersaglio non ha Sanguinamento, Leon ottiene 1 carica di Fragile.
+Consuma 1 carica di {color=aqua|Sete di sangue} per riusare questa mossa su un bersaglio casuale finché questa unità ha {color=aqua|Sete di sangue}.""",
 	SKILLMANCHINEEL_APPLE = 'Mela di Manchineel',
-	SKILLMANCHINEEL_APPLEDESCRIPT = """Deal 120% MATK Earth magic damage to all enemies and inflict Poison.""", # MISSING TRANSLATION
+	SKILLMANCHINEEL_APPLEDESCRIPT = """Infligge il 120% dell'ATTM come danno magico di Terra a tutti i nemici e applica Veleno.""",
 	SKILLSMOTHERING_KUDZU = 'Kudzu Soffocante',
-	SKILLSMOTHERING_KUDZUDESCRIPT = """Summon a {color=aqua|Kudzu} plant that engulfs and suffocates a random enemy in melee range, massively reducing their Speed and rendering them unable to act until the {color=aqua|Kudzu} plant is killed.""", # MISSING TRANSLATION
+	SKILLSMOTHERING_KUDZUDESCRIPT = """Evoca una pianta di {color=aqua|Kudzu} che avvolge e soffoca un nemico casuale a distanza di mischia, riducendone drasticamente la Velocità e impedendogli di agire finché la pianta di {color=aqua|Kudzu} non viene uccisa.""",
 	SKILLENGULF_BY_EVERGREEN = 'Inghiottito dal Sempreverde',
-	SKILLENGULF_BY_EVERGREENDESCRIPT = """Engulf the target, preventing them from acting until the user is defeated.""", # MISSING TRANSLATION
+	SKILLENGULF_BY_EVERGREENDESCRIPT = """Inghiotte il bersaglio, impedendogli di agire finché l'utilizzatore non viene sconfitto.""",
 	SKILLSUFFOCATING_GREENERY = 'Verde Soffocante',
-	SKILLSUFFOCATING_GREENERYDESCRIPT = """Inflict Poison. Deal 15% Max HP damage. If the caster is Burning, deal 25% Max HP damage instead.""", # MISSING TRANSLATION
+	SKILLSUFFOCATING_GREENERYDESCRIPT = """Applica Veleno. Infligge danni pari al 15% dei PS massimi. Se il lanciatore sta bruciando, infligge il 25% dei PS massimi.""",
 	SKILLSENSING_NUTRIENT = 'la sua liana cerca una nuova vittima...',
-	SKILLSENSING_NUTRIENTDESCRIPT = """Allow {color=aqua|Engulf by Evergreen} to be used next turn.""", # MISSING TRANSLATION
+	SKILLSENSING_NUTRIENTDESCRIPT = """Permette di usare {color=aqua|Inghiottito dal sempreverde} al turno successivo.""",
 	SKILLGRASS_GRAZE_BACK = 'L\'Erba che Contrattacca',
-	SKILLGRASS_GRAZE_BACKDESCRIPT = """Deal 100% ATK {color=yellow|Earth} damage and restore HP equal to 90% of the damage dealt.""", # MISSING TRANSLATION
+	SKILLGRASS_GRAZE_BACKDESCRIPT = """Infligge il 100% dei danni ATT {color=yellow|Terra} e ripristina PS pari al 90% dei danni inflitti.""",
 	SKILLCURSE_PRIMEVAL_REGRESSION = 'Maledizione: Regressione Primordiale',
-	SKILLCURSE_PRIMEVAL_REGRESSIONDESCRIPT = """Inflict {color=aqua|Primeval Regression Curse}, causing the target to attack random units indiscriminately.""", # MISSING TRANSLATION
+	SKILLCURSE_PRIMEVAL_REGRESSIONDESCRIPT = """Infligge {color=aqua|Maledizione della Regressione primordiale}, spingendo il bersaglio ad attaccare unità casuali senza distinzione.""",
 	SKILLPRIMEVAL_MADNESS = 'Follia Primordiale',
 	SKILLLIANA_FLOGGING = 'Frustata di Liana',
-	SKILLLIANA_FLOGGINGDESCRIPT = """Deal 65% ATK damage to 3 random targets. Each hit has a Chance to inflict Stun.""", # MISSING TRANSLATION
+	SKILLLIANA_FLOGGINGDESCRIPT = """Infligge il 65% dei danni ATT a 3 bersagli casuali. Ogni colpo ha una probabilità di infliggere Stordimento.""",
 	SKILLIMPOSING_PRESSURE = 'Pressione Imponente',
-	SKILLIMPOSING_PRESSUREDESCRIPT = """Deal 40% MATK Light damage to all enemies. Reduce all enemies' mana by 20% of the caster's MATK. Chance to inflict Fear.""", # MISSING TRANSLATION
+	SKILLIMPOSING_PRESSUREDESCRIPT = """Infligge il 40% dell'ATTM come danno di Luce a tutti i nemici. Riduce il mana di tutti i nemici del 20% dell'ATTM del lanciatore. Può infliggere Paura.""",
 	SKILLGORING_RUSH = 'Carica Trafiggente',
-	SKILLGORING_RUSHDESCRIPT = """Deal 100% ATK {color=yellow|Earth} damage and inflict 1 turn of stun. On miss: On miss: Reuse this skill to the one behind the first target.""", # MISSING TRANSLATION
+	SKILLGORING_RUSHDESCRIPT = """Infligge il 100% dei danni ATT {color=yellow|Terra} e applica 1 turno di stordimento. In caso di mancato colpo: riusa questa abilità su chi si trova dietro il primo bersaglio.""",
 	SKILLGRAZE_THE_GRASS = 'Pascola l\'Erba',
-	SKILLGRAZE_THE_GRASSDESCRIPT = """Deal 110% ATK {color=yellow|Earth} damage to a target. If the target has Regen, steal it.""", # MISSING TRANSLATION
+	SKILLGRAZE_THE_GRASSDESCRIPT = """Infligge il 110% dei danni ATT {color=yellow|Terra} a un bersaglio. Se il bersaglio ha Rigenerazione, gliela ruba.""",
 	SKILLGRAZE_THE_GRASS_PRIORITY = 'Pascola l\'Erba',
-	SKILLGRAZE_THE_GRASS_PRIORITYDESCRIPT = """(Prioritize targets with Regen) Deal 110% ATK {color=yellow|Earth} damage to a target. If the target has Regen, steal it.""", # MISSING TRANSLATION
+	SKILLGRAZE_THE_GRASS_PRIORITYDESCRIPT = """(Dà priorità ai bersagli con Rigenerazione) Infligge il 110% dei danni ATT {color=yellow|Terra} a un bersaglio. Se il bersaglio ha Rigenerazione, gliela ruba.""",
 	SKILLWILD_TRAMPLING = 'Calpestio Selvaggio',
-	SKILLWILD_TRAMPLINGDESCRIPT = """Deal 65% ATK damage to 3 random targets. Each hit has a Chance to inflict Stun.""", # MISSING TRANSLATION
+	SKILLWILD_TRAMPLINGDESCRIPT = """Infligge il 65% dei danni ATT a 3 bersagli casuali. Ogni colpo ha una probabilità di infliggere Stordimento.""",
 	SKILLHOW_DISSAPOINTING = 'Che delusione...',
-	SKILLHOW_DISSAPOINTINGDESCRIPT = """Deal 120% MATK {color=yellow|Earth} damage to all enemies. Chance to inflict Stun and Ensnare.""", # MISSING TRANSLATION
+	SKILLHOW_DISSAPOINTINGDESCRIPT = """Infligge il 120% dell'ATTM come danno {color=yellow|Terra} a tutti i nemici. Può infliggere Stordimento e Intrappolamento.""",
 	SKILLMUDDY_WATER = 'Acqua Fangosa',
-	SKILLMUDDY_WATERDESCRIPT = """Deal 130% MATK {color=yellow|Water} damage to all targets. Inflict Wet. Chance to inflict Blind and Ensnare.""", # MISSING TRANSLATION
+	SKILLMUDDY_WATERDESCRIPT = """Infligge il 130% dell'ATTM come danno {color=yellow|Acqua} a tutti i bersagli. Applica Bagnato. Può infliggere Accecamento e Intrappolamento.""",
 	SKILLENCROACHING_DUSK = 'Crepuscolo Incombente',
-	SKILLENCROACHING_DUSKDESCRIPT = """Gain {color=aqua|Fading Light}.""", # MISSING TRANSLATION
+	SKILLENCROACHING_DUSKDESCRIPT = """Concede {color=aqua|Luce morente}.""",
 	SKILLNIGHT_NIGHT = 'Buonanotte',
-	SKILLNIGHT_NIGHTDESCRIPT = """Deal 10% MATK {color=yellow|Dark} damage to all enemies. Inflict {color=aqua|Binding Shadow}, {color=aqua|In the Shadow}, and Blind on all enemies.""", # MISSING TRANSLATION
+	SKILLNIGHT_NIGHTDESCRIPT = """Infligge il 10% dell'ATTM come danno {color=yellow|Oscurità} a tutti i nemici. Applica {color=aqua|Ombra vincolante}, {color=aqua|Nell'ombra} e Accecamento a tutti i nemici.""",
 	SKILLSILENT_NIGHT = 'Notte Silenziosa',
-	SKILLSILENT_NIGHTDESCRIPT = """Remove Silence from self. Gain {color=aqua|Unholy Night}.""", # MISSING TRANSLATION
+	SKILLSILENT_NIGHTDESCRIPT = """Rimuove Silenzio da sé. Concede {color=aqua|Notte empia}.""",
 	SKILLRAZE_THE_LIGHT = 'Annienta la Luce',
-	SKILLRAZE_THE_LIGHTDESCRIPT = """Deal 90% MATK {color=yellow|Dark} damage to a line. Inflict {color=aqua|In the Shadow} and Blind. If the target already has {color=aqua|In the Shadow}, inflict {color=aqua|Binding Shadow}.""", # MISSING TRANSLATION
+	SKILLRAZE_THE_LIGHTDESCRIPT = """Infligge il 90% dell'ATTM come danno {color=yellow|Oscurità} a una linea. Applica {color=aqua|Nell'ombra} e Accecamento. Se il bersaglio ha già {color=aqua|Nell'ombra}, applica {color=aqua|Ombra vincolante}.""",
 	SKILLBUMP_IN_THE_NIGHT = 'Rumore nella Notte',
-	SKILLBUMP_IN_THE_NIGHTDESCRIPT = """Deal 130% MATK {color=yellow|Dark} damage to a target. Inflict Bleed, Shred and Stun.""", # MISSING TRANSLATION
+	SKILLBUMP_IN_THE_NIGHTDESCRIPT = """Infligge il 130% dell'ATTM come danno {color=yellow|Oscurità} a un bersaglio. Applica Sanguinamento, Lacerazione e Stordimento.""",
 	SKILLSKEWING_SHADOW = 'Ombra Distorcente',
-	SKILLSKEWING_SHADOWDESCRIPT = """Deal 70% MATK {color=yellow|Dark} damage to all enemies. Deal +250% extra damage to targets affected by {color=aqua|Binding Shadow}.""", # MISSING TRANSLATION
+	SKILLSKEWING_SHADOWDESCRIPT = """Infligge il 70% dell'ATTM come danno {color=yellow|Oscurità} a tutti i nemici. Infligge +250% di danni extra ai bersagli sotto {color=aqua|Ombra vincolante}.""",
 	SKILLSUMMON_RANDOM_DK_GUARD = 'Chiama Rinforzi',
-	SKILLSUMMON_RANDOM_DK_GUARDDESCRIPT = """Summon a Dwarven Skirmisher, Dwarven Shielder, or Obsidian Golem.""", # MISSING TRANSLATION
+	SKILLSUMMON_RANDOM_DK_GUARDDESCRIPT = """Evoca uno Scaramucciatore nano, uno Scudiere nano o un Golem di ossidiana.""",
 	SKILLKILL_THEM_NOW = 'Uccideteli ORA!',
-	SKILLKILL_THEM_NOWDESCRIPT = """Apply {color=aqua|Execution Order} to a target in melee range and Taunt all allies to that unit.""", # MISSING TRANSLATION
+	SKILLKILL_THEM_NOWDESCRIPT = """Applica {color=aqua|Ordine di esecuzione} a un bersaglio a distanza di mischia e attira la provocazione di tutti gli alleati su quell'unità.""",
 	SKILLDK_BUFF_ALLY = 'Tu...',
-	SKILLDK_BUFF_ALLYDESCRIPT = """Imbues your allies with power.""", # MISSING TRANSLATION
+	SKILLDK_BUFF_ALLYDESCRIPT = """Infonde potere ai tuoi alleati.""",
 	SKILLREGAL_INCENTIVE = 'Ti concederò un Incentivo Regale',
 	SKILLFORCE_OVERLOAD = 'Sovraccarica il tuo Nucleo, Ora!',
 	SKILLCROSSBOWMEN_ON_MY_COMMAND = 'Balestrieri! Al mio comando!',
-	SKILLCROSSBOWMEN_ON_MY_COMMANDDESCRIPT = """Call down a rain of arrows on a line, dealing 65% ATK damage. Gains more uses with lower Health""", # MISSING TRANSLATION
+	SKILLCROSSBOWMEN_ON_MY_COMMANDDESCRIPT = """Fa piovere frecce su una linea, infliggendo il 65% dei danni ATT. Ottiene più utilizzi con la salute bassa""",
 	SKILLDK_BLOW_EM_UP = 'Fateli saltare in aria!! Coprirò personalmente i costi di riparazione.',
-	SKILLDK_BLOW_EM_UPDESCRIPT = """Call for a bombardment against his enemy.
-Deal 110% MATK Fire damage to 2-3 random targets with a Chance to inflict Knock Prone.
-Repeat 2 times. Repeats more times with lower health""", # MISSING TRANSLATION
+	SKILLDK_BLOW_EM_UPDESCRIPT = """Chiama un bombardamento contro il suo nemico.
+Infligge il 110% dell'ATTM come danno da Fuoco a 2-3 bersagli casuali con una probabilità di Atterramento.
+Si ripete 2 volte. Si ripete più volte con la salute bassa""",
 	SKILLEMPEROR_HAMMERFALL = 'Colpo di Maglio dell\'Imperatore',
-	SKILLEMPEROR_HAMMERFALLDESCRIPT = """Deal 150% ATK {color=yellow|Earth} damage and inflict Stun, followed by a shockwave that deals 30% ATK damage to all enemies and has a chance to inflict Knock Prone.""", # MISSING TRANSLATION
+	SKILLEMPEROR_HAMMERFALLDESCRIPT = """Infligge il 150% dei danni ATT {color=yellow|Terra} e applica Stordimento, seguito da un'onda d'urto che infligge il 30% dei danni ATT a tutti i nemici con una probabilità di Atterramento.""",
 	SKILLOPEN_THE_MAGMA_CHAMBER = 'Ecco fatto! Aprite il Cancello della Camera Magmatica!!!',
-	SKILLOPEN_THE_MAGMA_CHAMBERDESCRIPT = """Deal (190% MATK + 34% target Max HP) fire magic damage to all enemies.
-EVERYONE including allies and caster gain burn.""", # MISSING TRANSLATION
+	SKILLOPEN_THE_MAGMA_CHAMBERDESCRIPT = """Infligge (190% ATTM + 34% dei PS massimi del bersaglio) come danno magico di Fuoco a tutti i nemici.
+TUTTI, alleati e lanciatore compresi, subiscono Bruciatura.""",
 	SKILLTREMOR_WAVE = 'Onda Sismica',
-	SKILLTREMOR_WAVEDESCRIPT = """Deal 40% ATK {color=yellow|Earth} damage to all enemies. Chance to inflict Knock Prone.""", # MISSING TRANSLATION
+	SKILLTREMOR_WAVEDESCRIPT = """Infligge il 40% dei danni ATT {color=yellow|Terra} a tutti i nemici. Può infliggere Atterramento.""",
 	SKILLDOUBLE_BITTED_AXE = 'Ascia bipenne',
-	SKILLDOUBLE_BITTED_AXEDESCRIPT = """Hit the target twice, dealing 60% ATK damage per hit. Inflicts Bleed.""", # MISSING TRANSLATION
+	SKILLDOUBLE_BITTED_AXEDESCRIPT = """Colpisce il bersaglio due volte per il 60% dei danni ATT per colpo. Applica Sanguinamento.""",
 	SKILLPRISMATIC_BEAM = 'Raggio Prismatico',
-	SKILLPRISMATIC_BEAMDESCRIPT = """Deal 130% MATK Light damage to a single target. Inflicts Blind.""", # MISSING TRANSLATION
+	SKILLPRISMATIC_BEAMDESCRIPT = """Infligge il 130% dell'ATTM come danno di Luce a un singolo bersaglio. Acceca.""",
 	SKILROCK_SLIDE = 'Frana',
-	SKILLROCK_SLIDEDESCRIPT = """Send rocks flying at enemies, with a chance to deal 90% MATK {color=yellow|Earth} damage. Chance to Stun targets hit.""", # MISSING TRANSLATION
+	SKILLROCK_SLIDEDESCRIPT = """Scaglia rocce contro i nemici, con una probabilità di infliggere il 90% dell'ATTM come danno {color=yellow|Terra}. Può stordire i bersagli colpiti.""",
 	SKILLACCELERATING_PLUNGE = 'Tuffo Accelerato',
-	SKILLACCELERATING_PLUNGEDESCRIPT = """If this unit does not have an immobilizing effect, gain a stack of [{color=aqua|Catastrophic Momentum}].
-Otherwise, cleanse all immobilizing effects.""", # MISSING TRANSLATION
+	SKILLACCELERATING_PLUNGEDESCRIPT = """Se questa unità non ha un effetto immobilizzante, guadagna una carica di [{color=aqua|Slancio catastrofico}].
+Altrimenti rimuove tutti gli effetti immobilizzanti.""",
 	SKILLCOMET_DIVE = 'Tuffo della Cometa',
-	SKILLCOMET_DIVEDESCRIPT = """Deal 140% ATK damage to the target with [{color=aqua|Prey of Bird}].
-At 2+ stacks of [{color=aqua|Catastrophic Momentum}], cause a shockwave that deals 165% MATK {color=yellow|Air} damage to all enemies and inflicts Knock Prone. The shockwave can be blocked by some effects like {color=aqua|Earth Shield}.""", # MISSING TRANSLATION
+	SKILLCOMET_DIVEDESCRIPT = """Infligge il 140% dei danni ATT al bersaglio con [{color=aqua|Preda dell'uccello}].
+Con 2+ cariche di [{color=aqua|Slancio catastrofico}], provoca un'onda d'urto che infligge il 165% dell'ATTM come danno {color=yellow|Aria} a tutti i nemici e applica Atterramento. L'onda può essere bloccata da effetti come {color=aqua|Scudo di terra}.""",
 	SKILLTORNADO = 'Tornado',
-	SKILLTORNADODESCRIPT = """Summon a Tornado.""", # MISSING TRANSLATION
+	SKILLTORNADODESCRIPT = """Evoca un Tornado.""",
 	SKILLDOWNBURST_GUST = 'Raffica Discendente',
-	SKILLDOWNBURST_GUSTDESCRIPT = """Deal 120% MATK {color=yellow|Air} damage to the frontmost enemy in each row. Chancet to inflict Knock Prone and Blind.""", # MISSING TRANSLATION
+	SKILLDOWNBURST_GUSTDESCRIPT = """Infligge il 120% dell'ATTM come danno {color=yellow|Aria} al nemico più avanzato di ogni fila. Può infliggere Atterramento e Accecamento.""",
 	SKILLDEAFENING_SHRIEK = 'Urlo Assordante',
-	SKILLDEAFENING_SHRIEKDESCRIPT = """Deal 40% MATK {color=yellow|Air} damage. Chance to inflict Stun and Silence.""", # MISSING TRANSLATION
+	SKILLDEAFENING_SHRIEKDESCRIPT = """Infligge il 40% dell'ATTM come danno {color=yellow|Aria}. Può infliggere Stordimento e Silenzio.""",
 	SKILLMULTILATE_PREY = 'Mutila la Preda',
-	SKILLMULTILATE_PREYDESCRIPT = """Deal 60% ATK damage to the target 3 times, with a chance to inflict Bleed. Deal more damage against Knocked Prone and immobilized targets.""", # MISSING TRANSLATION
+	SKILLMULTILATE_PREYDESCRIPT = """Infligge il 60% dei danni ATT al bersaglio 3 volte, con una probabilità di infliggere Sanguinamento. Infligge più danni ai bersagli atterrati e immobilizzati.""",
 	SKILLCHARGE_THROUGH = 'Carica Sfondante',
-	SKILLCHARGE_THROUGHDESCRIPT = """Deal 100% ATK damage to a row with Chance of inflicting Knock Prone.""", # MISSING TRANSLATION
+	SKILLCHARGE_THROUGHDESCRIPT = """Infligge il 100% dei danni ATT a una fila con una probabilità di Atterramento.""",
 	SKILLSTORM_PATH = 'Sentiero della Tempesta',
-	SKILLSTORM_PATHDESCRIPT = """Deal 130% MATK {color=yellow|Air} damage to a row. Randomly inflict Blind, Knock Prone, or Stun. Deal +50% extra damage against flying enemies and remove {color=aqua|Flight}. On skill end: Die.""", # MISSING TRANSLATION
-	SKILLSPLIT_ARMOR_SPILL_BLOOD = """Split the Armor, Spill the blood""", # MISSING TRANSLATION
-	SKILLSPLIT_ARMOR_SPILL_BLOODDESCRIPT = """Attack twice, dealing 45% ATK damage per hit. The first hit inflicts Shred; the second inflicts Bleed and 50% healing reduction.""", # MISSING TRANSLATION
-	SKILLDUSTY_WHIRLWIND = """Dusty Whirlwind""", # MISSING TRANSLATION
-	SKILLDUSTY_WHIRLWINDDESCRIPT = """Deal 85% ATK damage to the melee line, with a Chance to inflict Blind.""", # MISSING TRANSLATION
-	SKILLBLURRING_FLURRY_OF_BLADE = """Blurring Flurry of Blade""", # MISSING TRANSLATION
-	SKILLBLURRING_FLURRY_OF_BLADEDESCRIPT = """Hit the enemy 3 times for 35% ATK damage. Each hit has a Chance to inflict Bleed. Gain {color=aqua|In the Shadow}.""", # MISSING TRANSLATION
-	SKILLBLINDING_CROSS_SLASH = """Blinding Cross Slash""", # MISSING TRANSLATION
-	SKILLBLINDING_CROSS_SLASHDESCRIPT = """Deal 25% ATK damage to enemies in a row and a line. Each hit has a Chance to inflict Blind.""", # MISSING TRANSLATION
+	SKILLSTORM_PATHDESCRIPT = """Infligge il 130% dell'ATTM come danno {color=yellow|Aria} a una fila. Applica casualmente Accecamento, Atterramento o Stordimento. Infligge +50% di danni extra ai nemici volanti e rimuove {color=aqua|Volo}. Al termine dell'abilità: muore.""",
+	SKILLSPLIT_ARMOR_SPILL_BLOOD = """Spacca l'armatura, versa il sangue""",
+	SKILLSPLIT_ARMOR_SPILL_BLOODDESCRIPT = """Attacca due volte per il 45% dei danni ATT per colpo. Il primo colpo applica Lacerazione; il secondo applica Sanguinamento e una riduzione delle cure del 50%.""",
+	SKILLDUSTY_WHIRLWIND = """Turbine polveroso""",
+	SKILLDUSTY_WHIRLWINDDESCRIPT = """Infligge l'85% dei danni ATT alla linea di mischia con una probabilità di infliggere Accecamento.""",
+	SKILLBLURRING_FLURRY_OF_BLADE = """Raffica di lama sfocata""",
+	SKILLBLURRING_FLURRY_OF_BLADEDESCRIPT = """Colpisce il nemico 3 volte per il 35% dei danni ATT. Ogni colpo ha una probabilità di infliggere Sanguinamento. Concede {color=aqua|Nell'ombra}.""",
+	SKILLBLINDING_CROSS_SLASH = """Fendente incrociato accecante""",
+	SKILLBLINDING_CROSS_SLASHDESCRIPT = """Infligge il 25% dei danni ATT ai nemici in una fila e in una linea. Ogni colpo ha una probabilità di infliggere Accecamento.""",
 	SKILLDISPOSAL = """Disposal""", # MISSING TRANSLATION
-	SKILLDISPOSALDESCRIPT = """Deal 150% ATK damage. Deals extra damage to Blinded and Bleeding enemies""", # MISSING TRANSLATION
-	RUNNING_AWAY_TEXT = """%s: I gotta get out of here!""", # MISSING TRANSLATION
-	SKILLHOWLING_RISING_AXE = """Howling Rising Axe""", # MISSING TRANSLATION
-	SKILLHOWLING_RISING_AXEDESCRIPT = """Hold up the axe and scream at enemies in an attempt to intimidate them. Gain {color=aqua|Axe Raised}. Chance to inflict Fear.""", # MISSING TRANSLATION
-	SKILLCLUMSY_LOG_SPLITTER = """Clumsy Log Splitter""", # MISSING TRANSLATION
-	SKILLCLUMSY_LOG_SPLITTERDESCRIPT = """Deal 155% ATK damage to the target... But it's very inaccurate.""", # MISSING TRANSLATION
-	SKILLBRUTAL_AXE_SWING = """Brutal Axe Swing!""", # MISSING TRANSLATION
-	SKILLBRUTAL_AXE_SWINGDESCRIPT = """Hit all enemies in a line for 90% ATK damage, but hits your allies sometimes.""", # MISSING TRANSLATION
-	SKILLFAT_BANDIT_CHARGE = """CHARGE!!!""", # MISSING TRANSLATION
-	SKILLFAT_BANDIT_CHARGEDESCRIPT = """Deal 110% ATK damage to a target. Hit or miss... take recoil damage.""", # MISSING TRANSLATION
-	SKILLCONFUSING_ORDER = """Confusing Order?""", # MISSING TRANSLATION
-	SKILLCONFUSING_ORDERDESCRIPT = """Grant an ally the {color=aqua|Genius Plan...?} buff! ...but also Stun them...""", # MISSING TRANSLATION
-	SKILLREDHEAD_MASTERFUL_SWORDMANSHIP = """Behold! My Masterful Swordmanship!""", # MISSING TRANSLATION
-	SKILLREDHEAD_MASTERFUL_SWORDMANSHIPDESCRIPT = """Attack an enemy 3 times, dealing 45% ATK damage per hit... with a poor precision, though. It's just him flailing his sword.""", # MISSING TRANSLATION
-	SKILLBEAT_EM_UP = """Beat 'em up!""", # MISSING TRANSLATION
-	SKILLBEAT_EM_UPDESCRIPT = """Order all allies, including the caster, to attack a random enemy in melee range, dealing 100% ATK damage. There is a Chance they might accidentally hit each other instead.""", # MISSING TRANSLATION
-	SKILLREDHEAD_MAGIC = """Sorcerer Art: Hellfire Bullet!!""", # MISSING TRANSLATION
-	SKILLREDHEAD_MAGICDESCRIPT = """The boss's strongest magical move!! Definitely gonna deal a lot of Fire damage! (nervous chuckle)... Prepare yourself!""", # MISSING TRANSLATION
-	SKILLSTRAIGHT_FORWARD_SLASH = """Straight-forward Slash""", # MISSING TRANSLATION
-	SKILLSTRAIGHT_FORWARD_SLASHDESCRIPT = """Deal 85% of ATK as physical damage. The special thing about it is there's nothing special about it!""", # MISSING TRANSLATION
-	SKILLGOD_THIS_IS_EMBARRASSING = """God, this is embarrassing...""", # MISSING TRANSLATION
-	SKILLGOD_THIS_IS_EMBARRASSINGDESCRIPT = """Does nothing.""", # MISSING TRANSLATION
-	SKILLFLIMSY_DAGGER_TOSS = """Flimsy Dagger Toss""", # MISSING TRANSLATION
-	SKILLFLIMSY_DAGGER_TOSSDESCRIPT = """Make a ranged attack against an enemy, dealing 65% ATK damage... If it hits.""", # MISSING TRANSLATION
-	SKILLDONT_MIND_ME = """...Don't Mind me""", # MISSING TRANSLATION
-	SKILLDONT_MIND_MEDESCRIPT = """Gain '{color=aqua|In the Shadows}'.""", # MISSING TRANSLATION
+	SKILLDISPOSALDESCRIPT = """Infligge il 150% dei danni ATT. Infligge danni extra ai nemici accecati e sanguinanti""",
+	RUNNING_AWAY_TEXT = """%s: Devo andarmene di qui!""",
+	SKILLHOWLING_RISING_AXE = """Ascia levata ululante""",
+	SKILLHOWLING_RISING_AXEDESCRIPT = """Solleva l'ascia e urla contro i nemici per intimidirli. Concede {color=aqua|Ascia sollevata}. Può infliggere Paura.""",
+	SKILLCLUMSY_LOG_SPLITTER = """Spaccalegna maldestro""",
+	SKILLCLUMSY_LOG_SPLITTERDESCRIPT = """Infligge il 155% dei danni ATT al bersaglio... ma è molto impreciso.""",
+	SKILLBRUTAL_AXE_SWING = """Fendente d'ascia brutale!""",
+	SKILLBRUTAL_AXE_SWINGDESCRIPT = """Colpisce tutti i nemici in una linea per il 90% dei danni ATT, ma a volte colpisce anche i tuoi alleati.""",
+	SKILLFAT_BANDIT_CHARGE = """ALLA CARICA!!!""",
+	SKILLFAT_BANDIT_CHARGEDESCRIPT = """Infligge il 110% dei danni ATT a un bersaglio. Colpito o mancato... subisce un contraccolpo.""",
+	SKILLCONFUSING_ORDER = """Ordine confuso?""",
+	SKILLCONFUSING_ORDERDESCRIPT = """Concede a un alleato il potenziamento {color=aqua|Un piano geniale...?}! ...ma lo stordisce anche...""",
+	SKILLREDHEAD_MASTERFUL_SWORDMANSHIP = """Rimirate! La mia magistrale arte della spada!""",
+	SKILLREDHEAD_MASTERFUL_SWORDMANSHIPDESCRIPT = """Attacca un nemico 3 volte, infliggendo il 45% dei danni ATT per colpo... con una precisione pessima, però. Sta solo agitando la spada.""",
+	SKILLBEAT_EM_UP = """Pestateli!""",
+	SKILLBEAT_EM_UPDESCRIPT = """Ordina a tutti gli alleati, lanciatore incluso, di attaccare un nemico casuale a distanza di mischia per il 100% dei danni ATT. C'è la possibilità che si colpiscano a vicenda per sbaglio.""",
+	SKILLREDHEAD_MAGIC = """Arte dello stregone: Proiettile infernale!!""",
+	SKILLREDHEAD_MAGICDESCRIPT = """La mossa magica più potente del boss!! Farà di sicuro un sacco di danni da Fuoco! (risatina nervosa)... Preparati!""",
+	SKILLSTRAIGHT_FORWARD_SLASH = """Fendente diretto""",
+	SKILLSTRAIGHT_FORWARD_SLASHDESCRIPT = """Infligge l'85% dell'ATT come danno fisico. La cosa speciale è che non ha nulla di speciale!""",
+	SKILLGOD_THIS_IS_EMBARRASSING = """Dio, che imbarazzo...""",
+	SKILLGOD_THIS_IS_EMBARRASSINGDESCRIPT = """Non fa nulla.""",
+	SKILLFLIMSY_DAGGER_TOSS = """Lancio di pugnale penoso""",
+	SKILLFLIMSY_DAGGER_TOSSDESCRIPT = """Effettua un attacco a distanza contro un nemico per il 65% dei danni ATT... se colpisce.""",
+	SKILLDONT_MIND_ME = """...Non badate a me""",
+	SKILLDONT_MIND_MEDESCRIPT = """Concede «{color=aqua|Nell'ombra}».""",
 	SKILL_ASMEDAI_LUST_DRAIN = """Ashmedai drain %s's lust to empower himself!
 """, # MISSING TRANSLATION
 	SKILLBAD_TOUCH = """Bad Touch""", # MISSING TRANSLATION
 	SKILLBAD_TOUCHDESCRIPT = """Deal 90% ATK damage to a target. Inflict {color=aqua|Arousal} on hit.""", # MISSING TRANSLATION
-	SKILLAMBUSHING_TENDRILS = """Ambushing Tendrils""", # MISSING TRANSLATION
-	SKILLAMBUSHING_TENDRILSDESCRIPT = """Apply Tendril Trap to random enemies. The trap activates when the target uses a spell.""", # MISSING TRANSLATION
+	SKILLAMBUSHING_TENDRILS = """Viticci in agguato""",
+	SKILLAMBUSHING_TENDRILSDESCRIPT = """Applica Trappola di viticci a nemici casuali. La trappola si attiva quando il bersaglio usa un incantesimo.""",
 	SKILLVILE_PHEROMONE = """Vile Pheromone""", # MISSING TRANSLATION
 	SKILLVILE_PHEROMONEDESCRIPT = """Deal {color=yellow|Mind} damage to all enemies. Inflict 1–5 {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	SKILLAPHRODISIAC_BOMBARDMENT = """Aphrodisiac Bombardment""", # MISSING TRANSLATION
 	SKILLAPHRODISIAC_BOMBARDMENTDESCRIPT = """Deal 65% MATK {color=yellow|Dark} damage to random enemies. Inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
-	SKILLTIDE_OF_TENTACLES = """Tide of Tentacles""", # MISSING TRANSLATION
-	SKILLTIDE_OF_TENTACLESDESCRIPT = """Deal 85% ATK {color=yellow|Dark} damage to the front-most enemy in each row. Inflict {color=aqua|Ensnared}.""", # MISSING TRANSLATION
-	SKILLASHMEDAI_WWBOP = """Welcome to My Belly, the Bed of Pleasure""", # MISSING TRANSLATION
-	SKILLASHMEDAI_WWBOPDESCRIPT = """Can only be used on a {color=aqua|Stunned} target.
-{color=aqua|Swallow} a target. A {color=aqua|Swallowed} target cannot act, cannot be healed by allies, and loses 20% HP at the start of its turn.""", # MISSING TRANSLATION
-	SKILLASHMEDAI_REGEN_APPENDAGE = """Regenerate Appendage""", # MISSING TRANSLATION
-	SKILLASHMEDAI_REGEN_APPENDAGEDESCRIPT = """Revive a Tentacle Appendage at the cost of the user's HP.""", # MISSING TRANSLATION
-	SKILLTENTACLE_LASSO = """Tentacle Lasso""", # MISSING TRANSLATION
-	SKILLTENTACLE_LASSODESCRIPT = """Deal damage and inflict {color=aqua|Ensnared} for 3 turns.""", # MISSING TRANSLATION
-	SKILLSTICKY_FLUIDS = """Sticky Fluids""", # MISSING TRANSLATION
-	SKILLSTICKY_FLUIDSDESCRIPT = """Deal 65% MATK {color=yellow|Water} damage to 1–3 random enemies with a chance to inflict {color=aqua|Ensnared} for 2 turns.""", # MISSING TRANSLATION
-	SKILLCONSTRICTING_BIND = """Constricting Bind""", # MISSING TRANSLATION
+	SKILLTIDE_OF_TENTACLES = """Marea di tentacoli""",
+	SKILLTIDE_OF_TENTACLESDESCRIPT = """Infligge l'85% dei danni ATT {color=yellow|Oscurità} al nemico più avanzato di ogni fila. Applica {color=aqua|Intrappolamento}.""",
+	SKILLASHMEDAI_WWBOP = """Benvenuto nel mio ventre""",
+	SKILLASHMEDAI_WWBOPDESCRIPT = """Può essere usata solo su un bersaglio {color=aqua|Stordito}.
+{color=aqua|Inghiotte} un bersaglio. Un bersaglio {color=aqua|Inghiottito} non può agire, non può essere curato dagli alleati e perde il 20% dei PS all'inizio del proprio turno.""",
+	SKILLASHMEDAI_REGEN_APPENDAGE = """Rigenera appendice""",
+	SKILLASHMEDAI_REGEN_APPENDAGEDESCRIPT = """Fa rivivere un'Appendice tentacolare al costo dei PS dell'utilizzatore.""",
+	SKILLTENTACLE_LASSO = """Lazo di tentacoli""",
+	SKILLTENTACLE_LASSODESCRIPT = """Infligge danni e applica {color=aqua|Intrappolamento} per 3 turni.""",
+	SKILLSTICKY_FLUIDS = """Fluidi appiccicosi""",
+	SKILLSTICKY_FLUIDSDESCRIPT = """Infligge il 65% dell'ATTM come danno {color=yellow|Acqua} a 1-3 nemici casuali con una probabilità di applicare {color=aqua|Intrappolamento} per 2 turni.""",
+	SKILLCONSTRICTING_BIND = """Vincolo costrittore""",
 	SKILLCONSTRICTING_BINDDESCRIPT = """Can only be used on {color=aqua|Ensnared} targets.
 Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
-	SKILLBURST_FORTH_MY_PULSING_FLESH = """Burst Forth My Pulsing Flesh!""", # MISSING TRANSLATION
-	SKILLBURST_FORTH_MY_PULSING_FLESHDESCRIPT = """Revive all Tentacle Appendages. Deal {color=yellow|Dark} damage to all enemies with a chance to inflict {color=aqua|Stunned}.""", # MISSING TRANSLATION
-	SKILLUMBRAL_REIGN = """Umbral Reign""", # MISSING TRANSLATION
-	SKILLUMBRAL_REIGNDESCRIPT = """Inflict In the Shadow, Blind, and Lost in Darkness.""", # MISSING TRANSLATION
-	SKILLSHADOW_MADE_MANIFEST = """Shadow Made Manifest""", # MISSING TRANSLATION
-	SKILLSHADOW_MADE_MANIFESTDESCRIPT = """Summon a Shadow Monstrosity.""", # MISSING TRANSLATION
-	SKILLSTYGIAN_WAILING = """Stygian Wailing""", # MISSING TRANSLATION
-	SKILLSTYGIAN_WAILINGDESCRIPT = """Deal low {color=yellow|Dark} magic damage to all enemies. Chance to inflict Silence and Fear.""", # MISSING TRANSLATION
-	SKILLTENEBROUS_RAKE = """Tenebrous Rake""", # MISSING TRANSLATION
-	SKILLTENEBROUS_RAKEDESCRIPT = """Deal {color=yellow|Dark} physical damage to enemies in the melee line and inflict Bleed.""", # MISSING TRANSLATION
-	SKILLVOID_DELUGE = """Void Deluge""", # MISSING TRANSLATION
-	SKILLVOID_DELUGEDESCRIPT = """Deal {color=yellow|Dark} magic damage to random targets. Chance to inflict Blind.""", # MISSING TRANSLATION
-	SKILLCALIGINOUS_UNDULATION = """Caliginous Undulation""", # MISSING TRANSLATION
-	SKILLCALIGINOUS_UNDULATIONDESCRIPT = """Deal {color=yellow|Dark} damage to the front-most enemies in each row and inflict Blind.
-	Stun blinded targets.""", # MISSING TRANSLATION
-	SKILLNIXX_ULT = """Pulvis et Umbra Estis!""", # MISSING TRANSLATION
-	SKILLNIXX_ULTDESCRIPT = """Deal {color=yellow|Dark} magic damage to all enemies.
-	Deal increased damage to Blind enemies.
-	Inflict healing reduction on all enemies.
-	Put out Brazier afterward.""", # MISSING TRANSLATION
+	SKILLBURST_FORTH_MY_PULSING_FLESH = """Erompi, mia carne pulsante!""",
+	SKILLBURST_FORTH_MY_PULSING_FLESHDESCRIPT = """Fa rivivere tutte le Appendici tentacolari. Infligge danni {color=yellow|Oscurità} a tutti i nemici con una probabilità di infliggere {color=aqua|Stordimento}.""",
+	SKILLUMBRAL_REIGN = """Regno umbratile""",
+	SKILLUMBRAL_REIGNDESCRIPT = """Applica Nell'ombra, Accecamento e Perso nell'oscurità.""",
+	SKILLSHADOW_MADE_MANIFEST = """Ombra resa manifesta""",
+	SKILLSHADOW_MADE_MANIFESTDESCRIPT = """Evoca una Mostruosità d'ombra.""",
+	SKILLSTYGIAN_WAILING = """Lamento stigio""",
+	SKILLSTYGIAN_WAILINGDESCRIPT = """Infligge lievi danni magici {color=yellow|Oscurità} a tutti i nemici. Può infliggere Silenzio e Paura.""",
+	SKILLTENEBROUS_RAKE = """Graffio tenebroso""",
+	SKILLTENEBROUS_RAKEDESCRIPT = """Infligge danni fisici {color=yellow|Oscurità} ai nemici nella linea di mischia e applica Sanguinamento.""",
+	SKILLVOID_DELUGE = """Diluvio del vuoto""",
+	SKILLVOID_DELUGEDESCRIPT = """Infligge danni magici {color=yellow|Oscurità} a bersagli casuali. Può infliggere Accecamento.""",
+	SKILLCALIGINOUS_UNDULATION = """Ondulazione caliginosa""",
+	SKILLCALIGINOUS_UNDULATIONDESCRIPT = """Infligge danni {color=yellow|Oscurità} ai nemici più avanzati di ogni fila e applica Accecamento.
+	Stordisce i bersagli accecati.""",
+	SKILLNIXX_ULT = """Pulvis et Umbra Estis!""",
+	SKILLNIXX_ULTDESCRIPT = """Infligge danni magici {color=yellow|Oscurità} a tutti i nemici.
+	Infligge danni maggiori ai nemici accecati.
+	Riduce le cure ricevute da tutti i nemici.
+	Poi spegne il braciere.""",
 	SKILLNOTHING = """Nothing""", # MISSING TRANSLATION
-	SKILLNOTHINGDESCRIPT = """Do nothing.""", # MISSING TRANSLATION
-	SKILLSMOTHER_THE_FLAME = """Smother the Flame""", # MISSING TRANSLATION
-	SKILLSMOTHER_THE_FLAMEDESCRIPT = """Can only target an Unlit Brazier. Heal for 100% of this unit's ATK and remove Burn.""", # MISSING TRANSLATION
-	SKILLBUMP_IN_THE_MIDNIGHT = """Bump in the Midnight""", # MISSING TRANSLATION
-	SKILLBUMP_IN_THE_MIDNIGHTDESCRIPT = """Deal {color=yellow|Dark} physical damage to a target. Inflict Bleed, Shred, and Fear.""", # MISSING TRANSLATION
-	SKILLGLINT_OF_THE_SWORD = """Glint of the Sword""", # MISSING TRANSLATION
-	SKILLGLINT_OF_THE_SWORDDESCRIPT = """Stealth-casting skill.
-Deal physical damage to a target and inflict {color=aqua|Blind}.
-If the target is already {color=aqua|Blind}, gain {color=aqua|In the Shadow}.""", # MISSING TRANSLATION
-	SKILLLACERATING_DANCE = """Lacerating Dance""", # MISSING TRANSLATION
-	SKILLLACERATING_DANCEDESCRIPT = """Stealth-casting skill.
-Deal low physical damage to random targets and inflict {color=aqua|Bleed}.
-If a target is {color=aqua|Blind}, also inflict {color=aqua|Shred}.
-If the user is {color=aqua|In the Shadow}, deal increased damage.""", # MISSING TRANSLATION
-	SKILLISOLATE = """Isolate""", # MISSING TRANSLATION
-	SKILLISOLATEDESCRIPT = """Stealth-casting skill.
-Deal physical damage to a backline target and inflict {color=aqua|Blind} on all enemies other than the target.
-If the user is {color=aqua|In the Shadow}, inflict {color=aqua|Close Confrontation} on the main target.""", # MISSING TRANSLATION
+	SKILLNOTHINGDESCRIPT = """Non fare nulla.""",
+	SKILLSMOTHER_THE_FLAME = """Soffocare la fiamma""",
+	SKILLSMOTHER_THE_FLAMEDESCRIPT = """Può bersagliare solo un Braciere spento. Cura per il 100% dell'ATT di questa unità e rimuove Bruciatura.""",
+	SKILLBUMP_IN_THE_MIDNIGHT = """Colpo a mezzanotte""",
+	SKILLBUMP_IN_THE_MIDNIGHTDESCRIPT = """Infligge danni fisici {color=yellow|Oscurità} a un bersaglio. Applica Sanguinamento, Lacerazione e Paura.""",
+	SKILLGLINT_OF_THE_SWORD = """Lampo della spada""",
+	SKILLGLINT_OF_THE_SWORDDESCRIPT = """Abilità lanciata furtivamente.
+Infligge danni fisici a un bersaglio e applica {color=aqua|Accecamento}.
+Se il bersaglio è già {color=aqua|Accecato}, l'utilizzatore ottiene {color=aqua|Nell'ombra}.""",
+	SKILLLACERATING_DANCE = """Danza lacerante""",
+	SKILLLACERATING_DANCEDESCRIPT = """Abilità lanciata furtivamente.
+Infligge lievi danni fisici a bersagli casuali e applica {color=aqua|Sanguinamento}.
+Se un bersaglio è {color=aqua|Accecato}, applica anche {color=aqua|Lacerazione}.
+Se l'utilizzatore è {color=aqua|Nell'ombra}, i danni sono aumentati.""",
+	SKILLISOLATE = """Isola""",
+	SKILLISOLATEDESCRIPT = """Abilità lanciata furtivamente.
+Infligge danni fisici a un bersaglio nelle retrovie e applica {color=aqua|Accecamento} a tutti i nemici tranne lui.
+Se l'utilizzatore è {color=aqua|Nell'ombra}, applica {color=aqua|Confronto ravvicinato} al bersaglio principale.""",
 	SKILLDISENGAGE = """Disengage""", # MISSING TRANSLATION
-	SKILLDISENGAGEDESCRIPT = """Deal low physical damage to a melee target.
-Remove {color=aqua|Disarm}, {color=aqua|Taunt}, {color=aqua|Blind}, {color=aqua|Ensnare}, {color=aqua|Burn}, and {color=aqua|Wet} from self.
-Heal self for a small portion of Max HP.
-Gain {color=aqua|In the Shadow} and {color=aqua|Tightened Grip}.""", # MISSING TRANSLATION
-	SKILLWAKE_OF_BLACKENED_BLADE = """Wake of Blackened Blade""", # MISSING TRANSLATION
-	SKILLWAKE_OF_BLACKENED_BLADEDESCRIPT = """Deal {color=yellow|Dark} damage to the front-most enemies in each row and inflict {color=aqua|Blind}.
-Gain {color=aqua|Blackened Blade}.""", # MISSING TRANSLATION
-	SKILLGREG_LAST_BARK = """I Hate... All of You... All of THIS!!""", # MISSING TRANSLATION
-	SKILLGREG_LAST_BARKDESCRIPT = """Repeatedly deal physical damage to a target.
-Sequentially inflict {color=aqua|Ensnare}, {color=aqua|Disarm}, {color=aqua|Blind}, and {color=aqua|Shred}.
-The last hit deals increased damage.
-{color=red|On Kill: Reset cooldown.}""", # MISSING TRANSLATION
-	SKILLOMINOUS_WHISPERS = """Ominous Whispers""", # MISSING TRANSLATION
-	SKILLOMINOUS_WHISPERSDESCRIPT = """Deal low {color=yellow|Mind} magical damage to all enemies and inflict {color=aqua|Fear}. If target HP is below 50%, also inflict {color=aqua|Shattered}.""", # MISSING TRANSLATION
-	SKILLHEXED_COFFIN_NAIL = """Hexed Coffin Nail""", # MISSING TRANSLATION
-	SKILLHEXED_COFFIN_NAILDESCRIPT = """Deal {color=yellow|Dark} physical damage to an enemy. Inflict {color=aqua|Bleed}. Moderate chance to inflict {color=aqua|Cursed}""", # MISSING TRANSLATION
-	SKILLCRAZED_SPIRIT_POSSESSION = """Crazed Spirit Possession""", # MISSING TRANSLATION
-	SKILLCRAZED_SPIRIT_POSSESSIONDESCRIPT = """Deal physical damage to 2 random rows of enemies. If target is affected by {color=aqua|Fear}, deal additional {color=yellow|Dark} magical damage and inflict {color=aqua|Cursed}.""", # MISSING TRANSLATION
-	SKILLFORCED_EXORCISM = """Forced Exorcism""", # MISSING TRANSLATION
-	SKILLFORCED_EXORCISMDESCRIPT = """Prioritize Cursed enemy. Deal heavy {color=yellow|Light} magical damage to a single target. If the target is {color=aqua|Cursed}, damage the target mana and deal {color=yellow|Dark} magical damage to all their allies. Remove {color=aqua|Cursed} from target.""", # MISSING TRANSLATION
-	SKILLUNDYING_SPIRIT = """Undying Spirit""", # MISSING TRANSLATION
-	SKILLUNDYING_SPIRITDESCRIPT = """Heal self for a small portion of Max HP. Heal more for every enemy that have {color=aqua|Fear} or Defeated.""", # MISSING TRANSLATION
-	SKILLARRIVAL_OF_THE_DEPARTED = """Arrival of the Departed""", # MISSING TRANSLATION
-	SKILLARRIVAL_OF_THE_DEPARTEDDESCRIPT = """Revive all allies and summon Zombies until the team is full.""", # MISSING TRANSLATION
-	SKILLTICKET_PLEASE = """Ticket, Please""", # MISSING TRANSLATION
-	SKILLTICKET_PLEASEDESCRIPT = """Deal {color=yellow|Dark} magical damage to an enemy.
-If the target does not have {color=aqua|One-Way Ticket to Hell}, inflict {color=aqua|One-Way Ticket to Hell}.
-If the target has {color=aqua|One-Way Ticket to Hell}, deal more damage and remove {color=aqua|One-Way Ticket to Hell}.""", # MISSING TRANSLATION
-	SKILLAFTERLIFE_AMENITIES = """Afterlife Amenities""", # MISSING TRANSLATION
-	SKILLAFTERLIFE_AMENITIESDESCRIPT = """Remove {color=aqua|Silence} on self.
-Heal 3 random allies other than self and apply {color=aqua|Dark Gift} to them.""", # MISSING TRANSLATION
-	SKILLDEAD_RUNNING = """Dead Running""", # MISSING TRANSLATION
-	SKILLDEAD_RUNNINGDESCRIPT = """Command all undead minions to randomly attack enemies.""", # MISSING TRANSLATION
-	SKILLEND_OF_THE_LINE = """End of the Line""", # MISSING TRANSLATION
-	SKILLEND_OF_THE_LINEDESCRIPT = """{color=red|Usable only when there's more than 1 ally.}
-Order his minions to explode, each dealing {color=yellow|Dark} magical damage to 2 random melee targets and die afterward.""", # MISSING TRANSLATION
-	SKILLNO_LIGHT_TUNNEL_END = """There's no light at the end of the Tunnel!""", # MISSING TRANSLATION
-	SKILLNO_LIGHT_TUNNEL_ENDDESCRIPT = """Usable only when there's no other ally standing.
-Inflict {color=aqua|Blind} and {color=aqua|In the Dark} to all enemies.
-Summon 2 random Zombies.""", # MISSING TRANSLATION
-	SKILLTALISMAN_DISGUISED_AS_TICKET = """Talisman disguised as Ticket""", # MISSING TRANSLATION
-	SKILLTALISMAN_DISGUISED_AS_TICKETDESCRIPT = """Can only target without {color=aqua|One-Way Ticket to Hell}.
-Deal {color=yellow|Dark} magical damage to an enemy and inflict {color=aqua|One-Way Ticket to Hell}.""", # MISSING TRANSLATION
+	SKILLDISENGAGEDESCRIPT = """Infligge lievi danni fisici a un bersaglio in mischia.
+Rimuove da sé {color=aqua|Disarmo}, {color=aqua|Provocazione}, {color=aqua|Accecamento}, {color=aqua|Intrappolamento}, {color=aqua|Bruciatura} e {color=aqua|Bagnato}.
+Si cura di una piccola porzione dei PS massimi.
+Concede {color=aqua|Nell'ombra} e {color=aqua|Presa serrata}.""",
+	SKILLWAKE_OF_BLACKENED_BLADE = """Scia della lama annerita""",
+	SKILLWAKE_OF_BLACKENED_BLADEDESCRIPT = """Infligge danni {color=yellow|Oscurità} ai nemici più avanzati di ogni fila e applica {color=aqua|Accecamento}.
+Concede {color=aqua|Lama annerita}.""",
+	SKILLGREG_LAST_BARK = """Vi odio... tutti quanti... tutto QUESTO!!""",
+	SKILLGREG_LAST_BARKDESCRIPT = """Infligge ripetutamente danni fisici a un bersaglio.
+Applica in sequenza {color=aqua|Intrappolamento}, {color=aqua|Disarmo}, {color=aqua|Accecamento} e {color=aqua|Lacerazione}.
+L'ultimo colpo infligge danni maggiori.
+{color=red|Se uccide: azzera la ricarica.}""",
+	SKILLOMINOUS_WHISPERS = """Sussurri sinistri""",
+	SKILLOMINOUS_WHISPERSDESCRIPT = """Infligge lievi danni magici {color=yellow|Mente} a tutti i nemici e applica {color=aqua|Paura}. Se i PS del bersaglio sono sotto il 50%, applica anche {color=aqua|Frantumato}.""",
+	SKILLHEXED_COFFIN_NAIL = """Chiodo di bara stregato""",
+	SKILLHEXED_COFFIN_NAILDESCRIPT = """Infligge danni fisici {color=yellow|Oscurità} a un nemico. Applica {color=aqua|Sanguinamento}. Probabilità moderata di infliggere {color=aqua|Maledizione}""",
+	SKILLCRAZED_SPIRIT_POSSESSION = """Possessione da spirito impazzito""",
+	SKILLCRAZED_SPIRIT_POSSESSIONDESCRIPT = """Infligge danni fisici a 2 file casuali di nemici. Se il bersaglio è sotto {color=aqua|Paura}, infligge danni magici {color=yellow|Oscurità} aggiuntivi e applica {color=aqua|Maledizione}.""",
+	SKILLFORCED_EXORCISM = """Esorcismo forzato""",
+	SKILLFORCED_EXORCISMDESCRIPT = """Dà priorità al nemico Maledetto. Infligge pesanti danni magici {color=yellow|Luce} a un singolo bersaglio. Se il bersaglio è {color=aqua|Maledetto}, ne riduce il mana e infligge danni magici {color=yellow|Oscurità} a tutti i suoi alleati. Rimuove {color=aqua|Maledizione} dal bersaglio.""",
+	SKILLUNDYING_SPIRIT = """Spirito immortale""",
+	SKILLUNDYING_SPIRITDESCRIPT = """Si cura di una piccola porzione dei PS massimi. Cura di più per ogni nemico con {color=aqua|Paura} o sconfitto.""",
+	SKILLARRIVAL_OF_THE_DEPARTED = """Arrivo dei defunti""",
+	SKILLARRIVAL_OF_THE_DEPARTEDDESCRIPT = """Resuscita tutti gli alleati ed evoca Zombie finché la squadra non è al completo.""",
+	SKILLTICKET_PLEASE = """Biglietto, prego""",
+	SKILLTICKET_PLEASEDESCRIPT = """Infligge danni magici {color=yellow|Oscurità} a un nemico.
+Se il bersaglio non ha {color=aqua|Biglietto di sola andata per l'inferno}, glielo applica.
+Se ce l'ha, infligge più danni e rimuove {color=aqua|Biglietto di sola andata per l'inferno}.""",
+	SKILLAFTERLIFE_AMENITIES = """Comfort dell'aldilà""",
+	SKILLAFTERLIFE_AMENITIESDESCRIPT = """Rimuove {color=aqua|Silenzio} da sé.
+Cura 3 alleati casuali diversi da sé e applica loro {color=aqua|Dono oscuro}.""",
+	SKILLDEAD_RUNNING = """Corsa dei morti""",
+	SKILLDEAD_RUNNINGDESCRIPT = """Ordina a tutti i servitori non morti di attaccare i nemici a caso.""",
+	SKILLEND_OF_THE_LINE = """Fine della corsa""",
+	SKILLEND_OF_THE_LINEDESCRIPT = """{color=red|Utilizzabile solo se c'è più di un alleato.}
+Ordina ai suoi servitori di esplodere: ognuno infligge danni magici {color=yellow|Oscurità} a 2 bersagli casuali in mischia e poi muore.""",
+	SKILLNO_LIGHT_TUNNEL_END = """Non c'è luce in fondo al tunnel!""",
+	SKILLNO_LIGHT_TUNNEL_ENDDESCRIPT = """Utilizzabile solo quando non resta in piedi nessun altro alleato.
+Applica {color=aqua|Accecamento} e {color=aqua|Nel buio} a tutti i nemici.
+Evoca 2 Zombie casuali.""",
+	SKILLTALISMAN_DISGUISED_AS_TICKET = """Talismano travestito da biglietto""",
+	SKILLTALISMAN_DISGUISED_AS_TICKETDESCRIPT = """Può bersagliare solo unità senza {color=aqua|Biglietto di sola andata per l'inferno}.
+Infligge danni magici {color=yellow|Oscurità} a un nemico e applica {color=aqua|Biglietto di sola andata per l'inferno}.""",
 	SKILLCUMULATING_CURSE = """Cumulating Curse""", # MISSING TRANSLATION
-	SKILLCUMULATING_CURSEDESCRIPT = """Deal {color=yellow|Dark} magical damage to all enemies.""", # MISSING TRANSLATION
-	SKILLTALISMAN_GUIDED_PUNCH = """Talisman-Guided Punch""", # MISSING TRANSLATION
-	SKILLTALISMAN_GUIDED_PUNCHDESCRIPT = """Can only target unit with {color=aqua|One-Way Ticket to Hell}.
-Deal large {color=yellow|Dark} physical damage to an enemy and remove {color=aqua|One-Way Ticket to Hell}.""", # MISSING TRANSLATION
-	SKILLBONEMEAL_SPRAY = """Bonemeal Spray""", # MISSING TRANSLATION
-	SKILLBONEMEAL_SPRAYDESCRIPT = """Deal physical damage to a row and inflict {color=aqua|Blind}.""", # MISSING TRANSLATION
-	SKILLWEIGHTY_COLISION = """Weighty Collision""", # MISSING TRANSLATION
-	SKILLWEIGHTY_COLISIONDESCRIPT = """Deal physical damage to an enemy and inflict {color=aqua|Stun}.""", # MISSING TRANSLATION
-	SKILLWASTE_DISCHARGE = """Discharge Waste""", # MISSING TRANSLATION
-	SKILLWASTE_DISCHARGEDESCRIPT = """Deal {color=yellow|Water} magical damage to a row.
-Inflict {color=aqua|Blind}, {color=aqua|Poison}, and chance to inflict {color=aqua|Silence}.""", # MISSING TRANSLATION
-	SKILLQUICK_DEATH = """Quick Death""", # MISSING TRANSLATION
-	SKILLQUICK_DEATHDESCRIPT = """Deal physical damage to an enemy. Damage also increases with user speed.""", # MISSING TRANSLATION
-	SKILLSWELLING_MUSCLE = """Swelling Muscle""", # MISSING TRANSLATION
-	SKILLSWELLING_MUSCLEDESCRIPT = """Can only be used while having less than 3 {color=aqua|Heaping Mass}.
-Gain a stack of {color=aqua|Heaping Mass}.""", # MISSING TRANSLATION
-	SKILLHYSTERICAL_STRENGTH = """Hysterical Strength""", # MISSING TRANSLATION
-	SKILLHYSTERICAL_STRENGTHDESCRIPT = """Can only be used while affected by {color=aqua|Heaping Mass}.
-Deal physical damage to the line of enemy and inflict {color=aqua|Ensnared}.
-Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
+	SKILLCUMULATING_CURSEDESCRIPT = """Infligge danni magici {color=yellow|Oscurità} a tutti i nemici.""",
+	SKILLTALISMAN_GUIDED_PUNCH = """Pugno guidato dal talismano""",
+	SKILLTALISMAN_GUIDED_PUNCHDESCRIPT = """Può bersagliare solo unità con {color=aqua|Biglietto di sola andata per l'inferno}.
+Infligge ingenti danni fisici {color=yellow|Oscurità} a un nemico e rimuove {color=aqua|Biglietto di sola andata per l'inferno}.""",
+	SKILLBONEMEAL_SPRAY = """Spruzzo di farina d'ossa""",
+	SKILLBONEMEAL_SPRAYDESCRIPT = """Infligge danni fisici a una fila e applica {color=aqua|Accecamento}.""",
+	SKILLWEIGHTY_COLISION = """Collisione pesante""",
+	SKILLWEIGHTY_COLISIONDESCRIPT = """Infligge danni fisici a un nemico e applica {color=aqua|Stordimento}.""",
+	SKILLWASTE_DISCHARGE = """Scarico di rifiuti""",
+	SKILLWASTE_DISCHARGEDESCRIPT = """Infligge danni magici {color=yellow|Acqua} a una fila.
+Applica {color=aqua|Accecamento}, {color=aqua|Veleno} e una probabilità di {color=aqua|Silenzio}.""",
+	SKILLQUICK_DEATH = """Morte rapida""",
+	SKILLQUICK_DEATHDESCRIPT = """Infligge danni fisici a un nemico. I danni aumentano anche con la velocità dell'utilizzatore.""",
+	SKILLSWELLING_MUSCLE = """Muscoli gonfianti""",
+	SKILLSWELLING_MUSCLEDESCRIPT = """Utilizzabile solo se si hanno meno di 3 {color=aqua|Massa crescente}.
+Concede una carica di {color=aqua|Massa crescente}.""",
+	SKILLHYSTERICAL_STRENGTH = """Forza isterica""",
+	SKILLHYSTERICAL_STRENGTHDESCRIPT = """Utilizzabile solo sotto l'effetto di {color=aqua|Massa crescente}.
+Infligge danni fisici alla linea nemica e applica {color=aqua|Intrappolamento}.
+Rimuove tutta la {color=aqua|Massa crescente} da sé.""",
 	STATUSDESC_BLEED = "Sanguinamento: Subisci il 10% degli HP massimi come danno neutro per turno.",
 	STATUSDESC_POISON = "Avvelenamento: Subisci il 10% degli HP massimi come danno neutro per turno.",
 	STATUSDESC_BURN = "Bruciatura: Subisci l'8% degli HP massimi come danno da Fuoco per turno.",
@@ -2319,42 +2339,42 @@ Migliora la disposizione verso {color=yellow|Azioni Casuali}. Costa 5 Mana.""",
 	ACTIONMINDCONTROLSCENETEXT = "[name1] usa una forte magia per dominare la mente di [name2], riscrivendola lentamente in un simpatico schiavo obbediente.",
 	ACTIONEDGINGSCENETEXT = "[name1] porta in modo stuzzicante [name2] all'orgasmo ma all'ultimo momento interrompe i suoi movimenti, impedendo [name2] di venire. Questo va avanti ancora per un paio di volte fino a quando non [name2] smette di implorare per il rilascio. ",
 	TRAININGFINISHHEADER = "Competenze acquisite al termine dell'addestramento:",
-	SERVANTUNLOCK_WORKING = """Working""", # MISSING TRANSLATION
-	SERVANTUNLOCK_COMBAT = """Combat""", # MISSING TRANSLATION
-	SERVANTUNLOCK_DATING = """Dating""", # MISSING TRANSLATION
+	SERVANTUNLOCK_WORKING = """Lavoro""",
+	SERVANTUNLOCK_COMBAT = """Combattimento""",
+	SERVANTUNLOCK_DATING = """Appuntamenti""",
 	SERVANTUNLOCK_SEX = """Sex""", # MISSING TRANSLATION
 	SERVANTUNLOCK_SEXSERVICE = """Sex Service""", # MISSING TRANSLATION
-	SERVANTUNLOCK_UNLOCKED = """Unlocked""", # MISSING TRANSLATION
-	SERVANTUNLOCK_LOCKED = """Locked""", # MISSING TRANSLATION
-	SERVANTUNLOCK_TALK_BUTTON = """Negotiate""", # MISSING TRANSLATION
-	SERVANTUNLOCK_TALK_BUTTON_COOLDOWN = """Negotiate (%d days)""", # MISSING TRANSLATION
-	SERVANTUNLOCK_LEAVE = """Leave""", # MISSING TRANSLATION
-	SERVANTUNLOCK_DIALOGUE_TEXT = """What would you like %s to learn?""", # MISSING TRANSLATION
-	SERVANTUNLOCK_REQ_AFFECTION = """needs 25+ Affection""", # MISSING TRANSLATION
-	SERVANTUNLOCK_REQ_CONSENT = """needs 2+ Consent""", # MISSING TRANSLATION
+	SERVANTUNLOCK_UNLOCKED = """Sbloccato""",
+	SERVANTUNLOCK_LOCKED = """Bloccato""",
+	SERVANTUNLOCK_TALK_BUTTON = """Negozia""",
+	SERVANTUNLOCK_TALK_BUTTON_COOLDOWN = """Negozia (%d giorni)""",
+	SERVANTUNLOCK_LEAVE = """Esci""",
+	SERVANTUNLOCK_DIALOGUE_TEXT = """Cosa vuoi che %s impari?""",
+	SERVANTUNLOCK_REQ_AFFECTION = """Richiede 25+ di Affetto""",
+	SERVANTUNLOCK_REQ_CONSENT = """Richiede 2+ di Consenso""",
 	SERVANTUNLOCK_REQ_SEX_ACCESS = """[name] isn't ready to engage with these topics at this moment""", # MISSING TRANSLATION
 	CHARLOG_SEX_ACCESS_UNLOCKED = """has opened to more intimate options.""", # MISSING TRANSLATION
-	NEGOTIATION_PAY = """Offer %d gold for this""", # MISSING TRANSLATION
-	NEGOTIATION_PERSUADE_CHARGE = """[Persuasion Challenge] Try to convince [him]""", # MISSING TRANSLATION
-	NEGOTIATION_PERSUADE_BREAK = """Offer [him] a couple days off first""", # MISSING TRANSLATION
-	NEGOTIATION_CANCEL = """Never mind""", # MISSING TRANSLATION
-	NEGOTIATION_HESITATION_BREAK = """%s complains [he] already has too much on [his] hands and could use a break.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_BREAK = """[He] agreed to your proposal, and will follow through once [his] break is over.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_FORCE_BREAKDOWN = """The ordeal was too much, and [he] needs some time alone to recover.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_INSTANT = """[He] doesn't even hesitate — [his] trust in you makes this an easy yes.""", # MISSING TRANSLATION
-	NEGOTIATION_UNLOCKED_TEXT = """%s has accepted [his] new duty: %s.""", # MISSING TRANSLATION
-	NEGOTIATION_HESITATION_WORKING_CHARGE = """%s hesitates, unsure about taking on more responsibility.""", # MISSING TRANSLATION
-	NEGOTIATION_HESITATION_WORKING_FORCE = """%s flatly refuses, arguing with a hint of entitlement that [he] already does enough for you.""", # MISSING TRANSLATION
-	NEGOTIATION_PERSUADE_FORCE_WORKING = """Remind [him] who's in charge""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_PAID_WORKING = """Slip [him] %d gold as a bonus. [His] resolve crumbles, and [he] caves in, agreeing to take on more work.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_CHARGE_WORKING = """Won [him] over with a Persuasion Challenge. [He] agreed to take on more work.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_FORCE_WORKING = """Made it clear this wasn't a request, browbeating [him] until [he] reluctantly gives in and agrees to work harder. [His] respect for you falls by %d and [his] affection by %d.""", # MISSING TRANSLATION
-	NEGOTIATION_HESITATION_COMBAT_CHARGE = """%s hesitates, unsure about taking on the danger of fighting for you.""", # MISSING TRANSLATION
-	NEGOTIATION_HESITATION_COMBAT_FORCE = """%s flatly refuses, arguing with a hint of entitlement that risking [his] life isn't part of the deal.""", # MISSING TRANSLATION
-	NEGOTIATION_PERSUADE_FORCE_COMBAT = """Remind [him] that refusal isn't an option""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_PAID_COMBAT = """Slip [him] %d gold as a bonus. [His] resolve crumbles, and [he] caves in, agreeing to fight for you.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_CHARGE_COMBAT = """Won [him] over with a Persuasion Challenge. [He] agreed to fight for you.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_FORCE_COMBAT = """Made it clear refusal wasn't an option, intimidating [him] until [he] reluctantly gives in and agrees to fight. [His] respect for you falls by %d and [his] affection by %d.""", # MISSING TRANSLATION
+	NEGOTIATION_PAY = """Offri %d monete d'oro per questo""",
+	NEGOTIATION_PERSUADE_CHARGE = """[Sfida di Persuasione] Prova a convincer[him]""",
+	NEGOTIATION_PERSUADE_BREAK = """Offri[him] prima un paio di giorni di riposo""",
+	NEGOTIATION_CANCEL = """Lascia stare""",
+	NEGOTIATION_HESITATION_BREAK = """%s si lamenta di avere già troppo da fare e di aver bisogno di una pausa.""",
+	NEGOTIATION_LOG_BREAK = """[He] ha accettato la tua proposta e si metterà all'opera finita la pausa.""",
+	NEGOTIATION_LOG_FORCE_BREAKDOWN = """La prova è stata troppo dura e [he] ha bisogno di stare un po' da solo per riprendersi.""",
+	NEGOTIATION_LOG_INSTANT = """[He] non esita nemmeno: la [his] fiducia in te rende questo sì facilissimo.""",
+	NEGOTIATION_UNLOCKED_TEXT = """%s ha accettato il [his] nuovo incarico: %s.""",
+	NEGOTIATION_HESITATION_WORKING_CHARGE = """%s esita, incerto se assumersi altre responsabilità.""",
+	NEGOTIATION_HESITATION_WORKING_FORCE = """%s rifiuta categoricamente, sostenendo con una punta di sfrontatezza di fare già abbastanza per te.""",
+	NEGOTIATION_PERSUADE_FORCE_WORKING = """Ricorda[him] chi comanda""",
+	NEGOTIATION_LOG_PAID_WORKING = """Gli infili %d monete d'oro come premio. La [his] determinazione crolla e cede, accettando di assumersi più lavoro.""",
+	NEGOTIATION_LOG_CHARGE_WORKING = """L'hai convinto con una Sfida di Persuasione. [He] ha accettato di assumersi più lavoro.""",
+	NEGOTIATION_LOG_FORCE_WORKING = """Hai messo in chiaro che non era una richiesta, incalzando[him] finché non ha ceduto a malincuore accettando di lavorare di più. Il [his] rispetto per te cala di %d e l'affetto di %d.""",
+	NEGOTIATION_HESITATION_COMBAT_CHARGE = """%s esita, incerto se affrontare il pericolo di combattere per te.""",
+	NEGOTIATION_HESITATION_COMBAT_FORCE = """%s rifiuta categoricamente, sostenendo con una punta di sfrontatezza che rischiare la vita non faceva parte dell'accordo.""",
+	NEGOTIATION_PERSUADE_FORCE_COMBAT = """Ricorda[him] che il rifiuto non è un'opzione""",
+	NEGOTIATION_LOG_PAID_COMBAT = """Gli infili %d monete d'oro come premio. La [his] determinazione crolla e cede, accettando di combattere per te.""",
+	NEGOTIATION_LOG_CHARGE_COMBAT = """L'hai convinto con una Sfida di Persuasione. [He] ha accettato di combattere per te.""",
+	NEGOTIATION_LOG_FORCE_COMBAT = """Hai messo in chiaro che rifiutare non era un'opzione, intimidendo[him] finché non ha ceduto a malincuore accettando di combattere. Il [his] rispetto per te cala di %d e l'affetto di %d.""",
 	NEGOTIATION_HESITATION_DATING_CHARGE = """%s hesitates, unsure about taking on that kind of closeness with you.""", # MISSING TRANSLATION
 	NEGOTIATION_HESITATION_DATING_FORCE = """%s flatly refuses, arguing with a hint of entitlement that [he] shouldn't be rushed into that kind of closeness.""", # MISSING TRANSLATION
 	NEGOTIATION_PERSUADE_FORCE_DATING = """Insist that [he] stop being so shy about it""", # MISSING TRANSLATION
@@ -2373,25 +2393,25 @@ Migliora la disposizione verso {color=yellow|Azioni Casuali}. Costa 5 Mana.""",
 	NEGOTIATION_LOG_PAID_SEXSERVICE = """Slip [him] %d gold as a bonus. [His] resolve crumbles, and [he] caves in, accepting [his] new role.""", # MISSING TRANSLATION
 	NEGOTIATION_LOG_CHARGE_SEXSERVICE = """Won [him] over with a Persuasion Challenge. [He] agreed to it.""", # MISSING TRANSLATION
 	NEGOTIATION_LOG_FORCE_SEXSERVICE = """Made it clear [his] consent was never needed, forcing [him] to reluctantly accept [his] new role. [His] respect for you falls by %d and [his] affection by %d.""", # MISSING TRANSLATION
-	TRAININGRESULT_FAIL = """Fail""", # MISSING TRANSLATION
-	TRAININGRESULT_RESIST = """Resist""", # MISSING TRANSLATION
-	TRAININGRESULT_SUCCESS = """Success""", # MISSING TRANSLATION
-	TRAININGRESULT_CRIT_SUCCESS = """Critical Success""", # MISSING TRANSLATION
-	CHANCELOG_DEBUG_NOTE = """[Debug Info - disposition not actually known]""", # MISSING TRANSLATION
-	CHANCELOG_BASE = """Base (%s): Fail %.0f, Resist %.0f, Success %.0f, Crit %.0f""", # MISSING TRANSLATION
-	CHANCELOG_TAMEFACTOR = """Tame Factor (%.0f): %s""", # MISSING TRANSLATION
-	CHANCELOG_SRC_TRAINERCLASS = """Trainer (%s)""", # MISSING TRANSLATION
-	CHANCELOG_SRC_DISPOSITION = """Disposition (%s)""", # MISSING TRANSLATION
-	CHANCELOG_FINAL = """Final: Fail %.0f%%, Resist %.0f%%, Success %.0f%%, Crit %.0f%%""", # MISSING TRANSLATION
-	CHANCELOG_FAIL = """Fail""", # MISSING TRANSLATION
-	CHANCELOG_RESIST = """Resist""", # MISSING TRANSLATION
-	CHANCELOG_SUCCESS = """Success""", # MISSING TRANSLATION
-	CHANCELOG_CRIT_SUCCESS = """Crit""", # MISSING TRANSLATION
-	TRAININGCOMPLETEDANNOUNCE = """%s's training is finished. """, # MISSING TRANSLATION
-	TRAININGBROKENINANNOUNCE = """%s is broken in.""", # MISSING TRANSLATION
-	TRAININGNEGATIVETRAITGAINED = """%s's resistance to training has left a mark: acquired %s.""", # MISSING TRANSLATION
-	TRAININGDECAYSIN = """Loyalty decays in %d day(s) (-%.0f/day)""", # MISSING TRANSLATION
-	TRAININGDECAYING = """Loyalty is decaying: -%.0f/day""", # MISSING TRANSLATION
+	TRAININGRESULT_FAIL = """Fallimento""",
+	TRAININGRESULT_RESIST = """Resistenza""",
+	TRAININGRESULT_SUCCESS = """Successo""",
+	TRAININGRESULT_CRIT_SUCCESS = """Successo critico""",
+	CHANCELOG_DEBUG_NOTE = """[Info di debug - la disposizione non è realmente nota]""",
+	CHANCELOG_BASE = """Base (%s): Fallimento %.0f, Resistenza %.0f, Successo %.0f, Critico %.0f""",
+	CHANCELOG_TAMEFACTOR = """Fattore di addomesticamento (%.0f): %s""",
+	CHANCELOG_SRC_TRAINERCLASS = """Addestratore (%s)""",
+	CHANCELOG_SRC_DISPOSITION = """Disposizione (%s)""",
+	CHANCELOG_FINAL = """Finale: Fallimento %.0f%%, Resistenza %.0f%%, Successo %.0f%%, Critico %.0f%%""",
+	CHANCELOG_FAIL = """Fallimento""",
+	CHANCELOG_RESIST = """Resistenza""",
+	CHANCELOG_SUCCESS = """Successo""",
+	CHANCELOG_CRIT_SUCCESS = """Critico""",
+	TRAININGCOMPLETEDANNOUNCE = """L'addestramento di %s è completato. """,
+	TRAININGBROKENINANNOUNCE = """%s è stato domato.""",
+	TRAININGNEGATIVETRAITGAINED = """La resistenza di %s all'addestramento ha lasciato il segno: acquisito %s.""",
+	TRAININGDECAYSIN = """La lealtà calerà tra %d giorno/i (-%.0f/giorno)""",
+	TRAININGDECAYING = """La lealtà cala: -%.0f/giorno""",
 	LOYALTYDECAYTOOLTIP = """Loyalty decays if the slave goes too long without training. Decay speed and grace period depend on Authority Factor.""", # MISSING TRANSLATION
 	TRAININGSTATUS1 = "Stato dello Spirito: Rotto",
 	TRAININGSTATUS2 = "Stato dello Spirito: Danneggiato",
@@ -2449,7 +2469,7 @@ La resistenza di %s diminuisce di %.0f per turno.""",
 """,
 	SPIRITTOOLTIP = "Lo spirito rappresenta la volontà residua del personaggio. Se scende troppo in basso, si romperà al termine dell'allenamento e subirà penalità considerevoli. ",
 	LOYALTYTOOLTIP = "La lealtà viene utilizzata per sbloccare le azioni del personaggio e si ottiene facendo allenamento una volta al giorno.",
-	TRAININGPOINTSTOOLTIP = """Training Points are earned from training actions and are spent to unlock training bonuses after training is finished. The amount you can obtain is capped based on Tame Factor.""", # MISSING TRANSLATION
+	TRAININGPOINTSTOOLTIP = """I punti addestramento si guadagnano con le azioni di addestramento e si spendono per sbloccare bonus al termine. La quantità ottenibile è limitata dal Fattore di addomesticamento.""",
 	CLICKTOCHANGE = "Clicca per modificare",
 	WITSREVEALDISPOSITION = "Disposizione scoperta:",
 	MINDREADREVEALDISPOSITION = "Disposizioni rivelate:",
@@ -2493,14 +2513,14 @@ La resistenza di %s diminuisce di %.0f per turno.""",
 	TASKRESTDESCRIPT = "Seleziona un servizio che il personaggio fornirà presso le strutture locali o passa al riposo quando necessario.",
 	TASKCRAFT = """Crafting""", # MISSING TRANSLATION
 	TASKCRAFTNAME = """Crafting""", # MISSING TRANSLATION
-	TASKCRAFTDESCRIPT = """Set up priority of character's crafting activities.""", # MISSING TRANSLATION
+	TASKCRAFTDESCRIPT = """Imposta la priorità delle attività di artigianato del personaggio.""",
 	TASKRESTINFO = "Il riposo farà guarire le ferite del personaggio più velocemente e fermerà il prosciugamento dell'obbedienza, ma non farà guadagnare nemmeno lealtà.",
-	CRAFTRULES2TITLE = """Craft Rules - %s""", # MISSING TRANSLATION
-	PREDICTEDTASKLABEL = """Predicted task:""", # MISSING TRANSLATION
+	CRAFTRULES2TITLE = """Regole di artigianato - %s""",
+	PREDICTEDTASKLABEL = """Incarico previsto:""",
 	CRAFTCATEGORYWORKUNITS = """%s (%.1f WU)""", # MISSING TRANSLATION
 	CRAFTWORKUNITSPERTURN = """Work units: %.1f per turn""", # MISSING TRANSLATION
-	MATERIALSORDERLABEL = """Materials order""", # MISSING TRANSLATION
-	ITEMSORDERLABEL = """Items order""", # MISSING TRANSLATION
+	MATERIALSORDERLABEL = """Ordine dei materiali""",
+	ITEMSORDERLABEL = """Ordine degli oggetti""",
 	CRAFTRULES2TOOLTIP = """Toggle which crafting tasks the character is allowed to perform. Enabled tasks are attempted in the priority order shown; drag entries in the order lists to rearrange priority. Top is high priority, bottom is low. Disabled tasks will be skipped. 
 
 Predicted task shows which job the character will perform next. Materials are always crafted before Items.""", # MISSING TRANSLATION
@@ -2553,9 +2573,9 @@ Predicted task shows which job the character will perform next. Materials are al
 	SERVICEPREGNANT = "[He] può perdere la verginità e rimanere incinta con la penetrazione.",
 	SERVICESEXUALNONPENETRATIVE = "[name] intratterrà i clienti servendoli e fornendo loro servizi sessuali leggeri che non comportano la penetrazione.",
 	SERVICENOSEX = "[name] servirà e intratterrà i clienti, ma rifiuterà qualsiasi servizio sessuale.",
-	SERVICEESTVALUE = """Estimated income: %s gold""", # MISSING TRANSLATION
-	SERVICEDESIRABILITY = """Desirability: %s%%""", # MISSING TRANSLATION
-	SERVICEDESIRABILITYVALUE = """Desirability: %s""", # MISSING TRANSLATION
+	SERVICEESTVALUE = """Guadagno stimato: %s monete d'oro""",
+	SERVICEDESIRABILITY = """Desiderabilità: %s%%""",
+	SERVICEDESIRABILITYVALUE = """Desiderabilità: %s""",
 	TASKMAINSTAT = "Caratteristica principale",
 	JOBPROSTITUTEGOLDDESCRIPT = "Guadagna oro prostituendoti.",
 	JOBCOOKINGCRAFTDESCRIPT = "Cucina il cibo in cucina.",
@@ -2568,24 +2588,27 @@ Predicted task shows which job the character will perform next. Materials are al
 	LOGMANSIONTOOLTIP = "Eventi Villa",
 	LOGCHARTOOLTIP = "Eventi Personaggio",
 	LOGQUESTTOOLTIP = "Eventi Missioni",
-	MANSION_ACTIVITY_TITLE = """Activity""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_EMPTY = """No recent activity yet.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TITLE = """Attività""",
+	MANSION_ACTIVITY_EMPTY = """Nessuna attività recente.""",
 	MANSION_ACTIVITY_TIME = """W%d · D%d · %s""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_TYPE_ARRIVAL = """Arrival""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_TYPE_CRAFT = """Crafting""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_TYPE_UPGRADE = """Upgrade""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_TYPE_FOOD = """Food""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_TYPE_RECOVERY = """Recovery""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_TYPE_QUEST_TASK = """Quest task""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_TYPE_CHARACTER_FOUND = """Character found""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_ARRIVAL_MANSION = """%s returned to the mansion.""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_ARRIVAL_LOCATION = """%s arrived at %s.""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_CRAFT_COMPLETE = """%s finished crafting %s.""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_UPGRADE_COMPLETE = """%s completed the %s upgrade.""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_FOOD_DISSATISFIED = """Wasn't satisfied by the food quality""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_INJURY_RECOVERED = """%s recovered from their injuries.""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_QUEST_TASK_COMPLETE = """%s completed the quest task: %s.""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_CHARACTER_FOUND = """%s found %s at %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_ARRIVAL = """Arrivo""",
+	MANSION_ACTIVITY_TYPE_CRAFT = """Artigianato""",
+	MANSION_ACTIVITY_TYPE_UPGRADE = """Potenziamento""",
+	MANSION_ACTIVITY_TYPE_FOOD = """Cibo""",
+	MANSION_ACTIVITY_TYPE_RECOVERY = """Recupero""",
+	MANSION_ACTIVITY_TYPE_QUEST_TASK = """Incarico di missione""",
+	MANSION_ACTIVITY_TYPE_CHARACTER_FOUND = """Personaggio trovato""",
+	MANSION_ACTIVITY_ARRIVAL_MANSION = """%s è tornato alla villa.""",
+	MANSION_ACTIVITY_ARRIVAL_MANSION_LINK = """%s returned to %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_ARRIVAL_LOCATION = """%s è arrivato a %s.""",
+	MANSION_ACTIVITY_CRAFT_COMPLETE = """%s ha finito di fabbricare %s.""",
+	MANSION_ACTIVITY_UPGRADE_COMPLETE = """%s ha completato il potenziamento %s.""",
+	MANSION_ACTIVITY_FOOD_DISSATISFIED = """%s non è stato soddisfatto dalla qualità del cibo""",
+	MANSION_ACTIVITY_INJURY_RECOVERED = """%s si è ripreso dalle ferite.""",
+	MANSION_ACTIVITY_QUEST_TASK_COMPLETE = """%s ha completato l'incarico della missione: %s.""",
+	MANSION_ACTIVITY_CHARACTER_FOUND = """%s ha trovato %s a %s.""",
+	MANSION_ACTIVITY_LOCATION_EMPTY = """There is nobody left at %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_LOCATION_GONE = """That location is no longer accessible.""", # MISSING TRANSLATION
 	BROTHELLOGSEX = "%s ha guadagnato %s oro eseguendo %s con un cliente %s.",
 	BROTHELLOGSEXPARTIAL = """%s failed to fully attract a customer and earned only %s gold performing %s with a %s customer.""", # MISSING TRANSLATION
 	BROTHELLOGNO_SEX = "%s ha guadagnato %s oro lavorando come %s.",
@@ -2943,9 +2966,9 @@ Non potrai completare il turno se il numero totale dei tuoi personaggi è superi
 	STATMP_REG = "Rigenerazione del Mana",
 	STATMP_REGDESCRIPT = "Aumenta la rigenerazione passiva di mana ogni turno",
 	STATHPMAXMOD = "Max. Salute",
-	STATMP = "Mana", #
+	STATMP = """Mana""", #
 	STATMPDESCRIPT = "Il mana viene utilizzato per lanciare incantesimi e utilizzare alcune abilità.",
-	STATMPMAX = "Max. Mana", #
+	STATMPMAX = """Mana max.""", #
 	STATMPMAXDESCRIPT = "Mana Massimo",
 	STATMPMAXMOD = "Mana massimo",
 	STATHITRATE = "% di Colpo",
@@ -2954,13 +2977,13 @@ Non potrai completare il turno se il numero totale dei tuoi personaggi è superi
 	STATEVASIONDESCRIPT = "Possibilità di schivare gli attacchi nemici.",
 	STATSPEED = "Velocità",
 	STATSPEEDDESCRIPT = "Aumenta la possibilità di attaccare prima degli altri.",
-	STATARMOR = "DEF", #
+	STATARMOR = """DIF""", #
 	STATARMORDESCRIPT = "Riduce i danni fisici subiti.",
-	STATMDEF = "MDEF", #
+	STATMDEF = """DIFM""", #
 	STATMDEFDESCRIPT = "Riduce i danni magici subiti.",
-	STATATK = "ATK", #
+	STATATK = """ATT""", #
 	STATATKDESCRIPT = "Definisce i valori dei danni fisici.",
-	STATMATK = "MATK", #
+	STATMATK = """ATTM""", #
 	STATMATKDESCRIPT = "Definisce i valori dei danni magici.",
 	STATCRITCHANCE = "% di Critico",
 	STATCRITCHANCEDESCRIPT = "Definisce la possibilità di un colpo critico.",
@@ -3009,43 +3032,43 @@ Non potrai completare il turno se il numero totale dei tuoi personaggi è superi
 	STATWITS_BONUS = "Ingegno",
 	STATCHARM_BONUS = "Fascino",
 	STATSEXUALS_BONUS = "Sessuali",
-	STATDESIRABILITY_BONUS = """Desirability""", # MISSING TRANSLATION
+	STATDESIRABILITY_BONUS = """Desiderabilità""",
 	STATTRAINEE_AMOUNT = "Slot di Allenamento",
 	STATTRAINING_LOYALTY = "Fedeltà dall'Addestramento",
-	STATTRAINING_POINTS_BONUS = """Training Points from Training""", # MISSING TRANSLATION
+	STATTRAINING_POINTS_BONUS = """Punti addestramento dall'addestramento""",
 	STATTRAINING_SPIRIT = "Spirito dall'allenamento",
 	STATRESISTANCE_RED = "Velocità di Perdita di Resistenza",
 	STATTRAINER_LOYALTY_BONUS = "Fedeltà per tirocinante",
-	STATTRAINER_TRAINING_POINTS_BONUS = """Training Points bonus for trainee""", # MISSING TRANSLATION
+	STATTRAINER_TRAINING_POINTS_BONUS = """Bonus punti addestramento per l'allievo""",
 	STATTRAINING_LOYALTYDESCRIPT = "Bonus fedeltà ottenuto da questo personaggio grazie all'allenamento",
-	STATTRAINING_POINTS_BONUSDESCRIPT = """Adjustment for Training Points gained during Training""", # MISSING TRANSLATION
+	STATTRAINING_POINTS_BONUSDESCRIPT = """Correzione dei punti addestramento guadagnati durante l'addestramento""",
 	STATTRAINING_SPIRITDESCRIPT = "Adeguamento per il calo di spirito durante l'allenamento",
 	STATRESISTANCE_REDDESCRIPT = "Velocità di diminuzione della resistenza dello schiavo nel tempo",
 	STATTRAINER_LOYALTY_BONUSDESCRIPT = "Bonus fedeltà ricevuto dall'apprendista di questo personaggio",
-	STATTRAINER_TRAINING_POINTS_BONUSDESCRIPT = """Training Points bonus received by this character's trainee""", # MISSING TRANSLATION
+	STATTRAINER_TRAINING_POINTS_BONUSDESCRIPT = """Bonus di punti addestramento ricevuto dall'allievo di questo personaggio""",
 	STATTRAINEE_AMOUNTDESCRIPT = "Numero massimo di tirocinanti",
 	TRAITTRAINER = "Allenatore",
 	TRAITTRAINERDESCRIPT = "Può supervisionare gli schiavi",
-	CHARACTER_STANDING_ANTIPATHY = """Antipathy""", # MISSING TRANSLATION
-	CHARACTER_STANDING_FRIEND = """Friend""", # MISSING TRANSLATION
-	CHARACTER_STANDING_LOVE_PEST = """Love Pest""", # MISSING TRANSLATION
-	CHARACTER_STANDING_MINION = """Minion""", # MISSING TRANSLATION
-	CHARACTER_STANDING_HOUSEMATE = """Housemate""", # MISSING TRANSLATION
-	CHARACTER_STANDING_INFATUATED = """Infatuated""", # MISSING TRANSLATION
-	CHARACTER_STANDING_SWORN_SERVANT = """Sworn Servant""", # MISSING TRANSLATION
-	CHARACTER_STANDING_COMPANION = """Companion""", # MISSING TRANSLATION
-	CHARACTER_STANDING_BELOVED = """Beloved""", # MISSING TRANSLATION
-	TOOLTIPCHARACTERSTANDING = """Character's treatment of [master] will depend on their respect and affection. When both are very low character might attempt to escape. Certain bonuses might come up under specific combinations.""", # MISSING TRANSLATION
-	TRAITSTANDING_LOVE_PEST = """Love Pest""", # MISSING TRANSLATION
+	CHARACTER_STANDING_ANTIPATHY = """Antipatia""",
+	CHARACTER_STANDING_FRIEND = """Amico""",
+	CHARACTER_STANDING_LOVE_PEST = """Appiccicoso""",
+	CHARACTER_STANDING_MINION = """Tirapiedi""",
+	CHARACTER_STANDING_HOUSEMATE = """Coinquilino""",
+	CHARACTER_STANDING_INFATUATED = """Infatuato""",
+	CHARACTER_STANDING_SWORN_SERVANT = """Servitore giurato""",
+	CHARACTER_STANDING_COMPANION = """Compagno""",
+	CHARACTER_STANDING_BELOVED = """Amato""",
+	TOOLTIPCHARACTERSTANDING = """Il modo in cui un personaggio tratta [master] dipende da rispetto e affetto. Quando entrambi sono molto bassi, potrebbe tentare la fuga. Certe combinazioni specifiche concedono bonus.""",
+	TRAITSTANDING_LOVE_PEST = """Appiccicoso""",
 	TRAITSTANDING_LOVE_PESTDESCRIPT = """Experience gained from the sex minigame is increased by 25%.""", # MISSING TRANSLATION
-	TRAITSTANDING_HOUSEMATE = """Housemate""", # MISSING TRANSLATION
+	TRAITSTANDING_HOUSEMATE = """Coinquilino""",
 	TRAITSTANDING_HOUSEMATEDESCRIPT = """ """, # MISSING TRANSLATION
-	TRAITSTANDING_SWORN_SERVANT = """Sworn Servant""", # MISSING TRANSLATION
-	TRAITSTANDING_SWORN_SERVANTDESCRIPT = """Productivity is increased by 10%.""", # MISSING TRANSLATION
-	TRAITSTANDING_BELOVED = """Beloved""", # MISSING TRANSLATION
-	TRAITSTANDING_BELOVEDDESCRIPT = """Character upkeep is reduced by 50%.""", # MISSING TRANSLATION
-	STATTRAINING_POINTS = """Training Points""", # MISSING TRANSLATION
-	STATTRAINING_POINTSDESCRIPT = """Training Points are earned from training actions and spent to unlock training traits.""", # MISSING TRANSLATION
+	TRAITSTANDING_SWORN_SERVANT = """Servitore giurato""",
+	TRAITSTANDING_SWORN_SERVANTDESCRIPT = """La produttività è aumentata del 10%.""",
+	TRAITSTANDING_BELOVED = """Amato""",
+	TRAITSTANDING_BELOVEDDESCRIPT = """Il mantenimento del personaggio è ridotto del 50%.""",
+	STATTRAINING_POINTS = """Punti addestramento""",
+	STATTRAINING_POINTSDESCRIPT = """I punti addestramento si guadagnano con le azioni di addestramento e si spendono per sbloccare i tratti di addestramento.""",
 	STATSPIRIT = "Spirito",
 	TRAITTRAINING_WORKFORCE = "Addestramento: Forza lavoro",
 	TRAITTRAINING_WORKFORCEDESCRIPT = """Impostato per la schiavitù del lavoro.
@@ -3064,19 +3087,19 @@ Danno +15%, Salute +20.""",
 	STATOBEDIENCEDESCRIPT = "L'obbedienza è la volontà di un personaggio di obbedire ai tuoi ordini. L'obbedienza si ottiene utilizzando le abilità sociali. Quando si esaurisce, il personaggio può scappare e andrà perso nel caso in cui ciò accada. ",
 	STATLOYALTY = "Lealtà",
 	STATLOYALTYDESCRIPT = "I punti fedeltà ti permettono di sbloccare nuove abilità per i tuoi servitori. La lealtà si ottiene passivamente in base al fattore addomesticamento del personaggio, ma può anche essere migliorata in base alle date e all'uso delle abilità sociali.",
-	STATAFFECTION = """Affection""", # MISSING TRANSLATION
-	STATAFFECTIONDESCRIPT = """Affection represents how positively or negatively this character feels about you.""", # MISSING TRANSLATION
-	STATRESPECT = """Respect""", # MISSING TRANSLATION
-	STATRESPECTDESCRIPT = """Respect represents how highly or poorly this character regards you.""", # MISSING TRANSLATION
-	EVENT_EFFECT_INCREASED = """%s increased""", # MISSING TRANSLATION
-	EVENT_EFFECT_DECREASED = """%s decreased""", # MISSING TRANSLATION
+	STATAFFECTION = """Affetto""",
+	STATAFFECTIONDESCRIPT = """L'affetto rappresenta quanto positivamente o negativamente questo personaggio si sente nei tuoi confronti.""",
+	STATRESPECT = """Rispetto""",
+	STATRESPECTDESCRIPT = """Il rispetto rappresenta quanto in alto o in basso questo personaggio ti tiene.""",
+	EVENT_EFFECT_INCREASED = """%s aumentato""",
+	EVENT_EFFECT_DECREASED = """%s diminuito""",
 	EVENT_EFFECT_VALUE = """%s %s""", # MISSING TRANSLATION
-	EVENT_EFFECT_SET = """%s set to %s""", # MISSING TRANSLATION
+	EVENT_EFFECT_SET = """%s impostato su %s""",
 	EVENT_EFFECT_CHARACTER = """%s: %s""", # MISSING TRANSLATION
-	EVENT_EFFECT_REPUTATION = """%s Reputation""", # MISSING TRANSLATION
-	EVENT_EFFECT_RELATIONSHIP = """%s and %s: Relationship %s""", # MISSING TRANSLATION
-	EVENT_EFFECT_TRAIT_GAINED = """%s Trait gained""", # MISSING TRANSLATION
-	EVENT_EFFECT_TRAIT_LOST = """%s Trait lost""", # MISSING TRANSLATION
+	EVENT_EFFECT_REPUTATION = """Reputazione %s""",
+	EVENT_EFFECT_RELATIONSHIP = """%s e %s: relazione %s""",
+	EVENT_EFFECT_TRAIT_GAINED = """Tratto %s ottenuto""",
+	EVENT_EFFECT_TRAIT_LOST = """Tratto %s perso""",
 	STATRESISTANCE = "Resistenza",
 	STATRESISTANCEDESCRIPT = "Resistenza DESCRIPT PLACEHOLDER.",
 	STATSUBMISSION = "Sottomissione",
@@ -3087,7 +3110,7 @@ Danno +15%, Salute +20.""",
 	STATLUSTDESCRIPT = "La lussuria aumenta con il tempo e consente l'uso di abilità specifiche. La lussuria può essere un potente strumento di controllo e di risorse se utilizzata correttamente.",
 	STATPRODUCTIVITY = "Produttività",
 	STATPRODUCTIVITYDESCRIPT = "Influisce su tutte le attività produttive. La produttività totale si applica a tutte le occupazioni, mentre l'efficienza aumenterà compiti specifici.",
-	STATDESIRABILITY = """Desirability""", # MISSING TRANSLATION
+	STATDESIRABILITY = """Desiderabilità""",
 	STATDESIRABILITYDESCRIPT = """{color=yellow|Desirability} affects how likely a character is to earn full gold from sex service instead of a reduced amount, and boosts non-sex service income once it rises above 50. Grows from Charm Factor, Charm, fame, and certain clothes or traits.""", # MISSING TRANSLATION
 	STATCONSENT = "Consenso",
 	STAMINA_LABEL = "Stamina",
@@ -3190,7 +3213,7 @@ Danno +15%, Salute +20.""",
 	STATPRICE = "Valore",
 	STATCOUNTERATTACKS = "Contrattacchi rimasti",
 	STATCOUNTERATTACKS_MAX = "Contrattacchi per turno",
-	STATCOUNTERATTACKS_MAXDESCRIPT = "Maximal number of counterattacks this character can perform per turn.", # MISSING TRANSLATION
+	STATCOUNTERATTACKS_MAXDESCRIPT = """Numero massimo di contrattacchi che questo personaggio può eseguire in un turno.""",
 	STATCHG_STRENGTH = "Cariche di Forza",
 	STATCHG_STRENGTH_MAX = "Forza Max. Cariche",
 	STATCHG_PERSUASION = "Cariche di Persuasione",
@@ -3245,14 +3268,14 @@ Danno +15%, Salute +20.""",
 	FAMEDESC_PRICE_BONUS = "Valore del Personaggio",
 	FAMEDESC_UPKEEP = "Manutenzione settimanale subordinata",
 	FAMEDESC_LOYALTY_BONUS = "Lealtà per il tirocinante",
-	FAMEDESC_MANHUNT_BONUS = """Manhunt bonus""", # MISSING TRANSLATION
-	FAMEDESC_DESIRABILITY_BONUS = """Desirability bonus""", # MISSING TRANSLATION
+	FAMEDESC_MANHUNT_BONUS = """Bonus caccia all'uomo""",
+	FAMEDESC_DESIRABILITY_BONUS = """Bonus di desiderabilità""",
 	FAMEDESC_RECRUIT_BONUS = "Efficienza nel reclutamento",
 	PRICEDESC_TRAITS_POS = "Tratti positivi",
 	PRICEDESC_TRAITS_NEG = "Tratti negativi",
 	PRICEDESC_CUMULATIVE = "Bonus cumulativo %s di",
 	PRICEDESC_LESS = "Non può essere inferiore a",
-	PRICEDESC_NOT_BROKEN_IN = """Not broken in""", # MISSING TRANSLATION
+	PRICEDESC_NOT_BROKEN_IN = """Non domato""",
 	MASTER_POINTS = "Punti di Maestria",
 	TOOLTIPENERGY = "L'energia viene ripristinata durante il sonno ed è necessaria per le attività. Quando un personaggio è costretto a lavorare senza energia rimasta, la sua Stanchezza aumenta. ",
 	TOOLTIPFATIGUE = "La stanchezza aumenta con il tempo e si dissipa con l'intrattenimento. Se non gestito, può causare una riduzione delle prestazioni.",
@@ -3405,10 +3428,10 @@ Costo di Mana per gli Incantesimi ridotto del 15%
 	STATFOOD_HATE = "Cibo Odiato",
 	STATFOOD_LOVEDESCRIPT = "Quando si mangia il proprio cibo preferito, si dà una piccola spinta alla produttività e all'obbedienza per il giorno successivo. Il cibo composto da ingredienti amati e odiati sarà considerato neutro e non darà alcun bonus o penalità. ",
 	STATFOOD_HATEDESCRIPT = "Quando si mangia il cibo odiato, si riduce la produttività per il giorno successivo. Il cibo composto da ingredienti amati e odiati sarà considerato neutro e non darà alcun bonus o penalità.",
-	STATFOOD_DEMAND = """Food Demand""", # MISSING TRANSLATION
-	STATFOOD_DEMANDDESCRIPT = """The quality of food a character expects. Eating below it costs Respect, Productivity and Experience Gain until their next meal.""", # MISSING TRANSLATION
-	STATFED = """Fed""", # MISSING TRANSLATION
-	STATFEDDESCRIPT = """Turns of food a character has left. It drops by one every turn and is topped up whenever they eat.""", # MISSING TRANSLATION
+	STATFOOD_DEMAND = """Esigenza alimentare""",
+	STATFOOD_DEMANDDESCRIPT = """La qualità del cibo che il personaggio si aspetta. Mangiare al di sotto costa Rispetto, Produttività e Guadagno di esperienza fino al pasto successivo.""",
+	STATFED = """Sazio""",
+	STATFEDDESCRIPT = """Turni di cibo che restano al personaggio. Cala di uno ogni turno e si ricarica a ogni pasto. A zero il personaggio mangia di nuovo, oppure patisce la fame se non c'è nulla.""",
 	STATTASK_EFFICIENCY_TOOL = "Bonus Efficienza Incarico",
 	STATTASK_EFFICIENCY_AXE = "Efficienza Compito - Ascia",
 	STATTASK_EFFICIENCY_AXEDESCRIPT = "Bonus Efficienza Compito con l'Ascia",
@@ -3449,8 +3472,8 @@ Costo di Mana per gli Incantesimi ridotto del 15%
 	RACEDARKELFADJ = "Elfo Oscuro",
 	RACEORC = "Orco",
 	RACEORCADJ = "Orco",
-	RACEGOBLIN = "Goblin", #
-	RACEGOBLINADJ = "Goblin", #
+	RACEGOBLIN = """Goblin""", #
+	RACEGOBLINADJ = """Goblin""", #
 	RACEKOBOLD = "Folletto",
 	RACEKOBOLDADJ = "Folletto",
 	RACEDWARF = "Nano",
@@ -3475,8 +3498,8 @@ Costo di Mana per gli Incantesimi ridotto del 15%
 	RACEHARPYADJ = "Arpia",
 	RACESLIME = "Melma",
 	RACESLIMEADJ = "Melma",
-	RACELAMIA = "Lamia", #
-	RACELAMIAADJ = "Lamia", #
+	RACELAMIA = """Lamia""", #
+	RACELAMIAADJ = """Lamia""", #
 	RACEARACHNA = "Aracnide",
 	RACEARACHNAADJ = "Aracnide",
 	RACESCYLLA = "Scilla",
@@ -3503,8 +3526,8 @@ Costo di Mana per gli Incantesimi ridotto del 15%
 	RACEHALFKINBUNNYADJ = "Coniglietto Mezzosangue",
 	RACEHALFKINTANUKI = "Tanuki Mezzosangue",
 	RACEHALFKINTANUKIADJ = "Tanuki Mezzosangue",
-	RACERATKIN = "Ratkin", #
-	RACERATKINADJ = "Ratkin", #
+	RACERATKIN = """Rattide""", #
+	RACERATKINADJ = """Rattide""", #
 	RACEHUMANDESCRIPT = """Gli esseri umani sono una delle razze più comuni. La loro forza sta nel numero e nella flessibilità, ma generalmente sono piuttosto deboli nella magia e hanno un basso potenziale di crescita. Solo pochi esseri umani eccezionali hanno mostrato imprese eccezionali.
 
 La società umana è piuttosto aperta agli altri, ma anche pronta ad arrabbiarsi e a scatenare guerre anche tra di loro. Mentre alcuni potrebbero comportarsi in modo pudico, specialmente in pubblico, gli esseri umani in generale sono molto attivi sessualmente e non si allontanano dalle altre razze umanoidi. """,
@@ -3651,10 +3674,10 @@ Lealtà: +10 (metà per gli spettatori), Lussuria: +15, Max Obbedienza.""",
 Esegue il carattere selezionato. Migliora notevolmente l'obbedienza di tutte le persone coinvolte.
 Effetti di base:
 Lealtà: +25, massima obbedienza.""",
-	SKILLCLASS_COPY = """Universal Aptitude""", # MISSING TRANSLATION
-	SKILLCLASS_COPYDESCRIPT = """Allows to copy a racial restricted class of selected character. Only usable once.""", # MISSING TRANSLATION
-	DIALOGUECLASS_COPYREPORT = """Select a class for [name] to learn from [targetname].""", # MISSING TRANSLATION
-	DIALOGUECLASS_COPYREPORT_FAILED = """No class for [name] to learn from [targetname].""", # MISSING TRANSLATION
+	SKILLCLASS_COPY = """Attitudine universale""",
+	SKILLCLASS_COPYDESCRIPT = """Permette di copiare una classe con restrizione razziale di un personaggio selezionato. Utilizzabile una sola volta.""",
+	DIALOGUECLASS_COPYREPORT = """Seleziona una classe che [name] imparerà da [targetname].""",
+	DIALOGUECLASS_COPYREPORT_FAILED = """Nessuna classe che [name] possa imparare da [targetname].""",
 	SKILLENTHRALL = "Affascinare",
 	SKILLENTHRALLDESCRIPT = "Seleziona un personaggio per trasformarlo in uno Schiavo dell'incantatore. Ogni Schiavo aumenta il desiderio massimo, la rigenerazione del desiderio e fornisce punti sblocco.",
 	DIALOGUEENTHRALLREPORT = "[targetname] è stata conquistata da [name]. [targetname] si sente completamente innamorata di [him].",
@@ -3770,6 +3793,8 @@ Intelligenza: -10; Guadagno EXP: -10%; Il prezzo di vendita è notevolmente rido
 	SKILLS_CAT_HEAL_DESC = "Guarire",
 	UNLOCK_REQS = "Requisiti di sblocco",
 	CLASSES_LABEL = "Classi",
+	CHARINFO_PROGRESSION = """Character Progression""", # MISSING TRANSLATION
+	CHARINFO_MASTERIES_TAB = """Masteries""", # MISSING TRANSLATION
 	SKILLS_LABEL = "Abilità",
 	SKILL_POINTS_LABEL = "Punti Abilità",
 	REQUIREMENTS_TOOLTIP = "Fabbisogno",
@@ -3828,8 +3853,8 @@ Intelligenza: -10; Guadagno EXP: -10%; Il prezzo di vendita è notevolmente rido
 	REPUTATION_SHOP_LABEL = "Negozio Reputazione",
 	UPGRADE_BODY_LABEL = "Migliora Corpo",
 	MARKETPLACE_LABEL = "Mercato",
-	BUYBACK_LABEL = """Buyback""", # MISSING TRANSLATION
-	BUYBACK_TOOLTIP = """Shows goods you sold to this shop. They can be bought back for the same price until the turn ends.""", # MISSING TRANSLATION
+	BUYBACK_LABEL = """Riacquisto""",
+	BUYBACK_TOOLTIP = """Mostra le merci che hai venduto a questo negozio. Possono essere riacquistate allo stesso prezzo fino alla fine del turno.""",
 	COST_LABEL = "Costo",
 	NUMBER_LABEL = "Numero",
 	ITEM_LABEL = "Articolo",
@@ -4362,10 +4387,10 @@ L'allenamento ha maggiori possibilità di successo.""",
 I debuff della gravidanza sono più deboli
 La prole erediterà solo le statistiche di questo genitore.""",
 	TRAITHARLOTDESCRIPT = "La prostituzione è più efficiente del 50%.",
-	TRAITCOURTESAN = """Courtesan""", # MISSING TRANSLATION
-	TRAITCOURTESANDESCRIPT = """Fame can rise up to level 5 from service tasks instead of the usual cap, and the desirability bonus granted by fame is doubled.""", # MISSING TRANSLATION
-	TRAITPETBEAST = """Fan Favorite""", # MISSING TRANSLATION
-	TRAITPETBEASTDESCRIPT = """Tame factor provides bigger benefits for service jobs and desirability.""", # MISSING TRANSLATION
+	TRAITCOURTESAN = """Cortigiana""",
+	TRAITCOURTESANDESCRIPT = """La fama può salire fino al livello 5 con gli incarichi di servizio invece del limite abituale, e il bonus di desiderabilità dato dalla fama è raddoppiato.""",
+	TRAITPETBEAST = """Beniamino del pubblico""",
+	TRAITPETBEASTDESCRIPT = """Il fattore di addomesticamento offre benefici maggiori per gli incarichi di servizio e la desiderabilità.""",
 	TRAITSUCCUBUSDESCRIPT = """Le attività sessuali forniscono il 50% in più di esperienza.
 Può reclutare infallibilmente personaggi casuali usando la Lussuria.
 Le azioni di Addestramento Sessuale hanno meno possibilità di fallire.""",
@@ -4469,7 +4494,7 @@ Le azioni di allenamento fisico e sessuale hanno un impatto maggiore del 25%."""
 	TRAITCOWARD = "Codardo",
 	TRAITFRIGID = "Frigido",
 	TRAITBAWDY = "Osceno",
-	TRAITFORAGER = "Forager", #
+	TRAITFORAGER = """Raccoglitore""", #
 	TRAITTALENTED = "Talentuoso",
 	TRAITMENIAL = "Umile",
 	TRAITSTURDY = "Robusto",
@@ -4487,7 +4512,7 @@ Le azioni di allenamento fisico e sessuale hanno un impatto maggiore del 25%."""
 	TRAITMVORTEXDESCRIPT = "+1 rigenerazione Mana",
 	TRAITGIFTEDDESCRIPT = "Mana massimo +50%.",
 	TRAITBELLIGERENTDESCRIPT = "ATT +15%.",
-	TRAITHIDDENPOWERSDESCRIPT = "MATK +10%.", #
+	TRAITHIDDENPOWERSDESCRIPT = """ATTM +10%.""", #
 	TRAITHEALTHYDESCRIPT = "+10 Salute massima.",
 	TRAITDIMDESCRIPT = "Guadagna il 25% in meno di punti EXP.",
 	TRAITREBELDESCRIPT = "Guadagno di fedeltà -2.",
@@ -4499,9 +4524,9 @@ Le azioni di allenamento fisico e sessuale hanno un impatto maggiore del 25%."""
 	TRAITBLUNDERINGDESCRIPT = "Incarichi di raccolta, pesca, agricoltura -80% di efficienza.",
 	TRAITCRUDEDESCRIPT = "Compiti di sarto, fabbro, alchimia -80% di efficienza.",
 	TRAITCHASTEDESCRIPT = "Compito di prostituzione -80% di efficienza.",
-	TRAITPACIFISTDESCRIPT = "ATK -50%.", #
-	TRAITWHIMPDESCRIPT = "HP MAX -40%.", #
-	TRAITM_INEPTDESCRIPT = "MATK -50%.", #
+	TRAITPACIFISTDESCRIPT = """ATT -50%.""", #
+	TRAITWHIMPDESCRIPT = """PS MAX -40%.""", #
+	TRAITM_INEPTDESCRIPT = """ATTM -50%.""", #
 	TRAITSELFISHDESCRIPT = "Non può usare le abilità di supporto al combattimento.",
 	TRAITCOWARDDESCRIPT = "Percentuale di successo -50.",
 	TRAITFRIGIDDESCRIPT = "Non può acquisire nuovi tratti sessuali. La lussuria massima è ridotta del 50%.",
@@ -4727,7 +4752,7 @@ Richiede il Consenso 'Disponibile' o superiore.}""",
 	TRAITEFFECTRIVAL = "Rivale presente: +5%% produttività",
 	TRAITEFFECTFRIENDS = """Amico presente: +10%% Rigenerazione Salute""",
 	TRAITEFFECTLOVERS = """Amante presente: +10%% Rigenerazione Mana""",
-	TRAITEFFECTRELATIONCHARACTERS = """{color=yellow|Caused by: %s}""", # MISSING TRANSLATION
+	TRAITEFFECTRELATIONCHARACTERS = """{color=yellow|Causato da: %s}""",
 	TRAITEFFECTRARESTURDY = """Raro: Robusto
 Aumento della Salute e della Penetrazione dell'Armatura""",
 	TRAITEFFECTRARENIMBLE = """Raro: Agile
@@ -4740,29 +4765,29 @@ Aumento dei Danni e della Frequenza dei Colpi""",
 Aumento dell'Evasione, della Frequenza dei Colpi e MDEF""",
 	TRAITEFFECTRARETOUGH = """Raro: Duro
 Aumento della Salute, DEF e MDEF""",
-	TRAITMONSTER_MASTERY_WARFARE = """Warfare Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_WARFARE = """Maestria: Arte della guerra""",
 	TRAITMONSTER_MASTERY_WARFAREDESCRIPT = "Maestria della Guerra",
-	TRAITMONSTER_MASTERY_PROTECTION = """Protection Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_PROTECTION = """Maestria: Protezione""",
 	TRAITMONSTER_MASTERY_PROTECTIONDESCRIPT = "Maestria della Protezione",
-	TRAITMONSTER_MASTERY_STEALTH = """Stealth Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_STEALTH = """Maestria: Furtività""",
 	TRAITMONSTER_MASTERY_STEALTHDESCRIPT = "Maestria della Furtività",
-	TRAITMONSTER_MASTERY_MARKSMANSHIP = """Marksmanship Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_MARKSMANSHIP = """Maestria: Tiro""",
 	TRAITMONSTER_MASTERY_MARKSMANSHIPDESCRIPT = "Maestria nel Tiro con l'Arco",
-	TRAITMONSTER_MASTERY_LEADERSHIP = """Leadershp Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_LEADERSHIP = """Maestria: Comando""",
 	TRAITMONSTER_MASTERY_LEADERSHIPDESCRIPT = "Maestria della Leadership",
-	TRAITMONSTER_MASTERY_FIRE = """Fire Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_FIRE = """Maestria: Fuoco""",
 	TRAITMONSTER_MASTERY_FIREDESCRIPT = "Maestria del Fuoco",
-	TRAITMONSTER_MASTERY_WATER = """Water Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_WATER = """Maestria: Acqua""",
 	TRAITMONSTER_MASTERY_WATERDESCRIPT = "Maestria dell'Acqua",
-	TRAITMONSTER_MASTERY_AIR = """Air Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_AIR = """Maestria: Aria""",
 	TRAITMONSTER_MASTERY_AIRDESCRIPT = "Maestria dell'Aria",
-	TRAITMONSTER_MASTERY_EARTH = """Earth Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_EARTH = """Maestria: Terra""",
 	TRAITMONSTER_MASTERY_EARTHDESCRIPT = "Maestria della Terra",
-	TRAITMONSTER_MASTERY_LIGHT = """Light Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_LIGHT = """Maestria: Luce""",
 	TRAITMONSTER_MASTERY_LIGHTDESCRIPT = "Maestria della Luce",
-	TRAITMONSTER_MASTERY_DARK = """Dark Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_DARK = """Maestria: Oscurità""",
 	TRAITMONSTER_MASTERY_DARKDESCRIPT = "Maestria Oscura",
-	TRAITMONSTER_MASTERY_MIND = """Mind Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_MIND = """Maestria: Mente""",
 	TRAITMONSTER_MASTERY_MINDDESCRIPT = "Maestria della Mente",
 	TRAITEFFECTHARDWORK = "Duro lavoro: +50%% di produttività",
 	TRAITEFFECTPHYSBUF = "Elisir della Forza dell'Orco: +80 Fisica",
@@ -4771,18 +4796,18 @@ Aumento della Salute, DEF e MDEF""",
 	TRAITEFFECTFAVFOOD = "Cibo preferito: +5%% produttività, +5%% guadagno esperienza",
 	TRAITEFFECTHATEDFOOD = "Cibo odiato: -10%% di produttività.",
 	TRAITEFFECTSTARVE = "Fame: -50%% Produttività, -50%% Danno.",
-	TRAITEFFECTCHEAPFOOD = """Poor Meal: -20%% Productivity, -20%% Experience Gain until the next meal""", # MISSING TRANSLATION
-	TRAITEFFECTFOODMEAT = """Well Fed (Meat): +5%% Damage, +5%% Max Health""", # MISSING TRANSLATION
-	TRAITEFFECTFOODFISH = """Well Fed (Fish): +10%% Max Mana, +5%% Experience Gain""", # MISSING TRANSLATION
-	TRAITEFFECTFOODVEGE = """Well Fed (Vegetables): +25%% Health Regeneration, +10 Poison Resistance""", # MISSING TRANSLATION
-	TRAITEFFECTFOODFISHCAKES = """Well Fed (Fish Cakes): +2 Mana Regeneration, +5 Magic Attack""", # MISSING TRANSLATION
-	TRAITEFFECTFOODMEATSOUP = """Well Fed (Meat Soup): +5%% Max Health, +5%% Productivity""", # MISSING TRANSLATION
-	TRAITEFFECTFOODCURRY = """Well Fed (Curry): +3 Attack, +3 Magic Attack""", # MISSING TRANSLATION
-	TRAITEFFECTFOODVEGETABLESTIRFRY = """Well Fed (Vegetable Stir-Fry): +5%% Experience Gain, +5 Armor""", # MISSING TRANSLATION
-	TRAITEFFECTFOODROASTEDFEAST = """Well Fed (Roasted Feast): +6 Attack, +3%% Critical Chance""", # MISSING TRANSLATION
-	TRAITEFFECTFOODMINERSLUNCH = """Well Fed (Miner's Lunch): +10%% Productivity, +5%% Experience Gain""", # MISSING TRANSLATION
-	TRAITEFFECTFOODFRIEDSALMON = """Well Fed (Fried Salmon): +5 Magic Attack, +25%% Mana Regeneration""", # MISSING TRANSLATION
-	TRAITEFFECTFOODDEFENDERSMEAL = """Well Fed (Defender's Meal): +15 Health, +5%% Damage Reduction, +1 Counterattack""", # MISSING TRANSLATION
+	TRAITEFFECTCHEAPFOOD = """Pasto scarso: -20%% produttività, -20%% guadagno di esperienza fino al pasto successivo""",
+	TRAITEFFECTFOODMEAT = """Ben nutrito (carne): +3%% salute massima""",
+	TRAITEFFECTFOODFISH = """Ben nutrito (pesce): +0,5 rigenerazione mana""",
+	TRAITEFFECTFOODVEGE = """Ben nutrito (verdure): +1%% guadagno di esperienza""",
+	TRAITEFFECTFOODFISHCAKES = """Ben nutrito (crocchette di pesce): +2 rigenerazione mana, +5 Attacco magico""",
+	TRAITEFFECTFOODMEATSOUP = """Ben nutrito (zuppa di carne): +5%% salute massima, +5%% produttività""",
+	TRAITEFFECTFOODCURRY = """Ben nutrito (curry): +3 Attacco, +3 Attacco magico""",
+	TRAITEFFECTFOODVEGETABLESTIRFRY = """Ben nutrito (Verdure saltate): +5%% guadagno di esperienza, +5 Armatura""",
+	TRAITEFFECTFOODROASTEDFEAST = """Ben nutrito (Banchetto arrosto): +6 Attacco, +3%% probabilità di critico""",
+	TRAITEFFECTFOODMINERSLUNCH = """Ben nutrito (Pranzo del minatore): +10%% produttività, +5%% guadagno di esperienza""",
+	TRAITEFFECTFOODFRIEDSALMON = """Ben nutrito (salmone fritto): +5 Attacco magico, +25%% rigenerazione mana""",
+	TRAITEFFECTFOODDEFENDERSMEAL = """Ben nutrito (Pasto del difensore): +15 salute, +5%% riduzione danni, +1 contrattacco""",
 	TRAITEFFECTFOODGRAIN = """Well Fed (Grains): +5%% Productivity""", # MISSING TRANSLATION
 	TRAITEFFECTGRAVEINJ = "Grave infortunio: -25%% di produttività, -50 sessuali. Non può partecipare al combattimento.",
 	TRAITEFFECTINJ = "Ferita: -30%% PV Max, -20 Precisione.",
@@ -4865,7 +4890,7 @@ Effetto abilità sociali: +10%.""",
 	TRAITSTUNIMMUNITYDESCRIPT = "Non può essere stordito in combattimento.",
 	TRAITEFFECTCURSE = "Tutte le resistenze sono ridotte",
 	TRAITEFFECTHASTE = "La velocità è aumentata",
-	TRAITEFFECTVEIL = """Shadow Veil: +30 Light and Dark Resist, MDEF increased based on caster's MATK""", # MISSING TRANSLATION
+	TRAITEFFECTVEIL = """Velo d'ombra: +30 resistenza a Luce e Oscurità, DIFM aumentata in base all'ATTM del lanciatore""",
 	EFFECTCOFFIBLESS = "Aumenta l'esperienza guadagnata del 20%%",
 	EUPHORIABUFF = "Euforia: Danni aumentati",
 	FIREARROWBUFF = "Frecce infuocate: i tuoi attacchi bruciano i nemici.",
@@ -4886,13 +4911,13 @@ Effetto abilità sociali: +10%.""",
 	EFFECTNAME_E_PREGNANCY = "È incinta",
 	EFFECTNAME_E_PREGNANCY1 = "È molto incinta",
 	EFFECTNAME_E_PREGNANCY_BREEDER = "È incinta (allevatrice)",
-	EFFECTNAME_E_MKUP = "Tattoo", #
-	EFFECTNAME_E_TLUST1 = "Tattoo", #
-	EFFECTNAME_E_TLUST2 = "Tattoo", #
-	EFFECTNAME_E_THPR = "Tattoo", #
-	EFFECTNAME_E_TMPR = "Tattoo", #
-	EFFECTNAME_E_TRIB1 = "Tattoo", #
-	EFFECTNAME_E_TRIB2 = "Tattoo", #
+	EFFECTNAME_E_MKUP = """Tatuaggio""", #
+	EFFECTNAME_E_TLUST1 = """Tatuaggio""", #
+	EFFECTNAME_E_TLUST2 = """Tatuaggio""", #
+	EFFECTNAME_E_THPR = """Tatuaggio""", #
+	EFFECTNAME_E_TMPR = """Tatuaggio""", #
+	EFFECTNAME_E_TRIB1 = """Tatuaggio""", #
+	EFFECTNAME_E_TRIB2 = """Tatuaggio""", #
 	EFFECTNAME_E_TR_ALIOS = "Campione di Alios",
 	EFFECTNAME_VALKYRIE_SPEAR_BONUS = "Valchiria",
 	EFFECTNAME_E_WE_DARK_STATIC = "Cavaliere della Morte",
@@ -4902,8 +4927,8 @@ Effetto abilità sociali: +10%.""",
 	EFFECTNAME_E_RARE_DEADLY = "Nemico mortale",
 	EFFECTNAME_E_RARE_PRECISE = "Nemico preciso",
 	EFFECTNAME_E_RARE_TOUGH = "Nemico tosto",
-	EFFECTNAME_E_MINIBOSS = "Miniboss", #
-	EFFECTNAME_E_BOSS = "Boss", #
+	EFFECTNAME_E_MINIBOSS = """Miniboss""", #
+	EFFECTNAME_E_BOSS = """Boss""", #
 	EFFECTNAME_DEMON_FORM = "In forma di Demone",
 	EFFECTNAME_HUMAN_FORM = "In forma Umana",
 	EFFECTNAME_MAGIC_ATUNEMENT = "Sintonizzazione magica",
@@ -5006,7 +5031,7 @@ Tutti i danni inflitti sono ridotti del 15%%, uno shock aggiuntivo ha la possibi
 	EFFECTNAME_SSTRIKE = "Colpo d'ombra",
 	EFFECTNAME_BLIND = "cieco",
 	EFFECTNAME_FEAR = "paura",
-	EFFECTNAME_SHOCK = "shock", #
+	EFFECTNAME_SHOCK = """shock""", #
 	EFFECTNAME_STUN = "stordimento",
 	EFFECTNAME_CHARM = "fascino",
 	EFFECTNAME_WET = "bagnato",
@@ -5029,7 +5054,7 @@ Tutti i danni inflitti sono ridotti del 15%%, uno shock aggiuntivo ha la possibi
 	EFFECTNAME_BLEED = "sanguinamento",
 	EFFECTNAME_POISON = "veleno",
 	EFFECTNAME_DARKFLAME = "fiamma oscura",
-	EFFECTNAME_SHRED = "shred", #
+	EFFECTNAME_SHRED = """lacerazione""", #
 	EFFECTNAME_SHATTER = "frantumazione",
 	EFFECTNAME_SLEEP = "sonno",
 	EFFECTNAME_ENSNARE = "intrappolare",
@@ -5105,7 +5130,7 @@ Quando usa [Regressione Maledetta - Furia Cieca], guadagna Fragile se il bersagl
 A 3+ stack: Infligge +20% danni contro bersagli che hanno Sanguinamento.
 [Scatto Folle] può consumare uno stack di questo effetto per rilanciarsi una volta.
 A 5+ stack: Aumenta le cure ricevute del 50%""",
-	EFFECTNAME_FRAGILE = 'Fragile',
+	EFFECTNAME_FRAGILE = """Fragile""",
 	EFFECT_FRAGILE = '+10% Danno Subito per stack (Max 10).',
 	EFFECTNAME_BRAMBLE_TRAP = 'Trappola di Rovi',
 	EFFECT_BRAMBLETRAP = 'Si attiva quando usa un\'abilità: subisce come danno l\'80% dell\'ATT MAG di chi lancia l\'incantesimo, guadagna Sanguinamento e viene Intrappolato per 2 turni.',
@@ -5188,135 +5213,135 @@ Consuma automaticamente 1 accumulo di questo effetto per rimuovere gli effetti i
 	EFFECTNAME_TURBULENCE_AIR = 'Aria Turbolenta',
 	EFFECT_TURBULENCE_AIR_TRAIT = """Riduce di 40 la precisione di tutti gli attacchi a distanza su singolo bersaglio dei nemici (inclusi gli incantesimi).
 La resistenza a Mente, Luce e Oscurità di questa unità non può essere alterata.""",
-	TRAIT_DUAL_BLADE_MASTERY_DESC = """Disarm immunity. Every attack deals additional physical damage.""", # MISSING TRANSLATION
-	EFFECTNAME_ANTAGONIZED = """Antagonized""", # MISSING TRANSLATION
-	EFFECTNAME_DUTY_TO_PROTECT = """Duty to Protect""", # MISSING TRANSLATION
-	EFFECT_ANTAGONIZED = """Deal and Take +10% more damage.""", # MISSING TRANSLATION
-	EFFECT_DUTY_TO_PROTECT = """+20 ATK nd Hit rate.""", # MISSING TRANSLATION
-	TRAIT_SELF_PRESERVATION_DESC = """Self-preservation: Gain Fear for 1 turn when ally dies. If this unit is the only one left on the field, try to run away next turn.""", # MISSING TRANSLATION
-	TRAIT_MODERATELY_FEARSOME_STATURE_DESC = """Moderately Fearsome Stature: Enemy attacked by this unit or attacking this unit might just gain fear for 1 turn, maybe.""", # MISSING TRANSLATION
-	TRAIT_REDHEAD_BOSS = """Fiery Grand Strategist (Self-Proclaim): Hold total mastery over fire and the flow of battle! ...or so he claims.""", # MISSING TRANSLATION
-	TRAIT_SWIFTY_GUY = """Relatively Swifty Guy: Uhhhh... sorry, I don't have anything fancy like the other two. I run quite fast tho.
-Bandit Leader: Have some more confidence, ya' dumbass.
-Y-yes, boss!""", # MISSING TRANSLATION
-	EFFECTNAME_RUNNING_AWAY = """Running Away""", # MISSING TRANSLATION
-	EFFECT_RUNNING_AWAY = """Will escape the fight on their next turn.""", # MISSING TRANSLATION
-	EFFECTNAME_AXE_RAISED = """Axe Raised""", # MISSING TRANSLATION
-	EFFECT_AXE_RAISED = """Will use what he believes is a powerful skill next turn.
-Can be removed by... any attack hitting this unit... even if it's just 1 damage...
-And the powerful skill might actually just suck in reality.""", # MISSING TRANSLATION
-	EFFECTNAME_GENIUS_PLAN = """Genius plan...?""", # MISSING TRANSLATION
-	EFFECT_GENIUS_PLAN = """+100% ATK... but it seems this unit is stunned.""", # MISSING TRANSLATION
+	TRAIT_DUAL_BLADE_MASTERY_DESC = """Immunità al Disarmo. Ogni attacco infligge danni fisici aggiuntivi.""",
+	EFFECTNAME_ANTAGONIZED = """Antagonizzato""",
+	EFFECTNAME_DUTY_TO_PROTECT = """Dovere di proteggere""",
+	EFFECT_ANTAGONIZED = """Infligge e subisce il +10% dei danni.""",
+	EFFECT_DUTY_TO_PROTECT = """+20 ATT e precisione.""",
+	TRAIT_SELF_PRESERVATION_DESC = """Autoconservazione: ottiene Paura per 1 turno quando un alleato muore. Se è l'ultimo rimasto sul campo, al turno successivo tenterà di fuggire.""",
+	TRAIT_MODERATELY_FEARSOME_STATURE_DESC = """Statura moderatamente spaventosa: un nemico attaccato da questa unità o che la attacca potrebbe ottenere Paura per 1 turno, forse.""",
+	TRAIT_REDHEAD_BOSS = """Grande stratega di fuoco (autoproclamato): padronanza totale del fuoco e dell'andamento della battaglia! ...o almeno così sostiene.""",
+	TRAIT_SWIFTY_GUY = """Tizio relativamente svelto: Ehhh... scusate, non ho niente di fantasioso come gli altri due. Però corro abbastanza veloce.
+Capo dei banditi: Abbi un po' più di fiducia, testone.
+S-sì, capo!""",
+	EFFECTNAME_RUNNING_AWAY = """In fuga""",
+	EFFECT_RUNNING_AWAY = """Fuggirà dallo scontro al prossimo turno.""",
+	EFFECTNAME_AXE_RAISED = """Ascia sollevata""",
+	EFFECT_AXE_RAISED = """Al prossimo turno userà quella che crede sia un'abilità potente.
+Può essere rimosso da... qualsiasi attacco che colpisca questa unità... anche solo 1 danno...
+E l'abilità potente potrebbe in realtà fare schifo.""",
+	EFFECTNAME_GENIUS_PLAN = """Un piano geniale...?""",
+	EFFECT_GENIUS_PLAN = """+100% ATT... ma pare che questa unità sia stordita.""",
 	TRAIT_TANTALISING_TENTACLE = """When this unit attack enemy affected by Ensnare with a physical move, inflict a stack of Arousal.
 When this unit is being attacked by a melee skill and the attacker does not have Blessing or 'Elemental Shield' effect, 
 50% chances to inflict Ensnared onto the attacker.""", # MISSING TRANSLATION
 	EFFECTNAME_AROUSAL = """Arousal""", # MISSING TRANSLATION
 	EFFECT_AROUSAL = """Reduce Hitrate and Evasion by 5 per stack.
 At +10 stack, become Stun for 2 turns and remove all stack of Arousal.""", # MISSING TRANSLATION
-	EFFECTNAME_EMPOWERMENT = """Empowerment""", # MISSING TRANSLATION
-	EFFECT_EMPOWERMENT = """+10% ATK & MATK per stack.""", # MISSING TRANSLATION
-	EFFECTNAME_TENDRIL_TRAP = """Tendril Trap""", # MISSING TRANSLATION
+	EFFECTNAME_EMPOWERMENT = """Potenziamento""",
+	EFFECT_EMPOWERMENT = """+10% ATT e ATTM per carica.""",
+	EFFECTNAME_TENDRIL_TRAP = """Trappola di viticci""",
 	EFFECT_TENDRIL_TRAP = """Activated on spell usage. Dealing 100% MATK Dark damage and inflicting Ensnared for 2 turns. If the target is already Ensnared, inflict 3 Arousal instead.""", # MISSING TRANSLATION
-	EFFECTNAME_BUTTERFLY_IN_THE_STOMACH_COUNTER = """Butterfly in the Stomach Count""", # MISSING TRANSLATION
-	EFFECTNAME_BUTTERFLY_IN_THE_STOMACH = """Butterfly in the Stomach""", # MISSING TRANSLATION
-	EFFECT_BUTTERFLY_IN_STOMACH = """+50 DEF and MDEF. Regenerate 8% of Max HP each turn. After being hit by 6 physical attack, remove this buff and spit out the Swallowed Victim!""", # MISSING TRANSLATION
-	EFFECTNAME_SWALLOWED = """Swallowed""", # MISSING TRANSLATION
-	EFFECT_SWALLOWED_DESCRIPT = """Cannot Act. Cannot be Healed. Lose 20% HP on their turn.
-Last until this Ashmedai is hit by physical attack 6 times.""", # MISSING TRANSLATION
-	TRAIT_SLIPPERY_THICK_SKIN = """Reduce Ranged damage taken by 20%. If Wet, ranged attacks including spells have 30% to miss this unit.""", # MISSING TRANSLATION
-	EFFECT_NIXX_TRAIT_DESCRIPT = """Take further reduced damage from DoT effects.
-Enemy gains no benefit from 'In the Shadow' effect.
-Always hit against targets affected by 'In the Shadow'.
-Enemies affected with 'In the Shadow' take 20% of current HP as dark damage every turn.""", # MISSING TRANSLATION
-	EFFECTNAME_INTANGIBLE_OPPRESSIVE_DARKNESS = """Intangible and Oppressive Darkness""", # MISSING TRANSLATION
-	EFFECT_INTANGIBLE_OPPRESSIVE_DARKNESS_DESCRIPT = """While the Brazier is unlit:
-Gain immunity to burn and silence.
-Take -50% damage from all attacks except fire and light damage.
-All units do not lose 'In the Shadow' buff when using move unless it's a fire or light move.""", # MISSING TRANSLATION
-	EFFECTNAME_NIXX_WRATH_TRAIT = """Ire Against the Light""", # MISSING TRANSLATION
-	EFFECT_NIXX_WRATH_TRAIT_DESCRIPT = """While the Brazier is lighted, gain a stack of Nixx's Wrath at the end of each Nixx's turn.
-At 4+ stack: Cleanse and Gain immunity to Silence.""", # MISSING TRANSLATION
-	EFFECTNAME_NIXX_WRATH = """Nixx's Wrath""", # MISSING TRANSLATION
-	EFFECT_NIXX_WRATH_DESCRIPT = """Gain + 7.5% ATK and MATK per stack (Max 4)
-At 4+ stack: Become immune to Silence, clear Silence on self, and allow Pulvis et Umbra Estis! to be used.
-Remove if Brazier were put out.""", # MISSING TRANSLATION
+	EFFECTNAME_BUTTERFLY_IN_THE_STOMACH_COUNTER = """Contatore farfalle nello stomaco""",
+	EFFECTNAME_BUTTERFLY_IN_THE_STOMACH = """Farfalle nello stomaco""",
+	EFFECT_BUTTERFLY_IN_STOMACH = """+50 DIF e DIFM. Rigenera l'8% dei PS massimi ogni turno. Dopo 6 attacchi fisici subiti, questo potenziamento viene rimosso e la vittima inghiottita viene sputata fuori!""",
+	EFFECTNAME_SWALLOWED = """Inghiottito""",
+	EFFECT_SWALLOWED_DESCRIPT = """Non può agire. Non può essere curato. Perde il 20% dei PS nel proprio turno.
+Dura finché questo Ashmedai non viene colpito 6 volte da attacchi fisici.""",
+	TRAIT_SLIPPERY_THICK_SKIN = """Riduce del 20% i danni a distanza subiti. Se bagnata, gli attacchi a distanza, incantesimi compresi, hanno il 30% di probabilità di mancare questa unità.""",
+	EFFECT_NIXX_TRAIT_DESCRIPT = """Riduce ulteriormente i danni subiti dagli effetti nel tempo.
+Il nemico non trae alcun beneficio dall'effetto «Nell'ombra».
+Colpisce sempre i bersagli sotto «Nell'ombra».
+I nemici sotto «Nell'ombra» subiscono il 20% dei PS attuali come danno da Oscurità ogni turno.""",
+	EFFECTNAME_INTANGIBLE_OPPRESSIVE_DARKNESS = """Oscurità intangibile e opprimente""",
+	EFFECT_INTANGIBLE_OPPRESSIVE_DARKNESS_DESCRIPT = """Finché il braciere è spento:
+Immunità a Bruciatura e Silenzio.
+-50% danni subiti da tutti gli attacchi tranne fuoco e luce.
+Nessuna unità perde il bonus «Nell'ombra» usando una mossa, a meno che non sia di fuoco o luce.""",
+	EFFECTNAME_NIXX_WRATH_TRAIT = """Ira contro la Luce""",
+	EFFECT_NIXX_WRATH_TRAIT_DESCRIPT = """Finché il braciere è acceso, Nixx guadagna una carica di Ira di Nixx alla fine di ogni suo turno.
+Con 4+ cariche: rimuove il Silenzio e concede l'immunità ad esso.""",
+	EFFECTNAME_NIXX_WRATH = """Ira di Nixx""",
+	EFFECT_NIXX_WRATH_DESCRIPT = """+7,5% ATT e ATTM per carica (max 4)
+Con 4+ cariche: immunità al Silenzio, rimuove il Silenzio da sé e consente di usare Pulvis et Umbra Estis!
+Rimosso se il braciere viene spento.""",
 	NIXX_ULT_WARNING = """
 ...The shadow casted by the brazier grow restless.""", # MISSING TRANSLATION
-	EFFECTNAME_KURO_NIXX_STANDOFF = """Champion's Defiance""", # MISSING TRANSLATION
-	EFFECT_KURO_NIXX_STANDOFF_DESCRIPT = """Deal and take +10% damage to Nixx. Kuro is immune to the negative effects of 'In the Shadow'.""", # MISSING TRANSLATION
-	EFFECTNAME_ENVIRONMENTAL_OBJECT = """Environmental Object""", # MISSING TRANSLATION
-	EFFECT_ENVIRONMENTAL_OBJECT_DESCRIPT = """HP cannot drop below 10%. Does not need to be defeated for the fight to be concluded.""", # MISSING TRANSLATION
-	EFFECTNAME_FESTERING_TERROR = """Festering Terror""", # MISSING TRANSLATION
-	EFFECT_FESTERING_TERROR_DESCRIPT = """Deal 10% more damage and gain +10% Crit Chance for every stack. (Max 5)""", # MISSING TRANSLATION
-	EFFECTNAME_BLACK_MIRROR = """Black Mirror""", # MISSING TRANSLATION
-	EFFECT_BLACK_MIRROR_DESCRIPT = """Reflect single-target spell casted on this unit back at the attacker at half the strength.""", # MISSING TRANSLATION
-	EFFECTNAME_BLACK_THORN = """Black Thorn""", # MISSING TRANSLATION
-	EFFECT_BLACK_THORN_DESCRIPT = """When hit by melee attack, deal 50 Dark damage back to the attacker.""", # MISSING TRANSLATION
-	EFFECTNAME_BLACK_GROWTH = """Black Growth""", # MISSING TRANSLATION
-	EFFECT_BLACK_GROWTH_DESCRIPT = """Regen 16% of HP at the end of each turn.""", # MISSING TRANSLATION
-	EFFECTNAME_BLACK_BIND = """Black Bind""", # MISSING TRANSLATION
-	EFFECT_BLACK_BIND_DESCRIPT = """Attacks from this unit have a 50% chance to inflict Ensnared for 2 turns""", # MISSING TRANSLATION
-	EFFECTNAME_LOST_IN_DARKNESS = """Lost in Darkness""", # MISSING TRANSLATION
-	EFFECT_LOST_IN_DARKNESS_DESCRIPT = """Take additional dark damage when hit by enemies.""", # MISSING TRANSLATION
-	EFFECT_UNLIT_BRAZIER_DESCRIPT = """When this unit HP drops to 10%:
- - Remove 'In the Shadow' from ALL unit.
- - Remove Festering Terror from all allies.
- - Convert 'Intangible and Oppressive Darkness' into 'Ire Against the Light'.
- - Transform into Lighted Brazier.""", # MISSING TRANSLATION
-	EFFECT_LIGTHED_BRAZIER_DESCRIPT = """When this unit HP drops to 10%:
- - Apply 'In the Shadow' to ALL unit.
- - Apply a stack of Lost in Darkness to all enemies.
- - Convert 'Ire Against the Light' into 'Intangible and Oppressive Darkness'.
- - Transform into Unlit Brazier.""", # MISSING TRANSLATION
-	EFFECT_INTANGIBLE_SHADOW_DESCRIPT = """While the Brazier is unlit:
- - all attacks against this unit have -50 hit rate
- - gain immunity to burn and silence.
- - Gain a stack of Festering Terror at the end of each turn.
-When the Brazier is lit, lose 16% of Max HP at the end of their turn.""", # MISSING TRANSLATION
+	EFFECTNAME_KURO_NIXX_STANDOFF = """Sfida del campione""",
+	EFFECT_KURO_NIXX_STANDOFF_DESCRIPT = """Infligge e subisce +10% danni con Nixx. Kuro è immune agli effetti negativi di «Nell'ombra».""",
+	EFFECTNAME_ENVIRONMENTAL_OBJECT = """Oggetto ambientale""",
+	EFFECT_ENVIRONMENTAL_OBJECT_DESCRIPT = """I PS non possono scendere sotto il 10%. Non deve essere sconfitto per concludere lo scontro.""",
+	EFFECTNAME_FESTERING_TERROR = """Terrore purulento""",
+	EFFECT_FESTERING_TERROR_DESCRIPT = """+10% danni e +10% probabilità di critico per ogni carica. (Max 5)""",
+	EFFECTNAME_BLACK_MIRROR = """Specchio nero""",
+	EFFECT_BLACK_MIRROR_DESCRIPT = """Riflette sull'attaccante, a metà potenza, gli incantesimi a bersaglio singolo lanciati su questa unità.""",
+	EFFECTNAME_BLACK_THORN = """Spina nera""",
+	EFFECT_BLACK_THORN_DESCRIPT = """Quando è colpita in mischia, infligge 50 danni da Oscurità all'attaccante.""",
+	EFFECTNAME_BLACK_GROWTH = """Escrescenza nera""",
+	EFFECT_BLACK_GROWTH_DESCRIPT = """Rigenera il 16% dei PS alla fine di ogni turno.""",
+	EFFECTNAME_BLACK_BIND = """Vincolo nero""",
+	EFFECT_BLACK_BIND_DESCRIPT = """Gli attacchi di questa unità hanno il 50% di probabilità di infliggere Intrappolamento per 2 turni""",
+	EFFECTNAME_LOST_IN_DARKNESS = """Perso nell'oscurità""",
+	EFFECT_LOST_IN_DARKNESS_DESCRIPT = """Subisce danni da Oscurità aggiuntivi quando viene colpita dai nemici.""",
+	EFFECT_UNLIT_BRAZIER_DESCRIPT = """Quando i PS di questa unità scendono al 10%:
+ - rimuove «Nell'ombra» da TUTTE le unità.
+ - rimuove Terrore purulento da tutti gli alleati.
+ - converte «Oscurità intangibile e opprimente» in «Ira contro la Luce».
+ - si trasforma in Braciere acceso.""",
+	EFFECT_LIGTHED_BRAZIER_DESCRIPT = """Quando i PS di questa unità scendono al 10%:
+ - applica «Nell'ombra» a TUTTE le unità.
+ - applica una carica di Perso nell'oscurità a tutti i nemici.
+ - converte «Ira contro la Luce» in «Oscurità intangibile e opprimente».
+ - si trasforma in Braciere spento.""",
+	EFFECT_INTANGIBLE_SHADOW_DESCRIPT = """Finché il braciere è spento:
+ - tutti gli attacchi contro questa unità hanno -50 precisione
+ - immunità a Bruciatura e Silenzio.
+ - guadagna una carica di Terrore purulento alla fine di ogni turno.
+Quando il braciere è acceso, perde il 16% dei PS massimi alla fine del proprio turno.""",
 	ACT4_GREG_HALF_HP = """
 Greg: All these gazes... Begone!
 Greg let loose a smokebomb!""", # MISSING TRANSLATION
 	GREG_CLOSE_CONFRONTATION_TRIGGERED = """
 Greg: Can you really affort to look somewhere else when I'm right in front of you? """, # MISSING TRANSLATION
-	EFFECT_GREG_TRAIT_DESCRIPT = """Black Knight - Greg:
-At the start of each round, Attempt to Read Movement of 2 random enemies.
-At less than 50% HP, Attempt to Read Movement of 4 random enemies instead.
-This effect is disabled if this unit is taunted, blinded, or immobilised.""", # MISSING TRANSLATION
-	EFFECT_LONESOME_RAGE_BYGONE_GLORY_TRAIT_DESCRIPT = """Lonesome Rage, Bygone Glory:
-If there's no other allies, gain 20 Armor pen, 30 Armor, 30 MDEF, and 15 Speed. 
-When this unit recovers from an immobilising effect, immediately use attack a random enemy and gain 'In the Shadow'.""", # MISSING TRANSLATION
-	EFFECTNAME_GREG_LAST_STAND = """Greg's Final Stand""", # MISSING TRANSLATION
-	EFFECT_GREG_FINAL_STAND_DESCRIPT = """Greg's Final Stand:
-Take further reduced damage from DoT effects.
-Hp does not drop below 10%.
-When hp reach 10%, gain Ridiculous Grit for 5 turns.""", # MISSING TRANSLATION
-	EFFECT_DEMONNESS_GIFT_NULL_CLOAK_DESCRIPT = """Demoness' Gift - Null Cloak: When this unit is affected by 'In the Shadow', Reduce Spell damage taken by 75%.""", # MISSING TRANSLATION
-	EFFECTNAME_RIDICLUOUS_GRIT = """Ridiculous Grit""", # MISSING TRANSLATION
-	EFFECT_RIDICLUOUS_GRIT_DESCRIPT = """Become immune to all immobilising effects.
-Gain +25 ATK and Hit rate.
-Reduce this buff duration by 1 when struck with a critical hit.
-When this effect expires, die.""", # MISSING TRANSLATION
-	EFFECTNAME_IM_SORRY_UNCLE = """I'm sorry uncle...""", # MISSING TRANSLATION
-	EFFECT_IM_SORRY_UNCLE_DESCRIPT = """Deal 10% less damage to Greg. Take 10% more damage from Greg""", # MISSING TRANSLATION
-	EFFECTNAME_PITIFUL_ARE_WE_NOT = """Pitiful, are we not?""", # MISSING TRANSLATION
-	EFFECT_PITIFUL_ARE_WE_NOT_DESCRIPT = """Immune to Movement Readed. -10 Hit Rate.""", # MISSING TRANSLATION
-	EFFECTNAME_MOVEMENT_READED = """Movement Readed""", # MISSING TRANSLATION
-	EFFECT_MOVEMENT_READED_DESCRIPT = """When Greg is not blind or immobilised:
-- Deal 90% less damage against Greg.
-- Attacking Greg will cause him to counterattack and inflicts stun.""", # MISSING TRANSLATION
-	EFFECTNAME_CLOSE_CONFRONTATION = """Close Confrontation""", # MISSING TRANSLATION
-	EFFECT_CLOSE_CONFRONTATION_DESCRIPT = """Range attacks deal 50% less damage.
-Melee attacks deal 50% more damage against the applier.
-If this unit doesn't attack the applier on their turn, provoke an opportunity attack from the applier.
-This effect is removed if the applier fell for a taunt or is immobilised.""", # MISSING TRANSLATION
-	EFFECTNAME_CLOSE_CONFRONTATION_CANCEL = """being right in front of the target.""", # MISSING TRANSLATION
-	EFFECTNAME_TIGHTENED_GRIP = """Tightened Grip""", # MISSING TRANSLATION
-	EFFECT_TIGHTENED_GRIP_DESCRIPT = """Immune to Disarm. +20 Hit Rate.""", # MISSING TRANSLATION
-	EFFECTNAME_BLACKEN_BLADE = """Blacken Blade""", # MISSING TRANSLATION
-	EFFECT_BLACKEN_BLADE_DESCRIPT = """Deals additional 50% of caster's MATK as {color=yellow|Dark} damage on every hit
-All attacks have a 20% chance to inflict Bleed.""", # MISSING TRANSLATION
-	EFFECT_CURSED_GIRL_DESCRIPT = """Cursed Girl: When hit by Devour magic spell, gain shock and 3 fragiles. When hit by Light damage, there is a 20% chance to become stunned.""", # MISSING TRANSLATION
-	EFFECT_GUARDIAN_SPIRIT_PROTECTION_FRENZIED_DESCRIPT = """Guardian Spirit Protection [Frenzied]: When being hit by non-light damage, 30% chance to inflict Cursed to the attacker. When being hit by a Cursed enemy, reduce damage taken by 30% and inflict Dark damage back to the attacker.""", # MISSING TRANSLATION
+	EFFECT_GREG_TRAIT_DESCRIPT = """Cavaliere nero - Greg:
+All'inizio di ogni round tenta di prevedere il movimento di 2 nemici casuali.
+Sotto il 50% dei PS, di 4 nemici casuali.
+Questo effetto è disattivato se l'unità è provocata, accecata o immobilizzata.""",
+	EFFECT_LONESOME_RAGE_BYGONE_GLORY_TRAIT_DESCRIPT = """Furia solitaria, gloria passata:
+Se non ci sono altri alleati, ottiene +20 penetrazione armatura, +30 Armatura, +30 DIFM e +15 Velocità. 
+Quando questa unità si riprende da un effetto immobilizzante, attacca subito un nemico casuale e ottiene «Nell'ombra».""",
+	EFFECTNAME_GREG_LAST_STAND = """Ultima resistenza di Greg""",
+	EFFECT_GREG_FINAL_STAND_DESCRIPT = """Ultima resistenza di Greg:
+Riduce ulteriormente i danni subiti dagli effetti nel tempo.
+I PS non scendono sotto il 10%.
+Al 10% dei PS ottiene Grinta ridicola per 5 turni.""",
+	EFFECT_DEMONNESS_GIFT_NULL_CLOAK_DESCRIPT = """Dono della demonessa - Mantello del nulla: finché questa unità è sotto «Nell'ombra», i danni da incantesimo subiti sono ridotti del 75%.""",
+	EFFECTNAME_RIDICLUOUS_GRIT = """Grinta ridicola""",
+	EFFECT_RIDICLUOUS_GRIT_DESCRIPT = """Immunità a tutti gli effetti immobilizzanti.
++25 ATT e precisione.
+Riduce di 1 la durata di questo potenziamento se colpita da un critico.
+Quando questo effetto scade, l'unità muore.""",
+	EFFECTNAME_IM_SORRY_UNCLE = """Scusa, zio...""",
+	EFFECT_IM_SORRY_UNCLE_DESCRIPT = """Infligge il 10% di danni in meno a Greg. Subisce il 10% di danni in più da Greg""",
+	EFFECTNAME_PITIFUL_ARE_WE_NOT = """Pietoso, non trovi?""",
+	EFFECT_PITIFUL_ARE_WE_NOT_DESCRIPT = """Immune a Movimento previsto. -10 precisione.""",
+	EFFECTNAME_MOVEMENT_READED = """Movimento previsto""",
+	EFFECT_MOVEMENT_READED_DESCRIPT = """Finché Greg non è accecato né immobilizzato:
+- Infligge il 90% di danni in meno a Greg.
+- Attaccare Greg lo fa contrattaccare infliggendo Stordimento.""",
+	EFFECTNAME_CLOSE_CONFRONTATION = """Confronto ravvicinato""",
+	EFFECT_CLOSE_CONFRONTATION_DESCRIPT = """Gli attacchi a distanza infliggono il 50% di danni in meno.
+Gli attacchi in mischia infliggono il 50% di danni in più contro chi ha applicato l'effetto.
+Se questa unità non lo attacca nel proprio turno, provoca un attacco di opportunità da parte sua.
+L'effetto è rimosso se chi l'ha applicato cade in una provocazione o è immobilizzato.""",
+	EFFECTNAME_CLOSE_CONFRONTATION_CANCEL = """l'essere proprio davanti al bersaglio.""",
+	EFFECTNAME_TIGHTENED_GRIP = """Presa serrata""",
+	EFFECT_TIGHTENED_GRIP_DESCRIPT = """Immune al Disarmo. +20 precisione.""",
+	EFFECTNAME_BLACKEN_BLADE = """Lama annerita""",
+	EFFECT_BLACKEN_BLADE_DESCRIPT = """Ogni colpo infligge in più il 50% dell'ATTM del lanciatore come danno {color=yellow|Oscurità}.
+Tutti gli attacchi hanno il 20% di probabilità di infliggere Sanguinamento.""",
+	EFFECT_CURSED_GIRL_DESCRIPT = """Ragazza maledetta: se colpita dall'incantesimo Divorare, subisce Shock e 3 cariche di Fragile. Se colpita da danni di Luce, ha il 20% di probabilità di essere stordita.""",
+	EFFECT_GUARDIAN_SPIRIT_PROTECTION_FRENZIED_DESCRIPT = """Protezione dello spirito guardiano [Frenetico]: se colpita da danni non di luce, ha il 30% di probabilità di infliggere Maledizione all'attaccante. Se colpita da un nemico maledetto, riduce i danni subiti del 30% e infligge danni da Oscurità all'attaccante.""",
 	SEB_RILU_ATTACK = """
 Rilu cast Soul Nail. """, # MISSING TRANSLATION
 	SEB_RILU_DEBUFF = """
@@ -5327,29 +5352,29 @@ Rilu cast Soothe the Soul. """, # MISSING TRANSLATION
 Rilu cast Exorcism. """, # MISSING TRANSLATION
 	SEB_BONEMEAL_EASTEREGG = """
 %s got fertilized by the bonemeal! """, # MISSING TRANSLATION
-	EFFECT_CEASELESS_HARVEST_DESCRIPT = """Forbidden Ritual: Ceaseless Harvest -
-Further Reduce DoT damage taken.
-At the end of each round, regenerate 8% of Max HP.
-The Regen effect will not activate if affected by Luminance.""", # MISSING TRANSLATION
-	EFFECTNAME_DEATH_AND_TAXES = """Death & Taxes""", # MISSING TRANSLATION
-	EFFECT_DEATH_AND_TAXES_DESCRIPT = """When using healing ability, reduce mana.
-When using resurrection type ability, harshly reduce mana.
-Disable this effect if Sebastian is silenced.""", # MISSING TRANSLATION
-	EFFECTNAME_ONE_WAY_TICKET_TO_HELL = """One-way Ticket to Hell""", # MISSING TRANSLATION
-	EFFECT_ONE_WAY_TICKET_TO_HELL_DESCRIPT = """One-way Ticket to Hell: -25% Armor, MDEF, and Healing Received.""", # MISSING TRANSLATION
-	EFFECT_IN_THE_DARK_DESCRIPT = """Reduce light damage dealt and Outgoing Healing by 100%""", # MISSING TRANSLATION
-	EFFECT_YOU_WANT_TICKET_DESCRIPT = """Counter-curse: When hit, 50% chance to apply One-Way Ticket to Hell to the attacker.""", # MISSING TRANSLATION
-	EFFECT_GIANT_RIBCAGE_DESCRIPT = """Giant Ribcage: At the start of this unit turn, apply 'Wide Guard' to all allies for 1 turn.""", # MISSING TRANSLATION
-	EFFECTNAME_WIDE_GUARD = """Wide Guard""", # MISSING TRANSLATION
-	EFFECT_WIDE_GUARD_DESCRIPT = """Reduce AoE damage taken by 50%. Remove if the applier is defeated.""", # MISSING TRANSLATION
-	EFFECT_BLOATED_WITH_NOXIOUS_GAS_DESCRIPT = """Bloated with Noxious Gas:
-On Death, inflict water damage, blind, and poison to the melee line.
-On Death while affected by burn, explode. Dealing Fire damage to the front-most enemy of each row.""", # MISSING TRANSLATION
-	EFFECT_ADRENAL_GLANDS_OVERDRIVE_DESCRIPT = """Adrenal glands overdrive: Gain more speed the less HP this unit has.""", # MISSING TRANSLATION
-	EFFECTNAME_ADRENAL_GLANDS_OVERDRIVE_SPEED_BUFF = """Adrenaline""", # MISSING TRANSLATION
-	EFFECT_GO_POSTAL_DESCRIPT = """Go Postal: Counterattack any attack in melee range and Taunt itself to the attacker.""", # MISSING TRANSLATION
-	EFFECT_HEAPING_MASS_DESCRIPT = """For every stack (Max 3): +15 ATK, Armor, MDEF. - 20 Evasion and Speed.""", # MISSING TRANSLATION
-	EFFECT_FIRST_CLASS_SERVICE_DESCRIPT = """First-Class Service: At the start of each round, order a random ally to protect this unit for the round.""", # MISSING TRANSLATION
+	EFFECT_CEASELESS_HARVEST_DESCRIPT = """Rituale proibito: Raccolto incessante -
+Riduce ulteriormente i danni subiti dagli effetti nel tempo.
+Alla fine di ogni round rigenera l'8% dei PS massimi.
+La rigenerazione non si attiva se colpita da Luminanza.""",
+	EFFECTNAME_DEATH_AND_TAXES = """Morte e tasse""",
+	EFFECT_DEATH_AND_TAXES_DESCRIPT = """L'uso di abilità curative riduce il mana.
+L'uso di abilità di resurrezione riduce drasticamente il mana.
+Questo effetto è disattivato se Sebastian è silenziato.""",
+	EFFECTNAME_ONE_WAY_TICKET_TO_HELL = """Biglietto di sola andata per l'inferno""",
+	EFFECT_ONE_WAY_TICKET_TO_HELL_DESCRIPT = """Biglietto di sola andata per l'inferno: -25% Armatura, DIFM e cure ricevute.""",
+	EFFECT_IN_THE_DARK_DESCRIPT = """Riduce del 100% i danni di Luce inflitti e le cure erogate""",
+	EFFECT_YOU_WANT_TICKET_DESCRIPT = """Contro-maledizione: quando viene colpita, ha il 50% di probabilità di applicare Biglietto di sola andata per l'inferno all'attaccante.""",
+	EFFECT_GIANT_RIBCAGE_DESCRIPT = """Gabbia toracica gigante: all'inizio del proprio turno applica Guardia ampia a tutti gli alleati per 1 turno.""",
+	EFFECTNAME_WIDE_GUARD = """Guardia ampia""",
+	EFFECT_WIDE_GUARD_DESCRIPT = """Riduce del 50% i danni ad area subiti. Rimosso se chi l'ha applicato viene sconfitto.""",
+	EFFECT_BLOATED_WITH_NOXIOUS_GAS_DESCRIPT = """Gonfio di gas nocivo:
+Alla morte infligge danni d'Acqua, Accecamento e Veleno alla linea di mischia.
+Alla morte sotto Bruciatura esplode, infliggendo danni da Fuoco al nemico più avanzato di ogni fila.""",
+	EFFECT_ADRENAL_GLANDS_OVERDRIVE_DESCRIPT = """Sovraccarico surrenale: più questa unità ha pochi PS, più guadagna velocità.""",
+	EFFECTNAME_ADRENAL_GLANDS_OVERDRIVE_SPEED_BUFF = """Adrenalina""",
+	EFFECT_GO_POSTAL_DESCRIPT = """Dare di matto: contrattacca qualsiasi attacco a distanza di mischia e attira su di sé la provocazione dell'attaccante.""",
+	EFFECT_HEAPING_MASS_DESCRIPT = """Per ogni carica (max 3): +15 ATT, Armatura, DIFM. -20 Evasione e Velocità.""",
+	EFFECT_FIRST_CLASS_SERVICE_DESCRIPT = """Servizio di prima classe: all'inizio di ogni round ordina a un alleato casuale di proteggere questa unità per il round.""",
 	RESETTRAINREQ = "Ripristina l'allenamento al passaggio 0 e ripristina lo Spirito. Richiede la pozione dell'oblio.",
 	RESETTRAINING = "Tutti i progressi dell'addestramento verranno scartati. Sei sicuro?",
 	BUFFDESCRIPTDEFENDER = "Difensore: Proteggerà gli alleati dagli attacchi a meno che non siano storditi.",
@@ -6246,7 +6271,7 @@ Costringe il bersaglio a raggiungere l'orgasmo contro la sua volontà, con un li
 	LOG_HEAL = "curato per %d hp.",
 	LOG_COMBAT_HEAL = """
 %s ottiene %d hp.""",
-	LOG_MANA = "mana %d.", #
+	LOG_MANA = """mana %d.""", #
 	LOG_COMBAT_MANA = """
 %s ottiene %d mp.""",
 	LOG_COMBAT_DEFEATED = """
@@ -8721,7 +8746,7 @@ Dato che il [boy] è reso il tuo schiavo, [he] può essere un'aggiunta molto uti
 	CHARLOVERS = "[name] e [scncharname] ti hanno avvicinato e ti hanno chiesto di farli diventare amanti.",
 	CHARFREELOVERS = "[name] e [scncharname] ti hanno avvicinato e ti hanno chiesto di farli diventare amanti.",
 	REVEAL_MAP = "[name] lancia Sussurri del Vento, comprendendo la conformazione delle aree circostanti. ",
-	DUNGEON_INTIMIDATE = """The enemy group flees from the spot abandoning their position.""", # MISSING TRANSLATION
+	DUNGEON_INTIMIDATE = """Il gruppo nemico fugge dal posto abbandonando la propria posizione.""",
 	CHARLOVERSALLOW = "*Permettere*",
 	CHARFREELOVERSALLOW = "*Permettere*",
 	CHARLOVERSFORBID = "*Proibire*",
@@ -8824,8 +8849,8 @@ La donna scompare con la stessa rapidità con cui è apparsa davanti a te, lasci
 	ENEMYBANDIT_BOSS_MAGE = "Stregone canaglia",
 	ENEMYRAMONT_BOSS = "Ramont", #
 	ENEMYHECTOR_BOSS = "Hector",
-	ENEMYGROTUS_ASCENDED = """Grotus the Ascended""", # MISSING TRANSLATION
-	ENEMYGROTUS_KING_BOSS = """Grotus, Crowned God""", # MISSING TRANSLATION
+	ENEMYGROTUS_ASCENDED = """Grotus l'Asceso""",
+	ENEMYGROTUS_KING_BOSS = """Grotus, Dio coronato""",
 	ENEMYREYAN_BOSS = "Reyan", #
 	ENEMYREBEL_RECRUIT = "Recluta Ribelle",
 	ENEMYREBEL_KNIGHT = "Cavaliere Ribelle",
@@ -8836,13 +8861,13 @@ La donna scompare con la stessa rapidità con cui è apparsa davanti a te, lasci
 	ENEMYCAVE_GOBLIN_SHAMAN = "Sciamano Goblin delle Caverne",
 	ENEMYCAVE_GOBLIN_MAGE = "Mago Goblin delle Caverne",
 	ENEMYCAVE_GOBLIN_BOSS = "Boss dei Goblin delle Caverne",
-	ENEMYQUEST_GOBLIN_BOSS = "Goblin Thug", #
+	ENEMYQUEST_GOBLIN_BOSS = """Bruto goblin""", #
 	ENEMYQUEST_GOBLIN_SHAMAN = "Mago Goblin",
 	ENEMYOGRE_MELEE = "Orco",
 	ENEMYOGRE_MAGE = "Mago Ogre",
 	ENEMYGRYPHON = "Grifone",
 	ENEMYELDER_GRYPHON_BOSS = "Anziano Grifone",
-	ENEMYTORNADO = 'Tornado', 
+	ENEMYTORNADO = """Tornado""", 
 	ENEMYWOLF = "Lupo",
 	ENEMYRAT = "Ratto",
 	ENEMYSPIDER_WEAK = "Strisciante",
@@ -8860,11 +8885,11 @@ La donna scompare con la stessa rapidità con cui è apparsa davanti a te, lasci
 	ENEMYSKELETON_ARCHER = "Arciere scheletro",
 	ENEMYSKELETON_ARCHER_QUEST = "Arciere scheletro",
 	ENEMYSKELETON_SHIELD_MELEE = "Difensore scheletro",
-	ENEMYLICH_QUEST = "Lich", #
-	ENEMYUNDEAD_LICH = "Lich", #
-	ENEMYMIMIC = "Mimic", #
+	ENEMYLICH_QUEST = """Lich""", #
+	ENEMYUNDEAD_LICH = """Lich""", #
+	ENEMYMIMIC = """Mimic""", #
 	ENEMYBALLISTA = "Balista",
-	ENEMYTROLL = "Troll", #
+	ENEMYTROLL = """Troll""", #
 	ENEMYBANDIT_ASSASSIN = "Bandito Assassino",
 	ENEMYPACK_LEADER_BOSS = "Capobranco",
 	ENEMYSERGEANT_BOSS = "Sergente",
@@ -9025,12 +9050,16 @@ Il menu 'Viaggi' ti permette di selezionare altri luoghi e fare in modo che i pe
 	ITEMEXP_SCROLLDESCRIPT = "Concede 100 punti esperienza all'utente. Richiede Alfabetizzazione.",
 	ITEMBOUQUET = """Bouquet""", # MISSING TRANSLATION
 	ITEMBOUQUETDESCRIPT = """A bouquet of fresh flowers. Gifting it raises Affection towards the giver.""", # MISSING TRANSLATION
+	DIALOGUEBOUQUETREPORT = """You give [name] a bouquet. [He] smiles warmly at the thoughtful gift.""", # MISSING TRANSLATION
 	ITEMGEM = """Gem""", # MISSING TRANSLATION
 	ITEMGEMDESCRIPT = """A polished, valuable gemstone. Gifting it raises Respect towards the giver.""", # MISSING TRANSLATION
+	DIALOGUEGEMREPORT = """You give [name] a gemstone. [He] admires it with a pleased smile.""", # MISSING TRANSLATION
 	ITEMBROOCH = """Brooch""", # MISSING TRANSLATION
 	ITEMBROOCHDESCRIPT = """An ornate, expensive brooch. Gifting it greatly raises Affection towards the giver, and raises Respect as well.""", # MISSING TRANSLATION
+	DIALOGUEBROOCHREPORT = """You give [name] an ornate brooch. [He] is clearly delighted by the gift.""", # MISSING TRANSLATION
 	ITEMRITUAL_DAGGER = """Ritual Dagger""", # MISSING TRANSLATION
 	ITEMRITUAL_DAGGERDESCRIPT = """A ceremonial dagger of fine craftsmanship. Gifting it greatly raises Respect towards the giver, and raises Affection as well.""", # MISSING TRANSLATION
+	DIALOGUERITUAL_DAGGERREPORT = """You give [name] a ritual dagger. [He] regards its fine craftsmanship with visible appreciation.""", # MISSING TRANSLATION
 	ITEMSEXSWAP_POTION = "Pozione di scambio di sesso",
 	ITEMSEXSWAP_POTIONDESCRIPT = "Cambia il sesso del personaggio in senso opposto. Non funziona su personaggi unici.",
 	ITEMUSECONFIRM = "Sei sicuro di voler usare {color=yellow|%s}?",
@@ -9088,7 +9117,7 @@ Aumenta la produttività del 25%.
 	WORKRULELOCK = "Blocca",
 	WORKRULELOCKDESCRIPT = "Blocca la visualizzazione del personaggio nell'elenco dei compiti e delle attività che lo rimuovono o lo vendono permanentemente.",
 	WORKRULEHIDE = """Hide""", # MISSING TRANSLATION
-	WORKRULEHIDEDESCRIPT = """Places [name] at the end of the character list and only shows [him] while Show All locations is selected.""", # MISSING TRANSLATION
+	WORKRULEHIDEDESCRIPT = """Mette [name] in fondo all'elenco dei personaggi e lo mostra solo se è selezionato Mostra tutti i luoghi.""",
 	SERVICEENSLAVE = "Asservire",
 	SERVICEENSLAVEDESCRIPT = """Trasforma il personaggio scelto in uno schiavo.
 
@@ -9127,46 +9156,46 @@ Flusso temporale""",
 	ACHIEVEMENT_ACT3_NAME = "Atto 3",
 	ACHIEVEMENT_ACT3_DESC = "Atto 3 completato",
 	ACHIEVEMENT_ACT3_HINT = "Completa l'atto 3",
-	ACHIEVEMENT_WED_DAISY_NAME = "Daisy",
+	ACHIEVEMENT_WED_DAISY_NAME = """Daisy""",
 	ACHIEVEMENT_WED_DAISY_DESC = "Matrimonio con Daisy",
 	ACHIEVEMENT_WED_DAISY_HINT = "Sposa Daisy",
-	ACHIEVEMENT_WED_HELEVIEL_NAME = "Heleviel",
+	ACHIEVEMENT_WED_HELEVIEL_NAME = """Heleviel""",
 	ACHIEVEMENT_WED_HELEVIEL_DESC = "Matrimonio con Heleviel",
 	ACHIEVEMENT_WED_HELEVIEL_HINT = "Sposa Heleviel",
-	ACHIEVEMENT_WED_AMELIA_NAME = "Amelia",
+	ACHIEVEMENT_WED_AMELIA_NAME = """Amelia""",
 	ACHIEVEMENT_WED_AMELIA_DESC = "Matrimonio con Amelia",
 	ACHIEVEMENT_WED_AMELIA_HINT = "Sposa Amelia",
-	ACHIEVEMENT_WED_CALI_NAME = "Cali",
+	ACHIEVEMENT_WED_CALI_NAME = """Cali""",
 	ACHIEVEMENT_WED_CALI_DESC = "Matrimonio con Cali",
 	ACHIEVEMENT_WED_CALI_HINT = "Sposa Cali",
-	ACHIEVEMENT_WED_LILIA_NAME = "Lilia",
+	ACHIEVEMENT_WED_LILIA_NAME = """Lilia""",
 	ACHIEVEMENT_WED_LILIA_DESC = "Matrimonio con Lilia",
 	ACHIEVEMENT_WED_LILIA_HINT = "Sposa Lilia",
-	ACHIEVEMENT_WED_LILITH_NAME = "Lilith",
+	ACHIEVEMENT_WED_LILITH_NAME = """Lilith""",
 	ACHIEVEMENT_WED_LILITH_DESC = "Matrimonio con Lilith",
 	ACHIEVEMENT_WED_LILITH_HINT = "Sposa Lilith",
-	ACHIEVEMENT_WED_KURO_NAME = "Kuro",
+	ACHIEVEMENT_WED_KURO_NAME = """Kuro""",
 	ACHIEVEMENT_WED_KURO_DESC = "Matrimonio con Kuro",
 	ACHIEVEMENT_WED_KURO_HINT = "Sposa Kuro",
-	ACHIEVEMENT_WED_ANA_NAME = "Anastasia",
+	ACHIEVEMENT_WED_ANA_NAME = """Anastasia""",
 	ACHIEVEMENT_WED_ANA_DESC = "Matrimonio con Anastasia",
 	ACHIEVEMENT_WED_ANA_HINT = "Sposa Anastasia",
-	ACHIEVEMENT_WED_ZEPHYRA_NAME = "Zephyra",
+	ACHIEVEMENT_WED_ZEPHYRA_NAME = """Zephyra""",
 	ACHIEVEMENT_WED_ZEPHYRA_DESC = "Matrimonio con Zephyra",
 	ACHIEVEMENT_WED_ZEPHYRA_HINT = "Sposa Zephyra",
-	ACHIEVEMENT_WED_MAE_NAME = "Mae",
+	ACHIEVEMENT_WED_MAE_NAME = """Mae""",
 	ACHIEVEMENT_WED_MAE_DESC = "Matrimonio con Mae",
 	ACHIEVEMENT_WED_MAE_HINT = "Sposa Mae",
-	ACHIEVEMENT_WED_JEAN_NAME = "Jean",
+	ACHIEVEMENT_WED_JEAN_NAME = """Jean""",
 	ACHIEVEMENT_WED_JEAN_DESC = "Matrimonio con Jean",
 	ACHIEVEMENT_WED_JEAN_HINT = "Sposa Jean",
-	ACHIEVEMENT_WED_HARA_NAME = "Hara",
+	ACHIEVEMENT_WED_HARA_NAME = """Hara""",
 	ACHIEVEMENT_WED_HARA_DESC = "Matrimonio con Hara",
 	ACHIEVEMENT_WED_HARA_HINT = "Sposa Hara",
-	ACHIEVEMENT_WED_LIRA_NAME = "Lira",
+	ACHIEVEMENT_WED_LIRA_NAME = """Lira""",
 	ACHIEVEMENT_WED_LIRA_DESC = "Matrimonio con Lira",
 	ACHIEVEMENT_WED_LIRA_HINT = "Sposa Lira",
-	ACHIEVEMENT_WED_ROUGE_NAME = "Rouge",
+	ACHIEVEMENT_WED_ROUGE_NAME = """Rouge""",
 	ACHIEVEMENT_WED_ROUGE_DESC = "Matrimonio con Rouge",
 	ACHIEVEMENT_WED_ROUGE_HINT = "Sposa Rouge",
 	ACHIEVEMENT_MAX_TAILOR_NAME = "Maestro sarto",
@@ -9226,9 +9255,9 @@ Flusso temporale""",
 	ACHIEVEMENT_METEORITE_NAME = "Missione meteorite",
 	ACHIEVEMENT_METEORITE_DESC = "Missione meteorite completata",
 	ACHIEVEMENT_METEORITE_HINT = "Completa la missione meteorite",
-	ACHIEVEMENT_ARENA_CHAMPION_NAME = """Arena Champion""", # MISSING TRANSLATION
-	ACHIEVEMENT_ARENA_CHAMPION_DESC = """Won all five arena rounds in a single run""", # MISSING TRANSLATION
-	ACHIEVEMENT_ARENA_CHAMPION_HINT = """Win the fifth arena round""", # MISSING TRANSLATION
+	ACHIEVEMENT_ARENA_CHAMPION_NAME = """Campione dell'arena""",
+	ACHIEVEMENT_ARENA_CHAMPION_DESC = """Vinte tutte e cinque le manche dell'arena in una sola sessione""",
+	ACHIEVEMENT_ARENA_CHAMPION_HINT = """Vinci la quinta manche dell'arena""",
 	ACHIEVEMENT_RESET_ASK = "Sei sicuro di voler azzerare TUTTI i progressi degli obiettivi?",
 	ACHIGROUP_WEDDING_NAME = "Matrimonio",
 	ACHIGROUP_WEDDING_DESC = "Sposa ogni personaggio unico",
@@ -9959,21 +9988,22 @@ Procedere? (il file di salvataggio originale rimarrà inalterato, ma non funzion
 	ABORTTUTORIAL = "Annulla tutorial",
 	PROMPTTUTORIAL = "Per chi gioca per la prima volta, si consiglia di completare la sezione tutorial per apprendere i comandi e le meccaniche di base.",
 	TUTORIAL_TRAINING1 = "Questo tutorial spiegherà le meccaniche base della gestione della tua villa e dei personaggi. Il tuo personaggio {color=yellow|Master} rappresenta te ed è responsabile della gestione degli altri personaggi.",
-	TUTORIAL_TRAINING1_1 = """Click your Master's card to unfold it. The expanded card holds their details, work rules and social skills.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING1_1 = """Clicca sulla scheda del tuo Padrone per espanderla. La scheda estesa contiene dettagli, regole di lavoro e abilità sociali.""",
 	TUTORIAL_TRAINING2 = "Iniziamo usando l'abilità predefinita del Master, Mentore, su uno dei tuoi subordinati. Aumenterà la quantità di esperienza che guadagnano per un giorno.",
 	TUTORIAL_TRAINING3 = "Seleziona un personaggio dalla lista per completare il lancio dell'abilità.",
 	TUTORIAL_TRAINING4 = "L'abilità che hai usato andrà in ricarica, e riceverai un breve resoconto, come per molte azioni simili.",
 	TUTORIAL_TRAINING5 = "Un'altra funzione importante sono le impostazioni dei personaggi nella parte superiore dell'elenco. Puoi personalizzare vari comportamenti e compiti qui, ma per ora imposteremo alcune regole alimentari di base.",
 	TUTORIAL_TRAINING6 = "Di default, i personaggi avranno le regole alimentari impostate sulle loro preferenze, ma puoi personalizzarle ulteriormente. Cliccare su un'opzione alimentare cambierà la sua priorità per quel personaggio.",
-	TUTORIAL_TRAINING7 = """Click a food to allow or forbid it for this character.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING7 = """Clicca su un cibo per consentirlo o vietarlo a questo personaggio.""",
 	TUTORIAL_TRAINING8 = "Ora che abbiamo finito, torniamo al menu predefinito.",
+	TUTORIAL_TRAINING8_1 = """Right-click anywhere to fold the card back, so the rest of the list is reachable again.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING9 = "Seleziona Daisy per accedere ai suoi dettagli e informazioni.",
 	TUTORIAL_TRAINING10 = "Puoi aprire la finestra di un personaggio con un doppio clic, o usando il pulsante Info Personaggio.",
 	TUTORIAL_TRAINING11 = "Daisy è classificata come schiava non addestrata e richiede un addestratore che supervisioni e conduca il suo addestramento. Le schiave non addestrate non lavoreranno senza un addestratore.",
 	TUTORIAL_TRAINING12 = "Assegna il tuo Master come suo addestratore selezionandolo.",
 	TUTORIAL_TRAINING13 = "Per impartire l'addestramento, seleziona l'azione Elogio.",
 	TUTORIAL_TRAINING14 = "Schiave diverse hanno preferenze diverse per le azioni di addestramento, il che influenza la loro efficacia. Cerca di mantenere alto il loro spirito alla fine dell'addestramento.",
-	TUTORIAL_TRAINING14_1 = """Daisy has finished her training.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING14_1 = """Daisy ha completato il suo addestramento.""",
 	TUTORIAL_TRAINING15 = "Daisy ha accumulato abbastanza punti Lealtà per sbloccare l'addestramento all'Obbedienza. Questo addestramento base è richiesto per alcuni compiti e missioni che prevedono la cessione di personaggi.",
 	TUTORIAL_TRAINING16 = "Conferma lo sblocco.",
 	TUTORIAL_TRAINING17 = "Nella seconda scheda, puoi trovare competenze speciali che forniscono miglioramenti aggiuntivi a un personaggio.",
@@ -9994,38 +10024,38 @@ Procedere? (il file di salvataggio originale rimarrà inalterato, ma non funzion
 	TUTORIAL_WORK12 = "Torna al menu Lavoro.",
 	TUTORIAL_WORK13 = "Anche se l'hai selezionata come cameriera, devi prima riassegnarla dall'artigianato al lavoro di servizio.",
 	TUTORIAL_WORK14 = "Qui puoi consultare regole e benefici aggiuntivi del lavoro di servizio. Mentre lavorano, i personaggi generano esperienza e una statistica relativa al loro compito ogni turno.",
-	TUTORIAL_WORK15 = """Open craft menu.""", # MISSING TRANSLATION
-	TUTORIAL_WORK16 = """Choose bread.""", # MISSING TRANSLATION
-	TUTORIAL_WORK16_1 = """Confirm.""", # MISSING TRANSLATION
-	TUTORIAL_WORK17 = """You can adjust quantity. Add 10 more units.""", # MISSING TRANSLATION
-	TUTORIAL_WORK17_1 = """Confirm.""", # MISSING TRANSLATION
-	TUTORIAL_WORK18 = """Close craft window.""", # MISSING TRANSLATION
-	TUTORIAL_WORK19 = """Select crafting task.""", # MISSING TRANSLATION
-	TUTORIAL_WORK20 = """Assign Daisy to the crafting task by selecting her.""", # MISSING TRANSLATION
-	TUTORIAL_WORK21 = """Lets try few crafting tasks.""", # MISSING TRANSLATION
-	TUTORIAL_WORK22 = """Select smith category.""", # MISSING TRANSLATION
-	TUTORIAL_WORK23 = """When list is too long you can use filters.""", # MISSING TRANSLATION
-	TUTORIAL_WORK24 = """Choose steel.""", # MISSING TRANSLATION
-	TUTORIAL_WORK24_1 = """Confirm.""", # MISSING TRANSLATION
-	TUTORIAL_WORK24_2 = """Confirm.""", # MISSING TRANSLATION
-	TUTORIAL_WORK24_3 = """Go to crafting tasks for Daisy again.""", # MISSING TRANSLATION
-	TUTORIAL_WORK25 = """Go to crafting tasks for Daisy again.""", # MISSING TRANSLATION
-	TUTORIAL_WORK25_1 = """Go to crafting tasks for Daisy again.""", # MISSING TRANSLATION
-	TUTORIAL_WORK25_2 = """Go to crafting tasks for Daisy again.""", # MISSING TRANSLATION
-	TUTORIAL_WORK26 = """Here you can change crafting priorities. Daisy will bake bread while task is active and cooking priority is higher then smith's. Now drag smith button to higher priority.""", # MISSING TRANSLATION
-	TUTORIAL_WORK26_1 = """You can see that Daisy produceing steel now.
-Close this menu.""", # MISSING TRANSLATION
-	TUTORIAL_WORK27 = """You also can cancel crafting task outright. Go back to cooking menu.""", # MISSING TRANSLATION
-	TUTORIAL_WORK27_1 = """Go back to cooking menu.""", # MISSING TRANSLATION
-	TUTORIAL_WORK28 = """Cancel bread baking.""", # MISSING TRANSLATION
-	TUTORIAL_WORK29 = """And confirm it.""", # MISSING TRANSLATION
+	TUTORIAL_WORK15 = """Apri il menu artigianato.""",
+	TUTORIAL_WORK16 = """Scegli il pane.""",
+	TUTORIAL_WORK16_1 = """Conferma.""",
+	TUTORIAL_WORK17 = """Puoi regolare la quantità. Aggiungi altre 10 unità.""",
+	TUTORIAL_WORK17_1 = """Conferma.""",
+	TUTORIAL_WORK18 = """Chiudi la finestra artigianato.""",
+	TUTORIAL_WORK19 = """Seleziona l'incarico di artigianato.""",
+	TUTORIAL_WORK20 = """Assegna Daisy all'incarico di artigianato selezionandola.""",
+	TUTORIAL_WORK21 = """Proviamo qualche incarico di artigianato.""",
+	TUTORIAL_WORK22 = """Seleziona la categoria forgia.""",
+	TUTORIAL_WORK23 = """Quando l'elenco è troppo lungo puoi usare i filtri.""",
+	TUTORIAL_WORK24 = """Scegli l'acciaio.""",
+	TUTORIAL_WORK24_1 = """Conferma.""",
+	TUTORIAL_WORK24_2 = """Conferma.""",
+	TUTORIAL_WORK24_3 = """Torna di nuovo agli incarichi di artigianato di Daisy.""",
+	TUTORIAL_WORK25 = """Torna di nuovo agli incarichi di artigianato di Daisy.""",
+	TUTORIAL_WORK25_1 = """Torna di nuovo agli incarichi di artigianato di Daisy.""",
+	TUTORIAL_WORK25_2 = """Torna di nuovo agli incarichi di artigianato di Daisy.""",
+	TUTORIAL_WORK26 = """Qui puoi cambiare le priorità di artigianato. Daisy cuocerà il pane finché l'incarico è attivo e la priorità cucina è più alta di quella della forgia. Ora trascina il pulsante forgia a una priorità più alta.""",
+	TUTORIAL_WORK26_1 = """Puoi vedere che ora Daisy produce acciaio.
+Chiudi questo menu.""",
+	TUTORIAL_WORK27 = """Puoi anche annullare del tutto un incarico di artigianato. Torna al menu cucina.""",
+	TUTORIAL_WORK27_1 = """Torna al menu cucina.""",
+	TUTORIAL_WORK28 = """Annulla la cottura del pane.""",
+	TUTORIAL_WORK29 = """E conferma.""",
 	TUTORIAL_LEVELING0 = "A proposito di esperienza, vediamo un altro modo per guadagnarla.",
 	TUTORIAL_LEVELING1 = "Seleziona Inventario per visualizzare i tuoi averi.",
 	TUTORIAL_LEVELING2 = "Seleziona il tuo Master come personaggio attivo da gestire.",
 	TUTORIAL_LEVELING3 = "Usa una Pergamena della Conoscenza per dare al tuo Master un po' di esperienza. È un modo facile per aumentare rapidamente la potenza di un nuovo personaggio.",
 	TUTORIAL_LEVELING4 = "Chiudi il pannello.",
 	TUTORIAL_LEVELING5 = "Chiudi l'inventario.",
-	TUTORIAL_LEVELING5_1 = """Click your Master's card again to unfold it.""", # MISSING TRANSLATION
+	TUTORIAL_LEVELING5_1 = """Clicca di nuovo sulla scheda del tuo Padrone per espanderla.""",
 	TUTORIAL_LEVELING6 = "Apri la finestra informazioni del Master.",
 	TUTORIAL_LEVELING7 = "Ora che hai abbastanza esperienza, apri la scheda Livellamento.",
 	TUTORIAL_LEVELING8 = "L'esperienza serve per sbloccare classi, ognuna delle quali concede bonus, passivi e abilità. Sblocca la classe Guerriero.",
@@ -10511,21 +10541,21 @@ La principessa nota che Aire si irrigidisce in risposta alla domanda.
 	ENEMYMANEATER_PLANT = "Pianta Maneater",
 	ENEMYCENTIPEDE = "Centopiedi",
 	ENEMYCENTIPEDE_QUEST = "Centopiedi",
-	ENEMYOGRE_ALPHA = "Ogre Alpha", #
+	ENEMYOGRE_ALPHA = """Ogre alfa""", #
 	ENEMYROCK_THROWER = "Lanciarocce",
 	ENEMYGIANT_ANT = "Formica gigante",
 	ENEMYSALAMANDER = "Salamandra",
 	ENEMYGREAT_VIPER = "Grande Vipera",
-	ENEMYIFRIT = "Ifrit", #
+	ENEMYIFRIT = """Ifrit""", #
 	ENEMYANTHROPOID = "Antropoide",
 	ENEMYMAGMA_BEAST = "Bestia di Magma",
 	ENEMYEREBUS_STONE = "Pietra di Erebus",
 	ENEMYWILD_RAPTOR = "Rapace",
 	ENEMYWILLOWISP = "Fuoco fatuo",
 	ENEMYHOBGOBLIN_THUG = "Teppista Hobgoblin",
-	ENEMYHOBGOBLIN_CROSSBOWMAN = "Hobgoblin Ranger", #
+	ENEMYHOBGOBLIN_CROSSBOWMAN = """Ranger hobgoblin""", #
 	ENEMYHOBGOBLIN_TORMENTOR = "Tormentatore",
-	ENEMYWARG = "Warg", #
+	ENEMYWARG = """Warg""", #
 	ENEMYVULTURE = "Bestia Alata",
 	ENEMYWARLORD = "Signore della Guerra",
 	ENEMYALCHEMIST = "Alchemista",
@@ -10536,7 +10566,7 @@ La principessa nota che Aire si irrigidisce in risposta alla domanda.
 	PARTY_LIMIT = "Limite di partecipanti raggiunto.",
 	PARTY_FIXED = "La squadra è fissa! Puoi solo cambiare posizione.",
 	SENDCHARTOQUESTCONFIRM = "Mandare questo personaggio in missione?",
-	ARENA_NAME = "Arena", #
+	ARENA_NAME = """Arena""", #
 	ARENA_DEFEAT = "Sei stato sconfitto. Non potrai partecipare ai combattimenti nell'arena fino al prossimo periodo.",
 	ARENA_START = "Inoltre, non potrai aggiungere personaggi al gruppo né lasciare l'arena finché non avrai completato la sfida. Costo una tantum: 1000 monete d'oro. Procedere?",
 	ARENA_FINISH = "Se esci adesso, riceverai il premio accumulato fino a quel momento, ma non potrai completare l'arena.",
@@ -10559,7 +10589,7 @@ La principessa nota che Aire si irrigidisce in risposta alla domanda.
 	TRAVEL_ALL_SELECTED = "tutti selezionati",
 	TRAVEL_MOVE_TO = "Muovi verso %s",
 	TRAVEL_RENAME = "Rinomina",
-	TRAVEL_GROUP_RENAME = """Rename""", # MISSING TRANSLATION
+	TRAVEL_GROUP_RENAME = """Rinomina""",
 	TRAVEL_MOVE_UP = "Avanza",
 	TRAVEL_MOVE_DOWN = "Scenditi",
 	SKILLPOISON_BITE = "Morso di veleno",
@@ -10575,10 +10605,10 @@ La principessa nota che Aire si irrigidisce in risposta alla domanda.
 	SKILLCRIPPLING_BITE = "Morso invalidante",
 	SKILLFRIGHTENING_HOWL = "Ululato Spaventoso",
 	SKILLLEADERSMARK_S = "Marchio del Leader",
-	SKILLFIRE_LUNG = "Fire Lung", #
+	SKILLFIRE_LUNG = """Polmone di fuoco""", #
 	SKILLBLINDING_HEAT = "Calore accecante",
 	SKILLPURIFICATION_BY_FIRE = "Purificazione con il fuoco",
-	SKILLHOT_METAL = "Hot Metal", #
+	SKILLHOT_METAL = """Metallo rovente""", #
 	SKILLSCORCHED_EARTH = "Terra bruciata",
 	SKILLGLACIATION = "Glaciazione",
 	SKILLNORTH_WIND = "Vento da Nord",
@@ -22377,7 +22407,7 @@ Zephyra si blocca quando vede il tuo gesto. Il suo volto segna il tuo destino. I
 	BANDIT_FORT_ADJS4 = "Rapinatore",
 	BANDIT_FORT_ADJS5 = "Spietato",
 	GOBLIN_CAVE_NOUNS1 = "Grotta",
-	GOBLIN_CAVE_NOUNS2 = "Tunnel", #
+	GOBLIN_CAVE_NOUNS2 = """Tunnel""", #
 	GOBLIN_CAVE_NOUNS3 = "Tana",
 	GOBLIN_CAVE_NOUNS4 = "Caverna",
 	GOBLIN_CAVE_NOUNS5 = "Tana",
@@ -22417,9 +22447,9 @@ Zephyra si blocca quando vede il tuo gesto. Il suo volto segna il tuo destino. I
 	GROVE_NOUNS5 = "Boschi",
 	GROVE_NOUNS6 = "Riparo",
 	GROVE_NOUNS7 = "Bosco",
-	GROVE_NOUNS8 = "Wildwood", #
+	GROVE_NOUNS8 = """Selva vergine""", #
 	GROVE_NOUNS9 = "Frutteto",
-	GROVE_NOUNS10 = "Spinney", #
+	GROVE_NOUNS10 = """Boschetto rado""", #
 	GROVE_NOUNS11 = "Siepe",
 	GROVE_ADJS1 = "Oscuro",
 	GROVE_ADJS2 = "Verde",
@@ -22461,7 +22491,7 @@ Zephyra si blocca quando vede il tuo gesto. Il suo volto segna il tuo destino. I
 	MOUNTAINS_NOUNS5 = "Miniera",
 	MOUNTAINS_NOUNS6 = "Cava",
 	MOUNTAINS_NOUNS7 = "Camere",
-	MOUNTAINS_NOUNS8 = "Dungeon",
+	MOUNTAINS_NOUNS8 = """Sotterraneo""",
 	MOUNTAINS_ADJS1 = "Oscuro",
 	MOUNTAINS_ADJS2 = "Nero",
 	MOUNTAINS_ADJS3 = "Distante",
@@ -22507,9 +22537,9 @@ Zephyra si blocca quando vede il tuo gesto. Il suo volto segna il tuo destino. I
 	ANCIENT_JUNGLES_NOUNS2 = "Giungla",
 	ANCIENT_JUNGLES_NOUNS3 = "Foresta pluviale",
 	ANCIENT_JUNGLES_NOUNS4 = "Selve",
-	ANCIENT_JUNGLES_NOUNS5 = "Wildwood", #
+	ANCIENT_JUNGLES_NOUNS5 = """Selva vergine""", #
 	ANCIENT_JUNGLES_NOUNS6 = "Siepe",
-	ANCIENT_JUNGLES_NOUNS7 = "Chaparral", #
+	ANCIENT_JUNGLES_NOUNS7 = """Macchia""", #
 	ANCIENT_JUNGLES_NOUNS8 = "Pantano",
 	ANCIENT_JUNGLES_NOUNS9 = "Groviglio",
 	ANCIENT_JUNGLES_ADJS1 = "Verde",
@@ -22565,7 +22595,7 @@ Zephyra si blocca quando vede il tuo gesto. Il suo volto segna il tuo destino. I
 	GOBLIN_STRONGHOLD_NOUNS8 = "Rupe",
 	GOBLIN_STRONGHOLD_NOUNS9 = "Casermone",
 	GOBLIN_STRONGHOLD_NOUNS10 = "Topaia",
-	GOBLIN_STRONGHOLD_ADJS1 = "Goblin", #
+	GOBLIN_STRONGHOLD_ADJS1 = """Dei goblin""", #
 	GOBLIN_STRONGHOLD_ADJS2 = "Fetido",
 	GOBLIN_STRONGHOLD_ADJS3 = "Squallido",
 	GOBLIN_STRONGHOLD_ADJS4 = "Frastagliato",
@@ -25369,7 +25399,7 @@ Ti ritiri lentamente, guardando il tuo sperma colare dal culo, giù per le cosce
 	TRAITSPIRIT_SATYRDESCRIPT = "Fattore Sesso +1, Fattore Autorità +1, MATK +3, MDEF +5\nRipristina 4 mana dopo aver lanciato un incantesimo su un alleato o te stesso.",
 	TRAITSPIRIT_OWL = "Spirito Guardiano: Noctara",
 	TRAITSPIRIT_OWLDESCRIPT = "Fattore Ingegno +1, Bonus Ingegno +10, Bonus EXP +20%",
-	TRAITHARLOT = """Harlot""", # MISSING TRANSLATION
+	TRAITHARLOT = """Sgualdrina""",
 	JEAN_SIDEQUEST_START_1 = """Passano alcuni giorni da quando Jean si è sistemata nella tua tenuta. Tende a stare per conto suo, trascorrendo lunghe ore chiusa in camera o fissando nel vuoto con un'espressione imperscrutabile mentre svolge le sue mansioni. A differenza di altri, non cerca apertamente la tua attenzione - o almeno, così era fino a questa sera.
 
 Jean ti si avvicina dopo mezzanotte, quando la maggior parte della tenuta si è già acquietata nel silenzio. Finge di essere rilassata, ma la sua postura è tesa, con le spalle leggermente sollevate come se si aspettasse un rifiuto.
@@ -31686,13 +31716,224 @@ It is not the kind of intimacy that announces itself loudly, but it stays with y
 {color=yellow|Kuro: — Go on. They will start competing for your attention again if you make them wait too long.}
 
 You leave her in the shade and return to the others, carrying with you the strange certainty that Kuro is still watching.""", # MISSING TRANSLATION
-	ENEMYRILU_MADDENED = """Strange girl""", # MISSING TRANSLATION
+	ENEMYRILU_MADDENED = """Ragazza strana""",
 	ENEMYSEBASTIAN = """Sebastian""", # MISSING TRANSLATION
-	ENEMYTALISMAN_WRAPPED_UNDEAD = """Talisman-Wrapped Undead""", # MISSING TRANSLATION
-	ENEMYGIANT_SKELETON_GOLEM = """Giant Skeleton Golem""", # MISSING TRANSLATION
-	ENEMYBILEFUL_ZOMBIE = """Bileful Zombies""", # MISSING TRANSLATION
-	ENEMYRABID_ZOMBIE = """Rabid Zombies""", # MISSING TRANSLATION
-	ENEMYMUSCULAR_ZOMBIE = """Muscular Zombies""", # MISSING TRANSLATION
+	ENEMYTALISMAN_WRAPPED_UNDEAD = """Non morto avvolto da talismani""",
+	ENEMYGIANT_SKELETON_GOLEM = """Golem scheletrico gigante""",
+	ENEMYBILEFUL_ZOMBIE = """Zombie biliosi""",
+	ENEMYRABID_ZOMBIE = """Zombie rabbiosi""",
+	ENEMYMUSCULAR_ZOMBIE = """Zombie muscolosi""",
+	GOLD = """Gold""", # MISSING TRANSLATION
+	MANSIONROOM_EMPTY = """Stanza vuota""",
+	MANSIONROOM_EMPTYDESCRIPT = """Uno spazio vuoto. Qui può essere costruita qualsiasi stanza funzionale.""",
+	MANSIONROOM_MASTER_BEDROOM = """Master Bedroom""", # MISSING TRANSLATION
+	MANSIONROOM_MASTER_BEDROOMDESCRIPT = """Your own room. The first bed is always yours; furnishing it opens up what the room allows.""", # MISSING TRANSLATION
+	MANSIONROOM_BEDROOMS = """Bedrooms""", # MISSING TRANSLATION
+	MANSIONROOM_BEDROOMSDESCRIPT = """Shared sleeping quarters. Plain, but everyone under your roof needs a bed somewhere.""", # MISSING TRANSLATION
+	MANSIONROOM_LUXURY_BEDROOMS = """Luxury Bedrooms""", # MISSING TRANSLATION
+	MANSIONROOM_LUXURY_BEDROOMSDESCRIPT = """Private quarters with room to breathe. Whoever sleeps here works and learns a little better, and warms to you faster.""", # MISSING TRANSLATION
+	MANSIONROOM_FORGE = """Forge""", # MISSING TRANSLATION
+	MANSIONROOM_FORGEDESCRIPT = """Anvil, bellows and a rack of hammers. Whoever works here smiths.""", # MISSING TRANSLATION
+	MANSIONROOM_ALCHEMY_ROOM = """Alchemy Room""", # MISSING TRANSLATION
+	MANSIONROOM_ALCHEMY_ROOMDESCRIPT = """Burners, glassware and things best left labelled. Whoever works here brews.""", # MISSING TRANSLATION
+	MANSIONROOM_TAILOR_WORKSHOP = """Tailor Workshop""", # MISSING TRANSLATION
+	MANSIONROOM_TAILOR_WORKSHOPDESCRIPT = """Bolts of cloth, shears and a long cutting table. Whoever works here sews.""", # MISSING TRANSLATION
+	MANSIONROOM_KITCHEN = """Kitchen""", # MISSING TRANSLATION
+	MANSIONROOM_KITCHENDESCRIPT = """Stove, larder and a scarred worktop. Whoever works here cooks.""", # MISSING TRANSLATION
+	MANSIONROOM_BATHHOUSE = """Bathhouse""", # MISSING TRANSLATION
+	MANSIONROOM_BATHHOUSEDESCRIPT = """Hot water and quiet. Nobody works here - simply having one does the household good.""", # MISSING TRANSLATION
+	MANSIONUPG_FURNISHING = """Furnishing""", # MISSING TRANSLATION
+	MANSIONUPG_FURNISHINGDESCRIPT = """Better furniture and more of it, so more company fits in the room at once.""", # MISSING TRANSLATION
+	MANSIONUPG_FURNISHINGBONUS1 = """+1 to company in this room""", # MISSING TRANSLATION
+	MANSIONUPG_FURNISHINGBONUS2 = """+2 to company in this room""", # MISSING TRANSLATION
+	MANSIONUPG_FURNISHINGBONUS3 = """+3 to company in this room""", # MISSING TRANSLATION
+	MANSIONUPG_BED_SIZE = """Bed Size""", # MISSING TRANSLATION
+	MANSIONUPG_BED_SIZEDESCRIPT = """A wider bed, with room for others beside your own place.""", # MISSING TRANSLATION
+	MANSIONUPG_BED_SIZEBONUS1 = """+1 bed""", # MISSING TRANSLATION
+	MANSIONUPG_BED_SIZEBONUS2 = """+2 beds""", # MISSING TRANSLATION
+	MANSIONUPG_BED_SIZEBONUS3 = """+3 beds""", # MISSING TRANSLATION
+	MANSIONUPG_BEDROOMS_EXPANSION = """Expansion""", # MISSING TRANSLATION
+	MANSIONUPG_BEDROOMS_EXPANSIONDESCRIPT = """Knock through and fit a second row of beds.""", # MISSING TRANSLATION
+	MANSIONUPG_BEDROOMS_EXPANSIONBONUS1 = """+4 beds""", # MISSING TRANSLATION
+	MANSIONUPG_LUXURY_EXPANSION = """Expansion""", # MISSING TRANSLATION
+	MANSIONUPG_LUXURY_EXPANSIONDESCRIPT = """More private quarters of the same standard.""", # MISSING TRANSLATION
+	MANSIONUPG_LUXURY_EXPANSIONBONUS1 = """+1 bed""", # MISSING TRANSLATION
+	MANSIONUPG_LUXURY_EXPANSIONBONUS2 = """+2 beds""", # MISSING TRANSLATION
+	MANSIONUPG_LUXURY_EXPANSIONBONUS3 = """+3 beds""", # MISSING TRANSLATION
+	MANSIONUPG_CRAFT_EXPANSION = """Expansion""", # MISSING TRANSLATION
+	MANSIONUPG_CRAFT_EXPANSIONDESCRIPT = """More bench space, so more hands can work at once.""", # MISSING TRANSLATION
+	MANSIONUPG_CRAFT_EXPANSIONBONUS1 = """+1 workplace""", # MISSING TRANSLATION
+	MANSIONUPG_CRAFT_EXPANSIONBONUS2 = """+2 workplaces""", # MISSING TRANSLATION
+	MANSIONUPG_CRAFT_TOOLS = """Better Tools""", # MISSING TRANSLATION
+	MANSIONUPG_CRAFT_TOOLSDESCRIPT = """Proper tools, kept sharp. Helps only the people working in this room.""", # MISSING TRANSLATION
+	MANSIONUPG_CRAFT_TOOLSBONUS1 = """+25% output in this room""", # MISSING TRANSLATION
+	MANSIONUPG_CRAFT_TOOLSBONUS2 = """+50% output in this room""", # MISSING TRANSLATION
+	MANSIONUPG_BUILDERS = """Second Scaffold""", # MISSING TRANSLATION
+	MANSIONUPG_BUILDERSDESCRIPT = """Room for a second builder, which speeds up this room's later work.""", # MISSING TRANSLATION
+	MANSIONUPG_BUILDERSBONUS1 = """+1 builder""", # MISSING TRANSLATION
+	MANSIONVIEW_REST = """Idle""", # MISSING TRANSLATION
+	MANSIONVIEW_UNHOUSED = """Without a bed""", # MISSING TRANSLATION
+	MANSIONROOM_BEDROOM = """Camera da letto""",
+	MANSIONROOM_BEDROOMDESCRIPT = """Posti letto per la casa. Più letti significano più persone sotto il tuo tetto.""",
+	MANSIONROOM_STUDY = """Studio""",
+	MANSIONROOM_STUDYDESCRIPT = """Una scrivania tranquilla e un cassetto chiuso a chiave. Un posto per pensare senza interruzioni.""",
+	MANSIONROOM_LIBRARY = """Biblioteca""",
+	MANSIONROOM_LIBRARYDESCRIPT = """Scaffali di libri e registri. Rende più rapidi studio e ricerca.""",
+	MANSIONROOM_ALCHEMY_LAB = """Laboratorio di alchimia""",
+	MANSIONROOM_ALCHEMY_LABDESCRIPT = """Bruciatori, vetreria e barattoli che è meglio etichettare. Serve a preparare pozioni.""",
+	MANSIONROOM_ARMORY = """Armeria""",
+	MANSIONROOM_ARMORYDESCRIPT = """Rastrelliere per armi e armature, oliate e a portata di mano.""",
+	MANSIONROOM_DINING_HALL = """Sala da pranzo""",
+	MANSIONROOM_DINING_HALLDESCRIPT = """Un lungo tavolo dove la casa mangia insieme.""",
+	MANSIONROOM_LOUNGE = """Salotto""",
+	MANSIONROOM_LOUNGEDESCRIPT = """Sedute morbide lontano dal lavoro. Un posto per riprendersi.""",
+	MANSIONROOM_WORKSHOP = """Officina""",
+	MANSIONROOM_WORKSHOPDESCRIPT = """Incudine, banco e attrezzi. Dove si lavorano metallo ed equipaggiamento.""",
+	MANSIONROOM_STORAGE = """Magazzino""",
+	MANSIONROOM_STORAGEDESCRIPT = """Casse e scaffalature. Tengono le provviste fuori dai corridoi.""",
+	MANSIONROOM_TRAINING_ROOM = """Sala d'addestramento""",
+	MANSIONROOM_TRAINING_ROOMDESCRIPT = """Pavimento libero, imbottiture e armi da allenamento. Serve ad affinare le abilità.""",
+	MANSIONROOM_GARDEN_ROOM = """Serra""",
+	MANSIONROOM_GARDEN_ROOMDESCRIPT = """Aiuole vetrate e fioriere. Coltiva cibo ed erbe al chiuso.""",
+	MANSIONROOM_RITUAL_CHAMBER = """Camera rituale""",
+	MANSIONROOM_RITUAL_CHAMBERDESCRIPT = """Una stanza con imposte chiuse e il pavimento inciso. Per lavori che richiedono riservatezza.""",
+	MANSIONROOM_GRAND_HALL = """Sala grande""",
+	MANSIONROOM_GRAND_HALLDESCRIPT = """Il cuore della villa. Non può essere spostata né demolita.""",
+	MANSIONFUNC_HOUSING = """Ospita i residenti""",
+	MANSIONFUNC_RESEARCH = """Consente la ricerca""",
+	MANSIONFUNC_STUDY_BONUS = """Migliora lo studio""",
+	MANSIONFUNC_CRAFT_ALCHEMY = """Consente l'alchimia""",
+	MANSIONFUNC_CRAFT_SMITH = """Consente la forgiatura""",
+	MANSIONFUNC_GEAR_STORAGE = """Conserva l'equipaggiamento""",
+	MANSIONFUNC_DINING = """Sfama la casa""",
+	MANSIONFUNC_REST = """Velocizza il recupero""",
+	MANSIONFUNC_STORAGE = """Conserva le provviste""",
+	MANSIONFUNC_TRAINING = """Consente l'addestramento""",
+	MANSIONFUNC_FARMING = """Coltiva cibo""",
+	MANSIONFUNC_RITUAL = """Consente i rituali""",
+	MANSIONFUNC_HALL = """Fulcro della villa""",
+	MANSIONVIEW_REARRANGE = """Riorganizza""",
+	MANSIONVIEW_REARRANGEDONE = """Fatto""",
+	MANSIONVIEW_ROOMSBUILT = """Stanze""",
+	MANSIONVIEW_BEDS = """Beds""", # MISSING TRANSLATION
+	MANSIONVIEW_WORKPLACES = """Workplaces""", # MISSING TRANSLATION
+	MANSIONVIEW_CAPACITY = """Residenti""",
+	MANSIONVIEW_UPKEEP = """Mantenimento""",
+	MANSIONVIEW_LEVEL = """Livello""",
+	MANSIONVIEW_SIZE = """Dimensione""",
+	MANSIONVIEW_OCCUPANTS = """Residenti""",
+	MANSIONVIEW_EMPTYSLOT = """Posto libero""",
+	MANSIONVIEW_NOSLOTS = """No places""", # MISSING TRANSLATION
+	MANSIONVIEW_EVICTHINT = """Clicca per far uscire questo residente.""",
+	MANSIONVIEW_NOCANDIDATES = """Nessuno disponibile""",
+	MANSIONVIEW_BUILDHERE = """Costruisci qui""",
+	MANSIONVIEW_EMPTYROOM = """Empty room""", # MISSING TRANSLATION
+	MANSIONVIEW_BROKEN = """Damaged""", # MISSING TRANSLATION
+	MANSIONVIEW_BROKENHINT = """This part of the mansion is derelict. It has to be cleared out before anything can be built here.""", # MISSING TRANSLATION
+	MANSIONVIEW_REPAIR = """Clear out""", # MISSING TRANSLATION
+	MANSIONVIEW_AWAY = """away""", # MISSING TRANSLATION
+	MANSIONVIEW_AWAYHINT = """Away from the mansion. They keep this place and return to it.""", # MISSING TRANSLATION
+	MANSIONVIEW_NOBEDHINT = """Has nowhere to sleep.""", # MISSING TRANSLATION
+	MANSIONVIEW_EXPELCONFIRM = """Let %s go for good?""", # MISSING TRANSLATION
+	MANSIONVIEW_PICKHINT = """Drag them, or click to pick them up.""", # MISSING TRANSLATION
+	MANSIONVIEW_PUTBACKHINT = """In hand. Click again to set them back down.""", # MISSING TRANSLATION
+	MANSIONVIEW_PUTHINT = """Click to put them here.""", # MISSING TRANSLATION
+	MANSIONVIEW_MANSION = """Mansion""", # MISSING TRANSLATION
+	MANSIONVIEW_TURNPASSED = """A day passed.""", # MISSING TRANSLATION
+	MANSIONVIEW_REMAINING = """Left""", # MISSING TRANSLATION
+	MANSIONVIEW_WORKERS = """Working""", # MISSING TRANSLATION
+	MANSIONVIEW_PERTURN = """Per turn""", # MISSING TRANSLATION
+	MANSIONVIEW_NOTHINGHERE = """There is nothing to do here.""", # MISSING TRANSLATION
+	MANSIONVIEW_BUILDING = """Raising""", # MISSING TRANSLATION
+	MANSIONVIEW_CLEARINGOUT = """Clearing out""", # MISSING TRANSLATION
+	MANSIONVIEW_UPGRADING = """Upgrading""", # MISSING TRANSLATION
+	MANSIONVIEW_BUILDINGHINT = """Put somebody in the scaffolding and it will go up on its own.""", # MISSING TRANSLATION
+	MANSIONVIEW_PROGRESS = """Progress""", # MISSING TRANSLATION
+	MANSIONVIEW_DAYSLEFT = """About %d days left""", # MISSING TRANSLATION
+	MANSIONVIEW_NOBUILDER = """Nobody is building this""", # MISSING TRANSLATION
+	MANSIONVIEW_WORKUNITS = """Work needed: %d""", # MISSING TRANSLATION
+	MANSIONVIEW_CANCELBUILD = """Cancel and refund""", # MISSING TRANSLATION
+	MANSIONVIEW_CANCELCONFIRM = """Stop this work and take the materials back?""", # MISSING TRANSLATION
+	MANSIONVIEW_MAXED = """at its best""", # MISSING TRANSLATION
+	MANSIONVIEW_NOW = """Now""", # MISSING TRANSLATION
+	MANSIONVIEW_NEXT = """Next""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_BUILDING = """Something is already being built here.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_MAXLEVEL = """That is already at its best.""", # MISSING TRANSLATION
+	MANSIONVIEW_LOCKED = """Locked""", # MISSING TRANSLATION
+	MANSIONVIEW_UPGRADE = """Potenzia""",
+	MANSIONVIEW_UPGRADEALLNOTE = """Il livello è condiviso da tutta la casa, quindi questo potenzia ogni stanza di questo tipo.""",
+	MANSIONVIEW_ERR_VOID = """Qui non c'è nessuna stanza.""",
+	MANSIONVIEW_ERR_NOSPACE = """Non ci sta qui.""",
+	MANSIONVIEW_ERR_LOCKED = """Questa parte della villa è bloccata.""",
+	MANSIONVIEW_ERR_OCCUPIED = """Questo spazio è già occupato.""",
+	MANSIONVIEW_ERR_FIXED = """Questa stanza non può essere spostata.""",
+	MANSIONVIEW_ERR_SIZEMISMATCH = """Queste stanze hanno dimensioni diverse.""",
+	MANSIONVIEW_ERR_BROKEN = """This room is derelict.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_UNIQUE = """You already have one of these.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_NOTHINGTOSWAP = """There is nothing here to move.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_FULL = """Questa stanza è piena.""",
+	MANSIONVIEW_ERR_CANTAFFORD = """Non puoi permettertelo.""",
+	MANSIONVIEW_ERR_AWAY = """They are not in the mansion.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_NOTWORKER = """They will not work for you.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_MASTERBED = """That bed is yours alone.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_MASTERROOM = """You will not tear down your own room.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_MASTERPINNED = """You sleep in your own room and nowhere else.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_MASTEREXPEL = """You cannot let yourself go.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_UNHOUSED = """%d of your household have nowhere to sleep.""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_TITLE = """Doll 2 — Spine 4.2 preview""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_ANIMATION_IDLE = """Idle animation""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_ANIMATION_EYES = """Eye movement""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_SHOW_HANDLES = """Show IK handles""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HANDLE_LEFT_HAND = """Left hand""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HANDLE_RIGHT_HAND = """Right hand""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HANDLE_LEFT_FOOT = """Left foot""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HANDLE_RIGHT_FOOT = """Right foot""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HANDLE_HINT = """Drag with the left mouse button. Right-click to reset.""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_PRESET = """Preset""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_BODY = """Body""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_RACE = """Race""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_UPPER = """Upper clothing""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_LOWER = """Lower clothing""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HEAD = """Head""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_FACE = """Face""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_EYES = """Eyes""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_EYEBROWS = """Eyebrows""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_NOSE = """Nose""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_LIPS = """Lips""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_EARS = """Ears""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HAIR_BASE = """Hair base""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HAIR_BACK = """Hair back""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_FRINGE = """Fringe""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HAIR_ACCESSORY = """Hair accessory""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HORNS = """Horns""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_WINGS = """Wings""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_TAILS = """Tail""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_ANIMAL_BODY = """Animal body""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_RACE_OVERLAY = """Race overlay""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_FACE_MARKINGS = """Face markings""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_GENITALS = """Genitals""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_TATTOO = """Tattoo""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_OUTFIT = """Outfit""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_COLLAR = """Collar""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HEADGEAR = """Head gear""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_MASK = """Mask""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_WEAPON_BELT = """Belt weapon""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_WEAPON_BACK = """Back weapon""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_BREAST_SIZE = """Breast size""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_PREGNANCY = """Pregnancy""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HAND_POSE = """Hand pose""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_MANY_TITS = """Extra nipples""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_POSE_DEFAULT = """Setup pose""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HEAD_SIZE = """Head size""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HEIGHT = """Height""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_TINT_HINT = """Colour for this part. White keeps the original art.""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_TINT_TIPS_HINT = """Second hair colour, blended towards the tips. White uses the first colour everywhere.""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_ZONE_HINT = """Material colour. Gear art is coded by hue: the three pickers are its main, second and trim materials.""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_SKIN_TINT = """Skin tint""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HAIR_TINT = """Hair tint""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_EYES_TINT = """Eyes tint""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_NONE = """— none —""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_NOTE = """Standalone test scene. The source JSON, three atlas pages, 261 bones, slot order and weighted meshes remain in this folder.""", # MISSING TRANSLATION
 
 
 

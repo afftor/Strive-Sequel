@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Character_generator/Doll2Spine/doll2_preview.gd" type="Script" id=1]
+
+[node name="Doll2Preview" type="Node2D"]
+script = ExtResource( 1 )

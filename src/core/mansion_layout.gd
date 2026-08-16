@@ -1,0 +1,825 @@
+extends Reference
+#Pure model for the mansion floorplan shown by gui_modules/mansion_view.
+#No nodes, no state of its own - every function is static and operates on the plain
+#dictionary stored in ResourceScripts.game_res.mansion_layout.
+#
+#The level map owns geometry. Slots sit at fixed coordinates defined by the designer in
+#mansion_floor_plans.gd, and the player never moves anything: they choose what to build
+#into a slot and which two slots trade contents. So a room carries no position and no
+#size at all - it is a type, its upgrades and its people, and the slot supplies the rest.
+#
+#A slot has three states, derived from two persisted facts:
+#	broken - the slot itself is damaged. Clearing it out into an empty slot is done
+#	         through the same builder mechanic as construction.
+#	empty  - usable, nothing built
+#	built  - holds a room
+#
+#A room holds two different kinds of people, and they are kept apart on purpose:
+#	occupants - who SLEEPS here. Stored in the layout, because nothing in the game binds
+#	            a character to a bed. Everyone needs one, wherever they are on the map.
+#	workers   - who WORKS here. NOT stored here: the room owns a task in
+#	            game_res.tasks_progresses and the existing assign_to_task() puts people in
+#	            it, so a room worker is a worker as far as the rest of the game is
+#	            concerned. The room only keeps the task's id.
+#
+#task_id lives on the room rather than on the slot so that swapping two slots carries the
+#workers along with the room. Keying it by slot would silently detach character.work from
+#wherever the room ended up.
+#
+#Everything stays JSON-safe because the layout rides along in game_res.serialize(), and
+#JSON turns ints into floats on load, which is why validate() re-int()s the numbers - the
+#same repair game_world.fix_serialization() does for dungeon room.col / room.row.
+
+const RoomTypes = preload("res://assets/data/mansion_room_types.gd")
+const RoomUpgrades = preload("res://assets/data/mansion_room_upgrades.gd")
+const FloorPlans = preload("res://assets/data/mansion_floor_plans.gd")
+
+const VERSION = 5
+
+
+#### construction ####
+
+static func build_default(plan_code = 'default_manor'):
+	var plan = FloorPlans.get_plan(plan_code)
+	var res = {
+		version = VERSION,
+		plan = plan.code,
+		current_floor = 0,
+		next_room_id = 1,
+		floors = [],
+	}
+	for floor_plan in plan.floors:
+		res.floors.append(build_floor(floor_plan))
+	for floor_index in range(plan.floors.size()):
+		for slot_code in plan.floors[floor_index].prebuilt:
+			var room = get_room(res.floors[floor_index], slot_code)
+			if room != null:
+				assign_room_id(res, room)
+	return res
+
+
+static func build_floor(floor_plan):
+	var floor_data = {
+		code = floor_plan.code,
+		#kept so validate() can tell when the designer reshaped the level map
+		shape = FloorPlans.shape_signature(floor_plan),
+		slots = {},
+	}
+	for slot_plan in floor_plan.slots:
+		floor_data.slots[slot_plan.code] = make_slot(FloorPlans.slot_starts_broken(slot_plan))
+	for slot_code in floor_plan.prebuilt:
+		if !floor_data.slots.has(slot_code):
+			print_debug("mansion_layout: prebuilt slot %s does not exist on floor %s" % [slot_code, floor_plan.code])
+			continue
+		floor_data.slots[slot_code].broken = false
+		floor_data.slots[slot_code].room = make_room(floor_plan.prebuilt[slot_code])
+	return floor_data
+
+
+#The build record lives on the SLOT, not on the room, because two of the three things it
+#drives happen when there is no room to hang it off: raising one from an empty slot and
+#clearing out a derelict one. The third, upgrading, then falls out for free.
+static func make_slot(broken = false):
+	return {broken = broken, room = null, build = null}
+
+
+static func make_room(type_code):
+	return {
+		type = type_code,
+		task_id = null,     #key into game_res.tasks_progresses, set by assign_room_id
+		occupants = [],     #who sleeps here
+		upgrades = {},      #{upgrade_code: level}
+	}
+
+
+#Ids come from a counter on the layout rather than from game_res, because this file must
+#not touch autoloads - see the note at the top of mansion_room_types.gd.
+static func assign_room_id(layout, room):
+	if room.task_id != null:
+		return room.task_id
+	var next_id = int(layout.get('next_room_id', 1))
+	room.task_id = 'mansion_room_%d' % next_id
+	layout.next_room_id = next_id + 1
+	return room.task_id
+
+
+#### lookups ####
+
+static func get_floor(layout, floor_index):
+	if !(layout is Dictionary) or !layout.has('floors') or !(layout.floors is Array):
+		return null
+	floor_index = int(floor_index)
+	if floor_index < 0 or floor_index >= layout.floors.size():
+		return null
+	return layout.floors[floor_index]
+
+
+static func get_current_floor(layout):
+	return get_floor(layout, layout.current_floor)
+
+
+static func get_floor_plan(layout, floor_index):
+	return FloorPlans.get_floor_plan(layout.plan, floor_index)
+
+
+static func get_slot(floor_data, slot_code):
+	if floor_data == null or !floor_data.slots.has(slot_code):
+		return null
+	return floor_data.slots[slot_code]
+
+
+static func get_room(floor_data, slot_code):
+	var slot = get_slot(floor_data, slot_code)
+	if slot == null:
+		return null
+	return slot.room
+
+
+#'broken' | 'empty' | 'built' | 'building'
+#An upgrade does not make a slot 'building': the room keeps working throughout, which is
+#the whole point of upgrades being separate from construction.
+static func slot_status(floor_data, slot_code):
+	var slot = get_slot(floor_data, slot_code)
+	if slot == null:
+		return 'broken'
+	if slot.build != null and slot.build.kind in ['construct', 'repair']:
+		return 'building'
+	if slot.broken:
+		return 'broken'
+	return 'built' if slot.room != null else 'empty'
+
+
+static func get_build(floor_data, slot_code):
+	var slot = get_slot(floor_data, slot_code)
+	if slot == null:
+		return null
+	return slot.build
+
+
+static func each_build(layout):
+	var res = []
+	for floor_index in range(layout.floors.size() if (layout is Dictionary and layout.has('floors')) else 0):
+		var floor_data = layout.floors[floor_index]
+		for slot_code in floor_data.slots:
+			var slot = floor_data.slots[slot_code]
+			if slot.build != null:
+				res.append({floor = floor_index, slot = slot_code, build = slot.build, room = slot.room})
+	return res
+
+
+#Guarded because character effects ask about housing (the private-room bonus) during stat
+#rebuilds, which happen while a character is being created - before the layout exists.
+static func each_room(layout):
+	var res = []
+	if !(layout is Dictionary) or !layout.has('floors') or !(layout.floors is Array):
+		return res
+	for floor_index in range(layout.floors.size()):
+		var floor_data = layout.floors[floor_index]
+		for slot_code in floor_data.slots:
+			var room = floor_data.slots[slot_code].room
+			if room != null:
+				res.append({floor = floor_index, slot = slot_code, room = room})
+	return res
+
+
+static func count_rooms_of_type(layout, type_code):
+	var res = 0
+	for entry in each_room(layout):
+		if entry.room.type == type_code:
+			res += 1
+	return res
+
+
+#Uniqueness has to count the ones already going up too, or two could be started at once
+#and the second would have nowhere legal to land.
+static func count_planned_of_type(layout, type_code):
+	var res = count_rooms_of_type(layout, type_code)
+	for entry in each_build(layout):
+		if entry.build.kind == 'construct' and entry.build.target == type_code:
+			res += 1
+	return res
+
+
+#### upgrades and capacity ####
+
+#Every upgrade level states its own totals, so a room's effect is just the union of its
+#current levels. Later keys win only when two upgrades touch the same one, which no pair
+#in the registry currently does.
+static func room_effect(room):
+	var res = {}
+	if room == null or !(room.upgrades is Dictionary):
+		return res
+	for code in room.upgrades:
+		var effect = RoomUpgrades.get_effect(code, room.upgrades[code])
+		for key in effect:
+			res[key] = res.get(key, 0) + effect[key]
+	return res
+
+
+static func slot_capacity(room, kind):
+	if room == null:
+		return 0
+	var res = RoomTypes.base_slots(room.type, kind)
+	var effect = room_effect(room)
+	var bonus_key = kind + '_slots'
+	if effect.has(bonus_key):
+		res += int(effect[bonus_key])
+	return int(res)
+
+
+static func sleep_capacity(room):
+	return slot_capacity(room, 'sleep')
+
+
+static func work_capacity(room):
+	if room == null or RoomTypes.get_work_job(room.type) == null:
+		return 0
+	return slot_capacity(room, 'work')
+
+
+#Builder places exist only while something is being built here. A slot with no room yet -
+#raising a room, clearing out a derelict one - always gets exactly one; a room being
+#upgraded can have widened its own scaffolding first.
+static func build_capacity(room):
+	if room == null:
+		return 1
+	return 1 + int(room_effect(room).get('build_slots', 0))
+
+
+#Sums one effect key across every room of a type - how the mansion as a whole answers
+#for things like "how much company fits in the master bedroom".
+static func effect_of_type(layout, type_code, key):
+	var res = 0
+	for entry in each_room(layout):
+		if entry.room.type == type_code:
+			res += int(room_effect(entry.room).get(key, 0))
+	return res
+
+
+static func craft_modifier(room):
+	var effect = room_effect(room)
+	return 1.0 + float(effect.get('craft_mod', 0))
+
+
+static func upgrade_level(room, upgrade_code):
+	if room == null or !(room.upgrades is Dictionary):
+		return 0
+	return int(room.upgrades.get(upgrade_code, 0))
+
+
+#### room work tasks ####
+
+#Idempotently mirrors a work room into game_res.tasks_progresses so the ordinary
+#assign_to_task() path can be used against it. "tasks" is that dictionary, passed in
+#rather than read, to keep this file free of autoloads.
+static func ensure_room_task(layout, room, tasks):
+	var job = RoomTypes.get_work_job(room.type)
+	if job == null:
+		return null
+	assign_room_id(layout, room)
+	if !tasks.has(room.task_id):
+		tasks[room.task_id] = {
+			id = room.task_id,
+			type = 'room_work',
+			job = job,
+			room_type = room.type,
+			#'permanent' survives tasks_cleanup(), which only drops 'completed'/'temporal'
+			status = 'permanent',
+			workstat = 'physics',
+			worktool = 'hammer',
+			workers = [],
+			progress = 0,
+			progress_limit = 1,
+			max_workers = 0,
+		}
+	var task = tasks[room.task_id]
+	task.job = job
+	task.room_type = room.type
+	task.max_workers = work_capacity(room)
+	if !(task.workers is Array):
+		task.workers = []
+	return room.task_id
+
+
+#Refreshes every room task on the layout and reports the ids that are still live, so the
+#caller can drop the stale ones.
+static func ensure_all_room_tasks(layout, tasks):
+	var live = {}
+	for entry in each_room(layout):
+		var task_id = ensure_room_task(layout, entry.room, tasks)
+		if task_id != null:
+			live[task_id] = true
+	return live
+
+
+static func get_room_workers(room, tasks):
+	if room == null or room.task_id == null or !tasks.has(room.task_id):
+		return []
+	return tasks[room.task_id].workers
+
+
+#### construction, repair and upgrades ####
+
+#Work units needed to clear a derelict slot back to empty. Free, but not instant.
+const REPAIR_PROGRESS = 20
+
+
+static func can_start_construct(layout, floor_index, slot_code, type_code):
+	var check = can_build(layout, floor_index, slot_code, type_code)
+	if !check.ok:
+		return check
+	return {ok = true, reason = ''}
+
+
+static func can_start_repair(layout, floor_index, slot_code):
+	var slot = get_slot(get_floor(layout, floor_index), slot_code)
+	if slot == null or !slot.broken:
+		return {ok = false, reason = 'MANSIONVIEW_ERR_VOID'}
+	if slot.build != null:
+		return {ok = false, reason = 'MANSIONVIEW_ERR_BUILDING'}
+	return {ok = true, reason = ''}
+
+
+#One at a time, and only upgrades this room's type actually offers.
+static func can_start_upgrade(layout, floor_index, slot_code, upgrade_code):
+	var slot = get_slot(get_floor(layout, floor_index), slot_code)
+	if slot == null or slot.room == null:
+		return {ok = false, reason = 'MANSIONVIEW_ERR_VOID'}
+	if slot.build != null:
+		return {ok = false, reason = 'MANSIONVIEW_ERR_BUILDING'}
+	if !RoomTypes.get_type(slot.room.type).upgrades.has(upgrade_code):
+		return {ok = false, reason = 'MANSIONVIEW_ERR_VOID'}
+	var next_level = upgrade_level(slot.room, upgrade_code) + 1
+	if RoomUpgrades.get_level_data(upgrade_code, next_level) == null:
+		return {ok = false, reason = 'MANSIONVIEW_ERR_MAXLEVEL'}
+	return {ok = true, reason = ''}
+
+
+static func next_upgrade_level(room, upgrade_code):
+	return upgrade_level(room, upgrade_code) + 1
+
+
+#"paid" is what the caller deducted, kept so cancelling can hand it straight back.
+static func start_build(layout, floor_index, slot_code, kind, target, limit, paid = {}):
+	var slot = get_slot(get_floor(layout, floor_index), slot_code)
+	if slot == null or slot.build != null:
+		return false
+	var next_id = int(layout.get('next_room_id', 1))
+	layout.next_room_id = next_id + 1
+	slot.build = {
+		kind = kind,          #'construct' | 'repair' | 'upgrade'
+		target = target,      #room type code, upgrade code, or null for a repair
+		level = 1,
+		progress = 0.0,
+		limit = float(max(1, limit)),
+		task_id = 'mansion_build_%d' % next_id,
+		refund = paid.duplicate(),
+	}
+	if kind == 'upgrade' and slot.room != null:
+		slot.build.level = next_upgrade_level(slot.room, target)
+	return true
+
+
+#Returns what to give back and which task to release; the caller owns both systems.
+static func cancel_build(layout, floor_index, slot_code):
+	var slot = get_slot(get_floor(layout, floor_index), slot_code)
+	if slot == null or slot.build == null:
+		return null
+	var res = {refund = slot.build.refund.duplicate(), task_id = slot.build.task_id}
+	slot.build = null
+	return res
+
+
+static func advance_build(build, amount):
+	build.progress += float(amount)
+	return build.progress >= build.limit
+
+
+#Turns a finished build into the thing it was building. Returns the task id to release.
+static func complete_build(layout, floor_index, slot_code):
+	var slot = get_slot(get_floor(layout, floor_index), slot_code)
+	if slot == null or slot.build == null:
+		return null
+	var build = slot.build
+	match build.kind:
+		'construct':
+			slot.broken = false
+			slot.room = make_room(build.target)
+			assign_room_id(layout, slot.room)
+		'repair':
+			slot.broken = false
+		'upgrade':
+			if slot.room != null:
+				slot.room.upgrades[build.target] = int(build.level)
+	slot.build = null
+	return build.task_id
+
+
+#Idempotently mirrors a build into tasks_progresses, the same way work rooms are mirrored,
+#so builders are assigned through the ordinary assign_to_task().
+static func ensure_build_task(slot, tasks):
+	if slot.build == null:
+		return null
+	var task_id = slot.build.task_id
+	if !tasks.has(task_id):
+		tasks[task_id] = {
+			id = task_id,
+			type = 'room_build',
+			job = 'building',
+			status = 'permanent',
+			workstat = 'physics',
+			worktool = 'hammer',
+			workers = [],
+			progress = 0,
+			progress_limit = 1,
+			max_workers = 0,
+		}
+	var task = tasks[task_id]
+	task.max_workers = build_capacity(slot.room)
+	if !(task.workers is Array):
+		task.workers = []
+	return task_id
+
+
+static func get_build_workers(build, tasks):
+	if build == null or !tasks.has(build.task_id):
+		return []
+	return tasks[build.task_id].workers
+
+
+static func can_build(layout, floor_index, slot_code, type_code):
+	var slot = get_slot(get_floor(layout, floor_index), slot_code)
+	if slot == null:
+		return {ok = false, reason = 'MANSIONVIEW_ERR_VOID'}
+	if !RoomTypes.has_type(type_code):
+		return {ok = false, reason = 'MANSIONVIEW_ERR_VOID'}
+	if slot.build != null:
+		return {ok = false, reason = 'MANSIONVIEW_ERR_BUILDING'}
+	if slot.broken:
+		return {ok = false, reason = 'MANSIONVIEW_ERR_BROKEN'}
+	if slot.room != null:
+		return {ok = false, reason = 'MANSIONVIEW_ERR_OCCUPIED'}
+	if RoomTypes.get_type(type_code).unique and count_planned_of_type(layout, type_code) > 0:
+		return {ok = false, reason = 'MANSIONVIEW_ERR_UNIQUE'}
+	return {ok = true, reason = ''}
+
+
+static func build_room(layout, floor_index, slot_code, type_code):
+	if !can_build(layout, floor_index, slot_code, type_code).ok:
+		return false
+	var room = make_room(type_code)
+	assign_room_id(layout, room)
+	get_slot(get_floor(layout, floor_index), slot_code).room = room
+	return true
+
+
+static func can_demolish(layout, floor_index, slot_code):
+	var slot = get_slot(get_floor(layout, floor_index), slot_code)
+	if slot == null or slot.room == null:
+		return {ok = false, reason = 'MANSIONVIEW_ERR_VOID'}
+	#the master's own room is not the player's to tear down
+	if RoomTypes.get_type(slot.room.type).master_only:
+		return {ok = false, reason = 'MANSIONVIEW_ERR_MASTERROOM'}
+	if slot.build != null:
+		return {ok = false, reason = 'MANSIONVIEW_ERR_BUILDING'}
+	return {ok = true, reason = ''}
+
+
+#Returns the task id that has to be cleaned up by the caller (game_res.clean_task), which
+#is what releases the workers - this file cannot reach the task system itself.
+static func demolish_room(layout, floor_index, slot_code):
+	if !can_demolish(layout, floor_index, slot_code).ok:
+		return null
+	var slot = get_slot(get_floor(layout, floor_index), slot_code)
+	var task_id = slot.room.task_id
+	for char_id in slot.room.occupants.duplicate():
+		unassign_character(layout, char_id)
+	slot.room = null
+	return task_id
+
+
+#### swapping ####
+
+#Two slots trade contents, on one floor or across two. Neither may be broken, and at least
+#one has to hold something. Every slot is the same size, so nothing about shape has to be
+#checked. The whole room dictionary moves, so its task id, upgrades, residents and workers
+#all come along - which is what makes carrying a room upstairs safe.
+static func can_swap(layout, floor_a, code_a, floor_b, code_b):
+	if int(floor_a) == int(floor_b) and code_a == code_b:
+		return {ok = false, reason = 'MANSIONVIEW_ERR_VOID'}
+	var slot_a = get_slot(get_floor(layout, floor_a), code_a)
+	var slot_b = get_slot(get_floor(layout, floor_b), code_b)
+	if slot_a == null or slot_b == null:
+		return {ok = false, reason = 'MANSIONVIEW_ERR_VOID'}
+	if slot_a.broken or slot_b.broken:
+		return {ok = false, reason = 'MANSIONVIEW_ERR_BROKEN'}
+	#scaffolding does not travel: a room in the middle of something stays where it is
+	if slot_a.build != null or slot_b.build != null:
+		return {ok = false, reason = 'MANSIONVIEW_ERR_BUILDING'}
+	if slot_a.room == null and slot_b.room == null:
+		return {ok = false, reason = 'MANSIONVIEW_ERR_VOID'}
+	return {ok = true, reason = ''}
+
+
+static func swap_slots(layout, floor_a, code_a, floor_b, code_b):
+	if !can_swap(layout, floor_a, code_a, floor_b, code_b).ok:
+		return false
+	var slot_a = get_slot(get_floor(layout, floor_a), code_a)
+	var slot_b = get_slot(get_floor(layout, floor_b), code_b)
+	var carried = slot_a.room
+	slot_a.room = slot_b.room
+	slot_b.room = carried
+	return true
+
+
+#### repair ####
+
+static func can_repair(layout, floor_index, slot_code):
+	var slot = get_slot(get_floor(layout, floor_index), slot_code)
+	if slot == null or !slot.broken:
+		return {ok = false, reason = 'MANSIONVIEW_ERR_VOID'}
+	return {ok = true, reason = ''}
+
+
+static func repair_slot(layout, floor_index, slot_code):
+	if !can_repair(layout, floor_index, slot_code).ok:
+		return false
+	get_slot(get_floor(layout, floor_index), slot_code).broken = false
+	return true
+
+
+#### sleeping residents ####
+
+static func get_slot_of_character(layout, char_id):
+	for entry in each_room(layout):
+		if entry.room.occupants.has(char_id):
+			return {floor = entry.floor, slot = entry.slot, room = entry.room}
+	return null
+
+
+static func lives_in_room_with_tag(layout, char_id, tag):
+	var placed = get_slot_of_character(layout, char_id)
+	if placed == null:
+		return false
+	return RoomTypes.has_tag(placed.room.type, tag)
+
+
+#The master never leaves his own room, so nothing may take him out of it.
+static func is_pinned(layout, char_id, is_master):
+	if !is_master:
+		return false
+	var placed = get_slot_of_character(layout, char_id)
+	return placed != null and RoomTypes.get_type(placed.room.type).master_only
+
+
+#Gives somebody a bed without being asked, which is what happens when they join the
+#household. The master goes to his own room and nowhere else; everyone else takes the
+#first free bed that will have them. Returns true once they have somewhere to sleep.
+static func autohouse(layout, char_id, is_master = false, master_id = null):
+	if get_slot_of_character(layout, char_id) != null:
+		return true
+	if is_master:
+		for entry in each_room(layout):
+			if !RoomTypes.get_type(entry.room.type).master_only:
+				continue
+			if assign_character(layout, entry.floor, entry.slot, char_id, true, master_id).ok:
+				return true
+		return false
+	for entry in each_room(layout):
+		#the master's own bed is held for him; assign_character refuses it for us
+		if assign_character(layout, entry.floor, entry.slot, char_id, false, master_id).ok:
+			return true
+	return false
+
+
+#Everyone in the party who has nowhere to sleep, seated wherever there is room. "masters"
+#is the set of ids that are the master, passed in because this file cannot look one up.
+static func autohouse_all(layout, party, masters = {}):
+	var master_id = masters.keys()[0] if !masters.empty() else null
+	var seated = 0
+	#the master goes first, so his room stops being held against everybody else
+	for char_id in masters:
+		if autohouse(layout, char_id, true, master_id):
+			seated += 1
+	for char_id in party:
+		if masters.has(char_id):
+			continue
+		if autohouse(layout, char_id, false, master_id):
+			seated += 1
+	return seated
+
+
+static func unassign_character(layout, char_id):
+	var removed = false
+	for entry in each_room(layout):
+		while entry.room.occupants.has(char_id):
+			entry.room.occupants.erase(char_id)
+			removed = true
+	return removed
+
+
+#The binding lives in the layout only - the character object is never touched, which
+#keeps housing independent of the job system. "is_master" is passed in because this file
+#cannot look a character up.
+static func assign_character(layout, floor_index, slot_code, char_id, is_master = false, master_id = null):
+	var room = get_room(get_floor(layout, floor_index), slot_code)
+	if room == null:
+		return {ok = false, reason = 'MANSIONVIEW_ERR_VOID'}
+	if room.occupants.has(char_id):
+		return {ok = true, reason = ''}
+	#exactly one bed in the master's room is his, whatever Bed size has widened it to. It
+	#only stops being held once he is actually in it.
+	if RoomTypes.get_type(room.type).master_only and !is_master:
+		var reserved = 0 if (master_id != null and room.occupants.has(master_id)) else 1
+		if room.occupants.size() + reserved >= sleep_capacity(room):
+			return {ok = false, reason = 'MANSIONVIEW_ERR_MASTERBED'}
+	if room.occupants.size() >= sleep_capacity(room):
+		return {ok = false, reason = 'MANSIONVIEW_ERR_FULL'}
+	unassign_character(layout, char_id)
+	room.occupants.append(char_id)
+	return {ok = true, reason = ''}
+
+
+#Everyone in the party who has no bed. This is what blocks the end of the turn, so it
+#counts characters wherever they are on the world map.
+static func unhoused_characters(layout, party):
+	var res = []
+	if party == null or !(party is Dictionary):
+		return res
+	if !(layout is Dictionary) or !layout.has('floors'):
+		return res
+	var housed = {}
+	for entry in each_room(layout):
+		for char_id in entry.room.occupants:
+			housed[char_id] = true
+	for char_id in party:
+		if !housed.has(char_id):
+			res.append(char_id)
+	return res
+
+
+static func total_sleep_capacity(layout):
+	var res = 0
+	for entry in each_room(layout):
+		res += sleep_capacity(entry.room)
+	return res
+
+
+#### reporting ####
+
+static func summary(layout, floor_index, tasks = null):
+	var res = {built = 0, empty = 0, broken = 0, beds = 0, residents = 0,
+		workplaces = 0, workers = 0, upkeep = 0}
+	var floor_data = get_floor(layout, floor_index)
+	if floor_data == null:
+		return res
+	for slot_code in floor_data.slots:
+		var slot = floor_data.slots[slot_code]
+		if slot.broken:
+			res.broken += 1
+			continue
+		if slot.room == null:
+			res.empty += 1
+			continue
+		res.built += 1
+		res.beds += sleep_capacity(slot.room)
+		res.residents += slot.room.occupants.size()
+		res.workplaces += work_capacity(slot.room)
+		if tasks != null:
+			res.workers += get_room_workers(slot.room, tasks).size()
+		res.upkeep += RoomTypes.get_type(slot.room.type).upkeep
+	return res
+
+
+#### migration ####
+
+#Repairs a layout loaded from a save: drops rooms whose type no longer exists, adds slots
+#the designer introduced, and rebuilds a floor outright when the level map was reshaped.
+#Safe to call repeatedly.
+static func validate(layout, party = null):
+	if !(layout is Dictionary) or !layout.has('floors') or !(layout.floors is Array):
+		return false
+	layout.version = VERSION
+	if !layout.has('plan'):
+		layout.plan = 'default_manor'
+	layout.next_room_id = int(layout.get('next_room_id', 1))
+	var plan = FloorPlans.get_plan(layout.plan)
+
+	for floor_index in range(layout.floors.size()):
+		if floor_index >= plan.floors.size():
+			continue
+		var floor_plan = plan.floors[floor_index]
+		var floor_data = layout.floors[floor_index]
+		#the designer moved or resized the slots - rebuild rather than guess
+		if !floor_data.has('shape') or floor_data.shape != FloorPlans.shape_signature(floor_plan):
+			print_debug("mansion_layout: floor %d level map changed, rebuilding" % floor_index)
+			layout.floors[floor_index] = build_floor(floor_plan)
+			continue
+		validate_floor(floor_plan, floor_data)
+
+	#the plan gained floors since this layout was created
+	for floor_index in range(layout.floors.size(), plan.floors.size()):
+		layout.floors.append(build_floor(plan.floors[floor_index]))
+
+	#give ids to rooms that predate them, and make sure the counter clears every id in use
+	for entry in each_room(layout):
+		if entry.room.task_id == null:
+			assign_room_id(layout, entry.room)
+		else:
+			var parts = str(entry.room.task_id).split("_")
+			var used = int(parts[parts.size() - 1])
+			layout.next_room_id = max(layout.next_room_id, used + 1)
+
+	layout.current_floor = int(clamp(int(layout.get('current_floor', 0)), 0, max(0, layout.floors.size() - 1)))
+	prune_occupants(layout, party)
+	return true
+
+
+static func validate_floor(floor_plan, floor_data):
+	if !(floor_data.slots is Dictionary):
+		floor_data.slots = {}
+	for slot_plan in floor_plan.slots:
+		if !floor_data.slots.has(slot_plan.code):
+			floor_data.slots[slot_plan.code] = make_slot(FloorPlans.slot_starts_broken(slot_plan))
+			continue
+		var slot = floor_data.slots[slot_plan.code]
+		slot.broken = bool(slot.broken)
+		if !slot.has('build'):
+			slot.build = null
+		validate_build(slot)
+		if slot.room == null:
+			continue
+		if !RoomTypes.has_type(slot.room.type):
+			print_debug("mansion_layout: dropping room in slot %s, unknown type" % slot_plan.code)
+			slot.room = null
+			continue
+		var room = slot.room
+		if !(room.occupants is Array):
+			room.occupants = []
+		if !room.has('upgrades') or !(room.upgrades is Dictionary):
+			room.upgrades = {}
+		if !room.has('build'):
+			room.build = null
+		if !room.has('task_id'):
+			room.task_id = null
+		#drop upgrades this type no longer offers, and re-int() the levels JSON floated
+		var allowed = RoomTypes.get_type(room.type).upgrades
+		for code in room.upgrades.keys():
+			if !allowed.has(code) or !RoomUpgrades.has_upgrade(code):
+				room.upgrades.erase(code)
+				continue
+			room.upgrades[code] = int(clamp(int(room.upgrades[code]), 0, RoomUpgrades.max_level(code)))
+			if room.upgrades[code] <= 0:
+				room.upgrades.erase(code)
+		#a broken slot can never hold a room; the flag wins
+		if slot.broken and slot.build == null:
+			slot.room = null
+
+
+#JSON floats every number, and a build whose target has since vanished has to go.
+static func validate_build(slot):
+	var build = slot.build
+	if build == null:
+		return
+	if !(build is Dictionary) or !build.has('kind') or !build.has('task_id'):
+		slot.build = null
+		return
+	build.progress = float(build.progress)
+	build.limit = float(max(1, build.limit))
+	build.level = int(build.level)
+	if !(build.refund is Dictionary):
+		build.refund = {}
+	for res in build.refund:
+		build.refund[res] = int(build.refund[res])
+	match build.kind:
+		'construct':
+			if !RoomTypes.has_type(build.target):
+				slot.build = null
+		'upgrade':
+			if slot.room == null or !RoomUpgrades.has_upgrade(build.target) \
+					or RoomUpgrades.get_level_data(build.target, build.level) == null:
+				slot.build = null
+		'repair':
+			if !slot.broken:
+				slot.build = null
+		_:
+			slot.build = null
+
+
+#Drops residents that no longer exist and any duplicate that slipped into two rooms, then
+#trims anyone over a bed count that shrank. "party" is game_party.characters; skipped when
+#null or empty so a standalone test run does not wipe its dummy characters.
+static func prune_occupants(layout, party):
+	if party == null or !(party is Dictionary) or party.empty():
+		return
+	var seen = []
+	for entry in each_room(layout):
+		var keep = []
+		for char_id in entry.room.occupants:
+			if !party.has(char_id) or seen.has(char_id):
+				continue
+			if keep.size() >= sleep_capacity(entry.room):
+				continue
+			seen.append(char_id)
+			keep.append(char_id)
+		entry.room.occupants = keep

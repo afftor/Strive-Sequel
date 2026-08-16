@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://assets/Themes_v2/MAIN_MENU/Menu_Options_Panel.tres" type="Theme" id=1]
 [ext_resource path="res://src/scenes/Options.gd" type="Script" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=24]
 [ext_resource path="res://src/scenes/HotkeyOptions.gd" type="Script" id=25]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=26]
+[ext_resource path="res://gui_modules/Universal/Modules/SupporterLinks.tscn" type="PackedScene" id=27]
 
 [sub_resource type="DynamicFont" id=1]
 size = 19
@@ -914,3 +915,5 @@ text = "OPTCHANGELANGUAGE"
 align = 1
 valign = 1
 autowrap = true
+
+[node name="SupporterLinks" parent="." instance=ExtResource( 27 )]

@@ -678,6 +678,9 @@ func add_slave(person, child = false):
 	person.training.acquired_turn = ResourceScripts.game_globals.get_turn()
 	globals.text_log_add("char","New character acquired: " + person.get_short_name() + ". ")
 	globals.emit_signal("slave_added")
+	#a new arrival takes a free bed on their own - nobody should have to place them by
+	#hand before the turn will run
+	ResourceScripts.game_res.autohouse_character(person)
 	gui_controller.nav_panel.build_accessible_locations()
 	for prof in person.get_professions():
 		input_handler.achievements.try_add_prof_achimnt(prof)

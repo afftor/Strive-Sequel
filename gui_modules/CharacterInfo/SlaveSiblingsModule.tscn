@@ -138,6 +138,7 @@ margin_right = 1530.0
 margin_bottom = 714.0
 texture = ExtResource( 33 )
 script = ExtResource( 7 )
+register_tutorial_source = false
 
 [node name="Frame" type="TextureRect" parent="SlaveDietModule"]
 anchor_right = 1.0
@@ -486,6 +487,7 @@ custom_styles/focus = SubResource( 28 )
 text = "WORKRULESHIFTS"
 
 [node name="luxury" type="CheckBox" parent="work_rules"]
+visible = false
 margin_left = 346.0
 margin_top = 52.0
 margin_right = 670.0

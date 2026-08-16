@@ -64,6 +64,7 @@ const OVERVIEW_ICONS = {
 
 onready var Classes = $Sections/Classes/Content/Scroll/Items
 onready var FactorRows = $Sections/Overview/Left/Factors/Content/Rows
+onready var Experience = $Sections/Overview/Left/Experience/Content/Value
 onready var StatRows = $Sections/Overview/Left/BaseStats/Content/Rows
 onready var CharacterRows = $Sections/Overview/Right/CharacterInfo/Content/Rows
 onready var Relationships = $Sections/Overview/Right/Relationships
@@ -82,6 +83,11 @@ func _ready():
 		$Sections/Overview/Right/Food/Content/Filter,
 		tr("INFOFOODFILTER")
 	)
+	input_handler.register_btn_source("food_filter_btn", self, "tut_get_food_filter_btn")
+
+
+func tut_get_food_filter_btn():
+	return $Sections/Overview/Right/Food/Content/Filter
 
 
 func _request_inventory():
@@ -127,6 +133,16 @@ func build_overview():
 	input_handler.ClearContainer(StatRows)
 	if person == null:
 		return
+	var current_exp = int(floor(person.get_stat("base_exp")))
+	var next_level_exp = int(floor(person.get_next_class_exp()))
+	Experience.text = tr("STATBASE_EXP") + ": " + str(current_exp) + " / " + str(next_level_exp)
+	if current_exp >= next_level_exp:
+		Experience.set("custom_colors/font_color", Color(variables.hexcolordict.levelup_text_color))
+	else:
+		Experience.set("custom_colors/font_color", variables.hexcolordict["k_yellow"])
+	var exp_tooltip = "[center]{color=yellow|" + tr("STATBASE_EXP") + "}[/center]\n" + tr("STATBASE_EXPDESCRIPT")
+	exp_tooltip += "\n" + tr("EXPREQUIRED") + ": " + str(next_level_exp)
+	globals.connecttexttooltip($Sections/Overview/Left/Experience, exp_tooltip)
 	for code in OVERVIEW_FACTORS:
 		if person.is_master() and code in ["tame_factor", "authority_factor"]:
 			continue

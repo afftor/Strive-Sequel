@@ -15,6 +15,7 @@ var repeats = 1
 var cap_low = 1
 var cap_up = 999
 var num_select_expanded = false
+var craft_indefinitely = false
 
 var cancelentry
 var partdict
@@ -36,6 +37,8 @@ func _ready():
 	$NumberSelect2/VBoxContainer/HBoxContainer1/pt3/b3.connect('pressed', self, 'number_change', [1])
 	$NumberSelect2/VBoxContainer/HBoxContainer1/pt3/b4.connect('pressed', self, 'number_change', [10])
 	$NumberSelect2/VBoxContainer/AdvOption/HBoxContainer/TextureButton.connect('pressed', self, 'toggle_num_select_mode')
+	$NumberSelect2/VBoxContainer/AdvOption/HBoxContainer/InfinityToggle.connect('pressed', self, 'toggle_indefinite_craft')
+	globals.connecttexttooltip($NumberSelect2/VBoxContainer/AdvOption/HBoxContainer/InfinityToggle, tr("CRAFTINDEFINITETOOLTIP"))
 	$NumberSelect2/VBoxContainer/HBoxContainer2/pt1/b1.connect('pressed', self, 'cap_up_change', [-10])
 	$NumberSelect2/VBoxContainer/HBoxContainer2/pt1/b2.connect('pressed', self, 'cap_up_change', [-1])
 	$NumberSelect2/VBoxContainer/HBoxContainer2/pt3/b3.connect('pressed', self, 'cap_up_change', [1])
@@ -44,6 +47,12 @@ func _ready():
 	$NumberSelect2/VBoxContainer/HBoxContainer3/pt1/b2.connect('pressed', self, 'cap_low_change', [-1])
 	$NumberSelect2/VBoxContainer/HBoxContainer3/pt3/b3.connect('pressed', self, 'cap_low_change', [1])
 	$NumberSelect2/VBoxContainer/HBoxContainer3/pt3/b4.connect('pressed', self, 'cap_low_change', [10])
+	$NumberSelect2/VBoxContainer/HBoxContainer1/pt2/Amount.connect('text_entered', self, 'number_text_entered', ['repeat'])
+	$NumberSelect2/VBoxContainer/HBoxContainer1/pt2/Amount.connect('focus_exited', self, 'number_text_focus_exited', ['repeat'])
+	$NumberSelect2/VBoxContainer/HBoxContainer2/pt2/Amount.connect('text_entered', self, 'number_text_entered', ['cap_up'])
+	$NumberSelect2/VBoxContainer/HBoxContainer2/pt2/Amount.connect('focus_exited', self, 'number_text_focus_exited', ['cap_up'])
+	$NumberSelect2/VBoxContainer/HBoxContainer3/pt2/Amount.connect('text_entered', self, 'number_text_entered', ['cap_low'])
+	$NumberSelect2/VBoxContainer/HBoxContainer3/pt2/Amount.connect('focus_exited', self, 'number_text_focus_exited', ['cap_low'])
 	$NumberSelect2/VBoxContainer/Button.connect('pressed', self, 'confirm_craft')
 	$NumberSelect2/VBoxContainer/Button2.connect('pressed', self, 'confirm_craft_edit')
 	for i in $categories.get_children():
@@ -284,6 +293,8 @@ func rebuild_scheldue():
 		newnode.get_node("icon").texture = item_data.icon
 		if pdata.has('repeat'):
 			newnode.get_node("Label").text = tr(item_data.name) + ": " +  str(pdata.repeat) 
+		elif pdata.has('continuous'):
+			newnode.get_node("Label").text = tr(item_data.name) + ": ∞"
 		else:
 			newnode.get_node("Label").text = "%s: %d / %d" % [tr(item_data.name), pdata.cap_up, ResourceScripts.game_res.materials[recipe_data.resultitem]]
 		newnode.connect("pressed", self, 'select_entry', [i])
@@ -307,6 +318,8 @@ func rebuild_scheldue():
 			newnode.get_node("icon").material = load("res://assets/ItemShader.tres").duplicate()
 		if pdata.has('repeat'):
 			newnode.get_node("Label").text = tr(item_data.name) + ": " +  str(pdata.repeat) 
+		elif pdata.has('continuous'):
+			newnode.get_node("Label").text = tr(item_data.name) + ": ∞"
 		else:
 			newnode.get_node("Label").text = "%s: %d / %d" % [tr(item_data.name), pdata.cap_up, ResourceScripts.game_res.get_item_amount(recipe_data.resultitem)]
 		newnode.connect("pressed", self, 'select_entry', [i])
@@ -332,8 +345,11 @@ func confirm_craft():
 #	$CraftSchedule.show()
 	var amount = {}
 	if num_select_expanded:
-		amount.max = cap_up
-		amount.min = cap_low
+		if craft_indefinitely:
+			amount.continuous = true
+		else:
+			amount.max = cap_up
+			amount.min = cap_low
 	else:
 		amount.fixed = repeats
 	var parts = {}
@@ -353,9 +369,18 @@ func confirm_craft_edit():
 	var pdata = ResourceScripts.game_res.tasks_progresses[cancelentry]
 	if num_select_expanded:
 		pdata.erase('repeat')
-		pdata.cap_up = cap_up
-		pdata.cap_low = cap_low
+		if craft_indefinitely:
+			pdata.erase('cap_up')
+			pdata.erase('cap_low')
+			pdata.continuous = true
+		else:
+			pdata.erase('continuous')
+			pdata.cap_up = cap_up
+			pdata.cap_low = cap_low
 	else:
+		pdata.erase('continuous')
+		pdata.erase('cap_up')
+		pdata.erase('cap_low')
 		pdata.repeat = repeats
 	select_category(craft_category)
 
@@ -731,6 +756,7 @@ func close_number_select():
 func open_number_select():
 	repeats = 1
 	num_select_expanded = false
+	craft_indefinitely = false
 	build_num_select()
 	$NumberSelect2/VBoxContainer/Button2.visible = false
 	$NumberSelect2/VBoxContainer/Button.visible = true
@@ -744,9 +770,21 @@ func open_number_edit():
 	selected_item = Items.recipes[pdata.id]
 	if pdata.has('repeat'):
 		num_select_expanded = false
+		craft_indefinitely = false
 		repeats = pdata.repeat
+	elif pdata.has('continuous'):
+		num_select_expanded = true
+		craft_indefinitely = true
+		repeats = 1
+		var item_data = Items.recipes[pdata.id]
+		if item_data.resultitemtype == 'material':
+			cap_up = ResourceScripts.game_res.materials[item_data.resultitem] + repeats
+		else:
+			cap_up = ResourceScripts.game_res.get_item_amount(item_data.resultitem) + repeats
+		cap_low = 1
 	else:
 		num_select_expanded = true
+		craft_indefinitely = false
 		repeats = 1
 		cap_up = pdata.cap_up
 		cap_low = pdata.cap_low
@@ -777,20 +815,25 @@ func build_num_select():
 		else:
 			$NumberSelect2/VBoxContainer/icon.material = null
 	$NumberSelect2/VBoxContainer/HBoxContainer1/pt2/Amount.text = str(repeats)
-	$NumberSelect2/VBoxContainer/HBoxContainer2/pt2/Amount.text = "%d (%d)" % [cap_up, amount]
-	$NumberSelect2/VBoxContainer/HBoxContainer3/pt2/Amount.text = "%d (%d)" % [cap_low, amount]
+	$NumberSelect2/VBoxContainer/HBoxContainer2/pt2/Amount.text = str(cap_up)
+	$NumberSelect2/VBoxContainer/HBoxContainer3/pt2/Amount.text = str(cap_low)
+	globals.connecttexttooltip($NumberSelect2/VBoxContainer/HBoxContainer2/pt2/Amount, tr("CRAFTINPOSSESSION") + ": " + str(amount))
+	globals.connecttexttooltip($NumberSelect2/VBoxContainer/HBoxContainer3/pt2/Amount, tr("CRAFTINPOSSESSION") + ": " + str(amount))
 	if num_select_expanded:
 		$NumberSelect2/VBoxContainer/AdvOption/HBoxContainer/TextureButton.pressed = true
 		$NumberSelect2/VBoxContainer/label1.visible = false
 		$NumberSelect2/VBoxContainer/HBoxContainer1.visible = false
-		$NumberSelect2/VBoxContainer/label2.visible = true
-		$NumberSelect2/VBoxContainer/HBoxContainer2.visible = true
-		$NumberSelect2/VBoxContainer/label3.visible = true
-		$NumberSelect2/VBoxContainer/HBoxContainer3.visible = true
+		$NumberSelect2/VBoxContainer/AdvOption/HBoxContainer/InfinityToggle.visible = true
+		$NumberSelect2/VBoxContainer/AdvOption/HBoxContainer/InfinityToggle.pressed = craft_indefinitely
+		$NumberSelect2/VBoxContainer/label2.visible = !craft_indefinitely
+		$NumberSelect2/VBoxContainer/HBoxContainer2.visible = !craft_indefinitely
+		$NumberSelect2/VBoxContainer/label3.visible = !craft_indefinitely
+		$NumberSelect2/VBoxContainer/HBoxContainer3.visible = !craft_indefinitely
 	else:
 		$NumberSelect2/VBoxContainer/AdvOption/HBoxContainer/TextureButton.pressed = false
 		$NumberSelect2/VBoxContainer/label1.visible = true
 		$NumberSelect2/VBoxContainer/HBoxContainer1.visible = true
+		$NumberSelect2/VBoxContainer/AdvOption/HBoxContainer/InfinityToggle.visible = false
 		$NumberSelect2/VBoxContainer/label2.visible = false
 		$NumberSelect2/VBoxContainer/HBoxContainer2.visible = false
 		$NumberSelect2/VBoxContainer/label3.visible = false
@@ -807,6 +850,12 @@ func toggle_num_select_mode():
 		amount = ResourceScripts.game_res.get_item_amount(item_data.resultitem)
 	cap_up = amount + repeats
 	cap_low = 1
+	craft_indefinitely = false
+	build_num_select()
+
+
+func toggle_indefinite_craft():
+	craft_indefinitely = !craft_indefinitely
 	build_num_select()
 
 
@@ -821,8 +870,6 @@ func cap_up_change(value):
 	cap_up += value
 	if cap_up < 1:
 		cap_up = 1
-	if cap_up < cap_low:
-		cap_up = cap_low
 	build_num_select()
 
 
@@ -830,6 +877,24 @@ func cap_low_change(value):
 	cap_low += value
 	if cap_low < 1:
 		cap_low = 1
-	if cap_up < cap_low:
-		cap_low = cap_up
+	build_num_select()
+
+
+func number_text_entered(_text, field):
+	set_number_from_text(field)
+
+
+func number_text_focus_exited(field):
+	set_number_from_text(field)
+
+
+func set_number_from_text(field):
+	var input = $NumberSelect2/VBoxContainer.get_node("HBoxContainer%s/pt2/Amount" % ({repeat = 1, cap_up = 2, cap_low = 3}[field]))
+	var value = int(input.text)
+	if field == 'repeat':
+		repeats = max(1, value)
+	elif field == 'cap_up':
+		cap_up = max(1, value)
+	else:
+		cap_low = max(1, value)
 	build_num_select()

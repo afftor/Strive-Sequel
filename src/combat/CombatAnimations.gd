@@ -339,17 +339,20 @@ const CAST_RELEASE = {
 	at_sword = 0.50, at_dualsword = 0.37, at_lance = 0.40, at_axe = 0.47,
 	at_dagger = 0.33, at_mace = 0.30, at_stuff = 0.53,
 	at_arch = 0.60, at_arbalester = 0.40,
+	at_bite = 0.10,
 }
 const CAST_SPEEDUP = {
 	at_sword = 1.5, at_dualsword = 1.5, at_lance = 1.5, at_axe = 1.5,
 	at_dagger = 1.5, at_mace = 1.5, at_stuff = 1.5,
 	at_arch = 1.6, at_arbalester = 1.35,
+	at_bite = 1.0,
 }
-#which motion the caster plays: 'cut' for melee, 'recoil' for bows
+#which motion the caster plays: 'cut' for melee, 'recoil' for bows, 'maw' for a bite
 const CAST_MOTION = {
 	at_sword = 'cut', at_dualsword = 'cut', at_lance = 'cut', at_axe = 'cut',
 	at_dagger = 'cut', at_mace = 'cut', at_stuff = 'cut',
 	at_arch = 'recoil', at_arbalester = 'recoil',
+	at_bite = 'maw',
 }
 const MOTION_DIST = 110.0 #how far the card travels into the blow
 const CUT_DRAW = 0.466 #share of the run-up spent pulling back
@@ -393,6 +396,7 @@ func at_mace(node, args = null):       return cast_with_motion(node, args, 'at_m
 func at_stuff(node, args = null):      return cast_with_motion(node, args, 'at_stuff')
 func at_arch(node, args = null):       return cast_with_motion(node, args, 'at_arch')
 func at_arbalester(node, args = null): return cast_with_motion(node, args, 'at_arbalester')
+func at_bite(node, args = null):       return cast_with_motion(node, args, 'at_bite')
 
 func cast_with_motion(node, args, sprite_name):
 	if args == null: args = {}
@@ -409,6 +413,24 @@ func cast_with_motion(node, args, sprite_name):
 	if args.has('queue_duration'): nextanimationtime = args.queue_duration
 	nextanimationtime -= 0.1
 
+	#A bite is the one sheet whose contact frame comes far too early: the jaws
+	#close at 0.10 s while the pounce needs four times that. Stretching the sheet
+	#to fit would turn it into a slideshow, so the sprite is released late instead -
+	#the same trick assassinate_step uses - and the pounce itself decides when the
+	#blow lands. Everything downstream reads pending_shot_delay, so the damage,
+	#the HP bar and the target's reaction all follow the jaws.
+	if motion == 'maw':
+		var sheet_hit = release
+		release = MAW_LEAD / followup_speed
+		var maw_tween = input_handler.GetTweenNode(node)
+		maw_tween.interpolate_callback(self, max(0.0, release - sheet_hit), 'maw_sprite',
+			node, sprite_name, duration, get_flip_for_node(node, args), speedup)
+		maw_tween.start()
+		caster_maw(node, release, followup_speed)
+		pending_shot_delay = release
+		pending_shot_timer = cur_timer
+		return nextanimationtime + aftereffectdelay
+
 	pending_shot_delay = release
 	pending_shot_timer = cur_timer
 	var visual_node = node
@@ -422,6 +444,13 @@ func cast_with_motion(node, args, sprite_name):
 		caster_recoil(node, release, followup_speed)
 
 	return nextanimationtime + aftereffectdelay
+
+#interpolate_callback takes at most five arguments, one short of gfx_sprite, so the
+#call goes through here; it also drops the sprite if the card died while pouncing
+func maw_sprite(node, sprite_name, duration, flip, speedup):
+	if node == null or !is_instance_valid(node) or !node.is_inside_tree():
+		return
+	ResourceScripts.core_animations.gfx_sprite(node, sprite_name, 0.5, duration, flip, speedup)
 
 #FIELD-WIDE WEATHER
 #These scenes emit in a 1000 px ring, so a single instance centred on the
@@ -655,6 +684,66 @@ func caster_cut(node, contact, speed = 1.0):
 	var back = MOTION_BACK / speed
 	tween.interpolate_property(node, 'rect_position', p + v, p, back, Tween.TRANS_QUAD, Tween.EASE_OUT, contact + hold)
 	tween.interpolate_property(node, 'rect_rotation', 4, 0, back, Tween.TRANS_QUAD, Tween.EASE_OUT, contact + hold)
+	tween.start()
+
+#BITE
+#What separates a bite from any weapon blow is that it does not bounce off: the
+#animal crouches, pounces, and then stays clamped on the target worrying it before
+#it tears away. The pounce uses EXPO rather than the QUAD of caster_cut - a beast
+#launches harder than a sword arm swings.
+const MAW_LEAD = 0.42 #from the start of the crouch to the jaws closing
+const MAW_DIST = 125.0 #closer than MOTION_DIST: teeth are a contact weapon
+#Share of the lead spent on the pounce itself. EXPO was the obvious choice for
+#"launches harder than a sword swing" and it is wrong: over a fifth of a second it
+#stays flat and then covers 60 px in a single frame, which reads as a teleport, not
+#a leap. CUBIC over a longer window keeps the last frame near 30 px and still
+#accelerates visibly harder than caster_cut's QUAD.
+const MAW_POUNCE = 0.55
+const MAW_COIL = 0.14 #how far back it settles before launching
+const MAW_WORRY = 0.20 #held clamped on the target
+const MAW_SHAKES = 3 #head shakes inside the worry
+const MAW_BACK = 0.30 #tearing off
+
+func caster_maw(node, contact, speed = 1.0):
+	if !node.is_inside_tree(): return
+	if !node.has_method('get_attack_vector'): return
+	node.rect_pivot_offset = node.rect_size/2 #without this rotation pulls to the corner
+	node.rect_scale = Vector2(1,1)
+	node.rect_rotation = 0
+	node.modulate.a = 1.0
+	assass_set_facing(node, false)
+	var tween = input_handler.GetTweenNode(node)
+	var p = node.rect_position
+	var v = node.get_attack_vector().normalized() * MAW_DIST
+	var pounce = max(contact * MAW_POUNCE, 0.06)
+	var coil = max(contact - pounce, 0.05)
+
+	tween.interpolate_property(node, 'rect_position', p, p - v*MAW_COIL, coil, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.interpolate_property(node, 'rect_rotation', 0, -4, coil, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.interpolate_property(node, 'rect_scale', Vector2(1,1), Vector2(1.03,0.97), coil, Tween.TRANS_QUAD, Tween.EASE_OUT)
+
+	tween.interpolate_property(node, 'rect_position', p - v*MAW_COIL, p + v, pounce, Tween.TRANS_CUBIC, Tween.EASE_IN, coil)
+	tween.interpolate_property(node, 'rect_rotation', -4, 6, pounce, Tween.TRANS_CUBIC, Tween.EASE_IN, coil)
+	tween.interpolate_property(node, 'rect_scale', Vector2(1.03,0.97), Vector2(1,1), pounce, Tween.TRANS_QUAD, Tween.EASE_OUT, coil)
+
+	#Worry: short alternating segments rather than one shake, so the head visibly
+	#wrenches back and forth while the jaws stay where they landed.
+	var worry = MAW_WORRY / speed
+	var seg = worry / (MAW_SHAKES*2)
+	var prev_rot = 6.0
+	var prev_pos = p + v
+	for i in range(MAW_SHAKES*2):
+		var up = i % 2 == 0
+		var to_rot = 10.0 if up else 2.0
+		var to_pos = p + v - v.normalized()*(5.0 if up else 0.0) + Vector2(0, -3.0 if up else 3.0)
+		tween.interpolate_property(node, 'rect_rotation', prev_rot, to_rot, seg, Tween.TRANS_SINE, Tween.EASE_IN_OUT, contact + seg*i)
+		tween.interpolate_property(node, 'rect_position', prev_pos, to_pos, seg, Tween.TRANS_SINE, Tween.EASE_IN_OUT, contact + seg*i)
+		prev_rot = to_rot
+		prev_pos = to_pos
+
+	var back = MAW_BACK / speed
+	tween.interpolate_property(node, 'rect_position', prev_pos, p, back, Tween.TRANS_BACK, Tween.EASE_OUT, contact + worry)
+	tween.interpolate_property(node, 'rect_rotation', prev_rot, 0, back, Tween.TRANS_QUAD, Tween.EASE_OUT, contact + worry)
 	tween.start()
 
 #Execution: leap into the target on the weapon sheet's contact frame, settle into

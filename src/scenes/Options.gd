@@ -73,33 +73,34 @@ func open_cheats_menu():
 func text_changed(_text):
 	pass
 
-	# $TabContainer/Cheats/EnterCodeMenu/Activate.disabled = !ResourceScripts.game_progress.cheat_code == text
+	# $TabContainer/Cheats/EnterCodeMenu/Activate.disabled = text.sha256_text() != variables.cheat_code_hash
 
 
 func activate_cheats():
-	ResourceScripts.game_globals.cheats_active = true
 	$TabContainer/Cheats/EnterCodeMenu.hide()
 	$TabContainer/Cheats/OpenCheatsMenu.show()
 
 
 func go_for_code():
-	if OS.has_feature('editor'):
-		$TabContainer/Cheats/EnterCodeMenu/LineEdit.text = ResourceScripts.game_globals.cheat_code
+	if OS.has_feature('editor'): #editor builds skip the code, the password itself is not in the build
+		input_handler.unlock_cheats()
 		activate_cheats()
 		return
-	if $TabContainer/Cheats/EnterCodeMenu/LineEdit.text == ResourceScripts.game_globals.cheat_code:
+	if input_handler.try_cheat_password($TabContainer/Cheats/EnterCodeMenu/LineEdit.text):
 		activate_cheats()
 		return
-	OS.shell_open("https://www.patreon.com/posts/new-password-18830450")
+	$SupporterLinks.open()
 
 
 func open():
 	$TabContainer/Hotkeys.update_labels()
 	$TabContainer/Gameplay/Scroll/Box/enable_tutorials.pressed = ResourceScripts.game_progress.show_tutorial
 	# $TabContainer/Cheats/EnterCodeMenu/Activate.disabled = true
-	$TabContainer/Cheats/EnterCodeMenu.visible = !ResourceScripts.game_globals.cheats_active
-	$TabContainer/Cheats/OpenCheatsMenu.visible = ResourceScripts.game_globals.cheats_active
-	$TabContainer/Cheats/OpenCheatsMenu/CheatsMenu.visible = get_parent().name != "Menu_v2"
+	$TabContainer/Cheats/EnterCodeMenu.visible = !input_handler.cheats_unlocked()
+	$TabContainer/Cheats/OpenCheatsMenu.visible = input_handler.cheats_unlocked()
+	#the cheat menu operates on the running game (party, resources), so it is only
+	#reachable in-game - the main menu shows the "cheats unlocked" line without the button
+	$TabContainer/Cheats/OpenCheatsMenu/CheatsMenu.visible = is_instance_valid(gui_controller.mansion)
 	male_rate_change(input_handler.globalsettings.malechance)
 	futa_rate_change(input_handler.globalsettings.futachance)
 	autosave_amount_change(input_handler.globalsettings.autosave_number)

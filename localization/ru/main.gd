@@ -15,17 +15,31 @@ var TranslationDict = {
 	MENUGALLERY = """Галерея""",
 	MENUQUIT = """Выход""",
 	MENUCHANGELOG = """Изменения""",
-	MENUMODLISTSAFETY = """Mod List Reset""", # MISSING TRANSLATION
-	UPDATENOTICETITLE = """Update Available""", # MISSING TRANSLATION
-	UPDATENOTICEDOWNLOAD = """Get it""", # MISSING TRANSLATION
-	UPDATENOTICEAVAILABLE = """A new version (%s) is available.
-You are currently on %s.""", # MISSING TRANSLATION
-	UPDATENOTICEUNKNOWN = """Could not determine the latest version.
-Check itch.io to see if an update is available.""", # MISSING TRANSLATION
-	UPDATENOTICEEXPERIMENTALTITLE = """Experimental Build""", # MISSING TRANSLATION
-	UPDATENOTICEEXPERIMENTAL = """You are running an experimental version (%s).
-Newer experimental or stable builds may already be out - check itch.io.""", # MISSING TRANSLATION
-	UPDATECHECKCONSENT = """Allow the game to check itch.io for new versions on startup? This only sends a request to itch.io - no personal data is collected.""", # MISSING TRANSLATION
+	MENUMODLISTSAFETY = """Сброс списка модов""",
+	UPDATENOTICETITLE = """Доступно обновление""",
+	UPDATENOTICEDOWNLOAD = """Загрузить""",
+	UPDATENOTICEAVAILABLE = """Доступна новая версия (%s).
+У вас сейчас %s.""",
+	UPDATENOTICEUNKNOWN = """Не удалось определить последнюю версию.
+Проверьте itch.io, нет ли обновления.""",
+	UPDATENOTICEEXPERIMENTALTITLE = """Экспериментальная сборка""",
+	UPDATENOTICEEXPERIMENTAL = """Вы используете экспериментальную версию (%s).
+Возможно, уже вышли более новые экспериментальные или стабильные сборки — проверьте itch.io.""",
+	UPDATECHECKCONSENT = """Разрешить игре проверять наличие новых версий на itch.io при запуске? Отправляется лишь запрос к itch.io — никакие личные данные не собираются.""",
+	SUPPORTERNOTICETITLE = """Поддержите игру""",
+	SUPPORTERNOTICETEXT = """Нравится игра? Она всегда была бесплатной и доступной всем, и это возможно лишь благодаря множеству поддерживающих её фанатов. Пожалуйста, подумайте о поддержке. Поддержавшие получают доступ к меню читов с такими возможностями, как снятие лимита персонажей в особняке и открытие всей галереи.""",
+	SUPPORTERNOTICEENTERCODE = """Ввести код поддержки""",
+	SUPPORTERNOTICEDISMISS = """Больше не показывать""",
+	SUPPORTERCODETITLE = """Код поддержки""",
+	SUPPORTERCODEPLACEHOLDER = """Code""", # MISSING TRANSLATION
+	SUPPORTERCODECONFIRM = """Confirm""", # MISSING TRANSLATION
+	SUPPORTERCODEGET = """Получить код""",
+	SUPPORTERLINKSTITLE = """Where do you want to support the game?""", # MISSING TRANSLATION
+	SUPPORTERLINKSHINT = """The current code is posted for supporters on both platforms.""", # MISSING TRANSLATION
+	SUPPORTERCODEWRONG = """Этот код неверен.""",
+	SUPPORTERTHANKSTITLE = """Спасибо!""",
+	SUPPORTERTHANKSTEXT = """Ваш код принят, и опции для поддержавших разблокированы. Меню читов можно открыть в «Опциях», когда вы уже в игре. Спасибо за поддержку игры!""",
+	SUPPORTERTHANKSOK = """Close""", # MISSING TRANSLATION
 	GALLERYNAME = """Галерея""",
 	GALLERYSTORY = """Сюжет""",
 	GALLERYERO = """Эро""",
@@ -88,51 +102,51 @@ A new empty mods.ini has been created. Please re-enable compatible mods from the
 	OPTNAME3 = """Аудио""",
 	OPTNAME4 = """Читы""",
 	OPTNAME5 = "Сложность",
-	OPTNAMEHOTKEYS = """Hotkeys""", # MISSING TRANSLATION
+	OPTNAMEHOTKEYS = """Горячие клавиши""",
 	OPTOPT = """Опции""",
 	OPTCLOSE = """Закрыть""",
-	HOTKEYGROUP_GLOBAL = """General""", # MISSING TRANSLATION
-	HOTKEYGROUP_MANSION = """Mansion""", # MISSING TRANSLATION
-	HOTKEYGROUP_COMBAT = """Combat""", # MISSING TRANSLATION
-	HOTKEY_UNBOUND = """- none -""", # MISSING TRANSLATION
-	HOTKEY_PRESSKEY = """Press a key...""", # MISSING TRANSLATION
-	HOTKEY_RESET = """Restore defaults""", # MISSING TRANSLATION
-	HOTKEY_CONFLICT = """%s was taken from "%s".""", # MISSING TRANSLATION
-	HOTKEY_HINT = """Click a key to rebind it. Esc cancels, Delete clears the binding.
-Mansion and combat keys are independent - the same key may be used by both.""", # MISSING TRANSLATION
-	HOTKEY_QUICKSAVE = """Quick save""", # MISSING TRANSLATION
-	HOTKEY_QUICKLOAD = """Quick load""", # MISSING TRANSLATION
-	HOTKEY_FULLSCREEN = """Toggle fullscreen""", # MISSING TRANSLATION
-	HOTKEY_MANSION_TIME_1 = """Pass 1 hour""", # MISSING TRANSLATION
-	HOTKEY_MANSION_TIME_2 = """Pass 2 hours""", # MISSING TRANSLATION
-	HOTKEY_MANSION_TIME_3 = """Pass 4 hours""", # MISSING TRANSLATION
-	HOTKEY_MANSION_WORK = """Work""", # MISSING TRANSLATION
-	HOTKEY_MANSION_TRAVELS = """Travels""", # MISSING TRANSLATION
-	HOTKEY_MANSION_UPGRADES = """Mansion""", # MISSING TRANSLATION
+	HOTKEYGROUP_GLOBAL = """Общие""",
+	HOTKEYGROUP_MANSION = """Особняк""",
+	HOTKEYGROUP_COMBAT = """Бой""",
+	HOTKEY_UNBOUND = """- нет -""",
+	HOTKEY_PRESSKEY = """Нажмите клавишу...""",
+	HOTKEY_RESET = """Сбросить настройки""",
+	HOTKEY_CONFLICT = """%s забрана у \"%s\".""",
+	HOTKEY_HINT = """Нажмите на клавишу, чтобы переназначить её. Esc — отмена, Delete — очистить привязку.
+Клавиши особняка и боя независимы: одна и та же клавиша может использоваться в обоих режимах.""",
+	HOTKEY_QUICKSAVE = """Быстрое сохранение""",
+	HOTKEY_QUICKLOAD = """Быстрая загрузка""",
+	HOTKEY_FULLSCREEN = """Полноэкранный режим""",
+	HOTKEY_MANSION_TIME_1 = """Пропустить 1 час""",
+	HOTKEY_MANSION_TIME_2 = """Пропустить 2 часа""",
+	HOTKEY_MANSION_TIME_3 = """Пропустить 4 часа""",
+	HOTKEY_MANSION_WORK = """Работа""",
+	HOTKEY_MANSION_TRAVELS = """Путешествия""",
+	HOTKEY_MANSION_UPGRADES = """Особняк""",
 	HOTKEY_MANSION_SEX = """Sex""", # MISSING TRANSLATION
-	HOTKEY_MANSION_INVENTORY = """Inventory""", # MISSING TRANSLATION
-	HOTKEY_MANSION_CRAFT = """Craft""", # MISSING TRANSLATION
-	HOTKEY_MANSION_JOURNAL = """Journal""", # MISSING TRANSLATION
-	HOTKEY_MANSION_MENU = """Game menu""", # MISSING TRANSLATION
-	HOTKEY_MANSION_CHAR_INFO = """Character info""", # MISSING TRANSLATION
-	HOTKEY_MANSION_TUTORIAL = """Tutorial panel""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_SKILL_1 = """Use skill 1""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_SKILL_2 = """Use skill 2""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_SKILL_3 = """Use skill 3""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_SKILL_4 = """Use skill 4""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_SKILL_5 = """Use skill 5""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_SKILL_6 = """Use skill 6""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_SKILL_7 = """Use skill 7""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_SKILL_8 = """Use skill 8""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_SKILL_9 = """Use skill 9""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_ROW_UP = """Previous skill row""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_ROW_DOWN = """Next skill row""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_SKILLBOOK = """Skill book""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_ITEMS = """Items panel""", # MISSING TRANSLATION
-	HOTKEY_COMBAT_RUN = """Retreat""", # MISSING TRANSLATION
-	QUICKSAVE_BLOCKED = """Can't quick save during combat.""", # MISSING TRANSLATION
-	QUICKLOAD_BLOCKED = """Can't quick load during combat.""", # MISSING TRANSLATION
-	QUICKLOAD_MISSING = """No quick save found.""", # MISSING TRANSLATION
+	HOTKEY_MANSION_INVENTORY = """Инвентарь""",
+	HOTKEY_MANSION_CRAFT = """Ремесло""",
+	HOTKEY_MANSION_JOURNAL = """Журнал""",
+	HOTKEY_MANSION_MENU = """Игровое меню""",
+	HOTKEY_MANSION_CHAR_INFO = """Информация о персонаже""",
+	HOTKEY_MANSION_TUTORIAL = """Панель обучения""",
+	HOTKEY_COMBAT_SKILL_1 = """Использовать умение 1""",
+	HOTKEY_COMBAT_SKILL_2 = """Использовать умение 2""",
+	HOTKEY_COMBAT_SKILL_3 = """Использовать умение 3""",
+	HOTKEY_COMBAT_SKILL_4 = """Использовать умение 4""",
+	HOTKEY_COMBAT_SKILL_5 = """Использовать умение 5""",
+	HOTKEY_COMBAT_SKILL_6 = """Использовать умение 6""",
+	HOTKEY_COMBAT_SKILL_7 = """Использовать умение 7""",
+	HOTKEY_COMBAT_SKILL_8 = """Использовать умение 8""",
+	HOTKEY_COMBAT_SKILL_9 = """Использовать умение 9""",
+	HOTKEY_COMBAT_ROW_UP = """Предыдущий ряд умений""",
+	HOTKEY_COMBAT_ROW_DOWN = """Следующий ряд умений""",
+	HOTKEY_COMBAT_SKILLBOOK = """Книга умений""",
+	HOTKEY_COMBAT_ITEMS = """Панель предметов""",
+	HOTKEY_COMBAT_RUN = """Отступить""",
+	QUICKSAVE_BLOCKED = """Быстрое сохранение недоступно в бою.""",
+	QUICKLOAD_BLOCKED = """Быстрая загрузка недоступна в бою.""",
+	QUICKLOAD_MISSING = """Быстрое сохранение не найдено.""",
 	TUTORIALS = """Туториалы""",
 	LOCATIONLIST = "Локации",
 	BUTTONTRAVEL = "Карта",
@@ -141,7 +155,7 @@ Mansion and combat keys are independent - the same key may be used by both.""", 
 	OPTGAMEPLAYFUTA = """Фута с яйцами""",
 	OPTGAMEPLAYSHOWDETAILES = """Показать детали согласия""",
 	OPTGAMEPLAYTUTOR = """Включить обучение""",
-	OPTGAMEPLAYDISABLEMODSONUPDATE = """Disable mods when game updates to a new version""", # MISSING TRANSLATION
+	OPTGAMEPLAYDISABLEMODSONUPDATE = """Отключать моды при обновлении игры""",
 	OPTGAMEPLAYMALERATE = """Процент мужчин""",
 	OPTGAMEPLAYFUTARATE = """Процент фута""",
 	OPTFAMEPLAYAUTOSAVEAMOUNT = """Количество автосохранений""",
@@ -158,8 +172,8 @@ Mansion and combat keys are independent - the same key may be used by both.""", 
 	OPTGRAPHICDISABLEANIMATIONBACKGROUNDS = """Отключить анимационные фоны""",
 	OPTDISABLEPAPERDOLL = """Отключить гененерируемые спрайты""",
 	OPTDISABLEDAMAGESHAKE = "Отключить тряску при получении урона",
-	OPTDISABLEITEMFLIGHT = """Disable item pickup animation""", # MISSING TRANSLATION
-	OPTITEMFLIGHT = """Item collection animations""", # MISSING TRANSLATION
+	OPTDISABLEITEMFLIGHT = """Отключить анимацию подбора предметов""",
+	OPTITEMFLIGHT = """Анимации подбора предметов""",
 	OPTCHEATENTERCODE = """Ввести код""",
 	OPTCHEATACTIVATE = """Активировать""",
 	OPTCHEATGETCODE = """Получить код""",
@@ -389,9 +403,9 @@ Mansion and combat keys are independent - the same key may be used by both.""", 
 	SETTINGMATERIALS_DESCRIPT = """Стартовые материалы""",
 	SETTINGMONEY_DESCRIPT = """Стартовое золото""",
 	SETTINGFREE_GATHER_DESCRIPT = "Доступные ресурсы не блокируются прогрессом сюжета",
-	DIFF_EASY = """easy""", # MISSING TRANSLATION
-	DIFF_NORMAL = """normal""", # MISSING TRANSLATION
-	DIFF_HARD = """hard""", # MISSING TRANSLATION
+	DIFF_EASY = """лёгкая""",
+	DIFF_NORMAL = """обычная""",
+	DIFF_HARD = """сложная""",
 	
 	DIFFICULTY_EASY = "Лёгкая",
 	DIFFICULTY_MEDIUM = "Средняя",
@@ -403,7 +417,7 @@ Mansion and combat keys are independent - the same key may be used by both.""", 
 	#TutorialInfo
 	TUTORIALINFONAME = """Введение""",
 	TUTORIALINFOQUESTION = """Вы впервые играете в Strive: Conquest?""",
-	TUTORIALINFOEXPLANATION = """You can open tutorial any time you wish, using %s button.""", # MISSING TRANSLATION
+	TUTORIALINFOEXPLANATION = """Обучение можно открыть в любой момент кнопкой %s.""",
 	TUTORIALINFODISMISS = """Отказаться""",
 	TUTORIALINFOENABLE = """Включить обучение""",
 	#Tutorial
@@ -447,24 +461,24 @@ Mansion and combat keys are independent - the same key may be used by both.""", 
 	MSLMLOC = """Локация""",
 	MSLMTYPE = """Тип""",
 	MSLMINV = """Надето""",
-	MSLMFOOD = """Food""", # MISSING TRANSLATION
-	MSLMSORTHINT = """Click to sort by this column, click again to reverse it, once more to go back to your own order.""", # MISSING TRANSLATION
-	MSLMSORTDEFAULT = """Default order""", # MISSING TRANSLATION
-	MSLMSORTNAME = """Name""", # MISSING TRANSLATION
-	MSLMSORTWORK = """Work""", # MISSING TRANSLATION
-	MSLMSORTTRAINABLE = """Can train""", # MISSING TRANSLATION
-	MSLMSORTDATEABLE = """Can date""", # MISSING TRANSLATION
-	MSLMSORTLEVELUP = """Can upgrade""", # MISSING TRANSLATION
-	MSLMFOLDLIST = """Collapse character list""", # MISSING TRANSLATION
-	MSLMUNFOLDLIST = """Expand character list""", # MISSING TRANSLATION
+	MSLMFOOD = """Еда""",
+	MSLMSORTHINT = """Нажмите, чтобы отсортировать по этому столбцу, нажмите ещё раз для обратного порядка и третий раз — чтобы вернуть свой порядок.""",
+	MSLMSORTDEFAULT = """Сортировка""",
+	MSLMSORTNAME = """Имя""",
+	MSLMSORTWORK = """Работа""",
+	MSLMSORTTRAINABLE = """Можно обучать""",
+	MSLMSORTDATEABLE = """Можно пригласить на свидание""",
+	MSLMSORTLEVELUP = """Можно повысить""",
+	MSLMFOLDLIST = """Свернуть список персонажей""",
+	MSLMUNFOLDLIST = """Развернуть список персонажей""",
 	MSLMFOLDMENU = """Hide side menu""", # MISSING TRANSLATION
 	MSLMUNFOLDMENU = """Show side menu""", # MISSING TRANSLATION
-	MSLMEXPANDEDFACTORS = """Factors""", # MISSING TRANSLATION
-	MSLMEXPANDEDSTATS = """Base Stats""", # MISSING TRANSLATION
-	MSLMEXPANDEDEQUIPMENT = """Equipped""", # MISSING TRANSLATION
-	MSLMEXPANDEDRELATIONSHIP = """Relationship""", # MISSING TRANSLATION
-	MSLMEXPANDEDBUFFS = """Buffs""", # MISSING TRANSLATION
-	MSLMROOMSUSED = """Rooms used: %d/%d""", # MISSING TRANSLATION
+	MSLMEXPANDEDFACTORS = """Факторы""",
+	MSLMEXPANDEDSTATS = """Базовые характеристики""",
+	MSLMEXPANDEDEQUIPMENT = """Снаряжение""",
+	MSLMEXPANDEDRELATIONSHIP = """Отношения""",
+	MSLMEXPANDEDBUFFS = """Бафы""",
+	MSLMROOMSUSED = """Занято комнат: %d/%d""",
 	LVLBONUSPERPOINT = "Бонус за очко",
 	LVLCURRENT = "Текущий",
 	LVLTOTALPOINTS = "Всего очков",
@@ -494,7 +508,7 @@ Mansion and combat keys are independent - the same key may be used by both.""", 
 	REQCONFLICTCLASS = """Конфликтующий класс""",
 	REQHASANYCLASS = """Нужен любой класс""",
 	REQRACE = """Раса""",
-	REQCONFLICTRACE = """Conflicting Race""", # MISSING TRANSLATION
+	REQCONFLICTRACE = """Конфликт рас""",
 	REQRACEISBEAST = """Только для зверорас""",
 	REQMUSTHAVEGEAR = "Должен иметь",
 	REQMUSTHAVEGEAR_FALSE = "Не должен иметь",
@@ -577,7 +591,7 @@ Mansion and combat keys are independent - the same key may be used by both.""", 
 	SIMHITRATE = """Точн:""",
 	SIMSPEED = """Скр.:""",
 	SIMCRITICAL = """Шанс кр.:""",
-	SIMMATK = """MATK:""",
+	SIMMATK = """МАТК:""",
 	SIMMDEF = """MЗАЩ:""",
 	SIMEVASION = """Уворот:""",
 	SIMARMORPEN = """Проб. бр.:""",
@@ -590,24 +604,24 @@ Mansion and combat keys are independent - the same key may be used by both.""", 
 	LIGHTRESIST = """свет""",
 	DARKRESIST = """тьма""",
 	MINDRESIST = """разум""",
-	SIMATK_DESC = """Attack. Increases physical damage dealt with weapon attacks.""", # MISSING TRANSLATION
-	SIMMATK_DESC = """Magic Attack. Increases damage dealt by magic spells and abilities.""", # MISSING TRANSLATION
-	SIMDEF_DESC = """Defense. Reduces physical damage taken from attacks.""", # MISSING TRANSLATION
-	SIMMDEF_DESC = """Magic Defense. Reduces damage taken from magic attacks and spells.""", # MISSING TRANSLATION
-	SIMHITRATE_DESC = """Hit Rate. Increases the chance to hit the target in combat.""", # MISSING TRANSLATION
-	SIMEVASION_DESC = """Evasion. Increases the chance to dodge incoming attacks.""", # MISSING TRANSLATION
-	SIMSPEED_DESC = """Speed. Determines turn order in combat; higher speed acts first.""", # MISSING TRANSLATION
-	SIMARMORPEN_DESC = """Armor Penetration. Reduces the effectiveness of the target's Defense.""", # MISSING TRANSLATION
-	SIMCRITICAL_DESC = """Critical Chance. Increases the chance to land a critical hit.""", # MISSING TRANSLATION
-	SIMCRITICALMOD_DESC = """Critical Modifier. Multiplies damage dealt on a critical hit.""", # MISSING TRANSLATION
-	NORMALRESIST_DESC = """Normal Resist. Reduces damage taken from physical, non-elemental attacks.""", # MISSING TRANSLATION
-	FIRERESIST_DESC = """Fire Resist. Reduces damage taken from fire attacks.""", # MISSING TRANSLATION
-	EARTHRESIST_DESC = """Earth Resist. Reduces damage taken from earth attacks.""", # MISSING TRANSLATION
-	AIRRESIST_DESC = """Air Resist. Reduces damage taken from air attacks.""", # MISSING TRANSLATION
-	WATERRESIST_DESC = """Water Resist. Reduces damage taken from water attacks.""", # MISSING TRANSLATION
-	LIGHTRESIST_DESC = """Light Resist. Reduces damage taken from light attacks.""", # MISSING TRANSLATION
-	DARKRESIST_DESC = """Dark Resist. Reduces damage taken from dark attacks.""", # MISSING TRANSLATION
-	MINDRESIST_DESC = """Mind Resist. Reduces damage taken from mind attacks.""", # MISSING TRANSLATION
+	SIMATK_DESC = """[color=yellow]Атака.[/color] Повышает урон, наносимый физическими умениями.""",
+	SIMMATK_DESC = """[color=yellow]Магическая атака.[/color] Повышает урон заклинаний и силу исцеляющих чар.""",
+	SIMDEF_DESC = """[color=yellow]Защита.[/color] Снижает получаемый физический урон от атак.""",
+	SIMMDEF_DESC = """[color=yellow]Магическая защита.[/color] Снижает получаемый урон от магических атак.""",
+	SIMHITRATE_DESC = """[color=yellow]Меткость.[/color] Повышает шанс попасть по цели физическими атаками. Значение сравнивается с уклонением цели.""",
+	SIMEVASION_DESC = """[color=yellow]Уклонение.[/color] Повышает шанс уклониться от входящих физических атак.""",
+	SIMSPEED_DESC = """[color=yellow]Скорость.[/color] Определяет порядок ходов в бою: чем выше скорость, тем раньше ход.""",
+	SIMARMORPEN_DESC = """[color=yellow]Пробивание брони.[/color] Снижает эффективность защиты цели.""",
+	SIMCRITICAL_DESC = """[color=yellow]Шанс крита.[/color] Повышает шанс нанести критический удар.""",
+	SIMCRITICALMOD_DESC = """[color=yellow]Модификатор крита.[/color] Умножает урон при критическом ударе.""",
+	NORMALRESIST_DESC = """[color=yellow]Обычное сопротивление.[/color] Снижает урон от нестихийных атак.""",
+	FIRERESIST_DESC = """[color=yellow]Сопротивление огню.[/color] Снижает урон от огненных атак.""",
+	EARTHRESIST_DESC = """[color=yellow]Сопротивление земле.[/color] Снижает урон от земляных атак.""",
+	AIRRESIST_DESC = """[color=yellow]Сопротивление воздуху.[/color] Снижает урон от воздушных атак.""",
+	WATERRESIST_DESC = """[color=yellow]Сопротивление воде.[/color] Снижает урон от водных атак.""",
+	LIGHTRESIST_DESC = """[color=yellow]Сопротивление свету.[/color] Снижает урон от световых атак.""",
+	DARKRESIST_DESC = """[color=yellow]Сопротивление тьме.[/color] Снижает урон от тёмных атак.""",
+	MINDRESIST_DESC = """[color=yellow]Сопротивление разуму.[/color] Снижает урон от ментальных атак.""",
 	DAMAGETYPENORMAL = "Обычный",
 	DAMAGETYPEFIRE = "Огонь",
 	DAMAGETYPEEARTH = "Земля",
@@ -634,9 +648,9 @@ Mansion and combat keys are independent - the same key may be used by both.""", 
 	QBACCEPT = """Принять""",
 	MONEYTOOLTIP = """Денег в наличии""",
 	MONEYTOOLTIP2 = """Еженедельные налоги""",
-	UPGRADETAXTOOLTIP = """Upgrade Taxes""", # MISSING TRANSLATION
-	CHARACTERUPKEEPTOOLTIP = """Character Upkeep""", # MISSING TRANSLATION
-	TOTALUPKEEPTOOLTIP = """Total Upkeep""", # MISSING TRANSLATION
+	UPGRADETAXTOOLTIP = """Налоги на улучшения""",
+	CHARACTERUPKEEPTOOLTIP = """Содержание персонажа""",
+	TOTALUPKEEPTOOLTIP = """Общее содержание""",
 	PAUSEMENUSAVE = """Сохранить""",
 	PAUSEMENULOAD = """Загрузить""",
 	PAUSEMENUOPT = """Опции""",
@@ -664,7 +678,7 @@ Mansion and combat keys are independent - the same key may be used by both.""", 
 	UPGRADEAVAILABLECHARACTERS = "Доступные персонажи",
 	UPGRADEBONUSES = "Бонусы",
 	OPTIONSWITCHLANGUAGE = """Изменить язык""",
-	OPTIONSWITCHLANGUAGECONFIRM = """Change language to %s?""", # MISSING TRANSLATION
+	OPTIONSWITCHLANGUAGECONFIRM = """Сменить язык на %s?""",
 	TIPLABEL = """Советы""",
 	LOADINGTIP1 = """Некоторые расы могут получить эксклюзивные классы""",
 	LOADINGTIP2 = """Начальные возможные статы персонажа определяются его расой""",
@@ -754,29 +768,29 @@ Mansion and combat keys are independent - the same key may be used by both.""", 
 	FOODTYPEFISH = """Рыба""",
 	FOODTYPEGRAIN = """Злаки""",
 	FOODTYPEVEGE = """Овощи""",
-	FOODDEMAND = """Food Demand""", # MISSING TRANSLATION
-	FOODDEMANDDESCRIPT = """The quality of food this character expects. Fame 3 or a value above 500 raises it to Refined, Fame 5 or a value above 1500 to Premium. Slaves never mind eating below their demand.""", # MISSING TRANSLATION
+	FOODDEMAND = """Запросы к еде""",
+	FOODDEMANDDESCRIPT = """Качество еды, которого ожидает этот персонаж. Слава 3 или ценность выше 500 поднимает его до «Изысканного», слава 5 или ценность выше 1500 — до «Премиального». Невольники никогда не против есть ниже своих запросов.""",
 	FOODDEMANDBASIC = """Basic""", # MISSING TRANSLATION
 	FOODDEMANDREFINED = """Refined""", # MISSING TRANSLATION
 	FOODDEMANDPREMIUM = """Premium""", # MISSING TRANSLATION
-	FOODDEMANDBASICDESCRIPT = """Eats anything without complaint.""", # MISSING TRANSLATION
-	FOODDEMANDREFINEDDESCRIPT = """Expects cooked meals. Raw produce costs Respect, Productivity and Experience Gain until the next meal.""", # MISSING TRANSLATION
-	FOODDEMANDPREMIUMDESCRIPT = """Expects elaborate dishes. Anything lesser costs Respect, Productivity and Experience Gain until the next meal.""", # MISSING TRANSLATION
-	FOODLIKEDTYPE = """Liked Food""", # MISSING TRANSLATION
-	FOODVALUE = """Turns of Food""", # MISSING TRANSLATION
-	FOODTOOLTIPLIKED = """A liked type: keeps this character fed 50% longer.""", # MISSING TRANSLATION
-	FOODTOOLTIPBELOWDEMAND = """Below this character's demand: costs Respect, -20% Productivity and -20% Experience Gain until their next meal.""", # MISSING TRANSLATION
-	FOODSTATEHEADER = """Last Meal""", # MISSING TRANSLATION
-	FOODSTATEHEADERDESCRIPT = """What each character is currently running on. A red tint means the meal was below their demand. Hover a character's icon for the details.""", # MISSING TRANSLATION
-	FOODSTATELASTMEAL = """Last Meal: %s""", # MISSING TRANSLATION
-	FOODSTATEFEDFOR = """Fed for %d more turn(s).""", # MISSING TRANSLATION
+	FOODDEMANDBASICDESCRIPT = """Ест что угодно без жалоб.""",
+	FOODDEMANDREFINEDDESCRIPT = """Ожидает приготовленных блюд. Сырые продукты стоят уважения, продуктивности и получаемого опыта до следующего приёма пищи.""",
+	FOODDEMANDPREMIUMDESCRIPT = """Ожидает изысканных блюд. Всё, что хуже, стоит уважения, продуктивности и получаемого опыта до следующего приёма пищи.""",
+	FOODLIKEDTYPE = """Любимая еда""",
+	FOODVALUE = """Ходов сытости""",
+	FOODTOOLTIPLIKED = """Любимый тип: держит этого персонажа сытым на 50% дольше.""",
+	FOODTOOLTIPBELOWDEMAND = """Ниже запросов этого персонажа: стоит уважения, -20% продуктивности и -20% получаемого опыта до следующей трапезы.""",
+	FOODSTATEHEADER = """Последняя трапеза""",
+	FOODSTATEHEADERDESCRIPT = """На чём сейчас держится каждый персонаж. Красный оттенок означает, что трапеза была ниже его запросов. Наведите на значок персонажа, чтобы увидеть подробности.""",
+	FOODSTATELASTMEAL = """Последняя трапеза: %s""",
+	FOODSTATEFEDFOR = """Сыт(а) ещё %d ход(ов).""",
 	FOODSTATESTARVING = """Starving""", # MISSING TRANSLATION
-	FOODSTATENONE = """No Meal""", # MISSING TRANSLATION
-	FOODSTATENONEDESCRIPT = """Has not eaten yet. They will take the best allowed food in store on their next turn.""", # MISSING TRANSLATION
-	FOODSTATEUNDEAD = """Does Not Eat""", # MISSING TRANSLATION
-	FOODSTATEUNDEADDESCRIPT = """The undead need no food and are never affected by hunger.""", # MISSING TRANSLATION
-	FOODLOGSTARVE = """%s: could not eat. Respect and Affection reduced.""", # MISSING TRANSLATION
-	FOODLOGBELOWDEMAND = """%s: was served %s, which is below their standards. Respect reduced.""", # MISSING TRANSLATION
+	FOODSTATENONE = """Не ел(а)""",
+	FOODSTATENONEDESCRIPT = """Ещё не ел(а). В свой следующий ход возьмёт лучшую разрешённую еду из запасов.""",
+	FOODSTATEUNDEAD = """Не ест""",
+	FOODSTATEUNDEADDESCRIPT = """Нежити не нужна еда, и голод на неё не действует.""",
+	FOODLOGSTARVE = """%s: не смог(ла) поесть. Уважение и привязанность снижены.""",
+	FOODLOGBELOWDEMAND = """%s: получил(а) %s, что ниже его(её) стандартов. Уважение снижено.""",
 	CURRENTLYINPOSSESSION = """В наличии""",
 	MATERIALCATEGORYFOOD = """Еда""",
 	MATERIALCATEGORYSTONE = """Камень""",
@@ -809,15 +823,15 @@ Mansion and combat keys are independent - the same key may be used by both.""", 
 	MATERIALCURRY = """Карри""",
 	MATERIALCURRYDESCRIPT = """Блюдо из крупы с мясом. Имеет насыщенный вкус.
 Тип еды: Мясо, Злаки.""",
-	MATERIALVEGETABLE_STIRFRY = """Vegetable Stir-Fry""", # MISSING TRANSLATION
-	MATERIALVEGETABLE_STIRFRYDESCRIPT = """Fresh vegetables seared with fragrant seasonings. Produced by cooking.
-Food type: Vegetables.""", # MISSING TRANSLATION
-	MATERIALROASTED_FEAST = """Roasted Feast""", # MISSING TRANSLATION
-	MATERIALROASTED_FEASTDESCRIPT = """A generous platter of roasted meat with hearty sides. Produced by cooking.
-Food type: Meat.""", # MISSING TRANSLATION
-	MATERIALMINERS_LUNCH = """Miner's Lunch""", # MISSING TRANSLATION
-	MATERIALMINERS_LUNCHDESCRIPT = """A filling grain-based lunch made for long shifts underground. Produced by cooking.
-Food type: Grains.""", # MISSING TRANSLATION
+	MATERIALVEGETABLE_STIRFRY = """Овощное рагу""",
+	MATERIALVEGETABLE_STIRFRYDESCRIPT = """Свежие овощи, обжаренные с душистыми приправами. Готовится на кухне.
+Тип еды: овощи.""",
+	MATERIALROASTED_FEAST = """Жареный пир""",
+	MATERIALROASTED_FEASTDESCRIPT = """Щедрое блюдо из жареного мяса с плотным гарниром. Готовится на кухне.
+Тип еды: мясо.""",
+	MATERIALMINERS_LUNCH = """Обед шахтёра""",
+	MATERIALMINERS_LUNCHDESCRIPT = """Сытный обед на основе злаков для долгих смен под землёй. Готовится на кухне.
+Тип еды: злаки.""",
 	MATERIALVEGETABLESTIRFRY = """Vegetable Stir-Fry""", # MISSING TRANSLATION
 	MATERIALVEGETABLESTIRFRYDESCRIPT = """Fresh vegetables seared with fragrant seasonings. Produced by cooking.
 Food type: Vegetables.""", # MISSING TRANSLATION
@@ -830,9 +844,9 @@ Food type: Grains.""", # MISSING TRANSLATION
 	MATERIALFRIEDFISH = """Жареная рыба""",
 	MATERIALFRIEDFISHDESCRIPT = """Блюдо из жареной рыбы с овощами, придуманное для того, чтобы насытить привередливых зверолюдей.
 Тип еды: Рыба, Овощи.""",
-	MATERIALDEFENDERS_MEAL = """Defender's Meal""", # MISSING TRANSLATION
-	MATERIALDEFENDERS_MEALDESCRIPT = """A substantial vegetable meal prepared for those holding the line. Produced by cooking.
-Food type: Vegetables.""", # MISSING TRANSLATION
+	MATERIALDEFENDERS_MEAL = """Трапеза защитника""",
+	MATERIALDEFENDERS_MEALDESCRIPT = """Сытное овощное блюдо для тех, кто держит строй. Готовится на кухне.
+Тип еды: овощи.""",
 	MATERIALDEFENDERSMEAL = """Defender's Meal""", # MISSING TRANSLATION
 	MATERIALDEFENDERSMEALDESCRIPT = """A substantial vegetable meal prepared for those holding the line. Produced by cooking.
 Food type: Vegetables.""", # MISSING TRANSLATION
@@ -1299,10 +1313,10 @@ Food type: Vegetables.""", # MISSING TRANSLATION
 	CHARCREATE_FOOD_STATE_NEUTRAL = "Нейтрально",
 	CHARCREATE_FOOD_STATE_HATE = "Не нравится",
 	CHARCREATE_DIET_HELP = "Выберите 1 тип еды, который 'Нравится', и хотя бы 1 — который 'Не нравится'.",
-	CHARCREATE_DIET_HELP_TOO_MANY_LIKED = """You can only select 1 Liked food type.""", # MISSING TRANSLATION
-	CHARCREATE_DIET_HELP_NO_LIKED = """[color=red]Select 1 Liked food type.[/color]""", # MISSING TRANSLATION
-	CHARCREATE_DIET_TITLE = """Select 1 Liked Food Type""", # MISSING TRANSLATION
-	CHARCREATE_DIET_DISHES = """Dishes:""", # MISSING TRANSLATION
+	CHARCREATE_DIET_HELP_TOO_MANY_LIKED = """[color=red]Можно выбрать только 1 любимый тип еды.[/color]""",
+	CHARCREATE_DIET_HELP_NO_LIKED = """[color=red]Выберите 1 любимый тип еды.[/color]""",
+	CHARCREATE_DIET_TITLE = """Выберите 1 любимый тип еды""",
+	CHARCREATE_DIET_DISHES = """Блюда:""",
 	CHARCREATE_DIET_DESCRIPT_MEAT = """Hunted. The most filling raw food.""", # MISSING TRANSLATION
 	CHARCREATE_DIET_DESCRIPT_FISH = """Caught by fishing. Needs no farm.""", # MISSING TRANSLATION
 	CHARCREATE_DIET_DESCRIPT_VEGE = """Farmed. Appears in the most dishes.""", # MISSING TRANSLATION
@@ -1332,7 +1346,7 @@ Nothing is forbidden by this choice - it only sets a preference.""", # MISSING T
 	CHARCREATE_MASTER_RELATION_BLOCKED_NO_MASTER = "Нет доступного персонажа-хозяина для выбора отношений.",
 	CHARCREATE_MASTER_RELATION_BLOCKED_CHILD = "Ребёнок недоступен, так как хозяин должен быть того же возраста или старше.",
 	CHARCREATE_MASTER_RELATION_BLOCKED_PARENT = "Родитель недоступен, так как хозяин должен быть того же возраста или младше.",
-	RACE_LOCKED_NGPLUS = """Requires the '%s' NG+ bonus to select as a starting race.""", # MISSING TRANSLATION
+	RACE_LOCKED_NGPLUS = """Требуется бонус НИ+ «%s», чтобы выбрать как стартовую расу.""",
 	TOOLTIPIMPROVESCREEN = """Улучшите свое снаряжение, пожертвовав аналогичным снаряжением того же качества. Пожертвованное снаряжение будет утеряно""",
 	#Item Parts
 	TOOLHANDLE = """Рукоятка инструмента""",
@@ -1389,8 +1403,8 @@ Nothing is forbidden by this choice - it only sets a preference.""", # MISSING T
 	BLACKSMITH = """Кузница""",
 	CRAFTCHARACTERS = "Персонажи",
 	CRAFTORDER = "Очередь крафта",
-	CRAFTORDERMATERIALS = """Craft Order: Materials""", # MISSING TRANSLATION
-	CRAFTORDERITEMS = """Craft Order: Items""", # MISSING TRANSLATION
+	CRAFTORDERMATERIALS = """Порядок ремесла: материалы""",
+	CRAFTORDERITEMS = """Порядок ремесла: предметы""",
 	CRAFTTAILORING = "Портняжное дело",
 	CRAFTENCHANT = "Зачарование",
 	CRAFTFILTERALL = "Всё",
@@ -1403,6 +1417,12 @@ Nothing is forbidden by this choice - it only sets a preference.""", # MISSING T
 	CRAFTMATERIALSREQUIREDFOR = "Материалы требуются для: %s",
 	CRAFTINPOSSESSION = "В наличии",
 	CRAFTPARTEFFECTS = "Эффекты частей",
+	CRAFTQUANTITY = """Quantity""", # MISSING TRANSLATION
+	CRAFTCONTINUOUS = """Make Continuously""", # MISSING TRANSLATION
+	CRAFTSTOPAT = """Stop at""", # MISSING TRANSLATION
+	CRAFTRESTARTAT = """Restart at""", # MISSING TRANSLATION
+	CRAFTINDEFINITE = """Craft indefinitely""", # MISSING TRANSLATION
+	CRAFTINDEFINITETOOLTIP = """Keep crafting until this order is cancelled or its materials are unavailable.""", # MISSING TRANSLATION
 	PROGRESS = """Прогресс""",
 	LEVELS = """Уровни""",
 	STAGE = """Стадия""",
@@ -1523,7 +1543,7 @@ Hotkey: 3""",
 	QUESTPARTREQUIREMENTS = """Требования к частям""",
 	QUESTCOMPLETEQUESTLOC = """Завершить квестовое подземелье""",
 	QUESTCOMPLETEQUESTLOC2 = """Завершить квестовое подземелье в""",
-	QUESTCOMPLETEQUESTENC = """Complete quest encounter""", # MISSING TRANSLATION
+	QUESTCOMPLETEQUESTENC = """Завершить встречу задания""",
 	QUESTREQUIRED = """Требуется""",
 	QUESTSLAVEREQUIRED = """Требуется раб""",
 	QUESTSTATS = """Статистика""",
@@ -1545,11 +1565,11 @@ Hotkey: 3""",
 	QUESTCOMPLETEMESSAGE = """Квест завершен""",
 	QUESTDAYSLEFT = """дней осталось""",
 	QUESTLOCATION = """Локация квеста""",
-	NEEDTOSEESKILL = """You have not yet seen this skill in action.""", # MISSING TRANSLATION
+	NEEDTOSEESKILL = """Вы ещё не видели это умение в действии.""",
 	CHARSMALLTAB_ABIL = """Abilities""", # MISSING TRANSLATION
 	CHARSMALLTAB_GEN = """Stats""", # MISSING TRANSLATION
-	MASTERYLEVEL = """Mastery level %s""", # MISSING TRANSLATION
-	MASTERYGRANTS = """Grants skills and traits:""", # MISSING TRANSLATION
+	MASTERYLEVEL = """Уровень мастерства %s""",
+	MASTERYGRANTS = """Даёт умения и черты:""",
 	
 	#Skills
 	SKILLATTACK = """Атака""",
@@ -1701,7 +1721,7 @@ Hotkey: 3""",
 	SKILLSNIPER_SHOTDESCRIPT = """Наносит цели 110% от ATK в виде урона {color=yellow|Землей}. Накладывает на цель эффект Западня на 5 ходов. """,
 	SKILLSOUL_BIND = """Связывание души""",
 	SKILLSOUL_BINDDESCRIPT = """Склоняет разум человека, чтобы он подчинился вашей воле. После дня отдыха они будут выполнять большинство ваших приказов. """,	
-	SKILLFLY_EVASION = """Wing Dash""", # MISSING TRANSLATION
+	SKILLFLY_EVASION = """Рывок на крыльях""",
 	SKILLVOIDSLAM = "Пустотный взрыв",
 	SKILLFLY_EVASIONDESCRIPT = "Увеличивает Уклонение на 90 на 1 ход. Рассеивает эффекты ловушек.",
 	SKILLFLIGHT = "Полёт",
@@ -1750,7 +1770,7 @@ Hotkey: 3""",
 	SKILLRALLY = """Рывок""",
 	SKILLRALLYDESCRIPT = """Сбросить все кулдауны (кроме Рывка) и восстановить 30% здоровья выбранному союзнику.""",
 	SKILLWARCRY = """Warcry""", # MISSING TRANSLATION
-	SKILLWARCRYDESCRIPT = """Remove Silence and Fear from self.""", # MISSING TRANSLATION
+	SKILLWARCRYDESCRIPT = """Снимает с себя немоту и страх. Не тратит ход на активацию.""",
 	SKILLBLOODBOIL = """Кипение крови""",
 	SKILLBLOODBOILDESCRIPT = """Наложить бафф: Увеличивает ATK на 25%, снять оглушение, влажность и страх и получить иммунитет к ним на 4 хода.""",
 	SKILLFIRE_SHIELD = """Огненный щит""",
@@ -1767,9 +1787,9 @@ Hotkey: 3""",
 	SKILLFROST_PRISONDESCRIPT = """Наносит 130% от MATK как урон {color=yellow|Водой} и с 50 % шансом накладывает 'Заморозка' на 1 ход.""",
 	SKILLCLARITY = """Ясность""",
 	SKILLCLARITYDESCRIPT = """Накладывает бафф: Увеличивает MATK на 25%, снимает  Слепоту, Сон и Очарование м дает иммунитет к ним на 4 хода.""",
-	SKILLHARDENED_GRIP = """Hardened Grip""", # MISSING TRANSLATION
-	SKILLHARDENED_GRIPDESCRIPT = """Remove Disarm from target ally and grant immunity to Disarm for 3 turns.""", # MISSING TRANSLATION
-	EFFECT_HARDENED_GRIP = """Immune to Disarm.""", # MISSING TRANSLATION
+	SKILLHARDENED_GRIP = """Крепкая хватка""",
+	SKILLHARDENED_GRIPDESCRIPT = """Снимает обезоруживание с союзной цели и даёт иммунитет к обезоруживанию на 3 хода.""",
+	EFFECT_HARDENED_GRIP = """Иммунитет к обезоруживанию.""",
 	SKILLBLIZZARD = """Метель""",
 	SKILLBLIZZARDDESCRIPT = """Послать сосульки, летящие во врагов, с шансом 60% нанося 90% от MATK как урон {color=yellow|Водой} и с низким шансом наложить 'Заморозка' на 1 ход.""",
 	SKILLHAILSTORM = """Град""",
@@ -1918,311 +1938,311 @@ Hotkey: 3""",
 	SKILLNECRO_AURADESCRIPT = "Пассивный призыв: Скелеты. Количество скелетов определяется Фактором магии.",
 	SKILLRAMONT_RIPOSTE_STANCE_SKILL = "Стойка: парирование и ответный удар",
 	SKILLCOMMAND_EMBARGO = "Команда: Эмбарго",
-	SKILLCOMMAND_EMBARGODESCRIPT = """Target another ally in the melee zone. Command them to attack a random enemy, dealing 70% ATK damage and inflicting Provoke.""", # MISSING TRANSLATION
+	SKILLCOMMAND_EMBARGODESCRIPT = """Выбирает другого союзника в зоне ближнего боя. Приказывает ему атаковать случайного врага, нанося 70% АТК урона и накладывая провокацию.""",
 	SKILLRAMONT_EMBRAGO = "Введение эмбарго",
 	SKILLRAMONT_EVICTION_NOTICE = "Уведомление о выселении",
-	SKILLRAMONT_EVICTION_NOTICEDESCRIPT = """Deal 85% ATK damage and inflict {color=aqua|Eviction Notice}.""", # MISSING TRANSLATION
+	SKILLRAMONT_EVICTION_NOTICEDESCRIPT = """Наносит 85% АТК урона и накладывает {color=aqua|Уведомление о выселении}.""",
 	SKILLRAMONT_PIERCING_OBSIDIAN = "Пронзающий обсидиан",
-	SKILLRAMONT_PIERCING_OBSIDIANDESCRIPT = """Deal 135% ATK damage to a row and inflict Bleed. Deal +20% damage against enemies affected by '{color=aqua|Eviction Notice}'.""", # MISSING TRANSLATION
+	SKILLRAMONT_PIERCING_OBSIDIANDESCRIPT = """Наносит 135% АТК урона ряду и накладывает кровотечение. Наносит +20% урона по врагам под действием «{color=aqua|Уведомления о выселении}».""",
 	SKILLPROTECT_ME = 'Защити меня!',
-	SKILLPROTECT_MEDESCRIPT = """The target must not be in the backline. Force the target to take single-target damage for this unit.""", # MISSING TRANSLATION
+	SKILLPROTECT_MEDESCRIPT = """Цель не должна находиться в тылу. Заставляет её принимать на себя одиночный урон вместо этого бойца.""",
 	SKILLENRAGING_BELITTLEMENT = 'Яростное уничижение',
-	SKILLENRAGING_BELITTLEMENTDESCRIPT = """(Prioritize Cali) Requires {color=aqua|Vain Pride}.
-Inflict Provoke and Blind on the target.
-At 3+ stacks of {color=aqua|Vain Pride}, also inflict Fear.""", # MISSING TRANSLATION
+	SKILLENRAGING_BELITTLEMENTDESCRIPT = """(Приоритет — Кали) Требуется {color=aqua|Тщеславная гордыня}.
+Накладывает провокацию и ослепление на цель.
+При 3+ зарядах {color=aqua|Тщеславной гордыни} также накладывает страх.""",
 	SKILLENRAGING_BELITTLEMENT_CALI = 'Яростное уничижение',
-	SKILLENRAGING_BELITTLEMENT_CALIDESCRIPT = """Requires {color=aqua|Vain Pride}.
-Inflict Provoke and Blind on the target.
-At 3+ stacks of {color=aqua|Vain Pride}, also inflict Fear.""", # MISSING TRANSLATION
+	SKILLENRAGING_BELITTLEMENT_CALIDESCRIPT = """Требуется {color=aqua|Тщеславная гордыня}.
+Накладывает провокацию и ослепление на цель.
+При 3+ зарядах {color=aqua|Тщеславной гордыни} также накладывает страх.""",
 	SKILLOUT_OF_MY_WAY = 'Прочь с дороги!',
-	SKILLOUT_OF_MY_WAYDESCRIPT = """Deal 40% ATK damage to the row and another 60% ATK damage to the backline unit.""", # MISSING TRANSLATION
+	SKILLOUT_OF_MY_WAYDESCRIPT = """Наносит 40% АТК урона ряду и ещё 60% АТК урона бойцу в тылу.""",
 	SKILLYOU_UNGRATFUL_MUTT = 'НЕБЛАГОДАРНЫЙ ПЁС!!',
-	SKILLYOU_UNGRATFUL_MUTTDESCRIPT = """Can only be used at 5+ stacks of {color=aqua|Vain Pride}. Deal 185% ATK damage to a line and inflict Shred and Bleed.""", # MISSING TRANSLATION
+	SKILLYOU_UNGRATFUL_MUTTDESCRIPT = """Применяется только при 5+ зарядах {color=aqua|Тщеславной гордыни}. Наносит 185% АТК урона линии и накладывает разрыв брони и кровотечение.""",
 	SKILLSUPPRESIVE_FIRE = 'Подавляющий огонь',
-	SKILLSUPPRESIVE_FIREDESCRIPT = """Deal 70% ATK damage to a line. Chance to inflict Blind and Ensnare.""", # MISSING TRANSLATION
+	SKILLSUPPRESIVE_FIREDESCRIPT = """Наносит 70% АТК урона линии. Может ослепить и наложить западню.""",
 	SKILLDARK_GIFT = 'Тёмный дар',
-	SKILLDARK_GIFTDESCRIPT = """Deal damage equal to 30% of their Current HP to give them {color=aqua|Dark Gift}.""", # MISSING TRANSLATION
+	SKILLDARK_GIFTDESCRIPT = """Наносит урон, равный 30% их текущих ОЗ, чтобы даровать им {color=aqua|Тёмный дар}.""",
 	SKILLPUPPET_ON_A_STRING = 'Марионетка на ниточке',
-	SKILLPUPPET_ON_A_STRINGDESCRIPT = """Force them to deal 150% ATK damage to a random enemy and take recoil damage equal to 50% of their MATK. If that ally is Kurdan, make him use {color=aqua|Inferno} instead and take damage equal to 30% of his Current HP.""", # MISSING TRANSLATION
+	SKILLPUPPET_ON_A_STRINGDESCRIPT = """Заставляет их нанести 150% АТК урона случайному врагу и получить отдачу, равную 50% их МАТК. Если этот союзник — Курдан, он вместо этого применяет {color=aqua|Инферно} и получает урон, равный 30% его текущих ОЗ.""",
 	SKILLPUPPET_ATTACK = 'Рывок нити',
 	SKILLFORCE_MARTYRDOM = 'Принудительное мученичество',
-	SKILLFORCE_MARTYRDOMDESCRIPT = """Target an ally with less than 30% HP, causing them to explode and die. Deal damage equal to 150% of the target's ATK + MATK to all enemies and inflict Fear.""", # MISSING TRANSLATION
+	SKILLFORCE_MARTYRDOMDESCRIPT = """Выбирает союзника с ОЗ ниже 30%, заставляя его взорваться и погибнуть. Наносит всем врагам урон, равный 150% АТК + МАТК цели, и накладывает страх.""",
 	SKILLOVERLOADED_SOUL = 'Перегруженная душа',
 	SKILLI_VE_SEEN_ENOUGH = 'Я увидел достаточно...',
 	SKILLOVERWHELMING_FLAME = 'Всепоглощающее пламя',
-	SKILLOVERWHELMING_FLAMEDESCRIPT = """Deal 160% MATK Fire damage and inflict Shred.""", # MISSING TRANSLATION
+	SKILLOVERWHELMING_FLAMEDESCRIPT = """Наносит 160% МАТК огненного урона и накладывает разрыв брони.""",
 	SKILLI_MUST_RESIST = 'Я... должен сопротивляться...',
-	SKILLI_MUST_RESISTDESCRIPT = """Does nothing.""", # MISSING TRANSLATION
+	SKILLI_MUST_RESISTDESCRIPT = """Ничего не делает.""",
 	SKILLFOR_THE_PRINCESS = 'За принцессу!',
-	SKILLFOR_THE_PRINCESSDESCRIPT = """Deal 110% ATK damage to a target. Remove Fear, Taunt, Silence, and Sleep from all allies.""", # MISSING TRANSLATION
+	SKILLFOR_THE_PRINCESSDESCRIPT = """Наносит 110% АТК урона цели. Снимает страх, насмешку, немоту и сон со всех союзников.""",
 	SKILLRICOCHET_SHOT = 'Рикошетный выстрел',
-	SKILLRICOCHET_SHOTDESCRIPT = """Deal 50% ATK damage to few enemies.""", # MISSING TRANSLATION
+	SKILLRICOCHET_SHOTDESCRIPT = """Наносит 50% АТК урона нескольким врагам.""",
 	SKILLLION_SWIPE = 'Львиный взмах',
-	SKILLLION_SWIPEDESCRIPT = """Deal 85% ATK damage to a line of enemies and inflict Bleed.""", # MISSING TRANSLATION
+	SKILLLION_SWIPEDESCRIPT = """Наносит 85% АТК урона линии врагов и вызывает кровотечение.""",
 	SKILLBRAMBLE_TRAP = 'Тернистая ловушка',
-	SKILLBRAMBLE_TRAPDESCRIPT = """Place a trap on random targets. The trap triggers when a target uses a skill, dealing 80% of the caster's ATK as damage and inflicting Ensnare and Bleed.""", # MISSING TRANSLATION
+	SKILLBRAMBLE_TRAPDESCRIPT = """Ставит ловушку на случайных целей. Ловушка срабатывает, когда цель применяет умение, нанося 80% АТК заклинателя как урон и накладывая западню и кровотечение.""",
 	SKILLJAW_OF_LIFE = 'Челюсть жизни',
-	SKILLJAW_OF_LIFEDESCRIPT = """Deal 100% ATK damage to an enemy. If the target is Bleeding, heal for 85% of the damage dealt. Otherwise, inflict Bleed.""", # MISSING TRANSLATION
+	SKILLJAW_OF_LIFEDESCRIPT = """Наносит 100% АТК урона врагу. Если цель кровоточит, исцеляет на 85% нанесённого урона. Иначе вызывает кровотечение.""",
 	SKILLPRIMAL_ROAR = 'Первобытный рёв',
-	SKILLPRIMAL_ROARDESCRIPT = """Deal 40% MATK Mind damage to all enemies. Chance to inflict Fear and Silence. Heal the user for 235% of the caster's ATK.""", # MISSING TRANSLATION
+	SKILLPRIMAL_ROARDESCRIPT = """Наносит 40% МАТК ментального урона всем врагам. Может наложить страх и немоту. Исцеляет применяющего на 235% АТК заклинателя.""",
 	SKILLMAD_DASH = 'Безумный рывок',
-	SKILLMAD_DASHDESCRIPT = """Deal 110% ATK damage to a row. Chance to inflict Bleed. At 3+ stacks of {color=aqua|Bloodthirst}, consume 1 stack to reuse this move on a random enemy.""", # MISSING TRANSLATION
+	SKILLMAD_DASHDESCRIPT = """Наносит 110% АТК урона ряду. Может вызвать кровотечение. При 3+ зарядах {color=aqua|Жажды крови} тратит 1 заряд, чтобы применить умение снова по случайному врагу.""",
 	SKILLREGRESSION_CURSE_RUN_AMOK = 'Проклятие регрессии: Буйство',
-	SKILLREGRESSION_CURSE_RUN_AMOKDESCRIPT = """Deal 110% damage to a single target
-Deal +30% damage against an enemy that has Bleed.
-If the target doesn't have Bleed, Leon gains 1 stack of Fragile.
-Consume 1 stack of {color=aqua|Bloodthirst} to reuse this move against a random target until this unit no longer has {color=aqua|Bloodthirst}.""", # MISSING TRANSLATION
+	SKILLREGRESSION_CURSE_RUN_AMOKDESCRIPT = """Наносит 110% урона одной цели
+Наносит +30% урона врагу с кровотечением.
+Если у цели нет кровотечения, Леон получает 1 заряд хрупкости.
+Тратит 1 заряд {color=aqua|Жажды крови}, чтобы применить умение снова по случайной цели, пока у этого бойца есть {color=aqua|Жажда крови}.""",
 	SKILLMANCHINEEL_APPLE = 'Яблоко манцинеллы',
-	SKILLMANCHINEEL_APPLEDESCRIPT = """Deal 120% MATK Earth magic damage to all enemies and inflict Poison.""", # MISSING TRANSLATION
+	SKILLMANCHINEEL_APPLEDESCRIPT = """Наносит 120% МАТК земляного магического урона всем врагам и накладывает отравление.""",
 	SKILLSMOTHERING_KUDZU = 'Удушающий кудзу',
-	SKILLSMOTHERING_KUDZUDESCRIPT = """Summon a {color=aqua|Kudzu} plant that engulfs and suffocates a random enemy in melee range, massively reducing their Speed and rendering them unable to act until the {color=aqua|Kudzu} plant is killed.""", # MISSING TRANSLATION
+	SKILLSMOTHERING_KUDZUDESCRIPT = """Призывает растение {color=aqua|кудзу}, которое обвивает и душит случайного врага в ближнем радиусе, резко снижая его скорость и лишая возможности действовать, пока {color=aqua|кудзу} не будет уничтожен.""",
 	SKILLENGULF_BY_EVERGREEN = 'Поглощение вечнозелёным',
-	SKILLENGULF_BY_EVERGREENDESCRIPT = """Engulf the target, preventing them from acting until the user is defeated.""", # MISSING TRANSLATION
+	SKILLENGULF_BY_EVERGREENDESCRIPT = """Поглощает цель, не давая ей действовать, пока применяющий не будет повержен.""",
 	SKILLSUFFOCATING_GREENERY = 'Удушающая зелень',
-	SKILLSUFFOCATING_GREENERYDESCRIPT = """Inflict Poison. Deal 15% Max HP damage. If the caster is Burning, deal 25% Max HP damage instead.""", # MISSING TRANSLATION
+	SKILLSUFFOCATING_GREENERYDESCRIPT = """Накладывает отравление. Наносит урон, равный 15% макс. ОЗ. Если заклинатель горит, наносит 25% макс. ОЗ.""",
 	SKILLSENSING_NUTRIENT = 'его лоза ищет новую жертву...',
-	SKILLSENSING_NUTRIENTDESCRIPT = """Allow {color=aqua|Engulf by Evergreen} to be used next turn.""", # MISSING TRANSLATION
+	SKILLSENSING_NUTRIENTDESCRIPT = """Позволяет применить {color=aqua|Поглощение вечнозелёным} в следующем ходу.""",
 	SKILLGRASS_GRAZE_BACK = 'Трава, что даёт сдачи',
-	SKILLGRASS_GRAZE_BACKDESCRIPT = """Deal 100% ATK {color=yellow|Earth} damage and restore HP equal to 90% of the damage dealt.""", # MISSING TRANSLATION
+	SKILLGRASS_GRAZE_BACKDESCRIPT = """Наносит 100% АТК {color=yellow|земляного} урона и восстанавливает ОЗ, равные 90% нанесённого урона.""",
 	SKILLCURSE_PRIMEVAL_REGRESSION = 'Проклятие: Первобытная регрессия',
-	SKILLCURSE_PRIMEVAL_REGRESSIONDESCRIPT = """Inflict {color=aqua|Primeval Regression Curse}, causing the target to attack random units indiscriminately.""", # MISSING TRANSLATION
+	SKILLCURSE_PRIMEVAL_REGRESSIONDESCRIPT = """Накладывает {color=aqua|проклятие первобытного регресса}, заставляя цель без разбора атаковать случайных бойцов.""",
 	SKILLPRIMEVAL_MADNESS = 'Первобытное безумие',
 	SKILLLIANA_FLOGGING = 'Плеть лианой',
-	SKILLLIANA_FLOGGINGDESCRIPT = """Deal 65% ATK damage to 3 random targets. Each hit has a Chance to inflict Stun.""", # MISSING TRANSLATION
+	SKILLLIANA_FLOGGINGDESCRIPT = """Наносит 65% АТК урона 3 случайным целям. Каждое попадание может оглушить.""",
 	SKILLIMPOSING_PRESSURE = 'Внушительное давление',
-	SKILLIMPOSING_PRESSUREDESCRIPT = """Deal 40% MATK Light damage to all enemies. Reduce all enemies' mana by 20% of the caster's MATK. Chance to inflict Fear.""", # MISSING TRANSLATION
+	SKILLIMPOSING_PRESSUREDESCRIPT = """Наносит 40% МАТК светового урона всем врагам. Снижает ману всех врагов на 20% от МАТК заклинателя. Может вызвать страх.""",
 	SKILLGORING_RUSH = 'Кровавый рывок',
-	SKILLGORING_RUSHDESCRIPT = """Deal 100% ATK {color=yellow|Earth} damage and inflict 1 turn of stun. On miss: On miss: Reuse this skill to the one behind the first target.""", # MISSING TRANSLATION
+	SKILLGORING_RUSHDESCRIPT = """Наносит 100% АТК {color=yellow|земляного} урона и оглушает на 1 ход. При промахе: применяет умение повторно к тому, кто стоит за первой целью.""",
 	SKILLGRAZE_THE_GRASS = 'Щипать траву',
-	SKILLGRAZE_THE_GRASSDESCRIPT = """Deal 110% ATK {color=yellow|Earth} damage to a target. If the target has Regen, steal it.""", # MISSING TRANSLATION
+	SKILLGRAZE_THE_GRASSDESCRIPT = """Наносит 110% АТК {color=yellow|земляного} урона цели. Если у цели есть регенерация, крадёт её.""",
 	SKILLGRAZE_THE_GRASS_PRIORITY = 'Щипать траву',
-	SKILLGRAZE_THE_GRASS_PRIORITYDESCRIPT = """(Prioritize targets with Regen) Deal 110% ATK {color=yellow|Earth} damage to a target. If the target has Regen, steal it.""", # MISSING TRANSLATION
+	SKILLGRAZE_THE_GRASS_PRIORITYDESCRIPT = """(Приоритет — цели с регенерацией) Наносит 110% АТК {color=yellow|земляного} урона цели. Если у цели есть регенерация, крадёт её.""",
 	SKILLWILD_TRAMPLING = 'Дикое топтание',
-	SKILLWILD_TRAMPLINGDESCRIPT = """Deal 65% ATK damage to 3 random targets. Each hit has a Chance to inflict Stun.""", # MISSING TRANSLATION
+	SKILLWILD_TRAMPLINGDESCRIPT = """Наносит 65% АТК урона 3 случайным целям. Каждое попадание может оглушить.""",
 	SKILLHOW_DISSAPOINTING = 'Как разочаровывающе...',
-	SKILLHOW_DISSAPOINTINGDESCRIPT = """Deal 120% MATK {color=yellow|Earth} damage to all enemies. Chance to inflict Stun and Ensnare.""", # MISSING TRANSLATION
+	SKILLHOW_DISSAPOINTINGDESCRIPT = """Наносит 120% МАТК {color=yellow|земляного} урона всем врагам. Может оглушить и наложить западню.""",
 	SKILLMUDDY_WATER = 'Мутная вода',
-	SKILLMUDDY_WATERDESCRIPT = """Deal 130% MATK {color=yellow|Water} damage to all targets. Inflict Wet. Chance to inflict Blind and Ensnare.""", # MISSING TRANSLATION
-	SKILLENCROACHING_DUSK = """Encroaching Dusk""", # MISSING TRANSLATION
-	SKILLENCROACHING_DUSKDESCRIPT = """Gain {color=aqua|Fading Light}.""", # MISSING TRANSLATION
-	SKILLNIGHT_NIGHT = """Night Night""", # MISSING TRANSLATION
-	SKILLNIGHT_NIGHTDESCRIPT = """Deal 10% MATK {color=yellow|Dark} damage to all enemies. Inflict {color=aqua|Binding Shadow}, {color=aqua|In the Shadow}, and Blind on all enemies.""", # MISSING TRANSLATION
-	SKILLSILENT_NIGHT = """Silent Night""", # MISSING TRANSLATION
-	SKILLSILENT_NIGHTDESCRIPT = """Remove Silence from self. Gain {color=aqua|Unholy Night}.""", # MISSING TRANSLATION
-	SKILLRAZE_THE_LIGHT = """Raze the Light""", # MISSING TRANSLATION
-	SKILLRAZE_THE_LIGHTDESCRIPT = """Deal 90% MATK {color=yellow|Dark} damage to a line. Inflict {color=aqua|In the Shadow} and Blind. If the target already has {color=aqua|In the Shadow}, inflict {color=aqua|Binding Shadow}.""", # MISSING TRANSLATION
-	SKILLBUMP_IN_THE_NIGHT = """Bump in the Night""", # MISSING TRANSLATION
-	SKILLBUMP_IN_THE_NIGHTDESCRIPT = """Deal 130% MATK {color=yellow|Dark} damage to a target. Inflict Bleed, Shred and Stun.""", # MISSING TRANSLATION
-	SKILLSKEWING_SHADOW = """Skewing Shadow""", # MISSING TRANSLATION
-	SKILLSKEWING_SHADOWDESCRIPT = """Deal 70% MATK {color=yellow|Dark} damage to all enemies. Deal +250% extra damage to targets affected by {color=aqua|Binding Shadow}.""", # MISSING TRANSLATION
-	SKILLSUMMON_RANDOM_DK_GUARD = """Call Reinforcement""", # MISSING TRANSLATION
-	SKILLSUMMON_RANDOM_DK_GUARDDESCRIPT = """Summon a Dwarven Skirmisher, Dwarven Shielder, or Obsidian Golem.""", # MISSING TRANSLATION
-	SKILLKILL_THEM_NOW = """Kill them NOW!""", # MISSING TRANSLATION
-	SKILLKILL_THEM_NOWDESCRIPT = """Apply {color=aqua|Execution Order} to a target in melee range and Taunt all allies to that unit.""", # MISSING TRANSLATION
-	SKILLDK_BUFF_ALLY = """You..""", # MISSING TRANSLATION
-	SKILLDK_BUFF_ALLYDESCRIPT = """Imbues your allies with power.""", # MISSING TRANSLATION
-	SKILLREGAL_INCENTIVE = """I shall grant you Regal Incentive""", # MISSING TRANSLATION
-	SKILLFORCE_OVERLOAD = """Overload your Core, Now!""", # MISSING TRANSLATION
-	SKILLCROSSBOWMEN_ON_MY_COMMAND = """Crossbowmen! On my Command!""", # MISSING TRANSLATION
-	SKILLCROSSBOWMEN_ON_MY_COMMANDDESCRIPT = """Call down a rain of arrows on a line, dealing 65% ATK damage. Gains more uses with lower Health""", # MISSING TRANSLATION
-	SKILLDK_BLOW_EM_UP = """Blow 'em Up!! I'll cover the repair cost personally.""", # MISSING TRANSLATION
-	SKILLDK_BLOW_EM_UPDESCRIPT = """Call for a bombardment against his enemy.
-Deal 110% MATK Fire damage to 2-3 random targets with a Chance to inflict Knock Prone.
-Repeat 2 times. Repeats more times with lower health""", # MISSING TRANSLATION
-	SKILLEMPEROR_HAMMERFALL = """Emperor’s Hammerfall""", # MISSING TRANSLATION
-	SKILLEMPEROR_HAMMERFALLDESCRIPT = """Deal 150% ATK {color=yellow|Earth} damage and inflict Stun, followed by a shockwave that deals 30% ATK damage to all enemies and has a chance to inflict Knock Prone.""", # MISSING TRANSLATION
-	SKILLOPEN_THE_MAGMA_CHAMBER = """That's it! Open the Magma Chamber Gate!!!""", # MISSING TRANSLATION
-	SKILLOPEN_THE_MAGMA_CHAMBERDESCRIPT = """Deal (190% MATK + 34% target Max HP) fire magic damage to all enemies.
-EVERYONE including allies and caster gain burn.""", # MISSING TRANSLATION
-	SKILLTREMOR_WAVE = """Tremor Wave""", # MISSING TRANSLATION
-	SKILLTREMOR_WAVEDESCRIPT = """Deal 40% ATK {color=yellow|Earth} damage to all enemies. Chance to inflict Knock Prone.""", # MISSING TRANSLATION
-	SKILLDOUBLE_BITTED_AXE = """Double-bitted axe""", # MISSING TRANSLATION
-	SKILLDOUBLE_BITTED_AXEDESCRIPT = """Hit the target twice, dealing 60% ATK damage per hit. Inflicts Bleed.""", # MISSING TRANSLATION
-	SKILLPRISMATIC_BEAM = """Prismatic Beam""", # MISSING TRANSLATION
-	SKILLPRISMATIC_BEAMDESCRIPT = """Deal 130% MATK Light damage to a single target. Inflicts Blind.""", # MISSING TRANSLATION
-	SKILROCK_SLIDE = """Rock Slide""", # MISSING TRANSLATION
-	SKILLROCK_SLIDEDESCRIPT = """Send rocks flying at enemies, with a chance to deal 90% MATK {color=yellow|Earth} damage. Chance to Stun targets hit.""", # MISSING TRANSLATION
-	SKILLACCELERATING_PLUNGE = """Accelerating Plunge""", # MISSING TRANSLATION
-	SKILLACCELERATING_PLUNGEDESCRIPT = """If this unit does not have an immobilizing effect, gain a stack of [{color=aqua|Catastrophic Momentum}].
-Otherwise, cleanse all immobilizing effects.""", # MISSING TRANSLATION
-	SKILLCOMET_DIVE = """Comet Dive""", # MISSING TRANSLATION
-	SKILLCOMET_DIVEDESCRIPT = """Deal 140% ATK damage to the target with [{color=aqua|Prey of Bird}].
-At 2+ stacks of [{color=aqua|Catastrophic Momentum}], cause a shockwave that deals 165% MATK {color=yellow|Air} damage to all enemies and inflicts Knock Prone. The shockwave can be blocked by some effects like {color=aqua|Earth Shield}.""", # MISSING TRANSLATION
+	SKILLMUDDY_WATERDESCRIPT = """Наносит 130% МАТК {color=yellow|водного} урона всем целям. Накладывает промокание. Может ослепить и наложить западню.""",
+	SKILLENCROACHING_DUSK = """Наступающие сумерки""",
+	SKILLENCROACHING_DUSKDESCRIPT = """Даёт {color=aqua|Угасающий свет}.""",
+	SKILLNIGHT_NIGHT = """Спокойной ночи""",
+	SKILLNIGHT_NIGHTDESCRIPT = """Наносит 10% МАТК {color=yellow|тёмного} урона всем врагам. Накладывает {color=aqua|Связующую тень}, {color=aqua|В тенях} и ослепление на всех врагов.""",
+	SKILLSILENT_NIGHT = """Тихая ночь""",
+	SKILLSILENT_NIGHTDESCRIPT = """Снимает с себя немоту. Даёт {color=aqua|Нечестивую ночь}.""",
+	SKILLRAZE_THE_LIGHT = """Стереть свет""",
+	SKILLRAZE_THE_LIGHTDESCRIPT = """Наносит 90% МАТК {color=yellow|тёмного} урона линии. Накладывает {color=aqua|В тенях} и ослепление. Если у цели уже есть {color=aqua|В тенях}, накладывает {color=aqua|Связующую тень}.""",
+	SKILLBUMP_IN_THE_NIGHT = """Толчок в ночи""",
+	SKILLBUMP_IN_THE_NIGHTDESCRIPT = """Наносит 130% МАТК {color=yellow|тёмного} урона цели. Накладывает кровотечение, разрыв брони и оглушение.""",
+	SKILLSKEWING_SHADOW = """Пронзающая тень""",
+	SKILLSKEWING_SHADOWDESCRIPT = """Наносит 70% МАТК {color=yellow|тёмного} урона всем врагам. Наносит +250% дополнительного урона целям под действием {color=aqua|Связующей тени}.""",
+	SKILLSUMMON_RANDOM_DK_GUARD = """Вызвать подкрепление""",
+	SKILLSUMMON_RANDOM_DK_GUARDDESCRIPT = """Призывает дварфского застрельщика, дварфского щитоносца или обсидианового голема.""",
+	SKILLKILL_THEM_NOW = """Убить их, НЕМЕДЛЕННО!""",
+	SKILLKILL_THEM_NOWDESCRIPT = """Накладывает {color=aqua|Приказ о казни} на цель в ближнем радиусе и направляет насмешку всех союзников на этого бойца.""",
+	SKILLDK_BUFF_ALLY = """Ты...""",
+	SKILLDK_BUFF_ALLYDESCRIPT = """Наделяет союзников силой.""",
+	SKILLREGAL_INCENTIVE = """Я дарую тебе царскую милость""",
+	SKILLFORCE_OVERLOAD = """Перегрузи ядро, живо!""",
+	SKILLCROSSBOWMEN_ON_MY_COMMAND = """Арбалетчики! По моей команде!""",
+	SKILLCROSSBOWMEN_ON_MY_COMMANDDESCRIPT = """Обрушивает дождь стрел на линию, нанося 65% АТК урона. Чем меньше здоровья, тем больше применений""",
+	SKILLDK_BLOW_EM_UP = """Взорвать их!! Ремонт оплачу лично.""",
+	SKILLDK_BLOW_EM_UPDESCRIPT = """Вызывает обстрел по своему врагу.
+Наносит 110% МАТК огненного урона 2–3 случайным целям с шансом сбить с ног.
+Повторяется 2 раза. Чем меньше здоровья, тем больше повторов""",
+	SKILLEMPEROR_HAMMERFALL = """Молот императора""",
+	SKILLEMPEROR_HAMMERFALLDESCRIPT = """Наносит 150% АТК {color=yellow|земляного} урона и оглушает, после чего идёт ударная волна, наносящая 30% АТК урона всем врагам с шансом сбить с ног.""",
+	SKILLOPEN_THE_MAGMA_CHAMBER = """Вот оно! Открыть врата магматической камеры!!!""",
+	SKILLOPEN_THE_MAGMA_CHAMBERDESCRIPT = """Наносит (190% МАТК + 34% макс. ОЗ цели) огненного магического урона всем врагам.
+ВСЕ, включая союзников и заклинателя, получают горение.""",
+	SKILLTREMOR_WAVE = """Волна дрожи""",
+	SKILLTREMOR_WAVEDESCRIPT = """Наносит 40% АТК {color=yellow|земляного} урона всем врагам. Может сбить с ног.""",
+	SKILLDOUBLE_BITTED_AXE = """Двулезвийный топор""",
+	SKILLDOUBLE_BITTED_AXEDESCRIPT = """Бьёт цель дважды, нанося по 60% АТК урона за удар. Вызывает кровотечение.""",
+	SKILLPRISMATIC_BEAM = """Призматический луч""",
+	SKILLPRISMATIC_BEAMDESCRIPT = """Наносит 130% МАТК светового урона одной цели. Ослепляет.""",
+	SKILROCK_SLIDE = """Камнепад""",
+	SKILLROCK_SLIDEDESCRIPT = """Обрушивает на врагов камни с шансом нанести 90% МАТК {color=yellow|земляного} урона. Может оглушить задетые цели.""",
+	SKILLACCELERATING_PLUNGE = """Ускоряющееся падение""",
+	SKILLACCELERATING_PLUNGEDESCRIPT = """Если на этом бойце нет обездвиживающего эффекта, получает заряд [{color=aqua|Катастрофический разгон}].
+Иначе снимает все обездвиживающие эффекты.""",
+	SKILLCOMET_DIVE = """Падение кометы""",
+	SKILLCOMET_DIVEDESCRIPT = """Наносит 140% АТК урона цели с [{color=aqua|Добыча птицы}].
+При 2+ зарядах [{color=aqua|Катастрофического разгона}] вызывает ударную волну, наносящую 165% МАТК {color=yellow|воздушного} урона всем врагам и сбивающую с ног. Волну можно заблокировать эффектами вроде {color=aqua|Земляного щита}.""",
 	SKILLTORNADO = """Tornado""", # MISSING TRANSLATION
-	SKILLTORNADODESCRIPT = """Summon a Tornado.""", # MISSING TRANSLATION
-	SKILLDOWNBURST_GUST = """Downburst Gust""", # MISSING TRANSLATION
-	SKILLDOWNBURST_GUSTDESCRIPT = """Deal 120% MATK {color=yellow|Air} damage to the frontmost enemy in each row. Chancet to inflict Knock Prone and Blind.""", # MISSING TRANSLATION
-	SKILLDEAFENING_SHRIEK = """Deafening Shriek""", # MISSING TRANSLATION
-	SKILLDEAFENING_SHRIEKDESCRIPT = """Deal 40% MATK {color=yellow|Air} damage. Chance to inflict Stun and Silence.""", # MISSING TRANSLATION
-	SKILLMULTILATE_PREY = """Multilate Prey""", # MISSING TRANSLATION
-	SKILLMULTILATE_PREYDESCRIPT = """Deal 60% ATK damage to the target 3 times, with a chance to inflict Bleed. Deal more damage against Knocked Prone and immobilized targets.""", # MISSING TRANSLATION
-	SKILLCHARGE_THROUGH = """Charge Through""", # MISSING TRANSLATION
-	SKILLCHARGE_THROUGHDESCRIPT = """Deal 100% ATK damage to a row with Chance of inflicting Knock Prone.""", # MISSING TRANSLATION
-	SKILLSTORM_PATH = """Storm Path""", # MISSING TRANSLATION
-	SKILLSTORM_PATHDESCRIPT = """Deal 130% MATK {color=yellow|Air} damage to a row. Randomly inflict Blind, Knock Prone, or Stun. Deal +50% extra damage against flying enemies and remove {color=aqua|Flight}. On skill end: Die.""", # MISSING TRANSLATION
-	SKILLSPLIT_ARMOR_SPILL_BLOOD = """Split the Armor, Spill the blood""", # MISSING TRANSLATION
-	SKILLSPLIT_ARMOR_SPILL_BLOODDESCRIPT = """Attack twice, dealing 45% ATK damage per hit. The first hit inflicts Shred; the second inflicts Bleed and 50% healing reduction.""", # MISSING TRANSLATION
-	SKILLDUSTY_WHIRLWIND = """Dusty Whirlwind""", # MISSING TRANSLATION
-	SKILLDUSTY_WHIRLWINDDESCRIPT = """Deal 85% ATK damage to the melee line, with a Chance to inflict Blind.""", # MISSING TRANSLATION
-	SKILLBLURRING_FLURRY_OF_BLADE = """Blurring Flurry of Blade""", # MISSING TRANSLATION
-	SKILLBLURRING_FLURRY_OF_BLADEDESCRIPT = """Hit the enemy 3 times for 35% ATK damage. Each hit has a Chance to inflict Bleed. Gain {color=aqua|In the Shadow}.""", # MISSING TRANSLATION
-	SKILLBLINDING_CROSS_SLASH = """Blinding Cross Slash""", # MISSING TRANSLATION
-	SKILLBLINDING_CROSS_SLASHDESCRIPT = """Deal 25% ATK damage to enemies in a row and a line. Each hit has a Chance to inflict Blind.""", # MISSING TRANSLATION
+	SKILLTORNADODESCRIPT = """Призывает смерч.""",
+	SKILLDOWNBURST_GUST = """Нисходящий порыв""",
+	SKILLDOWNBURST_GUSTDESCRIPT = """Наносит 120% МАТК {color=yellow|воздушного} урона переднему врагу в каждом ряду. Может сбить с ног и ослепить.""",
+	SKILLDEAFENING_SHRIEK = """Оглушительный визг""",
+	SKILLDEAFENING_SHRIEKDESCRIPT = """Наносит 40% МАТК {color=yellow|воздушного} урона. Может наложить оглушение и немоту.""",
+	SKILLMULTILATE_PREY = """Растерзать добычу""",
+	SKILLMULTILATE_PREYDESCRIPT = """Наносит цели 60% АТК урона 3 раза с шансом вызвать кровотечение. Наносит больше урона сбитым с ног и обездвиженным целям.""",
+	SKILLCHARGE_THROUGH = """Прорыв""",
+	SKILLCHARGE_THROUGHDESCRIPT = """Наносит 100% АТК урона ряду с шансом сбить с ног.""",
+	SKILLSTORM_PATH = """Путь бури""",
+	SKILLSTORM_PATHDESCRIPT = """Наносит 130% МАТК {color=yellow|воздушного} урона ряду. Случайно накладывает ослепление, сбивание с ног или оглушение. Наносит +50% дополнительного урона летающим врагам и снимает {color=aqua|Полёт}. По завершении умения: погибает.""",
+	SKILLSPLIT_ARMOR_SPILL_BLOOD = """Расколоть броню, пролить кровь""",
+	SKILLSPLIT_ARMOR_SPILL_BLOODDESCRIPT = """Атакует дважды, нанося по 45% АТК урона за удар. Первый удар накладывает разрыв брони, второй — кровотечение и снижение лечения на 50%.""",
+	SKILLDUSTY_WHIRLWIND = """Пыльный вихрь""",
+	SKILLDUSTY_WHIRLWINDDESCRIPT = """Наносит 85% АТК урона ближней линии с шансом ослепить.""",
+	SKILLBLURRING_FLURRY_OF_BLADE = """Смазанный шквал клинка""",
+	SKILLBLURRING_FLURRY_OF_BLADEDESCRIPT = """Бьёт врага 3 раза на 35% АТК урона. Каждое попадание может вызвать кровотечение. Даёт {color=aqua|В тенях}.""",
+	SKILLBLINDING_CROSS_SLASH = """Ослепляющий крестовый удар""",
+	SKILLBLINDING_CROSS_SLASHDESCRIPT = """Наносит 25% АТК урона врагам в ряду и линии. Каждое попадание может вызвать ослепление.""",
 	SKILLDISPOSAL = """Disposal""", # MISSING TRANSLATION
-	SKILLDISPOSALDESCRIPT = """Deal 150% ATK damage. Deals extra damage to Blinded and Bleeding enemies""", # MISSING TRANSLATION
-	RUNNING_AWAY_TEXT = """%s: I gotta get out of here!""", # MISSING TRANSLATION
-	SKILLHOWLING_RISING_AXE = """Howling Rising Axe""", # MISSING TRANSLATION
-	SKILLHOWLING_RISING_AXEDESCRIPT = """Hold up the axe and scream at enemies in an attempt to intimidate them. Gain {color=aqua|Axe Raised}. Chance to inflict Fear.""", # MISSING TRANSLATION
-	SKILLCLUMSY_LOG_SPLITTER = """Clumsy Log Splitter""", # MISSING TRANSLATION
-	SKILLCLUMSY_LOG_SPLITTERDESCRIPT = """Deal 155% ATK damage to the target... But it's very inaccurate.""", # MISSING TRANSLATION
-	SKILLBRUTAL_AXE_SWING = """Brutal Axe Swing!""", # MISSING TRANSLATION
-	SKILLBRUTAL_AXE_SWINGDESCRIPT = """Hit all enemies in a line for 90% ATK damage, but hits your allies sometimes.""", # MISSING TRANSLATION
-	SKILLFAT_BANDIT_CHARGE = """CHARGE!!!""", # MISSING TRANSLATION
-	SKILLFAT_BANDIT_CHARGEDESCRIPT = """Deal 110% ATK damage to a target. Hit or miss... take recoil damage.""", # MISSING TRANSLATION
-	SKILLCONFUSING_ORDER = """Confusing Order?""", # MISSING TRANSLATION
-	SKILLCONFUSING_ORDERDESCRIPT = """Grant an ally the {color=aqua|Genius Plan...?} buff! ...but also Stun them...""", # MISSING TRANSLATION
-	SKILLREDHEAD_MASTERFUL_SWORDMANSHIP = """Behold! My Masterful Swordmanship!""", # MISSING TRANSLATION
-	SKILLREDHEAD_MASTERFUL_SWORDMANSHIPDESCRIPT = """Attack an enemy 3 times, dealing 45% ATK damage per hit... with a poor precision, though. It's just him flailing his sword.""", # MISSING TRANSLATION
-	SKILLBEAT_EM_UP = """Beat 'em up!""", # MISSING TRANSLATION
-	SKILLBEAT_EM_UPDESCRIPT = """Order all allies, including the caster, to attack a random enemy in melee range, dealing 100% ATK damage. There is a Chance they might accidentally hit each other instead.""", # MISSING TRANSLATION
-	SKILLREDHEAD_MAGIC = """Sorcerer Art: Hellfire Bullet!!""", # MISSING TRANSLATION
-	SKILLREDHEAD_MAGICDESCRIPT = """The boss's strongest magical move!! Definitely gonna deal a lot of Fire damage! (nervous chuckle)... Prepare yourself!""", # MISSING TRANSLATION
-	SKILLSTRAIGHT_FORWARD_SLASH = """Straight-forward Slash""", # MISSING TRANSLATION
-	SKILLSTRAIGHT_FORWARD_SLASHDESCRIPT = """Deal 85% of ATK as physical damage. The special thing about it is there's nothing special about it!""", # MISSING TRANSLATION
-	SKILLGOD_THIS_IS_EMBARRASSING = """God, this is embarrassing...""", # MISSING TRANSLATION
-	SKILLGOD_THIS_IS_EMBARRASSINGDESCRIPT = """Does nothing.""", # MISSING TRANSLATION
-	SKILLFLIMSY_DAGGER_TOSS = """Flimsy Dagger Toss""", # MISSING TRANSLATION
-	SKILLFLIMSY_DAGGER_TOSSDESCRIPT = """Make a ranged attack against an enemy, dealing 65% ATK damage... If it hits.""", # MISSING TRANSLATION
-	SKILLDONT_MIND_ME = """...Don't Mind me""", # MISSING TRANSLATION
-	SKILLDONT_MIND_MEDESCRIPT = """Gain '{color=aqua|In the Shadows}'.""", # MISSING TRANSLATION
+	SKILLDISPOSALDESCRIPT = """Наносит 150% АТК урона. Наносит дополнительный урон ослеплённым и кровоточащим врагам""",
+	RUNNING_AWAY_TEXT = """%s: Мне надо убираться отсюда!""",
+	SKILLHOWLING_RISING_AXE = """Воющий вздымающийся топор""",
+	SKILLHOWLING_RISING_AXEDESCRIPT = """Вздымает топор и кричит на врагов, пытаясь их запугать. Даёт {color=aqua|Топор занесён}. Может наложить страх.""",
+	SKILLCLUMSY_LOG_SPLITTER = """Неуклюжий колун""",
+	SKILLCLUMSY_LOG_SPLITTERDESCRIPT = """Наносит цели 155% АТК урона... но очень неточно.""",
+	SKILLBRUTAL_AXE_SWING = """Зверский взмах топора!""",
+	SKILLBRUTAL_AXE_SWINGDESCRIPT = """Бьёт всех врагов в линии на 90% АТК урона, но иногда задевает и союзников.""",
+	SKILLFAT_BANDIT_CHARGE = """В АТАКУ!!!""",
+	SKILLFAT_BANDIT_CHARGEDESCRIPT = """Наносит 110% АТК урона цели. Попал или промазал — получает отдачу.""",
+	SKILLCONFUSING_ORDER = """Сбивающий с толку приказ?""",
+	SKILLCONFUSING_ORDERDESCRIPT = """Даёт союзнику баф {color=aqua|Гениальный план...?}! ...но при этом оглушает его...""",
+	SKILLREDHEAD_MASTERFUL_SWORDMANSHIP = """Узрите! Моё непревзойдённое фехтование!""",
+	SKILLREDHEAD_MASTERFUL_SWORDMANSHIPDESCRIPT = """Атакует врага 3 раза, нанося по 45% АТК урона за удар... правда, с никудышной точностью. Он просто размахивает мечом.""",
+	SKILLBEAT_EM_UP = """Отделать их!""",
+	SKILLBEAT_EM_UPDESCRIPT = """Приказывает всем союзникам, включая заклинателя, атаковать случайного врага в ближнем радиусе, нанося 100% АТК урона. Есть шанс, что они случайно заденут друг друга.""",
+	SKILLREDHEAD_MAGIC = """Искусство чародея: адская пуля!!""",
+	SKILLREDHEAD_MAGICDESCRIPT = """Сильнейший магический приём босса!! Точно нанесёт кучу огненного урона! (нервный смешок)... Готовьтесь!""",
+	SKILLSTRAIGHT_FORWARD_SLASH = """Прямолинейный удар""",
+	SKILLSTRAIGHT_FORWARD_SLASHDESCRIPT = """Наносит 85% АТК физического урона. Особенность в том, что в нём нет ничего особенного!""",
+	SKILLGOD_THIS_IS_EMBARRASSING = """Боже, как неловко...""",
+	SKILLGOD_THIS_IS_EMBARRASSINGDESCRIPT = """Ничего не делает.""",
+	SKILLFLIMSY_DAGGER_TOSS = """Жалкий бросок кинжала""",
+	SKILLFLIMSY_DAGGER_TOSSDESCRIPT = """Совершает дальнюю атаку по врагу, нанося 65% АТК урона... если попадёт.""",
+	SKILLDONT_MIND_ME = """...Не обращайте внимания""",
+	SKILLDONT_MIND_MEDESCRIPT = """Даёт «{color=aqua|В тенях}».""",
 	SKILL_ASMEDAI_LUST_DRAIN = """Ashmedai drain %s's lust to empower himself!
 """, # MISSING TRANSLATION
 	SKILLBAD_TOUCH = """Bad Touch""", # MISSING TRANSLATION
 	SKILLBAD_TOUCHDESCRIPT = """Deal 90% ATK damage to a target. Inflict {color=aqua|Arousal} on hit.""", # MISSING TRANSLATION
-	SKILLAMBUSHING_TENDRILS = """Ambushing Tendrils""", # MISSING TRANSLATION
-	SKILLAMBUSHING_TENDRILSDESCRIPT = """Apply Tendril Trap to random enemies. The trap activates when the target uses a spell.""", # MISSING TRANSLATION
+	SKILLAMBUSHING_TENDRILS = """Щупальца из засады""",
+	SKILLAMBUSHING_TENDRILSDESCRIPT = """Накладывает ловушку из щупалец на случайных врагов. Ловушка срабатывает, когда цель применяет заклинание.""",
 	SKILLVILE_PHEROMONE = """Vile Pheromone""", # MISSING TRANSLATION
 	SKILLVILE_PHEROMONEDESCRIPT = """Deal {color=yellow|Mind} damage to all enemies. Inflict 1–5 {color=aqua|Arousal}.""", # MISSING TRANSLATION
 	SKILLAPHRODISIAC_BOMBARDMENT = """Aphrodisiac Bombardment""", # MISSING TRANSLATION
 	SKILLAPHRODISIAC_BOMBARDMENTDESCRIPT = """Deal 65% MATK {color=yellow|Dark} damage to random enemies. Inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
-	SKILLTIDE_OF_TENTACLES = """Tide of Tentacles""", # MISSING TRANSLATION
-	SKILLTIDE_OF_TENTACLESDESCRIPT = """Deal 85% ATK {color=yellow|Dark} damage to the front-most enemy in each row. Inflict {color=aqua|Ensnared}.""", # MISSING TRANSLATION
-	SKILLASHMEDAI_WWBOP = """Welcome to My Belly, the Bed of Pleasure""", # MISSING TRANSLATION
-	SKILLASHMEDAI_WWBOPDESCRIPT = """Can only be used on a {color=aqua|Stunned} target.
-{color=aqua|Swallow} a target. A {color=aqua|Swallowed} target cannot act, cannot be healed by allies, and loses 20% HP at the start of its turn.""", # MISSING TRANSLATION
-	SKILLASHMEDAI_REGEN_APPENDAGE = """Regenerate Appendage""", # MISSING TRANSLATION
-	SKILLASHMEDAI_REGEN_APPENDAGEDESCRIPT = """Revive a Tentacle Appendage at the cost of the user's HP.""", # MISSING TRANSLATION
-	SKILLTENTACLE_LASSO = """Tentacle Lasso""", # MISSING TRANSLATION
-	SKILLTENTACLE_LASSODESCRIPT = """Deal damage and inflict {color=aqua|Ensnared} for 3 turns.""", # MISSING TRANSLATION
-	SKILLSTICKY_FLUIDS = """Sticky Fluids""", # MISSING TRANSLATION
-	SKILLSTICKY_FLUIDSDESCRIPT = """Deal 65% MATK {color=yellow|Water} damage to 1–3 random enemies with a chance to inflict {color=aqua|Ensnared} for 2 turns.""", # MISSING TRANSLATION
-	SKILLCONSTRICTING_BIND = """Constricting Bind""", # MISSING TRANSLATION
+	SKILLTIDE_OF_TENTACLES = """Прилив щупалец""",
+	SKILLTIDE_OF_TENTACLESDESCRIPT = """Наносит 85% АТК {color=yellow|тёмного} урона переднему врагу в каждом ряду. Накладывает {color=aqua|западню}.""",
+	SKILLASHMEDAI_WWBOP = """Добро пожаловать в моё чрево""",
+	SKILLASHMEDAI_WWBOPDESCRIPT = """Применяется только к {color=aqua|оглушённой} цели.
+{color=aqua|Проглатывает} цель. {color=aqua|Проглоченная} цель не может действовать, не может быть исцелена союзниками и теряет 20% ОЗ в начале своего хода.""",
+	SKILLASHMEDAI_REGEN_APPENDAGE = """Регенерация отростка""",
+	SKILLASHMEDAI_REGEN_APPENDAGEDESCRIPT = """Возрождает щупальце ценой ОЗ применяющего.""",
+	SKILLTENTACLE_LASSO = """Аркан из щупалец""",
+	SKILLTENTACLE_LASSODESCRIPT = """Наносит урон и накладывает {color=aqua|западню} на 3 хода.""",
+	SKILLSTICKY_FLUIDS = """Липкие выделения""",
+	SKILLSTICKY_FLUIDSDESCRIPT = """Наносит 65% МАТК {color=yellow|водного} урона 1–3 случайным врагам с шансом наложить {color=aqua|западню} на 2 хода.""",
+	SKILLCONSTRICTING_BIND = """Сдавливающие путы""",
 	SKILLCONSTRICTING_BINDDESCRIPT = """Can only be used on {color=aqua|Ensnared} targets.
 Deal 130% ATK damage and inflict {color=aqua|Arousal}.""", # MISSING TRANSLATION
-	SKILLBURST_FORTH_MY_PULSING_FLESH = """Burst Forth My Pulsing Flesh!""", # MISSING TRANSLATION
-	SKILLBURST_FORTH_MY_PULSING_FLESHDESCRIPT = """Revive all Tentacle Appendages. Deal {color=yellow|Dark} damage to all enemies with a chance to inflict {color=aqua|Stunned}.""", # MISSING TRANSLATION
-	SKILLUMBRAL_REIGN = """Umbral Reign""", # MISSING TRANSLATION
-	SKILLUMBRAL_REIGNDESCRIPT = """Inflict In the Shadow, Blind, and Lost in Darkness.""", # MISSING TRANSLATION
-	SKILLSHADOW_MADE_MANIFEST = """Shadow Made Manifest""", # MISSING TRANSLATION
-	SKILLSHADOW_MADE_MANIFESTDESCRIPT = """Summon a Shadow Monstrosity.""", # MISSING TRANSLATION
-	SKILLSTYGIAN_WAILING = """Stygian Wailing""", # MISSING TRANSLATION
-	SKILLSTYGIAN_WAILINGDESCRIPT = """Deal low {color=yellow|Dark} magic damage to all enemies. Chance to inflict Silence and Fear.""", # MISSING TRANSLATION
-	SKILLTENEBROUS_RAKE = """Tenebrous Rake""", # MISSING TRANSLATION
-	SKILLTENEBROUS_RAKEDESCRIPT = """Deal {color=yellow|Dark} physical damage to enemies in the melee line and inflict Bleed.""", # MISSING TRANSLATION
-	SKILLVOID_DELUGE = """Void Deluge""", # MISSING TRANSLATION
-	SKILLVOID_DELUGEDESCRIPT = """Deal {color=yellow|Dark} magic damage to random targets. Chance to inflict Blind.""", # MISSING TRANSLATION
-	SKILLCALIGINOUS_UNDULATION = """Caliginous Undulation""", # MISSING TRANSLATION
-	SKILLCALIGINOUS_UNDULATIONDESCRIPT = """Deal {color=yellow|Dark} damage to the front-most enemies in each row and inflict Blind.
-	Stun blinded targets.""", # MISSING TRANSLATION
-	SKILLNIXX_ULT = """Pulvis et Umbra Estis!""", # MISSING TRANSLATION
-	SKILLNIXX_ULTDESCRIPT = """Deal {color=yellow|Dark} magic damage to all enemies.
-	Deal increased damage to Blind enemies.
-	Inflict healing reduction on all enemies.
-	Put out Brazier afterward.""", # MISSING TRANSLATION
+	SKILLBURST_FORTH_MY_PULSING_FLESH = """Восстань, моя пульсирующая плоть!""",
+	SKILLBURST_FORTH_MY_PULSING_FLESHDESCRIPT = """Возрождает все щупальца. Наносит {color=yellow|тёмный} урон всем врагам с шансом наложить {color=aqua|оглушение}.""",
+	SKILLUMBRAL_REIGN = """Владычество тени""",
+	SKILLUMBRAL_REIGNDESCRIPT = """Накладывает «В тенях», ослепление и «Заблудший во тьме».""",
+	SKILLSHADOW_MADE_MANIFEST = """Тень обретает плоть""",
+	SKILLSHADOW_MADE_MANIFESTDESCRIPT = """Призывает теневое чудовище.""",
+	SKILLSTYGIAN_WAILING = """Стигийский вопль""",
+	SKILLSTYGIAN_WAILINGDESCRIPT = """Наносит слабый {color=yellow|тёмный} магический урон всем врагам. Может наложить немоту и страх.""",
+	SKILLTENEBROUS_RAKE = """Мрачные когти""",
+	SKILLTENEBROUS_RAKEDESCRIPT = """Наносит {color=yellow|тёмный} физический урон врагам в ближней линии и вызывает кровотечение.""",
+	SKILLVOID_DELUGE = """Потоп пустоты""",
+	SKILLVOID_DELUGEDESCRIPT = """Наносит {color=yellow|тёмный} магический урон случайным целям. Может наложить ослепление.""",
+	SKILLCALIGINOUS_UNDULATION = """Мглистое колыхание""",
+	SKILLCALIGINOUS_UNDULATIONDESCRIPT = """Наносит {color=yellow|тёмный} урон передним врагам в каждом ряду и накладывает ослепление.
+	Оглушает ослеплённые цели.""",
+	SKILLNIXX_ULT = """Pulvis et Umbra Estis!""",
+	SKILLNIXX_ULTDESCRIPT = """Наносит {color=yellow|тёмный} магический урон всем врагам.
+	Наносит повышенный урон ослеплённым врагам.
+	Снижает получаемое врагами лечение.
+	После этого гасит жаровню.""",
 	SKILLNOTHING = """Nothing""", # MISSING TRANSLATION
-	SKILLNOTHINGDESCRIPT = """Do nothing.""", # MISSING TRANSLATION
-	SKILLSMOTHER_THE_FLAME = """Smother the Flame""", # MISSING TRANSLATION
-	SKILLSMOTHER_THE_FLAMEDESCRIPT = """Can only target an Unlit Brazier. Heal for 100% of this unit's ATK and remove Burn.""", # MISSING TRANSLATION
-	SKILLBUMP_IN_THE_MIDNIGHT = """Bump in the Midnight""", # MISSING TRANSLATION
-	SKILLBUMP_IN_THE_MIDNIGHTDESCRIPT = """Deal {color=yellow|Dark} physical damage to a target. Inflict Bleed, Shred, and Fear.""", # MISSING TRANSLATION
-	SKILLGLINT_OF_THE_SWORD = """Glint of the Sword""", # MISSING TRANSLATION
-	SKILLGLINT_OF_THE_SWORDDESCRIPT = """Stealth-casting skill.
-Deal physical damage to a target and inflict {color=aqua|Blind}.
-If the target is already {color=aqua|Blind}, gain {color=aqua|In the Shadow}.""", # MISSING TRANSLATION
-	SKILLLACERATING_DANCE = """Lacerating Dance""", # MISSING TRANSLATION
-	SKILLLACERATING_DANCEDESCRIPT = """Stealth-casting skill.
-Deal low physical damage to random targets and inflict {color=aqua|Bleed}.
-If a target is {color=aqua|Blind}, also inflict {color=aqua|Shred}.
-If the user is {color=aqua|In the Shadow}, deal increased damage.""", # MISSING TRANSLATION
-	SKILLISOLATE = """Isolate""", # MISSING TRANSLATION
-	SKILLISOLATEDESCRIPT = """Stealth-casting skill.
-Deal physical damage to a backline target and inflict {color=aqua|Blind} on all enemies other than the target.
-If the user is {color=aqua|In the Shadow}, inflict {color=aqua|Close Confrontation} on the main target.""", # MISSING TRANSLATION
+	SKILLNOTHINGDESCRIPT = """Ничего не делать.""",
+	SKILLSMOTHER_THE_FLAME = """Затушить пламя""",
+	SKILLSMOTHER_THE_FLAMEDESCRIPT = """Применяется только к погасшей жаровне. Исцеляет на 100% АТК этого бойца и снимает горение.""",
+	SKILLBUMP_IN_THE_MIDNIGHT = """Толчок в полночь""",
+	SKILLBUMP_IN_THE_MIDNIGHTDESCRIPT = """Наносит {color=yellow|тёмный} физический урон цели. Накладывает кровотечение, разрыв брони и страх.""",
+	SKILLGLINT_OF_THE_SWORD = """Блеск клинка""",
+	SKILLGLINT_OF_THE_SWORDDESCRIPT = """Умение скрытного применения.
+Наносит физический урон цели и накладывает {color=aqua|ослепление}.
+Если цель уже {color=aqua|ослеплена}, применяющий получает {color=aqua|В тенях}.""",
+	SKILLLACERATING_DANCE = """Рвущий танец""",
+	SKILLLACERATING_DANCEDESCRIPT = """Умение скрытного применения.
+Наносит слабый физический урон случайным целям и накладывает {color=aqua|кровотечение}.
+Если цель {color=aqua|ослеплена}, также накладывает {color=aqua|разрыв брони}.
+Если применяющий {color=aqua|в тенях}, урон повышен.""",
+	SKILLISOLATE = """Изоляция""",
+	SKILLISOLATEDESCRIPT = """Умение скрытного применения.
+Наносит физический урон цели в тылу и накладывает {color=aqua|ослепление} на всех врагов, кроме неё.
+Если применяющий {color=aqua|в тенях}, накладывает на основную цель {color=aqua|ближнее противостояние}.""",
 	SKILLDISENGAGE = """Disengage""", # MISSING TRANSLATION
-	SKILLDISENGAGEDESCRIPT = """Deal low physical damage to a melee target.
-Remove {color=aqua|Disarm}, {color=aqua|Taunt}, {color=aqua|Blind}, {color=aqua|Ensnare}, {color=aqua|Burn}, and {color=aqua|Wet} from self.
-Heal self for a small portion of Max HP.
-Gain {color=aqua|In the Shadow} and {color=aqua|Tightened Grip}.""", # MISSING TRANSLATION
-	SKILLWAKE_OF_BLACKENED_BLADE = """Wake of Blackened Blade""", # MISSING TRANSLATION
-	SKILLWAKE_OF_BLACKENED_BLADEDESCRIPT = """Deal {color=yellow|Dark} damage to the front-most enemies in each row and inflict {color=aqua|Blind}.
-Gain {color=aqua|Blackened Blade}.""", # MISSING TRANSLATION
-	SKILLGREG_LAST_BARK = """I Hate... All of You... All of THIS!!""", # MISSING TRANSLATION
-	SKILLGREG_LAST_BARKDESCRIPT = """Repeatedly deal physical damage to a target.
-Sequentially inflict {color=aqua|Ensnare}, {color=aqua|Disarm}, {color=aqua|Blind}, and {color=aqua|Shred}.
-The last hit deals increased damage.
-{color=red|On Kill: Reset cooldown.}""", # MISSING TRANSLATION
-	SKILLOMINOUS_WHISPERS = """Ominous Whispers""", # MISSING TRANSLATION
-	SKILLOMINOUS_WHISPERSDESCRIPT = """Deal low {color=yellow|Mind} magical damage to all enemies and inflict {color=aqua|Fear}. If target HP is below 50%, also inflict {color=aqua|Shattered}.""", # MISSING TRANSLATION
-	SKILLHEXED_COFFIN_NAIL = """Hexed Coffin Nail""", # MISSING TRANSLATION
-	SKILLHEXED_COFFIN_NAILDESCRIPT = """Deal {color=yellow|Dark} physical damage to an enemy. Inflict {color=aqua|Bleed}. Moderate chance to inflict {color=aqua|Cursed}""", # MISSING TRANSLATION
-	SKILLCRAZED_SPIRIT_POSSESSION = """Crazed Spirit Possession""", # MISSING TRANSLATION
-	SKILLCRAZED_SPIRIT_POSSESSIONDESCRIPT = """Deal physical damage to 2 random rows of enemies. If target is affected by {color=aqua|Fear}, deal additional {color=yellow|Dark} magical damage and inflict {color=aqua|Cursed}.""", # MISSING TRANSLATION
-	SKILLFORCED_EXORCISM = """Forced Exorcism""", # MISSING TRANSLATION
-	SKILLFORCED_EXORCISMDESCRIPT = """Prioritize Cursed enemy. Deal heavy {color=yellow|Light} magical damage to a single target. If the target is {color=aqua|Cursed}, damage the target mana and deal {color=yellow|Dark} magical damage to all their allies. Remove {color=aqua|Cursed} from target.""", # MISSING TRANSLATION
-	SKILLUNDYING_SPIRIT = """Undying Spirit""", # MISSING TRANSLATION
-	SKILLUNDYING_SPIRITDESCRIPT = """Heal self for a small portion of Max HP. Heal more for every enemy that have {color=aqua|Fear} or Defeated.""", # MISSING TRANSLATION
-	SKILLARRIVAL_OF_THE_DEPARTED = """Arrival of the Departed""", # MISSING TRANSLATION
-	SKILLARRIVAL_OF_THE_DEPARTEDDESCRIPT = """Revive all allies and summon Zombies until the team is full.""", # MISSING TRANSLATION
-	SKILLTICKET_PLEASE = """Ticket, Please""", # MISSING TRANSLATION
-	SKILLTICKET_PLEASEDESCRIPT = """Deal {color=yellow|Dark} magical damage to an enemy.
-If the target does not have {color=aqua|One-Way Ticket to Hell}, inflict {color=aqua|One-Way Ticket to Hell}.
-If the target has {color=aqua|One-Way Ticket to Hell}, deal more damage and remove {color=aqua|One-Way Ticket to Hell}.""", # MISSING TRANSLATION
-	SKILLAFTERLIFE_AMENITIES = """Afterlife Amenities""", # MISSING TRANSLATION
-	SKILLAFTERLIFE_AMENITIESDESCRIPT = """Remove {color=aqua|Silence} on self.
-Heal 3 random allies other than self and apply {color=aqua|Dark Gift} to them.""", # MISSING TRANSLATION
-	SKILLDEAD_RUNNING = """Dead Running""", # MISSING TRANSLATION
-	SKILLDEAD_RUNNINGDESCRIPT = """Command all undead minions to randomly attack enemies.""", # MISSING TRANSLATION
-	SKILLEND_OF_THE_LINE = """End of the Line""", # MISSING TRANSLATION
-	SKILLEND_OF_THE_LINEDESCRIPT = """{color=red|Usable only when there's more than 1 ally.}
-Order his minions to explode, each dealing {color=yellow|Dark} magical damage to 2 random melee targets and die afterward.""", # MISSING TRANSLATION
-	SKILLNO_LIGHT_TUNNEL_END = """There's no light at the end of the Tunnel!""", # MISSING TRANSLATION
-	SKILLNO_LIGHT_TUNNEL_ENDDESCRIPT = """Usable only when there's no other ally standing.
-Inflict {color=aqua|Blind} and {color=aqua|In the Dark} to all enemies.
-Summon 2 random Zombies.""", # MISSING TRANSLATION
-	SKILLTALISMAN_DISGUISED_AS_TICKET = """Talisman disguised as Ticket""", # MISSING TRANSLATION
-	SKILLTALISMAN_DISGUISED_AS_TICKETDESCRIPT = """Can only target without {color=aqua|One-Way Ticket to Hell}.
-Deal {color=yellow|Dark} magical damage to an enemy and inflict {color=aqua|One-Way Ticket to Hell}.""", # MISSING TRANSLATION
+	SKILLDISENGAGEDESCRIPT = """Наносит слабый физический урон цели в ближнем бою.
+Снимает с себя {color=aqua|обезоруживание}, {color=aqua|насмешку}, {color=aqua|ослепление}, {color=aqua|западню}, {color=aqua|горение} и {color=aqua|промокание}.
+Исцеляет себя на малую долю макс. ОЗ.
+Даёт {color=aqua|В тенях} и {color=aqua|Усиленную хватку}.""",
+	SKILLWAKE_OF_BLACKENED_BLADE = """След почернелого клинка""",
+	SKILLWAKE_OF_BLACKENED_BLADEDESCRIPT = """Наносит {color=yellow|тёмный} урон передним врагам в каждом ряду и накладывает {color=aqua|ослепление}.
+Даёт {color=aqua|Почернение клинка}.""",
+	SKILLGREG_LAST_BARK = """Ненавижу... всех вас... всё ЭТО!!""",
+	SKILLGREG_LAST_BARKDESCRIPT = """Многократно наносит физический урон цели.
+Последовательно накладывает {color=aqua|западню}, {color=aqua|обезоруживание}, {color=aqua|ослепление} и {color=aqua|разрыв брони}.
+Последний удар наносит повышенный урон.
+{color=red|При убийстве: сбрасывает перезарядку.}""",
+	SKILLOMINOUS_WHISPERS = """Зловещий шёпот""",
+	SKILLOMINOUS_WHISPERSDESCRIPT = """Наносит слабый {color=yellow|ментальный} магический урон всем врагам и накладывает {color=aqua|страх}. Если ОЗ цели ниже 50%, также накладывает {color=aqua|раскол}.""",
+	SKILLHEXED_COFFIN_NAIL = """Заговорённый гробовой гвоздь""",
+	SKILLHEXED_COFFIN_NAILDESCRIPT = """Наносит {color=yellow|тёмный} физический урон врагу. Накладывает {color=aqua|кровотечение}. Умеренный шанс наложить {color=aqua|проклятие}""",
+	SKILLCRAZED_SPIRIT_POSSESSION = """Одержимость безумным духом""",
+	SKILLCRAZED_SPIRIT_POSSESSIONDESCRIPT = """Наносит физический урон 2 случайным рядам врагов. Если цель под действием {color=aqua|страха}, наносит дополнительный {color=yellow|тёмный} магический урон и накладывает {color=aqua|проклятие}.""",
+	SKILLFORCED_EXORCISM = """Принудительный экзорцизм""",
+	SKILLFORCED_EXORCISMDESCRIPT = """Приоритет — проклятый враг. Наносит тяжёлый {color=yellow|световой} магический урон одной цели. Если цель {color=aqua|проклята}, отнимает ей ману и наносит {color=yellow|тёмный} магический урон всем её союзникам. Снимает с цели {color=aqua|проклятие}.""",
+	SKILLUNDYING_SPIRIT = """Неумирающий дух""",
+	SKILLUNDYING_SPIRITDESCRIPT = """Исцеляет себя на малую долю макс. ОЗ. Исцеляет больше за каждого врага с {color=aqua|страхом} или повержённого.""",
+	SKILLARRIVAL_OF_THE_DEPARTED = """Пришествие усопших""",
+	SKILLARRIVAL_OF_THE_DEPARTEDDESCRIPT = """Воскрешает всех союзников и призывает зомби, пока отряд не заполнится.""",
+	SKILLTICKET_PLEASE = """Ваш билет, пожалуйста""",
+	SKILLTICKET_PLEASEDESCRIPT = """Наносит {color=yellow|тёмный} магический урон врагу.
+Если у цели нет {color=aqua|Билета в один конец в ад}, накладывает его.
+Если есть, наносит больше урона и снимает {color=aqua|Билет в один конец в ад}.""",
+	SKILLAFTERLIFE_AMENITIES = """Удобства загробной жизни""",
+	SKILLAFTERLIFE_AMENITIESDESCRIPT = """Снимает с себя {color=aqua|немоту}.
+Исцеляет 3 случайных союзников, кроме себя, и накладывает на них {color=aqua|Тёмный дар}.""",
+	SKILLDEAD_RUNNING = """Бег мертвецов""",
+	SKILLDEAD_RUNNINGDESCRIPT = """Приказывает всем прислужникам-нежити атаковать врагов наугад.""",
+	SKILLEND_OF_THE_LINE = """Конец пути""",
+	SKILLEND_OF_THE_LINEDESCRIPT = """{color=red|Применимо, только если союзников больше одного.}
+Приказывает прислужникам взорваться: каждый наносит {color=yellow|тёмный} магический урон 2 случайным целям в ближнем бою и затем погибает.""",
+	SKILLNO_LIGHT_TUNNEL_END = """В конце тоннеля нет света!""",
+	SKILLNO_LIGHT_TUNNEL_ENDDESCRIPT = """Применимо, только если не осталось других союзников.
+Накладывает {color=aqua|ослепление} и {color=aqua|Во тьме} на всех врагов.
+Призывает 2 случайных зомби.""",
+	SKILLTALISMAN_DISGUISED_AS_TICKET = """Талисман под видом билета""",
+	SKILLTALISMAN_DISGUISED_AS_TICKETDESCRIPT = """Применяется только к целям без {color=aqua|Билета в один конец в ад}.
+Наносит {color=yellow|тёмный} магический урон врагу и накладывает {color=aqua|Билет в один конец в ад}.""",
 	SKILLCUMULATING_CURSE = """Cumulating Curse""", # MISSING TRANSLATION
-	SKILLCUMULATING_CURSEDESCRIPT = """Deal {color=yellow|Dark} magical damage to all enemies.""", # MISSING TRANSLATION
-	SKILLTALISMAN_GUIDED_PUNCH = """Talisman-Guided Punch""", # MISSING TRANSLATION
-	SKILLTALISMAN_GUIDED_PUNCHDESCRIPT = """Can only target unit with {color=aqua|One-Way Ticket to Hell}.
-Deal large {color=yellow|Dark} physical damage to an enemy and remove {color=aqua|One-Way Ticket to Hell}.""", # MISSING TRANSLATION
-	SKILLBONEMEAL_SPRAY = """Bonemeal Spray""", # MISSING TRANSLATION
-	SKILLBONEMEAL_SPRAYDESCRIPT = """Deal physical damage to a row and inflict {color=aqua|Blind}.""", # MISSING TRANSLATION
-	SKILLWEIGHTY_COLISION = """Weighty Collision""", # MISSING TRANSLATION
-	SKILLWEIGHTY_COLISIONDESCRIPT = """Deal physical damage to an enemy and inflict {color=aqua|Stun}.""", # MISSING TRANSLATION
-	SKILLWASTE_DISCHARGE = """Discharge Waste""", # MISSING TRANSLATION
-	SKILLWASTE_DISCHARGEDESCRIPT = """Deal {color=yellow|Water} magical damage to a row.
-Inflict {color=aqua|Blind}, {color=aqua|Poison}, and chance to inflict {color=aqua|Silence}.""", # MISSING TRANSLATION
-	SKILLQUICK_DEATH = """Quick Death""", # MISSING TRANSLATION
-	SKILLQUICK_DEATHDESCRIPT = """Deal physical damage to an enemy. Damage also increases with user speed.""", # MISSING TRANSLATION
-	SKILLSWELLING_MUSCLE = """Swelling Muscle""", # MISSING TRANSLATION
-	SKILLSWELLING_MUSCLEDESCRIPT = """Can only be used while having less than 3 {color=aqua|Heaping Mass}.
-Gain a stack of {color=aqua|Heaping Mass}.""", # MISSING TRANSLATION
-	SKILLHYSTERICAL_STRENGTH = """Hysterical Strength""", # MISSING TRANSLATION
-	SKILLHYSTERICAL_STRENGTHDESCRIPT = """Can only be used while affected by {color=aqua|Heaping Mass}.
-Deal physical damage to the line of enemy and inflict {color=aqua|Ensnared}.
-Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
+	SKILLCUMULATING_CURSEDESCRIPT = """Наносит {color=yellow|тёмный} магический урон всем врагам.""",
+	SKILLTALISMAN_GUIDED_PUNCH = """Удар, направляемый талисманом""",
+	SKILLTALISMAN_GUIDED_PUNCHDESCRIPT = """Применяется только к бойцу с {color=aqua|Билетом в один конец в ад}.
+Наносит большой {color=yellow|тёмный} физический урон врагу и снимает {color=aqua|Билет в один конец в ад}.""",
+	SKILLBONEMEAL_SPRAY = """Костная взвесь""",
+	SKILLBONEMEAL_SPRAYDESCRIPT = """Наносит физический урон ряду и накладывает {color=aqua|ослепление}.""",
+	SKILLWEIGHTY_COLISION = """Тяжёлое столкновение""",
+	SKILLWEIGHTY_COLISIONDESCRIPT = """Наносит физический урон врагу и накладывает {color=aqua|оглушение}.""",
+	SKILLWASTE_DISCHARGE = """Выброс нечистот""",
+	SKILLWASTE_DISCHARGEDESCRIPT = """Наносит {color=yellow|водный} магический урон ряду.
+Накладывает {color=aqua|ослепление}, {color=aqua|отравление} и с шансом {color=aqua|немоту}.""",
+	SKILLQUICK_DEATH = """Быстрая смерть""",
+	SKILLQUICK_DEATHDESCRIPT = """Наносит физический урон врагу. Урон также растёт со скоростью применяющего.""",
+	SKILLSWELLING_MUSCLE = """Вздувающиеся мышцы""",
+	SKILLSWELLING_MUSCLEDESCRIPT = """Применяется, только если {color=aqua|Нарастающей массы} меньше 3.
+Даёт заряд {color=aqua|Нарастающей массы}.""",
+	SKILLHYSTERICAL_STRENGTH = """Истерическая сила""",
+	SKILLHYSTERICAL_STRENGTHDESCRIPT = """Применяется только под действием {color=aqua|Нарастающей массы}.
+Наносит физический урон линии врагов и накладывает {color=aqua|западню}.
+Снимает с себя всю {color=aqua|Нарастающую массу}.""",
 	STATUSDESC_BLEED = "Кровотечение: потеря 10% от максимального HP в виде нейтрального урона каждый ход.",
 	STATUSDESC_POISON = "Отравление: потеря 10% от максимального HP в виде нейтрального урона каждый ход.",
 	STATUSDESC_BURN = "Горение: потеря 8% от максимального HP в виде урона огнём каждый ход.",
@@ -2371,42 +2391,42 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	ACTIONMINDCONTROLSCENETEXT = """[name1] использует сильную магию, чтобы доминировать над разумом [name2], медленно переписывая его в хорошего послушного раба.""",
 	ACTIONEDGINGSCENETEXT = """[name1] дразняще доводит [name2] до оргазма, но в последний момент останавливает [his1] движения, не давая [name2] кончить. Так продолжается еще несколько раз, пока [name2] не сдается, умоляя о разрядке. """,
 	TRAININGFINISHHEADER = """Навыки к концу тренировки:""",
-	SERVANTUNLOCK_WORKING = """Working""", # MISSING TRANSLATION
-	SERVANTUNLOCK_COMBAT = """Combat""", # MISSING TRANSLATION
-	SERVANTUNLOCK_DATING = """Dating""", # MISSING TRANSLATION
+	SERVANTUNLOCK_WORKING = """Работа""",
+	SERVANTUNLOCK_COMBAT = """Бой""",
+	SERVANTUNLOCK_DATING = """Свидания""",
 	SERVANTUNLOCK_SEX = """Sex""", # MISSING TRANSLATION
 	SERVANTUNLOCK_SEXSERVICE = """Sex Service""", # MISSING TRANSLATION
-	SERVANTUNLOCK_UNLOCKED = """Unlocked""", # MISSING TRANSLATION
-	SERVANTUNLOCK_LOCKED = """Locked""", # MISSING TRANSLATION
-	SERVANTUNLOCK_TALK_BUTTON = """Talk""", # MISSING TRANSLATION
-	SERVANTUNLOCK_TALK_BUTTON_COOLDOWN = """Negotiate (%d days)""", # MISSING TRANSLATION
-	SERVANTUNLOCK_LEAVE = """Leave""", # MISSING TRANSLATION
-	SERVANTUNLOCK_DIALOGUE_TEXT = """What would you like %s to learn?""", # MISSING TRANSLATION
-	SERVANTUNLOCK_REQ_AFFECTION = """needs 25+ Affection""", # MISSING TRANSLATION
-	SERVANTUNLOCK_REQ_CONSENT = """needs 2+ Consent""", # MISSING TRANSLATION
+	SERVANTUNLOCK_UNLOCKED = """Открыто""",
+	SERVANTUNLOCK_LOCKED = """Закрыто""",
+	SERVANTUNLOCK_TALK_BUTTON = """Договориться""",
+	SERVANTUNLOCK_TALK_BUTTON_COOLDOWN = """Договориться (%d дн.)""",
+	SERVANTUNLOCK_LEAVE = """Уйти""",
+	SERVANTUNLOCK_DIALOGUE_TEXT = """Чему вы хотите обучить %s?""",
+	SERVANTUNLOCK_REQ_AFFECTION = """Требуется привязанность 25+""",
+	SERVANTUNLOCK_REQ_CONSENT = """Требуется согласие 2+""",
 	SERVANTUNLOCK_REQ_SEX_ACCESS = """[name] isn't ready to engage with these topics at this moment""", # MISSING TRANSLATION
 	CHARLOG_SEX_ACCESS_UNLOCKED = """has opened to more intimate options.""", # MISSING TRANSLATION
-	NEGOTIATION_PAY = """Offer %d gold for this""", # MISSING TRANSLATION
-	NEGOTIATION_PERSUADE_CHARGE = """[Persuasion Challenge] Try to convince [him]""", # MISSING TRANSLATION
-	NEGOTIATION_PERSUADE_BREAK = """Offer [him] a couple days off first""", # MISSING TRANSLATION
-	NEGOTIATION_CANCEL = """Never mind""", # MISSING TRANSLATION
-	NEGOTIATION_HESITATION_BREAK = """%s complains [he] already has too much on [his] hands and could use a break.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_BREAK = """[He] agreed to your proposal, and will follow through once [his] break is over.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_FORCE_BREAKDOWN = """The ordeal was too much, and [he] needs some time alone to recover.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_INSTANT = """[He] doesn't even hesitate — [his] trust in you makes this an easy yes.""", # MISSING TRANSLATION
-	NEGOTIATION_UNLOCKED_TEXT = """%s has accepted [his] new duty: %s.""", # MISSING TRANSLATION
-	NEGOTIATION_HESITATION_WORKING_CHARGE = """%s hesitates, unsure about taking on more responsibility.""", # MISSING TRANSLATION
-	NEGOTIATION_HESITATION_WORKING_FORCE = """%s flatly refuses, arguing with a hint of entitlement that [he] already does enough for you.""", # MISSING TRANSLATION
-	NEGOTIATION_PERSUADE_FORCE_WORKING = """Remind [him] who's in charge""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_PAID_WORKING = """Slip [him] %d gold as a bonus. [His] resolve crumbles, and [he] caves in, agreeing to take on more work.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_CHARGE_WORKING = """Won [him] over with a Persuasion Challenge. [He] agreed to take on more work.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_FORCE_WORKING = """Made it clear this wasn't a request, browbeating [him] until [he] reluctantly gives in and agrees to work harder. [His] respect for you falls by %d and [his] affection by %d.""", # MISSING TRANSLATION
-	NEGOTIATION_HESITATION_COMBAT_CHARGE = """%s hesitates, unsure about taking on the danger of fighting for you.""", # MISSING TRANSLATION
-	NEGOTIATION_HESITATION_COMBAT_FORCE = """%s flatly refuses, arguing with a hint of entitlement that risking [his] life isn't part of the deal.""", # MISSING TRANSLATION
-	NEGOTIATION_PERSUADE_FORCE_COMBAT = """Remind [him] that refusal isn't an option""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_PAID_COMBAT = """Slip [him] %d gold as a bonus. [His] resolve crumbles, and [he] caves in, agreeing to fight for you.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_CHARGE_COMBAT = """Won [him] over with a Persuasion Challenge. [He] agreed to fight for you.""", # MISSING TRANSLATION
-	NEGOTIATION_LOG_FORCE_COMBAT = """Made it clear refusal wasn't an option, intimidating [him] until [he] reluctantly gives in and agrees to fight. [His] respect for you falls by %d and [his] affection by %d.""", # MISSING TRANSLATION
+	NEGOTIATION_PAY = """Предложить %d золота за это""",
+	NEGOTIATION_PERSUADE_CHARGE = """[Испытание убеждения] Попробовать [his] убедить""",
+	NEGOTIATION_PERSUADE_BREAK = """Сначала предложить [him] пару выходных""",
+	NEGOTIATION_CANCEL = """Неважно""",
+	NEGOTIATION_HESITATION_BREAK = """%s жалуется, что дел и так слишком много, и не помешал бы отдых.""",
+	NEGOTIATION_LOG_BREAK = """[He] согласился(лась) на ваше предложение и приступит, как только закончится отдых.""",
+	NEGOTIATION_LOG_FORCE_BREAKDOWN = """Испытание оказалось слишком тяжёлым, и [him] нужно побыть одному, чтобы прийти в себя.""",
+	NEGOTIATION_LOG_INSTANT = """[He] даже не колеблется — доверие к вам делает согласие лёгким.""",
+	NEGOTIATION_UNLOCKED_TEXT = """%s принял(а) новую обязанность: %s.""",
+	NEGOTIATION_HESITATION_WORKING_CHARGE = """%s колеблется, не уверен(а), стоит ли брать на себя больше обязанностей.""",
+	NEGOTIATION_HESITATION_WORKING_FORCE = """%s наотрез отказывается, с ноткой обиды заявляя, что и так делает для вас достаточно.""",
+	NEGOTIATION_PERSUADE_FORCE_WORKING = """Напомнить [him], кто здесь главный""",
+	NEGOTIATION_LOG_PAID_WORKING = """Вы суёте [him] %d золота в качестве премии. Решимость [his] рушится, и [he] уступает, соглашаясь взять больше работы.""",
+	NEGOTIATION_LOG_CHARGE_WORKING = """Вы взяли [his] убеждением. [He] согласился(лась) взять больше работы.""",
+	NEGOTIATION_LOG_FORCE_WORKING = """Вы дали понять, что это не просьба, и давили на [him], пока [he] нехотя не уступил(а) и не согласился(лась) работать больше. Уважение к вам падает на %d, привязанность — на %d.""",
+	NEGOTIATION_HESITATION_COMBAT_CHARGE = """%s колеблется, не уверен(а), стоит ли идти на опасность боя ради вас.""",
+	NEGOTIATION_HESITATION_COMBAT_FORCE = """%s наотрез отказывается, с ноткой обиды заявляя, что рисковать жизнью в уговор не входило.""",
+	NEGOTIATION_PERSUADE_FORCE_COMBAT = """Напомнить [him], что отказ невозможен""",
+	NEGOTIATION_LOG_PAID_COMBAT = """Вы суёте [him] %d золота в качестве премии. Решимость [his] рушится, и [he] уступает, соглашаясь сражаться за вас.""",
+	NEGOTIATION_LOG_CHARGE_COMBAT = """Вы взяли [his] убеждением. [He] согласился(лась) сражаться за вас.""",
+	NEGOTIATION_LOG_FORCE_COMBAT = """Вы дали понять, что отказ невозможен, и запугивали [him], пока [he] нехотя не уступил(а) и не согласился(лась) сражаться. Уважение к вам падает на %d, привязанность — на %d.""",
 	NEGOTIATION_HESITATION_DATING_CHARGE = """%s hesitates, unsure about taking on that kind of closeness with you.""", # MISSING TRANSLATION
 	NEGOTIATION_HESITATION_DATING_FORCE = """%s flatly refuses, arguing with a hint of entitlement that [he] shouldn't be rushed into that kind of closeness.""", # MISSING TRANSLATION
 	NEGOTIATION_PERSUADE_FORCE_DATING = """Insist that [he] stop being so shy about it""", # MISSING TRANSLATION
@@ -2425,25 +2445,25 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	NEGOTIATION_LOG_PAID_SEXSERVICE = """Slip [him] %d gold as a bonus. [His] resolve crumbles, and [he] caves in, accepting [his] new role.""", # MISSING TRANSLATION
 	NEGOTIATION_LOG_CHARGE_SEXSERVICE = """Won [him] over with a Persuasion Challenge. [He] agreed to it.""", # MISSING TRANSLATION
 	NEGOTIATION_LOG_FORCE_SEXSERVICE = """Made it clear [his] consent was never needed, forcing [him] to reluctantly accept [his] new role. [His] respect for you falls by %d and [his] affection by %d.""", # MISSING TRANSLATION
-	TRAININGRESULT_FAIL = """Fail""", # MISSING TRANSLATION
-	TRAININGRESULT_RESIST = """Resist""", # MISSING TRANSLATION
-	TRAININGRESULT_SUCCESS = """Success""", # MISSING TRANSLATION
-	TRAININGRESULT_CRIT_SUCCESS = """Critical Success""", # MISSING TRANSLATION
-	CHANCELOG_DEBUG_NOTE = """[Debug Info - disposition not actually known]""", # MISSING TRANSLATION
-	CHANCELOG_BASE = """Base (%s): Fail %.0f, Resist %.0f, Success %.0f, Crit %.0f""", # MISSING TRANSLATION
-	CHANCELOG_TAMEFACTOR = """Tame Factor (%.0f): %s""", # MISSING TRANSLATION
-	CHANCELOG_SRC_TRAINERCLASS = """Trainer (%s)""", # MISSING TRANSLATION
-	CHANCELOG_SRC_DISPOSITION = """Disposition (%s)""", # MISSING TRANSLATION
-	CHANCELOG_FINAL = """Final: Fail %.0f%%, Resist %.0f%%, Success %.0f%%, Crit %.0f%%""", # MISSING TRANSLATION
-	CHANCELOG_FAIL = """Fail""", # MISSING TRANSLATION
-	CHANCELOG_RESIST = """Resist""", # MISSING TRANSLATION
-	CHANCELOG_SUCCESS = """Success""", # MISSING TRANSLATION
-	CHANCELOG_CRIT_SUCCESS = """Crit""", # MISSING TRANSLATION
-	TRAININGCOMPLETEDANNOUNCE = """%s's training is over.""", # MISSING TRANSLATION
-	TRAININGBROKENINANNOUNCE = """%s is broken in.""", # MISSING TRANSLATION
-	TRAININGNEGATIVETRAITGAINED = """%s's resistance to training has left a mark: acquired %s.""", # MISSING TRANSLATION
-	TRAININGDECAYSIN = """Loyalty decays in %d day(s) (-%.0f/day)""", # MISSING TRANSLATION
-	TRAININGDECAYING = """Loyalty is decaying: -%.0f/day""", # MISSING TRANSLATION
+	TRAININGRESULT_FAIL = """Провал""",
+	TRAININGRESULT_RESIST = """Сопротивление""",
+	TRAININGRESULT_SUCCESS = """Успех""",
+	TRAININGRESULT_CRIT_SUCCESS = """Критический успех""",
+	CHANCELOG_DEBUG_NOTE = """[Отладка — расположение на самом деле неизвестно]""",
+	CHANCELOG_BASE = """База (%s): провал %.0f, сопротивление %.0f, успех %.0f, крит %.0f""",
+	CHANCELOG_TAMEFACTOR = """Фактор укрощения (%.0f): %s""",
+	CHANCELOG_SRC_TRAINERCLASS = """Наставник (%s)""",
+	CHANCELOG_SRC_DISPOSITION = """Расположение (%s)""",
+	CHANCELOG_FINAL = """Итог: провал %.0f%%, сопротивление %.0f%%, успех %.0f%%, крит %.0f%%""",
+	CHANCELOG_FAIL = """Провал""",
+	CHANCELOG_RESIST = """Сопротивление""",
+	CHANCELOG_SUCCESS = """Успех""",
+	CHANCELOG_CRIT_SUCCESS = """Крит""",
+	TRAININGCOMPLETEDANNOUNCE = """Обучение %s завершено. """,
+	TRAININGBROKENINANNOUNCE = """%s усмирён(а).""",
+	TRAININGNEGATIVETRAITGAINED = """Сопротивление обучению оставило след у %s: получена черта %s.""",
+	TRAININGDECAYSIN = """Верность начнёт падать через %d дн. (-%.0f/день)""",
+	TRAININGDECAYING = """Верность падает: -%.0f/день""",
 	LOYALTYDECAYTOOLTIP = """Loyalty decays if the slave goes too long without training. Decay speed and grace period depend on Authority Factor.""", # MISSING TRANSLATION
 	TRAININGSTATUS1 = """Статус духа: Сломлен""",
 	TRAININGSTATUS2 = """Статус духа: Поврежден""",
@@ -2457,8 +2477,8 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	TRAININGTOOLTIPRESISTANCE = """Сопротивление раба снижает эффективность тренировок не {color=yellow|Позитивных} действий.
 %s's сопротивление падает на %.0f за ход.""",
 	TRAININGTOOLTIPRESISTULT = "Текущее сопротивление слишком велико для тренировки.",
-	TRAININGRESISTANCEINCREASE = "Resistance increased to %.0f.",
-	TRAININGLABELSPIRIT = "Character Spirit: %.0f",
+	TRAININGRESISTANCEINCREASE = """Сопротивление возросло до %.0f.""",
+	TRAININGLABELSPIRIT = """Дух персонажа: %.0f""",
 	TRAININGLABELLOYALTY = "%.0f/%.0f",
 	TRAININGLABELLOYALTYGROW = "%.0f + %.2f",
 	TRAININGLABELRESISTANCE = "%.0f",
@@ -2486,7 +2506,7 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	TRIANINGREQUIRES = """Обязательные категории тренировки: """,
 	TRAININGVIRGINITYTAKEN = "%s лишает девственности %s",
 	TRAININGDISPOSITIONS = "Предрасположенности:",
-	TRAININGDISPOSITIONUNKNOWN = "unknown",
+	TRAININGDISPOSITIONUNKNOWN = """неизвестно""",
 	DISPOSITIONCHANGE = """Позиция к %s изменена""",
 	DISPOSITIONRESIST = "сопротивление",
 	DISPOSITIONNEUTRAL = "нейтрально",
@@ -2502,7 +2522,7 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 """,
 	SPIRITTOOLTIP = """Дух представляет собой остатки воли персонажа. Если он упадет слишком низко, то по завершении обучения он будет сломлен и получит значительные штрафы. """,
 	LOYALTYTOOLTIP = """Верностьь используется для разблокировки действий персонажа и получается при прохождении тренировок раз в день""",
-	TRAININGPOINTSTOOLTIP = """Training Points are earned from training actions and are spent to unlock training traits. The amount you can hold is capped based on Tame Factor.""", # MISSING TRANSLATION
+	TRAININGPOINTSTOOLTIP = """Очки обучения зарабатываются за действия обучения и тратятся на открытие бонусов после его завершения. Максимум зависит от фактора укрощения.""",
 	CLICKTOCHANGE = """Нажмите, чтобы изменить""",
 	WITSREVEALDISPOSITION = """Позиция выяснена:""",
 	MINDREADREVEALDISPOSITION = """Позиции раскрыты:""",
@@ -2551,14 +2571,14 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	TASKRESTDESCRIPT = """Отдых улучшает заживление травм и восстановление здоровья. Не выполняет никакой работы во время отдыха.""",
 	TASKCRAFT = """Crafting""", # MISSING TRANSLATION
 	TASKCRAFTNAME = """Crafting""", # MISSING TRANSLATION
-	TASKCRAFTDESCRIPT = """Set up priority of character's crafting activities.""", # MISSING TRANSLATION
+	TASKCRAFTDESCRIPT = """Задайте приоритет ремесленных занятий персонажа.""",
 	TASKRESTINFO = """Отдых ускоряет заживление ран и не заставляет персонажа терять Повиновение, но также не увеличивает Верность""",
-	CRAFTRULES2TITLE = """Craft Rules - %s""", # MISSING TRANSLATION
-	PREDICTEDTASKLABEL = """Predicted task:""", # MISSING TRANSLATION
+	CRAFTRULES2TITLE = """Правила ремесла — %s""",
+	PREDICTEDTASKLABEL = """Ожидаемая задача:""",
 	CRAFTCATEGORYWORKUNITS = """%s (%.1f WU)""", # MISSING TRANSLATION
 	CRAFTWORKUNITSPERTURN = """Work units: %.1f per turn""", # MISSING TRANSLATION
-	MATERIALSORDERLABEL = """Materials order""", # MISSING TRANSLATION
-	ITEMSORDERLABEL = """Items order""", # MISSING TRANSLATION
+	MATERIALSORDERLABEL = """Порядок материалов""",
+	ITEMSORDERLABEL = """Порядок предметов""",
 	CRAFTRULES2TOOLTIP = """Toggle which crafting tasks the character is allowed to perform. Enabled tasks (green) are attempted in the priority order shown; drag entries in the order lists to rearrange priority. Disabled tasks (grey) will be skipped. Predicted task shows which job the character will perform next.""", # MISSING TRANSLATION
 	NOSERVICECAPITAL = "Не может предоставлять услуги за пределами городов!",
 	TASKFARMING_VEGES = """Овощи""",
@@ -2617,9 +2637,9 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	SERVICEPREGNANT = """[He] может потерять девственность и забеременеть от проникновения.""",
 	SERVICESEXUALNONPENETRATIVE = """[name] будет развлекать клиентов, обслуживая их и оказывая им легкие сексуальные услуги, не связанные с проникновением""",
 	SERVICENOSEX = """[name] будет обслуживать и развлекать клиентов, но откажется от любых сексуальных услуг""",
-	SERVICEESTVALUE = """Estimated value: %s gold""", # MISSING TRANSLATION
-	SERVICEDESIRABILITY = """Desirability: %s%% (chance to earn full gold instead of half)""", # MISSING TRANSLATION
-	SERVICEDESIRABILITYVALUE = """Desirability: %s""", # MISSING TRANSLATION
+	SERVICEESTVALUE = """Ожидаемый доход: %s золота""",
+	SERVICEDESIRABILITY = """Привлекательность: %s%%""",
+	SERVICEDESIRABILITYVALUE = """Привлекательность: %s""",
 
 	TASKMAINSTAT = """Основная характеристика""",
 	
@@ -2636,24 +2656,27 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	LOGMANSIONTOOLTIP = """События в поместье""",
 	LOGCHARTOOLTIP = """События персонажей""",
 	LOGQUESTTOOLTIP = """События заданий""",
-	MANSION_ACTIVITY_TITLE = """Activity""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_EMPTY = """No recent activity yet.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TITLE = """События""",
+	MANSION_ACTIVITY_EMPTY = """Пока никаких событий.""",
 	MANSION_ACTIVITY_TIME = """W%d · D%d · %s""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_TYPE_ARRIVAL = """Arrival""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_TYPE_CRAFT = """Crafting""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_TYPE_UPGRADE = """Upgrade""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_TYPE_FOOD = """Food""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_TYPE_RECOVERY = """Recovery""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_TYPE_QUEST_TASK = """Quest task""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_TYPE_CHARACTER_FOUND = """Character found""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_ARRIVAL_MANSION = """%s returned to the mansion.""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_ARRIVAL_LOCATION = """%s arrived at %s.""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_CRAFT_COMPLETE = """%s finished crafting %s.""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_UPGRADE_COMPLETE = """%s completed the %s upgrade.""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_FOOD_DISSATISFIED = """Wasn't satisfied by the food quality""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_INJURY_RECOVERED = """%s recovered from their injuries.""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_QUEST_TASK_COMPLETE = """%s completed the quest task: %s.""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_CHARACTER_FOUND = """%s found %s at %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_ARRIVAL = """Прибытие""",
+	MANSION_ACTIVITY_TYPE_CRAFT = """Ремесло""",
+	MANSION_ACTIVITY_TYPE_UPGRADE = """Улучшение""",
+	MANSION_ACTIVITY_TYPE_FOOD = """Еда""",
+	MANSION_ACTIVITY_TYPE_RECOVERY = """Восстановление""",
+	MANSION_ACTIVITY_TYPE_QUEST_TASK = """Задача задания""",
+	MANSION_ACTIVITY_TYPE_CHARACTER_FOUND = """Найден персонаж""",
+	MANSION_ACTIVITY_ARRIVAL_MANSION = """%s вернулся(лась) в особняк.""",
+	MANSION_ACTIVITY_ARRIVAL_MANSION_LINK = """%s returned to %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_ARRIVAL_LOCATION = """%s прибыл(а) в %s.""",
+	MANSION_ACTIVITY_CRAFT_COMPLETE = """%s закончил(а) изготовление: %s.""",
+	MANSION_ACTIVITY_UPGRADE_COMPLETE = """%s завершил(а) улучшение: %s.""",
+	MANSION_ACTIVITY_FOOD_DISSATISFIED = """%s остался(лась) недоволен(льна) качеством еды""",
+	MANSION_ACTIVITY_INJURY_RECOVERED = """%s оправился(лась) от ран.""",
+	MANSION_ACTIVITY_QUEST_TASK_COMPLETE = """%s выполнил(а) задачу задания: %s.""",
+	MANSION_ACTIVITY_CHARACTER_FOUND = """%s нашёл(ла) %s в %s.""",
+	MANSION_ACTIVITY_LOCATION_EMPTY = """There is nobody left at %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_LOCATION_GONE = """That location is no longer accessible.""", # MISSING TRANSLATION
 	BROTHELLOGSEX = """%s заработал/а %s золота, выполняя %s с %s клиентами.""",
 	BROTHELLOGSEXPARTIAL = """%s failed to fully attract a customer and earned only %s gold performing %s with a %s customer.""", # MISSING TRANSLATION
 	BROTHELLOGNO_SEX = """%s заработал/а %s золота, работая как %s.""",
@@ -3062,9 +3085,9 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	STATARMORDESCRIPT = """Уменьшает получаемый физический урон.""",
 	STATMDEF = """МЗАЩ""",
 	STATMDEFDESCRIPT = """Уменьшает получаемый магический урон.""",
-	STATATK = """ATK""",
+	STATATK = """АТК""",
 	STATATKDESCRIPT = """Определяет значения физического урона.""",
-	STATMATK = """MATK""",
+	STATMATK = """МАТК""",
 	STATMATKDESCRIPT = """Определяет значения магического урона.""",
 	STATCRITCHANCE = """Крит. шанс""",
 	STATCRITCHANCEDESCRIPT = """Определяет шанс критического удара.""",
@@ -3119,44 +3142,44 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	STATWITS_BONUS = """Мудрость""",
 	STATCHARM_BONUS = """Обаяние""",
 	STATSEXUALS_BONUS = """Сексуальность""",
-	STATDESIRABILITY_BONUS = """Desirability""", # MISSING TRANSLATION
+	STATDESIRABILITY_BONUS = """Привлекательность""",
 	STATTRAINEE_AMOUNT = """Слоты тренировок""",
 	STATTRAINING_LOYALTY = """Верность от обучения""",
-	STATTRAINING_POINTS_BONUS = """Training Points from Training""", # MISSING TRANSLATION
+	STATTRAINING_POINTS_BONUS = """Очки обучения от тренировок""",
 	STATTRAINING_SPIRIT = """Дух от обучения""",
 	STATRESISTANCE_RED = "Скорость падения сопротивления",
 	STATTRAINER_LOYALTY_BONUS = "Верность обучаемого",
-	STATTRAINER_TRAINING_POINTS_BONUS = """Training Points bonus for trainee""", # MISSING TRANSLATION
+	STATTRAINER_TRAINING_POINTS_BONUS = """Бонус очков обучения для ученика""",
 	STATTRAINING_LOYALTYDESCRIPT = "Бонус верности, получаемый этим персонажем от тренировок",
-	STATTRAINING_POINTS_BONUSDESCRIPT = """Adjustment for Training Points gained during Training""", # MISSING TRANSLATION
+	STATTRAINING_POINTS_BONUSDESCRIPT = """Поправка к очкам обучения, получаемым во время тренировок""",
 	STATTRAINING_SPIRITDESCRIPT = "Корректировка снижения духа во время тренировок",
 	STATRESISTANCE_REDDESCRIPT = "Скорость снижения сопротивления раба со временем",
 	STATTRAINER_LOYALTY_BONUSDESCRIPT = "Бонус верности, получаемый учеником этого персонажа",
-	STATTRAINER_TRAINING_POINTS_BONUSDESCRIPT = """Training Points bonus received by this character's trainee""", # MISSING TRANSLATION
-	STATTRAINEE_AMOUNTDESCRIPT = "Maximal number of trainee",
+	STATTRAINER_TRAINING_POINTS_BONUSDESCRIPT = """Бонус очков обучения, который получает ученик этого персонажа""",
+	STATTRAINEE_AMOUNTDESCRIPT = """Максимальное число учеников""",
 	TRAITTRAINER = """Тренер""",
 	TRAITTRAINERDESCRIPT = """Может наблюдать за рабами""",
-	CHARACTER_STANDING_ANTIPATHY = """Antipathy""", # MISSING TRANSLATION
-	CHARACTER_STANDING_FRIEND = """Friend""", # MISSING TRANSLATION
-	CHARACTER_STANDING_LOVE_PEST = """Love Pest""", # MISSING TRANSLATION
-	CHARACTER_STANDING_MINION = """Minion""", # MISSING TRANSLATION
-	CHARACTER_STANDING_HOUSEMATE = """Housemate""", # MISSING TRANSLATION
-	CHARACTER_STANDING_INFATUATED = """Infatuated""", # MISSING TRANSLATION
-	CHARACTER_STANDING_SWORN_SERVANT = """Sworn Servant""", # MISSING TRANSLATION
-	CHARACTER_STANDING_COMPANION = """Companion""", # MISSING TRANSLATION
-	CHARACTER_STANDING_BELOVED = """Beloved""", # MISSING TRANSLATION
-	TOOLTIPCHARACTERSTANDING = """Character's treatment of [master] will depend on their respect and affection. When both are very low character might attempt to escape. Certain bonuses might come up under specific combinations.""", # MISSING TRANSLATION
-	TRAITSTANDING_LOVE_PEST = """Love Pest""", # MISSING TRANSLATION
+	CHARACTER_STANDING_ANTIPATHY = """Антипатия""",
+	CHARACTER_STANDING_FRIEND = """Друг""",
+	CHARACTER_STANDING_LOVE_PEST = """Надоеда""",
+	CHARACTER_STANDING_MINION = """Прислужник""",
+	CHARACTER_STANDING_HOUSEMATE = """Сосед по дому""",
+	CHARACTER_STANDING_INFATUATED = """Влюблённый""",
+	CHARACTER_STANDING_SWORN_SERVANT = """Верный слуга""",
+	CHARACTER_STANDING_COMPANION = """Спутник""",
+	CHARACTER_STANDING_BELOVED = """Возлюбленный""",
+	TOOLTIPCHARACTERSTANDING = """Отношение персонажа к [master] зависит от уважения и привязанности. Когда оба очень низки, персонаж может попытаться сбежать. При определённых сочетаниях появляются особые бонусы.""",
+	TRAITSTANDING_LOVE_PEST = """Надоеда""",
 	TRAITSTANDING_LOVE_PESTDESCRIPT = """Experience gained from the sex minigame is increased by 25%.""", # MISSING TRANSLATION
-	TRAITSTANDING_HOUSEMATE = """Housemate""", # MISSING TRANSLATION
+	TRAITSTANDING_HOUSEMATE = """Сосед по дому""",
 	TRAITSTANDING_HOUSEMATEDESCRIPT = """Health and Mana regeneration are increased by 10%.""", # MISSING TRANSLATION
-	TRAITSTANDING_SWORN_SERVANT = """Sworn Servant""", # MISSING TRANSLATION
-	TRAITSTANDING_SWORN_SERVANTDESCRIPT = """Productivity is increased by 10%.""", # MISSING TRANSLATION
-	TRAITSTANDING_BELOVED = """Beloved""", # MISSING TRANSLATION
-	TRAITSTANDING_BELOVEDDESCRIPT = """Character upkeep is reduced by 50%.""", # MISSING TRANSLATION
+	TRAITSTANDING_SWORN_SERVANT = """Верный слуга""",
+	TRAITSTANDING_SWORN_SERVANTDESCRIPT = """Продуктивность повышена на 10%.""",
+	TRAITSTANDING_BELOVED = """Возлюбленный""",
+	TRAITSTANDING_BELOVEDDESCRIPT = """Содержание персонажа снижено на 50%.""",
 	STATSPIRIT = """Дух""",
-	STATTRAINING_POINTS = """Training Points""", # MISSING TRANSLATION
-	STATTRAINING_POINTSDESCRIPT = """Training Points are earned from training actions and spent to unlock training traits.""", # MISSING TRANSLATION
+	STATTRAINING_POINTS = """Очки обучения""",
+	STATTRAINING_POINTSDESCRIPT = """Очки обучения зарабатываются за действия обучения и тратятся на открытие черт обучения.""",
 	TRAITTRAINING_WORKFORCE = """Обучение: Рабочая сила""",
 	TRAITTRAINING_WORKFORCEDESCRIPT = """Настроен на трудовое рабство. 
 Производительность увеличена на 40 %""",
@@ -3175,21 +3198,21 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	STATOBEDIENCEDESCRIPT = """Повиновение - это готовность персонажа подчиняться вашим приказам. Повиновение приобретается с помощью социальных навыков. При истощении персонаж может сбежать и будет потерян, если это произойдет.""",
 	STATLOYALTY = """Верность""",
 	STATLOYALTYDESCRIPT = """Очки верности позволяют открывать новые способности для ваших слуг. Верность приобретается пассивно на основе фактора приручения персонажа, но также может быть улучшена на свиданиях и при использовании социальных навыков.""",
-	STATAFFECTION = """Affection""", # MISSING TRANSLATION
-	STATAFFECTIONDESCRIPT = """Affection represents how positively or negatively this character feels about you.""", # MISSING TRANSLATION
-	STATRESPECT = """Respect""", # MISSING TRANSLATION
-	STATRESPECTDESCRIPT = """Respect represents how highly or poorly this character regards you.""", # MISSING TRANSLATION
-	EVENT_EFFECT_INCREASED = """%s increased""", # MISSING TRANSLATION
-	EVENT_EFFECT_DECREASED = """%s decreased""", # MISSING TRANSLATION
+	STATAFFECTION = """Привязанность""",
+	STATAFFECTIONDESCRIPT = """Привязанность показывает, насколько положительно или отрицательно этот персонаж к вам относится.""",
+	STATRESPECT = """Уважение""",
+	STATRESPECTDESCRIPT = """Уважение показывает, насколько высоко или низко этот персонаж вас ценит.""",
+	EVENT_EFFECT_INCREASED = """%s повышено""",
+	EVENT_EFFECT_DECREASED = """%s снижено""",
 	EVENT_EFFECT_VALUE = """%s %s""", # MISSING TRANSLATION
-	EVENT_EFFECT_SET = """%s set to %s""", # MISSING TRANSLATION
+	EVENT_EFFECT_SET = """%s установлено на %s""",
 	EVENT_EFFECT_CHARACTER = """%s: %s""", # MISSING TRANSLATION
-	EVENT_EFFECT_REPUTATION = """%s Reputation""", # MISSING TRANSLATION
-	EVENT_EFFECT_RELATIONSHIP = """%s and %s: Relationship %s""", # MISSING TRANSLATION
-	EVENT_EFFECT_TRAIT_GAINED = """%s Trait gained""", # MISSING TRANSLATION
-	EVENT_EFFECT_TRAIT_LOST = """%s Trait lost""", # MISSING TRANSLATION
+	EVENT_EFFECT_REPUTATION = """Репутация: %s""",
+	EVENT_EFFECT_RELATIONSHIP = """%s и %s: отношения — %s""",
+	EVENT_EFFECT_TRAIT_GAINED = """Получена черта: %s""",
+	EVENT_EFFECT_TRAIT_LOST = """Утрачена черта: %s""",
 	STATRESISTANCE = "Сопротивление",
-	STATRESISTANCEDESCRIPT = "Resistance DESCRIPT PLACEHOLDER.",
+	STATRESISTANCEDESCRIPT = """Сопротивление.""",
 	STATSUBMISSION = """Подчинение""",#Obsolete
 	STATSUBMISSIONDESCRIPT = """Подчинение создается с помощью наказывающих умений. Со временем оно будет уменьшаться, пока не достигнет минимума. Максимально развитое Подчинение больше не требует Повиновение для работы и останавливает побег.""",
 	STATAUTHORITY = """Авторитет""",#Obsolete
@@ -3198,7 +3221,7 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	STATLUSTDESCRIPT = """Похоть усиливается со временем и позволяет использовать определенные навыки. При правильном использовании похоть может быть мощным инструментом контроля и ресурсов.""",
 	STATPRODUCTIVITY = """Продуктивность""",
 	STATPRODUCTIVITYDESCRIPT = """Влияет на все производственные задачи. Общая производительность относится ко всем профессиям, в то время как эффективность повышает конкретные задачи.""",
-	STATDESIRABILITY = """Desirability""", # MISSING TRANSLATION
+	STATDESIRABILITY = """Привлекательность""",
 	STATDESIRABILITYDESCRIPT = """{color=yellow|Desirability} affects how likely a character is to earn full gold from sex service instead of a reduced amount, and boosts non-sex service income once it rises above 50. Grows from Charm Factor, Charm, fame, and certain clothes or traits.""", # MISSING TRANSLATION
 	STATCONSENT = """Согласие""",
 	STAMINA_LABEL = "Выносливость",
@@ -3283,7 +3306,7 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	STATRESIST_BLINDDESCRIPT = "Сопротивление эффекту ослепления",
 	STATRESIST_BURNDESCRIPT = "Сопротивление эффекту горения",
 	STATRESIST_CONFUSEDESCRIPT = "Сопротивление эффекту замешательства",
-	STATRESIST_CURSEDDESCRIPT = """Resistance to Curse effect""", # MISSING TRANSLATION
+	STATRESIST_CURSEDDESCRIPT = """Сопротивление эффекту «Проклятие»""",
 	STATRESIST_CURSEDESCRIPT = "Сопротивление эффекту проклятия",
 	STATRESIST_DISARMDESCRIPT = "Сопротивление эффекту обезоруживания",
 	STATRESIST_FEARDESCRIPT = "Сопротивление эффекту страха",
@@ -3303,9 +3326,9 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	STATENCHCAP = """Вместимость зачарований""", 
 	STATQUALITY = """Качество""",
 	STATPRICE = """Цена""",
-	STATCOUNTERATTACKS = """Counterattacks remained""", # MISSING TRANSLATION
-	STATCOUNTERATTACKS_MAX = """Counterattacks per turn""", # MISSING TRANSLATION
-	STATCOUNTERATTACKS_MAXDESCRIPT = """Maximal number of counterattacks this character can perform per turn.""", # MISSING TRANSLATION
+	STATCOUNTERATTACKS = """Осталось контратак""",
+	STATCOUNTERATTACKS_MAX = """Контратак за ход""",
+	STATCOUNTERATTACKS_MAXDESCRIPT = """Максимальное число контратак, которое этот персонаж может совершить за ход.""",
 
 	STATCHG_STRENGTH = """Зарядов силы""",
 	STATCHG_STRENGTH_MAX = """Макс. зарядов силы""",
@@ -3363,13 +3386,13 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	FAMEDESC_PRICE_BONUS = "Ценность персонажа",
 	FAMEDESC_UPKEEP = "Еженедельное содержание подчинённого",
 	FAMEDESC_LOYALTY_BONUS = "Верность от обучения",
-	FAMEDESC_MANHUNT_BONUS = "Manhunt bonus", # MISSING TRANSLATION
-	FAMEDESC_DESIRABILITY_BONUS = """Desirability bonus""", # MISSING TRANSLATION
+	FAMEDESC_MANHUNT_BONUS = """Бонус к охоте за людьми""",
+	FAMEDESC_DESIRABILITY_BONUS = """Бонус к привлекательности""",
 	PRICEDESC_TRAITS_POS = "Положительные черты",
 	PRICEDESC_TRAITS_NEG = "Отрицательные черты",
 	PRICEDESC_CUMULATIVE = "Совокупный бонус от %s",
 	PRICEDESC_LESS = "Не может быть меньше чем",
-	PRICEDESC_NOT_BROKEN_IN = """Not broken in""", # MISSING TRANSLATION
+	PRICEDESC_NOT_BROKEN_IN = """Не усмирён""",
 	MASTER_POINTS = """Очки Мастера""",
 	TOOLTIPENERGY = """Энергия восстанавливается во время сна и требуется для выполнения задач. Когда персонаж вынужден работать без энергии, его Истощение увеличивается.""",
 	TOOLTIPFATIGUE = """Усталость возрастает со временем и рассеивается при развлечении. Если за ней не следить, она может привести к снижению производительности.""",
@@ -3533,10 +3556,10 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	STATFOOD_HATE = """Ненавистная еда""",
 	STATFOOD_LOVEDESCRIPT = """Когда съедена любимая еда, она дает незначительный прирост к Продуктивности и Повиновению на следующий день. Пища, приготовленная как из любимых, так и из ненавистных ингредиентов, будет считаться нейтральной и не даст ни бонуса, ни штрафа.""",
 	STATFOOD_HATEDESCRIPT = """Если съедена ненавистная еда, она снижает продуктивность на следующий день. Пища, приготовленная как из любимых, так и из ненавистных ингредиентов, будет считаться нейтральной и не даст ни бонуса, ни штрафа.""",
-	STATFOOD_DEMAND = """Food Demand""", # MISSING TRANSLATION
-	STATFOOD_DEMANDDESCRIPT = """The quality of food a character expects. Eating below it costs Respect, Productivity and Experience Gain until their next meal.""", # MISSING TRANSLATION
-	STATFED = """Fed""", # MISSING TRANSLATION
-	STATFEDDESCRIPT = """Turns of food a character has left. It drops by one every turn and is topped up whenever they eat. At zero they eat again, or starve if nothing is available.""", # MISSING TRANSLATION
+	STATFOOD_DEMAND = """Запросы к еде""",
+	STATFOOD_DEMANDDESCRIPT = """Качество еды, которого ожидает персонаж. Питание ниже этого уровня стоит уважения, продуктивности и получаемого опыта до следующего приёма пищи.""",
+	STATFED = """Сыт""",
+	STATFEDDESCRIPT = """Сколько ходов персонажу хватит еды. Значение падает на единицу каждый ход и пополняется при каждом приёме пищи. На нуле персонаж ест снова или голодает, если еды нет.""",
 
 	STATTASK_EFFICIENCY_TOOL = """Бонус эффективности выполнения поручений""",
 	STATTASK_EFFICIENCY_AXE = "Эффективность задач - Топор",
@@ -3641,24 +3664,24 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	
 	RACERATKIN = """Крысолюд""",
 	RACERATKINADJ = """Крысолюдов""",
-	SHORT_RACE_GREEN_SKIN = """greenskin""", # MISSING TRANSLATION
-	SHORT_RACE_HORSE = """horse""", # MISSING TRANSLATION
-	SHORT_RACE_SPIDER = """spider""", # MISSING TRANSLATION
-	SHORT_RACE_DRAGON = """dragon""", # MISSING TRANSLATION
-	SHORT_RACE_ANGEL = """angel""", # MISSING TRANSLATION
-	SHORT_RACE_COW = """cow""", # MISSING TRANSLATION
-	SHORT_RACE_SQUID = """squid""", # MISSING TRANSLATION
-	SHORT_RACE_SCYLA = """scyla""", # MISSING TRANSLATION
-	SHORT_RACE_FISH = """fish""", # MISSING TRANSLATION
-	SHORT_RACE_SNAKE = """snake""", # MISSING TRANSLATION
-	SHORT_RACE_WOLF = """wolf""", # MISSING TRANSLATION
-	SHORT_RACE_FOX = """fox""", # MISSING TRANSLATION
-	SHORT_RACE_BUNNY = """bunny""", # MISSING TRANSLATION
-	SHORT_RACE_TANUKI = """tanuki""", # MISSING TRANSLATION
-	SHORT_RACE_CAT = """cat""", # MISSING TRANSLATION
-	SHORT_RACE_FELINE = """feline""", # MISSING TRANSLATION
-	SHORT_RACE_RACCOON = """raccoon""", # MISSING TRANSLATION
-	SHORT_RACE_RAT = """rat""", # MISSING TRANSLATION
+	SHORT_RACE_GREEN_SKIN = """зеленокожий""",
+	SHORT_RACE_HORSE = """лошадь""",
+	SHORT_RACE_SPIDER = """паук""",
+	SHORT_RACE_DRAGON = """дракон""",
+	SHORT_RACE_ANGEL = """ангел""",
+	SHORT_RACE_COW = """корова""",
+	SHORT_RACE_SQUID = """кальмар""",
+	SHORT_RACE_SCYLA = """сцилла""",
+	SHORT_RACE_FISH = """рыба""",
+	SHORT_RACE_SNAKE = """змея""",
+	SHORT_RACE_WOLF = """волк""",
+	SHORT_RACE_FOX = """лиса""",
+	SHORT_RACE_BUNNY = """кролик""",
+	SHORT_RACE_TANUKI = """тануки""",
+	SHORT_RACE_CAT = """кошка""",
+	SHORT_RACE_FELINE = """кошачий""",
+	SHORT_RACE_RACCOON = """енот""",
+	SHORT_RACE_RAT = """крыса""",
 	
 	
 	RACEHUMANDESCRIPT = """Люди - одна из самых распространенных рас. Их сила заключается в их численности и гибкости, но в целом они довольно слабы в магии и имеют низкий потенциальный рост. Только несколько исключительных людей показали выдающиеся подвиги. 
@@ -3808,10 +3831,10 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 Приводит в исполнение приговор выбранного персонажа. Значительно улучшает Повиновение всех участников. 
 Основные эффекты: 
 Верность: +25, максимальное Повиновение.""",
-	SKILLCLASS_COPY = """Universal Aptitude""", # MISSING TRANSLATION
-	SKILLCLASS_COPYDESCRIPT = """Select a character to get it's specific racial class.""", # MISSING TRANSLATION
-	DIALOGUECLASS_COPYREPORT = """Select a class for [name] to learn from [targetname].""", # MISSING TRANSLATION
-	DIALOGUECLASS_COPYREPORT_FAILED = """No class for [name] to learn from [targetname].""", # MISSING TRANSLATION
+	SKILLCLASS_COPY = """Универсальная одарённость""",
+	SKILLCLASS_COPYDESCRIPT = """Позволяет скопировать расово ограниченный класс выбранного персонажа. Используется только один раз.""",
+	DIALOGUECLASS_COPYREPORT = """Выберите класс, которому [name] научится у [targetname].""",
+	DIALOGUECLASS_COPYREPORT_FAILED = """У [targetname] нет класса, которому [name] мог(ла) бы научиться.""",
 	SKILLENTHRALL = "Порабощение",
 	SKILLENTHRALLDESCRIPT = "Выберите персонажа, чтобы превратить его в Приспешника заклинателя. Каждый Приспешник увеличивает максимальную Похоть, регенерацию Похоти и даёт очки разблокировки.",
 	DIALOGUEENTHRALLREPORT = "[targetname] был успешно порабощён [name]. [targetname] чувствует себя полностью очарованным.",
@@ -3928,6 +3951,8 @@ USAGE_COST = "Стоимость использования",
 	SKILLS_CAT_HEAL_DESC = "Лечение",
 	UNLOCK_REQS = "Требования для открытия",
 	CLASSES_LABEL = "Классы",
+	CHARINFO_PROGRESSION = """Character Progression""", # MISSING TRANSLATION
+	CHARINFO_MASTERIES_TAB = """Masteries""", # MISSING TRANSLATION
 	SKILLS_LABEL = "Навыки",
 	SKILL_POINTS_LABEL = "Очки навыков",
 	REQUIREMENTS_TOOLTIP = "Требования",
@@ -3986,8 +4011,8 @@ USAGE_COST = "Стоимость использования",
 	REPUTATION_SHOP_LABEL = "Магазин репутации",
 	UPGRADE_BODY_LABEL = "Улучшить тело",
 	MARKETPLACE_LABEL = "Рынок",
-	BUYBACK_LABEL = """Buyback""", # MISSING TRANSLATION
-	BUYBACK_TOOLTIP = """Shows goods you sold to this shop. They can be bought back for the same price until the turn ends.""", # MISSING TRANSLATION
+	BUYBACK_LABEL = """Выкуп""",
+	BUYBACK_TOOLTIP = """Показывает товары, проданные вами этой лавке. Их можно выкупить обратно по той же цене до конца хода.""",
 	COST_LABEL = "Цена",
 	NUMBER_LABEL = "Количество",
 	ITEM_LABEL = "Предмет",
@@ -4534,10 +4559,10 @@ No relationship change.""", # MISSING TRANSLATION
 Дебаффы беременности слабее.
 Потомство будет наследовать статы только этого родителя.""",
 	TRAITHARLOTDESCRIPT = """Проституция на 50% эффективнее.""",
-	TRAITCOURTESAN = """Courtesan""", # MISSING TRANSLATION
-	TRAITCOURTESANDESCRIPT = """Fame can rise up to level 5 from service tasks instead of the usual cap, and the desirability bonus granted by fame is doubled.""", # MISSING TRANSLATION
-	TRAITPETBEAST = """Fan Favorite""", # MISSING TRANSLATION
-	TRAITPETBEASTDESCRIPT = """Tame factor provides bigger benefits for service jobs and desirability.""", # MISSING TRANSLATION
+	TRAITCOURTESAN = """Куртизанка""",
+	TRAITCOURTESANDESCRIPT = """Слава может подняться до 5-го уровня за задачи обслуживания вместо обычного предела, а бонус привлекательности от славы удваивается.""",
+	TRAITPETBEAST = """Любимец публики""",
+	TRAITPETBEASTDESCRIPT = """Фактор укрощения даёт больше пользы для задач обслуживания и привлекательности.""",
 	TRAITSUCCUBUSDESCRIPT = """Занятия сексом дают на 50% больше опыта.
 Может вербовать случайных персонажей без провала с помощью Похоти.
 Действия сексуальной тренировки имеют меньший шанс провала.""",
@@ -4669,7 +4694,7 @@ No relationship change.""", # MISSING TRANSLATION
 	TRAITMVORTEXDESCRIPT = """+1 Регенерация маны""",
 	TRAITGIFTEDDESCRIPT = """Максимальное количество маны +50%""",
 	TRAITBELLIGERENTDESCRIPT = """ATK +15%""",
-	TRAITHIDDENPOWERSDESCRIPT = """MATK +10%.""",
+	TRAITHIDDENPOWERSDESCRIPT = """МАТК +10%.""",
 	TRAITHEALTHYDESCRIPT = """+10 Максимальное здоровье.""",
 	TRAITDIMDESCRIPT = """Получает на 25% меньше очков опыта EXP.""",
 	TRAITREBELDESCRIPT = """Утечка Повиновения +5""",
@@ -4681,9 +4706,9 @@ No relationship change.""", # MISSING TRANSLATION
 	TRAITBLUNDERINGDESCRIPT = """Эффективность заданий по сбору, рыбалке, земледелию -80%""",
 	TRAITCRUDEDESCRIPT = """Задания портного, кузнеца, алхимии -80% эффективности.""",
 	TRAITCHASTEDESCRIPT = """Задания проституции -80% эффективности.""",
-	TRAITPACIFISTDESCRIPT = """ATK -50%.""",
+	TRAITPACIFISTDESCRIPT = """АТК -50%.""",
 	TRAITWHIMPDESCRIPT = """Макс. HP -40%.""",
-	TRAITM_INEPTDESCRIPT = """MATK -50%.""",
+	TRAITM_INEPTDESCRIPT = """МАТК -50%.""",
 	TRAITSELFISHDESCRIPT = """Не может использовать способности поддержки в бою""",
 	TRAITCOWARDDESCRIPT = """Точность -50.""",
 	TRAITFRIGIDDESCRIPT = """Не может приобретать новые сексуальные черты. Максимальная похоть снижена на 50%""",
@@ -4906,7 +4931,7 @@ Requires: Базовый рабский труд""",
 	TRAITEFFECTRIVAL = """Присутствует соперник: +5%% производительности""",
 	TRAITEFFECTFRIENDS = """Присутствует друг: +10%% регенерации здоровья""",
 	TRAITEFFECTLOVERS = """Присутствует любовник/ца: +10%% регенерации маны""",
-	TRAITEFFECTRELATIONCHARACTERS = """{color=yellow|Caused by: %s}""", # MISSING TRANSLATION
+	TRAITEFFECTRELATIONCHARACTERS = """{color=yellow|Причина: %s}""",
 	TRAITEFFECTRARESTURDY = """Особый: Твердый
 Увеличение здоровья и бронепробиваемости""",
 	TRAITEFFECTRARENIMBLE = """Особый: Ловкий
@@ -4919,29 +4944,29 @@ Requires: Базовый рабский труд""",
 Увеличение уклонения, точности и MЗАЩ""",
 	TRAITEFFECTRARETOUGH = """Особый: Жесткий
 Увеличение здоровья, ЗАЩ и МЗАЩ""",
-	TRAITMONSTER_MASTERY_WARFARE = """Warfare Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_WARFARE = """Мастерство: Военное дело""",
 	TRAITMONSTER_MASTERY_WARFAREDESCRIPT = "Мастерство военного дела",
-	TRAITMONSTER_MASTERY_PROTECTION = """Protection Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_PROTECTION = """Мастерство: Защита""",
 	TRAITMONSTER_MASTERY_PROTECTIONDESCRIPT = "Мастерство защиты",
-	TRAITMONSTER_MASTERY_STEALTH = """Stealth Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_STEALTH = """Мастерство: Скрытность""",
 	TRAITMONSTER_MASTERY_STEALTHDESCRIPT = "Мастерство скрытности",
-	TRAITMONSTER_MASTERY_MARKSMANSHIP = """Marksmanship Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_MARKSMANSHIP = """Мастерство: Стрельба""",
 	TRAITMONSTER_MASTERY_MARKSMANSHIPDESCRIPT = "Мастерство стрельбы",
-	TRAITMONSTER_MASTERY_LEADERSHIP = """Leadershp Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_LEADERSHIP = """Мастерство: Лидерство""",
 	TRAITMONSTER_MASTERY_LEADERSHIPDESCRIPT = "Мастерство лидерства",
-	TRAITMONSTER_MASTERY_FIRE = """Fire Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_FIRE = """Мастерство: Огонь""",
 	TRAITMONSTER_MASTERY_FIREDESCRIPT = "Мастерство огня",
-	TRAITMONSTER_MASTERY_WATER = """Water Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_WATER = """Мастерство: Вода""",
 	TRAITMONSTER_MASTERY_WATERDESCRIPT = "Мастерство воды",
-	TRAITMONSTER_MASTERY_AIR = """Air Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_AIR = """Мастерство: Воздух""",
 	TRAITMONSTER_MASTERY_AIRDESCRIPT = "Мастерство воздуха",
-	TRAITMONSTER_MASTERY_EARTH = """Earth Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_EARTH = """Мастерство: Земля""",
 	TRAITMONSTER_MASTERY_EARTHDESCRIPT = "Мастерство земли",
-	TRAITMONSTER_MASTERY_LIGHT = """Light Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_LIGHT = """Мастерство: Свет""",
 	TRAITMONSTER_MASTERY_LIGHTDESCRIPT = "Мастерство света",
-	TRAITMONSTER_MASTERY_DARK = """Dark Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_DARK = """Мастерство: Тьма""",
 	TRAITMONSTER_MASTERY_DARKDESCRIPT = "Мастерство тьмы",
-	TRAITMONSTER_MASTERY_MIND = """Mind Mastery""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_MIND = """Мастерство: Разум""",
 	TRAITMONSTER_MASTERY_MINDDESCRIPT = "Мастерство разума",
 	TRAITEFFECTHARDWORK = """Усердие: +50%% производительности""",
 	TRAITEFFECTPHYSBUF = """Эликсир силы огра: +80 физ. возм.""",
@@ -4950,18 +4975,18 @@ Requires: Базовый рабский труд""",
 	TRAITEFFECTFAVFOOD = """Любимая еда: -1 утечка повиновения, +0.5 прироста верности""", 
 	TRAITEFFECTHATEDFOOD = """Ненавистная еда: -10%% производительности.""",
 	TRAITEFFECTSTARVE = """Голодание: -50%% производительности, -50%% урона""",
-	TRAITEFFECTCHEAPFOOD = """Poor Meal: -20%% Productivity, -20%% Experience Gain until the next meal""", # MISSING TRANSLATION
-	TRAITEFFECTFOODMEAT = """Well Fed (Meat): +5%% Damage, +5%% Max Health""", # MISSING TRANSLATION
-	TRAITEFFECTFOODFISH = """Well Fed (Fish): +10%% Max Mana, +5%% Experience Gain""", # MISSING TRANSLATION
-	TRAITEFFECTFOODVEGE = """Well Fed (Vegetables): +25%% Health Regeneration, +10 Poison Resistance""", # MISSING TRANSLATION
-	TRAITEFFECTFOODFISHCAKES = """Well Fed (Fish Cakes): +2 Mana Regeneration, +5 Magic Attack""", # MISSING TRANSLATION
-	TRAITEFFECTFOODMEATSOUP = """Well Fed (Meat Soup): +5%% Max Health, +5%% Productivity""", # MISSING TRANSLATION
-	TRAITEFFECTFOODCURRY = """Well Fed (Curry): +3 Attack, +3 Magic Attack""", # MISSING TRANSLATION
-	TRAITEFFECTFOODVEGETABLESTIRFRY = """Well Fed (Vegetable Stir-Fry): +5%% Experience Gain, +5 Armor""", # MISSING TRANSLATION
-	TRAITEFFECTFOODROASTEDFEAST = """Well Fed (Roasted Feast): +6 Attack, +3%% Critical Chance""", # MISSING TRANSLATION
-	TRAITEFFECTFOODMINERSLUNCH = """Well Fed (Miner's Lunch): +10%% Productivity, +5%% Experience Gain""", # MISSING TRANSLATION
-	TRAITEFFECTFOODFRIEDSALMON = """Well Fed (Fried Salmon): +5 Magic Attack, +25%% Mana Regeneration""", # MISSING TRANSLATION
-	TRAITEFFECTFOODDEFENDERSMEAL = """Well Fed (Defender's Meal): +15 Health, +5%% Damage Reduction, +1 Counterattack""", # MISSING TRANSLATION
+	TRAITEFFECTCHEAPFOOD = """Скудная трапеза: -20%% продуктивности, -20%% получаемого опыта до следующего приёма пищи""",
+	TRAITEFFECTFOODMEAT = """Сыт (мясо): +3%% к максимуму здоровья""",
+	TRAITEFFECTFOODFISH = """Сыт (рыба): +0,5 к восстановлению маны""",
+	TRAITEFFECTFOODVEGE = """Сыт (овощи): +1%% получаемого опыта""",
+	TRAITEFFECTFOODFISHCAKES = """Сыт (рыбные котлеты): +2 к восстановлению маны, +5 к магической атаке""",
+	TRAITEFFECTFOODMEATSOUP = """Сыт (мясной суп): +5%% к максимуму здоровья, +5%% продуктивности""",
+	TRAITEFFECTFOODCURRY = """Сыт (карри): +3 к атаке, +3 к магической атаке""",
+	TRAITEFFECTFOODVEGETABLESTIRFRY = """Сыт (овощное рагу): +5%% получаемого опыта, +5 брони""",
+	TRAITEFFECTFOODROASTEDFEAST = """Сыт (жареный пир): +6 к атаке, +3%% шанса крита""",
+	TRAITEFFECTFOODMINERSLUNCH = """Сыт (обед шахтёра): +10%% продуктивности, +5%% получаемого опыта""",
+	TRAITEFFECTFOODFRIEDSALMON = """Сыт (жареный лосось): +5 к магической атаке, +25%% восстановления маны""",
+	TRAITEFFECTFOODDEFENDERSMEAL = """Сыт (трапеза защитника): +15 к здоровью, +5%% снижения урона, +1 контратака""",
 	TRAITEFFECTFOODGRAIN = """Well Fed (Grains): +5%% Productivity""", # MISSING TRANSLATION
 	TRAITEFFECTGRAVEINJ = """Тяжелое ранение: -25%% Производительность, -50%% Сексуальность. Не может участвовать в бою""",
 	TRAITEFFECTINJ = "Травма: -30%% к макс. HP, -20 к точности.",
@@ -5044,7 +5069,7 @@ Requires: Базовый рабский труд""",
 	TRAITSTUNIMMUNITYDESCRIPT = "Невозмлжно оглушить в бою.",
 	TRAITEFFECTCURSE = """Все сопротивления снижены""",
 	TRAITEFFECTHASTE = """Скорость увеличена""",
-	TRAITEFFECTVEIL = """Shadow Veil: +30 Light and Dark Resist, MDEF increased based on caster's MATK""", # MISSING TRANSLATION
+	TRAITEFFECTVEIL = """Теневой покров: +30 к сопротивлению свету и тьме, МЗЩ повышена в зависимости от МАТК заклинателя""",
 	EFFECTCOFFIBLESS = "Увеличение получаемого опыта на 20%%",
 	EUPHORIABUFF = """Эйфория: Урон увеличен""",
 	FIREARROWBUFF = "Огненные стрелы: ваши атаки поджигают врагов.",
@@ -5101,7 +5126,7 @@ Requires: Базовый рабский труд""",
 	EFFECTNAME_CURSE_DECLINE_2 = "Проклятие упадка ур. 2",
 	EFFECTNAME_CURSE_FRAGILITY_1 = "Проклятие хрупкости ур. 1",
 	EFFECTNAME_CURSE_FRAGILITY_2 = "Проклятие хрупкости ур. 2",
-	EFFECTNAME_COMMANDER = "Commander present",
+	EFFECTNAME_COMMANDER = """Командир рядом""",
 	BUFFDESCRIPTSHACKLES = """Оковы""",
 	BUFFDESCRIPTGREATSHACKLES = """Великие оковы""",
 	BUFFDESCRIPTCHARM = """Зачарован. Осталось %d ходов""",
@@ -5270,7 +5295,7 @@ Requires: Базовый рабский труд""",
 	EFFECTNAME_DARK_GIFT = 'Тёмный дар',
 	EFFECT_DARK_GIFT = '+20 АТК и MATK, -20 ЗЩТ и MЗЩ.',
 	TRAIT_KURDAN_MIND_CONTROLLED = '-50 к сопротивлению разума. Заклинание Пожирание магии также наносит 150% MATK урона при применении на этом юните.',
-	EFFECTNAME_UNDERWATCHED = """Aire's Overwatch""", # MISSING TRANSLATION
+	EFFECTNAME_UNDERWATCHED = """Дозор Айре""",
 	TRAIT_OVERWATCH_ASSIGNMENT = """При попадании по союзнику, выпускает стрелу в атакующего.
 При смерти союзника, наносит более сильную атаку по убийце.
 Эффекты отключаются, если этот юнит обездвижен, ослеплён или обезоружен.
@@ -5310,194 +5335,194 @@ Requires: Базовый рабский труд""",
 	EFFECT_TEST_OF_THE_FOREST_SPIRIT = """-50% АТК и MATK.
 По истечении срока, Белый Олень может использовать навык [Как разочаровывающе…].
 Длительность увеличивается на 1, когда союзник повержен.""",		
-	EFFECTNAME_HELLO_SIS = """Hello, sister~!""", # MISSING TRANSLATION
-	EFFECT_HELLO_SIS = """Deal +10% damage against Kuro.""", # MISSING TRANSLATION
-	EFFECTNAME_DONT_TALK_TO_ME = """...Don't talk to Me""", # MISSING TRANSLATION
-	EFFECT_DONT_TALK_TO_ME = """Deal +10% damage against Zephyra.""", # MISSING TRANSLATION
-	EFFECTNAME_NYCTOPHOBIA = """Nyctophobia""", # MISSING TRANSLATION
-	EFFECT_NYCTOPHOBIA = """If this unit is affected by [In the Shadow]: Kuro cannot miss her attack against this unit & Take 15% of current HP as Dark damage each turn.""", # MISSING TRANSLATION
-	EFFECTNAME_FADING_LIGHT = """Fading Light""", # MISSING TRANSLATION
-	EFFECT_FADING_LIGHT = """Allow usage of [Night Night] spell. Can be removed by silence, disabling effect or hit by fire or light attack.""", # MISSING TRANSLATION
-	EFFECTNAME_BINDING_SHADOW = """Binding Shadow""", # MISSING TRANSLATION
-	EFFECT_BINDING_SHADOW = """-50% speed. Shadow damage has a 50% chance to inflict Disarm for 1 turn.
-Negate the positive effects of [In the Shadow] effect.
-Remove once being hit by or use a light or fire move.""", # MISSING TRANSLATION
-	EFFECTNAME_UNHOLY_NIGHT = """Unholy Night""", # MISSING TRANSLATION
-	EFFECT_UNHOLY_NIGHT = """Immune to Silence. +30 MATK.""", # MISSING TRANSLATION
-	TRAIT_SNUFF_CANDLE_DESC = """When hit by a Light or Fire move, use Stuff Out against the attacker.
-Can be disabled if the user is silenced or immobilised.""", # MISSING TRANSLATION
-	EFFECTNAME_DK_SECURITY_CONCERN_DESC = """National Security's Concern""", # MISSING TRANSLATION
-	TRAIT_DK_SECURITY_CONCERN_DESC = """When HP drops below 50% for the first time, randomly summon his soldier until the field is full but gain stun for 1 turn.
-At the end of his next turn, gain Unstoppable.""", # MISSING TRANSLATION
-	EFFECTNAME_KING_GUARD_B = """King's Guard: Blade""", # MISSING TRANSLATION
-	EFFECTNAME_KING_GUARD_BLADE = """skirmisher's protection""", # MISSING TRANSLATION
-	EFFECT_KING_GUARD_BLADE = """Dwarf King take 30% less damage from melee attack and have +25% Disarm & Silence resist while this unit is alive""", # MISSING TRANSLATION
-	EFFECTNAME_KING_GUARD_S = """King's Guard: Shield""", # MISSING TRANSLATION
-	EFFECTNAME_KING_GUARD_SHIELD = """shielder's protection""", # MISSING TRANSLATION
-	EFFECT_KING_GUARD_SHIELD = """Dwarf King take 30% less damage from physical ranged attack and have +25% Disarm & Silence resist while this unit is alive""", # MISSING TRANSLATION
-	EFFECTNAME_KING_GUARD_A = """King's Guard: Automaton""", # MISSING TRANSLATION
-	EFFECTNAME_KING_GUARD_AUTOMATION = """golem's protection""", # MISSING TRANSLATION
-	EFFECT_KING_GUARD_AUTOMATION = """Dwarf King gain +80 MDEF and have +25% Disarm & Silence resist while this unit is alive""", # MISSING TRANSLATION
-	EFFECTNAME_KNOCK_PRONE = """Knock Prone""", # MISSING TRANSLATION
-	EFFECT_KNOCKPRONE = """-40 Earth Resistant, -50% Evasion and Hitrate, Spell cast by this unit have 30% chance to miss.""", # MISSING TRANSLATION
-	EFFECTNAME_UNSTOPPABLE = """Unstoppable""", # MISSING TRANSLATION
-	EFFECT_UNSTOPPABLE = """Immune to Stun, Sleep, and Freeze""", # MISSING TRANSLATION
-	EFFECTNAME_EXECUTION_ORDER = """Execution Order""", # MISSING TRANSLATION
-	EFFECT_EXECUTION_ORDER = """Gain 1 stack of Fragile whenever this unit is hit.
-On being kill: If the killer is a dwarf, they gain Promotion""", # MISSING TRANSLATION
-	EFFECTNAME_DWARF_PROMOTION = """Promotion""", # MISSING TRANSLATION
-	EFFECT_DWARF_PROMOTION = """+20% Damage dealt. +50 Hitrate. +30% Critical Chance. +10 Speed.""", # MISSING TRANSLATION
-	EFFECTNAME_OVERLOADED_GOLEM_CORE = """Overloaded Golem Core""", # MISSING TRANSLATION
-	EFFECT_OVERLOADED_GOLEM_CORE = """All attacks now have a 70% chance of inflicting burn.
-On turn end: Deal chip fire damage to all enemies.
-Demerit: Lose 15% of max hp every turn.
-Can be removed by being frozen.""", # MISSING TRANSLATION
-	EFFECTNAME_PREY_OF_BIRD = """Prey of Bird""", # MISSING TRANSLATION
-	EFFECT_PREY_OF_BIRD = """Unavoidable target of Elder Gryphon's Comet Dive skill. 
-Prepare to receive a lot of damage.""", # MISSING TRANSLATION
-	EFFECTNAME_HEIGHT_BEYOND_MORTAL_REACH = """Height Beyond Mortal Reach""", # MISSING TRANSLATION
-	EFFECT_HEIGHT_BEYOND_MORTAL_REACH = """Always evade melee attacks.
-50% chance to evade spells. Reduce ranged damage taken by 40%.
-+125 Evasion and Earth resist is set to 100.
-Can use skill even under immobilizing effects.
-Will use [Comet Dive] skill once expired.""", # MISSING TRANSLATION
-	EFFECTNAME_CATASTROPHIC_MOMENTUM = """Catastrophic Momentum""", # MISSING TRANSLATION
-	EFFECT_CATASTROPHIC_MOMENTUM = """+50% ATK and +150 Hit rate per stack (Max 2 stack).
-At 2 stack: Comet Dive now cause a damaging shockwave which can be resist by Stonewall and Earth Shield.
-Lose 1 stack when struck by a critical hit.
-Automatically consume 1 stack of this effect to clear immobilising effects.""", # MISSING TRANSLATION
-	EFFECTNAME_TURBULENCE_AIR = """Turbulence Air""", # MISSING TRANSLATION
-	EFFECT_TURBULENCE_AIR_TRAIT = """Reduce hit rate of all enemy's single-target ranged attack (including spell) by 40.
-Mind, Light, and Dark resist of this unit cannot be alter.""", # MISSING TRANSLATION
-	TRAIT_DUAL_BLADE_MASTERY_DESC = """Disarm immunity. Every attack deals additional physical damage.""", # MISSING TRANSLATION
-	EFFECTNAME_ANTAGONIZED = """Antagonized""", # MISSING TRANSLATION
-	EFFECTNAME_DUTY_TO_PROTECT = """Duty to Protect""", # MISSING TRANSLATION
-	EFFECT_ANTAGONIZED = """Deal and Take +10% more damage.""", # MISSING TRANSLATION
-	EFFECT_DUTY_TO_PROTECT = """+20 ATK nd Hit rate.""", # MISSING TRANSLATION
-	TRAIT_SELF_PRESERVATION_DESC = """Self-preservation: Gain Fear for 1 turn when ally dies. If this unit is the only one left on the field, try to run away next turn.""", # MISSING TRANSLATION
-	TRAIT_MODERATELY_FEARSOME_STATURE_DESC = """Moderately Fearsome Stature: Enemy attacked by this unit or attacking this unit might just gain fear for 1 turn, maybe.""", # MISSING TRANSLATION
-	TRAIT_REDHEAD_BOSS = """Fiery Grand Strategist (Self-Proclaim): Hold total mastery over fire and the flow of battle! ...or so he claims.""", # MISSING TRANSLATION
-	TRAIT_SWIFTY_GUY = """Relatively Swifty Guy: Uhhhh... sorry, I don't have anything fancy like the other two. I run quite fast tho.
-Bandit Leader: Have some more confidence, ya' dumbass.
-Y-yes, boss!""", # MISSING TRANSLATION
-	EFFECTNAME_RUNNING_AWAY = """Running Away""", # MISSING TRANSLATION
-	EFFECT_RUNNING_AWAY = """Will escape the fight on their next turn.""", # MISSING TRANSLATION
-	EFFECTNAME_AXE_RAISED = """Axe Raised""", # MISSING TRANSLATION
-	EFFECT_AXE_RAISED = """Will use what he believes is a powerful skill next turn.
-Can be removed by... any attack hitting this unit... even if it's just 1 damage...
-And the powerful skill might actually just suck in reality.""", # MISSING TRANSLATION
-	EFFECTNAME_GENIUS_PLAN = """Genius plan...?""", # MISSING TRANSLATION
-	EFFECT_GENIUS_PLAN = """+100% ATK... but it seems this unit is stunned.""", # MISSING TRANSLATION
+	EFFECTNAME_HELLO_SIS = """Привет, сестрёнка~!""",
+	EFFECT_HELLO_SIS = """+10% урона по Куро.""",
+	EFFECTNAME_DONT_TALK_TO_ME = """...Не говори со мной""",
+	EFFECT_DONT_TALK_TO_ME = """+10% урона по Зефире.""",
+	EFFECTNAME_NYCTOPHOBIA = """Никтофобия""",
+	EFFECT_NYCTOPHOBIA = """Если этот боец под действием [В тенях]: Куро не может промахнуться по нему и он получает 15% текущих ОЗ как тёмный урон каждый ход.""",
+	EFFECTNAME_FADING_LIGHT = """Угасающий свет""",
+	EFFECT_FADING_LIGHT = """Позволяет применять заклинание [Спокойной ночи]. Снимается немотой, отключающими эффектами или попаданием огненной либо световой атаки.""",
+	EFFECTNAME_BINDING_SHADOW = """Связующая тень""",
+	EFFECT_BINDING_SHADOW = """-50% скорости. Теневой урон с шансом 50% накладывает обезоруживание на 1 ход.
+Отменяет положительные эффекты «В тенях».
+Снимается при получении или применении светового либо огненного умения.""",
+	EFFECTNAME_UNHOLY_NIGHT = """Нечестивая ночь""",
+	EFFECT_UNHOLY_NIGHT = """Иммунитет к немоте. +30 МАТК.""",
+	TRAIT_SNUFF_CANDLE_DESC = """При попадании световым или огненным умением применяет «Затушить» против атакующего.
+Отключается, если боец под немотой или обездвижен.""",
+	EFFECTNAME_DK_SECURITY_CONCERN_DESC = """Забота государственной безопасности""",
+	TRAIT_DK_SECURITY_CONCERN_DESC = """Когда ОЗ впервые падают ниже 50%, случайно призывает своих солдат, пока поле не заполнится, но получает оглушение на 1 ход.
+В конце следующего хода получает «Неудержимость».""",
+	EFFECTNAME_KING_GUARD_B = """Королевская стража: клинок""",
+	EFFECTNAME_KING_GUARD_BLADE = """защита застрельщика""",
+	EFFECT_KING_GUARD_BLADE = """Пока этот боец жив, король дварфов получает на 30% меньше урона от ближних атак и +25% сопротивления обезоруживанию и немоте""",
+	EFFECTNAME_KING_GUARD_S = """Королевская стража: щит""",
+	EFFECTNAME_KING_GUARD_SHIELD = """защита щитоносца""",
+	EFFECT_KING_GUARD_SHIELD = """Пока этот боец жив, король дварфов получает на 30% меньше урона от физических дальних атак и +25% сопротивления обезоруживанию и немоте""",
+	EFFECTNAME_KING_GUARD_A = """Королевская стража: автоматон""",
+	EFFECTNAME_KING_GUARD_AUTOMATION = """защита голема""",
+	EFFECT_KING_GUARD_AUTOMATION = """Пока этот боец жив, король дварфов получает +80 МЗЩ и +25% сопротивления обезоруживанию и немоте""",
+	EFFECTNAME_KNOCK_PRONE = """Сбивание с ног""",
+	EFFECT_KNOCKPRONE = """-40 к сопротивлению земле, -50% уклонения и меткости, заклинания этого бойца с шансом 30% промахиваются.""",
+	EFFECTNAME_UNSTOPPABLE = """Неудержимый""",
+	EFFECT_UNSTOPPABLE = """Иммунитет к оглушению, сну и заморозке""",
+	EFFECTNAME_EXECUTION_ORDER = """Приказ о казни""",
+	EFFECT_EXECUTION_ORDER = """Получает 1 заряд хрупкости при каждом попадании по этому бойцу.
+При убийстве: если убийца — дварф, он получает «Повышение»""",
+	EFFECTNAME_DWARF_PROMOTION = """Повышение""",
+	EFFECT_DWARF_PROMOTION = """+20% наносимого урона. +50 меткости. +30% шанса крита. +10 скорости.""",
+	EFFECTNAME_OVERLOADED_GOLEM_CORE = """Перегруженное ядро голема""",
+	EFFECT_OVERLOADED_GOLEM_CORE = """Все атаки теперь с шансом 70% накладывают горение.
+В конце хода наносит небольшой огненный урон всем врагам.
+Минус: теряет 15% макс. ОЗ каждый ход.
+Снимается заморозкой.""",
+	EFFECTNAME_PREY_OF_BIRD = """Добыча птицы""",
+	EFFECT_PREY_OF_BIRD = """Неотвратимая цель умения «Падение кометы» Древнего грифона. 
+Готовьтесь получить много урона.""",
+	EFFECTNAME_HEIGHT_BEYOND_MORTAL_REACH = """Высота вне досягаемости смертных""",
+	EFFECT_HEIGHT_BEYOND_MORTAL_REACH = """Всегда уклоняется от ближних атак.
+50% шанс уклониться от заклинаний. Получаемый дальний урон снижен на 40%.
++125 уклонения, сопротивление земле установлено на 100.
+Может применять умения даже под обездвиживающими эффектами.
+По истечении применит умение [Падение кометы].""",
+	EFFECTNAME_CATASTROPHIC_MOMENTUM = """Катастрофический разгон""",
+	EFFECT_CATASTROPHIC_MOMENTUM = """+50% АТК и +150 к меткости за заряд (макс. 2 заряда).
+При 2 зарядах: «Падение кометы» вызывает ударную волну, которой можно противостоять «Каменной стеной» и «Земляным щитом».
+Теряет 1 заряд при получении критического удара.
+Автоматически тратит 1 заряд, чтобы снять обездвиживающие эффекты.""",
+	EFFECTNAME_TURBULENCE_AIR = """Воздушная турбулентность""",
+	EFFECT_TURBULENCE_AIR_TRAIT = """Снижает меткость всех дальних атак врага по одной цели (включая заклинания) на 40.
+Сопротивления разуму, свету и тьме этого бойца нельзя изменить.""",
+	TRAIT_DUAL_BLADE_MASTERY_DESC = """Иммунитет к обезоруживанию. Каждая атака наносит дополнительный физический урон.""",
+	EFFECTNAME_ANTAGONIZED = """Раздражён""",
+	EFFECTNAME_DUTY_TO_PROTECT = """Долг защищать""",
+	EFFECT_ANTAGONIZED = """Наносит и получает на 10% больше урона.""",
+	EFFECT_DUTY_TO_PROTECT = """+20 АТК и меткости.""",
+	TRAIT_SELF_PRESERVATION_DESC = """Самосохранение: получает страх на 1 ход, когда погибает союзник. Если этот боец остаётся один на поле, в следующем ходу попытается сбежать.""",
+	TRAIT_MODERATELY_FEARSOME_STATURE_DESC = """Умеренно грозный вид: враг, атакованный этим бойцом или атакующий его, может получить страх на 1 ход. Наверное.""",
+	TRAIT_REDHEAD_BOSS = """Огненный великий стратег (самопровозглашённый): полное владычество над огнём и ходом битвы! ...по крайней мере, так он утверждает.""",
+	TRAIT_SWIFTY_GUY = """Относительно шустрый парень: Э-э-э... извините, у меня нет ничего эдакого, как у тех двоих. Зато бегаю быстро.
+Главарь бандитов: Побольше уверенности, балда.
+Д-да, босс!""",
+	EFFECTNAME_RUNNING_AWAY = """Бегство""",
+	EFFECT_RUNNING_AWAY = """В следующий свой ход сбежит из боя.""",
+	EFFECTNAME_AXE_RAISED = """Топор занесён""",
+	EFFECT_AXE_RAISED = """В следующем ходу применит то, что считает мощным умением.
+Снимается... любой атакой по этому бойцу... даже если это всего 1 урона...
+А мощное умение на деле может оказаться так себе.""",
+	EFFECTNAME_GENIUS_PLAN = """Гениальный план...?""",
+	EFFECT_GENIUS_PLAN = """+100% АТК... но, похоже, этот боец оглушён.""",
 	TRAIT_TANTALISING_TENTACLE = """When this unit attack enemy affected by Ensnare with a physical move, inflict a stack of Arousal.
 When this unit is being attacked by a melee skill and the attacker does not have Blessing or 'Elemental Shield' effect, 
 50% chances to inflict Ensnared onto the attacker.""", # MISSING TRANSLATION
 	EFFECTNAME_AROUSAL = """Arousal""", # MISSING TRANSLATION
 	EFFECT_AROUSAL = """Reduce Hitrate and Evasion by 5 per stack.
 At +10 stack, become Stun for 2 turns and remove all stack of Arousal.""", # MISSING TRANSLATION
-	EFFECTNAME_EMPOWERMENT = """Empowerment""", # MISSING TRANSLATION
-	EFFECT_EMPOWERMENT = """+10% ATK & MATK per stack.""", # MISSING TRANSLATION
-	EFFECTNAME_TENDRIL_TRAP = """Tendril Trap""", # MISSING TRANSLATION
+	EFFECTNAME_EMPOWERMENT = """Усиление""",
+	EFFECT_EMPOWERMENT = """+10% АТК и МАТК за заряд.""",
+	EFFECTNAME_TENDRIL_TRAP = """Ловушка из щупалец""",
 	EFFECT_TENDRIL_TRAP = """Activated on spell usage. Dealing 100% MATK Dark damage and inflicting Ensnared for 2 turns. If the target is already Ensnared, inflict 3 Arousal instead.""", # MISSING TRANSLATION
-	EFFECTNAME_BUTTERFLY_IN_THE_STOMACH_COUNTER = """Butterfly in the Stomach Count""", # MISSING TRANSLATION
-	EFFECTNAME_BUTTERFLY_IN_THE_STOMACH = """Butterfly in the Stomach""", # MISSING TRANSLATION
-	EFFECT_BUTTERFLY_IN_STOMACH = """+50 DEF and MDEF. Regenerate 8% of Max HP each turn. After being hit by 6 physical attack, remove this buff and spit out the Swallowed Victim!""", # MISSING TRANSLATION
-	EFFECTNAME_SWALLOWED = """Swallowed""", # MISSING TRANSLATION
-	EFFECT_SWALLOWED_DESCRIPT = """Cannot Act. Cannot be Healed. Lose 20% HP on their turn.
-Last until this Ashmedai is hit by physical attack 6 times.""", # MISSING TRANSLATION
-	TRAIT_SLIPPERY_THICK_SKIN = """Reduce Ranged damage taken by 20%. If Wet, ranged attacks including spells have 30% to miss this unit.""", # MISSING TRANSLATION
-	EFFECT_NIXX_TRAIT_DESCRIPT = """Take further reduced damage from DoT effects.
-Enemy gains no benefit from 'In the Shadow' effect.
-Always hit against targets affected by 'In the Shadow'.
-Enemies affected with 'In the Shadow' take 20% of current HP as dark damage every turn.""", # MISSING TRANSLATION
-	EFFECTNAME_INTANGIBLE_OPPRESSIVE_DARKNESS = """Intangible and Oppressive Darkness""", # MISSING TRANSLATION
-	EFFECT_INTANGIBLE_OPPRESSIVE_DARKNESS_DESCRIPT = """While the Brazier is unlit:
-Gain immunity to burn and silence.
-Take -50% damage from all attacks except fire and light damage.
-All units do not lose 'In the Shadow' buff when using move unless it's a fire or light move.""", # MISSING TRANSLATION
-	EFFECTNAME_NIXX_WRATH_TRAIT = """Ire Against the Light""", # MISSING TRANSLATION
-	EFFECT_NIXX_WRATH_TRAIT_DESCRIPT = """While the Brazier is lighted, gain a stack of Nixx's Wrath at the end of each Nixx's turn.
-At 4+ stack: Cleanse and Gain immunity to Silence.""", # MISSING TRANSLATION
-	EFFECTNAME_NIXX_WRATH = """Nixx's Wrath""", # MISSING TRANSLATION
-	EFFECT_NIXX_WRATH_DESCRIPT = """Gain + 7.5% ATK and MATK per stack (Max 4)
-At 4+ stack: Become immune to Silence, clear Silence on self, and allow Pulvis et Umbra Estis! to be used.
-Remove if Brazier were put out.""", # MISSING TRANSLATION
+	EFFECTNAME_BUTTERFLY_IN_THE_STOMACH_COUNTER = """Счётчик бабочек в животе""",
+	EFFECTNAME_BUTTERFLY_IN_THE_STOMACH = """Бабочки в животе""",
+	EFFECT_BUTTERFLY_IN_STOMACH = """+50 ЗЩ и МЗЩ. Восстанавливает 8% макс. ОЗ каждый ход. После 6 полученных физических атак эффект снимается, и проглоченная жертва выплёвывается!""",
+	EFFECTNAME_SWALLOWED = """Проглочен""",
+	EFFECT_SWALLOWED_DESCRIPT = """Не может действовать. Не поддаётся лечению. Теряет 20% ОЗ в свой ход.
+Длится, пока этот Ашмедай не получит 6 попаданий физическими атаками.""",
+	TRAIT_SLIPPERY_THICK_SKIN = """Снижает получаемый дальний урон на 20%. Если промок, дальние атаки, включая заклинания, с шансом 30% промахиваются по этому бойцу.""",
+	EFFECT_NIXX_TRAIT_DESCRIPT = """Ещё сильнее снижает получаемый периодический урон.
+Враг не получает выгоды от эффекта «В тенях».
+Всегда попадает по целям под действием «В тенях».
+Враги под «В тенях» получают 20% текущих ОЗ как тёмный урон каждый ход.""",
+	EFFECTNAME_INTANGIBLE_OPPRESSIVE_DARKNESS = """Неосязаемая гнетущая тьма""",
+	EFFECT_INTANGIBLE_OPPRESSIVE_DARKNESS_DESCRIPT = """Пока жаровня не горит:
+Иммунитет к горению и немоте.
+Получаемый урон снижен на 50% от всех атак, кроме огня и света.
+Никто не теряет эффект «В тенях» при применении умений, если это не огненное или световое умение.""",
+	EFFECTNAME_NIXX_WRATH_TRAIT = """Ярость против света""",
+	EFFECT_NIXX_WRATH_TRAIT_DESCRIPT = """Пока жаровня горит, в конце каждого хода Никс получает заряд «Гнева Никс».
+При 4+ зарядах: снимает немоту и даёт иммунитет к ней.""",
+	EFFECTNAME_NIXX_WRATH = """Гнев Никс""",
+	EFFECT_NIXX_WRATH_DESCRIPT = """+7,5% АТК и МАТК за заряд (макс. 4)
+При 4+ зарядах: иммунитет к немоте, снимает немоту с себя и позволяет применить «Pulvis et Umbra Estis!».
+Снимается, если жаровню погасили.""",
 	NIXX_ULT_WARNING = """
 ...The shadow casted by the brazier grow restless.""", # MISSING TRANSLATION
-	EFFECTNAME_KURO_NIXX_STANDOFF = """Champion's Defiance""", # MISSING TRANSLATION
-	EFFECT_KURO_NIXX_STANDOFF_DESCRIPT = """Deal and take +10% damage to Nixx. Kuro is immune to the negative effects of 'In the Shadow'.""", # MISSING TRANSLATION
-	EFFECTNAME_ENVIRONMENTAL_OBJECT = """Environmental Object""", # MISSING TRANSLATION
-	EFFECT_ENVIRONMENTAL_OBJECT_DESCRIPT = """HP cannot drop below 10%. Does not need to be defeated for the fight to be concluded.""", # MISSING TRANSLATION
-	EFFECTNAME_FESTERING_TERROR = """Festering Terror""", # MISSING TRANSLATION
-	EFFECT_FESTERING_TERROR_DESCRIPT = """Deal 10% more damage and gain +10% Crit Chance for every stack. (Max 5)""", # MISSING TRANSLATION
-	EFFECTNAME_BLACK_MIRROR = """Black Mirror""", # MISSING TRANSLATION
-	EFFECT_BLACK_MIRROR_DESCRIPT = """Reflect single-target spell casted on this unit back at the attacker at half the strength.""", # MISSING TRANSLATION
-	EFFECTNAME_BLACK_THORN = """Black Thorn""", # MISSING TRANSLATION
-	EFFECT_BLACK_THORN_DESCRIPT = """When hit by melee attack, deal 50 Dark damage back to the attacker.""", # MISSING TRANSLATION
-	EFFECTNAME_BLACK_GROWTH = """Black Growth""", # MISSING TRANSLATION
-	EFFECT_BLACK_GROWTH_DESCRIPT = """Regen 16% of HP at the end of each turn.""", # MISSING TRANSLATION
-	EFFECTNAME_BLACK_BIND = """Black Bind""", # MISSING TRANSLATION
-	EFFECT_BLACK_BIND_DESCRIPT = """Attacks from this unit have a 50% chance to inflict Ensnared for 2 turns""", # MISSING TRANSLATION
-	EFFECTNAME_LOST_IN_DARKNESS = """Lost in Darkness""", # MISSING TRANSLATION
-	EFFECT_LOST_IN_DARKNESS_DESCRIPT = """Take additional dark damage when hit by enemies.""", # MISSING TRANSLATION
-	EFFECT_UNLIT_BRAZIER_DESCRIPT = """When this unit HP drops to 10%:
- - Remove 'In the Shadow' from ALL unit.
- - Remove Festering Terror from all allies.
- - Convert 'Intangible and Oppressive Darkness' into 'Ire Against the Light'.
- - Transform into Lighted Brazier.""", # MISSING TRANSLATION
-	EFFECT_LIGTHED_BRAZIER_DESCRIPT = """When this unit HP drops to 10%:
- - Apply 'In the Shadow' to ALL unit.
- - Apply a stack of Lost in Darkness to all enemies.
- - Convert 'Ire Against the Light' into 'Intangible and Oppressive Darkness'.
- - Transform into Unlit Brazier.""", # MISSING TRANSLATION
-	EFFECT_INTANGIBLE_SHADOW_DESCRIPT = """While the Brazier is unlit:
- - all attacks against this unit have -50 hit rate
- - gain immunity to burn and silence.
- - Gain a stack of Festering Terror at the end of each turn.
-When the Brazier is lit, lose 16% of Max HP at the end of their turn.""", # MISSING TRANSLATION
+	EFFECTNAME_KURO_NIXX_STANDOFF = """Непокорность поборника""",
+	EFFECT_KURO_NIXX_STANDOFF_DESCRIPT = """Наносит и получает +10% урона в размене с Никс. Куро невосприимчива к отрицательным эффектам «В тенях».""",
+	EFFECTNAME_ENVIRONMENTAL_OBJECT = """Объект окружения""",
+	EFFECT_ENVIRONMENTAL_OBJECT_DESCRIPT = """ОЗ не могут опуститься ниже 10%. Для завершения боя побеждать не требуется.""",
+	EFFECTNAME_FESTERING_TERROR = """Гноящийся ужас""",
+	EFFECT_FESTERING_TERROR_DESCRIPT = """+10% урона и +10% шанса крита за каждый заряд. (Макс. 5)""",
+	EFFECTNAME_BLACK_MIRROR = """Чёрное зеркало""",
+	EFFECT_BLACK_MIRROR_DESCRIPT = """Отражает направленное на этого бойца заклинание по одной цели обратно в атакующего с половинной силой.""",
+	EFFECTNAME_BLACK_THORN = """Чёрный шип""",
+	EFFECT_BLACK_THORN_DESCRIPT = """При получении ближней атаки наносит атакующему 50 тёмного урона.""",
+	EFFECTNAME_BLACK_GROWTH = """Чёрный нарост""",
+	EFFECT_BLACK_GROWTH_DESCRIPT = """Восстанавливает 16% ОЗ в конце каждого хода.""",
+	EFFECTNAME_BLACK_BIND = """Чёрные путы""",
+	EFFECT_BLACK_BIND_DESCRIPT = """Атаки этого бойца с шансом 50% накладывают западню на 2 хода""",
+	EFFECTNAME_LOST_IN_DARKNESS = """Заблудший во тьме""",
+	EFFECT_LOST_IN_DARKNESS_DESCRIPT = """Получает дополнительный тёмный урон при попаданиях врагов.""",
+	EFFECT_UNLIT_BRAZIER_DESCRIPT = """Когда ОЗ этого бойца падают до 10%:
+ - снимает «В тенях» со ВСЕХ.
+ - снимает «Гноящийся ужас» со всех союзников.
+ - превращает «Неосязаемую гнетущую тьму» в «Ярость против света».
+ - превращается в Горящую жаровню.""",
+	EFFECT_LIGTHED_BRAZIER_DESCRIPT = """Когда ОЗ этого бойца падают до 10%:
+ - накладывает «В тенях» на ВСЕХ.
+ - накладывает заряд «Заблудшего во тьме» на всех врагов.
+ - превращает «Ярость против света» в «Неосязаемую гнетущую тьму».
+ - превращается в Погасшую жаровню.""",
+	EFFECT_INTANGIBLE_SHADOW_DESCRIPT = """Пока жаровня не горит:
+ - все атаки по этому бойцу получают -50 к меткости
+ - иммунитет к горению и немоте.
+ - в конце каждого хода получает заряд «Гноящегося ужаса».
+Когда жаровня зажжена, теряет 16% макс. ОЗ в конце своего хода.""",
 	ACT4_GREG_HALF_HP = """
 Greg: All these gazes... Begone!
 Greg let loose a smokebomb!""", # MISSING TRANSLATION
 	GREG_CLOSE_CONFRONTATION_TRIGGERED = """
 Greg: Can you really affort to look somewhere else when I'm right in front of you? """, # MISSING TRANSLATION
-	EFFECT_GREG_TRAIT_DESCRIPT = """Black Knight - Greg:
-At the start of each round, Attempt to Read Movement of 2 random enemies.
-At less than 50% HP, Attempt to Read Movement of 4 random enemies instead.
-This effect is disabled if this unit is taunted, blinded, or immobilised.""", # MISSING TRANSLATION
-	EFFECT_LONESOME_RAGE_BYGONE_GLORY_TRAIT_DESCRIPT = """Lonesome Rage, Bygone Glory:
-If there's no other allies, gain 20 Armor pen, 30 Armor, 30 MDEF, and 15 Speed. 
-When this unit recovers from an immobilising effect, immediately use attack a random enemy and gain 'In the Shadow'.""", # MISSING TRANSLATION
-	EFFECTNAME_GREG_LAST_STAND = """Greg's Final Stand""", # MISSING TRANSLATION
-	EFFECT_GREG_FINAL_STAND_DESCRIPT = """Greg's Final Stand:
-Take further reduced damage from DoT effects.
-Hp does not drop below 10%.
-When hp reach 10%, gain Ridiculous Grit for 5 turns.""", # MISSING TRANSLATION
-	EFFECT_DEMONNESS_GIFT_NULL_CLOAK_DESCRIPT = """Demoness' Gift - Null Cloak: When this unit is affected by 'In the Shadow', Reduce Spell damage taken by 75%.""", # MISSING TRANSLATION
-	EFFECTNAME_RIDICLUOUS_GRIT = """Ridiculous Grit""", # MISSING TRANSLATION
-	EFFECT_RIDICLUOUS_GRIT_DESCRIPT = """Become immune to all immobilising effects.
-Gain +25 ATK and Hit rate.
-Reduce this buff duration by 1 when struck with a critical hit.
-When this effect expires, die.""", # MISSING TRANSLATION
-	EFFECTNAME_IM_SORRY_UNCLE = """I'm sorry uncle...""", # MISSING TRANSLATION
-	EFFECT_IM_SORRY_UNCLE_DESCRIPT = """Deal 10% less damage to Greg. Take 10% more damage from Greg""", # MISSING TRANSLATION
-	EFFECTNAME_PITIFUL_ARE_WE_NOT = """Pitiful, are we not?""", # MISSING TRANSLATION
-	EFFECT_PITIFUL_ARE_WE_NOT_DESCRIPT = """Immune to Movement Readed. -10 Hit Rate.""", # MISSING TRANSLATION
-	EFFECTNAME_MOVEMENT_READED = """Movement Readed""", # MISSING TRANSLATION
-	EFFECT_MOVEMENT_READED_DESCRIPT = """When Greg is not blind or immobilised:
-- Deal 90% less damage against Greg.
-- Attacking Greg will cause him to counterattack and inflicts stun.""", # MISSING TRANSLATION
-	EFFECTNAME_CLOSE_CONFRONTATION = """Close Confrontation""", # MISSING TRANSLATION
-	EFFECT_CLOSE_CONFRONTATION_DESCRIPT = """Range attacks deal 50% less damage.
-Melee attacks deal 50% more damage against the applier.
-If this unit doesn't attack the applier on their turn, provoke an opportunity attack from the applier.
-This effect is removed if the applier fell for a taunt or is immobilised.""", # MISSING TRANSLATION
-	EFFECTNAME_CLOSE_CONFRONTATION_CANCEL = """being right in front of the target.""", # MISSING TRANSLATION
-	EFFECTNAME_TIGHTENED_GRIP = """Tightened Grip""", # MISSING TRANSLATION
-	EFFECT_TIGHTENED_GRIP_DESCRIPT = """Immune to Disarm. +20 Hit Rate.""", # MISSING TRANSLATION
-	EFFECTNAME_BLACKEN_BLADE = """Blacken Blade""", # MISSING TRANSLATION
-	EFFECT_BLACKEN_BLADE_DESCRIPT = """Deals additional 50% of caster's MATK as {color=yellow|Dark} damage on every hit
-All attacks have a 20% chance to inflict Bleed.""", # MISSING TRANSLATION
-	EFFECT_CURSED_GIRL_DESCRIPT = """Cursed Girl: When hit by Devour magic spell, gain shock and 3 fragiles. When hit by Light damage, there is a 20% chance to become stunned.""", # MISSING TRANSLATION
-	EFFECT_GUARDIAN_SPIRIT_PROTECTION_FRENZIED_DESCRIPT = """Guardian Spirit Protection [Frenzied]: When being hit by non-light damage, 30% chance to inflict Cursed to the attacker. When being hit by a Cursed enemy, reduce damage taken by 30% and inflict Dark damage back to the attacker.""", # MISSING TRANSLATION
+	EFFECT_GREG_TRAIT_DESCRIPT = """Чёрный рыцарь — Грег:
+В начале каждого раунда пытается прочитать движения 2 случайных врагов.
+При ОЗ ниже 50% — движения 4 случайных врагов.
+Эффект отключается, если боец под насмешкой, ослеплён или обездвижен.""",
+	EFFECT_LONESOME_RAGE_BYGONE_GLORY_TRAIT_DESCRIPT = """Одинокая ярость, былая слава:
+Если союзников нет, получает +20 пробивания брони, +30 брони, +30 МЗЩ и +15 скорости. 
+Когда боец приходит в себя после обездвиживающего эффекта, немедленно атакует случайного врага и получает «В тенях».""",
+	EFFECTNAME_GREG_LAST_STAND = """Последний бой Грега""",
+	EFFECT_GREG_FINAL_STAND_DESCRIPT = """Последний бой Грега:
+Ещё сильнее снижает получаемый периодический урон.
+ОЗ не опускаются ниже 10%.
+При 10% ОЗ даёт «Невероятную стойкость» на 5 ходов.""",
+	EFFECT_DEMONNESS_GIFT_NULL_CLOAK_DESCRIPT = """Дар демоницы — Плащ пустоты: пока боец под действием «В тенях», получаемый урон от заклинаний снижен на 75%.""",
+	EFFECTNAME_RIDICLUOUS_GRIT = """Невероятная стойкость""",
+	EFFECT_RIDICLUOUS_GRIT_DESCRIPT = """Иммунитет ко всем обездвиживающим эффектам.
++25 АТК и меткости.
+При получении критического удара длительность эффекта сокращается на 1.
+По истечении эффекта боец умирает.""",
+	EFFECTNAME_IM_SORRY_UNCLE = """Прости, дядя...""",
+	EFFECT_IM_SORRY_UNCLE_DESCRIPT = """Наносит Грегу на 10% меньше урона. Получает от Грега на 10% больше урона""",
+	EFFECTNAME_PITIFUL_ARE_WE_NOT = """Жалкое зрелище, не правда ли?""",
+	EFFECT_PITIFUL_ARE_WE_NOT_DESCRIPT = """Иммунитет к «Движение прочитано». -10 к меткости.""",
+	EFFECTNAME_MOVEMENT_READED = """Движение прочитано""",
+	EFFECT_MOVEMENT_READED_DESCRIPT = """Пока Грег не ослеплён и не обездвижен:
+- Наносит Грегу на 90% меньше урона.
+- Атака по Грегу вызывает его контратаку с оглушением.""",
+	EFFECTNAME_CLOSE_CONFRONTATION = """Ближнее противостояние""",
+	EFFECT_CLOSE_CONFRONTATION_DESCRIPT = """Дальние атаки наносят на 50% меньше урона.
+Ближние атаки наносят на 50% больше урона по наложившему эффект.
+Если в свой ход боец не атакует наложившего, тот совершает атаку по возможности.
+Эффект снимается, если наложивший поддался насмешке или обездвижен.""",
+	EFFECTNAME_CLOSE_CONFRONTATION_CANCEL = """нахождение прямо перед целью.""",
+	EFFECTNAME_TIGHTENED_GRIP = """Усиленная хватка""",
+	EFFECT_TIGHTENED_GRIP_DESCRIPT = """Иммунитет к обезоруживанию. +20 к меткости.""",
+	EFFECTNAME_BLACKEN_BLADE = """Почернение клинка""",
+	EFFECT_BLACKEN_BLADE_DESCRIPT = """Каждое попадание дополнительно наносит 50% МАТК заклинателя как {color=yellow|тёмный} урон.
+Все атаки с шансом 20% вызывают кровотечение.""",
+	EFFECT_CURSED_GIRL_DESCRIPT = """Проклятая: при попадании заклинанием «Пожирание» получает шок и 3 заряда хрупкости. При получении светового урона с шансом 20% оглушается.""",
+	EFFECT_GUARDIAN_SPIRIT_PROTECTION_FRENZIED_DESCRIPT = """Защита духа-хранителя [Неистовый]: при получении не-светового урона с шансом 30% накладывает проклятие на атакующего. При получении удара от проклятого врага снижает получаемый урон на 30% и наносит атакующему тёмный урон в ответ.""",
 	SEB_RILU_ATTACK = """
 Rilu cast Soul Nail. """, # MISSING TRANSLATION
 	SEB_RILU_DEBUFF = """
@@ -5508,29 +5533,29 @@ Rilu cast Soothe the Soul. """, # MISSING TRANSLATION
 Rilu cast Exorcism. """, # MISSING TRANSLATION
 	SEB_BONEMEAL_EASTEREGG = """
 %s got fertilized by the bonemeal! """, # MISSING TRANSLATION
-	EFFECT_CEASELESS_HARVEST_DESCRIPT = """Forbidden Ritual: Ceaseless Harvest -
-Further Reduce DoT damage taken.
-At the end of each round, regenerate 8% of Max HP.
-The Regen effect will not activate if affected by Luminance.""", # MISSING TRANSLATION
-	EFFECTNAME_DEATH_AND_TAXES = """Death & Taxes""", # MISSING TRANSLATION
-	EFFECT_DEATH_AND_TAXES_DESCRIPT = """When using healing ability, reduce mana.
-When using resurrection type ability, harshly reduce mana.
-Disable this effect if Sebastian is silenced.""", # MISSING TRANSLATION
-	EFFECTNAME_ONE_WAY_TICKET_TO_HELL = """One-way Ticket to Hell""", # MISSING TRANSLATION
-	EFFECT_ONE_WAY_TICKET_TO_HELL_DESCRIPT = """One-way Ticket to Hell: -25% Armor, MDEF, and Healing Received.""", # MISSING TRANSLATION
-	EFFECT_IN_THE_DARK_DESCRIPT = """Reduce light damage dealt and Outgoing Healing by 100%""", # MISSING TRANSLATION
-	EFFECT_YOU_WANT_TICKET_DESCRIPT = """Counter-curse: When hit, 50% chance to apply One-Way Ticket to Hell to the attacker.""", # MISSING TRANSLATION
-	EFFECT_GIANT_RIBCAGE_DESCRIPT = """Giant Ribcage: At the start of this unit turn, apply 'Wide Guard' to all allies for 1 turn.""", # MISSING TRANSLATION
-	EFFECTNAME_WIDE_GUARD = """Wide Guard""", # MISSING TRANSLATION
-	EFFECT_WIDE_GUARD_DESCRIPT = """Reduce AoE damage taken by 50%. Remove if the applier is defeated.""", # MISSING TRANSLATION
-	EFFECT_BLOATED_WITH_NOXIOUS_GAS_DESCRIPT = """Bloated with Noxious Gas:
-On Death, inflict water damage, blind, and poison to the melee line.
-On Death while affected by burn, explode. Dealing Fire damage to the front-most enemy of each row.""", # MISSING TRANSLATION
-	EFFECT_ADRENAL_GLANDS_OVERDRIVE_DESCRIPT = """Adrenal glands overdrive: Gain more speed the less HP this unit has.""", # MISSING TRANSLATION
-	EFFECTNAME_ADRENAL_GLANDS_OVERDRIVE_SPEED_BUFF = """Adrenaline""", # MISSING TRANSLATION
-	EFFECT_GO_POSTAL_DESCRIPT = """Go Postal: Counterattack any attack in melee range and Taunt itself to the attacker.""", # MISSING TRANSLATION
-	EFFECT_HEAPING_MASS_DESCRIPT = """For every stack (Max 3): +15 ATK, Armor, MDEF. - 20 Evasion and Speed.""", # MISSING TRANSLATION
-	EFFECT_FIRST_CLASS_SERVICE_DESCRIPT = """First-Class Service: At the start of each round, order a random ally to protect this unit for the round.""", # MISSING TRANSLATION
+	EFFECT_CEASELESS_HARVEST_DESCRIPT = """Запретный ритуал: Непрестанная жатва —
+Ещё сильнее снижает получаемый периодический урон.
+В конце каждого раунда восстанавливает 8% макс. ОЗ.
+Регенерация не срабатывает под действием «Сияния».""",
+	EFFECTNAME_DEATH_AND_TAXES = """Смерть и налоги""",
+	EFFECT_DEATH_AND_TAXES_DESCRIPT = """Использование лечащих способностей уменьшает ману.
+Использование способностей воскрешения резко уменьшает ману.
+Эффект отключается, если Себастьян под немотой.""",
+	EFFECTNAME_ONE_WAY_TICKET_TO_HELL = """Билет в один конец в ад""",
+	EFFECT_ONE_WAY_TICKET_TO_HELL_DESCRIPT = """Билет в один конец в ад: -25% брони, МЗЩ и получаемого лечения.""",
+	EFFECT_IN_THE_DARK_DESCRIPT = """Наносимый световой урон и исходящее лечение снижены на 100%""",
+	EFFECT_YOU_WANT_TICKET_DESCRIPT = """Контрпроклятие: при получении удара с шансом 50% накладывает на атакующего «Билет в один конец в ад».""",
+	EFFECT_GIANT_RIBCAGE_DESCRIPT = """Гигантская грудная клетка: в начале своего хода накладывает «Широкую защиту» на всех союзников на 1 ход.""",
+	EFFECTNAME_WIDE_GUARD = """Широкая защита""",
+	EFFECT_WIDE_GUARD_DESCRIPT = """Снижает получаемый урон по площади на 50%. Снимается, если наложивший повержен.""",
+	EFFECT_BLOATED_WITH_NOXIOUS_GAS_DESCRIPT = """Раздут ядовитым газом:
+При смерти наносит урон водой, ослепление и отравление ближней линии.
+При смерти под действием горения взрывается, нанося урон огнём переднему врагу каждого ряда.""",
+	EFFECT_ADRENAL_GLANDS_OVERDRIVE_DESCRIPT = """Выброс адреналина: чем меньше у бойца ОЗ, тем выше скорость.""",
+	EFFECTNAME_ADRENAL_GLANDS_OVERDRIVE_SPEED_BUFF = """Адреналин""",
+	EFFECT_GO_POSTAL_DESCRIPT = """Слететь с катушек: контратакует любую атаку в ближнем радиусе и вызывает насмешку на себя от атакующего.""",
+	EFFECT_HEAPING_MASS_DESCRIPT = """За каждый заряд (макс. 3): +15 АТК, брони и МЗЩ. -20 уклонения и скорости.""",
+	EFFECT_FIRST_CLASS_SERVICE_DESCRIPT = """Первоклассное обслуживание: в начале каждого раунда приказывает случайному союзнику защищать этого бойца в течение раунда.""",
 	RESETTRAINREQ = """Сбросить обучение на 0-й этап и восстановить дух. Требуется зелье Забвения.""",
 	RESETTRAINING = "Весь прогресс обучения будет сведен на нет. Вы уверены?",
 	BUFFDESCRIPTDEFENDER = """Защитник: Защищает союзников от атак, если не оглушен.""",
@@ -5628,7 +5653,7 @@ On Death while affected by burn, explode. Dealing Fire damage to the front-most 
 	PROFDRUID = """Друид""",
 	PROFDRUIDDESCRIPT = """Друиды постигают и изучают магию природы, что позволяет им исцелять и обезвреживать врагов.""",
 	PROFOCCULTIST = "Оккультист",
-	PROFOCCULTISTDESCRIPT = "occultist.",#fix
+	PROFOCCULTISTDESCRIPT = """оккультист.""",#fix
 	PROFVALKYRIE = """Валькирия""",
 	PROFVALKYRIEDESCRIPT = """Женщины-крылатые воины, стремительные и смертельные в нападении.""",
 	PROFEMPYRIAN = "Эмпирей",
@@ -5674,7 +5699,7 @@ On Death while affected by burn, explode. Dealing Fire damage to the front-most 
 	PROFSATORI = """Satori""", # MISSING TRANSLATION
 	PROFASURA = """Asura""", # MISSING TRANSLATION
 	PROFNIXX_CHAMPIONDESCRIPT = """Эти ужасающие силы исходят из неизвестного источника, который могут познать лишь немногие мудрецы мира.""",
-	PROFSATORIDESCRIPT = """Only the one who has reached lowest point will be able to perceive the reality to its fullest.""", # MISSING TRANSLATION
+	PROFSATORIDESCRIPT = """Лишь тот, кто достиг самого дна, способен увидеть реальность во всей полноте.""",
 	PROFASURADESCRIPT = """Lust for power and control can get you to very strange places, but the cost will never feel fair.""", # MISSING TRANSLATION
 	PROFRENOWN_ROYALTY = """Королевская власть""",
 	PROFRENOWN_ROYALTYDESCRIPT = """Королевская кровь сама по себе является благом, тем более, когда ее признают другие.""",
@@ -6235,11 +6260,11 @@ On Death while affected by burn, explode. Dealing Fire damage to the front-most 
 	SEXTRAITDESIRED = """Желаемый""",
 	SEXTRAITCURIOUS = """Любопытство""",
 	SEXTRAITLIFE_POWER = """Жизненная сила""",
-	TRAITCALMING_TOUCH = """Calming Touch""", # MISSING TRANSLATION
-	TRAITEMPATHIC_INSIGHT = """Empathic Insight""", # MISSING TRANSLATION
-	TRAITREFRESHING_PULSE = """Refreshing Pulse""", # MISSING TRANSLATION
-	TRAITTEASING_WINDS = """Teasing Winds""", # MISSING TRANSLATION
-	TRAITDARK_RAPTURE = """Dark Rapture""", # MISSING TRANSLATION
+	TRAITCALMING_TOUCH = """Успокаивающее касание""",
+	TRAITEMPATHIC_INSIGHT = """Эмпатическое чутьё""",
+	TRAITREFRESHING_PULSE = """Освежающий импульс""",
+	TRAITTEASING_WINDS = """Дразнящие ветра""",
+	TRAITDARK_RAPTURE = """Тёмный восторг""",
 
 	SEXSKILLSDESCRIPT = """Сексуальные навыки улучшают характеристики персонажа при взаимодействии и влияют на стат Sexuals. Более высокий Сексуальный навык заставит партнера сильнее возбуждаться от действий персонажа. 
 
@@ -9002,9 +9027,9 @@ SEXDESC_TITS_CHARM_ADULT_1 = "соблазнительная",
 	
 	DIALOGUETUTNOTHING = """Без обучения (бесплатно)""",
 	DIALOGUETUTSLAVE = """*Обучить как раба* (500 золотых)""",
-	DIALOGUETUTSLAVE1 = """Slave Training: Workforce (500 Gold)""", # MISSING TRANSLATION
-	DIALOGUETUTSLAVE2 = """Slave Training: Warrior (500 Gold)""", # MISSING TRANSLATION
-	DIALOGUETUTSLAVE3 = """Slave Training: Service (500 Gold)""", # MISSING TRANSLATION
+	DIALOGUETUTSLAVE1 = """Обучение невольника: рабочая сила (500 золота)""",
+	DIALOGUETUTSLAVE2 = """Обучение невольника: боец (500 золота)""",
+	DIALOGUETUTSLAVE3 = """Обучение невольника: обслуживание (500 золота)""",
 	DIALOGUETUTACADEMY = """*Академическое обучение* (1.500 золотых)""",
 	DIALOGUETUTHEIR = """*Обучение наследника* (5.000 золотых)""",
 	
@@ -9029,7 +9054,7 @@ SEXDESC_TITS_CHARM_ADULT_1 = "соблазнительная",
 	CHARLOVERS = """[name] и [scncharname] обратились к вам и попросили позволить им стать больше чем любовниками.""",
 	CHARFREELOVERS = """[name] и [scncharname] обратились к вам и попросили разрешить им стать любовниками.""",
 	REVEAL_MAP = "[name] накладывает заклинание 'Шепот ветра', улавливая расположение окружающих территорий. ",
-	DUNGEON_INTIMIDATE = """The enemy group flees from the spot abandoning their position.""", # MISSING TRANSLATION
+	DUNGEON_INTIMIDATE = """Вражеская группа в панике покидает позицию.""",
 	CHARLOVERSALLOW = """*Разрешить*""",
 	CHARFREELOVERSALLOW = """*Разрешить*""",
 	CHARLOVERSFORBID = "*Запретить*",
@@ -9142,8 +9167,8 @@ SEXDESC_TITS_CHARM_ADULT_1 = "соблазнительная",
 	ENEMYBANDIT_BOSS_MAGE = """Разбойный маг""",
 	ENEMYRAMONT_BOSS = """Рамонт""",
 	ENEMYHECTOR_BOSS = """Гектор""",
-	ENEMYGROTUS_ASCENDED = """Grotus the Ascended""", # MISSING TRANSLATION
-	ENEMYGROTUS_KING_BOSS = """Grotus, Crowned God""", # MISSING TRANSLATION
+	ENEMYGROTUS_ASCENDED = """Гротус Вознёсшийся""",
+	ENEMYGROTUS_KING_BOSS = """Гротус, Венчанный бог""",
 	ENEMYREYAN_BOSS = "Рейан",
 	ENEMYREBEL_RECRUIT = """Рекрут повстанцев""",
 	ENEMYREBEL_KNIGHT = """Рыцарь  повстанцев""",
@@ -9160,7 +9185,7 @@ SEXDESC_TITS_CHARM_ADULT_1 = "соблазнительная",
 	ENEMYOGRE_MAGE = """Маг-огр""",
 	ENEMYGRYPHON = """Грифон""",
 	ENEMYELDER_GRYPHON_BOSS = """Старший грифон""",
-	ENEMYTORNADO = """Tornado""", # MISSING TRANSLATION
+	ENEMYTORNADO = """Смерч""",
 	ENEMYWOLF = """Волк""",
 	ENEMYRAT = """Крыса""",
 	ENEMYSPIDER_WEAK = "Ползун",
@@ -9201,42 +9226,42 @@ SEXDESC_TITS_CHARM_ADULT_1 = "соблазнительная",
 	ENEMYKURDAN = """Курдан""",
 	
 	ENEMYLEON = """Леон""",
-	ENEMYFAT_BANDIT = """Fat Bandit""", # MISSING TRANSLATION
-	ENEMYREDHEAD_BOSS_BANDIT = """Bandit Leader""", # MISSING TRANSLATION
-	ENEMYSMALL_BANDIT = """Small Bandit""", # MISSING TRANSLATION
+	ENEMYFAT_BANDIT = """Толстый бандит""",
+	ENEMYREDHEAD_BOSS_BANDIT = """Главарь бандитов""",
+	ENEMYSMALL_BANDIT = """Мелкий бандит""",
 	ENEMYLILITH_BOSS = """Ashmedai""", # MISSING TRANSLATION
 	ENEMYLILITH_BOSS_1 = "Ашмедай",
 	ENEMYLILITH_BOSS_2 = "Ашмедай",
-	ENEMYASHMEDAI_TENTACLE = """Tentacle Appendage""", # MISSING TRANSLATION
+	ENEMYASHMEDAI_TENTACLE = """Щупальце""",
 	ENEMYWHITE_STAG = """Белый олень""",
 	ENEMYWHITE_STAG_HUMAN = """Таинственная личность""",
-	ENEMYSMOTHERING_KUDZU = """Smothering Kudzu""", # MISSING TRANSLATION
-	ENEMYTHE_STRIDE = """The Stride""", # MISSING TRANSLATION
-	ENEMYTHE_SHELL = """The Shell""", # MISSING TRANSLATION
-	ENEMYTHE_TALON = """The Talon""", # MISSING TRANSLATION
+	ENEMYSMOTHERING_KUDZU = """Удушающий кудзу""",
+	ENEMYTHE_STRIDE = """Поступь""",
+	ENEMYTHE_SHELL = """Панцирь""",
+	ENEMYTHE_TALON = """Коготь""",
 	ENEMYELF_SPECTER = """Эльф-наблюдатель""",
 	ENEMYELF_SOLDIER = """Эльфийский солдат""",
 	ENEMYDWARF_FIGHTER = "Дворф-воин",
 	ENEMYDWARF_FIGHTER_ELITE = "Элитный дворф-воин",
 	ENEMYDWARF_RANGED = "Дворф-арбалетчик",
-	ENEMYDWARF_KING = """Dwarf King""", # MISSING TRANSLATION
-	ENEMYDWARVEN_SKIRMISHER = """Dwarf Skirmisher""", # MISSING TRANSLATION
-	ENEMYDWARVEN_SHIELDER = """Dwarf Shielder""", # MISSING TRANSLATION
-	ENEMYOBSIDIAN_GOLEM = """Obsidian Golem""", # MISSING TRANSLATION
+	ENEMYDWARF_KING = """Король дварфов""",
+	ENEMYDWARVEN_SKIRMISHER = """Дварфский застрельщик""",
+	ENEMYDWARVEN_SHIELDER = """Дварфский щитоносец""",
+	ENEMYOBSIDIAN_GOLEM = """Обсидиановый голем""",
 	ENEMYKURO = "Куро",
 	ENEMYERDYNA = "Эрдина",
 	ENEMYNIXX = "Никс",	
-	ENEMYUNLIT_BRAZIER = """Unlit Brazier""", # MISSING TRANSLATION
-	ENEMYLIGHTED_BRAZIER = """Lighted Brazier""", # MISSING TRANSLATION
-	ENEMYSHADOW_MONSTROSITY = """Shadow Monstrosity""", # MISSING TRANSLATION
+	ENEMYUNLIT_BRAZIER = """Погасшая жаровня""",
+	ENEMYLIGHTED_BRAZIER = """Горящая жаровня""",
+	ENEMYSHADOW_MONSTROSITY = """Теневое чудовище""",
 	ENEMYMUTANT = "Мутант",
 	ENEMYMUTANT2 = "Деформированный",
 	ENEMYSYLAS = "Силас",
 	ENEMYSYLAS_WEAK = "Ослабленный Силас",
 	ENEMYJEAN_EVIL = "Жанна",
 	ENEMYJEAN_DEMON = "Демон",	
-	ENEMYCLANSMAN_GUARD = """Clansman Guard""", # MISSING TRANSLATION
-	ENEMYCLANSMAN_ARCHER = """Clansman Archer""", # MISSING TRANSLATION
+	ENEMYCLANSMAN_GUARD = """Страж клана""",
+	ENEMYCLANSMAN_ARCHER = """Лучник клана""",
 	FOODFILTERHIGH = """Высокий""",
 	FOODFILTERMED = """Средний""",
 	FOODFILTERLOW = """Низкий""",
@@ -9371,12 +9396,16 @@ SEXDESC_TITS_CHARM_ADULT_1 = "соблазнительная",
 	ITEMEXP_SCROLLDESCRIPT = """Дает использующему 100 очков опыта.""",
 	ITEMBOUQUET = """Bouquet""", # MISSING TRANSLATION
 	ITEMBOUQUETDESCRIPT = """A bouquet of fresh flowers. Gifting it raises Affection towards the giver.""", # MISSING TRANSLATION
+	DIALOGUEBOUQUETREPORT = """You give [name] a bouquet. [He] smiles warmly at the thoughtful gift.""", # MISSING TRANSLATION
 	ITEMGEM = """Gem""", # MISSING TRANSLATION
 	ITEMGEMDESCRIPT = """A polished, valuable gemstone. Gifting it raises Respect towards the giver.""", # MISSING TRANSLATION
+	DIALOGUEGEMREPORT = """You give [name] a gemstone. [He] admires it with a pleased smile.""", # MISSING TRANSLATION
 	ITEMBROOCH = """Brooch""", # MISSING TRANSLATION
 	ITEMBROOCHDESCRIPT = """An ornate, expensive brooch. Gifting it greatly raises Affection towards the giver, and raises Respect as well.""", # MISSING TRANSLATION
+	DIALOGUEBROOCHREPORT = """You give [name] an ornate brooch. [He] is clearly delighted by the gift.""", # MISSING TRANSLATION
 	ITEMRITUAL_DAGGER = """Ritual Dagger""", # MISSING TRANSLATION
 	ITEMRITUAL_DAGGERDESCRIPT = """A ceremonial dagger of fine craftsmanship. Gifting it greatly raises Respect towards the giver, and raises Affection as well.""", # MISSING TRANSLATION
+	DIALOGUERITUAL_DAGGERREPORT = """You give [name] a ritual dagger. [He] regards its fine craftsmanship with visible appreciation.""", # MISSING TRANSLATION
 	ITEMSEXSWAP_POTION = """Зелье смены пола""",
 	ITEMSEXSWAP_POTIONDESCRIPT = """Меняет пол персонажа на противоположный. Не действует на уникальных персонажей.""",
 	ITEMUSECONFIRM = """Вы уверены, что хотите использовать {color=yellow|%s}?""",
@@ -9447,7 +9476,7 @@ SEXDESC_TITS_CHARM_ADULT_1 = "соблазнительная",
 	WORKRULELOCK = """Блок персонажа""",
 	WORKRULELOCKDESCRIPT = """Блокирует персонажа от отображения [him] в списке заданий и действий, которые навсегда удаляют или продают [him].""",
 	WORKRULEHIDE = """Hide""", # MISSING TRANSLATION
-	WORKRULEHIDEDESCRIPT = """Places [name] at the end of the character list and only shows [him] while Show All locations is selected.""", # MISSING TRANSLATION
+	WORKRULEHIDEDESCRIPT = """Помещает [name] в конец списка персонажей и показывает [his] только при выбранном отображении всех мест.""",
 
 	SERVICEENSLAVE = """Поработить""",
 	SERVICEENSLAVEDESCRIPT = """Превращает выбранного персонажа в раба.
@@ -9588,9 +9617,9 @@ SEXDESC_TITS_CHARM_ADULT_1 = "соблазнительная",
 	ACHIEVEMENT_METEORITE_NAME = "Квест с метеоритом",
 	ACHIEVEMENT_METEORITE_DESC = "Квест с метеоритом завершён",
 	ACHIEVEMENT_METEORITE_HINT = "Завершить квест с метеоритом",
-	ACHIEVEMENT_ARENA_CHAMPION_NAME = """Arena Champion""", # MISSING TRANSLATION
-	ACHIEVEMENT_ARENA_CHAMPION_DESC = """Won all five arena rounds in a single run""", # MISSING TRANSLATION
-	ACHIEVEMENT_ARENA_CHAMPION_HINT = """Win the fifth arena round""", # MISSING TRANSLATION
+	ACHIEVEMENT_ARENA_CHAMPION_NAME = """Чемпион арены""",
+	ACHIEVEMENT_ARENA_CHAMPION_DESC = """Все пять раундов арены выиграны за один заход""",
+	ACHIEVEMENT_ARENA_CHAMPION_HINT = """Выиграйте пятый раунд арены""",
 	ACHIGROUP_INFINITE_DESC = "Продвижение по Башне грёз",
 	ACHI_BTN_GROUP_MAIN = "Основное",
 	ACHIBONUS_DAISY_START = "Начать с Дейзи",
@@ -9650,8 +9679,8 @@ SEXDESC_TITS_CHARM_ADULT_1 = "соблазнительная",
 	ACHIBONUS_ROOMS_DESC = "Начать с улучшением комнат 1 уровня",
 	ACHIBONUS_LITERATE = "Грамотный",
 	ACHIBONUS_LITERATE_DESC = "Начать с чертой Грамотность",
-	ACHIBONUS_ALL_RACES = """Cosmopolitan""", # MISSING TRANSLATION
-	ACHIBONUS_ALL_RACES_DESC = """Unlock all races during character creation regardless of their lore appropriateness. """, # MISSING TRANSLATION
+	ACHIBONUS_ALL_RACES = """Космополит""",
+	ACHIBONUS_ALL_RACES_DESC = """Открывает все расы при создании персонажа независимо от их соответствия лору. """,
 	ACHIEVEMENT_RESET_ASK = "Вы уверены, что хотите сбросить ВЕСЬ прогресс достижений?",
 	ACHIGROUP_WEDDING_NAME = "Свадьба",
 	ACHIGROUP_WEDDING_DESC = "Жениться на каждом уникальном персонаже",
@@ -10373,21 +10402,22 @@ LICHAIRETALK6_5 = """Борьба Эйры постепенно ослабева
 	ABORTTUTORIAL = "Прервать обучение",
 	PROMPTTUTORIAL = "Новичкам рекомендуется пройти обучение, чтобы освоить основные элементы управления и механики.",
 	TUTORIAL_TRAINING1 = "Это обучение объяснит базовые механики управления вашим особняком и персонажами. Ваш персонаж {color=yellow|Хозяин} представляет вас и отвечает за управление другими персонажами.",
-	TUTORIAL_TRAINING1_1 = """Click your Master's card to unfold it. The expanded card holds their details, work rules and social skills.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING1_1 = """Нажмите на карточку господина, чтобы развернуть её. В развёрнутой карточке — подробности, правила работы и социальные навыки.""",
 	TUTORIAL_TRAINING2 = "Начнём с использования врождённого навыка Хозяина, Наставник, на одном из ваших подчинённых. Он увеличит количество получаемого ими опыта на один день.",
 	TUTORIAL_TRAINING3 = "Выберите персонажа из списка, чтобы завершить применение навыка.",
 	TUTORIAL_TRAINING4 = "Использованный навык уйдёт в перезарядку, и вы получите краткий отчёт, как и при многих подобных действиях.",
 	TUTORIAL_TRAINING5 = "Ещё одна важная функция — настройки персонажа в верхней части списка персонажей. Здесь можно настроить различное поведение и задачи, но пока мы установим несколько базовых правил питания.",
 	TUTORIAL_TRAINING6 = "По умолчанию правила питания персонажей будут соответствовать их предпочтениям, но вы можете изменить их. Нажатие на опцию еды будет циклически менять её приоритет для этого персонажа.",
-	TUTORIAL_TRAINING7 = """Click a food to allow or forbid it for this character.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING7 = """Нажмите на еду, чтобы разрешить или запретить её этому персонажу.""",
 	TUTORIAL_TRAINING8 = "Теперь, когда это сделано, давайте вернёмся в главное меню.",
+	TUTORIAL_TRAINING8_1 = """Right-click anywhere to fold the card back, so the rest of the list is reachable again.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING9 = "Выберите Дейзи, чтобы получить доступ к её деталям и информации.",
 	TUTORIAL_TRAINING10 = "Вы можете открыть окно персонажа двойным щелчком или с помощью кнопки Информация о персонаже.",
 	TUTORIAL_TRAINING11 = "Дейзи классифицируется как необученная рабыня, и для наблюдения и проведения её тренировок требуется тренер. Необученные рабы не будут работать без тренера.",
 	TUTORIAL_TRAINING12 = "Назначьте вашего Хозяина её тренером, выбрав его.",
 	TUTORIAL_TRAINING13 = "Чтобы начать тренировку, выберите действие Похвала.",
 	TUTORIAL_TRAINING14 = "У разных рабов разные предпочтения в тренировочных действиях, что влияет на их эффективность. Старайтесь поддерживать их дух высоким к концу тренировки.",
-	TUTORIAL_TRAINING14_1 = """Daisy has finished her training.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING14_1 = """Дейзи завершила обучение.""",
 	TUTORIAL_TRAINING15 = "Дейзи накопила достаточно очков лояльности, чтобы открыть тренировку Послушания. Эта базовая тренировка требуется для некоторых задач и заданий, связанных с передачей персонажей.",
 	TUTORIAL_TRAINING16 = "Подтвердите открытие.",
 	TUTORIAL_TRAINING17 = "На второй вкладке вы можете найти особые навыки, которые дают дополнительные улучшения персонажу.",
@@ -10408,38 +10438,38 @@ LICHAIRETALK6_5 = """Борьба Эйры постепенно ослабева
 	TUTORIAL_WORK12 = "Вернитесь в меню Работа.",
 	TUTORIAL_WORK13 = "Несмотря на то, что вы выбрали её официанткой, вы должны сначала переназначить её с крафта на обслуживание.",
 	TUTORIAL_WORK14 = "Здесь вы можете просмотреть дополнительные правила и преимущества сервисной работы. Во время работы персонажи каждый ход получают опыт и характеристику, связанную с их задачей.",
-	TUTORIAL_WORK15 = """Open craft menu.""", # MISSING TRANSLATION
-	TUTORIAL_WORK16 = """Choose bread.""", # MISSING TRANSLATION
-	TUTORIAL_WORK16_1 = """Confirm.""", # MISSING TRANSLATION
-	TUTORIAL_WORK17 = """You can adjust quantity. Add 10 more units.""", # MISSING TRANSLATION
-	TUTORIAL_WORK17_1 = """Confirm.""", # MISSING TRANSLATION
-	TUTORIAL_WORK18 = """Close craft window.""", # MISSING TRANSLATION
-	TUTORIAL_WORK19 = """Select crafting task.""", # MISSING TRANSLATION
-	TUTORIAL_WORK20 = """Assign Daisy to the crafting task by selecting her.""", # MISSING TRANSLATION
-	TUTORIAL_WORK21 = """Lets try few crafting tasks.""", # MISSING TRANSLATION
-	TUTORIAL_WORK22 = """Select smith category.""", # MISSING TRANSLATION
-	TUTORIAL_WORK23 = """When list is too long you can use filters.""", # MISSING TRANSLATION
-	TUTORIAL_WORK24 = """Choose steel.""", # MISSING TRANSLATION
-	TUTORIAL_WORK24_1 = """Confirm.""", # MISSING TRANSLATION
-	TUTORIAL_WORK24_2 = """Confirm.""", # MISSING TRANSLATION
-	TUTORIAL_WORK24_3 = """Go to crafting tasks for Daisy again.""", # MISSING TRANSLATION
-	TUTORIAL_WORK25 = """Go to crafting tasks for Daisy again.""", # MISSING TRANSLATION
-	TUTORIAL_WORK25_1 = """Go to crafting tasks for Daisy again.""", # MISSING TRANSLATION
-	TUTORIAL_WORK25_2 = """Go to crafting tasks for Daisy again.""", # MISSING TRANSLATION
-	TUTORIAL_WORK26 = """Here you can change crafting priorities. Daisy will bake bread while task is active and cooking priority is higher then smith's. Now drag smith button to higher priority.""", # MISSING TRANSLATION
-	TUTORIAL_WORK26_1 = """You can see that Daisy produceing steel now.
-Close this menu.""", # MISSING TRANSLATION
-	TUTORIAL_WORK27 = """You also can cancel crafting task outright. Go back to cooking menu.""", # MISSING TRANSLATION
-	TUTORIAL_WORK27_1 = """Go back to cooking menu.""", # MISSING TRANSLATION
-	TUTORIAL_WORK28 = """Cancel bread baking.""", # MISSING TRANSLATION
-	TUTORIAL_WORK29 = """And confirm it.""", # MISSING TRANSLATION
+	TUTORIAL_WORK15 = """Откройте меню ремесла.""",
+	TUTORIAL_WORK16 = """Выберите хлеб.""",
+	TUTORIAL_WORK16_1 = """Подтвердите.""",
+	TUTORIAL_WORK17 = """Количество можно изменить. Добавьте ещё 10 единиц.""",
+	TUTORIAL_WORK17_1 = """Подтвердите.""",
+	TUTORIAL_WORK18 = """Закройте окно ремесла.""",
+	TUTORIAL_WORK19 = """Выберите задачу ремесла.""",
+	TUTORIAL_WORK20 = """Назначьте Дейзи на задачу ремесла, выбрав её.""",
+	TUTORIAL_WORK21 = """Попробуем несколько ремесленных задач.""",
+	TUTORIAL_WORK22 = """Выберите категорию кузнечного дела.""",
+	TUTORIAL_WORK23 = """Когда список слишком длинный, можно воспользоваться фильтрами.""",
+	TUTORIAL_WORK24 = """Выберите сталь.""",
+	TUTORIAL_WORK24_1 = """Подтвердите.""",
+	TUTORIAL_WORK24_2 = """Подтвердите.""",
+	TUTORIAL_WORK24_3 = """Снова перейдите к ремесленным задачам Дейзи.""",
+	TUTORIAL_WORK25 = """Снова перейдите к ремесленным задачам Дейзи.""",
+	TUTORIAL_WORK25_1 = """Снова перейдите к ремесленным задачам Дейзи.""",
+	TUTORIAL_WORK25_2 = """Снова перейдите к ремесленным задачам Дейзи.""",
+	TUTORIAL_WORK26 = """Здесь можно менять приоритеты ремесла. Дейзи будет печь хлеб, пока задача активна, а приоритет готовки выше кузнечного дела. Теперь перетащите кнопку кузнеца на более высокий приоритет.""",
+	TUTORIAL_WORK26_1 = """Видно, что теперь Дейзи производит сталь.
+Закройте это меню.""",
+	TUTORIAL_WORK27 = """Ремесленную задачу можно и вовсе отменить. Вернитесь в меню готовки.""",
+	TUTORIAL_WORK27_1 = """Вернитесь в меню готовки.""",
+	TUTORIAL_WORK28 = """Отмените выпечку хлеба.""",
+	TUTORIAL_WORK29 = """И подтвердите.""",
 	TUTORIAL_LEVELING0 = "Говоря об опыте, давайте посмотрим на другой способ его получения.",
 	TUTORIAL_LEVELING1 = "Выберите Инвентарь, чтобы просмотреть ваше имущество.",
 	TUTORIAL_LEVELING2 = "Выберите вашего Хозяина в качестве активного персонажа для управления.",
 	TUTORIAL_LEVELING3 = "Используйте Свиток знаний, чтобы дать вашему Хозяину немного опыта. Это простой способ быстро увеличить силу нового персонажа.",
 	TUTORIAL_LEVELING4 = "Закройте панель.",
 	TUTORIAL_LEVELING5 = "Закройте инвентарь.",
-	TUTORIAL_LEVELING5_1 = """Click your Master's card again to unfold it.""", # MISSING TRANSLATION
+	TUTORIAL_LEVELING5_1 = """Нажмите на карточку господина ещё раз, чтобы развернуть её.""",
 	TUTORIAL_LEVELING6 = "Откройте окно информации о персонаже Хозяина.",
 	TUTORIAL_LEVELING7 = "Теперь, когда у вас достаточно опыта, откройте вкладку Прокачка.",
 	TUTORIAL_LEVELING8 = "Опыт используется для открытия классов, каждый из которых даёт бонусы, пассивные способности и навыки. Откройте класс Боец.",
@@ -10462,10 +10492,10 @@ Close this menu.""", # MISSING TRANSLATION
 	TUTORIAL_COMBAT12 = "Новая локация появится в панели навигации. Выберите её, чтобы войти.",
 	TUTORIAL_COMBAT13 = "Чтобы назначить персонажей в боевую группу, перетащите их портреты в пустые слоты внизу.",
 	TUTORIAL_COMBAT14 = "Правая колонка для персонажей ближнего боя, а левая — для дальнего. Персонажи ближнего боя защищают дальних от урона в ближнем бою. Если персонажа ближнего боя поставить в заднюю колонку, его навыки ближнего боя будут наносить только половину урона.",
-	TUTORIAL_COMBAT14_1 = """You can use some explorer spells. Open cast menu.""", # MISSING TRANSLATION
-	TUTORIAL_COMBAT14_2 = """Choose spells.""", # MISSING TRANSLATION
-	TUTORIAL_COMBAT14_3 = """Use it on appropriate target.""", # MISSING TRANSLATION
-	TUTORIAL_COMBAT14_4 = """Some spells and items can be used multiple times. To stop using them just click in some random place on screen, or click RMB (for this tutorial specifically).""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT14_1 = """Можно применять некоторые заклинания исследователя. Откройте меню применения.""",
+	TUTORIAL_COMBAT14_2 = """Выберите заклинания.""",
+	TUTORIAL_COMBAT14_3 = """Примените его на подходящую цель.""",
+	TUTORIAL_COMBAT14_4 = """Некоторые заклинания и предметы можно использовать несколько раз. Чтобы прекратить, щёлкните в произвольном месте экрана или нажмите ПКМ (специально для этого обучения).""",
 	TUTORIAL_COMBAT15 = "Нажмите Далее, чтобы начать битву.",
 	TUTORIAL_COMBAT16 = "Это задание может быть начато из диалогового окна.",
 	TUTORIAL_COMBAT17 = "Битвы, начатые через диалог, позволяют вам снова настроить и подтвердить вашу группу.",
@@ -11088,7 +11118,7 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	TRAVEL_ALL_SELECTED = "все выбраны",
 	TRAVEL_MOVE_TO = "Переместить в %s",
 	TRAVEL_RENAME = "Переименовать",
-	TRAVEL_GROUP_RENAME = """Rename""", # MISSING TRANSLATION
+	TRAVEL_GROUP_RENAME = """Переименовать""",
 	TRAVEL_MOVE_UP = "Переместить вверх",
 	TRAVEL_MOVE_DOWN = "Переместить вниз",
 	SKILLPOISON_BITE = """Ядовитый укус""",
@@ -22504,7 +22534,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	METRICS_SOURCE_BROTHEL_CUSTOMER = """клиент борделя""",
 	METRICS_SOURCE_GUILD_TRAINER = """тренер гильдии, во время тренировок с секс-игрушками""",
 	METRICS_SOURCE_WILLIAM = """Уильям, известный коллекционер Алирона""",
-	METRICS_SOURCE_YOU = "[mastername], [his] [master]",
+	METRICS_SOURCE_YOU = """[mastername], [his] [master]""",
 	METRICS_WIN_NAME = """%d/%d выигранных битв""",
 	METRICS_SERVICEPERFORMED_NAME = """Выполненных поручений обслуживания в течение %d/%d ходов""",
 	METRICS_SOCSKILLUSED_NAME = """Использованных социальных навыков %d/%d """,
@@ -26595,7 +26625,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 Восстанавливает 4 маны после применения заклинания на союзника или себя.""",
 	TRAITSPIRIT_OWL = "Дух-хранитель: Ноктара",
 	TRAITSPIRIT_OWLDESCRIPT = "Фактор мудрости +1, бонус к Мудрости +10, бонус к опыту +20%",
-	TRAITHARLOT = """Harlot""", # MISSING TRANSLATION
+	TRAITHARLOT = """Гулящая""",
 	JEAN_SIDEQUEST_START_1 = """Проходит несколько дней после того, как Жанна обосновалась в вашем особняке. Она держится в основном особняком, проводя долгие часы взаперти в своей комнате или глядя в пространство с нечитаемым выражением лица, выполняя свои обязанности. В отличие от некоторых других, она не ищет открыто вашего внимания — по крайней мере, так было до сегодняшнего вечера.
 
 Жанна подходит к вам после полуночи, когда большая часть особняка уже погрузилась в тишину. Она притворяется расслабленной, но её поза напряжена, плечи слегка приподняты, словно она готовится к отказу.
@@ -32949,13 +32979,224 @@ It is not the kind of intimacy that announces itself loudly, but it stays with y
 {color=yellow|Kuro: — Go on. They will start competing for your attention again if you make them wait too long.}
 
 You leave her in the shade and return to the others, carrying with you the strange certainty that Kuro is still watching.""", # MISSING TRANSLATION
-	ENEMYRILU_MADDENED = """Strange girl""", # MISSING TRANSLATION
+	ENEMYRILU_MADDENED = """Странная девушка""",
 	ENEMYSEBASTIAN = """Sebastian""", # MISSING TRANSLATION
-	ENEMYTALISMAN_WRAPPED_UNDEAD = """Talisman-Wrapped Undead""", # MISSING TRANSLATION
-	ENEMYGIANT_SKELETON_GOLEM = """Giant Skeleton Golem""", # MISSING TRANSLATION
-	ENEMYBILEFUL_ZOMBIE = """Bileful Zombies""", # MISSING TRANSLATION
-	ENEMYRABID_ZOMBIE = """Rabid Zombies""", # MISSING TRANSLATION
-	ENEMYMUSCULAR_ZOMBIE = """Muscular Zombies""", # MISSING TRANSLATION
+	ENEMYTALISMAN_WRAPPED_UNDEAD = """Нежить в талисманах""",
+	ENEMYGIANT_SKELETON_GOLEM = """Гигантский костяной голем""",
+	ENEMYBILEFUL_ZOMBIE = """Желчные зомби""",
+	ENEMYRABID_ZOMBIE = """Бешеные зомби""",
+	ENEMYMUSCULAR_ZOMBIE = """Мускулистые зомби""",
+	GOLD = """Gold""", # MISSING TRANSLATION
+	MANSIONROOM_EMPTY = """Пустая комната""",
+	MANSIONROOM_EMPTYDESCRIPT = """Пустое место. Здесь можно построить любую функциональную комнату.""",
+	MANSIONROOM_MASTER_BEDROOM = """Master Bedroom""", # MISSING TRANSLATION
+	MANSIONROOM_MASTER_BEDROOMDESCRIPT = """Your own room. The first bed is always yours; furnishing it opens up what the room allows.""", # MISSING TRANSLATION
+	MANSIONROOM_BEDROOMS = """Bedrooms""", # MISSING TRANSLATION
+	MANSIONROOM_BEDROOMSDESCRIPT = """Shared sleeping quarters. Plain, but everyone under your roof needs a bed somewhere.""", # MISSING TRANSLATION
+	MANSIONROOM_LUXURY_BEDROOMS = """Luxury Bedrooms""", # MISSING TRANSLATION
+	MANSIONROOM_LUXURY_BEDROOMSDESCRIPT = """Private quarters with room to breathe. Whoever sleeps here works and learns a little better, and warms to you faster.""", # MISSING TRANSLATION
+	MANSIONROOM_FORGE = """Forge""", # MISSING TRANSLATION
+	MANSIONROOM_FORGEDESCRIPT = """Anvil, bellows and a rack of hammers. Whoever works here smiths.""", # MISSING TRANSLATION
+	MANSIONROOM_ALCHEMY_ROOM = """Alchemy Room""", # MISSING TRANSLATION
+	MANSIONROOM_ALCHEMY_ROOMDESCRIPT = """Burners, glassware and things best left labelled. Whoever works here brews.""", # MISSING TRANSLATION
+	MANSIONROOM_TAILOR_WORKSHOP = """Tailor Workshop""", # MISSING TRANSLATION
+	MANSIONROOM_TAILOR_WORKSHOPDESCRIPT = """Bolts of cloth, shears and a long cutting table. Whoever works here sews.""", # MISSING TRANSLATION
+	MANSIONROOM_KITCHEN = """Kitchen""", # MISSING TRANSLATION
+	MANSIONROOM_KITCHENDESCRIPT = """Stove, larder and a scarred worktop. Whoever works here cooks.""", # MISSING TRANSLATION
+	MANSIONROOM_BATHHOUSE = """Bathhouse""", # MISSING TRANSLATION
+	MANSIONROOM_BATHHOUSEDESCRIPT = """Hot water and quiet. Nobody works here - simply having one does the household good.""", # MISSING TRANSLATION
+	MANSIONUPG_FURNISHING = """Furnishing""", # MISSING TRANSLATION
+	MANSIONUPG_FURNISHINGDESCRIPT = """Better furniture and more of it, so more company fits in the room at once.""", # MISSING TRANSLATION
+	MANSIONUPG_FURNISHINGBONUS1 = """+1 to company in this room""", # MISSING TRANSLATION
+	MANSIONUPG_FURNISHINGBONUS2 = """+2 to company in this room""", # MISSING TRANSLATION
+	MANSIONUPG_FURNISHINGBONUS3 = """+3 to company in this room""", # MISSING TRANSLATION
+	MANSIONUPG_BED_SIZE = """Bed Size""", # MISSING TRANSLATION
+	MANSIONUPG_BED_SIZEDESCRIPT = """A wider bed, with room for others beside your own place.""", # MISSING TRANSLATION
+	MANSIONUPG_BED_SIZEBONUS1 = """+1 bed""", # MISSING TRANSLATION
+	MANSIONUPG_BED_SIZEBONUS2 = """+2 beds""", # MISSING TRANSLATION
+	MANSIONUPG_BED_SIZEBONUS3 = """+3 beds""", # MISSING TRANSLATION
+	MANSIONUPG_BEDROOMS_EXPANSION = """Expansion""", # MISSING TRANSLATION
+	MANSIONUPG_BEDROOMS_EXPANSIONDESCRIPT = """Knock through and fit a second row of beds.""", # MISSING TRANSLATION
+	MANSIONUPG_BEDROOMS_EXPANSIONBONUS1 = """+4 beds""", # MISSING TRANSLATION
+	MANSIONUPG_LUXURY_EXPANSION = """Expansion""", # MISSING TRANSLATION
+	MANSIONUPG_LUXURY_EXPANSIONDESCRIPT = """More private quarters of the same standard.""", # MISSING TRANSLATION
+	MANSIONUPG_LUXURY_EXPANSIONBONUS1 = """+1 bed""", # MISSING TRANSLATION
+	MANSIONUPG_LUXURY_EXPANSIONBONUS2 = """+2 beds""", # MISSING TRANSLATION
+	MANSIONUPG_LUXURY_EXPANSIONBONUS3 = """+3 beds""", # MISSING TRANSLATION
+	MANSIONUPG_CRAFT_EXPANSION = """Expansion""", # MISSING TRANSLATION
+	MANSIONUPG_CRAFT_EXPANSIONDESCRIPT = """More bench space, so more hands can work at once.""", # MISSING TRANSLATION
+	MANSIONUPG_CRAFT_EXPANSIONBONUS1 = """+1 workplace""", # MISSING TRANSLATION
+	MANSIONUPG_CRAFT_EXPANSIONBONUS2 = """+2 workplaces""", # MISSING TRANSLATION
+	MANSIONUPG_CRAFT_TOOLS = """Better Tools""", # MISSING TRANSLATION
+	MANSIONUPG_CRAFT_TOOLSDESCRIPT = """Proper tools, kept sharp. Helps only the people working in this room.""", # MISSING TRANSLATION
+	MANSIONUPG_CRAFT_TOOLSBONUS1 = """+25% output in this room""", # MISSING TRANSLATION
+	MANSIONUPG_CRAFT_TOOLSBONUS2 = """+50% output in this room""", # MISSING TRANSLATION
+	MANSIONUPG_BUILDERS = """Second Scaffold""", # MISSING TRANSLATION
+	MANSIONUPG_BUILDERSDESCRIPT = """Room for a second builder, which speeds up this room's later work.""", # MISSING TRANSLATION
+	MANSIONUPG_BUILDERSBONUS1 = """+1 builder""", # MISSING TRANSLATION
+	MANSIONVIEW_REST = """Idle""", # MISSING TRANSLATION
+	MANSIONVIEW_UNHOUSED = """Without a bed""", # MISSING TRANSLATION
+	MANSIONROOM_BEDROOM = """Спальня""",
+	MANSIONROOM_BEDROOMDESCRIPT = """Спальные места для обитателей. Больше кроватей — больше людей под вашей крышей.""",
+	MANSIONROOM_STUDY = """Кабинет""",
+	MANSIONROOM_STUDYDESCRIPT = """Тихий стол и запертый ящик. Место, где можно подумать без помех.""",
+	MANSIONROOM_LIBRARY = """Библиотека""",
+	MANSIONROOM_LIBRARYDESCRIPT = """Полки с книгами и записями. Ускоряет обучение и исследования.""",
+	MANSIONROOM_ALCHEMY_LAB = """Алхимическая лаборатория""",
+	MANSIONROOM_ALCHEMY_LABDESCRIPT = """Горелки, стеклянная посуда и склянки, которые лучше подписывать. Здесь варят зелья.""",
+	MANSIONROOM_ARMORY = """Оружейная""",
+	MANSIONROOM_ARMORYDESCRIPT = """Стойки для оружия и доспехов, смазанных и всегда под рукой.""",
+	MANSIONROOM_DINING_HALL = """Обеденный зал""",
+	MANSIONROOM_DINING_HALLDESCRIPT = """Длинный стол, за которым обитатели едят вместе.""",
+	MANSIONROOM_LOUNGE = """Гостиная""",
+	MANSIONROOM_LOUNGEDESCRIPT = """Мягкие сиденья вдали от работы. Место для отдыха.""",
+	MANSIONROOM_WORKSHOP = """Мастерская""",
+	MANSIONROOM_WORKSHOPDESCRIPT = """Наковальня, верстак и инструменты. Здесь работают с металлом и снаряжением.""",
+	MANSIONROOM_STORAGE = """Кладовая""",
+	MANSIONROOM_STORAGEDESCRIPT = """Ящики и стеллажи. Держат припасы подальше от коридоров.""",
+	MANSIONROOM_TRAINING_ROOM = """Тренировочный зал""",
+	MANSIONROOM_TRAINING_ROOMDESCRIPT = """Открытый пол, маты и учебное оружие. Здесь отрабатывают навыки.""",
+	MANSIONROOM_GARDEN_ROOM = """Оранжерея""",
+	MANSIONROOM_GARDEN_ROOMDESCRIPT = """Застеклённые грядки и кадки. Выращивает еду и травы в помещении.""",
+	MANSIONROOM_RITUAL_CHAMBER = """Ритуальный зал""",
+	MANSIONROOM_RITUAL_CHAMBERDESCRIPT = """Комната с закрытыми ставнями и размеченным полом. Для дел, требующих уединения.""",
+	MANSIONROOM_GRAND_HALL = """Большой зал""",
+	MANSIONROOM_GRAND_HALLDESCRIPT = """Сердце особняка. Его нельзя перенести или снести.""",
+	MANSIONFUNC_HOUSING = """Размещает обитателей""",
+	MANSIONFUNC_RESEARCH = """Позволяет вести исследования""",
+	MANSIONFUNC_STUDY_BONUS = """Улучшает обучение""",
+	MANSIONFUNC_CRAFT_ALCHEMY = """Позволяет заниматься алхимией""",
+	MANSIONFUNC_CRAFT_SMITH = """Позволяет заниматься кузнечным делом""",
+	MANSIONFUNC_GEAR_STORAGE = """Хранит снаряжение""",
+	MANSIONFUNC_DINING = """Кормит обитателей""",
+	MANSIONFUNC_REST = """Ускоряет восстановление""",
+	MANSIONFUNC_STORAGE = """Хранит припасы""",
+	MANSIONFUNC_TRAINING = """Позволяет проводить тренировки""",
+	MANSIONFUNC_FARMING = """Выращивает еду""",
+	MANSIONFUNC_RITUAL = """Позволяет проводить ритуалы""",
+	MANSIONFUNC_HALL = """Сердце особняка""",
+	MANSIONVIEW_REARRANGE = """Перестроить""",
+	MANSIONVIEW_REARRANGEDONE = """Готово""",
+	MANSIONVIEW_ROOMSBUILT = """Комнаты""",
+	MANSIONVIEW_BEDS = """Beds""", # MISSING TRANSLATION
+	MANSIONVIEW_WORKPLACES = """Workplaces""", # MISSING TRANSLATION
+	MANSIONVIEW_CAPACITY = """Обитатели""",
+	MANSIONVIEW_UPKEEP = """Содержание""",
+	MANSIONVIEW_LEVEL = """Уровень""",
+	MANSIONVIEW_SIZE = """Размер""",
+	MANSIONVIEW_OCCUPANTS = """Обитатели""",
+	MANSIONVIEW_EMPTYSLOT = """Свободное место""",
+	MANSIONVIEW_NOSLOTS = """No places""", # MISSING TRANSLATION
+	MANSIONVIEW_EVICTHINT = """Нажмите, чтобы выселить этого обитателя.""",
+	MANSIONVIEW_NOCANDIDATES = """Никого нет""",
+	MANSIONVIEW_BUILDHERE = """Построить здесь""",
+	MANSIONVIEW_EMPTYROOM = """Empty room""", # MISSING TRANSLATION
+	MANSIONVIEW_BROKEN = """Damaged""", # MISSING TRANSLATION
+	MANSIONVIEW_BROKENHINT = """This part of the mansion is derelict. It has to be cleared out before anything can be built here.""", # MISSING TRANSLATION
+	MANSIONVIEW_REPAIR = """Clear out""", # MISSING TRANSLATION
+	MANSIONVIEW_AWAY = """away""", # MISSING TRANSLATION
+	MANSIONVIEW_AWAYHINT = """Away from the mansion. They keep this place and return to it.""", # MISSING TRANSLATION
+	MANSIONVIEW_NOBEDHINT = """Has nowhere to sleep.""", # MISSING TRANSLATION
+	MANSIONVIEW_EXPELCONFIRM = """Let %s go for good?""", # MISSING TRANSLATION
+	MANSIONVIEW_PICKHINT = """Drag them, or click to pick them up.""", # MISSING TRANSLATION
+	MANSIONVIEW_PUTBACKHINT = """In hand. Click again to set them back down.""", # MISSING TRANSLATION
+	MANSIONVIEW_PUTHINT = """Click to put them here.""", # MISSING TRANSLATION
+	MANSIONVIEW_MANSION = """Mansion""", # MISSING TRANSLATION
+	MANSIONVIEW_TURNPASSED = """A day passed.""", # MISSING TRANSLATION
+	MANSIONVIEW_REMAINING = """Left""", # MISSING TRANSLATION
+	MANSIONVIEW_WORKERS = """Working""", # MISSING TRANSLATION
+	MANSIONVIEW_PERTURN = """Per turn""", # MISSING TRANSLATION
+	MANSIONVIEW_NOTHINGHERE = """There is nothing to do here.""", # MISSING TRANSLATION
+	MANSIONVIEW_BUILDING = """Raising""", # MISSING TRANSLATION
+	MANSIONVIEW_CLEARINGOUT = """Clearing out""", # MISSING TRANSLATION
+	MANSIONVIEW_UPGRADING = """Upgrading""", # MISSING TRANSLATION
+	MANSIONVIEW_BUILDINGHINT = """Put somebody in the scaffolding and it will go up on its own.""", # MISSING TRANSLATION
+	MANSIONVIEW_PROGRESS = """Progress""", # MISSING TRANSLATION
+	MANSIONVIEW_DAYSLEFT = """About %d days left""", # MISSING TRANSLATION
+	MANSIONVIEW_NOBUILDER = """Nobody is building this""", # MISSING TRANSLATION
+	MANSIONVIEW_WORKUNITS = """Work needed: %d""", # MISSING TRANSLATION
+	MANSIONVIEW_CANCELBUILD = """Cancel and refund""", # MISSING TRANSLATION
+	MANSIONVIEW_CANCELCONFIRM = """Stop this work and take the materials back?""", # MISSING TRANSLATION
+	MANSIONVIEW_MAXED = """at its best""", # MISSING TRANSLATION
+	MANSIONVIEW_NOW = """Now""", # MISSING TRANSLATION
+	MANSIONVIEW_NEXT = """Next""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_BUILDING = """Something is already being built here.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_MAXLEVEL = """That is already at its best.""", # MISSING TRANSLATION
+	MANSIONVIEW_LOCKED = """Locked""", # MISSING TRANSLATION
+	MANSIONVIEW_UPGRADE = """Улучшить""",
+	MANSIONVIEW_UPGRADEALLNOTE = """Уровень общий для всего дома, поэтому улучшение затронет все комнаты этого типа.""",
+	MANSIONVIEW_ERR_VOID = """Здесь нет комнаты.""",
+	MANSIONVIEW_ERR_NOSPACE = """Здесь не помещается.""",
+	MANSIONVIEW_ERR_LOCKED = """Эта часть особняка заперта.""",
+	MANSIONVIEW_ERR_OCCUPIED = """Это место уже занято.""",
+	MANSIONVIEW_ERR_FIXED = """Эту комнату нельзя перенести.""",
+	MANSIONVIEW_ERR_SIZEMISMATCH = """Эти комнаты разного размера.""",
+	MANSIONVIEW_ERR_BROKEN = """This room is derelict.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_UNIQUE = """You already have one of these.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_NOTHINGTOSWAP = """There is nothing here to move.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_FULL = """Эта комната заполнена.""",
+	MANSIONVIEW_ERR_CANTAFFORD = """У вас не хватает средств.""",
+	MANSIONVIEW_ERR_AWAY = """They are not in the mansion.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_NOTWORKER = """They will not work for you.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_MASTERBED = """That bed is yours alone.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_MASTERROOM = """You will not tear down your own room.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_MASTERPINNED = """You sleep in your own room and nowhere else.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_MASTEREXPEL = """You cannot let yourself go.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_UNHOUSED = """%d of your household have nowhere to sleep.""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_TITLE = """Doll 2 — Spine 4.2 preview""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_ANIMATION_IDLE = """Idle animation""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_ANIMATION_EYES = """Eye movement""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_SHOW_HANDLES = """Show IK handles""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HANDLE_LEFT_HAND = """Left hand""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HANDLE_RIGHT_HAND = """Right hand""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HANDLE_LEFT_FOOT = """Left foot""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HANDLE_RIGHT_FOOT = """Right foot""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HANDLE_HINT = """Drag with the left mouse button. Right-click to reset.""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_PRESET = """Preset""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_BODY = """Body""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_RACE = """Race""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_UPPER = """Upper clothing""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_LOWER = """Lower clothing""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HEAD = """Head""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_FACE = """Face""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_EYES = """Eyes""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_EYEBROWS = """Eyebrows""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_NOSE = """Nose""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_LIPS = """Lips""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_EARS = """Ears""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HAIR_BASE = """Hair base""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HAIR_BACK = """Hair back""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_FRINGE = """Fringe""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HAIR_ACCESSORY = """Hair accessory""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HORNS = """Horns""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_WINGS = """Wings""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_TAILS = """Tail""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_ANIMAL_BODY = """Animal body""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_RACE_OVERLAY = """Race overlay""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_FACE_MARKINGS = """Face markings""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_GENITALS = """Genitals""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_TATTOO = """Tattoo""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_OUTFIT = """Outfit""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_COLLAR = """Collar""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HEADGEAR = """Head gear""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_MASK = """Mask""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_WEAPON_BELT = """Belt weapon""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_WEAPON_BACK = """Back weapon""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_BREAST_SIZE = """Breast size""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_PREGNANCY = """Pregnancy""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HAND_POSE = """Hand pose""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_MANY_TITS = """Extra nipples""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_POSE_DEFAULT = """Setup pose""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HEAD_SIZE = """Head size""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HEIGHT = """Height""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_TINT_HINT = """Colour for this part. White keeps the original art.""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_TINT_TIPS_HINT = """Second hair colour, blended towards the tips. White uses the first colour everywhere.""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_ZONE_HINT = """Material colour. Gear art is coded by hue: the three pickers are its main, second and trim materials.""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_SKIN_TINT = """Skin tint""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HAIR_TINT = """Hair tint""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_EYES_TINT = """Eyes tint""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_NONE = """— none —""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_NOTE = """Standalone test scene. The source JSON, three atlas pages, 261 bones, slot order and weighted meshes remain in this folder.""", # MISSING TRANSLATION
 
 
 

@@ -1,0 +1,295 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://gui_modules/Mansion/Scripts/CharacterProgressionPopup.gd" type="Script" id=1]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=5]
+[ext_resource path="res://src/scenes/CloseButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/images/gui/universal/skill_frame.png" type="Texture" id=7]
+[ext_resource path="res://gui_modules/Mansion/Modules/CharacterProgressionModule.tscn" type="PackedScene" id=8]
+[ext_resource path="res://gui_modules/Mansion/Modules/CharacterSkillLoadoutPopup.tscn" type="PackedScene" id=9]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0470588, 0.027451, 0.0196078, 0.98 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.976471, 0.760784, 0.25098, 1 )
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.121569, 0.0784314, 0.0470588, 0.98 )
+border_width_bottom = 2
+border_color = Color( 0.611765, 0.384314, 0.231373, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.247059, 0.14902, 0.0745098, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.976471, 0.760784, 0.25098, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.137255, 0.0901961, 0.0627451, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.611765, 0.384314, 0.231373, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="CharacterProgressionPopup" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+
+[node name="Dim" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.68 )
+
+[node name="Popup" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -438.0
+margin_top = -500.0
+margin_right = 420.0
+margin_bottom = 500.0
+rect_clip_content = true
+custom_styles/panel = SubResource( 1 )
+
+[node name="Header" type="Panel" parent="Popup"]
+anchor_right = 1.0
+margin_bottom = 58.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="CharacterName" type="Label" parent="Popup/Header"]
+margin_left = 28.0
+margin_top = 13.0
+margin_right = 520.0
+margin_bottom = 47.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Character"
+valign = 1
+clip_text = true
+
+[node name="ClassesSelector" type="Button" parent="Popup"]
+margin_left = 8.0
+margin_top = 64.0
+margin_right = 72.0
+margin_bottom = 930.0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 3 )
+toggle_mode = true
+pressed = true
+
+[node name="IconViewport" type="ScrollContainer" parent="Popup/ClassesSelector"]
+margin_left = 7.0
+margin_top = 8.0
+margin_right = 57.0
+margin_bottom = 858.0
+mouse_filter = 1
+scroll_horizontal_enabled = false
+
+[node name="_h_scroll" type="HScrollBar" parent="Popup/ClassesSelector/IconViewport"]
+margin_right = 12.0
+margin_bottom = 12.0
+
+[node name="_v_scroll" type="VScrollBar" parent="Popup/ClassesSelector/IconViewport"]
+margin_right = 12.0
+margin_bottom = 12.0
+
+[node name="Icons" type="VBoxContainer" parent="Popup/ClassesSelector/IconViewport"]
+custom_constants/separation = 4
+
+[node name="ClassTemplate" type="TextureRect" parent="Popup/ClassesSelector/IconViewport/Icons"]
+visible = false
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="Icon" type="TextureRect" parent="Popup/ClassesSelector/IconViewport/Icons/ClassTemplate"]
+show_behind_parent = true
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 47.0
+margin_bottom = 47.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="CloseButton" parent="Popup" instance=ExtResource( 6 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -49.0
+margin_top = 14.0
+margin_right = -16.0
+margin_bottom = 47.0
+mouse_default_cursor_shape = 2
+
+[node name="MasteriesSelector" type="Button" parent="Popup"]
+margin_left = 786.0
+margin_top = 64.0
+margin_right = 850.0
+margin_bottom = 930.0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 3 )
+toggle_mode = true
+
+[node name="IconViewport" type="Control" parent="Popup/MasteriesSelector"]
+margin_left = 7.0
+margin_top = 8.0
+margin_right = 57.0
+margin_bottom = 858.0
+rect_clip_content = true
+mouse_filter = 1
+
+[node name="Icons" type="VBoxContainer" parent="Popup/MasteriesSelector/IconViewport"]
+custom_constants/separation = 4
+
+[node name="MasteryTemplate" type="TextureRect" parent="Popup/MasteriesSelector/IconViewport/Icons"]
+visible = false
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="Icon" type="TextureRect" parent="Popup/MasteriesSelector/IconViewport/Icons/MasteryTemplate"]
+show_behind_parent = true
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 47.0
+margin_bottom = 47.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Level" type="Label" parent="Popup/MasteriesSelector/IconViewport/Icons/MasteryTemplate"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -22.0
+margin_top = -23.0
+margin_right = -2.0
+margin_bottom = -1.0
+custom_colors/font_color = Color( 1, 0.941176, 0.486275, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 5 )
+align = 2
+valign = 2
+
+[node name="Progression" parent="Popup" instance=ExtResource( 8 )]
+margin_left = 79.0
+margin_top = 64.0
+margin_right = 779.0
+margin_bottom = 918.0
+
+[node name="Footer" type="Panel" parent="Popup"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+margin_top = -58.0
+margin_right = -15.0
+margin_bottom = -14.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="Experience" type="Label" parent="Popup/Footer"]
+margin_left = 22.0
+margin_top = 3.0
+margin_right = 430.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
+valign = 1
+
+[node name="Combat" type="Control" parent="Popup/Footer"]
+margin_left = 440.0
+margin_right = 540.0
+margin_bottom = 48.0
+
+[node name="Icon" type="TextureRect" parent="Popup/Footer/Combat"]
+margin_right = 48.0
+margin_bottom = 48.0
+expand = true
+stretch_mode = 6
+
+[node name="Value" type="Label" parent="Popup/Footer/Combat"]
+margin_left = 57.0
+margin_top = 6.0
+margin_right = 145.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 5 )
+valign = 1
+
+[node name="Magic" type="Control" parent="Popup/Footer"]
+margin_left = 580.0
+margin_right = 680.0
+margin_bottom = 48.0
+
+[node name="Icon" type="TextureRect" parent="Popup/Footer/Magic"]
+margin_right = 48.0
+margin_bottom = 48.0
+expand = true
+stretch_mode = 6
+
+[node name="Value" type="Label" parent="Popup/Footer/Magic"]
+margin_left = 57.0
+margin_top = 6.0
+margin_right = 145.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 5 )
+valign = 1
+
+[node name="Universal" type="Control" parent="Popup/Footer"]
+margin_left = 720.0
+margin_right = 820.0
+margin_bottom = 48.0
+
+[node name="Icon" type="TextureRect" parent="Popup/Footer/Universal"]
+margin_right = 48.0
+margin_bottom = 48.0
+expand = true
+stretch_mode = 6
+
+[node name="Value" type="Label" parent="Popup/Footer/Universal"]
+margin_left = 57.0
+margin_top = 6.0
+margin_right = 145.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 5 )
+valign = 1
+
+[node name="Tween" type="Tween" parent="Popup"]
+
+[node name="TabTween" type="Tween" parent="Popup"]
+
+[node name="SkillLoadout" parent="." instance=ExtResource( 9 )]

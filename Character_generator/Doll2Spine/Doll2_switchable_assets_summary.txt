@@ -1,0 +1,409 @@
+﻿DOLL2_SPINE4.2 — ПЕРЕКЛЮЧАЕМЫЕ ОБОЛОЧКИ И АССЕТЫ
+Актуальный проект: Doll2_spine4.2.spine
+Формат: placeholder -> точный путь ассета [оболочки]
+
+ОСНОВНЫЕ ОБОЛОЧКИ ТЕЛА
+- body_female_base
+- body_female_beastkin
+
+ОБОЛОЧКИ И ПОД-ОБОЛОЧКИ РАС
+- race/arachna/arachna
+- race/cat/cat
+- race/demon/demon
+- race/dragon/dragon
+- race/dragon/scales_01
+- race/dragon/scales_02
+- race/dragon/tail_02
+- race/dryad/dryad
+- race/fairy/fairy
+- race/fox/fox
+- race/harpia/harpia
+- race/kentaur/kentaur
+- race/kobold/kobold
+- race/kobold/scales
+- race/kobold/spots
+- race/lamia/lamia
+- race/mouse/mouse
+- race/nereid/nereid
+- race/scylla/scylla
+- race/seraph/seraph
+- race/slime/slime
+- race/tanuk/tanuk
+- race/wolf/wolf
+
+ПОД-ОБОЛОЧКИ ОДЕЖДЫ — UPPER
+- equip/upper/99_armory_set_maidu
+- equip/upper/101_armory_set_cloth3_female
+- equip/upper/101_armory_set_cloth_female
+- equip/upper/102_armory_set_leather2_female
+- equip/upper/102_armory_set_leather_female
+- equip/upper/103_armory_set_plate2_female
+- equip/upper/103_armory_set_plate_female
+- equip/upper/104_armory_set_slave_female
+- equip/upper/105_armory_set_gipure1_female
+- equip/upper/106_armory_set_gipure2_female
+- equip/upper/107_armory_set_jacket_female
+- equip/upper/108_armory_set_latex_female
+- equip/upper/109_armory_set_waitress_female
+- equip/upper/110_armory_set_smith_female
+- equip/upper/111_armory_set_tentackle_female
+- equip/upper/112_armory_set_playboy_female
+- equip/upper/113_armory_set_underwear1
+- equip/upper/113_armory_set_underwear2
+- equip/upper/151_armory_acces_petsuit
+
+ПОД-ОБОЛОЧКИ ОДЕЖДЫ — LOWER
+- equip/lower/99_armory_set_maidu
+- equip/lower/101_armory_set_cloth3_female
+- equip/lower/101_armory_set_cloth_female
+- equip/lower/102_armory_set_leather2_female
+- equip/lower/102_armory_set_leather_female
+- equip/lower/103_armory_set_plate2_female
+- equip/lower/103_armory_set_plate_female
+- equip/lower/104_armory_set_slave_female
+- equip/lower/105_armory_set_gipure1_female
+- equip/lower/106_armory_set_gipure2_female
+- equip/lower/107_armory_set_jacket_female
+- equip/lower/108_armory_set_latex_female
+- equip/lower/109_armory_set_waitress_female
+- equip/lower/110_armory_set_smith_female
+- equip/lower/111_armory_set_tentackle_female
+- equip/lower/112_armory_set_playboy_female
+- equip/lower/113_armory_set_underwear1
+- equip/lower/113_armory_set_underwear2
+
+ГОЛОВЫ
+[head] setup=beastkin_chin_wolf
+- beastkin_chin_cat -> 01_heads/head_chin_long_skinny [body_female_base]
+- beastkin_chin_cat -> 16_beastkin_heads_new/beastkin_chin_cat [body_female_beastkin]
+- beastkin_chin_fox -> 01_heads/head_chin_long_skinny [body_female_base]
+- beastkin_chin_fox -> 16_beastkin_heads_new/beastkin_chin_fox [body_female_beastkin]
+- beastkin_chin_rabbit -> 01_heads/head_chin_long_skinny [body_female_base]
+- beastkin_chin_rabbit -> 16_beastkin_heads_new/beastkin_chin_rabbit [body_female_beastkin]
+- beastkin_chin_tanuki -> 01_heads/head_chin_long_skinny [body_female_base]
+- beastkin_chin_tanuki -> 16_beastkin_heads_new/beastkin_chin_tanuki [body_female_beastkin]
+- beastkin_chin_wolf -> 01_heads/head_chin_long_skinny [body_female_base]
+- beastkin_chin_wolf -> 16_beastkin_heads_new/beastkin_chin_wolf [body_female_beastkin]
+- head_chin_curve -> 01_heads/head_chin_curve [body_female_base]
+- head_chin_curve -> 16_beastkin_heads_new/beastkin_chin_cat [body_female_beastkin]
+- head_chin_curve_kobold -> 01_heads/head_chin_curve_kobold [body_female_base]
+- head_chin_curve_kobold -> 16_beastkin_heads_new/beastkin_chin_cat [body_female_beastkin]
+- head_chin_default -> 01_heads/head_chin_default [body_female_base]
+- head_chin_default -> 16_beastkin_heads_new/beastkin_chin_cat [body_female_beastkin]
+- head_chin_kobold2 -> 01_heads/head_chin_kobold2 [body_female_base]
+- head_chin_kobold2 -> 16_beastkin_heads_new/beastkin_chin_cat [body_female_beastkin]
+- head_chin_loli -> 01_heads/head_chin_loli [body_female_base]
+- head_chin_loli -> 16_beastkin_heads_new/beastkin_chin_cat [body_female_beastkin]
+- head_chin_long_skinny -> 01_heads/head_chin_curve [race/kobold/scales]
+- head_chin_long_skinny -> 01_heads/head_chin_kobold2 [race/kobold/spots]
+- head_chin_long_skinny -> 01_heads/head_chin_long_skinny [body_female_base]
+- head_chin_long_skinny -> 16_beastkin_heads_new/beastkin_chin_cat [body_female_beastkin]
+- head_chin_male -> 01_heads/head_chin_male [body_female_base]
+- head_chin_male -> 16_beastkin_heads_new/beastkin_chin_cat [body_female_beastkin]
+- head_chin_muscle -> 01_heads/head_chin_muscle [body_female_base]
+- head_chin_muscle -> 16_beastkin_heads_new/beastkin_chin_cat [body_female_beastkin]
+- head_chin_short -> 01_heads/head_chin_short [body_female_base]
+- head_chin_short -> 16_beastkin_heads_new/beastkin_chin_cat [body_female_beastkin]
+- head_chin_small -> 01_heads/head_chin_small [body_female_base]
+- head_chin_small -> 16_beastkin_heads_new/beastkin_chin_cat [body_female_beastkin]
+
+ЛИЦА
+[face] setup=face3
+- face1 -> 02_faces/face1 [body_female_base]
+- face1 -> 17_beastkin_faces/beastkin_face1 [body_female_beastkin]
+- face2 -> 02_faces/face2 [body_female_base]
+- face2 -> 17_beastkin_faces/beastkin_face2 [body_female_beastkin]
+- face3 -> 02_faces/face3 [body_female_base]
+- face3 -> 17_beastkin_faces/beastkin_face3 [body_female_beastkin]
+- face4 -> 02_faces/face4 [body_female_base]
+- face4 -> 17_beastkin_faces/beastkin_face4 [body_female_beastkin]
+- face5 -> 02_faces/face5 [body_female_base]
+- face5 -> 17_beastkin_faces/beastkin_face5 [body_female_beastkin]
+- face_m1 -> 02_faces/face_m1 [body_female_base]
+- face_m1 -> 17_beastkin_faces/beastkin_face_m1 [body_female_beastkin]
+- face_m2 -> 02_faces/face_m2 [body_female_base]
+- face_m2 -> 17_beastkin_faces/beastkin_face_m2 [body_female_beastkin]
+- face_m3 -> 02_faces/face_m3 [body_female_base]
+- face_m3 -> 17_beastkin_faces/beastkin_face_m3 [body_female_beastkin]
+- face_m4 -> 02_faces/face_m4 [body_female_base]
+- face_m4 -> 17_beastkin_faces/beastkin_face_m4 [body_female_beastkin]
+- face_m5 -> 02_faces/face_m5 [body_female_base]
+- face_m5 -> 17_beastkin_faces/beastkin_face_m5 [body_female_beastkin]
+
+ПРИЧЁСКИ — ЗАДНИЕ ВОЛОСЫ
+[hairs_back] setup=hair_back_straight
+- hair_back_care -> 06_hairs_back/hair_back_care [default]
+- hair_back_dishevel -> 06_hairs_back/hair_back_dishevel [default]
+- hair_back_double_tail_long -> 06_hairs_back/hair_back_double_tail_long [default]
+- hair_back_ponytail_long -> 06_hairs_back/hair_back_ponytail_long [default]
+- hair_back_spiral -> 06_hairs_back/hair_back_spiral [default]
+- hair_back_straight -> 06_hairs_back/hair_back_straight [default]
+- hair_back_twin braids -> 06_hairs_back/hair_back_twin braids [default]
+- hair_back_verylong1 -> 06_hairs_back/hair_back_verylong1 [default]
+- hair_back_wawe -> 06_hairs_back/hair_back_wawe [default]
+
+ПРИЧЁСКИ — ВСПОМОГАТЕЛЬНЫЕ ВОЛОСЫ
+[hairs_assist] setup=<пусто>
+- braid -> 05_hairs_assist/braid [default]
+- bun -> 05_hairs_assist/bun [default]
+- hair_assist_braid -> 05_hairs_assist/hair_assist_braid [default]
+- hair_assist_bun -> 05_hairs_assist/hair_assist_bun [default]
+- hair_assist_pigtails -> 05_hairs_assist/hair_assist_pigtails [default]
+- hair_assist_ponytail -> 05_hairs_assist/hair_assist_ponytail [default]
+- hair_assist_twin_tails -> 05_hairs_assist/hair_assist_twin_tails [default]
+- hair_assist_twin_tails 2 -> 05_hairs_assist/hair_assist_twin_tails 2 [default]
+- pigtails -> 05_hairs_assist/pigtails [default]
+- ponytail -> 05_hairs_assist/ponytail [default]
+- ponytail_2 -> 05_hairs_assist/ponytail_2 [default]
+- ponytail_3 -> 05_hairs_assist/ponytail_3 [default]
+- twin braids -> 05_hairs_assist/twin braids [default]
+- twin_tails -> 05_hairs_assist/twin_tails [default]
+- twin_tails 3 -> 05_hairs_assist/twin_tails 3 [default]
+- Twin_tails_2 -> 05_hairs_assist/Twin_tails_2 [default]
+
+ПРИЧЁСКИ — ОСНОВА
+[hairs_base] setup=hair_base_straight
+- hair_base_back -> 04_hairs_base/hair_base_back [default]
+- hair_base_braids -> 04_hairs_base/hair_base_braids [default]
+- hair_base_default -> 04_hairs_base/hair_base_default [default]
+- hair_base_dopple -> 04_hairs_base/hair_base_dopple [default]
+- hair_base_fringe -> 04_hairs_base/hair_base_fringe [default]
+- hair_base_fringe 2 -> 04_hairs_base/hair_base_fringe 2 [default]
+- hair_base_irokez -> 04_hairs_base/hair_base_irokez [default]
+- hair_base_kare -> 04_hairs_base/hair_base_kare [default]
+- hair_base_lamb -> 04_hairs_base/hair_base_lamb [default]
+- hair_base_parting -> 04_hairs_base/hair_base_parting [default]
+- hair_base_slave -> 04_hairs_base/hair_base_slave [default]
+- hair_base_straight -> 04_hairs_base/hair_base_straight [default]
+- hair_base_undercut -> 04_hairs_base/hair_base_undercut [default]
+- hairs_base_dopple -> 04_hairs_base/hairs_base_dopple [default]
+- hairs_base_irokez -> 04_hairs_base/hairs_base_irokez [default]
+- hairs_base_lion -> 04_hairs_base/hairs_base_lion [default]
+- hairs_base_parting -> 04_hairs_base/hairs_base_parting [default]
+- hairs_base_slave -> 04_hairs_base/hairs_base_slave [default]
+- hairs_base_undercut -> 04_hairs_base/hairs_base_undercut [default]
+
+ПРИЧЁСКИ — ЧЁЛКИ
+[hairs_fringe] setup=hair_fringe_fringe
+- hair_fringe_back -> 04_hairs_fringe/hair_fringe_back [default]
+- hair_fringe_braids -> 04_hairs_fringe/hair_fringe_braids [default]
+- hair_fringe_default -> 04_hairs_fringe/hair_fringe_default [default]
+- hair_fringe_fringe -> 04_hairs_fringe/hair_fringe_fringe [default]
+- hair_fringe_kare -> 04_hairs_fringe/hair_fringe_kare [default]
+- hair_fringe_lamb -> 04_hairs_fringe/hair_fringe_lamb [default]
+- hair_fringe_straight -> 04_hairs_fringe/hair_fringe_straight [default]
+- hairs_fringe_dopple -> 04_hairs_fringe/hairs_fringe_dopple [default]
+- hairs_fringe_irokez -> 04_hairs_fringe/hairs_fringe_irokez [default]
+- hairs_fringe_lion -> 04_hairs_fringe/hairs_fringe_lion [default]
+- hairs_fringe_parting -> 04_hairs_fringe/hairs_fringe_parting [default]
+- hairs_fringe_slave -> 04_hairs_fringe/hairs_fringe_slave [default]
+- hairs_fringe_undercut -> 04_hairs_fringe/hairs_fringe_undercut [default]
+
+ЗРАЧКИ / ГЛАЗА
+[eyes] setup=eyes_m5
+- eyes1 -> 10_eyes/eyes1 [default]
+- eyes2 -> 10_eyes/eyes2 [default]
+- eyes3 -> 10_eyes/eyes3 [default]
+- eyes4 -> 10_eyes/eyes4 [default]
+- eyes5 -> 10_eyes/eyes5 [default]
+- eyes_m1 -> 10_eyes/eyes_m1 [default]
+- eyes_m2 -> 10_eyes/eyes_m2 [default]
+- eyes_m3 -> 10_eyes/eyes_m3 [default]
+- eyes_m4 -> 10_eyes/eyes_m4 [default]
+- eyes_m5 -> 10_eyes/eyes_m5 [default]
+
+РТЫ / ГУБЫ
+[lips] setup=lips1
+- beastkin_lips_cry -> 12_lips/lips_m1 [body_female_base]
+- beastkin_lips_cry -> 17_beastkin_lips/beastkin_lips_cry [body_female_beastkin]
+- beastkin_lips_open -> 12_lips/lips_m1 [body_female_base]
+- beastkin_lips_open -> 17_beastkin_lips/beastkin_lips_open [body_female_beastkin]
+- lips1 -> 12_lips/lips1 [body_female_base]
+- lips1 -> 17_beastkin_lips/beastkin_lips_smile [body_female_beastkin]
+- lips2 -> 12_lips/lips2 [body_female_base]
+- lips2 -> 17_beastkin_lips/beastkin_lips_smile [body_female_beastkin]
+- lips3 -> 12_lips/lips3 [body_female_base]
+- lips3 -> 17_beastkin_lips/beastkin_lips_smile [body_female_beastkin]
+- lips4 -> 12_lips/lips4 [body_female_base]
+- lips4 -> 17_beastkin_lips/beastkin_lips_smile [body_female_beastkin]
+- lips5 -> 12_lips/lips5 [body_female_base]
+- lips5 -> 17_beastkin_lips/beastkin_lips_smile [body_female_beastkin]
+- lips_beast -> 12_lips/lips_beast [body_female_beastkin]
+- lips_beast -> 12_lips/lips_m1 [body_female_base]
+- lips_m1 -> 12_lips/lips_m1 [body_female_base]
+- lips_m1 -> 17_beastkin_lips/beastkin_lips_smile [body_female_beastkin]
+- lips_m2 -> 12_lips/lips_m2 [body_female_base]
+- lips_m2 -> 17_beastkin_lips/beastkin_lips_smile [body_female_beastkin]
+- lips_m3 -> 12_lips/lips_m3 [body_female_base]
+- lips_m3 -> 17_beastkin_lips/beastkin_lips_smile [body_female_beastkin]
+- lips_m4 -> 12_lips/lips_m4 [body_female_base]
+- lips_m4 -> 17_beastkin_lips/beastkin_lips_smile [body_female_beastkin]
+- lips_orc -> 12_lips/lips_orc [body_female_base]
+- lips_orc -> 17_beastkin_lips/beastkin_lips_smile [body_female_beastkin]
+- lips_orc 1 -> 12_lips/lips_orc 1 [body_female_base]
+- lips_orc 1 -> 17_beastkin_lips/beastkin_lips_smile [body_female_beastkin]
+- lips_orc 2 -> 12_lips/lips_orc 2 [body_female_base]
+- lips_orc 2 -> 17_beastkin_lips/beastkin_lips_smile [body_female_beastkin]
+- lips_orc 3 -> 12_lips/lips_orc 3 [body_female_base]
+- lips_orc 3 -> 17_beastkin_lips/beastkin_lips_smile [body_female_beastkin]
+
+НОСЫ
+[noses] setup=nose_default
+- nose_default -> 03_noses/nose_default [body_female_base]
+- nose_default -> 03_noses/nose_kobold [race/kobold/scales]
+- nose_default -> 03_noses/nose_kobold_2 [race/kobold/spots]
+- nose_dwarf -> 03_noses/nose_dwarf [body_female_base]
+- nose_kobold -> 03_noses/nose_kobold [body_female_base]
+- nose_kobold_2 -> 03_noses/nose_kobold_2 [body_female_base]
+- nose_small -> 03_noses/nose_small [body_female_base]
+- nose_straight -> 03_noses/nose_straight [body_female_base]
+
+УШИ
+[ears] setup=ears
+- ears -> 03_ears/ears_cat [race/cat/cat]
+- ears -> 03_ears/ears_fox [race/fox/fox]
+- ears -> 03_ears/ears_human [body_female_base]
+- ears -> 03_ears/ears_mouse [race/mouse/mouse]
+- ears -> 03_ears/ears_nereid [race/nereid/nereid]
+- ears -> 03_ears/ears_tanuk [race/tanuk/tanuk]
+- ears -> 03_ears/ears_wolf [race/wolf/wolf]
+- ears_elven -> 03_ears/ears_elven [body_female_base]
+- ears_goblin -> 03_ears/ears_goblin [body_female_base]
+- ears_human -> 03_ears/ears_human [body_female_base]
+- ears_orc -> 03_ears/ears_orc [body_female_base]
+- ears_rabbit -> 03_ears/ears_rabbit [default]
+- ears_rabbit2 -> 03_ears/ears_rabbit2 [default]
+- ears_rabbit3 -> 03_ears/ears_rabbit3 [default]
+- ears_taurus -> 03_ears/ears_taurus [default]
+
+РОГА
+[horns] setup=horns
+- horn_curve_down -> 08_horns/horn_curve_down [default]
+- horn_curve_top -> 08_horns/horn_curve_top [default]
+- horn_curve_up -> 08_horns/horn_curve_up [default]
+- horn_seraph_fibule -> 08_horns/horn_seraph_fibule [race/seraph/seraph]
+- horn_spiral 2 -> 08_horns/horn_spiral 2 [default]
+- Horn_straight_diagonal -> 08_horns/Horn_straight_diagonal [default]
+- horns -> 08_horns/horn_curve_up [race/dragon/scales_02]
+- horns -> 08_horns/horn_dragon2 [race/dragon/dragon, race/dragon/scales_01]
+- horns -> 08_horns/horn_seraph_fibule [race/seraph/seraph]
+- horns -> 08_horns/horn_spiral 2 [race/kentaur/kentaur]
+- horns -> 08_horns/Horn_straight_diagonal [race/kobold/kobold]
+- horns -> 08_horns/Horn_straight_top [race/demon/demon]
+
+ХВОСТЫ
+[tails] setup=tails
+- tails -> 07_tails/tail_cat [race/cat/cat]
+- tails -> 07_tails/tail_demon [race/demon/demon]
+- tails -> 07_tails/tail_dragon [race/dragon/dragon]
+- tails -> 07_tails/tail_dragon2 [race/dragon/tail_02]
+- tails -> 07_tails/tail_fox [race/fox/fox]
+- tails -> 07_tails/tail_kobold [race/kobold/kobold]
+- tails -> 07_tails/tail_mouse [race/mouse/mouse]
+- tails -> 07_tails/tail_nereid [race/nereid/nereid]
+- tails -> 07_tails/tail_tanuk [race/tanuk/tanuk]
+- tails -> 07_tails/tail_wolf [race/wolf/wolf]
+
+КРЫЛЬЯ
+[wings] setup=wings
+- wings -> 09_wings/wings_demon [race/demon/demon]
+- wings -> 09_wings/Wings_dragon [race/dragon/dragon]
+- wings -> 09_wings/Wings_fairy [race/fairy/fairy]
+- wings -> 09_wings/wings_harpia [race/harpia/harpia]
+- wings -> 09_wings/Wings_seraph [race/seraph/seraph]
+
+РАЗМЕРЫ ГРУДИ — BASE
+[breasts] setup=tits_large
+- tits_big -> 00_body_nude_female/tits_big [body_female_base]
+- tits_large -> 00_body_nude_female/tits_large [body_female_base]
+- tits_normal -> 00_body_nude_female/tits_normal [body_female_base]
+- tits_small -> 00_body_nude_female/tits_small [body_female_base]
+
+РАЗМЕРЫ ГРУДИ — BEASTKIN
+[breasts_beastkin] setup=beastkin_tits_large
+- beastkin_tits1 -> 15_beastkin_body_nude/beastkin_tits1 [body_female_beastkin]
+- beastkin_tits_big -> 15_beastkin_body_nude/beastkin_tits_big [body_female_beastkin]
+- beastkin_tits_large -> 15_beastkin_body_nude/beastkin_tits_large [body_female_beastkin]
+- beastkin_tits_normal -> 15_beastkin_body_nude/beastkin_tits_normal [body_female_beastkin]
+- beastkin_tits_small -> 15_beastkin_body_nude/beastkin_tits_small [body_female_beastkin]
+
+КОЛИЧЕСТВО ГРУДЕЙ — BEASTKIN
+[breasts_beastkin_many] setup=<пусто>
+- beastkin_titsmany_small4 -> 15_beastkin_body_nude/beastkin_titsmany_small4 [body_female_beastkin]
+- beastkin_titsmany_small6 -> 15_beastkin_body_nude/beastkin_titsmany_small6 [body_female_beastkin]
+[beastkin_torso_many_nipples] setup=<пусто>
+- beastkin_torso_many_nipples4 -> 15_beastkin_body_nude/beastkin_torso_many_nipples4 [body_female_beastkin]
+- beastkin_torso_many_nipples6 -> 15_beastkin_body_nude/beastkin_torso_many_nipples6 [body_female_beastkin]
+
+ЖИВОТЫ ТЕЛА
+[belly] setup=default_belly
+- default_belly -> 00_body_nude_female/default_belly [body_female_base]
+- default_belly -> 15_beastkin_body_nude/beastkin_belly1 [body_female_beastkin]
+[pregnancy_belly] setup=<пусто>
+- pregnancy_belly/pregnancy_1 -> 00_body_nude_female/pregnancy_belly_mid [body_female_base]
+- pregnancy_belly/pregnancy_1 -> 15_beastkin_body_nude/beastkin_pregnancy_belly_mid1 [body_female_beastkin]
+- pregnancy_belly/pregnancy_2 -> 00_body_nude_female/pregnancy_belly_big [body_female_base]
+- pregnancy_belly/pregnancy_2 -> 15_beastkin_body_nude/beastkin_pregnancy_belly_big1 [body_female_beastkin]
+
+ТАТУИРОВКИ
+[tatoos] setup=<пусто>
+- tatoo_womb1 -> 97_tatoos/tatoo_womb1 [default]
+- tatoo_womb10 -> 97_tatoos/tatoo_womb10 [default]
+- tatoo_womb2 -> 97_tatoos/tatoo_womb2 [default]
+- tatoo_womb3 -> 97_tatoos/tatoo_womb3 [default]
+- tatoo_womb4 -> 97_tatoos/tatoo_womb4 [default]
+- tatoo_womb5 -> 97_tatoos/tatoo_womb5 [default]
+- tatoo_womb6 -> 97_tatoos/tatoo_womb6 [default]
+- tatoo_womb7 -> 97_tatoos/tatoo_womb7 [default]
+- tatoo_womb8 -> 97_tatoos/tatoo_womb8 [default]
+- tatoo_womb9 -> 97_tatoos/tatoo_womb9 [default]
+
+ШАПКИ / ГОЛОВНАЯ ЭКИПИРОВКА
+[equip_head] setup=<пусто>
+- 109_armory_set_waitress_female/hair_armor_waitress -> 109_armory_set_waitress_female/hair_armor_waitress [default]
+- 112_armory_set_playboy_female/hair_armor_playboy -> 112_armory_set_playboy_female/hair_armor_playboy [default]
+- equip_head -> 151_armory_acces_petsuit/Petsuit_cat [equip/upper/151_armory_acces_petsuit]
+- equip_head/variant_2 -> 151_armory_acces_petsuit/Petsuit_rabbit3 [equip/upper/151_armory_acces_petsuit]
+- hair_armor_maid -> 99_armory_set_maidu/hair_armor_maid [default]
+
+ОШЕЙНИКИ
+[equip_collar] setup=112_armory_set_playboy_female/collar_playboy
+- 112_armory_set_playboy_female/collar_playboy -> 112_armory_set_playboy_female/collar_playboy [equip/upper/112_armory_set_playboy_female]
+- 150_armory_acces_collars/collar_bell -> 150_armory_acces_collars/collar_bell [default]
+- 150_armory_acces_collars/collar_heart -> 150_armory_acces_collars/collar_heart [default]
+- 150_armory_acces_collars/collar_leather -> 150_armory_acces_collars/collar_leather [default]
+- 150_armory_acces_collars/collar_metallic -> 150_armory_acces_collars/collar_metallic [default]
+- 150_armory_acces_collars/collar_steel -> 150_armory_acces_collars/collar_steel [default]
+
+ПЛАЩИ
+[equip_back] setup=equip_back
+- equip_back -> 101_armory_set_cloth3_female/raincoat_cloth [equip/lower/101_armory_set_cloth3_female]
+- equip_back -> 101_armory_set_cloth_female/raincoat_cloth2 [equip/upper/101_armory_set_cloth_female]
+- equip_back -> 102_armory_set_leather2_female/raincoat_leather2 [equip/upper/102_armory_set_leather2_female]
+- equip_back -> 102_armory_set_leather_female/raincoat_cloth2 [equip/upper/102_armory_set_leather_female]
+- equip_back -> 103_armory_set_plate2_female/raincoat_plate2 [equip/upper/103_armory_set_plate2_female]
+- equip_back -> 103_armory_set_plate_female/raincoat_cloth2 [equip/upper/103_armory_set_plate_female]
+- equip_back -> 109_armory_set_waitress_female/waitress_back [equip/lower/109_armory_set_waitress_female]
+
+ОРУЖИЕ НА СПИНЕ
+[weapon_back] setup=<пусто>
+- 201_weapon_back/weapon_back_axe1 -> 201_weapon_back/weapon_back_axe1 [default]
+- 201_weapon_back/weapon_back_axe2 -> 201_weapon_back/weapon_back_axe2 [default]
+- 201_weapon_back/weapon_back_bow -> 201_weapon_back/weapon_back_bow [default]
+- 201_weapon_back/weapon_back_bow2 -> 201_weapon_back/weapon_back_bow2 [default]
+- 201_weapon_back/weapon_back_crossbow1 -> 201_weapon_back/weapon_back_crossbow1 [default]
+- 201_weapon_back/weapon_back_crossbow2 -> 201_weapon_back/weapon_back_crossbow2 [default]
+- 201_weapon_back/weapon_back_mace2 -> 201_weapon_back/weapon_back_mace2 [default]
+- 201_weapon_back/weapon_back_spear -> 201_weapon_back/weapon_back_spear [default]
+- 201_weapon_back/weapon_back_spear2 -> 201_weapon_back/weapon_back_spear2 [default]
+- 201_weapon_back/weapon_back_stick -> 201_weapon_back/weapon_back_stick [default]
+- 201_weapon_back/weapon_back_stick2 -> 201_weapon_back/weapon_back_stick2 [default]
+
+ОРУЖИЕ НА ПОЯСЕ
+[weapon_belt] setup=<пусто>
+- 200_weapon_belt/weapon_belt_bat -> 200_weapon_belt/weapon_belt_bat [default]
+- 200_weapon_belt/weapon_belt_dagger -> 200_weapon_belt/weapon_belt_dagger [default]
+- 200_weapon_belt/weapon_belt_dagger2 -> 200_weapon_belt/weapon_belt_dagger2 [default]
+- 200_weapon_belt/weapon_belt_mace -> 200_weapon_belt/weapon_belt_mace [default]
+- 200_weapon_belt/weapon_belt_sword -> 200_weapon_belt/weapon_belt_sword [default]
+- 200_weapon_belt/weapon_belt_sword2 -> 200_weapon_belt/weapon_belt_sword2 [default]

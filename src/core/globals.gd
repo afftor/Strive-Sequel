@@ -1246,6 +1246,7 @@ func LoadGame(filename):
 		loadscreen.set_progress(25 + 10.0 * gamestate_index / ResourceScripts.gamestate.size())
 		yield(get_tree(), 'idle_frame')
 	input_handler.connect("EnemyKilled", ResourceScripts.game_world, "quest_kill_receiver")
+	migrate_cheat_unlock(savedict)
 	ResourceScripts.game_globals.fix_serialization()
 	loadscreen.set_progress(36)
 	yield(get_tree(), 'idle_frame')
@@ -1308,6 +1309,13 @@ func LoadGame(filename):
 		])
 
 
+#saves made before the password moved to progress data kept the unlock in game_globals
+func migrate_cheat_unlock(savedict):
+	if !savedict.has('game_globals'): return
+	if savedict.game_globals.get('cheats_active') == true:
+		input_handler.unlock_cheats()
+
+
 func compare_version(v1:String, v2:String):
 	var vp1 = v1.split('.')
 	var vp2 = v2.split('.')
@@ -1344,6 +1352,7 @@ func ImportGame(filename):
 	ResourceScripts.game_party.fix_serialization()
 	ResourceScripts.game_party.fix_import()
 	ResourceScripts.game_globals = dict2inst(savedict.game_globals)
+	migrate_cheat_unlock(savedict)
 	ResourceScripts.game_globals.fix_import()
 	#temporally removed
 #	ResourceScripts.game_progress = dict2inst(savedict.game_progress)
@@ -2856,7 +2865,7 @@ func common_effects(effects, from_event = false):
 						res = gui_controller.exploration_dungeon.pay_stamina(i.value, i.modified) 
 					else:
 						res = gui_controller.exploration_dungeon.pay_stamina(i.value)
-					manifest_and_log("dungeon", "%s stamina spent in %s" %
+					text_log_add("dungeon", "%s stamina spent in %s" %
 						[res, tr(gui_controller.exploration_dungeon.active_location.name)])
 			'add_stamina':
 				if gui_controller.exploration_dungeon != null:
@@ -3506,12 +3515,6 @@ func get_tr_src(src, src_val):
 			return [src, src_val]
 
 
-func calculate_lux_rooms():
-	var res = 0
-	for p in ResourceScripts.game_party.characters.values():
-		if p.check_work_rule("luxury"):
-			res += 1
-	return res
 
 func make_sfx_params(anim_dict, last_iteration = false):
 	var params = {}

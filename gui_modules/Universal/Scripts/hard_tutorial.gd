@@ -50,28 +50,41 @@ var tutorials = {
 			delay = 1.0
 		},
 		#2
+		#food is managed on the expanded card now, the character sheet is not involved
 		{
-			buttons = ['char_info'],
+			buttons = [],
 			text = "TUTORIAL_TRAINING5",
-			panel_pos = Vector2(850,50)
+			panel_pos = Vector2(1250,150)
 		},{
-			buttons = ['food_preferences'],
+			buttons = ['food_filter_btn'],
 			text = "TUTORIAL_TRAINING6",
-			panel_pos = Vector2(850,50)
+			panel_pos = Vector2(1250,150)
 		},
 		#3
 		{
+			#the filter panel is built over the card, so it needs a frame to appear
 			buttons = ['food_preference_meat'],
 			text = "TUTORIAL_TRAINING7",
-			panel_pos = Vector2(850,50)
+			panel_pos = Vector2(1250,150),
+			delay = 0.5
 		},{
-			buttons = ['char_close_button'],
+			buttons = ['food_filter_close'],
 			text = "TUTORIAL_TRAINING8",
-			panel_pos = Vector2(733,50)
+			panel_pos = Vector2(1250,150)
+		},{
+			#the unfolded card covers the list, so it has to be folded back before another
+			#character can be picked. the step also folds it for players who use the panel button
+			buttons = [],
+			listen = ['close_by_RMB_sig'],
+			pass_RMB = true,
+			additional_func = 'close_expanded_card',
+			text = "TUTORIAL_TRAINING8_1",
+			panel_pos = Vector2(1250,150)
 		},{
 			buttons = ['daisy_line'],
 			text = "TUTORIAL_TRAINING9",
-			panel_pos = Vector2(733,50)
+			panel_pos = Vector2(1250,150),
+			delay = 0.6
 		},{
 			buttons = ['char_info'],
 			text = "TUTORIAL_TRAINING10",
@@ -365,46 +378,54 @@ var tutorials = {
 			text = "TUTORIAL_LEVELING5_1",
 			panel_pos = Vector2(1100,250)
 		},{
-			buttons = ['char_info'],
+			#classes and masteries live in their own popup now, opened straight from the card
+			buttons = ['progression_btn'],
 			text = "TUTORIAL_LEVELING6",
 			panel_pos = Vector2(1100,500),
 			delay = 1.0
 		},{
-			buttons = ['leveling_button'],
-			text = "TUTORIAL_LEVELING7",
-			panel_pos = Vector2(733,150)
-		},{
+			#the popup fades in over several frames. it is centered and wide, so the tutorial
+			#text sits to the right of it from here on
 			buttons = ['class_fighter'],
 			text = "TUTORIAL_LEVELING8",
-			panel_pos = Vector2(733,50)
+			panel_pos = Vector2(1400,200),
+			delay = 0.5
 		},{
 			buttons = ['class_unlock'],
 			text = "TUTORIAL_LEVELING9",
-			panel_pos = Vector2(733,150)
+			panel_pos = Vector2(1400,400)
 		},{
-			buttons = ['leveling_button'],
+			#unlocking plays the class acquired animation before the popup is usable again
+			buttons = ['progression_masteries_tab'],
 			text = "TUTORIAL_LEVELING10",
-			panel_pos = Vector2(733,150)
+			panel_pos = Vector2(1400,200),
+			delay = 1.5
 		},{
+			#the tab switch is tweened, so the button rect settles a few frames later
 			buttons = ['mastery_leadership'],
 			text = "TUTORIAL_LEVELING11",
-			panel_pos = Vector2(733,150)
+			panel_pos = Vector2(1400,300),
+			delay = 0.5
 		},{
 			buttons = ['mastery_add_point', 'mastery_add_point2'],
 			highlight = ['mastery_add_point_highlight'],
 			text = "TUTORIAL_LEVELING12",
-			panel_pos = Vector2(733,150)
+			panel_pos = Vector2(1400,300)
 		},{
 			buttons = ['alert_panel_yes'],
 			text = "TUTORIAL_LEVELING13",
-			panel_pos = Vector2(733,150)
+			panel_pos = Vector2(1400,500)
 		}
 	],
 	quest_and_combat_intermedia = [
 		{
-			buttons = ['char_close_button'],
+			#the leveling part ends in the progression popup, not in the character panel
+			buttons = ['progression_close_button'],
+			listen = ['close_by_RMB_sig'],
+			pass_RMB = true,
 			text = 'TUTORIAL_COMBAT0',
-			panel_pos = Vector2(733,150)
+			panel_pos = Vector2(1400,200),
+			delay = 1.5
 		}
 	],
 	quest_and_combat = [
@@ -762,8 +783,10 @@ func next_tut_step():
 	var has_custom_highlight = step_info.has('highlight')
 	var has_no_highlight = step_info.has('no_highlight')
 	var btns_to_activate = step_info.buttons
-	if btns_to_activate.empty():
+	var waits_for_next_btn = btns_to_activate.empty()
+	if waits_for_next_btn:
 		btns_to_activate = ["tut_panel_next"]
+		#the panel has not moved to its step position yet, so this one is framed after show_tut
 		has_no_highlight = true
 		tut_panel.next_btn_on()
 	else:
@@ -787,6 +810,12 @@ func next_tut_step():
 			set_listener(get_btns()[sig_btn_name].source.get_ref(), get_btns_signal(sig_btn_name), "btn_truly_pressed")
 	if step_info.has("tut_func"):
 		self.call(step_info.tut_func)
+	if waits_for_next_btn and step_info.has('text'):
+		#the button lives inside the text panel, so its rect is only final one layout pass
+		#after the panel was moved to this step's position
+		yield(input_handler.get_tree(), 'idle_frame')
+		if cur_step >= 0 and is_instance_valid(tut_panel):
+			tut_panel.highlight_next_btn(get_true_rect("tut_panel_next"))
 
 #in-tutorial funcs
 func add_combat_reward_char():
@@ -956,6 +985,11 @@ func is_RMB_pass():
 	return false
 
 #additional funcs
+func close_expanded_card():
+	if gui_controller.mansion == null or !is_instance_valid(gui_controller.mansion):
+		return
+	gui_controller.mansion.SlaveListModule.close_expanded_character()
+
 func stop_use_state():
 	if gui_controller.exploration != null:
 		gui_controller.exploration.try_stop_use_state()

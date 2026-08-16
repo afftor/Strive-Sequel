@@ -60,17 +60,14 @@ func open_travel():
 
 func update_buttons():
 	nav = gui_controller.nav_panel.get_node("NavigationContainer/AreaSelection")
-	if gui_controller.current_screen == gui_controller.mansion || gui_controller.current_screen == gui_controller.inventory:
-		for button in nav.get_children():
-			if button.name == "Button" || button.get_class() != 'Button' || !button.has_meta("data"):
-				continue
-			button.pressed = false
-		nav.get_child(0).pressed = true
-		return
+	var in_mansion = gui_controller.current_screen == gui_controller.mansion || gui_controller.current_screen == gui_controller.inventory
 	for button in nav.get_children():
-		if button.name == "Button" || button.get_class() != 'Button' || !button.has_meta("data"):
+		if button.name == "Button" || !(button is BaseButton) || !button.has_meta("data"):
 			continue
-		button.pressed = input_handler.selected_location == button.get_meta("data")
+		if in_mansion:
+			button.pressed = button.get_meta("data") == "Mansion"
+		else:
+			button.pressed = input_handler.selected_location == button.get_meta("data")
 
 
 func sort_locations(locations_array):
@@ -131,10 +128,8 @@ func build_accessible_locations(args = null):
 			globals.connecttexttooltip(newbutton, tr("MANSION_LABEL"))
 			newbutton.get_node('amount').text = "%d/%d" % [free_chars.aliron, chars.aliron]
 			newbutton2.get_node('Label').text = "%s - %d/%d" % [tr("MANSION_LABEL"), free_chars.aliron, chars.aliron]
-			# newbutton.set_meta("data", i)
+			newbutton.set_meta("data", i)
 #			newseparator.visible = true
-			newbutton.pressed = gui_controller.current_screen == gui_controller.mansion
-			newbutton.toggle_mode = !gui_controller.current_screen == gui_controller.mansion
 			continue
 		if i == "Infinite":
 #			newbutton.text = tr("INFINITEDUNGEONNAME")
@@ -174,7 +169,7 @@ func build_accessible_locations(args = null):
 		newbutton.connect("pressed", self, "select_location", [i])
 		newbutton2.connect("pressed", self, "select_location", [i])
 		newbutton.set_meta("data", i)
-		update_buttons()
+	update_buttons()
 
 
 func open_infinite():

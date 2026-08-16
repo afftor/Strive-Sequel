@@ -110,7 +110,7 @@ var skills = {
 		targetreqs = [],
 		effects = [],
 		cost = {mp = 5},
-		charges = 0,
+		charges = 2,
 		combatcooldown = 0,
 		cooldown = 1,
 		catalysts = {},

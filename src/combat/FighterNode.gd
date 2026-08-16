@@ -475,14 +475,18 @@ func set_stealth(val):
 
 
 #Death is shown through the same percent and takes priority. For the 'mind'
-#damage type Icon carries swirl_shader with its own parameter of the same name -
-#we don't touch that one.
+#damage type Icon carries swirl_shader, whose parameter of the same name drives
+#both the swirl and the greying out - that is the whole mind kill effect, since
+#that branch leaves the overlay without a texture. So death does touch it, and
+#only stealth stays desaturate-only.
 func refresh_icon_desat():
 	if $Icon.material == null or $Icon.material.shader == null: return
-	if !$Icon.material.shader.resource_path.ends_with('desaturate.shader'): return
+	var shader_path = $Icon.material.shader.resource_path
+	var is_desat = shader_path.ends_with('desaturate.shader')
+	if !is_desat and !shader_path.ends_with('swirl.shader'): return
 	if $overlay.visible:
 		$Icon.material.set_shader_param('percent', 1.0)
-	elif stealth_on:
+	elif stealth_on and is_desat:
 		$Icon.material.set_shader_param('percent', STEALTH_DESAT)
 	else:
 		$Icon.material.set_shader_param('percent', 0.0)

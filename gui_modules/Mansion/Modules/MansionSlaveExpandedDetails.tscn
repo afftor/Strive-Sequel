@@ -254,18 +254,46 @@ text = "1"
 align = 1
 valign = 1
 
-[node name="BaseStats" type="PanelContainer" parent="Sections/Overview/Left"]
+[node name="Experience" type="PanelContainer" parent="Sections/Overview/Left"]
 margin_top = 175.0
 margin_right = 278.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 0, 45 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="Content" type="HBoxContainer" parent="Sections/Overview/Left/Experience"]
+margin_left = 4.0
+margin_top = 3.0
+margin_right = 274.0
+margin_bottom = 42.0
+mouse_filter = 2
+custom_constants/separation = 4
+
+[node name="Value" type="Label" parent="Sections/Overview/Left/Experience/Content"]
+margin_right = 270.0
+margin_bottom = 39.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 2 )
+text = "Experience: 0 / 0"
+align = 1
+valign = 1
+
+[node name="BaseStats" type="PanelContainer" parent="Sections/Overview/Left"]
+margin_top = 225.0
+margin_right = 278.0
 margin_bottom = 345.0
-rect_min_size = Vector2( 0, 170 )
+rect_min_size = Vector2( 0, 120 )
 custom_styles/panel = SubResource( 4 )
 
 [node name="Content" type="VBoxContainer" parent="Sections/Overview/Left/BaseStats"]
 margin_left = 4.0
 margin_top = 3.0
 margin_right = 274.0
-margin_bottom = 167.0
+margin_bottom = 117.0
 mouse_filter = 2
 custom_constants/separation = 2
 
@@ -283,23 +311,23 @@ margin_top = 24.0
 margin_right = 270.0
 margin_bottom = 24.0
 mouse_filter = 2
-custom_constants/vseparation = 2
+custom_constants/vseparation = 0
 custom_constants/hseparation = 4
 columns = 2
 
 [node name="Button" type="Control" parent="Sections/Overview/Left/BaseStats/Content/Rows"]
 visible = false
 margin_right = 133.0
-margin_bottom = 69.0
-rect_min_size = Vector2( 133, 69 )
+margin_bottom = 45.0
+rect_min_size = Vector2( 133, 45 )
 
 [node name="Icon" type="TextureRect" parent="Sections/Overview/Left/BaseStats/Content/Rows/Button"]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 5.0
-margin_top = -22.0
+margin_top = -17.0
 margin_right = 43.0
-margin_bottom = 22.0
+margin_bottom = 17.0
 mouse_filter = 2
 texture = ExtResource( 23 )
 expand = true

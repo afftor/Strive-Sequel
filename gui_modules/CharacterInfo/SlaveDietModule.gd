@@ -6,8 +6,11 @@ var person
 func _ready():
 	if has_node("close"):
 		$close.connect("pressed", self, "close_diet_window")
+		#two copies of this panel exist (character sheet and expanded card) - only the one
+		#the hard tutorial drives may register, see register_tutorial_source
 		if register_tutorial_source:
 			input_handler.register_btn_source("food_preference_meat", self, "tut_get_food_preference_meat")
+			input_handler.register_btn_source("food_filter_close", self, "tut_get_close_button")
 	 
 
 func open_diet_window(value = null):
@@ -95,6 +98,10 @@ func close_diet_window():
 
 func tut_get_food_preference_meat():
 	return $ScrollContainer/VBoxContainer.get_node_or_null("meat")
+
+
+func tut_get_close_button():
+	return $close
 
 
 func sort_food(first, second):

@@ -59,6 +59,7 @@ func _ready():
 	$Credits/Background/RichTextLabel.bbcode_text = tr("MENUCREDITSDESC")
 	call_deferred("show_mod_list_safety_message")
 	$UpdateNotice.start_update_check()
+	$SupporterNotice.try_show(lastsave != null)
 	cycle_backgrounds()
 func show_mod_list_safety_message():
 	if modding_core.mod_list_safety_message == "":

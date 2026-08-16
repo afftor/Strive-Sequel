@@ -288,6 +288,11 @@ func advance_turn(amount = 1):
 		else:
 			input_handler.SystemMessage("Population limit reached")
 		return
+	#everyone needs somewhere to sleep before the day can move on
+	var unhoused = ResourceScripts.game_res.unhoused_characters()
+	if !unhoused.empty():
+		input_handler.SystemMessage(tr("MANSIONVIEW_ERR_UNHOUSED") % unhoused.size())
+		return
 	turn_in_progress = true
 	turn_started_at = OS.get_ticks_msec()
 	travel_arrival_sound_pending = false

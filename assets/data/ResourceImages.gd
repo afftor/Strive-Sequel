@@ -1513,6 +1513,12 @@ var GFX_sprites = {
 	aura_firearr = "res://assets/sfx/hit_animation/aura_firearr.tscn",
 	aura_arcaneblade = "res://assets/sfx/hit_animation/aura_arcaneblade.tscn",
 	bite = "res://assets/sfx/hit_animation/bite.tscn",
+	#Same sheet as `bite`, but its own scene so it can carry an offset: as a cast
+	#animation it plays on the caster's card, and centred it just paints a mouth over
+	#the attacker's own portrait. The offset pushes the jaws out to the leading edge,
+	#where the target is, and is negated automatically when the sprite is flipped.
+	#`bite` itself stays as it is - bosses use it as a target-side predamage effect.
+	at_bite = "res://assets/sfx/hit_animation/at_bite.tscn",
 	trap_snare = "res://assets/sfx/hit_animation/trap_snare.tscn",
 	dark_swril = "res://assets/sfx/hit_animation/dark_swirl.tscn",
 	shadow_spike = "res://assets/sfx/hit_animation/shadow_spike.tscn",

@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=2]
+[gd_scene load_steps=102 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Textures_v2/CLASS_INFO/Panels/divider_2.png" type="Texture" id=2]
@@ -125,6 +125,8 @@ region_rect = Rect2( 0, 0, 554, 754 )
 
 [sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0.0705882, 0.0588235, 0.145098, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=11]
 
 [node name="MansionCraftModule" type="TextureRect"]
 anchor_right = 1.0
@@ -1436,7 +1438,7 @@ margin_right = 519.0
 margin_bottom = 151.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 13 )
-text = "Quantity"
+text = "CRAFTQUANTITY"
 align = 1
 
 [node name="HBoxContainer1" type="HBoxContainer" parent="NumberSelect2/VBoxContainer"]
@@ -1502,14 +1504,17 @@ patch_margin_top = 15
 patch_margin_right = 15
 patch_margin_bottom = 15
 
-[node name="Amount" type="Label" parent="NumberSelect2/VBoxContainer/HBoxContainer1/pt2"]
+[node name="Amount" type="LineEdit" parent="NumberSelect2/VBoxContainer/HBoxContainer1/pt2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 78 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/normal = SubResource( 11 )
+custom_styles/read_only = SubResource( 11 )
 text = "10"
 align = 1
-valign = 1
+select_all_on_focus = true
 
 [node name="pt3" type="NinePatchRect" parent="NumberSelect2/VBoxContainer/HBoxContainer1"]
 margin_left = 344.0
@@ -1591,9 +1596,22 @@ margin_right = 339.0
 margin_bottom = 48.0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 78 )
-text = "Make Continuously"
+text = "CRAFTCONTINUOUS"
 align = 1
 valign = 1
+
+[node name="InfinityToggle" type="CheckBox" parent="NumberSelect2/VBoxContainer/AdvOption/HBoxContainer"]
+visible = false
+margin_left = 343.0
+margin_top = 2.0
+margin_right = 411.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 68, 50 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 78 )
+custom_icons/checked = ExtResource( 85 )
+custom_icons/unchecked = ExtResource( 84 )
+text = "∞"
 
 [node name="label2" type="Label" parent="NumberSelect2/VBoxContainer"]
 margin_top = 267.0
@@ -1601,7 +1619,7 @@ margin_right = 519.0
 margin_bottom = 297.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 13 )
-text = "Stop at"
+text = "CRAFTSTOPAT"
 align = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="NumberSelect2/VBoxContainer"]
@@ -1667,14 +1685,17 @@ patch_margin_top = 15
 patch_margin_right = 15
 patch_margin_bottom = 15
 
-[node name="Amount" type="Label" parent="NumberSelect2/VBoxContainer/HBoxContainer2/pt2"]
+[node name="Amount" type="LineEdit" parent="NumberSelect2/VBoxContainer/HBoxContainer2/pt2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 78 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/normal = SubResource( 11 )
+custom_styles/read_only = SubResource( 11 )
 text = "10"
 align = 1
-valign = 1
+select_all_on_focus = true
 
 [node name="pt3" type="NinePatchRect" parent="NumberSelect2/VBoxContainer/HBoxContainer2"]
 margin_left = 344.0
@@ -1728,7 +1749,7 @@ margin_right = 519.0
 margin_bottom = 386.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 13 )
-text = "Restart at"
+text = "CRAFTRESTARTAT"
 align = 1
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="NumberSelect2/VBoxContainer"]
@@ -1794,14 +1815,17 @@ patch_margin_top = 15
 patch_margin_right = 15
 patch_margin_bottom = 15
 
-[node name="Amount" type="Label" parent="NumberSelect2/VBoxContainer/HBoxContainer3/pt2"]
+[node name="Amount" type="LineEdit" parent="NumberSelect2/VBoxContainer/HBoxContainer3/pt2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 78 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/normal = SubResource( 11 )
+custom_styles/read_only = SubResource( 11 )
 text = "10"
 align = 1
-valign = 1
+select_all_on_focus = true
 
 [node name="pt3" type="NinePatchRect" parent="NumberSelect2/VBoxContainer/HBoxContainer3"]
 margin_left = 344.0

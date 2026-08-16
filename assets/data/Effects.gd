@@ -299,9 +299,11 @@ var effect_table = {
 	e_s_nostun = rebuild_stat_bonus('resist_stun_set', 200),
 	# i think we need to display those statuses as buffs
 	
+	#used to be the 'luxury' work rule, a flag the player set per character against a
+	#global count of allowed rooms. It is now simply where they sleep.
 	work_rule_luxury = {
 		type = 'base',
-		conditions = [{code = 'workrule', check = true, value = 'luxury'}],
+		conditions = [{code = 'lives_in_room', check = true, value = 'luxury'}],
 		statchanges = {exp_gain_mod = 0.05, productivity = 0.05},
 		sub_effects = [rebuild_simple_dot(['loyalty'], [0.5], variables.TR_DAY),],
 	},
