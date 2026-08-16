@@ -195,8 +195,10 @@ var enemygroups = {
 	rilu_maddened_boss = {reqs = [], units = {rilu_maddened = [1,1]}},
 	act4_road_sebastian_lich_group = {maxunits = 6, reqs = [], units = {sebastian = [1,1], talisman_wrapped_undead = [1,1], giant_skeleton_golem = [1,1]}},
 	act4_road_cave_alone_group = {maxunits = 6, reqs = [], units = {rebel_knight = [1,2], rebel_recruit = [1,2], bandit_assassin = [1,2], bandit_mage = [1,1]}},
-	act4_road_grotus_phase1_group = {maxunits = 6, reqs = [], units = {grotus_ascended = [1,1], elf_soldier = [2,2], guardian_golem = [1,1]}},
-	act4_road_grotus_phase2_group = {maxunits = 6, reqs = [], units = {grotus_king_boss = [1,1], guardian_golem = [2,2]}},
+	#Grotus fights alone in both phases - his kit counts hits per round and hands out
+	#marks and openings, all of which read as noise with adds on the field
+	act4_road_grotus_phase1_group = {maxunits = 6, reqs = [], units = {grotus_ascended = [1,1]}},
+	act4_road_grotus_phase2_group = {maxunits = 6, reqs = [], units = {grotus_king_boss = [1,1]}},
 
 	rebel_group_mines = {reqs = [], units = {rebel_recruit = [3,3], rebel_mage = [1,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_charm_avoid',0.8]], challenge_chance = 0.4},
 	demon_kurdan = {reqs = [], units = {demoness = [1,1],kurdan = [1,1], rebel_recruit = [2,2]}},
@@ -3566,7 +3568,11 @@ var enemies = {
 		preset_masteries = {},
 		need_req = true,
 	},
-	grotus_ascended = {#act 4 finale, phase 1 - placeholder kit
+	#act 4 finale, phase 1. Kit and traits live in assets/data/skilldata/bosses/grotus.gd.
+	#stun stays at 100 on purpose: the only thing that may stun Grotus is a Defensive Gap,
+	#which pays out in the custom 'grotus_overwhelmed' status instead of plain stun.
+	#disarm immunity moved onto the grotus_apotheosis trait (resist_disarm_set = 200).
+	grotus_ascended = {
 		code = 'grotus_ascended',
 		name = '',
 		descript = '',
@@ -3580,25 +3586,35 @@ var enemies = {
 		matk = 125,
 		speed = 55,
 		resists = {light = 50, dark = 25, mind = 25},
-		status_resists = {stun = 100, freeze = 90, sleep = 100, disarm = 60},
+		status_resists = {stun = 100, freeze = 90, sleep = 100},
 		race = 'humanoid',
 		loot = 'bandit_loot',
 		icon = "res://assets/images/enemies/grotus_king.png",
-		skills = ['attack','light_spell_aoe','curse_of_despair','magicward'],
-		traits = ['boss_resists'],
+		skills = ['grotus_haymaker','grotus_stomping','grotus_thunderous_slam','grotus_power_surge','grotus_energy_discharge','grotus_present_thyself','grotus_obliteration'],
+		traits = ['boss_resists','grotus_divine_barrier','grotus_no_humiliation','grotus_apotheosis'],
 		tags = ['human','boss'],
-		ai = [['basic', 20], ['damage', 66], ['damage_spot', 66], ['ads', 33], ['aoe', 33], ['support', 40], ['debuff', 40], ['buff', 33]],
+		ai = [['basic', 20], ['damage', 66], ['damage_spot', 66], ['ads', 40], ['aoe', 40], ['debuff', 40], ['ultimate', 50]],
 		skill_rotation = [
-			['magicward','curse_of_despair','attack'],
-			['light_spell_aoe','curse_of_despair','attack'],
-			['curse_of_despair','attack'],
-			['light_spell_aoe','attack'],
+			['grotus_obliteration','grotus_haymaker'],
+			['grotus_obliteration','grotus_stomping'],
+			['grotus_obliteration','grotus_thunderous_slam'],
+			['grotus_obliteration','grotus_power_surge','grotus_haymaker'],
+			['grotus_obliteration','grotus_energy_discharge','grotus_haymaker'],
+			['grotus_obliteration','grotus_stomping'],
+			['grotus_obliteration','grotus_thunderous_slam'],
+			['grotus_obliteration','grotus_present_thyself'],
 		],
-		ai_position = ['ranged'],
+		ai_position = ['melee'],
 		xpreward = 100,
 		preset_masteries = {},
+		#without this, can_use_skill() ignores enemy reqs and the Present Thyself ->
+		#Obliteration gate never holds
+		need_req = true,
 	},
-	grotus_king_boss = {#act 4 finale, phase 2 - placeholder kit
+	#act 4 finale, phase 2. Same kit as phase 1 - what changes is grotus_tyrant_insecurity
+	#in place of grotus_divine_barrier, which swaps the DoT immunity and the conditional
+	#damage floors for the hit counter and Tyrannical Contempt.
+	grotus_king_boss = {
 		code = 'grotus_king_boss',
 		name = '',
 		descript = '',
@@ -3612,25 +3628,28 @@ var enemies = {
 		matk = 155,
 		speed = [65, 45],
 		resists = {light = 50, dark = 25, mind = 25},
-		status_resists = {stun = 100, freeze = 100, sleep = 100, disarm = 75},
+		status_resists = {stun = 100, freeze = 100, sleep = 100},
 		race = 'humanoid',
 		loot = 'hard_boss_chest',
 		icon = "res://assets/images/enemies/grotus_king.png",
-		skills = ['attack','light_spell_aoe','curse_of_despair','enchanting_whisper','lesser_heal','magicward'],
-		traits = ['boss_resists'],
+		skills = ['grotus_haymaker','grotus_stomping','grotus_thunderous_slam','grotus_power_surge','grotus_energy_discharge','grotus_present_thyself','grotus_obliteration'],
+		traits = ['boss_resists','grotus_tyrant_insecurity','grotus_no_humiliation','grotus_apotheosis'],
 		tags = ['human','boss'],
-		ai = [['basic', 20], ['damage', 66], ['damage_spot', 66], ['ads', 33], ['aoe', 66], ['support', 40], ['debuff', 40], ['heal', 40], ['buff', 33]],
+		ai = [['basic', 20], ['damage', 66], ['damage_spot', 66], ['ads', 40], ['aoe', 66], ['debuff', 40], ['ultimate', 50]],
 		skill_rotation = [
-			['magicward','curse_of_despair','attack'],
-			['enchanting_whisper','light_spell_aoe','attack'],
-			['light_spell_aoe','curse_of_despair','attack'],
-			['lesser_heal','curse_of_despair','attack'],
-			['light_spell_aoe','curse_of_despair','attack'],
-			['curse_of_despair','attack'],
+			['grotus_obliteration','grotus_haymaker'],
+			['grotus_obliteration','grotus_stomping'],
+			['grotus_obliteration','grotus_thunderous_slam'],
+			['grotus_obliteration','grotus_power_surge','grotus_haymaker'],
+			['grotus_obliteration','grotus_energy_discharge','grotus_haymaker'],
+			['grotus_obliteration','grotus_stomping'],
+			['grotus_obliteration','grotus_thunderous_slam'],
+			['grotus_obliteration','grotus_present_thyself'],
 		],
-		ai_position = ['ranged'],
+		ai_position = ['melee'],
 		xpreward = 150,
 		preset_masteries = {},
+		need_req = true,
 	},
 	dwarf_king = {
 		code = 'dwarf_king',

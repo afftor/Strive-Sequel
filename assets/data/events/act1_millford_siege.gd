@@ -561,11 +561,22 @@ var data = {
 	},
 	
 	divine_symbol_32 = {
-		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], character = "greg", character2 = "$aire",
-		text = [ {text = "DIVINE_SYMBOL_45", reqs = []}],
-		options = [ {
-			code = 'divine_symbol_33', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}],
+		variations = [ {
+				reqs = [{type = 'decision', value = 'aire_is_dead', check = true}],
+				image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], character = "greg",
+				text = [ {text = "DIVINE_SYMBOL_45_AIRE_DEAD", reqs = []}],
+				options = [ {
+				code = 'divine_symbol_33', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+				}],
+			}, {
+				reqs = [],
+				image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], character = "greg", character2 = "$aire",
+				text = [ {text = "DIVINE_SYMBOL_45", reqs = []}],
+				options = [ {
+				code = 'divine_symbol_33', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+				}],
+			}
+		],
 	},
 	
 	divine_symbol_33 = {

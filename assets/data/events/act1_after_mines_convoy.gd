@@ -254,11 +254,22 @@ var data = {
 	},
 
 	after_mines_convoy_7 = {
-		image = null, tags = ['dialogue_scene','blackscreen_transition_common'], character = "$aire", character2 = "greg",
-		text = [{text = "AFTER_MINES_CONVOY_14", reqs = []}],
-		options = [ {
-			code = 'after_mines_convoy_8', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}],
+		variations = [ {
+				reqs = [{type = 'decision', value = 'aire_is_dead', check = true}],
+				image = null, tags = ['dialogue_scene','blackscreen_transition_common'], character = "greg",
+				text = [{text = "AFTER_MINES_CONVOY_14_AIRE_DEAD", reqs = []}],
+				options = [ {
+				code = 'after_mines_convoy_8', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+				}],
+			}, {
+				reqs = [],
+				image = null, tags = ['dialogue_scene','blackscreen_transition_common'], character = "$aire", character2 = "greg",
+				text = [{text = "AFTER_MINES_CONVOY_14", reqs = []}],
+				options = [ {
+				code = 'after_mines_convoy_8', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+				}],
+			}
+		],
 	},
 
 	after_mines_convoy_8 = {

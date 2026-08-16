@@ -2031,6 +2031,41 @@ SKILLARCANE_MASTERYDESCRIPT = """激活后，下一次施放的法术变为瞬�
     SKILLBLINDING_CROSS_SLASHDESCRIPT = """对一排和一列的敌人造成25%的物理伤害。每次命中都有几率施加致盲。""",
     SKILLDISPOSAL = """肃清处理""",
     SKILLDISPOSALDESCRIPT = """造成150%的物理伤害。对处于致盲和流血状态的敌人造成额外伤害。""",
+	SKILLGROTUS_HAYMAKER = """Reckless Haymaker""", # MISSING TRANSLATION
+	SKILLGROTUS_HAYMAKERDESCRIPT = """Deal heavy damage to a single target. May inflict Stun.
+Gain a random {color=aqua|Gap in Defenses}.
+While under {color=aqua|Tyrannical Contempt}, this attack hits the entire row instead.""", # MISSING TRANSLATION
+	SKILLGROTUS_STOMPING = """Brutal Stomping""", # MISSING TRANSLATION
+	SKILLGROTUS_STOMPINGDESCRIPT = """Deal damage to a single target 3 times. Low chance of inflicting Shred with each hit.
+While under {color=aqua|Tyrannical Contempt}, the chance to inflict Shred is greatly increased.
+If the target is protected by {color=aqua|Stonewall} or {color=aqua|Earth Shield}, gain {color=aqua|Gap in Defenses: Unbalanced Posture}.""", # MISSING TRANSLATION
+	SKILLGROTUS_THUNDEROUS_SLAM = """Thunderous Slam""", # MISSING TRANSLATION
+	SKILLGROTUS_THUNDEROUS_SLAMDESCRIPT = """Deal damage to enemies in the melee line, with a chance of inflicting Stun.
+Enemies that evade this attack gain {color=aqua|Window of Opportunity}.
+While under {color=aqua|Tyrannical Contempt}, this move hits all enemies instead.""", # MISSING TRANSLATION
+	SKILLGROTUS_POWER_SURGE = """Rampaging Power Surge""", # MISSING TRANSLATION
+	SKILLGROTUS_POWER_SURGEDESCRIPT = """Deal {color=yellow|Light} damage to 3 random targets. Inflict Shock and may inflict Stun.
+Repeats 3 times, gaining a random {color=aqua|Gap in Defenses} each time.
+While under {color=aqua|Tyrannical Contempt}, repeats 5 times instead, but Grotus loses 8% of his maximum health.""", # MISSING TRANSLATION
+	SKILLGROTUS_ENERGY_DISCHARGE = """Point-blank Energy Discharge""", # MISSING TRANSLATION
+	SKILLGROTUS_ENERGY_DISCHARGEDESCRIPT = """Deal heavy {color=yellow|Light} damage to a single enemy.
+Inflict {color=aqua|Window of Opportunity} if the target survives.
+While under {color=aqua|Tyrannical Contempt}, this move seeks out the weakest unit in melee range.""", # MISSING TRANSLATION
+	SKILLGROTUS_PRESENT_THYSELF = """Present Thyself Before the King!""", # MISSING TRANSLATION
+	SKILLGROTUS_PRESENT_THYSELFDESCRIPT = """Cannot miss.
+Inflict {color=aqua|Object of Resentment} and Fear on a single enemy.
+3 random enemies gain {color=aqua|Window of Opportunity}.
+Remove Fear, Ensnare and Blind from Grotus.
+While under {color=aqua|Tyrannical Contempt}, Grotus instead gains {color=aqua|Taunt Immunity} and grants no openings.""", # MISSING TRANSLATION
+	SKILLGROTUS_ROYAL_SUMMONS = """Present Thyself Before the King!""", # MISSING TRANSLATION
+	SKILLGROTUS_ROYAL_SUMMONSDESCRIPT = """3 random enemies gain {color=aqua|Window of Opportunity}.""", # MISSING TRANSLATION
+	SKILLGROTUS_OBLITERATION = """Complete and Total Obliteration!!""", # MISSING TRANSLATION
+	SKILLGROTUS_OBLITERATIONDESCRIPT = """Can only target an enemy marked as {color=aqua|Object of Resentment}.
+Deal extremely heavy damage to that single target.
+On hit, a follow-up {color=yellow|Light} shockwave strikes all enemies, inflicting Shred and possibly Stun.
+On miss, Grotus gains up to 5 random {color=aqua|Gap in Defenses}.""", # MISSING TRANSLATION
+	SKILLGROTUS_OBLITERATION_WAVE = """Complete and Total Obliteration!!""", # MISSING TRANSLATION
+	SKILLGROTUS_OBLITERATION_WAVEDESCRIPT = """A shockwave of {color=yellow|Light} strikes all enemies, inflicting Shred and possibly Stun.""", # MISSING TRANSLATION
     RUNNING_AWAY_TEXT = """%s：我得赶紧离开这个鬼地方！""",
     SKILLHOWLING_RISING_AXE = """战吼高举之斧""",
     SKILLHOWLING_RISING_AXEDESCRIPT = """高举战斧对敌人发出咆哮，试图恐吓他们。获得{color=aqua|巨斧高举}。有几率施加恐惧。""",
@@ -5235,6 +5270,57 @@ TRAITEFFECTSUCCOMBAT = """欲望消耗：+25%% 攻击力和魔力。""",
     EFFECTNAME_TURBULENCE_AIR = "乱流激荡", 
     EFFECT_TURBULENCE_AIR_TRAIT = """使所有敌方的单体远程攻击（包括法术）的命中率降低40。
 此单位的心智、光与暗属性抗性无法被改变。""", 
+	EFFECTNAME_GROTUS_OVERWHELMED = """Overwhelmed""", # MISSING TRANSLATION
+	EFFECT_GROTUS_OVERWHELMED_DESCRIPT = """The stolen power slips loose and Grotus loses control of his own body.
+Stunned. Bypasses his Stun immunity entirely.""", # MISSING TRANSLATION
+	EFFECTNAME_GROTUS_GAP_DRAGGED_FEET = """Gap in Defenses: Dragged Feet""", # MISSING TRANSLATION
+	EFFECT_GROTUS_GAP_DRAGGED_FEET_DESCRIPT = """Grotus becomes Stunned while Wet.
+Lasts until his next action.""", # MISSING TRANSLATION
+	EFFECTNAME_GROTUS_GAP_UNBALANCED_POSTURE = """Gap in Defenses: Unbalanced Posture""", # MISSING TRANSLATION
+	EFFECT_GROTUS_GAP_UNBALANCED_POSTURE_DESCRIPT = """Grotus becomes Stunned when struck by an {color=yellow|Earth} spell.
+Lasts until his next action.""", # MISSING TRANSLATION
+	EFFECTNAME_GROTUS_GAP_DISORIENTATION = """Gap in Defenses: Momentary Disorientation""", # MISSING TRANSLATION
+	EFFECT_GROTUS_GAP_DISORIENTATION_DESCRIPT = """Grotus becomes Stunned while Blinded.
+Lasts until his next action.""", # MISSING TRANSLATION
+	EFFECTNAME_GROTUS_GAP_DULLED_DEXTERITY = """Gap in Defenses: Dulled Dexterity""", # MISSING TRANSLATION
+	EFFECT_GROTUS_GAP_DULLED_DEXTERITY_DESCRIPT = """Grotus becomes Stunned while Ensnared.
+Lasts until his next action.""", # MISSING TRANSLATION
+	EFFECTNAME_GROTUS_GAP_TUNNEL_VISION = """Gap in Defenses: Tunnel Vision""", # MISSING TRANSLATION
+	EFFECT_GROTUS_GAP_TUNNEL_VISION_DESCRIPT = """Grotus becomes Stunned when struck by an enemy hidden {color=aqua|In the Shadow}.
+Lasts until his next action.""", # MISSING TRANSLATION
+	EFFECTNAME_GROTUS_GAP_RESTRICTIVE_POSITION = """Gap in Defenses: Restrictive Position""", # MISSING TRANSLATION
+	EFFECT_GROTUS_GAP_RESTRICTIVE_POSITION_DESCRIPT = """Grotus becomes Stunned when struck by an attack that hits the whole party.
+Lasts until his next action.""", # MISSING TRANSLATION
+	EFFECTNAME_GROTUS_WINDOW_OF_OPPORTUNITY = """Window of Opportunity""", # MISSING TRANSLATION
+	EFFECT_GROTUS_WINDOW_OF_OPPORTUNITY_DESCRIPT = """Grotus has left himself wide open.
++80 Critical chance, -25% Critical damage.
+Removed on your next landed hit, or at the end of your turn.""", # MISSING TRANSLATION
+	EFFECTNAME_GROTUS_OBJECT_OF_RESENTMENT = """Object of Resentment""", # MISSING TRANSLATION
+	EFFECT_GROTUS_OBJECT_OF_RESENTMENT_DESCRIPT = """Singled out by the king. Speed reduced to nothing.
+Grotus will use Complete and Total Obliteration!! against this unit.
+Removed once that skill is used.""", # MISSING TRANSLATION
+	EFFECTNAME_GROTUS_CONTEMPT = """Tyrannical Contempt""", # MISSING TRANSLATION
+	EFFECT_GROTUS_CONTEMPT_DESCRIPT = """Take 30% less damage, and a further 30% less from critical hits.
++20 ATK and +10 Speed. Empowers all of Grotus' skills.""", # MISSING TRANSLATION
+	EFFECTNAME_GROTUS_TAUNT_IMMUNITY = """Taunt Immunity""", # MISSING TRANSLATION
+	EFFECT_GROTUS_TAUNT_IMMUNITY_DESCRIPT = """Grotus will accept no more insults. He cannot be taunted.""", # MISSING TRANSLATION
+	EFFECTNAME_GROTUS_HIT_MARK = """Mounting Insult""", # MISSING TRANSLATION
+	EFFECT_GROTUS_HIT_MARK_DESCRIPT = """Hits taken this round.
+At 5, Grotus gains {color=aqua|Tyrannical Contempt}.""", # MISSING TRANSLATION
+	EFFECTNAME_GROTUS_KING_DECREE = """Royal Decree""", # MISSING TRANSLATION
+	EFFECT_GROTUS_DIVINE_BARRIER_DESCRIPT = """Protection of the Divine Barrier
+Immune to all damage over time effects.
+Takes 45% less damage from non-critical attacks.
+Takes 45% less damage while not immobilised.""", # MISSING TRANSLATION
+	EFFECT_GROTUS_TYRANT_INSECURITY_DESCRIPT = """Insecurity of the Tyrant
+Damage over time is reduced even further.
+When hit more than 4 times in a single round, gains {color=aqua|Tyrannical Contempt}.
+Below 50% health, always has {color=aqua|Tyrannical Contempt}.""", # MISSING TRANSLATION
+	EFFECT_GROTUS_TAUNTED_FURY_DESCRIPT = """No More Humiliation and Scorn: +50 ATK and Armor penetration while taunted.""", # MISSING TRANSLATION
+	EFFECT_GROTUS_APOTHEOSIS_DESCRIPT = """Unnatural Apotheosis
+Immune to Disarm - there is no weapon to strike away.
+Shred and Shatter become a random {color=aqua|Gap in Defenses} instead, or Shock if one is already open.
+Every physical blow spills additional {color=yellow|Light} damage.""", # MISSING TRANSLATION
 	TRAIT_DUAL_BLADE_MASTERY_DESC = """免疫缴械。每次攻击造成额外物理伤害。""",
     EFFECTNAME_ANTAGONIZED = """被激怒""",
     EFFECTNAME_DUTY_TO_PROTECT = """守护职责""",
@@ -10954,6 +11040,15 @@ ALIRONELECTIONSFINISH_LINE4 = """{color=yellow|Myr: — 哼，所以你现在是
 {color=aqua|Greg: — 这里还轮不到你来质疑什么。回到你的岗位上去，准备迎接战斗。我们的人手足以守住这个阴暗破败的城镇，更何况老子手里还藏着几张能翻盘的底牌。}
 
 {color=yellow|Aire: — ……是，长官。}""",
+	AFTER_MINES_CONVOY_14_AIRE_DEAD = """Inside the settlement walls, rebels have been fortifying their defence in preparation for the upcoming battle.
+
+{color=yellow|Rebel Officer: — The guilds forces are preparing an assault. There's roughly two thousand troops. These are trained soldiers and mages. Even in our current position I doubt we can withstand for long.}
+
+{color=aqua|Greg: — You are not in a position to doubt anything. Take your place and get ready for battle. We have enough forces to protect this shady town and if anything I have a couple of trump cards of my own.}
+
+{color=yellow|Rebel Officer: — ...Yes, sir. Should we send another scout after the princess's champion? She's long overdue.}
+
+{color=aqua|Greg: — Forget the elf. If she hasn't returned by now, she's not going to.}""", # MISSING TRANSLATION
 	AFTER_MINES_CONVOY_15 = """在距离城镇围墙几百英尺远的地方，按照战前的惯例，邓肯与安娜斯塔西亚进行了最后一次对峙谈判。
 
 {color=aqua|Anastasia: — 看到人民因为我们的所作所为而受苦，我心中深感愧疚，但我们绝不会放下手中的武器。}
@@ -11217,6 +11312,11 @@ DIVINE_SYMBOL_18_1 = """{color=yellow|第一守卫：——嗯？怎么，你讨
 {color=yellow|爱蕊：— 看来他们不知怎么摸进来了。主力大军一直在等这个机会。恐怕我们撑不了多久了。}
 
 {color=aqua|格雷格：— 该死。传令撤退。并确保公主的安全。诅咒那个没用的勇者，最好别让她活着离开这里。}""",
+	DIVINE_SYMBOL_45_AIRE_DEAD = """{color=aqua|Greg: — What the hell... Shit, what happened to the barrier!?}
+
+{color=yellow|Rebel Officer: — It seems they somehow made it inside. Their main army has been waiting for this. I'm afraid we won't hold for long.}
+
+{color=aqua|Greg: — Goddamnit. Order the retreat. And make sure the princess is safe. Curses on that useless champion, she better not make it out of this alive.}""", # MISSING TRANSLATION
 	DIVINE_SYMBOL_46 = """{color=aqua|米尔：— 呵，[name] 真的做到了。你不打算亲自指挥进攻吗？}
 
 {color=yellow|邓肯：— 不，一切都结束了，也没什么悬念了。我已经派了斥候监视，防止任何漏网之鱼，所以公主很快就是我们的囊中之物了。}
