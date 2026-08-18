@@ -1,14 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/tools/auto_poly.gd" type="Script" id=1]
 [ext_resource path="res://Character_generator/images/00_body_nude/tits_normal.png" type="Texture" id=2]
 [ext_resource path="res://src/tools/deform_poly.gd" type="Script" id=3]
 [ext_resource path="res://src/tools/deform_drag_point.gd" type="Script" id=4]
 [ext_resource path="res://Character_generator/images/00_body_nude/tits_big.png" type="Texture" id=5]
-[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_portrait_hover.png" type="Texture" id=6]
-[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_portrait.png" type="Texture" id=7]
-[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/icon_hero.png" type="Texture" id=8]
-[ext_resource path="res://assets/sfx/shake_shader.tres" type="Material" id=9]
 
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
@@ -416,30 +412,3 @@ script = ExtResource( 4 )
 [node name="Position2D6" type="Position2D" parent="Tits_armor_mesh"]
 visible = false
 script = ExtResource( 4 )
-
-[node name="TextureButton" type="TextureButton" parent="."]
-material = ExtResource( 9 )
-margin_left = 339.0
-margin_top = 793.0
-margin_right = 379.0
-margin_bottom = 833.0
-texture_normal = ExtResource( 7 )
-texture_hover = ExtResource( 6 )
-
-[node name="TextureRect" type="TextureRect" parent="TextureButton"]
-show_behind_parent = true
-use_parent_material = true
-margin_left = 29.0
-margin_top = 27.0
-margin_right = 198.0
-margin_bottom = 219.0
-texture = ExtResource( 8 )
-expand = true
-
-[node name="Label" type="Label" parent="TextureButton"]
-use_parent_material = true
-margin_left = 79.0
-margin_top = 125.0
-margin_right = 135.0
-margin_bottom = 139.0
-text = "TESTTEST"
