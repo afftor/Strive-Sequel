@@ -238,6 +238,15 @@ var traits = {
 		effects = ['e_tr_ratkin'],
 		bonusstats = {}
 	},
+	refund_class_copy = {
+		code = 'refund_class_copy',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['readd_class_copy'],
+		bonusstats = {}
+	},
 	#main characters
 	#slave class
 	'master' : {
