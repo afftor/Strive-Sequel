@@ -41,11 +41,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'melee',
 		damage_type = 'weapon',
-		keep_target = variables.TARGET_NOKEEP,
-		next_target = variables.NT_MELEE,
-		sfx = [{code = 'strike', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'devastation_1', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'squash'},],
 		sounddata = {initiate = null, strike = 'punch', hit = null, hittype = 'bodyarmor'},
-		value = [['caster.matk', '*1.4']],
+		value = [['caster.atk', '*1.5', '+','caster.matk', '*0.5']],
 		variations = [
 			{
 				reqs = [{code = 'has_status', status = 'grotus_contempt', check = true}],
@@ -58,7 +56,7 @@ var skills = {
 	grotus_stomping = {
 		code = 'grotus_stomping',
 		descript = '',
-		icon = "res://assets/images/iconsskills/tackle.png",
+		icon = "res://assets/images/iconsskills/skill_backkick.png",
 		type = 'combat',
 		ability_type = 'skill',
 		tags = ['damage', 'damage_spot', 'disable_immunity'],
@@ -78,11 +76,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'melee',
 		damage_type = 'weapon',
-		keep_target = variables.TARGET_KEEP,
-		next_target = variables.NT_STRONG_MELEE,
-		sfx = [{code = 'shake_target', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'back_kick', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'tilt'},{code = 'shake_target', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'punch', hit = null, hittype = 'bodyarmor'},
-		value = [['caster.matk', '*0.6']],
+		value = [['caster.atk','*0.7','+','caster.matk', '*0.3']],
 		variations = [
 			{
 				reqs = [{code = 'has_status', status = 'grotus_contempt', check = true}],
@@ -120,7 +116,7 @@ var skills = {
 			{code = 'earthquake', target = 'target_line', period = 'predamage'},
 			{code = 'tauntwave', target = 'caster', period = 'windup'}],
 		sounddata = {initiate = null, strike = 'explosion', hit = null, hittype = 'bodyarmor'},
-		value = [['caster.matk', '*0.85']],
+		value = [['caster.atk','*1.75', '+', 'caster.matk', '*0.5']],
 		variations = [
 			{
 				reqs = [{code = 'has_status', status = 'grotus_contempt', check = true}],
@@ -135,7 +131,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/icon_lightning_orb.png",
 		type = 'combat',
 		ability_type = 'spell',
-		tags = ['damage', 'aoe', 'ads', 'disable_immunity'],
+		tags = ['damage', 'aoe', 'ads',],
 		reqs = [],
 		targetreqs = [],
 		effects = [
@@ -157,10 +153,12 @@ var skills = {
 		keep_target = variables.TARGET_NOKEEP,
 		next_target = variables.NT_ANY,
 		sfx = [
-			{code = 'chain_lightning', target = 'target', period = 'predamage'},
+			{code = 'chain_lightning', target = 'target_group', period = 'predamage',
+				windup = 0.38, duration = 0.56, jitter = 25.0,
+				branch_stagger = 0.10, hit_motion = 'push'},
 			{code = 'cast_light', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = 'spell_lightning', strike = null, hit = null},
-		value = [['caster.matk', '*0.5']],
+		value = [['caster.matk', '*0.65']],
 		variations = [
 			{
 				reqs = [{code = 'has_status', status = 'grotus_contempt', check = true}],
@@ -182,12 +180,10 @@ var skills = {
 		icon = "res://assets/images/iconsskills/holylance.png",
 		type = 'combat',
 		ability_type = 'spell',
-		tags = ['damage', 'damage_spot', 'ads', 'disable_immunity'],
+		tags = ['damage', 'damage_spot', 'ads',],
 		reqs = [],
 		targetreqs = [],
 		effects = [
-			#"if the target survives" - damage is already applied by TR_POSTDAMAGE, and
-			#the is_dead req code tracks world availability rather than combat death
 			Effectdata.rebuild_template({
 				effect = 'grotus_window_of_opportunity',
 				target_reqs = [{code = 'stat', stat = 'hp', operant = 'gte', value = 1}],
@@ -205,9 +201,9 @@ var skills = {
 		keep_target = variables.TARGET_NOKEEP,
 		next_target = variables.NT_STRONG_MELEE,
 		sfx = [
-			{code = 'radiance', target = 'target', period = 'predamage'},
-			{code = 'cast_light', target = 'caster', period = 'windup', is_cast = true}],
-		sounddata = {initiate = 'spell_explosion', strike = 'explosion', hit = null},
+			{code = 'radiance', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'squash'},
+			{code = 'assassinate_step', target = 'caster', period = 'windup', is_cast = true}],
+		sounddata = {initiate = 'spell_explosion', strike = null, hit = 'explosion'},
 		value = [['caster.matk', '*2.4']],
 		variations = [
 			{
@@ -220,7 +216,7 @@ var skills = {
 	grotus_present_thyself = {
 		code = 'grotus_present_thyself',
 		descript = '',
-		icon = "res://assets/images/iconsskills/Authority.png",
+		icon = "res://assets/images/iconsskills/Warn.png",
 		type = 'combat',
 		ability_type = 'skill',
 		tags = ['debuff', 'ultimate', 'noevade', 'noreduce', 'disable_immunity', 'ignore_taunt'],
@@ -295,7 +291,7 @@ var skills = {
 		damage_type = 'light',
 		keep_target = variables.TARGET_NOKEEP,
 		next_target = variables.NT_ANY,
-		sfx = [{code = 'leader_mark', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'cast_mind', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = null, hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],
@@ -336,14 +332,14 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		keep_target = variables.TARGET_NOKEEP,
-		next_target = variables.NT_ANY,
 		follow_up = 'grotus_obliteration_wave',
 		sfx = [
-			{code = 'execution', target = 'target', period = 'predamage'},
-			{code = 'cast_light', target = 'caster', period = 'windup', is_cast = true}],
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true, motion = 'execution_leap'},
+			{code = 'meteor', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'tilt'},
+			{code = 'earth_spike', target = 'target', period = 'predamage'},
+		],
 		sounddata = {initiate = 'spell_explosion', strike = 'explosion', hit = null, hittype = 'absolute'},
-		value = [['caster.matk', '*4.0']],
+		value = [['caster.atk','+','caster.matk', '*2.0']],
 	},
 	#follow-up of grotus_obliteration - the shockwave half.
 	grotus_obliteration_wave = {
@@ -369,7 +365,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'light',
 		sfx = [{code = 'radiance', target = 'target_group', period = 'predamage'}],
-		sounddata = {initiate = 'spell_explosion', strike = 'explosion', hit = null},
+		sounddata = {initiate = 'spell_break', strike = null, hit = null, hittype = 'absolute'},
 		value = [['caster.matk', '*0.9']],
 	},
 }
@@ -391,13 +387,20 @@ var effects = {
 		duration = 1,
 		tags = ['stun', 'disable', 'negative', 'grotus_overwhelmed'],
 		statchanges = {},
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'caster',
+				atomic = [{type = 'remove_all_effects', value = 'defensive_gap'},],
+			},
+		],
 		buffs = ['b_grotus_overwhelmed'],
 	},
 	grotus_gap_dragged_feet = {
 		type = 'temp_s',
 		target = 'caster',
 		stack = 'grotus_gap_dragged_feet',
-		tick_event = [variables.TR_TURN_F],
+		tick_event = [variables.TR_TURN_GET],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 1,
 		tags = ['defensive_gap', 'negative', 'grotus_gap_dragged_feet'],
@@ -415,9 +418,20 @@ var effects = {
 						target = 'owner',
 						atomic = [
 							{type = 'effect', value = 'grotus_overwhelmed'},
+							{type = 'remove_all_effects', value = 'wet'},
 							{type = 'remove_all_effects', value = 'grotus_gap_dragged_feet'},
 						],
 					},
+				],
+			},
+			{
+				type = 'oneshot',
+				target = 'owner',
+				conditions = [{code = 'has_status', status = 'wet', check = true}],
+				atomic = [
+					{type = 'effect', value = 'grotus_overwhelmed'},
+					{type = 'remove_all_effects', value = 'wet'},
+					{type = 'remove_all_effects', value = 'grotus_gap_dragged_feet'},
 				],
 			},
 		],
@@ -426,7 +440,7 @@ var effects = {
 		type = 'temp_s',
 		target = 'caster',
 		stack = 'grotus_gap_unbalanced_posture',
-		tick_event = [variables.TR_TURN_F],
+		tick_event = [variables.TR_TURN_GET],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 1,
 		tags = ['defensive_gap', 'negative', 'grotus_gap_unbalanced_posture'],
@@ -460,7 +474,7 @@ var effects = {
 		type = 'temp_s',
 		target = 'caster',
 		stack = 'grotus_gap_disorientation',
-		tick_event = [variables.TR_TURN_F],
+		tick_event = [variables.TR_TURN_GET],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 1,
 		tags = ['defensive_gap', 'negative', 'grotus_gap_disorientation'],
@@ -479,8 +493,19 @@ var effects = {
 						atomic = [
 							{type = 'effect', value = 'grotus_overwhelmed'},
 							{type = 'remove_all_effects', value = 'grotus_gap_disorientation'},
+							{type = 'remove_all_effects', value = 'blind'},
 						],
 					},
+				],
+			},
+			{
+				type = 'oneshot',
+				target = 'owner',
+				conditions = [{code = 'has_status', status = 'blind', check = true}],
+				atomic = [
+					{type = 'effect', value = 'grotus_overwhelmed'},
+					{type = 'remove_all_effects', value = 'grotus_gap_disorientation'},
+					{type = 'remove_all_effects', value = 'blind'},
 				],
 			},
 		],
@@ -489,7 +514,7 @@ var effects = {
 		type = 'temp_s',
 		target = 'caster',
 		stack = 'grotus_gap_dulled_dexterity',
-		tick_event = [variables.TR_TURN_F],
+		tick_event = [variables.TR_TURN_GET],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 1,
 		tags = ['defensive_gap', 'negative', 'grotus_gap_dulled_dexterity'],
@@ -509,8 +534,19 @@ var effects = {
 						atomic = [
 							{type = 'effect', value = 'grotus_overwhelmed'},
 							{type = 'remove_all_effects', value = 'grotus_gap_dulled_dexterity'},
+							{type = 'remove_all_effects', value = 'ensnared'},
 						],
 					},
+				],
+			},
+			{
+				type = 'oneshot',
+				target = 'owner',
+				conditions = [{code = 'has_status', status = 'ensnared', check = true}],
+				atomic = [
+					{type = 'effect', value = 'grotus_overwhelmed'},
+					{type = 'remove_all_effects', value = 'grotus_gap_dulled_dexterity'},
+					{type = 'remove_all_effects', value = 'ensnared'},
 				],
 			},
 		],
@@ -519,7 +555,7 @@ var effects = {
 		type = 'temp_s',
 		target = 'caster',
 		stack = 'grotus_gap_tunnel_vision',
-		tick_event = [variables.TR_TURN_F],
+		tick_event = [variables.TR_TURN_GET],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 1,
 		tags = ['defensive_gap', 'negative', 'grotus_gap_tunnel_vision'],
@@ -530,8 +566,10 @@ var effects = {
 				type = 'trigger',
 				trigger = [variables.TR_DEF],
 				req_skill = true,
-				#'hide' is the tag behind In the Shadow / stealth
-				conditions = [{type = 'caster', value = [{code = 'has_status', status = 'hide', check = true}]}],
+				conditions = [
+					{type = 'caster', value = [{code = 'has_status', status = 'hide', check = true}]},
+					{type = 'skill', value = ['tags', 'has', 'damage'] },
+				],
 				args = {
 					skill = {obj = 'skill', func = 'eq'},
 					caster = {obj = 'caster', func = 'eq'},
@@ -554,7 +592,7 @@ var effects = {
 		type = 'temp_s',
 		target = 'caster',
 		stack = 'grotus_gap_restrictive_position',
-		tick_event = [variables.TR_TURN_F],
+		tick_event = [variables.TR_TURN_GET],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 1,
 		tags = ['defensive_gap', 'negative', 'grotus_gap_restrictive_position'],
@@ -565,7 +603,10 @@ var effects = {
 				type = 'trigger',
 				trigger = [variables.TR_DEF],
 				req_skill = true,
-				conditions = [{type = 'skill', value = ['target_number', 'eq', 'all']}],
+				conditions = [
+					{type = 'skill', value = ['target_number', 'eq', 'all']},
+					{type = 'skill', value = ['tags', 'has', 'damage'] },
+				],
 				args = {
 					skill = {obj = 'skill', func = 'eq'},
 					caster = {obj = 'caster', func = 'eq'},
@@ -672,7 +713,7 @@ var effects = {
 	#the target of grotus_stomping is turtling up - punish the boss for slamming a wall
 	grotus_stomping_guard_break = {
 		type = 'trigger',
-		trigger = [variables.TR_HIT],
+		trigger = [variables.TR_POSTDAMAGE],
 		req_skill = true,
 		conditions = [
 			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
@@ -754,7 +795,7 @@ var effects = {
 		target = 'caster',
 		stack = 'grotus_contempt',
 		tick_event = [variables.TR_NONE],
-		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH, variables.TR_TURN_F],
 		tags = ['buff', 'grotus_contempt'],
 		statchanges = {atk = 20, speed = 10, damage_reduction = 30},
 		buffs = ['b_grotus_contempt'],
@@ -896,6 +937,7 @@ var effects = {
 		conditions = [
 			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
 			{type = 'skill', value = ['tags', 'has', 'damage']},
+			{type = 'owner', value = [{code = 'has_status', status = 'grotus_contempt', check = false}]},
 		],
 		args = {
 			skill = {obj = 'skill', func = 'eq'},
@@ -936,7 +978,7 @@ var effects = {
 			{
 				type = 'oneshot',
 				target = 'owner',
-				atomic = [{type = 'effect', value = 'grotus_contempt'}],
+				atomic = [{type = 'effect', value = 'grotus_contempt'},{type = 'remove_all_effects', value = 'grotus_hit_mark'},],
 			},
 		],
 	},
@@ -964,6 +1006,10 @@ var effects = {
 	#directly: reqs are evaluated against one character, and calculate_number_from_string_array
 	#returns "" for a 'target.' prefix. Bucketed instead - Grotus' own quarter picks which
 	#threshold the victim has to clear, so the bonus fires more and more often as he drops.
+	grotus_humiliation_scorn_display = {
+		type = 'simple',
+		buffs = ['b_grotus_humiliation_scorn_display'],
+	},
 	grotus_scorn_q1 = {
 		type = 'trigger',
 		trigger = [variables.TR_HIT],
@@ -1067,7 +1113,7 @@ var effects = {
 			{code = 'has_status', status = 'taunt_hard', check = true},
 		]}],
 		statchanges = {atk = 50, armorpenetration = 50},
-		buffs = ['b_grotus_taunted_fury'],
+		buffs = [],
 	},
 
 	#=========================================================================
@@ -1083,7 +1129,7 @@ var effects = {
 	#shred/shatter, which makes the shock branch's own condition fail in the same pass.
 	grotus_apotheosis_convert = {
 		type = 'trigger',
-		trigger = [variables.TR_DEF_HIT, variables.TR_POST_TARG, variables.TR_DMG, variables.TR_TURN_S, variables.TR_TURN_GET],
+		trigger = [variables.TR_POST_TARG, variables.TR_TURN_S, variables.TR_TURN_GET],
 		req_skill = false,
 		conditions = [
 			{type = 'owner', value = [{code = 'or_list', or_list = [
@@ -1113,7 +1159,7 @@ var effects = {
 	},
 	grotus_apotheosis_convert_shock = {
 		type = 'trigger',
-		trigger = [variables.TR_DEF_HIT, variables.TR_POST_TARG, variables.TR_DMG, variables.TR_TURN_S, variables.TR_TURN_GET],
+		trigger = [variables.TR_POST_TARG, variables.TR_TURN_S, variables.TR_TURN_GET],
 		req_skill = false,
 		conditions = [
 			{type = 'owner', value = [{code = 'or_list', or_list = [
@@ -1178,7 +1224,7 @@ var buffs = {
 		description = "EFFECT_GROTUS_GAP_UNBALANCED_POSTURE_DESCRIPT",
 	},
 	b_grotus_gap_disorientation = {
-		icon = "res://assets/images/iconsskills/icon_eyes.png",
+		icon = "res://assets/images/iconsskills/Mind_Control.png",
 		description = "EFFECT_GROTUS_GAP_DISORIENTATION_DESCRIPT",
 	},
 	b_grotus_gap_dulled_dexterity = {
@@ -1202,7 +1248,7 @@ var buffs = {
 		description = "EFFECT_GROTUS_OBJECT_OF_RESENTMENT_DESCRIPT",
 	},
 	b_grotus_contempt = {
-		icon = "res://assets/images/iconsskills/Authority.png",
+		icon = "res://assets/images/iconsskills/skill_bloodboil.png",
 		description = "EFFECT_GROTUS_CONTEMPT_DESCRIPT",
 	},
 	b_grotus_taunt_immunity = {
@@ -1218,13 +1264,13 @@ var buffs = {
 		icon = "res://assets/images/iconsskills/Barrier.png",
 		description = "EFFECT_GROTUS_DIVINE_BARRIER_DESCRIPT",
 	},
+	b_grotus_humiliation_scorn_display = {
+		icon = "res://assets/images/iconsskills/warcry.png",
+		description = "EFFECT_GROTUS_HUMILIATION_SCORN_DESCRIPT",
+	},
 	b_grotus_tyrant_insecurity = {
 		icon = "res://assets/images/iconsskills/Debilitate.png",
 		description = "EFFECT_GROTUS_TYRANT_INSECURITY_DESCRIPT",
-	},
-	b_grotus_taunted_fury = {
-		icon = "res://assets/images/iconsskills/warcry.png",
-		description = "EFFECT_GROTUS_TAUNTED_FURY_DESCRIPT",
 	},
 	b_grotus_apotheosis = {
 		icon = "res://assets/images/iconsskills/icon_light.png",
