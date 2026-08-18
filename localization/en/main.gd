@@ -2008,19 +2008,19 @@ At 2+ stacks of [{color=aqua|Catastrophic Momentum}], cause a shockwave that dea
 	SKILLDISPOSALDESCRIPT = "Deal 150% ATK damage. Deals extra damage to Blinded and Bleeding enemies",
 	#Grotus, act 4 finale
 	SKILLGROTUS_HAYMAKER = "Reckless Haymaker",
-	SKILLGROTUS_HAYMAKERDESCRIPT = """Deal heavy damage to a single target. May inflict Stun.
+	SKILLGROTUS_HAYMAKERDESCRIPT = """Deal heavy damage to a single target. May inflict {color=aqua|Stun}.
 Gain a random {color=aqua|Gap in Defenses}.
 While under {color=aqua|Tyrannical Contempt}, this attack hits the entire row instead.""",
 	SKILLGROTUS_STOMPING = "Brutal Stomping",
-	SKILLGROTUS_STOMPINGDESCRIPT = """Deal damage to a single target 3 times. Low chance of inflicting Shred with each hit.
-While under {color=aqua|Tyrannical Contempt}, the chance to inflict Shred is greatly increased.
+	SKILLGROTUS_STOMPINGDESCRIPT = """Deal damage to a single target 3 times. Low chance of inflicting {color=aqua|Shred} with each hit.
+While under {color=aqua|Tyrannical Contempt}, the chance to inflict {color=aqua|Shred} is greatly increased.
 If the target is protected by {color=aqua|Stonewall} or {color=aqua|Earth Shield}, gain {color=aqua|Gap in Defenses: Unbalanced Posture}.""",
 	SKILLGROTUS_THUNDEROUS_SLAM = "Thunderous Slam",
 	SKILLGROTUS_THUNDEROUS_SLAMDESCRIPT = """Deal damage to enemies in the melee line, with a chance of inflicting Stun.
 Enemies that evade this attack gain {color=aqua|Window of Opportunity}.
 While under {color=aqua|Tyrannical Contempt}, this move hits all enemies instead.""",
 	SKILLGROTUS_POWER_SURGE = "Rampaging Power Surge",
-	SKILLGROTUS_POWER_SURGEDESCRIPT = """Deal {color=yellow|Light} damage to 3 random targets. Inflict Shock and may inflict Stun.
+	SKILLGROTUS_POWER_SURGEDESCRIPT = """Deal {color=yellow|Light} damage to 3 random targets. Inflict {color=aqua|Shock} and may inflict {color=aqua|Stun}.
 Repeats 3 times, gaining a random {color=aqua|Gap in Defenses} each time.
 While under {color=aqua|Tyrannical Contempt}, repeats 5 times instead, but Grotus loses 8% of his maximum health.""",
 	SKILLGROTUS_ENERGY_DISCHARGE = "Point-blank Energy Discharge",
@@ -2029,19 +2029,15 @@ Inflict {color=aqua|Window of Opportunity} if the target survives.
 While under {color=aqua|Tyrannical Contempt}, this move seeks out the weakest unit in melee range.""",
 	SKILLGROTUS_PRESENT_THYSELF = "Present Thyself Before the King!",
 	SKILLGROTUS_PRESENT_THYSELFDESCRIPT = """Cannot miss.
-Inflict {color=aqua|Object of Resentment} and Fear on a single enemy.
+Inflict {color=aqua|Object of Resentment} and {color=aqua|Fear} on a single enemy.
 3 random enemies gain {color=aqua|Window of Opportunity}.
-Remove Fear, Ensnare and Blind from Grotus.
+Remove {color=aqua|Fear}, {color=aqua|Ensnare} and {color=aqua|Blind} from Grotus.
 While under {color=aqua|Tyrannical Contempt}, Grotus instead gains {color=aqua|Taunt Immunity} and grants no openings.""",
-	SKILLGROTUS_ROYAL_SUMMONS = "Present Thyself Before the King!",
-	SKILLGROTUS_ROYAL_SUMMONSDESCRIPT = "3 random enemies gain {color=aqua|Window of Opportunity}.",
 	SKILLGROTUS_OBLITERATION = "Complete and Total Obliteration!!",
 	SKILLGROTUS_OBLITERATIONDESCRIPT = """Can only target an enemy marked as {color=aqua|Object of Resentment}.
 Deal extremely heavy damage to that single target.
-On hit, a follow-up {color=yellow|Light} shockwave strikes all enemies, inflicting Shred and possibly Stun.
+On hit, a follow-up {color=yellow|Light} shockwave strikes all enemies, inflicting {color=aqua|Shred} and possibly {color=aqua|Stun}.
 On miss, Grotus gains up to 5 random {color=aqua|Gap in Defenses}.""",
-	SKILLGROTUS_OBLITERATION_WAVE = "Complete and Total Obliteration!!",
-	SKILLGROTUS_OBLITERATION_WAVEDESCRIPT = "A shockwave of {color=yellow|Light} strikes all enemies, inflicting Shred and possibly Stun.",
 	RUNNING_AWAY_TEXT = "%s: I gotta get out of here!",
 	SKILLHOWLING_RISING_AXE = "Howling Rising Axe",
 	SKILLHOWLING_RISING_AXEDESCRIPT = "Hold up the axe and scream at enemies in an attempt to intimidate them. Gain {color=aqua|Axe Raised}. Chance to inflict Fear.",
@@ -5253,7 +5249,7 @@ Removed once that skill is used.""",
 	EFFECT_GROTUS_HIT_MARK_DESCRIPT = """Hits taken this round.
 At 5, Grotus gains {color=aqua|Tyrannical Contempt}.""",
 	EFFECTNAME_GROTUS_KING_DECREE = "Royal Decree",
-	EFFECT_GROTUS_DIVINE_BARRIER_DESCRIPT = """Protection of the Divine Barrier
+	EFFECT_GROTUS_DIVINE_BARRIER_DESCRIPT = """Protection of the Divine Barrier:
 Immune to all damage over time effects.
 Takes 45% less damage from non-critical attacks.
 Takes 45% less damage while not immobilised.""",
@@ -5261,9 +5257,9 @@ Takes 45% less damage while not immobilised.""",
 Damage over time is reduced even further.
 When hit more than 4 times in a single round, gains {color=aqua|Tyrannical Contempt}.
 Below 50% health, always has {color=aqua|Tyrannical Contempt}.""",
-	EFFECT_GROTUS_TAUNTED_FURY_DESCRIPT = "No More Humiliation and Scorn: +50 ATK and Armor penetration while taunted.",
+	EFFECT_GROTUS_HUMILIATION_SCORN_DESCRIPT = "No More Humiliation and Scorn: Deal 20% more damage against target with a higher HP percentage quarter or more than this unit. +50 ATK and Armor penetration while taunted.",
 	EFFECT_GROTUS_APOTHEOSIS_DESCRIPT = """Unnatural Apotheosis
-Immune to Disarm - there is no weapon to strike away.
+Immune to Disarm.
 Shred and Shatter become a random {color=aqua|Gap in Defenses} instead, or Shock if one is already open.
 Every physical blow spills additional {color=yellow|Light} damage.""",
 	TRAIT_DUAL_BLADE_MASTERY_DESC = "Disarm immunity. Every attack deals additional physical damage.",

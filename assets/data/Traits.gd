@@ -2135,7 +2135,7 @@ var traits = {
 		descript = '',
 		icon = null,
 		visible = false,
-		effects = ['grotus_scorn_q1','grotus_scorn_q2','grotus_scorn_q3','grotus_scorn_q4','grotus_taunted_fury'],
+		effects = ['grotus_humiliation_scorn_display','grotus_scorn_q1','grotus_scorn_q2','grotus_scorn_q3','grotus_scorn_q4','grotus_taunted_fury'],
 		tags = ['grotus_no_humiliation'],
 	},
 	grotus_apotheosis = {
@@ -2144,7 +2144,7 @@ var traits = {
 		descript = '',
 		icon = null,
 		visible = false,
-		effects = ['grotus_disarm_immunity','grotus_apotheosis_convert','grotus_apotheosis_convert_shock','grotus_holy_overflow'],
+		effects = ['grotus_disarm_immunity','grotus_apotheosis_convert_shock','grotus_apotheosis_convert','grotus_holy_overflow'],
 		tags = ['grotus_apotheosis'],
 	},
 	unlit_brazier = {
