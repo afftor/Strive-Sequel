@@ -532,7 +532,7 @@ func run_test():
 		}
 	setup_player()
 	globals.char_roll_data.no_roll = true
-	var enc_template = {unittype = 'randomgroup', unitcode = combatlist[$selector.selected], bg = 'default', bgm = 'default', win_effects = [], lose_effects = [], enemy_stats_mod = float($mod1.text)}
+	var enc_template = {unittype = 'randomgroup', unitcode = combatlist[$selector.selected], bg = 'combat_jungle', bgm = 'default', win_effects = [], lose_effects = [], enemy_stats_mod = float($mod1.text)}
 	Enemydata.encounters.combat_test = enc_template
 	globals.current_enemy_group = 'combat_test'
 	input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS)

@@ -188,6 +188,7 @@ tasks="*res://assets/data/tasks.gd"
 DungeonGen="*res://src/core/dungeon_gen.gd"
 DungeonData="*res://assets/data/dungeon_data.gd"
 log_alert="*res://src/core/log_alert_singleton.gd"
+amelia_verify="*res://_amelia_verify.gd"
 hotkeys="*res://src/core/hotkeys.gd"
 
 [debug]
