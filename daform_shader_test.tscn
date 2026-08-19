@@ -266,13 +266,13 @@ void vertex(){
 shader = SubResource( 6 )
 shader_param/anchor1 = Vector2( 436, 590 )
 shader_param/anchor2 = Vector2( 346, 561 )
-shader_param/anchor3 = Vector2( 534, 557 )
+shader_param/anchor3 = Vector2( 535, 561 )
 shader_param/anchor4 = Vector2( 0, 0 )
 shader_param/anchor5 = Vector2( 0, 0 )
 shader_param/anchor6 = Vector2( 0, 0 )
 shader_param/move1 = Vector2( 0, 0 )
 shader_param/move2 = Vector2( 0, 0 )
-shader_param/move3 = Vector2( 1, 4 )
+shader_param/move3 = Vector2( 0, 0 )
 shader_param/move4 = Vector2( 0, 0 )
 shader_param/move5 = Vector2( 0, 0 )
 shader_param/move6 = Vector2( 0, 0 )
@@ -294,9 +294,6 @@ shader_param/overlay = 0.0
 [node name="Node2D" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AutoPoly" type="Polygon2D" parent="."]
 material = SubResource( 3 )
@@ -401,7 +398,7 @@ script = ExtResource( 4 )
 __meta__ = {
 "_gizmo_extents_": 110.0
 }
-anchor = Vector2( 534, 557 )
+anchor = Vector2( 535, 561 )
 lock_anchor_position = true
 
 [node name="Position2D4" type="Position2D" parent="Tits_armor_mesh"]
