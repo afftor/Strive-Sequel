@@ -37,8 +37,13 @@ func build_drag_preview():
 			return preview
 	return self.duplicate()
 
+#Only another entry of this very list, being dragged into a new position, is a drop. Other
+#drags pass over these entries - the mansion screen has portraits being carried about - and
+#reaching for 'arr' on a payload that has none is an error, not a false.
 func can_drop_data(position, data):
-	return drag_enabled and data.arr == parentnodearray
+	if !drag_enabled or !(data is Dictionary) or !data.has('arr'):
+		return false
+	return data.arr == parentnodearray
 
 func drop_data(position, data):
 	if str(data.data) == str(arraydata):

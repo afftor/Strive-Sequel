@@ -1976,6 +1976,12 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		#sleeps in a mansion room tagged like this - see mansion_room_types.gd
 		'lives_in_room':
 			return ResourceScripts.game_res.character_room_has_tag(id, i.value) == i.check
+		#the estate has such a room standing at all, wherever this character sleeps
+		'has_room':
+			return ResourceScripts.game_res.has_room_with_tag(i.value) == i.check
+		#sleeps somewhere good enough for what they have come to expect
+		'sleep_demand':
+			return ResourceScripts.game_res.sleep_demand_met(id) == i.check
 		'check_stored':
 			return training.check_stored_reqs(i.value)
 		'is_immune':

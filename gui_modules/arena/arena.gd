@@ -361,7 +361,7 @@ func on_leave_btn():
 func finish_arena():
 	stop_listen_combat()
 	for i in cur_reward.materials:
-		ResourceScripts.game_res.materials[i] += cur_reward.materials[i]
+		ResourceScripts.game_res.gain_material(i, cur_reward.materials[i])
 	for i in cur_reward.items:
 		globals.AddItemToInventory(i)
 	ResourceScripts.game_res.money += cur_reward.gold

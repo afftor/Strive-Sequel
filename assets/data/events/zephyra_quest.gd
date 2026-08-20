@@ -914,8 +914,8 @@ var data = {
 				],
 				reqs = [
 					{
-						type = "has_upgrade",
-						name = "resting",
+						type = "has_mansion_room",
+						name = "bathhouse",
 						value = 1
 					}
 				],
@@ -1026,8 +1026,8 @@ var data = {
 		music = "intimate_funny", 
 		reqs = [
 			{
-				type = "has_upgrade",
-				name = "resting",
+				type = "has_mansion_room",
+				name = "bathhouse",
 				value = 1,
 				negative = "repeat_next_day"
 			},

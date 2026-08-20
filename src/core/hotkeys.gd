@@ -230,11 +230,8 @@ func get_active_context():
 func is_input_blocked():
 	if capturing or input_handler.hard_tutorial_active or input_handler.text_field_input:
 		return true
-	var scene = input_handler.CurrentScene
-	if scene != null and is_instance_valid(scene) and scene is Control:
-		var focus = scene.get_focus_owner()
-		if focus is LineEdit or focus is TextEdit:
-			return true
+	if input_handler.text_field_focused():
+		return true
 	var dialogue = gui_controller.dialogue
 	if dialogue != null and is_instance_valid(dialogue) and dialogue.is_visible_in_tree():
 		return true

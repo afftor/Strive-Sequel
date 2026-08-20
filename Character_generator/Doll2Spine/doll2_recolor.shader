@@ -7,12 +7,17 @@ shader_type canvas_item;
 // texel keeps its own lightness.  Hair adds a second colour blended down the
 // mesh, which is how the old paperdoll's two hair colours are carried over.
 //
-// ZONED - clothing and weapons.  That art is not painted in its final colours:
-// it is coded by hue, magenta for the main material, green for the second, cyan
-// for the third, and the shader maps each band to a picked colour.  This is the
-// same idea as the old item shader, which selected zones with `abs(hue - target)
-// < dist` rather than with masks.  Pixels outside every band - outlines,
-// highlights, leather straps painted in their final colour - are left alone.
+// ZONES - on top of that, art can be coded by hue: magenta for the first
+// material, chartreuse for the second, spring green for the third.  Clothing and
+// weapons are painted entirely that way, but so are wing membranes, tail tips
+// and claws, which is why zones are not limited to gear.  Each band gets its own
+// colour, exactly as the old item shader did with `abs(hue - target) < dist`
+// instead of masks.
+//
+// The two work together: a zone colour wins on the pixels of its band, and the
+// plain colour takes everything else.  A zone left white is off, so its pixels
+// fall through to the plain colour - a claw follows the skin until it is given a
+// colour of its own.
 
 uniform vec4 recolor : hint_color = vec4(1.0, 1.0, 1.0, 1.0);
 uniform float strength : hint_range(0.0, 1.0) = 0.0;
@@ -21,12 +26,31 @@ uniform vec4 recolor2 : hint_color = vec4(1.0, 1.0, 1.0, 1.0);
 uniform float gradient_top = 0.0;
 uniform float gradient_span = 0.0;
 
-uniform int zone_count = 0;
-uniform vec3 zone_hues = vec3(0.0);
-uniform float zone_distance = 0.083;
+uniform vec3 zone_hues = vec3(0.83, 0.25, 0.43);
+uniform vec3 zone_distance = vec3(0.042, 0.042, 0.072);
 uniform vec4 zone1_color : hint_color = vec4(1.0);
 uniform vec4 zone2_color : hint_color = vec4(1.0);
 uniform vec4 zone3_color : hint_color = vec4(1.0);
+uniform float zone1_on = 0.0;
+uniform float zone2_on = 0.0;
+uniform float zone3_on = 0.0;
+
+// COVERAGE - fur and scale patterns, painted through the masks the old paperdoll
+// already ships.  A mask is the full 872x1514 art canvas, while UV here points
+// into the packed atlas, so `canvas_row0/1` carry the affine map back from one
+// to the other.  It is per mesh, which is why coverage meshes get their own
+// material instead of sharing the channel's.
+uniform sampler2D coverage_mask1 : hint_black_albedo;
+uniform sampler2D coverage_mask2 : hint_black_albedo;
+uniform sampler2D coverage_mask3 : hint_black_albedo;
+uniform vec4 coverage_color1 : hint_color = vec4(1.0);
+uniform vec4 coverage_color2 : hint_color = vec4(1.0);
+uniform vec4 coverage_color3 : hint_color = vec4(1.0);
+uniform int coverage_count = 0;
+uniform vec4 coverage_base : hint_color = vec4(1.0);
+uniform float coverage_base_on = 0.0;
+uniform vec4 canvas_row0 = vec4(1.0, 0.0, 0.0, 0.0);
+uniform vec4 canvas_row1 = vec4(0.0, 1.0, 0.0, 0.0);
 
 // Neutral lightness: a pick at 0.5 keeps the art's own brightness.
 const float NEUTRAL_LIGHTNESS = 0.5;
@@ -120,17 +144,16 @@ void fragment() {
 	vec3 source = rgb_to_hsl(rgb);
 	vec3 target = vec3(0.0);
 
-	if (zone_count > 0) {
-		if (source.y > 0.15 && hue_gap(source.x, zone_hues.x) < zone_distance) {
-			target = rgb_to_hsl(zone1_color.rgb);
-			applied = 1.0;
-		} else if (zone_count > 1 && source.y > 0.15 && hue_gap(source.x, zone_hues.y) < zone_distance) {
-			target = rgb_to_hsl(zone2_color.rgb);
-			applied = 1.0;
-		} else if (zone_count > 2 && source.y > 0.15 && hue_gap(source.x, zone_hues.z) < zone_distance) {
-			target = rgb_to_hsl(zone3_color.rgb);
-			applied = 1.0;
-		}
+	bool coded = source.y > 0.15;
+	if (coded && zone1_on > 0.0 && hue_gap(source.x, zone_hues.x) < zone_distance.x) {
+		target = rgb_to_hsl(zone1_color.rgb);
+		applied = 1.0;
+	} else if (coded && zone2_on > 0.0 && hue_gap(source.x, zone_hues.y) < zone_distance.y) {
+		target = rgb_to_hsl(zone2_color.rgb);
+		applied = 1.0;
+	} else if (coded && zone3_on > 0.0 && hue_gap(source.x, zone_hues.z) < zone_distance.z) {
+		target = rgb_to_hsl(zone3_color.rgb);
+		applied = 1.0;
 	} else if (strength > 0.0) {
 		target = rgb_to_hsl(mix(recolor.rgb, recolor2.rgb, gradient_mix));
 		applied = strength;
@@ -139,6 +162,48 @@ void fragment() {
 	if (applied > 0.0) {
 		vec3 tinted = hsl_to_rgb(vec3(target.x, target.y, shift_lightness(source.z, target.z)));
 		rgb = mix(rgb, tinted, applied);
+	}
+
+	// Fur goes on last, over whatever colour the body ended up with, so a pattern
+	// reads the same on any skin.  The mask's alpha is the blend weight, curved
+	// the way the old shader curved it so soft edges fade instead of cutting.
+	if (coverage_count > 0) {
+		vec2 canvas_uv = vec2(
+			dot(canvas_row0.xy, UV) + canvas_row0.z,
+			dot(canvas_row1.xy, UV) + canvas_row1.z
+		);
+		if (canvas_uv.x >= 0.0 && canvas_uv.x <= 1.0 && canvas_uv.y >= 0.0 && canvas_uv.y <= 1.0) {
+			// The base goes down first, over the whole mesh.  Without it anything
+			// reaching past the masks' torso silhouette - large breasts above all
+			// - stays bare skin while the rest of the body is furred.
+			if (coverage_base_on > 0.0) {
+				vec3 base_hsl = rgb_to_hsl(coverage_base.rgb);
+				vec3 base_lit = rgb_to_hsl(rgb);
+				rgb = hsl_to_rgb(vec3(base_hsl.x, base_hsl.y, shift_lightness(base_lit.z, base_hsl.z)));
+			}
+			vec3 lit = rgb_to_hsl(rgb);
+			for (int i = 0; i < 3; i++) {
+				if (i >= coverage_count) {
+					break;
+				}
+				float weight = texture(coverage_mask1, canvas_uv).a;
+				vec4 fur = coverage_color1;
+				if (i == 1) {
+					weight = texture(coverage_mask2, canvas_uv).a;
+					fur = coverage_color2;
+				} else if (i == 2) {
+					weight = texture(coverage_mask3, canvas_uv).a;
+					fur = coverage_color3;
+				}
+				weight = clamp((2.0 - weight) * weight, 0.0, 1.0);
+				if (weight > 0.0) {
+					vec3 fur_hsl = rgb_to_hsl(fur.rgb);
+					vec3 painted = hsl_to_rgb(vec3(fur_hsl.x, fur_hsl.y, shift_lightness(lit.z, fur_hsl.z)));
+					rgb = mix(rgb, painted, weight);
+					lit = rgb_to_hsl(rgb);
+				}
+			}
+		}
 	}
 	// Some beastkin meshes carry an authored tint that was meant to match the
 	// purple body art.  Fade it out as the channel takes over, otherwise a

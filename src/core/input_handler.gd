@@ -465,6 +465,17 @@ func gather_skills_effects():
 			Effectdata.stacks[id] = tlib.stacks[id].duplicate(true)
 
 
+#CurrentScene keeps pointing at a screen that is already out of the tree while one
+#screen is being swapped for another, and get_focus_owner() errors out on a node
+#that is not in a tree. Nothing has focus at that point anyway.
+func text_field_focused():
+	if CurrentScene == null or !is_instance_valid(CurrentScene):
+		return false
+	if !(CurrentScene is Control) or !CurrentScene.is_inside_tree():
+		return false
+	var focused = CurrentScene.get_focus_owner()
+	return focused is LineEdit or focused is TextEdit
+
 #func _unhandled_input(event):
 func _input(event):
 	#the options panel is waiting for a key to bind - let it through untouched
@@ -510,7 +521,7 @@ func _input(event):
 	if gui_controller.current_screen == null:
 		return
 	for action in ['ui_accept', 'ui_left', 'ui_right']:
-		if event.is_action(action) and !(CurrentScene.get_focus_owner() is LineEdit or CurrentScene.get_focus_owner() is TextEdit):
+		if event.is_action(action) and !text_field_focused():
 			get_tree().set_input_as_handled()
 	for action in ['ui_cancel', 'ui_up', 'ui_down']:
 		if event.is_action(action):
@@ -597,7 +608,7 @@ func _input(event):
 #	if !text_field_input:
 	#dialogue options are positional ("the Nth answer"), not commands, so they stay on the
 	#plain number row instead of going through the rebindable hotkey table
-	if  CurrentScene is Control and !(CurrentScene.get_focus_owner() is LineEdit or CurrentScene.get_focus_owner() is TextEdit):
+	if CurrentScene is Control and !text_field_focused():
 		if str(event.as_text().replace("Kp ",'')) in str(range(1,9)):
 			var num = event.as_text().replace("Kp ",'')
 #			var tnode = get_tree().get_root().get_node_or_null("dialogue")
@@ -1929,9 +1940,12 @@ func if_translation_key(text:String):
 	return ntext != text
 
 
-func upgrade_unlocked(upgrade):
-	if upgrade.code == 'exotic_trader':
-		ResourceScripts.game_world.areas.plains.factions.exotic_slave_trader.slavelevel = ResourceScripts.game_res.upgrades.exotic_trader*2+1
+#Nothing unlocks upgrades any more - the tree is gone. This stays as the signal's landing
+#place because the connection is made in _ready(); the one thing it used to do, raising the
+#exotic trader's stock, never worked: it wrote a 'slavelevel' onto the faction, while the
+#generator reads the one on each hireable_characters entry (world_gen.rebuild_guild_slaves).
+func upgrade_unlocked(_upgrade):
+	pass
 
 func print_order():
 	print("{")

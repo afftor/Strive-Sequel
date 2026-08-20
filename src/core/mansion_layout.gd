@@ -89,7 +89,18 @@ static func make_room(type_code):
 		task_id = null,     #key into game_res.tasks_progresses, set by assign_room_id
 		occupants = [],     #who sleeps here
 		upgrades = {},      #{upgrade_code: level}
+		#The order this room works its discipline's queue in, as task ids. Empty means the
+		#estate's own order, which is what every room did before Ledgers existed.
+		craft_rules = [],
+		#what a practice room is set to work on. 'stat' is the basic stat being drilled;
+		#'trainer' is who is tutoring, if anybody; 'target' is a negative trait being worked
+		#out instead, with 'progress' counting towards being rid of it
+		practice = make_practice(),
 	}
+
+
+static func make_practice():
+	return {stat = 'physics', trainer = null, target = null, progress = 0}
 
 
 #Ids come from a counter on the layout rather than from game_res, because this file must
@@ -200,11 +211,41 @@ static func count_planned_of_type(layout, type_code):
 	return res
 
 
+#What a practice room can be set to drill. Anything outside this is reset by validate() -
+#the stat is written by the player through the room's card and has to be one the game grows.
+const PRACTICE_STATS = ['physics', 'wits', 'charm']
+
+#Work units a tutored character must put in before a negative trait is worked out of them.
+const PRACTICE_TRAIT_PROGRESS = 60.0
+
+
+#What a store room can hold of each material. The room's own base, or what its shelves have
+#been raised to - each level of Shelves states the whole figure rather than an addition, so
+#the effect replaces the base rather than piling onto it.
+const BASE_STORAGE = 200
+
+
+static func storage_capacity(room):
+	if room == null or !RoomTypes.has_tag(room.type, 'storage'):
+		return 0
+	return int(max(BASE_STORAGE, room_effect(room).get('storage', 0)))
+
+
+#Everything the estate can hold of one material: every store room it has, added together.
+#Zero rooms means zero, which is what makes a delivery spill.
+static func total_storage(layout):
+	var res = 0
+	for entry in each_room(layout):
+		res += storage_capacity(entry.room)
+	return res
+
+
 #### upgrades and capacity ####
 
 #Every upgrade level states its own totals, so a room's effect is just the union of its
-#current levels. Later keys win only when two upgrades touch the same one, which no pair
-#in the registry currently does.
+#current levels. Two upgrades touching the same key ADD - the comment here used to promise
+#the opposite, and nothing in the registry pairs such upgrades, so the promise had never
+#been tested. Summing is the useful rule: two things that both widen a room widen it twice.
 static func room_effect(room):
 	var res = {}
 	if room == null or !(room.upgrades is Dictionary):
@@ -231,6 +272,27 @@ static func sleep_capacity(room):
 	return slot_capacity(room, 'sleep')
 
 
+#The room's work places split three ways, so the screen can tell them apart: the ones the room
+#has for being what it is, the ones its upgrades widened it by, and the ones that stand for
+#somebody doing a different job in the same room - the tutor in a practice room.
+static func base_work_slots(room):
+	if room == null or RoomTypes.get_work_job(room.type) == null:
+		return 0
+	return int(RoomTypes.base_slots(room.type, 'work'))
+
+
+static func special_work_slots(room):
+	if room == null:
+		return 0
+	var res = 0
+	for code in room.upgrades:
+		if !RoomUpgrades.is_special_slot(code):
+			continue
+		var effect = RoomUpgrades.get_effect(code, room.upgrades[code])
+		res += int(effect.get('work_slots', 0))
+	return res
+
+
 static func work_capacity(room):
 	if room == null or RoomTypes.get_work_job(room.type) == null:
 		return 0
@@ -240,10 +302,11 @@ static func work_capacity(room):
 #Builder places exist only while something is being built here. A slot with no room yet -
 #raising a room, clearing out a derelict one - always gets exactly one; a room being
 #upgraded can have widened its own scaffolding first.
-static func build_capacity(room):
-	if room == null:
-		return 1
-	return 1 + int(room_effect(room).get('build_slots', 0))
+#One place always, plus whatever the household's builders upgrade has added. The extra comes
+#in as an argument because it is a global upgrade and this file may not read autoloads - see
+#the note at the top of mansion_room_types.gd.
+static func build_capacity(room, extra_builders = 0):
+	return 1 + int(extra_builders) + int(room_effect(room).get('build_slots', 0))
 
 
 #Sums one effect key across every room of a type - how the mansion as a whole answers
@@ -417,7 +480,7 @@ static func complete_build(layout, floor_index, slot_code):
 
 #Idempotently mirrors a build into tasks_progresses, the same way work rooms are mirrored,
 #so builders are assigned through the ordinary assign_to_task().
-static func ensure_build_task(slot, tasks):
+static func ensure_build_task(slot, tasks, extra_builders = 0):
 	if slot.build == null:
 		return null
 	var task_id = slot.build.task_id
@@ -435,7 +498,7 @@ static func ensure_build_task(slot, tasks):
 			max_workers = 0,
 		}
 	var task = tasks[task_id]
-	task.max_workers = build_capacity(slot.room)
+	task.max_workers = build_capacity(slot.room, extra_builders)
 	if !(task.workers is Array):
 		task.workers = []
 	return task_id
@@ -459,8 +522,10 @@ static func can_build(layout, floor_index, slot_code, type_code):
 		return {ok = false, reason = 'MANSIONVIEW_ERR_BROKEN'}
 	if slot.room != null:
 		return {ok = false, reason = 'MANSIONVIEW_ERR_OCCUPIED'}
-	if RoomTypes.get_type(type_code).unique and count_planned_of_type(layout, type_code) > 0:
-		return {ok = false, reason = 'MANSIONVIEW_ERR_UNIQUE'}
+	#'unique' is this same rule said for one, so both go through max_count()
+	var cap = RoomTypes.max_count(type_code)
+	if cap > 0 and count_planned_of_type(layout, type_code) >= cap:
+		return {ok = false, reason = 'MANSIONVIEW_ERR_UNIQUE' if cap == 1 else 'MANSIONVIEW_ERR_ENOUGH'}
 	return {ok = true, reason = ''}
 
 
@@ -480,6 +545,9 @@ static func can_demolish(layout, floor_index, slot_code):
 	#the master's own room is not the player's to tear down
 	if RoomTypes.get_type(slot.room.type).master_only:
 		return {ok = false, reason = 'MANSIONVIEW_ERR_MASTERROOM'}
+	#neither is the staircase - it is how the floors are reached at all
+	if RoomTypes.is_fixed(slot.room.type):
+		return {ok = false, reason = 'MANSIONVIEW_ERR_FIXEDROOM'}
 	if slot.build != null:
 		return {ok = false, reason = 'MANSIONVIEW_ERR_BUILDING'}
 	return {ok = true, reason = ''}
@@ -518,6 +586,10 @@ static func can_swap(layout, floor_a, code_a, floor_b, code_b):
 		return {ok = false, reason = 'MANSIONVIEW_ERR_BUILDING'}
 	if slot_a.room == null and slot_b.room == null:
 		return {ok = false, reason = 'MANSIONVIEW_ERR_VOID'}
+	#the staircase is part of the building, not something standing in it
+	for slot in [slot_a, slot_b]:
+		if slot.room != null and RoomTypes.is_fixed(slot.room.type):
+			return {ok = false, reason = 'MANSIONVIEW_ERR_FIXEDROOM'}
 	return {ok = true, reason = ''}
 
 
@@ -575,7 +647,7 @@ static func is_pinned(layout, char_id, is_master):
 #Gives somebody a bed without being asked, which is what happens when they join the
 #household. The master goes to his own room and nowhere else; everyone else takes the
 #first free bed that will have them. Returns true once they have somewhere to sleep.
-static func autohouse(layout, char_id, is_master = false, master_id = null):
+static func autohouse(layout, char_id, is_master = false, master_id = null, consents = true):
 	if get_slot_of_character(layout, char_id) != null:
 		return true
 	if is_master:
@@ -586,15 +658,19 @@ static func autohouse(layout, char_id, is_master = false, master_id = null):
 				return true
 		return false
 	for entry in each_room(layout):
-		#the master's own bed is held for him; assign_character refuses it for us
-		if assign_character(layout, entry.floor, entry.slot, char_id, false, master_id).ok:
+		#Who shares the master's bed is the player's choice, never a fallback. His room sits
+		#early in this walk, so without this buying Bed size quietly filled it with whoever
+		#happened to need a bed that turn - and handed them the affection that goes with it.
+		if RoomTypes.get_type(entry.room.type).master_only:
+			continue
+		if assign_character(layout, entry.floor, entry.slot, char_id, false, master_id, consents).ok:
 			return true
 	return false
 
 
 #Everyone in the party who has nowhere to sleep, seated wherever there is room. "masters"
 #is the set of ids that are the master, passed in because this file cannot look one up.
-static func autohouse_all(layout, party, masters = {}):
+static func autohouse_all(layout, party, masters = {}, consenting = {}):
 	var master_id = masters.keys()[0] if !masters.empty() else null
 	var seated = 0
 	#the master goes first, so his room stops being held against everybody else
@@ -604,7 +680,7 @@ static func autohouse_all(layout, party, masters = {}):
 	for char_id in party:
 		if masters.has(char_id):
 			continue
-		if autohouse(layout, char_id, false, master_id):
+		if autohouse(layout, char_id, false, master_id, consenting.has(char_id)):
 			seated += 1
 	return seated
 
@@ -621,12 +697,24 @@ static func unassign_character(layout, char_id):
 #The binding lives in the layout only - the character object is never touched, which
 #keeps housing independent of the job system. "is_master" is passed in because this file
 #cannot look a character up.
-static func assign_character(layout, floor_index, slot_code, char_id, is_master = false, master_id = null):
+#"consents" answers whether this character may be put in the master's bed. It comes in as an
+#argument because the answer is about slave class and negotiated permissions, and this file
+#may not read a character - see game_res.shares_master_bed() for who says yes.
+static func assign_character(layout, floor_index, slot_code, char_id, is_master = false, master_id = null, consents = true):
 	var room = get_room(get_floor(layout, floor_index), slot_code)
 	if room == null:
 		return {ok = false, reason = 'MANSIONVIEW_ERR_VOID'}
 	if room.occupants.has(char_id):
 		return {ok = true, reason = ''}
+	#Putting somebody into a bed takes them out of the one they were in - see the
+	#unassign_character() below - so moving the master into any other room is one of the ways
+	#of getting him out of his own. Taking him out was already refused; this is the same
+	#refusal at the other door, and it is the door every way of moving anybody goes through.
+	if is_pinned(layout, char_id, is_master):
+		return {ok = false, reason = 'MANSIONVIEW_ERR_MASTERPINNED'}
+	#nobody shares that bed who has not agreed to
+	if RoomTypes.get_type(room.type).master_only and !is_master and !consents:
+		return {ok = false, reason = 'MANSIONVIEW_ERR_NOCONSENT'}
 	#exactly one bed in the master's room is his, whatever Bed size has widened it to. It
 	#only stops being held once he is actually in it.
 	if RoomTypes.get_type(room.type).master_only and !is_master:
@@ -638,6 +726,66 @@ static func assign_character(layout, floor_index, slot_code, char_id, is_master 
 	unassign_character(layout, char_id)
 	room.occupants.append(char_id)
 	return {ok = true, reason = ''}
+
+
+#Which floor is the estate grounds, or -1. The grounds are a floor of the layout so that
+#raising a barn uses the same builders and the same save as raising a bedroom - but they are
+#not part of the house: no staircase leads there, and the local tasks screen draws them.
+static func grounds_floor(layout):
+	return FloorPlans.grounds_index(layout.get('plan', 'default_manor'))
+
+
+static func is_grounds(layout, floor_index):
+	return int(floor_index) == grounds_floor(layout)
+
+
+#Floors of the house proper, in order - everything the staircase walks between.
+static func house_floors(layout):
+	var res = []
+	var grounds = grounds_floor(layout)
+	for index in range(layout.floors.size()):
+		if index != grounds:
+			res.append(index)
+	return res
+
+
+#The first room of this type anywhere on the plan, or null. Every type that uses this is
+#unique, so "the first" is "the one".
+#The best any room of this kind has reached, across the whole estate. Asking the first one
+#found is not the same question: craft rooms may be built more than once, so a plain forge
+#raised before a well-equipped one would answer for both and refuse recipes already earned.
+static func best_upgrade_level(layout, type_code, upgrade_code):
+	var res = -1
+	for entry in each_room(layout):
+		if entry.room.type != type_code:
+			continue
+		res = max(res, upgrade_level(entry.room, upgrade_code))
+	return res
+
+
+static func first_room_of_type(layout, type_code):
+	for entry in each_room(layout):
+		if entry.room.type == type_code:
+			return entry.room
+	return null
+
+
+#The master's own room, wherever on the plan it stands, as an each_room entry - or null when
+#the mansion has not got one.
+static func master_room(layout):
+	for entry in each_room(layout):
+		if RoomTypes.get_type(entry.room.type).master_only:
+			return entry
+	return null
+
+
+#Every upgrade this sort of room has, at its top level.
+static func max_out_upgrades(room):
+	if room == null:
+		return false
+	for code in RoomTypes.get_type(room.type).upgrades:
+		room.upgrades[code] = RoomUpgrades.max_level(code)
+	return true
 
 
 #Everyone in the party who has no bed. This is what blocks the end of the turn, so it
@@ -663,6 +811,70 @@ static func total_sleep_capacity(layout):
 	for entry in each_room(layout):
 		res += sleep_capacity(entry.room)
 	return res
+
+
+#The most people this mansion could ever sleep: every slot it has filled with the roomiest
+#bedroom that may be built more than once, upgraded as far as that goes. Broken slots count,
+#because repairing one is a thing the player can go and do.
+#
+#This is the ceiling "you need more rooms" is measured against, so it must be reachable in
+#principle and can never read as lower than what is already standing.
+static func max_sleep_capacity(layout):
+	var per_slot = best_repeatable_beds()
+	var slots = 0
+	for floor_data in layout.floors:
+		slots += floor_data.slots.size()
+	return int(max(per_slot * slots, total_sleep_capacity(layout)))
+
+
+#Beds in the best bedroom a player may build over and over. Unique rooms and the master's own
+#are left out: neither can be the answer to "build another one".
+static func best_repeatable_beds():
+	var res = 0
+	for type_code in RoomTypes.LIST:
+		var type_data = RoomTypes.LIST[type_code]
+		if RoomTypes.max_count(type_code) == 1 or type_data.master_only:
+			continue
+		var beds = RoomTypes.base_slots(type_code, 'sleep')
+		if beds <= 0:
+			continue
+		#room_effect() sums the upgrades a room carries, so the best case is every one of
+		#them at its top level at once
+		for upgrade_code in type_data.upgrades:
+			var top = RoomUpgrades.max_level(upgrade_code)
+			if top > 0:
+				beds += int(RoomUpgrades.get_effect(upgrade_code, top).get('sleep_slots', 0))
+		res = max(res, beds)
+	return int(res)
+
+
+#Fills empty slots with plain bedrooms until the mansion sleeps at least this many, or until
+#it runs out of slots. Only the one-time conversion of the old 'rooms' upgrade uses this -
+#nothing else builds rooms without a builder standing in them.
+#Beds first from the rooms already standing. A bedroom widened to its full eight sleeps twice
+#what a bare one does without costing a slot, and a slot spent on a fifth bedroom is a slot
+#that can never be a bathhouse. Only once every bedroom is full does this raise another.
+static func build_bedrooms_up_to(layout, wanted):
+	for entry in each_room(layout):
+		if total_sleep_capacity(layout) >= wanted:
+			return
+		if entry.room.type != 'bedrooms':
+			continue
+		var top = RoomUpgrades.max_level('bedrooms_expansion')
+		if upgrade_level(entry.room, 'bedrooms_expansion') < top:
+			entry.room.upgrades['bedrooms_expansion'] = top
+	for floor_index in range(layout.floors.size()):
+		var floor_data = get_floor(layout, floor_index)
+		if floor_data == null:
+			continue
+		for slot_code in floor_data.slots:
+			if total_sleep_capacity(layout) >= wanted:
+				return
+			#refuses occupied, broken and building slots on its own
+			if build_room(layout, floor_index, slot_code, 'bedrooms'):
+				var room = get_room(floor_data, slot_code)
+				if room != null:
+					room.upgrades['bedrooms_expansion'] = RoomUpgrades.max_level('bedrooms_expansion')
 
 
 #### reporting ####
@@ -731,13 +943,50 @@ static func validate(layout, party = null):
 			layout.next_room_id = max(layout.next_room_id, used + 1)
 
 	layout.current_floor = int(clamp(int(layout.get('current_floor', 0)), 0, max(0, layout.floors.size() - 1)))
+	ensure_mandatory_rooms(layout)
 	prune_occupants(layout, party)
 	return true
+
+
+#A room with min_count above zero is one the mansion may not be without: the staircase is how
+#the floors are reached at all, and the master has to sleep somewhere. They come with the plan
+#as prebuilt rooms, so this only ever fires for a save that lost one - a plan reshaped under
+#it, or a room pulled down by something that should not have been able to. Put up free, since
+#the player never chose to be without it.
+static func ensure_mandatory_rooms(layout):
+	var raised = 0
+	for type_code in RoomTypes.LIST:
+		var wanted = RoomTypes.min_count(type_code)
+		if wanted <= 0:
+			continue
+		var standing = count_rooms_of_type(layout, type_code)
+		while standing < wanted:
+			var slot = first_free_slot(layout)
+			if slot == null:
+				break
+			if !build_room(layout, slot.floor, slot.slot, type_code):
+				break
+			standing += 1
+			raised += 1
+	return raised
+
+
+#The first slot with nothing on it, skipping the grounds - a room the house must have belongs
+#in the house.
+static func first_free_slot(layout):
+	for floor_index in house_floors(layout):
+		var floor_data = get_floor(layout, floor_index)
+		for slot_code in floor_data.slots:
+			var slot = floor_data.slots[slot_code]
+			if slot.room == null and slot.build == null and !slot.broken:
+				return {floor = floor_index, slot = slot_code}
+	return null
 
 
 static func validate_floor(floor_plan, floor_data):
 	if !(floor_data.slots is Dictionary):
 		floor_data.slots = {}
+	ensure_fixed_rooms(floor_plan, floor_data)
 	for slot_plan in floor_plan.slots:
 		if !floor_data.slots.has(slot_plan.code):
 			floor_data.slots[slot_plan.code] = make_slot(FloorPlans.slot_starts_broken(slot_plan))
@@ -762,6 +1011,26 @@ static func validate_floor(floor_plan, floor_data):
 			room.build = null
 		if !room.has('task_id'):
 			room.task_id = null
+		#a save made before Ledgers existed has no such key
+		if !room.has('craft_rules') or !(room.craft_rules is Array):
+			room.craft_rules = []
+		else:
+			#recipes finished or cancelled since the save was made are simply gone
+			for task_id in room.craft_rules.duplicate():
+				if !(task_id is String):
+					room.craft_rules.erase(task_id)
+		#a save made before practice rooms existed has no such key, and JSON floats the
+		#progress on one that does
+		if !room.has('practice') or !(room.practice is Dictionary):
+			room.practice = make_practice()
+		else:
+			var blank = make_practice()
+			for key in blank:
+				if !room.practice.has(key):
+					room.practice[key] = blank[key]
+			room.practice.progress = float(room.practice.progress)
+			if !(room.practice.stat in PRACTICE_STATS):
+				room.practice.stat = blank.stat
 		#drop upgrades this type no longer offers, and re-int() the levels JSON floated
 		var allowed = RoomTypes.get_type(room.type).upgrades
 		for code in room.upgrades.keys():
@@ -777,6 +1046,45 @@ static func validate_floor(floor_plan, floor_data):
 
 
 #JSON floats every number, and a build whose target has since vanished has to go.
+#The staircase is how a floor is reached at all, so a floor without one is a floor the player
+#cannot get to. Saves made before it existed have none, and it cannot be built - so the plan's
+#own prebuilt list is read again and any fixed room it names is put back where it belongs. A
+#room already standing in that slot is moved aside to the first free one rather than lost.
+static func ensure_fixed_rooms(floor_plan, floor_data):
+	if !floor_plan.has('prebuilt'):
+		return
+	for slot_code in floor_plan.prebuilt:
+		var type_code = floor_plan.prebuilt[slot_code]
+		if !RoomTypes.is_fixed(type_code):
+			continue
+		var already = false
+		for code in floor_data.slots:
+			var room = floor_data.slots[code].room
+			if room != null and room.type == type_code:
+				already = true
+				break
+		if already or !floor_data.slots.has(slot_code):
+			continue
+		var slot = floor_data.slots[slot_code]
+		if slot.room != null:
+			move_room_aside(floor_data, slot_code)
+		slot.broken = false
+		slot.build = null
+		slot.room = make_room(type_code)
+
+
+static func move_room_aside(floor_data, slot_code):
+	for code in floor_data.slots:
+		var other = floor_data.slots[code]
+		if code == slot_code or other.broken or other.room != null or other.build != null:
+			continue
+		other.room = floor_data.slots[slot_code].room
+		floor_data.slots[slot_code].room = null
+		return
+	#nowhere to put it: the staircase wins, since without it the floor is unreachable
+	floor_data.slots[slot_code].room = null
+
+
 static func validate_build(slot):
 	var build = slot.build
 	if build == null:

@@ -918,7 +918,9 @@ var statdata = {
 #		percent = true,
 		baseicon = 'food_love',
 		type = 'misc',
-		tags = ['integer'],
+		#custom_bonuses is what makes ch_dyn_stats.fix_stat_data() run for this stat, which is
+		#where the master's bedmates add to his recovery
+		tags = ['integer', 'custom_bonuses'],
 		direct = false,
 		innate_bonuses = {mincap = 0},
 		custom_order = ['add_part', 'mul', 'add'],

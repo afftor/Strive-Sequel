@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Left_Menu.tres" type="Theme" id=12]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionJournalModule.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/button_charinfo_sqr.png" type="Texture" id=14]
+[ext_resource path="res://gui_modules/Mansion/Modules/quest_attention_shimmer.shader" type="Shader" id=15]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionCraftModule.tscn" type="PackedScene" id=16]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionTaskInfoModule.tscn" type="PackedScene" id=17]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/button_charinfo_sqr_pressed.png" type="Texture" id=19]
@@ -24,12 +25,29 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Tutorial/button_tutorquestion_pressed.png" type="Texture" id=32]
 [ext_resource path="res://gui_modules/Mansion/Modules/TutorialIntro.tscn" type="PackedScene" id=33]
 [ext_resource path="res://gui_modules/Map/map.tscn" type="PackedScene" id=34]
-[ext_resource path="res://gui_modules/upgrades_new/upgrades.tscn" type="PackedScene" id=35]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionJobModule.tscn" type="PackedScene" id=36]
 [ext_resource path="res://assets/images/backgrounds/mansion_noon.png" type="Texture" id=37]
 [ext_resource path="res://assets/images/backgrounds/mansion_night.png" type="Texture" id=38]
 [ext_resource path="res://assets/images/backgrounds/mansion_evening.png" type="Texture" id=39]
 [ext_resource path="res://gui_modules/Mansion/Modules/CharacterProgressionPopup.tscn" type="PackedScene" id=40]
+[ext_resource path="res://gui_modules/mansion_view/mansion_view.tscn" type="PackedScene" id=41]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=42]
+[ext_resource path="res://assets/Textures_v2/MANSION/icon_job2_small.png" type="Texture" id=43]
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = ExtResource( 15 )
+shader_param/halo_width = 0.105
+shader_param/core_width = 0.032
+shader_param/lean = 0.12
+shader_param/halo_strength = 0.42
+shader_param/core_strength = 0.72
+shader_param/halo_color = Color( 1, 0.74, 0.3, 1 )
+shader_param/core_color = Color( 1, 0.96, 0.52, 1 )
+shader_param/sweep_time = 1.0
+shader_param/cooldown = 2.0
+shader_param/sweep_start = -0.2
+shader_param/sweep_end = 1.35
+shader_param/phase = 0.0
 
 [sub_resource type="ShaderMaterial" id=1]
 
@@ -109,6 +127,27 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 38 )
 
+[node name="MansionRoomsModule" parent="." instance=ExtResource( 41 )]
+embedded = true
+
+[node name="LocalTasksButton" type="Button" parent="."]
+margin_left = 17.8902
+margin_top = 622.021
+margin_right = 227.89
+margin_bottom = 682.021
+mouse_default_cursor_shape = 2
+theme = ExtResource( 42 )
+custom_fonts/font = ExtResource( 2 )
+toggle_mode = true
+text = "Local tasks"
+icon = ExtResource( 43 )
+
+[node name="QuestAttentionShimmer" type="ColorRect" parent="LocalTasksButton"]
+material = SubResource( 7 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
 [node name="MansionLogModule" parent="." instance=ExtResource( 10 )]
 margin_left = 1595.0
 margin_top = 136.0
@@ -118,7 +157,7 @@ margin_bottom = 1063.0
 [node name="MansionBottomLeftModule" parent="." instance=ExtResource( 9 )]
 material = SubResource( 1 )
 margin_left = 15.0
-margin_top = 625.0
+margin_top = 688.0
 margin_right = 89.0
 margin_bottom = 1068.0
 theme = ExtResource( 12 )
@@ -149,9 +188,6 @@ margin_left = 15.0
 margin_top = 253.0
 margin_right = 305.0
 margin_bottom = 618.0
-
-[node name="upgrades" parent="." instance=ExtResource( 35 )]
-visible = false
 
 [node name="MenuButton" type="Button" parent="."]
 visible = false

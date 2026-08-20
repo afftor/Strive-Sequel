@@ -29,9 +29,9 @@ func set_filter(type):
 
 var craftcategories = {
 	cooking = {reqs = []},
-	tailor = {reqs = [{type = "has_upgrade", name = 'tailor', value = 1}]},
-	alchemy = {reqs = [{type = "has_upgrade", name = 'alchemy', value = 1}]},
-	smith = {reqs = [{type = "has_upgrade", name = 'forge', value = 1}]},
+	tailor = {reqs = [{type = "has_craft_room", name = 'tailor_workshop', value = 1}]},
+	alchemy = {reqs = [{type = "has_craft_room", name = 'alchemy_room', value = 1}]},
+	smith = {reqs = [{type = "has_craft_room", name = 'forge', value = 1}]},
 }
 var filtercategories = {
 	all = "All",

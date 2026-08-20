@@ -1038,7 +1038,7 @@ var professions = {
 		categories = ['magic'],
 		showupreqs = [{code = 'disabled', check = true}],
 		reqs = [{code = 'cant_spawn_naturally'}],
-		statchanges = {mpmax = 20, wits_bonus = 15, price = 500, chg_wisdom_max = 1, mastery_air = 2, mastery_light = 1, disabled_masteries = ['dark']},
+		statchanges = {mpmax = 20, wits_bonus = 15, price = 150, chg_wisdom_max = 1, mastery_air = 2, mastery_light = 1, disabled_masteries = ['dark']},
 		traits = ['alios'],
 		skills = [],
 		combatskills = ['windwall'],

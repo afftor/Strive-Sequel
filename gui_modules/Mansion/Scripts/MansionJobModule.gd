@@ -1021,8 +1021,10 @@ func build_predicted(root):
 	else:
 		var task = ResourceScripts.game_res.tasks_progresses[task_id]
 		if task.job == 'building':
-			var udata = upgradedata.upgradelist[task_id]
-			root.get_node('icon').texture = images.upgrade_icons[udata.icon]
+			#a save from before the tree was retired can still name one here
+			if upgradedata.upgradelist.has(task_id):
+				var udata = upgradedata.upgradelist[task_id]
+				root.get_node('icon').texture = images.upgrade_icons[udata.icon]
 		else:
 			var recipe_data = Items.recipes[task.id]
 			var item_data

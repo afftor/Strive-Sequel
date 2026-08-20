@@ -41,8 +41,7 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=39]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=40]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=41]
-[ext_resource path="res://ragdoll.tscn" type="PackedScene" id=42]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/body_mask.png" type="Texture" id=44]
+[ext_resource path="res://Character_generator/Doll2Spine/Doll2View.tscn" type="PackedScene" id=45]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -85,16 +84,9 @@ texture = ExtResource( 8 )
 expand = true
 stretch_mode = 6
 
-[node name="ragdoll" parent="." instance=ExtResource( 42 )]
-position = Vector2( 1464.03, 587.303 )
-scale = Vector2( 0.8, 0.8 )
-
-[node name="bodymask" type="Light2D" parent="."]
-position = Vector2( 1476.03, 605.303 )
-texture = ExtResource( 44 )
-mode = 3
-range_item_cull_mask = 4
-
+[node name="ragdoll" parent="." instance=ExtResource( 45 )]
+rect_position = Vector2( 1132.0, 145.3 )
+rect_size = Vector2( 688.0, 920.0 )
 [node name="MainPanel" type="TextureRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0

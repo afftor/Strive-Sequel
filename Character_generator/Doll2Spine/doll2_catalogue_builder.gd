@@ -1,6 +1,8 @@
 extends Reference
 
-# Builds doll2_catalogue_gen.gd from a Spine export plus doll2_overrides.gd.
+# Builds a catalogue from a Spine export plus its overrides: the shared file
+# doll2_overrides_shared.gd, with doll2_overrides.gd (female) or
+# doll2_overrides_male.gd merged over it.
 #
 # Run it through doll2_catalogue_build.gd (editor: File > Run) or through
 # doll2_catalogue_build_cli.gd (command line).  The build is deterministic: the
@@ -10,6 +12,8 @@ extends Reference
 # The catalogue carries semantics only - part names, groups, axis values.  Mesh,
 # vertex, UV and animation data stay in the Spine JSON and are read at runtime.
 
+# Default semantics.  `build` takes an `overrides` option so a second export -
+# the male doll - is built from its own file against the same generator.
 const OVERRIDES = preload("res://Character_generator/Doll2Spine/doll2_overrides.gd")
 
 const BASE_DIR = "res://Character_generator/Doll2Spine/"
@@ -18,6 +22,7 @@ const ATLAS_PATH = BASE_DIR + "Doll2_spine4.2_female.atlas"
 const GEN_PATH = BASE_DIR + "doll2_catalogue_gen.gd"
 const CONTRACT_PATH = BASE_DIR + "universal/doll_contract.gd"
 const REPORT_PATH = "user://doll2_catalogue_report.txt"
+# Default contract id; a doll with a rig of its own is built with another one.
 const CONTRACT_ID = "doll2_v1"
 const SCHEMA_VERSION = 2
 
@@ -30,6 +35,11 @@ const SEED_HANDLES = {
 	"right_foot": {"label": "DOLL2_PREVIEW_HANDLE_RIGHT_FOOT", "target_bones": ["target3", "target1"]},
 }
 
+# The overrides script this build reads its semantics from.
+var _overrides = OVERRIDES
+# Contract this build writes and checks against.  The male rig renames a handful
+# of bones and drops the breast chain, so it cannot answer to the female id.
+var _contract_id = CONTRACT_ID
 var report_lines = []
 var problems = []
 # slot -> {attachment name: canonical attachment name}.  Attachment names are
@@ -38,10 +48,53 @@ var canonical_by_name = {}
 # slot -> {source art file name: canonical attachment name}.  Art names can be
 # shared by several attachments, so this is only consulted as a fallback.
 var canonical_by_base = {}
+# attachment name -> its art path, for looking the art up when scanning zones
+var _attachment_path_by_name = {}
+# Canonical records of the current build, so a paired slot can look up the
+# attachment that matches a part's style.
+var _all_records = []
+var _style_cache = {}
+
+
+# Composes a doll's semantics over the shared ones.  A doll file declares only
+# what its own export holds; anything it leaves out comes from the file named by
+# its `SHARED` constant, and a key it sets to `null` drops the shared entry for
+# that doll - the male rig has no kobold art, so it drops the kobold preset.
+#
+# The result is a plain dictionary, which reads exactly like the script it
+# replaces: `_overrides.FOLDER_MAP` works either way.
+func _compose_overrides(doll):
+	var constants = doll.get_script_constant_map()
+	var result = {}
+	if constants.has("SHARED") and constants["SHARED"] != null:
+		var shared = constants["SHARED"].get_script_constant_map()
+		for key in shared.keys():
+			result[key] = shared[key]
+	for key in constants.keys():
+		if key == "SHARED":
+			continue
+		result[key] = _merge_table(result.get(key, null), constants[key])
+	return result
+
+
+func _merge_table(base, addition):
+	if typeof(base) == TYPE_DICTIONARY and typeof(addition) == TYPE_DICTIONARY:
+		var merged = base.duplicate()
+		for key in addition.keys():
+			if addition[key] == null:
+				merged.erase(key)
+			else:
+				merged[key] = addition[key]
+		return merged
+	if typeof(base) == TYPE_ARRAY and typeof(addition) == TYPE_ARRAY:
+		return base + addition
+	return addition
 
 
 # Returns {"ok": bool, "written": bool, "report": String, "catalogue": Dictionary}.
 func build(options = {}):
+	_overrides = _compose_overrides(options.get("overrides", OVERRIDES))
+	_contract_id = str(options.get("contract_id", CONTRACT_ID))
 	report_lines = []
 	problems = []
 	var json_path = options.get("json_path", JSON_PATH)
@@ -88,7 +141,10 @@ func build(options = {}):
 	_line("")
 
 	var canonical = _canonicalize(records)
+	_all_records = canonical.records
+	_style_cache = {}
 	var built = _build_parts(canonical.records, slot_order)
+	_scan_zones(built.parts, atlas_regions, atlas_path)
 	_check_art_health(records, atlas_regions)
 	_check_atlas(canonical.records, atlas_regions)
 	_check_overrides(canonical, built)
@@ -97,7 +153,7 @@ func build(options = {}):
 	var catalogue = {
 		"SCHEMA_VERSION": SCHEMA_VERSION,
 		"SOURCE": {
-			"contract": CONTRACT_ID,
+			"contract": _contract_id,
 			"spine_version": str(skeleton.get("skeleton", {}).get("spine", "")),
 			"skeleton_hash": str(skeleton.get("skeleton", {}).get("hash", "")),
 			"skeleton": json_path.get_file(),
@@ -108,16 +164,20 @@ func build(options = {}):
 		},
 		"SLOT_ORDER": slot_order,
 		"DRAW_ORDER": _draw_order(slot_order),
+		# The corrections as rules, not just baked into the order above: an
+		# animation that reorders slots has to be re-corrected afterwards, and an
+		# index cannot survive that.
+		"DRAW_ORDER_FIXES": _overrides.DRAW_ORDER_FIXES,
 		"GROUP_ORDER": built.group_order,
 		"GROUPS": built.groups,
 		"PARTS": built.parts,
 		"AXES": _public_axes(),
-		"FIXED_SLOTS": OVERRIDES.FIXED_SLOTS,
+		"FIXED_SLOTS": _overrides.FIXED_SLOTS,
 		"COLOR_CHANNELS": built.color_channels,
 		"SLOT_COLORS": built.slot_colors,
-		"ZONE_HUES": OVERRIDES.ZONE_HUES,
-		"ZONE_DISTANCE": OVERRIDES.ZONE_DISTANCE,
-		"ZONE_DEFAULTS": OVERRIDES.ZONE_DEFAULTS,
+		"ZONE_HUES": _overrides.ZONE_HUES,
+		"ZONE_DISTANCE": _overrides.ZONE_DISTANCE,
+		"ZONE_DEFAULTS": _overrides.ZONE_DEFAULTS,
 		"ALIASES": canonical.aliases,
 		"UNCATEGORIZED": built.uncategorized,
 		"PRESETS": built.presets,
@@ -177,6 +237,7 @@ func _collect_records(attachments, slot_order, bone_names = []):
 				folder = path.substr(0, cut)
 				base = path.substr(cut + 1, path.length())
 			var weighted = entry.get("vertices", []).size() != entry.get("uvs", []).size()
+			_attachment_path_by_name[name] = path
 			records.append({
 				"slot": slot_name,
 				"name": name,
@@ -293,10 +354,10 @@ func _build_parts(records, slot_order):
 		slot_index[slot_order[i]] = i
 
 	for record in records:
-		if record.name in OVERRIDES.EXCLUDE:
+		if record.name in _overrides.EXCLUDE:
 			excluded.append(record.slot + "/" + record.name)
 			continue
-		if record.slot in OVERRIDES.CONSUMED_SLOTS:
+		if record.slot in _overrides.CONSUMED_SLOTS:
 			continue
 		var group_id = _route(record)
 		if group_id.empty():
@@ -304,13 +365,13 @@ func _build_parts(records, slot_order):
 				uncategorized[record.slot] = []
 			uncategorized[record.slot].append(record.name)
 			continue
-		var group_def = OVERRIDES.GROUP_DEFS[group_id]
+		var group_def = _overrides.GROUP_DEFS[group_id]
 		if group_def.kind == "options":
 			if !option_records.has(group_id):
 				option_records[group_id] = []
 			option_records[group_id].append(record)
 		else:
-			var folder_entry = OVERRIDES.FOLDER_MAP.get(record.folder, {})
+			var folder_entry = _overrides.FOLDER_MAP.get(record.folder, {})
 			var part_id = str(folder_entry.get("part", ""))
 			if part_id.empty():
 				_problem("folder %s feeds set group %s without a `part` name" % [record.folder, group_id])
@@ -327,9 +388,9 @@ func _build_parts(records, slot_order):
 	_build_set_parts(set_records, parts)
 
 	var groups = {}
-	var group_ids = OVERRIDES.GROUP_DEFS.keys()
+	var group_ids = _overrides.GROUP_DEFS.keys()
 	for group_id in group_ids:
-		var group_def = OVERRIDES.GROUP_DEFS[group_id]
+		var group_def = _overrides.GROUP_DEFS[group_id]
 		var members = []
 		var slots = {}
 		for part_id in parts.keys():
@@ -341,7 +402,7 @@ func _build_parts(records, slot_order):
 		members.sort()
 		var slot_names = slots.keys()
 		slot_names.sort()
-		var default_part = str(OVERRIDES.DEFAULTS.get(group_id, ""))
+		var default_part = str(_overrides.DEFAULTS.get(group_id, ""))
 		if !default_part.empty() and !(default_part in members):
 			_problem("default part `%s` for group %s does not exist" % [default_part, group_id])
 			default_part = ""
@@ -401,8 +462,8 @@ func _build_colour_channels(groups):
 	var channels = {}
 	var slot_colors = {}
 	var overlaps = []
-	for channel_id in OVERRIDES.COLOR_CHANNELS.keys():
-		var definition = OVERRIDES.COLOR_CHANNELS[channel_id]
+	for channel_id in _overrides.COLOR_CHANNELS.keys():
+		var definition = _overrides.COLOR_CHANNELS[channel_id]
 		var slots = {}
 		for group_id in definition.groups:
 			if !groups.has(group_id):
@@ -419,17 +480,31 @@ func _build_colour_channels(groups):
 			_problem("COLOR_CHANNELS[%s]: anchor group `%s` does not exist" % [channel_id, str(definition.anchor)])
 		var slot_names = slots.keys()
 		slot_names.sort()
+		var gear = bool(definition.get("gear", false))
 		channels[channel_id] = {
 			"anchor": definition.anchor,
 			"slots": slot_names,
 			"two_tone": bool(definition.get("two_tone", false)),
-			"zones": int(definition.get("zones", 0)),
+			# Gear is painted entirely in the hue code, so its zones start on real
+			# colours; everywhere else a zone starts unset and leaves the art alone.
+			"gear": gear,
+			# Only channels whose art is genuinely coded offer zone colours; gear
+			# always is.  Elsewhere a second colour would just repaint the art in
+			# the wrong place.
+			"zones": gear or bool(definition.get("zones", false)),
+			# Whether fur and scale patterns paint over this channel's meshes.
+			"coverage": bool(definition.get("coverage", false)),
+			# Starting colours for this channel's zones.  Empty means the channel
+			# falls back to ZONE_DEFAULTS when it is gear, or to white otherwise.
+			"zone_defaults": definition.get("zone_defaults", []),
 		}
 	_line("COLOUR CHANNELS")
 	for channel_id in channels.keys():
 		var mode = "plain"
-		if channels[channel_id].zones > 0:
-			mode = "%d zones" % channels[channel_id].zones
+		if channels[channel_id].gear:
+			mode = "gear, zones"
+		elif channels[channel_id].zones:
+			mode = "zones"
 		elif channels[channel_id].two_tone:
 			mode = "two tone"
 		_line("  %-12s anchor %-14s %2d slots  %s" % [channel_id, channels[channel_id].anchor, channels[channel_id].slots.size(), mode])
@@ -455,11 +530,11 @@ func _build_colour_channels(groups):
 func _draw_order(slot_order):
 	var order = slot_order.duplicate()
 	_line("DRAW ORDER")
-	if OVERRIDES.DRAW_ORDER_FIXES.empty():
+	if _overrides.DRAW_ORDER_FIXES.empty():
 		_line("  export order used as is")
 		_line("")
 		return order
-	for fix in OVERRIDES.DRAW_ORDER_FIXES:
+	for fix in _overrides.DRAW_ORDER_FIXES:
 		var slot_name = str(fix.slot)
 		var before = str(fix.before)
 		var from = order.find(slot_name)
@@ -479,9 +554,9 @@ func _draw_order(slot_order):
 
 
 func _route(record):
-	if OVERRIDES.SLOT_ROUTES.has(record.slot):
-		return str(OVERRIDES.SLOT_ROUTES[record.slot])
-	var folder_entry = OVERRIDES.FOLDER_MAP.get(record.folder, {})
+	if _overrides.SLOT_ROUTES.has(record.slot):
+		return str(_overrides.SLOT_ROUTES[record.slot])
+	var folder_entry = _overrides.FOLDER_MAP.get(record.folder, {})
 	return str(folder_entry.get("group", ""))
 
 
@@ -499,23 +574,20 @@ func _build_option_parts(option_records, parts):
 					suffix += 1
 				_line("  note: part id `%s` taken, `%s` became `%s_%d`" % [part_id, record.name, part_id, suffix])
 				part_id = "%s_%d" % [part_id, suffix]
-			var folder_entry = OVERRIDES.FOLDER_MAP.get(record.folder, {})
+			var folder_entry = _overrides.FOLDER_MAP.get(record.folder, {})
 			var slots = {record.slot: record.name}
-			for slot_name in _companion_slots(group_id, record).keys():
-				slots[slot_name] = _companion_slots(group_id, record)[slot_name]
-			parts[part_id] = {
-				"group": group_id,
-				"display": str(OVERRIDES.DISPLAY.get(part_id, _title(record.base))),
-				"folders": [record.folder],
-				"tags": folder_entry.get("tags", []),
-				"slots": slots,
-				"extra_options": {},
-			}
+			var companions = _companion_slots(group_id, record)
+			for slot_name in companions.keys():
+				slots[slot_name] = companions[slot_name]
+			var paired = _paired_slots(group_id, record)
+			for slot_name in paired.keys():
+				slots[slot_name] = paired[slot_name]
+			parts[part_id] = _part_entry(part_id, group_id, str(_overrides.DISPLAY.get(part_id, _title(record.base))), [record.folder], folder_entry.get("tags", []), slots, {})
 
 
 func _companion_slots(group_id, record):
 	var result = {}
-	for rule in OVERRIDES.COMPANIONS.get(group_id, []):
+	for rule in _overrides.COMPANIONS.get(group_id, []):
 		if rule.has("folder") and rule.folder != record.folder:
 			continue
 		if rule.has("base_prefix") and !record.base.begins_with(rule.base_prefix):
@@ -526,12 +598,52 @@ func _companion_slots(group_id, record):
 	return result
 
 
+# Slots that follow the part's own style instead of being chosen: the fringe that
+# belongs to a hairstyle.  Both names are reduced by the rule's `strip` pattern,
+# so the export spelling either of them differently does not break the pairing.
+func _paired_slots(group_id, record):
+	var result = {}
+	for rule in _overrides.PAIRED_SLOTS.get(group_id, []):
+		var wanted = _style_key(record.base, rule.strip)
+		if wanted.empty():
+			continue
+		for other in _style_index(str(rule.slot), str(rule.strip)).keys():
+			if other == wanted:
+				result[rule.slot] = _style_index(str(rule.slot), str(rule.strip))[other]
+				break
+	return result
+
+
+# {style key: canonical attachment} for one slot, built once per slot and rule.
+func _style_index(slot_name, strip):
+	var cache_key = slot_name + "|" + strip
+	if _style_cache.has(cache_key):
+		return _style_cache[cache_key]
+	var index = {}
+	for record in _all_records:
+		if record.slot != slot_name:
+			continue
+		var key = _style_key(record.base, strip)
+		if !key.empty() and !index.has(key):
+			index[key] = record.name
+	_style_cache[cache_key] = index
+	return index
+
+
+func _style_key(base, strip):
+	var expression = RegEx.new()
+	if expression.compile(strip) != OK:
+		return base
+	var result = expression.sub(base, "", true)
+	return result.strip_edges()
+
+
 func _build_set_parts(set_records, parts):
 	var part_ids = set_records.keys()
 	part_ids.sort()
 	for part_id in part_ids:
 		var source = set_records[part_id]
-		var splits = OVERRIDES.PART_SPLITS.get(part_id, {})
+		var splits = _overrides.PART_SPLITS.get(part_id, {})
 		if splits.empty():
 			parts[part_id] = _make_set_part(part_id, source, source.slots)
 			continue
@@ -571,7 +683,7 @@ func _build_set_parts(set_records, parts):
 func _make_set_part(part_id, source, slot_records, inherited = false):
 	var slots = {}
 	var extra_options = {}
-	var explicit = OVERRIDES.PART_SLOTS.get(part_id, {})
+	var explicit = _overrides.PART_SLOTS.get(part_id, {})
 	for slot_name in slot_records.keys():
 		var value = slot_records[slot_name]
 		if typeof(value) != TYPE_ARRAY:
@@ -591,7 +703,7 @@ func _make_set_part(part_id, source, slot_records, inherited = false):
 		if records.size() == 1:
 			slots[slot_name] = records[0].name
 			continue
-		var axis = str(OVERRIDES.SLOT_AXES.get(slot_name, ""))
+		var axis = str(_overrides.SLOT_AXES.get(slot_name, ""))
 		if axis.empty():
 			var names = []
 			for record in records:
@@ -608,7 +720,7 @@ func _make_set_part(part_id, source, slot_records, inherited = false):
 			if axis_value.empty():
 				_problem("%s/%s: cannot classify `%s` on axis %s" % [part_id, slot_name, record.base, axis])
 				continue
-			if !(axis_value in OVERRIDES.AXES[axis].values):
+			if !(axis_value in _overrides.AXES[axis].values):
 				_problem("%s/%s: `%s` produced unknown %s value `%s`" % [part_id, slot_name, record.base, axis, axis_value])
 				continue
 			if options.has(axis_value):
@@ -628,15 +740,34 @@ func _make_set_part(part_id, source, slot_records, inherited = false):
 			slots[slot_name] = borrowed.value
 	var folders = source.folders.keys()
 	folders.sort()
-	var folder_entry = OVERRIDES.FOLDER_MAP.get(folders[0], {}) if !folders.empty() else {}
-	return {
-		"group": source.group,
-		"display": str(OVERRIDES.DISPLAY.get(part_id, _title(part_id))),
+	var folder_entry = _overrides.FOLDER_MAP.get(folders[0], {}) if !folders.empty() else {}
+	return _part_entry(part_id, source.group, str(_overrides.DISPLAY.get(part_id, _title(part_id))), folders, folder_entry.get("tags", []), slots, extra_options)
+
+
+# A part carries only what it actually says.  Written out in full, every one of
+# them repeated an empty `tags`, an empty `extra_options` and a `display` equal to
+# its own id - 640 lines of nothing per doll, which buried the real differences in
+# a re-export diff.  Every reader already treats these as optional
+# (`get("tags", [])`, and `display` falls back to the part id).
+func _part_entry(part_id, group_id, display, folders, tags, slots, extra_options):
+	var result = {
+		"group": group_id,
 		"folders": folders,
-		"tags": folder_entry.get("tags", []),
 		"slots": slots,
-		"extra_options": extra_options,
 	}
+	# Slots this part takes the place of.  A centaur's barrel replaces the legs
+	# rather than covering them, and nothing else can express that: the legs
+	# belong to the body part, which is chosen in another group.
+	var hides = _overrides.PART_HIDES.get(part_id, [])
+	if !hides.empty():
+		result["hides"] = hides
+	if display != part_id:
+		result["display"] = display
+	if !tags.empty():
+		result["tags"] = tags
+	if !extra_options.empty():
+		result["extra_options"] = extra_options
+	return result
 
 
 # Resolves a PART_SLOTS entry into either a plain attachment name or an axis map.
@@ -645,7 +776,7 @@ func _explicit_slot(part_id, slot_name, spec, records):
 	var used = {}
 	var value = null
 	if typeof(spec) == TYPE_DICTIONARY:
-		var axis = str(OVERRIDES.SLOT_AXES.get(slot_name, ""))
+		var axis = str(_overrides.SLOT_AXES.get(slot_name, ""))
 		if axis.empty():
 			_problem("PART_SLOTS[%s/%s]: an axis map needs `%s` in SLOT_AXES" % [part_id, slot_name, slot_name])
 			return {}
@@ -653,7 +784,7 @@ func _explicit_slot(part_id, slot_name, spec, records):
 		var axis_values = spec.keys()
 		axis_values.sort()
 		for axis_value in axis_values:
-			if !(axis_value in OVERRIDES.AXES[axis].values):
+			if !(axis_value in _overrides.AXES[axis].values):
 				_problem("PART_SLOTS[%s/%s]: `%s` is not a %s value" % [part_id, slot_name, axis_value, axis])
 				continue
 			var name = _resolve_name(slot_name, str(spec[axis_value]))
@@ -688,12 +819,12 @@ func _resolve_name(slot_name, key):
 
 
 func _axis_value(axis, slot_name, record):
-	var overrides = OVERRIDES.AXIS_OVERRIDES.get(slot_name, {})
+	var overrides = _overrides.AXIS_OVERRIDES.get(slot_name, {})
 	if overrides.has(record.base):
 		return str(overrides[record.base])
 	if overrides.has(record.name):
 		return str(overrides[record.name])
-	var definition = OVERRIDES.AXES[axis]
+	var definition = _overrides.AXES[axis]
 	if definition.get("parse", "tokens") == "digit":
 		for i in range(record.base.length()):
 			var character = record.base[i]
@@ -724,12 +855,12 @@ func _strip_trailing_digits(chunk):
 
 func _validate_presets(parts):
 	var result = {}
-	var preset_ids = OVERRIDES.PRESETS.keys()
+	var preset_ids = _overrides.PRESETS.keys()
 	preset_ids.sort()
 	for preset_id in preset_ids:
 		var selections = {}
-		for group_id in OVERRIDES.PRESETS[preset_id].keys():
-			var part_id = str(OVERRIDES.PRESETS[preset_id][group_id])
+		for group_id in _overrides.PRESETS[preset_id].keys():
+			var part_id = str(_overrides.PRESETS[preset_id][group_id])
 			if !parts.has(part_id):
 				_problem("preset %s references missing part `%s`" % [preset_id, part_id])
 				continue
@@ -826,6 +957,112 @@ func _side_of(name):
 	return ""
 
 
+# Which hue bands each part's art actually uses.  Measured rather than declared:
+# the bands are an art convention, and only the picture knows whether a given
+# wing is painted in one of them.  The UI offers exactly the colours a part can
+# use, instead of four pickers on every row.
+func _scan_zones(parts, atlas_regions, atlas_path):
+	var pages = {}
+	# Sampling every pixel of three 4095x4094 pages in GDScript would take
+	# minutes; a coarse grid answers the same question.
+	var step = 4
+	var zone_hues = _overrides.ZONE_HUES
+	var distances = []
+	for entry in _overrides.ZONE_DISTANCE:
+		distances.append(float(entry) / 360.0)
+	var by_path = {}
+	var scanned = 0
+	var part_ids = parts.keys()
+	part_ids.sort()
+	for part_id in part_ids:
+		var zones = {}
+		for slot_name in parts[part_id].slots.keys():
+			for path in _attachment_paths(parts[part_id].slots[slot_name], slot_name):
+				if !by_path.has(path):
+					by_path[path] = _scan_region(path, atlas_regions, pages, atlas_path, step, zone_hues, distances)
+					scanned += 1
+				for index in by_path[path]:
+					zones[index] = true
+		if !zones.empty():
+			var list = zones.keys()
+			list.sort()
+			parts[part_id]["zones"] = list
+	_line("COLOUR ZONES")
+	_line("  scanned %d art regions at 1/%d resolution" % [scanned, step])
+	var counts = {}
+	for part_id in part_ids:
+		var count = parts[part_id].get("zones", []).size()
+		counts[count] = int(counts.get(count, 0)) + 1
+	var keys = counts.keys()
+	keys.sort()
+	for count in keys:
+		_line("  %d part(s) use %d zone(s)" % [counts[count], count])
+	_line("")
+
+
+func _attachment_paths(value, _slot_name):
+	var names = []
+	if typeof(value) == TYPE_DICTIONARY:
+		for axis_value in value.get("options", {}).keys():
+			names.append(value.options[axis_value])
+	else:
+		names.append(value)
+	var result = []
+	for name in names:
+		if _attachment_path_by_name.has(name):
+			result.append(_attachment_path_by_name[name])
+	return result
+
+
+func _scan_region(path, atlas_regions, pages, atlas_path, step, zone_hues, distances):
+	var result = []
+	if !atlas_regions.has(path):
+		return result
+	var page_name = str(atlas_regions[path].page)
+	var bounds = atlas_regions[path].bounds
+	if bounds.size.x < 1 or bounds.size.y < 1:
+		return result
+	if !pages.has(page_name):
+		var image = Image.new()
+		if image.load(atlas_path.get_base_dir() + "/" + page_name) != OK:
+			pages[page_name] = null
+		else:
+			pages[page_name] = image
+	var page = pages[page_name]
+	if page == null:
+		return result
+	page.lock()
+	var counts = [0, 0, 0]
+	var opaque = 0
+	# The three pages are not the same size, and a region's declared bounds can
+	# run a pixel past the smaller ones.
+	var limit_x = min(int(bounds.end.x), page.get_width())
+	var limit_y = min(int(bounds.end.y), page.get_height())
+	var y = int(bounds.position.y)
+	while y < limit_y:
+		var x = int(bounds.position.x)
+		while x < limit_x:
+			var pixel = page.get_pixel(x, y)
+			if pixel.a > 0.75:
+				opaque += 1
+				if pixel.s > 0.15 and pixel.v > 0.08:
+					for i in range(zone_hues.size()):
+						var gap = abs(pixel.h - zone_hues[i] / 360.0)
+						gap = min(gap, 1.0 - gap)
+						if gap < distances[i]:
+							counts[i] += 1
+							break
+			x += step
+		y += step
+	page.unlock()
+	if opaque <= 0:
+		return result
+	for i in range(counts.size()):
+		if 100.0 * counts[i] / opaque >= _overrides.ZONE_COVERAGE_MIN:
+			result.append(i)
+	return result
+
+
 func _check_atlas(records, atlas_regions):
 	var missing = []
 	var used = {}
@@ -856,27 +1093,34 @@ func _check_overrides(canonical, built):
 	for record in canonical.records:
 		folders[record.folder] = true
 
-	for folder in OVERRIDES.FOLDER_MAP.keys():
+	for folder in _overrides.FOLDER_MAP.keys():
 		if !folders.has(folder):
 			stale.append("FOLDER_MAP: folder `%s` is not in the export" % folder)
-	for slot_name in OVERRIDES.SLOT_ROUTES.keys():
+	for slot_name in _overrides.SLOT_ROUTES.keys():
 		if !known_names.has(slot_name):
 			stale.append("SLOT_ROUTES: slot `%s` is not in the export" % slot_name)
-	for slot_name in OVERRIDES.SLOT_AXES.keys():
+	for slot_name in _overrides.SLOT_AXES.keys():
 		if !known_names.has(slot_name):
 			stale.append("SLOT_AXES: slot `%s` is not in the export" % slot_name)
-	for slot_name in OVERRIDES.FIXED_SLOTS.keys():
-		var fixed_name = str(OVERRIDES.FIXED_SLOTS[slot_name])
+	for slot_name in _overrides.FIXED_SLOTS.keys():
+		var fixed_name = str(_overrides.FIXED_SLOTS[slot_name])
 		if !known_names.has(slot_name) or !known_names[slot_name].has(fixed_name):
 			stale.append("FIXED_SLOTS: `%s/%s` is not in the export" % [slot_name, fixed_name])
-	for group_id in OVERRIDES.COMPANIONS.keys():
-		for rule in OVERRIDES.COMPANIONS[group_id]:
+	for group_id in _overrides.PAIRED_SLOTS.keys():
+		if !built.groups.has(group_id):
+			stale.append("PAIRED_SLOTS: group `%s` does not exist" % group_id)
+			continue
+		for rule in _overrides.PAIRED_SLOTS[group_id]:
+			if !(str(rule.slot) in _overrides.CONSUMED_SLOTS):
+				stale.append("PAIRED_SLOTS[%s]: slot `%s` is not consumed, so it also makes parts of its own" % [group_id, str(rule.slot)])
+	for group_id in _overrides.COMPANIONS.keys():
+		for rule in _overrides.COMPANIONS[group_id]:
 			for slot_name in rule.slots.keys():
 				var companion = str(rule.slots[slot_name])
 				if !known_names.has(slot_name) or !known_names[slot_name].has(companion):
 					stale.append("COMPANIONS[%s]: `%s/%s` is not in the export" % [group_id, slot_name, companion])
-	for slot_name in OVERRIDES.AXIS_OVERRIDES.keys():
-		for key in OVERRIDES.AXIS_OVERRIDES[slot_name].keys():
+	for slot_name in _overrides.AXIS_OVERRIDES.keys():
+		for key in _overrides.AXIS_OVERRIDES[slot_name].keys():
 			var found = false
 			for name in known_names.get(slot_name, {}).keys():
 				if name == key or known_names[slot_name][name] == key:
@@ -884,7 +1128,7 @@ func _check_overrides(canonical, built):
 					break
 			if !found:
 				stale.append("AXIS_OVERRIDES[%s]: `%s` is not in the export" % [slot_name, key])
-	for name in OVERRIDES.EXCLUDE:
+	for name in _overrides.EXCLUDE:
 		var found = false
 		for slot_name in known_names.keys():
 			if known_names[slot_name].has(name):
@@ -892,9 +1136,9 @@ func _check_overrides(canonical, built):
 				break
 		if !found:
 			stale.append("EXCLUDE: `%s` is not in the export" % name)
-	for part_id in OVERRIDES.PART_SPLITS.keys():
-		for sub_id in OVERRIDES.PART_SPLITS[part_id].keys():
-			for entry in OVERRIDES.PART_SPLITS[part_id][sub_id]:
+	for part_id in _overrides.PART_SPLITS.keys():
+		for sub_id in _overrides.PART_SPLITS[part_id].keys():
+			for entry in _overrides.PART_SPLITS[part_id][sub_id]:
 				var found = false
 				for slot_name in known_names.keys():
 					if known_names[slot_name].has(entry):
@@ -908,17 +1152,17 @@ func _check_overrides(canonical, built):
 						break
 				if !found:
 					stale.append("PART_SPLITS[%s/%s]: `%s` is not in the export" % [part_id, sub_id, entry])
-	for part_id in OVERRIDES.PART_SLOTS.keys():
+	for part_id in _overrides.PART_SLOTS.keys():
 		if !built.parts.has(part_id):
 			stale.append("PART_SLOTS: part `%s` does not exist" % part_id)
 			continue
-		for slot_name in OVERRIDES.PART_SLOTS[part_id].keys():
-			var spec = OVERRIDES.PART_SLOTS[part_id][slot_name]
+		for slot_name in _overrides.PART_SLOTS[part_id].keys():
+			var spec = _overrides.PART_SLOTS[part_id][slot_name]
 			var wanted = [spec] if typeof(spec) != TYPE_DICTIONARY else spec.values()
 			for entry in wanted:
 				if _resolve_name(slot_name, str(entry)).empty():
 					stale.append("PART_SLOTS[%s/%s]: `%s` is not in the export" % [part_id, slot_name, str(entry)])
-	for part_id in OVERRIDES.DISPLAY.keys():
+	for part_id in _overrides.DISPLAY.keys():
 		if !built.parts.has(part_id):
 			stale.append("DISPLAY: part `%s` does not exist" % part_id)
 
@@ -936,11 +1180,11 @@ func _report_contract(skeleton, slot_order, contract_path, update_contract):
 	_line("SKELETON CONTRACT")
 	var existing = _load_constants(contract_path)
 	if existing.empty():
-		_line("  no contract yet - writing %s" % CONTRACT_ID)
+		_line("  no contract yet - writing %s" % _contract_id)
 		_line("")
 		return
 	if update_contract:
-		_line("  UPDATE_CONTRACT is on - rewriting %s" % str(existing.get("CONTRACT_ID", CONTRACT_ID)))
+		_line("  UPDATE_CONTRACT is on - rewriting %s" % str(existing.get("CONTRACT_ID", _contract_id)))
 		_line("")
 		return
 	var bones = []
@@ -949,11 +1193,11 @@ func _report_contract(skeleton, slot_order, contract_path, update_contract):
 	var drift = _name_drift(existing.get("BONES", []), bones, "bone")
 	drift += _name_drift(existing.get("SLOTS", []), slot_order, "slot")
 	if drift.empty():
-		_line("  %s matches the export" % str(existing.get("CONTRACT_ID", CONTRACT_ID)))
+		_line("  %s matches the export" % str(existing.get("CONTRACT_ID", _contract_id)))
 	else:
 		for entry in drift:
 			_line("  DRIFT " + entry)
-		_problem("the export no longer matches contract %s - poses and modifiers keyed to it may break" % str(existing.get("CONTRACT_ID", CONTRACT_ID)))
+		_problem("the export no longer matches contract %s - poses and modifiers keyed to it may break" % str(existing.get("CONTRACT_ID", _contract_id)))
 	_line("")
 
 
@@ -1012,8 +1256,8 @@ func _report_diff(previous, catalogue):
 
 func _public_axes():
 	var result = {}
-	for axis in OVERRIDES.AXES.keys():
-		var definition = OVERRIDES.AXES[axis]
+	for axis in _overrides.AXES.keys():
+		var definition = _overrides.AXES[axis]
 		result[axis] = {
 			"values": definition.values,
 			"default": definition.default,
@@ -1028,7 +1272,7 @@ func _emit(catalogue):
 	text += "# Semantics for the Doll 2 Spine export: groups, parts and axis values.\n"
 	text += "# Change doll2_overrides.gd and rebuild instead of editing this file.\n"
 	text += "# Mesh, vertex, UV and animation data stay in the Spine JSON.\n\n"
-	var keys = ["SCHEMA_VERSION", "SOURCE", "SLOT_ORDER", "DRAW_ORDER", "GROUP_ORDER", "AXES", "FIXED_SLOTS", "COLOR_CHANNELS", "SLOT_COLORS", "ZONE_HUES", "ZONE_DISTANCE", "ZONE_DEFAULTS", "GROUPS", "PARTS", "PRESETS", "ALIASES", "UNCATEGORIZED"]
+	var keys = ["SCHEMA_VERSION", "SOURCE", "SLOT_ORDER", "DRAW_ORDER", "DRAW_ORDER_FIXES", "GROUP_ORDER", "AXES", "FIXED_SLOTS", "COLOR_CHANNELS", "SLOT_COLORS", "ZONE_HUES", "ZONE_DISTANCE", "ZONE_DEFAULTS", "GROUPS", "PARTS", "PRESETS", "ALIASES", "UNCATEGORIZED"]
 	for key in keys:
 		text += "const %s = %s\n\n" % [key, _literal(catalogue[key], 0)]
 	return text
@@ -1106,7 +1350,7 @@ func _emit_contract(skeleton, slot_order, contract_path):
 	text += "# Everything in universal/ is keyed to CONTRACT_ID instead of to one export\n"
 	text += "# file, so a second skeleton (the male export) either satisfies this contract\n"
 	text += "# or gets its own id, and poses written against it can never silently drift.\n\n"
-	text += "const CONTRACT_ID = %s\n\n" % _quote(CONTRACT_ID)
+	text += "const CONTRACT_ID = %s\n\n" % _quote(_contract_id)
 	text += "const BONES = %s\n\n" % _literal(bones, 0)
 	text += "const SLOTS = %s\n\n" % _literal(slot_order, 0)
 	text += "const IK = %s\n\n" % _literal(ik, 0)
@@ -1130,20 +1374,35 @@ func _read_json(path):
 	return parsed.result
 
 
+# {region name: {"page": file, "bounds": Rect2}}.  Bounds are needed to sample a
+# region's pixels when working out which colour zones its art uses.
 func _read_atlas_regions(path):
 	var file = File.new()
 	if file.open(path, File.READ) != OK:
 		return {}
 	var regions = {}
 	var current_page = ""
+	var current_region = ""
 	for raw_line in file.get_as_text().split("\n"):
 		var line = raw_line.strip_edges()
-		if line.empty() or line.find(":") != -1:
+		if line.empty():
+			current_region = ""
 			continue
-		if line.ends_with(".png"):
-			current_page = line
-		else:
-			regions[line] = current_page
+		if line.find(":") == -1:
+			if line.ends_with(".png"):
+				current_page = line
+				current_region = ""
+			else:
+				current_region = line
+				regions[line] = {"page": current_page, "bounds": Rect2()}
+			continue
+		var split = line.split(":", false, 1)
+		if split.size() == 2 and !current_region.empty() and split[0].strip_edges() == "bounds":
+			var values = []
+			for entry in split[1].split(","):
+				values.append(float(entry.strip_edges()))
+			if values.size() == 4:
+				regions[current_region].bounds = Rect2(values[0], values[1], values[2], values[3])
 	file.close()
 	return regions
 

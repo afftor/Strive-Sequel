@@ -153,7 +153,8 @@ var scenedict = {
 				text = tr('DIALOGUETUTACADEMY'), 
 				reqs = [
 					{type = 'has_money', value = 1500}, 
-					{type = "has_upgrade", name = 'academy', value = 1}
+					{type = "has_room_upgrade", name = 'practice_room',
+						code = 'tutoring_area', value = 1}
 				], 
 				not_hide = true, 
 				bonus_effects = [

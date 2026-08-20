@@ -43,7 +43,7 @@ func fix_import():
 func travel_per_tick():
 	var value = 1
 #	if ResourceScripts.game_res.upgrades.has('stables'):
-#		value = 1 + variables.stable_boost_per_level * ResourceScripts.game_res.upgrades.stables
+#		value = 1 + variables.stable_boost_per_level * ResourceScripts.game_res.findupgradelevel('stables')
 	return value
 
 
@@ -136,7 +136,7 @@ func return_to_mansion(instant = false):
 		location = 'travel'
 		parent.get_ref().set_work('travel')
 		travel_target = {area = ResourceScripts.game_world.starting_area, location = ResourceScripts.game_world.mansion_location}
-		travel_time = max(1, abs(round(active_area.travel_time + active_location.travel_time - travel_time - variables.stable_boost_per_level * ResourceScripts.game_res.upgrades.stables)))
+		travel_time = max(1, abs(round(active_area.travel_time + active_location.travel_time - travel_time - variables.stable_boost_per_level * ResourceScripts.game_res.findupgradelevel('stables'))))
 		globals.emit_signal("slave_departed")
 	else:
 		location = ResourceScripts.game_world.mansion_location

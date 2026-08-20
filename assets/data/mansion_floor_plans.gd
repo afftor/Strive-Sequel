@@ -60,7 +60,7 @@ const LIST = {
 					{code = 'd3', rect = [53, 77, 18, 18]},
 					{code = 'd4', rect = [77, 77, 18, 18]},
 				],
-				prebuilt = {b2 = 'master_bedroom', b3 = 'bedrooms', b4 = 'bedrooms', c3 = 'kitchen'},
+				prebuilt = {b2 = 'master_bedroom', b3 = 'bedrooms', b4 = 'bedrooms', c3 = 'kitchen', c2 = 'stairs', c1 = 'store_room'},
 			},
 			{
 				code = '2F',
@@ -88,7 +88,7 @@ const LIST = {
 					{code = 'd3', rect = [53, 77, 18, 18]},
 					{code = 'd4', rect = [77, 77, 18, 18], broken = true},
 				],
-				prebuilt = {},
+				prebuilt = {c2 = 'stairs'},
 			},
 			{
 				code = '3F',
@@ -107,11 +107,41 @@ const LIST = {
 					{code = 'c3', rect = [53, 53, 18, 18], broken = true},
 					{code = 'c4', rect = [77, 53, 18, 18]},
 				],
+				prebuilt = {b2 = 'stairs'},
+			},
+			#The estate grounds. Not a floor of the house at all - it is drawn by the local
+			#tasks screen rather than by the floorplan, and has no staircase because it is not
+			#somewhere you climb to. It is a floor of the layout only so that raising a barn
+			#uses the same builders, the same costs and the same save as raising a bedroom.
+			{
+				code = 'GROUNDS',
+				areas = [
+					{state = 'floor', rect = [2, 20, 96, 60]},
+				],
+				slots = [
+					{code = 'g1', rect = [5, 25, 18, 18]},
+					{code = 'g2', rect = [29, 25, 18, 18]},
+					{code = 'g3', rect = [53, 25, 18, 18]},
+					{code = 'g4', rect = [77, 25, 18, 18]},
+					{code = 'g5', rect = [17, 55, 18, 18]},
+					{code = 'g6', rect = [41, 55, 18, 18]},
+					{code = 'g7', rect = [65, 55, 18, 18]},
+				],
 				prebuilt = {},
 			},
 		],
 	},
 }
+
+
+#Which floor is the estate grounds, or -1. Named rather than numbered because it is the one
+#floor that is not part of the house and is reached from a different screen.
+static func grounds_index(plan_code):
+	var plan = get_plan(plan_code)
+	for index in range(plan.floors.size()):
+		if plan.floors[index].code == 'GROUNDS':
+			return index
+	return -1
 
 
 static func get_plan(plan_code):

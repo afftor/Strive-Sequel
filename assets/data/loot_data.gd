@@ -725,8 +725,93 @@ var loot_tables = {
 		{material = 'iron', min = 1, max = 2},
 		{material = 'mithril', amount = 1},
 		{material = 'boneancient', amount = 1}]},
-	
-	
+
+	#work production
+	#What one finished batch of work yields. The table is rolled once per batch, not once
+	#per turn with a multiplier, so a "chance" here is a chance per unit produced - which is
+	#what lets one task hand out several kinds of resource at different rates. These start
+	#as exact copies of the single fixed resource each task used to produce; adding records
+	#to a table is all it takes to make that task produce more than one thing.
+	#Estate jobs name their table in tasks.gd (production_loot) and the farm's products name
+	#theirs there too (farm_tasks.production_loot). Raw gathering at a settlement has no task
+	#template behind it and looks its table up by material, as prod_res_<material>.
+	#A task or material with no table of its own still runs through the loot pipeline - it
+	#just yields itself, exactly as before - so nothing has to be listed here to keep working.
+	#Dungeon seams are deliberately not here: they pay out of a stock the location counts down.
+	prod_task_fishing = {material = 'fish'},
+	#What the estate's outdoor buildings bring up. The base material is always there; the rest
+	#are branches gated on how far the building has been improved, so buying Butchery is a data
+	#change and nothing else - see the 'has_room_upgrade' condition in globals.checkreqs().
+	#A table is rolled once per finished batch, so a 'chance' here reads as a chance per unit.
+	prod_task_hunting = {list = [
+		{material = 'meat'},
+		{material = 'leather', chance = 0.35,
+			reqs = [{type = 'has_room_upgrade', name = 'hunting_cabin', code = 'butchery', value = 1}]},
+		{material = 'bone', chance = 0.25,
+			reqs = [{type = 'has_room_upgrade', name = 'hunting_cabin', code = 'butchery', value = 2}]},
+	]},
+	prod_task_farming_veges = {list = [
+		{material = 'vegetables'},
+		{material = 'cloth', chance = 0.3,
+			reqs = [{type = 'has_room_upgrade', name = 'garden', code = 'rich_soil', value = 1}]},
+		{material = 'clothsilk', chance = 0.1,
+			reqs = [{type = 'has_room_upgrade', name = 'garden', code = 'rich_soil', value = 1}]},
+	]},
+	prod_task_farming_grains = {material = 'grain'},
+	prod_task_farming_cotton = {material = 'cloth'},
+	prod_task_farming_cloth_silk = {material = 'clothsilk'},
+	prod_task_gathering_wood = {list = [
+		{material = 'wood'},
+		{material = 'woodiron', chance = 0.25,
+			reqs = [{type = 'has_room_upgrade', name = 'forestry', code = 'rare_woods', value = 1}]},
+		{material = 'woodmagic', chance = 0.12,
+			reqs = [{type = 'has_room_upgrade', name = 'forestry', code = 'rare_woods', value = 2}]},
+	]},
+	prod_task_gathering_wood_magic = {material = 'woodmagic'},
+	prod_task_gathering_wood_iron = {material = 'woodiron'},
+	prod_task_mining_stone = {list = [
+		{material = 'stone'},
+		{material = 'iron', chance = 0.3,
+			reqs = [{type = 'has_room_upgrade', name = 'mine', code = 'deeper_veins', value = 1}]},
+		{material = 'mithril', chance = 0.08,
+			reqs = [{type = 'has_room_upgrade', name = 'mine', code = 'deeper_veins', value = 2}]},
+		{material = 'obsidian', chance = 0.08,
+			reqs = [{type = 'has_room_upgrade', name = 'mine', code = 'deeper_veins', value = 2}]},
+	]},
+	prod_task_mining_iron = {material = 'iron'},
+	prod_task_mining_mithril = {material = 'mithril'},
+	prod_task_mining_obsidian = {material = 'obsidian'},
+
+	#raw gathering at settlements, looked up by the material being gathered
+	prod_res_wood = {material = 'wood'},
+	prod_res_woodmagic = {material = 'woodmagic'},
+	prod_res_woodiron = {material = 'woodiron'},
+	prod_res_stone = {material = 'stone'},
+	prod_res_iron = {material = 'iron'},
+	prod_res_mithril = {material = 'mithril'},
+	prod_res_boneancient = {material = 'boneancient'},
+	prod_res_grain = {material = 'grain'},
+	prod_res_vegetables = {material = 'vegetables'},
+	prod_res_leather = {material = 'leather'},
+	prod_res_leatherthick = {material = 'leatherthick'},
+	prod_res_cloth = {material = 'cloth'},
+	prod_res_clothsilk = {material = 'clothsilk'},
+
+	#the farm, by product
+	prod_farm_milk = {material = 'milk'},
+	prod_farm_pheromones = {material = 'pheromones'},
+	prod_farm_seed = {material = 'seed'},
+	prod_farm_eggs = {material = 'eggs'},
+	prod_farm_magic_dust = {material = 'magic_dust'},
+	prod_farm_reptile_blood = {material = 'reptile_blood'},
+	prod_farm_lizard_skin = {material = 'lizard_skin'},
+	prod_farm_spider_silk = {material = 'spider_silk'},
+	prod_farm_light_essence = {material = 'light_essence'},
+	prod_farm_draconic_scales = {material = 'draconic_scales'},
+	prod_farm_leatherdragon = {material = 'leatherdragon'},
+	prod_farm_dark_essence = {material = 'dark_essence'},
+
+
 	start_corruptive_essence = {
 		list = [
 		{item = 'corruptive_essence', min = 1, max = 1}]

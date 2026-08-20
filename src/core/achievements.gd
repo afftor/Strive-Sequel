@@ -270,8 +270,11 @@ func prep_craftsman():
 	ResourceScripts.game_res.level_up_upgrade("tailor", 1)
 	ResourceScripts.game_res.level_up_upgrade("alchemy", 1)
 
+#used to buy the first level of the 'rooms' upgrade. That upgrade was six abstract places;
+#this is the room those places were standing in for, built and ready to be moved about.
 func prep_rooms():
-	ResourceScripts.game_res.level_up_upgrade("rooms", 1)
+	ResourceScripts.game_res.ensure_mansion_layout()
+	ResourceScripts.game_res.build_starting_bedroom()
 
 func prep_literate():
 	var character = ResourceScripts.game_party.get_master()

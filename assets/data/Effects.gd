@@ -299,6 +299,54 @@ var effect_table = {
 	e_s_nostun = rebuild_stat_bonus('resist_stun_set', 200),
 	# i think we need to display those statuses as buffs
 	
+	#The bed equivalent of e_food_demand: somebody used to better has been put somewhere
+	#ordinary. Same shape, same reason - a standing effect gated by its own condition, so
+	#there is one source of truth and nothing to apply or remove by hand.
+	sleep_demand_unmet = {
+		type = 'base',
+		descript = '',
+		conditions = [{code = 'sleep_demand', check = false}],
+		statchanges = {hpmax_mul = 0.8, exp_gain_mod = -0.2},
+		tags = ['sleep_demand_unmet'],
+		buffs = [
+			{
+				icon = "res://assets/images/gui/gui icons/food_hate.png",
+				description = "SLEEPDEMANDUNMET",
+				tags = ['mansion_only'],
+			}
+		],
+	},
+	#Sharing the master's bed. The master sleeps there too, so he is excluded by name -
+	#without that he would sit there growing fond of himself.
+	room_masters_bed = {
+		type = 'base',
+		conditions = [
+			{code = 'lives_in_room', check = true, value = 'master_bed'},
+			{code = 'has_profession', value = 'master', check = false},
+			],
+		sub_effects = [rebuild_simple_dot(['affection'], [4], variables.TR_TICK),],
+		buffs = [
+			{
+				icon = "res://assets/images/gui/gui icons/icon_twohearts.png",
+				description = "MANSIONROOM_MASTER_BEDROOM",
+				tags = ['mansion_only'],
+			}
+		],
+	},
+	#Granted by the estate having the room at all rather than by anybody living in it, which
+	#is what the 'has_room' condition is for - see game_res.has_room_with_tag().
+	room_office_exp = {
+		type = 'base',
+		conditions = [{code = 'has_room', check = true, value = 'office'}],
+		statchanges = {exp_gain_mod = 0.05},
+		buffs = [
+			{
+				icon = "res://assets/images/gui/gui icons/base_exp.png",
+				description = "MANSIONROOM_MASTERS_OFFICE",
+				tags = ['mansion_only'],
+			}
+		],
+	},
 	#used to be the 'luxury' work rule, a flag the player set per character against a
 	#global count of allowed rooms. It is now simply where they sleep.
 	work_rule_luxury = {

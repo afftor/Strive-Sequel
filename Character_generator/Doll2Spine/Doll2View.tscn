@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Character_generator/Doll2Spine/doll2_view.gd" type="Script" id=1]
+
+[node name="Doll2View" type="Control"]
+rect_min_size = Vector2( 200, 400 )
+rect_clip_content = true
+mouse_filter = 1
+script = ExtResource( 1 )

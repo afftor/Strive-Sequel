@@ -1290,12 +1290,14 @@ var data = {
 
 		],
 		character = "$heleviel",
+		start_dialogue_option = 9,
 		text = [
 			{
 				text = "HELEVIEL_SLAVE_RITUAL_REQUEST_TEXT",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 9
 			},
 			{
 				text = "HELEVIEL_SLAVE_RITUAL_REPLY_1",

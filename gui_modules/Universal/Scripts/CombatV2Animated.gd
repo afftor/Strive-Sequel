@@ -2138,7 +2138,9 @@ func FinishCombat(victory = true):
 					ch.apply_effect_code('e_grave_injury', {duration = 8})
 				else:
 					ch.apply_effect_code('e_grave_injury', {duration = 12})
-				ResourceScripts.game_party.check_breakdown_on_char_loss(ch)
+				#no check_breakdown_on_char_loss() here - the char is only grave injured,
+				#not lost, so friends/lovers/relatives have nothing to grieve over.
+				#permadeath still rolls it from killed()
 				ch.try_breakdown('brk_grave_injury')
 			else:
 				ch.killed()
@@ -2326,7 +2328,7 @@ func give_rewards():
 		newbutton.get_node("name").text = item.name
 		newbutton.get_node("amount").text = str(rewardsdict.materials[i])
 		if !only_show_mat_reward:
-			ResourceScripts.game_res.materials[i] += rewardsdict.materials[i]
+			ResourceScripts.game_res.gain_material(i, rewardsdict.materials[i])
 		globals.connectmaterialtooltip(newbutton, item)
 	for i in rewardsdict.items:
 		var newnode = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)

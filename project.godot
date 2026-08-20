@@ -9,25 +9,10 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Polygon2D",
-"class": "AutoPoly",
-"language": "GDScript",
-"path": "res://src/tools/auto_poly.gd"
-}, {
 "base": "Reference",
 "class": "Buff",
 "language": "GDScript",
 "path": "res://src/classes/buff.gd"
-}, {
-"base": "Position2D",
-"class": "DeformDragPoint",
-"language": "GDScript",
-"path": "res://src/tools/deform_drag_point.gd"
-}, {
-"base": "AutoPoly",
-"class": "DeformPoly",
-"language": "GDScript",
-"path": "res://src/tools/deform_poly.gd"
 }, {
 "base": "Reference",
 "class": "Item",
@@ -38,11 +23,6 @@ _global_script_classes=[ {
 "class": "Progress3state",
 "language": "GDScript",
 "path": "res://src/3stateProgressBar.gd"
-}, {
-"base": "Node2D",
-"class": "TransformConstraint",
-"language": "GDScript",
-"path": "res://src/tools/transform_constraint.gd"
 }, {
 "base": "Reference",
 "class": "atomic_effect",
@@ -120,13 +100,9 @@ _global_script_classes=[ {
 "path": "res://src/classes/triggered_effect.gd"
 } ]
 _global_script_class_icons={
-"AutoPoly": "",
 "Buff": "",
-"DeformDragPoint": "",
-"DeformPoly": "",
 "Item": "",
 "Progress3state": "",
-"TransformConstraint": "",
 "atomic_effect": "",
 "base_effect": "",
 "eff_stack": "",

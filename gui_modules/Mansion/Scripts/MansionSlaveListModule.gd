@@ -116,7 +116,20 @@ var expanded_body_pending_person
 var expanded_body_build_state
 var expanded_paperdoll_cache_person_id = ""
 var expanded_paperdoll_cache_clothed = true
-var list_folded = false
+#The list folds down to its title bar, which is what uncovers the mansion floorplan lying
+#behind it. Folded is how the mansion opens; the plan is a backdrop rather than a panel, so
+#the list no longer has to leave room for it - it only has to get out of the way.
+const FOLD_FOLDED = 0
+const FOLD_FULL = 1
+const FOLD_GLYPHS = ["v", "^"]
+const FOLD_TOOLTIPS = ["MSLMUNFOLDLIST", "MSLMFOLDLIST"]
+
+var list_fold_state = FOLD_FULL
+#what the player last chose for the default view. Other screens force the list open, and this
+#is what they give back when the player returns.
+var list_preferred_fold = FOLD_FOLDED
+#the fold the list was in when a card was expanded over it, restored when the card closes
+var expanded_restore_fold = FOLD_FULL
 var list_unfolded_size = Vector2()
 
 const EXPANDED_BODY_PREVIEW_PAPERDOLL_WIDTH = 626.0
@@ -248,7 +261,7 @@ func _ready():
 	input_handler.register_btn_source("default_mode", self, "tut_get_default_mode")
 	input_handler.register_btn_source("service_mode", self, "tut_get_service_mode")
 	ListFoldButton.connect('pressed', self, '_toggle_slave_list')
-	set_slave_list_folded(false, false)
+	apply_default_fold()
 	_setup_sort_menu()
 	build_sort_headers()
 	get_parent().connect("visibility_changed", self, "on_mansion_shown")
@@ -304,6 +317,7 @@ func on_mansion_shown():
 		expanded_paperdoll_cache_person_id = ""
 		_close_expanded_character_immediate()
 		reset_sorting()
+		apply_default_fold()
 
 
 func _on_card_expand_requested(card):
@@ -326,6 +340,13 @@ func open_expanded_character(card):
 	var person = card.get_meta("slave", null)
 	if person == null:
 		return
+	#The expanded card is 855px tall, so a folded list cannot hold it: the list opens all the
+	#way for it and goes back to where the player had it when the card closes. Unanimated and
+	#before the origin rect is measured - a fold tween running on rect_size would be fighting
+	#the card's own tween for the same property.
+	expanded_restore_fold = list_fold_state
+	if list_fold_state != FOLD_FULL:
+		set_slave_list_fold(FOLD_FULL, false)
 	expanded_card = card
 	expanded_origin_rect = _expanded_rect_for_global_rect(card.get_global_rect())
 	#Keep the source card in its container. Moving it out made GridContainer rebuild the
@@ -517,9 +538,11 @@ func _clear_expanded_body_preview():
 	ExpandedBodyImage.hide()
 	ExpandedPaperdoll.modulate.a = 1.0
 	ExpandedPaperdoll.hide()
-	var viewport = ExpandedPaperdoll.get_node_or_null("VPC/VP")
-	if viewport != null:
-		viewport.render_target_update_mode = Viewport.UPDATE_DISABLED
+	# the new doll has no viewport of its own to switch off - it draws straight
+	# into the screen and costs nothing while it stands still
+	#var viewport = ExpandedPaperdoll.get_node_or_null("VPC/VP")
+	#if viewport != null:
+	#	viewport.render_target_update_mode = Viewport.UPDATE_DISABLED
 
 
 func _set_expanded_body_preview_width(desired_width):
@@ -555,9 +578,11 @@ func _show_expanded_body_image(texture):
 	ExpandedBodyImage.texture = texture
 	ExpandedBodyImage.show()
 	ExpandedPaperdoll.hide()
-	var viewport = ExpandedPaperdoll.get_node_or_null("VPC/VP")
-	if viewport != null:
-		viewport.render_target_update_mode = Viewport.UPDATE_DISABLED
+	# the new doll has no viewport of its own to switch off - it draws straight
+	# into the screen and costs nothing while it stands still
+	#var viewport = ExpandedPaperdoll.get_node_or_null("VPC/VP")
+	#if viewport != null:
+	#	viewport.render_target_update_mode = Viewport.UPDATE_DISABLED
 
 
 func _cancel_expanded_body_preview_build():
@@ -630,9 +655,12 @@ func _build_expanded_body_preview(person, force_paperdoll = false):
 			expanded_paperdoll_cache_person_id = str(person.id)
 			expanded_paperdoll_cache_clothed = clothed
 		else:
-			var viewport = ExpandedPaperdoll.get_node_or_null("VPC/VP")
-			if viewport != null:
-				viewport.render_target_update_mode = Viewport.UPDATE_ONCE
+			# the new doll has no viewport of its own to switch off - it draws straight
+			# into the screen and costs nothing while it stands still
+			#var viewport = ExpandedPaperdoll.get_node_or_null("VPC/VP")
+			#if viewport != null:
+			#	viewport.render_target_update_mode = Viewport.UPDATE_ONCE
+			pass
 	else:
 		var silhouette = person.get_body_image()
 		if silhouette != null:
@@ -729,6 +757,10 @@ func _restore_expanded_card():
 	#Keep the last visual under the now-hidden overlay. Destroying its whole card tree in
 	#the closing callback caused one last-frame spike; it is replaced before the next open.
 	expanded_card = null
+	#both teardown paths come through here, so the list is put back exactly once
+	if expanded_restore_fold != FOLD_FULL:
+		set_slave_list_fold(expanded_restore_fold, false)
+		expanded_restore_fold = FOLD_FULL
 
 
 func _expanded_rect_for_global_rect(global_rect):
@@ -983,23 +1015,64 @@ func _sync_sort_menu():
 func _toggle_slave_list():
 	_close_expanded_character_immediate()
 	SortMenu.hide()
-	set_slave_list_folded(!list_folded)
+	set_slave_list_fold(FOLD_FULL if list_fold_state == FOLD_FOLDED else FOLD_FOLDED,
+		true, true)
 
 
-func set_slave_list_folded(folded, animated = true):
-	list_folded = folded
+#Where the fold control sits when it is the only thing on the bar, and when it shares it.
+const FOLD_BUTTON_LEFT = 12.0
+const FOLD_BUTTON_WIDTH = 47.0
+const FOLD_BUTTON_RIGHT_MARGIN = 12.0
+
+
+#Folded, the bar is nothing but a handle for opening the list again: sorting a list nobody can
+#see and filtering it by place are both answers to a question that is not being asked. The
+#handle takes the whole width so there is one obvious thing to press rather than a short
+#button with a stretch of empty bar beside it.
+func apply_fold_to_bar():
+	var open = list_fold_state != FOLD_FOLDED
+	SortButton.visible = open
+	$TravelsContainerPanel.visible = open
+	ListFoldButton.margin_left = FOLD_BUTTON_LEFT
+	if open:
+		ListFoldButton.margin_right = FOLD_BUTTON_LEFT + FOLD_BUTTON_WIDTH
+	else:
+		ListFoldButton.margin_right = rect_size.x - FOLD_BUTTON_RIGHT_MARGIN
+
+
+func fold_height(state):
+	return LIST_FOLDED_HEIGHT if state == FOLD_FOLDED else list_unfolded_size.y
+
+
+#remembered says the player chose this themselves, so it is what the default view goes back to
+#when another screen has finished forcing the list open
+func set_slave_list_fold(state, animated = true, remembered = false):
+	list_fold_state = state
+	if remembered:
+		list_preferred_fold = state
 	ListFoldTween.stop_all()
 	ListFoldTween.remove_all()
 	rect_clip_content = true
 	var target_size = list_unfolded_size
-	if folded:
-		target_size.y = LIST_FOLDED_HEIGHT
-	ListFoldButton.get_node("Label").text = "v" if folded else "^"
-	globals.connecttexttooltip(ListFoldButton, tr("MSLMUNFOLDLIST" if folded else "MSLMFOLDLIST"))
-	$ScrollContainer.mouse_filter = MOUSE_FILTER_IGNORE if folded else MOUSE_FILTER_STOP
+	target_size.y = fold_height(state)
+	ListFoldButton.get_node("Label").text = FOLD_GLYPHS[state]
+	globals.connecttexttooltip(ListFoldButton, tr(FOLD_TOOLTIPS[state]))
+	#Folded there is nothing below the title bar to reach. Ignoring the mouse on the container
+	#is not enough - IGNORE steps over that one control, not the cards inside it, so the sliver
+	#of the top row left showing at the clip edge could still be grabbed and dragged out.
+	#Hiding it takes the whole subtree out of reach along with it.
+	$ScrollContainer.mouse_filter = MOUSE_FILTER_IGNORE if state == FOLD_FOLDED \
+		else MOUSE_FILTER_STOP
+	$ScrollContainer.visible = state != FOLD_FOLDED
+	apply_fold_to_bar()
+	#the floorplan's counters and portraits hang off this bar's bottom edge as one panel with
+	#it, so folding the list is what puts them up and opening it is what takes them away
+	var rooms = get_parent().get_node_or_null("MansionRoomsModule")
+	if rooms != null:
+		rooms.set_hud_visible(state == FOLD_FOLDED)
 	if !animated:
 		rect_size = target_size
-		rect_clip_content = folded
+		rect_clip_content = state != FOLD_FULL
 		return
 	ListFoldTween.interpolate_property(self, "rect_size", rect_size, target_size,
 		LIST_FOLD_ANIMATION_TIME, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
@@ -1007,7 +1080,27 @@ func set_slave_list_folded(folded, animated = true):
 
 
 func _on_list_fold_animation_finished():
-	rect_clip_content = list_folded
+	rect_clip_content = list_fold_state != FOLD_FULL
+
+
+#Called on the way into the mansion. The player's own choice wins unless the hard tutorial is
+#running, which points at rows inside the list and cannot reach them through a folded one.
+func apply_default_fold():
+	if input_handler.hard_tutorial_active:
+		set_slave_list_fold(FOLD_FULL, false)
+		return
+	set_slave_list_fold(list_preferred_fold, false)
+
+
+#default shares the column with the floorplan; every other state wants the whole list back
+func apply_state_fold(is_default):
+	if !is_default:
+		set_slave_list_fold(FOLD_FULL)
+		return
+	if input_handler.hard_tutorial_active:
+		return
+	set_slave_list_fold(list_preferred_fold)
+
 
 #entry lookups for the hard tutorial. The card view has no full-width rows to clamp, so the
 #highlight is the entry's own rect now
@@ -1250,8 +1343,6 @@ func _get_training_availability(person):
 	#Finished slave training opens the post-training trait/reward screen.
 	if !person.training.enable:
 		return [true, ""]
-	if person.training.trainer == null:
-		return [false, person.translate(tr("TRAINNOTRAINER"))]
 	if person.training.is_rebel_blocked():
 		return [false, tr("ACTIONREBELBLOCKED")]
 	if !person.training.has_category_not_in_cd():
@@ -1259,6 +1350,10 @@ func _get_training_availability(person):
 		for category in person.training.cooldown:
 			cooldown_days = min(cooldown_days, int(ceil(person.training.cooldown[category])))
 		return [false, tr("TRAINCOOLDOWN") % max(cooldown_days, 1)]
+	#A missing trainer is worth saying, but it never blocks the screen itself - the panel
+	#still shows the training setup, so only a time-based block disables the button.
+	if person.training.trainer == null:
+		return [true, person.translate(tr("TRAINNOTRAINER"))]
 	return [true, ""]
 
 
@@ -1502,10 +1597,13 @@ func _update_card_action_states(newbutton, person):
 	var training_button = newbutton.get_node(CARD_ACTIONS + "/Training")
 	_set_card_action_available(training_button, training_availability[0])
 	var training_tooltip = _get_training_title(person)
-	if training_availability[0]:
-		training_tooltip += "\n" + tr("TRAINTOOLTIP")
-	else:
+	if !training_availability[0]:
 		training_tooltip += "\n" + training_availability[1]
+	else:
+		training_tooltip += "\n" + tr("TRAINTOOLTIP")
+		#an available button can still carry a note, like a slave waiting for a trainer
+		if training_availability[1] != "":
+			training_tooltip += "\n" + training_availability[1]
 	_set_card_text_tooltip(training_button, training_tooltip)
 	var date_availability = _get_date_availability(person)
 	var date_button = newbutton.get_node(CARD_ACTIONS + "/Date")
@@ -2075,6 +2173,8 @@ func update_dislocations():
 		return
 	locations_signature = new_signature
 	build_locations_list(has_training)
+	#the row was just rebuilt from scratch, so whatever the fold had hidden is back
+	apply_fold_to_bar()
 
 
 func build_locations_list(has_training = null):
@@ -2091,12 +2191,13 @@ func build_locations_list(has_training = null):
 		if loca == null:
 			continue
 		newbutton = input_handler.DuplicateContainerTemplate(LocationsList)
+		newbutton.set_meta("location", loca)
 		if loca == 'aliron':
 			newbutton.text = tr("MSLMMANSION")
 		else:
 			newbutton.text = ResourceScripts.world_gen.get_location_from_code(loca).name
-		newbutton.set_meta("location", loca)
-		newbutton.connect("pressed", self, "show_location_characters", [newbutton])
+		newbutton.connect("pressed", self, "show_place", [loca, newbutton])
+		globals.connecttexttooltip(newbutton, tr("MSLMSHOWPLACE") % newbutton.text)
 		newseparator = $TravelsContainerPanel/VSeparator.duplicate()
 		LocationsList.add_child(newseparator)
 		newseparator.visible = true
@@ -2172,6 +2273,19 @@ func calculate_sex_limits():
 	return ResourceScripts.game_res.get_sex_limit()
 
 
+#These name the places the household is currently spread across, and one chip means one place
+#in both halves of the screen: the panel below draws it - the mansion as its floorplan,
+#anywhere else as the work waiting there - and the list narrows to the people who are there.
+#Folded, only the first half is visible; open, only the second; the chip does not need to know
+#which. "Show all" is not a place, so it only ever widens the list.
+#These buttons filter the list and nothing else now. Choosing which place the mansion screen
+#is showing work for moved to the navigation strip, where the places are pictures rather than
+#names - one control doing both meant picking somebody out of a list also walked the floorplan
+#somewhere else, which is not what the player was asking for.
+func show_place(_code, button = null):
+	show_location_characters(button)
+
+
 func show_location_characters(button = null):
 	if button != null:
 		_close_expanded_character_immediate()
@@ -2225,10 +2339,17 @@ func show_location_characters(button = null):
 
 
 func update_location_buttons():
+	var rooms = get_parent().get_node_or_null("MansionRoomsModule")
 	for i in LocationsList.get_children():
 		if i == LocationsList.get_child(LocationsList.get_children().size()-1) || !i.has_meta('location'):
 			continue
-		i.pressed = selected_location == i.get_meta("location")
+		var code = i.get_meta("location")
+		#a place chip is lit when the panel below is drawing that place; the two that are not
+		#places are lit by what the list is narrowed to
+		if rooms != null and !(code in ["show_all", "training"]):
+			i.pressed = code == rooms.place
+		else:
+			i.pressed = selected_location == code
 
 
 func build_for_skills(person, newbutton):
@@ -2733,7 +2854,7 @@ func get_sort_value(row, key):
 			return row.get_node("job/Label").text.to_lower()
 		'train_available':
 			var incomplete_slave_training = person.training.is_slave() and person.training.enable
-			return 0 if incomplete_slave_training and _get_training_availability(person)[0] else 1
+			return 0 if incomplete_slave_training and person.training.can_be_trained() else 1
 		'date_available':
 			return 0 if _get_date_availability(person)[0] else 1
 		'levelup':

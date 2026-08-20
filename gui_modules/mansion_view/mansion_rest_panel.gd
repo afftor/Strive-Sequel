@@ -20,6 +20,36 @@ func setup(view_node):
 	view = view_node
 
 
+#Embedded the strip has a slice of a panel rather than the top of a screen, so the portraits
+#lose their names to the tooltip and shrink to something a row of thirty still fits in.
+const COMPACT_CELL = Vector2(44, 44)
+const CELL_GAP = 6
+#the title and its warning share the line above the portraits
+const TITLE_HEIGHT = 30
+#past this the strip scrolls rather than growing further down the screen
+const MAX_ROWS = 3
+
+
+#How wide the strip is decides how many portraits fit across it, and that decides how many
+#rows a household needs - which is what the panel's own height comes out of. Returns that
+#height so the screen can put everything below the strip underneath whatever it turns out to
+#be, rather than under a number written down in advance.
+func apply_layout(width):
+	var step = COMPACT_CELL.x + CELL_GAP
+	var columns = int(max(1, floor((width - 20 + CELL_GAP) / step)))
+	$Scroll/List.columns = columns
+	var rows = int(max(1, ceil(float(portrait_count()) / columns)))
+	return TITLE_HEIGHT + min(rows, MAX_ROWS) * (COMPACT_CELL.y + CELL_GAP) + 6
+
+
+func portrait_count():
+	var res = 0
+	for cell in $Scroll/List.get_children():
+		if cell.visible and !cell.is_queued_for_deletion():
+			res += 1
+	return res
+
+
 func rebuild():
 	#while rooms are being moved the panel has nothing to offer, and it sits over the top
 	#of the plan - so it steps out of the way entirely rather than swallowing drops meant
@@ -27,16 +57,20 @@ func rebuild():
 	if view.mode == 'rearrange':
 		visible = false
 		return
-	visible = true
+	#embedded this panel is the lower half of the slave list's own bar, and goes away with it
+	visible = view.hud_visible
 	var ids = view.resting_characters()
 	$Title.text = "%s (%d)" % [label_for_mode(), ids.size()]
 	$Warning.visible = view.mode == 'sleep' and !ids.empty()
 	#with somebody in hand who came out of a room, the panel is where they are set free
 	self_modulate = COLOR_TARGET if accepts_pick() else Color(1, 1, 1, 1)
-	input_handler.ClearContainer($List)
+	input_handler.ClearContainer($Scroll/List)
 	for char_id in ids:
-		var cell = input_handler.DuplicateContainerTemplate($List)
-		cell.setup(view, char_id)
+		var cell = input_handler.DuplicateContainerTemplate($Scroll/List)
+		cell.setup(view, char_id, view.embedded)
+	#how many portraits there are is what the strip's height comes out of, so everything the
+	#screen puts below it has to be placed again now that the number has changed
+	view.lay_out_hud()
 
 
 func label_for_mode():
@@ -48,29 +82,42 @@ func label_for_mode():
 	return tr("MANSIONVIEW_REST")
 
 
-#Dropping somebody back onto the panel is how they are taken off a job or out of a bed.
-func can_drop_data(_position, data):
+#### the carrying protocol ####
+
+#The idle strip takes anybody: putting somebody down here is what "stop doing that" means,
+#and somebody already idle is simply set down again. Dropping and clicking both come through
+#refusal_for / take_carried, so the strip cannot accept one gesture and refuse the other.
+func refusal_for(data):
 	if !(data is Dictionary) or data.get('kind', '') != 'mansion_char':
-		return false
-	return data.get('from_slot', null) != null
+		return 'MANSIONVIEW_ERR_VOID'
+	return ''
+
+
+func take_carried(data):
+	view.release_character(data.char_id, data.get('from_kind', 'work'))
+	return true
+
+
+func can_drop_data(_position, data):
+	return refusal_for(data) == ''
 
 
 func drop_data(_position, data):
-	view.release_character(data.char_id, data.get('from_kind', 'work'))
+	take_carried(data)
 
 
-#Somebody carried here by a click is set free the same way, and asks the same question.
+#Lit only when there is something to undo - somebody who came out of a room. Anyone already
+#idle is welcome here too, but saying so would light the strip for no reason.
 func accepts_pick():
-	return can_drop_data(Vector2.ZERO, view.pick_data())
+	var carried = view.pick_data()
+	return carried != null and refusal_for(carried) == '' \
+		and carried.get('from_slot', null) != null
 
 
 func _gui_input(event):
-	if !accepts_pick():
+	if view.picked_char == null:
 		return
 	if !(event is InputEventMouseButton) or !event.pressed or event.button_index != BUTTON_LEFT:
 		return
-	var char_id = view.picked_char
-	var from_kind = view.picked_char_kind
-	view.clear_char_pick()
-	view.release_character(char_id, from_kind)
+	view.drop_carried_on(self)
 	accept_event()

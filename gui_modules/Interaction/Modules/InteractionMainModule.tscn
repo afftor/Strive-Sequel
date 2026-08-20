@@ -65,9 +65,8 @@
 [ext_resource path="res://gui_modules/Universal/Scripts/ItemSelect.gd" type="Script" id=63]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=64]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=65]
-[ext_resource path="res://ragdoll.tscn" type="PackedScene" id=66]
+[ext_resource path="res://Character_generator/Doll2Spine/Doll2View.tscn" type="PackedScene" id=83]
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=67]
-[ext_resource path="res://assets/Textures_v2/MANSION/Sex/body_mask_crop.png" type="Texture" id=68]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_sexskills.png" type="Texture" id=69]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_sexskills_progress.png" type="Texture" id=70]
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/train_hover.png" type="Texture" id=71]
@@ -700,23 +699,10 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ragdoll" parent="Panel/BodyDisplay" instance=ExtResource( 66 )]
-position = Vector2( 688.483, 402.746 )
-scale = Vector2( 0.5, 0.5 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="ragdoll" parent="Panel/BodyDisplay" instance=ExtResource( 83 )]
+rect_position = Vector2( 616.1, 80.0 )
+rect_size = Vector2( 688.0, 920.0 )
 clothes = false
-
-[node name="bodymask" type="Light2D" parent="Panel/BodyDisplay"]
-position = Vector2( 960.082, 539.954 )
-texture = ExtResource( 68 )
-mode = 3
-range_item_cull_mask = 4
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="blacklist" type="Button" parent="Panel"]
 anchor_top = 1.0
 anchor_bottom = 1.0

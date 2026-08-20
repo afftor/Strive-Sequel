@@ -9,10 +9,9 @@
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveBodyModule.gd" type="Script" id=8]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=9]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/SlaveBodyModule_panel.tres" type="StyleBox" id=10]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/body_mask.png" type="Texture" id=11]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=12]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=13]
-[ext_resource path="res://ragdoll.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Character_generator/Doll2Spine/Doll2View.tscn" type="PackedScene" id=18]
 
 [node name="SlaveBodyModule" type="Panel"]
 show_behind_parent = true
@@ -34,16 +33,9 @@ texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
 
-[node name="ragdoll" parent="." instance=ExtResource( 17 )]
-position = Vector2( 340, 450 )
-scale = Vector2( 0.8, 0.8 )
-
-[node name="bodymask" type="Light2D" parent="."]
-position = Vector2( 352, 468 )
-texture = ExtResource( 11 )
-mode = 3
-range_item_cull_mask = 4
-
+[node name="ragdoll" parent="." instance=ExtResource( 18 )]
+rect_position = Vector2( 8.0, 8.0 )
+rect_size = Vector2( 688.0, 920.0 )
 [node name="buffscontainer" type="HBoxContainer" parent="."]
 modulate = Color( 1, 1, 1, 0.823529 )
 self_modulate = Color( 1, 1, 1, 0.823529 )

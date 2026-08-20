@@ -211,7 +211,7 @@ func advance_day(managed = false):
 
 
 func reset_limits():
-	weekly_sex_max = 2 + ceil(ResourceScripts.game_party.get_master().get_stat('sexuals_factor') * 0.5) + ResourceScripts.game_res.upgrades.sex_times
+	weekly_sex_max = 2 + ceil(ResourceScripts.game_party.get_master().get_stat('sexuals_factor') * 0.5) + ResourceScripts.game_res.findupgradelevel('sex_times')
 	weekly_sex_left = weekly_sex_max
 	update_weekly_dates()
 	weekly_dates_left = weekly_dates_max

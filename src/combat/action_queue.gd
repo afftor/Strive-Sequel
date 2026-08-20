@@ -54,7 +54,20 @@ func reinit():
 	tail = 41
 
 
+#The queue is a window inside a fixed 50-slot array: handlers pushed to the head grow
+#downward, handlers pushed to the tail grow upward, and nothing ever moves the pair back.
+#Every finished action leaves it one slot higher - pop_head raises head, add_end_action
+#raises tail - so the ninth end handler of a combat hits tail == 49 and is dropped with
+#"queue limit exeeded", which in play means an action that never ends. While the queue is
+#empty nothing is stored in the array, so the window can be recentred for free.
+func rewind_if_empty():
+	if tail == head + 1 and cashed_handlers.empty():
+		head = 40
+		tail = 41
+
+
 func add_handler_head(handler):
+	rewind_if_empty()
 	if head == 0:
 		print("error - queue limit exeeded")
 		return
@@ -63,6 +76,7 @@ func add_handler_head(handler):
 
 
 func add_handler_tail(handler):
+	rewind_if_empty()
 	if tail == 49:
 		print("error - queue limit exeeded")
 		return

@@ -165,9 +165,9 @@ texture = ExtResource( 32 )
 
 [node name="QueueFrame" type="TextureRect" parent="frame"]
 margin_left = 1319.22
-margin_top = 42.0
+margin_top = 523.067
 margin_right = 1884.22
-margin_bottom = 517.0
+margin_bottom = 998.067
 texture = ExtResource( 62 )
 
 [node name="Label2" type="Label" parent="frame/QueueFrame"]
@@ -181,9 +181,9 @@ align = 1
 
 [node name="QueueFrame2" type="TextureRect" parent="frame"]
 margin_left = 1319.22
-margin_top = 523.067
+margin_top = 42.0
 margin_right = 1884.22
-margin_bottom = 998.067
+margin_bottom = 517.0
 texture = ExtResource( 62 )
 
 [node name="Label2" type="Label" parent="frame/QueueFrame2"]
@@ -419,9 +419,9 @@ __meta__ = {
 
 [node name="CraftSchedule" type="Control" parent="."]
 margin_left = 1336.0
-margin_top = 107.0
+margin_top = 592.0
 margin_right = 1877.0
-margin_bottom = 494.0
+margin_bottom = 979.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CraftSchedule"]
 anchor_right = 1.0
@@ -516,9 +516,9 @@ __meta__ = {
 
 [node name="CraftSchedule2" type="Control" parent="."]
 margin_left = 1336.0
-margin_top = 592.0
+margin_top = 107.0
 margin_right = 1877.0
-margin_bottom = 979.0
+margin_bottom = 494.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CraftSchedule2"]
 anchor_right = 1.0

@@ -20,28 +20,40 @@ func refresh():
 	self_modulate = COLOR_TARGET if accepts_pick() else Color(1, 1, 1, 1)
 
 
-func can_drop_data(_position, data):
+#### the carrying protocol ####
+
+func refusal_for(data):
 	if !(data is Dictionary) or data.get('kind', '') != 'mansion_char':
-		return false
+		return 'MANSIONVIEW_ERR_VOID'
 	if view.mode != 'sleep':
-		return false
-	return view.can_expel(data.char_id)
+		return 'MANSIONVIEW_ERR_VOID'
+	if !view.can_expel(data.char_id):
+		return 'MANSIONVIEW_ERR_MASTEREXPEL'
+	return ''
+
+
+func take_carried(data):
+	view.request_expel(data.char_id)
+	return true
+
+
+func can_drop_data(_position, data):
+	return refusal_for(data) == ''
 
 
 func drop_data(_position, data):
-	view.request_expel(data.char_id)
+	take_carried(data)
 
 
 func accepts_pick():
-	return can_drop_data(Vector2.ZERO, view.pick_data())
+	var carried = view.pick_data()
+	return carried != null and refusal_for(carried) == ''
 
 
 func _gui_input(event):
-	if !accepts_pick():
+	if view.picked_char == null:
 		return
 	if !(event is InputEventMouseButton) or !event.pressed or event.button_index != BUTTON_LEFT:
 		return
-	var char_id = view.picked_char
-	view.clear_char_pick()
-	view.request_expel(char_id)
+	view.drop_carried_on(self)
 	accept_event()

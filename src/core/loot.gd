@@ -347,6 +347,55 @@ func generate_shop(record, amount,  features = {}) -> Dictionary:
 			output[record.item] = amount
 	return output
 
+#### work production ####
+#Estate, farm and settlement work tasks roll a loot table every time a batch of work is
+#finished, instead of handing out one fixed material. Rolling once per batch rather than
+#once with a multiplier is what makes the chances in a production table mean "per unit
+#produced" - roll it wholesale and a 10% record would either fire for the whole turn's
+#output or not at all.
+
+#one turn of work must never cost thousands of rolls, however fast the workers are
+const PRODUCTION_ROLL_CAP = 60
+
+
+func has_loot_table(table_name) -> bool:
+	return table_name is String and loot_tables.has(table_name)
+
+
+#The record a task produces from: its own table when it names one that exists, and
+#otherwise a single-material record - which is exactly the fixed output the task had
+#before. Either way production runs through the same pipeline, so giving a task a table
+#of its own afterwards is a data change and nothing else.
+func get_production_record(table_name, fallback_material = ''):
+	if has_loot_table(table_name):
+		return {loot_table = table_name}
+	if !(fallback_material is String) or fallback_material.empty():
+		return null
+	return {material = fallback_material}
+
+
+func roll_production(record, rolls = 1) -> Dictionary:
+	var output = get_rewards_template()
+	rolls = int(rolls)
+	if record == null or rolls <= 0:
+		return output
+	if rolls <= PRODUCTION_ROLL_CAP:
+		for _i in range(rolls):
+			merge_reward_dict(output, process_loottable_record(record, LOUT_REWARD))
+		return output
+	#Past the cap the batches are rolled in equal groups and scaled, rather than counted out
+	#one at a time. Every batch is still accounted for - the leftover group is rolled at its
+	#own size - so only how grainy an enormous batch looks changes, not what it averages.
+	var group = int(ceil(float(rolls) / PRODUCTION_ROLL_CAP))
+	var full = rolls / group
+	for _i in range(full):
+		merge_reward_dict(output, process_loottable_record(record, LOUT_REWARD, {mul = group}))
+	var rest = rolls - full * group
+	if rest > 0:
+		merge_reward_dict(output, process_loottable_record(record, LOUT_REWARD, {mul = rest}))
+	return output
+
+
 func get_gather_mod(gather_set, mat):
 	var res = get_gather_setting(gather_set, mat, 'mod')
 	if res is Array:

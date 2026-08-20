@@ -1,10 +1,9 @@
 extends Control
 
-#Button node -> label child shown beside its icon on hover.
+#Button node -> the label child that names it. The whole rail reads at once: pointing at any
+#of the icons names all of them, which is what makes a column of pictures usable at a glance.
 const BUTTON_LABELS = {
 	WorkButton = 'Label',
-	TravelsButton = 'Label',
-	UpgradesButton = 'Label2',
 	SexButton = 'Label3',
 	InventoryButton = 'Label4',
 	CraftButton = 'Label5',
@@ -15,36 +14,56 @@ const BUTTON_LABELS = {
 
 func _ready():
 	$VBoxContainer/WorkButton.connect("pressed", self, "_button_clicked", ["occupation", $VBoxContainer/WorkButton])
-	$VBoxContainer/TravelsButton.connect("pressed", self, "_button_clicked", ["travels", $VBoxContainer/TravelsButton])
-	$VBoxContainer/UpgradesButton.connect("pressed", self, "_button_clicked", ["upgrades", $VBoxContainer/UpgradesButton])
 	$VBoxContainer/CraftButton.connect("pressed", self, "_button_clicked", ["craft", $VBoxContainer/CraftButton])
 	$VBoxContainer/InventoryButton.connect("pressed", self, "open_inventory")
 	$VBoxContainer/SexButton.connect("toggled", self, "open_sex")
 	#$VBoxContainer/SexButton.connect("pressed", self, "_button_clicked", ["sex", $VBoxContainer/SexButton])
 	$VBoxContainer/Journal.connect("toggled", self, "open_journal")
 	$VBoxContainer/options.connect("pressed", self, "open_menu")
-	input_handler.register_btn_source('upgrades_button', self, 'tut_get_UpgradesButton')
 	input_handler.register_btn_source('work_button', self, 'tut_get_WorkButton')
 	input_handler.register_btn_source('craft_button', self, 'tut_get_CraftButton')
 	input_handler.register_btn_source('inventory_button', self, 'tut_get_InventoryButton')
 	input_handler.register_btn_source('journal_button', self, 'tut_get_Journal')
-	for button_name in BUTTON_LABELS:
-		var button = $VBoxContainer.get_node(button_name)
-		var label = button.get_node(BUTTON_LABELS[button_name])
-		button.connect("mouse_entered", self, "_set_button_label_visible", [label, true])
-		button.connect("mouse_exited", self, "_set_button_label_visible", [label, false])
 	connect("visibility_changed", self, "_hide_button_labels")
 
 
-func _set_button_label_visible(label, value):
-	label.visible = value
+var labels_shown = false
+
+
+#One region, asked once a frame, instead of a signal on every icon and every name. The names
+#hang off the right of the rail past its own edge, and the gaps between the icons are real
+#background - so entering and leaving fired constantly and the column blinked. A rectangle
+#that covers the icons and everything they say has no edges inside it to trip over.
+func _process(_delta):
+	if !is_visible_in_tree():
+		return
+	var inside = hover_region().has_point(get_global_mouse_position())
+	if inside != labels_shown:
+		labels_shown = inside
+		_show_button_labels(inside)
+
+
+#The rail plus the strip its names are written across, whether or not they are showing: a
+#hidden Label still knows where it would be.
+func hover_region():
+	var region = get_global_rect()
+	for button_name in BUTTON_LABELS:
+		var button = $VBoxContainer.get_node(button_name)
+		region = region.merge(button.get_node(BUTTON_LABELS[button_name]).get_global_rect())
+	return region
+
+
+func _show_button_labels(value):
+	for button_name in BUTTON_LABELS:
+		var button = $VBoxContainer.get_node(button_name)
+		button.get_node(BUTTON_LABELS[button_name]).visible = value
 
 
 func _hide_button_labels():
 	if is_visible_in_tree():
 		return
-	for button_name in BUTTON_LABELS:
-		$VBoxContainer.get_node(button_name).get_node(BUTTON_LABELS[button_name]).hide()
+	labels_shown = false
+	_show_button_labels(false)
 
 
 func tut_get_UpgradesButton():
@@ -71,7 +90,6 @@ func activate_category(code):
 			if map != null:
 				map.set_return_context(null, null, null)
 			return toggle_category("travels", $VBoxContainer/TravelsButton)
-		'upgrades': return toggle_category("upgrades", $VBoxContainer/UpgradesButton)
 		'craft': return toggle_category("craft", $VBoxContainer/CraftButton)
 		'sex':
 			#SexButton and Journal listen to 'toggled', so flipping pressed is the whole call.

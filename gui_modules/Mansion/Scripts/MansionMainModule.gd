@@ -2,8 +2,8 @@ extends Control
 
 # VARIABLES
 # Modules
-onready var UpgradesModule_ = $upgrades
 onready var SlaveListModule = $MansionSlaveListModule
+onready var RoomsModule = $MansionRoomsModule
 onready var SkillModule = $MansionSkillsModule
 onready var SlaveModule = $MansionSlaveModule
 onready var TaskModule = $MansionTaskInfoModule
@@ -15,6 +15,14 @@ onready var JobModule = $MansionJobModule2
 onready var SexSelect = $SexSelectMenu
 onready var Journal = $MansionJournalModule
 onready var TurnProductionOverlay = $TurnProductionOverlay
+onready var LocalTasksButton = $LocalTasksButton
+onready var LocalTasksShimmer = $LocalTasksButton/QuestAttentionShimmer
+#How fast the sheen sweeps and how long it rests between passes live in the shader itself -
+#see quest_attention_shimmer.shader. Nothing here drives it; this only turns it on and off.
+#Assigned in code rather than left to the scene: an open scene in the Godot editor is written
+#back from memory when it saves, which quietly undoes edits made to the .tscn on disk. The
+#shader lives in its own file, so tuning the sheen always takes.
+const SHIMMER_SHADER = preload("res://gui_modules/Mansion/Modules/quest_attention_shimmer.shader")
 onready var submodules = []
 
 export var test_mode = false
@@ -62,6 +70,11 @@ var prev_selected_travel
 
 var always_show = [
 	"BGHolder",
+	#the floorplan is the mansion's floor, not a panel opened over it - it lies under
+	#everything else and stays there. Its own input asks whether anything is drawn on top of
+	#the cursor before it claims the wheel, so it cannot steal scrolling from the panels above.
+	"MansionRoomsModule",
+	"LocalTasksButton",
 	"TestButton",
 	"MansionTaskInfoModule",
 	"MansionClockModule",
@@ -88,6 +101,7 @@ var newgame_bonuses
 var in_test_mode = false
 var loading_progress_node
 var loading_progress_range = [70.0, 90.0]
+var local_tasks_attention = false
 
 func _ready():
 	if !show_legacy_character_panels:
@@ -131,6 +145,11 @@ func _ready():
 		#the onready init ran before the starting sequence, when the party was still empty
 		active_person = ResourceScripts.game_party.get_master()
 		SlaveListModule.rebuild()
+		#The floorplan's own _ready ran before any of this, against an empty party - and the
+		#starting preset seats nobody, because it does not add its people through add_slave.
+		#This is the first moment the household is final, so it is where everyone gets a bed.
+		ResourceScripts.game_res.ensure_mansion_layout()
+		RoomsModule.refresh()
 #		SlaveListModule.build_locations_list()
 		#a window closing during the starting sequence can already have pushed the mansion
 		#into 'default' (gui_controller.close_window does), and the setter bails out on an
@@ -152,6 +171,14 @@ func _ready():
 		gui_controller.clock.show()
 	gui_controller.clock.update_labels()
 	$TutorialButton.connect('pressed', self, 'show_tutorial')
+	var sheen = ShaderMaterial.new()
+	sheen.shader = SHIMMER_SHADER
+	LocalTasksShimmer.material = sheen
+	LocalTasksButton.text = tr("MANSIONVIEW_LOCALTASKS")
+	LocalTasksButton.connect('pressed', self, 'toggle_local_tasks')
+	RoomsModule.connect('place_changed', self, 'sync_local_tasks_button')
+	sync_local_tasks_button(RoomsModule.place)
+	globals.connecttexttooltip(LocalTasksButton, tr("MANSIONVIEW_LOCALTASKSHINT"))
 	hotkeys.connect("bindings_changed", self, "build_tutorial_tooltip")
 	build_tutorial_tooltip()
 #	$tutorialpanel/Button.connect('pressed',$tutorialpanel,'hide')
@@ -168,6 +195,10 @@ func _ready():
 		loading_progress_node = null
 	else:
 		SlaveListModule.rebuild()
+	#same reason on both paths: this screen is built once per session, so its floorplan was
+	#laid out against whatever the layout looked like before the save was applied
+	ResourceScripts.game_res.ensure_mansion_layout()
+	RoomsModule.refresh()
 #	SlaveListModule.build_locations_list()
 	if !ResourceScripts.game_progress.intro_tutorial_seen:
 		$TutorialIntro.show()
@@ -177,6 +208,34 @@ func _ready():
 	Journal.tut_register_first_quest()
 	Journal.tut_register_complete()
 	emit_signal("initialization_finished")
+
+
+#Work assignment has no global changed signal: the embedded task view refreshes itself after
+#a drop. This tiny fallback only walks the short quest-id array, while normal mansion refreshes
+#also call the same edge-triggered update directly.
+func _process(delta):
+	refresh_local_tasks_attention()
+	if !local_tasks_attention:
+		return
+	#the sweep keeps its own time inside the shader now, so there is nothing to advance here
+
+
+#Only quests waiting at the estate. The button opens the estate and nothing else - it calls
+#RoomsModule.set_local_tasks(true), which pins the screen to the mansion - and that screen
+#lists a special task only when its location matches. A quest in some other town is reachable
+#from the bar along the top once the screen is open, but lighting the button for it would
+#promise something the first click does not deliver.
+func has_unstaffed_quest_task():
+	return ResourceScripts.game_res.unstaffed_quest_locations().has(
+		RoomsModule.LocationTasks.MANSION_CODE)
+
+
+func refresh_local_tasks_attention():
+	var needs_attention = has_unstaffed_quest_task()
+	if needs_attention == local_tasks_attention:
+		return
+	local_tasks_attention = needs_attention
+	LocalTasksShimmer.visible = needs_attention
 
 
 func loading_screen_finished():
@@ -246,6 +305,11 @@ func mansion_state_set(state):
 	if mansion_state != 'hidden': mansion_prev_state = mansion_state
 	mansion_state = state
 	if mansion_state == 'hidden': return
+	#Every state but the default one asks the player to pick somebody out of the list, and a
+	#list folded down to its title bar has nobody to pick. Only the default view shares its
+	#space with the floorplan below it.
+	if SlaveListModule != null:
+		SlaveListModule.apply_state_fold(mansion_state == "default")
 	match_state()
 	slave_list_manager()
 	get_node("TutorialButton").show()
@@ -274,6 +338,7 @@ func handle_test():
 
 
 func match_state():
+	refresh_local_tasks_attention()
 	handle_test()
 	if gui_controller.clock != null and visible and mansion_state != 'craft':
 		gui_controller.clock.show()
@@ -318,10 +383,6 @@ func match_state():
 				$MansionJobModule2.close_job_pannel()
 		"travels":
 			$map.open()
-		"upgrades":
-			UpgradesModule_.show()
-			if mansion_state != mansion_prev_state:
-				ResourceScripts.core_animations.UnfadeAnimation(UpgradesModule_, 0.3)
 		"occupation":
 			$MansionSlaveListModule.rebuild()
 			if mansion_state != mansion_prev_state:
@@ -366,7 +427,9 @@ func open_char_info():
 	ResourceScripts.core_animations.UnfadeAnimation(gui_controller.slavepanel, 0.3)
 
 func rebuild_mansion():
+	refresh_local_tasks_attention()
 	$MansionSlaveListModule.update()
+	RoomsModule.queue_refresh()
 	if show_legacy_character_panels:
 		$MansionSkillsModule.build_skill_panel()
 	CraftModule.rebuild_scheldue()
@@ -380,6 +443,9 @@ func rebuild_after_turn(day_extras):
 	yield(get_tree(), 'idle_frame') #always a coroutine, callers yield on 'completed'
 	yield(SlaveListModule.refresh_after_turn(true), 'completed')
 	yield(get_tree(), 'idle_frame')
+	#the floorplan gets its own slice rather than riding on the list's
+	rooms_after_turn()
+	yield(get_tree(), 'idle_frame')
 	if show_legacy_character_panels:
 		$MansionSkillsModule.build_skill_panel()
 	if !day_extras:
@@ -389,6 +455,40 @@ func rebuild_after_turn(day_extras):
 	yield(get_tree(), 'idle_frame')
 	update_legacy_slave_panel()
 	$TutorialButton.show()
+
+
+#What a passed turn does to the floorplan. A turn advances builds, finishes tasks and can
+#leave somebody without a bed, so it is redrawn - and it comes back to work while it is at it,
+#because beds are arranged in a sitting and then done with, and a new day is about who is
+#working. Its own function so the self test can ask for it without sitting through the whole
+#staggered rebuild around it.
+#The estate has two faces: the floorplan is the building, local tasks is the work the estate
+#itself offers. Same place, two things to arrange, so this swaps what the backdrop is drawing
+#rather than opening a screen over it - the slave list and the strip of portraits stay put,
+#which is what people are dragged onto the work from.
+func toggle_local_tasks():
+	if !RoomsModule.in_mansion():
+		sync_local_tasks_button(RoomsModule.place)
+		return
+	#The local tasks screen fills the space the list would occupy, so opening it with the
+	#list standing up leaves the two overlapping. Folding is remembered as the player's own
+	#choice, so the list stays down until they put it back up themselves.
+	if SlaveListModule != null and SlaveListModule.list_fold_state != SlaveListModule.FOLD_FOLDED:
+		SlaveListModule.set_slave_list_fold(SlaveListModule.FOLD_FOLDED, true, true)
+	RoomsModule.set_local_tasks(LocalTasksButton.pressed)
+
+
+func sync_local_tasks_button(_place = null):
+	var at_mansion = RoomsModule.in_mansion()
+	LocalTasksButton.visible = at_mansion
+	LocalTasksButton.pressed = RoomsModule.local_tasks if at_mansion else false
+	refresh_local_tasks_attention()
+
+
+func rooms_after_turn():
+	RoomsModule.mode = 'work'
+	RoomsModule.refresh()
+	refresh_local_tasks_attention()
 
 
 func _turn_product_texture(value):
@@ -516,6 +616,7 @@ func skill_manager():
 	SlaveListModule.rebuild()
 
 func slave_list_manager():
+	refresh_local_tasks_attention()
 	match mansion_state:
 		'default':
 			if mansion_prev_state == "skill" || mansion_prev_state == "sex":
@@ -654,24 +755,59 @@ func test_mode():
 		character.fill_boosters()
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
-		ResourceScripts.game_res.upgrades.resource_gather_veges = 1
-		ResourceScripts.game_res.upgrades.resource_gather_grain = 1
-		ResourceScripts.game_res.upgrades.resource_gather_cloth = 1
-		ResourceScripts.game_res.upgrades.resource_gather_iron = 1
-		ResourceScripts.game_res.upgrades.resource_gather_mithril = 1
-		ResourceScripts.game_res.upgrades.resource_gather_wood = 1
-		ResourceScripts.game_res.upgrades.resource_gather_wood_magic = 1
-		ResourceScripts.game_res.upgrades.resource_gather_wood_iron = 1
-		ResourceScripts.game_res.upgrades.resource_gather_stone = 1
-		ResourceScripts.game_res.upgrades.resource_gather_obsidian = 1
-		ResourceScripts.game_res.upgrades.resource_gather_cloth_silk = 1
 		ResourceScripts.game_res.upgrades.alchemy = 3
 		ResourceScripts.game_res.upgrades.tailor = 3
-		ResourceScripts.game_res.upgrades.rooms = 5
+		#the old 'rooms' upgrade stood here; test mode wants a few bedrooms standing, not a
+		#floor filled edge to edge with them
+		ResourceScripts.game_res.ensure_mansion_layout()
+		#the master's room already widened, so beds mode opens with the one room whose rule is
+		#peculiar - his own bed is held for him however many are added - showing more than one
+		ResourceScripts.game_res.max_out_master_room()
+		#the estate's gathering used to be a row of 'resource_gather_*' upgrades handed out
+		#here; it comes out of the buildings on the grounds now
+		ResourceScripts.game_res.build_test_grounds()
+		ResourceScripts.game_res.bedrooms_at_least(5)
 		ResourceScripts.game_res.upgrades.forge = 3
 		ResourceScripts.game_res.upgrades.resting = 1
 		ResourceScripts.game_res.upgrades.buildertools = 3
 		ResourceScripts.game_res.fix_tax()
+		#A quest waiting at the estate with nobody on it, so the Local tasks button has
+		#something to call attention to. Shaped like the ones the questlines add through the
+		#'add_special_task_for_location' effect - see act4_sebastian_railroad.gd.
+		ResourceScripts.game_res.add_special_job({
+			location = 'aliron',
+			amount = 4,
+			name = "MANSIONVIEW_TESTQUEST",
+			descript = "MANSIONVIEW_TESTQUESTDESCRIPT",
+			max_workers = 2,
+			workstat = 'wits',
+			icon = "res://assets/Textures_v2/MANSION/quest_task.png",
+			args = [],
+		})
+		#and a second one somewhere that is not home, so the navigation strip has a place to
+		#light up. The world is generated fresh here, so the settlement is picked out of it
+		#rather than named - codes like 'L3' are not stable between worlds.
+		var away = null
+		for area in ResourceScripts.game_world.areas.values():
+			for location in area.locations.values():
+				if location.has('id') and location.type != 'capital':
+					away = location.id
+					break
+			if away != null:
+				break
+		if away != null:
+			ResourceScripts.game_res.add_special_job({
+				location = away,
+				amount = 8,
+				name = "MANSIONVIEW_TESTQUESTAWAY",
+				descript = "MANSIONVIEW_TESTQUESTAWAYDESCRIPT",
+				max_workers = 2,
+				workstat = 'wits',
+				icon = "res://assets/Textures_v2/MANSION/quest_task.png",
+				args = [],
+			})
+		else:
+			print_debug("test mode: no settlement found to place the away quest in")
 		
 #		ResourceScripts.game_res.upgrades.tattoo_set = 1
 		var item = globals.CreateGearItem("strapon", {})
@@ -904,7 +1040,7 @@ func test_mode():
 		ResourceScripts.game_res.money = 80000
 		#globals.common_effects("add_money")
 		for i in Items.materiallist:
-			ResourceScripts.game_res.materials[i] = 100
+			ResourceScripts.game_res.materials[i] = 10000
 		globals.AddItemToInventory(globals.CreateGearItem("anastasia_bracelet", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("daisy_dress", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("daisy_dress_lewd", {}))

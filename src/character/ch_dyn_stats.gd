@@ -608,10 +608,20 @@ func fix_stat_data(stat, data):
 				data.bonuses.add = []
 			data.base_value = variables.basic_max_mp + variables.max_mp_per_magic_factor * get_stat('magic_factor')
 			data.bonuses.add.push_back({value = min(get_stat('growth_factor') - 1, get_prof_number()) * 5, src_type = 'factor', src_value = 'growth', timestamp = 0})
+		'hp_reg':
+			#company in the master's own bed, one step of health per bedmate
+			if parent.get_ref().is_master():
+				if !data.bonuses.has('add'):
+					data.bonuses.add = []
+				data.bonuses.add.push_back({value = ResourceScripts.game_res.master_bed_partners(), src_type = 'room', src_value = 'master_bedroom', timestamp = 0})
 		'mp_reg':
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []
 			data.bonuses.add.push_back({value = get_stat('magic_factor') * variables.mp_regen_per_magic, src_type = 'factor', src_value = 'magic', timestamp = 0})
+			#company in the master's own bed. Counted here rather than through an effect
+			#because it is a fact about the room, not about him - see master_bed_partners().
+			if parent.get_ref().is_master():
+				data.bonuses.add.push_back({value = ResourceScripts.game_res.master_bed_partners() * 0.5, src_type = 'room', src_value = 'master_bedroom', timestamp = 0})
 			if ResourceScripts.game_res.has_bath():
 				if !data.bonuses.has('mul2'):
 					data.bonuses.mul2 = []

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=2]
@@ -22,6 +22,43 @@
 [ext_resource path="res://assets/Textures_v2/map_hover.png" type="Texture" id=20]
 [ext_resource path="res://assets/Textures_v2/home_pressed.png" type="Texture" id=21]
 [ext_resource path="res://assets/Textures_v2/map_pressed.png" type="Texture" id=22]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=23]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0509804, 0.0313726, 0.0196078, 0.9 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.65098, 0.52549, 0.266667, 0.9 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.137255, 0.0901961, 0.0627451, 0.98 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.976471, 0.760784, 0.25098, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.207843, 0.137255, 0.0823529, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 0.878431, 0.505882, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="NavigationModule" type="Panel"]
 anchor_right = 1.0
@@ -76,6 +113,7 @@ margin_left = -92.0
 margin_top = -40.0
 margin_right = 92.0
 margin_bottom = 40.0
+mouse_filter = 2
 texture = ExtResource( 7 )
 expand = true
 
@@ -86,11 +124,53 @@ margin_left = 95.0
 margin_top = 46.0
 margin_right = -16.0
 margin_bottom = -8.0
+mouse_filter = 2
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 18 )
 text = "2/2"
 align = 2
 valign = 1
+
+[node name="LocationChoices" type="HBoxContainer" parent="NavigationContainer/AreaSelection/Button"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 12.0
+margin_right = -16.0
+margin_bottom = -12.0
+custom_constants/separation = 2
+
+[node name="Work" type="Button" parent="NavigationContainer/AreaSelection/Button/LocationChoices"]
+margin_right = 182.0
+margin_bottom = 40.0
+mouse_default_cursor_shape = 2
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 1, 0.945098, 0.756863, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 0.898039, 1 )
+custom_fonts/font = ExtResource( 23 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+size_flags_horizontal = 3
+
+[node name="Combat" type="Button" parent="NavigationContainer/AreaSelection/Button/LocationChoices"]
+margin_top = 42.0
+margin_right = 182.0
+margin_bottom = 83.0
+mouse_default_cursor_shape = 2
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 1, 0.945098, 0.756863, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 0.898039, 1 )
+custom_fonts/font = ExtResource( 23 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+size_flags_horizontal = 3
 
 [node name="drop_list" type="TextureButton" parent="."]
 margin_left = 2.0
@@ -149,6 +229,7 @@ margin_left = 6.0
 margin_top = 7.0
 margin_right = 114.0
 margin_bottom = 54.0
+mouse_filter = 2
 texture = ExtResource( 7 )
 expand = true
 
@@ -158,9 +239,51 @@ margin_left = 122.0
 margin_top = 2.0
 margin_right = -6.0
 margin_bottom = 58.0
+mouse_filter = 2
 custom_fonts/font = ExtResource( 1 )
 text = "Mansion - 8/8"
 valign = 1
+
+[node name="LocationChoices" type="HBoxContainer" parent="drop_list/Panel/NavigationContainer/AreaSelection/Button"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 3.0
+margin_right = -4.0
+margin_bottom = -3.0
+custom_constants/separation = 2
+
+[node name="Work" type="Button" parent="drop_list/Panel/NavigationContainer/AreaSelection/Button/LocationChoices"]
+margin_right = 423.0
+margin_bottom = 26.0
+mouse_default_cursor_shape = 2
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 1, 0.945098, 0.756863, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 0.898039, 1 )
+custom_fonts/font = ExtResource( 23 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+size_flags_horizontal = 3
+
+[node name="Combat" type="Button" parent="drop_list/Panel/NavigationContainer/AreaSelection/Button/LocationChoices"]
+margin_top = 28.0
+margin_right = 423.0
+margin_bottom = 54.0
+mouse_default_cursor_shape = 2
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 1, 0.945098, 0.756863, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 0.898039, 1 )
+custom_fonts/font = ExtResource( 23 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+size_flags_horizontal = 3
 
 [node name="travelbutton" type="TextureButton" parent="."]
 margin_left = 2.0

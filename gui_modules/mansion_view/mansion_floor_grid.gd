@@ -13,12 +13,18 @@ const FloorPlans = preload("res://assets/data/mansion_floor_plans.gd")
 #pixels per field tile; the whole 100x100 field is 900x900 at zoom 1
 const TILE_PX = 9
 
-const ZOOM_MIN = 0.6
+#A floor is drawn at its own size or larger, never smaller: shrinking it to fit the band left
+#by the panels made the rooms too small to read and the places inside them too small to aim
+#at. It does not all fit at 100%, which is what panning is for.
+const ZOOM_MIN = 1.0
 const ZOOM_MAX = 2.2
 const ZOOM_STEP = 0.15
 
-const COLOR_FLOOR = Color('2e2a24')
-const COLOR_BLOCKED = Color('4a4038')
+#The shell is painted through rather than over: on the mansion screen the plan lies on the
+#room art instead of in a panel, and a solid slab of floor would put the window back that the
+#frame was taken off to remove. Rooms keep their own opaque colours on top of it.
+const COLOR_FLOOR = Color(0.18, 0.165, 0.141, 0.78)
+const COLOR_BLOCKED = Color(0.29, 0.251, 0.22, 0.85)
 
 var view = null
 
@@ -64,6 +70,12 @@ func get_slot_node(slot_code):
 func update_all():
 	for node in slot_nodes():
 		node.update_slot()
+
+
+#Colours and dimming only, leaving every node where it is - see mansion_slot_node.refresh_marks
+func refresh_marks():
+	for node in slot_nodes():
+		node.refresh_marks()
 
 
 #### painting ####

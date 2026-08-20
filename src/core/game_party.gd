@@ -645,6 +645,9 @@ func fix_serialization_postload():
 		babies[p].fix_serialization_postload()
 	for p in characters_pool.characters:
 		characters_pool.characters[p].fix_serialization_postload()
+	#the household is real from here on, so anybody a loaded save left without a bed can be
+	#given one - the sweep game_res.fix_serialization() attempted had nobody to sweep yet
+	ResourceScripts.game_res.autohouse_household()
 	check_masters_story_fame(false)#better leave it here till game finished, as story conditions may vary
 
 

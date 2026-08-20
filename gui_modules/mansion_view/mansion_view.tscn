@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://gui_modules/mansion_view/mansion_view.gd" type="Script" id=1]
 [ext_resource path="res://gui_modules/mansion_view/mansion_floor_grid.gd" type="Script" id=2]
@@ -8,36 +8,367 @@
 [ext_resource path="res://gui_modules/mansion_view/mansion_rest_panel.gd" type="Script" id=6]
 [ext_resource path="res://gui_modules/mansion_view/mansion_rest_cell.gd" type="Script" id=7]
 [ext_resource path="res://gui_modules/mansion_view/mansion_expel_zone.gd" type="Script" id=8]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_20_normal.tres" type="DynamicFont" id=9]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24.tres" type="DynamicFont" id=10]
-[ext_resource path="res://gui_modules/mansion_view/mansion_location_panel.gd" type="Script" id=11]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=10]
 [ext_resource path="res://gui_modules/mansion_view/mansion_task_room.gd" type="Script" id=12]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=13]
+[ext_resource path="res://gui_modules/mansion_view/mansion_service_panel.gd" type="Script" id=15]
+[ext_resource path="res://gui_modules/mansion_view/mansion_service_cell.gd" type="Script" id=16]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Panel_Square.tres" type="StyleBox" id=18]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/CheckBox.tres" type="Theme" id=19]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HScrollBarElegant.tres" type="Theme" id=20]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=21]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross.png" type="Texture" id=22]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross_hover.png" type="Texture" id=23]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross_pressed.png" type="Texture" id=24]
+[ext_resource path="res://assets/Themes_v2/MANSION/M_Prog_Small_BG.tres" type="StyleBox" id=25]
+[ext_resource path="res://assets/Themes_v2/MANSION/M_Prog_Small_FG.tres" type="StyleBox" id=26]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18.tres" type="DynamicFont" id=27]
+[ext_resource path="res://gui_modules/Universal/Modules/TextTooltipPanel.tscn" type="PackedScene" id=28]
+[ext_resource path="res://gui_modules/Universal/Modules/ItemTooltipV3.tscn" type="PackedScene" id=29]
+[ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=30]
+[ext_resource path="res://assets/Themes_v2/MANSION/M_GoldButton.tres" type="Theme" id=31]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0470588, 0.027451, 0.0196078, 0.92 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.768627, 0.521569, 0.258824, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0705882, 0.0431373, 0.027451, 0.96 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.14902, 0.0980392, 0.054902, 0.98 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.996078, 0.784314, 0.321569, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.0980392, 0.0627451, 0.0352941, 0.96 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.0352941, 0.0235294, 0.0196078, 0.9 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.431373, 0.352941, 0.211765, 0.92 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.2, 0.0509804, 0.0431373, 0.96 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.85098, 0.352941, 0.294118, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.278431, 0.0588235, 0.0470588, 0.98 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.976471, 0.435294, 0.368627, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.0470588, 0.027451, 0.027451, 0.72 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.25098, 0.152941, 0.145098, 0.7 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.0941176, 0.0352941, 0.0313725, 0.92 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.54902, 0.227451, 0.196078, 0.9 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.0352941, 0.0235294, 0.0196078, 0.92 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.431373, 0.352941, 0.211765, 0.95 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="MansionView" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
+theme = ExtResource( 13 )
 script = ExtResource( 1 )
-test_mode = true
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-color = Color( 0.101961, 0.098039, 0.113725, 1 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="GridViewport" type="Control" parent="."]
+margin_left = 40.0
+margin_top = 256.0
+margin_right = 1500.0
+margin_bottom = 1030.0
+rect_clip_content = true
+mouse_filter = 1
+
+[node name="FloorGrid" type="Control" parent="GridViewport"]
+margin_right = 900.0
+margin_bottom = 900.0
+script = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="GridViewport/FloorGrid"]
+visible = false
+margin_right = 162.0
+margin_bottom = 162.0
+rect_min_size = Vector2( 162, 162 )
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = ExtResource( 18 )
+script = ExtResource( 3 )
+
+[node name="bg" type="ColorRect" parent="GridViewport/FloorGrid/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+mouse_filter = 2
+color = Color( 0.294118, 0.262745, 0.207843, 1 )
+
+[node name="HeaderShade" type="ColorRect" parent="GridViewport/FloorGrid/Button"]
+anchor_right = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = 66.0
+mouse_filter = 2
+color = Color( 0.0196078, 0.0117647, 0.00784314, 0.72 )
+
+[node name="icon" type="TextureRect" parent="GridViewport/FloorGrid/Button"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 52.0
+margin_bottom = 52.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="name" type="Label" parent="GridViewport/FloorGrid/Button"]
+margin_left = 58.0
+margin_top = 7.0
+margin_right = 158.0
+margin_bottom = 64.0
+custom_fonts/font = ExtResource( 27 )
+text = "Room"
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="People" type="GridContainer" parent="GridViewport/FloorGrid/Button"]
+margin_left = 8.0
+margin_top = 71.0
+margin_right = 154.0
+margin_bottom = 154.0
+columns = 4
+
+[node name="Button" type="Button" parent="GridViewport/FloorGrid/Button/People"]
+visible = false
+margin_right = 34.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 34, 34 )
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="bg" type="ColorRect" parent="GridViewport/FloorGrid/Button/People/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+mouse_filter = 2
+color = Color( 1, 1, 1, 0.117647 )
+
+[node name="icon" type="TextureRect" parent="GridViewport/FloorGrid/Button/People/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Stairs" type="VBoxContainer" parent="GridViewport/FloorGrid/Button"]
+visible = false
+margin_left = 8.0
+margin_top = 71.0
+margin_right = 154.0
+margin_bottom = 154.0
+custom_constants/separation = 5
+
+[node name="Up" type="Button" parent="GridViewport/FloorGrid/Button/Stairs"]
+margin_right = 146.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 0, 39 )
+mouse_default_cursor_shape = 2
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 9 )
+text = "Up"
+
+[node name="Down" type="Button" parent="GridViewport/FloorGrid/Button/Stairs"]
+margin_top = 44.0
+margin_right = 146.0
+margin_bottom = 83.0
+rect_min_size = Vector2( 0, 39 )
+mouse_default_cursor_shape = 2
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 9 )
+text = "Down"
+
+[node name="Fill" type="Label" parent="GridViewport/FloorGrid/Button"]
+visible = false
+margin_left = 8.0
+margin_top = 71.0
+margin_right = 154.0
+margin_bottom = 154.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "0/0"
+align = 1
+valign = 1
+
+[node name="Craft" type="Label" parent="GridViewport/FloorGrid/Button"]
+visible = false
+margin_left = 8.0
+margin_top = 130.0
+margin_right = 154.0
+margin_bottom = 156.0
+custom_colors/font_color = Color( 0.541176, 0.85098, 0.541176, 1 )
+custom_fonts/font = ExtResource( 9 )
+align = 1
+valign = 1
+clip_text = true
+
+[node name="Progress" type="ProgressBar" parent="GridViewport/FloorGrid/Button"]
+visible = false
+margin_left = 8.0
+margin_top = 132.0
+margin_right = 154.0
+margin_bottom = 154.0
+mouse_filter = 2
+custom_styles/fg = ExtResource( 26 )
+custom_styles/bg = ExtResource( 25 )
+percent_visible = false
+
+[node name="Label" type="Label" parent="GridViewport/FloorGrid/Button/Progress"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "0%"
+align = 1
+valign = 1
+
+[node name="Highlight" type="ColorRect" parent="GridViewport/FloorGrid/Button"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.419608, 0.639216, 0.419608, 0.35 )
 
 [node name="RestPanel" type="Panel" parent="."]
 margin_left = 40.0
 margin_top = 16.0
 margin_right = 1500.0
 margin_bottom = 136.0
+custom_styles/panel = ExtResource( 18 )
 script = ExtResource( 6 )
+
+[node name="Background" type="ColorRect" parent="RestPanel"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+mouse_filter = 2
+color = Color( 0.027451, 0.0156863, 0.0117647, 0.84 )
 
 [node name="Title" type="Label" parent="RestPanel"]
 margin_left = 12.0
 margin_top = 4.0
 margin_right = 400.0
 margin_bottom = 30.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 9 )
 text = "Rest"
 
@@ -51,30 +382,45 @@ custom_colors/font_color = Color( 1, 0.368627, 0.368627, 1 )
 custom_fonts/font = ExtResource( 9 )
 text = "Everyone needs a bed before the turn can end."
 
-[node name="List" type="HBoxContainer" parent="RestPanel"]
+[node name="Scroll" type="ScrollContainer" parent="RestPanel"]
 margin_left = 12.0
 margin_top = 34.0
 margin_right = 1448.0
 margin_bottom = 114.0
-custom_constants/separation = 6
+theme = ExtResource( 20 )
+scroll_horizontal_enabled = false
 
-[node name="Button" type="Button" parent="RestPanel/List"]
+[node name="List" type="GridContainer" parent="RestPanel/Scroll"]
+margin_right = 1436.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 6
+custom_constants/hseparation = 6
+columns = 20
+
+[node name="Button" type="Button" parent="RestPanel/Scroll/List"]
 visible = false
 margin_right = 64.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 64, 80 )
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 6 )
 script = ExtResource( 7 )
 
-[node name="icon" type="TextureRect" parent="RestPanel/List/Button"]
-margin_left = 4.0
-margin_top = 2.0
-margin_right = 60.0
-margin_bottom = 58.0
+[node name="icon" type="TextureRect" parent="RestPanel/Scroll/List/Button"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 59.0
+margin_bottom = 59.0
 mouse_filter = 2
 expand = true
 stretch_mode = 6
 
-[node name="name" type="Label" parent="RestPanel/List/Button"]
+[node name="name" type="Label" parent="RestPanel/Scroll/List/Button"]
 margin_left = 2.0
 margin_top = 58.0
 margin_right = 62.0
@@ -136,36 +482,45 @@ mouse_filter = 2
 custom_constants/separation = 36
 
 [node name="Rooms" type="Label" parent="TopBar/Counters"]
-margin_top = 8.0
-margin_right = 92.0
-margin_bottom = 35.0
+margin_top = 7.0
+margin_right = 99.0
+margin_bottom = 37.0
 custom_fonts/font = ExtResource( 9 )
 text = "Rooms 0/0"
 valign = 1
 
 [node name="Beds" type="Label" parent="TopBar/Counters"]
-margin_left = 128.0
-margin_top = 8.0
-margin_right = 203.0
-margin_bottom = 35.0
+margin_left = 135.0
+margin_top = 7.0
+margin_right = 214.0
+margin_bottom = 37.0
 custom_fonts/font = ExtResource( 9 )
 text = "Beds 0/0"
 valign = 1
 
+[node name="Population" type="Label" parent="TopBar/Counters"]
+margin_left = 250.0
+margin_top = 7.0
+margin_right = 349.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 9 )
+text = "People 0/0"
+valign = 1
+
 [node name="Workplaces" type="Label" parent="TopBar/Counters"]
-margin_left = 239.0
-margin_top = 8.0
-margin_right = 372.0
-margin_bottom = 35.0
+margin_left = 385.0
+margin_top = 7.0
+margin_right = 527.0
+margin_bottom = 37.0
 custom_fonts/font = ExtResource( 9 )
 text = "Workplaces 0/0"
 valign = 1
 
 [node name="Upkeep" type="Label" parent="TopBar/Counters"]
-margin_left = 408.0
-margin_top = 8.0
-margin_right = 489.0
-margin_bottom = 35.0
+margin_left = 563.0
+margin_top = 7.0
+margin_right = 649.0
+margin_bottom = 37.0
 custom_fonts/font = ExtResource( 9 )
 text = "Upkeep 0"
 valign = 1
@@ -187,6 +542,7 @@ anchor_right = 1.0
 margin_left = -580.0
 margin_right = -400.0
 margin_bottom = 44.0
+mouse_default_cursor_shape = 2
 custom_fonts/font = ExtResource( 9 )
 toggle_mode = true
 pressed = true
@@ -198,116 +554,24 @@ anchor_right = 1.0
 margin_left = -390.0
 margin_right = -210.0
 margin_bottom = 44.0
+mouse_default_cursor_shape = 2
 custom_fonts/font = ExtResource( 9 )
 toggle_mode = true
 text = "Beds"
 
-[node name="ModeRearrange" type="Button" parent="TopBar"]
+[node name="RearrangeHint" type="Label" parent="TopBar"]
+visible = false
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -200.0
+margin_left = -390.0
 margin_bottom = 44.0
-custom_fonts/font = ExtResource( 9 )
-toggle_mode = true
-text = "Rearrange"
-
-[node name="GridViewport" type="Control" parent="."]
-margin_left = 40.0
-margin_top = 256.0
-margin_right = 1500.0
-margin_bottom = 1030.0
-rect_clip_content = true
-mouse_filter = 1
-
-[node name="FloorGrid" type="Control" parent="GridViewport"]
-margin_right = 900.0
-margin_bottom = 900.0
-script = ExtResource( 2 )
-
-[node name="Button" type="Button" parent="GridViewport/FloorGrid"]
-visible = false
-margin_right = 162.0
-margin_bottom = 162.0
-rect_min_size = Vector2( 162, 162 )
-flat = true
-script = ExtResource( 3 )
-
-[node name="bg" type="ColorRect" parent="GridViewport/FloorGrid/Button"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-color = Color( 0.294118, 0.262745, 0.207843, 1 )
-
-[node name="icon" type="TextureRect" parent="GridViewport/FloorGrid/Button"]
-margin_left = 8.0
-margin_top = 6.0
-margin_right = 52.0
-margin_bottom = 50.0
-mouse_filter = 2
-expand = true
-stretch_mode = 6
-
-[node name="name" type="Label" parent="GridViewport/FloorGrid/Button"]
-margin_left = 4.0
-margin_top = 54.0
-margin_right = 158.0
-margin_bottom = 80.0
-custom_fonts/font = ExtResource( 9 )
-text = "Room"
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+custom_styles/normal = ExtResource( 18 )
+text = "Pick where it goes"
 align = 1
 valign = 1
-clip_text = true
-
-[node name="People" type="GridContainer" parent="GridViewport/FloorGrid/Button"]
-margin_left = 8.0
-margin_top = 86.0
-margin_right = 154.0
-margin_bottom = 154.0
-columns = 4
-
-[node name="Button" type="Button" parent="GridViewport/FloorGrid/Button/People"]
-visible = false
-margin_right = 34.0
-margin_bottom = 34.0
-rect_min_size = Vector2( 34, 34 )
-flat = true
-script = ExtResource( 4 )
-
-[node name="bg" type="ColorRect" parent="GridViewport/FloorGrid/Button/People/Button"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-color = Color( 1, 1, 1, 0.117647 )
-
-[node name="icon" type="TextureRect" parent="GridViewport/FloorGrid/Button/People/Button"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-expand = true
-stretch_mode = 6
-
-[node name="Progress" type="ProgressBar" parent="GridViewport/FloorGrid/Button"]
-visible = false
-margin_left = 8.0
-margin_top = 132.0
-margin_right = 154.0
-margin_bottom = 154.0
-mouse_filter = 2
-percent_visible = false
-
-[node name="Label" type="Label" parent="GridViewport/FloorGrid/Button/Progress"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-text = "0%"
-align = 1
-valign = 1
-
-[node name="Highlight" type="ColorRect" parent="GridViewport/FloorGrid/Button"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-color = Color( 0.419608, 0.639216, 0.419608, 0.35 )
+autowrap = true
 
 [node name="FloorSelector" type="Control" parent="."]
 margin_left = 1540.0
@@ -374,7 +638,6 @@ margin_top = 256.0
 margin_right = 1880.0
 margin_bottom = 1030.0
 rect_clip_content = true
-script = ExtResource( 11 )
 
 [node name="Background" type="TextureRect" parent="LocationPanel"]
 anchor_right = 1.0
@@ -383,12 +646,31 @@ mouse_filter = 2
 expand = true
 stretch_mode = 6
 
+[node name="LocalShade" type="ColorRect" parent="LocationPanel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+mouse_filter = 2
+color = Color( 0.027451, 0.0156863, 0.0117647, 0.78 )
+
+[node name="LocalFrame" type="Panel" parent="LocationPanel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 18 )
+
 [node name="Title" type="Label" parent="LocationPanel"]
 margin_left = 16.0
 margin_top = 8.0
 margin_right = 800.0
 margin_bottom = 44.0
-custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 21 )
 text = "Location"
 
 [node name="Empty" type="Label" parent="LocationPanel"]
@@ -406,56 +688,95 @@ margin_top = 56.0
 margin_right = 1820.0
 margin_bottom = 760.0
 custom_constants/vseparation = 10
+custom_constants/hseparation = 6
 columns = 8
 
 [node name="Button" type="Button" parent="LocationPanel/Rooms"]
 visible = false
-margin_right = 210.0
-margin_bottom = 170.0
-rect_min_size = Vector2( 210, 170 )
+margin_right = 220.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 220, 200 )
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = ExtResource( 18 )
 script = ExtResource( 12 )
 
+[node name="Background" type="ColorRect" parent="LocationPanel/Rooms/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+mouse_filter = 2
+color = Color( 0.027451, 0.0156863, 0.0117647, 0.8 )
+
 [node name="icon" type="TextureRect" parent="LocationPanel/Rooms/Button"]
-margin_left = 8.0
-margin_top = 6.0
-margin_right = 56.0
-margin_bottom = 54.0
+margin_left = 10.0
+margin_top = 8.0
+margin_right = 58.0
+margin_bottom = 56.0
 mouse_filter = 2
 expand = true
 stretch_mode = 6
 
 [node name="name" type="Label" parent="LocationPanel/Rooms/Button"]
-margin_left = 62.0
+margin_left = 66.0
 margin_top = 8.0
-margin_right = 204.0
-margin_bottom = 54.0
+margin_right = 210.0
+margin_bottom = 52.0
 custom_fonts/font = ExtResource( 9 )
 text = "Task"
 autowrap = true
 clip_text = true
 
 [node name="output" type="Label" parent="LocationPanel/Rooms/Button"]
-margin_left = 8.0
-margin_top = 58.0
-margin_right = 204.0
-margin_bottom = 84.0
+margin_left = 10.0
+margin_top = 54.0
+margin_right = 210.0
+margin_bottom = 78.0
 custom_colors/font_color = Color( 0.541176, 0.85098, 0.541176, 1 )
 custom_fonts/font = ExtResource( 9 )
+clip_text = true
 
 [node name="count" type="Label" parent="LocationPanel/Rooms/Button"]
 visible = false
-margin_left = 8.0
-margin_top = 88.0
-margin_right = 204.0
-margin_bottom = 114.0
+margin_left = 10.0
+margin_top = 90.0
+margin_right = 210.0
+margin_bottom = 116.0
 custom_fonts/font = ExtResource( 9 )
 text = "Left 0"
+align = 2
+clip_text = true
+
+[node name="Progress" type="ProgressBar" parent="LocationPanel/Rooms/Button"]
+visible = false
+margin_left = 10.0
+margin_top = 166.0
+margin_right = 210.0
+margin_bottom = 190.0
+mouse_filter = 2
+custom_styles/fg = ExtResource( 26 )
+custom_styles/bg = ExtResource( 25 )
+percent_visible = false
+
+[node name="Label" type="Label" parent="LocationPanel/Rooms/Button/Progress"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "0%"
+align = 1
+valign = 1
 
 [node name="People" type="GridContainer" parent="LocationPanel/Rooms/Button"]
-margin_left = 8.0
-margin_top = 88.0
-margin_right = 204.0
-margin_bottom = 162.0
+margin_left = 10.0
+margin_top = 92.0
+margin_right = 210.0
+margin_bottom = 192.0
+custom_constants/vseparation = 4
+custom_constants/hseparation = 4
 columns = 5
 
 [node name="Button" type="Button" parent="LocationPanel/Rooms/Button/People"]
@@ -463,181 +784,901 @@ visible = false
 margin_right = 34.0
 margin_bottom = 34.0
 rect_min_size = Vector2( 34, 34 )
-flat = true
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 6 )
 script = ExtResource( 4 )
 
 [node name="bg" type="ColorRect" parent="LocationPanel/Rooms/Button/People/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
 mouse_filter = 2
 color = Color( 1, 1, 1, 0.117647 )
 
 [node name="icon" type="TextureRect" parent="LocationPanel/Rooms/Button/People/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
 mouse_filter = 2
 expand = true
 stretch_mode = 6
 
-[node name="TestButton" type="Button" parent="." groups=["test"]]
-margin_left = 40.0
-margin_top = 1040.0
-margin_right = 240.0
-margin_bottom = 1075.0
-custom_fonts/font = ExtResource( 9 )
-text = "Self test"
+[node name="Overlay" type="CanvasLayer" parent="."]
+layer = 3
 
-[node name="SkipTurnButton" type="Button" parent="." groups=["test"]]
-margin_left = 260.0
-margin_top = 1040.0
-margin_right = 500.0
-margin_bottom = 1075.0
-custom_fonts/font = ExtResource( 9 )
-text = "Skip a day"
-
-[node name="CardCatcher" type="Control" parent="."]
+[node name="CardCatcher" type="Control" parent="Overlay"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="RoomCard" type="Panel" parent="."]
+[node name="RoomCard" type="Panel" parent="Overlay"]
 visible = false
 margin_left = 600.0
-margin_top = 200.0
-margin_right = 1020.0
-margin_bottom = 820.0
-rect_min_size = Vector2( 420, 620 )
+margin_top = 150.0
+margin_right = 1060.0
+margin_bottom = 930.0
+rect_min_size = Vector2( 460, 120 )
+theme = ExtResource( 31 )
+custom_styles/panel = ExtResource( 18 )
 script = ExtResource( 5 )
 
-[node name="Title" type="Label" parent="RoomCard"]
-margin_left = 12.0
-margin_top = 10.0
-margin_right = 372.0
-margin_bottom = 44.0
-custom_fonts/font = ExtResource( 10 )
-text = "Room"
+[node name="Background" type="ColorRect" parent="Overlay/RoomCard"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+mouse_filter = 2
+color = Color( 0.027451, 0.0156863, 0.0117647, 0.94 )
 
-[node name="Subtitle" type="Label" parent="RoomCard"]
-margin_left = 12.0
-margin_top = 48.0
-margin_right = 408.0
-margin_bottom = 74.0
-custom_fonts/font = ExtResource( 9 )
-text = "Beds 0/0"
-
-[node name="Descript" type="Label" parent="RoomCard"]
-margin_left = 12.0
-margin_top = 80.0
-margin_right = 408.0
-margin_bottom = 156.0
-custom_fonts/font = ExtResource( 9 )
-autowrap = true
-
-[node name="Functions" type="Label" parent="RoomCard"]
-margin_left = 12.0
-margin_top = 160.0
-margin_right = 408.0
-margin_bottom = 232.0
-custom_fonts/font = ExtResource( 9 )
-autowrap = true
-
-[node name="Actions" type="HBoxContainer" parent="RoomCard"]
-margin_left = 12.0
-margin_top = 238.0
-margin_right = 408.0
-margin_bottom = 282.0
+[node name="Body" type="VBoxContainer" parent="Overlay/RoomCard"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 12.0
+margin_right = -16.0
+margin_bottom = -12.0
 custom_constants/separation = 8
 
-[node name="DemolishButton" type="Button" parent="RoomCard/Actions"]
-margin_right = 396.0
-margin_bottom = 44.0
-rect_min_size = Vector2( 190, 44 )
-custom_fonts/font = ExtResource( 9 )
-text = "Demolish"
+[node name="Columns" type="HBoxContainer" parent="Overlay/RoomCard/Body"]
+custom_constants/separation = 12
+size_flags_vertical = 3
 
-[node name="Occupants" type="VBoxContainer" parent="RoomCard"]
-margin_left = 12.0
-margin_top = 292.0
-margin_right = 408.0
-margin_bottom = 604.0
-custom_constants/separation = 4
+[node name="LeftColumn" type="VBoxContainer" parent="Overlay/RoomCard/Body/Columns"]
+rect_min_size = Vector2( 428, 0 )
+custom_constants/separation = 8
 
-[node name="Header" type="Label" parent="RoomCard/Occupants"]
-margin_right = 396.0
-margin_bottom = 28.0
+[node name="Title" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+margin_right = 428.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 0, 36 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 21 )
+text = "Room"
+
+[node name="Subtitle" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+margin_top = 44.0
+margin_right = 428.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 0, 28 )
 custom_fonts/font = ExtResource( 9 )
 text = "Beds 0/0"
 
-[node name="List" type="VBoxContainer" parent="RoomCard/Occupants"]
-margin_top = 32.0
-margin_right = 396.0
-margin_bottom = 312.0
+[node name="Descript" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+margin_top = 80.0
+margin_right = 428.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 0, 64 )
+custom_fonts/font = ExtResource( 9 )
+autowrap = true
+
+[node name="Functions" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+margin_top = 152.0
+margin_right = 428.0
+margin_bottom = 182.0
+rect_min_size = Vector2( 0, 30 )
+custom_fonts/font = ExtResource( 9 )
+autowrap = true
+
+[node name="YieldHeader" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+visible = false
+margin_top = 190.0
+margin_right = 428.0
+margin_bottom = 218.0
+rect_min_size = Vector2( 0, 28 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Building yields"
+
+[node name="YieldList" type="VBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+visible = false
+margin_top = 226.0
+margin_right = 428.0
+margin_bottom = 258.0
 custom_constants/separation = 4
 
-[node name="Button" type="Button" parent="RoomCard/Occupants/List"]
+[node name="Row" type="HBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftColumn/YieldList"]
 visible = false
-margin_right = 396.0
-margin_bottom = 34.0
-rect_min_size = Vector2( 396, 34 )
+margin_right = 428.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+custom_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="Overlay/RoomCard/Body/Columns/LeftColumn/YieldList/Row"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Name" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn/YieldList/Row"]
+margin_left = 40.0
+margin_right = 348.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 9 )
-text = "slot"
+text = "Material"
+valign = 1
 
-[node name="BuildList" type="VBoxContainer" parent="RoomCard"]
-visible = false
-margin_left = 12.0
-margin_top = 60.0
-margin_right = 408.0
-margin_bottom = 604.0
-custom_constants/separation = 4
-
-[node name="Button" type="Button" parent="RoomCard/BuildList"]
-visible = false
-margin_right = 396.0
-margin_bottom = 34.0
-rect_min_size = Vector2( 396, 34 )
+[node name="Chance" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn/YieldList/Row"]
+margin_left = 356.0
+margin_right = 428.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 72, 0 )
+custom_colors/font_color = Color( 0.541176, 0.85098, 0.541176, 1 )
 custom_fonts/font = ExtResource( 9 )
-text = "type"
+text = "50%"
+align = 2
+valign = 1
 
-[node name="CandidateList" type="VBoxContainer" parent="RoomCard"]
-visible = false
-margin_left = 12.0
-margin_top = 292.0
-margin_right = 408.0
-margin_bottom = 604.0
-custom_constants/separation = 4
+[node name="Actions" type="HBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+margin_top = 190.0
+margin_right = 428.0
+margin_bottom = 234.0
+rect_min_size = Vector2( 0, 44 )
+custom_constants/separation = 8
 
-[node name="Button" type="Button" parent="RoomCard/CandidateList"]
-visible = false
-margin_right = 396.0
-margin_bottom = 34.0
-rect_min_size = Vector2( 396, 34 )
+[node name="MoveButton" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftColumn/Actions"]
+margin_right = 292.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 0, 44 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 9 )
-text = "candidate"
+text = "Move"
 
-[node name="RepairButton" type="Button" parent="RoomCard"]
+[node name="CraftButton" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftColumn/Actions"]
 visible = false
-margin_left = 12.0
-margin_top = 238.0
-margin_right = 408.0
-margin_bottom = 282.0
+rect_min_size = Vector2( 128, 44 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 9 )
+
+[node name="DemolishButton" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftColumn/Actions"]
+margin_left = 300.0
+margin_right = 428.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 128, 44 )
+custom_colors/font_color_disabled = Color( 0.4, 0.301961, 0.290196, 1 )
+custom_colors/font_color = Color( 0.85098, 0.505882, 0.458824, 1 )
+custom_colors/font_color_hover = Color( 1, 0.745098, 0.686275, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.823529, 0.784314, 1 )
+custom_fonts/font = ExtResource( 9 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 8 )
+text = "Demolish"
+
+[node name="RepairButton" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+visible = false
+margin_top = 286.0
+margin_right = 428.0
+margin_bottom = 330.0
+rect_min_size = Vector2( 0, 44 )
 custom_fonts/font = ExtResource( 9 )
 text = "Clear out"
 
-[node name="CancelButton" type="Button" parent="RoomCard"]
+[node name="CancelButton" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
 visible = false
-margin_left = 12.0
-margin_top = 238.0
-margin_right = 408.0
-margin_bottom = 282.0
+margin_top = 336.0
+margin_right = 428.0
+margin_bottom = 380.0
+rect_min_size = Vector2( 0, 44 )
 custom_fonts/font = ExtResource( 9 )
 text = "Cancel"
 
-[node name="CloseButton" type="Button" parent="RoomCard"]
+[node name="BuildList" type="GridContainer" parent="Overlay/RoomCard/Body"]
+visible = false
+margin_top = 286.0
+margin_right = 864.0
+margin_bottom = 396.0
+custom_constants/vseparation = 5
+custom_constants/hseparation = 8
+columns = 3
+
+[node name="Row" type="Panel" parent="Overlay/RoomCard/Body/BuildList"]
+visible = false
+margin_right = 428.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 428, 84 )
+mouse_filter = 1
+custom_styles/panel = ExtResource( 18 )
+
+[node name="Background" type="ColorRect" parent="Overlay/RoomCard/Body/BuildList/Row"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+mouse_filter = 2
+color = Color( 0.0470588, 0.027451, 0.0196078, 0.88 )
+
+[node name="Icon" type="TextureRect" parent="Overlay/RoomCard/Body/BuildList/Row"]
+margin_left = 9.0
+margin_top = 15.0
+margin_right = 63.0
+margin_bottom = 69.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Title" type="Label" parent="Overlay/RoomCard/Body/BuildList/Row"]
+margin_left = 72.0
+margin_top = 5.0
+margin_right = 418.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 9 )
+text = "Room"
+clip_text = true
+
+[node name="Descript" type="Label" parent="Overlay/RoomCard/Body/BuildList/Row"]
+visible = false
+margin_left = 72.0
+margin_top = 29.0
+margin_right = 418.0
+margin_bottom = 65.0
+custom_colors/font_color = Color( 0.752941, 0.72549, 0.67451, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "Room description"
+autowrap = true
+
+[node name="Bonus" type="Label" parent="Overlay/RoomCard/Body/BuildList/Row"]
+margin_left = 72.0
+margin_top = 32.0
+margin_right = 302.0
+margin_bottom = 54.0
+custom_colors/font_color = Color( 0.541176, 0.85098, 0.541176, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "Beds 4"
+autowrap = true
+
+[node name="Costs" type="HBoxContainer" parent="Overlay/RoomCard/Body/BuildList/Row"]
+margin_left = 72.0
+margin_top = 55.0
+margin_right = 302.0
+margin_bottom = 81.0
+custom_constants/separation = 4
+
+[node name="Cost" type="Control" parent="Overlay/RoomCard/Body/BuildList/Row/Costs"]
+visible = false
+margin_right = 60.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 60, 26 )
+
+[node name="Icon" type="TextureRect" parent="Overlay/RoomCard/Body/BuildList/Row/Costs/Cost"]
+margin_right = 26.0
+margin_bottom = 26.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Amount" type="Label" parent="Overlay/RoomCard/Body/BuildList/Row/Costs/Cost"]
+margin_left = 28.0
+margin_right = 60.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 27 )
+text = "00"
+valign = 1
+clip_text = true
+
+[node name="Action" type="Button" parent="Overlay/RoomCard/Body/BuildList/Row"]
+margin_left = 310.0
+margin_top = 48.0
+margin_right = 418.0
+margin_bottom = 78.0
+mouse_default_cursor_shape = 2
+custom_fonts/font = ExtResource( 27 )
+text = "Build here"
+
+[node name="OrderHeader" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+visible = false
+margin_top = 300.0
+margin_right = 428.0
+margin_bottom = 328.0
+rect_min_size = Vector2( 0, 28 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Order of work"
+
+[node name="OrderList" type="VBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+visible = false
+margin_top = 334.0
+margin_right = 428.0
+margin_bottom = 368.0
+custom_constants/separation = 4
+
+[node name="Button" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftColumn/OrderList"]
+visible = false
+margin_right = 428.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 428, 40 )
+mouse_default_cursor_shape = 2
+custom_fonts/font = ExtResource( 9 )
+toggle_mode = true
+text = "recipe"
+align = 0
+
+[node name="UpgradeHeader" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+visible = false
+margin_top = 326.0
+margin_right = 428.0
+margin_bottom = 354.0
+rect_min_size = Vector2( 0, 28 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Room improvements"
+
+[node name="UpgradeList" type="VBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+visible = false
+margin_top = 360.0
+margin_right = 428.0
+margin_bottom = 444.0
+custom_constants/separation = 5
+
+[node name="Row" type="Panel" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList"]
+visible = false
+margin_right = 428.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 428, 88 )
+mouse_filter = 1
+custom_styles/panel = ExtResource( 18 )
+
+[node name="Background" type="ColorRect" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList/Row"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+mouse_filter = 2
+color = Color( 0.0470588, 0.027451, 0.0196078, 0.88 )
+
+[node name="Icon" type="TextureRect" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList/Row"]
+margin_left = 9.0
+margin_top = 15.0
+margin_right = 63.0
+margin_bottom = 69.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Title" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList/Row"]
+margin_left = 72.0
+margin_top = 5.0
+margin_right = 322.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 9 )
+text = "Improvement"
+clip_text = true
+
+[node name="Level" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList/Row"]
+margin_left = 324.0
+margin_top = 5.0
+margin_right = 418.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "0/3"
+align = 2
+
+[node name="Descript" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList/Row"]
+margin_left = 72.0
+margin_top = 32.0
+margin_right = 418.0
+margin_bottom = 68.0
+custom_colors/font_color = Color( 0.752941, 0.72549, 0.67451, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "Improvement description"
+autowrap = true
+
+[node name="Bonus" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList/Row"]
+margin_left = 72.0
+margin_top = 31.0
+margin_right = 418.0
+margin_bottom = 55.0
+custom_colors/font_color = Color( 0.541176, 0.85098, 0.541176, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "+1"
+autowrap = true
+
+[node name="Costs" type="HBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList/Row"]
+margin_left = 72.0
+margin_top = 55.0
+margin_right = 302.0
+margin_bottom = 84.0
+custom_constants/separation = 4
+
+[node name="Cost" type="Control" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList/Row/Costs"]
+visible = false
+margin_right = 60.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 60, 26 )
+
+[node name="Icon" type="TextureRect" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList/Row/Costs/Cost"]
+margin_right = 26.0
+margin_bottom = 26.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Amount" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList/Row/Costs/Cost"]
+margin_left = 28.0
+margin_right = 60.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 27 )
+text = "00"
+valign = 1
+clip_text = true
+
+[node name="Action" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList/Row"]
+margin_left = 310.0
+margin_top = 54.0
+margin_right = 418.0
+margin_bottom = 83.0
+mouse_default_cursor_shape = 2
+custom_fonts/font = ExtResource( 27 )
+text = "Upgrade"
+
+[node name="PeopleColumn" type="VBoxContainer" parent="Overlay/RoomCard/Body/Columns"]
+visible = false
+rect_min_size = Vector2( 428, 0 )
+custom_constants/separation = 8
+size_flags_vertical = 3
+
+[node name="Occupants" type="VBoxContainer" parent="Overlay/RoomCard/Body/Columns/PeopleColumn"]
+margin_top = 450.0
+margin_right = 428.0
+margin_bottom = 482.0
+custom_constants/separation = 4
+
+[node name="Header" type="Label" parent="Overlay/RoomCard/Body/Columns/PeopleColumn/Occupants"]
+margin_right = 428.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 0, 28 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Beds 0/0"
+
+[node name="List" type="GridContainer" parent="Overlay/RoomCard/Body/Columns/PeopleColumn/Occupants"]
+margin_top = 32.0
+margin_right = 428.0
+margin_bottom = 88.0
+custom_constants/vseparation = 5
+custom_constants/hseparation = 8
+columns = 2
+
+[node name="Button" type="Button" parent="Overlay/RoomCard/Body/Columns/PeopleColumn/Occupants/List"]
+visible = false
+margin_right = 210.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 210, 56 )
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 6 )
+
+[node name="Portrait" type="TextureRect" parent="Overlay/RoomCard/Body/Columns/PeopleColumn/Occupants/List/Button"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 51.0
+margin_bottom = 51.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Name" type="Label" parent="Overlay/RoomCard/Body/Columns/PeopleColumn/Occupants/List/Button"]
+margin_left = 59.0
+margin_top = 5.0
+margin_right = 202.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 9 )
+text = "Person"
+valign = 1
+clip_text = true
+
+[node name="Status" type="Label" parent="Overlay/RoomCard/Body/Columns/PeopleColumn/Occupants/List/Button"]
+margin_left = 59.0
+margin_top = 29.0
+margin_right = 202.0
+margin_bottom = 51.0
+custom_colors/font_color = Color( 0.976471, 0.670588, 0.352941, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "away"
+valign = 1
+clip_text = true
+
+[node name="CandidateScroll" type="ScrollContainer" parent="Overlay/RoomCard/Body/Columns/PeopleColumn"]
+visible = false
+margin_top = 364.0
+margin_right = 428.0
+margin_bottom = 584.0
+rect_min_size = Vector2( 428, 220 )
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="CandidateList" type="VBoxContainer" parent="Overlay/RoomCard/Body/Columns/PeopleColumn/CandidateScroll"]
+margin_right = 428.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+custom_constants/separation = 4
+
+[node name="Button" type="Button" parent="Overlay/RoomCard/Body/Columns/PeopleColumn/CandidateScroll/CandidateList"]
+visible = false
+margin_right = 428.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 428, 56 )
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 6 )
+
+[node name="Portrait" type="TextureRect" parent="Overlay/RoomCard/Body/Columns/PeopleColumn/CandidateScroll/CandidateList/Button"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 51.0
+margin_bottom = 51.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Name" type="Label" parent="Overlay/RoomCard/Body/Columns/PeopleColumn/CandidateScroll/CandidateList/Button"]
+margin_left = 59.0
+margin_top = 5.0
+margin_right = 420.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 9 )
+text = "Person"
+valign = 1
+clip_text = true
+
+[node name="Status" type="Label" parent="Overlay/RoomCard/Body/Columns/PeopleColumn/CandidateScroll/CandidateList/Button"]
+margin_left = 59.0
+margin_top = 29.0
+margin_right = 420.0
+margin_bottom = 51.0
+custom_colors/font_color = Color( 0.976471, 0.670588, 0.352941, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "away"
+valign = 1
+clip_text = true
+
+[node name="CloseButton" type="TextureButton" parent="Overlay/RoomCard"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -42.0
-margin_top = 6.0
-margin_right = -6.0
-margin_bottom = 42.0
+margin_left = -38.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = 38.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 24 )
+texture_hover = ExtResource( 23 )
+expand = true
+stretch_mode = 6
+
+[node name="ServicePanel" type="Panel" parent="Overlay"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 120.0
+margin_top = 90.0
+margin_right = -120.0
+margin_bottom = -90.0
+custom_styles/panel = ExtResource( 18 )
+script = ExtResource( 15 )
+
+[node name="Background" type="ColorRect" parent="Overlay/ServicePanel"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+mouse_filter = 2
+color = Color( 0.027451, 0.0156863, 0.0117647, 0.94 )
+
+[node name="Title" type="Label" parent="Overlay/ServicePanel"]
+margin_left = 24.0
+margin_top = 16.0
+margin_right = 900.0
+margin_bottom = 56.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 21 )
+text = "Service"
+
+[node name="Empty" type="Label" parent="Overlay/ServicePanel"]
+visible = false
+margin_left = 24.0
+margin_top = 108.0
+margin_right = 800.0
+margin_bottom = 144.0
 custom_fonts/font = ExtResource( 9 )
-text = "X"
+text = "Nobody yet."
+
+[node name="OnTaskLabel" type="Label" parent="Overlay/ServicePanel"]
+margin_left = 24.0
+margin_top = 62.0
+margin_right = 800.0
+margin_bottom = 98.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "On this work"
+
+[node name="CloseButton" type="TextureButton" parent="Overlay/ServicePanel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -58.0
+margin_top = 16.0
+margin_right = -18.0
+margin_bottom = 56.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 24 )
+texture_hover = ExtResource( 23 )
+expand = true
+stretch_mode = 6
+
+[node name="Scroll" type="ScrollContainer" parent="Overlay/ServicePanel"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 104.0
+margin_right = -10.0
+margin_bottom = -20.0
+theme = ExtResource( 20 )
+
+[node name="List" type="VBoxContainer" parent="Overlay/ServicePanel/Scroll"]
+margin_right = 810.0
+size_flags_horizontal = 3
+custom_constants/separation = 8
+
+[node name="Button" type="Button" parent="Overlay/ServicePanel/Scroll/List"]
+visible = false
+margin_right = 800.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 0, 84 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 3 )
+script = ExtResource( 16 )
+
+[node name="bg" type="ColorRect" parent="Overlay/ServicePanel/Scroll/List/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+mouse_filter = 2
+color = Color( 1, 1, 1, 0 )
+
+[node name="icon" type="TextureRect" parent="Overlay/ServicePanel/Scroll/List/Button"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 78.0
+margin_bottom = 78.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="name" type="Label" parent="Overlay/ServicePanel/Scroll/List/Button"]
+margin_left = 88.0
+margin_top = 8.0
+margin_right = 790.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 10 )
+text = "Name"
+clip_text = true
+
+[node name="rules" type="Label" parent="Overlay/ServicePanel/Scroll/List/Button"]
+margin_left = 88.0
+margin_top = 42.0
+margin_right = 790.0
+margin_bottom = 78.0
+custom_fonts/font = ExtResource( 9 )
+autowrap = true
+clip_text = true
+
+[node name="Rules" type="Panel" parent="Overlay/ServicePanel"]
+visible = false
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 104.0
+margin_right = -20.0
+margin_bottom = -20.0
+custom_styles/panel = ExtResource( 18 )
+
+[node name="Background" type="ColorRect" parent="Overlay/ServicePanel/Rules"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+mouse_filter = 2
+color = Color( 0.0470588, 0.027451, 0.0196078, 0.96 )
+
+[node name="Title" type="Label" parent="Overlay/ServicePanel/Rules"]
+margin_left = 16.0
+margin_top = 10.0
+margin_right = 600.0
+margin_bottom = 46.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 21 )
+text = "Name"
+
+[node name="RulesTip" type="TextureRect" parent="Overlay/ServicePanel/Rules"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -98.0
+margin_top = 12.0
+margin_right = -62.0
+margin_bottom = 48.0
+texture = ExtResource( 30 )
+expand = true
+stretch_mode = 6
+
+[node name="Scroll" type="ScrollContainer" parent="Overlay/ServicePanel/Rules"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 52.0
+margin_right = -16.0
+margin_bottom = -170.0
+theme = ExtResource( 20 )
+
+[node name="Content" type="VBoxContainer" parent="Overlay/ServicePanel/Rules/Scroll"]
+margin_right = 778.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+custom_constants/separation = 14
+
+[node name="Rules" type="GridContainer" parent="Overlay/ServicePanel/Rules/Scroll/Content"]
+margin_right = 778.0
+size_flags_horizontal = 3
+custom_constants/vseparation = 6
+custom_constants/hseparation = 12
+columns = 3
+
+[node name="Button" type="CheckBox" parent="Overlay/ServicePanel/Rules/Scroll/Content/Rules"]
+visible = false
+margin_right = 246.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 246, 34 )
+theme = ExtResource( 19 )
+custom_fonts/font = ExtResource( 9 )
+text = "Rule"
+
+[node name="Summary" type="RichTextLabel" parent="Overlay/ServicePanel/Rules/Scroll/Content"]
+margin_right = 778.0
+rect_min_size = Vector2( 0, 106 )
+size_flags_horizontal = 3
+custom_fonts/normal_font = ExtResource( 9 )
+bbcode_enabled = true
+fit_content_height = true
+
+[node name="Boosters" type="Control" parent="Overlay/ServicePanel/Rules"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -164.0
+margin_right = -16.0
+margin_bottom = -12.0
+
+[node name="BoostersTip" type="TextureRect" parent="Overlay/ServicePanel/Rules/Boosters"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -18.0
+margin_right = 36.0
+margin_bottom = 18.0
+texture = ExtResource( 30 )
+expand = true
+stretch_mode = 6
+
+[node name="List" type="VBoxContainer" parent="Overlay/ServicePanel/Rules/Boosters"]
+anchor_right = 1.0
+margin_left = 48.0
+custom_constants/separation = 6
+
+[node name="Button" type="CheckBox" parent="Overlay/ServicePanel/Rules/Boosters/List"]
+visible = false
+margin_right = 700.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 0, 42 )
+size_flags_horizontal = 3
+theme = ExtResource( 19 )
+custom_fonts/font = ExtResource( 9 )
+
+[node name="icon" type="TextureRect" parent="Overlay/ServicePanel/Rules/Boosters/List/Button"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 48.0
+margin_top = -16.0
+margin_right = 80.0
+margin_bottom = 16.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Overlay/ServicePanel/Rules/Boosters/List/Button"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 92.0
+margin_top = -16.0
+margin_right = 596.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 9 )
+text = "Booster"
+clip_text = true
+
+[node name="PickPreview" type="TextureRect" parent="Overlay"]
+visible = false
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Frame" type="Panel" parent="Overlay/PickPreview"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -5.0
+margin_top = -5.0
+margin_right = 5.0
+margin_bottom = 5.0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 18 )
+
+[node name="TextTooltip" parent="Overlay" instance=ExtResource( 28 )]
+visible = false
+
+[node name="ItemTooltip" parent="Overlay" instance=ExtResource( 29 )]
+visible = false

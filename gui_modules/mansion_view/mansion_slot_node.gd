@@ -51,6 +51,8 @@ func update_slot():
 		'built':
 			draw_room(room_data())
 	build_people()
+	update_fill()
+	update_craft()
 	update_progress()
 	apply_mode_highlight()
 
@@ -60,6 +62,7 @@ func draw_broken():
 	$icon.texture = null
 	$name.text = tr("MANSIONVIEW_BROKEN")
 	globals.connecttexttooltip(self, tr("MANSIONVIEW_BROKENHINT"), true)
+	$Stairs.visible = false
 
 
 func draw_empty():
@@ -67,6 +70,7 @@ func draw_empty():
 	$icon.texture = null
 	$name.text = tr("MANSIONVIEW_EMPTYROOM")
 	globals.connecttexttooltip(self, tr("MANSIONVIEW_BUILDHERE"), true)
+	$Stairs.visible = false
 
 
 func draw_building():
@@ -78,6 +82,7 @@ func draw_building():
 		$icon.texture = images.upgrade_icons[data.icon] if images.upgrade_icons.has(data.icon) else null
 	$name.text = view.build_label(build)
 	globals.connecttexttooltip(self, "%s\n%s" % [view.build_label(build), view.build_eta_text(build)], true)
+	$Stairs.visible = false
 
 
 func draw_room(room):
@@ -85,7 +90,43 @@ func draw_room(room):
 	$bg.color = Color(data.color)
 	$icon.texture = images.upgrade_icons[data.icon] if images.upgrade_icons.has(data.icon) else null
 	$name.text = tr(RoomTypes.get_name_key(room.type))
-	globals.connecttexttooltip(self, build_tooltip(room), true)
+	draw_stairs(room)
+	set_room_tooltip(room)
+
+
+#The staircase is the one room whose whole use is a choice of two, so it carries them on its
+#face rather than behind a card: there is nothing else a card would have had to say. Each way
+#shows only when there is a floor that way - the grounds are not climbed to, so they are never
+#one of them.
+func draw_stairs(room):
+	var stairs = RoomTypes.has_tag(room.type, 'stairs')
+	#Shown while rooms are being rearranged too - that is when it matters most. A pick carries
+	#the floor it was made on (view.set_pick), so a room can be taken upstairs and put down
+	#there; with the stairs hidden the only way between floors was the bar at the top, and
+	#nothing on the plan said a room could leave its floor at all.
+	$Stairs.visible = stairs
+	if !$Stairs.visible:
+		return
+	for way in [['Up', 1], ['Down', -1]]:
+		var button = $Stairs.get_node(way[0])
+		var target = view.stairs_target(way[1])
+		button.visible = target != null
+		button.text = tr("MANSIONVIEW_GOUP" if way[1] > 0 else "MANSIONVIEW_GODOWN")
+		if button.is_connected("pressed", view, "go_to_floor"):
+			button.disconnect("pressed", view, "go_to_floor")
+		if target != null:
+			button.connect("pressed", view, "go_to_floor", [target])
+
+
+#The card says all of this the moment the room is clicked, and a tooltip nearly the size of
+#the card, following the cursor across the plan, was covering the very rooms it described. It
+#is kept only while rooms are being moved, where what sits in the target is the whole question.
+func set_room_tooltip(room):
+	if view.mode == 'rearrange':
+		globals.connecttexttooltip(self, build_tooltip(room), true)
+		return
+	if is_connected("mouse_entered", globals, 'showtexttooltip'):
+		disconnect("mouse_entered", globals, 'showtexttooltip')
 
 
 func build_tooltip(room):
@@ -103,6 +144,43 @@ func build_tooltip(room):
 	if build != null:
 		text += "\n%s - %s" % [view.build_label(build), view.build_eta_text(build)]
 	return text
+
+
+#A room with beds and no work has nothing to draw in work mode, so it sat there blank with
+#only its name on it - and how full it is, is exactly what somebody arranging the day wants
+#to know about a bedroom. Beds mode draws the beds themselves and needs no count.
+func update_fill():
+	var room = room_data()
+	$Fill.visible = false
+	if room == null or view.mode != 'work' or build_data() != null:
+		return
+	var beds = MansionLayout.sleep_capacity(room)
+	if beds <= 0 or MansionLayout.work_capacity(room) > 0:
+		return
+	$Fill.visible = true
+	$Fill.text = "%d/%d" % [room.occupants.size(), beds]
+
+
+#What a craft room is making this turn. A workshop with people in it looked exactly like a
+#workshop standing idle, and what it was set to was only visible by opening its card - which
+#is a poor place for the one thing that changes every turn.
+func update_craft():
+	var room = room_data()
+	$Craft.visible = false
+	#the bar sits in the same strip while something is being raised here
+	if room == null or view.mode != 'work' or build_data() != null:
+		return
+	var making = ResourceScripts.game_res.room_current_craft(room)
+	if making == null:
+		return
+	var text = ResourceScripts.game_res.craft_result_name(making)
+	if text == "":
+		return
+	$Craft.visible = true
+	$Craft.text = text
+	#the row of workers stops short of the line rather than running under it
+	$People.rect_size = Vector2($People.rect_size.x,
+		max(0.0, $Craft.rect_position.y - $People.rect_position.y - 4.0))
 
 
 #### progress ####
@@ -131,7 +209,7 @@ func build_people():
 	#scaffolding is work, and beds mode is not about work - it would only be in the way
 	if build != null and view.mode != 'sleep':
 		var workers = view.build_workers(build)
-		var capacity = MansionLayout.build_capacity(room_data())
+		var capacity = MansionLayout.build_capacity(room_data(), ResourceScripts.game_res.extra_builder_slots())
 		for char_id in workers:
 			entries.append(['build', char_id])
 		for _i in range(max(0, capacity - workers.size())):
@@ -156,22 +234,55 @@ func places_for_mode():
 		for _i in range(max(0, capacity - room.occupants.size())):
 			res.append(['sleep', null])
 		return res
+	#Three kinds of place, drawn in three colours: what the room has for being what it is,
+	#what its upgrades widened it by, and what stands for a different job in the same room.
+	#A row of identical squares said nothing about which of them an upgrade had paid for.
 	var places = MansionLayout.work_capacity(room)
-	var workers = view.room_workers(room)
-	for char_id in workers:
-		res.append(['work', char_id])
-	for _i in range(max(0, places - workers.size())):
-		res.append(['work', null])
+	var base = MansionLayout.base_work_slots(room)
+	var special = MansionLayout.special_work_slots(room)
+	var ordinary = max(0, places - special)
+	var apart = view.special_worker(room)
+	var queue = []
+	for char_id in view.room_workers(room):
+		if char_id != apart:
+			queue.append(char_id)
+	var taken = 0
+	for i in range(ordinary):
+		var who = null
+		if taken < queue.size():
+			who = queue[taken]
+			taken += 1
+		res.append(['work' if i < base else 'work_upgrade', who])
+	for i in range(special):
+		var who = apart if i == 0 else null
+		if who == null and taken < queue.size():
+			who = queue[taken]
+			taken += 1
+		res.append(['work_special', who])
 	return res
 
 
 #### mode feedback ####
 
+#Re-marks what is already on screen without rebuilding any of it. Called while a drag is in
+#progress, and a rebuild would free the very cell the drag started from.
+func refresh_marks():
+	apply_mode_highlight()
+	for cell in $People.get_children():
+		#the hidden template DuplicateContainerTemplate copies from is a child too, and it
+		#has no view to ask anything of
+		if cell.visible and cell.has_method('refresh') and !cell.is_queued_for_deletion():
+			cell.refresh()
+
+
 func apply_mode_highlight():
 	$Highlight.visible = false
 	if view.mode != 'rearrange':
-		modulate = Color(1, 1, 1, 1)
-		if view.picked_char != null:
+		#Which rooms this mode is even about is a standing fact, not something to be found out
+		#by picking somebody up and watching what lights: in work mode a bedroom is not a
+		#place to work, and it says so before anybody is carried anywhere.
+		modulate = Color(1, 1, 1, 1) if takes_people_in_mode() else Color(0.5, 0.5, 0.5, 1)
+		if view.carried_data() != null:
 			apply_pick_highlight()
 		return
 	if view.picked_slot != null:
@@ -181,7 +292,10 @@ func apply_mode_highlight():
 			return
 		var valid = MansionLayout.can_swap(view.layout(), view.picked_floor, view.picked_slot,
 			view.floor_index(), slot_code).ok
-		modulate = Color(1, 1, 1, 1) if valid else Color(0.45, 0.45, 0.45, 1)
+		#The staircase never trades places with anything, so it fails that question - but it
+		#is not a refused target, it is the way to the floor the room is being carried to.
+		#Dimmed, the one control that still does something read as the one that had stopped.
+		modulate = Color(1, 1, 1, 1) if valid or is_stairs() else Color(0.45, 0.45, 0.45, 1)
 		if valid:
 			set_highlight(COLOR_VALID_TARGET)
 		return
@@ -189,16 +303,39 @@ func apply_mode_highlight():
 	modulate = Color(1, 1, 1, 1) if view.has_any_swap_target(slot_code) else Color(0.5, 0.5, 0.5, 1)
 
 
+#The one room on the plan that is a button rather than somewhere to put anybody.
+func is_stairs():
+	var room = room_data()
+	return room != null and RoomTypes.has_tag(room.type, 'stairs')
+
+
+#Has this slot any place of the sort the current mode is arranging? Scaffolding counts as work,
+#because builders are put on it in work mode.
+func takes_people_in_mode():
+	var room = room_data()
+	#the staircase holds nobody in either mode, but dimming it would read as "not for you"
+	#when it is the one room on the plan that is a button
+	if room != null and RoomTypes.is_fixed(room.type):
+		return true
+	if view.mode == 'sleep':
+		return MansionLayout.sleep_capacity(room) > 0
+	if build_data() != null:
+		return true
+	return MansionLayout.work_capacity(room) > 0
+
+
 #With somebody in hand the whole plan reads as a set of targets, exactly the way it does
 #while rooms are being moved - and what counts as one is the question a drag would ask.
 func apply_pick_highlight():
+	var carried = view.carried_data()
 	#the room they came out of is no target, but dimming it would hide the very cell that
 	#is showing them held
-	if view.picked_char_from == slot_code:
+	if carried.get('from_slot', null) == slot_code:
 		return
-	if can_drop_data(Vector2.ZERO, view.pick_data()):
+	if can_drop_data(Vector2.ZERO, carried):
 		set_highlight(COLOR_VALID_TARGET)
-	else:
+	elif !is_stairs():
+		#somebody in hand rides the stairs to another floor, so it stays lit for them too
 		modulate = Color(0.5, 0.5, 0.5, 1)
 
 
@@ -242,8 +379,36 @@ func can_drop_data(_position, data):
 			return MansionLayout.can_swap(view.layout(), int(data.floor), data.slot,
 				view.floor_index(), slot_code).ok
 		'mansion_char':
-			return first_free_kind() != null
+			return refusal_for(data) == ''
 	return false
+
+
+func take_carried(data):
+	return view.place_character(first_free_kind(), slot_code, data.char_id, null)
+
+
+#Why this slot will not take the person in hand, as a localization key, or an empty string
+#when it will. A drag only needs the yes or no; a click deserves to be told which of the
+#several quite different noes it got, and both come from here so they cannot disagree.
+#
+#"There is no free place here" used to answer for all of them - for an empty slot with
+#nothing built on it, for a kitchen in beds mode, for the staircase. None of those are full.
+func refusal_for(data):
+	if !(data is Dictionary) or data.get('kind', '') != 'mansion_char':
+		return 'MANSIONVIEW_ERR_VOID'
+	if room_data() == null and build_data() == null:
+		return 'MANSIONVIEW_ERR_VOID'
+	#Dropping on the room itself goes to its first free place, so what it would refuse the
+	#master for is that place being a bed. Work and scaffolding are open to him like anyone
+	#else - he sleeps in his own room, he does not stay out of every other one.
+	var free_kind = first_free_kind()
+	if free_kind == 'sleep' and view.is_pinned(data.char_id):
+		return 'MANSIONVIEW_ERR_MASTERPINNED'
+	if free_kind != null:
+		return ''
+	if !takes_people_in_mode():
+		return 'MANSIONVIEW_ERR_NOBEDS' if view.mode == 'sleep' else 'MANSIONVIEW_ERR_NOWORK'
+	return 'MANSIONVIEW_ERR_FULL'
 
 
 #Which sort of place a dropped person would land in. Scaffolding wins while it stands,
@@ -252,7 +417,10 @@ func first_free_kind():
 	if view.mode == 'rearrange':
 		return null
 	var build = build_data()
-	if build != null and view.build_workers(build).size() < MansionLayout.build_capacity(room_data()):
+	#scaffolding is work, and beds mode does not draw builder places at all - offering one
+	#would put somebody where the mode has just told the player nobody goes
+	if build != null and view.mode != 'sleep' \
+			and view.build_workers(build).size() < MansionLayout.build_capacity(room_data(), ResourceScripts.game_res.extra_builder_slots()):
 		return 'build'
 	var room = room_data()
 	if room == null:
@@ -266,9 +434,9 @@ func drop_data(_position, data):
 	match data.kind:
 		'mansion_slot':
 			view.try_swap(int(data.floor), data.slot, view.floor_index(), slot_code)
-			view.clear_pick()
+			view.end_move()
 		'mansion_char':
-			view.place_character(first_free_kind(), slot_code, data.char_id, null)
+			take_carried(data)
 
 
 func make_preview(text, color):

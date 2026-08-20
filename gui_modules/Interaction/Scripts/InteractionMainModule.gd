@@ -144,9 +144,11 @@ func _ready():
 	
 		rebuildparticipantslist()
 	
-	$Panel/BodyDisplay/ragdoll/VPC.light_mask = 16
-	$Panel/BodyDisplay/ragdoll.light_mask = 16
-	$Panel/BodyDisplay/bodymask.range_item_cull_mask = 16
+	# the old paperdoll was cropped by a Light2D mask over its own viewport; the new
+	# doll is a Control that clips itself, so there is nothing here to set
+#	$Panel/BodyDisplay/ragdoll/VPC.light_mask = 16
+#	$Panel/BodyDisplay/ragdoll.light_mask = 16
+#	$Panel/BodyDisplay/bodymask.range_item_cull_mask = 16
 
 
 var OrgasmDenyVictim

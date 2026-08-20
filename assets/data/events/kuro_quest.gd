@@ -1056,7 +1056,8 @@ var data = {
 				dialogue_argument = 9,
 				reqs = [
 
-				]
+				],
+				remove_after_first_use = true
 			},
 			{
 				code = "kuro_whiskey_reply_poison",
@@ -1244,7 +1245,8 @@ var data = {
 				dialogue_argument = 9,
 				reqs = [
 
-				]
+				],
+				remove_after_first_use = true
 			},
 			{
 				code = "close",

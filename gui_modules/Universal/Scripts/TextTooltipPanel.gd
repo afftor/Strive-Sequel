@@ -5,14 +5,17 @@ var Text_x = 565
 var pos_fix = 26
 
 var move_right = false
+#What to stand clear of, when that is not the node being hovered - see globals.connecttexttooltip
+var anchor = null
 
 
-func showup(node, text, move_right = false):
+func showup(node, text, move_right = false, anchor_node = null):
 #	if parentnode.is_connected("tree_exiting", self, "turnoff") == false:
 #		parentnode.connect("tree_exiting", self, "turnoff")
 	if _setup(node):
 		$RichTextLabel.bbcode_text = globals.TextEncoder(text)
 		self.move_right = move_right
+		self.anchor = anchor_node
 
 
 func update():
@@ -55,13 +58,22 @@ func update():
 	$Panel.rect_size.y = tooltip_height
 	$RichTextLabel.rect_size.y = tooltip_height - pos_fix + 2
 	
-	var pos = input_handler.get_real_global_rect(parentnode, true)
+	var against = parentnode
+	if anchor != null and is_instance_valid(anchor) and anchor.is_visible_in_tree():
+		against = anchor
+	var pos = input_handler.get_real_global_rect(against, true)
 	if move_right:
-		pos = Vector2(pos.end.x + 10, pos.position.y)
+		var room_right = pos.end.x + 10
+		#Off the edge to the right, this used to be clamped back - which laid the panel across
+		#the very thing it was explaining, and over the buttons beside it. Step to the other
+		#side instead, and only clamp when neither side has room.
+		if room_right + rect_size.x > screen.end.x and pos.position.x - rect_size.x - 10 >= screen.position.x:
+			room_right = pos.position.x - rect_size.x - 10
+		pos = Vector2(room_right, pos.position.y)
 	else:
 		pos = Vector2(pos.position.x, pos.end.y + 10)
 		if pos.y + rect_size.y > screen.end.y:
-			pos.y = input_handler.get_real_global_rect(parentnode, true).position.y - rect_size.y - 10
+			pos.y = input_handler.get_real_global_rect(against, true).position.y - rect_size.y - 10
 	var max_x = max(screen.position.x, screen.end.x - rect_size.x)
 	var max_y = max(screen.position.y, screen.end.y - rect_size.y)
 	pos.x = clamp(pos.x, screen.position.x, max_x)

@@ -5,6 +5,7 @@ extends Node
 var tasklist = {
 	brothel = {
 		code = 'brothel',
+		production_reqs = [],
 		reqs = [],
 		name = 'TASKBROTHEL',
 		descript = '',
@@ -25,6 +26,7 @@ var tasklist = {
 	},
 	special = { #don't remove - we need fallback for special tasks
 		code = 'special',
+		reqs = [],
 		base_workers = 1,
 		production_icon = "res://assets/Textures_v2/DUNGEON/Icons/exclaim.png",
 		production_descript = tr("JOBPROSTITUTEGOLDDESCRIPT"),
@@ -34,6 +36,7 @@ var tasklist = {
 	},
 	fighters_task = {
 		code = 'fighters_task',
+		reqs = [],
 		base_workers = 1,
 		production_icon = "res://assets/images/gui/service.png",
 		production_descript = tr("JOBPROSTITUTEGOLDDESCRIPT"),
@@ -117,7 +120,7 @@ var tasklist = {
 	},
 	tailor = {
 		code = 'tailor',
-		reqs = [{type = "has_upgrade", name = 'tailor', value = 1}],
+		reqs = [{type = "has_craft_room", name = 'tailor_workshop', value = 1}],
 		name = 'TASKTAILOR',
 		descript = '',
 		workstat = 'physics',
@@ -139,7 +142,7 @@ var tasklist = {
 	},
 	smith = {
 		code = 'smith',
-		reqs = [{type = "has_upgrade", name = 'forge', value = 1}],
+		reqs = [{type = "has_craft_room", name = 'forge', value = 1}],
 		name = 'TASKSMITH',
 		descript = '',
 		workstat = 'physics',
@@ -161,7 +164,7 @@ var tasklist = {
 	},
 	alchemy = {
 		code = 'alchemy',
-		reqs = [{type = "has_upgrade", name = 'alchemy', value = 1}],
+		reqs = [{type = "has_craft_room", name = 'alchemy_room', value = 1}],
 		name = 'TASKALCHEMY',
 		descript = tr("TASKALCHEMYDESCRIPT"),
 		workstat = 'wits',
@@ -182,6 +185,9 @@ var tasklist = {
 	},
 	fishing = {
 		code = 'fishing',
+		#the building on the estate grounds whose places this job draws on -
+		#see game_res._fix_max_workers()
+		room_type = 'fishing_hut',
 		reqs = [],
 		name = 'TASKFISHING',
 		descript = '',
@@ -189,10 +195,10 @@ var tasklist = {
 		worktool = 'rod',
 		base_workers = 1,
 		workers_per_upgrade = 1,
-		upgrade_code = 'resource_gather_fish',
 		#production = {fishing = {code = 'fishing',item = 'fish', progress_per_item = 1.1, reqs = [], progress_function = 'fishing'}},
 		production_code = 'fishing',
 		production_item = 'fish',
+		production_loot = 'prod_task_fishing',
 		progress_per_item = 0.73,
 		progress_function = 'fishing',
 		production_reqs = [],
@@ -202,6 +208,9 @@ var tasklist = {
 	},
 	hunting = {
 		code = 'hunting',
+		#the building on the estate grounds whose places this job draws on -
+		#see game_res._fix_max_workers()
+		room_type = 'hunting_cabin',
 		reqs = [],
 		name = 'TASKHUNTING',
 		descript = '',
@@ -209,10 +218,10 @@ var tasklist = {
 		worktool = 'hunt_knife',
 		base_workers = 0,
 		workers_per_upgrade = 1,
-		upgrade_code = 'resource_gather_meat',
 		#production = {hunting = {code = 'hunting',item = 'meat', progress_per_item = 1, reqs = [], progress_function = 'fishing'}},
 		production_code = 'hunting',
 		production_item = 'meat',
+		production_loot = 'prod_task_hunting',
 		progress_per_item = 0.67,
 		progress_function = 'hunt_meat',
 		production_reqs = [],
@@ -223,82 +232,92 @@ var tasklist = {
 	
 	farming_veges = {
 		code = 'farming_veges',
-		reqs = [{type = 'has_upgrade', name = 'resource_gather_veges', value = 1}],
+		reqs = [],
+		production_reqs = [],
+		#the building on the estate grounds whose places this job draws on -
+		#see game_res._fix_max_workers()
+		room_type = 'garden',
 		name = 'TASKFARMING_VEGES',
 		descript = '',
 		workstat = 'physics',
 		worktool = 'sickle',
 		base_workers = 0,
 		workers_per_upgrade = 1,
-		upgrade_code = 'resource_gather_veges',
 		production_code = 'farming_vege',
 		production_item = 'vegetables',
+		production_loot = 'prod_task_farming_veges',
 		progress_per_item = 0.93,
 		progress_function = 'farming_veges',
-		production_reqs = [{type = "has_upgrade", name = 'resource_gather_veges', value = 1}],
 		icon = null,
 		tags = [],
 		mod = 'mod_farm'
 	},
 	farming_grains = {
 		code = 'farming_grains',
-		reqs = [{type = 'has_upgrade', name = 'resource_gather_grain', value = 1}],
+		reqs = [],
+		production_reqs = [],
+		#the building on the estate grounds whose places this job draws on -
+		#see game_res._fix_max_workers()
+		room_type = 'wheat_field',
 		name = 'TASKFARMING_GRAINS',
 		descript = '',
 		workstat = 'physics',
 		worktool = 'sickle',
 		base_workers = 0,
 		workers_per_upgrade = 1,
-		upgrade_code = 'resource_gather_grain',
 		production_code = 'farming_grain',
 		production_item = 'grain',
+		production_loot = 'prod_task_farming_grains',
 		progress_per_item = 0.8,
 		progress_function = 'farming_wheat',
-		production_reqs = [{type = "has_upgrade", name = 'resource_gather_grain', value = 1}],
 		icon = null,
 		tags = [],
 		mod = 'mod_farm'
 	},
 	farming_cotton = {
 		code = 'farming_cotton',
-		reqs = [{type = 'has_upgrade', name = 'resource_gather_cloth', value = 1}],
+		reqs = [],
+		production_reqs = [],
 		name = 'TASKFARMING_COTTON',
 		descript = '',
 		workstat = 'physics',
 		worktool = 'sickle',
 		base_workers = 0,
 		workers_per_upgrade = 2,
-		upgrade_code = 'resource_gather_cloth',
 		production_code = 'farming_cloth',
 		production_item = 'cloth',
+		production_loot = 'prod_task_farming_cotton',
 		progress_per_item = 0.67,
 		progress_function = 'farming_cloth',
-		production_reqs = [{type = "has_upgrade", name = 'resource_gather_cloth', value = 1}],
 		icon = null,
 		tags = [],
 		mod = 'mod_farm'
 	},
 	farming_cloth_silk = {
 		code = 'farming_cloth_silk',
-		reqs = [{type = 'has_upgrade', name = 'resource_gather_cloth_silk', value = 1}],
+		reqs = [],
+		production_reqs = [],
 		name = 'TASKFARMING_CLOTH_SILK',
 		descript = '',
 		workstat = 'wits',
 		worktool = 'sickle',
 		base_workers = 0,
 		workers_per_upgrade = 1,
-		upgrade_code = 'resource_gather_cloth_silk',
 		production_code = 'farming_cloth_silk',
 		production_item = 'clothsilk',
+		production_loot = 'prod_task_farming_cloth_silk',
 		progress_per_item = 2.5,
 		progress_function = 'farming_cloth',
-		production_reqs = [{type = "has_upgrade", name = 'resource_gather_cloth_silk', value = 1}],
 		icon = null,
 		tags = [],
 		mod = 'mod_farm'
 	},
 	gathering_wood = {
 		code = 'gathering_wood',
+		production_reqs = [],
+		#the building on the estate grounds whose places this job draws on -
+		#see game_res._fix_max_workers()
+		room_type = 'forestry',
 		reqs = [],
 		name = 'TASKGATHERING_WOOD',
 		descript = '',
@@ -307,11 +326,10 @@ var tasklist = {
 		base_workers = 0,
 		workers_per_upgrade = 2,
 		progress_per_item = 0.75,
-		upgrade_code = 'resource_gather_wood',
 		production_code = 'woodgather',
 		production_item = 'wood',
+		production_loot = 'prod_task_gathering_wood',
 		progress_function = 'woodcutting_lumber',
-		production_reqs = [{type = "has_upgrade", name = 'resource_gather_wood', value = 1}],
 		#production = {woodgather  = {code = 'woodgather', item = 'wood', progress_per_item = 4.5, reqs = [{type = "has_upgrade", name = 'resource_gather_wood', value = 1}], progress_function = 'woodcutting_lumber'}},
 		icon = null,
 		tags = [],
@@ -320,19 +338,19 @@ var tasklist = {
 	
 	gathering_wood_magic = {
 		code = 'gathering_wood_magic',
-		reqs = [{type = 'has_upgrade', name = 'resource_gather_wood_magic', value = 1}],
+		reqs = [],
+		production_reqs = [],
 		name = 'TASKGATHERING_WOOD_MAGIC',
 		descript = '',
 		workstat = 'physics',
 		worktool = 'axe',
 		base_workers = 0,
 		workers_per_upgrade = 1,
-		upgrade_code = 'resource_gather_wood_magic',
 		production_code = 'gathering_wood_magic',
 		production_item = 'woodmagic',
+		production_loot = 'prod_task_gathering_wood_magic',
 		progress_per_item = 2.5,
 		progress_function = 'woodmagiccutting_lumber',
-		production_reqs = [{type = "has_upgrade", name = 'resource_gather_wood_magic', value = 1}],
 		icon = null,
 		tags = [],
 		mod = 'mod_collect'
@@ -340,19 +358,19 @@ var tasklist = {
 	
 	gathering_wood_iron = {
 		code = 'gathering_wood_iron',
-		reqs = [{type = 'has_upgrade', name = 'resource_gather_wood_iron', value = 1}],
+		reqs = [],
+		production_reqs = [],
 		name = 'TASKGATHERING_WOOD_IRON',
 		descript = '',
 		workstat = 'physics',
 		worktool = 'axe',
 		base_workers = 0,
 		workers_per_upgrade = 1,
-		upgrade_code = 'resource_gather_wood_iron',
 		production_code = 'gathering_wood_iron',
 		production_item = 'woodiron',
+		production_loot = 'prod_task_gathering_wood_iron',
 		progress_per_item = 3,
 		progress_function = 'woodironcutting_lumber',
-		production_reqs = [{type = "has_upgrade", name = 'resource_gather_wood_iron', value = 1}],
 		icon = null,
 		tags = [],
 		mod = 'mod_collect'
@@ -360,6 +378,9 @@ var tasklist = {
 	
 	mining_stone = {
 		code = 'mining_stone',
+		#the building on the estate grounds whose places this job draws on -
+		#see game_res._fix_max_workers()
+		room_type = 'mine',
 		reqs = [],
 		name = 'TASKMINING_STONE',
 		descript = '',
@@ -368,9 +389,9 @@ var tasklist = {
 		base_workers = 0,
 		workers_per_upgrade = 2,
 		progress_per_item = 0.5,
-		upgrade_code = 'resource_gather_stone',
 		production_code = 'gatherstone',
 		production_item = 'stone',
+		production_loot = 'prod_task_mining_stone',
 		progress_function = 'mining_stone',
 		production_reqs = [],
 		#production = {gatherstone = {code = 'gatherstone', item = 'stone', progress_per_item = 3, reqs = [], progress_function = 'mining_stone'}},
@@ -381,19 +402,19 @@ var tasklist = {
 	
 	mining_iron = {
 		code = 'mining_iron',
-		reqs = [{type = 'has_upgrade', name = 'resource_gather_iron', value = 1}],
+		reqs = [],
+		production_reqs = [],
 		name = 'TASKMINING_IRON',
 		descript = '',
 		workstat = 'physics',
 		worktool = 'pickaxe',
 		base_workers = 0,
 		workers_per_upgrade = 2,
-		upgrade_code = 'resource_gather_iron',
 		production_code = 'mining_iron',
 		production_item = 'iron',
+		production_loot = 'prod_task_mining_iron',
 		progress_per_item = 1,
 		progress_function = 'mining_iron',
-		production_reqs = [{type = "has_upgrade", name = 'resource_gather_iron', value = 1}],
 		icon = null,
 		tags = [],
 		mod = 'mod_collect'
@@ -401,38 +422,38 @@ var tasklist = {
 	
 	mining_mithril = {
 		code = 'mining_mithril',
-		reqs = [{type = 'has_upgrade', name = 'resource_gather_mithril', value = 1}],
+		reqs = [],
+		production_reqs = [],
 		name = 'TASKMINING_MITHRIL',
 		descript = '',
 		workstat = 'physics',
 		worktool = 'pickaxe',
 		base_workers = 0,
 		workers_per_upgrade = 1,
-		upgrade_code = 'resource_gather_mithril',
 		production_code = 'mining_mithril',
 		production_item = 'mithril',
+		production_loot = 'prod_task_mining_mithril',
 		progress_per_item = 5.83,
 		progress_function = 'mining_mithril',
-		production_reqs = [{type = "has_upgrade", name = 'resource_gather_mithril', value = 1}],
 		icon = null,
 		tags = [],
 		mod = 'mod_collect'
 	},
 	mining_obsidian = {
 		code = 'mining_obsidian',
-		reqs = [{type = 'has_upgrade', name = 'resource_gather_obsidian', value = 1}],
+		reqs = [],
+		production_reqs = [],
 		name = 'TASKMINING_OBSIDIAN',
 		descript = '',
 		workstat = 'physics',
 		worktool = 'pickaxe',
 		base_workers = 0,
 		workers_per_upgrade = 1,
-		upgrade_code = 'resource_gather_obsidian',
 		production_code = 'mining_obsidian',
 		production_item = 'obsidian',
+		production_loot = 'prod_task_mining_obsidian',
 		progress_per_item = 2.5,
 		progress_function = 'mining_stone',
-		production_reqs = [{type = "has_upgrade", name = 'resource_gather_obsidian', value = 1}],
 		icon = null,
 		tags = [],
 		mod = 'mod_collect'
@@ -576,64 +597,76 @@ var gold_tasks_data = {
 var farm_tasks = {
 	milk = {
 		code = 'milk',
+		production_loot = 'prod_farm_milk',
 		formula = 'farm_milk',
 		reqs = [{code = 'stat', stat = 'lactation', operant = 'eq', value = true}],
 	},
 	pheromones = {
 		code = 'pheromones',
+		production_loot = 'prod_farm_pheromones',
 		formula = 'farm_pheromones',
 		reqs = [{code = 'race_is_beast', check = true}],
 	},
 	seed = {
 		code = 'seed',
+		production_loot = 'prod_farm_seed',
 		formula = 'farm_seed',
 		#TODO: recheck reqs here, orflag in first req makes it irrelevant
 		reqs = [{code = 'stat', stat = 'balls_size', operant = 'neq', value = '', orflag = true}, {code = 'stat', stat = 'penis_size', operant = 'neq', value = ''}],
 	},
 	eggs = {
 		code = 'eggs',
+		production_loot = 'prod_farm_eggs',
 		formula = 'farm_eggs',
 		reqs = [{code = 'has_status', status = 'oviposition', check = true}, {code = 'stat', stat = 'has_womb', operant = 'eq', value = true}],
 	},
 	magic_dust = {
 		code = 'magic_dust',
+		production_loot = 'prod_farm_magic_dust',
 		formula = 'farm_dust',
 		reqs = [{code = 'race', race = 'Fairy', check = true}, {orflag = true, code= 'race', race = 'Elf', check = true}, {orflag = true, code = 'race', race = 'DarkElf', check = true}, {orflag = true, code= 'race', race = 'TribalElf', check = true}, {orflag = true, code = 'stat', stat = 'magic_factor', operant = 'gte', value = 5}],
 	},
 	reptile_blood = {
 		code = 'reptile_blood',
+		production_loot = 'prod_farm_reptile_blood',
 		formula = 'farm_blood',
 		reqs = [{code = 'race', race = 'Kobold', check = true}, {orflag = true, code= 'race', race = 'Dragonkin', check = true}, {orflag = true, code= 'race', race = 'Lamia', check = true}],
 	},
 	
 	lizard_skin = {
 		code = 'lizard_skin',
+		production_loot = 'prod_farm_lizard_skin',
 		formula = 'farm_lizard_skin',
 		reqs = [{code = 'race', race = 'Kobold', check = true}, {orflag = true, code= 'race', race = 'Dragonkin', check = true}, {orflag = true, code= 'race', race = 'Lamia', check = true}],
 	},
 	spider_silk = {
 		code = 'spider_silk',
+		production_loot = 'prod_farm_spider_silk',
 		formula = 'farm_silk',
 		reqs = [{code = 'has_status', status = 'silksecretion', check = true}],
 	},
 	light_essence = {
 		code = 'light_essence',
+		production_loot = 'prod_farm_light_essence',
 		formula = 'farm_light',
 		reqs = [{code = 'race', race = 'Seraph', check = true}],
 	},
 	draconic_scales = {
 		code = 'draconic_scales',
+		production_loot = 'prod_farm_draconic_scales',
 		formula = 'farm_scales',
 		reqs = [{code = 'race', race = 'Dragonkin', check = true}],
 	},
 	
 	leatherdragon = {
 		code = 'leatherdragon',
+		production_loot = 'prod_farm_leatherdragon',
 		formula = 'farm_leatherdragon',
 		reqs = [{code = 'race', race = 'Dragonkin', check = true}],
 	},
 	dark_essence = {
 		code = 'dark_essence',
+		production_loot = 'prod_farm_dark_essence',
 		formula = 'farm_dark',
 		reqs = [{code = 'race', race = 'Demon', check = true}],
 	},
@@ -646,3 +679,22 @@ func find_task_for_res(res):
 		if tasklist[i].has("production_item") and tasklist[i].production_item == res:
 			return i
 	return null
+
+
+#The loot table a piece of work produces from. Estate jobs and farm products name theirs on
+#their own template; raw gathering at a settlement has no template behind it at all, only the
+#material being dug up, so it looks up the table named after that material.
+#An answer naming no existing table is not an error - loot.get_production_record() then falls
+#back to a single-material record, which is the fixed output every one of these used to have.
+func find_production_loot(task_code, material = ''):
+	if task_code != null and tasklist.has(task_code) and tasklist[task_code].has('production_loot'):
+		return tasklist[task_code].production_loot
+	if material is String and !material.empty():
+		return 'prod_res_' + material
+	return ''
+
+
+func find_farm_production_loot(res):
+	if farm_tasks.has(res) and farm_tasks[res].has('production_loot'):
+		return farm_tasks[res].production_loot
+	return ''

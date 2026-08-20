@@ -14,9 +14,8 @@
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_all_hover.png" type="Texture" id=12]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_all.png" type="Texture" id=13]
 [ext_resource path="res://assets/Textures_v2/Tattoo/icon_tattoo_hover.png" type="Texture" id=14]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/body_mask.png" type="Texture" id=15]
 [ext_resource path="res://assets/Textures_v2/Tattoo/icon_tattoo.png" type="Texture" id=16]
-[ext_resource path="res://ragdoll.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Character_generator/Doll2Spine/Doll2View.tscn" type="PackedScene" id=38]
 [ext_resource path="res://gui_modules/Inventory/Scripts/InventoryGearModule.gd" type="Script" id=18]
 [ext_resource path="res://assets/Textures_v2/Tattoo/frame_tattoo.png" type="Texture" id=19]
 [ext_resource path="res://assets/images/iconsitems/cell/legs.png" type="Texture" id=20]
@@ -60,21 +59,10 @@ texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
 
-[node name="ragdoll" parent="." instance=ExtResource( 17 )]
+[node name="ragdoll" parent="." instance=ExtResource( 38 )]
+rect_position = Vector2( -36.6, 15.4 )
+rect_size = Vector2( 780.6, 1043.8 )
 show_behind_parent = true
-position = Vector2( 340, 454.238 )
-scale = Vector2( 0.8, 0.8 )
-
-[node name="bodymask" type="Light2D" parent="."]
-position = Vector2( 353.676, 537.294 )
-scale = Vector2( 1.13454, 1.13454 )
-texture = ExtResource( 15 )
-mode = 3
-range_item_cull_mask = 4
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="InventorySlots" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0

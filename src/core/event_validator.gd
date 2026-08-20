@@ -147,6 +147,8 @@ var req_types = {
 	"hour": true,
 	"gamestart": true,
 	"has_upgrade": true,
+	"has_craft_room": true,
+	"has_mansion_room": true,
 	"area_progress": true,
 	"decision": true,
 	"has_multiple_decisions": true,

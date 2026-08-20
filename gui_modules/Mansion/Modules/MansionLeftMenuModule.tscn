@@ -1,15 +1,13 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionLeftMenuModule.gd" type="Script" id=2]
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_gears_small.png" type="Texture" id=4]
-[ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Icons/icon_upgrades_small.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Buttons/buttonicon_pressed.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Icons/icon_craft_small.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Buttons/buttonicon.png" type="Texture" id=8]
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_journal_small.png" type="Texture" id=9]
 [ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Buttons/buttonicon_hover.png" type="Texture" id=10]
-[ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Icons/icon_travel_small.png" type="Texture" id=11]
 [ext_resource path="res://assets/Textures_v2/MANSION/panel_menu.png" type="Texture" id=12]
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_job2_small.png" type="Texture" id=13]
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_sexbad_small.png" type="Texture" id=14]
@@ -24,21 +22,25 @@ margin_top = 8.0
 margin_bottom = 8.0
 
 [sub_resource type="AtlasTexture" id=2]
+flags = 4
 atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 58, 58 )
 
 [sub_resource type="AtlasTexture" id=3]
+flags = 4
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 58, 58 )
 
 [sub_resource type="AtlasTexture" id=4]
+flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 0, 0, 58, 58 )
 
 [node name="MansionBottomLeftModule" type="TextureRect"]
+margin_top = 63.0
 margin_right = 74.0
 margin_bottom = 443.0
-rect_min_size = Vector2( 74, 443 )
+rect_min_size = Vector2( 74, 380 )
 script = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
@@ -51,7 +53,7 @@ custom_styles/panel = SubResource( 1 )
 margin_left = 8.0
 margin_top = 7.0
 margin_right = 66.0
-margin_bottom = 436.0
+margin_bottom = 375.0
 custom_constants/separation = 4
 
 [node name="WorkButton" type="TextureButton" parent="VBoxContainer"]
@@ -78,7 +80,6 @@ margin_left = 66.0
 margin_top = -3.0
 margin_right = 274.0
 margin_bottom = 56.0
-mouse_filter = 2
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
@@ -88,80 +89,10 @@ text = "LMMWORK"
 valign = 1
 clip_text = true
 
-[node name="TravelsButton" type="TextureButton" parent="VBoxContainer"]
-visible = false
-margin_top = 62.0
-margin_right = 58.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 58, 58 )
-toggle_mode = true
-texture_normal = SubResource( 2 )
-texture_pressed = SubResource( 3 )
-texture_hover = SubResource( 4 )
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TravelsButton"]
-margin_left = 7.37041
-margin_top = 7.18747
-margin_right = 51.3705
-margin_bottom = 51.1875
-texture = ExtResource( 11 )
-
-[node name="Label" type="Label" parent="VBoxContainer/TravelsButton"]
-visible = false
-margin_left = 66.0
-margin_top = -3.0
-margin_right = 274.0
-margin_bottom = 56.0
-mouse_filter = 2
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 2
-custom_constants/shadow_offset_y = 2
-custom_fonts/font = ExtResource( 1 )
-text = "LMMTRAVEL"
-valign = 1
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="UpgradesButton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 62.0
-margin_right = 58.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 58, 58 )
-toggle_mode = true
-texture_normal = SubResource( 2 )
-texture_pressed = SubResource( 3 )
-texture_hover = SubResource( 4 )
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/UpgradesButton"]
-margin_left = 6.88074
-margin_top = 7.05927
-margin_right = 50.8807
-margin_bottom = 51.0593
-texture = ExtResource( 5 )
-
-[node name="Label2" type="Label" parent="VBoxContainer/UpgradesButton"]
-visible = false
-margin_left = 66.0
-margin_top = 3.0
-margin_right = 274.0
-margin_bottom = 51.0
-mouse_filter = 2
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 2
-custom_constants/shadow_offset_y = 2
-custom_fonts/font = ExtResource( 1 )
-text = "LMMUPGRADES"
-valign = 1
-clip_text = true
-
 [node name="SexButton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 124.0
+margin_top = 62.0
 margin_right = 58.0
-margin_bottom = 182.0
+margin_bottom = 120.0
 rect_min_size = Vector2( 58, 58 )
 toggle_mode = true
 texture_normal = SubResource( 2 )
@@ -183,7 +114,6 @@ margin_left = 66.0
 margin_top = -3.0
 margin_right = 274.0
 margin_bottom = 56.0
-mouse_filter = 2
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
@@ -197,9 +127,9 @@ __meta__ = {
 }
 
 [node name="InventoryButton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 186.0
+margin_top = 124.0
 margin_right = 58.0
-margin_bottom = 244.0
+margin_bottom = 182.0
 rect_min_size = Vector2( 58, 58 )
 texture_normal = SubResource( 2 )
 texture_pressed = SubResource( 3 )
@@ -223,7 +153,6 @@ margin_left = 66.0
 margin_top = -3.0
 margin_right = 274.0
 margin_bottom = 56.0
-mouse_filter = 2
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
@@ -237,9 +166,9 @@ __meta__ = {
 }
 
 [node name="CraftButton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 248.0
+margin_top = 186.0
 margin_right = 58.0
-margin_bottom = 306.0
+margin_bottom = 244.0
 rect_min_size = Vector2( 58, 58 )
 toggle_mode = true
 texture_normal = SubResource( 2 )
@@ -262,7 +191,6 @@ margin_left = 66.0
 margin_top = -3.0
 margin_right = 274.0
 margin_bottom = 56.0
-mouse_filter = 2
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
@@ -276,9 +204,9 @@ __meta__ = {
 }
 
 [node name="Journal" type="TextureButton" parent="VBoxContainer"]
-margin_top = 310.0
+margin_top = 248.0
 margin_right = 58.0
-margin_bottom = 368.0
+margin_bottom = 306.0
 rect_min_size = Vector2( 58, 58 )
 toggle_mode = true
 texture_normal = SubResource( 2 )
@@ -300,7 +228,6 @@ margin_left = 66.0
 margin_top = -4.0
 margin_right = 274.0
 margin_bottom = 55.0
-mouse_filter = 2
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
@@ -314,9 +241,9 @@ __meta__ = {
 }
 
 [node name="options" type="TextureButton" parent="VBoxContainer"]
-margin_top = 372.0
+margin_top = 310.0
 margin_right = 58.0
-margin_bottom = 430.0
+margin_bottom = 368.0
 rect_min_size = Vector2( 58, 58 )
 texture_normal = SubResource( 2 )
 texture_pressed = SubResource( 3 )
@@ -337,7 +264,6 @@ margin_left = 66.0
 margin_top = -3.74915
 margin_right = 274.0
 margin_bottom = 55.2509
-mouse_filter = 2
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2

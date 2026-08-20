@@ -269,8 +269,12 @@ const BONES = [
 	"target6",
 	"target7",
 	"target8",
-	"head19",
-	"head20",
+	"eyes_l",
+	"eyes_r",
+	"ear_l",
+	"ear_r",
+	"ear_lt",
+	"ear_rt",
 ]
 
 const SLOTS = [

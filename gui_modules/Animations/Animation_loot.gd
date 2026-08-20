@@ -33,7 +33,7 @@ func open(loot): #, message):
 		newbutton.get_node("AnimationPlayer").play("LootButton")
 		newbutton.get_node("Label").text = str(loot.materials[i])
 		globals.connectmaterialtooltip(newbutton, Items.materiallist[i])
-		ResourceScripts.game_res.materials[i] += loot.materials[i]
+		ResourceScripts.game_res.gain_material(i, loot.materials[i])
 		yield(get_tree().create_timer(0.2), "timeout")
 	if loot.gold > 0:
 		newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/GridContainer)

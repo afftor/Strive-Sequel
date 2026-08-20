@@ -108,7 +108,7 @@ func _ready():
 	modding_core.load_mods()
 	Effectdata.fix_eff_data()
 	
-	if OS.has_feature('editor'):
+	if OS.has_feature('editor') && false:
 		for loc_path in input_handler.scanfolder(variables.LocalizationFolder):
 			var loc_code = loc_path.replace(variables.LocalizationFolder, '')
 			if loc_code != "en":
@@ -351,10 +351,13 @@ func disconnect_text_tooltip(node):
 	if node.is_connected("mouse_entered",self,'showtexttooltip'):
 		node.disconnect("mouse_entered",self,'showtexttooltip')
 
-func connecttexttooltip(node, text, move_right = false):
+#"anchor" is what the panel is placed against, when that is not the thing being hovered. A row
+#inside a card wants the whole card stood clear of, not just itself: placed against the row,
+#a tall tooltip covers the rows under it and the buttons on them.
+func connecttexttooltip(node, text, move_right = false, tooltip_node = null, anchor = null):
 	if node.is_connected("mouse_entered",self,'showtexttooltip'):
 		node.disconnect("mouse_entered",self,'showtexttooltip')
-	node.connect("mouse_entered",self,'showtexttooltip', [node, text, move_right])
+	node.connect("mouse_entered",self,'showtexttooltip', [node, text, move_right, tooltip_node, anchor])
 
 func get_character_personality_tooltip(personality):
 	var text = tr("INFOPERSONALITY")
@@ -373,11 +376,13 @@ func highlight_current_personality_bonus_tooltip(text, personality):
 	var section = text.substr(section_start, section_end - section_start)
 	return text.substr(0, section_start) + "{color=green|" + section + "}" + text.substr(section_end, text.length() - section_end)
 
-func showtexttooltip(node, text, move_right):
+func showtexttooltip(node, text, move_right, tooltip_node = null, anchor = null):
 	if node == null or !is_instance_valid(node) or !node.is_visible_in_tree():
 		return
-	var texttooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP) #input_handler.GetTextTooltip()
-	texttooltip.showup(node, text, move_right)
+	var texttooltip = tooltip_node
+	if texttooltip == null or !is_instance_valid(texttooltip):
+		texttooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP) #input_handler.GetTextTooltip()
+	texttooltip.showup(node, text, move_right, anchor)
 
 func connectitemtooltip(node, item):
 	if node.is_connected("mouse_entered",item,'tooltip'):
@@ -460,13 +465,12 @@ func closeclasstooltip():
 #	if node.is_connected("mouse_entered",item,'tooltip'):
 #		node.disconnect("mouse_entered",item,'tooltip')
 
-func connectmaterialtooltip(node, material, bonustext = '', type = null):
+func connectmaterialtooltip(node, material, bonustext = '', type = null, tooltip_node = null):
 	if node.is_connected("mouse_entered",self,'mattooltip'):
 		node.disconnect("mouse_entered",self,'mattooltip')
 	if type == null:
-		node.connect("mouse_entered",self,'mattooltip', [node, material, bonustext])
-	else:
-		node.connect("mouse_entered",self,'mattooltip', [node, material, bonustext, type])
+		type = 'materialowned'
+	node.connect("mouse_entered",self,'mattooltip', [node, material, bonustext, type, tooltip_node])
 
 func connectslavetooltip(node, person):
 	if node.is_connected("mouse_entered",self,'slavetooltip'):
@@ -528,9 +532,11 @@ func get_food_state_tooltip(person):
 	return res
 
 
-func mattooltip(targetnode, material, bonustext = '', type = 'materialowned'):
+func mattooltip(targetnode, material, bonustext = '', type = 'materialowned', tooltip_node = null):
 	var image
-	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP) #input_handler.GetItemTooltip()
+	var node = tooltip_node
+	if node == null or !is_instance_valid(node):
+		node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP) #input_handler.GetItemTooltip()
 	var data = {}
 	var text = material.descript #'[center]' + material.name + '[/center]\n' + material.descript
 	text += get_food_info_text(material)
@@ -1562,7 +1568,7 @@ func calculate_travel_time(location1, location2): #2remade to new mechanic
 		if !(adata1.code in ['forests', 'beastkin_tribe']) or !(adata2.code in ['forests', 'beastkin_tribe']):
 			time += adata1.travel_time + adata2.travel_time
 	
-	time = max(1, time - variables.stable_boost_per_level * ResourceScripts.game_res.upgrades.stables)
+	time = max(1, time - variables.stable_boost_per_level * ResourceScripts.game_res.findupgradelevel('stables'))
 	return {time = time}
 
 
@@ -2012,7 +2018,7 @@ func Reward(selectedquest, suspend_rep = false):
 			* variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
 	if selectedquest.rewards.has('materials'):
 		for i in selectedquest.rewards.materials:
-			ResourceScripts.game_res.materials[i] += selectedquest.rewards.materials[i]
+			ResourceScripts.game_res.gain_material(i, selectedquest.rewards.materials[i])
 	if selectedquest.rewards.has('items'):
 		for i in selectedquest.rewards.items:
 			AddItemToInventory(i)
@@ -3005,6 +3011,19 @@ func valuecheck(dict):
 			return ResourceScripts.game_globals.newgame
 		"has_upgrade":
 			return ResourceScripts.game_res.if_has_upgrade(dict.name, dict.value)
+		#a room on the plan improved to at least this level - what widens what the estate's
+		#outdoor buildings bring up, see the prod_task_* tables in loot_data.gd
+		"has_room_upgrade":
+			return ResourceScripts.game_res.room_upgrade_level(dict.name, dict.code) >= int(dict.value)
+		#a craft room good enough for this recipe - built, and with tools enough. This replaced
+		#the global 'forge'/'tailor'/'alchemy' upgrades, which were the same three steps bought
+		#from a menu instead of stood up on the plan.
+		#the estate has a room of this kind at all - what the retired 'resting' upgrade asked,
+		#now that a bathhouse is the thing that answers it
+		"has_mansion_room":
+			return ResourceScripts.game_res.count_rooms(dict.name) >= int(dict.get('value', 1))
+		"has_craft_room":
+			return ResourceScripts.game_res.craft_room_level(dict.name) >= int(dict.value)
 		"area_progress":
 			return ResourceScripts.game_progress.if_has_area_progress(dict.value, dict.operant, dict.area)
 		"decision":

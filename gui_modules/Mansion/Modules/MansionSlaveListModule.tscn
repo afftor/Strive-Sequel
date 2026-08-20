@@ -58,7 +58,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_light.png" type="Texture" id=71]
 [ext_resource path="res://assets/images/gui/universal/skill_frame_diabled.png" type="Texture" id=72]
 [ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_empty.png" type="Texture" id=73]
-[ext_resource path="res://ragdoll.tscn" type="PackedScene" id=74]
+[ext_resource path="res://Character_generator/Doll2Spine/Doll2View.tscn" type="PackedScene" id=83]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/tick.png" type="Texture" id=75]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/tick_chosen.png" type="Texture" id=76]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/tick_disabled.png" type="Texture" id=77]
@@ -1844,9 +1844,9 @@ margin_bottom = 160.0
 theme = ExtResource( 49 )
 
 [node name="SortButton" type="TextureButton" parent="."]
-margin_left = 12.0
+margin_left = 67.0
 margin_top = 9.0
-margin_right = 211.0
+margin_right = 266.0
 margin_bottom = 52.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 3 )
@@ -1880,9 +1880,9 @@ align = 1
 valign = 1
 
 [node name="ListFoldButton" type="TextureButton" parent="."]
-margin_left = 219.0
+margin_left = 12.0
 margin_top = 9.0
-margin_right = 266.0
+margin_right = 59.0
 margin_bottom = 52.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 3 )
@@ -2453,11 +2453,10 @@ mouse_filter = 2
 expand = true
 stretch_mode = 5
 
-[node name="Paperdoll" parent="ExpandedBodyPreview" instance=ExtResource( 74 )]
-position = Vector2( 256, 428 )
-scale = Vector2( 0.65, 0.65 )
+[node name="Paperdoll" parent="ExpandedBodyPreview" instance=ExtResource( 83 )]
+rect_position = Vector2( 0.0, 0.0 )
+rect_size = Vector2( 626.0, 900.0 )
 update_character_portrait = false
-
 [node name="CloseButton" parent="ExpandedBodyPreview" instance=ExtResource( 80 )]
 anchor_left = 1.0
 anchor_right = 1.0

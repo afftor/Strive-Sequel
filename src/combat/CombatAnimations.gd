@@ -1,6 +1,12 @@
 extends Node
 
 const LightningEffect = preload("res://src/combat/LightningEffect.gd")
+const ProjectileEffect = preload("res://src/combat/ProjectileEffect.gd")
+
+#The tuning numbers below (cast tables, motion distances, hit reactions, per-skill beats)
+#are `var` rather than `const` on purpose: the combat lab in ../ConquestCombatTesting binds
+#spin boxes to them so a timing can be tried without a restart. Values and behaviour are
+#exactly what they were as constants - nothing in the game writes to them.
 
 signal pass_next_animation
 signal cast_finished
@@ -335,44 +341,44 @@ func ranged_attack(node, args = null):
 #trail: at_mace 9, at_dagger 10, at_dualsword 11, at_lance 12, at_arbalester 12, at_axe 14,
 #at_sword 15, at_stuff 16, at_arch 18 - all 30 fps. CAST_SPEEDUP plays the sheet faster so
 #the blow comes sooner and an attack costs less extra time; raise it if combat drags.
-const CAST_RELEASE = {
+var CAST_RELEASE = {
 	at_sword = 0.50, at_dualsword = 0.37, at_lance = 0.40, at_axe = 0.47,
 	at_dagger = 0.33, at_mace = 0.30, at_stuff = 0.53,
 	at_arch = 0.60, at_arbalester = 0.40,
 	at_bite = 0.10,
 }
-const CAST_SPEEDUP = {
+var CAST_SPEEDUP = {
 	at_sword = 1.5, at_dualsword = 1.5, at_lance = 1.5, at_axe = 1.5,
 	at_dagger = 1.5, at_mace = 1.5, at_stuff = 1.5,
 	at_arch = 1.6, at_arbalester = 1.35,
 	at_bite = 1.0,
 }
 #which motion the caster plays: 'cut' for melee, 'recoil' for bows, 'maw' for a bite
-const CAST_MOTION = {
+var CAST_MOTION = {
 	at_sword = 'cut', at_dualsword = 'cut', at_lance = 'cut', at_axe = 'cut',
 	at_dagger = 'cut', at_mace = 'cut', at_stuff = 'cut',
 	at_arch = 'recoil', at_arbalester = 'recoil',
 	at_bite = 'maw',
 }
-const MOTION_DIST = 110.0 #how far the card travels into the blow
-const CUT_DRAW = 0.466 #share of the run-up spent pulling back
-const CUT_HOLD = 0.06 #follow through before settling
-const MOTION_BACK = 0.26 #settling back
-const RECOIL_EXT = 0.06 #how long the straightening into the shot takes
-const PUSH_OUT = 0.26 #knockback
-const PUSH_IN = 0.06
-const PUSH_SHARE = 0.26 #fraction of MOTION_DIST the target is knocked away
-const SQUASH_IN = 0.05
-const SQUASH_OUT = 0.31
-const SQUASH_SCALE = 0.94
-const SQUASH_SHAKE = 7
-const TILT_IN = 0.11
-const TILT_OUT = 0.26
-const TILT_SHARE = 0.35
-const TILT_ANGLE = 7.0
-const TILT_LIFT = 9.0
-const TILT_SCALE_X = 0.975
-const TILT_SCALE_Y = 1.02
+var MOTION_DIST = 110.0 #how far the card travels into the blow
+var CUT_DRAW = 0.466 #share of the run-up spent pulling back
+var CUT_HOLD = 0.06 #follow through before settling
+var MOTION_BACK = 0.26 #settling back
+var RECOIL_EXT = 0.06 #how long the straightening into the shot takes
+var PUSH_OUT = 0.26 #knockback
+var PUSH_IN = 0.06
+var PUSH_SHARE = 0.26 #fraction of MOTION_DIST the target is knocked away
+var SQUASH_IN = 0.05
+var SQUASH_OUT = 0.31
+var SQUASH_SCALE = 0.94
+var SQUASH_SHAKE = 7
+var TILT_IN = 0.11
+var TILT_OUT = 0.26
+var TILT_SHARE = 0.35
+var TILT_ANGLE = 7.0
+var TILT_LIFT = 9.0
+var TILT_SCALE_X = 0.975
+var TILT_SCALE_Y = 1.02
 
 var pending_shot_delay = 0.0 #set by the cast animation, consumed by the predamage one
 var pending_shot_timer = -1 #which slot set it, so a stale value cannot leak to a later skill
@@ -466,13 +472,13 @@ const FIELD_ORIGIN = Vector2(0, 0)
 #Emission window. The "played twice" look came from explosiveness 0.4 releasing
 #in pulses, not from the length itself - with even emission the stream simply
 #refreshes and can run as long as we like.
-const FIELD_HOLD = 1.4
-const FIELD_DENSITY = 1.6 #more particles, so the flow reads as steady rain
-const FIELD_FADE = 0.9 #then stops emitting and fades what is still in the air
+var FIELD_HOLD = 1.4
+var FIELD_DENSITY = 1.6 #more particles, so the flow reads as steady rain
+var FIELD_FADE = 0.9 #then stops emitting and fades what is still in the air
 #How long the windup slot is held. Everything after it - predamage, the damage
 #numbers, the HP bars - waits this out, so this is the knob that decides how long
 #the weather builds before it bites. The particles themselves outlive the lock.
-const FIELD_LOCK = 1.3
+var FIELD_LOCK = 1.3
 
 #one interceptor per scene; add a line here and to FIELD_SCENES for the others
 func rainfall_field(node, args = null):
@@ -511,11 +517,11 @@ func field_particles(key):
 #whole thing stretches from one constant. Works for either side: everything is driven
 #by get_attack_vector(), and the destination is taken from the target's global position
 #because caster and target live in different containers.
-const ASSASS_LEAD = 0.95 #fade out, reposition, and reappear; the hit lands at the end
-const ASSASS_BACK = 1.15 #return to the original position
-const ASSASS_OFF = 94.0 #how far to move behind the target
-const ASSASS_Y = 26.0 #vertical offset while behind the target
-const ASSASS_DIST_BACK = 22.0 #step back before entering the shadows
+var ASSASS_LEAD = 0.95 #fade out, reposition, and reappear; the hit lands at the end
+var ASSASS_BACK = 1.15 #return to the original position
+var ASSASS_OFF = 94.0 #how far to move behind the target
+var ASSASS_Y = 26.0 #vertical offset while behind the target
+var ASSASS_DIST_BACK = 22.0 #step back before entering the shadows
 
 func assassinate_step(node, args = null):
 	if args == null: args = {}
@@ -691,18 +697,18 @@ func caster_cut(node, contact, speed = 1.0):
 #animal crouches, pounces, and then stays clamped on the target worrying it before
 #it tears away. The pounce uses EXPO rather than the QUAD of caster_cut - a beast
 #launches harder than a sword arm swings.
-const MAW_LEAD = 0.42 #from the start of the crouch to the jaws closing
-const MAW_DIST = 125.0 #closer than MOTION_DIST: teeth are a contact weapon
+var MAW_LEAD = 0.42 #from the start of the crouch to the jaws closing
+var MAW_DIST = 125.0 #closer than MOTION_DIST: teeth are a contact weapon
 #Share of the lead spent on the pounce itself. EXPO was the obvious choice for
 #"launches harder than a sword swing" and it is wrong: over a fifth of a second it
 #stays flat and then covers 60 px in a single frame, which reads as a teleport, not
 #a leap. CUBIC over a longer window keeps the last frame near 30 px and still
 #accelerates visibly harder than caster_cut's QUAD.
-const MAW_POUNCE = 0.55
-const MAW_COIL = 0.14 #how far back it settles before launching
-const MAW_WORRY = 0.20 #held clamped on the target
-const MAW_SHAKES = 3 #head shakes inside the worry
-const MAW_BACK = 0.30 #tearing off
+var MAW_POUNCE = 0.55
+var MAW_COIL = 0.14 #how far back it settles before launching
+var MAW_WORRY = 0.20 #held clamped on the target
+var MAW_SHAKES = 3 #head shakes inside the worry
+var MAW_BACK = 0.30 #tearing off
 
 func caster_maw(node, contact, speed = 1.0):
 	if !node.is_inside_tree(): return
@@ -749,21 +755,21 @@ func caster_maw(node, contact, speed = 1.0):
 #Execution: leap into the target on the weapon sheet's contact frame, settle into
 #the landing, then ease out before returning. It shares the normal cast release,
 #so the existing synced target_tilt reaction starts on the exact same frame.
-const EXEC_LEAP_HOLD = 0.40 #beat held at the impact point before pulling out
-const EXEC_LEAP_BACK = 0.70
-const EXEC_LEAP_OFFSET = 28.0
-const EXEC_CAST_SLOW = 0.35 #weapon sheet plays at this fraction of the usual speedup
+var EXEC_LEAP_HOLD = 0.40 #beat held at the impact point before pulling out
+var EXEC_LEAP_BACK = 0.70
+var EXEC_LEAP_OFFSET = 28.0
+var EXEC_CAST_SLOW = 0.35 #weapon sheet plays at this fraction of the usual speedup
 #The flight is three explicit phases whose shares add up to 1: climb, hang, drop.
 #The apex sits almost over the target, so the drop is nearly vertical.
-const EXEC_LEAP_RISE = 0.52
-const EXEC_LEAP_HANG = 0.26
-const EXEC_LEAP_APEX_X = 0.88 #how far along the way the apex sits
+var EXEC_LEAP_RISE = 0.52
+var EXEC_LEAP_HANG = 0.26
+var EXEC_LEAP_APEX_X = 0.88 #how far along the way the apex sits
 #Landing: the card drives into the ground, squashes and springs back out.
 const EXEC_LAND_SQUASH = Vector2(1.16, 0.84)
-const EXEC_LAND_IN = 0.05 #compression on contact
-const EXEC_LAND_OUT = 0.22 #elastic recovery
-const EXEC_LAND_DIP = 10.0 #how far it drives past the landing point
-const EXEC_LAND_TILT = 4.0 #forward jolt on impact
+var EXEC_LAND_IN = 0.05 #compression on contact
+var EXEC_LAND_OUT = 0.22 #elastic recovery
+var EXEC_LAND_DIP = 10.0 #how far it drives past the landing point
+var EXEC_LAND_TILT = 4.0 #forward jolt on impact
 
 func caster_execution_leap(node, args, contact):
 	if !node.is_inside_tree() or !node.has_method('get_attack_vector'): return node
@@ -870,12 +876,12 @@ func execution_leap_cleanup(node, visual_node, original_alpha, original_position
 
 # Holy Lance: orbit the spear, cross both cells in the selected row, hold the
 # piercing pose through the damage frame, and then restore the caster exactly.
-const HOLY_LANCE_SPIN = 0.72
-const HOLY_LANCE_DASH = 0.24
-const HOLY_LANCE_HOLD = 0.20
-const HOLY_LANCE_BACK = 0.42
-const HOLY_LANCE_ROW_STEP = 218.0
-const HOLY_LANCE_PIERCE = 42.0
+var HOLY_LANCE_SPIN = 0.72
+var HOLY_LANCE_DASH = 0.24
+var HOLY_LANCE_HOLD = 0.20
+var HOLY_LANCE_BACK = 0.42
+var HOLY_LANCE_ROW_STEP = 218.0
+var HOLY_LANCE_PIERCE = 42.0
 
 func holy_lance_step(node, args = null):
 	if args == null: args = {}
@@ -995,13 +1001,13 @@ func holy_lance_cleanup(node, visual_node, origin):
 
 # Devastation keeps a visual copy of the caster in the common combat layer while
 # the normal repeat pipeline continues to choose and damage a target per strike.
-const DEVASTATION_DASH = 0.34
-const DEVASTATION_STRIKE = 0.34
-const DEVASTATION_QUEUE_LEAD = 0.14
-const DEVASTATION_RELEASE = 0.116
-const DEVASTATION_ARC = 0.19
-const DEVASTATION_RETURN = 0.48
-const DEVASTATION_WEAPON_SPEED = 2.35
+var DEVASTATION_DASH = 0.34
+var DEVASTATION_STRIKE = 0.34
+var DEVASTATION_QUEUE_LEAD = 0.14
+var DEVASTATION_RELEASE = 0.116
+var DEVASTATION_ARC = 0.19
+var DEVASTATION_RETURN = 0.48
+var DEVASTATION_WEAPON_SPEED = 2.35
 
 func devastation_dash(node, args = null):
 	if args == null: args = {}
@@ -1422,19 +1428,108 @@ func gfx_video(node, args):
 #Sprites are children of the card and fade themselves out, so there is no reason for the
 #queue to sit through a two second buff flourish. Cap only the implicit default: an sfx
 #entry that really must block longer still says so with an explicit queue_duration.
-const MAX_SFX_LOCK = 0.7
+var MAX_SFX_LOCK = 0.7
 
 #How long the queue remains locked after contact. The hp_update slot follows, showing
 #the damage number, HP-bar change, and red tint. The hit sprite remains attached to the
 #card and continues fading independently.
-const HIT_TAIL = 0.2
+var HIT_TAIL = 0.2
 
-const LIGHTNING_WINDUP = 0.58
-const LIGHTNING_DURATION = 0.76
-const LIGHTNING_JITTER = 25.0
-const CHAIN_LIGHTNING_STAGGER = 0.10
-const LIGHTNING_IMPACT_DELAY = 0.055
-const LIGHTNING_SHAKE = 8
+#--- projectiles that cross the battlefield --------------------------------------------
+#'arrow' and 'fireball' fly from the caster's card to the target's, land on a random point
+#inside the target rather than on its exact centre, and hold the queue until they arrive,
+#so the number and the HP bar follow the hit and not the launch. The drawing lives in
+#ProjectileEffect.gd; everything below is timing.
+#
+#Flight time comes from distance, so a shot at the far row takes longer than one at the
+#front - unless the skill states a duration of its own.
+
+var PROJ_ARROW_SPEED = 1900.0 #px per second
+var PROJ_FIRE_SPEED = 1150.0
+var PROJ_MIN_FLIGHT = 0.18
+var PROJ_MAX_FLIGHT = 0.80
+var PROJ_ARROW_ARC = 42.0 #height of the flight arc in px, 0 is a flat shot
+var PROJ_FIRE_ARC = 105.0
+var PROJ_SCATTER = 30.0 #radius of the landing spread around the centre of the card
+var PROJ_ARROW_STICK = 0.34 #how long the arrow stays in the target before fading
+var PROJ_FIRE_BOOM = 110.0 #radius the explosion reaches
+var PROJ_FIRE_BOOM_TIME = 0.42
+
+#Delays are set by several animations on the same node; the later one must never shorten
+#what an earlier one asked for.
+func bump_delay(dict, node, value):
+	dict[node] = max(dict[node] if dict.has(node) else 0.0, value)
+
+func projectile_arrow(node, args = null):
+	return fly_projectile(node, args, 'arrow')
+
+func projectile_fireball(node, args = null):
+	return fly_projectile(node, args, 'fireball')
+
+func card_center(node):
+	if node is Control:
+		var rect = node.get_global_rect()
+		return rect.position + rect.size * 0.5
+	if node is Node2D: return node.global_position
+	return Vector2()
+
+func fly_projectile(node, args, kind):
+	if args == null: args = {}
+	if node == null or !is_instance_valid(node): return HIT_TAIL
+	#the shot needs both ends; without a caster there is nothing to fly from
+	var caster_node = args.caster_node if args.has('caster_node') else null
+	if caster_node == null or !is_instance_valid(caster_node): return HIT_TAIL
+
+	var speed = max(0.01, float(args.speed)) if args.has('speed') else 1.0
+	var distance = card_center(node).distance_to(card_center(caster_node))
+	var base_speed = PROJ_FIRE_SPEED if kind == 'fireball' else PROJ_ARROW_SPEED
+	var flight = clamp(distance / max(1.0, base_speed), PROJ_MIN_FLIGHT, PROJ_MAX_FLIGHT)
+	if args.has('duration'): flight = float(args.duration)
+	flight /= speed
+
+	#a weapon cast in the windup slot releases partway through its sheet: wait for that
+	#moment before the shot leaves, the way ranged_attack does
+	var shot = take_pending_shot()
+	var boom = PROJ_FIRE_BOOM_TIME if kind == 'fireball' else PROJ_ARROW_STICK
+
+	if args.has('no_delays') and args.no_delays:
+		custom_delays[node] = {delay = 0.2, cur_timer = cur_timer, time = 7}
+	else:
+		#everything the target does happens on contact, not on release
+		bump_delay(hp_update_delays, node, shot + flight)
+		bump_delay(buffs_update_delays, node, shot + flight)
+		log_update_delay = max(log_update_delay, shot + flight)
+		var motion = args.hit_motion if args.has('hit_motion') else 'push'
+		play_target_hit_motion(node, motion, max(0.2, boom), shot + flight)
+
+	var effect = ProjectileEffect.new()
+	#Not a child of this node: CombatAnimations is a plain Node, and a Node2D under it ends
+	#up ordered against the combat window rather than inside it, which puts the impact
+	#behind the opaque portraits. As the last child of the combat scene it draws over every
+	#card, which is where a hit has to be seen.
+	var layer = get_parent()
+	if layer == null: layer = self
+	layer.add_child(effect)
+	effect.setup(caster_node, node, kind, {
+		flight = flight,
+		launch_delay = shot,
+		arc = float(args.arc) if args.has('arc') else (PROJ_FIRE_ARC if kind == 'fireball' else PROJ_ARROW_ARC),
+		scatter = float(args.scatter) if args.has('scatter') else PROJ_SCATTER,
+		spin = float(args.spin) if args.has('spin') else 0.0,
+		boom_time = boom,
+		boom_size = float(args.boom_size) if args.has('boom_size') else (PROJ_FIRE_BOOM if kind == 'fireball' else PROJ_FIRE_BOOM * 0.5),
+	})
+
+	if args.has('queue_duration'): return float(args.queue_duration)
+	return shot + flight + HIT_TAIL
+
+
+var LIGHTNING_WINDUP = 0.58
+var LIGHTNING_DURATION = 0.76
+var LIGHTNING_JITTER = 25.0
+var CHAIN_LIGHTNING_STAGGER = 0.10
+var LIGHTNING_IMPACT_DELAY = 0.055
+var LIGHTNING_SHAKE = 8
 
 func lightning(node, args = null):
 	if args == null: args = {}
@@ -1589,13 +1684,13 @@ func gfx_animsprite(node, args):
 			var hit_nodes = args.hit_nodes if args.has('hit_nodes') else [node]
 			for hit_node in hit_nodes:
 				if hit_node != null and is_instance_valid(hit_node):
-					hp_update_delays[hit_node] = 0.3
-					buffs_update_delays[hit_node] = 0.4
+					bump_delay(hp_update_delays, hit_node, 0.3)
+					bump_delay(buffs_update_delays, hit_node, 0.4)
 			log_update_delay = max(log_update_delay, 0.3)
 		else:
-			hp_update_delays[node] = 0.5
+			bump_delay(hp_update_delays, node, 0.5)
 			log_update_delay = max(log_update_delay, 0.5)
-			buffs_update_delays[node] = 0.5
+			bump_delay(buffs_update_delays, node, 0.5)
 	else:
 		#for now it seems thet 7 turns is repeat loop duration
 		custom_delays[node] = {delay = 0.2, cur_timer = cur_timer, time = 7}
@@ -1823,9 +1918,9 @@ func critical(node, args = null):
 #Red tint on taking damage. Tints only G and B so the alpha stays untouched - the
 #shadow step drives modulate:a, and writing the whole colour here would pop the
 #assassin back into view mid-teleport.
-const HIT_TINT = 0.45 #minimum green and blue channels during the damage tint
-const HIT_TINT_IN = 0.04
-const HIT_TINT_OUT = 0.35
+var HIT_TINT = 0.45 #minimum green and blue channels during the damage tint
+var HIT_TINT_IN = 0.04
+var HIT_TINT_OUT = 0.35
 
 func damage_flash(node, delay = 0.0):
 	if !node.is_inside_tree(): return

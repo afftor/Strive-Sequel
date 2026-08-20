@@ -4,21 +4,25 @@ extends Node2D
 # Standalone viewer for the Spine 4.2 export.  It intentionally does not depend
 # on the game character generator or on a third-party Spine runtime.
 
-const DATA_FILE = "Doll2_spine4.2_female.json"
-const ATLAS_FILE = "Doll2_spine4.2_female.atlas"
+const DOLLS = preload("res://Character_generator/Doll2Spine/doll2_dolls.gd")
 const DISPLAY_SCALE = 0.52
 const DISPLAY_ORIGIN = Vector2(500, 785)
-const PAGE_TEXTURES = {
-	"Doll2_spine4.2_female.png": preload("res://Character_generator/Doll2Spine/Doll2_spine4.2_female.png"),
-	"Doll2_spine4.2_female_2.png": preload("res://Character_generator/Doll2Spine/Doll2_spine4.2_female_2.png"),
-	"Doll2_spine4.2_female_3.png": preload("res://Character_generator/Doll2Spine/Doll2_spine4.2_female_3.png"),
-}
 const ENGLISH_TRANSLATION = preload("res://localization/en/main.gd")
 const CATALOGUE = preload("res://Character_generator/Doll2Spine/doll2_catalogue.gd")
-const CONTRACT = preload("res://Character_generator/Doll2Spine/universal/doll_contract.gd")
+# The contract of the doll on screen; the male rig answers to another one.  It is
+# looked up rather than preloaded, so switching doll switches its handles too.
+var contract = DOLLS.doll(DOLLS.DEFAULT_DOLL).contract
 const MODIFIERS = preload("res://Character_generator/Doll2Spine/universal/doll_modifiers.gd")
+const COVERAGE = preload("res://Character_generator/Doll2Spine/universal/doll_coverage.gd")
 const RECOLOR_SHADER = preload("res://Character_generator/Doll2Spine/doll2_recolor.shader")
 const SKIN_NAME = "default"
+
+# Translated names for the animations that have one; anything else is shown under
+# its own name from the export.
+const ANIMATION_LABELS = {
+	"idle": "DOLL2_PREVIEW_ANIMATION_IDLE",
+	"eyesmove": "DOLL2_PREVIEW_ANIMATION_EYES",
+}
 const ZOOM_MIN = 0.4
 const ZOOM_MAX = 4.0
 const ZOOM_STEP = 1.12
@@ -35,6 +39,8 @@ var skin_map = {}
 var selections = CATALOGUE.default_selections()
 var axis_values = CATALOGUE.default_axes()
 var composed = {}
+# Slots a mod paints with its own image instead of the atlas.  Empty without mods.
+var composed_textures = {}
 # Values of the free per-bone modifiers.  There are none right now: head size
 # belongs to height, and MODIFIERS is where a future one (ass size, and so on)
 # plugs in.
@@ -42,6 +48,14 @@ var proportions = MODIFIERS.defaults()
 # Height is one of six authored steps rather than a free scale: each step carries
 # its own body proportions, the way the old paperdoll did.
 var height_tier = MODIFIERS.HEIGHT_DEFAULT
+# Extra solved poses, one per hair layer that is not at its default length.
+var layer_poses = {}
+var bone_parents = {}
+# Fur or scale pattern painted over the body, "" for bare skin, plus the colour
+# of each of its layers.
+var coverage_id = ""
+var coverage_colors = []
+var coverage_textures = {}
 # One picked colour and one shared ShaderMaterial per catalogue colour channel.
 # Sharing the material per channel means a colour change is a single uniform
 # write that repaints every mesh of that channel, with no model rebuild.
@@ -56,6 +70,8 @@ var channel_materials = {}
 # Vertical extent of each two-tone channel's meshes, so the shader knows where
 # the roots end and the tips begin.
 var gradient_bounds = {}
+# Images loaded for modded parts, kept so a rebuild does not reload them.
+var mod_textures = {}
 # View transform for the model, kept out of the mesh maths: zooming moves the
 # model node instead of re-solving every vertex, so it costs nothing per frame.
 var view_zoom = 1.0
@@ -63,6 +79,14 @@ var view_offset = Vector2.ZERO
 var panning = false
 var ui = {}
 var model_root
+# Where the doll stands.  The two exports disagree about where their skeleton
+# sits - the female rig's root is on the floor between the feet, the male's is up
+# at the hips - so one shared origin drops the male half off the bottom of the
+# view.  The first solved pose of each doll is measured once and the model is
+# shifted so both stand on the same line, centred.  Measured rather than tuned by
+# hand per export, which a re-export would silently invalidate.
+var model_offset = Vector2.ZERO
+var model_offset_ready = false
 var bone_root
 var bone_nodes = {}
 var asset_dir = ""
@@ -70,6 +94,11 @@ var editor_strings = {}
 var rendered_meshes = 0
 var mesh_records = []
 var animation_states = {"idle": true, "eyesmove": false}
+# What the running animations currently say about the slots: which attachment
+# each holds and in what order they draw.  Both change which meshes exist, so a
+# change here needs a rebuild rather than a re-pose.
+var animation_attachments = {}
+var animation_signature = 0
 var animation_times = {"idle": 0.0, "eyesmove": 0.0}
 var animation_durations = {}
 var handle_buttons = {}
@@ -77,10 +106,21 @@ var handles_visible = true
 var handle_targets = {}
 var handle_custom = {}
 var handle_target_offsets = {}
-var handle_definitions = CONTRACT.HANDLES.duplicate(true)
+# Which skeleton is on screen.  Everything the doll is made of - the export, its
+# textures, its catalogue and its contract - comes from this one id.
+var doll_id = DOLLS.DEFAULT_DOLL
+# Whether this doll carries its editor panel.  True in the preview scene, false
+# wherever the game shows the doll itself.
+var interface_enabled = true
+var handle_definitions = contract.HANDLES.duplicate(true)
 
 func _ready():
 	_load_source()
+	var mod_sources = CATALOGUE.mod_sources()
+	if !mod_sources.empty():
+		print("Doll2Preview: mod parts from %s" % PoolStringArray(mod_sources).join(", "))
+	for problem in CATALOGUE.mod_problems():
+		print("Doll2Preview: mod problem - %s" % problem)
 	_build_channel_materials()
 	_build_interface()
 	_rebuild_model()
@@ -97,13 +137,23 @@ func _process(delta):
 			animation_times[animation_name] = fmod(float(animation_times.get(animation_name, 0.0)) + delta, duration) if duration > 0.0 else 0.0
 			pose_changed = true
 	if pose_changed:
-		_update_animated_pose()
+		# A pose can swap an attachment or reorder the slots part way through, and
+		# neither survives a plain re-pose.
+		if _animation_signature().hash() != animation_signature:
+			_rebuild_model()
+		else:
+			_update_animated_pose()
 
 
 func _load_source():
 	asset_dir = get_script().resource_path.get_base_dir() + "/"
 	var file = File.new()
-	if file.open(asset_dir + DATA_FILE, File.READ) != OK:
+	var source = DOLLS.doll(doll_id)
+	contract = source.contract
+	bone_parents.clear()
+	handle_definitions = contract.HANDLES.duplicate(true)
+	CATALOGUE.use(doll_id)
+	if file.open(source.json, File.READ) != OK:
 		push_error("Doll2 preview: Spine JSON was not found")
 		return
 	var parsed = JSON.parse(file.get_as_text())
@@ -118,13 +168,13 @@ func _load_source():
 	_parse_atlas()
 	for animation_name in skeleton.get("animations", {}).keys():
 		animation_durations[animation_name] = _animation_duration(animation_name)
-	_build_bone_transforms()
+	_solve_pose()
 	_initialize_handles()
 
 
 func _parse_atlas():
 	var file = File.new()
-	if file.open(asset_dir + ATLAS_FILE, File.READ) != OK:
+	if file.open(DOLLS.doll(doll_id).atlas, File.READ) != OK:
 		push_error("Doll2 preview: Spine atlas was not found")
 		return
 	var current_page = ""
@@ -137,7 +187,7 @@ func _parse_atlas():
 		if line.find(":") == -1:
 			if line.ends_with(".png"):
 				current_page = line
-				pages[current_page] = {"texture": PAGE_TEXTURES.get(current_page), "size": Vector2.ZERO}
+				pages[current_page] = {"texture": DOLLS.doll(doll_id).pages.get(current_page), "size": Vector2.ZERO}
 			else:
 				current_region = line
 				atlas[current_region] = {"page": current_page, "bounds": Rect2(), "offset": Vector2.ZERO, "source_size": Vector2.ZERO, "rotate": false}
@@ -185,7 +235,44 @@ func _atlas_vector(value):
 	return Vector2(values[0], values[1]) if values.size() == 2 else Vector2.ZERO
 
 
-func _build_bone_transforms():
+# Solves the skeleton, plus one extra pose for every hair layer whose length is
+# off default.  A layer's meshes are skinned from its own pose, which is how two
+# layers sharing the same bones can still have different lengths.
+func _solve_pose():
+	layer_poses.clear()
+	var layers = MODIFIERS.layer_factors(proportions, _bone_parents(), contract.CONTRACT_ID)
+	for slot_name in layers.keys():
+		_build_bone_transforms(layers[slot_name])
+		layer_poses[slot_name] = _snapshot_pose()
+	# Solved last, so `bones` is left holding the ordinary pose.
+	_build_bone_transforms()
+
+
+# {bone: parent} straight off the export, so a length modifier can work out where
+# a strand ends without the bone names being written down anywhere.
+func _bone_parents():
+	if bone_parents.empty():
+		for definition in skeleton.get("bones", []):
+			bone_parents[definition.get("name", "")] = definition.get("parent", "")
+	return bone_parents
+
+
+# Skinning only reads the solved world transform, so the snapshot leaves out the
+# definition and the local values that a re-solve rebuilds anyway.
+func _snapshot_pose():
+	var result = {}
+	for bone_name in bones.keys():
+		var bone = bones[bone_name]
+		result[bone_name] = {"a": bone.a, "b": bone.b, "c": bone.c, "d": bone.d, "x": bone.x, "y": bone.y}
+	return result
+
+
+# The pose a slot is skinned from: its layer's, or the ordinary one.
+func _pose_for(slot):
+	return layer_poses.get(slot.get("name", ""), bones)
+
+
+func _build_bone_transforms(layer_factors = {}):
 	bones.clear()
 	var index = 0
 	for definition in skeleton.get("bones", []):
@@ -203,7 +290,7 @@ func _build_bone_transforms():
 		)
 		index += 1
 	_apply_active_bone_timelines()
-	_apply_bone_modifiers()
+	_apply_bone_modifiers(layer_factors)
 	_apply_native_handle_targets()
 	var constraints = skeleton.get("ik", []).duplicate()
 	constraints.sort_custom(self, "_sort_ik_constraints")
@@ -212,10 +299,21 @@ func _build_bone_transforms():
 	_apply_hand_handles()
 
 
-func _apply_bone_modifiers():
+func _apply_bone_modifiers(layer_factors = {}):
 	# Every active modifier contributes a multiplier and they compose, so no
 	# modifier can silently discard another one acting on the same bone.
-	var factors = MODIFIERS.bone_factors(proportions, height_tier)
+	var factors = MODIFIERS.bone_factors(proportions, height_tier, contract.CONTRACT_ID)
+	# A part may carry its own bone tweaks; they multiply into the tier's rather
+	# than replacing them, so height still reads correctly while it is worn.
+	var part_bones = CATALOGUE.compose_bones(selections)
+	for bone_name in part_bones.keys():
+		var current = factors.get(bone_name, Vector2.ONE)
+		factors[bone_name] = Vector2(current.x * part_bones[bone_name].x, current.y * part_bones[bone_name].y)
+	# A layer pose stretches the hair chains on top of all of that, for the one
+	# layer being solved.
+	for bone_name in layer_factors.keys():
+		var current = factors.get(bone_name, Vector2.ONE)
+		factors[bone_name] = Vector2(current.x * layer_factors[bone_name].x, current.y * layer_factors[bone_name].y)
 	var touched = []
 	for bone_name in factors.keys():
 		if !bones.has(bone_name):
@@ -232,14 +330,38 @@ func _apply_bone_modifiers():
 		)
 		touched.append(bone_name)
 	if !touched.empty():
-		_update_ik_descendants(touched)
+		_resolve_bone_hierarchy()
+
+
+# Recomputes every bone's world transform from its own local values, parents
+# first.  `_update_ik_descendants` deliberately leaves alone the bones the caller
+# just set, which is right after an IK solve but wrong after a pass that sets
+# many bones at once: a keyed bone is solved against whatever its parent held at
+# that moment, and if the parent settles afterwards the child is never revisited.
+# That is how the face came adrift - `eyes_l` and `brov_l` are keyed and hang off
+# `head`, which is not keyed and only moved later, so the face plate stayed where
+# the setup pose had put it while the mouth and the skull went with the head.
+# Identical eye keys in idle1 and idle3 drifted 0.8 px and 7.9 px respectively,
+# which is what gave it away: the difference was not in the animation.
+func _resolve_bone_hierarchy():
+	for definition in skeleton.get("bones", []):
+		var name = definition.get("name", "")
+		if bones.has(name):
+			_restore_bone_world(name)
 
 
 func _display_scale():
 	return DISPLAY_SCALE * float(MODIFIERS.display_scale(height_tier))
 
 
+# Bones a running animation keys, plus - and this is the part that is easy to
+# miss - everything hanging off them.  A timeline moves a forearm; the hand is
+# not keyed and so is never revisited, and it keeps the world transform it was
+# given under the setup pose.  On the arm-swinging idles that left the wrist
+# 52-74 px from the hand it belongs to.  The IK pass and the modifier pass
+# already re-solve their descendants; so does this one now.
 func _apply_active_bone_timelines():
+	var touched = []
 	for animation_name in animation_states.keys():
 		if !animation_states[animation_name]:
 			continue
@@ -267,6 +389,9 @@ func _apply_active_bone_timelines():
 				float(bone.local_scale_x), float(bone.local_scale_y),
 				float(bone.local_shear_x), float(bone.local_shear_y)
 			)
+			touched.append(name)
+	if !touched.empty():
+		_resolve_bone_hierarchy()
 
 
 func _sample_timeline(frames, time, fields):
@@ -671,8 +796,13 @@ func _apply_hand_handles():
 
 
 func _update_animated_pose():
-	_build_bone_transforms()
+	_solve_pose()
 	_update_mesh_geometry()
+	# The hair gradient is measured off the solved geometry, so it has to be
+	# measured again whenever that geometry moves.  Height is the case that
+	# matters: it rescales the hair without rebuilding the model, and a gradient
+	# left at the old extent stops matching the hair it is painted on.
+	_recompute_gradient_bounds()
 	_update_bone_nodes()
 	_update_handle_buttons()
 
@@ -718,6 +848,46 @@ func _clamp_view():
 	view_offset.y = clamp(view_offset.y, -PAN_LIMIT.y, PAN_LIMIT.y)
 
 
+# The doll's origin on screen: the shared baseline plus this export's own shift.
+func _display_origin():
+	return DISPLAY_ORIGIN + model_offset * _display_scale()
+
+
+func _measure_model_offset():
+	if model_offset_ready:
+		return
+	var minimum = Vector2(1e9, 1e9)
+	var maximum = Vector2(-1e9, -1e9)
+	for record in mesh_records:
+		if !is_instance_valid(record.polygon):
+			continue
+		for point in record.polygon.polygon:
+			minimum.x = min(minimum.x, point.x)
+			minimum.y = min(minimum.y, point.y)
+			maximum.x = max(maximum.x, point.x)
+			maximum.y = max(maximum.y, point.y)
+	var scale = _display_scale()
+	if minimum.x > maximum.x or scale == 0.0:
+		return
+	# Kept in model units so the height tier rescales it with the doll instead of
+	# sliding it off the floor.  Whole pixels, so the default doll does not move.
+	model_offset = Vector2(round(-(minimum.x + maximum.x) * 0.5), round(-maximum.y)) / scale
+	model_offset_ready = true
+	_apply_model_origin()
+
+
+func _apply_model_origin():
+	var origin = _display_origin()
+	if is_instance_valid(bone_root):
+		bone_root.position = origin
+	for record in mesh_records:
+		if is_instance_valid(record.polygon):
+			record.polygon.position = origin
+	# The handles are projected through the same origin, so they move with it -
+	# without this the foot handles of a freshly switched doll sit off-screen.
+	_update_handle_buttons()
+
+
 func _apply_view():
 	if is_instance_valid(model_root):
 		model_root.position = view_offset
@@ -731,7 +901,76 @@ func _model_to_screen(local_point):
 	return view_offset + local_point * view_zoom
 
 
+# Swaps the whole doll: another export, another catalogue, another contract.
+# Everything downstream is rebuilt rather than patched, because the two dolls
+# share neither their parts nor their bones.
+func _switch_doll(new_doll_id):
+	if new_doll_id == doll_id or !DOLLS.DOLLS.has(new_doll_id):
+		return
+	doll_id = new_doll_id
+	model_offset = Vector2.ZERO
+	model_offset_ready = false
+	CATALOGUE.use(doll_id)
+	for child in get_children():
+		if child is CanvasLayer:
+			child.queue_free()
+	ui.clear()
+	handle_buttons.clear()
+	channel_materials.clear()
+	gradient_bounds.clear()
+	coverage_textures.clear()
+	mod_textures.clear()
+	handle_targets.clear()
+	handle_custom.clear()
+	handle_target_offsets.clear()
+	selections = CATALOGUE.default_selections()
+	axis_values = CATALOGUE.default_axes()
+	proportions = MODIFIERS.defaults()
+	height_tier = MODIFIERS.HEIGHT_DEFAULT
+	coverage_id = ""
+	coverage_colors = []
+	_load_source()
+	# The two exports do not carry the same animations - the male has no `idle` -
+	# so the toggles are seeded from whatever this one actually has.
+	animation_states = {}
+	animation_times = {}
+	for animation_name in skeleton.get("animations", {}).keys():
+		animation_states[animation_name] = animation_name == "idle"
+		animation_times[animation_name] = 0.0
+	_build_channel_materials()
+	_build_interface()
+	_rebuild_model()
+
+
+func _add_doll_select(parent):
+	var row = HBoxContainer.new()
+	parent.add_child(row)
+	var label = Label.new()
+	label.text = _text("DOLL2_PREVIEW_DOLL")
+	label.rect_min_size.x = 105
+	row.add_child(label)
+	var select = OptionButton.new()
+	select.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	for index in range(CATALOGUE.doll_order().size()):
+		var id = CATALOGUE.doll_order()[index]
+		select.add_item(_text(CATALOGUE.doll_label(id)), index)
+		if id == doll_id:
+			select.select(index)
+	select.connect("item_selected", self, "_on_doll_selected")
+	row.add_child(select)
+
+
+func _on_doll_selected(index):
+	_switch_doll(CATALOGUE.doll_order()[index])
+
+
 func _build_interface():
+	# The panel is the editor for this doll, not part of it.  The game embeds the
+	# same scene through `doll2_view.gd` and only wants the figure; without this
+	# the whole control panel came back the moment the doll switched sex, because
+	# switching rebuilds the interface.
+	if !interface_enabled:
+		return
 	var canvas = CanvasLayer.new()
 	add_child(canvas)
 	for handle_name in handle_definitions.keys():
@@ -757,8 +996,12 @@ func _build_interface():
 	var title = Label.new()
 	title.text = _text("DOLL2_PREVIEW_TITLE")
 	box.add_child(title)
-	_add_animation_toggle(box, "DOLL2_PREVIEW_ANIMATION_IDLE", "idle")
-	_add_animation_toggle(box, "DOLL2_PREVIEW_ANIMATION_EYES", "eyesmove")
+	_add_doll_select(box)
+	# Built from the export rather than listed here, so an animation added in a
+	# later export shows up on its own instead of being invisible until someone
+	# remembers to add a line.
+	for animation_name in _sorted_animations():
+		_add_animation_toggle(box, ANIMATION_LABELS.get(animation_name, ""), animation_name)
 	var handles_toggle = CheckButton.new()
 	handles_toggle.text = _text("DOLL2_PREVIEW_SHOW_HANDLES")
 	handles_toggle.pressed = handles_visible
@@ -773,11 +1016,15 @@ func _build_interface():
 	for axis in _sorted_axes():
 		var definition = CATALOGUE.axes()[axis]
 		_add_axis_select(box, definition.label, axis, definition.values)
+	_add_coverage_select(box)
 	_add_height_slider(box)
+	for modifier_id in _sorted_modifiers():
+		_add_proportion_slider(box, MODIFIERS.modifier(modifier_id).label, modifier_id)
 	var note = Label.new()
 	note.autowrap = true
 	note.text = _text("DOLL2_PREVIEW_NOTE")
 	box.add_child(note)
+	_refresh_zone_pickers()
 	_update_handle_buttons()
 
 
@@ -787,21 +1034,60 @@ func _sorted_axes():
 	return result
 
 
+# Does this animation move bones, or is it only an overlay on top of a pose?
+func _poses_the_skeleton(animation_name):
+	return !skeleton.get("animations", {}).get(animation_name, {}).get("bones", {}).empty()
+
+
+func _sorted_animations():
+	# An animation with no timelines at all is not one: the male export carries an
+	# empty `1` left over in the Spine project, and a toggle that cannot move
+	# anything only invites the question of why it does nothing.
+	var result = []
+	var animations = skeleton.get("animations", {})
+	for animation_name in animations.keys():
+		if !animations[animation_name].empty():
+			result.append(animation_name)
+	result.sort()
+	return result
+
+
 func _add_animation_toggle(parent, label_text, animation_name):
 	if !skeleton.get("animations", {}).has(animation_name):
 		return
 	var toggle = CheckButton.new()
-	toggle.text = _text(label_text)
+	# An animation with no translated name of its own is shown under its own.
+	toggle.text = _text(label_text) if !str(label_text).empty() else animation_name
 	toggle.pressed = bool(animation_states.get(animation_name, false))
 	toggle.connect("toggled", self, "_on_animation_toggled", [animation_name])
 	parent.add_child(toggle)
+	ui["animation_" + animation_name] = toggle
 
 
+# A pose is exclusive: two of them at once are two sets of keys on the same
+# bones, and the doll ends up in whichever the loop reached last rather than in
+# either.  Overlays are not - `eyesmove` only swaps attachments and has no bone
+# timeline of its own, so it rides along with any pose.
 func _on_animation_toggled(enabled, animation_name):
 	animation_states[animation_name] = enabled
 	if !enabled:
 		animation_times[animation_name] = 0.0
-	_update_animated_pose()
+	elif _poses_the_skeleton(animation_name):
+		for other_name in animation_states.keys():
+			if other_name == animation_name or !animation_states[other_name]:
+				continue
+			if !_poses_the_skeleton(other_name):
+				continue
+			animation_states[other_name] = false
+			animation_times[other_name] = 0.0
+			var toggle = ui.get("animation_" + other_name, null)
+			if is_instance_valid(toggle):
+				toggle.set_block_signals(true)
+				toggle.pressed = false
+				toggle.set_block_signals(false)
+	# An authored pose brings its own hands and its own draw order, so turning one
+	# on or off is a rebuild, not a re-pose.
+	_rebuild_model()
 
 
 func _on_handles_toggled(enabled):
@@ -832,7 +1118,7 @@ func _update_handle_buttons():
 			var bone_name = target_bones[0] if !target_bones.empty() else definition.get("end_bone", "")
 			if bones.has(bone_name):
 				handle_targets[handle_name] = Vector2(float(bones[bone_name].x), float(bones[bone_name].y))
-		var screen_position = _model_to_screen(DISPLAY_ORIGIN + Vector2(handle_targets[handle_name].x, -handle_targets[handle_name].y) * _display_scale())
+		var screen_position = _model_to_screen(_display_origin() + Vector2(handle_targets[handle_name].x, -handle_targets[handle_name].y) * _display_scale())
 		var button = handle_buttons[handle_name]
 		button.rect_position = screen_position - button.rect_size * 0.5
 		button.visible = handles_visible
@@ -847,6 +1133,7 @@ func _add_select(parent, label_text, group_id, part_ids, allow_none = false, cha
 		select.add_item(CATALOGUE.display(part_id))
 		select.set_item_metadata(select.get_item_count() - 1, part_id)
 	_select_metadata(select, selections.get(group_id, ""))
+	_refresh_bindings(select)
 	select.connect("item_selected", self, "_on_select_changed", [group_id, select])
 	ui[group_id] = select
 
@@ -863,6 +1150,79 @@ func _add_axis_select(parent, label_text, axis, values):
 
 # Height slides, but only between the six authored steps: anything in between
 # has no proportions of its own, so the slider snaps to whole tiers.
+# Fur and scale patterns.  One row: the pattern, then a colour per layer, shown
+# only for the layers the chosen pattern actually has.
+func _add_coverage_select(parent):
+	var label = Label.new()
+	label.text = _text("DOLL2_PREVIEW_COVERAGE")
+	parent.add_child(label)
+	var row = HBoxContainer.new()
+	parent.add_child(row)
+	var select = OptionButton.new()
+	select.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	select.clip_text = true
+	select.add_item(_text("DOLL2_PREVIEW_NONE"))
+	select.set_item_metadata(0, "")
+	for pattern_id in COVERAGE.ORDER:
+		select.add_item(COVERAGE.pattern(pattern_id).label)
+		select.set_item_metadata(select.get_item_count() - 1, pattern_id)
+	_select_metadata(select, coverage_id)
+	select.connect("item_selected", self, "_on_coverage_changed", [select])
+	row.add_child(select)
+	ui["coverage"] = select
+	for i in range(COVERAGE.MAX_LAYERS + 1):
+		var picker = ColorPickerButton.new()
+		picker.rect_min_size = Vector2(36, 0)
+		picker.hint_tooltip = _text("DOLL2_PREVIEW_COVERAGE_HINT")
+		picker.connect("color_changed", self, "_on_coverage_colour_changed", [i])
+		row.add_child(picker)
+		ui["coverage/layer%d" % i] = picker
+	_refresh_coverage_pickers()
+
+
+func _on_coverage_changed(_item_index, select):
+	coverage_id = str(select.get_item_metadata(select.selected))
+	coverage_colors = COVERAGE.default_colors(coverage_id)
+	_refresh_coverage_pickers()
+	_apply_coverage_to_meshes()
+
+
+func _on_coverage_colour_changed(colour, index):
+	while coverage_colors.size() <= index:
+		coverage_colors.append(Color(1, 1, 1))
+	coverage_colors[index] = colour
+	_apply_coverage_to_meshes()
+
+
+# Fur belongs to bodies that can grow it.  On a human body the whole row is
+# disabled rather than hidden, so it stays obvious that the feature exists.
+func _coverage_available():
+	return CATALOGUE.has_tag(str(selections.get("body", "")), COVERAGE.REQUIRES_TAG)
+
+
+func _refresh_coverage_pickers():
+	var available = _coverage_available()
+	var shown = COVERAGE.color_count(coverage_id)
+	if ui.has("coverage"):
+		ui["coverage"].disabled = !available
+	for i in range(COVERAGE.MAX_LAYERS + 1):
+		var key = "coverage/layer%d" % i
+		if !ui.has(key):
+			continue
+		ui[key].visible = available and i < shown
+		if i < coverage_colors.size():
+			ui[key].color = coverage_colors[i]
+
+
+# Coverage is a per-mesh uniform, so it is pushed straight to the live meshes
+# rather than rebuilding the model.
+func _apply_coverage_to_meshes():
+	for record in mesh_records:
+		if !is_instance_valid(record.polygon) or record.polygon.material == null:
+			continue
+		_apply_coverage(record.polygon.material, record.get("channel", ""))
+
+
 func _add_height_slider(parent):
 	var row = HBoxContainer.new()
 	parent.add_child(row)
@@ -936,22 +1296,30 @@ func _build_channel_materials():
 		var material = ShaderMaterial.new()
 		material.shader = RECOLOR_SHADER
 		channel_materials[channel_id] = material
-		var zones = int(channels[channel_id].get("zones", 0))
-		if zones > 0:
-			# Gear art is hue-coded, so its zones start on real colours instead
-			# of on white: raw magenta is a placeholder, not a look.
-			material.set_shader_param("zone_count", zones)
-			material.set_shader_param("zone_hues", Vector3(
-				CATALOGUE.zone_hues()[0] / 360.0,
-				CATALOGUE.zone_hues()[1] / 360.0,
-				CATALOGUE.zone_hues()[2] / 360.0
-			))
-			material.set_shader_param("zone_distance", CATALOGUE.zone_distance() / 360.0)
-			zone_values[channel_id] = []
-			for i in range(zones):
-				zone_values[channel_id].append(CATALOGUE.zone_defaults()[i])
-			_apply_zone_colours(channel_id)
-			continue
+		material.set_shader_param("zone_hues", Vector3(
+			CATALOGUE.zone_hues()[0] / 360.0,
+			CATALOGUE.zone_hues()[1] / 360.0,
+			CATALOGUE.zone_hues()[2] / 360.0
+		))
+		material.set_shader_param("zone_distance", Vector3(
+			CATALOGUE.zone_distance()[0] / 360.0,
+			CATALOGUE.zone_distance()[1] / 360.0,
+			CATALOGUE.zone_distance()[2] / 360.0
+		))
+		# Gear is painted entirely in the hue code, so its zones start on real
+		# colours: raw magenta is a placeholder, not a look.  Everywhere else a
+		# zone starts white, which leaves that band of the art alone.
+		var gear = bool(channels[channel_id].get("gear", false))
+		# A channel may bring starting colours of its own - ears want fur and
+		# flesh, not the steel and leather gear starts on.
+		var own = channels[channel_id].get("zone_defaults", [])
+		zone_values[channel_id] = []
+		for i in range(CATALOGUE.zone_hues().size()):
+			if i < own.size():
+				zone_values[channel_id].append(own[i])
+			else:
+				zone_values[channel_id].append(CATALOGUE.zone_defaults()[i] if gear else Color(1, 1, 1))
+		_apply_zone_colours(channel_id)
 		color_values[channel_id] = Color(1, 1, 1)
 		color_values_secondary[channel_id] = Color(1, 1, 1)
 		_apply_channel_colour(channel_id)
@@ -959,14 +1327,14 @@ func _build_channel_materials():
 
 func _add_channel_picker(parent, channel_id):
 	var channel = CATALOGUE.color_channels()[channel_id]
-	var zones = int(channel.get("zones", 0))
-	if zones > 0:
-		for i in range(zones):
-			_add_zone_picker(parent, channel_id, i)
-		return
+	# The plain colour is always there; a zone picker only appears once the part
+	# being worn actually has art in that band, so rows stay readable.
 	_add_picker_button(parent, channel_id, false)
 	if channel.get("two_tone", false):
 		_add_picker_button(parent, channel_id, true)
+	if channel.get("zones", false):
+		for i in range(CATALOGUE.zone_hues().size()):
+			_add_zone_picker(parent, channel_id, i)
 
 
 func _add_picker_button(parent, channel_id, secondary):
@@ -1007,7 +1375,22 @@ func _apply_zone_colours(channel_id):
 	if material == null:
 		return
 	for i in range(zone_values[channel_id].size()):
-		material.set_shader_param("zone%d_color" % (i + 1), zone_values[channel_id][i])
+		var colour = zone_values[channel_id][i]
+		material.set_shader_param("zone%d_color" % (i + 1), colour)
+		# White means the band keeps the art's own colour and falls through to
+		# the plain colour, the same convention the other pickers use.
+		material.set_shader_param("zone%d_on" % (i + 1), 0.0 if _is_neutral(colour) else 1.0)
+	_propagate_channel(channel_id)
+
+
+# Shows only the zone pickers the worn parts can actually use.
+func _refresh_zone_pickers():
+	for channel_id in CATALOGUE.color_channels().keys():
+		var zones = CATALOGUE.channel_zones(channel_id, selections)
+		for i in range(CATALOGUE.zone_hues().size()):
+			var key = "color/%s/zone%d" % [channel_id, i]
+			if ui.has(key):
+				ui[key].visible = i in zones
 
 
 func _apply_channel_colour(channel_id):
@@ -1027,6 +1410,98 @@ func _apply_channel_colour(channel_id):
 	material.set_shader_param("recolor", primary)
 	material.set_shader_param("recolor2", secondary)
 	material.set_shader_param("strength", 0.0 if !has_primary and !has_secondary else 1.0)
+	_propagate_channel(channel_id)
+
+
+# A mesh's own material: the channel's colours plus the map from atlas UV back to
+# the art canvas, which is what lets a full-body mask find this mesh.
+func _mesh_material(channel_id, region, page_size):
+	var template = channel_materials.get(channel_id)
+	if template == null:
+		return null
+	var material = template.duplicate()
+	var map = _canvas_map(region, page_size)
+	material.set_shader_param("canvas_row0", map[0])
+	material.set_shader_param("canvas_row1", map[1])
+	_apply_coverage(material, channel_id)
+	return material
+
+
+# Inverse of _mesh_uv: atlas UV -> canvas UV, as two affine rows.  A rotated
+# region swaps the axes, which is why this is a matrix and not a scale.
+func _canvas_map(region, page_size):
+	var source = region.source_size
+	if source == Vector2.ZERO or page_size.x <= 0.0 or page_size.y <= 0.0:
+		return [Vector4_zero(), Vector4_zero()]
+	var bounds = region.bounds
+	if !region.rotate:
+		var u_origin = bounds.position.x - region.offset.x
+		var v_origin = bounds.position.y + bounds.size.y - source.y + region.offset.y
+		return [
+			Color(page_size.x / source.x, 0.0, -u_origin / source.x, 0.0),
+			Color(0.0, page_size.y / source.y, -v_origin / source.y, 0.0),
+		]
+	var rotated_u_origin = bounds.position.x + bounds.size.y - source.y + region.offset.y
+	var rotated_v_origin = bounds.position.y + bounds.size.x + region.offset.x
+	return [
+		Color(0.0, -page_size.y / source.x, rotated_v_origin / source.x, 0.0),
+		Color(page_size.x / source.y, 0.0, -rotated_u_origin / source.y, 0.0),
+	]
+
+
+func Vector4_zero():
+	return Color(0.0, 0.0, 0.0, 0.0)
+
+
+func _apply_coverage(material, channel_id):
+	if material == null:
+		return
+	var channel = CATALOGUE.color_channels().get(channel_id, {})
+	var layers = COVERAGE.layers(coverage_id)
+	if coverage_id.empty() or layers.empty() or !channel.get("coverage", false) or !_coverage_available():
+		material.set_shader_param("coverage_count", 0)
+		return
+	material.set_shader_param("coverage_count", min(layers.size(), COVERAGE.MAX_LAYERS))
+	# The base, when the pattern has one, is the first colour of the row.
+	var offset = 0
+	if COVERAGE.has_base(coverage_id):
+		var base = coverage_colors[0] if coverage_colors.size() > 0 else Color(1, 1, 1)
+		material.set_shader_param("coverage_base", base)
+		material.set_shader_param("coverage_base_on", 0.0 if _is_neutral(base) else 1.0)
+		offset = 1
+	else:
+		material.set_shader_param("coverage_base_on", 0.0)
+	for i in range(min(layers.size(), COVERAGE.MAX_LAYERS)):
+		material.set_shader_param("coverage_mask%d" % (i + 1), _coverage_texture(COVERAGE.mask_path(coverage_id, i)))
+		var index = i + offset
+		material.set_shader_param("coverage_color%d" % (i + 1), coverage_colors[index] if index < coverage_colors.size() else Color(1, 1, 1))
+
+
+func _coverage_texture(path):
+	if path.empty():
+		return null
+	if !coverage_textures.has(path):
+		coverage_textures[path] = load(path)
+		if coverage_textures[path] == null:
+			push_warning("Doll2Preview: coverage mask `%s` cannot be loaded" % path)
+	return coverage_textures[path]
+
+
+# Colours live on the channel template; the live meshes each hold a copy, so a
+# change has to reach them too.
+func _propagate_channel(channel_id):
+	var template = channel_materials.get(channel_id)
+	if template == null:
+		return
+	for record in mesh_records:
+		if record.get("channel", "") != channel_id or !is_instance_valid(record.polygon):
+			continue
+		var material = record.polygon.material
+		if material == null:
+			continue
+		for name in ["recolor", "recolor2", "strength", "gradient_top", "gradient_span",
+				"zone1_color", "zone2_color", "zone3_color", "zone1_on", "zone2_on", "zone3_on"]:
+			material.set_shader_param(name, template.get_shader_param(name))
 
 
 func _is_neutral(colour):
@@ -1048,6 +1523,17 @@ func _track_gradient_bounds(channel_id, points):
 	gradient_bounds[channel_id] = bounds
 
 
+func _recompute_gradient_bounds():
+	if gradient_bounds.empty():
+		return
+	gradient_bounds.clear()
+	for record in mesh_records:
+		if !is_instance_valid(record.polygon):
+			continue
+		_track_gradient_bounds(record.get("channel", ""), record.polygon.polygon)
+	_apply_gradient_bounds()
+
+
 func _apply_gradient_bounds():
 	for channel_id in channel_materials.keys():
 		if !CATALOGUE.color_channels()[channel_id].get("two_tone", false):
@@ -1055,6 +1541,7 @@ func _apply_gradient_bounds():
 		var bounds = gradient_bounds.get(channel_id, Vector2.ZERO)
 		channel_materials[channel_id].set_shader_param("gradient_top", bounds.x)
 		channel_materials[channel_id].set_shader_param("gradient_span", max(bounds.y - bounds.x, 0.0))
+		_propagate_channel(channel_id)
 
 
 func _select_metadata(select, value):
@@ -1063,6 +1550,53 @@ func _select_metadata(select, value):
 			select.select(i)
 			return
 	select.select(0)
+
+
+# Build sliders, in a stable order so the panel does not reshuffle itself.
+func _sorted_modifiers():
+	var result = MODIFIERS.MODIFIERS.keys()
+	result.sort()
+	# The hair lengths sit apart from the build sliders: they are per layer rather
+	# than per bone, and reading them next to each other is what makes them
+	# legible as three independent lengths.
+	return MODIFIERS.LAYER_MODIFIERS.keys() + result
+
+
+func _add_proportion_slider(parent, label_text, key):
+	var definition = MODIFIERS.modifier(key).range
+	var row = HBoxContainer.new()
+	parent.add_child(row)
+	var label = Label.new()
+	label.text = _text(label_text)
+	label.rect_min_size.x = 105
+	row.add_child(label)
+	var slider = HSlider.new()
+	slider.min_value = float(definition.minimum)
+	slider.max_value = float(definition.maximum)
+	slider.step = float(definition.step)
+	slider.value = float(proportions[key])
+	slider.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	slider.connect("value_changed", self, "_on_proportion_changed", [key])
+	row.add_child(slider)
+	var value_label = Label.new()
+	value_label.rect_min_size.x = 38
+	value_label.align = Label.ALIGN_RIGHT
+	row.add_child(value_label)
+	ui[key] = slider
+	ui[key + "_label"] = value_label
+	_update_proportion_label(key)
+
+
+func _on_proportion_changed(value, key):
+	proportions[key] = float(value)
+	_update_proportion_label(key)
+	# Bone scales feed the solver, so the pose has to be worked out again.
+	_update_animated_pose()
+
+
+func _update_proportion_label(key):
+	if ui.has(key + "_label"):
+		ui[key + "_label"].text = "%.2f" % float(proportions[key])
 
 
 func _text(key):
@@ -1078,7 +1612,27 @@ func _on_select_changed(_item_index, group_id, select):
 	selections[group_id] = select.get_item_metadata(select.selected)
 	if group_id == "body":
 		_follow_body_tag()
+		_refresh_coverage_pickers()
+	_refresh_all_bindings()
+	_refresh_zone_pickers()
 	_rebuild_model()
+
+
+# A part can declare what it needs worn with it - a hair ornament needs hair.
+# Entries whose needs are unmet are greyed out rather than hidden, so it stays
+# obvious that they exist and why they cannot be picked yet.
+func _refresh_all_bindings():
+	for group_id in CATALOGUE.group_order():
+		if ui.has(group_id):
+			_refresh_bindings(ui[group_id])
+
+
+func _refresh_bindings(select):
+	for i in range(select.get_item_count()):
+		var part_id = str(select.get_item_metadata(i))
+		if part_id.empty():
+			continue
+		select.set_item_disabled(i, !CATALOGUE.bindings_met(part_id, selections))
 
 
 # A beastkin body ships its own chin and skull meshes, so switching the body
@@ -1124,7 +1678,10 @@ func _select_ui_value(key, value):
 func _rebuild_model():
 	if !skeleton:
 		return
+	animation_attachments = _animation_attachments()
+	animation_signature = _animation_signature().hash()
 	composed = CATALOGUE.compose(selections, axis_values)
+	composed_textures = CATALOGUE.compose_textures(selections)
 	if model_root != null:
 		model_root.queue_free()
 	mesh_records.clear()
@@ -1142,6 +1699,9 @@ func _rebuild_model():
 	_apply_gradient_bounds()
 	# The model node is new, so the view has to be put back onto it.
 	_apply_view()
+	# Only ever measured on the first build of a doll; afterwards the offset is
+	# held so a change of outfit or pose cannot slide the doll around.
+	_measure_model_offset()
 	print("Doll2Preview: created %d mesh slots from %d Spine slots." % [rendered_meshes, slot_data.size()])
 
 
@@ -1152,9 +1712,140 @@ func _draw_ordered_slots():
 	for slot in slot_data:
 		by_name[slot.get("name", "")] = slot
 	var result = []
-	for slot_name in CATALOGUE.draw_order():
+	for slot_name in _current_draw_order():
 		if by_name.has(slot_name):
 			result.append(by_name[slot_name])
+	return result
+
+
+# The order to draw in: the catalogue's, unless a running animation reorders the
+# slots itself.  An authored pose does that - the doll folds its arms in front of
+# the body in `idle2` and behind it everywhere else, which is a draw order change
+# and nothing else.
+func _current_draw_order():
+	var animated = _animation_draw_order()
+	return animated if !animated.empty() else CATALOGUE.draw_order()
+
+
+# Spine's DrawOrderTimeline, worked out over the export's own slot order because
+# that is the order the offsets were authored against.  The catalogue's
+# corrections are rules rather than positions, so they are re-applied afterwards
+# instead of being carried through the shuffle - the arms cross the tattoo slot
+# on their way forward, and an index would land one slot out.
+func _animation_draw_order():
+	var entry = []
+	for animation_name in animation_states.keys():
+		if !animation_states[animation_name]:
+			continue
+		var timeline = skeleton.get("animations", {}).get(animation_name, {}).get("drawOrder", [])
+		if timeline.empty():
+			continue
+		var time = float(animation_times.get(animation_name, 0.0))
+		for frame in timeline:
+			if float(frame.get("time", 0.0)) <= time:
+				entry = frame.get("offsets", [])
+	if entry.empty():
+		return []
+	var order = CATALOGUE.slot_order()
+	var count = order.size()
+	var offsets = []
+	for offset in entry:
+		var index = order.find(str(offset.get("slot", "")))
+		if index >= 0:
+			offsets.append({"index": index, "offset": int(offset.get("offset", 0))})
+	offsets.sort_custom(self, "_sort_draw_offsets")
+	var placed = []
+	placed.resize(count)
+	for i in range(count):
+		placed[i] = -1
+	var unchanged = []
+	var original = 0
+	for offset in offsets:
+		while original != offset.index:
+			unchanged.append(original)
+			original += 1
+		var destination = original + offset.offset
+		if destination >= 0 and destination < count:
+			placed[destination] = original
+		else:
+			unchanged.append(original)
+		original += 1
+	while original < count:
+		unchanged.append(original)
+		original += 1
+	var result = []
+	result.resize(count)
+	var cursor = unchanged.size()
+	for i in range(count - 1, -1, -1):
+		if placed[i] >= 0:
+			result[i] = order[placed[i]]
+		else:
+			cursor -= 1
+			result[i] = order[unchanged[cursor]] if cursor >= 0 else order[i]
+	return _apply_draw_order_fixes(result)
+
+
+# Small enough to compute every frame: what the animations say about the slots
+# right now, so a change can be spotted without rebuilding to find out.
+func _animation_signature():
+	var result = [_animation_attachments()]
+	for animation_name in animation_states.keys():
+		if !animation_states[animation_name]:
+			continue
+		var timeline = skeleton.get("animations", {}).get(animation_name, {}).get("drawOrder", [])
+		if timeline.empty():
+			continue
+		var time = float(animation_times.get(animation_name, 0.0))
+		var index = -1
+		for i in range(timeline.size()):
+			if float(timeline[i].get("time", 0.0)) <= time:
+				index = i
+		result.append([animation_name, index])
+	return result
+
+
+func _sort_draw_offsets(first, second):
+	return int(first.index) < int(second.index)
+
+
+# `{"slot": x, "before": y}`: x is lifted out and dropped straight in front of y.
+func _apply_draw_order_fixes(order):
+	for fix in CATALOGUE.draw_order_fixes():
+		var slot_name = str(fix.get("slot", ""))
+		var before = str(fix.get("before", ""))
+		var from = order.find(slot_name)
+		if from < 0:
+			continue
+		order.remove(from)
+		var to = order.find(before)
+		if to < 0:
+			order.insert(from, slot_name)
+		else:
+			order.insert(to, slot_name)
+	return order
+
+
+# Attachments a running animation puts in a slot, overriding the choice made in
+# the catalogue.  A pose does this to swap in the hand it needs - `idle2` folds
+# the arms and takes a different hand for each - and a doll that ignores it wears
+# one pose's hands on another pose's arms.
+func _animation_attachments():
+	var result = {}
+	for animation_name in animation_states.keys():
+		if !animation_states[animation_name]:
+			continue
+		var timelines = skeleton.get("animations", {}).get(animation_name, {}).get("slots", {})
+		var time = float(animation_times.get(animation_name, 0.0))
+		for slot_name in timelines.keys():
+			var keys = timelines[slot_name].get("attachment", [])
+			var value = null
+			var found = false
+			for key in keys:
+				if float(key.get("time", 0.0)) <= time:
+					value = key.get("name", null)
+					found = true
+			if found and value != null:
+				result[slot_name] = str(value)
 	return result
 
 
@@ -1163,7 +1854,7 @@ func _bake_bone_hierarchy():
 	bone_root = Node2D.new()
 	bone_root.name = "Bones"
 	model_root.add_child(bone_root)
-	bone_root.position = DISPLAY_ORIGIN
+	bone_root.position = _display_origin()
 	bone_root.scale = Vector2.ONE * float(MODIFIERS.display_scale(height_tier))
 	# Bone2D editor gizmos cover the entire doll with white wedges.  Keep the
 	# clean textured preview in the editor; the full Bone2D hierarchy is built
@@ -1205,6 +1896,10 @@ func _update_bone_nodes():
 func _resolve_attachment(slot):
 	var slot_name = slot.get("name", "")
 	var attachment_name = str(composed.get(slot_name, ""))
+	# Only for a slot the doll is already showing: the timeline says which hand to
+	# use, not whether the character has one.
+	if !attachment_name.empty() and animation_attachments.has(slot_name):
+		attachment_name = str(animation_attachments[slot_name])
 	if attachment_name.empty():
 		return {}
 	var attachments = skin_map.get(SKIN_NAME, {}).get("attachments", {})
@@ -1235,23 +1930,57 @@ func _add_attachment(slot, attachment):
 	var page = pages.get(region.page, {})
 	if page.empty() or page.texture == null:
 		return
-	var data = _attachment_geometry(slot, attachment, region, page.size, _attachment_deform(slot, attachment))
+	# A mod can repaint a part: its image replaces the atlas page while the mesh,
+	# its weights and its UVs stay exactly as the export authored them.
+	var mod_texture = _mod_texture(slot.get("name", ""), region)
+	var data = _attachment_geometry(slot, attachment, region, page.size, _attachment_deform(slot, attachment), mod_texture, _pose_for(slot))
 	if data.empty():
 		return
 	var polygon = Polygon2D.new()
 	polygon.name = slot.get("name", "Attachment")
-	polygon.texture = page.texture
-	polygon.position = DISPLAY_ORIGIN
+	polygon.texture = mod_texture if mod_texture != null else page.texture
+	polygon.position = _display_origin()
 	polygon.color = _attachment_colour(slot, attachment)
 	var channel = CATALOGUE.slot_channel(slot.get("name", ""))
-	polygon.material = channel_materials.get(channel)
+	# Coverage needs the mesh's own place on the art canvas, so those meshes get
+	# their own material instead of sharing the channel's.
+	polygon.material = _mesh_material(channel, region, page.size)
 	_track_gradient_bounds(channel, data.points)
 	polygon.polygon = data.points
 	polygon.uv = data.uvs
 	polygon.polygons = data.triangles
 	model_root.add_child(polygon)
-	mesh_records.append({"polygon": polygon, "slot": slot, "attachment": attachment, "region": region, "page_size": page.size})
+	mesh_records.append({"polygon": polygon, "slot": slot, "attachment": attachment, "region": region, "page_size": page.size, "mod_texture": mod_texture, "channel": channel})
 	rendered_meshes += 1
+
+
+# Loads and caches a mod's image for a slot, warning when it is not the size the
+# mesh's UVs were normalised over - at the wrong size the art lands askew.
+func _mod_texture(slot_name, region):
+	var path = str(composed_textures.get(slot_name, ""))
+	if path.empty():
+		return null
+	if !mod_textures.has(path):
+		var texture = _load_texture(path)
+		if texture == null:
+			push_warning("Doll2Preview: mod image `%s` cannot be loaded" % path)
+		elif region.source_size != Vector2.ZERO and texture.get_size() != region.source_size:
+			push_warning("Doll2Preview: mod image `%s` is %s, the mesh expects %s" % [path, str(texture.get_size()), str(region.source_size)])
+		mod_textures[path] = texture
+	return mod_textures[path]
+
+
+# Mod images normally live outside res://, where Godot's importer never ran, so
+# they are read as plain files rather than through the resource loader.
+func _load_texture(path):
+	if path.begins_with("res://"):
+		return load(path)
+	var image = Image.new()
+	if image.load(path) != OK:
+		return null
+	var texture = ImageTexture.new()
+	texture.create_from_image(image, Texture.FLAG_FILTER)
+	return texture
 
 
 func _update_mesh_geometry():
@@ -1259,7 +1988,7 @@ func _update_mesh_geometry():
 		if !is_instance_valid(record.polygon):
 			continue
 		var deform = _attachment_deform(record.slot, record.attachment)
-		var data = _attachment_geometry(record.slot, record.attachment, record.region, record.page_size, deform)
+		var data = _attachment_geometry(record.slot, record.attachment, record.region, record.page_size, deform, null, _pose_for(record.slot))
 		if !data.empty():
 			record.polygon.polygon = data.points
 
@@ -1362,21 +2091,25 @@ func _spine_colour(hex_value):
 	return Color("#" + str(hex_value).substr(0, 8))
 
 
-func _multiply_colours(first, second):
-	return Color(first.r * second.r, first.g * second.g, first.b * second.b, first.a * second.a)
-
-
-func _attachment_geometry(slot, attachment, region, page_size, deform = []):
+func _attachment_geometry(slot, attachment, region, page_size, deform = [], mod_texture = null, pose = null):
+	if pose == null:
+		pose = bones
 	var raw_vertices = attachment.get("vertices", [])
 	var is_mesh = attachment.get("type", "region") in ["mesh", "linkedmesh"] or raw_vertices.size() > 0
 	if is_mesh:
 		if raw_vertices.empty():
 			return {}
-		var points = _mesh_points(raw_vertices, attachment.get("uvs", []).size(), deform)
+		var points = _mesh_points(raw_vertices, attachment.get("uvs", []).size(), deform, pose)
 		var uv_points = PoolVector2Array()
 		var uvs = attachment.get("uvs", [])
+		# A mesh's UVs are normalised over the art it was cut from, so a mod image
+		# of that same size maps straight across it with no atlas projection.
+		var mod_size = mod_texture.get_size() if mod_texture != null else Vector2.ZERO
 		for i in range(0, uvs.size(), 2):
-			uv_points.append(_mesh_uv(region, float(uvs[i]), float(uvs[i + 1]), page_size))
+			if mod_texture != null:
+				uv_points.append(Vector2(float(uvs[i]) * mod_size.x, float(uvs[i + 1]) * mod_size.y))
+			else:
+				uv_points.append(_mesh_uv(region, float(uvs[i]), float(uvs[i + 1]), page_size))
 		var triangles = []
 		for i in range(0, attachment.get("triangles", []).size(), 3):
 			triangles.append(PoolIntArray([attachment.triangles[i], attachment.triangles[i + 1], attachment.triangles[i + 2]]))
@@ -1390,7 +2123,7 @@ func _attachment_geometry(slot, attachment, region, page_size, deform = []):
 	var sy = float(attachment.get("scaleY", 1.0))
 	var local = [Vector2(-width * 0.5 * sx, -height * 0.5 * sy), Vector2(-width * 0.5 * sx, height * 0.5 * sy), Vector2(width * 0.5 * sx, height * 0.5 * sy), Vector2(width * 0.5 * sx, -height * 0.5 * sy)]
 	var points = PoolVector2Array()
-	var bone = bones[slot.get("bone", "root")]
+	var bone = pose[slot.get("bone", "root")]
 	for point in local:
 		var rotated = point.rotated(rotation) + Vector2(x, y)
 		points.append(_world_point(bone, rotated))
@@ -1429,7 +2162,9 @@ func _mesh_uv(region, u, v, page_size):
 	return Vector2(rotated_u_offset + v * rotated_u_scale, rotated_v_offset - u * rotated_v_scale)
 
 
-func _mesh_points(vertices, uv_size, deform = []):
+func _mesh_points(vertices, uv_size, deform = [], pose = null):
+	if pose == null:
+		pose = bones
 	var points = PoolVector2Array()
 	# Weighted Spine vertices begin with an integer bone count.  An unweighted mesh
 	# always has exactly twice as many entries as its UV list and is handled below.
@@ -1438,7 +2173,7 @@ func _mesh_points(vertices, uv_size, deform = []):
 		for i in range(0, vertices.size(), 2):
 			var deform_x = float(deform[i]) if i < deform.size() else 0.0
 			var deform_y = float(deform[i + 1]) if i + 1 < deform.size() else 0.0
-			points.append(_world_point(bones["root"], Vector2(float(vertices[i]) + deform_x, float(vertices[i + 1]) + deform_y)))
+			points.append(_world_point(pose["root"], Vector2(float(vertices[i]) + deform_x, float(vertices[i + 1]) + deform_y)))
 		return points
 	var cursor = 0
 	var deform_cursor = 0
@@ -1453,7 +2188,7 @@ func _mesh_points(vertices, uv_size, deform = []):
 			var local = Vector2(float(vertices[cursor + 1]) + deform_x, float(vertices[cursor + 2]) + deform_y)
 			var weight = float(vertices[cursor + 3])
 			var bone_name = skeleton.bones[bone_index].name
-			result += _world_point(bones[bone_name], local) * weight
+			result += _world_point(pose[bone_name], local) * weight
 			cursor += 4
 			deform_cursor += 2
 		points.append(result)

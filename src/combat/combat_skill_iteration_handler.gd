@@ -209,7 +209,15 @@ func invoke_init():
 
 
 func invoke_animations_2():
+	#Projectiles are queued before everything else in the slot: they publish when the shot
+	#lands, and the hit visuals of the same skill read that to hold themselves back. An
+	#entry queued before the projectile would have nothing to read yet.
+	var predamage = []
 	for i in animationdict.predamage:
+		if str(get_true_code(i)).begins_with('projectile_'): predamage.push_back(i)
+	for i in animationdict.predamage:
+		if !str(get_true_code(i)).begins_with('projectile_'): predamage.push_back(i)
+	for i in predamage:
 		if i.target == 'target_frame':
 			queuenode.add_sfx(target.displaynode, get_true_code(i), globals.make_sfx_params(i, last_iteration))
 		elif i.target in AREA_SFX_TARGETS:
@@ -236,7 +244,7 @@ func invoke_animations_2():
 				caster.displaynode.process_sound(caster.get_weapon_sound())
 			else:
 				caster.displaynode.process_sound(template.sounddata.strike)
-		for j in animationdict.predamage:
+		for j in predamage:
 			if j.target in ['caster','target']:
 				var sfxtarget = globals.ProcessSfxTarget(j.target, caster, i)
 				if sfxtarget != null:
@@ -246,7 +254,9 @@ func invoke_animations_2():
 						params.caster_node = caster.displaynode
 						params.weapon_sprite = caster.get_weapon_cast_animation()
 						params.iteration = parent.iterations_played
-					elif true_code == 'lightning':
+					elif true_code == 'lightning' or true_code.begins_with('projectile_'):
+						#a shot that crosses the field needs both ends; a target entry only
+						#ever gets the target node
 						params.caster_node = caster.displaynode
 					queuenode.add_sfx(sfxtarget, true_code, params)
 	

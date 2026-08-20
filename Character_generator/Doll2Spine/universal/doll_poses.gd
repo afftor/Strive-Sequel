@@ -12,7 +12,7 @@ extends Reference
 # but a pose that crosses the arms in front of the body has to reorder them, the
 # way the old paperdoll rewrites z_index per pose.
 
-const CONTRACT = preload("res://Character_generator/Doll2Spine/universal/doll_contract.gd")
+const MODIFIERS = preload("res://Character_generator/Doll2Spine/universal/doll_modifiers.gd")
 
 const POSES = {
 	"default": {
@@ -45,5 +45,7 @@ static func pose(pose_id):
 
 
 # Poses authored against another skeleton contract cannot be trusted on this rig.
-static func compatible(pose_id):
-	return str(pose(pose_id).get("contract", "")) == CONTRACT.CONTRACT_ID
+# The contract has to be named by the caller: there are two rigs now, and a file
+# that preloads one of them silently answers for the wrong doll.
+static func compatible(pose_id, contract_id = MODIFIERS.DEFAULT_CONTRACT):
+	return str(pose(pose_id).get("contract", "")) == contract_id

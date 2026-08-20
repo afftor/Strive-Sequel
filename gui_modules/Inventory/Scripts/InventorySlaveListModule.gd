@@ -39,8 +39,14 @@ func update():
 				globals.connecttexttooltip(newnode.get_node("TaskIcon"), tr('REST')) #2test, not sure if assignments are here or in upper block
 		else:
 			var task = i.find_worktask()
-			newnode.get_node("TaskIcon").texture = load(task.icon)
-			globals.connecttexttooltip(newnode.get_node("TaskIcon"), tr(task.name))
+			#find_worktask answers null for work whose record is gone, and a task's icon can be
+			#absent - load() takes neither, and this line is what brought the list down
+			var task_icon = task.get('icon', null) if task != null else null
+			newnode.get_node("TaskIcon").texture = load(task_icon) if task_icon is String else task_icon
+			if task == null:
+				newnode.get_node("ToolIcon").texture = null
+				continue
+			globals.connecttexttooltip(newnode.get_node("TaskIcon"), tr(task.get('name', '')))
 			if task.has('worktool'):
 				var worktool = "res://assets/images/gui/inventory/tool_%s.png" % task.worktool
 				newnode.get_node("ToolIcon").texture = load(worktool)

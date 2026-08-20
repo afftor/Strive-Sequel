@@ -337,8 +337,8 @@ var list = {
 		special_reqs = {
 			global_reqs = [
 				{
-					type = 'has_upgrade',
-					name = 'resting',
+					type = 'has_mansion_room',
+					name = 'bathhouse',
 					value = 1
 				}
 			],

@@ -1028,12 +1028,14 @@ var data = {
 
 		],
 		character = "$anastasia",
+		start_dialogue_option = 9,
 		text = [
 			{
 				text = "ANASTASIA_PT2_1_1",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 9
 			},
 			{
 				text = "ANASTASIA_PT2_1_2",

@@ -50,6 +50,11 @@ func can_negotiate():
 	return cooldown.negotiation <= 0
 
 func day_tick():
+	#A household that eats together gets more out of the day. Slaves only - a servant's
+	#progress is not measured in training points. Same shape as the bathhouse's +1 below,
+	#except that one is per training action and this is per day.
+	if is_slave() and ResourceScripts.game_res.has_room_with_tag('dining'):
+		add_stat('training_points', 1)
 	if is_slave() and is_in_training():
 		days_since_training += 1
 		if days_since_training > get_loyalty_decay_grace():

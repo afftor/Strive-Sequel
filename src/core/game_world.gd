@@ -540,7 +540,7 @@ func gather_res(loc_id, amount):
 			var res = input_handler.random_from_array(pool)
 			var resdata = Items.materiallist[res]
 			var gather_amount = int(amount / resdata.price)
-			ResourceScripts.game_res.materials[res] += gather_amount
+			ResourceScripts.game_res.gain_material(res, gather_amount)
 			data.text += "%s - %d" % [tr(resdata.name), gather_amount]
 		'dungeon':
 			var pool = []
@@ -561,7 +561,7 @@ func gather_res(loc_id, amount):
 				else:
 					data.text += "%s - %d\n" % [tr(resdata.name), gather_amount]
 				location.gather_limit_resources[res] -= gather_amount
-				ResourceScripts.game_res.materials[res] += gather_amount
+				ResourceScripts.game_res.gain_material(res, gather_amount)
 				amount -= resdata.price * gather_amount
 			gui_controller.exploration_dungeon.res_container.update()
 	
