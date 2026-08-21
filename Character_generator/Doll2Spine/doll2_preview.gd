@@ -107,13 +107,13 @@ var asset_dir = ""
 var editor_strings = {}
 var rendered_meshes = 0
 var mesh_records = []
-var animation_states = {"idle": true, "eyesmove": false}
+var animation_states = {}
 # What the running animations currently say about the slots: which attachment
 # each holds and in what order they draw.  Both change which meshes exist, so a
 # change here needs a rebuild rather than a re-pose.
 var animation_attachments = {}
 var animation_signature = 0
-var animation_times = {"idle": 0.0, "eyesmove": 0.0}
+var animation_times = {}
 var animation_durations = {}
 var handle_buttons = {}
 var handles_visible = true
@@ -130,6 +130,7 @@ var handle_definitions = contract.HANDLES.duplicate(true)
 
 func _ready():
 	_load_source()
+	_reset_animation_states()
 	var mod_sources = CATALOGUE.mod_sources()
 	if !mod_sources.empty():
 		print("Doll2Preview: mod parts from %s" % PoolStringArray(mod_sources).join(", "))
@@ -140,6 +141,17 @@ func _ready():
 	_rebuild_model()
 	set_process(true)
 
+func _reset_animation_states():
+	animation_states = {}
+	animation_times = {}
+	var default_animation = str(DOLLS.doll(doll_id).get("default_animation", ""))
+	var animations = skeleton.get("animations", {})
+	for animation_name in animations.keys():
+		animation_states[animation_name] = animation_name == default_animation
+		animation_times[animation_name] = 0.0
+	if !animations.has(default_animation) and !animations.empty():
+		var fallback = animations.keys()[0]
+		animation_states[fallback] = true
 
 func _process(delta):
 	if skeleton.empty():
@@ -253,6 +265,7 @@ func _apply_bone_modifiers(layer_factors = {}):
 	# Every active modifier contributes a multiplier and they compose, so no
 	# modifier can silently discard another one acting on the same bone.
 	var factors = MODIFIERS.bone_factors(proportions, height_tier, contract.CONTRACT_ID)
+	var offsets = MODIFIERS.bone_offsets(proportions, contract.CONTRACT_ID)
 	# A part may carry its own bone tweaks; they multiply into the tier's rather
 	# than replacing them, so height still reads correctly while it is worn.
 	var part_bones = CATALOGUE.compose_bones(selections)
@@ -264,21 +277,25 @@ func _apply_bone_modifiers(layer_factors = {}):
 	for bone_name in layer_factors.keys():
 		var current = factors.get(bone_name, Vector2.ONE)
 		factors[bone_name] = Vector2(current.x * layer_factors[bone_name].x, current.y * layer_factors[bone_name].y)
-	var touched = []
+	var touched = {}
 	for bone_name in factors.keys():
+		touched[bone_name] = true
+	for bone_name in offsets.keys():
+		touched[bone_name] = true
+	for bone_name in touched.keys():
 		if !bones.has(bone_name):
 			continue
 		var bone = bones[bone_name]
-		var factor = factors[bone_name]
+		var factor = factors.get(bone_name, Vector2.ONE)
+		var offset = offsets.get(bone_name, Vector2.ZERO)
 		_set_bone_world(
 			bone_name,
-			float(bone.local_x), float(bone.local_y),
+			float(bone.local_x) + offset.x, float(bone.local_y) + offset.y,
 			float(bone.local_rotation),
 			float(bone.local_scale_x) * factor.x,
 			float(bone.local_scale_y) * factor.y,
 			float(bone.local_shear_x), float(bone.local_shear_y)
 		)
-		touched.append(bone_name)
 	if !touched.empty():
 		_resolve_bone_hierarchy()
 
@@ -359,20 +376,61 @@ func _sample_timeline(frames, time, fields):
 		else:
 			next = frames[i]
 			break
-	var percent = 0.0
-	if next != null:
-		var start_time = float(current.get("time", 0.0))
-		var end_time = float(next.get("time", start_time))
-		var curve = current.get("curve", "")
-		var stepped = typeof(curve) == TYPE_STRING and curve == "stepped"
-		if end_time > start_time and !stepped:
-			percent = clamp((time - start_time) / (end_time - start_time), 0.0, 1.0)
-	for field in fields:
-		var first_value = float(current.get(field, 0.0))
-		var second_value = first_value if next == null else float(next.get(field, 0.0))
-		result[field] = lerp(first_value, second_value, percent)
+	for field_index in range(fields.size()):
+		var field = fields[field_index]
+		result[field] = _sample_curve_value(current, next, time, field, field_index)
 	return result
 
+
+# Spine 4.2 stores cubic control points as absolute time/value pairs. Translate
+# timelines contain one group of four numbers per field, so X and Y can use
+# different easing curves instead of sharing a linear percentage.
+func _sample_curve_value(current, next, time, field, field_index):
+	var first_value = float(current.get(field, 0.0))
+	if next == null:
+		return first_value
+	var second_value = float(next.get(field, 0.0))
+	var start_time = float(current.get("time", 0.0))
+	var end_time = float(next.get("time", start_time))
+	var curve = current.get("curve", "")
+	if typeof(curve) == TYPE_STRING and curve == "stepped":
+		return first_value
+	if end_time <= start_time:
+		return first_value
+	if typeof(curve) == TYPE_ARRAY:
+		var offset = field_index * 4
+		if curve.size() >= offset + 4:
+			var parameter = _bezier_parameter_for_time(
+				time, start_time, float(curve[offset]),
+				float(curve[offset + 2]), end_time
+			)
+			return _cubic_bezier(
+				first_value, float(curve[offset + 1]),
+				float(curve[offset + 3]), second_value, parameter
+			)
+	var percent = clamp((time - start_time) / (end_time - start_time), 0.0, 1.0)
+	return lerp(first_value, second_value, percent)
+
+
+func _bezier_parameter_for_time(time, start_time, control_time_1, control_time_2, end_time):
+	var low = 0.0
+	var high = 1.0
+	for _iteration in range(14):
+		var middle = (low + high) * 0.5
+		var sampled_time = _cubic_bezier(start_time, control_time_1, control_time_2, end_time, middle)
+		if sampled_time < time:
+			low = middle
+		else:
+			high = middle
+	return (low + high) * 0.5
+
+
+func _cubic_bezier(start, control_1, control_2, finish, parameter):
+	var inverse = 1.0 - parameter
+	return inverse * inverse * inverse * start \
+		+ 3.0 * inverse * inverse * parameter * control_1 \
+		+ 3.0 * inverse * parameter * parameter * control_2 \
+		+ parameter * parameter * parameter * finish
 
 func _sort_ik_constraints(first, second):
 	return int(first.get("order", 0)) < int(second.get("order", 0))
@@ -866,13 +924,7 @@ func _switch_doll(new_doll_id):
 	coverage_id = ""
 	coverage_colors = []
 	_load_source()
-	# The two exports do not carry the same animations - the male has no `idle` -
-	# so the toggles are seeded from whatever this one actually has.
-	animation_states = {}
-	animation_times = {}
-	for animation_name in skeleton.get("animations", {}).keys():
-		animation_states[animation_name] = animation_name == "idle"
-		animation_times[animation_name] = 0.0
+	_reset_animation_states()
 	_build_channel_materials()
 	_build_interface()
 	_rebuild_model()
@@ -1562,11 +1614,13 @@ func _select_metadata(select, value):
 # Build sliders, in a stable order so the panel does not reshuffle itself.
 func _sorted_modifiers():
 	var result = MODIFIERS.MODIFIERS.keys()
+	for modifier_id in MODIFIERS.FACE_MODIFIER_ORDER:
+		result.erase(modifier_id)
 	result.sort()
 	# The hair lengths sit apart from the build sliders: they are per layer rather
 	# than per bone, and reading them next to each other is what makes them
 	# legible as three independent lengths.
-	return MODIFIERS.LAYER_MODIFIERS.keys() + result
+	return MODIFIERS.LAYER_MODIFIERS.keys() + result + MODIFIERS.FACE_MODIFIER_ORDER
 
 
 # A proportion the character carries as one of a few named sizes - butt size so
@@ -2120,11 +2174,23 @@ func _sample_deform_timeline(frames, time, length):
 	if end_time <= start_time:
 		return current
 	var next = _expanded_deform_frame(next_frame, length)
-	var percent = clamp((time - start_time) / (end_time - start_time), 0.0, 1.0)
+	var percent = _sample_deform_curve_percent(frames[current_index], next_frame, time)
 	for i in range(length):
 		current[i] = lerp(float(current[i]), float(next[i]), percent)
 	return current
 
+func _sample_deform_curve_percent(current, next, time):
+	var start_time = float(current.get("time", 0.0))
+	var end_time = float(next.get("time", start_time))
+	if end_time <= start_time:
+		return 0.0
+	var curve = current.get("curve", "")
+	if typeof(curve) == TYPE_ARRAY and curve.size() >= 4:
+		var parameter = _bezier_parameter_for_time(
+			time, start_time, float(curve[0]), float(curve[2]), end_time
+		)
+		return _cubic_bezier(0.0, float(curve[1]), float(curve[3]), 1.0, parameter)
+	return clamp((time - start_time) / (end_time - start_time), 0.0, 1.0)
 
 func _expanded_deform_frame(frame, length):
 	var result = []

@@ -37,6 +37,8 @@ const BONE_ALIASES = {
 		"nipple3_l": null, "nipple3_r": null,
 		"nipple4_l": null, "nipple4_r": null,
 		"nipple5_l": null, "nipple5_r": null,
+		"eyes_l": "eye_l",
+		"eyes_r": "eye_r",
 	},
 }
 
@@ -72,6 +74,31 @@ static func contract_bones(contract_id):
 # second control over the same bone only lets the two disagree.
 
 const MODIFIERS = {
+	"eyes_scale": {
+		"contract": "doll2_v1", "label": "DOLL2_PREVIEW_EYES_SCALE",
+		"range": {"default": 1.0, "minimum": 0.85, "maximum": 1.15, "step": 0.01},
+		"ops": [{"bone": "eyes_l"}, {"bone": "eyes_r"}],
+	},
+	"brow_scale": {
+		"contract": "doll2_v1", "label": "DOLL2_PREVIEW_BROW_SCALE",
+		"range": {"default": 1.0, "minimum": 0.85, "maximum": 1.15, "step": 0.01},
+		"ops": [{"bone": "brov_l"}, {"bone": "brov_r"}],
+	},
+	"pupil_scale": {
+		"contract": "doll2_v1", "label": "DOLL2_PREVIEW_PUPIL_SCALE",
+		"range": {"default": 1.0, "minimum": 0.85, "maximum": 1.15, "step": 0.01},
+		"ops": [{"bone": "pupil_l"}, {"bone": "pupil_r"}],
+	},
+	"nose_scale": {
+		"contract": "doll2_v1", "label": "DOLL2_PREVIEW_NOSE_SCALE",
+		"range": {"default": 1.0, "minimum": 0.85, "maximum": 1.15, "step": 0.01},
+		"ops": [{"bone": "nose"}],
+	},
+	"lips_scale": {
+		"contract": "doll2_v1", "label": "DOLL2_PREVIEW_LIPS_SCALE",
+		"range": {"default": 1.0, "minimum": 0.85, "maximum": 1.15, "step": 0.01},
+		"ops": [{"bone": "lips"}],
+	},
 	"build": {
 		"contract": "doll2_v1",
 		"label": "DOLL2_PREVIEW_BUILD",
@@ -162,6 +189,57 @@ const MODIFIERS = {
 	},
 }
 
+# Face placement is additive and applied after animation sampling. On this rig
+# local X follows the face vertically and local Y horizontally.
+const POSITION_MODIFIERS = {
+	"eyes_width": {
+		"label": "DOLL2_PREVIEW_EYES_WIDTH",
+		"range": {"default": 0.0, "minimum": -7.0, "maximum": 7.0, "step": 0.1},
+		"ops": [{"bone": "eyes_l", "axis": "y", "amount": 1.0}, {"bone": "eyes_r", "axis": "y", "amount": -1.0}],
+	},
+	"eyes_height": {
+		"label": "DOLL2_PREVIEW_EYES_HEIGHT",
+		"range": {"default": 0.0, "minimum": -7.0, "maximum": 7.0, "step": 0.1},
+		"ops": [{"bone": "eyes_l", "axis": "x"}, {"bone": "eyes_r", "axis": "x"}],
+	},
+	"brow_width": {
+		"label": "DOLL2_PREVIEW_BROW_WIDTH",
+		"range": {"default": 0.0, "minimum": -7.0, "maximum": 7.0, "step": 0.1},
+		"ops": [{"bone": "brov_l", "axis": "y", "amount": 1.0}, {"bone": "brov_r", "axis": "y", "amount": -1.0}],
+	},
+	"brow_height": {
+		"label": "DOLL2_PREVIEW_BROW_HEIGHT",
+		"range": {"default": 0.0, "minimum": -7.0, "maximum": 7.0, "step": 0.1},
+		"ops": [{"bone": "brov_l", "axis": "x"}, {"bone": "brov_r", "axis": "x"}],
+	},
+	"pupil_width": {
+		"label": "DOLL2_PREVIEW_PUPIL_WIDTH",
+		"range": {"default": 0.0, "minimum": -7.0, "maximum": 7.0, "step": 0.1},
+		"ops": [{"bone": "pupil_l", "axis": "y", "amount": 1.0}, {"bone": "pupil_r", "axis": "y", "amount": -1.0}],
+	},
+	"pupil_height": {
+		"label": "DOLL2_PREVIEW_PUPIL_HEIGHT",
+		"range": {"default": 0.0, "minimum": -7.0, "maximum": 7.0, "step": 0.1},
+		"ops": [{"bone": "pupil_l", "axis": "x"}, {"bone": "pupil_r", "axis": "x"}],
+	},
+	"nose_height": {
+		"label": "DOLL2_PREVIEW_NOSE_HEIGHT",
+		"range": {"default": 0.0, "minimum": -7.0, "maximum": 7.0, "step": 0.1},
+		"ops": [{"bone": "nose", "axis": "x"}],
+	},
+	"lips_height": {
+		"label": "DOLL2_PREVIEW_LIPS_HEIGHT",
+		"range": {"default": 0.0, "minimum": -7.0, "maximum": 7.0, "step": 0.1},
+		"ops": [{"bone": "lips", "axis": "x"}],
+	},
+}
+
+const FACE_MODIFIER_ORDER = [
+	"eyes_width", "eyes_height", "eyes_scale",
+	"brow_width", "brow_height", "brow_scale",
+	"pupil_width", "pupil_height", "pupil_scale",
+	"nose_height", "nose_scale", "lips_height", "lips_scale",
+]
 
 # ---------------------------------------------------------------- layers --
 
@@ -292,6 +370,8 @@ static func defaults():
 		result[modifier_id] = MODIFIERS[modifier_id].range.default
 	for modifier_id in LAYER_MODIFIERS.keys():
 		result[modifier_id] = LAYER_MODIFIERS[modifier_id].range.default
+	for modifier_id in POSITION_MODIFIERS.keys():
+		result[modifier_id] = POSITION_MODIFIERS[modifier_id].range.default
 	return result
 
 
@@ -299,6 +379,8 @@ static func defaults():
 static func modifier(modifier_id):
 	if MODIFIERS.has(modifier_id):
 		return MODIFIERS[modifier_id]
+	if POSITION_MODIFIERS.has(modifier_id):
+		return POSITION_MODIFIERS[modifier_id]
 	return LAYER_MODIFIERS.get(modifier_id, null)
 
 
@@ -396,6 +478,30 @@ static func bone_factors(values, tier_id = HEIGHT_DEFAULT, contract_id = DEFAULT
 			result.erase(bone_name)
 	return result
 
+# Accumulated local-position offsets for facial bones: {bone: Vector2}.
+static func bone_offsets(values, contract_id = DEFAULT_CONTRACT):
+	var result = {}
+	for modifier_id in POSITION_MODIFIERS.keys():
+		var modifier = POSITION_MODIFIERS[modifier_id]
+		var value = float(values.get(modifier_id, modifier.range.default))
+		if value == modifier.range.default:
+			continue
+		for operation in modifier.ops:
+			var rig_name = rig_bone(operation.bone, contract_id)
+			if rig_name == "":
+				continue
+			var amount = value * float(operation.get("amount", 1.0))
+			var offset = result.get(rig_name, Vector2.ZERO)
+			if operation.get("axis", "x") == "y":
+				offset.y += amount
+			else:
+				offset.x += amount
+			result[rig_name] = offset
+	for bone_name in result.keys():
+		if !(bone_name in contract_bones(contract_id)):
+			push_warning("Doll2 modifiers: unknown bone `%s` in contract %s" % [bone_name, contract_id])
+			result.erase(bone_name)
+	return result
 
 # The lower part of every strand: for each branch of a chain, the bone that sits
 # `from_leaf` bones above its tip.  Scaling those and letting the rest of the
