@@ -154,3 +154,25 @@ const DISPLAY = {
 const PRESETS = {
 	"dragon": {"race_overlay": "race_dragon", "face_markings": "head_m_dragon", "horns": "horn_dragon2", "tails": "tail_dragon", "wings": "Wings_dragon"},
 }
+
+
+# ----------------------------------------------------------------- beard ----
+
+# The male export grew a beard slot - spelled `bread` in the Spine project - with
+# nine beards, four moustaches and four of the two together.  Its attachments
+# carry no folder, so the slot is what routes them.  All three tables live here
+# rather than in the shared file because the female rig has no such art; move
+# them across when it grows some.
+const SLOT_ROUTES = {
+	"bread": "beard",
+}
+
+const GROUP_DEFS = {
+	"beard": {"kind": "options", "optional": true, "order": 11.5, "label": "DOLL2_PREVIEW_BEARD"},
+}
+
+# A beard is hair and takes a colour of its own: the game has carried
+# `hair_facial_color` since the old doll, with nothing to paint until now.
+const COLOR_CHANNELS = {
+	"beard": {"anchor": "beard", "groups": ["beard"]},
+}

@@ -100,6 +100,11 @@ const AXIS_OVERRIDES = {
 # `Hand_armorR3`, so the unnumbered name is the one that matches.
 const EXCLUDE = [
 	"hand3_armorl3",
+	# The plate set puts the flat torso nipple mask into the breast slot, where it
+	# wins over the body's size-matched nipple: a big chest ended up wearing the
+	# flat one, high and in the wrong place.  The mask keeps its own slot, where the
+	# body uses it.
+	"breast_nipples/torso_nipples_mask",
 ]
 
 # Slot assignments written out by hand, overriding the name parser for one part.

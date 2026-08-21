@@ -1317,6 +1317,8 @@ func demolish(slot_code):
 	if task_id != null and tasks().has(task_id):
 		ResourceScripts.game_res.clean_task(task_id)
 	ResourceScripts.game_res.rooms_changed()
+	#a building gone is places gone, and a job the estate shares has to hear about it
+	ResourceScripts.game_res.sync_room_tasks()
 	close_card()
 	refresh()
 

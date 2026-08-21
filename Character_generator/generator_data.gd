@@ -1323,12 +1323,6 @@ var transforms = {
 		human5 = [
 			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_human_skin/human/skin_human5.tres"},
 		],
-		human6 = [
-			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_human_skin/human/skin_human6.tres"},
-		],
-		human7 = [
-			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_human_skin/human/skin_human7.tres"},
-		],
 		pink1 = [
 			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_human_skin/pink/skin_pink1.tres"},
 		],
@@ -2438,18 +2432,6 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', attr = 'visible', value = true},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', texture = "res://Character_generator/images/05_hairs_assist/twin_tails.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', texture = "res://Character_generator/images/05_hairs_assist/twin_tails.png"},
-		],
-		twin_tails_4 = [
-			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', attr = 'visible', value = true},
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', attr = 'visible', value = true},
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', texture = "res://Character_generator/images/05_hairs_assist/Twin_tails_2.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', texture = "res://Character_generator/images/05_hairs_assist/Twin_tails_2.png"},
-		],
-		twin_tails_5 = [
-			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', attr = 'visible', value = true},
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', attr = 'visible', value = true},
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', texture = "res://Character_generator/images/05_hairs_assist/twin_tails 3.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', texture = "res://Character_generator/images/05_hairs_assist/twin_tails 3.png"},
 		],
 	},
 	

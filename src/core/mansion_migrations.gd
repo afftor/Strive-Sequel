@@ -45,6 +45,7 @@ static func run(res):
 	convert_gather_upgrades(res)
 	convert_room_upgrade(res)
 	attach_gather_jobs_to_buildings(res)
+	seat_farm_workers(res)
 	forget_spent_upgrades(res)
 
 
@@ -292,10 +293,6 @@ static func convert_gather_upgrades(res):
 
 #Puts a building on the first free plot of the grounds, no cost and no builders - the one way
 #a building appears without being raised, and only ever for a save being brought forward.
-
-
-#Puts a building on the first free plot of the grounds, no cost and no builders - the one way
-#a building appears without being raised, and only ever for a save being brought forward.
 static func raise_grounds_building(res, grounds, type_code):
 	var floor_data = MansionLayout.get_floor(res.mansion_layout, grounds)
 	if floor_data == null:
@@ -303,6 +300,66 @@ static func raise_grounds_building(res, grounds, type_code):
 	for slot_code in floor_data.slots:
 		if MansionLayout.build_room(res.mansion_layout, grounds, slot_code, type_code):
 			return MansionLayout.get_room(floor_data, slot_code)
+	return null
+
+
+
+#The farm used to be one estate-wide job worked from a screen of two slots, with no building
+#behind it. It is buildings now, each holding its own hands, so a save that has people farming
+#needs farms raised for them and those people moved onto the farm they are standing in.
+static func seat_farm_workers(res):
+	if !res.tasks_progresses.has('farming'):
+		return 0
+	var workers = res.tasks_progresses.farming.workers
+	if !(workers is Array) or workers.empty():
+		return 0
+	var grounds = MansionLayout.grounds_floor(res.mansion_layout)
+	if grounds < 0:
+		return 0
+	var raised = 0
+	#one plot per farm, and the grounds can run out - anyone left over keeps farming until
+	#they are given work elsewhere, which is the honest answer to having nowhere to put them
+	while res.farm_places() < workers.size():
+		if raise_grounds_building(res, grounds, 'farm') == null:
+			break
+		raised += 1
+	res.sync_room_tasks()
+	var moved = 0
+	for char_id in workers.duplicate():
+		var room = first_farm_with_room(res)
+		if room == null:
+			break
+		var person = ResourceScripts.game_party.characters.get(char_id, null)
+		if person == null:
+			workers.erase(char_id)
+			continue
+		person.remove_from_task()
+		person.assign_to_task(room.task_id)
+		#assign_to_task turns a full task down without a word, so the count is taken from
+		#where they actually ended up rather than from having asked
+		if person.get_work() == room.task_id:
+			moved += 1
+	if raised > 0 or moved > 0:
+		print_debug("mansion: %d farm(s) raised, %d farm hands moved into them" % [raised, moved])
+	return moved
+
+
+#The first farm with a place going. Asked again for every person, because taking one on is
+#what fills the place that decides where the next one goes.
+static func first_farm_with_room(res):
+	var grounds = MansionLayout.grounds_floor(res.mansion_layout)
+	if grounds < 0:
+		return null
+	var floor_data = MansionLayout.get_floor(res.mansion_layout, grounds)
+	for slot_code in floor_data.slots:
+		var room = MansionLayout.get_room(floor_data, slot_code)
+		if room == null or room.type != 'farm' or room.task_id == null:
+			continue
+		var task = res.tasks_progresses.get(room.task_id, null)
+		if task == null:
+			continue
+		if task.workers.size() < int(task.max_workers):
+			return room
 	return null
 
 

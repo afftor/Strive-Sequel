@@ -60,9 +60,10 @@ expand = true
 stretch_mode = 6
 
 [node name="ragdoll" parent="." instance=ExtResource( 38 )]
-rect_position = Vector2( -36.6, 15.4 )
-rect_size = Vector2( 780.6, 1043.8 )
+rect_position = Vector2( 8.0, 8.0 )
+rect_size = Vector2( 689.0, 1034.0 )
 show_behind_parent = true
+show_undress_buttons = false
 [node name="InventorySlots" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0

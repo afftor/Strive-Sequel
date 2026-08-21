@@ -1570,7 +1570,7 @@ func calculateresults():
 		if endfear < 10:
 			respect = -globals.rng.randi_range(15, 25)
 		text += tr("DATING_AFFECTIONATE_RESULT_1")
-		if endfear < 10:
+		if endfear < 10 && !ResourceScripts.game_globals.easytrain:
 			text += tr("DATING_LOW_FEAR_WARNING")
 	else:
 		affection = int(min(floor(endmood / 2.0), 20))
@@ -1579,6 +1579,10 @@ func calculateresults():
 		else:
 			respect = int(min(endfear, 25))
 		text += tr("DATING_FEARFUL_RESULT_1")
+
+	if ResourceScripts.game_globals.easytrain:
+		affection = int(max(affection, 0))
+		respect = int(max(respect, 0))
 
 	if affection != 0:
 		person.add_stat("affection", affection)

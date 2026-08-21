@@ -180,10 +180,18 @@ func show_resources_info():
 		_set_inventory_amount(newtask, ResourceScripts.game_res.materials[progress_data.job])
 		_set_worker_display(newtask, progress_data.workers, text)
 		_set_output(newtask, _format_production(value))
-	#farming is assigned through one shared task while each worker chooses their own
-	#products. Keep one stable destination cell; the flying icon itself shows the product.
-	if ResourceScripts.game_res.tasks_progresses.has("farming"):
-		var farm_task = ResourceScripts.game_res.tasks_progresses.farming
+	#Farming is spread across the farms on the grounds, and each worker chooses their own
+	#products. Keep one stable destination cell for the lot; the flying icon itself shows
+	#the product.
+	if true:
+		var farm_workers = []
+		for progress_data in ResourceScripts.game_res.tasks_progresses.values():
+			if progress_data.get('job', '') != 'farming' and progress_data.get('id', '') != 'farming':
+				continue
+			for worker in progress_data.get('workers', []):
+				if !farm_workers.has(worker):
+					farm_workers.append(worker)
+		var farm_task = {workers = farm_workers}
 		if !farm_task.workers.empty():
 			var newtask = _create_task_node("farming")
 			var farm_output = 0.0

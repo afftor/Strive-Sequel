@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=2]
+[gd_scene load_steps=116 format=2]
 
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/panel_factors.png" type="Texture" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -99,6 +99,10 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/NOTO_SANS_Regular_14px.tres" type="DynamicFont" id=99]
 [ext_resource path="res://assets/images/gui/gui icons/icon_slaveinfo_star.png" type="Texture" id=100]
 [ext_resource path="res://assets/Textures_v2/craft/buttons/frame_category_pressed.png" type="Texture" id=101]
+[ext_resource path="res://Character_generator/Doll2Spine/doll2_option_previews.gd" type="Script" id=103]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HSliderBG.tres" type="StyleBox" id=104]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/scrollbar_horizontal_detail.png" type="Texture" id=105]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/CheckBox.tres" type="Theme" id=107]
 
 [sub_resource type="StyleBoxTexture" id=3]
 
@@ -152,6 +156,16 @@ margin_left = 58.5797
 margin_right = 53.0007
 margin_top = 71.2295
 margin_bottom = 72.5273
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0, 0, 0, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.976, 0.882, 0.506, 1 )
 
 [node name="CharacterCreationMainModule" type="Panel" groups=["disable_rmb_esc", "ignore_rightclicks"]]
 self_modulate = Color( 0.0235294, 0.0196078, 0.909804, 1 )
@@ -667,6 +681,8 @@ texture = ExtResource( 52 )
 [node name="ragdoll" parent="RagdollPanel" instance=ExtResource( 102 )]
 rect_position = Vector2( 17.0, 12.0 )
 rect_size = Vector2( 516.0, 719.0 )
+offered_undress_levels = [ "underwear", "naked" ]
+show_hair_menu = false
 [node name="TextureRect" type="TextureRect" parent="RagdollPanel"]
 visible = false
 margin_right = 548.0
@@ -843,21 +859,22 @@ scroll_horizontal_enabled = false
 [node name="VBoxContainer" type="VBoxContainer" parent="VisualsModule/ScrollContainer"]
 margin_bottom = 4.0
 
-[node name="StatsContainer" type="GridContainer" parent="VisualsModule/ScrollContainer/VBoxContainer"]
-columns = 2
+[node name="StatsContainer" type="VBoxContainer" parent="VisualsModule/ScrollContainer/VBoxContainer"]
+rect_min_size = Vector2( 480, 0 )
+custom_constants/separation = 8
 
 [node name="Button" type="VBoxContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer"]
 visible = false
-margin_right = 236.0
+margin_right = 480.0
 margin_bottom = 79.0
 
 [node name="header" type="HBoxContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button"]
-margin_right = 236.0
+margin_right = 480.0
 margin_bottom = 35.0
 
 [node name="Label" type="Label" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button/header"]
 margin_top = 1.0
-margin_right = 197.0
+margin_right = 441.0
 margin_bottom = 34.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -866,8 +883,8 @@ text = "STATSEX"
 align = 1
 
 [node name="Tooltip" type="TextureRect" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button/header"]
-margin_left = 201.0
-margin_right = 236.0
+margin_left = 445.0
+margin_right = 480.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 35, 35 )
 texture = ExtResource( 82 )
@@ -879,7 +896,7 @@ __meta__ = {
 
 [node name="button" type="TextureButton" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button"]
 margin_top = 39.0
-margin_right = 236.0
+margin_right = 480.0
 margin_bottom = 79.0
 rect_min_size = Vector2( 200, 36 )
 theme = ExtResource( 28 )
@@ -906,7 +923,7 @@ stretch_mode = 3
 [node name="Label" type="Label" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button/button"]
 margin_left = 24.0
 margin_top = 2.0
-margin_right = 209.0
+margin_right = 456.0
 margin_bottom = 37.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -929,58 +946,114 @@ texture_hover = ExtResource( 67 )
 expand = true
 stretch_mode = 3
 
-[node name="StatsContainer2" type="GridContainer" parent="VisualsModule/ScrollContainer/VBoxContainer"]
-margin_top = 4.0
-margin_bottom = 4.0
-columns = 2
-
-[node name="Button" type="VBoxContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2"]
+[node name="Slider" type="VBoxContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer"]
 visible = false
-margin_right = 130.0
-margin_bottom = 39.0
+margin_right = 480.0
+margin_bottom = 102.0
 
-[node name="header" type="HBoxContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2/Button"]
-margin_right = 130.0
+[node name="header" type="HBoxContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Slider"]
+margin_right = 480.0
+margin_bottom = 29.0
+
+[node name="Label" type="Label" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Slider/header"]
+margin_top = 1.0
+margin_right = 480.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "STATHEIGHT"
+align = 1
+
+[node name="Control" type="VBoxContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Slider"]
+margin_top = 33.0
+margin_right = 480.0
+margin_bottom = 102.0
+custom_constants/separation = 4
+
+[node name="Value" type="Label" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Slider/Control"]
+margin_right = 480.0
+margin_bottom = 27.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 98 )
+text = "average"
+align = 1
+valign = 1
+
+[node name="Slider" type="HSlider" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Slider/Control"]
+margin_top = 31.0
+margin_right = 480.0
+margin_bottom = 69.0
+rect_min_size = Vector2( 0, 38 )
+size_flags_horizontal = 3
+custom_icons/grabber = ExtResource( 105 )
+custom_icons/grabber_highlight = ExtResource( 105 )
+custom_icons/grabber_disabled = ExtResource( 105 )
+custom_styles/slider = ExtResource( 104 )
+max_value = 5.0
+step = 1.0
+ticks_on_borders = true
+
+[node name="Checkbox" type="CheckBox" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer"]
+visible = false
+margin_right = 480.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 0, 44 )
+theme = ExtResource( 107 )
+text = "STATANAL_VIRGIN"
+
+[node name="SubmenuButton" type="Button" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer"]
+visible = false
+margin_right = 480.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+theme = ExtResource( 4 )
+text = "CHARCREATE_MENU_HAIR"
+
+[node name="Colour" type="VBoxContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer"]
+visible = false
+margin_right = 480.0
+margin_bottom = 73.0
+
+[node name="header" type="HBoxContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Colour"]
+margin_right = 480.0
 margin_bottom = 35.0
 
-[node name="Label" type="Label" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2/Button/header"]
+[node name="Label" type="Label" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Colour/header"]
 margin_top = 1.0
-margin_right = 91.0
+margin_right = 441.0
 margin_bottom = 34.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "STATSEX"
+text = "STATBODY_COLOR_SKIN"
 align = 1
 
-[node name="Tooltip" type="TextureRect" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2/Button/header"]
-margin_left = 95.0
-margin_right = 130.0
+[node name="Tooltip" type="TextureRect" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Colour/header"]
+margin_left = 445.0
+margin_right = 480.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 35, 35 )
 texture = ExtResource( 82 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="GridContainer" type="GridContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2/Button"]
+[node name="GridContainer" type="GridContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Colour"]
 margin_top = 39.0
-margin_right = 130.0
-margin_bottom = 39.0
+margin_right = 480.0
+margin_bottom = 73.0
 custom_constants/vseparation = 5
 custom_constants/hseparation = 9
-columns = 5
+columns = 8
 
-[node name="Button" type="Button" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2/Button/GridContainer"]
+[node name="Button" type="Button" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Colour/GridContainer"]
 visible = false
 margin_right = 40.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 40, 30 )
 toggle_mode = true
 
-[node name="ColorRect" type="ColorRect" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2/Button/GridContainer/Button"]
+[node name="ColorRect" type="ColorRect" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Colour/GridContainer/Button"]
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -991,14 +1064,21 @@ margin_bottom = -3.0
 mouse_filter = 2
 color = Color( 1, 0.890196, 0.819608, 1 )
 
-[node name="Button2" type="Button" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2/Button/GridContainer"]
+[node name="Frame" type="Panel" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Colour/GridContainer/Button"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 10 )
+
+[node name="Button2" type="Button" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Colour/GridContainer"]
 visible = false
 margin_right = 40.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 40, 30 )
 toggle_mode = true
 
-[node name="ColorRect" type="ColorRect" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2/Button/GridContainer/Button2"]
+[node name="ColorRect" type="ColorRect" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Colour/GridContainer/Button2"]
 material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1008,6 +1088,13 @@ margin_right = -3.0
 margin_bottom = -3.0
 mouse_filter = 2
 color = Color( 0.505882, 0.25098, 0.709804, 1 )
+
+[node name="Frame" type="Panel" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Colour/GridContainer/Button2"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 10 )
 
 [node name="TextureRect" type="TextureRect" parent="VisualsModule"]
 margin_left = 3.0
@@ -1035,6 +1122,124 @@ __meta__ = {
 margin_top = 289.0
 margin_right = 521.0
 margin_bottom = 294.0
+
+[node name="VisualSubmenu" type="Panel" parent="."]
+visible = false
+margin_left = 1195.0
+margin_top = 145.0
+margin_right = 1815.0
+margin_bottom = 945.0
+custom_styles/panel = ExtResource( 33 )
+
+[node name="Title" type="HBoxContainer" parent="VisualSubmenu"]
+margin_left = 18.0
+margin_top = 14.0
+margin_right = 602.0
+margin_bottom = 56.0
+
+[node name="Label" type="Label" parent="VisualSubmenu/Title"]
+margin_right = 538.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "CHARCREATE_MENU_HAIR"
+align = 1
+valign = 1
+
+[node name="Close" type="TextureButton" parent="VisualSubmenu/Title"]
+margin_left = 542.0
+margin_right = 584.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 42, 42 )
+texture_normal = ExtResource( 45 )
+texture_pressed = ExtResource( 47 )
+texture_hover = ExtResource( 46 )
+expand = true
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VisualSubmenu"]
+margin_left = 18.0
+margin_top = 66.0
+margin_right = 602.0
+margin_bottom = 780.0
+theme = ExtResource( 3 )
+scroll_horizontal_enabled = false
+
+[node name="Rows" type="VBoxContainer" parent="VisualSubmenu/ScrollContainer"]
+margin_right = 584.0
+size_flags_horizontal = 3
+custom_constants/separation = 18
+
+[node name="StatRow" type="VBoxContainer" parent="VisualSubmenu/ScrollContainer/Rows"]
+visible = false
+margin_right = 566.0
+margin_bottom = 267.0
+custom_constants/separation = 6
+
+[node name="Header" type="Label" parent="VisualSubmenu/ScrollContainer/Rows/StatRow"]
+margin_right = 566.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "STATHAIR_BASE"
+align = 1
+
+[node name="Options" type="GridContainer" parent="VisualSubmenu/ScrollContainer/Rows/StatRow"]
+margin_top = 38.0
+margin_right = 566.0
+margin_bottom = 267.0
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10
+columns = 2
+
+[node name="Tile" type="Button" parent="VisualSubmenu/ScrollContainer/Rows/StatRow/Options"]
+visible = false
+margin_right = 268.0
+margin_bottom = 229.0
+rect_min_size = Vector2( 268, 229 )
+theme = ExtResource( 4 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
+toggle_mode = true
+
+[node name="Preview" type="TextureRect" parent="VisualSubmenu/ScrollContainer/Rows/StatRow/Options/Tile"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -96.0
+margin_top = 5.0
+margin_right = 96.0
+margin_bottom = 197.0
+rect_min_size = Vector2( 192, 192 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="VisualSubmenu/ScrollContainer/Rows/StatRow/Options/Tile"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -28.0
+margin_right = -4.0
+margin_bottom = -4.0
+mouse_filter = 2
+custom_fonts/font = ExtResource( 99 )
+text = "option"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="Frame" type="Panel" parent="VisualSubmenu/ScrollContainer/Rows/StatRow/Options/Tile"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 10 )
+
+[node name="DollOptionPreviews" type="Node" parent="."]
+script = ExtResource( 103 )
 
 [node name="DietPanel" type="TextureRect" parent="."]
 margin_left = 675.0

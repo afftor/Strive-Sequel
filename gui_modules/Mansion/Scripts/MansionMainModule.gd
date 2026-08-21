@@ -953,6 +953,21 @@ func test_mode():
 		character.set_stat('physics', 100)
 		character.set_stat('wits', 100)
 		character.set_stat('consent', 5)
+		#A body the farm has plenty of use for: milk wants lactation, seed wants the parts, and
+		#blood, scales and skin all want a Dragonkin - so one card opens on a full produce list
+		#and the growth factor that caps how many at once actually bites.
+		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
+		character.create('Dragonkin', 'female', 'random')
+		character.fill_boosters()
+		character.set_stat('lactation', true)
+		character.set_stat('growth_factor', 5)
+		character.is_players_character = true
+		characters_pool.move_to_state(character.id)
+		#already at work, so the farm's card has somebody to show without one being placed first
+		ResourceScripts.game_res.sync_room_tasks()
+		var farm_task = ResourceScripts.game_res.first_free_farm_task()
+		if farm_task != null:
+			character.assign_to_task(farm_task)
 		var text = ''
 		var base_price = 0
 		var output_price = 0

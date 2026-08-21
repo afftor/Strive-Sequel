@@ -28,6 +28,8 @@ const FEEDS = {
 	"hair_base": "hair",
 	"hair_back": "hair_back",
 	"hair_assist": "hair_assist",
+	# The male export grew beard art; the female rig has none and ignores it.
+	"beard": "beard",
 	"horns": "horns",
 	"wings": "wings",
 	"tail": "tails",
@@ -47,6 +49,7 @@ const RULES = {
 	"hair": "hair_base_",
 	"hair_back": "hair_back_",
 	"hair_assist": "hair_assist_",
+	"beard": "",
 	"horns": "horn_",
 	"wings": "wings_",
 	"tails": "tail_",
@@ -63,11 +66,15 @@ const VALUES = {
 	"eyebrows": {
 		"style1": "eyebrows1", "style2": "eyebrows2", "style3": "eyebrows3",
 		"style4": "eyebrows4", "style5": "eyebrows5",
-		"style6": "eyebrows_m1", "style7": "eyebrows_m2",
+		"style6": "eyebrows_m1", "style7": "eyebrows_m2", "style8": "eyebrows_m3",
 	},
 	"lips": {
 		"none": "", "style1": "lips1", "style2": "lips2", "style3": "lips3",
 		"style4": "lips4", "style5": "lips5", "orcish": "lips_orc",
+		"style6": "lips_m1", "style7": "lips_m2", "style8": "lips_m3", "style9": "lips_m4",
+		# the new smiles, drawn for either sex
+		"style10": "lips_s1", "style11": "lips_s2", "style12": "lips_s3",
+		"orcish_1": "lips_orc_1", "orcish_2": "lips_orc_2", "orcish_3": "lips_orc_3",
 		"beastkin_cry": "beastkin_lips_cry", "beastkin_open": "beastkin_lips_open",
 		"beastkin_smile": "beastkin_lips_smile",
 	},
@@ -79,16 +86,23 @@ const VALUES = {
 		"demon": "", "feathered": "",
 	},
 	"horns": {
+		# the names are the old doll's and so is the art each one picked: its
+		# `straight` was the diagonal pair and its `short` the stubby one.  The
+		# export carries a single spiral, so both spiral names land on it.
 		"curved": "horn_curve_up", "curved_top": "horn_curve_top",
-		"curved_down": "horn_curve_down", "straight": "Horn_straight_top",
-		"dragon": "horn_dragon2", "spiral": "horn_spiral_2",
-		"spiral_2": "horn_spiral_2", "short": "horn_curve_up",
+		"curved_down": "horn_curve_down",
+		"straight": "Horn_straight_diagonal", "short": "Horn_straight_top",
+		"dragon": "horn_dragon2", "seraph": "horn_seraph_fibule",
+		"spiral": "horn_spiral_2", "spiral_2": "horn_spiral_2",
 	},
 	# a beastkin muzzle has its nose drawn in, so there is no separate one
 	"nose": {"beastkin": ""},
 	"tail": {
 		"rat": "tail_mouse", "tanuki": "tail_tanuk", "fish": "tail_nereid",
-		"dragon2": "tail_dragon2", "cow": "",
+		"dragon2": "tail_dragon2",
+		# Tails with no art of their own.  A centaur, a lamia and a harpy wear a
+		# whole lower body instead, and nobody has drawn a rabbit's scut yet.
+		"cow": "", "horse": "", "snake": "", "avian": "", "bunny": "",
 	},
 	"penis_type": {
 		"human": "Dick_human_up", "furry": "Dick_furry_up", "feline": "Dick_furry_up",
@@ -111,11 +125,28 @@ const VALUES = {
 	"hair_assist": {
 		"no": "", "twin_tails_2": "hair_assist_twin_tails_2",
 		"ponytail_2": "ponytail_2", "ponytail_3": "ponytail_3",
-		"twin_tails_3": "twin_tails_3", "twin_tails_4": "twin_tails",
-		"twin_tails_5": "Twin_tails_2",
+		"twin_tails_3": "twin_tails_3",
+		# two names the export drew the same way; the art is gone, the saved
+		# characters wearing them are not
+		"twin_tails_4": "hair_assist_twin_tails",
+		"twin_tails_5": "hair_assist_twin_tails_2",
+	},
+	# Seventeen pieces of beard art against the twelve styles the game had:
+	# the extra five are new values, so nothing the artist drew is unreachable.
+	"beard": {
+		"no": "", "": "",
+		"style1": "beard1", "style2": "beard2", "style3": "beard3",
+		"style4": "beard4", "style5": "beard5", "style6": "beard6",
+		"style7": "beard7", "style8": "beard8", "style9": "beard9",
+		"style10": "beard_moustache1", "style11": "beard_moustache2",
+		"style12": "beard_moustache3", "style13": "beard_moustache4",
+		"style14": "moustache1", "style15": "moustache2",
+		"style16": "moustache3", "style17": "moustache4",
 	},
 	"wings": {
 		"dragon": "Wings_dragon", "fairy": "Wings_fairy", "seraph": "Wings_seraph",
+		# the art spells the harpy's pair the Latin way
+		"harpy": "wings_harpia",
 	},
 }
 
@@ -153,6 +184,17 @@ const RACE_OVERLAYS = {
 	"Nereid": "race_nereid", "Slime": "race_slime",
 }
 
+# A dragon's scales and a kobold's spots are drawn parts rather than fur
+# masks: they are variants of the race's own overlay, and `skin_coverage` is
+# what picks between them.  `doll_coverage.gd` answers the furs.
+const OVERLAY_COVERAGE = {
+	"race_dragon": {
+		"scale": "race_dragon", "scale2": "race_dragon_scales",
+		"scale3": "race_dragon_scales2",
+	},
+	"race_kobold": {"kobold": "race_kobold", "kobold_spots": "race_kobold_spots"},
+}
+
 # Races whose lower half is an animal.
 # The race ids are the game's; the part ids are the art's, and the two spell the
 # centaur differently.
@@ -165,7 +207,7 @@ const ANIMAL_BODIES = {
 
 
 # `stats` is a plain dictionary of the values the old doll read, plus
-# `equipment` and `nude` for the gear.  An unknown value leaves its slot alone,
+# `equipment` and `undress` for the gear.  An unknown value leaves its slot alone,
 # exactly as a missing `transforms` entry did.
 static func selections_for(stats, doll_id = "female"):
 	var result = {}
@@ -190,7 +232,9 @@ static func selections_for(stats, doll_id = "female"):
 	# drawn on the belly above any waistband, so putting one under the trousers
 	# still leaves it sticking out over them.  When the art gains a resting
 	# variant this becomes a choice between the two rather than a hide.
-	var has_genitals = (sex == "male" or sex == "futa") and bool(stats.get("nude", false))
+	var undress = GEAR.normalise(stats.get("undress", stats.get("nude", false)))
+	var bared = undress == GEAR.BARE or undress == GEAR.NAKED
+	var has_genitals = (sex == "male" or sex == "futa") and bared
 	for stat in FEEDS.keys():
 		var group_id = str(FEEDS[stat])
 		if group_id == "genitals" and !has_genitals:
@@ -208,7 +252,10 @@ static func selections_for(stats, doll_id = "female"):
 			result[group_id] = part_id
 
 	if RACE_OVERLAYS.has(race):
-		result["race_overlay"] = RACE_OVERLAYS[race]
+		var overlay = str(RACE_OVERLAYS[race])
+		var variants = OVERLAY_COVERAGE.get(overlay, {})
+		overlay = str(variants.get(str(stats.get("skin_coverage", "")), overlay))
+		result["race_overlay"] = overlay
 	if ANIMAL_BODIES.has(race):
 		result["animal_body"] = ANIMAL_BODIES[race]
 	for stat in ["tattoo", "face_markings"]:
@@ -216,7 +263,7 @@ static func selections_for(stats, doll_id = "female"):
 		if value != "":
 			result[stat] = value
 
-	var gear = GEAR.selections_for(stats.get("equipment", {}), bool(stats.get("nude", false)), doll_id)
+	var gear = GEAR.selections_for(stats.get("equipment", {}), undress, doll_id)
 	for group_id in gear.keys():
 		result[group_id] = gear[group_id]
 	return result

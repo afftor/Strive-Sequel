@@ -231,7 +231,11 @@ func update_status(newbutton, ch):
 			newbutton.disabled = true
 	else:
 		var prdata = ResourceScripts.game_res.tasks_progresses[ch.get_work()]
-		if prdata.id != 'farming':
+		#Not every task carries a picture. A room task takes its icon from the job's entry in
+		#tasks.tasklist, and the jobs that only name a room - farming, the practice room -
+		#have no entry there; the old estate-wide farming record had none either, which is
+		#what the name this replaces was guarding against.
+		if prdata.get('icon', null) != null:
 			newbutton.get_node("Status").texture = load(prdata.icon)
 
 
@@ -606,7 +610,7 @@ func focus_on_person_task(ch):
 		if restbutton != null:
 			select_resource("rest", restbutton)
 		return
-	if work_code == 'farming':
+	if ResourceScripts.game_res.is_farming_work(work_code):
 		build_farm()
 		return
 	if work_code == 'service':
@@ -902,9 +906,15 @@ func build_char_farm(char_id):
 	$Frame_farm/char_panel.visible = true
 	var ch = characters_pool.get_char_by_id(char_id)
 	farming_char = ch
-	if ch.get_work() == 'farming':
+	if ResourceScripts.game_res.is_farming_work(ch.get_work()):
 		ResourceScripts.game_party.remove_char_from_farm(char_id)
-	ch.assign_to_task('farming')
+	#a farm is a building now, and this screen does not know one from another - the estate
+	#puts them in the first with a place going
+	var farm_task = ResourceScripts.game_res.first_free_farm_task()
+	if farm_task == null:
+		input_handler.SystemMessage(tr("MANSIONVIEW_ERR_FULL"))
+		return
+	ch.assign_to_task(farm_task)
 	ResourceScripts.game_party.farming_slots[selected_slot] = char_id
 	build_farm_slots()
 	$Frame_farm/char_panel/Choose.visible = false
@@ -948,7 +958,11 @@ func build_char_farm(char_id):
 
 
 func set_to_farm():
-	farming_char.assign_to_task('farming')
+	var farm_task = ResourceScripts.game_res.first_free_farm_task()
+	if farm_task == null:
+		input_handler.SystemMessage(tr("MANSIONVIEW_ERR_FULL"))
+		return
+	farming_char.assign_to_task(farm_task)
 	build_farm()
 
 

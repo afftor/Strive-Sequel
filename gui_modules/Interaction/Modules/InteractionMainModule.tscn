@@ -700,9 +700,9 @@ __meta__ = {
 }
 
 [node name="ragdoll" parent="Panel/BodyDisplay" instance=ExtResource( 83 )]
-rect_position = Vector2( 616.1, 80.0 )
-rect_size = Vector2( 688.0, 920.0 )
-clothes = false
+rect_position = Vector2( 495.0, 118.0 )
+rect_size = Vector2( 382.0, 620.0 )
+show_hair_menu = false
 [node name="blacklist" type="Button" parent="Panel"]
 anchor_top = 1.0
 anchor_bottom = 1.0

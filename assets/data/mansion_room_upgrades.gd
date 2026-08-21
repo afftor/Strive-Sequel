@@ -149,6 +149,16 @@ const LIST = {
 	#### the estate grounds ####
 
 	#More hands at the same work. Four levels, each a place: one worker becomes five.
+	#A farm works three hands at most: the buildings are small and the animals are the limit,
+	#not the acreage.
+	farm_hands = {
+		code = 'farm_hands',
+		icon = 'stables',
+		levels = {
+			1: {cost = {wood = 80, grain = 30}, progress = 25, effect = {work_slots = 1}},
+			2: {cost = {wood = 140, stone = 60, grain = 50}, progress = 40, effect = {work_slots = 2}},
+		},
+	},
 	gather_hands = {
 		code = 'gather_hands',
 		icon = 'rooms',

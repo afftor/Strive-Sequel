@@ -1,5 +1,9 @@
 extends Node
 
+#A picture has landed on disk and the character's icon now points at it, so
+#whoever is showing them can ask for it again.
+signal portrait_taken(id)
+
 #Off screen doll that generates portraits for characters nobody opened.
 #The screens only ever shot the character being looked at, so in a save of forty slaves
 #thirty nine had no portrait at all and fell back to their race icon.
@@ -18,6 +22,7 @@ var _doll = null
 var _queue = []
 var _attempted = {} #one go per character per session, a failing shot must not loop
 var _busy = false
+var _forced = {} #ids to shoot again even though they already have a picture
 
 
 func enqueue(person):
@@ -35,6 +40,22 @@ func forget(id): #lets a character be shot again, e.g. after their look changed
 	_attempted.erase(id)
 
 
+#The look changed under somebody's eyes - a hairstyle picked on an open doll - so
+#the picture on file is stale even though there is one and `needs_portrait` says
+#no. This shoots it again regardless.
+func reshoot(person):
+	if person == null:
+		return
+	person.set_stat('portrait_update', true)
+	_forced[person.id] = true
+	_attempted.erase(person.id)
+	if !_queue.has(person.id):
+		_queue.append(person.id)
+	if !_busy:
+		_busy = true
+		_work()
+
+
 func _build():
 	#a viewport of exactly the portrait's size: what it renders is the portrait. It keeps
 	#rendering while nothing shows it, which is the whole point of a booth.
@@ -46,9 +67,13 @@ func _build():
 	add_child(_viewport)
 	_doll = DOLL.instance()
 	_doll.rect_position = Vector2.ZERO
+	_doll.rect_min_size = Vector2.ZERO #the scene asks for a big frame; a shot is small
 	_doll.rect_size = CANVAS
 	_doll.portrait_mode = true
 	_viewport.add_child(_doll)
+	#entering the tree re-reads the scene's margins, so the canvas size is set
+	#again once it is in there
+	_doll.rect_size = CANVAS
 
 
 func _work():
@@ -57,11 +82,17 @@ func _work():
 		yield(get_tree(), 'idle_frame') #let the instance finish its own _ready
 	while !_queue.empty():
 		var person = characters_pool.get_char_by_id(_queue.pop_front())
-		if person != null and person.needs_portrait():
+		var shot_id = null
+		if person != null and (person.needs_portrait() or _forced.has(person.id)):
+			_forced.erase(person.id)
 			_attempted[person.id] = true
 			_shoot(person)
+			shot_id = person.id
 		for _i in FRAMES_BETWEEN: #save_portrait waits two frames of its own before reading
 			yield(get_tree(), 'idle_frame')
+			if shot_id != null:
+				emit_signal('portrait_taken', shot_id)
+				shot_id = null
 	_busy = false
 
 

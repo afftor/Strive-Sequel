@@ -133,13 +133,29 @@ const MODIFIERS = {
 			{"bone": "bone", "axis": "y", "op": "mul"},
 		],
 	},
-	"hips": {
+	# The character's `ass_size`, and the only handle the pelvis has.  Named sizes
+	# rather than a free range: the stat carries one of these six and nothing in
+	# between, so a number the game can never ask for would only be a trap.
+	#
+	# spine1 is the lower half of the trunk, the mirror of spine2 above it.  The
+	# pelvis bones themselves are the wrong handle - the mesh holds its outer edge
+	# on spine1, so scaling one of them moves 2-5 px - and stretching spine1 the
+	# long way instead drops the hip until the leg IK crosses the legs over each
+	# other.  Width is what a bigger backside can be on a figure drawn from the
+	# front, which is what the old doll did too: it scaled its pelvis sprite in the
+	# one axis it had, 1.0 flat to 1.15 huge, and touched nothing else.
+	"butt": {
 		"contract": "doll2_v1",
-		"label": "DOLL2_PREVIEW_HIPS",
-		"range": {"default": 1.0, "minimum": 0.8, "maximum": 1.3, "step": 0.01},
-		# spine1 is the lower half of the trunk, the mirror of spine2 above it.
-		# The pelvis bones themselves turned out to be the wrong handle: the mesh
-		# holds its outer edge on spine1, so scaling them moved almost nothing.
+		"label": "DOLL2_PREVIEW_BUTT_SIZE",
+		"range": {"default": 1.0, "minimum": 0.9, "maximum": 1.14, "step": 0.01},
+		"steps": {
+			"default": "average",
+			"order": ["flat", "small", "average", "big", "huge", "masculine"],
+			"values": {
+				"flat": 0.9, "small": 0.95, "average": 1.0,
+				"big": 1.07, "huge": 1.14, "masculine": 0.9,
+			},
+		},
 		"ops": [
 			{"bone": "spine1", "axis": "y", "op": "mul"},
 		],
@@ -284,6 +300,16 @@ static func modifier(modifier_id):
 	if MODIFIERS.has(modifier_id):
 		return MODIFIERS[modifier_id]
 	return LAYER_MODIFIERS.get(modifier_id, null)
+
+
+# The factor a named step stands for.  A modifier with `steps` is picked by name
+# by both the preview and the character, so the two cannot drift apart.
+static func step_factor(modifier_id, step_name):
+	var definition = modifier(modifier_id)
+	if definition == null or !definition.has("steps"):
+		return 1.0
+	var steps = definition.steps
+	return float(steps.values.get(str(step_name), steps.values[steps.default]))
 
 
 # {slot name: {bone: Vector2}} for the layers that are off their default length.

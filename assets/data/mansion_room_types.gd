@@ -263,6 +263,23 @@ const LIST = {
 	#game_res.gather_places() counts the places at that one building.
 	#
 	#They may be built more than once, limited only by the plots the grounds have.
+	#Somewhere to keep and work the livestock. Unlike the gathering buildings this holds no
+	#job of its own: the estate has one farming task and every farm adds places to it, because
+	#what a farm produces is decided by the people standing in it rather than by the ground -
+	#see game_res.farm_places().
+	farm = {
+		code = 'farm',
+		slots = {work = 1},
+		work_job = 'farming',
+		upkeep = 1,
+		build_cost = {wood = 70, stone = 40, grain = 20},
+		build_progress = 25,
+		upgrades = ['farm_hands'],
+		master_only = false,
+		tags = ['outdoor', 'farm'],
+		icon = 'stables',
+		color = '4b5f3a',
+	},
 	fishing_hut = {
 		code = 'fishing_hut',
 		slots = {work = 1},
@@ -431,3 +448,4 @@ static func has_tag(code, tag):
 
 static func get_work_job(code):
 	return get_type(code).work_job
+

@@ -35,6 +35,7 @@ onready var ExpandedBodyImage = $ExpandedBodyPreview/StoredImage
 onready var ExpandedPaperdoll = $ExpandedBodyPreview/Paperdoll
 onready var ExpandedCloseButton = $ExpandedBodyPreview/CloseButton
 onready var ExpandedBodyTween = $ExpandedBodyPreview/Tween
+var ExpandedNudityToggle
 
 var pending_date_person
 
@@ -84,6 +85,10 @@ const TEX_WORK_QUEST = preload("res://assets/Textures_v2/DUNGEON/Icons/exclaim.p
 const CARD_ACTION_DISABLED_MATERIAL = preload("res://assets/sfx/bw_shader.tres")
 const SKILL_EMPTY_TEXTURE = preload("res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_empty.png")
 const SKILL_NO_IMAGE_TEXTURE = preload("res://assets/images/gui/panels/noimage.png")
+#Nudity is no longer a checkbox in the rules list: the doll carries the undress
+#buttons, and a unique character - drawn as a sprite, with no doll to put them on
+#- gets this one button over the picture instead.
+const NUDITY_TOGGLE = preload("res://gui_modules/Universal/Scripts/NudityToggle.gd")
 const EXPANDED_ANIMATION_TIME = 0.24
 const LIST_FOLD_ANIMATION_TIME = 0.18
 const LIST_FOLDED_HEIGHT = 60.0
@@ -93,7 +98,6 @@ const EXPANDED_WORK_RULES = [
 	"ration",
 	"shifts",
 	"contraceptive",
-	"nudity",
 	"relationship",
 ]
 const HIDDEN_CHARACTER_ALPHA = 0.68
@@ -218,6 +222,15 @@ func _ready():
 	)
 	ExpandedNicknameEdit.connect("text_entered", self, "_confirm_expanded_nickname")
 	ExpandedCloseButton.connect("pressed", self, "close_expanded_character")
+	#The doll's undress buttons are the Nudity rule on this screen, so what the
+	#player picks there is written to the character and the portraits follow.
+	ExpandedPaperdoll.undress_is_a_rule = true
+	ExpandedPaperdoll.connect("undress_level_changed", self, "_on_expanded_doll_undressed")
+	ExpandedNudityToggle = NUDITY_TOGGLE.new()
+	#the close button already sits in the top corner of the frame
+	ExpandedNudityToggle.place_below(38)
+	ExpandedNudityToggle.connect("nudity_changed", self, "_on_expanded_nudity_changed")
+	ExpandedBodyPreview.add_child(ExpandedNudityToggle)
 	ExpandedFoodPreferences.add_to_group("ignore_rightclicks")
 	globals.connecttexttooltip(ExpandedNameEditButton, tr("NICKNAME_BUTTON_TEXT"))
 	hotkeys.connect("bindings_changed", self, "_build_expanded_info_tooltip")
@@ -536,6 +549,8 @@ func _try_reveal_expanded_character():
 func _clear_expanded_body_preview():
 	ExpandedBodyImage.texture = null
 	ExpandedBodyImage.hide()
+	if is_instance_valid(ExpandedNudityToggle):
+		ExpandedNudityToggle.hide()
 	ExpandedPaperdoll.modulate.a = 1.0
 	ExpandedPaperdoll.hide()
 	# the new doll has no viewport of its own to switch off - it draws straight
@@ -680,6 +695,12 @@ func _build_expanded_body_preview(person, force_paperdoll = false):
 				unique_texture = images.get_sprite(sprite_data.wed.path)
 		if unique_texture != null:
 			_show_expanded_body_image(unique_texture)
+	#the doll carries its own undress buttons; a sprite has none, so the rule gets
+	#a button of its own over the picture
+	if is_instance_valid(ExpandedNudityToggle):
+		ExpandedNudityToggle.bind(person)
+		if ExpandedNudityToggle.visible:
+			ExpandedNudityToggle.raise()
 
 
 func _create_expanded_card_visual():
@@ -860,8 +881,6 @@ func _expanded_rule_is_disabled(person, code):
 	match code:
 		"relationship":
 			return person.is_master()
-		"nudity":
-			return !person.has_status("sexservice")
 		"contraceptive", "ration":
 			return person.check_trait("undead")
 	return false
@@ -885,9 +904,22 @@ func _toggle_expanded_rule(person, code):
 		if selected_location != "show_all":
 			_close_expanded_character_immediate()
 		return
-	if code == "nudity":
-		_build_expanded_body_preview(person, true)
-		ExpandedBodyPreview.visible = ExpandedBodyImage.visible or ExpandedPaperdoll.visible
+
+
+#The rule left the rules list: it is switched on the body preview now, either by
+#the doll's undress buttons or by the unique character's own button.
+func _on_expanded_nudity_changed(person):
+	if person == null:
+		return
+	_build_expanded_body_preview(person, true)
+	ExpandedBodyPreview.visible = ExpandedBodyImage.visible or ExpandedPaperdoll.visible
+	refresh_portraits()
+
+
+#The doll rebuilt itself on the way here and keeps the step the player picked, so
+#only what is drawn from the character outside the doll needs a fresh look.
+func _on_expanded_doll_undressed(_level):
+	refresh_portraits()
 
 
 func _select_expanded_social_skill(skill_code):
@@ -1375,11 +1407,35 @@ func _get_training_title(person):
 			return tr("SIBLINGMODULETRAININGS")
 
 
-func _can_progress_person(person):
-	if person.get_next_class_exp() <= person.get_stat('base_exp'):
-		return true
+#buying a class is the bigger upgrade, so it sorts ahead of a spare mastery point instead of
+#sharing one bucket with it
+func _get_progress_rank(person):
+	if _can_buy_class(person):
+		return 0
 	for mastery in Skilldata.masteries:
 		if person.can_upgrade_mastery(mastery) or person.can_upgrade_mastery(mastery, true):
+			return 1
+	return 2
+
+
+#enough exp alone is not an upgrade: the character also needs a class they are actually
+#allowed to buy, the same way CharacterProgressionModule enables its Unlock button
+func _can_buy_class(person):
+	if person.get_next_class_exp() > person.get_stat('base_exp'):
+		return false
+	for prof in classesdata.professions.values():
+		if person.has_profession(prof.code):
+			continue
+		if ResourceScripts.game_globals.unlock_all_classes:
+			return true
+		if !person.checkreqs(prof.showupreqs, true) or !person.checkreqs(prof.reqs, true):
+			continue
+		var blocked = false
+		for conflict in prof.conflict_classes:
+			if person.has_profession(conflict):
+				blocked = true
+				break
+		if !blocked:
 			return true
 	return false
 
@@ -1430,7 +1486,7 @@ func _get_card_work_output(person, job_text):
 			result.texture = _work_icon_texture(item_data.icon)
 			result.tooltip = "[center]" + job_text + "[/center]\n" + tr(item_data.name)
 		return result
-	if work_code == 'farming':
+	if ResourceScripts.game_res.is_farming_work(work_code):
 		var farm_outputs = person.get_farming_rules()
 		var output_names = []
 		for output_code in farm_outputs:
@@ -2858,7 +2914,7 @@ func get_sort_value(row, key):
 		'date_available':
 			return 0 if _get_date_availability(person)[0] else 1
 		'levelup':
-			return 0 if _can_progress_person(person) else 1
+			return _get_progress_rank(person)
 		'exp':
 			return floor(person.get_stat('base_exp'))
 		'date':

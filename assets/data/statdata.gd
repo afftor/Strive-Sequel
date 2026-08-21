@@ -349,6 +349,11 @@ var statdata = {
 		tags = ['custom_getter'],
 		default_bonus = 'set',
 	},
+	body_color_eyebrows = {
+		code = 'body_color_eyebrows',
+		tags = ['custom_getter'],
+		default_bonus = 'set',
+	},
 	body_color_wings = {
 		code = 'body_color_wings',
 		tags = [],
@@ -361,7 +366,7 @@ var statdata = {
 	},
 	body_color_horns = {
 		code = 'body_color_horns',
-		tags = [],
+		tags = ['custom_getter'],
 		default_bonus = 'set',
 	},
 	body_color_animal = {

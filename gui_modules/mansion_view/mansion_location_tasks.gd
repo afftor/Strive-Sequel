@@ -307,6 +307,27 @@ static func production_per_turn(task_id):
 	return total / max(1.0, float(data.progress_limit))
 
 
+#What this farm is actually making, by material and per turn - the same shape as
+#production_table(), so a plot draws both the same way. Several people each giving several
+#different things is not one figure: milk and dragon scales do not add up to anything.
+static func farm_yield_table(task_id):
+	var rows = []
+	if !ResourceScripts.game_res.tasks_progresses.has(task_id):
+		return rows
+	var seen = {}
+	for char_id in ResourceScripts.game_res.tasks_progresses[task_id].workers:
+		var person = ResourceScripts.game_party.characters.get(char_id, null)
+		if person == null:
+			continue
+		for res in person.get_farming_rules():
+			if seen.has(res):
+				rows[seen[res]][1] += person.get_progress_farm(res)
+				continue
+			seen[res] = rows.size()
+			rows.append([res, person.get_progress_farm(res)])
+	return rows
+
+
 static func production_text(task_id):
 	var value = production_per_turn(task_id)
 	if value <= 0:

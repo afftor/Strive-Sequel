@@ -275,6 +275,10 @@ const BONES = [
 	"ear_r",
 	"ear_lt",
 	"ear_rt",
+	"pupil_l",
+	"pupil_r",
+	"nose",
+	"lips",
 ]
 
 const SLOTS = [

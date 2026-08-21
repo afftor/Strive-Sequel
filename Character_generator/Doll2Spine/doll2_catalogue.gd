@@ -180,11 +180,12 @@ static func slot_channel(slot_name):
 
 # The channel whose picker belongs next to this group's control, "" when the
 # group has none of its own (several groups share the skin channel).
-static func channel_for_group(group_id):
+static func channels_for_group(group_id):
+	var result = []
 	for channel_id in _gen().COLOR_CHANNELS.keys():
 		if _gen().COLOR_CHANNELS[channel_id].anchor == group_id:
-			return channel_id
-	return ""
+			result.append(channel_id)
+	return result
 
 
 static func default_selections():

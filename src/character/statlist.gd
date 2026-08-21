@@ -109,9 +109,10 @@ var template_direct = {
 	body_color_skin = '', 
 	body_color_wings = '', 
 	body_color_tail = '', 
-	body_color_horns = 'yellow3', 
+	body_color_horns = '', 
 	body_color_animal = '', 
 	body_color_lips = '',
+	body_color_eyebrows = '',
 	#new hair, empty values SHOULD be set in remade char generating function or kept empty to indicate derivative nature
 	hair_base = '', 
 	hair_assist = '', 

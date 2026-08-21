@@ -5,6 +5,7 @@ extends Node2D
 # on the game character generator or on a third-party Spine runtime.
 
 const DOLLS = preload("res://Character_generator/Doll2Spine/doll2_dolls.gd")
+const SOURCE = preload("res://Character_generator/Doll2Spine/doll2_source.gd")
 const DISPLAY_SCALE = 0.52
 const DISPLAY_ORIGIN = Vector2(500, 785)
 const ENGLISH_TRANSLATION = preload("res://localization/en/main.gd")
@@ -14,6 +15,8 @@ const CATALOGUE = preload("res://Character_generator/Doll2Spine/doll2_catalogue.
 var contract = DOLLS.doll(DOLLS.DEFAULT_DOLL).contract
 const MODIFIERS = preload("res://Character_generator/Doll2Spine/universal/doll_modifiers.gd")
 const COVERAGE = preload("res://Character_generator/Doll2Spine/universal/doll_coverage.gd")
+const GEAR = preload("res://Character_generator/Doll2Spine/universal/doll_gear_map.gd")
+const COLORS = preload("res://Character_generator/Doll2Spine/universal/doll_colors.gd")
 const RECOLOR_SHADER = preload("res://Character_generator/Doll2Spine/doll2_recolor.shader")
 const SKIN_NAME = "default"
 
@@ -41,9 +44,17 @@ var axis_values = CATALOGUE.default_axes()
 var composed = {}
 # Slots a mod paints with its own image instead of the atlas.  Empty without mods.
 var composed_textures = {}
-# Values of the free per-bone modifiers.  There are none right now: head size
-# belongs to height, and MODIFIERS is where a future one (ass size, and so on)
-# plugs in.
+# Slots the composed set is wearing but does not show - what makes a character
+# bare rather than dressed.  The screens fill this from the character's undress
+# level; in here it follows the undress buttons.
+var hidden_slots = []
+# How undressed the preview's own buttons have the doll.  A screen leaves this
+# alone: it works the level out against real gear and hands over the selections
+# and the hidden slots itself.
+var undress_level = GEAR.DRESSED
+# Values of the per-bone modifiers: the free build sliders, and the named sizes
+# a character carries as a stat.  Head size is deliberately not among them - that
+# is what height is for.
 var proportions = MODIFIERS.defaults()
 # Height is one of six authored steps rather than a free scale: each step carries
 # its own body proportions, the way the old paperdoll did.
@@ -56,6 +67,9 @@ var bone_parents = {}
 var coverage_id = ""
 var coverage_colors = []
 var coverage_textures = {}
+# The nipples follow the skin, the way they do in the game, until somebody in
+# here picks a colour for them by hand.
+var nipples_follow_skin = true
 # One picked colour and one shared ShaderMaterial per catalogue colour channel.
 # Sharing the material per channel means a colour change is a single uniform
 # write that repaints every mesh of that channel, with no model rebuild.
@@ -147,92 +161,28 @@ func _process(delta):
 
 func _load_source():
 	asset_dir = get_script().resource_path.get_base_dir() + "/"
-	var file = File.new()
 	var source = DOLLS.doll(doll_id)
 	contract = source.contract
 	bone_parents.clear()
 	handle_definitions = contract.HANDLES.duplicate(true)
 	CATALOGUE.use(doll_id)
-	if file.open(source.json, File.READ) != OK:
-		push_error("Doll2 preview: Spine JSON was not found")
+	# The export is read once per rig and handed to every doll that wears it: the
+	# skeleton, its skins, the atlas regions and the animation lengths are the
+	# same numbers for all of them, and each doll used to pay 3 MB of JSON and a
+	# tenth of a second for a private copy of them.  Everything a doll *does* with
+	# those numbers - the solved pose, the selections, the meshes and their
+	# colours - stays on the instance, which is why the rest can be shared.
+	var shared = SOURCE.of(doll_id)
+	if shared.empty():
 		return
-	var parsed = JSON.parse(file.get_as_text())
-	file.close()
-	if parsed.error != OK:
-		push_error("Doll2 preview: cannot parse Spine JSON: " + parsed.error_string)
-		return
-	skeleton = parsed.result
-	slot_data = skeleton.get("slots", [])
-	for skin in skeleton.get("skins", []):
-		skin_map[skin.get("name", "")] = skin
-	_parse_atlas()
-	for animation_name in skeleton.get("animations", {}).keys():
-		animation_durations[animation_name] = _animation_duration(animation_name)
+	skeleton = shared.skeleton
+	slot_data = shared.slot_data
+	skin_map = shared.skin_map
+	atlas = shared.atlas
+	pages = shared.pages
+	animation_durations = shared.animation_durations
 	_solve_pose()
 	_initialize_handles()
-
-
-func _parse_atlas():
-	var file = File.new()
-	if file.open(DOLLS.doll(doll_id).atlas, File.READ) != OK:
-		push_error("Doll2 preview: Spine atlas was not found")
-		return
-	var current_page = ""
-	var current_region = ""
-	for raw_line in file.get_as_text().split("\n"):
-		var line = raw_line.strip_edges()
-		if line.empty():
-			current_region = ""
-			continue
-		if line.find(":") == -1:
-			if line.ends_with(".png"):
-				current_page = line
-				pages[current_page] = {"texture": DOLLS.doll(doll_id).pages.get(current_page), "size": Vector2.ZERO}
-			else:
-				current_region = line
-				atlas[current_region] = {"page": current_page, "bounds": Rect2(), "offset": Vector2.ZERO, "source_size": Vector2.ZERO, "rotate": false}
-			continue
-		var split = line.split(":", false, 1)
-		if split.size() != 2:
-			continue
-		var key = split[0].strip_edges()
-		var value = split[1].strip_edges()
-		if current_region.empty():
-			if key == "size" and pages.has(current_page):
-				var page_data = pages[current_page]
-				page_data["size"] = _atlas_vector(value)
-				pages[current_page] = page_data
-		elif atlas.has(current_region):
-			if key == "bounds":
-				var values = _atlas_floats(value)
-				if values.size() == 4:
-					var bounds_data = atlas[current_region]
-					bounds_data["bounds"] = Rect2(values[0], values[1], values[2], values[3])
-					atlas[current_region] = bounds_data
-			elif key == "offsets":
-				var offset_values = _atlas_floats(value)
-				if offset_values.size() == 4:
-					var offset_data = atlas[current_region]
-					offset_data["offset"] = Vector2(offset_values[0], offset_values[1])
-					offset_data["source_size"] = Vector2(offset_values[2], offset_values[3])
-					atlas[current_region] = offset_data
-			elif key == "rotate":
-				var rotation_data = atlas[current_region]
-				rotation_data["rotate"] = value == "90" or value == "true"
-				atlas[current_region] = rotation_data
-	file.close()
-
-
-func _atlas_floats(value):
-	var result = []
-	for part in value.split(","):
-		result.append(float(part.strip_edges()))
-	return result
-
-
-func _atlas_vector(value):
-	var values = _atlas_floats(value)
-	return Vector2(values[0], values[1]) if values.size() == 2 else Vector2.ZERO
 
 
 # Solves the skeleton, plus one extra pose for every hair layer whose length is
@@ -422,22 +372,6 @@ func _sample_timeline(frames, time, fields):
 		var second_value = first_value if next == null else float(next.get(field, 0.0))
 		result[field] = lerp(first_value, second_value, percent)
 	return result
-
-
-func _animation_duration(animation_name):
-	var duration = 0.0
-	var animation = skeleton.get("animations", {}).get(animation_name, {})
-	for bone_channels in animation.get("bones", {}).values():
-		for frames in bone_channels.values():
-			for frame in frames:
-				duration = max(duration, float(frame.get("time", 0.0)))
-	for skin_timelines in animation.get("attachments", {}).values():
-		for slot_timelines in skin_timelines.values():
-			for attachment_timelines in slot_timelines.values():
-				for frames in attachment_timelines.values():
-					for frame in frames:
-						duration = max(duration, float(frame.get("time", 0.0)))
-	return duration
 
 
 func _sort_ik_constraints(first, second):
@@ -925,6 +859,8 @@ func _switch_doll(new_doll_id):
 	handle_target_offsets.clear()
 	selections = CATALOGUE.default_selections()
 	axis_values = CATALOGUE.default_axes()
+	undress_level = GEAR.DRESSED
+	hidden_slots = []
 	proportions = MODIFIERS.defaults()
 	height_tier = MODIFIERS.HEIGHT_DEFAULT
 	coverage_id = ""
@@ -1008,18 +944,26 @@ func _build_interface():
 	handles_toggle.connect("toggled", self, "_on_handles_toggled")
 	box.add_child(handles_toggle)
 	_add_preset_select(box)
+	_add_undress_row(box)
 	for group_id in CATALOGUE.group_order():
 		var group = CATALOGUE.group(group_id)
 		if group.parts.empty():
 			continue
-		_add_select(box, group.label, group_id, group.parts, group.optional, CATALOGUE.channel_for_group(group_id))
+		_add_select(box, group.label, group_id, group.parts, group.optional, CATALOGUE.channels_for_group(group_id))
 	for axis in _sorted_axes():
 		var definition = CATALOGUE.axes()[axis]
 		_add_axis_select(box, definition.label, axis, definition.values)
+	# A proportion picked by name reads as one of these, not as a slider stranded
+	# in the middle of the build ones.
+	for modifier_id in _sorted_modifiers():
+		var stepped = MODIFIERS.modifier(modifier_id)
+		if stepped.has("steps"):
+			_add_proportion_select(box, stepped.label, modifier_id, stepped.steps)
 	_add_coverage_select(box)
 	_add_height_slider(box)
 	for modifier_id in _sorted_modifiers():
-		_add_proportion_slider(box, MODIFIERS.modifier(modifier_id).label, modifier_id)
+		if !MODIFIERS.modifier(modifier_id).has("steps"):
+			_add_proportion_slider(box, MODIFIERS.modifier(modifier_id).label, modifier_id)
 	var note = Label.new()
 	note.autowrap = true
 	note.text = _text("DOLL2_PREVIEW_NOTE")
@@ -1124,8 +1068,8 @@ func _update_handle_buttons():
 		button.visible = handles_visible
 
 
-func _add_select(parent, label_text, group_id, part_ids, allow_none = false, channel = ""):
-	var select = _make_select(parent, label_text, channel)
+func _add_select(parent, label_text, group_id, part_ids, allow_none = false, channels = []):
+	var select = _make_select(parent, label_text, channels)
 	if allow_none:
 		select.add_item(_text("DOLL2_PREVIEW_NONE"))
 		select.set_item_metadata(0, "")
@@ -1136,6 +1080,35 @@ func _add_select(parent, label_text, group_id, part_ids, allow_none = false, cha
 	_refresh_bindings(select)
 	select.connect("item_selected", self, "_on_select_changed", [group_id, select])
 	ui[group_id] = select
+
+
+# The four steps a screen shows a character in, as one row of toggles.  It is the
+# same switch the doll carries in its corner in the game; it is here so a set can
+# be looked at at every level without a character to equip it on.
+func _add_undress_row(parent):
+	var label = Label.new()
+	label.text = _text("DOLL2_UNDRESS")
+	parent.add_child(label)
+	var row = HBoxContainer.new()
+	parent.add_child(row)
+	var group = ButtonGroup.new()
+	for level in GEAR.LEVELS:
+		var button = Button.new()
+		button.text = _text(GEAR.LEVEL_LABELS[level])
+		button.toggle_mode = true
+		button.group = group
+		button.clip_text = true
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		button.pressed = level == undress_level
+		button.connect("pressed", self, "_on_undress_picked", [level])
+		row.add_child(button)
+		ui["undress/" + level] = button
+
+
+func _on_undress_picked(level):
+	undress_level = level
+	hidden_slots = GEAR.hidden_slots(level)
+	_rebuild_model()
 
 
 func _add_axis_select(parent, label_text, axis, values):
@@ -1273,7 +1246,7 @@ func _add_preset_select(parent):
 	ui["preset"] = select
 
 
-func _make_select(parent, label_text, channel = ""):
+func _make_select(parent, label_text, channels = []):
 	var label = Label.new()
 	label.text = _text(label_text)
 	parent.add_child(label)
@@ -1284,9 +1257,10 @@ func _make_select(parent, label_text, channel = ""):
 	select.clip_text = true
 	row.add_child(select)
 	# The colour of a part belongs next to the part itself, not in a separate
-	# list at the bottom of the panel.
-	if !channel.empty():
-		_add_channel_picker(row, channel)
+	# list at the bottom of the panel.  A group can anchor more than one: the body
+	# carries the skin and the nipples.
+	for channel_id in channels:
+		_add_channel_picker(row, channel_id)
 	return select
 
 
@@ -1343,8 +1317,24 @@ func _add_picker_button(parent, channel_id, secondary):
 	picker.color = color_values_secondary[channel_id] if secondary else color_values[channel_id]
 	picker.hint_tooltip = _text("DOLL2_PREVIEW_TINT_TIPS_HINT" if secondary else "DOLL2_PREVIEW_TINT_HINT")
 	picker.connect("color_changed", self, "_on_channel_colour_changed", [channel_id, secondary])
+	_add_swatches(picker, channel_id)
 	parent.add_child(picker)
 	ui["color/" + channel_id + ("/tips" if secondary else "")] = picker
+
+
+# The colours a character can actually have, under the wheel.  A doll checked
+# against a hand-typed hex is a doll checked against the wrong tone, so the
+# palette the game paints from is offered directly; the names go in the tooltip
+# because a preset is only a square.
+func _add_swatches(picker, channel_id):
+	var swatches = COLORS.swatches(channel_id)
+	if swatches.empty():
+		return
+	var names = []
+	for entry in swatches:
+		picker.get_picker().add_preset(entry[1])
+		names.append(str(entry[0]))
+	picker.hint_tooltip += "\n\n" + _text("DOLL2_PREVIEW_SWATCHES") % [names.size(), ", ".join(names)]
 
 
 func _add_zone_picker(parent, channel_id, zone_index):
@@ -1362,7 +1352,24 @@ func _on_channel_colour_changed(colour, channel_id, secondary = false):
 		color_values_secondary[channel_id] = colour
 	else:
 		color_values[channel_id] = colour
+	if channel_id == "nipples" and !secondary:
+		# a hand-picked colour is the end of the rule, not an exception to it
+		nipples_follow_skin = false
 	_apply_channel_colour(channel_id)
+	if channel_id == "skin" and !secondary:
+		_follow_skin_with_nipples()
+
+
+# In the game the nipples are read off the skin's own shade; the preview used to
+# leave them at the artist's pink, which is why a light skin came out with one
+# pair here and another one in play.
+func _follow_skin_with_nipples():
+	if !nipples_follow_skin or !color_values.has("nipples"):
+		return
+	color_values["nipples"] = COLORS.nipples_from_colour(color_values.get("skin", Color(1, 1, 1)))
+	_apply_channel_colour("nipples")
+	if ui.has("color/nipples"):
+		ui["color/nipples"].color = color_values["nipples"]
 
 
 func _on_zone_colour_changed(colour, channel_id, zone_index):
@@ -1562,6 +1569,34 @@ func _sorted_modifiers():
 	return MODIFIERS.LAYER_MODIFIERS.keys() + result
 
 
+# A proportion the character carries as one of a few named sizes - butt size so
+# far - is picked the way breast size is, not dragged on a slider whose numbers
+# stand for nothing the game can ask for.
+func _add_proportion_select(parent, label_text, key, steps):
+	var select = _make_select(parent, label_text)
+	for step_name in steps.order:
+		select.add_item(step_name)
+		select.set_item_metadata(select.get_item_count() - 1, step_name)
+	_select_metadata(select, _proportion_step(key, steps))
+	select.connect("item_selected", self, "_on_proportion_step_changed", [key, select])
+	ui["proportion/" + key] = select
+
+
+# Which named size the stored factor is, so a rebuilt panel comes up on the size
+# the doll is actually wearing.
+func _proportion_step(key, steps):
+	for step_name in steps.order:
+		if abs(float(steps.values[step_name]) - float(proportions.get(key, 1.0))) < 0.001:
+			return step_name
+	return steps.default
+
+
+func _on_proportion_step_changed(_item_index, key, select):
+	proportions[key] = MODIFIERS.step_factor(key, select.get_item_metadata(select.selected))
+	# Bone scales feed the solver, so the pose has to be worked out again.
+	_update_animated_pose()
+
+
 func _add_proportion_slider(parent, label_text, key):
 	var definition = MODIFIERS.modifier(key).range
 	var row = HBoxContainer.new()
@@ -1680,8 +1715,14 @@ func _rebuild_model():
 		return
 	animation_attachments = _animation_attachments()
 	animation_signature = _animation_signature().hash()
-	composed = CATALOGUE.compose(selections, axis_values)
-	composed_textures = CATALOGUE.compose_textures(selections)
+	var worn = _worn_selections()
+	composed = CATALOGUE.compose(worn, axis_values)
+	composed_textures = CATALOGUE.compose_textures(worn)
+	# A stripped character keeps the pieces of the set that are not there for
+	# modesty - the stockings stay when the rest of the underwear goes.
+	for slot_name in hidden_slots:
+		composed.erase(slot_name)
+		composed_textures.erase(slot_name)
 	if model_root != null:
 		model_root.queue_free()
 	mesh_records.clear()
@@ -1702,7 +1743,31 @@ func _rebuild_model():
 	# Only ever measured on the first build of a doll; afterwards the offset is
 	# held so a change of outfit or pose cannot slide the doll around.
 	_measure_model_offset()
-	print("Doll2Preview: created %d mesh slots from %d Spine slots." % [rendered_meshes, slot_data.size()])
+	# print("Doll2Preview: created %d mesh slots from %d Spine slots." % [rendered_meshes, slot_data.size()])
+
+
+# What the doll actually has on, once the undress buttons have had their say.
+# The dropdowns go on showing what was picked - stripping a character is not the
+# same as choosing nothing - so the level is applied on the way to the model.
+func _worn_selections():
+	var level = GEAR.normalise(undress_level)
+	if level == GEAR.DRESSED:
+		return selections
+	var result = selections.duplicate()
+	if level == GEAR.NAKED:
+		for group_id in GEAR.WORN_GROUPS:
+			result[group_id] = ""
+		return result
+	if level == GEAR.UNDERWEAR:
+		# what a character with an empty underwear slot is given
+		result["outfit"] = GEAR.default_underwear(doll_id)
+		return result
+	# `bare` keeps the set that is picked instead of the character's underwear, so
+	# any set can be looked at with its covering pieces taken off - which is the
+	# question this level is here to answer.  The weapons go with the clothes.
+	result["weapon_belt"] = ""
+	result["weapon_back"] = ""
+	return result
 
 
 # Child order in the scene is draw order, so the model is built along the

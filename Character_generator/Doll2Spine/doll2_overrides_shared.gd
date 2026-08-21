@@ -127,6 +127,11 @@ const DRAW_ORDER_FIXES = [
 	# dressed character wore it over their trousers.  The testicles already sit
 	# below the armour and are left alone.
 	{"slot": "dick", "before": "equip_pelvis"},
+	# Animal ears are attached to the skull, not to the hairstyle, so the hair in
+	# front of the head has to fall over them: the export draws them after the
+	# hair and they came out pasted on top of it.  Under the hair mass and over
+	# the hair that hangs behind the head is where they belong.
+	{"slot": "ears", "before": "hairs_base"},
 ]
 
 # Always present, independent of any selection.
@@ -177,6 +182,17 @@ const AXES = {
 		"label": "DOLL2_PREVIEW_HAND_POSE",
 		"parse": "digit",
 	},
+	# The export grew a second pair of legs, cut heavier for orcs.  It is a
+	# shape rather than a size, and the game has no stat for it: the race picks
+	# it, the way it picks a muzzle.
+	"legs": {
+		"values": ["default", "orc"],
+		"default": "default",
+		"label": "DOLL2_PREVIEW_LEGS",
+		"parse": "tokens",
+		"tokens": {"orc": "orc"},
+		"fallback": "default",
+	},
 	"many_tits": {
 		"values": ["none", "4", "6"],
 		"default": "none",
@@ -190,6 +206,10 @@ const AXES = {
 # attachment in that slot; a single attachment is always assigned directly.
 # Only the hands are shared: breasts and pregnancy exist on the female rig alone.
 const SLOT_AXES = {
+	# Both rigs grew a heavier pair of legs for orcs.
+	"leg_left": "legs",
+	"leg_right": "legs",
+
 	"hand_left": "hand_pose",
 	"hand_right": "hand_pose",
 	"equip_hand_left": "hand_pose",
@@ -201,19 +221,34 @@ const SLOT_AXES = {
 # scylla's tentacles stand where the legs would, and leaving the legs on draws
 # them through the animal.  The leg armour goes with them - there is nothing left
 # to wear it.
+# An animal lower body replaces the human one from the waist down, genitals
+# included: the horse half of a centaur has no place to hang a human cock, and
+# the art draws none, so the human ones are cleared with the legs however
+# undressed the character is.
+const HIDDEN_BY_ANIMAL_BODY = ["leg_left", "leg_right", "equip_leg_left",
+	"equip_leg_right", "race_leg_left", "race_leg_right", "dick", "testicle"]
+
 const PART_HIDES = {
-	"kentaur_body": ["leg_left", "leg_right", "equip_leg_left", "equip_leg_right", "race_leg_left", "race_leg_right"],
-	"lamia_body": ["leg_left", "leg_right", "equip_leg_left", "equip_leg_right", "race_leg_left", "race_leg_right"],
-	"scylla_body": ["leg_left", "leg_right", "equip_leg_left", "equip_leg_right", "race_leg_left", "race_leg_right"],
+	"kentaur_body": HIDDEN_BY_ANIMAL_BODY,
+	"lamia_body": HIDDEN_BY_ANIMAL_BODY,
+	"scylla_body": HIDDEN_BY_ANIMAL_BODY,
 	# the spider keeps its own pelvis as well, so the human one goes too
-	"arachna_body": ["leg_left", "leg_right", "equip_leg_left", "equip_leg_right",
-		"race_leg_left", "race_leg_right", "pelvis", "equip_pelvis", "race_pelvis"],
+	"arachna_body": HIDDEN_BY_ANIMAL_BODY + ["pelvis", "equip_pelvis", "race_pelvis"],
 }
 
 # Tables that belong to one doll or the other and have no shared content.  They
 # are declared empty here so a doll file only has to write what it actually
 # needs, and the builder always finds the key.
-const EXCLUDE = []
+# Attachments the export carries twice.  Ten hairstyles and one set of tails are
+# in there under two names each - `braid` beside `hair_assist_braid`,
+# `hairs_base_slave` beside `hair_base_slave` - and the pictures they draw are
+# the same to within a per cent of antialiasing.  The prefixed name is the one
+# kept: it is what the game's own short values resolve to.
+const EXCLUDE = [
+	"braid", "bun", "ponytail", "pigtails", "twin_tails", "twin_tails_2",
+	"hairs_base_dopple", "hairs_base_irokez", "hairs_base_parting",
+	"hairs_base_slave", "hairs_base_undercut",
+]
 const AXIS_OVERRIDES = {}
 const PART_SLOTS = {}
 const PART_SPLITS = {}
@@ -303,6 +338,19 @@ const PRESETS = {
 const COLOR_CHANNELS = {
 	# `coverage` marks the channel fur and scale patterns are painted over: the body,
 	# never the hair or the gear.
+	# Nipples are drawn on the body's own meshes, so they inherited the skin colour
+	# and went green with it.  They are their own colour: named slots rather than a
+	# group, because no group tells them apart from the torso they are drawn on.
+	# Declared above `skin`, which would otherwise claim them with the rest of the
+	# body.  Nothing feeds it from the character, so the art's own tone stands
+	# until someone picks a colour.
+	# The two exports name them differently and neither has all of them: the
+	# female rig splits breasts, torso and the beastkin extras, the male rig has
+	# one `nipples` slot.  A slot the doll in hand does not have is simply noted.
+	"nipples": {"anchor": "body", "groups": [], "slots": [
+		"breast_nipples", "torso_nipples_mask", "nipples",
+		"beastkin_torso_many_nipples", "beastkin_pregnancy_nipple",
+	]},
 	"skin": {"anchor": "body", "groups": ["body", "head", "face", "nose", "genitals"], "coverage": true},
 	"eyes": {"anchor": "eyes", "groups": ["eyes"]},
 	"eyebrows": {"anchor": "eyebrows", "groups": ["eyebrows"]},

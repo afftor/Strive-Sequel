@@ -354,7 +354,11 @@ func _build_parts(records, slot_order):
 		slot_index[slot_order[i]] = i
 
 	for record in records:
-		if record.name in _overrides.EXCLUDE:
+		# An entry is either an attachment name, dropped wherever it appears, or a
+		# `slot/name` pair when the same attachment is wanted in one slot and not
+		# in another - the plate armour puts the body's flat nipple mask into the
+		# breast slot, where it overrides the size-matched one.
+		if record.name in _overrides.EXCLUDE or (record.slot + "/" + record.name) in _overrides.EXCLUDE:
 			excluded.append(record.slot + "/" + record.name)
 			continue
 		if record.slot in _overrides.CONSUMED_SLOTS:
@@ -462,9 +466,28 @@ func _build_colour_channels(groups):
 	var channels = {}
 	var slot_colors = {}
 	var overlaps = []
+	var every_slot = {}
+	for group_id in groups.keys():
+		for slot_name in groups[group_id].slots:
+			every_slot[slot_name] = true
 	for channel_id in _overrides.COLOR_CHANNELS.keys():
 		var definition = _overrides.COLOR_CHANNELS[channel_id]
 		var slots = {}
+		# A channel may name slots outright as well as inherit them from groups.
+		# Deriving from groups is right until one part carries two things that want
+		# separate colours - the body carries the nipples - and no group divides
+		# them.  Named slots are claimed first, so such a channel is declared above
+		# the one it is carving the slots out of.
+		for slot_name in definition.get("slots", []):
+			if !every_slot.has(slot_name):
+				# the two dolls do not carry the same slots, and the overrides are shared
+				_line("  %s: this doll has no `%s`" % [channel_id, slot_name])
+				continue
+			if slot_colors.has(slot_name):
+				overlaps.append("%s stays on `%s`, also claimed by `%s`" % [slot_name, slot_colors[slot_name], channel_id])
+				continue
+			slot_colors[slot_name] = channel_id
+			slots[slot_name] = true
 		for group_id in definition.groups:
 			if !groups.has(group_id):
 				_problem("COLOR_CHANNELS[%s]: group `%s` does not exist" % [channel_id, group_id])
@@ -1130,10 +1153,14 @@ func _check_overrides(canonical, built):
 				stale.append("AXIS_OVERRIDES[%s]: `%s` is not in the export" % [slot_name, key])
 	for name in _overrides.EXCLUDE:
 		var found = false
-		for slot_name in known_names.keys():
-			if known_names[slot_name].has(name):
-				found = true
-				break
+		if str(name).find("/") >= 0:
+			var pair = str(name).split("/", false, 1)
+			found = known_names.get(pair[0], {}).has(pair[1])
+		else:
+			for slot_name in known_names.keys():
+				if known_names[slot_name].has(name):
+					found = true
+					break
 		if !found:
 			stale.append("EXCLUDE: `%s` is not in the export" % name)
 	for part_id in _overrides.PART_SPLITS.keys():

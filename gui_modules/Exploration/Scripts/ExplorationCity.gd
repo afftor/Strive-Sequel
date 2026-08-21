@@ -56,6 +56,9 @@ func _ready():
 	gui_controller.add_close_button($GuildShop)
 	gui_controller.add_close_button($QuestBoard)
 	gui_controller.add_close_button($SlaveMarket)
+	# a portrait is taken a few frames after it is asked for, so the shop is told
+	# when one lands instead of showing the race icon until the next click
+	input_handler.connect('portrait_taken', self, '_on_portrait_taken')
 	$GuildShop/Label.text = tr("REPUTATION_SHOP_LABEL")
 	$SlaveMarket/HBoxContainer/UpgradeButton2/Label.text = tr("UPGRADE_BODY_LABEL")
 	
@@ -695,7 +698,9 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 		newbutton.get_node("name").text = tchar.get_short_name() + " - " + tchar.get_short_race()
 		#newbutton.get_node('name').set("custom_colors/font_color",variables.hexcolordict['factor'+str(int(floor(tchar.get_stat('growth_factor'))))])
 		newbutton.get_node("Price").text = str(tchar.calculate_price(true))
+		newbutton.set_meta("person", tchar)
 		newbutton.get_node('icon').texture = tchar.get_icon_small()
+		input_handler.queue_portrait(tchar) #a slave nobody opened has no picture yet
 		#newbutton.connect('signal_RMB_release',input_handler,'ShowSlavePanel', [tchar])
 		newbutton.connect("pressed", self, 'show_slave_info', [tchar])  #, self, "select_slave_in_guild", [tchar])
 		newbutton.connect('gui_input', self, 'double_clicked')
@@ -791,10 +796,22 @@ func sell_slave():
 		newbutton.connect('gui_input', self, 'double_clicked')
 		newbutton.set_meta("person", tchar)
 		newbutton.get_node('icon').texture = tchar.get_icon_small()
+		input_handler.queue_portrait(tchar) #a slave nobody opened has no picture yet
 	if !char_list.empty():
 		var person = char_list[0]
 		show_slave_info(person)
 		char_list.clear()
+
+
+func _on_portrait_taken(id):
+	for button in SlaveMarketList.get_children():
+		if !button.has_meta('person'):
+			continue
+		var listed = button.get_meta('person')
+		if listed != null and listed.id == id and button.has_node('icon'):
+			button.get_node('icon').texture = listed.get_icon_small()
+	if person_to_hire != null and person_to_hire.id == id:
+		$SlaveMarket/Portrait.texture = person_to_hire.get_icon()
 
 
 func show_slave_info(person):
@@ -836,6 +853,7 @@ func show_slave_info(person):
 #		temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
 #		globals.connecttexttooltip(newnode, temptext)
 		globals.connectclasstooltip(newnode, person, i)
+	input_handler.queue_portrait(person)
 	$SlaveMarket/Portrait.texture = person.get_icon()
 	globals.build_attrs_for_char($SlaveMarket, person)
 	$SlaveMarket/RichTextLabel.bbcode_text = text

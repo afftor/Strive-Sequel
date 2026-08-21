@@ -2454,8 +2454,8 @@ expand = true
 stretch_mode = 5
 
 [node name="Paperdoll" parent="ExpandedBodyPreview" instance=ExtResource( 83 )]
-rect_position = Vector2( 0.0, 0.0 )
-rect_size = Vector2( 626.0, 900.0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
 update_character_portrait = false
 [node name="CloseButton" parent="ExpandedBodyPreview" instance=ExtResource( 80 )]
 anchor_left = 1.0

@@ -1,10 +1,27 @@
 extends Panel
 
+# The doll's undress buttons are the Nudity rule on this screen too, and a unique
+# character - shown as a painted sprite, with no doll under it - gets the same
+# button over the picture.
+const NUDITY_TOGGLE = preload("res://gui_modules/Universal/Scripts/NudityToggle.gd")
+
 var person
+var nudity_toggle
 
 #func _ready():
 #	update()
 var body_visible = true
+
+
+func _ready():
+	$ragdoll.undress_is_a_rule = true
+	nudity_toggle = NUDITY_TOGGLE.new()
+	nudity_toggle.connect("nudity_changed", self, "_on_nudity_changed")
+	add_child(nudity_toggle)
+
+
+func _on_nudity_changed(changed_person):
+	update(changed_person)
 
 func body_show(value):
 	body_visible = value
@@ -65,6 +82,11 @@ func update(person = null):
 			var spouse_person = characters_pool.get_char_by_id(ResourceScripts.game_progress.spouse)
 			if spouse_person.get_stat('unique') == person.get_stat('unique') and worlddata.pregen_character_sprites[person.get_stat('unique')].has("wed"):
 				$Body.texture = images.get_sprite(worlddata.pregen_character_sprites[person.get_stat('unique')].wed.path)
+	
+	if nudity_toggle != null:
+		nudity_toggle.bind(person)
+		if nudity_toggle.visible:
+			nudity_toggle.raise()
 	
 	globals.build_buffs_for_char(person, $buffscontainer, 'mansion')
 	

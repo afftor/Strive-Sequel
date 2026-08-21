@@ -26,6 +26,8 @@ func setup(view_node, character, task_panel, on_task):
 	assigned = on_task
 	if !is_connected("pressed", self, "on_pressed"):
 		connect("pressed", self, "on_pressed")
+	if !$Remove.is_connected("pressed", self, "on_remove"):
+		$Remove.connect("pressed", self, "on_remove")
 	refresh()
 
 
@@ -43,6 +45,12 @@ func refresh():
 	$rules.text = subtitle(person)
 	#whose rules are open, so the panel beside the list is tied to a name in it
 	$bg.color = COLOR_SELECTED if panel.selected_char() == char_id else Color(1, 1, 1, 0)
+	#On service the cell itself opens the rules, so taking somebody off the work needs a
+	#control of its own; on every other task it is the same thing the cell already does, kept
+	#so the way off a task is in one place wherever it is looked for.
+	$Remove.visible = assigned
+	globals.connecttexttooltip($Remove, tr("MANSIONVIEW_TASKREMOVEHINT"), true,
+		view.get_node("Overlay/TextTooltip"))
 	modulate = Color(1, 1, 1, 1) if blocked_reason() == "" else Color(1, 0.45, 0.45)
 	globals.connecttexttooltip(self, tooltip_text(person), true,
 		view.get_node("Overlay/TextTooltip"))
@@ -120,6 +128,10 @@ func tooltip_text(person):
 		return "%s\n%s" % [person.get_short_name(),
 			tr("MANSIONVIEW_SERVICERULESHINT" if panel.is_service() else "MANSIONVIEW_TASKREMOVEHINT")]
 	return "%s\n%s" % [person.get_short_name(), tr("MANSIONVIEW_TASKADDHINT")]
+
+
+func on_remove():
+	panel.remove_worker(char_id)
 
 
 func on_pressed():

@@ -332,7 +332,7 @@ __meta__ = {
 
 [node name="ragdoll" parent="SlaveBodyModule" instance=ExtResource( 251 )]
 rect_position = Vector2( 8.0, 8.0 )
-rect_size = Vector2( 688.0, 920.0 )
+rect_size = Vector2( 688.0, 904.0 )
 [node name="opacity" type="HSlider" parent="SlaveBodyModule"]
 visible = false
 light_mask = 0

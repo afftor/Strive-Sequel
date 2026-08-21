@@ -90,9 +90,10 @@ expand = true
 stretch_mode = 6
 
 [node name="ragdoll" parent="SlaveBodyModule" instance=ExtResource( 31 )]
-rect_position = Vector2( 1.0, -109.0 )
-rect_size = Vector2( 688.0, 920.0 )
+rect_position = Vector2( 8.0, 8.0 )
+rect_size = Vector2( 688.0, 904.0 )
 show_behind_parent = true
+show_undress_buttons = false
 [node name="buffscontainer" type="HBoxContainer" parent="SlaveBodyModule"]
 visible = false
 modulate = Color( 1, 1, 1, 0.823529 )

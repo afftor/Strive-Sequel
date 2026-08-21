@@ -170,12 +170,19 @@ func build_test_grounds():
 		return []
 	var built = []
 	var floor_data = MansionLayout.get_floor(mansion_layout, grounds)
-	var wanted = ['fishing_hut', 'forestry', 'mine']
+	#Two farms rather than one: every farm feeds the same job and what it makes is chosen per
+	#person, so a second one is the only way to see that they share a roster and their places
+	#are counted together.
+	var wanted = ['fishing_hut', 'forestry', 'mine', 'farm', 'farm']
 	for slot_code in floor_data.slots:
 		if built.size() >= wanted.size():
 			break
 		if MansionLayout.build_room(mansion_layout, grounds, slot_code, wanted[built.size()]):
 			built.append(wanted[built.size()])
+	#one farm at its best and one as raised, so the places on offer are not all the same number
+	var farm = MansionLayout.first_room_of_type(mansion_layout, 'farm')
+	if farm != null:
+		MansionLayout.max_out_upgrades(farm)
 	sync_room_tasks()
 	return built
 
@@ -445,6 +452,9 @@ func character_room_has_tag(char_id, tag):
 #gone, so a room worker is an ordinary worker to the rest of the game and assign_to_task()
 #can be used against a room without any special case.
 func sync_room_tasks():
+	#a farm raised or pulled down changes how many hands the farming job may take, and the
+	#screen asks about that as soon as it redraws rather than waiting for the next day
+	_add_farm_job()
 	var live = MansionLayout.ensure_all_room_tasks(mansion_layout, tasks_progresses)
 	#scaffolding gets a task of its own for exactly as long as it stands
 	for entry in MansionLayout.each_build(mansion_layout):
@@ -698,9 +708,57 @@ func _add_craft_job():
 		tasks_progresses.crafting = {id = 'crafting', status = 'permanent', workers = [], workers_handled = {}, messages = [], location = 'aliron', name = 'TASKCRAFTNAME', descript = 'TASKCRAFTDESCRIPT', icon = "res://assets/images/gui/icon_craft64x64.png", type = 'permanent'}
 
 
+#Every farm standing on the grounds, counted together. The estate has one farming job and the
+#farms are what say how many hands it may take: what comes out of it is decided per person by
+#their own produce rules, so there is nothing to tell one farm's output from another's.
+func farm_places():
+	var grounds = MansionLayout.grounds_floor(mansion_layout)
+	if grounds < 0:
+		return 0
+	var res = 0
+	var floor_data = MansionLayout.get_floor(mansion_layout, grounds)
+	for slot_code in floor_data.slots:
+		var room = MansionLayout.get_room(floor_data, slot_code)
+		if room != null and room.type == 'farm':
+			res += MansionLayout.slot_capacity(room, 'work')
+	return res
+
+
+#Farming used to be one record called 'farming'; every farm has a room task of its own now,
+#and the job code is what they have in common. Screens that used to compare the task id ask
+#this instead, so somebody farming still reads as farming wherever they stand.
+func is_farming_work(task_id):
+	if task_id == 'farming':
+		return true
+	var task = tasks_progresses.get(task_id, null)
+	return task != null and task.get('job', '') == 'farming'
+
+
+#The farm a new hand should be sent to: the first with a place going, or nothing if the
+#estate has no room for another farmer.
+func first_free_farm_task():
+	var grounds = MansionLayout.grounds_floor(mansion_layout)
+	if grounds < 0:
+		return null
+	var floor_data = MansionLayout.get_floor(mansion_layout, grounds)
+	for slot_code in floor_data.slots:
+		var room = MansionLayout.get_room(floor_data, slot_code)
+		if room == null or room.type != 'farm' or room.task_id == null:
+			continue
+		var task = tasks_progresses.get(room.task_id, null)
+		if task != null and task.workers.size() < int(task.max_workers):
+			return room.task_id
+	return null
+
+
 func _add_farm_job():
 	if !tasks_progresses.has('farming'):
 		tasks_progresses.farming = {id = 'farming', status = 'permanent', workers = [], messages = [], location = 'aliron', type = 'permanent', name = 'TASKPRODUCE', descript = 'TASKPRODUCEDESCRIPT'} 
+	#Farming is done in a farm, and each farm holds its own hands in its own room task. This
+	#record is what the estate used before there were buildings; it is kept so a save part-way
+	#through the change still has somewhere to read its farmers from. No places, so nothing
+	#can be put on it again - assign_to_task() refuses a task with none.
+	tasks_progresses.farming.max_workers = 0
 
 
 func _add_service_job():
@@ -1107,17 +1165,24 @@ func process_gathering():
 					globals.text_log_add('char', character.get_short_name() + ": " + "No more resources to gather.")
 
 
+#Anyone left on the estate-wide record from before the farms were buildings. process_rooms()
+#is what works the farms themselves.
 func process_farm():
 	_add_farm_job()
-	var currenttask = tasks_progresses.farming
+	_farm_tick(tasks_progresses.farming.workers)
+
+
+#What a turn on a farm is worth. The building decides nothing here: what somebody gives is
+#decided by their own body and the rules set on them.
+func _farm_tick(workers):
 	for ch_id in ResourceScripts.game_party.character_order:
-		if !(ch_id in currenttask.workers):
+		if !(ch_id in workers):
 			continue
 		var character = characters_pool.get_char_by_id(ch_id)
-		var reslist = character.get_farming_rules() 
-		for res in reslist:
-			var value = character.get_progress_farm(res) 
-			_add_farming_value(res, value, character)
+		if character == null:
+			continue
+		for res in character.get_farming_rules():
+			_add_farming_value(res, character.get_progress_farm(res), character)
 
 
 func process_service(managed = false):
@@ -1241,6 +1306,15 @@ func process_rooms():
 		#does not exist. See process_practice_room().
 		if RoomTypes.has_tag(room.type, 'practice'):
 			process_practice_room(room, tprogress)
+			continue
+		#A farm makes nothing of its own either: it is somewhere for people to be worked for
+		#what their bodies give, and there is no recipe queue behind that.
+		if RoomTypes.has_tag(room.type, 'farm'):
+			_farm_tick(tprogress.workers)
+			for ch_id in tprogress.workers.duplicate():
+				var farmhand = characters_pool.get_char_by_id(ch_id)
+				if farmhand != null:
+					farmhand.work_tick_values(tprogress.workstat)
 			continue
 		#the clerk keeps the books rather than making anything; what their sitting there is
 		#worth is decided at the moment a delivery arrives, in gain_material()
@@ -1946,7 +2020,11 @@ func make_item(temp, character):
 func get_farm_slots():
 	#asked politely: the upgrade that widened this is retired, and a save from after that has
 	#no such key at all
-	return variables.farm_produce_slots 		+ variables.farm_produce_slots_per_upgrade * findupgradelevel('farm_slots')
+	#The farms on the grounds say how many hands the estate can put to this. The old answer
+	#was a base number plus a level of the retired 'farm_slots' upgrade, which has been zero
+	#since the tree went - so the job screen and the farm's own card would have disagreed
+	#about how many people fit.
+	return farm_places()
 
 
 func level_up_upgrade(upgrade_id, level = null):

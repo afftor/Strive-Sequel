@@ -1506,6 +1506,12 @@ func clear_portrait_cache(): #the files behind these paths belong to the session
 var portrait_booth = null
 
 
+#Forwarded from the booth: a character's picture has been taken, so a screen
+#showing them can ask for the icon again.  Screens listen here rather than to
+#the booth, which does not exist until the first portrait is asked for.
+signal portrait_taken(id)
+
+
 func queue_portrait(person): #generate a portrait for someone whose ragdoll nobody opened
 	if person == null:
 		return
@@ -1513,7 +1519,19 @@ func queue_portrait(person): #generate a portrait for someone whose ragdoll nobo
 		portrait_booth = load("res://src/core/portrait_booth.gd").new()
 		portrait_booth.name = "PortraitBooth"
 		add_child(portrait_booth)
+		portrait_booth.connect('portrait_taken', self, '_on_portrait_taken')
 	portrait_booth.enqueue(person)
+
+
+func _on_portrait_taken(id):
+	emit_signal('portrait_taken', id)
+
+
+func reshoot_portrait(person): #their look changed while the doll was open
+	if person == null:
+		return
+	queue_portrait(person) #builds the booth if this is the first one
+	portrait_booth.reshoot(person)
 
 func load_sound_from_path(path:String): #not sure if works, needs testing
 	if !(path.is_abs_path() or path.is_rel_path()): return null

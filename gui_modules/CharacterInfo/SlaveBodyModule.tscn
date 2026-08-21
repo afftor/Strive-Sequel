@@ -35,7 +35,7 @@ stretch_mode = 6
 
 [node name="ragdoll" parent="." instance=ExtResource( 18 )]
 rect_position = Vector2( 8.0, 8.0 )
-rect_size = Vector2( 688.0, 920.0 )
+rect_size = Vector2( 688.0, 904.0 )
 [node name="buffscontainer" type="HBoxContainer" parent="."]
 modulate = Color( 1, 1, 1, 0.823529 )
 self_modulate = Color( 1, 1, 1, 0.823529 )

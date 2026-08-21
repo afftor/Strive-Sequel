@@ -1,5 +1,10 @@
 extends Panel
 
+const DOLL_COLORS = preload("res://Character_generator/Doll2Spine/universal/doll_colors.gd")
+const DOLL_SOURCE = preload("res://Character_generator/Doll2Spine/doll2_source.gd")
+const DOLL_LIST = preload("res://Character_generator/Doll2Spine/doll2_dolls.gd")
+const LAYOUT = preload("res://gui_modules/CharacterCreation/creation_layout.gd")
+
 export var testmode = false
 
 var person
@@ -37,7 +42,6 @@ var free_stats = [
 #	'body_color_horns', 
 #	'body_color_animal', 
 	'hair_base', 
-	'hair_fringe', 
 	'hair_assist', 
 	'hair_back', 
 #	'body_color_skin', 
@@ -127,14 +131,13 @@ var params_to_save = [ #memo mostly
 	'nose', 
 	'body_color_skin', 
 	'body_color_lips', 
+	'body_color_eyebrows', 
 	'body_color_wings', 
 	'body_color_tail', 
 	'body_color_horns', 
 	'body_color_animal', 
 	'hair_base', 
 	'hair_base_length', 
-	'hair_fringe',
-	'hair_fringe_length',  
 	'hair_assist', 
 	'hair_assist_length' , 
 	'hair_back',
@@ -167,8 +170,18 @@ onready var ClassSelection = $ClassSelectionModule
 onready var TraitSelection = $TraitSelection
 onready var RelationshipSelect = $RelationshipSelect
 onready var ragdoll = $RagdollPanel/ragdoll
+onready var preview_booth = $DollOptionPreviews
+onready var visual_options = $VisualsModule/ScrollContainer/VBoxContainer/StatsContainer
+onready var visual_submenu = $VisualSubmenu
+onready var visual_submenu_rows = $VisualSubmenu/ScrollContainer/Rows
 
 var possible_vals = {}
+var visual_stat_nodes = {}
+var visual_submenu_buttons = {}
+var visual_submenu_tiles = []
+var open_visual_submenu = ""
+var updating_visual_controls = false
+var visual_insert_index = 0
 var personality_icons = {
 	bold = load("res://assets/Textures_v2/MANSION/personality_bold.png"),
 	kind = load("res://assets/Textures_v2/MANSION/personality_kind.png"),
@@ -212,6 +225,8 @@ func _ready():
 	$modes/Stats.connect("pressed", self, 'build_stats')
 	$modes/Visuals.connect("pressed", self, 'build_visuals')
 	$AppearanceReroll.connect("pressed", self, "reroll_appearance")
+	preview_booth.connect('preview_ready', self, '_on_visual_preview_ready')
+	$VisualSubmenu/Title/Close.connect('pressed', self, '_close_visual_submenu')
 	
 	$UpgradesPanel.visible = false
 	$VBoxContainer.visible = true
@@ -260,7 +275,7 @@ func reroll_race():
 
 
 func get_available_races():
-	if mode == 'freemode' or ResourceScripts.game_globals.all_starting_races:
+	if mode == 'freemode' or ResourceScripts.game_globals.all_starting_races or OS.has_feature('editor'):
 		return races.racelist.keys()
 	var res = []
 	for race_id in variables.player_starting_races_array:
@@ -270,6 +285,8 @@ func get_available_races():
 
 
 func reroll_appearance():
+	_close_visual_submenu()
+	preview_booth.forget()
 	build_possible_vals()
 	var updated_stats = []
 	for stat in params_to_save:
@@ -284,6 +301,8 @@ func reroll_appearance():
 		if possible_vals[stat].empty():
 			continue
 		var new_val = input_handler.random_from_array(possible_vals[stat])
+		if LAYOUT.DEFAULT_COLOUR_FROM.has(stat):
+			new_val = '' # a rolled character follows the rule; the player need not
 		person.set_stat(stat, new_val)
 		preservedsettings[stat] = new_val
 		updated_stats.append(stat)
@@ -291,7 +310,7 @@ func reroll_appearance():
 		person.make_random_portrait()
 	rebuild_ragdoll()
 	for stat in updated_stats:
-		if stat.find('color') != -1:
+		if LAYOUT.COLOUR_FOLLOWS.has(stat):
 			build_selectable_node(stat)
 		build_node_for_stat(stat)
 	build_description()
@@ -311,6 +330,7 @@ func build_stats():
 	$StatsModule.visible = true
 	$DietPanel.visible = true
 	$VisualsModule.visible = false
+	_close_visual_submenu()
 	build_master_relation()
 	if mode != 'freemode':
 		$UpgradesPanel.visible = false
@@ -414,6 +434,12 @@ func build_possible_val_for_stat(stat):
 	if stat == 'personality':
 		possible_vals.personality = get_personality_options()
 		return
+	# Colours come from the palette the doll paints with rather than from the old
+	# transform tables, but a character is still only offered what their race
+	# wears: the race's own list, kept to the values the palette knows.
+	if !DOLL_COLORS.values_for(stat).empty():
+		possible_vals[stat] = colours_allowed_to_race(stat)
+		return
 	if mode == 'freemode' and !critical_stats.has(stat) or free_stats.has(stat):
 		if GeneratorData.transforms.has(stat):
 			for val in GeneratorData.transforms[stat]:
@@ -493,29 +519,119 @@ func find_stat_value_id(stat, value):
 
 
 func find_node_for_stat(stat):
-	var par_node = $VisualsModule/ScrollContainer/VBoxContainer/StatsContainer
 	if stat in ['sex', 'age']:
-		par_node = $VBoxContainer/HBoxContainer
+		return $VBoxContainer/HBoxContainer.get_node(stat)
 	if stat in [ "name", "surname", "nickname"]:
-		par_node = $VBoxContainer
+		return $VBoxContainer.get_node(stat)
 	if stat.ends_with('_factor'):
-		par_node = $StatsModule/StatsContainer
+		return $StatsModule/StatsContainer.get_node(stat)
 	if stat.begins_with('food_filter_'):
-		par_node = $DietPanel/Cards
-		stat = stat.trim_prefix('food_filter_')
-	if stat.find('color') != -1:
-		par_node = $VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2
-	#incomplete ?
-	
-	return par_node.get_node(stat)
+		return $DietPanel/Cards.get_node(stat.trim_prefix('food_filter_'))
+	return visual_stat_nodes.get(str(stat))
+
+
+func visual_stat_name(stat):
+	if statdata.statdata.has(stat) and statdata.statdata[stat].has('name') and str(statdata.statdata[stat].name) != '':
+		return tr(statdata.statdata[stat].name)
+	return tr("STAT" + str(stat).to_upper())
+
+
+func visual_value_name(stat, value):
+	if ResourceScripts.descriptions.bodypartsdata.has(stat):
+		var descriptions = ResourceScripts.descriptions.bodypartsdata[stat]
+		if descriptions.has(value) and str(descriptions[value].name) != '':
+			return tr(descriptions[value].name)
+	return tr(str(value))
+
+
+func visual_option_is_shown(stat):
+	if !possible_vals.has(stat) or possible_vals[stat].size() <= 1:
+		return false
+	if stat in freemode_fixed_stats and mode == 'freemode':
+		return false
+	return true
+
+
+func colours_following(stat):
+	var result = []
+	for colour in LAYOUT.COLOUR_FOLLOWS:
+		if LAYOUT.COLOUR_FOLLOWS[colour] == stat and colour in params_to_save:
+			result.append(colour)
+	return result
+
+
+# What this race may wear of a colour stat.  The race's own list wins, minus
+# anything the palette no longer has; a race that lists nothing falls back to the
+# shades named after it - a dark elf to `darkelf1..4`, a demon to the demon ones -
+# so a part nobody wrote a list for still offers something of its own instead of
+# the whole palette.
+const PART_BEHIND_COLOUR = {
+	"body_color_wings": "wings",
+	"body_color_tail": "tail",
+	"body_color_horns": "horns",
+	"body_color_animal": "body_lower",
+}
+
+
+func colours_allowed_to_race(stat):
+	var race = person.get_stat('race')
+	# A colour with a rule behind it offers the rule first - an empty value,
+	# which is what makes the lips follow the skin and the brows the hair - and
+	# then the whole palette, because a painted mouth is a choice rather than a
+	# birthright.
+	if LAYOUT.DEFAULT_COLOUR_FROM.has(stat):
+		var offered = ['']
+		for value in DOLL_COLORS.values_for(stat):
+			offered.append(value)
+		return offered
+	# A part the character does not have has no colour to pick: a human is not
+	# asked what shade her wings are.
+	if PART_BEHIND_COLOUR.has(stat) and str(person.get_stat(PART_BEHIND_COLOUR[stat])) in ['', 'no', 'none']:
+		return []
+	# Neither is a colour the game works out on its own - the lips take the skin's,
+	# a fur tail the hair's.  Creation rolls whatever it offers, and a roll would
+	# overwrite the rule with any old colour.
+	if person.statlist.derives_colour(stat):
+		return []
+	var t_stat = stat
+	if stat.begins_with('hair_') and stat.find('color') != -1:
+		t_stat = 'hair_base_color_1'
+	var listed = []
+	var spoken_for = false
+	var racedata = races.racelist[race]
+	if racedata.has('bodyparts'):
+		if racedata.bodyparts.has(stat):
+			listed = racedata.bodyparts[stat]
+			spoken_for = true
+		elif racedata.bodyparts.has(t_stat):
+			listed = racedata.bodyparts[t_stat]
+			spoken_for = true
+	var allowed = []
+	for entry in listed:
+		var value = entry[0] if entry is Array else entry
+		if DOLL_COLORS.knows(value) and !(value in allowed):
+			allowed.append(value)
+	# An empty list is the race saying it wears none - a human has no wings to
+	# colour - and that hides the row.  Saying nothing at all is what falls back.
+	if allowed.empty() and !spoken_for:
+		allowed = DOLL_COLORS.values_for_race(stat, race)
+	return allowed
 
 
 func build_selectable_node(stat):
-	if stat.find('color') == -1:
+	if !LAYOUT.COLOUR_FOLLOWS.has(stat):
 		print('stat node not selectable - %s' % stat)
 		return
 	var node = find_node_for_stat(stat)
-	if possible_vals[stat].empty():
+	if node == null:
+		return
+	var painted_option = LAYOUT.COLOUR_FOLLOWS[stat]
+	var colour_is_shown = possible_vals.has(stat) and possible_vals[stat].size() > 1
+	if painted_option != '':
+		colour_is_shown = colour_is_shown and visual_option_is_shown(painted_option)
+	if stat in freemode_fixed_stats and mode == 'freemode':
+		colour_is_shown = false
+	if !colour_is_shown:
 		node.visible = false
 		return
 	node.visible = true
@@ -524,20 +640,22 @@ func build_selectable_node(stat):
 	if stat == 'body_color_skin':
 		template = 'Button'
 	for val in possible_vals[stat]:
-		if !GeneratorData.transforms[stat].has(val):
-			continue
 		var newbutton = input_handler.DuplicateContainerTemplate(node.get_node('GridContainer'), template)
-		newbutton.get_node('ColorRect').material = newbutton.get_node('ColorRect').material.duplicate()
 		newbutton.set_meta('value', val)
-		var transform_data = GeneratorData.transforms[stat][val]
 		newbutton.connect('pressed', self, 'change_value_node_selectable', [stat, val])
-		for transform in transform_data:
-			if !(transform.type in ['import_recolor', 'import_recolor_group']):
-				continue
-			var sh = load(transform.material)
-			newbutton.get_node('ColorRect').material.set_shader_param('target1color', sh.get_shader_param('target2color'))
-			newbutton.get_node('ColorRect').material.set_shader_param('part1color', sh.get_shader_param('part2color'))
-			break
+		# The swatch is the colour itself, taken from the table the doll paints
+		# from.  It used to be read out of the old paperdoll's recolour materials,
+		# which meant a colour the doll no longer had simply showed no swatch at
+		# all - an orc had none to pick from.
+		var square = newbutton.get_node('ColorRect')
+		square.material = null
+		square.color = DOLL_COLORS.colour_of(stat, val)
+		# no tooltip: a swatch is its own label, and a name over every square
+		# only got in the way of picking one
+		if str(val) == '' and LAYOUT.DEFAULT_COLOUR_FROM.has(stat):
+			# the swatch shows what following the rule looks like right now
+			var source = str(LAYOUT.DEFAULT_COLOUR_FROM[stat])
+			square.color = DOLL_COLORS.colour_of(source, person.get_stat(source))
 
 
 func build_node_for_stat(stat):
@@ -547,39 +665,79 @@ func build_node_for_stat(stat):
 			val = preservedsettings[stat]
 			person.set_stat(stat, val)
 	
-	var node = find_node_for_stat(stat)
-	
 	if stat in ['food_like', 'food_hate']:
-		pass
 		return
 	
 	if stat == 'food_filter':
 		build_food_filter()
 		return
+
+	var node = find_node_for_stat(stat)
 	
 	if stat in ["name", "surname", "nickname"]:
 		node.text = val
 		return
-	
-	node.visible = possible_vals[stat].size() > 1
-	
-	if stat.find('color') != -1:
-		for nd in node.get_node('GridContainer').get_children():
-			if nd.has_meta('value') and nd.get_meta('value') == val:
-				nd.pressed = true
-			else:
-				nd.pressed = false
+
+	if !possible_vals.has(stat):
 		return
-	
-	if stat in freemode_fixed_stats and mode == 'freemode':
-#		if stat.ends_with('factor'):
-#			node.get_node('button/LArr').visible = false
-#			node.get_node('button/RArr').visible = false
-#		else:
-		if !stat.ends_with('factor'):
-			node.visible = false
-#		node.get_node('button/LArr').visible = (mode != 'freemode')
-#		node.get_node('button/RArr').visible = (mode != 'freemode')
+
+	if LAYOUT.COLOUR_FOLLOWS.has(stat):
+		if LAYOUT.DEFAULT_COLOUR_FROM.has(stat):
+			# the getter answers with the colour this one follows, so "follow it" -
+			# the empty value - has to be read off the stat itself or the frame
+			# would never land on the default swatch
+			val = str(person.statlist.get(stat))
+		if node == null:
+			return
+		for nd in node.get_node('GridContainer').get_children():
+			var selected = nd.has_meta('value') and nd.get_meta('value') == val
+			nd.pressed = selected
+			if nd.has_node('Frame'):
+				nd.get_node('Frame').visible = selected
+		return
+
+	var submenu_id = LAYOUT.submenu_of(stat)
+	if submenu_id != '':
+		refresh_visual_submenu_button(submenu_id)
+		if node != null:
+			node.visible = visual_option_is_shown(stat)
+			refresh_visual_tile_selection(stat)
+		return
+
+	if node == null:
+		return
+	node.visible = visual_option_is_shown(stat)
+	if !node.visible:
+		return
+
+	if stat in LAYOUT.SLIDERS:
+		var values = LAYOUT.ladder(stat, possible_vals[stat])
+		var slider = node.get_node('Control/Slider')
+		# the wheel belongs to the list it sits in: a slider that answers it too
+		# changes the character while the player is only scrolling past
+		slider.scrollable = false
+		updating_visual_controls = true
+		slider.min_value = 0
+		slider.max_value = max(values.size() - 1, 0)
+		slider.step = 1
+		slider.value = max(values.find(val), 0)
+		node.get_node('Control/Value').text = visual_value_name(stat, val)
+		updating_visual_controls = false
+		if !node.has_meta('signals_built'):
+			slider.connect('value_changed', self, 'change_slider_value', [stat])
+			node.set_meta('signals_built', true)
+		node.set_meta('current_val', val)
+		return
+
+	if stat in LAYOUT.CHECKBOXES:
+		updating_visual_controls = true
+		node.pressed = bool(val)
+		updating_visual_controls = false
+		if !node.has_meta('signals_built'):
+			node.connect('toggled', self, 'change_checkbox_value', [stat])
+			node.set_meta('signals_built', true)
+		node.set_meta('current_val', val)
+		return
 	
 	if stat in ['sex', ]:
 		var id = possible_vals[stat].find(val)
@@ -593,19 +751,8 @@ func build_node_for_stat(stat):
 		node.get_node('button/LArr').visible = (mode != 'freemode')
 		node.get_node('button/RArr').visible = (mode != 'freemode')
 	
-	var text = ''
-	if ResourceScripts.descriptions.bodypartsdata.has(stat):
-		if ResourceScripts.descriptions.bodypartsdata[stat].has(val):
-			text = tr(ResourceScripts.descriptions.bodypartsdata[stat][val].name)
-		else:
-#			print ("warning - no description record for %s - %s" % [str(stat), str(val)])
-			text = str(val)
-	else:
-#		print ("warning - no description record for %s" % str(stat))
-		text = str(val)
-#		text = tr(stat.to_upper() + val.to_upper())
+	var text = visual_value_name(stat, val)
 	node.get_node('button/Label').text = text
-	#set nodes
 	if !node.has_meta('signals_built'):
 		node.get_node('button/LArr').connect('pressed', self, 'change_value_node', [stat, -1])
 		node.get_node('button/RArr').connect('pressed', self, 'change_value_node', [stat, 1])
@@ -613,10 +760,26 @@ func build_node_for_stat(stat):
 			node.get_node('button').connect('pressed', self, 'change_value_node', [stat, 1])
 		node.set_meta('signals_built', true)
 	node.set_meta('current_val', val)
-	node.get_node('button/Label').text = text
+
+
+func change_slider_value(value, stat):
+	if updating_visual_controls or !possible_vals.has(stat):
+		return
+	var values = LAYOUT.ladder(stat, possible_vals[stat])
+	var current = values.find(person.get_stat(stat))
+	var target = int(round(value))
+	if current != -1 and target != current:
+		change_value_node(stat, target - current)
+
+
+func change_checkbox_value(pressed, stat):
+	if updating_visual_controls or person.get_stat(stat) == pressed:
+		return
+	change_value_node_selectable(stat, pressed)
 
 
 func rebuild_ragdoll(stat = null):
+	refresh_visual_submenu_previews()
 	var stored_image = person.get_stored_body_image()
 	if input_handler.globalsettings.disable_paperdoll and stored_image == null:
 		stored_image = person.get_body_image()
@@ -642,17 +805,22 @@ func change_value_node(stat, value): #for scrollable nodes
 	if !possible_vals.has(stat):
 		print('error - no stat %s' % stat)
 		return
-	var id = find_stat_value_id(stat, person.get_stat(stat)) 
+	var values = possible_vals[stat]
+	if stat in LAYOUT.SLIDERS:
+		values = LAYOUT.ladder(stat, possible_vals[stat])
+	var id = values.find(person.get_stat(stat))
+	if id == -1:
+		id = 0
 	if stat.ends_with('factor'):
 		if unassigned_points() < value:
 			return
 	
 	id += value
 	if id < 0:
-		id = possible_vals[stat].size() - 1
-	if id >= possible_vals[stat].size():
+		id = values.size() - 1
+	if id >= values.size():
 		id = 0
-	var newval = possible_vals[stat][id]
+	var newval = values[id]
 	if stat != 'slave_class':
 		person.set_stat(stat, newval)
 	preservedsettings[stat] = newval
@@ -669,6 +837,7 @@ func change_value_node(stat, value): #for scrollable nodes
 		return
 	rebuild_ragdoll(stat)
 	build_node_for_stat(stat)
+	refresh_following_colours(stat)
 	build_description()
 	build_master_relation()
 	if RelationshipSelect.visible:
@@ -684,9 +853,17 @@ func change_value_node_selectable(stat, newvalue): #for selectable nodes
 	preservedsettings[stat] = newvalue
 	rebuild_ragdoll(stat)
 	build_node_for_stat(stat)
+	refresh_following_colours(stat)
 	build_description()
 	build_master_relation()
 	build_upgrades()
+
+
+func refresh_following_colours(stat):
+	for colour in colours_following(stat):
+		build_possible_val_for_stat(colour)
+		build_selectable_node(colour)
+		build_node_for_stat(colour)
 
 
 func unassigned_points():
@@ -884,6 +1061,21 @@ func MainMenu():
 
 
 #
+# Reading a Spine export costs about a fifth of a second, and the sex buttons
+# switch the doll from one rig to the other - so the first man a player made
+# paid for the male export under their finger.  The screen asks for every rig
+# while it is still settling instead, one per frame.  The parse is shared, so
+# this is paid once for the session and every other screen gets it for free.
+func warm_doll_rigs():
+	yield(get_tree(), 'idle_frame')
+	yield(get_tree(), 'idle_frame') # let the screen paint before the read
+	for doll_id in DOLL_LIST.DOLLS.keys():
+		if DOLL_SOURCE.is_loaded(doll_id):
+			continue
+		DOLL_SOURCE.of(doll_id)
+		yield(get_tree(), 'idle_frame') # one rig per frame, never both in one
+
+
 func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 	preservedsettings.clear()
 	selected_class = ''
@@ -892,6 +1084,7 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 #	build_race()
 #	build_sex_trait()
 #	build_trait()
+	warm_doll_rigs()
 	show()
 	guild = newguild
 #	$CancelButton.visible = input_handler.CurrentScreen == 'mansion'
@@ -930,6 +1123,7 @@ func open_freemode(char_to_open, flag = false):
 	upgrades_removal = flag
 	preservedsettings.clear()
 	selected_master_relation = 'none'
+	warm_doll_rigs()
 	show()
 	$introduction.bbcode_text = introduction_text['freemode']
 	mode = 'freemode'
@@ -956,6 +1150,7 @@ func rebuild_slave():
 	if mode == 'freemode':
 		print('error - invalid recreation')
 		return
+	_close_visual_submenu()
 	var race = person.get_stat('race')
 	var sex = person.get_stat('sex')
 	var age = person.get_stat('age')
@@ -1238,13 +1433,13 @@ func DeleteCharacter():
 
 func RebuildStatsContainer(): #onready scheme build, not values
 	input_handler.ClearContainer($StatsModule/StatsContainer)
-	input_handler.ClearContainer($VisualsModule/ScrollContainer/VBoxContainer/StatsContainer)
-	input_handler.ClearContainer($VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2)
+	input_handler.ClearContainer(visual_options, ['Button', 'Slider', 'Checkbox', 'SubmenuButton', 'Colour'])
+	input_handler.ClearContainer(visual_submenu_rows, ['StatRow'])
+	visual_stat_nodes.clear()
+	visual_submenu_buttons.clear()
+	visual_submenu_tiles.clear()
+	visual_insert_index = 0
 	for stat in params_to_save:
-		if stat in ["name", "surname", "nickname", "sex", "age", "race", "traits", "sex_traits", "professions", "food_filter"]:
-			continue
-		if stat == 'personality':
-			continue
 		if stat.ends_with('factor'):
 			var i = statdata.statdata[stat]
 			var newnode = input_handler.DuplicateContainerTemplate($StatsModule/StatsContainer)
@@ -1257,29 +1452,173 @@ func RebuildStatsContainer(): #onready scheme build, not values
 			if i.code in ['physics_factor','wits_factor','charm_factor','sexuals_factor']:
 				text += '\n\n' + statdata.statdata[i.code.replace('_factor', '')].descript
 			globals.connecttexttooltip(newnode.get_node("icon"), text)
-		elif stat.find('color') != -1: #create selectable, not build it
-			var newnode = input_handler.DuplicateContainerTemplate($VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2)
-			newnode.name = stat
-			var text = ''
-			if statdata.statdata.has(stat):
-				text = tr(statdata.statdata[stat].name)
-			else:
-				text = stat.replace('_', ' ')
-			newnode.get_node('header/Label').text = text
-			newnode.get_node('header/Tooltip').visible = tooltips_stat.has(stat)
-			globals.connecttexttooltip(newnode.get_node('header/Tooltip'), tr("INFO" + stat.to_upper()))
-		else:
-			var newnode = input_handler.DuplicateContainerTemplate($VisualsModule/ScrollContainer/VBoxContainer/StatsContainer)
-			newnode.name = stat
-			var text = ''
-			if statdata.statdata.has(stat):
-				var data = statdata.statdata[stat]
-				text = tr(data.name)
-			else:
-				text = stat.replace('_', ' ')
-			newnode.get_node('header/Label').text = text
-			newnode.get_node('header/Tooltip').visible = tooltips_stat.has(stat)
-			globals.connecttexttooltip(newnode.get_node('header/Tooltip'), tr("INFO" + stat.to_upper()))
+
+	# A colour with no owner (skin) gets its own row at the top.  All other
+	# colours are inserted immediately after the option they paint.
+	for colour in LAYOUT.COLOUR_FOLLOWS:
+		if str(LAYOUT.COLOUR_FOLLOWS[colour]) == '' and colour in params_to_save:
+			append_visual_colour_row(colour)
+
+	for menu in LAYOUT.SUBMENUS:
+		var menu_button = duplicate_visual_template('SubmenuButton')
+		menu_button.name = 'submenu_' + str(menu.id)
+		menu_button.text = tr(menu.label)
+		menu_button.connect('pressed', self, 'open_visual_submenu_panel', [str(menu.id)])
+		visual_submenu_buttons[str(menu.id)] = menu_button
+		for stat in menu.stats:
+			append_following_colour_rows(stat)
+
+	for stat in params_to_save:
+		if stat in ["name", "surname", "nickname", "sex", "age", "race", "traits", "sex_traits", "professions", "food_filter", "personality"]:
+			continue
+		if stat.ends_with('factor') or LAYOUT.COLOUR_FOLLOWS.has(stat) or LAYOUT.submenu_of(stat) != '':
+			continue
+		var template = 'Button'
+		if stat in LAYOUT.SLIDERS:
+			template = 'Slider'
+		elif stat in LAYOUT.CHECKBOXES:
+			template = 'Checkbox'
+		var newnode = duplicate_visual_template(template)
+		setup_visual_stat_node(newnode, stat, template)
+		append_following_colour_rows(stat)
+
+
+func append_following_colour_rows(stat):
+	for colour in colours_following(stat):
+		append_visual_colour_row(colour)
+
+
+func append_visual_colour_row(colour):
+	var colour_node = duplicate_visual_template('Colour')
+	setup_visual_stat_node(colour_node, colour, 'Colour')
+
+
+func duplicate_visual_template(template):
+	var node = input_handler.DuplicateContainerTemplate(visual_options, template)
+	visual_options.move_child(node, visual_insert_index)
+	visual_insert_index += 1
+	return node
+
+
+func setup_visual_stat_node(node, stat, template):
+	node.name = stat
+	visual_stat_nodes[stat] = node
+	if template == 'Checkbox':
+		node.text = visual_stat_name(stat)
+		return
+	if template == 'SubmenuButton':
+		return
+	node.get_node('header/Label').text = visual_stat_name(stat)
+	if node.get_node('header').has_node('Tooltip'):
+		var tooltip = node.get_node('header/Tooltip')
+		tooltip.visible = tooltips_stat.has(stat)
+		if tooltip.visible:
+			globals.connecttexttooltip(tooltip, tr("INFO" + stat.to_upper()))
+
+
+func get_visual_submenu_data(menu_id):
+	for menu in LAYOUT.SUBMENUS:
+		if str(menu.id) == str(menu_id):
+			return menu
+	return {}
+
+
+func refresh_visual_submenu_button(menu_id):
+	if !visual_submenu_buttons.has(menu_id):
+		return
+	var menu = get_visual_submenu_data(menu_id)
+	var has_options = false
+	for stat in menu.stats:
+		if visual_option_is_shown(stat):
+			has_options = true
+			break
+	visual_submenu_buttons[menu_id].visible = has_options
+
+
+func open_visual_submenu_panel(menu_id):
+	if open_visual_submenu == menu_id and visual_submenu.visible:
+		_close_visual_submenu()
+		return
+	var menu = get_visual_submenu_data(menu_id)
+	if menu.empty() or person == null:
+		return
+	open_visual_submenu = menu_id
+	visual_submenu.visible = true
+	$VisualSubmenu/Title/Label.text = tr(menu.label)
+	input_handler.ClearContainer(visual_submenu_rows, ['StatRow'])
+	visual_submenu_tiles.clear()
+	for submenu_data in LAYOUT.SUBMENUS:
+		for submenu_stat in submenu_data.stats:
+			visual_stat_nodes.erase(submenu_stat)
+	for stat in menu.stats:
+		var row = input_handler.DuplicateContainerTemplate(visual_submenu_rows, 'StatRow')
+		row.name = stat
+		row.get_node('Header').text = visual_stat_name(stat)
+		visual_stat_nodes[stat] = row
+		input_handler.ClearContainer(row.get_node('Options'), ['Tile'])
+		build_visual_submenu_stat(stat, row)
+
+
+func build_visual_submenu_stat(stat, row):
+	row.visible = visual_option_is_shown(stat)
+	if !row.visible:
+		return
+	for value in possible_vals[stat]:
+		var tile = input_handler.DuplicateContainerTemplate(row.get_node('Options'), 'Tile')
+		tile.set_meta('stat', stat)
+		tile.set_meta('value', value)
+		tile.get_node('Label').text = visual_value_name(stat, value)
+		tile.connect('pressed', self, 'select_visual_submenu_value', [stat, value])
+		var ready_texture = preview_booth.taken_for_stat(stat, value)
+		if ready_texture != null:
+			tile.get_node('Preview').texture = ready_texture
+		visual_submenu_tiles.append(tile)
+	refresh_visual_tile_selection(stat)
+	preview_booth.request_for_stat(person, stat, possible_vals[stat])
+
+
+func select_visual_submenu_value(stat, value):
+	change_value_node_selectable(stat, value)
+	_close_visual_submenu()
+
+
+func refresh_visual_tile_selection(stat):
+	if person == null:
+		return
+	for tile in visual_submenu_tiles:
+		if !is_instance_valid(tile) or tile.get_meta('stat') != stat:
+			continue
+		var selected = tile.get_meta('value') == person.get_stat(stat)
+		tile.pressed = selected
+		tile.get_node('Frame').visible = selected
+
+
+func _on_visual_preview_ready(_group_id, _part_id, texture):
+	for tile in visual_submenu_tiles:
+		if !is_instance_valid(tile):
+			continue
+		var stat = tile.get_meta('stat')
+		var value = tile.get_meta('value')
+		if preview_booth.taken_for_stat(stat, value) == texture:
+			tile.get_node('Preview').texture = texture
+
+
+# The pictures in an open panel are of this character's head, so a change to the
+# head - a hair colour, a chin, a race - leaves them showing somebody else.  The
+# booth throws its own stale shots away; this is what asks it for new ones while
+# the player is still looking at the panel.
+func refresh_visual_submenu_previews():
+	if open_visual_submenu == '' or person == null:
+		return
+	var menu = get_visual_submenu_data(open_visual_submenu)
+	for stat in menu.get('stats', []):
+		if possible_vals.has(stat) and possible_vals[stat].size() > 0:
+			preview_booth.request_for_stat(person, stat, possible_vals[stat])
+
+
+func _close_visual_submenu():
+	visual_submenu.hide()
+	open_visual_submenu = ''
 
 
 
@@ -1290,7 +1629,7 @@ func FillStats():
 			continue
 		if stat == 'personality':
 			continue
-		if stat.find('color') != -1:
+		if LAYOUT.COLOUR_FOLLOWS.has(stat):
 			build_selectable_node(stat)
 		build_node_for_stat(stat)
 #	build_class()

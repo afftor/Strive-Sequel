@@ -87,9 +87,11 @@ stretch_mode = 6
 [node name="ragdoll" parent="." instance=ExtResource( 45 )]
 rect_position = Vector2( 1132.0, 145.3 )
 rect_size = Vector2( 688.0, 920.0 )
+show_hair_menu = false
 [node name="MainPanel" type="TextureRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
+mouse_filter = 2
 texture = ExtResource( 13 )
 
 [node name="textfield" type="Panel" parent="."]

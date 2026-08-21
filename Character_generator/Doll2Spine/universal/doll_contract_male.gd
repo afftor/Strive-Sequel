@@ -261,6 +261,16 @@ const BONES = [
 	"ear_r",
 	"ear_lt",
 	"ear_rt",
+	"pupil_l",
+	"pupil_r",
+	"nose",
+	"lips",
+	"head19",
+	"head20",
+	"head21",
+	"head22",
+	"head23",
+	"head24",
 ]
 
 const SLOTS = [
@@ -322,6 +332,7 @@ const SLOTS = [
 	"horns",
 	"eyebrows",
 	"lips",
+	"bread",
 ]
 
 const IK = [

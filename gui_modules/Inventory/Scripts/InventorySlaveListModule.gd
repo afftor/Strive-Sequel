@@ -27,8 +27,9 @@ func update():
 		newnode.connect("pressed", get_parent(), "set_active_hero", [i])
 		var work = i.get_work()
 #		var gatherable = Items.materiallist.has(work)
-		if work in ['', 'Assignment', 'disabled', 'learning', 'farming', 'travel']:
-			if i.is_on_quest() or work in ['farming', 'travel']:
+		var farming = ResourceScripts.game_res.is_farming_work(work)
+		if farming or work in ['', 'Assignment', 'disabled', 'learning', 'travel']:
+			if i.is_on_quest() or farming or work == 'travel':
 				pass
 				#stub
 				newnode.get_node("ToolIcon").texture = null

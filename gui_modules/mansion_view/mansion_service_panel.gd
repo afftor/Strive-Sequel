@@ -22,18 +22,21 @@ func setup(view_node):
 	view = view_node
 	visible = false
 	$CloseButton.connect("pressed", self, "close")
+	$AddButton.connect("pressed", self, "toggle_picking")
 	rules_setup(view_node)
 
 
 func open(task_entry):
 	entry = task_entry
 	visible = true
+	picking = false
 	rebuild()
 
 
 func close():
 	visible = false
 	entry = null
+	picking = false
 	rules_close()
 
 
@@ -58,11 +61,12 @@ func rebuild():
 	$OnTaskLabel.visible = false
 	var ids = workers()
 	$Empty.text = tr("MANSIONVIEW_TASKEMPTY")
-	$Empty.visible = ids.empty()
+	$Empty.visible = ids.empty() and !picking
 	input_handler.ClearContainer($Scroll/List)
 	for char_id in ids:
 		var cell = input_handler.DuplicateContainerTemplate($Scroll/List)
 		cell.setup(view, char_id, self, true)
+	build_candidates(ids)
 	rules_rebuild()
 
 
@@ -71,10 +75,47 @@ func add_worker(char_id):
 	rebuild()
 
 
-func remove_worker(char_id):
-	view.release_character(char_id, 'work')
-	rules_close()
+func remove_worker(worker_id):
+	view.release_character(worker_id, 'work')
+	#somebody else's rules stay open: only the person who just left the work loses their panel
+	if char_id == worker_id:
+		rules_close()
 	rebuild()
+
+
+#### putting somebody new on the work ####
+
+#The screen was meant to name who could be put on the work as well as who already is, and
+#without that the only way onto a task was carrying somebody onto its card. The free people
+#are the same ones the room card offers, on the same cell as the workers - the cell already
+#knows an unassigned click means "put them on" - and they are appended under the list rather
+#than replacing it, so the choice is made while still seeing who is there.
+var picking = false
+
+
+func toggle_picking():
+	picking = !picking
+	rebuild()
+
+
+func build_candidates(ids):
+	$AddButton.text = tr("MANSIONVIEW_HIDEFREE" if picking else "MANSIONVIEW_ADDFREE")
+	if !picking:
+		return
+	var offered = 0
+	for char_id in view.resting_characters():
+		if ids.has(char_id):
+			continue
+		var cell = input_handler.DuplicateContainerTemplate($Scroll/List)
+		cell.setup(view, char_id, self, false)
+		offered += 1
+	if offered == 0:
+		#the label sits over the top of the list, so it can only be used when there is no list
+		if ids.empty():
+			$Empty.text = tr("MANSIONVIEW_NOCANDIDATES")
+			$Empty.visible = true
+		else:
+			input_handler.SystemMessage(tr("MANSIONVIEW_NOCANDIDATES"))
 
 
 #Clicking somebody opens what they are allowed to do, beside the list rather than instead of

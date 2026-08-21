@@ -17,12 +17,20 @@ var entry = null
 var plot = ''
 
 
+#Where the row of places ends. Service takes as many people as are sent to it, so the grid
+#can be several times taller than the card - it lives in a scroll now, and the scroll has to
+#stop at the foot of the card rather than run out the bottom of it.
+const PEOPLE_BOTTOM = 192.0
+
+
 #Output and remaining/worker counts each get a full line. Cards without the second line pull
 #their portraits up into that space, so ordinary estate jobs stay compact while dungeon and
 #service cards can say both things without truncating either one.
 func show_count(value):
 	$count.visible = value
-	$People.rect_position.y = 120 if value else 92
+	var top = 120.0 if value else 92.0
+	$PeopleScroll.rect_position.y = top
+	$PeopleScroll.rect_size.y = max(0.0, PEOPLE_BOTTOM - top)
 
 
 func set_card_icon(texture):
@@ -59,9 +67,9 @@ func refresh_plot():
 	var room = MansionLayout.get_room(view.grounds_floor(), plot)
 	var build = MansionLayout.get_build(view.grounds_floor(), plot)
 	show_count(false)
-	$People.visible = false
+	$PeopleScroll.visible = false
 	$Progress.visible = false
-	input_handler.ClearContainer($People)
+	input_handler.ClearContainer($PeopleScroll/People)
 	#Set again below if what stands here is worked for something. Cleared first so a building
 	#that has just come down stops taking people onto the job it used to do.
 	entry = null
@@ -95,6 +103,23 @@ func refresh_plot():
 	$name.text = tr(RoomTypes.get_name_key(room.type))
 	#A building raised to gather something is where that gathering is now done: its places
 	#are the job's places, so the card is filled the same way every other piece of work is.
+	#A farm holds its own hands in its own room task, the way a mine does, but what they give
+	#is decided by their bodies rather than by the building - so there is no one figure to
+	#print, and the tooltip lists the materials instead.
+	if room.type == 'farm':
+		var farm_task = room.task_id
+		if farm_task != null and ResourceScripts.game_res.tasks_progresses.has(farm_task):
+			entry = LocationTasks.entry_for(farm_task)
+			var farm_workers = LocationTasks.workers_of(farm_task)
+			$output.text = ""
+			build_places(farm_workers, entry.max_workers)
+			append_builder_places(build)
+			show_progress(build)
+			var note = build_tooltip(farm_workers)
+			for row in LocationTasks.farm_yield_table(farm_task):
+				note += "\n%s +%.1f" % [tr(Items.materiallist[row[0]].name), row[1]]
+			globals.connecttexttooltip(self, note, true)
+			return
 	var gather = LocationTasks.gather_entry_for_room(room.type, plot)
 	if gather != null:
 		entry = gather
@@ -108,7 +133,7 @@ func refresh_plot():
 		return
 	$output.text = "%s %d" % [tr("MANSIONVIEW_WORKPLACES"),
 		MansionLayout.slot_capacity(room, 'work')]
-	input_handler.ClearContainer($People)
+	input_handler.ClearContainer($PeopleScroll/People)
 	append_builder_places(build)
 	show_progress(build)
 	globals.connecttexttooltip(self, tr(RoomTypes.get_descript_key(room.type)), true)
@@ -162,8 +187,8 @@ func show_quest_progress():
 	$output.text = "" if per_day < 0 else "%s +%s" % [tr("MANSIONVIEW_PERDAY"),
 		str(stepify(per_day, 0.1))]
 	#the row of places stops short of the bar rather than running under it
-	$People.rect_size = Vector2($People.rect_size.x,
-		max(0.0, $Progress.rect_position.y - $People.rect_position.y - 6.0))
+	$PeopleScroll.rect_size = Vector2($PeopleScroll.rect_size.x,
+		max(0.0, $Progress.rect_position.y - $PeopleScroll.rect_position.y - 6.0))
 
 
 #What is being built or improved here, shown the way the mansion's own plan shows it: a bar
@@ -182,7 +207,7 @@ func show_progress(build):
 #told which floor their plot is on - the local tasks screen leaves the plan standing on a floor
 #of the house behind it, and a place that did not say so was refused every builder.
 func build_plot_places(build):
-	input_handler.ClearContainer($People)
+	input_handler.ClearContainer($PeopleScroll/People)
 	append_builder_places(build)
 
 
@@ -197,25 +222,25 @@ func append_builder_places(build):
 	var capacity = MansionLayout.build_capacity(MansionLayout.get_room(view.grounds_floor(), plot),
 		ResourceScripts.game_res.extra_builder_slots())
 	var grounds = MansionLayout.grounds_floor(view.layout())
-	$People.visible = true
+	$PeopleScroll.visible = true
 	for char_id in workers:
-		var cell = input_handler.DuplicateContainerTemplate($People)
+		var cell = input_handler.DuplicateContainerTemplate($PeopleScroll/People)
 		cell.setup(view, 'build', plot, char_id, grounds)
 	for _i in range(max(0, capacity - workers.size())):
-		var cell = input_handler.DuplicateContainerTemplate($People)
+		var cell = input_handler.DuplicateContainerTemplate($PeopleScroll/People)
 		cell.setup(view, 'build', plot, null, grounds)
 
 
 #A capped task fills its places out with empty ones; a seam has no places to fill out, so
 #it draws the diggers alone and nothing when nobody is on it.
 func build_places(workers, capacity):
-	input_handler.ClearContainer($People)
-	$People.visible = !workers.empty() or capacity > 0
+	input_handler.ClearContainer($PeopleScroll/People)
+	$PeopleScroll.visible = !workers.empty() or capacity > 0
 	for char_id in workers:
-		var cell = input_handler.DuplicateContainerTemplate($People)
+		var cell = input_handler.DuplicateContainerTemplate($PeopleScroll/People)
 		cell.setup(view, 'task', entry.id, char_id)
 	for _i in range(max(0, capacity - workers.size())):
-		var cell = input_handler.DuplicateContainerTemplate($People)
+		var cell = input_handler.DuplicateContainerTemplate($PeopleScroll/People)
 		cell.setup(view, 'task', entry.id, null)
 
 

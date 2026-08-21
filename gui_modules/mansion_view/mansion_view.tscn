@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://gui_modules/mansion_view/mansion_view.gd" type="Script" id=1]
 [ext_resource path="res://gui_modules/mansion_view/mansion_floor_grid.gd" type="Script" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://gui_modules/Universal/Modules/ItemTooltipV3.tscn" type="PackedScene" id=29]
 [ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=30]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_GoldButton.tres" type="Theme" id=31]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=32]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0470588, 0.027451, 0.0196078, 0.92 )
@@ -770,16 +771,22 @@ text = "0%"
 align = 1
 valign = 1
 
-[node name="People" type="GridContainer" parent="LocationPanel/Rooms/Button"]
+[node name="PeopleScroll" type="ScrollContainer" parent="LocationPanel/Rooms/Button"]
 margin_left = 10.0
 margin_top = 92.0
 margin_right = 210.0
 margin_bottom = 192.0
+theme = ExtResource( 32 )
+scroll_horizontal_enabled = false
+
+[node name="People" type="GridContainer" parent="LocationPanel/Rooms/Button/PeopleScroll"]
+margin_right = 186.0
+size_flags_horizontal = 3
 custom_constants/vseparation = 4
 custom_constants/hseparation = 4
 columns = 5
 
-[node name="Button" type="Button" parent="LocationPanel/Rooms/Button/People"]
+[node name="Button" type="Button" parent="LocationPanel/Rooms/Button/PeopleScroll/People"]
 visible = false
 margin_right = 34.0
 margin_bottom = 34.0
@@ -791,7 +798,7 @@ custom_styles/focus = SubResource( 7 )
 custom_styles/normal = SubResource( 6 )
 script = ExtResource( 4 )
 
-[node name="bg" type="ColorRect" parent="LocationPanel/Rooms/Button/People/Button"]
+[node name="bg" type="ColorRect" parent="LocationPanel/Rooms/Button/PeopleScroll/People/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -801,7 +808,7 @@ margin_bottom = -2.0
 mouse_filter = 2
 color = Color( 1, 1, 1, 0.117647 )
 
-[node name="icon" type="TextureRect" parent="LocationPanel/Rooms/Button/People/Button"]
+[node name="icon" type="TextureRect" parent="LocationPanel/Rooms/Button/PeopleScroll/People/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 3.0
@@ -855,11 +862,17 @@ custom_constants/separation = 8
 custom_constants/separation = 12
 size_flags_vertical = 3
 
-[node name="LeftColumn" type="VBoxContainer" parent="Overlay/RoomCard/Body/Columns"]
+[node name="LeftScroll" type="ScrollContainer" parent="Overlay/RoomCard/Body/Columns"]
+rect_min_size = Vector2( 428, 220 )
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="LeftColumn" type="VBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftScroll"]
 rect_min_size = Vector2( 428, 0 )
+size_flags_horizontal = 3
 custom_constants/separation = 8
 
-[node name="Title" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+[node name="Title" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn"]
 margin_right = 428.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 0, 36 )
@@ -867,7 +880,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 21 )
 text = "Room"
 
-[node name="Subtitle" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+[node name="Subtitle" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn"]
 margin_top = 44.0
 margin_right = 428.0
 margin_bottom = 72.0
@@ -875,7 +888,7 @@ rect_min_size = Vector2( 0, 28 )
 custom_fonts/font = ExtResource( 9 )
 text = "Beds 0/0"
 
-[node name="Descript" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+[node name="Descript" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn"]
 margin_top = 80.0
 margin_right = 428.0
 margin_bottom = 144.0
@@ -883,7 +896,7 @@ rect_min_size = Vector2( 0, 64 )
 custom_fonts/font = ExtResource( 9 )
 autowrap = true
 
-[node name="Functions" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+[node name="Functions" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn"]
 margin_top = 152.0
 margin_right = 428.0
 margin_bottom = 182.0
@@ -891,7 +904,7 @@ rect_min_size = Vector2( 0, 30 )
 custom_fonts/font = ExtResource( 9 )
 autowrap = true
 
-[node name="YieldHeader" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+[node name="YieldHeader" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn"]
 visible = false
 margin_top = 190.0
 margin_right = 428.0
@@ -901,21 +914,21 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 10 )
 text = "Building yields"
 
-[node name="YieldList" type="VBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+[node name="YieldList" type="VBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn"]
 visible = false
 margin_top = 226.0
 margin_right = 428.0
 margin_bottom = 258.0
 custom_constants/separation = 4
 
-[node name="Row" type="HBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftColumn/YieldList"]
+[node name="Row" type="HBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/YieldList"]
 visible = false
 margin_right = 428.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 custom_constants/separation = 8
 
-[node name="Icon" type="TextureRect" parent="Overlay/RoomCard/Body/Columns/LeftColumn/YieldList/Row"]
+[node name="Icon" type="TextureRect" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/YieldList/Row"]
 margin_right = 32.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
@@ -923,7 +936,7 @@ mouse_filter = 2
 expand = true
 stretch_mode = 6
 
-[node name="Name" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn/YieldList/Row"]
+[node name="Name" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/YieldList/Row"]
 margin_left = 40.0
 margin_right = 348.0
 margin_bottom = 32.0
@@ -932,7 +945,7 @@ custom_fonts/font = ExtResource( 9 )
 text = "Material"
 valign = 1
 
-[node name="Chance" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn/YieldList/Row"]
+[node name="Chance" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/YieldList/Row"]
 margin_left = 356.0
 margin_right = 428.0
 margin_bottom = 32.0
@@ -943,14 +956,14 @@ text = "50%"
 align = 2
 valign = 1
 
-[node name="Actions" type="HBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+[node name="Actions" type="HBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn"]
 margin_top = 190.0
 margin_right = 428.0
 margin_bottom = 234.0
 rect_min_size = Vector2( 0, 44 )
 custom_constants/separation = 8
 
-[node name="MoveButton" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftColumn/Actions"]
+[node name="MoveButton" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/Actions"]
 margin_right = 292.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 0, 44 )
@@ -960,7 +973,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 9 )
 text = "Move"
 
-[node name="CraftButton" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftColumn/Actions"]
+[node name="CraftButton" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/Actions"]
 visible = false
 rect_min_size = Vector2( 128, 44 )
 mouse_default_cursor_shape = 2
@@ -968,7 +981,7 @@ size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 9 )
 
-[node name="DemolishButton" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftColumn/Actions"]
+[node name="DemolishButton" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/Actions"]
 margin_left = 300.0
 margin_right = 428.0
 margin_bottom = 44.0
@@ -984,7 +997,7 @@ custom_styles/disabled = SubResource( 11 )
 custom_styles/normal = SubResource( 8 )
 text = "Demolish"
 
-[node name="RepairButton" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+[node name="RepairButton" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn"]
 visible = false
 margin_top = 286.0
 margin_right = 428.0
@@ -993,7 +1006,7 @@ rect_min_size = Vector2( 0, 44 )
 custom_fonts/font = ExtResource( 9 )
 text = "Clear out"
 
-[node name="CancelButton" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+[node name="CancelButton" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn"]
 visible = false
 margin_top = 336.0
 margin_right = 428.0
@@ -1107,7 +1120,7 @@ mouse_default_cursor_shape = 2
 custom_fonts/font = ExtResource( 27 )
 text = "Build here"
 
-[node name="OrderHeader" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+[node name="OrderHeader" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn"]
 visible = false
 margin_top = 300.0
 margin_right = 428.0
@@ -1117,14 +1130,14 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 10 )
 text = "Order of work"
 
-[node name="OrderList" type="VBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+[node name="OrderList" type="VBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn"]
 visible = false
 margin_top = 334.0
 margin_right = 428.0
 margin_bottom = 368.0
 custom_constants/separation = 4
 
-[node name="Button" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftColumn/OrderList"]
+[node name="Button" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/OrderList"]
 visible = false
 margin_right = 428.0
 margin_bottom = 40.0
@@ -1135,7 +1148,55 @@ toggle_mode = true
 text = "recipe"
 align = 0
 
-[node name="UpgradeHeader" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+[node name="FarmList" type="VBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn"]
+visible = false
+margin_top = 334.0
+margin_right = 428.0
+margin_bottom = 378.0
+custom_constants/separation = 4
+
+[node name="Row" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/FarmList"]
+visible = false
+margin_right = 428.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 428, 44 )
+mouse_default_cursor_shape = 2
+custom_fonts/font = ExtResource( 9 )
+toggle_mode = true
+
+[node name="Icon" type="TextureRect" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/FarmList/Row"]
+margin_top = 6.0
+margin_right = 32.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Name" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/FarmList/Row"]
+anchor_right = 1.0
+margin_left = 40.0
+margin_right = -80.0
+margin_bottom = 44.0
+mouse_filter = 2
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 9 )
+valign = 1
+
+[node name="Amount" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/FarmList/Row"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -72.0
+margin_right = 0.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 72, 0 )
+mouse_filter = 2
+custom_colors/font_color = Color( 0.541176, 0.85098, 0.541176, 1 )
+custom_fonts/font = ExtResource( 9 )
+align = 2
+valign = 1
+
+[node name="UpgradeHeader" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn"]
 visible = false
 margin_top = 326.0
 margin_right = 428.0
@@ -1145,14 +1206,14 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 10 )
 text = "Room improvements"
 
-[node name="UpgradeList" type="VBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftColumn"]
+[node name="UpgradeList" type="VBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn"]
 visible = false
 margin_top = 360.0
 margin_right = 428.0
 margin_bottom = 444.0
 custom_constants/separation = 5
 
-[node name="Row" type="Panel" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList"]
+[node name="Row" type="Panel" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/UpgradeList"]
 visible = false
 margin_right = 428.0
 margin_bottom = 88.0
@@ -1160,7 +1221,7 @@ rect_min_size = Vector2( 428, 88 )
 mouse_filter = 1
 custom_styles/panel = ExtResource( 18 )
 
-[node name="Background" type="ColorRect" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList/Row"]
+[node name="Background" type="ColorRect" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/UpgradeList/Row"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1171,7 +1232,7 @@ margin_bottom = -3.0
 mouse_filter = 2
 color = Color( 0.0470588, 0.027451, 0.0196078, 0.88 )
 
-[node name="Icon" type="TextureRect" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList/Row"]
+[node name="Icon" type="TextureRect" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/UpgradeList/Row"]
 margin_left = 9.0
 margin_top = 15.0
 margin_right = 63.0
@@ -1180,7 +1241,7 @@ mouse_filter = 2
 expand = true
 stretch_mode = 6
 
-[node name="Title" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList/Row"]
+[node name="Title" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/UpgradeList/Row"]
 margin_left = 72.0
 margin_top = 5.0
 margin_right = 322.0
@@ -1189,7 +1250,7 @@ custom_fonts/font = ExtResource( 9 )
 text = "Improvement"
 clip_text = true
 
-[node name="Level" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList/Row"]
+[node name="Level" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/UpgradeList/Row"]
 margin_left = 324.0
 margin_top = 5.0
 margin_right = 418.0
@@ -1199,7 +1260,7 @@ custom_fonts/font = ExtResource( 27 )
 text = "0/3"
 align = 2
 
-[node name="Descript" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList/Row"]
+[node name="Descript" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/UpgradeList/Row"]
 margin_left = 72.0
 margin_top = 32.0
 margin_right = 418.0
@@ -1209,7 +1270,7 @@ custom_fonts/font = ExtResource( 27 )
 text = "Improvement description"
 autowrap = true
 
-[node name="Bonus" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList/Row"]
+[node name="Bonus" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/UpgradeList/Row"]
 margin_left = 72.0
 margin_top = 31.0
 margin_right = 418.0
@@ -1219,27 +1280,27 @@ custom_fonts/font = ExtResource( 27 )
 text = "+1"
 autowrap = true
 
-[node name="Costs" type="HBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList/Row"]
+[node name="Costs" type="HBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/UpgradeList/Row"]
 margin_left = 72.0
 margin_top = 55.0
 margin_right = 302.0
 margin_bottom = 84.0
 custom_constants/separation = 4
 
-[node name="Cost" type="Control" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList/Row/Costs"]
+[node name="Cost" type="Control" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/UpgradeList/Row/Costs"]
 visible = false
 margin_right = 60.0
 margin_bottom = 26.0
 rect_min_size = Vector2( 60, 26 )
 
-[node name="Icon" type="TextureRect" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList/Row/Costs/Cost"]
+[node name="Icon" type="TextureRect" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/UpgradeList/Row/Costs/Cost"]
 margin_right = 26.0
 margin_bottom = 26.0
 mouse_filter = 2
 expand = true
 stretch_mode = 6
 
-[node name="Amount" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList/Row/Costs/Cost"]
+[node name="Amount" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/UpgradeList/Row/Costs/Cost"]
 margin_left = 28.0
 margin_right = 60.0
 margin_bottom = 26.0
@@ -1248,7 +1309,7 @@ text = "00"
 valign = 1
 clip_text = true
 
-[node name="Action" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftColumn/UpgradeList/Row"]
+[node name="Action" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/UpgradeList/Row"]
 margin_left = 310.0
 margin_top = 54.0
 margin_right = 418.0
@@ -1463,8 +1524,8 @@ anchor_bottom = 1.0
 margin_left = 20.0
 margin_top = 104.0
 margin_right = -10.0
-margin_bottom = -20.0
-theme = ExtResource( 20 )
+margin_bottom = -72.0
+theme = ExtResource( 32 )
 
 [node name="List" type="VBoxContainer" parent="Overlay/ServicePanel/Scroll"]
 margin_right = 810.0
@@ -1506,7 +1567,7 @@ stretch_mode = 6
 [node name="name" type="Label" parent="Overlay/ServicePanel/Scroll/List/Button"]
 margin_left = 88.0
 margin_top = 8.0
-margin_right = 790.0
+margin_right = 736.0
 margin_bottom = 40.0
 custom_fonts/font = ExtResource( 10 )
 text = "Name"
@@ -1515,11 +1576,37 @@ clip_text = true
 [node name="rules" type="Label" parent="Overlay/ServicePanel/Scroll/List/Button"]
 margin_left = 88.0
 margin_top = 42.0
-margin_right = 790.0
+margin_right = 736.0
 margin_bottom = 78.0
 custom_fonts/font = ExtResource( 9 )
 autowrap = true
 clip_text = true
+
+[node name="Remove" type="TextureButton" parent="Overlay/ServicePanel/Scroll/List/Button"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -46.0
+margin_top = 26.0
+margin_right = -14.0
+margin_bottom = 58.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 24 )
+texture_hover = ExtResource( 23 )
+expand = true
+stretch_mode = 6
+
+[node name="AddButton" type="Button" parent="Overlay/ServicePanel"]
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -60.0
+margin_right = -10.0
+margin_bottom = -20.0
+theme = ExtResource( 31 )
+mouse_default_cursor_shape = 2
+text = "Add worker"
 
 [node name="Rules" type="Panel" parent="Overlay/ServicePanel"]
 visible = false
@@ -1570,7 +1657,7 @@ margin_left = 16.0
 margin_top = 52.0
 margin_right = -16.0
 margin_bottom = -170.0
-theme = ExtResource( 20 )
+theme = ExtResource( 32 )
 
 [node name="Content" type="VBoxContainer" parent="Overlay/ServicePanel/Rules/Scroll"]
 margin_right = 778.0
