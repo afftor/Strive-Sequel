@@ -1237,7 +1237,7 @@ var effects = {
 	e_s_rouge = {
 		type = 'simple',
 		descript = '',
-		conditions = [{code = 'stat',  stat = 'combat_position', value = 3, operant = 'lte'}], #player only check
+		conditions = [{code = 'is_in_ranged_zone', check = false}],
 		statchanges = {critchance = 10, damage_mod_all = 0.35},
 		buffs = [],
 		sub_effects = [],

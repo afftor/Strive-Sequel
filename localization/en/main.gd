@@ -2041,6 +2041,103 @@ While under {color=aqua|Tyrannical Contempt}, Grotus instead gains {color=aqua|T
 Deal extremely heavy damage to that single target.
 On hit, a follow-up {color=yellow|Light} shockwave strikes all enemies, inflicting {color=aqua|Shred} and possibly {color=aqua|Stun}.
 On miss, Grotus gains up to 5 random {color=aqua|Gap in Defenses}.""",
+	ENEMYMELCHOR_CHANCELLOR = "Melchor",
+	ENEMYROUGE_THIRD_PARTY = "Rouge",
+	ENEMYIMPERIAL_SOLDIER = "Imperial Soldier",
+	ENEMYMHYRANA_CULTIST = "Cultist",
+
+	SKILLMELCHOR_AUTHORITY = "Imperial Chancellor of Palatine",
+	SKILLMELCHOR_AUTHORITYDESCRIPT = """While Melchor lives, every other allied unit gains +30 Hitrate, 10% Damage Reduction and immunity to {color=aqua|Fear}.
+Rouge answers to nobody and is granted nothing.""",
+	SKILLMELCHOR_CLEAR_THE_FIELD = "All of you, Out of Here!",
+	SKILLMELCHOR_CLEAR_THE_FIELDDESCRIPT = """On combat start, every cultist on the field is put down where they stand.
+If Rouge has invited herself along, she takes 10% of her Maximum HP as well.""",
+	SKILLMELCHOR_WORD_OF_LAWS = "Word of Laws",
+	SKILLMELCHOR_WORD_OF_LAWSDESCRIPT = """Heal an allied unit, or deal {color=yellow|Light} magical damage to an enemy. Rouge counts as an enemy.
+While under {color=aqua|Fullest Extent of the Laws}, the healing and the damage are both greatly increased.""",
+	SKILLMELCHOR_RESTRAINING_ORDER = "Restraining Order",
+	SKILLMELCHOR_RESTRAINING_ORDERDESCRIPT = """Deal {color=yellow|Mind} magical damage to a single enemy and inflict {color=aqua|Restraining Order} for 3 turns.
+While under {color=aqua|Fullest Extent of the Laws}, also inflict {color=aqua|Stun}.""",
+	SKILLMELCHOR_OBSTRUCTION = "Obstruction of Official Business will not be Tolerated!",
+	SKILLMELCHOR_OBSTRUCTIONDESCRIPT = """Can be used even while {color=aqua|Silenced}, and removes {color=aqua|Silence} from Melchor.
+Restore a portion of his Maximum HP and gain {color=aqua|Extended Security Measure}.""",
+	SKILLMELCHOR_EMERGENCY_LOCKDOWN = "Emergency Lockdown",
+	SKILLMELCHOR_EMERGENCY_LOCKDOWNDESCRIPT = """Deal {color=yellow|Earth} magical damage to all enemies and inflict {color=aqua|Ensnare}. Rouge is caught in it too.
+While under {color=aqua|Fullest Extent of the Laws}, add a burst of {color=yellow|Water} damage that may inflict {color=aqua|Freeze}.""",
+	SKILLMELCHOR_LOCKDOWN_SWEEP = "Emergency Lockdown",
+	SKILLMELCHOR_LOCKDOWN_SWEEPDESCRIPT = "The lockdown closes around Rouge as well.",
+	SKILLMELCHOR_SUMMARY_JUDGMENT = "Summary Judgment",
+	SKILLMELCHOR_SUMMARY_JUDGMENTDESCRIPT = """Deal heavy {color=yellow|Light} magical damage to a single enemy.
+If fewer than 4 of his own are still standing, or while under {color=aqua|Fullest Extent of the Laws}, also inflict {color=aqua|Burn} and {color=aqua|Shatter}.""",
+	SKILLMELCHOR_BUSTER_CALL = "Class III Restricted Spell - Buster Call",
+	SKILLMELCHOR_BUSTER_CALLDESCRIPT = """Only usable under {color=aqua|Fullest Extent of the Laws}.
+Rain heavy {color=yellow|Fire} magical damage on 2 to 4 enemies, four times over.
+Rouge is not spared.""",
+	SKILLMELCHOR_BUSTER_SWEEP = "Class III Restricted Spell - Buster Call",
+	SKILLMELCHOR_BUSTER_SWEEPDESCRIPT = "A share of the bombardment falls on Rouge.",
+
+	SKILLROUGE_APPETIZER = "Appetizer just for me, Melchor?",
+	SKILLROUGE_APPETIZERDESCRIPT = "On combat start, one of Melchor's Imperial soldiers does not get to draw his sword.",
+	SKILLROUGE_PUNCTURE_ARTERY = "Puncture the Artery",
+	SKILLROUGE_PUNCTURE_ARTERYDESCRIPT = """Deal physical damage to a single enemy and inflict {color=aqua|Bleed}.
+This strike ignores a large amount of armor.""",
+	SKILLROUGE_FEASTING_FRENZY = "Feasting Frenzy",
+	SKILLROUGE_FEASTING_FRENZYDESCRIPT = """Strike 6 times at random. Every unit on the field is a valid target except Rouge herself.
+Each hit restores a small amount of her HP.""",
+	SKILLROUGE_ADAMANT_PURSUIT = "Adamant Pursuit",
+	SKILLROUGE_ADAMANT_PURSUITDESCRIPT = """Reaches the back line, and does not care whose back line.
+Deal physical damage to a random unit and inflict {color=aqua|Fear}.
+On a miss, the blow lands anyway for half damage.""",
+	SKILLROUGE_NAIL_STILETTO = "Nail Manicure: Stiletto",
+	SKILLROUGE_NAIL_STILETTODESCRIPT = """Can be used even while {color=aqua|Disarmed}, and removes {color=aqua|Disarm} from Rouge.
+Gain {color=aqua|Sharpened Nails}.""",
+	SKILLROUGE_EAT_YOUR_HEART_OUT = "Eat your Heart Out",
+	SKILLROUGE_EAT_YOUR_HEART_OUTDESCRIPT = """Usable only against a unit below 20% HP - friend or foe.
+Deal extreme physical damage, and far more still on a critical hit.""",
+	SKILLROUGE_THIRD_PARTY_EXIT = "Well, That Was Filling",
+	SKILLROUGE_THIRD_PARTY_EXITDESCRIPT = "Rouge has eaten her fill and sees no reason to stay.",
+
+	SKILLIMPERIAL_NOBLE_PROTECTION = "Noble Protection",
+	SKILLIMPERIAL_NOBLE_PROTECTIONDESCRIPT = """Shield an ally who is not already protected for 3 turns.
+Single-target attacks aimed at them are redirected onto this soldier, and area damage they take is heavily reduced.""",
+	SKILLIMPERIAL_WEED_OUT = "Weed Out the Enemy",
+	SKILLIMPERIAL_WEED_OUTDESCRIPT = "Deal physical damage to the unwelcome guest standing on this unit's own side of the field.",
+	SKILLIMPERIAL_BASTION = "Bastion of the Empire",
+	SKILLIMPERIAL_BASTIONDESCRIPT = """Restore a portion of Maximum HP and gain {color=aqua|Stonewall}.
+Remove {color=aqua|Shred} and {color=aqua|Shatter} from this unit.""",
+	SKILLIMPERIAL_THREAT_SUPPRESSION = "Threat Suppression",
+	SKILLIMPERIAL_THREAT_SUPPRESSIONDESCRIPT = """Strike a single enemy 3 times.
+The first connecting hit inflicts {color=aqua|Shred}; the ones after it may inflict {color=aqua|Bleed}.""",
+	SKILLIMPERIAL_COORDINATE_ATTACK = "Coordinate Attack",
+	SKILLIMPERIAL_COORDINATE_ATTACKDESCRIPT = """Deal minor physical damage and apply {color=aqua|Leader's Mark}.
+Every Imperial Soldier on the field turns on the marked target.""",
+	SKILLIMPERIAL_COUNTER_STRIKE = "Disciplined Riposte",
+	SKILLIMPERIAL_COUNTER_STRIKEDESCRIPT = "A trained answer to anyone careless enough to come within reach.",
+
+	EFFECT_MELCHOR_AUTHORITY_DESCRIPT = """Authority of the Chancellor: +30 Hitrate, 10% Damage Reduction and immunity to Fear.
+Lasts as long as Melchor is standing.""",
+	EFFECT_MELCHOR_SESSION_DESCRIPT = """Session in Progress: rounds spent working within the letter of the law.
+On the fourth, Melchor stops bothering.""",
+	EFFECT_MELCHOR_FULL_EXTENT_DESCRIPT = """Fullest Extent of the Laws: +30 MATK, +20 Speed, 30% Damage Reduction and immunity to Silence.
+Every one of his spells gains a rider, and Class III Restricted Spells are cleared for use.""",
+	EFFECT_MELCHOR_SECURITY_MEASURE_DESCRIPT = """Extended Security Measure: immune to Silence, +25 Armor and MDEF.
+Anyone who strikes this unit takes {color=yellow|Light} damage in return.
+Lasts until the end of this unit's next turn.""",
+	EFFECT_MELCHOR_RESTRAINING_ORDER_DESCRIPT = """Restraining Order: -25 Speed, -15% ATK and MATK.
+Attacking leaves this unit {color=aqua|Stunned} for a turn.
+Should Melchor invoke the Fullest Extent of the Laws, the order is replaced by {color=aqua|Disarm} and {color=aqua|Silence}.""",
+	EFFECT_ROUGE_SHARPEN_NAILS_DESCRIPT = """Sharpened Nails: immune to Disarm, +50 Crit chance, +20 Armor penetration.
+Spent on the next attack.""",
+	EFFECT_IMPERIAL_LEADERS_MARK_DESCRIPT = """Leader's Mark: takes 20% more damage, and every Imperial Soldier on the field is looking straight at them.""",
+	TRAIT_IMPERIAL_SOLDIER_TRAINING = "Standard Imperial Soldier Training: 25% chance to counter-attack anyone striking from melee range, once per round.",
+
+	MELCHOR_LOG_PURGE_CULTIST = "Melchor: This is a Crown matter. %s, you are not part of it.",
+	MELCHOR_LOG_SHOO_ROUGE = "Melchor: And YOU. Out. Of. Here!",
+	MELCHOR_LOG_FULL_EXTENT = "Melchor: Section II, Article 23. Consider the paperwork filed.",
+	MELCHOR_LOG_FULL_EXTENT_DESPERATE = "Melchor: I will apologise to the archivists later. Section II, Article 23!",
+	ROUGE_LOG_APPETIZER = "Rouge: One appetizer. You did bring enough for everyone, Melchor?",
+	ROUGE_LOG_LEAVES = "Rouge: The course is finished and the cook has left. So will I.",
+
 	RUNNING_AWAY_TEXT = "%s: I gotta get out of here!",
 	SKILLHOWLING_RISING_AXE = "Howling Rising Axe",
 	SKILLHOWLING_RISING_AXEDESCRIPT = "Hold up the axe and scream at enemies in an attempt to intimidate them. Gain {color=aqua|Axe Raised}. Chance to inflict Fear.",
@@ -9173,7 +9270,7 @@ Boosts Productivity by 25%.
 	WORKRULECONTRACEPTIVE = "Contraceptive",
 	WORKRULECONTRACEPTIVEDESCRIPT = "Prevents pregnancy and impregnation for selected character.",
 	WORKRULENUDITY = "Nudity",
-	WORKRULENUDITYDESCRIPT = "Forces [name] to stay naked while at mansion (if has corresponding sprite). This effect is cosmetic. Requires Sex Service training.",
+	WORKRULENUDITYDESCRIPT = "Forces [name] to stay naked while at mansion (if has corresponding sprite). This effect is cosmetic. Requires agreement in form of obedience or Sex Service agreement.",
 	WORKRULERELATIONSHIP = "Allow Romance",
 	WORKRULERELATIONSHIPDESCRIPT = "[name] will be allowed to establish romantic relationship with other characters besides [master].",
 	WORKRULEMASTURBATION = "Forbid Masturbation",

@@ -109,6 +109,8 @@ func _calculate_target_value(app_obj, prop_target, skill):
 			else:
 				if act_targets.size() < skill.number_rnd_targets:
 					res *= 0.5
+	if app_obj.has_status('imperial_squad') and r_target.has_status('leaders_mark'):
+		res *= 3.0
 	#taunt
 	if app_obj.has_status('taunt_soft') and !skill.tags.has('ignore_taunt'):
 		if app_obj.get_stat('taunt') == r_target.id:
@@ -148,6 +150,14 @@ func _calculate_targets_for_skill(app_obj, s_id, hide_ignore = false):
 				'any': 
 					pos_targets = input_handler.combat_node.get_enemy_targets_all(app_obj, hide_ignore)
 			for target in pos_targets:
+				var target_dir = {target = target.position, quality = _calculate_target_value(app_obj, target.position, t_skill)}
+				target_array.push_back(target_dir)
+		'all':
+			var pos_targets = input_handler.combat_node.get_enemy_targets_all(app_obj, hide_ignore)
+			pos_targets = pos_targets + input_handler.combat_node.get_allied_targets(app_obj)
+			for target in pos_targets:
+				if t_skill.target_range == 'not_caster' and target.id == app_obj.id:
+					continue
 				var target_dir = {target = target.position, quality = _calculate_target_value(app_obj, target.position, t_skill)}
 				target_array.push_back(target_dir)
 	skill_targets[s_id] = target_array

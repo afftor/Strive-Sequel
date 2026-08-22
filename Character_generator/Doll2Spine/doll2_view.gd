@@ -559,21 +559,37 @@ func _refresh_undress_bar():
 		_undress_buttons[level].visible = level in offered
 		_undress_buttons[level].pressed = level == shown
 		_undress_buttons[level].disabled = barred and level != GEAR.DRESSED
-		# while the buttons are the Nudity rule they say what the rule said
-		if undress_is_a_rule and level != GEAR.DRESSED:
-			_rule_tooltip(_undress_buttons[level])
+	# while the buttons are the Nudity rule they say what the rule said
+	if undress_is_a_rule:
+		var stand_clear_of = _lowest_visible_button()
+		for level in GEAR.LEVELS:
+			if level == GEAR.DRESSED or !_undress_buttons.has(level):
+				continue
+			_rule_tooltip(_undress_buttons[level], stand_clear_of)
 	_position_hair_panel()
 	if _hair_panel != null and _hair_panel.visible:
 		_refresh_hair_panel()
 
 
-func _rule_tooltip(button):
+# The bottom of the bar, which is what a tooltip has to be placed under.  Placed
+# under the button hovered instead, the panel lies across every button below it.
+func _lowest_visible_button():
+	if _undress_bar == null:
+		return null
+	var lowest = null
+	for child in _undress_bar.get_children():
+		if child.visible:
+			lowest = child
+	return lowest
+
+
+func _rule_tooltip(button, stand_clear_of = null):
 	var globals_singleton = _singleton("globals")
 	if globals_singleton == null or character == null:
 		return
 	var text = "[center]" + tr("WORKRULENUDITY") + "[/center]\n"
 	text += character.translate(tr("WORKRULENUDITYDESCRIPT"))
-	globals_singleton.connecttexttooltip(button, text)
+	globals_singleton.connecttexttooltip(button, text, false, null, stand_clear_of)
 
 
 # Which of the four are worth offering.  A step that renders exactly what the

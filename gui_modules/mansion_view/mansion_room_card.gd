@@ -444,9 +444,6 @@ func room_subtitle(current):
 
 func upgrades_text(current):
 	var lines = []
-	var data = RoomTypes.get_type(current.type)
-	if data.upkeep > 0:
-		lines.append("%s %d" % [tr("MANSIONVIEW_UPKEEP"), data.upkeep])
 	var build = build_data()
 	if build != null:
 		lines.append("%s - %s" % [view.build_label(build), view.build_eta_text(build)])
@@ -747,8 +744,11 @@ func build_farm_rules(current):
 		var button = input_handler.DuplicateContainerTemplate(list, 'Row')
 		button.get_node('Icon').texture = material.icon
 		button.get_node('Name').text = tr(material.name)
-		button.get_node('Amount').text = tr("FARMPROGRESSTURN") % \
-			character.get_progress_farm(res)
+		var rate = character.get_progress_farm(res)
+		#The column is a strip at the end of the row - the sentence it used to hold was cut
+		#off after a word. The figure is what the player is reading it for; the sentence
+		#that says what the figure means is in the tooltip.
+		button.get_node('Amount').text = "+%.1f" % rate
 		button.pressed = on
 		#Their growth factor says how many things at once, so a full list greys out what is
 		#not already ticked instead of quietly refusing the click.
@@ -758,7 +758,8 @@ func build_farm_rules(current):
 			globals.connecttexttooltip(button, tr("FARMGROWTHFACTORLOW"), true,
 				view.get_node("Overlay/TextTooltip"))
 		else:
-			globals.connectmaterialtooltip(button, material, '', null,
+			globals.connectmaterialtooltip(button, material,
+				"\n" + tr("FARMPROGRESSTURN") % rate, null,
 				view.get_node("Overlay/ItemTooltip"))
 	header.text = tr("MANSIONVIEW_FARMHEADER") % [character.get_short_name(),
 		chosen, character.get_farming_limit()]

@@ -1,7 +1,7 @@
 extends Node
 
 
-var effect_nolog = ['commander', 'atkpass', 'atkpass_remove', 'hide', 'default', 'warlock', 'manasiphon', 'thorns', 'vampirism', 'ench_commander', 'spell_mastery', 'flight_upkeep', 'max_stats','sanguine_instinct_listener','environmental_object', 'food','grotus_hit_mark','lost_in_darkness','ts_underwatched'] #2add more
+var effect_nolog = ['commander', 'atkpass', 'atkpass_remove', 'hide', 'default', 'warlock', 'manasiphon', 'thorns', 'vampirism', 'ench_commander', 'spell_mastery', 'flight_upkeep', 'max_stats','sanguine_instinct_listener','environmental_object', 'food','grotus_hit_mark','lost_in_darkness','ts_underwatched','melchor_session'] #2add more
 #to fix EFFECT TAGS TO TEMPLATE,
 #'positive'/'negative' - the widest classification (to most global cleaning like bard2 skill effect)
 #'buff'/'debuff' - additional markings for common effect removal effects (like purge) (and maybe add two more for a state effects)
