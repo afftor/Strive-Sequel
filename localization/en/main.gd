@@ -2117,26 +2117,37 @@ Every Imperial Soldier on the field turns on the marked target.""",
 	EFFECT_MELCHOR_AUTHORITY_DESCRIPT = """Authority of the Chancellor: +30 Hitrate, 10% Damage Reduction and immunity to Fear.
 Lasts as long as Melchor is standing.""",
 	EFFECT_MELCHOR_SESSION_DESCRIPT = """Session in Progress: rounds spent working within the letter of the law.
-On the fourth, Melchor stops bothering.""",
+On the fourth round or when his HP go below 20%, Melchor stops bothering.""",
+	EFFECTNAME_MELCHOR_FULL_EXTENT = "Fullest Extent of the Laws",
 	EFFECT_MELCHOR_FULL_EXTENT_DESCRIPT = """Fullest Extent of the Laws: +30 MATK, +20 Speed, 30% Damage Reduction and immunity to Silence.
-Every one of his spells gains a rider, and Class III Restricted Spells are cleared for use.""",
+Every one of his spells are enhanced, and Class III Restricted Spells are cleared for use.""",
+	EFFECTNAME_MELCHOR_SECURITY_MEASURE = "Extended Security Measure",
 	EFFECT_MELCHOR_SECURITY_MEASURE_DESCRIPT = """Extended Security Measure: immune to Silence, +25 Armor and MDEF.
 Anyone who strikes this unit takes {color=yellow|Light} damage in return.
 Lasts until the end of this unit's next turn.""",
+	EFFECTNAME_MELCHOR_RESTRAINING_ORDER = "Restraining Order",
 	EFFECT_MELCHOR_RESTRAINING_ORDER_DESCRIPT = """Restraining Order: -25 Speed, -15% ATK and MATK.
 Attacking leaves this unit {color=aqua|Stunned} for a turn.
 Should Melchor invoke the Fullest Extent of the Laws, the order is replaced by {color=aqua|Disarm} and {color=aqua|Silence}.""",
+	TRAIT_REFRACTED_IMAGE = "Illusion Trick - Refracted Image: While not {color=aqua|Silenced}, single-target attacks against this unit have 30% to miss and this unit attack has a 30% chance to bypass evasion.",
+	EFFECTNAME_ROUGE_SHARPEN_NAILS = "Sharpened Nails",
 	EFFECT_ROUGE_SHARPEN_NAILS_DESCRIPT = """Sharpened Nails: immune to Disarm, +50 Crit chance, +20 Armor penetration.
 Spent on the next attack.""",
+	EFFECTNAME_IMPERIAL_LEADERS_MARK = "Leader's Mark",
 	EFFECT_IMPERIAL_LEADERS_MARK_DESCRIPT = """Leader's Mark: takes 20% more damage, and every Imperial Soldier on the field is looking straight at them.""",
 	TRAIT_IMPERIAL_SOLDIER_TRAINING = "Standard Imperial Soldier Training: 25% chance to counter-attack anyone striking from melee range, once per round.",
 
-	MELCHOR_LOG_PURGE_CULTIST = "Melchor: This is a Crown matter. %s, you are not part of it.",
-	MELCHOR_LOG_SHOO_ROUGE = "Melchor: And YOU. Out. Of. Here!",
-	MELCHOR_LOG_FULL_EXTENT = "Melchor: Section II, Article 23. Consider the paperwork filed.",
-	MELCHOR_LOG_FULL_EXTENT_DESPERATE = "Melchor: I will apologise to the archivists later. Section II, Article 23!",
-	ROUGE_LOG_APPETIZER = "Rouge: One appetizer. You did bring enough for everyone, Melchor?",
-	ROUGE_LOG_LEAVES = "Rouge: The course is finished and the cook has left. So will I.",
+	MELCHOR_LOG_PURGE_CULTIST = """Melchor rain down a shower of light, clearing out cultists in the area!
+Melchor: This is a Crown matter. Mayor of Aliron... you lot are not part of it.""",
+	MELCHOR_LOG_SHOO_ROUGE = """A blast of light also struck Rouge!
+Melchor: And YOU. Out. Of. Here!""",
+	MELCHOR_LOG_FULL_EXTENT = "Melchor: Conditions for invoking Section II, Article 23 fullfilled. Consider the paperwork filed.",
+	MELCHOR_LOG_FULL_EXTENT_DESPERATE = """
+Melchor: I will apologise to the archivists later. Invoking Section II, Article 23!""",
+	ROUGE_LOG_APPETIZER = """With an unexpected swift attack, Rouge fell one of Melchor's Imperial Soldier! 
+Rouge: One appetizer. You did bring enough for everyone, Melchor?""",
+	ROUGE_LOG_LEAVES = """
+Rouge: The course is finished and the cook has left. So will I.""",
 
 	RUNNING_AWAY_TEXT = "%s: I gotta get out of here!",
 	SKILLHOWLING_RISING_AXE = "Howling Rising Axe",
