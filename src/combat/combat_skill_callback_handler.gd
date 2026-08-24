@@ -342,6 +342,14 @@ func refine_target(skill, caster, ttarget): #s_skill, caster, target
 			avtargets.erase(caster)
 			if avtargets.empty():
 				return null
+			if skill.template.has('targetreqs'):
+				var avtargets_filtered = []
+				for ally in avtargets:
+					if ally.checkreqs(skill.template.targetreqs) :
+						avtargets_filtered.append(ally)
+				if avtargets_filtered.empty():
+					return null
+				return input_handler.random_from_array(avtargets_filtered)
 			return input_handler.random_from_array(avtargets)
 
 #real queue part

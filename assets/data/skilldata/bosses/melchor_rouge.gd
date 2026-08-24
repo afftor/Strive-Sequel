@@ -24,7 +24,7 @@ var skills = {
 		sfx = [
 			{code = 'command', target = 'caster', period = 'windup'},
 			{code = 'inspire', target = 'target', period = 'predamage'}],
-		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
+		sounddata = {initiate = null, strike = null, hit = null},
 		value = [['0']],
 		damagestat = 'no_stat',
 	},
@@ -34,10 +34,10 @@ var skills = {
 		icon = "res://assets/images/iconsskills/Warn.png",
 		type = 'combat',
 		ability_type = 'spell',
-		tags = ['support', 'aoe', 'noreduce', 'noevade', 'can_miss_ally'],
+		tags = ['support', 'aoe', 'noreduce', 'noevade',],
 		reqs = [],
 		targetreqs = [],
-		effects = ['e_melchor_purge_cultist', 'e_melchor_shoo_rouge'],
+		effects = ['e_melchor_purge_cultist_bark','e_melchor_purge_cultist',],
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -50,6 +50,31 @@ var skills = {
 		keep_target = variables.TARGET_FORCED,
 		sfx = [{code = 'command', target = 'caster', period = 'windup'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
+		value = [['0']],
+		damagestat = 'no_stat',
+		follow_up = 'melchor_clear_the_field_1',
+	},
+	melchor_clear_the_field_1 = {
+		code = 'melchor_clear_the_field',
+		descript = '',
+		icon = "res://assets/images/iconsskills/Warn.png",
+		type = 'combat',
+		ability_type = 'spell',
+		tags = ['support', 'aoe', 'noreduce', 'noevade',],
+		reqs = [],
+		targetreqs = [],
+		effects = ['e_melchor_shoo_rouge'],
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'ally',
+		target_number = 'all',
+		target_range = 'any',
+		damage_type = 'light',
+		sfx = [],
+		sounddata = {initiate = null, strike = null, hit = null},
 		value = [['0']],
 		damagestat = 'no_stat',
 	},
@@ -117,7 +142,7 @@ var skills = {
 			{code = 'mind_blast', target = 'target', period = 'predamage'},
 			{code = 'cast_mind', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'spell2', hit = null},
-		value = [['caster.matk', '*1.4']],
+		value = [['caster.matk', '*0.9']],
 		variations = [
 			{
 				reqs = [{code = 'has_status', status = 'melchor_full_extent', check = true}],
@@ -181,7 +206,7 @@ var skills = {
 			{code = 'earthquake', target = 'target_group', period = 'predamage'},
 			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = 'spell_explosion', strike = null, hit = 'explosion', hittype = 'absolute'},
-		value = [['caster.matk', '*1.5']],
+		value = [['caster.matk', '*1.35']],
 		variations = [
 			{
 				reqs = [{code = 'has_status', status = 'melchor_full_extent', check = true}],
@@ -239,7 +264,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'light',
 		sfx = [
-			{code = 'holy_lance_step', target = 'target', period = 'predamage'},
+			{code = 'holy_lance_step', target = 'caster', period = 'predamage'},
 			{code = 'cast_light', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'spell_explosion', hit = null},
 		value = [['caster.matk', '*2.2']],
@@ -322,7 +347,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/skill_execute.png",
 		type = 'combat',
 		ability_type = 'skill',
-		tags = ['support', 'noreduce', 'noevade', 'can_miss_ally', 'disable_immunity'],
+		tags = ['support', 'noreduce', 'noevade', 'disable_immunity'],
 		reqs = [],
 		targetreqs = [{code = 'trait', trait = 'imperial_soldier_training', check = true}],
 		effects = ['e_rouge_appetizer_kill'],
@@ -337,7 +362,7 @@ var skills = {
 		damage_type = 'weapon',
 		keep_target = variables.TARGET_NOKEEP,
 		next_target = variables.NT_OTHER_ALLY,
-		sfx = [{code = 'execution', target = 'caster', period = 'windup'}],
+		sfx = [{code = 'cast_weapon', target = 'caster', period = 'windup'}],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['0']],
 		damagestat = 'no_stat',
@@ -377,7 +402,7 @@ var skills = {
 		tags = ['damage', 'can_miss_ally'],
 		reqs = [],
 		targetreqs = [],
-		effects = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_rouge_feasting_frenzy',})],
 		cost = {mp = 10},
 		charges = 0,
 		combatcooldown = 2,
@@ -392,9 +417,8 @@ var skills = {
 		damage_type = 'weapon',
 		sfx = [{code = 'strike', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'blade', hit = null, hittype = 'bodyarmor'},
-		value = [['caster.atk', '*0.7'], ['35']],
-		damagestat = ['damage_hp', '-damage_hp'],
-		receiver = ['target', 'caster'],
+		value = [['caster.atk', '*0.65'],],
+		#receiver = ['target', 'caster'], this doesn't seem to work. Perphaps it has to do with next_target
 	},
 	rouge_adamant_pursuit = {
 		code = 'rouge_adamant_pursuit',
@@ -406,7 +430,7 @@ var skills = {
 		reqs = [],
 		targetreqs = [],
 		effects = [
-			'e_rouge_pursuit_no_escape',
+			'e_unseen_fist',
 			Effectdata.rebuild_template({effect = 'fear', duration = 2}),
 		],
 		cost = {mp = 8},
@@ -516,7 +540,10 @@ var skills = {
 		reqs = [],
 		targetreqs = [
 			{code = 'has_status', status = 'defender', check = false},
-			{code = 'trait', trait = 'rouge_third_party', check = false}],
+			{code = 'has_status', status = 'defended', check = false},
+			{code = 'has_skill', value = 'imperial_noble_protection', check = false},
+			{code = 'trait', trait = 'rouge_third_party', check = false}
+		],
 		effects = ['e_imperial_protection'],
 		cost = {mp = 6},
 		charges = 0,
@@ -599,20 +626,38 @@ var skills = {
 		tags = ['damage', 'ads', 'debuff'],
 		reqs = [],
 		targetreqs = [],
-		effects = [
-			Effectdata.rebuild_template({
-				effect = 'bleed', duration = 3, chance = 0.3,
-				target_reqs = [{code = 'has_status', status = 'shred', check = true}]}),
-			Effectdata.rebuild_template({
-				effect = 'shred', duration = 3,
-				target_reqs = [{code = 'has_status', status = 'shred', check = false}]}),
-		],
+		effects = [Effectdata.rebuild_template({effect = 'shred', duration = 3,}),],
 		cost = {mp = 6},
 		charges = 0,
 		combatcooldown = 2,
 		cooldown = 0,
 		catalysts = {},
-		repeat = 3,
+		target = 'enemy',
+		target_number = 'single',
+		target_range = 'melee',
+		keep_target = variables.TARGET_KEEP,
+		damage_type = 'weapon',
+		sfx = [{code = 'sunder', target = 'target', period = 'predamage'}],
+		sounddata = {initiate = null, strike = 'blade', hit = null, hittype = 'bodyarmor'},
+		value = [['caster.atk', '*0.9']],
+		follow_up = 'imperial_threat_suppression_1',
+	},
+	imperial_threat_suppression_1 = {
+		code = 'imperial_threat_suppression',
+		descript = '',
+		icon = "res://assets/images/iconsskills/Acid-spit.png",
+		type = 'combat',
+		ability_type = 'skill',
+		tags = ['damage', 'ads', 'debuff'],
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'bleed', duration = 3, chance = 0.3}),],
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		repeat = 2,
 		target = 'enemy',
 		target_number = 'single',
 		target_range = 'melee',
@@ -620,7 +665,7 @@ var skills = {
 		damage_type = 'weapon',
 		sfx = [{code = 'devastation_1', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'blade', hit = null, hittype = 'bodyarmor'},
-		value = [['caster.atk', '*0.7']],
+		value = [['caster.atk', '*0.75']],
 	},
 	imperial_coordinate_attack = {
 		code = 'imperial_coordinate_attack',
@@ -683,6 +728,7 @@ var effects = {
 		req_skill = true,
 		conditions = [
 			{type = 'target', value = [{code = 'trait', trait = 'rouge_third_party', check = false}]},
+			{type = 'target', value = [{code = 'trait', trait = 'imperial_purge_target', check = false}]},
 			{type = 'target', value = [{code = 'trait', trait = 'melchor_chancellor_of_palatine', check = false}]},
 		],
 		args = {
@@ -725,13 +771,28 @@ var effects = {
 				type = 'oneshot',
 				target = 'target',
 				atomic = [
-					{type = 'add_combat_log', text = 'MELCHOR_LOG_PURGE_CULTIST'},
+					
 					{type = 'sfx', value = 'radiance'},
 					{type = 'stat_set', stat = 'hp', value = 0},
 				],
 			},
 		],
 		buffs = [],
+	},
+	e_melchor_purge_cultist_bark = {
+		type = 'trigger',
+		trigger = [variables.TR_CAST],
+		conditions = [],
+		atomic = [],
+		buffs = [],
+		req_skill = true,
+		args = {caster = {obj = 'caster', func = 'eq'},},
+		sub_effects = [
+			{
+				type = 'oneshot', target = 'caster',
+				atomic = [{type = 'add_combat_log', text = 'MELCHOR_LOG_PURGE_CULTIST'},]
+			},
+		],
 	},
 	e_melchor_shoo_rouge = {
 		type = 'trigger',
@@ -758,7 +819,7 @@ var effects = {
 	},
 	melchor_session_count = {
 		type = 'trigger',
-		trigger = [variables.TR_TURN_F],
+		trigger = [variables.TR_TURN_S],
 		req_skill = false,
 		conditions = [{type = 'owner', value = [{code = 'has_status', status = 'melchor_full_extent', check = false}]}],
 		sub_effects = [
@@ -787,7 +848,7 @@ var effects = {
 		req_skill = false,
 		conditions = [
 			{type = 'owner', value = [{code = 'has_status', status = 'melchor_full_extent', check = false}]},
-			{type = 'owner', value = [{code = 'buff_number', status = 'melchor_session', operant = 'gte', value = 3}]},
+			{type = 'owner', value = [{code = 'buff_number', status = 'melchor_session', operant = 'gte', value = 4}]},
 		],
 		sub_effects = [
 			{
@@ -832,6 +893,13 @@ var effects = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		tags = ['melchor_full_extent', 'positive', 'buff'],
 		statchanges = {matk = 30, speed = 20, damage_reduction = 30, resist_silence_set = 200},
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				atomic = [{type = 'remove_all_effects', value = 'melchor_session'},],
+			},
+		],
 		buffs = ['b_melchor_full_extent'],
 	},
 	e_melchor_security_measure = {
@@ -887,7 +955,7 @@ var effects = {
 		sub_effects = [
 			{
 				type = 'trigger',
-				trigger = [variables.TR_POSTDAMAGE],
+				trigger = [variables.TR_CAST],
 				req_skill = true,
 				conditions = [
 					{type = 'skill', value = ['tags', 'has', 'damage']},
@@ -895,8 +963,7 @@ var effects = {
 				args = {
 					skill = {obj = 'skill', func = 'eq'},
 					caster = {obj = 'caster', func = 'eq'},
-					target = {obj = 'owner', func = 'eq'},
-					duration = {obj = 'self', func = 'dur', dur = 1},
+					duration = {obj = 'self', func = 'dur', dur = 2},
 				},
 				sub_effects = ['e_s_stun'],
 			},
@@ -967,7 +1034,7 @@ var effects = {
 				atomic = [
 					{type = 'sfx', value = 'earth_spike'},
 					{type = 'damage', value = [['parent_args', 'matk'], '*', 1.5], source = 'earth'},
-					{type = 'effect', value = 'e_s_ensnare'},
+					{type = 'effect', value = 'e_s_ensnare', override = {duration = 2}},
 				],
 			},
 		],
@@ -1016,6 +1083,7 @@ var effects = {
 				target = 'target',
 				atomic = [
 					{type = 'add_combat_log', text = 'ROUGE_LOG_APPETIZER'},
+					{type = 'sfx', value = 'execution'},
 					{type = 'sfx', value = 'blood_explosion'},
 					{type = 'stat_set', stat = 'hp', value = 0},
 				],
@@ -1049,7 +1117,7 @@ var effects = {
 				],
 			},
 		],
-		buffs = [],
+		buffs = ['b_rouge_refracted_image'],
 	},
 	rouge_refracted_offense = {
 		type = 'trigger',
@@ -1073,6 +1141,11 @@ var effects = {
 			},
 		],
 		buffs = [],
+	},
+	e_rouge_feasting_frenzy = {
+		type = 'oneshot',
+		target = 'caster',
+		atomic = [{type = 'heal', value = [35]},],
 	},
 	rouge_sharpen_nails = {
 		type = 'temp_s',
@@ -1102,24 +1175,6 @@ var effects = {
 				],
 			},
 		],
-	},
-	e_rouge_pursuit_no_escape = {
-		type = 'trigger',
-		trigger = [variables.TR_HIT],
-		req_skill = true,
-		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_MISS]}],
-		args = {skill = {obj = 'skill', func = 'eq'}},
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'skill',
-				atomic = [
-					{type = 'stat_set', stat = 'hit_res', value = variables.RES_HIT},
-					{type = 'stat_mul', stat = 'value', value = 0.5},
-				],
-			},
-		],
-		buffs = [],
 	},
 	e_rouge_heart_crit = {
 		type = 'trigger',
@@ -1276,6 +1331,10 @@ var buffs = {
 	b_melchor_restraining_order = {
 		icon = "res://assets/images/iconsskills/Magic Shackles.png",
 		description = "EFFECT_MELCHOR_RESTRAINING_ORDER_DESCRIPT",
+	},
+	b_rouge_refracted_image = {
+		icon = "res://assets/images/iconsskills/icon_mirror_image.png",
+		description = "TRAIT_REFRACTED_IMAGE",
 	},
 	b_rouge_sharpen_nails = {
 		icon = "res://assets/images/iconsskills/skill_dip_poison.png",
