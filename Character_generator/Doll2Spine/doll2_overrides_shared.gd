@@ -62,6 +62,7 @@ const GROUP_DEFS = {
 # and live in the doll's own file.
 const FOLDER_MAP = {
 	"01_heads": {"group": "head"},
+	"16_beastkin_heads": {"group": "head", "tags": ["beastkin"]},
 	"16_beastkin_heads_new": {"group": "head", "tags": ["beastkin"]},
 	"02_faces": {"group": "face"},
 	"17_beastkin_faces": {"group": "face", "tags": ["beastkin"]},
@@ -142,6 +143,7 @@ const FIXED_SLOTS = {"sclera": "sklera"}
 const COMPANIONS = {
 	"head": [
 		{"folder": "01_heads", "slots": {"head_skull": "head_skull"}},
+		{"folder": "16_beastkin_heads", "slots": {"head_skull": "beastkin_skull"}},
 		{"folder": "16_beastkin_heads_new", "slots": {"head_skull": "beastkin_skull"}},
 	],
 	# `base_prefix` matches the art file, which kept its capitals when the export
@@ -264,7 +266,7 @@ const DEFAULTS = {
 	# face1 to face5 were withdrawn in the August re-export; face7 is the plain
 	# one of what is left.
 	"face": "face7",
-	"eyes": "eyes_m5",
+	"eyes": "eyes1",
 	"eyebrows": "eyebrows1",
 	"nose": "nose_default",
 	"lips": "lips1",
