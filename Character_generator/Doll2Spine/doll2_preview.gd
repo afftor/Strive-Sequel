@@ -65,6 +65,16 @@ const TITS_SLOTS = ["breasts", "breast_nipples", "equip_breasts",
 	"breasts_beastkin", "breasts_beastkin_pregnancy", "beastkin_pregnancy_nipple",
 	"breasts_beastkin_many"]
 
+# These broad back-hair meshes do not gain enough visible length from their
+# authored bone weights alone.  The back-hair slider therefore scales their
+# already-skinned world geometry as well: its full +/-30% on Y and half of that
+# on X.  Scaling about the middle of the top edge keeps the roots planted while
+# the extra length grows downwards.
+const HAIR_BACK_MESH_SCALE_PARTS = [
+	"hair_back_wawe", "hair_back_straight", "hair_back_care",
+]
+const HAIR_BACK_MESH_SLOT = "hairs_back"
+
 var _jiggle_time = -1.0
 var _jiggle_power = 1.0
 var _jiggle_meshes = [] # what is drawn on the chest, and how it rests
@@ -2313,8 +2323,9 @@ func _add_attachment(slot, attachment):
 	# Coverage needs the mesh's own place on the art canvas, so those meshes get
 	# their own material instead of sharing the channel's.
 	polygon.material = _mesh_material(channel, region, page.size)
-	_track_gradient_bounds(channel, data.points)
-	polygon.polygon = data.points
+	var points = _scale_back_hair_mesh(data.points, slot)
+	_track_gradient_bounds(channel, points)
+	polygon.polygon = points
 	polygon.uv = data.uvs
 	polygon.polygons = data.triangles
 	model_root.add_child(polygon)
@@ -2358,7 +2369,36 @@ func _update_mesh_geometry():
 		var deform = _attachment_deform(record.slot, record.attachment)
 		var data = _attachment_geometry(record.slot, record.attachment, record.region, record.page_size, deform, null, _pose_for(record.slot))
 		if !data.empty():
-			record.polygon.polygon = data.points
+			record.polygon.polygon = _scale_back_hair_mesh(data.points, record.slot)
+
+
+# Extra world-axis scale for the three broad back-hair meshes.  Bone length is
+# deliberately left in place, so this transform compounds with the skinned pose
+# instead of replacing it.  The top edge is the pivot on Y; expressing the
+# result around it is the same scale-plus-downward-offset operation without
+# depending on where the export placed the mesh origin.
+func _scale_back_hair_mesh(points, slot):
+	if str(slot.get("name", "")) != HAIR_BACK_MESH_SLOT:
+		return points
+	if !(str(selections.get("hair_back", "")) in HAIR_BACK_MESH_SCALE_PARTS):
+		return points
+	var scale_y = float(proportions.get("hair_back_length", 1.0))
+	if is_equal_approx(scale_y, 1.0) or points.empty():
+		return points
+	var scale_x = 1.0 + (scale_y - 1.0) * 0.5
+	var minimum = Vector2(1e9, 1e9)
+	var maximum = Vector2(-1e9, -1e9)
+	for point in points:
+		minimum.x = min(minimum.x, point.x)
+		minimum.y = min(minimum.y, point.y)
+		maximum.x = max(maximum.x, point.x)
+	var pivot = Vector2((minimum.x + maximum.x) * 0.5, minimum.y)
+	var scaled = PoolVector2Array()
+	scaled.resize(points.size())
+	for i in range(points.size()):
+		var relative = points[i] - pivot
+		scaled[i] = pivot + Vector2(relative.x * scale_x, relative.y * scale_y)
+	return scaled
 
 
 func _attachment_deform(slot, attachment):
