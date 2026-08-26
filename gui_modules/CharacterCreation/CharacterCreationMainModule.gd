@@ -209,7 +209,7 @@ func _ready():
 	$VBoxContainer/sextrait.connect('pressed', self, "open_sex_traits")
 	$VBoxContainer/trait.connect('pressed', self, "open_traits")
 	$VBoxContainer/personality.connect('pressed', self, "open_personality_selection")
-	$MasterRelationPanel/button.connect('pressed', self, "open_master_relation_selection")
+	$VBoxContainer/master_relation.connect('pressed', self, "open_master_relation_selection")
 	$RelationshipSelect/Cancel.connect("pressed", self, "hide_relationship_selection")
 	globals.connecttexttooltip($VBoxContainer/personality, tr("INFOPERSONALITY"))
 	globals.connecttexttooltip($NameReroll, tr("CHARCREATE_TOOLTIP_REROLL_NAME"))
@@ -217,7 +217,8 @@ func _ready():
 	globals.connecttexttooltip($AppearanceReroll, tr("CHARCREATE_TOOLTIP_REROLL_APPEARANCE"))
 	globals.connecttexttooltip($SaveButton, tr("TOOLTIPSAVECHARACTER"))
 	globals.connecttexttooltip($LoadButton, tr("TOOLTIPLOADCHARACTER"))
-	globals.connecttexttooltip($MasterRelationPanel/TooltipRelations, tr("CHARCREATE_MASTER_RELATION_TOOLTIP"))
+	# the relation tooltip is rebuilt per character in build_master_relation(),
+	# because it now carries the sentence the old panel used to print under itself
 	$DietPanel/Title.text = tr("CHARCREATE_DIET_TITLE")
 	$DietPanel/RichTextLabel.bbcode_text = "[center]" + tr("CHARCREATE_DIET_HELP") + "[/center]"
 	$RaceReroll.connect("pressed", self, "reroll_race")
@@ -344,7 +345,8 @@ func build_visuals():
 	$StatsModule.visible = false
 	$DietPanel.visible = false
 	$VisualsModule.visible = true
-	$MasterRelationPanel.visible = false
+	# the relation button lives in the left column with the other choices now, so
+	# it stays put when the tab changes - only the open list has to be dismissed
 	RelationshipSelect.hide()
 	if mode == 'freemode':
 		$UpgradesPanel.visible = true
@@ -744,13 +746,12 @@ func build_node_for_stat(stat):
 		node.get_node('button/LArr').visible = (id > 0)
 		node.get_node('button/RArr').visible = (id < possible_vals[stat].size() - 1)
 	
-	if stat in ["physics_factor", "wits_factor", "charm_factor", "sexuals_factor", "magic_factor", "tame_factor", "authority_factor",]:
-		var id = possible_vals[stat].find(val)
-		node.get_node('button/LArr').disabled = !(id > 0)
-		node.get_node('button/RArr').disabled = !(id < possible_vals[stat].size() - 1)
-		node.get_node('button/LArr').visible = (mode != 'freemode')
-		node.get_node('button/RArr').visible = (mode != 'freemode')
-	
+	# a factor row is nothing like the arrow-and-label rows below it, so it draws
+	# itself and stops here rather than falling through to them
+	if LAYOUT.factor_row(stat) != null:
+		build_factor_row_value(node, stat, val)
+		return
+
 	var text = visual_value_name(stat, val)
 	node.get_node('button/Label').text = text
 	if !node.has_meta('signals_built'):
@@ -891,6 +892,7 @@ func update_points(): #visual only
 	
 	$StatsModule/totalstatlabel.text = tr("CHARCREATE_UNASSIGNED_STATS") % unassigned_points()
 	$StatsModule/totalstatlabel.visible = (mode != 'freemode')
+	refresh_factor_arrows()
 
 
 func reset_points():
@@ -1109,7 +1111,7 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 	$BackButtonCheats.visible = is_from_cheats
 	$SaveButton.visible = !is_from_cheats
 	$LoadButton.visible = !is_from_cheats
-	$MasterRelationPanel.visible = (type != 'master')
+	$VBoxContainer/master_relation.visible = (type != 'master')
 	$modes.visible = true
 	build_food_filter()
 	rebuild_slave()
@@ -1141,7 +1143,7 @@ func open_freemode(char_to_open, flag = false):
 	$LoadButton.visible = false
 	$BackButton.visible = false
 	$BackButtonCheats.visible = false
-	$MasterRelationPanel.visible = false
+	$VBoxContainer/master_relation.visible = false
 	$modes.visible = false
 
 
@@ -1432,26 +1434,19 @@ func DeleteCharacter():
 
 
 func RebuildStatsContainer(): #onready scheme build, not values
-	input_handler.ClearContainer($StatsModule/StatsContainer)
+	input_handler.ClearContainer($StatsModule/StatsContainer, ['FactorRow'])
 	input_handler.ClearContainer(visual_options, ['Button', 'Slider', 'Checkbox', 'SubmenuButton', 'Colour'])
 	input_handler.ClearContainer(visual_submenu_rows, ['StatRow'])
 	visual_stat_nodes.clear()
 	visual_submenu_buttons.clear()
 	visual_submenu_tiles.clear()
 	visual_insert_index = 0
-	for stat in params_to_save:
-		if stat.ends_with('factor'):
-			var i = statdata.statdata[stat]
-			var newnode = input_handler.DuplicateContainerTemplate($StatsModule/StatsContainer)
-			if i.baseicon is String:
-				newnode.get_node("icon").texture = images.get_icon(i.baseicon)
-			else:
-				newnode.get_node("icon").texture = i.baseicon
-			newnode.name = i.code
-			var text = i.descript
-			if i.code in ['physics_factor','wits_factor','charm_factor','sexuals_factor']:
-				text += '\n\n' + statdata.statdata[i.code.replace('_factor', '')].descript
-			globals.connecttexttooltip(newnode.get_node("icon"), text)
+	# the order of the rows is the order of LAYOUT.FACTOR_ROWS, which is also
+	# where their colour and picture come from
+	for row in LAYOUT.FACTOR_ROWS:
+		var newnode = input_handler.DuplicateContainerTemplate($StatsModule/StatsContainer, 'FactorRow')
+		newnode.name = row.stat
+		build_factor_row_look(newnode, row)
 
 	# A colour with no owner (skin) gets its own row at the top.  All other
 	# colours are inserted immediately after the option they paint.
@@ -1481,6 +1476,140 @@ func RebuildStatsContainer(): #onready scheme build, not values
 		var newnode = duplicate_visual_template(template)
 		setup_visual_stat_node(newnode, stat, template)
 		append_following_colour_rows(stat)
+
+
+# The half of a factor row that is settled the moment it is built: its colour,
+# its picture, its name, the hint under it and its row of empty pips.  The value,
+# the lit pips and the arrows change as the player spends points and live in
+# build_factor_row_value() instead.
+func build_factor_row_look(node, row):
+	var info = statdata.statdata[row.stat]
+	var colour = Color(row.colour)
+
+	# the plate is a dark panel bordered in the row's own colour.  duplicate()
+	# hands every row the same stylebox resource, so it has to be copied before
+	# it is painted or all seven rows end up the last colour written
+	var plate = node.get_stylebox('panel').duplicate()
+	plate.border_color = Color(colour.r, colour.g, colour.b, LAYOUT.FACTOR_BORDER_ALPHA)
+	node.add_stylebox_override('panel', plate)
+
+	# one shared white-to-nothing gradient, tinted per row rather than one
+	# gradient resource per colour
+	node.get_node('Grad').modulate = Color(colour.r, colour.g, colour.b, LAYOUT.FACTOR_WASH_ALPHA)
+
+	# the medallion is already painted in the row's colour, so it is dropped in
+	# as it is - modulating it would flatten the gold and the shading out of it
+	node.get_node('Icon').texture = load(LAYOUT.FACTOR_ICON_DIR + row.stat + '.png')
+	node.get_node('Abb').text = info.abb
+	node.get_node('Abb').set('custom_colors/font_color', colour)
+	node.get_node('Sub').text = tr(LAYOUT.factor_hint_key(row.stat))
+
+	build_factor_pips(node.get_node('Pips'), colour)
+
+	# The tooltip belongs to the reading half of the row - the medallion and the
+	# two lines of text.  HoverZone is an invisible Control over exactly that, and
+	# the plate itself ignores the mouse, so drifting across the pips or resting
+	# on the arrows while spending points does not keep flinging the panel open.
+	var text = info.descript
+	if row.stat in ['physics_factor', 'wits_factor', 'charm_factor']:
+		text += '\n\n' + statdata.statdata[row.stat.replace('_factor', '')].descript
+	globals.connecttexttooltip(node.get_node('HoverZone'), text)
+
+
+# One pip per point the factor can hold.  Each keeps its lit and unlit stylebox
+# on itself, so changing the value later is a swap rather than a repaint.
+func build_factor_pips(pips, colour):
+	var template = pips.get_child(0)
+	for k in range(variables.maximum_factor_value):
+		var pip = template
+		if k > 0:
+			pip = template.duplicate()
+			pips.add_child(pip)
+		pip.name = 'Pip' + str(k)
+		var lit = template.get_stylebox('panel').duplicate()
+		lit.bg_color = colour
+		lit.border_color = Color(1, 0.94, 0.86, 0.85)
+		var unlit = template.get_stylebox('panel').duplicate()
+		unlit.bg_color = Color(0.08, 0.04, 0.07, 0.85)
+		unlit.border_color = Color(colour.r, colour.g, colour.b, LAYOUT.FACTOR_PIP_EMPTY_ALPHA)
+		pip.set_meta('sb_lit', lit)
+		pip.set_meta('sb_unlit', unlit)
+
+
+# The changing half of a factor row: how much of the bar is lit and what the
+# number beside it reads.
+func build_factor_row_value(node, stat, val):
+	var value = int(val)
+	var pips = node.get_node('Pips')
+	for k in range(pips.get_child_count()):
+		var pip = pips.get_child(k)
+		pip.add_stylebox_override('panel', pip.get_meta('sb_lit' if k < value else 'sb_unlit'))
+
+	# a factor reads as a word wherever the player asked for words, and this
+	# screen is no exception
+	# freemode edits characters that already exist, and both the word and the
+	# colour are only defined for 1..6 - a stat outside that range must not take
+	# the panel down with it
+	var step = int(clamp(value, variables.minimum_factor_value, variables.maximum_factor_value))
+	var label = node.get_node('Value')
+	if input_handler.globalsettings.factors_as_words:
+		label.text = ResourceScripts.descriptions.factor_descripts[step]
+	else:
+		label.text = str(value)
+	label.set('custom_colors/font_color', Color(variables.hexcolordict['factor' + str(step)]))
+
+	set_factor_arrows(node, stat, unassigned_points())
+	if !node.has_meta('signals_built'):
+		node.get_node('LArr').connect('pressed', self, 'change_value_node', [stat, -1])
+		node.get_node('RArr').connect('pressed', self, 'change_value_node', [stat, 1])
+		node.set_meta('signals_built', true)
+	node.set_meta('current_val', val)
+
+
+# Which of a row's two arrows can still be pressed.  A full bar stops the plus
+# arrow and so does an empty pool - the old panel only greyed it out for the
+# first and let the player press the second into a silent refusal.
+func set_factor_arrows(node, stat, spare):
+	var vals = possible_vals.get(stat, [])
+	var id = vals.find(person.get_stat(stat))
+	var larr = node.get_node('LArr')
+	var rarr = node.get_node('RArr')
+	larr.visible = (mode != 'freemode')
+	rarr.visible = (mode != 'freemode')
+	larr.disabled = !(id > 0)
+	rarr.disabled = !(id > -1 and id < vals.size() - 1) or spare < 1
+
+
+# The pool is shared, so spending on one row can grey out the plus arrow on all
+# the others.  Every row has to be re-judged whenever the pool moves, not just
+# the row that was clicked.
+func refresh_factor_arrows():
+	var spare = unassigned_points()
+	for row in LAYOUT.FACTOR_ROWS:
+		var node = $StatsModule/StatsContainer.get_node_or_null(row.stat)
+		if node != null and node.visible:
+			set_factor_arrows(node, row.stat, spare)
+
+
+# The panel is only as tall as it has rows.  A master spends points on five
+# factors, not seven, and a box built for seven left the five floating in it with
+# a hole underneath.  The food panel sits directly below and moves with it.
+func fit_stats_panel():
+	var shown = 0
+	for row in LAYOUT.FACTOR_ROWS:
+		var node = $StatsModule/StatsContainer.get_node_or_null(row.stat)
+		if node != null and node.visible:
+			shown += 1
+	if shown == 0:
+		return
+	var height = LAYOUT.STATS_PANEL_CHROME + shown * LAYOUT.FACTOR_ROW_HEIGHT \
+		+ (shown - 1) * LAYOUT.FACTOR_ROW_SEPARATION
+	$StatsModule.margin_bottom = $StatsModule.margin_top + height
+	# read the food panel's own height before moving it, so repeated calls do not
+	# let it creep
+	var diet_height = $DietPanel.margin_bottom - $DietPanel.margin_top
+	$DietPanel.margin_top = $StatsModule.margin_bottom + LAYOUT.STATS_PANEL_GAP
+	$DietPanel.margin_bottom = $DietPanel.margin_top + diet_height
 
 
 func append_following_colour_rows(stat):
@@ -1639,6 +1768,8 @@ func FillStats():
 	build_master_relation()
 	update_points()
 	build_upgrades()
+	# every row's visibility has just been decided, so the panel can be cut to fit
+	fit_stats_panel()
 #	build_food_filter()
 
 
@@ -1742,7 +1873,9 @@ func hide_relationship_selection():
 
 
 func is_master_relation_panel_available():
-	return mode != 'master' and mode != 'freemode' and $StatsModule.visible
+	# the button used to hang off the stats tab and had to hide with it.  It sits
+	# in the left column now, which stands on both tabs, so only the mode decides
+	return mode != 'master' and mode != 'freemode'
 
 
 func build_master_relation_selection():
@@ -1771,20 +1904,28 @@ func select_master_relation(code):
 
 
 func build_master_relation():
+	var button = $VBoxContainer/master_relation
 	var is_visible = is_master_relation_panel_available()
-	$MasterRelationPanel.visible = is_visible
+	button.visible = is_visible
 	if !is_visible:
 		RelationshipSelect.hide()
 		return
 	if !is_master_relation_available(selected_master_relation):
 		selected_master_relation = 'none'
 	var master_char = get_master_relation_target()
-	$MasterRelationPanel/button/Label.text = get_master_relation_display(selected_master_relation)
-	$MasterRelationPanel/button.disabled = (master_char == null)
+	# a bare "None" would say nothing in a column of buttons that each name the
+	# thing they choose, so the button names the choice as well as its value
+	button.get_node('Label').text = tr("CHARCREATE_MASTER_RELATION_BUTTON") % get_master_relation_display(selected_master_relation)
+	button.disabled = (master_char == null)
+	# the sentence the old panel printed under itself has nowhere to stand in a row
+	# of buttons, so it joins the tooltip.  That tooltip opens to the right: the
+	# button sits against the left edge of the screen and would otherwise open off it
+	var tooltip = tr("CHARCREATE_MASTER_RELATION_TOOLTIP")
 	if master_char == null:
-		$MasterRelationPanel/RichTextLabel.bbcode_text = globals.TextEncoder(tr("CHARCREATE_MASTER_RELATION_NO_MASTER"))
+		tooltip += "\n\n" + tr("CHARCREATE_MASTER_RELATION_NO_MASTER")
 	else:
-		$MasterRelationPanel/RichTextLabel.bbcode_text = globals.TextEncoder(tr("CHARCREATE_MASTER_RELATION_PANEL_TEXT") % [person.get_short_name(), tr("MASTER"), master_char.get_short_name()])
+		tooltip += "\n\n" + tr("CHARCREATE_MASTER_RELATION_PANEL_TEXT") % [person.get_short_name(), tr("MASTER"), master_char.get_short_name()]
+	globals.connecttexttooltip(button, tooltip, true)
 
 
 func apply_master_relationship():

@@ -29,9 +29,12 @@ func _ready():
 		input_handler.register_btn_source('etiquette', self, 'tut_get_etiquette')
 
 func tut_get_etiquette():
+	#the hidden template and the tooltip carry no code, and get_meta() without a fallback errors
+	#on them before it ever reaches the item the tutorial is pointing at
 	for traning in get_children():
-		if traning.get_meta("code") == "etiquette":
+		if traning.get_meta("code", "") == "etiquette":
 			return traning
+	return null
 
 func set_person(new_person):
 	person = new_person

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -33,6 +33,7 @@
 [ext_resource path="res://gui_modules/mansion_view/mansion_view.tscn" type="PackedScene" id=41]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=42]
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_job2_small.png" type="Texture" id=43]
+[ext_resource path="res://gui_modules/Mansion/Modules/CharacterTrainingPopup.tscn" type="PackedScene" id=44]
 
 [sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 15 )
@@ -300,6 +301,9 @@ stretch_mode = 5
 [node name="Tween" type="Tween" parent="TurnProductionOverlay/Button"]
 
 [node name="CharacterProgressionPopup" parent="." instance=ExtResource( 40 )]
+visible = false
+
+[node name="CharacterTrainingPopup" parent="." instance=ExtResource( 44 )]
 visible = false
 
 [connection signal="pressed" from="TestButton" to="." method="_on_TestButton_pressed"]

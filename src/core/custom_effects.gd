@@ -169,11 +169,11 @@ func negotiation_finish(log_text):
 
 
 func negotiation_refresh_panel():
-	if gui_controller.slavepanel == null:
+	if gui_controller.mansion == null:
 		return
-	var upgrades_list = gui_controller.slavepanel.get_node_or_null("SlaveInfoModule/UpgradesPanel/UpgradesList")
-	if upgrades_list != null:
-		upgrades_list.match_state()
+	var popup = gui_controller.mansion.get_node_or_null("CharacterTrainingPopup")
+	if popup != null:
+		popup.match_state()
 
 
 func hairdye(character):

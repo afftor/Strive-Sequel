@@ -196,6 +196,12 @@ func advance_day(managed = false):
 	else:
 		ResourceScripts.game_party.advance_day()
 
+	#a night shared in the master's bed is worth something to everyone who shared it
+	ResourceScripts.game_res.reward_master_bed_night()
+
+	#the clerk's morning trip to market, against the standing orders the player left
+	ResourceScripts.game_res.process_autobuy()
+
 	#guilds and shops check
 	ResourceScripts.game_world.advance_day()
 

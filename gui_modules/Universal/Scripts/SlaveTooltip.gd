@@ -77,6 +77,8 @@ func update():
 #		globals.connecttexttooltip($productivity, globals.TextEncoder(text))
 		
 		globals.build_buffs_for_char(person, $buffscontainer, 'mansion')
+		globals.ensure_trait_templates($traitscontainer, 44)
+		globals.build_traitlist_for_char(person, $traitscontainer)
 		#idk about showing buffs here - where this scene is shown anyway? 
 		input_handler.GetTweenNode(self).stop_all()
 		self.modulate.a = 1

@@ -10,6 +10,9 @@ signal travel_completed
 signal slave_departed
 signal update_clock
 signal task_removed
+#A room was raised, pulled down, upgraded or carried elsewhere. What the estate can hold and
+#how many it can sleep are read off the rooms, so whoever prints those numbers has to hear it.
+signal rooms_changed
 signal work_produced(person_id, task_id, texture)
 
 var hour_turns_set = 1
@@ -472,13 +475,19 @@ func connectmaterialtooltip(node, material, bonustext = '', type = null, tooltip
 		type = 'materialowned'
 	node.connect("mouse_entered",self,'mattooltip', [node, material, bonustext, type, tooltip_node])
 
-func connectslavetooltip(node, person):
+#'tooltip_node' names a panel to use instead of the shared one, the way connecttexttooltip and
+#connectmaterialtooltip already take one. A caller drawing inside a CanvasLayer needs it: that
+#layer is painted over everything at the tree root whatever order they were added in, so the
+#shared panel would come up behind the very card that asked for it.
+func connectslavetooltip(node, person, tooltip_node = null):
 	if node.is_connected("mouse_entered",self,'slavetooltip'):
 		node.disconnect("mouse_entered",self,'slavetooltip')
-	node.connect("mouse_entered",self,'slavetooltip', [node, person])
+	node.connect("mouse_entered",self,'slavetooltip', [node, person, tooltip_node])
 
-func slavetooltip(targetnode, person):
-	var node = input_handler.get_spec_node(input_handler.NODE_SLAVETOOLTIP) #input_handler.GetSlaveTooltip()
+func slavetooltip(targetnode, person, tooltip_node = null):
+	var node = tooltip_node
+	if node == null or !is_instance_valid(node):
+		node = input_handler.get_spec_node(input_handler.NODE_SLAVETOOLTIP) #input_handler.GetSlaveTooltip()
 	node.showup(targetnode, person)
 
 #what a food item is worth to anyone: its demand tier, how long it keeps a character fed
@@ -608,8 +617,71 @@ func get_traitlist_for_char(person):
 					entry.positive = true
 				if trdata.tags.has('negative'):
 					entry.negative = true
+					#How far the practice room has talked them out of it. Only worth saying once
+					#the work has started - a nought on every bad habit is noise.
+					var mended = person.get_trait_correction(tr)
+					if mended > 0:
+						entry.correction = mended
+						var line = "\n" + tr("TRAITCORRECTION") % int(round(mended))
+						entry.text += line
+						entry.text_with_name += line
 		traitlist.append(entry)
 	return traitlist
+
+
+#Grey enough to read as "being scrubbed out", translucent enough to leave the icon legible.
+const TRAIT_CORRECTION_COLOR = Color(0.1, 0.1, 0.1, 0.55)
+
+
+const TRAIT_FRAME = "res://assets/images/iconstraits/grey.png"
+const TRAIT_CROSS = "res://assets/images/iconstraits/cross.png"
+const TRAIT_PLATE = "res://assets/Textures_v2/CHAR_INFO/traitpanel/button_traits_universal.png"
+
+
+#The two templates build_traitlist_for_char() duplicates, made for a container that has none.
+#Five panels carry them in their own scenes; this is for the ones that do not, so a trait row
+#can be put anywhere without the same subtree being drawn by hand in another scene file.
+func ensure_trait_templates(node, size = 50):
+	if node.has_node('Button') and node.has_node('Button2'):
+		return
+	if !node.has_node('Button2'):
+		var simple = TextureRect.new()
+		simple.name = 'Button2'
+		simple.visible = false
+		simple.expand = true
+		simple.rect_min_size = Vector2(size, size)
+		var label = Label.new()
+		label.name = 'Label'
+		label.visible = false
+		simple.add_child(label)
+		node.add_child(simple)
+	if node.has_node('Button'):
+		return
+	var button = TextureButton.new()
+	button.name = 'Button'
+	button.visible = false
+	button.expand = true
+	button.rect_min_size = Vector2(size, size)
+	button.texture_normal = load(TRAIT_FRAME)
+	#the plate sits under the picture, the picture over it, the cross over both - the order
+	#they are added in is the order they paint in
+	for part in [['TextureRect', TRAIT_PLATE, 0], ['icon', null, 10], ['cross', TRAIT_CROSS, 10]]:
+		var piece = TextureRect.new()
+		piece.name = part[0]
+		piece.expand = true
+		piece.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		if part[1] != null:
+			piece.texture = load(part[1])
+		piece.anchor_right = 1.0
+		piece.anchor_bottom = 1.0
+		piece.margin_left = part[2]
+		piece.margin_top = part[2]
+		piece.margin_right = -part[2]
+		piece.margin_bottom = -part[2]
+		if part[0] == 'cross':
+			piece.visible = false
+		button.add_child(piece)
+	node.add_child(button)
 
 
 func build_traitlist_for_char(person, node):
@@ -635,6 +707,32 @@ func build_traitlist_for_char(person, node):
 					button.get_node('icon').texture = load(entry.icon)
 				else:
 					button.get_node('icon').texture = entry.icon
+			#The habit being worked out of somebody fills its own icon from the bottom as it
+			#goes. The overlay is made here rather than put in each panel's scene: five scenes
+			#draw trait icons from this one function, and a sixth added later would silently
+			#miss out.
+			var fill = button.get_node_or_null('Correction')
+			if fill == null and entry.has('correction'):
+				fill = ColorRect.new()
+				fill.name = 'Correction'
+				fill.color = TRAIT_CORRECTION_COLOR
+				#the icon under it keeps the tooltip - the overlay must not take the hover
+				fill.mouse_filter = Control.MOUSE_FILTER_IGNORE
+				fill.anchor_left = 0.0
+				fill.anchor_right = 1.0
+				fill.anchor_bottom = 1.0
+				fill.margin_left = 0
+				fill.margin_right = 0
+				fill.margin_bottom = 0
+				#added last, so it paints over the icon rather than under it
+				button.add_child(fill)
+			if fill != null:
+				fill.visible = entry.has('correction')
+				if fill.visible:
+					#the top edge slides down as the work goes on: nothing covered at nought,
+					#the whole icon at a hundred
+					fill.anchor_top = 1.0 - clamp(entry.correction / 100.0, 0.0, 1.0)
+					fill.margin_top = 0
 			if entry.has('cross'):
 				button.get_node('cross').visible = true
 			else:
@@ -2919,6 +3017,10 @@ func common_effects(effects, from_event = false):
 						rdata.xp_mod = i.xp_mod
 			'unlock_upgrade':
 				ResourceScripts.game_res.unlock_upgrade(i.upgrade, i.level)
+			#A room the estate is given: the room code goes in 'name', the same field every
+			#other effect that names a thing uses.
+			'grant_room':
+				ResourceScripts.game_res.grant_room(i.name)
 			'change_relationship':
 				if input_handler.scene_characters.size() == 2:
 					ResourceScripts.game_party.change_relationship_status(input_handler.scene_characters[0].id, input_handler.scene_characters[1].id, i.value, true)

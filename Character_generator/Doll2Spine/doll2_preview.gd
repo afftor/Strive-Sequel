@@ -26,6 +26,52 @@ const ANIMATION_LABELS = {
 	"idle": "DOLL2_PREVIEW_ANIMATION_IDLE",
 	"eyesmove": "DOLL2_PREVIEW_ANIMATION_EYES",
 }
+# The chest swings when it is poked and when its size changes.  Both halves of
+# it are the old paperdoll's: these four numbers are what `ragdoll_builder.gd`
+# ran, down to the decay, and the shape below is its shader's.
+#     wave = sin(t * TAU * FREQ) * SHIFT * power * exp(-t * DECAY)
+const TITS_JIGGLE_TIME = 0.9
+const TITS_JIGGLE_FREQ = 3.4
+const TITS_JIGGLE_DECAY = 4.0
+const TITS_JIGGLE_SHIFT = 16.0 # pixels the nipple travels on the first swing
+# The deformation is the old paperdoll's, formula for formula.  Its shader ran
+#     dist = length(VERTEX - anchor)
+#     if (dist < range) offset += move * (range - dist) * power / range
+# per anchor, and the jiggle drove two of them - one per breast - with `move`
+# straight down.  So a vertex is pulled hardest at the anchor and not at all
+# past `range`, falling off in a straight line between the two, and the pulls
+# from both breasts add up where they overlap.  That is what makes the weight
+# sit low and central instead of the whole shape growing.
+const TITS_JIGGLE_RANGE = 110.0 # the old doll's radius, in pixels of art canvas
+# The one thing the old shader did not do: hold the top edge.  Its anchors were
+# placed by hand so the falloff had died before the chest, and ours are read off
+# the nipples, so without this the whole breast - the join included - rides up
+# and down with the wave.  The pull fades in over the top of the breast instead.
+# Nothing moves in the top sixth, everything moves in the bottom quarter, and
+# the pull eases in between the two rather than ramping straight up - a linear
+# ramp still left the join travelling a few pixels.
+const TITS_HOLD_FROM = 0.18 # depth where the breast starts to answer at all
+const TITS_HOLD_TO = 0.78 # depth from which it answers in full
+# Slots that are a breast rather than something drawn on one.  A flat chest has
+# only the nipple mask, and a mask stretching by itself reads as a twitch, so a
+# doll with none of these does not swing at all.
+const TITS_BODY_SLOTS = ["breasts", "breasts_beastkin"]
+# Where the anchors are read from, when the doll is bare enough to show them.
+const TITS_NIPPLE_SLOTS = ["breast_nipples", "beastkin_pregnancy_nipple"]
+
+# Everything drawn on the chest, so the nipples and the clothes over them swing
+# with the breast instead of sliding off it.
+const TITS_SLOTS = ["breasts", "breast_nipples", "equip_breasts",
+	"breasts_beastkin", "breasts_beastkin_pregnancy", "beastkin_pregnancy_nipple",
+	"breasts_beastkin_many"]
+
+var _jiggle_time = -1.0
+var _jiggle_power = 1.0
+var _jiggle_meshes = [] # what is drawn on the chest, and how it rests
+var _jiggle_pivot = Vector2.ZERO # the top of the breast: the stretch hangs here
+var _jiggle_height = 1.0
+var _jiggle_anchors = [] # one per breast, where the pull is hardest
+
 const ZOOM_MIN = 0.4
 const ZOOM_MAX = 4.0
 const ZOOM_STEP = 1.12
@@ -169,6 +215,164 @@ func _process(delta):
 			_rebuild_model()
 		else:
 			_update_animated_pose()
+	# After the pose, never before it: an animated frame rewrites the very
+	# points the swing is bending, so bending them first would be undone.
+	_advance_jiggle(delta)
+
+
+# A swing of the chest.  `power` scales the first one.
+func jiggle_tits(power = 1.0):
+	stop_tits_jiggle()
+	var has_a_breast = false
+	for record in mesh_records:
+		if !is_instance_valid(record.polygon):
+			continue
+		var slot_name = str(record.slot.get("name", ""))
+		if !(slot_name in TITS_SLOTS):
+			continue
+		if slot_name in TITS_BODY_SLOTS:
+			has_a_breast = true
+		var box = _polygon_bounds(record.polygon)
+		if box.size.y <= 0.0:
+			continue
+		if slot_name in TITS_BODY_SLOTS:
+			# the breast decides where the middle is, which is how the two anchors
+			# are told apart
+			_jiggle_pivot = Vector2(box.position.x + box.size.x * 0.5, box.position.y)
+			_jiggle_height = box.size.y
+		_jiggle_meshes.append({"polygon": record.polygon, "rest": record.polygon.polygon})
+	if !has_a_breast or _jiggle_meshes.empty() or _jiggle_height <= 0.0:
+		# a flat chest, a male rig, or a nipple mask with nothing under it
+		_jiggle_meshes = []
+		return
+	# Every vertex on the chest is weighed against the same two anchors rather
+	# than against its own mesh: that is what keeps the nipples and the clothing
+	# moving with the breast under them.
+	_find_jiggle_anchors()
+	if _jiggle_anchors.empty():
+		_jiggle_meshes = []
+		return
+	var strongest = 0.0
+	for entry in _jiggle_meshes:
+		entry["offsets"] = _sag_offsets(entry.rest)
+		for offset in entry.offsets:
+			strongest = max(strongest, offset.y)
+	if strongest > 1.0:
+		# The two zones overlap and the shader added them up, so between the
+		# breasts the pull came to more than one and the chest travelled further
+		# than `SHIFT` says.  Dividing the whole chest by its strongest pull puts
+		# that number back in charge without changing the shape.
+		for entry in _jiggle_meshes:
+			var scaled = PoolVector2Array()
+			scaled.resize(entry.offsets.size())
+			for i in range(entry.offsets.size()):
+				scaled[i] = entry.offsets[i] / strongest
+			entry["offsets"] = scaled
+	_jiggle_time = 0.0
+	_jiggle_power = clamp(power, 0.1, 2.0)
+	set_process(true)
+
+
+# How far each vertex travels on a full swing: down by how low and how central
+# it is, out to the side by how far off centre.  One swing is this times the
+# wave, so the shape of the sag never changes, only its size.
+# How far each vertex travels on a full swing, by the old shader's rule: the
+# linear falloff from each anchor, added together.  A swing is this times the
+# wave, so the shape never changes - only how hard it is pulled.
+func _sag_offsets(points):
+	var result = PoolVector2Array()
+	result.resize(points.size())
+	for i in range(points.size()):
+		var pull = 0.0
+		for anchor in _jiggle_anchors:
+			var distance = points[i].distance_to(anchor)
+			if distance < TITS_JIGGLE_RANGE:
+				pull += (TITS_JIGGLE_RANGE - distance) / TITS_JIGGLE_RANGE
+		# nothing moves where the breast meets the chest; the pull eases in below
+		var depth = (points[i].y - _jiggle_pivot.y) / max(_jiggle_height, 1.0)
+		pull *= smoothstep(TITS_HOLD_FROM, TITS_HOLD_TO, depth)
+		result[i] = Vector2(0.0, pull)
+	return result
+
+
+# Where the old doll hung its two anchors: on the nipples, one per breast.  They
+# are read off the nipple mesh, split left and right about the breast's middle;
+# a doll whose nipples are hidden under gear falls back to the breast itself.
+func _find_jiggle_anchors():
+	_jiggle_anchors = []
+	var left = Vector2.ZERO
+	var right = Vector2.ZERO
+	var left_count = 0
+	var right_count = 0
+	for record in mesh_records:
+		if !is_instance_valid(record.polygon):
+			continue
+		var slot_name = str(record.slot.get("name", ""))
+		if !(slot_name in TITS_NIPPLE_SLOTS) and !(slot_name in TITS_BODY_SLOTS):
+			continue
+		var prefer_nipples = slot_name in TITS_NIPPLE_SLOTS
+		if !prefer_nipples and left_count + right_count > 0:
+			continue # the nipples were found already
+		for point in record.polygon.polygon:
+			if point.x < _jiggle_pivot.x:
+				left += point
+				left_count += 1
+			else:
+				right += point
+				right_count += 1
+		if prefer_nipples:
+			break
+	if left_count > 0:
+		_jiggle_anchors.append(left / left_count)
+	if right_count > 0:
+		_jiggle_anchors.append(right / right_count)
+
+
+func _polygon_bounds(polygon):
+	var minimum = Vector2(1e9, 1e9)
+	var maximum = Vector2(-1e9, -1e9)
+	for point in polygon.polygon:
+		minimum.x = min(minimum.x, point.x)
+		minimum.y = min(minimum.y, point.y)
+		maximum.x = max(maximum.x, point.x)
+		maximum.y = max(maximum.y, point.y)
+	if minimum.x > maximum.x:
+		return Rect2()
+	return Rect2(minimum, maximum - minimum)
+
+
+# Everything back where it rests.  The mesh nodes do not survive a rebuild, so
+# this runs before one rather than after.
+func stop_tits_jiggle():
+	for entry in _jiggle_meshes:
+		if is_instance_valid(entry.polygon):
+			entry.polygon.polygon = entry.rest
+	_jiggle_meshes = []
+	_jiggle_time = -1.0
+
+
+# One frame of the swing: a sine that dies away, moving the chest meshes and
+# nothing else.  Returns false when there is nothing left to do.
+func _advance_jiggle(delta):
+	if _jiggle_meshes.empty():
+		return false
+	_jiggle_time += delta
+	if _jiggle_time >= TITS_JIGGLE_TIME:
+		stop_tits_jiggle()
+		return false
+	var wave = sin(_jiggle_time * TAU * TITS_JIGGLE_FREQ) * TITS_JIGGLE_SHIFT * _jiggle_power
+	wave *= exp(-_jiggle_time * TITS_JIGGLE_DECAY)
+	for entry in _jiggle_meshes:
+		if !is_instance_valid(entry.polygon):
+			continue
+		var rest = entry.rest
+		var offsets = entry.offsets
+		var points = PoolVector2Array()
+		points.resize(rest.size())
+		for i in range(rest.size()):
+			points[i] = rest[i] + offsets[i] * wave
+		entry.polygon.polygon = points
+	return true
 
 
 func _load_source():
@@ -812,7 +1016,13 @@ func _unhandled_input(event):
 		elif event.button_index == BUTTON_WHEEL_DOWN and event.pressed:
 			_zoom_at(event.position, 1.0 / ZOOM_STEP)
 		elif event.button_index == BUTTON_LEFT:
-			panning = event.pressed
+			# A poke owns its press and can never leave a previous pan latched.
+			# Anywhere else keeps the existing press-to-pan, release-to-stop flow.
+			if event.pressed and _poke_tits(event.position):
+				panning = false
+				get_tree().set_input_as_handled()
+			else:
+				panning = event.pressed
 		elif event.button_index == BUTTON_RIGHT and event.pressed:
 			view_zoom = 1.0
 			view_offset = Vector2.ZERO
@@ -1014,8 +1224,11 @@ func _build_interface():
 	_add_coverage_select(box)
 	_add_height_slider(box)
 	for modifier_id in _sorted_modifiers():
-		if !MODIFIERS.modifier(modifier_id).has("steps"):
-			_add_proportion_slider(box, MODIFIERS.modifier(modifier_id).label, modifier_id)
+		var definition = MODIFIERS.modifier(modifier_id)
+		# A stepped proportion is picked by name above.  One marked `tune` gets a
+		# slider here as well: that is how the numbers behind the names are found.
+		if !definition.has("steps") or definition.get("tune", false):
+			_add_proportion_slider(box, definition.label, modifier_id)
 	var note = Label.new()
 	note.autowrap = true
 	note.text = _text("DOLL2_PREVIEW_NOTE")
@@ -1616,11 +1829,13 @@ func _sorted_modifiers():
 	var result = MODIFIERS.MODIFIERS.keys()
 	for modifier_id in MODIFIERS.FACE_MODIFIER_ORDER:
 		result.erase(modifier_id)
+	for modifier_id in MODIFIERS.WAIST_MODIFIER_ORDER:
+		result.erase(modifier_id)
 	result.sort()
 	# The hair lengths sit apart from the build sliders: they are per layer rather
 	# than per bone, and reading them next to each other is what makes them
-	# legible as three independent lengths.
-	return MODIFIERS.LAYER_MODIFIERS.keys() + result + MODIFIERS.FACE_MODIFIER_ORDER
+	# legible as four independent lengths.
+	return MODIFIERS.LAYER_MODIFIERS.keys() + result + MODIFIERS.WAIST_MODIFIER_ORDER + MODIFIERS.FACE_MODIFIER_ORDER
 
 
 # A proportion the character carries as one of a few named sizes - butt size so
@@ -1742,9 +1957,43 @@ func _follow_body_tag():
 	_select_ui_value("head", head_id)
 
 
+# True when the click landed on the chest, which is also when it swung it.
+func _poke_tits(screen_point):
+	var box = _tits_bounds()
+	if box.size.y <= 0.0:
+		return false
+	if !box.has_point(to_local(screen_point)):
+		return false
+	jiggle_tits()
+	return true
+
+
+func _tits_bounds():
+	var minimum = Vector2(1e9, 1e9)
+	var maximum = Vector2(-1e9, -1e9)
+	for record in mesh_records:
+		if !is_instance_valid(record.polygon):
+			continue
+		if !(str(record.slot.get("name", "")) in TITS_SLOTS):
+			continue
+		for point in record.polygon.polygon:
+			var world = point + record.polygon.position
+			minimum.x = min(minimum.x, world.x)
+			minimum.y = min(minimum.y, world.y)
+			maximum.x = max(maximum.x, world.x)
+			maximum.y = max(maximum.y, world.y)
+	if minimum.x > maximum.x:
+		return Rect2()
+	return Rect2(minimum, maximum - minimum)
+
+
 func _on_axis_changed(_item_index, axis, select):
 	axis_values[axis] = select.get_item_metadata(select.selected)
 	_rebuild_model()
+	# The size just changed under the player's eyes; the chest reacts to that
+	# here the same way it does in character creation.
+	if str(axis) == "tits_size":
+		jiggle_tits()
 
 
 func _on_preset_selected(_item_index, select):
@@ -2293,6 +2542,7 @@ func _mesh_uv(region, u, v, page_size):
 	return Vector2(rotated_u_offset + v * rotated_u_scale, rotated_v_offset - u * rotated_v_scale)
 
 
+
 func _mesh_points(vertices, uv_size, deform = [], pose = null):
 	if pose == null:
 		pose = bones
@@ -2318,8 +2568,7 @@ func _mesh_points(vertices, uv_size, deform = [], pose = null):
 			var deform_y = float(deform[deform_cursor + 1]) if deform_cursor + 1 < deform.size() else 0.0
 			var local = Vector2(float(vertices[cursor + 1]) + deform_x, float(vertices[cursor + 2]) + deform_y)
 			var weight = float(vertices[cursor + 3])
-			var bone_name = skeleton.bones[bone_index].name
-			result += _world_point(pose[bone_name], local) * weight
+			result += _world_point(pose[skeleton.bones[bone_index].name], local) * weight
 			cursor += 4
 			deform_cursor += 2
 		points.append(result)

@@ -48,14 +48,18 @@ const PERSONALITY_ICONS = {
 	"neutral": preload("res://assets/Textures_v2/MANSION/personality_neutral.png"),
 }
 const OVERVIEW_ICONS = {
-	"growth_factor": preload("res://assets/images/gui/gui icons/growth_factor.png"),
-	"physics_factor": preload("res://assets/images/gui/gui icons/physics_factor.png"),
-	"magic_factor": preload("res://assets/images/gui/gui icons/magic_factor.png"),
-	"wits_factor": preload("res://assets/images/gui/gui icons/wit.png"),
-	"charm_factor": preload("res://assets/images/gui/gui icons/charm.png"),
-	"sexuals_factor": preload("res://assets/images/gui/gui icons/sex.png"),
-	"tame_factor": preload("res://assets/images/gui/gui icons/tame_factor.png"),
-	"authority_factor": preload("res://assets/images/gui/gui icons/timid_factor.png"),
+	# Every factor shares its medallion with the character creation screen, so a
+	# stat is the same picture and the same colour wherever it is shown.  Growth is
+	# the only one nobody assigns points to, and its medallion says so: silver and
+	# an arrow rather than a colour of its own.
+	"growth_factor": preload("res://assets/images/iconsfactors/growth_factor.png"),
+	"physics_factor": preload("res://assets/images/iconsfactors/physics_factor.png"),
+	"magic_factor": preload("res://assets/images/iconsfactors/magic_factor.png"),
+	"wits_factor": preload("res://assets/images/iconsfactors/wits_factor.png"),
+	"charm_factor": preload("res://assets/images/iconsfactors/charm_factor.png"),
+	"sexuals_factor": preload("res://assets/images/iconsfactors/sexuals_factor.png"),
+	"tame_factor": preload("res://assets/images/iconsfactors/tame_factor.png"),
+	"authority_factor": preload("res://assets/images/iconsfactors/authority_factor.png"),
 	"physics": preload("res://assets/images/gui/gui icons/icon_physics.png"),
 	"wits": preload("res://assets/images/gui/gui icons/icon_wits.png"),
 	"charm": preload("res://assets/images/gui/gui icons/icon_charm.png"),
@@ -162,11 +166,10 @@ func build_overview():
 
 func _setup_overview_row(row, code, value, factor):
 	row.get_node("Icon").texture = OVERVIEW_ICONS[code]
-	row.get_node("Value").text = value
 	if factor:
-		var factor_index = int(clamp(floor(person.get_stat(code)), 1, 6))
-		row.get_node("Value").set("custom_colors/font_color", variables.hexcolordict["factor" + str(factor_index)])
+		_setup_factor_value(row, value, code)
 	else:
+		row.get_node("Value").text = value
 		row.get_node("Value").set("custom_colors/font_color", variables.hexcolordict["k_yellow"])
 	var tooltip
 	if code == "productivity":
@@ -174,6 +177,35 @@ func _setup_overview_row(row, code, value, factor):
 	else:
 		tooltip = "[center]{color=yellow|" + tr("STAT" + code.to_upper()) + "}[/center]\n" + person.translate(statdata.statdata[code].descript)
 	globals.connecttexttooltip(row, tooltip)
+
+
+#A factor reads as a digit or as a word, and the two want very different room: "6"
+#sits large over the medallion, while "Excellent" needs the whole width of the cell
+#in a small face. One label cannot be both, so the row carries two and shows one.
+#
+#The cell is 66 px wide and the word label 64 of that. Measured in the row's own
+#font, the longest English word only just fits at the template size, and a
+#translation can be longer - so the label is fitted to whatever it actually holds.
+#The shared default padding would leave 24 px of a 64 px label and shrink the word
+#to nothing, which is why this passes its own.
+const FACTOR_WORD_PADDING = 4
+
+
+func _setup_factor_value(row, value, code):
+	var step = int(clamp(floor(person.get_stat(code)), 1, 6))
+	var colour = variables.hexcolordict["factor" + str(step)]
+	var number = row.get_node("Value")
+	var word = row.get_node("Word")
+	var as_words = input_handler.globalsettings.factors_as_words
+	number.visible = !as_words
+	word.visible = as_words
+	if as_words:
+		word.text = ResourceScripts.descriptions.factor_descripts[step]
+		word.set("custom_colors/font_color", colour)
+		input_handler.font_size_adjust(word, FACTOR_WORD_PADDING)
+	else:
+		number.text = value
+		number.set("custom_colors/font_color", colour)
 
 
 func _build_productivity_tooltip():

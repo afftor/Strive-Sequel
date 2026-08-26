@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=2]
@@ -29,9 +29,6 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=27]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=28]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_disabled.png" type="Texture" id=29]
-[ext_resource path="res://assets/images/gui/gui icons/icon_interactions.png" type="Texture" id=30]
-[ext_resource path="res://assets/images/gui/gui icons/icon_bedlimit.png" type="Texture" id=31]
-[ext_resource path="res://assets/images/gui/gui icons/icon_twohearts.png" type="Texture" id=32]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/bar_trainees.png" type="Texture" id=33]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/bar_trainees_filler.png" type="Texture" id=34]
 [ext_resource path="res://assets/Textures_v2/MANSION/no.png" type="Texture" id=35]
@@ -43,9 +40,6 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_twohearts.png" type="Texture" id=41]
 [ext_resource path="res://assets/images/iconsgear/battleaxe.png" type="Texture" id=42]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=43]
-[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_magicdamage.png" type="Texture" id=44]
-[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_magicdamage_pressed.png" type="Texture" id=45]
-[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_magicdamage_hover.png" type="Texture" id=46]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18.tres" type="DynamicFont" id=47]
 [ext_resource path="res://gui_modules/Universal/Scripts/ContextDropdown.gd" type="Script" id=48]
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=49]
@@ -58,7 +52,6 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_light.png" type="Texture" id=71]
 [ext_resource path="res://assets/images/gui/universal/skill_frame_diabled.png" type="Texture" id=72]
 [ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_empty.png" type="Texture" id=73]
-[ext_resource path="res://Character_generator/Doll2Spine/Doll2View.tscn" type="PackedScene" id=83]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/tick.png" type="Texture" id=75]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/tick_chosen.png" type="Texture" id=76]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/tick_disabled.png" type="Texture" id=77]
@@ -67,6 +60,8 @@
 [ext_resource path="res://src/scenes/CloseButton.tscn" type="PackedScene" id=80]
 [ext_resource path="res://assets/images/gui/panels/edit.png" type="Texture" id=81]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/LineEdit.tres" type="StyleBox" id=82]
+[ext_resource path="res://Character_generator/Doll2Spine/Doll2View.tscn" type="PackedScene" id=83]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_resources.png" type="Texture" id=84]
 
 [sub_resource type="DynamicFont" id=6]
 size = 30
@@ -134,29 +129,6 @@ margin_bottom = 53.0
 theme = ExtResource( 49 )
 items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false ]
 script = ExtResource( 48 )
-
-[node name="Label" type="Label" parent="."]
-visible = false
-margin_left = 446.923
-margin_top = 7.7562
-margin_right = 623.923
-margin_bottom = 49.7562
-custom_colors/font_color = Color( 0.866667, 0.905882, 0.478431, 1 )
-custom_fonts/font = ExtResource( 26 )
-text = "MSLMNAME"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Background" type="Panel" parent="."]
-visible = false
-self_modulate = Color( 0, 0, 0, 0.705882 )
-show_behind_parent = true
-margin_right = 1075.0
-margin_bottom = 499.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 anchor_right = 1.0
@@ -487,19 +459,6 @@ mouse_filter = 2
 expand = true
 stretch_mode = 6
 
-[node name="SpellIcon" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
-visible = false
-margin_left = 890.0
-margin_top = 5.0
-margin_right = 930.0
-margin_bottom = 45.0
-hint_tooltip = "SPELLCAST_LABEL"
-texture_normal = ExtResource( 44 )
-texture_pressed = ExtResource( 45 )
-texture_hover = ExtResource( 46 )
-expand = true
-stretch_mode = 4
-
 [node name="LocIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button" groups=["default"]]
 visible = false
 margin_left = 940.0
@@ -562,8 +521,7 @@ margin_right = 578.0
 margin_bottom = 49.0
 theme = ExtResource( 11 )
 
-[node name="rule_luxury" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["lux_rooms", "rules"]
-visible = false]
+[node name="rule_luxury" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["lux_rooms", "rules"]]
 visible = false
 margin_left = 600.0
 margin_top = 1.0
@@ -707,231 +665,6 @@ margin_right = 1048.0
 margin_bottom = 49.0
 theme = ExtResource( 11 )
 
-[node name="ff_meat" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
-visible = false
-margin_left = 231.0
-margin_top = 6.0
-margin_right = 314.0
-margin_bottom = 46.0
-size_flags_horizontal = 0
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-texture_hover = ExtResource( 5 )
-texture_disabled = ExtResource( 29 )
-expand = true
-
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button/ff_meat"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 27 )
-text = "disable"
-align = 1
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ff_fish" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
-visible = false
-margin_left = 318.0
-margin_top = 6.0
-margin_right = 401.0
-margin_bottom = 46.0
-size_flags_horizontal = 0
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-texture_hover = ExtResource( 5 )
-texture_disabled = ExtResource( 29 )
-expand = true
-
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button/ff_fish"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 27 )
-text = "disable"
-align = 1
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ff_grain" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
-visible = false
-margin_left = 406.0
-margin_top = 6.0
-margin_right = 489.0
-margin_bottom = 46.0
-size_flags_horizontal = 0
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-texture_hover = ExtResource( 5 )
-texture_disabled = ExtResource( 29 )
-expand = true
-
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button/ff_grain"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 27 )
-text = "disable"
-align = 1
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ff_vegetables" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
-visible = false
-margin_left = 495.0
-margin_top = 6.0
-margin_right = 578.0
-margin_bottom = 46.0
-size_flags_horizontal = 0
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-texture_hover = ExtResource( 5 )
-texture_disabled = ExtResource( 29 )
-expand = true
-
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button/ff_vegetables"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 27 )
-text = "disable"
-align = 1
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ff_bread" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
-visible = false
-margin_left = 582.0
-margin_top = 6.0
-margin_right = 665.0
-margin_bottom = 46.0
-size_flags_horizontal = 0
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-texture_hover = ExtResource( 5 )
-texture_disabled = ExtResource( 29 )
-expand = true
-
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button/ff_bread"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 27 )
-text = "disable"
-align = 1
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ff_meatsoup" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
-visible = false
-margin_left = 670.0
-margin_top = 6.0
-margin_right = 753.0
-margin_bottom = 46.0
-size_flags_horizontal = 0
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-texture_hover = ExtResource( 5 )
-texture_disabled = ExtResource( 29 )
-expand = true
-
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button/ff_meatsoup"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 27 )
-text = "disable"
-align = 1
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ff_curry" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
-visible = false
-margin_left = 759.0
-margin_top = 6.0
-margin_right = 842.0
-margin_bottom = 46.0
-size_flags_horizontal = 0
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-texture_hover = ExtResource( 5 )
-texture_disabled = ExtResource( 29 )
-expand = true
-
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button/ff_curry"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 27 )
-text = "disable"
-align = 1
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ff_friedfish" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
-visible = false
-margin_left = 846.0
-margin_top = 6.0
-margin_right = 929.0
-margin_bottom = 46.0
-size_flags_horizontal = 0
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-texture_hover = ExtResource( 5 )
-texture_disabled = ExtResource( 29 )
-expand = true
-
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button/ff_friedfish"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 27 )
-text = "disable"
-align = 1
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ff_fishcakes" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
-visible = false
-margin_left = 934.0
-margin_top = 6.0
-margin_right = 1017.0
-margin_bottom = 46.0
-size_flags_horizontal = 0
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-texture_hover = ExtResource( 5 )
-texture_disabled = ExtResource( 29 )
-expand = true
-
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button/ff_fishcakes"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 27 )
-text = "disable"
-align = 1
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="CardContainer" type="GridContainer" parent="ScrollContainer"]
 margin_right = 1244.0
 margin_bottom = 350.0
@@ -982,29 +715,13 @@ texture_disabled = ExtResource( 36 )
 stretch_mode = 6
 script = ExtResource( 12 )
 
-[node name="VBoxContainer" type="HBoxContainer" parent="."]
-visible = false
-margin_left = 30.0
-margin_top = 34.0
-margin_right = 893.0
-margin_bottom = 74.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="VBoxContainer"]
-margin_top = 12.0
-margin_right = 28.0
-margin_bottom = 28.0
-text = "Sex"
-
 [node name="food_consumption" type="Label" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -101.0
-margin_top = 21.0
+margin_top = 15.0
 margin_right = -54.0002
-margin_bottom = 51.0
+margin_bottom = 45.0
 hint_tooltip = "TOOLTIPFOODCONSUMPTION"
 mouse_filter = 0
 theme = ExtResource( 6 )
@@ -1017,9 +734,9 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="food_consumption"]
 margin_left = -45.9306
-margin_top = -5.77057
+margin_top = -0.77057
 margin_right = -3.9306
-margin_bottom = 34.2294
+margin_bottom = 39.2294
 hint_tooltip = "TOOLTIPFOODCONSUMPTION"
 texture = ExtResource( 14 )
 
@@ -1027,40 +744,69 @@ texture = ExtResource( 14 )
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -222.0
-margin_top = 21.0
+margin_top = 18.0
 margin_right = -176.0
-margin_bottom = 51.0
+margin_bottom = 48.0
 hint_tooltip = "TOOLTIPPOPULATION"
 mouse_filter = 0
 theme = ExtResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 28 )
+text = "1"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="population"]
 margin_left = -26.1069
-margin_top = -5.77057
+margin_top = -0.770569
 margin_right = 5.89313
-margin_bottom = 26.2294
+margin_bottom = 31.2294
 hint_tooltip = "TOOLTIPPOPULATION"
 texture = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="storage_limit" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -343.0
+margin_top = 19.0
+margin_right = -276.0
+margin_bottom = 49.0
+mouse_filter = 0
+theme = ExtResource( 6 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 28 )
+text = "20000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="storage_limit"]
+margin_left = -57.9306
+margin_top = -11.7706
+margin_right = -3.9306
+margin_bottom = 42.2294
+texture = ExtResource( 84 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TravelsContainerPanel" type="Panel" parent="."]
+anchor_right = 1.0
 margin_left = 225.0
 margin_top = 5.0
-margin_right = 830.0
+margin_right = -12.0
 margin_bottom = 57.0
 custom_styles/panel = ExtResource( 7 )
 
 [node name="TravelsContainer" type="ScrollContainer" parent="TravelsContainerPanel"]
+anchor_right = 1.0
 margin_left = 61.0
 margin_top = 4.0
-margin_right = 756.0
+margin_right = -12.0
 margin_bottom = 56.0
 rect_min_size = Vector2( 0, 52 )
 
@@ -1091,111 +837,12 @@ margin_right = 4.0
 margin_bottom = 32.0
 texture = ExtResource( 19 )
 
-[node name="BedroomIcon" type="TextureRect" parent="."]
-visible = false
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 130.272
-margin_top = -50.944
-margin_right = 182.272
-margin_bottom = -10.944
-texture = ExtResource( 31 )
-
-[node name="DateIcon" type="TextureRect" parent="."]
-visible = false
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -224.728
-margin_top = -50.944
-margin_right = -172.728
-margin_bottom = -10.944
-texture = ExtResource( 32 )
-
-[node name="SexIcon" type="TextureRect" parent="."]
-visible = false
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -40.867
-margin_top = -51.204
-margin_right = 11.133
-margin_bottom = -11.204
-hint_tooltip = "Date limit. Renews once a week."
-texture = ExtResource( 30 )
-
-[node name="BedroomLimit" type="Label" parent="."]
-visible = false
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 181.326
-margin_top = -49.684
-margin_right = 281.326
-margin_bottom = -9.68402
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 27 )
-text = "1/1"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DateLimit" type="Label" parent="."]
-visible = false
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -173.0
-margin_top = -51.0
-margin_right = -73.0
-margin_bottom = -16.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 27 )
-text = "1/1"
-align = 1
-valign = 1
-
-[node name="SexLimit" type="Label" parent="."]
-visible = false
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 6.0
-margin_top = -51.0
-margin_right = 106.0
-margin_bottom = -16.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 27 )
-text = "1/1"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="HBoxContainer" type="Control" parent="."]
 visible = false
 margin_left = 9.0
 margin_top = 11.0
 margin_right = 1066.0
 margin_bottom = 100.0
-
-[node name="icon" type="TextureRect" parent="HBoxContainer"]
-margin_right = 50.0
-margin_bottom = 51.0
-rect_min_size = Vector2( 50, 0 )
-mouse_filter = 2
-expand = true
-stretch_mode = 6
 
 [node name="sex_sort" type="Label" parent="HBoxContainer" groups=["brothel", "default", "food", "rules", "training"]]
 margin_left = 36.0
@@ -1280,22 +927,7 @@ custom_fonts/font = ExtResource( 47 )
 text = "WORKRULESHIFTS"
 align = 1
 
-[node name="rule_constrain" type="Label" parent="HBoxContainer"]
-visible = false
-margin_left = 458.0
-margin_top = 66.0
-margin_right = 642.0
-margin_bottom = 90.0
-grow_horizontal = 2
-mouse_filter = 1
-size_flags_horizontal = 0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 47 )
-text = "WORKRULECONSTRAIN"
-align = 1
-
-[node name="rule_luxury" type="Label" parent="HBoxContainer" groups=["rules"]
-visible = false]
+[node name="rule_luxury" type="Label" parent="HBoxContainer" groups=["rules"]]
 margin_left = 540.0
 margin_top = 40.0
 margin_right = 696.0
@@ -1345,20 +977,6 @@ size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 47 )
 text = "WORKRULERELATIONSHIP"
-align = 1
-
-[node name="rule_masturbation" type="Label" parent="HBoxContainer"]
-visible = false
-margin_left = 867.0
-margin_top = 67.0
-margin_right = 1087.0
-margin_bottom = 91.0
-grow_horizontal = 2
-mouse_filter = 1
-size_flags_horizontal = 0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 47 )
-text = "WORKRULEMASTURBATION"
 align = 1
 
 [node name="brothel_waitress" type="Label" parent="HBoxContainer" groups=["brothel"]]
@@ -1577,159 +1195,6 @@ size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 47 )
 text = "BROTHELFUTA"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="food_meat" type="Label" parent="HBoxContainer" groups=["food"]]
-visible = false
-margin_left = 232.0
-margin_top = 67.0
-margin_right = 323.0
-margin_bottom = 91.0
-grow_horizontal = 2
-mouse_filter = 1
-size_flags_horizontal = 0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 47 )
-text = "MATERIALMEAT"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="food_fish" type="Label" parent="HBoxContainer" groups=["food"]]
-visible = false
-margin_left = 305.0
-margin_top = 67.0
-margin_right = 422.0
-margin_bottom = 91.0
-grow_horizontal = 2
-mouse_filter = 1
-size_flags_horizontal = 0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 47 )
-text = "MATERIALFISH"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="food_grain" type="Label" parent="HBoxContainer" groups=["food"]]
-visible = false
-margin_left = 386.0
-margin_top = 67.0
-margin_right = 517.0
-margin_bottom = 91.0
-grow_horizontal = 2
-mouse_filter = 1
-size_flags_horizontal = 0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 47 )
-text = "MATERIALGRAIN"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="food_vegetables" type="Label" parent="HBoxContainer" groups=["food"]]
-visible = false
-margin_left = 453.0
-margin_top = 67.0
-margin_right = 636.0
-margin_bottom = 91.0
-grow_horizontal = 2
-mouse_filter = 1
-size_flags_horizontal = 0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 47 )
-text = "MATERIALVEGETABLES"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="food_bread" type="Label" parent="HBoxContainer" groups=["food"]]
-visible = false
-margin_left = 562.0
-margin_top = 67.0
-margin_right = 698.0
-margin_bottom = 91.0
-grow_horizontal = 2
-mouse_filter = 1
-size_flags_horizontal = 0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 47 )
-text = "MATERIALBREAD"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="food_meatsoup" type="Label" parent="HBoxContainer" groups=["food"]]
-visible = false
-margin_left = 628.0
-margin_top = 67.0
-margin_right = 798.0
-margin_bottom = 91.0
-grow_horizontal = 2
-mouse_filter = 1
-size_flags_horizontal = 0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 47 )
-text = "MATERIALMEATSOUP"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="food_curry" type="Label" parent="HBoxContainer" groups=["food"]]
-visible = false
-margin_left = 737.0
-margin_top = 67.0
-margin_right = 872.0
-margin_bottom = 91.0
-grow_horizontal = 2
-mouse_filter = 1
-size_flags_horizontal = 0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 47 )
-text = "MATERIALCURRY"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="food_friedfish" type="Label" parent="HBoxContainer" groups=["food"]]
-visible = false
-margin_left = 807.0
-margin_top = 67.0
-margin_right = 971.0
-margin_bottom = 91.0
-grow_horizontal = 2
-mouse_filter = 1
-size_flags_horizontal = 0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 47 )
-text = "MATERIALFRIEDFISH"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="food_fishcakes" type="Label" parent="HBoxContainer" groups=["food"]]
-visible = false
-margin_left = 890.0
-margin_top = 67.0
-margin_right = 1059.0
-margin_bottom = 91.0
-grow_horizontal = 2
-mouse_filter = 1
-size_flags_horizontal = 0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 47 )
-text = "MATERIALFISHCAKES"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -2004,7 +1469,6 @@ rect_min_size = Vector2( 244, 350 )
 mouse_filter = 2
 
 [node name="Extra" type="Control" parent="ExpandedCharacter"]
-visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -2456,7 +1920,7 @@ stretch_mode = 5
 [node name="Paperdoll" parent="ExpandedBodyPreview" instance=ExtResource( 83 )]
 anchor_right = 1.0
 anchor_bottom = 1.0
-update_character_portrait = false
+
 [node name="CloseButton" parent="ExpandedBodyPreview" instance=ExtResource( 80 )]
 anchor_left = 1.0
 anchor_right = 1.0

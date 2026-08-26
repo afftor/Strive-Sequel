@@ -133,6 +133,8 @@ const DISPLAY = {
 	"kobold_head_mask1": "Kobold cheek plates",
 	"head_m_dragon": "Dragon cheek scales",
 	"head_m_dragon2": "Dragon cheek scales 2",
+	"head_chin_male": "Chin: male",
+	"head_chin_small": "Chin: small",
 	"outfit_servant": "Servant set",
 	"outfit_slave": "Slave set",
 	"outfit_cloth": "Cloth set",

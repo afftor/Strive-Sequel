@@ -13,33 +13,12 @@ const RoomTypes = preload("res://assets/data/mansion_room_types.gd")
 const RoomUpgrades = preload("res://assets/data/mansion_room_upgrades.gd")
 
 
-#Everything the old upgrade tree owes a save, run in the order the conversions depend on.
-#A derelict slot is one the player would have to pay to clear before anything can stand in
-#it. A save arriving from before the rooms existed is owed what it bought, so the rubble is
-#cleared for it rather than charged for - otherwise a mansion that had been left in ruins
-#could not be given the bathhouse it had already paid for.
-static func clear_rubble(res):
-	var cleared = 0
-	for floor_index in range(res.mansion_layout.floors.size()):
-		var floor_data = MansionLayout.get_floor(res.mansion_layout, floor_index)
-		if floor_data == null:
-			continue
-		for slot_code in floor_data.slots:
-			var slot = floor_data.slots[slot_code]
-			if slot.broken and slot.room == null and slot.build == null:
-				slot.broken = false
-				cleared += 1
-	return cleared
-
-
 static func run(res):
 	#Order matters, and it is one-way: a room raised here takes a slot nothing gives back.
 	#The named rooms come first - a bath is a bath and nothing else will do - and the old
 	#'rooms' upgrade fills whatever is left with bedrooms, because "more beds" is the one
 	#thing that can go anywhere. Filling first left a save with 34 bedrooms, no free slot,
 	#and a bathhouse and forge it had paid for and could not be given.
-	#the rubble first, so everything below has somewhere to stand
-	clear_rubble(res)
 	convert_room_tree_upgrades(res)
 	convert_master_bedroom_upgrade(res)
 	convert_gather_upgrades(res)
@@ -78,12 +57,6 @@ const ROOM_CONVERSION = {
 	forge = {room = 'forge', upgrade = 'craft_tools', level_offset = -1},
 	alchemy = {room = 'alchemy_room', upgrade = 'craft_tools', level_offset = -1},
 }
-
-
-#Which building each retired gathering upgrade became, and which of that building's res.upgrades
-#its levels are worth. The seven that are not here bought a separate job for one more
-#material; those res.materials come out of a building's loot table now, so their levels buy the
-#table instead.
 
 
 #Which building each retired gathering upgrade became, and which of that building's res.upgrades
@@ -195,16 +168,20 @@ static func convert_room_tree_upgrades(res):
 	res.sync_room_tasks()
 
 
-#The same free standing-up as raise_grounds_building(), for a room that belongs indoors.
+#The same free standing-up as raise_grounds_building(), for a room that belongs indoors. A
+#room already paid for is owed whether or not the house has a clear slot left, so this clears
+#a derelict one for it - the house is mostly rubble to begin with, and refusing a purchase
+#because of that would be taking it away.
 static func raise_house_room(res, type_code):
-	for floor_index in MansionLayout.house_floors(res.mansion_layout):
-		var floor_data = MansionLayout.get_floor(res.mansion_layout, floor_index)
-		if floor_data == null:
-			continue
-		for slot_code in floor_data.slots:
-			if MansionLayout.build_room(res.mansion_layout, floor_index, slot_code, type_code):
-				return MansionLayout.get_room(floor_data, slot_code)
-	return null
+	var slot = MansionLayout.free_or_cleared_slot(res.mansion_layout, type_code)
+	if slot == null:
+		return null
+	if !MansionLayout.build_room(res.mansion_layout, slot.floor, slot.slot, type_code):
+		return null
+	if slot.cleared:
+		#quietly: this runs inside a load, where nothing can be shown to anybody yet
+		res.claim_rubble_find(slot.floor, slot.slot, false)
+	return MansionLayout.get_room(MansionLayout.get_floor(res.mansion_layout, slot.floor), slot.slot)
 
 
 #A save written before buildings had jobs of their own carries one gathering task per material
@@ -313,6 +290,15 @@ static func seat_farm_workers(res):
 	var workers = res.tasks_progresses.farming.workers
 	if !(workers is Array) or workers.empty():
 		return 0
+	#Loading a save reaches here before the party does: globals.LoadGame runs
+	#game_res.fix_serialization() first and game_party.fix_serialization() after it, so the
+	#hands are still the dictionaries they were saved as, and a dictionary cannot be taken off
+	#one task and put on another. Leave the old farming job standing and let the party run this
+	#again from its own fix_serialization_postload(), once everybody is a character.
+	for char_id in workers:
+		var candidate = ResourceScripts.game_party.characters.get(char_id, null)
+		if candidate != null and !(candidate is Object):
+			return 0
 	var grounds = MansionLayout.grounds_floor(res.mansion_layout)
 	if grounds < 0:
 		return 0
@@ -377,7 +363,8 @@ static func convert_room_upgrade(res):
 	#cap that was bought.
 	var wanted = variables.base_population_cap 		+ variables.population_cap_per_room_upgrade * levels
 	var household = ResourceScripts.game_party.characters.size()
-	res.house_at_least(int(min(wanted, max(variables.base_population_cap, household + 4))))
+	#quietly: a save is being loaded, and nothing can be shown to anybody yet
+	res.house_at_least(int(min(wanted, max(variables.base_population_cap, household + 4))), false)
 
 
 #Raises plain bedrooms, free and already standing, until the mansion sleeps at least this

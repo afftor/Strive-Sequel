@@ -219,6 +219,12 @@ func consume(code):
 		value = int(ceil(value * variables.food_liked_value_mod))
 
 	fed += value
+	#A household that eats together gets a turn more out of every meal - so the food lasts
+	#longer and, since the buff rides on being fed, so does the buff. Counted in drain rather
+	#than in food value: a character on extra rations burns through a meal faster, and one
+	#turn has to mean one turn for them too.
+	if ResourceScripts.game_res.has_room_with_tag('dining'):
+		fed += get_drain()
 	last_meal = code
 	last_meal_poor = get_food_rank(code) < get_demand_rank() and !ignores_demand()
 	starvation = false

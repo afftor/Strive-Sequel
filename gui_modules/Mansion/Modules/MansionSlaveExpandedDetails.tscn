@@ -21,7 +21,7 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/relationship/affection_high.png" type="Texture" id=19]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/relationship/respect_high.png" type="Texture" id=20]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=21]
-[ext_resource path="res://assets/images/gui/gui icons/icon_slaveinfo_star.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/iconsfactors/authority_factor.png" type="Texture" id=22]
 [ext_resource path="res://assets/images/gui/gui icons/icon_physics.png" type="Texture" id=23]
 [ext_resource path="res://gui_modules/CharacterInfo/SignedTextureBar.tscn" type="PackedScene" id=24]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/relationship/affection_low.png" type="Texture" id=25]
@@ -231,8 +231,8 @@ anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.72
 margin_left = -25.0
-margin_right = 15.0
-margin_bottom = -9.68
+margin_right = 30.0
+margin_bottom = 5.32
 mouse_filter = 2
 texture = ExtResource( 22 )
 expand = true
@@ -242,15 +242,34 @@ stretch_mode = 6
 anchor_top = 0.55
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 0.0499992
-margin_right = -9.0
-margin_bottom = 1.0
+margin_left = 7.0
+margin_top = -5.95
+margin_right = -2.0
+margin_bottom = -5.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 custom_fonts/font = SubResource( 8 )
 text = "1"
+align = 1
+valign = 1
+
+[node name="Word" type="Label" parent="Sections/Overview/Left/Factors/Content/Rows/Button"]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = -21.0
+margin_right = -1.0
+margin_bottom = 0.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 3 )
+text = "Average"
 align = 1
 valign = 1
 
@@ -270,8 +289,9 @@ mouse_filter = 2
 custom_constants/separation = 4
 
 [node name="Value" type="Label" parent="Sections/Overview/Left/Experience/Content"]
+margin_top = 7.0
 margin_right = 270.0
-margin_bottom = 39.0
+margin_bottom = 31.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )

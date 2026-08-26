@@ -136,21 +136,20 @@ const LEGACY_UPGRADES = ['rooms', 'master_bedroom',
 #
 #New beds are seated straight away: the point of handing them out is that nobody is left
 #standing, and the end of the turn asks that question of the layout rather than of the cap.
-func house_at_least(people):
-	MansionLayout.build_bedrooms_up_to(mansion_layout, people)
+#'announce' as in claim_rubble_find: off while a save is loading.
+func house_at_least(people, announce = true, spare_finds = false):
+	for slot in MansionLayout.build_bedrooms_up_to(mansion_layout, people, spare_finds):
+		claim_rubble_find(slot.floor, slot.slot, announce)
 	autohouse_household()
 
 
 #The same thing counted in rooms rather than in beds, which is what test mode wants: a mansion
 #with a few bedrooms standing in it, not one filled to a population number.
-
-
-#The same thing counted in rooms rather than in beds, which is what test mode wants: a mansion
-#with a few bedrooms standing in it, not one filled to a population number.
-func bedrooms_at_least(count):
+func bedrooms_at_least(count, spare_finds = false):
 	while MansionLayout.count_rooms_of_type(mansion_layout, 'bedrooms') < count:
 		var before = MansionLayout.total_sleep_capacity(mansion_layout)
-		MansionLayout.build_bedrooms_up_to(mansion_layout, before + 1)
+		for slot in MansionLayout.build_bedrooms_up_to(mansion_layout, before + 1, spare_finds):
+			claim_rubble_find(slot.floor, slot.slot)
 		if MansionLayout.total_sleep_capacity(mansion_layout) <= before:
 			break #nowhere left to put one
 	autohouse_household()
@@ -187,11 +186,110 @@ func build_test_grounds():
 	return built
 
 
+func open_stairs():
+	return MansionLayout.open_stairs(mansion_layout)
+
+
+#The rooms a test game starts with, each at its best - test mode is for looking at rooms, not
+#for paying for them. These used to be handed over by writing the retired 'forge'/'alchemy'/
+#'tailor'/'resting' upgrade codes and letting the old-save conversion turn them into rooms,
+#which is a strange road to take in a new game and took the rubble's finds with it. Raised
+#directly instead, and sparing the derelict rooms that are hiding something.
+const TEST_ROOMS = ['forge', 'alchemy_room', 'tailor_workshop', 'bathhouse', 'practice_room']
+
+
+func build_test_rooms():
+	var built = []
+	for type_code in TEST_ROOMS:
+		if !grant_room(type_code, true):
+			continue
+		var room = MansionLayout.first_room_of_type(mansion_layout, type_code)
+		if room != null:
+			MansionLayout.max_out_upgrades(room)
+		built.append(type_code)
+	#beds for the household that test mode makes, and the same care taken over the finds
+	bedrooms_at_least(3, true)
+	#Everything else the estate already owns, at its best too - the store room above all, whose
+	#shelves, clerk's desk and market ledger are bought rather than built and would otherwise
+	#leave three features with no way to reach them. Rooms are what test mode is for looking at;
+	#paying for them again in every test game is not.
+	for entry in MansionLayout.each_room(mansion_layout):
+		MansionLayout.max_out_upgrades(entry.room)
+	sync_room_tasks()
+	rooms_changed()
+	return built
+
+
 func max_out_master_room():
 	var entry = MansionLayout.master_room(mansion_layout)
 	if entry == null:
 		return false
 	return MansionLayout.max_out_upgrades(entry.room)
+
+
+#A room the estate is handed rather than pays for, already standing on the first free slot
+#in the house. The choices at the start of a game used to be levels of the upgrade tree; the
+#tree is gone, so what they hand over is the room that replaced each one.
+func grant_room(type_code, spare_finds = false):
+	ensure_mansion_layout()
+	var slot = MansionLayout.free_or_cleared_slot(mansion_layout, type_code, spare_finds)
+	if slot == null:
+		globals.text_log_add('story', "%s: nowhere left in the mansion to put it" % type_code)
+		return false
+	if !MansionLayout.build_room(mansion_layout, slot.floor, slot.slot, type_code):
+		return false
+	if slot.cleared:
+		claim_rubble_find(slot.floor, slot.slot)
+	sync_room_tasks()
+	rooms_changed()
+	return true
+
+
+#What clearing a derelict room turned up. Three of the ground floor's rooms and one of the
+#upper floor's have something under the rubble, put in different rooms every game
+#(MansionLayout.hide_finds_in_rubble), and this is where each is handed over - whether the rubble was cleared by builders or opened to
+#make room for something the estate was given.
+#'announce' is off for anything that runs while a save is being loaded: the message panel is
+#not in the tree yet, and asking it to speak brought the load down. The find is still handed
+#over and still written to the estate's log - it is only the popup that waits.
+func claim_rubble_find(floor_index, slot_code, announce = true):
+	var slot = MansionLayout.get_slot(
+		MansionLayout.get_floor(mansion_layout, floor_index), slot_code)
+	if slot == null:
+		return null
+	var find = slot.get('find', null)
+	if find == null:
+		return null
+	slot.find = null
+	if announce:
+		#A room turned out is worth stopping for: its own event, and the loot window to hand
+		#the find over, the same way a chest does. Deliberately no log line - the event says
+		#it in full and the window shows what came of it, and the room being cleared is
+		#already logged where that happens, in process_room_builds().
+		globals.common_effects([{code = 'start_event', data = 'mansion_rubble_' + str(find),
+			args = {}}])
+	else:
+		#Nothing can be shown while a save is loading, so the find is simply given. It stays
+		#out of the estate log either way - a find is an event with its own window, and a line
+		#in the log is not where it belongs. Same loot table both ways: the event and this
+		#read the one definition.
+		grant_loot(ResourceScripts.world_gen.make_chest_loot('mansion_rubble_' + str(find)))
+	return find
+
+
+#Hands over a loot dictionary with no window in front of it. The loot animation does this
+#itself as it draws each piece (gui_modules/Animations/Animation_loot.gd); this is for the
+#times there is nobody to show it to.
+func grant_loot(loot):
+	if loot == null:
+		return
+	for item in loot.get('items', []):
+		globals.AddItemToInventory(item)
+	for code in loot.get('materials', {}):
+		if loot.materials[code] > 0:
+			gain_material(code, loot.materials[code])
+	if loot.get('gold', 0) > 0:
+		update_money('+', loot.gold)
 
 
 #One more bed than the mansion has. The starting bonus that used to hand out a level of the
@@ -265,6 +363,7 @@ func rooms_changed():
 		var person = ResourceScripts.game_party.characters[char_id]
 		if person is Object and person.has_method('reset_rebuild'):
 			person.reset_rebuild()
+	globals.emit_signal("rooms_changed")
 
 
 #May this character be put in the master's bed? Slaves are not asked - the same distinction
@@ -346,6 +445,200 @@ func gain_material(res, amount):
 	return kept
 
 
+#What the estate can hold of any one material. Zero without a store room, which is what makes
+#a delivery spill.
+func storage_limit():
+	return MansionLayout.total_storage(mansion_layout)
+
+
+#The materials nearest to filling their share of the shelves, most full first. What the counter
+#says in one number, this says in the three that are about to matter.
+func fullest_materials(count = 3):
+	var limit = storage_limit()
+	if limit <= 0:
+		return []
+	var rows = []
+	for code in materials:
+		var held = int(materials[code])
+		if held <= 0:
+			continue
+		rows.append([code, held])
+	rows.sort_custom(self, '_sort_by_amount')
+	return rows.slice(0, min(count, rows.size()) - 1) if rows.size() > 0 else []
+
+
+func _sort_by_amount(first, second):
+	return first[1] > second[1]
+
+
+#### standing orders with the market ####
+
+#What the estate must not run short of: [{code, level}]. One list for the whole household rather
+#than one per store room - the clerks are buying for the same larder, and two lists would only
+#ever disagree with each other.
+var autobuy_rules = []
+
+
+#Whether anybody is keeping the book at all. Every day begins with this question, so it is the
+#cheapest one: no ledger, no clerk to pay, nothing else computed.
+func has_autobuy():
+	for entry in MansionLayout.each_room(mansion_layout):
+		if MansionLayout.upgrade_level(entry.room, 'purchase_ledger') > 0:
+			return true
+	return false
+
+
+#The best-spoken clerk on the shelves, who is the one that goes to market. Nobody at a desk
+#means nobody to send.
+func autobuy_clerk():
+	var best = null
+	for entry in MansionLayout.each_room(mansion_layout):
+		if !RoomTypes.has_tag(entry.room.type, 'storage'):
+			continue
+		for char_id in MansionLayout.get_room_workers(entry.room, tasks_progresses):
+			var person = ResourceScripts.game_party.characters.get(char_id, null)
+			if !(person is Object) or !person.is_active:
+				continue
+			if best == null or person.get_stat('charm') > best.get_stat('charm'):
+				best = person
+	return best
+
+
+#What the estate pays, as a fraction of the asking price. A tenth of a percent off per point of
+#the clerk's charm, and never below four fifths however silver-tongued they are.
+func autobuy_price_mod(clerk):
+	if clerk == null:
+		return 1.0
+	return max(0.8, 1.0 - clerk.get_stat('charm') * 0.001)
+
+
+#The market the estate actually buys from: the one in its own area.
+func autobuy_shop():
+	var area = ResourceScripts.world_gen.get_area_from_location_code(
+		ResourceScripts.game_world.mansion_location)
+	if area == null or !(area.get('shop', null) is Dictionary):
+		return null
+	return area.shop
+
+
+#How much of this the estate holds now. Materials sit in a tally, usable items in the inventory.
+func autobuy_held(code):
+	if materials.has(code):
+		return int(materials[code])
+	return get_item_amount(code)
+
+
+func set_autobuy_rule(code, level):
+	for rule in autobuy_rules:
+		if rule.code == code:
+			rule.level = int(max(0, level))
+			return
+	autobuy_rules.append({code = code, level = int(max(0, level))})
+
+
+func clear_autobuy_rule(code):
+	for index in range(autobuy_rules.size()):
+		if autobuy_rules[index].code == code:
+			autobuy_rules.remove(index)
+			return
+
+
+func autobuy_level(code):
+	for rule in autobuy_rules:
+		if rule.code == code:
+			return int(rule.level)
+	return 0
+
+
+#The morning's shopping. Everything bought goes into one line in the estate's log rather than
+#one line per material - a clerk coming back from market reports the trip, not each sack.
+func process_autobuy():
+	if autobuy_rules.empty() or !has_autobuy():
+		return []
+	var shop = autobuy_shop()
+	if shop == null:
+		return []
+	#worked out once for the whole trip, not once per rule
+	var clerk = autobuy_clerk()
+	if clerk == null:
+		return []
+	var price_mod = autobuy_price_mod(clerk)
+	var bought = []
+	for rule in autobuy_rules:
+		var code = rule.code
+		#a shelf can hold codes this list has no business buying - gear templates, and whatever
+		#a stale save left behind
+		if !Items.materiallist.has(code) and !Items.itemlist.has(code):
+			continue
+		if is_quest_good(code):
+			continue
+		var short_of = int(rule.level) - autobuy_held(code)
+		#already stocked, so nothing is looked up for it at all
+		if short_of <= 0:
+			continue
+		if !shop.has(code) or !(shop[code] is int or shop[code] is float):
+			continue
+		var on_sale = int(shop[code])
+		if on_sale <= 0:
+			continue
+		var each = int(max(1, round(autobuy_price(code) * price_mod)))
+		var affordable = int(money / each)
+		var take = int(min(short_of, min(on_sale, affordable)))
+		if take <= 0:
+			continue
+		shop[code] -= take
+		if shop[code] <= 0:
+			shop.erase(code)
+		money -= each * take
+		if materials.has(code):
+			set_material(code, "+", take)
+		else:
+			for _i in range(take):
+				globals.AddItemToInventory(globals.CreateUsableItem(code))
+		bought.append([code, take, each * take])
+	if bought.empty():
+		return bought
+	var parts = []
+	var spent = 0
+	for row in bought:
+		parts.append("%s x%d" % [autobuy_name(row[0]), row[1]])
+		spent += row[2]
+	globals.mansion_activity_log_add('work', tr("MANSION_ACTIVITY_AUTOBUY") % [
+		clerk.get_short_name(), PoolStringArray(parts).join(", "), spent])
+	return bought
+
+
+func autobuy_price(code):
+	if Items.materiallist.has(code):
+		return int(Items.materiallist[code].price)
+	if Items.itemlist.has(code):
+		return int(Items.itemlist[code].price)
+	return 0
+
+
+#What to call the thing in the log. The code is the fallback rather than the answer: a material
+#whose name has not been filled in would otherwise be logged as "x30" of nothing.
+#A quest piece is nobody's to trade: it is given by a story and wanted by one, and no market
+#stocks it. Left off the standing-orders list, and skipped by the morning's shopping in case an
+#old save has one written down.
+func is_quest_good(code):
+	if Items.materiallist.has(code):
+		return str(Items.materiallist[code].type) == 'quest'
+	if Items.itemlist.has(code):
+		return str(Items.itemlist[code].type) == 'quest'
+	return false
+
+
+func autobuy_name(code):
+	var named = code
+	if Items.materiallist.has(code):
+		named = Items.materiallist[code].name
+	elif Items.itemlist.has(code):
+		named = Items.itemlist[code].name
+	named = tr(str(named))
+	return named if named.strip_edges() != "" else code
+
+
 #Is somebody actually sitting at a store room's desk? The upgrade alone is a desk with nobody
 #at it, and an empty desk sells nothing.
 func has_accountant():
@@ -404,6 +697,24 @@ func master_bed_partners():
 		if person is Object and person.has_method('is_master') and !person.is_master():
 			res += 1
 	return res
+
+
+#A night in the master's bed with company in it. Everyone who shared it wakes satisfied, the
+#master included - the same effect the sex minigame leaves behind, and the same 'satisfaction'
+#stack, so a night and an evening do not pile onto one another. A master who slept alone has
+#nothing to wake up to.
+func reward_master_bed_night():
+	var entry = MansionLayout.master_room(mansion_layout)
+	if entry == null or master_bed_partners() <= 0:
+		return 0
+	var rewarded = 0
+	for char_id in entry.room.occupants:
+		var person = ResourceScripts.game_party.characters.get(char_id, null)
+		if !(person is Object) or !person.is_active:
+			continue
+		person.apply_effect_code('satisfaction_1')
+		rewarded += 1
+	return rewarded
 
 
 #True while the estate has a room carrying this tag standing anywhere on the plan. The
@@ -505,17 +816,20 @@ func fill_room_task_details(task_id):
 	if !tasks_progresses.has(task_id):
 		return
 	var task = tasks_progresses[task_id]
+	var keep_name = task.get('name_locked', false)
 	if !tasks.tasklist.has(task.job):
 		#Nothing to copy from - the practice room's "job" names the room rather than a recipe
 		#queue. The room's own name is the honest thing to show, and unlike the bare job code
 		#it is a real localization key.
-		task.name = RoomTypes.get_name_key(task.get('room_type', ''))
+		if !keep_name:
+			task.name = RoomTypes.get_name_key(task.get('room_type', ''))
 		task.workstat = task.get('workstat', 'physics')
 		#nothing to draw is an absent icon, never a null one - see below
 		task.erase('icon')
 		return
 	var jobdata = tasks.tasklist[task.job]
-	task.name = jobdata.name
+	if !keep_name:
+		task.name = jobdata.name
 	task.descript = jobdata.descript if jobdata.has('descript') else ''
 	for key in ['mod', 'workstat', 'worktool', 'icon']:
 		if jobdata.has(key) and jobdata[key] != null:
@@ -1026,25 +1340,28 @@ func check_location_job(type, location, job, slot = ''):
 	return null
 
 
+#How much of what a crafting task makes the estate already holds - what its cap_up/cap_low are
+#measured against. A recipe is not always named after its product: 'ancientwood' makes
+#'woodancient', 'petsuit' makes 'pet_suit'. The task carries the recipe code, so the product has
+#to be read off the recipe rather than assumed to be the same word. Indexing materials by the
+#recipe code crashed on the one material recipe that differs; the three item ones counted zero
+#for ever, so their caps never came off.
+func crafted_amount(pdata):
+	var recipe = Items.recipes.get(pdata.id, null)
+	var product = pdata.id if recipe == null else recipe.resultitem
+	if str(pdata.get('job', '')).ends_with('material'):
+		return int(materials.get(product, 0))
+	return get_item_amount(product)
+
 func _active_task_find(list):
 	for id in list:
 		if tasks_progresses.has(id):
 			var pdata = tasks_progresses[id]
 			if pdata.status == 'active' and pdata.has('cap_up'):
-				var amount
-				if pdata.job.ends_with('material'):
-					amount = materials[pdata.id]
-				else: #item case, currently itembase check only
-					amount = get_item_amount(pdata.id)
-				if amount >= pdata.cap_up:
+				if crafted_amount(pdata) >= pdata.cap_up:
 					pdata.status = 'stopped'
 			if pdata.status == 'stopped':
-				var amount
-				if pdata.job.ends_with('material'):
-					amount = materials[pdata.id]
-				else: #item case, currently itembase check only
-					amount = get_item_amount(pdata.id)
-				if amount < pdata.cap_low:
+				if crafted_amount(pdata) < pdata.cap_low:
 					pdata.status = 'init'
 			if pdata.status in ['init', 'no_resources']:
 				if check_recipe_amount(pdata) > 0:
@@ -1355,11 +1672,12 @@ func process_practice_room(room, tprogress):
 		var character = characters_pool.get_char_by_id(ch_id)
 		if character == null:
 			continue
+		#The tutor is not their own pupil, but the turn teaches them something all the same.
+		character.add_stat('base_exp', globals.rng.randi_range(3, 4))
 		if character.id == room.practice.trainer:
-			#the tutor is not their own pupil
 			continue
-		if tutored and room.practice.target != null:
-			advance_practice_trait(room, character)
+		if tutored and room.practice.target == PRACTICE_CORRECT:
+			advance_practice_trait(character)
 			continue
 		var value = globals.rng.randi_range(3, 5)
 		if tutored:
@@ -1385,17 +1703,25 @@ func practice_trainer(room):
 	return person
 
 
-#A turn spent unlearning something rather than learning something. The work is shared, so two
-#pupils in a widened room get there twice as fast, and finishing clears the room's target so
-#the player picks the next one deliberately.
-func advance_practice_trait(room, character):
-	character.work_tick_values('wits')
-	room.practice.progress += character.get_stat('wits') / 20.0 + 1.0
-	if room.practice.progress < MansionLayout.PRACTICE_TRAIT_PROGRESS:
+#What the room is set to when it is mending manners rather than drilling a stat. Not a trait
+#code: each pupil is worked on their own first bad habit, so the room names the work, not the
+#habit.
+const PRACTICE_CORRECT = 'correct'
+
+
+#A turn spent unlearning something rather than learning something. Each pupil carries their own
+#progress, so nobody loses ground by being moved out of the room and back in, and two of them
+#do not share one bar between them.
+func advance_practice_trait(character):
+	var code = character.first_negative_trait()
+	if code == null:
 		return
-	var code = room.practice.target
-	room.practice.progress = 0
-	room.practice.target = null
+	character.work_tick_values('wits')
+	#the same work as before, counted out of a hundred so it can be shown on the trait itself
+	var step = (character.get_stat('wits') / 20.0 + 1.0) 		* 100.0 / MansionLayout.PRACTICE_TRAIT_PROGRESS
+	if !character.add_trait_correction(code, step):
+		return
+	character.clear_trait_correction(code)
 	if character.check_trait(code):
 		character.remove_trait(code)
 		#remove_trait only marks the rebuild as needed; check_trait reads the rebuilt list,
@@ -1408,6 +1734,17 @@ func advance_practice_trait(room, character):
 				tr(Traitdata.traits[code].name) if Traitdata.traits.has(code) else code])
 
 
+#Whether somebody put a turn into a job of fixed length. Not "how much are they worth" - that
+#is the question a fixed job exists to avoid - only whether they are here and willing: not away,
+#not laid up, and somebody who works at all.
+func can_work_fixed(character):
+	if character == null or !character.is_worker():
+		return false
+	if character.is_on_quest() or character.is_unavaliable():
+		return false
+	return true
+
+
 #Raising a room, clearing out a derelict one and upgrading one all run through here. The
 #existing building queue only ever advances its own head, so per-room scaffolding needs
 #its own accounting - which is also what lets several rooms go up at once.
@@ -1418,9 +1755,22 @@ func process_room_builds():
 			continue
 		var tprogress = tasks_progresses[build.task_id]
 		var finished = false
+		#Clearing a room is measured in turns rather than in work units. What a worker is worth
+		#is not asked at all - that figure is made of their stats and their tools, and this job
+		#is meant to take the turns it takes whoever does it. A second pair of hands does not
+		#make it quicker either. They still put the turn in and still learn from it.
+		var fixed = build.get('fixed', false)
+		var worked = false
 		for ch_id in tprogress.workers.duplicate():
 			var character = characters_pool.get_char_by_id(ch_id)
 			if character == null:
+				continue
+			if fixed:
+				if !can_work_fixed(character):
+					character.rest_tick()
+					continue
+				character.work_tick_values(tprogress.workstat)
+				worked = true
 				continue
 			var value = character.get_job_value('building', true)
 			if value <= 0:
@@ -1430,12 +1780,17 @@ func process_room_builds():
 			if MansionLayout.advance_build(build, value):
 				finished = true
 				break
+		if fixed and worked:
+			finished = MansionLayout.advance_build(build, 1.0)
 		if !finished:
 			continue
 		#read before completing: finishing is what clears the build record away
 		var done_text = finished_build_text(build)
+		var was_repair = build.kind == 'repair'
 		var task_id = MansionLayout.complete_build(mansion_layout, entry.floor, entry.slot)
-		globals.mansion_activity_log_add('work', done_text)
+		if was_repair:
+			claim_rubble_find(entry.floor, entry.slot)
+		globals.mansion_activity_log_add('build', done_text)
 		if task_id != null and tasks_progresses.has(task_id):
 			clean_task(task_id)
 		rooms_changed()
@@ -1490,6 +1845,24 @@ func craft_result_name(task_id):
 	if Items.itemlist.has(recipe.resultitem):
 		return tr(Items.itemlist[recipe.resultitem].name)
 	return ""
+
+
+#The picture of what a queued recipe makes. Item icons are sometimes a path and sometimes a
+#loaded texture, so both are answered as a texture.
+func craft_result_icon(task_id):
+	if task_id == null or !tasks_progresses.has(task_id):
+		return null
+	var recipe = Items.recipes.get(tasks_progresses[task_id].id, null)
+	if recipe == null:
+		return null
+	var data = null
+	if Items.materiallist.has(recipe.resultitem):
+		data = Items.materiallist[recipe.resultitem]
+	elif Items.itemlist.has(recipe.resultitem):
+		data = Items.itemlist[recipe.resultitem]
+	if data == null or data.get('icon', null) == null:
+		return null
+	return load(data.icon) if data.icon is String else data.icon
 
 
 #How many rooms of this kind the estate has. What the old 'resting' upgrade asked about is a
@@ -1625,11 +1998,7 @@ func _add_craft_value(curupgrade, value, character):
 		if tprogress.has('repeat'):
 			limit3 = tprogress.repeat
 		elif tprogress.has('cap_up'):
-			var amount
-			if tprogress.job.ends_with('material'):
-				amount = materials[tprogress.id]
-			else: #item case, currently itembase check only
-				amount = get_item_amount(tprogress.id)
+			var amount = crafted_amount(tprogress)
 			limit3 = int(tprogress.cap_up - amount - 1) / int(tprogress.resultamount) + 1
 			if limit3 < 0:
 				limit3 = 0

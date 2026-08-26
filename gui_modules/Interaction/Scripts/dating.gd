@@ -314,6 +314,12 @@ func updatelist():
 			var text = i.descript
 			if dislike_same_sex() == true && i.effect in ['flirt','kiss','propose']:
 				text += globals.TextEncoder(tr("DATING_DISLIKE_SAME_SEX"))
+			#Drilling somebody needs somewhere to drill them. Greyed with the reason rather than
+			#taken off the list: the estate can build one, and a choice that quietly vanishes
+			#does not say that.
+			if i.has('needs_practice_room') and !ResourceScripts.game_res.has_room_with_tag('practice'):
+				newnode.disabled = true
+				text = tr("DATING_NEEDS_PRACTICE_ROOM")
 			globals.connecttexttooltip(newnode, person.translate(text))
 			if i.has('disablereqs'):
 				newnode.disabled = true
@@ -1930,6 +1936,7 @@ var actionsdict = {
 	train = {
 		group = 'Training',
 		name = tr("DATING_TRAIN"),
+		needs_practice_room = true,
 		reqs = [],
 		location = [],
 		descript = tr("DATING_TRAIN_DESC_1"),
@@ -1938,6 +1945,7 @@ var actionsdict = {
 	study = {
 		group = 'Training',
 		name = tr("DATING_STUDY"),
+		needs_practice_room = true,
 		reqs = [],
 		location = [],
 		descript = tr("DATING_STUDY_DESC_1"),
@@ -1946,6 +1954,7 @@ var actionsdict = {
 	practice_charm = {
 		group = 'Training',
 		name = tr("DATING_PRACTICE_CHARM"),
+		needs_practice_room = true,
 		reqs = [],
 		location = [],
 		descript = tr("DATING_PRACTICE_CHARM_DESC_1"),

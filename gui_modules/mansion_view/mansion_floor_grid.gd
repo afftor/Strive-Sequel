@@ -106,6 +106,24 @@ func _draw():
 #through the GUI only ever reaches this control in the gaps between slots.
 
 
+#The painted field is larger than the rooms standing on it, and not evenly so. Centring the
+#field itself put that margin on screen and pushed the rooms down out of the middle, so both
+#the opening view and the panning limits are measured from the box the slots actually occupy.
+#Read from the plan rather than from the nodes, because the view is centred before they exist.
+func content_rect():
+	var floor_plan = view.floor_plan()
+	if floor_plan == null or floor_plan.slots.empty():
+		return Rect2(Vector2.ZERO, rect_size)
+	var from = Vector2(FloorPlans.FIELD_TILES, FloorPlans.FIELD_TILES)
+	var to = Vector2.ZERO
+	for slot_plan in floor_plan.slots:
+		from.x = min(from.x, slot_plan.rect[0])
+		from.y = min(from.y, slot_plan.rect[1])
+		to.x = max(to.x, slot_plan.rect[0] + slot_plan.rect[2])
+		to.y = max(to.y, slot_plan.rect[1] + slot_plan.rect[3])
+	return Rect2(from * TILE_PX, (to - from) * TILE_PX)
+
+
 func apply_transform(zoom, pan):
 	rect_scale = Vector2(zoom, zoom)
 	rect_position = pan

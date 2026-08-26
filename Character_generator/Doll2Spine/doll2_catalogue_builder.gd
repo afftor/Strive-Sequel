@@ -358,7 +358,12 @@ func _build_parts(records, slot_order):
 		# `slot/name` pair when the same attachment is wanted in one slot and not
 		# in another - the plate armour puts the body's flat nipple mask into the
 		# breast slot, where it overrides the size-matched one.
-		if record.name in _overrides.EXCLUDE or (record.slot + "/" + record.name) in _overrides.EXCLUDE:
+		#
+		# Matched against the bare name as well as the full one: an export may
+		# spell an attachment `04_hairs_base/hairs_base_dopple` or plainly
+		# `hairs_base_dopple` depending on how the art was imported, and an
+		# override should not have to know which.
+		if _is_excluded(record):
 			excluded.append(record.slot + "/" + record.name)
 			continue
 		if record.slot in _overrides.CONSUMED_SLOTS:
@@ -574,6 +579,18 @@ func _draw_order(slot_order):
 		_line("  %s moved under %s (export drew it on top)" % [slot_name, before])
 	_line("")
 	return order
+
+
+# Whether an override drops this attachment: by full name or by bare name, on
+# its own or paired with the slot it appears in.
+func _is_excluded(record):
+	for entry in _overrides.EXCLUDE:
+		var name = str(entry)
+		if name == record.name or name == record.base:
+			return true
+		if name == record.slot + "/" + record.name or name == record.slot + "/" + record.base:
+			return true
+	return false
 
 
 func _route(record):
@@ -1152,15 +1169,22 @@ func _check_overrides(canonical, built):
 			if !found:
 				stale.append("AXIS_OVERRIDES[%s]: `%s` is not in the export" % [slot_name, key])
 	for name in _overrides.EXCLUDE:
+		# The same two spellings the exclusion itself accepts.
+		var wanted = str(name)
+		var slot_wanted = ""
+		if wanted.find("/") >= 0 and known_names.has(wanted.split("/", false, 1)[0]):
+			slot_wanted = wanted.split("/", false, 1)[0]
+			wanted = wanted.split("/", false, 1)[1]
 		var found = false
-		if str(name).find("/") >= 0:
-			var pair = str(name).split("/", false, 1)
-			found = known_names.get(pair[0], {}).has(pair[1])
-		else:
-			for slot_name in known_names.keys():
-				if known_names[slot_name].has(name):
+		for slot_name in known_names.keys():
+			if slot_wanted != "" and slot_name != slot_wanted:
+				continue
+			for known in known_names[slot_name].keys():
+				if known == wanted or str(known_names[slot_name][known]) == wanted:
 					found = true
 					break
+			if found:
+				break
 		if !found:
 			stale.append("EXCLUDE: `%s` is not in the export" % name)
 	for part_id in _overrides.PART_SPLITS.keys():

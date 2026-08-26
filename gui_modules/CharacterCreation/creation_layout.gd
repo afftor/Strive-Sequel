@@ -10,7 +10,7 @@ extends Reference
 
 # Options whose values are a ladder from least to most: a slider says at a glance
 # where on it a character stands, which an arrow pair never did.
-const SLIDERS = ["height", "tits_size", "ass_size",
+const SLIDERS = ["height", "tits_size", "ass_size", "penis_size", "balls_size",
 	"hair_base_length", "hair_back_length", "hair_assist_length"]
 
 # Values that are on the list but not on the ladder.  A masculine chest is not a
@@ -86,6 +86,66 @@ const DEFAULT_COLOUR_FROM = {
 # Colours the game works out entirely on its own - a fur tail takes the hair, a
 # dragon's horns the hide - are not offered at all; `ch_stats.derives_colour()`
 # is what answers that, and the screen already asks it.
+
+
+# The seven factors are the only thing on the screen a player spends points on,
+# and they used to read as a wall of identical arrow pairs labelled by a picture
+# of the word "PHY".  Each one gets a plate of its own colour instead, so the row
+# is told apart by its colour and its picture before any text is read.
+#
+# `colour` paints the plate, the border, the pips and the name.  The picture is
+# a medallion in `assets/images/iconsfactors` named after the stat itself, so
+# there is no second name here to fall out of step with the first.  Those
+# medallions carry their own colour - they must not be tinted the way a flat
+# glyph would be.  `hint` is the one-line "what does this do" under the name;
+# the long text stays where it was, on the row's tooltip.
+#
+# The order is the order the rows appear in.  A master has no `tame_factor` or
+# `authority_factor` - `possible_vals` comes back empty for those two and the
+# screen hides the rows - so this list is seven rows for a slave and five for a
+# master without saying so twice.
+const FACTOR_ROWS = [
+	{"stat": "physics_factor",   "colour": "e2564e"},
+	{"stat": "wits_factor",      "colour": "4a9be0"},
+	{"stat": "charm_factor",     "colour": "a566d8"},
+	{"stat": "sexuals_factor",   "colour": "e76a9e"},
+	{"stat": "magic_factor",     "colour": "4fb86b"},
+	{"stat": "tame_factor",      "colour": "d6a93f"},
+	{"stat": "authority_factor", "colour": "d2703f"},
+]
+
+const FACTOR_ICON_DIR = "res://assets/images/iconsfactors/"
+
+# How strongly the plate is washed with the row's colour, and how strongly its
+# border is drawn in it.  Kept here rather than in the scene so the whole set can
+# be re-tuned in one place.
+const FACTOR_WASH_ALPHA = 0.38
+const FACTOR_BORDER_ALPHA = 0.60
+const FACTOR_PIP_EMPTY_ALPHA = 0.35
+
+# What the panel costs to draw, so its height can be worked out from how many
+# rows are actually on it.  CHROME is everything that is not a row: the frame and
+# the mode buttons above the first plate, and the unassigned-points line below the
+# last one.  These have to agree with StatsContainer's margins in the scene
+# (margin_top 93, margin_bottom -62) and with FactorRow's rect_min_size.
+const FACTOR_ROW_HEIGHT = 54
+const FACTOR_ROW_SEPARATION = 4
+const STATS_PANEL_CHROME = 155
+const STATS_PANEL_GAP = 6
+
+
+# The row description for a factor, or null when the stat is not one.
+static func factor_row(statname):
+	for row in FACTOR_ROWS:
+		if row.stat == str(statname):
+			return row
+	return null
+
+
+# The one-line hint under a factor's name.  Derived from the stat code so a new
+# factor needs no entry here, only its key in `localization/en/main.gd`.
+static func factor_hint_key(statname):
+	return "CHARCREATE_STAT_HINT_" + str(statname).to_upper()
 
 
 # The values of a slider option, ladder first and the odd ones after it.

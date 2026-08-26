@@ -68,6 +68,11 @@ func has_wed_achimnt(unique_name):
 	return achi_name != null and has_achimnt(achi_name)
 
 func try_add_upgrade_achimnt(upgrade_id):
+	#The upgrade tree is retired and its list is empty; an old save or an old effect can still
+	#name a code, and indexing the list on one brought the game down rather than simply
+	#finding no achievement to award.
+	if !upgradedata.upgradelist.has(upgrade_id):
+		return
 	var level = ResourceScripts.game_res.findupgradelevel(upgrade_id)
 	var data = upgradedata.upgradelist[upgrade_id]
 	if data.has("levels") and data.levels.has(level) and data.levels[level].has("achievement"):
@@ -265,10 +270,11 @@ func prep_talent_points():
 func prep_master_factor_points():
 	ResourceScripts.game_progress.master_starting_factor_bonus = 4
 
+#The three workshops, standing. This used to buy a level of each of the forge, tailor and
+#alchemy upgrades - the tree those belonged to is gone, and the rooms are what replaced them.
 func prep_craftsman():
-	ResourceScripts.game_res.level_up_upgrade("forge", 1)
-	ResourceScripts.game_res.level_up_upgrade("tailor", 1)
-	ResourceScripts.game_res.level_up_upgrade("alchemy", 1)
+	for room in ['forge', 'tailor_workshop', 'alchemy_room']:
+		ResourceScripts.game_res.grant_room(room)
 
 #used to buy the first level of the 'rooms' upgrade. That upgrade was six abstract places;
 #this is the room those places were standing in for, built and ready to be moved about.

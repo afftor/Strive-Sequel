@@ -127,6 +127,7 @@ var common_effect_codes = {
 	"reveal_active_dungeon": true,
 	"alter_combat": true,
 	"unlock_upgrade": true,
+	"grant_room": true,
 	"change_relationship": true,
 	"change_relationship_precise": true,
 	"open_arena": true,

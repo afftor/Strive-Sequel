@@ -399,8 +399,32 @@ func unassign_worker(char_id):
 	var person = get_character(char_id)
 	if person == null:
 		return
+	#The tutor is named on the room rather than held by a place, so walking out of the room has
+	#to take the title with them - otherwise the room would go on claiming a teacher who is not
+	#in it. Done here rather than on the card: this is the door every way out goes through.
+	clear_tutor(char_id)
 	person.remove_from_task()
 	refresh_people()
+
+
+func clear_tutor(char_id):
+	for entry in MansionLayout.each_room(layout()):
+		if entry.room.practice.trainer == char_id:
+			entry.room.practice.trainer = null
+
+
+#Somebody put in the tutor's place. They take an ordinary workplace in the room like anyone
+#else - what makes them the tutor is the room naming them, which is what practice_trainer()
+#reads before it will let a habit be worked out of anybody.
+func assign_tutor(slot_code, char_id):
+	var room = get_room(slot_code)
+	if room == null:
+		return false
+	if !assign_worker(slot_code, char_id):
+		return false
+	room.practice.trainer = char_id
+	refresh_people()
+	return true
 
 
 func assign_resident(slot_code, char_id):
@@ -795,8 +819,9 @@ func update_counters():
 func update_floor_selector():
 	var floor_data = current_floor()
 	$FloorSelector/Label.text = floor_data.code if floor_data != null else "-"
-	$FloorSelector/Up.disabled = floor_index() >= layout().floors.size() - 1
-	$FloorSelector/Down.disabled = floor_index() <= 0
+	var climbable = stairs_repaired()
+	$FloorSelector/Up.disabled = floor_index() >= layout().floors.size() - 1 or !climbable
+	$FloorSelector/Down.disabled = floor_index() <= 0 or !climbable
 
 
 func update_mode_buttons():
@@ -814,7 +839,14 @@ func change_floor(step):
 	go_to_floor(floor_index() + step)
 
 
+func stairs_repaired():
+	return MansionLayout.stairs_repaired(layout())
+
+
 func stairs_target(step):
+	#rotted through until they are repaired, so there is nowhere they lead
+	if !stairs_repaired():
+		return null
 	var walk = MansionLayout.house_floors(layout())
 	var at = walk.find(floor_index())
 	if at < 0:
@@ -827,6 +859,13 @@ func stairs_target(step):
 
 func go_to_floor(target):
 	if target < 0 or target >= layout().floors.size() or target == floor_index():
+		return
+	#The grounds are walked out to rather than climbed to, so only a storey is refused.
+	var between_storeys = !MansionLayout.is_grounds(layout(), target)
+	if between_storeys and MansionLayout.is_grounds(layout(), floor_index()):
+		between_storeys = false
+	if between_storeys and !stairs_repaired():
+		input_handler.SystemMessage(tr("MANSIONVIEW_STAIRSBROKEN"))
 		return
 	close_card()
 	layout().current_floor = target
@@ -860,9 +899,10 @@ func pan_by(delta):
 
 func center_view():
 	var room = open_rect()
-	pan = room.position + (room.size - grid.rect_size * zoom) / 2
-	pan.x = max(pan.x, room.position.x)
-	pan.y = max(pan.y, room.position.y)
+	#pan is where the field's corner goes, so the content's own offset inside the field comes
+	#off it - otherwise the empty margin above the first row is what gets centred.
+	var content = grid.content_rect()
+	pan = room.position + (room.size - content.size * zoom) / 2 - content.position * zoom
 	apply_view()
 
 
@@ -877,11 +917,15 @@ func apply_view():
 
 func clamp_pan():
 	var room = open_rect()
-	var slack = room.size - grid.rect_size * zoom
-	pan.x = clamp(pan.x, room.position.x + min(0.0, slack.x) - PAN_MARGIN,
-		room.position.x + max(0.0, slack.x) + PAN_MARGIN)
-	pan.y = clamp(pan.y, room.position.y + min(0.0, slack.y) - PAN_MARGIN,
-		room.position.y + max(0.0, slack.y) + PAN_MARGIN)
+	#The limits are about where the rooms end up rather than where the field does, so the
+	#content's offset is taken off both ends - see mansion_floor_grid.content_rect().
+	var content = grid.content_rect()
+	var origin = room.position - content.position * zoom
+	var slack = room.size - content.size * zoom
+	pan.x = clamp(pan.x, origin.x + min(0.0, slack.x) - PAN_MARGIN,
+		origin.x + max(0.0, slack.x) + PAN_MARGIN)
+	pan.y = clamp(pan.y, origin.y + min(0.0, slack.y) - PAN_MARGIN,
+		origin.y + max(0.0, slack.y) + PAN_MARGIN)
 
 
 func set_mode(value):
@@ -1074,24 +1118,6 @@ func handle_view_input(event):
 		get_tree().set_input_as_handled()
 
 
-func find_slot_of_type(type_code):
-	for code in slot_codes():
-		var room = get_room(code)
-		if room != null and room.type == type_code:
-			return code
-	return null
-
-
-func stairs_ways():
-	var slot = find_slot_of_type('stairs')
-	if slot == null:
-		return null
-	var node = grid.get_slot_node(slot)
-	if node == null or !node.has_node("Stairs") or !node.get_node("Stairs").visible:
-		return null
-	return {Up = node.get_node("Stairs/Up"), Down = node.get_node("Stairs/Down")}
-
-
 func special_worker(room):
 	if room == null or MansionLayout.special_work_slots(room) <= 0:
 		return null
@@ -1122,7 +1148,11 @@ func place_holder_of(slot_code, kind):
 
 func slot_pressed(slot_code):
 	var room = get_room(slot_code)
-	if room != null and RoomTypes.has_tag(room.type, 'stairs') and mode != 'rearrange':
+	#A sound staircase says everything it has to say on its own face - the up and down buttons
+	#are drawn there. A rotted one has to be repaired first, and its card is where that is
+	#bought, so it opens until the work is done.
+	var sound_stairs = room != null and RoomTypes.has_tag(room.type, 'stairs') and stairs_repaired()
+	if sound_stairs and mode != 'rearrange':
 		return
 	if mode != 'rearrange':
 		if picked_char != null:
@@ -1180,8 +1210,10 @@ func start_repair(slot_code):
 	if !check.ok:
 		input_handler.SystemMessage(tr(check.reason))
 		return
+	#Two turns downstairs, three above - a set piece of work, and its own job either way.
 	MansionLayout.start_build(layout(), floor_index(), slot_code, 'repair', null,
-		MansionLayout.REPAIR_PROGRESS, {})
+		MansionLayout.repair_turns(floor_index()), {}, true,
+		MansionLayout.repair_task_name(floor_index()))
 	close_card()
 	refresh()
 
@@ -1274,6 +1306,19 @@ func build_workers(build):
 	return MansionLayout.get_build_workers(build, tasks())
 
 
+#Turns rather than days for a job of a set length: its whole point is that it takes two turns
+#or three, and rounding that into days would hide the very number that was chosen.
+func build_turns_left(build):
+	if build == null or !build.get('fixed', false):
+		return null
+	for char_id in build_workers(build):
+		var person = get_character(char_id)
+		#the same question the tick asks - somebody here and willing, not somebody strong
+		if person != null and is_present(person) 					and ResourceScripts.game_res.can_work_fixed(person):
+			return int(max(1, ceil(build.limit - build.progress)))
+	return null
+
+
 func build_days_left(build):
 	if build == null:
 		return null
@@ -1301,6 +1346,11 @@ func build_label(build):
 
 
 func build_eta_text(build):
+	if build != null and build.get('fixed', false):
+		var turns = build_turns_left(build)
+		if turns == null:
+			return tr("MANSIONVIEW_NOBUILDER")
+		return tr("MANSIONVIEW_TURNSLEFT") % turns
 	var days = build_days_left(build)
 	if days == null:
 		return tr("MANSIONVIEW_NOBUILDER")

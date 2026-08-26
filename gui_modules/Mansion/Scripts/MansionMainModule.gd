@@ -755,21 +755,17 @@ func test_mode():
 		character.fill_boosters()
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
-		ResourceScripts.game_res.upgrades.alchemy = 3
-		ResourceScripts.game_res.upgrades.tailor = 3
-		#the old 'rooms' upgrade stood here; test mode wants a few bedrooms standing, not a
-		#floor filled edge to edge with them
 		ResourceScripts.game_res.ensure_mansion_layout()
 		#the master's room already widened, so beds mode opens with the one room whose rule is
 		#peculiar - his own bed is held for him however many are added - showing more than one
 		ResourceScripts.game_res.max_out_master_room()
+		#both floors to look at straight away, rather than a staircase to pay for first
+		ResourceScripts.game_res.open_stairs()
 		#the estate's gathering used to be a row of 'resource_gather_*' upgrades handed out
 		#here; it comes out of the buildings on the grounds now
 		ResourceScripts.game_res.build_test_grounds()
-		ResourceScripts.game_res.bedrooms_at_least(5)
-		ResourceScripts.game_res.upgrades.forge = 3
-		ResourceScripts.game_res.upgrades.resting = 1
-		ResourceScripts.game_res.upgrades.buildertools = 3
+		#The workshops, the bathhouse, the practice room and a few beds - see TEST_ROOMS.
+		ResourceScripts.game_res.build_test_rooms()
 		ResourceScripts.game_res.fix_tax()
 		#A quest waiting at the estate with nobody on it, so the Local tasks button has
 		#something to call attention to. Shaped like the ones the questlines add through the

@@ -22,7 +22,7 @@ const BONES = [
 	"hand_l",
 	"finger1_l",
 	"finger2_l",
-	"collarbonr_r",
+	"collarbone_r",
 	"shoulder_r",
 	"forearm_r",
 	"hand_r",

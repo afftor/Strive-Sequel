@@ -86,22 +86,22 @@ var tutorials = {
 			panel_pos = Vector2(1250,150),
 			delay = 0.6
 		},{
-			buttons = ['char_info'],
+			#training is its own popup off the card now - the character window is no longer
+			#on the way to it
+			buttons = ['training_btn'],
 			text = "TUTORIAL_TRAINING10",
 			panel_pos = Vector2(1100,500),
 			delay = 1.0
 		},{
-			buttons = ['trainer_btn'],
-			text = "TUTORIAL_TRAINING11",
-			panel_pos = Vector2(733,50)
-		},{
+			#the trainer picker opens on its own for a slave who has none, so there is no
+			#separate step for reaching it any more
 			buttons = ['trainer_select_btn'],
 			text = "TUTORIAL_TRAINING12",
-			panel_pos = Vector2(733,50)
+			panel_pos = Vector2(880,760)
 		},{
 			buttons = ['praise_btn'],
 			text = "TUTORIAL_TRAINING13",
-			panel_pos = Vector2(733,50)
+			panel_pos = Vector2(880,780)
 		},{
 			buttons = ['event_opt_1'],
 			text = "TUTORIAL_TRAINING14",
@@ -115,29 +115,30 @@ var tutorials = {
 		},{
 			buttons = ['training_bonus_btn'],
 			text = "TUTORIAL_TRAINING15",
-			panel_pos = Vector2(733,50)
+			panel_pos = Vector2(40,760)
 		},{
 			buttons = ['alert_panel_yes'],
 			text = "TUTORIAL_TRAINING16",
-			panel_pos = Vector2(733,50)
+			panel_pos = Vector2(40,760)
 		},{
 			buttons = ['minor_upg'],
 			text = "TUTORIAL_TRAINING17",
-			panel_pos = Vector2(733,50),
+			panel_pos = Vector2(40,760),
 			delay = 3.0
 		},{
 			buttons = ['etiquette'],
 			text = "TUTORIAL_TRAINING18",
-			panel_pos = Vector2(733,50)
+			panel_pos = Vector2(40,760)
 		},{
 			buttons = ['alert_panel_yes'],
 			text = "TUTORIAL_TRAINING19",
-			panel_pos = Vector2(733,50)
+			panel_pos = Vector2(40,760)
 		}
 	],
 	work_intermedia = [
 		{
-			buttons = ['char_close_button'],
+			#the training chapter now ends in the training popup, not the character window
+			buttons = ['training_close_button'],
 			listen = ['close_by_RMB_sig'],
 			pass_RMB = true,
 			text = "TUTORIAL_WORK0",

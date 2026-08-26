@@ -117,6 +117,12 @@ const EXCLUDE = [
 # them to the canonical attachment and reports them when they disappear.
 # Attachments left over after an explicit assignment stay in `extra_options`.
 const PART_SLOTS = {
+	# The playboy set ships two different hip pieces in one slot - `taz_armor` and
+	# `pelvis_armor` - and they are not two names for one picture: 99.9% of their
+	# pixels differ.  Only one can be worn, and the one named the way every other
+	# set names its hips is the one kept; the other waits for the artist to say
+	# where it belongs.
+	"outfit_playboy": {"equip_pelvis": "pelvis_armor_playboy"},
 	"body_female_beastkin": {
 		# The `torso` slot also carries the two many-nipple overlays, which are
 		# small patches (37 uvs) and not torsos (68).  Letting the extra-nipple
@@ -142,6 +148,21 @@ const PART_SLOTS = {
 }
 
 # ----------------------------------------------------------------- parts ----
+
+# Draw order corrections of this rig's own, appended to the shared ones.
+#
+# The female export lists the race body pieces after the clothing: a dragon's
+# scales and a kobold's hide came out painted over the coat, and over the skirt
+# and the belly piece as well.  The male export has them the other way round -
+# body, then race, then gear - and that is the order the art is drawn for.  The
+# three are moved the way the male rig keeps them, each landing directly in
+# front of the first gear slot on the torso.
+const DRAW_ORDER_FIXES = [
+	{"slot": "race_torso_lower", "before": "equip_torso"},
+	{"slot": "race_torso", "before": "equip_torso"},
+	{"slot": "race_pelvis", "before": "equip_torso"},
+]
+
 
 # Sub-parts of a `set` part.  Each entry lists the attachments that belong to
 # that variant; the first sub-part is the base and every other one inherits the

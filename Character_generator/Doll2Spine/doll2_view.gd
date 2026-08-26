@@ -25,10 +25,7 @@ const MODIFIERS = preload("res://Character_generator/Doll2Spine/universal/doll_m
 const COLORS = preload("res://Character_generator/Doll2Spine/universal/doll_colors.gd")
 const COVERAGE = preload("res://Character_generator/Doll2Spine/universal/doll_coverage.gd")
 const GEAR = preload("res://Character_generator/Doll2Spine/universal/doll_gear_map.gd")
-const DOLL_CONTROLS_THEME = preload("res://assets/Themes_v2/CHAR_CREATION/ChC_Theme.tres")
 const DOLL_DROPDOWN_THEME = preload("res://assets/Themes_v2/UNIVERSAL/DropDown.tres")
-const DOLL_PANEL_STYLE = preload("res://assets/Themes_v2/BasePanelFlat.tres")
-const DOLL_CONTROL_FONT = preload("res://assets/Themes_v2/UNIVERSAL/PT_18.tres")
 # The frame is sized for the tallest character there can be, so the others stay
 # visibly shorter inside it.
 const TALLEST_TIER = "towering"
@@ -40,7 +37,7 @@ const STATS = [
 	"ears", "hair_base", "hair_back", "hair_assist", "horns", "wings", "tail",
 	"penis_type", "tits_size", "pregnancy_status", "height", "skin_coverage",
 	"multiple_tits_developed", "body_shape", "hand_pose", "face_markings",
-	"ass_size", "beard",
+	"ass_size", "beard", "penis_size", "balls_size",
 ]
 
 # Colour channel -> the stat that picks its colour, and the stat that picks the
@@ -133,10 +130,7 @@ export var show_hair_menu = true
 export var undress_is_a_rule = false
 # Below this the frame is a thumbnail and the buttons would cover the character.
 const UNDRESS_BAR_NEEDS = Vector2(240, 300)
-const UNDRESS_BAR_WIDTH = 116
-const UNDRESS_BUTTON_HEIGHT = 26
 const UNDRESS_BAR_MARGIN = 6
-const HAIR_PANEL_WIDTH = 190
 const ZOOM_STEP = 0.1
 const ZOOM_MIN = 0.75
 const ZOOM_MAX = 1.5
@@ -165,9 +159,16 @@ var character = null
 var undress_level = GEAR.DRESSED
 
 var model = null
+# Pushes the whole set of corner buttons down the frame; see
+# `place_controls_below`, which is the only thing that should set it.
+var controls_offset = 0
 var _undress_bar = null
+var _undress_bar_top = 0.0
 var _undress_buttons = {}
+var _hair_button = null
+var _hair_button_top = 0.0
 var _hair_panel = null
+var _hair_panel_width = 0.0
 var _look_changed = false
 var _hair_controls = {}
 
@@ -185,6 +186,9 @@ func _ready():
 	# said before the model enters the tree, so its editor panel is never built
 	model.interface_enabled = false
 	add_child(model)
+	# authored controls entered first, so the model has to return to the back where
+	# it was when the controls were appended from code
+	move_child(model, 0)
 	# the preview carries an editor panel and drag handles; in the game the doll
 	# is only ever looked at
 	for child in model.get_children():
@@ -195,7 +199,13 @@ func _ready():
 	model.set_process_unhandled_input(false)
 	for animation_name in model.animation_states.keys():
 		model.animation_states[animation_name] = false
-	if show_undress_buttons and !portrait_mode:
+	if portrait_mode or !show_undress_buttons:
+		for control_name in ["UndressLevels", "HairMenuButton", "HairMenu"]:
+			get_node(control_name).queue_free()
+	else:
+		if !show_hair_menu:
+			get_node("HairMenuButton").queue_free()
+			get_node("HairMenu").queue_free()
 		_build_undress_bar()
 		connect("resized", self, "_refresh_undress_bar")
 		connect("visibility_changed", self, "_on_doll_visibility_changed")
@@ -280,51 +290,48 @@ func rebuild_stat(_statname):
 # the doll is handed a rect by the screen it sits in, and there is nothing next
 # to it that it owns.  A plain child of the doll, so it hides, clips and moves
 # with it - a CanvasLayer would float above the screen's own popups.
+# the styleboxes are owned by `Doll2View.tscn` now; keep its palette in sync
+# with `doll_control_styles.gd`, which still dresses the painted cast's toggle
 func _build_undress_bar():
-	_undress_bar = VBoxContainer.new()
-	_undress_bar.name = "UndressLevels"
-	_undress_bar.anchor_left = 1.0
-	_undress_bar.anchor_right = 1.0
-	_undress_bar.margin_left = -UNDRESS_BAR_WIDTH - UNDRESS_BAR_MARGIN
-	_undress_bar.margin_right = -UNDRESS_BAR_MARGIN
-	_undress_bar.margin_top = UNDRESS_BAR_MARGIN
-	# the four levels plus the hair button
-	_undress_bar.margin_bottom = (UNDRESS_BAR_MARGIN
-		+ (UNDRESS_BUTTON_HEIGHT + 4) * (GEAR.LEVELS.size() + 1))
-	_undress_bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_undress_bar.theme = DOLL_CONTROLS_THEME
-	_undress_bar.add_constant_override("separation", 4)
-	add_child(_undress_bar)
-	var group = ButtonGroup.new()
+	_undress_bar = get_node("UndressLevels")
+	_undress_bar_top = _undress_bar.margin_top
 	for level in GEAR.LEVELS:
-		var button = Button.new()
+		var button = _undress_bar.get_node(level)
 		button.text = tr(GEAR.LEVEL_LABELS[level])
-		button.toggle_mode = true
-		button.group = group
-		button.clip_text = true
-		button.rect_min_size = Vector2(UNDRESS_BAR_WIDTH, UNDRESS_BUTTON_HEIGHT)
-		button.add_font_override("font", DOLL_CONTROL_FONT)
-		# The theme has no `disabled` style of its own, and without one a blocked
-		# button falls back to Godot's grey box in the middle of the bar.  It keeps
-		# the frame the others wear and reads as off through the dimmed font.
-		var normal_style = _undress_bar.get_stylebox("normal", "Button")
-		if normal_style != null:
-			button.add_stylebox_override("disabled", normal_style)
 		button.pressed = level == undress_level
 		button.connect("pressed", self, "set_undress_level", [level])
-		_undress_bar.add_child(button)
 		_undress_buttons[level] = button
 	if !show_hair_menu:
+		if controls_offset != 0:
+			place_controls_below(controls_offset)
 		return
-	var hair = Button.new()
-	hair.text = tr("DOLL2_HAIR_MENU")
-	hair.toggle_mode = true
-	hair.clip_text = true
-	hair.rect_min_size = Vector2(UNDRESS_BAR_WIDTH, UNDRESS_BUTTON_HEIGHT)
-	hair.add_font_override("font", DOLL_CONTROL_FONT)
-	hair.connect("toggled", self, "_on_hair_menu_toggled")
-	_undress_bar.add_child(hair)
-	_undress_buttons["hair"] = hair
+	# this opens a menu rather than choosing a level, so it stands beside the
+	# column and reads as a separate action while keeping the same dress
+	_hair_button = get_node("HairMenuButton")
+	_hair_button_top = _hair_button.margin_top
+	_hair_button.text = tr("DOLL2_HAIR_MENU")
+	_hair_button.connect("toggled", self, "_on_hair_menu_toggled")
+	_undress_buttons["hair"] = _hair_button
+	if controls_offset != 0:
+		place_controls_below(controls_offset)
+
+
+# How far down the doll's frame the buttons start, for a screen whose top corner
+# is already taken - the expanded card keeps its close button up there, and the
+# first level button was sitting under it.  `NudityToggle.place_below` is the
+# exact twin of this: the two are the same bar on the same screen, one for the
+# generated characters and one for the painted cast.
+func place_controls_below(offset):
+	controls_offset = offset
+	if _undress_bar != null:
+		var bar_top = _undress_bar_top + controls_offset
+		_undress_bar.margin_bottom += bar_top - _undress_bar.margin_top
+		_undress_bar.margin_top = bar_top
+	if _hair_button != null:
+		var button_top = _hair_button_top + controls_offset
+		_hair_button.margin_bottom += button_top - _hair_button.margin_top
+		_hair_button.margin_top = button_top
+	_position_hair_panel()
 
 
 # Hair, under a button of its own next to the undress levels.  Everything here is
@@ -352,66 +359,67 @@ func _on_hair_menu_toggled(pressed):
 		_refresh_hair_panel()
 
 
-# The panel wears Godot's own theme rather than the game's.  The bar of undress
-# buttons is a handful of buttons and takes the game's dress well; a panel of
-# dropdowns, sliders and a colour wheel does not - the theme covers the buttons
-# and misses the rest, and the result is a jumble.
+# The scene owns the panel and its rows.  Only the dropdown lists retain their
+# own game theme here: that resource knows how to dress PopupMenu, which the
+# scene tree cannot reach through its OptionButton.
 func _build_hair_panel():
-	_hair_panel = PanelContainer.new()
-	_hair_panel.name = "HairMenu"
-	_hair_panel.anchor_left = 1.0
-	_hair_panel.anchor_right = 1.0
-	_hair_panel.margin_left = -HAIR_PANEL_WIDTH - UNDRESS_BAR_MARGIN
-	_hair_panel.margin_right = -UNDRESS_BAR_MARGIN
-	add_child(_hair_panel)
-	var box = VBoxContainer.new()
-	box.add_constant_override("separation", 2)
-	_hair_panel.add_child(box)
+	_hair_panel = get_node("HairMenu")
+	_hair_panel_width = _hair_panel.margin_right - _hair_panel.margin_left
+	var title = get_node("HairMenu/VBox/Title/Label")
+	title.text = tr("DOLL2_HAIR_MENU")
+	var close = get_node("HairMenu/VBox/Title/Close")
+	close.text = tr("OPTCLOSE")
+	close.connect("pressed", self, "_close_hair_menu")
+	var rows = get_node("HairMenu/VBox/Rows")
+	var row_texts = []
 	# each layer keeps its own colours right under it: picking a style and then
 	# hunting for its pair at the bottom of the panel is two jobs, not one
 	for layer in HAIR_LAYERS:
-		_hair_row(box, layer.label, layer.id + "_style")
+		row_texts.append([layer.id + "_style", tr(layer.label)])
 		for tone in range(HAIR_TONES.size()):
-			_hair_row(box, HAIR_TONES[tone], "%s_colour%d" % [layer.id, tone + 1], layer.tone)
-	_hair_row(box, "DOLL2_HAIR_LENGTH", "hair_length")
-	_hair_row(box, "DOLL2_BEARD_STYLE", "beard_style")
-	_hair_row(box, "DOLL2_BEARD_COLOUR", "beard_colour")
+			var control_id = "%s_colour%d" % [layer.id, tone + 1]
+			row_texts.append([control_id,
+				"%s - %s" % [tr(layer.tone), tr(HAIR_TONES[tone])]])
+	row_texts.append(["hair_length", tr("DOLL2_HAIR_LENGTH")])
+	row_texts.append(["beard_style", tr("DOLL2_BEARD_STYLE")])
+	row_texts.append(["beard_colour", tr("DOLL2_BEARD_COLOUR")])
+	for row in row_texts:
+		var control_id = row[0]
+		var control = rows.get_node(control_id)
+		var label = rows.get_node(control_id + "_label")
+		label.text = row[1]
+		_hair_controls[control_id] = control
+		_hair_controls[control_id + "_label"] = label
+		if control is ColorPickerButton:
+			control.connect("color_changed", self, "_on_hair_colour_picked", [control_id])
+			# the wheel is wider than the frame the doll stands in, so it opens
+			# beside the doll instead of over the character it changes
+			control.get_popup().connect("about_to_show", self, "_place_colour_popup", [control])
+		else:
+			control.get_popup().theme = DOLL_DROPDOWN_THEME
+			control.connect("item_selected", self, "_on_hair_option_picked", [control_id, control])
 	_position_hair_panel()
 
 
 func _position_hair_panel():
-	if _hair_panel == null or _undress_bar == null:
+	if _hair_panel == null or _hair_button == null:
 		return
-	var panel_top = (_undress_bar.margin_top
-		+ _undress_bar.get_combined_minimum_size().y + 4)
+	# it opens below its own trigger and grows to the left on roomy dolls.  At the
+	# minimum supported width the left edge is clamped inside the doll instead of
+	# being clipped away with the character.
+	var panel_width = min(_hair_panel_width,
+		max(0.0, rect_size.x - UNDRESS_BAR_MARGIN * 2))
+	var panel_right = _hair_button.margin_right
+	var panel_left = panel_right - panel_width
+	var left_limit = -rect_size.x + UNDRESS_BAR_MARGIN
+	if panel_left < left_limit:
+		panel_left = left_limit
+		panel_right = panel_left + panel_width
+	_hair_panel.margin_left = panel_left
+	_hair_panel.margin_right = panel_right
+	var panel_top = _hair_button.margin_bottom + 4
 	_hair_panel.margin_top = panel_top
 	_hair_panel.margin_bottom = panel_top + _hair_panel.get_combined_minimum_size().y
-
-
-func _hair_row(parent, label_key, control_id, prefix_key = ""):
-	var label = Label.new()
-	label.text = tr(label_key)
-	if prefix_key != "":
-		label.text = "%s - %s" % [tr(prefix_key), tr(label_key)]
-	parent.add_child(label)
-	var control
-	if control_id.find("colour") >= 0:
-		control = ColorPickerButton.new()
-		control.rect_min_size = Vector2(0, UNDRESS_BUTTON_HEIGHT)
-		control.connect("color_changed", self, "_on_hair_colour_picked", [control_id])
-		# the wheel is wider than the frame the doll stands in, so it opens beside
-		# the doll instead of over the character it is being used to look at
-		control.get_popup().connect("about_to_show", self, "_place_colour_popup", [control])
-	else:
-		control = OptionButton.new()
-		control.clip_text = true
-		control.connect("item_selected", self, "_on_hair_option_picked", [control_id, control])
-	control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	parent.add_child(control)
-	_hair_controls[control_id] = control
-	_hair_controls[control_id + "_label"] = label
-
-
 # Beside the doll, never on top of it.
 func _place_colour_popup(picker):
 	var popup = picker.get_popup()
@@ -449,6 +457,7 @@ func _refresh_hair_panel():
 	# and the control is dead until the lengths are wired to the hair chains
 	_fill_options("hair_length", HAIR_LENGTHS, str(_stat("hair_base_length")))
 	_hair_controls.hair_length.disabled = true
+	_hair_controls.hair_length_label.modulate = Color(1, 1, 1, 0.45)
 	_fill_options("beard_style", CATALOGUE.parts("beard"), str(model.selections.get("beard", "")), true)
 	_hair_controls.beard_colour.color = COLORS.colour_of("hair_facial_color", _stat("hair_facial_color"))
 	# a beard is a man's, and only while the art has any
@@ -537,8 +546,13 @@ func _close_hair_menu():
 func _refresh_undress_bar():
 	if _undress_bar == null:
 		return
-	_undress_bar.visible = (rect_size.x >= UNDRESS_BAR_NEEDS.x
+	var bar_visible = (rect_size.x >= UNDRESS_BAR_NEEDS.x
 		and rect_size.y >= UNDRESS_BAR_NEEDS.y)
+	_undress_bar.visible = bar_visible
+	if _hair_button != null:
+		_hair_button.visible = bar_visible and show_hair_menu
+	if !bar_visible:
+		_close_hair_menu()
 	var offered = _levels_that_differ()
 	# a level the character has no picture of its own for shows the next one down
 	var shown = ""
@@ -627,6 +641,11 @@ func _gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
 			if event.pressed:
+				# a poke at the chest swings it, the way the old doll did; anywhere
+				# else the press starts a drag as before
+				if tits_interaction(event.position):
+					accept_event()
+					return
 				_drag_candidate = true
 				_dragging = false
 				_drag_from = event.position
@@ -739,12 +758,31 @@ func center_portrait_frame(_anchor = Vector2.ZERO):
 # Kept as no-ops so the screens that call them keep working; they need animation,
 # which is off for now.
 
-func jiggle_tits():
-	pass
+# A swing of the chest: the size sliders call this when the size changes, and a
+# click on the breasts calls it through `tits_interaction`.  The swing itself
+# belongs to the model, so the preview panel and the game show the same one.
+func jiggle_tits(power = 1.0):
+	if model == null or !is_visible_in_tree():
+		return
+	model.jiggle_tits(power)
 
 
-func tits_interaction(_position = Vector2.ZERO):
-	pass
+func stop_tits_jiggle():
+	if model != null:
+		model.stop_tits_jiggle()
+
+
+func tits_interaction(position = Vector2.ZERO):
+	if model == null or model.scale.x == 0.0:
+		return false
+	var box = _bounds_of(model.TITS_SLOTS)
+	if box.size.y <= 0.0:
+		return false
+	var local = (position - model.position) / model.scale
+	if !box.has_point(local):
+		return false
+	jiggle_tits()
+	return true
 
 
 func get_tits_mesh():
@@ -760,6 +798,9 @@ func get_tits_outline():
 func _apply():
 	if model == null or character == null:
 		return
+	# The mesh nodes are about to be replaced, so a swing in flight is put back
+	# before it loses the meshes it was moving.
+	stop_tits_jiggle()
 	var stats = {}
 	for stat in STATS:
 		stats[stat] = _stat(stat)
@@ -779,10 +820,18 @@ func _apply():
 			model.animation_states[animation_name] = false
 	CATALOGUE.use(doll_id)
 	model.selections = CATALOGUE.default_selections()
-	for group_id in CHARACTER_MAP.selections_for(stats, doll_id).keys():
-		var part_id = str(CHARACTER_MAP.selections_for(stats, doll_id)[group_id])
+	var wanted = CHARACTER_MAP.selections_for(stats, doll_id)
+	for group_id in wanted.keys():
+		var part_id = str(wanted[group_id])
 		if part_id.empty() or part_id in CATALOGUE.parts(group_id):
 			model.selections[group_id] = part_id
+			continue
+		# This rig has not been drawn that piece.  Where the map names something it
+		# stands in for - a second cut of an elven ear falls back to the plain one -
+		# wear that; otherwise leave the slot as the catalogue has it.
+		var stand_in = CHARACTER_MAP.stand_in(group_id, part_id)
+		if stand_in != "" and stand_in in CATALOGUE.parts(group_id):
+			model.selections[group_id] = stand_in
 	# A hair stat that names a part outright is one somebody picked by hand, and
 	# it is worn as it stands: the map's prefix rule is for the short values the
 	# game generates (`straight` -> `hair_base_straight`) and cannot rebuild an
@@ -813,6 +862,10 @@ func _apply():
 	model.height_tier = _height(str(stats.get("height", "")))
 	#The preview picks the same six sizes by name, so the two cannot drift apart.
 	model.proportions["butt"] = MODIFIERS.step_factor("butt", stats.get("ass_size", ""))
+	# The art has one pair of genitals, so the three sizes the game carries are a
+	# scale on the bones they hang from.
+	model.proportions["dick"] = MODIFIERS.step_factor("dick", stats.get("penis_size", ""))
+	model.proportions["balls"] = MODIFIERS.step_factor("balls", stats.get("balls_size", ""))
 	_apply_colours()
 	model._rebuild_model()
 	_apply_coverage()

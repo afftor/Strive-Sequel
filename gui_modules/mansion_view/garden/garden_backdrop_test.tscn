@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://gui_modules/mansion_view/garden/garden_backdrop_test.gd" type="Script" id=1]
+[ext_resource path="res://gui_modules/mansion_view/garden/garden_backdrop.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gui_modules/mansion_view/garden/garden_daylight.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gui_modules/mansion_view/garden/garden_rain.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gui_modules/mansion_view/garden/garden_camera.gd" type="Script" id=5]
+
+[node name="GardenBackdropTest" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 960, 540 )
+current = true
+limit_right = 1920
+limit_bottom = 1080
+script = ExtResource( 5 )
+
+[node name="Backdrop" parent="." instance=ExtResource( 2 )]
+
+[node name="MansionPlaceholder" type="ColorRect" parent="."]
+margin_left = 356.0
+margin_top = 200.0
+margin_right = 1380.0
+margin_bottom = 920.0
+mouse_filter = 2
+color = Color( 0.1, 0.078, 0.059, 0.82 )
+
+[node name="Caption" type="Label" parent="MansionPlaceholder"]
+modulate = Color( 1, 1, 1, 0.22 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "mansion goes here"
+align = 1
+valign = 1
+
+[node name="Effects" type="CanvasLayer" parent="."]
+
+[node name="Daylight" parent="Effects" instance=ExtResource( 3 )]
+lamp_glow_path = NodePath("../../Backdrop/Glow")
+
+[node name="Rain" parent="Effects" instance=ExtResource( 4 )]
+visible = false
+intensity = 0
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Hint" type="Label" parent="UI"]
+modulate = Color( 1, 0.94, 0.78, 0.72 )
+margin_left = 16.0
+margin_top = 10.0
+margin_right = 1500.0
+margin_bottom = 34.0

@@ -812,6 +812,18 @@ var loot_tables = {
 	prod_farm_dark_essence = {material = 'dark_essence'},
 
 
+	#What the wreckage in the mansion's cluttered rooms is hiding. Fixed amounts rather than a
+	#range: which room holds which of the three is rolled once per game, and the find itself
+	#is meant to be the same for everybody who turns it up.
+	mansion_rubble_gold = {gold = true, min = 50, max = 50},
+	mansion_rubble_materials = {list = [
+		{material = 'wood', min = 20, max = 20},
+		{material = 'stone', min = 10, max = 10}]},
+	mansion_rubble_sword = {list = [
+		{item = 'sword', parts = {Blade = 'steel', WeaponHandle = 'wood'}, quality = 'average'}]},
+	#the upper floor's one find - see MansionLayout.RUBBLE_FINDS_UPPER
+	mansion_rubble_goggles = {item = 'chloe_goggles', amount = 1},
+
 	start_corruptive_essence = {
 		list = [
 		{item = 'corruptive_essence', min = 1, max = 1}]

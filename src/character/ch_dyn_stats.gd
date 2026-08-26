@@ -579,6 +579,17 @@ func fix_stat_data(stat, data):
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []
 			data.bonuses.add.push_back({value = min(get_stat('growth_factor') - 1, get_prof_number()) * 5, src_type = 'factor', src_value = 'growth', timestamp = 0})
+			#A household that eats together works better, wherever on the estate the work is
+			#done. A part added rather than points: points were worth less to somebody who had
+			#already earned bonuses of their own, and a tenth more work should be a tenth for
+			#everybody. 'add_part' is this stat's own channel (statdata.productivity) and one of
+			#the few the combiner applies by default - 'mul2' is not, and did nothing at all.
+			#Counted from the room the way the bathhouse and the master bed are: it is a fact
+			#about the estate, not about the person.
+			if stat == 'productivity' and ResourceScripts.game_res.has_room_with_tag('dining'):
+				if !data.bonuses.has('add_part'):
+					data.bonuses.add_part = []
+				data.bonuses.add_part.push_back({value = 0.1, src_type = 'room', src_value = 'dining_room', timestamp = 0})
 		'speed':
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []

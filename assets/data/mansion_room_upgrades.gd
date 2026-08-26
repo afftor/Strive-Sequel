@@ -31,6 +31,32 @@ extends Reference
 #"icon" names an entry in images.upgrade_icons and is presentation metadata only.
 
 const LIST = {
+	#### the staircase ####
+
+	#The house was inherited with its stairs rotted through, so the upper floor cannot be
+	#reached until they are made good. One repair does the whole staircase: there is nothing
+	#to unlock afterwards, and no second level to buy.
+	stairs_repair = {
+		code = 'stairs_repair',
+		icon = 'rooms',
+		levels = {
+			1: {cost = {woodiron = 10, steel = 5}, progress = 30, effect = {}},
+		},
+	},
+
+	#### practice room ####
+
+	#Room for more than one pupil at a time. The tutor's place is bought separately - see
+	#tutoring_area, which is flagged special_slot and is not one of these.
+	training_space = {
+		code = 'training_space',
+		icon = 'rooms',
+		levels = {
+			1: {cost = {wood = 70, stone = 40}, progress = 25, effect = {work_slots = 1}},
+			2: {cost = {wood = 120, stone = 80, iron = 30}, progress = 40, effect = {work_slots = 2}},
+		},
+	},
+
 	#### master bedroom ####
 
 	#Widens what the room allows rather than who lives in it: more participants per scene.
@@ -143,6 +169,16 @@ const LIST = {
 		icon = 'rooms_lux',
 		levels = {
 			1: {cost = {wood = 90, cloth = 40, gold = 400}, progress = 30, effect = {work_slots = 1}},
+		},
+	},
+
+	#Standing orders with the market: the clerk keeps a list of what the estate must not run
+	#short of and buys it in every morning. See game_res.process_autobuy().
+	purchase_ledger = {
+		code = 'purchase_ledger',
+		icon = 'rooms',
+		levels = {
+			1: {cost = {wood = 60, cloth = 50, gold = 600}, progress = 30, effect = {}},
 		},
 	},
 

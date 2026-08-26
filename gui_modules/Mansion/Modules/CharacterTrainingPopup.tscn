@@ -1,0 +1,1484 @@
+[gd_scene load_steps=62 format=2]
+
+[ext_resource path="res://gui_modules/Mansion/Scripts/CharacterTrainingPopup.gd" type="Script" id=1]
+[ext_resource path="res://gui_modules/CharacterInfo/TrUpgradesList.gd" type="Script" id=2]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Panel_Square.tres" type="StyleBox" id=3]
+[ext_resource path="res://src/scenes/CloseButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=7]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18.tres" type="DynamicFont" id=8]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=9]
+[ext_resource path="res://assets/Themes_v2/MANSION/M_GoldButton.tres" type="Theme" id=10]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/slave_tr_normal.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/slave_tr_pressed.png" type="Texture" id=12]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/slave_tr_hover.png" type="Texture" id=13]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/master_tr_normal.png" type="Texture" id=14]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/master_tr_pressed.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/master_tr_hover.png" type="Texture" id=16]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/minor_normal.png" type="Texture" id=17]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/minor_pressed.png" type="Texture" id=18]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/minor_hover.png" type="Texture" id=19]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/heart_wing_normal.png" type="Texture" id=20]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/heart_wing_pressed.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/heart_wing_hover.png" type="Texture" id=22]
+[ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=23]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/frame_trainer.png" type="Texture" id=24]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/frame_skill_hover.png" type="Texture" id=25]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/frame_skill_active.png" type="Texture" id=26]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big.png" type="Texture" id=27]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_mp.png" type="Texture" id=28]
+[ext_resource path="res://assets/images/gui/spirit.png" type="Texture" id=29]
+[ext_resource path="res://assets/Textures_v2/MANSION/crown.png" type="Texture" id=30]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_default.png" type="Texture" id=31]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_pressed.png" type="Texture" id=32]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_hover.png" type="Texture" id=33]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_traits_default.png" type="Texture" id=34]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_traits_hover.png" type="Texture" id=35]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_tratis_pressed.png" type="Texture" id=36]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset training_pressed.png" type="Texture" id=40]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset_training_pressed.png" type="Texture" id=41]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset_training_hover.png" type="Texture" id=42]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset_training_disable.png" type="Texture" id=43]
+[ext_resource path="res://gui_modules/CharacterInfo/MUpgradesList.gd" type="Script" id=44]
+[ext_resource path="res://gui_modules/CharacterInfo/SUpgradesList.gd" type="Script" id=45]
+[ext_resource path="res://gui_modules/CharacterInfo/MUpgradeItem.gd" type="Script" id=46]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/frame_trainings.png" type="Texture" id=47]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/frame_trainings_disabled.png" type="Texture" id=48]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/frame_trainings_hover.png" type="Texture" id=49]
+[ext_resource path="res://assets/Textures_v2/Upgrades/panel_upgradetree_back.png" type="Texture" id=50]
+[ext_resource path="res://assets/images/gui/upgrades/alchemy.png" type="Texture" id=51]
+[ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_prassed.png" type="Texture" id=52]
+[ext_resource path="res://assets/images/iconsskills/Charm.png" type="Texture" id=53]
+[ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_hover.png" type="Texture" id=54]
+[ext_resource path="res://assets/images/gui/panels/hourglass.png" type="Texture" id=55]
+[ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_default.png" type="Texture" id=56]
+[ext_resource path="res://assets/Textures_v2/icon_question_small_alt.png" type="Texture" id=57]
+[ext_resource path="res://assets/Textures_v2/Tattoo/frame_tattoo_disabled.png" type="Texture" id=58]
+[ext_resource path="res://Character_generator/Doll2Spine/Doll2View.tscn" type="PackedScene" id=59]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0705882, 0.0431373, 0.027451, 0.96 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.768627, 0.521569, 0.258824, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.0352941, 0.0235294, 0.0196078, 0.92 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.431373, 0.352941, 0.211765, 0.95 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.0705882, 0.0431373, 0.027451, 0.96 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.14902, 0.0980392, 0.054902, 0.98 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.996078, 0.784314, 0.321569, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.0705882, 0.0431373, 0.027451, 0.96 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.768627, 0.521569, 0.258824, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="CharacterTrainingPopup" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+
+[node name="Dim" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.68 )
+
+[node name="Portrait" type="Control" parent="."]
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -650.0
+margin_top = 0.0
+margin_right = -50.0
+margin_bottom = 0.0
+mouse_filter = 2
+
+[node name="StoredImage" type="TextureRect" parent="Portrait"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Paperdoll" parent="Portrait" instance=ExtResource( 59 )]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+allow_zoom = false
+show_undress_buttons = false
+update_character_portrait = false
+
+[node name="Popup" type="Panel" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -700.0
+margin_top = -490.0
+margin_right = 700.0
+margin_bottom = 490.0
+rect_clip_content = true
+custom_styles/panel = ExtResource( 3 )
+
+[node name="Background" type="ColorRect" parent="Popup"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+mouse_filter = 2
+color = Color( 0.027451, 0.0156863, 0.0117647, 0.92 )
+
+[node name="Header" type="Panel" parent="Popup"]
+anchor_right = 1.0
+margin_bottom = 58.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="ClassIcon" type="TextureRect" parent="Popup/Header"]
+margin_left = 12.0
+margin_top = 9.0
+margin_right = 52.0
+margin_bottom = 49.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="CharacterName" type="Label" parent="Popup/Header"]
+margin_left = 62.0
+margin_top = 8.0
+margin_right = 890.0
+margin_bottom = 50.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 5 )
+valign = 1
+clip_text = true
+
+[node name="TabRail" type="VBoxContainer" parent="Popup"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -84.0
+margin_top = 66.0
+margin_right = -8.0
+margin_bottom = -64.0
+custom_constants/separation = 10
+
+[node name="trainings" type="TextureButton" parent="Popup/TabRail"]
+margin_right = 76.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 76, 76 )
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 13 )
+expand = true
+stretch_mode = 6
+
+[node name="master_upg" type="TextureButton" parent="Popup/TabRail"]
+margin_top = 86.0
+margin_right = 76.0
+margin_bottom = 162.0
+rect_min_size = Vector2( 76, 76 )
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 16 )
+expand = true
+stretch_mode = 6
+
+[node name="minor_upg" type="TextureButton" parent="Popup/TabRail"]
+margin_top = 172.0
+margin_right = 76.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 76, 76 )
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 18 )
+texture_hover = ExtResource( 19 )
+expand = true
+stretch_mode = 6
+
+[node name="succubus" type="TextureButton" parent="Popup/TabRail"]
+margin_top = 258.0
+margin_right = 76.0
+margin_bottom = 334.0
+rect_min_size = Vector2( 76, 76 )
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 21 )
+texture_hover = ExtResource( 22 )
+expand = true
+stretch_mode = 6
+
+[node name="CloseButton" parent="Popup" instance=ExtResource( 4 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -48.0
+margin_top = 9.0
+margin_right = -8.0
+margin_bottom = 49.0
+mouse_default_cursor_shape = 2
+expand = true
+stretch_mode = 6
+
+[node name="Pages" type="Control" parent="Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 66.0
+margin_right = -92.0
+margin_bottom = -64.0
+
+[node name="Training" type="Control" parent="Popup/Pages"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="training" type="Control" parent="Popup/Pages/Training"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Status" type="Panel" parent="Popup/Pages/Training/training"]
+anchor_bottom = 1.0
+margin_right = 340.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="TrainerCard" type="Button" parent="Popup/Pages/Training/training/Status"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 332.0
+margin_bottom = 144.0
+mouse_default_cursor_shape = 2
+custom_styles/normal = SubResource( 5 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/hover = SubResource( 3 )
+
+[node name="icon" type="TextureRect" parent="Popup/Pages/Training/training/Status/TrainerCard"]
+margin_left = 12.0
+margin_top = 18.0
+margin_right = 112.0
+margin_bottom = 118.0
+rect_min_size = Vector2( 100, 100 )
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="name" type="Label" parent="Popup/Pages/Training/training/Status/TrainerCard"]
+margin_left = 120.0
+margin_top = 8.0
+margin_right = 324.0
+margin_bottom = 80.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 6 )
+valign = 1
+autowrap = true
+
+[node name="slots" type="Label" parent="Popup/Pages/Training/training/Status/TrainerCard"]
+margin_left = 120.0
+margin_top = 80.0
+margin_right = 324.0
+margin_bottom = 128.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 7 )
+valign = 1
+
+[node name="Loyalty" type="Control" parent="Popup/Pages/Training/training/Status"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -318.0
+margin_right = -8.0
+margin_bottom = -244.0
+
+[node name="icon" type="TextureRect" parent="Popup/Pages/Training/training/Status/Loyalty"]
+margin_right = 28.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 28, 28 )
+texture = ExtResource( 29 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="Popup/Pages/Training/training/Status/Loyalty"]
+margin_left = 36.0
+margin_right = 324.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 7 )
+valign = 1
+
+[node name="spirit" type="TextureProgress" parent="Popup/Pages/Training/training/Status/Loyalty"]
+anchor_right = 1.0
+margin_top = 40.0
+margin_right = 0.0
+margin_bottom = 68.0
+value = 100.0
+texture_under = ExtResource( 27 )
+texture_over = ExtResource( 27 )
+texture_progress = ExtResource( 28 )
+texture_progress_offset = Vector2( 29, 3 )
+
+[node name="percent_label" type="Label" parent="Popup/Pages/Training/training/Status/Loyalty/spirit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 8 )
+align = 1
+valign = 1
+
+[node name="Points" type="Control" parent="Popup/Pages/Training/training/Status"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -240.0
+margin_right = -8.0
+margin_bottom = -200.0
+
+[node name="icon" type="TextureRect" parent="Popup/Pages/Training/training/Status/Points"]
+margin_top = 6.0
+margin_right = 28.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 28, 28 )
+texture = ExtResource( 30 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="Popup/Pages/Training/training/Status/Points"]
+margin_left = 36.0
+margin_right = 324.0
+margin_bottom = 40.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 6 )
+valign = 1
+
+[node name="cd" type="Label" parent="Popup/Pages/Training/training/Status"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -196.0
+margin_right = -8.0
+margin_bottom = -144.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 7 )
+autowrap = true
+
+[node name="Dispositions" type="Panel" parent="Popup/Pages/Training/training/Status"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 152.0
+margin_right = -8.0
+margin_bottom = -326.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="title" type="Label" parent="Popup/Pages/Training/training/Status/Dispositions"]
+anchor_right = 1.0
+margin_left = 12.0
+margin_top = 8.0
+margin_right = -12.0
+margin_bottom = 42.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 6 )
+valign = 1
+
+[node name="List" type="VBoxContainer" parent="Popup/Pages/Training/training/Status/Dispositions"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = 48.0
+margin_right = -12.0
+margin_bottom = -12.0
+custom_constants/separation = 4
+
+[node name="record" type="Control" parent="Popup/Pages/Training/training/Status/Dispositions/List"]
+visible = false
+margin_right = 300.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="cat" type="Label" parent="Popup/Pages/Training/training/Status/Dispositions/List/record"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_right = -4.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 7 )
+valign = 1
+
+[node name="value" type="Label" parent="Popup/Pages/Training/training/Status/Dispositions/List/record"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 7 )
+align = 2
+valign = 1
+
+[node name="Trainee" type="Panel" parent="Popup/Pages/Training/training/Status"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -136.0
+margin_right = -8.0
+margin_bottom = -8.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="icon" type="TextureRect" parent="Popup/Pages/Training/training/Status/Trainee"]
+margin_left = 12.0
+margin_top = 18.0
+margin_right = 112.0
+margin_bottom = 118.0
+rect_min_size = Vector2( 100, 100 )
+expand = true
+stretch_mode = 6
+
+[node name="name" type="Label" parent="Popup/Pages/Training/training/Status/Trainee"]
+margin_left = 120.0
+margin_top = 12.0
+margin_right = 324.0
+margin_bottom = 124.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 6 )
+valign = 1
+autowrap = true
+
+[node name="Tooltip" type="TextureRect" parent="Popup/Pages/Training/training/Status"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -32.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = 32.0
+texture = ExtResource( 23 )
+expand = true
+stretch_mode = 6
+
+[node name="TrainerPicker" type="Control" parent="Popup/Pages/Training/training"]
+anchor_bottom = 1.0
+margin_right = 340.0
+
+[node name="title" type="Label" parent="Popup/Pages/Training/training/TrainerPicker"]
+anchor_right = 1.0
+margin_right = -32.0
+margin_bottom = 40.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 5 )
+valign = 1
+
+[node name="tooltip" type="TextureRect" parent="Popup/Pages/Training/training/TrainerPicker"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -24.0
+margin_right = 0.0
+margin_bottom = 24.0
+texture = ExtResource( 23 )
+expand = true
+stretch_mode = 6
+
+[node name="empty" type="Label" parent="Popup/Pages/Training/training/TrainerPicker"]
+anchor_right = 1.0
+margin_top = 48.0
+margin_bottom = 110.0
+custom_colors/font_color = Color( 0.976471, 0.435294, 0.368627, 1 )
+custom_fonts/font = ExtResource( 7 )
+autowrap = true
+
+[node name="Scroll" type="ScrollContainer" parent="Popup/Pages/Training/training/TrainerPicker"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 116.0
+margin_bottom = -56.0
+theme = ExtResource( 9 )
+scroll_horizontal_enabled = false
+
+[node name="Container" type="VBoxContainer" parent="Popup/Pages/Training/training/TrainerPicker/Scroll"]
+margin_right = 324.0
+rect_min_size = Vector2( 324, 0 )
+size_flags_horizontal = 3
+custom_constants/separation = 8
+
+[node name="Button" type="Button" parent="Popup/Pages/Training/training/TrainerPicker/Scroll/Container"]
+visible = false
+margin_right = 324.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 120 )
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 2 )
+custom_styles/disabled = SubResource( 2 )
+
+[node name="icon" type="TextureRect" parent="Popup/Pages/Training/training/TrainerPicker/Scroll/Container/Button"]
+margin_left = 12.0
+margin_top = 24.0
+margin_right = 84.0
+margin_bottom = 96.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="name" type="Label" parent="Popup/Pages/Training/training/TrainerPicker/Scroll/Container/Button"]
+margin_left = 98.0
+margin_top = 8.0
+margin_right = 316.0
+margin_bottom = 46.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 7 )
+valign = 1
+clip_text = true
+
+[node name="desc" type="Label" parent="Popup/Pages/Training/training/TrainerPicker/Scroll/Container/Button"]
+margin_left = 98.0
+margin_top = 48.0
+margin_right = 316.0
+margin_bottom = 112.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 7 )
+autowrap = true
+
+[node name="cancel" type="Button" parent="Popup/Pages/Training/training/TrainerPicker"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -48.0
+mouse_default_cursor_shape = 2
+theme = ExtResource( 10 )
+custom_fonts/font = ExtResource( 6 )
+
+[node name="Actions" type="ScrollContainer" parent="Popup/Pages/Training/training"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 348.0
+theme = ExtResource( 9 )
+scroll_horizontal_enabled = false
+
+[node name="List" type="VBoxContainer" parent="Popup/Pages/Training/training/Actions"]
+margin_right = 628.0
+rect_min_size = Vector2( 628, 0 )
+size_flags_horizontal = 3
+custom_constants/separation = 14
+
+[node name="Section" type="VBoxContainer" parent="Popup/Pages/Training/training/Actions/List"]
+visible = false
+margin_right = 628.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 628, 116 )
+size_flags_horizontal = 3
+custom_constants/separation = 8
+
+[node name="Head" type="HBoxContainer" parent="Popup/Pages/Training/training/Actions/List/Section"]
+margin_right = 628.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 0, 36 )
+custom_constants/separation = 8
+
+[node name="icon" type="TextureRect" parent="Popup/Pages/Training/training/Actions/List/Section/Head"]
+margin_right = 32.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 32, 32 )
+expand = true
+stretch_mode = 6
+
+[node name="name" type="Label" parent="Popup/Pages/Training/training/Actions/List/Section/Head"]
+margin_left = 40.0
+margin_right = 628.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 6 )
+valign = 1
+
+[node name="Grid" type="GridContainer" parent="Popup/Pages/Training/training/Actions/List/Section"]
+margin_top = 44.0
+margin_right = 628.0
+margin_bottom = 116.0
+custom_constants/vseparation = 8
+custom_constants/hseparation = 8
+columns = 2
+
+[node name="Button" type="TextureButton" parent="Popup/Pages/Training/training/Actions/List/Section/Grid"]
+visible = false
+margin_right = 310.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 310, 72 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 31 )
+texture_pressed = ExtResource( 32 )
+texture_hover = ExtResource( 33 )
+texture_disabled = ExtResource( 32 )
+expand = true
+stretch_mode = 6
+
+[node name="icon" type="TextureRect" parent="Popup/Pages/Training/training/Actions/List/Section/Grid/Button"]
+margin_left = 10.0
+margin_top = 12.0
+margin_right = 58.0
+margin_bottom = 60.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="name" type="Label" parent="Popup/Pages/Training/training/Actions/List/Section/Grid/Button"]
+margin_left = 66.0
+margin_top = 8.0
+margin_right = 300.0
+margin_bottom = 40.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 7 )
+valign = 1
+clip_text = true
+
+[node name="cost" type="Label" parent="Popup/Pages/Training/training/Actions/List/Section/Grid/Button"]
+margin_left = 66.0
+margin_top = 40.0
+margin_right = 300.0
+margin_bottom = 66.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 7 )
+valign = 1
+
+[node name="Dimmer" type="ColorRect" parent="Popup/Pages/Training/training"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 348.0
+mouse_filter = 0
+color = Color( 0, 0, 0, 0.62 )
+
+[node name="finished" type="Control" parent="Popup/Pages/Training"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="status" type="Label" parent="Popup/Pages/Training/finished"]
+margin_left = 56.0
+margin_top = 12.0
+margin_right = 480.0
+margin_bottom = 58.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 6 )
+valign = 1
+
+[node name="tp_icon" type="TextureRect" parent="Popup/Pages/Training/finished"]
+margin_left = 16.0
+margin_top = 19.0
+margin_right = 48.0
+margin_bottom = 51.0
+texture = ExtResource( 30 )
+expand = true
+stretch_mode = 6
+
+[node name="reset_button" type="TextureButton" parent="Popup/Pages/Training/finished"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -276.0
+margin_top = 8.0
+margin_right = -16.0
+margin_bottom = 68.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 40 )
+texture_pressed = ExtResource( 41 )
+texture_hover = ExtResource( 42 )
+texture_disabled = ExtResource( 43 )
+expand = true
+stretch_mode = 6
+
+[node name="reset" type="Label" parent="Popup/Pages/Training/finished/reset_button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 7 )
+align = 1
+valign = 1
+
+[node name="list" type="Label" parent="Popup/Pages/Training/finished"]
+anchor_right = 1.0
+margin_left = 16.0
+margin_top = 88.0
+margin_right = -16.0
+margin_bottom = 130.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 6 )
+valign = 1
+
+[node name="Earned" type="GridContainer" parent="Popup/Pages/Training/finished"]
+anchor_right = 1.0
+margin_left = 16.0
+margin_top = 136.0
+margin_right = -16.0
+margin_bottom = 348.0
+custom_constants/vseparation = 12
+custom_constants/hseparation = 12
+columns = 5
+
+[node name="Button" type="TextureRect" parent="Popup/Pages/Training/finished/Earned"]
+visible = false
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 34 )
+expand = true
+stretch_mode = 6
+
+[node name="icon" type="TextureRect" parent="Popup/Pages/Training/finished/Earned/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="select_text" type="Label" parent="Popup/Pages/Training/finished"]
+anchor_right = 1.0
+margin_left = 16.0
+margin_top = 360.0
+margin_right = -16.0
+margin_bottom = 402.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 6 )
+valign = 1
+
+[node name="Rewards" type="GridContainer" parent="Popup/Pages/Training/finished"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 408.0
+margin_right = -16.0
+margin_bottom = -16.0
+custom_constants/vseparation = 12
+custom_constants/hseparation = 12
+columns = 5
+
+[node name="Button" type="TextureButton" parent="Popup/Pages/Training/finished/Rewards"]
+visible = false
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource( 34 )
+texture_pressed = ExtResource( 35 )
+texture_hover = ExtResource( 35 )
+texture_disabled = ExtResource( 34 )
+expand = true
+stretch_mode = 6
+
+[node name="icon" type="TextureRect" parent="Popup/Pages/Training/finished/Rewards/Button"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Popup/Pages/Training/finished/Rewards/Button"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -30.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 8 )
+align = 1
+valign = 1
+
+[node name="training_servant" type="Control" parent="Popup/Pages/Training"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="title" type="Label" parent="Popup/Pages/Training/training_servant"]
+anchor_right = 1.0
+margin_left = 16.0
+margin_top = 8.0
+margin_right = -16.0
+margin_bottom = 56.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 5 )
+align = 1
+valign = 1
+
+[node name="UnlockList" type="VBoxContainer" parent="Popup/Pages/Training/training_servant"]
+anchor_right = 1.0
+margin_left = 8.0
+margin_top = 72.0
+margin_right = -8.0
+margin_bottom = 384.0
+custom_constants/separation = 8
+
+[node name="working" type="Panel" parent="Popup/Pages/Training/training_servant/UnlockList"]
+margin_right = 556.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 0, 56 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="name" type="Label" parent="Popup/Pages/Training/training_servant/UnlockList/working"]
+anchor_right = 1.0
+margin_left = 16.0
+margin_right = -170.0
+margin_bottom = 56.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 6 )
+valign = 1
+
+[node name="status" type="Label" parent="Popup/Pages/Training/training_servant/UnlockList/working"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -162.0
+margin_right = -16.0
+margin_bottom = 56.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 6 )
+align = 2
+valign = 1
+
+[node name="combat" type="Panel" parent="Popup/Pages/Training/training_servant/UnlockList"]
+margin_top = 64.0
+margin_right = 556.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 56 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="name" type="Label" parent="Popup/Pages/Training/training_servant/UnlockList/combat"]
+anchor_right = 1.0
+margin_left = 16.0
+margin_right = -170.0
+margin_bottom = 56.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 6 )
+valign = 1
+
+[node name="status" type="Label" parent="Popup/Pages/Training/training_servant/UnlockList/combat"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -162.0
+margin_right = -16.0
+margin_bottom = 56.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 6 )
+align = 2
+valign = 1
+
+[node name="dating" type="Panel" parent="Popup/Pages/Training/training_servant/UnlockList"]
+margin_top = 128.0
+margin_right = 556.0
+margin_bottom = 184.0
+rect_min_size = Vector2( 0, 56 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="name" type="Label" parent="Popup/Pages/Training/training_servant/UnlockList/dating"]
+anchor_right = 1.0
+margin_left = 16.0
+margin_right = -170.0
+margin_bottom = 56.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 6 )
+valign = 1
+
+[node name="status" type="Label" parent="Popup/Pages/Training/training_servant/UnlockList/dating"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -162.0
+margin_right = -16.0
+margin_bottom = 56.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 6 )
+align = 2
+valign = 1
+
+[node name="sex" type="Panel" parent="Popup/Pages/Training/training_servant/UnlockList"]
+margin_top = 192.0
+margin_right = 556.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 0, 56 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="name" type="Label" parent="Popup/Pages/Training/training_servant/UnlockList/sex"]
+anchor_right = 1.0
+margin_left = 16.0
+margin_right = -170.0
+margin_bottom = 56.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 6 )
+valign = 1
+
+[node name="status" type="Label" parent="Popup/Pages/Training/training_servant/UnlockList/sex"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -162.0
+margin_right = -16.0
+margin_bottom = 56.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 6 )
+align = 2
+valign = 1
+
+[node name="sexservice" type="Panel" parent="Popup/Pages/Training/training_servant/UnlockList"]
+margin_top = 256.0
+margin_right = 556.0
+margin_bottom = 312.0
+rect_min_size = Vector2( 0, 56 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="name" type="Label" parent="Popup/Pages/Training/training_servant/UnlockList/sexservice"]
+anchor_right = 1.0
+margin_left = 16.0
+margin_right = -170.0
+margin_bottom = 56.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 6 )
+valign = 1
+
+[node name="status" type="Label" parent="Popup/Pages/Training/training_servant/UnlockList/sexservice"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -162.0
+margin_right = -16.0
+margin_bottom = 56.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 6 )
+align = 2
+valign = 1
+
+[node name="TalkButton" type="Button" parent="Popup/Pages/Training/training_servant"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -210.0
+margin_top = 408.0
+margin_right = 210.0
+margin_bottom = 456.0
+mouse_default_cursor_shape = 2
+theme = ExtResource( 10 )
+custom_fonts/font = ExtResource( 6 )
+
+[node name="MasterUpg" type="ScrollContainer" parent="Popup/Pages"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 9 )
+scroll_horizontal_enabled = false
+
+[node name="UpgradesList2" type="Control" parent="Popup/Pages/MasterUpg"]
+margin_right = 600.0
+margin_bottom = 440.0
+rect_min_size = Vector2( 600, 440 )
+script = ExtResource( 44 )
+
+[node name="Button" type="TextureButton" parent="Popup/Pages/MasterUpg/UpgradesList2"]
+visible = false
+margin_left = 2.0
+margin_top = -1.0
+margin_right = 102.0
+margin_bottom = 129.0
+shortcut_in_tooltip = false
+texture_normal = ExtResource( 47 )
+texture_pressed = ExtResource( 49 )
+texture_hover = ExtResource( 49 )
+texture_disabled = ExtResource( 48 )
+stretch_mode = 5
+script = ExtResource( 46 )
+
+[node name="bg" type="TextureRect" parent="Popup/Pages/MasterUpg/UpgradesList2/Button"]
+modulate = Color( 0.415686, 0.462745, 0.764706, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -32.0
+texture = ExtResource( 50 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Image" type="TextureRect" parent="Popup/Pages/MasterUpg/UpgradesList2/Button"]
+margin_left = 6.0
+margin_top = 5.0
+margin_right = 92.0
+margin_bottom = 91.0
+texture = ExtResource( 51 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="Popup/Pages/MasterUpg/UpgradesList2/Button"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = 1.0
+margin_right = -1.0
+margin_bottom = 28.0
+grow_horizontal = 2
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "Luxury rooms"
+align = 1
+valign = 2
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cost" type="Label" parent="Popup/Pages/MasterUpg/UpgradesList2/Button"]
+margin_left = 5.62997
+margin_top = 95.9603
+margin_right = 94.63
+margin_bottom = 127.96
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "100"
+align = 1
+valign = 1
+
+[node name="MinorUpg" type="ScrollContainer" parent="Popup/Pages"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 9 )
+scroll_horizontal_enabled = false
+
+[node name="UpgradesList3" type="Control" parent="Popup/Pages/MinorUpg"]
+margin_right = 600.0
+margin_bottom = 760.0
+rect_min_size = Vector2( 600, 760 )
+script = ExtResource( 44 )
+list_type = 1
+
+[node name="Button" type="TextureButton" parent="Popup/Pages/MinorUpg/UpgradesList3"]
+visible = false
+margin_left = 2.0
+margin_top = -1.0
+margin_right = 102.0
+margin_bottom = 129.0
+shortcut_in_tooltip = false
+texture_normal = ExtResource( 47 )
+texture_pressed = ExtResource( 49 )
+texture_hover = ExtResource( 49 )
+texture_disabled = ExtResource( 48 )
+stretch_mode = 5
+script = ExtResource( 46 )
+
+[node name="bg" type="TextureRect" parent="Popup/Pages/MinorUpg/UpgradesList3/Button"]
+modulate = Color( 0.415686, 0.462745, 0.764706, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -32.0
+texture = ExtResource( 50 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Image" type="TextureRect" parent="Popup/Pages/MinorUpg/UpgradesList3/Button"]
+margin_left = 6.0
+margin_top = 5.0
+margin_right = 92.0
+margin_bottom = 91.0
+texture = ExtResource( 51 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="Popup/Pages/MinorUpg/UpgradesList3/Button"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = 1.0
+margin_right = -1.0
+margin_bottom = 28.0
+grow_horizontal = 2
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "Luxury rooms"
+align = 1
+valign = 2
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cost" type="Label" parent="Popup/Pages/MinorUpg/UpgradesList3/Button"]
+margin_left = 5.62997
+margin_top = 95.9603
+margin_right = 94.63
+margin_bottom = 127.96
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "100"
+align = 1
+valign = 1
+
+[node name="Succubus" type="Control" parent="Popup/Pages"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 45 )
+
+[node name="info" type="Control" parent="Popup/Pages/Succubus"]
+margin_left = 2.0
+margin_top = 25.0
+margin_right = 296.0
+margin_bottom = 350.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup/Pages/Succubus/info"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_right = -54.0
+margin_bottom = -7.0
+
+[node name="record" type="HBoxContainer" parent="Popup/Pages/Succubus/info/VBoxContainer"]
+visible = false
+margin_right = 236.0
+margin_bottom = 33.0
+rect_pivot_offset = Vector2( -824, -22 )
+
+[node name="stat" type="Label" parent="Popup/Pages/Succubus/info/VBoxContainer/record"]
+margin_right = 197.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "PERSONALITYCURRENT"
+
+[node name="value" type="Label" parent="Popup/Pages/Succubus/info/VBoxContainer/record"]
+margin_left = 201.0
+margin_right = 236.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "0"
+align = 2
+
+[node name="separator" type="Label" parent="Popup/Pages/Succubus/info/VBoxContainer"]
+visible = false
+margin_top = 37.0
+margin_right = 236.0
+margin_bottom = 318.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 6 )
+align = 2
+
+[node name="upgrades" type="Control" parent="Popup/Pages/Succubus"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -351.0
+margin_top = 24.0
+margin_right = -16.0
+margin_bottom = 267.0
+
+[node name="Button" type="TextureButton" parent="Popup/Pages/Succubus/upgrades"]
+visible = false
+margin_left = 2.0
+margin_top = -1.0
+margin_right = 102.0
+margin_bottom = 129.0
+rect_scale = Vector2( 0.85, 0.85 )
+shortcut_in_tooltip = false
+texture_normal = ExtResource( 47 )
+texture_pressed = ExtResource( 49 )
+texture_hover = ExtResource( 49 )
+texture_disabled = ExtResource( 48 )
+stretch_mode = 5
+
+[node name="bg" type="TextureRect" parent="Popup/Pages/Succubus/upgrades/Button"]
+modulate = Color( 0.415686, 0.462745, 0.764706, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -32.0
+texture = ExtResource( 50 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="Popup/Pages/Succubus/upgrades/Button"]
+margin_left = 6.0
+margin_top = 5.0
+margin_right = 92.0
+margin_bottom = 91.0
+texture = ExtResource( 51 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="Popup/Pages/Succubus/upgrades/Button"]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = 1.0
+margin_right = -1.0
+margin_bottom = 28.0
+grow_horizontal = 2
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "Luxury rooms"
+align = 1
+valign = 2
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cost" type="Label" parent="Popup/Pages/Succubus/upgrades/Button"]
+margin_left = 5.62997
+margin_top = 95.9603
+margin_right = 94.63
+margin_bottom = 127.96
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "100"
+align = 1
+valign = 1
+
+[node name="thralls" type="Control" parent="Popup/Pages/Succubus"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = -166.0
+margin_right = -2.0
+margin_bottom = 2.0
+rect_pivot_offset = Vector2( -486, -382 )
+
+[node name="Label2" type="Label" parent="Popup/Pages/Succubus/thralls"]
+anchor_right = 1.0
+margin_top = 8.49487
+margin_bottom = 61.4949
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "SIBLINGMODULETHRALLLIST"
+align = 1
+clip_text = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Popup/Pages/Succubus/thralls"]
+margin_left = 46.8981
+margin_top = 72.9336
+margin_right = 618.898
+margin_bottom = 147.934
+custom_constants/separation = 10
+
+[node name="Button" type="TextureButton" parent="Popup/Pages/Succubus/thralls/HBoxContainer"]
+visible = false
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 56 )
+texture_pressed = ExtResource( 52 )
+texture_hover = ExtResource( 54 )
+texture_disabled = ExtResource( 56 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="Popup/Pages/Succubus/thralls/HBoxContainer/Button"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand = true
+
+[node name="ThrallsTooltip" type="TextureButton" parent="Popup/Pages/Succubus/thralls"]
+margin_left = 0.0556641
+margin_top = 6.6268
+margin_right = 64.0557
+margin_bottom = 70.627
+texture_normal = ExtResource( 57 )
+texture_hover = ExtResource( 23 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="spells" type="HBoxContainer" parent="Popup/Pages/Succubus"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.8877
+margin_top = -236.021
+margin_right = 1.8877
+margin_bottom = -176.021
+custom_constants/separation = 10
+alignment = 1
+
+[node name="Button" type="TextureButton" parent="Popup/Pages/Succubus/spells"]
+visible = false
+margin_left = 304.0
+margin_right = 364.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture_normal = ExtResource( 56 )
+texture_pressed = ExtResource( 52 )
+texture_hover = ExtResource( 54 )
+texture_disabled = ExtResource( 58 )
+expand = true
+stretch_mode = 5
+
+[node name="icon" type="TextureRect" parent="Popup/Pages/Succubus/spells/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+texture = ExtResource( 53 )
+expand = true
+
+[node name="value" type="Label" parent="Popup/Pages/Succubus/spells/Button"]
+visible = false
+margin_left = 44.0
+margin_top = 62.0
+margin_right = 92.0
+margin_bottom = 97.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.505882, 0.666667, 0.976471, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "10"
+align = 2
+
+[node name="value2" type="Label" parent="Popup/Pages/Succubus/spells/Button"]
+visible = false
+margin_left = 7.0
+margin_top = 62.0
+margin_right = 55.0
+margin_bottom = 97.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.964706, 0.388235, 0.713726, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "10"
+
+[node name="value3" type="Label" parent="Popup/Pages/Succubus/spells/Button"]
+visible = false
+margin_left = 44.0
+margin_top = 62.0
+margin_right = 92.0
+margin_bottom = 97.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "10"
+align = 2
+
+[node name="cdicon" type="TextureRect" parent="Popup/Pages/Succubus/spells/Button"]
+visible = false
+margin_left = 33.0
+margin_top = 66.0
+margin_right = 61.0
+margin_bottom = 94.0
+texture = ExtResource( 55 )
+expand = true
+
+[node name="Footer" type="Panel" parent="Popup"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -56.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Points" type="Label" parent="Popup/Footer"]
+anchor_right = 0.55
+margin_left = 16.0
+margin_right = -8.0
+margin_bottom = 56.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 6 )
+valign = 1
+clip_text = true
+
+[node name="Hint" type="Label" parent="Popup/Footer"]
+anchor_left = 0.55
+anchor_right = 1.0
+margin_left = 8.0
+margin_right = -16.0
+margin_bottom = 56.0
+custom_colors/font_color = Color( 0.976471, 0.435294, 0.368627, 1 )
+custom_fonts/font = ExtResource( 7 )
+align = 2
+valign = 1
+clip_text = true
+
+[node name="Tween" type="Tween" parent="Popup"]
+
+[node name="TabTween" type="Tween" parent="Popup"]

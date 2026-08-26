@@ -55,12 +55,10 @@ func build_thralls():
 			panel.connect('pressed', self, 'change_slave', [tchar])
 
 
+#clicking a thrall swaps the whole panel over to that character - the host decides what that
+#means for the rest of its screen
 func change_slave(newchar):
-	input_handler.get_spec_node(input_handler.NODE_SLAVETOOLTIP).hide()
-	input_handler.interacted_character = newchar 
-	root.match_state()
-	root.ClassesModule.get_node("ClassPanel").hide()
-	root.DetailsModule.custom_description_open()
+	root.switch_character(newchar)
 
 
 func build_trainings():

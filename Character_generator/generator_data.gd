@@ -695,29 +695,9 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Eyes_tex', texture = "res://Character_generator/images/10_eyes/eyes3.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Eyes_tex', texture = "res://Character_generator/images/10_eyes/eyes3.png"},
 		],
-		eyes4 = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Eyes_tex', texture = "res://Character_generator/images/10_eyes/eyes4.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Eyes_tex', texture = "res://Character_generator/images/10_eyes/eyes4.png"},
-		],
 		eyes5 = [
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Eyes_tex', texture = "res://Character_generator/images/10_eyes/eyes5.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Eyes_tex', texture = "res://Character_generator/images/10_eyes/eyes5.png"},
-		],
-		eyes1m = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Eyes_tex', texture = "res://Character_generator/images/10_eyes/eyes_m1.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Eyes_tex', texture = "res://Character_generator/images/10_eyes/eyes_m1.png"},
-		],
-		eyes2m = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Eyes_tex', texture = "res://Character_generator/images/10_eyes/eyes_m2.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Eyes_tex', texture = "res://Character_generator/images/10_eyes/eyes_m2.png"},
-		],
-		eyes3m = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Eyes_tex', texture = "res://Character_generator/images/10_eyes/eyes_m3.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Eyes_tex', texture = "res://Character_generator/images/10_eyes/eyes_m3.png"},
-		],
-		eyes4m = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Eyes_tex', texture = "res://Character_generator/images/10_eyes/eyes_m4.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Eyes_tex', texture = "res://Character_generator/images/10_eyes/eyes_m4.png"},
 		],
 		eyes5m = [
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Eyes_tex', texture = "res://Character_generator/images/10_eyes/eyes_m5.png"},
@@ -2261,10 +2241,6 @@ var transforms = {
 	#hair part, possible backward compat errors
 	hair_base = { #mb put bald here as in other hair nodes, but currently it is handled with length
 		#pls, do check, remove and fix pathes with all that duplicates in dir
-		lion = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', texture = "res://Character_generator/images/04_hairs_base/hairs_base_lion.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', texture = "res://Character_generator/images/04_hairs_base/hairs_base_lion.png"},
-		],
 		back = [
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', texture = "res://Character_generator/images/04_hairs_base/hair_base_back.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', texture = "res://Character_generator/images/04_hairs_base/hair_base_back.png"},
@@ -2289,17 +2265,9 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', texture = "res://Character_generator/images/04_hairs_base/hair_base_fringe 2.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', texture = "res://Character_generator/images/04_hairs_base/hair_base_fringe 2.png"},
 		],
-		irokez = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', texture = "res://Character_generator/images/04_hairs_base/hairs_base_irokez.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', texture = "res://Character_generator/images/04_hairs_base/hairs_base_irokez.png"},
-		],
 		kare = [
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', texture = "res://Character_generator/images/04_hairs_base/hair_base_kare.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', texture = "res://Character_generator/images/04_hairs_base/hair_base_kare.png"},
-		],
-		lamb = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', texture = "res://Character_generator/images/04_hairs_base/hair_base_lamb.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', texture = "res://Character_generator/images/04_hairs_base/hair_base_lamb.png"},
 		],
 		parting = [
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', texture = "res://Character_generator/images/04_hairs_base/hairs_base_parting.png"},
@@ -2385,12 +2353,6 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', texture = "res://Character_generator/images/05_hairs_assist/hair_assist_braid.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', texture = "res://Character_generator/images/05_hairs_assist/hair_assist_braid.png"},
 		],
-		bun = [
-			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', attr = 'visible', value = true},
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', attr = 'visible', value = true},
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', texture = "res://Character_generator/images/05_hairs_assist/hair_assist_bun.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', texture = "res://Character_generator/images/05_hairs_assist/hair_assist_bun.png"},
-		],
 		pigtails = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', attr = 'visible', value = true},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', attr = 'visible', value = true},
@@ -2433,6 +2395,10 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', texture = "res://Character_generator/images/05_hairs_assist/twin_tails.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', texture = "res://Character_generator/images/05_hairs_assist/twin_tails.png"},
 		],
+		#the re-export brought these two; the old doll has no art for them, so
+		#they carry no operations and exist only to be offered
+		spiral = [],
+		twin_braids = [],
 	},
 	
 	hair_back = { #pls, do check, remove and fix pathes with all that duplicates in dir and inbetween them
@@ -2448,13 +2414,6 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Hairs_back_mesh', texture = "res://Character_generator/images/06_hairs_back/hair_back_care.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Hairs_back_mesh', texture = "res://Character_generator/images/06_hairs_back/hair_back_care.png"},
 		],
-		dishevel = [
-			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hairs_back_mesh', attr = 'visible', value = true},
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hairs_back_mesh', attr = 'visible', value = true},
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hairs_back_long_mesh', attr = 'visible', value = false},
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Hairs_back_mesh', texture = "res://Character_generator/images/06_hairs_back/hair_back_dishevel.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Hairs_back_mesh', texture = "res://Character_generator/images/06_hairs_back/hair_back_dishevel.png"},
-		],
 		double_tail = [ #bugged for man
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hairs_back_mesh', attr = 'visible', value = true},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hairs_back_mesh', attr = 'visible', value = false},
@@ -2469,26 +2428,12 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Hairs_back_mesh', texture = "res://Character_generator/images/06_hairs_back/hair_back_ponytail_long.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Hairs_back_long_mesh', texture = "res://Character_generator/images/06_hairs_back/hair_back_ponytail_long.png"},
 		],
-		spiral = [
-			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hairs_back_mesh', attr = 'visible', value = true},
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hairs_back_mesh', attr = 'visible', value = true},
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hairs_back_long_mesh', attr = 'visible', value = false},
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Hairs_back_mesh', texture = "res://Character_generator/images/06_hairs_back/hair_back_spiral.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Hairs_back_mesh', texture = "res://Character_generator/images/06_hairs_back/hair_back_spiral.png"},
-		],
 		straight = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hairs_back_mesh', attr = 'visible', value = true},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hairs_back_mesh', attr = 'visible', value = true},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hairs_back_long_mesh', attr = 'visible', value = false},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Hairs_back_mesh', texture = "res://Character_generator/images/06_hairs_back/hair_back_straight.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Hairs_back_mesh', texture = "res://Character_generator/images/06_hairs_back/hair_back_straight.png"},
-		],
-		twin_braids = [
-			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hairs_back_mesh', attr = 'visible', value = true},
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hairs_back_mesh', attr = 'visible', value = true},
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hairs_back_long_mesh', attr = 'visible', value = false},
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Hairs_back_mesh', texture = "res://Character_generator/images/06_hairs_back/hair_back_twin braids.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Hairs_back_mesh', texture = "res://Character_generator/images/06_hairs_back/hair_back_twin braids.png"},
 		],
 		wave = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hairs_back_mesh', attr = 'visible', value = true},
@@ -4174,36 +4119,14 @@ var transforms = {
 	},
 	
 	eyeshape = { #mixed styles due to similaruty
-		face1 = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Face_tex', texture = "res://Character_generator/images/02_faces/face_m1.png"},
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Face_tex_furry', texture = "res://Character_generator/images/17_beastkin_faces/beastkin_face_m2.png"}, #definetely missed
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Face_tex', texture = "res://Character_generator/images/02_faces/face1.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Face_tex_furry', texture = "res://Character_generator/images/17_beastkin_faces/beastkin_face1.png"},
-		],
-		face2 = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Face_tex', texture = "res://Character_generator/images/02_faces/face_m2.png"},
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Face_tex_furry', texture = "res://Character_generator/images/17_beastkin_faces/beastkin_face_m2.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Face_tex', texture = "res://Character_generator/images/02_faces/face2.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Face_tex_furry', texture = "res://Character_generator/images/17_beastkin_faces/beastkin_face2.png"},
-		],
-		face3 = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Face_tex', texture = "res://Character_generator/images/02_faces/face_m3.png"},
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Face_tex_furry', texture = "res://Character_generator/images/17_beastkin_faces/beastkin_face_m3.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Face_tex', texture = "res://Character_generator/images/02_faces/face3.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Face_tex_furry', texture = "res://Character_generator/images/17_beastkin_faces/beastkin_face3.png"},
-		],
-		face4 = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Face_tex', texture = "res://Character_generator/images/02_faces/face_m4.png"},
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Face_tex_furry', texture = "res://Character_generator/images/17_beastkin_faces/beastkin_face_m4.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Face_tex', texture = "res://Character_generator/images/02_faces/face4.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Face_tex_furry', texture = "res://Character_generator/images/17_beastkin_faces/beastkin_face4.png"},
-		],
-		face5 = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Face_tex', texture = "res://Character_generator/images/02_faces/face_m5.png"},
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Face_tex_furry', texture = "res://Character_generator/images/17_beastkin_faces/beastkin_face_m5.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Face_tex', texture = "res://Character_generator/images/02_faces/face5.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Face_tex_furry', texture = "res://Character_generator/images/17_beastkin_faces/beastkin_face5.png"},
-		],
+		face6 = [],
+		face7 = [],
+		face8 = [],
+		face_m1 = [],
+		face_m2 = [],
+		face_m3 = [],
+		face_m4 = [],
+		face_m5 = [],
 	},
 	
 	nose = {

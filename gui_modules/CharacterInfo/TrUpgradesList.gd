@@ -1,53 +1,127 @@
 extends Control
 
+#The training page. It used to be a tab in the character info window and is now the main page
+#of CharacterTrainingPopup, opened off the mansion card. `root` is whoever hosts it and has to
+#answer update() - the popup does.
+#
+#Three mutually exclusive states hang off this node, one per character situation, and hide_all()
+#relies on them being its only direct children. Picking a trainer is not a state of its own: the
+#picker takes over the left column while a dimmer covers the actions, so the player always sees
+#who they are picking for.
+
 var person
 var root
 
 var tr_data = {}
-var tr_traits = []
-var tr_traits_s = []
 var tr_rewards = []
+
+#how much room each state wants from the popup around it
+const SIZE_TRAINING = Vector2(1120, 980)
+const SIZE_FINISHED = Vector2(860, 860)
+const SIZE_SERVANT = Vector2(760, 660)
+
+#the greyed-out look the rest of the mansion uses for an action that cannot be taken
+const DISABLED_MATERIAL = preload("res://assets/sfx/bw_shader.tres")
+
+const DISPOSITION_COLORS = {
+	weak = 'green',
+	kink = 'green',
+	neutral = 'yellow',
+	resist = 'red',
+}
+
+onready var StatusColumn = $training/Status
+#the whole trainer card is the button - clicking anywhere on it opens the picker, not just
+#the little portrait in its corner
+onready var TrainerCard = $training/Status/TrainerCard
+onready var TraineeCard = $training/Status/Trainee
+onready var LoyaltyBar = $training/Status/Loyalty/spirit
+onready var PointsLabel = $training/Status/Points/label
+onready var DecayLabel = $training/Status/cd
+onready var DispositionList = $training/Status/Dispositions/List
+onready var Picker = $training/TrainerPicker
+onready var PickerList = $training/TrainerPicker/Scroll/Container
+onready var ActionList = $training/Actions/List
+onready var Dimmer = $training/Dimmer
+onready var EarnedList = $finished/Earned
+onready var RewardList = $finished/Rewards
+
+#true while the picker is open over a character who already has a trainer, so cancelling has
+#somewhere to go back to
+var picking_trainer = false
+
 
 func _ready():
 	gather_data()
-	$no_trainer/TextureButton.connect("pressed", self, 'build_trainer_list')
-	$training/trainer_frame.connect("pressed", self, 'build_trainer_list')
+	TrainerCard.connect("pressed", self, 'open_trainer_picker')
+	Picker.get_node('cancel').connect("pressed", self, 'close_trainer_picker')
 	$finished/reset_button.connect("pressed", self, 'reset_training')
-	$training/complete_button.visible = false
-	globals.connecttexttooltip($training/Tooltip, tr("INFOTRAINING"))
-	globals.connecttexttooltip($trainer_list/tooltip, tr("INFOSLAVETRAINER"))
-	$training/spirit.max_value = 100
-	globals.connecttexttooltip($training/TextureRect, tr("TRAININGPOINTSTOOLTIP"))
-	globals.connecttexttooltip($training/TextureRect2, tr("LOYALTYTOOLTIP"))
-	globals.connecttexttooltip($training/spirit, tr("LOYALTYTOOLTIP"))
-	globals.connecttexttooltip($training/trainer_frame, tr("CLICKTOCHANGE"))
-	globals.connecttexttooltip($training/cd, tr("LOYALTYDECAYTOOLTIP"))
 	$training_servant/TalkButton.connect("pressed", self, 'open_servant_unlock_dialogue')
 	$training_servant/TalkButton.text = tr('SERVANTUNLOCK_TALK_BUTTON')
 
+	globals.connecttexttooltip($training/Status/Tooltip, tr("INFOTRAINING"))
+	globals.connecttexttooltip(Picker.get_node('tooltip'), tr("INFOSLAVETRAINER"))
+	globals.connecttexttooltip($training/Status/Points/icon, tr("TRAININGPOINTSTOOLTIP"))
+	globals.connecttexttooltip($training/Status/Loyalty/icon, tr("LOYALTYTOOLTIP"))
+	globals.connecttexttooltip(LoyaltyBar, tr("LOYALTYTOOLTIP"))
+	globals.connecttexttooltip(DecayLabel, tr("LOYALTYDECAYTOOLTIP"))
 	globals.connecttexttooltip($finished/reset_button, tr("RESETTRAINREQ"))
-	input_handler.register_btn_source("trainer_btn", self, "tut_get_no_trainer_btn")
+	Picker.get_node('title').text = tr("TRAINERSAVAILABLE")
+	Picker.get_node('cancel').text = tr('CANCEL')
+	$training/Status/Dispositions/title.text = tr("TRAININGDISPOSITIONS")
+
 	input_handler.register_btn_source("trainer_select_btn", self, "tut_get_trainer_select")
 	input_handler.register_btn_source("praise_btn", self, "tut_get_praise_btn")
 	input_handler.register_btn_source("training_bonus_btn", self, "tut_get_training_bonus_btn")
-	
 
-func tut_get_no_trainer_btn():
-	return $no_trainer/TextureButton
+
 func tut_get_trainer_select():
-	return $trainer_list/Container2/Container.get_children()[0]
+	for button in PickerList.get_children():
+		if button.name != 'Button' and button.visible:
+			return button
+	return null
+
+
+#actions are grouped into a section per category, so the button has to be looked up by the code
+#it was built for instead of by its place in one flat grid
 func tut_get_praise_btn():
-	return $training/ScrollContainer/VBoxContainer.get_children()[0]
+	return find_action_button('praise')
+
+
+func find_action_button(code):
+	for section in ActionList.get_children():
+		if section.name == 'Section' or !section.has_node('Grid'):
+			continue
+		for button in section.get_node('Grid').get_children():
+			if button.get_meta('code', "") == code:
+				return button
+	return null
+
+
 func tut_get_training_bonus_btn():
-	for btn in $finished/VBoxContainer/HBoxContainer3.get_children():
+	for btn in RewardList.get_children():
 		if btn.get_meta('trait', "") == "training_productivity":
 			return btn
+	return null
+
 
 func hide_all():
 	for cat in get_children():
 		cat.visible = false
 
-func gather_data(): 
+
+#what the popup should size itself to for whatever is on screen
+func desired_size():
+	if person == null:
+		return SIZE_TRAINING
+	if person.get_stat('slave_class') in ['servant', 'servant_notax', 'heir']:
+		return SIZE_SERVANT
+	if !person.training.enable:
+		return SIZE_FINISHED
+	return SIZE_TRAINING
+
+
+func gather_data():
 	tr_data.clear()
 	for tr in Skilldata.training_actions.values():
 		if !globals.checkreqs(tr.reqs):
@@ -55,85 +129,156 @@ func gather_data():
 		if !tr_data.has(tr.type):
 			tr_data[tr.type] = []
 		tr_data[tr.type].push_back(tr.code)
-	tr_traits.clear()
-	tr_traits_s.clear()
 	tr_rewards.clear()
 	for tr in Traitdata.traits.values():
 		if tr.code == 'untrained':
 			continue
 		if !tr.has('tags'):
 			continue
-		if tr.tags.has('training'):
-			tr_traits.push_back(tr.code)
-		if tr.tags.has('servant_training'):
-			tr_traits_s.push_back(tr.code)
 		if tr.tags.has('training_success'):
 			tr_rewards.push_back(tr.code)
-		
+
 
 func match_state():
+	if person == null:
+		return
 	hide_all()
+	picking_trainer = false
 	if person.get_stat('slave_class') in ['servant', 'servant_notax', 'heir']:
 		build_training_servant()
 	elif person.training.enable:
-		if person.get_trainer() != null:
-			build_training()
-		else:
-			build_no_trainer()
+		build_training()
 	else:
 		build_posttrain()
 
 
-func build_trainees(): #not used
-	$trainees.visible = true
-	var container = $trainees/ScrollContainer/Container
-	var list = person.get_trainees()
-	var empty = person.get_stat('trainee_amount') - list.size()
-	input_handler.ClearContainer(container, ['Button'])
-	for id in list:
-		var tchar = characters_pool.get_char_by_id(id)
-		var panel = input_handler.DuplicateContainerTemplate(container, 'Button')
-		panel.get_node('icon').texture = tchar.get_icon()
-		globals.connectslavetooltip(panel.get_node('icon'), tchar)
-		panel.get_node('name').text = tchar.get_full_name()
-	for i in range(empty):
-		var panel = input_handler.DuplicateContainerTemplate(container, 'Button')
-		panel.get_node('icon').texture = null
-		panel.get_node('name').text = ""
+func build_training():
+	gather_data()
+	$training.visible = true
+	build_status_column()
+	build_training_list()
+	#without a trainer there is nothing to spend a day on, so the picker opens straight away and
+	#the actions behind it are dimmed out rather than shown as a wall of disabled buttons
+	apply_picker_state(person.get_trainer() == null)
 
 
-func build_no_trainer():
-	$no_trainer.visible = true
+func apply_picker_state(open):
+	if open:
+		build_trainer_list()
+	StatusColumn.visible = !open
+	Picker.visible = open
+	#the dimmer sits over the action list and swallows the clicks by itself
+	Dimmer.visible = open
+
+
+func open_trainer_picker():
+	picking_trainer = person.get_trainer() != null
+	apply_picker_state(true)
+
+
+func close_trainer_picker():
+	picking_trainer = false
+	root.match_state()
+
+
+func build_status_column():
+	var trainer = person.get_trainer()
+	TrainerCard.get_node('icon').texture = trainer.get_icon() if trainer != null else null
+	if trainer != null:
+		TrainerCard.get_node('name').text = tr("TRAINING_TRAINER_NAME") % trainer.get_full_name()
+		var used = trainer.get_trainees().size()
+		var amount = trainer.get_stat('trainee_amount')
+		TrainerCard.get_node('slots').text = "%d/%d" % [used, amount]
+		globals.connecttexttooltip(TrainerCard,
+			tr("TRAINING_SLAVES_ASSIGNED") % [trainer.get_full_name(), used, amount]
+			+ "\n" + tr("CLICKTOCHANGE"))
+
+	TraineeCard.get_node('icon').texture = person.get_icon()
+	TraineeCard.get_node('name').text = person.get_full_name()
+	globals.connectslavetooltip(TraineeCard.get_node('icon'), person)
+
+	LoyaltyBar.max_value = 100
+	LoyaltyBar.value = person.get_stat('loyalty')
+	LoyaltyBar.get_node('percent_label').text = "%d%%" % int(person.get_stat('loyalty'))
+	$training/Status/Loyalty/label.text = tr(statdata.statdata.loyalty.name)
+
+	var tp_value = person.get_stat('training_points')
+	var tp_cap = person.training.get_training_points_cap()
+	PointsLabel.text = tr('TRAININGLABELLOYALTY') % [floor(tp_value), tp_cap]
+	PointsLabel.set("custom_colors/font_color", Color(variables.hexcolordict.yellow))
+
+	var decay_grace = person.training.get_loyalty_decay_grace()
+	var decay_amount = person.training.get_loyalty_decay_amount()
+	var days_left = int(floor(decay_grace)) + 1 - person.training.days_since_training
+	if days_left > 0:
+		DecayLabel.text = tr('TRAININGDECAYSIN') % [days_left, decay_amount]
+		DecayLabel.set("custom_colors/font_color", Color(variables.hexcolordict.yellow))
+	else:
+		DecayLabel.text = tr('TRAININGDECAYING') % decay_amount
+		DecayLabel.set("custom_colors/font_color", Color(variables.hexcolordict.red))
+
+	build_dispositions()
+
+
+#Dispositions decide which actions are worth doing. They live here, beside the loyalty readout,
+#and no longer repeat themselves in the heading of every action section.
+func build_dispositions():
+	input_handler.ClearContainer(DispositionList, ['record'])
+	for category in Skilldata.training_categories:
+		if !person.training.dispositions.has(category):
+			continue
+		var cat_data = Skilldata.training_categories[category]
+		var record = input_handler.DuplicateContainerTemplate(DispositionList, 'record')
+		record.get_node('cat').text = tr(cat_data.name)
+		var label = record.get_node('value')
+		if person.training.dispositions_known.get(category, false):
+			var value = person.training.dispositions[category]
+			label.text = person.training.get_disposition_name(value)
+			label.set("custom_colors/font_color", Color(disposition_color(value)))
+		else:
+			label.text = tr('TRAININGDISPOSITIONUNKNOWN')
+			label.set("custom_colors/font_color", Color(variables.hexcolordict.k_gray))
+
+
+func disposition_color(value):
+	if DISPOSITION_COLORS.has(value):
+		return variables.hexcolordict[DISPOSITION_COLORS[value]]
+	return variables.hexcolordict.yellow
 
 
 func build_trainer_list():
-	hide_all()
-	$trainer_list.visible = true
-	input_handler.ClearContainer($trainer_list/Container2/Container, ['Button'])
-	
+	Picker.get_node('cancel').visible = picking_trainer
+	input_handler.ClearContainer(PickerList, ['Button'])
+
 	if person.get_trainer() != null:
-		var panel = input_handler.DuplicateContainerTemplate($trainer_list/Container2/Container, 'Button')
+		var panel = input_handler.DuplicateContainerTemplate(PickerList, 'Button')
 		panel.get_node('icon').texture = load("res://assets/Textures_v2/MANSION/no.png")
 		panel.get_node('name').text = tr('REMOVETRAINER')
+		panel.get_node('desc').text = ""
 		panel.connect('pressed', self, 'remove_trainer')
-	
+
 	for id in ResourceScripts.game_party.character_order:
 		var tchar = characters_pool.get_char_by_id(id)
 		if !tchar.can_be_trainer():
 			continue
 		var amount = tchar.get_stat('trainee_amount')
 		var used = tchar.get_trainees().size()
-		var panel = input_handler.DuplicateContainerTemplate($trainer_list/Container2/Container, 'Button')
+		var panel = input_handler.DuplicateContainerTemplate(PickerList, 'Button')
 		panel.get_node('icon').texture = tchar.get_icon()
 		globals.connectslavetooltip(panel.get_node('icon'), tchar)
-		panel.get_node('name').text = tr("TRAINING_SLAVES_ASSIGNED") % [tchar.get_full_name(), used, amount]
+		#the title is the name on its own - the counts and the classes go underneath, or a long
+		#name wraps into the line below it and paints over it
+		panel.get_node('name').text = tchar.get_full_name()
+		globals.connecttexttooltip(panel, tr("TRAINING_SLAVES_ASSIGNED") % [tchar.get_full_name(), used, amount])
 		panel.connect('pressed', self, 'assign_trainer', [id])
-		var text = ""
+		var classes = ""
 		for prof in tchar.get_professions():
 			var data = classesdata.professions[prof]
 			if data.traits.has('trainer'):
-				text += "%s, " % tr(data.name)
-		text = text.trim_suffix(', ')
+				classes += "%s, " % tr(data.name)
+		var text = tr("TRAINING_TRAINER_SLOTS") % [used, amount]
+		if classes != "":
+			text += " - " + classes.trim_suffix(', ')
 		if used >= amount:
 			panel.disabled = true
 			panel.get_node('icon').material = load("res://assets/sfx/bw_shader.tres")
@@ -142,30 +287,22 @@ func build_trainer_list():
 			panel.disabled = true
 			panel.get_node('icon').material = load("res://assets/sfx/bw_shader.tres")
 			text += "\n" + tr('ALREADYTRAINER')
-		panel.get_node('desc').text = text 
-	
-	var panel = input_handler.DuplicateContainerTemplate($trainer_list/Container2/Container, 'Button')
-	panel.get_node('icon').texture = load("res://assets/Textures_v2/MANSION/arrow_navigator.png")
-	panel.get_node('name').text = tr('CANCEL')
-	panel.connect('pressed', self, 'hide_training_list')
-	
+		panel.get_node('desc').text = text
 
-
-func hide_training_list():
-	$trainer_list.visible = false
-	match_state()
+	Picker.get_node('empty').visible = PickerList.get_child_count() <= 1
+	Picker.get_node('empty').text = person.translate(tr('TRAINNOTRAINER'))
 
 
 func assign_trainer(id):
 	var tchar = characters_pool.get_char_by_id(id)
 	tchar.add_trainee(person.id)
-	match_state()
+	root.match_state()
 
 
 func remove_trainer():
 	if person.get_trainer() != null:
 		person.clear_training()
-	match_state()
+	root.match_state()
 
 
 func build_posttrain():
@@ -175,31 +312,23 @@ func build_posttrain():
 	var training_points_cap = person.training.get_training_points_cap()
 	$finished/status.text = tr('TRAININGLABELLOYALTY') % [training_points, training_points_cap]
 	globals.connecttexttooltip($finished/tp_icon, tr("TRAININGPOINTSTOOLTIP"))
-	var text = tr('TRAININGFINISHHEADER')
-	var list = person.get_traits_by_tag('training')
-	input_handler.ClearContainer($finished/VBoxContainer/HBoxContainer2, ['Button'])
-	$finished/VBoxContainer/list.text = text
-	for tr in list:
+	$finished/list.text = tr('TRAININGFINISHHEADER')
+	$finished/reset_button/reset.text = tr('TRAINING_RESET_BUTTON')
+
+	input_handler.ClearContainer(EarnedList, ['Button'])
+	for tr in person.get_traits_by_tag('training'):
 		var trdata = Traitdata.traits[tr]
-#		text += "\n \t"
-#		text += tr(trdata.name)
-		var panel = input_handler.DuplicateContainerTemplate($finished/VBoxContainer/HBoxContainer2, 'Button')
-		if trdata.icon is String:
-			panel.get_node('icon').texture = load(trdata.icon)
-		else:
-			panel.get_node('icon').texture = trdata.icon
-		globals.connecttexttooltip(panel, "[center]" +tr(trdata.name) + "[/center]\n" +  person.translate(tr(trdata.descript)))
-	
-	$finished/VBoxContainer/select_text.text = tr('TRAININGBONUSES')
-	input_handler.ClearContainer($finished/VBoxContainer/HBoxContainer3, ['Button'])
+		var panel = input_handler.DuplicateContainerTemplate(EarnedList, 'Button')
+		panel.get_node('icon').texture = load_icon(trdata.icon)
+		globals.connecttexttooltip(panel, "[center]" + tr(trdata.name) + "[/center]\n" + person.translate(tr(trdata.descript)))
+
+	$finished/select_text.text = tr('TRAININGBONUSES')
+	input_handler.ClearContainer(RewardList, ['Button'])
 	for tr in tr_rewards:
 		var trdata = Traitdata.traits[tr]
-		var panel = input_handler.DuplicateContainerTemplate($finished/VBoxContainer/HBoxContainer3, 'Button')
+		var panel = input_handler.DuplicateContainerTemplate(RewardList, 'Button')
 		panel.get_node('Label').text = str(trdata.cost)
-		if trdata.icon is String:
-			panel.get_node('icon').texture = load(trdata.icon)
-		else:
-			panel.get_node('icon').texture = trdata.icon
+		panel.get_node('icon').texture = load_icon(trdata.icon)
 		if person.check_trait(tr):
 			panel.pressed = true
 			panel.get_node('Label').visible = false
@@ -225,16 +354,7 @@ func reset_training_confirm():
 	ResourceScripts.game_res.remove_item('oblivion_potion', 1)
 	person.reset_training()
 	person.try_breakdown('brk_training_reset')
-	match_state()
-
-
-func build_training():
-	gather_data()
-	$training.visible = true
-	globals.connecttexttooltip($training/d_button, person.get_dispositions_text()) 
-	build_training_header()
-	build_training_list()
-	build_training_traits()
+	root.match_state()
 
 
 const SERVANT_UNLOCK_LIST = [
@@ -262,12 +382,8 @@ func get_missing_req_texts(entry):
 
 
 func build_training_servant():
-	gather_data()
 	$training_servant.visible = true
-	$training_servant/cost.visible = false
-	$training_servant/resistance.visible = false
-	$training_servant/loyalty.visible = false
-	$training_servant/HBoxContainer2.visible = false
+	$training_servant/title.text = tr('SIBLINGMODULETRAININGSSERVANTS')
 
 	var all_unlocked = true
 	for entry in SERVANT_UNLOCK_LIST:
@@ -320,125 +436,142 @@ func open_servant_unlock_dialogue():
 	input_handler.interactive_message_custom(dialogue_data)
 
 
-func build_training_header():
-	var trainer = person.get_trainer()
-	$training/trainer_frame/icon.texture = trainer.get_icon()
-	$training/name.text = tr("TRAINING_TRAINER_NAME") % trainer.get_full_name()
-	$training/spirit.value = person.get_stat('loyalty')
-	$training/spirit/percent_label.text = "%d%%" % int(person.get_stat('loyalty'))
-	$training/resistance.visible = false
-
-	var tp_label = $training/loyalty
-	var tp_value = person.get_stat('training_points')
-	var tp_cap = person.training.get_training_points_cap()
-	tp_label.text = tr('TRAININGLABELLOYALTY') % [floor(tp_value), tp_cap]
-	var tp_color = variables.hexcolordict.yellow
-	if tp_value >= person.get_training_cost():
-		tp_color = variables.hexcolordict.green
-	tp_label.set("custom_colors/font_color", Color(tp_color))
-	
-	var decay_grace = person.training.get_loyalty_decay_grace()
-	var decay_amount = person.training.get_loyalty_decay_amount()
-	var days_left = int(floor(decay_grace)) + 1 - person.training.days_since_training
-	if days_left > 0:
-		$training/cd.text = tr('TRAININGDECAYSIN') % [days_left, decay_amount]
-		$training/cd.set("custom_colors/font_color", Color(variables.hexcolordict.yellow))
-	else:
-		$training/cd.text = tr('TRAININGDECAYING') % decay_amount
-		$training/cd.set("custom_colors/font_color", Color(variables.hexcolordict.red))
-
- 
+#One section per training category instead of one flat grid of every action there is - the
+#categories are what the dispositions are keyed on, so grouping by them is also what the player
+#is actually choosing between.
 func build_training_list():
 	var trainer = person.get_trainer()
-	input_handler.ClearContainer($training/ScrollContainer/VBoxContainer, ['Button'])
+	input_handler.ClearContainer(ActionList, ['Section'])
 	for category in Skilldata.training_categories:
-		var cat_data = Skilldata.training_categories[category]
-		var amount = tr_data[category].size()
-		for tr in tr_data[category]:
-			var trdata = Skilldata.training_actions[tr]
-			if trdata.has('showup_reqs') and !trainer.checkreqs(trdata.showup_reqs):
+		if !tr_data.has(category):
+			continue
+		var codes = []
+		for code in tr_data[category]:
+			var trdata = Skilldata.training_actions[code]
+			if trdata.has('showup_reqs') and trainer != null and !trainer.checkreqs(trdata.showup_reqs):
 				continue
-			var panel = input_handler.DuplicateContainerTemplate($training/ScrollContainer/VBoxContainer, 'Button')
-			var text = tr(trdata.name) + "\n" + tr("CATEGORYKEYWORD") + ": {color=yellow|" + tr("ACTIONCATEGORY"+trdata.type.to_upper()) + "}\n" + person.translate(tr(trdata.descript))
-			if cat_data.icon is String:
-				panel.get_node('icon').texture = load(cat_data.icon)
-			else:
-				panel.get_node('icon').texture = cat_data.icon
-			panel.get_node('name').text = tr(trdata.name)
-			panel.connect('pressed', self, 'activate_training', [tr])
-			#reqs check
-			if !trainer.checkreqs(trdata.reqs_trainer):
-				panel.disabled = true
-				text = "{color=red|"+tr('ACTIONTRAINERREQSNOTMET') +"}\n\n"+ text
-				globals.connecttexttooltip(panel, text)
-				panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
-			#rebellious slave refuses training right after being acquired
-			elif !gui_controller.mansion.in_test_mode and person.training.is_rebel_blocked():
-				panel.disabled = true
-				text = "{color=red|"+tr('ACTIONREBELBLOCKED') +"}\n\n"+ text
-				globals.connecttexttooltip(panel, text)
-				panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.gray))
-			#avail check
-			elif !gui_controller.mansion.in_test_mode and ((tr == 'mindread' and person.training.cooldown.mindread > 0)
-					or person.training.cooldown.positive > 0):
-				panel.disabled = true
-				text = "{color=red|"+tr('ACTIONALREADYDONETODAY') +"}\n\n"+ text
-				globals.connecttexttooltip(panel, text)
-				panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.gray))
-			#cost check
-			else:
-				var f = true
-				for stat in trdata.cost:
-					match stat:
-						'gold':
-							f = f and (ResourceScripts.game_res.money >= trdata.cost[stat])
-						'mana':
-							f = f and (trainer.mp >= trdata.cost[stat])
-				if !f:
-					panel.disabled = true
-					globals.connecttexttooltip(panel, tr('COSTNOTMET'))
-					panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
-				else:
-					globals.connecttexttooltip(panel, text)
-					if person.training.dispositions_known[category]:
-						match person.training.dispositions[category]:
-							'weak', 'kink':
-								panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.green))
-							'neutral':
-								panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.yellow))
-							'resist':
-								panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
+			codes.push_back(code)
+		if codes.empty():
+			continue
+		var cat_data = Skilldata.training_categories[category]
+		var section = input_handler.DuplicateContainerTemplate(ActionList, 'Section')
+		section.get_node('Head/icon').texture = load_icon(cat_data.icon)
+		section.get_node('Head/name').text = tr(cat_data.name)
+		for code in codes:
+			build_action_button(section.get_node('Grid'), code, cat_data, trainer)
 
 
-func build_training_traits():
-	$training/cost.text = tr('TRAININGCOST') % person.get_training_cost()
-	input_handler.ClearContainer($training/HBoxContainer2, ['Button'])
-	for tr in tr_traits:
-		var panel = input_handler.DuplicateContainerTemplate($training/HBoxContainer2, 'Button')
-		var trdata = Traitdata.traits[tr]
-		if trdata.icon is String:
-			panel.get_node('icon').texture = load(trdata.icon)
+func build_action_button(grid, code, cat_data, trainer):
+	var trdata = Skilldata.training_actions[code]
+	var panel = input_handler.DuplicateContainerTemplate(grid, 'Button')
+	panel.set_meta('code', code)
+	panel.material = null
+	panel.get_node('icon').material = null
+	panel.get_node('icon').texture = load_icon(cat_data.icon)
+	panel.get_node('name').text = tr(trdata.name)
+	panel.get_node('cost').text = cost_text(trdata)
+	panel.connect('pressed', self, 'activate_training', [code])
+	var text = tr(trdata.name) + "\n" + tr("CATEGORYKEYWORD") + ": {color=yellow|" + tr("ACTIONCATEGORY" + trdata.type.to_upper()) + "}\n" + person.translate(tr(trdata.descript))
+	#with no trainer the whole list is dimmed anyway, so it only has to read as unavailable
+	if trainer == null:
+		panel.disabled = true
+		grey_out(panel)
+		globals.connecttexttooltip(panel, text)
+		return
+	#reqs check
+	if !trainer.checkreqs(trdata.reqs_trainer):
+		panel.disabled = true
+		text = "{color=red|" + tr('ACTIONTRAINERREQSNOTMET') + "}\n\n" + text
+		grey_out(panel)
+		globals.connecttexttooltip(panel, text)
+		panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
+	#rebellious slave refuses training right after being acquired
+	elif !in_test_mode() and person.training.is_rebel_blocked():
+		panel.disabled = true
+		text = "{color=red|" + tr('ACTIONREBELBLOCKED') + "}\n\n" + text
+		grey_out(panel)
+		globals.connecttexttooltip(panel, text)
+		panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.k_gray))
+	#avail check
+	elif day_is_spent() or (!in_test_mode() and code == 'mindread' and person.training.cooldown.mindread > 0):
+		panel.disabled = true
+		text = "{color=red|" + tr('ACTIONALREADYDONETODAY') + "}\n\n" + text
+		grey_out(panel)
+		globals.connecttexttooltip(panel, text)
+		panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.k_gray))
+	#cost check
+	else:
+		var f = true
+		for stat in trdata.cost:
+			match stat:
+				'gold':
+					f = f and (ResourceScripts.game_res.money >= trdata.cost[stat])
+				'mana':
+					f = f and (trainer.mp >= trdata.cost[stat])
+		if !f:
+			panel.disabled = true
+			grey_out(panel)
+			globals.connecttexttooltip(panel, tr('COSTNOTMET'))
+			panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
 		else:
-			panel.get_node('icon').texture = trdata.icon
-		globals.connecttexttooltip(panel, person.translate("[center]" + tr(trdata.name) + "[/center]\n" + tr(trdata.descript) +  person.training.build_stored_req_desc(tr)))
-		panel.get_node('Label').text = str(person.get_training_cost())
-		if person.check_trait(tr):
-			panel.pressed = true
-			panel.get_node('Label').visible = false
-		else:
-			panel.pressed = false
-			if person.get_stat('training_points') >= person.get_training_cost() and person.checkreqs(trdata.reqs) and person.training.check_stored_reqs(tr) and !person.has_status('no_trainings'):
-				panel.connect('toggled', self, 'press_trait', [tr])
-			else:
-				panel.disabled = true
-				panel.material = load("res://assets/sfx/bw_shader.tres")
-				panel.get_node('icon').material = load("res://assets/sfx/bw_shader.tres")
-				panel.get_node('icon').modulate = Color(0.3, 0.3, 0.3, 1.0)
+			globals.connecttexttooltip(panel, text)
+			if person.training.dispositions_known.get(trdata.type, false):
+				panel.get_node('name').set("custom_colors/font_color", Color(disposition_color(person.training.dispositions[trdata.type])))
+
+
+func cost_text(trdata):
+	var parts = []
+	for stat in trdata.cost:
+		match stat:
+			'gold':
+				parts.push_back("%d %s" % [trdata.cost[stat], tr("UPGRADELIST_UNLOCK_GOLD")])
+			'mana':
+				parts.push_back("%d %s" % [trdata.cost[stat], tr("STATMP")])
+	return PoolStringArray(parts).join(", ")
+
+
+#test mode lifts the daily cooldown and the rebel block. The mansion owns that flag, and this
+#page is also built outside it - by the headless checks - so ask rather than dereference.
+func in_test_mode():
+	return gui_controller.mansion != null and gui_controller.mansion.in_test_mode
+
+
+#One answer to "is today already gone", used both to grey the actions out and to write the note
+#under them. Test mode lifts the limit, and it has to lift the note with it - otherwise the
+#panel says the day is spent while every button still works.
+func day_is_spent():
+	return !in_test_mode() and person.training.cooldown.positive > 0
+
+
+#Why nothing can be done right now, or "" if something can. The popup shows this in its footer.
+func blocking_note():
+	if person == null or !person.training.is_slave() or !person.training.enable:
+		return ""
+	if !in_test_mode() and person.training.is_rebel_blocked():
+		return tr('ACTIONREBELBLOCKED')
+	if day_is_spent():
+		return tr("TRAINCOOLDOWN") % max(int(ceil(person.training.cooldown.positive)), 1)
+	if person.get_trainer() == null:
+		return person.translate(tr('TRAINNOTRAINER'))
+	return ""
+
+
+func grey_out(panel):
+	panel.material = DISABLED_MATERIAL
+	panel.get_node('icon').material = DISABLED_MATERIAL
+
+
+func load_icon(icon):
+	if icon is String:
+		return load(icon)
+	return icon
 
 
 func activate_training(tr_code):
 	var trdata = Skilldata.training_actions[tr_code]
 	var trainer = person.get_trainer()
+	if trainer == null:
+		return
 	for stat in trdata.cost:
 		match stat:
 			'gold':
@@ -451,54 +584,18 @@ func activate_training(tr_code):
 
 
 var selected_id = ""
-func press_trait(value, tr_code):
-	if !person.check_trait(tr_code):
-		selected_id = tr_code
-		var data = Traitdata.traits[tr_code]
-		var text = tr("UPGRADELIST_UNLOCK") % [str(person.get_training_cost()), tr("STATTRAINING_POINTS")]
-		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'learn_upgrade_confirmed', text])
-#		person.add_training(tr_code)
-	build_training_traits()
-
-
 func press_trait_post(value, tr_code):
 	if !person.check_trait(tr_code):
 		selected_id = tr_code
 		var data = Traitdata.traits[tr_code]
 		var text = tr("UPGRADELIST_UNLOCK") % [str(data.cost), tr("STATTRAINING_POINTS")]
 		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'learn_upgrade_post_confirmed', text])
-#		person.add_training(tr_code)
 	build_posttrain()
 
 
-func press_trait_servant(value, tr_code):
-	if !person.check_trait(tr_code):
-		var args = {}
-		args["current_trait"] = tr_code
-		args["person"] = person
-		person.add_training(tr_code)
-		root.update()
-		input_handler.play_animation("trait_aquired", args)
-	build_training_servant()
-
-
-func learn_upgrade_confirmed():
-	if selected_id == "": 
-		return
-	var data = Traitdata.traits[selected_id]
-	var args = {}
-	args["current_trait"] = selected_id
-	args["person"] = person
-	person.add_training(selected_id)
-	selected_id = ""
-	root.update()
-	input_handler.play_animation("trait_aquired", args)
-
-
 func learn_upgrade_post_confirmed():
-	if selected_id == "": 
+	if selected_id == "":
 		return
-	var data = Traitdata.traits[selected_id]
 	var args = {}
 	args["current_trait"] = selected_id
 	args["person"] = person
@@ -506,4 +603,3 @@ func learn_upgrade_post_confirmed():
 	selected_id = ""
 	root.update()
 	input_handler.play_animation("trait_aquired", args)
-

@@ -107,14 +107,6 @@ margin_bottom = 858.0
 mouse_filter = 1
 scroll_horizontal_enabled = false
 
-[node name="_h_scroll" type="HScrollBar" parent="Popup/ClassesSelector/IconViewport"]
-margin_right = 12.0
-margin_bottom = 12.0
-
-[node name="_v_scroll" type="VScrollBar" parent="Popup/ClassesSelector/IconViewport"]
-margin_right = 12.0
-margin_bottom = 12.0
-
 [node name="Icons" type="VBoxContainer" parent="Popup/ClassesSelector/IconViewport"]
 custom_constants/separation = 4
 

@@ -351,10 +351,13 @@ func get_body_color_eyebrows():
 func get_body_color_lips():
 	if statlist.body_color_lips != '':
 		return statlist.body_color_lips
-	# Lips are skin.  The table that used to turn every skin shade into a lip
-	# family went stale the moment the palette was renamed, and the art shades the
-	# mouth itself anyway.
-	return statlist.body_color_skin
+	# Lips are skin - but not the skin's exact shade.  The mouth art is a dark
+	# violet line, and the shader keeps the art's own darkness, so painting it
+	# `human1` still reads as a dark mouth on a pale face.  `lips_code_for_skin`
+	# lifts the skin into flesh, and hands back an authored `lips_<skin>` colour
+	# where the palette carries one.
+	var lips = DOLL_COLORS.lips_code_for_skin(statlist.body_color_skin)
+	return lips if lips != '' else statlist.body_color_skin
 
 
 func get_body_color_ears():

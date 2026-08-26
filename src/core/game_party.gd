@@ -645,9 +645,10 @@ func fix_serialization_postload():
 		babies[p].fix_serialization_postload()
 	for p in characters_pool.characters:
 		characters_pool.characters[p].fix_serialization_postload()
-	#the household is real from here on, so anybody a loaded save left without a bed can be
-	#given one - the sweep game_res.fix_serialization() attempted had nobody to sweep yet
-	ResourceScripts.game_res.autohouse_household()
+	#the household is real from here on, so the repairs game_res.fix_serialization() attempted
+	#with nobody to work on - housing the bedless, moving the old farm hands onto farms - get
+	#their turn now. Both are idempotent, so a save that needed neither pays only the walk.
+	ResourceScripts.game_res.ensure_mansion_layout()
 	check_masters_story_fame(false)#better leave it here till game finished, as story conditions may vary
 
 

@@ -3485,7 +3485,9 @@ func make_buff_for_trait(tr_id):
 	if !trdata.tags.has('simple_icon'):
 		return null
 	var template = b_template.duplicate()
-	template.icon = trdata.icon.get_path()
+	#Buff.icon is a String - either a res:// path or a key in input_handler.images.icons.
+	#Trait icons are declared both ways, so only a preloaded Texture needs unwrapping.
+	template.icon = trdata.icon if trdata.icon is String else trdata.icon.get_path()
 	template.description = trdata.descript
 	template.t_name = template.t_name % trdata.code
 	template.name = template.t_name

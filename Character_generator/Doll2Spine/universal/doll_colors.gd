@@ -251,6 +251,26 @@ static func fins_code_for_skin(skin_value):
 	return code if fins().has(code) else ""
 
 
+# The mouth a skin wears when nobody picked a lipstick.
+#
+# The lip art is drawn as a dark violet line - lightness 0.23 - and the shader
+# keeps the art's own darkness, so painting it the skin's exact shade still comes
+# out as a dark mouth on a pale face.  The default lifts the skin and takes a
+# little saturation off, which is what flesh lips read as; an authored
+# `lips_<skin code>` in `color` wins over it, the way the nipples are authored.
+static func lips_code_for_skin(skin_value):
+	var authored = "lips_" + str(skin_value)
+	if color.has(authored):
+		return "#" + str(color[authored])
+	var skin = colour_of("body_color_skin", skin_value)
+	if skin.s < 0.02 and skin.v > 0.98:
+		return "" # an unpainted skin leaves the mouth as the artist drew it
+	var lip = Color(skin.r, skin.g, skin.b)
+	lip.v = min(lip.v * 1.25, 1.0)
+	lip.s = lip.s * 0.85
+	return "#" + lip.to_html(false)
+
+
 static func nipples():
 	if NIPPLES.empty():
 		for key in color.keys():

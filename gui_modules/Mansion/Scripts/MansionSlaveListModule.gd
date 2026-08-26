@@ -140,6 +140,9 @@ const EXPANDED_BODY_PREVIEW_PAPERDOLL_WIDTH = 626.0
 const EXPANDED_BODY_PREVIEW_FRAME_PADDING = 4.0
 const EXPANDED_BODY_PREVIEW_SCREEN_MARGIN = 15.0
 const EXPANDED_BODY_PREVIEW_MIN_WIDTH = 46.0
+# Where the card's close button ends, and so where anything else in that corner
+# has to start: the doll's undress bar and the nudity toggle both clear it.
+const EXPANDED_CLOSE_BUTTON_HEIGHT = 38
 
 var mode = 'default'
 #var mode = 'food'
@@ -226,9 +229,10 @@ func _ready():
 	#player picks there is written to the character and the portraits follow.
 	ExpandedPaperdoll.undress_is_a_rule = true
 	ExpandedPaperdoll.connect("undress_level_changed", self, "_on_expanded_doll_undressed")
-	ExpandedNudityToggle = NUDITY_TOGGLE.new()
 	#the close button already sits in the top corner of the frame
-	ExpandedNudityToggle.place_below(38)
+	ExpandedPaperdoll.place_controls_below(EXPANDED_CLOSE_BUTTON_HEIGHT)
+	ExpandedNudityToggle = NUDITY_TOGGLE.new()
+	ExpandedNudityToggle.place_below(EXPANDED_CLOSE_BUTTON_HEIGHT)
 	ExpandedNudityToggle.connect("nudity_changed", self, "_on_expanded_nudity_changed")
 	ExpandedBodyPreview.add_child(ExpandedNudityToggle)
 	ExpandedFoodPreferences.add_to_group("ignore_rightclicks")
@@ -244,20 +248,13 @@ func _ready():
 	globals.connect("slave_added", self, "queue_rebuild")
 	globals.connect("task_removed", self, "queue_task_refresh")
 	globals.connect("hour_tick", self, "update_dislocations")
-	globals.connecttexttooltip($BedroomIcon, tr("BEDROOMTOOLTIP"))
-	globals.connecttexttooltip($DateIcon, tr("DATETOOLTIP"))
-	globals.connecttexttooltip($SexIcon, tr("SEXTOOLTIP"))
+	globals.connect("rooms_changed", self, "refresh_counters")
 	for nd in modes.get_children():
 		nd.connect('pressed', self, 'set_mode', [nd.name])
 #	for rl in ['lock', 'ration', 'shifts', 'constrain', 'contraceptive', 'nudity', 'relationship', 'masturbation']:
 #		globals.connecttexttooltip(header.get_node('rule_' + rl), tr('WORKRULE%sDESCRIPT' % rl.to_upper()))
 #	for rl in ['waitress', 'hostess', 'dancer', 'stripper', 'males', 'females', 'futa', 'petting', 'oral', 'anal', 'pussy', 'group', 'sextoy']:
 #		globals.connecttexttooltip(header.get_node('brothel_' + rl), tr('BROTHEL%sDESCRIPT' % rl.to_upper()))
-	for rl in ['meat', 'fish', 'grain', 'vegetables', 'bread', 'meatsoup', 'curry', 'friedfish', 'fishcakes']:
-		globals.connecttexttooltip(header.get_node('food_' + rl),
-			tr('MATERIAL%sDESCRIPT' % rl.to_upper()) + globals.get_food_info_text(Items.materiallist[rl]))
-#	globals.connecttexttooltip(header.get_node('food_state'),
-#		"[center]" + tr("FOODSTATEHEADER") + "[/center]\n" + tr("FOODSTATEHEADERDESCRIPT"))
 	input_handler.connect("mass_select_in_act", self, "off_mass_select_effect")
 	input_handler.register_btn_source("slave_2_line", self, "tut_get_slave_line")
 	input_handler.register_btn_source("daisy_line", self, "tut_get_daisy_line")
@@ -268,8 +265,7 @@ func _ready():
 		input_handler.register_btn_source("char_info", self, "tut_get_char_info_btn")
 		input_handler.register_btn_source("mentor_skill_btn", self, "tut_get_mentor_skill_btn")
 		input_handler.register_btn_source("progression_btn", self, "tut_get_progression_btn")
-	input_handler.register_btn_source("ff_meat", self, "tut_get_ff_meat")
-#	input_handler.register_btn_source("ff_vegetables", self, "tut_get_ff_vegetables")#delete with time(29.01.26)
+		input_handler.register_btn_source("training_btn", self, "tut_get_training_btn")
 	input_handler.register_btn_source("daisy_waitress", self, "tut_get_daisy_waitress")
 	input_handler.register_btn_source("default_mode", self, "tut_get_default_mode")
 	input_handler.register_btn_source("service_mode", self, "tut_get_service_mode")
@@ -1061,6 +1057,11 @@ const FOLD_BUTTON_RIGHT_MARGIN = 12.0
 #see and filtering it by place are both answers to a question that is not being asked. The
 #handle takes the whole width so there is one obvious thing to press rather than a short
 #button with a stretch of empty bar beside it.
+#How much of the right-hand end the counters need. Folded, the fold button stretches across the
+#bar; without this it ran under them and took both the sight of them and their tooltips.
+const FOLD_COUNTERS_WIDTH = 384.0
+
+
 func apply_fold_to_bar():
 	var open = list_fold_state != FOLD_FOLDED
 	SortButton.visible = open
@@ -1069,7 +1070,41 @@ func apply_fold_to_bar():
 	if open:
 		ListFoldButton.margin_right = FOLD_BUTTON_LEFT + FOLD_BUTTON_WIDTH
 	else:
-		ListFoldButton.margin_right = rect_size.x - FOLD_BUTTON_RIGHT_MARGIN
+		ListFoldButton.margin_right = rect_size.x - FOLD_COUNTERS_WIDTH
+	#The three numbers belong to the folded bar. Open, the row of places to send people takes
+	#the whole width instead, and they would be sitting on top of it.
+	$population.visible = !open
+	$food_consumption.visible = !open
+	refresh_storage_counter()
+	if !open:
+		#drawn after the button, so a wide button cannot paint over them
+		for counter in ['population', 'food_consumption', 'storage_limit']:
+			get_node(counter).raise()
+
+
+#Two of the three counters are read off the rooms - beds for the household, shelves for the
+#materials - so they go stale the moment a room is raised or pulled down, which is why this is
+#hooked to rooms_changed as well as run on a rebuild.
+func refresh_counters():
+	$population.text = str(ResourceScripts.game_party.characters.size()) + "/" + str(ResourceScripts.game_res.get_pop_cap())
+	$food_consumption.text = str(ResourceScripts.game_party.get_food_consumption()) + "/" + tr("MSLMDAY")
+	refresh_storage_counter()
+
+
+#What the shelves can hold of any one material. The node itself lives in the scene beside the
+#other two; this only fills it in.
+func refresh_storage_counter():
+	var node = $storage_limit
+	var limit = ResourceScripts.game_res.storage_limit()
+	#nothing to say without a store room, and nothing to say it over while the list is open
+	node.visible = limit > 0 and list_fold_state == FOLD_FOLDED
+	if !node.visible:
+		return
+	node.text = str(limit)
+	var text = tr("MSLMSTORAGELIMIT") % limit
+	for row in ResourceScripts.game_res.fullest_materials(3):
+		text += "\n%s: %d/%d" % [tr(Items.materiallist[row[0]].name), row[1], limit]
+	globals.connecttexttooltip(node, text)
 
 
 func fold_height(state):
@@ -1174,13 +1209,12 @@ func tut_get_progression_btn():
 	if !is_instance_valid(expanded_card_visual):
 		return null
 	return expanded_card_visual.get_node_or_null("Margin/Rows/Actions/Progression")
+func tut_get_training_btn():
+	if !is_instance_valid(expanded_card_visual):
+		return null
+	return expanded_card_visual.get_node_or_null("Margin/Rows/Actions/Training")
 
 #row-view widgets - only present while the list is in one of the non-default modes
-func tut_get_ff_meat():
-	for line in RowContainer.get_children():
-		if line.has_meta("slave") and line.has_node("ff_meat"):
-			return line.get_node("ff_meat")
-	return null
 func tut_get_daisy_waitress():
 	for line in RowContainer.get_children():
 		if !line.has_meta("slave") or !line.has_node("rule_waitress"):
@@ -1226,10 +1260,12 @@ func OpenProgression(person):
 	get_parent().get_node("CharacterProgressionPopup").open(person)
 
 
+#Training is its own popup over the mansion now, so the card no longer has to detour through
+#the character info window to reach it.
 func OpenTraining(person):
-	_open_character_info(person)
-	if gui_controller.slavepanel != null:
-		gui_controller.slavepanel.SlaveInfo.open_upgrade_tab(_get_training_tab(person))
+	_close_expanded_character_immediate()
+	get_parent().remove_hovered_person()
+	get_parent().get_node("CharacterTrainingPopup").open(person, _get_training_tab(person))
 
 
 #The card date button starts the date straight from the mansion list, so the character
@@ -1377,11 +1413,11 @@ func _get_training_availability(person):
 		return [true, ""]
 	if person.training.is_rebel_blocked():
 		return [false, tr("ACTIONREBELBLOCKED")]
-	if !person.training.has_category_not_in_cd():
-		var cooldown_days = 999
-		for category in person.training.cooldown:
-			cooldown_days = min(cooldown_days, int(ceil(person.training.cooldown[category])))
-		return [false, tr("TRAINCOOLDOWN") % max(cooldown_days, 1)]
+	#Today's training is spent, but the panel is still worth opening - the trainer can be
+	#swapped, dispositions read and rewards bought - so this is a note, not a lock. Test mode
+	#lifts the limit inside the panel, so the card must not claim one either.
+	if !person.training.has_category_not_in_cd() and !gui_controller.mansion.in_test_mode:
+		return [true, tr("TRAINCOOLDOWN") % max(int(ceil(person.training.cooldown.positive)), 1)]
 	#A missing trainer is worth saying, but it never blocks the screen itself - the panel
 	#still shows the training setup, so only a time-based block disables the button.
 	if person.training.trainer == null:
@@ -1903,15 +1939,7 @@ func _prepare_rebuild():
 	#LocationsPanel.visible = (get_parent().mansion_state != "sex")
 #	$population.visible = LocationsPanel.is_visible()
 #	$food_consumption.visible = LocationsPanel.is_visible()
-#	$BedroomLimit.visible = !LocationsPanel.is_visible()
-#	$BedroomIcon.visible = !LocationsPanel.is_visible()
-#	$SexLimit.visible = !LocationsPanel.is_visible()
-#	$SexIcon.visible = !LocationsPanel.is_visible()
-#	$DateLimit.visible = !LocationsPanel.is_visible()
-#	$DateIcon.visible = !LocationsPanel.is_visible()
-	$population.text = str(ResourceScripts.game_party.characters.size()) +"/" + str(ResourceScripts.game_res.get_pop_cap())
-
-	$food_consumption.text = str(ResourceScripts.game_party.get_food_consumption()) + "/" + tr("MSLMDAY")
+	refresh_counters()
 	input_handler.ClearContainer(CardContainer)
 	input_handler.ClearContainer(RowContainer)
 	CardContainer.set_meta("built_rows_signature", "")
@@ -1925,7 +1953,6 @@ func _finish_rebuild():
 	apply_sorting()
 	rows_signature = build_rows_signature()
 	show_location_characters()
-	update_description()
 	update_header()
 
 
@@ -1999,8 +2026,6 @@ func _build_row_entry(person, person_id):
 	_setup_entry_common(newbutton, person, person_id)
 	for slot in ['rhand', 'lhand', 'chest', 'legs']:
 		newbutton.get_node(slot).connect("pressed", self, 'OpenInventory', [person])
-	newbutton.get_node("SpellIcon").connect("pressed", self, 'OpenSpells', [person])
-	newbutton.get_node("SpellIcon").visible = false
 	newbutton.get_node("job").connect("pressed", self, 'OpenJobModule', [person])
 	for rl in ['lock', 'ration', 'shifts', 'constrain', 'contraceptive', 'nudity', 'relationship', 'masturbation']:
 		var true_btn = newbutton.get_node('rule_' + rl)
@@ -2020,8 +2045,6 @@ func _build_row_entry(person, person_id):
 			act_func = 'toggle_service_mass',
 			act_args = [weakref(newbutton), rl]
 		})
-	for f_id in ['meat', 'fish', 'grain', 'vegetables', 'bread', 'meatsoup', 'curry', 'friedfish', 'fishcakes']:
-		newbutton.get_node('ff_' + f_id).connect('pressed', self, 'press_food', [newbutton, f_id])
 	update_entry_availability(newbutton, person, false)
 	update_button(newbutton, mode)
 	_apply_mansion_state_to_entry(person, newbutton)
@@ -2148,7 +2171,6 @@ func refresh_after_turn(spread = false):
 		yield(get_tree(), 'idle_frame')
 	apply_sorting() #occupations and exp moved on, so the sorted view has to follow
 	show_location_characters()
-	update_description()
 	update_header()
 
 
@@ -2316,13 +2338,6 @@ func build_for_sex(person, newbutton):
 			newbutton.disabled = true
 
 
-func update_description():
-	var sex_participants = get_parent().sex_participants
-	$BedroomLimit.text = str(sex_participants.size()) +  '/' + str(calculate_sex_limits())
-	$DateLimit.text = str(ResourceScripts.game_globals.weekly_dates_left) + "/" + str(ResourceScripts.game_globals.weekly_dates_max)
-	$SexLimit.text = str(ResourceScripts.game_globals.weekly_sex_left) + "/" + str(ResourceScripts.game_globals.weekly_sex_max)
-
-
 func calculate_sex_limits():
 	if get_parent() != null && get_parent().get("in_test_mode") == true:
 		return ResourceScripts.game_party.character_order.size()
@@ -2460,7 +2475,6 @@ func update():
 	apply_sorting()
 	update_buttons()
 	show_location_characters()
-	update_description()
 	update_header()
 	match_mode()
 	if mode == 'rules':
@@ -2663,18 +2677,6 @@ func update_button(newbutton, t_mode = mode):
 					newbutton.get_node('rule_' + rl).disabled = true
 	for rl in ['waitress', 'hostess', 'dancer', 'stripper', 'males', 'females', 'futa']:
 		newbutton.get_node('rule_' + rl).pressed = person.check_brothel_rule(rl)
-	#food. the per-character tooltips need a fresh demand, which is expensive, so they are
-	#only built while the food column is actually on screen
-	if t_mode == 'food':
-		person.get_food_demand()
-	for f_id in ['meat', 'fish', 'grain', 'vegetables', 'bread', 'meatsoup', 'curry', 'friedfish', 'fishcakes']:
-		var allowed = person.get_filter_for_food(f_id)
-		var label = newbutton.get_node('ff_%s/Label' % f_id)
-		label.text = tr("FOODFILTERALLOWED" if allowed else "FOODFILTERFORBIDDEN")
-		label.set("custom_colors/font_color", Color(variables.hexcolordict['green' if allowed else 'gray']))
-		if t_mode == 'food':
-			globals.connectmaterialtooltip(newbutton.get_node('ff_' + f_id), Items.materiallist[f_id],
-				globals.get_food_char_text(Items.materiallist[f_id], person))
 	#The card and legacy row trees are cached; only the selected presentation is shown.
 	for nd in newbutton.get_children():
 		if nd.name == "CardLayout":
@@ -2970,12 +2972,6 @@ func toggle_service_mass(newbutton_ref, code):
 	toggle_service(newbutton, code)
 	if mass_select_press_effect == null:
 		mass_select_press_effect = true_btn.pressed
-
-
-func press_food(newbutton, code):
-	var person = newbutton.get_meta('slave')
-	person.toggle_food(code)
-	update_button(newbutton)
 
 
 func match_mode():

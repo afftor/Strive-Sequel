@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=2]
+[gd_scene load_steps=120 format=2]
 
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/panel_factors.png" type="Texture" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -166,6 +166,38 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color( 0.976, 0.882, 0.506, 1 )
+
+[sub_resource type="Gradient" id=20]
+offsets = PoolRealArray( 0, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=21]
+gradient = SubResource( 20 )
+width = 256
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.102, 0.055, 0.086, 0.824 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 0.6 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 0.08, 0.04, 0.07, 0.85 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 0.35 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [node name="CharacterCreationMainModule" type="Panel" groups=["disable_rmb_esc", "ignore_rightclicks"]]
 self_modulate = Color( 0.0235294, 0.0196078, 0.909804, 1 )
@@ -661,6 +693,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="master_relation" type="TextureButton" parent="VBoxContainer"]
+rect_min_size = Vector2( 0, 50 )
+texture_normal = ExtResource( 49 )
+texture_pressed = ExtResource( 48 )
+texture_hover = ExtResource( 51 )
+texture_disabled = ExtResource( 50 )
+
+[node name="Label" type="Label" parent="VBoxContainer/master_relation"]
+margin_left = 64.0
+margin_top = 5.0
+margin_right = 427.0
+margin_bottom = 59.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "CHARCREATE_MASTER_RELATION_BUTTON"
+align = 1
+valign = 1
+
+[node name="icon" type="TextureRect" parent="VBoxContainer/master_relation"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 59.0
+margin_bottom = 59.0
+expand = true
+
 [node name="AppearanceReroll" type="TextureButton" parent="."]
 margin_left = 1207.0
 margin_top = 94.0
@@ -750,79 +806,140 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="StatsModule" type="TextureRect" parent="."]
+[node name="StatsModule" type="NinePatchRect" parent="."]
 visible = false
 margin_left = 675.0
 margin_top = 87.0
 margin_right = 1198.0
-margin_bottom = 426.0
+margin_bottom = 647.0
 mouse_filter = 2
 theme = ExtResource( 29 )
 texture = ExtResource( 11 )
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
 
-[node name="StatsContainer" type="GridContainer" parent="StatsModule"]
+[node name="StatsContainer" type="VBoxContainer" parent="StatsModule"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 77.0
+margin_left = 20.0
 margin_top = 93.0
-margin_right = -12.002
-margin_bottom = -52.099
-columns = 2
+margin_right = -20.0
+margin_bottom = -62.0
+custom_constants/separation = 4
+alignment = 1
 
-[node name="Button" type="Control" parent="StatsModule/StatsContainer"]
+[node name="FactorRow" type="Panel" parent="StatsModule/StatsContainer"]
 visible = false
-margin_right = 217.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 150, 40 )
-mouse_filter = 2
+rect_min_size = Vector2( 0, 54 )
 size_flags_horizontal = 3
+mouse_filter = 2
+custom_styles/panel = SubResource( 22 )
 
-[node name="icon" type="TextureRect" parent="StatsModule/StatsContainer/Button"]
-margin_right = 40.0
-margin_bottom = 40.0
-stretch_mode = 4
+[node name="Grad" type="TextureRect" parent="StatsModule/StatsContainer/FactorRow"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+mouse_filter = 2
+texture = SubResource( 21 )
+expand = true
+stretch_mode = 1
 
-[node name="button" type="HBoxContainer" parent="StatsModule/StatsContainer/Button"]
-margin_left = 50.2379
-margin_top = 0.420441
-margin_right = 121.238
-margin_bottom = 40.4204
+[node name="Icon" type="TextureRect" parent="StatsModule/StatsContainer/FactorRow"]
+margin_left = 6.0
+margin_top = 4.0
+margin_right = 52.0
+margin_bottom = 50.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
 
-[node name="LArr" type="TextureButton" parent="StatsModule/StatsContainer/Button/button"]
-margin_right = 34.0
-margin_bottom = 46.0
+[node name="Abb" type="Label" parent="StatsModule/StatsContainer/FactorRow"]
+margin_left = 58.0
+margin_top = 3.0
+margin_right = 238.0
+margin_bottom = 26.0
+mouse_filter = 2
+custom_fonts/font = ExtResource( 2 )
+text = "PHY"
+clip_text = true
+
+[node name="Sub" type="Label" parent="StatsModule/StatsContainer/FactorRow"]
+margin_left = 58.0
+margin_top = 27.0
+margin_right = 238.0
+margin_bottom = 47.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.6, 0.514, 0.435, 1 )
+custom_fonts/font = ExtResource( 99 )
+text = "hint"
+clip_text = true
+
+[node name="Pips" type="HBoxContainer" parent="StatsModule/StatsContainer/FactorRow"]
+margin_left = 242.0
+margin_top = 19.0
+margin_right = 329.0
+margin_bottom = 35.0
+mouse_filter = 2
+custom_constants/separation = 3
+
+[node name="Pip" type="Panel" parent="StatsModule/StatsContainer/FactorRow/Pips"]
+rect_min_size = Vector2( 12, 16 )
+mouse_filter = 2
+custom_styles/panel = SubResource( 23 )
+
+[node name="Value" type="Label" parent="StatsModule/StatsContainer/FactorRow"]
+margin_left = 331.0
+margin_top = 13.0
+margin_right = 427.0
+margin_bottom = 43.0
+mouse_filter = 2
+custom_fonts/font = ExtResource( 98 )
+text = "1"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="LArr" type="TextureButton" parent="StatsModule/StatsContainer/FactorRow"]
+margin_left = 429.0
+margin_top = 12.0
+margin_right = 455.0
+margin_bottom = 44.0
 texture_normal = ExtResource( 89 )
 texture_pressed = ExtResource( 88 )
 texture_hover = ExtResource( 13 )
 texture_disabled = ExtResource( 88 )
+expand = true
 stretch_mode = 5
 flip_h = true
 
-[node name="Label" type="Label" parent="StatsModule/StatsContainer/Button/button"]
-margin_left = 38.0
-margin_top = 6.0
-margin_right = 50.0
-margin_bottom = 39.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 2 )
-text = "1"
-align = 1
-
-[node name="RArr" type="TextureButton" parent="StatsModule/StatsContainer/Button/button"]
-margin_left = 54.0
-margin_right = 88.0
-margin_bottom = 46.0
+[node name="RArr" type="TextureButton" parent="StatsModule/StatsContainer/FactorRow"]
+margin_left = 457.0
+margin_top = 12.0
+margin_right = 483.0
+margin_bottom = 44.0
 texture_normal = ExtResource( 89 )
 texture_pressed = ExtResource( 88 )
 texture_hover = ExtResource( 13 )
 texture_disabled = ExtResource( 88 )
+expand = true
 stretch_mode = 5
 
+[node name="HoverZone" type="Control" parent="StatsModule/StatsContainer/FactorRow"]
+margin_right = 238.0
+margin_bottom = 54.0
+
 [node name="totalstatlabel" type="Label" parent="StatsModule"]
+anchor_top = 1.0
+anchor_bottom = 1.0
 margin_left = 10.0
-margin_top = 291.0
+margin_top = -48.0
 margin_right = 506.0
-margin_bottom = 324.0
+margin_bottom = -15.0
 theme = ExtResource( 35 )
 text = "Total Stats"
 align = 1
@@ -1243,9 +1360,9 @@ script = ExtResource( 103 )
 
 [node name="DietPanel" type="TextureRect" parent="."]
 margin_left = 675.0
-margin_top = 427.0
+margin_top = 653.0
 margin_right = 1198.0
-margin_bottom = 766.0
+margin_bottom = 992.0
 mouse_filter = 2
 theme = ExtResource( 8 )
 texture = ExtResource( 21 )
@@ -1387,57 +1504,6 @@ custom_fonts/normal_font = ExtResource( 98 )
 bbcode_enabled = true
 bbcode_text = "CHARCREATE_DIET_HELP"
 text = "CHARCREATE_DIET_HELP"
-
-[node name="MasterRelationPanel" type="Panel" parent="."]
-margin_left = 674.0
-margin_top = 769.0
-margin_right = 1197.0
-margin_bottom = 952.0
-mouse_filter = 2
-theme = ExtResource( 8 )
-
-[node name="button" type="TextureButton" parent="MasterRelationPanel"]
-show_behind_parent = true
-margin_left = 118.0
-margin_top = 119.0
-margin_right = 418.0
-margin_bottom = 164.0
-texture_normal = ExtResource( 91 )
-texture_pressed = ExtResource( 92 )
-texture_hover = ExtResource( 90 )
-expand = true
-
-[node name="Label" type="Label" parent="MasterRelationPanel/button"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 7.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 2 )
-text = "NONE"
-align = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="MasterRelationPanel"]
-margin_left = 44.2678
-margin_top = 31.9898
-margin_right = 498.268
-margin_bottom = 95.9898
-custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/normal_font = ExtResource( 2 )
-text = "CHARCREATE_MASTER_RELATION_PANEL_PLACEHOLDER"
-scroll_active = false
-
-[node name="TooltipRelations" type="TextureButton" parent="MasterRelationPanel"]
-margin_left = 7.02643
-margin_top = -0.996643
-margin_right = 48.0264
-margin_bottom = 40.0034
-texture_normal = ExtResource( 10 )
-texture_hover = ExtResource( 82 )
-expand = true
-stretch_mode = 5
-__meta__ = {
-"_editor_description_": ""
-}
 
 [node name="UpgradesPanel" type="TextureRect" parent="."]
 visible = false

@@ -892,6 +892,18 @@ func can_add_trait(tr_code):
 func remove_trait(tr_code):
 	dyn_stats.remove_trait(tr_code)
 
+func first_negative_trait():
+	return training.first_negative_trait()
+
+func get_trait_correction(code):
+	return training.get_trait_correction(code)
+
+func add_trait_correction(code, value):
+	return training.add_trait_correction(code, value)
+
+func clear_trait_correction(code):
+	training.clear_trait_correction(code)
+
 func get_traits_by_tag(tag):
 	return dyn_stats.get_traits_by_tag(tag)
 

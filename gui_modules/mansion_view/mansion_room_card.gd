@@ -44,6 +44,7 @@ var pending_demolish = ''
 #Which farm hand's produce list is on show. A farm's yield comes out of the people rather
 #than the building, so the card picks one of them and shows what that body can give.
 var farm_worker = null
+var selected_autobuy_code = ''
 
 
 func setup(view_node):
@@ -51,9 +52,22 @@ func setup(view_node):
 	$CloseButton.connect("pressed", view, "close_card")
 	$Body/Columns/LeftScroll/LeftColumn/Actions/MoveButton.connect("pressed", self, "on_move")
 	$Body/Columns/LeftScroll/LeftColumn/Actions/CraftButton.connect("pressed", self, "on_craft")
+	$Body/Columns/LeftScroll/LeftColumn/AutobuyButton.connect(
+		"pressed", self, "open_autobuy_panel")
 	$Body/Columns/LeftScroll/LeftColumn/Actions/DemolishButton.connect("pressed", self, "on_demolish")
 	$Body/Columns/LeftScroll/LeftColumn/RepairButton.connect("pressed", self, "on_repair")
 	$Body/Columns/LeftScroll/LeftColumn/CancelButton.connect("pressed", self, "on_cancel")
+	autobuy_panel().get_node("CloseButton").connect("pressed", self, "close_autobuy_panel")
+	autobuy_panel().get_node("Body/AddRow/AddButton").connect(
+		"pressed", self, "add_autobuy_rule")
+	autobuy_panel().get_node("Body/ChoiceField").connect(
+		"pressed", self, "toggle_autobuy_choice_list")
+	autosell_panel().get_node("CloseButton").connect("pressed", self, "close_autosell_panel")
+	setup_standing_order_number(autobuy_panel().get_node("Body/AddRow/Level"), 1)
+	style_standing_order_scrollbar(autobuy_panel().get_node("Body/RuleScroll"))
+	style_standing_order_scrollbar(autobuy_panel().get_node(
+		"ChoicePopup/ListPanel/ChoiceScroll"))
+	style_standing_order_scrollbar(autosell_panel().get_node("Body/RuleScroll"))
 	visible = false
 
 
@@ -138,12 +152,17 @@ func rebuild():
 	$Body/Columns/PeopleColumn.visible = false
 	$Body/Columns/PeopleColumn/CandidateScroll.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/Actions/CraftButton.visible = false
+	$Body/Columns/LeftScroll/LeftColumn/AutobuyButton.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/OrderHeader.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/OrderList.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/FarmList.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/CancelButton.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/YieldHeader.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/YieldList.visible = false
+	$Body/Columns/LeftScroll/LeftColumn/ResidentsHeader.visible = false
+	$Body/Columns/LeftScroll/LeftColumn/ResidentsGrid.visible = false
+	$Body/Columns/LeftScroll/LeftColumn/CompanionHeader.visible = false
+	$Body/Columns/LeftScroll/LeftColumn/CompanionGrid.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/UpgradeHeader.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/UpgradeList.visible = false
 	match MansionLayout.slot_status(view.current_floor(), slot_code):
@@ -361,12 +380,14 @@ func build_for_room(current):
 	$Body/Columns/LeftScroll/LeftColumn/Functions.text = upgrades_text(current)
 	build_yield_list(current)
 	build_craft_button(current)
+	build_autobuy_button(current)
 
 	$Body/Columns/LeftScroll/LeftColumn/Actions/DemolishButton.disabled = !MansionLayout.can_demolish(view.layout(), view.floor_index(), slot_code).ok
 	build_move_button()
 	build_people(current)
 	build_order_list(current)
 	build_upgrade_list(current)
+	build_residents(current)
 
 
 #Which disciplines have a craft screen is the craft screen's own list, not a copy of it kept
@@ -395,10 +416,319 @@ func build_craft_button(current):
 		button.text = tr("MANSIONVIEW_CRAFT")
 
 
+func build_autobuy_button(current):
+	var button = $Body/Columns/LeftScroll/LeftColumn/AutobuyButton
+	button.visible = view.mode == 'work' and RoomTypes.has_tag(current.type, 'storage') \
+		and ResourceScripts.game_res.has_autobuy()
+	if button.visible:
+		button.text = tr("MANSIONVIEW_AUTOBUY_BUTTON")
+
+
+#### standing orders ####
+
+func autobuy_panel():
+	return view.get_node("Overlay/AutobuyPanel")
+
+
+func autosell_panel():
+	return view.get_node("Overlay/AutosellPanel")
+
+
+func open_autobuy_panel():
+	build_autobuy_panel()
+	view.set_card_aside(true)
+	autosell_panel().visible = false
+	autobuy_panel().visible = true
+
+
+func close_autobuy_panel():
+	close_autobuy_choice_list()
+	autobuy_panel().visible = false
+	view.set_card_aside(false)
+
+
+func close_autosell_panel():
+	autosell_panel().visible = false
+	view.set_card_aside(false)
+
+
+func build_autobuy_panel():
+	var panel = autobuy_panel()
+	panel.get_node("Body/Title").text = tr("MANSIONVIEW_AUTOBUY_TITLE")
+	panel.get_node("Body/Explanation").text = tr("MANSIONVIEW_AUTOBUY_EXPLAIN")
+	panel.get_node("Body/RuleHeader/Item").text = tr("MANSIONVIEW_AUTOBUY_ITEM")
+	panel.get_node("Body/RuleHeader/Held").text = tr("MANSIONVIEW_AUTOBUY_HELD")
+	panel.get_node("Body/RuleHeader/Level").text = tr("MANSIONVIEW_AUTOBUY_LEVEL")
+	panel.get_node("Body/RuleHeader/Price").text = tr("MANSIONVIEW_AUTOBUY_PRICE")
+	panel.get_node("Body/AddTitle").text = tr("MANSIONVIEW_AUTOBUY_ADD_TITLE")
+	panel.get_node("Body/AddRow/AddButton").text = tr("MANSIONVIEW_AUTOBUY_ADD")
+	build_autobuy_clerk()
+	build_autobuy_rules()
+	build_autobuy_choices()
+
+
+#Nothing opens this sketch yet; it is kept intact because standing sales are planned for a
+#later pass and the panel records the intended mansion presentation for that work.
+func build_autosell_panel():
+	var panel = autosell_panel()
+	panel.get_node("Body/Title").text = tr("MANSIONVIEW_AUTOSELL_TITLE")
+	panel.get_node("Body/Explanation").text = tr("MANSIONVIEW_AUTOSELL_EXPLAIN")
+	panel.get_node("Body/NotInUse").text = tr("MANSIONVIEW_AUTOSELL_NOT_IN_USE")
+	panel.get_node("Body/RuleHeader/Item").text = tr("MANSIONVIEW_AUTOSELL_ITEM")
+	panel.get_node("Body/RuleHeader/Held").text = tr("MANSIONVIEW_AUTOSELL_HELD")
+	panel.get_node("Body/RuleHeader/Level").text = tr("MANSIONVIEW_AUTOSELL_LEVEL")
+	panel.get_node("Body/RuleHeader/Price").text = tr("MANSIONVIEW_AUTOSELL_PRICE")
+	panel.get_node("Body/RuleScroll/Empty").text = tr("MANSIONVIEW_AUTOSELL_EMPTY")
+	panel.get_node("Body/AddTitle").text = tr("MANSIONVIEW_AUTOSELL_ADD_TITLE")
+	panel.get_node("Body/AddRow/Choice").text = tr("MANSIONVIEW_AUTOSELL_UNAVAILABLE")
+	panel.get_node("Body/AddRow/AddButton").text = tr("MANSIONVIEW_AUTOSELL_ADD")
+
+
+func setup_standing_order_number(field, minimum, changed_method = '', changed_args = []):
+	field.set_meta('minimum', int(minimum))
+	field.set_meta('maximum', 999999)
+	field.set_meta('ignore_change', false)
+	field.get_node('Value').connect('text_changed', self,
+		'standing_order_text_changed', [field, changed_method, changed_args])
+	field.get_node('Decrease').connect('pressed', self,
+		'nudge_standing_order_number', [field, -1, changed_method, changed_args])
+	field.get_node('Increase').connect('pressed', self,
+		'nudge_standing_order_number', [field, 1, changed_method, changed_args])
+
+
+func standing_order_value(field):
+	var text = field.get_node('Value').text
+	var value = int(text) if text != '' else int(field.get_meta('minimum'))
+	return clamp(value, int(field.get_meta('minimum')), int(field.get_meta('maximum')))
+
+
+func set_standing_order_value(field, value):
+	field.set_meta('ignore_change', true)
+	field.get_node('Value').text = str(clamp(int(value),
+		int(field.get_meta('minimum')), int(field.get_meta('maximum'))))
+	field.set_meta('ignore_change', false)
+
+
+func standing_order_text_changed(text, field, changed_method, changed_args):
+	if field.get_meta('ignore_change'):
+		return
+	var digits = ''
+	for character in text:
+		if character >= '0' and character <= '9':
+			digits += character
+	if digits != text:
+		field.set_meta('ignore_change', true)
+		field.get_node('Value').text = digits
+		field.set_meta('ignore_change', false)
+	if digits != '' and changed_method != '':
+		call_standing_order_change(field, changed_method, changed_args)
+
+
+func nudge_standing_order_number(field, amount, changed_method, changed_args):
+	set_standing_order_value(field, standing_order_value(field) + amount)
+	if changed_method != '':
+		call_standing_order_change(field, changed_method, changed_args)
+
+
+func call_standing_order_change(field, changed_method, changed_args):
+	var args = [standing_order_value(field)]
+	args.append_array(changed_args)
+	callv(changed_method, args)
+
+
+#A theme on the container would replace the gold theme for every control inside it. Scoping
+#the mansion's existing scroll theme to the generated bar keeps both resources in their lanes.
+func style_standing_order_scrollbar(scroll):
+	var source = view.get_node("LocationPanel/Rooms/Button/PeopleScroll")
+	scroll.get_v_scrollbar().theme = source.theme
+
+
+func build_autobuy_clerk():
+	var clerk = ResourceScripts.game_res.autobuy_clerk()
+	var label = autobuy_panel().get_node("Body/Clerk")
+	if clerk == null:
+		label.text = tr("MANSIONVIEW_AUTOBUY_NOCLERK")
+		return
+	var percent = int(round(ResourceScripts.game_res.autobuy_price_mod(clerk) * 100.0))
+	label.text = tr("MANSIONVIEW_AUTOBUY_CLERK") % [clerk.get_short_name(), percent]
+
+
+func build_autobuy_rules():
+	var res = ResourceScripts.game_res
+	var list = autobuy_panel().get_node("Body/RuleScroll/RuleList")
+	input_handler.ClearContainer(list, ['Rule'])
+	var count = 0
+	for rule in res.autobuy_rules:
+		var code = str(rule.get('code', ''))
+		if code == '':
+			continue
+		var row = input_handler.DuplicateContainerTemplate(list, 'Rule')
+		row.get_node("Icon").texture = autobuy_icon(code)
+		row.get_node("Name").text = res.autobuy_name(code)
+		row.get_node("Held").text = str(res.autobuy_held(code))
+		var each = int(max(1, round(res.autobuy_price(code) * \
+			res.autobuy_price_mod(res.autobuy_clerk()))))
+		row.get_node("Price").text = tr("MANSIONVIEW_AUTOBUY_EACH") % each
+		var level = row.get_node("Level")
+		setup_standing_order_number(level, 0, "change_autobuy_level", [code])
+		set_standing_order_value(level, res.autobuy_level(code))
+		var remove = row.get_node("Remove")
+		remove.text = tr("MANSIONVIEW_AUTOBUY_REMOVE")
+		remove.connect("pressed", self, "remove_autobuy_rule", [code])
+		count += 1
+	var empty = autobuy_panel().get_node("Body/Empty")
+	empty.visible = count == 0
+	empty.text = tr("MANSIONVIEW_AUTOBUY_EMPTY")
+
+
+func autobuy_icon(code):
+	if Items.materiallist.has(code):
+		return Items.materiallist[code].icon
+	if Items.itemlist.has(code):
+		return Items.itemlist[code].icon
+	return null
+
+
+func change_autobuy_level(value, code):
+	ResourceScripts.game_res.set_autobuy_rule(code, int(value))
+
+
+func remove_autobuy_rule(code):
+	ResourceScripts.game_res.clear_autobuy_rule(code)
+	build_autobuy_rules()
+	build_autobuy_choices()
+
+
+#A usable stack may be represented by several inventory entries, but it is one market order.
+func autobuy_choices():
+	var res = ResourceScripts.game_res
+	var choices = []
+	for code in res.materials:
+		var free = res.autobuy_level(code) == 0 and !res.is_quest_good(code)
+		if int(res.materials[code]) > 0 and free:
+			choices.append([res.autobuy_name(code), code])
+	for item in res.items.values():
+		var code = str(item.itembase)
+		if item.amount <= 0 or !Items.itemlist.has(code):
+			continue
+		if Items.itemlist[code].type != 'usable' or res.autobuy_level(code) > 0:
+			continue
+		if res.is_quest_good(code):
+			continue
+		var duplicate = false
+		for entry in choices:
+			if entry[1] == code:
+				duplicate = true
+				break
+		if !duplicate:
+			choices.append([res.autobuy_name(code), code])
+	choices.sort_custom(self, "sort_autobuy_choices")
+	return choices
+
+
+func sort_autobuy_choices(first, second):
+	return first[0].nocasecmp_to(second[0]) < 0
+
+
+func build_autobuy_choices():
+	var panel = autobuy_panel()
+	var list = panel.get_node("ChoicePopup/ListPanel/ChoiceScroll/ChoiceList")
+	input_handler.ClearContainer(list, ['Choice'])
+	close_autobuy_choice_list()
+	var choices = autobuy_choices()
+	var selected_available = false
+	for entry in choices:
+		if entry[1] == selected_autobuy_code:
+			selected_available = true
+			break
+	if !selected_available:
+		selected_autobuy_code = '' if choices.empty() else str(choices[0][1])
+	for entry in choices:
+		var row = input_handler.DuplicateContainerTemplate(list, 'Choice')
+		var code = str(entry[1])
+		row.set_meta('code', code)
+		row.get_node("Icon").texture = autobuy_icon(code)
+		row.get_node("Name").text = entry[0]
+		row.get_node("Held").text = str(ResourceScripts.game_res.autobuy_held(code))
+		row.connect("pressed", self, "select_autobuy_choice", [code])
+	var has_choice = !choices.empty()
+	panel.get_node("Body/ChoiceField").visible = has_choice
+	panel.get_node("Body/ChoiceEmpty").visible = !has_choice
+	panel.get_node("Body/ChoiceEmpty").text = tr("MANSIONVIEW_AUTOBUY_NOTHING_TO_ADD")
+	panel.get_node("Body/AddRow/AddButton").disabled = !has_choice
+	if has_choice:
+		select_autobuy_choice(selected_autobuy_code)
+
+
+func select_autobuy_choice(code):
+	if code == '':
+		return
+	selected_autobuy_code = str(code)
+	var field = autobuy_panel().get_node("Body/ChoiceField")
+	field.get_node("Icon").texture = autobuy_icon(selected_autobuy_code)
+	field.get_node("Name").text = ResourceScripts.game_res.autobuy_name(selected_autobuy_code)
+	field.get_node("Held").text = str(
+		ResourceScripts.game_res.autobuy_held(selected_autobuy_code))
+	set_standing_order_value(autobuy_panel().get_node("Body/AddRow/Level"), max(
+		1, ResourceScripts.game_res.autobuy_held(selected_autobuy_code)))
+	close_autobuy_choice_list()
+
+
+func toggle_autobuy_choice_list():
+	var popup = autobuy_panel().get_node("ChoicePopup")
+	if popup.visible:
+		close_autobuy_choice_list()
+		return
+	place_autobuy_choice_list()
+	popup.visible = true
+
+
+func place_autobuy_choice_list():
+	var panel = autobuy_panel()
+	var field = panel.get_node("Body/ChoiceField")
+	var list_panel = panel.get_node("ChoicePopup/ListPanel")
+	var field_position = field.rect_global_position - panel.rect_global_position
+	var list_height = 148.0
+	var list_y = field_position.y + field.rect_size.y + 2.0
+	if list_y + list_height > panel.rect_size.y - 8.0:
+		list_y = field_position.y - list_height - 2.0
+	list_panel.rect_position = Vector2(field_position.x, max(8.0, list_y))
+	list_panel.rect_size = Vector2(field.rect_size.x, list_height)
+
+
+func close_autobuy_choice_list():
+	autobuy_panel().get_node("ChoicePopup").visible = false
+
+
+func _input(event):
+	if !(event is InputEventMouseButton) or event.button_index != BUTTON_LEFT or !event.pressed:
+		return
+	var popup = autobuy_panel().get_node("ChoicePopup")
+	if !popup.visible:
+		return
+	var list_panel = popup.get_node("ListPanel")
+	if !Rect2(list_panel.rect_global_position, list_panel.rect_size).has_point(event.position):
+		close_autobuy_choice_list()
+
+
+func add_autobuy_rule():
+	var row = autobuy_panel().get_node("Body/AddRow")
+	if row.get_node("AddButton").disabled or selected_autobuy_code == '':
+		return
+	ResourceScripts.game_res.set_autobuy_rule(
+		selected_autobuy_code, standing_order_value(row.get_node("Level")))
+	build_autobuy_rules()
+	build_autobuy_choices()
+
+
 #Grounds gathering buildings show their production table on their own card. Other mansion
 #rooms have no gathering entry, so both parts of the section disappear from the VBox.
 func build_yield_list(current):
 	input_handler.ClearContainer($Body/Columns/LeftScroll/LeftColumn/YieldList, ['Row'])
+	#A workshop's yield is not a table of chances, it is the one thing on the bench right now -
+	#the same section, answering the question that room actually has.
+	if build_craft_row(current):
+		return
 	var gather = LocationTasks.gather_entry_for_room(current.type, slot_code)
 	var rows = LocationTasks.production_table(gather.id) if gather != null else []
 	$Body/Columns/LeftScroll/LeftColumn/YieldHeader.visible = !rows.empty()
@@ -413,6 +743,36 @@ func build_yield_list(current):
 		row.get_node('Name').text = tr(material.name)
 		row.get_node('Chance').text = "" if entry[1] >= 1.0 else \
 			tr("MANSIONVIEW_YIELDCHANCE") % int(round(entry[1] * 100.0))
+		#What the building turns out is worth knowing about as a material - what it sells for,
+		#what it is used in - so the row answers with the same tooltip the material has
+		#everywhere else, given the card's own panel because this one sits on a CanvasLayer.
+		globals.connectmaterialtooltip(row, material, '', null,
+			view.get_node("Overlay/ItemTooltip"))
+
+
+#What this room is making this turn, drawn as one row of the yields section. Answers false for
+#anything that is not a craft room with work on the bench, so the section falls through to the
+#gathering table it was built for.
+func build_craft_row(current):
+	var making = ResourceScripts.game_res.room_current_craft(current)
+	if making == null:
+		return false
+	var name = ResourceScripts.game_res.craft_result_name(making)
+	var icon = ResourceScripts.game_res.craft_result_icon(making)
+	#Modular gear carries no name on its template - the one it is finally called is built out of
+	#the materials it is made from - so a workshop turning out a sword has a picture and nothing
+	#to write. The row is worth drawing on either of the two.
+	if name == "" and icon == null:
+		return false
+	$Body/Columns/LeftScroll/LeftColumn/YieldHeader.visible = true
+	$Body/Columns/LeftScroll/LeftColumn/YieldList.visible = true
+	$Body/Columns/LeftScroll/LeftColumn/YieldHeader.text = tr("MANSIONVIEW_MAKINGNOW")
+	var row = input_handler.DuplicateContainerTemplate(
+		$Body/Columns/LeftScroll/LeftColumn/YieldList, 'Row')
+	row.get_node('Icon').texture = icon
+	row.get_node('Name').text = name
+	row.get_node('Chance').text = ""
+	return true
 
 
 #Moving a room starts here rather than from a mode button on the top bar: the room is
@@ -422,7 +782,10 @@ func build_move_button():
 	#Nothing out on the grounds is moved: a plot is a piece of ground with a building on it,
 	#not a room in a plan that can trade places with another. The button is taken away rather
 	#than greyed out - there is no arrangement out there for it to be part of.
-	button.visible = !MansionLayout.is_grounds(view.layout(), view.floor_index())
+	#The staircase is structure and stays where it is, so it gets no button either.
+	var current = room()
+	var fixed = current != null and RoomTypes.is_fixed(current.type)
+	button.visible = !fixed and !MansionLayout.is_grounds(view.layout(), view.floor_index())
 	if !button.visible:
 		return
 	button.text = tr("MANSIONVIEW_MOVE")
@@ -444,6 +807,10 @@ func room_subtitle(current):
 
 func upgrades_text(current):
 	var lines = []
+	#Shelves are bought a level at a time and each level replaces the last, so the room's own
+	#figure is the only way to see what the money went on.
+	if RoomTypes.has_tag(current.type, 'storage'):
+		lines.append(tr("MANSIONVIEW_STORAGELIMIT") % MansionLayout.storage_capacity(current))
 	var build = build_data()
 	if build != null:
 		lines.append("%s - %s" % [view.build_label(build), view.build_eta_text(build)])
@@ -625,12 +992,56 @@ func build_people(current):
 	var sleeping = view.mode == 'sleep'
 	var occupants = current.occupants if sleeping else view.room_workers(current)
 	var capacity = MansionLayout.sleep_capacity(current) if sleeping else MansionLayout.work_capacity(current)
+	#A building raised to gather something holds its hands on that job, not on a room task of
+	#its own, so the card has to ask the job the same way the plot on the grounds does. Without
+	#this a mine's card showed no places at all and the people in it could only be seen outside.
+	var gather = null if sleeping else LocationTasks.gather_entry_for_room(current.type, slot_code)
+	if gather != null:
+		occupants = LocationTasks.workers_of(gather.id)
+		capacity = int(gather.max_workers)
+		$Body/Columns/PeopleColumn/Occupants.visible = capacity > 0
+	#The master's own bed is held for him however many are added beside it, so while beds are
+	#being arranged his room is two groups rather than one list whose first line happens to be
+	#his. The same split the card shows while work is arranged, made of real slots here: these
+	#can be clicked to seat somebody or turn them out.
+	var split = sleeping and capacity > 0 and RoomTypes.get_type(current.type).master_only
+	#A tutor's place is not a workplace with a different name: what is done in it decides
+	#whether a habit can be worked out of anybody at all, and only somebody who can teach may
+	#stand there. Drawn apart for the same reason the master's own bed is.
+	var tutor_places = 0 if sleeping else MansionLayout.special_work_slots(current)
+	$Body/Columns/PeopleColumn/Companions.visible = split or tutor_places > 0
 	$Body/Columns/PeopleColumn/Occupants.visible = capacity > 0
 	if capacity <= 0:
+		return
+	if tutor_places > 0:
+		var tutor = view.special_worker(current)
+		var students = []
+		for char_id in occupants:
+			if char_id != tutor:
+				students.append(char_id)
+		fill_people_group($Body/Columns/PeopleColumn/Occupants,
+			tr("MANSIONVIEW_WORKPLACES"), students, max(0, capacity - tutor_places), true, false)
+		fill_people_group($Body/Columns/PeopleColumn/Companions, tr("MANSIONVIEW_TUTORSLOT"),
+			[] if tutor == null else [tutor], tutor_places, false, false, true)
+		return
+	if split:
+		var master = null
+		var companions = []
+		for char_id in occupants:
+			var character = view.get_character(char_id)
+			if master == null and character != null and character.is_master():
+				master = char_id
+			else:
+				companions.append(char_id)
+		fill_people_group($Body/Columns/PeopleColumn/Occupants, tr("MANSIONVIEW_MASTERBED"),
+			[] if master == null else [master], 1, false, true)
+		fill_people_group($Body/Columns/PeopleColumn/Companions,
+			tr("MANSIONVIEW_NIGHTCOMPANIONS"), companions, max(0, capacity - 1), true, true)
 		return
 	$Body/Columns/PeopleColumn/Occupants/Header.text = "%s %d/%d" % [
 		tr("MANSIONVIEW_BEDS") if sleeping else tr("MANSIONVIEW_WORKPLACES"),
 		occupants.size(), capacity]
+	var job_id = null if gather == null else gather.id
 	input_handler.ClearContainer($Body/Columns/PeopleColumn/Occupants/List)
 	#On a farm a click picks the person whose produce is being set rather than turning them
 	#out; the list itself carries the button that sends them away, so nobody loses their
@@ -644,21 +1055,49 @@ func build_people(current):
 		var character = view.get_character(char_id)
 		var button = input_handler.DuplicateContainerTemplate($Body/Columns/PeopleColumn/Occupants/List)
 		setup_occupant_button(button, character)
+		if character != null:
+			globals.connectslavetooltip(button, character, slave_tooltip())
 		if picking:
 			if char_id == farm_worker:
+				#held down rather than merely tinted: the list below belongs to whoever is
+				#pressed, and a tint alone did not read as "this one"
+				button.toggle_mode = true
+				button.pressed = true
 				button.self_modulate = SELECTED_TINT
 			button.connect("pressed", self, "select_farm_worker", [char_id])
 			globals.connecttexttooltip(button, tr("MANSIONVIEW_FARMPICKHINT"), true,
 				view.get_node("Overlay/TextTooltip"))
 			continue
 		button.connect("pressed", self, "on_remove_person", [char_id, sleeping])
-		globals.connecttexttooltip(button, tr("MANSIONVIEW_EVICTHINT"), true,
-			view.get_node("Overlay/TextTooltip"))
 	for _i in range(max(0, capacity - occupants.size())):
 		var button = input_handler.DuplicateContainerTemplate($Body/Columns/PeopleColumn/Occupants/List)
 		setup_empty_occupant_button(button)
-		button.connect("pressed", self, "show_candidates", [sleeping])
+		button.connect("pressed", self, "show_candidates", [sleeping, false, job_id])
 		globals.connecttexttooltip(button, tr("MANSIONVIEW_EMPTYSLOT"), true,
+			view.get_node("Overlay/TextTooltip"))
+
+
+#One titled group of bed slots, drawn the way the single list is: a face for everyone in a bed,
+#a free slot for every bed still empty, and both clickable - out of the room, or into it.
+func fill_people_group(section, title, char_ids, places, count_in_title, sleeping,
+		tutor_slot = false):
+	section.get_node('Header').text = title
+	if count_in_title:
+		section.get_node('Header').text = "%s %d/%d" % [title, char_ids.size(), places]
+	input_handler.ClearContainer(section.get_node('List'))
+	for char_id in char_ids:
+		var button = input_handler.DuplicateContainerTemplate(section.get_node('List'))
+		var character = view.get_character(char_id)
+		setup_occupant_button(button, character)
+		if character != null:
+			globals.connectslavetooltip(button, character, slave_tooltip())
+		button.connect("pressed", self, "on_remove_person", [char_id, sleeping])
+	for _i in range(max(0, places - char_ids.size())):
+		var button = input_handler.DuplicateContainerTemplate(section.get_node('List'))
+		setup_empty_occupant_button(button)
+		button.connect("pressed", self, "show_candidates", [sleeping, tutor_slot])
+		globals.connecttexttooltip(button,
+			tr("MANSIONVIEW_TUTORHINT" if tutor_slot else "MANSIONVIEW_EMPTYSLOT"), true,
 			view.get_node("Overlay/TextTooltip"))
 
 
@@ -679,8 +1118,7 @@ func setup_occupant_button(button, character):
 
 func setup_empty_occupant_button(button):
 	button.self_modulate = Color(0.62, 0.62, 0.62, 1)
-	button.get_node('Portrait').texture = load("res://assets/Textures_v2/icon_question_small.png")
-	button.get_node('Portrait').self_modulate = Color(0.78, 0.7, 0.45, 0.72)
+	button.get_node('Portrait').texture = null
 	button.get_node('Name').text = tr("MANSIONVIEW_EMPTYSLOT")
 	button.get_node('Status').visible = false
 
@@ -788,6 +1226,95 @@ func toggle_farm_rule(char_id, res, value):
 	rebuild()
 
 
+#### what the practice room drills ####
+
+func practice_choice_shown(current):
+	if current == null or view.mode == 'sleep':
+		return false
+	return RoomTypes.has_tag(current.type, 'practice')
+
+
+#Every habit the pupils in this room could be rid of. Asked of the people actually standing
+#there rather than of the trait list: a room is set to work a habit out of somebody, and
+#offering one nobody in it has would be a turn spent on nothing.
+func practice_habits(current):
+	var res = []
+	var tutor = view.special_worker(current)
+	for char_id in view.room_workers(current):
+		if char_id == tutor:
+			continue
+		var character = view.get_character(char_id)
+		if character == null:
+			continue
+		var code = character.first_negative_trait()
+		if code != null and !res.has(code):
+			res.append(code)
+	return res
+
+
+func build_practice_choice(current):
+	var header = $Body/Columns/LeftScroll/LeftColumn/OrderHeader
+	var list = $Body/Columns/LeftScroll/LeftColumn/OrderList
+	header.visible = true
+	list.visible = true
+	header.text = tr("MANSIONVIEW_PRACTICEHEADER")
+	input_handler.ClearContainer(list)
+	for code in MansionLayout.PRACTICE_STATS:
+		var button = input_handler.DuplicateContainerTemplate(list)
+		button.text = tr("STAT" + code.to_upper())
+		button.pressed = current.practice.target == null and current.practice.stat == code
+		button.connect("pressed", self, "set_practice_stat", [code])
+	#One row rather than a list of habits: each pupil is worked on the first of their own, so
+	#the room is set to mend manners and every one of them mends theirs. Unlearning is the
+	#tutor's work, so without one the row is shown greyed rather than hidden - the room says
+	#what it could do once somebody is teaching in it.
+	var tutor = view.special_worker(current)
+	var habits = practice_habits(current)
+	var button = input_handler.DuplicateContainerTemplate(list)
+	button.text = tr("MANSIONVIEW_PRACTICECORRECT")
+	button.pressed = current.practice.target == ResourceScripts.game_res.PRACTICE_CORRECT
+	button.disabled = tutor == null or habits.empty()
+	if tutor == null:
+		globals.connecttexttooltip(button, tr("MANSIONVIEW_PRACTICENOTUTOR"), true,
+			view.get_node("Overlay/TextTooltip"))
+	elif habits.empty():
+		globals.connecttexttooltip(button, tr("MANSIONVIEW_PRACTICENOHABITS"), true,
+			view.get_node("Overlay/TextTooltip"))
+	else:
+		globals.connecttexttooltip(button, practice_habits_text(habits), true,
+			view.get_node("Overlay/TextTooltip"))
+	button.connect("pressed", self, "set_practice_target",
+		[ResourceScripts.game_res.PRACTICE_CORRECT])
+
+
+func set_practice_stat(code):
+	var current = room()
+	if current == null:
+		return
+	current.practice.stat = code
+	#a stat and a habit are two different pieces of work, and the progress belongs to the habit
+	current.practice.target = null
+	current.practice.progress = 0
+	rebuild()
+
+
+#What the room would set about mending, so the one row can name the habits behind it.
+func practice_habits_text(habits):
+	var names = []
+	for code in habits:
+		names.append(tr(Traitdata.traits[code].name) if Traitdata.traits.has(code) else code)
+	return "%s\n%s" % [tr("MANSIONVIEW_PRACTICECORRECTHINT"), PoolStringArray(names).join(", ")]
+
+
+func set_practice_target(code):
+	var current = room()
+	if current == null:
+		return
+	current.practice.target = null if current.practice.target == code else code
+	current.practice.progress = 0
+	rebuild()
+
+
 #### the room's own order of work ####
 
 #Only a craft room keeps its own list, and only once the estate has bought Ledgers - which
@@ -799,6 +1326,9 @@ func build_order_list(current):
 	$Body/Columns/LeftScroll/LeftColumn/FarmList.visible = false
 	if farm_rules_shown(current):
 		build_farm_rules(current)
+		return
+	if practice_choice_shown(current):
+		build_practice_choice(current)
 		return
 	var job = RoomTypes.get_work_job(current.type)
 	#bought once on the master's office, spent on every craft room the estate has
@@ -847,9 +1377,129 @@ func toggle_order(task_id):
 	rebuild()
 
 
+#### who sleeps here ####
+
+#A bedroom has no workplaces, so while work is being arranged its card says nothing about the
+#people it is actually for. Their faces go under the improvements: hovering one tells you who
+#they are, and clicking opens them in the slave list.
+#Beds mode already puts them in the people column, where they can be moved and turned out, so
+#this stays out of its way.
+func build_residents(current):
+	var header = $Body/Columns/LeftScroll/LeftColumn/ResidentsHeader
+	var grid = $Body/Columns/LeftScroll/LeftColumn/ResidentsGrid
+	var companion_header = $Body/Columns/LeftScroll/LeftColumn/CompanionHeader
+	var companion_grid = $Body/Columns/LeftScroll/LeftColumn/CompanionGrid
+	var beds = MansionLayout.sleep_capacity(current)
+	var shown = view.mode != 'sleep' and beds > 0
+	#The master's own bed is never anybody else's, however many are added beside it, so his
+	#room is drawn as two groups rather than one row where his bed is merely the first tile.
+	var master_room = RoomTypes.get_type(current.type).master_only
+	header.visible = shown
+	grid.visible = shown
+	companion_header.visible = shown and master_room
+	companion_grid.visible = shown and master_room
+	if !shown:
+		return
+	if !master_room:
+		header.text = "%s %d/%d" % [tr("MANSIONVIEW_BEDS"), current.occupants.size(), beds]
+		fill_beds(grid, current.occupants, beds)
+		return
+	var master = null
+	var others = []
+	for char_id in current.occupants:
+		var character = view.get_character(char_id)
+		if character == null:
+			continue
+		if master == null and character.is_master():
+			master = char_id
+		else:
+			others.append(char_id)
+	header.text = tr("MANSIONVIEW_MASTERBED")
+	fill_beds(grid, [] if master == null else [master], 1)
+	companion_header.text = "%s %d/%d" % [tr("MANSIONVIEW_NIGHTCOMPANIONS"), others.size(),
+		max(0, beds - 1)]
+	fill_beds(companion_grid, others, max(0, beds - 1))
+
+
+#One row of bed tiles: a face for everyone in them, then a bare frame for every bed still free.
+#The empty ones are inert - beds are arranged in beds mode, and this section is here to be read.
+func fill_beds(grid, char_ids, beds):
+	input_handler.ClearContainer(grid, ['Button'])
+	var drawn = 0
+	for char_id in char_ids:
+		var character = view.get_character(char_id)
+		if character == null:
+			continue
+		var button = input_handler.DuplicateContainerTemplate(grid, 'Button')
+		var portrait = character.get_icon()
+		if portrait == null:
+			portrait = character.get_class_icon()
+		input_handler.queue_portrait(character)
+		button.get_node('Portrait').texture = portrait
+		globals.connectslavetooltip(button, character, slave_tooltip())
+		button.connect("pressed", self, "open_in_slave_list", [char_id])
+		drawn += 1
+	for _i in range(max(0, beds - drawn)):
+		var free_bed = input_handler.DuplicateContainerTemplate(grid, 'Button')
+		#An empty tile, not a tile with a question mark in it: the row of frames already reads
+		#as beds, and a mark in every spare one made the room look full of strangers.
+		free_bed.self_modulate = Color(0.62, 0.62, 0.62, 1)
+		free_bed.get_node('Portrait').texture = null
+		globals.connecttexttooltip(free_bed, tr("MANSIONVIEW_EMPTYSLOT"), true,
+			view.get_node("Overlay/TextTooltip"))
+
+
+#The shared slave tooltip is added at the tree root, and this card sits on a CanvasLayer, which
+#paints over the root whatever order things were added in - the panel would come up behind the
+#very card that asked for it. So the layer gets one of its own, made the first time it is
+#wanted and kept afterwards.
+func slave_tooltip():
+	var overlay = view.get_node("Overlay")
+	var node = overlay.get_node_or_null("SlaveTooltip")
+	if node == null:
+		node = load("res://gui_modules/Universal/Modules/SlaveTooltip.tscn").instance()
+		node.name = "SlaveTooltip"
+		overlay.add_child(node)
+	return node
+
+
+#The slave list is a screen of the mansion module, not of the floorplan, so the card asks the
+#module it is embedded in. Run as its own screen there is no module and nothing happens.
+func open_in_slave_list(char_id):
+	var character = view.get_character(char_id)
+	var mansion = view.get_parent()
+	if character == null or mansion == null or !mansion.has_method('set_active_person'):
+		return
+	view.close_card()
+	#The list shares its space with the floorplan and sits folded down to its title bar while
+	#the rooms are being looked at, so naming somebody changed nothing anybody could see. It is
+	#opened first, then told who to show.
+	var list = mansion.get_node_or_null("MansionSlaveListModule")
+	if list != null and list.has_method('set_slave_list_fold'):
+		list.set_slave_list_fold(list.FOLD_FULL)
+	mansion.set_active_person(character)
+	if list != null:
+		call_deferred("expand_in_slave_list", list, character)
+
+
+#Opening the list only names the person; their own card is a separate thing the list expands.
+#Deferred because the cards are built by the rebuild the line above sets going - the one to
+#open does not exist yet at the moment it is asked for.
+func expand_in_slave_list(list, character):
+	if !is_instance_valid(list) or !list.has_method('_on_card_expand_requested'):
+		return
+	var container = list.get("CardContainer")
+	if container == null:
+		return
+	for node in container.get_children():
+		if node.has_meta("slave") and node.get_meta("slave") == character:
+			list._on_card_expand_requested(node)
+			return
+
+
 #### picking somebody for a free place ####
 
-func show_candidates(sleeping):
+func show_candidates(sleeping, tutor_slot = false, job_id = null):
 	$Body/Columns/PeopleColumn/CandidateScroll.visible = true
 	input_handler.ClearContainer($Body/Columns/PeopleColumn/CandidateScroll/CandidateList)
 	var offered = 0
@@ -859,12 +1509,17 @@ func show_candidates(sleeping):
 			continue
 		if !sleeping and !character.is_worker():
 			continue
+		#practice_trainer() refuses anybody without the trait, so offering them here would be
+		#offering a place that quietly does nothing
+		if tutor_slot and !character.check_trait('trainer'):
+			continue
 		var button = input_handler.DuplicateContainerTemplate(
 			$Body/Columns/PeopleColumn/CandidateScroll/CandidateList)
 		#drawn the way a resident is, by the same call - a face is how the player tells them
 		#apart, and a column of bare names is a column of strangers
 		setup_occupant_button(button, character)
-		button.connect("pressed", self, "pick_candidate", [char_id, sleeping])
+		button.connect("pressed", self, "pick_candidate",
+			[char_id, sleeping, tutor_slot, job_id])
 		offered += 1
 	if offered == 0:
 		var button = input_handler.DuplicateContainerTemplate(
@@ -878,8 +1533,14 @@ func show_candidates(sleeping):
 	fit_to_body()
 
 
-func pick_candidate(char_id, sleeping):
+func pick_candidate(char_id, sleeping, tutor_slot = false, job_id = null):
 	$Body/Columns/PeopleColumn/CandidateScroll.visible = false
+	if job_id != null:
+		view.assign_location_worker(job_id, char_id)
+		return
+	if tutor_slot:
+		view.assign_tutor(slot_code, char_id)
+		return
 	if sleeping:
 		view.assign_resident(slot_code, char_id)
 	else:

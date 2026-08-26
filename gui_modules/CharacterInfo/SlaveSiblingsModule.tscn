@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=2]
+[gd_scene load_steps=92 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSiblingsModule.gd" type="Script" id=2]
@@ -26,7 +26,6 @@
 [ext_resource path="res://assets/images/portraits/aire_prt.png" type="Texture" id=24]
 [ext_resource path="res://gui_modules/CharacterInfo/RelativesPanel.gd" type="Script" id=25]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/ButtonTextOnly.tres" type="Theme" id=26]
-[ext_resource path="res://gui_modules/CharacterInfo/TrUpgradesList.tscn" type="PackedScene" id=27]
 [ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mods.png" type="Texture" id=28]
 [ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mods_pressed.png" type="Texture" id=29]
 [ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mods_hover.png" type="Texture" id=30]
@@ -915,13 +914,6 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 31 )
 text = "100"
 align = 2
-
-[node name="UpgradesList" parent="UpgradesPanel" instance=ExtResource( 27 )]
-visible = false
-margin_left = 844.0
-margin_top = 144.0
-margin_right = 1644.0
-margin_bottom = 897.0
 
 [node name="personality" type="TextureRect" parent="."]
 margin_left = 398.0

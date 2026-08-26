@@ -9,7 +9,7 @@ extends Button
 # corner, saying the same thing.  What it flips is the same work rule, so the
 # portrait and the stored sprite follow it exactly as they did.
 
-const CONTROLS_THEME = preload("res://assets/Themes_v2/CHAR_CREATION/ChC_Theme.tres")
+const STYLES = preload("res://Character_generator/Doll2Spine/universal/doll_control_styles.gd")
 const CONTROL_FONT = preload("res://assets/Themes_v2/UNIVERSAL/PT_18.tres")
 const BUTTON_WIDTH = 116
 const BUTTON_HEIGHT = 26
@@ -24,7 +24,6 @@ func _init():
 	name = "NudityToggle"
 	toggle_mode = true
 	clip_text = true
-	theme = CONTROLS_THEME
 	rect_min_size = Vector2(BUTTON_WIDTH, BUTTON_HEIGHT)
 	anchor_left = 1.0
 	anchor_right = 1.0
@@ -36,13 +35,9 @@ func _init():
 
 
 func _ready():
-	add_font_override("font", CONTROL_FONT)
-	# The theme leaves `disabled` unset, so a blocked button falls back to Godot's
-	# own grey box instead of the frame the other buttons wear.  It keeps its own
-	# look and says it is off through the theme's dimmed font colour.
-	var normal_style = get_stylebox("normal", "Button")
-	if normal_style != null:
-		add_stylebox_override("disabled", normal_style)
+	# The same boxes the doll's own bar is built from, so this button and that bar
+	# stay one look on a screen that shows whichever the character calls for.
+	STYLES.dress_button(self, STYLES.build(), CONTROL_FONT)
 	text = tr("WORKRULENUDITY")
 	if !is_connected("pressed", self, "_on_pressed"):
 		connect("pressed", self, "_on_pressed")

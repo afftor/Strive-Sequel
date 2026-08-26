@@ -717,6 +717,10 @@ func Open(node):
 func ShowLoadScreen():
 	CloseableWindowsArray.clear()
 	dialogue_array.clear()
+	#the dialogue node is destroyed by the swap and will never call event_finished(), so the
+	#flag has to be dropped here or nothing ever drains the queue again
+	event_is_active = false
+	active_event_code = ''
 	var loadscreen = load(ResourceScripts.scenedict.loadscreen).instance()
 	get_tree().get_root().add_child(loadscreen)
 	CurrentScene = loadscreen
@@ -1105,6 +1109,7 @@ func calculate_number_from_string_array(arr, caster, target):
 
 var dialogue_array = []
 var event_is_active = false
+var active_event_code = '' #scene code currently on screen, '' for direct-type scenes
 
 
 func interactive_message(code, type = '', args = {}):
@@ -1116,7 +1121,17 @@ func interactive_message_follow(code, type, args): #not safe
 
 func event_finished():
 	event_is_active = false
+	active_event_code = ''
 	start_event_attempt()
+
+#true while the scene is either on screen or still waiting its turn in dialogue_array
+func event_awaiting_display(code):
+	if event_is_active and active_event_code == code:
+		return true
+	for i in dialogue_array:
+		if typeof(i.code) == TYPE_STRING and i.code == code:
+			return true
+	return false
 
 func start_event_attempt():
 	if gui_controller.clock != null:
@@ -1138,10 +1153,14 @@ func start_event(code, type, args):
 	var data
 	if type == 'direct':
 		data = code
+		active_event_code = ''
 	else:
 		data = scenedata.scenedict[code].duplicate(true)
+		active_event_code = code
 		if !ResourceScripts.game_progress.seen_events.has(code):
 			ResourceScripts.game_progress.seen_events.push_back(code)
+		if args.has('timed_event'):
+			ResourceScripts.game_progress.consume_timed_event(code)
 		if args.has('start_dialogue_option'):
 			data.start_dialogue_option = args.start_dialogue_option
 	#it seems to be a good idea, to set scene_characters and active_character here
@@ -1888,11 +1907,15 @@ const PADDINGS = 40
 #		new_font.size = new_size
 #	return new_font
 
-func font_size_adjust(node):
-	var new_font = font_size_calculator(node)
+func font_size_adjust(node, padding = PADDINGS):
+	var new_font = font_size_calculator(node, padding)
 	node.set("custom_fonts/font", new_font)
 
-func font_size_calculator(label): #, text, font):
+#`padding` is how much of the label's width is not available to the text. The
+#default suits the wide buttons this was written for; a narrow label has to pass
+#its own, or the default would eat more room than the label has and shrink the
+#text away to nothing.
+func font_size_calculator(label, padding = PADDINGS): #, text, font):
 	var font = label.get_font("font")
 	var new_font = DynamicFont.new()
 	new_font.use_filter = true
@@ -1901,7 +1924,11 @@ func font_size_calculator(label): #, text, font):
 		new_font.add_fallback(font.get_fallback(i))
 	new_font.size = font.get_size()
 	var text_width = new_font.get_string_size(label.get_text()).x
-	var label_text_width = label.get_size().x - PADDINGS
+	var label_text_width = label.get_size().x - padding
+	#nothing to fit into - leave the size alone rather than divide by zero or
+	#hand back a font of size 0
+	if label_text_width <= 0 or text_width <= 0:
+		return new_font
 	var diff = text_width / label_text_width
 	if text_width >= label_text_width:
 		var old_size = new_font.get_size()

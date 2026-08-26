@@ -11,14 +11,34 @@ const MansionLayout = preload("res://src/core/mansion_layout.gd")
 const RoomTypes = preload("res://assets/data/mansion_room_types.gd")
 const RoomUpgrades = preload("res://assets/data/mansion_room_upgrades.gd")
 
+#What a slot looks like before anything is read off it. Every working room shares the one
+#picture for now; a slot with nothing built and a slot left derelict have their own, so the
+#three states are told apart at a glance rather than by their colour alone. The colours below
+#stay under the art - they are what shows if a picture is ever missing.
+const ART_ROOM = preload("res://gui_modules/mansion_view/rooms/master_bedrrom.png")
+const ART_EMPTY = preload("res://gui_modules/mansion_view/rooms/empty.png")
+const ART_BROKEN = preload("res://gui_modules/mansion_view/rooms/trashed.png")
+
 const COLOR_EMPTY = '332f28'
 const COLOR_BROKEN = '4a2f2f'
 const COLOR_BUILDING = '4a4530'
 const COLOR_VALID_TARGET = '6ba36b'
 const COLOR_PICKED = 'f9e181'
 
+#A slot with nothing in it is part of the house but not a room yet, and one full of wreckage
+#is further from being one still. Said with a tint rather than by greying the slot out: grey
+#is what a control wears when it has stopped working, and these are both perfectly usable.
+#The bare slot is turned cold rather than merely dulled - the art and the floor under it are
+#both warm browns, so blue is what tells it apart at a glance instead of only being darker.
+const TINT_EMPTY = Color(0.58, 0.74, 1.0, 1)
+const TINT_BROKEN = Color(0.82, 0.76, 0.72, 1)
+
 var view = null
 var slot_code = ''
+#Set while drawing, read by the hover rule: the two way-buttons belong to the staircase and
+#are shown by the same thing that shows a caption, so what is drawn and what is hovered stay
+#one decision rather than two that can disagree.
+var has_stairs = false
 
 
 func setup(code, view_node):
@@ -26,6 +46,30 @@ func setup(code, view_node):
 	slot_code = code
 	set_meta('slot', code)
 	connect("pressed", view, "slot_pressed", [code])
+	show_caption(false)
+
+
+#### the caption band ####
+
+#The band across the bottom of a slot naming what stands there. Kept out of sight until the
+#cursor is on the slot: every room wearing a black bar turned the plan into a list of labels
+#with the house behind it.
+#
+#Asked of the cursor's position rather than driven by mouse_entered, because the places inside
+#a slot are controls of their own - moving onto one of them takes the mouse off the slot, and
+#the caption blinked out from under the very cursor that had called it up. A mended staircase
+#ignores the mouse altogether (see update_pressability) and would never be named at all.
+func _process(_delta):
+	show_caption(Rect2(Vector2.ZERO, rect_size).has_point(get_local_mouse_position()))
+
+
+func show_caption(shown):
+	if $name.visible == shown:
+		return
+	$name.visible = shown
+	$HeaderShade.visible = shown
+	$icon.visible = shown
+	$Stairs.visible = has_stairs and shown
 
 
 func room_data():
@@ -41,6 +85,7 @@ func status():
 
 
 func update_slot():
+	update_pressability()
 	match status():
 		'broken':
 			draw_broken()
@@ -57,8 +102,22 @@ func update_slot():
 	apply_mode_highlight()
 
 
+#A mended staircase is not a room, it is two buttons on a wall. Left as a button of its own it
+#clamped under the cursor and lit up as though a room had been selected, and then had nothing to
+#show for it - its card is deliberately not opened. Ignoring the mouse takes the press away
+#while the Up and Down buttons on its face keep theirs.
+#While it is still rotted it stays pressable: its card is the only place the repair is bought.
+#While rooms are being carried it stays pressable too, so refusing to move it can be said out
+#loud rather than by nothing happening.
+func update_pressability():
+	var quiet = is_stairs() and view.mode != 'rearrange' and view.stairs_repaired()
+	mouse_filter = Control.MOUSE_FILTER_IGNORE if quiet else Control.MOUSE_FILTER_STOP
+
+
 func draw_broken():
+	has_stairs = false
 	$bg.color = Color(COLOR_BROKEN)
+	$art.texture = ART_BROKEN
 	$icon.texture = null
 	$name.text = tr("MANSIONVIEW_BROKEN")
 	globals.connecttexttooltip(self, tr("MANSIONVIEW_BROKENHINT"), true)
@@ -66,7 +125,9 @@ func draw_broken():
 
 
 func draw_empty():
+	has_stairs = false
 	$bg.color = Color(COLOR_EMPTY)
+	$art.texture = ART_EMPTY
 	$icon.texture = null
 	$name.text = tr("MANSIONVIEW_EMPTYROOM")
 	globals.connecttexttooltip(self, tr("MANSIONVIEW_BUILDHERE"), true)
@@ -74,8 +135,12 @@ func draw_empty():
 
 
 func draw_building():
+	has_stairs = false
 	var build = build_data()
 	$bg.color = Color(COLOR_BUILDING)
+	#Scaffolding shows whatever is actually standing there meanwhile: a repair is still a
+	#wrecked room until it finishes, a new build is still bare floor.
+	$art.texture = ART_BROKEN if build != null and build.kind == 'repair' else ART_EMPTY
 	$icon.texture = null
 	if build != null and build.kind == 'construct':
 		var data = RoomTypes.get_type(build.target)
@@ -88,6 +153,7 @@ func draw_building():
 func draw_room(room):
 	var data = RoomTypes.get_type(room.type)
 	$bg.color = Color(data.color)
+	$art.texture = ART_ROOM
 	$icon.texture = images.upgrade_icons[data.icon] if images.upgrade_icons.has(data.icon) else null
 	$name.text = tr(RoomTypes.get_name_key(room.type))
 	draw_stairs(room)
@@ -99,13 +165,13 @@ func draw_room(room):
 #shows only when there is a floor that way - the grounds are not climbed to, so they are never
 #one of them.
 func draw_stairs(room):
-	var stairs = RoomTypes.has_tag(room.type, 'stairs')
-	#Shown while rooms are being rearranged too - that is when it matters most. A pick carries
+	#Drawn while rooms are being rearranged too - that is when it matters most. A pick carries
 	#the floor it was made on (view.set_pick), so a room can be taken upstairs and put down
-	#there; with the stairs hidden the only way between floors was the bar at the top, and
-	#nothing on the plan said a room could leave its floor at all.
-	$Stairs.visible = stairs
-	if !$Stairs.visible:
+	#there; with no way up, the only route between floors was the bar at the top, and nothing
+	#on the plan said a room could leave its floor at all.
+	has_stairs = RoomTypes.has_tag(room.type, 'stairs')
+	$Stairs.visible = has_stairs and $name.visible
+	if !has_stairs:
 		return
 	for way in [['Up', 1], ['Down', -1]]:
 		var button = $Stairs.get_node(way[0])
@@ -167,6 +233,7 @@ func update_fill():
 func update_craft():
 	var room = room_data()
 	$Craft.visible = false
+	$CraftIcon.visible = false
 	#the bar sits in the same strip while something is being raised here
 	if room == null or view.mode != 'work' or build_data() != null:
 		return
@@ -174,10 +241,15 @@ func update_craft():
 	if making == null:
 		return
 	var text = ResourceScripts.game_res.craft_result_name(making)
-	if text == "":
+	var icon = ResourceScripts.game_res.craft_result_icon(making)
+	if icon != null:
+		$CraftIcon.texture = icon
+		$CraftIcon.visible = true
+	elif text != "":
+		$Craft.visible = true
+		$Craft.text = text
+	else:
 		return
-	$Craft.visible = true
-	$Craft.text = text
 	#the row of workers stops short of the line rather than running under it
 	$People.rect_size = Vector2($People.rect_size.x,
 		max(0.0, $Craft.rect_position.y - $People.rect_position.y - 4.0))
@@ -217,6 +289,8 @@ func build_people():
 	$People.visible = !entries.empty()
 	for entry in entries:
 		var cell = input_handler.DuplicateContainerTemplate($People)
+		#before setup(), which is what paints the cell in its kind's colour
+		cell.master_bed = entry.size() > 2 and entry[2]
 		cell.setup(view, entry[0], slot_code, entry[1])
 
 
@@ -229,6 +303,23 @@ func places_for_mode():
 	#worker list (Mansion/Scripts/MansionJobModule.gd show_faces)
 	if view.mode == 'sleep':
 		var capacity = MansionLayout.sleep_capacity(room)
+		#The master's room is drawn with his own bed first and in its own colour; the beds
+		#beside it follow as a group, the way the room's card lists them.
+		if RoomTypes.get_type(room.type).master_only:
+			var master = null
+			var others = []
+			for char_id in room.occupants:
+				var character = view.get_character(char_id)
+				if master == null and character != null and character.is_master():
+					master = char_id
+				else:
+					others.append(char_id)
+			res.append(['sleep', master, true])
+			for char_id in others:
+				res.append(['sleep', char_id, false])
+			for _i in range(max(0, capacity - 1 - others.size())):
+				res.append(['sleep', null, false])
+			return res
 		for char_id in room.occupants:
 			res.append(['sleep', char_id])
 		for _i in range(max(0, capacity - room.occupants.size())):
@@ -278,10 +369,12 @@ func refresh_marks():
 func apply_mode_highlight():
 	$Highlight.visible = false
 	if view.mode != 'rearrange':
-		#Which rooms this mode is even about is a standing fact, not something to be found out
-		#by picking somebody up and watching what lights: in work mode a bedroom is not a
-		#place to work, and it says so before anybody is carried anywhere.
-		modulate = Color(1, 1, 1, 1) if takes_people_in_mode() else Color(0.5, 0.5, 0.5, 1)
+		#Work mode is the mansion as it stands, so nothing in it is greyed out - a room that
+		#takes no workers is still a room, and dimming half the plan by default read as half
+		#the house being out of order. Arranging beds is a question put to the rooms, and the
+		#ones that cannot answer it say so.
+		var dim = view.mode == 'sleep' and !takes_people_in_mode()
+		modulate = Color(0.5, 0.5, 0.5, 1) if dim else state_tint()
 		if view.carried_data() != null:
 			apply_pick_highlight()
 		return
@@ -301,6 +394,15 @@ func apply_mode_highlight():
 		return
 	#nothing picked yet: dim whatever could not start a swap at all
 	modulate = Color(1, 1, 1, 1) if view.has_any_swap_target(slot_code) else Color(0.5, 0.5, 0.5, 1)
+
+
+func state_tint():
+	match status():
+		'empty':
+			return TINT_EMPTY
+		'broken':
+			return TINT_BROKEN
+	return Color(1, 1, 1, 1)
 
 
 #The one room on the plan that is a button rather than somewhere to put anybody.

@@ -584,7 +584,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_df',
 		type = 'factor',
-		abb = 'TIM',
+		abb = 'AUT',
 		tags = ['integer', 'factor'],
 		direct = false,
 		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value},

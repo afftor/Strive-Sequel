@@ -55,7 +55,35 @@ static func build_default(plan_code = 'default_manor'):
 			var room = get_room(res.floors[floor_index], slot_code)
 			if room != null:
 				assign_room_id(res, room)
+	hide_finds_in_rubble(res)
 	return res
+
+
+#What the rubble is hiding, floor by floor. Put in different rooms every game, so clearing
+#one out is worth doing rather than a chore whose answer is already known. The codes mean
+#nothing here - game_res.claim_rubble_find() is what knows they hand over.
+#The upper floor is reached late and its rubble is cleared long after the ground floor's, so
+#it hides one thing rather than three, and that one is gear rather than a purse of gold: by
+#the time anyone gets up there, fifty gold is not a reason to pick up a shovel.
+const RUBBLE_FINDS = ['gold', 'materials', 'sword']
+const RUBBLE_FINDS_UPPER = ['goggles']
+
+
+static func hide_finds_in_rubble(layout):
+	hide_finds_on_floor(get_floor(layout, 0), RUBBLE_FINDS)
+	hide_finds_on_floor(get_floor(layout, 1), RUBBLE_FINDS_UPPER)
+
+
+static func hide_finds_on_floor(floor_data, finds):
+	if floor_data == null:
+		return
+	var rubble = []
+	for slot_code in floor_data.slots:
+		if floor_data.slots[slot_code].broken:
+			rubble.append(slot_code)
+	rubble.shuffle()
+	for index in range(min(finds.size(), rubble.size())):
+		floor_data.slots[rubble[index]].find = finds[index]
 
 
 static func build_floor(floor_plan):
@@ -80,7 +108,8 @@ static func build_floor(floor_plan):
 #drives happen when there is no room to hang it off: raising one from an empty slot and
 #clearing out a derelict one. The third, upgrading, then falls out for free.
 static func make_slot(broken = false):
-	return {broken = broken, room = null, build = null}
+	#'find' is what the rubble in this slot is hiding, if anything - see hide_finds_in_rubble()
+	return {broken = broken, room = null, build = null, find = null}
 
 
 static func make_room(type_code):
@@ -330,6 +359,34 @@ static func upgrade_level(room, upgrade_code):
 	return int(room.upgrades.get(upgrade_code, 0))
 
 
+#Whether the stairs have been made good. The house is inherited with them rotted through and
+#one repair opens the whole staircase, so this is asked of the ground floor's set and answers
+#for every floor - the way up and the way back down are the same stairs.
+static func stairs_repaired(layout):
+	var floor_data = get_floor(layout, 0)
+	if floor_data == null:
+		return false
+	for slot_code in floor_data.slots:
+		var room = floor_data.slots[slot_code].room
+		if room != null and RoomTypes.has_tag(room.type, 'stairs'):
+			return upgrade_level(room, 'stairs_repair') > 0
+	return false
+
+
+#Mends the stairs without them being paid for. Test mode wants both floors to look at rather
+#than a repair to buy first, the same reasoning as max_out_upgrades() on the master's room.
+static func open_stairs(layout):
+	var floor_data = get_floor(layout, 0)
+	if floor_data == null:
+		return false
+	for slot_code in floor_data.slots:
+		var room = floor_data.slots[slot_code].room
+		if room != null and RoomTypes.has_tag(room.type, 'stairs'):
+			room.upgrades['stairs_repair'] = RoomUpgrades.max_level('stairs_repair')
+			return true
+	return false
+
+
 #### room work tasks ####
 
 #Idempotently mirrors a work room into game_res.tasks_progresses so the ordinary
@@ -384,7 +441,25 @@ static func get_room_workers(room, tasks):
 #### construction, repair and upgrades ####
 
 #Work units needed to clear a derelict slot back to empty. Free, but not instant.
-const REPAIR_PROGRESS = 20
+#Clearing a cluttered room is a fixed piece of work rather than a race: the wreckage has to be
+#carried out, and carrying it down a staircase is what makes the upper floor the longer job.
+#Two turns on the ground floor, three above it, whoever is holding the shovel - a strong back
+#does not make rubble smaller. 'limit' counts turns for these rather than work units, which is
+#what the 'fixed' flag on the build record says (see game_res.process_room_builds).
+const REPAIR_TURNS_GROUND = 2
+const REPAIR_TURNS_UPPER = 3
+
+
+static func repair_turns(floor_index):
+	return REPAIR_TURNS_GROUND if int(floor_index) == 0 else REPAIR_TURNS_UPPER
+
+
+#Clearing upstairs is its own piece of work, not the same one done slower, so it is named
+#apart in every list a worker can be seen in.
+static func repair_task_name(floor_index):
+	if int(floor_index) == 0:
+		return 'MANSIONVIEW_TASK_CLEARGROUND'
+	return 'MANSIONVIEW_TASK_CLEARUPPER'
 
 
 static func can_start_construct(layout, floor_index, slot_code, type_code):
@@ -423,7 +498,8 @@ static func next_upgrade_level(room, upgrade_code):
 
 
 #"paid" is what the caller deducted, kept so cancelling can hand it straight back.
-static func start_build(layout, floor_index, slot_code, kind, target, limit, paid = {}):
+static func start_build(layout, floor_index, slot_code, kind, target, limit, paid = {},
+		fixed = false, task_name = null):
 	var slot = get_slot(get_floor(layout, floor_index), slot_code)
 	if slot == null or slot.build != null:
 		return false
@@ -434,7 +510,11 @@ static func start_build(layout, floor_index, slot_code, kind, target, limit, pai
 		target = target,      #room type code, upgrade code, or null for a repair
 		level = 1,
 		progress = 0.0,
+		#work units, or turns when 'fixed' - see REPAIR_TURNS_GROUND
 		limit = float(max(1, limit)),
+		fixed = fixed,
+		#what the job is called in a worker's task list; null takes the building job's own name
+		task_name = task_name,
 		task_id = 'mansion_build_%d' % next_id,
 		refund = paid.duplicate(),
 	}
@@ -501,6 +581,14 @@ static func ensure_build_task(slot, tasks, extra_builders = 0):
 	task.max_workers = build_capacity(slot.room, extra_builders)
 	if !(task.workers is Array):
 		task.workers = []
+	#A build that names itself keeps that name: every build is the 'building' job, so left to
+	#the job list they would all read alike and clearing a room upstairs could not be told from
+	#clearing one below. 'name_locked' is what stops game_res.fill_room_task_details() from
+	#putting the job's own name back over it.
+	var named = slot.build.get('task_name', null)
+	if named != null:
+		task.name = named
+		task.name_locked = true
 	return task_id
 
 
@@ -854,27 +942,33 @@ static func best_repeatable_beds():
 #Beds first from the rooms already standing. A bedroom widened to its full eight sleeps twice
 #what a bare one does without costing a slot, and a slot spent on a fifth bedroom is a slot
 #that can never be a bathhouse. Only once every bedroom is full does this raise another.
-static func build_bedrooms_up_to(layout, wanted):
+#Returns the derelict slots it had to clear to find the room, so the caller can hand over what
+#the rubble was hiding.
+static func build_bedrooms_up_to(layout, wanted, spare_finds = false):
+	var cleared = []
 	for entry in each_room(layout):
 		if total_sleep_capacity(layout) >= wanted:
-			return
+			return cleared
 		if entry.room.type != 'bedrooms':
 			continue
 		var top = RoomUpgrades.max_level('bedrooms_expansion')
 		if upgrade_level(entry.room, 'bedrooms_expansion') < top:
 			entry.room.upgrades['bedrooms_expansion'] = top
-	for floor_index in range(layout.floors.size()):
-		var floor_data = get_floor(layout, floor_index)
-		if floor_data == null:
-			continue
-		for slot_code in floor_data.slots:
-			if total_sleep_capacity(layout) >= wanted:
-				return
-			#refuses occupied, broken and building slots on its own
-			if build_room(layout, floor_index, slot_code, 'bedrooms'):
-				var room = get_room(floor_data, slot_code)
-				if room != null:
-					room.upgrades['bedrooms_expansion'] = RoomUpgrades.max_level('bedrooms_expansion')
+	#Beds are handed out rather than built, so they take a room the same way any other gift
+	#does - and through the same call, which is what keeps them out of the estate grounds. The
+	#derelict rooms opened on the way go back to the caller, which claims what was under them.
+	while total_sleep_capacity(layout) < wanted:
+		var slot = free_or_cleared_slot(layout, 'bedrooms', spare_finds)
+		if slot == null:
+			return cleared
+		if !build_room(layout, slot.floor, slot.slot, 'bedrooms'):
+			return cleared
+		if slot.cleared:
+			cleared.append(slot)
+		var room = get_room(get_floor(layout, slot.floor), slot.slot)
+		if room != null:
+			room.upgrades['bedrooms_expansion'] = RoomUpgrades.max_level('bedrooms_expansion')
+	return cleared
 
 
 #### reporting ####
@@ -916,6 +1010,7 @@ static func validate(layout, party = null):
 		layout.plan = 'default_manor'
 	layout.next_room_id = int(layout.get('next_room_id', 1))
 	var plan = FloorPlans.get_plan(layout.plan)
+	realign_floors(layout, plan)
 
 	for floor_index in range(layout.floors.size()):
 		if floor_index >= plan.floors.size():
@@ -981,6 +1076,100 @@ static func first_free_slot(layout):
 			if slot.room == null and slot.build == null and !slot.broken:
 				return {floor = floor_index, slot = slot_code}
 	return null
+
+
+#Somewhere to put a room the estate is given rather than builds: quests, the console and test
+#mode all hand rooms over. An empty slot first; failing that a derelict one is cleared on the
+#spot, which is the only way rubble ever goes without builders and materials - so the answer to
+#a gift arriving at a house full of rubble is the room, not a refusal.
+#'cleared' tells the caller a slot was opened, since whatever the rubble was hiding is theirs.
+#'spare_finds' asks it to leave the derelict rooms that are hiding something for last. Rooms
+#handed out at the start of a test game would otherwise pull down whichever room came first
+#and pocket what was under it, spending the finds before anybody could turn one up.
+static func free_or_cleared_slot(layout, type_code = null, spare_finds = false):
+	#Clearing rubble is not undone, so what is going in has to be allowed in before a derelict
+	#room is opened for it. The only thing that can still refuse an empty, unbroken slot is the
+	#cap on how many of that type the mansion may have.
+	if type_code != null:
+		if !RoomTypes.has_type(type_code):
+			return null
+		var cap = RoomTypes.max_count(type_code)
+		if cap > 0 and count_planned_of_type(layout, type_code) >= cap:
+			return null
+	#A floor is finished before the next one is started: its bare rooms first, then its
+	#rubble. Filling every bare room in the house before touching any rubble would put a gift
+	#upstairs while the ground floor still had derelict rooms to open - and the upper floor is
+	#behind a staircase that may not have been mended yet.
+	for floor_index in house_floors(layout):
+		var slot = first_free_slot_on(layout, floor_index)
+		if slot != null:
+			slot.cleared = false
+			return slot
+		slot = clear_first_rubble_on(layout, floor_index, spare_finds)
+		if slot != null:
+			slot.cleared = true
+			return slot
+	#nothing empty and nothing bare left under the rubble: the finds have to give way
+	if spare_finds:
+		return free_or_cleared_slot(layout, type_code, false)
+	return null
+
+
+static func first_free_slot_on(layout, floor_index):
+	var floor_data = get_floor(layout, floor_index)
+	if floor_data == null:
+		return null
+	for slot_code in floor_data.slots:
+		var slot = floor_data.slots[slot_code]
+		if slot.room == null and slot.build == null and !slot.broken:
+			return {floor = floor_index, slot = slot_code}
+	return null
+
+
+static func clear_first_rubble_on(layout, floor_index, spare_finds = false):
+	var floor_data = get_floor(layout, floor_index)
+	if floor_data == null:
+		return null
+	for slot_code in floor_data.slots:
+		var slot = floor_data.slots[slot_code]
+		if !slot.broken or slot.room != null or slot.build != null:
+			continue
+		if spare_finds and slot.get('find', null) != null:
+			continue
+		slot.broken = false
+		return {floor = floor_index, slot = slot_code}
+	return null
+
+
+
+#Floors are matched to the plan by their code rather than by their position. A floor taken out
+#of the middle of the plan would otherwise slide every floor below it up by one - the estate
+#grounds would be read as the top storey, and every building on them lost. Anything the plan no
+#longer has is dropped, which is the one thing that cannot be saved when a floor goes.
+static func realign_floors(layout, plan):
+	var by_code = {}
+	for floor_data in layout.floors:
+		var code = str(floor_data.get('code', ''))
+		#a layout old enough to have no codes cannot be matched; the pass below rebuilds it
+		#floor by floor from its shape instead
+		if code == '' or by_code.has(code):
+			return
+		by_code[code] = floor_data
+	var aligned = []
+	var moved = false
+	for index in range(plan.floors.size()):
+		var code = plan.floors[index].code
+		if !by_code.has(code):
+			continue
+		if layout.floors.find(by_code[code]) != index:
+			moved = true
+		aligned.append(by_code[code])
+		by_code.erase(code)
+	if !moved and by_code.empty():
+		return
+	print_debug("mansion_layout: plan floors changed, %d kept, %d dropped"
+		% [aligned.size(), by_code.size()])
+	layout.floors = aligned
 
 
 static func validate_floor(floor_plan, floor_data):

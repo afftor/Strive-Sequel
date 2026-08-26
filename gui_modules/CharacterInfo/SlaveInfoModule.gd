@@ -8,12 +8,9 @@ const TEX_FOOD_STARVING = preload("res://assets/images/iconsitems/food_old.png")
 
 onready var traitlist = $TraitContainer/HBoxContainer
 onready var traitlist2 = $TraitContainer2/HBoxContainer
-onready var upgrades = $UpgradesPanel
 onready var sextraits = $SexTraitsPanel
-onready var trainings_selector = $tr_selector
 onready var race_label = $Panel/maininfo/Race/label
 onready var race_label_font = race_label.get_font("font")
-var curr_tab
 
 
 func _ready():
@@ -22,28 +19,9 @@ func _ready():
 	$Description/RichTextLabel.connect("meta_hover_ended", self, "text_url_hover_hide")
 	$HairChange/screen.connect("pressed", self, "close_hairstyle")
 	$DescriptionButton.connect("pressed", self, 'toggle_description')
-	for nd in trainings_selector.get_children():
-		nd.connect('pressed', self, 'open_upgrade_tab', [nd.name])
 	get_node('panel4').connect('toggled', self, 'toggle_sex_traits')
-	
-	upgrades.get_node("ScrollContainer2/UpgradesList2").root = get_parent()
-	upgrades.get_node("MinorUpgradesCont/UpgradesList3").root = get_parent()
-	upgrades.get_node("UpgradesList").root = get_parent()
-	upgrades.get_node("SuccubUpgradesList").root = get_parent()
-	
-	globals.connecttexttooltip($tr_selector/master_upg, tr("SIBLINGMODULETRAININGSMASTER"))
-	globals.connecttexttooltip($tr_selector/succubus, tr("SIBLINGMODULESUCCUBUS"))
-	globals.connecttexttooltip($tr_selector/trainings, tr("SIBLINGMODULETRAININGS"))
-	globals.connecttexttooltip($tr_selector/minor_upg, tr("SIBLINGMODULEMINORTRAINING"))
-	globals.connecttexttooltip($UpgradesPanel/Tooltip_master, tr("TOOLTIPMASTERTRAINING"))
-	globals.connecttexttooltip($UpgradesPanel/Tooltip_minor, tr("TOOLTIPMINORTRAINING"))
-	
+
 	update()
-	input_handler.register_btn_source("minor_upg", self, "tut_get_minor_upg")
-
-
-func tut_get_minor_upg():
-	return trainings_selector.get_node("minor_upg")
 
 func toggle_description():
 	$Description.visible = !$Description.visible
@@ -61,7 +39,6 @@ func set_color(value):
 func update():
 	if person != input_handler.interacted_character:
 		person = input_handler.interacted_character
-		curr_tab = null
 	sextraits.hide()
 	$panel4.pressed = false
 	sextraits.build_sex_traits()
@@ -123,11 +100,6 @@ func update():
 		
 		update_food_panel()
 		update_traitlist()
-		update_trainings_selector()
-		open_upgrade_tab()
-		
-		for i in [$UpgradesPanel, $tr_selector, $Label2]:
-			i.visible = !person.is_on_quest()
 
 
 func update_food_panel():
@@ -194,13 +166,6 @@ func update_traitlist():
 	globals.build_training_traitlist(person, traitlist2)
 
 
-func update_trainings_selector():
-	trainings_selector.get_node("master_upg").visible = person.is_master()
-	trainings_selector.get_node("succubus").visible = person.check_trait('succubus')
-	trainings_selector.get_node("trainings").visible = !person.is_master()
-	trainings_selector.get_node("minor_upg").visible = true
-
-
 # func make_location_description():
 # 	return person.get_current_location_desc()
 func text_url_click(meta):
@@ -245,74 +210,6 @@ func text_url_hover_hide(meta = null):
 		'race':
 			var texttooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP) #input_handler.GetTextTooltip()
 			texttooltip.hide()
-
-
-func open_upgrade_tab(id = null):
-	var _update = true
-	if person == null:
-		return
-	if curr_tab != null:
-		if id != null:
-			if curr_tab == id:
-				_update = false
-			curr_tab = id
-	else:
-		if id == null:
-			if person.is_master():
-				id = 'master_upg'
-			elif person.check_trait('succubus'):
-				id = 'succubus'
-			else:
-				id = 'trainings'
-		curr_tab = id
-	for i in trainings_selector.get_children():
-		i.pressed = (i.name == curr_tab)
-	if _update:
-		for nd in upgrades.get_children():
-			nd.visible = false
-		call('open_' + curr_tab)
-
-
-func open_master_upg():
-	upgrades.get_node("Tooltip_master").visible = true
-	upgrades.get_node("Label").visible = true
-	upgrades.get_node("Label").text = tr("MASTER_POINTS") + ": " + str(ResourceScripts.game_progress.master_points)
-	upgrades.get_node("ScrollContainer2").visible = true
-	upgrades.get_node("ScrollContainer2/UpgradesList2").update_upgrades_tree()
-	get_node("Label2").text = tr('SIBLINGMODULETRAININGSMASTER')
-
-
-func open_minor_upg():
-	upgrades.get_node("Tooltip_minor").visible = true
-	upgrades.get_node("Label").visible = true
-	upgrades.get_node("MinorUpgradesCont/UpgradesList3").set_person(person)
-	upgrades.get_node("MinorUpgradesCont").visible = true
-	upgrades.get_node("MinorUpgradesCont/UpgradesList3").update_upgrades_tree()
-	get_node("Label2").text = tr('SIBLINGMODULEMINORTRAIN')
-	upgrades.get_node("Label").text = "%s: %d/%d %s: %d" % [
-		tr("SIBLINGMODULEAVAILABLE"),
-		person.get_minor_training_count(), person.get_minor_training_max(),
-		tr("UPGRADELIST_UNLOCK_GOLD"), ResourceScripts.game_res.money
-	]
-	globals.connecttexttooltip(upgrades.get_node("Label"), tr("SIBLINGMODULEAVAILABLETOOLTIP"))
-
-
-func open_trainings():
-	upgrades.get_node("UpgradesList").visible = true
-	upgrades.get_node("UpgradesList").person = person
-	upgrades.get_node("UpgradesList").match_state()
-	if person.get_stat('slave_class') in ['slave', 'slave_trained']:
-		get_node("Label2").text = tr('SIBLINGMODULETRAININGS')
-	else:
-		get_node("Label2").text = tr('SIBLINGMODULETRAININGSSERVANTS')
-
-
-func open_succubus():
-	upgrades.get_node("Tooltip_succubus").visible = true
-	globals.connecttexttooltip($UpgradesPanel/Tooltip_succubus, person.translate(tr("TOOLTIPSUCCUBUS")))
-	upgrades.get_node("SuccubUpgradesList").set_person(person)
-	upgrades.get_node("SuccubUpgradesList").visible = true
-	get_node("Label2").text = tr('SIBLINGMODULESUCCUBUS')
 
 
 func toggle_sex_traits(val):

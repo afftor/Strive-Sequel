@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://gui_modules/mansion_view/garden/garden_mul.shader" type="Shader" id=1]
+[ext_resource path="res://assets/images/mansion_garden/garden_splash.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/mansion_garden/garden_raindrop.png" type="Texture" id=3]
+[ext_resource path="res://gui_modules/mansion_view/garden/garden_rain.gd" type="Script" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/mul_color = Color( 0.8084, 0.8342, 0.903, 1 )
+shader_param/amount = 1.0
+
+[sub_resource type="Curve" id=2]
+max_value = 1.5
+_data = [ Vector2( 0, 0.15 ), 0.0, 0.0, 0, 0, Vector2( 0.45, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.35 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.22, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[node name="Rain" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Wet" type="ColorRect" parent="."]
+material = SubResource( 1 )
+margin_right = 1920.0
+margin_bottom = 1080.0
+mouse_filter = 2
+
+[node name="Splash" type="CPUParticles2D" parent="."]
+modulate = Color( 0.74, 0.82, 0.96, 0.432 )
+position = Vector2( 960, 540 )
+amount = 120
+lifetime = 0.45
+preprocess = 0.45
+randomness = 0.6
+lifetime_randomness = 0.7
+texture = ExtResource( 2 )
+emission_shape = 2
+emission_rect_extents = Vector2( 960, 540 )
+direction = Vector2( 0, -1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+scale_amount = 0.5
+scale_amount_random = 0.5
+scale_amount_curve = SubResource( 2 )
+color_ramp = SubResource( 3 )
+
+[node name="Far" type="CPUParticles2D" parent="."]
+modulate = Color( 0.74, 0.82, 0.96, 0.32 )
+position = Vector2( 960, -140 )
+amount = 520
+lifetime = 0.933333
+preprocess = 0.933333
+randomness = 0.4
+lifetime_randomness = 0.25
+texture = ExtResource( 3 )
+emission_shape = 2
+emission_rect_extents = Vector2( 1497.6, 70 )
+flag_align_y = true
+direction = Vector2( 0.214862, 0.976644 )
+spread = 2.5
+gravity = Vector2( 0, 0 )
+initial_velocity = 1500.0
+initial_velocity_random = 0.18
+scale_amount = 0.45
+scale_amount_random = 0.35
+
+[node name="Near" type="CPUParticles2D" parent="."]
+modulate = Color( 0.74, 0.82, 0.96, 0.1984 )
+position = Vector2( 960, -140 )
+amount = 130
+lifetime = 0.691358
+preprocess = 0.691358
+randomness = 0.4
+lifetime_randomness = 0.25
+texture = ExtResource( 3 )
+emission_shape = 2
+emission_rect_extents = Vector2( 1497.6, 70 )
+flag_align_y = true
+direction = Vector2( 0.214862, 0.976644 )
+spread = 2.5
+gravity = Vector2( 0, 0 )
+initial_velocity = 2025.0
+initial_velocity_random = 0.18
+scale_amount = 0.85
+scale_amount_random = 0.35
+
+[node name="Haze" type="ColorRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+mouse_filter = 2
+color = Color( 0.62, 0.7, 0.8, 0.055 )

@@ -84,6 +84,8 @@ const VALUES = {
 		"bunny_drooping": "ears_rabbit3", "orcish": "ears_orc",
 		"normal": "ears_human", "fish": "ears_nereid",
 		"demon": "", "feathered": "",
+		# second cuts, drawn for the male rig so far - see STAND_INS
+		"elven2": "ears_elven2", "fox2": "ears_fox2",
 	},
 	"horns": {
 		# the names are the old doll's and so is the art each one picked: its
@@ -110,12 +112,16 @@ const VALUES = {
 	},
 	"chin": {
 		"kobold": "head_chin_curve_kobold", "kobold_2": "head_chin_kobold2",
-		"skinny": "head_chin_long_skinny", "small": "head_chin_small",
+		# the August re-export replaced the small chin with a recut of it and
+		# withdrew the loli one altogether
+		"skinny": "head_chin_long_skinny", "small": "head_chin_small_c",
 		# a beastkin muzzle depends on the animal; BEAST_CHINS answers it
 		"beastkin": "",
 	},
 	"hair_base": {
-		"fringe2": "hair_base_fringe_2", "lion": "hairs_base_lion",
+		# `dopple` is the one the re-export kept under the older spelling; the
+		# lion, the lamb and the irokez went with that pass and have no art left.
+		"fringe2": "hair_base_fringe_2", "dopple": "hairs_base_dopple",
 	},
 	"hair_back": {
 		"wave": "hair_back_wawe", "very_long": "hair_back_verylong1",
@@ -126,6 +132,10 @@ const VALUES = {
 		"no": "", "twin_tails_2": "hair_assist_twin_tails_2",
 		"ponytail_2": "ponytail_2", "ponytail_3": "ponytail_3",
 		"twin_tails_3": "twin_tails_3",
+		# The re-export dropped the prefixed spellings of these three and kept the
+		# bare ones, and brought a spiral and a pair of braids that had no value yet.
+		"braid": "braid", "pigtails": "pigtails", "ponytail": "ponytail",
+		"spiral": "hair_spiral", "twin_braids": "twin_braids",
 		# two names the export drew the same way; the art is gone, the saved
 		# characters wearing them are not
 		"twin_tails_4": "hair_assist_twin_tails",
@@ -135,13 +145,14 @@ const VALUES = {
 	# the extra five are new values, so nothing the artist drew is unreachable.
 	"beard": {
 		"no": "", "": "",
-		"style1": "beard1", "style2": "beard2", "style3": "beard3",
-		"style4": "beard4", "style5": "beard5", "style6": "beard6",
-		"style7": "beard7", "style8": "beard8", "style9": "beard9",
-		"style10": "beard_moustache1", "style11": "beard_moustache2",
-		"style12": "beard_moustache3", "style13": "beard_moustache4",
-		"style14": "moustache1", "style15": "moustache2",
-		"style16": "moustache3", "style17": "moustache4",
+		# Twelve pieces since the re-export withdrew beards one to five, which is
+		# exactly the twelve styles the game has always carried.
+		"style1": "beard6", "style2": "beard7", "style3": "beard8",
+		"style4": "beard9",
+		"style5": "beard_moustache1", "style6": "beard_moustache2",
+		"style7": "beard_moustache3", "style8": "beard_moustache4",
+		"style9": "moustache1", "style10": "moustache2",
+		"style11": "moustache3", "style12": "moustache4",
 	},
 	"wings": {
 		"dragon": "Wings_dragon", "fairy": "Wings_fairy", "seraph": "Wings_seraph",
@@ -149,6 +160,24 @@ const VALUES = {
 		"harpy": "wings_harpia",
 	},
 }
+
+# What to wear when a rig has not been drawn the piece a character asks for.
+#
+# The two exports are not always in step: the artist cuts a variant for one rig
+# and the other follows later.  Rather than hide the option from half the cast
+# or leave a character with the group's default - a human ear on an elf - the
+# piece names what it stands in for, and the doll wears that until its own art
+# arrives.  Delete an entry when both rigs have the part.
+const STAND_INS = {
+	"ears": {"ears_elven2": "ears_elven", "ears_fox2": "ears_fox"},
+}
+
+
+# The piece this rig should wear instead, or "" when there is nothing to fall
+# back to and the slot is better left as the catalogue has it.
+static func stand_in(group_id, part_id):
+	return str(STAND_INS.get(str(group_id), {}).get(str(part_id), ""))
+
 
 # A beastkin does not merely wear a muzzle: the face and the mouth are drawn for
 # a snout as well, and the human ones sit flat on it.  These are the groups with

@@ -28,7 +28,7 @@ const DEFAULT_CONTRACT = "doll2_v1"
 const BONE_ALIASES = {
 	"doll2_male_v1": {
 		"collarbone_l": "collarb_l",
-		"collarbonr_r": "collarb_r",
+		"collarbone_r": "collarb_r",
 		"spine46": "hip_l",
 		"bone": "hip_r",
 		"chest_l": null,
@@ -134,7 +134,7 @@ const MODIFIERS = {
 		# of the shoulders and the arm hangs from wherever it ends.
 		"ops": [
 			{"bone": "collarbone_l", "axis": "x", "op": "mul"},
-			{"bone": "collarbonr_r", "axis": "x", "op": "mul"},
+			{"bone": "collarbone_r", "axis": "x", "op": "mul"},
 		],
 	},
 	"arms": {
@@ -187,6 +187,45 @@ const MODIFIERS = {
 			{"bone": "spine1", "axis": "y", "op": "mul"},
 		],
 	},
+	# `penis_size` and `balls_size`, the same three sizes the game has carried
+	# since the old doll.  The art is one pair of meshes, so a size is a scale:
+	# the shaft hangs off spine6 and the sack off spine9, and the bones below each
+	# of them inherit, so one bone apiece moves the whole thing.  Uniform rather
+	# than per axis - a bigger one is longer *and* thicker.
+	#
+	# `tune` puts a free slider beside the named picker in the preview panel, so
+	# these three numbers can be found by eye and then written down here.
+	"dick": {
+		"contract": "doll2_v1",
+		"label": "DOLL2_PREVIEW_DICK_SIZE",
+		"tune": true,
+		"range": {"default": 1.0, "minimum": 0.7, "maximum": 1.4, "step": 0.01},
+		"steps": {
+			"default": "average",
+			"order": ["small", "average", "big"],
+			"values": {"small": 0.7, "average": 1.0, "big": 1.2},
+		},
+		"ops": [
+			{"bone": "spine6"},
+		],
+	},
+	"balls": {
+		"contract": "doll2_v1",
+		"label": "DOLL2_PREVIEW_BALLS_SIZE",
+		"tune": true,
+		"range": {"default": 1.0, "minimum": 0.7, "maximum": 1.4, "step": 0.01},
+		"steps": {
+			"default": "average",
+			"order": ["small", "average", "big"],
+			"values": {"small": 0.85, "average": 1.0, "big": 1.2},
+		},
+		# The two are siblings under spine1, not a chain: scaling one leaves the
+		# other where it was.
+		"ops": [
+			{"bone": "spine9"},
+			{"bone": "spine10"},
+		],
+	},
 }
 
 # Face placement is additive and applied after animation sampling. On this rig
@@ -195,7 +234,14 @@ const POSITION_MODIFIERS = {
 	"eyes_width": {
 		"label": "DOLL2_PREVIEW_EYES_WIDTH",
 		"range": {"default": 0.0, "minimum": -7.0, "maximum": 7.0, "step": 0.1},
-		"ops": [{"bone": "eyes_l", "axis": "y", "amount": 1.0}, {"bone": "eyes_r", "axis": "y", "amount": -1.0}],
+		# Eye and pupil meshes use parallel sibling bones under the head, so both
+		# pairs need the same offset to remain centred on one another.
+		"ops": [
+			{"bone": "eyes_l", "axis": "y", "amount": 1.0},
+			{"bone": "eyes_r", "axis": "y", "amount": -1.0},
+			{"bone": "pupil_l", "axis": "y", "amount": 1.0},
+			{"bone": "pupil_r", "axis": "y", "amount": -1.0},
+		],
 	},
 	"eyes_height": {
 		"label": "DOLL2_PREVIEW_EYES_HEIGHT",
@@ -212,11 +258,6 @@ const POSITION_MODIFIERS = {
 		"range": {"default": 0.0, "minimum": -7.0, "maximum": 7.0, "step": 0.1},
 		"ops": [{"bone": "brov_l", "axis": "x"}, {"bone": "brov_r", "axis": "x"}],
 	},
-	"pupil_width": {
-		"label": "DOLL2_PREVIEW_PUPIL_WIDTH",
-		"range": {"default": 0.0, "minimum": -7.0, "maximum": 7.0, "step": 0.1},
-		"ops": [{"bone": "pupil_l", "axis": "y", "amount": 1.0}, {"bone": "pupil_r", "axis": "y", "amount": -1.0}],
-	},
 	"pupil_height": {
 		"label": "DOLL2_PREVIEW_PUPIL_HEIGHT",
 		"range": {"default": 0.0, "minimum": -7.0, "maximum": 7.0, "step": 0.1},
@@ -232,84 +273,82 @@ const POSITION_MODIFIERS = {
 		"range": {"default": 0.0, "minimum": -7.0, "maximum": 7.0, "step": 0.1},
 		"ops": [{"bone": "lips", "axis": "x"}],
 	},
+	"waist_width": {
+		"label": "DOLL2_PREVIEW_WAIST_WIDTH",
+		"range": {"default": 0.0, "minimum": -15.0, "maximum": 15.0, "step": 0.1},
+		# The spine is turned roughly 90 degrees in setup pose: its children's
+		# local Y is the horizontal screen axis. Positive values widen the waist;
+		# negative values move both sides towards its centre line.
+		"ops": [
+			{"bone": "pelvisl_1", "axis": "y", "amount": 1.0},
+			{"bone": "sternum_l", "axis": "y", "amount": 1.0},
+			{"bone": "pelvisr_1", "axis": "y", "amount": -1.0},
+			{"bone": "sternum_r", "axis": "y", "amount": -1.0},
+		],
+	},
+	"waist_height": {
+		"label": "DOLL2_PREVIEW_WAIST_HEIGHT",
+		"range": {"default": 0.0, "minimum": -20.0, "maximum": 20.0, "step": 0.1},
+		# Local X follows the vertical screen axis for all four waist controls.
+		"ops": [
+			{"bone": "pelvisl_1", "axis": "x"},
+			{"bone": "sternum_l", "axis": "x"},
+			{"bone": "pelvisr_1", "axis": "x"},
+			{"bone": "sternum_r", "axis": "x"},
+		],
+	},
 }
 
 const FACE_MODIFIER_ORDER = [
 	"eyes_width", "eyes_height", "eyes_scale",
 	"brow_width", "brow_height", "brow_scale",
-	"pupil_width", "pupil_height", "pupil_scale",
+	"pupil_height", "pupil_scale",
 	"nose_height", "nose_scale", "lips_height", "lips_scale",
 ]
 
+const WAIST_MODIFIER_ORDER = ["waist_width", "waist_height"]
+
+
 # ---------------------------------------------------------------- layers --
 
-# Hair length is not an ordinary bone modifier, and it cannot be one.
-#
-# The rig hangs hair on six chains off the head: `hair1_l/r` (the volume and the
-# long tails), `fringe1_l/r` (the bangs) and `head2`/`head6`, the rim chains that
-# run down either side of the skull.  Every hair layer is weighted across several
-# of them at once and they overlap heavily - a ponytail is 32% hair chain and 68%
-# rim, a fringe is 40% hair chain - so scaling a chain moves part of every layer.
-# That is what tore the accessories: the bones that moved carried a fifth of the
-# mesh and the rest stayed where it was.
-#
-# So length is applied per layer instead.  Each entry scales ALL six chains, but
-# only for the slots it names, and the doll solves a separate pose for it.  A
-# layer therefore lengthens as a whole regardless of which chains its art happens
-# to be weighted to, and two layers can differ without pulling on each other.
-const HAIR_CHAIN_ROOTS = ["hair1_l", "hair1_r", "fringe1_l", "fringe1_r", "head2", "head6"]
-
-# How much of a strand a length slider takes hold of, counted in bones up from
-# the tip of each branch.
-#
-# Scaling a chain from its root moves the whole hairstyle rather than lengthening
-# it: shortening drags the silhouette inward until a lock lies across the face,
-# and lengthening swells the crown into a dome above the skull.  Taking hold part
-# way down leaves the head where it is and only draws the ends out.
-#
-# Three is measured, not guessed.  At 1.5 the hair moves 69 px and the top fifth
-# of it 8 px; from the root it moves 94 px and the crown 25.  Four reaches 86 px
-# but starts to dome the very long styles, whose branches are only five bones
-# deep, so the fourth bone up is already their root.  A branch shorter than this
-# is scaled from its own root - there is nothing above the tip to keep.
-const HAIR_FROM_LEAF = 3
-
-# Deeper than any chain in the rig, so the whole branch is scaled from its root.
-const WHOLE_CHAIN = 99
+# Hair layers share parts of the same rig, so each slot receives its own solved
+# pose.  Only the authored length controls below are scaled; unrelated bones stay
+# at setup scale and cannot pull another part of the hairstyle out of shape.
 
 const LAYER_MODIFIERS = {
 	"hair_length": {
 		"contract": "doll2_v1",
 		"label": "DOLL2_PREVIEW_HAIR_LENGTH",
-		"range": {"default": 1.0, "minimum": 0.6, "maximum": 1.8, "step": 0.01},
-		# The hair proper: the volume on the head and whatever falls behind it.
-		# They are one hairstyle, so one slider drives both.
-		"slots": ["hairs_base", "hairs_back"],
-		"chains": HAIR_CHAIN_ROOTS,
-		"from_leaf": HAIR_FROM_LEAF,
+		"range": {"default": 1.0, "minimum": 0.7, "maximum": 1.3, "step": 0.01},
+		"slots": ["hairs_base"],
+		"bones": ["hair3_l", "hair3_r"],
+		# Spine bones extend along local X. In this rig that is the visible strand
+		# length even though the finished hair grows vertically on screen.
+		"axis": "x",
 	},
 	"fringe_length": {
 		"contract": "doll2_v1",
 		"label": "DOLL2_PREVIEW_FRINGE_LENGTH",
-		"range": {"default": 1.0, "minimum": 0.6, "maximum": 1.8, "step": 0.01},
-		# The fringe takes hold of its chains all the way to the roots.  It is a
-		# short piece at the front with no length below the crown worth keeping,
-		# and its art hangs mostly off the upper bones, so a partial hold barely
-		# moves it: 40 px against 69 at 1.5.  Bangs get shorter or longer, and
-		# nothing else in the hairstyle is in this mesh to be dragged about.
+		"range": {"default": 1.0, "minimum": 0.65, "maximum": 1.35, "step": 0.01},
 		"slots": ["hairs_fringe"],
-		"chains": HAIR_CHAIN_ROOTS,
-		"from_leaf": WHOLE_CHAIN,
+		"bones": ["fringe3_l", "fringe3_r"],
+		"axis": "x",
+	},
+	"hair_back_length": {
+		"contract": "doll2_v1",
+		"label": "DOLL2_PREVIEW_HAIR_BACK_LENGTH",
+		"range": {"default": 1.0, "minimum": 0.7, "maximum": 1.3, "step": 0.01},
+		"slots": ["hairs_back"],
+		"bones": ["hair1_l4", "hair1_r4", "hair4_l2", "hair4_r2", "hair1_r11", "hair1_l12"],
+		"axis": "x",
 	},
 	"hair_assist_length": {
 		"contract": "doll2_v1",
 		"label": "DOLL2_PREVIEW_ASSIST_LENGTH",
-		"range": {"default": 1.0, "minimum": 0.6, "maximum": 1.8, "step": 0.01},
-		# Buns, braids, pigtails and tails.  Their own slider, so growing the hair
-		# out does not grow the ponytail tied into it.
+		"range": {"default": 1.0, "minimum": 0.7, "maximum": 1.3, "step": 0.01},
 		"slots": ["hairs_assist"],
-		"chains": HAIR_CHAIN_ROOTS,
-		"from_leaf": HAIR_FROM_LEAF,
+		"bones": ["head3", "head7", "head5", "head10", "head15", "head17"],
+		"axis": "y",
 	},
 }
 
@@ -354,10 +393,10 @@ const HEIGHT_TIERS_RAW = {
 # counter-scale further down could cancel it again.
 const TORSO_BONES = ["spine2"]
 # Direct children of the torso chain that must not be stretched with it, or the
-# shoulders shear and the breasts smear sideways.  `collarbonr_r` is spelled that
-# way in the rig.
+# shoulders shear and the breasts smear sideways.  The right collarbone was
+# spelled `collarbonr_r` until the August re-export straightened out the name.
 const TORSO_CHILDREN = [
-	"neck", "collarbone_l", "collarbonr_r",
+	"neck", "collarbone_l", "collarbone_r",
 	"chest_l", "chest_r", "sternum_l", "sternum_r",
 	"nipple2_l", "nipple2_r", "nipple3_l", "nipple3_r",
 	"nipple4_l", "nipple4_r", "nipple5_l", "nipple5_r",
@@ -410,12 +449,20 @@ static func layer_factors(values, parents = {}, contract_id = DEFAULT_CONTRACT):
 		elif modifier.get("axis", "both") == "y":
 			factor = Vector2(1.0, value)
 		var factors = {}
+		var affected = []
+		for bone_name in modifier.get("bones", []):
+			var rig_name = rig_bone(bone_name, contract_id)
+			if rig_name != "":
+				affected.append(rig_name)
 		var chains = []
-		for bone_name in modifier.chains:
+		for bone_name in modifier.get("chains", []):
 			var rig_name = rig_bone(bone_name, contract_id)
 			if rig_name != "":
 				chains.append(rig_name)
 		for bone_name in chain_segments(chains, int(modifier.get("from_leaf", 0)), parents):
+			if !(bone_name in affected):
+				affected.append(bone_name)
+		for bone_name in affected:
 			if bone_name in contract_bones(contract_id):
 				factors[bone_name] = factor
 			else:

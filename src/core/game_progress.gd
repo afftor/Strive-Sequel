@@ -252,6 +252,7 @@ func get_next_event_time():
 	var res = 0
 	for i in stored_events.timed_events:
 		if i.has('broken'): continue
+		if i.has('pending'): continue #already due, waiting on the scene queue
 		var time = get_time_of_event(i)
 		#some debugging
 		if time.date == -1: 
@@ -284,7 +285,17 @@ func get_next_event_time():
 
 func check_timed_events():
 	var deleting_events = []
-	for i in stored_events.timed_events:
+	#a pending event was handed to the scene queue but never reached the screen. that queue
+	#is not saved and gets dropped on any scene swap or on quitting, so re-offer the event
+	#here instead of losing it - it stays on the schedule until it really opens
+	for i in stored_events.timed_events.duplicate():
+		if !i.has('pending'): continue
+		if !scenedata.scenedict.has(i.code): continue #removed content, nothing to show
+		if input_handler.event_awaiting_display(i.code): continue
+		input_handler.interactive_message(i.code, 'story_event', {timed_event = true})
+	#the copy is needed because a scene that opens right away strikes its own entry off
+	for i in stored_events.timed_events.duplicate():
+		if i.has('pending'): continue
 		if globals.checkreqs(i.reqs):
 			if i.has('action'): # it's for action_to_date
 				match i.action:
@@ -337,10 +348,23 @@ func check_timed_events():
 				pass
 #				gui_controller.clock.continue_timer = true
 			else:
-				input_handler.interactive_message(i.code, 'story_event', {})
-				deleting_events.append(i)
+				#not deleted here - consume_timed_event() strikes it off once the scene really
+				#opens, so a queue that gets dropped before that does not take the event with it
+				i.pending = true
+				input_handler.interactive_message(i.code, 'story_event', {timed_event = true})
 	for i in deleting_events:
 		stored_events.timed_events.erase(i)
+
+
+#called from input_handler.start_event() at the point the event actually opens
+func consume_timed_event(code):
+	for i in stored_events.timed_events:
+		if i.has('action'):
+			continue
+		if i.has('pending') and i.has('code') and i.code == code:
+			stored_events.timed_events.erase(i)
+			return true
+	return false
 
 
 func fix_event_duplicate(code):

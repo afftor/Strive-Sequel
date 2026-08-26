@@ -325,13 +325,6 @@ var effect_table = {
 			{code = 'has_profession', value = 'master', check = false},
 			],
 		sub_effects = [rebuild_simple_dot(['affection'], [4], variables.TR_TICK),],
-		buffs = [
-			{
-				icon = "res://assets/images/gui/gui icons/icon_twohearts.png",
-				description = "MANSIONROOM_MASTER_BEDROOM",
-				tags = ['mansion_only'],
-			}
-		],
 	},
 	#Granted by the estate having the room at all rather than by anybody living in it, which
 	#is what the 'has_room' condition is for - see game_res.has_room_with_tag().

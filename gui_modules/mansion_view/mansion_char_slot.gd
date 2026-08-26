@@ -20,6 +20,11 @@ const MansionLayout = preload("res://src/core/mansion_layout.gd")
 const ICON_BUILD = preload("res://assets/images/gui/inventory/tool_hammer.png")
 
 const COLOR_SLEEP = Color('4a5f7a')
+#The master's own bed, which is never anybody else's however many are added beside it. A colour
+#rather than a kind of its own: 'sleep' is what the pinning rule and the drop checks are written
+#against, and a fourth kind would have had to be added to every one of them to say one thing
+#about how it looks.
+const COLOR_SLEEP_MASTER = Color('7a5a46')
 const COLOR_WORK = Color('6b5a3f')
 #a place an upgrade paid for, so what widening a room bought can be seen at a glance
 const COLOR_WORK_UPGRADE = Color('4f6b52')
@@ -39,6 +44,8 @@ var view = null
 #'sleep' | 'work' | 'build' inside the mansion, 'task' for work at another location -
 #in which case "holder" is a task id rather than a slot code
 var kind = 'work'
+#set before setup() by whoever builds the row - see mansion_slot_node.places_for_mode()
+var master_bed = false
 var holder = ''
 var holder_floor = -1
 var char_id = null
@@ -167,7 +174,7 @@ func empty_color():
 func kind_color():
 	match kind:
 		'sleep':
-			return COLOR_SLEEP
+			return COLOR_SLEEP_MASTER if master_bed else COLOR_SLEEP
 		'build':
 			return COLOR_BUILD
 		'work_upgrade':

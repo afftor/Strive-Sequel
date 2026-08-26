@@ -228,7 +228,15 @@ const SLOT_AXES = {
 const HIDDEN_BY_ANIMAL_BODY = ["leg_left", "leg_right", "equip_leg_left",
 	"equip_leg_right", "race_leg_left", "race_leg_right", "dick", "testicle"]
 
+# A harpy's wings are her arms: the pair is drawn from the shoulder down, so the
+# human arm and hand underneath would stick out of the feathers.  The shoulders
+# stay - the wing starts there and the art expects them.
+const HIDDEN_BY_WING_ARMS = ["arm_left", "arm_right", "hand_left", "hand_right",
+	"equip_arm_left", "equip_arm_right", "equip_hand_left", "equip_hand_right",
+	"race_arm_left", "race_arm_right"]
+
 const PART_HIDES = {
+	"wings_harpia": HIDDEN_BY_WING_ARMS,
 	"kentaur_body": HIDDEN_BY_ANIMAL_BODY,
 	"lamia_body": HIDDEN_BY_ANIMAL_BODY,
 	"scylla_body": HIDDEN_BY_ANIMAL_BODY,
@@ -239,15 +247,12 @@ const PART_HIDES = {
 # Tables that belong to one doll or the other and have no shared content.  They
 # are declared empty here so a doll file only has to write what it actually
 # needs, and the builder always finds the key.
-# Attachments the export carries twice.  Ten hairstyles and one set of tails are
-# in there under two names each - `braid` beside `hair_assist_braid`,
-# `hairs_base_slave` beside `hair_base_slave` - and the pictures they draw are
-# the same to within a per cent of antialiasing.  The prefixed name is the one
-# kept: it is what the game's own short values resolve to.
+# Attachments the export carries twice: the same picture under two names.  The
+# artist has since deleted most of the pairs, so what is left here are the ones
+# the export still ships twice - the prefixed spelling is the one kept, because
+# it is what the game's own short values resolve to.
 const EXCLUDE = [
-	"braid", "bun", "ponytail", "pigtails", "twin_tails", "twin_tails_2",
-	"hairs_base_dopple", "hairs_base_irokez", "hairs_base_parting",
-	"hairs_base_slave", "hairs_base_undercut",
+	"hairs_base_parting", "hairs_base_slave", "twin_tails_2",
 ]
 const AXIS_OVERRIDES = {}
 const PART_SLOTS = {}
@@ -256,7 +261,9 @@ const PART_SPLITS = {}
 # Everything above the neck, which both exports take from the same art.
 const DEFAULTS = {
 	"head": "head_chin_default",
-	"face": "face3",
+	# face1 to face5 were withdrawn in the August re-export; face7 is the plain
+	# one of what is left.
+	"face": "face7",
 	"eyes": "eyes_m5",
 	"eyebrows": "eyebrows1",
 	"nose": "nose_default",
@@ -280,12 +287,10 @@ const DISPLAY = {
 	"head_chin_curve": "Chin: curved",
 	"head_chin_curve_kobold": "Chin: curved kobold",
 	"head_chin_kobold2": "Chin: kobold 2",
-	"head_chin_loli": "Chin: loli",
 	"head_chin_long_skinny": "Chin: long skinny",
-	"head_chin_male": "Chin: male",
 	"head_chin_muscle": "Chin: muscular",
 	"head_chin_short": "Chin: short",
-	"head_chin_small": "Chin: small",
+	"head_chin_small_c": "Chin: small curved",
 	"race_dryad": "Dryad",
 	"race_nereid": "Nereid",
 	"race_slime": "Slime",

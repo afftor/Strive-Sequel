@@ -1396,13 +1396,58 @@ var scenedict = {
 		text = "STARTUPGRADEBONUS",
 		common_effects = [],
 		options = [
-		{code = 'close', reqs = [], bonus_effects = [{code ='unlock_upgrade', upgrade = 'forge', level = 1}], text = tr("STARTUPGRADEBONUS1"), type = 'next_dialogue'},
-		{code = 'close', reqs = [], bonus_effects = [{code ='unlock_upgrade', upgrade = 'tailor', level = 1}], text = tr("STARTUPGRADEBONUS2"), type = 'next_dialogue'},
-		{code = 'close', reqs = [], bonus_effects = [{code ='unlock_upgrade', upgrade = 'alchemy', level = 1}], text = tr("STARTUPGRADEBONUS3"), type = 'next_dialogue'},
+		{code = 'close', reqs = [], bonus_effects = [{code ='grant_room', name = 'forge'}], text = tr("STARTUPGRADEBONUS1"), type = 'next_dialogue'},
+		{code = 'close', reqs = [], bonus_effects = [{code ='grant_room', name = 'tailor_workshop'}], text = tr("STARTUPGRADEBONUS2"), type = 'next_dialogue'},
+		{code = 'close', reqs = [], bonus_effects = [{code ='grant_room', name = 'alchemy_room'}], text = tr("STARTUPGRADEBONUS3"), type = 'next_dialogue'},
 		{code = 'close', reqs = [], bonus_effects = [{code = 'make_loot', type = 'tableloot', pool = [['start_corruptive_essence',1]]},{code = 'open_loot'},{code = 'decision', value = 'start_corruptive_essence_reward'}], text = tr("STARTUPGRADEBONUS4"), type = 'next_dialogue'},
 		],
 	},
 	
+	#Turning out a cluttered room. Which of the three a room is hiding is settled when the
+	#mansion is first laid out (MansionLayout.hide_finds_in_rubble); game_res.claim_rubble_find()
+	#is what opens the matching one, whether the rubble went to builders or was pulled down to
+	#make room for something the estate was given.
+	#The find is handed over by the loot window rather than by an effect of its own, so the
+	#player sees what they got the same way a chest shows it.
+	mansion_rubble_gold = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = "MANSIONFIND_GOLD",
+		common_effects = [],
+		options = [
+		{code = 'close', reqs = [], bonus_effects = [{code = 'make_loot', type = 'tableloot', pool = [['mansion_rubble_gold',1]]},{code = 'open_loot'}], text = tr("DIALOGUECLOSE"), type = 'next_dialogue'},
+		],
+	},
+	mansion_rubble_materials = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = "MANSIONFIND_MATERIALS",
+		common_effects = [],
+		options = [
+		{code = 'close', reqs = [], bonus_effects = [{code = 'make_loot', type = 'tableloot', pool = [['mansion_rubble_materials',1]]},{code = 'open_loot'}], text = tr("DIALOGUECLOSE"), type = 'next_dialogue'},
+		],
+	},
+	mansion_rubble_sword = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = "MANSIONFIND_SWORD",
+		common_effects = [],
+		options = [
+		{code = 'close', reqs = [], bonus_effects = [{code = 'make_loot', type = 'tableloot', pool = [['mansion_rubble_sword',1]]},{code = 'open_loot'}], text = tr("DIALOGUECLOSE"), type = 'next_dialogue'},
+		],
+	},
+	#The upper floor hides one thing rather than three, and it is only turned up once the
+	#staircase is sound and the rubble up there is worked through.
+	mansion_rubble_goggles = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = "MANSIONFIND_GOGGLES",
+		common_effects = [],
+		options = [
+		{code = 'close', reqs = [], bonus_effects = [{code = 'make_loot', type = 'tableloot', pool = [['mansion_rubble_goggles',1]]},{code = 'open_loot'}], text = tr("DIALOGUECLOSE"), type = 'next_dialogue'},
+		],
+	},
+
 	loan_event1 = {
 		variations = [{
 			reqs = [{type = 'has_loan_money', stage = 1}],

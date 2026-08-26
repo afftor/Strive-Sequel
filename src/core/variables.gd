@@ -357,6 +357,9 @@ var survival_cap_secondary = 2.5 # added base 1 to max + 150%
 
 var slave_class_list = ['slave', 'slave_trained', 'servant', 'heir', 'master']
 var servant_unlock_traits = ['training_s_working', 'training_s_combat', 'training_s_relation', 'training_s_sexservice', 'training_s_sexservice_adv']
+#the slave-side equivalent. The training courses in ch_leveling grant exactly this set, and
+#finishing training under a trainer now does the same - it used to be bought a trait at a time.
+var slave_unlock_traits = ['training_relation', 'training_callmaster', 'training_sexservice', 'training_sexservice_adv']
 #sex chances
 
 var teen_age_weight = 1

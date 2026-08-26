@@ -33,6 +33,20 @@ const EVENT_CONFIG = {
 		icon = preload("res://assets/Textures_v2/MANSION/quest_task.png"),
 		color = Color("c89be8"),
 	},
+	#Scaffolding coming down: a room raised, a cluttered one cleared out, an improvement
+	#finished. game_res.process_room_builds() is the only thing that writes these.
+	"build": {
+		label = "MANSION_ACTIVITY_TYPE_BUILD",
+		icon = preload("res://assets/images/gui/inventory/tool_hammer.png"),
+		color = Color("c9a06a"),
+	},
+	#The rest of what the estate got through in a turn - what turned up under the rubble, a
+	#habit drilled out of somebody in the practice room.
+	"work": {
+		label = "MANSION_ACTIVITY_TYPE_WORK",
+		icon = preload("res://assets/Textures_v2/MANSION/icon_gears_small.png"),
+		color = Color("b8b0a0"),
+	},
 	"character_found": {
 		label = "MANSION_ACTIVITY_TYPE_CHARACTER_FOUND",
 		icon = preload("res://assets/images/gui/gui icons/icon_recruit.png"),
