@@ -279,6 +279,8 @@ const BONES = [
 	"pupil_r",
 	"nose",
 	"lips",
+	"lips2",
+	"lips3",
 ]
 
 const SLOTS = [
@@ -342,13 +344,13 @@ const SLOTS = [
 	"head",
 	"sclera",
 	"eyes",
-	"face",
-	"noses",
 	"race_head",
-	"lips",
-	"eyebrows",
+	"face",
 	"hairs_base",
 	"ears",
+	"lips",
+	"eyebrows",
+	"noses",
 	"hairs_fringe",
 	"equip_masks",
 	"equip_head",
