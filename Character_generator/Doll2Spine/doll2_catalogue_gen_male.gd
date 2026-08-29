@@ -9,11 +9,11 @@ const SCHEMA_VERSION = 2
 
 const SOURCE = {
 	"atlas": "Doll2_spine4.2_male.atlas",
-	"attachment_count": 425,
+	"attachment_count": 427,
 	"bone_count": 263,
 	"contract": "doll2_male_v1",
 	"skeleton": "Doll2_spine4.2_male.json",
-	"skeleton_hash": "yH9bzfZOtd8",
+	"skeleton_hash": "i4hMLsYHblo",
 	"slot_count": 59,
 	"spine_version": "4.2.43",
 }
@@ -945,6 +945,8 @@ const GROUPS = {
 			"tail_dragon",
 			"tail_dragon2",
 			"tail_fox",
+			"tail_fox_2",
+			"tail_fox_3",
 			"tail_kobold",
 			"tail_mouse",
 			"tail_nereid",
@@ -1029,7 +1031,7 @@ const PARTS = {
 			"dick": "dick_furry_up",
 			"testicle": "testicle_furry",
 		},
-		"zones": [0, 1],
+		"zones": [0],
 	},
 	"Dick_horse_up": {
 		"folders": ["13_dicks"],
@@ -1047,7 +1049,6 @@ const PARTS = {
 			"dick": "dick_human_up",
 			"testicle": "testicle_human",
 		},
-		"zones": [0],
 	},
 	"Horn_straight_diagonal": {
 		"folders": ["08_horns"],
@@ -1085,6 +1086,7 @@ const PARTS = {
 		"slots": {
 			"wings": "wings_dragon",
 		},
+		"zones": [0, 1],
 	},
 	"Wings_fairy": {
 		"folders": ["09_wings"],
@@ -1161,6 +1163,7 @@ const PARTS = {
 		"slots": {
 			"bread": "beard_moustache1",
 		},
+		"zones": [0],
 	},
 	"beard_moustache2": {
 		"folders": ["05_beards_moustaches"],
@@ -1307,6 +1310,7 @@ const PARTS = {
 			"head_skull": "beastkin_skull",
 		},
 		"tags": ["beastkin"],
+		"zones": [0],
 	},
 	"beastkin_head_muzzle_2": {
 		"folders": ["16_beastkin_heads"],
@@ -1316,7 +1320,6 @@ const PARTS = {
 			"head_skull": "beastkin_skull",
 		},
 		"tags": ["beastkin"],
-		"zones": [0, 1],
 	},
 	"beastkin_head_muzzle_3": {
 		"folders": ["16_beastkin_heads"],
@@ -1326,7 +1329,6 @@ const PARTS = {
 			"head_skull": "beastkin_skull",
 		},
 		"tags": ["beastkin"],
-		"zones": [0],
 	},
 	"beastkin_lips_cry": {
 		"folders": ["17_beastkin_lips"],
@@ -1393,7 +1395,7 @@ const PARTS = {
 			"shoulder_right": "shoulderr_m",
 			"torso": "torso_m",
 		},
-		"zones": [0, 1],
+		"zones": [0, 1, 2],
 	},
 	"body_male_beastkin": {
 		"display": "Male beastkin body",
@@ -1464,7 +1466,7 @@ const PARTS = {
 		"slots": {
 			"hairs_assist": "braid",
 		},
-		"zones": [0, 1],
+		"zones": [0],
 	},
 	"collar_bell_big": {
 		"folders": ["126_armory_acces_collars_male"],
@@ -1552,7 +1554,7 @@ const PARTS = {
 		"slots": {
 			"ears": "ears_cat",
 		},
-		"zones": [0, 1, 2],
+		"zones": [0],
 	},
 	"ears_elven": {
 		"folders": ["03_ears"],
@@ -1574,7 +1576,7 @@ const PARTS = {
 		"slots": {
 			"ears": "ears_fox",
 		},
-		"zones": [0, 1],
+		"zones": [0],
 	},
 	"ears_fox2": {
 		"folders": ["03_ears"],
@@ -1582,7 +1584,7 @@ const PARTS = {
 		"slots": {
 			"ears": "ears_fox2",
 		},
-		"zones": [0, 1],
+		"zones": [0],
 	},
 	"ears_fox_n1": {
 		"folders": ["03_ears"],
@@ -1590,7 +1592,7 @@ const PARTS = {
 		"slots": {
 			"ears": "ears_fox_n1",
 		},
-		"zones": [0, 1, 2],
+		"zones": [0],
 	},
 	"ears_fox_n2": {
 		"folders": ["03_ears"],
@@ -1598,7 +1600,7 @@ const PARTS = {
 		"slots": {
 			"ears": "ears_fox_n2",
 		},
-		"zones": [0, 1, 2],
+		"zones": [0],
 	},
 	"ears_fox_n3": {
 		"folders": ["03_ears"],
@@ -1606,7 +1608,6 @@ const PARTS = {
 		"slots": {
 			"ears": "ears_fox_n3",
 		},
-		"zones": [0, 1, 2],
 	},
 	"ears_fox_n4": {
 		"folders": ["03_ears"],
@@ -1614,7 +1615,6 @@ const PARTS = {
 		"slots": {
 			"ears": "ears_fox_n4",
 		},
-		"zones": [0, 1, 2],
 	},
 	"ears_goblin": {
 		"folders": ["03_ears"],
@@ -1636,7 +1636,6 @@ const PARTS = {
 		"slots": {
 			"ears": "ears_mouse",
 		},
-		"zones": [0, 1],
 	},
 	"ears_nereid": {
 		"folders": ["03_ears"],
@@ -1659,7 +1658,7 @@ const PARTS = {
 		"slots": {
 			"ears": "ears_rabbit",
 		},
-		"zones": [0, 1],
+		"zones": [0],
 	},
 	"ears_rabbit2": {
 		"folders": ["03_ears"],
@@ -1675,7 +1674,7 @@ const PARTS = {
 		"slots": {
 			"ears": "ears_rabbit3",
 		},
-		"zones": [0, 1],
+		"zones": [0],
 	},
 	"ears_tanuk": {
 		"folders": ["03_ears"],
@@ -1683,7 +1682,7 @@ const PARTS = {
 		"slots": {
 			"ears": "ears_tanuk",
 		},
-		"zones": [0, 1],
+		"zones": [0],
 	},
 	"ears_taurus": {
 		"folders": ["03_ears"],
@@ -1691,7 +1690,7 @@ const PARTS = {
 		"slots": {
 			"ears": "ears_taurus",
 		},
-		"zones": [0, 1],
+		"zones": [0],
 	},
 	"ears_wolf": {
 		"folders": ["03_ears"],
@@ -1699,7 +1698,7 @@ const PARTS = {
 		"slots": {
 			"ears": "ears_wolf",
 		},
-		"zones": [0, 1],
+		"zones": [0],
 	},
 	"eyebrows1": {
 		"folders": ["11_eyebrows"],
@@ -1854,7 +1853,6 @@ const PARTS = {
 		"slots": {
 			"equip_masks": "facemask1",
 		},
-		"zones": [0],
 	},
 	"facemask2": {
 		"folders": ["25_head_masks"],
@@ -1862,6 +1860,7 @@ const PARTS = {
 		"slots": {
 			"equip_masks": "facemask2",
 		},
+		"zones": [0],
 	},
 	"hair_armor_maid": {
 		"folders": ["99_armory_set_maidu"],
@@ -1923,7 +1922,7 @@ const PARTS = {
 		"slots": {
 			"hairs_back": "hair_back_ponytail_long",
 		},
-		"zones": [0],
+		"zones": [0, 1],
 	},
 	"hair_back_straight": {
 		"folders": ["06_hairs_back"],
@@ -1939,7 +1938,7 @@ const PARTS = {
 		"slots": {
 			"hairs_back": "hair_back_verylong1",
 		},
-		"zones": [0],
+		"zones": [0, 1, 2],
 	},
 	"hair_back_wawe": {
 		"folders": ["06_hairs_back"],
@@ -1980,7 +1979,7 @@ const PARTS = {
 			"hairs_base": "hair_base_fringe",
 			"hairs_fringe": "hair_fringe_fringe",
 		},
-		"zones": [0, 1, 2],
+		"zones": [0],
 	},
 	"hair_base_fringe_2": {
 		"folders": ["04_hairs_base"],
@@ -1988,7 +1987,7 @@ const PARTS = {
 		"slots": {
 			"hairs_base": "hair_base_fringe 2",
 		},
-		"zones": [0, 1],
+		"zones": [0],
 	},
 	"hair_base_kare": {
 		"folders": ["04_hairs_base"],
@@ -2364,6 +2363,7 @@ const PARTS = {
 		"slots": {
 			"bread": "moustache2",
 		},
+		"zones": [0],
 	},
 	"moustache3": {
 		"folders": ["05_beards_moustaches"],
@@ -2560,7 +2560,7 @@ const PARTS = {
 			"equip_shoulder_right": "shoulderr_armor_latex2",
 			"equip_torso": "torso_armor_latex",
 		},
-		"zones": [0, 1],
+		"zones": [0],
 	},
 	"outfit_leather": {
 		"display": "Leather set",
@@ -2683,7 +2683,7 @@ const PARTS = {
 			"equip_leg_right": "legr_armor_slave",
 			"equip_pelvis": "pelvis_armor_slave",
 		},
-		"zones": [0, 1],
+		"zones": [0],
 	},
 	"outfit_smith": {
 		"display": "Smith set",
@@ -2825,7 +2825,7 @@ const PARTS = {
 			"race_torso": "kobold_body1_1",
 			"race_torso_lower": "kobold_body2_1",
 		},
-		"zones": [1],
+		"zones": [0, 1],
 	},
 	"race_kobold_spots": {
 		"display": "Kobold (spots)",
@@ -2868,6 +2868,7 @@ const PARTS = {
 			"race_pelvis": "slime_pelvis",
 			"race_torso": "slime_body",
 		},
+		"zones": [0],
 	},
 	"scylla_body": {
 		"folders": ["14_animals_body"],
@@ -2885,7 +2886,6 @@ const PARTS = {
 		"slots": {
 			"animal_body": "scylla_body",
 		},
-		"zones": [1],
 	},
 	"tail_cat": {
 		"folders": ["07_tails"],
@@ -2893,7 +2893,6 @@ const PARTS = {
 		"slots": {
 			"tails": "tail_cat",
 		},
-		"zones": [0],
 	},
 	"tail_demon": {
 		"folders": ["07_tails"],
@@ -2908,6 +2907,7 @@ const PARTS = {
 		"slots": {
 			"tails": "tail_dragon",
 		},
+		"zones": [0, 2],
 	},
 	"tail_dragon2": {
 		"folders": ["07_tails"],
@@ -2915,7 +2915,6 @@ const PARTS = {
 		"slots": {
 			"tails": "tail_dragon2",
 		},
-		"zones": [0],
 	},
 	"tail_fox": {
 		"folders": ["07_tails"],
@@ -2924,13 +2923,28 @@ const PARTS = {
 			"tails": "tail_fox",
 		},
 	},
+	"tail_fox_2": {
+		"folders": ["07_tails"],
+		"group": "tails",
+		"slots": {
+			"tails": "07_tails/tail_fox_2",
+		},
+		"zones": [0],
+	},
+	"tail_fox_3": {
+		"folders": ["07_tails"],
+		"group": "tails",
+		"slots": {
+			"tails": "07_tails/tail_fox_3",
+		},
+	},
 	"tail_kobold": {
 		"folders": ["07_tails"],
 		"group": "tails",
 		"slots": {
 			"tails": "tail_kobold",
 		},
-		"zones": [0],
+		"zones": [0, 1],
 	},
 	"tail_mouse": {
 		"folders": ["07_tails"],
@@ -2938,7 +2952,7 @@ const PARTS = {
 		"slots": {
 			"tails": "tail_mouse",
 		},
-		"zones": [0],
+		"zones": [0, 1],
 	},
 	"tail_nereid": {
 		"folders": ["07_tails"],
@@ -3053,7 +3067,7 @@ const PARTS = {
 		"slots": {
 			"weapon_back": "weapon_back_axe1",
 		},
-		"zones": [0, 1],
+		"zones": [0, 1, 2],
 	},
 	"weapon_back_axe2": {
 		"folders": ["201_weapon_back"],
@@ -3165,7 +3179,7 @@ const PARTS = {
 		"slots": {
 			"weapon_belt": "weapon_belt_mace",
 		},
-		"zones": [0, 2],
+		"zones": [0, 1],
 	},
 	"weapon_belt_sword": {
 		"folders": ["200_weapon_belt"],
@@ -3208,7 +3222,7 @@ const PARTS = {
 		"slots": {
 			"wings": "wings_harpia",
 		},
-		"zones": [1],
+		"zones": [0, 1],
 	},
 }
 
