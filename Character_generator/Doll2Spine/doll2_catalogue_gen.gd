@@ -9,12 +9,12 @@ const SCHEMA_VERSION = 2
 
 const SOURCE = {
 	"atlas": "Doll2_spine4.2_female.atlas",
-	"attachment_count": 653,
+	"attachment_count": 664,
 	"bone_count": 271,
 	"contract": "doll2_v1",
 	"skeleton": "Doll2_spine4.2_female.json",
-	"skeleton_hash": "mbsAeA47ia0",
-	"slot_count": 71,
+	"skeleton_hash": "D+tm6YqZvdA",
+	"slot_count": 73,
 	"spine_version": "4.2.43",
 }
 
@@ -79,6 +79,7 @@ const SLOT_ORDER = [
 	"head",
 	"sclera",
 	"eyes",
+	"eyes_hearts",
 	"race_head",
 	"face",
 	"hairs_base",
@@ -86,6 +87,7 @@ const SLOT_ORDER = [
 	"lips",
 	"eyebrows",
 	"noses",
+	"blush",
 	"hairs_fringe",
 	"equip_masks",
 	"equip_head",
@@ -153,6 +155,7 @@ const DRAW_ORDER = [
 	"head",
 	"sclera",
 	"eyes",
+	"eyes_hearts",
 	"race_head",
 	"face",
 	"ears",
@@ -160,6 +163,7 @@ const DRAW_ORDER = [
 	"lips",
 	"eyebrows",
 	"noses",
+	"blush",
 	"hairs_fringe",
 	"equip_masks",
 	"equip_head",
@@ -199,6 +203,8 @@ const GROUP_ORDER = [
 	"face",
 	"eyes",
 	"eyebrows",
+	"eyes_effect",
+	"blush",
 	"nose",
 	"lips",
 	"ears",
@@ -222,6 +228,11 @@ const GROUP_ORDER = [
 ]
 
 const AXES = {
+	"belly_shape": {
+		"default": "default",
+		"label": "DOLL2_PREVIEW_BELLY_SHAPE",
+		"values": ["default", "muscle"],
+	},
 	"hand_pose": {
 		"default": "1",
 		"label": "DOLL2_PREVIEW_HAND_POSE",
@@ -298,7 +309,7 @@ const COLOR_CHANNELS = {
 		"anchor": "eyes",
 		"coverage": false,
 		"gear": false,
-		"slots": ["eyes"],
+		"slots": ["eyes", "eyes_hearts"],
 		"two_tone": false,
 		"zone_defaults": [],
 		"zones": false,
@@ -538,6 +549,7 @@ const SLOT_COLORS = {
 	"equip_torso": "outfit",
 	"eyebrows": "eyebrows",
 	"eyes": "eyes",
+	"eyes_hearts": "eyes",
 	"face": "skin",
 	"hairs_assist": "hair_assist",
 	"hairs_back": "hair_back",
@@ -596,6 +608,15 @@ const GROUPS = {
 		"parts": ["arachna_body", "kentaur_body", "lamia_body", "scylla_body"],
 		"slots": ["animal_body", "animal_frontbody"],
 	},
+	"blush": {
+		"default": "",
+		"kind": "options",
+		"label": "DOLL2_PREVIEW_BLUSH",
+		"optional": true,
+		"order": 5,
+		"parts": ["blush"],
+		"slots": ["blush"],
+	},
 	"body": {
 		"default": "body_female_base",
 		"kind": "set",
@@ -652,8 +673,6 @@ const GROUPS = {
 			"ears_cat",
 			"ears_elven",
 			"ears_elven2",
-			"ears_fox",
-			"ears_fox2",
 			"ears_fox_n1",
 			"ears_fox_n2",
 			"ears_fox_n3",
@@ -699,6 +718,15 @@ const GROUPS = {
 		"parts": ["eyes1", "eyes2", "eyes3", "eyes5", "eyes_m5"],
 		"slots": ["eyes"],
 	},
+	"eyes_effect": {
+		"default": "",
+		"kind": "options",
+		"label": "DOLL2_PREVIEW_EYES_EFFECT",
+		"optional": true,
+		"order": 4,
+		"parts": ["eyes_hearts"],
+		"slots": ["eyes_hearts"],
+	},
 	"face": {
 		"default": "face7",
 		"kind": "options",
@@ -706,17 +734,21 @@ const GROUPS = {
 		"optional": false,
 		"order": 2,
 		"parts": [
+			"beastkin_face10",
 			"beastkin_face6",
 			"beastkin_face7",
 			"beastkin_face8",
+			"beastkin_face9",
 			"beastkin_face_m1",
 			"beastkin_face_m2",
 			"beastkin_face_m3",
 			"beastkin_face_m4",
 			"beastkin_face_m5",
+			"face10",
 			"face6",
 			"face7",
 			"face8",
+			"face9",
 			"face_m1",
 			"face_m2",
 			"face_m3",
@@ -753,6 +785,7 @@ const GROUPS = {
 			"hair_base_back",
 			"hair_base_braids",
 			"hair_base_default",
+			"hair_base_disheveled",
 			"hair_base_fringe",
 			"hair_base_fringe_2",
 			"hair_base_kare",
@@ -904,8 +937,10 @@ const GROUPS = {
 		"parts": [
 			"nose_default",
 			"nose_dwarf",
+			"nose_feature",
 			"nose_kobold",
 			"nose_kobold_2",
+			"nose_point",
 			"nose_small",
 			"nose_straight",
 		],
@@ -1082,6 +1117,7 @@ const PARTS = {
 			"dick": "dick_furry_up",
 			"testicle": "testicle_furry",
 		},
+		"zones": [0],
 	},
 	"Dick_horse_up": {
 		"folders": ["13_dicks"],
@@ -1090,7 +1126,6 @@ const PARTS = {
 			"dick": "dick_horse_up__body_female_beastkin",
 			"testicle": "testicle_furry",
 		},
-		"zones": [0],
 	},
 	"Dick_human_up": {
 		"folders": ["13_dicks"],
@@ -1128,7 +1163,7 @@ const PARTS = {
 		"slots": {
 			"equip_head": "petsuit_rabbit3",
 		},
-		"zones": [0, 1],
+		"zones": [0],
 	},
 	"Wings_dragon": {
 		"folders": ["09_wings"],
@@ -1136,7 +1171,6 @@ const PARTS = {
 		"slots": {
 			"wings": "wings_dragon",
 		},
-		"zones": [1],
 	},
 	"Wings_fairy": {
 		"folders": ["09_wings"],
@@ -1174,6 +1208,7 @@ const PARTS = {
 			"animal_body": "arachna_body",
 			"animal_frontbody": "arachna_helicere",
 		},
+		"zones": [0, 1],
 	},
 	"beastkin_chin_cat": {
 		"display": "Muzzle: cat",
@@ -1225,6 +1260,14 @@ const PARTS = {
 		},
 		"tags": ["beastkin"],
 	},
+	"beastkin_face10": {
+		"folders": ["17_beastkin_faces"],
+		"group": "face",
+		"slots": {
+			"face": "17_beastkin_faces/beastkin_face10",
+		},
+		"tags": ["beastkin"],
+	},
 	"beastkin_face6": {
 		"folders": ["17_beastkin_faces"],
 		"group": "face",
@@ -1246,6 +1289,14 @@ const PARTS = {
 		"group": "face",
 		"slots": {
 			"face": "17_beastkin_faces/beastkin_face8",
+		},
+		"tags": ["beastkin"],
+	},
+	"beastkin_face9": {
+		"folders": ["17_beastkin_faces"],
+		"group": "face",
+		"slots": {
+			"face": "17_beastkin_faces/beastkin_face9",
 		},
 		"tags": ["beastkin"],
 	},
@@ -1297,7 +1348,6 @@ const PARTS = {
 			"head_skull": "beastkin_skull",
 		},
 		"tags": ["beastkin"],
-		"zones": [1],
 	},
 	"beastkin_head_muzzle_2": {
 		"folders": ["16_beastkin_heads"],
@@ -1317,7 +1367,7 @@ const PARTS = {
 			"head_skull": "beastkin_skull",
 		},
 		"tags": ["beastkin"],
-		"zones": [0],
+		"zones": [1],
 	},
 	"beastkin_lips_cry": {
 		"folders": ["17_beastkin_lips"],
@@ -1343,20 +1393,37 @@ const PARTS = {
 		},
 		"tags": ["beastkin"],
 	},
+	"blush": {
+		"folders": ["01_heads"],
+		"group": "blush",
+		"slots": {
+			"blush": "01_heads/blush",
+		},
+	},
 	"body_female_base": {
 		"display": "Female base body",
+		"extra_options": {
+			"hand_left": ["00_body_nude_female/HandL1_orc", "00_body_nude_female/HandL3_orc"],
+			"hand_right": ["00_body_nude_female/HandR1_orc", "00_body_nude_female/HandR3_orc"],
+		},
 		"folders": ["00_body_nude_female"],
 		"group": "body",
 		"slots": {
 			"arm_left": "arml1",
 			"arm_right": "armr1",
-			"belly": "default_belly",
+			"belly": {
+				"axis": "belly_shape",
+				"options": {
+					"default": "default_belly",
+					"muscle": "00_body_nude_female/default_belly_muscle",
+				},
+			},
 			"breast_nipples": {
 				"axis": "tits_size",
 				"options": {
 					"big": "tits_nipples_big",
 					"large": "tits_nipples_large",
-					"normal": "tits_nipples_normal__body_female_base",
+					"normal": "tits_nipples_normal",
 					"small": "tits_nipples_small",
 				},
 			},
@@ -1409,17 +1476,16 @@ const PARTS = {
 			},
 			"shoulder_left": "shoulderl",
 			"shoulder_right": "shoulderr",
-			"torso": "torso__body_female_base",
+			"torso": "torso",
 			"torso_nipples_mask": "torso_nipples_mask",
 		},
-		"zones": [0, 1],
+		"zones": [0, 1, 2],
 	},
 	"body_female_beastkin": {
 		"display": "Female beastkin body",
 		"extra_options": {
 			"breast_nipples": ["beastkin_nipples_large", "beastkin_tits_nipples"],
 			"breasts_beastkin": ["beastkin_tits1"],
-			"torso": ["beastkin_torso_many_nipples4", "beastkin_torso_many_nipples6"],
 		},
 		"folders": ["15_beastkin_body_nude"],
 		"group": "body",
@@ -1440,13 +1506,19 @@ const PARTS = {
 					"6": "beastkin_torso_many_nipples6",
 				},
 			},
-			"belly": "beastkin_belly1",
+			"belly": {
+				"axis": "belly_shape",
+				"options": {
+					"default": "beastkin_belly1",
+					"muscle": "15_beastkin_body_nude/beastkin_belly1_muscle",
+				},
+			},
 			"breast_nipples": {
 				"axis": "tits_size",
 				"options": {
 					"big": "beastkin_tits_nipples_big",
 					"large": "beastkin_tits_nipples_large",
-					"normal": "tits_nipples_normal__body_female_base",
+					"normal": "tits_nipples_normal",
 					"small": "beastkin_tits_nipples_small__body_female_beastkin",
 				},
 			},
@@ -1513,7 +1585,7 @@ const PARTS = {
 		"slots": {
 			"hairs_assist": "braid",
 		},
-		"zones": [0, 1],
+		"zones": [0],
 	},
 	"collar_bell": {
 		"folders": ["150_armory_acces_collars"],
@@ -1584,22 +1656,6 @@ const PARTS = {
 		"slots": {
 			"ears": "ears_elven2",
 		},
-	},
-	"ears_fox": {
-		"folders": ["03_ears"],
-		"group": "ears",
-		"slots": {
-			"ears": "ears_fox",
-		},
-		"zones": [0],
-	},
-	"ears_fox2": {
-		"folders": ["03_ears"],
-		"group": "ears",
-		"slots": {
-			"ears": "ears_fox2",
-		},
-		"zones": [0],
 	},
 	"ears_fox_n1": {
 		"folders": ["03_ears"],
@@ -1799,11 +1855,25 @@ const PARTS = {
 			"eyes": "eyes5",
 		},
 	},
+	"eyes_hearts": {
+		"folders": ["10_eyes"],
+		"group": "eyes_effect",
+		"slots": {
+			"eyes_hearts": "10_eyes/eyes_hearts",
+		},
+	},
 	"eyes_m5": {
 		"folders": ["10_eyes"],
 		"group": "eyes",
 		"slots": {
 			"eyes": "eyes_m5",
+		},
+	},
+	"face10": {
+		"folders": ["02_faces"],
+		"group": "face",
+		"slots": {
+			"face": "02_faces/face10",
 		},
 	},
 	"face6": {
@@ -1825,6 +1895,13 @@ const PARTS = {
 		"group": "face",
 		"slots": {
 			"face": "02_faces/face8",
+		},
+	},
+	"face9": {
+		"folders": ["02_faces"],
+		"group": "face",
+		"slots": {
+			"face": "02_faces/face9",
 		},
 	},
 	"face_m1": {
@@ -1868,6 +1945,7 @@ const PARTS = {
 		"slots": {
 			"equip_masks": "facemask1",
 		},
+		"zones": [0, 1],
 	},
 	"facemask2": {
 		"folders": ["25_head_masks"],
@@ -1928,7 +2006,7 @@ const PARTS = {
 		"slots": {
 			"hairs_back": "hair_back_double_tail_long",
 		},
-		"zones": [0, 1],
+		"zones": [0, 1, 2],
 	},
 	"hair_back_ponytail_long": {
 		"folders": ["06_hairs_back"],
@@ -1944,7 +2022,7 @@ const PARTS = {
 		"slots": {
 			"hairs_back": "hair_back_straight",
 		},
-		"zones": [0],
+		"zones": [0, 1],
 	},
 	"hair_back_verylong1": {
 		"folders": ["06_hairs_back"],
@@ -1952,7 +2030,7 @@ const PARTS = {
 		"slots": {
 			"hairs_back": "hair_back_verylong1",
 		},
-		"zones": [0, 1],
+		"zones": [0, 1, 2],
 	},
 	"hair_back_wawe": {
 		"folders": ["06_hairs_back"],
@@ -1983,6 +2061,15 @@ const PARTS = {
 		"slots": {
 			"hairs_base": "hair_base_default",
 			"hairs_fringe": "hair_fringe_default",
+		},
+		"zones": [0, 1],
+	},
+	"hair_base_disheveled": {
+		"folders": ["04_hairs_base"],
+		"group": "hair",
+		"slots": {
+			"hairs_base": "04_hairs_base/hair_base_disheveled",
+			"hairs_fringe": "04_hairs_fringe/hair_fringe_disheveled",
 		},
 		"zones": [0],
 	},
@@ -2206,6 +2293,7 @@ const PARTS = {
 		"slots": {
 			"animal_body": "kentaur_body",
 		},
+		"zones": [0, 1],
 	},
 	"kobold_head_kobold": {
 		"display": "Kobold spots",
@@ -2366,6 +2454,13 @@ const PARTS = {
 			"noses": "nose_dwarf",
 		},
 	},
+	"nose_feature": {
+		"folders": ["03_noses"],
+		"group": "nose",
+		"slots": {
+			"noses": "03_noses/nose_feature",
+		},
+	},
 	"nose_kobold": {
 		"folders": ["03_noses"],
 		"group": "nose",
@@ -2378,6 +2473,13 @@ const PARTS = {
 		"group": "nose",
 		"slots": {
 			"noses": "nose_kobold_2",
+		},
+	},
+	"nose_point": {
+		"folders": ["03_noses"],
+		"group": "nose",
+		"slots": {
+			"noses": "03_noses/nose_point",
 		},
 	},
 	"nose_small": {
@@ -2567,7 +2669,7 @@ const PARTS = {
 			},
 			"equip_torso": "tirso_armor_gipure2",
 		},
-		"zones": [0, 1],
+		"zones": [0, 1, 2],
 	},
 	"outfit_jacket": {
 		"display": "Jacket set",
@@ -2841,7 +2943,7 @@ const PARTS = {
 			"equip_leg_left": "151_armory_acces_petsuit/Petsuit_legl",
 			"equip_leg_right": "151_armory_acces_petsuit/Petsuit_legr",
 		},
-		"zones": [0, 1],
+		"zones": [0],
 	},
 	"outfit_plate": {
 		"display": "Plate set",
@@ -3040,7 +3142,7 @@ const PARTS = {
 				},
 			},
 		},
-		"zones": [0],
+		"zones": [0, 1],
 	},
 	"outfit_smith": {
 		"display": "Smith set",
@@ -3165,7 +3267,7 @@ const PARTS = {
 				},
 			},
 		},
-		"zones": [0, 1, 2],
+		"zones": [0, 1],
 	},
 	"outfit_underwear2": {
 		"display": "Underwear set 2",
@@ -3212,7 +3314,7 @@ const PARTS = {
 			"equip_shoulder_right": "shoulderr_underwear2",
 			"equip_torso": "torso_underwear2",
 		},
-		"zones": [0, 1, 2],
+		"zones": [0, 1],
 	},
 	"outfit_waitress": {
 		"display": "Waitress set",
@@ -3271,7 +3373,7 @@ const PARTS = {
 		"slots": {
 			"hairs_assist": "ponytail",
 		},
-		"zones": [0],
+		"zones": [0, 1, 2],
 	},
 	"race_dragon": {
 		"display": "Dragon",
@@ -3331,7 +3433,7 @@ const PARTS = {
 			"race_shoulder_right": "dryad_shoulderr",
 			"race_torso": "dryad_body",
 		},
-		"zones": [0, 1],
+		"zones": [0, 1, 2],
 	},
 	"race_kobold": {
 		"display": "Kobold",
@@ -3348,7 +3450,7 @@ const PARTS = {
 			"race_torso": "kobold_body1_1",
 			"race_torso_lower": "kobold_body2_1",
 		},
-		"zones": [0, 1, 2],
+		"zones": [0, 1],
 	},
 	"race_kobold_spots": {
 		"display": "Kobold (spots)",
@@ -3365,7 +3467,7 @@ const PARTS = {
 			"race_torso": "kobold_body1_2",
 			"race_torso_lower": "kobold_body2_2",
 		},
-		"zones": [0, 1, 2],
+		"zones": [0],
 	},
 	"race_nereid": {
 		"display": "Nereid",
@@ -3424,7 +3526,6 @@ const PARTS = {
 		"slots": {
 			"tails": "tail_demon",
 		},
-		"zones": [0],
 	},
 	"tail_dragon": {
 		"folders": ["07_tails"],
@@ -3461,7 +3562,7 @@ const PARTS = {
 		"slots": {
 			"tails": "07_tails/tail_fox_3",
 		},
-		"zones": [1],
+		"zones": [0, 1],
 	},
 	"tail_kobold": {
 		"folders": ["07_tails"],
@@ -3483,6 +3584,7 @@ const PARTS = {
 		"slots": {
 			"tails": "tail_nereid",
 		},
+		"zones": [1],
 	},
 	"tail_tanuk": {
 		"folders": ["07_tails"],
@@ -3497,7 +3599,7 @@ const PARTS = {
 		"slots": {
 			"tails": "tail_wolf",
 		},
-		"zones": [0],
+		"zones": [0, 1],
 	},
 	"tatoo_womb1": {
 		"folders": ["97_tatoos"],
@@ -3607,7 +3709,7 @@ const PARTS = {
 		"slots": {
 			"weapon_back": "weapon_back_bow",
 		},
-		"zones": [0, 1, 2],
+		"zones": [0, 1],
 	},
 	"weapon_back_bow2": {
 		"folders": ["201_weapon_back"],
@@ -3615,7 +3717,7 @@ const PARTS = {
 		"slots": {
 			"weapon_back": "weapon_back_bow2",
 		},
-		"zones": [0, 1],
+		"zones": [0, 1, 2],
 	},
 	"weapon_back_crossbow1": {
 		"folders": ["201_weapon_back"],
@@ -3647,7 +3749,7 @@ const PARTS = {
 		"slots": {
 			"weapon_back": "weapon_back_spear",
 		},
-		"zones": [0, 1, 2],
+		"zones": [0, 1],
 	},
 	"weapon_back_spear2": {
 		"folders": ["201_weapon_back"],
@@ -3780,7 +3882,7 @@ const PRESETS = {
 		"wings": "Wings_fairy",
 	},
 	"fox": {
-		"ears": "ears_fox",
+		"ears": "ears_fox_n1",
 		"tails": "tail_fox",
 	},
 	"goblin": {
@@ -3841,9 +3943,8 @@ const ALIASES = {
 	"breast_nipples": {
 		"beastkin_tits_nipples__body_female_beastkin": "beastkin_tits_nipples",
 		"beastkin_tits_nipples_big__body_female_beastkin": "beastkin_tits_nipples_big",
-		"beastkin_tits_nipples_small": "tits_nipples_normal__body_female_base",
+		"beastkin_tits_nipples_small": "tits_nipples_normal",
 		"beastkin_tits_nipples_small__2": "beastkin_tits_nipples_small__body_female_beastkin",
-		"tits_nipples_normal": "tits_nipples_normal__body_female_base",
 	},
 	"dick": {
 		"dick_furry_up__body_female_beastkin": "dick_furry_up",
@@ -3870,7 +3971,7 @@ const ALIASES = {
 		"testicle_human__body_female_base": "testicle_human",
 	},
 	"torso": {
-		"torso": "torso__body_female_base",
+		"torso__body_female_base": "torso",
 	},
 }
 

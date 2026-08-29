@@ -19,6 +19,16 @@ const CONTRACTS = {
 }
 const DEFAULT_CONTRACT = "doll2_v1"
 
+const BREAST_BONES = [
+	"nipple2_l", "nipple2_r", "nipple3_l", "nipple3_r",
+	"nipple4_l", "nipple4_r", "nipple5_l", "nipple5_r",
+]
+
+# spine1 widens the pelvis for Butt size, but the two thigh roots must keep the
+# world basis they had before that widening.  Their positions still inherit the
+# wider pelvis; only the scale basis is compensated in doll2_preview.gd.
+const BUTT_SCALE_COMPENSATION_BONES = ["spine46", "bone"]
+
 # The male export is the same skeleton with a few bones spelled differently and
 # the breast chain absent: it names the collarbones `collarb_*` and carries a
 # proper leg hierarchy (`hip`, `shin`, `foot`) where the female rig has `spine46`
@@ -98,6 +108,18 @@ const MODIFIERS = {
 		"contract": "doll2_v1", "label": "DOLL2_PREVIEW_LIPS_SCALE",
 		"range": {"default": 1.0, "minimum": 0.85, "maximum": 1.15, "step": 0.01},
 		"ops": [{"bone": "lips"}],
+	},
+	"breast_scale": {
+		"contract": "doll2_v1",
+		"contracts": ["doll2_v1"],
+		"label": "DOLL2_PREVIEW_BREAST_SCALE",
+		"range": {"default": 1.0, "minimum": 0.85, "maximum": 1.15, "step": 0.01},
+		"ops": [
+			{"bone": "nipple2_l"}, {"bone": "nipple2_r"},
+			{"bone": "nipple3_l"}, {"bone": "nipple3_r"},
+			{"bone": "nipple4_l"}, {"bone": "nipple4_r"},
+			{"bone": "nipple5_l"}, {"bone": "nipple5_r"},
+		],
 	},
 	"build": {
 		"contract": "doll2_v1",
@@ -285,6 +307,16 @@ const POSITION_MODIFIERS = {
 			{"bone": "pelvisr_1", "axis": "y", "amount": -1.0},
 			{"bone": "sternum_r", "axis": "y", "amount": -1.0},
 		],
+		# Moving the four controls apart would also stretch their own meshes.
+		# Counter that along their green/local-Y axis: narrow = 1.30, rest = 1.0,
+		# wide = 0.70.
+		"scale": {"at_min": 1.3, "at_max": 0.7},
+		"scale_ops": [
+			{"bone": "pelvisl_1", "axis": "y"},
+			{"bone": "sternum_l", "axis": "y"},
+			{"bone": "pelvisr_1", "axis": "y"},
+			{"bone": "sternum_r", "axis": "y"},
+		],
 	},
 	"waist_height": {
 		"label": "DOLL2_PREVIEW_WAIST_HEIGHT",
@@ -297,6 +329,24 @@ const POSITION_MODIFIERS = {
 			{"bone": "sternum_r", "axis": "x"},
 		],
 	},
+	"breast_height": {
+		"contracts": ["doll2_v1"],
+		"label": "DOLL2_PREVIEW_BREAST_HEIGHT",
+		"range": {"default": 0.0, "minimum": -15.0, "maximum": 15.0, "step": 0.1},
+		# Spine world Y points up.  These roots carry the second nipple bones and
+		# every weighted breast mesh below them, so one offset moves each size as
+		# a whole without changing its authored shape.
+		"ops": [
+			{"bone": "nipple2_l", "axis": "y", "space": "global"},
+			{"bone": "nipple2_r", "axis": "y", "space": "global"},
+			{"bone": "nipple3_l", "axis": "y", "space": "global"},
+			{"bone": "nipple3_r", "axis": "y", "space": "global"},
+			{"bone": "nipple4_l", "axis": "y", "space": "global"},
+			{"bone": "nipple4_r", "axis": "y", "space": "global"},
+			{"bone": "nipple5_l", "axis": "y", "space": "global"},
+			{"bone": "nipple5_r", "axis": "y", "space": "global"},
+		],
+	},
 }
 
 const FACE_MODIFIER_ORDER = [
@@ -307,6 +357,7 @@ const FACE_MODIFIER_ORDER = [
 ]
 
 const WAIST_MODIFIER_ORDER = ["waist_width", "waist_height"]
+const BREAST_MODIFIER_ORDER = ["breast_scale", "breast_height"]
 
 
 # ---------------------------------------------------------------- layers --
@@ -519,6 +570,28 @@ static func bone_factors(values, tier_id = HEIGHT_DEFAULT, contract_id = DEFAULT
 				factor = Vector2(1.0, amount)
 			_accumulate(result, operation.bone, factor, contract_id)
 
+	# Position controls may carry a scale compensation tied to the same slider.
+	# Waist width uses this to shorten the four moved control bones along local Y
+	# as they move apart, and lengthen them by the same amount as they move in.
+	for modifier_id in POSITION_MODIFIERS.keys():
+		var modifier = POSITION_MODIFIERS[modifier_id]
+		if !modifier.has("scale_ops"):
+			continue
+		var value = float(values.get(modifier_id, modifier.range.default))
+		if value == modifier.range.default:
+			continue
+		var span = float(modifier.range.maximum) - float(modifier.range.minimum)
+		var percent = 0.5 if span == 0.0 else (value - float(modifier.range.minimum)) / span
+		var scale_definition = modifier.scale
+		var amount = lerp(float(scale_definition.at_min), float(scale_definition.at_max), percent)
+		for operation in modifier.scale_ops:
+			var factor = Vector2(amount, amount)
+			if operation.get("axis", "both") == "x":
+				factor = Vector2(amount, 1.0)
+			elif operation.get("axis", "both") == "y":
+				factor = Vector2(1.0, amount)
+			_accumulate(result, operation.bone, factor, contract_id)
+
 	for bone_name in result.keys():
 		if !(bone_name in contract_bones(contract_id)):
 			push_warning("Doll2 modifiers: unknown bone `%s` in contract %s" % [bone_name, contract_id])
@@ -534,6 +607,37 @@ static func bone_offsets(values, contract_id = DEFAULT_CONTRACT):
 		if value == modifier.range.default:
 			continue
 		for operation in modifier.ops:
+			if operation.get("space", "local") == "global":
+				continue
+			var rig_name = rig_bone(operation.bone, contract_id)
+			if rig_name == "":
+				continue
+			var amount = value * float(operation.get("amount", 1.0))
+			var offset = result.get(rig_name, Vector2.ZERO)
+			if operation.get("axis", "x") == "y":
+				offset.y += amount
+			else:
+				offset.x += amount
+			result[rig_name] = offset
+	for bone_name in result.keys():
+		if !(bone_name in contract_bones(contract_id)):
+			push_warning("Doll2 modifiers: unknown bone `%s` in contract %s" % [bone_name, contract_id])
+			result.erase(bone_name)
+	return result
+
+
+# Additive offsets expressed in Spine world coordinates.  They are applied after
+# the local hierarchy is solved, then inherited by every descendant.
+static func bone_world_offsets(values, contract_id = DEFAULT_CONTRACT):
+	var result = {}
+	for modifier_id in POSITION_MODIFIERS.keys():
+		var modifier = POSITION_MODIFIERS[modifier_id]
+		var value = float(values.get(modifier_id, modifier.range.default))
+		if value == modifier.range.default:
+			continue
+		for operation in modifier.ops:
+			if operation.get("space", "local") != "global":
+				continue
 			var rig_name = rig_bone(operation.bone, contract_id)
 			if rig_name == "":
 				continue

@@ -480,6 +480,7 @@ func _apply_bone_modifiers(layer_factors = {}):
 	# modifier can silently discard another one acting on the same bone.
 	var factors = MODIFIERS.bone_factors(proportions, height_tier, contract.CONTRACT_ID)
 	var offsets = MODIFIERS.bone_offsets(proportions, contract.CONTRACT_ID)
+	var world_offsets = MODIFIERS.bone_world_offsets(proportions, contract.CONTRACT_ID)
 	# A part may carry its own bone tweaks; they multiply into the tier's rather
 	# than replacing them, so height still reads correctly while it is worn.
 	var part_bones = CATALOGUE.compose_bones(selections)
@@ -512,6 +513,15 @@ func _apply_bone_modifiers(layer_factors = {}):
 		)
 	if !touched.empty():
 		_resolve_bone_hierarchy()
+	if !world_offsets.empty():
+		for bone_name in world_offsets.keys():
+			if !bones.has(bone_name):
+				continue
+			var bone = bones[bone_name]
+			bone.x = float(bone.x) + world_offsets[bone_name].x
+			bone.y = float(bone.y) + world_offsets[bone_name].y
+			bones[bone_name] = bone
+		_update_ik_descendants(world_offsets.keys())
 
 
 # Recomputes every bone's world transform from its own local values, parents
@@ -670,10 +680,31 @@ func _set_bone_world(name, x, y, rotation, scale_x, scale_y, shear_x, shear_y):
 		var parent = bones[parent_name]
 		bone["x"] = parent.a * x + parent.b * y + parent.x
 		bone["y"] = parent.c * x + parent.d * y + parent.y
-		bone["a"] = parent.a * local_a + parent.b * local_c
-		bone["b"] = parent.a * local_b + parent.b * local_d
-		bone["c"] = parent.c * local_a + parent.d * local_c
-		bone["d"] = parent.c * local_b + parent.d * local_d
+		var parent_a = float(parent.a)
+		var parent_b = float(parent.b)
+		var parent_c = float(parent.c)
+		var parent_d = float(parent.d)
+		# Butt size widens spine1 along its local Y.  The thigh positions must
+		# follow that wider pelvis, but their bases (and therefore every child)
+		# must remain at the world scale they had before it.  Remove only that
+		# inherited factor from the parent's basis; the position above deliberately
+		# keeps the real, widened parent transform.
+		var butt_factor = float(proportions.get("butt", 1.0))
+		var compensated_parent = MODIFIERS.rig_bone("spine1", contract.CONTRACT_ID)
+		var compensate_scale = parent_name == compensated_parent
+		if compensate_scale:
+			compensate_scale = false
+			for authored_name in MODIFIERS.BUTT_SCALE_COMPENSATION_BONES:
+				if name == MODIFIERS.rig_bone(authored_name, contract.CONTRACT_ID):
+					compensate_scale = true
+					break
+		if compensate_scale and butt_factor != 0.0:
+			parent_b /= butt_factor
+			parent_d /= butt_factor
+		bone["a"] = parent_a * local_a + parent_b * local_c
+		bone["b"] = parent_a * local_b + parent_b * local_d
+		bone["c"] = parent_c * local_a + parent_d * local_c
+		bone["d"] = parent_c * local_b + parent_d * local_d
 	bone["local_x"] = x
 	bone["local_y"] = y
 	bone["local_rotation"] = rotation
@@ -1841,11 +1872,26 @@ func _sorted_modifiers():
 		result.erase(modifier_id)
 	for modifier_id in MODIFIERS.WAIST_MODIFIER_ORDER:
 		result.erase(modifier_id)
+	for modifier_id in MODIFIERS.BREAST_MODIFIER_ORDER:
+		result.erase(modifier_id)
 	result.sort()
 	# The hair lengths sit apart from the build sliders: they are per layer rather
 	# than per bone, and reading them next to each other is what makes them
 	# legible as four independent lengths.
-	return MODIFIERS.LAYER_MODIFIERS.keys() + result + MODIFIERS.WAIST_MODIFIER_ORDER + MODIFIERS.FACE_MODIFIER_ORDER
+	var ordered = (
+		MODIFIERS.LAYER_MODIFIERS.keys()
+		+ result
+		+ MODIFIERS.WAIST_MODIFIER_ORDER
+		+ MODIFIERS.BREAST_MODIFIER_ORDER
+		+ MODIFIERS.FACE_MODIFIER_ORDER
+	)
+	var available = []
+	for modifier_id in ordered:
+		var definition = MODIFIERS.modifier(modifier_id)
+		var contracts = definition.get("contracts", [])
+		if contracts.empty() or contract.CONTRACT_ID in contracts:
+			available.append(modifier_id)
+	return available
 
 
 # A proportion the character carries as one of a few named sizes - butt size so
@@ -1906,6 +1952,8 @@ func _on_proportion_changed(value, key):
 	_update_proportion_label(key)
 	# Bone scales feed the solver, so the pose has to be worked out again.
 	_update_animated_pose()
+	if key == "breast_scale":
+		jiggle_tits()
 
 
 func _update_proportion_label(key):

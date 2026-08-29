@@ -24,6 +24,8 @@ const GROUP_DEFS = {
 	"head": {"kind": "options", "optional": false, "order": 1, "label": "DOLL2_PREVIEW_HEAD"},
 	"face": {"kind": "options", "optional": false, "order": 2, "label": "DOLL2_PREVIEW_FACE"},
 	"eyes": {"kind": "options", "optional": false, "order": 3, "label": "DOLL2_PREVIEW_EYES"},
+	"eyes_effect": {"kind": "options", "optional": true, "order": 4, "label": "DOLL2_PREVIEW_EYES_EFFECT"},
+	"blush": {"kind": "options", "optional": true, "order": 5, "label": "DOLL2_PREVIEW_BLUSH"},
 	"eyebrows": {"kind": "options", "optional": true, "order": 4, "label": "DOLL2_PREVIEW_EYEBROWS"},
 	"nose": {"kind": "options", "optional": true, "order": 5, "label": "DOLL2_PREVIEW_NOSE"},
 	"lips": {"kind": "options", "optional": true, "order": 6, "label": "DOLL2_PREVIEW_LIPS"},
@@ -97,6 +99,8 @@ const FOLDER_MAP = {
 # own in the game (head gear, collars) and must not be swallowed by the outfit
 # set of the folder that happens to ship them.
 const SLOT_ROUTES = {
+	"eyes_hearts": "eyes_effect",
+	"blush": "blush",
 	"equip_head": "headgear",
 	"equip_collar": "collar",
 	"equip_masks": "mask",
@@ -305,7 +309,7 @@ const DISPLAY = {
 const PRESETS = {
 	"cat": {"ears": "ears_cat", "tails": "tail_cat"},
 	"wolf": {"ears": "ears_wolf", "tails": "tail_wolf"},
-	"fox": {"ears": "ears_fox", "tails": "tail_fox"},
+	"fox": {"ears": "ears_fox_n1", "tails": "tail_fox"},
 	"mouse": {"ears": "ears_mouse", "tails": "tail_mouse"},
 	"tanuki": {"ears": "ears_tanuk", "tails": "tail_tanuk"},
 	"rabbit": {"ears": "ears_rabbit"},
@@ -359,7 +363,7 @@ const COLOR_CHANNELS = {
 		"beastkin_torso_many_nipples", "beastkin_pregnancy_nipple",
 	]},
 	"skin": {"anchor": "body", "groups": ["body", "head", "face", "nose", "genitals"], "coverage": true},
-	"eyes": {"anchor": "eyes", "groups": ["eyes"]},
+	"eyes": {"anchor": "eyes", "groups": ["eyes", "eyes_effect"]},
 	"eyebrows": {"anchor": "eyebrows", "groups": ["eyebrows"]},
 	"lips": {"anchor": "lips", "groups": ["lips"]},
 	# The ear art is hue-coded now: the inner ear is painted in the second band on
