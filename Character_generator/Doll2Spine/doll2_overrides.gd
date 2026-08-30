@@ -59,9 +59,21 @@ const FOLDER_MAP = {
 
 # ------------------------------------------------------------------ axes ----
 
+const AXES = {
+	"belly_shape": {
+		"values": ["default", "muscle"],
+		"default": "default",
+		"label": "DOLL2_PREVIEW_BELLY_SHAPE",
+		"parse": "tokens",
+		"tokens": {"muscle": "muscle"},
+		"fallback": "default",
+	},
+}
+
 # Slot -> axis.  An axis is only applied when a part owns more than one
 # attachment in that slot; a single attachment is always assigned directly.
 const SLOT_AXES = {
+	"belly": "belly_shape",
 	"breasts": "tits_size",
 	"breasts_beastkin": "tits_size",
 	"breast_nipples": "tits_size",
@@ -117,6 +129,10 @@ const EXCLUDE = [
 # them to the canonical attachment and reports them when they disappear.
 # Attachments left over after an explicit assignment stay in `extra_options`.
 const PART_SLOTS = {
+	"body_female_base": {
+		"hand_left": {"1": "handl1", "2": "handl2", "3": "handl3"},
+		"hand_right": {"1": "handr1", "2": "handr2", "3": "handr3"},
+	},
 	# The playboy set ships two different hip pieces in one slot - `taz_armor` and
 	# `pelvis_armor` - and they are not two names for one picture: 99.9% of their
 	# pixels differ.  Only one can be worn, and the one named the way every other

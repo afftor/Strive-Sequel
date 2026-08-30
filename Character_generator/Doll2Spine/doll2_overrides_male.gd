@@ -75,6 +75,10 @@ const SLOT_AXES = {
 # nipples, so it borrows the base male ones.  Without this a femboy renders with
 # bare hips and no legs at all.
 const PART_SLOTS = {
+	"body_male_base": {
+		"hand_left": {"1": "handl1_m", "2": "handl2_m"},
+		"hand_right": {"1": "handr1_m", "2": "handr2_m"},
+	},
 	"body_male_femboy": {
 		"leg_left": "legl_m",
 		"leg_right": "legr_m",
