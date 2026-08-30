@@ -156,11 +156,17 @@ const PART_SLOTS = {
 		},
 		"breast_nipples": {
 			"small": "beastkin_tits_nipples_small__2",
-			"normal": "tits_nipples_normal",
+			"normal": "beastkin_tits_nipples",
 			"large": "beastkin_tits_nipples_large",
 			"big": "beastkin_tits_nipples_big",
 		},
 	},
+}
+
+# A beastkin muzzle already carries its nose.  Clearing the separate nose slot
+# also protects game-driven selections that bypass the preview's UI synchroniser.
+const PART_HIDES = {
+	"body_female_beastkin": ["noses"],
 }
 
 # ----------------------------------------------------------------- parts ----

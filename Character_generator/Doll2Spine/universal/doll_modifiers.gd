@@ -140,6 +140,16 @@ const MODIFIERS = {
 			{"bone": "nipple5_l"}, {"bone": "nipple5_r"},
 		],
 	},
+	"muscle_alpha": {
+		"contract": "doll2_v1",
+		"contracts": ["doll2_v1"],
+		"label": "DOLL2_PREVIEW_MUSCLE_ALPHA",
+		"display": "percent",
+		"range": {"default": 30.0, "minimum": 0.0, "maximum": 100.0, "step": 1.0},
+		# This is a visual slot modifier rather than a bone transform.  Keeping it
+		# here lets it share the same slider/default/state machinery.
+		"ops": [],
+	},
 	"build": {
 		"contract": "doll2_v1",
 		"label": "DOLL2_PREVIEW_BUILD",

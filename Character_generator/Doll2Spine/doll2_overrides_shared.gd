@@ -129,7 +129,8 @@ const PAIRED_SLOTS = {
 }
 
 # Draw order corrections, applied on top of the export's slot order.
-# `{"slot": "x", "before": "y"}` moves slot x to sit directly in front of y.
+# `{"slot": "x", "before": "y"}` / `{"slot": "x", "after": "y"}` moves
+# slot x below/above y.
 # The Spine file stays the source of truth; only this list disagrees with it, so
 # a re-export cannot silently undo the correction without the build reporting it.
 const DRAW_ORDER_FIXES = [

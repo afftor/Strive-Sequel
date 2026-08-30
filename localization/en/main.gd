@@ -31691,6 +31691,7 @@ You leave her in the shade and return to the others, carrying with you the stran
 	DOLL2_PREVIEW_BUTT_SIZE = "Butt size",
 	DOLL2_PREVIEW_BREAST_SCALE = "Breast scale",
 	DOLL2_PREVIEW_BREAST_HEIGHT = "Breast height",
+	DOLL2_PREVIEW_MUSCLE_ALPHA = "Muscle definition",
 	DOLL2_PREVIEW_DICK_SIZE = "Penis size",
 	DOLL2_PREVIEW_BALLS_SIZE = "Balls size",
 	DOLL2_PREVIEW_EYES_WIDTH = "Eye spacing",

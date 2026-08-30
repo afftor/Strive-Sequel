@@ -2216,6 +2216,9 @@ func _add_proportion_slider(parent, label_text, key):
 func _on_proportion_changed(value, key):
 	proportions[key] = float(value)
 	_update_proportion_label(key)
+	if key == "muscle_alpha":
+		_apply_muscle_alpha()
+		return
 	# Bone scales feed the solver, so the pose has to be worked out again.
 	_update_animated_pose()
 	if key == "breast_scale":
@@ -2224,7 +2227,11 @@ func _on_proportion_changed(value, key):
 
 func _update_proportion_label(key):
 	if ui.has(key + "_label"):
-		ui[key + "_label"].text = "%.2f" % float(proportions[key])
+		var definition = MODIFIERS.modifier(key)
+		if definition.get("display", "") == "percent":
+			ui[key + "_label"].text = "%.0f%%" % float(proportions[key])
+		else:
+			ui[key + "_label"].text = "%.2f" % float(proportions[key])
 
 
 func _text(key):
@@ -2263,22 +2270,40 @@ func _refresh_bindings(select):
 		select.set_item_disabled(i, !CATALOGUE.bindings_met(part_id, selections))
 
 
-# A beastkin body ships its own chin and skull meshes, so switching the body
-# moves the head with it unless the head already matches.  Both sides are looked
-# up by tag, never by attachment name.
+# A beastkin body needs the animal cuts of the whole face.  The exported muzzle
+# includes its own nose, and the tagged face/lips are drawn around that muzzle;
+# leaving only one of these human is visibly wrong.
 func _follow_body_tag():
 	var beastkin_body = CATALOGUE.has_tag(selections.get("body", ""), "beastkin")
-	if CATALOGUE.has_tag(selections.get("head", ""), "beastkin") == beastkin_body:
-		return
-	var head_id = ""
+	for group_id in ["head", "face", "lips"]:
+		var current = str(selections.get(group_id, ""))
+		if CATALOGUE.has_tag(current, "beastkin") == beastkin_body:
+			continue
+		var replacement = ""
+		if beastkin_body:
+			if group_id == "face":
+				var matching_face = "beastkin_" + current
+				if matching_face in CATALOGUE.parts("face"):
+					replacement = matching_face
+			elif group_id == "lips" and "beastkin_lips_open" in CATALOGUE.parts("lips"):
+				replacement = "beastkin_lips_open"
+			if replacement.empty():
+				replacement = CATALOGUE.first_part_with_tag(group_id, "beastkin")
+		else:
+			replacement = str(CATALOGUE.group(group_id).get("default", ""))
+		if replacement.empty():
+			continue
+		selections[group_id] = replacement
+		_select_ui_value(group_id, replacement)
+	# The body part also hides this slot at composition time, so externally loaded
+	# selections are safe; clearing the editor value makes the UI tell the truth.
 	if beastkin_body:
-		head_id = CATALOGUE.first_part_with_tag("head", "beastkin")
-	else:
-		head_id = str(CATALOGUE.group("head").get("default", ""))
-	if head_id.empty():
-		return
-	selections["head"] = head_id
-	_select_ui_value("head", head_id)
+		selections["nose"] = ""
+		_select_ui_value("nose", "")
+	elif str(selections.get("nose", "")).empty():
+		var default_nose = str(CATALOGUE.group("nose").get("default", ""))
+		selections["nose"] = default_nose
+		_select_ui_value("nose", default_nose)
 
 
 # True when the click landed on the chest, which is also when it swung it.
@@ -2525,20 +2550,22 @@ func _sort_draw_offsets(first, second):
 	return int(first.index) < int(second.index)
 
 
-# `{"slot": x, "before": y}`: x is lifted out and dropped straight in front of y.
+# `{"slot": x, "before": y}` / `{"slot": x, "after": y}`: x is lifted
+# out and dropped directly below/above y.
 func _apply_draw_order_fixes(order):
 	for fix in CATALOGUE.draw_order_fixes():
 		var slot_name = str(fix.get("slot", ""))
-		var before = str(fix.get("before", ""))
+		var relation = "before" if fix.has("before") else "after"
+		var anchor = str(fix.get(relation, ""))
 		var from = order.find(slot_name)
 		if from < 0:
 			continue
 		order.remove(from)
-		var to = order.find(before)
+		var to = order.find(anchor)
 		if to < 0:
 			order.insert(from, slot_name)
 		else:
-			order.insert(to, slot_name)
+			order.insert(to if relation == "before" else to + 1, slot_name)
 	return order
 
 
@@ -2843,7 +2870,19 @@ func _expanded_deform_frame(frame, length):
 # tried to patch over.  The art underneath already matches, and player colour now
 # comes from the channel material, so the stale tint has no job left.
 func _attachment_colour(slot, _attachment):
-	return _spine_colour(slot.get("color", "FFFFFFFF"))
+	var colour = _spine_colour(slot.get("color", "FFFFFFFF"))
+	if str(slot.get("name", "")).ends_with("_muscle"):
+		colour.a *= clamp(float(proportions.get("muscle_alpha", 30.0)) / 100.0, 0.0, 1.0)
+	return colour
+
+
+func _apply_muscle_alpha():
+	for record in mesh_records:
+		if !is_instance_valid(record.polygon):
+			continue
+		if !str(record.slot.get("name", "")).ends_with("_muscle"):
+			continue
+		record.polygon.color = _attachment_colour(record.slot, record.attachment)
 
 
 func _spine_colour(hex_value):
