@@ -121,6 +121,11 @@ var height_tier = MODIFIERS.HEIGHT_DEFAULT
 # Extra solved poses, one per hair layer that is not at its default length.
 var layer_poses = {}
 var bone_parents = {}
+# Arms and legs are solved at their authored lengths, then thickened locally.
+# While that final visual pass is running, the factor on a parent segment is
+# removed before its child is placed so it cannot turn into length or shear.
+var post_ik_visual_scales = {}
+var applying_post_ik_visual_scales = false
 # Fur or scale pattern painted over the body, "" for bare skin, plus the colour
 # of each of its layers.
 var coverage_id = ""
@@ -696,6 +701,8 @@ func _pose_for(slot):
 
 func _build_bone_transforms(layer_factors = {}):
 	bones.clear()
+	post_ik_visual_scales.clear()
+	applying_post_ik_visual_scales = false
 	var index = 0
 	for definition in skeleton.get("bones", []):
 		var name = definition.get("name", "bone_%d" % index)
@@ -720,6 +727,32 @@ func _build_bone_transforms(layer_factors = {}):
 	for constraint in constraints:
 		_apply_ik_constraint(constraint)
 	_apply_hand_handles()
+	_apply_post_ik_visual_scales()
+
+
+# IK must never use a cosmetic thickness as reach.  Rebuild the final hierarchy
+# once after every native and synthetic IK solve.  Every segment receives the
+# slider in its own local Y; `_set_bone_world` strips the parent's copy from both
+# position and basis before composing the next segment.
+func _apply_post_ik_visual_scales():
+	post_ik_visual_scales = MODIFIERS.post_ik_visual_factors(proportions, contract.CONTRACT_ID)
+	if post_ik_visual_scales.empty():
+		return
+	applying_post_ik_visual_scales = true
+	for definition in skeleton.get("bones", []):
+		var name = str(definition.get("name", ""))
+		if !bones.has(name):
+			continue
+		var bone = bones[name]
+		var factor = post_ik_visual_scales.get(name, Vector2.ONE)
+		_set_bone_world(
+			name,
+			float(bone.local_x), float(bone.local_y), float(bone.local_rotation),
+			float(bone.local_scale_x) * factor.x,
+			float(bone.local_scale_y) * factor.y,
+			float(bone.local_shear_x), float(bone.local_shear_y)
+		)
+	applying_post_ik_visual_scales = false
 
 
 func _apply_bone_modifiers(layer_factors = {}):
@@ -925,12 +958,31 @@ func _set_bone_world(name, x, y, rotation, scale_x, scale_y, shear_x, shear_y):
 		bone["d"] = local_d
 	else:
 		var parent = bones[parent_name]
-		bone["x"] = parent.a * x + parent.b * y + parent.x
-		bone["y"] = parent.c * x + parent.d * y + parent.y
 		var parent_a = float(parent.a)
 		var parent_b = float(parent.b)
 		var parent_c = float(parent.c)
 		var parent_d = float(parent.d)
+		var position_a = parent_a
+		var position_b = parent_b
+		var position_c = parent_c
+		var position_d = parent_d
+		# Post-IK limb thickness is local to every segment.  Strip a parent's
+		# visual factor before composing its child, including the child position:
+		# even a small authored local-Y joint offset must not move an IK endpoint.
+		if applying_post_ik_visual_scales and post_ik_visual_scales.has(parent_name):
+			var visual_factor = post_ik_visual_scales[parent_name]
+			if visual_factor.x != 0.0:
+				parent_a /= visual_factor.x
+				parent_c /= visual_factor.x
+			if visual_factor.y != 0.0:
+				parent_b /= visual_factor.y
+				parent_d /= visual_factor.y
+			position_a = parent_a
+			position_b = parent_b
+			position_c = parent_c
+			position_d = parent_d
+		bone["x"] = position_a * x + position_b * y + parent.x
+		bone["y"] = position_c * x + position_d * y + parent.y
 		# Butt size widens spine1 along its local Y.  The thigh positions must
 		# follow that wider pelvis, but their bases (and therefore every child)
 		# must remain at the world scale they had before it.  Remove only that
@@ -948,6 +1000,16 @@ func _set_bone_world(name, x, y, rotation, scale_x, scale_y, shear_x, shear_y):
 		if compensate_scale and butt_factor != 0.0:
 			parent_b /= butt_factor
 			parent_d /= butt_factor
+		# Shoulder width should move the arm root with the end of the collarbone,
+		# but must not scale or shear the arm basis.  Position above intentionally
+		# keeps the widened parent; only the basis loses its local-X factor.
+		var shoulder_factor = float(proportions.get("shoulders", 1.0))
+		var authored_parent = MODIFIERS.SHOULDER_WIDTH_BASIS_COMPENSATION.get(name, "")
+		if !str(authored_parent).empty() \
+			and parent_name == MODIFIERS.rig_bone(authored_parent, contract.CONTRACT_ID) \
+			and shoulder_factor != 0.0:
+			parent_a /= shoulder_factor
+			parent_c /= shoulder_factor
 		bone["a"] = parent_a * local_a + parent_b * local_c
 		bone["b"] = parent_a * local_b + parent_b * local_d
 		bone["c"] = parent_c * local_a + parent_d * local_c
