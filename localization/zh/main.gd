@@ -175,9 +175,13 @@ Mansion and combat keys are independent - the same key may be used by both.""", 
 	OPTGRAPHICRANDOMPORTRAIT = """随机肖像""",
 	OPTGRAPHICDISABLEANIMATIONBACKGROUNDS = """禁用动画背景""",
 	OPTDISABLEPAPERDOLL = """禁用人物肖像""",
+	OPTDOLLSECTION = """Character doll""", # MISSING TRANSLATION
+	OPTDOLLIDLE = """Idle animation""", # MISSING TRANSLATION
+	OPTDOLLPREGNANTNIPPLES = """Darker pregnancy nipples""", # MISSING TRANSLATION
 	OPTDISABLEDAMAGESHAKE = """禁用受击抖动""",
 	OPTDISABLEITEMFLIGHT = """Disable item pickup animation""", # MISSING TRANSLATION
 	OPTITEMFLIGHT = """Item collection animations""", # MISSING TRANSLATION
+	OPTFPSMETER = """Show FPS""", # MISSING TRANSLATION
 	OPTCHEATENTERCODE = """输入代码""",
 	OPTCHEATACTIVATE = """激活""",
 	OPTCHEATGETCODE = """获取代码""",
@@ -488,9 +492,12 @@ TUTORIALINFOQUESTION = """这是你第一次游玩《Strive: Conquest》吗？""
 	MSLMRE = """在""",
 	MSLMTURN = """ 回合""",
 	MSLMMANSION = """宅邸""",
+	MSLMSTORAGELIMIT = """Each material fits %d on the shelves. Closest to full:""", # MISSING TRANSLATION
 	MSLMDAY = """日期""",
 	MSLMSHOWALL = """显示全部""",
 	MSLMSHOWPLACE = """Show the work waiting at %s in the panel below.""", # MISSING TRANSLATION
+	MSLMNAVWORK = """Work""", # MISSING TRANSLATION
+	MSLMNAVEXPLORE = """Explore""", # MISSING TRANSLATION
 	MSLMGOTOLOCATION = """Travel to %s.""", # MISSING TRANSLATION
 	MSMNAME = """角色信息""",
 	MSMEXP = """经验""",
@@ -771,6 +778,12 @@ TUTORIALINFOQUESTION = """这是你第一次游玩《Strive: Conquest》吗？""
 	FOODDEMANDBASICDESCRIPT = """Eats anything without complaint.""", # MISSING TRANSLATION
 	FOODDEMANDREFINEDDESCRIPT = """Expects cooked meals. Raw produce costs Respect, Productivity and Experience Gain until the next meal.""", # MISSING TRANSLATION
 	FOODDEMANDPREMIUMDESCRIPT = """Expects elaborate dishes. Anything lesser costs Respect, Productivity and Experience Gain until the next meal.""", # MISSING TRANSLATION
+	DEMAND = """Demand""", # MISSING TRANSLATION
+	DEMANDDESCRIPT = """Character's demand is based on their self-worth. Not meeting it will reduce their performance.""", # MISSING TRANSLATION
+	DEMANDSLAVEEXEMPT = """Slaves aren't penalized for not meeting their demands.""", # MISSING TRANSLATION
+	DEMANDREQNONE = """None""", # MISSING TRANSLATION
+	DEMANDREQ = """Required: Fame %d, or value above %d""", # MISSING TRANSLATION
+	DEMANDLODGING = """Demands their own room, no longer being satisfied with communal barracks.""", # MISSING TRANSLATION
 	FOODLIKEDTYPE = """Liked Food""", # MISSING TRANSLATION
 	FOODVALUE = """Turns of Food""", # MISSING TRANSLATION
 	FOODTOOLTIPLIKED = """A liked type: keeps this character fed 50% longer.""", # MISSING TRANSLATION
@@ -1308,6 +1321,14 @@ Nothing is forbidden by this choice - it only sets a preference.""", # MISSING T
 	CHARCREATE_SYS_TOO_MANY_UPGRADES = """该角色的升级次数过多""",
 	CHARCREATE_SYS_NOT_ENOUGH_MONEY = """金钱不足""",
 	CHARCREATE_UNASSIGNED_STATS = """未分配属性点：%d""",
+	CHARCREATE_STAT_HINT_PHYSICS_FACTOR = """Physics Factor, combat""", # MISSING TRANSLATION
+	CHARCREATE_STAT_HINT_WITS_FACTOR = """Wits Factor, intelligence""", # MISSING TRANSLATION
+	CHARCREATE_STAT_HINT_CHARM_FACTOR = """Charm Factor, persuasion""", # MISSING TRANSLATION
+	CHARCREATE_STAT_HINT_SEXUALS_FACTOR = """Sex Factor, prowess""", # MISSING TRANSLATION
+	CHARCREATE_STAT_HINT_MAGIC_FACTOR = """Magic Factor, mana""", # MISSING TRANSLATION
+	CHARCREATE_STAT_HINT_TAME_FACTOR = """Tame Factor, obedience""", # MISSING TRANSLATION
+	CHARCREATE_STAT_HINT_AUTHORITY_FACTOR = """Authority Factor, dominance""", # MISSING TRANSLATION
+	CHARCREATE_MASTER_RELATION_BUTTON = """Relation to Master: %s""", # MISSING TRANSLATION
 	CHARCREATE_MASTER_RELATION_TOOLTIP = """选择新角色与当前主人之间的关系。这对主线故事没有实质影响，主要用于角色扮演设置。""",
 	CHARCREATE_MASTER_RELATION_CHILD = """子女""",
 	CHARCREATE_MASTER_RELATION_PARENT = """父母""",
@@ -2067,6 +2088,108 @@ While under {color=aqua|Tyrannical Contempt}, Grotus instead gains {color=aqua|T
 Deal extremely heavy damage to that single target.
 On hit, a follow-up {color=yellow|Light} shockwave strikes all enemies, inflicting Shred and possibly Stun.
 On miss, Grotus gains up to 5 random {color=aqua|Gap in Defenses}.""", # MISSING TRANSLATION
+	ENEMYMELCHOR_CHANCELLOR = """Melchor""", # MISSING TRANSLATION
+	ENEMYROUGE_THIRD_PARTY = """Rouge""", # MISSING TRANSLATION
+	ENEMYIMPERIAL_SOLDIER = """Imperial Soldier""", # MISSING TRANSLATION
+	ENEMYMHYRANA_CULTIST = """Cultist""", # MISSING TRANSLATION
+	SKILLMELCHOR_AUTHORITY = """Imperial Chancellor of Palatine""", # MISSING TRANSLATION
+	SKILLMELCHOR_AUTHORITYDESCRIPT = """While Melchor lives, every other allied unit gains +30 Hitrate, 10% Damage Reduction and immunity to {color=aqua|Fear}.
+Rouge answers to nobody and is granted nothing.""", # MISSING TRANSLATION
+	SKILLMELCHOR_CLEAR_THE_FIELD = """All of you, Out of Here!""", # MISSING TRANSLATION
+	SKILLMELCHOR_CLEAR_THE_FIELDDESCRIPT = """On combat start, every cultist on the field is put down where they stand.
+If Rouge has invited herself along, she takes 10% of her Maximum HP as well.""", # MISSING TRANSLATION
+	SKILLMELCHOR_WORD_OF_LAWS = """Word of Laws""", # MISSING TRANSLATION
+	SKILLMELCHOR_WORD_OF_LAWSDESCRIPT = """Heal an allied unit, or deal {color=yellow|Light} magical damage to an enemy. Rouge counts as an enemy.
+While under {color=aqua|Fullest Extent of the Laws}, the healing and the damage are both greatly increased.""", # MISSING TRANSLATION
+	SKILLMELCHOR_RESTRAINING_ORDER = """Restraining Order""", # MISSING TRANSLATION
+	SKILLMELCHOR_RESTRAINING_ORDERDESCRIPT = """Deal {color=yellow|Mind} magical damage to a single enemy and inflict {color=aqua|Restraining Order} for 3 turns.
+While under {color=aqua|Fullest Extent of the Laws}, also inflict {color=aqua|Stun}.""", # MISSING TRANSLATION
+	SKILLMELCHOR_OBSTRUCTION = """Obstruction of Official Business will not be Tolerated!""", # MISSING TRANSLATION
+	SKILLMELCHOR_OBSTRUCTIONDESCRIPT = """Can be used even while {color=aqua|Silenced}, and removes {color=aqua|Silence} from Melchor.
+Restore a portion of his Maximum HP and gain {color=aqua|Extended Security Measure}.""", # MISSING TRANSLATION
+	SKILLMELCHOR_EMERGENCY_LOCKDOWN = """Emergency Lockdown""", # MISSING TRANSLATION
+	SKILLMELCHOR_EMERGENCY_LOCKDOWNDESCRIPT = """Deal {color=yellow|Earth} magical damage to all enemies and inflict {color=aqua|Ensnare}. Rouge is caught in it too.
+While under {color=aqua|Fullest Extent of the Laws}, add a burst of {color=yellow|Water} damage that may inflict {color=aqua|Freeze}.""", # MISSING TRANSLATION
+	SKILLMELCHOR_LOCKDOWN_SWEEP = """Emergency Lockdown""", # MISSING TRANSLATION
+	SKILLMELCHOR_LOCKDOWN_SWEEPDESCRIPT = """The lockdown closes around Rouge as well.""", # MISSING TRANSLATION
+	SKILLMELCHOR_SUMMARY_JUDGMENT = """Summary Judgment""", # MISSING TRANSLATION
+	SKILLMELCHOR_SUMMARY_JUDGMENTDESCRIPT = """Deal heavy {color=yellow|Light} magical damage to a single enemy.
+If fewer than 4 of his own are still standing, or while under {color=aqua|Fullest Extent of the Laws}, also inflict {color=aqua|Burn} and {color=aqua|Shatter}.""", # MISSING TRANSLATION
+	SKILLMELCHOR_BUSTER_CALL = """Class III Restricted Spell - Buster Call""", # MISSING TRANSLATION
+	SKILLMELCHOR_BUSTER_CALLDESCRIPT = """Only usable under {color=aqua|Fullest Extent of the Laws}.
+Rain heavy {color=yellow|Fire} magical damage on 2 to 4 enemies, four times over.
+Rouge is not spared.""", # MISSING TRANSLATION
+	SKILLMELCHOR_BUSTER_SWEEP = """Class III Restricted Spell - Buster Call""", # MISSING TRANSLATION
+	SKILLMELCHOR_BUSTER_SWEEPDESCRIPT = """A share of the bombardment falls on Rouge.""", # MISSING TRANSLATION
+	SKILLROUGE_APPETIZER = """Appetizer just for me, Melchor?""", # MISSING TRANSLATION
+	SKILLROUGE_APPETIZERDESCRIPT = """On combat start, one of Melchor's Imperial soldiers does not get to draw his sword.""", # MISSING TRANSLATION
+	SKILLROUGE_PUNCTURE_ARTERY = """Puncture the Artery""", # MISSING TRANSLATION
+	SKILLROUGE_PUNCTURE_ARTERYDESCRIPT = """Deal physical damage to a single enemy and inflict {color=aqua|Bleed}.
+This strike ignores a large amount of armor.""", # MISSING TRANSLATION
+	SKILLROUGE_FEASTING_FRENZY = """Feasting Frenzy""", # MISSING TRANSLATION
+	SKILLROUGE_FEASTING_FRENZYDESCRIPT = """Strike 6 times at random. Every unit on the field is a valid target except Rouge herself.
+Each hit restores a small amount of her HP.""", # MISSING TRANSLATION
+	SKILLROUGE_ADAMANT_PURSUIT = """Adamant Pursuit""", # MISSING TRANSLATION
+	SKILLROUGE_ADAMANT_PURSUITDESCRIPT = """Reaches the back line, and does not care whose back line.
+Deal physical damage to a random unit and inflict {color=aqua|Fear}.
+On a miss, the blow lands anyway for half damage.""", # MISSING TRANSLATION
+	SKILLROUGE_NAIL_STILETTO = """Nail Manicure: Stiletto""", # MISSING TRANSLATION
+	SKILLROUGE_NAIL_STILETTODESCRIPT = """Can be used even while {color=aqua|Disarmed}, and removes {color=aqua|Disarm} from Rouge.
+Gain {color=aqua|Sharpened Nails}.""", # MISSING TRANSLATION
+	SKILLROUGE_EAT_YOUR_HEART_OUT = """Eat your Heart Out""", # MISSING TRANSLATION
+	SKILLROUGE_EAT_YOUR_HEART_OUTDESCRIPT = """Usable only against a unit below 20% HP - friend or foe.
+Deal extreme physical damage, and far more still on a critical hit.""", # MISSING TRANSLATION
+	SKILLROUGE_THIRD_PARTY_EXIT = """Well, That Was Filling""", # MISSING TRANSLATION
+	SKILLROUGE_THIRD_PARTY_EXITDESCRIPT = """Rouge has eaten her fill and sees no reason to stay.""", # MISSING TRANSLATION
+	SKILLIMPERIAL_NOBLE_PROTECTION = """Noble Protection""", # MISSING TRANSLATION
+	SKILLIMPERIAL_NOBLE_PROTECTIONDESCRIPT = """Shield an ally who is not already protected for 3 turns.
+Single-target attacks aimed at them are redirected onto this soldier, and area damage they take is heavily reduced.""", # MISSING TRANSLATION
+	SKILLIMPERIAL_WEED_OUT = """Weed Out the Enemy""", # MISSING TRANSLATION
+	SKILLIMPERIAL_WEED_OUTDESCRIPT = """Deal physical damage to the unwelcome guest standing on this unit's own side of the field.""", # MISSING TRANSLATION
+	SKILLIMPERIAL_BASTION = """Bastion of the Empire""", # MISSING TRANSLATION
+	SKILLIMPERIAL_BASTIONDESCRIPT = """Restore a portion of Maximum HP and gain {color=aqua|Stonewall}.
+Remove {color=aqua|Shred} and {color=aqua|Shatter} from this unit.""", # MISSING TRANSLATION
+	SKILLIMPERIAL_THREAT_SUPPRESSION = """Threat Suppression""", # MISSING TRANSLATION
+	SKILLIMPERIAL_THREAT_SUPPRESSIONDESCRIPT = """Strike a single enemy 3 times.
+The first connecting hit inflicts {color=aqua|Shred}; the ones after it may inflict {color=aqua|Bleed}.""", # MISSING TRANSLATION
+	SKILLIMPERIAL_COORDINATE_ATTACK = """Coordinate Attack""", # MISSING TRANSLATION
+	SKILLIMPERIAL_COORDINATE_ATTACKDESCRIPT = """Deal minor physical damage and apply {color=aqua|Leader's Mark}.
+Every Imperial Soldier on the field turns on the marked target.""", # MISSING TRANSLATION
+	SKILLIMPERIAL_COUNTER_STRIKE = """Disciplined Riposte""", # MISSING TRANSLATION
+	SKILLIMPERIAL_COUNTER_STRIKEDESCRIPT = """A trained answer to anyone careless enough to come within reach.""", # MISSING TRANSLATION
+	EFFECT_MELCHOR_AUTHORITY_DESCRIPT = """Authority of the Chancellor: +30 Hitrate, 10% Damage Reduction and immunity to Fear.
+Lasts as long as Melchor is standing.""", # MISSING TRANSLATION
+	EFFECT_MELCHOR_SESSION_DESCRIPT = """Session in Progress: rounds spent working within the letter of the law.
+On the fourth round or when his HP go below 20%, Melchor stops bothering.""", # MISSING TRANSLATION
+	EFFECTNAME_MELCHOR_FULL_EXTENT = """Fullest Extent of the Laws""", # MISSING TRANSLATION
+	EFFECT_MELCHOR_FULL_EXTENT_DESCRIPT = """Fullest Extent of the Laws: +30 MATK, +20 Speed, 30% Damage Reduction and immunity to Silence.
+Every one of his spells are enhanced, and Class III Restricted Spells are cleared for use.""", # MISSING TRANSLATION
+	EFFECTNAME_MELCHOR_SECURITY_MEASURE = """Extended Security Measure""", # MISSING TRANSLATION
+	EFFECT_MELCHOR_SECURITY_MEASURE_DESCRIPT = """Extended Security Measure: immune to Silence, +25 Armor and MDEF.
+Anyone who strikes this unit takes {color=yellow|Light} damage in return.
+Lasts until the end of this unit's next turn.""", # MISSING TRANSLATION
+	EFFECTNAME_MELCHOR_RESTRAINING_ORDER = """Restraining Order""", # MISSING TRANSLATION
+	EFFECT_MELCHOR_RESTRAINING_ORDER_DESCRIPT = """Restraining Order: -25 Speed, -15% ATK and MATK.
+Attacking leaves this unit {color=aqua|Stunned} for a turn.
+Should Melchor invoke the Fullest Extent of the Laws, the order is replaced by {color=aqua|Disarm} and {color=aqua|Silence}.""", # MISSING TRANSLATION
+	TRAIT_REFRACTED_IMAGE = """Illusion Trick - Refracted Image: While not {color=aqua|Silenced}, single-target attacks against this unit have 30% to miss and this unit attack has a 30% chance to bypass evasion.""", # MISSING TRANSLATION
+	EFFECTNAME_ROUGE_SHARPEN_NAILS = """Sharpened Nails""", # MISSING TRANSLATION
+	EFFECT_ROUGE_SHARPEN_NAILS_DESCRIPT = """Sharpened Nails: immune to Disarm, +50 Crit chance, +20 Armor penetration.
+Spent on the next attack.""", # MISSING TRANSLATION
+	EFFECTNAME_IMPERIAL_LEADERS_MARK = """Leader's Mark""", # MISSING TRANSLATION
+	EFFECT_IMPERIAL_LEADERS_MARK_DESCRIPT = """Leader's Mark: takes 20% more damage, and every Imperial Soldier on the field is looking straight at them.""", # MISSING TRANSLATION
+	TRAIT_IMPERIAL_SOLDIER_TRAINING = """Standard Imperial Soldier Training: 25% chance to counter-attack anyone striking from melee range, once per round.""", # MISSING TRANSLATION
+	MELCHOR_LOG_PURGE_CULTIST = """Melchor rain down a shower of light, clearing out cultists in the area!
+Melchor: This is a Crown matter. Mayor of Aliron... you lot are not part of it.""", # MISSING TRANSLATION
+	MELCHOR_LOG_SHOO_ROUGE = """A blast of light also struck Rouge!
+Melchor: And YOU. Out. Of. Here!""", # MISSING TRANSLATION
+	MELCHOR_LOG_FULL_EXTENT = """Melchor: Conditions for invoking Section II, Article 23 fullfilled. Consider the paperwork filed.""", # MISSING TRANSLATION
+	MELCHOR_LOG_FULL_EXTENT_DESPERATE = """
+Melchor: I will apologise to the archivists later. Invoking Section II, Article 23!""", # MISSING TRANSLATION
+	ROUGE_LOG_APPETIZER = """With an unexpected swift attack, Rouge fell one of Melchor's Imperial Soldier! 
+Rouge: One appetizer. You did bring enough for everyone, Melchor?""", # MISSING TRANSLATION
+	ROUGE_LOG_LEAVES = """
+Rouge: The course is finished and the cook has left. So will I.""", # MISSING TRANSLATION
 	SKILLGROTUS_OBLITERATION_WAVE = """Complete and Total Obliteration!!""", # MISSING TRANSLATION
 	SKILLGROTUS_OBLITERATION_WAVEDESCRIPT = """A shockwave of {color=yellow|Light} strikes all enemies, inflicting Shred and possibly Stun.""", # MISSING TRANSLATION
     RUNNING_AWAY_TEXT = """%s：我得赶紧离开这个鬼地方！""",
@@ -2465,6 +2588,7 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	TRAININGLABELRESISTANCEDROP = """%.0f - %.0f""",
 	TRAINING_TRAINER_NAME = """训练师：%s""",
 	TRAINING_SLAVES_ASSIGNED = """%s - 已分配奴隶：%d/%d""",
+	TRAINING_TRAINER_SLOTS = """Assigned: %d/%d""", # MISSING TRANSLATION
 	TRAINING_ASSIGN_TRAINER_BUTTON = """分配训练师""",
 	TRAINING_RESET_BUTTON = """重置训练""",
 	TRAINING_FINISH_BUTTON = """结束训练""",
@@ -2634,11 +2758,16 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_TYPE_UPGRADE = """Upgrade""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_TYPE_FOOD = """Food""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_TYPE_RECOVERY = """Recovery""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_POPULATION = """Population""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_TYPE_QUEST_TASK = """Quest task""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_BUILD = """Building""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_WORK = """Estate work""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_TYPE_CHARACTER_FOUND = """Character found""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_ARRIVAL_MANSION = """%s returned to the mansion.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_ARRIVAL_MANSION_LINK = """%s returned to %s.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_ARRIVAL_LOCATION = """%s arrived at %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_AUTOBUY = """%s came back from the market with %s, for %d gold.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_SLEPTROUGH = """Had no place to sleep at: %s.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_CRAFT_COMPLETE = """%s finished crafting %s.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_UPGRADE_COMPLETE = """%s completed the %s upgrade.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_FOOD_DISSATISFIED = """Wasn't satisfied by the food quality""", # MISSING TRANSLATION
@@ -2723,6 +2852,7 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	STATHORNS = """角""",
 	STATWINGS = """翅膀""",
 	STATHEIGHT = """身高""",
+	STATHEAD_SIZE = """Head Size""", # MISSING TRANSLATION
 	STATARMS = """手臂""",
 	STATLEGS = """腿部""",
 	STATPENIS_SIZE = """阴茎尺寸""",
@@ -2756,6 +2886,7 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	STATLIPS = """嘴唇""",
 	STATBODY_COLOR_SKIN = """肤色""",
 	STATBODY_COLOR_LIPS = """唇色""",
+	STATBODY_COLOR_EYEBROWS = """Eyebrows color""", # MISSING TRANSLATION
 	STATBODY_COLOR_WINGS = """翅膀颜色""",
 	STATBODY_COLOR_TAIL = """尾巴颜色""",
 	STATBODY_COLOR_HORNS = """角颜色""",
@@ -4289,6 +4420,7 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	DATING_TEA = """饮茶""",
 	DATING_WINE_DESC_1 = """为你和 [name] 供应葡萄酒（酒精能降低亲密请求的难度，但可能导致昏迷）。[color=yellow]需要 2 份补给。[/color]""",
 	DATING_WINE = """饮酒""",
+	DATING_NEEDS_PRACTICE_ROOM = """The estate has no practice room to drill in.""", # MISSING TRANSLATION
 	DATING_TRAIN_DESC_1 = """进行双人训练。根据体质潜力和剩余时间提升双方的体质。将结束本次邂逅。""",
 	DATING_TRAIN = """训练""",
 	DATING_STUDY_DESC_1 = """进行双人学习。根据智力潜力和剩余时间提升双方的智力。将结束本次邂逅。""",
@@ -5828,10 +5960,17 @@ On Death while affected by burn, explode. Dealing Fire damage to the front-most 
 	BODYPARTHORNSCURVED = """弯角""",
 	BODYPARTEARSHUMAN = """人类耳""",
 	BODYPARTEARSELVEN = """精灵耳""",
+	BODYPARTEARSELVEN2 = """elven""", # MISSING TRANSLATION
+	BODYPARTEARSGOBLIN = """goblin""", # MISSING TRANSLATION
 	BODYPARTEARSORCISH = """兽人耳""",
 	BODYPARTEARSCAT = """猫耳""",
 	BODYPARTEARSWOLF = """狼耳""",
 	BODYPARTEARSFOX = """狐耳""",
+	BODYPARTEARSFOX2 = """fox""", # MISSING TRANSLATION
+	BODYPARTEARSFOX_N1 = """fox""", # MISSING TRANSLATION
+	BODYPARTEARSFOX_N2 = """fox""", # MISSING TRANSLATION
+	BODYPARTEARSFOX_N3 = """fox""", # MISSING TRANSLATION
+	BODYPARTEARSFOX_N4 = """fox""", # MISSING TRANSLATION
 	BODYPARTEARSBUNNY_STANDING = """直立兔耳""",
 	BODYPARTEARSBUNNY_DROOPING = """下垂兔耳""",
 	BODYPARTEARSTANUKI = """狸猫耳""",
@@ -5876,6 +6015,8 @@ On Death while affected by burn, explode. Dealing Fire damage to the front-most 
 	BODYPARTWINGSLEATHER_RED = """红色皮翼""",
 	BODYPARTTAILCAT = """猫尾""",
 	BODYPARTTAILFOX = """狐尾""",
+	BODYPARTTAILFOX_2 = """slender fox""", # MISSING TRANSLATION
+	BODYPARTTAILFOX_3 = """plush fox""", # MISSING TRANSLATION
 	BODYPARTTAILWOLF = """狼尾""",
 	BODYPARTTAILBUNNY = """兔尾""",
 	BODYPARTTAILTANUKI = """狸猫尾""",
@@ -5894,6 +6035,11 @@ On Death while affected by burn, explode. Dealing Fire damage to the front-most 
 	BODYPARTHEIGHTAVERAGE = """中等""",
 	BODYPARTHEIGHTTALL = """高挑""",
 	BODYPARTHEIGHTTOWERING = """高大""",
+	BODYPARTHEAD_SIZETINY = """tiny""", # MISSING TRANSLATION
+	BODYPARTHEAD_SIZESMALL = """small""", # MISSING TRANSLATION
+	BODYPARTHEAD_SIZEAVERAGE = """average""", # MISSING TRANSLATION
+	BODYPARTHEAD_SIZEBIG = """big""", # MISSING TRANSLATION
+	BODYPARTHEAD_SIZEHUGE = """huge""", # MISSING TRANSLATION
 	BODYPARTTITS_SIZEFLAT = """平坦""",
 	BODYPARTTITS_SIZESMALL = """小巧""",
 	BODYPARTTITS_SIZEAVERAGE = """中等""",
@@ -6004,10 +6150,17 @@ BODYPARTANAL_VIRGINTRUEDESCRIPT = """[name] {color=yellow|肛门处微身} 尚�
 	BODYPARTHORNSCURVEDDESCRIPT = """[name]头上盘绕着[color=aqua]弯曲的角[/color]。""",
 	BODYPARTEARSHUMANDESCRIPT = """ """,
 	BODYPARTEARSELVENDESCRIPT = """[name]长着长而笔直的[color=aqua]尖耳朵[/color]。""",
+	BODYPARTEARSELVEN2DESCRIPT = """[He] has straight long [color=aqua]pointed[/color] ears.""", # MISSING TRANSLATION
 	BODYPARTEARSORCISHDESCRIPT = """[name]长着[color=aqua]短小尖锐的耳朵[/color]。""",
+	BODYPARTEARSGOBLINDESCRIPT = """[He] has [color=aqua]stubby pointed[/color] ears.""", # MISSING TRANSLATION
 	BODYPARTEARSCATDESCRIPT = """[name]长着一对灵动的[color=aqua]猫耳[/color]。""",
 	BODYPARTEARSWOLFDESCRIPT = """[name]长着一对短小的[color=aqua]狼耳[/color]。""",
 	BODYPARTEARSFOXDESCRIPT = """[name]长着一对修长而富有表情的[color=aqua]狐耳[/color]。""",
+	BODYPARTEARSFOX2DESCRIPT = """[He] has a pair of long expressive [color=aqua]fox[/color] ears.""", # MISSING TRANSLATION
+	BODYPARTEARSFOX_N1DESCRIPT = """[He] has a pair of long expressive [color=aqua]fox[/color] ears.""", # MISSING TRANSLATION
+	BODYPARTEARSFOX_N2DESCRIPT = """[He] has a pair of long expressive [color=aqua]fox[/color] ears.""", # MISSING TRANSLATION
+	BODYPARTEARSFOX_N3DESCRIPT = """[He] has a pair of long expressive [color=aqua]fox[/color] ears.""", # MISSING TRANSLATION
+	BODYPARTEARSFOX_N4DESCRIPT = """[He] has a pair of long expressive [color=aqua]fox[/color] ears.""", # MISSING TRANSLATION
 	BODYPARTEARSBUNNY_STANDINGDESCRIPT = """[name]的头上长着一对[color=aqua]直立的兔耳[/color]。""",
 	BODYPARTEARSBUNNY_DROOPINGDESCRIPT = """[name]的头上长着一对[color=aqua]下垂的兔耳[/color]。""",
 	BODYPARTEARSTANUKIDESCRIPT = """[name]长着一对圆圆的[color=aqua]狸猫耳朵[/color]。""",
@@ -6052,6 +6205,8 @@ BODYPARTANAL_VIRGINTRUEDESCRIPT = """[name] {color=yellow|肛门处微身} 尚�
 	BODYPARTWINGSLEATHER_REDDESCRIPT = """[name]背部隐藏着一对蝙蝠般的[color=aqua]红色皮质翅膀[/color]。""",
 	BODYPARTTAILCATDESCRIPT = """在[name]腰下，你可以看到一根细长的[color=aqua]猫尾[/color]，上面覆盖着皮毛。""",
 	BODYPARTTAILFOXDESCRIPT = """[name]长着一根硕大且蓬松的[color=aqua]狐尾[/color]。""",
+	BODYPARTTAILFOX_2DESCRIPT = """[He] has a slim, softly curling [color=aqua]fox tail[/color].""", # MISSING TRANSLATION
+	BODYPARTTAILFOX_3DESCRIPT = """[He] has a broad, plush [color=aqua]fox tail[/color].""", # MISSING TRANSLATION
 	BODYPARTTAILWOLFDESCRIPT = """在[name]腰下有一根短小且蓬松的[color=aqua]狼尾[/color]。""",
 	BODYPARTTAILBUNNYDESCRIPT = """[name]的屁股后面有一个[color=aqua]小绒球[/color]。""",
 	BODYPARTTAILTANUKIDESCRIPT = """[name]长着一根圆润、蓬松的[color=aqua]狸猫尾巴[/color]。""",
@@ -6072,6 +6227,11 @@ BODYPARTANAL_VIRGINTRUEDESCRIPT = """[name] {color=yellow|肛门处微身} 尚�
 	BODYPARTHEIGHTAVERAGEDESCRIPT = """[name]身高[color=aqua]适中[/color]。""",
 	BODYPARTHEIGHTTALLDESCRIPT = """与普通人相比，[name]相当[color=aqua]高大[/color]。""",
 	BODYPARTHEIGHTTOWERINGDESCRIPT = """[name]异常高大，[color=aqua]耸立[/color]在他人之上。""",
+	BODYPARTHEAD_SIZETINYDESCRIPT = """[His] head is [color=aqua]strikingly small[/color] for [his] body.""", # MISSING TRANSLATION
+	BODYPARTHEAD_SIZESMALLDESCRIPT = """[His] head is a little [color=aqua]small[/color] for [his] frame.""", # MISSING TRANSLATION
+	BODYPARTHEAD_SIZEAVERAGEDESCRIPT = """[His] head is of [color=aqua]ordinary[/color] size.""", # MISSING TRANSLATION
+	BODYPARTHEAD_SIZEBIGDESCRIPT = """[His] head is somewhat [color=aqua]large[/color] for [his] frame.""", # MISSING TRANSLATION
+	BODYPARTHEAD_SIZEHUGEDESCRIPT = """[His] head is [color=aqua]strikingly large[/color] for [his] body.""", # MISSING TRANSLATION
 	BODYPARTTITS_SIZEFLATDESCRIPT = """[name]胸部几乎看不见，近乎[color=yellow]平坦[/color]。""",
 	BODYPARTTITS_SIZESMALLDESCRIPT = """[name]拥有[color=yellow]小巧[/color]圆润的乳房。""",
 	BODYPARTTITS_SIZEAVERAGEDESCRIPT = """[name]优美且[color=yellow]坚挺[/color]的乳房既紧致又迷人。""",
@@ -10117,6 +10277,7 @@ ACHIBONUS_HELEVIEL_START_DESC = """在拥有赫蕾维尔的情况下开始新游
 	ABORTTUTORIAL = """中止教程""",
 	PROMPTTUTORIAL = """对于初次游玩的玩家，建议通关教程部分以学习基本的操作与机制。""",
 	TUTORIAL_TRAINING1 = """本教程将向你解释管理府邸和角色的基本机制。你的{color=yellow|主人}角色代表你自己，并负责管理其他角色。""",
+	TUTORIAL_TRAINING1_0 = """Everyone living on the estate is listed here. The list is folded down to its bar right now - click the bar to unfold it.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING1_1 = """Click your Master's card to unfold it. The expanded card holds their details, work rules and social skills.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING2 = """让我们先对你的一名部下使用主人的默认技能“导师（Mentor）”。这会增加他们一天内获得的经验值量。""",
 	TUTORIAL_TRAINING3 = """从列表中选择一个角色以完成技能的施放。""",
@@ -10178,7 +10339,41 @@ ACHIBONUS_HELEVIEL_START_DESC = """在拥有赫蕾维尔的情况下开始新游
     TUTORIAL_WORK27_1 = """返回烹饪菜单。""", 
     TUTORIAL_WORK28 = """取消面包烘焙。""", 
     TUTORIAL_WORK29 = """并确认。""",
+	TUTORIAL_WORK_ROOM1 = """The estate came to you half-ruined. Most of its rooms are still buried under rubble, and clearing them out is how the house grows - the plan hands out nothing else.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM1_1 = """The plan of the house is behind the character list. Fold the list away with the handle in its corner - the people with nothing to do wait on the strip under the bar, ready to be picked up and put to work.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM2 = """Click the cluttered room to open its card.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM3 = """Clearing out costs no materials, only time. Start it.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM4 = """Work needs hands. Daisy has none of her own to do - pick her up from the Rest strip.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM5 = """Now put her on the scaffolding. The yellow place with the hammer is where builders stand.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM6 = """Finish the turn so she can put a day's work in.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM7 = """Clearing out takes a set number of turns whoever does it, and a second pair of hands will not hurry it along. Finish another turn.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM8 = """The room is open. Click it again to see what can be built here.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM9 = """Each room does one thing and costs materials to raise. Build a Kitchen - nothing is cooked in this house until there is one.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM10 = """Pick Daisy up again.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM11 = """And put her back on the scaffolding.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM12 = """Building is measured in work rather than in days, so a better builder raises a room sooner. This one is nearly up - finish the turn.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM14 = """The kitchen is standing. Open it.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM15 = """A craft room is where its own orders are given. Open the craft menu from here.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM16 = """The kitchen's own trade is already selected. Choose bread.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM17 = """Confirm.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM18 = """You can adjust the quantity. Add 10 more units.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM19 = """Confirm.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM20 = """Orders queue up rather than replacing one another. Add a second one - meat soup.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM21 = """Confirm.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM22 = """Confirm.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM23 = """Both orders are waiting on the right now. An order can be called off outright - remove the soup.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM24 = """And confirm it.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM25 = """Close the craft window.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM26 = """An order is only a plan until somebody stands in the room to work it. Pick Daisy up.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM27 = """Put her at the kitchen's workplace.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM28 = """Finish the turn. What she baked is listed in the estate log.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM29 = """Not all of the estate's work happens indoors. Open Local Tasks.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM30 = """The grounds carry buildings of their own, and each is worked by its own hands. Pick Aeris up.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM31 = """Put her in the kitchen garden. She will bring in vegetables every turn.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM32 = """Finish the turn. What the grounds bring in is what the kitchen cooks with - that meat soup wanted vegetables.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM33 = """That is the loop the estate runs on: clear a room out, raise something in it, and put people where the work is. Go back to the mansion.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING0 = """说到经验值，让我们来看看另一种获取它的方法。""",
+	TUTORIAL_LEVELING1_0 = """What the estate owns is kept in its store room. Open it.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING1 = """选择“背包”来查看你的财产。""",
 	TUTORIAL_LEVELING2 = """选择你的“主人”作为当前需要管理的角色。""",
 	TUTORIAL_LEVELING3 = """使用一张“知识卷轴”来为你的主人提供一些经验。这是快速提升新角色实力的简便方法。""",
@@ -29656,6 +29851,7 @@ you 警告他最好别耍什么花样，随后将他结结实实地绑好扔在�
 	ACT4_ERDYNA_ELF_CAPITAL_OPT_RETURN = """返回塔伦迪尔家族庄园""",
 	ACT4_ERDYNA_EMPIRE_CAPITAL_OPT_MELCHOR = """询问梅尔乔关于帝国档案记录的事""",
 	ACT4_ERDYNA_EMPIRE_CAPITAL_OPT_GROTUS = """找格罗图斯询问档案记录的事""",
+	ACT4_ERDYNA_EMPIRE_CAPITAL_OPT_ARCHIVE_SEARCH = """Search the Palatine for the archive records""", # MISSING TRANSLATION
 	ACT4_ERDYNA_THALENDIR_HOUSE_NAME = """塔伦迪尔家族庄园""",
 	ACT4_ERDYNA_THALENDIR_HOUSE_DESC = """精灵首都中守卫森严的塔伦迪尔家族庄园""",
 	ACT4_ERDYNA_ARCHIVE_HIDEOUT_NAME = """档案窃贼藏身处""",
@@ -31527,6 +31723,8 @@ Light gathers along the arrowhead, clean and pale, until the metal hums softly i
 	MANSIONROOM_PRACTICE_ROOMDESCRIPT = """1 work slot. Whoever works here gains 3-5 in the chosen stat per turn. Tutoring Area adds a tutor slot: +50% to that gain, and a tutor is required to remove a negative trait.""", # MISSING TRANSLATION
 	MANSIONROOM_MASTERS_OFFICE = """Master's Office""", # MISSING TRANSLATION
 	MANSIONROOM_MASTERS_OFFICEDESCRIPT = """No work slots. Gives everyone on the estate +5% experience.""", # MISSING TRANSLATION
+	MANSIONROOM_FARM = """Farm""", # MISSING TRANSLATION
+	MANSIONROOM_FARMDESCRIPT = """Whoever assigned here produces what their own body allows - milk, eggs and the like - chosen per person.""", # MISSING TRANSLATION
 	MANSIONROOM_FISHING_HUT = """Fishing Hut""", # MISSING TRANSLATION
 	MANSIONROOM_FISHING_HUTDESCRIPT = """1 work slot on the estate's fishing, up to 5 with More Hands.""", # MISSING TRANSLATION
 	MANSIONROOM_GARDEN = """Garden""", # MISSING TRANSLATION
@@ -31539,6 +31737,13 @@ Light gathers along the arrowhead, clean and pale, until the metal hums softly i
 	MANSIONROOM_FORESTRYDESCRIPT = """1 work slot on the estate's timber, up to 5 with Larger Cabin. Rare Woods adds ironwood, then magic wood.""", # MISSING TRANSLATION
 	MANSIONROOM_HUNTING_CABIN = """Hunting Cabin""", # MISSING TRANSLATION
 	MANSIONROOM_HUNTING_CABINDESCRIPT = """1 work slot on the estate's meat, up to 5 with Larger Cabin. Butchery adds leather, then bone.""", # MISSING TRANSLATION
+	MANSIONUPG_FARM_HANDS = """Farm Hands""", # MISSING TRANSLATION
+	MANSIONUPG_FARM_HANDSDESCRIPT = """More work slots at this farm.""", # MISSING TRANSLATION
+	MANSIONUPG_FARM_HANDSBONUS1 = """+1 work slot""", # MISSING TRANSLATION
+	MANSIONUPG_FARM_HANDSBONUS2 = """+2 work slots""", # MISSING TRANSLATION
+	MANSIONUPG_STAIRS_REPAIR = """Repair the Stairs""", # MISSING TRANSLATION
+	MANSIONUPG_STAIRS_REPAIRDESCRIPT = """The staircase is rotted through. Until it is mended the upper floor cannot be reached.""", # MISSING TRANSLATION
+	MANSIONUPG_STAIRS_REPAIRBONUS1 = """Opens the upper floor""", # MISSING TRANSLATION
 	MANSIONUPG_GATHER_HANDS = """More Hands""", # MISSING TRANSLATION
 	MANSIONUPG_GATHER_HANDSDESCRIPT = """More work slots at this building.""", # MISSING TRANSLATION
 	MANSIONUPG_GATHER_HANDSBONUS1 = """+1 work slot""", # MISSING TRANSLATION
@@ -31608,13 +31813,40 @@ Light gathers along the arrowhead, clean and pale, until the metal hums softly i
 	MANSIONUPG_BUILDERSDESCRIPT = """Adds a builder slot to this room's construction and upgrades.""", # MISSING TRANSLATION
 	MANSIONUPG_BUILDERSBONUS1 = """+1 builder""", # MISSING TRANSLATION
 	MANSIONVIEW_REST = """Idle""", # MISSING TRANSLATION
+	MANSIONVIEW_ATWORK = """At work""", # MISSING TRANSLATION
+	MANSIONVIEW_HOUSEALL = """Bed them down""", # MISSING TRANSLATION
+	MANSIONVIEW_HOUSEALLDONE = """%d found a bed.""", # MISSING TRANSLATION
+	MANSIONVIEW_HOUSEALLNONE = """There is nowhere left to put them.""", # MISSING TRANSLATION
 	MANSIONVIEW_UNHOUSED = """Without a bed""", # MISSING TRANSLATION
 	MANSIONVIEW_ROOMSBUILT = """Rooms""", # MISSING TRANSLATION
 	MANSIONVIEW_BEDS = """Beds""", # MISSING TRANSLATION
 	MANSIONVIEW_WORKPLACES = """Work slots""", # MISSING TRANSLATION
 	MANSIONVIEW_POPULATION = """People""", # MISSING TRANSLATION
+	MANSIONVIEW_STORAGELIMIT = """Holds %d of each material.""", # MISSING TRANSLATION
 	MANSIONVIEW_UPKEEP = """Upkeep""", # MISSING TRANSLATION
+	MANSIONVIEW_STAIRSBROKEN = """The staircase is rotted through. It has to be repaired before anyone can go up.""", # MISSING TRANSLATION
+	MANSIONFIND_GOLD = """The last of the wreckage comes away from the wall, and something goes over with it - a purse, stiff with age, wedged behind a loose board. Whoever put it there never came back for it.""", # MISSING TRANSLATION
+	MANSIONFIND_MATERIALS = """Half of what filled the room turns out to be worth keeping. The beams are sound under the dust, and the fallen masonry is good cut stone. It is carried out to the stores rather than to the yard.""", # MISSING TRANSLATION
+	MANSIONFIND_SWORD = """Propped in the corner, under everything else that came down on it, a sword. The leather has perished off the grip, but the steel took none of it - it comes up clean.""", # MISSING TRANSLATION
+	MANSIONFIND_GOGGLES = """A workbench comes out of the corner in pieces, and what stood on it goes over with the rest - files, a cracked lens, and a pair of goggles that landed under all of it and took none of the damage. Brass, gnome-made, and sized for a face narrower than yours. Somebody up here used to make things.""", # MISSING TRANSLATION
+	MANSIONVIEW_FIND_GOLD = """Under the rubble, a purse nobody came back for: 50 gold.""", # MISSING TRANSLATION
+	MANSIONVIEW_FIND_MATERIALS = """The wreckage is worth keeping: 20 wood and 10 stone salvaged.""", # MISSING TRANSLATION
+	MANSIONVIEW_FIND_SWORD = """A steel sword was propped against the far wall, still sound.""", # MISSING TRANSLATION
 	MANSIONVIEW_EMPTYSLOT = """Free""", # MISSING TRANSLATION
+	MANSIONVIEW_TUTORSLOT = """Tutor""", # MISSING TRANSLATION
+	MANSIONVIEW_PRACTICEHEADER = """Practising""", # MISSING TRANSLATION
+	TRAITCORRECTION = """Being corrected: %d%%""", # MISSING TRANSLATION
+	MANSIONVIEW_PRACTICECORRECT = """Correct behavior""", # MISSING TRANSLATION
+	MANSIONVIEW_PRACTICECORRECTHINT = """Each pupil is worked on the first bad habit they have:""", # MISSING TRANSLATION
+	MANSIONVIEW_PRACTICENOTUTOR = """A habit is only worked out with a tutor in the room.""", # MISSING TRANSLATION
+	MANSIONVIEW_PRACTICENOHABITS = """Nobody here has a habit to be rid of""", # MISSING TRANSLATION
+	MANSIONUPG_TRAINING_SPACE = """Training Space""", # MISSING TRANSLATION
+	MANSIONUPG_TRAINING_SPACEDESCRIPT = """Room for more pupils at a time.""", # MISSING TRANSLATION
+	MANSIONUPG_TRAINING_SPACEBONUS1 = """+1 work slot""", # MISSING TRANSLATION
+	MANSIONUPG_TRAINING_SPACEBONUS2 = """+2 work slots""", # MISSING TRANSLATION
+	MANSIONVIEW_TUTORHINT = """Only somebody who can teach may stand here.""", # MISSING TRANSLATION
+	MANSIONVIEW_MASTERBED = """Master's bed""", # MISSING TRANSLATION
+	MANSIONVIEW_NIGHTCOMPANIONS = """Night companions""", # MISSING TRANSLATION
 	MANSIONVIEW_NOSLOTS = """No slots""", # MISSING TRANSLATION
 	MANSIONVIEW_EVICTHINT = """Click to take them out of this slot.""", # MISSING TRANSLATION
 	MANSIONVIEW_NOCANDIDATES = """Nobody available""", # MISSING TRANSLATION
@@ -31626,11 +31858,42 @@ Light gathers along the arrowhead, clean and pale, until the metal hums softly i
 	MANSIONVIEW_BROKEN = """Damaged""", # MISSING TRANSLATION
 	MANSIONVIEW_BROKENHINT = """This part of the mansion is derelict. It has to be cleared out before anything can be built here.""", # MISSING TRANSLATION
 	MANSIONVIEW_REPAIR = """Clear out""", # MISSING TRANSLATION
+	MANSIONVIEW_TASK_CLEARGROUND = """Clearing the ground floor""", # MISSING TRANSLATION
+	MANSIONVIEW_TASK_CLEARUPPER = """Clearing the upper floor""", # MISSING TRANSLATION
+	MANSIONVIEW_TURNSLEFT = """%s turns left""", # MISSING TRANSLATION
 	MANSIONVIEW_AWAY = """away""", # MISSING TRANSLATION
 	MANSIONVIEW_AWAYHINT = """Away from the mansion. They keep this slot and return to it.""", # MISSING TRANSLATION
 	MANSIONVIEW_NOBEDHINT = """Has nowhere to sleep.""", # MISSING TRANSLATION
 	MANSIONVIEW_EXPELCONFIRM = """Let %s go for good?""", # MISSING TRANSLATION
 	MANSIONVIEW_MOVE = """Move room""", # MISSING TRANSLATION
+	MANSIONVIEW_CRAFT = """Open craft menu""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOBUY_BUTTON = """Market Restock""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOBUY_TITLE = """Market Restock""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOBUY_EXPLAIN = """Every morning, the clerk buys enough to bring each stock up to its set level.""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOBUY_CLERK = """%s pays %d%% of the market's asking price.""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOBUY_NOCLERK = """Nobody is at the desk. The orders are kept, but nothing will be bought.""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOBUY_ITEM = """Stock""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOBUY_HELD = """Held""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOBUY_LEVEL = """Keep at least""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOBUY_PRICE = """Unit price""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOBUY_EACH = """%d gold""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOBUY_REMOVE = """Remove""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOBUY_EMPTY = """No standing orders have been left.""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOBUY_ADD_TITLE = """Add a standing order""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOBUY_ADD = """Add order""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOBUY_NOTHING_TO_ADD = """No owned stock available""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOSELL_BUTTON = """Standing sales""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOSELL_TITLE = """Market standing sales""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOSELL_EXPLAIN = """Anything held above its set level will be offered to the market.""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOSELL_NOT_IN_USE = """Standing sales are not in use yet.""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOSELL_ITEM = """Stock""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOSELL_HELD = """Held""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOSELL_LEVEL = """Sell above""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOSELL_PRICE = """Unit price""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOSELL_EMPTY = """No standing sales have been arranged.""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOSELL_ADD_TITLE = """Add a standing sale""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOSELL_UNAVAILABLE = """Not available yet""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOSELL_ADD = """Add sale""", # MISSING TRANSLATION
 	MANSIONVIEW_MOVEHINT = """Pick where it goes""", # MISSING TRANSLATION
 	MANSIONVIEW_PICKHINT = """Drag them, or click to pick them up.""", # MISSING TRANSLATION
 	MANSIONVIEW_PUTBACKHINT = """In hand. Click again to set them back down.""", # MISSING TRANSLATION
@@ -31640,19 +31903,29 @@ Light gathers along the arrowhead, clean and pale, until the metal hums softly i
 	MANSIONVIEW_REMAINING = """Left""", # MISSING TRANSLATION
 	MANSIONVIEW_WORKERS = """Working""", # MISSING TRANSLATION
 	MANSIONVIEW_YIELDS = """Yields:""", # MISSING TRANSLATION
+	MANSIONVIEW_MAKINGNOW = """On the bench""", # MISSING TRANSLATION
 	MANSIONVIEW_ROOMYIELDS = """Building yields""", # MISSING TRANSLATION
 	MANSIONVIEW_YIELDCHANCE = """%d%%""", # MISSING TRANSLATION
 	MANSIONVIEW_PERTURN = """Per turn""", # MISSING TRANSLATION
+	MANSIONVIEW_PERDAY = """Per day""", # MISSING TRANSLATION
 	MANSIONVIEW_NOTHINGHERE = """There is nothing to do here.""", # MISSING TRANSLATION
 	MANSIONVIEW_BUILDING = """Raising""", # MISSING TRANSLATION
 	MANSIONVIEW_CLEARINGOUT = """Clearing out""", # MISSING TRANSLATION
 	MANSIONVIEW_UPGRADING = """Upgrading""", # MISSING TRANSLATION
 	MANSIONVIEW_BUILDINGHINT = """Put somebody in the scaffolding and it will go up on its own.""", # MISSING TRANSLATION
 	MANSIONVIEW_PROGRESS = """Progress""", # MISSING TRANSLATION
+	MANSIONVIEW_SALVAGE = """Salvage gear""", # MISSING TRANSLATION
+	MANSIONVIEW_UPGRADELOCKED = """The workers' guild teaches this. Buy it there first.""", # MISSING TRANSLATION
+	MANSIONUPG_SALVAGE_BENCH = """Salvage bench""", # MISSING TRANSLATION
+	MANSIONUPG_SALVAGE_BENCHDESCRIPT = """A bench for taking worn gear apart. Needs what the workers' guild teaches before it can be built.""", # MISSING TRANSLATION
+	MANSIONUPG_SALVAGE_BENCHBONUS1 = """Gear can be taken apart here""", # MISSING TRANSLATION
+	MANSIONVIEW_WORKCOST = """Work Units""", # MISSING TRANSLATION
+	MANSIONVIEW_BUILDERS = """Builders""", # MISSING TRANSLATION
 	MANSIONVIEW_DAYSLEFT = """About %d days left""", # MISSING TRANSLATION
 	MANSIONVIEW_NOBUILDER = """Nobody is building this""", # MISSING TRANSLATION
 	MANSIONVIEW_WORKUNITS = """Work needed: %d""", # MISSING TRANSLATION
 	MANSIONVIEW_CANCELBUILD = """Cancel and refund""", # MISSING TRANSLATION
+	MANSIONVIEW_DEMOLISHCONFIRM = """Tear down the %s?""", # MISSING TRANSLATION
 	MANSIONVIEW_CANCELCONFIRM = """Stop this work and take the materials back?""", # MISSING TRANSLATION
 	MANSIONVIEW_MAXED = """at its best""", # MISSING TRANSLATION
 	MANSIONVIEW_NOW = """Now""", # MISSING TRANSLATION
@@ -31677,13 +31950,22 @@ Light gathers along the arrowhead, clean and pale, until the metal hums softly i
 	MANSIONVIEW_ERR_NOTRAINER = """Slaves only work while a trainer is watching them, and this one has none. Assign a trainer on their character sheet.""", # MISSING TRANSLATION
 	MANSIONVIEW_ERR_FIXEDROOM = """The staircase is part of the house itself.""", # MISSING TRANSLATION
 	MANSIONVIEW_SWAPHINT = """Drop here and they swap slots.""", # MISSING TRANSLATION
+	MANSIONVIEW_TESTQUESTAWAY = """Word From The Road""", # MISSING TRANSLATION
+	MANSIONVIEW_TESTQUESTAWAYDESCRIPT = """Somebody out of town has been asking after the estate.""", # MISSING TRANSLATION
+	MANSIONVIEW_TESTQUEST = """Ledger of Old Debts""", # MISSING TRANSLATION
+	MANSIONVIEW_TESTQUESTDESCRIPT = """Someone must go through the ledgers the previous owner left behind.""", # MISSING TRANSLATION
 	MANSIONVIEW_LOCALTASKS = """Local tasks""", # MISSING TRANSLATION
+	MANSIONVIEW_MODEWORK = """Work""", # MISSING TRANSLATION
+	MANSIONVIEW_SCOPEMANSION = """Mansion""", # MISSING TRANSLATION
+	MANSIONVIEW_MODEBEDS = """Beds""", # MISSING TRANSLATION
 	MANSIONVIEW_LOCALTASKSHINT = """The work the estate itself offers: quests waiting, the buildings on its grounds, and the service trade.""", # MISSING TRANSLATION
 	MANSIONVIEW_LOCALUPGRADEHINT = """Room for an improvement to the estate's own trade. None are available yet.""", # MISSING TRANSLATION
 	MANSIONVIEW_SERVICEOPENHINT = """Click to see who is on service and what they are allowed to do.""", # MISSING TRANSLATION
 	MANSIONVIEW_SERVICETITLE = """Service""", # MISSING TRANSLATION
 	MANSIONVIEW_TASKASSIGNED = """On this work""", # MISSING TRANSLATION
 	MANSIONVIEW_TASKEMPTY = """Nobody is on this yet. Click a name on the right to put them on it.""", # MISSING TRANSLATION
+	MANSIONVIEW_ADDFREE = """Add free character""", # MISSING TRANSLATION
+	MANSIONVIEW_HIDEFREE = """Hide the free ones""", # MISSING TRANSLATION
 	MANSIONVIEW_TASKADDHINT = """Click to put them on this work.""", # MISSING TRANSLATION
 	MANSIONVIEW_TASKREMOVEHINT = """Click to take them off this work.""", # MISSING TRANSLATION
 	MANSIONVIEW_SERVICEEARNS = """%s gold/turn""", # MISSING TRANSLATION
@@ -31696,6 +31978,8 @@ Light gathers along the arrowhead, clean and pale, until the metal hums softly i
 	MANSIONVIEW_ERR_MASTERBED = """That bed is yours alone.""", # MISSING TRANSLATION
 	MANSIONVIEW_ERR_NOCONSENT = """They have not agreed to share your bed.""", # MISSING TRANSLATION
 	SLEEPDEMANDUNMET = """Used to better lodgings than these. Wants a private room, or the master's own bed.""", # MISSING TRANSLATION
+	SLEPTROUGH = """Slept on the floor. -66% productivity, no natural mana regen, lowered health recovered.""", # MISSING TRANSLATION
+	MANSIONVIEW_NOBEDWARNING = """Some of them have no bed. They will sleep on the floor and suffer due to it.""", # MISSING TRANSLATION
 	MANSIONVIEW_TRAITREMOVED = """%s is rid of %s.""", # MISSING TRANSLATION
 	MANSIONROOM_RITUAL_ROOM = """Ritual Room""", # MISSING TRANSLATION
 	MANSIONROOM_RITUAL_ROOMDESCRIPT = """No work slots. Lets the estate enchant gear. Only one can be built.""", # MISSING TRANSLATION
@@ -31707,6 +31991,9 @@ Light gathers along the arrowhead, clean and pale, until the metal hums softly i
 	MANSIONUPG_SHELVESBONUS2 = """Holds 1000 of each""", # MISSING TRANSLATION
 	MANSIONUPG_SHELVESBONUS3 = """Holds 5000 of each""", # MISSING TRANSLATION
 	MANSIONUPG_SHELVESBONUS4 = """Holds 20000 of each""", # MISSING TRANSLATION
+	MANSIONUPG_PURCHASE_LEDGER = """Purchase Ledger""", # MISSING TRANSLATION
+	MANSIONUPG_PURCHASE_LEDGERDESCRIPT = """Lets the clerk keep standing orders with the market and buy what the estate is short of each morning.""", # MISSING TRANSLATION
+	MANSIONUPG_PURCHASE_LEDGERBONUS1 = """Standing orders with the market""", # MISSING TRANSLATION
 	MANSIONUPG_ACCOUNTANT = """Accountant""", # MISSING TRANSLATION
 	MANSIONUPG_ACCOUNTANTDESCRIPT = """Adds a work slot. With somebody in it, deliveries over the limit are sold at market price instead of being lost.""", # MISSING TRANSLATION
 	MANSIONUPG_ACCOUNTANTBONUS1 = """+1 work slot, and overflow is sold rather than lost""", # MISSING TRANSLATION
@@ -31714,6 +32001,11 @@ Light gathers along the arrowhead, clean and pale, until the metal hums softly i
 	MANSIONVIEW_EMPTYPLOT = """Empty plot""", # MISSING TRANSLATION
 	MANSIONVIEW_ORDERHEADER = """Order of work""", # MISSING TRANSLATION
 	MANSIONVIEW_NOORDERS = """The estate has nothing queued for this trade""", # MISSING TRANSLATION
+	MANSIONVIEW_FARMHEADER = """%s produces (%d/%d)""", # MISSING TRANSLATION
+	MANSIONVIEW_FARMHEADEREMPTY = """Nobody is working the farms""", # MISSING TRANSLATION
+	MANSIONVIEW_FARMPICKHINT = """Click to set what they produce.""", # MISSING TRANSLATION
+	MANSIONVIEW_FARMNOTHING = """Their body yields nothing the estate can collect""", # MISSING TRANSLATION
+	MANSIONVIEW_FARMLEAVE = """Take %s off the farms""", # MISSING TRANSLATION
 	MANSIONVIEW_ERR_MASTERROOM = """You will not tear down your own room.""", # MISSING TRANSLATION
 	MANSIONVIEW_ERR_MASTERPINNED = """You sleep in your own room and nowhere else.""", # MISSING TRANSLATION
 	MANSIONVIEW_ERR_MASTEREXPEL = """You cannot let yourself go.""", # MISSING TRANSLATION
@@ -31748,14 +32040,19 @@ Light gathers along the arrowhead, clean and pale, until the metal hums softly i
 	DOLL2_PREVIEW_HEAD = """Head""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_FACE = """Face""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_EYES = """Eyes""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_EYES_EFFECT = """Eye effect""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_BLUSH = """Blush""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_EYEBROWS = """Eyebrows""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_NOSE = """Nose""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_LIPS = """Lips""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_EARS = """Ears""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HAIR = """Hair""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_HAIR_BASE = """Hair base""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_HAIR_BACK = """Hair back""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_FRINGE = """Fringe""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_HAIR_ACCESSORY = """Hair accessory""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_BEARD = """Beard""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_LEGS = """Legs""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_HORNS = """Horns""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_WINGS = """Wings""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_TAILS = """Tail""", # MISSING TRANSLATION
@@ -31764,6 +32061,8 @@ Light gathers along the arrowhead, clean and pale, until the metal hums softly i
 	DOLL2_PREVIEW_FACE_MARKINGS = """Face markings""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_GENITALS = """Genitals""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_TATTOO = """Tattoo""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_OUTFIT_LEGS = """Outfit: legs""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_OUTFIT_HANDS = """Outfit: hands""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_OUTFIT = """Outfit""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_COLLAR = """Collar""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_HEADGEAR = """Head gear""", # MISSING TRANSLATION
@@ -31773,20 +32072,146 @@ Light gathers along the arrowhead, clean and pale, until the metal hums softly i
 	DOLL2_PREVIEW_BREAST_SIZE = """Breast size""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_PREGNANCY = """Pregnancy""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_HAND_POSE = """Hand pose""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_BODY_SHAPE = """Body shape""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_BELLY_SHAPE = """Belly shape""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_DOLL = """Doll""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_DOLL_FEMALE = """Female""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_DOLL_MALE = """Male""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_MANY_TITS = """Extra nipples""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_POSE_DEFAULT = """Setup pose""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BASE_BACK = """Swept back""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BASE_BRAIDS = """Cornrows""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BASE_DEFAULT = """Centre parted""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BASE_FRINGE = """Side fringe""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BASE_FRINGE_2 = """Crown braid""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BASE_KARE = """Bob cut""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BASE_PARTING = """Layered""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BASE_SLAVE = """Scraped back""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BASE_STRAIGHT = """Long straight""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BASE_UNDERCUT = """Undercut""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIRS_BASE_DOPPLE = """Curtains""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BACK_CARE = """Chin length""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BACK_DOUBLE_TAIL_LONG = """Long twin tails""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BACK_PONYTAIL_LONG = """Long ponytail""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BACK_STRAIGHT = """Straight""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BACK_VERYLONG1 = """Floor length""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BACK_WAWE = """Waves""", # MISSING TRANSLATION
+	DOLL2_STYLE_BRAID = """Braid""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_ASSIST_TWIN_TAILS = """Twin tails""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_ASSIST_TWIN_TAILS_2 = """Short bunches""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_SPIRAL = """Ringlets""", # MISSING TRANSLATION
+	DOLL2_STYLE_PIGTAILS = """Pigtails""", # MISSING TRANSLATION
+	DOLL2_STYLE_PONYTAIL = """Ponytail""", # MISSING TRANSLATION
+	DOLL2_STYLE_TWIN_BRAIDS = """Twin braids""", # MISSING TRANSLATION
+	DOLL2_STYLE_TWIN_TAILS_3 = """Tufts""", # MISSING TRANSLATION
+	DOLL2_STYLE_BEARD6 = """Stubble""", # MISSING TRANSLATION
+	DOLL2_STYLE_BEARD7 = """Moustache""", # MISSING TRANSLATION
+	DOLL2_STYLE_BEARD8 = """Sideburns""", # MISSING TRANSLATION
+	DOLL2_STYLE_BEARD9 = """Goatee""", # MISSING TRANSLATION
+	DOLL2_STYLE_BEARD_MOUSTACHE1 = """Braided beard""", # MISSING TRANSLATION
+	DOLL2_STYLE_BEARD_MOUSTACHE2 = """Full beard""", # MISSING TRANSLATION
+	DOLL2_STYLE_BEARD_MOUSTACHE3 = """Long braided beard""", # MISSING TRANSLATION
+	DOLL2_STYLE_BEARD_MOUSTACHE4 = """Bushy beard""", # MISSING TRANSLATION
+	DOLL2_STYLE_MOUSTACHE1 = """Braided goatee""", # MISSING TRANSLATION
+	DOLL2_STYLE_MOUSTACHE2 = """Drooping moustache""", # MISSING TRANSLATION
+	DOLL2_STYLE_MOUSTACHE3 = """Chin braid""", # MISSING TRANSLATION
+	DOLL2_STYLE_MOUSTACHE4 = """Handlebar moustache""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_HEAD_SIZE = """Head size""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_HEIGHT = """Height""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_TINT_HINT = """Colour for this part. White keeps the original art.""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_TINT_TIPS_HINT = """Second hair colour, blended towards the tips. White uses the first colour everywhere.""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_BLINK = """Blink""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HAIR_LENGTH = """Hair length""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_FRINGE_LENGTH = """Fringe length""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_HAIR_BACK_LENGTH = """Back hair length""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_ASSIST_LENGTH = """Accessory length""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_BUILD = """Build""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_WAIST = """Waist""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_SHOULDERS = """Shoulders""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_ARM_THICKNESS = """Arms""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_LEG_THICKNESS = """Legs""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_BUTT_SIZE = """Butt size""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_BREAST_SCALE = """Breast scale""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_BREAST_HEIGHT = """Breast height""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_DICK_SIZE = """Penis size""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_BALLS_SIZE = """Balls size""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_EYES_WIDTH = """Eye spacing""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_EYES_HEIGHT = """Eye height""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_EYES_SCALE = """Eye scale""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_BROW_WIDTH = """Brow spacing""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_BROW_HEIGHT = """Brow height""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_BROW_SCALE = """Brow scale""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_PUPIL_HEIGHT = """Pupil height""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_PUPIL_SCALE = """Pupil scale""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_NOSE_HEIGHT = """Nose height""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_NOSE_SCALE = """Nose scale""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_LIPS_HEIGHT = """Lip height""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_LIPS_SCALE = """Lip scale""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_WAIST_WIDTH = """Waist width""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_WAIST_HEIGHT = """Waist height""", # MISSING TRANSLATION
+	DOLL2_CUSTOMIZE_MENU = """Customize""", # MISSING TRANSLATION
+	DOLL2_HAIR_MENU = """Hair""", # MISSING TRANSLATION
+	DOLL2_HAIR_STYLE = """Hair""", # MISSING TRANSLATION
+	DOLL2_HAIR_LENGTH = """Length""", # MISSING TRANSLATION
+	DOLL2_HAIR_BACK = """Back hair""", # MISSING TRANSLATION
+	DOLL2_HAIR_ASSIST = """Extra hair""", # MISSING TRANSLATION
+	DOLL2_HAIR_TONE_ROOTS = """roots""", # MISSING TRANSLATION
+	DOLL2_HAIR_TONE_TIPS = """tips""", # MISSING TRANSLATION
+	DOLL2_HAIR_NONE = """none""", # MISSING TRANSLATION
+	DOLL2_HAIR_COLOUR = """Hair colour""", # MISSING TRANSLATION
+	DOLL2_BEARD_STYLE = """Beard""", # MISSING TRANSLATION
+	DOLL2_BEARD_COLOUR = """Beard colour""", # MISSING TRANSLATION
+	DOLL2_EYEBROWS_COLOUR = """Eyebrows""", # MISSING TRANSLATION
+	DOLL2_LIPS_COLOUR = """Lips""", # MISSING TRANSLATION
+	DOLL2_GEAR_UNDERWEAR = """Underwear""", # MISSING TRANSLATION
+	DOLL2_GEAR_OUTFIT = """Clothing""", # MISSING TRANSLATION
+	DOLL2_GEAR_HALF_TOP = """top""", # MISSING TRANSLATION
+	DOLL2_GEAR_HALF_BOTTOM = """bottom""", # MISSING TRANSLATION
+	DOLL2_GEAR_COLLAR = """Collar""", # MISSING TRANSLATION
+	DOLL2_GEAR_HEADGEAR = """Headgear""", # MISSING TRANSLATION
+	DOLL2_GEAR_WEAPON = """Weapon""", # MISSING TRANSLATION
+	DOLL2_GEAR_ZONE_MAIN = """Main material of the piece. Gear art is coded by hue, so each band is painted on its own.""", # MISSING TRANSLATION
+	DOLL2_GEAR_ZONE_SECOND = """Second material of the piece.""", # MISSING TRANSLATION
+	DOLL2_GEAR_ZONE_TRIM = """Trim of the piece.""", # MISSING TRANSLATION
+	CHARCREATE_MENU_HAIR = """Hair""", # MISSING TRANSLATION
+	CHARCREATE_MENU_HAIR_BACK = """Back hair""", # MISSING TRANSLATION
+	CHARCREATE_MENU_HAIR_EXTRA = """Extra hair""", # MISSING TRANSLATION
+	CHARCREATE_MENU_BEARD = """Beard""", # MISSING TRANSLATION
+	CHARCREATE_MENU_EYE_SHAPE = """Eye shape""", # MISSING TRANSLATION
+	CHARCREATE_MENU_EYEBROWS = """Eyebrows""", # MISSING TRANSLATION
+	CHARCREATE_MENU_NOSE = """Nose""", # MISSING TRANSLATION
+	CHARCREATE_MENU_LIPS = """Lips""", # MISSING TRANSLATION
+	CHARCREATE_MENU_EARS = """Ears""", # MISSING TRANSLATION
+	CHARCREATE_MENU_TAIL = """Tail""", # MISSING TRANSLATION
+	CHARCREATE_MENU_EYES = """Eyes""", # MISSING TRANSLATION
+	CHARCREATE_MENU_CHIN = """Chin""", # MISSING TRANSLATION
+	CHARCREATE_MENU_HORNS = """Horns""", # MISSING TRANSLATION
+	CHARCREATE_MENU_COVERAGE = """Fur and scales""", # MISSING TRANSLATION
+	COVERAGE_FUR_ORANGE = """Orange fur""", # MISSING TRANSLATION
+	COVERAGE_FUR_ORANGE_WHITE = """Orange and white fur""", # MISSING TRANSLATION
+	COVERAGE_FUR_WHITE = """White fur""", # MISSING TRANSLATION
+	COVERAGE_FUR_GREY = """Grey fur""", # MISSING TRANSLATION
+	COVERAGE_FUR_BROWN = """Brown fur""", # MISSING TRANSLATION
+	COVERAGE_FUR_BLACK = """Black fur""", # MISSING TRANSLATION
+	COVERAGE_FUR_STRIPED = """Striped fur""", # MISSING TRANSLATION
+	COVERAGE_FUR_TRICOLOR = """Tricolour fur""", # MISSING TRANSLATION
+	COVERAGE_KOBOLD = """Kobold scales""", # MISSING TRANSLATION
+	COVERAGE_KOBOLD_SPOTS = """Spotted kobold scales""", # MISSING TRANSLATION
+	COVERAGE_SCALE = """Scales""", # MISSING TRANSLATION
+	COVERAGE_SCALE2 = """Scales, second pattern""", # MISSING TRANSLATION
+	COVERAGE_SCALE3 = """Scales, third pattern""", # MISSING TRANSLATION
+	COVERAGE_PLANT = """Bark and leaves""", # MISSING TRANSLATION
+	COVERAGE_FEATHERS = """Feathers""", # MISSING TRANSLATION
+	CHARCREATE_MENU_FACE_PARTS = """Face details""", # MISSING TRANSLATION
+	DOLL2_UNDRESS = """Undress""", # MISSING TRANSLATION
+	DOLL2_UNDRESS_DRESSED = """Dressed""", # MISSING TRANSLATION
+	DOLL2_UNDRESS_UNDERWEAR = """Underwear""", # MISSING TRANSLATION
+	DOLL2_UNDRESS_BARE = """Bare""", # MISSING TRANSLATION
+	DOLL2_UNDRESS_NAKED = """Naked""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_HIPS = """Hips""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_COVERAGE = """Fur / scales""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_COVERAGE_HINT = """Colour of one layer of the pattern. The masks come from the old paperdoll and are painted over the body.""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_SWATCHES = """%d swatches under the wheel, in order: %s""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_ZONE_HINT = """Material colour. Gear art is coded by hue: the three pickers are its main, second and trim materials.""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_SKIN_TINT = """Skin tint""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_HAIR_TINT = """Hair tint""", # MISSING TRANSLATION

@@ -241,7 +241,7 @@ func _ready():
 	globals.connecttexttooltip(ExpandedNameEditButton, tr("NICKNAME_BUTTON_TEXT"))
 	hotkeys.connect("bindings_changed", self, "_build_expanded_info_tooltip")
 	_build_expanded_info_tooltip()
-	set_process_input(false)
+	_sync_input_listening()
 	set_process(false)
 	_initialize_entry_templates()
 	_select_slave_container()
@@ -288,7 +288,74 @@ func _tutorial_blocks_rmb():
 	return !input_handler.hard_tutorial.is_RMB_pass()
 
 
+#Listening is armed while there is something of ours to put away: the unfolded list, or a card
+#expanded over it. Folded with no card open, this module hears nothing at all - it leaves no
+#catcher behind and eats nobody else's clicks.
+func _sync_input_listening():
+	set_process_input(expanded_card != null or list_fold_state == FOLD_FULL)
+
+
+#A click anywhere that is not ours folds the list away, the way a menu closes when you look
+#elsewhere. This runs before the GUI is dispatched, so the click that dismissed us is swallowed
+#rather than also landing on the room behind - one gesture, one result.
+func _should_dismiss(event):
+	if !(event is InputEventMouseButton) or !event.pressed:
+		return false
+	if event.button_index != BUTTON_LEFT:
+		return false
+	if list_fold_state != FOLD_FULL:
+		return false
+	#a character dragged out of the list is let go somewhere else on purpose
+	if get_viewport().gui_is_dragging():
+		return false
+	#the lesson decides what may be pressed while it is running, and the other screens raise
+	#their own panels over this one
+	if input_handler.hard_tutorial_active:
+		return false
+	if get_parent().get("mansion_state") != null and get_parent().mansion_state != "default":
+		return false
+	return !_click_is_inside(event.position)
+
+
+#Ours is the list's own rectangle plus whatever it opened that does not live inside it: the sort
+#menu stands as a top level node, and the two character popups are siblings raised over the
+#screen. Tooltips need no case of their own - one only exists while the pointer is inside the
+#node that owns it, so a click over a tooltip is a click inside that node.
+func _click_is_inside(position):
+	if get_global_rect().has_point(position):
+		return true
+	if is_instance_valid(SortMenu) and SortMenu.visible 			and SortMenu.get_global_rect().has_point(position):
+		return true
+	#The expanded card's body preview is authored wider than this module and hangs past its right
+	#edge - the doll's own buttons, which sit 156px inside the doll's right side, land out there.
+	#Measured against this module's rectangle alone they read as a click on the mansion, and the
+	#dismissal swallowed the press that was meant to undress the character. The preview widens
+	#again while the Customize menu is open, and this rect grows with it.
+	if is_instance_valid(ExpandedBodyPreview) and ExpandedBodyPreview.visible 			and ExpandedBodyPreview.get_global_rect().has_point(position):
+		return true
+	for name in ['CharacterProgressionPopup', 'CharacterTrainingPopup']:
+		var popup = get_parent().get_node_or_null(name)
+		if popup != null and popup.visible and popup is Control:
+			if popup.get_global_rect().has_point(position):
+				return true
+	return false
+
+
+func _dismiss_by_outside_click():
+	if expanded_card != null:
+		close_expanded_character()
+	if is_instance_valid(SortMenu) and SortMenu.visible:
+		SortMenu.hide()
+	#never the toggle: closing an expanded card puts back the fold it was opened from, and a
+	#toggle would open the list again on the way out
+	set_slave_list_fold(FOLD_FOLDED, true, true)
+
+
 func _input(event):
+	if _should_dismiss(event):
+		_dismiss_by_outside_click()
+		get_viewport().set_input_as_handled()
+		return
 	if expanded_card == null or !(event is InputEventMouseButton):
 		return
 	if event.button_index == BUTTON_RIGHT and _tutorial_blocks_rmb():
@@ -395,7 +462,7 @@ func open_expanded_character(card):
 	ExpandedCharacter.rect_size = expanded_origin_rect.size
 	ExpandedCharacter.show()
 	ExpandedCharacter.raise()
-	set_process_input(true)
+	_sync_input_listening()
 	expanded_animation_state = "opening"
 	expanded_build_person = person
 	ExpandedDetails.prepare_expanded_person(person)
@@ -446,7 +513,7 @@ func _close_expanded_character_immediate():
 	expanded_build_stage = -1
 	expanded_build_person = null
 	set_process(false)
-	set_process_input(false)
+	_sync_input_listening()
 
 
 func _play_expanded_geometry(target_rect):
@@ -480,7 +547,7 @@ func _on_expanded_animation_finished():
 	ExpandedExtra.hide()
 	ExpandedExtra.modulate.a = 0.0
 	expanded_animation_state = ""
-	set_process_input(false)
+	_sync_input_listening()
 	var next_card = expanded_pending_card
 	expanded_pending_card = null
 	if is_instance_valid(next_card) and next_card.get_parent() == CardContainer:
@@ -1101,6 +1168,8 @@ func set_slave_list_fold(state, animated = true, remembered = false):
 	list_fold_state = state
 	if remembered:
 		list_preferred_fold = state
+	#unfolded, the list watches for the click that puts it away again; folded, it stops watching
+	_sync_input_listening()
 	ListFoldTween.stop_all()
 	ListFoldTween.remove_all()
 	rect_clip_content = true
@@ -1229,6 +1298,29 @@ func OpenJobModule(person = null):
 	get_parent().remove_hovered_person()
 	get_parent().mansion_state_set("occupation")
 	get_parent().get_node("MansionJobModule2").focus_on_person_task(person)
+
+
+#Unfolding the list on one character: what the player would do by opening the list and pressing
+#their card, in one step, for a menu opened somewhere else on the screen.
+func unfold_to_person(person):
+	if person == null:
+		return false
+	set_slave_list_fold(FOLD_FULL, true, true)
+	var card = card_of_person(person)
+	if card == null:
+		return false
+	_on_card_expand_requested(card)
+	return true
+
+
+func card_of_person(person):
+	for holder in [CardContainer, RowContainer]:
+		if holder == null:
+			continue
+		for card in holder.get_children():
+			if card.get_meta("slave", null) == person:
+				return card
+	return null
 
 
 func OpenInventory(person = null):
@@ -1388,6 +1480,17 @@ func _get_date_availability(person):
 	if ResourceScripts.game_globals.weekly_dates_left <= 0:
 		return [false, "NODATEWEEK"]
 	return [true, ""]
+
+
+#The same answers the card's own buttons are built from, for anything else that offers those
+#actions - the work strip's menu among them. One set of rules, asked in two places, rather than
+#two sets that drift apart.
+func date_availability(person):
+	return _get_date_availability(person)
+
+
+func training_availability(person):
+	return _get_training_availability(person)
 
 
 func _get_training_availability(person):

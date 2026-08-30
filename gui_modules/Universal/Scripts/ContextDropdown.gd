@@ -22,7 +22,12 @@ func open_with_actions(title, actions, global_position):
 			add_separator(action.separator)
 			is_valid_action = true
 		if action.has("label") and action.has("callback"):
-			add_item(action.label)
+			#a picture beside the words where the caller has one - a skill's own icon, or the
+			#mark that says it cannot be used yet
+			if action.has("icon") and action.icon != null:
+				add_icon_item(action.icon, action.label)
+			else:
+				add_item(action.label)
 			is_valid_action = true
 		if is_valid_action:
 			_actions.append(action)

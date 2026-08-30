@@ -116,14 +116,20 @@ func update_modules():
 
 
 func clock_visibility():
-	if input_handler.combat_node != null or !current_screen in [mansion, exploration_city, game_menu]:
+	#Choosing who a spell lands on is a window over whatever screen asked for it, not a journey to
+	#another screen - so the clock is judged by what stands underneath. Cast from the estate it
+	#stays up; cast from a character's own screen, which never has a clock, it stays away.
+	var screen = current_screen
+	if screen == spells and screen != null and previous_screen != null:
+		screen = previous_screen
+	if input_handler.combat_node != null or !screen in [mansion, exploration_city, game_menu]:
 		if clock != null:
 			clock.visible = false
 		return
 	if exploration == null:
-		clock.visible = current_screen == mansion || current_screen == game_menu
+		clock.visible = screen == mansion || screen == game_menu
 	else:
-		clock.visible = current_screen == mansion || current_screen == exploration_city || current_screen == game_menu
+		clock.visible = screen == mansion || screen == exploration_city || screen == game_menu
 
 
 func add_close_button(scene, position = "snap", offset = null):

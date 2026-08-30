@@ -8,6 +8,8 @@
 [ext_resource path="res://gui_modules/Mansion/Modules/CharacterProgressionModule.tscn" type="PackedScene" id=8]
 [ext_resource path="res://gui_modules/Mansion/Modules/CharacterSkillLoadoutPopup.tscn" type="PackedScene" id=9]
 
+[ext_resource path="res://Character_generator/Doll2Spine/Doll2View.tscn" type="PackedScene" id=10]
+[ext_resource path="res://gui_modules/Mansion/Scripts/char_portrait_band.gd" type="Script" id=11]
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0470588, 0.027451, 0.0196078, 0.98 )
 border_width_left = 2
@@ -59,6 +61,40 @@ script = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.68 )
+
+[node name="Portrait" type="Control" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -530.0
+margin_top = 40.0
+margin_right = -20.0
+margin_bottom = -40.0
+mouse_filter = 2
+script = ExtResource( 11 )
+
+[node name="StoredImage" type="TextureRect" parent="Portrait"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Paperdoll" parent="Portrait" instance=ExtResource( 10 )]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+allow_zoom = false
+show_undress_buttons = false
+update_character_portrait = false
 
 [node name="Popup" type="Panel" parent="."]
 anchor_left = 0.5

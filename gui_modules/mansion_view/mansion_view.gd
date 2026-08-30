@@ -218,6 +218,248 @@ func connect_char_tooltip(node, person, text, hint = ""):
 	node.connect("mouse_entered", panel, "showup", [node, person, text, hint])
 
 
+
+#### the character menu ####
+
+#what a skill wears in the menu when it cannot be used right now
+const LOCKED_SKILL_ICON = preload("res://assets/images/gui/ui_slot_cross.png")
+#a line's worth of picture, no more
+const MENU_ICON_SIZE = 32
+#the social panel the expanded card draws: six slots, and the menu offers what is in them
+const SOCIAL_PANEL_SLOTS = 6
+var menu_icons = {}
+
+#The household list has offered this menu on a right click for a while; the work strip carries
+#the same people, so it offers the same menu. Everything on it is done by the list module, which
+#owns those screens - this only decides what is worth offering for this character.
+func open_char_menu(person, at = null):
+	var menu = $Overlay/CharMenu
+	if person == null or menu == null:
+		return
+	#Unfold first: it is the one that keeps the player where they are, on the mansion, and the
+	#others send them off to a screen of their own.
+	var actions = []
+	menu_action(actions, tr("MANSIONVIEW_MENU_UNFOLD"), "menu_unfold", person, [true, ""])
+	menu_action(actions, tr("MANSIONVIEW_MENU_LEVELING"), "menu_open_leveling", person,
+		leveling_allowed(person))
+	menu_action(actions, tr("TRAINING_LABEL"), "menu_open_training", person,
+		training_allowed(person))
+	menu_action(actions, tr("MSLMCONTEXT_INVENTORY"), "menu_open_inventory", person,
+		inventory_allowed(person))
+	menu_action(actions, tr("MSLMCONTEXT_OPEN"), "menu_open_info", person, [true, ""])
+	#Nobody takes themselves out. The card hides its date button on the master rather than
+	#greying it, and this menu does the same.
+	if !person.is_master():
+		menu_action(actions, date_label(), "menu_start_date", person, date_allowed(person))
+	for entry in social_skill_actions(person):
+		actions.append(entry)
+	menu.open_with_actions(person.get_short_name(), actions,
+		at if at != null else get_viewport().get_mouse_position())
+
+
+#What they can do to somebody today. A skill they cannot pay for, have no charges left of or do
+#not meet the conditions for is still listed - saying so is the point - but it says why and does
+#nothing when pressed.
+#Only what the character has to hand: the six slots of their social panel, in the order the
+#expanded card draws them (MansionSlaveListModule.build_expanded_social_skills). Everything they
+#merely know but have not put in a slot belongs to the panel where slots are arranged, not to a
+#menu meant for using one now.
+func social_skill_actions(person):
+	var res = []
+	person.rebuild_skills()
+	var panel = person.skills.social_skill_panel
+	var skills = []
+	for position in range(1, SOCIAL_PANEL_SLOTS + 1):
+		if panel.has(position):
+			skills.append(panel[position])
+	if skills.empty():
+		return res
+	res.append({separator = tr("MANSIONVIEW_MENU_SOCIAL")})
+	for code in skills:
+		var data = Skilldata.get_template(code, person)
+		if data == null:
+			continue
+		var usable = social_skill_usable(person, code, data)
+		#a skill they cannot use today is still listed - saying so is the point - and the icon
+		#says which is which. The item is not disabled: a disabled item cannot be pressed, and
+		#pressing it is how they are told why
+		res.append({
+			label = tr(data.name),
+			icon = skill_icon(data, usable),
+			callback = funcref(self, "menu_use_social"),
+			args = [person, code],
+		})
+	return res
+
+
+func skill_icon(data, usable):
+	if !usable:
+		return menu_sized(LOCKED_SKILL_ICON)
+	if data.icon is String:
+		return menu_sized(load(data.icon)) if data.icon != '' else null
+	return menu_sized(data.icon)
+
+
+#A skill's own picture is drawn at whatever size it was painted - 256 across for most of them -
+#and a PopupMenu in Godot 3.5 draws an icon at its natural size, which turned each line into a
+#poster. One copy is made at the height of a line and kept for as long as the screen lives.
+func menu_sized(texture):
+	if texture == null:
+		return null
+	if menu_icons.has(texture):
+		return menu_icons[texture]
+	var image = texture.get_data()
+	if image == null:
+		return texture
+	image = image.duplicate()
+	image.resize(MENU_ICON_SIZE, MENU_ICON_SIZE, Image.INTERPOLATE_BILINEAR)
+	var small = ImageTexture.new()
+	small.create_from_image(image)
+	menu_icons[texture] = small
+	return small
+
+
+func social_skill_usable(person, code, data):
+	if !person.check_cost(data.cost):
+		return false
+	if !person.checkreqs(data.reqs):
+		return false
+	var used = person.skills.social_skills_charges.get(code, 0)
+	return Skilldata.get_charges(data, person) - used > 0
+
+
+#### what the menu does ####
+
+func menu_open_info(person):
+	get_parent().set_active_person(person)
+	get_parent().mansion_state = "char_info"
+
+
+func menu_open_inventory(person):
+	var list = input_handler.slave_list_node
+	if list == null or !is_instance_valid(list):
+		return
+	get_parent().set_active_person(person)
+	list.OpenInventory(person)
+
+
+#Unfolding is the household list's business: it opens itself and puts this character's card up,
+#which is the same as unfolding it by hand and pressing them.
+func menu_unfold(person):
+	var list = input_handler.slave_list_node
+	if list == null or !is_instance_valid(list) or !list.has_method('unfold_to_person'):
+		return
+	list.unfold_to_person(person)
+
+
+#Training is its own popup over the mansion, the same one the card's own button opens - the list
+#module knows which tab of it this character wants.
+func menu_open_training(person):
+	var list = input_handler.slave_list_node
+	if list == null or !is_instance_valid(list):
+		return
+	list.OpenTraining(person)
+
+
+
+#Every line the menu offers, with the same answer the card's own button would give. What is
+#refused is still listed and still pressable: pressing it says why, which is more use than a
+#line that does nothing.
+func menu_action(actions, label, method, person, allowed):
+	actions.append({
+		label = label,
+		icon = null if allowed[0] else menu_sized(LOCKED_SKILL_ICON),
+		callback = funcref(self, "menu_do"),
+		args = [method, person, allowed],
+	})
+
+
+func menu_do(method, person, allowed):
+	if !allowed[0]:
+		var reason = allowed[1]
+		input_handler.SystemMessage(reason if reason != "" else tr("MANSIONVIEW_MENU_REFUSED"))
+		return
+	call(method, person)
+
+
+#The rules are the card's, asked of the list module that owns them rather than written again -
+#see MansionSlaveListModule._update_card_action_states, which gates the same five buttons.
+func leveling_allowed(person):
+	if person.is_avaliable():
+		return [true, ""]
+	return [false, person.get_unaval_string()]
+
+
+func training_allowed(person):
+	var list = input_handler.slave_list_node
+	if list == null or !is_instance_valid(list) or !list.has_method('training_availability'):
+		return [true, ""]
+	return list.training_availability(person)
+
+
+func inventory_allowed(person):
+	if !person.is_on_quest():
+		return [true, ""]
+	return [false, person.translate(tr("ONQUESTLABEL"))]
+
+
+#The date's refusal comes back as a key, the way the card receives it, so it is translated and
+#given the character's own words here.
+func date_allowed(person):
+	var list = input_handler.slave_list_node
+	if list == null or !is_instance_valid(list) or !list.has_method('date_availability'):
+		return [true, ""]
+	var answer = list.date_availability(person)
+	if answer[0]:
+		return [true, ""]
+	return [false, person.translate(tr(answer[1]))]
+
+#How many dates are left this week, said on the line itself - the card's own date button says it
+#the same way (MansionSlaveListModule:1785), and a player about to spend the last one should not
+#have to hover something else to find that out.
+func date_label():
+	return tr("BTNDATE") + " (%d/%d)" % [ResourceScripts.game_globals.weekly_dates_left,
+		ResourceScripts.game_globals.weekly_dates_max]
+
+
+#The date is asked for before it is started - the list module puts the question and takes the
+#answer, the same way its own card button does.
+func menu_start_date(person):
+	var list = input_handler.slave_list_node
+	if list == null or !is_instance_valid(list):
+		return
+	list.OpenDate(person)
+
+
+func menu_open_leveling(person):
+	var list = input_handler.slave_list_node
+	if list == null or !is_instance_valid(list):
+		return
+	list.OpenProgression(person)
+
+
+#A skill with nobody to aim at is used on the character themselves; the rest go through the
+#targeting screen, the way the character's own skill list does it (SUpgradesList.select_spell).
+func menu_use_social(person, code):
+	var data = Skilldata.get_template(code, person)
+	if data == null or !social_skill_usable(person, code, data):
+		input_handler.SystemMessage(tr("MANSIONVIEW_MENU_SKILLREFUSED") % tr(data.name))
+		return
+	if data.tags.has('no_target'):
+		person.use_social_skill(code, person)
+		input_handler.emit_signal("SpellUsed")
+		return
+	gui_controller.spells = input_handler.get_spec_node(input_handler.NODE_SPELLS)
+	ResourceScripts.core_animations.UnfadeAnimation(gui_controller.spells, 0.3)
+	gui_controller.spells.show()
+	gui_controller.previous_screen = gui_controller.current_screen
+	gui_controller.current_screen = gui_controller.spells
+	#locked to this caster and this skill: the menu was opened on one person, so the screen is
+	#only there to ask who it lands on
+	gui_controller.spells.open(person, code, true)
+	gui_controller.emit_signal("screen_changed")
+
+
 #What is drawn was built for a house that has just changed, so it cannot be trusted however
 #much of it still matches - the signature goes with it.
 func on_rooms_changed():

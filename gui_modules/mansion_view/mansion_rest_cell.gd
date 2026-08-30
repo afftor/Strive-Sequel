@@ -31,6 +31,10 @@ func setup(view_node, character, compact = false, at_work = false):
 		apply_compact()
 	if !is_connected("pressed", self, "on_pressed"):
 		connect("pressed", self, "on_pressed")
+	#the household list has offered a menu on a right click for a while; these are the same
+	#people, so the same gesture offers the same menu
+	if !is_connected("gui_input", self, "on_cell_input"):
+		connect("gui_input", self, "on_cell_input")
 	refresh()
 
 
@@ -110,6 +114,18 @@ func refresh():
 	if $assignment.visible:
 		$assignment.texture = work.icon
 	view.connect_char_tooltip(self, person, build_tooltip(person), build_hint())
+
+
+func on_cell_input(event):
+	if !(event is InputEventMouseButton) or !event.pressed:
+		return
+	if event.button_index != BUTTON_RIGHT:
+		return
+	var person = view.get_character(char_id)
+	if person == null:
+		return
+	accept_event()
+	view.open_char_menu(person, get_global_rect().position + Vector2(get_global_rect().size.x, 0))
 
 
 func build_tooltip(person):

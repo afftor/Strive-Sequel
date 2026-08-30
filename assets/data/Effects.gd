@@ -346,17 +346,13 @@ var effect_table = {
 	},
 	#Granted by the estate having the room at all rather than by anybody living in it, which
 	#is what the 'has_room' condition is for - see game_res.has_room_with_tag().
+	#No buff icon: the office helps everybody in the house at once, so the picture said the same
+	#thing on every portrait in the estate and told the player nothing about the character they
+	#were looking at. The room's own card is where a room's doing is read.
 	room_office_exp = {
 		type = 'base',
 		conditions = [{code = 'has_room', check = true, value = 'office'}],
 		statchanges = {exp_gain_mod = 0.05},
-		buffs = [
-			{
-				icon = "res://assets/images/gui/gui icons/base_exp.png",
-				description = "MANSIONROOM_MASTERS_OFFICE",
-				tags = ['mansion_only'],
-			}
-		],
 	},
 	#used to be the 'luxury' work rule, a flag the player set per character against a
 	#global count of allowed rooms. It is now simply where they sleep.

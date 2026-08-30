@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://gui_modules/spellcasting/Spellcasting.gd" type="Script" id=1]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/button_victory.png" type="Texture" id=2]
@@ -12,6 +12,11 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonslave.png" type="Texture" id=10]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonslave_hover.png" type="Texture" id=11]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonslave_pressed.png" type="Texture" id=12]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=13]
+[ext_resource path="res://assets/Themes_v2/MANSION/M_GoldButton.tres" type="Theme" id=14]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Panel_Square.tres" type="StyleBox" id=15]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=16]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18.tres" type="DynamicFont" id=17]
 
 [node name="Control" type="HBoxContainer"]
 anchor_left = 0.5
@@ -24,7 +29,8 @@ margin_right = 2.0
 margin_bottom = 359.0
 grow_horizontal = 2
 grow_vertical = 2
-custom_constants/separation = 0
+theme = ExtResource( 14 )
+custom_constants/separation = 8
 alignment = 1
 script = ExtResource( 1 )
 
@@ -33,20 +39,35 @@ visible = false
 margin_right = 450.0
 margin_bottom = 718.0
 rect_min_size = Vector2( 450, 0 )
+custom_styles/panel = ExtResource( 15 )
+
+[node name="Backing" type="ColorRect" parent="caster"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = -6.0
+mouse_filter = 2
+color = Color( 0.101961, 0.0666667, 0.0509804, 0.97 )
 
 [node name="CasterContainer" type="ScrollContainer" parent="caster"]
 margin_left = 27.0
 margin_top = 69.0
 margin_right = 423.0
 margin_bottom = 687.0
+theme = ExtResource( 13 )
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="caster/CasterContainer"]
+custom_constants/separation = 6
 
 [node name="Button" type="TextureButton" parent="caster/CasterContainer/VBoxContainer"]
 visible = false
 margin_right = 396.0
 margin_bottom = 52.0
+mouse_default_cursor_shape = 2
 toggle_mode = true
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
@@ -65,6 +86,11 @@ margin_left = 54.0
 margin_top = 7.0
 margin_right = 388.0
 margin_bottom = 43.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 16 )
 valign = 1
 
 [node name="spells" type="Panel" parent="."]
@@ -73,20 +99,35 @@ margin_left = 225.0
 margin_right = 605.0
 margin_bottom = 718.0
 rect_min_size = Vector2( 380, 0 )
+custom_styles/panel = ExtResource( 15 )
+
+[node name="Backing" type="ColorRect" parent="spells"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = -6.0
+mouse_filter = 2
+color = Color( 0.101961, 0.0666667, 0.0509804, 0.97 )
 
 [node name="SpellContainer" type="ScrollContainer" parent="spells"]
 margin_left = 24.0
 margin_top = 74.0
 margin_right = 324.0
 margin_bottom = 681.0
+theme = ExtResource( 13 )
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="spells/SpellContainer"]
+custom_constants/separation = 8
 
 [node name="Button" type="TextureButton" parent="spells/SpellContainer/VBoxContainer"]
 visible = false
 margin_right = 300.0
 margin_bottom = 108.0
+mouse_default_cursor_shape = 2
 toggle_mode = true
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 5 )
@@ -106,6 +147,12 @@ margin_left = 106.0
 margin_top = 7.0
 margin_right = 293.0
 margin_bottom = 57.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 16 )
+valign = 1
 
 [node name="TextureRect" type="TextureRect" parent="spells/SpellContainer/VBoxContainer/Button"]
 margin_left = 108.0
@@ -120,6 +167,11 @@ margin_left = 133.0
 margin_top = 79.0
 margin_right = 155.0
 margin_bottom = 98.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 17 )
 text = "0"
 valign = 1
 
@@ -136,6 +188,11 @@ margin_left = 175.0
 margin_top = 79.0
 margin_right = 197.0
 margin_bottom = 98.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 17 )
 text = "0/0"
 valign = 1
 
@@ -154,6 +211,11 @@ margin_left = 225.0
 margin_top = 79.0
 margin_right = 247.0
 margin_bottom = 98.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 17 )
 text = "0"
 valign = 1
 
@@ -163,20 +225,35 @@ margin_left = 415.0
 margin_right = 935.0
 margin_bottom = 718.0
 rect_min_size = Vector2( 520, 0 )
+custom_styles/panel = ExtResource( 15 )
+
+[node name="Backing" type="ColorRect" parent="targets"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = -6.0
+mouse_filter = 2
+color = Color( 0.101961, 0.0666667, 0.0509804, 0.97 )
 
 [node name="TargetContainer" type="ScrollContainer" parent="targets"]
 margin_left = 24.0
 margin_top = 59.0
 margin_right = 488.0
 margin_bottom = 688.0
+theme = ExtResource( 13 )
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="targets/TargetContainer"]
+custom_constants/separation = 6
 
 [node name="Button" type="TextureButton" parent="targets/TargetContainer/VBoxContainer"]
 visible = false
 margin_right = 464.0
 margin_bottom = 52.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 12 )
 texture_hover = ExtResource( 11 )
@@ -194,6 +271,11 @@ margin_left = 54.0
 margin_top = 7.0
 margin_right = 250.0
 margin_bottom = 43.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 16 )
 valign = 1
 
 [node name="info" type="Label" parent="targets/TargetContainer/VBoxContainer/Button"]
@@ -201,6 +283,11 @@ margin_left = 292.0
 margin_top = 7.0
 margin_right = 454.0
 margin_bottom = 43.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 17 )
 align = 2
 valign = 1
 
@@ -208,6 +295,11 @@ valign = 1
 visible = false
 margin_right = 126.0
 margin_bottom = 14.0
+custom_colors/font_color = Color( 0.976471, 0.435294, 0.368627, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 16 )
 text = "No targets avaliable"
 align = 1
 valign = 1

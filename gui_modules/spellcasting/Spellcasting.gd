@@ -196,4 +196,8 @@ func hide():
 	if gui_controller.current_screen == gui_controller.spells:
 		gui_controller.current_screen = gui_controller.previous_screen
 	gui_controller.windows_opened.erase(self)
+	#The clock is no longer taken away while this screen is up - clock_visibility() judges it by
+	#the screen underneath - but it is asked again on the way out, because what is underneath has
+	#just changed back.
+	gui_controller.clock_visibility()
 	.hide()

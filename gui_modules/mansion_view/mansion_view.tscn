@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://gui_modules/mansion_view/mansion_view.gd" type="Script" id=1]
 [ext_resource path="res://gui_modules/mansion_view/mansion_floor_grid.gd" type="Script" id=2]
@@ -32,6 +32,8 @@
 [ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=33]
 
 [ext_resource path="res://gui_modules/mansion_view/mansion_char_tooltip.tscn" type="PackedScene" id=34]
+[ext_resource path="res://gui_modules/Universal/Scripts/ContextDropdown.gd" type="Script" id=35]
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=36]
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0470588, 0.027451, 0.0196078, 0.92 )
 border_width_left = 2
@@ -151,6 +153,42 @@ corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id=12]
+content_margin_left = 12.0
+content_margin_right = 12.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 0.101961, 0.0666667, 0.0509804, 0.98 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.611765, 0.368627, 0.235294, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=13]
+content_margin_left = 7.0
+content_margin_right = 7.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color( 0.329412, 0.2, 0.109804, 0.96 )
+border_width_left = 3
+border_color = Color( 0.976471, 0.784314, 0.321569, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id=14]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0, 0, 0, 0 )
 
 [node name="MansionView" type="Control"]
 anchor_right = 1.0
@@ -2710,3 +2748,22 @@ visible = false
 
 [node name="CharTooltip" parent="Overlay" instance=ExtResource( 34 )]
 visible = false
+
+[node name="CharMenu" type="PopupMenu" parent="Overlay"]
+margin_right = 255.0
+margin_bottom = 53.0
+theme = ExtResource( 36 )
+custom_colors/font_color = Color( 0.878431, 0.823529, 0.713726, 1 )
+custom_colors/font_color_accel = Color( 0.72549, 0.678431, 0.588235, 1 )
+custom_colors/font_color_disabled = Color( 0.494118, 0.454902, 0.384314, 0.82 )
+custom_colors/font_color_hover = Color( 1, 0.941176, 0.721569, 1 )
+custom_colors/font_color_separator = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_constants/hseparation = 8
+custom_constants/vseparation = 5
+custom_fonts/font = ExtResource( 9 )
+custom_fonts/font_separator = ExtResource( 6 )
+custom_styles/hover = SubResource( 13 )
+custom_styles/labeled_separator_left = SubResource( 14 )
+custom_styles/labeled_separator_right = SubResource( 14 )
+custom_styles/panel = SubResource( 12 )
+script = ExtResource( 35 )

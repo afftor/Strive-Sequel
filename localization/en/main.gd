@@ -31456,6 +31456,11 @@ You leave her in the shade and return to the others, carrying with you the stran
 	MANSIONVIEW_AUTOSELL_ADD = "Add sale",
 	MANSIONVIEW_MOVEHINT = "Pick where it goes",
 	MANSIONVIEW_PICKHINT = "Drag them, or click to pick them up.",
+	MANSIONVIEW_MENU_UNFOLD = "Unfold",
+	MANSIONVIEW_MENU_LEVELING = "Leveling",
+	MANSIONVIEW_MENU_SOCIAL = "Social skills",
+	MANSIONVIEW_MENU_SKILLREFUSED = "%s cannot be used right now.",
+	MANSIONVIEW_MENU_REFUSED = "Not right now.",
 	MANSIONVIEW_PUTBACKHINT = "In hand. Click again to set them back down.",
 	MANSIONVIEW_PUTHINT = "Click to put them here.",
 

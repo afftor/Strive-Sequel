@@ -1,6 +1,8 @@
 extends Control
 
 onready var progression = $Popup/Progression
+#the character stands beside the window, as they do beside the training one
+onready var portrait_band = $Portrait
 onready var skill_loadout = $SkillLoadout
 
 var clock_was_visible = false
@@ -48,6 +50,7 @@ func open(person, tab = "classes"):
 	var sequence = open_sequence
 	_reset_popup_visuals()
 	$Popup/Header/CharacterName.text = person.get_full_name()
+	portrait_band.show_for(person)
 	show()
 	raise()
 	_hide_clock()
@@ -73,6 +76,9 @@ func close():
 	if skill_loadout.visible:
 		skill_loadout.close()
 	progression.reset_popup_state()
+	#the doll is expensive to keep drawing, and there is nothing to stand beside once the window
+	#is away
+	portrait_band.hide_band()
 	_restore_clock()
 
 
