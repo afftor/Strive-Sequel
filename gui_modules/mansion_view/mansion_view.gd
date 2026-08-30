@@ -4,11 +4,25 @@ extends Control
 
 const MansionLayout = preload("res://src/core/mansion_layout.gd")
 const RoomTypes = preload("res://assets/data/mansion_room_types.gd")
-const RoomUpgrades = preload("res://assets/data/mansion_room_upgrades.gd")
 const FloorPlans = preload("res://assets/data/mansion_floor_plans.gd")
 const LocationTasks = preload("res://gui_modules/mansion_view/mansion_location_tasks.gd")
 
+#### the hard tutorial's handles on this screen ####
+#The tutorial teaches the mansion by pointing at real rooms, so it needs to name particular
+#ones. The slot nodes are rebuilt on every grid.rebuild() and the local-task cards on every
+#refresh, so nothing can be registered as a node - every one of these is resolved again each
+#frame by input_handler's button registry (hard_tutorial.validate_btn).
+#A slot that starts as rubble on the ground floor - see assets/data/mansion_floor_plans.gd.
+#The whole chapter happens on this one slot: it is cleared out, then a kitchen is raised on
+#it, then that kitchen is worked.
+const TUTORIAL_SLOT = 'c2'
+#The plot the tutorial's kitchen garden stands on, put there by hard_tutorial.prepare_general_tut.
+const TUTORIAL_PLOT = 'g1'
+
 signal place_changed(code)
+#What the plan is arranging - work or beds. Embedded, the buttons for it live in the mansion's
+#left-hand column rather than on the plan itself, so they have to hear about it.
+signal mode_changed(value)
 
 export var embedded = false
 
@@ -52,6 +66,8 @@ func _ready():
 	ResourceScripts.game_res.ensure_mansion_layout()
 	$TopBar/ModeWork.connect("pressed", self, "set_mode", ['work'])
 	$TopBar/ModeSleep.connect("pressed", self, "set_mode", ['sleep'])
+	$TopBar/ModeWork.text = tr("MANSIONVIEW_MODEWORK")
+	$TopBar/ModeSleep.text = tr("MANSIONVIEW_MODEBEDS")
 	$FloorSelector/Up.connect("pressed", self, "change_floor", [1])
 	$FloorSelector/Down.connect("pressed", self, "change_floor", [-1])
 	$ZoomControls/In.connect("pressed", self, "zoom_by", [grid.ZOOM_STEP])
@@ -65,19 +81,148 @@ func _ready():
 	$ExpelZone.setup(self)
 	connect("resized", self, "layout_view")
 	connect("visibility_changed", self, "on_visibility_changed")
+	#The house can change without this screen touching it: the choice at the start of a game
+	#hands over a room, a story effect can raise or take one, achievements grant them. Whoever
+	#changes the house says so through this signal - without it the plan went on drawing the
+	#house as it was when it was last looked at.
+	globals.connect("rooms_changed", self, "on_rooms_changed")
 	layout_view()
 	if embedded:
 		globals.connect("slave_added", self, "queue_refresh")
 		globals.connect("task_removed", self, "queue_refresh")
 	refresh()
 	center_view()
+	register_tutorial_buttons()
+
+
+#### the hard tutorial ####
+
+#Nothing on this screen keeps a stable node to hand out, so each of these is a search rather
+#than a reference. A search that comes up empty answers null, which the tutorial reads as
+#"not built yet" and retries on the next frame - that is how a step can point at a builder's
+#place that only appears once the scaffolding is paid for.
+func register_tutorial_buttons():
+	input_handler.register_btn_source('mansion_tut_slot', self, 'tut_get_slot')
+	input_handler.register_btn_source('mansion_build_place', self, 'tut_get_build_place')
+	input_handler.register_btn_source('mansion_work_place', self, 'tut_get_work_place')
+	input_handler.register_btn_source('mansion_rest_daisy', self, 'tut_get_rest_daisy')
+	input_handler.register_btn_source('mansion_rest_servant', self, 'tut_get_rest_servant')
+	input_handler.register_btn_source('mansion_garden_place', self, 'tut_get_garden_place')
+	input_handler.register_btn_source('mansion_store_slot', self, 'tut_get_store_slot')
+
+
+func tut_get_slot():
+	if !showing_plan():
+		return null
+	return grid.get_slot_node(TUTORIAL_SLOT)
+
+
+#The first place of this kind standing empty inside the tutorial's own slot. Builders and
+#workers are the same cell in two colours (mansion_char_slot.gd), so one search serves both.
+#The estate's chest is opened from the store room's own card now, so the tutorial has to walk
+#the player to that room first. Found by what stands in it rather than by where it stands.
+func tut_get_store_slot():
+	if !showing_plan():
+		return null
+	for entry in MansionLayout.each_room(layout()):
+		if entry.floor == floor_index() and entry.room.type == 'store_room':
+			return grid.get_slot_node(entry.slot)
+	return null
+
+
+func tut_get_empty_place(kind):
+	var node = tut_get_slot()
+	if node == null or !node.has_node("People"):
+		return null
+	for cell in node.get_node("People").get_children():
+		if cell.is_queued_for_deletion() or !cell.visible:
+			continue
+		if cell.get('kind') == kind and cell.get('char_id') == null:
+			return cell
+	return null
+
+
+func tut_get_build_place():
+	return tut_get_empty_place('build')
+
+
+func tut_get_work_place():
+	return tut_get_empty_place('work')
+
+
+#A portrait in the idle strip, found by who it is rather than by where it sits: the strip is
+#rebuilt from scratch whenever anybody is put to work, and the order changes with it.
+func tut_get_rest_cell(unique_code):
+	if !rest_panel.visible or !rest_panel.has_node("Scroll/List"):
+		return null
+	for cell in rest_panel.get_node("Scroll/List").get_children():
+		if cell.is_queued_for_deletion() or !cell.visible:
+			continue
+		var person = get_character(cell.get('char_id'))
+		if person != null and person.get_stat('unique') == unique_code:
+			return cell
+	return null
+
+
+func tut_get_rest_daisy():
+	return tut_get_rest_cell('daisy')
+
+
+func tut_get_rest_servant():
+	return tut_get_rest_cell('tutorial_servant')
+
+
+#The empty place on the kitchen garden's card. The card is only in the tree while the local
+#tasks screen is up, and it carries its plot as metadata (mansion_task_room.setup_plot).
+func tut_get_garden_place():
+	if !local_tasks or !location_panel.visible:
+		return null
+	for card_node in location_panel.get_node("Rooms").get_children():
+		if card_node.is_queued_for_deletion() or !card_node.visible:
+			continue
+		if card_node.get_meta('plot', '') != TUTORIAL_PLOT:
+			continue
+		if !card_node.has_node("PeopleScroll/People"):
+			return null
+		for cell in card_node.get_node("PeopleScroll/People").get_children():
+			if cell.is_queued_for_deletion() or !cell.visible:
+				continue
+			if cell.get('kind') == 'task' and cell.get('char_id') == null:
+				return cell
+		return null
+	return null
 
 
 func on_visibility_changed():
 	if is_visible_in_tree():
+		#a room granted while this screen was away leaves it drawing the old house
+		if layout_signature() != built_signature:
+			queue_refresh()
 		return
 	close_card()
 	clear_char_pick()
+
+
+#The hover panel for a portrait: the line the cell wants at the top, then the character's own
+#numbers, tools and buffs. One panel serves every portrait on the screen - it is on the overlay
+#so it draws above the room card, like the other two tooltips beside it.
+#The cell's own binding is dropped first: refresh() runs often, and a second binding would open
+#the panel twice from one hover.
+func connect_char_tooltip(node, person, text, hint = ""):
+	var panel = $Overlay/CharTooltip
+	if node.is_connected("mouse_entered", panel, "showup"):
+		node.disconnect("mouse_entered", panel, "showup")
+	globals.disconnect_text_tooltip(node)
+	if person == null:
+		return
+	node.connect("mouse_entered", panel, "showup", [node, person, text, hint])
+
+
+#What is drawn was built for a house that has just changed, so it cannot be trusted however
+#much of it still matches - the signature goes with it.
+func on_rooms_changed():
+	built_signature = ""
+	update()
 
 
 func layout_view():
@@ -133,8 +278,13 @@ func open_rect():
 		EMBEDDED_OPEN_RIGHT - EMBEDDED_OPEN_LEFT, EMBEDDED_OPEN_BOTTOM - top)
 
 
-#sideways rather than growing, so a full household cannot push the plan off the panel.
-const LOCATION_CARD_WIDTH = 226
+#Four short columns keep local work in the lower-left corner instead of laying a wall across
+#the rooms. Width includes the grid's six-pixel gap, so the column calculation stays exact.
+const LOCATION_CARD_WIDTH = 186
+const LOCATION_CARD_HEIGHT = 164
+const LOCATION_GRID_MAX_COLUMNS = 4
+#below the location's name, which sits at 12..52
+const LOCATION_GRID_TOP = 64
 
 
 func rebuild_location_panel(location_code):
@@ -153,6 +303,8 @@ func rebuild_location_panel(location_code):
 			input_handler.DuplicateContainerTemplate(rooms).setup_plot(self, slot)
 	panel.get_node("Empty").text = tr("MANSIONVIEW_NOTHINGHERE")
 	panel.get_node("Empty").visible = entries.empty() and !local_tasks
+	if embedded:
+		lay_out_location_panel(open_rect())
 
 
 func refresh_location_places():
@@ -165,25 +317,41 @@ func refresh_location_places():
 
 func lay_out_location_panel(room):
 	var panel_room = room
-	if embedded and local_tasks:
+	#the estate's own column - clock, plan buttons, what has been gathered, the journal - stands
+	#down the left of the screen, and the picture used to run under it, so those panels sat on
+	#the location like litter. It begins where they end instead
+	if embedded:
 		panel_room = Rect2(room.position + Vector2(EMBEDDED_RAIL_WIDTH, 0),
 			room.size - Vector2(EMBEDDED_RAIL_WIDTH, 0))
 	place_child($LocationPanel, panel_room)
 	var inner = panel_room.size.x - 48
-	$LocationPanel/Rooms.columns = int(max(1, floor(inner / LOCATION_CARD_WIDTH)))
-	place_child($LocationPanel/Rooms, Rect2(24, 64, inner, max(10, room.size.y - 88)))
+	var rooms = $LocationPanel/Rooms
+	var columns = int(min(LOCATION_GRID_MAX_COLUMNS,
+		max(1, floor(inner / LOCATION_CARD_WIDTH))))
+	rooms.columns = columns
+	var card_count = 0
+	for child in rooms.get_children():
+		if child.visible and !child.is_queued_for_deletion():
+			card_count += 1
+	var rows = int(max(1, ceil(card_count / float(columns))))
+	var across = int(min(columns, max(1, card_count)))
+	var grid_width = min(inner, across * LOCATION_CARD_WIDTH - 6)
+	var grid_height = rows * LOCATION_CARD_HEIGHT + (rows - 1) * 10
+	#what is gathered at the location stands across the top of its picture, in the middle: the
+	#place is the subject of this screen, and what the estate has dug out of it is reported
+	#elsewhere, at the bottom of the screen
+	var grid_left = max(24, round((panel_room.size.x - grid_width) / 2.0))
+	place_child(rooms, Rect2(grid_left, LOCATION_GRID_TOP, grid_width,
+		min(grid_height, panel_room.size.y - LOCATION_GRID_TOP - 24)))
 	place_child($LocationPanel/Title, Rect2(24, 12, min(800, inner), 40))
 	place_child($LocationPanel/Empty, Rect2(24, 64, min(900, inner), 36))
 
 
+#Where the strips sit is the panel's own business - it has two of them and knows how tall each
+#turned out. All that is left here is letting a drop fall through the scrollers onto the panel.
 func lay_out_strip(panel):
-	var width = panel.rect_size.x
-	place_child(panel.get_node('Title'), Rect2(10, 4, 220, 24))
-	place_child(panel.get_node('Warning'), Rect2(238, 4, max(10, width - 248), 24))
-	place_child(panel.get_node('Scroll'), Rect2(10, panel.TITLE_HEIGHT,
-		max(10, width - 20), max(10, panel.rect_size.y - panel.TITLE_HEIGHT - 6)))
-	panel.get_node('Scroll').mouse_filter = Control.MOUSE_FILTER_PASS
-	panel.get_node('Scroll/List').mouse_filter = Control.MOUSE_FILTER_PASS
+	for path in ['Scroll', 'Scroll/List', 'BusyScroll', 'BusyScroll/BusyList']:
+		panel.get_node(path).mouse_filter = Control.MOUSE_FILTER_PASS
 
 
 func fit_zoom():
@@ -336,6 +504,52 @@ func resting_characters():
 	return res
 
 
+#The other half of the strip: everyone at this place who IS at work and could be moved to
+#different work. Whoever cannot be moved is left out rather than shown greyed - the point of
+#the row is that it can be dragged from, and a portrait that refuses every drop is noise.
+func working_characters():
+	var res = []
+	if mode != 'work':
+		return res
+	for char_id in LocationTasks.characters_at(place):
+		var person = get_character(char_id)
+		if person == null or person.is_on_quest() or person.is_unavaliable():
+			continue
+		if person.get_work() in ['', null]:
+			continue
+		if !person.is_worker() or !person_is_here(person):
+			continue
+		res.append(char_id)
+	return res
+
+
+#What somebody is busy with, as a picture and a line of text. Read off the task they hold
+#rather than off the room they stand in: a builder, a farm hand and a clerk are all "in" a
+#room, and it is the work that tells them apart.
+func assignment_of(char_id):
+	var person = get_character(char_id)
+	if person == null:
+		return null
+	var task_id = person.get_work()
+	if task_id in ['', null] or !tasks().has(task_id):
+		return null
+	var task = tasks()[task_id]
+	var icon = task.get('icon', null)
+	return {
+		icon = load(icon) if (icon is String and icon != '') else icon,
+		text = tr(task.name) if task.has('name') else '',
+	}
+
+
+#Beds standing empty. The strip's "bed them down" button is only worth offering while there
+#are some - what the estate can sleep, less those already tucked in.
+func free_beds():
+	var housed = 0
+	for entry in MansionLayout.each_room(layout()):
+		housed += entry.room.occupants.size()
+	return max(0, MansionLayout.total_sleep_capacity(layout()) - housed)
+
+
 func unhoused_count():
 	return MansionLayout.unhoused_characters(layout(), party()).size()
 
@@ -349,10 +563,10 @@ func assign_worker(slot_code, char_id):
 	if person == null:
 		return false
 	if !is_present(person):
-		input_handler.SystemMessage(tr("MANSIONVIEW_ERR_AWAY"))
+		input_handler.SystemMessage(person.translate(tr("MANSIONVIEW_ERR_AWAY")))
 		return false
 	if !person.is_worker():
-		input_handler.SystemMessage(tr("MANSIONVIEW_ERR_NOTWORKER"))
+		input_handler.SystemMessage(person.translate(tr("MANSIONVIEW_ERR_NOTWORKER")))
 		return false
 	ResourceScripts.game_res.sync_room_tasks()
 	var task = tasks()[room.task_id]
@@ -380,10 +594,10 @@ func assign_location_worker(task_id, char_id):
 	if person == null or !tasks().has(task_id):
 		return false
 	if !person.check_location(place, true) and !(place == LocationTasks.MANSION_CODE and is_present(person)):
-		input_handler.SystemMessage(tr("MANSIONVIEW_ERR_AWAY"))
+		input_handler.SystemMessage(person.translate(tr("MANSIONVIEW_ERR_AWAY")))
 		return false
 	if !person.is_worker():
-		input_handler.SystemMessage(tr("MANSIONVIEW_ERR_NOTWORKER"))
+		input_handler.SystemMessage(person.translate(tr("MANSIONVIEW_ERR_NOTWORKER")))
 		return false
 	var task = tasks()[task_id]
 	if task.type != 'gather_limited' and task.has('max_workers') \
@@ -434,7 +648,7 @@ func assign_resident(slot_code, char_id):
 	var check = MansionLayout.assign_character(layout(), floor_index(), slot_code, char_id,
 		person.is_master(), master_id(), ResourceScripts.game_res.shares_master_bed(person))
 	if !check.ok:
-		input_handler.SystemMessage(tr(check.reason))
+		input_handler.SystemMessage(person.translate(tr(check.reason)))
 		return false
 	ResourceScripts.game_res.rooms_changed()
 	refresh_people()
@@ -561,6 +775,13 @@ func task_of_worker(char_id):
 
 #cannot come apart - which they had, twice, before this was one path.
 
+#A refusal about a person says which person - the message keys carry [name] and the pronouns
+#that go with it, and only the character can fill those in.
+func refusal_text(refusal, char_id):
+	var person = get_character(char_id)
+	return tr(refusal) if person == null else person.translate(tr(refusal))
+
+
 func begin_carry_drag(source):
 	var data = source.carry_data()
 	if data == null or source.carry_refusal() != '':
@@ -579,7 +800,7 @@ func begin_carry_click(source):
 		return false
 	var refusal = source.carry_refusal()
 	if refusal != '':
-		input_handler.SystemMessage(tr(refusal))
+		input_handler.SystemMessage(refusal_text(refusal, data.char_id))
 		return false
 	return pick_character(data.char_id, data.from_slot, data.from_kind)
 
@@ -590,7 +811,7 @@ func drop_carried_on(target):
 		return false
 	var refusal = target.refusal_for(data)
 	if refusal != '':
-		input_handler.SystemMessage(tr(refusal))
+		input_handler.SystemMessage(refusal_text(refusal, data.char_id))
 		return false
 	clear_char_pick()
 	return target.take_carried(data)
@@ -828,8 +1049,11 @@ func update_mode_buttons():
 	$TopBar/ModeWork.pressed = mode == 'work'
 	$TopBar/ModeSleep.pressed = mode == 'sleep'
 	var moving_room = mode == 'rearrange'
-	$TopBar/ModeWork.visible = !moving_room
-	$TopBar/ModeSleep.visible = showing_plan() and !moving_room
+	#standalone the plan is the whole screen and carries its own pair; embedded they would be
+	#a second set of the buttons already standing in the column on the left
+	$TopBar/ModeWork.visible = !moving_room and !embedded
+	$TopBar/ModeSleep.visible = showing_plan() and !moving_room and !embedded
+	emit_signal("mode_changed", mode)
 	$TopBar/RearrangeHint.visible = moving_room
 	$TopBar/RearrangeHint.text = tr("MANSIONVIEW_MOVEHINT")
 	$ExpelZone.visible = mode == 'sleep' and showing_plan() and !embedded
@@ -1219,13 +1443,17 @@ func start_repair(slot_code):
 
 
 func start_upgrade(slot_code, upgrade_code):
+	#the card greys the row, but the same rule has to hold wherever the order comes from
+	if ResourceScripts.game_res.upgrade_locked(upgrade_code):
+		input_handler.SystemMessage(tr("MANSIONVIEW_UPGRADELOCKED"))
+		return false
 	var check = MansionLayout.can_start_upgrade(layout(), floor_index(), slot_code, upgrade_code)
 	if !check.ok:
 		input_handler.SystemMessage(tr(check.reason))
 		return
 	var room = get_room(slot_code)
 	var level = MansionLayout.next_upgrade_level(room, upgrade_code)
-	var level_data = RoomUpgrades.get_level_data(upgrade_code, level)
+	var level_data = RoomTypes.get_level_data(upgrade_code, level, room.type)
 	if !can_afford(level_data.cost):
 		input_handler.SystemMessage(tr("MANSIONVIEW_ERR_CANTAFFORD"))
 		return
@@ -1287,10 +1515,10 @@ func assign_builder(slot_code, char_id, floor_id = -1):
 	if person == null:
 		return false
 	if !is_present(person):
-		input_handler.SystemMessage(tr("MANSIONVIEW_ERR_AWAY"))
+		input_handler.SystemMessage(person.translate(tr("MANSIONVIEW_ERR_AWAY")))
 		return false
 	if !person.is_worker():
-		input_handler.SystemMessage(tr("MANSIONVIEW_ERR_NOTWORKER"))
+		input_handler.SystemMessage(person.translate(tr("MANSIONVIEW_ERR_NOTWORKER")))
 		return false
 	ResourceScripts.game_res.sync_room_tasks()
 	var task = tasks()[build.task_id]
@@ -1342,7 +1570,7 @@ func build_label(build):
 		'repair':
 			return tr("MANSIONVIEW_CLEARINGOUT")
 	return "%s %s %d" % [tr("MANSIONVIEW_UPGRADING"),
-		tr(RoomUpgrades.get_name_key(build.target)), int(build.level)]
+		tr(RoomTypes.get_upgrade_name_key(build.target)), int(build.level)]
 
 
 func build_eta_text(build):
@@ -1439,6 +1667,7 @@ func close_card():
 		layout().current_floor = grounds_card_return
 		grounds_card_return = -1
 	card.visible = false
+	$Overlay/RoomDetails.visible = false
 	$Overlay/CardCatcher.visible = false
 
 

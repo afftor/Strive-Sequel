@@ -10,7 +10,7 @@ extends Reference
 
 # Options whose values are a ladder from least to most: a slider says at a glance
 # where on it a character stands, which an arrow pair never did.
-const SLIDERS = ["height", "tits_size", "ass_size", "penis_size", "balls_size",
+const SLIDERS = ["height", "head_size", "tits_size", "ass_size", "penis_size", "balls_size",
 	"hair_base_length", "hair_back_length", "hair_assist_length"]
 
 # Values that are on the list but not on the ladder.  A masculine chest is not a
@@ -20,6 +20,20 @@ const OFF_THE_LADDER = {
 	"tits_size": ["masculine"],
 	"ass_size": ["masculine"],
 }
+
+# Values a stat can hold but nobody may choose.  `bald` is not a hair length, it
+# is the absence of hair, and on a slider it sat one step past `short` where a
+# player shaved a character by nudging it.  Characters still generate bald - the
+# value keeps working everywhere that reads it - it simply is not on offer.
+const NEVER_OFFERED = {
+	"hair_base_length": ["bald"],
+	"hair_fringe_length": ["bald"],
+}
+
+
+# Whether a value may be put in front of the player at all.
+static func offered(statname, value):
+	return !(value in NEVER_OFFERED.get(str(statname), []))
 
 # One button per part, each opening its own panel of pictures - the character's
 # own head wearing each option, the current one framed.  Not grouped: a player
@@ -43,6 +57,7 @@ const SUBMENUS = [
 	{"id": "nose", "label": "CHARCREATE_MENU_NOSE", "stats": ["nose"]},
 	{"id": "lips", "label": "CHARCREATE_MENU_LIPS", "stats": ["lips"]},
 	{"id": "ears", "label": "CHARCREATE_MENU_EARS", "stats": ["ears"]},
+	{"id": "tail", "label": "CHARCREATE_MENU_TAIL", "stats": ["tail"]},
 	{"id": "skin_coverage", "label": "CHARCREATE_MENU_COVERAGE", "stats": ["skin_coverage"]},
 	{"id": "horns", "label": "CHARCREATE_MENU_HORNS", "stats": ["horns"]},
 ]
@@ -71,6 +86,8 @@ const COLOUR_FOLLOWS = {
 	"body_color_tail": "tail",
 	"body_color_horns": "horns",
 	"body_color_animal": "body_lower",
+	# fur ears sit right under the ear they are the colour of
+	"body_color_ears": "ears",
 }
 
 # Colours with a rule behind them are still offered, but their first value is the
@@ -81,6 +98,11 @@ const COLOUR_FOLLOWS = {
 const DEFAULT_COLOUR_FROM = {
 	"body_color_lips": "body_color_skin",
 	"body_color_eyebrows": "hair_base_color_1",
+	# a beastkin's ears are the colour of the hair between them unless the player
+	# says otherwise, and the fur a character is covered in overrules both
+	"body_color_ears": "hair_base_color_1",
+	# and the tail is the same story
+	"body_color_tail": "hair_base_color_1",
 }
 
 # Colours the game works out entirely on its own - a fur tail takes the hair, a

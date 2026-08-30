@@ -15,14 +15,17 @@ onready var JobModule = $MansionJobModule2
 onready var SexSelect = $SexSelectMenu
 onready var Journal = $MansionJournalModule
 onready var TurnProductionOverlay = $TurnProductionOverlay
-onready var LocalTasksButton = $LocalTasksButton
-onready var LocalTasksShimmer = $LocalTasksButton/QuestAttentionShimmer
+onready var ViewModes = $ViewModes
+onready var LocalTasksButton = $ViewModes/Scope/LocalTasksButton
+onready var LocalTasksShimmer = $ViewModes/Scope/LocalTasksButton/QuestAttentionShimmer
 #How fast the sheen sweeps and how long it rests between passes live in the shader itself -
 #see quest_attention_shimmer.shader. Nothing here drives it; this only turns it on and off.
 #Assigned in code rather than left to the scene: an open scene in the Godot editor is written
 #back from memory when it saves, which quietly undoes edits made to the .tscn on disk. The
 #shader lives in its own file, so tuning the sheen always takes.
 const SHIMMER_SHADER = preload("res://gui_modules/Mansion/Modules/quest_attention_shimmer.shader")
+#what the doll has art for, which is the list test mode stocks the wardrobe from
+const DOLL_GEAR = preload("res://Character_generator/Doll2Spine/universal/doll_gear_map.gd")
 onready var submodules = []
 
 export var test_mode = false
@@ -74,7 +77,7 @@ var always_show = [
 	#everything else and stays there. Its own input asks whether anything is drawn on top of
 	#the cursor before it claims the wheel, so it cannot steal scrolling from the panels above.
 	"MansionRoomsModule",
-	"LocalTasksButton",
+	"ViewModes",
 	"TestButton",
 	"MansionTaskInfoModule",
 	"MansionClockModule",
@@ -175,10 +178,21 @@ func _ready():
 	sheen.shader = SHIMMER_SHADER
 	LocalTasksShimmer.material = sheen
 	LocalTasksButton.text = tr("MANSIONVIEW_LOCALTASKS")
-	LocalTasksButton.connect('pressed', self, 'toggle_local_tasks')
+	LocalTasksButton.connect('pressed', self, 'set_local_tasks_scope', [true])
+	ViewModes.get_node("Scope/MansionButton").text = tr("MANSIONVIEW_SCOPEMANSION")
+	ViewModes.get_node("Scope/MansionButton").connect('pressed', self, 'set_local_tasks_scope', [false])
+	#the two squares say what they are by their picture, so what they are called is a hint
+	globals.connecttexttooltip(ViewModes.get_node("Plan/ModeWork"), tr("MANSIONVIEW_MODEWORK"))
+	globals.connecttexttooltip(ViewModes.get_node("Plan/ModeBeds"), tr("MANSIONVIEW_MODEBEDS"))
+	ViewModes.get_node("Plan/ModeWork").connect('pressed', self, 'set_rooms_mode', ['work'])
+	ViewModes.get_node("Plan/ModeBeds").connect('pressed', self, 'set_rooms_mode', ['sleep'])
+	RoomsModule.connect('mode_changed', self, 'sync_view_mode_buttons')
 	RoomsModule.connect('place_changed', self, 'sync_local_tasks_button')
+	sync_view_mode_buttons(RoomsModule.mode)
 	sync_local_tasks_button(RoomsModule.place)
 	globals.connecttexttooltip(LocalTasksButton, tr("MANSIONVIEW_LOCALTASKSHINT"))
+	input_handler.register_btn_source('mansion_local_tasks_btn', self, 'tut_get_local_tasks_btn')
+	input_handler.register_btn_source('mansion_scope_btn', self, 'tut_get_mansion_scope_btn')
 	hotkeys.connect("bindings_changed", self, "build_tutorial_tooltip")
 	build_tutorial_tooltip()
 #	$tutorialpanel/Button.connect('pressed',$tutorialpanel,'hide')
@@ -232,7 +246,10 @@ func has_unstaffed_quest_task():
 
 func refresh_local_tasks_attention():
 	var needs_attention = has_unstaffed_quest_task()
-	if needs_attention == local_tasks_attention:
+	#The flag alone is not enough to skip on: it starts false, and if the sweep is showing for
+	#any other reason - the scene opening with it on, a screen rebuilt around it - nothing here
+	#would ever turn it off, and the button would call for attention with no quest behind it.
+	if needs_attention == local_tasks_attention 			and LocalTasksShimmer.visible == needs_attention:
 		return
 	local_tasks_attention = needs_attention
 	LocalTasksShimmer.visible = needs_attention
@@ -400,7 +417,6 @@ func match_state():
 			# CraftModule.get_node("filter").hide()
 			ResourceScripts.core_animations.UnfadeAnimation(CraftModule, 0.3)
 			ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
-			menu_buttons.get_node("CraftButton").pressed = true
 		"sex":
 			SlaveListModule.show()
 			if mansion_state != mansion_prev_state:
@@ -408,7 +424,6 @@ func match_state():
 				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
 			SexSelect.show()
 			sex_handler()
-			menu_buttons.get_node("SexButton").pressed = true
 	
 	rebuild_task_info()
 
@@ -466,23 +481,90 @@ func rebuild_after_turn(day_extras):
 #itself offers. Same place, two things to arrange, so this swaps what the backdrop is drawing
 #rather than opening a screen over it - the slave list and the strip of portraits stay put,
 #which is what people are dragged onto the work from.
-func toggle_local_tasks():
+func tut_get_local_tasks_btn():
+	return LocalTasksButton
+
+
+#Leaving local tasks is pressing the other half of the pair rather than pressing this one
+#again, so the tutorial step that used to say "close it" has its own button to point at.
+func tut_get_mansion_scope_btn():
+	return ViewModes.get_node("Scope/MansionButton")
+
+
+#The estate is looked at one way or the other - the building itself, or the work it offers -
+#so the two buttons put each other out rather than each toggling on its own.
+func set_local_tasks_scope(value):
 	if !RoomsModule.in_mansion():
 		sync_local_tasks_button(RoomsModule.place)
 		return
 	#The local tasks screen fills the space the list would occupy, so opening it with the
 	#list standing up leaves the two overlapping. Folding is remembered as the player's own
 	#choice, so the list stays down until they put it back up themselves.
-	if SlaveListModule != null and SlaveListModule.list_fold_state != SlaveListModule.FOLD_FOLDED:
+	if value and SlaveListModule != null and SlaveListModule.list_fold_state != SlaveListModule.FOLD_FOLDED:
 		SlaveListModule.set_slave_list_fold(SlaveListModule.FOLD_FOLDED, true, true)
-	RoomsModule.set_local_tasks(LocalTasksButton.pressed)
+	RoomsModule.set_local_tasks(value)
+	sync_local_tasks_button(RoomsModule.place)
+
+
+#The salvage bench, opened from the forge. The screen itself is the one the workers' guild used
+#to lend: it reads nothing but the player's own bags, so it works as well over the mansion as
+#it did over the city. Made when it is first asked for rather than kept in the scene, the way
+#the inventory and the game menu are.
+var disassembly = null
+
+
+func open_disassembly():
+	if disassembly == null or !is_instance_valid(disassembly):
+		disassembly = load("res://gui_modules/Exploration/Modules/DisassembleModule.tscn").instance()
+		add_child(disassembly)
+	gui_controller.win_btn_connections_handler(true, disassembly, null)
+	disassembly.show()
+	disassembly.raise()
+	disassembly.open()
+
+
+#Opened from the master's bedroom now, not from the rail down the left - so the window is
+#registered without a button of its own to keep pressed.
+func open_sex_selection():
+	if SexSelect.visible:
+		close_sex_selection()
+		return
+	#open() shows it, raises it and registers it as an open window - there is no button of its
+	#own to pair it with any more, and pairing it with none sent close_scene down a tail that
+	#put the mansion back over the scene it had just started
+	SexSelect.open()
+
+
+func close_sex_selection():
+	SexSelect.hide()
 
 
 func sync_local_tasks_button(_place = null):
 	var at_mansion = RoomsModule.in_mansion()
-	LocalTasksButton.visible = at_mansion
-	LocalTasksButton.pressed = RoomsModule.local_tasks if at_mansion else false
+	var local = RoomsModule.local_tasks if at_mansion else false
+	ViewModes.get_node("Scope").visible = at_mansion
+	LocalTasksButton.pressed = local
+	ViewModes.get_node("Scope/MansionButton").pressed = !local
 	refresh_local_tasks_attention()
+	sync_view_mode_buttons(RoomsModule.mode)
+
+
+#The three buttons are one list: what the plan is arranging, and the estate's own work. Beds
+#are only a thing while the plan is what is drawn, and none of it belongs to another location.
+func set_rooms_mode(value):
+	RoomsModule.set_mode(value)
+	sync_view_mode_buttons(RoomsModule.mode)
+
+
+func sync_view_mode_buttons(value = null):
+	if value == null:
+		value = RoomsModule.mode
+	ViewModes.visible = RoomsModule.in_mansion()
+	ViewModes.get_node("Plan/ModeWork").pressed = value == 'work'
+	ViewModes.get_node("Plan/ModeBeds").pressed = value == 'sleep'
+	#beds belong to the building; the estate's own work has none to arrange, so the button
+	#stays where it is and greys out rather than leaving a hole in the row
+	ViewModes.get_node("Plan/ModeBeds").disabled = !RoomsModule.showing_plan()
 
 
 func rooms_after_turn():
@@ -738,6 +820,36 @@ func show_map():
 	$map.open()
 
 
+#Every costume and every set the doll can draw, dropped in the inventory so a
+#test run can dress anyone in anything without crafting or shopping first.
+#
+#Two lists, because they answer different questions: `geartype == 'costume'` is
+#what the game calls a costume - collars, masks, plugs, the pet suit - while the
+#gear map is what the *doll* has art for, which includes the armour bases nobody
+#would think to look up. Anything in both is added once; `AddItemToInventory`
+#stacks by base, so a second copy would only pile up.
+func stock_the_test_wardrobe():
+	var wanted = []
+	for base in Items.itemlist.keys():
+		if str(Items.itemlist[base].get('geartype', '')) == 'costume':
+			wanted.append(base)
+	for base in DOLL_GEAR.ITEM_PARTS.keys():
+		if !(base in wanted):
+			wanted.append(base)
+	for base in DOLL_GEAR.ALSO.keys():
+		if !(base in wanted):
+			wanted.append(base)
+	var made = 0
+	for base in wanted:
+		if !Items.itemlist.has(base):
+			continue
+		#no achievements: this is a wardrobe handed out by the test switch, not
+		#something anybody found, and the unlock banner it would raise has no panel
+		#to sit in this early in the screen's life
+		globals.AddItemToInventory(globals.CreateGearItem(base, {}), true, false)
+		made += 1
+	print("test mode: %d pieces of gear in the wardrobe" % made)
+
 func test_mode():
 	input_handler.CurrentScene = self
 	gui_controller.mansion = self
@@ -809,6 +921,7 @@ func test_mode():
 		var item = globals.CreateGearItem("strapon", {})
 		globals.AddItemToInventory(item)
 		character.equip(item)
+		stock_the_test_wardrobe()
 		character.set_stat('charm', 100)
 		character.set_stat('wits', 100)
 	#	character.add_stat('wits', 100)

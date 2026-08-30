@@ -498,24 +498,10 @@ margin_bottom = 47.0
 mouse_filter = 2
 custom_constants/separation = 3
 
-[node name="PreferredFood" type="Control" parent="Sections/Overview/Right/Food/Content"]
-margin_right = 31.0
-margin_bottom = 44.0
-rect_min_size = Vector2( 31, 31 )
-
-[node name="Icon" type="TextureRect" parent="Sections/Overview/Right/Food/Content/PreferredFood"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-expand = true
-stretch_mode = 6
-
 [node name="Demand" type="Label" parent="Sections/Overview/Right/Food/Content"]
-margin_left = 34.0
 margin_top = 12.0
-margin_right = 135.0
+margin_right = 147.0
 margin_bottom = 31.0
-mouse_filter = 0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 3 )
@@ -525,10 +511,10 @@ valign = 1
 clip_text = true
 
 [node name="Filter" type="Button" parent="Sections/Overview/Right/Food/Content"]
-margin_left = 138.0
+margin_left = 150.0
 margin_right = 194.0
 margin_bottom = 44.0
-rect_min_size = Vector2( 56, 31 )
+rect_min_size = Vector2( 44, 31 )
 mouse_default_cursor_shape = 2
 theme = ExtResource( 21 )
 custom_fonts/font = SubResource( 3 )
@@ -538,6 +524,17 @@ custom_styles/normal = SubResource( 6 )
 text = "MSLMFOOD"
 clip_text = true
 
+[node name="Icon" type="TextureRect" parent="Sections/Overview/Right/Food/Content/Filter"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
 [node name="Consent" type="PanelContainer" parent="Sections/Overview/Right"]
 margin_top = 176.0
 margin_right = 202.0
@@ -546,19 +543,33 @@ rect_min_size = Vector2( 0, 30 )
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 4 )
 
-[node name="Value" type="Label" parent="Sections/Overview/Right/Consent"]
+[node name="Content" type="HBoxContainer" parent="Sections/Overview/Right/Consent"]
 margin_left = 4.0
-margin_top = 13.0
+margin_top = 3.0
 margin_right = 198.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 0, 24 )
+margin_bottom = 47.0
+mouse_filter = 2
+custom_constants/separation = 3
+
+[node name="Value" type="Label" parent="Sections/Overview/Right/Consent/Content"]
 mouse_filter = 0
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 1, 0.117647, 0.847059, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "SIBLINGMODULECONSENT"
 align = 1
 valign = 1
 clip_text = true
+
+[node name="Expand" type="Button" parent="Sections/Overview/Right/Consent/Content"]
+rect_min_size = Vector2( 31, 31 )
+mouse_default_cursor_shape = 2
+theme = ExtResource( 21 )
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 6 )
+text = ">"
 
 [node name="Relationships" type="PanelContainer" parent="Sections/Overview/Right"]
 margin_top = 232.0

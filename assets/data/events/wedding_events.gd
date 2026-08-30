@@ -79,7 +79,7 @@ var data = {
 	
 	amelia_wedding_1 = {
 		image = null, music = "daisy_theme", tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "amelia", 
+		reqs = [], character = "amelia_wed_body", 
 		text = [{text = "AMELIA_WEDDING_1", reqs = []}],
 		options = [ {
 			code = 'amelia_wedding_2_1', text = "AMELIA_WEDDING_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -90,7 +90,7 @@ var data = {
 	
 	amelia_wedding_2_2 = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = "amelia", 
+		reqs = [], character = "amelia_wed_body", 
 		text = [{text = "AMELIA_WEDDING_2_2", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'complete_quest', value = 'marriage_quest_main'}, {code = 'complete_wedding'} ]
@@ -99,7 +99,7 @@ var data = {
 	
 	amelia_wedding_2_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "amelia", 
+		reqs = [], character = "amelia_wed_body", 
 		text = [{text = "AMELIA_WEDDING_2_1", reqs = []}],
 		options = [ {
 			code = 'amelia_wedding_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
@@ -171,7 +171,7 @@ var data = {
 			reqs = [{type = 'decision', value = 'cali_raped', check = false}], 
 			image = null,
 			music = "cali_theme", tags = ['dialogue_scene'],
-			character = "cali", 
+			character = "cali_wed", 
 			text = [{text = "CALI_WEDDING_GOOD_1", reqs = []}],
 			options = [ {
 				code = 'cali_wedding_2_1', text = "CALI_WEDDING_GOOD_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -182,7 +182,7 @@ var data = {
 			reqs = [], 
 			music = "cali_theme",
 			image = null, tags = ['dialogue_scene'],
-			character = "cali", 
+			character = "cali_wed", 
 			text = [{text = "CALI_WEDDING_BAD_1", reqs = []}],
 			options = [ {
 				code = 'cali_wedding_2_1', text = "CALI_WEDDING_BAD_1_OPTION_1", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
@@ -194,7 +194,7 @@ var data = {
 	
 	cali_wedding_2_2 = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = "cali", 
+		reqs = [], character = "cali_wed", 
 		text = [{text = "CALI_WEDDING_GOOD_2_2", reqs = [], previous_dialogue_option = 2},
 		{text = "CALI_WEDDING_BAD_2_2", reqs = [], previous_dialogue_option = 4}],
 		options = [ {
@@ -204,7 +204,7 @@ var data = {
 	
 	cali_wedding_2_1 = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = "cali", 
+		reqs = [], character = "cali_wed", 
 		text = [{text = "CALI_WEDDING_GOOD_2_1", reqs = [], previous_dialogue_option = 1},
 		{text = "CALI_WEDDING_BAD_2_1", reqs = [], previous_dialogue_option = 3}],
 		options = [ {
@@ -260,7 +260,7 @@ var data = {
 	
 	lilia_wedding_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "lilia", 
+		reqs = [], character = "lilia_wed", 
 		music = "intimate",
 		text = [{text = "LILIA_WEDDING_1", reqs = []}],
 		options = [ {
@@ -338,7 +338,7 @@ var data = {
 	
 	lilith_wedding_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "lilith", 
+		reqs = [], character = "lilith_wed", 
 		music = "intimate",
 		text = [{text = "LILITH_WEDDING_1", reqs = []}],
 		options = [ {
@@ -738,7 +738,7 @@ var data = {
 
 	erdyna_wedding_1 = {
 		image = null, music = "erdyna_theme", tags = ['dialogue_scene'],
-		reqs = [], character = "erdyna",
+		reqs = [], character = "erdyna_wed",
 		text = [{text = "ERDYNA_WEDDING_1", reqs = []}],
 		options = [ {
 			code = 'erdyna_wedding_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
@@ -750,7 +750,7 @@ var data = {
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		unlocked_gallery_seq = "erdyna_wedding",
-		reqs = [], character = "erdyna",
+		reqs = [], character = "erdyna_wed",
 		text = [{text = "ERDYNA_WEDDING_2", reqs = []}],
 		options = [ {code = 'erdyna_wedding_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, ],
 	},
@@ -758,7 +758,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'],
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		reqs = [], character = "erdyna",
+		reqs = [], character = "erdyna_wed",
 		text = [{text = "ERDYNA_WEDDING_3", reqs = []}],
 		options = [ {code = 'erdyna_wedding_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, ],
 	},
@@ -766,7 +766,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'],
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		reqs = [], character = "erdyna",
+		reqs = [], character = "erdyna_wed",
 		text = [{text = "ERDYNA_WEDDING_4", reqs = []}],
 		options = [ {code = 'erdyna_wedding_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, ],
 	},
@@ -774,7 +774,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'],
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		reqs = [], character = "erdyna",
+		reqs = [], character = "erdyna_wed",
 		text = [{text = "ERDYNA_WEDDING_5", reqs = []}],
 		options = [ {code = 'erdyna_wedding_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, ],
 	},
@@ -782,7 +782,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'],
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		reqs = [], character = "erdyna",
+		reqs = [], character = "erdyna_wed",
 		text = [{text = "ERDYNA_WEDDING_6", reqs = []}],
 		options = [ {code = 'erdyna_wedding_7', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, ],
 	},
@@ -790,7 +790,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'],
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		reqs = [], character = "erdyna",
+		reqs = [], character = "erdyna_wed",
 		text = [{text = "ERDYNA_WEDDING_7", reqs = []}],
 		options = [ {code = 'erdyna_wedding_8', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, ],
 	},
@@ -798,7 +798,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'],
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		reqs = [], character = "erdyna",
+		reqs = [], character = "erdyna_wed",
 		text = [{text = "ERDYNA_WEDDING_8", reqs = []}],
 		options = [ {code = 'erdyna_wedding_9', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, ],
 	},
@@ -806,7 +806,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'],
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		reqs = [], character = "erdyna",
+		reqs = [], character = "erdyna_wed",
 		text = [{text = "ERDYNA_WEDDING_9", reqs = []}],
 		options = [ {code = 'erdyna_wedding_10', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, ],
 	},
@@ -814,7 +814,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'],
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		reqs = [], character = "erdyna",
+		reqs = [], character = "erdyna_wed",
 		text = [{text = "ERDYNA_WEDDING_10", reqs = []}],
 		options = [ {code = 'erdyna_wedding_11', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, ],
 	},
@@ -822,7 +822,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		reqs = [], character = "erdyna",
+		reqs = [], character = "erdyna_wed",
 		text = [{text = "ERDYNA_WEDDING_11", reqs = []}],
 		options = [ {code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'complete_quest', value = 'marriage_quest_main'}, {code = 'complete_wedding'} ]}, ],
 	},

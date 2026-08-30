@@ -10,7 +10,6 @@ extends Panel
 
 const MansionLayout = preload("res://src/core/mansion_layout.gd")
 const RoomTypes = preload("res://assets/data/mansion_room_types.gd")
-const RoomUpgrades = preload("res://assets/data/mansion_room_upgrades.gd")
 
 #A finished improvement is lit, not greyed: grey is what a row wears when something is
 #missing, which is the one thing "at its best" does not mean.  The frame is a shared
@@ -20,6 +19,9 @@ const RoomUpgrades = preload("res://assets/data/mansion_room_upgrades.gd")
 #the buttons read as the same gold.  self_modulate paints the panel alone, so the icon,
 #the text and the button inside keep their own colours.
 const MAXED_TINT = Color(2.16, 1.96, 0.77, 1)
+#An improvement waiting on a lesson bought elsewhere. Dimmer than the frame's own colour, so
+#the row reads as "not yet" rather than as "cannot afford".
+const LOCKED_TINT = Color(0.55, 0.55, 0.55, 1)
 const LocationTasks = preload("res://gui_modules/mansion_view/mansion_location_tasks.gd")
 
 #The farm hand whose produce is on show, lit the way the selected panel is on the service
@@ -29,8 +31,6 @@ const SELECTED_TINT = Color(1.35, 1.22, 0.85, 1)
 #what Body's own margins take off the card, top and bottom together
 const BODY_MARGINS = 24
 const DEFAULT_CARD_WIDTH = 460
-#Two ordinary card columns plus Body's side margins and the gap between the columns.
-const PEOPLE_CARD_WIDTH = 900
 #Three catalogue rows side by side leave enough width for the full room prose while keeping
 #all eleven indoor choices comfortably inside the screen.
 const BUILD_CARD_WIDTH = 1332
@@ -47,16 +47,30 @@ var farm_worker = null
 var selected_autobuy_code = ''
 
 
+#What the room IS - what it is for, what it gives the estate, how it may be improved, and
+#whether it stays where it is at all - stands in a panel beside the card. The card itself is
+#what is done in the room this turn and who is doing it, which is what the player came for.
+func details():
+	return view.get_node("Overlay/RoomDetails")
+
+
+func detail(path):
+	return details().get_node("Body/DetailsScroll/DetailsColumn/" + path)
+
+
 func setup(view_node):
 	view = view_node
 	$CloseButton.connect("pressed", view, "close_card")
-	$Body/Columns/LeftScroll/LeftColumn/Actions/MoveButton.connect("pressed", self, "on_move")
+	detail("Actions/MoveButton").connect("pressed", self, "on_move")
 	$Body/Columns/LeftScroll/LeftColumn/Actions/CraftButton.connect("pressed", self, "on_craft")
 	$Body/Columns/LeftScroll/LeftColumn/AutobuyButton.connect(
 		"pressed", self, "open_autobuy_panel")
-	$Body/Columns/LeftScroll/LeftColumn/Actions/DemolishButton.connect("pressed", self, "on_demolish")
+	detail("Actions/DemolishButton").connect("pressed", self, "on_demolish")
 	$Body/Columns/LeftScroll/LeftColumn/RepairButton.connect("pressed", self, "on_repair")
 	$Body/Columns/LeftScroll/LeftColumn/CancelButton.connect("pressed", self, "on_cancel")
+	$Body/Columns/LeftScroll/LeftColumn/SexButton.connect("pressed", self, "open_sex_selection")
+	$Body/Columns/LeftScroll/LeftColumn/InventoryButton.connect("pressed", self, "on_inventory")
+	$Body/Columns/LeftScroll/LeftColumn/SalvageButton.connect("pressed", self, "on_salvage")
 	autobuy_panel().get_node("CloseButton").connect("pressed", self, "close_autobuy_panel")
 	autobuy_panel().get_node("Body/AddRow/AddButton").connect(
 		"pressed", self, "add_autobuy_rule")
@@ -68,7 +82,52 @@ func setup(view_node):
 	style_standing_order_scrollbar(autobuy_panel().get_node(
 		"ChoicePopup/ListPanel/ChoiceScroll"))
 	style_standing_order_scrollbar(autosell_panel().get_node("Body/RuleScroll"))
+	style_standing_order_scrollbar($Body/Columns/LeftScroll)
+	style_standing_order_scrollbar($Body/Columns/LeftScroll/LeftColumn/PeopleColumn/CandidateScroll)
+	style_standing_order_scrollbar(details().get_node("Body/DetailsScroll"))
+	register_tutorial_buttons()
 	visible = false
+
+
+#### the hard tutorial ####
+
+#The card is one panel that puts on four faces, so which of these answers anything depends on
+#the slot it is currently open on. A face that is not showing answers null and the tutorial
+#simply keeps looking - see mansion_view.register_tutorial_buttons().
+func register_tutorial_buttons():
+	input_handler.register_btn_source('mansion_repair_btn', self, 'tut_get_repair_btn')
+	input_handler.register_btn_source('mansion_card_craft_btn', self, 'tut_get_craft_btn')
+	input_handler.register_btn_source('mansion_build_kitchen', self, 'tut_get_build_kitchen_btn')
+	input_handler.register_btn_source('mansion_card_inventory_btn', self, 'tut_get_inventory_btn')
+
+
+func tut_get_repair_btn():
+	var button = $Body/Columns/LeftScroll/LeftColumn/RepairButton
+	return button if visible and button.visible else null
+
+
+func tut_get_inventory_btn():
+	var button = $Body/Columns/LeftScroll/LeftColumn/InventoryButton
+	return button if visible and button.visible else null
+
+
+func tut_get_craft_btn():
+	var button = $Body/Columns/LeftScroll/LeftColumn/Actions/CraftButton
+	return button if visible and button.visible else null
+
+
+#The catalogue is rebuilt row by row on every open, and each row remembers which room it
+#offers (setup_build_row), so the kitchen is found by what it builds rather than by position -
+#the list is filtered by what the slot will take and the order is not fixed.
+func tut_get_build_kitchen_btn():
+	if !visible or !$Body/BuildList.visible:
+		return null
+	for row in $Body/BuildList.get_children():
+		if row.is_queued_for_deletion() or !row.visible:
+			continue
+		if row.get_meta('type', '') == 'kitchen':
+			return row.get_node('Action')
+	return null
 
 
 func open(code, anchor_rect):
@@ -79,6 +138,7 @@ func open(code, anchor_rect):
 	settle_body()
 	fit_to_body()
 	position_near(anchor_rect)
+	place_details()
 
 
 #The card was a fixed 420x780 whatever it had to say. Floating over the whole screen rather
@@ -89,8 +149,8 @@ func fit_to_body():
 	var columns_minimum = $Body/Columns.get_combined_minimum_size().y
 	var left_minimum = $Body/Columns/LeftScroll/LeftColumn.get_combined_minimum_size().y
 	var people_minimum = 0.0
-	if $Body/Columns/PeopleColumn.visible:
-		people_minimum = $Body/Columns/PeopleColumn.get_combined_minimum_size().y
+	if $Body/Columns/LeftScroll/LeftColumn/PeopleColumn.visible:
+		people_minimum = $Body/Columns/LeftScroll/LeftColumn/PeopleColumn.get_combined_minimum_size().y
 	var content_minimum = max(left_minimum, people_minimum)
 	var wanted = body_minimum + max(0.0, content_minimum - columns_minimum) + BODY_MARGINS
 	rect_size = Vector2(rect_size.x, min(wanted, get_viewport_rect().size.y - 16))
@@ -108,33 +168,95 @@ func settle_body():
 
 
 func settle_container(node):
+	#Parents first. A container sizes its children, so sorting a row before the column above it
+	#has decided how wide that row is lays the row out against a width it is about to lose -
+	#which is how the title's mark ended up sitting at the width it was drawn with in the editor
+	#rather than beside the name.
+	node.notification(Container.NOTIFICATION_SORT_CHILDREN)
 	for child in node.get_children():
 		if child is Container:
 			settle_container(child)
-	node.notification(Container.NOTIFICATION_SORT_CHILDREN)
 
 
-#The narrow card stays tied to its slot. Wide cards cover enough of the mansion that following
-#an edge slot makes them look stranded against the screen edge, so those use the viewport itself.
-func position_near(anchor_rect):
+#The card is half of a pair now - the room on the left, what the room is on the right - and
+#between them they are most of the screen wide. Chasing the slot with that put one half or the
+#other against an edge, so the pair opens in the middle and the plan is what stays put.
+func position_near(_anchor_rect = null):
 	var screen = get_viewport_rect().size
+	var pair = rect_size.x
+	if details().visible:
+		pair += DETAILS_GAP + DETAILS_WIDTH
 	var pos = Vector2()
-	var wide = $Body/BuildList.visible or $Body/Columns/PeopleColumn.visible
-	if wide:
-		pos.x = (screen.x - rect_size.x) / 2.0
-		pos.y = (screen.y - rect_size.y) / 2.0 if rect_size.y < screen.y else 8.0
-	else:
-		pos = Vector2(anchor_rect.end.x + 12, anchor_rect.position.y)
-		if pos.x + rect_size.x > screen.x - 8:
-			pos.x = anchor_rect.position.x - rect_size.x - 12
-		#A card is nearly as tall as the screen, so top-aligning it to a slot in the bottom row
-		#would clamp it all the way back up to the top - the far end of the screen from the room
-		#it is describing. Aligning its bottom to the slot's keeps the two together instead.
-		if pos.y + rect_size.y > screen.y - 8:
-			pos.y = anchor_rect.end.y - rect_size.y
-	pos.x = clamp(pos.x, 8, max(8, screen.x - rect_size.x - 8))
+	pos.x = (screen.x - pair) / 2.0
+	pos.y = (screen.y - rect_size.y) / 2.0 if rect_size.y < screen.y else 8.0
+	pos.x = clamp(pos.x, 8, max(8, screen.x - pair - 8))
 	pos.y = clamp(pos.y, 8, max(8, screen.y - rect_size.y - 8))
 	rect_global_position = pos
+
+
+#The panel stands against the card's right edge and matches its height, so the two read as one
+#thing in two halves rather than as a window that happens to be open nearby. If the screen ends
+#before it does, it goes to the card's other side instead.
+const DETAILS_GAP = 12
+#one card's worth, so the pair reads as two halves of the same thing
+const DETAILS_WIDTH = 460
+
+
+func place_details():
+	var panel = details()
+	if !panel.visible:
+		return
+	var screen = get_viewport_rect().size
+	#Matching the card's height squeezed a room's whole improvement list into whatever the card
+	#happened to need, which for a room with two work slots is nothing at all. The panel asks
+	#its own sections how tall they are, the way the card does, and stops at the screen.
+	settle_container(panel.get_node("Body"))
+	var body = panel.get_node("Body")
+	var column = body.get_node("DetailsScroll/DetailsColumn")
+	var wanted = column.get_combined_minimum_size().y + BODY_MARGINS
+	panel.rect_size = Vector2(panel.rect_size.x,
+		clamp(max(wanted, rect_size.y), 120, screen.y - 16))
+	#the pair was centred as one; each half is settled on the middle line of its own height so
+	#a tall list of improvements does not hang off the bottom beside a short card
+	var x = rect_global_position.x + rect_size.x + DETAILS_GAP
+	var y = clamp((screen.y - panel.rect_size.y) / 2.0, 8, max(8, screen.y - panel.rect_size.y - 8))
+	panel.rect_global_position = Vector2(max(8, x), y)
+	settle_container(panel.get_node("Body"))
+
+
+#The room's own prose, its bonuses, what may be done to the building and how far it can be
+#improved. Empty ground has none of that - the card is a catalogue there - so the panel stays
+#away until there is a room to talk about.
+func build_details():
+	var panel = details()
+	panel.visible = visible and !$Body/BuildList.visible
+	if !panel.visible:
+		return
+	var room_data = room()
+	#Moving a room and pulling it down are things done to a room. Rubble has none - it is
+	#cleared out, which is the card's own button - and neither has a slot with scaffolding on
+	#it and nothing underneath. Both buttons are set up in build_for_room(), so leaving the row
+	#showing here would also show whatever state the last room left on them.
+	detail("Actions").visible = room_data != null and (detail("Actions/MoveButton").visible
+		or !detail("Actions/DemolishButton").disabled)
+	var hint = "" if room_data == null else tr(RoomTypes.get_descript_key(room_data.type))
+	var help = $Body/Columns/LeftScroll/LeftColumn/TitleRow/HelpButton
+	#only the rooms that ask for it - see 'help' in mansion_room_types.gd
+	help.visible = hint != "" and RoomTypes.shows_help(room_data.type)
+	if help.visible:
+		globals.connecttexttooltip(help, hint, true, view.get_node("Overlay/TextTooltip"))
+	#Rubble has nothing to say here - no bonuses, nothing to move or pull down, nothing to
+	#improve - and an empty panel standing beside the card is worse than no panel. Asked of the
+	#sections themselves rather than of the slot's state, so a room that happens to have none
+	#of the four is treated the same way.
+	panel.visible = has_details()
+
+
+func has_details():
+	for section in details().get_node("Body/DetailsScroll/DetailsColumn").get_children():
+		if section.visible:
+			return true
+	return false
 
 
 func room():
@@ -149,13 +271,20 @@ func rebuild():
 	pending_demolish = ''
 	$Body/Columns/LeftScroll.scroll_vertical = 0
 	set_card_width(DEFAULT_CARD_WIDTH)
-	$Body/Columns/PeopleColumn.visible = false
-	$Body/Columns/PeopleColumn/CandidateScroll.visible = false
+	$Body/Columns/LeftScroll/LeftColumn/PeopleColumn.visible = false
+	$Body/Columns/LeftScroll/LeftColumn/PeopleColumn/CandidateScroll.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/Actions/CraftButton.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/AutobuyButton.visible = false
+	$Body/Columns/LeftScroll/LeftColumn/InventoryButton.visible = false
+	$Body/Columns/LeftScroll/LeftColumn/SalvageButton.visible = false
+	#Set again by build_details() for a room that asks for it. Cleared here because that runs
+	#only when there is a room to explain: on empty ground the card is a catalogue, and the
+	#mark was left standing beside "Build here" from whatever was opened before it.
+	$Body/Columns/LeftScroll/LeftColumn/TitleRow/HelpButton.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/OrderHeader.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/OrderList.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/FarmList.visible = false
+	$Body/Columns/LeftScroll/LeftColumn/FarmHeader.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/CancelButton.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/YieldHeader.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/YieldList.visible = false
@@ -163,8 +292,8 @@ func rebuild():
 	$Body/Columns/LeftScroll/LeftColumn/ResidentsGrid.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/CompanionHeader.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/CompanionGrid.visible = false
-	$Body/Columns/LeftScroll/LeftColumn/UpgradeHeader.visible = false
-	$Body/Columns/LeftScroll/LeftColumn/UpgradeList.visible = false
+	detail("UpgradeHeader").visible = false
+	detail("UpgradeList").visible = false
 	match MansionLayout.slot_status(view.current_floor(), slot_code):
 		'broken':
 			build_for_broken()
@@ -176,6 +305,16 @@ func rebuild():
 			build_for_room(room())
 	update_column_layout()
 	update_text_sections()
+	#Above the catalogue the column holds nothing but the words "Build here". Told to stretch it
+	#opened a band of empty board between the title and the first room on offer; told to shrink
+	#it collapsed to nothing, because a ScrollContainer asks for no height of its own. So it is
+	#given the height its one row actually needs - measured after the empty sections are hidden.
+	var scroll = $Body/Columns/LeftScroll
+	var band = 0.0
+	if $Body/BuildList.visible:
+		band = scroll.get_node("LeftColumn").get_combined_minimum_size().y
+	scroll.rect_min_size.y = band
+	build_details()
 
 
 func set_card_width(width):
@@ -187,23 +326,21 @@ func set_card_width(width):
 #both its minimum width and the HBox gap, so rooms without places keep the compact card.
 #The catalogue is deliberately outside Columns and therefore keeps all three rows abreast.
 func update_column_layout():
-	var people = $Body/Columns/PeopleColumn
-	people.visible = $Body/Columns/PeopleColumn/Occupants.visible \
-		or $Body/Columns/PeopleColumn/CandidateScroll.visible
-	if $Body/BuildList.visible:
-		set_card_width(BUILD_CARD_WIDTH)
-	elif people.visible:
-		set_card_width(PEOPLE_CARD_WIDTH)
-	else:
-		set_card_width(DEFAULT_CARD_WIDTH)
+	var people = $Body/Columns/LeftScroll/LeftColumn/PeopleColumn
+	people.visible = $Body/Columns/LeftScroll/LeftColumn/PeopleColumn/Occupants.visible \
+		or $Body/Columns/LeftScroll/LeftColumn/PeopleColumn/CandidateScroll.visible
+	set_card_width(BUILD_CARD_WIDTH if $Body/BuildList.visible else DEFAULT_CARD_WIDTH)
+	#Above the catalogue the column holds nothing but the words "Build here". Left stretching,
+	#it took every pixel the card had spare and opened a band of empty board between the title
+	#and the first room on offer.
+	$Body/Columns.size_flags_vertical = 0 if $Body/BuildList.visible else SIZE_EXPAND_FILL
 
 
 #Empty card sections should take no space. The fixed minimums on the wrapped labels are
 #needed when they contain text, but were leaving a large blank middle in build and repair
 #cards when their strings were deliberately empty.
 func update_text_sections():
-	for path in ['Subtitle', 'Descript', 'Functions']:
-		var label = $Body/Columns/LeftScroll/LeftColumn.get_node(path)
+	for label in [$Body/Columns/LeftScroll/LeftColumn/Subtitle, $Body/Columns/LeftScroll/LeftColumn/Descript, detail("Functions")]:
 		label.visible = label.text.strip_edges() != ''
 	fit_wrapped_label($Body/Columns/LeftScroll/LeftColumn/Descript)
 
@@ -241,11 +378,11 @@ func content_fits_card():
 #### broken ####
 
 func build_for_broken():
-	$Body/Columns/LeftScroll/LeftColumn/Title.text = tr("MANSIONVIEW_BROKEN")
+	$Body/Columns/LeftScroll/LeftColumn/TitleRow/Title.text = tr("MANSIONVIEW_BROKEN")
 	$Body/Columns/LeftScroll/LeftColumn/Subtitle.text = ""
 	$Body/Columns/LeftScroll/LeftColumn/Descript.text = tr("MANSIONVIEW_BROKENHINT")
-	$Body/Columns/LeftScroll/LeftColumn/Functions.text = ""
-	$Body/Columns/PeopleColumn/Occupants.visible = false
+	detail("Functions").text = ""
+	$Body/Columns/LeftScroll/LeftColumn/PeopleColumn/Occupants.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/Actions.visible = false
 	$Body/BuildList.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/RepairButton.visible = true
@@ -257,12 +394,16 @@ func build_for_broken():
 #A slot with scaffolding on it: what is going up, how far along, and the way out.
 func build_for_scaffolding():
 	var build = build_data()
-	$Body/Columns/LeftScroll/LeftColumn/Title.text = view.build_label(build)
+	$Body/Columns/LeftScroll/LeftColumn/TitleRow/Title.text = view.build_label(build)
 	$Body/Columns/LeftScroll/LeftColumn/Subtitle.text = view.build_eta_text(build)
-	$Body/Columns/LeftScroll/LeftColumn/Descript.text = tr("MANSIONVIEW_BUILDINGHINT")
-	$Body/Columns/LeftScroll/LeftColumn/Functions.text = "%s %d%%" % [tr("MANSIONVIEW_PROGRESS"),
+	#How far along the work is belongs beside the hint about it, in the card. Left in the side
+	#panel it was the only thing standing there, which made a whole second panel open to say
+	#one line.
+	$Body/Columns/LeftScroll/LeftColumn/Descript.text = "%s\n%s %d%%" % [
+		tr("MANSIONVIEW_BUILDINGHINT"), tr("MANSIONVIEW_PROGRESS"),
 		int(build.progress * 100.0 / max(1.0, build.limit))]
-	$Body/Columns/PeopleColumn/Occupants.visible = false
+	detail("Functions").text = ""
+	build_builder_places(build)
 	$Body/Columns/LeftScroll/LeftColumn/Actions.visible = false
 	$Body/BuildList.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/RepairButton.visible = false
@@ -270,15 +411,30 @@ func build_for_scaffolding():
 	$Body/Columns/LeftScroll/LeftColumn/CancelButton.text = tr("MANSIONVIEW_CANCELBUILD")
 
 
+#Scaffolding has places of its own - one always, more if the household's builders upgrade has
+#widened it - and they were only ever drawn on the plan behind the card. A card that says
+#nobody is building this should be the place to do something about it.
+func build_builder_places(build):
+	var section = $Body/Columns/LeftScroll/LeftColumn/PeopleColumn/Occupants
+	var places = MansionLayout.build_capacity(room(),
+		ResourceScripts.game_res.extra_builder_slots())
+	section.visible = places > 0
+	$Body/Columns/LeftScroll/LeftColumn/PeopleColumn/Companions.visible = false
+	if !section.visible:
+		return
+	fill_people_group(section, tr("MANSIONVIEW_BUILDERS"), view.build_workers(build),
+		places, true, false, false, true)
+
+
 #### empty: what can be built here ####
 
 func build_for_empty():
 	set_card_width(BUILD_CARD_WIDTH)
-	$Body/Columns/LeftScroll/LeftColumn/Title.text = tr("MANSIONVIEW_BUILDHERE")
+	$Body/Columns/LeftScroll/LeftColumn/TitleRow/Title.text = tr("MANSIONVIEW_BUILDHERE")
 	$Body/Columns/LeftScroll/LeftColumn/Subtitle.text = ""
 	$Body/Columns/LeftScroll/LeftColumn/Descript.text = ""
-	$Body/Columns/LeftScroll/LeftColumn/Functions.text = ""
-	$Body/Columns/PeopleColumn/Occupants.visible = false
+	detail("Functions").text = ""
+	$Body/Columns/LeftScroll/LeftColumn/PeopleColumn/Occupants.visible = false
 	#an empty slot is somewhere a room is moved to, not a thing that gets moved: it has
 	#nothing to carry, so there is nothing here to act on either
 	$Body/Columns/LeftScroll/LeftColumn/Actions.visible = false
@@ -310,7 +466,10 @@ func setup_build_row(row, code, data, check):
 	row.get_node('Bonus').visible = false
 	row.get_node('Icon').texture = images.upgrade_icons[data.icon] \
 		if images.upgrade_icons.has(data.icon) else load("res://assets/Textures_v2/icon_question_small.png")
-	build_cost_icons(row.get_node('Costs'), data.build_cost)
+	build_cost_icons(row.get_node('Costs'), data.build_cost, data.get('build_progress', 0))
+	var strip = cost_strip_height(row.get_node('Costs'))
+	row.get_node('Costs').margin_bottom = row.get_node('Costs').margin_top + strip
+	row.rect_min_size.y = max(84.0, row.get_node('Costs').margin_bottom + 4)
 
 	var affordable = view.can_afford(data.build_cost)
 	var action = row.get_node('Action')
@@ -372,17 +531,20 @@ func build_for_room(current):
 	$Body/BuildList.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/RepairButton.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/Actions.visible = true
-	$Body/Columns/LeftScroll/LeftColumn/Title.text = tr(RoomTypes.get_name_key(current.type))
+	$Body/Columns/LeftScroll/LeftColumn/TitleRow/Title.text = tr(RoomTypes.get_name_key(current.type))
 	#Capacity belongs to the people section below; printing it here as well made the card
 	#announce the same Beds/Workplaces count twice.
 	$Body/Columns/LeftScroll/LeftColumn/Subtitle.text = ""
 	$Body/Columns/LeftScroll/LeftColumn/Descript.text = tr(RoomTypes.get_descript_key(current.type))
-	$Body/Columns/LeftScroll/LeftColumn/Functions.text = upgrades_text(current)
+	detail("Functions").text = upgrades_text(current)
 	build_yield_list(current)
 	build_craft_button(current)
+	build_sex_button(current)
+	build_salvage_button(current)
+	build_inventory_button(current)
 	build_autobuy_button(current)
 
-	$Body/Columns/LeftScroll/LeftColumn/Actions/DemolishButton.disabled = !MansionLayout.can_demolish(view.layout(), view.floor_index(), slot_code).ok
+	detail("Actions/DemolishButton").disabled = !MansionLayout.can_demolish(view.layout(), view.floor_index(), slot_code).ok
 	build_move_button()
 	build_people(current)
 	build_order_list(current)
@@ -409,11 +571,76 @@ func craft_category_of(current):
 	return job if screen.craftcategories.has(job) else null
 
 
+#The trade itself rather than "open the craft menu": the room is a forge or a still, and the
+#button that opens its bench should read as the thing it makes. The name is taken from the
+#craft screen's own category button, so the two cannot end up calling it different things -
+#their keys are not built to a pattern (BLACKSMITH, TASKCOOKING, CRAFTTAILORING...).
+func craft_category_name(job):
+	var screen = craft_screen()
+	var path = "categories/%s/Label" % str(job)
+	if screen == null or !screen.has_node(path):
+		return tr("MANSIONVIEW_CRAFT")
+	return tr(screen.get_node(path).text)
+
+
 func build_craft_button(current):
 	var button = $Body/Columns/LeftScroll/LeftColumn/Actions/CraftButton
-	button.visible = craft_category_of(current) != null
+	var job = craft_category_of(current)
+	button.visible = job != null
 	if button.visible:
-		button.text = tr("MANSIONVIEW_CRAFT")
+		button.text = craft_category_name(job)
+
+
+#Arranging a night is a thing done in the master's own room rather than from a rail of icons
+#down the side of the screen, which is where it used to hang with no bed anywhere near it.
+func build_sex_button(current):
+	var button = $Body/Columns/LeftScroll/LeftColumn/SexButton
+	button.visible = RoomTypes.get_type(current.type).master_only
+	if button.visible:
+		button.text = tr("LMMDATE")
+
+
+func open_sex_selection():
+	var mansion = view.get_parent()
+	if mansion == null or !mansion.has_method('open_sex_selection'):
+		return
+	view.close_card()
+	mansion.open_sex_selection()
+
+
+#What the estate keeps is kept here, so the shelves are where the chest is opened from. The
+#screen it opens is the one the rail opens, asked for through the rail itself rather than
+#opened a second way of its own.
+#The bench in the forge: taking gear apart for its materials. Only once it is built - the row
+#in the improvements panel is where it comes from.
+func build_salvage_button(current):
+	var button = $Body/Columns/LeftScroll/LeftColumn/SalvageButton
+	button.visible = MansionLayout.upgrade_level(current, 'salvage_bench') > 0
+	if button.visible:
+		button.text = tr("MANSIONVIEW_SALVAGE")
+
+
+func on_salvage():
+	var mansion = view.get_parent()
+	if mansion == null or !mansion.has_method('open_disassembly'):
+		return
+	view.close_card()
+	mansion.open_disassembly()
+
+
+func build_inventory_button(current):
+	var button = $Body/Columns/LeftScroll/LeftColumn/InventoryButton
+	button.visible = RoomTypes.has_tag(current.type, 'storage')
+	if button.visible:
+		button.text = tr("LMMINVENTORY")
+
+
+func on_inventory():
+	var mansion = view.get_parent()
+	if mansion == null or mansion.get("MenuModule") == null:
+		return
+	view.close_card()
+	mansion.MenuModule.open_inventory()
 
 
 func build_autobuy_button(current):
@@ -778,7 +1005,7 @@ func build_craft_row(current):
 #Moving a room starts here rather than from a mode button on the top bar: the room is
 #picked up from its own card, and the screen then waits for somewhere to put it.
 func build_move_button():
-	var button = $Body/Columns/LeftScroll/LeftColumn/Actions/MoveButton
+	var button = detail("Actions/MoveButton")
 	#Nothing out on the grounds is moved: a plot is a piece of ground with a building on it,
 	#not a room in a plan that can trade places with another. The button is taken away rather
 	#than greyed out - there is no arrangement out there for it to be part of.
@@ -823,13 +1050,13 @@ func build_upgrade_list(current):
 	$Body/Columns/LeftScroll/LeftColumn/CancelButton.visible = build != null
 	if build != null:
 		$Body/Columns/LeftScroll/LeftColumn/CancelButton.text = tr("MANSIONVIEW_CANCELBUILD")
-	input_handler.ClearContainer($Body/Columns/LeftScroll/LeftColumn/UpgradeList, ['Row'])
+	input_handler.ClearContainer(detail("UpgradeList"), ['Row'])
 	var codes = RoomTypes.get_type(current.type).upgrades
-	$Body/Columns/LeftScroll/LeftColumn/UpgradeHeader.visible = !codes.empty()
-	$Body/Columns/LeftScroll/LeftColumn/UpgradeHeader.text = tr("MANSIONVIEW_ROOMUPGRADES")
-	$Body/Columns/LeftScroll/LeftColumn/UpgradeList.visible = !codes.empty()
+	detail("UpgradeHeader").visible = !codes.empty()
+	detail("UpgradeHeader").text = tr("MANSIONVIEW_ROOMUPGRADES")
+	detail("UpgradeList").visible = !codes.empty()
 	for code in codes:
-		var row = input_handler.DuplicateContainerTemplate($Body/Columns/LeftScroll/LeftColumn/UpgradeList, 'Row')
+		var row = input_handler.DuplicateContainerTemplate(detail("UpgradeList"), 'Row')
 		setup_upgrade_row(row, current, code, build)
 
 
@@ -837,16 +1064,16 @@ func build_upgrade_list(current):
 #its icon, level, effect and material cost visible; only Action is clickable.
 func setup_upgrade_row(row, current, code, build):
 	var level = MansionLayout.upgrade_level(current, code)
-	var max_level = RoomUpgrades.max_level(code)
+	var max_level = RoomTypes.max_level(code, current.type)
 	var next_level = level + 1
-	var level_data = RoomUpgrades.get_level_data(code, next_level)
-	var upgrade_data = RoomUpgrades.get_upgrade(code)
+	var level_data = RoomTypes.get_level_data(code, next_level, current.type)
+	var upgrade_data = RoomTypes.get_upgrade(code, current.type)
 
 	row.self_modulate = Color(1, 1, 1, 1)
 	row.set_meta('type', code)
-	row.get_node('Title').text = tr(RoomUpgrades.get_name_key(code))
+	row.get_node('Title').text = tr(RoomTypes.get_upgrade_name_key(code))
 	row.get_node('Level').text = "%d/%d" % [level, max_level]
-	row.get_node('Descript').text = tr(RoomUpgrades.get_descript_key(code))
+	row.get_node('Descript').text = tr(RoomTypes.get_upgrade_descript_key(code))
 	var icon_code = upgrade_data.get('icon', RoomTypes.get_type(current.type).icon)
 	row.get_node('Icon').texture = images.upgrade_icons[icon_code] \
 		if images.upgrade_icons.has(icon_code) else null
@@ -860,14 +1087,19 @@ func setup_upgrade_row(row, current, code, build):
 	#level beside the title already says 3/3, and the row is tinted for it besides.
 	action.visible = !maxed
 	if maxed:
-		row.get_node('Bonus').text = tr(RoomUpgrades.get_bonus_key(code, level)) if level > 0 else ""
+		row.get_node('Bonus').text = tr(RoomTypes.get_upgrade_bonus_key(code, level)) if level > 0 else ""
 		row.self_modulate = MAXED_TINT
-		build_cost_icons(row.get_node('Costs'), {})
+		build_cost_icons(row.get_node('Costs'), {}, 0)
 	else:
-		row.get_node('Bonus').text = tr(RoomUpgrades.get_bonus_key(code, next_level))
-		build_cost_icons(row.get_node('Costs'), level_data.cost)
+		row.get_node('Bonus').text = tr(RoomTypes.get_upgrade_bonus_key(code, next_level))
+		build_cost_icons(row.get_node('Costs'), level_data.cost,
+			level_data.get('progress', 0))
 		var check = MansionLayout.can_start_upgrade(view.layout(), view.floor_index(), slot_code, code)
-		action.disabled = !check.ok or !view.can_afford(level_data.cost)
+		var locked = ResourceScripts.game_res.upgrade_locked(code)
+		action.disabled = locked or !check.ok or !view.can_afford(level_data.cost)
+		if locked:
+			#greyed rather than hidden: the row is how the player learns the bench exists at all
+			row.self_modulate = LOCKED_TINT
 		if build != null and build.kind == 'upgrade' and build.target == code:
 			action.text = "%d%%" % int(build.progress * 100.0 / max(1.0, build.limit))
 			row.self_modulate = Color(1.15, 1.08, 0.78, 1)
@@ -877,9 +1109,12 @@ func setup_upgrade_row(row, current, code, build):
 	#explained by the row, not by the button - see the note in setup_build_row().  A maxed
 	#improvement gets no tooltip at all: it would only repeat the level and the bonus the
 	#row is already showing, and there is no next step left to describe.
-	if !maxed:
+	if !maxed and ResourceScripts.game_res.upgrade_locked(code):
+		globals.connecttexttooltip(row, tr("MANSIONVIEW_UPGRADELOCKED"), true,
+			view.get_node("Overlay/TextTooltip"))
+	elif !maxed:
 		#an improvement with nothing left to add says nothing rather than opening an empty panel
-		var hint = upgrade_hint(code, level, next_level)
+		var hint = upgrade_hint(code, level, next_level, current.type)
 		if hint != "":
 			globals.connecttexttooltip(row, hint, true,
 				view.get_node("Overlay/TextTooltip"), self)
@@ -897,7 +1132,7 @@ func fit_decision_row(row):
 	bonus.margin_bottom = bonus.margin_top + wrapped_height(bonus)
 	var costs = row.get_node('Costs')
 	costs.margin_top = bonus.margin_bottom + 2
-	costs.margin_bottom = costs.margin_top + 29
+	costs.margin_bottom = costs.margin_top + max(29, cost_strip_height(costs) + 3)
 	var action = row.get_node('Action')
 	action.margin_top = costs.margin_top
 	action.margin_bottom = costs.margin_bottom
@@ -928,19 +1163,19 @@ func catalogue_descriptions_fit():
 
 
 func upgrade_descriptions_fit():
-	for row in $Body/Columns/LeftScroll/LeftColumn/UpgradeList.get_children():
+	for row in detail("UpgradeList").get_children():
 		if !row.visible:
 			continue
 		var descript = row.get_node('Descript')
 		var code = row.get_meta('type')
-		if !descript.visible or descript.text != tr(RoomUpgrades.get_descript_key(code)) \
+		if !descript.visible or descript.text != tr(RoomTypes.get_upgrade_descript_key(code)) \
 				or !wrapped_label_fits(descript):
 			return false
 	return true
 
 
 func upgrade_bonuses_fit():
-	for row in $Body/Columns/LeftScroll/LeftColumn/UpgradeList.get_children():
+	for row in detail("UpgradeList").get_children():
 		if !row.visible:
 			continue
 		var bonus = row.get_node('Bonus')
@@ -951,7 +1186,16 @@ func upgrade_bonuses_fit():
 
 #Each resource is its own small readout. A red number answers why the action is unavailable
 #without making the player parse a comma-separated sentence on the button.
-func build_cost_icons(holder, cost):
+#The strip a room's price is written on: one cell per material, three to a line, and the work
+#the job itself takes as a last cell - a cost like any other, and the one the player is paying
+#in days rather than in stock.
+const COST_COLUMNS = 3
+const COST_ROW_HEIGHT = 26
+const COST_ROW_GAP = 3
+const ICON_WORK = preload("res://assets/images/gui/inventory/tool_hammer.png")
+
+
+func build_cost_icons(holder, cost, work = 0):
 	input_handler.ClearContainer(holder, ['Cost'])
 	for resource_code in cost:
 		var cell = input_handler.DuplicateContainerTemplate(holder, 'Cost')
@@ -972,16 +1216,33 @@ func build_cost_icons(holder, cost):
 		cell.get_node('Amount').text = str(needed)
 		cell.get_node('Amount').set('custom_colors/font_color',
 			Color(0.95, 0.35, 0.35) if owned < needed else Color(0.88, 0.88, 0.88))
+	if work > 0:
+		var cell = input_handler.DuplicateContainerTemplate(holder, 'Cost')
+		cell.get_node('Icon').texture = ICON_WORK
+		cell.get_node('Amount').text = str(int(work))
+		cell.get_node('Amount').set('custom_colors/font_color', Color(0.88, 0.88, 0.88))
+		globals.connecttexttooltip(cell, tr("MANSIONVIEW_WORKCOST"), true,
+			view.get_node("Overlay/TextTooltip"))
+
+
+#How tall the strip turned out, now that it wraps.
+func cost_strip_height(holder):
+	var cells = 0
+	for cell in holder.get_children():
+		if cell.visible:
+			cells += 1
+	var lines = int(max(1, ceil(float(cells) / COST_COLUMNS)))
+	return lines * COST_ROW_HEIGHT + (lines - 1) * COST_ROW_GAP
 
 
 #Same rule as build_hint(): the row already carries the description and the bonus the next
 #level would bring, so the panel adds what it cannot show - what the room has from the level
 #it is on now, and what the next one costs in work.
-func upgrade_hint(code, level, next_level):
+func upgrade_hint(code, level, next_level, room_code = null):
 	var parts = []
 	if level > 0:
-		parts.append("%s: %s" % [tr("MANSIONVIEW_NOW"), tr(RoomUpgrades.get_bonus_key(code, level))])
-	var level_data = RoomUpgrades.get_level_data(code, next_level)
+		parts.append("%s: %s" % [tr("MANSIONVIEW_NOW"), tr(RoomTypes.get_upgrade_bonus_key(code, level))])
+	var level_data = RoomTypes.get_level_data(code, next_level, room_code)
 	if level_data != null:
 		parts.append(tr("MANSIONVIEW_WORKUNITS") % int(level_data.progress))
 	return PoolStringArray(parts).join("\n")
@@ -999,7 +1260,7 @@ func build_people(current):
 	if gather != null:
 		occupants = LocationTasks.workers_of(gather.id)
 		capacity = int(gather.max_workers)
-		$Body/Columns/PeopleColumn/Occupants.visible = capacity > 0
+		$Body/Columns/LeftScroll/LeftColumn/PeopleColumn/Occupants.visible = capacity > 0
 	#The master's own bed is held for him however many are added beside it, so while beds are
 	#being arranged his room is two groups rather than one list whose first line happens to be
 	#his. The same split the card shows while work is arranged, made of real slots here: these
@@ -1009,8 +1270,8 @@ func build_people(current):
 	#whether a habit can be worked out of anybody at all, and only somebody who can teach may
 	#stand there. Drawn apart for the same reason the master's own bed is.
 	var tutor_places = 0 if sleeping else MansionLayout.special_work_slots(current)
-	$Body/Columns/PeopleColumn/Companions.visible = split or tutor_places > 0
-	$Body/Columns/PeopleColumn/Occupants.visible = capacity > 0
+	$Body/Columns/LeftScroll/LeftColumn/PeopleColumn/Companions.visible = split or tutor_places > 0
+	$Body/Columns/LeftScroll/LeftColumn/PeopleColumn/Occupants.visible = capacity > 0
 	if capacity <= 0:
 		return
 	if tutor_places > 0:
@@ -1019,9 +1280,9 @@ func build_people(current):
 		for char_id in occupants:
 			if char_id != tutor:
 				students.append(char_id)
-		fill_people_group($Body/Columns/PeopleColumn/Occupants,
+		fill_people_group($Body/Columns/LeftScroll/LeftColumn/PeopleColumn/Occupants,
 			tr("MANSIONVIEW_WORKPLACES"), students, max(0, capacity - tutor_places), true, false)
-		fill_people_group($Body/Columns/PeopleColumn/Companions, tr("MANSIONVIEW_TUTORSLOT"),
+		fill_people_group($Body/Columns/LeftScroll/LeftColumn/PeopleColumn/Companions, tr("MANSIONVIEW_TUTORSLOT"),
 			[] if tutor == null else [tutor], tutor_places, false, false, true)
 		return
 	if split:
@@ -1033,16 +1294,16 @@ func build_people(current):
 				master = char_id
 			else:
 				companions.append(char_id)
-		fill_people_group($Body/Columns/PeopleColumn/Occupants, tr("MANSIONVIEW_MASTERBED"),
+		fill_people_group($Body/Columns/LeftScroll/LeftColumn/PeopleColumn/Occupants, tr("MANSIONVIEW_MASTERBED"),
 			[] if master == null else [master], 1, false, true)
-		fill_people_group($Body/Columns/PeopleColumn/Companions,
+		fill_people_group($Body/Columns/LeftScroll/LeftColumn/PeopleColumn/Companions,
 			tr("MANSIONVIEW_NIGHTCOMPANIONS"), companions, max(0, capacity - 1), true, true)
 		return
-	$Body/Columns/PeopleColumn/Occupants/Header.text = "%s %d/%d" % [
+	$Body/Columns/LeftScroll/LeftColumn/PeopleColumn/Occupants/Header.text = "%s %d/%d" % [
 		tr("MANSIONVIEW_BEDS") if sleeping else tr("MANSIONVIEW_WORKPLACES"),
 		occupants.size(), capacity]
 	var job_id = null if gather == null else gather.id
-	input_handler.ClearContainer($Body/Columns/PeopleColumn/Occupants/List)
+	input_handler.ClearContainer($Body/Columns/LeftScroll/LeftColumn/PeopleColumn/Occupants/List)
 	#On a farm a click picks the person whose produce is being set rather than turning them
 	#out; the list itself carries the button that sends them away, so nobody loses their
 	#place by going to look at what they make.
@@ -1053,7 +1314,7 @@ func build_people(current):
 		ensure_farm_worker(occupants)
 	for char_id in occupants:
 		var character = view.get_character(char_id)
-		var button = input_handler.DuplicateContainerTemplate($Body/Columns/PeopleColumn/Occupants/List)
+		var button = input_handler.DuplicateContainerTemplate($Body/Columns/LeftScroll/LeftColumn/PeopleColumn/Occupants/List)
 		setup_occupant_button(button, character)
 		if character != null:
 			globals.connectslavetooltip(button, character, slave_tooltip())
@@ -1070,7 +1331,7 @@ func build_people(current):
 			continue
 		button.connect("pressed", self, "on_remove_person", [char_id, sleeping])
 	for _i in range(max(0, capacity - occupants.size())):
-		var button = input_handler.DuplicateContainerTemplate($Body/Columns/PeopleColumn/Occupants/List)
+		var button = input_handler.DuplicateContainerTemplate($Body/Columns/LeftScroll/LeftColumn/PeopleColumn/Occupants/List)
 		setup_empty_occupant_button(button)
 		button.connect("pressed", self, "show_candidates", [sleeping, false, job_id])
 		globals.connecttexttooltip(button, tr("MANSIONVIEW_EMPTYSLOT"), true,
@@ -1080,7 +1341,7 @@ func build_people(current):
 #One titled group of bed slots, drawn the way the single list is: a face for everyone in a bed,
 #a free slot for every bed still empty, and both clickable - out of the room, or into it.
 func fill_people_group(section, title, char_ids, places, count_in_title, sleeping,
-		tutor_slot = false):
+		tutor_slot = false, builder = false):
 	section.get_node('Header').text = title
 	if count_in_title:
 		section.get_node('Header').text = "%s %d/%d" % [title, char_ids.size(), places]
@@ -1095,9 +1356,14 @@ func fill_people_group(section, title, char_ids, places, count_in_title, sleepin
 	for _i in range(max(0, places - char_ids.size())):
 		var button = input_handler.DuplicateContainerTemplate(section.get_node('List'))
 		setup_empty_occupant_button(button)
-		button.connect("pressed", self, "show_candidates", [sleeping, tutor_slot])
-		globals.connecttexttooltip(button,
-			tr("MANSIONVIEW_TUTORHINT" if tutor_slot else "MANSIONVIEW_EMPTYSLOT"), true,
+		button.connect("pressed", self, "show_candidates",
+			[sleeping, tutor_slot, null, builder])
+		var hint = "MANSIONVIEW_EMPTYSLOT"
+		if tutor_slot:
+			hint = "MANSIONVIEW_TUTORHINT"
+		elif builder:
+			hint = "MANSIONVIEW_BUILDINGHINT"
+		globals.connecttexttooltip(button, tr(hint), true,
 			view.get_node("Overlay/TextTooltip"))
 
 
@@ -1156,7 +1422,9 @@ func select_farm_worker(char_id):
 #What a body can give is decided by the body: a rule whose requirement the character does not
 #meet is not offered, and one they used to meet is dropped rather than left quietly paying out.
 func build_farm_rules(current):
-	var header = $Body/Columns/LeftScroll/LeftColumn/OrderHeader
+	#its own header rather than the craft rooms' one: the list it names stands below the work
+	#slots now - a farm's produce belongs to whoever is standing in it, so the people come first
+	var header = $Body/Columns/LeftScroll/LeftColumn/FarmHeader
 	var list = $Body/Columns/LeftScroll/LeftColumn/FarmList
 	header.visible = true
 	$Body/Columns/LeftScroll/LeftColumn/OrderList.visible = false
@@ -1324,6 +1592,7 @@ func set_practice_target(code):
 #which is what every craft room does without the upgrade.
 func build_order_list(current):
 	$Body/Columns/LeftScroll/LeftColumn/FarmList.visible = false
+	$Body/Columns/LeftScroll/LeftColumn/FarmHeader.visible = false
 	if farm_rules_shown(current):
 		build_farm_rules(current)
 		return
@@ -1499,9 +1768,44 @@ func expand_in_slave_list(list, character):
 
 #### picking somebody for a free place ####
 
-func show_candidates(sleeping, tutor_slot = false, job_id = null):
-	$Body/Columns/PeopleColumn/CandidateScroll.visible = true
-	input_handler.ClearContainer($Body/Columns/PeopleColumn/CandidateScroll/CandidateList)
+#A bed is not work, a tutor teaches rather than produces, and a builder's place raises the room
+#instead of running it - none of those three have an output to promise, so the line stays empty.
+#Nor does a room whose work makes nothing countable: a store room, a practice room.
+func show_candidate_yield(button, character, sleeping, tutor_slot, job_id, builder):
+	if !button.has_node('Yield'):
+		return
+	var label = button.get_node('Yield')
+	label.visible = false
+	if sleeping or tutor_slot or builder:
+		return
+	var made = candidate_yield(character, job_id)
+	if made <= 0:
+		return
+	label.text = "+%.1f" % made
+	label.visible = true
+
+
+#The turn's own arithmetic, asked one person at a time. A gather building works its job through
+#the task list, so it is asked the way the task panel asks it; everything else is the room's own
+#work, multiplied by whatever the room's upgrades add to it - the same two terms game_res.tick()
+#multiplies when the turn is counted.
+func candidate_yield(character, job_id):
+	if character == null:
+		return 0.0
+	if job_id != null:
+		return LocationTasks.production_of(job_id, character)
+	var room = room()
+	if room == null:
+		return 0.0
+	var job = RoomTypes.get_work_job(room.type)
+	if job == null or job == '':
+		return 0.0
+	return character.get_job_value(job, false) * MansionLayout.craft_modifier(room)
+
+
+func show_candidates(sleeping, tutor_slot = false, job_id = null, builder = false):
+	$Body/Columns/LeftScroll/LeftColumn/PeopleColumn/CandidateScroll.visible = true
+	input_handler.ClearContainer($Body/Columns/LeftScroll/LeftColumn/PeopleColumn/CandidateScroll/CandidateList)
 	var offered = 0
 	for char_id in view.resting_characters():
 		var character = view.get_character(char_id)
@@ -1514,27 +1818,41 @@ func show_candidates(sleeping, tutor_slot = false, job_id = null):
 		if tutor_slot and !character.check_trait('trainer'):
 			continue
 		var button = input_handler.DuplicateContainerTemplate(
-			$Body/Columns/PeopleColumn/CandidateScroll/CandidateList)
+			$Body/Columns/LeftScroll/LeftColumn/PeopleColumn/CandidateScroll/CandidateList)
 		#drawn the way a resident is, by the same call - a face is how the player tells them
 		#apart, and a column of bare names is a column of strangers
 		setup_occupant_button(button, character)
+		#what they would be worth on this particular work, so the choice is made on something
+		#other than the order they happen to be listed in. Written here rather than inside
+		#setup_occupant_button: that call also draws the narrow rows in the slots above, which
+		#have no room for it and no such question to answer
+		show_candidate_yield(button, character, sleeping, tutor_slot, job_id, builder)
 		button.connect("pressed", self, "pick_candidate",
-			[char_id, sleeping, tutor_slot, job_id])
+			[char_id, sleeping, tutor_slot, job_id, builder])
 		offered += 1
 	if offered == 0:
 		var button = input_handler.DuplicateContainerTemplate(
-			$Body/Columns/PeopleColumn/CandidateScroll/CandidateList)
+			$Body/Columns/LeftScroll/LeftColumn/PeopleColumn/CandidateScroll/CandidateList)
 		button.get_node('Name').text = tr("MANSIONVIEW_NOCANDIDATES")
 		button.get_node('Status').visible = false
 		button.get_node('Portrait').texture = null
+		if button.has_node('Yield'):
+			button.get_node('Yield').visible = false
 		button.disabled = true
 	update_column_layout()
 	settle_body()
 	fit_to_body()
 
 
-func pick_candidate(char_id, sleeping, tutor_slot = false, job_id = null):
-	$Body/Columns/PeopleColumn/CandidateScroll.visible = false
+func pick_candidate(char_id, sleeping, tutor_slot = false, job_id = null, builder = false):
+	$Body/Columns/LeftScroll/LeftColumn/PeopleColumn/CandidateScroll.visible = false
+	if builder:
+		if view.assign_builder(slot_code, char_id):
+			rebuild()
+			settle_body()
+			fit_to_body()
+			place_details()
+		return
 	if job_id != null:
 		view.assign_location_worker(job_id, char_id)
 		return

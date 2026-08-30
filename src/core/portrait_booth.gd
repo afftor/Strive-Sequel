@@ -82,21 +82,24 @@ func _work():
 		yield(get_tree(), 'idle_frame') #let the instance finish its own _ready
 	while !_queue.empty():
 		var person = characters_pool.get_char_by_id(_queue.pop_front())
-		var shot_id = null
 		if person != null and (person.needs_portrait() or _forced.has(person.id)):
 			_forced.erase(person.id)
 			_attempted[person.id] = true
-			_shoot(person)
-			shot_id = person.id
-		for _i in FRAMES_BETWEEN: #save_portrait waits two frames of its own before reading
+			#the shot is a coroutine of its own: it lets the render land, reads the
+			#viewport and only then points the character at the picture. Announcing it
+			#before that hands every listener the icon they already had, which is how a
+			#list built once kept showing race icons for characters that did get a shot.
+			var shot = _shoot(person)
+			if shot is GDScriptFunctionState and shot.is_valid():
+				shot = yield(shot, 'completed')
+			if shot:
+				emit_signal('portrait_taken', person.id)
+		for _i in FRAMES_BETWEEN:
 			yield(get_tree(), 'idle_frame')
-			if shot_id != null:
-				emit_signal('portrait_taken', shot_id)
-				shot_id = null
 	_busy = false
 
 
 func _shoot(person):
 	_doll.rebuild(person)
 	_doll.rebuild_cloth(!person.has_work_rule('nudity'))
-	person.update_portrait(_doll)
+	return person.update_portrait(_doll)

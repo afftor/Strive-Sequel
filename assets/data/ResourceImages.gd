@@ -983,6 +983,8 @@ var sprites = {
 	erdyna_body = load("res://assets/images/sprites/dragongirl_body.png"),
 	erdyna_nude = load("res://assets/images/sprites/dragongirl_nude_fhd.png"),
 	erdyna_nude_body = load("res://assets/images/sprites/dragongirl_nude_body.png"),
+	erdyna_wed = load("res://assets/images/sprites/dragongirl_wed_fhd.png"),
+	erdyna_wed_body = load("res://assets/images/sprites/dragongirl_wed_body.png"),
 	senerus = load("res://assets/images/sprites/senerus.png"),
 	vaeloria = load("res://assets/images/sprites/vaeloria.png"),
 	

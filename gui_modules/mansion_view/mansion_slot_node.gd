@@ -9,7 +9,6 @@ extends Button
 
 const MansionLayout = preload("res://src/core/mansion_layout.gd")
 const RoomTypes = preload("res://assets/data/mansion_room_types.gd")
-const RoomUpgrades = preload("res://assets/data/mansion_room_upgrades.gd")
 
 #What a slot looks like before anything is read off it. Every working room shares the one
 #picture for now; a slot with nothing built and a slot left derelict have their own, so the
@@ -205,7 +204,7 @@ func build_tooltip(room):
 	if places > 0:
 		text += "\n%s %d/%d" % [tr("MANSIONVIEW_WORKPLACES"), view.room_workers(room).size(), places]
 	for code in room.upgrades:
-		text += "\n%s %d" % [tr(RoomUpgrades.get_name_key(code)), int(room.upgrades[code])]
+		text += "\n%s %d" % [tr(RoomTypes.get_upgrade_name_key(code)), int(room.upgrades[code])]
 	var build = build_data()
 	if build != null:
 		text += "\n%s - %s" % [view.build_label(build), view.build_eta_text(build)]

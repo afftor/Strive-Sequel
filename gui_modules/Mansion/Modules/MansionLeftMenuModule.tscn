@@ -37,10 +37,10 @@ atlas = ExtResource( 10 )
 region = Rect2( 0, 0, 58, 58 )
 
 [node name="MansionBottomLeftModule" type="TextureRect"]
-margin_top = 63.0
 margin_right = 74.0
-margin_bottom = 443.0
-rect_min_size = Vector2( 74, 380 )
+margin_top = 0.0
+margin_bottom = 134.0
+rect_min_size = Vector2( 74, 134 )
 script = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
@@ -53,160 +53,13 @@ custom_styles/panel = SubResource( 1 )
 margin_left = 8.0
 margin_top = 7.0
 margin_right = 66.0
-margin_bottom = 375.0
+margin_bottom = 127.0
 custom_constants/separation = 4
 
-[node name="WorkButton" type="TextureButton" parent="VBoxContainer"]
+[node name="Journal" type="TextureButton" parent="VBoxContainer"]
+margin_top = 0.0
 margin_right = 58.0
 margin_bottom = 58.0
-rect_min_size = Vector2( 58, 58 )
-toggle_mode = true
-texture_normal = SubResource( 2 )
-texture_pressed = SubResource( 3 )
-texture_hover = SubResource( 4 )
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/WorkButton"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 52.0
-margin_bottom = 54.0
-texture = ExtResource( 13 )
-expand = true
-stretch_mode = 6
-
-[node name="Label" type="Label" parent="VBoxContainer/WorkButton"]
-visible = false
-margin_left = 66.0
-margin_top = -3.0
-margin_right = 274.0
-margin_bottom = 56.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 2
-custom_constants/shadow_offset_y = 2
-custom_fonts/font = ExtResource( 1 )
-text = "LMMWORK"
-valign = 1
-clip_text = true
-
-[node name="SexButton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 62.0
-margin_right = 58.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 58, 58 )
-toggle_mode = true
-texture_normal = SubResource( 2 )
-texture_pressed = SubResource( 3 )
-texture_hover = SubResource( 4 )
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/SexButton"]
-margin_left = 7.00399
-margin_top = 7.30937
-margin_right = 51.004
-margin_bottom = 51.3094
-texture = ExtResource( 14 )
-expand = true
-stretch_mode = 6
-
-[node name="Label3" type="Label" parent="VBoxContainer/SexButton"]
-visible = false
-margin_left = 66.0
-margin_top = -3.0
-margin_right = 274.0
-margin_bottom = 56.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 2
-custom_constants/shadow_offset_y = 2
-custom_fonts/font = ExtResource( 1 )
-text = "LMMDATE"
-valign = 1
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="InventoryButton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 124.0
-margin_right = 58.0
-margin_bottom = 182.0
-rect_min_size = Vector2( 58, 58 )
-texture_normal = SubResource( 2 )
-texture_pressed = SubResource( 3 )
-texture_hover = SubResource( 4 )
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/InventoryButton"]
-margin_left = 7.37041
-margin_top = 7.00071
-margin_right = 51.3704
-margin_bottom = 51.0007
-texture = ExtResource( 15 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label4" type="Label" parent="VBoxContainer/InventoryButton"]
-visible = false
-margin_left = 66.0
-margin_top = -3.0
-margin_right = 274.0
-margin_bottom = 56.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 2
-custom_constants/shadow_offset_y = 2
-custom_fonts/font = ExtResource( 1 )
-text = "LMMINVENTORY"
-valign = 1
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CraftButton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 186.0
-margin_right = 58.0
-margin_bottom = 244.0
-rect_min_size = Vector2( 58, 58 )
-toggle_mode = true
-texture_normal = SubResource( 2 )
-texture_pressed = SubResource( 3 )
-texture_hover = SubResource( 4 )
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/CraftButton"]
-margin_left = 6.88074
-margin_top = 7.58948
-margin_right = 50.8807
-margin_bottom = 51.5895
-texture = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label5" type="Label" parent="VBoxContainer/CraftButton"]
-visible = false
-margin_left = 66.0
-margin_top = -3.0
-margin_right = 274.0
-margin_bottom = 56.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 2
-custom_constants/shadow_offset_y = 2
-custom_fonts/font = ExtResource( 1 )
-text = "LMMCRAFT"
-valign = 1
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Journal" type="TextureButton" parent="VBoxContainer"]
-margin_top = 248.0
-margin_right = 58.0
-margin_bottom = 306.0
 rect_min_size = Vector2( 58, 58 )
 toggle_mode = true
 texture_normal = SubResource( 2 )
@@ -241,9 +94,9 @@ __meta__ = {
 }
 
 [node name="options" type="TextureButton" parent="VBoxContainer"]
-margin_top = 310.0
+margin_top = 62.0
 margin_right = 58.0
-margin_bottom = 368.0
+margin_bottom = 120.0
 rect_min_size = Vector2( 58, 58 )
 texture_normal = SubResource( 2 )
 texture_pressed = SubResource( 3 )

@@ -49,11 +49,19 @@ const GROUP_DEFS = {
 	"genitals": {"kind": "options", "optional": true, "order": 18, "label": "DOLL2_PREVIEW_GENITALS"},
 	"tattoo": {"kind": "options", "optional": true, "order": 19, "label": "DOLL2_PREVIEW_TATTOO"},
 	"outfit": {"kind": "set", "optional": true, "order": 20, "label": "DOLL2_PREVIEW_OUTFIT"},
-	"collar": {"kind": "options", "optional": true, "order": 21, "label": "DOLL2_PREVIEW_COLLAR"},
-	"headgear": {"kind": "options", "optional": true, "order": 22, "label": "DOLL2_PREVIEW_HEADGEAR"},
-	"mask": {"kind": "options", "optional": true, "order": 23, "label": "DOLL2_PREVIEW_MASK"},
-	"weapon_belt": {"kind": "options", "optional": true, "order": 24, "label": "DOLL2_PREVIEW_WEAPON_BELT"},
-	"weapon_back": {"kind": "options", "optional": true, "order": 25, "label": "DOLL2_PREVIEW_WEAPON_BACK"},
+	# The lower half of every set, composed after the whole one so it wins the
+	# slots it holds.  The game equips a chest and a pair of legs separately and
+	# they are often different armour; one group for the whole body could only
+	# ever show one of the two.  The builder fills this - see LOWER_HALF.
+	"outfit_legs": {"kind": "set", "optional": true, "order": 21, "label": "DOLL2_PREVIEW_OUTFIT_LEGS"},
+	# and the pair of hands, so a set's paws or gauntlets can be worn over any
+	# clothes rather than instead of them
+	"outfit_hands": {"kind": "set", "optional": true, "order": 22, "label": "DOLL2_PREVIEW_OUTFIT_HANDS"},
+	"collar": {"kind": "options", "optional": true, "order": 23, "label": "DOLL2_PREVIEW_COLLAR"},
+	"headgear": {"kind": "options", "optional": true, "order": 24, "label": "DOLL2_PREVIEW_HEADGEAR"},
+	"mask": {"kind": "options", "optional": true, "order": 25, "label": "DOLL2_PREVIEW_MASK"},
+	"weapon_belt": {"kind": "options", "optional": true, "order": 26, "label": "DOLL2_PREVIEW_WEAPON_BELT"},
+	"weapon_back": {"kind": "options", "optional": true, "order": 27, "label": "DOLL2_PREVIEW_WEAPON_BACK"},
 }
 
 
@@ -262,7 +270,40 @@ const EXCLUDE = [
 ]
 const AXIS_OVERRIDES = {}
 const PART_SLOTS = {}
+# Parts the doll draws exactly as the artist painted them.
+#
+# The recolour has nothing to do on a set that is already coloured: the maid
+# outfit is black and white on purpose, and the gear channel - which starts its
+# bands on steel and leather - only muddied it.  A part named here is drawn with
+# no material at all, so what reaches the screen is the art.
+#
+# A decision about the set rather than a property of its pixels, which is why it
+# is a list and not something the builder works out.
+const UNPAINTED_PARTS = ["outfit_maid"]
+
 const PART_SPLITS = {}
+
+# The pieces every set is cut into, besides the whole thing.
+#
+# The game dresses a character from several slots at once - a chest, a pair of
+# legs, a pair of hands - while the catalogue holds one part for the whole body,
+# so on its own it can only ever show one of them.  Each cut below becomes a
+# group of its own, composed after `outfit` and winning exactly the slots it
+# names.
+#
+# The legs take theirs from the colour channel that already claims them: the
+# artist paints those three slots as one, so the seam the doll wears its armour
+# along and the seam it paints it along are the same line by construction rather
+# than by two lists agreeing.  The hands name their slots outright - no channel
+# is drawn along that line.
+#
+# `suffix` is what the piece is called: `outfit_plate` -> `outfit_plate_legs`.
+# `doll_gear_map.gd` spells the same suffixes, because it names a part without
+# being able to read the catalogue.
+const SET_CUTS = {
+	"outfit_legs": {"source": "outfit_lower", "suffix": "_legs", "display": " (legs)"},
+	"outfit_hands": {"slots": ["equip_hand_left", "equip_hand_right"], "suffix": "_hands", "display": " (hands)"},
+}
 
 # Everything above the neck, which both exports take from the same art.
 const DEFAULTS = {
@@ -286,6 +327,11 @@ const DISPLAY = {
 	# names bury the muzzles in the middle of the list.
 	"beastkin_chin_cat": "Muzzle: cat",
 	"beastkin_chin_fox": "Muzzle: fox",
+	# The shared muzzles, worn by whichever races are given the choice rather
+	# than their animal's own snout - the wolves, the foxes and the tanuki.
+	"beastkin_head_muzzle_1": "Muzzle: 1",
+	"beastkin_head_muzzle_2": "Muzzle: 2",
+	"beastkin_head_muzzle_3": "Muzzle: 3",
 	"beastkin_chin_rabbit": "Muzzle: rabbit",
 	"beastkin_chin_tanuki": "Muzzle: tanuki",
 	"beastkin_chin_wolf": "Muzzle: wolf",
@@ -366,12 +412,15 @@ const COLOR_CHANNELS = {
 	"eyes": {"anchor": "eyes", "groups": ["eyes", "eyes_effect"]},
 	"eyebrows": {"anchor": "eyebrows", "groups": ["eyebrows"]},
 	"lips": {"anchor": "lips", "groups": ["lips"]},
-	# The ear art is hue-coded now: the inner ear is painted in the second band on
-	# every furry ear, and the rabbit's outer ear in the first.  So ears drive
-	# zones like gear does, with defaults of their own - fur outside, flesh
-	# inside - because the gear defaults are steel and leather.
-	"ears": {"anchor": "ears", "groups": ["ears"], "zones": true,
-		"zone_defaults": [Color("9a7b5f"), Color("d9a2a2"), Color("ffffff")]},
+	# Painted like a body part rather than like gear: one colour over the whole
+	# ear, hue and saturation from the pick and the art's own lightness kept.
+	#
+	# The art does carry hue bands - the inner ear is a second colour on the furry
+	# cuts - and this channel used to drive them the way the armour does.  Two
+	# swatches for an ear turned out to be two ways to get it wrong, and the band
+	# defaults fought the fur colour the character already has; the plain path
+	# lets the drawn shading through and needs no second decision.
+	"ears": {"anchor": "ears", "groups": ["ears"]},
 	# Each hair layer carries two colours, as it did in the old paperdoll, where
 	# `hair_*_color_1` and `hair_*_color_2` drove two separate shader zones.  That
 	# art had a baked mask to divide the zones; this art has none, so the second
@@ -393,6 +442,19 @@ const COLOR_CHANNELS = {
 	"tattoo": {"anchor": "tattoo", "groups": ["tattoo"]},
 	# Gear is painted entirely in the hue code, so its zones start on real
 	# colours instead of on white - see ZONE_DEFAULTS.
+	# The body is dressed by one part but coloured as two, because the game equips
+	# a chest and a pair of legs separately and the old paperdoll painted them
+	# from two stats (`armor_color_base` and `armor_color_lower`, its `cloth_top`
+	# and `cloth_bottom` node groups).  The lower half is the same three slots
+	# that group held - the pelvis and the two legs - claimed by name and so
+	# declared above the channel it is carving them out of.
+	#
+	# The belly and the two pregnancy slots stay on top: all three draw the *same*
+	# attachment as one another in every set, so splitting them would paint one
+	# piece of art in two colours.
+	"outfit_lower": {"anchor": "outfit", "groups": [], "gear": true, "slots": [
+		"equip_pelvis", "equip_leg_left", "equip_leg_right",
+	]},
 	"outfit": {"anchor": "outfit", "groups": ["outfit"], "gear": true},
 	"collar": {"anchor": "collar", "groups": ["collar"], "gear": true},
 	"headgear": {"anchor": "headgear", "groups": ["headgear"], "gear": true},
@@ -424,13 +486,20 @@ const ZONE_HUES = [299.0, 90.0, 156.0]
 #   magenta  - purple skin, hair, tails and ears live 21 to 24 degrees away, so
 #              this band has to stay narrow or it repaints them.  A rabbit ear is
 #              the closest of all at 21 degrees, which is exactly what a wider
-#              band got wrong.
+#              band got wrong, and is the ceiling on this number.
+#
+#              20 rather than 15 because not every set is painted in the code
+#              colour: the pet suit sits at 284 rather than 299, so at 15 only
+#              61% of a glove took the pick and the rest kept the art colour.
+#              20 reaches 85% of it and still stops short of the rabbit.  Its
+#              cat and rabbit ear pieces are 33 degrees out and stay uncovered -
+#              that art has to be repainted, no width reaches them safely.
 #   green    - nothing in the art sits anywhere near it, and the armour greens
 #              are shaded out to 29 degrees, so this band stays wide.  Narrowing
 #              it left green patches showing through on the gear.
 #   cyan     - nothing at all sits nearby, and the fairy wing membrane is shaded
 #              and spreads about 22 degrees, so this one is wide.
-const ZONE_DISTANCE = [15.0, 32.0, 26.0]
+const ZONE_DISTANCE = [20.0, 32.0, 26.0]
 
 # How much of a part's art has to land in a band before that band is offered as a
 # colour of its own, in percent of the part's opaque pixels.  Below this it is an
@@ -441,4 +510,4 @@ const ZONE_COVERAGE_MIN = 2.0
 # its raw art colour: unpainted magenta is a placeholder, not a look, so the
 # defaults stand in for the old `default`, `default_metal` and `default_leather`
 # presets.
-const ZONE_DEFAULTS = [Color("9aa6b4"), Color("6f5133"), Color("8d3b3b")]
+const ZONE_DEFAULTS = [Color("7b8490"), Color("6f5133"), Color("8d3b3b")]

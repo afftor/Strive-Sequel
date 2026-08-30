@@ -270,19 +270,9 @@ var factiondata = {
 		name = tr("WORKERS"),# Guild',
 		description = '',
 		actions = ['hire','upgrade', 'guild_shop'],
-		bonus_actions = [
-			{
-				code = 'disassemble',
-				name = 'WORKERSDISASSEMBLE',
-				reqs = [
-					{
-						type = "has_faction_upgrade",
-						check = true,
-						value = "workers_disassamby_upgrade"
-					},
-				],
-			},
-		],
+		#Taking gear apart is done at the estate's own forge now: the guild still teaches it -
+		#the workers_disassamby_upgrade below - but the bench is built at home and opened there.
+		bonus_actions = [],
 		events = [
 			'workers_init', 'workers_limnrov', 'heleviel_christmas',
 			],
@@ -1611,6 +1601,11 @@ var fixed_location_options = { #override serialized data
 				{type = 'event_seen', value = 'act4_erdyna_grotus_delivery', check = false}
 			],
 			args = [{code = 'start_event', data = 'act4_erdyna_grotus_find', args = []}]
+		},
+		{
+			text = "ACT4_ERDYNA_EMPIRE_CAPITAL_OPT_ARCHIVE_SEARCH",
+			reqs = [{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'archive_search', state = true}],
+			args = [{code = 'start_event', data = 'act4_erdyna_archive_search_complete_1', args = []}]
 		},
 		{
 			text = "ACT4_3_EMPIRE_CAPITAL_OPT_ERDYNA_HIDEOUT",

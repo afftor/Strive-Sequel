@@ -302,6 +302,24 @@ var effect_table = {
 	#The bed equivalent of e_food_demand: somebody used to better has been put somewhere
 	#ordinary. Same shape, same reason - a standing effect gated by its own condition, so
 	#there is one source of truth and nothing to apply or remove by hand.
+	#A night on the floor. The condition is answered from the snapshot game_res takes at the top
+	#of the turn, so the penalty is already on the character while the day's work is counted.
+	#The health half of it cannot be said here - hp_reg takes 'add' bonuses after 'mul', so a
+	#multiplier of zero does not hold healing down - CharacterClass.hp_regen_allowed does that.
+	slept_rough = {
+		type = 'base',
+		descript = '',
+		conditions = [{code = 'slept_rough', check = true}],
+		statchanges = {productivity_mul = 0.34, mp_reg_mul = 0},
+		tags = ['slept_rough'],
+		buffs = [
+			{
+				icon = "res://assets/images/gui/gui icons/food_hate.png",
+				description = "SLEPTROUGH",
+				tags = ['mansion_only'],
+			}
+		],
+	},
 	sleep_demand_unmet = {
 		type = 'base',
 		descript = '',

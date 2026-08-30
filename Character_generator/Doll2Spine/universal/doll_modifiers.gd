@@ -80,10 +80,29 @@ static func contract_bones(contract_id):
 # bones are worth exposing.  Turn `build` up and `legs` down for a squat dwarf,
 # everything down for something fey and slight.
 #
-# Head size is deliberately absent: head proportion is what height is for, and a
-# second control over the same bone only lets the two disagree.
-
 const MODIFIERS = {
+	# `head_size`, on the same bone the height tier counter-scales.  The two do not
+	# fight: every operation here is relative and they multiply, so a towering
+	# character with a big head still reads as small-headed for their height, which
+	# is what the tier is for.  The range is deliberately narrower than the tier's -
+	# past about a tenth either way the neck stops meeting the jaw.
+	#
+	# Everything on the face and every hair chain hangs off `head`, so one bone
+	# carries the whole thing.
+	"head_size": {
+		"contract": "doll2_v1",
+		"label": "DOLL2_PREVIEW_HEAD_SIZE",
+		"tune": true,
+		"range": {"default": 1.0, "minimum": 0.85, "maximum": 1.15, "step": 0.01},
+		"steps": {
+			"default": "average",
+			"order": ["tiny", "small", "average", "big", "huge"],
+			"values": {"tiny": 0.88, "small": 0.94, "average": 1.0, "big": 1.06, "huge": 1.12},
+		},
+		"ops": [
+			{"bone": "head"},
+		],
+	},
 	"eyes_scale": {
 		"contract": "doll2_v1", "label": "DOLL2_PREVIEW_EYES_SCALE",
 		"range": {"default": 1.0, "minimum": 0.85, "maximum": 1.15, "step": 0.01},
@@ -371,6 +390,19 @@ const LAYER_MODIFIERS = {
 		"contract": "doll2_v1",
 		"label": "DOLL2_PREVIEW_HAIR_LENGTH",
 		"range": {"default": 1.0, "minimum": 0.7, "maximum": 1.3, "step": 0.01},
+		# The tiers the game carries, as factors on this layer.  `bald` is not a
+		# length - the doll drops the hair instead - but it is listed so a value
+		# the character already has never falls through to the default.
+		#
+		# `tune` keeps the free slider in the preview beside the named picker, which
+		# is how these four numbers were found in the first place.
+		"tune": true,
+		"steps": {
+			"default": "default",
+			"order": ["short", "default", "middle", "long"],
+			"values": {"bald": 1.0, "short": 0.78, "default": 1.0, "middle": 1.15, "long": 1.3},
+		},
+
 		"slots": ["hairs_base"],
 		"bones": ["hair3_l", "hair3_r"],
 		# Spine bones extend along local X. In this rig that is the visible strand
@@ -389,6 +421,19 @@ const LAYER_MODIFIERS = {
 		"contract": "doll2_v1",
 		"label": "DOLL2_PREVIEW_HAIR_BACK_LENGTH",
 		"range": {"default": 1.0, "minimum": 0.7, "maximum": 1.3, "step": 0.01},
+		# The tiers the game carries, as factors on this layer.  `bald` is not a
+		# length - the doll drops the hair instead - but it is listed so a value
+		# the character already has never falls through to the default.
+		#
+		# `tune` keeps the free slider in the preview beside the named picker, which
+		# is how these four numbers were found in the first place.
+		"tune": true,
+		"steps": {
+			"default": "default",
+			"order": ["short", "default", "middle", "long"],
+			"values": {"bald": 1.0, "short": 0.78, "default": 1.0, "middle": 1.15, "long": 1.3},
+		},
+
 		"slots": ["hairs_back"],
 		"bones": ["hair1_l4", "hair1_r4", "hair4_l2", "hair4_r2", "hair1_r11", "hair1_l12"],
 		"axis": "x",
@@ -397,6 +442,19 @@ const LAYER_MODIFIERS = {
 		"contract": "doll2_v1",
 		"label": "DOLL2_PREVIEW_ASSIST_LENGTH",
 		"range": {"default": 1.0, "minimum": 0.7, "maximum": 1.3, "step": 0.01},
+		# The tiers the game carries, as factors on this layer.  `bald` is not a
+		# length - the doll drops the hair instead - but it is listed so a value
+		# the character already has never falls through to the default.
+		#
+		# `tune` keeps the free slider in the preview beside the named picker, which
+		# is how these four numbers were found in the first place.
+		"tune": true,
+		"steps": {
+			"default": "default",
+			"order": ["short", "default", "middle", "long"],
+			"values": {"bald": 1.0, "short": 0.78, "default": 1.0, "middle": 1.15, "long": 1.3},
+		},
+
 		"slots": ["hairs_assist"],
 		"bones": ["head3", "head7", "head5", "head10", "head15", "head17"],
 		"axis": "y",

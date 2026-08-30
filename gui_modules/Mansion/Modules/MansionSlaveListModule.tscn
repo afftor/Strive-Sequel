@@ -1,11 +1,10 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=2]
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_occupation.png" type="Texture" id=3]
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_occupation_pressed.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_occupation_hover.png" type="Texture" id=5]
-[ext_resource path="res://assets/Themes_v2/CHAR_CREATION/ChC_Theme.tres" type="Theme" id=6]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=7]
 [ext_resource path="res://assets/images/sexicons/male.png" type="Texture" id=8]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_SlaveList.tres" type="Theme" id=9]
@@ -13,11 +12,9 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/CheckBox.tres" type="Theme" id=11]
 [ext_resource path="res://dragarraytemplate.gd" type="Script" id=12]
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionSlaveListModule.gd" type="Script" id=13]
-[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_foodperday.png" type="Texture" id=14]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars.png" type="Texture" id=15]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_pressed.png" type="Texture" id=16]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/hpmp_icon_hp.png" type="Texture" id=17]
-[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_population.png" type="Texture" id=18]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/divider_navi_slavelist.png" type="Texture" id=19]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_hover.png" type="Texture" id=20]
 [ext_resource path="res://assets/Textures_v2/MANSION/yes.png" type="Texture" id=21]
@@ -61,7 +58,7 @@
 [ext_resource path="res://assets/images/gui/panels/edit.png" type="Texture" id=81]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/LineEdit.tres" type="StyleBox" id=82]
 [ext_resource path="res://Character_generator/Doll2Spine/Doll2View.tscn" type="PackedScene" id=83]
-[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_resources.png" type="Texture" id=84]
+[ext_resource path="res://gui_modules/Mansion/Modules/MansionSlaveSexPanel.tscn" type="PackedScene" id=84]
 
 [sub_resource type="DynamicFont" id=6]
 size = 30
@@ -77,6 +74,40 @@ fallback/0 = ExtResource( 37 )
 [sub_resource type="StyleBoxTexture" id=4]
 
 [sub_resource type="StyleBoxTexture" id=5]
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 176, 40 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 6.0
+margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 176, 40 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 6.0
+margin_bottom = 6.0
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="StyleBoxTexture" id=13]
+texture = ExtResource( 29 )
+region_rect = Rect2( 0, 0, 176, 40 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 6.0
+margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 176, 40 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 6.0
+margin_bottom = 6.0
 
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.0470588, 0.027451, 0.0196078, 0.985 )
@@ -147,6 +178,7 @@ margin_bottom = 350.0
 rect_min_size = Vector2( 244, 350 )
 
 [node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer" groups=["default"]]
+visible = false
 margin_right = 244.0
 margin_bottom = 350.0
 rect_min_size = Vector2( 244, 350 )
@@ -715,90 +747,10 @@ texture_disabled = ExtResource( 36 )
 stretch_mode = 6
 script = ExtResource( 12 )
 
-[node name="food_consumption" type="Label" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -101.0
-margin_top = 15.0
-margin_right = -54.0002
-margin_bottom = 45.0
-hint_tooltip = "TOOLTIPFOODCONSUMPTION"
-mouse_filter = 0
-theme = ExtResource( 6 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 28 )
-text = "FC"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="food_consumption"]
-margin_left = -45.9306
-margin_top = -0.77057
-margin_right = -3.9306
-margin_bottom = 39.2294
-hint_tooltip = "TOOLTIPFOODCONSUMPTION"
-texture = ExtResource( 14 )
-
-[node name="population" type="Label" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -222.0
-margin_top = 18.0
-margin_right = -176.0
-margin_bottom = 48.0
-hint_tooltip = "TOOLTIPPOPULATION"
-mouse_filter = 0
-theme = ExtResource( 6 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 28 )
-text = "1"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="population"]
-margin_left = -26.1069
-margin_top = -0.770569
-margin_right = 5.89313
-margin_bottom = 31.2294
-hint_tooltip = "TOOLTIPPOPULATION"
-texture = ExtResource( 18 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="storage_limit" type="Label" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -343.0
-margin_top = 19.0
-margin_right = -276.0
-margin_bottom = 49.0
-mouse_filter = 0
-theme = ExtResource( 6 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 28 )
-text = "20000"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="storage_limit"]
-margin_left = -57.9306
-margin_top = -11.7706
-margin_right = -3.9306
-margin_bottom = 42.2294
-texture = ExtResource( 84 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="TravelsContainerPanel" type="Panel" parent="."]
 anchor_right = 1.0
 margin_left = 225.0
 margin_top = 5.0
-margin_right = -12.0
 margin_bottom = 57.0
 custom_styles/panel = ExtResource( 7 )
 
@@ -1344,17 +1296,17 @@ text = "▼"
 align = 1
 valign = 1
 
-[node name="ListFoldButton" type="TextureButton" parent="."]
+[node name="ListFoldButton" type="Button" parent="."]
 margin_left = 12.0
 margin_top = 9.0
 margin_right = 59.0
 margin_bottom = 52.0
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-texture_hover = ExtResource( 5 )
-texture_disabled = ExtResource( 29 )
-expand = true
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 10 )
 
 [node name="Label" type="Label" parent="ListFoldButton"]
 anchor_right = 1.0
@@ -1888,6 +1840,13 @@ custom_styles/hover = SubResource( 9 )
 custom_styles/pressed = SubResource( 9 )
 custom_styles/normal = SubResource( 8 )
 text = "CONFIRM"
+
+[node name="SexPanel" parent="." instance=ExtResource( 84 )]
+visible = false
+margin_left = 745.0
+margin_top = 60.0
+margin_right = 1215.0
+margin_bottom = 908.0
 
 [node name="ExpandedBodyPreview" type="Control" parent="."]
 visible = false

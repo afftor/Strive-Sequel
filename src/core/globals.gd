@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.15.1'
+const gameversion = '0.16.0 Experimental'
 
 #time
 signal hour_tick
@@ -62,6 +62,11 @@ signal scene_change_start
 var can_manifest = false
 
 
+#Experimental builds carry "Experimental" in the version string ("0.16.0 Experimental").
+#Used to keep the storefront-facing prompts out of test builds.
+func is_experimental_build():
+	return gameversion.to_lower().find("experimental") >= 0
+
 func _init():
 	#load sex actions
 	for i in input_handler.dir_contents('res://src/actions'):
@@ -120,6 +125,10 @@ func _ready():
 	#console
 	var console = load("res://gui_modules/Console/console.tscn").instance()
 	get_tree().root.call_deferred("add_child", console)
+
+	#the frame counter, on the root beside the console so it outlives every screen
+	var fps_meter = load("res://gui_modules/Universal/Modules/FpsMeter.tscn").instance()
+	get_tree().root.call_deferred("add_child", fps_meter)
 	
 	if log_alert != null and is_instance_valid(log_alert):
 		log_alert.fix_cur_log_position()#should miss starting irrelevant strings in log by this time in game load
@@ -311,9 +320,12 @@ func CreateUsableItem(item, amount = 1):
 	newitem.CreateUsable(item, amount)
 	return newitem
 
-func AddItemToInventory(item, dont_duplicate = true):
+#`count_achievements` is for gear the player did not earn - the test wardrobe
+#stocks 88 pieces at once, and each one that carries an achievement would open
+#the unlock banner over a screen that is still being built.
+func AddItemToInventory(item, dont_duplicate = true, count_achievements = true):
 #	item.inventory = ResourceScripts.game_res.items
-	if item.get("itembase") != null:
+	if count_achievements and item.get("itembase") != null:
 		input_handler.achievements.try_add_item_achimnt(item.itembase)
 	if dont_duplicate && item.stackable == false:
 		var duplicate = get_duplicate_id_if_exist(item)
@@ -517,6 +529,45 @@ func get_food_char_text(item, person):
 	if !person.food.ignores_demand() and person.food.get_food_rank(item.code) < person.food.get_demand_rank():
 		res += "\n{color=red|%s}" % tr("FOODTOOLTIPBELOWDEMAND")
 	return res
+
+
+#one appetite covers the whole life a character is given: the demand tier decides what a
+#meal has to be, and at the top tier it decides where they are willing to sleep as well.
+#the tooltip walks every tier with what claims it and what falling short costs, and paints
+#the one the character sits at now - the same trick the personality tooltip uses. colour
+#tags cannot nest (parse_text takes the first '}' it finds), so an active tier is painted
+#as one green block instead of keeping its own tier colour inside it
+func get_character_demand_tooltip(person, demand = null):
+	if demand == null:
+		demand = person.get_food_demand()
+	var text = "[center]{color=yellow|%s}[/center]\n%s" % [tr("DEMAND"), tr("DEMANDDESCRIPT")]
+	if person.food.ignores_demand():
+		text += "\n{color=green|%s}" % tr("DEMANDSLAVEEXEMPT")
+	var top_tier = variables.food_demand_order[variables.food_demand_order.size() - 1]
+	for tier in variables.food_demand_order:
+		var active = tier == demand
+		var tier_name = tr("FOODDEMAND" + tier.to_upper())
+		if !active:
+			tier_name = "{color=%s|%s}" % [variables.food_demand_colors[tier], tier_name]
+		var block = "[center]%s[/center]" % tier_name
+		block += "\n" + get_demand_requirement_text(tier)
+		block += "\n" + tr("FOODDEMAND" + tier.to_upper() + "DESCRIPT")
+		if tier == top_tier:
+			block += "\n" + tr("DEMANDLODGING")
+		if active:
+			block = "{color=green|%s}" % block
+		text += "\n\n" + block
+	return text
+
+
+#what has to be true for a tier to claim a character. read off the same tables
+#ch_food.update_demand() walks, so the tooltip cannot drift from the rule
+func get_demand_requirement_text(tier):
+	var fame = variables.food_demand_by_fame.get(tier, null)
+	var value = variables.food_demand_by_value.get(tier, null)
+	if fame == null and value == null:
+		return tr("DEMANDREQNONE")
+	return tr("DEMANDREQ") % [fame, value]
 
 
 #tooltip for the food column of the slave list: what they last ate, how long it holds and
@@ -760,6 +811,190 @@ func build_training_traitlist(person, node):
 		else:
 			button.get_node('icon').texture = upgrade_data.icon
 
+
+
+#The sex block reads the same on the character screen and in the mansion list, so the level
+#word, the bar value, the mastery hint and the trait toggles are built here and the two
+#panels only hand over their containers. Both expect the container's template child to be
+#named "Button".
+const SEX_TRAINING_PROGRESS = {
+	novice = 0,
+	skilled = 50,
+	mastered = 100,
+}
+
+#Each entry is a list of groups; a group counts as done once any one of its actions has been
+#performed, and a skill masters when every group is done.
+const SEX_TRAINING_MASTERY = {
+	penetration = [["missionary", "missionaryanal"], ["doggy", "doggyanal"], ["lotus", "lotusanal"], ["revlotus", "revlotusanal"], ["ontop", "ontopanal"]],
+	pussy = [["missionary"], ["doggy"], ["lotus"], ["revlotus"], ["ontop"]],
+	anal = [["missionaryanal"], ["doggyanal"], ["lotusanal"], ["revlotusanal"], ["ontopanal"]],
+	petting = [["fondletits", "titjob"], ["handjob", "fingering", "assfingering"], ["footjob", "massagefoot"], ["fisting", "analfisting"]],
+	oral = [["kiss"], ["sucknipples"], ["rimjob"], ["cunnilingus", "blowjob"]],
+	tail = [["tailjob"], ["inserttailv"], ["inserttaila"]],
+}
+
+const SEX_ACTION_KEYS = {
+	missionary = "SEXACTION_MISSIONARY",
+	missionaryanal = "SEXACTION_MISSIONARY_ANAL",
+	doggy = "SEXACTION_DOGGY_STYLE",
+	doggyanal = "SEXACTION_DOGGY_ANAL",
+	lotus = "SEXACTION_LOTUS",
+	lotusanal = "SEXACTION_LOTUS_ANAL",
+	revlotus = "SEXACTION_REVLOTUS",
+	revlotusanal = "SEXACTION_REVLOTUSANAL",
+	ontop = "SEXACTION_ON_TOP",
+	ontopanal = "SEXACTION_ON_TOP_ANAL",
+	inserttailv = "SEXACTION_INSERT_TAIL_PUSSY",
+	inserttaila = "SEXACTION_INSERT_TAIL_ASS",
+	caress = "SEXACTION_CARESS",
+	assfingering = "SEXACTION_ASS_FINGERING",
+	fingering = "SEXACTION_FINGERING",
+	fondletits = "SEXACTION_FONDLE_CHEST",
+	footjob = "SEXACTION_FOOTJOB",
+	titjob = "SEXACTION_TITJOB",
+	handjob = "SEXACTION_HANDJOB",
+	frottage = "SEXACTION_FROTTAGE",
+	analfisting = "SEXACTION_ANAL_FISTING",
+	fisting = "SEXACTION_FISTING",
+	massagefoot = "SEXACTION_MASSAGE_WITH_FOOT",
+	rimjob = "SEXACTION_RIMJOB",
+	cunnilingus = "SEXACTION_CUNNILINGUS",
+	blowjob = "SEXACTION_BLOWJOB",
+	kiss = "SEXACTION_KISS",
+	sucknipples = "SEXACTION_NIPPLE_SUCKING",
+	tailjob = "SEXACTION_TAILJOB",
+}
+
+
+func get_sex_training_label(state):
+	match state:
+		'novice': return tr("SEX_TRAINING_LEVEL_NOVICE")
+		'skilled': return tr("SEX_TRAINING_LEVEL_SKILLED")
+		'mastered': return tr("SEX_TRAINING_LEVEL_MASTERED")
+	return str(state).capitalize()
+
+
+func build_sex_training_tooltip(person, code, state):
+	var text = person.translate(tr("STAT" + code.to_upper() + "DESCRIPT"))
+	text += "\n" + tr("CUR_LEVEL_LABEL") + ": " + get_sex_training_label(state)
+	var skill_name = code.replace('sex_training_', '')
+	if state == 'novice':
+		text += "\n\n" + tr("MASTERY_HINT_NOVICE")
+	if state == 'skilled' and SEX_TRAINING_MASTERY.has(skill_name):
+		var progress = person.get_sex_mastery_progress().get(skill_name, [])
+		text += "\n\n" + tr("MASTERY_HINT_SKILLED")
+		for group in SEX_TRAINING_MASTERY[skill_name]:
+			var labels = []
+			var group_done = false
+			for action in group:
+				labels.append(tr(SEX_ACTION_KEYS.get(action, "SEXACTION_" + action.to_upper())))
+				if action in progress:
+					group_done = true
+			var group_label = PoolStringArray(labels).join(" / ")
+			if group_done:
+				text += "\n{color=green|" + group_label + "}"
+			else:
+				text += "\n{color=gray|" + group_label + "}"
+	return text
+
+
+func build_sex_training_rows(person, node):
+	input_handler.ClearContainer(node)
+	if person == null:
+		return
+	var skills = person.get_sex_training()
+	for code in skills:
+		var state = skills[code]
+		#A skill nobody could have started on is not worth a row: no tail, no penis, no pussy
+		if code == 'sex_training_tail' and state == 'novice':
+			continue
+		if code == 'sex_training_penetration' and state == 'novice' and person.get_stat('penis_size') == '':
+			continue
+		if code == 'sex_training_pussy' and state == 'novice' and person.get_stat('sex') == 'male':
+			continue
+		var row = input_handler.DuplicateContainerTemplate(node)
+		row.get_node("Label").text = tr("CHARINFO_" + code.to_upper())
+		row.get_node("ProgressBar").value = SEX_TRAINING_PROGRESS.get(state, 0)
+		row.get_node("ProgressBar/Label").text = get_sex_training_label(state)
+		connecttexttooltip(row, build_sex_training_tooltip(person, code, state))
+
+
+func build_sex_traits_list(person, node, capacity_label = null):
+	input_handler.ClearContainer(node)
+	if person == null:
+		return
+	var all_traits = person.get_all_sex_traits()
+	var all_traits_known = true
+	for code in all_traits:
+		if !all_traits[code]:
+			all_traits_known = false
+			break
+	if all_traits_known:
+		for code in person.get_unlocked_sex_traits():
+			var button = input_handler.DuplicateContainerTemplate(node)
+			button.pressed = person.check_trait(code)
+			button.text = tr(Traitdata.sex_traits[code].name)
+			connecttexttooltip(button, person.translate(tr(Traitdata.sex_traits[code].descript)))
+			button.connect("toggled", self, 'toggle_sex_trait', [person, code, node, capacity_label])
+	build_known_sex_traits(person, node, all_traits_known)
+	update_sex_traits_capacity(person, node, capacity_label)
+
+
+#The traits the character has met but not unlocked, plus the ones still hidden entirely. They
+#sit above the toggles and none of them answers to the capacity limit, which is what the
+#"always_disabled" mark says.
+func build_known_sex_traits(person, node, all_traits_known):
+	var traits = person.get_all_sex_traits()
+	if all_traits_known:
+		for code in person.get_unlocked_sex_traits():
+			if traits.has(code) and traits[code]:
+				traits.erase(code)
+	for code in traits:
+		var trait = Traitdata.sex_traits[code]
+		var newnode = input_handler.DuplicateContainerTemplate(node)
+		newnode.set_meta("always_disabled", true)
+		node.move_child(newnode, 0)
+		if traits[code] == true: #trait is known
+			newnode.text = tr(trait.name)
+			var traittext = person.translate(tr(trait.descript))
+			for req in trait.reqs:
+				if req.has('code') && req.code == 'action_type':
+					traittext += "\n\n" + tr("DISLIKED_ACTIONS_LABEL") + ":[color=aqua] "
+					for action in req.value:
+						sex_actions_dict[action].givers = []
+						sex_actions_dict[action].takers = []
+						traittext += sex_actions_dict[action].getname() + ", "
+					traittext = traittext.substr(0, traittext.length() - 2) + ".[/color]"
+			connecttexttooltip(newnode, traittext)
+			newnode.disabled = all_traits_known or ("Dislike" in tr(trait.name))
+		else:
+			newnode.text = tr("TRAITUNKNOWN")
+			connecttexttooltip(newnode, person.translate(tr("TRAITUNKNOWNTOOLTIP")))
+			newnode.disabled = true
+		newnode.set("custom_fonts/font", input_handler.font_size_calculator(newnode))
+
+
+func update_sex_traits_capacity(person, node, capacity_label = null):
+	var capacity = person.get_stat('sexuals_factor') + 1
+	var used = person.get_sex_traits().size()
+	if capacity_label != null:
+		capacity_label.text = tr("SIBLINGMODULECURRENTCAPACITY") + ': ' + str(used) + "/" + str(capacity)
+	for child in node.get_children():
+		if child.get_meta("always_disabled", false) == true:
+			continue
+		child.disabled = capacity - used <= 0 && child.pressed == false
+
+
+func toggle_sex_trait(trait_status, person, code, node, capacity_label):
+	match trait_status:
+		true:
+			if !person.check_trait(code):
+				person.add_sex_trait(code, true)
+		false:
+			if person.check_trait(code):
+				person.remove_sex_trait(code, false)
+	update_sex_traits_capacity(person, node, capacity_label)
 
 
 func build_buffs_for_char(person, node, mode):

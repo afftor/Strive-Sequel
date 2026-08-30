@@ -29,6 +29,9 @@ func _ready():
 
 # Called by the main menu once it knows whether a save exists.
 func try_show(has_save):
+	if globals.is_experimental_build():
+		# experimental builds go out to testers only - no point pitching a subscription there
+		return
 	if !has_save:
 		return
 	if input_handler.progress_data.supporter_prompt_dismissed:

@@ -11,6 +11,20 @@ func _ready():
 	$DetailsPanel/MasterIcon.hide()
 	$Update.connect("pressed", self, "update_save_file")
 
+
+#The save name field owns the keyboard while the panel is up, so the hotkeys have to stand
+#down. text_field_input is global and sticky, so it is derived from the panel's own state
+#rather than set on open: SaveGame() reopens the panel after it was already closed, and the
+#panel is usually dismissed by the game menu hiding, which never reaches hide() here.
+func refresh_input_lock():
+	input_handler.text_field_input = saveloadmode == 'save' and is_visible_in_tree()
+
+
+func _notification(what):
+	if what == NOTIFICATION_VISIBILITY_CHANGED and is_inside_tree():
+		refresh_input_lock()
+
+
 func ResetSavePanel():
 	match saveloadmode:
 		'save':
@@ -86,8 +100,8 @@ func update_file_action():
 
 func SavePanelOpen():
 #	show()
-	input_handler.text_field_input = true #not really correct 
 	saveloadmode = 'save'
+	refresh_input_lock()
 	$ImportMode.visible = false
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	$LineEdit.editable = true
@@ -121,6 +135,7 @@ func LoadPanelOpen():
 #	show()
 	saveloadmode = 'load'
 	loadmode = "load"
+	refresh_input_lock()
 	$ImportMode.visible = true
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	$LineEdit.editable = false
@@ -284,11 +299,6 @@ func _on_ImportMode_pressed():
 	else:
 		loadmode = "load"
 
-
-func hide():
-	input_handler.text_field_input = false
-	.hide()
-	pass
 
 func Sort(a,b):
 	if a.get_node("Label").text == "Savename" || a.get_node("Date").text == 'savename':

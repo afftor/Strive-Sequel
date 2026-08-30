@@ -84,8 +84,14 @@ const VALUES = {
 		"bunny_drooping": "ears_rabbit3", "orcish": "ears_orc",
 		"normal": "ears_human", "fish": "ears_nereid",
 		"demon": "", "feathered": "",
-		# second cuts, drawn for the male rig so far - see STAND_INS
-		"elven2": "ears_elven2", "fox2": "ears_fox2",
+		"elven2": "ears_elven2",
+		# The August re-export dropped `ears_fox` and `ears_fox2` for four new
+		# cuts, so the two names the game has carried since the old doll have no
+		# art of their own any more.  They are pointed at the nearest of the new
+		# ones rather than left dangling: a character generated before the
+		# re-export still spells their ears `fox`, and a dangling name is a fox
+		# with no ears at all.
+		"fox": "ears_fox_n1", "fox2": "ears_fox_n2",
 	},
 	"horns": {
 		# the names are the old doll's and so is the art each one picked: its
@@ -115,6 +121,9 @@ const VALUES = {
 		# the August re-export replaced the small chin with a recut of it and
 		# withdrew the loli one altogether
 		"skinny": "head_chin_long_skinny", "small": "head_chin_small_c",
+		# the muzzles a wolf, a fox or a tanuki picks between - see BEAST_MUZZLES
+		"muzzle1": "beastkin_head_muzzle_1", "muzzle2": "beastkin_head_muzzle_2",
+		"muzzle3": "beastkin_head_muzzle_3",
 		# a beastkin muzzle depends on the animal; BEAST_CHINS answers it
 		"beastkin": "",
 	},
@@ -168,9 +177,9 @@ const VALUES = {
 # or leave a character with the group's default - a human ear on an elf - the
 # piece names what it stands in for, and the doll wears that until its own art
 # arrives.  Delete an entry when both rigs have the part.
-const STAND_INS = {
-	"ears": {"ears_elven2": "ears_elven", "ears_fox2": "ears_fox"},
-}
+# Empty: the August re-export gave both rigs the second elven and fox ears, which
+# is what this last stood in for.
+const STAND_INS = {}
 
 
 # The piece this rig should wear instead, or "" when there is nothing to fall
@@ -194,11 +203,22 @@ const BEASTKIN_LIPS = "lips_beast"
 const BEASTKIN_EXPRESSIONS = ["beastkin_lips_cry", "beastkin_lips_open", "beastkin_lips_smile"]
 
 
-# The muzzle to use, by the animal the beastkin race is drawn from.
+# The three muzzles a race can be given to choose between, rather than being
+# handed the one snout its animal comes with.  The wolves, the foxes and the
+# tanuki are on these; their old per-animal snouts are still in the art, and the
+# cats and the bunnies still wear theirs.
+const BEAST_MUZZLES = ["beastkin_head_muzzle_1", "beastkin_head_muzzle_2", "beastkin_head_muzzle_3"]
+
+# The muzzle to fall back on, by the animal the beastkin race is drawn from.
+# Only reached when the character's chin does not name one - a character rolled
+# before the choice existed, or a race that has no choice to make.
 const BEAST_CHINS = {
-	"cat": "beastkin_chin_cat", "fox": "beastkin_chin_fox", "wolf": "beastkin_chin_wolf",
+	"cat": "beastkin_chin_cat", "rat": "beastkin_chin_cat",
 	"rabbit": "beastkin_chin_rabbit", "bunny": "beastkin_chin_rabbit",
-	"tanuki": "beastkin_chin_tanuki", "rat": "beastkin_chin_cat",
+	# the three that choose: an old save saying only `beastkin` lands on the
+	# first of the new muzzles rather than the snout it used to wear
+	"fox": "beastkin_head_muzzle_1", "wolf": "beastkin_head_muzzle_1",
+	"tanuki": "beastkin_head_muzzle_1",
 }
 
 # The old doll had one rig and swapped textures on it; here the body is a part.
@@ -301,6 +321,10 @@ static func selections_for(stats, doll_id = "female"):
 # The beastkin cut of a part, or the part unchanged when there is none.
 static func beastkin_variant(group_id, part_id, stats = {}):
 	if group_id == "head":
+		# a chin that names one of the shared muzzles is a choice the player made
+		# and outranks the animal's own
+		if part_id in BEAST_MUZZLES:
+			return part_id
 		return str(BEAST_CHINS.get(str(stats.get("beast", "")), "beastkin_chin_cat"))
 	if group_id == "face":
 		if part_id == "":

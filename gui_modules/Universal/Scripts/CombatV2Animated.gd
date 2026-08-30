@@ -361,7 +361,7 @@ func resolve_without_combat(newplayergroup, newenemygroup):
 	yield(get_tree(), 'idle_frame')
 	hide_combat_ui()
 	show()
-	get_tree().get_root().set_disable_input(true)
+	input_handler.lock_input()
 	emit_signal("combat_finished")
 	give_rewards()
 
@@ -2216,7 +2216,7 @@ func victory():
 		return
 	emit_signal("combat_finished")
 	victory_seq_run = true
-	get_tree().get_root().set_disable_input(true)
+	input_handler.lock_input()
 	
 	autoskill_dummy.is_active = false
 	CombatAnimations.check_start()
@@ -2372,7 +2372,7 @@ func give_rewards():
 	$Rewards/ScrollContainer2/HBoxContainer.show()
 	globals.show_buttons($Rewards/ScrollContainer/HBoxContainer)
 	globals.show_buttons($Rewards/ScrollContainer2/HBoxContainer)
-	get_tree().get_root().set_disable_input(false)
+	input_handler.unlock_input()
 	$Rewards/CloseButton.grab_click_focus()
 	emit_signal('rewards_anim_finished')
 

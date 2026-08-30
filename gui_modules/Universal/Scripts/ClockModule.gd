@@ -33,6 +33,7 @@ const TURN_GAIN_LABEL_RATIO = 0.82
 const TURN_SHINE_START_X = -36.0
 const TURN_SHINE_END_X = 144.0
 const TURN_SIMULATION_PROGRESS_SHARE = 0.94
+const COUNTER_SEPARATION = 4.0
 
 var atlas_pos = {
 	0: 28,
@@ -56,6 +57,13 @@ func _ready():
 	hotkeys.connect("bindings_changed", self, "build_turn_tooltips")
 	build_turn_tooltips()
 	globals.connect("update_clock", self, 'request_labels_update')
+	#What the estate holds, sleeps and eats is read off its rooms and its roster, so the three
+	#numbers below the turn buttons are refreshed when either of those changes rather than on
+	#every tick of the clock.
+	globals.connect("rooms_changed", self, "refresh_estate_counters")
+	globals.connect("slave_added", self, "refresh_estate_counters")
+	globals.connect("slave_departed", self, "refresh_estate_counters")
+	refresh_estate_counters()
 	globals.connect("travel_completed", self, 'queue_travel_arrival_sound')
 	globals.connect("work_produced", self, "queue_turn_production_event")
 	ext_block.connect("pressed", self, "on_ext_block_press")
@@ -282,17 +290,11 @@ var continue_timer = false
 func advance_turn(amount = 1):
 	if turn_in_progress: #ignore spam clicks instead of stacking whole turns
 		return
-	if ResourceScripts.game_party.characters.size() > ResourceScripts.game_res.get_pop_cap() and ResourceScripts.game_party.has_nonunics():
-		if ResourceScripts.game_res.get_pop_cap() < ResourceScripts.game_res.get_pop_cap_limit():
-			input_handler.SystemMessage("You don't have enough rooms")
-		else:
-			input_handler.SystemMessage("Population limit reached")
-		return
-	#everyone needs somewhere to sleep before the day can move on
-	var unhoused = ResourceScripts.game_res.unhoused_characters()
-	if !unhoused.empty():
-		input_handler.SystemMessage(tr("MANSIONVIEW_ERR_UNHOUSED") % unhoused.size())
-		return
+	#Running out of beds no longer stops the day. Both refusals here were the same shortage said
+	#twice - the population cap IS the bed count (game_res.get_pop_cap) - and a day that cannot
+	#end is a day the player cannot trade or build their way out of. Sleeping on the floor costs
+	#them instead: game_res.mark_slept_rough() writes one line to the mansion log and hangs a
+	#penalty on whoever had nowhere to sleep, for as long as it lasts.
 	turn_in_progress = true
 	turn_started_at = OS.get_ticks_msec()
 	travel_arrival_sound_pending = false
@@ -459,7 +461,58 @@ func _set_food_counter(value):
 	$TimeNode/food.text = ResourceScripts.custom_text.transform_number(value)
 
 
+#The three estate counters that used to sit on the slave bar: what one material can fill on
+#the shelves, how many the beds hold, and what the household eats in a day.
+func refresh_estate_counters():
+	#Loading a save gets here before the party exists: game_res.fix_serialization() emits
+	#'rooms_changed'/'update_clock' while game_party.characters is still the dictionaries the
+	#file was saved as, and _process picks the dirty flag up on the frame LoadGame() yields
+	#next. Nothing here can be answered yet; LoadGame() refreshes the labels itself once the
+	#household is real.
+	if !ResourceScripts.game_party.is_deserialized():
+		return
+	var res = ResourceScripts.game_res
+	var limit = res.storage_limit()
+	$Counters/Storage.visible = limit > 0
+	$Counters/StorageIcon.visible = limit > 0
+	if limit > 0:
+		$Counters/Storage.text = str(limit)
+		var text = tr("MSLMSTORAGELIMIT") % limit
+		for row in res.fullest_materials(3):
+			text += "\n%s: %d/%d" % [tr(Items.materiallist[row[0]].name), row[1], limit]
+		globals.connecttexttooltip($Counters/Storage, text)
+	$Counters/Population.text = "%d/%d" % [
+		ResourceScripts.game_party.characters.size(), res.get_pop_cap()]
+	$Counters/Food.text = "%d/%s" % [
+		ResourceScripts.game_party.get_food_consumption(), tr("MSLMDAY")]
+	_layout_estate_counters()
+	globals.connecttexttooltip($Counters/Population, tr("TOOLTIPPOPULATION"))
+	globals.connecttexttooltip($Counters/Food, tr("TOOLTIPFOODCONSUMPTION"))
+
+
+#Keep the six public Counters/* paths while giving them the same visibility-aware reflow as
+#an HBoxContainer. Each label reserves its widest supported value in the scene, so a later
+#text assignment cannot grow through the following icon.
+func _layout_estate_counters():
+	var row = [$Counters/StorageIcon, $Counters/Storage, $Counters/PopulationIcon,
+		$Counters/Population, $Counters/FoodIcon, $Counters/Food]
+	var visible_nodes = []
+	var row_width = 0.0
+	for node in row:
+		if node.visible:
+			visible_nodes.append(node)
+			row_width += node.rect_min_size.x
+	if visible_nodes.size() > 1:
+		row_width += COUNTER_SEPARATION * (visible_nodes.size() - 1)
+	var x = round(($Counters.rect_size.x - row_width) * 0.5)
+	for node in visible_nodes:
+		node.rect_position = Vector2(x, round(($Counters.rect_size.y - node.rect_min_size.y) * 0.5))
+		node.rect_size = node.rect_min_size
+		x += node.rect_min_size.x + COUNTER_SEPARATION
+
+
 func update_labels():
+	refresh_estate_counters()
 	$TimeNode/Date.text = "W: %d, D: %d" % ResourceScripts.game_globals.get_week_and_day()
 	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
 	$TimeNode/food.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.get_food())

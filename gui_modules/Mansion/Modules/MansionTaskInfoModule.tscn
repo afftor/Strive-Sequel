@@ -16,8 +16,8 @@
 
 [node name="MansionTaskInfoModule" type="Control"]
 margin_right = 290.0
-margin_bottom = 365.0
-rect_min_size = Vector2( 0, 365 )
+margin_bottom = 252.0
+rect_min_size = Vector2( 0, 252 )
 script = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -66,7 +66,7 @@ margin_bottom = 46.0
 [node name="TaskList" type="TextureRect" parent="."]
 margin_top = 11.0
 margin_right = 290.0
-margin_bottom = 364.0
+margin_bottom = 251.0
 texture = ExtResource( 3 )
 expand = true
 flip_h = true
@@ -84,7 +84,7 @@ __meta__ = {
 margin_left = 14.0
 margin_top = 6.0
 margin_right = 276.0
-margin_bottom = 339.0
+margin_bottom = 226.0
 theme = ExtResource( 11 )
 scroll_horizontal_enabled = false
 

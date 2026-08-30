@@ -1,0 +1,365 @@
+[gd_scene load_steps=42 format=2]
+
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=1]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/Themes_v2/CHAR_CREATION/ChC_Theme.tres" type="Theme" id=3]
+[ext_resource path="res://gui_modules/Mansion/Scripts/MansionMainModule.gd" type="Script" id=4]
+[ext_resource path="res://gui_modules/Mansion/Modules/MansionSlaveListModule.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gui_modules/Mansion/Modules/MansionSkillsModule.tscn" type="PackedScene" id=6]
+[ext_resource path="res://gui_modules/Universal/Modules/NavigationModule.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/scenes/SexSelectMenu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://gui_modules/Mansion/Modules/MansionLeftMenuModule.tscn" type="PackedScene" id=9]
+[ext_resource path="res://gui_modules/Mansion/Modules/MansionLogModule.tscn" type="PackedScene" id=10]
+[ext_resource path="res://gui_modules/Mansion/Modules/MansionSlaveModule.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/Themes_v2/MANSION/M_Left_Menu.tres" type="Theme" id=12]
+[ext_resource path="res://gui_modules/Mansion/Modules/MansionJournalModule.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/button_charinfo_sqr.png" type="Texture" id=14]
+[ext_resource path="res://gui_modules/Mansion/Modules/MansionCraftModule.tscn" type="PackedScene" id=16]
+[ext_resource path="res://gui_modules/Mansion/Modules/MansionTaskInfoModule.tscn" type="PackedScene" id=17]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/button_charinfo_sqr_pressed.png" type="Texture" id=19]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/button_charinfo_sqr_hover.png" type="Texture" id=20]
+[ext_resource path="res://assets/Textures_v2/MANSION/Tutorial/button_tutorquestion.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/backgrounds/mansion_morning.png" type="Texture" id=24]
+[ext_resource path="res://assets/Textures_v2/MANSION/Tutorial/button_tutorquestion_hover.png" type="Texture" id=31]
+[ext_resource path="res://assets/Textures_v2/MANSION/Tutorial/button_tutorquestion_pressed.png" type="Texture" id=32]
+[ext_resource path="res://gui_modules/Mansion/Modules/TutorialIntro.tscn" type="PackedScene" id=33]
+[ext_resource path="res://gui_modules/Map/map.tscn" type="PackedScene" id=34]
+[ext_resource path="res://gui_modules/Mansion/Modules/MansionJobModule.tscn" type="PackedScene" id=36]
+[ext_resource path="res://assets/images/backgrounds/mansion_noon.png" type="Texture" id=37]
+[ext_resource path="res://assets/images/backgrounds/mansion_night.png" type="Texture" id=38]
+[ext_resource path="res://assets/images/backgrounds/mansion_evening.png" type="Texture" id=39]
+[ext_resource path="res://gui_modules/Mansion/Modules/CharacterProgressionPopup.tscn" type="PackedScene" id=40]
+[ext_resource path="res://gui_modules/mansion_view/mansion_view.tscn" type="PackedScene" id=41]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=42]
+[ext_resource path="res://assets/Textures_v2/MANSION/icon_job2_small.png" type="Texture" id=43]
+[ext_resource path="res://gui_modules/Mansion/Modules/CharacterTrainingPopup.tscn" type="PackedScene" id=44]
+[ext_resource path="res://assets/images/gui/icon_bed.png" type="Texture" id=47]
+[ext_resource path="res://gui_modules/Mansion/Modules/quest_attention_shimmer.shader" type="Shader" id=48]
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = ExtResource( 48 )
+shader_param/halo_width = 0.105
+shader_param/core_width = 0.032
+shader_param/lean = 0.12
+shader_param/halo_strength = 0.42
+shader_param/core_strength = 0.72
+shader_param/halo_color = Color( 1, 0.74, 0.3, 1 )
+shader_param/core_color = Color( 1, 0.96, 0.52, 1 )
+shader_param/sweep_time = 1.0
+shader_param/cooldown = 2.0
+shader_param/sweep_start = -0.2
+shader_param/sweep_end = 1.35
+shader_param/phase = 0.0
+
+[sub_resource type="ShaderMaterial" id=1]
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 20 )
+region_rect = Rect2( 0, 0, 82, 82 )
+margin_left = 8.72682
+margin_right = 8.21347
+margin_top = 9.7535
+margin_bottom = 9.7535
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 19 )
+region_rect = Rect2( 0, 0, 82, 82 )
+margin_left = 8.72682
+margin_right = 8.21347
+margin_top = 9.7535
+margin_bottom = 9.7535
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 14 )
+region_rect = Rect2( 0, 0, 82, 82 )
+margin_left = 8.72682
+margin_right = 8.21347
+margin_top = 9.7535
+margin_bottom = 9.7535
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.0470588, 0.027451, 0.0196078, 0.92 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.768627, 0.521569, 0.258824, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="MansionMainModule" type="Panel"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+mouse_filter = 2
+theme = ExtResource( 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_vertical_guides_": [ 0.575684 ]
+}
+test_mode = true
+
+[node name="BGHolder" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BG0" type="TextureRect" parent="BGHolder"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 38 )
+
+[node name="BG1" type="TextureRect" parent="BGHolder"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 24 )
+
+[node name="BG2" type="TextureRect" parent="BGHolder"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 37 )
+
+[node name="BG3" type="TextureRect" parent="BGHolder"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 39 )
+
+[node name="BG4" type="TextureRect" parent="BGHolder"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 38 )
+
+[node name="MansionRoomsModule" parent="." instance=ExtResource( 41 )]
+embedded = true
+
+[node name="ViewModes" type="VBoxContainer" parent="."]
+margin_left = 17.8902
+margin_top = 296.0
+margin_right = 227.89
+margin_bottom = 424.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Plan" type="HBoxContainer" parent="ViewModes"]
+margin_right = 222.0
+margin_bottom = 66.0
+custom_constants/separation = 8
+
+[node name="ModeWork" type="Button" parent="ViewModes/Plan"]
+margin_right = 66.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 66, 66 )
+mouse_default_cursor_shape = 2
+theme = ExtResource( 42 )
+toggle_mode = true
+pressed = true
+icon = ExtResource( 43 )
+expand_icon = true
+
+[node name="ModeBeds" type="Button" parent="ViewModes/Plan"]
+margin_left = 74.0
+margin_right = 140.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 66, 66 )
+mouse_default_cursor_shape = 2
+theme = ExtResource( 42 )
+toggle_mode = true
+icon = ExtResource( 47 )
+expand_icon = true
+
+[node name="Scope" type="HBoxContainer" parent="ViewModes"]
+margin_top = 74.0
+margin_right = 222.0
+margin_bottom = 128.0
+custom_constants/separation = 6
+
+[node name="MansionButton" type="Button" parent="ViewModes/Scope"]
+margin_right = 95.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 0, 54 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+theme = ExtResource( 42 )
+custom_fonts/font = ExtResource( 2 )
+toggle_mode = true
+pressed = true
+text = "Mansion"
+
+[node name="LocalTasksButton" type="Button" parent="ViewModes/Scope"]
+margin_left = 101.0
+margin_right = 222.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 0, 54 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+theme = ExtResource( 42 )
+custom_fonts/font = ExtResource( 2 )
+toggle_mode = true
+text = "Local tasks"
+
+[node name="QuestAttentionShimmer" type="ColorRect" parent="ViewModes/Scope/LocalTasksButton"]
+material = SubResource( 7 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="MansionLogModule" parent="." instance=ExtResource( 10 )]
+margin_left = 1595.0
+margin_top = 136.0
+margin_right = 1905.0
+margin_bottom = 1063.0
+
+[node name="MansionBottomLeftModule" parent="." instance=ExtResource( 9 )]
+material = SubResource( 1 )
+margin_left = 15.0
+margin_top = 934.0
+margin_right = 89.0
+margin_bottom = 1068.0
+theme = ExtResource( 12 )
+
+[node name="MansionSlaveListModule" parent="." instance=ExtResource( 5 )]
+margin_left = 320.0
+margin_top = 137.0
+margin_right = 1590.0
+margin_bottom = 1063.0
+
+[node name="MansionSlaveModule" parent="." instance=ExtResource( 11 )]
+visible = false
+margin_left = 1435.0
+margin_top = 398.0
+margin_right = 1905.0
+margin_bottom = 1063.0
+
+[node name="MansionSkillsModule" parent="." instance=ExtResource( 6 )]
+visible = false
+margin_left = 320.0
+margin_top = 948.0
+margin_right = 319.84
+margin_bottom = 937.32
+
+[node name="MansionTaskInfoModule" parent="." instance=ExtResource( 17 )]
+visible = false
+margin_left = 15.0
+margin_top = 436.0
+margin_right = 305.0
+margin_bottom = 688.0
+
+[node name="MenuButton" type="Button" parent="."]
+visible = false
+margin_left = 1785.0
+margin_top = 15.0
+margin_right = 1901.0
+margin_bottom = 69.0
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+
+[node name="Label" type="Label" parent="MenuButton"]
+margin_right = 116.0
+margin_bottom = 53.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "BUTTONMENU"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="MansionJournalModule" parent="." instance=ExtResource( 13 )]
+visible = false
+margin_left = 530.0
+margin_top = 140.0
+margin_right = 1390.0
+margin_bottom = 940.0
+
+[node name="NavigationModule" parent="." instance=ExtResource( 7 )]
+margin_right = -14.0
+
+[node name="TutorialButton" type="TextureButton" parent="."]
+margin_left = 1849.89
+margin_top = 61.1109
+margin_right = 1900.89
+margin_bottom = 113.111
+theme = ExtResource( 3 )
+texture_normal = ExtResource( 23 )
+texture_pressed = ExtResource( 32 )
+texture_hover = ExtResource( 31 )
+
+[node name="MansionCraftModule" parent="." instance=ExtResource( 16 )]
+visible = false
+
+[node name="TestButton" type="Button" parent="." groups=["test"]]
+visible = false
+margin_left = 102.757
+margin_top = 246.472
+margin_right = 164.757
+margin_bottom = 276.472
+text = "Test"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutorialIntro" parent="." instance=ExtResource( 33 )]
+margin_left = 717.34
+margin_top = 411.782
+margin_right = -702.661
+margin_bottom = -408.218
+
+[node name="MansionJobModule2" parent="." instance=ExtResource( 36 )]
+visible = false
+
+[node name="map_test" type="Button" parent="." groups=["test_obsolete"]]
+visible = false
+margin_left = 33.6739
+margin_top = 633.069
+margin_right = 86.6739
+margin_bottom = 668.069
+text = "map"
+
+[node name="map" parent="." instance=ExtResource( 34 )]
+visible = false
+
+[node name="SexSelectMenu" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[node name="TurnProductionOverlay" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Button" type="Control" parent="TurnProductionOverlay"]
+visible = false
+margin_right = 44.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 44, 44 )
+rect_pivot_offset = Vector2( 22, 22 )
+mouse_filter = 2
+
+[node name="Background" type="Panel" parent="TurnProductionOverlay/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 5 )
+
+[node name="Icon" type="TextureRect" parent="TurnProductionOverlay/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+mouse_filter = 2
+expand = true
+stretch_mode = 5
+
+[node name="Tween" type="Tween" parent="TurnProductionOverlay/Button"]
+
+[node name="CharacterProgressionPopup" parent="." instance=ExtResource( 40 )]
+visible = false
+
+[node name="CharacterTrainingPopup" parent="." instance=ExtResource( 44 )]
+visible = false
+
+[connection signal="pressed" from="TestButton" to="." method="_on_TestButton_pressed"]

@@ -6,7 +6,6 @@ const Migrations = preload("res://src/core/mansion_migrations.gd")
 #for naming a finished room in the activity log - plain data scripts, no autoloads, so they
 #are safe to sit in this file's preload chain
 const RoomTypes = preload("res://assets/data/mansion_room_types.gd")
-const RoomUpgrades = preload("res://assets/data/mansion_room_upgrades.gd")
 
 var itemcounter = 0
 var money = 0 setget set_money
@@ -195,7 +194,7 @@ func open_stairs():
 #'tailor'/'resting' upgrade codes and letting the old-save conversion turn them into rooms,
 #which is a strange road to take in a new game and took the rubble's finds with it. Raised
 #directly instead, and sparing the derelict rooms that are hiding something.
-const TEST_ROOMS = ['forge', 'alchemy_room', 'tailor_workshop', 'bathhouse', 'practice_room']
+const TEST_ROOMS = ['forge', 'alchemy_room', 'ritual_room', 'bathhouse', 'practice_room']
 
 
 func build_test_rooms():
@@ -330,6 +329,22 @@ func autohouse_character(person):
 		null, shares_master_bed(person))
 
 
+#The other half of autohouse_character: somebody who has left the household gives their bed
+#back. Housing lives in the layout and nowhere else, so nothing about dropping a character from
+#the party frees it - a slave who was sold went on holding a bed, counted as a resident and
+#refused the next arrival, and the house only came right again on the next load, when
+#MansionLayout.validate() prunes ids that are no longer in the party.
+#Being away is not leaving: travel, a work quest, a visit to a town all keep a character in
+#game_party.characters, and their bed with them. This is for the ones who are gone.
+func unhouse_character(char_id):
+	if !(mansion_layout is Dictionary) or mansion_layout.empty():
+		return false
+	if !MansionLayout.unassign_character(mansion_layout, char_id):
+		return false
+	rooms_changed()
+	return true
+
+
 #A bathhouse does what the old Bath upgrade did. Both answers funnel through here so a
 #reader never has to know which of the two the household actually has.
 func has_bath():
@@ -346,11 +361,55 @@ func get_sex_limit():
 	return 2 + MansionLayout.effect_of_type(mansion_layout, 'master_bedroom', 'sex_slots')
 
 
-#Who has no bed. Blocks the end of the turn, and drives the warning on the mansion
-#screen. Counts characters wherever they are in the world - being away is not an excuse
-#for not having a room.
+#Who has no bed. Drives the warning on the mansion screen and the night's penalty. Counts
+#characters wherever they are in the world - being away is not an excuse for not having a room.
 func unhoused_characters():
 	return MansionLayout.unhoused_characters(mansion_layout, ResourceScripts.game_party.characters)
+
+
+#Who spent last night on the floor. Taken as one answer at the top of the turn and held for the
+#whole of it: housing can change while the day runs - somebody is sold, a bedroom is finished -
+#and a penalty that came and went halfway through would be neither fair nor explainable.
+var slept_rough_ids = {}
+
+
+func mark_slept_rough():
+	var before = slept_rough_ids
+	slept_rough_ids = {}
+	for char_id in unhoused_characters():
+		slept_rough_ids[char_id] = true
+	#anyone whose answer changed either way is holding a stale effect cache: the penalty is an
+	#effect condition, and conditions are only re-read when a character is told to rebuild
+	var touched = {}
+	for char_id in before:
+		touched[char_id] = true
+	for char_id in slept_rough_ids:
+		touched[char_id] = true
+	for char_id in touched:
+		var person = ResourceScripts.game_party.characters.get(char_id)
+		if person is Object and person.has_method('reset_rebuild'):
+			person.reset_rebuild()
+	announce_slept_rough()
+
+
+func slept_rough(char_id):
+	return slept_rough_ids.has(char_id)
+
+
+#One line for the whole household rather than one per sleeper: a player who is twelve beds short
+#does not need twelve lines saying the same thing.
+func announce_slept_rough():
+	if slept_rough_ids.empty():
+		return
+	var names = []
+	for char_id in slept_rough_ids:
+		var person = ResourceScripts.game_party.characters.get(char_id)
+		if person is Object and person.has_method('get_short_name'):
+			names.append(person.get_short_name())
+	if names.empty():
+		return
+	globals.mansion_activity_log_add('population', tr("MANSION_ACTIVITY_SLEPTROUGH") % [
+		PoolStringArray(names).join(", ")])
 
 
 #What a room grants is read through effect conditions, and those are answered off a cached
@@ -358,6 +417,20 @@ func unhoused_characters():
 #cache, so a room raised this turn only started counting whenever something else happened to
 #dirty the cache - which could be never. Every change to what stands on the plan goes through
 #here afterwards.
+#An improvement may name a lesson bought somewhere else - the salvage bench is taught by the
+#workers' guild - and cannot be built before it. Asked here rather than in mansion_room_types,
+#which is preloaded and may not read the world.
+func upgrade_locked(code):
+	var data = RoomTypes.get_upgrade(code)
+	if data == null or !data.has('guild_upgrade'):
+		return false
+	var gate = data.guild_upgrade
+	var factions = ResourceScripts.game_world.factions
+	if !factions.has(gate.guild):
+		return true
+	return !factions[gate.guild].upgrades.has(gate.code)
+
+
 func rooms_changed():
 	for char_id in ResourceScripts.game_party.characters:
 		var person = ResourceScripts.game_party.characters[char_id]
@@ -730,8 +803,8 @@ func has_room_with_tag(tag):
 
 #Does where this character sleeps match what they have come to expect? What they expect of a
 #bed is exactly what they expect of a meal - the same fame and the same value decide both, so
-#there is no second roll and no second stat to keep. Only 'refined' and above ask for
-#anything, and what they ask for is a private room or the master's own bed.
+#there is no second roll and no second stat to keep. Only the top demand tier asks for
+#anything, and what it asks for is a private room or the master's own bed.
 #
 #Slaves are not asked, the same exemption ch_food.ignores_demand() makes: they sleep where
 #they are put.
@@ -747,7 +820,7 @@ func sleep_demand_met(char_id):
 		return true
 	if person.food.ignores_demand():
 		return true
-	var wanted = variables.food_demand_order.find('refined')
+	var wanted = variables.food_demand_order.size() - 1
 	if wanted < 0 or variables.food_demand_order.find(person.food.food_demand) < wanted:
 		return true
 	return character_room_has_tag(char_id, 'luxury') or character_room_has_tag(char_id, 'master_bed')
@@ -792,7 +865,7 @@ func finished_build_text(build):
 			return tr("MANSIONVIEW_LOGBUILT") % tr(RoomTypes.get_name_key(build.target))
 		'repair':
 			return tr("MANSIONVIEW_LOGCLEARED")
-	return tr("MANSIONVIEW_LOGUPGRADED") % [tr(RoomUpgrades.get_name_key(build.target)),
+	return tr("MANSIONVIEW_LOGUPGRADED") % [tr(RoomTypes.get_upgrade_name_key(build.target)),
 		int(build.level)]
 
 

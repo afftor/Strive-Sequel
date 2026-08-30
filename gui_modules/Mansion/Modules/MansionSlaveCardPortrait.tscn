@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/images/iconsraces/halfwolf.png" type="Texture" id=2]
@@ -31,6 +31,9 @@
 [ext_resource path="res://assets/images/gui/icon_craft64x64.png" type="Texture" id=70]
 [ext_resource path="res://assets/Textures_v2/MANSION/Locations/Buttons/button_name_additional.png" type="Texture" id=71]
 [ext_resource path="res://assets/images/gui/ui_slot_cross.png" type="Texture" id=72]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_charsheet.png" type="Texture" id=73]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_charsheet_pressed.png" type="Texture" id=74]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_charsheet_hover.png" type="Texture" id=75]
 
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.105882, 0.0705882, 0.0588235, 0.96 )
@@ -418,17 +421,17 @@ texture_disabled = ExtResource( 61 )
 expand = true
 stretch_mode = 5
 
-[node name="Work" type="TextureButton" parent="Margin/Rows/Actions"]
+[node name="CharInfo" type="TextureButton" parent="Margin/Rows/Actions"]
 margin_left = 140.0
 margin_right = 180.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 size_flags_horizontal = 3
 size_flags_vertical = 4
-texture_normal = ExtResource( 64 )
-texture_pressed = ExtResource( 65 )
-texture_hover = ExtResource( 66 )
-texture_disabled = ExtResource( 64 )
+texture_normal = ExtResource( 73 )
+texture_pressed = ExtResource( 74 )
+texture_hover = ExtResource( 75 )
+texture_disabled = ExtResource( 73 )
 expand = true
 stretch_mode = 5
 

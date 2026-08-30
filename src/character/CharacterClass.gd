@@ -1817,6 +1817,8 @@ func killed(direct_call = true):
 	ResourceScripts.game_party.add_fate(id, tr("SIBLINGMODULEFATEDEAD"))
 	is_active = false
 	ResourceScripts.game_party.character_order.erase(id)
+	#the dead do not keep their room
+	ResourceScripts.game_res.unhouse_character(id)
 	characters_pool.call_deferred('cleanup')
 	input_handler.update_slave_list()
 	if is_master():
@@ -1994,6 +1996,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		#sleeps somewhere good enough for what they have come to expect
 		'sleep_demand':
 			return ResourceScripts.game_res.sleep_demand_met(id) == i.check
+		'slept_rough':
+			return ResourceScripts.game_res.slept_rough(id) == i.check
 		'check_stored':
 			return training.check_stored_reqs(i.value)
 		'is_immune':
@@ -2197,6 +2201,8 @@ func escape_actions():
 	remove_from_travel()
 	ResourceScripts.game_party.add_fate(id, tr("SIBLINGMODULEFATEESCAPE"))
 	is_active = false #for now, to replace with corresponding mechanic
+	#and neither do the ones who ran
+	ResourceScripts.game_res.unhouse_character(id)
 	characters_pool.cleanup()
 
 func predict_food():
@@ -2221,7 +2227,7 @@ func tick(): #work ticks are not here - as they are called in tasks order, not i
 	#food runs before the regen, so a character that starves this turn loses this turn's
 	#health and half of this turn's mana rather than the next one's
 	food.tick()
-	self.hp += get_stat('hp_reg')
+	self.hp += hp_regen_allowed(get_stat('hp_reg'))
 	self.mp += get_stat('mp_reg')
 	#yet again workaround for effects, that should already be in action, but they don't
 	call_deferred('deferred_brk_check_food')
@@ -2238,8 +2244,21 @@ func tick(): #work ticks are not here - as they are called in tasks order, not i
 	minor_training_tick()
 
 
+#What a night on the floor leaves of the body's own mending: it stops at half. Somebody worse
+#off than that still mends up to half - the floor is miserable, not a wound - and somebody
+#already above it gains nothing at all. Said here rather than in the effect because hp_reg adds
+#flat bonuses after multiplying, so no multiplier can hold it down.
+func hp_regen_allowed(amount):
+	if amount <= 0 or !ResourceScripts.game_res.slept_rough(id):
+		return amount
+	var ceiling = floor(get_stat('hpmax') * 0.5)
+	if hp >= ceiling:
+		return 0
+	return min(amount, ceiling - hp)
+
+
 func rest_tick():
-	self.hp += get_stat('hp_reg') * 2
+	self.hp += hp_regen_allowed(get_stat('hp_reg') * 2)
 	self.mp += get_stat('mp_reg') * 2
 	for e in find_temp_effect_tag('addition_rest_tick'):
 		var eff = effects_pool.get_effect_by_id(e)
@@ -2841,7 +2860,8 @@ func update_portrait(ragdoll): # for ragdolls
 	#the shot needs two frames to land. icon_image only moves once it did - pointing it at a
 	#file that does not exist yet is what made the portrait blink to the race icon meanwhile
 	set_stat('portrait_update', false)
-	ragdoll.save_portrait('portrait_' + id, self)
+	#handed back so a caller that has to wait for the picture can yield on it
+	return ragdoll.save_portrait('portrait_' + id, self)
 
 
 func needs_portrait(): #never had one taken, or the file behind it is gone

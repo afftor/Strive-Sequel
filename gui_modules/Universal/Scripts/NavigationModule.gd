@@ -28,6 +28,8 @@ func tut_register_travel_btn():
 	input_handler.register_btn_source('travel_btn', self, 'tut_get_travelbutton')
 func tut_register_wolves_btn():
 	input_handler.register_btn_source('quest_loc_nav_btn', self, 'tut_get_threat_wolves')
+	input_handler.register_btn_source('quest_loc_nav_explore_btn', self,
+		'tut_get_threat_wolves_explore')
 func tut_get_aliron():
 	for btn in $NavigationContainer/AreaSelection.get_children():
 		if btn.get_meta("data", "") == 'aliron':
@@ -45,6 +47,17 @@ func tut_get_threat_wolves():
 	for btn in $NavigationContainer/AreaSelection.get_children():
 		if btn.get_meta("data", "") == loc_id:
 			return btn
+
+#A place on this strip is not entered by pressing it - the button carries no press of its own.
+#Hovering it swaps its picture for the pair inside it, and Explore is the one that goes there
+#(configure_location_choices). A lesson that says "select it to enter" has to wait for that
+#press, not for the picture's.
+func tut_get_threat_wolves_explore():
+	var button = tut_get_threat_wolves()
+	if button == null or !button.has_node("LocationChoices/Combat"):
+		return null
+	return button.get_node("LocationChoices/Combat")
+
 
 func open_travel():
 	var map = gui_controller.mansion.get_node("map")

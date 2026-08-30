@@ -15,6 +15,7 @@ const CATALOGUE = preload("res://Character_generator/Doll2Spine/doll2_catalogue.
 var contract = DOLLS.doll(DOLLS.DEFAULT_DOLL).contract
 const MODIFIERS = preload("res://Character_generator/Doll2Spine/universal/doll_modifiers.gd")
 const COVERAGE = preload("res://Character_generator/Doll2Spine/universal/doll_coverage.gd")
+const PUSH = preload("res://Character_generator/Doll2Spine/universal/doll_push.gd")
 const GEAR = preload("res://Character_generator/Doll2Spine/universal/doll_gear_map.gd")
 const COLORS = preload("res://Character_generator/Doll2Spine/universal/doll_colors.gd")
 const RECOLOR_SHADER = preload("res://Character_generator/Doll2Spine/doll2_recolor.shader")
@@ -100,6 +101,8 @@ var axis_values = CATALOGUE.default_axes()
 var composed = {}
 # Slots a mod paints with its own image instead of the atlas.  Empty without mods.
 var composed_textures = {}
+# Slots drawn by a part that is not recoloured - see UNPAINTED_PARTS.
+var composed_unpainted = {}
 # Slots the composed set is wearing but does not show - what makes a character
 # bare rather than dressed.  The screens fill this from the character's undress
 # level; in here it follows the undress buttons.
@@ -137,6 +140,17 @@ var color_values_secondary = {}
 # mesh and each gets its own picker.
 var zone_values = {}
 var channel_materials = {}
+# Which of this doll's channels blend a second colour along the mesh, copied from
+# the catalogue when the materials are built.
+#
+# The catalogue is one shared table with an active doll, and every doll on screen
+# shares it: a portrait booth or an option picture switching rigs moves it under
+# a doll that is mid-frame.  That was survivable while nothing animated - the
+# gradient was worked out during a rebuild and never again - but an idling doll
+# recomputes it every frame, and a channel the other rig does not have (the male
+# `beard`) crashed the lookup.  The answer is not to ask the catalogue in a hot
+# path at all.
+var channel_two_tone = {}
 # Vertical extent of each two-tone channel's meshes, so the shader knows where
 # the roots end and the tips begin.
 var gradient_bounds = {}
@@ -171,6 +185,31 @@ var animation_attachments = {}
 var animation_signature = 0
 var animation_times = {}
 var animation_durations = {}
+# A blink, on top of whatever else is playing.
+#
+# `eyesmove` is the take the artist cut for it: a quarter-second deform of the
+# face mesh that closes the lids and opens them again, authored for every face in
+# both exports, beastkin included.  It is not part of the idle - a breath is a
+# steady loop and an eye is not - so it is fired on its own timer and switched
+# off again the frame it ends, which leaves the lids where the pose has them.
+#
+# Only the game turns this on; the preview panel keeps its own toggle for the
+# same animation, where it loops so it can be looked at.
+# Parts the cursor can push about - the ears, today.
+#
+# What is pushable, how hard it gives and how it snaps back all live in
+# `doll_push.gd`; the doll keeps only what the doll knows, which is where the
+# bones have ended up this frame and how big the art on them is drawn.  Listing
+# another part is a line in that file, not a change here.
+var _push_state = {}
+var _push_part = ""
+var _push_cursor = Vector2.ZERO
+
+const BLINK_ANIMATION = "eyesmove"
+const BLINK_MIN_DELAY = 3.0
+const BLINK_MAX_DELAY = 7.0
+var blink_enabled = false
+var blink_delay = 0.0
 var handle_buttons = {}
 var handles_visible = true
 var handle_targets = {}
@@ -195,6 +234,7 @@ func _ready():
 	_build_channel_materials()
 	_build_interface()
 	_rebuild_model()
+	set_blinking(true)
 	set_process(true)
 
 func _reset_animation_states():
@@ -212,7 +252,16 @@ func _reset_animation_states():
 func _process(delta):
 	if skeleton.empty():
 		return
-	var pose_changed = false
+	# A doll nobody can see still gets its frame from the engine, and an animated
+	# frame is the most expensive thing this node does - the whole skin is solved
+	# again on the CPU.  Screens keep their dolls built and hidden rather than
+	# freeing them, so this is most of them most of the time.
+	if !is_visible_in_tree():
+		return
+	# before the times are advanced: this decides whether the blink is one of the
+	# animations that gets a share of this frame
+	_advance_blink(delta)
+	var pose_changed = _advance_pushables(delta)
 	for animation_name in animation_states.keys():
 		if animation_states[animation_name]:
 			var duration = float(animation_durations.get(animation_name, 0.0))
@@ -228,6 +277,203 @@ func _process(delta):
 	# After the pose, never before it: an animated frame rewrites the very
 	# points the swing is bending, so bending them first would be undone.
 	_advance_jiggle(delta)
+
+
+# Whether the doll blinks by itself.  Turned on beside the idle and off with it.
+func set_blinking(value):
+	blink_enabled = bool(value) and animation_durations.get(BLINK_ANIMATION, 0.0) > 0.0
+	animation_states[BLINK_ANIMATION] = false
+	animation_times[BLINK_ANIMATION] = 0.0
+	_schedule_blink()
+
+
+# The wait until the next one, so two dolls on the same screen do not blink in
+# step.  The first wait is drawn the same way as the rest, which is why a doll
+# does not blink the moment it appears.
+func _schedule_blink():
+	blink_delay = rand_range(BLINK_MIN_DELAY, BLINK_MAX_DELAY)
+
+
+func _advance_blink(delta):
+	if !blink_enabled or !animation_states.has(BLINK_ANIMATION):
+		return
+	if animation_states[BLINK_ANIMATION]:
+		# The take runs once rather than looping, so it is stopped a frame before
+		# the ordinary advance would wrap it back to the start.
+		var duration = float(animation_durations.get(BLINK_ANIMATION, 0.0))
+		if float(animation_times.get(BLINK_ANIMATION, 0.0)) + delta >= duration:
+			animation_states[BLINK_ANIMATION] = false
+			animation_times[BLINK_ANIMATION] = 0.0
+			_schedule_blink()
+		return
+	blink_delay -= delta
+	if blink_delay <= 0.0:
+		animation_times[BLINK_ANIMATION] = 0.0
+		animation_states[BLINK_ANIMATION] = true
+
+
+# The cursor leaning on whatever the doll is wearing that gives way.  Says
+# whether the pose has to be worked out again this frame; a doll wearing nothing
+# pushable answers `false` after one dictionary lookup.
+func _advance_pushables(delta):
+	var part_id = str(selections.get(PUSH.PART_GROUP, ""))
+	if part_id != _push_part:
+		_push_part = part_id
+		_push_state = PUSH.new_state(PUSH.bones_for(part_id))
+	if _push_state.empty():
+		return false
+	var cursor = _cursor_over_the_doll()
+	# Leaning into it needs the cursor to be moving: a part that drifts under a
+	# still pointer - the idle does move the head - must not shove itself.
+	var moved = cursor.distance_to(_push_cursor) > 0.5
+	_push_cursor = cursor
+	var art = _push_art(_push_state.keys())
+	var changed = false
+	for bone_name in _push_state.keys():
+		var entry = _push_state[bone_name]
+		if !bool(entry.held) and float(entry.snap) >= 0.0:
+			changed = PUSH.advance_snap(entry, delta) or changed
+			continue
+		if !bool(entry.held) and !moved:
+			continue
+		var against = _push_contact(bone_name, art.get(bone_name), entry, cursor)
+		changed = PUSH.push(entry, against) or changed
+	return changed
+
+
+# Where the cursor stands against one bone's worth of art, in the terms
+# `doll_push` works in - or `null` when it is not against it at all.
+#
+# Contact is the distance to the nearest drawn point, not a cone around the bone:
+# the ear art hangs anywhere from 12 to 100 degrees off the bone that carries it
+# depending on which cut is worn, so a cone around the bone is a cone through
+# empty air on half of them.
+func _push_contact(bone_name, art, entry, cursor):
+	if !bones.has(bone_name) or art == null or art.points.empty():
+		return null
+	var inside = false
+	for triangle in art.triangles:
+		if Geometry.point_is_inside_triangle(cursor, triangle[0], triangle[1], triangle[2]):
+			inside = true
+			break
+	var nearest = 1e9
+	if !inside:
+		for point in art.points:
+			nearest = min(nearest, cursor.distance_squared_to(point))
+		nearest = sqrt(nearest)
+	if !PUSH.touches(inside, nearest, art.size):
+		return null
+	var base = _world_point(bones[bone_name], Vector2.ZERO) + _display_origin()
+	return PUSH.contact(base, art.middle, entry.angle, cursor)
+
+
+# The drawn art belonging to each bone: its points, where it sits and how big it
+# is.  Split off the points rather than taken from the slot as a whole, because
+# one attachment carries both ears and the head is between them; a part rigged to
+# a single bone - the cat ears are - takes all of it, because that is what the one
+# bone is carrying.
+func _push_art(bone_names):
+	var points = []
+	var triangles = []
+	for _i in range(bone_names.size()):
+		points.append([])
+		triangles.append([])
+	var box = _slot_bounds(PUSH.PART_SLOTS)
+	var middle = box.position.x + box.size.x * 0.5
+	for record in mesh_records:
+		if !is_instance_valid(record.polygon):
+			continue
+		if !(str(record.slot.get("name", "")) in PUSH.PART_SLOTS):
+			continue
+		var drawn = record.polygon.polygon
+		var offset = record.polygon.position
+		for point in drawn:
+			points[_side_of(point + offset, middle, bone_names.size())].append(point + offset)
+		# The mesh's own triangles, so the cursor can be tested against the art
+		# rather than against a box that is mostly the air beside it.
+		var indices = record.attachment.get("triangles", [])
+		for i in range(0, indices.size() - 2, 3):
+			if int(indices[i]) >= drawn.size() or int(indices[i + 1]) >= drawn.size() or int(indices[i + 2]) >= drawn.size():
+				continue
+			var a = drawn[int(indices[i])] + offset
+			var b = drawn[int(indices[i + 1])] + offset
+			var c = drawn[int(indices[i + 2])] + offset
+			var centre = (a + b + c) / 3.0
+			triangles[_side_of(centre, middle, bone_names.size())].append([a, b, c])
+	var result = {}
+	for index in range(bone_names.size()):
+		result[bone_names[index]] = _art_of(points[index], triangles[index])
+	return result
+
+
+# The bone lists are written left first, and the doll faces the viewer, so the
+# left bone is the left of the screen.  A part on one bone takes everything.
+func _side_of(point, middle, sides):
+	if sides > 1 and point.x >= middle:
+		return 1
+	return 0
+
+
+func _art_of(points, triangles):
+	if points.empty():
+		return {"points": [], "triangles": [], "middle": Vector2.ZERO, "size": 0.0}
+	var low = Vector2(1e9, 1e9)
+	var high = Vector2(-1e9, -1e9)
+	for point in points:
+		low.x = min(low.x, point.x)
+		low.y = min(low.y, point.y)
+		high.x = max(high.x, point.x)
+		high.y = max(high.y, point.y)
+	# The short way across is the yardstick for how near counts as touching: an
+	# ear is long and thin, and half a long ear away is much too far.
+	return {
+		"points": points,
+		"triangles": triangles,
+		"middle": (low + high) * 0.5,
+		"size": min(high.x - low.x, high.y - low.y),
+	}
+
+
+# Turns each pushed bone by however far it is being held, or by where its snap
+# back has got to.  Nothing hangs off an ear bone, so the hierarchy below does
+# not have to be resolved again.
+func _apply_pushables():
+	for bone_name in _push_state.keys():
+		if !bones.has(bone_name):
+			continue
+		var swing = PUSH.angle_of(_push_state[bone_name])
+		if abs(swing) < 0.001:
+			continue
+		var bone = bones[bone_name]
+		_set_bone_world(bone_name,
+			float(bone.local_x), float(bone.local_y),
+			float(bone.local_rotation) + swing,
+			float(bone.local_scale_x), float(bone.local_scale_y),
+			float(bone.local_shear_x), float(bone.local_shear_y))
+
+
+# Whether anything is drawn over the breasts right now.  Read off what is on
+# screen rather than off the undress level, because the two do not always agree:
+# a level can leave the chest bare with the rest still dressed, and a piece
+# equipped in a screen covers it without the level moving at all.
+const CHEST_COVER_SLOTS = ["equip_breasts"]
+
+
+func chest_is_covered():
+	for record in mesh_records:
+		if str(record.slot.get("name", "")) in CHEST_COVER_SLOTS:
+			return true
+	return false
+
+
+# Rebuilds, and swings the chest if that rebuild covered or bared it.  The panel
+# calls this where a screen calls its own `_apply`, so the tool answers a hand on
+# the undress buttons the way the game answers a hand on the character.
+func _rebuild_and_watch_the_chest():
+	var was_covered = chest_is_covered()
+	_rebuild_model()
+	if chest_is_covered() != was_covered:
+		jiggle_tits()
 
 
 # A swing of the chest.  `power` scales the first one.
@@ -467,6 +713,7 @@ func _build_bone_transforms(layer_factors = {}):
 		index += 1
 	_apply_active_bone_timelines()
 	_apply_bone_modifiers(layer_factors)
+	_apply_pushables()
 	_apply_native_handle_targets()
 	var constraints = skeleton.get("ik", []).duplicate()
 	constraints.sort_custom(self, "_sort_ik_constraints")
@@ -1240,7 +1487,14 @@ func _build_interface():
 	# later export shows up on its own instead of being invisible until someone
 	# remembers to add a line.
 	for animation_name in _sorted_animations():
+		if animation_name == BLINK_ANIMATION:
+			continue # the blink runs it on its own timer, see the toggle below
 		_add_animation_toggle(box, ANIMATION_LABELS.get(animation_name, ""), animation_name)
+	var blink_toggle = CheckButton.new()
+	blink_toggle.text = _text("DOLL2_PREVIEW_BLINK")
+	blink_toggle.pressed = blink_enabled
+	blink_toggle.connect("toggled", self, "set_blinking")
+	box.add_child(blink_toggle)
 	var handles_toggle = CheckButton.new()
 	handles_toggle.text = _text("DOLL2_PREVIEW_SHOW_HANDLES")
 	handles_toggle.pressed = handles_visible
@@ -1414,7 +1668,7 @@ func _add_undress_row(parent):
 func _on_undress_picked(level):
 	undress_level = level
 	hidden_slots = GEAR.hidden_slots(level)
-	_rebuild_model()
+	_rebuild_and_watch_the_chest()
 
 
 func _add_axis_select(parent, label_text, axis, values):
@@ -1572,10 +1826,22 @@ func _make_select(parent, label_text, channels = []):
 
 func _build_channel_materials():
 	var channels = CATALOGUE.color_channels()
+	# The two rigs do not carry the same channels - only the male doll has a
+	# `beard` - so the old set has to go rather than be added to.  Kept, its
+	# materials outlived the catalogue that named them and every lookup against
+	# it was a crash waiting for the first frame that asked.  Everything cleared
+	# here is rebuilt below, and the doll is recoloured right after a switch.
+	channel_materials.clear()
+	channel_two_tone.clear()
+	color_values.clear()
+	color_values_secondary.clear()
+	zone_values.clear()
+	gradient_bounds.clear()
 	for channel_id in channels.keys():
 		var material = ShaderMaterial.new()
 		material.shader = RECOLOR_SHADER
 		channel_materials[channel_id] = material
+		channel_two_tone[channel_id] = bool(channels[channel_id].get("two_tone", false))
 		material.set_shader_param("zone_hues", Vector3(
 			CATALOGUE.zone_hues()[0] / 360.0,
 			CATALOGUE.zone_hues()[1] / 360.0,
@@ -1827,7 +2093,7 @@ func _is_neutral(colour):
 func _track_gradient_bounds(channel_id, points):
 	if channel_id.empty() or points.empty():
 		return
-	if !CATALOGUE.color_channels()[channel_id].get("two_tone", false):
+	if !channel_two_tone.get(channel_id, false):
 		return
 	var bounds = gradient_bounds.get(channel_id, Vector2(points[0].y, points[0].y))
 	for point in points:
@@ -1849,7 +2115,7 @@ func _recompute_gradient_bounds():
 
 func _apply_gradient_bounds():
 	for channel_id in channel_materials.keys():
-		if !CATALOGUE.color_channels()[channel_id].get("two_tone", false):
+		if !channel_two_tone.get(channel_id, false):
 			continue
 		var bounds = gradient_bounds.get(channel_id, Vector2.ZERO)
 		channel_materials[channel_id].set_shader_param("gradient_top", bounds.x)
@@ -1977,7 +2243,7 @@ func _on_select_changed(_item_index, group_id, select):
 		_refresh_coverage_pickers()
 	_refresh_all_bindings()
 	_refresh_zone_pickers()
-	_rebuild_model()
+	_rebuild_and_watch_the_chest()
 
 
 # A part can declare what it needs worn with it - a hair ornament needs hair.
@@ -2020,19 +2286,43 @@ func _poke_tits(screen_point):
 	var box = _tits_bounds()
 	if box.size.y <= 0.0:
 		return false
-	if !box.has_point(to_local(screen_point)):
+	if !box.has_point(_to_doll_space(to_local(screen_point))):
 		return false
 	jiggle_tits()
 	return true
 
 
 func _tits_bounds():
+	return _slot_bounds(TITS_SLOTS)
+
+
+# Where the pointer is in the space the meshes are built in.
+#
+# Not simply `to_local`: the panel pans and zooms the doll by moving `model_root`
+# under this node, and the mesh points are children of that.  A cursor compared
+# against them without taking the pan and the zoom back off lands somewhere else
+# entirely - which is why the ears ignored the pointer in the tool while
+# answering it perfectly in the game, where nothing pans.
+func _cursor_over_the_doll():
+	return _to_doll_space(to_local(get_global_mouse_position()))
+
+
+func _to_doll_space(point):
+	if !is_instance_valid(model_root):
+		return point
+	var zoom = max(float(model_root.scale.x), 0.001)
+	return (point - model_root.position) / zoom
+
+
+# The box the named slots draw inside, in the space the meshes are built in -
+# where `_cursor_over_the_doll` puts the pointer.
+func _slot_bounds(slot_names):
 	var minimum = Vector2(1e9, 1e9)
 	var maximum = Vector2(-1e9, -1e9)
 	for record in mesh_records:
 		if !is_instance_valid(record.polygon):
 			continue
-		if !(str(record.slot.get("name", "")) in TITS_SLOTS):
+		if !(str(record.slot.get("name", "")) in slot_names):
 			continue
 		for point in record.polygon.polygon:
 			var world = point + record.polygon.position
@@ -2079,6 +2369,7 @@ func _rebuild_model():
 	var worn = _worn_selections()
 	composed = CATALOGUE.compose(worn, axis_values)
 	composed_textures = CATALOGUE.compose_textures(worn)
+	composed_unpainted = CATALOGUE.unpainted_slots(worn)
 	# A stripped character keeps the pieces of the set that are not there for
 	# modesty - the stockings stay when the rest of the underwear goes.
 	for slot_name in hidden_slots:
@@ -2368,6 +2659,10 @@ func _add_attachment(slot, attachment):
 	polygon.position = _display_origin()
 	polygon.color = _attachment_colour(slot, attachment)
 	var channel = CATALOGUE.slot_channel(slot.get("name", ""))
+	# A part that is drawn as painted takes no channel: with no material the
+	# shader never runs on it and the art reaches the screen untouched.
+	if composed_unpainted.has(slot.get("name", "")):
+		channel = ""
 	# Coverage needs the mesh's own place on the art canvas, so those meshes get
 	# their own material instead of sharing the channel's.
 	polygon.material = _mesh_material(channel, region, page.size)
@@ -2415,7 +2710,7 @@ func _update_mesh_geometry():
 		if !is_instance_valid(record.polygon):
 			continue
 		var deform = _attachment_deform(record.slot, record.attachment)
-		var data = _attachment_geometry(record.slot, record.attachment, record.region, record.page_size, deform, null, _pose_for(record.slot))
+		var data = _attachment_geometry(record.slot, record.attachment, record.region, record.page_size, deform, null, _pose_for(record.slot), true)
 		if !data.empty():
 			record.polygon.polygon = _scale_back_hair_mesh(data.points, record.slot)
 
@@ -2559,7 +2854,11 @@ func _spine_colour(hex_value):
 	return Color("#" + str(hex_value).substr(0, 8))
 
 
-func _attachment_geometry(slot, attachment, region, page_size, deform = [], mod_texture = null, pose = null):
+# `points_only` is the animated path: a frame of an animation moves the vertices
+# and nothing else, while the UV projection and the triangle list are fixed by
+# the art.  Building them anyway and throwing them away - which is what an
+# animated frame did - cost 3.2 ms a doll.
+func _attachment_geometry(slot, attachment, region, page_size, deform = [], mod_texture = null, pose = null, points_only = false):
 	if pose == null:
 		pose = bones
 	var raw_vertices = attachment.get("vertices", [])
@@ -2568,6 +2867,8 @@ func _attachment_geometry(slot, attachment, region, page_size, deform = [], mod_
 		if raw_vertices.empty():
 			return {}
 		var points = _mesh_points(raw_vertices, attachment.get("uvs", []).size(), deform, pose)
+		if points_only:
+			return {"points": points}
 		var uv_points = PoolVector2Array()
 		var uvs = attachment.get("uvs", [])
 		# A mesh's UVs are normalised over the art it was cut from, so a mod image
@@ -2634,6 +2935,11 @@ func _mesh_uv(region, u, v, page_size):
 func _mesh_points(vertices, uv_size, deform = [], pose = null):
 	if pose == null:
 		pose = bones
+	# Worked out once here rather than inside `_world_point`.  It is the same
+	# number for every vertex of every mesh, and it costs a dictionary build and
+	# three divisions in the modifiers to arrive at; asked once per bone weight it
+	# was 4.1 ms of the 17.6 an animated frame took.
+	var display_scale = _display_scale()
 	var points = PoolVector2Array()
 	# Weighted Spine vertices begin with an integer bone count.  An unweighted mesh
 	# always has exactly twice as many entries as its UV list and is handled below.
@@ -2642,7 +2948,7 @@ func _mesh_points(vertices, uv_size, deform = [], pose = null):
 		for i in range(0, vertices.size(), 2):
 			var deform_x = float(deform[i]) if i < deform.size() else 0.0
 			var deform_y = float(deform[i + 1]) if i + 1 < deform.size() else 0.0
-			points.append(_world_point(pose["root"], Vector2(float(vertices[i]) + deform_x, float(vertices[i + 1]) + deform_y)))
+			points.append(_world_point(pose["root"], Vector2(float(vertices[i]) + deform_x, float(vertices[i + 1]) + deform_y), display_scale))
 		return points
 	var cursor = 0
 	var deform_cursor = 0
@@ -2656,11 +2962,12 @@ func _mesh_points(vertices, uv_size, deform = [], pose = null):
 			var deform_y = float(deform[deform_cursor + 1]) if deform_cursor + 1 < deform.size() else 0.0
 			var local = Vector2(float(vertices[cursor + 1]) + deform_x, float(vertices[cursor + 2]) + deform_y)
 			var weight = float(vertices[cursor + 3])
-			result += _world_point(pose[skeleton.bones[bone_index].name], local) * weight
+			result += _world_point(pose[skeleton.bones[bone_index].name], local, display_scale) * weight
 			cursor += 4
 			deform_cursor += 2
 		points.append(result)
 	return points
-func _world_point(bone, point):
-	var display_scale = _display_scale()
+func _world_point(bone, point, display_scale = -1.0):
+	if display_scale < 0.0:
+		display_scale = _display_scale()
 	return Vector2((bone.a * point.x + bone.b * point.y + bone.x) * display_scale, -(bone.c * point.x + bone.d * point.y + bone.y) * display_scale)

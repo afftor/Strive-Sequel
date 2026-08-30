@@ -378,6 +378,16 @@ static func nipples_of(skin_value):
 	return nipples_from_colour(colour_of("body_color_skin", skin_value))
 
 
+# The shade a heavily pregnant character wears, when the option for it is on.
+# Authored in `color` as `nipple_humanpreg` - one colour for everyone rather than
+# a darker variant of each skin, because it is the same darkening in the art the
+# old doll used and it reads on every tone.
+static func pregnancy_nipples():
+	if nipples().has("humanpreg"):
+		return nipples()["humanpreg"]
+	return Color("2d2020")
+
+
 static func nipples_from_colour(skin):
 	# an unpainted skin leaves the art alone, and so do its nipples
 	if skin.s < 0.02 and skin.v > 0.98:

@@ -8,7 +8,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_phy6', 'e_wit6', 'e_charm6', 'e_sex6', 'e_auth6', 'e_tame6', 'e_mag6', 'e_virgin', 'e_person_bold', 'e_person_shy', 'e_person_kind', 'e_person_serious', 'e_love', 'e_friend', 'e_rival', 'e_standing_love_pest', 'e_standing_housemate', 'e_standing_sworn_servant', 'e_standing_beloved', 'work_rule_luxury', 'room_office_exp', 'room_masters_bed', 'sleep_demand_unmet', 'work_rule_ration', 'work_rule_shifts', 'work_rule_masturbation', 'work_rule_constrain', 'e_pregnancy', 'e_pregnancy1', 'e_pregnancy_breeder', 'e_thrall',
+		effects = ['e_phy6', 'e_wit6', 'e_charm6', 'e_sex6', 'e_auth6', 'e_tame6', 'e_mag6', 'e_virgin', 'e_person_bold', 'e_person_shy', 'e_person_kind', 'e_person_serious', 'e_love', 'e_friend', 'e_rival', 'e_standing_love_pest', 'e_standing_housemate', 'e_standing_sworn_servant', 'e_standing_beloved', 'work_rule_luxury', 'room_office_exp', 'room_masters_bed', 'sleep_demand_unmet', 'slept_rough', 'work_rule_ration', 'work_rule_shifts', 'work_rule_masturbation', 'work_rule_constrain', 'e_pregnancy', 'e_pregnancy1', 'e_pregnancy_breeder', 'e_thrall',
 		'e_food_meat', 'e_food_fish', 'e_food_vege', 'e_food_grain', 'e_food_fishcakes', 'e_food_meatsoup', 'e_food_curry', 'e_food_vegetable_stirfry', 'e_food_roasted_feast', 'e_food_miners_lunch', 'e_food_fried_salmon', 'e_food_defenders_meal', 'e_food_demand', 'e_starve'],#'e_atkpass'],
 #		tags = ['bleed']
 	},

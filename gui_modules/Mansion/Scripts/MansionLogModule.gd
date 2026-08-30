@@ -28,6 +28,11 @@ const EVENT_CONFIG = {
 		icon = preload("res://assets/images/traits/health.png"),
 		color = Color("77d38b"),
 	},
+	"population": {
+		label = "MANSION_ACTIVITY_TYPE_POPULATION",
+		icon = preload("res://assets/Textures_v2/Universal/Icons/icon_population.png"),
+		color = Color("e8963c"),
+	},
 	"quest_task": {
 		label = "MANSION_ACTIVITY_TYPE_QUEST_TASK",
 		icon = preload("res://assets/Textures_v2/MANSION/quest_task.png"),

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -14,7 +14,6 @@
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Left_Menu.tres" type="Theme" id=12]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionJournalModule.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/button_charinfo_sqr.png" type="Texture" id=14]
-[ext_resource path="res://gui_modules/Mansion/Modules/quest_attention_shimmer.shader" type="Shader" id=15]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionCraftModule.tscn" type="PackedScene" id=16]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionTaskInfoModule.tscn" type="PackedScene" id=17]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/button_charinfo_sqr_pressed.png" type="Texture" id=19]
@@ -34,9 +33,11 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=42]
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_job2_small.png" type="Texture" id=43]
 [ext_resource path="res://gui_modules/Mansion/Modules/CharacterTrainingPopup.tscn" type="PackedScene" id=44]
+[ext_resource path="res://assets/images/gui/icon_bed.png" type="Texture" id=47]
+[ext_resource path="res://gui_modules/Mansion/Modules/quest_attention_shimmer.shader" type="Shader" id=48]
 
 [sub_resource type="ShaderMaterial" id=7]
-shader = ExtResource( 15 )
+shader = ExtResource( 48 )
 shader_param/halo_width = 0.105
 shader_param/core_width = 0.032
 shader_param/lean = 0.12
@@ -131,19 +132,75 @@ texture = ExtResource( 38 )
 [node name="MansionRoomsModule" parent="." instance=ExtResource( 41 )]
 embedded = true
 
-[node name="LocalTasksButton" type="Button" parent="."]
+[node name="ViewModes" type="VBoxContainer" parent="."]
 margin_left = 17.8902
-margin_top = 622.021
+margin_top = 296.0
 margin_right = 227.89
-margin_bottom = 682.021
+margin_bottom = 424.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Plan" type="HBoxContainer" parent="ViewModes"]
+margin_right = 222.0
+margin_bottom = 66.0
+custom_constants/separation = 8
+
+[node name="ModeWork" type="Button" parent="ViewModes/Plan"]
+margin_right = 66.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 66, 66 )
 mouse_default_cursor_shape = 2
+theme = ExtResource( 42 )
+toggle_mode = true
+pressed = true
+icon = ExtResource( 43 )
+expand_icon = true
+
+[node name="ModeBeds" type="Button" parent="ViewModes/Plan"]
+margin_left = 74.0
+margin_right = 140.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 66, 66 )
+mouse_default_cursor_shape = 2
+theme = ExtResource( 42 )
+toggle_mode = true
+icon = ExtResource( 47 )
+expand_icon = true
+
+[node name="Scope" type="HBoxContainer" parent="ViewModes"]
+margin_top = 74.0
+margin_right = 222.0
+margin_bottom = 128.0
+custom_constants/separation = 6
+
+[node name="MansionButton" type="Button" parent="ViewModes/Scope"]
+margin_right = 95.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 0, 54 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+theme = ExtResource( 42 )
+custom_fonts/font = ExtResource( 2 )
+toggle_mode = true
+pressed = true
+text = "Mansion"
+
+[node name="LocalTasksButton" type="Button" parent="ViewModes/Scope"]
+margin_left = 101.0
+margin_right = 222.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 0, 54 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
 theme = ExtResource( 42 )
 custom_fonts/font = ExtResource( 2 )
 toggle_mode = true
 text = "Local tasks"
-icon = ExtResource( 43 )
 
-[node name="QuestAttentionShimmer" type="ColorRect" parent="LocalTasksButton"]
+[node name="QuestAttentionShimmer" type="ColorRect" parent="ViewModes/Scope/LocalTasksButton"]
+visible = false
 material = SubResource( 7 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -158,7 +215,7 @@ margin_bottom = 1063.0
 [node name="MansionBottomLeftModule" parent="." instance=ExtResource( 9 )]
 material = SubResource( 1 )
 margin_left = 15.0
-margin_top = 688.0
+margin_top = 934.0
 margin_right = 89.0
 margin_bottom = 1068.0
 theme = ExtResource( 12 )
@@ -166,7 +223,7 @@ theme = ExtResource( 12 )
 [node name="MansionSlaveListModule" parent="." instance=ExtResource( 5 )]
 margin_left = 320.0
 margin_top = 137.0
-margin_right = 1586.0
+margin_right = 1590.0
 margin_bottom = 1063.0
 
 [node name="MansionSlaveModule" parent="." instance=ExtResource( 11 )]
@@ -186,9 +243,9 @@ margin_bottom = 937.32
 [node name="MansionTaskInfoModule" parent="." instance=ExtResource( 17 )]
 visible = false
 margin_left = 15.0
-margin_top = 253.0
+margin_top = 670.0
 margin_right = 305.0
-margin_bottom = 618.0
+margin_bottom = 922.0
 
 [node name="MenuButton" type="Button" parent="."]
 visible = false

@@ -6,6 +6,7 @@ export var set_music = ""
 export var sound = ""
 
 var ff = false
+var input_locked = false
 
 func _input(event):
 	if event.is_action_released("LMB"):
@@ -26,7 +27,8 @@ func play(track):
 	ff = false
 	#main rack
 	if lock_input:
-		get_tree().get_root().set_disable_input(true)
+		input_locked = true
+		input_handler.lock_input()
 	if sound != "":
 		input_handler.PlaySound(sound)
 	$AnimationPlayer.play(track)
@@ -39,7 +41,19 @@ func play(track):
 	#closing
 	if set_music != "":
 		input_handler.SetMusic(set_music)
-	if lock_input:
-		get_tree().get_root().set_disable_input(false)
+	release_input()
 	queue_free()
 	input_handler.emit_signal("animation_finished")
+
+
+func release_input():
+	if !input_locked:
+		return
+	input_locked = false
+	input_handler.unlock_input()
+
+
+#play() waits on the animation, and a scene change (load, main menu) can free this node in
+#the middle of that wait - its coroutine dies with it and the lock would never be released
+func _exit_tree():
+	release_input()

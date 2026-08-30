@@ -8,13 +8,11 @@ onready var SummaryModule = $SlaveSummaryModule
 onready var SlaveSiblingsModule = $SlaveSiblingsModule
 onready var BodyModule = $SlaveBodyModule
 onready var SlaveInfo = $SlaveInfoModule
-onready var DietModule = $FoodPreferencesPanel
 onready var submodules = []
 var inventory_scene
 
 func _ready():
-	var close_button = gui_controller.add_close_button(self, "add_offset")
-	close_button.connect("pressed", DietModule, "hide")
+	gui_controller.add_close_button(self, "add_offset")
 #	for module in self.get_children():
 #		module.update()
 #	update()
@@ -22,25 +20,8 @@ func _ready():
 	#$RemoveButton.connect('pressed',self,'remove',[])
 	input_handler.connect('PortraitUpdate', self, 'refresh_portrait')
 	input_handler.connect('SpellUsed', self, 'update')
-	connect("visibility_changed", self, "close_food_preferences_when_hidden")
 	input_handler.register_btn_source('char_close_button', self, 'tut_get_close_button')
-	input_handler.register_btn_source('food_preferences', self, 'tut_get_food_preferences_button')
-	$SlaveInfoModule/FoodPreferencesButton.connect("pressed", self, "open_food_preferences")
-	globals.connecttexttooltip($SlaveInfoModule/FoodPreferencesButton, tr("INFOFOODFILTER"))
 
-
-func open_food_preferences():
-	DietModule.open_diet_window()
-	DietModule.raise()
-
-
-func close_food_preferences_when_hidden():
-	if !visible:
-		DietModule.hide()
-
-
-func tut_get_food_preferences_button():
-	return $SlaveInfoModule/FoodPreferencesButton
 
 func tut_get_close_button():
 	return $CloseButton
@@ -50,60 +31,6 @@ func remove():
 	#gui_controller.close_scene(self)
 	input_handler.active_character = active_person
 	input_handler.interactive_message('slave_remove')
-
-var sex_training_progress = {
-	novice = 0,
-	skilled = 50,
-	mastered = 100,
-}
-
-var mastery_required = {
-	penetration = [["missionary", "missionaryanal"], ["doggy", "doggyanal"], ["lotus", "lotusanal"], ["revlotus", "revlotusanal"], ["ontop", "ontopanal"]],
-	pussy = [["missionary"], ["doggy"], ["lotus"], ["revlotus"], ["ontop"]],
-	anal = [["missionaryanal"], ["doggyanal"], ["lotusanal"], ["revlotusanal"], ["ontopanal"]],
-	petting = [["fondletits", "titjob"], ["handjob", "fingering", "assfingering"], ["footjob", "massagefoot"], ["fisting", "analfisting"]],
-	oral = [["kiss"], ["sucknipples"], ["rimjob"], ["cunnilingus", "blowjob"]],
-	tail = [["tailjob"], ["inserttailv"], ["inserttaila"]],
-}
-
-var mastery_action_keys = {
-	missionary = "SEXACTION_MISSIONARY",
-	missionaryanal = "SEXACTION_MISSIONARY_ANAL",
-	doggy = "SEXACTION_DOGGY_STYLE",
-	doggyanal = "SEXACTION_DOGGY_ANAL",
-	lotus = "SEXACTION_LOTUS",
-	lotusanal = "SEXACTION_LOTUS_ANAL",
-	revlotus = "SEXACTION_REVLOTUS",
-	revlotusanal = "SEXACTION_REVLOTUSANAL",
-	ontop = "SEXACTION_ON_TOP",
-	ontopanal = "SEXACTION_ON_TOP_ANAL",
-	inserttailv = "SEXACTION_INSERT_TAIL_PUSSY",
-	inserttaila = "SEXACTION_INSERT_TAIL_ASS",
-	caress = "SEXACTION_CARESS",
-	assfingering = "SEXACTION_ASS_FINGERING",
-	fingering = "SEXACTION_FINGERING",
-	fondletits = "SEXACTION_FONDLE_CHEST",
-	footjob = "SEXACTION_FOOTJOB",
-	titjob = "SEXACTION_TITJOB",
-	handjob = "SEXACTION_HANDJOB",
-	frottage = "SEXACTION_FROTTAGE",
-	analfisting = "SEXACTION_ANAL_FISTING",
-	fisting = "SEXACTION_FISTING",
-	massagefoot = "SEXACTION_MASSAGE_WITH_FOOT",
-	rimjob = "SEXACTION_RIMJOB",
-	cunnilingus = "SEXACTION_CUNNILINGUS",
-	blowjob = "SEXACTION_BLOWJOB",
-	kiss = "SEXACTION_KISS",
-	sucknipples = "SEXACTION_NIPPLE_SUCKING",
-	tailjob = "SEXACTION_TAILJOB",
-}
-
-func get_sex_training_label(state):
-	match state:
-		'novice': return tr("SEX_TRAINING_LEVEL_NOVICE")
-		'skilled': return tr("SEX_TRAINING_LEVEL_SKILLED")
-		'mastered': return tr("SEX_TRAINING_LEVEL_MASTERED")
-	return str(state).capitalize()
 
 func refresh_portrait():
 	#a finished shot only needs the picture swapped. update() rebuilds the whole screen,
@@ -126,47 +53,7 @@ func update():
 	SlaveInfo.update()
 	BodyModule.update()
 	SlaveSiblingsModule.update()
-	if DietModule.visible:
-		DietModule.open_diet_window()
 	
-	if active_person != null:
-		input_handler.ClearContainer($SlaveInfoModule/SexSkillsContainer/VBoxContainer)
-		var s_skills = active_person.get_sex_training()
-		for ii in s_skills:
-			var state = s_skills[ii]
-			if ii == 'sex_training_tail' and state == 'novice':
-				continue
-			if ii == 'sex_training_penetration' and state == 'novice' and active_person.get_stat('penis_size') == '':
-				continue
-			if ii == 'sex_training_pussy' and state == 'novice' and active_person.get_stat('sex') == 'male':
-				continue
-			var newbutton = input_handler.DuplicateContainerTemplate($SlaveInfoModule/SexSkillsContainer/VBoxContainer)
-			var state_label = get_sex_training_label(state)
-			newbutton.get_node("Label").text = tr("CHARINFO_" + ii.to_upper())
-			newbutton.get_node("ProgressBar").value = sex_training_progress.get(state, 0)
-			newbutton.get_node("ProgressBar/Label").text = state_label
-			var tooltip_text = active_person.translate(tr("STAT" + ii.to_upper() + "DESCRIPT")) + "\n" + tr("CUR_LEVEL_LABEL") + ": " + state_label
-			var skill_name = ii.replace('sex_training_', '')
-			if state == 'novice':
-				tooltip_text += "\n\n" + tr("MASTERY_HINT_NOVICE")
-			if state == 'skilled' and mastery_required.has(skill_name):
-				var progress = active_person.statlist.sex_mastery_progress.get(skill_name, [])
-				tooltip_text += "\n\n" + tr("MASTERY_HINT_SKILLED")
-				for group in mastery_required[skill_name]:
-					var labels = []
-					var group_done = false
-					for action in group:
-						labels.append(tr(mastery_action_keys.get(action, "SEXACTION_" + action.to_upper())))
-						if action in progress:
-							group_done = true
-					var group_label = PoolStringArray(labels).join(" / ")
-					if group_done:
-						tooltip_text += "\n{color=green|" + group_label + "}"
-					else:
-						tooltip_text += "\n{color=gray|" + group_label + "}"
-			globals.connecttexttooltip(newbutton, tooltip_text)
-		$SlaveInfoModule/SexstaminaLabel.text = tr("STATSEX_STAMINA") + ": " + str(active_person.get_stat('sex_stamina'))
-		globals.connecttexttooltip($SlaveInfoModule/SexstaminaLabel, "[center]" + tr("STATSEX_STAMINA") + "[/center]\n" + tr("STATSEX_STAMINADESCRIPT"))
 #	$TalkButton.visible = unique_dict.has(active_person.get_stat('unique'))
 #	$RemoveButton.visible = !active_person.is_master()
 #	if char_module_state == "siblings":
@@ -184,8 +71,6 @@ func set_state(state):
 	match_state()
 
 func match_state():
-	if char_module_state != "default":
-		DietModule.hide()
 #	var tooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP)
 #	globals.disconnect_text_tooltip(tooltip.parentnode)
 #	tooltip.turnoff()

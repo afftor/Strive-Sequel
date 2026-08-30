@@ -254,6 +254,28 @@ static func compose(selections, axis_values):
 	return result
 
 
+# The slots that end up drawn by a part nobody is allowed to recolour, as
+# {slot: true}.  Walked in the same order as `compose`, so a slot a later part
+# takes over is painted or not according to that part rather than the one
+# underneath it.
+static func unpainted_slots(selections):
+	var result = {}
+	for group_id in _gen().GROUP_ORDER:
+		var part_id = str(selections.get(group_id, ""))
+		var chosen = part(part_id)
+		if part_id.empty() or chosen.empty():
+			continue
+		if !bindings_met(part_id, selections):
+			continue
+		var unpainted = bool(chosen.get("unpainted", false))
+		for slot_name in chosen.slots.keys():
+			if unpainted:
+				result[slot_name] = true
+			else:
+				result.erase(slot_name)
+	return result
+
+
 # Which slots a selection paints with a modder's own image, in the same layering
 # order as `compose`, so a later part's image wins exactly where its mesh does.
 # Always empty until a mod is installed.

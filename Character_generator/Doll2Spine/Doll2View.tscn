@@ -119,14 +119,19 @@ corner_radius_bottom_left = 5
 
 [node name="Doll2View" type="Control"]
 rect_min_size = Vector2( 200, 400 )
-rect_clip_content = true
 mouse_filter = 1
 script = ExtResource( 1 )
+
+[node name="Frame" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_clip_content = true
+mouse_filter = 2
 
 [node name="UndressLevels" type="VBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -122.0
+margin_left = -156.0
 margin_top = 6.0
 margin_right = -6.0
 margin_bottom = 126.0
@@ -136,7 +141,7 @@ custom_constants/separation = 4
 [node name="dressed" type="Button" parent="UndressLevels"]
 margin_right = 116.0
 margin_bottom = 28.0
-rect_min_size = Vector2( 116, 26 )
+rect_min_size = Vector2( 150, 26 )
 custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
 custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
@@ -155,7 +160,7 @@ clip_text = true
 margin_top = 32.0
 margin_right = 116.0
 margin_bottom = 60.0
-rect_min_size = Vector2( 116, 26 )
+rect_min_size = Vector2( 150, 26 )
 custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
 custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
@@ -174,7 +179,7 @@ clip_text = true
 margin_top = 64.0
 margin_right = 116.0
 margin_bottom = 92.0
-rect_min_size = Vector2( 116, 26 )
+rect_min_size = Vector2( 150, 26 )
 custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
 custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
@@ -193,7 +198,7 @@ clip_text = true
 margin_top = 96.0
 margin_right = 116.0
 margin_bottom = 124.0
-rect_min_size = Vector2( 116, 26 )
+rect_min_size = Vector2( 150, 26 )
 custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
 custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
@@ -211,11 +216,11 @@ clip_text = true
 [node name="HairMenuButton" type="Button" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -224.0
-margin_top = 6.0
-margin_right = -128.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 96, 26 )
+margin_left = -156.0
+margin_top = 130.0
+margin_right = -6.0
+margin_bottom = 157.0
+rect_min_size = Vector2( 150, 26 )
 custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
 custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
@@ -226,14 +231,14 @@ custom_styles/pressed = SubResource( 3 )
 custom_styles/disabled = SubResource( 4 )
 custom_styles/normal = SubResource( 1 )
 toggle_mode = true
-text = "DOLL2_HAIR_MENU"
+text = "DOLL2_CUSTOMIZE_MENU"
 clip_text = true
 
 [node name="HairMenu" type="PanelContainer" parent="."]
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -352.0
+margin_left = -418.0
 margin_top = 36.0
 margin_right = -128.0
 custom_styles/panel = SubResource( 9 )
@@ -248,7 +253,7 @@ custom_constants/separation = 6
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "DOLL2_HAIR_MENU"
+text = "DOLL2_CUSTOMIZE_MENU"
 clip_text = true
 
 [node name="Close" type="Button" parent="HairMenu/VBox/Title"]
@@ -272,7 +277,7 @@ custom_constants/hseparation = 6
 columns = 2
 
 [node name="hair_style_label" type="Label" parent="HairMenu/VBox/Rows"]
-rect_min_size = Vector2( 92, 26 )
+rect_min_size = Vector2( 150, 26 )
 custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "Hair style"
@@ -294,7 +299,7 @@ custom_styles/normal = SubResource( 1 )
 clip_text = true
 
 [node name="hair_colour1_label" type="Label" parent="HairMenu/VBox/Rows"]
-rect_min_size = Vector2( 92, 26 )
+rect_min_size = Vector2( 150, 26 )
 custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "Hair - roots"
@@ -315,7 +320,7 @@ custom_styles/disabled = SubResource( 8 )
 custom_styles/normal = SubResource( 5 )
 
 [node name="hair_colour2_label" type="Label" parent="HairMenu/VBox/Rows"]
-rect_min_size = Vector2( 92, 26 )
+rect_min_size = Vector2( 150, 26 )
 custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "Hair - tips"
@@ -336,7 +341,7 @@ custom_styles/disabled = SubResource( 8 )
 custom_styles/normal = SubResource( 5 )
 
 [node name="hair_back_style_label" type="Label" parent="HairMenu/VBox/Rows"]
-rect_min_size = Vector2( 92, 26 )
+rect_min_size = Vector2( 150, 26 )
 custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "Hair back style"
@@ -358,7 +363,7 @@ custom_styles/normal = SubResource( 1 )
 clip_text = true
 
 [node name="hair_back_colour1_label" type="Label" parent="HairMenu/VBox/Rows"]
-rect_min_size = Vector2( 92, 26 )
+rect_min_size = Vector2( 150, 26 )
 custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "Hair back - roots"
@@ -379,7 +384,7 @@ custom_styles/disabled = SubResource( 8 )
 custom_styles/normal = SubResource( 5 )
 
 [node name="hair_back_colour2_label" type="Label" parent="HairMenu/VBox/Rows"]
-rect_min_size = Vector2( 92, 26 )
+rect_min_size = Vector2( 150, 26 )
 custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "Hair back - tips"
@@ -400,7 +405,7 @@ custom_styles/disabled = SubResource( 8 )
 custom_styles/normal = SubResource( 5 )
 
 [node name="hair_assist_style_label" type="Label" parent="HairMenu/VBox/Rows"]
-rect_min_size = Vector2( 92, 26 )
+rect_min_size = Vector2( 150, 26 )
 custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "Hair assist style"
@@ -422,7 +427,7 @@ custom_styles/normal = SubResource( 1 )
 clip_text = true
 
 [node name="hair_assist_colour1_label" type="Label" parent="HairMenu/VBox/Rows"]
-rect_min_size = Vector2( 92, 26 )
+rect_min_size = Vector2( 150, 26 )
 custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "Hair assist - roots"
@@ -443,7 +448,7 @@ custom_styles/disabled = SubResource( 8 )
 custom_styles/normal = SubResource( 5 )
 
 [node name="hair_assist_colour2_label" type="Label" parent="HairMenu/VBox/Rows"]
-rect_min_size = Vector2( 92, 26 )
+rect_min_size = Vector2( 150, 26 )
 custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "Hair assist - tips"
@@ -464,7 +469,7 @@ custom_styles/disabled = SubResource( 8 )
 custom_styles/normal = SubResource( 5 )
 
 [node name="hair_length_label" type="Label" parent="HairMenu/VBox/Rows"]
-rect_min_size = Vector2( 92, 26 )
+rect_min_size = Vector2( 150, 26 )
 custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "Hair length"
@@ -486,7 +491,7 @@ custom_styles/normal = SubResource( 1 )
 clip_text = true
 
 [node name="beard_style_label" type="Label" parent="HairMenu/VBox/Rows"]
-rect_min_size = Vector2( 92, 26 )
+rect_min_size = Vector2( 150, 26 )
 custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "Beard style"
@@ -508,7 +513,7 @@ custom_styles/normal = SubResource( 1 )
 clip_text = true
 
 [node name="beard_colour_label" type="Label" parent="HairMenu/VBox/Rows"]
-rect_min_size = Vector2( 92, 26 )
+rect_min_size = Vector2( 150, 26 )
 custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "Beard colour"
@@ -517,6 +522,412 @@ clip_text = true
 
 [node name="beard_colour" type="ColorPickerButton" parent="HairMenu/VBox/Rows"]
 rect_min_size = Vector2( 0, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="eyebrows_colour_label" type="Label" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 150, 26 )
+custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Eyebrows"
+valign = 1
+clip_text = true
+
+[node name="eyebrows_colour" type="ColorPickerButton" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 0, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="lips_colour_label" type="Label" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 150, 26 )
+custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Lips"
+valign = 1
+clip_text = true
+
+[node name="lips_colour" type="ColorPickerButton" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 0, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="underwear_colour_label" type="Label" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 150, 26 )
+custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Underwear"
+valign = 1
+clip_text = true
+
+[node name="underwear_colour" type="HBoxContainer" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 0, 26 )
+size_flags_horizontal = 3
+custom_constants/separation = 4
+
+[node name="zone1" type="ColorPickerButton" parent="HairMenu/VBox/Rows/underwear_colour"]
+rect_min_size = Vector2( 28, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="zone2" type="ColorPickerButton" parent="HairMenu/VBox/Rows/underwear_colour"]
+rect_min_size = Vector2( 28, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="zone3" type="ColorPickerButton" parent="HairMenu/VBox/Rows/underwear_colour"]
+rect_min_size = Vector2( 28, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="underwear_lower_colour_label" type="Label" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 150, 26 )
+custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Underwear - bottom"
+valign = 1
+clip_text = true
+
+[node name="underwear_lower_colour" type="HBoxContainer" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 0, 26 )
+size_flags_horizontal = 3
+custom_constants/separation = 4
+
+[node name="zone1" type="ColorPickerButton" parent="HairMenu/VBox/Rows/underwear_lower_colour"]
+rect_min_size = Vector2( 28, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="zone2" type="ColorPickerButton" parent="HairMenu/VBox/Rows/underwear_lower_colour"]
+rect_min_size = Vector2( 28, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="zone3" type="ColorPickerButton" parent="HairMenu/VBox/Rows/underwear_lower_colour"]
+rect_min_size = Vector2( 28, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="outfit_colour_label" type="Label" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 150, 26 )
+custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Clothing"
+valign = 1
+clip_text = true
+
+[node name="outfit_colour" type="HBoxContainer" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 0, 26 )
+size_flags_horizontal = 3
+custom_constants/separation = 4
+
+[node name="zone1" type="ColorPickerButton" parent="HairMenu/VBox/Rows/outfit_colour"]
+rect_min_size = Vector2( 28, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="zone2" type="ColorPickerButton" parent="HairMenu/VBox/Rows/outfit_colour"]
+rect_min_size = Vector2( 28, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="zone3" type="ColorPickerButton" parent="HairMenu/VBox/Rows/outfit_colour"]
+rect_min_size = Vector2( 28, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="outfit_lower_colour_label" type="Label" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 150, 26 )
+custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Clothing - bottom"
+valign = 1
+clip_text = true
+
+[node name="outfit_lower_colour" type="HBoxContainer" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 0, 26 )
+size_flags_horizontal = 3
+custom_constants/separation = 4
+
+[node name="zone1" type="ColorPickerButton" parent="HairMenu/VBox/Rows/outfit_lower_colour"]
+rect_min_size = Vector2( 28, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="zone2" type="ColorPickerButton" parent="HairMenu/VBox/Rows/outfit_lower_colour"]
+rect_min_size = Vector2( 28, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="zone3" type="ColorPickerButton" parent="HairMenu/VBox/Rows/outfit_lower_colour"]
+rect_min_size = Vector2( 28, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="collar_colour_label" type="Label" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 150, 26 )
+custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Collar"
+valign = 1
+clip_text = true
+
+[node name="collar_colour" type="HBoxContainer" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 0, 26 )
+size_flags_horizontal = 3
+custom_constants/separation = 4
+
+[node name="zone1" type="ColorPickerButton" parent="HairMenu/VBox/Rows/collar_colour"]
+rect_min_size = Vector2( 28, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="zone2" type="ColorPickerButton" parent="HairMenu/VBox/Rows/collar_colour"]
+rect_min_size = Vector2( 28, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="zone3" type="ColorPickerButton" parent="HairMenu/VBox/Rows/collar_colour"]
+rect_min_size = Vector2( 28, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="headgear_colour_label" type="Label" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 150, 26 )
+custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Headgear"
+valign = 1
+clip_text = true
+
+[node name="headgear_colour" type="HBoxContainer" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 0, 26 )
+size_flags_horizontal = 3
+custom_constants/separation = 4
+
+[node name="zone1" type="ColorPickerButton" parent="HairMenu/VBox/Rows/headgear_colour"]
+rect_min_size = Vector2( 28, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="zone2" type="ColorPickerButton" parent="HairMenu/VBox/Rows/headgear_colour"]
+rect_min_size = Vector2( 28, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="zone3" type="ColorPickerButton" parent="HairMenu/VBox/Rows/headgear_colour"]
+rect_min_size = Vector2( 28, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="weapon_colour_label" type="Label" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 150, 26 )
+custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Weapon"
+valign = 1
+clip_text = true
+
+[node name="weapon_colour" type="HBoxContainer" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 0, 26 )
+size_flags_horizontal = 3
+custom_constants/separation = 4
+
+[node name="zone1" type="ColorPickerButton" parent="HairMenu/VBox/Rows/weapon_colour"]
+rect_min_size = Vector2( 28, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="zone2" type="ColorPickerButton" parent="HairMenu/VBox/Rows/weapon_colour"]
+rect_min_size = Vector2( 28, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="zone3" type="ColorPickerButton" parent="HairMenu/VBox/Rows/weapon_colour"]
+rect_min_size = Vector2( 28, 26 )
 size_flags_horizontal = 3
 custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
 custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )

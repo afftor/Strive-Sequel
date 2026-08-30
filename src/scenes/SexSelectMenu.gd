@@ -30,6 +30,7 @@ func _ready():
 	globals.connecttexttooltip(_limit_icon, tr("SEXTOOLTIP"))
 
 func open():
+	hide_person_info()
 	selected_characters.clear()
 	_reset_category_buttons()
 	rebuild_list()
@@ -40,6 +41,16 @@ func open():
 func hide():
 	gui_controller.windows_opened.erase(self)
 	.hide()
+
+
+#gui_controller.close_scene() ends by raising the mansion, showing it and putting it back to
+#its default state. That is right for a window opened over the mansion and wrong here:
+#start_scene() has already handed the screen to the sex panel by the time it calls this, so
+#the tail was pulling the mansion back over the scene that had just started. It used to be
+#skipped only because the window was registered against the rail's sex button, and that
+#button is gone - the master's bedroom opens this now.
+func _custom_gui_controller_close():
+	hide()
 
 
 func rebuild_list():
@@ -74,13 +85,97 @@ func rebuild_list():
 				newbutton.disabled = true
 				globals.connecttexttooltip(newbutton,lock_reason)
 
+		var warning = ""
+		if newbutton.disabled:
+			warning = _get_participant_lock_reason(person)
 		if _is_missing_sex_traits(person):
 			name_label.add_color_override("font_color", Color(1, 0.67, 0.67))
-			globals.connecttexttooltip(newbutton, person.translate(tr("SEXSELECT_MISSING_TRAITS")))
+			warning = person.translate(tr("SEXSELECT_MISSING_TRAITS")) + warning
+		#Looking at a face fills the panel standing beside the window rather than opening a
+		#tooltip at the cursor: the list is long, and a card that jumps about with the mouse is
+		#not something two people can be compared in.
+		newbutton.connect("mouse_entered", self, "show_person_info", [person])
+		if warning != "":
+			globals.connecttexttooltip(newbutton, warning)
 
+	#whoever was being looked at is still worth showing once the list is drawn again
+	if info_person != null:
+		show_person_info(info_person)
 	_update_participant_label()
 	_update_interaction_label()
 	update_sex_date_buttons()
+
+
+#### the panel beside the window ####
+
+#Consent and how far each practice has been trained, drawn the way the character screen draws
+#the same thing - a name, a bar and the level it stands at - rather than as a wall of text.
+const SEX_TRAINING_PROGRESS = {novice = 0, skilled = 50, mastered = 100}
+
+var info_person = null
+
+
+func show_person_info(person):
+	info_person = person
+	var info = $Info
+	info.visible = true
+	info.get_node("Name").text = person.get_short_name()
+	var consent_label = info.get_node("Consent")
+	consent_label.visible = !person.is_master()
+	if consent_label.visible:
+		var consent = int(person.get_stat('consent'))
+		consent_label.text = tr('SIBLINGMODULECONSENT') + tr(variables.consent_dict[consent])
+		globals.connecttexttooltip(consent_label, tr('INFOCONSENT'))
+	var stamina = info.get_node("Stamina")
+	stamina.text = tr("STATSEX_STAMINA") + ": " + str(person.get_stat('sex_stamina'))
+	globals.connecttexttooltip(stamina, "[center]" + tr("STATSEX_STAMINA") + "[/center]\n"
+		+ tr("STATSEX_STAMINADESCRIPT"))
+	var list = info.get_node("Skills/VBoxContainer")
+	input_handler.ClearContainer(list)
+	var trained = 0
+	var training = person.get_sex_training()
+	for code in training:
+		if _skill_says_nothing(person, code, training[code]):
+			continue
+		var row = input_handler.DuplicateContainerTemplate(list)
+		var level = _sex_training_label(training[code])
+		row.get_node("Label").text = tr("CHARINFO_" + code.to_upper())
+		row.get_node("ProgressBar").value = SEX_TRAINING_PROGRESS.get(training[code], 0)
+		row.get_node("ProgressBar/Label").text = level
+		var text = person.translate(tr("STAT" + code.to_upper() + "DESCRIPT"))
+		globals.connecttexttooltip(row, text + "\n" + tr("CUR_LEVEL_LABEL") + ": " + level)
+		trained += 1
+	info.get_node("SkillsHeader").visible = trained > 0
+	info.get_node("Skills").visible = trained > 0
+	info.get_node("Empty").visible = trained == 0
+
+
+#The three that say nothing about somebody who has never been trained in them - the same three
+#the character screen leaves out.
+func _skill_says_nothing(person, code, state):
+	if state != 'novice':
+		return false
+	if code == 'sex_training_tail':
+		return true
+	if code == 'sex_training_penetration' and person.get_stat('penis_size') == '':
+		return true
+	if code == 'sex_training_pussy' and person.get_stat('sex') == 'male':
+		return true
+	return false
+
+
+func hide_person_info():
+	info_person = null
+	$Info.visible = false
+
+
+func _sex_training_label(state):
+	match state:
+		'novice': return tr('SEX_TRAINING_LEVEL_NOVICE')
+		'skilled': return tr('SEX_TRAINING_LEVEL_SKILLED')
+		'mastered': return tr('SEX_TRAINING_LEVEL_MASTERED')
+	return str(state).capitalize()
+
 
 func _on_category_pressed(category):
 	if _active_category == category:

@@ -1851,17 +1851,6 @@ var data = {
 				type = "next_dialogue",
 				bonus_effects = [
 					{code = "progress_quest", value = "erdyna_quest", stage = "archive_search"},
-					{
-						code = "add_special_task_for_location",
-						location = "empire_capital",
-						amount = 4,
-						descript = "ACT4_ERDYNA_ARCHIVE_SEARCH_TASK_DESC",
-						name = "ACT4_ERDYNA_ARCHIVE_SEARCH_TASK_NAME",
-						max_workers = 2,
-						workstat = "wits",
-						icon = "res://assets/Textures_v2/MANSION/quest_task.png",
-						args = [{code = "start_event", data = "act4_erdyna_archive_search_complete_1", args = {}}]
-					},
 					{code = "update_city"}
 				]
 			},
@@ -1925,11 +1914,6 @@ var data = {
 				reqs = [],
 				type = "next_dialogue",
 				bonus_effects = [
-					{
-						code = "remove_special_task_for_location",
-						location = "empire_capital",
-						event = "act4_erdyna_archive_search_complete_1"
-					},
 					{code = "progress_quest", value = "erdyna_quest", stage = "act4_erdyna_records"},
 					{code = "update_city"}
 				]

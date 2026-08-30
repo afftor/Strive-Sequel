@@ -701,6 +701,9 @@ func remove_slave(tempslave, permanent = false):
 	tempslave.clear_enthrall()
 	tempslave.process_event(variables.TR_REMOVE)
 	characters_pool.move_to_pool(tempslave.id)
+	#out of the household means out of the bed: every way of leaving that funnels through here
+	#- sold, released, given away, banished - used to leave the room holding their id
+	ResourceScripts.game_res.unhouse_character(tempslave.id)
 	tempslave.is_players_character = false
 	if permanent: 
 		clear_relations(tempslave.id)
@@ -741,9 +744,22 @@ func update_global_cooldowns():
 		if global_skills_used[i] <= 0:
 			global_skills_used.erase(i)
 
+#A save being loaded drops the dictionaries straight out of the file into characters and only
+#turns them back into characters later, in fix_serialization(). game_res.fix_serialization()
+#runs before that one and emits 'update_clock'/'rooms_changed' on the way, and globals.LoadGame()
+#yields a frame between the two - so the clock, which survives the load, gets to read the party
+#while it is still a pile of dictionaries. The conversion pass never yields, so either everybody
+#is a character or nobody is: the first entry answers for the whole roster.
+func is_deserialized():
+	for i in characters.values():
+		return i is Object
+	return true
+
+
 #food items the party is expected to get through in a day, assuming everyone keeps
 #eating their current first choice
 func get_food_consumption():
+	if !is_deserialized(): return 0 #a save is still being unpacked
 	var counter = 0.0
 	for i in characters.values():
 		for food in i.predict_food().values():
@@ -753,6 +769,7 @@ func get_food_consumption():
 
 func predict_char_event():
 	var res = 1000
+	if !is_deserialized(): return res
 	for i in characters.values():
 		var tmp = i.predict_preg_time()
 		if tmp != null and tmp < res:
@@ -838,6 +855,7 @@ func get_characters_for_task(tsk):
 #per food item, keyed by item code
 func calculate_food_consumption():
 	var res = {}
+	if !is_deserialized(): return res
 	for i in characters.values():
 		var tmp = i.predict_food()
 		for food in tmp:

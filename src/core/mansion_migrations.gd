@@ -10,7 +10,6 @@ extends Reference
 
 const MansionLayout = preload("res://src/core/mansion_layout.gd")
 const RoomTypes = preload("res://assets/data/mansion_room_types.gd")
-const RoomUpgrades = preload("res://assets/data/mansion_room_upgrades.gd")
 
 
 static func run(res):
@@ -98,7 +97,7 @@ static func convert_master_bedroom_upgrade(res):
 	var entry = MansionLayout.master_room(res.mansion_layout)
 	if entry == null:
 		return
-	var top = RoomUpgrades.max_level('furnishing')
+	var top = RoomTypes.max_level('furnishing', 'master_bedroom')
 	entry.room.upgrades['furnishing'] = int(min(top,
 		max(MansionLayout.upgrade_level(entry.room, 'furnishing'), levels)))
 
@@ -162,7 +161,7 @@ static func convert_room_tree_upgrades(res):
 		var wanted = levels + int(target.get('level_offset', 0))
 		if wanted <= 0:
 			continue
-		var top = RoomUpgrades.max_level(target.upgrade)
+		var top = RoomTypes.max_level(target.upgrade, room.type)
 		room.upgrades[target.upgrade] = int(min(top,
 			max(MansionLayout.upgrade_level(room, target.upgrade), wanted)))
 	res.sync_room_tasks()
@@ -262,7 +261,7 @@ static func convert_gather_upgrades(res):
 			room = raise_grounds_building(res, grounds, parts[0])
 		if room == null:
 			continue
-		var top = RoomUpgrades.max_level(parts[1])
+		var top = RoomTypes.max_level(parts[1], room.type)
 		room.upgrades[parts[1]] = int(min(top,
 			max(MansionLayout.upgrade_level(room, parts[1]), owed[key])))
 	res.sync_room_tasks()

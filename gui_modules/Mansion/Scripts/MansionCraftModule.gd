@@ -70,14 +70,24 @@ func _ready():
 	input_handler.register_btn_source('craft_matfilter_button', self, 'tut_get_mat_filter_btn')
 	input_handler.register_btn_source('steel_button', self, 'tut_get_steel_btn')
 	input_handler.register_btn_source('bread_delete', self, 'tut_get_bread_delete_btn')
+	input_handler.register_btn_source('meatsoup_button', self, 'tut_get_meatsoup_btn')
+	input_handler.register_btn_source('meatsoup_delete', self, 'tut_get_meatsoup_delete_btn')
 
 
 func tut_get_bread_btn():
 	return tut_get_recipe_btn("bread")
+func tut_get_meatsoup_btn():
+	return tut_get_recipe_btn("meatsoup")
 func tut_get_steel_btn():
 	return tut_get_recipe_btn("steel")
+#Placing an order tears the recipe list down and builds it again (select_category ->
+#rebuild_recipe_list), and ClearContainer only hides the old rows - they are not actually gone
+#until the end of the frame. Without skipping them this handed the tutorial a row that was
+#about to disappear, and the step it belonged to could never be finished.
 func tut_get_recipe_btn(recipe):
 	for btn in $CraftSelect/ScrollContainer/VBoxContainer.get_children():
+		if btn.is_queued_for_deletion() or !btn.visible:
+			continue
 		if btn.get_meta('item', {code = ""}).code == recipe:
 			return btn
 func tut_get_confirm_btn():
@@ -88,18 +98,31 @@ func tut_get_confirm2_btn():
 	return $NumberSelect2/VBoxContainer/Button
 func tut_get_back_btn():
 	return $CraftSelect/BackButton
+#A category the estate cannot do yet is hidden, and a hidden button in a container has
+#collapsed onto its neighbour - handing one back drew the tutorial's frame around whatever now
+#sits in that spot instead. Answering null makes the step say plainly that its button is not
+#there, which is what actually happened when the craft rooms moved onto the mansion plan.
 func tut_get_smith_cat_btn():
-	return $categories/smith
+	return $categories/smith if $categories/smith.visible else null
 func tut_get_cooking_cat_btn():
-	return $categories/cooking
+	return $categories/cooking if $categories/cooking.visible else null
 func tut_get_mat_filter_btn():
 	return $filter/materials
 func tut_get_bread_delete_btn():
+	return tut_get_queue_delete_btn("bread")
+func tut_get_meatsoup_delete_btn():
+	return tut_get_queue_delete_btn("meatsoup")
+#The bin on whichever queued order makes this recipe. The queue is rebuilt on every change,
+#so the row is found by what it is for rather than by where it sits in the list.
+func tut_get_queue_delete_btn(recipe):
 	for btn in $CraftSchedule/ScrollContainer/VBoxContainer.get_children():
+		#the queue is rebuilt the same way the recipe list is - see tut_get_recipe_btn
+		if btn.is_queued_for_deletion() or !btn.visible:
+			continue
 		var selected_craft = btn.get_meta("selected_craft", "")
 		if !selected_craft.empty():
 			var pdata = ResourceScripts.game_res.tasks_progresses[selected_craft]
-			if pdata.id == "bread":
+			if pdata.id == recipe:
 				return btn.get_node("DeleteButton")
 
 func set_filter(type):

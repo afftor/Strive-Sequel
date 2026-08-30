@@ -18,8 +18,23 @@ extends Reference
 #	MANSIONROOM_<CODE>          - name
 #	MANSIONROOM_<CODE>DESCRIPT  - description
 #
-#Upgrades listed here are codes from mansion_room_upgrades.gd and apply to THIS room
-#instance, unlike upgradedata.upgradelist which is global per code.
+#A room's improvements are stated in its own 'upgrades' block - every kind of room states its
+#own, so the same code may be priced or tuned differently in two of them (the four craft rooms
+#each keep their own craft_tools, and a mine's gather_hands need not match a garden's). They
+#apply to THIS room instance, unlike
+#upgradedata.upgradelist, which is global per code - that is what lets two forges differ and
+#what makes "Better tools works only in this room" mean anything. The questions asked about an
+#upgrade are the static functions under "#### upgrades ####" at the foot of this file.
+#
+#Display text for an upgrade is derived from its code:
+#	MANSIONUPG_<CODE>            - name
+#	MANSIONUPG_<CODE>DESCRIPT    - description
+#	MANSIONUPG_<CODE>BONUS<N>    - what level N gives
+#
+#An upgrade "effect" is a flat dictionary merged by mansion_layout when it works out a room's
+#real numbers. Known keys: sleep_slots, work_slots, build_slots, craft_mod, sex_slots, storage.
+#Effects are cumulative up to the room's current level: level 2 states the total rather than
+#adding to level 1. "progress" is work units, spent by whoever stands in the builder slot.
 
 const SLOT_KINDS = ['sleep', 'work', 'build']
 
@@ -31,7 +46,7 @@ const DEFAULT = {
 	upkeep = 0,
 	build_cost = {},
 	build_progress = 0,
-	upgrades = [],
+	upgrades = {},
 	#How many of this type the estate must have, and may have. A room with min_count above
 	#zero is one the mansion is not allowed to be without - the staircase and the master's
 	#own room - and is put up for free if a save arrives without it. max_count 0 means no
@@ -46,6 +61,10 @@ const DEFAULT = {
 	#from the first day and there is no sense in offering a second, nor in offering the first
 	#back after somehow losing it
 	hidden = false,
+	#Whether the card puts a help mark beside this room's name. Off unless a type asks for it:
+	#most rooms are one line to explain and a mark beside every name is a mark nobody reads.
+	#Set 'help = true' on a type whose rules are worth stopping for.
+	help = false,
 	tags = [],
 	icon = '',
 	color = '4b4b4b',
@@ -63,7 +82,18 @@ const LIST = {
 		upkeep = 0,
 		build_cost = {},
 		build_progress = 0,
-		upgrades = ['stairs_repair'],
+		upgrades = {
+			#The house was inherited with its stairs rotted through, so the upper floor cannot be
+			#reached until they are made good. One repair does the whole staircase: there is nothing
+			#to unlock afterwards, and no second level to buy.
+			stairs_repair = {
+				code = 'stairs_repair',
+				icon = 'rooms',
+				levels = {
+					1: {cost = {woodiron = 10, steel = 5}, progress = 15, effect = {}},
+				},
+			},
+		},
 		master_only = false,
 		fixed = true,
 		tags = ['stairs'],
@@ -75,14 +105,36 @@ const LIST = {
 	#beds beside it, Furnishing widens what the room allows rather than who sleeps in it.
 	master_bedroom = {
 		code = 'master_bedroom',
+		help = true,
 		slots = {sleep = 1},
 		work_job = null,
 		max_count = 1,
 		min_count = 1,
 		upkeep = 0,
-		build_cost = {wood = 120, cloth = 60, stone = 40},
-		build_progress = 40,
-		upgrades = ['furnishing', 'bed_size'],
+		build_cost = {},
+		build_progress = 0,
+		upgrades = {
+			#Widens what the room allows rather than who lives in it: more participants per scene.
+			furnishing = {
+				code = 'furnishing',
+				icon = 'rooms_lux',
+				levels = {
+					1: {cost = {wood = 100, cloth = 50}, progress = 20, effect = {sex_slots = 1}},
+					2: {cost = {wood = 100, clothsilk = 30, gold = 1000}, progress = 35, effect = {sex_slots = 2}},
+					3: {cost = {woodmagic = 50, clothethereal = 15, gold = 2000}, progress = 55, effect = {sex_slots = 3}},
+				},
+			},
+			#Extra beds beside the master's own, which is never freed.
+			bed_size = {
+				code = 'bed_size',
+				icon = 'bedroom',
+				levels = {
+					1: {cost = {leather = 50, cloth = 30}, progress = 15, effect = {sleep_slots = 1}},
+					2: {cost = {leatherthick = 50, clothsilk = 50}, progress = 35, effect = {sleep_slots = 2}},
+					3: {cost = {leathermythic = 20, clothethereal = 25}, progress = 30, effect = {sleep_slots = 3}},
+				},
+			},
+		},
 		master_only = true,
 		hidden = true,
 		tags = ['housing', 'master_bed'],
@@ -96,7 +148,15 @@ const LIST = {
 		upkeep = 0,
 		build_cost = {wood = 60, cloth = 20},
 		build_progress = 15,
-		upgrades = ['bedrooms_expansion'],
+		upgrades = {
+			bedrooms_expansion = {
+				code = 'bedrooms_expansion',
+				icon = 'rooms',
+				levels = {
+					1: {cost = {wood = 200, stone = 100, woodiron = 25}, progress = 50, effect = {sleep_slots = 4}},
+				},
+			},
+		},
 		master_only = false,
 		tags = ['housing'],
 		icon = 'bedroom',
@@ -105,12 +165,23 @@ const LIST = {
 	#Residents here get the private-room bonus that used to be the 'luxury' work rule.
 	luxury_bedrooms = {
 		code = 'luxury_bedrooms',
+		help = true,
 		slots = {sleep = 1},
 		work_job = null,
-		upkeep = 1,
+		upkeep = 0,
 		build_cost = {wood = 90, cloth = 60},
 		build_progress = 25,
-		upgrades = ['luxury_expansion'],
+		upgrades = {
+			luxury_expansion = {
+				code = 'luxury_expansion',
+				icon = 'rooms_lux',
+				levels = {
+					1: {cost = {woodiron = 50, cloth = 50}, progress = 25, effect = {sleep_slots = 1}},
+					2: {cost = {wood = 100, clothmagic = 75}, progress = 40, effect = {sleep_slots = 2}},
+					3: {cost = {woodiron = 100, clothethereal = 15}, progress = 60, effect = {sleep_slots = 3}},
+				},
+			},
+		},
 		master_only = false,
 		tags = ['housing', 'luxury'],
 		icon = 'rooms_lux',
@@ -120,10 +191,40 @@ const LIST = {
 		code = 'forge',
 		slots = {work = 1},
 		work_job = 'smith',
-		upkeep = 2,
-		build_cost = {stone = 80, iron = 40},
+		upkeep = 0,
+		build_cost = {stone = 80, iron = 30},
 		build_progress = 30,
-		upgrades = ['craft_expansion', 'craft_tools'],
+		upgrades = {
+			#Taking worn gear apart for what it was made of. The bench is built here like any
+			#other improvement, but how it is done is learned from the workers' guild first:
+			#until that lesson is bought the row is shown greyed rather than hidden, so the
+			#player can see the bench exists and where to go for it.
+			salvage_bench = {
+				code = 'salvage_bench',
+				icon = 'forge',
+				guild_upgrade = {guild = 'workers', code = 'workers_disassamby_upgrade'},
+				levels = {
+					1: {cost = {iron = 60, wood = 40, steel = 20}, progress = 40, effect = {}},
+				},
+			},
+			craft_expansion = {
+				code = 'craft_expansion',
+				icon = 'rooms',
+				levels = {
+					1: {cost = {stone = 50, steel = 30, leather = 20}, progress = 30, effect = {work_slots = 1}},
+					2: {cost = {mithril = 30, boneancient = 25}, progress = 50, effect = {work_slots = 2}},
+				},
+			},
+			#Only this room's workers get it - that is the whole point of it being per-instance.
+			craft_tools = {
+				code = 'craft_tools',
+				icon = 'forge',
+				levels = {
+					1: {cost = {iron = 100, bone = 100}, progress = 30, effect = {craft_mod = 0.25}},
+					2: {cost = {mithril = 20, boneancient = 30}, progress = 55, effect = {craft_mod = 0.50}},
+				},
+			},
+		},
 		master_only = false,
 		tags = ['craft'],
 		icon = 'forge',
@@ -133,10 +234,28 @@ const LIST = {
 		code = 'alchemy_room',
 		slots = {work = 1},
 		work_job = 'alchemy',
-		upkeep = 2,
+		upkeep = 0,
 		build_cost = {wood = 60, stone = 40, iron = 10},
 		build_progress = 30,
-		upgrades = ['craft_expansion', 'craft_tools'],
+		upgrades = {
+			craft_expansion = {
+				code = 'craft_expansion',
+				icon = 'rooms',
+				levels = {
+					1: {cost = {stone = 50, steel = 30, leather = 20}, progress = 30, effect = {work_slots = 1}},
+					2: {cost = {mithril = 30, boneancient = 25}, progress = 50, effect = {work_slots = 2}},
+				},
+			},
+			#Only this room's workers get it - that is the whole point of it being per-instance.
+			craft_tools = {
+				code = 'craft_tools',
+				icon = 'forge',
+				levels = {
+					1: {cost = {iron = 100, bone = 100}, progress = 30, effect = {craft_mod = 0.25}},
+					2: {cost = {mithril = 20, boneancient = 30}, progress = 55, effect = {craft_mod = 0.50}},
+				},
+			},
+		},
 		master_only = false,
 		tags = ['craft'],
 		icon = 'alchemy',
@@ -146,10 +265,28 @@ const LIST = {
 		code = 'tailor_workshop',
 		slots = {work = 1},
 		work_job = 'tailor',
-		upkeep = 1,
+		upkeep = 0,
 		build_cost = {wood = 50, cloth = 40},
 		build_progress = 25,
-		upgrades = ['craft_expansion', 'craft_tools'],
+		upgrades = {
+			craft_expansion = {
+				code = 'craft_expansion',
+				icon = 'rooms',
+				levels = {
+					1: {cost = {stone = 50, steel = 30, leather = 20}, progress = 30, effect = {work_slots = 1}},
+					2: {cost = {mithril = 30, boneancient = 25}, progress = 50, effect = {work_slots = 2}},
+				},
+			},
+			#Only this room's workers get it - that is the whole point of it being per-instance.
+			craft_tools = {
+				code = 'craft_tools',
+				icon = 'forge',
+				levels = {
+					1: {cost = {iron = 100, bone = 100}, progress = 30, effect = {craft_mod = 0.25}},
+					2: {cost = {mithril = 20, boneancient = 30}, progress = 55, effect = {craft_mod = 0.50}},
+				},
+			},
+		},
 		master_only = false,
 		tags = ['craft'],
 		icon = 'tailor',
@@ -159,10 +296,28 @@ const LIST = {
 		code = 'kitchen',
 		slots = {work = 1},
 		work_job = 'cooking',
-		upkeep = 1,
+		upkeep = 0,
 		build_cost = {wood = 70, stone = 30},
 		build_progress = 25,
-		upgrades = ['craft_expansion', 'craft_tools'],
+		upgrades = {
+			craft_expansion = {
+				code = 'craft_expansion',
+				icon = 'rooms',
+				levels = {
+					1: {cost = {stone = 50, steel = 30, leather = 20}, progress = 30, effect = {work_slots = 1}},
+					2: {cost = {mithril = 30, boneancient = 25}, progress = 50, effect = {work_slots = 2}},
+				},
+			},
+			#Only this room's workers get it - that is the whole point of it being per-instance.
+			craft_tools = {
+				code = 'craft_tools',
+				icon = 'forge',
+				levels = {
+					1: {cost = {iron = 100, bone = 100}, progress = 30, effect = {craft_mod = 0.25}},
+					2: {cost = {mithril = 20, boneancient = 30}, progress = 55, effect = {craft_mod = 0.50}},
+				},
+			},
+		},
 		master_only = false,
 		tags = ['craft'],
 		icon = 'wheat',
@@ -172,13 +327,14 @@ const LIST = {
 	#a little more from a day that has a proper meal in it - see ch_training.day_tick().
 	dining_room = {
 		code = 'dining_room',
+		help = true,
 		slots = {},
 		work_job = null,
 		max_count = 1,
-		upkeep = 1,
+		upkeep = 0,
 		build_cost = {wood = 80, stone = 40},
 		build_progress = 25,
-		upgrades = [],
+		upgrades = {},
 		master_only = false,
 		tags = ['dining'],
 		icon = 'wheat',
@@ -188,14 +344,40 @@ const LIST = {
 	#or works a negative trait out of themselves once there is somebody to tutor them.
 	practice_room = {
 		code = 'practice_room',
+		help = true,
 		slots = {work = 1},
 		#not a craft discipline: it names the task rather than a recipe queue, and
 		#game_res.process_rooms() sends it down the training branch instead
 		work_job = 'practice',
-		upkeep = 1,
+		upkeep = 0,
 		build_cost = {wood = 90, stone = 50, iron = 20},
 		build_progress = 30,
-		upgrades = ['training_space', 'tutoring_area'],
+		upgrades = {
+			#Room for more than one pupil at a time. The tutor's place is bought separately - see
+			#tutoring_area, which is flagged special_slot and is not one of these.
+			training_space = {
+				code = 'training_space',
+				icon = 'rooms',
+				levels = {
+					1: {cost = {wood = 70, stone = 40}, progress = 25, effect = {work_slots = 1}},
+					2: {cost = {wood = 120, stone = 80, iron = 30}, progress = 40, effect = {work_slots = 2}},
+				},
+			},
+			#Somewhere for a tutor to stand - which is a second place in the room, since the tutor
+			#occupies one. Having it is also the only way to work a negative trait out of somebody:
+			#see game_res.practice_trainer().
+			tutoring_area = {
+				code = 'tutoring_area',
+				icon = 'rooms',
+				#The slot this adds is not another pair of hands at the same work - it is the one place
+				#in the room for somebody teaching rather than practising. The screen draws it in its
+				#own colour so it does not read as a fifth workbench.
+				special_slot = true,
+				levels = {
+					1: {cost = {woodancient = 5, woodiron = 50, gold = 5000}, progress = 45, effect = {work_slots = 1}},
+				},
+			},
+		},
 		master_only = false,
 		tags = ['practice'],
 		icon = 'rooms',
@@ -208,10 +390,20 @@ const LIST = {
 		slots = {},
 		work_job = null,
 		max_count = 1,
-		upkeep = 1,
+		upkeep = 0,
 		build_cost = {wood = 100, cloth = 40, gold = 300},
 		build_progress = 35,
-		upgrades = ['ledgers'],
+		upgrades = {
+			#Books kept properly. The room's crafters stop taking whatever is at the head of the
+			#estate's queue and work the list this room was given instead.
+			ledgers = {
+				code = 'ledgers',
+				icon = 'rooms_lux',
+				levels = {
+					1: {cost = {clothmagic = 50, gold = 500}, progress = 40, effect = {craft_rules = 1}},
+				},
+			},
+		},
 		master_only = false,
 		tags = ['office'],
 		icon = 'rooms_lux',
@@ -224,10 +416,10 @@ const LIST = {
 		slots = {},
 		work_job = null,
 		max_count = 1,
-		upkeep = 2,
+		upkeep = 0,
 		build_cost = {wood = 80, stone = 60, mithril = 20, gold = 400},
 		build_progress = 40,
-		upgrades = [],
+		upgrades = {},
 		master_only = false,
 		tags = ['ritual'],
 		icon = 'academy',
@@ -238,14 +430,46 @@ const LIST = {
 	#stored here and are not counted.
 	store_room = {
 		code = 'store_room',
+		help = true,
 		slots = {},
 		#not a craft discipline: it names the task rather than a recipe queue, and the clerk's
 		#place comes from the Accountant upgrade rather than from the room itself
 		work_job = 'storage',
-		upkeep = 1,
-		build_cost = {wood = 70, stone = 50},
+		upkeep = 0,
+		build_cost = {wood = 100, stone = 80},
 		build_progress = 25,
-		upgrades = ['shelves', 'accountant', 'purchase_ledger'],
+		upgrades = {
+			#Each level states the whole figure the room holds, not an addition to it - see
+			#MansionLayout.storage_capacity(), which takes the larger of this and the room's base.
+			shelves = {
+				code = 'shelves',
+				icon = 'rooms',
+				levels = {
+					1: {cost = {wood = 100, stone = 200}, progress = 20, effect = {storage = 500}},
+					2: {cost = {woodiron = 20, obsidian = 10}, progress = 35, effect = {storage = 1000}},
+					3: {cost = {woodiron = 100, leathermythic = 30}, progress = 55, effect = {storage = 5000}},
+					4: {cost = {woodancient = 20, adamantine = 10, gold = 10000}, progress = 80, effect = {storage = 20000}},
+				},
+			},
+			#Somewhere for a clerk to sit. With one at the desk a delivery that will not fit is sold
+			#off rather than tipped away - see game_res.gain_material().
+			accountant = {
+				code = 'accountant',
+				icon = 'rooms_lux',
+				levels = {
+					1: {cost = {mithril = 10, gold = 1000}, progress = 10, effect = {work_slots = 1}},
+				},
+			},
+			#Standing orders with the market: the clerk keeps a list of what the estate must not run
+			#short of and buys it in every morning. See game_res.process_autobuy().
+			purchase_ledger = {
+				code = 'purchase_ledger',
+				icon = 'rooms',
+				levels = {
+					1: {cost = {woodiron = 25, gold = 3000}, progress = 30, effect = {}},
+				},
+			},
+		},
 		max_count = 3,
 		master_only = false,
 		tags = ['storage'],
@@ -269,12 +493,25 @@ const LIST = {
 	#see game_res.farm_places().
 	farm = {
 		code = 'farm',
+		help = true,
 		slots = {work = 1},
 		work_job = 'farming',
-		upkeep = 1,
+		upkeep = 0,
 		build_cost = {wood = 70, stone = 40, grain = 20},
 		build_progress = 25,
-		upgrades = ['farm_hands'],
+		upgrades = {
+			#More hands at the same work. Four levels, each a place: one worker becomes five.
+			#A farm works three hands at most: the buildings are small and the animals are the limit,
+			#not the acreage.
+			farm_hands = {
+				code = 'farm_hands',
+				icon = 'stables',
+				levels = {
+					1: {cost = {wood = 80, grain = 30}, progress = 25, effect = {work_slots = 1}},
+					2: {cost = {wood = 140, stone = 60, grain = 50}, progress = 40, effect = {work_slots = 2}},
+				},
+			},
+		},
 		master_only = false,
 		tags = ['outdoor', 'farm'],
 		icon = 'stables',
@@ -284,10 +521,21 @@ const LIST = {
 		code = 'fishing_hut',
 		slots = {work = 1},
 		work_job = null,
-		upkeep = 1,
+		upkeep = 0,
 		build_cost = {wood = 60},
 		build_progress = 20,
-		upgrades = ['gather_hands'],
+		upgrades = {
+			gather_hands = {
+				code = 'gather_hands',
+				icon = 'rooms',
+				levels = {
+					1: {cost = {wood = 60, stone = 20}, progress = 20, effect = {work_slots = 1}},
+					2: {cost = {wood = 110, stone = 50}, progress = 35, effect = {work_slots = 2}},
+					3: {cost = {wood = 180, stone = 90, iron = 20}, progress = 50, effect = {work_slots = 3}},
+					4: {cost = {wood = 260, stone = 140, steel = 20}, progress = 70, effect = {work_slots = 4}},
+				},
+			},
+		},
 		master_only = false,
 		tags = ['outdoor'],
 		icon = 'fishing',
@@ -297,10 +545,31 @@ const LIST = {
 		code = 'garden',
 		slots = {work = 1},
 		work_job = null,
-		upkeep = 1,
+		upkeep = 0,
 		build_cost = {wood = 50, stone = 20},
 		build_progress = 20,
-		upgrades = ['gather_hands', 'rich_soil'],
+		upgrades = {
+			gather_hands = {
+				code = 'gather_hands',
+				icon = 'rooms',
+				levels = {
+					1: {cost = {wood = 60, stone = 20}, progress = 20, effect = {work_slots = 1}},
+					2: {cost = {wood = 110, stone = 50}, progress = 35, effect = {work_slots = 2}},
+					3: {cost = {wood = 180, stone = 90, iron = 20}, progress = 50, effect = {work_slots = 3}},
+					4: {cost = {wood = 260, stone = 140, steel = 20}, progress = 70, effect = {work_slots = 4}},
+				},
+			},
+			#What the ground gives up. These widen the loot table the job draws from rather than
+			#touching its output - see the prod_task_* tables in loot_data.gd, whose branches ask
+			#'has_room_upgrade' for exactly these codes.
+			rich_soil = {
+				code = 'rich_soil',
+				icon = 'cotton',
+				levels = {
+					1: {cost = {wood = 80, grain = 60}, progress = 30, effect = {}},
+				},
+			},
+		},
 		master_only = false,
 		tags = ['outdoor'],
 		icon = 'veges',
@@ -310,10 +579,21 @@ const LIST = {
 		code = 'wheat_field',
 		slots = {work = 1},
 		work_job = null,
-		upkeep = 1,
+		upkeep = 0,
 		build_cost = {wood = 60, stone = 20},
 		build_progress = 20,
-		upgrades = ['gather_hands'],
+		upgrades = {
+			gather_hands = {
+				code = 'gather_hands',
+				icon = 'rooms',
+				levels = {
+					1: {cost = {wood = 60, stone = 20}, progress = 20, effect = {work_slots = 1}},
+					2: {cost = {wood = 110, stone = 50}, progress = 35, effect = {work_slots = 2}},
+					3: {cost = {wood = 180, stone = 90, iron = 20}, progress = 50, effect = {work_slots = 3}},
+					4: {cost = {wood = 260, stone = 140, steel = 20}, progress = 70, effect = {work_slots = 4}},
+				},
+			},
+		},
 		master_only = false,
 		tags = ['outdoor'],
 		icon = 'wheat',
@@ -323,10 +603,29 @@ const LIST = {
 		code = 'mine',
 		slots = {work = 1},
 		work_job = null,
-		upkeep = 1,
+		upkeep = 0,
 		build_cost = {wood = 80, stone = 60},
 		build_progress = 30,
-		upgrades = ['extended_shafts', 'deeper_veins'],
+		upgrades = {
+			extended_shafts = {
+				code = 'extended_shafts',
+				icon = 'mining',
+				levels = {
+					1: {cost = {wood = 60, stone = 20}, progress = 20, effect = {work_slots = 1}},
+					2: {cost = {wood = 110, stone = 50}, progress = 35, effect = {work_slots = 2}},
+					3: {cost = {wood = 180, stone = 90, iron = 20}, progress = 50, effect = {work_slots = 3}},
+					4: {cost = {wood = 260, stone = 140, steel = 20}, progress = 70, effect = {work_slots = 4}},
+				},
+			},
+			deeper_veins = {
+				code = 'deeper_veins',
+				icon = 'mining',
+				levels = {
+					1: {cost = {wood = 100, iron = 40}, progress = 40, effect = {}},
+					2: {cost = {steel = 60, woodiron = 40}, progress = 65, effect = {}},
+				},
+			},
+		},
 		master_only = false,
 		tags = ['outdoor'],
 		icon = 'mining',
@@ -336,10 +635,29 @@ const LIST = {
 		code = 'forestry',
 		slots = {work = 1},
 		work_job = null,
-		upkeep = 1,
+		upkeep = 0,
 		build_cost = {wood = 70, stone = 30},
 		build_progress = 25,
-		upgrades = ['larger_cabin', 'rare_woods'],
+		upgrades = {
+			larger_cabin = {
+				code = 'larger_cabin',
+				icon = 'woodcutting',
+				levels = {
+					1: {cost = {wood = 60, stone = 20}, progress = 20, effect = {work_slots = 1}},
+					2: {cost = {wood = 110, stone = 50}, progress = 35, effect = {work_slots = 2}},
+					3: {cost = {wood = 180, stone = 90, iron = 20}, progress = 50, effect = {work_slots = 3}},
+					4: {cost = {wood = 260, stone = 140, steel = 20}, progress = 70, effect = {work_slots = 4}},
+				},
+			},
+			rare_woods = {
+				code = 'rare_woods',
+				icon = 'woodcutting',
+				levels = {
+					1: {cost = {wood = 120, iron = 30}, progress = 35, effect = {}},
+					2: {cost = {woodiron = 60, steel = 30}, progress = 60, effect = {}},
+				},
+			},
+		},
 		master_only = false,
 		tags = ['outdoor'],
 		icon = 'woodcutting',
@@ -349,10 +667,29 @@ const LIST = {
 		code = 'hunting_cabin',
 		slots = {work = 1},
 		work_job = null,
-		upkeep = 1,
+		upkeep = 0,
 		build_cost = {wood = 70, leather = 20},
 		build_progress = 25,
-		upgrades = ['larger_cabin', 'butchery'],
+		upgrades = {
+			larger_cabin = {
+				code = 'larger_cabin',
+				icon = 'woodcutting',
+				levels = {
+					1: {cost = {wood = 60, stone = 20}, progress = 20, effect = {work_slots = 1}},
+					2: {cost = {wood = 110, stone = 50}, progress = 35, effect = {work_slots = 2}},
+					3: {cost = {wood = 180, stone = 90, iron = 20}, progress = 50, effect = {work_slots = 3}},
+					4: {cost = {wood = 260, stone = 140, steel = 20}, progress = 70, effect = {work_slots = 4}},
+				},
+			},
+			butchery = {
+				code = 'butchery',
+				icon = 'hunting',
+				levels = {
+					1: {cost = {wood = 90, iron = 30}, progress = 30, effect = {}},
+					2: {cost = {woodiron = 50, leatherthick = 40}, progress = 55, effect = {}},
+				},
+			},
+		},
 		master_only = false,
 		tags = ['outdoor'],
 		icon = 'hunting',
@@ -365,16 +702,18 @@ const LIST = {
 		slots = {},
 		work_job = null,
 		max_count = 1,
-		upkeep = 1,
-		build_cost = {stone = 90, wood = 40},
+		upkeep = 0,
+		build_cost = {stone = 150, woodmagic = 50},
 		build_progress = 30,
-		upgrades = [],
+		upgrades = {},
 		master_only = false,
 		tags = ['bath'],
 		icon = 'rooms',
 		color = '3f6b6b',
 	},
 }
+
+
 
 
 static func get_type(code):
@@ -442,6 +781,11 @@ static func base_slots(code, kind):
 	return int(data.slots[kind])
 
 
+#Whether this room's name is worth a mark that explains it - see 'help' in DEFAULT.
+static func shows_help(code):
+	return get_type(code).get('help', false) == true
+
+
 static func has_tag(code, tag):
 	return get_type(code).tags.has(tag)
 
@@ -449,3 +793,72 @@ static func has_tag(code, tag):
 static func get_work_job(code):
 	return get_type(code).work_job
 
+
+#### upgrades ####
+
+#What each upgrade costs and gives is stated above, on the room that offers it - these are the
+#questions asked about one. Every room states its own, so the same code may be tuned differently
+#in two kinds of room: pass the room's code and the answer comes from that room. Asked by code
+#alone the first room holding it answers, which is all the callers that have no room in hand
+#(a build queue, a log line) can be given.
+
+static func get_upgrade(code, room_code = null):
+	if code == null:
+		return null
+	if room_code != null:
+		var here = get_type(room_code).get('upgrades', {})
+		if here is Dictionary and here.get(code, null) is Dictionary:
+			return here[code]
+	for room in LIST:
+		var ups = LIST[room].get('upgrades', {})
+		if !(ups is Dictionary):
+			continue
+		var entry = ups.get(code, null)
+		if entry is Dictionary:
+			return entry
+	return null
+
+
+static func has_upgrade(code):
+	return get_upgrade(code) != null
+
+
+static func get_upgrade_name_key(code):
+	return "MANSIONUPG_" + str(code).to_upper()
+
+
+static func get_upgrade_descript_key(code):
+	return "MANSIONUPG_" + str(code).to_upper() + "DESCRIPT"
+
+
+static func get_upgrade_bonus_key(code, level):
+	return "MANSIONUPG_" + str(code).to_upper() + "BONUS" + str(int(level))
+
+
+#Does this upgrade's slot stand for something other than more of the same work?
+static func is_special_slot(code, room_code = null):
+	var data = get_upgrade(code, room_code)
+	return data != null and data.get('special_slot', false)
+
+
+static func max_level(code, room_code = null):
+	var data = get_upgrade(code, room_code)
+	if data == null:
+		return 0
+	return data.levels.size()
+
+
+static func get_level_data(code, level, room_code = null):
+	var data = get_upgrade(code, room_code)
+	level = int(level)
+	if data == null or !data.levels.has(level):
+		return null
+	return data.levels[level]
+
+
+#Each level states its total, so the effect of a room is simply its current level's.
+static func get_effect(code, level, room_code = null):
+	var level_data = get_level_data(code, level, room_code)
+	if level_data == null:
+		return {}
+	return level_data.effect

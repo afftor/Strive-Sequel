@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_30.tres" type="DynamicFont" id=1]
 [ext_resource path="res://gui_modules/Universal/Scripts/ClockModule.gd" type="Script" id=2]
@@ -15,6 +15,11 @@
 [ext_resource path="res://assets/Textures_v2/ClockModule/icon_money_timer.png" type="Texture" id=13]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=19]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=20]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_resources.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_population.png" type="Texture" id=22]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_foodperday.png" type="Texture" id=23]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Panel_Square.tres" type="StyleBox" id=24]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18.tres" type="DynamicFont" id=25]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -36,8 +41,8 @@ blend_mode = 1
 margin_left = 15.0
 margin_top = 15.0
 margin_right = 305.0
-margin_bottom = 195.0
-rect_min_size = Vector2( 290, 180 )
+margin_bottom = 285.0
+rect_min_size = Vector2( 290, 270 )
 theme = ExtResource( 19 )
 script = ExtResource( 2 )
 
@@ -288,6 +293,100 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
+
+[node name="Counters" type="Panel" parent="."]
+margin_top = 218.0
+margin_right = 290.0
+margin_bottom = 270.0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StorageIcon" type="TextureRect" parent="Counters"]
+margin_left = 8.0
+margin_top = 14.0
+margin_right = 32.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 21 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Storage" type="Label" parent="Counters"]
+margin_left = 36.0
+margin_top = 14.0
+margin_right = 94.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 58, 24 )
+mouse_filter = 0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 25 )
+text = "20000"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PopulationIcon" type="TextureRect" parent="Counters"]
+margin_left = 98.0
+margin_top = 14.0
+margin_right = 122.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 22 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Population" type="Label" parent="Counters"]
+margin_left = 126.0
+margin_top = 14.0
+margin_right = 190.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 64, 24 )
+mouse_filter = 0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 25 )
+text = "17/28"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FoodIcon" type="TextureRect" parent="Counters"]
+margin_left = 194.0
+margin_top = 14.0
+margin_right = 218.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 23 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Food" type="Label" parent="Counters"]
+margin_left = 222.0
+margin_top = 14.0
+margin_right = 283.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 61, 24 )
+mouse_filter = 0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 25 )
+text = "19/day"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Tween" type="Tween" parent="."]
 

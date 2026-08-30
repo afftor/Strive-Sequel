@@ -274,7 +274,11 @@ func get_hair_facial_color():
 # colour.  A demon's and a dragon's tail belongs to the covering their wings and
 # scales are, so it follows those; a kobold's and a nereid's is their own hide,
 # which is the skin.
-const FUR_TAILS = ['cat', 'fox', 'wolf', 'tanuki', 'cow', 'rat']
+const FUR_TAILS = ['cat', 'fox', 'fox_2', 'fox_3', 'wolf', 'tanuki', 'cow', 'rat']
+# Tails the export has no art for: `doll_character_map.gd` sends these to the
+# empty part, or the prefix rule finds nothing for them.  A colour for a tail
+# nobody can see is a row that does nothing, so they are not asked about.
+const TAILS_WITHOUT_ART = ['cow', 'horse', 'snake', 'avian', 'bunny', 'tentacles', 'spider']
 const COVERING_TAILS = ['demon', 'dragon', 'dragon2']
 const SKIN_TAILS = ['kobold']
 # A nereid's tail is webbing rather than hide: it takes the fin that belongs
@@ -330,10 +334,18 @@ func derives_colour(stat):
 			# behind the player's back
 			return false
 		'body_color_ears':
-			return get_body_color_ears() != ''
+			# offered like the lips and the brows above: an empty stat still takes
+			# the hair, so the rule survives without the row being hidden.  Which
+			# ears get the row at all is `has_animal_ears()` - a shaped ear is
+			# drawn in skin tone and has no colour of its own
+			return false
 		'body_color_tail':
-			return (statlist.tail in FUR_TAILS or statlist.tail in COVERING_TAILS
-				or statlist.tail in SKIN_TAILS or statlist.tail in FIN_TAILS)
+			# A fur tail is offered, the way the ears are: an empty stat still takes
+			# the hair, so the rule survives without the row being hidden.  Every
+			# other tail really is worked out - a demon's is the hide its wings are,
+			# a kobold's is skin, a nereid's is the fin - and one with no art has
+			# nothing to colour.
+			return !has_fur_tail()
 		'body_color_horns', 'body_color_animal':
 			return get_covering_colour() != ''
 	return false
@@ -360,34 +372,74 @@ func get_body_color_lips():
 	return lips if lips != '' else statlist.body_color_skin
 
 
+# Ears that are shaped skin rather than grown fur.  Their art is drawn in skin
+# tone and the doll paints them with the skin, so they have no colour of their
+# own and are not asked about.
+#
+# A list of the skin ones rather than of the furry ones on purpose: a new cut -
+# the four fox ears the artist added - is furry without anybody remembering to
+# add it anywhere.  Getting that backwards is what left the second elven ear
+# wearing fur colour on bare skin until it was noticed.  `doll2_view.gd` keeps
+# the same list in the doll's own part ids, as HUMANOID_EARS.
+const SKIN_EARS = ['human', 'elven', 'elven2', 'orcish', 'goblin']
+# Ears the export has no art for at all.  `doll_character_map.gd` maps both of
+# these to the empty part on purpose - `03_ears/` in the atlas carries twenty
+# pairs and neither of them is among them - so the doll wears nothing there and
+# there is nothing to colour.
+const EARS_WITHOUT_ART = ['demon', 'feathered']
+# A nereid's ear is a fin, and a fin's shade is worked out from the skin rather
+# than picked - see fin_colour().
+const EARS_TAKING_THE_FIN = ['fish']
+
+
+# Whether this character has a tail with a colour of its own: grown fur, drawn,
+# and not answering to some other rule.
+func has_fur_tail():
+	var tail = str(statlist.tail)
+	return tail in FUR_TAILS and !(tail in TAILS_WITHOUT_ART)
+
+
+# Whether this character has a pair of ears with a colour of their own: grown
+# fur, drawn, and not answering to some other rule.
+func has_animal_ears():
+	var ears = str(statlist.ears)
+	if ears == '' or ears in SKIN_EARS or ears in EARS_WITHOUT_ART:
+		return false
+	return !(ears in EARS_TAKING_THE_FIN)
+
+
+# What colour a pair of animal ears is.  The player's own choice wins; with none
+# made, they take the hair - or the fur, when the character is covered in it,
+# because ears sticking out of a striped coat are the coat's colour and not the
+# hair's.
 func get_body_color_ears():
-	match statlist.ears: 
-		'cat', 'fox', 'tanuki', 'wolf', 'mouse', 'bunny', 'bunny_standing', 'bunny_dropping', 'cow':
-			var res = get_hairs_data().hair_base_color_1
-			if statlist.hair_base_color_1 != "":
-				res = statlist.hair_base_color_1
-			res = res.replace('_', '')
-			if statlist.skin_coverage.begins_with('fur'):
-				match statlist.skin_coverage:
-					'fur_orange':
-						return 'orange3'
-					'fur_orange_white':
-						return 'orange2'
-					'fur_striped':
-						return 'orange3'
-					'fur_white':
-						return 'white2'
-					'fur_grey':
-						return 'white3'
-					'fur_brown':
-						return 'brown3'
-					'fur_black':
-						return 'dark3'
-			return res
-		'fish': 
-			return fin_colour()
-		_: 
-			return 'yellow2'
+	if statlist.ears in EARS_TAKING_THE_FIN:
+		return fin_colour()
+	if statlist.body_color_ears != '':
+		return statlist.body_color_ears
+	if !has_animal_ears():
+		return '' #shaped skin, or no ear art at all: nothing here to paint
+	var res = get_hairs_data().hair_base_color_1
+	if statlist.hair_base_color_1 != "":
+		res = statlist.hair_base_color_1
+	res = res.replace('_', '')
+	if statlist.skin_coverage.begins_with('fur'):
+		match statlist.skin_coverage:
+			'fur_orange':
+				return 'orange3'
+			'fur_orange_white':
+				return 'orange2'
+			'fur_striped':
+				return 'orange3'
+			'fur_white':
+				return 'white2'
+			'fur_grey':
+				return 'white3'
+			'fur_brown':
+				return 'brown3'
+			'fur_black':
+				return 'dark3'
+	return res
 
 
 # A demon and a dragon wear a covering that is not their skin: the wings, the

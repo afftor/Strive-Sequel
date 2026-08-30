@@ -127,6 +127,10 @@ func advance_hour(managed = false, progress_target = null):
 		globals.autosave()
 	#slices are cut by elapsed time rather than character count, so one frame costs the same
 	#whether a character is cheap or expensive and the transition animates at a steady rate
+	#Who slept without a bed is decided once, here, before a single character ticks and long
+	#before game_res.tick() works out what the day's work produced - the penalty has to be on
+	#them while their work is counted, not after it.
+	ResourceScripts.game_res.mark_slept_rough()
 	var slice = OS.get_ticks_msec()
 	var turn_characters = ResourceScripts.game_party.characters.values()
 	var character_count = max(turn_characters.size(), 1)

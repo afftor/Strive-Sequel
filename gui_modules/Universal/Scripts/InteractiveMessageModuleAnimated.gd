@@ -1171,12 +1171,13 @@ var ch2_shade = false
 func get_spouse_sprite():
 	var spousechar = characters_pool.get_char_by_id(ResourceScripts.game_progress.spouse)
 	if spousechar == null: return null
-	else:
-		match spousechar.get_stat('unique'):
-			'anastasia': return 'anastasia'
-			'daisy': return 'daisy_maid'
-			#2add
-			_: return null
+	var unique_code = str(spousechar.get_stat('unique')).to_lower()
+	if unique_code == '': return null
+	# wedding dress first, its paperdoll body next, plain sprite as the last resort
+	for variant in [unique_code + '_wed', unique_code + '_wed_body', unique_code]:
+		if images.sprites.has(variant):
+			return variant
+	return null
 
 func get_unique_character_from_sprite_code(sprite_code):
 	if sprite_code == null or !sprite_code.begins_with("$"):
@@ -1359,8 +1360,8 @@ func handle_characters_sprites(scene):
 		if ResourceScripts.game_progress.spouse != null && globals.valuecheck({type = 'has_spouse', check = true}) and !ResourceScripts.game_progress.marriage_completed:
 			# set wed sprite here
 			var spouse_person = characters_pool.get_char_by_id(ResourceScripts.game_progress.spouse)
-			var spouse_unique_name = spouse_person.get_stat('unique')
-			if scene_char == spouse_unique_name and worlddata.pregen_character_sprites[scene_char].has("wed"):
+			var spouse_unique_name = (spouse_person.get_stat('unique') if spouse_person != null else null)
+			if scene_char == spouse_unique_name and worlddata.pregen_character_sprites.has(scene_char) and worlddata.pregen_character_sprites[scene_char].has("wed"):
 				var image_name = worlddata.pregen_character_sprites[scene_char].wed.path
 				$CharacterImage.texture = images.get_sprite(image_name)
 				for_gallery = image_name

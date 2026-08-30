@@ -1133,7 +1133,7 @@ var professions = {
 		tags = [],
 		categories = ['magic','combat'],
 		showupreqs = [{code = 'sex', operant = 'neq', value = 'female'},{code = "class_unlocked", class = 'warlock', operant = 'eq', check = true}],
-		reqs = [{code = 'has_any_profession', value = ['caster','priest']},{code = 'stat', stat = 'wits', operant = 'gte', value = 75},{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 4},{code = 'sex', operant = 'neq', value = 'female'}],
+		reqs = [{code = 'has_any_profession', value = ['caster','occultist']},{code = 'stat', stat = 'wits', operant = 'gte', value = 75},{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 4},{code = 'sex', operant = 'neq', value = 'female'}],
 		statchanges = {mpmax = 10, wits_bonus = 10, chg_wisdom_max = 1, mastery_point_magic = 1, mastery_dark = 1},
 		traits = ['warlock'],
 		skills = [],

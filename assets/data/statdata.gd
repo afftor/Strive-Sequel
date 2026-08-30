@@ -264,6 +264,11 @@ var statdata = {
 		tags = [],
 		default_bonus = 'set',
 	},
+	head_size = {
+		code = 'head_size',
+		tags = [],
+		default_bonus = 'set',
+	},
 	ears = {
 		code = 'ears',
 		tags = [],

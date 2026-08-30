@@ -12,8 +12,6 @@ func _ready():
 		i.connect("mouse_entered", self, 'show_tattoo_tooltip', [i.name])
 		i.set_meta("tattoo_slot", i.name)
 		i.hint_tooltip = tr("TATTOO" + i.name.to_upper())
-	for i in $recolor_buttons.get_children():
-		i.connect("pressed", self, 'armor_recolor', [i.name])
 
 
 
@@ -118,14 +116,12 @@ func highlight_avalible_slots(slots: Array):
 
 func build_gear_panel():
 	var selectedhero = input_handler.interacted_character
-	var editable = true
 	if selectedhero != null:
 		var stored_image = selectedhero.get_stored_body_image()
 		if stored_image != null:
 			$BodyImage.texture = stored_image
 			$BodyImage.visible = true
 			$ragdoll.visible = false
-			editable = false
 		elif !input_handler.globalsettings.disable_paperdoll:
 			$BodyImage.visible = false
 			$ragdoll.visible = true
@@ -136,17 +132,7 @@ func build_gear_panel():
 			$BodyImage.texture = selectedhero.get_body_image()
 			$BodyImage.visible = true
 			$ragdoll.visible = false
-			editable = false
 #		$BodyImage.texture = selectedhero.get_body_image()
-		if editable:
-			$recolor_buttons/base.visible = selectedhero.equipment.gear.chest != null or selectedhero.get_stat('sex') != 'male'
-			$recolor_buttons/lower.visible = true
-			$recolor_buttons/underwear.visible = selectedhero.equipment.gear.underwear != null
-			$recolor_buttons/weapon.visible = selectedhero.equipment.gear.rhand != null
-			$recolor_buttons/collar.visible = selectedhero.equipment.gear.neck != null
-		else:
-			for i in $recolor_buttons.get_children():
-				i.visible = false
 		for i in selectedhero.equipment.gear:
 			$InventorySlots.get_node(i + "/qualitycolor").hide()
 			$InventorySlots.get_node(i + "/icon2").visible = selectedhero.equipment.gear[i] == null
@@ -213,16 +199,3 @@ func show_tattoo_tooltip(slot):
 func show_buffs():
 	var person = gui_controller.mansion.active_person
 	globals.build_buffs_for_char(person, $buffscontainer, 'mansion')
-
-
-func armor_recolor(part):
-	var selectedhero = input_handler.interacted_character
-	
-	var val = selectedhero.get_stat('armor_color_' + part)
-	var pos = Items.color_presets.find(val)
-	pos = (pos + 1) %  Items.color_presets.size()
-	val = Items.color_presets[pos]
-	selectedhero.set_stat('armor_color_' + part, val)
-	
-	get_parent().set_active_hero(selectedhero)
-	

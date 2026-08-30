@@ -69,6 +69,11 @@ func revert_scenes_data():
 		dialogue.dialogue_window_type = 1
 		dialogue.is_just_started = true
 	input_handler.CloseableWindowsArray.clear() #maybe obsolete, but for safety reason
+	#panels that own the keyboard or the input lock are about to be thrown away with the
+	#world - whatever they were holding has to be released here or the game stays deaf
+	input_handler.text_field_input = false
+	input_handler.reset_input_lock()
+	hotkeys.capturing = false
 	input_handler.CurrentScene = null # the same as prev
 	input_handler.slave_list_node = null
 	input_handler.skill_list_node = null
@@ -236,11 +241,11 @@ func show_class_info(classcode, person = null):
 		person = mansion.active_person
 	var node = input_handler.get_spec_node(input_handler.NODE_CLASSINFO)  #get_class_info_panel()
 	node.open(classcode, person)
-	get_tree().get_root().set_disable_input(true)
+	input_handler.lock_input()
 	ResourceScripts.core_animations.UnfadeAnimation(node, 0.3)
 	yield(get_tree().create_timer(0.15), "timeout")
 	node.show()
-	get_tree().get_root().set_disable_input(false)
+	input_handler.unlock_input()
 	input_handler._reset_mouse_events()
 	if ! windows_opened.has(node):
 		windows_opened.append(node)

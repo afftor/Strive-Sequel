@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=2]
@@ -9,22 +9,12 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=8]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=9]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=10]
-[ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=11]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle2.tres" type="DynamicFont" id=12]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=13]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18.tres" type="DynamicFont" id=14]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=15]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Slave_Info.tres" type="Theme" id=16]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveInfoModule.gd" type="Script" id=17]
 [ext_resource path="res://assets/images/traits/bowextradamage.png" type="Texture" id=18]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HScrollBar.tres" type="Theme" id=19]
-[ext_resource path="res://assets/Textures_v2/ClockModule/icon_money_timer.png" type="Texture" id=20]
-[ext_resource path="res://assets/Textures_v2/CITY/Icons/icon_reputationshop_reputation.png" type="Texture" id=21]
-[ext_resource path="res://assets/images/iconstraits/grey.png" type="Texture" id=22]
-[ext_resource path="res://assets/images/iconstraits/heart.png" type="Texture" id=24]
-[ext_resource path="res://assets/images/iconstraits/cross.png" type="Texture" id=25]
-[ext_resource path="res://assets/Textures_v2/MANSION/icon_master.png" type="Texture" id=26]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/traitpanel/button_traits_universal.png" type="Texture" id=28]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/SlaveBodyModule_panel.tres" type="StyleBox" id=29]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=30]
 [ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=31]
@@ -35,9 +25,6 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Buttons/buttonskill_prof.png" type="Texture" id=37]
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=38]
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Medium.otf" type="DynamicFontData" id=39]
-[ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_SEX_Skills.tres" type="Theme" id=40]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/bar_sexskills.png" type="Texture" id=41]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/bar_sexskills_progress.png" type="Texture" id=42]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=58]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/CheckBox.tres" type="Theme" id=60]
 [ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=69]
@@ -47,10 +34,8 @@
 [ext_resource path="res://assets/Textures_v2/CLASS_INFO/Panels/panel_skills.png" type="Texture" id=81]
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_simple.png" type="Texture" id=109]
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_stripe.png" type="Texture" id=110]
-[ext_resource path="res://assets/images/iconsitems/panel_simple.png" type="Texture" id=111]
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_skill_info_bg.png" type="Texture" id=112]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/TextEdit.tres" type="StyleBox" id=113]
-[ext_resource path="res://assets/images/iconsraces/halfwolf.png" type="Texture" id=114]
 [ext_resource path="res://gui_modules/CharacterInfo/ImageSelect.gd" type="Script" id=115]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveDetailsModule.gd" type="Script" id=116]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Details.tres" type="Theme" id=117]
@@ -59,31 +44,21 @@
 [ext_resource path="res://assets/images/gui/panels/noimage.png" type="Texture" id=120]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_36.tres" type="DynamicFont" id=122]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_30.tres" type="DynamicFont" id=123]
-[ext_resource path="res://gui_modules/CharacterInfo/SexTraitsPanel.gd" type="Script" id=124]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSiblingsModule.gd" type="Script" id=125]
 [ext_resource path="res://gui_modules/CharacterInfo/RelativesPanel.gd" type="Script" id=126]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=127]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/ButtonTextOnly.tres" type="Theme" id=128]
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_loadaccept.png" type="Texture" id=130]
-[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mods_pressed.png" type="Texture" id=131]
-[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mods.png" type="Texture" id=132]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/back_panel_hero_info.png" type="Texture" id=134]
 [ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=135]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/rhombus.png" type="Texture" id=136]
 [ext_resource path="res://assets/images/gui/explore/Captured Characters/frame_hero.png" type="Texture" id=137]
-[ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=139]
 [ext_resource path="res://assets/images/portraits/aire_prt.png" type="Texture" id=140]
 [ext_resource path="res://gui_modules/CharacterInfo/StatsPanel.tscn" type="PackedScene" id=144]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/icon_bold.png" type="Texture" id=152]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/bg.png" type="Texture" id=157]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/cirlcle.png" type="Texture" id=161]
-[ext_resource path="res://assets/Textures_v2/MANSION/personality_bold.png" type="Texture" id=166]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/icon_serious.png" type="Texture" id=169]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/icon_kind.png" type="Texture" id=172]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/icon_shy_chary.png" type="Texture" id=174]
-[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mods_hover.png" type="Texture" id=175]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/panel_trainings.png" type="Texture" id=176]
-[ext_resource path="res://assets/Textures_v2/TraitRemovePanel/panel_traits_manage.png" type="Texture" id=179]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonred.png" type="Texture" id=180]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/bd_rhombus.png" type="Texture" id=181]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonred_hover.png" type="Texture" id=182]
@@ -91,16 +66,6 @@
 [ext_resource path="res://assets/Fonts_v2/Noto_Serif/NotoSerif-Italic.ttf" type="DynamicFontData" id=189]
 [ext_resource path="res://assets/images/gui/gui icons/icon_lfood.png" type="Texture" id=199]
 [ext_resource path="res://assets/images/gui/gui icons/icon_dlfood.png" type="Texture" id=200]
-[ext_resource path="res://gui_modules/CharacterInfo/FoodPreferencesPanel.tscn" type="PackedScene" id=250]
-
-[sub_resource type="StyleBoxTexture" id=13]
-texture = ExtResource( 111 )
-region_rect = Rect2( 0, 0, 128, 128 )
-margin_left = 7.56804
-margin_right = 7.56804
-margin_top = 10.8903
-margin_bottom = 7.14759
-
 [sub_resource type="StyleBoxTexture" id=43]
 texture = ExtResource( 182 )
 region_rect = Rect2( 0, 0, 194, 58 )
@@ -116,44 +81,6 @@ region_rect = Rect2( 0, 0, 194, 58 )
 [sub_resource type="StyleBoxTexture" id=15]
 texture = ExtResource( 112 )
 region_rect = Rect2( 0, 0, 296, 410 )
-
-[sub_resource type="StyleBoxTexture" id=16]
-texture = ExtResource( 76 )
-region_rect = Rect2( 0, 0, 693, 6 )
-
-[sub_resource type="StyleBoxTexture" id=14]
-texture = ExtResource( 111 )
-region_rect = Rect2( 0, 0, 128, 128 )
-margin_left = 7.8837
-margin_right = 8.75967
-margin_top = 9.23195
-margin_bottom = 8.64576
-
-[sub_resource type="StyleBoxTexture" id=39]
-texture = ExtResource( 175 )
-region_rect = Rect2( 0, 0, 130, 40 )
-
-[sub_resource type="StyleBoxTexture" id=40]
-texture = ExtResource( 131 )
-region_rect = Rect2( 0, 0, 130, 40 )
-
-[sub_resource type="StyleBoxTexture" id=41]
-texture = ExtResource( 132 )
-region_rect = Rect2( 0, 0, 130, 40 )
-
-[sub_resource type="DynamicFont" id=35]
-size = 22
-use_filter = true
-font_data = ExtResource( 38 )
-
-[sub_resource type="DynamicFont" id=36]
-size = 15
-use_filter = true
-font_data = ExtResource( 39 )
-
-[sub_resource type="StyleBoxTexture" id=42]
-texture = ExtResource( 179 )
-region_rect = Rect2( 0, 0, 690, 800 )
 
 [sub_resource type="DynamicFont" id=20]
 size = 36
@@ -272,9 +199,6 @@ margin_left = 15.0
 margin_top = 15.0
 margin_right = 235.0
 margin_bottom = 1065.0
-
-[node name="FoodPreferencesPanel" parent="." instance=ExtResource( 250 )]
-register_tutorial_source = false
 
 [node name="SlaveBodyModule" type="Panel" parent="."]
 light_mask = 0
@@ -447,504 +371,36 @@ texture = ExtResource( 110 )
 expand = true
 stretch_mode = 1
 
-[node name="Panel" type="Panel" parent="SlaveInfoModule"]
-light_mask = 0
-margin_left = 1.0
-margin_top = -41.0
-margin_right = 283.0
-margin_bottom = 327.0
-custom_styles/panel = SubResource( 13 )
-
-[node name="loyaltylabel" type="Label" parent="SlaveInfoModule/Panel" groups=["hide_master", "hide_stranger"]]
-visible = false
-light_mask = 0
-margin_left = 26.0
-margin_top = 143.0
-margin_right = 278.0
-margin_bottom = 197.0
-mouse_filter = 0
-text = "Loyalty: "
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="maininfo" type="VBoxContainer" parent="SlaveInfoModule/Panel"]
-margin_left = 2.0
-margin_top = 12.0
-margin_right = 270.0
-margin_bottom = 351.0
-custom_constants/separation = 15
-
-[node name="type" type="Control" parent="SlaveInfoModule/Panel/maininfo"]
-margin_right = 268.0
-margin_bottom = 44.0
-rect_min_size = Vector2( 0, 44 )
-
-[node name="icon" type="TextureRect" parent="SlaveInfoModule/Panel/maininfo/type"]
-margin_left = 7.0
-margin_right = 70.0
-margin_bottom = 44.0
-texture = ExtResource( 26 )
-expand = true
-stretch_mode = 6
-
-[node name="label" type="Label" parent="SlaveInfoModule/Panel/maininfo/type"]
-light_mask = 0
-margin_left = 74.0
-margin_right = 271.0
-margin_bottom = 42.0
-mouse_filter = 1
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 11 )
-text = "Type"
-align = 1
-valign = 1
-clip_text = true
-
-[node name="Race" type="Control" parent="SlaveInfoModule/Panel/maininfo"]
-margin_top = 59.0
-margin_right = 268.0
-margin_bottom = 103.0
-rect_min_size = Vector2( 0, 44 )
-
-[node name="label" type="Label" parent="SlaveInfoModule/Panel/maininfo/Race"]
-light_mask = 0
-margin_left = 74.0
-margin_right = 271.0
-margin_bottom = 42.0
-mouse_filter = 1
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 11 )
-text = "Type"
-align = 1
-valign = 1
-clip_text = true
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="icon" type="TextureRect" parent="SlaveInfoModule/Panel/maininfo/Race"]
-margin_left = 16.869
-margin_right = 60.8691
-margin_bottom = 44.001
-texture = ExtResource( 114 )
-expand = true
-
-[node name="fame" type="Control" parent="SlaveInfoModule/Panel/maininfo"]
-margin_top = 118.0
-margin_right = 268.0
-margin_bottom = 162.0
-rect_min_size = Vector2( 0, 44 )
-
-[node name="icon" type="TextureRect" parent="SlaveInfoModule/Panel/maininfo/fame"]
-margin_left = 16.869
-margin_right = 60.8691
-margin_bottom = 44.001
-texture = ExtResource( 21 )
-expand = true
-
-[node name="label" type="Label" parent="SlaveInfoModule/Panel/maininfo/fame"]
-light_mask = 0
-margin_left = 74.0
-margin_right = 271.0
-margin_bottom = 42.0
-mouse_filter = 1
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 11 )
-text = "Type"
-align = 1
-valign = 1
-clip_text = true
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="price" type="Control" parent="SlaveInfoModule/Panel/maininfo" groups=["hide_master"]]
-margin_top = 177.0
-margin_right = 268.0
-margin_bottom = 221.0
-rect_min_size = Vector2( 0, 44 )
-
-[node name="label" type="Label" parent="SlaveInfoModule/Panel/maininfo/price"]
-light_mask = 0
-margin_left = 74.0
-margin_right = 271.0
-margin_bottom = 42.0
-mouse_filter = 1
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 11 )
-text = "Type"
-align = 1
-valign = 1
-clip_text = true
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="icon" type="TextureRect" parent="SlaveInfoModule/Panel/maininfo/price"]
-margin_left = 16.869
-margin_right = 60.8691
-margin_bottom = 44.001
-texture = ExtResource( 20 )
-
-[node name="standing" type="Control" parent="SlaveInfoModule/Panel/maininfo" groups=["hide_master"]]
-margin_top = 236.0
-margin_right = 268.0
-margin_bottom = 280.0
-rect_min_size = Vector2( 0, 44 )
-
-[node name="label" type="Label" parent="SlaveInfoModule/Panel/maininfo/standing"]
-light_mask = 0
-margin_left = 74.0
-margin_right = 271.0
-margin_bottom = 42.0
-mouse_filter = 1
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 11 )
-text = "Type"
-align = 1
-valign = 1
-clip_text = true
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="icon" type="TextureRect" parent="SlaveInfoModule/Panel/maininfo/standing"]
-margin_left = 16.869
-margin_right = 60.8691
-margin_bottom = 44.001
-texture = ExtResource( 24 )
-expand = true
-stretch_mode = 6
-
-[node name="personality" type="Control" parent="SlaveInfoModule/Panel/maininfo"]
-margin_top = 295.0
-margin_right = 268.0
-margin_bottom = 339.0
-rect_min_size = Vector2( 0, 44 )
-
-[node name="label" type="Label" parent="SlaveInfoModule/Panel/maininfo/personality"]
-light_mask = 0
-margin_left = 74.0
-margin_right = 271.0
-margin_bottom = 42.0
-mouse_filter = 1
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 11 )
-text = "Type"
-align = 1
-valign = 1
-clip_text = true
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="icon" type="TextureRect" parent="SlaveInfoModule/Panel/maininfo/personality"]
-margin_left = 14.869
-margin_right = 58.8691
-margin_bottom = 44.001
-texture = ExtResource( 166 )
-
 [node name="DescriptionButton" type="Button" parent="SlaveInfoModule"]
-margin_left = 971.0
-margin_top = -41.0
-margin_right = 1672.0
-margin_bottom = 3.0
+margin_left = 6.0
+margin_top = -40.0
+margin_right = 964.0
+margin_bottom = 4.0
 custom_styles/hover = SubResource( 43 )
 custom_styles/pressed = SubResource( 44 )
 custom_styles/normal = SubResource( 45 )
 text = "CHARINFO_DESCRIPTION_LABEL"
 
 [node name="Description" type="Panel" parent="SlaveInfoModule"]
-margin_left = 971.0
-margin_top = 9.0
-margin_right = 1667.0
-margin_bottom = 915.0
+margin_left = 6.0
+margin_top = 10.0
+margin_right = 964.0
+margin_bottom = 690.0
 custom_styles/panel = SubResource( 15 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="SlaveInfoModule/Description"]
 light_mask = 0
 margin_left = 17.0
 margin_top = 5.0
-margin_right = 683.0
-margin_bottom = 946.0
+margin_right = 941.0
+margin_bottom = 665.0
 theme = ExtResource( 15 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/normal_font = ExtResource( 10 )
 bbcode_enabled = true
+scroll_active = true
 text = "Lorem Ipsum
 "
-
-[node name="TraitContainer" type="ScrollContainer" parent="SlaveInfoModule"]
-anchor_top = 0.889
-anchor_right = 1.102
-anchor_bottom = 1.0
-margin_left = 435.0
-margin_top = -18.188
-margin_right = 9.17798
-margin_bottom = -45.0
-theme = ExtResource( 19 )
-scroll_vertical_enabled = false
-
-[node name="HBoxContainer" type="HBoxContainer" parent="SlaveInfoModule/TraitContainer"]
-margin_right = 523.0
-size_flags_horizontal = 3
-custom_constants/separation = 5
-alignment = 1
-
-[node name="Button" type="TextureButton" parent="SlaveInfoModule/TraitContainer/HBoxContainer"]
-visible = false
-margin_left = 284.0
-margin_right = 334.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-texture_normal = ExtResource( 22 )
-expand = true
-
-[node name="icon" type="TextureRect" parent="SlaveInfoModule/TraitContainer/HBoxContainer/Button"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 3.0
-margin_top = 4.0
-margin_right = -3.0
-margin_bottom = -3.0
-mouse_filter = 2
-texture = ExtResource( 24 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="cross" type="TextureRect" parent="SlaveInfoModule/TraitContainer/HBoxContainer/Button"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
-mouse_filter = 2
-texture = ExtResource( 25 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="SlaveInfoModule/TraitContainer/HBoxContainer/Button"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 28 )
-expand = true
-
-[node name="Button2" type="TextureRect" parent="SlaveInfoModule/TraitContainer/HBoxContainer"]
-visible = false
-margin_left = 312.0
-margin_right = 362.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-texture = ExtResource( 18 )
-expand = true
-stretch_mode = 1
-
-[node name="Label" type="Label" parent="SlaveInfoModule/TraitContainer/HBoxContainer/Button2"]
-margin_left = 28.5601
-margin_top = 81.947
-margin_right = 77.5601
-margin_bottom = 105.947
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 13 )
-text = "5"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="SlaveInfoModule/TraitContainer/HBoxContainer/Button2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 28 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TraitContainer2" type="ScrollContainer" parent="SlaveInfoModule"]
-anchor_top = 0.889
-anchor_right = 1.102
-anchor_bottom = 1.0
-margin_left = 435.0
-margin_top = 40.812
-margin_right = 9.17798
-margin_bottom = 14.0
-theme = ExtResource( 19 )
-scroll_vertical_enabled = false
-
-[node name="HBoxContainer" type="HBoxContainer" parent="SlaveInfoModule/TraitContainer2"]
-margin_right = 523.0
-size_flags_horizontal = 3
-custom_constants/separation = 5
-
-[node name="Button" type="TextureButton" parent="SlaveInfoModule/TraitContainer2/HBoxContainer"]
-visible = false
-margin_right = 50.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-texture_normal = ExtResource( 22 )
-expand = true
-
-[node name="icon" type="TextureRect" parent="SlaveInfoModule/TraitContainer2/HBoxContainer/Button"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 3.0
-margin_top = 4.0
-margin_right = -3.0
-margin_bottom = -3.0
-mouse_filter = 2
-texture = ExtResource( 24 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="cross" type="TextureRect" parent="SlaveInfoModule/TraitContainer2/HBoxContainer/Button"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
-mouse_filter = 2
-texture = ExtResource( 25 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="SlaveInfoModule/TraitContainer2/HBoxContainer/Button"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 28 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Separator3" type="Panel" parent="SlaveInfoModule"]
-margin_left = 280.0
-margin_top = 568.0
-margin_right = 967.0
-margin_bottom = 574.0
-custom_styles/panel = SubResource( 16 )
-
-[node name="Panel3" type="Panel" parent="SlaveInfoModule"]
-margin_top = 327.0
-margin_right = 283.0
-margin_bottom = 718.0
-custom_styles/panel = SubResource( 14 )
-
-[node name="TextureRect" type="TextureRect" parent="SlaveInfoModule"]
-margin_left = 286.0
-margin_top = -40.0
-margin_right = 964.0
-margin_bottom = 566.0
-texture = ExtResource( 157 )
-expand = true
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="TextureRect" type="NinePatchRect" parent="SlaveInfoModule/TextureRect"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 176 )
-patch_margin_left = 31
-patch_margin_top = 31
-patch_margin_right = 29
-patch_margin_bottom = 29
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="panel4" type="Button" parent="SlaveInfoModule"]
-margin_left = 11.0
-margin_top = 667.0
-margin_right = 274.0
-margin_bottom = 705.0
-custom_styles/hover = SubResource( 39 )
-custom_styles/pressed = SubResource( 40 )
-custom_styles/normal = SubResource( 41 )
-toggle_mode = true
-text = "SIBLINGMODULESEXTRAITS"
-
-[node name="SexSkillsContainer" type="ScrollContainer" parent="SlaveInfoModule"]
-light_mask = 0
-margin_left = 9.0
-margin_top = 435.0
-margin_right = 272.0
-margin_bottom = 652.0
-theme = ExtResource( 40 )
-scroll_horizontal_enabled = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="SlaveInfoModule/SexSkillsContainer"]
-light_mask = 0
-custom_constants/separation = -11
-
-[node name="Button" type="HBoxContainer" parent="SlaveInfoModule/SexSkillsContainer/VBoxContainer"]
-visible = false
-light_mask = 0
-margin_right = 257.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
-
-[node name="Label" type="Label" parent="SlaveInfoModule/SexSkillsContainer/VBoxContainer/Button"]
-light_mask = 0
-margin_top = 8.0
-margin_right = 125.0
-margin_bottom = 41.0
-rect_min_size = Vector2( 125, 0 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 35 )
-text = "Penetration"
-align = 1
-clip_text = true
-
-[node name="ProgressBar" type="TextureProgress" parent="SlaveInfoModule/SexSkillsContainer/VBoxContainer/Button"]
-light_mask = 0
-margin_left = 129.0
-margin_top = 15.0
-margin_right = 257.0
-margin_bottom = 35.0
-size_flags_horizontal = 0
-size_flags_vertical = 4
-size_flags_stretch_ratio = 2.19
-texture_over = ExtResource( 41 )
-texture_progress = ExtResource( 42 )
-
-[node name="Label" type="Label" parent="SlaveInfoModule/SexSkillsContainer/VBoxContainer/Button/ProgressBar"]
-light_mask = 0
-margin_top = -2.0
-margin_right = 128.0
-margin_bottom = 22.0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 36 )
-text = "1/100"
-align = 1
-
-[node name="SexSkillsLabel" type="Label" parent="SlaveInfoModule"]
-margin_left = 8.50073
-margin_top = 340.402
-margin_right = 271.5
-margin_bottom = 372.402
-text = "LABELSEXSKILLS"
-align = 1
 
 [node name="HairChange" type="Control" parent="SlaveInfoModule"]
 visible = false
@@ -972,187 +428,6 @@ margin_right = 229.0
 margin_bottom = 38.0
 rect_min_size = Vector2( 200, 35 )
 text = "Bald"
-
-[node name="ConsentLabel" type="Label" parent="SlaveInfoModule"]
-margin_left = 12.8218
-margin_top = 372.905
-margin_right = 269.822
-margin_bottom = 404.905
-mouse_filter = 1
-custom_colors/font_color = Color( 0.929412, 0.156863, 0.862745, 1 )
-text = "SIBLINGMODULECONSENT"
-align = 1
-clip_text = true
-
-[node name="SexstaminaLabel" type="Label" parent="SlaveInfoModule"]
-margin_left = 12.8218
-margin_top = 404.905
-margin_right = 269.822
-margin_bottom = 436.905
-mouse_filter = 1
-custom_colors/font_color = Color( 1, 0.964706, 0.0588235, 1 )
-text = "SIBLINGMODULECONSENT"
-align = 1
-clip_text = true
-
-[node name="TraitsLabel" type="Label" parent="SlaveInfoModule"]
-margin_left = 435.0
-margin_top = 568.0
-margin_right = 944.0
-margin_bottom = 600.0
-text = "TRAITS"
-align = 1
-
-[node name="FoodPanelDivider" type="TextureRect" parent="SlaveInfoModule"]
-margin_left = 425.0
-margin_top = 568.0
-margin_right = 431.0
-margin_bottom = 692.0
-mouse_filter = 2
-texture = ExtResource( 110 )
-expand = true
-stretch_mode = 1
-
-[node name="FoodPreference" type="Control" parent="SlaveInfoModule"]
-margin_left = 288.0
-margin_top = 568.0
-margin_right = 421.0
-margin_bottom = 603.0
-
-[node name="Icon" type="TextureRect" parent="SlaveInfoModule/FoodPreference"]
-margin_right = 35.0
-margin_bottom = 35.0
-mouse_filter = 2
-texture = ExtResource( 24 )
-expand = true
-stretch_mode = 6
-
-[node name="Value" type="Label" parent="SlaveInfoModule/FoodPreference"]
-margin_left = 38.0
-margin_right = 133.0
-margin_bottom = 35.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 14 )
-align = 1
-valign = 1
-autowrap = true
-clip_text = true
-
-[node name="LastMeal" type="Control" parent="SlaveInfoModule"]
-margin_left = 288.0
-margin_top = 605.0
-margin_right = 421.0
-margin_bottom = 640.0
-
-[node name="Icon" type="TextureRect" parent="SlaveInfoModule/LastMeal"]
-margin_right = 35.0
-margin_bottom = 35.0
-mouse_filter = 2
-texture = ExtResource( 24 )
-expand = true
-stretch_mode = 6
-
-[node name="Value" type="Label" parent="SlaveInfoModule/LastMeal"]
-margin_left = 38.0
-margin_right = 133.0
-margin_bottom = 35.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 14 )
-align = 1
-valign = 1
-autowrap = true
-clip_text = true
-
-[node name="FoodPreferencesButton" type="Button" parent="SlaveInfoModule"]
-margin_left = 288.0
-margin_top = 646.0
-margin_right = 421.0
-margin_bottom = 690.0
-theme = ExtResource( 127 )
-custom_fonts/font = ExtResource( 14 )
-text = "MSLMFOOD"
-clip_text = true
-
-[node name="SexTraitsPanel" type="Panel" parent="SlaveInfoModule"]
-visible = false
-light_mask = 0
-margin_left = 10.0
-margin_top = 50.0
-margin_right = 276.0
-margin_bottom = 651.0
-custom_styles/panel = SubResource( 42 )
-script = ExtResource( 124 )
-
-[node name="Label" type="Label" parent="SlaveInfoModule/SexTraitsPanel"]
-light_mask = 0
-margin_left = 9.0
-margin_right = 252.0
-margin_bottom = 53.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 20 )
-text = "SIBLINGMODULESEXTRAITS"
-align = 1
-valign = 1
-clip_text = true
-
-[node name="ScrollContainer" type="ScrollContainer" parent="SlaveInfoModule/SexTraitsPanel"]
-light_mask = 0
-margin_left = 12.0
-margin_top = 76.0
-margin_right = 256.0
-margin_bottom = 551.0
-theme = ExtResource( 15 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="SlaveInfoModule/SexTraitsPanel/ScrollContainer"]
-light_mask = 0
-margin_right = 244.0
-size_flags_horizontal = 3
-custom_constants/separation = 5
-
-[node name="Button" type="Button" parent="SlaveInfoModule/SexTraitsPanel/ScrollContainer/VBoxContainer"]
-visible = false
-light_mask = 0
-margin_right = 230.0
-margin_bottom = 53.0
-theme = ExtResource( 127 )
-disabled = true
-toggle_mode = true
-text = "Trait"
-
-[node name="TraitHelp" type="TextureRect" parent="SlaveInfoModule/SexTraitsPanel"]
-visible = false
-light_mask = 0
-margin_left = 596.57
-margin_top = 0.481625
-margin_right = 647.57
-margin_bottom = 39.4816
-texture = ExtResource( 139 )
-expand = true
-stretch_mode = 6
-
-[node name="TraitCapacity" type="Label" parent="SlaveInfoModule/SexTraitsPanel"]
-light_mask = 0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -42.4916
-margin_bottom = -7.49158
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 10 )
-text = "SIBLINGMODULETRAITCAPACITY"
-align = 1
-valign = 1
-clip_text = true
-
-[node name="SexSkillsTooltip" type="TextureRect" parent="SlaveInfoModule"]
-visible = false
-margin_left = 246.048
-margin_top = -16.1888
-margin_right = 296.048
-margin_bottom = 30.8112
-texture = ExtResource( 135 )
-expand = true
-stretch_mode = 6
 
 [node name="SlaveDetailsModule" type="Panel" parent="."]
 visible = false

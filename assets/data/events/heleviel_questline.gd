@@ -2460,7 +2460,7 @@ var data = {
 				change_dialogue_type = 2
 			}
 		],
-		character = "$heleviel"
+		character = "heleviel_wed"
 	},
 	heleviel_wedding_2 = {
 		reqs = [

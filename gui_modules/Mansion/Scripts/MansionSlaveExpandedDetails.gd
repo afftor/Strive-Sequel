@@ -2,6 +2,7 @@ extends PanelContainer
 
 signal inventory_requested(person)
 signal food_filter_requested(person)
+signal sex_panel_requested(person)
 
 var person
 
@@ -88,6 +89,12 @@ func _ready():
 		tr("INFOFOODFILTER")
 	)
 	input_handler.register_btn_source("food_filter_btn", self, "tut_get_food_filter_btn")
+	$Sections/Overview/Right/Consent/Content/Expand.connect(
+		"pressed", self, "_request_sex_panel"
+	)
+	globals.connecttexttooltip(
+		$Sections/Overview/Right/Consent/Content/Expand, tr("LABELSEXSKILLS")
+	)
 
 
 func tut_get_food_filter_btn():
@@ -102,6 +109,11 @@ func _request_inventory():
 func _request_food_filter():
 	if person != null:
 		emit_signal("food_filter_requested", person)
+
+
+func _request_sex_panel():
+	if person != null:
+		emit_signal("sex_panel_requested", person)
 
 
 func prepare_expanded_person(value):
@@ -260,23 +272,33 @@ func build_expanded_character_info():
 	personality_row.get_node("Value").text = tr("PERSONALITYNAME" + personality.to_upper())
 	globals.connecttexttooltip(personality_row, globals.get_character_personality_tooltip(personality))
 
-	var food_row = $Sections/Overview/Right/Food/Content
-	var preferred_food = food_row.get_node("PreferredFood")
+	var food_panel = $Sections/Overview/Right/Food
+	var food_row = food_panel.get_node("Content")
+	#the filter button wears the liked food itself - the picture is its label, and the word
+	#only comes back when the character has no liked type to show
+	var filter_button = food_row.get_node("Filter")
+	var liked_icon = filter_button.get_node("Icon")
 	var food_love = person.food.food_love
-	preferred_food.visible = food_love != null and food_love != ""
-	globals.disconnect_text_tooltip(preferred_food)
-	if preferred_food.visible:
-		preferred_food.get_node("Icon").texture = images.get_icon(food_love)
-		globals.connecttexttooltip(preferred_food,
-			"[center]" + tr("FOODLIKEDTYPE") + "[/center]\n" + tr("FOODTYPE" + food_love.to_upper()))
+	liked_icon.visible = food_love != null and food_love != ""
+	var filter_tooltip = tr("INFOFOODFILTER")
+	if liked_icon.visible:
+		liked_icon.texture = images.get_icon(food_love)
+		filter_button.text = ""
+		filter_tooltip += "\n\n[center]" + tr("FOODLIKEDTYPE") + "[/center]"
+		filter_tooltip += "\n{color=green|" + tr("FOODTYPE" + food_love.to_upper()) + "}"
+		filter_tooltip += "\n" + tr("FOODTOOLTIPLIKED")
+	else:
+		filter_button.text = tr("MSLMFOOD")
+	globals.connecttexttooltip(filter_button, filter_tooltip)
 	var demand = person.get_food_demand()
 	var demand_label = food_row.get_node("Demand")
-	demand_label.text = tr("FOODDEMAND" + demand.to_upper())
+	demand_label.text = tr("DEMAND") + ": " + tr("FOODDEMAND" + demand.to_upper())
 	demand_label.set("custom_colors/font_color", Color(variables.hexcolordict[variables.food_demand_colors[demand]]))
-	globals.connecttexttooltip(demand_label,
-		"[center]" + tr("FOODDEMAND") + "[/center]\n" + tr("FOODDEMAND" + demand.to_upper() + "DESCRIPT"))
+	#the whole panel is the demand tooltip's hover zone - only the filter button carves
+	#its own tooltip out of it, so there is no dead space between the two
+	globals.connecttexttooltip(food_panel, globals.get_character_demand_tooltip(person, demand))
 
-	var consent_label = $Sections/Overview/Right/Consent/Value
+	var consent_label = $Sections/Overview/Right/Consent/Content/Value
 	if person.is_master():
 		consent_label.text = tr("SIBLINGMODULECONSENT") + tr("MASTER")
 		globals.connecttexttooltip(consent_label, person.translate(tr("INFOCONSENTMASTER")))

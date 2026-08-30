@@ -279,6 +279,29 @@ static func quest_per_day(task_id):
 #is rolled for (loot.roll_production). While a table hands out one unit of one material -
 #which is what all of them do to begin with - batches and units are the same number; give a
 #task a table that yields several things and this becomes "rolls", not "items of job".
+#What one person would make on this work in a turn, whether or not they are on it yet. The card
+#asks this about somebody it is offering the place to, and production_per_turn sums it over the
+#people already there, so the number the player is shown before choosing and the number they get
+#after cannot drift apart.
+static func production_of(task_id, person):
+	if person == null or !ResourceScripts.game_res.tasks_progresses.has(task_id):
+		return 0.0
+	var data = ResourceScripts.game_res.tasks_progresses[task_id]
+	if !data.has('job'):
+		return 0.0
+	var value = 0.0
+	if data.type in ['gather_limited', 'gather_simple']:
+		value = person.get_progress_resource(data.job)
+	else:
+		#find_task_for_res answers null for anything no job produces, and the value of a task
+		#nobody can be set to is nothing rather than an error
+		var job_task = tasks.find_task_for_res(data.job)
+		if job_task == null:
+			return 0.0
+		value = person.get_job_value(job_task)
+	return value / max(1.0, float(data.get('progress_limit', 1)))
+
+
 static func production_per_turn(task_id):
 	if !ResourceScripts.game_res.tasks_progresses.has(task_id):
 		return 0.0
@@ -295,16 +318,8 @@ static func production_per_turn(task_id):
 		var person = ResourceScripts.game_party.characters.get(char_id, null)
 		if person == null:
 			continue
-		if data.type in ['gather_limited', 'gather_simple']:
-			total += person.get_progress_resource(data.job)
-			continue
-		#find_task_for_res answers null for anything no job produces, and the value of a task
-		#nobody can be set to is nothing rather than an error
-		var job_task = tasks.find_task_for_res(data.job)
-		if job_task == null:
-			continue
-		total += person.get_job_value(job_task)
-	return total / max(1.0, float(data.progress_limit))
+		total += production_of(task_id, person)
+	return total
 
 
 #What this farm is actually making, by material and per turn - the same shape as

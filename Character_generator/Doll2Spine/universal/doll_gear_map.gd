@@ -21,6 +21,10 @@ const SLOT_GROUPS = {
 	"head": "headgear",
 	"rhand": "weapon_belt",
 	"back": "weapon_back",
+	# gloves wear the hands of a set and a tail plug wears a tail - the one piece
+	# of gear that fills a body group
+	"hands": "outfit_hands",
+	"ass": "tails",
 }
 
 # How much of a character is shown.  Four steps rather than a bool: a screen used
@@ -57,10 +61,14 @@ const OUTFIT_BY_LEVEL = {
 # does not come off with the dress, so `bare` keeps those two and lets the
 # weapons go; `naked` is naked.
 const EXTRAS_BY_LEVEL = {
-	"dressed": ["neck", "head", "rhand", "back"],
-	"underwear": ["neck", "head", "rhand", "back"],
-	"bare": ["neck", "head"],
-	"naked": [],
+	"dressed": ["neck", "head", "rhand", "back", "hands", "ass"],
+	"underwear": ["neck", "head", "rhand", "back", "hands", "ass"],
+	# neither a plug nor a pair of paws is modesty, so the clothes coming off
+	# leaves both where they were
+	"bare": ["neck", "head", "ass", "hands"],
+	# naked is naked, with one exception: a plug is worn in rather than on, and
+	# taking the clothes off does not take it out
+	"naked": ["ass"],
 }
 
 # The slots a bare character does not wear even when the set they have on carries
@@ -79,6 +87,23 @@ const MODESTY_SLOTS = [
 # answer for it only when the chest is bare, and underwear only when neither is.
 const OUTFIT_PRIORITY = ["chest", "legs", "underwear"]
 
+# The lower half of a set, worn when the legs have armour of their own.
+#
+# The catalogue carries a `<set>_legs` part for every set that has anything below
+# the waist, composed after the whole set so it wins those slots; the suffix and
+# the group are spelled in `doll2_overrides_shared.gd` under `LOWER_HALF`, and
+# this file cannot read the catalogue, so they are named again here.
+#
+# What it buys: a character in a cloth shirt and plate greaves is drawn in both.
+# The chest decides the body and the legs decide from the waist down; when a
+# single item fills both slots - a dress, a suit - the two halves are the same
+# set and nothing looks different.
+const LOWER_GROUP = "outfit_legs"
+const LOWER_SUFFIX = "_legs"
+# and the pair of hands, which is worn over whatever the body has on rather than
+# instead of it - see `SET_CUTS` in the overrides
+const HANDS_SUFFIX = "_hands"
+
 # A gear slot usually names the group whose art it wears, but the head slot holds
 # both hats and masks and the catalogue keeps those in groups of their own.  An
 # item named here goes to its group instead of its slot's; a part that lands in
@@ -88,10 +113,19 @@ const ITEM_GROUPS = {
 	"foxmask": "mask",
 }
 
+# Gear that paints the part it puts on, whatever colour the character's own of
+# that part is.  A tail plug is a bought thing with a colour of its own, not hair
+# the wearer grew; the shade is a code from the doll's palette, the same names a
+# character carries in `body_color_tail`.
+const ITEM_COLOURS = {
+	"tail_plug": {"tail": "orange1"},
+}
+
+
 # Every catalogue group gear can fill, which is what a naked character has none
 # of.  The screens strip a character by level, but the test preview picks parts
 # by hand and needs to know which of them are clothing.
-const WORN_GROUPS = ["outfit", "collar", "headgear", "mask", "weapon_belt", "weapon_back"]
+const WORN_GROUPS = ["outfit", "outfit_legs", "outfit_hands", "collar", "headgear", "mask", "weapon_belt", "weapon_back"]
 
 # Worn when nothing is equipped and the character is not on nudity duty.  The old
 # doll put underwear on anyone not told to go naked; the slave set is what that
@@ -113,8 +147,15 @@ const PER_DOLL = {
 		"elegant_choker": "collar_heart_big",
 		"amulet_of_recognition": "collar_heart_small",
 		"pet_suit": "collar_leather_small",
-		"servant": "outfit_servant",
+		"maid_dress": "outfit_servant",
 		"service_suit": "outfit_waiter",
+		# the male rig has the waiter where the female has the waitress, and no
+		# pet suit of its own - so he keeps the collar and the hood and wears no
+		# paws
+		"worker_outfit": "outfit_waiter",
+		"outfit_petsuit": null,
+		"outfit_petsuit_hands": null,
+		"animal_gloves": null,
 		"underwear": "outfit_slave",
 		"lacy_underwear": "outfit_slave",
 		"seethrough_underwear": "outfit_slave",
@@ -142,15 +183,36 @@ const ITEM_PARTS = {
 	"legs_adv_metal": "outfit_plate2",
 
 	"underwear": "outfit_underwear1",
-	"lacy_underwear": "outfit_underwear2",
-	"seethrough_underwear": "outfit_gipure1", # guess: the old art has no third underwear
+	# lace is the gipure cut and the plainer second set is what shows through
+	"lacy_underwear": "outfit_gipure1",
+	"seethrough_underwear": "outfit_underwear2",
 	"jacket": "outfit_jacket",
 	"latex_suit": "outfit_latex",
 	"tentacle_suit": "outfit_tentacle",
-	"service_suit": "outfit_waitress",
-	"worker_outfit": "outfit_smith",
-	"craftsman_suit": "outfit_smith", # guess: one smith set covers both trades
-	"servant": "outfit_maid",
+	# `service_suit` is the Bunny Costume - the code is the old one, the item is
+	# the leotard with the ears, and the art for it is the playboy set.  It was
+	# paired with the waitress by its code, which is how it came out dressed as a
+	# waitress in game.
+	"service_suit": "outfit_playboy",
+	# two working outfits, two sets: the apron for the smith, the serving dress for
+	# the worker
+	"worker_outfit": "outfit_waitress",
+	"craftsman_suit": "outfit_smith",
+	# no item is called `servant`; the maid dress is `maid_dress`, and under the
+	# old name it matched nothing and drew nothing
+	"maid_dress": "outfit_maid",
+
+	# worn things that fill a body group or a set of their own
+	# the ears are the pet suit's headband, worn over the hair rather than growing
+	# out of the head - the character keeps their own ears underneath
+	"animal_ears": "Petsuit_cat",
+	"tail_plug": "tail_fox_2",
+	"maid_headband": "hair_armor_maid",
+	# the only paw art in the export is the pet suit's, cut down to its hands: the
+	# gloves are gloves, and they go on over anything
+	"animal_gloves": "outfit_petsuit_hands",
+	# medium armour, so the advanced leather rather than the base cut
+	"garb_of_forest": "outfit_leather2",
 
 	# collars: the old list is item names, the new one is what the collar looks
 	# like, so these pair by material
@@ -195,10 +257,16 @@ const ITEM_PARTS = {
 
 # Items that put something on a second slot as well - the pet suit is a collar
 # and a hood.
+# `maid_dress` is deliberately absent: the headband is its own item
+# (`maid_headband`), and a dress that brought one along left no way to wear
+# the dress without it.
 const ALSO = {
-	"pet_suit": {"headgear": "Petsuit_cat"},
-	"service_suit": {"headgear": "hair_armor_waitress"},
-	"servant": {"headgear": "hair_armor_maid"},
+	# The pet suit is worn on the neck, the hands and the head, so the collar is
+	# what the slot itself answers with; the paws and the leggings are its own set
+	# and the hood carries the ears.  All three have to be named, or the item shows
+	# as a bare collar - which is what it did.
+	"pet_suit": {"outfit": "outfit_petsuit", "outfit_hands": "outfit_petsuit_hands", "headgear": "Petsuit_cat"},
+	"service_suit": {"headgear": "hair_armor_playboy"},
 }
 
 
@@ -208,9 +276,13 @@ static func selections_for(equipped, level = DRESSED, doll_id = "female"):
 	var shown = normalise(level)
 	var dresses = OUTFIT_BY_LEVEL[shown]
 	var extras = EXTRAS_BY_LEVEL[shown]
-	# the body, resolved by priority because one group answers for both halves
+	# The body: the chest first, then whatever is left that dresses it.  The legs
+	# are deliberately not in this loop any more - they answer for the lower half
+	# below, and a pair of greaves has no business dressing a torso.
 	var outfit = ""
 	for slot_name in dresses:
+		if slot_name == "legs":
+			continue
 		var item_id = str(equipped.get(slot_name, ""))
 		if item_id.empty():
 			continue
@@ -218,10 +290,21 @@ static func selections_for(equipped, level = DRESSED, doll_id = "female"):
 		if outfit.empty():
 			outfit = _override(UNKNOWN_ITEM, doll_id)
 		break
+	# Whether a dress, a suit or underwear actually answered for the body.  What
+	# follows leans on it: gloves and a pet suit live in the same group as the
+	# clothes, and they must not strip a character who is wearing some.
+	var body_is_dressed = !outfit.empty()
 	if outfit.empty() and !dresses.empty():
 		outfit = default_underwear(doll_id)
 	if !outfit.empty():
 		result["outfit"] = outfit
+	# and the lower half, when the legs wear something the body is not already in
+	if !outfit.empty() and "legs" in dresses:
+		var legs_item = str(equipped.get("legs", ""))
+		if !legs_item.empty():
+			var legs_part = _part_for(legs_item, doll_id)
+			if !legs_part.empty() and legs_part != outfit:
+				result[LOWER_GROUP] = legs_part + LOWER_SUFFIX
 	# and everything worn on top of it
 	for slot_name in SLOT_GROUPS.keys():
 		if slot_name in OUTFIT_PRIORITY:
@@ -238,14 +321,26 @@ static func selections_for(equipped, level = DRESSED, doll_id = "female"):
 		var group_id = str(ITEM_GROUPS.get(item_id, SLOT_GROUPS[slot_name]))
 		if part_id.begins_with("weapon_back"):
 			group_id = "weapon_back"
+		if group_id == "outfit" and body_is_dressed:
+			continue # the clothes keep the body; the paws would have bared it
 		result[group_id] = part_id
-	# items that also put something on a second slot, like the pet suit's hood
-	for slot_name in equipped.keys():
-		var item_id = str(equipped[slot_name])
-		if !(slot_name in extras) and !(slot_name in dresses):
+	# Items that also put something on a second slot, like the pet suit's hood.
+	# The dresses first and the worn-on-top slots after, so that when two items
+	# both offer a hat the one actually worn on the head has the last word - a pet
+	# suit's hood beats the headband its wearer's dress would have added.
+	for slot_name in dresses + extras:
+		var item_id = str(equipped.get(slot_name, ""))
+		if item_id.empty():
 			continue
 		for extra_group in ALSO.get(item_id, {}).keys():
-			result[extra_group] = ALSO[item_id][extra_group]
+			# through the per-doll table as well: a second piece can be named
+			# differently on the other rig, or not exist there at all
+			var extra = _override(str(ALSO[item_id][extra_group]), doll_id)
+			if extra.empty():
+				continue
+			if extra_group == "outfit" and body_is_dressed:
+				continue # same rule: the pet suit adds paws, it does not undress
+			result[extra_group] = extra
 	return result
 
 
@@ -279,7 +374,10 @@ static func _part_for(item_id, doll_id):
 
 static func _override(part_id, doll_id):
 	var per_doll = PER_DOLL.get(doll_id, {})
-	return str(per_doll[part_id]) if per_doll.has(part_id) else str(part_id)
+	if !per_doll.has(part_id):
+		return str(part_id)
+	# `null` is how the table says this doll simply has no such piece
+	return "" if per_doll[part_id] == null else str(per_doll[part_id])
 
 
 # Entries pointing at parts a doll does not have.  The build report cannot see
@@ -297,6 +395,9 @@ static func stale_entries(known_parts, doll_id = "female"):
 		result.append("the fallback outfit -> %s" % _override(UNKNOWN_ITEM, doll_id))
 	for item_id in ALSO.keys():
 		for group_id in ALSO[item_id].keys():
-			if !(ALSO[item_id][group_id] in known_parts):
-				result.append("%s also -> %s" % [item_id, ALSO[item_id][group_id]])
+			# through the per-doll table, the way `selections_for` reads it: a
+			# piece dropped for this doll is not a stale entry, it is an absence
+			var extra = _override(str(ALSO[item_id][group_id]), doll_id)
+			if !extra.empty() and !(extra in known_parts):
+				result.append("%s also -> %s" % [item_id, extra])
 	return result

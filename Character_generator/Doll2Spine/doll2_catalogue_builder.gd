@@ -395,6 +395,16 @@ func _build_parts(records, slot_order):
 	var parts = {}
 	_build_option_parts(option_records, parts)
 	_build_set_parts(set_records, parts)
+	# Carried into the catalogue so the doll can see it without the overrides.
+	# The list is shared by both rigs and they do not hold the same sets - the
+	# maid dress is the male doll's `outfit_servant` - so a name this doll has
+	# never heard of is noted rather than treated as a fault.
+	for part_id in _overrides.get("UNPAINTED_PARTS", []):
+		if parts.has(part_id):
+			parts[part_id]["unpainted"] = true
+		else:
+			_line("  UNPAINTED_PARTS: this doll has no `%s`" % part_id)
+	_build_set_cuts(parts)
 
 	var groups = {}
 	var group_ids = _overrides.GROUP_DEFS.keys()
@@ -718,6 +728,60 @@ func _build_set_parts(set_records, parts):
 				parts[sub_id] = _make_set_part(sub_id, source, sub_slots)
 			else:
 				parts[sub_id] = _make_set_part(sub_id, source, sub_slots, true)
+
+
+# The pieces of every set that can be worn on their own, as parts of their own.
+#
+# Each carries the same slots the set does, cut down to the ones its rule names,
+# and nothing else: no folders, no bindings.  A set with nothing in a cut - a
+# jacket has no legs - gets no piece for it, which is what stops the groups
+# filling up with empty entries.
+func _build_set_cuts(parts):
+	var cuts = _overrides.get("SET_CUTS", {})
+	if cuts.empty():
+		return
+	var made = {}
+	var counted = {}
+	var cut_ids = cuts.keys()
+	cut_ids.sort()
+	for cut_id in cut_ids:
+		var rule = cuts[cut_id]
+		var wanted = rule.get("slots", [])
+		if wanted.empty():
+			wanted = _overrides.COLOR_CHANNELS.get(str(rule.get("source", "")), {}).get("slots", [])
+		if wanted.empty():
+			_problem("SET_CUTS[%s]: names no slots and no channel that has any" % cut_id)
+			continue
+		counted[cut_id] = 0
+		var part_ids = parts.keys()
+		part_ids.sort()
+		for part_id in part_ids:
+			var part = parts[part_id]
+			if str(part.get("group", "")) != "outfit":
+				continue
+			var slots = {}
+			for slot_name in wanted:
+				if part.slots.has(slot_name):
+					slots[slot_name] = part.slots[slot_name]
+			if slots.empty():
+				continue
+			var piece = {
+				"display": str(part.get("display", part_id)) + str(rule.get("display", "")),
+				"folders": part.get("folders", []),
+				"group": cut_id,
+				"slots": slots,
+			}
+			if part.has("tags"):
+				piece["tags"] = part.tags
+			made[part_id + str(rule.suffix)] = piece
+			counted[cut_id] += 1
+	for part_id in made.keys():
+		parts[part_id] = made[part_id]
+	_line("SET CUTS")
+	for cut_id in cut_ids:
+		if counted.has(cut_id):
+			_line("  %-14s %d set(s)" % [cut_id, counted[cut_id]])
+	_line("")
 
 
 func _make_set_part(part_id, source, slot_records, inherited = false):
@@ -1060,6 +1124,14 @@ func _scan_region(path, atlas_regions, pages, atlas_path, step, zone_hues, dista
 		return result
 	var page_name = str(atlas_regions[path].page)
 	var bounds = atlas_regions[path].bounds
+	# A region the packer turned on its side keeps its bounds in the art's own
+	# orientation, so the box to read off the page is the other way round.  Read
+	# as written, the box runs off the end of the art and into whatever is packed
+	# next to it: the pet suit glove picked up 8% of its neighbour that way, which
+	# is above ZONE_COVERAGE_MIN, and the part was offered a second colour for a
+	# band its own art does not contain.
+	if bool(atlas_regions[path].get("rotate", false)):
+		bounds = Rect2(bounds.position, Vector2(bounds.size.y, bounds.size.x))
 	if bounds.size.x < 1 or bounds.size.y < 1:
 		return result
 	if !pages.has(page_name):
@@ -1425,8 +1497,10 @@ func _read_json(path):
 	return parsed.result
 
 
-# {region name: {"page": file, "bounds": Rect2}}.  Bounds are needed to sample a
-# region's pixels when working out which colour zones its art uses.
+# {region name: {"page": file, "bounds": Rect2, "rotate": bool}}.  Bounds are
+# needed to sample a region's pixels when working out which colour zones its art
+# uses, and `rotate` because a packed region that was turned on its side is
+# stored width and height the other way round - see _scan_region.
 func _read_atlas_regions(path):
 	var file = File.new()
 	if file.open(path, File.READ) != OK:
@@ -1445,15 +1519,21 @@ func _read_atlas_regions(path):
 				current_region = ""
 			else:
 				current_region = line
-				regions[line] = {"page": current_page, "bounds": Rect2()}
+				regions[line] = {"page": current_page, "bounds": Rect2(), "rotate": false}
 			continue
 		var split = line.split(":", false, 1)
-		if split.size() == 2 and !current_region.empty() and split[0].strip_edges() == "bounds":
+		if split.size() != 2 or current_region.empty():
+			continue
+		var key = split[0].strip_edges()
+		if key == "bounds":
 			var values = []
 			for entry in split[1].split(","):
 				values.append(float(entry.strip_edges()))
 			if values.size() == 4:
 				regions[current_region].bounds = Rect2(values[0], values[1], values[2], values[3])
+		elif key == "rotate":
+			var value = split[1].strip_edges()
+			regions[current_region].rotate = value == "90" or value == "true"
 	file.close()
 	return regions
 

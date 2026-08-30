@@ -28,7 +28,9 @@ func _ready():
 func start_update_check():
 	if !ENABLED:
 		return
-	if _is_experimental_build():
+	# Experimental builds ('0.13.1 experimental 1') carry the upcoming version number while
+	# itch still serves the previous one, so any comparison would report an update every launch.
+	if globals.is_experimental_build():
 		# Nothing is sent anywhere in this branch, so it doesn't go through the consent gate.
 		title_label.text = tr("UPDATENOTICEEXPERIMENTALTITLE")
 		message_label.text = tr("UPDATENOTICEEXPERIMENTAL") % [globals.gameversion]
@@ -72,12 +74,6 @@ func _run_check():
 	if err != OK:
 		return # no usable network stack (e.g. sandboxed/offline environment) - fail silently
 	timeout_timer.start(REQUEST_TIMEOUT)
-
-
-# Experimental builds ('0.13.1 experimental 1') carry the upcoming version number while
-# itch still serves the previous one, so any comparison would report an update every launch.
-func _is_experimental_build():
-	return globals.gameversion.to_lower().find("experimental") >= 0
 
 
 # Butler channel names must match whatever channel this platform's build was

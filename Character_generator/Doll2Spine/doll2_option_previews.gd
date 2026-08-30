@@ -44,6 +44,9 @@ const FRAMING = {
 	"nose": {"slots": ["noses"], "fill": 0.32},
 	"lips": {"slots": ["lips"], "fill": 0.42},
 	"ears": {"slots": ["ears"], "fill": 0.95},
+	# a tail is read off itself: it hangs where it hangs, and framing it against
+	# the body would leave the shape a few pixels across
+	"tails": {"slots": ["tails"], "fill": 0.85},
 	# a coat is read off the body, not the head
 	"skin_coverage": {"slots": ["torso", "breasts", "belly", "pelvis"], "fill": 0.95},
 }
@@ -66,7 +69,7 @@ var _built = "" # ...and what the doll in the booth is currently wearing
 # picture already taken is of somebody else and is thrown away.
 const LOOK_STATS = [
 	"race", "sex", "height", "body_color_skin", "body_color_lips", "body_color_ears",
-	"body_color_horns", "eye_color", "skin_coverage",
+	"body_color_horns", "body_color_tail", "eye_color", "skin_coverage",
 	"hair_base_color_1", "hair_base_color_2", "hair_back_color_1", "hair_back_color_2",
 	"hair_assist_color_1", "hair_assist_color_2", "hair_facial_color",
 	"chin", "eyeshape", "eye_tex", "eyebrows", "lips", "nose", "ears", "horns",

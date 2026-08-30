@@ -31,7 +31,6 @@ extends Reference
 #same repair game_world.fix_serialization() does for dungeon room.col / room.row.
 
 const RoomTypes = preload("res://assets/data/mansion_room_types.gd")
-const RoomUpgrades = preload("res://assets/data/mansion_room_upgrades.gd")
 const FloorPlans = preload("res://assets/data/mansion_floor_plans.gd")
 
 const VERSION = 5
@@ -280,7 +279,7 @@ static func room_effect(room):
 	if room == null or !(room.upgrades is Dictionary):
 		return res
 	for code in room.upgrades:
-		var effect = RoomUpgrades.get_effect(code, room.upgrades[code])
+		var effect = RoomTypes.get_effect(code, room.upgrades[code], room.type)
 		for key in effect:
 			res[key] = res.get(key, 0) + effect[key]
 	return res
@@ -315,9 +314,9 @@ static func special_work_slots(room):
 		return 0
 	var res = 0
 	for code in room.upgrades:
-		if !RoomUpgrades.is_special_slot(code):
+		if !RoomTypes.is_special_slot(code, room.type):
 			continue
-		var effect = RoomUpgrades.get_effect(code, room.upgrades[code])
+		var effect = RoomTypes.get_effect(code, room.upgrades[code], room.type)
 		res += int(effect.get('work_slots', 0))
 	return res
 
@@ -382,7 +381,7 @@ static func open_stairs(layout):
 	for slot_code in floor_data.slots:
 		var room = floor_data.slots[slot_code].room
 		if room != null and RoomTypes.has_tag(room.type, 'stairs'):
-			room.upgrades['stairs_repair'] = RoomUpgrades.max_level('stairs_repair')
+			room.upgrades['stairs_repair'] = RoomTypes.max_level('stairs_repair', 'stairs')
 			return true
 	return false
 
@@ -488,7 +487,7 @@ static func can_start_upgrade(layout, floor_index, slot_code, upgrade_code):
 	if !RoomTypes.get_type(slot.room.type).upgrades.has(upgrade_code):
 		return {ok = false, reason = 'MANSIONVIEW_ERR_VOID'}
 	var next_level = upgrade_level(slot.room, upgrade_code) + 1
-	if RoomUpgrades.get_level_data(upgrade_code, next_level) == null:
+	if RoomTypes.get_level_data(upgrade_code, next_level, slot.room.type) == null:
 		return {ok = false, reason = 'MANSIONVIEW_ERR_MAXLEVEL'}
 	return {ok = true, reason = ''}
 
@@ -872,7 +871,7 @@ static func max_out_upgrades(room):
 	if room == null:
 		return false
 	for code in RoomTypes.get_type(room.type).upgrades:
-		room.upgrades[code] = RoomUpgrades.max_level(code)
+		room.upgrades[code] = RoomTypes.max_level(code, room.type)
 	return true
 
 
@@ -929,9 +928,9 @@ static func best_repeatable_beds():
 		#room_effect() sums the upgrades a room carries, so the best case is every one of
 		#them at its top level at once
 		for upgrade_code in type_data.upgrades:
-			var top = RoomUpgrades.max_level(upgrade_code)
+			var top = RoomTypes.max_level(upgrade_code, type_code)
 			if top > 0:
-				beds += int(RoomUpgrades.get_effect(upgrade_code, top).get('sleep_slots', 0))
+				beds += int(RoomTypes.get_effect(upgrade_code, top, type_code).get('sleep_slots', 0))
 		res = max(res, beds)
 	return int(res)
 
@@ -951,7 +950,7 @@ static func build_bedrooms_up_to(layout, wanted, spare_finds = false):
 			return cleared
 		if entry.room.type != 'bedrooms':
 			continue
-		var top = RoomUpgrades.max_level('bedrooms_expansion')
+		var top = RoomTypes.max_level('bedrooms_expansion', 'bedrooms')
 		if upgrade_level(entry.room, 'bedrooms_expansion') < top:
 			entry.room.upgrades['bedrooms_expansion'] = top
 	#Beds are handed out rather than built, so they take a room the same way any other gift
@@ -967,7 +966,7 @@ static func build_bedrooms_up_to(layout, wanted, spare_finds = false):
 			cleared.append(slot)
 		var room = get_room(get_floor(layout, slot.floor), slot.slot)
 		if room != null:
-			room.upgrades['bedrooms_expansion'] = RoomUpgrades.max_level('bedrooms_expansion')
+			room.upgrades['bedrooms_expansion'] = RoomTypes.max_level('bedrooms_expansion', 'bedrooms')
 	return cleared
 
 
@@ -1223,10 +1222,11 @@ static func validate_floor(floor_plan, floor_data):
 		#drop upgrades this type no longer offers, and re-int() the levels JSON floated
 		var allowed = RoomTypes.get_type(room.type).upgrades
 		for code in room.upgrades.keys():
-			if !allowed.has(code) or !RoomUpgrades.has_upgrade(code):
+			if !allowed.has(code) or !RoomTypes.has_upgrade(code):
 				room.upgrades.erase(code)
 				continue
-			room.upgrades[code] = int(clamp(int(room.upgrades[code]), 0, RoomUpgrades.max_level(code)))
+			room.upgrades[code] = int(clamp(int(room.upgrades[code]), 0,
+				RoomTypes.max_level(code, room.type)))
 			if room.upgrades[code] <= 0:
 				room.upgrades.erase(code)
 		#a broken slot can never hold a room; the flag wins
@@ -1293,8 +1293,8 @@ static func validate_build(slot):
 			if !RoomTypes.has_type(build.target):
 				slot.build = null
 		'upgrade':
-			if slot.room == null or !RoomUpgrades.has_upgrade(build.target) \
-					or RoomUpgrades.get_level_data(build.target, build.level) == null:
+			if slot.room == null or !RoomTypes.has_upgrade(build.target) \
+					or RoomTypes.get_level_data(build.target, build.level, slot.room.type) == null:
 				slot.build = null
 		'repair':
 			if !slot.broken:

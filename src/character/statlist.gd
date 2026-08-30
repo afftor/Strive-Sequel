@@ -88,6 +88,7 @@ var template_direct = {
 	
 	#appearance
 	height = 'average',
+	head_size = 'average', #doll-only proportion, see doll_modifiers.gd
 	ears = 'normal',
 	eye_color = 'brown',
 	eye_shape = 'normal',
@@ -110,6 +111,7 @@ var template_direct = {
 	body_color_wings = '', 
 	body_color_tail = '', 
 	body_color_horns = '', 
+	body_color_ears = '', #empty means the ears take the hair, see get_body_color_ears()
 	body_color_animal = '', 
 	body_color_lips = '',
 	body_color_eyebrows = '',
@@ -224,6 +226,8 @@ var armor_color = {
 	armor_color_collar = 'default',
 	armor_color_weapon = 'default',
 	armor_color_underwear = 'default',
+	armor_color_underwear_lower = 'default',
+	armor_color_head = 'default',
 }
 var pregnancy = {
 	pregnancy_fertility = 0, 

@@ -25,6 +25,7 @@ onready var ExpandedSocialPanel = $ExpandedCharacter/Extra/SocialPanel
 onready var ExpandedSocialSkills = $ExpandedCharacter/Extra/SocialPanel/Margin/Content/SocialSkills
 onready var ExpandedRuleButtons = $ExpandedCharacter/Extra/RulesPanel/Margin/Content/Rules
 onready var ExpandedFoodPreferences = $ExpandedCharacter/FoodPreferencesPanel
+onready var ExpandedSexPanel = $SexPanel
 onready var ExpandedNameEditButton = $ExpandedCharacter/Extra/NameEditButton
 onready var ExpandedNameEditor = $ExpandedCharacter/NameEditor
 onready var ExpandedFirstName = $ExpandedCharacter/NameEditor/Margin/Content/Identity/NameValue
@@ -215,6 +216,7 @@ func _ready():
 	ListFoldTween.connect("tween_all_completed", self, "_on_list_fold_animation_finished")
 	ExpandedDetails.connect("inventory_requested", self, "OpenInventory")
 	ExpandedDetails.connect("food_filter_requested", self, "_open_expanded_food_filter")
+	ExpandedDetails.connect("sex_panel_requested", self, "_open_expanded_sex_panel")
 	ExpandedInfoButton.connect("pressed", self, "_open_expanded_character_info")
 	ExpandedNameEditButton.connect("pressed", self, "_open_expanded_name_editor")
 	ExpandedNameEditor.get_node("Margin/Content/Buttons/Cancel").connect(
@@ -248,7 +250,6 @@ func _ready():
 	globals.connect("slave_added", self, "queue_rebuild")
 	globals.connect("task_removed", self, "queue_task_refresh")
 	globals.connect("hour_tick", self, "update_dislocations")
-	globals.connect("rooms_changed", self, "refresh_counters")
 	for nd in modes.get_children():
 		nd.connect('pressed', self, 'set_mode', [nd.name])
 #	for rl in ['lock', 'ration', 'shifts', 'constrain', 'contraceptive', 'nudity', 'relationship', 'masturbation']:
@@ -269,6 +270,9 @@ func _ready():
 	input_handler.register_btn_source("daisy_waitress", self, "tut_get_daisy_waitress")
 	input_handler.register_btn_source("default_mode", self, "tut_get_default_mode")
 	input_handler.register_btn_source("service_mode", self, "tut_get_service_mode")
+	#the fold handle is taught rather than driven: folded is how the mansion opens in normal
+	#play, and the floorplan behind the list is only reachable that way
+	input_handler.register_btn_source("slave_list_fold_btn", self, "tut_get_list_fold_btn")
 	ListFoldButton.connect('pressed', self, '_toggle_slave_list')
 	apply_default_fold()
 	_setup_sort_menu()
@@ -379,6 +383,7 @@ func open_expanded_character(card):
 	#staged build instead of all recalculating on the reveal frame.
 	ExpandedExtra.show()
 	ExpandedFoodPreferences.hide()
+	ExpandedSexPanel.hide()
 	ExpandedNameEditor.hide()
 	ExpandedSocialPanel.hide()
 	ExpandedBodyPreview.show()
@@ -411,6 +416,7 @@ func close_expanded_character():
 	expanded_build_person = null
 	_cancel_expanded_body_preview_build()
 	ExpandedFoodPreferences.hide()
+	ExpandedSexPanel.hide()
 	ExpandedNameEditor.hide()
 	set_process(false)
 	ExpandedExtra.hide()
@@ -423,6 +429,7 @@ func _close_expanded_character_immediate():
 	expanded_pending_card = null
 	_cancel_expanded_body_preview_build()
 	ExpandedFoodPreferences.hide()
+	ExpandedSexPanel.hide()
 	ExpandedNameEditor.hide()
 	if expanded_card == null:
 		return
@@ -727,7 +734,7 @@ func _connect_expanded_card_actions(layout, person):
 	actions.get_node("Progression").connect("pressed", self, "OpenProgression", [person])
 	actions.get_node("Training").connect("pressed", self, "OpenTraining", [person])
 	actions.get_node("Inventory").connect("pressed", self, "OpenInventory", [person])
-	actions.get_node("Work").connect("pressed", self, "OpenJobModule", [person])
+	actions.get_node("CharInfo").connect("pressed", self, "_open_character_info", [person])
 	actions.get_node("Date").connect("pressed", self, "OpenDate", [person])
 
 
@@ -960,10 +967,25 @@ func _open_expanded_character_info():
 		_open_character_info(person)
 
 
+#The arrow beside Consent works both ways: a second press puts the panel away again.
+func _open_expanded_sex_panel(person):
+	if person == null or expanded_card == null:
+		return
+	if ExpandedSexPanel.visible:
+		ExpandedSexPanel.hide()
+		return
+	ExpandedNameEditor.hide()
+	ExpandedFoodPreferences.hide()
+	ExpandedSexPanel.set_person(person)
+	ExpandedSexPanel.show()
+	ExpandedSexPanel.raise()
+
+
 func _open_expanded_food_filter(person):
 	if person == null or expanded_card == null:
 		return
 	ExpandedNameEditor.hide()
+	ExpandedSexPanel.hide()
 	ExpandedFoodPreferences.open_diet_window(person)
 	ExpandedFoodPreferences.raise()
 
@@ -975,6 +997,7 @@ func _open_expanded_name_editor():
 	if person == null:
 		return
 	ExpandedFoodPreferences.hide()
+	ExpandedSexPanel.hide()
 	ExpandedFirstName.text = tr(str(person.get_stat("name")))
 	var surname = str(person.get_stat("surname"))
 	ExpandedSurname.text = surname if surname != "" else "—"
@@ -1057,11 +1080,6 @@ const FOLD_BUTTON_RIGHT_MARGIN = 12.0
 #see and filtering it by place are both answers to a question that is not being asked. The
 #handle takes the whole width so there is one obvious thing to press rather than a short
 #button with a stretch of empty bar beside it.
-#How much of the right-hand end the counters need. Folded, the fold button stretches across the
-#bar; without this it ran under them and took both the sight of them and their tooltips.
-const FOLD_COUNTERS_WIDTH = 384.0
-
-
 func apply_fold_to_bar():
 	var open = list_fold_state != FOLD_FOLDED
 	SortButton.visible = open
@@ -1070,41 +1088,7 @@ func apply_fold_to_bar():
 	if open:
 		ListFoldButton.margin_right = FOLD_BUTTON_LEFT + FOLD_BUTTON_WIDTH
 	else:
-		ListFoldButton.margin_right = rect_size.x - FOLD_COUNTERS_WIDTH
-	#The three numbers belong to the folded bar. Open, the row of places to send people takes
-	#the whole width instead, and they would be sitting on top of it.
-	$population.visible = !open
-	$food_consumption.visible = !open
-	refresh_storage_counter()
-	if !open:
-		#drawn after the button, so a wide button cannot paint over them
-		for counter in ['population', 'food_consumption', 'storage_limit']:
-			get_node(counter).raise()
-
-
-#Two of the three counters are read off the rooms - beds for the household, shelves for the
-#materials - so they go stale the moment a room is raised or pulled down, which is why this is
-#hooked to rooms_changed as well as run on a rebuild.
-func refresh_counters():
-	$population.text = str(ResourceScripts.game_party.characters.size()) + "/" + str(ResourceScripts.game_res.get_pop_cap())
-	$food_consumption.text = str(ResourceScripts.game_party.get_food_consumption()) + "/" + tr("MSLMDAY")
-	refresh_storage_counter()
-
-
-#What the shelves can hold of any one material. The node itself lives in the scene beside the
-#other two; this only fills it in.
-func refresh_storage_counter():
-	var node = $storage_limit
-	var limit = ResourceScripts.game_res.storage_limit()
-	#nothing to say without a store room, and nothing to say it over while the list is open
-	node.visible = limit > 0 and list_fold_state == FOLD_FOLDED
-	if !node.visible:
-		return
-	node.text = str(limit)
-	var text = tr("MSLMSTORAGELIMIT") % limit
-	for row in ResourceScripts.game_res.fullest_materials(3):
-		text += "\n%s: %d/%d" % [tr(Items.materiallist[row[0]].name), row[1], limit]
-	globals.connecttexttooltip(node, text)
+		ListFoldButton.margin_right = rect_size.x - FOLD_BUTTON_RIGHT_MARGIN
 
 
 func fold_height(state):
@@ -1222,6 +1206,11 @@ func tut_get_daisy_waitress():
 		if line.get_meta('slave').get_stat('unique') == 'daisy':
 			return line.get_node("rule_waitress")
 	return null
+
+#the whole bar is the handle while the list is folded (apply_fold_to_bar), so this frames
+#the strip the player actually has to hit rather than a button-sized corner of it
+func tut_get_list_fold_btn():
+	return ListFoldButton
 
 func tut_get_default_mode():
 	return modes.get_node("default")
@@ -1365,12 +1354,12 @@ func _setup_card(newbutton, person):
 	newbutton.get_node(CARD_ACTIONS + "/Progression").connect("pressed", self, "OpenProgression", [person])
 	newbutton.get_node(CARD_ACTIONS + "/Training").connect("pressed", self, "OpenTraining", [person])
 	newbutton.get_node(CARD_ACTIONS + "/Inventory").connect("pressed", self, "OpenInventory", [person])
-	newbutton.get_node(CARD_ACTIONS + "/Work").connect("pressed", self, "OpenJobModule", [person])
+	newbutton.get_node(CARD_ACTIONS + "/CharInfo").connect("pressed", self, "_open_character_info", [person])
 	newbutton.get_node(CARD_ACTIONS + "/Date").connect("pressed", self, "OpenDate", [person])
 	_set_card_text_tooltip(newbutton.get_node(CARD_ACTIONS + "/Progression"), tr("BTNLEVELING"))
 	_set_card_text_tooltip(newbutton.get_node(CARD_ACTIONS + "/Training"), tr("SIBLINGMODULETRAININGS"))
 	_set_card_text_tooltip(newbutton.get_node(CARD_ACTIONS + "/Inventory"), tr("LMMINVENTORY"))
-	_set_card_text_tooltip(newbutton.get_node(CARD_ACTIONS + "/Work"), tr("LMMWORK"))
+	_set_card_text_tooltip(newbutton.get_node(CARD_ACTIONS + "/CharInfo"), tr("MSMNAME"))
 	_set_card_text_tooltip(newbutton.get_node(CARD_ACTIONS + "/Date"), tr("BTNDATE"))
 
 
@@ -1848,20 +1837,12 @@ func _update_card_button(newbutton, person):
 	_update_card_work_type(newbutton, person, job_display.text, job_display.color)
 	_set_job_label_color_from_key(newbutton.get_node(CARD_WORK_LABEL), job_display.color)
 	_update_card_location(newbutton, person)
-	var card_work = newbutton.get_node(CARD_ACTIONS + "/Work")
-	var work_available = person.is_worker() and person.travel.location != "travel" and !person.is_on_quest()
-	_set_card_action_available(card_work, work_available)
-	var work_tooltip = tr("LMMWORK") + ": " + job_display.text
-	if !work_available:
-		if person.is_on_quest():
-			work_tooltip += "\n" + person.translate(tr("ONQUESTLABEL"))
-		elif person.travel.location == "travel":
-			work_tooltip += "\n" + tr("TASKTRAVEL")
-		elif person.get_stat('slave_class') == 'slave':
-			work_tooltip += "\n" + person.translate(tr("TRAINNOTRAINER"))
-		else:
-			work_tooltip += "\n" + person.translate(tr("TRAINNOWORKTRAIT"))
-	_set_card_text_tooltip(card_work, work_tooltip)
+	#The character sheet opens whatever the person is doing - being away or on a quest is
+	#something the sheet itself reports, not a reason to shut it. What they work at is written
+	#on the card's own work strip, which is where the old button's tooltip only repeated it.
+	var card_info = newbutton.get_node(CARD_ACTIONS + "/CharInfo")
+	_set_card_action_available(card_info, true)
+	_set_card_text_tooltip(card_info, tr("MSMNAME"))
 	_refresh_card_visual(newbutton)
 
 
@@ -1937,9 +1918,6 @@ func _prepare_rebuild():
 	update_dislocations()
 #	build_locations_list()
 	#LocationsPanel.visible = (get_parent().mansion_state != "sex")
-#	$population.visible = LocationsPanel.is_visible()
-#	$food_consumption.visible = LocationsPanel.is_visible()
-	refresh_counters()
 	input_handler.ClearContainer(CardContainer)
 	input_handler.ClearContainer(RowContainer)
 	CardContainer.set_meta("built_rows_signature", "")
@@ -2697,19 +2675,9 @@ func update_button(newbutton, t_mode = mode):
 	update_food_icon(newbutton, person)
 	_update_card_work_type(newbutton, person, job_label.text)
 	newbutton.get_node(CARD_WORK_LABEL).set("custom_colors/font_color", job_label.get("custom_colors/font_color"))
-	var card_work = newbutton.get_node(CARD_ACTIONS + "/Work")
-	_set_card_action_available(card_work, !newbutton.get_node("job").disabled)
-	var work_tooltip = tr("LMMWORK") + ": " + job_label.text
-	if card_work.disabled:
-		if person.is_on_quest():
-			work_tooltip += "\n" + person.translate(tr("ONQUESTLABEL"))
-		elif person.travel.location == "travel":
-			work_tooltip += "\n" + tr("TASKTRAVEL")
-		elif person.get_stat('slave_class') == 'slave':
-			work_tooltip += "\n" + person.translate(tr("TRAINNOTRAINER"))
-		else:
-			work_tooltip += "\n" + person.translate(tr("TRAINNOWORKTRAIT"))
-	globals.connecttexttooltip(card_work, work_tooltip)
+	var card_info = newbutton.get_node(CARD_ACTIONS + "/CharInfo")
+	_set_card_action_available(card_info, true)
+	globals.connecttexttooltip(card_info, tr("MSMNAME"))
 	globals.connecttexttooltip(newbutton.get_node(CARD_SEX), tr("MSLMSex") + ": " + tr("SLAVESEX" + person.get_stat('sex').to_upper()))
 	globals.connecttexttooltip(newbutton.get_node(CARD_STATUS), _get_character_type_tooltip(person))
 	globals.connecttexttooltip(newbutton.get_node(CARD_RACE), "[center]{color=green|" + races.racelist[person.get_stat('race')].name + "}[/center]\n\n" + person.show_race_description())

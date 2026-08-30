@@ -41,9 +41,15 @@ func _ready():
 		get_node("TabContainer/Gameplay2/Scroll/Box/" + i).connect("pressed", self, "gamestate_rule",  [i])
 		get_node("TabContainer/Gameplay2/Scroll/Box/" + i).pressed = ResourceScripts.game_globals.get(i)
 		globals.connecttexttooltip(get_node("TabContainer/Gameplay2/Scroll/Box/" + i), tr("SETTING"+i.trim_prefix('diff_').to_upper() + '_DESCRIPT'))
-	for i in ['generate_portraits', 'factors_as_words', 'disable_paperdoll', 'no_damage_shake', 'item_flight_animation']:
+	for i in ['generate_portraits', 'factors_as_words', 'no_damage_shake', 'item_flight_animation', 'fps_meter']:
 		get_node("TabContainer/Visuals/" + i).connect("pressed", self, "gameplay_rule", ['Visuals', i])
 		get_node("TabContainer/Visuals/" + i).pressed = input_handler.globalsettings[i]
+	# The doll's own section. `disable_paperdoll` moved in here: it decides whether
+	# the doll is drawn at all, so the two settings that only mean anything while
+	# it is belong beside it rather than three rows away.
+	for i in ['disable_paperdoll', 'doll_idle_animation', 'darker_pregnancy_nipples']:
+		get_node("TabContainer/Visuals/Doll/" + i).connect("pressed", self, "doll_rule", [i])
+		get_node("TabContainer/Visuals/Doll/" + i).pressed = input_handler.globalsettings[i]
 
 	$TabContainer/Gameplay/Scroll/Box/enable_tutorials.connect("toggled", self, "enable_tutorials")
 
@@ -187,6 +193,13 @@ func gameplay_rule(tab, rule):
 	if rule == "turn_based_time_flow":
 		if gui_controller.clock != null:
 			gui_controller.clock.set_time_buttons()
+
+
+# A doll on screen reads these live, so the change is announced instead of waited
+# for: this panel opens over the character it repaints.
+func doll_rule(rule):
+	input_handler.globalsettings[rule] = get_node("TabContainer/Visuals/Doll/%s" % rule).pressed
+	input_handler.emit_signal("doll_settings_changed")
 
 
 func gamestate_rule(rule):

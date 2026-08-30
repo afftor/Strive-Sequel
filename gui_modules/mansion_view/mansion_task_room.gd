@@ -20,7 +20,7 @@ var plot = ''
 #Where the row of places ends. Service takes as many people as are sent to it, so the grid
 #can be several times taller than the card - it lives in a scroll now, and the scroll has to
 #stop at the foot of the card rather than run out the bottom of it.
-const PEOPLE_BOTTOM = 192.0
+const PEOPLE_BOTTOM = 156.0
 
 
 #Output and remaining/worker counts each get a full line. Cards without the second line pull
@@ -28,7 +28,7 @@ const PEOPLE_BOTTOM = 192.0
 #service cards can say both things without truncating either one.
 func show_count(value):
 	$count.visible = value
-	var top = 120.0 if value else 92.0
+	var top = 104.0 if value else 78.0
 	$PeopleScroll.rect_position.y = top
 	$PeopleScroll.rect_size.y = max(0.0, PEOPLE_BOTTOM - top)
 
@@ -36,8 +36,8 @@ func show_count(value):
 func set_card_icon(texture):
 	$icon.texture = texture
 	$icon.visible = texture != null
-	$name.rect_position.x = 66.0 if $icon.visible else 10.0
-	$name.rect_size.x = rect_size.x - $name.rect_position.x - 10.0
+	$name.rect_position.x = 54.0 if $icon.visible else 8.0
+	$name.rect_size.x = rect_size.x - $name.rect_position.x - 8.0
 	$name.align = Label.ALIGN_LEFT if $icon.visible else Label.ALIGN_CENTER
 
 

@@ -102,6 +102,7 @@ var params_to_save = [ #memo mostly
 	"sex_traits",
 	"personality",
 	"height",
+	"head_size",
 	"ears",
 	"eye_color",
 	"eye_shape",
@@ -136,6 +137,7 @@ var params_to_save = [ #memo mostly
 	'body_color_tail', 
 	'body_color_horns', 
 	'body_color_animal', 
+	'body_color_ears', 
 	'hair_base', 
 	'hair_base_length', 
 	'hair_assist', 
@@ -164,6 +166,13 @@ var params_to_save = [ #memo mostly
 ]
 
 var tooltips_stat = ['slave_class']
+
+# Whether the picture tiles carry their value's name under them.  The pictures
+# are the choice - the character's own head wearing each option - and the caption
+# under one is a part code out of the data files, which is what a developer needs
+# and a player never should read.  So it is shown when the game is run from the
+# editor and nowhere else.
+onready var show_option_names = OS.has_feature('editor')
 
 onready var RaceSelection = $RaceSelectionModule
 onready var ClassSelection = $ClassSelectionModule
@@ -406,7 +415,21 @@ func has_selected_personality():
 	return get_personality_options().has(personality)
 
 
+# The values a stat may be given on this screen, minus the ones nobody is allowed
+# to pick - see LAYOUT.NEVER_OFFERED.  The list is filtered here, once, rather
+# than in each of the four places below that build one.
 func build_possible_val_for_stat(stat):
+	_collect_possible_vals(stat)
+	if !possible_vals.has(stat) or !LAYOUT.NEVER_OFFERED.has(stat):
+		return
+	var offered = []
+	for value in possible_vals[stat]:
+		if LAYOUT.offered(stat, value):
+			offered.append(value)
+	possible_vals[stat] = offered
+
+
+func _collect_possible_vals(stat):
 	if person.is_unique():
 		possible_vals[stat] = []
 		return
@@ -424,6 +447,8 @@ func build_possible_val_for_stat(stat):
 		possible_vals[stat].clear()
 	else:
 		possible_vals[stat] = []
+	if PART_BEHIND_SLIDER.has(stat) and str(person.get_stat(PART_BEHIND_SLIDER[stat])) in ['', 'no', 'none']:
+		return #the hair this one lengthens is not there, so neither is the row
 	if stat == 'sex':
 		for val in sexarray:
 			if input_handler.globalsettings.futa == false and val == 'futa':
@@ -567,15 +592,39 @@ func colours_following(stat):
 # shades named after it - a dark elf to `darkelf1..4`, a demon to the demon ones -
 # so a part nobody wrote a list for still offers something of its own instead of
 # the whole palette.
+# A length has nothing to lengthen when the layer it belongs to is not worn: no
+# back hair, no back-hair length.  Same shape as the colours below and read in
+# the same place, so a row whose part is missing simply has no values and takes
+# itself off the screen.
+const PART_BEHIND_SLIDER = {
+	"hair_base_length": "hair_base",
+	"hair_back_length": "hair_back",
+	"hair_assist_length": "hair_assist",
+	"hair_fringe_length": "hair_fringe",
+}
+
+
 const PART_BEHIND_COLOUR = {
 	"body_color_wings": "wings",
 	"body_color_tail": "tail",
 	"body_color_horns": "horns",
 	"body_color_animal": "body_lower",
+	# a clean-shaven character is not asked what shade his beard is, and most of
+	# the cast has no beard art at all
+	"hair_facial_color": "beard",
 }
 
 
 func colours_allowed_to_race(stat):
+	# A pointed or plain ear is shaped skin, drawn in skin tone by the art itself;
+	# only an ear the art grows fur on has a colour to be asked about.  Asked here,
+	# above the rule below, which answers with the whole palette and returns.
+	if stat == 'body_color_ears' and !person.statlist.has_animal_ears():
+		return []
+	# Same for the tail: a hide, a fin or a scaled tail answers to something else,
+	# and a tail the art never draws answers to nothing.
+	if stat == 'body_color_tail' and !person.statlist.has_fur_tail():
+		return []
 	var race = person.get_stat('race')
 	# A colour with a rule behind it offers the rule first - an empty value,
 	# which is what makes the lips follow the skin and the brows the hair - and
@@ -629,8 +678,14 @@ func build_selectable_node(stat):
 		return
 	var painted_option = LAYOUT.COLOUR_FOLLOWS[stat]
 	var colour_is_shown = possible_vals.has(stat) and possible_vals[stat].size() > 1
-	if painted_option != '':
-		colour_is_shown = colour_is_shown and visual_option_is_shown(painted_option)
+	# Deliberately not "is the option row on screen".  A row hides itself when the
+	# race leaves nothing to choose - a fairy has exactly one pair of wings - and
+	# that is not a reason to take her nine wing colours away with it.  Whether
+	# the character has the part at all is already answered upstream: the colour
+	# comes back empty for anyone whose part is `''`, `no` or `none`, and a colour
+	# the game works out on its own is not offered here in the first place.
+	if painted_option != '' and painted_option in freemode_fixed_stats and mode == 'freemode':
+		colour_is_shown = false
 	if stat in freemode_fixed_stats and mode == 'freemode':
 		colour_is_shown = false
 	if !colour_is_shown:
@@ -723,7 +778,10 @@ func build_node_for_stat(stat):
 		slider.max_value = max(values.size() - 1, 0)
 		slider.step = 1
 		slider.value = max(values.find(val), 0)
-		node.get_node('Control/Value').text = visual_value_name(stat, val)
+		# the name and the value read as one line - "Hair assist length - short" -
+		# instead of a caption stacked over a second caption saying what it is set to
+		node.get_node('header/Label').text = '%s - %s' % [visual_stat_name(stat), visual_value_name(stat, val)]
+		node.get_node('Control/Value').visible = false
 		updating_visual_controls = false
 		if !node.has_meta('signals_built'):
 			slider.connect('value_changed', self, 'change_slider_value', [stat])
@@ -839,6 +897,7 @@ func change_value_node(stat, value): #for scrollable nodes
 	rebuild_ragdoll(stat)
 	build_node_for_stat(stat)
 	refresh_following_colours(stat)
+	refresh_dependent_sliders(stat)
 	build_description()
 	build_master_relation()
 	if RelationshipSelect.visible:
@@ -855,6 +914,7 @@ func change_value_node_selectable(stat, newvalue): #for selectable nodes
 	rebuild_ragdoll(stat)
 	build_node_for_stat(stat)
 	refresh_following_colours(stat)
+	refresh_dependent_sliders(stat)
 	build_description()
 	build_master_relation()
 	build_upgrades()
@@ -865,6 +925,16 @@ func refresh_following_colours(stat):
 		build_possible_val_for_stat(colour)
 		build_selectable_node(colour)
 		build_node_for_stat(colour)
+
+
+# A hair layer that has just been put on or taken off decides whether its length
+# slider belongs on the screen, so the slider is rebuilt along with it.
+func refresh_dependent_sliders(stat):
+	for slider in PART_BEHIND_SLIDER:
+		if PART_BEHIND_SLIDER[slider] != stat or !(slider in params_to_save):
+			continue
+		build_possible_val_for_stat(slider)
+		build_node_for_stat(slider)
 
 
 func unassigned_points():
@@ -1697,6 +1767,9 @@ func build_visual_submenu_stat(stat, row):
 		tile.set_meta('stat', stat)
 		tile.set_meta('value', value)
 		tile.get_node('Label').text = visual_value_name(stat, value)
+		# the tile keeps its size either way - the label is anchored to its bottom
+		# edge rather than stacked under the picture
+		tile.get_node('Label').visible = show_option_names
 		tile.connect('pressed', self, 'select_visual_submenu_value', [stat, value])
 		var ready_texture = preview_booth.taken_for_stat(stat, value)
 		if ready_texture != null:

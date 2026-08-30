@@ -49,6 +49,8 @@ signal fighter_changed
 signal clear_cashed
 signal SpellUsed
 signal animatedbackground_changed
+#one of the doll options changed; a doll on screen re-reads them
+signal doll_settings_changed
 
 #animations queue
 signal animation_finished
@@ -180,6 +182,12 @@ var globalsettings = {
 	disable_paperdoll = false,
 	no_damage_shake = false,
 	item_flight_animation = false,
+	#the frame counter in the corner, off unless it is asked for
+	fps_meter = false,
+	#the doll breathes on its own unless it is asked not to, and a heavily
+	#pregnant character darkens - both on by default, both only about the doll
+	doll_idle_animation = true,
+	darker_pregnancy_nipples = true,
 
 	textspeed = 60,
 	skipread = false,
@@ -2053,6 +2061,36 @@ func array_replace(arr, from, to):
 	for i in range(arr.size()):
 		if arr[i] == from:
 			arr[i] = to
+
+
+#set_disable_input is one global bool, so nested holders released it early and, worse, a
+#holder that waits across a yield dies together with its node and never releases it at all -
+#leaving the game deaf to mouse and keyboard. Counted here, on a singleton nothing can free.
+var input_lock_count = 0
+
+
+func lock_input():
+	input_lock_count += 1
+	get_tree().get_root().set_disable_input(true)
+
+
+func unlock_input():
+	input_lock_count = max(input_lock_count - 1, 0)
+	if input_lock_count == 0:
+		get_tree().get_root().set_disable_input(false)
+
+
+#the timer belongs to the tree, so the release happens even if the caller is gone by then
+func lock_input_briefly(duration = 0.15):
+	lock_input()
+	yield(get_tree().create_timer(duration), "timeout")
+	unlock_input()
+
+
+func reset_input_lock():
+	input_lock_count = 0
+	if get_tree() != null:
+		get_tree().get_root().set_disable_input(false)
 
 
 func _reset_mouse_events(): #stub, not, STUB - for set_disable_input is bugged

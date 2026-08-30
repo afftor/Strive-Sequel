@@ -3,26 +3,14 @@ extends Control
 #Button node -> the label child that names it. The whole rail reads at once: pointing at any
 #of the icons names all of them, which is what makes a column of pictures usable at a glance.
 const BUTTON_LABELS = {
-	WorkButton = 'Label',
-	SexButton = 'Label3',
-	InventoryButton = 'Label4',
-	CraftButton = 'Label5',
 	Journal = 'Label5',
 	options = 'Label5',
 }
 
 
 func _ready():
-	$VBoxContainer/WorkButton.connect("pressed", self, "_button_clicked", ["occupation", $VBoxContainer/WorkButton])
-	$VBoxContainer/CraftButton.connect("pressed", self, "_button_clicked", ["craft", $VBoxContainer/CraftButton])
-	$VBoxContainer/InventoryButton.connect("pressed", self, "open_inventory")
-	$VBoxContainer/SexButton.connect("toggled", self, "open_sex")
-	#$VBoxContainer/SexButton.connect("pressed", self, "_button_clicked", ["sex", $VBoxContainer/SexButton])
 	$VBoxContainer/Journal.connect("toggled", self, "open_journal")
 	$VBoxContainer/options.connect("pressed", self, "open_menu")
-	input_handler.register_btn_source('work_button', self, 'tut_get_WorkButton')
-	input_handler.register_btn_source('craft_button', self, 'tut_get_CraftButton')
-	input_handler.register_btn_source('inventory_button', self, 'tut_get_InventoryButton')
 	input_handler.register_btn_source('journal_button', self, 'tut_get_Journal')
 	connect("visibility_changed", self, "_hide_button_labels")
 
@@ -68,12 +56,6 @@ func _hide_button_labels():
 
 func tut_get_UpgradesButton():
 	return $VBoxContainer/UpgradesButton
-func tut_get_WorkButton():
-	return $VBoxContainer/WorkButton
-func tut_get_InventoryButton():
-	return $VBoxContainer/InventoryButton
-func tut_get_CraftButton():
-	return $VBoxContainer/CraftButton
 func tut_get_Journal():
 	return $VBoxContainer/Journal
 
@@ -82,7 +64,12 @@ func tut_get_Journal():
 #Pressing the key of the category already open returns the mansion to its default view.
 func activate_category(code):
 	match code:
-		'work': return toggle_category("occupation", $VBoxContainer/WorkButton)
+		'work':
+			#the rail no longer carries this one - every character card opens their own work
+			#from the card itself - but the key still turns the whole screen on and off
+			var parent = get_parent()
+			parent.mansion_state = "default" if parent.mansion_state == "occupation" else "occupation"
+			return true
 		'travels':
 			#the navigation panel's travel button sets this before opening; from the mansion
 			#the map always returns here, so clear any context left by another screen
@@ -90,20 +77,22 @@ func activate_category(code):
 			if map != null:
 				map.set_return_context(null, null, null)
 			return toggle_category("travels", $VBoxContainer/TravelsButton)
-		'craft': return toggle_category("craft", $VBoxContainer/CraftButton)
 		'sex':
-			#SexButton and Journal listen to 'toggled', so flipping pressed is the whole call.
-			#Neither owns a mansion_state, so their own button is what tracks them
-			if $VBoxContainer/SexButton.disabled: return false
-			$VBoxContainer/SexButton.pressed = !$VBoxContainer/SexButton.pressed
+			#no button of its own on the rail any more - the master's room carries it
+			get_parent().open_sex_selection()
+			return true
+		'craft':
+			#no button on the rail any more - a craft room's own card opens its bench - but the
+			#key still turns the whole screen on and off
+			var parent = get_parent()
+			parent.mansion_state = "default" if parent.mansion_state == "craft" else "craft"
+			return true
+		'inventory':
+			open_inventory()
 			return true
 		'journal':
 			if $VBoxContainer/Journal.disabled: return false
 			$VBoxContainer/Journal.pressed = !$VBoxContainer/Journal.pressed
-			return true
-		'inventory':
-			if $VBoxContainer/InventoryButton.disabled: return false
-			open_inventory()
 			return true
 		'menu':
 			if $VBoxContainer/options.disabled: return false
@@ -149,12 +138,6 @@ func open_inventory():
 	gui_controller.emit_signal("screen_changed")
 	yield(get_tree().create_timer(0.3), "timeout")
 
-func open_sex(val):
-	gui_controller.win_btn_connections_handler(val, get_parent().SexSelect, $VBoxContainer/SexButton)
-	if val:
-		get_parent().SexSelect.open()
-	else:
-		get_parent().SexSelect.hide()
 
 func open_interaction():
 	get_parent().InteractSelection.show()

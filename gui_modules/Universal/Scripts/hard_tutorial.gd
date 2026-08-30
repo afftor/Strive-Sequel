@@ -1,5 +1,19 @@
 extends Reference
 
+const MansionLayout = preload("res://src/core/mansion_layout.gd")
+
+#Which room of the house the work chapter is taught on. It starts under rubble on the ground
+#floor (assets/data/mansion_floor_plans.gd), is cleared out, and then has the kitchen raised
+#on it - one slot carries the whole lesson so every step can point at the same place.
+const TUTORIAL_SLOT = 'c2'
+#The plot on the estate grounds the kitchen garden stands on. Put there by
+#prepare_mansion_for_tut(), because the gathering lesson is about manning work that already
+#exists rather than about raising another building.
+const TUTORIAL_PLOT = 'g1'
+#The house's ground floor. The rubble the chapter clears is down here on purpose: clearing
+#takes two turns at this level instead of three (MansionLayout.repair_turns).
+const TUTORIAL_FLOOR = 0
+
 var active_btns = {
 #	name = btn
 }
@@ -23,15 +37,28 @@ var tutorial_sequence = [
 var tutorials = {
 	training = [
 		{
+			#The mansion opens with the list folded down to its bar in normal play, and a hard
+			#tutorial forces it open (MansionSlaveListModule.apply_default_fold) - put it back the
+			#way a first-time player would really find it, so the step after this one still has
+			#something to teach.
 			buttons = [],
+			tut_func = 'fold_slave_list',
 			text = "TUTORIAL_TRAINING1",
 			panel_pos = Vector2(733,456)
 		},
 		#1
 		{
+			#folded, the handle is the whole bar (apply_fold_to_bar), so the frame is the bar
+			buttons = ['slave_list_fold_btn'],
+			text = "TUTORIAL_TRAINING1_0",
+			panel_pos = Vector2(660,430)
+		},{
+			#a fold the player drives is tweened, unlike the scripted one, so the rows only reach
+			#their places a fraction of a second later
 			buttons = ['master_line'],
 			text = "TUTORIAL_TRAINING1_1",
-			panel_pos = Vector2(1100,250)
+			panel_pos = Vector2(1100,250),
+			delay = 0.3
 		},{
 			#the expanded card is built over several frames and then tweened into place
 			buttons = ['mentor_skill_btn'],
@@ -94,10 +121,13 @@ var tutorials = {
 			delay = 1.0
 		},{
 			#the trainer picker opens on its own for a slave who has none, so there is no
-			#separate step for reaching it any more
+			#separate step for reaching it any more. it is still translating and scaling into
+			#place a moment after it appears - framed without this wait the frame lands about
+			#(26, 33) px down and to the right of the entry and cuts across the next one
 			buttons = ['trainer_select_btn'],
 			text = "TUTORIAL_TRAINING12",
-			panel_pos = Vector2(880,760)
+			panel_pos = Vector2(880,760),
+			delay = 0.5
 		},{
 			buttons = ['praise_btn'],
 			text = "TUTORIAL_TRAINING13",
@@ -126,9 +156,12 @@ var tutorials = {
 			panel_pos = Vector2(40,760),
 			delay = 3.0
 		},{
+			#the proficiency grid settles about 15 px upwards after the tab is built, so the
+			#frame is drawn low without this wait
 			buttons = ['etiquette'],
 			text = "TUTORIAL_TRAINING18",
-			panel_pos = Vector2(40,760)
+			panel_pos = Vector2(40,760),
+			delay = 0.3
 		},{
 			buttons = ['alert_panel_yes'],
 			text = "TUTORIAL_TRAINING19",
@@ -146,212 +179,209 @@ var tutorials = {
 		}
 	],
 	work = [
-		#upgrade
-#		{
-#			buttons = ['upgrades_button'],
-#			text = "TUTORIAL_WORK1",
-#			panel_pos = Vector2(733,150)
-#		},{
-#			buttons = ['forge'],
-#			text = "TUTORIAL_WORK2",
-#			panel_pos = Vector2(733,150)
-#		},{
-#			buttons = ['upgrade_confirm'],
-#			text = "TUTORIAL_WORK3",
-#			panel_pos = Vector2(733,150)
-#		},{
-#			buttons = ['upgrade_close_button'],
-#			listen = ['close_by_RMB_sig'],
-#			pass_RMB = true,
-#			text = "TUTORIAL_WORK4",
-#			panel_pos = Vector2(733,150)
-#		},{
-#			buttons = ['work_button'],
-#			text = "TUTORIAL_WORK5",
-#			panel_pos = Vector2(733,150)
-#		},{
-#			buttons = ['building_work'],
-#			text = "TUTORIAL_WORK6",
-#			panel_pos = Vector2(500,150)
-#		},{
-#			buttons = ['daisy_work'],
-#			text = "TUTORIAL_WORK7",
-#			panel_pos = Vector2(500,150)
-#		},{
-#			buttons = ['close_work'],
-#			listen = ['close_by_RMB_sig'],
-#			pass_RMB = true,
-#			text = "TUTORIAL_WORK8",
-#			panel_pos = Vector2(500,150)
-#		},{
-#			buttons = ['finish_turn'],
-#			text = "TUTORIAL_WORK9",
-#			panel_pos = Vector2(733,150)
-#		},
-		#craft
+		#### clearing a room out ####
 		{
-			buttons = ['craft_button'],
-			text = "TUTORIAL_WORK15",
-			panel_pos = Vector2(733,50)
+			buttons = [],
+			text = "TUTORIAL_WORK_ROOM1",
+			panel_pos = Vector2(660, 430)
 		},{
-			buttons = ['bread_button'],
-			text = "TUTORIAL_WORK16",
-			panel_pos = Vector2(733,50)
+			#The other half of the lesson the first chapter opened with, and this chapter cannot
+			#start without it: an unfolded list covers the floorplan outright and takes the idle
+			#strip with it (set_slave_list_fold -> rooms.set_hud_visible), so there would be
+			#nobody to pick up and nowhere to put them.
+			buttons = ['slave_list_fold_btn'],
+			text = "TUTORIAL_WORK_ROOM1_1",
+			panel_pos = Vector2(660, 430)
 		},{
-			buttons = ['craft_confirm_button'],
-			text = "TUTORIAL_WORK16_1",
-			panel_pos = Vector2(733,50)
+			#the floorplan and its counters are uncovered by a tween, so the slot settles a few
+			#frames after the click
+			buttons = ['mansion_tut_slot'],
+			text = "TUTORIAL_WORK_ROOM2",
+			panel_pos = Vector2(1330, 200),
+			delay = 0.4
 		},{
-			buttons = ['craft_plus_button'],
-			text = "TUTORIAL_WORK17",
-			panel_pos = Vector2(733,50)
+			#the card is built and then fitted to its contents over a couple of frames
+			buttons = ['mansion_repair_btn'],
+			text = "TUTORIAL_WORK_ROOM3",
+			panel_pos = Vector2(1330, 200),
+			delay = 0.5
 		},{
-			buttons = ['craft_confirm2_button'],
-			text = "TUTORIAL_WORK17_1",
-			panel_pos = Vector2(733,50)
+			#start_repair closes the card itself, so the grid is already back
+			buttons = ['mansion_rest_daisy'],
+			text = "TUTORIAL_WORK_ROOM4",
+			panel_pos = Vector2(660, 500),
+			delay = 0.4
 		},{
-			buttons = ['craft_back_button'],
-			listen = ['close_by_RMB_sig'],
-			pass_RMB = true,
-			text = "TUTORIAL_WORK18",
-			panel_pos = Vector2(733,50)
-		},{
-			buttons = ['work_button'],
-			text = "TUTORIAL_WORK5",
-			panel_pos = Vector2(733,50)
-		},{
-			buttons = ['craft_work'],
-			text = "TUTORIAL_WORK19",
-			panel_pos = Vector2(500,150)
-		},{
-			buttons = ['daisy_work'],
-			text = "TUTORIAL_WORK20",
-			panel_pos = Vector2(500,150)
-		},{
-			buttons = ['close_work'],
-			listen = ['close_by_RMB_sig'],
-			pass_RMB = true,
-			text = "TUTORIAL_WORK8",
-			panel_pos = Vector2(500,150)
+			buttons = ['mansion_build_place'],
+			text = "TUTORIAL_WORK_ROOM5",
+			panel_pos = Vector2(1330, 300)
 		},{
 			buttons = ['finish_turn'],
-			text = "TUTORIAL_WORK9",
-			panel_pos = Vector2(733,150)
+			text = "TUTORIAL_WORK_ROOM6",
+			panel_pos = Vector2(1150, 640)
 		},{
-			buttons = ['craft_button'],
-			text = "TUTORIAL_WORK21",
-			panel_pos = Vector2(733,150)
+			#the turn plays out before the screen is worth pointing at again
+			buttons = ['finish_turn'],
+			text = "TUTORIAL_WORK_ROOM7",
+			panel_pos = Vector2(1150, 640),
+			delay = 1.0
+		},
+		#### raising a room ####
+		{
+			buttons = ['mansion_tut_slot'],
+			text = "TUTORIAL_WORK_ROOM8",
+			panel_pos = Vector2(1330, 200),
+			delay = 1.0
 		},{
-			buttons = ['smith_button'],
-			text = "TUTORIAL_WORK22",
-			panel_pos = Vector2(733,150)
+			#the catalogue card is nearly the width of the screen, so the text goes above it
+			buttons = ['mansion_build_kitchen'],
+			text = "TUTORIAL_WORK_ROOM9",
+			panel_pos = Vector2(60, 40),
+			delay = 0.5
 		},{
-			buttons = ['craft_matfilter_button'],
-			text = "TUTORIAL_WORK23",
-			panel_pos = Vector2(733,150)
+			buttons = ['mansion_rest_daisy'],
+			text = "TUTORIAL_WORK_ROOM10",
+			panel_pos = Vector2(660, 500),
+			delay = 0.4
 		},{
-			buttons = ['steel_button'],
-			text = "TUTORIAL_WORK24",
-			panel_pos = Vector2(733,150)
+			buttons = ['mansion_build_place'],
+			text = "TUTORIAL_WORK_ROOM11",
+			panel_pos = Vector2(1330, 300)
+		},{
+			#A kitchen is 25 work units, which is five to ten turns of one builder - too long to
+			#sit through here, so the scaffolding is put within one turn of done as this step
+			#opens. Said on the Finish Turn step rather than on a page of its own: a step whose
+			#only button is "next" is a click that does nothing.
+			buttons = ['finish_turn'],
+			tut_func = 'rush_current_build',
+			text = "TUTORIAL_WORK_ROOM12",
+			panel_pos = Vector2(1150, 640)
+		},
+		#### crafting, given out of the room that does it ####
+		{
+			buttons = ['mansion_tut_slot'],
+			text = "TUTORIAL_WORK_ROOM14",
+			panel_pos = Vector2(1330, 200),
+			delay = 1.0
+		},{
+			buttons = ['mansion_card_craft_btn'],
+			text = "TUTORIAL_WORK_ROOM15",
+			panel_pos = Vector2(1330, 200),
+			delay = 0.5
+		},{
+			#the craft screen opens on the room's own discipline
+			buttons = ['bread_button'],
+			text = "TUTORIAL_WORK_ROOM16",
+			panel_pos = Vector2(733, 50),
+			delay = 0.5
 		},{
 			buttons = ['craft_confirm_button'],
-			text = "TUTORIAL_WORK24_1",
-			panel_pos = Vector2(733,150)
+			text = "TUTORIAL_WORK_ROOM17",
+			panel_pos = Vector2(733, 50)
+		},{
+			buttons = ['craft_plus_button'],
+			text = "TUTORIAL_WORK_ROOM18",
+			panel_pos = Vector2(733, 50)
 		},{
 			buttons = ['craft_confirm2_button'],
-			text = "TUTORIAL_WORK24_2",
-			panel_pos = Vector2(733,150)
+			text = "TUTORIAL_WORK_ROOM19",
+			panel_pos = Vector2(733, 50)
 		},{
+			buttons = ['meatsoup_button'],
+			text = "TUTORIAL_WORK_ROOM20",
+			panel_pos = Vector2(733, 50)
+		},{
+			buttons = ['craft_confirm_button'],
+			text = "TUTORIAL_WORK_ROOM21",
+			panel_pos = Vector2(733, 50)
+		},{
+			buttons = ['craft_confirm2_button'],
+			text = "TUTORIAL_WORK_ROOM22",
+			panel_pos = Vector2(733, 50)
+		},{
+			buttons = ['meatsoup_delete'],
+			text = "TUTORIAL_WORK_ROOM23",
+			panel_pos = Vector2(733, 50)
+		},{
+			buttons = ['alert_panel_yes'],
+			text = "TUTORIAL_WORK_ROOM24",
+			panel_pos = Vector2(733, 50)
+		},{
+			#every mansion state but 'default' wants the whole slave list back
+			#(MansionSlaveListModule.apply_state_fold), and coming back to 'default' during a
+			#hard tutorial deliberately leaves it as it is - so the strip has to be folded away
+			#again here or the next step would have nobody to pick up
 			buttons = ['craft_back_button'],
 			listen = ['close_by_RMB_sig'],
 			pass_RMB = true,
-			text = "TUTORIAL_WORK24_3",
-			panel_pos = Vector2(733,50)
+			additional_func = 'fold_slave_list',
+			text = "TUTORIAL_WORK_ROOM25",
+			panel_pos = Vector2(733, 50)
 		},{
-			buttons = ['work_button'],
-			text = "TUTORIAL_WORK25",
-			panel_pos = Vector2(733,50)
+			#an order is only a plan until somebody stands in the room: game_res.process_rooms()
+			#walks the rooms that have workers and no others
+			buttons = ['mansion_rest_daisy'],
+			text = "TUTORIAL_WORK_ROOM26",
+			panel_pos = Vector2(660, 500),
+			delay = 0.6
 		},{
-			buttons = ['craft_work'],
-			text = "TUTORIAL_WORK25_1",
-			panel_pos = Vector2(500,150)
+			buttons = ['mansion_work_place'],
+			text = "TUTORIAL_WORK_ROOM27",
+			panel_pos = Vector2(1330, 300)
 		},{
-			buttons = ['daisy_work'],
-			text = "TUTORIAL_WORK25_2",
-			panel_pos = Vector2(500,150)
+			buttons = ['finish_turn'],
+			text = "TUTORIAL_WORK_ROOM28",
+			panel_pos = Vector2(1150, 640)
+		},
+		#### the work that happens outside the house ####
+		{
+			buttons = ['mansion_local_tasks_btn'],
+			text = "TUTORIAL_WORK_ROOM29",
+			panel_pos = Vector2(660, 300),
+			delay = 1.0
 		},{
-			buttons = ['mat_order_cooking', 'mat_order_smith', 'mat_order_tailor', 'mat_order_alchemy'],
-			highlight = ['mat_order_highlight'],
-			text = 'TUTORIAL_WORK26',
-			condition_func = "check_mat_order",
-			panel_pos = Vector2(500,150)
+			buttons = ['mansion_rest_servant'],
+			text = "TUTORIAL_WORK_ROOM30",
+			panel_pos = Vector2(660, 500),
+			delay = 0.5
 		},{
-			buttons = ['close_work'],
-			listen = ['close_by_RMB_sig'],
-			pass_RMB = true,
-			text = "TUTORIAL_WORK26_1",
-			panel_pos = Vector2(500,150)
+			buttons = ['mansion_garden_place'],
+			text = "TUTORIAL_WORK_ROOM31",
+			panel_pos = Vector2(1330, 300)
 		},{
-			buttons = ['craft_button'],
-			text = "TUTORIAL_WORK27",
-			panel_pos = Vector2(733,150)
+			buttons = ['finish_turn'],
+			text = "TUTORIAL_WORK_ROOM32",
+			panel_pos = Vector2(1150, 640)
 		},{
-			buttons = ['cooking_button'],
-			text = "TUTORIAL_WORK27_1",
-			panel_pos = Vector2(733,150)
-		},{
-			buttons = ['bread_delete'],
-			text = "TUTORIAL_WORK28",
-			panel_pos = Vector2(733,150)
-		},{
-			buttons = ['alert_panel_yes'],
-			text = "TUTORIAL_WORK29",
-			panel_pos = Vector2(733,50)
+			buttons = ['mansion_scope_btn'],
+			text = "TUTORIAL_WORK_ROOM33",
+			panel_pos = Vector2(660, 300),
+			delay = 1.0
 		}
-		#service, uncomment when service will be fixed
-#		{
-#			buttons = ['service_mode'],
-#			text = "TUTORIAL_WORK10",
-#			panel_pos = Vector2(733,50)
-#		},{
-#			buttons = ['daisy_waitress'],
-#			text = "TUTORIAL_WORK11",
-#			ban_mass_select = true,
-#			panel_pos = Vector2(733,150)
-#		},{
-#			buttons = ['work_button'],
-#			text = "TUTORIAL_WORK12",
-#			panel_pos = Vector2(733,150)
-#		},{
-#			buttons = ['service_work'],
-#			text = "TUTORIAL_WORK13",
-#			panel_pos = Vector2(500,150)
-#		},{
-#			buttons = ['daisy_work'],
-#			text = "TUTORIAL_WORK14",
-#			panel_pos = Vector2(500,150)
-#		}
 	],
 	leveling_intermedia = [
 		{
-			buttons = ['craft_back_button'],
-			listen = ['close_by_RMB_sig'],
-			pass_RMB = true,
+			#The rooms chapter ends on the mansion screen with nothing open over it, so this is a
+			#hand-over rather than a window to close. It is also where the slave list is put back:
+			#the rooms chapter folds it away to reach the idle strip underneath, and every chapter
+			#after this one points at rows inside the list instead.
+			buttons = [],
+			tut_func = 'unfold_slave_list',
 			text = "TUTORIAL_LEVELING0",
-			panel_pos = Vector2(500,150)
+			panel_pos = Vector2(660, 430)
 		}
-#		{
-#			buttons = ['close_work'],
-#			listen = ['close_by_RMB_sig'],
-#			pass_RMB = true,
-#			text = "TUTORIAL_LEVELING0",
-#			panel_pos = Vector2(500,150)
-#		}
 	],
 	leveling = [
 		#4
 		{
-			buttons = ['inventory_button'],
+			#the chest is kept in the store room now, and the room is under the slave list -
+			#which the chapter before this one puts back up
+			buttons = ['mansion_store_slot'],
+			tut_func = 'fold_slave_list',
+			text = "TUTORIAL_LEVELING1_0",
+			panel_pos = Vector2(733,150)
+		},{
+			buttons = ['mansion_card_inventory_btn'],
 			text = "TUTORIAL_LEVELING1",
 			panel_pos = Vector2(733,150)
 		},{
@@ -374,8 +404,10 @@ var tutorials = {
 			text = "TUTORIAL_LEVELING5",
 			panel_pos = Vector2(733,150)
 		},{
-			#returning to the mansion collapses the expanded card, so it has to be reopened
+			#returning to the mansion collapses the expanded card, so it has to be reopened -
+			#and the list itself was folded away to reach the store room
 			buttons = ['master_line'],
+			tut_func = 'unfold_slave_list',
 			text = "TUTORIAL_LEVELING5_1",
 			panel_pos = Vector2(1100,250)
 		},{
@@ -489,7 +521,12 @@ var tutorials = {
 			panel_pos = Vector2(733,150),
 			delay = 0.5
 		},{
-			buttons = ['quest_loc_nav_btn'],
+			#the strip's button has no press of its own: hovering it turns it into a Work and
+			#an Explore, and Explore is what goes to the place. Pressing the picture used to
+			#carry the lesson forward while the player was still standing in the mansion
+			buttons = ['quest_loc_nav_btn', 'quest_loc_nav_explore_btn'],
+			dont_listen = ['quest_loc_nav_btn'],
+			highlight = ['quest_loc_nav_btn'],
 			text = 'TUTORIAL_COMBAT12',
 			panel_pos = Vector2(733,150),
 			delay = 0.5
@@ -668,7 +705,7 @@ signal close_by_RMB
 
 func _init():
 	tut_panel = input_handler.get_spec_node(input_handler.NODE_HARD_TUTORIAL_PANEL)
-	tut_panel.hide()
+	tut_panel.close_panel()
 	input_handler.register_btn_source('close_by_RMB_sig', self, null, null, null, 'close_by_RMB')
 
 func _notification(what):
@@ -716,6 +753,14 @@ func get_true_rect(btn_name):
 		var custom_rect = rect_source.call(btn_info.rect_func)
 		return custom_rect if custom_rect != null else Rect2()
 	var node = active_btns.get(btn_name)
+	#a screen that rebuilt its buttons handed us a node that no longer exists - ask again where
+	#that button is now rather than framing thin air
+	if node == null or !is_instance_valid(node):
+		var source = btn_info.source.get_ref()
+		if source == null or !is_instance_valid(source):
+			return Rect2()
+		node = source.call(btn_info.get_btn_func)
+		active_btns[btn_name] = node
 	if node == null or !is_instance_valid(node):
 		return Rect2()
 	var true_rect = node.get_global_rect()
@@ -761,7 +806,7 @@ func stop_tut():
 	cur_tut = null
 	cur_step = -1
 	active_btns.clear()
-	tut_panel.hide()
+	tut_panel.close_panel()
 
 func next_tut_step():
 	cur_step += 1
@@ -796,12 +841,11 @@ func next_tut_step():
 		if !activate_btn(btn_name):
 			continue
 		if !has_custom_highlight and !has_no_highlight:
-			tut_panel.highlight_rects([get_true_rect(btn_name)])
+			tut_panel.follow_rects(self, [btn_name])
 	if has_custom_highlight:
-		var rects = []
-		for highlight_btn in step_info.highlight:
-			rects.append(get_true_rect(highlight_btn))
-		tut_panel.highlight_rects(rects)
+		tut_panel.follow_rects(self, step_info.highlight)
+	elif has_no_highlight:
+		tut_panel.stop_following()
 	if step_info.has('text'):
 		tut_panel.show_tut(tr(step_info.text), step_info.panel_pos)
 	else:
@@ -834,9 +878,6 @@ func check_turn_servent():
 func check_travel_select():
 	return (active_btns['travel_master'].pressed and active_btns['travel_servant'].pressed)
 
-func check_mat_order():
-	var character = ResourceScripts.game_party.get_unique_slave('daisy')
-	return character.get_job_priority("smith", true) > character.get_job_priority("cooking", true)
 #--------------
 
 func tutorial_menu():
@@ -894,6 +935,11 @@ func prepare_general_tut():
 	globals.equip_char(character, 'staff', 't1')
 	globals.equip_char(character, 'chest_base_cloth', 't1')
 	globals.equip_char(character, 'legs_base_cloth', 't1')
+	#The rooms chapter puts her on the kitchen garden, and a servant counts as one of the
+	#household's workers only once she has been trained to work - is_worker() reads that off
+	#the trait's 'worker' tag. Without it the garden refuses her and the step she belongs to
+	#could never be finished.
+	character.add_trait('training_s_working')
 	globals.common_effects([{code = 'make_story_character', value = 'Daisy'}])
 	character = ResourceScripts.game_party.get_unique_slave('daisy')
 	character.remove_trait('training_obedience')
@@ -903,15 +949,16 @@ func prepare_general_tut():
 	character.add_stat('training_points', 40)
 	character.set_brothel_rule('waitress', false)
 	ResourceScripts.game_res.money = 800
-	ResourceScripts.game_res.materials['wood'] = 30
-	ResourceScripts.game_res.materials['stone'] = 25
+	#enough to raise a kitchen (wood 70, stone 30) and still have something in hand, which is
+	#what the rooms chapter spends them on
+	ResourceScripts.game_res.materials['wood'] = 140
+	ResourceScripts.game_res.materials['stone'] = 90
 	ResourceScripts.game_res.materials['iron'] = 20
 	ResourceScripts.game_res.materials['meat'] = 20
 	ResourceScripts.game_res.materials['fish'] = 20
 	ResourceScripts.game_res.materials['bread'] = 20
 	ResourceScripts.game_res.materials['vegetables'] = 20
 	ResourceScripts.game_res.materials['grain'] = 20
-	ResourceScripts.game_res.upgrades.forge = 1
 	globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 1))
 #	var has_tut_quest = false
 #	for quest_id in ResourceScripts.game_world.areas['plains'].quests.factions['workers']:
@@ -925,8 +972,38 @@ func prepare_general_tut():
 	})
 	ResourceScripts.game_world.areas[newquest.area].quests.factions[newquest.source][newquest.id] = newquest
 	
+	prepare_mansion_for_tut()
 	gui_controller.mansion.try_rebuild_slave_list()
 	gui_controller.mansion.mansion_state_set("default")
+
+
+#What the rooms chapter needs standing before it opens. The estate itself is the lesson now,
+#so the tutorial has to be sure of the room it is going to point at and of what is already
+#out on the grounds.
+func prepare_mansion_for_tut():
+	#Also where the three of them get their beds: this runs after the story characters are
+	#made, and autohouse_household() inside it is what keeps the chapter's Finish Turn steps
+	#from being refused for somebody having nowhere to sleep.
+	ResourceScripts.game_res.ensure_mansion_layout()
+	var layout = ResourceScripts.game_res.mansion_layout
+	var slot = MansionLayout.get_slot(MansionLayout.get_floor(layout, TUTORIAL_FLOOR), TUTORIAL_SLOT)
+	if slot != null:
+		#It has to still be under rubble whatever a loaded save or a reshuffled plan did with
+		#it, and it must not be one of the rooms hiding a find: a find opens its own event and
+		#then the loot window, neither of which is a registered tutorial button - every click
+		#on them would be swallowed and the chapter would stop dead. The finds in the other
+		#derelict rooms are left where the shuffle put them.
+		slot.broken = true
+		slot.room = null
+		slot.build = null
+		slot.find = null
+	#The gathering lesson is about manning work that already exists, so the kitchen garden is
+	#standing before the chapter opens rather than raised during it.
+	var grounds = MansionLayout.grounds_floor(layout)
+	if grounds >= 0 and MansionLayout.get_room(MansionLayout.get_floor(layout, grounds), TUTORIAL_PLOT) == null:
+		MansionLayout.build_room(layout, grounds, TUTORIAL_PLOT, 'garden')
+	ResourceScripts.game_res.sync_room_tasks()
+	ResourceScripts.game_res.rooms_changed()
 
 func prepare_combat_tut():
 	var character = ResourceScripts.game_party.get_unique_slave('tutorial_master')
@@ -986,6 +1063,52 @@ func is_RMB_pass():
 	return false
 
 #additional funcs
+#The idle strip is the lower half of the slave list's bar, and an unfolded list takes the
+#whole column: MansionSlaveListModule.set_slave_list_fold() hides the mansion's HUD outright
+#while the list is open. Every step that picks somebody up needs the strip on screen, and the
+#list is deliberately forced open while a hard tutorial runs (apply_default_fold), so this has
+#to be asked for rather than assumed.
+#Not remembered: which way the player likes their list is their own setting, and a scripted
+#lesson has no business rewriting it.
+func fold_slave_list():
+	set_slave_list_folded(true)
+
+
+#The other half of fold_slave_list. MansionSlaveListModule.apply_default_fold() opens the list
+#for a hard tutorial precisely because the chapters around this one point at rows inside it,
+#and apply_state_fold() deliberately leaves the fold alone while a tutorial runs - so nothing
+#puts it back on its own, and the rooms chapter has to hand it over the way it found it.
+func unfold_slave_list():
+	set_slave_list_folded(false)
+
+
+func set_slave_list_folded(folded):
+	if gui_controller.mansion == null or !is_instance_valid(gui_controller.mansion):
+		return
+	var list = gui_controller.mansion.SlaveListModule
+	if list == null:
+		return
+	var wanted = list.FOLD_FOLDED if folded else list.FOLD_FULL
+	if list.list_fold_state == wanted:
+		return
+	list.set_slave_list_fold(wanted, false, false)
+
+
+#The scaffolding on the tutorial's own slot, put within one turn of finished. A kitchen is 25
+#work units and one builder is worth a few of them a turn, so raising it honestly is five to
+#ten turns - too long to sit through here. Clearing out is not touched: that job is measured
+#in turns rather than in work and takes two of them, which is itself the lesson.
+func rush_current_build():
+	var build = MansionLayout.get_build(
+		MansionLayout.get_floor(ResourceScripts.game_res.mansion_layout, TUTORIAL_FLOOR),
+		TUTORIAL_SLOT)
+	if build == null or build.get('fixed', false):
+		return
+	build.progress = max(float(build.progress), float(build.limit) - 0.5)
+	if gui_controller.mansion != null and is_instance_valid(gui_controller.mansion):
+		gui_controller.mansion.RoomsModule.refresh()
+
+
 func close_expanded_card():
 	if gui_controller.mansion == null or !is_instance_valid(gui_controller.mansion):
 		return

@@ -69,7 +69,7 @@ func subtitle(person):
 	if panel.is_service() and assigned:
 		return rules_summary(person)
 	var blocked = blocked_reason()
-	return tr(blocked) if blocked != "" else ""
+	return person.translate(tr(blocked)) if blocked != "" else ""
 
 
 #What they are allowed to do, and what that is expected to be worth. Who their clients are
@@ -123,7 +123,7 @@ func blocked_reason():
 func tooltip_text(person):
 	var blocked = blocked_reason()
 	if blocked != "":
-		return "%s\n%s" % [person.get_short_name(), tr(blocked)]
+		return person.translate(tr(blocked))
 	if assigned:
 		return "%s\n%s" % [person.get_short_name(),
 			tr("MANSIONVIEW_SERVICERULESHINT" if panel.is_service() else "MANSIONVIEW_TASKREMOVEHINT")]
@@ -138,7 +138,7 @@ func on_pressed():
 	if !assigned:
 		var blocked = blocked_reason()
 		if blocked != "":
-			input_handler.SystemMessage(tr(blocked))
+			input_handler.SystemMessage(view.get_character(char_id).translate(tr(blocked)))
 			return
 		panel.add_worker(char_id)
 		return
