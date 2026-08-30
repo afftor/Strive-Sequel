@@ -121,6 +121,11 @@ var height_tier = MODIFIERS.HEIGHT_DEFAULT
 # Extra solved poses, one per hair layer that is not at its default length.
 var layer_poses = {}
 var bone_parents = {}
+# Arms and legs are solved at their authored lengths, then thickened locally.
+# While that final visual pass is running, the factor on a parent segment is
+# removed before its child is placed so it cannot turn into length or shear.
+var post_ik_visual_scales = {}
+var applying_post_ik_visual_scales = false
 # Fur or scale pattern painted over the body, "" for bare skin, plus the colour
 # of each of its layers.
 var coverage_id = ""
@@ -696,6 +701,8 @@ func _pose_for(slot):
 
 func _build_bone_transforms(layer_factors = {}):
 	bones.clear()
+	post_ik_visual_scales.clear()
+	applying_post_ik_visual_scales = false
 	var index = 0
 	for definition in skeleton.get("bones", []):
 		var name = definition.get("name", "bone_%d" % index)
@@ -720,6 +727,32 @@ func _build_bone_transforms(layer_factors = {}):
 	for constraint in constraints:
 		_apply_ik_constraint(constraint)
 	_apply_hand_handles()
+	_apply_post_ik_visual_scales()
+
+
+# IK must never use a cosmetic thickness as reach.  Rebuild the final hierarchy
+# once after every native and synthetic IK solve.  Every segment receives the
+# slider in its own local Y; `_set_bone_world` strips the parent's copy from both
+# position and basis before composing the next segment.
+func _apply_post_ik_visual_scales():
+	post_ik_visual_scales = MODIFIERS.post_ik_visual_factors(proportions, contract.CONTRACT_ID)
+	if post_ik_visual_scales.empty():
+		return
+	applying_post_ik_visual_scales = true
+	for definition in skeleton.get("bones", []):
+		var name = str(definition.get("name", ""))
+		if !bones.has(name):
+			continue
+		var bone = bones[name]
+		var factor = post_ik_visual_scales.get(name, Vector2.ONE)
+		_set_bone_world(
+			name,
+			float(bone.local_x), float(bone.local_y), float(bone.local_rotation),
+			float(bone.local_scale_x) * factor.x,
+			float(bone.local_scale_y) * factor.y,
+			float(bone.local_shear_x), float(bone.local_shear_y)
+		)
+	applying_post_ik_visual_scales = false
 
 
 func _apply_bone_modifiers(layer_factors = {}):
@@ -925,12 +958,31 @@ func _set_bone_world(name, x, y, rotation, scale_x, scale_y, shear_x, shear_y):
 		bone["d"] = local_d
 	else:
 		var parent = bones[parent_name]
-		bone["x"] = parent.a * x + parent.b * y + parent.x
-		bone["y"] = parent.c * x + parent.d * y + parent.y
 		var parent_a = float(parent.a)
 		var parent_b = float(parent.b)
 		var parent_c = float(parent.c)
 		var parent_d = float(parent.d)
+		var position_a = parent_a
+		var position_b = parent_b
+		var position_c = parent_c
+		var position_d = parent_d
+		# Post-IK limb thickness is local to every segment.  Strip a parent's
+		# visual factor before composing its child, including the child position:
+		# even a small authored local-Y joint offset must not move an IK endpoint.
+		if applying_post_ik_visual_scales and post_ik_visual_scales.has(parent_name):
+			var visual_factor = post_ik_visual_scales[parent_name]
+			if visual_factor.x != 0.0:
+				parent_a /= visual_factor.x
+				parent_c /= visual_factor.x
+			if visual_factor.y != 0.0:
+				parent_b /= visual_factor.y
+				parent_d /= visual_factor.y
+			position_a = parent_a
+			position_b = parent_b
+			position_c = parent_c
+			position_d = parent_d
+		bone["x"] = position_a * x + position_b * y + parent.x
+		bone["y"] = position_c * x + position_d * y + parent.y
 		# Butt size widens spine1 along its local Y.  The thigh positions must
 		# follow that wider pelvis, but their bases (and therefore every child)
 		# must remain at the world scale they had before it.  Remove only that
@@ -948,6 +1000,16 @@ func _set_bone_world(name, x, y, rotation, scale_x, scale_y, shear_x, shear_y):
 		if compensate_scale and butt_factor != 0.0:
 			parent_b /= butt_factor
 			parent_d /= butt_factor
+		# Shoulder width should move the arm root with the end of the collarbone,
+		# but must not scale or shear the arm basis.  Position above intentionally
+		# keeps the widened parent; only the basis loses its local-X factor.
+		var shoulder_factor = float(proportions.get("shoulders", 1.0))
+		var authored_parent = MODIFIERS.SHOULDER_WIDTH_BASIS_COMPENSATION.get(name, "")
+		if !str(authored_parent).empty() \
+			and parent_name == MODIFIERS.rig_bone(authored_parent, contract.CONTRACT_ID) \
+			and shoulder_factor != 0.0:
+			parent_a /= shoulder_factor
+			parent_c /= shoulder_factor
 		bone["a"] = parent_a * local_a + parent_b * local_c
 		bone["b"] = parent_a * local_b + parent_b * local_d
 		bone["c"] = parent_c * local_a + parent_d * local_c
@@ -2216,6 +2278,9 @@ func _add_proportion_slider(parent, label_text, key):
 func _on_proportion_changed(value, key):
 	proportions[key] = float(value)
 	_update_proportion_label(key)
+	if key == "muscle_alpha":
+		_apply_muscle_alpha()
+		return
 	# Bone scales feed the solver, so the pose has to be worked out again.
 	_update_animated_pose()
 	if key == "breast_scale":
@@ -2224,7 +2289,11 @@ func _on_proportion_changed(value, key):
 
 func _update_proportion_label(key):
 	if ui.has(key + "_label"):
-		ui[key + "_label"].text = "%.2f" % float(proportions[key])
+		var definition = MODIFIERS.modifier(key)
+		if definition.get("display", "") == "percent":
+			ui[key + "_label"].text = "%.0f%%" % float(proportions[key])
+		else:
+			ui[key + "_label"].text = "%.2f" % float(proportions[key])
 
 
 func _text(key):
@@ -2263,22 +2332,40 @@ func _refresh_bindings(select):
 		select.set_item_disabled(i, !CATALOGUE.bindings_met(part_id, selections))
 
 
-# A beastkin body ships its own chin and skull meshes, so switching the body
-# moves the head with it unless the head already matches.  Both sides are looked
-# up by tag, never by attachment name.
+# A beastkin body needs the animal cuts of the whole face.  The exported muzzle
+# includes its own nose, and the tagged face/lips are drawn around that muzzle;
+# leaving only one of these human is visibly wrong.
 func _follow_body_tag():
 	var beastkin_body = CATALOGUE.has_tag(selections.get("body", ""), "beastkin")
-	if CATALOGUE.has_tag(selections.get("head", ""), "beastkin") == beastkin_body:
-		return
-	var head_id = ""
+	for group_id in ["head", "face", "lips"]:
+		var current = str(selections.get(group_id, ""))
+		if CATALOGUE.has_tag(current, "beastkin") == beastkin_body:
+			continue
+		var replacement = ""
+		if beastkin_body:
+			if group_id == "face":
+				var matching_face = "beastkin_" + current
+				if matching_face in CATALOGUE.parts("face"):
+					replacement = matching_face
+			elif group_id == "lips" and "beastkin_lips_open" in CATALOGUE.parts("lips"):
+				replacement = "beastkin_lips_open"
+			if replacement.empty():
+				replacement = CATALOGUE.first_part_with_tag(group_id, "beastkin")
+		else:
+			replacement = str(CATALOGUE.group(group_id).get("default", ""))
+		if replacement.empty():
+			continue
+		selections[group_id] = replacement
+		_select_ui_value(group_id, replacement)
+	# The body part also hides this slot at composition time, so externally loaded
+	# selections are safe; clearing the editor value makes the UI tell the truth.
 	if beastkin_body:
-		head_id = CATALOGUE.first_part_with_tag("head", "beastkin")
-	else:
-		head_id = str(CATALOGUE.group("head").get("default", ""))
-	if head_id.empty():
-		return
-	selections["head"] = head_id
-	_select_ui_value("head", head_id)
+		selections["nose"] = ""
+		_select_ui_value("nose", "")
+	elif str(selections.get("nose", "")).empty():
+		var default_nose = str(CATALOGUE.group("nose").get("default", ""))
+		selections["nose"] = default_nose
+		_select_ui_value("nose", default_nose)
 
 
 # True when the click landed on the chest, which is also when it swung it.
@@ -2525,20 +2612,22 @@ func _sort_draw_offsets(first, second):
 	return int(first.index) < int(second.index)
 
 
-# `{"slot": x, "before": y}`: x is lifted out and dropped straight in front of y.
+# `{"slot": x, "before": y}` / `{"slot": x, "after": y}`: x is lifted
+# out and dropped directly below/above y.
 func _apply_draw_order_fixes(order):
 	for fix in CATALOGUE.draw_order_fixes():
 		var slot_name = str(fix.get("slot", ""))
-		var before = str(fix.get("before", ""))
+		var relation = "before" if fix.has("before") else "after"
+		var anchor = str(fix.get(relation, ""))
 		var from = order.find(slot_name)
 		if from < 0:
 			continue
 		order.remove(from)
-		var to = order.find(before)
+		var to = order.find(anchor)
 		if to < 0:
 			order.insert(from, slot_name)
 		else:
-			order.insert(to, slot_name)
+			order.insert(to if relation == "before" else to + 1, slot_name)
 	return order
 
 
@@ -2843,7 +2932,19 @@ func _expanded_deform_frame(frame, length):
 # tried to patch over.  The art underneath already matches, and player colour now
 # comes from the channel material, so the stale tint has no job left.
 func _attachment_colour(slot, _attachment):
-	return _spine_colour(slot.get("color", "FFFFFFFF"))
+	var colour = _spine_colour(slot.get("color", "FFFFFFFF"))
+	if str(slot.get("name", "")).ends_with("_muscle"):
+		colour.a *= clamp(float(proportions.get("muscle_alpha", 30.0)) / 100.0, 0.0, 1.0)
+	return colour
+
+
+func _apply_muscle_alpha():
+	for record in mesh_records:
+		if !is_instance_valid(record.polygon):
+			continue
+		if !str(record.slot.get("name", "")).ends_with("_muscle"):
+			continue
+		record.polygon.color = _attachment_colour(record.slot, record.attachment)
 
 
 func _spine_colour(hex_value):

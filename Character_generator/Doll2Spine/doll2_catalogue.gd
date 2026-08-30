@@ -112,9 +112,10 @@ static func draw_order():
 	return _gen().DRAW_ORDER
 
 
-# The draw order corrections as rules - `{"slot": x, "before": y}`.  A renderer
-# needs these when an animation reorders the slots itself: the baked DRAW_ORDER
-# no longer applies, but the rule behind it still does.
+# The draw order corrections as `{"slot": x, "before": y}` or
+# `{"slot": x, "after": y}` rules.  A renderer needs these when an animation
+# reorders the slots itself: the baked DRAW_ORDER no longer applies, but the
+# rule behind it still does.
 static func draw_order_fixes():
 	return _gen().DRAW_ORDER_FIXES
 

@@ -86,6 +86,18 @@ const PART_SLOTS = {
 	},
 }
 
+# The muzzle includes its nose on both rigs.
+const PART_HIDES = {
+	"body_male_beastkin": ["noses"],
+}
+
+# The raw male export puts the collar behind the race torso.  Express this
+# directly against race_torso: race_pelvis is above it too, so using pelvis as
+# the anchor would not establish the requested collar/torso ordering.
+const DRAW_ORDER_FIXES = [
+	{"slot": "equip_collar", "after": "race_torso"},
+]
+
 # The male dragon ships two skins of the same overlay: a plain one and a scaled
 # one that only redraws the torso and the legs.  Everything the scaled variant
 # does not list - arms, shoulders, pelvis, lower torso - is inherited from the

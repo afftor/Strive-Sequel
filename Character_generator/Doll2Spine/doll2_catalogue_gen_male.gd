@@ -102,7 +102,6 @@ const DRAW_ORDER = [
 	"leg_left",
 	"leg_right",
 	"pelvis",
-	"equip_collar",
 	"race_leg_left",
 	"equip_leg_left",
 	"race_leg_right",
@@ -111,6 +110,7 @@ const DRAW_ORDER = [
 	"nipples",
 	"race_torso_lower",
 	"race_torso",
+	"equip_collar",
 	"race_pelvis",
 	"animal_frontbody",
 	"testicle",
@@ -158,6 +158,10 @@ const DRAW_ORDER_FIXES = [
 	{
 		"before": "hairs_base",
 		"slot": "ears",
+	},
+	{
+		"after": "race_torso",
+		"slot": "equip_collar",
 	},
 ]
 
@@ -1508,6 +1512,7 @@ const PARTS = {
 		"display": "Male beastkin body",
 		"folders": ["15_beastkin_body_nude_male"],
 		"group": "body",
+		"hides": ["noses"],
 		"slots": {
 			"arm_left": "arml1_beastkin_m",
 			"arm_right": "armr1_beastkin_m",

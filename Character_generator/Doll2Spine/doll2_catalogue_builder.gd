@@ -574,19 +574,21 @@ func _draw_order(slot_order):
 		return order
 	for fix in _overrides.DRAW_ORDER_FIXES:
 		var slot_name = str(fix.slot)
-		var before = str(fix.before)
+		var relation = "before" if fix.has("before") else "after"
+		var anchor = str(fix.get(relation, ""))
 		var from = order.find(slot_name)
-		var to = order.find(before)
+		var to = order.find(anchor)
 		if from == -1 or to == -1:
-			_problem("DRAW_ORDER_FIXES: `%s` or `%s` is not in the export" % [slot_name, before])
+			_problem("DRAW_ORDER_FIXES: `%s` or `%s` is not in the export" % [slot_name, anchor])
 			continue
-		if from < to:
-			_line("  %s already draws under %s" % [slot_name, before])
+		var correct = from < to if relation == "before" else from > to
+		if correct:
+			_line("  %s already draws %s %s" % [slot_name, "under" if relation == "before" else "over", anchor])
 			continue
 		order.remove(from)
-		to = order.find(before)
-		order.insert(to, slot_name)
-		_line("  %s moved under %s (export drew it on top)" % [slot_name, before])
+		to = order.find(anchor)
+		order.insert(to if relation == "before" else to + 1, slot_name)
+		_line("  %s moved %s %s" % [slot_name, "under" if relation == "before" else "over", anchor])
 	_line("")
 	return order
 

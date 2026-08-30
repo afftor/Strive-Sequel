@@ -29,6 +29,16 @@ const BREAST_BONES = [
 # wider pelvis; only the scale basis is compensated in doll2_preview.gd.
 const BUTT_SCALE_COMPENSATION_BONES = ["spine46", "bone"]
 
+# Shoulder width scales the collarbone along its length.  The arm root must move
+# with its tip, but the collarbone's anisotropic basis must not enter the arm:
+# once the arm bends, inherited X scale becomes a mixture of local length and
+# thickness.  doll2_preview.gd uses this child/parent pair to preserve only the
+# position inheritance.
+const SHOULDER_WIDTH_BASIS_COMPENSATION = {
+	"shoulder_l": "collarbone_l",
+	"shoulder_r": "collarbone_r",
+}
+
 # The male export is the same skeleton with a few bones spelled differently and
 # the breast chain absent: it names the collarbones `collarb_*` and carries a
 # proper leg hierarchy (`hip`, `shin`, `foot`) where the female rig has `spine46`
@@ -140,6 +150,16 @@ const MODIFIERS = {
 			{"bone": "nipple5_l"}, {"bone": "nipple5_r"},
 		],
 	},
+	"muscle_alpha": {
+		"contract": "doll2_v1",
+		"contracts": ["doll2_v1"],
+		"label": "DOLL2_PREVIEW_MUSCLE_ALPHA",
+		"display": "percent",
+		"range": {"default": 30.0, "minimum": 0.0, "maximum": 100.0, "step": 1.0},
+		# This is a visual slot modifier rather than a bone transform.  Keeping it
+		# here lets it share the same slider/default/state machinery.
+		"ops": [],
+	},
 	"build": {
 		"contract": "doll2_v1",
 		"label": "DOLL2_PREVIEW_BUILD",
@@ -182,23 +202,38 @@ const MODIFIERS = {
 		"contract": "doll2_v1",
 		"label": "DOLL2_PREVIEW_ARM_THICKNESS",
 		"range": {"default": 1.0, "minimum": 0.8, "maximum": 1.35, "step": 0.01},
-		# Only the upper arm is scaled; the forearm and hand inherit it, which
-		# thickens the whole limb evenly instead of squaring the lower half.
+		# Thickness is applied after IK to every segment in its own local Y.  It
+		# cannot lengthen a forearm when idle2/idle4 turns it across the upper arm,
+		# and it cannot make a fixed hand target bend the chain while scaling.
+		"phase": "post_ik_visual",
 		"ops": [
 			{"bone": "shoulder_l", "axis": "y", "op": "mul"},
 			{"bone": "shoulder_r", "axis": "y", "op": "mul"},
+			{"bone": "forearm_l", "axis": "y", "op": "mul"},
+			{"bone": "forearm_r", "axis": "y", "op": "mul"},
+			{"bone": "hand_l", "axis": "y", "op": "mul"},
+			{"bone": "hand_r", "axis": "y", "op": "mul"},
+			{"bone": "finger1_l", "axis": "y", "op": "mul"},
+			{"bone": "finger1_r", "axis": "y", "op": "mul"},
+			{"bone": "finger2_l", "axis": "y", "op": "mul"},
+			{"bone": "finger2_r", "axis": "y", "op": "mul"},
 		],
 	},
 	"legs": {
 		"contract": "doll2_v1",
 		"label": "DOLL2_PREVIEW_LEG_THICKNESS",
 		"range": {"default": 1.0, "minimum": 0.8, "maximum": 1.35, "step": 0.01},
-		# The thighs, again with the shin and foot inheriting.  The rig names the
-		# left leg spine46 and the right one `bone`; the IK chains drive their
-		# rotation, never their scale, so this does not fight them.
+		# Solve the two-bone chains at their authored lengths first.  Thickness is
+		# then applied to thigh, shin and foot in each bone's own local Y, with the
+		# visual factor removed from child positions and bases between segments.
+		"phase": "post_ik_visual",
 		"ops": [
 			{"bone": "spine46", "axis": "y", "op": "mul"},
+			{"bone": "spine47", "axis": "y", "op": "mul"},
+			{"bone": "spine48", "axis": "y", "op": "mul"},
 			{"bone": "bone", "axis": "y", "op": "mul"},
+			{"bone": "bone2", "axis": "y", "op": "mul"},
+			{"bone": "bone3", "axis": "y", "op": "mul"},
 		],
 	},
 	# The character's `ass_size`, and the only handle the pelvis has.  Named sizes
@@ -612,6 +647,8 @@ static func bone_factors(values, tier_id = HEIGHT_DEFAULT, contract_id = DEFAULT
 
 	for modifier_id in MODIFIERS.keys():
 		var modifier = MODIFIERS[modifier_id]
+		if modifier.get("phase", "") == "post_ik_visual":
+			continue
 		var value = float(values.get(modifier_id, modifier.range.default))
 		if value == modifier.range.default:
 			continue
@@ -653,6 +690,35 @@ static func bone_factors(values, tier_id = HEIGHT_DEFAULT, contract_id = DEFAULT
 	for bone_name in result.keys():
 		if !(bone_name in contract_bones(contract_id)):
 			push_warning("Doll2 modifiers: unknown bone `%s` in contract %s" % [bone_name, contract_id])
+			result.erase(bone_name)
+	return result
+
+
+# Local visual thickness, deliberately excluded from bone_factors so animation
+# and IK see the authored limb lengths.  The preview applies these after every
+# solver and removes each parent's factor before placing the next segment.
+static func post_ik_visual_factors(values, contract_id = DEFAULT_CONTRACT):
+	var result = {}
+	for modifier_id in MODIFIERS.keys():
+		var modifier = MODIFIERS[modifier_id]
+		if modifier.get("phase", "") != "post_ik_visual":
+			continue
+		var value = float(values.get(modifier_id, modifier.range.default))
+		if value == modifier.range.default:
+			continue
+		for operation in modifier.ops:
+			if !operation.has("bone"):
+				continue
+			var amount = 1.0 / value if operation.get("op", "mul") == "div" and value != 0.0 else value
+			var factor = Vector2(amount, amount)
+			if operation.get("axis", "both") == "x":
+				factor = Vector2(amount, 1.0)
+			elif operation.get("axis", "both") == "y":
+				factor = Vector2(1.0, amount)
+			_accumulate(result, operation.bone, factor, contract_id)
+	for bone_name in result.keys():
+		if !(bone_name in contract_bones(contract_id)):
+			push_warning("Doll2 post-IK modifiers: unknown bone `%s` in contract %s" % [bone_name, contract_id])
 			result.erase(bone_name)
 	return result
 
