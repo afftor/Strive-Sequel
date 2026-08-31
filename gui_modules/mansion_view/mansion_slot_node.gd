@@ -18,6 +18,26 @@ const ART_ROOM = preload("res://gui_modules/mansion_view/rooms/master_bedrrom.pn
 const ART_EMPTY = preload("res://gui_modules/mansion_view/rooms/empty.png")
 const ART_BROKEN = preload("res://gui_modules/mansion_view/rooms/trashed.png")
 
+#The staircase is the exception: its picture has to say which way it goes from here, or the
+#same flight of stairs is drawn on every floor of the house and none of them tells the player
+#anything. Drawn as the flight that leaves this floor - climbing away while there is a storey
+#above, dropping back on the top one.
+const ART_STAIRS_UP = preload("res://gui_modules/mansion_view/rooms/stairs_up.png")
+const ART_STAIRS_DOWN = preload("res://gui_modules/mansion_view/rooms/stairs_down.png")
+
+#Types that have had a picture drawn for them, by room_builder. Everything not named here
+#still shares ART_ROOM; a type moves out of that pile the moment its own picture exists, so
+#this list is meant to grow. The two bedrooms share one - the luxury one is the same room
+#with better upgrades in it, not a different room.
+const ROOM_ART = {
+	bedrooms = preload("res://gui_modules/mansion_view/rooms/bedroom.png"),
+	luxury_bedrooms = preload("res://gui_modules/mansion_view/rooms/bedroom.png"),
+	store_room = preload("res://gui_modules/mansion_view/rooms/storeroom.png"),
+	forge = preload("res://gui_modules/mansion_view/rooms/forge.png"),
+	tailor_workshop = preload("res://gui_modules/mansion_view/rooms/tailor.png"),
+	bathhouse = preload("res://gui_modules/mansion_view/rooms/bath.png"),
+}
+
 const COLOR_EMPTY = '332f28'
 const COLOR_BROKEN = '4a2f2f'
 const COLOR_BUILDING = '4a4530'
@@ -152,11 +172,28 @@ func draw_building():
 func draw_room(room):
 	var data = RoomTypes.get_type(room.type)
 	$bg.color = Color(data.color)
-	$art.texture = ART_ROOM
+	$art.texture = room_art(room)
 	$icon.texture = images.upgrade_icons[data.icon] if images.upgrade_icons.has(data.icon) else null
 	$name.text = tr(RoomTypes.get_name_key(room.type))
 	draw_stairs(room)
 	set_room_tooltip(room)
+
+
+#Which picture a room is drawn with: its own if one has been drawn for it, the staircase's
+#pair of flights if it is the staircase, and the one picture the rest still share otherwise.
+func room_art(room):
+	if RoomTypes.has_tag(room.type, 'stairs'):
+		return stairs_art()
+	return ROOM_ART[room.type] if ROOM_ART.has(room.type) else ART_ROOM
+
+
+#Which way the flight goes from here. Asked of the floors rather than of the way-buttons
+#beside it: those go dark while the stairs are still rotted, and the flight is there to be
+#looked at either way.
+func stairs_art():
+	var walk = MansionLayout.house_floors(view.layout())
+	var at = walk.find(view.floor_index())
+	return ART_STAIRS_UP if at >= 0 and at < walk.size() - 1 else ART_STAIRS_DOWN
 
 
 #The staircase is the one room whose whole use is a choice of two, so it carries them on its

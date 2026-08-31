@@ -106,9 +106,11 @@ func register_tutorial_buttons():
 	input_handler.register_btn_source('mansion_build_place', self, 'tut_get_build_place')
 	input_handler.register_btn_source('mansion_work_place', self, 'tut_get_work_place')
 	input_handler.register_btn_source('mansion_rest_daisy', self, 'tut_get_rest_daisy')
+	input_handler.register_btn_source('mansion_rest_master', self, 'tut_get_rest_master')
 	input_handler.register_btn_source('mansion_rest_servant', self, 'tut_get_rest_servant')
 	input_handler.register_btn_source('mansion_garden_place', self, 'tut_get_garden_place')
 	input_handler.register_btn_source('mansion_store_slot', self, 'tut_get_store_slot')
+	input_handler.register_btn_source('mansion_bed_place', self, 'tut_get_bed_place')
 
 
 func tut_get_slot():
@@ -127,6 +129,30 @@ func tut_get_store_slot():
 	for entry in MansionLayout.each_room(layout()):
 		if entry.floor == floor_index() and entry.room.type == 'store_room':
 			return grid.get_slot_node(entry.slot)
+	return null
+
+
+#The first bed standing empty anywhere on the floor being drawn. Which room it is in is not the
+#lesson - that somebody is carried into one is - so this looks across the whole floor rather
+#than at one slot the way the work chapter's places do. The master's own bed is passed over: it
+#is his and every drop onto it is refused (mansion_char_slot.refusal_for), so framing it would
+#be pointing at a wall.
+func tut_get_bed_place():
+	if !showing_plan() or mode != 'sleep':
+		return null
+	for entry in MansionLayout.each_room(layout()):
+		if entry.floor != floor_index():
+			continue
+		var node = grid.get_slot_node(entry.slot)
+		if node == null or !node.has_node("People"):
+			continue
+		for cell in node.get_node("People").get_children():
+			if cell.is_queued_for_deletion() or !cell.visible:
+				continue
+			if cell.get('kind') != 'sleep' or cell.get('master_bed'):
+				continue
+			if cell.get('char_id') == null:
+				return cell
 	return null
 
 
@@ -168,6 +194,14 @@ func tut_get_rest_daisy():
 	return tut_get_rest_cell('daisy')
 
 
+#The master's own portrait in the strip. Used by the lesson about the right click menu, which
+#is taught here rather than on a row of the household list: this is the first screen of the
+#game, the list is still folded down to its bar at that point, and the menu the strip offers is
+#the whole of it (mansion_view.open_char_menu) rather than the two entries a row has.
+func tut_get_rest_master():
+	return tut_get_rest_cell('tutorial_master')
+
+
 func tut_get_rest_servant():
 	return tut_get_rest_cell('tutorial_servant')
 
@@ -194,6 +228,11 @@ func tut_get_garden_place():
 
 
 func on_visibility_changed():
+	#The card, the hover panel and the character menu live on a CanvasLayer so they draw above
+	#the room plan - but a CanvasLayer does not inherit its parent's visibility, so hiding the
+	#mansion leaves whatever stands on it drawing over whatever screen came next. Closing the
+	#card is not enough on its own: the layer itself is put away with the plan.
+	$Overlay.visible = is_visible_in_tree()
 	if is_visible_in_tree():
 		#a room granted while this screen was away leaves it drawing the old house
 		if layout_signature() != built_signature:

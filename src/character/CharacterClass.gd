@@ -577,10 +577,10 @@ func generate_simple_fighter(tempname, setup_ai = true):
 
 
 func add_mastery_as_bonuses(category, lv, mul = 2.5):
-	dyn_stats._add_mastery_as_bonuses(category, lv)
+	dyn_stats._add_mastery_as_bonuses(category, lv, mul)
 
 
-func roll_static_masteries(list, lv):
+func roll_static_masteries(list, lv, mul = 2.5):
 	var mas_1
 	var mas_2
 	var mas_3
@@ -636,11 +636,11 @@ func roll_static_masteries(list, lv):
 			lv_2 = globals.rng.randi_range(13, 18)
 			lv_3 = 45 - lv_1 - lv_2
 	
-	add_mastery_as_bonuses(mas_1, lv_1)
+	add_mastery_as_bonuses(mas_1, lv_1, mul)
 	if mas_2 != null:
-		add_mastery_as_bonuses(mas_2, lv_2)
+		add_mastery_as_bonuses(mas_2, lv_2, mul)
 	if mas_3 != null:
-		add_mastery_as_bonuses(mas_3, lv_3)
+		add_mastery_as_bonuses(mas_3, lv_3, mul)
 
 
 

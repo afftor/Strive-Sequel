@@ -72,8 +72,10 @@ const VALUES = {
 		"none": "", "style1": "lips1", "style2": "lips2", "style3": "lips3",
 		"style4": "lips4", "style5": "lips5", "orcish": "lips_orc",
 		"style6": "lips_m1", "style7": "lips_m2", "style8": "lips_m3", "style9": "lips_m4",
-		# the new smiles, drawn for either sex
-		"style10": "lips_s1", "style11": "lips_s2", "style12": "lips_s3",
+		# the new smiles, drawn for either sex.  There is no `style12`: the third
+		# of them, `lips_s3`, is in neither export, and a name pointing at art
+		# nobody drew is a choice that silently does nothing.
+		"style10": "lips_s1", "style11": "lips_s2",
 		"orcish_1": "lips_orc_1", "orcish_2": "lips_orc_2", "orcish_3": "lips_orc_3",
 		"beastkin_cry": "beastkin_lips_cry", "beastkin_open": "beastkin_lips_open",
 		"beastkin_smile": "beastkin_lips_smile",
@@ -299,6 +301,12 @@ static func selections_for(stats, doll_id = "female"):
 			continue
 		if part_id != "":
 			result[group_id] = part_id
+		elif is_absent(stats.get(stat, "")):
+			# Taken off on purpose, which is not the same as a value this rig has
+			# no art for.  Left out of the result the group keeps the catalogue's
+			# own default, and `hair_back` has one: a character who asked for no
+			# back hair went on wearing `hair_back_straight`.
+			result[group_id] = ""
 
 	if RACE_OVERLAYS.has(race):
 		var overlay = str(RACE_OVERLAYS[race])
@@ -338,8 +346,18 @@ static func beastkin_variant(group_id, part_id, stats = {}):
 	return part_id
 
 
+# Every way the game spells "this piece is not worn".  `resolve` answers "" for
+# all of them - and for a value it simply cannot place - so a caller that has to
+# tell those two apart asks `is_absent` rather than reading the answer.
+const ABSENT = ["", "no", "none", "Null"]
+
+
+static func is_absent(value):
+	return str(value) in ABSENT
+
+
 static func resolve(stat, value, stats = {}):
-	if value == "" or value == "no" or value == "none" or value == "Null":
+	if is_absent(value):
 		return ""
 	if stat == "chin" and value == "beastkin":
 		return str(BEAST_CHINS.get(str(stats.get("beast", "")), "beastkin_chin_cat"))

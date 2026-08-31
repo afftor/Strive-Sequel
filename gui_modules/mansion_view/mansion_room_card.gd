@@ -562,7 +562,7 @@ func craft_screen():
 
 
 func craft_category_of(current):
-	var job = RoomTypes.get_work_job(current.type)
+	var job = RoomTypes.get_craft_menu(current.type)
 	if job == null:
 		return null
 	var screen = craft_screen()

@@ -58,7 +58,9 @@ var racelist = {
 			eyeshape = ['face6','face7','face8','face_m1','face_m2','face_m3','face_m4','face_m5',],
 			nose = ['default', 'small', 'straight', 'feature', 'point'],
 			eyebrows = ['style1', 'style2', 'style3', 'style4', 'style5', 'style6', 'style7', 'style8'],
-			lips = ['style1', 'style2', 'style3', 'style4', 'style5', 'style6', 'style7', 'style8', 'style9', 'style10', 'style11', 'style12'],
+			#`style12` is deliberately absent: the mouth it names, `lips_s3`, was never
+			#drawn for either rig, so picking it left a face with no mouth on it
+			lips = ['style1', 'style2', 'style3', 'style4', 'style5', 'style6', 'style7', 'style8', 'style9', 'style10', 'style11'],
 			tits_size = ['flat', 'small', 'average', 'big', 'huge', 'masculine'], #add variants
 			ass_size = ['flat', 'small', 'average', 'big', 'huge', 'masculine'],
 			hair_base_color_1 = ['yellow_1','red_1', 'red_2', 'red_3','brown_1','brown_2', 'brown_3', 'dark_1', 'dark_2', 'dark_3'],
@@ -892,7 +894,7 @@ var racelist = {
 			penis_type = ['feline'],
 			chin = ['beastkin'],
 			nose = ['beastkin'],
-			lips = ['none']
+			lips = ['beastkin_cry','beastkin_open','beastkin_smile']
 			},
 		global_weight = 10,
 		training_disposition = {

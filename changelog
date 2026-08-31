@@ -1,7 +1,20 @@
-Added buyback menu to shop
+0.16.0
+Revamped slave list 
+Completely redone paperdoll, added animations, refined face and details, improved performance and portraits
+Remade whole mansion behavior, now it has physical rooms and beds
+Now you can pass turns even if you have more characters than the beds. The characters not assigned to beds will receive severe penalty to their work stats and regeneration.
+Added multiple new functionalities to mansion rooms i.e. autopurchase of materials
+Added buyback menu to shops
 Fixed working progress not transfering to other items
 Instant combat win now shows defeated enemy team
 Readjusted prices to make certian crafting recipes profitable again
+Enemies no longer benefit 2.5x modifier for evasion, hitrate and speed off masteries (effectively reduces the highest evasion and speed stats that they can get down by almost thrice)
+Infinity tower:
+	Now starting floor 10 chests have a 25% chance to have some meteorite ore
+	Now mastery bonuses on elites only grant 1x stats instead of 2.5x
+Fixed some quests and dialogues
+Updates some localizations over functional translations
+Tutorial adjusted for new changes (recommended for mansion interaction)
 0.15.1
 Added act 4 finale
 Revamped food mechanic. Now characters eat 1 food item per attempt and it lasts multiple turns based on the food eaten. Better food provides various bonuses. Characters also can be demanding higher quality food if they have higher fame or value.

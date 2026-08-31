@@ -189,12 +189,18 @@ func open_stairs():
 	return MansionLayout.open_stairs(mansion_layout)
 
 
-#The rooms a test game starts with, each at its best - test mode is for looking at rooms, not
-#for paying for them. These used to be handed over by writing the retired 'forge'/'alchemy'/
-#'tailor'/'resting' upgrade codes and letting the old-save conversion turn them into rooms,
-#which is a strange road to take in a new game and took the rubble's finds with it. Raised
-#directly instead, and sparing the derelict rooms that are hiding something.
+#The rooms a test game starts with, each at its best bar the ones listed just below - test
+#mode is for looking at rooms, not for paying for them. These used to be handed over by
+#writing the retired 'forge'/'alchemy'/'tailor'/'resting' upgrade codes and letting the
+#old-save conversion turn them into rooms, which is a strange road to take in a new game and
+#took the rubble's finds with it. Raised directly instead, and sparing the derelict rooms
+#that are hiding something.
 const TEST_ROOMS = ['forge', 'alchemy_room', 'ritual_room', 'bathhouse', 'practice_room']
+
+#Rooms test mode raises plain, with nothing bought on top of them. The forge is here because
+#its own upgrade row - the salvage bench above all, which waits on the workers' guild - is
+#what wants looking at, and a forge handed over finished has no row left to press.
+const TEST_ROOMS_UNUPGRADED = ['forge']
 
 
 func build_test_rooms():
@@ -203,16 +209,18 @@ func build_test_rooms():
 		if !grant_room(type_code, true):
 			continue
 		var room = MansionLayout.first_room_of_type(mansion_layout, type_code)
-		if room != null:
+		if room != null and !(type_code in TEST_ROOMS_UNUPGRADED):
 			MansionLayout.max_out_upgrades(room)
 		built.append(type_code)
 	#beds for the household that test mode makes, and the same care taken over the finds
 	bedrooms_at_least(3, true)
-	#Everything else the estate already owns, at its best too - the store room above all, whose
-	#shelves, clerk's desk and market ledger are bought rather than built and would otherwise
-	#leave three features with no way to reach them. Rooms are what test mode is for looking at;
-	#paying for them again in every test game is not.
+	#Everything else the estate already owns, at its best too, bar TEST_ROOMS_UNUPGRADED - the
+	#store room above all, whose shelves, clerk's desk and market ledger are bought rather than
+	#built and would otherwise leave three features with no way to reach them. Rooms are what
+	#test mode is for looking at; paying for them again in every test game is not.
 	for entry in MansionLayout.each_room(mansion_layout):
+		if entry.room.type in TEST_ROOMS_UNUPGRADED:
+			continue
 		MansionLayout.max_out_upgrades(entry.room)
 	sync_room_tasks()
 	rooms_changed()
@@ -425,10 +433,16 @@ func upgrade_locked(code):
 	if data == null or !data.has('guild_upgrade'):
 		return false
 	var gate = data.guild_upgrade
-	var factions = ResourceScripts.game_world.factions
-	if !factions.has(gate.guild):
+	#game_world.factions is only an index - {code, name, area} - and the guild itself, with
+	#whatever has been bought from it, stands in its own area. Two steps, the same pair
+	#globals.checkreqs() takes to answer a 'has_upgrade' condition.
+	var index = ResourceScripts.game_world.factions
+	if !index.has(gate.guild):
 		return true
-	return !factions[gate.guild].upgrades.has(gate.code)
+	var area = ResourceScripts.game_world.areas.get(index[gate.guild].area, null)
+	if area == null or !area.get('factions', {}).has(gate.guild):
+		return true
+	return !area.factions[gate.guild].get('upgrades', {}).has(gate.code)
 
 
 func rooms_changed():

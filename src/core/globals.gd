@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.16.0 Experimental 2'
+const gameversion = '0.16.0'
 
 #time
 signal hour_tick
@@ -2793,6 +2793,11 @@ func common_effects(effects, from_event = false):
 				var loot_name = input_handler.weightedrandom(i.pool)
 				#mind, that "chest" can be lockless, therefore just loot
 				input_handler.scene_loot = ResourceScripts.world_gen.make_chest_loot(loot_name)
+				#whatever the floor generator sealed into this subroom. Taken and cleared
+				#here, so a chest left unopened cannot hand its ore to the next scene
+				if !input_handler.scene_bonus_materials.empty():
+					input_handler.AddOrIncrementDict(input_handler.scene_loot.materials, input_handler.scene_bonus_materials)
+					input_handler.scene_bonus_materials = {}
 			'open_loot':
 				# input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(input_handler.scene_loot, '[center]Acquired Items:[/center]')
 					var loot_win = input_handler.get_spec_node(input_handler.ANIM_LOOT)
