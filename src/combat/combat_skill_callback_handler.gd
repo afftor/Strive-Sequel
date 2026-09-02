@@ -452,7 +452,8 @@ func invoke_animations_1():
 	#casteranimations
 	#for sure at windup there should not be real_target-related animations
 	if template.has('sounddata') and !template.sounddata.empty() and template.sounddata.initiate != null:
-		caster.displaynode.process_sound(template.sounddata.initiate)
+		if caster.displaynode != null:
+			caster.displaynode.process_sound(template.sounddata.initiate)
 	for i in animationdict.windup:
 		var sfxtarget = globals.ProcessSfxTarget(i.target, caster, target)
 		var params = globals.make_sfx_params(i)

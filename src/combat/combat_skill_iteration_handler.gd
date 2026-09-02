@@ -238,14 +238,29 @@ func invoke_animations_2():
 						if affected.displaynode != null and affected.displaynode != target.displaynode:
 							params.hit_nodes.append(affected.displaynode)
 				queuenode.add_sfx(sfxtarget, true_code, params)
-	for i in affected_targets:
+	if !affected_targets.empty():
 		if template.has('sounddata') and !template.sounddata.empty() and template.sounddata.strike != null:
-			if template.sounddata.strike == 'weapon':
-				caster.displaynode.process_sound(caster.get_weapon_sound())
-			else:
-				caster.displaynode.process_sound(template.sounddata.strike)
+			if caster.displaynode != null:
+				if template.sounddata.strike == 'weapon':
+					caster.displaynode.process_sound(caster.get_weapon_sound())
+				else:
+					caster.displaynode.process_sound(template.sounddata.strike)
 		for j in predamage:
-			if j.target in ['caster','target']:
+			if j.target == 'caster':
+				var sfxtarget = globals.ProcessSfxTarget(j.target, caster, target)
+				if sfxtarget != null:
+					var true_code = get_true_code(j)
+					var params = globals.make_sfx_params(j, last_iteration)
+					if true_code == 'devastation_strike':
+						params.caster_node = caster.displaynode
+						params.weapon_sprite = caster.get_weapon_cast_animation()
+						params.iteration = parent.iterations_played
+					elif true_code == 'lightning' or true_code.begins_with('projectile_'):
+						params.caster_node = caster.displaynode
+					queuenode.add_sfx(sfxtarget, true_code, params)
+	for i in affected_targets:
+		for j in predamage:
+			if j.target == 'target':
 				var sfxtarget = globals.ProcessSfxTarget(j.target, caster, i)
 				if sfxtarget != null:
 					var true_code = get_true_code(j)
@@ -353,7 +368,8 @@ func invoke_damage():
 			var sounddata = template.sounddata if template.has('sounddata') else {}
 			var hit_sound = audio.get_combat_hit_sound(sounddata, s_skill2.target)
 			if hit_sound != null:
-				s_skill2.target.displaynode.process_sound(hit_sound)
+				if s_skill2.target.displaynode != null:
+					s_skill2.target.displaynode.process_sound(hit_sound)
 			for j in animationdict.postdamage:
 				var sfxtarget = globals.ProcessSfxTarget(j.target, caster, s_skill2.target)
 				if sfxtarget.has_method("process_sfx"):
@@ -380,7 +396,8 @@ func queue_default_hit_sound(s_skill2):
 		return
 	var hit_sound = audio.get_default_combat_hit_sound(s_skill2.target)
 	if hit_sound != null:
-		s_skill2.target.displaynode.process_sound(hit_sound)
+		if s_skill2.target.displaynode != null:
+			s_skill2.target.displaynode.process_sound(hit_sound)
 
 
 func invoke_postdamage():
