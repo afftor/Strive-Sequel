@@ -1524,7 +1524,13 @@ func CalculateTargets(skill, target, finale = false):
 	
 	match skill.target_number:
 		'single':
-			array = [target]
+			var tchar = get_char_by_pos(target.position)
+			if tchar.defeated: 
+				array = []
+			elif !tchar.can_be_damaged(skill) and !finale: 
+				array = []
+			else:
+				array = [target]
 		'row':
 			for i in variables.rows:
 				if variables.rows[i].has(target.position):
