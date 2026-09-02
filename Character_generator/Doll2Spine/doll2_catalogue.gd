@@ -232,6 +232,19 @@ static func compose(selections, axis_values):
 			continue
 		if !bindings_met(part_id, selections):
 			continue
+		# `outfit_legs` replaces the lower half instead of being painted over the
+		# full outfit.  Clear every slot owned by the lower group first, then apply
+		# the selected part below.  A missing piece therefore stays empty rather
+		# than leaking through from `outfit` (notably the pet suit's maternity lower).
+		if group_id == "outfit_legs":
+			for lower_slot in _gen().GROUPS[group_id].slots:
+				result.erase(lower_slot)
+			# Maternity outfits also carry the legacy unsplit belly mesh.  It is
+			# harmless while both halves come from one set, but in a mixed outfit it
+			# redraws the upper set across the lower seam.  Keep only the authored
+			# split: `_up` from outfit and `_low` from outfit_legs.
+			if str(axis_values.get("pregnancy", "none")) != "none":
+				result.erase("equip_belly")
 		var slots = chosen.slots
 		for slot_name in slots.keys():
 			var value = slots[slot_name]
