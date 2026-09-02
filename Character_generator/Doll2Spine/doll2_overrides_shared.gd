@@ -450,11 +450,13 @@ const COLOR_CHANNELS = {
 	# that group held - the pelvis and the two legs - claimed by name and so
 	# declared above the channel it is carving them out of.
 	#
-	# The belly and the two pregnancy slots stay on top: all three draw the *same*
-	# attachment as one another in every set, so splitting them would paint one
-	# piece of art in two colours.
+	# Pregnancy clothing is exported as three meshes over the same atlas region.
+	# `equip_pregnancy_up` follows the torso colour, while
+	# `equip_pregnancy_low` follows the pelvis/legs colour.  `equip_belly` remains
+	# with the upper half: it is the central clothing mesh and was the only mesh in
+	# older exports.
 	"outfit_lower": {"anchor": "outfit", "groups": [], "gear": true, "slots": [
-		"equip_pelvis", "equip_leg_left", "equip_leg_right",
+		"equip_pelvis", "equip_leg_left", "equip_leg_right", "equip_pregnancy_low",
 	]},
 	"outfit": {"anchor": "outfit", "groups": ["outfit"], "gear": true},
 	"collar": {"anchor": "collar", "groups": ["collar"], "gear": true},

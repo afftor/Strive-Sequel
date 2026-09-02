@@ -105,6 +105,14 @@ const AXIS_OVERRIDES = {
 		# The leather set's big stage is named after the set instead of the stage.
 		"Pregnancy_skin_leather": "big",
 	},
+	"equip_pregnancy_low": {
+		# The split lower mesh keeps the same misleading source-art name.
+		"Pregnancy_skin_leather": "big",
+	},
+	"equip_pregnancy_up": {
+		# The split upper mesh keeps the same misleading source-art name.
+		"Pregnancy_skin_leather": "big",
+	},
 }
 
 # Attachments dropped from the catalogue entirely.  This one is duplicate art

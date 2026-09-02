@@ -13,7 +13,7 @@ const SOURCE = {
 	"bone_count": 271,
 	"contract": "doll2_v1",
 	"skeleton": "Doll2_spine4.2_female.json",
-	"skeleton_hash": "LnTYt51OBL0",
+	"skeleton_hash": "geqxgPelw3s",
 	"slot_count": 78,
 	"spine_version": "4.2.43",
 }
@@ -420,7 +420,6 @@ const COLOR_CHANNELS = {
 			"equip_breasts",
 			"equip_hand_left",
 			"equip_hand_right",
-			"equip_pregnancy_low",
 			"equip_pregnancy_up",
 			"equip_shoulder_left",
 			"equip_shoulder_right",
@@ -434,7 +433,7 @@ const COLOR_CHANNELS = {
 		"anchor": "outfit",
 		"coverage": false,
 		"gear": true,
-		"slots": ["equip_leg_left", "equip_leg_right", "equip_pelvis"],
+		"slots": ["equip_leg_left", "equip_leg_right", "equip_pelvis", "equip_pregnancy_low"],
 		"two_tone": false,
 		"zone_defaults": [],
 		"zones": true,
@@ -562,7 +561,7 @@ const SLOT_COLORS = {
 	"equip_leg_right": "outfit_lower",
 	"equip_masks": "mask",
 	"equip_pelvis": "outfit_lower",
-	"equip_pregnancy_low": "outfit",
+	"equip_pregnancy_low": "outfit_lower",
 	"equip_pregnancy_up": "outfit",
 	"equip_shoulder_left": "outfit",
 	"equip_shoulder_right": "outfit",
@@ -1061,7 +1060,7 @@ const GROUPS = {
 			"outfit_underwear2_legs",
 			"outfit_waitress_legs",
 		],
-		"slots": ["equip_leg_left", "equip_leg_right", "equip_pelvis"],
+		"slots": ["equip_leg_left", "equip_leg_right", "equip_pelvis", "equip_pregnancy_low"],
 	},
 	"race_overlay": {
 		"default": "",
@@ -2679,6 +2678,13 @@ const PARTS = {
 			"equip_leg_left": "legl_armor_cloth",
 			"equip_leg_right": "legr_armor_cloth",
 			"equip_pelvis": "pelvis_armor_cloth",
+			"equip_pregnancy_low": {
+				"axis": "pregnancy",
+				"options": {
+					"big": "pregnancy_cloth3_big",
+					"mid": "pregnancy_cloth3_small",
+				},
+			},
 		},
 		"zones": [0, 1, 2],
 	},
@@ -2688,6 +2694,13 @@ const PARTS = {
 		"group": "outfit_legs",
 		"slots": {
 			"equip_pelvis": "pelvis_armor_cloth2",
+			"equip_pregnancy_low": {
+				"axis": "pregnancy",
+				"options": {
+					"big": "pregnancy_cloth2_big",
+					"mid": "pregnancy_cloth2_small",
+				},
+			},
 		},
 		"zones": [0, 1],
 	},
@@ -2742,6 +2755,13 @@ const PARTS = {
 			"equip_leg_left": "legl_armor_gipure1",
 			"equip_leg_right": "legr_armor_gipure1",
 			"equip_pelvis": "pelvis_armor_gipure1",
+			"equip_pregnancy_low": {
+				"axis": "pregnancy",
+				"options": {
+					"big": "pregnancy_gipure1_big",
+					"mid": "pregnancy_gipure1_small",
+				},
+			},
 		},
 		"zones": [0],
 	},
@@ -2792,6 +2812,13 @@ const PARTS = {
 		"group": "outfit_legs",
 		"slots": {
 			"equip_pelvis": "pelvis_armor_gipure2",
+			"equip_pregnancy_low": {
+				"axis": "pregnancy",
+				"options": {
+					"big": "pregnancy_gipure2_big",
+					"mid": "pregnancy_gipure2_small",
+				},
+			},
 		},
 		"zones": [0],
 	},
@@ -2845,6 +2872,13 @@ const PARTS = {
 			"equip_leg_left": "legl_armor_jacket",
 			"equip_leg_right": "legr_armor_jacket",
 			"equip_pelvis": "pelvis_armor_jacket",
+			"equip_pregnancy_low": {
+				"axis": "pregnancy",
+				"options": {
+					"big": "pregnancy_jacket_big",
+					"mid": "pregnancy_jacket_small",
+				},
+			},
 		},
 		"zones": [0, 1],
 	},
@@ -2941,6 +2975,13 @@ const PARTS = {
 			"equip_leg_left": "legl_armor_latex",
 			"equip_leg_right": "legr_armor_latex",
 			"equip_pelvis": "pelvis_armor_latex",
+			"equip_pregnancy_low": {
+				"axis": "pregnancy",
+				"options": {
+					"big": "pregnancy_latex_big",
+					"mid": "pregnancy_latex_small",
+				},
+			},
 		},
 	},
 	"outfit_leather": {
@@ -2974,15 +3015,15 @@ const PARTS = {
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",
 				"options": {
+					"big": "pregnancy_leather_big",
 					"mid": "pregnancy_leather_small",
-					"none": "pregnancy_leather_big",
 				},
 			},
 			"equip_pregnancy_up": {
 				"axis": "pregnancy",
 				"options": {
+					"big": "pregnancy_leather_big",
 					"mid": "pregnancy_leather_small",
-					"none": "pregnancy_leather_big",
 				},
 			},
 			"equip_torso": "torso_armor_leather",
@@ -3045,6 +3086,13 @@ const PARTS = {
 			"equip_leg_left": "legl_armor_leather2",
 			"equip_leg_right": "legr_armor_leather2",
 			"equip_pelvis": "pelvis_armor_leather2",
+			"equip_pregnancy_low": {
+				"axis": "pregnancy",
+				"options": {
+					"big": "pregnancy_leather2_big",
+					"mid": "pregnancy_leather2_small",
+				},
+			},
 		},
 		"zones": [0, 1, 2],
 	},
@@ -3056,6 +3104,13 @@ const PARTS = {
 			"equip_leg_left": "legl_armor_leather",
 			"equip_leg_right": "legr_armor_leather",
 			"equip_pelvis": "pelvis_armor_leather",
+			"equip_pregnancy_low": {
+				"axis": "pregnancy",
+				"options": {
+					"big": "pregnancy_leather_big",
+					"mid": "pregnancy_leather_small",
+				},
+			},
 		},
 		"zones": [0, 1],
 	},
@@ -3153,6 +3208,13 @@ const PARTS = {
 			"equip_leg_left": "legl_armor1",
 			"equip_leg_right": "legr_armor1",
 			"equip_pelvis": "pelvis_armor_maidu",
+			"equip_pregnancy_low": {
+				"axis": "pregnancy",
+				"options": {
+					"big": "pregnancy_maidu_big",
+					"mid": "pregnancy_maidu_small",
+				},
+			},
 		},
 	},
 	"outfit_petsuit": {
@@ -3289,6 +3351,13 @@ const PARTS = {
 			"equip_leg_left": "legl_armor_plate2",
 			"equip_leg_right": "legr_armor_plate2",
 			"equip_pelvis": "pelvis_armor_plate2",
+			"equip_pregnancy_low": {
+				"axis": "pregnancy",
+				"options": {
+					"big": "pregnancy_plate2_big",
+					"mid": "pregnancy_plate2_small",
+				},
+			},
 		},
 		"zones": [0, 1, 2],
 	},
@@ -3300,6 +3369,13 @@ const PARTS = {
 			"equip_leg_left": "legl_armor_plate",
 			"equip_leg_right": "legr_armor_plate",
 			"equip_pelvis": "pelvis_armor_plate",
+			"equip_pregnancy_low": {
+				"axis": "pregnancy",
+				"options": {
+					"big": "pregnancy_plate_big",
+					"mid": "pregnancy_plate_small",
+				},
+			},
 		},
 		"zones": [0, 1, 2],
 	},
@@ -3400,6 +3476,13 @@ const PARTS = {
 			"equip_leg_left": "legl_armor_playboy",
 			"equip_leg_right": "legr_armor_playboy",
 			"equip_pelvis": "pelvis_armor_playboy",
+			"equip_pregnancy_low": {
+				"axis": "pregnancy",
+				"options": {
+					"big": "pregnancy_playboy_big",
+					"mid": "pregnancy_playboy_small",
+				},
+			},
 		},
 		"zones": [0, 1],
 	},
@@ -3449,6 +3532,13 @@ const PARTS = {
 		"group": "outfit_legs",
 		"slots": {
 			"equip_pelvis": "pelvis_armor_slave",
+			"equip_pregnancy_low": {
+				"axis": "pregnancy",
+				"options": {
+					"big": "pregnancy_slave_big",
+					"mid": "pregnancy_slave_small",
+				},
+			},
 		},
 		"zones": [0],
 	},
@@ -3504,6 +3594,13 @@ const PARTS = {
 			"equip_leg_left": "legl_armor_smith",
 			"equip_leg_right": "legr_armor_smith",
 			"equip_pelvis": "pelvis_armor_smith",
+			"equip_pregnancy_low": {
+				"axis": "pregnancy",
+				"options": {
+					"big": "pregnancy_smith_big",
+					"mid": "pregnancy_smith_small",
+				},
+			},
 		},
 		"zones": [0, 1],
 	},
@@ -3554,6 +3651,13 @@ const PARTS = {
 		"group": "outfit_legs",
 		"slots": {
 			"equip_pelvis": "pelvis_armor_tentackle",
+			"equip_pregnancy_low": {
+				"axis": "pregnancy",
+				"options": {
+					"big": "pregnancy_tentackle_big",
+					"mid": "pregnancy_tentackle_small",
+				},
+			},
 		},
 		"zones": [0, 1],
 	},
@@ -3603,6 +3707,13 @@ const PARTS = {
 		"group": "outfit_legs",
 		"slots": {
 			"equip_pelvis": "pelvis_armor_underwear1",
+			"equip_pregnancy_low": {
+				"axis": "pregnancy",
+				"options": {
+					"big": "pregnancy_underwear1_big",
+					"mid": "pregnancy_underwear1_small",
+				},
+			},
 		},
 		"zones": [0, 1],
 	},
@@ -3661,6 +3772,13 @@ const PARTS = {
 			"equip_leg_left": "legl_underwear2",
 			"equip_leg_right": "legr_armor_underwear2",
 			"equip_pelvis": "pelvis_armor_underwear2",
+			"equip_pregnancy_low": {
+				"axis": "pregnancy",
+				"options": {
+					"big": "pregnancy_underwear2_big",
+					"mid": "pregnancy_underwear2_small",
+				},
+			},
 		},
 		"zones": [0],
 	},
@@ -3713,6 +3831,13 @@ const PARTS = {
 		"group": "outfit_legs",
 		"slots": {
 			"equip_pelvis": "pelvis_armor_waitress",
+			"equip_pregnancy_low": {
+				"axis": "pregnancy",
+				"options": {
+					"big": "pregnancy_waitress_big",
+					"mid": "pregnancy_waitress_small",
+				},
+			},
 		},
 		"zones": [0, 1],
 	},
