@@ -1187,6 +1187,9 @@ func subroom_pressed(room_id, subroom_id):
 				selected_room = room_id
 				active_subroom = subroom_id
 				pay_stamina(subroom_data.stamina_cost)
+				#anything the floor generator already put in this subroom - make_loot
+				#picks it up and clears it, so it reaches this chest and no other
+				input_handler.scene_bonus_materials = subroom_data.get('bonus_materials', {})
 				#2test
 	#			input_handler.combat_advance = true
 				var _event = globals.start_fixed_event(subroom_data.event)

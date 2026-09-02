@@ -423,11 +423,18 @@ func buildenemygroup(enemygroup, headless = false):
 		tchar.position = i
 		
 		var mas_lv = 1
+		#Mastery levels a monster gets are normally worth 2.5 of a player's, which is
+		#fine while a rare rolls two or three of them. The tower hands out twenty to
+		#forty-five, and none of what they grant is bounded by the depth caps the way
+		#hp and armour are - so there a level is worth exactly what it is worth to a
+		#character, and the tier alone carries the difficulty.
+		var mas_mul = 2.5
 		if globals.char_roll_data.diff == 'medium':
 			mas_lv = globals.rng.randi_range(2, 3)
 		if globals.char_roll_data.diff == 'hard':
 			mas_lv = globals.rng.randi_range(4, 5)
 		if globals.char_roll_data.diff == 'infinite':
+			mas_mul = 1.0
 			if globals.char_roll_data.lvl > 30:
 				mas_lv = 8
 			elif globals.char_roll_data.lvl > 20:
@@ -442,7 +449,7 @@ func buildenemygroup(enemygroup, headless = false):
 			mas_arr = Enemydata.enemies[tempname].allowed_mastery.duplicate()
 		if rare:
 #			tchar.add_rare_trait()
-			tchar.roll_static_masteries(mas_arr, mas_lv)
+			tchar.roll_static_masteries(mas_arr, mas_lv, mas_mul)
 		if mboss:
 			tchar.tags.push_back("miniboss")
 			tchar.add_trait('miniboss')

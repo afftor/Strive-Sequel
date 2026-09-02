@@ -145,10 +145,14 @@ func build_tooltip(person):
 
 #What the mouse can do with them. The panel keeps this at its foot, apart from who they
 #are - somebody who cannot be moved at all is told why instead, in build_tooltip.
+#The menu is on the right button whatever else the cell will or will not do, so that line
+#stands even for somebody who cannot be moved at all.
 func build_hint():
-	if blocked_reason() != "":
-		return ""
-	return tr("MANSIONVIEW_PUTBACKHINT" if is_picked() else "MANSIONVIEW_PICKHINT")
+	var lines = []
+	if blocked_reason() == "":
+		lines.append(tr("MANSIONVIEW_PUTBACKHINT" if is_picked() else "MANSIONVIEW_PICKHINT"))
+	lines.append(tr("MANSIONVIEW_MENUHINT"))
+	return PoolStringArray(lines).join("\n")
 
 
 #The portraits stand on top of the panel and stop events, so a person dragged out of a room

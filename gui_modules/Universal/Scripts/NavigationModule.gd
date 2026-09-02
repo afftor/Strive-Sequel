@@ -30,21 +30,41 @@ func tut_register_wolves_btn():
 	input_handler.register_btn_source('quest_loc_nav_btn', self, 'tut_get_threat_wolves')
 	input_handler.register_btn_source('quest_loc_nav_explore_btn', self,
 		'tut_get_threat_wolves_explore')
+	input_handler.register_btn_source('quest_loc_nav_work_btn', self,
+		'tut_get_threat_wolves_work')
+
+
+#Which navigation strip the tutorial is pointing at. Every screen carries its own copy of this
+#panel and gui_controller.nav_panel is the one the player is looking at, so answering with
+#`self` would go on naming buttons on the screen the lesson happened to start on. They stay
+#alive when that screen is merely hidden, and they sit at exactly the coordinates of the strip
+#that replaced them - a step framing one of those looks right and is deaf to every click.
+func tut_nav():
+	var live = gui_controller.nav_panel
+	if live != null and is_instance_valid(live):
+		return live
+	return self
+
+
+func tut_strip():
+	return tut_nav().get_node("NavigationContainer/AreaSelection")
+
+
 func tut_get_aliron():
-	for btn in $NavigationContainer/AreaSelection.get_children():
+	for btn in tut_strip().get_children():
 		if btn.get_meta("data", "") == 'aliron':
 			return btn
 func tut_get_mansion():
-	return $NavigationContainer/AreaSelection.get_children()[0]
+	return tut_strip().get_children()[0]
 func tut_get_travelbutton():
-	return $travelbutton
+	return tut_nav().get_node("travelbutton")
 func tut_get_threat_wolves():
 	var loc_id
 	for id in ResourceScripts.game_world.areas['plains'].questlocations:
 		if ResourceScripts.game_world.areas['plains'].questlocations[id].code == 'tutorial_threat_wolves':
 			loc_id = id
 			break
-	for btn in $NavigationContainer/AreaSelection.get_children():
+	for btn in tut_strip().get_children():
 		if btn.get_meta("data", "") == loc_id:
 			return btn
 
@@ -57,6 +77,17 @@ func tut_get_threat_wolves_explore():
 	if button == null or !button.has_node("LocationChoices/Combat"):
 		return null
 	return button.get_node("LocationChoices/Combat")
+
+
+#The other half of that pair. The lesson frames the whole picture, because that is the thing
+#the player has to find, and hovering it splits the frame between Work and Explore - aiming at
+#the middle lands on Work as often as not, which staffs the place from the mansion instead of
+#going there. It is named by the step only so it can be barred for the length of it.
+func tut_get_threat_wolves_work():
+	var button = tut_get_threat_wolves()
+	if button == null or !button.has_node("LocationChoices/Work"):
+		return null
+	return button.get_node("LocationChoices/Work")
 
 
 func open_travel():

@@ -1143,6 +1143,16 @@ func get_used_mastery_points(category):
 	return res
 
 
+#Stats that decide a contest between two fighters rather than add to one of them.
+#The hit roll is accuracy minus evasion and the turn order is speed against speed,
+#so the monster rate does not make these bigger, it makes the contest one-sided:
+#the difference outruns anything a character can reach, the hit roll pins to its
+#5% floor and the enemy simply moves first every round. Speed is not in the depth
+#multiplier's lists at all, so nothing bounds it from the other side.
+#Granted at the player rate; every other passive keeps the monster one.
+const MASTERY_STATS_AT_PLAYER_RATE = ['hitrate', 'evasion', 'speed']
+
+
 func _add_mastery_as_bonuses(category, lv, mul = 2.5):
 	if lv <= 0:
 		return
@@ -1151,7 +1161,10 @@ func _add_mastery_as_bonuses(category, lv, mul = 2.5):
 	var mas_data = Skilldata.masteries[category]
 	for i in range(lv):
 		for stat in mas_data.passive:
-			process_bonus_record(stat, mas_data.passive[stat] * mul, 'innate', category, 0) 
+			var stat_mul = mul
+			if stat in MASTERY_STATS_AT_PLAYER_RATE:
+				stat_mul = 1.0
+			process_bonus_record(stat, mas_data.passive[stat] * stat_mul, 'innate', category, 0)
 		if i < mas_data.maxlevel:
 			var lvdata = mas_data['level%d' % (i + 1)]
 			for trait in lvdata.traits:

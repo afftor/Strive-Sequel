@@ -1305,13 +1305,6 @@ func _apply():
 		var picked = str(stats.get(layer.stat, ""))
 		if picked != "" and picked in CATALOGUE.parts(layer.group):
 			model.selections[layer.group] = picked
-	# An empty hair stat is a layer deliberately taken off.  The map leaves a slot
-	# alone when it cannot resolve a value, which is right for a value it does not
-	# know and wrong for a plain `none`, so the two optional layers are cleared
-	# here rather than left on the catalogue's default.
-	for layer in HAIR_LAYERS:
-		if layer.group != "hair" and str(stats.get(layer.stat, "")) == "":
-			model.selections[layer.group] = ""
 	# How long each hair layer is worn.  A tier the doll has no factor for lands on
 	# the default, and `bald` is answered below by taking the hair off rather than
 	# by shortening it to nothing.

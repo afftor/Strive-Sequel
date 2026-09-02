@@ -415,6 +415,10 @@ const LIST = {
 		code = 'ritual_room',
 		slots = {},
 		work_job = null,
+		#Nobody works in here, so it has no job of its own - but it is what lets the estate
+		#enchant at all (MansionCraftModule's 'enchant' category asks for this room), and the
+		#card's bench button opens that, the way a forge's opens smithing.
+		craft_menu = 'enchant',
 		max_count = 1,
 		upkeep = 0,
 		build_cost = {wood = 80, stone = 60, mithril = 20, gold = 400},
@@ -788,6 +792,17 @@ static func shows_help(code):
 
 static func has_tag(code, tag):
 	return get_type(code).tags.has(tag)
+
+
+#Which bench on the craft screen this room's button opens. Most rooms answer with the work done
+#in them; a room that enables a trade without anybody working at it names it here instead.
+static func get_craft_menu(code):
+	var data = get_type(code)
+	if data == null:
+		return null
+	if data.has('craft_menu'):
+		return data.craft_menu
+	return get_work_job(code)
 
 
 static func get_work_job(code):

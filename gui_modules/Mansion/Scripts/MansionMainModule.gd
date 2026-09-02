@@ -193,6 +193,8 @@ func _ready():
 	globals.connecttexttooltip(LocalTasksButton, tr("MANSIONVIEW_LOCALTASKSHINT"))
 	input_handler.register_btn_source('mansion_local_tasks_btn', self, 'tut_get_local_tasks_btn')
 	input_handler.register_btn_source('mansion_scope_btn', self, 'tut_get_mansion_scope_btn')
+	input_handler.register_btn_source('mansion_mode_beds_btn', self, 'tut_get_mode_beds_btn')
+	input_handler.register_btn_source('mansion_mode_work_btn', self, 'tut_get_mode_work_btn')
 	hotkeys.connect("bindings_changed", self, "build_tutorial_tooltip")
 	build_tutorial_tooltip()
 #	$tutorialpanel/Button.connect('pressed',$tutorialpanel,'hide')
@@ -489,6 +491,15 @@ func tut_get_local_tasks_btn():
 #again, so the tutorial step that used to say "close it" has its own button to point at.
 func tut_get_mansion_scope_btn():
 	return ViewModes.get_node("Scope/MansionButton")
+
+
+#What the plan is arranging - the day's work, or where everybody sleeps. Two buttons rather
+#than one toggle, so the lesson that hands out beds points at one on the way in and the other
+#on the way back.
+func tut_get_mode_beds_btn():
+	return ViewModes.get_node("Plan/ModeBeds")
+func tut_get_mode_work_btn():
+	return ViewModes.get_node("Plan/ModeWork")
 
 
 #The estate is looked at one way or the other - the building itself, or the work it offers -

@@ -167,8 +167,13 @@ func build_traits():
 	globals.build_traitlist_for_char(person, $scroll/traitscontainer)
 
 
+#The buff row is not drawn on this panel any more: it stood where the doll's own controls are -
+#the undress column and its Customize menu - and the icons and the buttons fought over the same
+#corner. The same buffs are still on the character's own screen and on the hover panel over their
+#portrait; this is the one place they were in the way.
 func build_buffs():
-	globals.build_buffs_for_char(person, $buffscontainer, 'mansion')
+	$buffscontainer.visible = false
+	input_handler.ClearContainer($buffscontainer, ['Button'])
 
 
 func set_person(value):

@@ -1153,6 +1153,7 @@ func finalize_subrooms(locdata, subrooms, level):
 						tmp.event = e_data.events
 					tmp.possible_challenges = e_data.possible_challenges.duplicate() #or roll 
 					tmp.icon = e_data.icon
+					roll_tower_chest_ore(locdata, tmp)
 					e_data.limit -= 1
 					if e_data.limit == 0:
 						locdata.event_data.erase(roll)
@@ -1201,6 +1202,32 @@ func finalize_subrooms(locdata, subrooms, level):
 			r_data.subrooms[i] = tmp
 		r_data.subrooms.shuffle()
 #		input_handler.array_shuffle(r_data.subrooms, globals.rng_controllable)
+
+
+#Meteorite ore in the tower's chests, from the tenth floor down. Rolled while the
+#floor is being built rather than when the chest is opened, so what a chest holds
+#is settled the moment the floor exists and reopening the scene cannot reroll it.
+const TOWER_ORE_MATERIAL = 'meteorite_iron'
+const TOWER_ORE_FIRST_FLOOR = 10
+const TOWER_ORE_CHANCE = 0.25
+const TOWER_ORE_AMOUNT = [1, 3]
+
+
+func roll_tower_chest_ore(locdata, subroom):
+	if !locdata.tags.has('infinite'):
+		return
+	#current_level counts from zero, the floor the player is shown counts from one
+	if locdata.current_level + 1 < TOWER_ORE_FIRST_FLOOR:
+		return
+	if !scenedata.scenedict.has(subroom.event):
+		return
+	if !scenedata.scenedict[subroom.event].tags.has('locked_chest'):
+		return
+	if globals.rng.randf() >= TOWER_ORE_CHANCE:
+		return
+	subroom.bonus_materials = {
+		TOWER_ORE_MATERIAL: globals.rng.randi_range(TOWER_ORE_AMOUNT[0], TOWER_ORE_AMOUNT[1])
+	}
 
 
 func set_level_infinite(location, level):

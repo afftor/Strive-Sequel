@@ -73,6 +73,7 @@ var exploration_node
 var active_character
 var scene_characters = []
 var scene_loot
+var scene_bonus_materials = {} #materials a subroom was generated holding, merged into scene_loot once
 var active_area
 var selected_area
 var active_location
@@ -501,20 +502,34 @@ func _input(event):
 			if event.is_action_pressed("ESC") and hard_tutorial.can_open_menu():
 				hard_tutorial.tutorial_menu()
 			pass_event = event is InputEventMouseMotion
-			if event.is_action_released("RMB"):
+			if event.is_action("RMB"):
+				#The whole gesture, not only its end. Nodes that close on a right click do it
+				#from their own _input, which runs ahead of this one, so passing the release
+				#alone was enough for them - but a context menu is opened from gui_input, and
+				#the GUI is only dispatched after this. Swallowed here, a step that teaches
+				#right clicking a portrait could never show the menu it is about.
 				if hard_tutorial.is_RMB_pass():
 					pass_event = true
-					#this is not right, as such signal should be emited per action, not event passing
-					#but for now it will do
-					hard_tutorial.emit_signal("close_by_RMB")
+					if event.is_action_released("RMB"):
+						#this is not right, as such signal should be emited per action, not event passing
+						#but for now it will do
+						hard_tutorial.emit_signal("close_by_RMB")
 			elif event.is_action("LMB"):
 				var action
 				if event.is_pressed(): action = "pressed"
 				else: action = "released"
+				var banned = false
 				for btn_name in hard_tutorial.active_btns:
 					hard_tutorial.validate_btn(btn_name)
 					if hard_tutorial.get_true_rect(btn_name).has_point(event.position):
+						#a barred button wins over every other rect covering the same point -
+						#it is usually inside one of them, which is the whole reason it is
+						#named
+						if hard_tutorial.is_btn_banned(btn_name):
+							banned = true
 						pass_event = pass_event or hard_tutorial.is_action_pass(btn_name, action)
+				if banned:
+					pass_event = false
 		if !pass_event:
 			get_tree().set_input_as_handled()
 			return

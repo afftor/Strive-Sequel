@@ -357,6 +357,34 @@ var tutorials = {
 			text = "TUTORIAL_WORK_ROOM33",
 			panel_pos = Vector2(660, 300),
 			delay = 1.0
+		},
+		#### where the household sleeps ####
+		{
+			#The estate seats everybody by itself as they arrive (game_res.autohouse_character),
+			#so a tutorial household has nowhere for this lesson to happen - Daisy is turned out
+			#of her bed as the step opens, which is also the state the player meets it in: a
+			#room short, and somebody in the strip with nowhere to go.
+			buttons = ['mansion_mode_beds_btn'],
+			tut_func = 'open_bed_lesson',
+			text = "TUTORIAL_WORK_BED1",
+			panel_pos = Vector2(400, 430),
+			delay = 0.4
+		},{
+			#the plan redraws every room when the mode changes, so the strip settles a few
+			#frames after the button
+			buttons = ['mansion_rest_daisy'],
+			text = "TUTORIAL_WORK_BED2",
+			panel_pos = Vector2(660, 500),
+			delay = 0.5
+		},{
+			buttons = ['mansion_bed_place'],
+			text = "TUTORIAL_WORK_BED3",
+			panel_pos = Vector2(660, 620)
+		},{
+			buttons = ['mansion_mode_work_btn'],
+			text = "TUTORIAL_WORK_BED4",
+			panel_pos = Vector2(400, 430),
+			delay = 0.4
 		}
 	],
 	leveling_intermedia = [
@@ -462,6 +490,41 @@ var tutorials = {
 		}
 	],
 	quest_and_combat = [
+		#### the short way round, taught on the way out of the house ####
+		{
+			#Taught on the strip of portraits rather than on a row of the household list: the
+			#strip's menu is the whole of what can be done with somebody, where a row offers two
+			#entries. The list has been open since the chapter before pointed at rows inside it,
+			#and the strip lives under it (set_slave_list_fold -> rooms.set_hud_visible), so it
+			#has to be folded away again before there is anything here to point at.
+			#Right click only: the portrait is framed because it is the thing to point at, and
+			#barred because a left click picks the character up to be carried somewhere, which
+			#is a different lesson entirely. A ban is read on the left button alone, so the
+			#gesture being taught still goes through.
+			buttons = ['mansion_rest_master'],
+			dont_listen = ['mansion_rest_master'],
+			ban_buttons = ['mansion_rest_master'],
+			listen = ['close_by_RMB_sig'],
+			pass_RMB = true,
+			tut_func = 'fold_slave_list',
+			text = "TUTORIAL_RMB_MENU1",
+			panel_pos = Vector2(560,330),
+			#the strip is laid out a frame or two after the fold uncovers it
+			delay = 0.4
+		},{
+			#The menu is a popup and takes the next click for itself whatever it lands on, so
+			#this one is ended by the same gesture that opened it - the panel's own button is
+			#still there for anyone who reaches for it instead, and either way the menu is put
+			#away before the lesson moves on.
+			buttons = [],
+			listen = ['close_by_RMB_sig'],
+			pass_RMB = true,
+			additional_func = 'close_char_context_menu',
+			text = "TUTORIAL_RMB_MENU2",
+			#beside the menu it is about rather than across the screen from it: the menu opens
+			#off the right-hand edge of the portrait the step before framed
+			panel_pos = Vector2(700,300)
+		},
 		#5
 		{
 			buttons = ['aliron_btn'],
@@ -523,9 +586,13 @@ var tutorials = {
 		},{
 			#the strip's button has no press of its own: hovering it turns it into a Work and
 			#an Explore, and Explore is what goes to the place. Pressing the picture used to
-			#carry the lesson forward while the player was still standing in the mansion
-			buttons = ['quest_loc_nav_btn', 'quest_loc_nav_explore_btn'],
-			dont_listen = ['quest_loc_nav_btn'],
+			#carry the lesson forward while the player was still standing in the mansion.
+			#Work is barred rather than left out: it sits inside the framed picture, and
+			#pressing it staffs the place from the mansion - which walks the player off this
+			#screen and leaves the lesson pointing at a strip they are no longer looking at
+			buttons = ['quest_loc_nav_btn', 'quest_loc_nav_explore_btn', 'quest_loc_nav_work_btn'],
+			dont_listen = ['quest_loc_nav_btn', 'quest_loc_nav_work_btn'],
+			ban_buttons = ['quest_loc_nav_work_btn'],
 			highlight = ['quest_loc_nav_btn'],
 			text = 'TUTORIAL_COMBAT12',
 			panel_pos = Vector2(733,150),
@@ -737,9 +804,37 @@ func activate_btn(btn_name):
 		set_listener(active_btns[btn_name], get_btns_signal(btn_name), "btn_truly_pressed")
 	return true
 
+#Asked before every click is judged. A dead entry is resolved again, and so is a live one that
+#is no longer the button its source answers with: the same panel exists on more than one screen
+#(the navigation strip is on all of them), and the copy a step resolved stays alive - and deaf -
+#when the screen holding it is merely hidden. Left alone, the frame keeps sitting on the right
+#coordinates while every click lands on a different set of nodes.
 func validate_btn(btn_name):
 	if !active_btns.has(btn_name) or !is_instance_valid(active_btns[btn_name]):
 		activate_btn(btn_name)
+		return
+	var btns = get_btns()
+	if !btns.has(btn_name) or btns[btn_name].get_btn_func == null:
+		return
+	var source = btns[btn_name].source.get_ref()
+	if source == null or !is_instance_valid(source):
+		return
+	var current = source.call(btns[btn_name].get_btn_func)
+	#a panel caught mid-rebuild answers with nothing; the one already in hand is the better
+	#guess until it does
+	if current == null or !is_instance_valid(current) or current == active_btns[btn_name]:
+		return
+	active_btns[btn_name] = current
+	relisten_btn(btn_name, current)
+
+
+#The listening half of activate_btn, on its own so a button that was replaced under the step
+#can be picked up again without re-running the resolution that already found it. Steps that
+#name a button only to frame it (dont_listen) are left alone here as well.
+func relisten_btn(btn_name, node):
+	if cur_dont_listen != null and btn_name in cur_dont_listen:
+		return
+	set_listener(node, get_btns_signal(btn_name), "btn_truly_pressed")
 
 func get_true_rect(btn_name):
 	var btns = get_btns()
@@ -761,6 +856,13 @@ func get_true_rect(btn_name):
 			return Rect2()
 		node = source.call(btn_info.get_btn_func)
 		active_btns[btn_name] = node
+		#and listen to the button that is there now. The old one was connected before the
+		#panel rebuilt itself, and this is the only place that notices it went: validate_btn
+		#re-activates a *missing* entry, and filling this one in silently would leave a step
+		#framing a live button that no longer carries it forward - the click lands, the game
+		#does the thing, and the tutorial sits there.
+		if node != null and is_instance_valid(node):
+			relisten_btn(btn_name, node)
 	if node == null or !is_instance_valid(node):
 		return Rect2()
 	var true_rect = node.get_global_rect()
@@ -795,7 +897,27 @@ func is_action_pass(btn_name, action):
 				and action in step_info.block_event[btn_name]):
 			return false
 	return true
-	
+
+
+#A button named by the step only to be barred for the length of it. Different from block_event,
+#which merely declines to open the gate: a click is let through when *any* framed button covers
+#it, so a small button sitting inside a framed one could never be stopped that way. A ban wins
+#over every other rect covering the same point.
+func is_btn_banned(btn_name):
+	if !is_tut_active():
+		return false
+	var step_info = tutorials[cur_tut][cur_step]
+	if !step_info.has('ban_buttons') or !(btn_name in step_info.ban_buttons):
+		return false
+	#And only while it is really on screen. A hidden panel keeps the rect the scene shipped it
+	#with, and vetoing on that would swallow clicks meant for whatever is drawn there instead.
+	var node = active_btns.get(btn_name)
+	if node == null or !is_instance_valid(node):
+		return false
+	if node is CanvasItem and !node.is_visible_in_tree():
+		return false
+	return true
+
 
 func start_tutorial(tut_name):
 	cur_tut = tut_name
@@ -826,6 +948,12 @@ func next_tut_step():
 		cur_dont_listen = step_info.dont_listen
 	else:
 		cur_dont_listen = null
+	#Also strictly before activate_btn(). What a tut_func does is put the screen the way this
+	#step needs it - fold the household list away so the strip of portraits underneath is on
+	#screen, raise the scaffolding the step is about. Run afterwards, the step went looking for
+	#its button on the screen it was about to change, found nothing, and drew no frame at all.
+	if step_info.has("tut_func"):
+		self.call(step_info.tut_func)
 	var has_custom_highlight = step_info.has('highlight')
 	var has_no_highlight = step_info.has('no_highlight')
 	var btns_to_activate = step_info.buttons
@@ -853,8 +981,6 @@ func next_tut_step():
 	if step_info.has('listen'):
 		for sig_btn_name in step_info.listen:
 			set_listener(get_btns()[sig_btn_name].source.get_ref(), get_btns_signal(sig_btn_name), "btn_truly_pressed")
-	if step_info.has("tut_func"):
-		self.call(step_info.tut_func)
 	if waits_for_next_btn and step_info.has('text'):
 		#the button lives inside the text panel, so its rect is only final one layout pass
 		#after the panel was moved to this step's position
@@ -1113,6 +1239,37 @@ func close_expanded_card():
 	if gui_controller.mansion == null or !is_instance_valid(gui_controller.mansion):
 		return
 	gui_controller.mansion.SlaveListModule.close_expanded_character()
+
+
+#The menu a right click on a portrait puts up. It is a popup, so it would go away on its own
+#with the next click - but the step it belongs to can also be ended from the panel's own button,
+#and that click is taken by the popup rather than reaching anything of ours. Put away by hand so
+#the lesson never carries on with it still hanging over the screen. Both menus are asked: the
+#strip's and the household list's, which is the same gesture on the other set of portraits.
+func close_char_context_menu():
+	if gui_controller.mansion == null or !is_instance_valid(gui_controller.mansion):
+		return
+	for menu in [gui_controller.mansion.RoomsModule.get_node_or_null("Overlay/CharMenu"),
+			gui_controller.mansion.SlaveListModule.get_node_or_null("CharacterContextMenu")]:
+		if menu != null and is_instance_valid(menu):
+			menu.hide()
+
+
+#What the beds lesson needs standing before it opens. Two things the rooms chapter left the
+#other way round: the strip of portraits is under the slave list, which the crafting steps put
+#back up, and there is nobody to house - the estate seats every arrival itself, so a tutorial
+#household is always fully bedded. Daisy gives her bed up for the length of the lesson and
+#takes it straight back at the end of it; being without one costs a night's rest and nothing
+#else (game_res.mark_slept_rough), and the chapter has no turn left to end.
+func open_bed_lesson():
+	set_slave_list_folded(true)
+	var character = ResourceScripts.game_party.get_unique_slave('daisy')
+	if character == null:
+		return
+	ResourceScripts.game_res.unhouse_character(character.id)
+	if gui_controller.mansion != null and is_instance_valid(gui_controller.mansion):
+		gui_controller.mansion.RoomsModule.refresh()
+
 
 func stop_use_state():
 	if gui_controller.exploration != null:
