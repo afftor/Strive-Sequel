@@ -384,6 +384,12 @@ var statdata = {
 		tags = ['custom_getter'],
 		default_bonus = 'set',
 	},
+	#the coat's own colours, comma separated - see statlist.gd and ch_stats.set_coat_colour
+	body_color_coat = {
+		code = 'body_color_coat',
+		tags = [],
+		default_bonus = 'set',
+	},
 	hair_base = {
 		code = 'hair_base',
 		tags = [],

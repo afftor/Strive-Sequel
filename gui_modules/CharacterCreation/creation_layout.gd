@@ -62,10 +62,8 @@ const SUBMENUS = [
 	{"id": "horns", "label": "CHARCREATE_MENU_HORNS", "stats": ["horns"]},
 ]
 
-# Yes or no, so a box to tick.  `multiple_tits_developed` only ever reaches the screen
-# from the beauty parlor's chair, where the extra pair is offered at all.
-const CHECKBOXES = ["penis_virgin", "vaginal_virgin", "anal_virgin", "mouth_virgin",
-	"multiple_tits_developed"]
+# Yes or no, so a box to tick.
+const CHECKBOXES = ["penis_virgin", "vaginal_virgin", "anal_virgin", "mouth_virgin"]
 
 # A colour belongs under the thing it paints, not in a heap of swatches at the
 # bottom of the screen.  Left is the colour, right is the option it follows; a

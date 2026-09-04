@@ -445,6 +445,30 @@ func upgrade_locked(code):
 	return !area.factions[gate.guild].get('upgrades', {}).has(gate.code)
 
 
+#### taking gear apart ####
+
+#What a piece gives back when it is broken down, as the share of the materials that went into
+#it - the low and the high end of one roll. The guild lesson only opens the bench; how much
+#survives the work is what the bench itself has been improved to, so the answer is read off the
+#forge rather than off the faction.
+#
+#The estate's best bench answers. Raising a second forge with a bare bench cannot make the
+#salvage worse than the good one already does, and there is only one salvage screen to open.
+const SALVAGE_BASE = [0.5, 0.75]
+
+
+func salvage_recovery_range():
+	var bonus = 0.0
+	for entry in MansionLayout.each_room(mansion_layout):
+		if entry.room.type != 'forge':
+			continue
+		if MansionLayout.upgrade_level(entry.room, 'salvage_bench') <= 0:
+			continue
+		bonus = max(bonus, float(MansionLayout.room_effect(entry.room).get('salvage_mod', 0)))
+	#nothing comes back that did not go in, however good the bench
+	return [min(1.0, SALVAGE_BASE[0] + bonus), min(1.0, SALVAGE_BASE[1] + bonus)]
+
+
 func rooms_changed():
 	for char_id in ResourceScripts.game_party.characters:
 		var person = ResourceScripts.game_party.characters[char_id]
@@ -2552,12 +2576,6 @@ func get_pop_cap():
 	if ResourceScripts.game_globals.unlimited_popcap:
 		return 100
 	return MansionLayout.total_sleep_capacity(mansion_layout)
-
-
-#The ceiling, used only to tell "go build another bedroom" apart from "there is nowhere left
-#to put one" - so it is what the mansion could hold if every slot were a full bedroom.
-func get_pop_cap_limit():
-	return MansionLayout.max_sleep_capacity(mansion_layout)
 
 
 #checks

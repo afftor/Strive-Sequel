@@ -291,10 +291,62 @@ const FUR_COLOURS = {
 }
 
 
+# The colours of the coat itself, when the player painted it rather than wearing
+# the artist's own: one "#rrggbb" per colour the pattern has, in the order
+# `doll_coverage` lists them, with '' where the artist's colour still stands.
+func get_coat_colours():
+	var raw = str(statlist.get('body_color_coat', ''))
+	if raw == '':
+		return []
+	return Array(raw.split(','))
+
+
+func get_coat_colour(index):
+	var list = get_coat_colours()
+	if index < 0 or index >= list.size():
+		return ''
+	return str(list[index])
+
+
+func set_coat_colour(index, value):
+	if index < 0:
+		return
+	var list = get_coat_colours()
+	while list.size() <= index:
+		list.append('')
+	list[index] = str(value)
+	#a list of nothing but the artist's own colours is no list at all
+	while !list.empty() and str(list[list.size() - 1]) == '':
+		list.remove(list.size() - 1)
+	statlist.body_color_coat = PoolStringArray(list).join(',')
+	statlist.portrait_update = true
+
+
+# Every colour back to the artist's own.
+func clear_coat_colours():
+	statlist.body_color_coat = ''
+
+
+# What a repainted coat lends the parts that take after it: its first colour,
+# which is the base where the pattern has one and the first mask where it has
+# none. '' while the coat is still the artist's, and for a body with no fur.
+func painted_coat_colour():
+	if !str(statlist.skin_coverage).begins_with('fur'):
+		return ''
+	for value in get_coat_colours():
+		if str(value) != '':
+			return str(value)
+	return ''
+
+
 func get_body_color_tail():
 	if statlist.body_color_tail != '':
 		return statlist.body_color_tail
 	if statlist.tail in FUR_TAILS:
+		#a coat the player repainted answers for the tail growing out of it
+		var painted = painted_coat_colour()
+		if painted != '':
+			return painted
 		if FUR_COLOURS.has(statlist.skin_coverage):
 			return FUR_COLOURS[statlist.skin_coverage]
 		return hair_colour_as_body_part()
@@ -423,6 +475,10 @@ func get_body_color_ears():
 	if statlist.hair_base_color_1 != "":
 		res = statlist.hair_base_color_1
 	res = res.replace('_', '')
+	#a coat the player repainted answers for the ears sticking out of it
+	var painted = painted_coat_colour()
+	if painted != '':
+		return painted
 	if statlist.skin_coverage.begins_with('fur'):
 		match statlist.skin_coverage:
 			'fur_orange':
@@ -1581,6 +1637,8 @@ func set_furry_form(furry):
 		#going through the setter also gives the tail the coat's colour, as creation does
 		if parts.has('skin_coverage') and !(str(statlist.skin_coverage) in _race_part_values(template, 'skin_coverage')):
 			update_stat('skin_coverage', _pick_race_part(template, 'skin_coverage'), 'set')
+			#the paint belonged to the coat that was just replaced
+			statlist.body_color_coat = ''
 		#the muzzle and the limbs, only where the face is still a human one; a Bunny or a Tanuki
 		#lists no penis_type, so the human one stays
 		for stat in ['chin', 'nose', 'lips', 'arms', 'legs', 'penis_type']:
@@ -1598,6 +1656,8 @@ func set_furry_form(furry):
 		#pinned by the coat's bodychange; back to following the hair
 		statlist.body_color_tail = ''
 		statlist.body_color_ears = ''
+		#the paint belonged to a coat this body no longer wears
+		statlist.body_color_coat = ''
 		if str(get_stat('chin')) in FURRY_STALE_CHINS:
 			update_stat('chin', 'default', 'set')
 		#the other sex's stored face would bring the muzzle back after a swap

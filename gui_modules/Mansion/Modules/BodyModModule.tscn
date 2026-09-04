@@ -1,0 +1,591 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/MansionJournalModule.tres" type="StyleBox" id=2]
+[ext_resource path="res://gui_modules/Mansion/Scripts/BodyModModule.gd" type="Script" id=3]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=5]
+[ext_resource path="res://button_job_chars.png" type="Texture" id=6]
+[ext_resource path="res://button_job_chars_hover.png" type="Texture" id=8]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=9]
+[ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=10]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/button_choose_appearance.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/triangles_selection_left.png" type="Texture" id=12]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/triangles_selection_active2.png" type="Texture" id=13]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/triangles_selection_hover2.png" type="Texture" id=14]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/triangles_selection_right.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/triangles_selection_active1.png" type="Texture" id=16]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/triangles_selection_hover1.png" type="Texture" id=17]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/NOTO_SANS_Regular_18px.tres" type="DynamicFont" id=18]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/scrollbar_horizontal_detail.png" type="Texture" id=19]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HSliderBG.tres" type="StyleBox" id=20]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/CheckBox.tres" type="Theme" id=21]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Background.tres" type="StyleBox" id=22]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2.png" type="Texture" id=23]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_pressed.png" type="Texture" id=24]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_hover.png" type="Texture" id=25]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/NOTO_SANS_Regular_14px.tres" type="DynamicFont" id=26]
+[ext_resource path="res://Character_generator/Doll2Spine/doll2_option_previews.gd" type="Script" id=28]
+[ext_resource path="res://gui_modules/Mansion/Scripts/char_portrait_band.gd" type="Script" id=29]
+[ext_resource path="res://Character_generator/Doll2Spine/Doll2View.tscn" type="PackedScene" id=30]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18.tres" type="DynamicFont" id=31]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.976, 0.882, 0.506, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.105882, 0.0705882, 0.0588235, 0.96 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.486275, 0.309804, 0.227451, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.121569, 0.0803922, 0.0627451, 0.98 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.65098, 0.52549, 0.266667, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.137255, 0.0901961, 0.0627451, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.976471, 0.760784, 0.25098, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.105882, 0.0705882, 0.0588235, 0.96 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.486275, 0.309804, 0.227451, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="BodyModModule" type="Panel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 120.0
+margin_top = 50.0
+margin_right = -120.0
+margin_bottom = -50.0
+custom_styles/panel = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Background" type="ColorRect" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 2.0
+margin_bottom = -3.0
+color = Color( 0.03, 0.02, 0.03, 0.93 )
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="."]
+anchor_right = 1.0
+margin_left = 0.0
+margin_top = 26.0
+margin_right = 0.0
+margin_bottom = 66.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Body modifications"
+align = 1
+
+[node name="Characters" type="Control" parent="."]
+margin_left = 24.0
+margin_top = 80.0
+margin_right = 380.0
+margin_bottom = 940.0
+
+[node name="Header" type="Label" parent="Characters"]
+margin_right = 356.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 4 )
+text = "Characters"
+
+[node name="Scroll" type="ScrollContainer" parent="Characters"]
+margin_top = 36.0
+margin_right = 356.0
+margin_bottom = 860.0
+theme = ExtResource( 5 )
+scroll_horizontal_enabled = false
+
+[node name="List" type="VBoxContainer" parent="Characters/Scroll"]
+size_flags_horizontal = 3
+custom_constants/separation = 2
+
+[node name="Button" type="TextureButton" parent="Characters/Scroll/List"]
+visible = false
+margin_right = 336.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 336, 52 )
+toggle_mode = true
+expand = true
+stretch_mode = 0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 8 )
+
+[node name="Icon" type="TextureRect" parent="Characters/Scroll/List/Button"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 48.0
+margin_bottom = 48.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Characters/Scroll/List/Button"]
+margin_left = 56.0
+margin_top = 10.0
+margin_right = 332.0
+margin_bottom = 42.0
+mouse_filter = 2
+text = "Character"
+valign = 1
+clip_text = true
+
+[node name="FurryToggle" type="CheckButton" parent="."]
+margin_left = 400.0
+margin_top = 80.0
+margin_right = 800.0
+margin_bottom = 120.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 31 )
+custom_styles/normal = SubResource( 5 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+text = "Furry look"
+
+[node name="Visuals" type="Control" parent="."]
+margin_left = 400.0
+margin_top = 128.0
+margin_right = 1060.0
+margin_bottom = 940.0
+
+[node name="Backdrop" type="ColorRect" parent="Visuals"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.55 )
+mouse_filter = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Visuals"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+theme = ExtResource( 5 )
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Visuals/ScrollContainer"]
+size_flags_horizontal = 3
+
+[node name="StatsContainer" type="VBoxContainer" parent="Visuals/ScrollContainer/VBoxContainer"]
+rect_min_size = Vector2( 640, 0 )
+size_flags_horizontal = 3
+custom_constants/separation = 8
+
+[node name="Button" type="VBoxContainer" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer"]
+visible = false
+margin_right = 640.0
+margin_bottom = 79.0
+
+[node name="header" type="HBoxContainer" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer/Button"]
+margin_right = 640.0
+margin_bottom = 35.0
+
+[node name="Label" type="Label" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer/Button/header"]
+margin_top = 1.0
+margin_right = 601.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "STATSEX"
+align = 1
+
+[node name="Tooltip" type="TextureRect" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer/Button/header"]
+margin_left = 605.0
+margin_right = 640.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 35, 35 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button" type="TextureButton" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer/Button"]
+margin_top = 39.0
+margin_right = 640.0
+margin_bottom = 79.0
+rect_min_size = Vector2( 200, 36 )
+theme = ExtResource( 9 )
+expand = true
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 11 )
+texture_disabled = ExtResource( 11 )
+texture_focused = ExtResource( 11 )
+
+[node name="LArr" type="TextureButton" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer/Button/button"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 1.0
+margin_top = -19.0
+margin_right = 32.0
+margin_bottom = 19.0
+grow_vertical = 2
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 14 )
+expand = true
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer/Button/button"]
+margin_left = 40.0
+margin_top = 2.0
+margin_right = 600.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "sex"
+align = 1
+
+[node name="RArr" type="TextureButton" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer/Button/button"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -28.0
+margin_top = -18.0
+margin_right = -1.0
+margin_bottom = 18.0
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 17 )
+expand = true
+stretch_mode = 3
+
+[node name="Slider" type="VBoxContainer" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer"]
+visible = false
+margin_right = 640.0
+margin_bottom = 102.0
+
+[node name="header" type="HBoxContainer" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer/Slider"]
+margin_right = 640.0
+margin_bottom = 29.0
+
+[node name="Label" type="Label" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer/Slider/header"]
+margin_top = 1.0
+margin_right = 640.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "STATHEIGHT"
+align = 1
+
+[node name="Control" type="VBoxContainer" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer/Slider"]
+margin_top = 33.0
+margin_right = 640.0
+margin_bottom = 102.0
+custom_constants/separation = 4
+
+[node name="Value" type="Label" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer/Slider/Control"]
+margin_right = 640.0
+margin_bottom = 27.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 18 )
+text = "average"
+align = 1
+valign = 1
+
+[node name="Slider" type="HSlider" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer/Slider/Control"]
+margin_top = 31.0
+margin_right = 640.0
+margin_bottom = 69.0
+rect_min_size = Vector2( 0, 38 )
+size_flags_horizontal = 3
+custom_icons/grabber = ExtResource( 19 )
+custom_icons/grabber_highlight = ExtResource( 19 )
+custom_icons/grabber_disabled = ExtResource( 19 )
+custom_styles/slider = ExtResource( 20 )
+max_value = 5.0
+step = 1.0
+ticks_on_borders = true
+
+[node name="Checkbox" type="CheckBox" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer"]
+visible = false
+margin_right = 640.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 0, 44 )
+theme = ExtResource( 21 )
+text = "STATANAL_VIRGIN"
+
+[node name="SubmenuButton" type="Button" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer"]
+visible = false
+margin_right = 640.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+theme = ExtResource( 9 )
+text = "CHARCREATE_MENU_HAIR"
+
+[node name="Colour" type="VBoxContainer" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer"]
+visible = false
+margin_right = 640.0
+margin_bottom = 73.0
+
+[node name="header" type="HBoxContainer" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer/Colour"]
+margin_right = 640.0
+margin_bottom = 35.0
+
+[node name="Label" type="Label" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer/Colour/header"]
+margin_top = 1.0
+margin_right = 601.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "STATBODY_COLOR_SKIN"
+align = 1
+
+[node name="Tooltip" type="TextureRect" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer/Colour/header"]
+margin_left = 605.0
+margin_right = 640.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 35, 35 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+
+[node name="Picker" type="HBoxContainer" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer/Colour"]
+margin_top = 39.0
+margin_right = 640.0
+margin_bottom = 73.0
+custom_constants/separation = 8
+alignment = 1
+
+[node name="Swatch" type="ColorPickerButton" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer/Colour/Picker"]
+margin_right = 220.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 220, 34 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 31 )
+custom_styles/normal = SubResource( 5 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+
+[node name="Auto" type="Button" parent="Visuals/ScrollContainer/VBoxContainer/StatsContainer/Colour/Picker"]
+margin_left = 228.0
+margin_right = 338.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 110, 34 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 31 )
+custom_styles/normal = SubResource( 5 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+text = "Auto"
+
+[node name="VisualSubmenu" type="Panel" parent="."]
+visible = false
+margin_left = 400.0
+margin_top = 90.0
+margin_right = 1060.0
+margin_bottom = 940.0
+custom_styles/panel = ExtResource( 22 )
+
+[node name="Title" type="HBoxContainer" parent="VisualSubmenu"]
+margin_left = 12.0
+margin_top = 10.0
+margin_right = 648.0
+margin_bottom = 50.0
+
+[node name="Label" type="Label" parent="VisualSubmenu/Title"]
+margin_right = 590.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "CHARCREATE_MENU_HAIR"
+align = 1
+valign = 1
+
+[node name="Close" type="TextureButton" parent="VisualSubmenu/Title"]
+margin_left = 594.0
+margin_right = 636.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 42, 42 )
+texture_normal = ExtResource( 23 )
+texture_pressed = ExtResource( 24 )
+texture_hover = ExtResource( 25 )
+expand = true
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VisualSubmenu"]
+margin_left = 12.0
+margin_top = 60.0
+margin_right = 648.0
+margin_bottom = 830.0
+theme = ExtResource( 5 )
+scroll_horizontal_enabled = false
+
+[node name="Rows" type="VBoxContainer" parent="VisualSubmenu/ScrollContainer"]
+margin_right = 620.0
+size_flags_horizontal = 3
+custom_constants/separation = 18
+
+[node name="StatRow" type="VBoxContainer" parent="VisualSubmenu/ScrollContainer/Rows"]
+visible = false
+margin_right = 620.0
+margin_bottom = 267.0
+custom_constants/separation = 6
+
+[node name="Header" type="Label" parent="VisualSubmenu/ScrollContainer/Rows/StatRow"]
+margin_right = 620.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "STATHAIR_BASE"
+align = 1
+
+[node name="Options" type="GridContainer" parent="VisualSubmenu/ScrollContainer/Rows/StatRow"]
+margin_top = 38.0
+margin_right = 620.0
+margin_bottom = 267.0
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10
+columns = 2
+
+[node name="Tile" type="Button" parent="VisualSubmenu/ScrollContainer/Rows/StatRow/Options"]
+visible = false
+margin_right = 268.0
+margin_bottom = 229.0
+rect_min_size = Vector2( 268, 229 )
+theme = ExtResource( 9 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 3 )
+toggle_mode = true
+
+[node name="Preview" type="TextureRect" parent="VisualSubmenu/ScrollContainer/Rows/StatRow/Options/Tile"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -96.0
+margin_top = 5.0
+margin_right = 96.0
+margin_bottom = 197.0
+rect_min_size = Vector2( 192, 192 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="VisualSubmenu/ScrollContainer/Rows/StatRow/Options/Tile"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -28.0
+margin_right = -4.0
+margin_bottom = -4.0
+mouse_filter = 2
+custom_fonts/font = ExtResource( 26 )
+text = "option"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="Frame" type="Panel" parent="VisualSubmenu/ScrollContainer/Rows/StatRow/Options/Tile"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 4 )
+
+[node name="DollOptionPreviews" type="Node" parent="."]
+script = ExtResource( 28 )
+
+[node name="Empty" type="Label" parent="."]
+margin_left = 400.0
+margin_top = 300.0
+margin_right = 1060.0
+margin_bottom = 400.0
+custom_fonts/font = ExtResource( 4 )
+align = 1
+autowrap = true
+
+[node name="Preview" type="Control" parent="."]
+margin_left = 1080.0
+margin_top = 80.0
+margin_right = 1656.0
+margin_bottom = 940.0
+mouse_filter = 2
+script = ExtResource( 29 )
+
+[node name="StoredImage" type="TextureRect" parent="Preview"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Paperdoll" parent="Preview" instance=ExtResource( 30 )]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+offered_undress_levels = [ "underwear", "naked" ]
+show_hair_menu = false
+update_character_portrait = false

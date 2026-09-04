@@ -727,16 +727,6 @@ texture_normal = ExtResource( 84 )
 texture_pressed = ExtResource( 85 )
 texture_hover = ExtResource( 86 )
 
-[node name="FurryToggle" type="CheckButton" parent="."]
-visible = false
-margin_left = 1290.0
-margin_top = 96.0
-margin_right = 1600.0
-margin_bottom = 136.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 2 )
-text = "Furry look"
-
 [node name="RagdollPanel" type="TextureRect" parent="."]
 margin_left = 1280.0
 margin_top = 140.0

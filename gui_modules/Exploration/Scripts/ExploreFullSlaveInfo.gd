@@ -151,12 +151,9 @@ func _on_Button_pressed():
 func hire_character():
 	input_handler.active_location = ResourceScripts.world_gen.get_location_from_code(gui_controller.exploration_city.selected_location)
 	var person = gui_controller.exploration_city.person_to_hire
-	if ResourceScripts.game_party.characters.size() >= ResourceScripts.game_res.get_pop_cap():
-		if ResourceScripts.game_res.get_pop_cap() < ResourceScripts.game_res.get_pop_cap_limit():
-			input_handler.SystemMessage("You don't have enough rooms")
-		else:
-			input_handler.SystemMessage("Population limit reached")
-		return
+	#Running out of beds no longer refuses the purchase - the bed count is what the household
+	#pays for later, not a gate on acquiring somebody. Whoever has nowhere to sleep is housed
+	#by autohouse_character when a bed frees up, and until then pays the slept_rough penalty.
 	if ResourceScripts.game_res.money < person.calculate_price(true):
 		input_handler.SystemMessage("Not enough money")
 		return

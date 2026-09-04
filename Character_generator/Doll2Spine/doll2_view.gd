@@ -1419,8 +1419,31 @@ func _coverage_pattern():
 func _apply_coverage():
 	var wanted = _coverage_pattern()
 	model.coverage_id = wanted
-	model.coverage_colors = COVERAGE.default_colors(wanted)
+	model.coverage_colors = _coverage_colours(wanted)
 	model._apply_coverage_to_meshes()
+
+
+# The artist's colours for the pattern, with the character's own painted over
+# them: `body_color_coat` carries one "#rrggbb" per colour the pattern has, in
+# the order `doll_coverage` lists them, and '' anywhere the artist's still
+# stands.  A character who never repainted their coat has no list at all.
+func _coverage_colours(pattern_id):
+	var colours = COVERAGE.default_colors(pattern_id)
+	var painted = str(_stat("body_color_coat"))
+	if pattern_id == "" or painted == "":
+		return colours
+	var chosen = painted.split(",")
+	for i in range(min(chosen.size(), colours.size())):
+		var value = str(chosen[i]).strip_edges()
+		if value == "":
+			continue
+		#a name out of the palette the fur is painted from, the way every other body colour
+		#is spelled; an "#rrggbb" is taken as it is
+		if value.begins_with("#"):
+			colours[i] = Color(value)
+			continue
+		colours[i] = COLORS.colour_of("body_color_tail", value)
+	return colours
 
 
 # Ears drawn as fur rather than as skin.  Everything the art calls an ear that is

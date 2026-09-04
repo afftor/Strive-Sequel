@@ -39,6 +39,9 @@ var pan = Vector2.ZERO
 var panning = false
 var pending_expel = null
 var pending_cancel = null
+#Whether the panel beside the card was up when the card stepped aside.  A room with nothing
+#to say never had one, so it must not be conjured up on the way back - see set_card_aside().
+var details_were_shown = false
 var place = LocationTasks.MANSION_CODE
 var local_tasks = false
 
@@ -260,8 +263,6 @@ func connect_char_tooltip(node, person, text, hint = ""):
 
 #### the character menu ####
 
-#what a skill wears in the menu when it cannot be used right now
-const LOCKED_SKILL_ICON = preload("res://assets/images/gui/ui_slot_cross.png")
 #a line's worth of picture, no more
 const MENU_ICON_SIZE = 32
 #the social panel the expanded card draws: six slots, and the menu offers what is in them
@@ -297,8 +298,8 @@ func open_char_menu(person, at = null):
 
 
 #What they can do to somebody today. A skill they cannot pay for, have no charges left of or do
-#not meet the conditions for is still listed - saying so is the point - but it says why and does
-#nothing when pressed.
+#not meet the conditions for is still listed - saying so is the point - but it is greyed out and
+#cannot be pressed, the same as its slot on the expanded card.
 #Only what the character has to hand: the six slots of their social panel, in the order the
 #expanded card draws them (MansionSlaveListModule.build_expanded_social_skills). Everything they
 #merely know but have not put in a slot belongs to the panel where slots are arranged, not to a
@@ -319,21 +320,20 @@ func social_skill_actions(person):
 		if data == null:
 			continue
 		var usable = social_skill_usable(person, code, data)
-		#a skill they cannot use today is still listed - saying so is the point - and the icon
-		#says which is which. The item is not disabled: a disabled item cannot be pressed, and
-		#pressing it is how they are told why
+		#a skill they cannot use today keeps its own picture and goes grey, so the line still
+		#says which skill it is; the reason it is out of reach is on the tooltip
 		res.append({
 			label = tr(data.name),
-			icon = skill_icon(data, usable),
+			icon = skill_icon(data),
+			disabled = !usable,
+			tooltip = "" if usable else tr("MANSIONVIEW_MENU_SKILLREFUSED") % tr(data.name),
 			callback = funcref(self, "menu_use_social"),
 			args = [person, code],
 		})
 	return res
 
 
-func skill_icon(data, usable):
-	if !usable:
-		return menu_sized(LOCKED_SKILL_ICON)
+func skill_icon(data):
 	if data.icon is String:
 		return menu_sized(load(data.icon)) if data.icon != '' else null
 	return menu_sized(data.icon)
@@ -402,17 +402,21 @@ func menu_open_training(person):
 
 
 #Every line the menu offers, with the same answer the card's own button would give. What is
-#refused is still listed and still pressable: pressing it says why, which is more use than a
-#line that does nothing.
+#refused is still listed, greyed out and unpressable - the same treatment the card gives its own
+#buttons - and the reason it gives is carried on the line's tooltip.
 func menu_action(actions, label, method, person, allowed):
+	var reason = allowed[1]
 	actions.append({
 		label = label,
-		icon = null if allowed[0] else menu_sized(LOCKED_SKILL_ICON),
+		disabled = !allowed[0],
+		tooltip = "" if allowed[0] else (reason if reason != "" else tr("MANSIONVIEW_MENU_REFUSED")),
 		callback = funcref(self, "menu_do"),
 		args = [method, person, allowed],
 	})
 
 
+#The menu greys a refused line, so this should never be reached with a refusal; it stays as the
+#backstop that keeps a rule from being walked around if a line is ever left pressable.
 func menu_do(method, person, allowed):
 	if !allowed[0]:
 		var reason = allowed[1]
@@ -2060,6 +2064,7 @@ func close_card():
 	card.visible = false
 	$Overlay/RoomDetails.visible = false
 	$Overlay/CardCatcher.visible = false
+	details_were_shown = false
 
 
 #The card and the sheet that catches clicks beside it both live on the overlay layer, which
@@ -2069,10 +2074,21 @@ func close_card():
 #the order, the card steps aside while it has a question of its own open.  The catcher is
 #the half that actually broke it: it would swallow the click meant for Yes and close the
 #card instead of answering.
+#
+#The panel beside the card is on that same layer and is the wider half of the pair, so it has
+#to step aside as well - left up, it stood over the right-hand side of the question and took
+#the No button with it, which is how demolition ended up looking like a question with one
+#answer.  Whether it was up at all is remembered rather than assumed: a room with nothing to
+#say has no panel, and a second call while the card is already aside must not forget the
+#first answer.
 func set_card_aside(aside):
 	if card == null:
 		return
+	var details = $Overlay/RoomDetails
+	if aside and card.visible:
+		details_were_shown = details.visible
 	card.visible = !aside
+	details.visible = details_were_shown and !aside
 	$Overlay/CardCatcher.visible = !aside
 
 

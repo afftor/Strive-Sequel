@@ -198,13 +198,20 @@ const LIST = {
 			#Taking worn gear apart for what it was made of. The bench is built here like any
 			#other improvement, but how it is done is learned from the workers' guild first:
 			#until that lesson is bought the row is shown greyed rather than hidden, so the
-			#player can see the bench exists and where to go for it.
+			#player can see the bench exists and where to go for it. The guild sells that
+			#lesson once and no more - how much of a piece survives being taken apart is what
+			#these levels buy, and they are bought here in materials rather than in favours.
+			#
+			#'salvage_mod' is added to both ends of the share that comes back
+			#(game_res.salvage_recovery_range), so the top bench returns everything.
 			salvage_bench = {
 				code = 'salvage_bench',
 				icon = 'forge',
 				guild_upgrade = {guild = 'workers', code = 'workers_disassamby_upgrade'},
 				levels = {
 					1: {cost = {iron = 60, wood = 40, steel = 20}, progress = 40, effect = {}},
+					2: {cost = {steel = 60, woodiron = 40, leatherthick = 20}, progress = 60, effect = {salvage_mod = 0.15}},
+					3: {cost = {mithril = 25, boneancient = 25, obsidian = 20}, progress = 85, effect = {salvage_mod = 0.25}},
 				},
 			},
 			craft_expansion = {

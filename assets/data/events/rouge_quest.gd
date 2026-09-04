@@ -1177,7 +1177,6 @@ var data = {
 				text = "ROUGE_RETURN_TO_ROUGE_KETCH_ESCAPED",
 				common_effects = [{code = "unique_character_changes", value = "rouge", args = [
 					{code = "add_trait", trait = "training_s_working", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "servant"}]},
-					{code = "add_trait", trait = "training_callmaster", reqs = [{code = "stat", stat = "slave_class", operant = "eq", value = "slave"}]},
 				]}],
 				options = [
 					{

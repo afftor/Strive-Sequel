@@ -667,21 +667,21 @@ func build_body_mod_button(current):
 
 
 func on_tattoo():
-	_open_parlor('tattoo')
+	_open_parlor('open_beauty_parlor')
 
 
 func on_body_mod():
-	_open_parlor('bodymod')
+	_open_parlor('open_body_mod')
 
 
-#Both buttons open the one window, told which of its two jobs it was pressed for. The card
-#goes first: the Overlay is a CanvasLayer that wins input over anything the mansion puts up.
-func _open_parlor(mode):
+#Each button opens its own window. The card goes first: the Overlay is a CanvasLayer that wins
+#input over anything the mansion puts up.
+func _open_parlor(opener):
 	var mansion = view.get_parent()
-	if mansion == null or !mansion.has_method('open_beauty_parlor'):
+	if mansion == null or !mansion.has_method(opener):
 		return
 	view.close_card()
-	mansion.open_beauty_parlor(mode)
+	mansion.call(opener)
 
 
 func build_inventory_button(current):

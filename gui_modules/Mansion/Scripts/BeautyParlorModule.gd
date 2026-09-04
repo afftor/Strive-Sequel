@@ -1,27 +1,45 @@
 extends Panel
-#The beauty parlor's chair, opened from the room's card: the tattoo bench, and - once the room
-#has its Body modifications improvement - the door to the creation screen with its filters
-#lifted. Registered as an open window the way SexSelectMenu is: ESC and the close button both
-#end at hide(), and _custom_gui_controller_close keeps gui_controller.close_scene() from putting
-#the mansion back to its default state underneath. What the old inventory tab spread over three
-#sibling nodes and input_handler.interacted_character is kept here, in one place.
-
-const MansionLayout = preload("res://src/core/mansion_layout.gd")
+#The beauty parlor's tattoo bench, opened from the room's card. Remaking a body is a different
+#job behind a different button, and it has a window of its own - see BodyModModule.
+#
+#Registered as an open window the way SexSelectMenu is: ESC and the close button both end at
+#hide(), and _custom_gui_controller_close keeps gui_controller.close_scene() from putting the
+#mansion back to its default state underneath.
 
 #the eight places on a body, bare; the character keeps them prefixed 'tattoo_'
 const SLOT_ORDER = ['face', 'neck', 'arms', 'legs', 'chest', 'crotch', 'waist', 'ass']
 
-var mode = 'tattoo' #'tattoo' | 'bodymod'
+#What an empty place looks like: the same silhouettes the inventory puts in an empty gear
+#slot, so a frame says which part of the body it is before anything is inked on it. Every
+#one of the eight is reachable - branding takes neck, crotch and ass, makeup and tribal the
+#face, lust chest, ass and crotch, the regen inks arms, legs and waist.
+const SLOT_ICONS = {
+	face = preload("res://assets/images/iconsitems/cell/head.png"),
+	neck = preload("res://assets/images/iconsitems/cell/neck.png"),
+	arms = preload("res://assets/images/iconsitems/cell/gloves.png"),
+	legs = preload("res://assets/images/iconsitems/cell/legs.png"),
+	chest = preload("res://assets/images/iconsitems/cell/body.png"),
+	crotch = preload("res://assets/images/iconsitems/cell/underwear.png"),
+	waist = preload("res://assets/images/iconsitems/cell/pelvis.png"),
+	ass = preload("res://assets/images/iconsitems/cell/booty.png"),
+}
+#an empty place is a hint rather than a picture, so its silhouette is dimmed
+const EMPTY_SLOT_TINT = Color(0.45, 0.45, 0.45, 1)
+#With a pot in hand the places it may go on are what the player is looking for, so they are
+#lit warm while everything else is pushed back. The frames come in one plain texture and one
+#greyed one, and those two alone read as almost the same square.
+const SLOT_READY_TINT = Color(1.4, 1.25, 0.85, 1)
+const SLOT_BLOCKED_TINT = Color(0.5, 0.5, 0.5, 1)
+const SLOT_IDLE_TINT = Color(1, 1, 1, 1)
+
 var selected_person = null
 #an Items.materiallist code, which is also the Traitdata.tattoodata key; '' when no pot is picked
 var selected_ink = ''
 #{slot = 'tattoo_x', action = 'add' | 'replace' | 'remove'} while the yes/no question is up
 var pending = {}
-#the creation panel while it is open for us
-var editor = null
 
 onready var character_list = $Characters/Scroll/List
-onready var ink_grid = $Inks/Scroll/Grid
+onready var ink_grid = $Tattoo/Inks/Grid
 onready var preview = $Preview
 
 
@@ -29,22 +47,19 @@ func _ready():
 	gui_controller.add_close_button(self)
 	$Title.text = tr("BEAUTYPARLOR_TITLE")
 	$Characters/Header.text = tr("BEAUTYPARLOR_CHARACTERS")
-	$Inks/Header.text = tr("BEAUTYPARLOR_INKS")
-	$Inks/Hint.text = tr("BEAUTYPARLOR_HINT")
-	$ModifyButton.text = tr("BEAUTYPARLOR_MODIFY")
-	$ModifyButton.connect("pressed", self, "_on_modify_pressed")
+	$Tattoo/InksHeader.text = tr("BEAUTYPARLOR_INKS")
+	$Tattoo/Hint.text = tr("BEAUTYPARLOR_HINT")
 	for slot in SLOT_ORDER:
-		$Slots.get_node(slot).connect("pressed", self, "_on_slot_pressed", [slot])
+		var button = $Tattoo/Slots.get_node(slot)
+		button.connect("pressed", self, "_on_slot_pressed", [slot])
+		button.get_node('Name').text = tr("TATTOO" + slot.to_upper())
 	#the booth lands a portrait a couple of frames after it is asked for
 	input_handler.connect("PortraitUpdate", self, "_refresh_row_icons")
 
 
 #### the window ####
 
-func open(new_mode = 'tattoo'):
-	if new_mode == 'bodymod' and !body_mod_available():
-		new_mode = 'tattoo'
-	mode = new_mode
+func open():
 	pending = {}
 	#whoever sat here last may have left on a quest, or the party, since
 	if selected_person != null and (!ResourceScripts.game_party.characters.has(selected_person.id) \
@@ -52,17 +67,44 @@ func open(new_mode = 'tattoo'):
 		selected_person = null
 	if selected_ink != '' and int(ResourceScripts.game_res.materials.get(selected_ink, 0)) <= 0:
 		selected_ink = ''
-	#shown before it is filled: the doll in the preview only draws itself once it is on screen
+	#shown before it is filled: the doll only stands itself up once it has a rect to stand in
 	show()
 	raise()
 	rebuild_all()
 	input_handler.append_not_duplicate(gui_controller.windows_opened, self)
-	if mode == 'tattoo':
-		input_handler.ActivateTutorial("TUTORIALLIST8")
+	_hide_clock()
+	input_handler.ActivateTutorial("TUTORIALLIST8")
+
+
+#the estate's clock is drawn over everything on this screen, this window included, so it steps
+#aside while the room is open and comes back with it - the same thing the progression and
+#training popups do
+var clock_was_visible = false
+
+
+func _hide_clock():
+	clock_was_visible = gui_controller.clock != null and gui_controller.clock.visible
+	if gui_controller.clock != null:
+		gui_controller.clock.hide()
+	set_process(true)
+
+
+func _restore_clock():
+	if clock_was_visible and gui_controller.clock != null:
+		gui_controller.clock.show()
+	clock_was_visible = false
+
+
+#gui_controller.clock_visibility() puts the clock back whenever the screen underneath is judged
+#again, so keeping it away is a standing job, not a one-off
+func _process(_delta):
+	if visible and gui_controller.clock != null and gui_controller.clock.visible:
+		gui_controller.clock.hide()
 
 
 func hide():
 	gui_controller.windows_opened.erase(self)
+	_restore_clock()
 	.hide()
 
 
@@ -72,22 +114,15 @@ func _custom_gui_controller_close():
 	hide()
 
 
-func body_mod_available():
-	return MansionLayout.best_upgrade_level(ResourceScripts.game_res.mansion_layout,
-		'beauty_parlor', 'body_modifications') >= 1
-
-
 func rebuild_all():
 	rebuild_characters()
 	rebuild_inks()
 	refresh_slots()
 	refresh_preview(true)
-	$Inks.visible = mode == 'tattoo'
-	$Slots.visible = mode == 'tattoo' and selected_person != null
-	$ModifyButton.visible = mode == 'bodymod'
-	$ModifyButton.disabled = selected_person == null
+	$Tattoo.visible = selected_person != null
 	$Empty.visible = selected_person == null
-	$Empty.text = tr("BEAUTYPARLOR_BODYMODHINT") if mode == 'bodymod' else tr("BEAUTYPARLOR_PICKCHAR")
+	if $Empty.visible:
+		$Empty.text = tr("BEAUTYPARLOR_PICKCHAR")
 
 
 #### the people ####
@@ -99,9 +134,6 @@ func _block_reason(person):
 		return tr("BEAUTYPARLOR_AWAY")
 	if !person.is_free():
 		return tr("BEAUTYPARLOR_NOTHERE")
-	#a story character drawn by hand has no doll to reshape; the editor would come up empty
-	if mode == 'bodymod' and person.is_unique() and !person.uses_paperdoll():
-		return tr("BEAUTYPARLOR_UNIQUE")
 	return ''
 
 
@@ -154,10 +186,10 @@ func rebuild_inks():
 		button.set_meta('code', code)
 		button.get_node('Icon').texture = material.icon
 		button.get_node('Amount').text = ResourceScripts.custom_text.transform_number(owned)
-		#the material's name is the localized one; tattoodata's is not
-		button.get_node('Name').text = material.name
-		#greyed rather than left out: the inventory hid an empty pot, the bench shows what could
-		#be brewed
+		#no caption under the pot: "Ink: Permanent Makeup" is wider than the cell, and the
+		#tooltip below names it - the inventory's own icon grid does the same
+		#greyed rather than left out: the inventory hid an empty pot, the bench shows what
+		#could be brewed
 		button.disabled = owned <= 0
 		button.pressed = code == selected_ink
 		globals.connectmaterialtooltip(button, material)
@@ -178,7 +210,7 @@ func _on_ink_pressed(code):
 	refresh_slots()
 
 
-#### the body ####
+#### the places on the body ####
 
 #With a pot picked, the places this ink may go on this person light up: can_add_tattoo asks
 #the ink's own slot list, its conditions, whether it may be repeated and whether a pot is left.
@@ -186,29 +218,37 @@ func _on_ink_pressed(code):
 func refresh_slots():
 	var tattoos = selected_person.get_tattoos() if selected_person != null else {}
 	for slot in SLOT_ORDER:
-		var button = $Slots.get_node(slot)
+		var button = $Tattoo/Slots.get_node(slot)
 		var key = 'tattoo_' + slot
 		var code = tattoos.get(key, null)
-		var icon = null
+		var icon = button.get_node('icon')
 		if code != null and Traitdata.tattoodata.has(code):
-			icon = Traitdata.tattoodata[code].icon
-		button.get_node('icon').texture = icon
-		#never pre-pressed: a lit frame reads as 'already chosen'
-		button.pressed = false
+			icon.texture = Traitdata.tattoodata[code].icon
+			icon.modulate = Color(1, 1, 1, 1)
+		else:
+			icon.texture = SLOT_ICONS[slot]
+			icon.modulate = EMPTY_SLOT_TINT
 		if selected_person == null:
 			button.disabled = true
 		elif selected_ink == '':
 			button.disabled = code == null
 		else:
 			button.disabled = !selected_person.can_add_tattoo(key, selected_ink)
+		if button.disabled:
+			button.self_modulate = SLOT_BLOCKED_TINT
+		elif selected_ink != '':
+			#this pot may go here: that is the whole question being asked right now
+			button.self_modulate = SLOT_READY_TINT
+			icon.modulate = Color(1, 1, 1, 1)
+		else:
+			button.self_modulate = SLOT_IDLE_TINT
 		globals.disconnect_text_tooltip(button)
 		globals.connecttexttooltip(button, _slot_text(slot, code))
 	if selected_person == null:
-		$Slots/Header.text = ''
-		$Slots/Hint.text = ''
+		$Tattoo/SlotsHeader.text = ''
 	else:
-		$Slots/Header.text = selected_person.get_full_name()
-		$Slots/Hint.text = Items.materiallist[selected_ink].name if selected_ink != '' else tr("CHOOSETATTOO")
+		$Tattoo/SlotsHeader.text = Items.materiallist[selected_ink].name if selected_ink != '' \
+			else tr("CHOOSETATTOO")
 
 
 #the place, and what is inked there
@@ -226,7 +266,6 @@ func _slot_text(slot, code):
 
 
 func _on_slot_pressed(slot):
-	$Slots.get_node(slot).pressed = false
 	if selected_person == null:
 		input_handler.SystemMessage(tr("BEAUTYPARLOR_PICKCHAR"))
 		return
@@ -237,7 +276,8 @@ func _on_slot_pressed(slot):
 			input_handler.SystemMessage(tr("CHOOSETATTOO"))
 			return
 		pending = {slot = key, action = 'remove'}
-		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, '_confirm_pending', tr("REMOVETATTOO")])
+		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL,
+			[self, '_confirm_pending', _ask_text('remove', slot, current)])
 		return
 	if current == selected_ink:
 		input_handler.SystemMessage(tr("SAMETATTOO"))
@@ -245,9 +285,26 @@ func _on_slot_pressed(slot):
 	if !selected_person.can_add_tattoo(key, selected_ink):
 		input_handler.SystemMessage(tr("INVALIDREQS"))
 		return
-	pending = {slot = key, action = 'replace' if current != null else 'add'}
+	var action = 'replace' if current != null else 'add'
+	pending = {slot = key, action = action}
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL,
-		[self, '_confirm_pending', tr("REPLACETATTOO" if current != null else "ADDTATTOO")])
+		[self, '_confirm_pending', _ask_text(action, slot, current)])
+
+
+#The question names all three: which ink, where on the body, and whose body it is - the
+#panel has a character list and eight identical frames, and "Add tattoo?" answered none of it.
+func _ask_text(action, slot, current):
+	var place = tr("TATTOO" + slot.to_upper())
+	var who = selected_person.get_short_name()
+	match action:
+		'add':
+			return tr("BEAUTYPARLOR_ASK_ADD") % [Items.materiallist[selected_ink].name, place, who]
+		'replace':
+			return tr("BEAUTYPARLOR_ASK_REPLACE") % [Items.materiallist[current].name, place, who,
+				Items.materiallist[selected_ink].name]
+		'remove':
+			return tr("BEAUTYPARLOR_ASK_REMOVE") % [Items.materiallist[current].name, place, who]
+	return ''
 
 
 #The question is asked and answered across frames, and the pot may have been spent or the
@@ -279,50 +336,6 @@ func refresh_preview(force):
 		preview.hide_band()
 		return
 	if force:
-		#the band skips the rebuild when nothing it knows of has changed, and a body just
-		#reshaped in the chair is exactly such a change
+		#the band skips the rebuild while nothing it knows of has changed
 		preview.cached_person_id = ''
 	preview.show_for(selected_person)
-
-
-#### body modifications ####
-
-func _on_modify_pressed():
-	if selected_person == null:
-		input_handler.SystemMessage(tr("BEAUTYPARLOR_PICKCHAR"))
-		return
-	if input_handler.globalsettings.disable_paperdoll:
-		input_handler.SystemMessage(tr("BEAUTYPARLOR_NODOLLS"))
-		return
-	var reason = _block_reason(selected_person)
-	if reason != '':
-		input_handler.SystemMessage(reason)
-		return
-	var person = selected_person
-	#hidden first: that takes this window off the ESC stack, so ESC under the creation screen
-	#(which refuses ESC itself) does nothing rather than popping this out from under it
-	hide()
-	editor = input_handler.get_spec_node(input_handler.NODE_CHAREDIT, [person, false, true])
-	if editor != null and !editor.is_connected("visibility_changed", self, "_on_editor_visibility_changed"):
-		editor.connect("visibility_changed", self, "_on_editor_visibility_changed")
-
-
-#Every way out of the creation screen - Confirm, or a close button that hid it - lands here,
-#so the portrait on file and every open doll follow the new look, and the chair opens again.
-func _on_editor_visibility_changed():
-	if editor == null or !is_instance_valid(editor) or editor.visible:
-		return
-	if editor.is_connected("visibility_changed", self, "_on_editor_visibility_changed"):
-		editor.disconnect("visibility_changed", self, "_on_editor_visibility_changed")
-	editor = null
-	if selected_person != null:
-		input_handler.reshoot_portrait(selected_person)
-		input_handler.emit_signal('update_ragdoll')
-	var mansion = get_parent()
-	if mansion == null:
-		return
-	if mansion.get('SlaveListModule') != null:
-		mansion.SlaveListModule.rebuild()
-	#not while the player has gone elsewhere in the meantime - a load, the town, a scene
-	if mansion.has_method('open_beauty_parlor') and gui_controller.current_screen == mansion:
-		mansion.open_beauty_parlor('bodymod')

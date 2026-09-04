@@ -590,18 +590,27 @@ func close_sex_selection():
 	SexSelect.hide()
 
 
-#The beauty parlor's window - tattoos, and the body editor once the room has been improved.
-#Made when it is first asked for, like the salvage bench. Its own open() shows it, raises it
-#and registers it as an open window, so no win_btn_connections_handler: there is no rail
-#button to pair it with, and its hide() takes it back out of the register.
+#The beauty parlor's two windows: the tattoo bench, and - once the room has been improved -
+#the body editor. Two buttons on the room's card, so two windows rather than one wearing two
+#faces. Made when first asked for, like the salvage bench. Their own open() shows, raises and
+#registers them as open windows, so no win_btn_connections_handler: there is no rail button to
+#pair them with, and their hide() takes them back out of the register.
 var beauty_parlor = null
+var body_mod = null
 
 
-func open_beauty_parlor(mode = 'tattoo'):
+func open_beauty_parlor():
 	if beauty_parlor == null or !is_instance_valid(beauty_parlor):
 		beauty_parlor = load("res://gui_modules/Mansion/Modules/BeautyParlorModule.tscn").instance()
 		add_child(beauty_parlor)
-	beauty_parlor.open(mode)
+	beauty_parlor.open()
+
+
+func open_body_mod():
+	if body_mod == null or !is_instance_valid(body_mod):
+		body_mod = load("res://gui_modules/Mansion/Modules/BodyModModule.tscn").instance()
+		add_child(body_mod)
+	body_mod.open()
 
 
 #Pressed says "this is what you are looking at", so with the list up nothing is pressed: the

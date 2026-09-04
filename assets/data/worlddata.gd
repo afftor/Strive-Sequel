@@ -176,13 +176,17 @@ var guild_upgrades = {
 	# 	maxlevel = 4,
 	# 	effects = [{code = 'questsetting:total', operant = '+', value = 1}],
 	# },
+	#One lesson, bought once. The guild teaches the trick of taking gear apart and that is the
+	#whole of what it sells - how much actually comes back off the bench is the forge's business,
+	#and is bought there as salvage_bench levels (mansion_room_types.gd). Nothing here to buy
+	#twice, so the row disappears from the guild screen the moment it is paid for.
 	workers_disassamby_upgrade = {
 		code = 'workers_disassamby_upgrade',
 		descript = tr("WORKERS_DISASSAMBY_UPGRADE_DISC"),
 		name = tr("WORKERS_DISASSAMBY_UPGRADE_NAME"),
-		cost = [100,500,1000,2000],
+		cost = [100],
 		reqs = [{type = "current_guild", check = true, value = "workers"}],
-		maxlevel = 4,
+		maxlevel = 1,
 		effects = [],
 	},
 

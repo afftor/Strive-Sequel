@@ -817,10 +817,36 @@ func _connect_expanded_card_doubleclicks(node, person):
 		_connect_expanded_card_doubleclicks(child, person)
 
 
+#The portrait is the handle the card was opened by, so pressing it again is what puts the card
+#away - the same gesture both ways. Everywhere else on the card a double click still opens the
+#character sheet; over the portrait that gesture cannot arrive, because the first press of it has
+#already folded the card, so the second is ignored rather than opening the sheet behind the fold.
 func _expanded_card_gui_input(event, person):
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed and event.doubleclick:
+	if !(event is InputEventMouseButton) or event.button_index != BUTTON_LEFT or !event.pressed:
+		return
+	if expanded_animation_state == "closing":
+		return
+	#the lesson decides what may be pressed while it is running, the same as for a click landing
+	#outside the card - folding here would take away the very card the step is pointing at
+	if !input_handler.hard_tutorial_active and _expanded_portrait_has_point(get_global_mouse_position()):
+		get_tree().set_input_as_handled()
+		close_expanded_character()
+		return
+	if event.doubleclick:
 		get_tree().set_input_as_handled()
 		_open_character_info(person)
+
+
+#The portrait band of the enlarged copy - the picture with its frame, and the bars and icons
+#lying over it, which are the parts of that band that take a click of their own. Only the copy
+#is asked: the real card underneath is transparent and keeps its own press to open.
+func _expanded_portrait_has_point(position):
+	if !is_instance_valid(expanded_card_visual):
+		return false
+	var portrait = expanded_card_visual.get_node_or_null("Margin/Rows/Body/Portrait")
+	if portrait == null or !portrait.is_visible_in_tree():
+		return false
+	return portrait.get_global_rect().has_point(position)
 
 
 func _copy_card_tooltips(source, target):
