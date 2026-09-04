@@ -9,11 +9,11 @@ const SCHEMA_VERSION = 2
 
 const SOURCE = {
 	"atlas": "Doll2_spine4.2_female.atlas",
-	"attachment_count": 672,
+	"attachment_count": 696,
 	"bone_count": 271,
 	"contract": "doll2_v1",
 	"skeleton": "Doll2_spine4.2_female.json",
-	"skeleton_hash": "geqxgPelw3s",
+	"skeleton_hash": "odG8CW+U6Ww",
 	"slot_count": 78,
 	"spine_version": "4.2.43",
 }
@@ -244,6 +244,13 @@ const AXES = {
 		"default": "default",
 		"label": "DOLL2_PREVIEW_BELLY_SHAPE",
 		"values": ["default", "muscle"],
+	},
+	"body_fit": {
+		"body_tag": "beastkin",
+		"default": "human",
+		"hidden": true,
+		"label": "",
+		"values": ["human", "beastkin"],
 	},
 	"hand_pose": {
 		"default": "1",
@@ -2602,6 +2609,20 @@ const PARTS = {
 					"small": "tits_cloth2_small",
 				},
 			},
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "101_armory_set_cloth_female/LegL_armor_cloth_beastkin",
+					"human": "101_armory_set_cloth_female/LegL_armor_cloth",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "101_armory_set_cloth_female/LegR_armor_cloth_beastkin",
+					"human": "101_armory_set_cloth_female/LegR_armor_cloth",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_cloth2",
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",
@@ -2647,8 +2668,20 @@ const PARTS = {
 					"small": "tits_cloth3_small",
 				},
 			},
-			"equip_leg_left": "legl_armor_cloth",
-			"equip_leg_right": "legr_armor_cloth",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_cloth_beastkin",
+					"human": "legl_armor_cloth",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_cloth_beastkin",
+					"human": "legr_armor_cloth",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_cloth",
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",
@@ -2675,8 +2708,20 @@ const PARTS = {
 		"folders": ["101_armory_set_cloth3_female"],
 		"group": "outfit_legs",
 		"slots": {
-			"equip_leg_left": "legl_armor_cloth",
-			"equip_leg_right": "legr_armor_cloth",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_cloth_beastkin",
+					"human": "legl_armor_cloth",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_cloth_beastkin",
+					"human": "legr_armor_cloth",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_cloth",
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",
@@ -2693,6 +2738,20 @@ const PARTS = {
 		"folders": ["101_armory_set_cloth_female"],
 		"group": "outfit_legs",
 		"slots": {
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "101_armory_set_cloth_female/LegL_armor_cloth_beastkin",
+					"human": "101_armory_set_cloth_female/LegL_armor_cloth",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "101_armory_set_cloth_female/LegR_armor_cloth_beastkin",
+					"human": "101_armory_set_cloth_female/LegR_armor_cloth",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_cloth2",
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",
@@ -2726,8 +2785,20 @@ const PARTS = {
 					"small": "tits_gipure1_small",
 				},
 			},
-			"equip_leg_left": "legl_armor_gipure1",
-			"equip_leg_right": "legr_armor_gipure1",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_gipure1_beastkin",
+					"human": "legl_armor_gipure1",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_gipure1_beastkin",
+					"human": "legr_armor_gipure1",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_gipure1",
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",
@@ -2752,8 +2823,20 @@ const PARTS = {
 		"folders": ["105_armory_set_gipure1_female"],
 		"group": "outfit_legs",
 		"slots": {
-			"equip_leg_left": "legl_armor_gipure1",
-			"equip_leg_right": "legr_armor_gipure1",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_gipure1_beastkin",
+					"human": "legl_armor_gipure1",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_gipure1_beastkin",
+					"human": "legr_armor_gipure1",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_gipure1",
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",
@@ -2922,8 +3005,20 @@ const PARTS = {
 					"3": "handr_armor_latex3",
 				},
 			},
-			"equip_leg_left": "legl_armor_latex",
-			"equip_leg_right": "legr_armor_latex",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_latex_beastkin",
+					"human": "legl_armor_latex",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_latex_beastkin",
+					"human": "legr_armor_latex",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_latex",
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",
@@ -2972,8 +3067,20 @@ const PARTS = {
 		"folders": ["108_armory_set_latex_female"],
 		"group": "outfit_legs",
 		"slots": {
-			"equip_leg_left": "legl_armor_latex",
-			"equip_leg_right": "legr_armor_latex",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_latex_beastkin",
+					"human": "legl_armor_latex",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_latex_beastkin",
+					"human": "legr_armor_latex",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_latex",
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",
@@ -3009,8 +3116,20 @@ const PARTS = {
 					"small": "tits_leather_small",
 				},
 			},
-			"equip_leg_left": "legl_armor_leather",
-			"equip_leg_right": "legr_armor_leather",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_leather_beastkin",
+					"human": "legl_armor_leather",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_leather_beastkin",
+					"human": "legr_armor_leather",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_leather",
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",
@@ -3055,8 +3174,20 @@ const PARTS = {
 					"small": "tits_leather_2 small",
 				},
 			},
-			"equip_leg_left": "legl_armor_leather2",
-			"equip_leg_right": "legr_armor_leather2",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_leather2_beastkin",
+					"human": "legl_armor_leather2",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_leather2_beastkin",
+					"human": "legr_armor_leather2",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_leather2",
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",
@@ -3083,8 +3214,20 @@ const PARTS = {
 		"folders": ["102_armory_set_leather2_female"],
 		"group": "outfit_legs",
 		"slots": {
-			"equip_leg_left": "legl_armor_leather2",
-			"equip_leg_right": "legr_armor_leather2",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_leather2_beastkin",
+					"human": "legl_armor_leather2",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_leather2_beastkin",
+					"human": "legr_armor_leather2",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_leather2",
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",
@@ -3101,8 +3244,20 @@ const PARTS = {
 		"folders": ["102_armory_set_leather_female"],
 		"group": "outfit_legs",
 		"slots": {
-			"equip_leg_left": "legl_armor_leather",
-			"equip_leg_right": "legr_armor_leather",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_leather_beastkin",
+					"human": "legl_armor_leather",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_leather_beastkin",
+					"human": "legr_armor_leather",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_leather",
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",
@@ -3154,8 +3309,20 @@ const PARTS = {
 					"3": "hand_armorr3",
 				},
 			},
-			"equip_leg_left": "legl_armor1",
-			"equip_leg_right": "legr_armor1",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor1_beastkin",
+					"human": "legl_armor1",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor1_beastkin",
+					"human": "legr_armor1",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_maidu",
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",
@@ -3205,8 +3372,20 @@ const PARTS = {
 		"folders": ["99_armory_set_maidu"],
 		"group": "outfit_legs",
 		"slots": {
-			"equip_leg_left": "legl_armor1",
-			"equip_leg_right": "legr_armor1",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor1_beastkin",
+					"human": "legl_armor1",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor1_beastkin",
+					"human": "legr_armor1",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_maidu",
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",
@@ -3274,8 +3453,20 @@ const PARTS = {
 					"small": "tits_plate_small",
 				},
 			},
-			"equip_leg_left": "legl_armor_plate",
-			"equip_leg_right": "legr_armor_plate",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_plate_beastkin",
+					"human": "legl_armor_plate",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_plate_beastkin",
+					"human": "legr_armor_plate",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_plate",
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",
@@ -3320,8 +3511,20 @@ const PARTS = {
 					"small": "tits_plate2_small",
 				},
 			},
-			"equip_leg_left": "legl_armor_plate2",
-			"equip_leg_right": "legr_armor_plate2",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_plate2_beastkin",
+					"human": "legl_armor_plate2",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_plate2_beastkin",
+					"human": "legr_armor_plate2",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_plate2",
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",
@@ -3348,8 +3551,20 @@ const PARTS = {
 		"folders": ["103_armory_set_plate2_female"],
 		"group": "outfit_legs",
 		"slots": {
-			"equip_leg_left": "legl_armor_plate2",
-			"equip_leg_right": "legr_armor_plate2",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_plate2_beastkin",
+					"human": "legl_armor_plate2",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_plate2_beastkin",
+					"human": "legr_armor_plate2",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_plate2",
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",
@@ -3366,8 +3581,20 @@ const PARTS = {
 		"folders": ["103_armory_set_plate_female"],
 		"group": "outfit_legs",
 		"slots": {
-			"equip_leg_left": "legl_armor_plate",
-			"equip_leg_right": "legr_armor_plate",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_plate_beastkin",
+					"human": "legl_armor_plate",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_plate_beastkin",
+					"human": "legr_armor_plate",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_plate",
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",
@@ -3421,8 +3648,20 @@ const PARTS = {
 					"3": "handr3_playboy",
 				},
 			},
-			"equip_leg_left": "legl_armor_playboy",
-			"equip_leg_right": "legr_armor_playboy",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_playboy_beastkin",
+					"human": "legl_armor_playboy",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_playboy_beastkin",
+					"human": "legr_armor_playboy",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_playboy",
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",
@@ -3473,8 +3712,20 @@ const PARTS = {
 		"folders": ["112_armory_set_playboy_female"],
 		"group": "outfit_legs",
 		"slots": {
-			"equip_leg_left": "legl_armor_playboy",
-			"equip_leg_right": "legr_armor_playboy",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_playboy_beastkin",
+					"human": "legl_armor_playboy",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_playboy_beastkin",
+					"human": "legr_armor_playboy",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_playboy",
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",
@@ -3741,8 +3992,20 @@ const PARTS = {
 					"small": "tits_underwear2_small",
 				},
 			},
-			"equip_leg_left": "legl_underwear2",
-			"equip_leg_right": "legr_armor_underwear2",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_underwear2_beastkin",
+					"human": "legl_underwear2",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_underwear2_beastkin",
+					"human": "legr_armor_underwear2",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_underwear2",
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",
@@ -3769,8 +4032,20 @@ const PARTS = {
 		"folders": ["113_armory_set_underwear2"],
 		"group": "outfit_legs",
 		"slots": {
-			"equip_leg_left": "legl_underwear2",
-			"equip_leg_right": "legr_armor_underwear2",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_underwear2_beastkin",
+					"human": "legl_underwear2",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_underwear2_beastkin",
+					"human": "legr_armor_underwear2",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_underwear2",
 			"equip_pregnancy_low": {
 				"axis": "pregnancy",

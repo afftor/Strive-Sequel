@@ -48,7 +48,10 @@ var data = {
 	},
 
 	rouge_melchor_confrontation_start = {
-		reqs = [],
+		#the capital offers this scene by hand the moment emp_arena_11 opens act4_continue, while the
+		#same effect also queues it on a one hour timer. taking the manual route does not strike the
+		#queued copy off, so cancel it here instead of replaying the confrontation
+		reqs = [{type = 'event_seen', value = 'rouge_melchor_confrontation_start', check = false, negative = 'cancel'}],
 		image = null,
 		music = 'rouge_theme',
 		character = "$rouge",
@@ -1068,10 +1071,20 @@ var data = {
 					{
 						code = "close",
 						text = "DIALOGUECLOSE",
-						reqs = [],
+						reqs = [{type = "decision", value = "rouge_refused_late", check = false}],
 						type = "next_dialogue",
 						bonus_effects = [
 							{code = "progress_quest", value = "rouge_quest", stage = "rouge"},
+							{code = "update_city"}
+						]
+					},
+					{
+						code = "close",
+						text = "DIALOGUECLOSE",
+						reqs = [{type = "decision", value = "rouge_refused_late", check = true}],
+						type = "next_dialogue",
+						bonus_effects = [
+							{code = "complete_quest", value = "rouge_quest"},
 							{code = "update_city"}
 						]
 					}
@@ -1104,10 +1117,20 @@ var data = {
 			{
 				code = "close",
 				text = "DIALOGUECLOSE",
-				reqs = [],
+				reqs = [{type = "decision", value = "rouge_refused_late", check = false}],
 				type = "next_dialogue",
 				bonus_effects = [
 					{code = "progress_quest", value = "rouge_quest", stage = "rouge"},
+					{code = "update_city"}
+				]
+			},
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [{type = "decision", value = "rouge_refused_late", check = true}],
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = "complete_quest", value = "rouge_quest"},
 					{code = "update_city"}
 				]
 			}
@@ -1124,10 +1147,20 @@ var data = {
 			{
 				code = "close",
 				text = "DIALOGUECLOSE",
-				reqs = [],
+				reqs = [{type = "decision", value = "rouge_refused_late", check = false}],
 				type = "next_dialogue",
 				bonus_effects = [
 					{code = "progress_quest", value = "rouge_quest", stage = "rouge"},
+					{code = "update_city"}
+				]
+			},
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [{type = "decision", value = "rouge_refused_late", check = true}],
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = "complete_quest", value = "rouge_quest"},
 					{code = "update_city"}
 				]
 			}

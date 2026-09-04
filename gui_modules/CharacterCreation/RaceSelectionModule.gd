@@ -61,6 +61,10 @@ func roll_random_race():
 func select_character_race():
 	hide()
 	# var person = get_parent().person
+	#the list on screen may have been built for an earlier character, whose run could have
+	#unlocked more races than this one has - never confirm a race this run cannot pick
+	if !get_parent().get_available_races().has(selected_race):
+		return
 	if get_parent().person.get_stat('race') != selected_race:
 		get_parent().person.set_stat('race', selected_race)
 		get_parent().preservedsettings["race"] = selected_race

@@ -1194,6 +1194,11 @@ var statdata = {
 		tags = ['bool'],
 		default_bonus = 'set',
 	},
+	use_paperdoll = {
+		code = 'use_paperdoll',
+		tags = ['bool'],
+		default_bonus = 'set',
+	},
 	#other
 	is_hirable = {
 		code = 'is_hirable',

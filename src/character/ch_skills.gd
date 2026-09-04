@@ -270,7 +270,7 @@ func restore_skill_charge(code):
 	gui_controller.mansion.SkillModule.build_skill_panel()
 
 
-func use_social_skill(s_code, target, item):
+func use_social_skill(s_code, target, item, bulk = 1):
 	var template = Skilldata.get_template(s_code, parent.get_ref())
 	if template.has('special'):
 		if item != null:
@@ -364,6 +364,11 @@ func use_social_skill(s_code, target, item):
 	s_skill.hit_roll()
 	s_skill.resolve_value(true)
 	s_skill.apply_random()
+	#several copies of a stackable item spent at once scale the values of a single use
+	if bulk > 1:
+		for i in s_skill.value:
+			if typeof(i.value) in [TYPE_INT, TYPE_REAL]:
+				i.value *= bulk
 	s_skill.setup_effects_final()
 	parent.get_ref().process_event(variables.TR_S_CAST, {skill = s_skill, caster = parent.get_ref(), target = target})
 	if target != null:
@@ -562,7 +567,24 @@ func use_social_skill(s_code, target, item):
 	input_handler.update_slave_list()
 	#input_handler.update_slave_panel()
 
-func use_mansion_item(item):
+#how many copies of a stack one action may spend: always 1 unless the item is tagged
+#'bulk_use', and never more than the stack holds or the per-target cap still allows
+func get_item_use_limit(item, amount = 1):
+	var itembase = Items.itemlist[item.itembase]
+	if itembase.tags.has('bulk_use') == false:
+		return 1
+	amount = int(max(1, amount))
+	if itembase.tags.has("save_on_use") == false and item.amount != null:
+		amount = int(min(amount, item.amount))
+	if itembase.has("uses_per_target"):
+		var used = 0
+		if items_used_global.has(itembase.code):
+			used = items_used_global[itembase.code]
+		amount = int(min(amount, itembase.uses_per_target - used))
+	return int(max(1, amount))
+
+
+func use_mansion_item(item, amount = 1):
 	var itembase = Items.itemlist[item.itembase]
 	var skill = itembase.mansion_effect
 	if parent.get_ref().checkreqs(itembase.reqs) == false:
@@ -571,14 +593,15 @@ func use_mansion_item(item):
 	if itembase.has("uses_per_target") && items_used_global.has(itembase.code) && items_used_global[itembase.code] >= itembase.uses_per_target:
 		input_handler.SystemMessage(parent.get_ref().translate("[name] can't use this item anymore."))
 		return
-	elif itembase.has("uses_per_target"):
+	amount = get_item_use_limit(item, amount)
+	if itembase.has("uses_per_target"):
 		if items_used_global.has(itembase.code):
-			items_used_global[itembase.code] += 1
+			items_used_global[itembase.code] += amount
 		else:
-			items_used_global[itembase.code] = 1
+			items_used_global[itembase.code] = amount
 	if itembase.tags.has("save_on_use") == false:
-		item.amount -= 1
-	use_social_skill(skill, parent.get_ref(), item)
+		item.amount -= amount
+	use_social_skill(skill, parent.get_ref(), item, amount)
 
 
 func act_prepared():

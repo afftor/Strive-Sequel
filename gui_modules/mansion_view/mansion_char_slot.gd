@@ -107,6 +107,11 @@ func refresh():
 		$icon.texture = character.get_class_icon()
 	input_handler.queue_portrait(character)
 	var text = character.get_short_name()
+	#What they are worth here this turn, between the name and the hints: the hints are about what
+	#the mouse can do next, this is about the person the mouse is over.
+	var made = view.person_yield_text(character, kind, holder, holder_floor)
+	if made != "":
+		text += "\n" + made
 	if is_away():
 		text += "\n" + tr("MANSIONVIEW_AWAYHINT")
 	if would_be_swapped_out():

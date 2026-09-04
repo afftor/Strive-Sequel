@@ -8,7 +8,6 @@ var person
 var mode
 var show_list = true
 var category = 'all'
-var list_mode = 'inventory'
 onready var ItemsList = $InventoryListModule
 onready var SlaveList = $InventorySlaveListModule
 onready var GearModule = $InventoryGearModule
@@ -27,9 +26,6 @@ signal item_sold
 
 func _ready():
 	gui_controller.add_close_button(self, "add_offset")
-	GearModule.get_node("TattooButton").connect("pressed", self, "change_list_mode")
-	GearModule.get_node("InventoryButton").connect("pressed", self, "change_list_mode")
-	GearModule.get_node("TattooButton").visible = true
 	$InventoryListModule.buildinventory()
 	$GridContainer/CharInfoButton.connect("pressed", self, "open_char_info")
 	$GridContainer/MansionButton.connect("pressed", self, "return_to_mansion")
@@ -44,18 +40,6 @@ func open_char_info():
 
 func return_to_mansion():
 	close_inventory_to_mansion()
-
-func change_list_mode():
-	list_mode = "inventory" if list_mode == "tattoo" else "tattoo"
-	$InventoryListModule.buildinventory()
-	GearModule.get_node("TattooButton").visible = list_mode != "tattoo"
-	GearModule.get_node("InventoryButton").visible = !GearModule.get_node("TattooButton").is_visible()
-
-
-func set_list_mode_inventory():
-	list_mode == "inventory"
-	$InventoryListModule.buildinventory()
-
 
 func close_inventory_to_char_info():
 	input_handler.emit_signal('update_ragdoll')
@@ -84,16 +68,6 @@ func close_inventory_to_mansion():
 func update():
 	if selectedhero == null:
 		selectedhero = input_handler.interacted_character
-	list_mode = "inventory"
-	if ResourceScripts.game_res.upgrades.has("tattoo_set") and ResourceScripts.game_res.upgrades.tattoo_set > 0:
-		GearModule.get_node("TattooButton").visible = list_mode != "tattoo"
-		GearModule.get_node("InventoryButton").visible = !GearModule.get_node("TattooButton").is_visible()
-	else:
-		GearModule.get_node("TattooButton").visible = false
-		GearModule.get_node("InventoryButton").visible = false
-	GearModule.selected_slot = ''
-	GearModule.highlight_avalible_slots([])
-	ItemsList.selected_tattoo = ''
 
 
 func set_active_hero(hero):
@@ -102,7 +76,6 @@ func set_active_hero(hero):
 	SlaveList.update()
 	ItemsList.buildinventory()
 	GearModule.build_gear_panel()
-	GearModule.show_tattoos()
 	StatsModule.open_base_stats()
 	FactorsModule.show_factors()
 	update()

@@ -53,6 +53,7 @@ var template_direct = {
 	body_image = 'default',
 	player_selected_icon = false,
 	player_selected_body = false,
+	use_paperdoll = false, #a unique character drawn with the doll instead of their own sprites
 	unique_variation = null,
 	
 	#personality

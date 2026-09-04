@@ -215,8 +215,8 @@ margin_bottom = 1063.0
 [node name="MansionBottomLeftModule" parent="." instance=ExtResource( 9 )]
 material = SubResource( 1 )
 margin_left = 15.0
-margin_top = 934.0
-margin_right = 89.0
+margin_top = 872.0
+margin_right = 151.0
 margin_bottom = 1068.0
 theme = ExtResource( 12 )
 
@@ -243,9 +243,9 @@ margin_bottom = 937.32
 [node name="MansionTaskInfoModule" parent="." instance=ExtResource( 17 )]
 visible = false
 margin_left = 15.0
-margin_top = 670.0
+margin_top = 608.0
 margin_right = 305.0
-margin_bottom = 922.0
+margin_bottom = 860.0
 
 [node name="MenuButton" type="Button" parent="."]
 visible = false

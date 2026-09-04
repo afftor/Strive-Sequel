@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=2]
+[gd_scene load_steps=93 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/Universal/Modules/CharStatsPanel.tscn" type="PackedScene" id=2]
@@ -78,6 +78,8 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/arrow_navigator-up.png" type="Texture" id=76]
 [ext_resource path="res://assets/images/gui/panels/panelsmall.png" type="Texture" id=77]
 [ext_resource path="res://assets/images/portraits/cali_prt/cali_default_prt_bold.png" type="Texture" id=78]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/CheckBox.tres" type="Theme" id=79]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=80]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -1152,6 +1154,18 @@ custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "1"
+
+[node name="FastForward" type="CheckBox" parent="."]
+margin_left = 31.0
+margin_top = 880.0
+margin_right = 331.0
+margin_bottom = 930.0
+theme = ExtResource( 79 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+custom_fonts/font = ExtResource( 80 )
+text = "OPTFASTCOMBAT"
 
 [node name="Menu" type="TextureRect" parent="."]
 margin_left = 31.0

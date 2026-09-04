@@ -1637,7 +1637,7 @@ var itemlist = {
 		price = 100,
 		icon = load("res://assets/images/iconsgear/strapon.png"),
 		tier = 'easy',
-		reqs = [],
+		reqs = [{code = 'sex', operant = 'eq', value = 'female'}],
 		effects = [],
 		tags = [],
 		basestats = {},
@@ -3571,7 +3571,7 @@ var itemlist = {
 		reqs = [{code = 'trait', trait = 'literacy', check = true}],
 		reqs_fail_message = "ITEMREQSLITERACY",
 		effects = [],
-		tags = [],
+		tags = ['bulk_use'],
 		mansion_effect = 'exp_scroll',
 	},
 	bouquet = {#gift, gives affection to gifted character

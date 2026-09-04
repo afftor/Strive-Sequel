@@ -72,12 +72,14 @@ func update(person = null):
 		$Body.visible = body_visible
 		$ragdoll.visible = false
 	
+	#a unique character switched to the doll has no sprite on show, so neither swap applies
+	var drawn_unique = person != null && person.get_stat('unique') != null && !person.uses_paperdoll()
 	# nudity check
-	if person != null && person.get_stat('unique') != null && person.has_work_rule('nudity'):
+	if drawn_unique && person.has_work_rule('nudity'):
 		if worlddata.pregen_character_sprites[person.get_stat('unique')].has("nude"):
 			$Body.texture = images.get_sprite(worlddata.pregen_character_sprites[person.get_stat('unique')].nude.path)
 	# wed check
-	if person != null && person.get_stat('unique') != null:
+	if drawn_unique:
 		if ResourceScripts.game_progress.spouse != null && globals.valuecheck({type = 'has_spouse', check = true}) && !ResourceScripts.game_progress.marriage_completed:
 			var spouse_person = characters_pool.get_char_by_id(ResourceScripts.game_progress.spouse)
 			if spouse_person.get_stat('unique') == person.get_stat('unique') and worlddata.pregen_character_sprites[person.get_stat('unique')].has("wed"):

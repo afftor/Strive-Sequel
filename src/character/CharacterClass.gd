@@ -1291,6 +1291,14 @@ func is_worker():
 	else:
 		return training.get_trainer() != null or enthrall.get_thrall_master() != null
 
+#Which of the four undress steps the player last left this character on. The nudity
+#work rule is the same choice with less in it, and set_undress_level writes both.
+func get_undress_level():
+	return xp_module.get_undress_level()
+
+func set_undress_level(level):
+	xp_module.set_undress_level(level)
+
 func has_work_rule(rule):
 	if !variables.work_rules.has(rule): return false
 	return xp_module.work_rules[rule]
@@ -1419,8 +1427,8 @@ func get_professions():
 	return dyn_stats.get_professions()
 
 
-func use_mansion_item(item):
-	skills.use_mansion_item(item)
+func use_mansion_item(item, amount = 1):
+	skills.use_mansion_item(item, amount)
 
 func get_icon(path = false):
 	if path: 
@@ -1520,6 +1528,16 @@ func add_tattoo(slot, code):
 
 func remove_tattoo(slot):
 	statlist.remove_tattoo(slot)
+
+#the same animal with the fur on or off - see ch_stats.set_furry_form
+func is_furry_form():
+	return statlist.is_furry_form()
+
+func has_furry_counterpart():
+	return statlist.furry_counterpart_race() != ''
+
+func set_furry_form(furry):
+	return statlist.set_furry_form(furry)
 
 func play_sfx(code):
 	if displaynode != null:
@@ -1812,6 +1830,12 @@ func killed(direct_call = true):
 		process_event(variables.TR_DEATH)
 	enthrall.cleanup()
 	ResourceScripts.game_party.check_breakdown_on_char_loss(self)
+	#The dead hold no job either. Nothing prunes a task's worker list on its own, so an id
+	#left behind went on filling a workplace that the party could no longer name - a slot
+	#showing nobody, refusing everybody, and impossible to free from any screen.
+	if !is_unavaliable():
+		remove_from_travel()
+		remove_from_task(true)
 	equipment.clear_equip()
 	training.clear_training()
 	ResourceScripts.game_party.add_fate(id, tr("SIBLINGMODULEFATEDEAD"))
@@ -2162,7 +2186,9 @@ func decipher_single(ch):
 		'sex':
 			match i.operant:
 				'neq':
-					text2 += tr("REQSEX")+": " + i.value.capitalize() + "."
+					text2 += tr("REQSEX")+": " + tr("SLAVESEX" + i.value.to_upper()) + "."
+				'eq':
+					text2 += tr("STATSEX")+": " + tr("SLAVESEX" + i.value.to_upper()) + "."
 		'virgin':
 			match i.check:
 				false:
@@ -2852,7 +2878,7 @@ func fix_skillpanels(list_soc_add, list_combat_add, list_soc_remove, list_combat
 	skills.fix_skillpanels(list_soc_add, list_combat_add, list_soc_remove, list_combat_remove)
 
 func update_portrait(ragdoll): # for ragdolls
-	if !get_stat('dynamic_portrait'):
+	if !get_stat('dynamic_portrait') and !uses_paperdoll():
 		return
 	if !get_stat('portrait_update'):
 		return
@@ -2865,6 +2891,13 @@ func update_portrait(ragdoll): # for ragdolls
 
 
 func needs_portrait(): #never had one taken, or the file behind it is gone
+	if uses_paperdoll():
+		#the drawn portrait stays in icon_image, so the doll's shot is asked for by its
+		#own path instead - switching the toggle back off must find the artwork intact
+		var doll_path = doll_portrait_path()
+		if input_handler.portrait_cache.has(doll_path):
+			return false
+		return !File.new().file_exists(doll_path)
 	if !get_stat('dynamic_portrait'):
 		return false
 	var path = get_stat('icon_image')
@@ -2878,6 +2911,8 @@ func needs_portrait(): #never had one taken, or the file behind it is gone
 
 
 func portrait_ready(path): #called back by the ragdoll, the image is in the cache by then
+	if uses_paperdoll(): #get_icon reads the shot off doll_portrait_path, icon_image is left alone
+		return
 	set_stat('icon_image', path)
 
 
@@ -2891,9 +2926,41 @@ func check_portrait():
 		return false
 	if !(path.is_abs_path() or path.is_rel_path()): #portrait is not path - so it must exist
 		return true
-	if File.new().file_exists(path): 
+	if File.new().file_exists(path):
 		return true
 	return false
+
+
+#Where the booth writes this character's shot. The drawn portrait and sprite of a unique
+#character stay in icon_image and body_image untouched, so the toggle below is reversible.
+func doll_portrait_path():
+	return variables.portraits_folder + 'portrait_' + id + '.png'
+
+
+#The doll instead of the character's own artwork. Only the unique cast has artwork to
+#replace, and with paperdolls switched off in the options there is no doll to switch to,
+#so the drawing stays in both of those cases.
+func uses_paperdoll():
+	if !get_stat('use_paperdoll'):
+		return false
+	if input_handler.globalsettings.disable_paperdoll:
+		return false
+	return true
+
+
+func set_use_paperdoll(value):
+	value = bool(value)
+	if bool(get_stat('use_paperdoll')) == value:
+		return
+	set_stat('use_paperdoll', value)
+	if value:
+		#nothing has ever been shot for a unique character - dynamic_portrait is off for
+		#anyone whose data names a portrait - so the booth is asked for one now
+		set_stat('portrait_update', true)
+		input_handler.reshoot_portrait(self)
+	else:
+		update_prt() #back to the drawn face for whatever they are wearing now
+	input_handler.emit_signal('update_ragdoll')
 
 
 func update_prt():
@@ -3107,9 +3174,11 @@ func finish_minor_training():
 	}
 	input_handler.play_animation("trait_aquired", args)
 	var trait_data = Traitdata.traits[cur_minor_training]
-	globals.text_log_add('char', "%s: %s" % [
+	#The banner above says it once and is gone; the estate's log is where the player looks
+	#afterwards to find out which of them finished what while the turn was running.
+	globals.mansion_activity_log_add('training', tr("MANSION_ACTIVITY_TRAINING_COMPLETE") % [
 		get_short_name(),
-		tr("MINORTRAIN_TRAIT_AQUIRED") % tr(trait_data.name)
+		"[color=%s]%s[/color]" % [variables.hexcolordict.k_yellow, tr(trait_data.name)],
 	])
 	
 	cur_minor_training = null

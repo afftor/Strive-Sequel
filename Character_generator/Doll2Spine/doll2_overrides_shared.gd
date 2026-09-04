@@ -175,6 +175,19 @@ const COMPANIONS = {
 # ------------------------------------------------------------------ axes ----
 
 const AXES = {
+	# Several sets now ship a second leg mesh fitted around the broader Beastkin
+	# feet.  This is derived from the selected body's tag rather than exposed as a
+	# separate choice: changing body must change the worn cut with it.
+	"body_fit": {
+		"values": ["human", "beastkin"],
+		"default": "human",
+		"label": "",
+		"parse": "tokens",
+		"tokens": {"beastkin": "beastkin"},
+		"fallback": "human",
+		"body_tag": "beastkin",
+		"hidden": true,
+	},
 	"tits_size": {
 		"values": ["flat", "small", "normal", "large", "big"],
 		"default": "large",
@@ -221,6 +234,9 @@ const AXES = {
 # attachment in that slot; a single attachment is always assigned directly.
 # Only the hands are shared: breasts and pregnancy exist on the female rig alone.
 const SLOT_AXES = {
+	"equip_leg_left": "body_fit",
+	"equip_leg_right": "body_fit",
+
 	# Both rigs grew a heavier pair of legs for orcs.
 	"leg_left": "legs",
 	"leg_right": "legs",

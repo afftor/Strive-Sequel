@@ -547,6 +547,20 @@ custom_fonts/font = SubResource( 19 )
 toggle_mode = true
 text = "USPRITE_BUTTON_TEXT"
 
+[node name="upaperdoll" type="CheckBox" parent="SlaveDetailsModule/VBoxContainer"]
+visible = false
+light_mask = 0
+margin_top = 357.0
+margin_right = 315.0
+margin_bottom = 399.0
+rect_min_size = Vector2( 315, 40 )
+theme = ExtResource( 60 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "UPAPERDOLL_BUTTON_TEXT"
+
 [node name="IconBlock" type="VBoxContainer" parent="SlaveDetailsModule/VBoxContainer"]
 visible = false
 light_mask = 0

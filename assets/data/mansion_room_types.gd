@@ -470,7 +470,7 @@ const LIST = {
 				code = 'purchase_ledger',
 				icon = 'rooms',
 				levels = {
-					1: {cost = {woodiron = 25, gold = 3000}, progress = 30, effect = {}},
+					1: {cost = {woodiron = 25, gold = 1500}, progress = 20, effect = {}},
 				},
 			},
 		},
@@ -714,6 +714,31 @@ const LIST = {
 		tags = ['bath'],
 		icon = 'rooms',
 		color = '3f6b6b',
+	},
+
+	#No slots either: the parlor is visited, not worked. Having one puts the Tattoo application
+	#button on its card; Body modifications is the improvement that adds the second button.
+	beauty_parlor = {
+		code = 'beauty_parlor',
+		slots = {},
+		work_job = null,
+		max_count = 1,
+		upkeep = 0,
+		build_cost = {wood = 80, cloth = 40, gold = 500},
+		build_progress = 30,
+		upgrades = {
+			body_modifications = {
+				code = 'body_modifications',
+				icon = 'tattoo',
+				levels = {
+					1: {cost = {clothsilk = 30, woodmagic = 20, gold = 2000}, progress = 40, effect = {}},
+				},
+			},
+		},
+		master_only = false,
+		tags = ['beauty'],
+		icon = 'tattoo',
+		color = '6b3f5c',
 	},
 }
 

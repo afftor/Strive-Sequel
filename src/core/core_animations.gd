@@ -259,11 +259,14 @@ func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = f
 
 	if wr.get_ref(): x.queue_free()
 
-func gfx_particles(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = false):
+func gfx_particles(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = false, speed = 1.0):
 	if !node.is_inside_tree(): return
 	var x = load(images.GFX_particles[effect]).instance()
 	node.add_child(x)
 	x.position = node.rect_size/2
+	#combat fast-forward plays the emitter faster instead of cutting it short
+	if speed != 1.0 and x.get("speed_scale") != null:
+		x.speed_scale = x.speed_scale * speed
 	if flip:
 		x.scale.x *= -1
 		x.rotation_degrees *= -1

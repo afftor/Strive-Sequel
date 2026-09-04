@@ -45,16 +45,18 @@ static func forget_spent_upgrades(res):
 
 
 #The rest of the retired tree. A craft upgrade's three levels were the workshop itself and
-#two grades of tools, so they come back as exactly that; the bath became a bathhouse, and
+#two grades of what it could then make, so they come back as the room plus its Expansion -
+#Expansion being what the recipes read, see game_res.craft_room_level(). Tools is a separate
+#purchase now and buys speed only, so nothing here is owed it. The bath became a bathhouse, and
 #somewhere to be taught became a practice room with a tutor's place in it. Everything else
 #the tree sold - builder crews, their tools, farm slots, the exotic trader - had no room to
 #become and is simply gone, which is why nothing reads those codes any more.
 const ROOM_CONVERSION = {
 	resting = {room = 'bathhouse'},
 	academy = {room = 'practice_room', upgrade = 'tutoring_area'},
-	tailor = {room = 'tailor_workshop', upgrade = 'craft_tools', level_offset = -1},
-	forge = {room = 'forge', upgrade = 'craft_tools', level_offset = -1},
-	alchemy = {room = 'alchemy_room', upgrade = 'craft_tools', level_offset = -1},
+	tailor = {room = 'tailor_workshop', upgrade = 'craft_expansion', level_offset = -1},
+	forge = {room = 'forge', upgrade = 'craft_expansion', level_offset = -1},
+	alchemy = {room = 'alchemy_room', upgrade = 'craft_expansion', level_offset = -1},
 }
 
 

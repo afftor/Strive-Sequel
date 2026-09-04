@@ -37,19 +37,18 @@ var tutorial_sequence = [
 var tutorials = {
 	training = [
 		{
-			#The mansion opens with the list folded down to its bar in normal play, and a hard
-			#tutorial forces it open (MansionSlaveListModule.apply_default_fold) - put it back the
-			#way a first-time player would really find it, so the step after this one still has
-			#something to teach.
+			#The mansion opens on the household list, which is where this chapter happens, so the
+			#screen is already the way a first-time player finds it and there is nothing to set up.
 			buttons = [],
-			tut_func = 'fold_slave_list',
 			text = "TUTORIAL_TRAINING1",
 			panel_pos = Vector2(733,456)
 		},
 		#1
 		{
-			#folded, the handle is the whole bar (apply_fold_to_bar), so the frame is the bar
-			buttons = ['slave_list_fold_btn'],
+			#Named rather than pointed at: the only thing worth framing here would be the fold
+			#handle, and pressing that would fold away the very list the next step reads a row out
+			#of. What the handle is for is taught in the rooms chapter, which is where it is wanted.
+			buttons = [],
 			text = "TUTORIAL_TRAINING1_0",
 			panel_pos = Vector2(660,430)
 		},{
@@ -185,11 +184,13 @@ var tutorials = {
 			text = "TUTORIAL_WORK_ROOM1",
 			panel_pos = Vector2(660, 430)
 		},{
-			#The other half of the lesson the first chapter opened with, and this chapter cannot
-			#start without it: an unfolded list covers the floorplan outright and takes the idle
-			#strip with it (set_slave_list_fold -> rooms.set_hud_visible), so there would be
-			#nobody to pick up and nowhere to put them.
-			buttons = ['slave_list_fold_btn'],
+			#This chapter cannot start without it: the list the mansion opens on covers the
+			#floorplan outright and takes the idle strip with it (set_slave_list_fold ->
+			#rooms.set_hud_visible), so there would be nobody to pick up and nowhere to put them.
+			#Two gestures do it - the row of view buttons down the left, and the handle on the
+			#list's own bar - so both are framed and either one lets the step through.
+			buttons = ['mansion_mode_work_btn', 'slave_list_fold_btn'],
+			highlight = ['mansion_mode_work_btn', 'slave_list_fold_btn'],
 			text = "TUTORIAL_WORK_ROOM1_1",
 			panel_pos = Vector2(660, 430)
 		},{
@@ -1200,10 +1201,9 @@ func fold_slave_list():
 	set_slave_list_folded(true)
 
 
-#The other half of fold_slave_list. MansionSlaveListModule.apply_default_fold() opens the list
-#for a hard tutorial precisely because the chapters around this one point at rows inside it,
-#and apply_state_fold() deliberately leaves the fold alone while a tutorial runs - so nothing
-#puts it back on its own, and the rooms chapter has to hand it over the way it found it.
+#The other half of fold_slave_list. The mansion opens on the list and apply_state_fold() leaves
+#the fold alone while a tutorial runs - so nothing puts it back on its own, and the rooms
+#chapter has to hand it over the way it found it.
 func unfold_slave_list():
 	set_slave_list_folded(false)
 
@@ -1217,7 +1217,7 @@ func set_slave_list_folded(folded):
 	var wanted = list.FOLD_FOLDED if folded else list.FOLD_FULL
 	if list.list_fold_state == wanted:
 		return
-	list.set_slave_list_fold(wanted, false, false)
+	list.set_slave_list_fold(wanted, false)
 
 
 #The scaffolding on the tutorial's own slot, put within one turn of finished. A kitchen is 25

@@ -195,9 +195,9 @@ func tut_get_rest_daisy():
 
 
 #The master's own portrait in the strip. Used by the lesson about the right click menu, which
-#is taught here rather than on a row of the household list: this is the first screen of the
-#game, the list is still folded down to its bar at that point, and the menu the strip offers is
-#the whole of it (mansion_view.open_char_menu) rather than the two entries a row has.
+#is taught here rather than on a row of the household list: the rooms chapter has the list
+#folded away by then, and the menu the strip offers is the whole of it
+#(mansion_view.open_char_menu) rather than the two entries a row has.
 func tut_get_rest_master():
 	return tut_get_rest_cell('tutorial_master')
 
@@ -742,6 +742,11 @@ func set_local_tasks(value):
 	if local_tasks:
 		mode = 'work'
 		set_place(LocationTasks.MANSION_CODE)
+	#The estate's own tasks and another place's are the same question about different ground, so
+	#swapping between them says the same thing as walking to another place: what this screen is
+	#showing has changed. Said out loud because the screen above decides from it which view is up -
+	#the navigation strip reaches this directly, without going through the buttons.
+	emit_signal("place_changed", place)
 	refresh()
 
 
@@ -958,6 +963,109 @@ func is_pinned(char_id):
 
 
 #through here, so the two ways of moving somebody cannot drift apart.
+#### what a turn is worth ####
+
+#What one character puts into the place they are standing in, per turn. This is the turn's own
+#arithmetic asked one person at a time: game_res.process_rooms() multiplies the room's job by the
+#room's own modifier, and process_gathering() asks the task list - both are asked from here, so
+#the number under a portrait and the number the turn delivers cannot drift apart.
+#
+#The crit roll the tick makes (get_job_value's second argument) is left out on purpose: this says
+#what the work is worth, not what a die said.
+func person_yield_at(character, place_kind, place_holder, place_floor = -1):
+	if character == null:
+		return 0.0
+	if place_kind == 'build':
+		return builder_yield(character, place_holder, place_floor)
+	if place_kind == 'task':
+		var made = LocationTasks.production_of(place_holder, character)
+		#A quest produces nothing to count, so production_of has nothing to answer with - but a
+		#hand on one is still worth a point of progress a turn, which is the figure its card
+		#carries. The portrait standing on the card says the same thing the card does.
+		return made if made > 0 else LocationTasks.quest_share(place_holder)
+	#A bed makes nothing, and the tutor's place in a practice room teaches rather than makes -
+	#neither is counted in what the estate gains.
+	if !(place_kind in ['work', 'work_upgrade']):
+		return 0.0
+	var room = get_room(place_holder)
+	#And a workshop with nothing on its bench pays nobody however good they are: _spend_room_work
+	#finds no recipe to put the work into and the turn sends them to rest instead
+	#(game_res.process_rooms). What they would be worth is still worth saying while choosing whom
+	#to put here - that is the room card's candidate list, which asks person_yield_in_room
+	#directly - but somebody already standing in an idle room adds nothing, and the tooltip on
+	#their face is a statement about this turn.
+	if idle_workshop(room):
+		return 0.0
+	return person_yield_in_room(character, room, place_holder)
+
+
+#Has this room a recipe to work on? Asked in the same order the work itself takes - the room's
+#own queue when Ledgers has given it one, the estate's otherwise - because game_res.room_current_craft
+#is the same question _spend_room_work asks first. Rooms that are not workshops at all have no
+#queue to be empty and answer no.
+func idle_workshop(room):
+	if room == null:
+		return false
+	var job = RoomTypes.get_work_job(room.type)
+	if job == null or job == '':
+		return false
+	if !ResourceScripts.game_res.crafting_lists.has(job + '_item'):
+		return false
+	return ResourceScripts.game_res.room_current_craft(room) == null
+
+
+#Scaffolding makes nothing, but what a builder puts in is still work worth naming: it is what
+#decides when the room opens, and it is counted in the same points the bar across the card
+#measures. A repair the estate does for itself is the exception - it advances a flat point a
+#turn however many hands are on it (the fixed branch in game_res), so no hand has a share of
+#its own to name.
+func builder_yield(character, slot_code, floor_index):
+	var build = MansionLayout.get_build(floor_data_at(floor_index), slot_code)
+	if build == null or build.get('fixed', false):
+		return 0.0
+	return character.get_job_value('building', false)
+
+
+#The floor a place sits on. -1 is "the one on screen", which is what the plan's own cells mean;
+#the estate grounds are drawn by the local tasks screen while the plan behind it is still on a
+#floor of the house, so those cells name their floor.
+func floor_data_at(floor_index):
+	if floor_index < 0 or floor_index >= layout().floors.size():
+		return current_floor()
+	return layout().floors[floor_index]
+
+
+#The room's own work. Three kinds of room are counted somewhere other than by this arithmetic and
+#so answer nothing rather than a number nobody will be paid: a practice room trains, a farm is
+#worked for what bodies give, and a store room's clerk is paid at the moment a delivery arrives -
+#see the three branches game_res.process_rooms() takes before it reaches the multiplication.
+func person_yield_in_room(character, room, slot_code):
+	if character == null or room == null:
+		return 0.0
+	for tag in ['practice', 'farm', 'storage']:
+		if RoomTypes.has_tag(room.type, tag):
+			return 0.0
+	#a gathering building works its job through the task list, so it is asked the way the task
+	#panel asks it rather than as the room's own craft
+	var gather = LocationTasks.gather_entry_for_room(room.type, slot_code)
+	if gather != null:
+		return LocationTasks.production_of(gather.id, character)
+	var job = RoomTypes.get_work_job(room.type)
+	if job == null or job == '':
+		return 0.0
+	return character.get_job_value(job, false) * MansionLayout.craft_modifier(room)
+
+
+#What that comes to on a tooltip, or "" when this place pays nobody. Written the way the cards
+#write it - "Per turn +0.7", one decimal - so the line under a portrait and the line on the card
+#it stands in read as the same measurement.
+func person_yield_text(character, place_kind, place_holder, place_floor = -1):
+	var made = person_yield_at(character, place_kind, place_holder, place_floor)
+	if made <= 0:
+		return ""
+	return "%s +%s" % [tr("MANSIONVIEW_PERTURN"), str(stepify(made, 0.1))]
+
+
 func place_character(kind, holder, char_id, resident_id, holder_floor = -1):
 	if kind == null:
 		input_handler.SystemMessage(tr("MANSIONVIEW_ERR_FULL"))
@@ -1186,6 +1294,8 @@ func _notification(what):
 	#began: get_drag_data() cannot repaint, since that would free the very node the drag is
 	if what == NOTIFICATION_DRAG_BEGIN:
 		call_deferred("refresh_marks")
+		#an empty idle strip is folded away, and a drag is exactly when it is wanted back
+		rest_panel.call_deferred("set_carry_open", true)
 	if what == NOTIFICATION_DRAG_END:
 		drag_end_frame = Engine.get_frames_drawn()
 		call_deferred("refresh_people")

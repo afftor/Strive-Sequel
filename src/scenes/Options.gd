@@ -41,7 +41,7 @@ func _ready():
 		get_node("TabContainer/Gameplay2/Scroll/Box/" + i).connect("pressed", self, "gamestate_rule",  [i])
 		get_node("TabContainer/Gameplay2/Scroll/Box/" + i).pressed = ResourceScripts.game_globals.get(i)
 		globals.connecttexttooltip(get_node("TabContainer/Gameplay2/Scroll/Box/" + i), tr("SETTING"+i.trim_prefix('diff_').to_upper() + '_DESCRIPT'))
-	for i in ['generate_portraits', 'factors_as_words', 'no_damage_shake', 'item_flight_animation', 'fps_meter']:
+	for i in ['generate_portraits', 'factors_as_words', 'no_damage_shake', 'item_flight_animation', 'fps_meter', 'fast_combat']:
 		get_node("TabContainer/Visuals/" + i).connect("pressed", self, "gameplay_rule", ['Visuals', i])
 		get_node("TabContainer/Visuals/" + i).pressed = input_handler.globalsettings[i]
 	# The doll's own section. `disable_paperdoll` moved in here: it decides whether
@@ -100,7 +100,8 @@ func go_for_code():
 
 func open():
 	$TabContainer/Hotkeys.update_labels()
-	$TabContainer/Gameplay/Scroll/Box/enable_tutorials.pressed = ResourceScripts.game_progress.show_tutorial
+	#the old tutorial is retired, so its switch is not offered any more
+	$TabContainer/Gameplay/Scroll/Box/enable_tutorials.hide()
 	# $TabContainer/Cheats/EnterCodeMenu/Activate.disabled = true
 	$TabContainer/Cheats/EnterCodeMenu.visible = !input_handler.cheats_unlocked()
 	$TabContainer/Cheats/OpenCheatsMenu.visible = input_handler.cheats_unlocked()

@@ -2763,12 +2763,18 @@ Predicted task shows which job the character will perform next. Materials are al
 	MANSION_ACTIVITY_TYPE_BUILD = """Building""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_TYPE_WORK = """Estate work""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_TYPE_CHARACTER_FOUND = """Personaggio trovato""",
+	MANSION_ACTIVITY_TYPE_RELATIONSHIP = """Relationship""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_TRAINING = """Training""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_STAT = """Stats""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_SERVICE = """Service""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_ARRIVAL_MANSION = """%s è tornato alla villa.""",
 	MANSION_ACTIVITY_ARRIVAL_MANSION_LINK = """%s returned to %s.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_ARRIVAL_LOCATION = """%s è arrivato a %s.""",
 	MANSION_ACTIVITY_AUTOBUY = """%s came back from the market with %s, for %d gold.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_SLEPTROUGH = """Had no place to sleep at: %s.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_CRAFT_COMPLETE = """%s ha finito di fabbricare %s.""",
+	MANSION_ACTIVITY_TRAINING_COMPLETE = """%s finished training %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_STAT_CHANGES = """%s: %s""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_UPGRADE_COMPLETE = """%s ha completato il potenziamento %s.""",
 	MANSION_ACTIVITY_FOOD_DISSATISFIED = """%s non è stato soddisfatto dalla qualità del cibo""",
 	MANSION_ACTIVITY_INJURY_RECOVERED = """%s si è ripreso dalle ferite.""",
@@ -2776,6 +2782,9 @@ Predicted task shows which job the character will perform next. Materials are al
 	MANSION_ACTIVITY_CHARACTER_FOUND = """%s ha trovato %s a %s.""",
 	MANSION_ACTIVITY_LOCATION_EMPTY = """There is nobody left at %s.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_LOCATION_GONE = """That location is no longer accessible.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_SERVICE_REPORT = """Service brought in [color=#f0c860]%d[/color] gold, earned by %d of the household.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_SERVICE_EXPAND = """Expand""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_SERVICE_COLLAPSE = """Collapse""", # MISSING TRANSLATION
 	BROTHELLOGSEX = "%s ha guadagnato %s oro eseguendo %s con un cliente %s.",
 	BROTHELLOGSEXPARTIAL = """%s failed to fully attract a customer and earned only %s gold performing %s with a %s customer.""", # MISSING TRANSLATION
 	BROTHELLOGNO_SEX = "%s ha guadagnato %s oro lavorando come %s.",
@@ -6643,6 +6652,7 @@ Costringe il bersaglio a raggiungere l'orgasmo contro la sua volontà, con un li
 	INTERACTION_ENTHUSIASM_ALL_CORRECT_USED = "Forza successo (completato)",
 	INTERACTION_ENTHUSIASM_INCORRECT_TOOLTIP = "Questa opzione è sbagliata.",
 	INTERACTION_ENTHUSIASM_CORRECT_TOOLTIP = "Tutte le opzioni porteranno al successo",
+	INTERACTION_ENTHUSIASM_NO_SIDES = """Select an actor and a receiver before using this opportunity.""", # MISSING TRANSLATION
 	INTERACTION_ENTHUSIASM_TOOLTIP = "[center]Opportunità di Addestramento[/center]\n\nScegli la risposta che si adatta alla personalità del personaggio. Una scelta corretta fa riuscire il momento e può migliorare l'addestramento delle abilità sessuali; una scelta sbagliata rovina il momento e riduce la sensibilità.\n\nSegna opzione sbagliata spende punti connessione per rivelare una scelta sbagliata.\nForza successo spende punti connessione e fa contare ogni opzione come corretta.",
 	INTERACTION_CATEGORY_CARESS = "Carezze",
 	INTERACTION_CATEGORY_CARESS_TOOLTIP = "Azioni base di contatto e stimolazione.",
@@ -10243,6 +10253,8 @@ Procedere? (il file di salvataggio originale rimarrà inalterato, ma non funzion
 	PROMPTTUTORIAL = "Per chi gioca per la prima volta, si consiglia di completare la sezione tutorial per apprendere i comandi e le meccaniche di base.",
 	TUTORIAL_TRAINING1 = "Questo tutorial spiegherà le meccaniche base della gestione della tua villa e dei personaggi. Il tuo personaggio {color=yellow|Master} rappresenta te ed è responsabile della gestione degli altri personaggi.",
 	TUTORIAL_TRAINING1_0 = """Everyone living on the estate is listed here. The list is folded down to its bar right now - click the bar to unfold it.""", # MISSING TRANSLATION
+	TUTORIAL_RMB_MENU1 = """Before you set out, one shortcut worth knowing. The strip along the top holds everyone with nothing to do - try a {color=yellow|right-click} on your Master's portrait there.""", # MISSING TRANSLATION
+	TUTORIAL_RMB_MENU2 = """A right click on any portrait puts up this menu, and it is the short way to nearly everything: their card, classes and masteries, training, their bag, their info sheet, and whatever social skills they have to hand. Every portrait in the game answers to it. Right-click again to close the menu.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING1_1 = """Clicca sulla scheda del tuo Padrone per espanderla. La scheda estesa contiene dettagli, regole di lavoro e abilità sociali.""",
 	TUTORIAL_TRAINING2 = "Iniziamo usando l'abilità predefinita del Master, Mentore, su uno dei tuoi subordinati. Aumenterà la quantità di esperienza che guadagnano per un giorno.",
 	TUTORIAL_TRAINING3 = "Seleziona un personaggio dalla lista per completare il lancio dell'abilità.",
@@ -10337,6 +10349,10 @@ Chiudi questo menu.""",
 	TUTORIAL_WORK_ROOM31 = """Put her in the kitchen garden. She will bring in vegetables every turn.""", # MISSING TRANSLATION
 	TUTORIAL_WORK_ROOM32 = """Finish the turn. What the grounds bring in is what the kitchen cooks with - that meat soup wanted vegetables.""", # MISSING TRANSLATION
 	TUTORIAL_WORK_ROOM33 = """That is the loop the estate runs on: clear a room out, raise something in it, and put people where the work is. Go back to the mansion.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_BED1 = """Everyone on the estate also needs somewhere to sleep. Daisy has just lost her bed - anyone without one spends the night on the floor and suffers for it. Switch the plan to {color=yellow|Beds} to see where the household sleeps.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_BED2 = """The plan now shows beds instead of workplaces, and the strip above it lists everyone who has none. Click Daisy to pick her up.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_BED3 = """Now click a free bed in the bedroom to put her in it. Dragging her there does the same thing, and {color=yellow|Bed them down} above the strip seats everyone at once.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_BED4 = """She has a bed again. Switch the plan back to {color=yellow|Work} - beds only need arranging when somebody new arrives or a bedroom is built.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING0 = "A proposito di esperienza, vediamo un altro modo per guadagnarla.",
 	TUTORIAL_LEVELING1_0 = """What the estate owns is kept in its store room. Open it.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING1 = "Seleziona Inventario per visualizzare i tuoi averi.",
@@ -32270,6 +32286,12 @@ You leave her in the shade and return to the others, carrying with you the stran
 	MANSIONVIEW_AUTOSELL_ADD = """Add sale""", # MISSING TRANSLATION
 	MANSIONVIEW_MOVEHINT = """Pick where it goes""", # MISSING TRANSLATION
 	MANSIONVIEW_PICKHINT = """Drag them, or click to pick them up.""", # MISSING TRANSLATION
+	MANSIONVIEW_MENUHINT = """Right click to open context menu""", # MISSING TRANSLATION
+	MANSIONVIEW_MENU_UNFOLD = """Unfold""", # MISSING TRANSLATION
+	MANSIONVIEW_MENU_LEVELING = """Leveling""", # MISSING TRANSLATION
+	MANSIONVIEW_MENU_SOCIAL = """Social skills""", # MISSING TRANSLATION
+	MANSIONVIEW_MENU_SKILLREFUSED = """%s cannot be used right now.""", # MISSING TRANSLATION
+	MANSIONVIEW_MENU_REFUSED = """Not right now.""", # MISSING TRANSLATION
 	MANSIONVIEW_PUTBACKHINT = """In hand. Click again to set them back down.""", # MISSING TRANSLATION
 	MANSIONVIEW_PUTHINT = """Click to put them here.""", # MISSING TRANSLATION
 	MANSIONVIEW_MANSION = """Mansion""", # MISSING TRANSLATION
@@ -32497,6 +32519,7 @@ You leave her in the shade and return to the others, carrying with you the stran
 	DOLL2_PREVIEW_BUTT_SIZE = """Butt size""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_BREAST_SCALE = """Breast scale""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_BREAST_HEIGHT = """Breast height""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_MUSCLE_ALPHA = """Muscle definition""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_DICK_SIZE = """Penis size""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_BALLS_SIZE = """Balls size""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_EYES_WIDTH = """Eye spacing""", # MISSING TRANSLATION

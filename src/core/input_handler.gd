@@ -147,6 +147,7 @@ enum {
 	NODE_HARD_TUTORIAL_PANEL,
 	NODE_HARD_TUTORIAL_LIST,
 	NODE_ACHI_UNLOCK,
+	NODE_NUMBERSELECT,
 	#Animations
 	ANIM_TASK_AQUARED,
 	ANIM_BATTLE_START,
@@ -182,6 +183,8 @@ var globalsettings = {
 	show_full_consent = false,
 	disable_paperdoll = false,
 	no_damage_shake = false,
+	#combat animations and delays play four times faster; damage numbers keep their pace
+	fast_combat = false,
 	item_flight_animation = false,
 	#the frame counter in the corner, off unless it is asked for
 	fps_meter = false,
@@ -586,9 +589,6 @@ func _input(event):
 							gui_controller.mansion.mansion_state_set("default")
 						gui_controller.clock.raise()
 					gui_controller.inventory:
-						if gui_controller.inventory.list_mode == "tattoo":
-							gui_controller.inventory.change_list_mode()
-							return
 						gui_controller.inventory.hide()
 						gui_controller.current_screen = gui_controller.previous_screen
 						if gui_controller.previous_screen == gui_controller.slavepanel:

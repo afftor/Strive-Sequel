@@ -875,6 +875,21 @@ static func max_out_upgrades(room):
 	return true
 
 
+#Whether this room has nothing left to buy - the state max_out_upgrades() writes. Every row
+#the type offers is asked, not only the one that opens recipes: a workshop is finished when
+#its bench, its tools and everything else in it are at their top level. Asked of a room
+#instance rather than of the estate, because upgrades belong to the room - a plain forge
+#standing beside a finished one is not half of anything.
+#A type with nothing to buy answers true, having bought all nothing of it.
+static func all_upgrades_maxed(room):
+	if room == null:
+		return false
+	for code in RoomTypes.get_type(room.type).upgrades:
+		if upgrade_level(room, code) < RoomTypes.max_level(code, room.type):
+			return false
+	return true
+
+
 #Everyone in the party who has no bed. This is what blocks the end of the turn, so it
 #counts characters wherever they are on the world map.
 static func unhoused_characters(layout, party):

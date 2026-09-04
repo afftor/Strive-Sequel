@@ -161,6 +161,8 @@ var OrgasmDenyStage = 0
 
 var enthusiasm_pending_member = null
 var enthusiasm_pending_takers = []
+var enthusiasm_pending_action_givers = []
+var enthusiasm_pending_action_takers = []
 var enthusiasm_pending_scene = null
 var enthusiasm_pending_data = null
 var enthusiasm_pending_upgrades = []
@@ -368,7 +370,19 @@ func SelectCumTarget(part):
 	record_actions(pending_turn_scenescript, pending_turn_dict_consents)
 	rebuildparticipantslist()
 
+func _enthusiasm_sides_selected():
+	if givers.size() == 0 || takers.size() == 0:
+		return false
+	if enthusiasm_pending_action_givers.size() == 0 || enthusiasm_pending_action_takers.size() == 0:
+		return false
+	return true
+
 func EnthusiasmInitiate():
+	if enthusiasm_pending_member == null || enthusiasm_pending_data == null:
+		return
+	if !_enthusiasm_sides_selected():
+		input_handler.SystemMessage(tr("INTERACTION_ENTHUSIASM_NO_SIDES"))
+		return
 	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 	$EnthusiasmSelect.show()
 	$EnthusiasmSelect/RichTextLabel.bbcode_text = decoder(tr("INTERACTION_ENTHUSIASM_SELECT_TEXT"), [enthusiasm_pending_member], enthusiasm_pending_takers)
@@ -411,6 +425,9 @@ func EnthusiasmAllCorrect():
 
 func EnthusiasmChoose(choice_idx):
 	$EnthusiasmSelect.hide()
+	if !_enthusiasm_sides_selected():
+		input_handler.SystemMessage(tr("INTERACTION_ENTHUSIASM_NO_SIDES"))
+		return
 	var result
 	if enthusiasm_pending_scene.has_method('enthusiasm_check_choice'):
 		result = enthusiasm_pending_scene.enthusiasm_check_choice(enthusiasm_pending_member, choice_idx)
@@ -448,7 +465,7 @@ func EnthusiasmChoose(choice_idx):
 		if enthusiasm_pending_action_ids != null:
 			action_ref = make_ref_dict(enthusiasm_pending_action_ids)
 		if action_ref == null:
-			var member_is_giver = enthusiasm_pending_scene.givers.has(orgasm_member)
+			var member_is_giver = enthusiasm_pending_action_givers.has(orgasm_member)
 			action_ref = {
 				scene = enthusiasm_pending_scene,
 				givers = [orgasm_member] if member_is_giver else enthusiasm_pending_takers,
@@ -473,6 +490,8 @@ func EnthusiasmChoose(choice_idx):
 		$Panel/sceneeffects.bbcode_text += '\n' + text
 	enthusiasm_pending_member = null
 	enthusiasm_pending_takers = []
+	enthusiasm_pending_action_givers = []
+	enthusiasm_pending_action_takers = []
 	enthusiasm_pending_scene = null
 	enthusiasm_pending_data = null
 	enthusiasm_pending_upgrades = []
@@ -607,8 +626,10 @@ func _get_enthusiasm_orgasm_followup(member):
 	if enthusiasm_pending_scene == null:
 		return ""
 	var scene = enthusiasm_pending_scene
+	var act_givers = enthusiasm_pending_action_givers
+	var act_takers = enthusiasm_pending_action_takers
 	var text = ""
-	if scene.givers.has(member):
+	if act_givers.has(member):
 		if member.person.get_stat('penis_size') != '':
 			text = _get_enthusiasm_orgasm_intro("INTERACTION_ORGASM_PENIS_GIVER_FEEL", "INTERACTION_ORGASM_PENIS_GIVER_THRUST")
 			if ['anus','vagina','mouth'].has(scene.takerpart):
@@ -619,16 +640,16 @@ func _get_enthusiasm_orgasm_followup(member):
 				text += tr("INTERACTION_ORGASM_PENIS_GIVER_ON_PENIS")
 			else:
 				text += tr("INTERACTION_ORGASM_PENIS_GIVER_FLOOR")
-			return decoder(text, scene.givers, scene.takers)
+			return decoder(text, act_givers, act_takers)
 		if member.person.get_stat('has_pussy') && scene.giverpart == 'vagina':
 			text = _get_enthusiasm_orgasm_intro("INTERACTION_ORGASM_PUSSY_GIVER_FEEL", "INTERACTION_ORGASM_GIVER_NAME")
 			if scene.takerpart == 'penis':
 				text += tr("INTERACTION_ORGASM_PUSSY_GIVER_PENIS")
 			else:
 				text += tr("INTERACTION_ORGASM_PUSSY_GIVER_BODY")
-			return decoder(text, scene.givers, scene.takers)
+			return decoder(text, act_givers, act_takers)
 		text = _get_enthusiasm_orgasm_intro("INTERACTION_ORGASM_BODY_GIVER_FEEL", "INTERACTION_ORGASM_GIVER_NAME") + tr("INTERACTION_ORGASM_BODY_GIVER_RELEASE")
-		return decoder(text, scene.givers, scene.takers)
+		return decoder(text, act_givers, act_takers)
 	if member.person.get_stat('penis_size') != '' && !scene.takertags.has('vagina') && !scene.takertags.has('anal'):
 		text = _get_enthusiasm_orgasm_intro("INTERACTION_ORGASM_PENIS_TAKER_FEEL", "INTERACTION_ORGASM_PENIS_TAKER_THRUST")
 		match scene.code:
@@ -643,23 +664,23 @@ func _get_enthusiasm_orgasm_followup(member):
 					text += tr("INTERACTION_ORGASM_PENIS_TAKER_ON_PENIS")
 				else:
 					text += tr("INTERACTION_ORGASM_PENIS_TAKER_FLOOR")
-		return decoder(text, scene.givers, scene.takers)
+		return decoder(text, act_givers, act_takers)
 	if scene.takertags.has('vagina') || scene.takerpart == 'vagina' || scene.takerpart == 'clit':
 		text = _get_enthusiasm_orgasm_intro("INTERACTION_ORGASM_PUSSY_TAKER_FEEL", "INTERACTION_ORGASM_TAKER_NAME")
 		if scene.giverpart == 'penis':
 			text += tr("INTERACTION_ORGASM_PUSSY_TAKER_PENIS")
 		else:
 			text += tr("INTERACTION_ORGASM_PUSSY_TAKER_BODY")
-		return decoder(text, scene.givers, scene.takers)
+		return decoder(text, act_givers, act_takers)
 	if scene.takertags.has('anal') || scene.takerpart == 'anus':
 		text = _get_enthusiasm_orgasm_intro("INTERACTION_ORGASM_ANUS_TAKER_FEEL", "INTERACTION_ORGASM_TAKER_NAME")
 		if scene.giverpart == 'penis':
 			text += tr("INTERACTION_ORGASM_ANUS_TAKER_PENIS")
 		else:
 			text += tr("INTERACTION_ORGASM_ANUS_TAKER_BODY")
-		return decoder(text, scene.givers, scene.takers)
+		return decoder(text, act_givers, act_takers)
 	text = _get_enthusiasm_orgasm_intro("INTERACTION_ORGASM_BODY_FEEL", "INTERACTION_ORGASM_TAKER_NAME") + tr("INTERACTION_ORGASM_BODY_RELEASE")
-	return decoder(text, scene.givers, scene.takers)
+	return decoder(text, act_givers, act_takers)
 
 func _get_enthusiasm_orgasm_intro(feel_key, name_key):
 	if randf() < 0.4:
@@ -672,12 +693,14 @@ func _ensure_late_enthusiasm_impregnation(member):
 	if member.get_part_id_dict('penis') != null:
 		return
 	var scene = enthusiasm_pending_scene
-	if scene.givers.has(member) && scene.giverpart == 'penis' && scene.takerpart == 'vagina':
-		for taker in scene.takers:
+	var act_givers = enthusiasm_pending_action_givers
+	var act_takers = enthusiasm_pending_action_takers
+	if act_givers.has(member) && scene.giverpart == 'penis' && scene.takerpart == 'vagina':
+		for taker in act_takers:
 			if impregnationcheck(member.person, taker.person):
 				globals.impregnate(member.person, taker.person)
-	elif scene.takers.has(member) && scene.takerpart == 'penis' && scene.giverpart == 'vagina':
-		for giver in scene.givers:
+	elif act_takers.has(member) && scene.takerpart == 'penis' && scene.giverpart == 'vagina':
+		for giver in act_givers:
 			if impregnationcheck(member.person, giver.person):
 				globals.impregnate(member.person, giver.person)
 
@@ -1691,6 +1714,8 @@ var nakedspritesdict = [] #globals.gallery.nakedsprites
 func get_unique_nude_body_image(person):
 	if person == null || !person.has_status('sexservice'):
 		return null
+	if person.uses_paperdoll(): #switched to the doll, so none of their own sprites apply
+		return null
 	var unique = person.get_stat('unique')
 	if unique == null:
 		return null
@@ -1761,6 +1786,8 @@ func startscene(scenescript, cont = false, pretext = ''):
 	var effects
 	enthusiasm_pending_member = null
 	enthusiasm_pending_takers = []
+	enthusiasm_pending_action_givers = []
+	enthusiasm_pending_action_takers = []
 	enthusiasm_pending_scene = null
 	enthusiasm_pending_data = null
 	enthusiasm_pending_upgrades = []
@@ -2062,7 +2089,9 @@ func startscene(scenescript, cont = false, pretext = ''):
 					break
 		if enth_member != null:
 			enthusiasm_pending_member = enth_member
-			enthusiasm_pending_takers = takers if givers.has(enth_member) else givers
+			enthusiasm_pending_takers = ([] + takers) if givers.has(enth_member) else ([] + givers)
+			enthusiasm_pending_action_givers = [] + givers
+			enthusiasm_pending_action_takers = [] + takers
 			enthusiasm_pending_scene = scenescript
 			enthusiasm_pending_data = enth_data
 			enthusiasm_pending_upgrades = enth_data.get('training_upgrades', [])

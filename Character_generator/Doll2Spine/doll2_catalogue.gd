@@ -251,7 +251,13 @@ static func compose(selections, axis_values):
 			if typeof(value) != TYPE_DICTIONARY:
 				result[slot_name] = value
 				continue
-			var axis_value = str(axis_values.get(value.axis, ""))
+			var axis_name = str(value.axis)
+			var definition = _gen().AXES.get(axis_name, {})
+			var body_tag = str(definition.get("body_tag", ""))
+			var axis_value = str(axis_values.get(axis_name, ""))
+			if !body_tag.empty():
+				var body_part = str(selections.get("body", ""))
+				axis_value = body_tag if has_tag(body_part, body_tag) else str(definition.get("default", ""))
 			if value.options.has(axis_value):
 				result[slot_name] = value.options[axis_value]
 			else:

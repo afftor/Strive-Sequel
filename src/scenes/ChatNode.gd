@@ -649,6 +649,16 @@ var individual_lines = {
 	date_scold4 = {text = tr("DATE_SCOLD4"), events = ['date_scold'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	date_scold5 = {text = tr("DATE_SCOLD5"), events = ['date_scold'], personalities = ['kind','serious','neutral'], reqs = [], weight = 1, tags = []},
 
+	date_presumptuous1 = {text = tr("DATE_PRESUMPTUOUS1"), events = ['date_presumptuous'], personalities = ['kind','serious','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	date_presumptuous2 = {text = tr("DATE_PRESUMPTUOUS2"), events = ['date_presumptuous'], personalities = ['kind','serious','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	date_presumptuous3 = {text = tr("DATE_PRESUMPTUOUS3"), events = ['date_presumptuous'], personalities = ['kind','serious','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	date_presumptuous4 = {text = tr("DATE_PRESUMPTUOUS4"), events = ['date_presumptuous'], personalities = ['kind','serious','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+
+	date_put_in_place1 = {text = tr("DATE_PUT_IN_PLACE1"), events = ['date_put_in_place'], personalities = ['kind','serious','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	date_put_in_place2 = {text = tr("DATE_PUT_IN_PLACE2"), events = ['date_put_in_place'], personalities = ['kind','serious','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	date_put_in_place3 = {text = tr("DATE_PUT_IN_PLACE3"), events = ['date_put_in_place'], personalities = ['kind','serious','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	date_put_in_place4 = {text = tr("DATE_PUT_IN_PLACE4"), events = ['date_put_in_place'], personalities = ['kind','serious','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+
 	mimic_eat1 = {text = tr("MIMIC_EAT1"), events = ['mimic_eat'], personalities = ['kind','serious','shy','bold','neutral'], reqs = [], weight = 1, tags = []},
 	mimic_eat2 = {text = tr("MIMIC_EAT2"), events = ['mimic_eat','mimic_rape'], personalities = ['kind','serious','shy','bold','neutral'], reqs = [], weight = 1, tags = []},
 	mimic_eat3 = {text = tr("MIMIC_EAT3"), events = ['mimic_eat','mimic_rape'], personalities = ['kind','serious','shy','bold','neutral'], reqs = [], weight = 1, tags = []},

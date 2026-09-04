@@ -463,6 +463,20 @@ func check_lover_possibility(data, char1, char2):
 	return endvalue
 
 
+#Which status changes reach the estate's activity log, and what colour the status word is given
+#there. They all share one log entry type, so the colour is the only thing telling a new friendship
+#from a new feud - see the "relationship" entry in EVENT_CONFIG (MansionLogModule.gd).
+#Sliding back to 'acquaintances' is deliberately absent: a rivalry sits at value <= 25 and lapses
+#the moment it ticks to 26, so logging that pair would let one wavering couple flood the log.
+const RELATIONSHIP_LOG_TYPE = "relationship"
+const RELATIONSHIP_LOG = {
+	friends = "#8fd3f4",
+	lovers = "#f08fb4",
+	freelovers = "#f08fb4",
+	rivals = "#e0625f",
+}
+
+
 func change_relationship_status(char1, char2, new_status, forced = false):
 	if check_locked_relationship(char1, char2):
 		return
@@ -479,11 +493,15 @@ func change_relationship_status(char1, char2, new_status, forced = false):
 	
 	if babies.has(char1) or babies.has(char2):
 		return
-	if new_status in ['friends', 'rivals'] and f:
+	if RELATIONSHIP_LOG.has(new_status) and f:
 		var ch1 = characters[char1]
 		var ch2 = characters[char2]
-		var log_text = tr("LOG_RELATIONSHIP_STATUS") % [ch1.get_short_name(), ch2.get_short_name(), tr("RELATIONSHIP" + new_status.to_upper()).to_lower()]
-		globals.text_log_add('char', log_text)
+		var status_word = "[color=%s]%s[/color]" % [
+			RELATIONSHIP_LOG[new_status],
+			tr("RELATIONSHIP" + new_status.to_upper()).to_lower(),
+		]
+		var log_text = tr("LOG_RELATIONSHIP_STATUS") % [ch1.get_short_name(), ch2.get_short_name(), status_word]
+		globals.mansion_activity_log_add(RELATIONSHIP_LOG_TYPE, log_text)
 #		globals.manifest(log_text, ch1)
 
 func check_relationship_status(char1, char2, status):

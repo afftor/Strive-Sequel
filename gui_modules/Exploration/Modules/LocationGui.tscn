@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://gui_modules/Universal/Modules/NavigationModule.tscn" type="PackedScene" id=2]
@@ -42,10 +42,39 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainExtraSmallBold.tres" type="DynamicFont" id=40]
 [ext_resource path="res://gui_modules/Exploration/Modules/AvailableSlaves.tscn" type="PackedScene" id=41]
 [ext_resource path="res://assets/images/portraits/cali_prt/cali_default_prt_bold.png" type="Texture" id=42]
+[ext_resource path="res://assets/images/gui/ui_slot_cross.png" type="Texture" id=43]
 
 [sub_resource type="ImageTexture" id=1]
 
 [sub_resource type="ImageTexture" id=2]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.0156863, 0.0470588, 0.0117647, 0.94 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.376471, 1, 0.160784, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0.152941, 1, 0.0392157, 0.7 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0666667, 0.196078, 0.0470588, 0.98 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.607843, 1, 0.454902, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0.152941, 1, 0.0392157, 0.9 )
+shadow_size = 6
 
 [node name="LocationGui" type="Panel"]
 margin_right = 1920.0
@@ -953,6 +982,32 @@ margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 37 )
 expand = true
+
+[node name="LevelUpIndicator" type="Button" parent="PresentedSlavesPanel/ScrollContainer/VBoxContainer/Button"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -33.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 30, 30 )
+focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 3 )
+
+[node name="Cross" type="TextureRect" parent="PresentedSlavesPanel/ScrollContainer/VBoxContainer/Button/LevelUpIndicator"]
+modulate = Color( 0.4, 3, 0.12, 1 )
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 27.0
+margin_bottom = 27.0
+mouse_filter = 2
+texture = ExtResource( 43 )
+expand = true
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="PresentedSlavesPanel"]
 margin_right = 615.0

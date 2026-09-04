@@ -272,6 +272,8 @@ func build_portrait():
 	portrait_doll.visible = false
 	var texture = person.get_stored_body_image()
 	var unique_code = person.get_stat("unique")
+	if person.uses_paperdoll(): #switched to the doll, so none of their own sprites apply
+		unique_code = null
 	if unique_code != null and worlddata.pregen_character_sprites.has(unique_code):
 		var sprite_data = worlddata.pregen_character_sprites[unique_code]
 		if person.has_work_rule("nudity") and sprite_data.has("nude"):

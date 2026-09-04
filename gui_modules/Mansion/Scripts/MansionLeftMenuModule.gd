@@ -1,113 +1,114 @@
 extends Control
 
-#Button node -> the label child that names it. The whole rail reads at once: pointing at any
-#of the icons names all of them, which is what makes a column of pictures usable at a glance.
-const BUTTON_LABELS = {
-	Journal = 'Label5',
-	options = 'Label5',
+#Button node -> what it says and which action presses it. Every icon on the rail is also a
+#hotkey, so the name of the thing and the key that opens it are one tooltip; a rebind rewrites
+#the whole set at once. This replaced a column of labels that unfolded to the right of the
+#icons - a tooltip says the same thing without needing room on screen to say it in.
+const BUTTON_TOOLTIPS = {
+	InventoryButton = ['LMMINVENTORY', 'mansion_inventory'],
+	CraftButton = ['LMMCRAFT', 'mansion_craft'],
+	SexButton = ['LMMDATE', 'mansion_sex'],
+	Journal = ['LMMJOURNAL', 'mansion_journal'],
+	options = ['LMMOPTIONS', 'mansion_menu'],
 }
+
+#These frames have no disabled art of their own, so a button that cannot be pressed is greyed
+#the way the slave cards grey theirs.
+const DISABLED_MATERIAL = preload("res://assets/sfx/bw_shader.tres")
+
+#What the craft icon opens is a bench, and a bench stands in a workshop: with none built there
+#is nothing behind the button. The kitchen counts - it is tagged a craft room like the forge -
+#and so does the ritual room, which is what the enchanting bench needs.
+const ENCHANT_ROOM = 'ritual_room'
+
+onready var buttons = $Buttons
 
 
 func _ready():
-	$VBoxContainer/Journal.connect("toggled", self, "open_journal")
-	$VBoxContainer/options.connect("pressed", self, "open_menu")
+	buttons.get_node("InventoryButton").connect("pressed", self, "activate_category", ["inventory"])
+	buttons.get_node("CraftButton").connect("pressed", self, "activate_category", ["craft"])
+	buttons.get_node("SexButton").connect("pressed", self, "activate_category", ["sex"])
+	buttons.get_node("Journal").connect("toggled", self, "open_journal")
+	buttons.get_node("options").connect("pressed", self, "open_menu")
 	input_handler.register_btn_source('journal_button', self, 'tut_get_Journal')
-	connect("visibility_changed", self, "_hide_button_labels")
+	input_handler.register_btn_source('inventory_button', self, 'tut_get_InventoryButton')
+	input_handler.register_btn_source('craft_button', self, 'tut_get_CraftButton')
+	hotkeys.connect("bindings_changed", self, "build_tooltips")
+	globals.connect("rooms_changed", self, "refresh_craft_button")
+	build_tooltips()
+	refresh_craft_button()
 
 
-var labels_shown = false
+func build_tooltips():
+	for button_name in BUTTON_TOOLTIPS:
+		var data = BUTTON_TOOLTIPS[button_name]
+		var text = hotkeys.get_tooltip_text(data[0], data[1])
+		if button_name == 'CraftButton' and !craft_available():
+			text += "\n" + tr("LMMCRAFTNOROOM")
+		globals.connecttexttooltip(buttons.get_node(button_name), text)
 
 
-#One region, asked once a frame, instead of a signal on every icon and every name. The names
-#hang off the right of the rail past its own edge, and the gaps between the icons are real
-#background - so entering and leaving fired constantly and the column blinked. A rectangle
-#that covers the icons and everything they say has no edges inside it to trip over.
-func _process(_delta):
-	if !is_visible_in_tree():
-		return
-	var inside = hover_region().has_point(get_global_mouse_position())
-	if inside != labels_shown:
-		labels_shown = inside
-		_show_button_labels(inside)
+func craft_available():
+	return ResourceScripts.game_res.has_room_with_tag('craft') \
+		or ResourceScripts.game_res.count_rooms(ENCHANT_ROOM) > 0
 
 
-#The rail plus the strip its names are written across, whether or not they are showing: a
-#hidden Label still knows where it would be.
-func hover_region():
-	var region = get_global_rect()
-	for button_name in BUTTON_LABELS:
-		var button = $VBoxContainer.get_node(button_name)
-		region = region.merge(button.get_node(BUTTON_LABELS[button_name]).get_global_rect())
-	return region
+#A room going up or coming down is the only thing that changes this answer, and the plan emits
+#that. The tooltip is rebuilt beside the state so the greyed icon can say what it is waiting for.
+func refresh_craft_button():
+	var button = buttons.get_node("CraftButton")
+	var available = craft_available()
+	button.disabled = !available
+	button.material = null if available else DISABLED_MATERIAL
+	build_tooltips()
 
 
-func _show_button_labels(value):
-	for button_name in BUTTON_LABELS:
-		var button = $VBoxContainer.get_node(button_name)
-		button.get_node(BUTTON_LABELS[button_name]).visible = value
-
-
-func _hide_button_labels():
-	if is_visible_in_tree():
-		return
-	labels_shown = false
-	_show_button_labels(false)
-
-
-func tut_get_UpgradesButton():
-	return $VBoxContainer/UpgradesButton
 func tut_get_Journal():
-	return $VBoxContainer/Journal
+	return buttons.get_node("Journal")
+func tut_get_InventoryButton():
+	return buttons.get_node("InventoryButton")
+func tut_get_CraftButton():
+	return buttons.get_node("CraftButton")
 
 #hotkey entry point - drives the same buttons a click would, so every side effect
 #(toggle state, panel fades, gui_controller bookkeeping) happens the usual way.
 #Pressing the key of the category already open returns the mansion to its default view.
 func activate_category(code):
 	match code:
-		'work':
-			#the rail no longer carries this one - every character card opens their own work
-			#from the card itself - but the key still turns the whole screen on and off
-			var parent = get_parent()
-			parent.mansion_state = "default" if parent.mansion_state == "occupation" else "occupation"
-			return true
 		'travels':
 			#the navigation panel's travel button sets this before opening; from the mansion
 			#the map always returns here, so clear any context left by another screen
 			var map = get_parent().get_node_or_null("map")
 			if map != null:
 				map.set_return_context(null, null, null)
-			return toggle_category("travels", $VBoxContainer/TravelsButton)
+			return toggle_state("travels")
 		'sex':
-			#no button of its own on the rail any more - the master's room carries it
 			get_parent().open_sex_selection()
 			return true
 		'craft':
-			#no button on the rail any more - a craft room's own card opens its bench - but the
-			#key still turns the whole screen on and off
-			var parent = get_parent()
-			parent.mansion_state = "default" if parent.mansion_state == "craft" else "craft"
-			return true
+			#the key is the button's equal, so it is refused on the same grounds: no workshop,
+			#nothing to open. A craft room's own card opens its bench as well
+			if !craft_available():
+				return false
+			return toggle_state("craft")
 		'inventory':
 			open_inventory()
 			return true
 		'journal':
-			if $VBoxContainer/Journal.disabled: return false
-			$VBoxContainer/Journal.pressed = !$VBoxContainer/Journal.pressed
+			if buttons.get_node("Journal").disabled: return false
+			buttons.get_node("Journal").pressed = !buttons.get_node("Journal").pressed
 			return true
 		'menu':
-			if $VBoxContainer/options.disabled: return false
+			if buttons.get_node("options").disabled: return false
 			open_menu()
 			return true
 	return false
 
 
-func toggle_category(state, button):
-	if button.disabled:
-		return false
-	#these buttons are wired to 'pressed', which set_pressed() does not emit - so the
-	#handler is called by hand once the button reflects the state we are switching to
-	button.pressed = get_parent().mansion_state != state
-	_button_clicked(state, button)
+#Turning a screen on, or - asked for the screen already up - back off to the default view.
+func toggle_state(state):
+	var parent = get_parent()
+	parent.mansion_state = "default" if parent.mansion_state == state else state
 	return true
 
 
@@ -117,12 +118,6 @@ func open_menu():
 	gui_controller.previous_screen = gui_controller.current_screen
 	gui_controller.current_screen = gui_controller.game_menu
 	gui_controller.update_modules()
-
-func _button_clicked(state, button):
-	if button.is_pressed():
-		get_parent().mansion_state = state
-	else:
-		get_parent().mansion_state = "default"
 
 func open_inventory():
 	if get_parent().active_person == null:
@@ -146,7 +141,7 @@ func open_interaction():
 
 
 func open_journal(pressed):
-	$VBoxContainer/Journal.pressed = pressed
+	buttons.get_node("Journal").pressed = pressed
 	if pressed:
 		ResourceScripts.core_animations.UnfadeAnimation(get_parent().Journal, 0.5)
 	else:
@@ -160,4 +155,4 @@ func open_journal(pressed):
 
 
 func update():
-	$VBoxContainer/Journal.pressed = get_parent().Journal.is_visible()
+	buttons.get_node("Journal").pressed = get_parent().Journal.is_visible()

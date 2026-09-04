@@ -9,11 +9,11 @@ const SCHEMA_VERSION = 2
 
 const SOURCE = {
 	"atlas": "Doll2_spine4.2_male.atlas",
-	"attachment_count": 435,
+	"attachment_count": 453,
 	"bone_count": 263,
 	"contract": "doll2_male_v1",
 	"skeleton": "Doll2_spine4.2_male.json",
-	"skeleton_hash": "UoNWP3ZnsZo",
+	"skeleton_hash": "HOVh8+s5Ggs",
 	"slot_count": 61,
 	"spine_version": "4.2.43",
 }
@@ -38,7 +38,6 @@ const SLOT_ORDER = [
 	"leg_left",
 	"leg_right",
 	"pelvis",
-	"equip_collar",
 	"race_leg_left",
 	"equip_leg_left",
 	"race_leg_right",
@@ -47,6 +46,7 @@ const SLOT_ORDER = [
 	"nipples",
 	"race_torso_lower",
 	"race_torso",
+	"equip_collar",
 	"race_pelvis",
 	"animal_frontbody",
 	"testicle",
@@ -199,6 +199,13 @@ const GROUP_ORDER = [
 ]
 
 const AXES = {
+	"body_fit": {
+		"body_tag": "beastkin",
+		"default": "human",
+		"hidden": true,
+		"label": "",
+		"values": ["human", "beastkin"],
+	},
 	"body_shape": {
 		"default": "male",
 		"label": "DOLL2_PREVIEW_BODY_SHAPE",
@@ -2575,8 +2582,20 @@ const PARTS = {
 		"group": "outfit",
 		"slots": {
 			"equip_back": "equip_back",
-			"equip_leg_left": "legl_armor_cloth",
-			"equip_leg_right": "legr_armor_cloth",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "121_armory_set_cloth_male/LegL_armor_cloth_beastkin",
+					"human": "legl_armor_cloth",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "121_armory_set_cloth_male/LegR_armor_cloth_beastkin",
+					"human": "legr_armor_cloth",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_cloth",
 			"equip_shoulder_left": "shoulderl_armor_cloth",
 			"equip_shoulder_right": "shoulderr_armor_cloth",
@@ -2592,8 +2611,20 @@ const PARTS = {
 			"equip_arm_left": "arml1_armor_cloth2",
 			"equip_arm_right": "armr1_armor_cloth2",
 			"equip_back": "raincoat_cloth2",
-			"equip_leg_left": "legl_armor_cloth2",
-			"equip_leg_right": "legr_armor_cloth2",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_cloth2_beastkin",
+					"human": "legl_armor_cloth2",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_cloth2_beastkin",
+					"human": "legr_armor_cloth2",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_coth2",
 			"equip_shoulder_left": "shoulderl_armor_cloth2",
 			"equip_shoulder_right": "shoulderr_armor_cloth2",
@@ -2606,8 +2637,20 @@ const PARTS = {
 		"folders": ["121_armory_set_cloth2_male"],
 		"group": "outfit_legs",
 		"slots": {
-			"equip_leg_left": "legl_armor_cloth2",
-			"equip_leg_right": "legr_armor_cloth2",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_cloth2_beastkin",
+					"human": "legl_armor_cloth2",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_cloth2_beastkin",
+					"human": "legr_armor_cloth2",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_coth2",
 		},
 		"zones": [0, 1, 2],
@@ -2618,8 +2661,20 @@ const PARTS = {
 		"group": "outfit",
 		"slots": {
 			"equip_back": "equip_back",
-			"equip_leg_left": "legl_armor_cloth",
-			"equip_leg_right": "legr_armor_cloth",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "121_armory_set_cloth_male/LegL_armor_cloth_beastkin",
+					"human": "legl_armor_cloth",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "121_armory_set_cloth_male/LegR_armor_cloth_beastkin",
+					"human": "legr_armor_cloth",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_cloth",
 			"equip_shoulder_left": "shoulderl_armor_cloth",
 			"equip_shoulder_right": "shoulderr_armor_cloth",
@@ -2632,8 +2687,20 @@ const PARTS = {
 		"folders": ["121_armory_set_cloth_male"],
 		"group": "outfit_legs",
 		"slots": {
-			"equip_leg_left": "legl_armor_cloth",
-			"equip_leg_right": "legr_armor_cloth",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "121_armory_set_cloth_male/LegL_armor_cloth_beastkin",
+					"human": "legl_armor_cloth",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "121_armory_set_cloth_male/LegR_armor_cloth_beastkin",
+					"human": "legr_armor_cloth",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_cloth",
 		},
 		"zones": [0, 1, 2],
@@ -2643,8 +2710,20 @@ const PARTS = {
 		"folders": ["121_armory_set_cloth_male"],
 		"group": "outfit_legs",
 		"slots": {
-			"equip_leg_left": "legl_armor_cloth",
-			"equip_leg_right": "legr_armor_cloth",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "121_armory_set_cloth_male/LegL_armor_cloth_beastkin",
+					"human": "legl_armor_cloth",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "121_armory_set_cloth_male/LegR_armor_cloth_beastkin",
+					"human": "legr_armor_cloth",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_cloth",
 		},
 		"zones": [0, 1, 2],
@@ -2693,8 +2772,20 @@ const PARTS = {
 					"2": "handr2_armor_latex",
 				},
 			},
-			"equip_leg_left": "legl_armor_latex",
-			"equip_leg_right": "legr_armor_latex",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_latex_beastkin",
+					"human": "legl_armor_latex",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_latex_beastkin",
+					"human": "legr_armor_latex",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_latex",
 			"equip_shoulder_left": "shoulderl_armor_latex",
 			"equip_shoulder_right": "shoulderr_armor_latex",
@@ -2728,8 +2819,20 @@ const PARTS = {
 					"2": "handr2_armor_latex",
 				},
 			},
-			"equip_leg_left": "legl_armor_latex",
-			"equip_leg_right": "legr_armor_latex",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_latex_beastkin",
+					"human": "legl_armor_latex",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_latex_beastkin",
+					"human": "legr_armor_latex",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_latex",
 			"equip_shoulder_left": "shoulderl_armor_latex2",
 			"equip_shoulder_right": "shoulderr_armor_latex2",
@@ -2762,8 +2865,20 @@ const PARTS = {
 		"folders": ["124_armory_set_latex_male"],
 		"group": "outfit_legs",
 		"slots": {
-			"equip_leg_left": "legl_armor_latex",
-			"equip_leg_right": "legr_armor_latex",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_latex_beastkin",
+					"human": "legl_armor_latex",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_latex_beastkin",
+					"human": "legr_armor_latex",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_latex",
 		},
 	},
@@ -2793,8 +2908,20 @@ const PARTS = {
 		"folders": ["124_armory_set_latex_male"],
 		"group": "outfit_legs",
 		"slots": {
-			"equip_leg_left": "legl_armor_latex",
-			"equip_leg_right": "legr_armor_latex",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_latex_beastkin",
+					"human": "legl_armor_latex",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_latex_beastkin",
+					"human": "legr_armor_latex",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_latex",
 		},
 	},
@@ -2820,8 +2947,20 @@ const PARTS = {
 					"2": "handr2_armor_leather",
 				},
 			},
-			"equip_leg_left": "legl_armor_leather",
-			"equip_leg_right": "legr_armor_leather",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_leather_beastkin",
+					"human": "legl_armor_leather",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_leather_beastkin",
+					"human": "legr_armor_leather",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_leather",
 			"equip_shoulder_left": "shoulderl_armor_leather",
 			"equip_shoulder_right": "shoulderr_armor_leather",
@@ -2837,8 +2976,20 @@ const PARTS = {
 			"equip_arm_left": "arml1_armor_leather2",
 			"equip_arm_right": "armr1_armor_leather2",
 			"equip_back": "raincoat_leather2",
-			"equip_leg_left": "legl_armor_leather2",
-			"equip_leg_right": "legr_armor_leather2",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_leather2_beastkin",
+					"human": "legl_armor_leather2",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_leather2_beastkin",
+					"human": "legr_armor_leather2",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_leather2",
 			"equip_shoulder_left": "shoulderl_armor_leather2",
 			"equip_shoulder_right": "shoulderr_armor_leather2",
@@ -2851,8 +3002,20 @@ const PARTS = {
 		"folders": ["122_armory_set_leather2_male"],
 		"group": "outfit_legs",
 		"slots": {
-			"equip_leg_left": "legl_armor_leather2",
-			"equip_leg_right": "legr_armor_leather2",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_leather2_beastkin",
+					"human": "legl_armor_leather2",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_leather2_beastkin",
+					"human": "legr_armor_leather2",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_leather2",
 		},
 		"zones": [0, 1, 2],
@@ -2884,8 +3047,20 @@ const PARTS = {
 		"folders": ["122_armory_set_leather_male"],
 		"group": "outfit_legs",
 		"slots": {
-			"equip_leg_left": "legl_armor_leather",
-			"equip_leg_right": "legr_armor_leather",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_leather_beastkin",
+					"human": "legl_armor_leather",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_leather_beastkin",
+					"human": "legr_armor_leather",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_leather",
 		},
 		"zones": [0, 1, 2],
@@ -2912,8 +3087,20 @@ const PARTS = {
 					"2": "handr2_armor_plate",
 				},
 			},
-			"equip_leg_left": "legl_armor_plate",
-			"equip_leg_right": "legr_armor_plate",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_plate_beastkin",
+					"human": "legl_armor_plate",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_plate_beastkin",
+					"human": "legr_armor_plate",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_plate2",
 			"equip_shoulder_left": "shoulderl_armor_plate",
 			"equip_shoulder_right": "shoulderr_armor_plate",
@@ -2929,8 +3116,20 @@ const PARTS = {
 			"equip_arm_left": "arml1_armor_plate2",
 			"equip_arm_right": "armr1_armor_plate2",
 			"equip_back": "raincoat_plate2",
-			"equip_leg_left": "legl_armor_plate2",
-			"equip_leg_right": "legr_armor_plate2",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_plate2_beastkin",
+					"human": "legl_armor_plate2",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_plate2_beastkin",
+					"human": "legr_armor_plate2",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_plate3",
 			"equip_shoulder_left": "shoulderl_armor_plate3",
 			"equip_shoulder_right": "shoulderr_armor_plate3",
@@ -2943,8 +3142,20 @@ const PARTS = {
 		"folders": ["123_armory_set_plate2_male"],
 		"group": "outfit_legs",
 		"slots": {
-			"equip_leg_left": "legl_armor_plate2",
-			"equip_leg_right": "legr_armor_plate2",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_plate2_beastkin",
+					"human": "legl_armor_plate2",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_plate2_beastkin",
+					"human": "legr_armor_plate2",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_plate3",
 		},
 		"zones": [0, 1, 2],
@@ -2976,8 +3187,20 @@ const PARTS = {
 		"folders": ["123_armory_set_plate_male"],
 		"group": "outfit_legs",
 		"slots": {
-			"equip_leg_left": "legl_armor_plate",
-			"equip_leg_right": "legr_armor_plate",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_plate_beastkin",
+					"human": "legl_armor_plate",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_plate_beastkin",
+					"human": "legr_armor_plate",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_plate2",
 		},
 		"zones": [0, 1, 2],
@@ -2989,8 +3212,20 @@ const PARTS = {
 		"slots": {
 			"equip_arm_left": "arml1_armor_m1",
 			"equip_arm_right": "armr1_armor_m1",
-			"equip_leg_left": "legl_armor_m1",
-			"equip_leg_right": "legr_armor_m1",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_m1_beastkin",
+					"human": "legl_armor_m1",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_m1_beastkin",
+					"human": "legr_armor_m1",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_m1",
 			"equip_shoulder_left": "shoulderl_armor_m1",
 			"equip_shoulder_right": "shoulderr_armor_m1",
@@ -3002,8 +3237,20 @@ const PARTS = {
 		"folders": ["100_armory_set_servant_male"],
 		"group": "outfit_legs",
 		"slots": {
-			"equip_leg_left": "legl_armor_m1",
-			"equip_leg_right": "legr_armor_m1",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_m1_beastkin",
+					"human": "legl_armor_m1",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_m1_beastkin",
+					"human": "legr_armor_m1",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_m1",
 		},
 	},
@@ -3088,8 +3335,20 @@ const PARTS = {
 			"equip_arm_right": "armr1_armor_waiter",
 			"equip_hand_left": "handl1_armor_waiter",
 			"equip_hand_right": "handr1_armor_waiter",
-			"equip_leg_left": "legl_armor_waiter",
-			"equip_leg_right": "legr_armor_waiter",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_waiter_beastkin",
+					"human": "legl_armor_waiter",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_waiter_beastkin",
+					"human": "legr_armor_waiter",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_m_waiter",
 			"equip_shoulder_left": "soulderl_armor_waiter",
 			"equip_shoulder_right": "soulderr_armor_waiter",
@@ -3112,8 +3371,20 @@ const PARTS = {
 		"folders": ["124_armory_set_waiter_male"],
 		"group": "outfit_legs",
 		"slots": {
-			"equip_leg_left": "legl_armor_waiter",
-			"equip_leg_right": "legr_armor_waiter",
+			"equip_leg_left": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legl_armor_waiter_beastkin",
+					"human": "legl_armor_waiter",
+				},
+			},
+			"equip_leg_right": {
+				"axis": "body_fit",
+				"options": {
+					"beastkin": "legr_armor_waiter_beastkin",
+					"human": "legr_armor_waiter",
+				},
+			},
 			"equip_pelvis": "pelvis_armor_m_waiter",
 		},
 		"zones": [0, 1],

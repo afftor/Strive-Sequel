@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.16.0'
+const gameversion = '0.16.0a'
 
 #time
 signal hour_tick
@@ -1919,23 +1919,106 @@ func text_log_add(label, text):
 		log_node.add_log_message(message)
 
 
-func mansion_activity_log_add(event_type, text):
+#The clock an entry is stamped with. Turn results are produced before game_globals advances its
+#clock, so store the time the player will see after the turn rather than the hour that just ended.
+func mansion_activity_stamp():
 	var date = ResourceScripts.game_globals.date
 	var hour = ResourceScripts.game_globals.hour
-	#Turn results are produced before game_globals advances its clock. Store the time the
-	#player will see after the turn instead of the hour that has just ended.
 	if gui_controller.clock != null && is_instance_valid(gui_controller.clock):
 		if gui_controller.clock.get("turn_in_progress"):
 			hour += 1
 			if hour > variables.HoursPerDay:
 				hour = 1
 				date += 1
-	var message = {type = event_type, text = text, date = date, hour = hour}
+	return {date = date, hour = hour}
+
+
+#`extra` is merged in before the row is built, so anything the entry is later found by - the
+#character a folded entry belongs to - is already on the message the log node sees.
+func mansion_activity_log_add(event_type, text, extra = {}):
+	var stamp = mansion_activity_stamp()
+	var message = {type = event_type, text = text, date = stamp.date, hour = stamp.hour}
+	for key in extra:
+		message[key] = extra[key]
 	ResourceScripts.game_globals.mansion_activity_log.append(message)
 	while ResourceScripts.game_globals.mansion_activity_log.size() > 50:
 		ResourceScripts.game_globals.mansion_activity_log.pop_front()
 	if mansion_activity_log_node != null && weakref(mansion_activity_log_node).get_ref():
 		mansion_activity_log_node.add_log_message(message)
+	return message
+
+
+#One entry per person per hour, however many stats an event moves. A scene paying out four
+#changes at once used to write four lines about the same person in the same breath; the first
+#change makes the entry and the rest are folded into it in place. Folding is keyed on
+#(person, stamp), so an entry from an earlier hour is never appended to and nothing is redated.
+func mansion_activity_stat_change(character, part):
+	var stamp = mansion_activity_stamp()
+	var entries = ResourceScripts.game_globals.mansion_activity_log
+	for i in range(entries.size() - 1, -1, -1):
+		var entry = entries[i]
+		if entry.get('type') != 'stat_change' or entry.get('char_id') != character.id:
+			continue
+		if entry.date != stamp.date or entry.hour != stamp.hour:
+			continue
+		entry.parts.append(part)
+		entry.text = _stat_change_text(character, entry.parts)
+		if mansion_activity_log_node != null && weakref(mansion_activity_log_node).get_ref():
+			mansion_activity_log_node.update_log_message(entry)
+		return
+	mansion_activity_log_add('stat_change', _stat_change_text(character, [part]),
+		{char_id = character.id, parts = [part]})
+
+
+#One entry per turn for everything the service task brought in - the estate cares about the
+#coin, not about who carried it in, so the row is keyed on the stamp alone and not on a person.
+#Each worker is folded into the row that is already on screen as they are processed, the same
+#way mansion_activity_stat_change() folds a person's stat changes.
+#
+#`details` - the line per worker behind that total - is deliberately turn-local:
+#game_globals.serialize() drops it, so a report read back from a save is a total with nothing
+#left to unfold, and MansionLogModule hides the fold when it finds none.
+func mansion_activity_service(gold, detail_text):
+	var stamp = mansion_activity_stamp()
+	var entries = ResourceScripts.game_globals.mansion_activity_log
+	for i in range(entries.size() - 1, -1, -1):
+		var entry = entries[i]
+		if entry.get('type') != 'service':
+			continue
+		if entry.date != stamp.date or entry.hour != stamp.hour:
+			continue
+		entry.total = int(entry.get('total', 0)) + int(gold)
+		entry.workers = int(entry.get('workers', 0)) + 1
+		if !entry.has('details'):
+			entry.details = []
+		entry.details.append(detail_text)
+		entry.text = _service_report_text(entry.total, entry.workers)
+		if mansion_activity_log_node != null && weakref(mansion_activity_log_node).get_ref():
+			mansion_activity_log_node.update_log_message(entry)
+		return
+	mansion_activity_log_add('service', _service_report_text(int(gold), 1),
+		{total = int(gold), workers = 1, details = [detail_text]})
+
+
+func _service_report_text(total, workers):
+	return tr("MANSION_ACTIVITY_SERVICE_REPORT") % [total, workers]
+
+
+func _stat_change_text(character, parts):
+	return tr("MANSION_ACTIVITY_STAT_CHANGES") % [character.get_short_name(),
+		PoolStringArray(parts).join(", ")]
+
+
+#The activity log names items, and the log entries are bbcode. Gear carries a quality, so its
+#name reads there in the same colour the inventory and tooltips give it; materials and usables
+#have no quality and stay plain.
+func colorize_item_quality(text, quality):
+	if quality == null || quality == '':
+		return text
+	var color = variables.hexcolordict.get("quality_" + quality)
+	if color == null:
+		return text
+	return "[color=%s]%s[/color]" % [color, text]
 
 #quite ugly method to stop manifest befor main viewport is ready
 #it's probably useful only for test, but still seems "normal" problem for get_spec_node()
@@ -1953,20 +2036,20 @@ func manifest_and_log(label, text, person = null):
 	manifest(text, person)
 	text_log_add(label, text)
 
+#Stat changes an event hands out. The direction is coloured rather than spelled out, because
+#these arrive several at a time and read as a list - see mansion_activity_stat_change().
 func character_stat_change(character, data):
-	var text = "%s: %s" % [character.get_short_name(), get_stat_name(data.code)]
+	var part = get_stat_name(data.code)
 	if data.operant == '+':
-		text += " + "
 		character.add_stat(data.code, data.value)
+		part += " [color=%s]+%s[/color]" % [variables.hexcolordict.k_green, data.value]
 	elif data.operant == '=':
-		text += " = "
 		character.set_stat(data.code, data.value)
+		part += " [color=%s]= %s[/color]" % [variables.hexcolordict.k_gray, data.value]
 	else:
-		text += " - "
 		character.add_stat(data.code, -data.value)
-
-	text += str(data.value)
-	text_log_add('char', text)
+		part += " [color=%s]-%s[/color]" % [variables.hexcolordict.k_red, data.value]
+	mansion_activity_stat_change(character, part)
 #	manifest(text, character)
 #	character.set(data.code, input_handler.math(data.operant, character.get(data.code), data.value))
 
@@ -2828,6 +2911,10 @@ func common_effects(effects, from_event = false):
 								input_handler.active_location.captured_characters = []
 							input_handler.active_location.captured_characters.push_back(newcharacter.id)
 							newcharacter.is_active = true
+							#the captives panel gates enslaving and quickselling on src == 'random_combat'.
+							#a scene character handed over as a captive is in the same position as one
+							#taken in a fight, so mark it likewise or the player can only recruit it freely.
+							newcharacter.src = 'random_combat'
 						number -= 1
 			'update_guild':
 				if gui_controller.exploration_city == null:
@@ -3835,8 +3922,11 @@ func show_buttons(container):
 		yield(get_tree().create_timer(0.3), "timeout")
 		button.set("modulate", Color(1, 1, 1, 1))
 
+#Every entry in statdata was generated with name = '' and the STAT<CODE> keys written instead,
+#so reading the field gives back nothing at all. Fall through to the key whenever the entry has
+#no name of its own - otherwise the caller prints a blank where a stat should be.
 func get_stat_name(stat):
-	if statdata.statdata.has(stat):
+	if statdata.statdata.has(stat) and statdata.statdata[stat].name != '':
 		return statdata.statdata[stat].name
 	return tr("STAT%s" % stat.to_upper())
 

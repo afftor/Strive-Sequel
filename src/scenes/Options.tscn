@@ -216,6 +216,18 @@ custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "OPTITEMFLIGHT"
 
+[node name="fast_combat" type="CheckBox" parent="TabContainer/Visuals"]
+margin_left = 320.0
+margin_top = 54.0
+margin_right = 667.0
+margin_bottom = 98.0
+theme = ExtResource( 3 )
+custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "OPTFASTCOMBAT"
+
 [node name="Gameplay" type="Tabs" parent="TabContainer"]
 visible = false
 anchor_right = 1.0

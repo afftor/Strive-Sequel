@@ -251,8 +251,11 @@ const ITEM_PARTS = {
 	"crossbowadv": "weapon_back_crossbow2",
 	"battleaxe": "weapon_back_axe1",
 	"battleaxeadv": "weapon_back_axe2",
-	"staff": "weapon_back_stick",
-	"staffadv": "weapon_back_stick2",
+	# The staff art is the one exception to the "2 is the advanced one" rule the
+	# rest of this list follows: weapon_back_stick is the clawed, orbed staff
+	# and weapon_back_stick2 the plain rod, matching the two item icons.
+	"staff": "weapon_back_stick2",
+	"staffadv": "weapon_back_stick",
 }
 
 # Items that put something on a second slot as well - the pet suit is a collar

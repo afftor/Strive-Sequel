@@ -9,6 +9,9 @@ export var testmode = false
 
 var person
 var mode #added freemode - to EDIT existing chars
+#the beauty parlor's chair: freemode with the race and sex filters lifted - see
+#_collect_possible_vals and colours_allowed_to_race
+var unrestricted = false
 var total_stat_points
 var unassigned_points
 
@@ -252,6 +255,10 @@ func _ready():
 	$VBoxContainer/class.connect("pressed", ClassSelection, "open_class_list")
 	$BackButton.connect("pressed", self, "Exit")
 	$BackButtonCheats.connect("pressed", self, "hide")
+	if has_node('FurryToggle'):
+		$FurryToggle.text = tr("CHARCREATE_FURRY_TOGGLE")
+		$FurryToggle.connect("toggled", self, "_on_furry_toggled")
+		globals.connecttexttooltip($FurryToggle, tr("CHARCREATE_TOOLTIP_FURRY"))
 	if testmode:
 		open()
 
@@ -325,6 +332,34 @@ func reroll_appearance():
 		build_node_for_stat(stat)
 	build_description()
 	build_upgrades()
+
+
+# The one race change the chair allows: the same animal with the fur on or off. Every other
+# race change is refused in freemode, because rebuild_slave() replaces the character.
+func refresh_furry_toggle():
+	if !has_node('FurryToggle'):
+		return
+	var shown = unrestricted and mode == 'freemode' and person != null and person.has_furry_counterpart()
+	$FurryToggle.visible = shown
+	if shown:
+		$FurryToggle.set_pressed_no_signal(person.is_furry_form())
+
+
+func _on_furry_toggled(pressed):
+	if person == null or !unrestricted:
+		return
+	if !person.set_furry_form(pressed):
+		refresh_furry_toggle()
+		return
+	_close_visual_submenu()
+	preview_booth.forget()
+	# the rows put preservedsettings back over the person's values, and a chin or a mouth
+	# picked before the flip would bring the muzzle back
+	preservedsettings.clear()
+	build_possible_vals()
+	FillStats()
+	rebuild_ragdoll()
+	refresh_furry_toggle()
 
 
 func apply_default_personality():
@@ -430,7 +465,8 @@ func build_possible_val_for_stat(stat):
 
 
 func _collect_possible_vals(stat):
-	if person.is_unique():
+	#a story character drawn by hand has nothing to edit; one on the paperdoll does, in the chair
+	if person.is_unique() and !(unrestricted and person.uses_paperdoll()):
 		possible_vals[stat] = []
 		return
 	if stat.ends_with('factor'):
@@ -467,7 +503,12 @@ func _collect_possible_vals(stat):
 	if !DOLL_COLORS.values_for(stat).empty():
 		possible_vals[stat] = colours_allowed_to_race(stat)
 		return
-	if mode == 'freemode' and !critical_stats.has(stat) or free_stats.has(stat):
+	# The chair lifts the race and sex filters. The stats the legacy tables below do not carry
+	# get their lists from the race data instead - see unrestricted_values().
+	if unrestricted and UNRESTRICTED_SOURCED.has(stat):
+		possible_vals[stat] = unrestricted_values(stat)
+		return
+	if (mode == 'freemode' and (unrestricted or !critical_stats.has(stat))) or free_stats.has(stat):
 		if GeneratorData.transforms.has(stat):
 			for val in GeneratorData.transforms[stat]:
 				if val == "":
@@ -644,6 +685,9 @@ func colours_allowed_to_race(stat):
 	# overwrite the rule with any old colour.
 	if person.statlist.derives_colour(stat):
 		return []
+	# the chair offers every shade the palette has rather than the race's own list
+	if unrestricted:
+		return DOLL_COLORS.values_for(stat)
 	var t_stat = stat
 	if stat.begins_with('hair_') and stat.find('color') != -1:
 		t_stat = 'hair_base_color_1'
@@ -667,6 +711,77 @@ func colours_allowed_to_race(stat):
 	if allowed.empty() and !spoken_for:
 		allowed = DOLL_COLORS.values_for_race(stat, race)
 	return allowed
+
+
+# The stats freemode keeps race-and-sex filtered even when the chair lifts everything else:
+# the legacy transforms table has no list for them, so their lists are built from the race
+# data below rather than read off it.
+const UNRESTRICTED_SOURCED = ['body_shape', 'penis_size', 'balls_size', 'tits_size',
+	'multiple_tits', 'multiple_tits_developed', 'skin_coverage']
+
+
+# Every value any race lists for a stat, plus what the descriptions know of it. Weighted
+# entries are [value, weight] pairs.
+func race_union_values(stat):
+	var res = []
+	for race_id in races.racelist:
+		var parts = races.racelist[race_id].get('bodyparts', {})
+		if !parts.has(stat):
+			continue
+		for entry in parts[stat]:
+			var val = entry[0] if entry is Array else entry
+			if !res.has(val):
+				res.append(val)
+	if ResourceScripts.descriptions.bodypartsdata.has(stat):
+		for val in ResourceScripts.descriptions.bodypartsdata[stat]:
+			if val == null or str(val) == '':
+				continue
+			if !res.has(val):
+				res.append(val)
+	return res
+
+
+func race_values(race, stat):
+	var res = []
+	var parts = races.racelist.get(race, {}).get('bodyparts', {})
+	for entry in parts.get(stat, []):
+		var val = entry[0] if entry is Array else entry
+		if !res.has(val):
+			res.append(val)
+	return res
+
+
+# The coat is the one stat with a rule of its own: the fur masks only draw on the beastkin
+# body, and its custom setter looks the value up in the descriptions, which carry no entry
+# for 'none' - so a beastkin is offered every fur the descriptions name, everyone else keeps
+# their race's own list, and the transforms table (whose first key is null) is never read.
+func unrestricted_values(stat):
+	var race = str(person.get_stat('race'))
+	match stat:
+		'penis_size', 'balls_size':
+			# no part, no size: the sex tables give '' to anyone without it, and the row hides.
+			# The ladder is the sex tables' own; the descriptions key penis_size by type as well
+			# (human_small ...), which is prose, not a value the stat may hold.
+			if str(person.get_stat(stat)) == '':
+				return []
+			return ['small', 'average', 'big']
+		'skin_coverage':
+			if race.begins_with('Beastkin'):
+				var coats = []
+				for val in ResourceScripts.descriptions.bodypartsdata.skin_coverage:
+					if str(val).begins_with('fur'):
+						coats.append(val)
+				return coats
+			return race_values(race, 'skin_coverage')
+		'multiple_tits':
+			if races.racelist[race].get('tags', []).has('multibreasts'):
+				return [0, 1, 2, 3]
+			return []
+		'multiple_tits_developed':
+			if int(person.get_stat('multiple_tits')) > 0:
+				return [false, true]
+			return []
+	return race_union_values(stat)
 
 
 func build_selectable_node(stat):
@@ -935,6 +1050,14 @@ func refresh_dependent_sliders(stat):
 			continue
 		build_possible_val_for_stat(slider)
 		build_node_for_stat(slider)
+	# the extra pair is only 'developed' while there is one: the tick box follows the count,
+	# and a count brought back to none takes the tick with it
+	if stat == 'multiple_tits' and 'multiple_tits_developed' in params_to_save:
+		if int(person.get_stat('multiple_tits')) == 0 and bool(person.get_stat('multiple_tits_developed')):
+			person.set_stat('multiple_tits_developed', false)
+			preservedsettings.erase('multiple_tits_developed')
+		build_possible_val_for_stat('multiple_tits_developed')
+		build_node_for_stat('multiple_tits_developed')
 
 
 func unassigned_points():
@@ -1149,9 +1272,20 @@ func warm_doll_rigs():
 
 
 func open(type = 'slave', newguild = 'none', is_from_cheats = false):
+	#the panel is never freed - get_spec_node hands the same node to every character the
+	#session ever creates. A sub-panel left open by the previous character comes back with
+	#its old contents, and the race list is built from the run's unlocked races, so an
+	#abandoned New Game+ run would hand its unlocked races to the next one.
+	hide_all_dialogues()
 	preservedsettings.clear()
 	selected_class = ''
 	selected_master_relation = 'none'
+	#the parlor's visit before this one may have lifted the filters and hidden the rerolls
+	unrestricted = false
+	$NameReroll.visible = true
+	$AppearanceReroll.visible = true
+	if has_node('FurryToggle'):
+		$FurryToggle.visible = false
 #	build_class()
 #	build_race()
 #	build_sex_trait()
@@ -1188,8 +1322,18 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 	build_stats()
 
 
-func open_freemode(char_to_open, flag = false):
+#unrestricted_edit is the beauty parlor's chair: the race and sex filters on every visual stat
+#and colour are lifted, and a beastkin may be flipped to its halfkin form and back
+func open_freemode(char_to_open, flag = false, unrestricted_edit = false):
+	hide_all_dialogues()
+	#the panel is a singleton: a submenu and the option tiles of the previous character would
+	#otherwise come back with this one
+	_close_visual_submenu()
+	preview_booth.forget()
 	person = char_to_open
+	unrestricted = bool(unrestricted_edit)
+	selected_class = ''
+	updating_visual_controls = false
 	if person.get_upgrade_points() < 0:
 		flag = true
 	upgrades_removal = flag
@@ -1215,6 +1359,11 @@ func open_freemode(char_to_open, flag = false):
 	$BackButtonCheats.visible = false
 	$VBoxContainer/master_relation.visible = false
 	$modes.visible = false
+	#the name fields are hidden here, so a reroll would rename a party member unseen; and with
+	#the filters lifted a random roll puts a muzzle on a human
+	$NameReroll.visible = false
+	$AppearanceReroll.visible = !unrestricted
+	refresh_furry_toggle()
 
 
 
@@ -1263,7 +1412,9 @@ func confirm_female():
 
 
 func confirm_final():
-	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'finish_character', tr('CREATECHARQUESTION')])
+	#an existing character is being edited, not made
+	var question = tr('CHARCREATE_APPLY_CHANGES_QUESTION') if mode == 'freemode' else tr('CREATECHARQUESTION')
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'finish_character', question])
 
 
 func confirm_upgrades():
@@ -1328,6 +1479,10 @@ func finish_character():
 		for upg in cur_upgrades:
 			person.add_upgrade(upg)
 		person.recheck_upgrades()
+		#CharacterUpdated has no listeners; these are what refresh the doll on other screens and
+		#retire the portrait on file
+		input_handler.reshoot_portrait(person)
+		input_handler.emit_signal('update_ragdoll')
 		input_handler.emit_signal("CharacterUpdated")
 	self.hide()
 

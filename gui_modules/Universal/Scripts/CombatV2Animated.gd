@@ -123,6 +123,11 @@ func _ready():
 	$Rewards/CloseButton.connect("pressed",self,'FinishCombat')
 	$Menu/Items.connect("toggled", self, "open_items")
 	$Menu/Run.connect("pressed", self, "run")
+	#combat speed-up. The setting is the one the options panel writes, so the switch
+	#here and the checkbox there are the same toggle seen from two places.
+	$FastForward.pressed = input_handler.globalsettings.get("fast_combat", false)
+	$FastForward.connect("toggled", self, "toggle_fast_combat")
+	globals.connecttexttooltip($FastForward, tr("COMBATFASTFORWARDTOOLTIP"))
 	$ItemPanel.hide()
 	
 	$Button.connect("pressed", self, "on_skillbook_click")
@@ -2090,6 +2095,12 @@ func remove_queue_icon(node):
 
 
 var active_position
+func toggle_fast_combat(value):
+	input_handler.globalsettings.fast_combat = value
+	#animations already in flight switch pace with it
+	CombatAnimations.refresh_rate()
+
+
 func change_skill_panel_row(delta):
 	if activecharacter == null:
 		return

@@ -17,6 +17,8 @@ const STAT_ICONS = {
 	charm = preload("res://assets/images/gui/gui icons/icon_charm.png"),
 	productivity = preload("res://assets/images/gui/inventory/icon_craft1.png"),
 }
+#what the panel's own labels are painted in, kept here so the experience line can go back to it
+const EXP_COLOR = Color(0.976471, 0.882353, 0.505882)
 
 var person = null
 var header = ""
@@ -25,6 +27,7 @@ var hint = ""
 onready var body = $Panel/Margin/Body
 onready var header_label = $Panel/Margin/Body/Header
 onready var stat_rows = $Panel/Margin/Body/Stats
+onready var exp_label = $Panel/Margin/Body/Experience
 onready var tool_row = $Panel/Margin/Body/Tools
 onready var buff_row = $Panel/Margin/Body/Buffs
 onready var hint_label = $Panel/Margin/Body/Hint
@@ -67,10 +70,12 @@ func fill(who, text, foot = ""):
 	hint_rule.visible = foot != ""
 	if !is_instance_valid(who):
 		stat_rows.visible = false
+		exp_label.visible = false
 		tool_row.visible = false
 		buff_row.visible = false
 		return
 	build_stats(who)
+	build_experience(who)
 	build_tools(who)
 	globals.build_buffs_for_char(who, buff_row, 'mansion')
 	#That builder hangs a tooltip on every buff it draws, and this panel is already a tooltip:
@@ -88,6 +93,19 @@ func build_stats(who):
 		row.get_node("Icon").texture = STAT_ICONS[code]
 		row.get_node("Value").text = stat_text(who, code)
 	stat_rows.visible = true
+
+
+#What the four numbers do not say: how far along they are towards the next class. Read and
+#painted the way the progression screen reads and paints it, so the hover and the screen can
+#never disagree - the panel's own yellow while the experience is still being banked, the
+#level-up green once there is enough of it to unlock with.
+func build_experience(who):
+	var current = int(floor(who.get_stat("base_exp")))
+	var required = int(floor(who.get_next_class_exp()))
+	exp_label.text = "%s: %d / %d" % [tr("STATBASE_EXP"), current, required]
+	exp_label.set("custom_colors/font_color",
+		Color(variables.hexcolordict.levelup_text_color) if current >= required else EXP_COLOR)
+	exp_label.visible = true
 
 
 #Productivity is a percentage; the other three read as what they are out of what they could be.

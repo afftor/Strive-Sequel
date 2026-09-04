@@ -629,6 +629,38 @@ margin_bottom = 1013.0
 theme = ExtResource( 11 )
 text = "STOP_LABEL"
 
+[node name="presumption" type="Panel" parent="."]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.890196 )
+margin_left = 618.0
+margin_top = 330.0
+margin_right = 1318.0
+margin_bottom = 700.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="presumption"]
+margin_left = 60.0
+margin_top = 40.0
+margin_right = 640.0
+margin_bottom = 215.0
+theme = ExtResource( 41 )
+custom_fonts/normal_font = ExtResource( 12 )
+bbcode_enabled = true
+
+[node name="optdiscipline" type="Button" parent="presumption"]
+margin_left = 140.0
+margin_top = 232.0
+margin_right = 560.0
+margin_bottom = 277.0
+theme = ExtResource( 11 )
+
+[node name="optendorse" type="Button" parent="presumption"]
+margin_left = 140.0
+margin_top = 287.0
+margin_right = 560.0
+margin_bottom = 332.0
+theme = ExtResource( 11 )
+
 [connection signal="pressed" from="panel/categories/Affection" to="." method="selectcategory" binds= [ "Affection" ]]
 [connection signal="pressed" from="panel/categories/Discipline" to="." method="selectcategory" binds= [ "Discipline" ]]
 [connection signal="pressed" from="panel/categories/Training" to="." method="selectcategory" binds= [ "Training" ]]
