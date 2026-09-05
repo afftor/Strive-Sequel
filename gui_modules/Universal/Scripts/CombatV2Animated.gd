@@ -1002,7 +1002,9 @@ func enemy_turn(char_changed = true):
 
 
 func env_turn(char_changed = true):
-	if autoskill == null: return
+	if autoskill == null: 
+		call_deferred('select_actor')
+		return
 	if autoskill_delay_rem <= 0:
 		autoskill_delay_rem = autoskill_delay
 		turns += 1
@@ -1011,6 +1013,10 @@ func env_turn(char_changed = true):
 		use_skill(autoskill, autoskill_dummy, get_proper_target_for_autoskill(), variables.SKILL_AUTO)
 		if autoskill_times == 0: 
 			autoskill = null
+			for i in range (next_turnorder.size()):
+				if next_turnorder[i].has('autoskill'):
+					next_turnorder.remove(i)
+					break
 		CombatAnimations.check_start()
 		if CombatAnimations.is_busy: 
 			yield(CombatAnimations, 'alleffectsfinished')
